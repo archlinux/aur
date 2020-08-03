@@ -1,5 +1,5 @@
 WARNING
-This patch works with gcc versions 10.1+ and with kernel version 5.7+ and should
+This patch works with gcc versions 10.1+ and with kernel version 5.8+ and should
 NOT be applied when compiling on older versions of gcc due to key name changes
 of the march flags introduced with the version 4.9 release of gcc.[1]
 
@@ -66,7 +66,7 @@ See the following experimental evidence supporting this statement:
 https://github.com/graysky2/kernel_gcc_patch
 
 REQUIREMENTS
-linux version >=5.7
+linux version >=5.8
 gcc version >=10.1
 
 ACKNOWLEDGMENTS
@@ -81,8 +81,8 @@ REFERENCES
 5.  https://github.com/graysky2/kernel_gcc_patch/issues/15
 6.  http://www.linuxforge.net/docs/linux/linux-gcc.php
 
---- a/arch/x86/include/asm/vermagic.h	2020-06-10 14:21:45.000000000 -0400
-+++ b/arch/x86/include/asm/vermagic.h	2020-06-15 10:12:15.577746073 -0400
+--- a/arch/x86/include/asm/vermagic.h	2020-06-14 15:45:04.000000000 -0400
++++ b/arch/x86/include/asm/vermagic.h	2020-06-15 09:28:19.867840705 -0400
 @@ -17,6 +17,40 @@
  #define MODULE_PROC_FAMILY "586MMX "
  #elif defined CONFIG_MCORE2
@@ -153,14 +153,14 @@ REFERENCES
  #elif defined CONFIG_MELAN
  #define MODULE_PROC_FAMILY "ELAN "
  #elif defined CONFIG_MCRUSOE
---- a/arch/x86/Kconfig.cpu	2020-06-10 14:21:45.000000000 -0400
-+++ b/arch/x86/Kconfig.cpu	2020-06-15 10:12:15.577746073 -0400
+--- a/arch/x86/Kconfig.cpu	2020-06-14 15:45:04.000000000 -0400
++++ b/arch/x86/Kconfig.cpu	2020-06-15 09:28:19.871174111 -0400
 @@ -123,6 +123,7 @@ config MPENTIUMM
  config MPENTIUM4
  	bool "Pentium-4/Celeron(P4-based)/Pentium-4 M/older Xeon"
  	depends on X86_32
 +	select X86_P6_NOP
- 	---help---
+ 	help
  	  Select this for Intel Pentium 4 chips.  This includes the
  	  Pentium 4, Pentium D, P4-based Celeron and Xeon, and
 @@ -155,9 +156,8 @@ config MPENTIUM4
@@ -172,7 +172,7 @@ REFERENCES
 -	bool "K6/K6-II/K6-III"
 +	bool "AMD K6/K6-II/K6-III"
  	depends on X86_32
- 	---help---
+ 	help
  	  Select this for an AMD K6-family processor.  Enables use of
 @@ -165,7 +165,7 @@ config MK6
  	  flags to GCC.
@@ -181,7 +181,7 @@ REFERENCES
 -	bool "Athlon/Duron/K7"
 +	bool "AMD Athlon/Duron/K7"
  	depends on X86_32
- 	---help---
+ 	help
  	  Select this for an AMD Athlon K7-family processor.  Enables use of
 @@ -173,12 +173,90 @@ config MK7
  	  flags to GCC.
@@ -189,21 +189,21 @@ REFERENCES
  config MK8
 -	bool "Opteron/Athlon64/Hammer/K8"
 +	bool "AMD Opteron/Athlon64/Hammer/K8"
- 	---help---
+ 	help
  	  Select this for an AMD Opteron or Athlon64 Hammer-family processor.
  	  Enables use of some extended instructions, and passes appropriate
  	  optimization flags to GCC.
  
 +config MK8SSE3
 +	bool "AMD Opteron/Athlon64/Hammer/K8 with SSE3"
-+	---help---
++	help
 +	  Select this for improved AMD Opteron or Athlon64 Hammer-family processors.
 +	  Enables use of some extended instructions, and passes appropriate
 +	  optimization flags to GCC.
 +
 +config MK10
 +	bool "AMD 61xx/7x50/PhenomX3/X4/II/K10"
-+	---help---
++	help
 +	  Select this for an AMD 61xx Eight-Core Magny-Cours, Athlon X2 7x50,
 +		Phenom X3/X4/II, Athlon II X2/X3/X4, or Turion II-family processor.
 +	  Enables use of some extended instructions, and passes appropriate
@@ -211,63 +211,63 @@ REFERENCES
 +
 +config MBARCELONA
 +	bool "AMD Barcelona"
-+	---help---
++	help
 +	  Select this for AMD Family 10h Barcelona processors.
 +
 +	  Enables -march=barcelona
 +
 +config MBOBCAT
 +	bool "AMD Bobcat"
-+	---help---
++	help
 +	  Select this for AMD Family 14h Bobcat processors.
 +
 +	  Enables -march=btver1
 +
 +config MJAGUAR
 +	bool "AMD Jaguar"
-+	---help---
++	help
 +	  Select this for AMD Family 16h Jaguar processors.
 +
 +	  Enables -march=btver2
 +
 +config MBULLDOZER
 +	bool "AMD Bulldozer"
-+	---help---
++	help
 +	  Select this for AMD Family 15h Bulldozer processors.
 +
 +	  Enables -march=bdver1
 +
 +config MPILEDRIVER
 +	bool "AMD Piledriver"
-+	---help---
++	help
 +	  Select this for AMD Family 15h Piledriver processors.
 +
 +	  Enables -march=bdver2
 +
 +config MSTEAMROLLER
 +	bool "AMD Steamroller"
-+	---help---
++	help
 +	  Select this for AMD Family 15h Steamroller processors.
 +
 +	  Enables -march=bdver3
 +
 +config MEXCAVATOR
 +	bool "AMD Excavator"
-+	---help---
++	help
 +	  Select this for AMD Family 15h Excavator processors.
 +
 +	  Enables -march=bdver4
 +
 +config MZEN
 +	bool "AMD Zen"
-+	---help---
++	help
 +	  Select this for AMD Family 17h Zen processors.
 +
 +	  Enables -march=znver1
 +
 +config MZEN2
 +	bool "AMD Zen 2"
-+	---help---
++	help
 +	  Select this for AMD Family 17h Zen 2 processors.
 +
 +	  Enables -march=znver2
@@ -281,7 +281,7 @@ REFERENCES
  	bool "Intel P4 / older Netburst based Xeon"
 +	select X86_P6_NOP
  	depends on X86_64
- 	---help---
+ 	help
  	  Optimize for Intel Pentium 4, Pentium D and older Nocona/Dempsey
 @@ -269,8 +348,19 @@ config MPSC
  	  using the cpu family field
@@ -290,7 +290,7 @@ REFERENCES
 +config MATOM
 +	bool "Intel Atom"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for the Intel Atom platform. Intel Atom CPUs have an
 +	  in-order pipelining architecture and thus can benefit from
@@ -301,7 +301,7 @@ REFERENCES
 -	bool "Core 2/newer Xeon"
 +	bool "Intel Core 2"
 +	select X86_P6_NOP
- 	---help---
+ 	help
  
  	  Select this for Intel Core 2 and newer Core 2 Xeons (Xeon 51xx and
 @@ -278,14 +368,151 @@ config MCORE2
@@ -315,7 +315,7 @@ REFERENCES
 +config MNEHALEM
 +	bool "Intel Nehalem"
 +	select X86_P6_NOP
- 	---help---
+ 	help
  
 -	  Select this for the Intel Atom platform. Intel Atom CPUs have an
 -	  in-order pipelining architecture and thus can benefit from
@@ -328,7 +328,7 @@ REFERENCES
 +config MWESTMERE
 +	bool "Intel Westmere"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for the Intel Westmere formerly Nehalem-C family.
 +
@@ -337,7 +337,7 @@ REFERENCES
 +config MSILVERMONT
 +	bool "Intel Silvermont"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for the Intel Silvermont platform.
 +
@@ -346,7 +346,7 @@ REFERENCES
 +config MGOLDMONT
 +	bool "Intel Goldmont"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for the Intel Goldmont platform including Apollo Lake and Denverton.
 +
@@ -355,7 +355,7 @@ REFERENCES
 +config MGOLDMONTPLUS
 +	bool "Intel Goldmont Plus"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for the Intel Goldmont Plus platform including Gemini Lake.
 +
@@ -364,7 +364,7 @@ REFERENCES
 +config MSANDYBRIDGE
 +	bool "Intel Sandy Bridge"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for 2nd Gen Core processors in the Sandy Bridge family.
 +
@@ -373,7 +373,7 @@ REFERENCES
 +config MIVYBRIDGE
 +	bool "Intel Ivy Bridge"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for 3rd Gen Core processors in the Ivy Bridge family.
 +
@@ -382,7 +382,7 @@ REFERENCES
 +config MHASWELL
 +	bool "Intel Haswell"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for 4th Gen Core processors in the Haswell family.
 +
@@ -391,7 +391,7 @@ REFERENCES
 +config MBROADWELL
 +	bool "Intel Broadwell"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for 5th Gen Core processors in the Broadwell family.
 +
@@ -400,7 +400,7 @@ REFERENCES
 +config MSKYLAKE
 +	bool "Intel Skylake"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for 6th Gen Core processors in the Skylake family.
 +
@@ -409,7 +409,7 @@ REFERENCES
 +config MSKYLAKEX
 +	bool "Intel Skylake X"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for 6th Gen Core processors in the Skylake X family.
 +
@@ -418,7 +418,7 @@ REFERENCES
 +config MCANNONLAKE
 +	bool "Intel Cannon Lake"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for 8th Gen Core processors
 +
@@ -427,7 +427,7 @@ REFERENCES
 +config MICELAKE
 +	bool "Intel Ice Lake"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for 10th Gen Core processors in the Ice Lake family.
 +
@@ -436,7 +436,7 @@ REFERENCES
 +config MCASCADELAKE
 +	bool "Intel Cascade Lake"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for Xeon processors in the Cascade Lake family.
 +
@@ -445,7 +445,7 @@ REFERENCES
 +config MCOOPERLAKE
 +	bool "Intel Cooper Lake"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for Xeon processors in the Cooper Lake family.
 +
@@ -454,7 +454,7 @@ REFERENCES
 +config MTIGERLAKE
 +	bool "Intel Tiger Lake"
 +	select X86_P6_NOP
-+	---help---
++	help
 +
 +	  Select this for third-generation 10 nm process processors in the Tiger Lake family.
 +
@@ -468,7 +468,7 @@ REFERENCES
  
 +config MNATIVE
 + bool "Native optimizations autodetected by GCC"
-+ ---help---
++ help
 +
 +   GCC 4.2 and above support -march=native, which automatically detects
 +   the optimum settings to use based on your processor. -march=native
@@ -525,7 +525,7 @@ REFERENCES
 +	default n
 +	bool "Support for P6_NOPs on Intel chips"
 +	depends on (MCORE2 || MPENTIUM4 || MPSC || MATOM || MNEHALEM || MWESTMERE || MSILVERMONT || MGOLDMONT || MGOLDMONTPLUS  || MSANDYBRIDGE || MIVYBRIDGE || MHASWELL || MBROADWELL || MSKYLAKE || MSKYLAKEX || MCANNONLAKE || MICELAKE || MCASCADELAKE || MCOOPERLAKE || MTIGERLAKE || MNATIVE)
-+	---help---
++	help
 +	P6_NOPs are a relatively minor optimization that require a family >=
 +	6 processor, except that it is broken on certain VIA chips.
 +	Furthermore, AMD chips prefer a totally different sequence of NOPs
@@ -554,8 +554,8 @@ REFERENCES
  
  config X86_MINIMUM_CPU_FAMILY
  	int
---- a/arch/x86/Makefile	2020-06-10 14:21:45.000000000 -0400
-+++ b/arch/x86/Makefile	2020-06-15 10:16:01.605959969 -0400
+--- a/arch/x86/Makefile	2020-06-14 15:45:04.000000000 -0400
++++ b/arch/x86/Makefile	2020-06-15 09:28:19.871174111 -0400
 @@ -119,13 +119,60 @@ else
  	KBUILD_CFLAGS += $(call cc-option,-mskip-rax-setup)
  
@@ -620,8 +620,8 @@ REFERENCES
          cflags-$(CONFIG_GENERIC_CPU) += $(call cc-option,-mtune=generic)
          KBUILD_CFLAGS += $(cflags-y)
  
---- a/arch/x86/Makefile_32.cpu	2020-06-10 14:21:45.000000000 -0400
-+++ b/arch/x86/Makefile_32.cpu	2020-06-15 10:12:15.577746073 -0400
+--- a/arch/x86/Makefile_32.cpu	2020-06-14 15:45:04.000000000 -0400
++++ b/arch/x86/Makefile_32.cpu	2020-06-15 09:28:19.871174111 -0400
 @@ -24,7 +24,19 @@ cflags-$(CONFIG_MK6)		+= -march=k6
  # Please note, that patches that add -march=athlon-xp and friends are pointless.
  # They make zero difference whatsosever to performance at this time.

@@ -2,8 +2,8 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.7.12
-pkgver=5.7.v.12
+gitver=v5.8
+pkgver=5.8.v.0
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -23,20 +23,16 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         'linux.install'
 	# patch from our gentoo overlords
 	'5013_enable-cpu-optimizations-for-gcc10.patch'
-	# asusbat patch is back!
-	asusbat.patch
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'ba4fe0d1042fbe70d06b27aaa121bc3f98d0134a4f9cb593e06ed6073d257005'
+            '34fa0410e76c72b1a44c1ac701741e2344c2c4252e9c552deaece872f8c03a2c'
             #.preset file
             '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #gentoopatch
-            '1f56a2466bd9b4477925682d8f944fabb38727140e246733214fe50aa326fc47'
-            #asusbat.patch
-            '93d24cbf50a3f9920bbdc2b07f7f665672089e2d7eda897ffba0587d6cf9ab51'
+            '5ab29eb64e57df83b395a29a6a4f89030d142feffbfbf73b3afc6d97a2a7fd12'
 )
 
 _kernelname=${pkgbase#linux}
