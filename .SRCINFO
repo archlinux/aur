@@ -1,0 +1,15 @@
+pkgbase = python-unet
+	pkgdesc = PyTorch Implementation of 2D and 3D U-Net
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://github.com/fepegar/unet
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-pytorch
+	source = python-unet-0.7.5.tar.gz::https://github.com/fepegar/unet/archive/v0.7.5.tar.gz
+	sha512sums = 8ee6fb61a56f4615c34d450e64300dd71aa1a3bc21604d34fe26bc8a28a5d48de7a073de58905242ad56e8f50afa75b26412fdb2d23b2746847256640df50583
+
+pkgname = python-unet
+
