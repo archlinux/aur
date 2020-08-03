@@ -1,2 +1,3 @@
 d /var/lib/plausible 0755 plausible plausible
+d /opt/plausible/tmp 0755 plausible plausible
 Z /var/lib/plausible - plausible plausible
