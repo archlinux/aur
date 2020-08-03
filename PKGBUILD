@@ -2,7 +2,7 @@
 
 pkgname=vc4cl-git
 pkgver=r170.eec7e57
-pkgrel=3
+pkgrel=4
 pkgdesc="VC4CL is an implementation of the OpenCL 1.2 standard for the VideoCore IV GPU."
 arch=('any')
 url="https://github.com/doe300/VC4CL"
@@ -21,8 +21,8 @@ pkgver() {
 }
 
 build() {
-    mkdir -p $srcdir/VC4CL/build
-	cd $srcdir/VC4CL/build
+    mkdir -p "$srcdir/VC4CL/build"
+	cd "$srcdir/VC4CL/build"
 	cmake "$srcdir/VC4CL" -DCMAKE_BUILD_TYPE=Release -DMULTI_THREADED=true -DCLANG_FOUND=/usr/bin/clang -DVC4CL_STDLIB_DIR=/usr/local/include/vc4cl-stdlib
 	make
 }
@@ -30,6 +30,6 @@ build() {
 package() {
 	mkdir -m 755 "$pkgdir/etc/OpenCL/vendors/"
     install -m 644 "$srcdir/VC4CL.icd" "$pkgdir/etc/OpenCL/vendors/"
-    cd $srcdir/VC4CL/build
+    cd "$srcdir/VC4CL/build"
     make DESTDIR="$pkgdir"/ install
 }
