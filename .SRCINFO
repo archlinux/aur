@@ -12,6 +12,8 @@ pkgbase = com.qq.weixin.dcs
 	depends = p7zip
 	depends = xdg-utils
 	depends = hicolor-icon-theme
+	optdepends = ttf-ms-fonts: Microsoft Core fonts
+	optdepends = noto-fonts-cjk: Google Noto CJK fonts
 	source = http://store.jerrywang.top/store/chat/com.qq.weixin.dcs/com.qq.weixin.dcs_2.9.5.56_i386.deb
 	sha512sums = acb06c23d921ca838154487d54638b9cac06ac4b8867c0572a258f9744140218b6ef9a99e97f9076acf7b6cc5b05217960ffbafb55800232e90c30c6c3641d21
 
