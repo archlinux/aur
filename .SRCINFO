@@ -1,0 +1,20 @@
+pkgbase = vifmimg-git
+	pkgdesc = Image previews using Überzug for vifm
+	pkgver = r36.afe4f15
+	pkgrel = 1
+	url = https://github.com/cirala/vifmimg
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = vifm
+	depends = ueberzug
+	optdepends = ffmpegthumbnailer: for video previews
+	optdepends = imagemagick: for .ico previews
+	optdepends = poppler: for pdf previews
+	optdepends = gnome-epub-thumbnailer: for epub previews
+	optdepends = fontpreview-git: for font previews
+	source = git+https://github.com/cirala/vifmimg.git#branch=master
+	md5sums = SKIP
+
+pkgname = vifmimg-git
+
