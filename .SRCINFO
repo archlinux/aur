@@ -71,6 +71,3 @@ pkgname = linux-mainline-bootsplash
 pkgname = linux-mainline-bootsplash-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Mainline - with bootsplash support kernel
 
-pkgname = linux-mainline-bootsplash-docs
-	pkgdesc = Documentation for the Linux Mainline - with bootsplash support kernel
-
