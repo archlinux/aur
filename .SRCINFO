@@ -1,27 +1,19 @@
 pkgbase = python-adjusttext
-	pkgdesc = A small library for automatically adjusting text position in matplotlib plots to minimize overlaps
-	pkgver = 0.7
+	pkgdesc = Iteratively adjust text position in matplotlib plots to minimize overlaps
+	pkgver = 0.7.3
 	pkgrel = 1
-	url = https://github.com/meowklaski/adjustText
+	url = https://github.com/Phlya/adjustText
 	arch = any
 	license = MIT
-	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
-	options = !emptydirs
-	source = python-adjusttext-0.7.tar.gz::https://pypi.io/packages/source/a/adjustText/adjustText-0.7.tar.gz
-	source = https://raw.githubusercontent.com/Phlya/adjustText/0.7/LICENSE
-	sha256sums = 9343d42777b43a0383327b3124172a83a0a66926a386b7a87413f8e719b4b6bf
-	sha256sums = 443687f058d5f541952ab9bcd6f836d9843ac13b93b8a6b1097eb0832d2314fa
-
-pkgname = python-adjusttext
 	depends = python
 	depends = python-matplotlib
 	depends = python-numpy
+	options = !emptydirs
+	source = python-adjusttext-0.7.3.tar.gz::https://pypi.io/packages/source/a/adjustText/adjustText-0.7.3.tar.gz
+	source = https://raw.githubusercontent.com/Phlya/adjustText/0.7.3/LICENSE
+	sha256sums = b90e275a95b4d980cbbac7967914b8d66477c09bc346a0b3c9e2125bba664b06
+	sha256sums = 443687f058d5f541952ab9bcd6f836d9843ac13b93b8a6b1097eb0832d2314fa
 
-pkgname = python2-adjusttext
-	depends = python2
-	depends = python2-matplotlib
-	depends = python2-numpy
+pkgname = python-adjusttext
 
