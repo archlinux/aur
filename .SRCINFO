@@ -1,0 +1,15 @@
+pkgbase = tminesweeper
+	pkgdesc = Minesweeper game in terminal
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/langong-dev/tminesweeper
+	arch = any
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/langong-dev/tminesweeper
+	md5sums = SKIP
+
+pkgname = tminesweeper
+
