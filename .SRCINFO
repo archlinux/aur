@@ -1,6 +1,6 @@
 pkgbase = open-fprintd
 	pkgdesc = Fprintd replacement which allows you to have your own backend as a standalone service
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 2
 	url = https://github.com/uunicorn/open-fprintd
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = open-fprintd
 	depends = fprintd-clients
 	provides = open-fprintd
 	conflicts = open-fprintd
-	source = https://github.com/uunicorn/open-fprintd/archive/0.4.tar.gz
-	md5sums = c9f29fbfb0396f93b6a1013e7b78d283
+	source = https://github.com/uunicorn/open-fprintd/archive/0.5.tar.gz
+	md5sums = 828bbae521d3e675b6f2dfccc3752f02
 
 pkgname = open-fprintd
 

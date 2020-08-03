@@ -1,6 +1,6 @@
 # Maintainer: Matthew Murray <matt@mattmurr.xyz>
 pkgname=open-fprintd
-pkgver=0.4
+pkgver=0.5
 pkgrel=2
 pkgdesc="Fprintd replacement which allows you to have your own backend as a standalone service"
 arch=(any)
@@ -11,7 +11,7 @@ conflicts=($pkgname)
 provides=($pkgname)
 url="https://github.com/uunicorn/${pkgname}"
 source=("${url}/archive/${pkgver}.tar.gz")
-md5sums=('c9f29fbfb0396f93b6a1013e7b78d283')
+md5sums=('828bbae521d3e675b6f2dfccc3752f02')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
