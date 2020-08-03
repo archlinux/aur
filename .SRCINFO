@@ -1,13 +1,13 @@
 pkgbase = pomobar-git
 	pkgdesc = Pomodoro timer to polybar
-	pkgver = r23.b613959
+	pkgver = r26.e1abc23
 	pkgrel = 1
 	url = https://github.com/loopzen/pomobar
 	arch = any
 	license = unknown
 	depends = git
 	depends = python
-	source = git+https://github.com/loopzen/pomobar
+	source = pomobar-git::git+https://github.com/loopzen/pomobar
 	md5sums = SKIP
 
 pkgname = pomobar-git

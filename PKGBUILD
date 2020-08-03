@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster (milk/milkii on Freenode)
 pkgname=pomobar-git
 pkgdesc="Pomodoro timer to polybar"
-pkgver=r23.b613959
+pkgver=r26.e1abc23
 pkgrel=1
 epoch=
 arch=('any')
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/loopzen/pomobar")
+source=("pomobar-git::git+https://github.com/loopzen/pomobar")
 noextract=()
 md5sums=('SKIP')
 
