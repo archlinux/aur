@@ -1,15 +1,15 @@
 pkgbase = gomp
 	pkgdesc = Git-based tool for comparing branches
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/MarkForged/GOMP
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/g/gomp/gomp-1.0.2.tar.gz
+	source = gomp-1.1.0.tar.gz::https://github.com/MarkForged/GOMP/releases/download/v1.1.0/gomp-1.1.0.tar.gz
 	source = LICENSE
-	sha256sums = 6b399c252f983c5aa7133bb3bb4f51134a93f883f91a90be4f835d4091b6d0e7
+	sha256sums = 0bc2e81e29b89613d7cab7d28df6eca9191b7af73facdf9e8fce2ffc2220d886
 	sha256sums = 5eb2e11066350f22ddec76c580323277a87e132aa7487adbcb277e489fdae24d
 
 pkgname = gomp
