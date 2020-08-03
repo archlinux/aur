@@ -6,7 +6,7 @@
 pkgname=plausible-git
 _pkgname=plausible
 pkgver=r456.b29afde
-pkgrel=5
+pkgrel=6
 license=('MIT')
 pkgdesc='Simple and privacy-friendly alternative to Google Analytics'
 makedepends=("nodejs" "yarn" "python" "npm" "nodejs-webpack" "wget" "ca-certificates" "gnupg" "elixir")
@@ -14,8 +14,16 @@ depends=()
 optdepends=()
 arch=("any")
 url='https://plausible.io'
-source=("${pkgname%-*}::git+https://github.com/plausible/analytics.git")
-sha1sums=('SKIP')
+source=("${pkgname%-*}::git+https://github.com/plausible/analytics.git"
+        "plausible.sysusers"
+        "plausible.service"
+        "plausible.tmpfiles"
+        "plausible.env")
+sha1sums=('SKIP'
+          'b52729ab148fcf4e2be54abc37f01aebd02b1655'
+          '1ddfc6e48f8b39c9e0a59ba1bd12a827b34716f1'
+          '75160f7a93b60e78a505b69fb1536cbb855256f0'
+          'c5866213a3154ffb9e3a878c7c274331fdc3adef')
 provides=('plausible')
 conflicts=('plausible')
 
@@ -62,7 +70,13 @@ package() {
 	mkdir -p "$pkgdir"/opt/
 	cp -r _build/prod/rel/plausible "$pkgdir"/opt/
 	chmod 755 "$pkgdir"/opt/plausible/bin/plausible	
+	chown -R plausible:plausible "$pkgdir"/opt/plausible
 
 	mkdir -p "$pkgdir"/usr/bin/
 	ln -sf /opt/plausible/bin/plausible "$pkgdir"/usr/bin/plausible
+
+	install -Dm644 "${srcdir}/plausible.service" "${pkgdir}/usr/lib/systemd/system/plausible.service"
+	install -Dm644 "${srcdir}/plausible.sysusers" "${pkgdir}/usr/lib/sysusers.d/plausible.conf"
+	install -Dm644 "${srcdir}/plausible.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/plausible.conf"
+	install -Dm644 "${srcdir}/plausible.env" "${pkgdir}/etc/plausible.conf"
 }

@@ -1,0 +1,17 @@
+[Unit]
+Description=Plausible daemon
+After=network.target
+
+[Service]
+User=plausible
+Group=plausible
+Restart=always
+RestartSec=5
+Type=simple
+Environment=XDG_CONFIG_HOME=/var/lib/plausible
+EnvironmentFile=-/etc/plausible.conf
+WorkingDirectory=/var/lib/plausible
+ExecStart=/usr/bin/plausible start
+
+[Install]
+WantedBy=multi-user.target
