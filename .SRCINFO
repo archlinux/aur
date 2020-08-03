@@ -1,17 +1,19 @@
 pkgbase = python-exiv2
-	pkgdesc = py3exiv2 is a Python3 binding to exiv2, the C++ library for manipulation of EXIF, IPTC and XMP image metadata.
-	pkgver = 0.7.1
-	pkgrel = 2
+	pkgdesc = A Python 3 binding to exiv2, the C++ library for manipulation of EXIF, IPTC and XMP image metadata.
+	pkgver = 0.7.2
+	pkgrel = 1
 	url = https://launchpad.net/py3exiv2
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = boost
-	depends = python>=3.7
+	depends = python
 	depends = boost-libs
 	depends = exiv2
-	source = http://www.py3exiv2.tuxfamily.org/releases/python3-exiv2-0.7.1.tar.gz
-	sha512sums = ece1133b8ba0566617438e38f371044df52451a2952e55f05f52f2ec5f4323fe39b797a482c5a7b5666eea35fc88d1207d16d4246e984c05a56bb2fdb421e319
+	source = https://pypi.org/packages/source/p/py3exiv2/py3exiv2-0.7.2.tar.gz
+	source = https://pypi.org/packages/source/p/py3exiv2/py3exiv2-0.7.2.tar.gz.asc
+	validpgpkeys = 857162EA24FA8D09C363DD3C068346EEA7A91F52
+	b2sums = 45ad319735d8fbfc9beb2d5a3af09eeb5e2c4662ffa7081a856e2cb5414dd807d3bb543d901dab2b88369788039a1886658324ea20ed50304e4654135b4b3855
+	b2sums = SKIP
 
 pkgname = python-exiv2
 
