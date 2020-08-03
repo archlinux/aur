@@ -1,0 +1,21 @@
+pkgbase = optimizevideo-git
+	pkgdesc = Substitutes a video for its smallest size version which does not have perceivable quality loss
+	pkgver = r15.1dd2dec
+	pkgrel = 1
+	url = https://gitlab.com/es20490446e/optimizeVideo
+	arch = any
+	license = AGPL
+	makedepends = git
+	depends = libvpx
+	depends = opus
+	depends = ffmpeg
+	depends = solve
+	provides = optimizevideo
+	provides = args
+	source = optimizevideo::git+https://gitlab.com/es20490446e/optimizeVideo
+	source = args::git+https://gitlab.com/es20490446e/args
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = optimizevideo-git
+
