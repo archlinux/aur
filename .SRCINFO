@@ -1,14 +1,14 @@
 pkgbase = python-trytond_marketing_automation
 	pkgdesc = Tryton module to plan, coordinate and manage marketing campaigns
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_marketing_automation/trytond_marketing_automation-5.2.0.tar.gz
-	sha256sums = 433aa5fbc59ace691e5be0ccca8c969b610048ac650737d51f36bb01e9cc9a51
+	source = https://files.pythonhosted.org/packages/source/t/trytond_marketing_automation/trytond_marketing_automation-5.6.0.tar.gz
+	sha256sums = 433aa5fbc59ace691e5be0ccca8c969b610048ac650737d51f36bb01e9cc9a51 6cbcc63ff7e638e39c844c6983871508a43322c675b5eef408edc8730605936f
 
 pkgname = python-trytond_marketing_automation
 
