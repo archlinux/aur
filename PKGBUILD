@@ -2,7 +2,7 @@
 
 pkgname=akira
 pkgver=0.0.1a
-pkgrel=1
+pkgrel=2
 pkgdesc='Native Linux App for UI and UX Design built in Vala and Gtk'
 arch=('x86_64' 'aarch64')
 url="https://github.com/akiraux/${pkgname^}"
@@ -12,7 +12,7 @@ depends=('elementary-icon-theme'
          'gtk-theme-elementary'
          'gtksourceview3'
          'libarchive'
-         'libgranite.so')
+         'granite')
 makedepends=('appstream'
              'git'
              'meson'

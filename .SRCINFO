@@ -1,7 +1,7 @@
 pkgbase = akira
 	pkgdesc = Native Linux App for UI and UX Design built in Vala and Gtk
 	pkgver = 0.0.1a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/akiraux/Akira
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = akira
 	depends = gtk-theme-elementary
 	depends = gtksourceview3
 	depends = libarchive
-	depends = libgranite.so
+	depends = granite
 	source = akira-0.0.1a.tar.gz::https://github.com/akiraux/Akira/archive/v0.0.1a.tar.gz
 	sha256sums = 0d1c817862e324db3f425c30f565565df18ee352e9e02530962d79d4a2c9e7f0
 
