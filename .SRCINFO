@@ -1,0 +1,27 @@
+pkgbase = goverlay-bin
+	pkgdesc = A GUI to help manage Vulkan/OpenGL overlays
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/benjamimgois/goverlay
+	arch = x86_64
+	license = GPL3
+	depends = gtk2
+	optdepends = mangohud: Configure MangoHUD
+	optdepends = vkbasalt: Configure vkBasalt
+	optdepends = mesa-demos: OpenGL preview
+	optdepends = vulkan-tools: Vulkan preview
+	provides = goverlay
+	conflicts = goverlay
+	source = https://github.com/benjamimgois/goverlay/releases/download/0.3.7/goverlay_0_3_7.tar.xz
+	source = goverlay.1.gz
+	source = goverlay.desktop
+	source = goverlay.metainfo.xml
+	source = goverlay.png
+	sha256sums = c52ddb0461750e28a8d4f25769e5681513a522e70d44b085bc0d58a721e0327d
+	sha256sums = c7903e55d62e74f2993faefc628c3f5cb923e83ed79baf4ea9804b33048397c2
+	sha256sums = 82baf73d583dd13f1073b2b8d6aa7edc0c558521a46d77bdf1a88cc401e7cc7f
+	sha256sums = 1e69df4f0f1cbc2c8e145fcf709117882d67c1df9e9a39bc9fdd12f68b27be34
+	sha256sums = 743e063ecc298b63ee7b0e25ac3f07fc4ecd713be7c8a3cb437aa9c07949cbdf
+
+pkgname = goverlay-bin
+
