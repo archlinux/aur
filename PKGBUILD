@@ -1,13 +1,13 @@
 # Maintainer: RhiobeT (Pierre Jeanjean) <rhiobet@gmail.com>
 pkgname=amaranth-font
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A friendly upright italic design with a slight contrast and distinctive curves"
 arch=('any')
 url="https://fonts.google.com/specimen/Amaranth"
 license=('GPL-2')
 makedepends=('unzip')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-util')
 source=("Amaranth.zip::https://fonts.google.com/download?family=Amaranth")
 md5sums=('0db6381ed4729b4207d098fbc01d88f7')
 
