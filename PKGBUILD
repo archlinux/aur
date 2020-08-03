@@ -5,7 +5,7 @@
 # Contributor: tobias <tobias@archlinux.org>
 
 pkgname=libxfce4util-git
-pkgver=4.14pre2.r1.gc198d55
+pkgver=libxfce4util.r4.15.2.1.ge475294
 pkgrel=1
 pkgdesc="Basic utility non-GUI functions for Xfce"
 arch=(i686 x86_64)
