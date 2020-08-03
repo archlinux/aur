@@ -1,6 +1,6 @@
 pkgbase = powershell-preview-bin
 	pkgdesc = A cross-platform automation and configuration tool/framework (binary preview package)
-	pkgver = 7.1.0-preview.3
+	pkgver = 7.1.0-preview.5
 	pkgrel = 1
 	url = https://github.com/Powershell/Powershell
 	install = powershell-preview.install
@@ -15,8 +15,8 @@ pkgbase = powershell-preview-bin
 	provides = powershell
 	options = staticlibs
 	options = !strip
-	source = https://github.com/PowerShell/PowerShell/releases/download/v7.1.0-preview.3/powershell-preview_7.1.0-preview.3-1.ubuntu.18.04_amd64.deb
-	sha256sums = 0D0EEB19D6B98E1DD1B8D76E95973497E088B68D35F4739794B606B306F9067C
+	source = https://github.com/PowerShell/PowerShell/releases/download/v7.1.0-preview.5/powershell-preview_7.1.0-preview.5-1.ubuntu.18.04_amd64.deb
+	sha256sums = 36222D076B91699B559D57A9D6954AC7E7992571AD5612D1A4CC5F46C330BC52
 
 pkgname = powershell-preview-bin
 
