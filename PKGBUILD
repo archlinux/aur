@@ -1,49 +1,27 @@
-# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
+# Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=drive
 pkgver=0.3.9.1
-pkgrel=2
-pkgdesc="Pull or push Google Drive files"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
-url="http://github.com/odeke-em/drive"
-license=('Apache')
-depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
-makedepends=('go' 'git')
-conflicts=('drive-git')
-options=('!strip' '!emptydirs')
-source=("https://github.com/odeke-em/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('562958e336d2f52a34443fc8fbf59d9d2a2467b2bf4592a1d78dc009ade661a7')
+pkgrel=1
+pkgdesc='CLI Google Drive client'
+arch=(x86_64)
+url=http://github.com/odeke-em/$pkgname
+license=(Apache)
+depends=(glibc)
+makedepends=(go git)
+source=($pkgname-$pkgver.tar.gz::https://github.com/odeke-em/$pkgname/archive/v$pkgver.tar.gz)
+sha512sums=('5d8f6aaf08ad600915bac4c30626998069d1c6fa676948eb1e03235562dfdf447c0f9f05dbf2c5ffbf6e3e05003b3cee180b9fd28ceb7e83746a52d6640dcfa1')
 
-prepare() {
- mkdir -p "$srcdir/go"
- export GOPATH="$srcdir/go"
- go get github.com/odeke-em/drive/cmd/drive
- go get github.com/odeke-em/drive/config
- go get github.com/odeke-em/command
- go get github.com/odeke-em/drive/src
- go get github.com/odeke-em/ripper/src
- go get github.com/odeke-em/xon/pkger/src
- export GOPATH="$srcdir/$pkgname-$pkgver"
- go get github.com/odeke-em/drive/drive-gen
- cd $srcdir/$pkgname-$pkgver/bin/
- ./drive-gen
- go get github.com/odeke-em/rsc/qr
- go get github.com/martini-contrib/binding
- cd $srcdir/$pkgname-$pkgver/drive-server
- go build -o drive-server
+build() {
+  cd $pkgname-$pkgver
+  export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
+  GOPATH="$srcdir"/$pkgname-$pkgver go get -v -x \
+    -ldflags "-extldflags \"${LDFLAGS}\"" \
+    github.com/odeke-em/$pkgname/cmd/$pkgname
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver/bin/
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -p -m755 $srcdir/$pkgname-$pkgver/drive-server/drive-server "$pkgdir/usr/bin"
-  cd "$srcdir/$pkgname-$pkgver"
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  install -m 0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/
-  mkdir -p "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes"
-  cp $srcdir/$pkgname-$pkgver/icons/*.png $pkgdir/usr/share/icons/hicolor/128x128/mimetypes
-  mkdir -p "$pkgdir/usr/share/icons/hicolor/scalable/mimetypes"
-  cp $srcdir/$pkgname-$pkgver/icons/*.svg $pkgdir/usr/share/icons/hicolor/scalable/mimetypes
-  rm -r  "$srcdir/go"
+  cd $pkgname-$pkgver
+  install -D bin/$pkgname -t "$pkgdir"/usr/bin
+  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
 }
-# vim:set ts=2 sw=2 et:
