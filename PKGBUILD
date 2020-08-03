@@ -10,6 +10,7 @@ license=("EULA")
 groups=("base-devel")
 source=("https://download.brother.com/welcome/dlf102578/dcpl5500dncupswrapper-3.5.1-1.i386.deb")
 sha512sums=("e8d36c4c83dd221f978a4a3de4fb317c9c831be2d573ac90750896f559a32a35a1c7c1501775c358cc7b455250fdfea4881c97e3f7c60ad61818869c1da0a0af")
+depends=("brother-dcp-l5500dn-lpr-bin" "cups")
 
 package() {
 	tar -xf data.tar.gz -C "${pkgdir}"
