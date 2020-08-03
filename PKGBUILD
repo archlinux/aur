@@ -1,40 +1,43 @@
 # Maintainer: David P. <megver83@parabola.nu>
 
 pkgname=linphone-desktop
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc='A free VoIP and video softphone based on the SIP protocol'
 arch=(x86_64 i686)
 url='http://linphone.org'
 license=(GPL)
-depends=(qt5-quickcontrols2 qt5-graphicaleffects qt5-svg qt5-tools mediastreamer belcard liblinphone)
+depends=(qt5-quickcontrols qt5-quickcontrols2 qt5-graphicaleffects qt5-svg qt5-tools liblinphone)
 makedepends=(cmake python-pystache doxygen nasm yasm python-six)
 source=("https://gitlab.linphone.org/BC/public/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         0001-do-not-build-linphone-sdk.patch
         0002-Fix-building-out-of-git.patch
+        0003-remove-bc_compute_full_version-usage.patch
 )
-sha512sums=('4014960bb69cc1e6a9c2132d590600f2ebd5a820209bbbd76266f2ada7c2474c058c0a1c943fea1ffca20c64a6653ad8b8844326bdca35fa07999f05c68d1f8e'
-            '7f1c080d99d24765582d68782c9c20cca6c311990f17a5109a710174405790ff69b1320dc983d1ea605afd064f14f857bf03d1acbd9847b1cea3c99b475eee5d'
-            'ea4c21c162f672f897c5a62ec8b51dd88fcc226e68b23148b4d3ed1bcdd69171a5995f3be1022f56cd48d6fdfca6455cda46e11306db60df3e63087b3f96e9e8')
+sha512sums=('736b3448f309e8286acfdf724b765fcc77cb9d092ba892fd38f88f7af431c50f784c399bf5688cfe6caf45d2e6cc6e7d0c5e01b991be07b237f2f6bda35f338c'
+            '7c1d1782d02da7b24ac1b39548a0b995d9abcfd883e3dfc0611f6431542ad7e873d785cf1e15033562818f0ce9ec1021d47d6b8ac5dc64530902b997f051c886'
+            '8f90eed36db84369b8b44e7004d67f7634c3ef9549304491b56a1c0b18d676ab46afa0322353d6919f7317b4f0f387972be25dcfd09621d54fe63d74e8a1f52f'
+            'c09bce9a5fb51519bde651a6f25187274b2cb561b8590b9cd849f88d0cd35c4a8d4698578fe75d453c8c82135b8f5cf8e0a58093706dcfcb7382d07928c8dba9')
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	patch -Np1 -i ../0001-do-not-build-linphone-sdk.patch
-	patch -Np1 -i ../0002-Fix-building-out-of-git.patch
+  cd "$pkgname-$pkgver"
+  patch -Np1 -i ../0001-do-not-build-linphone-sdk.patch
+  patch -Np1 -i ../0002-Fix-building-out-of-git.patch
+  patch -Np1 -i ../0003-remove-bc_compute_full_version-usage.patch
 }
 
 build() {   
-	mkdir -p build
-	cd build
+  mkdir -p build
+  cd build
 
-	cmake -DCMAKE_BUILD_TYPE=Release "../$pkgname-$pkgver"
-    make
+  cmake "../$pkgname-$pkgver"
+  make
 
-    sed '/linphone-sdk/d' -i linphone-app/cmake_builder/linphone_package/cmake_install.cmake
-    sed "s|$srcdir/build/OUTPUT|$pkgdir/usr|" -i cmake_install.cmake
+  sed '/linphone-sdk/d' -i linphone-app/cmake_builder/linphone_package/cmake_install.cmake
+  sed "s|$srcdir/build/OUTPUT|$pkgdir/usr|" -i cmake_install.cmake
 }
 
 package() {
-	make -C build install
-	rm "$pkgdir/usr/bin/qt.conf"
+  make -C build install
+  rm "$pkgdir/usr/bin/qt.conf"
 }

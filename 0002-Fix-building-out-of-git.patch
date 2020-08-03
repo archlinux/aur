@@ -1,7 +1,7 @@
-From 98551f5eea1167e0bc42217d0e1cf0dd49f07153 Mon Sep 17 00:00:00 2001
+From 9eebcb33ed8e56f6ec237b83d426c7d8c2b69e7b Mon Sep 17 00:00:00 2001
 From: David P <megver83@parabola.nu>
 Date: Wed, 22 Jul 2020 17:55:02 -0400
-Subject: [PATCH 2/2] Fix building out-of-git
+Subject: [PATCH 2/3] Fix building out-of-git
 
 Based in https://build.opensuse.org/package/view_file/openSUSE:Factory/linphoneqt/linphoneqt-fix-no-git.patch
 
@@ -40,5 +40,5 @@ index 093539e0..a4e7e25a 100644
  #cmakedefine APPLICATION_ID "${APPLICATION_ID}"
  #cmakedefine APPLICATION_NAME "${APPLICATION_NAME}"
 -- 
-2.27.0
+2.28.0
 
