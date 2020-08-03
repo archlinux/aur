@@ -5,7 +5,7 @@
 pkgname=loic
 pkgver=2.0.0.4
 _pkgver=2.0.0.4-1
-pkgrel=6
+pkgrel=7
 pkgdesc="An open source network stress tool for Windows. Based on Praetox's project at https://sourceforge.net/projects/loic/ and written in C#."
 arch=('any')
 url="https://github.com/NewEraCracker/LOIC"
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-	install -dm755 ${pkgdir}/opt/${pkgname}
+	install -dm755 -o$USER ${pkgdir}/opt/${pkgname}
         install -Dm755 loic.desktop ${pkgdir}/usr/share/applications/loic.desktop
         install -Dm755 loic ${pkgdir}/usr/bin/loic
         install -Dm755 $srcdir/LOIC-$_pkgver/src/bin/Debug/* ${pkgdir}/opt/${pkgname}/

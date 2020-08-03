@@ -1,7 +1,7 @@
 pkgbase = loic
 	pkgdesc = An open source network stress tool for Windows. Based on Praetox's project at https://sourceforge.net/projects/loic/ and written in C#.
 	pkgver = 2.0.0.4
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/NewEraCracker/LOIC
 	arch = any
 	license = GPL
