@@ -1,6 +1,6 @@
 pkgbase = vc4clstdlib-git
 	pkgdesc = VC4CL implementation of the OpenCL standard-library and is required to build the VC4C compiler
-	pkgver = r65.8a12d22
+	pkgver = r66.0ad47e3
 	pkgrel = 1
 	url = https://github.com/doe300/VC4CLStdLib
 	arch = any

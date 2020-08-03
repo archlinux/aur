@@ -1,8 +1,8 @@
 # Maintainer: satcom886 <rostik.medved@gmail.com>
 
 pkgname=vc4clstdlib-git
-pkgver=r65.8a12d22
-pkgrel=1
+pkgver=r66.0ad47e3
+pkgrel=2
 pkgdesc="VC4CL implementation of the OpenCL standard-library and is required to build the VC4C compiler"
 arch=('any')
 url="https://github.com/doe300/VC4CLStdLib"
@@ -21,13 +21,13 @@ pkgver() {
 }
 
 build() {
-	mkdir -p $srcdir/VC4CLStdLib/build
-	cd $srcdir/VC4CLStdLib/build
+	mkdir -p "$srcdir/VC4CLStdLib/build"
+	cd "$srcdir/VC4CLStdLib/build"
 	cmake "$srcdir/VC4CLStdLib"
 	make
 }
 
 package() {
-	cd $srcdir/VC4CLStdLib/build
-	make DESTDIR="$pkgdir"/ install
+	cd "$srcdir/VC4CLStdLib/build"
+	make DESTDIR="$pkgdir/" install
 }

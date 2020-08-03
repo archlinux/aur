@@ -1,2 +1,6 @@
 pkg
 src
+
+*.pkg.*
+
+VC4CLStdLib
