@@ -1,0 +1,9 @@
+/*
+/*/
+!/.gitignore
+
+!/.SRCINFO
+
+!/config.example.h
+!/PKGBUILD
+!/README.terminfo.rst

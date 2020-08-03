@@ -1,0 +1,22 @@
+pkgbase = st-dustvoice-git
+	pkgdesc = DustVoice's custom, heavily patched st (suckless.org) version
+	pkgver = 0.8.4.2.r0.gdd8edca
+	pkgrel = 1
+	url = https://git.dustvoice.de/DustVoice/st.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxext
+	makedepends = git
+	depends = ttf-hack
+	depends = libxft
+	provides = st
+	conflicts = st
+	source = git+https://git.dustvoice.de/DustVoice/st.git
+	source = README.terminfo.rst
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = st-dustvoice-git
+
