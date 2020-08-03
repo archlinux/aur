@@ -1,7 +1,7 @@
 # Maintainer: Jikstra <jikstra@disroot.org>
 # Maintainer: tercean <cg@zknt.org>
 pkgname=deltachat-desktop
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
@@ -16,7 +16,7 @@ source=(
     "deltachat-desktop.sh"
 )
 
-sha256sums=('b9113974f839206e6b1896aec1d63c3d7e8ef791c4620fa5b0cc0eeb7214dcf3'
+sha256sums=('074d31f7691b58e74ee0421172c5a44bce65eafdc7c9cd62e8d4914d46f173bb'
             '39bae164c234b3c89e7ae2bde89753c90065df7f37fece084f7f5acccbb9f1f1'
             '5e20ea657599390e317523ae17b17aba0d26c59474a7f80282af5f2668002f59')
 
