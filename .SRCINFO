@@ -1,0 +1,21 @@
+pkgbase = qualcoder
+	pkgdesc = Convert various source codes into pdf file with custom features
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://github.com/ccbogel/QualCoder
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-pyqt5
+	depends = python-lxml
+	depends = python-pillow
+	depends = python-pdfminer.six
+	depends = python-ply
+	depends = python-chardet
+	depends = python-openpyxl
+	depends = python-ebooklib
+	source = qualcoder-1.9.deb::https://github.com/ccbogel/QualCoder/releases/download/1.9/qualcoder-1.9.deb
+	sha256sums = f6b0538e0793ce2bf0c61fed516ad3851b2287c5cba8c2dc7c7cb4dc945e43fc
+
+pkgname = qualcoder
+
