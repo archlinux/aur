@@ -1,3 +1,4 @@
+# Maintainer: Matthew Tran <0e4ef622@gmail.com>
 # Contributor: Marcel O'Neil <marcel at marceloneil dot com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: RunningDroid <runningdroid AT zoho.com>
@@ -7,7 +8,8 @@
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=4.1.0
-pkgrel=2
+secp256k1ver=0.20.9
+pkgrel=3
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -52,13 +54,18 @@ optdepends=(
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}::git+https://github.com/Electron-Cash/Electron-Cash.git#tag=${pkgver}")
-sha256sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz"
+        "secp256k1-${secp256k1ver}.tar.gz::https://github.com/Bitcoin-ABC/secp256k1/archive/v${secp256k1ver}.tar.gz")
+sha256sums=('c5eeb22219303939b2c227944b4dd12895c49853405adef7dbd92ba4b4485dd2'
+            '68e84775e57da77e19ccb6b0dde6ca0882377bdd48ecc6da0047a70201ec64c8')
+
+prepare() {
+  rmdir "Electron-Cash-${pkgver}/contrib/secp256k1"
+  ln -s "${PWD}/secp256k1-${secp256k1ver}" "Electron-Cash-${pkgver}/contrib/secp256k1"
+}
 
 build() {
-  cd "${pkgname}"
-
-  git submodule update --init
+  cd "Electron-Cash-${pkgver}"
 
   # python2-pyqt5 and qt5-base are needed for _only_ the icons...
 
@@ -75,14 +82,14 @@ build() {
 }
 
 check() {
-  cd "${pkgname}"
+  cd "Electron-Cash-${pkgver}"
 
   # there's a broken test in 4.1.0
   # tox -e py38
 }
 
 package() {
-  cd "${pkgname}"
+  cd "Electron-Cash-${pkgver}"
 
   python setup.py install --root="${pkgdir}" --optimize=1
 }
