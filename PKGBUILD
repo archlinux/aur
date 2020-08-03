@@ -5,7 +5,7 @@ pkgname=('clickhouse-server-bin' 'clickhouse-common-static-bin' 'clickhouse-clie
 # 'testing' - most recent version
 # 'prestable' and 'lts' are available
 _channel='stable'
-pkgver=20.5.3.27
+pkgver=20.5.4.40
 pkgrel=1
 provides=('clickhouse')
 pkgdesc="ClickHouse is a fast open-source OLAP database management system"
@@ -19,9 +19,9 @@ source=(
 	"clickhouse.sysusers"
 	"clickhouse-server.service"
 )
-sha512sums=('d034ea11769495850ef6631e333786cc93a423f4c0d5e6070049782ff6482e59ac833059d6143adc6cd84ab9a088b5179002703ebc5500ed8b600a41a284dbd5'
-            'cc4509062030655486d3744b127c6736b92b7bb41ab5699b7af6d828b0438026c186b0c053d0cc29801bfb9792201f7efd1819905aceaaae227e235756c51d13'
-            'c2fe524681d2047a604e7cbd47037d8964ac0c7214f325b67f0c166fea08f9dc2cc65595083585475979d1a3737d2d30a1145919c6993251a6fd0b7832ae01c8'
+sha512sums=('5e5005681bb11ea716801ad261d6565beb61578a200e8389a20196e7da87d24b50268cd8245b647de7890e2749fa32bab63d213d63a5382b3730b0af37cee526'
+            'fc1be7a92e0de5d214c14f6da0cf5b25bafe0f7e4ac9df0717fa4ea76f79fb8bf2b626de17b8cf58ca1622e032c39717255e04ba3e9d4f7f74468dceb9e79afe'
+            'cea7810a68c2d5379f21885b28a2e3a27e017f83c366d9c0e5bdb744c04e809c6527734f615c9a8fea2e822f3be9166536a9b4cfad0c8ccb8df29df37f16af91'
             '70af4456ded1a1bb5cf29d2d3b29086aedc7875ef673e8817f389243f0c79eb491c9ce715b94542cbe16eb7489d97411ff0ab4a1a7f6c9b9120c659b87ea25b7'
             'f70fb1fc8d26e1d6c8b4f5c808b373d464cd20ace363cfd735703d1af0f6ec6196a0c7c905d804fad789eb51acab4896397e70b64a0b61cdcd7457a6694fc4b3')
 
