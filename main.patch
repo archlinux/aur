@@ -1,6 +1,6 @@
---- main.go	2020-07-21 07:48:27.210949241 -0400
-+++ main.go.1	2020-07-24 20:45:52.401869754 -0400
-@@ -62,10 +62,6 @@
+--- main.go	2020-08-03 09:32:34.857998898 -0400
++++ main.go.1	2020-08-03 09:34:04.110953809 -0400
+@@ -63,10 +63,6 @@
  	ui.config = readConfig()
  	ui.librnnoise = rnnoisefile
  
@@ -8,6 +8,6 @@
 -		go updateCheck(&ui)
 -	}
 -
- 	paClient, err := pulseaudio.NewClient()
- 	defer paClient.Close()
+ 	go paConnectionWatchdog(&ui)
  
+ 	wnd := nucular.NewMasterWindowSize(0, "NoiseTorch", image.Point{550, 300}, func(w *nucular.Window) {

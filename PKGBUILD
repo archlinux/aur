@@ -1,7 +1,7 @@
 # Maintainer alx365
 # Maintainer:  Travis Collins <erbrecht at pobox dot com>
 pkgname='noisetorch-git'
-pkgver=0.5.3.beta.r2.gc07c021
+pkgver=0.6.1.beta.r0.g371b3e3
 pkgrel=1
 pkgdesc='Real-time microphone noise suppression on Linux.'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=('git+https://github.com/lawl/NoiseTorch.git'
 sha256sums=('SKIP'
             'SKIP'
             'eb72a0bb2a89deac6cb4ddb35ed9385e744e7d47a90f8ffe904673d91c6611cd'
-            '1154f0c21715d6fd8e29570ada853622b8923750aaa066833b76c571774dd8d2')
+            '50f2bef107ee2f4836c9628d23324e5519c48343cc59b576ac550a8d7e71a001')
 
 pkgver() {
 	cd NoiseTorch
@@ -32,6 +32,8 @@ prepare() {
 	git config submodule.librnnoise_ladspa.url $srcdir/noise-suppression-for-voice
 	git submodule update
 	patch -u main.go ../main.patch
+	export GOPATH="$srcdir/go"
+	go clean -modcache
 }
 
 build() {
@@ -47,6 +49,7 @@ build() {
 	echo "go ldflags  $CGO_LDFLAGS"
 	echo "go flags    $GOFLAGS"
 	make
+	go clean -modcache
 }
 
 package() {
