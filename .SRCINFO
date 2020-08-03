@@ -10,13 +10,11 @@ pkgbase = neovim-coc-git
 	depends = nodejs
 	optdepends = npm: for installing coc extensions
 	optdepends = yarn: for installing coc extensions
-	optdepends = neovim-coc-extras-meta-git: some basic extensions
+	optdepends = neovim-coc-extras-meta: some basic extensions
 	provides = neovim-coc
 	conflicts = neovim-coc
 	source = git+https://github.com/neoclide/coc.nvim.git#branch=release
-	source = coc-neovim-doc.hook
 	sha256sums = SKIP
-	sha256sums = 2e4d498a34a920452764dffb728cd65526bff7bfbda8599f4de5b5ff427d8d5b
 
 pkgname = neovim-coc-git
 
