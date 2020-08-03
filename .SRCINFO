@@ -1,0 +1,13 @@
+pkgbase = gohu-ttf-git
+	pkgdesc = gohufont run through fonttosfnt for an open type bitmap font
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/mxmilkiib/gohu-ttf
+	arch = any
+	license = unknown
+	depends = git
+	source = git+https://github.com/mxmilkiib/gohu-ttf
+	md5sums = SKIP
+
+pkgname = gohu-ttf-git
+
