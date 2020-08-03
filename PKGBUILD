@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/application"
-    npm --cache "$srcdir/npm-cache" i electron jquery electron-packager
+    npm --cache "$srcdir/npm-cache" i electron@9.1.1 jquery electron-packager
     ./node_modules/.bin/electron-packager .
     for dir in $_pkgname-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
     rm -rf "$srcdir/$pkgname/$_pkgname/resources/app/node_modules"
