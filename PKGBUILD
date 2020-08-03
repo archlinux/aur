@@ -1,7 +1,7 @@
 # Maintainer: Mike Cuche <cuche@gmx.com>
 
 pkgname=dosbox-x
-pkgver=0.83.3
+pkgver=0.83.4
 pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches with more features"
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ conflicts=(dosbox-x-git)
 source=(https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v${pkgver}.tar.gz
 		dosbox-x.png
 		dosbox-x.desktop)
-sha256sums=('48f005949ada1ace8ad8c00bb27fad17d566e5bcdbec8be6078e44f8ad04759a'
+sha256sums=('0fcd9bf17c0bdb2fc5264b1e92a6731758988179e38c727f0fc64002efe19165'
 			'caa164f3d17d414733882d29098cb9cd63faddbdd5580a0c30f1173a63c42475'
 			'32f290580ec02dedd09908d8a4de10f57b94998f2c1eb597b649208cd87b2d33')
 
