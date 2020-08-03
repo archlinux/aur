@@ -1,8 +1,8 @@
 # Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 
 pkgname=xiaomitool-v2
-pkgver=9.11.10
-pkgrel=2
+pkgver=20.7.28
+pkgrel=1
 pkgdesc='Modding of Xiaomi devices made easy for everyone'
 arch=(any)
 license=(custom)
@@ -14,17 +14,16 @@ source=(
   'xiaomitool.desktop'
   'xiaomitool.menu'
   'xiaomitool.xml')
-sha256sums=(
-  'ca3a7b1344733ba9b91e8c4a73bfb3dbf761d3fb721019c5683e25906551cf23'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP')
+sha256sums=('be7b235376c06d158c2485eebc22ba299ee784639bee52dc50e210cda206afc6'
+            '9aea6eb0b9ccfdea598f8183e3a92b782b70799dd4efcc3582ff00ed134c26cc'
+            '83d5fa6fbef5f42478c8c367aa5980fa9c1c2237ee43ca1d5df07f503d2a8788'
+            '401d48622398b3e7af242a08d2bdb59be990720a6d2128c32ee7f2a95c6fb893'
+            'b3661fde76d504c645928f4df7956b88985325b812434f43bcdde09667aa6439'
+            '834a2bc636ee3d38ff8de367efec9bbb9435af463d1c2f6a84981a7f640ffa16')
 
 package() {
   cd $srcdir
-  sh "XMT2_Linux_$pkgver.run" --noexec
+  sh "XMT2_Linux_$pkgver.run" --noexec --keep
 
   mkdir "$pkgdir/opt"
   mv XiaoMiTool-V2 "$pkgdir/opt"
