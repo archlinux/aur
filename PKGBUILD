@@ -3,7 +3,7 @@
 
 pkgname=linx-server-bin
 _name=linx-server
-pkgver=2.3.5
+pkgver=2.3.6
 pkgrel=1
 pkgdesc='Self-hosted file/code/media sharing website '
 arch=('i686' 'x86_64' 'arm')
@@ -18,9 +18,9 @@ conflicts=('linx-server')
 source=('linx-server.service' 'config.ini')
 sha256sums=('96dda375b90c57e137b95442b8d4a24a5b763915eb1b8359e893f53af5db9630'
             'e7bbd0e1c16447665b5ef8bfa0855760e758921d936e1981e15537dc9e8f3035')
-sha256sums_i686=('7bc40ba8e781aee2ad0bd103bcc7e4e8ae828294d6abdc58ec9be9a49262a3b8')
-sha256sums_x86_64=('a407aada035b84e6c65b9b5b9384589116d5c78d1fc6d61dfabf5492f96c23fd')
-sha256sums_arm=('7aa6044252362986370300b76880d5f7ff4852373aebc8625532784de57f636d')
+sha256sums_i686=('89745935e33a081c02b01834138d4bbe673962ef1546551136b6d3125ab54dbc')
+sha256sums_x86_64=('ac2e055bd5c0a16966f9e718e25d09db8d48f5cdc9324eef706b6cfc9e44355a')
+sha256sums_arm=('3fa64df06c3302f124fbc183bdf8798ee987d93d0d442e89173bd73b69d874cd')
 
 source_i686=("${_name}-${pkgver}::https://github.com/andreimarcu/linx-server/releases/download/v$pkgver/linx-server-v${pkgver}_linux-386")
 source_x86_64=("${_name}-${pkgver}::https://github.com/andreimarcu/linx-server/releases/download/v$pkgver/linx-server-v${pkgver}_linux-amd64")
