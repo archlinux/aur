@@ -2,8 +2,8 @@
 
 _name=gaphor
 pkgname=python-${_name}
-pkgver=1.2.0
-pkgrel=5
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
@@ -12,6 +12,7 @@ depends=(
 	'python-gaphas'
 	'python-typing_extensions'
 	'python-generic'
+	'python-tinycss2'
 )
 makedepends=(
 	'python-pip'
@@ -22,7 +23,7 @@ source=(
 	"https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_wheelname}"
 	"https://raw.githubusercontent.com/gaphor/${_name}/master/logos/org.gaphor.Gaphor.svg"
 )
-sha256sums=('9917a41ff4b0aa70fd2f742906d08cd6684b48d6827eca41faede23757ae6339'
+sha256sums=('9d0ccae7aecb41decec98ce2d14e5216c0ebbd8e82dc2c89b16e184ae94959eb'
             'ef938e113167fc25a0647c9559d5042c38d23e0667d1683c0d74a7a5d0290791')
 
 prepare() {
