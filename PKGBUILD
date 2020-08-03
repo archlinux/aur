@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=2
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -26,10 +26,11 @@ optdepends=(
     'wmctrl: for optional minimize/maximize of all open windows on game start/stop'
     'net-tools: for optional network monitoring'
     'boxtron: for optional Boxtron support'
+    'scummvm: for optional ScummVM support via Roberta'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bdb5b13bae5927d4f4ee0bf47afa1dee35260accba81f57d8db40a90cad2f355')
+sha256sums=('e372829cc2e80d8a03f3f394d16ab8d8363e76082f78085def6178f6ef7aa3c4')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
