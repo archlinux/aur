@@ -1,6 +1,6 @@
 # Maintainer: Matthew Murray <matt@mattmurr.xyz>
 pkgname=python-validity
-pkgver=0.7
+pkgver=0.9
 pkgrel=1
 pkgdesc="Validity fingerprint sensor driver"
 arch=(any)
@@ -12,7 +12,7 @@ conflicts=($pkgname)
 provides=($pkgname)
 url="https://github.com/uunicorn/${pkgname}"
 source=("${url}/archive/${pkgver}.tar.gz")
-md5sums=('9a327e7ff6cd55720d2cf62fa6d86b6b')
+md5sums=('70cece29a576693153f3c34ca4c087cf')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -25,6 +25,9 @@ package() {
 
   install -D -m 644 debian/python3-validity.service \
     $pkgdir/usr/lib/systemd/system/python3-validity.service
+
+  install -D -m 644 debian/python3-validity-suspend-restart.service \
+    $pkgdir/usr/lib/systemd/system/python3-validity-suspend-restart.service
 
   install -D -m 644 debian/python3-validity.udev \
     $pkgdir/usr/lib/udev/rules.d/60-python-validity.rules
