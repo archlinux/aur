@@ -2,14 +2,13 @@ Description: Disables loading the previous way media was sent, so it always sele
 photo or album by default.
 
 diff --git a/Telegram/SourceFiles/boxes/send_files_box.cpp b/Telegram/SourceFiles/boxes/send_files_box.cpp
-index cb9075432..41384abd0 100644
 --- a/Telegram/SourceFiles/boxes/send_files_box.cpp
 +++ b/Telegram/SourceFiles/boxes/send_files_box.cpp
-@@ -1911,15 +1911,7 @@ void SendFilesBox::initSendWay() {
+@@ -1947,14 +1947,6 @@
  				? SendFilesWay::Album
  				: SendFilesWay::Photos;
  		}
--		const auto way = _controller->session().settings().sendFilesWay();
+-		const auto way = Core::App().settings().sendFilesWay();
 -		if (way == SendFilesWay::Files) {
 -			return way;
 -		} else if (way == SendFilesWay::Album) {
@@ -17,8 +16,7 @@ index cb9075432..41384abd0 100644
 -				? SendFilesWay::Album
 -				: SendFilesWay::Photos;
 -		}
--		return (_list.albumIsPossible && !_albumPhotosCount)
-+		return _list.albumIsPossible
+ 		return (_list.albumIsPossible && !_albumPhotosCount)
  			? SendFilesWay::Album
  			: SendFilesWay::Photos;
  	}();
