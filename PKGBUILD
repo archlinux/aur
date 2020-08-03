@@ -1,15 +1,15 @@
 # Maintainer: Sven Hesse <drmccoy@drmccoy.de>
 
 pkgname=xoreos
-pkgver=0.0.5.r0.g00042460
-pkgrel=2
+pkgver=0.0.6.r0.g4f612dbdc
+pkgrel=1
 pkgdesc="A reimplementation of BioWare's Aurora engine"
 arch=('i686' 'x86_64')
 url="https://xoreos.org/"
 license=('GPL3')
-depends=('zlib' 'xz' 'libxml2' 'boost' 'boost-libs' 'sdl2' 'freetype2' 'openal' 'libmad' 'libogg' 'libvorbis' 'faad2' 'xvidcore')
+depends=('zlib' 'xz' 'libxml2' 'boost' 'boost-libs' 'sdl2' 'freetype2' 'openal' 'libmad' 'libogg' 'libvorbis' 'faad2' 'xvidcore' 'libvpx')
 makedepends=('git')
-source=('git://github.com/xoreos/xoreos.git#tag=v0.0.5')
+source=('git://github.com/xoreos/xoreos.git#tag=v0.0.6')
 md5sums=('SKIP')
 
 pkgver() {
