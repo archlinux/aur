@@ -1,6 +1,6 @@
 pkgbase = python-dataproperty
 	pkgdesc = Extract properties from data
-	pkgver = 0.49.1
+	pkgver = 0.50.0
 	pkgrel = 1
 	url = https://github.com/thombashi/DataProperty
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-dataproperty
 	depends = python-mbstrdecoder
 	depends = python-typepy
 	provides = dataproperty
-	source = https://files.pythonhosted.org/packages/source/D/DataProperty/DataProperty-0.49.1.tar.gz
-	sha256sums = 70ea253f74a51e39491770ac69428488bed75d62135accb234d89358d220b6ec
+	source = https://files.pythonhosted.org/packages/source/D/DataProperty/DataProperty-0.50.0.tar.gz
+	sha256sums = 847f2d8927d8426a0eb20e48238e2db19133506bcd1e2608e21314004fa80d72
 
 pkgname = python-dataproperty
 
