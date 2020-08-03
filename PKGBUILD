@@ -11,10 +11,7 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 
-#https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/log/?h=linux-4.19.y
-
-#source=('git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux'
-source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
+source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=$gitver"
         # the main kernel config files
         'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -25,7 +22,6 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 	'5013_enable-cpu-optimizations-for-gcc10.patch'
 	# i2c write rework patch
 	'timerrework.patch'
-
 )
 sha256sums=('SKIP'
             #config.x86_64
@@ -48,8 +44,6 @@ pkgver() {
 
 prepare() {
   cd "${_srcname}"
-  #We want to base this on the release
-  git checkout tags/$gitver
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else

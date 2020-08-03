@@ -12,7 +12,7 @@ pkgbase = linux-amd-raven
 	makedepends = git
 	makedepends = libelf
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.4.55
 	source = config.x86_64
 	source = linux-amd-raven.preset
 	source = linux.install
