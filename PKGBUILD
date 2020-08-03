@@ -2,7 +2,7 @@
 # Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=vice-svn
-pkgver=r38233
+pkgver=r38282
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator (Commodore 64/C64). - Development version"
 arch=('i686' 'x86_64')
