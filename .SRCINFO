@@ -1,7 +1,7 @@
 pkgbase = windows2usb-git
 	pkgdesc = Windows 7/8/8.1/10 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS)
 	pkgver = 0.1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ValdikSS/windows2usb
 	arch = any
 	license = Apache
@@ -15,7 +15,7 @@ pkgbase = windows2usb-git
 	source = git+https://github.com/ValdikSS/windows2usb.git
 	source = https://github.com/pbatard/rufus/raw/master/res/uefi/uefi-ntfs.img
 	sha512sums = SKIP
-	sha512sums = 248cfd5217656f4dec505f38f412fb8a7ecd570d83edf66ac9fbdb8396add311a7d14c15bd628c35049d7001e77365dbea1661d480bce948787b212affa84bdd
+	sha512sums = 139be9b1db2fa227590a26b15a380e1fa5855436521db7365953d80d8ec3935fb427248c5de8ed5f90846f4b3946d7bdb6cdab326a2016d8d51721e612b70c9b
 
 pkgname = windows2usb-git
 

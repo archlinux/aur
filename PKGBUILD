@@ -2,7 +2,7 @@
 _pkgname=windows2usb
 pkgname=${_pkgname}-git
 pkgver=0.1.5
-pkgrel=3
+pkgrel=4
 
 pkgdesc="Windows 7/8/8.1/10 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS)"
 arch=("any")
@@ -17,7 +17,7 @@ source=(
 )
 sha512sums=(
     "SKIP"
-    "248cfd5217656f4dec505f38f412fb8a7ecd570d83edf66ac9fbdb8396add311a7d14c15bd628c35049d7001e77365dbea1661d480bce948787b212affa84bdd"
+    "139be9b1db2fa227590a26b15a380e1fa5855436521db7365953d80d8ec3935fb427248c5de8ed5f90846f4b3946d7bdb6cdab326a2016d8d51721e612b70c9b"
 )
 
 package() {
