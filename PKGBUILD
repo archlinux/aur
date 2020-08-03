@@ -2,14 +2,13 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
-pkgver=0.99.9
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
 license=('GPL3')
 depends=('bash')
-makedepends=('git')
 optdepends=(
     'strace: write a strace log of the launched game'
     'gamemode: for using GameMode per game'
@@ -27,21 +26,16 @@ optdepends=(
     'wmctrl: for optional minimize/maximize of all open windows on game start/stop'
     'net-tools: for optional network monitoring'
 )
-_commit='a90f65e06e2a2e121f11530f182f573611ea2433'
-source=("git+https://github.com/frostworx/steamtinkerlaunch.git#commit=$_commit")
-sha1sums=('SKIP')
 
-pkgver() {
-    cd "$srcdir/$pkgname"
-    printf $(grep 'PROGVERS=' stl | head -n1 | cut -d\" -f2 | sed 's/^v//')
-}
+source=("https://github.com/frostworx/$pkgname/archive/v${pkgver}.tar.gz")
+md5sums=('76ec63eba0fb33a2851d52de30f972a2')
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$pkgname-${pkgver}"
     install -Dm755 stl -t "$pkgdir/usr/bin"
 
     install -d "$pkgdir/usr/share/stl"
-    cp -r sbs tweaks "$pkgdir/usr/share/stl"
+    cp -r regs sbs tweaks "$pkgdir/usr/share/stl"
 
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
