@@ -6,7 +6,7 @@
 pkgname=plausible-git
 _pkgname=plausible
 pkgver=r456.b29afde
-pkgrel=2
+pkgrel=3
 license=('MIT')
 pkgdesc='Simple and privacy-friendly alternative to Google Analytics'
 makedepends=("nodejs" "yarn" "python" "npm" "nodejs-webpack" "wget" "ca-certificates" "gnupg" "elixir")
@@ -60,6 +60,6 @@ build() {
 package() {
 	cd "$_pkgname"/app
 	mkdir -p "$pkgdir"/opt/
-	install -Dm755 _build/prod/rel/plausible "$pkgdir"/opt/
+	cp -r _build/prod/rel/plausible "$pkgdir"/opt/
 	ln -s "$pkgdir"/opt/plausible/bin/plausible "$pkgdir"/usr/bin/plausible
 }
