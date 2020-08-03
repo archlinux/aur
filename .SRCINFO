@@ -6,6 +6,7 @@ pkgbase = gnome-shell-extension-pixel-saver-git
 	install = pixel-saver.install
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = gnome-shell
 	depends = xorg-xprop
 	source = git+https://github.com/deadalnix/pixel-saver

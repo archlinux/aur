@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/deadalnix/pixel-saver"
 license=('MIT')
 depends=('gnome-shell' 'xorg-xprop')
+makedepends=('git')
 install=$_pkgname.install
 source=(git+https://github.com/deadalnix/pixel-saver)
 sha256sums=('SKIP')
