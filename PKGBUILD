@@ -1,15 +1,15 @@
 # Maintainer: Sven Hesse <drmccoy@drmccoy.de>
 
 pkgname=phaethon
-pkgver=0.0.5.r0.g9d84683
-pkgrel=2
+pkgver=0.0.6.r0.g5020409
+pkgrel=1
 pkgdesc="A resource explorer for BioWare's Aurora engine games"
 arch=('i686' 'x86_64')
 url="https://xoreos.org/"
 license=('GPL3')
 depends=('zlib' 'xz' 'boost' 'boost-libs' 'openal' 'libmad' 'libogg' 'libvorbis' 'faad2' 'xvidcore' 'qt5-base')
 makedepends=('git')
-source=('git://github.com/xoreos/phaethon.git#tag=v0.0.5')
+source=('git://github.com/xoreos/phaethon.git#tag=v0.0.6')
 md5sums=('SKIP')
 
 pkgver() {
