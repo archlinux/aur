@@ -9,12 +9,8 @@ pkgdesc='Modern performant generic finder and dispatcher for Vim and NeoVim'
 arch=('any')
 url='https://github.com/liuchengxu/vim-clap'
 license=('MIT')
-source=("${_pkgname}::git+https://github.com/liuchengxu/vim-clap.git"
-        "${_pkgname}-vim-doc.hook"
-        "${_pkgname}-neovim-doc.hook")
-sha256sums=('SKIP'
-            '0fe8cf209778fb3345886a43393cfda53e5c5e4a09d8b09a049e892ba9c33acf'
-            '058b32ca0ec551c0742119b277a3e3f9bbac3031183fbf3d0a248fa2597adb97')
+source=("${_pkgname}::git+https://github.com/liuchengxu/vim-clap.git")
+sha256sums=('SKIP')
 makedepends=('git'
              'rustup'
              'make')
@@ -27,7 +23,6 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}"
     make
-    touch doc/tags
 }
 
 package_vim-clap-git() {
@@ -42,13 +37,13 @@ package_vim-clap-git() {
     _variant='vim'
 
     cd "${srcdir}/${_pkgname}"
+    vim -es --cmd ":helptags doc" --cmd ":q"
     find autoload doc ftplugin plugin pythonx/clap/fuzzymatch_rs.so pythonx/clap/*.py syntax -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
     install -Dm 755 "${srcdir}/${_pkgname}/target/release/maple" \
         "${pkgdir}/${_packdir}/bin/maple"
     install -Dm 644 "${srcdir}/${_pkgname}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 "${srcdir}/${_pkgname}-${_variant}-doc.hook" "${pkgdir}/usr/share/libalpm/hooks/${_pkgname}-${_variant}-doc.hook"
 }
 
 package_neovim-clap-git() {
@@ -63,11 +58,11 @@ package_neovim-clap-git() {
     _variant='neovim'
 
     cd "${srcdir}/${_pkgname}"
+    nvim -es --cmd ":helptags doc" --cmd ":q"
     find autoload doc ftplugin plugin pythonx/clap/fuzzymatch_rs.so pythonx/clap/*.py syntax -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
     install -Dm 755 "${srcdir}/${_pkgname}/target/release/maple" \
         "${pkgdir}/${_packdir}/bin/maple"
     install -Dm 644 "${srcdir}/${_pkgname}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 "${srcdir}/${_pkgname}-${_variant}-doc.hook" "${pkgdir}/usr/share/libalpm/hooks/${_pkgname}-${_variant}-doc.hook"
 }

@@ -9,11 +9,7 @@ pkgbase = clap-git
 	makedepends = rustup
 	makedepends = make
 	source = clap::git+https://github.com/liuchengxu/vim-clap.git
-	source = clap-vim-doc.hook
-	source = clap-neovim-doc.hook
 	sha256sums = SKIP
-	sha256sums = 0fe8cf209778fb3345886a43393cfda53e5c5e4a09d8b09a049e892ba9c33acf
-	sha256sums = 058b32ca0ec551c0742119b277a3e3f9bbac3031183fbf3d0a248fa2597adb97
 
 pkgname = vim-clap-git
 	depends = vim
