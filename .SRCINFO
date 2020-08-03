@@ -1,0 +1,15 @@
+pkgbase = python-ebooklib
+	pkgdesc = Python E-book library for handling books in EPUB2/EPUB3 format
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = https://ebooklib.readthedocs.io
+	arch = any
+	license = AGPL3
+	makedepends = python-setuptools
+	depends = python-lxml
+	depends = python-six
+	source = python-ebooklib-0.17.1.tar.gz::https://github.com/aerkalov/ebooklib/archive/v0.17.1.tar.gz
+	sha256sums = 9de472d1a1e434d781cd7001c8e6b36d0fffe765d23b494afe7d26d8c34fda57
+
+pkgname = python-ebooklib
+
