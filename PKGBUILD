@@ -2,8 +2,8 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.7.12
-pkgver=5.7.v.12
+gitver=v5.8
+pkgver=5.8.v.0
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -11,10 +11,7 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf')
 options=('!strip')
 
-#https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/log/?h=linux-4.19.y
-
-#source=('git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux'
-source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
+source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=$gitver"
         # the main kernel config files
         'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -26,13 +23,13 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'fd8956ac05aa5060b9646ecbfcc99844a72ed754063d12090ed5370d7cfff540'
+            '85b0078fda345f2607e7bcdc99eed2b824447d390e4b7aadf32d02756e6a79b2'
             #.preset file
             '41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #gentoopatch file
-            '1f56a2466bd9b4477925682d8f944fabb38727140e246733214fe50aa326fc47'
+            '5ab29eb64e57df83b395a29a6a4f89030d142feffbfbf73b3afc6d97a2a7fd12'
            )
 
 _kernelname=${pkgbase#linux}
@@ -46,8 +43,6 @@ prepare() {
   #Inject testingbranch tag
   sed -i 's/CONFIG\_LOCALVERSION\=\"\"/CONFIG_LOCALVERSION\=\"_TestingBranch\"/g' "${srcdir}/config.x86_64"
 
-  #We want to base this on the release
-  git checkout tags/$gitver
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
