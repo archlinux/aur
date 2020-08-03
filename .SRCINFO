@@ -1,7 +1,7 @@
 pkgbase = ttf-cheapskate
 	pkgdesc = TTF Fonts by Dustin Norlander
 	pkgver = 2.0
-	pkgrel = 18
+	pkgrel = 19
 	url = https://dustinn.1001fonts.com
 	arch = any
 	license = GPL

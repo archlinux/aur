@@ -3,7 +3,7 @@
 
 pkgname=ttf-cheapskate
 pkgver=2.0
-pkgrel=18
+pkgrel=19
 pkgdesc='TTF Fonts by Dustin Norlander'
 arch=('any')
 url='https://dustinn.1001fonts.com'
@@ -38,6 +38,6 @@ sha256sums=('312725ab193db7391e86369e921c1ce33bafa44438efa811bafb16c5467b4a6f'
             'df93aa00a5ad295c65ff1571cb16a280e92a774df79c518e9e0931ef4fb17718')
 
 package() {
-    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" *.ttf
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" *.ttf *.TTF
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" license.txt
 }
