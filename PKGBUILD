@@ -1,8 +1,9 @@
-# Maintainer: Martin <martin at pipegrep dot co dot uk> 
+# Maintainer:  Liam Timms <timms5000@gmail.com>
 # Contributor: Chris <christopher.r.mullins g-mail>
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
+# Contributor: martin <martin pipegrep.co.uk>
 pkgname=afni
-pkgver=19.0.26
+pkgver=20.2.08
 pkgrel=1
 pkgdesc="An open-source environment for processing and displaying functional MRI data"
 arch=("x86_64")
@@ -10,8 +11,8 @@ url="http://afni.nimh.nih.gov"
 license=(custom)
 depends=("tcsh" "python" "gcc-libs" "gsl" "libxpm" "glu" "openmotif" "libjpeg-turbo" "libxmu" "libxft")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/afni/afni/archive/AFNI_$pkgver.tar.gz" "Makefile.patch")
-md5sums=("ab2fa5c3562c0cfe5fd62753f6b1def7"
-         "2cc1916ecd1e775f52d189f1dd5b0ed9")
+md5sums=('1c85de3c881bd4f962c04c7575ab6da9'
+         '2cc1916ecd1e775f52d189f1dd5b0ed9')
 
 prepare() {
   cd "$srcdir"/afni-AFNI_$pkgver/src
@@ -19,7 +20,7 @@ prepare() {
   patch -Np0 -i "$srcdir"/Makefile.patch
 }
 
-build() {	
+build() {
   cd "$srcdir"/afni-AFNI_$pkgver/src
   CPPFLAGS=""
   make vastness
