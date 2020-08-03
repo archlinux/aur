@@ -8,7 +8,7 @@ pkgname=lxd
 _pkgname=lxd
 _lxd=github.com/lxc/lxd
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://linuxcontainers.org/lxd"
@@ -24,14 +24,17 @@ optdepends=(
     'qemu: VM support'
     'ovmf: VM support'
     'systemd-libs: unix device hotplug support'
+    'apparmor: apparmor support'
 )
 source=("https://github.com/lxc/lxd/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
+        "fix-apparmor.patch::https://github.com/lxc/lxd/commit/e88d0ea6392fb059a31faedc47c0d3fd77b5deaa.patch"
         "lxd.socket"
         "lxd.service"
         "lxd.sysusers")
 validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67')
 sha256sums=('30cc4ea02ae8883900c052df017a0821003ca9b502d86e3cafce9ef2af16643a'
             'SKIP'
+            '31cc4ec2376b60611e52eaf716f5348e712b83309ce42ea0fad8227b3e3001e4'
             '3a14638f8d0f9082c7214502421350e3b028db1e7f22e8c3fd35a2b1d9153ef4'
             '102d1d54186e0fc606a58f030231d76df6bd662b16dfd8f946e1f48e2b473b54'
             'd0184d9c4bb485e3aad0d4ac25ea7e85ac0f7ed6ddc96333e74fcd393a5b5ec4')
@@ -40,6 +43,8 @@ sha256sums=('30cc4ea02ae8883900c052df017a0821003ca9b502d86e3cafce9ef2af16643a'
 prepare() {
   mkdir -p "${srcdir}/go/src/github.com/lxc"
   ln -rTsf "${_pkgname}" "${srcdir}/go/src/${_lxd}"
+  cd "${pkgname}-${pkgver}"
+  patch -Np1 < "$srcdir/fix-apparmor.patch" 
 }
 
 build() {
