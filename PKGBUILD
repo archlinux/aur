@@ -1,28 +1,22 @@
-# Maintainer: Javier Tia <javier.tia@gmail.com>
-pkgname=office-code-pro
-_srcname=Office-Code-Pro
-pkgver=1.004
-pkgrel=2
-depends=(fontconfig xorg-font-utils)
-pkgdesc="Office Code Pro [D] are a customized version of Source Code Pro for text editors and coding environments"
-url="https://github.com/nathco/Office-Code-Pro"
-license=(custom)
-arch=(any)
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Javier Tia <javier.tia@gmail.com>
 
-source=("https://github.com/nathco/$_srcname/archive/$pkgver.tar.gz")
+_pkgname=Office-Code-Pro
+pkgname=${_pkgname,,}
+pkgver=1.004
+pkgrel=1
+pkgdesc='Customized version of Source Code Pro'
+arch=('any')
+url='https://github.com/nathco/Office-Code-Pro'
+license=('custom: SIL Open Font License 1.1')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('9bca923d17f6c47a586d8e4567d46ccfa58fb8b8e2247b5ee2a19da1597c58f6')
 
-install=$pkgname.install
-
 package() {
-  install -Dm644 $srcdir/$_srcname-$pkgver/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  install -d "$pkgdir/usr/share/fonts/OTF/"
-  cd $srcdir/$_srcname-$pkgver/Fonts/Office\ Code\ Pro/OTF/
-  install -t "$pkgdir/usr/share/fonts/OTF/" -m644 *.otf
-
-  cd $srcdir/$_srcname-$pkgver/Fonts/Office\ Code\ Pro\ D/OTF/
-  install -t "$pkgdir/usr/share/fonts/OTF/" -m644 *.otf
+  install -Dm644 -t "${pkgdir}/usr/share/fonts/OTF" "${_pkgname}-${pkgver}/Fonts/Office Code Pro/OTF/"*.otf
+  install -Dm644 -t "${pkgdir}/usr/share/fonts/OTF" "${_pkgname}-${pkgver}/Fonts/Office Code Pro D/OTF/"*.otf
+  install -Dm644 "${_pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "${_pkgname}-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
