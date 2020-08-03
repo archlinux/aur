@@ -1,14 +1,14 @@
 pkgbase = ssh-chat
 	pkgdesc = Chat over SSH
-	pkgver = 1.9
+	pkgver = 1.10
 	pkgrel = 1
 	url = https://github.com/shazow/ssh-chat
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	provides = ssh-chat
-	source = ssh-chat-1.9.tar.gz::https://github.com/shazow/ssh-chat/archive/v1.9.tar.gz
-	sha256sums = 74792d29472e1a083e9af0632c0989412602f33cf5ac01bc7badc73bb2f0b31d
+	source = ssh-chat-1.10.tar.gz::https://github.com/shazow/ssh-chat/archive/v1.10.tar.gz
+	sha256sums = 63f795e24a125db7ed58f12b0a1a8ac6b6329348935a68433d59e4a18a3899ff
 
 pkgname = ssh-chat
 

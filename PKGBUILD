@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=ssh-chat
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc='Chat over SSH'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('74792d29472e1a083e9af0632c0989412602f33cf5ac01bc7badc73bb2f0b31d')
+sha256sums=('63f795e24a125db7ed58f12b0a1a8ac6b6329348935a68433d59e4a18a3899ff')
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -24,9 +24,10 @@ build() {
 }
 
 package() {
-  install -Dm755 "${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 -t "${pkgdir}/usr/bin" "${pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE'
 }
 
 # vim: ts=2 sw=2 et:
