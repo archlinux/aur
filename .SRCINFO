@@ -1,9 +1,10 @@
 pkgbase = dvdts-git
 	pkgdesc = Terminal screensaver similar to dvd bouncing logo; Uses the distro/OS name/custom text instead
 	pkgver = r17.7a7bdd0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ameyrk99/dvdts
 	arch = any
+	license = Unlicense
 	makedepends = git
 	depends = go
 	provides = dvdts

@@ -3,9 +3,10 @@
 pkgname=dvdts-git
 _pkgname="dvdts"
 pkgver=r17.7a7bdd0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal screensaver similar to dvd bouncing logo; Uses the distro/OS name/custom text instead"
 arch=('any')
+license=('Unlicense')
 url="https://github.com/ameyrk99/dvdts"
 
 depends=(
