@@ -16,14 +16,14 @@ sha1sums=('3f12c2909b1d60cc1c247e29f9f4b834c18c7494')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver" || exit
-  mkdir -p build/debug && cd build/debug || exit
-  cmake -DCMAKE_BUILD_TYPE=Debug ../..
+  mkdir -p build/release && cd build/release || exit
+  cmake -DCMAKE_BUILD_TYPE=Release ../..
   make
 }
 
 package() {
   msg2 "Copying binary..."
-  install -Dm755 "$srcdir/$pkgname-$pkgver/build/debug/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$srcdir/$pkgname-$pkgver/build/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   msg2 "Copying resources..."
   # .desktop
