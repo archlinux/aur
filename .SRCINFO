@@ -1,14 +1,13 @@
 pkgbase = agedu
-	pkgdesc = Track down wasted disk space
-	pkgver = 20190630
+	pkgdesc = A UNIX utility for tracking down wasted disk space
+	pkgver = 20200705
 	pkgrel = 1
 	url = http://www.chiark.greenend.org.uk/~sgtatham/agedu/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = glibc
-	source = https://www.chiark.greenend.org.uk/~sgtatham/agedu/agedu-20190630.66cb14d.tar.gz
-	md5sums = SKIP
+	source = https://www.chiark.greenend.org.uk/~sgtatham/agedu/agedu-20200705.2a7d4a2.tar.gz
+	b2sums = 2802b223979b2f15efd14b6f1f445b9ca00312068ade3c26a057d54a65d5074fdcdee043c9673a59e4e6cc222deba7c817ee078a0a742f09ec1087ec921414bd
 
 pkgname = agedu
 
