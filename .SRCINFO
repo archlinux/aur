@@ -1,6 +1,6 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 78.0.2
+	pkgver = 79.0
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgbase = firefox-appmenu
 	makedepends = nasm
 	makedepends = python-setuptools
 	makedepends = python-psutil
+	makedepends = lld
 	depends = gtk3
 	depends = libxt
 	depends = mime-types
@@ -39,22 +40,24 @@ pkgbase = firefox-appmenu
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=78.0.2
+	provides = firefox=79.0
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://archive.mozilla.org/pub/firefox/releases/78.0.2/source/firefox-78.0.2.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/78.0.2/source/firefox-78.0.2.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/79.0/source/firefox-79.0.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/79.0/source/firefox-79.0.source.tar.xz.asc
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = firefox.desktop
+	source = bug1654465.diff
 	source = unity-menubar.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 1aa00ec6d40a771d525b867b175be28eda096becc745875bcceb133a985750fc
+	sha256sums = 12a922855914ec6b4d4f06a4ac58bc549aca6bdafd3722d68a3d709a935e5713
 	sha256sums = SKIP
 	sha256sums = 3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75
 	sha256sums = 34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c
-	sha256sums = 411f1580801f7b1484575d38f5967cf3d8c68efbba8dd4e2950e13a763bd09d8
+	sha256sums = e577f7e5636deda0026b0e385186f3ecb2212c9b84b6a2949a1811dab3e410d6
+	sha256sums = 3cc18a835a12cedee7ffdbe71df21c57cdcf68ea9f11e6198b764c13a0c82fbe
 
 pkgname = firefox-appmenu
 
