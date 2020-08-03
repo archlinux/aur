@@ -1,0 +1,12 @@
+pkgbase = python-htmlentities
+	pkgdesc = HTML Entities for Python
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/cobrateam/python-htmlentities
+	arch = any
+	depends = python
+	source = https://github.com/cobrateam/python-htmlentities/archive/0.3.0.tar.gz
+	sha256sums = b4ebe19044857c9313b63d27383ac2f1dfc1f006ee8821bc14b1c636ef949f59
+
+pkgname = python-htmlentities
+
