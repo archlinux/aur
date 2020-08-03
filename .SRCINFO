@@ -1,16 +1,16 @@
 pkgbase = yarntown
 	pkgdesc = A Zeldalike tribute to Bloodborne. Explore the streets of a cursed, gothic town, hunting beasts and uncovering twisted bosses.
-	pkgver = 1.0
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://maxatrillionator.itch.io/yarntown
 	arch = any
 	license = custom
 	makedepends = gendesk
 	depends = solarus>=1.6.0
-	noextract = data.solarus
-	source = https://github.com/MaxMraz/yarntown/releases/download/v1.0/data.solarus
+	noextract = yarntown.solarus
+	source = https://github.com/MaxMraz/yarntown/releases/download/v1.0.5/yarntown.solarus
 	source = https://github.com/MaxMraz/yarntown/raw/master/yarntown-web-assets/icon_128.png
-	md5sums = 5d83861e91c525871332f4f8b949e11e
+	md5sums = 662e020063bac3e07c9e1322fce81ef8
 	md5sums = 1c40e5b7e722708b4bea87855e25876e
 
 pkgname = yarntown
