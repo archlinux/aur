@@ -1,6 +1,6 @@
 # Maintainer: Robert Ulmer <arch.x(at)frontexpers.com>
 pkgname="filius"
-pkgver="1.9.0"
+pkgver="1.10.2"
 _pkgver="${pkgver}"
 pkgrel=1
 pkgdesc="Network simulation program"
@@ -9,7 +9,7 @@ url="http://www.lernsoftware-filius.de"
 license=('GPL')
 depends=('java-environment>=8')
 source=(http://www.lernsoftware-filius.de/downloads/Setup/$pkgname-$_pkgver.zip)
-sha256sums=('21f71c5b376500540c9dd65494c320959a160d680184cc74c8601c3d87fc1042')
+sha256sums=('850aebe6522c4f4bfdf04afe2565c284acb4303c6727b176e031806c587ceff9')
 package() {
 	cd $srcdir
 	# cp -r usr/ etc/ $pkgdir
