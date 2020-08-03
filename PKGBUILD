@@ -13,7 +13,7 @@ source=('git+https://github.com/abdulbadii/find-and-list-file-folder-recursively
 md5sums=('SKIP')
 pkgver() {
 	 cd "$srcdir/find-and-list-file-folder-recursively"
-	git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/'
+	git describe --long --tags | sed -E 's/^v//;s/-(\w+)-g/.r\1.g/'
 }
 
 package() {
