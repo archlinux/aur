@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="lampswitch"
-pkgver=20.7.23.39
+pkgver="20.7.23.40"
 pkgrel=1
 pkgdesc="Indicator and control applet for Apache"
 arch=("any")
