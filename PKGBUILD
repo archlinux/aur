@@ -2,9 +2,12 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # shellcheck disable=SC2034,SC2164 # mask unused variable warning, mask cd without fallback warning.
 
+# Configuration.
+# shellcheck disable=SC2206
+[[ -v CUDA_ARCH ]] && _cc_list=(${CUDA_ARCH})
 _name=alice-vision
-#_fragment="#commit=eebc3e4f"
 _fragment="#branch=develop"
+
 pkgname=${_name}-git
 pkgver=2.2.0.r946.g5c0412194
 pkgrel=1
@@ -33,22 +36,6 @@ sha256sums=('SKIP'
             'ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22'
             'fbf961b52a13105fc3190ee1213872cb421cd5351065bee423f12f8606b76373')
 
-# shellcheck disable=SC2191 # mask \= warning.
-_CMAKE_FLAGS=(
-              -DCMAKE_INSTALL_PREFIX=/usr
-              -DCMAKE_INSTALL_LIBDIR=lib
-              -DEIGEN_INCLUDE_DIR_HINTS=/usr/include/eigen3
-              -DFLANN_INCLUDE_DIR_HINTS=/usr/include/flann
-              -DCOINUTILS_INCLUDE_DIR_HINTS=/usr/include/coin
-              -DLEMON_INCLUDE_DIR_HINTS=/usr/include/lemon
-              -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin
-              -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin
-              -DCERES_DIR=/usr/include/ceres
-              -DMAGMA_ROOT=/usr
-              -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
-             )
-
-
 pkgver() {
   cd "${pkgname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -70,25 +57,43 @@ prepare() {
 
 
 build() {
+
+# shellcheck disable=SC2191 # mask \= warning.
+  _CMAKE_FLAGS=(
+                -DCMAKE_INSTALL_PREFIX=/usr
+                -DCMAKE_INSTALL_LIBDIR=lib
+                -DEIGEN_INCLUDE_DIR_HINTS=/usr/include/eigen3
+                -DFLANN_INCLUDE_DIR_HINTS=/usr/include/flann
+                -DCOINUTILS_INCLUDE_DIR_HINTS=/usr/include/coin
+                -DLEMON_INCLUDE_DIR_HINTS=/usr/include/lemon
+                -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin
+                -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin
+                -DCERES_DIR=/usr/include/ceres
+                -DMAGMA_ROOT=/usr
+                -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
+               )
+  if [[ -v _cc_list ]]; then
+    _CMAKE_FLAGS+=( -DALICEVISION_CUDA_CC_LIST="$(IFS=';'; echo "${_cc_list[*]}";)" )
+  fi
+
+
   msg2 "Build uncertaintyTE library"
-  mkdir -p ute_build
   cmake -DCMAKE_INSTALL_PREFIX=/ -DMAGMA_ROOT=/usr -G Ninja -S ute_lib -B ute_build
 # shellcheck disable=SC2030,SC2031,SC2046 # ninja call won't work with shell substitution in quotes.
   ninja $([ -v MAKEFLAGS ] || echo -j1) -C ute_build
   DESTDIR="${srcdir}/ute_bin" ninja install -C ute_build install
 
   msg2 "Build geogram library"
-  mkdir -p geogram_build
   CFLAGS+=" -fcommon" cmake -DCMAKE_INSTALL_PREFIX=/ -DGEOGRAM_LIB_ONLY=ON -DGEOGRAM_USE_SYSTEM_GLFW3=ON -DCMAKE_BUILD_TYPE:STRING=Release -DVORPALINE_PLATFORM:STRING=Linux64-gcc-dynamic -G Ninja -S geogram -B geogram_build
 # shellcheck disable=SC2030,SC2031,SC2046 # ninja call won't work with shell substitution in quotes.
   ninja $([ -v MAKEFLAGS ] || echo -j1) -C geogram_build
   DESTDIR="${srcdir}/geogram_bin" ninja -C geogram_build install
 
   msg2 "Build AliceVision library"
-  mkdir -p build
   cmake "${_CMAKE_FLAGS[@]}" -DGEOGRAM_INSTALL_PREFIX="${srcdir}/geogram_bin" -DUNCERTAINTYTE_DIR="${srcdir}/ute_bin" -G Ninja -S ${pkgname} -B build
 # shellcheck disable=SC2030,SC2031,SC2046 # ninja call won't work with shell substitution in quotes.
   ninja $([ -v MAKEFLAGS ] || echo -j1) -C build
+  bash
 }
 
 
