@@ -1,0 +1,14 @@
+pkgbase = opencs-bin
+	pkgdesc = A framework for equation-based modelling (large scale ODE/DAE systems), parallel evaluation of model equations, parallel simulations on shared and distributed memory systems
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://www.daetools.com/opencs.html
+	arch = x86_64
+	license = LGPL3
+	depends = gcc-libs
+	provides = opencs
+	source = opencs-1.1.0.zip::https://sourceforge.net/projects/daetools/files/OpenCS/OpenCS-1.1.0.zip/download
+	sha256sums = 73e286ba6ce0246e3482f96b202d0671a1a2fd1c11cbc8d8b7b5658b8a87f438
+
+pkgname = opencs-bin
+
