@@ -1,5 +1,7 @@
 # Maintainer: mcol <mcol at posteo dot net>
 
+# PKGBUILD @ mcol.xyz/code/python-seriate
+
 pkgname=python-seriate
 pkgver=1.1.2
 pkgrel=1
