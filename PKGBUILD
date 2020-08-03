@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=goverlay-git
-pkgver=0.3.6.r1.g8a0d84a
+pkgver=0.3.7.r0.g739f588
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -23,16 +23,9 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	sed -i 's|lazbuild|lazbuild --lazarusdir=/usr/lib/lazarus|g' Makefile
-
-	make clean
-}
-
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	make
+	make LAZBUILDOPTS=--lazarusdir=/usr/lib/lazarus
 }
 
 check() {
