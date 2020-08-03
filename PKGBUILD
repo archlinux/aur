@@ -23,4 +23,5 @@ package() {
   tar xvf data.tar.xz -C "${pkgdir}"
   install -Dm644 "${pkgdir}/usr/share/doc/qualcoder/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   rm "${pkgdir}/usr/share/doc/qualcoder/copyright"
+  chmod 755 "${pkgdir}/usr/bin/qualcoder"
 }
