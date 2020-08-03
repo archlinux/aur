@@ -1,6 +1,6 @@
 # Maintainer: bronson mathews <bronsonmathews@gmail.com> -> http://bitshift.io -> https://github.com/bit-shift-io
 pkgname=audiobook-git
-pkgver=r107.33c2833
+pkgver=r114.5d87d4c
 pkgrel=1
 pkgdesc="A simple audio book reader. Written in QT/QML and C++."
 arch=('any')
