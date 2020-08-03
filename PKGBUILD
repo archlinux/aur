@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Michael Lass <bevan@bi-co.net>
 pkgname=macintosh.js-bin
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A virtual Apple Macintosh with System 8, running in Electron"
 arch=('x86_64')
@@ -11,9 +11,9 @@ depends=('gtk3' 'nss')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" 'macintosh-js-bin')
 replaces=('macintosh-js-bin')
-source=("$url/releases/download/v$pkgver/macintosh.js_${pkgver}_amd64.deb"
-        "https://github.com/felixrieseberg/macintosh.js/raw/v$pkgver/CREDITS.md")
-sha256sums=('fe122471e4534da365cb5758b52c78513811453d01e26d65efc8127479c38c3b'
+source=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_amd64.deb"
+        "https://github.com/felixrieseberg/${pkgname%-bin}/raw/v$pkgver/CREDITS.md")
+sha256sums=('b5d7c0b2024963e9325186a801f403072b6a38803490a4836c836f269603a385'
             '6a221f623fa4f773ea6ba81c8a1731ff0d680cc7e8f20c68488c31b0f13e3dec')
 
 package() {
