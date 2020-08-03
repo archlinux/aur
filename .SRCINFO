@@ -1,6 +1,6 @@
 pkgbase = bats-core-git
 	pkgdesc = Bash Automated Testing System
-	pkgver = v1.2.0.r26.gb0671a6
+	pkgver = v1.2.1.r16.gda118fd
 	pkgrel = 1
 	url = https://github.com/bats-core/bats-core
 	arch = any
@@ -10,9 +10,7 @@ pkgbase = bats-core-git
 	provides = bash-bats
 	conflicts = bash-bats
 	source = git+https://github.com/bats-core/bats-core
-	source = fix-libexec-path.patch
 	sha256sums = SKIP
-	sha256sums = 1195fa67108f42eac2028dabcf65b7dc687ebcfab8c33f34f481bc8d6d4a56dd
 
 pkgname = bats-core-git
 

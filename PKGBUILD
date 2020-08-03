@@ -4,7 +4,7 @@
 
 _name=bats-core
 pkgname=$_name-git
-pkgver=v1.2.0.r26.gb0671a6
+pkgver=v1.2.1.r16.gda118fd
 _mainfolder=$_name
 pkgrel=1
 pkgdesc='Bash Automated Testing System'
@@ -13,9 +13,8 @@ url=https://github.com/bats-core/bats-core
 license=(MIT)
 depends=(bash)
 makedepends=(git)
-source=("git+$url" fix-libexec-path.patch)
-sha256sums=('SKIP'
-            '1195fa67108f42eac2028dabcf65b7dc687ebcfab8c33f34f481bc8d6d4a56dd')
+source=("git+$url")
+sha256sums=('SKIP')
 conflicts=(bash-bats)
 provides=(bash-bats)
 
@@ -37,10 +36,18 @@ check() {
 package() {
   cd "$srcdir/$_mainfolder"
 
-  patch -p1 -i "$srcdir/fix-libexec-path.patch"
+  # In Arch Linux the correct path is /usr/lib and not /usr/libexec, see
+  # https://wiki.archlinux.org/index.php/Arch_package_guidelines#Package_etiquette
+  #
+  # Also rename the bats-core/ folder to bats/
+  sed -i 's/BATS_ROOT\/libexec\/bats-core\/bats/BATS_ROOT\/lib\/bats\/bats/g' bin/bats
+
+  # Rename the bats-core/ folder to bats/
+  sed -i 's/BATS_ROOT\/lib\/bats-core\//BATS_ROOT\/lib\/bats\//g' libexec/bats-core/*
 
   install -dm755 "$pkgdir"/{usr/bin,usr/lib/bats,usr/share/man/man{1,7},usr/share/licenses/$_name}
   install -m 755 "bin"/* "$pkgdir/usr/bin"
+  install -m 755 "lib/bats-core"/* "$pkgdir/usr/lib/bats"
   install -m 755 "libexec/bats-core"/* "$pkgdir/usr/lib/bats"
   install -m 644 "man/bats.1" "$pkgdir/usr/share/man/man1"
   install -m 644 "man/bats.7" "$pkgdir/usr/share/man/man7"
