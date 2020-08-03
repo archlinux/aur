@@ -1,6 +1,6 @@
 pkgbase = sat-xmpp-hg
 	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (core)
-	pkgver = 0.7.0.r3289+.9057713ab124+
+	pkgver = 0.7.0.r3328+.d49607e3a066+
 	pkgrel = 1
 	url = http://salut-a-toi.org/
 	arch = any
