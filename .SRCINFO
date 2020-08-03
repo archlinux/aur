@@ -1,14 +1,14 @@
 pkgbase = python-trytond_ldap_authentication
 	pkgdesc = Tryton module to authenticate users through LDAP
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_ldap_authentication/trytond_ldap_authentication-5.2.0.tar.gz
-	sha256sums = e426e04fe1b1885a73a910256102622e57b2d4fd476d956b571d00fa59971c61
+	source = https://files.pythonhosted.org/packages/source/t/trytond_ldap_authentication/trytond_ldap_authentication-5.6.0.tar.gz
+	sha256sums = e426e04fe1b1885a73a910256102622e57b2d4fd476d956b571d00fa59971c61 5910681a2aac5ab0fd2897944f2886fd5ae0492e44de31d7b0500a7bde8b655a
 
 pkgname = python-trytond_ldap_authentication
 
