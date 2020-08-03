@@ -8,7 +8,7 @@ pkgdesc='Outscale Python 3 SDK'
 
 arch=('any')
 url='https://github.com/outscale/osc-sdk-python'
-license=(GPL3)
+license=(BSD)
 
 makedepends=('python-pip')
 depends=(python-pip python-ruamel-yaml python-requests)
