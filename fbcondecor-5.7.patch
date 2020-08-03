@@ -1,21 +1,6 @@
-diff --git a/Documentation/fb/00-INDEX b/Documentation/fb/00-INDEX
-index fe85e7c..2230930 100644
---- a/Documentation/fb/00-INDEX
-+++ b/Documentation/fb/00-INDEX
-@@ -23,6 +23,8 @@ ep93xx-fb.txt
- 	- info on the driver for EP93xx LCD controller.
- fbcon.txt
- 	- intro to and usage guide for the framebuffer console (fbcon).
-+fbcondecor.txt
-+	- info on the Framebuffer Console Decoration
- framebuffer.txt
- 	- introduction to frame buffer devices.
- gxfb.txt
-diff --git a/Documentation/fb/fbcondecor.txt b/Documentation/fb/fbcondecor.txt
-new file mode 100644
-index 0000000..637209e
---- /dev/null
-+++ b/Documentation/fb/fbcondecor.txt
+diff -ruN a/Documentation/fb/fbcondecor.rst b/Documentation/fb/fbcondecor.rst
+--- a/Documentation/fb/fbcondecor.rst	1969-12-31 19:00:00.000000000 -0500
++++ b/Documentation/fb/fbcondecor.rst	2020-08-02 23:24:27.293081730 -0400
 @@ -0,0 +1,207 @@
 +What is it?
 +-----------
@@ -224,12 +209,11 @@ index 0000000..637209e
 +Fbcondecor, fbcondecor protocol design, current implementation & docs by:
 +  Michal Januszewski <michalj+fbcondecor@gmail.com>
 +
-diff --git a/drivers/Makefile b/drivers/Makefile
-index 53abb4a..1721aee 100644
---- a/drivers/Makefile
-+++ b/drivers/Makefile
-@@ -17,6 +17,10 @@ obj-y				+= pwm/
- obj-$(CONFIG_PCI)		+= pci/
+diff -ruN a/drivers/Makefile b/drivers/Makefile
+--- a/drivers/Makefile	2020-07-31 12:47:17.000000000 -0400
++++ b/drivers/Makefile	2020-08-02 23:24:27.293081730 -0400
+@@ -20,6 +20,10 @@
+ 
  obj-$(CONFIG_PARISC)		+= parisc/
  obj-$(CONFIG_RAPIDIO)		+= rapidio/
 +# tty/ comes before char/ so that the VT console is the boot-time
@@ -239,7 +223,7 @@ index 53abb4a..1721aee 100644
  obj-y				+= video/
  obj-y				+= idle/
  
-@@ -45,11 +49,6 @@ obj-$(CONFIG_REGULATOR)		+= regulator/
+@@ -51,11 +55,6 @@
  # reset controllers early, since gpu drivers might rely on them to initialize
  obj-$(CONFIG_RESET_CONTROLLER)	+= reset/
  
@@ -249,93 +233,11 @@ index 53abb4a..1721aee 100644
 -obj-y				+= char/
 -
  # iommu/ comes before gpu as gpu are using iommu controllers
- obj-$(CONFIG_IOMMU_SUPPORT)	+= iommu/
+ obj-y				+= iommu/
  
-diff --git a/drivers/video/console/Kconfig b/drivers/video/console/Kconfig
-index 38da6e2..fe58152 100644
---- a/drivers/video/console/Kconfig
-+++ b/drivers/video/console/Kconfig
-@@ -130,6 +130,19 @@ config FRAMEBUFFER_CONSOLE_ROTATION
-          such that other users of the framebuffer will remain normally
-          oriented.
- 
-+config FB_CON_DECOR
-+	bool "Support for the Framebuffer Console Decorations"
-+	depends on FRAMEBUFFER_CONSOLE=y && !FB_TILEBLITTING
-+	default n
-+	---help---
-+	  This option enables support for framebuffer console decorations which
-+	  makes it possible to display images in the background of the system
-+	  consoles.  Note that userspace utilities are necessary in order to take
-+	  advantage of these features. Refer to Documentation/fb/fbcondecor.txt
-+	  for more information.
-+
-+	  If unsure, say N.
-+
- config STI_CONSOLE
-         bool "STI text console"
-         depends on PARISC
-diff --git a/drivers/video/console/Makefile b/drivers/video/console/Makefile
-index 43bfa48..cc104b6 100644
---- a/drivers/video/console/Makefile
-+++ b/drivers/video/console/Makefile
-@@ -16,4 +16,5 @@ obj-$(CONFIG_FRAMEBUFFER_CONSOLE)     += fbcon_rotate.o fbcon_cw.o fbcon_ud.o \
-                                          fbcon_ccw.o
- endif
- 
-+obj-$(CONFIG_FB_CON_DECOR)     	  += fbcondecor.o cfbcondecor.o
- obj-$(CONFIG_FB_STI)              += sticore.o
-diff --git a/drivers/video/console/bitblit.c b/drivers/video/console/bitblit.c
-index dbfe4ee..14da307 100644
---- a/drivers/video/console/bitblit.c
-+++ b/drivers/video/console/bitblit.c
-@@ -18,6 +18,7 @@
- #include <linux/console.h>
- #include <asm/types.h>
- #include "fbcon.h"
-+#include "fbcondecor.h"
- 
- /*
-  * Accelerated handlers.
-@@ -55,6 +56,13 @@ static void bit_bmove(struct vc_data *vc, struct fb_info *info, int sy,
- 	area.height = height * vc->vc_font.height;
- 	area.width = width * vc->vc_font.width;
- 
-+	if (fbcon_decor_active(info, vc)) {
-+		area.sx += vc->vc_decor.tx;
-+		area.sy += vc->vc_decor.ty;
-+		area.dx += vc->vc_decor.tx;
-+		area.dy += vc->vc_decor.ty;
-+	}
-+
- 	info->fbops->fb_copyarea(info, &area);
- }
- 
-@@ -379,11 +387,15 @@ static void bit_cursor(struct vc_data *vc, struct fb_info *info, int mode,
- 	cursor.image.depth = 1;
- 	cursor.rop = ROP_XOR;
- 
--	if (info->fbops->fb_cursor)
--		err = info->fbops->fb_cursor(info, &cursor);
-+	if (fbcon_decor_active(info, vc)) {
-+		fbcon_decor_cursor(info, &cursor);
-+	} else {
-+		if (info->fbops->fb_cursor)
-+			err = info->fbops->fb_cursor(info, &cursor);
- 
--	if (err)
--		soft_cursor(info, &cursor);
-+		if (err)
-+			soft_cursor(info, &cursor);
-+	}
- 
- 	ops->cursor_reset = 0;
- }
-diff --git a/drivers/video/console/cfbcondecor.c b/drivers/video/console/cfbcondecor.c
-new file mode 100644
-index 0000000..c262540
---- /dev/null
-+++ b/drivers/video/console/cfbcondecor.c
+diff -ruN a/drivers/video/console/cfbcondecor.c b/drivers/video/console/cfbcondecor.c
+--- a/drivers/video/console/cfbcondecor.c	1969-12-31 19:00:00.000000000 -0500
++++ b/drivers/video/console/cfbcondecor.c	2020-08-02 23:24:27.293081730 -0400
 @@ -0,0 +1,473 @@
 +/*
 + *  linux/drivers/video/cfbcon_decor.c -- Framebuffer decor render functions
@@ -361,7 +263,7 @@ index 0000000..c262540
 +#include <linux/vt_kern.h>
 +#include <asm/irq.h>
 +
-+#include "fbcon.h"
++#include "../fbdev/core/fbcon.h"
 +#include "fbcondecor.h"
 +
 +#define parse_pixel(shift, bpp, type)						\
@@ -810,359 +712,9 @@ index 0000000..c262540
 +	}
 +}
 +
-diff --git a/drivers/video/console/fbcon.c b/drivers/video/console/fbcon.c
-index b87f5cf..ce44538 100644
---- a/drivers/video/console/fbcon.c
-+++ b/drivers/video/console/fbcon.c
-@@ -79,6 +79,7 @@
- #include <asm/irq.h>
- 
- #include "fbcon.h"
-+#include "../console/fbcondecor.h"
- 
- #ifdef FBCONDEBUG
- #  define DPRINTK(fmt, args...) printk(KERN_DEBUG "%s: " fmt, __func__ , ## args)
-@@ -94,7 +95,7 @@ enum {
- 
- static struct display fb_display[MAX_NR_CONSOLES];
- 
--static signed char con2fb_map[MAX_NR_CONSOLES];
-+signed char con2fb_map[MAX_NR_CONSOLES];
- static signed char con2fb_map_boot[MAX_NR_CONSOLES];
- 
- static int logo_lines;
-@@ -282,7 +283,7 @@ static inline int fbcon_is_inactive(struct vc_data *vc, struct fb_info *info)
- 		!vt_force_oops_output(vc);
- }
- 
--static int get_color(struct vc_data *vc, struct fb_info *info,
-+int get_color(struct vc_data *vc, struct fb_info *info,
- 	      u16 c, int is_fg)
- {
- 	int depth = fb_get_color_depth(&info->var, &info->fix);
-@@ -546,6 +547,9 @@ static int do_fbcon_takeover(int show_logo)
- 		info_idx = -1;
- 	} else {
- 		fbcon_has_console_bind = 1;
-+#ifdef CONFIG_FB_CON_DECOR
-+		fbcon_decor_init();
-+#endif
- 	}
- 
- 	return err;
-@@ -1005,6 +1009,12 @@ static const char *fbcon_startup(void)
- 	rows = FBCON_SWAP(ops->rotate, info->var.yres, info->var.xres);
- 	cols /= vc->vc_font.width;
- 	rows /= vc->vc_font.height;
-+
-+	if (fbcon_decor_active(info, vc)) {
-+		cols = vc->vc_decor.twidth / vc->vc_font.width;
-+		rows = vc->vc_decor.theight / vc->vc_font.height;
-+	}
-+
- 	vc_resize(vc, cols, rows);
- 
- 	DPRINTK("mode:   %s\n", info->fix.id);
-@@ -1034,7 +1044,7 @@ static void fbcon_init(struct vc_data *vc, int init)
- 	cap = info->flags;
- 
- 	if (vc != svc || logo_shown == FBCON_LOGO_DONTSHOW ||
--	    (info->fix.type == FB_TYPE_TEXT))
-+	    (info->fix.type == FB_TYPE_TEXT) || fbcon_decor_active(info, vc))
- 		logo = 0;
- 
- 	if (var_to_display(p, &info->var, info))
-@@ -1259,6 +1269,11 @@ static void fbcon_clear(struct vc_data *vc, int sy, int sx, int height,
- 		fbcon_clear_margins(vc, 0);
- 	}
- 
-+	if (fbcon_decor_active(info, vc)) {
-+		fbcon_decor_clear(vc, info, sy, sx, height, width);
-+		return;
-+	}
-+
- 	/* Split blits that cross physical y_wrap boundary */
- 
- 	y_break = p->vrows - p->yscroll;
-@@ -1278,10 +1293,15 @@ static void fbcon_putcs(struct vc_data *vc, const unsigned short *s,
- 	struct display *p = &fb_display[vc->vc_num];
- 	struct fbcon_ops *ops = info->fbcon_par;
- 
--	if (!fbcon_is_inactive(vc, info))
--		ops->putcs(vc, info, s, count, real_y(p, ypos), xpos,
--			   get_color(vc, info, scr_readw(s), 1),
--			   get_color(vc, info, scr_readw(s), 0));
-+	if (!fbcon_is_inactive(vc, info)) {
-+
-+		if (fbcon_decor_active(info, vc))
-+			fbcon_decor_putcs(vc, info, s, count, ypos, xpos);
-+		else
-+			ops->putcs(vc, info, s, count, real_y(p, ypos), xpos,
-+				   get_color(vc, info, scr_readw(s), 1),
-+				   get_color(vc, info, scr_readw(s), 0));
-+	}
- }
- 
- static void fbcon_putc(struct vc_data *vc, int c, int ypos, int xpos)
-@@ -1297,8 +1317,12 @@ static void fbcon_clear_margins(struct vc_data *vc, int bottom_only)
- 	struct fb_info *info = registered_fb[con2fb_map[vc->vc_num]];
- 	struct fbcon_ops *ops = info->fbcon_par;
- 
--	if (!fbcon_is_inactive(vc, info))
--		ops->clear_margins(vc, info, bottom_only);
-+	if (!fbcon_is_inactive(vc, info)) {
-+		if (fbcon_decor_active(info, vc))
-+			fbcon_decor_clear_margins(vc, info, bottom_only);
-+		else
-+			ops->clear_margins(vc, info, bottom_only);
-+	}
- }
- 
- static void fbcon_cursor(struct vc_data *vc, int mode)
-@@ -1819,7 +1843,7 @@ static int fbcon_scroll(struct vc_data *vc, int t, int b, int dir,
- 			count = vc->vc_rows;
- 		if (softback_top)
- 			fbcon_softback_note(vc, t, count);
--		if (logo_shown >= 0)
-+		if (logo_shown >= 0 || fbcon_decor_active(info, vc))
- 			goto redraw_up;
- 		switch (p->scrollmode) {
- 		case SCROLL_MOVE:
-@@ -1912,6 +1936,8 @@ static int fbcon_scroll(struct vc_data *vc, int t, int b, int dir,
- 			count = vc->vc_rows;
- 		if (logo_shown >= 0)
- 			goto redraw_down;
-+		if (fbcon_decor_active(info, vc))
-+			goto redraw_down;
- 		switch (p->scrollmode) {
- 		case SCROLL_MOVE:
- 			fbcon_redraw_blit(vc, info, p, b - 1, b - t - count,
-@@ -2060,6 +2086,13 @@ static void fbcon_bmove_rec(struct vc_data *vc, struct display *p, int sy, int s
- 		}
- 		return;
- 	}
-+
-+	if (fbcon_decor_active(info, vc) && sy == dy && height == 1) {
-+		/* must use slower redraw bmove to keep background pic intact */
-+		fbcon_decor_bmove_redraw(vc, info, sy, sx, dx, width);
-+		return;
-+	}
-+
- 	ops->bmove(vc, info, real_y(p, sy), sx, real_y(p, dy), dx,
- 		   height, width);
- }
-@@ -2130,8 +2163,8 @@ static int fbcon_resize(struct vc_data *vc, unsigned int width,
- 	var.yres = virt_h * virt_fh;
- 	x_diff = info->var.xres - var.xres;
- 	y_diff = info->var.yres - var.yres;
--	if (x_diff < 0 || x_diff > virt_fw ||
--	    y_diff < 0 || y_diff > virt_fh) {
-+	if ((x_diff < 0 || x_diff > virt_fw ||
-+		y_diff < 0 || y_diff > virt_fh) && !vc->vc_decor.state) {
- 		const struct fb_videomode *mode;
- 
- 		DPRINTK("attempting resize %ix%i\n", var.xres, var.yres);
-@@ -2167,6 +2200,22 @@ static int fbcon_switch(struct vc_data *vc)
- 
- 	info = registered_fb[con2fb_map[vc->vc_num]];
- 	ops = info->fbcon_par;
-+	prev_console = ops->currcon;
-+	if (prev_console != -1)
-+		old_info = registered_fb[con2fb_map[prev_console]];
-+
-+#ifdef CONFIG_FB_CON_DECOR
-+	if (!fbcon_decor_active_vc(vc) && info->fix.visual == FB_VISUAL_DIRECTCOLOR) {
-+		struct vc_data *vc_curr = vc_cons[prev_console].d;
-+
-+		if (vc_curr && fbcon_decor_active_vc(vc_curr)) {
-+			// Clear the screen to avoid displaying funky colors
-+			// during palette updates.
-+			memset((u8 *)info->screen_base + info->fix.line_length * info->var.yoffset,
-+			       0, info->var.yres * info->fix.line_length);
-+		}
-+	}
-+#endif
- 
- 	if (softback_top) {
- 		if (softback_lines)
-@@ -2185,9 +2234,6 @@ static int fbcon_switch(struct vc_data *vc)
- 		logo_shown = FBCON_LOGO_CANSHOW;
- 	}
- 
--	prev_console = ops->currcon;
--	if (prev_console != -1)
--		old_info = registered_fb[con2fb_map[prev_console]];
- 	/*
- 	 * FIXME: If we have multiple fbdev's loaded, we need to
- 	 * update all info->currcon.  Perhaps, we can place this
-@@ -2231,6 +2277,18 @@ static int fbcon_switch(struct vc_data *vc)
- 			fbcon_del_cursor_timer(old_info);
- 	}
- 
-+	if (fbcon_decor_active_vc(vc)) {
-+		struct vc_data *vc_curr = vc_cons[prev_console].d;
-+
-+		if (!vc_curr->vc_decor.theme ||
-+			strcmp(vc->vc_decor.theme, vc_curr->vc_decor.theme) ||
-+			(fbcon_decor_active_nores(info, vc_curr) &&
-+			 !fbcon_decor_active(info, vc_curr))) {
-+			fbcon_decor_disable(vc, 0);
-+			fbcon_decor_call_helper("modechange", vc->vc_num);
-+		}
-+	}
-+
- 	if (fbcon_is_inactive(vc, info) ||
- 	    ops->blank_state != FB_BLANK_UNBLANK)
- 		fbcon_del_cursor_timer(info);
-@@ -2339,15 +2397,20 @@ static int fbcon_blank(struct vc_data *vc, int blank, int mode_switch)
- 		}
- 	}
- 
-- 	if (!fbcon_is_inactive(vc, info)) {
-+	if (!fbcon_is_inactive(vc, info)) {
- 		if (ops->blank_state != blank) {
- 			ops->blank_state = blank;
- 			fbcon_cursor(vc, blank ? CM_ERASE : CM_DRAW);
- 			ops->cursor_flash = (!blank);
- 
--			if (!(info->flags & FBINFO_MISC_USEREVENT))
--				if (fb_blank(info, blank))
--					fbcon_generic_blank(vc, info, blank);
-+			if (!(info->flags & FBINFO_MISC_USEREVENT)) {
-+				if (fb_blank(info, blank)) {
-+					if (fbcon_decor_active(info, vc))
-+						fbcon_decor_blank(vc, info, blank);
-+					else
-+						fbcon_generic_blank(vc, info, blank);
-+				}
-+			}
- 		}
- 
- 		if (!blank)
-@@ -2522,13 +2585,22 @@ static int fbcon_do_set_font(struct vc_data *vc, int w, int h,
- 	}
- 
- 	if (resize) {
-+		/* reset wrap/pan */
- 		int cols, rows;
- 
- 		cols = FBCON_SWAP(ops->rotate, info->var.xres, info->var.yres);
- 		rows = FBCON_SWAP(ops->rotate, info->var.yres, info->var.xres);
-+
-+		if (fbcon_decor_active(info, vc)) {
-+			info->var.xoffset = info->var.yoffset = p->yscroll = 0;
-+			cols = vc->vc_decor.twidth;
-+			rows = vc->vc_decor.theight;
-+		}
- 		cols /= w;
- 		rows /= h;
-+
- 		vc_resize(vc, cols, rows);
-+
- 		if (con_is_visible(vc) && softback_buf)
- 			fbcon_update_softback(vc);
- 	} else if (con_is_visible(vc)
-@@ -2657,7 +2729,11 @@ static void fbcon_set_palette(struct vc_data *vc, const unsigned char *table)
- 	int i, j, k, depth;
- 	u8 val;
- 
--	if (fbcon_is_inactive(vc, info))
-+	if (fbcon_is_inactive(vc, info)
-+#ifdef CONFIG_FB_CON_DECOR
-+			|| vc->vc_num != fg_console
-+#endif
-+		)
- 		return;
- 
- 	if (!con_is_visible(vc))
-@@ -2683,7 +2759,47 @@ static void fbcon_set_palette(struct vc_data *vc, const unsigned char *table)
- 	} else
- 		fb_copy_cmap(fb_default_cmap(1 << depth), &palette_cmap);
- 
--	fb_set_cmap(&palette_cmap, info);
-+	if (fbcon_decor_active(info, vc_cons[fg_console].d) &&
-+	    info->fix.visual == FB_VISUAL_DIRECTCOLOR) {
-+
-+		u16 *red, *green, *blue;
-+		int minlen = min(min(info->var.red.length, info->var.green.length),
-+				     info->var.blue.length);
-+
-+		struct fb_cmap cmap = {
-+			.start = 0,
-+			.len = (1 << minlen),
-+			.red = NULL,
-+			.green = NULL,
-+			.blue = NULL,
-+			.transp = NULL
-+		};
-+
-+		red = kmalloc(256 * sizeof(u16) * 3, GFP_KERNEL);
-+
-+		if (!red)
-+			goto out;
-+
-+		green = red + 256;
-+		blue = green + 256;
-+		cmap.red = red;
-+		cmap.green = green;
-+		cmap.blue = blue;
-+
-+		for (i = 0; i < cmap.len; i++)
-+			red[i] = green[i] = blue[i] = (0xffff * i)/(cmap.len-1);
-+
-+		fb_set_cmap(&cmap, info);
-+		fbcon_decor_fix_pseudo_pal(info, vc_cons[fg_console].d);
-+		kfree(red);
-+
-+		return;
-+
-+	} else if (fbcon_decor_active(info, vc_cons[fg_console].d) &&
-+		   info->var.bits_per_pixel == 8 && info->bgdecor.cmap.red != NULL)
-+		fb_set_cmap(&info->bgdecor.cmap, info);
-+
-+out:	fb_set_cmap(&palette_cmap, info);
- }
- 
- static u16 *fbcon_screen_pos(struct vc_data *vc, int offset)
-@@ -2908,7 +3024,14 @@ static void fbcon_modechanged(struct fb_info *info)
- 		rows = FBCON_SWAP(ops->rotate, info->var.yres, info->var.xres);
- 		cols /= vc->vc_font.width;
- 		rows /= vc->vc_font.height;
--		vc_resize(vc, cols, rows);
-+
-+		if (!fbcon_decor_active_nores(info, vc)) {
-+			vc_resize(vc, cols, rows);
-+		} else {
-+			fbcon_decor_disable(vc, 0);
-+			fbcon_decor_call_helper("modechange", vc->vc_num);
-+		}
-+
- 		updatescrollmode(p, info, vc);
- 		scrollback_max = 0;
- 		scrollback_current = 0;
-@@ -2953,7 +3076,8 @@ static void fbcon_set_all_vcs(struct fb_info *info)
- 		rows = FBCON_SWAP(ops->rotate, info->var.yres, info->var.xres);
- 		cols /= vc->vc_font.width;
- 		rows /= vc->vc_font.height;
--		vc_resize(vc, cols, rows);
-+		if (!fbcon_decor_active_nores(info, vc))
-+			vc_resize(vc, cols, rows);
- 	}
- 
- 	if (fg != -1)
-@@ -3594,6 +3718,7 @@ static void fbcon_exit(void)
- 		}
- 	}
- 
-+	fbcon_decor_exit();
- 	fbcon_has_exited = 1;
- }
- 
-diff --git a/drivers/video/console/fbcondecor.c b/drivers/video/console/fbcondecor.c
-new file mode 100644
-index 0000000..65cc0d3
---- /dev/null
-+++ b/drivers/video/console/fbcondecor.c
+diff -ruN a/drivers/video/console/fbcondecor.c b/drivers/video/console/fbcondecor.c
+--- a/drivers/video/console/fbcondecor.c	1969-12-31 19:00:00.000000000 -0500
++++ b/drivers/video/console/fbcondecor.c	2020-08-02 23:24:27.293081730 -0400
 @@ -0,0 +1,549 @@
 +/*
 + *  linux/drivers/video/console/fbcondecor.c -- Framebuffer console decorations
@@ -1201,11 +753,11 @@ index 0000000..65cc0d3
 +#include <linux/fs.h>
 +#include <linux/compat.h>
 +#include <linux/console.h>
-+
++#include <linux/binfmts.h>
 +#include <linux/uaccess.h>
 +#include <asm/irq.h>
 +
-+#include "fbcon.h"
++#include "../fbdev/core/fbcon.h"
 +#include "fbcondecor.h"
 +
 +extern signed char con2fb_map[];
@@ -1336,7 +888,7 @@ index 0000000..65cc0d3
 +	    cfg->ty + cfg->theight > info->var.yres)
 +		return -EINVAL;
 +
-+	len = strlen_user(cfg->theme);
++	len = strnlen_user(cfg->theme, 32);
 +	if (!len || len > FBCON_DECOR_THEME_LEN)
 +		return -EINVAL;
 +	tmp = kmalloc(len, GFP_KERNEL);
@@ -1490,7 +1042,7 @@ index 0000000..65cc0d3
 +	unsigned char origin = 0;
 +	void __user *data = NULL;
 +
-+	if (!access_ok(VERIFY_READ, wrapper,
++	if (!access_ok(wrapper,
 +			sizeof(struct fbcon_decor_iowrapper)))
 +		return -EFAULT;
 +
@@ -1568,7 +1120,7 @@ index 0000000..65cc0d3
 +	compat_uptr_t data_compat = 0;
 +	void __user *data = NULL;
 +
-+	if (!access_ok(VERIFY_READ, wrapper,
++	if (!access_ok(wrapper,
 +			sizeof(struct fbcon_decor_iowrapper32)))
 +		return -EFAULT;
 +
@@ -1713,11 +1265,9 @@ index 0000000..65cc0d3
 +	fbcon_decor_reset();
 +	return 0;
 +}
-diff --git a/drivers/video/console/fbcondecor.h b/drivers/video/console/fbcondecor.h
-new file mode 100644
-index 0000000..c49386c
---- /dev/null
-+++ b/drivers/video/console/fbcondecor.h
+diff -ruN a/drivers/video/console/fbcondecor.h b/drivers/video/console/fbcondecor.h
+--- a/drivers/video/console/fbcondecor.h	1969-12-31 19:00:00.000000000 -0500
++++ b/drivers/video/console/fbcondecor.h	2020-08-02 23:24:27.293081730 -0400
 @@ -0,0 +1,77 @@
 +/*
 + *  linux/drivers/video/console/fbcondecor.h -- Framebuffer Console Decoration headers
@@ -1796,22 +1346,86 @@ index 0000000..c49386c
 +#endif /* CONFIG_FB_CON_DECOR */
 +
 +#endif /* __FBCON_DECOR_H */
-diff --git a/drivers/video/fbdev/Kconfig b/drivers/video/fbdev/Kconfig
-index 88b008f..c84113d 100644
---- a/drivers/video/fbdev/Kconfig
-+++ b/drivers/video/fbdev/Kconfig
-@@ -1216,7 +1216,6 @@ config FB_MATROX
- 	select FB_CFB_FILLRECT
- 	select FB_CFB_COPYAREA
- 	select FB_CFB_IMAGEBLIT
--	select FB_TILEBLITTING
- 	select FB_MACMODES if PPC_PMAC
- 	---help---
- 	  Say Y here if you have a Matrox Millennium, Matrox Millennium II,
-diff --git a/drivers/video/fbdev/core/fbcmap.c b/drivers/video/fbdev/core/fbcmap.c
-index f89245b..c2c12ce 100644
---- a/drivers/video/fbdev/core/fbcmap.c
-+++ b/drivers/video/fbdev/core/fbcmap.c
+diff -ruN a/drivers/video/console/Kconfig b/drivers/video/console/Kconfig
+--- a/drivers/video/console/Kconfig	2020-07-31 12:47:17.000000000 -0400
++++ b/drivers/video/console/Kconfig	2020-08-02 23:24:27.293081730 -0400
+@@ -161,6 +161,19 @@
+ 	  by the firmware in place, rather then replacing the contents with a
+ 	  black screen as soon as fbcon loads.
+ 
++config FB_CON_DECOR
++	bool "Support for the Framebuffer Console Decorations"
++	depends on FRAMEBUFFER_CONSOLE=y && !FB_TILEBLITTING
++	default n
++	---help---
++	  This option enables support for framebuffer console decorations which
++	  makes it possible to display images in the background of the system
++	  consoles.  Note that userspace utilities are necessary in order to take
++	  advantage of these features. Refer to Documentation/fb/fbcondecor.txt
++	  for more information.
++
++	  If unsure, say N.
++
+ config STI_CONSOLE
+ 	bool "STI text console"
+ 	depends on PARISC && HAS_IOMEM
+diff -ruN a/drivers/video/console/Makefile b/drivers/video/console/Makefile
+--- a/drivers/video/console/Makefile	2020-07-31 12:47:17.000000000 -0400
++++ b/drivers/video/console/Makefile	2020-08-02 23:24:27.293081730 -0400
+@@ -9,4 +9,5 @@
+ obj-$(CONFIG_VGA_CONSOLE)         += vgacon.o
+ obj-$(CONFIG_MDA_CONSOLE)         += mdacon.o
+ 
++obj-$(CONFIG_FB_CON_DECOR)     	  += fbcondecor.o cfbcondecor.o
+ obj-$(CONFIG_FB_STI)              += sticore.o
+diff -ruN a/drivers/video/fbdev/core/bitblit.c b/drivers/video/fbdev/core/bitblit.c
+--- a/drivers/video/fbdev/core/bitblit.c	2020-07-31 12:47:17.000000000 -0400
++++ b/drivers/video/fbdev/core/bitblit.c	2020-08-02 23:24:27.296415064 -0400
+@@ -18,6 +18,7 @@
+ #include <linux/console.h>
+ #include <asm/types.h>
+ #include "fbcon.h"
++#include "../../console/fbcondecor.h"
+ 
+ /*
+  * Accelerated handlers.
+@@ -55,6 +56,13 @@
+ 	area.height = height * vc->vc_font.height;
+ 	area.width = width * vc->vc_font.width;
+ 
++	if (fbcon_decor_active(info, vc)) {
++		area.sx += vc->vc_decor.tx;
++		area.sy += vc->vc_decor.ty;
++		area.dx += vc->vc_decor.tx;
++		area.dy += vc->vc_decor.ty;
++	}
++
+ 	info->fbops->fb_copyarea(info, &area);
+ }
+ 
+@@ -379,11 +387,15 @@
+ 	cursor.image.depth = 1;
+ 	cursor.rop = ROP_XOR;
+ 
+-	if (info->fbops->fb_cursor)
+-		err = info->fbops->fb_cursor(info, &cursor);
++	if (fbcon_decor_active(info, vc)) {
++		fbcon_decor_cursor(info, &cursor);
++	} else {
++		if (info->fbops->fb_cursor)
++			err = info->fbops->fb_cursor(info, &cursor);
+ 
+-	if (err)
+-		soft_cursor(info, &cursor);
++		if (err)
++			soft_cursor(info, &cursor);
++	}
+ 
+ 	ops->cursor_reset = 0;
+ }
+diff -ruN a/drivers/video/fbdev/core/fbcmap.c b/drivers/video/fbdev/core/fbcmap.c
+--- a/drivers/video/fbdev/core/fbcmap.c	2020-07-31 12:47:17.000000000 -0400
++++ b/drivers/video/fbdev/core/fbcmap.c	2020-08-02 23:24:27.296415064 -0400
 @@ -17,6 +17,8 @@
  #include <linux/slab.h>
  #include <linux/uaccess.h>
@@ -1821,7 +1435,7 @@ index f89245b..c2c12ce 100644
  static u16 red2[] __read_mostly = {
      0x0000, 0xaaaa
  };
-@@ -254,9 +256,12 @@ int fb_set_cmap(struct fb_cmap *cmap, struct fb_info *info)
+@@ -258,9 +260,12 @@
  				break;
  		}
  	}
@@ -1836,11 +1450,363 @@ index f89245b..c2c12ce 100644
  	return rc;
  }
  
-diff --git a/drivers/video/fbdev/core/fbmem.c b/drivers/video/fbdev/core/fbmem.c
-index 76c1ad9..fafc0af 100644
---- a/drivers/video/fbdev/core/fbmem.c
-+++ b/drivers/video/fbdev/core/fbmem.c
-@@ -1251,15 +1251,6 @@ struct fb_fix_screeninfo32 {
+diff -ruN a/drivers/video/fbdev/core/fbcon.c b/drivers/video/fbdev/core/fbcon.c
+--- a/drivers/video/fbdev/core/fbcon.c	2020-07-31 12:47:17.000000000 -0400
++++ b/drivers/video/fbdev/core/fbcon.c	2020-08-03 01:15:10.122888923 -0400
+@@ -81,6 +81,7 @@
+ #include <asm/irq.h>
+ 
+ #include "fbcon.h"
++#include "../../console/fbcondecor.h"
+ 
+ #ifdef FBCONDEBUG
+ #  define DPRINTK(fmt, args...) printk(KERN_DEBUG "%s: " fmt, __func__ , ## args)
+@@ -115,7 +116,7 @@
+ 
+ static struct fbcon_display fb_display[MAX_NR_CONSOLES];
+ 
+-static signed char con2fb_map[MAX_NR_CONSOLES];
++signed char con2fb_map[MAX_NR_CONSOLES];
+ static signed char con2fb_map_boot[MAX_NR_CONSOLES];
+ 
+ static int logo_lines;
+@@ -306,7 +307,7 @@
+ 		vc->vc_mode != KD_TEXT || ops->graphics);
+ }
+ 
+-static int get_color(struct vc_data *vc, struct fb_info *info,
++int get_color(struct vc_data *vc, struct fb_info *info,
+ 	      u16 c, int is_fg)
+ {
+ 	int depth = fb_get_color_depth(&info->var, &info->fix);
+@@ -594,6 +595,9 @@
+ 		info_idx = -1;
+ 	} else {
+ 		fbcon_has_console_bind = 1;
++#ifdef CONFIG_FB_CON_DECOR
++		fbcon_decor_init();
++#endif
+ 	}
+ 
+ 	return err;
+@@ -1066,6 +1070,12 @@
+ 	rows = FBCON_SWAP(ops->rotate, info->var.yres, info->var.xres);
+ 	cols /= vc->vc_font.width;
+ 	rows /= vc->vc_font.height;
++
++	if (fbcon_decor_active(info, vc)) {
++		cols = vc->vc_decor.twidth / vc->vc_font.width;
++		rows = vc->vc_decor.theight / vc->vc_font.height;
++	}
++
+ 	vc_resize(vc, cols, rows);
+ 
+ 	DPRINTK("mode:   %s\n", info->fix.id);
+@@ -1101,7 +1111,7 @@
+ 		logo_shown = FBCON_LOGO_DONTSHOW;
+ 
+ 	if (vc != svc || logo_shown == FBCON_LOGO_DONTSHOW ||
+-	    (info->fix.type == FB_TYPE_TEXT))
++	    (info->fix.type == FB_TYPE_TEXT) || fbcon_decor_active(info, vc))
+ 		logo = 0;
+ 
+ 	if (var_to_display(p, &info->var, info))
+@@ -1339,6 +1349,11 @@
+ 		fbcon_clear_margins(vc, 0);
+ 	}
+ 
++	if (fbcon_decor_active(info, vc)) {
++		fbcon_decor_clear(vc, info, sy, sx, height, width);
++		return;
++	}
++
+ 	/* Split blits that cross physical y_wrap boundary */
+ 
+ 	y_break = p->vrows - p->yscroll;
+@@ -1358,10 +1373,15 @@
+ 	struct fbcon_display *p = &fb_display[vc->vc_num];
+ 	struct fbcon_ops *ops = info->fbcon_par;
+ 
+-	if (!fbcon_is_inactive(vc, info))
+-		ops->putcs(vc, info, s, count, real_y(p, ypos), xpos,
+-			   get_color(vc, info, scr_readw(s), 1),
+-			   get_color(vc, info, scr_readw(s), 0));
++	if (!fbcon_is_inactive(vc, info)) {
++
++		if (fbcon_decor_active(info, vc))
++			fbcon_decor_putcs(vc, info, s, count, ypos, xpos);
++		else
++			ops->putcs(vc, info, s, count, real_y(p, ypos), xpos,
++				   get_color(vc, info, scr_readw(s), 1),
++				   get_color(vc, info, scr_readw(s), 0));
++	}
+ }
+ 
+ static void fbcon_putc(struct vc_data *vc, int c, int ypos, int xpos)
+@@ -1377,8 +1397,12 @@
+ 	struct fb_info *info = registered_fb[con2fb_map[vc->vc_num]];
+ 	struct fbcon_ops *ops = info->fbcon_par;
+ 
+-	if (!fbcon_is_inactive(vc, info))
+-		ops->clear_margins(vc, info, margin_color, bottom_only);
++	if (!fbcon_is_inactive(vc, info)) {
++		if (fbcon_decor_active(info, vc))
++			fbcon_decor_clear_margins(vc, info, bottom_only);
++		else
++			ops->clear_margins(vc, info, margin_color, bottom_only);
++	}
+ }
+ 
+ static void fbcon_cursor(struct vc_data *vc, int mode)
+@@ -1899,7 +1923,7 @@
+ 			count = vc->vc_rows;
+ 		if (softback_top)
+ 			fbcon_softback_note(vc, t, count);
+-		if (logo_shown >= 0)
++		if (logo_shown >= 0 || fbcon_decor_active(info, vc))
+ 			goto redraw_up;
+ 		switch (p->scrollmode) {
+ 		case SCROLL_MOVE:
+@@ -1992,6 +2016,8 @@
+ 			count = vc->vc_rows;
+ 		if (logo_shown >= 0)
+ 			goto redraw_down;
++		if (fbcon_decor_active(info, vc))
++			goto redraw_down;
+ 		switch (p->scrollmode) {
+ 		case SCROLL_MOVE:
+ 			fbcon_redraw_blit(vc, info, p, b - 1, b - t - count,
+@@ -2140,6 +2166,13 @@
+ 		}
+ 		return;
+ 	}
++
++	if (fbcon_decor_active(info, vc) && sy == dy && height == 1) {
++		/* must use slower redraw bmove to keep background pic intact */
++		fbcon_decor_bmove_redraw(vc, info, sy, sx, dx, width);
++		return;
++	}
++
+ 	ops->bmove(vc, info, real_y(p, sy), sx, real_y(p, dy), dx,
+ 		   height, width);
+ }
+@@ -2210,8 +2243,8 @@
+ 	var.yres = virt_h * virt_fh;
+ 	x_diff = info->var.xres - var.xres;
+ 	y_diff = info->var.yres - var.yres;
+-	if (x_diff < 0 || x_diff > virt_fw ||
+-	    y_diff < 0 || y_diff > virt_fh) {
++	if ((x_diff < 0 || x_diff > virt_fw ||
++		y_diff < 0 || y_diff > virt_fh) && !vc->vc_decor.state) {
+ 		const struct fb_videomode *mode;
+ 
+ 		DPRINTK("attempting resize %ix%i\n", var.xres, var.yres);
+@@ -2247,6 +2280,22 @@
+ 
+ 	info = registered_fb[con2fb_map[vc->vc_num]];
+ 	ops = info->fbcon_par;
++	prev_console = ops->currcon;
++	if (prev_console != -1)
++		old_info = registered_fb[con2fb_map[prev_console]];
++
++#ifdef CONFIG_FB_CON_DECOR
++	if (!fbcon_decor_active_vc(vc) && info->fix.visual == FB_VISUAL_DIRECTCOLOR) {
++		struct vc_data *vc_curr = vc_cons[prev_console].d;
++
++		if (vc_curr && fbcon_decor_active_vc(vc_curr)) {
++			// Clear the screen to avoid displaying funky colors
++			// during palette updates.
++			memset((u8 *)info->screen_base + info->fix.line_length * info->var.yoffset,
++			       0, info->var.yres * info->fix.line_length);
++		}
++	}
++#endif
+ 
+ 	if (softback_top) {
+ 		if (softback_lines)
+@@ -2265,9 +2314,6 @@
+ 		logo_shown = FBCON_LOGO_CANSHOW;
+ 	}
+ 
+-	prev_console = ops->currcon;
+-	if (prev_console != -1)
+-		old_info = registered_fb[con2fb_map[prev_console]];
+ 	/*
+ 	 * FIXME: If we have multiple fbdev's loaded, we need to
+ 	 * update all info->currcon.  Perhaps, we can place this
+@@ -2311,6 +2357,18 @@
+ 			fbcon_del_cursor_timer(old_info);
+ 	}
+ 
++	if (fbcon_decor_active_vc(vc)) {
++		struct vc_data *vc_curr = vc_cons[prev_console].d;
++
++		if (!vc_curr->vc_decor.theme ||
++			strcmp(vc->vc_decor.theme, vc_curr->vc_decor.theme) ||
++			(fbcon_decor_active_nores(info, vc_curr) &&
++			 !fbcon_decor_active(info, vc_curr))) {
++			fbcon_decor_disable(vc, 0);
++			fbcon_decor_call_helper("modechange", vc->vc_num);
++		}
++	}
++
+ 	if (fbcon_is_inactive(vc, info) ||
+ 	    ops->blank_state != FB_BLANK_UNBLANK)
+ 		fbcon_del_cursor_timer(info);
+@@ -2416,8 +2474,12 @@
+ 			fbcon_cursor(vc, blank ? CM_ERASE : CM_DRAW);
+ 			ops->cursor_flash = (!blank);
+ 
+-			if (fb_blank(info, blank))
+-				fbcon_generic_blank(vc, info, blank);
++                        if (fb_blank(info, blank)) {
++			    if (fbcon_decor_active(info, vc))
++			                fbcon_decor_blank(vc, info, blank);
++				else
++        				fbcon_generic_blank(vc, info, blank);
++				}
+ 		}
+ 
+ 		if (!blank)
+@@ -2600,13 +2662,22 @@
+ 		set_vc_hi_font(vc, true);
+ 
+ 	if (resize) {
++		/* reset wrap/pan */
+ 		int cols, rows;
+ 
+ 		cols = FBCON_SWAP(ops->rotate, info->var.xres, info->var.yres);
+ 		rows = FBCON_SWAP(ops->rotate, info->var.yres, info->var.xres);
++
++		if (fbcon_decor_active(info, vc)) {
++			info->var.xoffset = info->var.yoffset = p->yscroll = 0;
++			cols = vc->vc_decor.twidth;
++			rows = vc->vc_decor.theight;
++		}
+ 		cols /= w;
+ 		rows /= h;
++
+ 		vc_resize(vc, cols, rows);
++
+ 		if (con_is_visible(vc) && softback_buf)
+ 			fbcon_update_softback(vc);
+ 	} else if (con_is_visible(vc)
+@@ -2736,7 +2807,11 @@
+ 	int i, j, k, depth;
+ 	u8 val;
+ 
+-	if (fbcon_is_inactive(vc, info))
++	if (fbcon_is_inactive(vc, info)
++#ifdef CONFIG_FB_CON_DECOR
++			|| vc->vc_num != fg_console
++#endif
++		)
+ 		return;
+ 
+ 	if (!con_is_visible(vc))
+@@ -2762,7 +2837,47 @@
+ 	} else
+ 		fb_copy_cmap(fb_default_cmap(1 << depth), &palette_cmap);
+ 
+-	fb_set_cmap(&palette_cmap, info);
++	if (fbcon_decor_active(info, vc_cons[fg_console].d) &&
++	    info->fix.visual == FB_VISUAL_DIRECTCOLOR) {
++
++		u16 *red, *green, *blue;
++		int minlen = min(min(info->var.red.length, info->var.green.length),
++				     info->var.blue.length);
++
++		struct fb_cmap cmap = {
++			.start = 0,
++			.len = (1 << minlen),
++			.red = NULL,
++			.green = NULL,
++			.blue = NULL,
++			.transp = NULL
++		};
++
++		red = kmalloc(256 * sizeof(u16) * 3, GFP_KERNEL);
++
++		if (!red)
++			goto out;
++
++		green = red + 256;
++		blue = green + 256;
++		cmap.red = red;
++		cmap.green = green;
++		cmap.blue = blue;
++
++		for (i = 0; i < cmap.len; i++)
++			red[i] = green[i] = blue[i] = (0xffff * i)/(cmap.len-1);
++
++		fb_set_cmap(&cmap, info);
++		fbcon_decor_fix_pseudo_pal(info, vc_cons[fg_console].d);
++		kfree(red);
++
++		return;
++
++	} else if (fbcon_decor_active(info, vc_cons[fg_console].d) &&
++		   info->var.bits_per_pixel == 8 && info->bgdecor.cmap.red != NULL)
++		fb_set_cmap(&info->bgdecor.cmap, info);
++
++out:	fb_set_cmap(&palette_cmap, info);
+ }
+ 
+ static u16 *fbcon_screen_pos(struct vc_data *vc, int offset)
+@@ -2987,7 +3102,14 @@
+ 		rows = FBCON_SWAP(ops->rotate, info->var.yres, info->var.xres);
+ 		cols /= vc->vc_font.width;
+ 		rows /= vc->vc_font.height;
+-		vc_resize(vc, cols, rows);
++
++		if (!fbcon_decor_active_nores(info, vc)) {
++			vc_resize(vc, cols, rows);
++		} else {
++			fbcon_decor_disable(vc, 0);
++			fbcon_decor_call_helper("modechange", vc->vc_num);
++		}
++
+ 		updatescrollmode(p, info, vc);
+ 		scrollback_max = 0;
+ 		scrollback_current = 0;
+@@ -3032,7 +3154,8 @@
+ 		rows = FBCON_SWAP(ops->rotate, info->var.yres, info->var.xres);
+ 		cols /= vc->vc_font.width;
+ 		rows /= vc->vc_font.height;
+-		vc_resize(vc, cols, rows);
++		if (!fbcon_decor_active_nores(info, vc))
++			vc_resize(vc, cols, rows);
+ 	}
+ 
+ 	if (fg != -1)
+@@ -3687,7 +3810,6 @@
+ 		}
+ 	}
+ }
+-
+ void __init fb_console_init(void)
+ {
+ 	int i;
+@@ -3734,4 +3856,15 @@
+ 	do_unregister_con_driver(&fb_con);
+ 	console_unlock();
+ }	
++
++void __exit fbcon_decor_exit();
++{
++	console_lock();
++	fbcon_deinit_device();
++	device_destroy(fb_class, MKDEV(0, 0));
++	fbcon_decor_exit();
++	do_unregister_con_driver(&fb_con);
++	console_unlock();
++}
++
+ #endif
+diff -ruN a/drivers/video/fbdev/core/fbmem.c b/drivers/video/fbdev/core/fbmem.c
+--- a/drivers/video/fbdev/core/fbmem.c	2020-07-31 12:47:17.000000000 -0400
++++ b/drivers/video/fbdev/core/fbmem.c	2020-08-02 23:24:27.296415064 -0400
+@@ -1203,15 +1203,6 @@
  	u16			reserved[3];
  };
  
@@ -1856,11 +1822,20 @@ index 76c1ad9..fafc0af 100644
  static int fb_getput_cmap(struct fb_info *info, unsigned int cmd,
  			  unsigned long arg)
  {
-diff --git a/include/linux/console_decor.h b/include/linux/console_decor.h
-new file mode 100644
-index 0000000..1514355
---- /dev/null
-+++ b/include/linux/console_decor.h
+diff -ruN a/drivers/video/fbdev/Kconfig b/drivers/video/fbdev/Kconfig
+--- a/drivers/video/fbdev/Kconfig	2020-07-31 12:47:17.000000000 -0400
++++ b/drivers/video/fbdev/Kconfig	2020-08-02 23:24:27.296415064 -0400
+@@ -1085,7 +1085,6 @@
+ 	select FB_CFB_FILLRECT
+ 	select FB_CFB_COPYAREA
+ 	select FB_CFB_IMAGEBLIT
+-	select FB_TILEBLITTING
+ 	select FB_MACMODES if PPC_PMAC
+ 	---help---
+ 	  Say Y here if you have a Matrox Millennium, Matrox Millennium II,
+diff -ruN a/include/linux/console_decor.h b/include/linux/console_decor.h
+--- a/include/linux/console_decor.h	1969-12-31 19:00:00.000000000 -0500
++++ b/include/linux/console_decor.h	2020-08-02 23:24:27.296415064 -0400
 @@ -0,0 +1,46 @@
 +#ifndef _LINUX_CONSOLE_DECOR_H_
 +#define _LINUX_CONSOLE_DECOR_H_ 1
@@ -1908,32 +1883,30 @@ index 0000000..1514355
 +#endif /* __KERNEL__ */
 +
 +#endif
-diff --git a/include/linux/console_struct.h b/include/linux/console_struct.h
-index 6fd3c90..c649555 100644
---- a/include/linux/console_struct.h
-+++ b/include/linux/console_struct.h
-@@ -20,6 +20,7 @@ struct vt_struct;
- struct uni_pagedir;
+diff -ruN a/include/linux/console_struct.h b/include/linux/console_struct.h
+--- a/include/linux/console_struct.h	2020-07-31 12:47:17.000000000 -0400
++++ b/include/linux/console_struct.h	2020-08-02 23:52:06.443033185 -0400
+@@ -21,6 +21,7 @@
+ struct uni_screen;
  
  #define NPAR 16
 +#include <linux/console_decor.h>
  
  /*
   * Example: vc_data of a console that was scrolled 3 lines down.
-@@ -140,6 +141,8 @@ struct vc_data {
+@@ -141,6 +142,8 @@
  	struct uni_pagedir *vc_uni_pagedir;
  	struct uni_pagedir **vc_uni_pagedir_loc; /* [!] Location of uni_pagedir variable for this console */
- 	bool vc_panic_force_write; /* when oops/panic this VC can accept forced output/blanking */
+ 	struct uni_screen *vc_uni_screen;	/* unicode screen content */
 +
 +	struct vc_decor vc_decor;
  	/* additional information is in vt_kern.h */
  };
  
-diff --git a/include/linux/fb.h b/include/linux/fb.h
-index a964d07..672cc64 100644
---- a/include/linux/fb.h
-+++ b/include/linux/fb.h
-@@ -238,6 +238,34 @@ struct fb_deferred_io {
+diff -ruN a/include/linux/fb.h b/include/linux/fb.h
+--- a/include/linux/fb.h	2020-07-31 12:47:17.000000000 -0400
++++ b/include/linux/fb.h	2020-08-02 23:24:27.296415064 -0400
+@@ -211,6 +211,34 @@
  };
  #endif
  
@@ -1968,7 +1941,7 @@ index a964d07..672cc64 100644
  /*
   * Frame buffer operations
   *
-@@ -508,6 +536,9 @@ struct fb_info {
+@@ -489,6 +517,9 @@
  #define FBINFO_STATE_SUSPENDED	1
  	u32 state;			/* Hardware state i.e suspend */
  	void *fbcon_par;                /* fbcon use-only private area */
@@ -1978,11 +1951,10 @@ index a964d07..672cc64 100644
  	/* From here on everything is device dependent */
  	void *par;
  	/* we need the PCI or similar aperture base/size not
-diff --git a/include/uapi/linux/fb.h b/include/uapi/linux/fb.h
-index fb795c3..4b57c67 100644
---- a/include/uapi/linux/fb.h
-+++ b/include/uapi/linux/fb.h
-@@ -8,6 +8,23 @@
+diff -ruN a/include/uapi/linux/fb.h b/include/uapi/linux/fb.h
+--- a/include/uapi/linux/fb.h	2020-07-31 12:47:17.000000000 -0400
++++ b/include/uapi/linux/fb.h	2020-08-02 23:24:27.296415064 -0400
+@@ -9,6 +9,23 @@
  
  #define FB_MAX			32	/* sufficient for now */
  
@@ -2006,7 +1978,7 @@ index fb795c3..4b57c67 100644
  /* ioctls
     0x46 is 'F'								*/
  #define FBIOGET_VSCREENINFO	0x4600
-@@ -35,6 +52,25 @@
+@@ -36,6 +53,25 @@
  #define FBIOGET_DISPINFO        0x4618
  #define FBIO_WAITFORVSYNC	_IOW('F', 0x20, __u32)
  
@@ -2032,7 +2004,7 @@ index fb795c3..4b57c67 100644
  #define FB_TYPE_PACKED_PIXELS		0	/* Packed Pixels	*/
  #define FB_TYPE_PLANES			1	/* Non interleaved planes */
  #define FB_TYPE_INTERLEAVED_PLANES	2	/* Interleaved planes	*/
-@@ -277,6 +313,29 @@ struct fb_var_screeninfo {
+@@ -279,6 +315,29 @@
  	__u32 reserved[4];		/* Reserved for future compatibility */
  };
  
@@ -2062,11 +2034,10 @@ index fb795c3..4b57c67 100644
  struct fb_cmap {
  	__u32 start;			/* First entry	*/
  	__u32 len;			/* Number of entries */
-diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index 6ee416e..d2c2425 100644
---- a/kernel/sysctl.c
-+++ b/kernel/sysctl.c
-@@ -149,6 +149,10 @@ static const int cap_last_cap = CAP_LAST_CAP;
+diff -ruN a/kernel/sysctl.c b/kernel/sysctl.c
+--- a/kernel/sysctl.c	2020-08-01 18:34:43.426441848 -0400
++++ b/kernel/sysctl.c	2020-08-02 23:24:27.296415064 -0400
+@@ -170,6 +170,10 @@
  static unsigned long hung_task_timeout_max = (LONG_MAX/HZ);
  #endif
  
@@ -2077,7 +2048,7 @@ index 6ee416e..d2c2425 100644
  #ifdef CONFIG_INOTIFY_USER
  #include <linux/inotify.h>
  #endif
-@@ -266,6 +270,15 @@ static struct ctl_table sysctl_base_table[] = {
+@@ -298,6 +302,15 @@
  		.mode		= 0555,
  		.child		= dev_table,
  	},
