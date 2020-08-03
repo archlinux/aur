@@ -1,6 +1,6 @@
 pkgbase = bigjubelweb-git
 	pkgdesc = A web interface for BigJubel
-	pkgver = 0.7.1.r0.ga91b93a
+	pkgver = 0.7.3.r0.g85bc503
 	pkgrel = 1
 	url = https://www.kabus.eu/git/bigjubelweb
 	arch = any
