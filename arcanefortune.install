@@ -1,0 +1,8 @@
+post_upgrade() {
+    echo "You might have delete your ~/.arcanefortune directory to get the new file layout."
+    echo "Of course, you can backup your saves."
+}
+
+post_install() {
+    post_upgrade
+}

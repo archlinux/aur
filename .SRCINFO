@@ -1,0 +1,17 @@
+pkgbase = arcanefortune
+	pkgdesc = A game of empire building, diplomacy, conquest, construction, and deconstruction
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://arcanefortune.com
+	install = arcanefortune.install
+	arch = x86_64
+	license = CC BY-NC-SA 4.0
+	options = !strip
+	options = !emptydirs
+	source = https://arcanefortune.com/releases/arcane_fortune_v0_1_0_linux.zip
+	source = arcane_fortune
+	sha512sums = ca81299acceb6a4fb4744dd7618f852ca02b12db6b1bccc6c62cd75bcbb50ac5ec89349bd06d8763596148adac69c02cf87cbd549e3cba74bab7304b9513198e
+	sha512sums = 52fab1757d298fe1d78596ad7965a618c1bebca2094be377e33cd10c5aa66a37ed6eb9bb3ea1a36f204946656e1ac5b4eab3c993b6a30e9a90f91d3661090d5a
+
+pkgname = arcanefortune
+

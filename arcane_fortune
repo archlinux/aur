@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Game has limited knowledge of terms, "xterm", "xterm-256color" and "linux" should be safe
+#export TERM=linux
+pkgname=arcanefortune
+
+if [[ ! -d "${HOME}/.${pkgname}" ]]; then
+  mkdir -p "${HOME}/.${pkgname}/saves"
+  ln -s /opt/"${pkgname}"/nn "${HOME}/.${pkgname}/nn"
+  ln -s /opt/"${pkgname}"/arcane_fortune "${HOME}/.${pkgname}/arcane_fortune"
+  cp -rn /opt/"${pkgname}"/config "${HOME}/.${pkgname}/config"
+fi
+
+cd "${HOME}/.${pkgname}"
+exec ./arcane_fortune "${@}"
