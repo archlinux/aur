@@ -9,30 +9,23 @@ license=('MIT')
 depends=('vim' 'nodejs')
 optdepends=('npm: for installing coc extensions'
             'yarn: for installing coc extensions'
-            'vim-coc-extras-meta-git: some basic extensions')
+            'vim-coc-extras-meta: some basic extensions')
 makedepends=('git')
 provides=('vim-coc')
 conflicts=('vim-coc')
-source=('git+https://github.com/neoclide/coc.nvim.git#branch=release'
-        'coc-vim-doc.hook')
-sha256sums=('SKIP'
-            '71348fe1287df827e7b28c41a0659e0cc8ff541623c3e1cc8fbfc84346199b1d')
+source=('git+https://github.com/neoclide/coc.nvim.git#branch=release')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/coc.nvim"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-    cd "${srcdir}/coc.nvim"
-    touch doc/tags doc/tags-cn
-}
-
 package() {
     cd "${srcdir}/coc.nvim"
+    vim -es --cmd ":helptags doc" --cmd ":q"
     find autoload bin build data doc package.json plugin -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/usr/share/vim/vimfiles/pack/coc/start/coc.nvim/{}" \;
     install -Dm 644 "${srcdir}/coc.nvim/LICENSE.md" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
-    install -Dm 644 "${srcdir}"/coc-vim-doc.hook "${pkgdir}"/usr/share/libalpm/hooks/coc-vim-doc.hook
 }
