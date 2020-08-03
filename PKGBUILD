@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -25,10 +25,11 @@ optdepends=(
     'replay-sorcery: for using Replay-Sorcery per game'
     'wmctrl: for optional minimize/maximize of all open windows on game start/stop'
     'net-tools: for optional network monitoring'
+    'boxtron: for optional Boxtron support'
 )
 
 source=("https://github.com/frostworx/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('76ec63eba0fb33a2851d52de30f972a2')
+md5sums=('b47029cc53b2c3cb7289ddf5f3d3e740')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
