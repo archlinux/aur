@@ -1,0 +1,16 @@
+pkgbase = osc-cli-git
+	pkgdesc = Outscale CLI
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/outscale/osc-cli
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-fire
+	depends = python-requests
+	depends = python-xmltodict
+	source = git://github.com/outscale/osc-cli.git
+	sha256sums = SKIP
+
+pkgname = osc-cli-git
+
