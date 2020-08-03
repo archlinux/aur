@@ -1,7 +1,7 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=proximity-sort
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='Simple command-line utility for sorting inputs by proximity to a path argument '
 arch=('x86_64')
@@ -10,11 +10,16 @@ license=('MIT' 'APACHE')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://crates.io/api/v1/crates/${pkgname}/${pkgver}/download")
-sha256sums=('f27abbad83745466bdc78cf4b0c2bc3f7428cd61b06878178c2ebfff7aa7e20e')
+sha256sums=('f9bb42619205a3861cf4306096026e78798b06ff395f9578e1df360bb9a94021')
 
 build() {
   cd "${pkgname}-${pkgver}"
   cargo build --release --locked
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+  cargo test --release --locked
 }
 
 package() {
