@@ -1,13 +1,13 @@
 pkgbase = ssh-chat-bin
 	pkgdesc = Chat over SSH
-	pkgver = 1.9
+	pkgver = 1.10
 	pkgrel = 2
 	url = https://github.com/shazow/ssh-chat
 	arch = x86_64
 	license = MIT
 	provides = ssh-chat
-	source = ssh-chat-1.9::https://github.com/shazow/ssh-chat/releases/download/v1.9/ssh-chat-linux_amd64.tgz
-	sha256sums = 7231019c043f16b4bb93c35ad9f3d84ac786b6b6749b043b2dd697f85989ab5f
+	source = ssh-chat-1.10.tgz::https://github.com/shazow/ssh-chat/releases/download/v1.10/ssh-chat-linux_amd64.tgz
+	sha256sums = a05b928639697eae56511b67ed5a414ea6930cb20b24171d1a9374dd74236522
 
 pkgname = ssh-chat-bin
 

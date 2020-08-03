@@ -2,20 +2,20 @@
 
 _pkgname=ssh-chat
 pkgname=${_pkgname}-bin
-pkgver=1.9
+pkgver=1.10
 pkgrel=2
 pkgdesc='Chat over SSH'
 arch=('x86_64')
 url='https://github.com/shazow/ssh-chat'
 license=('MIT')
 provides=("${_pkgname}")
-source=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux_amd64.tgz")
-sha256sums=('7231019c043f16b4bb93c35ad9f3d84ac786b6b6749b043b2dd697f85989ab5f')
+source=("${_pkgname}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_pkgname}-linux_amd64.tgz")
+sha256sums=('a05b928639697eae56511b67ed5a414ea6930cb20b24171d1a9374dd74236522')
 
 package() {
-  install -Dm755 "${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}/${_pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_pkgname}/README.md"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgname}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
