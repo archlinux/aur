@@ -1,14 +1,9 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
 # Maintainer: liupold <rohhnch@protonmail.ch>
 
 pkgname=pidswallow-dev-git
-pkgrel=5
+pkgrel=6
 pkgver=2.0.d # dev
 pkgdesc="A script to swallow your terminal automatically"
 arch=(x86_64)
@@ -45,5 +40,6 @@ check() {
 package() {
         cd "$pkgname" || return 1
         install -Dm755 "./pidswallow" "$pkgdir/usr/bin/pidswallow"
+        install -Dm644 "./man/pidswallow.1" "$pkgdir/usr/local/man/man1/$pkgname.1"
         install -Dm644 "./README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
