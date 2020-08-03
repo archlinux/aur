@@ -9,7 +9,7 @@
 
 _pkgname=gegl
 pkgname="${_pkgname}-git"
-pkgver=0.4.25.r10067.5b2c7dd48
+pkgver=0.4.27.r10073.83f89e0c8
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
