@@ -8,11 +8,7 @@ pkgbase = leaderf-git
 	makedepends = git
 	makedepends = python
 	source = leaderf::git+https://github.com/Yggdroot/LeaderF.git
-	source = leaderf-vim-doc.hook
-	source = leaderf-neovim-doc.hook
 	sha256sums = SKIP
-	sha256sums = d125b79fe4f7e6d205010a96acf78ac63814c26d98050a46f8e627993ff033ea
-	sha256sums = d7a7798ed8902de98c777f8770acd034e277f89478dc13eef77e491f2e99868d
 
 pkgname = vim-leaderf-git
 	depends = vim

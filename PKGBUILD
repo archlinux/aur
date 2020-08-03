@@ -9,12 +9,8 @@ pkgdesc='An efficient fuzzy finder that helps to locate files, buffers, mrus, gt
 arch=('any')
 url='https://github.com/Yggdroot/LeaderF'
 license=('Apache')
-source=("${_pkgname}::git+https://github.com/Yggdroot/LeaderF.git"
-        "${_pkgname}-vim-doc.hook"
-        "${_pkgname}-neovim-doc.hook")
-sha256sums=('SKIP'
-            'd125b79fe4f7e6d205010a96acf78ac63814c26d98050a46f8e627993ff033ea'
-            'd7a7798ed8902de98c777f8770acd034e277f89478dc13eef77e491f2e99868d')
+source=("${_pkgname}::git+https://github.com/Yggdroot/LeaderF.git")
+sha256sums=('SKIP')
 makedepends=('git'
              'python')
 
@@ -26,7 +22,6 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}"
     bash install.sh
-    touch doc/tags
 }
 
 package_vim-leaderf-git() {
@@ -37,11 +32,11 @@ package_vim-leaderf-git() {
     _variant='vim'
 
     cd "${srcdir}/${_pkgname}"
+    vim -es --cmd ":helptags doc" --cmd ":q"
     find autoload doc plugin syntax -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
     install -Dm 644 "${srcdir}/${_pkgname}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 "${srcdir}/${_pkgname}-${_variant}-doc.hook" "${pkgdir}/usr/share/libalpm/hooks/${_pkgname}-${_variant}-doc.hook"
 }
 
 package_neovim-leaderf-git() {
@@ -52,9 +47,9 @@ package_neovim-leaderf-git() {
     _variant='neovim'
 
     cd "${srcdir}/${_pkgname}"
+    nvim -es --cmd ":helptags doc" --cmd ":q"
     find autoload doc plugin syntax -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
     install -Dm 644 "${srcdir}/${_pkgname}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 "${srcdir}/${_pkgname}-${_variant}-doc.hook" "${pkgdir}/usr/share/libalpm/hooks/${_pkgname}-${_variant}-doc.hook"
 }
