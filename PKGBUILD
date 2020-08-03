@@ -1,7 +1,7 @@
 pkgname=gtkcord3-git
 _pkgname=gtkcord3
 pkgver=r253.324f956
-pkgrel=2
+pkgrel=3
 pkgdesc='Discord client written in go and gtk3'
 arch=('any')
 url='https://github.com/diamondburned/gtkcord3'
@@ -11,13 +11,19 @@ provides=('gtkcord3')
 conflicts=('gtkcord3')
 makedepends=('git' 'go')
 source=('git+https://github.com/diamondburned/gtkcord3'
-	'gtkcord3.desktop')
+	'gtkcord3.desktop'
+	'fix-build.patch')
 sha256sums=('SKIP'
-	'8839b86e0a4174d5b5f3f7aa1248ee6af26901e4b5d4e749088444e1861982a4')
+	'8839b86e0a4174d5b5f3f7aa1248ee6af26901e4b5d4e749088444e1861982a4'
+	'2e54611250de34f1a5acb255003a4b94fa1610fdf58c21ed61d790cf8c71366f')
 
 pkgver() {
 	cd "$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+prepare() {
+	cd "$_pkgname"
+	patch -Np1 -i ../fix-build.patch
 }
 
 build() {

@@ -1,0 +1,6 @@
+--- a/gtkcord/components/popup/stateful.go
++++ b/gtkcord/components/popup/stateful.go
+10c10
+< 	"github.com/diamondburned/ningen/handlerrepo"
+---
+> 	"github.com/diamondburned/ningen/handler"
