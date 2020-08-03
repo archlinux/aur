@@ -1,7 +1,7 @@
 pkgname=list
 pkgver=0.0.1.r0.g8b1fe31
 pkgrel=1
-pkgdesc="A Linux utility wrapper in bash script to search files, and show info and dependencies"
+pkgdesc="Linux utility wrapper in bash function script to search files, and show info, dependencies etc, it'd be put in .bashrc"
 arch=('any')
 url="https://github.com/abdulbadii/find-and-list-file-folder-recursively"
 license=('GPL3')
@@ -18,6 +18,6 @@ pkgver() {
 
 package() {
 	cd "$srcdir/find-and-list-file-folder-recursively"
-	cp List.sh "$pkgdir/"
+	cp List.sh README.md "$pkgdir/"
 	cat List.sh >>~/.bashrc
 }
