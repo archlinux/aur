@@ -17,6 +17,8 @@ pkgbase = neovim-coc-extras-meta-git
 	optdepends = neovim-coc-pairs-git: auto pairs support
 	optdepends = neovim-coc-explorer-git: file/buffer explorer
 	optdepends = neovim-coc-git-git: git integration
+	provides = neovim-coc-extras-meta
+	conflicts = neovim-coc-extras-meta
 
 pkgname = neovim-coc-extras-meta-git
 
