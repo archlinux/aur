@@ -1,0 +1,14 @@
+pkgbase = pdf.tocgen
+	pkgdesc = A CLI toolset for generating table of contents for PDF documents.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/Krasjet/pdf.tocgen
+	arch = any
+	license = GPL3
+	depends = python-toml
+	depends = python-pymupdf
+	source = https://files.pythonhosted.org/packages/source/p/pdf.tocgen/pdf.tocgen-1.1.1.tar.gz
+	sha256sums = aa05d985d6c5950ac5303496ef3b6129289bb89e663c69da353a56192e9757d2
+
+pkgname = pdf.tocgen
+
