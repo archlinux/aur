@@ -1,5 +1,5 @@
 pkgbase = list
-	pkgdesc = A Linux utility wrapper in bash script to search files, and show info and dependencies
+	pkgdesc = Linux utility wrapper in bash function script to search files, and show info, dependencies etc, it'd be put in .bashrc
 	pkgver = 0.0.1.r0.g8b1fe31
 	pkgrel = 1
 	url = https://github.com/abdulbadii/find-and-list-file-folder-recursively
