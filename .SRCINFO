@@ -1,10 +1,11 @@
 pkgbase = nvidia-system-monitor-qt
 	pkgdesc = Task Manager for Linux for Nvidia graphics cards (QT vesrion)
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/congard/nvidia-system-monitor-qt
 	arch = x86_64
 	license = MIT
+	makedepends = cmake
 	depends = nvidia-utils
 	depends = qt5-base
 	depends = which
