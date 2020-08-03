@@ -1,7 +1,7 @@
 # Maintainer: Sven Hesse <drmccoy@drmccoy.de>
 
 pkgname=phaethon
-pkgver=0.0.6.r0.g5020409
+pkgver=0.0.6.r0.gd51692a
 pkgrel=1
 pkgdesc="A resource explorer for BioWare's Aurora engine games"
 arch=('i686' 'x86_64')

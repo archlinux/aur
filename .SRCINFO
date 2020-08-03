@@ -1,6 +1,6 @@
 pkgbase = phaethon
 	pkgdesc = A resource explorer for BioWare's Aurora engine games
-	pkgver = 0.0.6.r0.g5020409
+	pkgver = 0.0.6.r0.gd51692a
 	pkgrel = 1
 	url = https://xoreos.org/
 	arch = i686
