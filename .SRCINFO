@@ -1,11 +1,13 @@
 pkgbase = electron-cash
 	pkgdesc = Lightweight Bitcoin Cash wallet
 	pkgver = 4.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.electroncash.org/
 	arch = any
 	license = MIT
+	makedepends = automake
 	makedepends = git
+	makedepends = libtool
 	makedepends = protobuf
 	makedepends = python-requests
 	makedepends = python-setuptools
