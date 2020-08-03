@@ -2,7 +2,7 @@
 Name=Sabaki
 GenericName=SGF Editor (Go)
 Comment=An elegant Go/Baduk/Weiqi board and SGF editor for a more civilized age.
-Exec=/opt/Sabaki/sabaki %U
+Exec=/opt/Sabaki/sabaki %F
 Terminal=false
 Type=Application
 Icon=sabaki
