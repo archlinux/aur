@@ -1,6 +1,6 @@
 pkgbase = picom-ibhagwan-git
 	pkgdesc = iBhagwan's compton|picom fork (X compositor) with dual_kawase blur and rounded corners
-	pkgver = 1381_Next.100.g82ecc90_2020.06.20
+	pkgver = 1382_Next.101.g20c6412_2020.08.03
 	pkgrel = 1
 	url = https://github.com/ibhagwan/picom
 	arch = i686
