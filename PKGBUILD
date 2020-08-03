@@ -5,9 +5,9 @@
 
 #pkgbase=linux-mainline               # Build stock -ARCH kernel
 pkgbase=linux-mainline-bootsplash       # Build kernel with a different name
-_tag=v5.8-rc7
-pkgver=5.8rc7
-pkgrel=5
+_tag=v5.8
+pkgver=5.8
+pkgrel=1
 pkgdesc="Linux Mainline - with bootsplash support"
 arch=(x86_64)
 url="https://kernel.org/"
