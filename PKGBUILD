@@ -9,20 +9,21 @@ url="https://github.com/GhostNaN/$_gitname"
 license=('GPL3')
 depends=('mpv' 'wlroots')
 makedepends=('git' 'meson' 'ninja' 'pkgconf')
+optdepends=('socat')
 provides=('mpvpaper')
 source=("https://github.com/GhostNaN/$_gitname")
 md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/$_gitname"
+	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
 
 prepare() {
 	# clean existing sources if any
 	rm -rf "${srcdir}"/$_gitname
 	# Clone manually to avoid downloading from the heavy "assets" branch
 	git clone --single-branch https://github.com/GhostNaN/$_gitname.git
-}
-
-pkgver() {
-	cd "$srcdir/$_gitname"
-	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {

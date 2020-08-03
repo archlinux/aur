@@ -12,6 +12,7 @@ pkgbase = mpvpaper-git
 	makedepends = pkgconf
 	depends = mpv
 	depends = wlroots
+	optdepends = socat
 	provides = mpvpaper
 	source = https://github.com/GhostNaN/mpvpaper
 	md5sums = SKIP
