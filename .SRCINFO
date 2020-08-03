@@ -1,0 +1,15 @@
+pkgbase = python-seriate
+	pkgdesc = Optimal ordering of elements in a set given their distance matrix.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/src-d/seriate
+	arch = any
+	license = Apache2
+	makedepends = python-setuptools
+	depends = python-or-tools
+	depends = python-numpy
+	source = https://github.com/src-d/seriate/archive/1.1.2.tar.gz
+	sha256sums = 5e031e865398fbe24aebdbb4a2e0015447aec50478830850f29d38660fd266e3
+
+pkgname = python-seriate
+
