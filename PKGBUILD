@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-json-c
-pkgver=0.14
+pkgver=0.15
 pkgrel=1
 pkgdesc="A JSON implementation in C (mingw-w64)"
 arch=('any')
@@ -14,10 +14,10 @@ source=("https://github.com/json-c/json-c/archive/json-c-${pkgver//_/-}.tar.gz"
         "001-install-private-header.patch"
         "002-library-version.patch"
         "fix-snprintf.patch")
-sha256sums=('0b723c251a9684801b8ae6e4ac43c2cf1ad86c9f03b1198e7dc6abdba894af80'
+sha256sums=('74985882e39467b34722e584ab836ed2abd47061888f318125fd4b167002afd5'
             '197e33a56fc3d655e058d6936e92698c8aa65b7297cb218345b8ad51350c4ecf'
-            '01070781c13c7c5732d5d6779443381079be22d7d5612d0be1936e9cb9c95b7e'
-            '53f83cfe1d1ea06a7ae3028edc3c9d8b05c7b5581b9031586ecbf9db745d63a2')
+            '2288c0ad1c0f98f2b43a8e4bdd09a6cf91710c7c8b1e7bf7a2b516ed21e81705'
+            'df185895f20f5591717daa6075c29a6b99b9dbcbc94e1b753689a8952cd95577')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

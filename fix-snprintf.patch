@@ -18,15 +18,3 @@ diff -Naur json-c-json-c-0.14.orig/CMakeLists.txt json-c-json-c-0.14/CMakeLists.
  
  if (HAVE_FCNTL_H)
      check_symbol_exists(open        "fcntl.h" HAVE_OPEN)
-diff -Naur json-c-json-c-0.14.orig/snprintf_compat.h json-c-json-c-0.14/snprintf_compat.h
---- json-c-json-c-0.14.orig/snprintf_compat.h	2020-06-09 13:05:45.309062184 -0400
-+++ json-c-json-c-0.14/snprintf_compat.h	2020-06-09 13:08:56.643884154 -0400
-@@ -13,7 +13,7 @@
- 
- #include <stdarg.h>
- 
--#if !defined(HAVE_SNPRINTF) && defined(_MSC_VER)
-+#if !defined(HAVE_SNPRINTF) && defined(_WIN32)
- static int json_c_vsnprintf(char *str, size_t size, const char *format, va_list ap)
- {
- 	int ret;
