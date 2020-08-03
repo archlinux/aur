@@ -1,0 +1,15 @@
+pkgbase = solve-git
+	pkgdesc = Enables the terminal to perform float point math
+	pkgver = r8.1186267
+	pkgrel = 1
+	url = https://gitlab.com/es20490446e/solve
+	arch = any
+	license = AGPL
+	makedepends = git
+	depends = bash
+	provides = solve
+	source = solve::git+https://gitlab.com/es20490446e/solve
+	sha256sums = SKIP
+
+pkgname = solve-git
+
