@@ -14,10 +14,8 @@ optdepends=('ctags: ctags support'
             'fzf: for searching symbols/tags')
 provides=('neovim-vista')
 conflicts=('neovim-vista')
-source=("${_pkgname}::git+https://github.com/liuchengxu/vista.vim.git"
-        "${_pkgname}-neovim-doc.hook")
-sha256sums=('SKIP'
-            '9e0343333fad74fbd24ad7e97dc4568389409d7dbf98b842937736b6aa952833')
+source=("${_pkgname}::git+https://github.com/liuchengxu/vista.vim.git")
+sha256sums=('SKIP')
 makedepends=('git')
 _packdir="usr/local/share/nvim/site/pack/${_pkgname}/start/${_pkgname}"
 _variant='neovim'
@@ -27,16 +25,11 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-    cd "${srcdir}/${_pkgname}"
-    touch doc/tags
-}
-
 package() {
     cd "${srcdir}/${_pkgname}"
+    nvim -es --cmd ":helptags doc" --cmd ":q"
     find autoload doc plugin syntax -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/${_packdir}/{}" \;
     install -Dm 644 "${srcdir}/${_pkgname}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 "${srcdir}/${_pkgname}-${_variant}-doc.hook" "${pkgdir}/usr/share/libalpm/hooks/${_pkgname}-${_variant}-doc.hook"
 }

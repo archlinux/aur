@@ -14,9 +14,7 @@ pkgbase = neovim-vista-git
 	provides = neovim-vista
 	conflicts = neovim-vista
 	source = vista::git+https://github.com/liuchengxu/vista.vim.git
-	source = vista-neovim-doc.hook
 	sha256sums = SKIP
-	sha256sums = 9e0343333fad74fbd24ad7e97dc4568389409d7dbf98b842937736b6aa952833
 
 pkgname = neovim-vista-git
 
