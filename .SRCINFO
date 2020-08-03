@@ -14,9 +14,7 @@ pkgbase = vim-vista-git
 	provides = vim-vista
 	conflicts = vim-vista
 	source = vista::git+https://github.com/liuchengxu/vista.vim.git
-	source = vista-vim-doc.hook
 	sha256sums = SKIP
-	sha256sums = 4888f23eae41c3bc63ee39e018a1434fac8ad62f3af5a9b4cb500121becc7f6c
 
 pkgname = vim-vista-git
 
