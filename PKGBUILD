@@ -1,5 +1,5 @@
 pkgname=slepc
-pkgver=3.13.2
+pkgver=3.13.3
 pkgrel=1
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=("petsc>=${pkgver:0:4}")
 makedepends=('python')
 install=slepc.install
 source=(http://slepc.upv.es/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
-sha256sums=('04cb8306cb5d4d990509710d7f8ae949bdc2c7eb850930b8d0b0b5ca99f6c70d')
+sha256sums=('23d179c22b4b2f22d29fa0ac0a62f5355a964d3bc245a667e9332347c5aa8f81')
 
 
 build() {
