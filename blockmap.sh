@@ -2,4 +2,4 @@
 for name in /usr/share/java/blockmap/*.jar ; do
   CP=$CP:$name
 done
-archlinux-java-run -a 13 -- -cp $CP de.piegames.blockmap.standalone.CommandLineMain "$@"
+exec archlinux-java-run -a 13 -- -cp "$CP" de.piegames.blockmap.standalone.CommandLineMain "$@"
