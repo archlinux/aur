@@ -17,6 +17,8 @@ pkgbase = vim-coc-extras-meta-git
 	optdepends = vim-coc-pairs-git: auto pairs support
 	optdepends = vim-coc-explorer-git: file/buffer explorer
 	optdepends = vim-coc-git-git: git integration
+	provides = vim-coc-extras-meta
+	conflicts = vim-coc-extras-meta
 
 pkgname = vim-coc-extras-meta-git
 

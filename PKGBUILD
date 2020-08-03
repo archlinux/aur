@@ -5,6 +5,8 @@ pkgrel=1
 pkgdesc='Meta package to install some basic extensions for coc.nvim'
 arch=(any)
 url='https://github.com/neoclide/coc.nvim'
+provides=('vim-coc-extras-meta')
+conflicts=('vim-coc-extras-meta')
 depends=(vim-coc-highlight-git
          vim-coc-lists-git
          vim-coc-marketplace-git
