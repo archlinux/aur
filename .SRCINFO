@@ -1,0 +1,16 @@
+pkgbase = stern
+	pkgdesc = Multi pod and container log tailing for Kubernetes
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/wercker/stern
+	arch = x86_64
+	license = apache
+	makedepends = go
+	depends = glibc
+	source = stern-1.11.0.tar.gz::https://github.com/wercker/stern/archive/1.11.0.tar.gz
+	source = gomodules.patch::https://github.com/wercker/stern/commit/30c4a62d610f8695267e2e5ca0d1b32491bbc04d.patch
+	sha256sums = d6f47d3a6f47680d3e4afebc8b01a14f0affcd8fb625132af14bb77843f0333f
+	sha256sums = 872b9c67fcf8ee622a40a1eec020bced187bb833ea0beeace2c283e2889f1f4e
+
+pkgname = stern
+
