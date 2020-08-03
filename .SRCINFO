@@ -1,6 +1,6 @@
 pkgbase = steamtinkerlaunch
 	pkgdesc = Wrapper script for Steam custom launch options
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = steamtinkerlaunch
 	optdepends = wmctrl: for optional minimize/maximize of all open windows on game start/stop
 	optdepends = net-tools: for optional network monitoring
 	optdepends = boxtron: for optional Boxtron support
-	source = https://github.com/frostworx/steamtinkerlaunch/archive/v1.0.1.tar.gz
-	md5sums = b47029cc53b2c3cb7289ddf5f3d3e740
+	source = https://github.com/frostworx/steamtinkerlaunch/archive/v1.0.2.tar.gz
+	md5sums = fae4bcf3dac99faa8e5af03fd4bfb957
 
 pkgname = steamtinkerlaunch
 
