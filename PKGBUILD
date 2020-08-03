@@ -1,5 +1,7 @@
 # Maintainer: mcol <mcol at posteo dot net>
 
+# PKGBUILD @ mcol.xyz/code/gita-git
+
 pkgname=gita-git
 pkgver=r8.43eb798
 pkgrel=1
@@ -17,7 +19,7 @@ provides=("gita")
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
