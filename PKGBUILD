@@ -3,7 +3,7 @@
 
 pkgname=ccl-git
 epoch=1
-pkgver=1.12.11.g997de910
+pkgver=1.12.32.g8778079b
 pkgrel=1
 pkgdesc="The Clozure Common Lisp implementation"
 url="http://ccl.clozure.com/"
@@ -11,11 +11,11 @@ license=('APACHE')
 arch=('x86_64')
 depends=('bash')
 optdepends=('java-environment: for using example file jfli.jar')
-makedepends=('git' 'subversion')
+makedepends=('git')
 provides=('common-lisp' 'cl-asdf' 'ccl')
 conflicts=('ccl-bin' 'ccl')
 _arch=64
-source=("git+https://github.com/jdz/ccl.git#branch=fix-c-headers" https://github.com/Clozure/ccl/releases/download/v1.12/linuxx86.tar.gz)
+source=("git+https://github.com/Clozure/ccl.git" https://github.com/Clozure/ccl/releases/download/v1.12/linuxx86.tar.gz)
 sha256sums=('SKIP'
             '7fbdb04fb1b19f0307c517aa5ee329cb4a21ecc0a43afd1b77531e4594638796')
 noextract=('linuxx86.tar.gz')
@@ -45,7 +45,7 @@ package() {
   
   # install data
  install -d "$pkgdir"/usr/lib/$pkgname
-  cp -a {compiler,level-*,lib*,lisp-kernel,objc-bridge,tools,xdump,lx86cl$_arch*} \
+  cp -a {compiler,level-*,lib*,lisp-kernel,objc-bridge,tools,xdump,x86-headers,lx86cl$_arch*} \
      "$pkgdir"/usr/lib/$pkgname
   # install examples
   install -d "$pkgdir"/usr/share/$pkgname

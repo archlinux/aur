@@ -1,13 +1,12 @@
 pkgbase = ccl-git
 	pkgdesc = The Clozure Common Lisp implementation
-	pkgver = 1.12.11.g997de910
+	pkgver = 1.12.32.g8778079b
 	pkgrel = 1
 	epoch = 1
 	url = http://ccl.clozure.com/
 	arch = x86_64
 	license = APACHE
 	makedepends = git
-	makedepends = subversion
 	depends = bash
 	optdepends = java-environment: for using example file jfli.jar
 	provides = common-lisp
@@ -16,7 +15,7 @@ pkgbase = ccl-git
 	conflicts = ccl-bin
 	conflicts = ccl
 	noextract = linuxx86.tar.gz
-	source = git+https://github.com/jdz/ccl.git#branch=fix-c-headers
+	source = git+https://github.com/Clozure/ccl.git
 	source = https://github.com/Clozure/ccl/releases/download/v1.12/linuxx86.tar.gz
 	sha256sums = SKIP
 	sha256sums = 7fbdb04fb1b19f0307c517aa5ee329cb4a21ecc0a43afd1b77531e4594638796
