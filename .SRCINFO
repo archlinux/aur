@@ -1,14 +1,14 @@
 pkgbase = lesspassgo
-	pkgver = 2018.05.09
-	pkgrel = 5
+	pkgver = 2020.08.02
+	pkgrel = 1
 	url = https://github.com/tuxlinuxien/lesspassgo
 	arch = any
 	license = MIT
 	makedepends = go
-	source = https://github.com/tuxlinuxien/lesspassgo/archive/9d4f658de1d17d2d92b22de6f6e93dd3295aa299.tar.gz
+	source = https://github.com/tuxlinuxien/lesspassgo/archive/ecb58e0f90ed65d4bde3e1254294593dc5406c30.tar.gz
 	source = lesspassgo-server.conf
 	source = lesspassgo-server.service
-	sha256sums = 99273ad1eab14c915beae2260b6663c66772fc10143b3364dbe98ba08eeb18f1
+	sha256sums = 7f4948e80364d5e6d8ad8a6a2b2bf13998a725d519d6bea3b3ddcabde3f70ffa
 	sha256sums = 732503800bd05bb2f443d6f1fecb1d3fc3fa82074e8dc8cf01aa746817236e5b
 	sha256sums = bfaaca8ad7d1bcbc0a92d7d5ceadf7dc00592fe23084a70b18c8c89ede897d1d
 
