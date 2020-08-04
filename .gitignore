@@ -1,2 +1,7 @@
 /pkg/
 /src/
+/datadog-agent-*-Packages
+/datadog-agent-*-Release
+/datadog-agent-*-Release.sig
+/datadog-agent_*_amd64.deb
+/datadog-agent-*-x86_64.pkg.*
