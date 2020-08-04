@@ -1,7 +1,7 @@
 post_upgrade() {
   # Test for the *old* config file and *lack* of new config file, move if needed.
   if [[ -f /opt/sabnzbd/sabnzbd.ini && ! -f /var/lib/sabnzbd/sabnzbd.ini ]]; then
-    mv /opt/sabnzbd/sabnzbd/ini /var/lib/sabnzbd/
+    mv /opt/sabnzbd/sabnzbd.ini /var/lib/sabnzbd/
     echo "Moved sabnzbd.ini from /opt/sabnzbd to /var/lib/sabnzbd."
   fi
 
