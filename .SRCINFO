@@ -1,0 +1,13 @@
+pkgbase = python-trytond_stock_package_shipping_dpd
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_package_shipping_dpd/trytond_stock_package_shipping_dpd-5.6.0.tar.gz
+	sha256sums = 67fb28260b6137a1185966bf3f36468bfc44a6dc71b2a27aa991d1de8ea0e46a
+
+pkgname = python-trytond_stock_package_shipping_dpd
+
