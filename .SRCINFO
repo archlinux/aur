@@ -1,4 +1,4 @@
-pkgbase = trytond_sale_history
+pkgbase = python-trytond_sale_history
 	pkgdesc = Tryton module to historize sales
 	pkgver = 5.6.0
 	pkgrel = 1
