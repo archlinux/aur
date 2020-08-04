@@ -1,0 +1,14 @@
+pkgbase = trytond_sale_history
+	pkgdesc = Tryton module to historize sales
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_history/trytond_sale_history-5.6.0.tar.gz
+	sha256sums = 171e6815e39c10a287f3170160995aaedb771eb3661647c224e5723ed412bcfc
+
+pkgname = python-trytond_sale_history
+
