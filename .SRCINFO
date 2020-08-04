@@ -1,0 +1,18 @@
+pkgbase = short-circuit-git
+	pkgdesc = A developer scratchpad built for GNOME.
+	pkgver = r33.19e92c2
+	pkgrel = 1
+	url = https://gitlab.gnome.org/Bharatkalluri/short-circuit
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = dconf
+	depends = hicolor-icon-theme
+	depends = python
+	conflicts = shortcircuit
+	source = git+https://gitlab.gnome.org/Bharatkalluri/short-circuit.git
+	md5sums = SKIP
+
+pkgname = short-circuit-git
+
