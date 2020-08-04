@@ -1,6 +1,6 @@
-pkgbase = python-fastecdsa-git
-	pkgdesc = Python library for fast elliptic curve crypto
-	pkgver = 2.1.2.r1.g4a16dae
+pkgbase = python-fastecdsa-1.7.4
+	pkgdesc = Python library for fast elliptic curve crypto (v1.7.4)
+	pkgver = 1.7.4.r0.g5fa0163
 	pkgrel = 1
 	url = https://github.com/AntonKueltz/fastecdsa
 	arch = x86_64
@@ -8,9 +8,10 @@ pkgbase = python-fastecdsa-git
 	makedepends = python-setuptools
 	depends = python
 	depends = gmp
-	provides = python-fastecdsa
-	source = python-fastecdsa::git+https://github.com/AntonKueltz/fastecdsa.git
+	provides = python-fastecdsa=1.7.4
+	conflicts = python-fastecdsa
+	source = python-fastecdsa::git+https://github.com/AntonKueltz/fastecdsa.git#tag=v1.7.4
 	sha256sums = SKIP
 
-pkgname = python-fastecdsa-git
+pkgname = python-fastecdsa-1.7.4
 
