@@ -1,0 +1,13 @@
+pkgbase = python-trytond_sale_promotion_coupon
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_promotion_coupon/trytond_sale_promotion_coupon-5.6.0.tar.gz
+	sha256sums = eca66b711a767d05dd6f4e45d24a1c480d744b177d6a4639b1e958da353995b2
+
+pkgname = python-trytond_sale_promotion_coupon
+
