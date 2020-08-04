@@ -21,12 +21,11 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 "${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm755 "${_pkgname}/${_pkgname}s" "${pkgdir}/usr/bin/${_pkgname}s"
-  install -Dm644 "${_pkgname}/man/${_pkgname}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
-  install -Dm644 "${_pkgname}/man/${_pkgname}s.1" "${pkgdir}/usr/share/man/man1/${_pkgname}s.1"
-  install -Dm644 "${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  cd ${_pkgname}
+  install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}"{,s}
+  install -Dm644 -t "${pkgdir}/usr/share/man/man1" "man/${_pkgname}"{,s}.1
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
 }
 
 # vim: ts=2 sw=2 et:
