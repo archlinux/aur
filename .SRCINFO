@@ -1,14 +1,14 @@
-pkgbase = python-trytond_stock_lot
+pkgbase = trytond_stock_lot
 	pkgdesc = Tryton module for lot of products
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_lot/trytond_stock_lot-5.2.0.tar.gz
-	sha256sums = 1b324a4a8aaae21c260983b73d11f80a71cca2a48527c153bede1cc2351ea241
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_lot/trytond_stock_lot-5.6.0.tar.gz
+	sha256sums = 37e28cca8592a53ce7e935c30629bd7f86dba4a8d460d80811fc8bee1b621328
 
 pkgname = python-trytond_stock_lot
 
