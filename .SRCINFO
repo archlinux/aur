@@ -1,14 +1,14 @@
-pkgbase = python-trytond_product_measurements
+pkgbase = trytond_product_measurements
 	pkgdesc = Tryton module to add measurements to product
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_product_measurements/trytond_product_measurements-5.2.0.tar.gz
-	sha256sums = fe2257bf7dbf064133d1f153bfd77f8b3ff1c2669f60c685a5648f12b5fdb0e1
+	source = https://files.pythonhosted.org/packages/source/t/trytond_product_measurements/trytond_product_measurements-5.6.0.tar.gz
+	sha256sums = 5a672008529fea7e320c0d344d92f1fc4fd919b2e7daebf46428581cf8f583af
 
 pkgname = python-trytond_product_measurements
 
