@@ -1,4 +1,4 @@
-pkgbase = trytond_sale_subscription_asset
+pkgbase = python-trytond_sale_subscription_asset
 	pkgdesc = A module to handle asset in the sale subscriptions
 	pkgver = 5.6.0
 	pkgrel = 1
