@@ -1,4 +1,4 @@
-pkgbase = trytond_user_role
+pkgbase = python-trytond_user_role
 	pkgdesc = Tryton module to manage role on user
 	pkgver = 5.6.0
 	pkgrel = 1
