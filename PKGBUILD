@@ -1,8 +1,11 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=microsip
-pkgver=3.19.31
+pkgver=3.20.0
 pkgrel=1
 pkgdesc="Open source portable SIP softphone for Windows based on PJSIP stack"
+_repouser=post-factum
+_reponame=microsip
+_wrapperver=1.0
 arch=(x86_64)
 url="https://www.microsip.org/"
 license=(GPL2)
@@ -10,16 +13,10 @@ depends=(wine lib32-libpulse xorg-xdpyinfo)
 conflicts=(wine-staging)
 
 source=("MicroSIP-Lite-${pkgver}.zip"::"https://www.microsip.org/downloads/?file=MicroSIP-Lite-${pkgver}.zip"
-		"${pkgname}"
-		"${pkgname}.desktop"
-		"${pkgname}.png"
-		"${pkgname}.reg")
+		"${_reponame}-${_wrapperver}.tar.bz2"::"https://gitlab.com/${_repouser}/${_reponame}/-/archive/v${_wrapperver}/${_reponame}-v${_wrapperver}.tar.bz2")
 
-sha256sums=('172ae69f37a41d2c44e73a9c42c38581ae0bd7878d7819fc7e8c960963a52ee7'
-            'f35b60d2da37bb7d7a8a224eb8a392680824078179629d75c4f3efd3b0693980'
-            'd588c2b2e38e12d2be3dfdd9f2a63690293b884c7df240c441e271725b9a2ca2'
-            '4d33d040f772c4b1f1652b8af59342bdec600fd3de875e7ef6ee1a43fc3415cf'
-            'c97cde99004dbee5cb9b05a7b6bad117e5ec63cb1032fa56efdf07a4b27e3c1d')
+sha256sums=('da028d90b8e53871257025f85943d5debcd0532ae3b807f71af3cd5a89cb1fc5'
+            '760c5ad743af3157c20c644f3af90b99b46097de1dbc8b2f8c025de9d2dd7205')
 
 package() {
 	install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m0644 "License.txt"
@@ -32,11 +29,11 @@ package() {
 	install -Dt "${pkgdir}/usr/share/${pkgname}" -m0644 "ringtone.wav"
 	install -Dt "${pkgdir}/usr/lib/${pkgname}" -m0644 "lame_enc.dll"
 
-	install -Dm0644 "MicroSIP.exe" "${pkgdir}/usr/lib/${pkgname}/microsip.exe"
+	install -Dt "${pkgdir}/usr/lib/${pkgname}" -m0644 "microsip.exe"
 
-	install -Dt "${pkgdir}/usr/bin" -m0755 "${pkgname}"
-	install -Dt "${pkgdir}/usr/share/${pkgname}" -m0644 "${pkgname}.reg"
-	install -Dt "${pkgdir}/usr/share/applications" -m0644 "${pkgname}.desktop"
-	install -Dt "${pkgdir}/usr/share/icons/hicolor/256x256/apps" -m0644 "${pkgname}.png"
+	install -Dt "${pkgdir}/usr/bin" -m0755 "${_reponame}-v${_wrapperver}/${pkgname}"
+	install -Dt "${pkgdir}/usr/share/${pkgname}" -m0644 "${_reponame}-v${_wrapperver}/${pkgname}.reg"
+	install -Dt "${pkgdir}/usr/share/applications" -m0644 "${_reponame}-v${_wrapperver}/${pkgname}.desktop"
+	install -Dt "${pkgdir}/usr/share/icons/hicolor/256x256/apps" -m0644 "${_reponame}-v${_wrapperver}/${pkgname}.png"
 }
 
