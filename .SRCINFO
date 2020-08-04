@@ -1,4 +1,4 @@
-pkgbase = trytond_production_split
+pkgbase = python-trytond_production_split
 	pkgdesc = Tryton module to split production
 	pkgver = 5.6.0
 	pkgrel = 1
