@@ -6,14 +6,14 @@
 
 _pkgname=garcon
 pkgname=$_pkgname-git
-pkgver=0.5.0.67.gba006f7
+pkgver=0.7.0.34.g0cbc6fb
 pkgrel=1
 pkgdesc="Freedesktop.org compliant menu library"
 arch=(i686 x86_64)
 license=(GPL2)
 url=http://wiki.xfce.org/dev/$_pkgname
 groups=(xfce4-git)
-depends=(libxfce4util-git gtk3)
+depends=(libxfce4util-git libxfce4ui-git gtk3)
 makedepends=(git xfce4-dev-tools)
 provides=($_pkgname=$pkgver)
 conflicts=($_pkgname libxfce4menu{,-git})
