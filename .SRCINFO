@@ -1,14 +1,14 @@
-pkgbase = python-trytond_product_classification
+pkgbase = trytond_product_classification
 	pkgdesc = Tryton module to implement product classification
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_product_classification/trytond_product_classification-5.2.0.tar.gz
-	sha256sums = fc18cadef190ca32b8fb5a28225191d9250dd87869958ce50ad2ca09809cdd73
+	source = https://files.pythonhosted.org/packages/source/t/trytond_product_classification/trytond_product_classification-5.6.0.tar.gz
+	sha256sums = 501db2e583b28c26c6b72618b2c15745da44bbd0db159041d4a4a9ef4ab27f2c
 
 pkgname = python-trytond_product_classification
 
