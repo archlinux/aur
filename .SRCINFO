@@ -1,0 +1,13 @@
+pkgbase = python-trytond_account_statement_aeb43
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_statement_aeb43/trytond_account_statement_aeb43-5.6.0.tar.gz
+	sha256sums = c86c76bb6658db1ec027261b1fdddcf1cf473f1c21751d1547ebb7d9e64b990f
+
+pkgname = python-trytond_account_statement_aeb43
+
