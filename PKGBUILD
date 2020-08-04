@@ -1,9 +1,9 @@
 # Maintainer: Kyle Laker <kyle+aur at laker dot email>
 pkgname=marp-cli
-pkgver=0.17.4
-pkgrel=2
+pkgver=0.20.0
+pkgrel=1
 pkgdesc="A CLI interface for Marp and Marpit based converters"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/marp-team/marp-cli"
 license=('MIT')
 makedepends=('npm' 'jq')
@@ -15,7 +15,7 @@ replaces=('marp')
 options=('!strip')
 source=("https://registry.npmjs.org/@marp-team/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('f5d05da0246bdce313d4afa876b14b02c22d9c8a0544365f94ea6bb80cbd6c25')
+sha256sums=('470a9cfb0d017accfa7278f80f05034b1fdb887119e845fe9c44225c2ee38a48')
 
 package() {
     npm install -g --user root --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" "${srcdir}/${pkgname}-${pkgver}.tgz"
