@@ -3,12 +3,12 @@
 # Contributor: Marko Korhonen <reekymarko at reekynet.com>
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
-_svt_hevc_ver='1.4.3'
-_svt_av1_ver='0e68b4a34d7baa387b98e2ccaa9beb0c6d41f627'
+_svt_hevc_ver='1.5.0'
+_svt_vp9_ver='0.2.2'
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=4.4.r98388.g76a3ee996b
+pkgver=4.4.r98639.g6ce4338943
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ depends=(
         'glslang' 'libgme' 'gsm' 'libiec61883' 'libilbc' 'jack' 'kvazaar' 'lensfun'
         'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio' 'librabbitmq-c' 'rav1e'
         'librsvg' 'rubberband' 'rtmpdump' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh'
-        'svt-hevc' 'svt-av1' 'tensorflow' 'tesseract' 'libtheora' 'twolame'
+        'svt-hevc' 'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame'
         'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'x264'
         'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
         'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
@@ -45,24 +45,24 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '010-ffmpeg-fix-vmaf-model-path.patch'
-        "020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
+        "020-ffmpeg-add-svt-hevc.patch"
         "030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        "040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/${_svt_av1_ver}/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch"
+        "040-ffmpeg-add-svt-vp9-${_svt_vp9_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/v${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         'LICENSE')
 sha256sums=('SKIP'
             'b6fcef2f4cbb1daa47d17245702fbd67ab3289b6b16f090ab99b9c2669453a02'
-            '878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6'
+            'fecb280e4ebb4ad8a3ec0385f6f32fcf90656fea989a6182abcc4104f266bde4'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            '5e960b4dab495437082d0838a40a8cae9b67d1cef1ffd57da960afaa2bfd3719'
+            'b74be6d805672210e226e7c0b403f88b0ee8a53c732c9bdc873c4b44aeb75c96'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
     # add svt codec support for hevc and av1
-    rm -f ffmpeg/libavcodec/libsvt_{hevc,av1}.c
+    rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
     patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-${_svt_vp9_ver}.patch"
 }
 
 pkgver() { 
@@ -155,6 +155,7 @@ build() {
         --enable-libsrt \
         --enable-libssh \
         --enable-libsvthevc \
+        --enable-libsvtav1 \
         --enable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
@@ -166,6 +167,7 @@ build() {
         --enable-libvo-amrwbenc \
         --enable-libvorbis \
         --enable-libvpx \
+        --enable-libsvtvp9 \
         --enable-libwavpack \
         --enable-libwebp \
         --enable-libx264 \
@@ -203,7 +205,7 @@ build() {
         --enable-omx \
         --enable-v4l2-m2m \
         --enable-vaapi \
-        --enable-vdpau      
+        --enable-vdpau
     make
     make tools/qt-faststart
 }
