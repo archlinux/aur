@@ -1,0 +1,20 @@
+pkgbase = gimme-aws-creds
+	pkgdesc = CLI tool for using Okta IdP to acquire temporary AWS credentials via STS
+	pkgver = 2.3.4
+	pkgrel = 1
+	url = https://github.com/Nike-Inc/gimme-aws-creds
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-botocore
+	depends = python-dateutil
+	depends = python-beautifulsoup4
+	depends = python-keyring
+	depends = python-requests
+	depends = python-fido2
+	depends = python-okta
+	source = gimme-aws-creds-2.3.4.tar.gz::https://github.com/Nike-Inc/gimme-aws-creds/archive/v2.3.4.tar.gz
+	sha512sums = 65a69dff8caf935e8e22eee9e8b41ae6e2c2b2b4cd86f0ea9170211be331b67dd3650d46948e227de9f33e51b05b3cfad61ce89dc34de2dd05fdba4991265ea0
+
+pkgname = gimme-aws-creds
+
