@@ -4,7 +4,7 @@
 
 pkgname=rescribe-bin
 # update version in package.json, not here
-pkgver=0.0.14
+pkgver=0.0.15
 pkgrel=1
 epoch=
 pkgdesc="reScribe code search engine. CLI for interacting with reScribe api."
@@ -25,7 +25,7 @@ install=$pkgname.install
 changelog=
 source=("https://cli.rescribe.dev/linux.zip")
 noextract=()
-md5sums=("f8cf5f48e802235c3aa40fdfee5a8b83")
+md5sums=("a17edec81ce6b24542e5844f11af8a49")
 validpgpkeys=()
 
 package() {
@@ -35,5 +35,5 @@ package() {
   mv nodegit.node "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/home/$USER"
 
-  ./postinstall $pkgdir
+  ./postinstall.sh $pkgdir
 }
