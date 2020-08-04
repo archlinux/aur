@@ -1,4 +1,4 @@
-pkgbase = trytond_sale_subscription
+pkgbase = python-trytond_sale_subscription
 	pkgdesc = Tryton module for subscription
 	pkgver = 5.6.0
 	pkgrel = 1
