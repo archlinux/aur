@@ -1,4 +1,4 @@
-pkgbase = trytond_purchase_request
+pkgbase = python-trytond_purchase_request
 	pkgdesc = Tryton module for purchase requests
 	pkgver = 5.6.0
 	pkgrel = 1
