@@ -1,4 +1,4 @@
-pkgbase = trytond_purchase_history
+pkgbase = python-trytond_purchase_history
 	pkgdesc = Tryton module to historize purchases
 	pkgver = 5.6.0
 	pkgrel = 1
