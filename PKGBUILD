@@ -16,7 +16,7 @@ arch=(x86_64)
 makedepends=(git meson doxygen graphviz xmltoman valgrind jack2 libpulse
              alsa-lib sbc rtkit vulkan-icd-loader
              dbus libsndfile bluez-libs vulkan-headers)
-_commit=229fad46914a32b621e88e53abd1270c62b0e158  # tags/0.3.9
+_commit=db12f47505ddccb257acdc0fa2bb884aceb1b593  # tags/0.3.9
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 

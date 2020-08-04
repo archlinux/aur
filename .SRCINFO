@@ -21,7 +21,7 @@ pkgbase = pipewire-gstfree
 	makedepends = libsndfile
 	makedepends = bluez-libs
 	makedepends = vulkan-headers
-	source = git+https://github.com/PipeWire/pipewire#commit=229fad46914a32b621e88e53abd1270c62b0e158
+	source = git+https://github.com/PipeWire/pipewire#commit=db12f47505ddccb257acdc0fa2bb884aceb1b593
 	sha256sums = SKIP
 
 pkgname = pipewire-gstfree
