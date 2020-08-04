@@ -1,0 +1,25 @@
+pkgbase = flaa
+	pkgdesc = W1GKJ's control program for use with the RigExpert AA-xxxx series of antenna analyzers
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://www.w1hkj.com/flaa-help/index.html
+	arch = i686
+	arch = x86_64
+	groups = w1hkj
+	license = GPL
+	depends = libxft
+	depends = hamlib
+	depends = fltk
+	depends = libjpeg
+	depends = portaudio
+	depends = flxmlrpc
+	depends = libpng
+	depends = libsamplerate
+	depends = libsndfile
+	depends = pulseaudio
+	depends = xmlrpc-c
+	source = http://www.w1hkj.com/files/flaa/flaa-1.0.2.tar.gz
+	sha256sums = a66faaae0f29d9ecce7ee37c1e0e7fe5731133e625d9e9dd898a5076ed6ecb01
+
+pkgname = flaa
+
