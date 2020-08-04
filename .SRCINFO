@@ -1,6 +1,6 @@
 pkgbase = osc-tui-git
 	pkgdesc = Outscale Text User Interface
-	pkgver = 0.1
+	pkgver = r197.91dd750
 	pkgrel = 1
 	url = https://github.com/outscale-dev/osc-tui
 	arch = any

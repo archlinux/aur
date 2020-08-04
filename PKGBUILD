@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=osc-tui-git
-pkgver=0.1
+pkgver=r197.91dd750
 pkgrel=1
 pkgdesc='Outscale Text User Interface'
 
@@ -13,6 +13,11 @@ license=(BSD)
 makedepends=('python-setuptools')
 # sadly we need git version of npyscreen, because stable versions tend to break with new pythons
 depends=(osc-sdk-python python-pyperclip autopep8 python-npyscreen-git)
+
+pkgver() {
+  cd "${srcdir}/osc-tui"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 #so for now I need some patch so I've used my fork, but not for long
 source=("git://github.com/outscale-mgo/osc-tui.git")
