@@ -10,3 +10,5 @@ ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0022", TAG+="uaccess"
 ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0020", TAG+="uaccess"
 # DreamSourceLab DSLogic Basic
 ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="0021", TAG+="uaccess"
+# DreamSourceLab DSLogic U3Pro32
+ATTRS{idVendor}=="2a0e", ATTRS{idProduct}=="002c", TAG+="uaccess"
