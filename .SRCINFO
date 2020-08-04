@@ -1,14 +1,14 @@
-pkgbase = python-trytond_product_classification_taxonomic
+pkgbase = trytond_product_classification_taxonomic
 	pkgdesc = Tryton module to implement product classification taxonomic
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_product_classification_taxonomic/trytond_product_classification_taxonomic-5.2.0.tar.gz
-	sha256sums = f22f5594964e01ddc5e033549e8da2eba4a630fc7788eb52268945fb64abe69e
+	source = https://files.pythonhosted.org/packages/source/t/trytond_product_classification_taxonomic/trytond_product_classification_taxonomic-5.6.0.tar.gz
+	sha256sums = c72ad4369e121506b40353b7f0662b5c0252ef961fa3bfca30a71639b98639cc
 
 pkgname = python-trytond_product_classification_taxonomic
 
