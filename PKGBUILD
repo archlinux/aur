@@ -14,7 +14,7 @@ optdepends=('linux-fbcondecor: enable console background images'
             'fbsplash-extras: additional functionality like daemon icons'
             'uswsusp-fbsplash: suspend to disk with fbsplash'
             'python: convert themes from splashy to fbsplash')
-conflicts=('fbsplash-scripts' 'initscripts-fork')
+conflicts=('fbsplash-scripts' 'initscripts-fork' 'mkinitcpio-fbsplash')
 options=('!makeflags')
 backup=('etc/conf.d/fbcondecor' 'etc/conf.d/splash')
 install=fbsplash.install

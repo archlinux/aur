@@ -19,6 +19,7 @@ pkgbase = fbsplash
 	optdepends = python: convert themes from splashy to fbsplash
 	conflicts = fbsplash-scripts
 	conflicts = initscripts-fork
+	conflicts = mkinitcpio-fbsplash
 	options = !makeflags
 	backup = etc/conf.d/fbcondecor
 	backup = etc/conf.d/splash
