@@ -1,4 +1,4 @@
-pkgbase = python-trytond_marketing
+pkgbase = trytond_marketing
 	pkgdesc = Tryton module to group marketing features
 	pkgver = 5.6.0
 	pkgrel = 1
@@ -8,7 +8,7 @@ pkgbase = python-trytond_marketing
 	makedepends = python-distribute
 	depends = python>=3.5
 	source = https://files.pythonhosted.org/packages/source/t/trytond_marketing/trytond_marketing-5.6.0.tar.gz
-	sha256sums = fcedef5c31b843db58bed71ea07415391b49f1d06b853d2becc4e0d748dcc3ff 341e629860ac8f0eedd1060cd0072a90cca6ee55df00c1e448a5150ce41e8761
+	sha256sums = 341e629860ac8f0eedd1060cd0072a90cca6ee55df00c1e448a5150ce41e8761
 
 pkgname = python-trytond_marketing
 
