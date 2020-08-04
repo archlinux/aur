@@ -1,7 +1,7 @@
 # Maintainer: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname="lwjgl"
 pkgver="3.2.3"
-pkgrel="1"
+pkgrel="2"
 arch=("any")
 pkgdesc="Java library that enables access to OpenGL, OpenAL, Vulkan, and more."
 url="https://github.com/LWJGL/lwjgl3#readme"
@@ -17,5 +17,4 @@ package() {
 	mkdir "$pkgdir/usr/share/$pkgname"
 	cp -R * "$pkgdir/usr/share/$pkgname"
 	rm -f "$pkgdir/usr/share/$pkgname/$pkgname-$pkgver.zip"
-	unset pkgnamedir
 }
