@@ -4,7 +4,7 @@
 pkgname=mir-git
 _pkgname=mir
 pkgver=1.5.0+146+gd42981b4a6
-pkgrel=1
+pkgrel=2
 pkgdesc="Canonical's display server"
 url='https://mir-server.io'
 arch=(x86_64 i686 armv7h aarch64)
