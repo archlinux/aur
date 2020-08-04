@@ -2,7 +2,7 @@
 
 pkgname=("openxr-loader-git" "openxr-headers-git" "openxr-layers-git" "openxr-utils-git")
 _dirname="openxr-loader"
-pkgver=1.0.8.r26.g3e40561
+pkgver=1.0.10.r2.gaf531e9
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/KhronosGroup/OpenXR-SDK-Source'
@@ -76,6 +76,7 @@ package_openxr-layers-git() {
   rm -rf "$pkgdir"/usr/include
   rm -rf "$pkgdir"/usr/share/doc
   rm -rf "$pkgdir"/usr/lib/pkgconfig
+  rm -rf "$pkgdir"/usr/lib/cmake
   rm -rf "$pkgdir"/usr/bin/
   rm -rf "$pkgdir"/usr/lib/*loader*
 }
