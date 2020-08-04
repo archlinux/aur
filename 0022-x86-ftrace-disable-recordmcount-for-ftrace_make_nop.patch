@@ -1,0 +1,27 @@
+From f388fe0b28282f272c8ca441e63f16c438c55bde Mon Sep 17 00:00:00 2001
+From: Sami Tolvanen <samitolvanen@google.com>
+Date: Tue, 5 May 2020 14:58:24 -0700
+Subject: [PATCH 22/24] x86, ftrace: disable recordmcount for ftrace_make_nop
+
+Ignore mcount relocations in ftrace_make_nop.
+
+Signed-off-by: Sami Tolvanen <samitolvanen@google.com>
+---
+ arch/x86/kernel/ftrace.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/x86/kernel/ftrace.c b/arch/x86/kernel/ftrace.c
+index 51504566b3a6..c3b28b81277b 100644
+--- a/arch/x86/kernel/ftrace.c
++++ b/arch/x86/kernel/ftrace.c
+@@ -121,6 +121,7 @@ ftrace_modify_code_direct(unsigned long ip, const char *old_code,
+ 	return 0;
+ }
+ 
++__nomcount
+ int ftrace_make_nop(struct module *mod, struct dyn_ftrace *rec, unsigned long addr)
+ {
+ 	unsigned long ip = rec->ip;
+-- 
+2.28.0
+

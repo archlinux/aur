@@ -1,0 +1,28 @@
+From be6d4b6b69e92700f1a2359de3a02c358e074926 Mon Sep 17 00:00:00 2001
+From: Sami Tolvanen <samitolvanen@google.com>
+Date: Fri, 17 Apr 2020 19:28:45 -0700
+Subject: [PATCH 23/24] x86, relocs: Ignore L4_PAGE_OFFSET relocations
+
+L4_PAGE_OFFSET is a constant value, so don't warn about absolute
+relocations.
+
+Signed-off-by: Sami Tolvanen <samitolvanen@google.com>
+---
+ arch/x86/tools/relocs.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/x86/tools/relocs.c b/arch/x86/tools/relocs.c
+index ce7188cbdae5..8f3bf34840ce 100644
+--- a/arch/x86/tools/relocs.c
++++ b/arch/x86/tools/relocs.c
+@@ -47,6 +47,7 @@ static const char * const sym_regex_kernel[S_NSYMTYPES] = {
+ 	[S_ABS] =
+ 	"^(xen_irq_disable_direct_reloc$|"
+ 	"xen_save_fl_direct_reloc$|"
++	"L4_PAGE_OFFSET|"
+ 	"VDSO|"
+ 	"__crc_)",
+ 
+-- 
+2.28.0
+

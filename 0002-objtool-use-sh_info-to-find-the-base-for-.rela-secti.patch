@@ -1,0 +1,37 @@
+From 32e8f91f5bb6bc82e198233a85ef7c2ae68742c9 Mon Sep 17 00:00:00 2001
+From: Sami Tolvanen <samitolvanen@google.com>
+Date: Mon, 13 Apr 2020 13:40:11 -0700
+Subject: [PATCH 02/24] objtool: use sh_info to find the base for .rela
+ sections
+
+ELF doesn't require .rela section names to match the base section. Use
+the section index in sh_info to find the section instead of looking it
+up by name.
+
+LLD, for example, generates a .rela section that doesn't match the base
+section name when we merge sections in a linker script for a binary
+compiled with -ffunction-sections.
+
+Signed-off-by: Sami Tolvanen <samitolvanen@google.com>
+Signed-off-by: Josh Poimboeuf <jpoimboe@redhat.com>
+Reviewed-by: Kees Cook <keescook@chromium.org>
+---
+ tools/objtool/elf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/objtool/elf.c b/tools/objtool/elf.c
+index 26d11d821941..72bfde4bc5de 100644
+--- a/tools/objtool/elf.c
++++ b/tools/objtool/elf.c
+@@ -502,7 +502,7 @@ static int read_relas(struct elf *elf)
+ 		if (sec->sh.sh_type != SHT_RELA)
+ 			continue;
+ 
+-		sec->base = find_section_by_name(elf, sec->name + 5);
++		sec->base = find_section_by_index(elf, sec->sh.sh_info);
+ 		if (!sec->base) {
+ 			WARN("can't find base section for rela section %s",
+ 			     sec->name);
+-- 
+2.28.0
+

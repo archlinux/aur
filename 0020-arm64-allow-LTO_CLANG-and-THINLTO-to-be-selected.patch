@@ -1,0 +1,28 @@
+From ed4e20fa5e35bcb4a2e2ec0a47a44227349ac007 Mon Sep 17 00:00:00 2001
+From: Sami Tolvanen <samitolvanen@google.com>
+Date: Thu, 2 Nov 2017 09:34:42 -0700
+Subject: [PATCH 20/24] arm64: allow LTO_CLANG and THINLTO to be selected
+
+Allow CONFIG_LTO_CLANG and CONFIG_THINLTO to be enabled.
+
+Signed-off-by: Sami Tolvanen <samitolvanen@google.com>
+---
+ arch/arm64/Kconfig | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm64/Kconfig b/arch/arm64/Kconfig
+index 66dc41fd49f2..c9fb665b62b5 100644
+--- a/arch/arm64/Kconfig
++++ b/arch/arm64/Kconfig
+@@ -72,6 +72,8 @@ config ARM64
+ 	select ARCH_USE_SYM_ANNOTATIONS
+ 	select ARCH_SUPPORTS_MEMORY_FAILURE
+ 	select ARCH_SUPPORTS_SHADOW_CALL_STACK if CC_HAVE_SHADOW_CALL_STACK
++	select ARCH_SUPPORTS_LTO_CLANG
++	select ARCH_SUPPORTS_THINLTO
+ 	select ARCH_SUPPORTS_ATOMIC_RMW
+ 	select ARCH_SUPPORTS_INT128 if CC_HAS_INT128 && (GCC_VERSION >= 50000 || CC_IS_CLANG)
+ 	select ARCH_SUPPORTS_NUMA_BALANCING
+-- 
+2.28.0
+
