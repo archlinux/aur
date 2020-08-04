@@ -1,6 +1,6 @@
 pkgbase = rescribe-bin
 	pkgdesc = code search engine cli
-	pkgver = 0.0.12
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://rescribe.dev
 	install = rescribe-bin.install
