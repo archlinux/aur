@@ -19,10 +19,10 @@ diff -arU2 a/requirements/base.txt b/requirements/base.txt
 -python-dateutil~=2.6, <2.8.1
 -requests==2.23.0
 -serverlessrepo==0.1.9
--aws_lambda_builders==0.9.0
+-aws_lambda_builders==1.0.0
 -tomlkit==0.5.8
 +python-dateutil~=2.6
 +requests~=2.23
 +serverlessrepo~=0.1.9
-+aws_lambda_builders~=0.9.0
++aws_lambda_builders~=1.0.0
 +tomlkit~=0.5, >=0.5.8
