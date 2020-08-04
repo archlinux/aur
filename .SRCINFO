@@ -1,0 +1,13 @@
+pkgbase = python-trytond_stock_shipment_measurements
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_shipment_measurements/trytond_stock_shipment_measurements-5.6.0.tar.gz
+	sha256sums = c1bf7b01e0860cebe55a33d952410ff793cf87754d88f7f84cd52f0e2bb748b8
+
+pkgname = python-trytond_stock_shipment_measurements
+
