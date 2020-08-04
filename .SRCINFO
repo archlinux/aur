@@ -1,0 +1,13 @@
+pkgbase = python-trytond_production_work_timesheet
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_production_work_timesheet/trytond_production_work_timesheet-5.6.0.tar.gz
+	sha256sums = db2a3506a03f0d2f26abe17ada598b2b96e32aacee6c134a46f18360a2405f96
+
+pkgname = python-trytond_production_work_timesheet
+
