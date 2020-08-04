@@ -57,7 +57,7 @@ source=(
   enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch
 )
 sha256sums=('SKIP'
-            '639e5ac559832b05d1b3be611faedab33aa65059eb8cd76879d2b92ecd17d7fa'
+            '526c3f2d88be415c16015ce4b36518a60540ed4aedaf2d93b98785733eb822f7'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '2f0090ec0c9a72e6241bbea05faaef979405119ce8ef669d84dead36c8e2246e'
             '5f21c12f002e71ec5b5db96832b415ce291a7e230fa07b328c21760274e72e9d'
