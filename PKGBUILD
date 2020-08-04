@@ -17,7 +17,7 @@ depends=('dkms' 'iptsd')
 optdepends=()
 #conflicts=("${_pkgbase}")
 #install=${pkgname}.install
-provides=('ipts-uapi-dkms')
+provides=('ipts-uapi-dkms' 'ipts-uapi')
 #source=("git+${url}.git#branch=${_branch}")
 source=("git+${url}.git")
 md5sums=(SKIP)

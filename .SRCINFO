@@ -10,6 +10,7 @@ pkgbase = ipts-uapi-dkms-git
 	depends = dkms
 	depends = iptsd
 	provides = ipts-uapi-dkms
+	provides = ipts-uapi
 	source = git+https://github.com/linux-surface/intel-precise-touch.git
 	md5sums = SKIP
 
