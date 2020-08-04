@@ -15,6 +15,7 @@ pkgbase = pyinfra
 	depends = python-jinja
 	depends = python-dateutil
 	depends = python-pywinrm
+	depends = python-configparser
 	source = https://github.com/Fizzadar/pyinfra/archive/v1.0.4.tar.gz
 	sha256sums = 54471ee5a3cdac30b3e4321695230347a866aae04228f7619037db569eb07fd2
 
