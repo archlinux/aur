@@ -1,16 +1,16 @@
 pkgname=sunflower-git
 _gitname=Sunflower
-pkgver=0
+pkgver=0.4
 pkgrel=1
 pkgdesc="Small and highly customizable twin-panel file manager for Linux with support for plugins"
 arch=('any')
 url="https://github.com/MeanEYE/Sunflower"
 options=(!strip !zipman)
 license=('GPL3')
-depends=('desktop-file-utils' 'pygtk' 'python-chardet' 'python-cairo-git' 'librsvg')
+depends=('gtk3' 'python-gobject' 'desktop-file-utils' 'python-chardet' 'librsvg')
 makedepends=('git')
 optdepends=('vte: integrated vte-based terminal'
-'mutagen: audio-metadata support'
+'python-mutagen: audio-metadata support'
 'gvfs: mount-management')
 conflicts=('sunflower')
 source=('git://github.com/MeanEYE/Sunflower.git')
