@@ -1,5 +1,5 @@
 pkgname="fathom-git"
-pkgrel=3
+pkgrel=1
 pkgver=1.2.1.r55.g69baac5
 pkgdesc="Fathom Lite. Simple, privacy-focused website analytics."
 url="https://github.com/usefathom/fathom"
