@@ -1,0 +1,13 @@
+pkgbase = python-trytond_purchase_invoice_line_standalone
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_purchase_invoice_line_standalone/trytond_purchase_invoice_line_standalone-5.6.0.tar.gz
+	sha256sums = 95719d6d1c943eb1e706c1a1d122334d7e78a4d2798d3a081eac48e0e98801ef
+
+pkgname = python-trytond_purchase_invoice_line_standalone
+
