@@ -1,4 +1,4 @@
-pkgbase = trytond_stock_lot_unit
+pkgbase = python-trytond_stock_lot_unit
 	pkgdesc = Tryton module to define unit on stock lot
 	pkgver = 5.6.0
 	pkgrel = 1
