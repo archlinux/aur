@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gonha
-pkgver=1.6.37
+pkgver=1.6.38
 pkgrel=1
 pkgdesc='Light-weight system monitor for Linux'
 arch=('any')
@@ -22,18 +22,19 @@ depends=('python-pyqt5'
          'python-unit-convert'
          'python-coloredlogs'
          'python-numpy'
+         'python-pyamdgpuinfo'
          'python-prompt_toolkit1014'
          'ttf-fira-code'
          'hddtemp')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         'https://github.com/fredcox/gonha/raw/master/LICENSE')
-sha256sums=('08637638f8237ab104dc24196527289b859ba04d29d7f0ed9b5aed6788ecb48b'
+sha256sums=('802f495055736f010b352c433a2d8fa59848d45e49b9e3ff234ec91f93ec7a8f'
             '6ad1a8e638684d561aa06d48bf6adc181f5893beb513460d9a664a1da43bd101')
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 ${srcdir}/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	cd "$pkgname-$pkgver"
+	python setup.py install --root="$pkgdir" --optimize=1
+
+	install -Dm644 $srcdir/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
