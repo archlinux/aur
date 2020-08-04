@@ -1,6 +1,6 @@
 pkgbase = kdenlive-release-git
 	pkgdesc = A non-linear video editor. Following latest released branch in git.
-	pkgver = 20.04.2.r12595.7ee8a9075
+	pkgver = .r13038.bbbbb509c
 	pkgrel = 1
 	url = http://www.kdenlive.org/
 	install = kdenlive-release-git.install
@@ -32,7 +32,7 @@ pkgbase = kdenlive-release-git
 	conflicts = kdenlive
 	options = debug
 	options = !strip
-	source = git+https://invent.kde.org/multimedia/kdenlive#branch=release/20.04
+	source = git+https://invent.kde.org/multimedia/kdenlive#branch=release/20.08
 	sha1sums = SKIP
 
 pkgname = kdenlive-release-git
