@@ -1,14 +1,14 @@
-pkgbase = python-trytond_production_outsourcing
+pkgbase = trytond_production_outsourcing
 	pkgdesc = Tryton module to outsource production
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_production_outsourcing/trytond_production_outsourcing-5.2.0.tar.gz
-	sha256sums = 2fee4582759db864e6716571a6346bf99519715fac8db2086354f8c8d87c5ee1
+	source = https://files.pythonhosted.org/packages/source/t/trytond_production_outsourcing/trytond_production_outsourcing-5.6.0.tar.gz
+	sha256sums = 6a4033edb18f8015a639eee48c1c51d3d347a8fd4aa2bbb303a8a45efe1c6370
 
 pkgname = python-trytond_production_outsourcing
 
