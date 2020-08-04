@@ -2,7 +2,7 @@
 
 pkgname=cloudflared-bin
 pkgver=2020.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Argo Tunnel client which proxies any local webserver through the Cloudflare network"
 arch=("x86_64" "i686" "armv6h" "armv7h")
 url="https://developers.cloudflare.com/argo-tunnel/"
@@ -24,10 +24,10 @@ sha256sums=('6a486a0f6c00e87cce1caf0aa8db45ea9fefd0bf91d9be6fc44460160dc0dbda'
             '83234a52452dce5497dd04e27323b2f83c702d4435a2687d1be4f829451fb061'
             'bc40e3f7e1b21b93a949a1b1c05639584943d9ce9cc7ccb96612688eeb9fd206'
             'bfda935c07b8e49821ee13e19433b1ed475ebb651e3008a32950734afbaef813')
-sha256sums_x86_64=('e219e951a6c3fdd6d6caa2fc65422d362ad9170da12278f699595bba4a2effd4')
-sha256sums_i686=('65e6111f411368850d55a80d8a166942d47470ae0174ef55f209687002c6b2b3')
-sha256sums_armv6h=('3fd904be54c4f6c742b99219ffbed3b6f7e6ac31bf1611f2e2cceaa6a9c377ec')
-sha256sums_armv7h=('3fd904be54c4f6c742b99219ffbed3b6f7e6ac31bf1611f2e2cceaa6a9c377ec')
+sha256sums_x86_64=('c2fda1e3d7680833f94a74c7fe83d61f6becf34122b3f580e8333cee3bedd293')
+sha256sums_i686=('535a7af6633b45d584f6134f823db7456922eb00b47039a7c923528da64065a1')
+sha256sums_armv6h=('65bcbbc9dcf7a601bd6e6ed0206aa8b694bb19d95953f5fe577d43737588ee33')
+sha256sums_armv7h=('65bcbbc9dcf7a601bd6e6ed0206aa8b694bb19d95953f5fe577d43737588ee33')
 
 package() {
   # Install License
