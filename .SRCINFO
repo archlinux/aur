@@ -1,0 +1,17 @@
+pkgbase = docoseco
+	pkgdesc = Automatize management of docker confgs and secrets
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Zebradil/docoseco
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-dephell
+	depends = python3
+	depends = python-ruamel-yaml
+	provides = docoseco
+	source = https://files.pythonhosted.org/packages/source/d/docoseco/docoseco-1.0.0.tar.gz
+	sha512sums = 30c7652873e296237bc0eda6226a581f7ad618f473790cb843de041afd324c37255ed88acd97783c5f1533dd4ca7c3974f0f3d87c42c2849426fe15ed5803199
+
+pkgname = docoseco
+
