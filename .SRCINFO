@@ -1,4 +1,4 @@
-pkgbase = trytond_sale_extra
+pkgbase = python-trytond_sale_extra
 	pkgdesc = Tryton module for sale extra
 	pkgver = 5.6.0
 	pkgrel = 1
