@@ -1,7 +1,7 @@
 pkgbase = activinspire
 	pkgdesc = Presentation Software for use with Promethean Hardware products.
 	pkgver = 2.19.69200
-	pkgrel = 0
+	pkgrel = 1
 	url = https://support.prometheanworld.com/product/activinspire
 	arch = x86_64
 	license = unknown

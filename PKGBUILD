@@ -5,7 +5,7 @@
 
 pkgname=activinspire
 pkgver=2.19.69200
-pkgrel=0
+pkgrel=1
 pkgdesc="Presentation Software for use with Promethean Hardware products."
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
