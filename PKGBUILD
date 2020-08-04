@@ -3,7 +3,7 @@
 # Contributor: Ramdambo <https://github.com/Ramdambo>
 pkgname=ignition-math
 pkgver=6.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Math classes and functions for robot applications"
 arch=('i686' 'x86_64')
 url="https://ignitionrobotics.org/libs/math"
@@ -16,7 +16,7 @@ conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-math/archive/${pkgname}6_${pkgver}.tar.gz"
 "headerfix.patch::https://github.com/ignitionrobotics/ign-math/commit/fdbd226d70885e85e265d7c61cfa9014bee1a33a.patch")
 sha256sums=('2961b295c61c7536a10b4e87c1fb812d111ee923e1c83bb6a42dede7d76373c5'
-            '9e1619ca8a04ecce7f0fce4779344657670cf4dea2e207136c83cab95c53ddde')
+            'ab61c420bfab53fac3e7770f322d2249c9a6058488f45069d0f8d52affdd7236')
 
 _dir="ign-math-${pkgname}6_${pkgver}"
 
