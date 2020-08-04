@@ -6,17 +6,17 @@
 
 
 pkgname=namecoin-core-wallet
-pkgver=v0.20.0
+pkgver=v0.20.1
 pkgrel=1
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1595155906
+epoch=1596578149
 
 
-# Release commit for 0.20.0
-_commit=1880bfcd41084e7c095c7fb64e555a05301e5353
+# Release commit for 0.20.1
+_commit=e41d4433880ae73c52e49924c549ac44fbf01f4d
 
 
 pkgdesc='This package provides the Namecoin Core GUI client, CLI daemon, and daemon user service.'
@@ -35,22 +35,19 @@ source=('git://github.com/namecoin/namecoin-core'
         'namecoin.desktop'
         'namecoin1500x1500.png'
         'namecoind.service'
-        'namecoind@.service'
-        'https://github.com/namecoin/namecoin-core/commit/79b0a69e09c1a912122e6431ea3c530cc292c690.patch')
+        'namecoind@.service')
 
 sha256sums=('SKIP'
             '0226f5a570bbbde63f332d43d9d712287b316c726280f2ae9e21b1b365b3f0dc'
             'f1e0593b872e18e0aebbf399bb5d77be255cb0aa160964c0528698a33f89ba04'
             '0a8cb03f33a895ccaed63fb9d946db69bee7188b7a9f41bc92879167c2718dcf'
-            '216bf1642feb5c37cc82a0801faf0717308f98e5aed86d75dac8fafd150a4b68'
-            'e02bf708bcbce1f6607b178b55964ec88839942fdefe51b9006bc6f52f4da23d')
+            '216bf1642feb5c37cc82a0801faf0717308f98e5aed86d75dac8fafd150a4b68')
 
 
 prepare() {
     mkdir -p "$srcdir/tmp"
     cd "$srcdir/namecoin-core/"
     git checkout "$_commit"
-    git apply "$srcdir/79b0a69e09c1a912122e6431ea3c530cc292c690.patch"
 }
 
 
