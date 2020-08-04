@@ -1,4 +1,4 @@
-pkgbase = trytond_edocument_unece
+pkgbase = python-trytond_edocument_unece
 	pkgdesc = Tryton module for electronic document UNECE codes
 	pkgver = 5.6.0
 	pkgrel = 1
