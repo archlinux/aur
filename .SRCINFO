@@ -1,4 +1,4 @@
-pkgbase = trytond_gis
+pkgbase = python-trytond_gis
 	pkgdesc = Adds Geographic Information System support to trytond
 	pkgver = 5.6.0
 	pkgrel = 1
