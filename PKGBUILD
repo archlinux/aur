@@ -7,12 +7,12 @@ _srcname=linux-5.7
 _major=5.7
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=11
+_minor=12
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
 #_fullver=$_major
-_rcver=1
+_rcver=3
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
 arch=(x86_64)
@@ -32,22 +32,20 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
   0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
-  0004-drm-amd-display-Clear-dm_state-for-fast-updates.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('59528e86b83aea7b13ade044cfa6ec934733c7363ee1d2c6d9c0c283a300d0a5'
+sha256sums=('81f8c5a1c43a85c8d6874980d10fdf137964779bbc9f7f569016604d85b8c77d'
             'SKIP'
-            '93293032aa13c3998eeb2afd910f11c0f2e8a76ffec46f74ce3fcfac53ed60f1'
+            '7a54cf89d7198d99004495c0e3a25d3af05c5d5b70cccf92237f603d7fa15e08'
             'SKIP'
             '6313ccad7f8e4d8ce09dd5bdb51b8dfa124d0034d7097ba47008380a14a84f09'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '06a9861b434f81c0d0f54c6c122df56cf0a730d0eafad888db8804152a7b9ea3'
             'db7f7a86bba9a4959f3e4ab7d1beb51e09099ef8beb638dd4250aa375532b2c2'
-            'df205ac596ad9af28061a7dac833d52b5873882d129079ed57736dd77bbb5f8c'
-            'e9b37c73e0d81b70bc92dec7703549ab5e54f6c1d2b076e2f851e27f0b38e123')
+            'df205ac596ad9af28061a7dac833d52b5873882d129079ed57736dd77bbb5f8c')
 
 
 export KBUILD_BUILD_HOST=archlinux
