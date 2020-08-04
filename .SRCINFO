@@ -1,14 +1,14 @@
-pkgbase = python-trytond_production_routing
+pkgbase = trytond_production_routing
 	pkgdesc = Tryton module for production routing
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_production_routing/trytond_production_routing-5.2.0.tar.gz
-	sha256sums = cbbe97adcb55742c994b55cde1fd497a0ed76958670c01bda134cf5e2c756935
+	source = https://files.pythonhosted.org/packages/source/t/trytond_production_routing/trytond_production_routing-5.6.0.tar.gz
+	sha256sums = ef09f16d40d7411506099c6091ad2c42fb35a5cc68200e63b3e71b871d04d3c2
 
 pkgname = python-trytond_production_routing
 
