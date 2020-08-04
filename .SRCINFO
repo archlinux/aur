@@ -1,4 +1,4 @@
-pkgbase = trytond_sale_invoice_grouping
+pkgbase = python-trytond_sale_invoice_grouping
 	pkgdesc = Tryton module to group sale invoices
 	pkgver = 5.6.0
 	pkgrel = 1
