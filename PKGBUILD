@@ -1,17 +1,23 @@
 # Maintainer: Attila Greguss <floyd0122[at]gmail[dot]com>
 
 pkgbase=dotnet-core-bin
-pkgname=('dotnet-host-bin' 'aspnet-runtime-bin' 'dotnet-runtime-bin' 'dotnet-sdk-bin')
+pkgname=(
+  'dotnet-host-bin'
+  'aspnet-runtime-bin'
+  'dotnet-runtime-bin'
+  'dotnet-sdk-bin'
+  # netstandard-targeting-pack-bin
+  'dotnet-targeting-pack-bin'
+  'aspnet-targeting-pack-bin'
+  )
 pkgver=3.1.6.sdk302
 _runtimever=3.1.6
 _sdkver=3.1.302
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
 options=('staticlibs')
-source=('dotnet.sh')
-sha512sums=('448e2ad41a1ac5b7adf4a17ef27d01d1f20c6d355fdb1e10b0ceb4bd6edd8b3a24874aa8c42cfcf56267a6a85c5896b5f69764e5e59526f6938ec7c9d1ec7383')
 source_armv7h=('https://download.visualstudio.microsoft.com/download/pr/56691c4c-341a-4bca-9869-409803d23cf8/d872d7a0c27a6c5e9b812e889de89956/dotnet-sdk-3.1.302-linux-arm.tar.gz')
 source_aarch64=('https://download.visualstudio.microsoft.com/download/pr/5ee48114-19bf-4a28-89b6-37cab15ec3f2/f5d1f54ca93ceb8be7d8e37029c8e0f2/dotnet-sdk-3.1.302-linux-arm64.tar.gz')
 source_x86_64=('https://download.visualstudio.microsoft.com/download/pr/c1a30ceb-adc2-4244-b24a-06ca29bb1ee9/6df5d856ff1b3e910d283f89690b7cae/dotnet-sdk-3.1.302-linux-x64.tar.gz')
@@ -27,8 +33,7 @@ package_dotnet-host-bin() {
   install -dm 755 "${pkgdir}"/usr/{bin,lib,share/{dotnet,licenses/dotnet-host}}
   cp -dr --no-preserve='ownership' dotnet host "${pkgdir}"/usr/share/dotnet/
   cp -dr --no-preserve='ownership' LICENSE.txt ThirdPartyNotices.txt "${pkgdir}"/usr/share/licenses/dotnet-host
-  install -Dm 755 "${srcdir}"/dotnet.sh "${pkgdir}"/usr/share/dotnet
-  ln -sf /usr/share/dotnet/dotnet.sh "${pkgdir}"/usr/bin/dotnet
+  ln -sf /usr/share/dotnet/dotnet "${pkgdir}"/usr/bin/dotnet
   ln -sf /usr/share/dotnet/host/fxr/"${_runtimever}"/libhostfxr.so "${pkgdir}"/usr/lib/libhostfxr.so
 }
 
@@ -62,6 +67,38 @@ package_dotnet-sdk-bin() {
   provides=("dotnet-sdk-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-3.1")
   conflicts=("dotnet-sdk-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-3.1")
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
-  cp -dr --no-preserve='ownership' packs sdk templates "${pkgdir}"/usr/share/dotnet/
+  cp -dr --no-preserve='ownership' sdk templates "${pkgdir}"/usr/share/dotnet/
   ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk
+}
+
+# package_netstandard-targeting-pack-bin() {
+#   pkgdesc='The .NET Standard targeting pack (binary)'
+#   provides=(netstandard-targeting-pack-2.1)
+#   conflicts=(netstandard-targeting-pack-2.1)
+
+#   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
+#   cp -dr --no-preserve='ownership' packs/NETStandard.Library.Ref "${pkgdir}"/usr/share/dotnet/packs/
+#   ln -s dotnet-host "${pkgdir}"/usr/share/licenses/netstandard-targeting-pack
+# }
+
+package_dotnet-targeting-pack-bin() {
+  pkgdesc='The .NET Core targeting pack (binary)'
+  depends=(netstandard-targeting-pack)
+  provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-3.1)
+  conflicts=(dotnet-targeting-pack=${_runtimever})
+
+  install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
+  cp -dr --no-preserve='ownership' packs/Microsoft.NETCore.App.{Host.linux-x64,Ref} "${pkgdir}"/usr/share/dotnet/packs/
+  ln -s dotnet-host "${pkgdir}"/usr/share/licenses/dotnet-targeting-pack
+}
+
+package_aspnet-targeting-pack-bin() {
+  pkgdesc='The ASP.NET Core targeting pack (binary)'
+  depends=(dotnet-targeting-pack-bin)
+  provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-3.1)
+  conflicts=(aspnet-targeting-pack=${_runtimever})
+
+  install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
+  cp -dr --no-preserve='ownership' packs/Microsoft.AspNetCore.App.Ref "${pkgdir}"/usr/share/dotnet/packs/
+  ln -s dotnet-host "${pkgdir}"/usr/share/licenses/aspnet-targeting-pack
 }

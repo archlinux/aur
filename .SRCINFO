@@ -1,14 +1,12 @@
 pkgbase = dotnet-core-bin
 	pkgver = 3.1.6.sdk302
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MIT
 	options = staticlibs
-	source = dotnet.sh
-	sha512sums = 448e2ad41a1ac5b7adf4a17ef27d01d1f20c6d355fdb1e10b0ceb4bd6edd8b3a24874aa8c42cfcf56267a6a85c5896b5f69764e5e59526f6938ec7c9d1ec7383
 	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/c1a30ceb-adc2-4244-b24a-06ca29bb1ee9/6df5d856ff1b3e910d283f89690b7cae/dotnet-sdk-3.1.302-linux-x64.tar.gz
 	sha512sums_x86_64 = a270c150d53eafbb67d294aecd27584b517077b6555d93d1dd933f4209affdda58cae112a50b3a56eeef63e635b5c5d1933f4852a92e760282c7619d2454edbe
 	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/56691c4c-341a-4bca-9869-409803d23cf8/d872d7a0c27a6c5e9b812e889de89956/dotnet-sdk-3.1.302-linux-arm.tar.gz
@@ -58,4 +56,18 @@ pkgname = dotnet-sdk-bin
 	conflicts = dotnet-sdk-bin
 	conflicts = dotnet-sdk=3.1.6.sdk302
 	conflicts = dotnet-sdk-3.1
+
+pkgname = dotnet-targeting-pack-bin
+	pkgdesc = The .NET Core targeting pack (binary)
+	depends = netstandard-targeting-pack
+	provides = dotnet-targeting-pack=3.1.6
+	provides = dotnet-targeting-pack-3.1
+	conflicts = dotnet-targeting-pack=3.1.6
+
+pkgname = aspnet-targeting-pack-bin
+	pkgdesc = The ASP.NET Core targeting pack (binary)
+	depends = dotnet-targeting-pack-bin
+	provides = aspnet-targeting-pack=3.1.6
+	provides = aspnet-targeting-pack-3.1
+	conflicts = aspnet-targeting-pack=3.1.6
 
