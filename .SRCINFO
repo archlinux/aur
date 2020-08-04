@@ -1,4 +1,4 @@
-pkgbase = python-trytond_dashboard
+pkgbase = trytond_dashboard
 	pkgdesc = Tryton module for dashboard
 	pkgver = 5.6.0
 	pkgrel = 1
@@ -8,7 +8,7 @@ pkgbase = python-trytond_dashboard
 	makedepends = python-distribute
 	depends = python>=3.5
 	source = https://files.pythonhosted.org/packages/source/t/trytond_dashboard/trytond_dashboard-5.6.0.tar.gz
-	sha256sums = bb1f895ef6bb464f7a1bd3983a2f2d16bad9aaf9ec8c89936d5922e1b3c4cc4e 1bf217ddc47013ad9a8089b4a967d3723de9497edd0b8cf7e5369d1db85ea4ce
+	sha256sums = 1bf217ddc47013ad9a8089b4a967d3723de9497edd0b8cf7e5369d1db85ea4ce
 
 pkgname = python-trytond_dashboard
 
