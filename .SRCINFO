@@ -1,4 +1,4 @@
-pkgbase = trytond_product_price_list_parent
+pkgbase = python-trytond_product_price_list_parent
 	pkgdesc = Tryton module to use price from another price list
 	pkgver = 5.6.0
 	pkgrel = 1
