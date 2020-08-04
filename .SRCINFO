@@ -1,0 +1,13 @@
+pkgbase = python-trytond_account_payment_clearing
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_payment_clearing/trytond_account_payment_clearing-5.6.0.tar.gz
+	sha256sums = 3d21c0a710165b456e40baf977f0ec3cb23d9b124dcd6a59dcdabf80b66863ca
+
+pkgname = python-trytond_account_payment_clearing
+
