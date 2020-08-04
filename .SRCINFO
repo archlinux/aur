@@ -1,4 +1,4 @@
-pkgbase = trytond_notification_email
+pkgbase = python-trytond_notification_email
 	pkgdesc = Tryton module for sending email notifications
 	pkgver = 5.6.0
 	pkgrel = 1
