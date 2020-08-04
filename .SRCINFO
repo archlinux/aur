@@ -1,0 +1,13 @@
+pkgbase = python-trytond_account_tax_rule_country
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_tax_rule_country/trytond_account_tax_rule_country-5.6.0.tar.gz
+	sha256sums = de5704b765be9be1ef0d3af64107ffa9fa37e8b20d6afc2ab26680cd4a03fdfc
+
+pkgname = python-trytond_account_tax_rule_country
+
