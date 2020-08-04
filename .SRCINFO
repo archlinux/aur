@@ -12,7 +12,9 @@ pkgbase = amazon-workspaces-bin
 	depends = webkit2gtk
 	options = staticlibs
 	source = amazon-workspaces-bin-3.0.8.529.deb::https://d3nt0h4h6pmmc4.cloudfront.net/workspacesclient_amd64.deb
-	sha256sums = 803da8f95949c141ec2b6bd942cd8684a306d55cfd535f8d5f18ee2655c0f258
+	source = amazon-workspaces-bin-3.0.8.529.info::https://d3nt0h4h6pmmc4.cloudfront.net/ubuntu/dists/bionic/main/binary-amd64/Packages
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = amazon-workspaces-bin
 

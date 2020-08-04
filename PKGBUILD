@@ -15,17 +15,32 @@ makedepends=(
   'binutils'
   'tar'
 )
-source=("$pkgname-$pkgver.deb::https://d3nt0h4h6pmmc4.cloudfront.net/workspacesclient_amd64.deb")
-sha256sums=('803da8f95949c141ec2b6bd942cd8684a306d55cfd535f8d5f18ee2655c0f258')
+source=(
+    "$pkgname-$pkgver.deb::https://d3nt0h4h6pmmc4.cloudfront.net/workspacesclient_amd64.deb"
+    "$pkgname-$pkgver.info::https://d3nt0h4h6pmmc4.cloudfront.net/ubuntu/dists/bionic/main/binary-amd64/Packages"
+)
 
-build() {
-    cd "$srcdir"
+sha256sums=(
+    "SKIP"
+    "SKIP"
+)
+
+prepare() {
+    # Verify the checksum
+    echo "$(grep SHA256 "$pkgname-$pkgver.info" | cut -d" " -f2) $pkgname-$pkgver.deb" >sum
+    sha256sum -c sum
+
     ar x "$pkgname-$pkgver.deb"
     tar axvf data.tar.xz
+    tar axvf control.tar.xz
 
     # Fix the .desktop entry
     sed -i -e 's/\/opt\/workspacesclient/\/usr\/share\/amazon-workspaces/' $srcdir/usr/share/applications/workspacesclient.desktop
     mv $srcdir/usr/share/applications/workspacesclient.desktop $srcdir/usr/share/applications/amazon-workspaces.desktop
+}
+
+pkgver() {
+    grep Version control | cut -d" " -f2
 }
 
 package() {
