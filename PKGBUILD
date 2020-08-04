@@ -2,7 +2,7 @@
 
 pkgname=1password
 pkgver=0.8.0.22506
-pkgrel=1
+pkgrel=2
 pkgdesc="The world's most-loved password manager - read-only development preview"
 arch=('x86_64')
 url='https://1password.com/'
@@ -33,7 +33,7 @@ package() {
 
     # Install Icons, Desktop Shortcut
     find squashfs-root -type d -exec chmod 0755 {} \;
-    cp -r squashfs-root/usr/share/icons/hicolor "${pkgdir}/usr/share/icons/hicolor"
+    cp -r squashfs-root/usr/share/icons/hicolor "${pkgdir}/usr/share/icons/"
     sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${pkgname}|" "squashfs-root/${pkgname}.desktop"
     install -Dm644 "squashfs-root/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
 
