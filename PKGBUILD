@@ -14,6 +14,7 @@ options=('!emptydirs')
 source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
 md5sums=("9076a6ee205de727b53925082788c330")
 conflicts=("${pkgname}-gtk3")
+replaces=("${pkgname}-gtk3")
 
 prepare()
 {

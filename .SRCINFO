@@ -16,6 +16,7 @@ pkgbase = libayatana-indicator
 	depends = glib2
 	depends = ayatana-ido
 	conflicts = libayatana-indicator-gtk3
+	replaces = libayatana-indicator-gtk3
 	options = !emptydirs
 	source = https://github.com/AyatanaIndicators/libayatana-indicator/archive/0.7.1.tar.gz
 	md5sums = 9076a6ee205de727b53925082788c330
