@@ -1,4 +1,4 @@
-pkgbase = trytond_currency
+pkgbase = python-trytond_currency
 	pkgdesc = Tryton module with currencies
 	pkgver = 5.6.0
 	pkgrel = 1
