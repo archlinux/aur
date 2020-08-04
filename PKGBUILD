@@ -1,4 +1,5 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: S\u00e9bastien Luttringer
 # Contributor: Lawrence Lee <valheru@facticius.net>
 # Contributor: Phillip Marvin <phillip.marvin@gmail.com>
