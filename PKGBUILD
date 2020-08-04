@@ -2,7 +2,7 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python38
-pkgver=3.8.0
+pkgver=3.8.5
 pkgrel=1
 _pyver=3.8.0
 _pybasever=3.8
@@ -16,7 +16,7 @@ makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
 source=(https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz)
-sha256sums=('b356244e13fb5491da890b35b13b2118c3122977c2cd825e3eb6e7d462030d84')
+sha256sums=('e3003ed57db17e617acb382b0cade29a248c6026b1bd8aad1f976e9af66a83b0')
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
