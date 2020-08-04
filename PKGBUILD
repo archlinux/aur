@@ -7,7 +7,7 @@
 pkgname=oxygen-sounds
 pkgdesc='KDE Oxygen sound pack'
 pkgver=5.19.4
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=('LGPL')
