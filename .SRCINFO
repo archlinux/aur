@@ -1,4 +1,4 @@
-pkgbase = trytond_product_measurements
+pkgbase = python-trytond_product_measurements
 	pkgdesc = Tryton module to add measurements to product
 	pkgver = 5.6.0
 	pkgrel = 1
