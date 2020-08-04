@@ -1,4 +1,4 @@
-pkgbase = trytond_purchase_requisition
+pkgbase = python-trytond_purchase_requisition
 	pkgdesc = Allows users to enter requests for product supply
 	pkgver = 5.6.0
 	pkgrel = 1
