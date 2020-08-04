@@ -1,14 +1,14 @@
-pkgbase = python-trytond_production_split
+pkgbase = trytond_production_split
 	pkgdesc = Tryton module to split production
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_production_split/trytond_production_split-5.2.0.tar.gz
-	sha256sums = f2fbe6a25256580b2af6c3bf53ef1e0c0e49b2b0c38831738fab82762fa464fd
+	source = https://files.pythonhosted.org/packages/source/t/trytond_production_split/trytond_production_split-5.6.0.tar.gz
+	sha256sums = 9f18ad7f5c15198ecfc8f7dd63adb4b8c4c522f3e3efc1cf332e76766bfed3f0
 
 pkgname = python-trytond_production_split
 
