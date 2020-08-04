@@ -1,4 +1,4 @@
-pkgbase = trytond_google_maps
+pkgbase = python-trytond_google_maps
 	pkgdesc = Tryton module to link addresses to Google Maps
 	pkgver = 5.6.0
 	pkgrel = 1
