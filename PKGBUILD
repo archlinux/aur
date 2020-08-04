@@ -15,19 +15,15 @@
 puredata=${puredata:-pd}
 pkgpref=$(echo "$puredata" | sed -e 's/-//g')
 
-# Branch to build (master by default). NOTE: For now, this just gets ignored,
-# as the master branch is quite old, and the HEAD of the current development
-# branch doesn't build. Rev. 0a5d578 on the development branch is known to
-# work fine, though, so that's what we're using right now.
+# Branch to build (master by default).
 branch=${branch:-master}
-commit=${commit:-0a5d578a8816c58a1427e1609f844e3e075b7d06}
 
 # Source and destination package names.
 src_pkgname=pd-faustgen
 dest_pkgname=$pkgpref-faustgen
 
 pkgname=$dest_pkgname-git
-pkgver=0.1.1.r10.g0a5d578
+pkgver=0.1.2.r0.g9e2aaea
 pkgrel=1
 pkgdesc="The FAUST compiler embedded in a Pd external - git version"
 arch=("i686" "x86_64")
@@ -37,14 +33,8 @@ depends=("$puredata" 'llvm-libs')
 makedepends=('cmake' 'llvm')
 provides=("$dest_pkgname")
 conflicts=("$dest_pkgname")
-# faust@341bd3c5-patch.diff can be removed once upstream updates the included
-# faust submodule in the master branch to a version that supports LLVM 10. For
-# now, use the following commit on the dev/v0.1.2 branch which is known to work.
-#source=("git+https://github.com/CICM/$src_pkgname.git#branch=$branch"
-source=("git+https://github.com/CICM/$src_pkgname.git#commit=$commit"
-	"faust@341bd3c5-patch.diff")
-md5sums=('SKIP'
-         '99f845fe8a258a8185577beae6ff67d9')
+source=("git+https://github.com/CICM/$src_pkgname.git#branch=$branch")
+md5sums=('SKIP')
 
 pkgver() {
     cd "$src_pkgname"
@@ -54,16 +44,12 @@ pkgver() {
 prepare() {
      cd "$src_pkgname"
      git submodule update --init --recursive
-     # check for the (old) Faust submodule in pd-faustgen v0.1.1
-     if [ $(git -C faust describe) = "2.5.17-403-g341bd3c56" ]; then
-	 # patch up the Faust source for LLVM10 support
-	 patch -d faust -N -p1 -i "$srcdir/faust@341bd3c5-patch.diff"
-     fi
-     mkdir build && cd build && cmake ..
 }
 
 build() {
-     cd "$src_pkgname/build"
+     cd "$src_pkgname"
+     mkdir build && cd build
+     cmake ..
      make
 }
 
