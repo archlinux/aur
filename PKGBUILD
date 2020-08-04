@@ -20,13 +20,13 @@ prepare() {
     cd "${srcdir}"
     chmod a+x ${_pkgname}
     ${srcdir}/${_pkgname} --appimage-extract
-    sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/${_pkgname}+" "squashfs-root/listen1.desktop"
+    sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/listen1-desktop.AppImage+" "squashfs-root/listen1.desktop"
     find "squashfs-root/usr/share/icons/hicolor" -type d -exec chmod 755 {} \;
 }
 
 package() {
     install -dm755 "${pkgdir}/usr/share/icons"
-    install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/${_pkgname}"
+    install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/listen1-desktop.AppImage"
     install -Dm644 "squashfs-root/listen1.desktop" "${pkgdir}/usr/share/applications/listen1.desktop"
     cp -R "squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
 }
