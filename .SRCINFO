@@ -1,4 +1,4 @@
-pkgbase = trytond_web_shortener
+pkgbase = python-trytond_web_shortener
 	pkgdesc = Tryton module to plug a URL to an action
 	pkgver = 5.6.0
 	pkgrel = 1
