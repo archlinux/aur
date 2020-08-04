@@ -1,7 +1,7 @@
 
 pkgname=leed
-pkgver=1.8.4
-pkgrel=3
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="A minimalist RSS/ATOM aggregator which offers fast RSS consultation and non-intrusive features"
 arch=(any)
 url="https://github.com/LeedRSS/Leed"
@@ -16,7 +16,7 @@ options=(emptydirs)
 source=("$pkgname-$pkgver.zip::https://github.com/LeedRSS/Leed/archive/v$pkgver.zip"
 	'apache.conf'
 	'leed.perm.sh')
-md5sums=('e94088506f8e4fea6d9512e6e2bf718b'
+md5sums=('8c55b2df4de403c84b86f8e5adfea87e'
          'f980af079368ad99447c7722e1cd376a'
          '43376a391f39e9fd177cec991ab45706')
 

@@ -1,7 +1,7 @@
 pkgbase = leed
 	pkgdesc = A minimalist RSS/ATOM aggregator which offers fast RSS consultation and non-intrusive features
-	pkgver = 1.8.4
-	pkgrel = 3
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = https://github.com/LeedRSS/Leed
 	install = leed.install
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = leed
 	optdepends = php-apache: to use the Apache web server
 	options = emptydirs
 	backup = etc/webapps/leed/apache.conf
-	source = leed-1.8.4.zip::https://github.com/LeedRSS/Leed/archive/v1.8.4.zip
+	source = leed-1.9.0.zip::https://github.com/LeedRSS/Leed/archive/v1.9.0.zip
 	source = apache.conf
 	source = leed.perm.sh
-	md5sums = e94088506f8e4fea6d9512e6e2bf718b
+	md5sums = 8c55b2df4de403c84b86f8e5adfea87e
 	md5sums = f980af079368ad99447c7722e1cd376a
 	md5sums = 43376a391f39e9fd177cec991ab45706
 
