@@ -1,4 +1,4 @@
-pkgbase = trytond_timesheet_cost
+pkgbase = python-trytond_timesheet_cost
 	pkgdesc = Tryton module to add cost on timesheet
 	pkgver = 5.6.0
 	pkgrel = 1
