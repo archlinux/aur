@@ -1,7 +1,7 @@
 # Maintainer: Mira Strannaya <rsxrwscjpzdzwpxaujrr@yahoo.com>
 pkgname=mazemaze-git
 pkgver=0.2.1.r57.gb274ac6
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple 3D OpenGL first-person maze game.'
 url="https://mira-strannaya.ru/articles/mazemaze"
 arch=('x86_64' 'i686')
