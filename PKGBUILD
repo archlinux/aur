@@ -3,7 +3,7 @@
 pkgname=octoprint-venv
 pkgver=1.4.1
 pkgrel=1
-pkgdesc="The snappy snappy web interface for your 3D printer! (venv installation type)"
+pkgdesc="Web interface for 3D printers (venv installation type)"
 arch=('any')
 url="http://octoprint.org/"
 license=('AGPL3')
