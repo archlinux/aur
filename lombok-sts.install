@@ -10,8 +10,8 @@ note() {
 }
 
 post_install() {
-    java -jar /usr/lib/lombok-common/lombok.jar install /opt/sts-4.?.?.RELEASE/ && \
-        ln -sf /usr/lib/lombok-common/lombok.jar /opt/sts-4.?.?.RELEASE/lombok.jar || exit 1
+    java -jar /usr/lib/lombok-common/lombok.jar install /opt/sts4/ && \
+        ln -sf /usr/lib/lombok-common/lombok.jar /opt/sts4/lombok.jar || exit 1
     note "You must add lombok.jar or lombok-api.jar to the build path of each Lombok-dependent project."
 }
 
@@ -20,6 +20,6 @@ post_upgrade() {
 }
 
 pre_remove() {
-    java -jar /usr/lib/lombok-common/lombok.jar uninstall /opt/sts-4.?.?.RELEASE/ || exit 1
+    java -jar /usr/lib/lombok-common/lombok.jar uninstall /opt/sts4/ || exit 1
 }
 

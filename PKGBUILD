@@ -5,7 +5,7 @@
 pkgbase="lombok"
 pkgname=('lombok-common' 'lombok-eclipse-java' 'lombok-eclipse-jee' 'lombok-spring-tool-suite')
 pkgver=1.18.12
-pkgrel=3
+pkgrel=4
 pkgdesc="Project Lombok integrated with several Eclipse-based installations"
 makedepends=('java-runtime')
 arch=("any")
