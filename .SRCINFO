@@ -1,4 +1,4 @@
-pkgbase = python-trytond_notification_email
+pkgbase = trytond_notification_email
 	pkgdesc = Tryton module for sending email notifications
 	pkgver = 5.6.0
 	pkgrel = 1
@@ -8,7 +8,7 @@ pkgbase = python-trytond_notification_email
 	makedepends = python-distribute
 	depends = python>=3.5
 	source = https://files.pythonhosted.org/packages/source/t/trytond_notification_email/trytond_notification_email-5.6.0.tar.gz
-	sha256sums = d0e762a493fbea766c0def5414750654ac931a802cccb20ee865f575b0ca8eb6 9874f354bfe6b0b0b3bf5caff92b56db72b55a388a074338b5554b250b500c4f
+	sha256sums = 9874f354bfe6b0b0b3bf5caff92b56db72b55a388a074338b5554b250b500c4f
 
 pkgname = python-trytond_notification_email
 
