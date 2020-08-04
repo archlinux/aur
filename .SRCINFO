@@ -1,4 +1,4 @@
-pkgbase = trytond_party_relationship
+pkgbase = python-trytond_party_relationship
 	pkgdesc = Party Relationship module for Tryton
 	pkgver = 5.6.0
 	pkgrel = 1
