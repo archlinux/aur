@@ -1,8 +1,8 @@
 pkgbase = rustscan
 	pkgdesc = Faster Nmap Scanning with Rust
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
-	url = https://github.com/brandonskerritt/RustScan
+	url = https://github.com/rustscan/RustScan
 	arch = x86_64
 	arch = i686
 	license = GPL3
@@ -10,8 +10,8 @@ pkgbase = rustscan
 	depends = nmap
 	provides = rustscan
 	conflicts = rustscan
-	source = rustscan-1.4.0.tar.gz::https://github.com/brandonskerritt/RustScan/archive/1.4.0.tar.gz
-	sha256sums = 812c2e8577499c73ff6d1bc909ed68d0a307a04fbc99a8c075962c9e98efffab
+	source = rustscan-1.6.0.tar.gz::https://github.com/rustscan/RustScan/archive/1.6.0.tar.gz
+	sha256sums = a4ebe4b8eda88dd10d52d961578c95b5427cc34b3bf41e5df729a37122c68965
 
 pkgname = rustscan
 
