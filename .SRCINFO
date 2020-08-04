@@ -1,4 +1,4 @@
-pkgbase = trytond_sale_complaint
+pkgbase = python-trytond_sale_complaint
 	pkgdesc = Tryton module for sale complaint
 	pkgver = 5.6.0
 	pkgrel = 1
