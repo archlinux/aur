@@ -2,7 +2,7 @@
 # Maintainer: tercean <cg@zknt.org>
 pkgname=deltachat-desktop
 pkgver=1.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
 url="https://github.com/deltachat/deltachat-desktop"
@@ -29,7 +29,7 @@ prepare() {
     cd "$srcdir/${pkgname}-${pkgver}"
     unzip $srcdir/basicwebrtc.zip
     rm -rf basicwebrtc
-    mv basicwebrtc-master basicwebrtc
+    mv basicwebrtc-$_basicwebrtc_commit basicwebrtc
 
     patch --forward --strip=1 --input="${srcdir}/remove_git_submodule.patch"
 }
