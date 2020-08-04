@@ -34,7 +34,7 @@
  enabled libtesseract      && require_pkg_config libtesseract tesseract tesseract/capi.h TessBaseAPICreate
 --- a/libavcodec/Makefile
 +++ b/libavcodec/Makefile
-@@ -1026,6 +1026,7 @@ OBJS-$(CONFIG_LIBRAV1E_ENCODER)           += librav1e.o
+@@ -1027,6 +1027,7 @@ OBJS-$(CONFIG_LIBRAV1E_ENCODER)           += librav1e.o
  OBJS-$(CONFIG_LIBSHINE_ENCODER)           += libshine.o
  OBJS-$(CONFIG_LIBSPEEX_DECODER)           += libspeexdec.o
  OBJS-$(CONFIG_LIBSPEEX_ENCODER)           += libspeexenc.o
@@ -44,7 +44,7 @@
  OBJS-$(CONFIG_LIBTWOLAME_ENCODER)         += libtwolame.o
 --- a/libavcodec/allcodecs.c
 +++ b/libavcodec/allcodecs.c
-@@ -727,6 +727,7 @@ extern AVCodec ff_librsvg_decoder;
+@@ -728,6 +728,7 @@ extern AVCodec ff_librsvg_decoder;
  extern AVCodec ff_libshine_encoder;
  extern AVCodec ff_libspeex_encoder;
  extern AVCodec ff_libspeex_decoder;
@@ -54,7 +54,7 @@
  extern AVCodec ff_libtwolame_encoder;
 --- /dev/null
 +++ b/libavcodec/libsvt_hevc.c
-@@ -0,0 +1,518 @@
+@@ -0,0 +1,559 @@
 +/*
 +* Scalable Video Technology for HEVC encoder library plugin
 +*
@@ -118,6 +118,10 @@
 +    int la_depth;
 +    int thread_count;
 +    int high_dynamic_range;
++    int unrestricted_motion_vector;
++    int tile_row_count;
++    int tile_col_count;
++    int tile_slice_mode;
 +} SvtContext;
 +
 +static int error_mapping(EB_ERRORTYPE svt_ret)
@@ -281,6 +285,33 @@
 +
 +    param->codeEosNal = 1;
 +
++    if (svt_enc->unrestricted_motion_vector == 0 || svt_enc->unrestricted_motion_vector == 1) {
++        param->unrestrictedMotionVector = svt_enc->unrestricted_motion_vector;
++    } else {
++        av_log(avctx, AV_LOG_ERROR, "Unrestricted Motion Vector should be set 0 or 1\n");
++        return EB_ErrorBadParameter;
++    }
++
++    if(svt_enc->tile_row_count >= 1 && svt_enc->tile_row_count <= 16) {
++        param->tileRowCount = svt_enc->tile_row_count;
++    } else {
++        av_log(avctx, AV_LOG_ERROR, "Tile Row Count should between 1-16\n");
++        return EB_ErrorBadParameter;
++    }
++
++    if(svt_enc->tile_col_count >= 1 && svt_enc->tile_col_count <= 16) {
++        param->tileColumnCount = svt_enc->tile_col_count;
++    } else {
++        av_log(avctx, AV_LOG_ERROR, "Tile Column Count should between 1-16\n");
++        return EB_ErrorBadParameter;
++    }
++
++    if(svt_enc->tile_slice_mode == 0 || svt_enc->tile_slice_mode == 1) {
++        param->tileSliceMode = svt_enc->tile_slice_mode;
++    } else {
++        av_log(avctx, AV_LOG_ERROR, "Tile Slice Mode should be set 0 or 1\n");
++        return EB_ErrorBadParameter;
++    }
 +    return EB_ErrorNone;
 +}
 +
@@ -423,6 +454,10 @@
 +        *got_packet = 0;
 +        av_log(avctx, AV_LOG_DEBUG, "Received none\n");
 +        return 0;
++    } else if (svt_ret == EB_ErrorMax) {
++        *got_packet = 0;
++        av_log(avctx, AV_LOG_ERROR, "Received NULL packet with error code 0x%X\n", header_ptr->nFlags);
++        return AVERROR_INVALIDDATA;
 +    }
 +
 +    av_log(avctx, AV_LOG_DEBUG, "Received PTS %"PRId64" packet\n", header_ptr->pts);
@@ -533,6 +568,12 @@
 +        { "vmaf", "VMAF optimized mode", 0,
 +          AV_OPT_TYPE_CONST, { .i64 = 2 },  INT_MIN, INT_MAX, VE, "tune" },
 +    { "hdr", "High dynamic range input (HDR10)", OFFSET(high_dynamic_range), AV_OPT_TYPE_INT, { .i64 = 0}, 0, 1, VE, "hdr" },
++    { "umv", "Enables or disables unrestricted motion vectors", OFFSET(unrestricted_motion_vector),
++      AV_OPT_TYPE_BOOL, { .i64 = 1 }, 0, 1, VE },
++    { "tile_row_cnt", "tile count in the row", OFFSET(tile_row_count), AV_OPT_TYPE_INT, { .i64 = 1 }, 1, 16, VE },
++    { "tile_col_cnt", "tile count in the column", OFFSET(tile_col_count), AV_OPT_TYPE_INT, { .i64 = 1 }, 1, 16, VE },
++    { "tile_slice_mode", "per slice per tile, only valid for multi-tile", OFFSET(tile_slice_mode),
++      AV_OPT_TYPE_BOOL, { .i64 = 0 }, 0, 1, VE },
 +    {NULL},
 +};
 +
