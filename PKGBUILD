@@ -2,7 +2,7 @@
 # Maintainer: Miguel Mota <hello@miguelmota.com>
 pkgname=cointop
 pkgver=1.4.8
-pkgrel=2
+pkgrel=1
 pkgdesc="An interactive terminal based UI application for tracking cryptocurrencies"
 url="https://github.com/miguelmota/cointop"
 license=('APACHE')
