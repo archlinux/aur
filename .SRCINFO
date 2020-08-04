@@ -1,4 +1,4 @@
-pkgbase = trytond_purchase_amendment
+pkgbase = python-trytond_purchase_amendment
 	pkgdesc = Tryton module to amend purchases
 	pkgver = 5.6.0
 	pkgrel = 1
