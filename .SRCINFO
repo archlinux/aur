@@ -1,4 +1,4 @@
-pkgbase = trytond_stock_supply_day
+pkgbase = python-trytond_stock_supply_day
 	pkgdesc = Tryton module to add supply weekdays
 	pkgver = 5.6.0
 	pkgrel = 1
