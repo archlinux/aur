@@ -1,4 +1,4 @@
-pkgbase = trytond_sale_price_list
+pkgbase = python-trytond_sale_price_list
 	pkgdesc = Tryton module to add price list on sale
 	pkgver = 5.6.0
 	pkgrel = 1
