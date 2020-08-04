@@ -1,14 +1,14 @@
-pkgbase = python-trytond_project_invoice
+pkgbase = trytond_project_invoice
 	pkgdesc = Tryton module to invoice projects
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_project_invoice/trytond_project_invoice-5.2.0.tar.gz
-	sha256sums = 448752595b54d2970bb9546ae2303bf850cd310e89b3dcae7a59f2fd20c42d67
+	source = https://files.pythonhosted.org/packages/source/t/trytond_project_invoice/trytond_project_invoice-5.6.0.tar.gz
+	sha256sums = 6ec0b49230ef6b40e28e40422e706159c826751084098bf09c9e24bab9e96d0e
 
 pkgname = python-trytond_project_invoice
 
