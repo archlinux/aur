@@ -11,7 +11,7 @@ depends=(zlib syntax-highlighting sonnet breeze
     k{textwidgets,widgetsaddons,archive,config,iconthemes,coreaddons}
     ttf-roboto ttf-roboto-mono ttf-opensans
 )
-makedepends=(git cmake extra-cmake-modules)
+makedepends=(git cmake extra-cmake-modules qt5-tools)
 provides=(${pkgname/-git/})
 conflicts=(${pkgname/-git/})
 source=("${pkgname}::git+https://gitlab.com/abstractsoftware/o20/o20coreapps.git")
