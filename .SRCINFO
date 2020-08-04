@@ -1,7 +1,7 @@
 pkgbase = viennarna
 	pkgdesc = RNA Secondary Structure Prediction and Comparison
 	pkgver = 2.4.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tbi.univie.ac.at/RNA
 	arch = x86_64
 	arch = i686
@@ -17,7 +17,9 @@ pkgbase = viennarna
 	options = staticlibs
 	options = !strip
 	source = http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-2.4.14.tar.gz
+	source = 0001-Fix-compilation-issues-with-GCC-10.patch
 	sha256sums = ba9cfc8a48e457fc891628f3229a3924de31714460dc4a4dec081868f802cc28
+	sha256sums = 4fb955d969b9a4c9fba7b3e7be7727c008454d1a2ea7ef5263ffc2544c0fe352
 
 pkgname = viennarna
 	depends = perl

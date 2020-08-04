@@ -3,7 +3,7 @@
 pkgbase=viennarna
 pkgname=('viennarna' 'python-rna' 'python2-rna' 'perl-rna')
 pkgver=2.4.14
-pkgrel=1
+pkgrel=2
 pkgdesc="RNA Secondary Structure Prediction and Comparison"
 arch=('x86_64' 'i686')
 license=('Custom')
@@ -16,18 +16,25 @@ makedepends=( 'perl'
               'check'
               'mpfr'
               'gsl')
-source=(http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-${pkgver}.tar.gz)
+source=(http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-${pkgver}.tar.gz
+        '0001-Fix-compilation-issues-with-GCC-10.patch')
 
 options=('staticlibs' '!strip')
-sha256sums=('ba9cfc8a48e457fc891628f3229a3924de31714460dc4a4dec081868f802cc28')
+sha256sums=('ba9cfc8a48e457fc891628f3229a3924de31714460dc4a4dec081868f802cc28'
+            '4fb955d969b9a4c9fba7b3e7be7727c008454d1a2ea7ef5263ffc2544c0fe352')
 
-build() {
+prepare() {
   cd "${srcdir}/ViennaRNA-${pkgver}"
+  patch -d src/Kinfold -p1 -i "${srcdir}/0001-Fix-compilation-issues-with-GCC-10.patch"
   ./configure \
       --with-cluster \
       --with-kinwalker \
       --prefix=/usr \
       INSTALLDIRS=vendor
+}
+
+build() {
+  cd "${srcdir}/ViennaRNA-${pkgver}"
   make
 }
 

@@ -1,0 +1,46 @@
+From d1ec784dfae5b46fd70bd1fc49ec3c96e92edf6d Mon Sep 17 00:00:00 2001
+From: Ronny Lorenz <ronny@tbi.univie.ac.at>
+Date: Wed, 3 Jun 2020 10:13:13 +0200
+Subject: [PATCH] Fix compilation issues with GCC 10
+
+---
+ globals.c | 5 +++++
+ globals.h | 6 +++---
+ 2 files changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/globals.c b/globals.c
+index c1a8859..e5c1a4a 100644
+--- a/globals.c
++++ b/globals.c
+@@ -25,6 +25,11 @@
+ #include "globals.h"
+ #include "cmdline.h"
+ 
++
++GlobVars GSV;
++GlobArrays GAV;
++GlobToggles GTV;
++
+ /* forward declarations privat functions */
+ static void ini_globs(void);
+ static void ini_gtoggles (void);
+diff --git a/globals.h b/globals.h
+index 622c7db..eafd13c 100644
+--- a/globals.h
++++ b/globals.h
+@@ -88,9 +88,9 @@ void clean_up_globals(void);
+ void log_prog_params(FILE *FP);
+ void log_start_stop(FILE *FP);
+ 
+-GlobVars GSV;
+-GlobArrays GAV;
+-GlobToggles GTV;
++extern GlobVars GSV;
++extern GlobArrays GAV;
++extern GlobToggles GTV;
+ 
+ #endif
+ 
+-- 
+2.26.2
+
