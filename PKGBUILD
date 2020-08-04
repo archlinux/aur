@@ -13,9 +13,7 @@ url="https://gitlab.com/CopyNippyJoin/emdl"
 arch=('x86_64')
 license=('GPL3')
 depends=(
-    'electron'
     'jq'
-    'npm'
 )
 makedepends=(
     'git'
