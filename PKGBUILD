@@ -45,9 +45,7 @@ build() {
 check() {
   cd ${_pkgname}/${BUILD_DIR}
   GTEST_OUTPUT=xml:./
-  bin/mir_acceptance_tests
-  bin/mir_integration_tests
-  bin/mir_unit_tests
+  make ptest
 }
 
 package() {
@@ -55,4 +53,3 @@ package() {
   make DESTDIR="${pkgdir}/" install
 }
 # vim:set ts=2 sw=2 et:
-
