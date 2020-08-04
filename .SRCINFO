@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-svt-hevc
+	pkgdesc = The Scalable Video Technology for HEVC Encoder (SVT-HEVC Encoder) is an HEVC-compliant encoder library core. (mingw-w64)
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/OpenVisualCloud/SVT-HEVC
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-cmake
+	makedepends = yasm
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = https://github.com/OpenVisualCloud/SVT-HEVC/archive/v1.5.0.tar.gz
+	sha256sums = 5331213ce3fe73d5fe2887cf3aabcd8ffde2fafd0e5f09928d412dc8306f3992
+
+pkgname = mingw-w64-svt-hevc
+
