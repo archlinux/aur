@@ -8,6 +8,7 @@ pkgbase = vapoursynth-editor-sandsmark-git
 	license = MIT
 	license = LGPL
 	makedepends = git
+	makedepends = cmake
 	depends = qt5-base
 	depends = qt5-websockets
 	depends = vapoursynth

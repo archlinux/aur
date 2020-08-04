@@ -12,7 +12,7 @@ depends=('qt5-base'
          'qt5-websockets'
          'vapoursynth'
          )
-makedepends=('git')
+makedepends=('git' 'cmake')
 provides=('vapoursynth-editor')
 conflicts=('vapoursynth-editor')
 source=('git+https://github.com/sandsmark/vapoursynth-editor.git'
