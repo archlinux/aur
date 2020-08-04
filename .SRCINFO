@@ -1,0 +1,13 @@
+pkgbase = python-trytond_stock_location_move
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_location_move/trytond_stock_location_move-5.6.0.tar.gz
+	sha256sums = 3b0a8dfad943efeb8e207f283789e97b07737caeeaec877b01e7475663f275b3
+
+pkgname = python-trytond_stock_location_move
+
