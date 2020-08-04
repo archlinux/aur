@@ -1,0 +1,22 @@
+pkgbase = elementary-planner
+	pkgdesc = Task manager with Todoist support
+	pkgver = 2.4.6
+	pkgrel = 1
+	url = https://planner-todo.web.app
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = libsoup
+	depends = granite
+	depends = webkit2gtk
+	depends = evolution-data-server
+	optdepends = gtk-theme-elementary
+	optdepends = elementary-icon-theme
+	conflicts = elementary-planner-git
+	source = https://github.com/alainm23/planner/archive/2.4.6.tar.gz
+	sha256sums = c8384a3940f1ccab50e98846983c4b1b8400ba91520b5106370c35307eceea09
+
+pkgname = elementary-planner
+
