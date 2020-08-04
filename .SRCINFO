@@ -1,0 +1,16 @@
+pkgbase = python-okta
+	pkgdesc = Python SDK for managing Okta instances
+	pkgver = r31.e45b411
+	pkgrel = 1
+	url = https://github.com/okta/okta-sdk-python
+	arch = any
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-requests
+	depends = python-dateutil
+	depends = python-six
+	source = git+https://github.com/okta/okta-sdk-python.git
+	sha1sums = SKIP
+
+pkgname = python-okta
+
