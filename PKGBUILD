@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 
 pkgname=vapoursynth-editor-sandsmark-git
-pkgver=r19.34.ga4a2a4d
+pkgver=r19.60.g503820d
 pkgrel=1
 pkgdesc="Editor for VapourSynth scripts, sandsmark's fork with vim support and other niceties"
 arch=('x86_64')
