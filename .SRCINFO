@@ -1,0 +1,13 @@
+pkgbase = python-trytond_account_stock_anglo_saxon
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_stock_anglo_saxon/trytond_account_stock_anglo_saxon-5.6.0.tar.gz
+	sha256sums = aca854cc6ef9a5bb794b53cd967a8583f864565c2b3061cad2ef7b7d969b208d
+
+pkgname = python-trytond_account_stock_anglo_saxon
+
