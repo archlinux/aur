@@ -2,7 +2,7 @@
 # Maintainer: tercean <cg@zknt.org>
 pkgname=deltachat-desktop
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
 url="https://github.com/deltachat/deltachat-desktop"
@@ -22,7 +22,7 @@ source=(
 sha256sums=('074d31f7691b58e74ee0421172c5a44bce65eafdc7c9cd62e8d4914d46f173bb'
             '39bae164c234b3c89e7ae2bde89753c90065df7f37fece084f7f5acccbb9f1f1'
             '5e20ea657599390e317523ae17b17aba0d26c59474a7f80282af5f2668002f59'
-            '5b1bf04faef913980b9bfd0e60be9113edb47a718e8f18c8dab58ee4f3d75c6e'
+            'b448e06db3f6d28e0d72a9c3f054d3c8129be4e97e892a5a4c7712c92e986368'
             '12815b12e001ffc72943eba955e7c715856b43f8e62ec4ef880893f19acef9d9')
 
 prepare() {
