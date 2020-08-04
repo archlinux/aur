@@ -1,4 +1,4 @@
-pkgbase = trytond_product_price_list_dates
+pkgbase = python-trytond_product_price_list_dates
 	pkgdesc = Tryton module to add dates on price list
 	pkgver = 5.6.0
 	pkgrel = 1
