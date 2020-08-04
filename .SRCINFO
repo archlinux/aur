@@ -1,14 +1,14 @@
-pkgbase = python-trytond_web_shortener
+pkgbase = trytond_web_shortener
 	pkgdesc = Tryton module to plug a URL to an action
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_web_shortener/trytond_web_shortener-5.2.0.tar.gz
-	sha256sums = 5ae412213524243994c0a3df1393c977f12bdeb14c6e57ee0dd5e5fe563c681f
+	source = https://files.pythonhosted.org/packages/source/t/trytond_web_shortener/trytond_web_shortener-5.6.0.tar.gz
+	sha256sums = 0e5d716815bf2357d0403e4333efa393d3fdecd6022fe9b2f675091ab83acb07
 
 pkgname = python-trytond_web_shortener
 
