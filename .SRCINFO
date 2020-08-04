@@ -1,0 +1,26 @@
+pkgbase = flcluster
+	pkgdesc = W1HKJ's program for accessing dxcluster nodes(Ham Radio)
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://www.w1hkj.com/flcluster-help/
+	arch = x86_64
+	arch = i686
+	groups = w1hkj
+	license = GPL
+	depends = libxft
+	depends = hamlib
+	depends = fltk
+	depends = libjpeg
+	depends = portaudio
+	depends = flxmlrpc
+	depends = libpng
+	depends = libsamplerate
+	depends = libsndfile
+	depends = pulseaudio
+	depends = xmlrpc-c
+	optdepends = fldigi: Intergrate with fldigi
+	source = http://www.w1hkj.com/files/flcluster/flcluster-1.0.4.tar.gz
+	sha256sums = 60af792365dc14ac1f67d53548f7c405076cff3324818005bc64483640cbc6f8
+
+pkgname = flcluster
+
