@@ -53,11 +53,14 @@ source=(
   0022-x86-ftrace-disable-recordmcount-for-ftrace_make_nop.patch
   0023-x86-relocs-Ignore-L4_PAGE_OFFSET-relocations.patch
   0024-x86-build-allow-LTO_CLANG-and-THINLTO-to-be-selected.patch
+  # LTO custom
+  0001-RAS-CEC-Fix-cec_init-prototype.patch
+  0002-kbuild-Rollback-required-CLANG-version-to-10-for-LTO.patch
   # CPU
   enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch
 )
 sha256sums=('SKIP'
-            '526c3f2d88be415c16015ce4b36518a60540ed4aedaf2d93b98785733eb822f7'
+            '2742a1348f1d7685671480ee24661a4d439f66c335a7e908b51290774e85a0dd'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '2f0090ec0c9a72e6241bbea05faaef979405119ce8ef669d84dead36c8e2246e'
             '5f21c12f002e71ec5b5db96832b415ce291a7e230fa07b328c21760274e72e9d'
@@ -90,6 +93,8 @@ sha256sums=('SKIP'
             'bd3f17cbb1da5293bb54a5bdeaa613098d41fe676ee327ba35867c18732ee80c'
             '539794c1dc9b8e35a73e2e165040f363d0c7f32bc5da415ae6b27a9ffe57dde2'
             '3b956c3768e59f2d5fb0546a855138319eff60e077822667befed734c7ac84af'
+            'd89d15358b42c56bbb83a9f9d38bd25666d44a6f91be1029e5297bf79f8fbdc6'
+            '575e1c1353d4dca1773ac6e4b60f8d32e1611381596389c8b06a73aed0fe010a'
             '5ab29eb64e57df83b395a29a6a4f89030d142feffbfbf73b3afc6d97a2a7fd12')
 
 export KBUILD_BUILD_HOST=archlinux

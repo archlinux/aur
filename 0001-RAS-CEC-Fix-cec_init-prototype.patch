@@ -1,0 +1,52 @@
+From 7162bca477126a8e095b10998c4b00653b97a6ed Mon Sep 17 00:00:00 2001
+From: Luca Stefani <luca.stefani.ge1@gmail.com>
+Date: Tue, 4 Aug 2020 18:16:54 +0200
+Subject: [PATCH 1/2] RAS/CEC: Fix cec_init prototype
+
+* late_initcall expects a function to return an integer
+
+Signed-off-by: Luca Stefani <luca.stefani.ge1@gmail.com>
+---
+ drivers/ras/cec.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/ras/cec.c b/drivers/ras/cec.c
+index 569d9ad2c594..e048e0e3949a 100644
+--- a/drivers/ras/cec.c
++++ b/drivers/ras/cec.c
+@@ -553,20 +553,20 @@ static struct notifier_block cec_nb = {
+ 	.priority	= MCE_PRIO_CEC,
+ };
+ 
+-static void __init cec_init(void)
++static int __init cec_init(void)
+ {
+ 	if (ce_arr.disabled)
+-		return;
++		return 0;
+ 
+ 	ce_arr.array = (void *)get_zeroed_page(GFP_KERNEL);
+ 	if (!ce_arr.array) {
+ 		pr_err("Error allocating CE array page!\n");
+-		return;
++		return 1;
+ 	}
+ 
+ 	if (create_debugfs_nodes()) {
+ 		free_page((unsigned long)ce_arr.array);
+-		return;
++		return 1;
+ 	}
+ 
+ 	INIT_DELAYED_WORK(&cec_work, cec_work_fn);
+@@ -575,6 +575,7 @@ static void __init cec_init(void)
+ 	mce_register_decode_chain(&cec_nb);
+ 
+ 	pr_info("Correctable Errors collector initialized.\n");
++	return 0;
+ }
+ late_initcall(cec_init);
+ 
+-- 
+2.28.0
+
