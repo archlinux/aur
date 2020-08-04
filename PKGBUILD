@@ -1,7 +1,7 @@
 # Maintainer: nontlikeuname
 
 pkgname=meson-git
-pkgver=0.47.0.r92.6306c568
+pkgver=0.55.0.r73.6006987ce
 pkgrel=1
 pkgdesc="SCons-like build system that use python as a front-end language and Ninja as a building backend"
 arch=(any)
@@ -9,11 +9,6 @@ url="http://mesonbuild.com/"
 license=('Apache')
 depends=('python' 'ninja')
 makedepends=('git')
-checkdepends=('gcc-objc' 'vala' 'rust' 'gcc-fortran' 'mono' 'boost' 'qt4' 'qt5-base' 'git'
-              'cython' 'gtkmm3' 'gtest' 'gmock' 'protobuf' 'wxgtk' 'python-gobject' 'gobject-introspection'
-              'itstool' 'gtk3' 'java-environment=8' 'gtk-doc' 'llvm' 'clang' 'sdl2' 'graphviz'
-              'doxygen' 'vulkan-validation-layers' 'openmpi' 'openssh' 'mercurial' 'gtk-sharp-2'
-              'qt5-tools' 'libwmf' 'dmd' 'valgrind')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/mesonbuild/meson'
@@ -24,19 +19,6 @@ md5sums=('SKIP'
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
-
-check() {
-	cd "$srcdir/${pkgname%-git}"
-#	tests require a lot of dependencies
-# # --as-needed breaks openmpi linking
-  #LDFLAGS="${LDFLAGS/,--as-needed/}"
-
-  # set for debug output
-  #export MESON_PRINT_TEST_OUTPUT=1
-
-  #export LC_CTYPE=en_US.UTF-8
-  #./run_tests.py
 }
 
 package() {
