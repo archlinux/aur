@@ -1,14 +1,14 @@
 pkgbase = volta
 	pkgdesc = JavaScript Launcher
-	pkgver = 0.8.5
+	pkgver = 0.8.6
 	pkgrel = 1
 	url = https://volta.sh/
 	arch = x86_64
 	license = BSD
 	depends = openssl
-	source = volta-0.8.5.tar.gz::https://github.com/volta-cli/volta/releases/download/v0.8.5/volta-0.8.5-linux-openssl-1.1.tar.gz
-	source = https://raw.githubusercontent.com/volta-cli/volta/v0.8.5/LICENSE
-	md5sums = 4ffaee72fc60f3545265fb8798ab8d28
+	source = volta-0.8.6.tar.gz::https://github.com/volta-cli/volta/releases/download/v0.8.6/volta-0.8.6-linux-openssl-1.1.tar.gz
+	source = https://raw.githubusercontent.com/volta-cli/volta/v0.8.6/LICENSE
+	md5sums = dd3f3f00400b70ffe6380d336228dc38
 	md5sums = a8a025d12adc6bd305a7402166baefef
 
 pkgname = volta
