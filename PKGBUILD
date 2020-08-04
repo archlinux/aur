@@ -2,20 +2,21 @@
 
 pkgname=lxqt_wallet
 _pkgname=lxqt-wallet
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="Secure storage of information for lxqt"
-arch=("i686" "x86_64")
+arch=('i686' 'x86_64')
 url="https://github.com/mhogomchungu/lxqt_wallet"
-license=("BSD")
-depends=("libgcrypt")
-optdepends=("kwallet: store passwords in kwallet"
-            "libsecret: store passwords in GNOME's secret service")
-makedepends=("cmake" "qt5-base" "kwallet" "libsecret" "qt5-tools")
+license=('BSD')
+depends=('libgcrypt')
+makedepends=('cmake' 'qt5-base' 'kwallet' 'libsecret' 'qt5-tools')
+optdepends=('libsecret: support for Gnome libsecret password storage (must recompile)'
+            'kwallet: support for KDE wallet storage (must recompile)')
 source=("https://github.com/mhogomchungu/lxqt_wallet/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
         "https://github.com/mhogomchungu/lxqt_wallet/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz.asc")
-sha256sums=("b805c14e5c52808c948a0e5fe43bc9adab538f304e0fa73a910436a3ab38d1d3" "SKIP")
-validpgpkeys=("3AD67A14194FE8E7AEFCA19C3E1F380427A5D3CA")
+sha256sums=('17d9832117845e4d7db780a3a8f4bfb07ab08aa7c1384df0b981b3cf6443b930'
+            'SKIP')
+validpgpkeys=('3AD67A14194FE8E7AEFCA19C3E1F380427A5D3CA')
 
 prepare() {
   cd "$srcdir/${_pkgname}-${pkgver}"
