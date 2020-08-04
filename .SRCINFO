@@ -1,13 +1,14 @@
-pkgbase = python-trytond_purchase_requisition
-	pkgver = 5.2.0
+pkgbase = trytond_purchase_requisition
+	pkgdesc = Allows users to enter requests for product supply
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_purchase_requisition/trytond_purchase_requisition-5.2.0.tar.gz
-	sha256sums = 26b34c52b1eda9109496ab000875bf9c4530edc99e50b409e4c1ca1576f1b452
+	source = https://files.pythonhosted.org/packages/source/t/trytond_purchase_requisition/trytond_purchase_requisition-5.6.0.tar.gz
+	sha256sums = 011da863144d58b16653a220dc90de1b79d7b3473a5dd1f72b84b3acfc6f9ded
 
 pkgname = python-trytond_purchase_requisition
 

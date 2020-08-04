@@ -1,17 +1,18 @@
 # Maintainer: Martin Scholz <scholz.m82@gmail.com>
 pkgname=python-trytond_purchase_requisition
 _name=trytond_purchase_requisition
-pkgver=5.2.0
-_pkgdir=5.2
+pkgver=5.6.0
+_pkgdir=5.6
 pkgrel=1
-pkgdesc="Allows users to enter requests for product supply (requisition). This will create a "Purchase request" by line which will be treated by the purchasing department."
+pkgbase=$_name
+pkgdesc="Allows users to enter requests for product supply"
 arch=('any')
 url="http://www.tryton.org/"
 license=('GPL3')
 depends=('python>=3.5')
 makedepends=('python-distribute')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('26b34c52b1eda9109496ab000875bf9c4530edc99e50b409e4c1ca1576f1b452')
+sha256sums=('011da863144d58b16653a220dc90de1b79d7b3473a5dd1f72b84b3acfc6f9ded')
 
 build() {
   cd $srcdir/$_name-$pkgver
