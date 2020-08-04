@@ -1,4 +1,4 @@
-pkgbase = trytond_product_cost_history
+pkgbase = python-trytond_product_cost_history
 	pkgdesc = Tryton module to historize product cost
 	pkgver = 5.6.0
 	pkgrel = 1
