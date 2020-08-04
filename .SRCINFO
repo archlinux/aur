@@ -1,0 +1,13 @@
+pkgbase = python-trytond_account_de_skr03
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_de_skr03/trytond_account_de_skr03-5.6.0.tar.gz
+	sha256sums = 20218f6810051762367f9645130d37d89e768e29059718eaa1dc8193e7904704
+
+pkgname = python-trytond_account_de_skr03
+
