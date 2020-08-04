@@ -1,4 +1,4 @@
-pkgbase = trytond_stock_supply_forecast
+pkgbase = python-trytond_stock_supply_forecast
 	pkgdesc = Tryton module to add forecast to supply computation
 	pkgver = 5.6.0
 	pkgrel = 1
