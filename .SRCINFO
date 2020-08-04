@@ -1,14 +1,14 @@
-pkgbase = python-trytond_party
+pkgbase = trytond_party
 	pkgdesc = Tryton module with parties and addresses
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_party/trytond_party-5.2.0.tar.gz
-	sha256sums = 9f1079aa1ac5a77b9d2a26614bc116d5de42265a690f036d6695b2151da7a182
+	source = https://files.pythonhosted.org/packages/source/t/trytond_party/trytond_party-5.6.0.tar.gz
+	sha256sums = f7af7782f0cc14e4cd91dd1ebacfe1a3d5eda6332a9f746ae79bbc635e780772
 
 pkgname = python-trytond_party
 
