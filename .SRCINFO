@@ -1,0 +1,13 @@
+pkgbase = python-trytond_account_invoice_correction
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_invoice_correction/trytond_account_invoice_correction-5.6.0.tar.gz
+	sha256sums = ef09d972b102e9308d1a6ae91a73f2d0d836d7d54a19d496b99a7ba56c3011a8
+
+pkgname = python-trytond_account_invoice_correction
+
