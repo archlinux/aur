@@ -1,4 +1,4 @@
-pkgbase = trytond_project_revenue
+pkgbase = python-trytond_project_revenue
 	pkgdesc = Tryton module to add revenue on project
 	pkgver = 5.6.0
 	pkgrel = 1
