@@ -1,6 +1,6 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=aws-cli-v2-bin
-pkgver=2.0.35
+pkgver=2.0.36
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services version 2'
 arch=('i686' 'x86_64')
@@ -12,14 +12,27 @@ makedepends=('unzip')
 depends=('less')
 source=(
     "$pkgname-$pkgver.zip::https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
-    # on hold until the AWS CLI team publish their key
-    # See https://github.com/aws/aws-cli/issues/4942
-    # 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig'
+    "$pkgname-$pkgver.txt::https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig"
+    "key.txt"
 )
-#validpgpkeys=('FB5DB77FD5C118B80511ADA8A6310ACC4672475C')
 sha256sums=(
-    'ca743d7cac979bbaca9a0781c44f832f7e856c24ebcf2dbf9babe380f5b12111'
+    "SKIP"
+    "SKIP"
+    "08234975191be290020728ad89423176430767dbd407421d02853f6fdd5ca50a"
 )
+
+prepare() {
+    # Check the sig but don't import the key
+    # This is required because AWS haven't yet published their key to a keyserver
+    # Please add your +1 to this issue https://github.com/aws/aws-cli/issues/4942
+
+    gpg --dearmor key.txt
+    gpg --no-default-keyring --keyring key.txt.gpg --homedir ./ --verify "$pkgname-$pkgver.txt" "$pkgname-$pkgver.zip"
+}
+
+pkgver() {
+    ./aws/dist/aws --version | cut -d ' ' -f 1 | cut -d '/' -f 2
+}
 
 package() {
   $srcdir/aws/install -i "$pkgdir/usr/share/aws-cli" -b "$pkgdir/usr/bin" >/dev/null
