@@ -1,0 +1,14 @@
+pkgbase = python-trytond_account_statement_coda
+	pkgdesc = Tryton module to import CODA statements
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_statement_coda/trytond_account_statement_coda-5.6.0.tar.gz
+	sha256sums = a735461cf5629b627aa6e19c8ba2fb24d183f928f0c3d50d325b271bcc0cdf9e
+
+pkgname = python-trytond_account_statement_coda
+
