@@ -1,6 +1,6 @@
 pkgbase = bitwarden-bin
 	pkgdesc = A secure and free password manager for all of your devices.
-	pkgver = 1.20.0
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://bitwarden.com
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = bitwarden-bin
 	conflicts = bitwarden
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/bitwarden/desktop/releases/download/v1.20.0/Bitwarden-1.20.0-amd64.deb
-	sha512sums = d1fd3268a43ead32c14c09db95b32372992d08e4a66a443638643e703854ea62fe5d318ed08a0e0c73b6a7bc3b283546e07249a28ba3976ec6caf3af27c96234
+	source = https://github.com/bitwarden/desktop/releases/download/v1.20.1/Bitwarden-1.20.1-amd64.deb
+	sha512sums = e3717e127944ed42e3eed5d079933cc5288c01b18b7575c6e3698bc7da355df687592de3f6520f3c32745d8cb91a29135ed8f19c5a2684fd1357fef54118a4ed
 
 pkgname = bitwarden-bin
 
