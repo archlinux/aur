@@ -1,0 +1,14 @@
+pkgbase = python-trytond_account_tax_cash
+	pkgdesc = Tryton module to support tax report on cash basis
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_tax_cash/trytond_account_tax_cash-5.6.0.tar.gz
+	sha256sums = e47ae8a3bb8ba3b087c972f6d1eb8992d3c3ad6c5574e6884afd9ee518103a00
+
+pkgname = python-trytond_account_tax_cash
+
