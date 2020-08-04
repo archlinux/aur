@@ -14,5 +14,5 @@ package() {
     install -Dm755 clashup ${pkgdir}/usr/bin/clashup
     install -Dm644 clashup.conf ${pkgdir}/etc/systemd/user/clash.service.d/clashup.conf
 }
-md5sums=('baaa9b4feb4f5500bad97feb4cc259c7'
+md5sums=('0e7c428edc816942248cc9dedd5b6b30'
          '177338346005e11d33e27edc1f8ab780')
