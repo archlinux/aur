@@ -1,14 +1,14 @@
-pkgbase = python-trytond_stock_supply_day
+pkgbase = trytond_stock_supply_day
 	pkgdesc = Tryton module to add supply weekdays
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_supply_day/trytond_stock_supply_day-5.2.0.tar.gz
-	sha256sums = b4ea64a1f49ea58d6d0c5ad1dc6abafed485a1d4157ffee6d10640e1792aad79
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_supply_day/trytond_stock_supply_day-5.6.0.tar.gz
+	sha256sums = 4b68eda89009a42fb38f8e4f3e9ef27c43015158ffe663beba3c57967106e2b1
 
 pkgname = python-trytond_stock_supply_day
 
