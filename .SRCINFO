@@ -1,4 +1,4 @@
-pkgbase = trytond_party_siret
+pkgbase = python-trytond_party_siret
 	pkgdesc = Tryton module to add SIRET/SIREN on parties
 	pkgver = 5.6.0
 	pkgrel = 1
