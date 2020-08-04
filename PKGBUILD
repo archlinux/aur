@@ -2,8 +2,8 @@
 # Maintainer: heavysink <winstonwu91 at gmail>
 
 pkgname=miktex
-pkgver=2.9.7440
-pkgrel=2
+pkgver=20.7
+pkgrel=1
 pkgdesc="a distribution of the TeX/LaTeX typesetting system"
 arch=('x86_64')
 url="https://miktex.org"
@@ -14,9 +14,7 @@ depends=('apr' 'apr-util' 'bzip2' 'cairo' 'expat' 'fontconfig' 'freetype2'
          'poppler' 'popt' 'potrace' 'uriparser' 'zziplib' 'poppler-qt5' 'qt5-script')
 makedepends=('cmake' 'coreutils' 'fop' 'sed' 'libxslt' 'qt5-tools')
 source=("https://github.com/MiKTeX/miktex/archive/${pkgver}.tar.gz")
-provides=('miktex')
-conflicts=('miktex')
-md5sums=('aa0906c8f84473dff21a5d23576dd0c5')
+md5sums=('95b96390a5ec360f39b08431d9295f96')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -42,5 +40,5 @@ package() {
     cp -R opt/miktex/share/applications/icons usr/share/
 
     mv opt/miktex/man usr/share/man
-    rm -f usr/share/man/man5/updmap.cfg.5.gz
+    #rm $pkgdir/usr/share/man/man5/updmap.cfg.5.gz
 }

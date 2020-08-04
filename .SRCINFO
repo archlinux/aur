@@ -1,7 +1,7 @@
 pkgbase = miktex
 	pkgdesc = a distribution of the TeX/LaTeX typesetting system
-	pkgver = 2.9.7440
-	pkgrel = 2
+	pkgver = 20.7
+	pkgrel = 1
 	url = https://miktex.org
 	arch = x86_64
 	license = custom
@@ -40,10 +40,8 @@ pkgbase = miktex
 	depends = zziplib
 	depends = poppler-qt5
 	depends = qt5-script
-	provides = miktex
-	conflicts = miktex
-	source = https://github.com/MiKTeX/miktex/archive/2.9.7440.tar.gz
-	md5sums = aa0906c8f84473dff21a5d23576dd0c5
+	source = https://github.com/MiKTeX/miktex/archive/20.7.tar.gz
+	md5sums = 95b96390a5ec360f39b08431d9295f96
 
 pkgname = miktex
 
