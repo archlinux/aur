@@ -1,4 +1,4 @@
-pkgbase = trytond_stock_lot
+pkgbase = python-trytond_stock_lot
 	pkgdesc = Tryton module for lot of products
 	pkgver = 5.6.0
 	pkgrel = 1
