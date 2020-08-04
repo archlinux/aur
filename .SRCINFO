@@ -1,4 +1,4 @@
-pkgbase = trytond_stock_split
+pkgbase = python-trytond_stock_split
 	pkgdesc = Tryton module to split stock move
 	pkgver = 5.6.0
 	pkgrel = 1
