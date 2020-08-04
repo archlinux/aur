@@ -1,7 +1,7 @@
 pkgbase = libayatana-appindicator
 	pkgdesc = Ayatana Application Indicators (Shared Library)
 	pkgver = 0.5.5
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/libayatana-appindicator
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = libayatana-appindicator
 	optdepends = mono
 	optdepends = gtk-sharp-3
 	conflicts = libayatana-appindicator-gtk3
+	replaces = libayatana-appindicator-gtk3
 	source = https://github.com/AyatanaIndicators/libayatana-appindicator/archive/0.5.5.tar.gz
 	md5sums = fd6705ad2793dced95056036ecd73b7f
 

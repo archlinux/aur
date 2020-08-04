@@ -3,7 +3,7 @@
 
 pkgname="libayatana-appindicator"
 pkgver="0.5.5"
-pkgrel="2"
+pkgrel="1"
 pkgdesc="Ayatana Application Indicators (Shared Library)"
 arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators/libayatana-appindicator"
@@ -14,6 +14,7 @@ optdepends=("vala" "mono" "gtk-sharp-3")
 source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('fd6705ad2793dced95056036ecd73b7f')
 conflicts=("${pkgname}-gtk3")
+replaces=("${pkgname}-gtk3")
 
 prepare()
 {
