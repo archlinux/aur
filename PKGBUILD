@@ -11,9 +11,8 @@ url="https://github.com/linux-surface/${_pkgname}"
 license=('GPL2')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-optdepends=("ipts-uapi-dkms: The kernel module required by this daemon. \
-Alternatively, you can use a kernel with this module built in.")
-makedepends=('go')
+optdepends=("ipts-uapi: The kernel module required by this daemon.")
+makedepends=('go' 'git')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 install=iptsd.install
