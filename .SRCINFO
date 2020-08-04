@@ -1,4 +1,4 @@
-pkgbase = trytond_production_work
+pkgbase = python-trytond_production_work
 	pkgdesc = Tryton module for production work
 	pkgver = 5.6.0
 	pkgrel = 1
