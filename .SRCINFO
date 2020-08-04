@@ -1,14 +1,14 @@
-pkgbase = python-trytond_timesheet
+pkgbase = trytond_timesheet
 	pkgdesc = Tryton module with timesheets
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_timesheet/trytond_timesheet-5.2.0.tar.gz
-	sha256sums = be642a4cf406a182b66df950df239750f0deb62cd1581d063a403b939198956e
+	source = https://files.pythonhosted.org/packages/source/t/trytond_timesheet/trytond_timesheet-5.6.0.tar.gz
+	sha256sums = 3d4068ced167bc4edca6b6a6609c720970535a62ac42df95ca6c9f333354e62a
 
 pkgname = python-trytond_timesheet
 
