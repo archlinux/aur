@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Maple 2020
+Type=Application
+Comment=Maple 2020
+Exec=/usr/share/maple2020/bin/xmaple %f
+Terminal=false
+Icon=/usr/share/maple2020/bin/Maple2020.png
+GenericName=Maple
+Categories=Applications;Education;Mathematics;
+MimeType=application/x-maple-worksheet;
