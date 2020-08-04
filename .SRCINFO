@@ -1,0 +1,17 @@
+pkgbase = bharvestr.lv2-git
+	pkgdesc = An experimental granular synthesizer LV2 plugin.
+	pkgver = r170.0ad7f60
+	pkgrel = 1
+	url = https://github.com/sjaehn/BJumblr
+	arch = x86_64
+	license = GPL
+	depends = git
+	depends = lv2
+	depends = libsndfile
+	depends = cairo
+	depends = pkg-config
+	source = bharvestr.lv2::git+https://github.com/sjaehn/BHarvestr
+	md5sums = SKIP
+
+pkgname = bharvestr.lv2-git
+
