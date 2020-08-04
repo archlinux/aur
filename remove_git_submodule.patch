@@ -1,0 +1,12 @@
+diff --unified --recursive --text deltachat-desktop-1.12.0.orig/package.json deltachat-desktop-1.12.0.patched/package.json
+--- deltachat-desktop-1.12.0.orig/package.json	2020-07-31 21:46:01.000000000 +0200
++++ deltachat-desktop-1.12.0.patched/package.json	2020-08-04 20:30:00.188436997 +0200
+@@ -4,8 +4,6 @@
+   "description": "Desktop Application for delta.chat",
+   "main": "index.js",
+   "scripts": {
+-    "install": "npm run install:submodules",
+-    "install:submodules": "git submodule update --recursive --init",
+     "test": "npm run check-formatting && npm run test-log-conventions && npm run test-unit",
+     "test-log-conventions": "node ./bin/log-conventions",
+     "test-unit": "node test/unit",

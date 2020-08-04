@@ -8,18 +8,31 @@ arch=("any")
 url="https://github.com/deltachat/deltachat-desktop"
 license=("GPL")
 depends=('electron6')
-makedepends=('npm' 'nodejs' 'git' 'rustup' 'python')
+makedepends=('npm' 'nodejs' 'git' 'rustup' 'python' 'unzip')
 conflicts=("deltachat-desktop-git")
+_basicwebrtc_commit=7a339f7f164b9b1ecbca740121874bf71d57ca50
 source=(
     "deltachat-desktop-${pkgver}.tar.gz::https://github.com/deltachat/deltachat-desktop/archive/v${pkgver}.tar.gz"
     "deltachat-desktop.desktop"
     "deltachat-desktop.sh"
+    "basicwebrtc.zip::https://github.com/cracker0dks/basicwebrtc/archive/$_basicwebrtc_commit.zip"
+    "remove_git_submodule.patch"
 )
 
 sha256sums=('074d31f7691b58e74ee0421172c5a44bce65eafdc7c9cd62e8d4914d46f173bb'
             '39bae164c234b3c89e7ae2bde89753c90065df7f37fece084f7f5acccbb9f1f1'
-            '5e20ea657599390e317523ae17b17aba0d26c59474a7f80282af5f2668002f59')
+            '5e20ea657599390e317523ae17b17aba0d26c59474a7f80282af5f2668002f59'
+            '5b1bf04faef913980b9bfd0e60be9113edb47a718e8f18c8dab58ee4f3d75c6e'
+            '12815b12e001ffc72943eba955e7c715856b43f8e62ec4ef880893f19acef9d9')
 
+prepare() {
+    cd "$srcdir/${pkgname}-${pkgver}"
+    unzip $srcdir/basicwebrtc.zip
+    rm -rf basicwebrtc
+    mv basicwebrtc-master basicwebrtc
+
+    patch --forward --strip=1 --input="${srcdir}/remove_git_submodule.patch"
+}
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
