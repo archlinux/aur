@@ -59,6 +59,12 @@ pkgbase = lv2-plugins-aur-meta
 	depends = cv_to_cc.lv2
 	depends = lenticular.lv2
 	depends = infamousplugins-git
+	depends = chowtapemodel.lv2-git
+	depends = cv_to_cc.lv2-git
+	depends = bschaffl.lv2-git
+	depends = bharvestr.lv2-git
+	depends = x42-sisco-cv-git
+	depends = stegosaurus-lv2-git
 
 pkgname = lv2-plugins-aur-meta
 
