@@ -1,0 +1,13 @@
+pkgbase = python-trytond_sale_shipment_grouping
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_shipment_grouping/trytond_sale_shipment_grouping-5.6.0.tar.gz
+	sha256sums = a1ae1348b8b88e4b340f24d09233f562c4cd1b322bc7b3efda1927c13bf53ae4
+
+pkgname = python-trytond_sale_shipment_grouping
+
