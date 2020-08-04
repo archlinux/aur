@@ -1,4 +1,4 @@
-pkgbase = trytond_timesheet
+pkgbase = python-trytond_timesheet
 	pkgdesc = Tryton module with timesheets
 	pkgver = 5.6.0
 	pkgrel = 1
