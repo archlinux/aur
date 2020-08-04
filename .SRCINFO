@@ -1,4 +1,4 @@
-pkgbase = trytond_ldap_authentication
+pkgbase = python-trytond_ldap_authentication
 	pkgdesc = Tryton module to authenticate users through LDAP
 	pkgver = 5.6.0
 	pkgrel = 1
