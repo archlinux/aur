@@ -2,7 +2,7 @@
 # Maintainer: Albert Graef <aggraef at gmail dot com>
 
 pkgname=pd-faustgen
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="The FAUST compiler embedded in a Pd external"
 arch=("i686" "x86_64")
@@ -10,26 +10,18 @@ license=('MIT')
 url="https://github.com/CICM/$pkgname"
 depends=('pd' 'llvm-libs')
 makedepends=('cmake' 'llvm')
-source=("git+https://github.com/CICM/$pkgname.git#tag=v$pkgver"
-	"faust@341bd3c5-patch.diff")
-md5sums=('SKIP'
-         '99f845fe8a258a8185577beae6ff67d9')
-
-prepare() {
-     cd "$pkgname"
-     git submodule update --init --recursive
-     # patch up the Faust source for LLVM10 support
-     patch -d faust -N -p1 -i "$srcdir/faust@341bd3c5-patch.diff"
-     mkdir build && cd build && cmake ..
-}
+source=("https://github.com/CICM/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+md5sums=('2a9d0c3bfc668664a9010d7e3b7b9b19')
 
 build() {
-     cd "$pkgname/build"
+     cd "$pkgname-$pkgver"
+     mkdir build && cd build
+     cmake ..
      make
 }
 
 package() {
-     cd "$pkgname"
+     cd "$pkgname-$pkgver"
      mkdir -p "$pkgdir/usr/lib/pd/extra/faustgen~/libs"
      cp -a external/* "$pkgdir/usr/lib/pd/extra/faustgen~"
      cp -a faust/libraries/* "$pkgdir/usr/lib/pd/extra/faustgen~/libs"
