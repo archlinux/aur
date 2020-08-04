@@ -1,4 +1,4 @@
-pkgbase = trytond_edocument_uncefact
+pkgbase = python-trytond_edocument_uncefact
 	pkgdesc = Tryton module for electronic document UN/CEFACT
 	pkgver = 5.6.0
 	pkgrel = 1
