@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Pettersson <anders.jonathan.p@gmail.com>
 pkgname=contain
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="An experimental CLI tool that transparently runs your development tools inside docker containers"
 url="https://github.com/jpettersson/contain"
