@@ -1,0 +1,13 @@
+pkgbase = python-trytond_account_payment_sepa_cfonb
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_payment_sepa_cfonb/trytond_account_payment_sepa_cfonb-5.6.0.tar.gz
+	sha256sums = d75be4036d7ffa16357d0b4ef444af1ab7e3d660e02fd4dd03e391f625c7dd77
+
+pkgname = python-trytond_account_payment_sepa_cfonb
+
