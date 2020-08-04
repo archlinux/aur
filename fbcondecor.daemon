@@ -6,7 +6,7 @@
 #
 
 . /etc/rc.conf
-. /etc/rc.d/functions
+. /etc/rc.d/functions.d/fbsplash-basic.sh
 . /etc/conf.d/fbcondecor
 . /usr/bin/splash-functions.sh
 

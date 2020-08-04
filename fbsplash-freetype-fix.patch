@@ -1,6 +1,7 @@
---- a/splashutils-1.5.4.4/src/ttf.c
-+++ b/splashutils-1.5.4.4/src/ttf.c
-@@ -27,8 +27,8 @@
+diff -ruN a/src/ttf.c b/src/ttf.c
+--- a/src/ttf.c	2011-06-12 17:43:39.000000000 -0400
++++ b/src/ttf.c	2014-09-11 12:20:14.076012078 -0400
+@@ -25,8 +25,8 @@
  #include <assert.h>
  
  #include <ft2build.h>
@@ -9,10 +10,11 @@
 +#include FT_OUTLINE_H
 +#include FT_TRUETYPE_IDS_H
  
- #include "splash.h"
- 
---- a/splashutils-1.5.4.4/src/ttf.h
-+++ b/splashutils-1.5.4.4/src/ttf.h
+ #include "common.h"
+ #include "render.h"
+diff -ruN a/src/ttf.h b/src/ttf.h
+--- a/src/ttf.h	2011-06-12 17:43:39.000000000 -0400
++++ b/src/ttf.h	2014-09-11 12:20:14.069012078 -0400
 @@ -1,8 +1,8 @@
  #ifndef _TTF_H
  #define _TTF_H
