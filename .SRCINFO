@@ -19,7 +19,7 @@ pkgbase = chronoengine
 	makedepends = gcc-fortran
 	makedepends = python
 	makedepends = swig
-	makedepends = cuda
+	makedepends = cuda<=10.2.89
 	makedepends = blaze
 	makedepends = thrust
 	makedepends = oce

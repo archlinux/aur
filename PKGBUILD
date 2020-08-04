@@ -15,7 +15,7 @@ url="https://projectchrono.org/"
 depends=(openmpi blas boost-libs hdf5)
 makedepends+=(cmake eigen git boost glm glew glfw irrlicht glut openmpi gcc-fortran)
 makedepends+=(python swig) # MODULE_PYTHON
-makedepends+=(cuda)        # MODULE_GRANULAR
+makedepends+=('cuda<=10.2.89')        # MODULE_GRANULAR
                            # MODULE_PARALLEL optional
 makedepends+=(blaze)       # MODULE_PARALLEL required
 makedepends+=(thrust)      # MODULE_PARALLEL required
