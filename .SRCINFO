@@ -1,0 +1,14 @@
+pkgbase = python-trytond_account_stock_landed_cost_weight
+	pkgdesc = Tryton module for landed cost per weight
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_stock_landed_cost_weight/trytond_account_stock_landed_cost_weight-5.6.0.tar.gz
+	sha256sums = 4000b721348b6a99ac1565a0d3bd4b8db01508f09e5f615b3eb1fce3a3a4649a
+
+pkgname = python-trytond_account_stock_landed_cost_weight
+
