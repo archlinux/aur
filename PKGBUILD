@@ -8,18 +8,20 @@ _region=us
 _pkgname=sm64ex
 pkgname=$_pkgname-redrawn-git
 pkgver=r504.58
-pkgrel=2
-pkgdesc='Super Mario 64 PC port (sm64ex fork) with the redrawn texture pack'
+pkgrel=3
+pkgdesc='Super Mario 64 PC port (sm64ex fork) with the redrawn texture pack and HD Mario'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/sm64pc/sm64ex'
 license=('reverse-engineered and unlicensed')
 depends=('python' 'audiofile' 'sdl2' 'glew')
+makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
 
 source=(
   'git+https://github.com/sm64pc/sm64ex.git'
   'git+https://github.com/TechieAndroid/sm64redrawn'
+  'https://www.sm64pc.info/forum/download/file.php?id=3' # HD Mario
   "$_pkgname.desktop"
   "$_pkgname.svg"
   "$_pkgname.sh"
@@ -29,6 +31,7 @@ source=(
 sha512sums=(
   'SKIP'
   'SKIP'
+  '1fbe98f4ea4439b5fb5eff5d985df5815cf4b30333004cb64133b6fb6bb2b6afd8b3154c6df79d73ce07eb573779bcdb3e282ebda3f356f6cc347206da816f7d'
   '2e8979c01b314d7acce55f246390ff6667700b97da1831c058b16551e7c506886e4c87397266be5f53848016567eb1743cd4b14ff7d186fa2544e3a76d735755'
   'af383cb853eb13376bc9697986756b29c15c3c22f8e7da2fec0516f26e12613e209af6f0470eab483bbcf462778af7f01d412c67f5277691e9823dc5bd885a80'
   '7e6cbbac98800a714fc2074027b54aacdbd4bd2ea4f01f09b0fd764b775c2feef6021c1d36ce88703ca1b750cfd381695e7eaafa90d15f5d60b7bfbdfd21fe69'
@@ -43,8 +46,9 @@ pkgver() {
 }
 
 prepare() {
+  find actors -type f -exec cp '{}' $_pkgname/'{}' \; # HD Mario
   cd $_pkgname
-  cp ../baserom.$_region.z64 .
+  cp ../baserom.$_region.z64 . # Copy the ROM
 }
 
 build() {
@@ -58,5 +62,5 @@ package() {
   install -Dm755 $_pkgname.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
   install -Dm755 $_pkgname/build/${_region}_pc/sm64.${_region}.* "$pkgdir/usr/share/$_pkgname/$_pkgname"
   install -Dm644 $_pkgname/build/${_region}_pc/res/base.zip "$pkgdir/usr/share/$_pkgname/res/base.zip"
-  cp -r --no-preserve=owner sm64redrawn/gfx "$pkgdir/usr/share/$_pkgname/res/"
+  cp -r --no-preserve=owner sm64redrawn/gfx "$pkgdir/usr/share/$_pkgname/res/" # sm64redrawn
 }
