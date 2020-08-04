@@ -1,7 +1,7 @@
 pkgbase = netatalk-ddp
 	pkgdesc = A kernel-level implementation of AppleTalk, AFP, and PAP services
 	pkgver = 2.2.6
-	pkgrel = 4
+	pkgrel = 5
 	url = http://netatalk.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -46,7 +46,7 @@ pkgbase = netatalk-ddp
 	md5sums = e57f9714b04c9b52f40260ed62dce82d
 	md5sums = 6d8c7d17632dcb6d062987dba43089f0
 	md5sums = fb2a3edcde5924932d1e40d77ea10087
-	md5sums = 7f4f693b087a2196adfa42a4e7162bc7
+	md5sums = f7deb64d6d5ea9c8e1245662206771f0
 	md5sums = 0063d66bf9649d585f3a5c6915d840ce
 	md5sums = d4bdcf02712beae9bce2b147b1861920
 	md5sums = 2dc6baaaf73a5c7ada9dea018dae1ac9

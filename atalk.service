@@ -6,7 +6,7 @@ Description=Netatalk AppleTalk service for Macintosh clients
 After=syslog.target network.target slpd.service avahi-daemon.service
 
 [Service]
-Type=forking
+Type=simple
 GuessMainPID=no
 ExecStart=/usr/sbin/atalkd
 Restart=always
