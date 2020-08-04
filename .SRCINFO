@@ -1,0 +1,18 @@
+pkgbase = python-imgviz
+	pkgdesc = Image Visualization Tools (object detection, semantic and instance segmentation)
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/wkentaro/imgviz
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-yaml
+	source = python-imgviz-1.2.2.tar.gz::https://github.com/wkentaro/imgviz/archive/v1.2.2.tar.gz
+	sha512sums = e8e43e6674232902f77ac7d6f23632ade3e791535796cc60bfeaa0815b77b0c80819014d76f02431dc91f4368e8c3a066b4a3449eb6412c25c6dce185e25e47b
+
+pkgname = python-imgviz
+
