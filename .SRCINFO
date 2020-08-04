@@ -1,0 +1,25 @@
+pkgbase = python-mmcv
+	pkgdesc = OpenMMLab Computer Vision Foundation
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/open-mmlab/mmcv
+	arch = x86_64
+	license = Apache
+	makedepends = cuda
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python-addict
+	depends = python-lmdb
+	depends = python-pillow
+	optdepends = opencv: optional image backend
+	source = python-mmcv-1.0.4.tar.gz::https://github.com/open-mmlab/mmcv/archive/v1.0.4.tar.gz
+	sha512sums = 5d7ccd74fc8a89e36a5cadef200b6b82d03c47358114f9b84258cfdb3cd275c094e00ec92f37fbdcdb098a47b7cce10e61941fb0264a3bc529dce7122b81a787
+
+pkgname = python-mmcv
+	pkgdesc = OpenMMLab Computer Vision Foundation(lite version, without cuda ops)
+
+pkgname = python-mmcv-full
+	pkgdesc = OpenMMLab Computer Vision Foundation (full version, with full features, include cuda ops)
+	provides = python-mmcv=1.0.4
+	conflicts = python-mmcv
+
