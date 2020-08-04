@@ -1,6 +1,6 @@
 # Maintainer: Babets <fbabetz+aur [.at.] yahoo (.dot.) it>
 pkgname=me-tv
-pkgver=3.0.9
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="DVB viewer based on GTK+3 and GStreamer"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('rust' 'meson')
 conflicts=("me-tv-git" "me-tv-bzr")
 install='me-tv.install'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Me-TV/Me-TV/archive/v$pkgver.tar.gz")
-md5sums=('bd6c5d7aa1e1a2f8e0574deb2425bd7d')
+md5sums=('8a38034203f517c04dbe6360b0365581')
 
 prepare() {
 	cp -pr "Me-TV-$pkgver" "$pkgname-$pkgver"
@@ -19,9 +19,11 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	meson --prefix /usr --buildtype=plain . build
+        mkdir Build
+        cd Build
+	meson --prefix /usr ..
 #	cargo build --release --locked --all-features
-	ninja -C build
+	ninja
 }
 
 check() {
@@ -35,6 +37,6 @@ package() {
 #	install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
 #	install -Dm 755 target/release/${pkgname}-record -t "${pkgdir}/usr/bin"
 #	install -Dm 755 target/release/${pkgname}-schedule -t "${pkgdir}/usr/bin"
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" ninja -C Build install
 }
 

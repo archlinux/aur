@@ -1,6 +1,6 @@
 pkgbase = me-tv
 	pkgdesc = DVB viewer based on GTK+3 and GStreamer
-	pkgver = 3.0.9
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/Me-TV/Me-TV
 	install = me-tv.install
@@ -16,8 +16,8 @@ pkgbase = me-tv
 	depends = gst-plugin-gtk
 	conflicts = me-tv-git
 	conflicts = me-tv-bzr
-	source = me-tv-3.0.9.tar.gz::https://github.com/Me-TV/Me-TV/archive/v3.0.9.tar.gz
-	md5sums = bd6c5d7aa1e1a2f8e0574deb2425bd7d
+	source = me-tv-3.1.0.tar.gz::https://github.com/Me-TV/Me-TV/archive/v3.1.0.tar.gz
+	md5sums = 8a38034203f517c04dbe6360b0365581
 
 pkgname = me-tv
 
