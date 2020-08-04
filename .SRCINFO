@@ -1,14 +1,14 @@
-pkgbase = python-trytond_sale_promotion
+pkgbase = trytond_sale_promotion
 	pkgdesc = Tryton module for sale promotion
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_promotion/trytond_sale_promotion-5.2.0.tar.gz
-	sha256sums = e7ea1dfb297dffa0b6cdb1266f42aa5ca85afc6d9defab0dad08f6afa9b85164
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_promotion/trytond_sale_promotion-5.6.0.tar.gz
+	sha256sums = 17fe709d51d76f862ac41dc7d758adf012577c92a419b7f695aa8c93e21e7546
 
 pkgname = python-trytond_sale_promotion
 
