@@ -1,4 +1,4 @@
-pkgbase = trytond_sale_opportunity
+pkgbase = python-trytond_sale_opportunity
 	pkgdesc = Tryton module with leads and opportunities
 	pkgver = 5.6.0
 	pkgrel = 1
