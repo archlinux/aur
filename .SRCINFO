@@ -1,0 +1,13 @@
+pkgbase = python-trytond_stock_supply_production
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_supply_production/trytond_stock_supply_production-5.6.0.tar.gz
+	sha256sums = ce285e9dd28ba9505e157c8e3d229b12501ad1ccf8ee5b0b37319f245119e716
+
+pkgname = python-trytond_stock_supply_production
+
