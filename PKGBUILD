@@ -1,6 +1,6 @@
 # Maintainer: pigt <pay2630 at gmail dot com>
 pkgname=todour
-pkgver=2.16
+pkgver=2.18
 pkgrel=1
 pkgdesc="An application for handling todo.txt files."
 arch=('x86_64')
