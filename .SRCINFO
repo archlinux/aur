@@ -1,14 +1,14 @@
-pkgbase = python-trytond_production_work
+pkgbase = trytond_production_work
 	pkgdesc = Tryton module for production work
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_production_work/trytond_production_work-5.2.0.tar.gz
-	sha256sums = 1fa608f0445317819e04a67743bf23b3678ddfb5776d780b628fa5dae4331d00
+	source = https://files.pythonhosted.org/packages/source/t/trytond_production_work/trytond_production_work-5.6.0.tar.gz
+	sha256sums = d01e1b48ffde0733ad7832ac2458411f113e22fdec5c721e3532990792ced241
 
 pkgname = python-trytond_production_work
 
