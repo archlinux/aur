@@ -9,7 +9,7 @@
 
 pkgname=rstudio-desktop-daily-bin
 pkgver=1.4.677
-pkgrel=2
+pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
 license=('GPL')
