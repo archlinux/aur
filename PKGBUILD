@@ -1,28 +1,29 @@
-# First Linux Arch packager: Serge Victor <arch@random.re>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Serge Victor <arch@random.re>
 
-pkgname=python-addict
-pkgver=0.4.0
+_pkgname=addict
+pkgname=python-${_pkgname}
+pkgver=2.2.1
 pkgrel=1
-pkgdesc="A Python Dict whos keys can be set both using attribute and item syntax"
+pkgdesc='A Python Dict whos keys can be set both using attribute and item synta'
 arch=('any')
-makedepends=('python-setuptools')
-url="https://github.com/mewwts/addict"
+url='https://github.com/mewwts/addict'
 license=('MIT')
-options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/a/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz)
-md5sums=('cfd335fc925a0dd49ceca874219473d9')
+makedepends=('python-setuptools')
+provides=("${_pkgname}")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('f22493f056032f50e4931a82444fcba8ef74c8fc994c5d06aa546a1433c2b8b0')
 
 build() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
-
-  msg 'Building...'
+  cd "${_pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
-
-  msg 'Installing...'
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd "${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
 }
-# vim:set ts=2 sw=2 et:
+
+# vim: ts=2 sw=2 et:
