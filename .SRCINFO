@@ -1,0 +1,17 @@
+pkgbase = bschaffl.lv2-git
+	pkgdesc = Pattern-controlled MIDI amp & time stretch plugin to produce shuffle / swing effects. (Experimental)
+	pkgver = r222.97bfd40
+	pkgrel = 1
+	url = https://github.com/sjaehn/BJumblr
+	arch = x86_64
+	license = GPL
+	depends = git
+	depends = lv2
+	depends = libsndfile
+	depends = cairo
+	depends = pkg-config
+	source = bschaffl.lv2::git+https://github.com/sjaehn/BSchaffl
+	md5sums = SKIP
+
+pkgname = bschaffl.lv2-git
+
