@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <alex.branham@gmail.com>
 
 _cranname=fs
-_cranver=1.4.2
+_cranver=1.5.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,10 +11,10 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
 depends=('r>=3.1')
-makedepends=(gcc make)
-optdepends=(r-testthat r-covr r-pillar r-tibble r-crayon r-rmarkdown r-knitr r-withr r-spelling)
+makedepends=(make)
+optdepends=(r-testthat r-covr r-pillar r-tibble r-crayon r-rmarkdown r-knitr r-withr r-spelling r-vctrs)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('717d6e7184843b1690cf42c3682ca163')
+md5sums=('f718b659a308e249261733f02407049e')
 
 build() {
   cd "${srcdir}"
