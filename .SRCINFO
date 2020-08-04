@@ -1,0 +1,22 @@
+pkgbase = labelme
+	pkgdesc = https://github.com/wkentaro/labelme
+	pkgver = 4.5.6
+	pkgrel = 1
+	url = https://github.com/open-mmlab/mmcv
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-imgviz
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-qtpy
+	depends = python-termcolor
+	depends = python-yaml
+	optdepends = pyside2: Qt backend, at least install one Qt backend
+	optdepends = python-pyqt5: Qt backend
+	source = labelme-4.5.6.tar.gz::https://github.com/wkentaro/labelme/archive/v4.5.6.tar.gz
+	sha512sums = 614d13203a19c503a72750dfd911ea3295ef64058762894c9b56c4abd96a8da4240371075de592b86e1cd615b3ce0f4ea995ba60c44649c2e771feedf2c44e28
+
+pkgname = labelme
+
