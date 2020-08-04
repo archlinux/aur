@@ -1,14 +1,10 @@
 pkgbase = tomatenquark
 	pkgdesc = FPS that uses an improved version of the Cube engine
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tomatenquark.org/
 	arch = x86_64
 	license = ZLIB
-	makedepends = sdl_mixer
-	makedepends = sdl_image
-	makedepends = mesa-libgl
-	makedepends = glu
 	depends = sdl2
 	depends = sdl2_mixer
 	depends = sdl2_image
