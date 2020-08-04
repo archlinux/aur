@@ -1,0 +1,13 @@
+pkgbase = python-trytond_stock_product_location
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_product_location/trytond_stock_product_location-5.6.0.tar.gz
+	sha256sums = 76b39f528fe5e61142db6cbca51ef239e463753cb8f9a48966efa4b0333b1d38
+
+pkgname = python-trytond_stock_product_location
+
