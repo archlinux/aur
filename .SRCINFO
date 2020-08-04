@@ -1,4 +1,4 @@
-pkgbase = trytond_production_outsourcing
+pkgbase = python-trytond_production_outsourcing
 	pkgdesc = Tryton module to outsource production
 	pkgver = 5.6.0
 	pkgrel = 1
