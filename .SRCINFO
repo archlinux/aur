@@ -1,0 +1,24 @@
+pkgbase = ciphey
+	pkgdesc = Automated decryption tool
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/Ciphey/Ciphey
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-poetry
+	depends = python-cipheycore
+	depends = python-loguru
+	depends = python-yaml
+	depends = python-appdirs
+	depends = python-requests
+	depends = python-cipheydists
+	depends = python-rich
+	depends = python-click
+	depends = python-click-spinner
+	depends = python-yaspin
+	source = ciphey-5.0.0.tar.gz::https://github.com/Ciphey/Ciphey/archive/5.0.0.tar.gz
+	sha256sums = 2437811b3cedb87fa2282efd70f122de32daba1401bd11e9eeefbfead87c4236
+
+pkgname = ciphey
+
