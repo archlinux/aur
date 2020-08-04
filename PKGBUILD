@@ -3,7 +3,7 @@
 _pkgname='validity-sensors-tools'
 pkgname="${_pkgname}-git"
 pkgver=0.5.r27.g5ba2094
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux tool to flash and pair Validity fingerprint sensors 009x'
 arch=('x86_64')
 url='https://github.com/3v1n0/python-validity'
