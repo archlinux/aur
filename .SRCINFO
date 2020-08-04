@@ -1,4 +1,4 @@
-pkgbase = trytond_stock_forecast
+pkgbase = python-trytond_stock_forecast
 	pkgdesc = Tryton module with stock forecasts
 	pkgver = 5.6.0
 	pkgrel = 1
