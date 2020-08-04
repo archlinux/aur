@@ -1,0 +1,13 @@
+pkgbase = python-trytond_sale_product_customer
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_product_customer/trytond_sale_product_customer-5.6.0.tar.gz
+	sha256sums = 945fd8bc2b0962573451ad3726fba9c52ed6efe1a9577d61aff964d8ced3a77a
+
+pkgname = python-trytond_sale_product_customer
+
