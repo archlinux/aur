@@ -1,4 +1,4 @@
-pkgbase = trytond_stock
+pkgbase = python-trytond_stock
 	pkgdesc = Tryton module for stock and inventory
 	pkgver = 5.6.0
 	pkgrel = 1
