@@ -4,7 +4,7 @@
 
 pkgname=snappy-static
 _pkgname=snappy
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc='A fast compressor/decompressor library'
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('snappy')
 checkdepends=('zlib')
 options=('staticlibs')
 source=("https://github.com/google/snappy/archive/$pkgver.tar.gz")
-sha256sums=('3dfa02e873ff51a11ee02b9ca391807f0c8ea0529a4924afa645fbf97163f9d4')
+sha256sums=('16b677f07832a612b0836178db7f374e414f94657c138e6993cbfc5dcc58651f')
 
 build() {
   cd "$_pkgname-$pkgver"
