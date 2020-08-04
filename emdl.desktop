@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=emdl
+Comment=Extensible manga downloader and reader
+TryExec=emdl
+Exec=emdl
+Terminal=false
+StartupWMClass=emdl
+Type=Application
+Categories=Network
+Keywords=manga;reader;downloader

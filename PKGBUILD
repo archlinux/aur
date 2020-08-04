@@ -4,7 +4,7 @@
 
 pkgname="emdl"
 pkgver="2.0.1"
-pkgrel=1
+pkgrel=2
 pkgdesc='Extensible manga downloader and reader using Electron'
 
 _pkgarchive="$pkgname-v$pkgver"
@@ -19,8 +19,12 @@ makedepends=(
     'git'
     'nvm'
 )
-source=("https://gitlab.com/CopyNippyJoin/$pkgname/-/archive/v$pkgver/$_pkgarchive.tar.gz")
-sha256sums=('b4a3d6f612815ac2e248beffae7deed3d4454bc4692f90a15229cd615fbd54fd')
+source=(
+    "$pkgname.desktop"
+    "https://gitlab.com/CopyNippyJoin/$pkgname/-/archive/v$pkgver/$_pkgarchive.tar.gz"
+)
+sha256sums=('a34a3d921a0469431286ee2b0966f46efc07bdf2b1f694d8cc61f3e5a3bf9a0c'
+            'b4a3d6f612815ac2e248beffae7deed3d4454bc4692f90a15229cd615fbd54fd')
 
 build () {
     # Use node 12
@@ -36,7 +40,8 @@ build () {
 
 package () {
     # Set up package directories
-    install -d ${pkgdir}/{opt,usr/bin}
+    install -d $pkgdir/{opt,usr/bin}
+    install -Dm 755 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
     # Copy built files into the package
     ( cd $srcdir/$_pkgarchive/dist/linux-unpacked && find . -type f \
         -exec install -Dm 755 "{}" "$pkgdir/opt/$pkgname/{}" \; )

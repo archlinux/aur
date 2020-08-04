@@ -1,16 +1,16 @@
 pkgbase = emdl
 	pkgdesc = Extensible manga downloader and reader using Electron
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/CopyNippyJoin/emdl
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = nvm
-	depends = electron
 	depends = jq
-	depends = npm
+	source = emdl.desktop
 	source = https://gitlab.com/CopyNippyJoin/emdl/-/archive/v2.0.1/emdl-v2.0.1.tar.gz
+	sha256sums = a34a3d921a0469431286ee2b0966f46efc07bdf2b1f694d8cc61f3e5a3bf9a0c
 	sha256sums = b4a3d6f612815ac2e248beffae7deed3d4454bc4692f90a15229cd615fbd54fd
 
 pkgname = emdl
