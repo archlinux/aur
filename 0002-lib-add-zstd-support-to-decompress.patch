@@ -1,7 +1,7 @@
-From bf823de97f6ddbfe3011e3b51742c25f5ad253f7 Mon Sep 17 00:00:00 2001
+From 2c3ac5606dbce8181ebbccb1a6136af7f0458234 Mon Sep 17 00:00:00 2001
 From: Nick Terrell <terrelln@fb.com>
 Date: Thu, 20 Jun 2019 15:14:00 -0700
-Subject: [PATCH 4/9] lib: add zstd support to decompress
+Subject: [PATCH 2/7] lib: add zstd support to decompress
 
 * Add unzstd() and the zstd decompress interface.
 * Add zstd support to decompress_method().
@@ -44,10 +44,10 @@ index 000000000000..56d539ae880f
 +	   void (*error_fn)(char *x));
 +#endif
 diff --git a/lib/Kconfig b/lib/Kconfig
-index 5d53f9609c25..e883aecb9279 100644
+index df3f3da95990..a5d6f23c4cab 100644
 --- a/lib/Kconfig
 +++ b/lib/Kconfig
-@@ -336,6 +336,10 @@ config DECOMPRESS_LZ4
+@@ -342,6 +342,10 @@ config DECOMPRESS_LZ4
  	select LZ4_DECOMPRESS
  	tristate
  
@@ -59,10 +59,10 @@ index 5d53f9609c25..e883aecb9279 100644
  # Generic allocator support is selected if needed
  #
 diff --git a/lib/Makefile b/lib/Makefile
-index 685aee60de1d..46a4c7a39beb 100644
+index b1c42c10073b..2ba9642a3a87 100644
 --- a/lib/Makefile
 +++ b/lib/Makefile
-@@ -163,6 +163,7 @@ lib-$(CONFIG_DECOMPRESS_LZMA) += decompress_unlzma.o
+@@ -170,6 +170,7 @@ lib-$(CONFIG_DECOMPRESS_LZMA) += decompress_unlzma.o
  lib-$(CONFIG_DECOMPRESS_XZ) += decompress_unxz.o
  lib-$(CONFIG_DECOMPRESS_LZO) += decompress_unlzo.o
  lib-$(CONFIG_DECOMPRESS_LZ4) += decompress_unlz4.o

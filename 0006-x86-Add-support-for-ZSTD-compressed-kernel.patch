@@ -1,7 +1,7 @@
-From 497ac308a65ab70fa14691d7f748d60cc4cd5d3e Mon Sep 17 00:00:00 2001
+From 020a730db391c8ade0a9d5e6611fc6aa1e00f1ab Mon Sep 17 00:00:00 2001
 From: Nick Terrell <terrelln@fb.com>
 Date: Thu, 20 Jun 2019 15:18:36 -0700
-Subject: [PATCH 8/9] x86: Add support for ZSTD compressed kernel
+Subject: [PATCH 6/7] x86: Add support for ZSTD compressed kernel
 
 * Add support for zstd compressed kernel
 * Define __DISABLE_EXPORTS in misc.c
@@ -54,10 +54,10 @@ index 5325c71ca877..7fafc7ac00d7 100644
  ============	==============
  Field name:	payload_length
 diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
-index 2d3f963fd6f1..897b3253147b 100644
+index 883da0abf779..4a64395bc35d 100644
 --- a/arch/x86/Kconfig
 +++ b/arch/x86/Kconfig
-@@ -185,6 +185,7 @@ config X86
+@@ -188,6 +188,7 @@ config X86
  	select HAVE_KERNEL_LZMA
  	select HAVE_KERNEL_LZO
  	select HAVE_KERNEL_XZ
@@ -66,10 +66,10 @@ index 2d3f963fd6f1..897b3253147b 100644
  	select HAVE_KPROBES_ON_FTRACE
  	select HAVE_FUNCTION_ERROR_INJECTION
 diff --git a/arch/x86/boot/compressed/Makefile b/arch/x86/boot/compressed/Makefile
-index 5f7c262bcc99..480cd5836825 100644
+index 5a828fde7a42..fb6f929a850b 100644
 --- a/arch/x86/boot/compressed/Makefile
 +++ b/arch/x86/boot/compressed/Makefile
-@@ -24,7 +24,7 @@ OBJECT_FILES_NON_STANDARD	:= y
+@@ -26,7 +26,7 @@ OBJECT_FILES_NON_STANDARD	:= y
  KCOV_INSTRUMENT		:= n
  
  targets := vmlinux vmlinux.bin vmlinux.bin.gz vmlinux.bin.bz2 vmlinux.bin.lzma \
@@ -78,7 +78,7 @@ index 5f7c262bcc99..480cd5836825 100644
  
  KBUILD_CFLAGS := -m$(BITS) -O2
  KBUILD_CFLAGS += -fno-strict-aliasing $(call cc-option, -fPIE, -fPIC)
-@@ -143,6 +143,8 @@ $(obj)/vmlinux.bin.lzo: $(vmlinux.bin.all-y) FORCE
+@@ -145,6 +145,8 @@ $(obj)/vmlinux.bin.lzo: $(vmlinux.bin.all-y) FORCE
  	$(call if_changed,lzo)
  $(obj)/vmlinux.bin.lz4: $(vmlinux.bin.all-y) FORCE
  	$(call if_changed,lz4)
@@ -87,7 +87,7 @@ index 5f7c262bcc99..480cd5836825 100644
  
  suffix-$(CONFIG_KERNEL_GZIP)	:= gz
  suffix-$(CONFIG_KERNEL_BZIP2)	:= bz2
-@@ -150,6 +152,7 @@ suffix-$(CONFIG_KERNEL_LZMA)	:= lzma
+@@ -152,6 +154,7 @@ suffix-$(CONFIG_KERNEL_LZMA)	:= lzma
  suffix-$(CONFIG_KERNEL_XZ)	:= xz
  suffix-$(CONFIG_KERNEL_LZO) 	:= lzo
  suffix-$(CONFIG_KERNEL_LZ4) 	:= lz4

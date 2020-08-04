@@ -1,7 +1,7 @@
-From 24f730e20fdce889f71583e356955214bbdbc8af Mon Sep 17 00:00:00 2001
+From fd7d683915a466f631fbef2c89fb8b8c8655dbde Mon Sep 17 00:00:00 2001
 From: Nick Terrell <terrelln@fb.com>
 Date: Thu, 20 Jun 2019 15:03:27 -0700
-Subject: [PATCH 3/9] lib: prepare zstd for preboot environment
+Subject: [PATCH 1/7] lib: prepare zstd for preboot environment
 
 * Remove a double definition of the CHECK_F macro when the zstd
   library is amalgamated.

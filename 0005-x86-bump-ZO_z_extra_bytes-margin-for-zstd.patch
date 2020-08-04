@@ -1,7 +1,7 @@
-From 498da23687a1786c26d3668c7f4cb51c072fc8d2 Mon Sep 17 00:00:00 2001
+From 4c6a631cb24820552f1a076f1a8cd679f436cf46 Mon Sep 17 00:00:00 2001
 From: Nick Terrell <terrelln@fb.com>
 Date: Thu, 20 Jun 2019 15:17:17 -0700
-Subject: [PATCH 7/9] x86: bump ZO_z_extra_bytes margin for zstd
+Subject: [PATCH 5/7] x86: bump ZO_z_extra_bytes margin for zstd
 
 Bump the ZO_z_extra_bytes margin for zstd.
 

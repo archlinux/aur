@@ -1,7 +1,7 @@
 # Maintainer: Luca Stefani <luca.stefani.ge1@gmail.com>
 
 pkgbase=linux-llvm
-pkgver=5.7.11.arch1
+pkgver=5.8.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -20,30 +20,26 @@ source=(
   "$_srcname::git+https://git.archlinux.org/linux.git#tag=$_srctag"
   config         # the main kernel config file
   sphinx-workaround.patch
-  0001-kbuild-add-variables-for-compression-tools.patch
-  0002-kbuild-fix-broken-builds-because-of-GZIP-BZIP2-LZOP-.patch
-  0003-lib-prepare-zstd-for-preboot-environment.patch
-  0004-lib-add-zstd-support-to-decompress.patch
-  0005-init-add-support-for-zstd-compressed-kernel.patch
-  0006-usr-add-support-for-zstd-compressed-initramfs.patch
-  0007-x86-bump-ZO_z_extra_bytes-margin-for-zstd.patch
-  0008-x86-Add-support-for-ZSTD-compressed-kernel.patch
-  0009-.gitignore-add-ZSTD-compressed-files.patch
-  enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+.patch
+  0001-lib-prepare-zstd-for-preboot-environment.patch
+  0002-lib-add-zstd-support-to-decompress.patch
+  0003-init-add-support-for-zstd-compressed-kernel.patch
+  0004-usr-add-support-for-zstd-compressed-initramfs.patch
+  0005-x86-bump-ZO_z_extra_bytes-margin-for-zstd.patch
+  0006-x86-Add-support-for-ZSTD-compressed-kernel.patch
+  0007-.gitignore-add-ZSTD-compressed-files.patch
+  enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch
 )
 sha256sums=('SKIP'
-            '150e89b712bfc2a23792904678059aa12f520bd114b533728f451126569c723c'
+            '7748dbdc1d0ff9efa8358268e82b21b338acfb7ebbd2876753bf23c4e71da44c'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '67a0300b0b98b7339799781b71114b4ecbba5808001917173fcf6a50f1944051'
-            'c51ecd4fdf6b72c64da014a31943b488968a23e7e803ba46c577782d59eeef81'
-            '65ec7924289767315133e16d68769ae9d548e1310e9adf81d666fcf7268ad5a3'
-            '1cb9e47bd382e32daa92fdba6abb73eb8834d43210182259947dbb65b0b50051'
-            '5699749f3842f245f8a1ac557de6c493ee297ecf1b36c9fb047f933871a15af7'
-            '2e187f5107496218eb6ff0624f2ec402e9e0e88f23e9d0879b2ac436ff19eb55'
-            'a1414049540146dc9786b4736ed86d937d6c2e88a7868488d7d8ea873c4cb2fa'
-            'c19fcfe5a8808e0446b3598705a63c42edfe80427f06da6cd459d1477ecc51f9'
-            'e0be06345b71474f5ff76afddd3b9a6a6d18952cdcaeb8434207621ebcf4c7db'
-            '1f56a2466bd9b4477925682d8f944fabb38727140e246733214fe50aa326fc47')
+            '2f0090ec0c9a72e6241bbea05faaef979405119ce8ef669d84dead36c8e2246e'
+            '5f21c12f002e71ec5b5db96832b415ce291a7e230fa07b328c21760274e72e9d'
+            '3db0e145f2dc29f2d39779bf053a6999bfaff74929e00ab575f2b6e5a327465c'
+            'c95ae6fed77db3e212754a6cb98f02642be1d8d319fe9219ddd7c02b0643b3d1'
+            '2b558cc58e95343bb2e3cfd96c668b671251c543124176b8687baf12cdf999d5'
+            '84c275eb98fb908b742ffe51faa7feb0312550712b0cd729bf72941a2f633a65'
+            'f88df9ee297e229792e516ac9fb6f35ddc1aa13c3fdeb9ba15fb4de8b1dcd7c7'
+            '5ab29eb64e57df83b395a29a6a4f89030d142feffbfbf73b3afc6d97a2a7fd12')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

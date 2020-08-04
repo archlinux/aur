@@ -1,7 +1,7 @@
-From 2019b74879487ec698326ad2710be00736f3973a Mon Sep 17 00:00:00 2001
+From dac027e09a0ee16d8425d25df2e2fa4dce52fc08 Mon Sep 17 00:00:00 2001
 From: Nick Terrell <terrelln@fb.com>
 Date: Thu, 20 Jun 2019 15:15:08 -0700
-Subject: [PATCH 5/9] init: add support for zstd compressed kernel
+Subject: [PATCH 3/7] init: add support for zstd compressed kernel
 
 * Adds the zstd and zstd22 cmds to scripts/Makefile.lib
 * Adds the HAVE_KERNEL_ZSTD and KERNEL_ZSTD options
@@ -18,10 +18,10 @@ Signed-off-by: Nick Terrell <terrelln@fb.com>
  3 files changed, 38 insertions(+), 2 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 8bfe2f51f23d..2923b859372c 100644
+index 8f7de0104799..38acd65aa651 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -453,6 +453,7 @@ KLZOP		= lzop
+@@ -464,6 +464,7 @@ KLZOP		= lzop
  LZMA		= lzma
  LZ4		= lz4c
  XZ		= xz
@@ -29,7 +29,7 @@ index 8bfe2f51f23d..2923b859372c 100644
  
  CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
  		  -Wbitwise -Wno-return-void -Wno-unknown-attribute $(CF)
-@@ -501,7 +502,7 @@ CLANG_FLAGS :=
+@@ -512,7 +513,7 @@ CLANG_FLAGS :=
  export ARCH SRCARCH CONFIG_SHELL BASH HOSTCC KBUILD_HOSTCFLAGS CROSS_COMPILE LD CC
  export CPP AR NM STRIP OBJCOPY OBJDUMP OBJSIZE READELF PAHOLE LEX YACC AWK INSTALLKERNEL
  export PERL PYTHON PYTHON3 CHECK CHECKFLAGS MAKE UTS_MACHINE HOSTCXX
@@ -39,10 +39,10 @@ index 8bfe2f51f23d..2923b859372c 100644
  
  export KBUILD_CPPFLAGS NOSTDINC_FLAGS LINUXINCLUDE OBJCOPYFLAGS KBUILD_LDFLAGS
 diff --git a/init/Kconfig b/init/Kconfig
-index 965a628556e8..91471c337abc 100644
+index 078a0b73effd..11b67bc74e58 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -160,13 +160,16 @@ config HAVE_KERNEL_LZO
+@@ -191,13 +191,16 @@ config HAVE_KERNEL_LZO
  config HAVE_KERNEL_LZ4
  	bool
  
@@ -60,7 +60,7 @@ index 965a628556e8..91471c337abc 100644
  	help
  	  The linux kernel is a kind of self-extracting executable.
  	  Several compression algorithms are available, which differ
-@@ -245,6 +248,16 @@ config KERNEL_LZ4
+@@ -276,6 +279,16 @@ config KERNEL_LZ4
  	  is about 8% bigger than LZO. But the decompression speed is
  	  faster than LZO.
  
@@ -78,10 +78,10 @@ index 965a628556e8..91471c337abc 100644
  	bool "None"
  	depends on HAVE_KERNEL_UNCOMPRESSED
 diff --git a/scripts/Makefile.lib b/scripts/Makefile.lib
-index 64263019752a..af8bfc13e88e 100644
+index 916b2f7f7098..54f7b7eb580b 100644
 --- a/scripts/Makefile.lib
 +++ b/scripts/Makefile.lib
-@@ -395,6 +395,28 @@ quiet_cmd_xzkern = XZKERN  $@
+@@ -413,6 +413,28 @@ quiet_cmd_xzkern = XZKERN  $@
  quiet_cmd_xzmisc = XZMISC  $@
        cmd_xzmisc = cat $(real-prereqs) | $(XZ) --check=crc32 --lzma2=dict=1MiB > $@
  
