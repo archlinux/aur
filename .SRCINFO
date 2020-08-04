@@ -1,4 +1,4 @@
-pkgbase = trytond_purchase_shipment_cost
+pkgbase = python-trytond_purchase_shipment_cost
 	pkgdesc = Tryton module for purchase shipment cost
 	pkgver = 5.6.0
 	pkgrel = 1
