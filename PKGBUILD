@@ -8,7 +8,7 @@
 
 pkgname=dmenu-xresources
 pkgver=4.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Case insensitive menu for X, configured via .Xresources'
 url='https://tools.suckless.org/dmenu/'
 arch=('x86_64')
@@ -38,7 +38,7 @@ build() {
 package() {
   cd dmenu-${pkgver}
   make PREFIX=/usr DESTDIR="${pkgdir}" install
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/dmenu"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/dmenu-xresources"
 }
 
 # vim: ts=2 sw=2 et:
