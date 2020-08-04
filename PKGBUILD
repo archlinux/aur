@@ -8,14 +8,14 @@
 
 _pkgname=xfce4-session
 pkgname=${_pkgname}-git
-pkgver=4.14.0+149+g21feddd2
+pkgver=4.14.0+176+g2ebe6a49
 pkgrel=1
 pkgdesc="Xfce session manager (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://www.xfce.org/"
 license=('GPL2')
-depends=('libxfce4ui' 'libwnck3' 'libsm' 'polkit' 'xorg-iceauth' 'xorg-xinit'
-         'xorg-xrdb' 'polkit-gnome' 'hicolor-icon-theme')
+depends=('libxfce4ui>=4.15.1' 'libwnck3' 'libsm' 'polkit' 'xorg-iceauth' 'xorg-xinit'
+         'xorg-xrdb' 'polkit-gnome' 'hicolor-icon-theme' 'libxfce4util>=4.15.2')
 makedepends=('intltool' 'git' 'xfce4-dev-tools')
 optdepends=('gnome-keyring: for keyring support when GNOME compatibility is enabled'
             'xfce4-screensaver: for locking screen with xflock4'
@@ -24,6 +24,7 @@ optdepends=('gnome-keyring: for keyring support when GNOME compatibility is enab
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 replaces=('xfce-utils')
+groups=('xfce4-git')
 source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}"
         'xfce-polkit-gnome-authentication-agent-1.desktop')
 sha256sums=('SKIP'
