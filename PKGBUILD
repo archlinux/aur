@@ -5,6 +5,7 @@
 # Configuration.
 # shellcheck disable=SC2206
 [[ -v CUDA_ARCH ]] && _cc_list=(${CUDA_ARCH})
+
 _name=alice-vision
 _fragment="#branch=develop"
 
@@ -93,7 +94,6 @@ build() {
   cmake "${_CMAKE_FLAGS[@]}" -DGEOGRAM_INSTALL_PREFIX="${srcdir}/geogram_bin" -DUNCERTAINTYTE_DIR="${srcdir}/ute_bin" -G Ninja -S ${pkgname} -B build
 # shellcheck disable=SC2030,SC2031,SC2046 # ninja call won't work with shell substitution in quotes.
   ninja $([ -v MAKEFLAGS ] || echo -j1) -C build
-  bash
 }
 
 
