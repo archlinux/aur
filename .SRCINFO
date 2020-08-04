@@ -1,0 +1,19 @@
+pkgbase = slingshot-python3
+	pkgdesc = A 2D strategy game in the gravity fields of several planets (python3 port)
+	pkgver = 0.9+5+g243aef9
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/indritbashkimi/slingshot
+	arch = any
+	license = GPL
+	makedepends = python-distutils-extra
+	makedepends = git
+	depends = python-pygame
+	depends = python-docopt
+	provides = slingshot=0.9+5+g243aef9
+	conflicts = slingshot
+	source = slingshot::git+https://github.com/indritbashkimi/slingshot.git#branch=python3
+	sha256sums = SKIP
+
+pkgname = slingshot-python3
+
