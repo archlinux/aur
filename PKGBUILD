@@ -9,7 +9,7 @@ pkgver=4.7.1
 _pkgver_release=$pkgver.RELEASE
 _eclipse_pkgver=e4.16.0
 _eclipse_pkgver_short=e4.16
-pkgrel=1
+pkgrel=2
 pkgdesc="The Spring Tool Suite (STS) from SpringSource"
 arch=('x86_64')
 url="https://spring.io/tools"
@@ -34,6 +34,7 @@ package() {
     install -d ${pkgdir}/usr/bin ${pkgdir}/usr/share/applications
     install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
     ln -s "/opt/sts-${_pkgver_release}/SpringToolSuite4" ${pkgdir}/usr/bin/STS
+    ln -s "/opt/sts-${_pkgver_release}" "${pkgdir}/opt/sts4"
 
     # install icon
     install -m755 -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
