@@ -1,0 +1,14 @@
+pkgbase = python-trytond_account_invoice_stock
+	pkgdesc = Tryton module to link stock and invoice
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_invoice_stock/trytond_account_invoice_stock-5.6.0.tar.gz
+	sha256sums = ce243b399271f0868b5a7cb09e843598a84c2eb8f5e1d48aa2f07485964ac3cf
+
+pkgname = python-trytond_account_invoice_stock
+
