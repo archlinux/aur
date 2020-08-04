@@ -1,25 +1,24 @@
 pkgbase = r-tidyr
 	pkgdesc = Tidy Messy Data
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tidyr
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = gcc
 	depends = r>=3.1
 	depends = r-dplyr>=0.8.2
 	depends = r-ellipsis>=0.1.0
 	depends = r-glue
 	depends = r-magrittr
 	depends = r-purrr
-	depends = r-rcpp
 	depends = r-rlang
 	depends = r-stringi
 	depends = r-tibble>=2.1.1
 	depends = r-tidyselect>=1.1.0
 	depends = r-vctrs>=0.3.0
 	depends = r-lifecycle
+	depends = r-cpp11
 	optdepends = r-covr
 	optdepends = r-jsonlite
 	optdepends = r-knitr
@@ -27,8 +26,8 @@ pkgbase = r-tidyr
 	optdepends = r-rmarkdown
 	optdepends = r-readr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/tidyr_1.1.0.tar.gz
-	md5sums = e2774761359bff7fb21dce25bca5cdc6
+	source = https://cran.r-project.org/src/contrib/tidyr_1.1.1.tar.gz
+	md5sums = 22f455f123027bb15e6bc6ef20150c3e
 
 pkgname = r-tidyr
 
