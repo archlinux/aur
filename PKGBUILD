@@ -1,11 +1,11 @@
 # Maintainer: Attila Greguss <floyd0122[at]gmail[dot]com>
 
 pkgbase=dotnet-core-3.0
-pkgname=( 'aspnet-runtime-3.0' 'dotnet-runtime-3.0' 'dotnet-sdk-3.0')
+pkgname=( 'aspnet-runtime-3.0' 'dotnet-runtime-3.0' 'dotnet-sdk-3.0' 'dotnet-targeting-pack-3.0' 'aspnet-targeting-pack-3.0')
 pkgver=3.0.3.sdk103
 _runtimever=3.0.3
 _sdkver=3.0.103
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -47,8 +47,28 @@ package_dotnet-sdk-3.0() {
   provides=("dotnet-sdk-3.0" "dotnet-sdk=${pkgver}")
   conflicts=("dotnet-sdk-3.0" "dotnet-sdk=${pkgver}")
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
-  # Not copying packs because /usr/share/dotnet/packs/NETStandard.Library.Ref/2.1.0/ contained in 3.1
-  # as well, depend on it instead
   cp -dr --no-preserve='ownership' sdk templates "${pkgdir}"/usr/share/dotnet/
   ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-3.0
+}
+
+package_dotnet-targeting-pack-3.0() {
+  pkgdesc='The .NET Core targeting pack (binary) - End-of-life'
+  depends=(netstandard-targeting-pack)
+  provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-3.0)
+  conflicts=(dotnet-targeting-pack=${_runtimever})
+
+  install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
+  cp -dr --no-preserve='ownership' packs/Microsoft.NETCore.App.{Host.linux-x64,Ref} "${pkgdir}"/usr/share/dotnet/packs/
+  ln -s dotnet-host "${pkgdir}"/usr/share/licenses/dotnet-targeting-pack-3.0
+}
+
+package_aspnet-targeting-pack-3.0() {
+  pkgdesc='The ASP.NET Core targeting pack (binary) - End-of-life'
+  depends=(dotnet-targeting-pack-3.0)
+  provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-3.0)
+  conflicts=(aspnet-targeting-pack=${_runtimever})
+
+  install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
+  cp -dr --no-preserve='ownership' packs/Microsoft.AspNetCore.App.Ref "${pkgdir}"/usr/share/dotnet/packs/
+  ln -s dotnet-host "${pkgdir}"/usr/share/licenses/aspnet-targeting-pack-3.0
 }

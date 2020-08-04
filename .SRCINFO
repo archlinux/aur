@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-3.0
 	pkgver = 3.0.3.sdk103
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -46,4 +46,18 @@ pkgname = dotnet-sdk-3.0
 	provides = dotnet-sdk=3.0.3.sdk103
 	conflicts = dotnet-sdk-3.0
 	conflicts = dotnet-sdk=3.0.3.sdk103
+
+pkgname = dotnet-targeting-pack-3.0
+	pkgdesc = The .NET Core targeting pack (binary) - End-of-life
+	depends = netstandard-targeting-pack
+	provides = dotnet-targeting-pack=3.0.3
+	provides = dotnet-targeting-pack-3.0
+	conflicts = dotnet-targeting-pack=3.0.3
+
+pkgname = aspnet-targeting-pack-3.0
+	pkgdesc = The ASP.NET Core targeting pack (binary) - End-of-life
+	depends = dotnet-targeting-pack-3.0
+	provides = aspnet-targeting-pack=3.0.3
+	provides = aspnet-targeting-pack-3.0
+	conflicts = aspnet-targeting-pack=3.0.3
 
