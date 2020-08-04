@@ -2,12 +2,11 @@
 
 pkgname=tomatenquark
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="FPS that uses an improved version of the Cube engine"
 arch=('x86_64')
 url="https://tomatenquark.org/"
 license=('ZLIB')
-makedepends=('sdl_mixer' 'sdl_image' 'mesa-libgl' 'glu')
 backup=('etc/conf.d/tomatenquark')
 source=(https://github.com/${pkgname}/code/releases/download/v${pkgver}/${pkgname}_ubuntu.zip
         tomatenquark-client
