@@ -1,0 +1,16 @@
+pkgbase = python-pyamdgpuinfo
+	pkgdesc = AMD GPU stats
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/mark9064/pyamdgpuinfo
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	depends = libdrm
+	source = https://pypi.org/packages/source/p/pyamdgpuinfo/pyamdgpuinfo-2.0.0.tar.gz
+	sha256sums = 32ee95d818270c6617c59f778a40eb304ae030c0f1ee7e09bfb14b483e00a827
+
+pkgname = python-pyamdgpuinfo
+
