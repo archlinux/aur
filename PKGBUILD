@@ -3,8 +3,8 @@
 
 pkgname=git-delta
 _name="${pkgname#*-}"
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 
 pkgdesc='A syntax-highlighting pager for git and diff output'
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -15,7 +15,7 @@ depends=('git')
 makedepends=('rust' 'clang' 'llvm')
 
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('4ff8d5864306f130be8e0da3d8013bcc4ece082835d4cc5395775c669111ed77')
+sha256sums=('cae9bda3fb1b4e1adea439bb0e834d703d5925f0ace44eafa2d1b1293ae79209')
 
 
 prepare() {
