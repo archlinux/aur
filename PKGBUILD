@@ -2,7 +2,7 @@
 
 pkgname=twad-git
 _pkgname=twad
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Terminal wad launcher'
 arch=('any')
