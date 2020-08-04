@@ -1,6 +1,6 @@
 pkgbase = snapd
 	pkgdesc = Service and tools for management of snap packages.
-	pkgver = 2.45.2
+	pkgver = 2.45.3.1
 	pkgrel = 1
 	url = https://github.com/snapcore/snapd
 	install = snapd.install
@@ -27,8 +27,8 @@ pkgbase = snapd
 	conflicts = snap-confine
 	options = !strip
 	options = emptydirs
-	source = snapd-2.45.2.tar.xz::https://github.com/snapcore/snapd/releases/download/2.45.2/snapd_2.45.2.vendor.tar.xz
-	sha256sums = ebc084aa4f9a4a8595e6308e5fca55cbcd4622032aa22a635f9d44b8300737de
+	source = snapd-2.45.3.1.tar.xz::https://github.com/snapcore/snapd/releases/download/2.45.3.1/snapd_2.45.3.1.vendor.tar.xz
+	sha256sums = 7013c93f3329987074fd846d5e86ac3ae0c4b6135143eb11b3fee794b9a2ea91
 
 pkgname = snapd
 
