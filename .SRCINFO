@@ -1,14 +1,14 @@
-pkgbase = python-trytond_stock_forecast
+pkgbase = trytond_stock_forecast
 	pkgdesc = Tryton module with stock forecasts
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_forecast/trytond_stock_forecast-5.2.0.tar.gz
-	sha256sums = 092f233f92b05741e85d55e6fc8b169afb6e47ea27c5ea2f6db23aff828a927f
+	source = https://files.pythonhosted.org/packages/source/t/trytond_stock_forecast/trytond_stock_forecast-5.6.0.tar.gz
+	sha256sums = 331f09ea10d93ba4978e9f8137426282dda9c98c3e050b4484961925501fafa8
 
 pkgname = python-trytond_stock_forecast
 
