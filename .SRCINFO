@@ -1,0 +1,13 @@
+pkgbase = python-trytond_sale_credit_limit
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_credit_limit/trytond_sale_credit_limit-5.6.0.tar.gz
+	sha256sums = e2eff48102abe84e39860f69a87142d674a81e782ebab937fc5de1dc299c0102
+
+pkgname = python-trytond_sale_credit_limit
+
