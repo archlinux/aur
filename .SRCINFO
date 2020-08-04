@@ -1,0 +1,13 @@
+pkgbase = python-trytond_sale_shipment_tolerance
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_shipment_tolerance/trytond_sale_shipment_tolerance-5.6.0.tar.gz
+	sha256sums = 9fe8b8df938d0b63438f38d919d38c2e33e064ce0715dbb1b4446f527da61b19
+
+pkgname = python-trytond_sale_shipment_tolerance
+
