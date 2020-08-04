@@ -1,4 +1,4 @@
-pkgbase = trytond_marketing_automation
+pkgbase = python-trytond_marketing_automation
 	pkgdesc = Tryton module to plan, coordinate and manage marketing campaigns
 	pkgver = 5.6.0
 	pkgrel = 1
