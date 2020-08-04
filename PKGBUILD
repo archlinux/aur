@@ -2,7 +2,7 @@
 
 pkgname=lz4-static
 _pkgname="${pkgname%-static}"
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc='Extremely fast compression algorithm (static version)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL2')
 checkdepends=('diffutils')
 depends=('glibc')
 source=("https://github.com/lz4/lz4/archive/v$pkgver.tar.gz")
-sha256sums=('f8377c89dad5c9f266edc0be9b73595296ecafd5bfa1000de148096c50052dc4')
+sha256sums=('658ba6191fa44c92280d4aa2c271b0f4fbc0e34d249578dd05e50e76d0e5efcc')
 options=('staticlibs')
 provides=('lz4')
 conflicts=('lz4')
