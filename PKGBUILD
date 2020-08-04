@@ -30,8 +30,8 @@ package() {
 	destdir="$pkgdir$(pkg-config --variable plugindir purple)"
 	install -Dm755 -t "$destdir" libhangouts.so
 
-	icondir=$pkgdir/usr/share/pixmaps/pidgin/protocols
-	echo $icondir
+	icondir="$pkgdir/usr/share/pixmaps/pidgin/protocols"
+	echo "Icon Dir: $icondir"
 
 	for size in 16 22 24 48; do
 		install -TDm644 $srcdir/$_pkgname/hangouts$size.png $icondir/$size/hangouts.png
