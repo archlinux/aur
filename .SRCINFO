@@ -1,0 +1,13 @@
+pkgbase = python-trytond_purchase_request_quotation
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_purchase_request_quotation/trytond_purchase_request_quotation-5.6.0.tar.gz
+	sha256sums = 7485943c5bf4b1153b333caa0defa6e83daefaaaf2dee2ac448b0bb62399d645
+
+pkgname = python-trytond_purchase_request_quotation
+
