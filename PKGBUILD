@@ -1,8 +1,8 @@
 # Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
 
 _basename=jicofo
-_tag=614
-_version=1.0+614
+_tag=615
+_version=1.0+615
 
 pkgname=${_basename}-nightly
 pkgver=${_version}
@@ -51,6 +51,7 @@ package() {
 	install -dm750 "${CONFDIR}"
         install -Dm640 -t "${CONFDIR}" "lib/logging.properties"
         install -Dm755 -t "${DESTDIR}" "resources/jicofo.sh"
+        sed -i 's@/var/log/jitsi@/var/log/'${pkgname}'@' "${CONFDIR}/logging.properties"
 
         cd "$srcdir"
         install -Dm640 -t "${CONFDIR}" "config" "sip-communicator.properties"
