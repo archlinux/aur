@@ -1,14 +1,14 @@
-pkgbase = python-trytond_sale_invoice_grouping
+pkgbase = trytond_sale_invoice_grouping
 	pkgdesc = Tryton module to group sale invoices
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_invoice_grouping/trytond_sale_invoice_grouping-5.2.0.tar.gz
-	sha256sums = 9027ac7be64bed33138753b9ce2a9a52c6519686f9512d82029a1a374ad87e2a
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_invoice_grouping/trytond_sale_invoice_grouping-5.6.0.tar.gz
+	sha256sums = 9eee6158f32790f69ade615506508632867fe863b88774e15610c59860392409
 
 pkgname = python-trytond_sale_invoice_grouping
 
