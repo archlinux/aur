@@ -1,19 +1,21 @@
-pkgbase = purple-hangouts-hg
-	pkgdesc = A Pidgin plugin to support the proprietary protocol used by Google for the Hangouts service.
-	pkgver = r396.3f7d89bf9ce2
+pkgbase = purple-hangouts-git
+	pkgdesc = A Pidgin plugin to support the proprietary protocol used by Google for the Hangouts service
+	pkgver = latest
 	pkgrel = 1
-	url = https://bitbucket.org/EionRobb/purple-hangouts
+	url = https://github.com/EionRobb/purple-hangouts
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	license = GPLv3+
-	makedepends = mercurial
+	makedepends = git
 	depends = libpurple
 	depends = glib2
 	depends = json-glib
 	depends = protobuf-c
-	source = purple-hangouts::hg+https://bitbucket.org/EionRobb/purple-hangouts
-	md5sums = SKIP
+	provides = purple-hangouts
+	conflicts = purple-hangouts-hg
+	source = purple-hangouts::git+https://github.com/EionRobb/purple-hangouts.git
+	sha1sums = SKIP
 
-pkgname = purple-hangouts-hg
+pkgname = purple-hangouts-git
 
