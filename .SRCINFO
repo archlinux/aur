@@ -1,4 +1,4 @@
-pkgbase = trytond_product_classification
+pkgbase = python-trytond_product_classification
 	pkgdesc = Tryton module to implement product classification
 	pkgver = 5.6.0
 	pkgrel = 1
