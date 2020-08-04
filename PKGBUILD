@@ -1,4 +1,5 @@
-# Maintainer: Heiko Baums <heiko@baums-on-web.de>
+# Maintainer: nemesys <nemstar zoho com>
+# Contributor: Heiko Baums <heiko@baums-on-web.de>
 # Contributor: Kurt J. Bosch <kjb-temp-2009 at alpenjodel.de>
 
 pkgname=fbsplash
@@ -99,7 +100,7 @@ package() {
 }
 md5sums=('29bbb355919a2f27c40dbfc8075c4a8d'
          '4045e315c52f5a576fca4f7e634eeb91'
-         '90708a96038d7d7921c2e9fde938c058'
+         '323a213ad65aee6ddde05b0ceb3b0494'
          'b5e6c08bbe7645a1c035565ea7d66437'
          '2860cc29d5da2ea65c810de068bcc262'
          'f65cf94d4d4959bb44cda5fa634ab405'
