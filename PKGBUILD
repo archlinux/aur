@@ -1,22 +1,20 @@
 # Maintainer: BrLi <brli at chakralinux dot org>
 
 pkgname=zettlr
-pkgver=1.7.1
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
-license=('GPL')
+license=('GPL' 'custom')
 depends=(electron ttf-webhostinghub-glyphs otf-crimson-text)
 makedepends=(yarn git gulp)
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
             'ttf-lato: Display output in a more comfortable way')
-source=(git+https://github.com/Zettlr/Zettlr.git#tag=v"${pkgver}")
+_commit=8b08c0249bf7946ccd2809d81b8c827470f4ee86 # v1.7.4^0
+source=(git+https://github.com/Zettlr/Zettlr.git#commit="${_commit}")
 sha1sums=('SKIP')
-
-# source=(https://github.com/Zettlr/Zettlr/archive/v${pkgver}.tar.gz)
-# sha256sums=('765c9d74a7d9a6a35df88cb6ca23db7e88409e32d0c9cbf4b234cc47d8d69b39')
 
 prepare() {
     cd "${srcdir}/Zettlr"
@@ -65,7 +63,7 @@ build() {
 #     # The "test" function in package.json
 #     node node_modules/mocha/bin/mocha
 #     # The "test-gui" function in package.json, not useful in our case
-#     # node scripts/test-gui.js
+#     node scripts/test-gui.js
 #     # Clean up
 #     yarn remove electron
 #     rm yarn.lock
@@ -90,6 +88,10 @@ END
         install -Dm644 "${srcdir}/Zettlr/resources/icons/png/${px}x${px}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${px}x${px}/apps/${pkgname}.png"
     done
+
+    # install legal notice
+    install -Dm644 "${srcdir}/Zettlr/README.md" "${pkgdir}/usr/share/licenses/${pkgname}/README"
+    install -Dm644 "${srcdir}/Zettlr/resources/icons/README.md" "${pkgdir}/usr/share/licenses/${pkgname}/icon/README"
 
     # generate freedesktop entry files
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<END
