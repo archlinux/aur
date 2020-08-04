@@ -1,4 +1,4 @@
-pkgbase = trytond_sale_payment
+pkgbase = python-trytond_sale_payment
 	pkgdesc = Tryton module that manage payments on sale
 	pkgver = 5.6.0
 	pkgrel = 1
