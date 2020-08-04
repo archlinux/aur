@@ -1,0 +1,22 @@
+pkgbase = kgtk-git
+	pkgdesc = A quick-n-dirty hack to make gtk applications use Proper™ file dialogs
+	pkgver = r35.e586217
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/applications/kgtk
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kio
+	depends = gtk2
+	depends = gtk3
+	provides = kgtk
+	conflicts = kgtk
+	source = git+https://github.com/sandsmark/kgtk.git
+	md5sums = SKIP
+
+pkgname = kgtk-git
+
