@@ -17,6 +17,6 @@ b2sums=('86153365b2499e6cee2f60960f4be70e7fe954ee20dc3bee8f858084996e561bd290803
 package() {
   cd "oxygen-$pkgver"
   for file in sounds/*.ogg;do
-    install -Dm 644 "$file" "$pkgdir/usr/share/sounds/$file"
+    install -Dm 644 "$file" "$pkgdir/usr/share/$file"
   done
 }
