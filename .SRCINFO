@@ -1,14 +1,14 @@
-pkgbase = python-trytond_sale_extra
+pkgbase = trytond_sale_extra
 	pkgdesc = Tryton module for sale extra
-	pkgver = 5.2.0
+	pkgver = 5.6.0
 	pkgrel = 1
 	url = http://www.tryton.org/
 	arch = any
 	license = GPL3
 	makedepends = python-distribute
 	depends = python>=3.5
-	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_extra/trytond_sale_extra-5.2.0.tar.gz
-	sha256sums = 42611bc4dcb5c66761423858ab0a9504d7586233dec475f84a6deb065d0e82fd
+	source = https://files.pythonhosted.org/packages/source/t/trytond_sale_extra/trytond_sale_extra-5.6.0.tar.gz
+	sha256sums = 33fc64bd457ae49dbad6405484d20a3327446c166dcc9bab0a3f53d39f2ecfd8
 
 pkgname = python-trytond_sale_extra
 
