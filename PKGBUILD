@@ -1,13 +1,13 @@
 # Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
-_svt_hevc_ver='1.4.3'
+_svt_hevc_ver='1.5.0'
 _svt_av1_ver='0.8.4'
 _svt_vp9_ver='0.2.2'
 
 pkgname=ffmpeg-full
 pkgver=4.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -54,7 +54,7 @@ sha256sums=('ad009240d46e307b4e03a213a0f49c11b650e445b1f8be0dda2a9212b34d2ffb'
             'SKIP'
             'b6fcef2f4cbb1daa47d17245702fbd67ab3289b6b16f090ab99b9c2669453a02'
             '1392206202287f64f95023ec8630095c0419454f913af4d5fd703ea8117fe133'
-            '878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6'
+            'b37d43d5d8692599347c6f1f316c13b9a9addc66d3ceb7e6e02341c494af7cdc'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
             '5e960b4dab495437082d0838a40a8cae9b67d1cef1ffd57da960afaa2bfd3719'
             'b74be6d805672210e226e7c0b403f88b0ee8a53c732c9bdc873c4b44aeb75c96'
