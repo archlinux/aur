@@ -1,6 +1,6 @@
 pkgbase = gonha-git
 	pkgdesc = Light-weight system monitor for Linux
-	pkgver = 1.6.14.r245.d3e0892
+	pkgver = 1.6.38.r284.f7e9531
 	pkgrel = 1
 	url = https://github.com/fredcox/gonha
 	arch = any
@@ -23,6 +23,7 @@ pkgbase = gonha-git
 	depends = python-unit-convert
 	depends = python-coloredlogs
 	depends = python-numpy
+	depends = python-pyamdgpuinfo
 	depends = python-prompt_toolkit1014
 	depends = ttf-fira-code
 	depends = hddtemp

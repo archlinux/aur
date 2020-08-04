@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gonha-git
-pkgver=1.6.14.r245.d3e0892
+pkgver=1.6.38.r284.f7e9531
 pkgrel=1
 pkgdesc='Light-weight system monitor for Linux'
 arch=('any')
@@ -22,6 +22,7 @@ depends=('python-pyqt5'
          'python-unit-convert'
          'python-coloredlogs'
          'python-numpy'
+         'python-pyamdgpuinfo'
          'python-prompt_toolkit1014'
          'ttf-fira-code'
          'hddtemp')
@@ -32,14 +33,14 @@ source=('git+https://github.com/fredcox/gonha.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  printf "%s.r%s.%s" "$(pip show ${pkgname%-git} | grep Version | sed 's/Version: //')" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname%-git}"
+	printf "%s.r%s.%s" "$(pip show ${pkgname%-git} | grep Version | sed 's/Version: //')" \
+		"$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${pkgname%-git}"
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	cd "$srcdir/${pkgname%-git}"
+	python setup.py install --root="$pkgdir" --optimize=1
+
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
-# vim:set ts=2 sw=2 et:
