@@ -1,4 +1,4 @@
-pkgbase = trytond_party
+pkgbase = python-trytond_party
 	pkgdesc = Tryton module with parties and addresses
 	pkgver = 5.6.0
 	pkgrel = 1
