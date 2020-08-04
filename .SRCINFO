@@ -1,4 +1,4 @@
-pkgbase = purple-hangouts-git
+pkgbase = purple-hangouts
 	pkgdesc = A Pidgin plugin to support the proprietary protocol used by Google for the Hangouts service
 	pkgver = latest
 	pkgrel = 1
