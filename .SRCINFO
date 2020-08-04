@@ -1,4 +1,4 @@
-pkgbase = trytond_product_classification_taxonomic
+pkgbase = python-trytond_product_classification_taxonomic
 	pkgdesc = Tryton module to implement product classification taxonomic
 	pkgver = 5.6.0
 	pkgrel = 1
