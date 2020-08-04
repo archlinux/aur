@@ -1,0 +1,13 @@
+pkgbase = python-trytond_account_stock_continental
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://www.tryton.org/
+	arch = any
+	license = GPL3
+	makedepends = python-distribute
+	depends = python>=3.5
+	source = https://files.pythonhosted.org/packages/source/t/trytond_account_stock_continental/trytond_account_stock_continental-5.6.0.tar.gz
+	sha256sums = 0861ee2744b0ff9deec4692bed9d5387673ff86078513ddf89da12317756885e
+
+pkgname = python-trytond_account_stock_continental
+
