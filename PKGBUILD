@@ -3,7 +3,7 @@
 
 _pkgname=SimpleSQLite
 pkgname=python-${_pkgname,,}
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Simplify SQLite database operations'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-dataproperty' 'python-mbstrdecoder' 'python-pathvalidate' 'pyth
 makedepends=('python-setuptools')
 provides=("${_pkgname,,}")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e8fe541efefb0c68601250ba609e40cc53430ac9afb2741c1eac084caf910b5f')
+sha256sums=('e4f3613b04bc304a2f41294367c628ed00f27ca5d8eceb3f1a9d674f4b483b95')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -23,8 +23,8 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 'README.rst' "${pkgdir}/usr/share/doc/${_pkgname,,}/README.rst"
-  install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${_pkgname,,}/LICENSE"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname,,}" 'README.rst'
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname,,}" 'LICENSE'
 }
 
 # vim: ts=2 sw=2 et:

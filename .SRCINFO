@@ -1,6 +1,6 @@
 pkgbase = python-simplesqlite
 	pkgdesc = Simplify SQLite database operations
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/thombashi/SimpleSQLite
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-simplesqlite
 	depends = python-tabledata
 	depends = python-typepy
 	provides = simplesqlite
-	source = https://files.pythonhosted.org/packages/source/S/SimpleSQLite/SimpleSQLite-1.1.2.tar.gz
-	sha256sums = e8fe541efefb0c68601250ba609e40cc53430ac9afb2741c1eac084caf910b5f
+	source = https://files.pythonhosted.org/packages/source/S/SimpleSQLite/SimpleSQLite-1.1.3.tar.gz
+	sha256sums = e4f3613b04bc304a2f41294367c628ed00f27ca5d8eceb3f1a9d674f4b483b95
 
 pkgname = python-simplesqlite
 
