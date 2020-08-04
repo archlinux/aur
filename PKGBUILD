@@ -1,7 +1,7 @@
 # Maintainer: Albert Vaca Cintora <albertvaka@gmail.com>
 
 pkgname=datadog-agent
-pkgver=7.20.1
+pkgver=7.21.1
 _agentrel=1
 pkgrel=1
 pkgdesc='Datadog Agent: collect metrics and events from your systems and apps'
@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}-${_agentrel}-Release::https://apt.datadoghq.com/di
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            'b2b20e24e69011005e385a14bda8e0b035718fa21ef798f5af51b7dde169a582c7004b908add54149f115e851ae4d046b344c70cdc5ffa51aab3487c24533dc4'
+            'e7cba7d2cba26685baf81efaeac2090bfa88bbbc47bfe39072954ef36f792faea991a99ec8921bfacc4adf02db5a1febbe9aa0d154ab8a7b8c8e75717b493ee4'
             '20cacea9611af70f3a8802dfd545313cf40fe7784cc44555cfe50602676d624072caf3803193e23d38d9a24f5a2c2a7ee336f9a9ca87562326b21b5ed677032f'
             '2a3e873d88b8f3a5d90591f955894273eb28d0f9b352e54be4f1125d4229a8f1d7eece8bf6ad41b85ee194390821e9c851393fb36ac249069cfdf7470925ce21')
 validpgpkeys=('A2923DFF56EDA6E76E55E492D3A80E30382E94DE') # Datadog, Inc <package@datadoghq.com>
