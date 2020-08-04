@@ -4,33 +4,27 @@
 # Contributor: Bazon <bazonbloch@arcor.de>
 
 pkgname=activinspire
-pkgver=2.18.68238
+pkgver=2.19.69200
 pkgrel=0
 pkgdesc="Presentation Software for use with Promethean Hardware products."
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
 license=('unknown')
-depends=(lib32-libxmu lib32-gst-plugins-base lib32-libjpeg-turbo lib32-libjpeg6-turbo lib32-libxrender lib32-libgl lib32-fontconfig lib32-openssl-1.0 lib32-nss lib32-libxcomposite lib32-libxcursor lib32-libxtst lib32-dbus)
-optdepends=('bin32-jre: For using the equation editor'
-            'activdriver: Driver for Promethean hardware'
+depends=(libxmu gst-plugins-base libjpeg-turbo libxrender libgl fontconfig openssl-1.0 nss libxcomposite libxcursor libxtst dbus)
+optdepends=('activdriver: Driver for Promethean hardware'
             'activtools: Tools for Promethean hardware, e.g. calibration or systray monitor')
-source=("http://activsoftware.co.uk/linux/repos/ubuntu/pool/non-oss/a/activinspire/activinspire_${pkgver}-1.amd64_amd64.deb"
+source=("http://activsoftware.co.uk/linux/repos/ubuntu/pool/non-oss/a/activinspire/activinspire_${pkgver}.1804-1.amd64_amd64.deb"
         "inspire.sh"
 	"activityplayer.sh"
         "com.ubuntu.user-interface.gschema.xml")
-md5sums=('4da7d0533928096ac6f74e37d3a41e88'
-         '21ff8944ba388a6b5aab894839745132'
-         '5222bd85f84f45cd1ebc6ccece49d586'
+md5sums=('cf9f58626f00e77fd8991a425b1b946e'
+         'd3096ede6c2cd388469f4e12a8286ee8'
+         '14f618ed07ed2d267b2578818d253200'
          'e0f2c4078eadd00de8f28159b273e576')
 
 package() {
- # The upstream .deb actually includes 3 whole setups:
- #  1. The actual files to be used by the package manager (in the . directory),
- #  2. a self-contained installer for installing without a package manager (in ./inspire),
- #  3. an older version of ActivInspire (13.x) (in ./inspire/DEB).
- # It also includes /etc/xdg (not needed) and /var/Promethean (created with the correct permissions below).
- # All except #1 are not extracted to save time while removing them.
- bsdtar -C "$pkgdir" --exclude=./inspire --exclude=./var --exclude=./etc -xf data.tar.gz
+ # Extract software from debian archive. Exclude /etc/xdg (not needed) and /var/Promethean (created with the correct permissions below).
+ bsdtar -C "$pkgdir" --exclude=./var --exclude=./etc -xf data.tar.xz
 
  # Use /opt instead of /usr/local/bin for binaries to match Arch packaging standards for large self-contained packages.
  install -dm0755 "$pkgdir"/opt
@@ -39,7 +33,6 @@ package() {
  # Because we just changed the paths, now we need to fix the absolute paths that Promethean uses in their files.
  sed -i "s%/usr/local/bin%/usr/bin%" "$pkgdir"/usr/share/applications/activsoftware.desktop
  sed -i "s%/usr/local/bin%/usr/bin%" "$pkgdir"/usr/share/applications/activplayer.desktop
- sed -i "s%/usr/local/bin%/opt%" "$pkgdir"/opt/activsoftware/workbench/activdashboard.sh
 
  #  Install com.ubuntu.user-interface schema need to launch ActivInspire.
  mkdir "$pkgdir"/usr/share/glib-2.0
