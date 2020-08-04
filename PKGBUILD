@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=3
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
