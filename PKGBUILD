@@ -28,25 +28,20 @@ build () {
     # Use node 12
     local node_version='12'
     export npm_config_cache="$srcdir/$_pkgarchive/npm_cache"
-    local npm_prefix=$(npm config get prefix)
-    npm config delete prefix
     source /usr/share/nvm/init-nvm.sh
-    nvm install "$node_version" && nvm use "$node_version"
+    nvm install "$node_version"
     # Run the build
     cd "$srcdir/$_pkgarchive"
-    npm ci
-    npm run pack
-    # Restore node config
-    npm config set prefix "$npm_prefix"
-    nvm unalias default
+    nvm exec $node_version npm ci
+    nvm exec $node_version npm run pack
 }
 
 package () {
     # Set up package directories
     install -d ${pkgdir}/{opt,usr/bin}
     # Copy built files into the package
-    find $srcdir/$_pkgarchive/dist/linux-unpacked -type f \
-        -exec install -Dm 755 "{}" "$pkgdir/opt/$pkgname/{}" \;
+    ( cd $srcdir/$_pkgarchive/dist/linux-unpacked && find . -type f \
+        -exec install -Dm 755 "{}" "$pkgdir/opt/$pkgname/{}" \; )
     # Symlink the executable path into the package
     ln -s /opt/$pkgname/$pkgname $pkgdir/usr/bin/$pkgname
 }
