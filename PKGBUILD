@@ -3,8 +3,8 @@
 
 _pkgname=klavaro
 pkgname=${_pkgname}-svn
-pkgver=3.10.r118M
-pkgrel=1
+pkgver=3.10.r118
+pkgrel=2
 pkgdesc='Flexible touch typing tutor that supports customizable keyboard layouts'
 arch=('x86_64')
 url='https://klavaro.sourceforge.io'
@@ -38,9 +38,7 @@ check() {
 
 package() {
   make DESTDIR="${pkgdir}" -C "${_pkgname}" install
-  install -Dm644 "${_pkgname}/README" "${pkgdir}/usr/share/doc/${_pkgname}/README"
-  sed -i 's|/usr/share/icons/hicolor/24x24/apps/klavaro.png|klavaro|' \
-    "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_pkgname}/README"
 }
 
 # vim: ts=2 sw=2 et:
