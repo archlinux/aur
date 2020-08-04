@@ -6,8 +6,8 @@
 #       may fail if make uses more than one job.
 
 pkgname=calculix
-pkgver=2.16
-pkgrel=4
+pkgver=2.17
+pkgrel=1
 pkgdesc="CalculiX: 3D finite element solver and post-processor (executables)"
 arch=('i686' 'x86_64')
 options=(!makeflags !buildflags)
@@ -23,13 +23,13 @@ checkdepends=('perl')
 #       when upstream fixes the issue
 source=("http://www.dhondt.de/ccx_${pkgver}.src.tar.bz2"
         "http://www.dhondt.de/ccx_${pkgver}.test.tar.bz2"
-      	"http://www.dhondt.de/cgx_${pkgver}.1.all.tar.bz2"
+      	"http://www.dhondt.de/cgx_${pkgver}.all.tar.bz2"
         "calculix_${pkgver}_archlinux.patch")
 
-sha256sums=('ebd95a0e4d52a3a8fb969eefc85417c82f649f25526bb6d83d69868ab44d47b7'
-            'fcbeb4d03a960ec26b5027fd729f6a13b607ab5fece4c5673c16fa740592f687'
-            '0125efb8dfe47c920b266d8c6a326677eae3967a113a75c079405c1d9415cb54'
-            '089e57f785c5c95669e133a2b5effb9c238a123b6d68ac568cf22ef71199a91e')
+sha256sums=('ca708ad4aa729d9f84a9faba343c1bcc0b7cc84ed372616ebb55c8e6fa8f6e50'
+            '798f94e536197bb10a74bae096f2a29a5111239020e7d10f93e1ad3d90c370cf'
+            '01b32864714d7ed7c760567e3a04077f3e41fe171d1804b305c96c344b0e4d2e'
+            'a3c8c91c6ecd4b958ed366fb78cd6ebde077d238f7aaa2d0714fab31d6ff48c9')
 
 prepare()
 {
@@ -50,7 +50,7 @@ build()
     make
     
     msg2 "Building gui..."
-    cd "${srcdir}/CalculiX/cgx_${pkgver}.1/src"
+    cd "${srcdir}/CalculiX/cgx_${pkgver}/src"
     make
 
     msg2 "Build complete"
@@ -122,7 +122,7 @@ package()
     install -d  ${pkgdir}/usr/bin
 
     install -Dm755 ${srcdir}/CalculiX/ccx_${pkgver}/src/ccx_${pkgver} ${pkgdir}/usr/bin/ccx
-    install -Dm755 ${srcdir}/CalculiX/cgx_${pkgver}.1/src/cgx ${pkgdir}/usr/bin/cgx
+    install -Dm755 ${srcdir}/CalculiX/cgx_${pkgver}/src/cgx ${pkgdir}/usr/bin/cgx
 
     msg2 "Done"  
 }
