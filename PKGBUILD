@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=python-pywikibot
 _module='pywikibot'
-pkgver=3.0.20200703
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Python MediaWiki Bot Framework"
 url="https://www.mediawiki.org/wiki/Pywikibot"
@@ -21,4 +21,4 @@ package() {
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
-sha256sums=('af7dc748b8b1d73e00f27058820df888bc40542d1a44809ef1a43d4747676e47')
+sha256sums=('373f67005db669a42a2fc2cb9f347f8ca27b13c68005dae81f5a532b0834899e')
