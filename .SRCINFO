@@ -1,4 +1,4 @@
-pkgbase = trytond_production_routing
+pkgbase = python-trytond_production_routing
 	pkgdesc = Tryton module for production routing
 	pkgver = 5.6.0
 	pkgrel = 1
