@@ -1,4 +1,4 @@
-pkgbase = python-trytond_edocument_uncefact
+pkgbase = trytond_edocument_uncefact
 	pkgdesc = Tryton module for electronic document UN/CEFACT
 	pkgver = 5.6.0
 	pkgrel = 1
@@ -8,7 +8,7 @@ pkgbase = python-trytond_edocument_uncefact
 	makedepends = python-distribute
 	depends = python>=3.5
 	source = https://files.pythonhosted.org/packages/source/t/trytond_edocument_uncefact/trytond_edocument_uncefact-5.6.0.tar.gz
-	sha256sums = 2dd6dc04faa465b4aaf1e4c4aeaecd6e8f5a0b8b21aec9bea5344955fd2fbf8a 8594f20d37ca0a7912405497d63006a4fc514f99dc15f7fecba14acafd4d1a0a
+	sha256sums = 8594f20d37ca0a7912405497d63006a4fc514f99dc15f7fecba14acafd4d1a0a
 
 pkgname = python-trytond_edocument_uncefact
 
