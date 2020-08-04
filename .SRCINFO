@@ -1,5 +1,5 @@
 pkgbase = python-addict
-	pkgdesc = A Python Dict whos keys can be set both using attribute and item synta
+	pkgdesc = A Python Dict whos keys can be set both using attribute and item syntax
 	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/mewwts/addict
