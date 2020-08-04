@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=cloudflared-bin
-pkgver=2020.7.4
+pkgver=2020.8.0
 pkgrel=1
 pkgdesc="An Argo Tunnel client which proxies any local webserver through the Cloudflare network"
 arch=("x86_64" "i686" "armv6h" "armv7h")
@@ -15,10 +15,10 @@ source=("https://raw.githubusercontent.com/cloudflare/cloudflared/master/LICENSE
         "cloudflared@.service"
         "cloudflared-dns.service"
         "sysusers.d")
-source_x86_64=("https://bin.equinox.io/a/3K9vmbwhjCX/cloudflared-2020.7.4-linux-amd64.tar.gz")
-source_i686=("https://bin.equinox.io/a/QSnzsre7dJ/cloudflared-2020.7.4-linux-386.tar.gz")
-source_armv6h=("https://bin.equinox.io/a/aPAgcAMXqKV/cloudflared-2020.7.4-linux-arm.tar.gz")
-source_armv7h=("https://bin.equinox.io/a/aPAgcAMXqKV/cloudflared-2020.7.4-linux-arm.tar.gz")
+source_x86_64=("https://bin.equinox.io/a/n5MQaB67zKM/cloudflared-2020.8.0-linux-amd64.tar.gz")
+source_i686=("https://bin.equinox.io/a/5WCCPe6QNiJ/cloudflared-2020.8.0-linux-386.tar.gz")
+source_armv6h=("https://bin.equinox.io/a/kRERfqeFDKA/cloudflared-2020.8.0-linux-arm.tar.gz")
+source_armv7h=("https://bin.equinox.io/a/kRERfqeFDKA/cloudflared-2020.8.0-linux-arm.tar.gz")
 sha256sums=('6a486a0f6c00e87cce1caf0aa8db45ea9fefd0bf91d9be6fc44460160dc0dbda'
             'e769786afdfbd486a4d7ca99495dbe955c25e41b5e012b722b018ca17f269dac'
             '83234a52452dce5497dd04e27323b2f83c702d4435a2687d1be4f829451fb061'
