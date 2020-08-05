@@ -1,7 +1,7 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
 	pkgver = 407
-	pkgrel = 2
+	pkgrel = 1
 	url = http://hydrusnetwork.github.io/hydrus/
 	install = hydrus.install
 	arch = any
