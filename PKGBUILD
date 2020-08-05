@@ -61,5 +61,5 @@ package() {
      cd "$src_pkgname"
      mkdir -p "$pkgdir$pdlibdir/extra/faustgen~/libs"
      cp -a external/* "$pkgdir$pdlibdir/extra/faustgen~"
-     cp -a faust/libraries/*.lib faust/libraries/old/*.lib "$pkgdir/usr/lib/pd/extra/faustgen~/libs"
+     cp -a faust/libraries/*.lib faust/libraries/old/*.lib "$pkgdir$pdlibdir/extra/faustgen~/libs"
 }
