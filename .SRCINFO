@@ -1,25 +1,23 @@
-pkgbase = shrew-vpn-client
-	pkgdesc = A portable VPN client for Linux - Qt GUI only
+pkgbase = shrew-vpn-client-qt5
+	pkgdesc = A portable VPN client for Linux - Qt5 port of GUI only
 	pkgver = 2.2.1
-	pkgrel = 5
-	url = http://www.shrew.net/
+	pkgrel = 0
+	url = https://github.com/ben-foxmoore/shrew-qt5
 	arch = i686
 	arch = x86_64
 	license = osi
+	makedepends = git
 	makedepends = gcc
-	makedepends = flex
-	makedepends = libedit
-	makedepends = bison
 	makedepends = cmake
-	depends = qt4
+	depends = qt5-base
 	depends = ike
-	conflicts = shrew-vpn-client-alpha
-	source = http://www.shrew.net/download/ike/ike-2.2.1-release.tbz2
+	conflicts = shrew-vpn-client
+	source = shrew-qt5::git://github.com/ben-foxmoore/shrew-qt5.git
 	source = ikea.desktop
 	source = gui_only.patch
-	md5sums = 8fc14ac86771ee693d3950757c84f335
+	md5sums = SKIP
 	md5sums = 5b35a4246eb1b7bd4bfb6780c23d39f2
-	md5sums = eed8f22eedb29cad06abcfe8e513b028
+	md5sums = 376b119543b4bc00b7875a3c71ab2f18
 
-pkgname = shrew-vpn-client
+pkgname = shrew-vpn-client-qt5
 

@@ -1,45 +1,42 @@
-# Maintainer: Christian Hammacher <bmasterc gmail com>
+# Maintainer: Parker Coates <parker.coates gmail com>
 # Contributor: Christian Hammacher <bmasterc gmail com>
 
-pkgname=shrew-vpn-client
+pkgname=shrew-vpn-client-qt5
+_reponame=shrew-qt5
 pkgver=2.2.1
-pkgrel=5
-pkgdesc="A portable VPN client for Linux - Qt GUI only"
+pkgrel=0
+pkgdesc="A portable VPN client for Linux - Qt5 port of GUI only"
 arch=('i686' 'x86_64')
-url="http://www.shrew.net/"
+url='https://github.com/ben-foxmoore/shrew-qt5'
 license=('osi')
-depends=('qt4' 'ike')
-makedepends=('gcc' 'flex' 'libedit' 'bison' 'cmake')
-conflicts=('shrew-vpn-client-alpha')
-source=("http://www.shrew.net/download/ike/ike-$pkgver-release.tbz2"
-	'ikea.desktop'
-	gui_only.patch)
-md5sums=('8fc14ac86771ee693d3950757c84f335'
+depends=('qt5-base' 'ike')
+makedepends=('git' 'gcc' 'cmake')
+conflicts=('shrew-vpn-client')
+source=("${_reponame}::git://github.com/ben-foxmoore/${_reponame}.git"
+        'ikea.desktop'
+        'gui_only.patch')
+md5sums=('SKIP'
          '5b35a4246eb1b7bd4bfb6780c23d39f2'
-         'eed8f22eedb29cad06abcfe8e513b028')
+         '376b119543b4bc00b7875a3c71ab2f18')
 
 build() {
-  cd $srcdir/ike
+  cd $srcdir/${_reponame}
 
-  # Build the whole package
-  cmake -DQTGUI=YES -DNATT=YES -DLDAP=YES -DSBINDIR=/usr/bin \
-	-DCMAKE_INSTALL_PREFIX=/usr -DMANDIR=/usr/share/man -DETCDIR=/etc
-
-  # Remove binary and library from make
+  # Remove all non-GUI targets from CMake
   patch -Np1 -i ../gui_only.patch
-#  for Component in iked ikec libike libip libidb libith liblog libpfk ; do
-#    sed -e "/\/$Component\//d" -i cmake_install.cmake
-#  done
+
+  cmake -G 'Unix Makefiles' -DQTGUI=YES -DNATT=YES -DLDAP=YES -DSBINDIR=/usr/bin \
+    -DCMAKE_INSTALL_PREFIX=/usr -DMANDIR=/usr/share/man -DETCDIR=/etc
 
   make
 }
 
 package() {
-  cd "$srcdir/ike"
+  cd "$srcdir/${_reponame}"
   make DESTDIR="$pkgdir/" install
   
   # Copy our desktop files
-  install -D -m644 $srcdir/ike/source/qikea/png/ikea.png $pkgdir/usr/share/icons/ikea.png
+  install -D -m644 $srcdir/${_reponame}/source/qikea/png/ikea.png $pkgdir/usr/share/icons/ikea.png
   install -D -m755 $startdir/ikea.desktop $pkgdir/usr/share/applications/ikea.desktop
 }
 
