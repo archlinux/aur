@@ -1,6 +1,6 @@
 pkgbase = me-tv-git
 	pkgdesc = DVB viewer based on GTK+3 and GStreamer
-	pkgver = v3.0.9.71.g99e149f
+	pkgver = v3.1.0.0.gb278bbb
 	pkgrel = 1
 	url = https://github.com/Me-TV/Me-TV
 	install = me-tv.install

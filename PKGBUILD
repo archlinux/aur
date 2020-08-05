@@ -1,7 +1,7 @@
 # Maintainer: Babets <fbabetz+aur [.at.] yahoo (.dot.) it>
 pkgname=me-tv-git
 _pkgname=me-tv
-pkgver=v3.0.9.71.g99e149f
+pkgver=v3.1.0.0.gb278bbb
 pkgrel=1
 pkgdesc="DVB viewer based on GTK+3 and GStreamer"
 arch=('x86_64')
@@ -22,9 +22,11 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  meson --prefix /usr --buildtype=plain . build
+  mkdir Build
+  cd Build
+  meson --prefix /usr ..
 # cargo build --release --locked --all-features
-  ninja -C build
+  ninja
 }
 
 check() {
@@ -38,6 +40,6 @@ package() {
 # install -Dm 755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
 # install -Dm 755 target/release/${pkgname}-record -t "${pkgdir}/usr/bin"
 # install -Dm 755 target/release/${pkgname}-schedule -t "${pkgdir}/usr/bin"
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C Build install
 }
 
