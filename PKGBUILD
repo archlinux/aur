@@ -5,19 +5,23 @@
 # Contributor: Laszlo Papp <djszapi at archlinux us>
 # Contributor: Donald Ephraim Curtis <dcurtis@gmail.com>
 
+# Lua 5.3 (and now 5.4) versions are in [community], long standing bug report
+# to add 5.1 and 5.2 has been ignored for > 6 months:
+# https://bugs.archlinux.org/task/65389?project=5&string=lua-penlight
+
 pkgbase=lua51-penlight
 _pkgbase=Penlight
 pkgname=('lua52-penlight' 'lua51-penlight')
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc='Lua libraries for on input data handling, functional programming, and OS interface'
 url="https://tieske.github.io/${_pkgbase}"
 arch=('any')
 license=('MIT')
 _lua_deps=('filesystem')
-checkdepends=('lua' 'lua-luacov' "${_lua_deps[@]/#/lua-}") # Luacov because of upstream bug since fixed, remove when bumping release
+checkdepends=('lua' "${_lua_deps[@]/#/lua-}")
 source=("https://github.com/Tieske/${_pkgbase}/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('5b793fc93fa7227190e191e5b24a8f0ce9dd5958ccebe7a53842a58b5d46057f')
+sha256sums=('fba4dc863d22205c097cc488b835d6f653aa100eceb8c957711edd279e5c33f7')
 
 check() {
   cd ${_pkgbase}-${pkgver}
@@ -33,12 +37,6 @@ _package_helper() {
   install -Dm 644 examples/* -t "${pkgdir}/usr/share/doc/${pkgname}/examples"
   install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# Lua 5.3 version is already in [community]
-# package_lua-penlight() {
-#   depends+=('lua' "${_lua_deps[@]/#/lua-}")
-#   _package_helper 5.3
-# }
 
 package_lua52-penlight() {
   depends+=('lua52' "${_lua_deps[@]/#/lua52-}")
