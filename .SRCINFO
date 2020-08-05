@@ -1,6 +1,6 @@
 pkgbase = freeciv-git
 	pkgdesc = A multiuser clone of the famous Microprose game of Civilization
-	pkgver = r24065.8e266126ba
+	pkgver = r25158.2054ee3a2c
 	pkgrel = 1
 	url = http://www.freeciv.org/
 	arch = x86_64

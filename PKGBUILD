@@ -2,7 +2,7 @@
 
 _basename=freeciv
 pkgname=freeciv-git
-pkgver=r24065.8e266126ba
+pkgver=r25158.2054ee3a2c
 pkgrel=1
 pkgdesc="A multiuser clone of the famous Microprose game of Civilization"
 arch=('x86_64')
@@ -34,6 +34,7 @@ build() {
         --enable-shared \
         --enable-sdl-mixer \
         --enable-fcmp=all \
+        --enable-sys-lua
 
     make
 }
