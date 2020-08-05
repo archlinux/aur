@@ -8,7 +8,7 @@
 pkgname=bless-git
 _gitname=bless
 pkgver=r181.59aaaba
-pkgrel=2
+pkgrel=3
 pkgdesc="High-quality, full-featured hex editor (git version)"
 arch=('any')
 url="https://github.com/afrantzis/bless"
@@ -16,10 +16,8 @@ license=('GPL2')
 depends=('gtk-sharp-2' 'mono')
 conflicts=('bless')
 makedepends=('libxslt' 'meson')
-source=("git://github.com/afrantzis/bless.git"
-        "bless_bin")
-sha256sums=('SKIP'
-            'b114dd9045c1fc2cfbaba5ff1aa02864429916a5356db71ed8b7e740d2352e07')
+source=("git://github.com/afrantzis/bless.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/${_gitname}/
@@ -28,7 +26,7 @@ pkgver() {
 
 prepare() {
   cd ${srcdir}/${_gitname}
-  meson setup build -Dprefix=/usr -Dtests=false --buildtype=release
+  meson setup build -Dprefix=/usr -Dtests=false --buildtype=release  
 }
 
 build() {
@@ -38,13 +36,5 @@ build() {
 
 package() {
   cd ${srcdir}/${_gitname}
-  ninja -C build install
-  
-  rm "${pkgdir}/bin/bless"
-  cp "${srcdir}/bless_bin" "${pkgdir}/bin/bless"
-  
-  mkdir "${pkgdir}/usr"
-  mv "${pkgdir}/bin" "${pkgdir}/usr/bin"
-  mv "${pkgdir}/lib" "${pkgdir}/usr/lib"
-  mv "${pkgdir}/share" "${pkgdir}/usr/share"
+  DESTDIR="${pkgdir}" ninja -C build install
 }
