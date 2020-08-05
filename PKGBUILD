@@ -2,22 +2,18 @@
 
 pkgname=yaru-plus-git
 pkgver=4.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Yaru++ – Elegant and modern third-party icons theme, based on Canonical’s Yaru"
 arch=('any')
 url="https://github.com/Bonandry/${pkgname/-git/}"
 license=('GPL3')
 changelog=CHANGELOG.sh
+depends=('yaru-icon-theme')
 makedepends=('git')
 conflicts=(${pkgname/-git/})
 provides=(${pkgname/-git/})
-source=("git+${url}.git")
+source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
-
-pkgver() 
-{
-    git -C ${pkgname/-git/} describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-}
 
 package() 
 {
