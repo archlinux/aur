@@ -6,13 +6,13 @@
 pkgname=why3
 pkgver=1.3.1
 _pkgvercode=38291 # Update when bumping release
-pkgrel=2
+pkgrel=3
 pkgdesc='A platform for deductive program verification'
 arch=('x86_64')
 options=('!makeflags')
 url='http://why3.lri.fr/'
 license=('LGPL')
-depends=('gtksourceview2' 'ocaml' 'ocaml-menhir' 'rubber' 'gtksourceview2' 'lablgtk2' 'ocaml-ocamlgraph' 'ocaml-num' 'ocaml-zarith' 'ocaml-zip' 'coq' 'isabelle')
+depends=('gtksourceview2' 'dune' 'ocaml-findlib' 'ocaml' 'ocaml-menhir' 'rubber' 'gtksourceview2' 'lablgtk2' 'ocaml-ocamlgraph' 'ocaml-num' 'ocaml-zarith' 'ocaml-zip' 'coq' 'isabelle')
 source=("https://gforge.inria.fr/frs/download.php/file/${_pkgvercode}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('7b0d5e8f67aa3e964b44fe943cc7ea538a9ebef823713eda1b52fc0f0ccbec9b')
 
