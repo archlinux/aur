@@ -66,8 +66,8 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod
-pkgver=5.7.12
-_major=5.7
+pkgver=5.8.0
+_major=5.8
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -99,11 +99,11 @@ for _patch in $_commits; do
 done
     
 
-sha256sums=('de8163bb62f822d84f7a3983574ec460060bf013a78ff79cd7c979ff1ec1d7e0'
+sha256sums=('e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5'
             'SKIP'
-            '52c444cd4a85a7f60418f0b8e2afd0756151413d3731b426d0e1d64e0048e032'
+            '0b3f67dadacd52e087de006c9f01bb053661c5d07d09e942792a9ae78baad429'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
-            '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
+            '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
