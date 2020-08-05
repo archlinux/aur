@@ -2,10 +2,10 @@
 
 pkgname=labelme
 pkgver=4.5.6
-pkgrel=1
-pkgdesc='https://github.com/wkentaro/labelme'
+pkgrel=4
+pkgdesc='Image Polygonal Annotation with Python (polygon, rectangle, circle, line, point and image-level flag annotation).'
 arch=('any')
-url='https://github.com/open-mmlab/mmcv'
+url='https://github.com/wkentaro/labelme'
 license=('GPL')
 depends=(
   python-imgviz
