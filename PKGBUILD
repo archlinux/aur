@@ -1,16 +1,16 @@
-# Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
+# Maintainer: Ingo Meyer <IJ_M@gmx.de>
 
 pkgname="vimtips"
 pkgver="0.2.6"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A tool to aggregate and show vim tips from different sources."
 arch=("any")
-url="https://github.com/IngoHeimbach/vimtips"
+url="https://github.com/IngoMeyer441/vimtips"
 license=("MIT")
 depends=("python" "python-pyqt5" "python-pyquery" "python-requests"
          "python-psutil")
 makedepends=("python-setuptools")
-source=("https://github.com/IngoHeimbach/vimtips/archive/v${pkgver}.tar.gz")
+source=("https://github.com/IngoMeyer441/vimtips/archive/v${pkgver}.tar.gz")
 sha256sums=("05b35be8455619e27581c6d51c2c2cc0851bb177e451d8de6b17dc6ec7124405")
 
 build() {
