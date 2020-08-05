@@ -1,7 +1,7 @@
-# Maintainer: Kyle Laker <kyle@laker.email>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Kyle Laker <kyle@laker.email>
 pkgname=warpinator-git
-pkgver=1.0.4.r1.g15ce1b7
+pkgver=1.0.6.r1.gba39a28
 pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('x86_64')
@@ -33,9 +33,9 @@ prepare() {
 
 build() {
 	arch-meson warp build
-	ninja -C build
+	meson compile -C build
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" meson install -C build
 }
