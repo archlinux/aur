@@ -1,12 +1,13 @@
 # Maintainer: relrelb <relrelbachar@gmail.com>
 pkgname=android-completion
-pkgver=20200805.a39e39fe3
+pkgver=20200805193204.a39e39f
 pkgrel=1
 pkgdesc="Bash completion for adb and fastboot"
 arch=(any)
 url="https://android.googlesource.com/platform/system/core/"
 license=('GPL')
 depends=('android-sdk-platform-tools' 'bash' 'bash-completion')
+conflicts=('android-bash-completion')
 _commit=$(echo $pkgver | cut -d. -f2)
 source=("adb.bash.b64::https://android.googlesource.com/platform/system/core/+/$_commit/adb/adb.bash?format=TEXT"
 	"fastboot.bash.b64::https://android.googlesource.com/platform/system/core/+/$_commit/fastboot/fastboot.bash?format=TEXT"
@@ -24,7 +25,7 @@ pkgver() {
 	time=$(echo $timestamp | cut -d' ' -f4)
 	year=$(echo $timestamp | cut -d' ' -f5)
 	timezone=$(echo $timestamp | cut -d' ' -f6)
-	printf "%s.%s" $(date -d "${day} ${month} ${year} ${time} ${timezone}" +%Y%m%d) ${commit:0:9}
+	printf "%s.%s" $(date -d "${day} ${month} ${year} ${time} ${timezone}" +%Y%m%d%H%M%S) ${commit:0:7}
 }
 
 prepare() {
