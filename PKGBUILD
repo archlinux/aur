@@ -12,7 +12,7 @@ makedepends=()
 source=("$pkgname-$pkgver.zip::https://lightcord.deroku.xyz/api/v1/gh/releases/Lightcord/Lightcord/$pkgver/lightcord-linux-x64.zip"
         "Lightcord.desktop"
         "https://raw.githubusercontent.com/Lightcord/LightcordLogos/master/lightcord/lightcord.png")
-md5sums=("9674c19bf4713a2751e7fa5710210032"
+md5sums=("0e857820865cc5d7e7daf9090b8dbc8f"
         "7f7ade1f48d8aa92809463ba40663936"
         "f1ace6f149a3d778bfb789d10181d877")
 
