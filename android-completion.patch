@@ -6,7 +6,7 @@ index b1b3957c0..733fc12bd 100644
  # limitations under the License.
  #
 
-+case "$SHELL" in
++case "$(ps -o command -hp $$)" in
 +	*bash*)
 +		function check_type() { type -t "$1"; }
 +		;;
@@ -26,7 +26,7 @@ index 406e8b8d7..bc50e4aa0 100644
  # limitations under the License.
  #
 
-+case "$SHELL" in
++case "$(ps -o command -hp $$)" in
 +        *bash*)
 +                function check_type() { type -t "$1"; }
 +                ;;
