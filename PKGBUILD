@@ -1,8 +1,8 @@
-# Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
+# Maintainer: Ingo Meyer <IJ_M@gmx.de>
 
 pkgname="git-clog"
 pkgver="0.2.5"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="A tool to colorize the commit graph of a Git repository by interpreting the first six commit hash digits as an RGB color value."
 arch=("any")
 url="https://github.com/IngoMeyer441/git-clog"
