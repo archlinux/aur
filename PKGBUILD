@@ -1,8 +1,8 @@
-# Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
+# Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="python-flask-restful-hal"
 pkgver="0.2.6"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="An extension for flask-restful to support the creation of APIs conforming to HAL."
 arch=("any")
 url="https://github.com/sciapp/flask-restful-hal"
