@@ -1,6 +1,6 @@
 pkgbase = libvirt-git
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)
-	pkgver = 6.6.0.r30.g7f9b214711
+	pkgver = 6.6.0.r487.gd293a556d7
 	pkgrel = 1
 	url = http://libvirt.org/
 	install = libvirt.install
@@ -22,6 +22,8 @@ pkgbase = libvirt-git
 	makedepends = iproute2
 	makedepends = qemu-headless
 	makedepends = git
+	makedepends = meson
+	makedepends = ninja
 	depends = libpciaccess
 	depends = yajl
 	depends = fuse2

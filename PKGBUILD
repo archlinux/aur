@@ -6,7 +6,7 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-git
-pkgver=6.6.0.r30.g7f9b214711
+pkgver=6.6.0.r487.gd293a556d7
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="http://libvirt.org/"
 license=('LGPL' 'GPL3')
 depends=('libpciaccess' 'yajl' 'fuse2' 'gnutls' 'parted' 'libssh' 'libxml2' 'numactl' 'polkit' 'netcf')
 makedepends=('libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'ceph-libs' 'glusterfs'
-             'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-headless' 'git')
+             'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-headless' 'git' 'meson' 'ninja')
 checkdepends=('ebtables')
 optdepends=('libvirt-storage-gluster: Gluster storage backend'
             'libvirt-storage-iscsi-direct: iSCSI-direct storage backend'
@@ -129,23 +129,17 @@ build() {
   export PYTHON=`which python`
   export LDFLAGS=-lX11
   export RADVD=/usr/bin/radvd
-  NOCONFIGURE=1 ./autogen.sh
-  sed -i 's|libsystemd-daemon|libsystemd|g' configure
+  #sed -i 's|libsystemd-daemon|libsystemd|g' configure
   mkdir build && cd build
-
-  [ -f Makefile ] || ../configure --prefix=/usr --libexec=/usr/lib/"${pkgname/-git/}" --sbindir=/usr/bin \
-    --with-storage-lvm --with-udev --without-hal --disable-static \
-    --with-init-script=systemd \
-    --with-qemu-user=nobody --with-qemu-group=nobody \
-    --with-netcf --with-interface \
-    --without-wireshark-dissector # working around bug 63828
-  make
+   
+  meson --prefix=/usr --sysconfdir=/etc -Dsystem=true
+  ninja
 }
 
 package() {
   cd "$srcdir/${pkgname/-git/}/build"
 
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" ninja install
 
   install -D -m644 "$srcdir"/libvirtd.conf.d "$pkgdir"/etc/conf.d/libvirtd
   install -D -m644 "$srcdir"/libvirtd-guests.conf.d "$pkgdir"/etc/conf.d/libvirt-guests
