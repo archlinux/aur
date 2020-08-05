@@ -2,7 +2,7 @@
 
 pkgname=wlr-sunclock-git
 _pkgname=wlr-sunclock
-pkgver=r11.6d91792
+pkgver=r13.7cb78b8
 pkgrel=1
 pkgdesc='Displays a sunclock desktop widget using the layer shell protocol'
 arch=(x86_64)
