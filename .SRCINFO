@@ -1,7 +1,7 @@
 pkgbase = spinvis
 	pkgdesc = A visualization program for spins.
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sciapp/spinvis
 	arch = any
 	license = MIT

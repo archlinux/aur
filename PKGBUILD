@@ -1,8 +1,8 @@
-# Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
+# Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="spinvis"
 pkgver="0.1.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A visualization program for spins."
 arch=("any")
 url="https://github.com/sciapp/spinvis"
