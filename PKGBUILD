@@ -8,7 +8,7 @@
 pkgname=bless-git
 _gitname=bless
 pkgver=r181.59aaaba
-pkgrel=1
+pkgrel=2
 pkgdesc="High-quality, full-featured hex editor (git version)"
 arch=('any')
 url="https://github.com/afrantzis/bless"
@@ -28,7 +28,7 @@ pkgver() {
 
 prepare() {
   cd ${srcdir}/${_gitname}
-  meson setup build -Dprefix="${pkgdir}" -Dtests=false --buildtype=release
+  meson setup build -Dprefix=/usr -Dtests=false --buildtype=release
 }
 
 build() {
@@ -42,4 +42,9 @@ package() {
   
   rm "${pkgdir}/bin/bless"
   cp "${srcdir}/bless_bin" "${pkgdir}/bin/bless"
+  
+  mkdir "${pkgdir}/usr"
+  mv "${pkgdir}/bin" "${pkgdir}/usr/bin"
+  mv "${pkgdir}/lib" "${pkgdir}/usr/lib"
+  mv "${pkgdir}/share" "${pkgdir}/usr/share"
 }
