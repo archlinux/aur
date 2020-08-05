@@ -7,7 +7,7 @@ pkgbase = libminuit2
 	license = LGPL
 	makedepends = cmake
 	source = libminuit2-6.23.01.tar.gz::https://github.com/GooFit/Minuit2/archive/v6-23-01.tar.gz
-	sha256sums = SKIP
+	sha256sums = aa357f6237dd66364372b89b0c6c061661390435652262dc5457730dd88b4524
 
 pkgname = libminuit2
 
