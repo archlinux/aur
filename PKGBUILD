@@ -4,7 +4,7 @@
 pkgname=mingw-w64-pdcurses
 provides=(mingw-w64-curses)
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Public Domain Curses wincon port (mingw-w64)"
 arch=('any')
 url="https://www.projectpluto.com/win32a.htm"
@@ -12,23 +12,23 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc')
 options=(staticlibs !buildflags !strip)
 license=("public domain")
-source=(pdcurses-${pkgver}.tar.gz::"https://github.com/Bill-Gray/PDCurses/archive/v${pkgver}.tar.gz"
+source=(pdcurses-${pkgver}.tar.gz::"https://github.com/Bill-Gray/PDCursesMod/archive/v${pkgver}.tar.gz"
         001-mingw-pdcurses-4.1.0-build.patch
         002-fix-exports.patch)
-sha256sums=('3421e2e84bdc8220dc6740b70aa9b0e30542064189efc8609e00de78ced75656'
+sha256sums=('c6e036c0cb24f7909dbb8fa5011564727cd64a91efd3b7bb3e81c7509d7f5fde'
             '913b5aff09d0ab1a2197f66a98657927d85a0dc3577c2b5e69179148fb2b0242'
             '246f93facdd2703f8b9d0bcd57e89688fd861d34a30facc60a48892b330b08bc')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd "${srcdir}/PDCurses-${pkgver}"
+  cd "${srcdir}/PDCursesMod-${pkgver}"
   patch -p1 -i ${srcdir}/001-mingw-pdcurses-4.1.0-build.patch
   patch -p1 -i ${srcdir}/002-fix-exports.patch
 }
 
 build() {
-  cd "${srcdir}/PDCurses-${pkgver}"
+  cd "${srcdir}/PDCursesMod-${pkgver}"
   for _arch in ${_architectures}; do
 # NOte that you should use something like -${_arch}
 # to prevent building i686 compiled binaries from
@@ -60,7 +60,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/PDCurses-${pkgver}"
+  cd "${srcdir}/PDCursesMod-${pkgver}"
   for _arch in ${_architectures} ; do
     mkdir -p ${pkgdir}/usr/${_arch}/{bin,include,lib}
     mkdir ${pkgdir}/usr/${_arch}/include/pdcurses
