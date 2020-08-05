@@ -1,7 +1,7 @@
 pkgbase = rdiff-backup-fs
 	pkgdesc = A FUSE filesystem for accessing rdiff-backup archives.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.google.com/archive/p/rdiff-backup-fs
 	arch = i686
 	arch = x86_64

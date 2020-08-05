@@ -1,8 +1,8 @@
-# Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
+# Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="rdiff-backup-fs"
 pkgver="1.0.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A FUSE filesystem for accessing rdiff-backup archives."
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
 url="https://code.google.com/archive/p/rdiff-backup-fs"
