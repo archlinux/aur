@@ -1,7 +1,7 @@
 pkgbase = htop-zfs
 	pkgdesc = Interactive process viewer with ZFS awareness patch
 	pkgver = 2.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://hisham.hm/htop/
 	arch = x86_64
 	license = GPL
@@ -11,6 +11,7 @@ pkgbase = htop-zfs
 	optdepends = lsof: show files opened by a process
 	optdepends = strace: attach to a running process
 	provides = htop
+	conflicts = htop
 	options = !emptydirs
 	options = debug
 	source = https://hisham.hm/htop/releases/2.2.0/htop-2.2.0.tar.gz

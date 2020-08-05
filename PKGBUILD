@@ -5,12 +5,13 @@
 
 pkgname=htop-zfs
 pkgver=2.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Interactive process viewer with ZFS awareness patch'
 arch=('x86_64')
 url='https://hisham.hm/htop/'
 license=('GPL')
 provides=('htop')
+conflicts=('htop')
 depends=('ncurses' 'libnl')
 makedepends=('python')
 optdepends=('lsof: show files opened by a process'
