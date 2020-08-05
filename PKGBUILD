@@ -3,7 +3,7 @@
 _pkgname=janet
 pkgname=janet-lang
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="https://janet-lang.org/"
@@ -16,6 +16,7 @@ options=('staticlibs')
 
 build() {
     cd $_pkgname-$pkgver
+    CFLAGS+=" -fPIC"
     make PREFIX="/usr" $janet_build
     make PREFIX="/usr" build/janet.pc
     make PREFIX="/usr" docs
