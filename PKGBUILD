@@ -2,7 +2,7 @@
 # Contributor: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 pkgname=ckb-next
 pkgver=0.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Corsair Keyboard and Mouse Input Driver, release version"
 arch=('i686' 'x86_64')
 url="https://github.com/ckb-next/ckb-next"
@@ -28,6 +28,11 @@ build() {
     -DUDEV_RULE_DIRECTORY="/usr/lib/udev/rules.d" \
     -DFORCE_INIT_SYSTEM="systemd"
   cmake --build build --target all
+}
+
+prepare() {
+  cd "$srcdir/${pkgname}-${pkgver}"
+  patch -p1 -i "$srcdir/../a9f41cd8b8f5b04c0c66c6d94f96a9725943831e.patch"
 }
 
 package() {
