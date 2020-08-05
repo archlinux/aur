@@ -2,7 +2,7 @@
 _pkgname=ndn-cxx
 pkgname=${_pkgname}-git
 pkgver=ndn.cxx.0.7.0.r13.g9603325b
-pkgrel=3
+pkgrel=4
 # epoch=
 pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
 arch=('i686' 'x86_64')
@@ -31,12 +31,18 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	./waf configure --prefix=/usr
+	./waf configure --prefix=/usr --with-tests
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
 	./waf build
+}
+
+check() {
+  2>&1 echo "Tests can be skipped with the --nocheck argument in makepkg"
+  cd "${srcdir}/${_pkgname}"
+  ./build/unit-tests
 }
 
 package() {
