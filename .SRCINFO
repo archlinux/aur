@@ -1,6 +1,6 @@
 pkgbase = mytourbook_bin
 	pkgdesc = A tool to visualize and analyze tours recorded by a GPS device, ergometer, bike- or exercise computer.
-	pkgver = 20.3.0
+	pkgver = 20.8.0
 	pkgrel = 1
 	url = http://mytourbook.sourceforge.net
 	install = mytourbook.install
@@ -11,9 +11,9 @@ pkgbase = mytourbook_bin
 	depends = libxrender
 	options = !strip
 	source = mytourbook.desktop
-	source = http://downloads.sourceforge.net/project/mytourbook/MyTourbook/20.3.0/mytourbook-20.3.0-linux-64.zip
+	source = http://downloads.sourceforge.net/project/mytourbook/MyTourbook/20.8.0/mytourbook-20.8.0-linux-64.zip
 	sha256sums = 84607b0ae8313aaf4e466ff41a8c6d7d32d5fb4b1609463d99084b0c13d3036a
-	sha256sums = f4173e5e4c0cb114ed18ddf22593039a063568fc805e494d50df523f56c9c381
+	sha256sums = 38b57bf05baceea5e635fc9908fa0f3e1bcef96afa22db195f071c402de2b057
 
 pkgname = mytourbook_bin
 
