@@ -3,7 +3,7 @@
 
 pkgname=pd-faustgen
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The FAUST compiler embedded in a Pd external"
 arch=("i686" "x86_64")
 license=('MIT')
@@ -24,5 +24,5 @@ package() {
      cd "$pkgname-$pkgver"
      mkdir -p "$pkgdir/usr/lib/pd/extra/faustgen~/libs"
      cp -a external/* "$pkgdir/usr/lib/pd/extra/faustgen~"
-     cp -a faust/libraries/* "$pkgdir/usr/lib/pd/extra/faustgen~/libs"
+     cp -a faust/libraries/*.lib faust/libraries/old/*.lib "$pkgdir/usr/lib/pd/extra/faustgen~/libs"
 }

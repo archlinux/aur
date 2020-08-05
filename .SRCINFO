@@ -1,7 +1,7 @@
 pkgbase = pd-faustgen
 	pkgdesc = The FAUST compiler embedded in a Pd external
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CICM/pd-faustgen
 	arch = i686
 	arch = x86_64
