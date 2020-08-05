@@ -1,6 +1,6 @@
 pkgbase = kops
 	pkgdesc = Kubernetes Operations - Production Grade K8s Installation, Upgrades, and Management (build from src)
-	pkgver = 1.17.1
+	pkgver = 1.18.0
 	pkgrel = 0
 	url = https://github.com/kubernetes/kops
 	arch = x86_64
