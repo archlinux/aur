@@ -5,8 +5,8 @@
 
 pkgname=(thunderbird-nightly-bin thunderbird-nightly-bin-noupdate)
 pkgver=80.0a1.20200709
-_version=80.0a1
-pkgrel=2
+_version=81.0a1
+pkgrel=1
 arch=('x86_64')
 url="https://www.mozilla.org/thunderbird"
 license=('MPL' 'GPL' 'LGPL')
