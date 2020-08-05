@@ -1,0 +1,103 @@
+From ff088aa9da81bd143e366112f97c2a4d450f9fd2 Mon Sep 17 00:00:00 2001
+From: Travis Taylor <travis@trickfire.com>
+Date: Sat, 11 Jan 2020 20:30:40 +0100
+Subject: [PATCH] Add ZFS cache awareness to memory meters.
+
+Enable with --enable-zfs-cache-awareness
+
+(Only tested with ZFS on linux)
+---
+ configure.ac             |  5 +++++
+ linux/LinuxProcessList.c | 30 +++++++++++++++++++++++++++++-
+ linux/LinuxProcessList.h |  4 ++++
+ 3 files changed, 38 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index ffd8fed..7e2b1a4 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -233,6 +233,11 @@ else
+             [AC_CHECK_HEADERS([ncurses.h],[:],[missing_headers="$missing_headers $ac_header"])])])])
+ fi
+ 
++AC_ARG_ENABLE(zfs_cache_awareness, [AC_HELP_STRING([--enable-zfs-cache-awareness],[enable ZFS cache awareness for memory usage])], enable_zfs_cache_awareness="yes",enable_zfs_cache_awareness="no")
++if test "x$enable_zfs_cache_awareness" = xyes; then
++    AC_DEFINE(HAVE_ZFS, 1, [Define if we want the memory meter to be aware of the ZFS cache])
++fi
++
+ if test "$my_htop_platform" = "freebsd"; then
+    AC_CHECK_LIB([kvm], [kvm_open], [], [missing_libraries="$missing_libraries libkvm"])
+ fi
+diff --git a/linux/LinuxProcessList.c b/linux/LinuxProcessList.c
+index 5f38540..2dae227 100644
+--- a/linux/LinuxProcessList.c
++++ b/linux/LinuxProcessList.c
+@@ -108,6 +108,10 @@ typedef struct LinuxProcessList_ {
+ #define PROCMEMINFOFILE PROCDIR "/meminfo"
+ #endif
+ 
++#ifndef ZFSINFOFILE
++#define ZFSINFOFILE "/proc/spl/kstat/zfs/arcstats"
++#endif
++
+ #ifndef PROCTTYDRIVERSFILE
+ #define PROCTTYDRIVERSFILE PROCDIR "/tty/drivers"
+ #endif
+@@ -115,7 +119,6 @@ typedef struct LinuxProcessList_ {
+ #ifndef PROC_LINE_LENGTH
+ #define PROC_LINE_LENGTH 4096
+ #endif
+-
+ }*/
+ 
+ #ifndef CLAMP
+@@ -958,6 +961,31 @@ static inline void LinuxProcessList_scanMemoryInfo(ProcessList* this) {
+       #undef tryRead
+    }
+ 
++#ifdef HAVE_ZFS
++   FILE* zfsFile = fopen(ZFSINFOFILE,"r");
++   if( zfsFile != NULL)
++   {
++      unsigned long long int zfsMem = 0;
++      while(fgets(buffer,128,zfsFile) && zfsMem == 0)
++      {
++         switch(buffer[0])
++         {
++            case 's':
++               if(String_startsWith(buffer, "size"))
++                  sscanf(buffer,"size %*i %32llu",&zfsMem);
++                  zfsMem /= 1024;
++                  break;
++            default:
++               break;
++         }
++      }
++      this->cachedMem += zfsMem;
++      fclose(zfsFile);
++   }
++#endif
++
++
++
+    this->usedMem = this->totalMem - this->freeMem;
+    this->cachedMem = this->cachedMem + sreclaimable - shmem;
+    this->usedSwap = this->totalSwap - swapFree;
+diff --git a/linux/LinuxProcessList.h b/linux/LinuxProcessList.h
+index f30b487..ad7ea29 100644
+--- a/linux/LinuxProcessList.h
++++ b/linux/LinuxProcessList.h
+@@ -81,6 +81,10 @@ typedef struct LinuxProcessList_ {
+ #define PROCMEMINFOFILE PROCDIR "/meminfo"
+ #endif
+ 
++#ifndef ZFSINFOFILE
++#define ZFSINFOFILE "/proc/spl/kstat/zfs/arcstats"
++#endif
++
+ #ifndef PROCTTYDRIVERSFILE
+ #define PROCTTYDRIVERSFILE PROCDIR "/tty/drivers"
+ #endif
+-- 
+2.28.0
+
