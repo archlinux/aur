@@ -16,8 +16,6 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	# printf "%s" "$(git describe --long --tags --abbrev=7 | sed -r 's/-([0-9]+)-/.r\1./')"
-	# printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 	printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//')"
 }
 
