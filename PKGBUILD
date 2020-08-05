@@ -2,9 +2,9 @@
 _pkgname=chronosync
 pkgname=ndn-${_pkgname}-git
 pkgver=0.5.3.r9.g5f408ae
-pkgrel=1
+pkgrel=2
 # epoch=
-pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
+pkgdesc="Synchronization library for distributed realtime applications for NDN"
 arch=('i686' 'x86_64')
 url="https://github.com/named-data/${_pkgname}"
 license=('GPL')
