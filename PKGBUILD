@@ -48,7 +48,7 @@ _1k_HZ_ticks=
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
 _major=5.7
-_minor=12
+_minor=13
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -71,10 +71,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-updates-v11-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-updates-v11-sep/0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch"
-        "${_lucjanpath}/arch-updates-v11-sep/0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch"
-        "${_lucjanpath}/arch-updates-v11-sep/0004-drm-amd-display-Clear-dm_state-for-fast-updates.patch"
+        "${_lucjanpath}/arch-updates-v12-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-updates-v12-sep/0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch"
+        "${_lucjanpath}/arch-updates-v12-sep/0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -320,14 +319,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('8630936f2ea67fa4eaeea759f91dd71e35c294947ae6f71953ac3d99e5f93971f8c2b9e0eb18b09a35a3993e7ef648ca17160600aa07ea24f3beed44f3ed5a75'
+sha512sums=('60af6a81e86f7502b3ab94366107f638ac0656c4cc000d4393ab1b55dae1742cbde161b462a5de504285cd0baad22164dcac52cf38b8a0d98bfd5c638979fd71'
             'SKIP'
             'd383ff21c59aaccffbf9fac412495383118612ddbe6bf06691e2038d2b886754d2ba85b29f970f548103e1d0be519d114ba4641f29d329b604c7456db36ff193'
             'ef8c9706da28eeaf98028609bf8ef6f558f7701f985c5925be6388dad0fbe8654fc15a803cd14f99ff89c026d471bbddbdff378b18db3f05f3d952faf943af72'
-            'b931b5bb841bb15933145dbec1cca501495daba41d4630baf12fea834192aa08cb2c3810e5082490163acabc0f7a5456f2f1ecea0941bbe6c9bb53378745f5e4'
-            'a5a1c8bf77a15ac2f1b7af6b35c2883e92cc44b901e0f34680b6af45692164096e37b1d39600698d5093daa84d95ca14605c07b1f0f13a66cf64c41445f9e67f'
-            'f8bc93386fcbe006fad3995c52db0eb697f9ce0be790715c3c72cb3e93c13624e8024f8e271621040d69ca0b9b9d5379c74fb0ad5f4d86b1ccf08fe600e09219'
-            '2773d7e9be5ac7fc3c69588481b77ed4f6b880761b317746d6ae7dd02da443b503aafd9d23eefdb906a12d1c36b8bfdc49a6e350b814ec85eaaa2564ccd66994'
+            'b69b58856a2bdd62ea1a4ea7ce2932c6ed9ca9ec0b7796a13d4e051bb6c1d85bb576d651a7ae5b515e1226b524d4446c8d9c8f1d1c4b58ad982ae15d8cd7acbf'
+            'e8ce50a564c8412f3225c06eac4778f09a663c9ba05b5043916675934ab74a769cc91ef3f4162b73aa6854fceabb8e4d9c3143ebe105ce725fbac26df4044862'
+            'b9fd69758b1a5bdcf69d2b8d85d3acfaf20fe7e842e734ae03f4ab82a26743301336193db87b7e801636e487faceaf6eadc3bb5cecbb975d9a3afd9f9aa1851c'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             '6a8191b6ead182c9409f13cc3d297829ff6c2f982cb50aa7f0ca5a24e59030434b5de5d8f945abc09d4ed88df2510432481fd791d5056a0289c651b764e4e4bd')
 
