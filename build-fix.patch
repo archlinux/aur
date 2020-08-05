@@ -1,0 +1,71 @@
+--- a/Makefile.std
++++ b/Makefile.std
+@@ -15,17 +15,8 @@ CDEBUGFLAGS = -O
+ # sys/select.h
+ # DEFINES = -D_BSD
+ 
+-# The libraries required for sockets
+-SOCKLIBS = -lsocket -lnsl  
+-
+-# The location of the X include files
+-XINCDIRS = -I/usr/openwin/include
+-
+-# Where your X libraries are
+-XLDFLAGS = -L/usr/dt/lib -L/usr/openwin/lib
+-
+ # The libraries required for Athena widgets
+-XLIBS = -lXaw -lXt -lXm -lXmu -lXext -lX11
++XLIBS = -lXaw -lXt -lXmu -lXext -lX11
+ 
+ # ----------------------------------------------------------------------------
+ 
+--- a/decode11.c
++++ b/decode11.c
+@@ -25,6 +25,10 @@
+ 
+ #include "xmond.h"
+ 
++struct TypeDef	TD[MaxTypes];
++unsigned char	 RBf[2];
++unsigned char	 SBf[2];
++
+ #define MAX_REQUEST	    127
+ #define MAX_EXT_REQUEST	    255
+ #define MAX_EVENT	    34
+--- a/main.c
++++ b/main.c
+@@ -75,9 +75,6 @@ static void SignalTERM P((int n ));
+ static Bool ANYSET P((long *src));
+ #endif
+ 
+-extern char *getenv();
+-extern int gethostname P((char *name, int namelen ));
+-
+ /* end function prototypes */
+ 
+ Global Bool    ignore_bytes;
+--- a/x11.h
++++ b/x11.h
+@@ -312,19 +312,19 @@ struct TypeDef
+ 
+ typedef struct TypeDef *TYPE;
+ 
+-struct TypeDef	TD[MaxTypes];
++extern struct TypeDef	TD[MaxTypes];
+ 
+ 
+ /* Reply Buffer: Pseudo-buffer used to provide the opcode for the
+ 		 request to which this is a reply: Set by DecodeReply
+ 	 and used in the PrintField of the Reply procedure */
+-unsigned char	 RBf[2];
++extern unsigned char	 RBf[2];
+ 
+ 
+ /* Sequence Buffer: Pseudo-buffer used to provide the sequence number for a
+ 		 request: Set by DecodeReply and used in a PrintField of
+ 	 the Request procedure */
+-unsigned char	 SBf[2];
++extern unsigned char	 SBf[2];
+ 
+ 
+ #define PRINTSERVER 4	       /* indent output as if it comes from server */
