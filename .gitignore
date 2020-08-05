@@ -1,4 +1,5 @@
 protonmail-bridge-bin-*.pkg.tar.xz
+protonmail-bridge-bin-*.pkg.tar.zst
 protonmail-bridge_*.deb
 pkg/
 src/
