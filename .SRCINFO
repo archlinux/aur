@@ -1,7 +1,7 @@
 pkgbase = ndn-psync-git
 	pkgdesc = Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications
 	pkgver = 0.2.0.r8.g042dfb3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/named-data/psync
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = ndn-psync-git
 	makedepends = openssl>=1.0.2
 	depends = boost
 	depends = ndn-cxx
-	provides = psync
-	conflicts = psync
+	provides = ndn-psync
+	conflicts = ndn-psync
 	source = git+https://github.com/named-data/psync.git
 	sha256sums = SKIP
 
