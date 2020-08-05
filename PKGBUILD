@@ -1,9 +1,10 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Alexandre Possebom <alexandrepossebom@gmail.com>
 
 pkgname=mpack
 pkgver=1.6
-pkgrel=4
+pkgrel=5
 pkgdesc='Utilities for encoding and decoding binaries files in MIME format mail messages'
 arch=('i686' 'x86_64')
 url='http://ftp.andrew.cmu.edu/pub/mpack/'
@@ -34,4 +35,3 @@ package() {
 
 	make DESTDIR=${pkgdir} install
 }
-

@@ -1,7 +1,7 @@
 pkgbase = mpack
 	pkgdesc = Utilities for encoding and decoding binaries files in MIME format mail messages
 	pkgver = 1.6
-	pkgrel = 4
+	pkgrel = 5
 	url = http://ftp.andrew.cmu.edu/pub/mpack/
 	arch = i686
 	arch = x86_64
