@@ -1,11 +1,11 @@
-# Maintainer: kirillz kzasorin@gmail.com
+# Maintainer: silenf positron1998@gmail.com
 
 pkgname=joplin-appimage
-pkgver=1.0.229
+pkgver=1.0.233
 pkgrel=1
 pkgdesc="The latest pre-released AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
-url="https://github.com/laurent22/joplin/releases/tag/v1.0.229"
+url="https://github.com/laurent22/joplin"
 license=('MIT')
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 _filename=Joplin-$pkgver.AppImage
@@ -13,8 +13,8 @@ source=(
   ${url}/releases/download/v${pkgver}/Joplin-${pkgver}.AppImage
   ${url}/raw/v${pkgver}/LICENSE
 )
-sha512sums=(
-  SKIP
+sha256sums=(
+  e1e1e3b1430a5a0fccd921ca7e9fa83c7c87f2bdb0864372f0149c959629b3ba
   SKIP
 )
 
