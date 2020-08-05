@@ -1,6 +1,6 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
 pkgname=kmon-bin
-pkgver=1.3.5
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Linux kernel manager and activity monitor"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 options=('zipman')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 source=("$url/releases/download/v$pkgver/${pkgname%-bin}-$pkgver.tar.gz"{,.sig})
-sha512sums=('2c21304a6e1b2d05b100a2a42d65d45bd3585357480d1be5e2354ba8e3b4dcf4197bba71d51c74d3740a088ff12e2710b0f3eb6706feaf45806c4387219ee42d'
+sha512sums=('1dc841640c4d2291de5c45c7a7e115c39bdc00ad3d4950e1b17e71998195d0d88fd5ffbf4cfb5756aee5ff689386986e5c30bd2590ef674025af0915a4ed9153'
             'SKIP')
 validpgpkeys=('C4B2D24CF87CD188C79D00BB485B7C52E9EC0DC6') # kmon releases <kmonlinux@protonmail.com>
 
