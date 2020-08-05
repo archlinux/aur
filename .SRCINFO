@@ -1,0 +1,13 @@
+pkgbase = python-unipath
+	pkgdesc = Object-oriented alternative to os/os.path/shutil
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/mikeorr/Unipath
+	arch = any
+	license = MIT
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/U/Unipath/Unipath-1.1.tar.gz
+	sha256sums = 09839adcc72e8a24d4f76d63656f30b5a1f721fc40c9bcd79d8c67bdd8b47dae
+
+pkgname = python-unipath
+
