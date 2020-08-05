@@ -1,0 +1,3 @@
+#!/bin/sh
+
+mono "/usr/lib/bless/bless.exe" "$@"
