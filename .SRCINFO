@@ -1,7 +1,7 @@
 pkgbase = nojava-ipmi-kvm-docker
 	pkgdesc = A tool to access Java based ipmi kvm consoles without a local Java installation (Docker dependency).
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sciapp/nojava-ipmi-kvm
 	arch = x86_64
 	license = MIT
