@@ -3,7 +3,7 @@ _reponame=NFD
 _pkgname=ndn-nfd
 pkgname=${_pkgname}-git
 pkgver=NFD.0.7.0.r21.gc68b2e8a
-pkgrel=3
+pkgrel=4
 # epoch=
 pkgdesc="NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol"
 arch=('i686' 'x86_64')
@@ -35,12 +35,17 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_reponame}"
 	git submodule update --init --recursive
-	./waf configure --prefix=/usr
+	./waf configure --prefix=/usr --with-tests
 }
 
 build() {
 	cd "${srcdir}/${_reponame}"
 	./waf build
+}
+
+check() {
+	cd "${srcdir}/${_reponame}"
+  ./build/unit-tests
 }
 
 package() {
