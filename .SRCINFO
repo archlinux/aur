@@ -1,6 +1,6 @@
 pkgbase = anki-sync-server-git
 	pkgdesc = A sync server for anki using a forked version from github.com/ankicommunity (orig:dsnopek)
-	pkgver = r259.7ef3d4f
+	pkgver = r295.0c6a86d
 	pkgrel = 1
 	url = https://github.com/ankicommunity/anki-sync-server
 	install = anki-sync-server.install
@@ -24,7 +24,7 @@ pkgbase = anki-sync-server-git
 	optdepends = python-decorator: if you want to run the server as a user other than the supplied anki-sync-server user
 	provides = anki-sync-server
 	conflicts = anki-sync-server
-	source = git+https://github.com/ankicommunity/anki-sync-server
+	source = git+https://github.com/ankicommunity/anki-sync-server.git
 	md5sums = SKIP
 
 pkgname = anki-sync-server-git
