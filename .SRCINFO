@@ -3,7 +3,6 @@ pkgbase = ifm-git
 	pkgver = 5.5
 	pkgrel = 1
 	url = https://ifm.readthedocs.io/en/latest/intro.html
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = tk
