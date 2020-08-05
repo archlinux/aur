@@ -5,8 +5,6 @@ StartLimitIntervalSec=1
 
 [Service]
 Type=simple
-Restart=always
-RestartSec=5
 User=changeme
 Group=changeme
 WorkingDirectory=changeme

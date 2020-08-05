@@ -1,6 +1,6 @@
 # Maintainer: s7hoang <s7hoang at gmail dot com>
 pkgname=anki-sync-server-git
-pkgver=r259.7ef3d4f
+pkgver=r295.0c6a86d
 pkgrel=1
 pkgdesc="A sync server for anki using a forked version from github.com/ankicommunity (orig:dsnopek)"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=('python-pyqt5: dependency of bundled anki client'
 'python-decorator: if you want to run the server as a user other than the supplied anki-sync-server user'
 )
 install=anki-sync-server.install
-source=('git+https://github.com/ankicommunity/anki-sync-server')
+source=('git+https://github.com/ankicommunity/anki-sync-server.git')
 md5sums=('SKIP')
 
 _repo_dir="$(basename ${source} | cut -f 1 -d '.')"
@@ -64,9 +64,9 @@ prepare() {
 
   # set user and directory information for systemd service file
   # the user is going to be named the same thing as the package name (minus '-git')
-  sed "10s/changeme/${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
-  sed "11s/changeme/${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
-  sed "12s|changeme|/opt/${pkgname%-git}|" plugins/systemd/anki-sync-server.service -i
+  sed "8s/changeme/${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
+  sed "9s/changeme/${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
+  sed "10s|changeme|/opt/${pkgname%-git}|" plugins/systemd/anki-sync-server.service -i
 }
 
 package() {
