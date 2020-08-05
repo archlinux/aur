@@ -1,6 +1,6 @@
 pkgbase = jack-matchmaker
 	pkgdesc = A command line tool to auto-connect JACK ports matching given patterns.
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/SpotlightKid/jack-matchmaker
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = jack-matchmaker
 	depends = python-setuptools
 	depends = jack
 	backup = etc/conf.d/jack-matchmaker
-	source = https://files.pythonhosted.org/packages/source/j/jack-matchmaker/jack-matchmaker-0.8.1.tar.gz
-	sha256sums = c593db0871134d456306ebf0b2a6bdf1b51ef4750bf0ef620d05615adb06ee27
+	source = https://files.pythonhosted.org/packages/source/j/jack-matchmaker/jack-matchmaker-0.8.2.tar.gz
+	sha256sums = a864797b3b2a3725d1d3498ea75e3aa12e7cd76d2faf863aeae7e0a0756bbb66
 
 pkgname = jack-matchmaker
 
