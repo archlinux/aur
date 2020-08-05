@@ -9,6 +9,7 @@ pkgbase = elvish-git
 	license = custom:2-clause BSD
 	makedepends = git
 	makedepends = go
+	makedepends = pandoc
 	depends = glibc
 	provides = elvish
 	conflicts = elvish
