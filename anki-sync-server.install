@@ -107,6 +107,7 @@ post_remove(){
 }
 
 pre_upgrade(){
+  echo "stopping anki-sync-server.service..."
   sudo systemctl stop anki-sync-server.service
 
   cd "/opt/anki-sync-server"
@@ -150,6 +151,8 @@ post_upgrade(){
   sudo chown -R anki-sync-server /opt/anki-sync-server
   sudo chgrp -R anki-sync-server /opt/anki-sync-server
 
+  echo "reloading systemd daemon..."
   sudo systemctl daemon-reload
+  echo "starting anki-sync-server.service..."
   sudo systemctl start anki-sync-server
 }
