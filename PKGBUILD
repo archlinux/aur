@@ -24,7 +24,7 @@ dest_pkgname=$pkgpref-faustgen
 
 pkgname=$dest_pkgname-git
 pkgver=0.1.2.r0.g9e2aaea
-pkgrel=1
+pkgrel=2
 pkgdesc="The FAUST compiler embedded in a Pd external - git version"
 arch=("i686" "x86_64")
 license=('MIT')
@@ -61,5 +61,5 @@ package() {
      cd "$src_pkgname"
      mkdir -p "$pkgdir$pdlibdir/extra/faustgen~/libs"
      cp -a external/* "$pkgdir$pdlibdir/extra/faustgen~"
-     cp -a faust/libraries/* "$pkgdir$pdlibdir/extra/faustgen~/libs"
+     cp -a faust/libraries/*.lib faust/libraries/old/*.lib "$pkgdir/usr/lib/pd/extra/faustgen~/libs"
 }
