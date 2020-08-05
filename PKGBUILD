@@ -2,7 +2,7 @@
 
 _pkgname=sqliteschema
 pkgname=python-${_pkgname}
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Dump table schema of a SQLite database file'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-mbstrdecoder' 'python-tabledata' 'python-typepy')
 makedepends=('python-setuptools')
 provides=("${_pkgname}")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('a29429fb28841aea4cbea6192befecb02ac91e2bab856ca5895f495123d64d6a')
+sha256sums=('def3b61c8d1d6cd08238072e1251e94aea243da661c731a46dbc8b64857a4878')
 
 build() {
   cd "${_pkgname}-${pkgver}"
