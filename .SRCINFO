@@ -1,0 +1,16 @@
+pkgbase = python-word_forms-git
+	pkgdesc = Accurately generate all possible forms of an English word
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/gutfeeling/word_forms
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-nltk
+	depends = python-inflect
+	depends = python-unipath
+	source = git+https://github.com/gutfeeling/word_forms.git
+	sha256sums = SKIP
+
+pkgname = python-word_forms-git
+
