@@ -43,7 +43,7 @@
 
 
 pkgname=zoneminder
-pkgver=1.34.16
+pkgver=1.34.17
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
@@ -71,7 +71,7 @@ optdepends=('mariadb'
             'spawn-fcgi: required if using nginx'
             'multiwatch: required if using nginx'
             'pod2man: required for Docker support'
-            'zmeventnotification-git: machine learning powered recognition engine & event notification server'
+            'zmeventnotification: machine learning powered recognition engine & event notification server'
             'vlc: provides libvlc, which may achieve better performance with some camera models')
 conflicts=('zoneminder-git')
 backup=("etc/nginx/sites-available/$pkgname.conf"
@@ -168,7 +168,7 @@ package() {
     # systemd tmpfile
     install -Dm644 $srcdir/$pkgname-tmpfile.conf            $pkgdir/usr/lib/tmpfiles.d/$pkgname.conf
     
-    # php.ini file
+    # php.ini extension
     install -Dm644 $srcdir/$pkgname-php.ini                 $pkgdir/etc/php/conf.d/$pkgname.ini
     
     # fcgiwrap-multiwatch service
