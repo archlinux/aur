@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Costa <gusbemacbe@gmail.com>
 
 pkgname=yaru-plus-git
-pkgver=3.0
+pkgver=4.0
 pkgrel=5
 pkgdesc="Yaru++ – Elegant and modern third-party icons theme, based on Canonical’s Yaru "
 arch=('any')
