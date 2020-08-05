@@ -1,16 +1,19 @@
 pkgbase = bless-git
 	pkgdesc = High-quality, full-featured hex editor (git version)
-	pkgver = r169.db747af
+	pkgver = r181.59aaaba
 	pkgrel = 1
 	url = https://github.com/afrantzis/bless
 	arch = any
 	license = GPL
-	makedepends = rarian
-	makedepends = automake
+	makedepends = libxslt
+	makedepends = meson
 	depends = gtk-sharp-2
+	depends = mono
 	conflicts = bless
 	source = git://github.com/afrantzis/bless.git
+	source = bless_bin
 	sha256sums = SKIP
+	sha256sums = b114dd9045c1fc2cfbaba5ff1aa02864429916a5356db71ed8b7e740d2352e07
 
 pkgname = bless-git
 
