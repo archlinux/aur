@@ -1,15 +1,15 @@
 pkgbase = bootstrap
 	pkgdesc = Open source toolkit for developing with HTML, CSS, and JS
-	pkgver = 4.5.0
+	pkgver = 4.5.1
 	pkgrel = 1
 	url = https://getbootstrap.com/
 	install = bootstrap.install
 	arch = any
 	license = MIT
 	optdepends = jquery>=3.5.1: for JavaScript plugin support
-	source = https://github.com/twbs/bootstrap/releases/download/v4.5.0/bootstrap-4.5.0-dist.zip
+	source = https://github.com/twbs/bootstrap/releases/download/v4.5.1/bootstrap-4.5.1-dist.zip
 	source = LICENSE
-	sha256sums = ab96acb6a7a667f3c90692c45f2bb0584976b1b87af5a6142e59392c4238df72
+	sha256sums = ca5a1a3e067dfd7090952e9d08668473c25982c9a7c8a2da7348a911b515a0a5
 	sha256sums = 9b2ce2d9793f14f0fb1a77ce64961acc1157fb25858156c47139491107970acb
 
 pkgname = bootstrap
