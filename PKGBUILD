@@ -10,10 +10,10 @@ provides=('bc=1.07.1-3')
 conflicts=('bc=1.07.1-3')
 source=("$pkgname-$pkgver.tar.xz::https://github.com/gavinhoward/bc/releases/download/$pkgver/bc-$pkgver.tar.xz"
         "$pkgname-$pkgver.tar.xz.sig::https://github.com/gavinhoward/bc/releases/download/$pkgver/bc-$pkgver.tar.xz.sig")
-sha512sums=('23c8ac164ee549ad5aa87ff5e1ca5054605a4596fb89544815e5ae654bf4ce72558877a68ac3686694216196d89296a35e10a0888361d56831385c07bb15d227'
-            '5a57b49d2784c6d994d85897c5c765a0929e170cbf9697512fc5468db0db44962db6701147f00e90682ab4bc1b7882dc15a9c69ac43f3a16ab2bded7b93f00fd')
-sha256sums=('f7e30ec71978082ec128e9427beb437b5538248c3375ddf82619c2fe8775b5fe'
-            '2835266d22367167c4b8c98d1227a1a3d48f4b425c259d31af8f17ca75d7e40b')
+sha512sums=('34be1c186df5906ab7a966739220a20afd7e3b227a5c7ba32a77256a36e097bbcc39b99ce6d6855de3e6e2296612f8fbe63dc0983ad91d4eb4c1e630dbb587a0'
+            '92d05d9d55729c3a62bb452bc389edc9a23f1bf3c2f59ef43b2a86e429777a68121bfb195ed7f59171c17fb944bda16a1848ad224b316114cf707b2dd45a71fe')
+sha256sums=('0493c1eb76e94ace7a00532824121ab901ac1bd3580a340ea5de92a7d9c1a19e'
+            '18450efb04ffb9111290ae65f8e899e2966cf3dd1f74292203c6f0d96a441c3c')
 validpgpkeys=('E2A30324A4465A4D5882692EC08038BDF280D33E')
 CFLAGS="-flto -O3 $CFLAGS"
 
