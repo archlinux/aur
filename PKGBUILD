@@ -2,15 +2,16 @@
 
 pkgname=1password
 pkgver=0.8.0.22506
-pkgrel=2
+pkgrel=3
 pkgdesc="The world's most-loved password manager - read-only development preview"
 arch=('x86_64')
 url='https://1password.com/'
 license=('unknown')
-depends=('fuse3')
+depends=('fuse3' 'zlib' 'hicolor-icon-theme')
 makedepends=('sed')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
+changelog='CHANGELOG'
 source=("${_appimage}::https://onepassword.s3.amazonaws.com/linux/appimage/1password-latest.AppImage")
 noextract=("${_appimage}")
 sha256sums=('09d3812f1ca81074f0677ce329647fdbf3ce2a1d6f0132ae99031271badf46e4')

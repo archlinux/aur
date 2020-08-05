@@ -1,12 +1,15 @@
 pkgbase = 1password
 	pkgdesc = The world's most-loved password manager - read-only development preview
 	pkgver = 0.8.0.22506
-	pkgrel = 2
+	pkgrel = 3
 	url = https://1password.com/
+	changelog = CHANGELOG
 	arch = x86_64
 	license = unknown
 	makedepends = sed
 	depends = fuse3
+	depends = zlib
+	depends = hicolor-icon-theme
 	noextract = 1password-0.8.0.22506.AppImage
 	options = !strip
 	source = 1password-0.8.0.22506.AppImage::https://onepassword.s3.amazonaws.com/linux/appimage/1password-latest.AppImage
