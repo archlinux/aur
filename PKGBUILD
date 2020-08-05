@@ -2,7 +2,7 @@
 
 pkgname=adios2-git
 pkgver=2.6.0.r256.gd96750bf
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation of ADIOS developed in the Exascale Computing Program"
 arch=('x86_64')
 url="https://adios2.readthedocs.io/en/latest/index.html"
@@ -11,7 +11,7 @@ depends=('libpng' 'zfp' 'hdf5' 'zeromq' 'libfabric' 'blosc' 'python' 'sz')
 makedepends=('cmake')
 provides=('adios2')
 conflicts=('adios2')
-source=('$pkgname::git+https://github.com/ornladios/ADIOS2.git')
+source=('adios2::git+https://github.com/ornladios/ADIOS2.git')
 md5sums=('SKIP')
 
 pkgver() {
