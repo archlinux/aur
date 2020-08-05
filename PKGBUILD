@@ -1,6 +1,6 @@
 # Maintainer: scan
 pkgname=keepass-plugin-rpc
-pkgver=1.12.1
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="RPC plugin for Keepass"
 license=('GPL')
@@ -8,7 +8,7 @@ depends=("keepass")
 url="https://github.com/kee-org/keepassrpc"
 source=(https://github.com/kee-org/keepassrpc/releases/download/v${pkgver}/KeePassRPC.plgx)
 arch=(any)
-sha256sums=('73468bcb57472ca6d17e45294136e4d2a4e69ac19e500225f71deab6ad3f1a5e')
+sha256sums=('a2ec4c388ba33265136a034b328e0ecef5e4f3c0c33596f4bef43349920a4c87')
 
 package(){
    mkdir -p "${pkgdir}"/usr/share/keepass/Plugins
