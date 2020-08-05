@@ -1,0 +1,21 @@
+pkgbase = st-sane-defaults
+	pkgdesc = A simple virtual terminal emulator for X.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://st.suckless.org
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	depends = libxft
+	provides = st
+	conflicts = st
+	source = https://dl.suckless.org/st/st-0.8.2.tar.gz
+	source = sane-defaults-patch.diff
+	source = st-sane-defaults.desktop
+	sha256sums = aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = st-sane-defaults
+
