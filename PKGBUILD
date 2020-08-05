@@ -10,7 +10,7 @@ license=('Apache')
 depends=('lm_sensors' 'grpc' 'boost-libs')
 makedepends=('clang>=9.0' 'cmake>=3.13' 'boost' 'protobuf' 'libx11' 'pstreams' 'libxnvctrl')
 source=("https://github.com/hbriese/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('b3a4e5fd253c850befde8200618d041ab09dc0d3f0c19547920d0e104df9a34f730656313bf9d4b02e7464faeba518a8a881b7a8f89f42483a332d0b37455910')
+sha512sums=('f7a202adff04985e1063d0cd3cec8c36045fec0a0556d764a4b690bbbc4f96f779898d6e5d8c13d22be809b35644ab3c79ddca7a9e504ee473e38e6b3f16c432')
 conflicts=("${pkgname}-git")
 
 build() {
