@@ -3,8 +3,8 @@
 pkgname=st-sane-defaults
 _pkgname=st
 pkgver=0.8.2
-pkgrel=1
-pkgdesc='A simple virtual terminal emulator for X.'
+pkgrel=2
+pkgdesc='A simple terminal emulator, with configurations fit for the average user.'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 depends=(libxft)
