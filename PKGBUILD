@@ -4,8 +4,8 @@
 
 pkgname=ethminer-cuda
 _pkgname=ethminer
-pkgver=0.18.0
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="Ethereum miner with OpenCL, CUDA and stratum support."
 arch=('x86_64')
 url="https://github.com/ethereum-mining/ethminer"
