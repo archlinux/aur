@@ -2,19 +2,19 @@
 # Contributor: Conor Anderson <conor@conr.ca>
 
 pkgname=wire-desktop
-pkgver=3.18.2925
+pkgver=3.19.2928
 pkgrel=1
 pkgdesc='End-to-end encrypted messenger with file sharing, voice calls and video conferences'
 arch=('any')
 url='https://wire.com/'
 license=('GPL3')
-depends=('electron6' 'xdg-utils')
+depends=('electron' 'xdg-utils')
 makedepends=('git' 'npm' 'yarn')
 optdepends=('emoji-font: colorful emoji')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wireapp/${pkgname}/archive/linux/${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/wireapp/${pkgname}/releases/download/linux%2F${pkgver}/${pkgver}.tar.gz.sig"
+        "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/wireapp/${pkgname}/releases/download/linux%2F${pkgver}/${pkgname}-linux-${pkgver}.tar.gz.sig"
         "${pkgname}.desktop")
-sha256sums=('099b17d7007c945d9e2c73c844fac132f8d6af3ab27ed19ac17009462f5cf48e'
+sha256sums=('c019496117ec6fb9eb55fda5ee0349234d8bda3abe61df91cceac6b6205e9005'
             'SKIP'
             '53f37e99d4c2f41a3e31fd70154d82ba06a4af578c68df86af4906f7f37ec787')
 validpgpkeys=('ABBA007D6E14E2DB5B283C45D599C1AA126762B1')
@@ -24,15 +24,12 @@ prepare() {
     cat << EOF > "${pkgname}"
 #!/usr/bin/env sh
 
-electron6 "/usr/lib/${pkgname}" "\$@"
+electron "/usr/lib/${pkgname}" "\$@"
 EOF
 }
 
 build() {
     cd "${pkgname}-linux-${pkgver}"
-
-    git init
-    git -c user.name='FIXME' -c user.email='FIXME' commit --allow-empty -m "FIXME"
 
     yarn
     BUILD_NUMBER="${pkgver##*.}" LINUX_TARGET=dir ENABLE_ASAR=false yarn build:linux
