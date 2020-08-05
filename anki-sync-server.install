@@ -106,7 +106,50 @@ post_remove(){
   echo "==================================================================="
 }
 
+pre_upgrade(){
+  sudo systemctl stop anki-sync-server.service
+
+  cd "/opt/anki-sync-server"
+
+  auth="auth.db"
+  coll="collections"
+  sess="session.db"
+
+  if [ -f "${auth}" ]; then
+    sudo mv -v "${auth}" "${auth}.BAK"
+  fi
+
+  if [ -d "${coll}" ]; then
+    sudo mv -v "${coll}" "${coll}.BAK"
+  fi
+
+  if [ -f "${sess}" ]; then
+    sudo mv -v "${sess}" "${sess}.BAK"
+  fi
+}
+
 post_upgrade(){
-  chown -R anki-sync-server /opt/anki-sync-server
-  chgrp -R anki-sync-server /opt/anki-sync-server
+  cd "/opt/anki-sync-server"
+
+  auth="auth.db"
+  coll="collections"
+  sess="session.db"
+
+  if [ -f "${auth}.BAK" ]; then
+    sudo mv -v "${auth}.BAK" "${auth}"
+  fi
+
+  if [ -d "${coll}.BAK" ]; then
+    sudo mv -v "${coll}.BAK" "${coll}"
+  fi
+
+  if [ -f "${sess}.BAK" ]; then
+    sudo mv -v "${sess}.BAK" "${sess}"
+  fi
+
+  sudo chown -R anki-sync-server /opt/anki-sync-server
+  sudo chgrp -R anki-sync-server /opt/anki-sync-server
+
+  sudo systemctl daemon-reload
+  sudo systemctl start anki-sync-server
 }
