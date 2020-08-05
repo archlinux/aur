@@ -1,0 +1,12 @@
+diff -urN arrow-apache-arrow-1.0.0-orig/cpp/cmake_modules/ThirdpartyToolchain.cmake arrow-apache-arrow-1.0.0/cpp/cmake_modules/ThirdpartyToolchain.cmake
+--- arrow-apache-arrow-1.0.0-orig/cpp/cmake_modules/ThirdpartyToolchain.cmake	2020-08-04 23:11:30.376315780 -0400
++++ arrow-apache-arrow-1.0.0/cpp/cmake_modules/ThirdpartyToolchain.cmake	2020-08-04 23:12:37.803601116 -0400
+@@ -2468,7 +2468,7 @@
+     endif()
+   endif()
+ 
+-  get_target_property(GRPC_CPP_PLUGIN gRPC::grpc_cpp_plugin IMPORTED_LOCATION)
++  get_target_property(GRPC_CPP_PLUGIN gRPC::grpc_cpp_plugin LOCATION)
+   if(NOT GRPC_CPP_PLUGIN)
+     get_target_property(GRPC_CPP_PLUGIN gRPC::grpc_cpp_plugin IMPORTED_LOCATION_RELEASE)
+   endif()

@@ -1,7 +1,8 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname='arrow'
-pkgver=0.17.0
+_pkgname='arrow-apache-arrow'
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
@@ -13,15 +14,22 @@ optdepends=()
 provides=('parquet-cpp')
 conflicts=('parquet-cpp')
 makedepends=('apache-orc' 'boost' 'cmake' 'flatbuffers' 'python-numpy')
-source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
-sha256sums=('4db2233c25d1ef14f90f9de8e9d808a2d386c67e7116405ddd22d8f981fe66c1')
+source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz"
+  "cmake.patch")
+sha256sums=('08fbd4c633c08939850d619ca0224c75d7a0526467c721c0838b8aa7efccb270'
+            '8dcc91a9187faa885771e1cef207136d90b3b5ad645ab39d7016a0e50f9c90dd')
+
+prepare(){
+  cd "$srcdir"
+  patch -p0 < cmake.patch
+}
 
 build(){
   cd "$srcdir"
   mkdir -p build
   cd "$srcdir/build"
   ARROW_BUILD_TOOLCHAIN=/usr ORC_HOME=/usr DOUBLE_CONVERSION_HOME=/usr cmake \
-    ../$pkgname-apache-$pkgname-$pkgver/cpp -DARROW_DEPENDENCY_SOURCE=SYSTEM \
+    ../$_pkgname-$pkgver/cpp -DARROW_DEPENDENCY_SOURCE=SYSTEM \
                                       -DARROW_PYTHON=ON \
                                       -DCMAKE_BUILD_TYPE=Release \
                                       -DARROW_BUILD_TESTS=ON \
@@ -35,7 +43,6 @@ build(){
                                       -DARROW_PARQUET=ON \
                                       -DARROW_PLASMA=ON \
                                       -DARROW_TENSORFLOW=ON \
-                                      -DARROW_USE_SIMD=ON \
                                       -DARROW_SIMD_LEVEL=AVX2 \
                                       -DARROW_FLIGHT=ON \
                                       -DARROW_GANDIVA=OFF \
