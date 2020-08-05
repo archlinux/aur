@@ -1,7 +1,7 @@
-diff -urN arrow-apache-arrow-0.17.0-orig/python/CMakeLists.txt arrow-apache-arrow-0.17.0/python/CMakeLists.txt
---- arrow-apache-arrow-0.17.0-orig/python/CMakeLists.txt	2020-04-16 22:10:46.291759955 -0400
-+++ arrow-apache-arrow-0.17.0/python/CMakeLists.txt	2020-04-16 22:11:04.181759581 -0400
-@@ -187,11 +187,6 @@
+diff -urN arrow-apache-arrow-1.0.0-orig/python/CMakeLists.txt arrow-apache-arrow-1.0.0/python/CMakeLists.txt
+--- arrow-apache-arrow-1.0.0-orig/python/CMakeLists.txt	2020-08-04 23:27:00.302126339 -0400
++++ arrow-apache-arrow-1.0.0/python/CMakeLists.txt	2020-08-04 23:27:20.882397924 -0400
+@@ -187,10 +187,10 @@
  # where to put generated binaries
  set(EXECUTABLE_OUTPUT_PATH "${BUILD_OUTPUT_ROOT_DIRECTORY}")
  
@@ -9,7 +9,10 @@ diff -urN arrow-apache-arrow-0.17.0-orig/python/CMakeLists.txt arrow-apache-arro
 -  # TensorFlow uses the old GLIBCXX ABI, so we have to use it too
 -  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_GLIBCXX_USE_CXX11_ABI=0")
 -endif()
--
++#if(PYARROW_USE_TENSORFLOW)
++  ## TensorFlow uses the old GLIBCXX ABI, so we have to use it too
++  #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D_GLIBCXX_USE_CXX11_ABI=0")
++#endif()
+ 
  # Python and Numpy libraries
  find_package(Python3Alt REQUIRED)
- include(UseCython)

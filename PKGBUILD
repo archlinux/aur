@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname='python-pyarrow'
-pkgver=0.17.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=()
 makedepends=('cmake' 'cython')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz"
   "tensorflow-abi.patch")
-sha256sums=('4db2233c25d1ef14f90f9de8e9d808a2d386c67e7116405ddd22d8f981fe66c1'
-            '9f756c9834841e006a44f5ad53465694fba20a2eae43401a7db6d33e90c0650e')
+sha256sums=('08fbd4c633c08939850d619ca0224c75d7a0526467c721c0838b8aa7efccb270'
+            '2f63fe8b7c40d996c41a24286a2293a1333c95e4db4ce83200e0440550e4da79')
 
 prepare(){
   cd "$srcdir"
