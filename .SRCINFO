@@ -1,6 +1,6 @@
 pkgbase = mailnag-goa-plugin-git
 	pkgdesc = Mailnag GNOME Online Accounts Plugin
-	pkgver = 20200328.r17.6759610
+	pkgver = 20200703.r18.9288bd5
 	pkgrel = 1
 	url = https://github.com/pulb/mailnag-goa-plugin
 	arch = any

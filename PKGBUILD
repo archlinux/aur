@@ -3,7 +3,7 @@
 
 _pkgname=mailnag-goa-plugin
 pkgname=$_pkgname-git
-pkgver=20200328.r17.6759610
+pkgver=20200703.r18.9288bd5
 pkgrel=1
 pkgdesc='Mailnag GNOME Online Accounts Plugin'
 arch=('any')
