@@ -1,7 +1,7 @@
 pkgbase = ecflow
 	pkgdesc = ecFlow - workflow manager from ECMWF
 	pkgver = 5.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://confluence.ecmwf.int/display/ECFLOW
 	arch = i686
 	arch = x86_64
