@@ -8,8 +8,8 @@
 pkgname=rofi-wayland-git
 _gitname=rofi
 pkgver=1.3.1.r384.g3a29d3ec
-pkgrel=2
-pkgdesc="A window switcher, run dialog and dmenu replacement"
+pkgrel=3
+pkgdesc="Abandoned code base, try the fork \`rofi-lbonn-wayland-git\`"
 arch=('i686' 'x86_64')
 url="https://davedavenport.github.io/rofi/"
 license=('MIT')
