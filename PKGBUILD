@@ -7,8 +7,8 @@
 # This was originally written by Daniel Bermond in blackmagic-decklink-sdk pkgbuild
 # It is sufficient to just replace _downloadid to correspond new release version
 # It can be obtained from chromium -> Developer Tools -> Network -> XHR -> click latest-version and copy downloadId
-_downloadid='deabd0693c7b44d2a829cb0229a50c61'
-_referid='7841ff08dfbd43d4af5e30e3b39eae10'
+_downloadid='7fc7eab939054db586cab85cb1d6ee0f'
+_referid='39703bbbf19e45be99798a2006e1eb24'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
@@ -62,7 +62,7 @@ DLAGENTS=("https::/usr/bin/curl \
 pkgname=davinci-resolve-studio
 _pkgname=resolve
 resolve_app_name=com.blackmagicdesign.resolve
-pkgver=16.2.4
+pkgver=16.2.5
 pkgrel=1
 arch=('any')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
@@ -78,13 +78,13 @@ if [ ${pkgname} == "davinci-resolve-studio" ]; then
 # Variables for STUDIO edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 	_archive_name=DaVinci_Resolve_Studio_${pkgver}_Linux
-	sha256sums=('004941cd254fcf979fd98f7d4b55d452dcadd3acd4f0563cdfdd1ae77d3eab3d')
+	sha256sums=('2f4f41b9f9e67deedd031bb8fbbb6ab92d03d2288f1d5f26ffa1ebddf9813773')
 	conflicts=('davinci-resolve-beta' 'davinci-resolve' 'davinci-resolve-studio')
 else
 # Variables for FREE edition
 	pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 	_archive_name=DaVinci_Resolve_${pkgver}_Linux
-	sha256sums=('17db21c3a9b363fda3bc47e38ef836974f48d567938ad2cce0e5075c7a03d89e')
+	sha256sums=('11b0ed588663998bbeefa8e05a0ecc7824da57a9a7dedc066a0c2669c248e6c5')
 	conflicts=('davinci-resolve' 'davinci-resolve-studio' 'davinci-resolve-studio-beta')
 fi
 
