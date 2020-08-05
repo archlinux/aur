@@ -7,7 +7,7 @@ pkgname=("python-pytorch-rocm" "python-pytorch-opt-rocm")
 _pkgname="pytorch"
 pkgver=1.6.0
 _pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -42,14 +42,14 @@ prepare() {
   git submodule update --init --recursive
 
   # https://bugs.archlinux.org/task/64981
-  patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
+  #patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
 
   # Use system libuv
-  patch -Np1 -i "${srcdir}"/use-system-libuv.patch
-  patch -Np1 -i "${srcdir}"/use-system-libuv2.patch -d third_party/tensorpipe
+  #patch -Np1 -i "${srcdir}"/use-system-libuv.patch
+  #patch -Np1 -i "${srcdir}"/use-system-libuv2.patch -d third_party/tensorpipe
 
   # FindNCCL patch to export correct nccl version
-  patch -Np1 -i "${srcdir}"/nccl_version.patch
+  #patch -Np1 -i "${srcdir}"/nccl_version.patch
 
   # https://github.com/pytorch/pytorch/issues/41886
   patch -Np1 -i "${srcdir}"/find-hip.patch
@@ -58,7 +58,7 @@ prepare() {
   patch -Np1 -i "${srcdir}"/find-rccl.patch
 
   # remove local nccl
-  rm -rf third_party/nccl/nccl
+  #rm -rf third_party/nccl/nccl
 
   # Apply changes needed for ROCm
   python tools/amd_build/build_amd.py
@@ -68,43 +68,41 @@ prepare() {
   cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-rocm"
   cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-opt-rocm"
 
-  export VERBOSE=1
-  export PYTORCH_BUILD_VERSION="${pkgver}"
-  export PYTORCH_BUILD_NUMBER=1
+  #export VERBOSE=1
+  #export PYTORCH_BUILD_VERSION="${pkgver}"
+  #export PYTORCH_BUILD_NUMBER=1
 
   # Check tools/setup_helpers/cmake.py, setup.py and CMakeLists.txt for a list of flags that can be set via env vars.
-  export USE_MKLDNN=ON
-  # export BUILD_CUSTOM_PROTOBUF=OFF
-  # export BUILD_SHARED_LIBS=OFF
-  export USE_FFMPEG=ON
-  export USE_GFLAGS=ON
-  export USE_GLOG=ON
-  export BUILD_BINARY=ON
-  export USE_OPENCV=ON
-  export USE_SYSTEM_NCCL=ON
-  export NCCL_VERSION=$(pkg-config nccl --modversion)
-  export NCCL_VER_CODE=$(sed -n 's/^#define NCCL_VERSION_CODE\s*\(.*\).*/\1/p' /usr/include/nccl.h)
-  export CUDAHOSTCXX=g++-9
-  export CUDA_HOME=/opt/cuda
-  export CUDNN_LIB_DIR=/usr/lib
-  export CUDNN_INCLUDE_DIR=/usr/include
-  export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
-  export TORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.0+PTX;6.1;6.1+PTX;6.2;6.2+PTX;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX;8.0;8.0+PTX;"
+  #export USE_MKLDNN=ON
+  ## export BUILD_CUSTOM_PROTOBUF=OFF
+  ## export BUILD_SHARED_LIBS=OFF
+  #export USE_FFMPEG=ON
+  #export USE_GFLAGS=ON
+  #export USE_GLOG=ON
+  #export BUILD_BINARY=ON
+  #export USE_OPENCV=ON
+  #export USE_SYSTEM_NCCL=ON
+  #export NCCL_VERSION=$(pkg-config nccl --modversion)
+  #export NCCL_VER_CODE=$(sed -n 's/^#define NCCL_VERSION_CODE\s*\(.*\).*/\1/p' /usr/include/nccl.h)
+  #export CUDAHOSTCXX=g++-9
+  #export CUDA_HOME=/opt/cuda
+  #export CUDNN_LIB_DIR=/usr/lib
+  #export CUDNN_INCLUDE_DIR=/usr/include
+  #export TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
+  #export TORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.0+PTX;6.1;6.1+PTX;6.2;6.2+PTX;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX;8.0;8.0+PTX;"
 }
 
 build() {
   echo "Building with rocm and without non-x86-64 optimizations"
   export USE_CUDA=OFF
-  export USE_CUDNN=OFF
-  export USE_ROCM=ON
+  #export USE_ROCM=ON
   cd "${srcdir}/${_pkgname}-${pkgver}-rocm"
   python setup.py build
 
 
   echo "Building with rocm and with non-x86-64 optimizations"
   export USE_CUDA=OFF
-  export USE_CUDNN=OFF
-  export USE_ROCM=ON
+  #export USE_ROCM=ON
   cd "${srcdir}/${_pkgname}-${pkgver}-opt-rocm"
   echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
   python setup.py build
