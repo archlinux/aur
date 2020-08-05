@@ -7,26 +7,23 @@ pkgbase=uzbl
 pkgname=('uzbl-core' 'uzbl-browser' 'uzbl-tabbed')
 epoch=1
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.uzbl.org'
 license=('GPL3')
-makedepends=('git' 'python-setuptools' 'webkit2gtk')
+makedepends=('python-setuptools' 'webkit2gtk')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/$pkgbase/$pkgbase/archive/v$pkgver.tar.gz")
 sha256sums=('9721873db3fd859707f703a101b4f2d0538f92e9678f8ad437a7203078f9abbe')
 
 build() {
-  cd $pkgbase
-
-  make PREFIX=/usr
-
-  # fake installation
+  cd "$pkgbase-$pkgver"
+  make
   mkdir -p ${srcdir}/fakeinstall
   make DESTDIR=${srcdir}/fakeinstall PREFIX=/usr install
 }
 
 package_uzbl-core() {
-  pkgdesc="Webpage interface component meant for integration with other tools and scripts"
+  pkgdesc='Webpage interface component meant for integration with other tools and scripts'
   depends=('webkit2gtk')
 
   install -m755 -d ${pkgdir}/usr/{bin,share}
@@ -39,7 +36,7 @@ package_uzbl-core() {
 }
 
 package_uzbl-browser() {
-  pkgdesc="A complete browser experience based on uzbl-core"
+  pkgdesc='A complete browser experience based on uzbl-core'
   depends=('uzbl-core' 'socat' 'zenity' 'xclip' 'dmenu' 'python2' 'python-setuptools' 'python-six')
 
   install -m755 -d ${pkgdir}/usr/{bin,lib,share}
@@ -55,7 +52,7 @@ package_uzbl-browser() {
 }
 
 package_uzbl-tabbed() {
-  pkgdesc="Tabbing manager providing multiple uzbl-browser instances in 1 window"
+  pkgdesc='Tabbing manager providing multiple uzbl-browser instances in 1 window'
   depends=('uzbl-browser' 'pygtk')
 
   install -m755 -d ${pkgdir}/usr/{bin,share}
