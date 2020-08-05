@@ -1,26 +1,29 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=boston-icon-theme
-pkgver=0.7
-pkgrel=2
+pkgver=0.8
+pkgrel=1
 _gitname=Boston-Icons
-_gitrel=f0c21b8548650b53187d553a197c8ae33b5cc6f4
+_gitrel=b2414c02c95a9aaa8a8ad7a029fe9a41e72da667
 _upname=Boston
 pkgdesc="A highly minimalist icon theme, with a sober color palette inspired on basic hues and forms."
 arch=('any')
 url="https://www.opendesktop.org/p/1012402"
 license=('CCPL:by-sa')
 source=("https://github.com/heychrisd/$_gitname/archive/$_gitrel.tar.gz")
-sha256sums=('47f763711481ad8ff9f999cf62973f5a2ea7f1b308f59e99ece4a46b75227d06')
+sha256sums=('e65f7934ff9514e37db64c914dec624da6d8c9d790adb46a2ef542a736c69a54')
 options=(!emptydirs)
 
 package() {
     cd "$srcdir/${_gitname}-${_gitrel}"
 
     install -d -m755 $pkgdir/usr/share/licenses/$pkgname
-    install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-    install -D -m644 "THIRD PARTY" $pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY
-    install -D -m644 PATRONS.md $pkgdir/usr/share/licenses/$pkgname/PATRONS
+    install -D -m644 license $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -D -m644 third-party $pkgdir/usr/share/licenses/$pkgname/third-party
+
+    install -d -m755 $pkgdir/usr/share/doc/$pkgname
+    install -D -m644 patrons.md $pkgdir/usr/share/doc/$pkgname/patrons.md
+    install -D -m644 changelog $pkgdir/usr/share/doc/$pkgname/CHANGELOG
 
     install -d -m755 $pkgdir/usr/share/icons/$_upname
     for size in 16 48 128 legacy symbolic; do
