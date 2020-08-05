@@ -1,0 +1,23 @@
+pkgbase = ndn-chronosync-git
+	pkgdesc = Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications
+	pkgver = 0.5.3.r9.g5f408ae
+	pkgrel = 1
+	url = https://github.com/named-data/chronosync
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	makedepends = python
+	makedepends = pkgconf
+	makedepends = sqlite
+	makedepends = openssl>=1.0.2
+	depends = boost
+	depends = ndn-cxx
+	provides = ndn-chronosync
+	conflicts = ndn-chronosync
+	source = git+https://github.com/named-data/chronosync.git
+	sha256sums = SKIP
+
+pkgname = ndn-chronosync-git
+
