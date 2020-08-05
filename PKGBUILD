@@ -1,7 +1,7 @@
 # Maintainer: Ronan Pigott <rpigott@berkeley.edu>
 
 pkgname=wlrctl
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Utility for miscellaneous wlroots extensions'
 url='https://git.sr.ht/~brocellous/wlrctl'
@@ -13,7 +13,7 @@ source=(
 depends=('wayland' 'libxkbcommon')
 makedepends=('scdoc' 'meson' 'ninja')
 
-md5sums=('79b1625d085b770d123e80ac0b3fbe73')
+md5sums=('03d62c7106e90b83f76545204e119ac0')
 
 build() {
 	cd "$pkgname-v$pkgver"
