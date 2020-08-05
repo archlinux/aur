@@ -7,7 +7,7 @@ pkgname=("python-pytorch-rocm" "python-pytorch-opt-rocm")
 _pkgname="pytorch"
 pkgver=1.6.0
 _pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -22,14 +22,14 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         use-system-libuv2.patch
         nccl_version.patch
         find-hip.patch
-        find-rccl.patch)
+        "find-rccl.patch::https://patch-diff.githubusercontent.com/raw/pytorch/pytorch/pull/42072.patch")
 sha256sums=('SKIP'
             '147bdaeac8ec46ea46382e6146878bd8f8d51e05d5bd6f930dfd8e2b520859b9'
             '6f3b7a87172011de810bf1ab581245b4463ef86e5cd09bec63aeffa372e26646'
             '7b65c3b209fc39f92ba58a58be6d3da40799f1922910b1171ccd9209eda1f9eb'
             '1a276bd827a0c76dab908cbc6605fa4c9fc2cc2b9431b6578a41133ae27dba2b'
             'c41b5a95513d8ff533eb083eee8e9106553669ef6fe4da238729d5dbd92f969f'
-            'bca263f8cfd5281bc213cb5ba293a024a15c79c9bb7223ae3308ae841f1a445a')
+            'SKIP')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -53,6 +53,8 @@ prepare() {
 
   # https://github.com/pytorch/pytorch/issues/41886
   patch -Np1 -i "${srcdir}"/find-hip.patch
+
+  # https://github.com/pytorch/pytorch/pull/42072
   patch -Np1 -i "${srcdir}"/find-rccl.patch
 
   # remove local nccl
