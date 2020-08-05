@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=or-tools-java
-pkgver=7.7
+pkgver=7.8
 pkgrel=1
 pkgdesc='Google`s Operations Research tools. With Java bindings'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("https://github.com/google/or-tools/archive/v${pkgver}/${pkgname}-${pkgv
         'git+https://github.com/coin-or/Clp.git'
         'git+https://github.com/coin-or/Osi.git'
         'git+https://github.com/coin-or/CoinUtils.git')
-b2sums=('b1f14639faa801be9e892cd958b32b51c46e64574c1fc3ddc31a48e1e9092373a7ca35c4b6b5e95e250a9d256e48525e558629108709511920c94a062ff8c15b'
+b2sums=('6a36b100381cb8c8b28c7aa3d0942eac337ae5a9c0f608ab81d9ae2cec8d55abff8c0de8c88df061bf5984161e472973d8b9d4fc61b82e8b74d67eb14cc596ae'
         'SKIP'
         'SKIP'
         'SKIP'
