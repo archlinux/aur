@@ -1,0 +1,15 @@
+pkgbase = gvtg_vgpu-git
+	pkgdesc = Systemd files to automatically create and remove gvtg vgpu
+	pkgver = r2.d0db17f
+	pkgrel = 1
+	url = https://github.com/oakszyjrnrdy/gvtg_vgpu
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = gvtg_vgpu
+	conflicts = gvtg_vgpu
+	source = gvtg_vgpu-git::git+https://github.com/oakszyjrnrdy/gvtg_vgpu
+	sha256sums = SKIP
+
+pkgname = gvtg_vgpu-git
+
