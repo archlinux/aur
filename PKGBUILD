@@ -2,7 +2,7 @@
 
 pkgname=autotiling-rs-git
 _pkgname=autotiling-rs
-pkgver=0.1.0.r3.g1a0579a
+pkgver=0.1.0.r1.gde07cc4
 pkgrel=1
 pkgdesc='Automatically alternates container layouts between horizontal and vertical'
 arch=('x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).r$(git rev-list --count HEAD).g$(git describe --always)
+  echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)
 }
 
 build() {
