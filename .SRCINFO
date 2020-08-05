@@ -1,6 +1,6 @@
 pkgbase = youtube-music-appimage
 	pkgdesc = A desktop app for YouTube Music
-	pkgver = 1.11.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://ytmdesktop.app
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = youtube-music-appimage
 	makedepends = git
 	noextract = ${_pkgname}-${pkgver}.AppImage
 	options = !strip
-	source = https://github.com/ytmdesktop/ytmdesktop/releases/download/v1.11.0/YouTube.Music.Desktop.App-1.11.0.AppImage
+	source = https://github.com/ytmdesktop/ytmdesktop/releases/download/v1.12.0/YouTube.Music.Desktop.App-1.12.0.AppImage
 	source = https://github.com/ytmdesktop/ytmdesktop/blob/master/LICENSE.md
 	source = youtube-music.desktop
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = a48bbd8ac2e093a218e3bdc66806f8f068603687d8b51d0b595874f6cb2e6b2b
+	sha256sums = b119b59f470d03a9a42161579d64a10873f28aebba40db2454152a11ef7f3b5c
 	sha256sums = 4c328cb3457c355ac7eec7778971abe962c283f3883d9f360a6c3352d3950ae6
 
 pkgname = youtube-music-appimage
