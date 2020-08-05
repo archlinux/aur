@@ -3,7 +3,7 @@
 # new_sha = `makepkg -g`
 pkgbuild = File.readlines("PKGBUILD").map do |line|
   if line =~ /\Apkgver=/
-    "pkgver=GIT\n"
+    "pkgver=HEAD\n"
   else
     line
   end
