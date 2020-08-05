@@ -1,8 +1,8 @@
-# Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
+# Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="python-github-binary-upload"
 pkgver="0.1.5"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A Python package which creates simple interactive menus on the command line."
 arch=("any")
 url="https://github.com/sciapp/github-binary-upload"
