@@ -11,7 +11,7 @@ depends=()
 checkdepends=()
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GooFit/Minuit2/archive/v${pkgver//./-}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('aa357f6237dd66364372b89b0c6c061661390435652262dc5457730dd88b4524')
 validpgpkeys=()
 
 prepare() {
