@@ -1,8 +1,8 @@
-# Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
+# Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="python-gitlab-registry-usage-rest"
 pkgver="0.2.6"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A restful web service for querying the repository sizes of a GitLab registry."
 arch=("any")
 url="https://github.com/sciapp/gitlab-registry-usage-rest"

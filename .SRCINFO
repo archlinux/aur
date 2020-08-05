@@ -1,7 +1,7 @@
 pkgbase = python-gitlab-registry-usage-rest
 	pkgdesc = A restful web service for querying the repository sizes of a GitLab registry.
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sciapp/gitlab-registry-usage-rest
 	arch = any
 	license = MIT
