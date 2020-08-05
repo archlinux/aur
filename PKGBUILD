@@ -2,11 +2,11 @@
 
 pkgname=intellij-idea-ce
 _pkgname=idea-IC
-_buildver=201.9743.12
+_buildver=201.8743.12
 _veryear=2020
 _verrelease=1.4
 pkgver=${_veryear}.${_verrelease}
-pkgrel=1
+pkgrel=2
 pkgdesc="Intellij Idea IDE (community version) with Intellij JDK"
 arch=('any')
 options=(!strip)
