@@ -2,7 +2,7 @@
 
 pkgname=python-tflite
 _pkgname=tflite
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Parse TFLite models (*.tflite) EASILY with Python"
 arch=("any")
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python-flatbuffers')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b00b015ba139a83912be47c81a40def36d8f3617879b8c5e198663ec10fae56d')
+sha256sums=('e0a39b9a2f4fef3e584ccc2785f5364ef21c6a01fa672ab0587dc2d296204837')
 
 build() {
   cd ${_pkgname}-${pkgver}
