@@ -1,6 +1,6 @@
 # Maintainer: Sam L. Yes <manjaroyes123@outlook.com>
 pkgname=nextplayer-appimage
-pkgver=1.7.5
+pkgver=1.7.6
 pkgrel=1
 pkgdesc="A blue-ray player for MacOS, Linux and FreeBSD, originally named TheNewPlayerFree."
 arch=("x86_64")
@@ -11,9 +11,9 @@ options=(!strip)
 _filename="nextplayer-${pkgver}.AppImage"
 provides=('nextplayer')
 replaces=('thenewplayerfree-appimage' 'thenewplayerfree-bin')
-source=("${_filename}::https://github.com/sudormroot/nextplayer-project/releases/download/nextplayer-bin.linux.1.7.5-1.amd64/nextplayer-bin.linux.1.7.5-1.amd64.AppImage")
+source=("${_filename}::https://github.com/sudormroot/nextplayer-project/releases/download/nextplayer-bin.linux.1.7.6-1.amd64/nextplayer-bin.linux.1.7.6-1.amd64.AppImage")
 noextract=(${_filename})
-md5sums=('561a254caf4436c417c55b41cb14abfc')
+md5sums=('3c153963fca68be2690a87957aedd3e2')
 _icon='/usr/share/icons/hicolor/256x256/apps/nextplayer.png'
 _launcher='/usr/share/applications/nextplayer.desktop'
 

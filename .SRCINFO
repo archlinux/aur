@@ -1,6 +1,6 @@
 pkgbase = nextplayer-appimage
 	pkgdesc = A blue-ray player for MacOS, Linux and FreeBSD, originally named TheNewPlayerFree.
-	pkgver = 1.7.5
+	pkgver = 1.7.6
 	pkgrel = 1
 	url = https://sudormroot.github.io/nextplayer-project/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = nextplayer-appimage
 	provides = nextplayer
 	replaces = thenewplayerfree-appimage
 	replaces = thenewplayerfree-bin
-	noextract = nextplayer-1.7.5.AppImage
+	noextract = nextplayer-1.7.6.AppImage
 	options = !strip
-	source = nextplayer-1.7.5.AppImage::https://github.com/sudormroot/nextplayer-project/releases/download/nextplayer-bin.linux.1.7.5-1.amd64/nextplayer-bin.linux.1.7.5-1.amd64.AppImage
-	md5sums = 561a254caf4436c417c55b41cb14abfc
+	source = nextplayer-1.7.6.AppImage::https://github.com/sudormroot/nextplayer-project/releases/download/nextplayer-bin.linux.1.7.6-1.amd64/nextplayer-bin.linux.1.7.6-1.amd64.AppImage
+	md5sums = 3c153963fca68be2690a87957aedd3e2
 
 pkgname = nextplayer-appimage
 
