@@ -27,26 +27,30 @@ install=anki-sync-server.install
 source=('git+https://github.com/ankicommunity/anki-sync-server')
 md5sums=('SKIP')
 
+_repo_dir="$(basename ${source} | cut -f 1 -d '.')"
+_anki_dir="${_repo_dir}/src"
+_install_dir="/opt/${pkgname%-git}"
+
 pkgver() {
-  cd "${pkgname%-git}"
+  cd "${_repo_dir}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build(){
   #initialize anki-bundled (needed for the server to work)
-  cd "${pkgname%-git}"/anki-bundled && git submodule update --init
+  cd "${_anki_dir}/anki-bundled" && git submodule update --init
 }
 
 prepare() {
   # move plugins and systemd file to src package
-  mkdir -p "${pkgname%-git}/plugins/anki2.0"
-  mkdir -p "${pkgname%-git}/plugins/anki2.1/ankisyncd"
-  mkdir -p "${pkgname%-git}/plugins/systemd"
-  cp ../anki-sync-server.py "${pkgname%-git}/plugins/anki2.0"
-  cp ../__init__.py "${pkgname%-git}/plugins/anki2.1/ankisyncd"
-  cp ../anki-sync-server.service "${pkgname%-git}/plugins/systemd"
+  mkdir -p "${_anki_dir}/plugins/anki2.0"
+  mkdir -p "${_anki_dir}/plugins/anki2.1/ankisyncd"
+  mkdir -p "${_anki_dir}/plugins/systemd"
+  cp ../anki-sync-server.py "${_anki_dir}/plugins/anki2.0"
+  cp ../__init__.py "${_anki_dir}/plugins/anki2.1/ankisyncd"
+  cp ../anki-sync-server.service "${_anki_dir}/plugins/systemd"
 
-  cd "${pkgname%-git}"
+  cd "${_anki_dir}"
   # set plugins to use current ip address as plugins' target address
   sed -i "2s/0\.0\.0\.0/$(ip route get 1.2.3.4 | awk '{print $7}')/" \
   plugins/anki2.0/anki-sync-server.py
@@ -59,14 +63,13 @@ prepare() {
   sed "3s/0\.0\.0\.0/$(ip route get 1.2.3.4 | awk '{print $7}')/" ankisyncd.conf -i
 
   # set user and directory information for systemd service file
-  # the user is going to be named the same thing as the package name
+  # the user is going to be named the same thing as the package name (minus '-git')
   sed "10s/changeme/${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
   sed "11s/changeme/${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
   sed "12s|changeme|/opt/${pkgname%-git}|" plugins/systemd/anki-sync-server.service -i
 }
 
 package() {
-  cd "${pkgname%-git}"
-  mkdir "${pkgdir}"/opt
-  cp -R "${srcdir}/${pkgname%-git}" "${pkgdir}"/opt
+  mkdir -p "${pkgdir}${_install_dir}"
+  cp -R "${srcdir}/${_anki_dir}/." "${pkgdir}${_install_dir}"
 }
