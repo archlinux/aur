@@ -14,7 +14,6 @@ pkgbase = rofi-wayland-git
 	depends = libxdg-basedir
 	depends = pango
 	depends = xcb-util-xrm
-	depends = wayland-wall
 	optdepends = sway: use as application runner
 	optdepends = wlc-wall-injector: injects wall wayland protocol in wlc based compositors
 	optdepends = orbment: use as application runner

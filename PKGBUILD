@@ -13,7 +13,7 @@ pkgdesc="Abandoned code base, try the fork \`rofi-lbonn-wayland-git\`"
 arch=('i686' 'x86_64')
 url="https://davedavenport.github.io/rofi/"
 license=('MIT')
-depends=(freetype2 libxdg-basedir pango xcb-util-xrm wayland-wall)
+depends=(freetype2 libxdg-basedir pango xcb-util-xrm)
 optdepends=('sway: use as application runner'
             'wlc-wall-injector: injects wall wayland protocol in wlc based compositors'
             'orbment: use as application runner')
