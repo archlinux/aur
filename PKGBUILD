@@ -64,7 +64,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.7.12
+pkgver=5.7.13
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -87,13 +87,12 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
   0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
-  0004-drm-amd-display-Clear-dm_state-for-fast-updates.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('7a54cf89d7198d99004495c0e3a25d3af05c5d5b70cccf92237f603d7fa15e08'
+sha256sums=('720cca6928590d6c0757426cf05f0b95cfcbdfede970399ff2d0873d8bc49262'
             'SKIP'
             '6313ccad7f8e4d8ce09dd5bdb51b8dfa124d0034d7097ba47008380a14a84f09'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
@@ -103,8 +102,7 @@ sha256sums=('7a54cf89d7198d99004495c0e3a25d3af05c5d5b70cccf92237f603d7fa15e08'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '06a9861b434f81c0d0f54c6c122df56cf0a730d0eafad888db8804152a7b9ea3'
             'db7f7a86bba9a4959f3e4ab7d1beb51e09099ef8beb638dd4250aa375532b2c2'
-            'df205ac596ad9af28061a7dac833d52b5873882d129079ed57736dd77bbb5f8c'
-            'e9b37c73e0d81b70bc92dec7703549ab5e54f6c1d2b076e2f851e27f0b38e123')
+            'df205ac596ad9af28061a7dac833d52b5873882d129079ed57736dd77bbb5f8c')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

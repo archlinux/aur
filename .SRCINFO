@@ -1,5 +1,5 @@
 pkgbase = linux-ck
-	pkgver = 5.7.12
+	pkgver = 5.7.13
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = linux-ck
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.12.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.12.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.13.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.13.tar.sign
 	source = config
 	source = enable_additional_cpu_optimizations-20200615.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20200615.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.7/5.7-ck1/patch-5.7-ck1.xz
@@ -19,10 +19,9 @@ pkgbase = linux-ck
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = 0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
 	source = 0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
-	source = 0004-drm-amd-display-Clear-dm_state-for-fast-updates.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 7a54cf89d7198d99004495c0e3a25d3af05c5d5b70cccf92237f603d7fa15e08
+	sha256sums = 720cca6928590d6c0757426cf05f0b95cfcbdfede970399ff2d0873d8bc49262
 	sha256sums = SKIP
 	sha256sums = 6313ccad7f8e4d8ce09dd5bdb51b8dfa124d0034d7097ba47008380a14a84f09
 	sha256sums = 278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90
@@ -33,7 +32,6 @@ pkgbase = linux-ck
 	sha256sums = 06a9861b434f81c0d0f54c6c122df56cf0a730d0eafad888db8804152a7b9ea3
 	sha256sums = db7f7a86bba9a4959f3e4ab7d1beb51e09099ef8beb638dd4250aa375532b2c2
 	sha256sums = df205ac596ad9af28061a7dac833d52b5873882d129079ed57736dd77bbb5f8c
-	sha256sums = e9b37c73e0d81b70bc92dec7703549ab5e54f6c1d2b076e2f851e27f0b38e123
 
 pkgname = linux-ck
 	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
@@ -42,11 +40,11 @@ pkgname = linux-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-ck=5.7.12
+	provides = linux-ck=5.7.13
 
 pkgname = linux-ck-headers
 	pkgdesc = Headers and scripts for building modules for Linux-ck kernel
 	depends = linux-ck
-	provides = linux-ck-headers=5.7.12
-	provides = linux-headers=5.7.12
+	provides = linux-ck-headers=5.7.13
+	provides = linux-headers=5.7.13
 
