@@ -6,7 +6,7 @@ _gitname=performance-tweaks
 pkgname=(
     'performance-tweaks'
     )
-pkgver=r13.9a05df8
+pkgver=r14.db7f090
 pkgrel=1
 arch=('any')
 _branch='master'
