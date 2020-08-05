@@ -17,13 +17,13 @@ makedepends=('dbus' 'libical' 'systemd' 'alsa-lib' 'json-c' 'ell')
 optdepends=('ell: for btpclient')
 conflicts=('bluez-hcidump' 'bluez-utils' 'bluez-hcitool')
 provides=('bluez-hcidump' "bluez-utils=${pkgver}" 'bluez-hcitool')
-source=(https://www.kernel.org/pub/linux/bluetooth/"${_pkgbase}-${pkgver}".tar.{xz,sign}
+source=(https://www.kernel.org/pub/linux/bluetooth/"${_pkgbase}-${pkgver}".tar.xz #{xz,sign}
         'refresh_adv_manager_for_non-LE_devices.diff::https://git.archlinux.org/svntogit/packages.git/plain/trunk/refresh_adv_manager_for_non-LE_devices.diff?h=packages/bluez')
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
 sha512sums=('e19d15d3a478a7af47c1921c8827843492e38787b1182152155bd3d8ad9e1d8ee25c5fda1f24e38c54ebbf946b09fe75007dca9a24d1c35f73303558e558dcbe'
-            'SKIP'
+#            'SKIP'
             'c6ef673956963725edc52d667648e51df5b99f820e87705096b4b9338e8a4540722e734f1e8e67998c2fbbefec30645ff1fa064789c8a858f770d1214399561d')
-validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
+#validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"

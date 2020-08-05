@@ -28,11 +28,8 @@ pkgbase = bluez-utils-compat
 	conflicts = bluez-utils
 	conflicts = bluez-hcitool
 	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.54.tar.xz
-	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.54.tar.sign
 	source = refresh_adv_manager_for_non-LE_devices.diff::https://git.archlinux.org/svntogit/packages.git/plain/trunk/refresh_adv_manager_for_non-LE_devices.diff?h=packages/bluez
-	validpgpkeys = E932D120BC2AEC444E558F0106CA9F5D1DCF2659
 	sha512sums = e19d15d3a478a7af47c1921c8827843492e38787b1182152155bd3d8ad9e1d8ee25c5fda1f24e38c54ebbf946b09fe75007dca9a24d1c35f73303558e558dcbe
-	sha512sums = SKIP
 	sha512sums = c6ef673956963725edc52d667648e51df5b99f820e87705096b4b9338e8a4540722e734f1e8e67998c2fbbefec30645ff1fa064789c8a858f770d1214399561d
 
 pkgname = bluez-utils-compat
