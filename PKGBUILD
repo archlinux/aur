@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview58
-pkgver=5.8.0
+pkgver=5.8.1
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -10,8 +10,8 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-
 provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.gz")
-sha256sums=('a6f3bbab3b4cb98beaeae5699e62562330210cddeadcfaa7cce8f9d25bac5e85')
+source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.xz")
+sha256sums=('7653950392a0d7c0287c26f1d3a25cdbaa11baa7524b0af0e6a1a0d7d487d034')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -20,9 +20,6 @@ prepare() {
   curl -L https://gitlab.kitware.com/paraview/paraview/-/commit/3d48a287141eb911b4888440e09c262743b4db3c.patch | patch -p1
   cd VTK
   curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6296.patch | patch -p1
-  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6406.patch | patch -p1
-  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6455.patch | patch -p1
-  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6811.patch | patch -p1
 }
 
 build() {
