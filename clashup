@@ -69,8 +69,7 @@ class ClashUp:
         self._load_conf(config, 'redir_port', 'redir-port')
         self._load_conf(config, 'allow_lan', 'allow-lan')
         self._load_conf(config, 'external_controller', 'external-controller')
-        for rule in self.config.get('custom_rules', []):
-            config['rules'].append(rule)
+        config['rules'] = self.config.get('custom_rules', []) + config.get('rules', [])
         return config
 
     def save(self, config):
