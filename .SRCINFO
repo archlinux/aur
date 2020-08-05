@@ -1,0 +1,12 @@
+pkgbase = xtruss
+	pkgdesc = X11 protocol tracer, akin to strace
+	pkgver = 20181001.82973f5
+	pkgrel = 1
+	url = https://www.chiark.greenend.org.uk/~sgtatham/xtruss/
+	arch = x86_64
+	license = MIT
+	source = https://www.chiark.greenend.org.uk/~sgtatham/xtruss/xtruss-20181001.82973f5.tar.gz
+	sha256sums = edb9589654516544dc055442aa686a7688b332c9c2511ece94280cf6459aa8d6
+
+pkgname = xtruss
+
