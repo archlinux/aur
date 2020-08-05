@@ -16,7 +16,7 @@ source=("https://github.com/mhogomchungu/lxqt_wallet/releases/download/${pkgver}
         "https://github.com/mhogomchungu/lxqt_wallet/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz.asc")
 sha256sums=('17d9832117845e4d7db780a3a8f4bfb07ab08aa7c1384df0b981b3cf6443b930'
             'SKIP')
-validpgpkeys=('3AD67A14194FE8E7AEFCA19C3E1F380427A5D3CA')
+validpgpkeys=('6855E493B5B2DF96E319BB6D16E2E1ACC6F51242')
 
 prepare() {
   cd "$srcdir/${_pkgname}-${pkgver}"
