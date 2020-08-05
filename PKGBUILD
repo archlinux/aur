@@ -8,9 +8,9 @@
 
 pkgname=maple2020
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="A commercial computer algebra system developed and sold commercially by Maplesoft. Version 2020."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url=https://www.maplesoft.com/download/
 license=('custom')
 depends=('ld-lsb')
@@ -21,13 +21,8 @@ source=(maple2020.desktop Maplesoft-x-maple-worksheet.xml)
 sha256sums=('e4cff7025bd62f66b8d2d361da87b2772c5eb86efa985cf286b5b48c02b6bfff'
             'e29ded05d8cda39ae2c8dd2b204c3b47e5c432d75d8e2bde3ddae0b71136b643')
 
-if [[ $CARCH == 'x86_64' ]]; then
-  _arch='X64'
-elif [[ $CARCH == 'i686' ]]; then
-  _arch='X86'
-fi
 
-_mapleInstaller="Maple2020.1Linux${_arch}Installer.run"
+_mapleInstaller="Maple2020.1LinuxX64Installer.run"
 
 build() {
   msg "Searching for installer in \"$startdir\"..."

@@ -1,10 +1,9 @@
 pkgbase = maple2020
 	pkgdesc = A commercial computer algebra system developed and sold commercially by Maplesoft. Version 2020.
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.maplesoft.com/download/
 	install = maple2020.install
-	arch = i686
 	arch = x86_64
 	license = custom
 	depends = ld-lsb
