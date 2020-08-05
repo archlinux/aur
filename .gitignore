@@ -5,6 +5,4 @@ releases
 pkg
 src
 aur
-*.tar.gz
-*.tar.xz
-
+*.tar.*
