@@ -1,6 +1,6 @@
 # Maintainer: Aaron J Graves <linux@ajgraves.com>
 pkgname=criptext-bin
-pkgver=0.30.0
+pkgver=0.30.1
 pkgrel=1
 pkgdesc='Official Criptext encrypted email client'
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=(!strip)
 source=("${pkgname%-bin}-${pkgver}-${pkgrel}.AppImage::https://cdn.criptext.com/Criptext-Email-Desktop/linux/Criptext-${pkgver}.AppImage"
 	"criptext"
 	"LICENSE")
-sha512sums=('b6e310c4030bd9d15f0e8681f7c6f5242b95afe4c4175aafc31f17714b0e2b3e3290f10013ce48ed89b86743705a988ad0af62e34b604d30e987b5d68c02faf8'
+sha512sums=('37f36650e310e20fca453b47f80dfc2f901c11b4f11097b8a05dd9e6cd90c834d4d4bed0ba02be447d5dafa0af65b6b44a41cf8d2f52da7ca0c49e8e2007106c'
 	    '1665c4e992f91c00aab96a39b62c736731727a371c146923cf575d64a7e723f082170f115dc2fe87c6b5510a2f2e0fb12f111e947f6d2da994472d48887a2f5b'
 	    'aee80b1f9f7f4a8a00dcf6e6ce6c41988dcaedc4de19d9d04460cbfb05d99829ffe8f9d038468eabbfba4d65b38e8dbef5ecf5eb8a1b891d9839cda6c48ee957')
 
