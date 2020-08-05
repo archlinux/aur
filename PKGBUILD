@@ -8,16 +8,16 @@ gitname='TauonMusicBox'
 arch=('any')
 license=('GPL3')
 
-pkgver=6.1.0
+pkgver=6.1.2
 pkgrel=1
 
 depends=('python3' 'noto-fonts' 'noto-fonts-extra' 'sdl2_image' 'python-pillow' 'python-pylast' 'python-gobject' 'xdg-utils' 'python-beautifulsoup4' 'python-requests' 'python-cairo' 'python-flask' 'python-setproctitle' 'flac' 'python-musicbrainzngs' 'alsa-plugins' 'gstreamer' 'gst-plugins-base' 'python-dbus' 'python-oauthlib' 'python-six' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'noto-fonts-cjk' 'python-discogs-client' 'python-hsaudiotag3k' 'python-pylyrics' 'python-pypresence' 'python-send2trash' 'python-stagger' 'python-pysdl2')
 
 optdepends=('ffmpeg: File transcoding' 'p7zip: 7z archive extraction support' 'unrar: RAR archive extraction support' 'python-plexapi: PLEX streaming' 'python-tekore: Spotify playback control' 'picard: Tag editing')
 
-source=("git+https://github.com/Taiko2k/TauonMusicBox.git#tag=v$pkgver" "https://files.pythonhosted.org/packages/1e/d3/1491ad4be5f67d89ad83c9fd751f5d6b83d052c1a8ddd994f37ae37b0d9d/isounidecode-0.3.tar.gz" "https://files.pythonhosted.org/packages/fc/52/b4934c036e67b4a58310341e7f47bf9a03cd5d5f654254f695f6ea28b409/tekore-2.1.2.tar.gz")
+source=("git+https://github.com/Taiko2k/TauonMusicBox.git#tag=v$pkgver" "https://files.pythonhosted.org/packages/1e/d3/1491ad4be5f67d89ad83c9fd751f5d6b83d052c1a8ddd994f37ae37b0d9d/isounidecode-0.3.tar.gz")
 
-sha256sums=("SKIP" "4db0a962c6341826c9a69acaabc2f923a5b124d53a335be892ef29173bc31c5b" "7a8537b00bf3a1c9621fec26067b7f3a659ea91a86981cbf99be0b1fd30926c4")
+sha256sums=("SKIP" "4db0a962c6341826c9a69acaabc2f923a5b124d53a335be892ef29173bc31c5b")
 
 
 
@@ -29,9 +29,7 @@ build() {
 package() {
 
   install -dm755 "$pkgdir/opt/$pkgname/isounidecode"
-  install -dm755 "$pkgdir/opt/$pkgname/tekore"
   cp -r "$srcdir/isounidecode-0.3/isounidecode/." "$pkgdir/opt/$pkgname/isounidecode" 
-  cp -r "$srcdir/tekore-2.1.2/tekore/." "$pkgdir/opt/$pkgname/tekore" 
   cp -r "$srcdir/$gitname/." "$pkgdir/opt/$pkgname"
   install -D -m755 "$srcdir/$gitname/extra/tauonmb.desktop" "$pkgdir/usr/share/applications/tauonmb.desktop"
   install -D -m755 "$srcdir/$gitname/extra/tauonmb-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/tauonmb-symbolic.svg"

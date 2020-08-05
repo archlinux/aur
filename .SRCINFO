@@ -1,6 +1,6 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern streamlined music player
-	pkgver = 6.1.0
+	pkgver = 6.1.2
 	pkgrel = 1
 	url = https://github.com/taiko2k/tauonmb
 	arch = any
@@ -43,12 +43,10 @@ pkgbase = tauon-music-box
 	optdepends = python-plexapi: PLEX streaming
 	optdepends = python-tekore: Spotify playback control
 	optdepends = picard: Tag editing
-	source = git+https://github.com/Taiko2k/TauonMusicBox.git#tag=v6.1.0
+	source = git+https://github.com/Taiko2k/TauonMusicBox.git#tag=v6.1.2
 	source = https://files.pythonhosted.org/packages/1e/d3/1491ad4be5f67d89ad83c9fd751f5d6b83d052c1a8ddd994f37ae37b0d9d/isounidecode-0.3.tar.gz
-	source = https://files.pythonhosted.org/packages/fc/52/b4934c036e67b4a58310341e7f47bf9a03cd5d5f654254f695f6ea28b409/tekore-2.1.2.tar.gz
 	sha256sums = SKIP
 	sha256sums = 4db0a962c6341826c9a69acaabc2f923a5b124d53a335be892ef29173bc31c5b
-	sha256sums = 7a8537b00bf3a1c9621fec26067b7f3a659ea91a86981cbf99be0b1fd30926c4
 
 pkgname = tauon-music-box
 
