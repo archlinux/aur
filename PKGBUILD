@@ -1,8 +1,8 @@
 # Maintainer: Megumi_fox <i@megumifox.com>
 
 pkgname=qliveplayer-git
-pkgver=3.3.0.r0.g5c898b5
-pkgrel=2
+pkgver=3.14.0.r0.g7ef89cf
+pkgrel=1
 pkgdesc='Cute and useful Live Stream Player with danmaku support.'
 arch=('x86_64')
 url="https://github.com/IsoaSFlus/QLivePlayer"
@@ -21,7 +21,6 @@ makedepends=('cmake'
              'extra-cmake-modules' )
 source=(
     "QLivePlayer::git+https://github.com/IsoaSFlus/QLivePlayer.git"
-    "qliveplayer.desktop"
 )
 
 pkgver() {
@@ -29,8 +28,7 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-sha256sums=('SKIP'
-            '50d922dc6454f3b589d410de8a6468b300412aa3eb0297cb18242b97a0118ee4')
+sha256sums=('SKIP')
 
 build() {
     cd $srcdir/QLivePlayer
@@ -43,7 +41,4 @@ build() {
 package() {
     cd $srcdir/QLivePlayer/build
     make install
-
-    install -d "$pkgdir/usr/share/applications"
-    install -m644 "$srcdir/qliveplayer.desktop" "$pkgdir/usr/share/applications/qliveplayer.desktop"
 }

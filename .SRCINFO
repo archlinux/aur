@@ -1,7 +1,7 @@
 pkgbase = qliveplayer-git
 	pkgdesc = Cute and useful Live Stream Player with danmaku support.
-	pkgver = 3.3.0.r0.g5c898b5
-	pkgrel = 2
+	pkgver = 3.14.0.r0.g7ef89cf
+	pkgrel = 1
 	url = https://github.com/IsoaSFlus/QLivePlayer
 	arch = x86_64
 	license = GPL2
@@ -18,9 +18,7 @@ pkgbase = qliveplayer-git
 	depends = python
 	depends = ykdl-git
 	source = QLivePlayer::git+https://github.com/IsoaSFlus/QLivePlayer.git
-	source = qliveplayer.desktop
 	sha256sums = SKIP
-	sha256sums = 50d922dc6454f3b589d410de8a6468b300412aa3eb0297cb18242b97a0118ee4
 
 pkgname = qliveplayer-git
 
