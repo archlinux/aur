@@ -37,6 +37,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
+    make DESTDIR="$pkgdir/" gen
     make DESTDIR="$pkgdir/"
 }
 
