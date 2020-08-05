@@ -1,4 +1,9 @@
-pkg
-src
-*.pkg.tar.xz
-*.tar.gz
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!solarwallet-appimage.desktop
+!solarwallet-appimage.sh

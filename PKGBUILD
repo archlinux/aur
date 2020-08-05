@@ -4,7 +4,7 @@ pkgname=solarwallet-appimage
 _pkgname=solarwallet
 _githubname=solar
 pkgver=0.25.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Wallet for the Stellar payment network by SatoshiPay (AppImage)"
 arch=('x86_64')
 url='https://solarwallet.io/'
@@ -12,11 +12,10 @@ license=('MIT')
 makedepends=('npm')
 provides=('solarwallet')
 conflicts=('solarwallet')
-options=(!strip)
-source=("https://github.com/satoshipay/$_githubname/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/satoshipay/$_githubname/archive/v$pkgver.tar.gz"
 	"$pkgname.sh"
 	"$pkgname.desktop")
-sha256sums=('19d4b8f5f35b992424caaaa1bff346ba8e806b7493a6839d7475170e7c79f4e8'
+sha256sums=('dd8f22d4913c41e191eba5812892974913af0fc7e27839c7e0dff4c010566429'
             'ed2e309b16b78b82896331cacb12382c1cd7ca2327884a9a1a4d6320e7044ab7'
             'f651916474463e95ce114b2298bd452c08db389fab30901cadcd86d3b3613f85')
 
