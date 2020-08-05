@@ -1,12 +1,12 @@
 pkgbase = fblog
 	pkgdesc = command-line JSON Log viewer
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/brocode/fblog
 	arch = x86_64
 	license = WTFPL
-	source = https://github.com/brocode/fblog/releases/download/v2.0.1/fblog
-	sha256sums = f867d9646a422b2a0b8f81bdc5c6b06cbefa4d7f6ec164523abbd9a15062efa9
+	source = https://github.com/brocode/fblog/releases/download/v2.1.0/fblog
+	sha256sums = 12f27c189b3787cfa1980b8823409acfd2dc20c5a54d624bf9ce677787150da5
 
 pkgname = fblog
 
