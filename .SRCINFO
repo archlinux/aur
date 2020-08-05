@@ -1,6 +1,6 @@
 pkgbase = linode-cli
 	pkgdesc = Linode API wrapper
-	pkgver = 2.16.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/linode/linode-cli
 	install = linode-cli.install
@@ -18,9 +18,9 @@ pkgbase = linode-cli
 	depends = python2-yaml
 	depends = python2-enum34
 	replaces = linode-cli-dev
-	source = linode-cli-2.16.0.tar.gz::https://github.com/linode/linode-cli/archive/2.16.0.tar.gz
+	source = linode-cli-3.0.0.tar.gz::https://github.com/linode/linode-cli/archive/3.0.0.tar.gz
 	source = enum34-extra-requires.patch
-	sha256sums = 815259de88814ca64c6fdd5054ca54352880d28fda79b8407a16ef98543e9aa9
+	sha256sums = 4c1b7954454bff6143de099f818e5edafbd286931f069c3884d78c8f90c9491d
 	sha256sums = 3c05e163748ec607c3f6d62587e04911af2e593e25635c7acef39cd2d03f9f2e
 
 pkgname = linode-cli
