@@ -1,8 +1,8 @@
-# Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
+# Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="nojava-ipmi-kvm-podman"
 pkgver="0.8.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A tool to access Java based ipmi kvm consoles without a local Java installation (Podman dependency)."
 arch=("x86_64")
 url="https://github.com/sciapp/nojava-ipmi-kvm"
