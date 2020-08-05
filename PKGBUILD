@@ -1,15 +1,15 @@
-# Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
+# Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="git-clog"
 pkgver="0.2.5"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A tool to colorize the commit graph of a Git repository by interpreting the first six commit hash digits as an RGB color value."
 arch=("any")
-url="https://github.com/IngoHeimbach/git-clog"
+url="https://github.com/IngoMeyer441/git-clog"
 license=("MIT")
 depends=("python")
 makedepends=("python-setuptools")
-source=("https://github.com/IngoHeimbach/git-clog/archive/v${pkgver}.tar.gz")
+source=("https://github.com/IngoMeyer441/git-clog/archive/v${pkgver}.tar.gz")
 sha256sums=("74199a3e7f87ffaf3229a0b46bf594707932231aaae8588344a64d47c892b5dc")
 
 build() {
