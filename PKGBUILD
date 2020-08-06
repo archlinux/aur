@@ -2,17 +2,17 @@
 
 _rockname=commonmark
 _project=$_rockname-lua
-pkgname=("lua-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
+pkgname=("lua-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
 pkgver=0.0.0.r12.ge71d851
 _branch='master'
 _rockrel=0
-pkgrel=3
+pkgrel=4
 pkgdesc='Lua parser for CommonMark using LPEG grammar'
 arch=('any')
 url="https://github.com/alerque/$_project"
 license=('MIT')
 _lua_deps=('luaepnf' 'penlight')
-makedepends=('git' 'lua' 'lua52' 'lua51' 'luarocks')
+makedepends=('git' 'lua' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("git+$url.git#branch=$_branch")
 sha256sums=('SKIP')
 
@@ -29,6 +29,13 @@ _package_helper() {
 
 package_lua-commonmark-git() {
   depends=('lua' "${_lua_deps[@]/#/lua-}")
+  provides=("${pkgname/-git}")
+  conflicts=("${pkgname/-git}")
+  _package_helper 5.4
+}
+
+package_lua53-commonmark-git() {
+  depends=('lua53' "${_lua_deps[@]/#/lua53-}")
   provides=("${pkgname/-git}")
   conflicts=("${pkgname/-git}")
   _package_helper 5.3

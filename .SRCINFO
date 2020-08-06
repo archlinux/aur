@@ -1,12 +1,13 @@
 pkgbase = lua-commonmark-git
 	pkgdesc = Lua parser for CommonMark using LPEG grammar
 	pkgver = 0.0.0.r12.ge71d851
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/alerque/commonmark-lua
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
@@ -19,6 +20,13 @@ pkgname = lua-commonmark-git
 	depends = lua-penlight
 	provides = lua-commonmark
 	conflicts = lua-commonmark
+
+pkgname = lua53-commonmark-git
+	depends = lua53
+	depends = lua53-luaepnf
+	depends = lua53-penlight
+	provides = lua53-commonmark
+	conflicts = lua53-commonmark
 
 pkgname = lua52-commonmark-git
 	depends = lua52
