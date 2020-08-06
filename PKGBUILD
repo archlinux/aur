@@ -1,5 +1,5 @@
 pkgname="mcreator"
-pkgver="2020.4”
+pkgver="2020.4"
 pkgrel=1
 arch=('x86_64')
 pkgdesc="MCreator is a software used to make Minecraft mods and data packs using intuitive easy-to-learn interface or with an integrated code editor. It is used worldwide by Minecraft players, aspiring mod developers, for education and by STEM workshops."
