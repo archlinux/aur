@@ -24,7 +24,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 
-pkgver=7.4.6
+pkgver=7.4.9
 pkgrel=1
 arch=('x86_64')
 license=('PHP')
@@ -36,14 +36,14 @@ checkdepends=('procps-ng')
 source=("https://php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
         'apache.patch' 'apache.conf' 'php-fpm.patch' 'php-fpm.tmpfiles' 'php.ini.patch'
         'enchant-2.patch')
-sha256sums=('d740322f84f63019622b9f369d64ea5ab676547d2bdcf12be77a5a4cffd06832'
+sha512sums=('6179c2d867d6775d7f41785003c36d06ce620e7746ea7e6a4d275264e814a66d465776b47b04e2926ed1228cf58f2c15cdda74faf10372435c74ede7aeb79e18'
             'SKIP'
-            '537e6f9f8879de2ba021b5efcaf759fccebd0e7b506d03a7ce973a5f3a482219'
-            '80c00b40b0de794d87fb0183cdce2f3c93869c849f7534e8ced42ca6c625f2f7'
-            '565a743a0a9d4775f8e22b70a455729b023cc90db06c0251adef6ebbe604d53a'
-            '640dba0d960bfeaae9ad38d2826d3f6b5d6c175a4d3e16664eefff29141faad5'
-            'f2040cc0648a395d0a84984dd6bf7aadf9f569b58838c666d84898bc4578fe04'
-            'd94d22ad8bcd13829addda84e9de6b73fa04be9bc6da8622086c7e19c97ab724')
+            'e73b424e436be79cab5bf248ee74f533cb1f3a7b26a2213a084f998a7de65dc1ca0d0d0f7921a6254883b68262956c896a60dcbc1d4177c66ce1fb57ca170045'
+            '62ab40a15358802c87fa1c3af3248eeaba78732778c518c3f258e3c6a1dfdf420e90320c41a129162c66933e022d1294c454f29953873ff65faba6a36c5b8d0d'
+            '86ee6630bf0cac43bbf5a4b3918e63f32e01e74ac00845ebba2d122e14300bb47b41af17d88dfbf655b3a03966f5619b87b6f1ad8623e22482fe46be273309cb'
+            '824e9a0d10063283357d49a81ab49bf834afd24f098482bdbaa9ab60bbad2b0dea6f5879259b73717d437626b02fb4f2d3ef68b7bcbb26bee274a7b61144720f'
+            'a924bfece3d57286dce44f0173dd856184e7a1c1de5e880229c7dac0874efde52090af155932614f2594eebba118f8b89ac48e48d1161e7b3d8a95a93a24fe5d'
+            '5d7d44d692848fbb952e17e5bd6dffa79b764526e4940fbe0a5138ad62cb41abdb8c9bb8dd64cd1d0b488c74972bcf3f9c6d32a3bbeac90982fdf6321d3ec788')
 validpgpkeys=('5A52880781F755608BF815FC910DEB46F53EA312'
               '42670A7FE4D0441C8E4632349E4FDC074A4EF02D')
 
