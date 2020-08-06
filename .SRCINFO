@@ -1,0 +1,14 @@
+pkgbase = tinyobjloader
+	pkgdesc = Tiny but powerful single file wavefront obj loader
+	pkgver = 2.0.0rc6
+	pkgrel = 1
+	url = https://github.com/tinyobjloader/tinyobjloader
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = gcc-libs
+	source = tinyobjloader-2.0.0rc6.tar.gz::https://github.com/tinyobjloader/tinyobjloader/archive/v2.0.0rc6.tar.gz
+	sha256sums = c543771c49ce4bbd6df635e03964339cd94b53233d4e865f8c03ca081d52bab0
+
+pkgname = tinyobjloader
+
