@@ -1,11 +1,12 @@
 pkgbase = lua-say
 	pkgdesc = Lua String Hashing/Indexing Library
 	pkgver = 1.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Olivine-Labs/say
 	arch = any
 	license = MIT
 	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
@@ -14,6 +15,9 @@ pkgbase = lua-say
 
 pkgname = lua-say
 	depends = lua
+
+pkgname = lua53-say
+	depends = lua53
 
 pkgname = lua52-say
 	depends = lua52

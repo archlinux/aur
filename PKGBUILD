@@ -1,15 +1,15 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=say
-pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=1.3
 _rockrel=1
-pkgrel=5
+pkgrel=6
 pkgdesc='Lua String Hashing/Indexing Library'
 arch=('any')
 url="https://github.com/Olivine-Labs/$_rockname"
 license=('MIT')
-makedepends=('lua' 'lua52' 'lua51' 'luarocks')
+makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("$_rockname-$pkgver.tar.gz::$url/archive/v$pkgver-$_rockrel.tar.gz")
 sha256sums=('23e8cd378bb4ab1693279100a785acb2246418e3570b7de7d995b5847b3507ca')
 
@@ -21,6 +21,11 @@ _package_helper() {
 
 package_lua-say() {
   depends+=('lua')
+  _package_helper 5.4
+}
+
+package_lua53-say() {
+  depends+=('lua53')
   _package_helper 5.3
 }
 
