@@ -1,15 +1,15 @@
 pkgbase = intellij-idea-ce
 	pkgdesc = Intellij Idea IDE (community version) with Intellij JDK
-	pkgver = 2020.1.4
-	pkgrel = 3
+	pkgver = 2020.2
+	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
 	license = Apache2
 	depends = giflib
 	depends = libxtst
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIC-2020.1.4.tar.gz
-	md5sums = 814a849b685c968d834e33ae7e996675
+	source = https://download.jetbrains.com/idea/ideaIC-2020.2.tar.gz
+	md5sums = 57f70ced0fd644be9521b138ba6596c6
 
 pkgname = intellij-idea-ce
 
