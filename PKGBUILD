@@ -7,7 +7,7 @@ pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
 url='https://www.tarantool.org'
 license=(BSD)
-depends=(readline ncurses zlib libyaml openssl libunwind curl icu)
+depends=(readline ncurses zlib libyaml openssl libunwind icu)
 makedepends=(git cmake systemd)
 checkdepends=(python2-gevent python2-tarantool)
 source=(git+https://github.com/tarantool/tarantool.git#tag=$pkgver
@@ -69,7 +69,7 @@ build() {
     -DCMAKE_INSTALL_BINDIR=/usr/bin \
     -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=ReleaseWithDebInfo \
     -DCMAKE_SKIP_RPATH=ON \
     -DENABLE_BACKTRACE:BOOL=ON \
     -DWITH_SYSTEMD:BOOL=ON \
