@@ -1,7 +1,7 @@
 # Maintainer: Ben Green <ben@greendalba.com>
 
 pkgname=brother-mfc8860dn-lpr-bin
-pkgver=0.0.1
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="LPR driver for Brother MFC-8860DN printer"
 arch=("i686" "x86_64")
