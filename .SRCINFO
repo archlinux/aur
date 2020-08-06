@@ -2,14 +2,14 @@ pkgbase = dmenu-supermario9590-git
 	pkgdesc = This is my personal build of dmenu that is patched for fonts, centering, borders, etc.
 	pkgver = 4.9.r572.9b38fda
 	pkgrel = 1
-	url = https://www.github.com/supermario9590/dmenu-supermario9590.git
+	url = https://www.gitlab.com/supermario9590/dmenu-supermario9590.git
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = git
 	provides = dmenu
 	conflicts = dmenu
-	source = git+https://www.github.com/supermario9590/dmenu-supermario9590.git
+	source = git+https://www.gitlab.com/supermario9590/dmenu-supermario9590.git
 	md5sums = SKIP
 
 pkgname = dmenu-supermario9590-git
