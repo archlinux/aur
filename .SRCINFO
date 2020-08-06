@@ -1,18 +1,40 @@
 pkgbase = lua-cosmo-git
 	pkgdesc = Safe templates for Lua
-	pkgver = 9.02.22.r35.ge774f08
+	pkgver = 16.06.04.r3.ge774f08
 	pkgrel = 1
 	url = http://cosmo.luaforge.net/
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = lua
+	makedepends = lua53
+	makedepends = lua52
+	makedepends = lua51
 	makedepends = luarocks
+	source = git+https://github.com/mascarenhas/cosmo.git
+	sha256sums = SKIP
+
+pkgname = lua-cosmo-git
 	depends = lua
 	depends = lua-lpeg
 	provides = lua-cosmo
 	conflicts = lua-cosmo
-	source = git+https://github.com/mascarenhas/cosmo.git
-	md5sums = SKIP
 
-pkgname = lua-cosmo-git
+pkgname = lua53-cosmo-git
+	depends = lua53
+	depends = lua53-lpeg
+	provides = lua53-cosmo
+	conflicts = lua53-cosmo
+
+pkgname = lua52-cosmo-git
+	depends = lua52
+	depends = lua52-lpeg
+	provides = lua52-cosmo
+	conflicts = lua52-cosmo
+
+pkgname = lua51-cosmo-git
+	depends = lua51
+	depends = lua51-lpeg
+	provides = lua51-cosmo
+	conflicts = lua51-cosmo
 
