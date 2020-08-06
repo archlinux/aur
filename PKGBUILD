@@ -27,7 +27,6 @@ md5sums=("f1de14bebd78fefe39414cf95f4f2dfa")
 validpgpkeys=()
 
 package() {
-    cd $PWD
 	install -D glab "${pkgdir}/usr/bin/glab"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
