@@ -25,7 +25,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --without-python --without-php
+	./configure --prefix=/usr --without-python --without-php --without-libgif --without-openexr
 	make
 }
 
