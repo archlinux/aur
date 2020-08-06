@@ -16,7 +16,7 @@ optdepends=('python-nautilus: Arronax as Nautilus extension'
 
 source=(https://launchpad.net/~diesch/+archive/ubuntu/stable/+sourcefiles/arronax/$pkgver/arronax_$pkgver.tar.xz)
 
-md5sums=('f8a61c58ff5b4a27b9f1ba0c5593e81c')
+md5sums=('1dd0c0053e4bffd29c2ce07e22a371fc')
 
 prepare() {
   # Fix icon location

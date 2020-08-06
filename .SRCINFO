@@ -13,7 +13,7 @@ pkgbase = arronax
 	optdepends = python-caja: Arronax as Caja extension
 	optdepends = nemo-python: Arronax as Nemo extension
 	source = https://launchpad.net/~diesch/+archive/ubuntu/stable/+sourcefiles/arronax/0.7.2/arronax_0.7.2.tar.xz
-	md5sums = f8a61c58ff5b4a27b9f1ba0c5593e81c
+	md5sums = 1dd0c0053e4bffd29c2ce07e22a371fc
 
 pkgname = arronax
 
