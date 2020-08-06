@@ -1,7 +1,7 @@
 pkgbase = picom-jonaburg-git
 	pkgdesc = jonaburg's picom fork with tryone144's dual_kawase blur and ibhagwan's rounded corners, an X compositor (compton's fork)
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonaburg/picom
 	arch = i686
 	arch = x86_64
