@@ -3,7 +3,7 @@
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
 pkgver=5.8.zen1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux ZEN with patch for Zephyrus G14 (GA401IV)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -22,6 +22,7 @@ source=(
   i8042.patch
   asus-nb-wmi.patch
   asus-n-key-keyboard.patch
+  amdgpu-backlight.patch
   "https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.8.patch"
 )
 validpgpkeys=(
@@ -34,6 +35,7 @@ sha256sums=('SKIP'
             '2273fae30f712aa554dd10294a072b4934265b56e6146493a07c22c7df4af61d'
             'ac8d8a0d54ad79e44f25b255bfecc80d190502e1173df18b091f53e9882d4ac8'
             'fdea6ab1672ea4758359e9c6e743aba56f33224c5d759852817a01af5974fd4b'
+            '7573ea16b7a54aba6b7b160051c1efa4fc3471c341a27bcfcc60e0ba832e409d'
             '0389c65d8357f8b22f65aceaf9ceda5a3c76e60ca34f713ff9a09ec379f51dc7')
 
 export KBUILD_BUILD_HOST=archlinux
