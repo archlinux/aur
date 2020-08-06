@@ -1,0 +1,18 @@
+pkgbase = httpobs-git
+	pkgdesc = A command line tool to scan your website
+	pkgver = r650.b267848
+	pkgrel = 1
+	url = https://github.com/mozilla/http-observatory
+	arch = any
+	license = custom:MPL2
+	makedepends = python-setuptools
+	depends = python-celery
+	depends = python-beautifulsoup4
+	depends = python-publicsuffixlist
+	provides = httpobs
+	conflicts = httpobs
+	source = httpobs::git+https://github.com/mozilla/http-observatory
+	sha256sums = SKIP
+
+pkgname = httpobs-git
+
