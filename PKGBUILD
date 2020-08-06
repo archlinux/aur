@@ -3,7 +3,7 @@
 # Contributor: Jian Zeng <anonymousknight96@gmail.com>
 # Contributor: Xuanwo <xuanwo@archlinuxcn.org>
 pkgbase=tidb-bin
-_basever=4.0.0
+_basever=4.0.4
 #_relver=-prega
 #pkgver=$_basever.$_relver
 pkgver=$_basever
@@ -29,7 +29,7 @@ source=("https://download.pingcap.org/tidb-v$_basever$_relver-linux-amd64.tar.gz
         pd.toml
         tidb.toml
         tikv.toml)
-sha256sums=('cf916cc4a9b9d82e7f042c4dc3384a7439164998f7467f56f230e32f4664cb95'
+sha256sums=('080f07eb1230b915b2bc9ad3e78a7afdf01998ee33e0b4dbc94c830798852f65'
             'b03d12f2f8d6eb2e9d654d6258ca39000225cdf1418840f7e35081631bc4d924'
             '22318c19bb89ff5a0852df5186cc1496214cd49f2264192413a326d1e8c93dc9'
             '870b8eaf83bc0d22b05b0f3a7890660e483cf77bb1d84bc50ad04fb23068cd8c'
