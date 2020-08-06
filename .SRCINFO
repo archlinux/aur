@@ -7,6 +7,7 @@ pkgbase = desq-settings-git
 	groups = desq-git
 	license = none
 	makedepends = git
+	makedepends = cmake
 	depends = qt5-base
 	depends = qt5-quickcontrols2
 	provides = desq-settings
