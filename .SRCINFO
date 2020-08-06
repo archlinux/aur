@@ -1,0 +1,32 @@
+pkgbase = protobuf-git
+	pkgdesc = Google's data interchange format
+	pkgver = 3.12.3.r112.g36d39a026
+	pkgrel = 1
+	url = https://developers.google.com/protocol-buffers/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = unzip
+	source = git+https://github.com/protocolbuffers/protobuf.git
+	sha256sums = SKIP
+
+pkgname = protobuf-git
+	depends = gcc-libs
+	depends = zlib
+	provides = protobuf
+	provides = libprotoc.so
+	provides = libprotobuf.so
+	provides = libprotobuf-lite.so
+	conflicts = protobuf
+	options = staticlibs
+
+pkgname = python-protobuf-git
+	pkgdesc = Python 3 bindings for Google Protocol Buffers
+	depends = protobuf-git
+	depends = python
+	depends = python-six
+	provides = python-protobuf
+	conflicts = python-protobuf
+
