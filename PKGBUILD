@@ -2,7 +2,7 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz [at] gmail [dot] com>
 
 pkgname=bootstrap
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="Open source toolkit for developing with HTML, CSS, and JS"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('jquery>=3.5.1: for JavaScript plugin support')
 install=bootstrap.install
 source=("https://github.com/twbs/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-dist.zip"
 	"LICENSE")
-sha256sums=('ca5a1a3e067dfd7090952e9d08668473c25982c9a7c8a2da7348a911b515a0a5'
+sha256sums=('efab99998f5640d4112e99f0ce81b772ae74dc9e661506b2a33ee5e80edc790d'
             '9b2ce2d9793f14f0fb1a77ce64961acc1157fb25858156c47139491107970acb')
 
 package() {
