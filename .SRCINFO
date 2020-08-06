@@ -1,6 +1,6 @@
 pkgbase = lua-mtstates
 	pkgdesc = This package provides a way to create new Lua states from within Lua for using them in arbitrary threads
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/osch/lua-mtstates#mtstates
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = lua-mtstates
 	license = MIT
 	makedepends = luarocks
 	depends = lua
-	source = https://github.com/osch/lua-mtstates/archive/v0.4.1.tar.gz
-	md5sums = 19f917c13d08bb5272d92c9a56ec77be
+	source = https://github.com/osch/lua-mtstates/archive/v0.4.2.tar.gz
+	md5sums = f8d92ba4830517808291a5c8b81a7f73
 
 pkgname = lua-mtstates
 
