@@ -4,7 +4,7 @@
 pkgbase=sia
 pkgname=('siac' 'siad')
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Decentralized storage for the post-cloud world'
 arch=('x86_64')
 makedepends=('git' 'go')
@@ -20,7 +20,6 @@ build() {
   export GOPATH="$srcdir"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   
-  make dependencies
   make release
 }
 
