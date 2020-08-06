@@ -1,12 +1,11 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=xtables-geoip-db
-pkgver=2.0
-pkgrel=6
+pkgver=2.1
+pkgrel=1
 pkgdesc="GeoIP Database for xtables"
 arch=('any')
 license=('BSD' 'GPL')
 makedepends=('perl-text-csv-xs' 'perl-net-cidr-lite')
-_xtver=3.9
 _geoip_date=`date +%Y-%m`
 
 # if you want to use MaxMind DB instead of DB-IP then, get license key from
@@ -26,21 +25,20 @@ else
     _dbsource="MaxMind GeoLite2"
     _dblink="https://www.maxmind.com"
 fi
-source+=("xt_geoip_build-${_xtver}::https://sourceforge.net/p/xtables-addons/xtables-addons/ci/v${_xtver}/tree/geoip/xt_geoip_build?format=raw"
-        "README"
-        "mmcsv_geoip_build")
+source+=('README'
+         'xt_geoip_build'
+         'mmcsv_geoip_build')
 sha256sums=('SKIP'
-            '6bd72c83973a104481c1bdfb634916ca1c446924d1307e69088702dfe77b7dcf'
             'bd1dbbacdde0c6b63b15c00a9b3cecada7c95bbd72cd2f7a336106fce53cddbd'
-            '216cb5a8c018c9db1cbff6b8a788d71d08f1d23dbb4ae60d318fc62fab1a2b46')
+            'd47c67f8126915ef4f326befa3b3b50903e335efdc52967a401e17749b7b92bd'
+            'beebf34ac2138e8916eb31450b50d693b174fe2f54626d8a858521b7391cbefc')
 
 package() {
     echo Using ${_dbsource} GeoIP database
     install -d -m 755 "${pkgdir}"/usr/share/xt_geoip
     if [[ -z "${_maxmind_key}" ]]; then
         cd "${srcdir}"
-        ln -s dbip-country-lite-${_geoip_date}.csv dbip-country-lite.csv
-        perl "${srcdir}"/xt_geoip_build-${_xtver} -D "${pkgdir}"/usr/share/xt_geoip
+        perl "${srcdir}"/xt_geoip_build -D "${pkgdir}"/usr/share/xt_geoip -i dbip-country-lite-${_geoip_date}.csv
     else
         cd "${srcdir}"/GeoLite2-Country-CSV_*
         perl "${srcdir}"/mmcsv_geoip_build -D "${pkgdir}"/usr/share/xt_geoip

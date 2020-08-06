@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+#	Source: https://sourceforge.net/p/xtables-addons/xtables-addons/ci/v3.7/tree/geoip/xt_geoip_build?format=raw
 #
 #	Converter for MaxMind (GeoLite2) CSV database to binary, for xt_geoip
 #	Copyright Jan Engelhardt, 2008-2011
