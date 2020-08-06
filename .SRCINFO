@@ -12,9 +12,11 @@ pkgbase = libcd
 	makedepends = lua
 	makedepends = lua51
 	makedepends = lua52
+	makedepends = lua53
 	makedepends = lua-im
 	makedepends = lua51-im
 	makedepends = lua52-im
+	makedepends = lua53-im
 	source = https://downloads.sourceforge.net/project/canvasdraw/5.14/Docs%20and%20Sources/cd-5.14_Sources.tar.gz
 	source = https://downloads.sourceforge.net/project/canvasdraw/5.14/Docs%20and%20Sources/ftgl-2.1.5_Sources.tar.gz
 	source = https://downloads.sourceforge.net/project/canvasdraw/5.14/Docs%20and%20Sources/cd-5.14_Docs.pdf
@@ -30,7 +32,7 @@ pkgname = libcd
 	depends = gtk3
 
 pkgname = lua-cd
-	pkgdesc = Lua (5.3) bindings for Canvas Draw library
+	pkgdesc = Lua (5.4) bindings for Canvas Draw library
 	depends = libcd
 
 pkgname = lua51-cd
@@ -39,5 +41,9 @@ pkgname = lua51-cd
 
 pkgname = lua52-cd
 	pkgdesc = Lua (5.2) bindings for Canvas Draw library
+	depends = libcd
+
+pkgname = lua53-cd
+	pkgdesc = Lua (5.3) bindings for Canvas Draw library
 	depends = libcd
 

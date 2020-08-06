@@ -3,13 +3,13 @@
 # Contributor: Karro <karolina.lindqvist@kramnet.se>
 
 pkgbase=libcd
-pkgname=('libcd' 'lua-cd' 'lua51-cd' 'lua52-cd')
+pkgname=('libcd' 'lua-cd' 'lua51-cd' 'lua52-cd' 'lua53-cd')
 pkgdesc="Canvas Draw - 2D vector graphics library"
 pkgver=5.14
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://www.tecgraf.puc-rio.br/cd/"
-makedepends=('glu' 'pdflib-lite' 'lsb-release' 'lua' 'lua51' 'lua52' 'lua-im' 'lua51-im' 'lua52-im')
+makedepends=('glu' 'pdflib-lite' 'lsb-release' 'lua' 'lua51' 'lua52' 'lua53' 'lua-im' 'lua51-im' 'lua52-im' 'lua53-im')
 license=('MIT')
 _ftglver=2.1.5
 source=(
@@ -44,12 +44,21 @@ build() {
     USE_FTGL=Yes \
     USE_GTK3=Yes
 
+  echo 'Building Lua 5.4 bindings'
+  make cdlua5 cdluapdf5 cdluagl5 cdluacontextplus5 cdluaim5 \
+    STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.4,--enable-new-dtags,--as-needed" \
+    IM_INC=/usr/include/im \
+    IM_LIB=/usr/lib \
+    IMLUA_LIB=/usr/lib/lua/5.4 \
+    USE_LUA54=Yes
+
   echo 'Building Lua 5.3 bindings'
   make cdlua5 cdluapdf5 cdluagl5 cdluacontextplus5 cdluaim5 \
     STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.3,--enable-new-dtags,--as-needed" \
     IM_INC=/usr/include/im \
     IM_LIB=/usr/lib \
     IMLUA_LIB=/usr/lib/lua/5.3 \
+    LUA_INC=/usr/include/lua5.3 \
     USE_LUA53=Yes
 
   echo 'Building Lua 5.2 bindings'
@@ -87,7 +96,7 @@ package_libcd() {
 }
 
 _lua_cd_package_helper() {
-  # $1 ... Lua version ("5.1", "5.2" or "5.3")
+  # $1 ... Lua version ("5.1", "5.2", "5.3" or "5.4")
 
   _lua_ver=$1
   _lua_ver_nodot=`echo $1 | cut -c1,3`
@@ -110,6 +119,13 @@ _lua_cd_package_helper() {
 }
 
 package_lua-cd() {
+  pkgdesc="Lua (5.4) bindings for Canvas Draw library"
+  depends=('libcd')
+
+  _lua_cd_package_helper "5.4"
+}
+
+package_lua53-cd() {
   pkgdesc="Lua (5.3) bindings for Canvas Draw library"
   depends=('libcd')
 
