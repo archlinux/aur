@@ -1,0 +1,18 @@
+pkgbase = python-hatchet
+	pkgdesc = A Python library for analyzing hierarchical performance data
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/LLNL/hatchet
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-pandas
+	provides = python-hatchet
+	conflicts = python-hatchet
+	source = https://files.pythonhosted.org/packages/fc/69/4096a7804d59906fe7740d297a88252ac92fbd5e8168dc05e12c9f8eb490/hatchet-1.2.0.tar.gz
+	md5sums = 07bbf1ad42c76f289ffa335e98620381
+
+pkgname = python-hatchet
+
