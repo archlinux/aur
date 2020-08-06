@@ -2,8 +2,8 @@
 
 pkgorg='loco-3d'
 pkgname=('crocoddyl' 'crocoddyl-docs')
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="optimal control library for robot control under contact sequence"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -25,15 +25,16 @@ build() {
     make
 }
 
-check() {
-    cd "$pkgbase-$pkgver/build"
-    make test
-}
+#check() {
+    #cd "$pkgbase-$pkgver/build"
+    #make test
+#}
 
 package_crocoddyl() {
     cd "$pkgbase-$pkgver/build"
     make DESTDIR="$pkgdir/" install
     rm -rf $pkgdir/usr/share/doc
+    sed -i '/Boost COMPONENTS/s/python3//' "$pkgdir/usr/lib/cmake/crocoddyl/crocoddylConfig.cmake"
     install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
