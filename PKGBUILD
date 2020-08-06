@@ -5,7 +5,7 @@
 
 pkgbase=libim
 pkgname=('libim' 'lua-im' 'lua51-im' 'lua52-im')
-pkgver=3.14
+pkgver=3.15
 pkgrel=1
 pkgdesc="Toolkit for digital imaging"
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ source=(
   "https://downloads.sourceforge.net/project/imtoolkit/${pkgver}/Docs%20and%20Sources/im-${pkgver}_Sources.tar.gz"
   "https://downloads.sourceforge.net/project/imtoolkit/${pkgver}/Docs%20and%20Sources/im-${pkgver}_Docs.pdf"
 )
-md5sums=('39b5d9e61d39e26518b254a378c8b565'
-         '5619743484e0eb77ad475306952a8ac3')
+md5sums=('fa31b3174b7940bde1452ac909eb9c52'
+         '794196d4e6d48e3257d7357d7ea62f94')
 noextract=(im-${pkgver}_Sources.tar.gz)
 
 prepare() {
@@ -27,21 +27,21 @@ prepare() {
 build() {
   cd "$srcdir"/im/src
   msg2 'Building libim without Lua'
-  make -k im im_jp2 im_process im_process_omp im_fftw im_lzo
+  make -k im im_jp2 im_process im_process_omp im_fftw3
 
   msg2 'Building Lua 5.3 bindings'
-  make -k imlua5 imlua_jp25 imlua_process5 imlua_process_omp5 imlua_fftw5 \
+  make -k imlua5 imlua_jp25 imlua_process5 imlua_process_omp5 imlua_fftw35 \
    STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.3,--enable-new-dtags,--as-needed" \
    USE_LUA53=Yes LUA_SFX=5.3
 
   msg2 'Building Lua 5.2 bindings'
-  make -k imlua5 imlua_jp25 imlua_process5 imlua_process_omp5 imlua_fftw5 \
+  make -k imlua5 imlua_jp25 imlua_process5 imlua_process_omp5 imlua_fftw35 \
    STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.2,--enable-new-dtags,--as-needed" \
    LUA_INC=/usr/include/lua5.2 \
    USE_LUA52=Yes LUA_SFX=5.2
 
   msg2 'Building Lua 5.1 bindings'
-  make -k imlua5 imlua_jp25 imlua_process5 imlua_process_omp5 imlua_fftw5 \
+  make -k imlua5 imlua_jp25 imlua_process5 imlua_process_omp5 imlua_fftw35 \
    STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.1,--enable-new-dtags,--as-needed" \
    LUA_INC=/usr/include/lua5.1 \
    USE_LUA51=Yes LUA_SFX=5.1
