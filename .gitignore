@@ -2,8 +2,7 @@ src
 pkg
 dbip-country-lite-*.csv.gz
 GeoLite2-Country-CSV-*.zip
-xt_geoip_build-*
 nftables-geoip-db-*.tar.gz
-*-any.pkg.tar.xz
-*-any.pkg.tar.xz.sig
+*-any.pkg.tar.zst
+*-any.pkg.tar.zst.sig
 geoip.license.key
