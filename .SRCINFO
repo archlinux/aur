@@ -1,0 +1,22 @@
+pkgbase = nvidia-440xx
+	pkgdesc = NVIDIA driver sources for Linux, 440xx
+	pkgver = 440.100
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	depends = dkms
+	depends = nvidia-utils=440.100
+	depends = libglvnd
+	depends = linux-headers
+	provides = nvidia=440.100
+	conflicts = nvidia
+	conflicts = nvidia-lts
+	options = !strip
+	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/440.100/NVIDIA-Linux-x86_64-440.100.run
+	source = kernel-5.8.patch::https://gitlab.com/snippets/1986228/raw
+	sha512sums = 274b3a8e4c801b67a3f71f11da93134bc1a16a48bc85a6bf63265c00bb3fd8caf935dd23c85c40285a162e83c146bd5e34bb0b1d74fc34e7122bfc4c3a8c81e7
+	sha512sums = 99a6fc7b3ad3980bfb72daed1c32966ab967dad7dfcdf6b2d6aba1607bc56f7d487693a02f6c2bd9b774fdebfa8579ca337e6dfc76842dcdd010fefa6a79f9d3
+
+pkgname = nvidia-440xx-dkms
+
