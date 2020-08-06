@@ -1,21 +1,21 @@
 # Maintainer: osch <oliver@luced.de>
 
 pkgluaname=mtmsg
-pkgname=lua-$pkgluaname
+pkgname=lua53-$pkgluaname
 pkgver=0.4.1
-_luacmd="lua"
+_luacmd="lua5.3"
 pkgrel=1
 _rockrel=1
 pkgdesc="Low-level in-memory message buffers for inter-thread communication for Lua."
 arch=("i686" "x86_64")
 url="https://github.com/osch/lua-mtmsg#mtmsg"
 license=("MIT")
-depends=("lua")
+depends=("lua53")
 makedepends=("luarocks")
 source=("https://github.com/osch/$pkgname/archive/v$pkgver.tar.gz")
 package() {
 	_luaver=$($_luacmd -e 'io.write(_VERSION:gsub("^.* (.*)$","%1"),"")')
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$srcdir/lua-mtmsg-$pkgver"
 	luarocks --lua-version $_luaver --tree="$pkgdir/usr" make "rockspecs/$pkgluaname-$pkgver-$_rockrel.rockspec"
 	mkdir -p "$pkgdir/usr/share/doc"
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
