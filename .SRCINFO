@@ -1,6 +1,6 @@
 pkgbase = lampswitch
 	pkgdesc = Indicator and control applet for Apache
-	pkgver = 20.7.23.41
+	pkgver = 20.7.23.42
 	pkgrel = 1
 	url = https://tari.in/www/software/lampswitch
 	install = lampswitch.install
