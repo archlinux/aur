@@ -1,5 +1,5 @@
 pkgbase = python2-bjoern
-	pkgdesc = A screamingly fast, ultra-lightweight WSGI server for Python, written in C.
+	pkgdesc = A screamingly fast, ultra-lightweight WSGI server for Python 2, written in C.
 	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/jonashaag/bjoern
@@ -9,7 +9,7 @@ pkgbase = python2-bjoern
 	makedepends = python2-setuptools
 	depends = libev
 	depends = python2
-	source = http://pypi.python.org/packages/source/b/bjoern/bjoern-1.4.2.tar.gz
+	source = https://pypi.python.org/packages/source/b/bjoern/bjoern-1.4.2.tar.gz
 	md5sums = bd0b1d97a187fd438a8959dfb312683d
 
 pkgname = python2-bjoern
