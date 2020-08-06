@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.2.beta4.r0.g02b0be1ff8
+pkgver=9.2.beta7.r0.g83caa4befa
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -40,24 +40,24 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         test-optional.patch
         sagemath-cremona.patch
         sagemath-singular-4.1.2.patch
-        sagemath-ecl-20.4.patch
         sagemath-ipython7.patch
         sagemath-python-3.8.patch
         sagemath-pexpect-4.8.patch
         sagemath-gap-4.11.patch
-        sagemath-flint-2.6.patch)
+        sagemath-flint-2.6.patch
+        sagemath-matplotlib-3.3.patch)
 sha256sums=('SKIP'
             '5dbff7afecbc78e8ff7749b2ac929e8d2104e205bb2193f05a9687ce5ce65cf4'
             'd6d8dd7d75e29a9ddbbb0da6fe18f86ee3ff49aad4af71104da38a8fa0d4c3db'
             '77aa8e99aae5da74a9486f01b603a0b5d224c3d13e9d9fab681fb71a6af149f1'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
             '6f98488d0eb3a12b958cd1a34f85b7bee950ac756430371c1e134e564cbbf7d3'
-            '516fd1ed21e08ca4b16faf34e8998583ff8408128518073443e59622958e5a93'
             'b2a7055bc380c1d86a9514540d985fc4bce3cea1ea865e13642f11b1bf0f6e50'
-            'e3d394b818bb575c509f5113ccfab9a5283c7d43bda9d1503951c820cd7fd472'
+            '3cc81dc565201925bc3e146b49dcd790980d1ea0d85e009f9e870978c4d4e2c7'
             '5e6d1aa34959bd4369bd08a80648a5c7bc2d38e72c97e9a5f986e91f8a7aca07'
             'aeb6bb7a8d40f3d3b3547ee5f1e67e876051d9463cd1e0000b497c4d0f3e2fe9'
-            'b881d4a6867a6f5360fd204e6a86fd27c6177c539b06f521402e2bcb5a6209cd')
+            'b881d4a6867a6f5360fd204e6a86fd27c6177c539b06f521402e2bcb5a6209cd'
+            '8a80c522f17291c60eb8d11150c0b98c50359b23f5f1c241db6088c6b2576c2a')
 
 pkgver() {
   cd sage
@@ -67,15 +67,17 @@ pkgver() {
 prepare(){
   cd sage
 
+  sed -e '/sage-env/d' -i src/setup.py # Don't try to install sage-env
+
 # Upstream patches
 # use Features to detect Cremona databases https://trac.sagemath.org/ticket/25825
   patch -p1 -i ../sagemath-cremona.patch
 # Fixes for singular 4.1.2 https://trac.sagemath.org/ticket/25993
   patch -p1 -i ../sagemath-singular-4.1.2.patch
-# Fix build with ECL 20.4 https://trac.sagemath.org/ticket/22191
-  patch -p1 -i ../sagemath-ecl-20.4.patch
 # Fix segfault and tests with flint 2.6 https://trac.sagemath.org/ticket/29719
   patch -p1 -i ../sagemath-flint-2.6.patch
+# Fixes for matplotlib 3.3 https://trac.sagemath.org/ticket/30176
+  patch -p1 -i ../sagemath-matplotlib-3.3.patch
 
 # Arch-specific patches
 # assume all optional packages are installed
@@ -114,15 +116,6 @@ package_sagemath-git() {
   cd sage/src
   python setup.py install --root="$pkgdir" --optimize=1
 
-  mkdir -p "$pkgdir"/usr/bin
-  cp bin/{sage,math-readline} "$pkgdir"/usr/bin
-  for _i in cachegrind callgrind cleaner coverage coverageall cython eval fixdoctests grep grepdoc inline-fortran ipynb2rst \
-    ipython massif maxima.lisp native-execute notebook num-threads.py omega open preparse python run \
-    run-cython runtests startuptime.py valgrind version.sh
-  do
-    cp bin/sage-$_i "$pkgdir"/usr/bin
-  done
-  
   _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
 # Remove sage_setup
   rm -r "$pkgdir"/$_pythonpath/sage_setup
