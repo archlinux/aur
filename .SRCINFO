@@ -1,5 +1,5 @@
 pkgbase = fbsplash-theme-arch-black-extras
-	pkgdesc = An Archlinux black fbsplash theme with extra resolution config files
+	pkgdesc = An Archlinux black fbsplash theme with extra resolution config files and a config file generator within the theme folder /etc/splash/arch-black/arch-black-config-generator.
 	pkgver = 1.3
 	pkgrel = 1
 	url = http://www.opendesktop.org/content/show.php?content=118523

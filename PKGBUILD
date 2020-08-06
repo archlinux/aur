@@ -4,7 +4,7 @@
 pkgname=fbsplash-theme-arch-black-extras
 pkgver=1.3
 pkgrel=1
-pkgdesc='An Archlinux black fbsplash theme with extra resolution config files'
+pkgdesc='An Archlinux black fbsplash theme with extra resolution config files and a config file generator within the theme folder /etc/splash/arch-black/arch-black-config-generator.'
 arch=('i686' 'x86_64')
 #license='CCPL:cc-by-nc-sa'
 url='http://www.opendesktop.org/content/show.php?content=118523'
@@ -18,5 +18,6 @@ package() {
 	mkdir -p "${pkgdir}/etc/splash"
 	cd "${pkgdir}/etc/splash"
 	cp -a "${srcdir}/arch-black" .
+	cp -a "${srcdir}/fbsplash-theme-arch-black" ./arch-black/arch-black-config-generator
 }
 
