@@ -1,7 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=cluacov
-pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgbase="lua-$_rockname"
+pkgname=("lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname") # "lua-$_rockname"
 pkgver=0.1.1
 pkgrel=1
 pkgdesc='C extensions for LuaCov'
@@ -10,7 +11,7 @@ url="https://github.com/mpeterv/$_rockname"
 license=('MIT')
 depends=('lua')
 _lua_deps=('luacov')
-makedepends=('lua' 'lua52' 'lua51' 'luarocks')
+makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("$_rockname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('fc46a69fbd9be19e022b05be252d2b2c41a4fb1799ddf41c7d325d260bc77c14')
 
@@ -22,6 +23,11 @@ _package_helper() {
 
 package_lua-cluacov() {
   depends=('lua' "${_lua_deps[@]/#/lua-}")
+  _package_helper 5.4
+}
+
+package_lua53-cluacov() {
+  depends=('lua53' "${_lua_deps[@]/#/lua53-}")
   _package_helper 5.3
 }
 
