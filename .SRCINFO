@@ -1,6 +1,6 @@
 pkgbase = osc-tui-git
 	pkgdesc = Outscale Text User Interface
-	pkgver = r197.91dd750
+	pkgver = r198.ffa72c5
 	pkgrel = 1
 	url = https://github.com/outscale-dev/osc-tui
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = osc-tui-git
 	depends = python-pyperclip
 	depends = autopep8
 	depends = python-npyscreen-git
-	source = git://github.com/outscale-mgo/osc-tui.git
+	source = git://github.com/outscale-dev/osc-tui.git
 	sha256sums = SKIP
 
 pkgname = osc-tui-git
