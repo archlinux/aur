@@ -24,7 +24,7 @@ prepare() {
 }
 
 build() {
-    "cd ${srcdir}/${_pkgname}-${pkgver}/src/Common/minimp3"
+    cd "${srcdir}/${_pkgname}-${pkgver}/src/Common/minimp3"
     gcc -c -D__int8_t_defined=1 -o minimp3.o minimp3.c
     ar rcs libminimp3.a minimp3.o
 
