@@ -1,8 +1,8 @@
 # Maintainer: Ben Green <ben@greendalba.com>
 
 pkgname=brother-mfc8860dn-cups-bin
-pkgver=0.0.1
-pkgrel=1
+pkgver=2.0.1
+pkgrel=2
 pkgdesc="CUPS wrapper for Brother MFC-8860DN printer"
 arch=("i686" "x86_64")
 url="https://support.brother.com/g/b/producttop.aspx?c=ca&lang=en&prod=mfc8860dn_all"
