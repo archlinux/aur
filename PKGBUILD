@@ -19,7 +19,7 @@ makedepends=('git' 'automake' 'autoconf' 'make' 'libtool' 'pkg-config')
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
 backup=('etc/knot/knot.conf')
-source=("git+https://gitlab.labs.nic.cz/knot/knot-dns.git")
+source=("git+https://gitlab.nic.cz/knot/knot-dns.git")
 sha256sums=('SKIP')
 options=(!strip debug)
 _gitname='knot-dns'
