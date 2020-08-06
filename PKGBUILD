@@ -1,4 +1,4 @@
-# Maintainer: Muhkoenig
+# Maintainer: otreblan <otreblain@gmail.com>
 
 pkgname=nerd-fonts-inconsolata-go
 pkgver=2.1.0
