@@ -2,7 +2,7 @@
 pkgname=devour
 pkgver=10
 pkgrel=1
-pkgdesc="Window Manager agnostic swallowing feature for terminal emulator"
+pkgdesc="Window Manager agnostic swallowing feature for terminal emulators"
 arch=('x86_64')
 url="https://github.com/salman-abedin/devour"
 license=('GPL3')
