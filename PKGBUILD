@@ -2,7 +2,7 @@
 # Contributor: Omar Pakker <archlinux@opakker.nl>
 
 pkgname=python-daemonocle
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Python library for creating Unix daemons"
 url="https://github.com/jnrbsn/daemonocle"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('25f51874c7a56e92901fc4f501d6e9ffffb88cbae36cdf19fd7aa8ecbdfd520e')
+sha256sums=('e2c29ed127e0177adf9805fe07a564c7be98ddd095654a5c579f543bcb4bb7cd')
 
 build() {
 	cd "$srcdir/daemonocle-$pkgver"
