@@ -10,6 +10,7 @@ pkgbase = libim
 	makedepends = lua
 	makedepends = lua51
 	makedepends = lua52
+	makedepends = lua53
 	noextract = im-3.15_Sources.tar.gz
 	source = https://downloads.sourceforge.net/project/imtoolkit/3.15/Docs%20and%20Sources/im-3.15_Sources.tar.gz
 	source = https://downloads.sourceforge.net/project/imtoolkit/3.15/Docs%20and%20Sources/im-3.15_Docs.pdf
@@ -22,7 +23,7 @@ pkgname = libim
 	depends = libpng
 
 pkgname = lua-im
-	pkgdesc = Lua (5.3) bindings for IM toolkit
+	pkgdesc = Lua (5.4) bindings for IM toolkit
 	depends = libim
 
 pkgname = lua51-im
@@ -31,5 +32,9 @@ pkgname = lua51-im
 
 pkgname = lua52-im
 	pkgdesc = Lua (5.2) bindings for IM toolkit
+	depends = libim
+
+pkgname = lua53-im
+	pkgdesc = Lua (5.3) bindings for IM toolkit
 	depends = libim
 

@@ -4,13 +4,13 @@
 # Contributor: Karro <karolina.lindqvist@kramnet.se>
 
 pkgbase=libim
-pkgname=('libim' 'lua-im' 'lua51-im' 'lua52-im')
+pkgname=('libim' 'lua-im' 'lua51-im' 'lua52-im' 'lua53-im')
 pkgver=3.15
 pkgrel=1
 pkgdesc="Toolkit for digital imaging"
 arch=('i686' 'x86_64')
 url="https://www.tecgraf.puc-rio.br/im/"
-makedepends=('lsb-release' 'lua' 'lua51' 'lua52')
+makedepends=('lsb-release' 'lua' 'lua51' 'lua52' 'lua53')
 license=('MIT')
 source=(
   "https://downloads.sourceforge.net/project/imtoolkit/${pkgver}/Docs%20and%20Sources/im-${pkgver}_Sources.tar.gz"
@@ -29,9 +29,15 @@ build() {
   msg2 'Building libim without Lua'
   make -k im im_jp2 im_process im_process_omp im_fftw3
 
+  msg2 'Building Lua 5.4 bindings'
+  make -k imlua5 imlua_jp25 imlua_process5 imlua_process_omp5 imlua_fftw35 \
+   STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.4,--enable-new-dtags,--as-needed" \
+   USE_LUA54=Yes LUA_SFX=5.4
+
   msg2 'Building Lua 5.3 bindings'
   make -k imlua5 imlua_jp25 imlua_process5 imlua_process_omp5 imlua_fftw35 \
    STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.3,--enable-new-dtags,--as-needed" \
+   LUA_INC=/usr/include/lua5.3 \
    USE_LUA53=Yes LUA_SFX=5.3
 
   msg2 'Building Lua 5.2 bindings'
@@ -63,7 +69,7 @@ package_libim() {
 }
 
 _lua_im_package_helper() {
-  # $1 ... Lua version ("5.1", "5.2" or "5.3")
+  # $1 ... Lua version ("5.1", "5.2", "5.3" or "5.4")
 
   _lua_ver=$1
   _lua_ver_nodot=`echo $1 | cut -c1,3`
@@ -87,6 +93,13 @@ _lua_im_package_helper() {
 }
 
 package_lua-im() {
+  pkgdesc="Lua (5.4) bindings for IM toolkit"
+  depends=('libim')
+
+  _lua_im_package_helper "5.4"
+}
+
+package_lua53-im() {
   pkgdesc="Lua (5.3) bindings for IM toolkit"
   depends=('libim')
 
