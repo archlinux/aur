@@ -1,12 +1,13 @@
 pkgbase = lua-linenoise
 	pkgdesc = A binding for the linenoise command line library
 	pkgver = 0.9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/hoelzro/lua-linenoise
 	arch = x86_64
 	arch = i686
 	license = MIT/X11
 	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
@@ -15,6 +16,9 @@ pkgbase = lua-linenoise
 
 pkgname = lua-linenoise
 	depends = lua
+
+pkgname = lua53-linenoise
+	depends = lua53
 
 pkgname = lua52-linenoise
 	depends = lua52

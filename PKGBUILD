@@ -2,16 +2,16 @@
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 
 _rockname=linenoise
-pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 _pkgname=lua-$_rockname
 pkgver=0.9
 _rockrel=1
-pkgrel=4
+pkgrel=5
 pkgdesc='A binding for the linenoise command line library'
 arch=('x86_64' 'i686')
 url="https://github.com/hoelzro/$_pkgname"
 license=('MIT/X11')
-makedepends=('lua' 'lua52' 'lua51' 'luarocks')
+makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("$_rockname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('cc1cdb4047edd056a10dcdeec853dbaf5088e2202941d579e4592584d733f09c')
 
@@ -23,6 +23,11 @@ _package_helper() {
 
 package_lua-linenoise() {
   depends+=('lua')
+  _package_helper 5.4
+}
+
+package_lua53-linenoise() {
+  depends+=('lua53')
   _package_helper 5.3
 }
 
