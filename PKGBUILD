@@ -24,11 +24,11 @@ prepare() {
 }
 
 build() {
-    cd ${srcdir}/${_pkgname}-${pkgver}/src/Common/minimp3
+    "cd ${srcdir}/${_pkgname}-${pkgver}/src/Common/minimp3"
     gcc -c -D__int8_t_defined=1 -o minimp3.o minimp3.c
     ar rcs libminimp3.a minimp3.o
 
-    cd ${srcdir}/${_pkgname}-${pkgver}/PROJECTS/Standalone
+    cd "${srcdir}/${_pkgname}-${pkgver}/PROJECTS/Standalone"
     export CXXFLAGS="${CXXFLAGS} -I${srcdir}/${_pkgname}-${pkgver}/src/Common/minimp3 -I/usr/include/vst36/pluginterfaces/vst2.x -I/usr/include/miniupnpc"
     export LDFLAGS="${LDFLAGS} -L${srcdir}/${_pkgname}-${pkgver}/src/Common/minimp3"
     qmake Standalone.pro
