@@ -1,0 +1,44 @@
+diff --git a/src/ZRTPCPP-4.7.0/cryptcommon/ZrtpRandom.cpp b/src/ZRTPCPP-4.7.0/cryptcommon/ZrtpRandom.cpp
+index 64db1d2..b4f58c1 100644
+--- a/src/ZRTPCPP-4.7.0/cryptcommon/ZrtpRandom.cpp
++++ b/src/ZRTPCPP-4.7.0/cryptcommon/ZrtpRandom.cpp
+@@ -108,7 +108,7 @@ int ZrtpRandom::getRandomData(uint8_t* buffer, uint32_t length) {
+ }
+ 
+ 
+-int ZrtpRandom::addEntropy(const uint8_t *buffer, uint32_t length, bool isLocked)
++int ZrtpRandom::addEntropy(const uint8_t *buffer, uint32_t length, int32_t isLocked)
+ {
+ 
+     uint8_t newSeed[64];
+@@ -161,7 +161,7 @@ size_t ZrtpRandom::getSystemSeed(uint8_t *seed, size_t length)
+     return num;
+ }
+ 
+-int zrtp_AddEntropy(const uint8_t *buffer, uint32_t length, bool isLocked) {
++int zrtp_AddEntropy(const uint8_t *buffer, uint32_t length, int32_t isLocked) {
+     return ZrtpRandom::addEntropy(buffer, length, isLocked);
+ }
+ 
+diff --git a/src/ZRTPCPP-4.7.0/cryptcommon/ZrtpRandom.h b/src/ZRTPCPP-4.7.0/cryptcommon/ZrtpRandom.h
+index d1837ef..bb31b18 100644
+--- a/src/ZRTPCPP-4.7.0/cryptcommon/ZrtpRandom.h
++++ b/src/ZRTPCPP-4.7.0/cryptcommon/ZrtpRandom.h
+@@ -49,7 +49,7 @@ public:
+      *         bytes added may be bigger then @c length because of added system
+      *         entropy.
+      */
+-    static int addEntropy(const uint8_t *buffer, uint32_t length, bool isLocked = false);
++    static int addEntropy(const uint8_t *buffer, uint32_t length, int32_t isLocked = false);
+ 
+     /**
+      * @brief Get some random data.
+@@ -74,7 +74,7 @@ extern "C"
+ {
+ #endif
+ 
+-int zrtp_AddEntropy(const uint8_t *buffer, uint32_t length, bool isLocked);
++int zrtp_AddEntropy(const uint8_t *buffer, uint32_t length, int32_t isLocked);
+ 
+ int zrtp_getRandomData(uint8_t *buffer, uint32_t length);
+ 
