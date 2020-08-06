@@ -1,6 +1,6 @@
 pkgbase = qt6-base-git
 	pkgdesc = A cross-platform application and UI framework
-	pkgver = 5.15.0.beta4.r3396.g4857fee0fc
+	pkgver = 5.15.0.r4555.g7d27316d9f
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -49,6 +49,8 @@ pkgbase = qt6-base-git
 	optdepends = freetds: MS SQL driver
 	optdepends = gtk3: GTK platform plugin
 	optdepends = perl: for fixqt4headers and syncqt
+	provides = qt6-base
+	conflicts = qt6-base
 	source = git+https://code.qt.io/qt/qtbase.git#branch=dev
 	sha256sums = SKIP
 

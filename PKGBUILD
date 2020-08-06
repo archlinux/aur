@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-git
-pkgver=5.15.0.beta4.r3396.g4857fee0fc
+pkgver=5.15.0.r4555.g7d27316d9f
 pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
@@ -21,6 +21,8 @@ optdepends=('postgresql-libs: PostgreSQL driver'
             'freetds: MS SQL driver'
             'gtk3: GTK platform plugin'
             'perl: for fixqt4headers and syncqt')
+conflicts=(qt6-base)
+provides=(qt6-base)
 groups=(qt6)
 source=(git+https://code.qt.io/qt/qtbase.git#branch=dev)
 sha256sums=('SKIP')
@@ -30,33 +32,29 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../qtbase \
+  cmake -B build -S qtbase \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DINSTALL_BINDIR=/usr/lib/qt6/bin \
-    -DINSTALL_DOCDIR=/usr/share/doc/qt6 \
-    -DINSTALL_ARCHDATADIR=/usr/lib/qt6 \
-    -DINSTALL_DATADIR=/usr/share/qt6 \
-    -DINSTALL_MKSPECSDIR=/usr/lib/qt6/mkspecs \
-    -DINSTALL_EXAMPLESDIR=/usr/share/doc/qt6/examples \
+    -DINSTALL_BINDIR=lib/qt6/bin \
+    -DINSTALL_DOCDIR=share/doc/qt6 \
+    -DINSTALL_ARCHDATADIR=lib/qt6 \
+    -DINSTALL_DATADIR=share/qt6 \
+    -DINSTALL_INCLUDEDIR=include/qt6 \
+    -DINSTALL_MKSPECSDIR=lib/qt6/mkspecs \
+    -DINSTALL_EXAMPLESDIR=share/doc/qt6/examples \
     -DQT_FEATURE_journald=ON
-  make
+#    -DQT_FEATURE_openssl_linked=ON
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 
-  install -Dm644 "$srcdir"/qtbase/LICENSE* -t "$pkgdir"/usr/share/licenses/$pkgbase
+  install -Dm644 qtbase/LICENSE* -t "$pkgdir"/usr/share/licenses/$pkgbase
 
   # Symlinks for backwards compatibility
   mkdir -p "$pkgdir"/usr/bin
-  for b in "$pkgdir"/usr/lib/qt6/bin/*; do
-    ln -rs "$pkgdir"/usr/lib/qt6/bin/$(basename $b) "$pkgdir"/usr/bin/$(basename $b)-qt6
+  for _b in uic rcc qmake; do
+    ln -rs "$pkgdir"/usr/lib/qt6/bin/$_b "$pkgdir"/usr/bin/$_b-qt6
   done
 }
