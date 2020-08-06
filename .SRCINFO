@@ -12,6 +12,7 @@ pkgbase = oyster-git
 	depends = pam
 	depends = qt5-svg
 	depends = qt5-quickcontrols2
+	depends = libcsys-git
 	provides = oyster
 	conflicts = oyster
 	source = git+https://gitlab.com/Desq/oyster.git
