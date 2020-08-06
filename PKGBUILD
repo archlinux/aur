@@ -1,4 +1,4 @@
-# Maintainer: Boogy <0xboogy@gmail.com>
+# Maintainer: Boogy <0xboogy [at] gmail [dot] com>
 
 _pkgname=terraform-lsp
 pkgname=terraform-lsp-git
@@ -15,8 +15,11 @@ source=("${_pkgname}::git+${url}#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$pkgname"
+  ( set -o pipefail
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build(){
