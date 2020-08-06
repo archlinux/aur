@@ -1,11 +1,13 @@
 [Unit]
 Description=Greylist milter
+Before=sendmail.service
 Before=postfix.service
 After=network.target
 
 [Service]
 UMask=0007
 ExecStart=/usr/bin/milter-greylist -D
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target

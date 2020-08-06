@@ -1,7 +1,7 @@
 pkgbase = milter-greylist
 	pkgdesc = A stand-alone milter written in C that implements the greylist filtering method.
-	pkgver = 4.6.2
-	pkgrel = 2
+	pkgver = 4.6.3
+	pkgrel = 1
 	url = http://hcpnet.free.fr/milter-greylist/
 	arch = x86_64
 	arch = i686
@@ -10,12 +10,14 @@ pkgbase = milter-greylist
 	depends = libspf2
 	depends = opendkim
 	backup = etc/mail/greylist.conf
-	source = http://ftp.espci.fr/pub/milter-greylist/milter-greylist-4.6.2.tgz
+	source = http://ftp.espci.fr/pub/milter-greylist/milter-greylist-4.6.3.tgz
 	source = milter-greylist-4.5.11-warning.patch
+	source = milter-greylist-4.6.3-geoip2.patch
 	source = milter-greylist.service
-	md5sums = 8872008db2fc6b93dd9ab8576383fec2
-	md5sums = 6965cbd37d0af10d4d2e74ce8cf25095
-	md5sums = f63fdee8f12aa6cc4e0badeb874cf565
+	md5sums = 7fdd068c456001454a82e0b9c7171927
+	md5sums = 0901deb488277f8fed50158cffb726a2
+	md5sums = 186b62e3cf1d27a693aebf2c4af0b148
+	md5sums = 51665e97390bf7df11bb509bfb57544b
 
 pkgname = milter-greylist
 

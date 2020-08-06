@@ -1,0 +1,38 @@
+--- geoip2.c
++++ geoip2.c
+@@ -59,7 +59,7 @@ __RCSID("$Id");
+ #include <maxminddb.h>
+ 
+ static MMDB_s mmdb;
+-static MMDB_s *geoip2_handle = &mmdb;
++static MMDB_s *geoip2_handle = NULL;
+ static char geoip2_database[MAXPATHLEN + 1];
+ static pthread_rwlock_t geoip2_lock;
+ 
+@@ -88,11 +88,13 @@ geoip2_set_db(name)
+ 	strncpy(geoip2_database, name, MAXPATHLEN);
+ 	geoip2_database[MAXPATHLEN] = '\0';
+ 
++	geoip2_handle = &mmdb;
+ 	int status = MMDB_open(geoip2_database, MMDB_MODE_MMAP, geoip2_handle);
+ 	if (status != MMDB_SUCCESS) {
+ 		mg_log(LOG_WARNING, 
+ 		       "Geoip2 database \"%s\" cannot be used",
+ 		       geoip2_database);
++		geoip2_handle = NULL;
+ 		return;
+ 	}
+ }
+@@ -123,6 +125,12 @@ geoip2_set_ccode(priv)
+         int gai_error, mmdb_error;
+ 	MMDB_lookup_result_s result;
+ 
++	if (geoip2_handle == NULL) {
++		mg_log(LOG_DEBUG, "GeoIP2 is not available");
++ 		priv->priv_ccode = NULL;
++ 		return;
++ 	}
++
+ 	if (iptostring(SA(&priv->priv_addr),
+ 	    priv->priv_addrlen, ipstr, sizeof(ipstr)) == NULL) {
+ 		mg_log(LOG_DEBUG, "Geoip2 iptostring failed");
