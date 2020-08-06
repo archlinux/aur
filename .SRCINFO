@@ -1,5 +1,5 @@
 pkgbase = fbsplash-theme-archax
-	pkgdesc = Simple and elegant theme for Fbsplash
+	pkgdesc = Archax theme for Fbsplash
 	pkgver = 0.2.5
 	pkgrel = 1
 	url = http://opendesktop.org/content/show.php?content=125311
