@@ -1,6 +1,6 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 _npmname=node-red
-_npmver=1.1.2
+_npmver=1.1.3
 pkgname=nodejs-${_npmname}
 pkgver=${_npmver}
 pkgrel=1
@@ -16,7 +16,7 @@ source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz"
 		"${pkgname}.service"
 		"${pkgname}.default")
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=("b60dce62c20eb420291f0b79d55ff61a421b0dda7b1369b852abe1afcdae62be"
+sha256sums=("58e68164676a8ed40741d90eb7f98348f120c310088c039994858c78356b7f88"
 			"cb3468c4f5c5883ed89aef13485c6c604d22f917cec714585dbadd4914fff3e8"
 			"d08994475b06f270b2f1a2b3c99c22fd33f001dc2a10413460caded125f81f38")
 
