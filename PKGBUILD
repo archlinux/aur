@@ -1,15 +1,15 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=lua_cliargs
-pkgname=('lua-cliargs' 'lua52-cliargs' 'lua51-cliargs')
+pkgname=('lua-cliargs' 'lua53-cliargs' 'lua52-cliargs' 'lua51-cliargs')
 pkgver=3.0
 _rockrel=2
-pkgrel=4
+pkgrel=5
 pkgdesc='A command-line argument parser'
 arch=('any')
 url="https://github.com/amireh/$_rockname"
 license=('MIT')
-makedepends=('lua' 'lua52' 'lua51' 'luarocks')
+makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("$_rockname-$pkgver.tar.gz::$url/archive/v$pkgver-$_rockrel.tar.gz")
 sha256sums=('971d6f1440a55bdf9db581d4b2bcbf472a301d76f696a0d0ed9423957c7d176e')
 
@@ -21,6 +21,11 @@ _package_helper() {
 
 package_lua-cliargs() {
   depends+=('lua')
+  _package_helper 5.4
+}
+
+package_lua53-cliargs() {
+  depends+=('lua53')
   _package_helper 5.3
 }
 

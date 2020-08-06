@@ -1,11 +1,12 @@
 pkgbase = lua-cliargs
 	pkgdesc = A command-line argument parser
 	pkgver = 3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/amireh/lua_cliargs
 	arch = any
 	license = MIT
 	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
@@ -14,6 +15,9 @@ pkgbase = lua-cliargs
 
 pkgname = lua-cliargs
 	depends = lua
+
+pkgname = lua53-cliargs
+	depends = lua53
 
 pkgname = lua52-cliargs
 	depends = lua52
