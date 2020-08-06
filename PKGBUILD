@@ -13,15 +13,15 @@ pkgbase=lua51-penlight
 _pkgbase=Penlight
 pkgname=('lua52-penlight' 'lua51-penlight')
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lua libraries for on input data handling, functional programming, and OS interface'
 url="https://tieske.github.io/${_pkgbase}"
 arch=('any')
 license=('MIT')
 _lua_deps=('filesystem')
 checkdepends=('lua' "${_lua_deps[@]/#/lua-}")
-source=("https://github.com/Tieske/${_pkgbase}/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('fba4dc863d22205c097cc488b835d6f653aa100eceb8c957711edd279e5c33f7')
+source=("$_pkgbase-$pkgver.tar.gz::https://github.com/Tieske/${_pkgbase}/archive/${pkgver}/${pkgver}.tar.gz")
+sha256sums=('a1a41c5ec82c0459bc0508a0fb1cb56dfaa83a1dd7754d7174b336ad65420d3d')
 
 check() {
   cd ${_pkgbase}-${pkgver}

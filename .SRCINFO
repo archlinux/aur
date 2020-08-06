@@ -1,14 +1,14 @@
 pkgbase = lua51-penlight
 	pkgdesc = Lua libraries for on input data handling, functional programming, and OS interface
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tieske.github.io/Penlight
 	arch = any
 	license = MIT
 	checkdepends = lua
 	checkdepends = lua-filesystem
-	source = https://github.com/Tieske/Penlight/archive/1.8.0/-1.8.0.tar.gz
-	sha256sums = fba4dc863d22205c097cc488b835d6f653aa100eceb8c957711edd279e5c33f7
+	source = Penlight-1.8.0.tar.gz::https://github.com/Tieske/Penlight/archive/1.8.0/1.8.0.tar.gz
+	sha256sums = a1a41c5ec82c0459bc0508a0fb1cb56dfaa83a1dd7754d7174b336ad65420d3d
 
 pkgname = lua52-penlight
 	depends = lua52
