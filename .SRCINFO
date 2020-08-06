@@ -1,6 +1,6 @@
 pkgbase = ytt-git
 	pkgdesc = YAML templating tool that works on YAML structure instead of text
-	pkgver = r191.d7c7e0a
+	pkgver = r482.98c00dd
 	pkgrel = 1
 	url = https://get-ytt.io/
 	arch = x86_64
