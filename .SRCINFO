@@ -1,6 +1,6 @@
 pkgbase = desq-session-git
 	pkgdesc = Session Manager for DesQ
-	pkgver = r15.ce37ae6
+	pkgver = r22.8f8cbab
 	pkgrel = 1
 	url = https://gitlab.com/DesQ
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = desq-session-git
 	depends = libdesq-git
 	optdepends = kwin
 	optdepends = desq-shell-git
+	optdepends = oyster-git
+	optdepends = corestuff
 	provides = desq-session
 	conflicts = desq-session
 	source = git+https://gitlab.com/Desq/Session.git
