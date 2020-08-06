@@ -1,12 +1,13 @@
 pkgbase = lua-serpent
 	pkgdesc = Lua serializer and pretty printer
 	pkgver = 0.28
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pkulchenko/serpent
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
@@ -15,6 +16,9 @@ pkgbase = lua-serpent
 
 pkgname = lua-serpent
 	depends = lua
+
+pkgname = lua53-serpent
+	depends = lua53
 
 pkgname = lua52-serpent
 	depends = lua52
