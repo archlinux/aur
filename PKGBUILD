@@ -3,17 +3,17 @@
 
 _rockname=std-normalize
 pkgbase=lua-$_rockname
-pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 _pkgname=normalize
 pkgver=2.0.3
 _rockrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Normalized Lua functions'
 arch=('any')
 url="https://github.com/lua-stdlib/$_pkgname"
 license=('MIT')
 _lua_deps=('std-_debug')
-makedepends=('lua' 'lua52' 'lua51' 'luarocks')
+makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('2038c38da542cf274b0b7512928e5b649c90a34f36c8919fbbbc2524b4ef716d')
 
@@ -26,6 +26,11 @@ _package_helper() {
 
 package_lua-std-normalize() {
   depends+=('lua' "${_lua_deps[@]/#/lua-}")
+  _package_helper 5.4
+}
+
+package_lua53-std-normalize() {
+  depends+=('lua53' "${_lua_deps[@]/#/lua53-}")
   _package_helper 5.3
 }
 

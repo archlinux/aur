@@ -1,11 +1,12 @@
 pkgbase = lua-std-normalize
 	pkgdesc = Normalized Lua functions
 	pkgver = 2.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lua-stdlib/normalize
 	arch = any
 	license = MIT
 	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
@@ -15,6 +16,10 @@ pkgbase = lua-std-normalize
 pkgname = lua-std-normalize
 	depends = lua
 	depends = lua-std-_debug
+
+pkgname = lua53-std-normalize
+	depends = lua53
+	depends = lua53-std-_debug
 
 pkgname = lua52-std-normalize
 	depends = lua52
