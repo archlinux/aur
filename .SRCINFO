@@ -10,6 +10,7 @@ pkgbase = oyster-git
 	depends = libdesq-git
 	depends = libdesqui-git
 	depends = pam
+	depends = solid
 	depends = qt5-svg
 	depends = qt5-quickcontrols2
 	depends = libcsys-git
