@@ -1,0 +1,17 @@
+pkgbase = ifdtool-git
+	pkgdesc = Extract and dump Intel Firmware Descriptor information.
+	pkgver = r36072.20905cfe264
+	pkgrel = 1
+	url = https://github.com/coreboot/coreboot/tree/master/util/ifdtool
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = GPL2
+	makedepends = git
+	provides = ifdtool
+	conflicts = ifdtool
+	source = git+https://review.coreboot.org/coreboot
+	sha256sums = SKIP
+
+pkgname = ifdtool-git
+
