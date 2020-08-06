@@ -1,13 +1,14 @@
 pkgbase = lua-bit32
 	pkgdesc = Lua 5.2 bit manipulation library
 	pkgver = 5.3.5_0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.lua.org/manual/5.2/manual.html#6.7
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = luarocks
 	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	source = bit32-5.3.5_0.9.tar.gz::https://github.com/keplerproject/lua-compat-5.3/archive/v0.9.tar.gz
@@ -15,6 +16,9 @@ pkgbase = lua-bit32
 
 pkgname = lua-bit32
 	depends = lua
+
+pkgname = lua53-bit32
+	depends = lua53
 
 pkgname = lua52-bit32
 	depends = lua52
