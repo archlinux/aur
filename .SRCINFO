@@ -1,12 +1,13 @@
 pkgbase = lua-colors
 	pkgdesc = HSL Color Theory Computation in Lua
 	pkgver = 8.05.26
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sputnik.freewisdom.org/lib/colors/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
@@ -15,6 +16,9 @@ pkgbase = lua-colors
 
 pkgname = lua-colors
 	depends = lua
+
+pkgname = lua53-colors
+	depends = lua53
 
 pkgname = lua52-colors
 	depends = lua52
