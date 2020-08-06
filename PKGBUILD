@@ -1,6 +1,6 @@
 _pkgname=libdesq
 pkgname=${_pkgname}-git
-pkgver=r22.f1374c8
+pkgver=r48.f64f6b0
 pkgrel=1
 pkgdesc="The DesQ library to handle X11 protocols, system calls, classes and functions to be used across the DesQ project."
 arch=('any')
