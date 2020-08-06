@@ -1,6 +1,6 @@
 pkgbase = waterfox-current-git
 	pkgdesc = Private and optimized Firefox fork based on the LTS Release of Firefox.
-	pkgver = 68.0+c405ea0e0150
+	pkgver = 68.0+fffa8a9ad749
 	pkgrel = 1
 	url = https://www.waterfoxproject.org/
 	install = waterfox-current.install
