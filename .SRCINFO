@@ -1,4 +1,4 @@
-pkgbase = lua53-mtmsg
+pkgbase = lua51-mtmsg
 	pkgdesc = Low-level in-memory message buffers for inter-thread communication for Lua.
 	pkgver = 0.4.1
 	pkgrel = 1
@@ -7,9 +7,9 @@ pkgbase = lua53-mtmsg
 	arch = x86_64
 	license = MIT
 	makedepends = luarocks
-	depends = lua53
-	source = https://github.com/osch/lua53-mtmsg/archive/v0.4.1.tar.gz
+	depends = lua51
+	source = https://github.com/osch/lua51-mtmsg/archive/v0.4.1.tar.gz
 	md5sums = 57f8741a3cfbf3f030cefd3d98d12c08
 
-pkgname = lua53-mtmsg
+pkgname = lua51-mtmsg
 
