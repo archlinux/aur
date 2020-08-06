@@ -1,0 +1,27 @@
+# Maintainer: langonginc <langonginc@yeah.net>
+pkgname=qtzff
+pkgver=1.0.1
+pkgrel=1
+pkgdesc="Zff game in QT5"
+arch=(any)
+url="https://github.com/ohzff/qtzff.git"
+license=('MIT')
+depends=('bash' 'qt5-base' 'make')
+makedepends=('gcc' 'git')
+source=("git+$url")
+md5sums=('SKIP')
+
+build() {
+    cd "$pkgname/"
+    qmake QtZff.pro
+    make
+}
+
+package() {
+    cd "$pkgname"
+    mkdir -p "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/share/$pkgname"
+    cp QtZff "$pkgdir/usr/bin/qtzff"
+    chmod 755 "$pkgdir/usr/bin/qtzff"
+    cp -r * "$pkgdir/usr/share/$pkgname"
+}
