@@ -3,14 +3,14 @@ photo or album by default.
 Credits: udf
 
 diff --git a/Telegram/SourceFiles/boxes/send_files_box.cpp b/Telegram/SourceFiles/boxes/send_files_box.cpp
-index 2f4c45c48..ed9bf4bb6 100644
+index 32ff2af77..28c32cced 100644
 --- a/Telegram/SourceFiles/boxes/send_files_box.cpp
 +++ b/Telegram/SourceFiles/boxes/send_files_box.cpp
-@@ -1498,14 +1498,6 @@ void SendFilesBox::initSendWay() {
+@@ -1947,15 +1947,7 @@ void SendFilesBox::initSendWay() {
  				? SendFilesWay::Album
  				: SendFilesWay::Photos;
  		}
--		const auto way = _controller->session().settings().sendFilesWay();
+-		const auto way = Core::App().settings().sendFilesWay();
 -		if (way == SendFilesWay::Files) {
 -			return way;
 -		} else if (way == SendFilesWay::Album) {
@@ -22,3 +22,4 @@ index 2f4c45c48..ed9bf4bb6 100644
 +		return _list.albumIsPossible
  			? SendFilesWay::Album
  			: SendFilesWay::Photos;
+ 	}();
