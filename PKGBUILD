@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
@@ -58,7 +58,6 @@ prepare() {
 
   git submodule sync
   git submodule update
-  #sed -i -e 's/coros/lock/g' test-run/lib/connpool.py
 }
 
 build() {
@@ -72,7 +71,6 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
-    -DENABLE_BUNDLED_LIBYAML:BOOL=OFF \
     -DENABLE_BACKTRACE:BOOL=ON \
     -DWITH_SYSTEMD:BOOL=ON \
     -DENABLE_DIST:BOOL=ON \
