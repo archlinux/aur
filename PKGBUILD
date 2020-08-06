@@ -4,7 +4,7 @@ pkgbase=linux-slim
 _srcname=linux
 gitver=v5.8
 pkgver=5.8.v.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -23,7 +23,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '0bf324d137940dbfd3c2ad45f75afa107637ff9f0d201fc7cddba9736eac7155'
+            'a2252b04be61cdb4fb92dd4013bc5e6ae3f641bfff73f0e4e6020aec5f3a3452'
             #.preset file
             '41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367'
             #linux install file
@@ -65,12 +65,6 @@ prepare() {
   yes "" | make prepare
 
   # load configuration
-  # Configure the kernel. Replace the line below with one of your choice.
-  #make menuconfig # CLI menu for configuration
-  #make nconfig # new CLI menu for configuration
-  #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
-  #make olddefconfig # old config from previous kernel, defaults for new options
   # config was manually staged.
 }
 
@@ -227,23 +221,7 @@ _package-headers() {
   done <<< $(find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/ -maxdepth 1 -mindepth 1 -type d | grep -v /x86$)
 }
 
-_package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the Linux kernel"
-  provides=('linux-docs')
-
-  cd "${_srcname}"
-
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  find "${pkgdir}" -type f -exec chmod 444 {} \;
-  find "${pkgdir}" -type d -exec chmod 755 {} \;
-
-  # remove a file already in linux package
-  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
-
-}
-
-pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
+pkgname=("${pkgbase}" "${pkgbase}-headers")
 for _p in ${pkgname[@]}; do
   eval "package_${_p}() {
     $(declare -f "_package${_p#${pkgbase}}")
