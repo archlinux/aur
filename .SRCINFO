@@ -1,5 +1,5 @@
 pkgbase = devour-git
-	pkgdesc = Window Manager agnostic swallowing feature for terminal emulator
+	pkgdesc = Window Manager agnostic swallowing feature for terminal emulators
 	pkgver = v10.r29.9435066
 	pkgrel = 1
 	url = https://github.com/salman-abedin/devour
