@@ -7,11 +7,7 @@ pkgbase = amulet-map-editor-bin
 	license = MIT
 	makedepends = gendesk
 	makedepends = dos2unix
-	depends = libnotify
-	depends = libxss
-	depends = libxtst
-	depends = libindicator-gtk3
-	depends = libappindicator-gtk3
+	makedepends = whey
 	source_x86_64 = Amulet-v0.6.10.0-linux.zip::https://github.com/Amulet-Team/Amulet-Map-Editor/releases/download/v0.6.10.0/Amulet-v0.6.10.0-linux.zip
 	md5sums_x86_64 = SKIP
 
