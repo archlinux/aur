@@ -6,15 +6,15 @@
 
 _pkgbase=popt
 pkgname=lib32-${_pkgbase}
-pkgver=1.16
-pkgrel=7
+pkgver=1.18
+pkgrel=1
 pkgdesc="Commandline option parser (32 bit)"
 arch=('x86_64')
 url="http://rpm5.org"
 license=('custom')
 depends=('lib32-glibc' "${_pkgbase}")
-source=(${url}/files/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz)
-sha256sums=('e728ed296fe9f069a0e005003c3d6b2dde3d9cad453422a10d6558616d304cc8')
+source=(https://ftp.osuosl.org/pub/rpm/popt/releases/popt-1.x/popt-${pkgver}.tar.gz)
+sha256sums=('5159bc03a20b28ce363aa96765f37df99ea4d8850b1ece17d1e6ad5c24fdc5d1')
 
 build() {
   export CC="gcc -m32"
