@@ -18,7 +18,7 @@ conflicts=('fbsplash-scripts' 'initscripts-fork' 'mkinitcpio-fbsplash')
 options=('!makeflags')
 backup=('etc/conf.d/fbcondecor' 'etc/conf.d/splash')
 install=fbsplash.install
-source=(https://master.dl.sourceforge.net/project/fbsplash.berlios/splashutils-lite-${pkgver}.tar.bz2
+source=(https://master.dl.sourceforge.net/project/fbsplash.berlios/splashutils-${pkgver}.tar.bz2
         splash_start_initcpio.patch
         splash.conf
         fbsplash-basic.sh
@@ -98,7 +98,7 @@ package() {
 
   /usr/bin/libtool --finish "/usr/lib"
 }
-md5sums=('29bbb355919a2f27c40dbfc8075c4a8d'
+md5sums=('2a16704c4adde97b58812cd89e3f2342'
          '4045e315c52f5a576fca4f7e634eeb91'
          '7541820998613094ad6d7a893302b5db'
          'b5e6c08bbe7645a1c035565ea7d66437'
