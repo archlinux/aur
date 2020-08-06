@@ -5,6 +5,7 @@ pkgbase = jamtaba
 	url = https://github.com/elieserdejesus/JamTaba/wiki
 	arch = i686
 	arch = x86_64
+	license = unknown
 	makedepends = steinberg-vst36
 	depends = qt5-base
 	depends = portaudio
