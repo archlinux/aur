@@ -8,20 +8,17 @@ pkgname=openfoam-esi
 pkgver=v2006
 _distname=OpenFOAM
 _dist=$_distname-$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="The open source CFD toolbox (ESI-OpenCFD version)"
 arch=('i686' 'x86_64')
 url="http://www.openfoam.com/"
 license=('GPL')
-depends=('gcc' 'cgal' 'cmake' 'fftw' 'boost' 'openmpi' 'paraview' 'utf8cpp')
+install="${pkgname}.install"
+depends=('gcc' 'cgal' 'fftw' 'boost' 'openmpi' 'paraview' 'utf8cpp' 'scotch' 'parmetis')
 
-source=("https://sourceforge.net/projects/openfoam/files/v2006/OpenFOAM-v2006.tgz"
-        "https://sourceforge.net/projects/openfoam/files/v2006/ThirdParty-v2006.tgz"
-        "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz")
+source=("https://sourceforge.net/projects/openfoam/files/v2006/OpenFOAM-v2006.tgz")
 
-md5sums=('1226d48e74a4c78f12396cb586c331d8'
-         '6b598b6faa6ddeb25235c5dded0ca275'
-         '5465e67079419a69e0116de24fce58fe')
+md5sums=('1226d48e74a4c78f12396cb586c331d8')
 
 prepare() {
   if [ $WM_PROJECT_DIR ]
@@ -32,54 +29,20 @@ prepare() {
     return 1
   fi
 
-  echo " "
-  echo -e "\e[1m\e[31mKnown issues:\n - Adios2 does not compile\n - foam reader does not compile (Threading Building Blocks (TBB) not found)\n\nPlease press any key to continue.\e[0m"
-  echo " "
-  read -rsp $'\n' -n1 key
-
-  cd "$srcdir/$_dist"
+  # Extract the current version and major of paraview and of scotch for use in the system preferences
+  _pversion=$(pacman -Q $(pacman -Qqo $(which paraview)) | sed -e 's/.* //; s/-.*//g')
+  _pmajor=`echo $_pversion | cut -d '.' -f1`
 
   # Generate and install the system preferences file
   echo "export compilerInstall=system" > ${srcdir}/prefs.sh
-  echo "export cmake_version=cmake-system" >> ${srcdir}/prefs.sh
-  echo "export ParaView_QT=qt-system" >> ${srcdir}/prefs.sh
+  echo "export WM_MPLIB=SYSTEMOPENMPI" >> ${srcdir}/prefs.sh
+  echo "export ParaView_VERSION=${_pversion}" >> ${srcdir}/prefs.sh
+  echo "export ParaView_MAJOR=${_pmajor}" >> ${srcdir}/prefs.sh
   cp ${srcdir}/prefs.sh ${srcdir}/${_distname}-${pkgver}/etc
 
-  # get paraview-5.8 directories
-  # paraview-5.8
-  para_dir=`pacman -Q -l paraview | grep "include" | head -n3 | tail -n1 | sed -e 's!p.*/p!p!g' | sed -e 's!/.*!!g'`
-  # /usr/include
-  para_include_dir=`pacman -Q -l paraview | grep "include" | head -n3 | tail -n1 | awk '{print $2}' | sed 's!/paraview.*!!g'`
-  # /usr/bin
-  para_bin_dir=`which paraview | sed -e 's!/paraview!!g'`
-  # /usr/lib
-  para_lib_dir=`echo $para_bin_dir | sed -e 's/bin/lib/g'`
-
-  # the variable ParaView_DIR must be defined to compile paraFoam,
-  # but it cannot be /usr as it should be 
-  # (otherwise all pathes containing /usr are removed from PATH)
-  arbitrary_dir=`echo ${srcdir}/ThirdParty-${pkgver}/paraview`
-  [ ! -d "$arbitrary_dir" ] && mkdir $arbitrary_dir
-
-  # this is needed for compiling paraFoam
-  echo "export PV_PLUGIN_PATH=\$FOAM_LIBBIN/$para_dir" >> ${srcdir}/system_paraview
-  echo "export PATH=$para_bin_dir:\$PATH" >> ${srcdir}/system_paraview
-  echo "export LD_LIBRARY_PATH=$para_lib_dir/$para_dir:\$LD_LIBRARY_PATH" >> ${srcdir}/system_paraview
-  echo "unset ParaView_VERSION" >> ${srcdir}/system_paraview
-  echo "unset ParaView_DIR" >> ${srcdir}/system_paraview
-
-  cp ${srcdir}/system_paraview ${srcdir}/${_distname}-${pkgver}/etc/config.sh
-
-  cd ${srcdir}/${_distname}-${pkgver}/etc/config.sh
-  # write content of system_paraview into file "paraview"
-  sed -i "/ParaView_VERSION=5./r system_paraview" ${srcdir}/${_distname}-${pkgver}/etc/config.sh/paraview
-  # remove ParaView_VERSION in order to use system paraview
-  sed -i '/ParaView_VERSION=5./d' ${srcdir}/${_distname}-${pkgver}/etc/config.sh/paraview
-
-  # create link to metis
-  cd "$srcdir/ThirdParty-${pkgver}"
-  [[ ! -e "metis-5.1.0" ]] && ln -s ../metis-5.1.0 metis-5.1.0
-  return 0
+  # Generate the scotch.sh file for arch
+  echo "export SCOTCH_VERSION=scotch-system" > ${srcdir}/scotch
+  cp ${srcdir}/scotch ${srcdir}/${_distname}-${pkgver}/etc/config.sh
 }
 
 build() {
@@ -98,46 +61,32 @@ build() {
   # without && echo " ", makepkg fails
   source ${foamDotFile} && echo " "
 
-  echo -e "\e[1m\e[5m\e[31mPlease read:\e[0m "
-  echo -e " "
-  echo -e "\e[92mFor compiling the paraview plugin it might be necessary to give OpenFOAM MANUALLY write-access to the following directory:"
-  echo -e "sudo chmod 757 /usr/lib/cmake/paraview*/Modules"
-  echo -e " "
-  echo -e "If you have paraview 5.6 installed, please add the line"
-  echo -e "find_package(ospray REQUIRED)"
-  echo -e "on line 794 (in FUNCTION(ADD_PARAVIEW_PLUGIN) in the file /usr/lib64/cmake/paraview-5.6/ParaViewPlugins.cmake."
-  echo -e "This avoids the error '/usr/bin/ld: cannot find -lospray::ospray' when compiling the paraview reader."
-  echo -e " "
-  echo -e "Please press any key to continue."
-  echo -e "\e[0m "
-
-  read -rsp $'\n' -n1 key
-
   cd "$srcdir/$_dist"
   ./Allwmake -j `nproc` 2>&1 | tee log.wmake
 
-  # you need to enter the root password after 2 hours
-  #sudo chmod 755 /usr/lib/cmake/paraview*/Modules
+  # check if an error occured during build
+  ret="${PIPESTATUS[0]}"
+  [[ "$ret" -ne "0" ]] && exit 1
 
-  wclean all
-  wmakeLnIncludeAll
+  wclean all || exit 1
+  wmakeLnIncludeAll || exit 1
 }
 
 package() {
   cd ${srcdir}
 
   # Create destination directories
-  install -d ${pkgdir}/opt/${_distname} ${pkgdir}/etc/profile.d
+  install -d ${pkgdir}/opt/${_distname} ${pkgdir}/etc/profile.d || return 1
 
   # copy package to pkgdir
-  cp -r "${srcdir}/${_dist}" "${pkgdir}/opt/${_distname}"
-  cp -r "${srcdir}/ThirdParty-${pkgver}" "${pkgdir}/opt/${_distname}"
-
-  # create alias in .bashrc
-  echo "alias ofoam=\"source /opt/${_distname}/${_dist}/etc/bashrc\"" >> ~/.bashrc
+  cp -r "${srcdir}/${_dist}" "${pkgdir}/opt/${_distname}" || return 1
 
   # Permission fixes - for system-wide install and use
   chmod -R go+r ${pkgdir}/opt
   chmod -R 755 ${pkgdir}/opt/${_distname}/${_dist}/bin
   chmod -R 755 ${pkgdir}/opt/${_distname}/${_dist}/etc
+
+  # create alias in .bashrc
+  echo "alias of=\"source /opt/${_distname}/${_dist}/etc/bashrc\"" >> ~/.bashrc
+  echo "alias paraFoam=\"paraFoam -builtin\"" >> ~/.bashrc
 }

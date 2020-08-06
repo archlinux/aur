@@ -1,25 +1,23 @@
 pkgbase = openfoam-esi
 	pkgdesc = The open source CFD toolbox (ESI-OpenCFD version)
 	pkgver = v2006
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openfoam.com/
+	install = openfoam-esi.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = gcc
 	depends = cgal
-	depends = cmake
 	depends = fftw
 	depends = boost
 	depends = openmpi
 	depends = paraview
 	depends = utf8cpp
+	depends = scotch
+	depends = parmetis
 	source = https://sourceforge.net/projects/openfoam/files/v2006/OpenFOAM-v2006.tgz
-	source = https://sourceforge.net/projects/openfoam/files/v2006/ThirdParty-v2006.tgz
-	source = http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz
 	md5sums = 1226d48e74a4c78f12396cb586c331d8
-	md5sums = 6b598b6faa6ddeb25235c5dded0ca275
-	md5sums = 5465e67079419a69e0116de24fce58fe
 
 pkgname = openfoam-esi
 
