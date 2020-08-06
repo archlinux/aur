@@ -69,7 +69,7 @@ build() {
     -DCMAKE_INSTALL_BINDIR=/usr/bin \
     -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -DCMAKE_BUILD_TYPE=ReleaseWithDebInfo \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_SKIP_RPATH=ON \
     -DENABLE_BACKTRACE:BOOL=ON \
     -DWITH_SYSTEMD:BOOL=ON \
