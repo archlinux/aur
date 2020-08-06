@@ -1,0 +1,19 @@
+pkgbase = oyster-git
+	pkgdesc = A beautiful user interface for mobiles and tablets.
+	pkgver = r11.68b36bb
+	pkgrel = 1
+	url = https://gitlab.com/DesQ
+	arch = any
+	groups = desq-git
+	license = none
+	makedepends = git
+	depends = libdesq-git
+	depends = libdesqui-git
+	depends = pam
+	provides = oyster
+	conflicts = oyster
+	source = git+https://gitlab.com/Desq/oyster.git
+	md5sums = SKIP
+
+pkgname = oyster-git
+
