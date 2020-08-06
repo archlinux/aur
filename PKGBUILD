@@ -26,27 +26,27 @@ prepare() {
 
 build() {
   cd "$srcdir"/im/src
-  msg2 'Building libim without Lua'
+  echo 'Building libim without Lua'
   make -k im im_jp2 im_process im_process_omp im_fftw3
 
-  msg2 'Building Lua 5.4 bindings'
+  echo 'Building Lua 5.4 bindings'
   make -k imlua5 imlua_jp25 imlua_process5 imlua_process_omp5 imlua_fftw35 \
    STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.4,--enable-new-dtags,--as-needed" \
    USE_LUA54=Yes LUA_SFX=5.4
 
-  msg2 'Building Lua 5.3 bindings'
+  echo 'Building Lua 5.3 bindings'
   make -k imlua5 imlua_jp25 imlua_process5 imlua_process_omp5 imlua_fftw35 \
    STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.3,--enable-new-dtags,--as-needed" \
    LUA_INC=/usr/include/lua5.3 \
    USE_LUA53=Yes LUA_SFX=5.3
 
-  msg2 'Building Lua 5.2 bindings'
+  echo 'Building Lua 5.2 bindings'
   make -k imlua5 imlua_jp25 imlua_process5 imlua_process_omp5 imlua_fftw35 \
    STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.2,--enable-new-dtags,--as-needed" \
    LUA_INC=/usr/include/lua5.2 \
    USE_LUA52=Yes LUA_SFX=5.2
 
-  msg2 'Building Lua 5.1 bindings'
+  echo 'Building Lua 5.1 bindings'
   make -k imlua5 imlua_jp25 imlua_process5 imlua_process_omp5 imlua_fftw35 \
    STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.1,--enable-new-dtags,--as-needed" \
    LUA_INC=/usr/include/lua5.1 \
