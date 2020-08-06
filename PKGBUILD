@@ -1,7 +1,7 @@
  
 # Contributor: Andrey Alekseev andrey.android7890@gmail.com
 
-pkgbase=nvidia-440xx
+pkgbase=nvidia-440xx-dkms
 pkgname=nvidia-440xx-dkms
 pkgver=440.100
 pkgrel=1
