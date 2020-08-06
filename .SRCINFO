@@ -1,12 +1,13 @@
 pkgbase = lua-iconv
 	pkgdesc = Lua bindings for the iconv API
 	pkgver = 7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://ittner.github.com/lua-iconv
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	noextract = lua-iconv-7.tar.gz
@@ -15,6 +16,9 @@ pkgbase = lua-iconv
 
 pkgname = lua-iconv
 	depends = lua
+
+pkgname = lua53-iconv
+	depends = lua53
 
 pkgname = lua52-iconv
 	depends = lua52
