@@ -1,0 +1,16 @@
+pkgbase = devour-git
+	pkgdesc = Window Manager agnostic swallowing feature for terminal emulator
+	pkgver = v10.r29.9435066
+	pkgrel = 1
+	url = https://github.com/salman-abedin/devour
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libx11
+	provides = devour
+	conflicts = devour
+	source = devour::git+https://github.com/salman-abedin/devour.git
+	md5sums = SKIP
+
+pkgname = devour-git
+
