@@ -2,8 +2,8 @@
 
 _pkgname=v
 pkgname=vlang
-pkgver=0.1.28.1
-pkgrel=5
+pkgver=0.1.29
+pkgrel=1
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software'
 arch=('x86_64')
 url='https://vlang.io'
@@ -15,13 +15,13 @@ conflicts=('v' 'vlang-bin' 'vlang-git')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$_pkgname/archive/$pkgver.tar.gz"
         'git+https://github.com/vlang/vc'
         'no-compile.patch')
-sha256sums=('cbaded862d56d943c119630bf13974ef4370bb7fff533d244c9f42f7f5c5f3ad'
+sha256sums=('5111d04663d8454c9e8bcbd7e3544dcbd6abc54eb5034e31649417af6e8418a6'
             'SKIP'
-            'dde72b11b4ba5b1365b64d99d4256970b84c4d0e80b15f55a1765ea39977ce42')
+            '4281ae82a72cfb5632d41d87043076b214dcda3bb8bfc03244dd35d322435bc4')
 
 prepare() {
     cd vc
-    git checkout 197b42bd0e9268ec7c3c16526edc8530ad90a075
+    git checkout b01d0fcda4b55861baa4be82e307cca4834b1641
 
     cd "$srcdir/$_pkgname-$pkgver"
     patch -Np1 -i ../no-compile.patch

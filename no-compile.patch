@@ -1,7 +1,7 @@
 diff --color --unified --recursive --text a/vlib/v/util/util.v b/vlib/v/util/util.v
---- a/vlib/v/util/util.v	2020-07-18 00:33:29.314785649 -0800
-+++ b/vlib/v/util/util.v	2020-07-18 00:54:50.293465427 -0800
-@@ -116,7 +116,6 @@
+--- a/vlib/v/util/util.v	2020-08-06 12:52:48.123603455 -0800
++++ b/vlib/v/util/util.v	2020-08-06 12:53:17.171010251 -0800
+@@ -118,7 +118,6 @@
  	set_vroot_folder(vroot)
  	tool_args := args_quote_paths_with_spaces(args)
  	tool_exe := path_of_executable(os.real_path('$vroot/cmd/tools/$tool_name'))
@@ -9,7 +9,7 @@ diff --color --unified --recursive --text a/vlib/v/util/util.v b/vlib/v/util/uti
  	tool_command := '"$tool_exe" $tool_args'
  	if is_verbose {
  		println('launch_tool vexe        : $vroot')
-@@ -124,56 +123,6 @@
+@@ -126,56 +125,6 @@
  		println('launch_tool tool_args   : $tool_args')
  		println('launch_tool tool_command: $tool_command')
  	}
@@ -56,7 +56,7 @@ diff --color --unified --recursive --text a/vlib/v/util/util.v b/vlib/v/util/uti
 -		}
 -		if tool_compilation.exit_code != 0 {
 -			mut err := 'Permission denied'
--			if !tool_compilation.output.contains('Permission denied') {
+-			if !tool_compilation.output.contains(err) {
 -				err = '\n$tool_compilation.output'
 -			}
 -			eprintln('cannot compile `$tool_source`: $err')
