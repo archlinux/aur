@@ -4,7 +4,7 @@ _pkgbase=ipts
 pkgname=ipts-uapi-dkms-git
 _repo=intel-precise-touch
 #_branch=feature/uapi
-pkgver=r98.52a3a17
+pkgver=r103.63442f0
 pkgrel=1
 epoch=1
 pkgdesc="The kernelspace part of IPTS (Intel Precise Touch & Stylus) for Linux. \
@@ -25,10 +25,7 @@ md5sums=(SKIP)
 pkgver() {
     cd ${srcdir}/${_repo}
     #git log --pretty=format:%at -1
-    ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
 }
 
 package() {
