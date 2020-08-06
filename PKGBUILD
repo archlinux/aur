@@ -46,6 +46,14 @@ pkgver() {
 prepare() {
   sed 's|/var/www/html|/srv/http|g' -i "${srcdir}/index-${_distcommit}.html"
   sed 's|/etc/caddy/Caddyfile|/etc/caddy/caddy.conf|g' -i "${srcdir}/index-${_distcommit}.html"
+
+  # Build instructions as per https://github.com/caddyserver/caddy#with-version-information-andor-plugins
+  cd "${_pkgname}/cmd/caddy/"
+  if ! test -f go.mod; then
+    go mod init caddy
+  fi
+  go get github.com/caddyserver/caddy/v2@${_tag} # Pin version
+  go mod tidy # Update go.sum
 }
 
 build() {
