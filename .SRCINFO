@@ -1,12 +1,13 @@
 pkgbase = lua-stdlib
 	pkgdesc = Library of modules for common programming tasks
 	pkgver = 41.2.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/lua-stdlib/lua-stdlib/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
@@ -15,6 +16,9 @@ pkgbase = lua-stdlib
 
 pkgname = lua-stdlib
 	depends = lua
+
+pkgname = lua53-stdlib
+	depends = lua53
 
 pkgname = lua52-stdlib
 	depends = lua52
