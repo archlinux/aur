@@ -1,19 +1,24 @@
 pkgbase = lua-system
 	pkgdesc = Platform independent system calls for Lua
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/o-lim/luasystem
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = luarocks
+	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
+	makedepends = luarocks
 	source = system-0.2.1.tar.gz::https://github.com/o-lim/luasystem/archive/v0.2.1.tar.gz
 	sha256sums = 0b83f68e9edbba92bef11ec0ccf1e5bb779a7337653f7bb77e0240c8e85c0b94
 
 pkgname = lua-system
 	depends = lua
+
+pkgname = lua53-system
+	depends = lua53
 
 pkgname = lua52-system
 	depends = lua52
