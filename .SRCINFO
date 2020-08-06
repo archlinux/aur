@@ -1,0 +1,13 @@
+pkgbase = fbsplash-theme-archax
+	pkgdesc = Simple and elegant theme for Fbsplash
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = http://opendesktop.org/content/show.php?content=125311
+	arch = any
+	license = GPL
+	depends = fbsplash
+	source = fbsplash-theme-archax-0.2.5.tar.gz::http://sourceshark.com/sourcecode/khotnewstuff/bootsplashs/downloads/112346-archax.tar.gz
+	md5sums = 8453af978c2dd796050aae15085af9de
+
+pkgname = fbsplash-theme-archax
+
