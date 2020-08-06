@@ -1,6 +1,6 @@
 pkgbase = cloud-hypervisor-bin
 	pkgdesc = A Rust-VMM based cloud hypervisor from Intel (binary source)
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/cloud-hypervisor/cloud-hypervisor
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = cloud-hypervisor-bin
 	depends = virtiofsd
 	provides = cloud-hypervisor
 	conflicts = cloud-hypervisor
-	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v0.8.0/ch-remote
-	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v0.8.0/cloud-hypervisor
-	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v0.8.0/cloud-hypervisor-static
-	sha512sums = 4ae31d9a13592546815e381534ea6ee5721cd400dc4112ffdacee97aac63ac04a86482a27935be51e14b2bd053c5e2a11583ad9d2f7a66b581675ad623ab1a82
-	sha512sums = acec3cfecd1626d4f4a473022117a6080774abcc6838357dac7c60a85ce59c073e39ddab5c967221ea46c2f60f71307ea50d484eb4d7100ec8a6aaa429621f60
-	sha512sums = f9013d6d1f28a824af4928ff592bb00faadb89a61803ab4063e6ad9ad8bb3e15de3ae7b1492b8c5cebc2bb4afda0ecb56ccd1d575868a29b1529fe18827cb495
+	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v0.9.0/ch-remote
+	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v0.9.0/cloud-hypervisor
+	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v0.9.0/cloud-hypervisor-static
+	sha512sums = 0f03834d6908159a37e612a77b306a3ac72f63d204e8439c77739f39ee90566534109002e4e3621fc88b93e1c5f780b57014269baef8db20c319074595662c60
+	sha512sums = e1cb645316fe8c3809ab88daa6961df9a8b248f68138ca3100ef8e0ddde30d823884c0e69b92acfb8490b114a19713d62f3d8b28c5bc10496e7dd4acdabe1b9c
+	sha512sums = 0d6ef97d2078e251e1e1e09ef9fb81aaa183184b0c4302b94cf88055a06ff68f1176caa9cbed94c451db475cb7d9f77a205831b6408f36861c45f8aa24d94aaf
 
 pkgname = cloud-hypervisor-bin
 
