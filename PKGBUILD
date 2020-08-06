@@ -4,7 +4,7 @@ pkgname=quickcut-git
 _pkgname=${pkgname%-git}
 _gitname=QuickCut
 pkgver=v1.3.0.r7.gd6eb81a
-pkgrel=3
+pkgrel=4
 pkgdesc="Your most handy video processing software."
 arch=('x86_64' 'i686')
 url="https://github.com/HaujetZhao/QuickCut"
@@ -28,8 +28,10 @@ depends=('ffmpeg'
 makedepends=('git' 'icoutils')
 provides=('quickcut' 'quickcut-bin')
 conflicts=('quickcut' 'quickcut-bin')
-source=("git+https://github.com/HaujetZhao/QuickCut")
-sha256sums=('SKIP')
+source=("git+https://github.com/HaujetZhao/QuickCut"
+        "${_pkgname}.sh")
+sha256sums=('SKIP'
+            '65e15d5675c1faa54c1d1ae38649a39a2fbb97aed688d8b0db295856ab2e66ae')
 
 package() {
   cd $_gitname
@@ -45,8 +47,8 @@ package() {
   install -dm755 ${pkgdir}/usr/share/pixmaps
   install -dm755 ${pkgdir}/usr/share/applications
   
-  # soft link
-  ln -s /usr/lib/${_pkgname}/QuickCut.py ${pkgdir}/usr/bin/${_pkgname}
+  # sh
+  install -Dm755 ${srcdir}/${_pkgname}.sh ${pkgdir}/usr/bin/${_pkgname}
 
   # icon
   icotool -x icon.ico
@@ -54,10 +56,9 @@ package() {
 
   # other
   mv languages ${pkgdir}/usr/lib/${_pkgname}/
-  install -Dm666 -t ${pkgdir}/usr/lib/${_pkgname}/ alispeech.log
-  install -Dm666 -t ${pkgdir}/usr/lib/${_pkgname}/ database.db
-  install -Dm666 -t ${pkgdir}/usr/lib/${_pkgname}/ traceback.log
-  install -dm777 ${pkgdir}/usr/lib/${_pkgname}/misc
+
+  # themes
+  cp style.css ${pkgdir}/usr/lib/${_pkgname}/
 
   # desktop entry
   cat > ${pkgdir}/usr/share/applications/${_pkgname}.desktop << EOF
@@ -67,7 +68,6 @@ Version=1.0
 Name=QuickCut
 Comment=video processing software
 Exec=quickcut
-Path=/usr/lib/quickcut
 Icon=quickcut
 Terminal=false
 EOF

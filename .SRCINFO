@@ -1,7 +1,7 @@
 pkgbase = quickcut-git
 	pkgdesc = Your most handy video processing software.
 	pkgver = v1.3.0.r7.gd6eb81a
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/HaujetZhao/QuickCut
 	arch = x86_64
 	arch = i686
@@ -29,7 +29,9 @@ pkgbase = quickcut-git
 	conflicts = quickcut
 	conflicts = quickcut-bin
 	source = git+https://github.com/HaujetZhao/QuickCut
+	source = quickcut.sh
 	sha256sums = SKIP
+	sha256sums = 65e15d5675c1faa54c1d1ae38649a39a2fbb97aed688d8b0db295856ab2e66ae
 
 pkgname = quickcut-git
 
