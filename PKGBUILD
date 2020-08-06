@@ -1,4 +1,5 @@
-# Maintainer: Evan Penner <evaninrussia@gmail.com>
+# Maintainer: nemesys <nemstar zoho com>
+# Contributor: Evan Penner <evaninrussia@gmail.com>
 
 pkgname=fbsplash-theme-arch-black
 pkgver=1.3
