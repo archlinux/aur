@@ -1,21 +1,21 @@
 pkgbase = tortoisehg
 	pkgdesc = Graphical tools for Mercurial
-	pkgver = 5.4.2
-	pkgrel = 1
-	url = https://tortoisehg.bitbucket.io
+	pkgver = 5.5.0
+	pkgrel = 0
+	url = https://foss.heptapod.net/mercurial/tortoisehg/thg
 	arch = any
 	license = GPL
 	depends = python
 	depends = mercurial>=5.4
-	depends = mercurial<5.5
+	depends = mercurial<5.6
 	depends = python-qscintilla-qt5
 	depends = python-iniparse
 	depends = qt5-svg
 	depends = python-pyqt5
 	optdepends = python-pygments: syntax highlighting
 	optdepends = python-nautilus: Python binding for Nautilus components
-	source = https://www.mercurial-scm.org/release/tortoisehg/targz/tortoisehg-5.4.2.tar.gz
-	sha256sums = 581ebb2e76d82695d4fc17ba5168dcf557219845c4ff3c7cb9838cb99497a27c
+	source = tortoisehg-5.5.0-1605d6fba195f02c0c689fe4aff5d7160aa2b15d.tar.gz::https://foss.heptapod.net/mercurial/tortoisehg/thg/-/archive/1605d6fba195f02c0c689fe4aff5d7160aa2b15d.tar.gz
+	sha256sums = 57e14399efd9a00fb3d7f3c1b38472abd4cad6b6e0fb59cff7eb462c071cca84
 
 pkgname = tortoisehg
 
