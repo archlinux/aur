@@ -3,7 +3,7 @@
 
 pkgname=gitlab-glab-bin
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A custom GitLab CLI tool written in Go"
 arch=(x86_64)
