@@ -1,0 +1,12 @@
+pkgbase = glab-cli
+	pkgdesc = A custom Gitlab Cli tool written in Go
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/profclems/glab
+	arch = x86_64
+	license = MIT
+	source = https://github.com/profclems/glab/releases/download/v1.7.0/glab_1.7.0_Linux_x86_64.tar.gz
+	md5sums = f1de14bebd78fefe39414cf95f4f2dfa
+
+pkgname = glab-cli
+
