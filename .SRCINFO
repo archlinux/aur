@@ -1,6 +1,6 @@
 pkgbase = apache-orc
 	pkgdesc = A columnar storage for Hadoop workloads.
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://orc.apache.org
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = apache-orc
 	makedepends = zlib-static
 	makedepends = zstd-static
 	options = staticlibs
-	source = orc-1.6.2.tar.gz::https://github.com/apache/orc/archive/rel/release-1.6.2.tar.gz
+	source = orc-1.6.3.tar.gz::https://github.com/apache/orc/archive/rel/release-1.6.3.tar.gz
 	source = cmake.patch
-	sha256sums = 8aa0acc0ff6f22e319eb160919c0d7c983257698b96e755d9e7e8f4861e7dbce
-	sha256sums = 6583b28d5a10c5eea222779f68545e1a00cb75c3d4e55bd57b6e6377ac580c62
+	sha256sums = d1bf8342c5c6481e9ffecea843d1d96f6b4f57feb93de0f03d03485989457515
+	sha256sums = 401ca18b23669d0f3240234a8c035505cf73da89c7d803b547f312e66e16e5da
 
 pkgname = apache-orc
 
