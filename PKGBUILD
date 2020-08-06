@@ -5,8 +5,10 @@
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
-# Tweak kernel options prior to a build via nconfig
+# Tweak kernel options prior to a build via nconfig or menuconfig
 _makenconfig=
+
+_makemenuconfig=
 
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
@@ -97,7 +99,7 @@ validpgpkeys=(
 )
 sha256sums=('7a54cf89d7198d99004495c0e3a25d3af05c5d5b70cccf92237f603d7fa15e08'
             'SKIP'
-            'd05009247a24a5ff2b0b5d33fbcd19accab246d1b2a4dcd629943dba3c993639'
+            '5f8b083c777a2eaeaaaab9188d2a6e9af34ebb9f424fbf2bae9ff3b18fbec00e'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
             'e4a201e984cf229b66fbab713c49fa3a0e0e8f238f2216e503f9452a7a7a5e06'
             '5a08ac04975fe784d16d6c8ec2be733c73cdcfc19795f5c7b97d7a1aa7f12328'
@@ -195,6 +197,7 @@ prepare() {
   echo "Prepared $pkgbase version $(<version)"
 
   [[ -z "$_makenconfig" ]] || make nconfig
+  [[ -z "$_makemenuconfig" ]] || make menuconfig
 
   # save configuration for later reuse
   cat .config > "${startdir}/config.last"
