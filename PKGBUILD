@@ -11,7 +11,7 @@ license=('BSD')
 depends=('netcdf' )
 optdepends=('udunits' 'gsl' 'gadap' 'antlr2')
 makedepends=('cmake')
-source=('git+https://github.com/nco/nco.git')
+source=('nco::git+https://github.com/nco/nco.git')
 md5sums=('SKIP')
 
 pkgver() {
