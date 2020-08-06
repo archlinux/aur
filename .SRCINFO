@@ -6,7 +6,7 @@ pkgbase = fbsplash-theme-arch-elegant
 	arch = any
 	license = GPL
 	depends = fbsplash
-	source = fbsplash-theme-arch-elegant-0.2.5.tar.gz::http://opendesktop.org/CONTENT/content-files/125311-arch-elegant.tar.gz
+	source = fbsplash-theme-arch-elegant-0.2.5.tar.gz::http://sourceshark.com/sourcecode/khotnewstuff/bootsplashs/downloads/125311-arch-elegant.tar.gz
 	md5sums = eb5e384b19e64e1d7ead978bbd14d43c
 
 pkgname = fbsplash-theme-arch-elegant

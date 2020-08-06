@@ -1,4 +1,5 @@
-# Maintainer: Dmytro Kostiuchenko <edio at archlinux.us>
+# Maintainer: nemesys <nemstar zoho com>
+# Contributor: Dmytro Kostiuchenko <edio at archlinux.us>
 # Contributor: Kurt J. Bosch <kjb-temp-2009 at alpenjodel.de>
 
 _name=arch-elegant
@@ -11,7 +12,7 @@ license=('GPL')
 _id=125311
 url="http://opendesktop.org/content/show.php?content=${_id}"
 depends=('fbsplash')
-source=("${pkgname}-${pkgver}.tar.gz::http://opendesktop.org/CONTENT/content-files/${_id}-${_name}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::http://sourceshark.com/sourcecode/khotnewstuff/bootsplashs/downloads/125311-arch-elegant.tar.gz")
 package() {
     mkdir -p "${pkgdir}"/etc/splash &&
     cp -a "${srcdir}"/${_name} "${pkgdir}"/etc/splash/
