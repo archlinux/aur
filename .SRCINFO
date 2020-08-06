@@ -1,16 +1,18 @@
 pkgbase = lua-posix-git
 	pkgdesc = POSIX bindings for Lua
-	pkgver = 33.4.0.r158.g69c6195
-	pkgrel = 2
+	pkgver = 33.4.0.r172.g1ff80ab
+	pkgrel = 1
 	url = https://github.com/luaposix/luaposix
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = git
 	makedepends = ldoc
-	makedepends = luarocks
+	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
+	makedepends = luarocks
 	source = git://github.com/luaposix/luaposix.git
 	sha256sums = SKIP
 
@@ -19,6 +21,12 @@ pkgname = lua-posix-git
 	depends = lua-std-normalize
 	provides = lua-posix
 	conflicts = lua-posix
+
+pkgname = lua53-posix-git
+	depends = lua53
+	depends = lua53-std-normalize
+	provides = lua53-posix
+	conflicts = lua53-posix
 
 pkgname = lua52-posix-git
 	depends = lua52
