@@ -22,6 +22,8 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     mkdir -p "$pkgdir/usr/share/$pkgname"
     cp QtZff "$pkgdir/usr/bin/qtzff"
+    cp qtzff.desktop "$pkgdir/usr/share/applications"
     chmod 755 "$pkgdir/usr/bin/qtzff"
+    chmod 755 "$pkgdir/usr/share/applications/qtzff.desktop"
     cp -r * "$pkgdir/usr/share/$pkgname"
 }
