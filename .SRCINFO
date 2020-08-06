@@ -1,11 +1,12 @@
 pkgbase = lua-busted
 	pkgdesc = Elegant Lua unit testing
 	pkgver = 2.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://olivinelabs.com/busted
 	arch = any
 	license = MIT
 	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
@@ -23,6 +24,18 @@ pkgname = lua-busted
 	depends = lua-say
 	depends = lua-system
 	depends = lua-term
+
+pkgname = lua53-busted
+	depends = lua53
+	depends = lua53-cliargs
+	depends = lua53-dkjson
+	depends = lua53-filesystem
+	depends = lua53-luassert
+	depends = lua53-mediator
+	depends = lua53-penlight
+	depends = lua53-say
+	depends = lua53-system
+	depends = lua53-term
 
 pkgname = lua52-busted
 	depends = lua52
