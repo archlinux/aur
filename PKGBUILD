@@ -1,13 +1,13 @@
 pkgname=smtpdane
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc='SMTP DANE testing tool'
 arch=('x86_64')
 url="https://github.com/PennockTech/smtpdane"
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/PennockTech/$pkgname/archive/v$pkgver.zip")
-sha256sums=('18804344d472a6aab1a1f307170f461c69183d46d13c235d177a44cbd18ae028')
+sha256sums=('2e522524e3e3f07b340ad920467af5a680baa800e7917dbb6596cb2f963907c0')
 
 
 prepare(){
