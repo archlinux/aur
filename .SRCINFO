@@ -8,7 +8,7 @@ pkgbase = lua53-mtmsg
 	license = MIT
 	makedepends = luarocks
 	depends = lua53
-	source = https://github.com/osch/lua53-mtmsg/archive/v0.4.1.tar.gz
+	source = https://github.com/osch/lua-mtmsg/archive/v0.4.1.tar.gz
 	md5sums = 57f8741a3cfbf3f030cefd3d98d12c08
 
 pkgname = lua53-mtmsg
