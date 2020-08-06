@@ -7,7 +7,7 @@ _pkgname=caddy
 pkgver=2.1.1
 _tag=v2.1.1
 _distcommit='a509155e3cff18af793f6af5f930a71c89e05df8'
-pkgrel=4
+pkgrel=5
 pkgdesc="Fast web server with automatic HTTPS"
 arch=('x86_64')
 url="https://caddyserver.com"
@@ -40,7 +40,7 @@ validpgpkeys=(
 
 prepare() {
   sed 's|/var/www/html|/srv/http|g' -i "${srcdir}/index-${_distcommit}.html"
-  
+
   # Build instructions as per https://github.com/caddyserver/caddy#with-version-information-andor-plugins
   cd "${_pkgname}/cmd/caddy/"
   if ! test -f go.mod; then
