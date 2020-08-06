@@ -1,6 +1,6 @@
 pkgbase = qtzff
 	pkgdesc = Zff game in QT5
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/ohzff/qtzff.git
 	arch = any
