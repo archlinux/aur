@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.7
-_minor=11
-_clr=973
+_minor=12
+_clr=974
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,11 +16,11 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33570
+_clear_version=33580
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=166aa702ffe87c5a527042b6a3135c9322e4ef8fb40c14552e465c74a6fa64b0
+_config_hash=dbb403b34890cecd86a653092a112b28b0a66824b2ca6e60e3f0a1711f478d55
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -109,3 +109,6 @@ b2sums=('e2f464e3144e62534df88f1f6884599b98a9469309be6f94eb7f1ff00b17303529e4d02
 b2sums=('863138ce7a43e996b9e816392059b4da236d09ae8214362867acc8d1f273451311529a21aa6e58ae9683a2f5c042df257007267c6a5a3a631a1db8e69d060b33'
         'af13b832840a7b9f58a2c2ef094c4e55e62b275590c8e0a24405eb81393b599ae409d2a8547e365ae00e4c7b624b1466c6d48ca90a140e92b32f2afbcebba733'
         '6b2fee6b2651abcc9432a7e5c9d83ac2cea16b7b995f768cb77ccb92f9942becb407a4c284f2904d11eee38152aee0bf6f2b4db3fdd1171d49c61b5575795bdc')
+b2sums=('e3f6e1c97a17d6026cd34d5ce02777a82e44e62f05629e013cbfdd12370bddfc58951e0e19b2b3e3ec1056ce28e13ceb1c5ecb05c06471927b205aabaf7b4045'
+        '42e8b5e1dfbd234b28bfbd8bfef1c4307a1abd34d6477548f389e241f9b915b5e2280f8a6e49518a2a4dde08f4c9d12217381f7fca291f89ec7c5c1edf2d6765'
+        'ce6282681169a9c00de487ac3e58139818f7b18f62867ebe9c49caadc63855da777546c8c2bca59fd177107a79719974be4ca86967a71f39ea8977d3883cf729')
