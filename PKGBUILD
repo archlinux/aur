@@ -2,15 +2,15 @@
 
 pkgname=fcitx5-skin-adwaita-dark
 _pkgname=fcitx5-adwaita-dark
-pkgver=0.0.0.20200618
-_commit=8c1ed01b020672e26891cba4d9e426afef2b7436
+pkgver=0.0.0.20200806
+_commit=2938a7cf417ec149aa26fc35949911ae297b0799
 pkgrel=1
 pkgdesc="An Fcitx5 dark theme mimics GNOME Adwaita-dark"
 arch=('any')
 url="https://github.com/escape0707/fcitx5-adwaita-dark"
 license=('AGPL3')
 source=("https://github.com/escape0707/fcitx5-adwaita-dark/archive/$_commit/$_pkgname-$_commit.tar.gz")
-sha512sums=('62a2590a631bf8aa4531a59bd887c45e529fa50db5c7a79302b19d782ffe859e3bee26b9390face69d93cb4199e7b8a01fddbb08460fd310c549d3c9045466a9')
+sha512sums=('452463eab11e481ad81ef100c43284dd00d2bff1d75978afdcfba42ca75e54d34ae02d0da9aa8018d981c76241431b860c35d07cb3ceeb25170a5cc6939b7faf')
 
 package() {
   _variant_name=adwaita-dark
@@ -21,6 +21,6 @@ package() {
   install -Dm644 arrow.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/arrow.png
   install -Dm644 radio.png "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/radio.png
   install -Dm644 theme.conf "$pkgdir"/usr/share/fcitx5/themes/$_variant_name/theme.conf
-  
+
   #install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
