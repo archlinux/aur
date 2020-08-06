@@ -1,13 +1,13 @@
 pkgbase = tipctl-bin
 	pkgdesc = The command line interface for the TransIP API
-	pkgver = 6.1.0
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://www.transip.nl/developers/
 	arch = any
 	license = Apache
 	depends = php
-	source = tipctl-6.1.0.phar::https://github.com/transip/tipctl/releases/download/v6.1.0/tipctl.phar
-	sha512sums = c09be6c4458882cb5de794741d9f72900459846aa4f992d55c99cf6d5c099e61529900a3a982c5922ad5ff204802d9aeee5d1dce6967c8a1a8bb28fb909634b9
+	source = tipctl-6.3.0.phar::https://github.com/transip/tipctl/releases/download/v6.3.0/tipctl.phar
+	sha512sums = 1c1e5784d4eef2ba22d120106cff013700496b39909aa7b3c45f888326b62e845fd1494e314020afbfab5af2ba2ddf75cd2fbf3ca8cecc0ce5b0b5bf52d89d8d
 
 pkgname = tipctl-bin
 
