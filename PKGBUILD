@@ -12,9 +12,9 @@ _zipcode_rel=201810
 _pkgbase=mozc
 pkgname=fcitx5-mozc-git
 pkgdesc="Fcitx5 Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)"
-pkgver=2.18.2612.102.1.r1325.e8162a7b
+pkgver=2.18.2612.102.1.r1327.f09c4e2e
 _fcitx_patchver=2.18.2612.102.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/google/mozc"
 license=('custom')
@@ -85,6 +85,10 @@ prepare() {
 
   # disable fcitx4 target
   rm unix/fcitx/fcitx.gyp
+  
+  # fix mozc icon for kimpanel
+  sed -i "s|PREFIX|/usr|" unix/fcitx5/mozc.conf
+  cat unix/fcitx5/mozc.conf
 
   ## Copy third party deps
   #cd "$srcdir"
