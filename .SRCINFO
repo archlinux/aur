@@ -1,62 +1,51 @@
 pkgbase = linux-fbcondecor
-	pkgdesc = The linux-fbcondecor kernel and modules with frame buffer decoration support.
-	pkgver = 4.2.3
+	pkgdesc = Linux fbcondecor
+	pkgver = 5.7.12
 	pkgrel = 1
-	url = http://www.kernel.org/
-	arch = i686
+	url = https://wiki.archlinux.org/index.php/Fbsplash
 	arch = x86_64
 	license = GPL2
-	makedepends = xmlto
-	makedepends = docbook-xsl
-	makedepends = kmod
-	makedepends = inetutils
 	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.2.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.2.tar.sign
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.3.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.2.3.sign
-	source = fbcondecor-4.1.patch
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.12.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.12.tar.sign
 	source = config
-	source = config.x86_64
-	source = linux-fbcondecor.preset
-	source = change-default-console-loglevel.patch
-	source = 0001-e1000e-Fix-tight-loop-implementation-of-systime-read.patch
-	source = 0001-netfilter-conntrack-use-nf_ct_tmpl_free-in-CT-synpro.patch
-	sha256sums = cf20e044f17588d2a42c8f2a450b0fd84dfdbd579b489d93e9ab7d0e8b45dbeb
+	source = enable_additional_cpu_optimizations-20200615.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20200615.tar.gz
+	source = 0000-sphinx-workaround.patch
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = 0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
+	source = 0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
+	source = 0004-drm-amd-display-Clear-dm_state-for-fast-updates.patch
+	source = fbcondecor-5.7.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	sha256sums = 7a54cf89d7198d99004495c0e3a25d3af05c5d5b70cccf92237f603d7fa15e08
 	sha256sums = SKIP
-	sha256sums = e0e066f3fc5f310644e9f3f3ede47db7ac040f44782f0a5cf75ce2c940444972
-	sha256sums = SKIP
-	sha256sums = b8c95822b17a90b65431c518f349bdb7a448688da2774b5b652ef085824d7b42
-	sha256sums = 19c5f002e8cb8b69c2c6dd755a6dff4ea0c46409bf50ca70461a769baab21e9a
-	sha256sums = ac0c5728ce5c3bcfc1f83327c3be6950002f321a9bd065a54ace515b7bf18f8c
-	sha256sums = 521b572c7fcd08112eb9b15d302fa30ac9bc72c590164742da3c405ba54e00ef
-	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
-	sha256sums = 0b1e41ba59ae45f5929963aa22fdc53bc8ffb4534e976cec046269d1a462197b
-	sha256sums = 6ed9e31ae5614c289c4884620e45698e764c03670ebc45bab9319d741238cbd3
+	sha256sums = 5f8b083c777a2eaeaaaab9188d2a6e9af34ebb9f424fbf2bae9ff3b18fbec00e
+	sha256sums = 278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90
+	sha256sums = 8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c
+	sha256sums = 06a9861b434f81c0d0f54c6c122df56cf0a730d0eafad888db8804152a7b9ea3
+	sha256sums = db7f7a86bba9a4959f3e4ab7d1beb51e09099ef8beb638dd4250aa375532b2c2
+	sha256sums = df205ac596ad9af28061a7dac833d52b5873882d129079ed57736dd77bbb5f8c
+	sha256sums = e9b37c73e0d81b70bc92dec7703549ab5e54f6c1d2b076e2f851e27f0b38e123
+	sha256sums = 3912d52df46d0b1aa4e7851050115aefcb75b8d884eed4cae8d9db6dd6f48b7f
 
 pkgname = linux-fbcondecor
-	pkgdesc = The Linux-fbcondecor kernel and modules
-	install = linux-fbcondecor.install
+	pkgdesc = The Linux fbcondecor kernel and modules with optimization patches and fixes and fbcondecor framebuffer decoration support.
 	depends = coreutils
-	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio>=0.7
+	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-fbcondecor=4.2.3
-	conflicts = kernel26-fbcondecor
-	replaces = kernel26-fbcondecor
-	backup = etc/mkinitcpio.d/linux-fbcondecor.preset
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = linux-fbcondecor=5.7.12
+	provides = linux-5.7.12
 
 pkgname = linux-fbcondecor-headers
-	pkgdesc = Header files and scripts for building modules for Linux-fbcondecor kernel
-	provides = kernel26-fbcondecor-headers=4.2.3
-	conflicts = kernel26-fbcondecor-headers
-	replaces = kernel26-fbcondecor-headers
-
-pkgname = linux-fbcondecor-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-fbcondecor kernel
-	provides = kernel26-fbcondecor-docs=4.2.3
-	conflicts = kernel26-fbcondecor-docs
-	replaces = kernel26-fbcondecor-docs
+	pkgdesc = Headers and scripts for building modules for the Linux fbcondecor kernel
+	depends = linux-fbcondecor
+	provides = linux-fbcondecor-headers=5.7.12
+	provides = linux-headers=5.7.12
 
