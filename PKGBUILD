@@ -1,7 +1,7 @@
 # Maintainer: Michael J. Pento <mjpento@verizon.net>
 
 pkgname=yakyak-git
-pkgver=v1.5.5.r1070.g3afc470
+pkgver=v1.2.0.r1161.gb11ca58
 pkgrel=1
 pkgdesc="Desktop client for Google Hangouts"
 arch=('x86_64' 'i686')
