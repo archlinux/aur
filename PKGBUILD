@@ -1,7 +1,7 @@
 # Maintainer: abcfy2 <abcfy2@163.com>
 
 pkgname=('deepin-wine5' 'deepin-wine5-i386' 'deepin-wine5-tools')
-pkgver=5.0.6
+pkgver=5.0.11
 pkgrel=1
 pkgdesc="Deepin Wine5"
 arch=('i686' 'x86_64')
@@ -19,9 +19,9 @@ noextract=(
     "deepin-wine5-tools_${pkgver}-${pkgrel}_i386.deb"
 )
 md5sums=(
-    '9bc918d968916180db34528de8b2b9d6'
-    'eb277f9aebc6bcd57590611044fec759'
-    'cde153ff6127409929cf58ee42bf37d8'
+    '7eac8b1924331c6204754a32b4955242'
+    '03f6b8554645fbdd59a3cf81ed1d8354'
+    '834f320cff9a4a17f3a262a2d406407c'
 )
 
 package_deepin-wine5() {
