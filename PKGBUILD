@@ -24,14 +24,14 @@ prepare() {
     mv "MCreator.desktop" "${pkgname}.desktop"
 
     # make executable
-    cd ${srcdir}/MCreator20203
+    cd ${srcdir}/MCreator20204
     wget "https://pastebin.com/raw/EhmVNZLX" -O "mcreatorlaunch.sh" | dos2unix
     dos2unix ./mcreatorlaunch.sh
 }
 
 package() {
     # install the main files.
-    cd ${srcdir}/MCreator20203
+    cd ${srcdir}/MCreator20204
     install -d -m755 "${pkgdir}/opt/${pkgname}"
     cp -Rr "${srcdir}/MCreator20203/"* "${pkgdir}/opt/${pkgname}"
 
@@ -40,7 +40,7 @@ package() {
 	
     # install the icon
     install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
-    cd ${srcdir}/MCreator20203
+    cd ${srcdir}/MCreator20204
     mv "icon.png" "${pkgname}.png"
     cp -Rr "${srcdir}/MCreator20203/${pkgname}.png" "${pkgdir}/usr/share/icons"
 	
