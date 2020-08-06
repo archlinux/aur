@@ -1,0 +1,18 @@
+pkgbase = nco-git
+	pkgdesc = Manipulate and analyze data stored in netCDF-accessible formats
+	pkgver = r14171.1ce76d6e0
+	pkgrel = 1
+	url = http://nco.sourceforge.net
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = netcdf
+	optdepends = udunits
+	optdepends = gsl
+	optdepends = gadap
+	optdepends = antlr2
+	source = git+https://github.com/nco/nco.git
+	md5sums = SKIP
+
+pkgname = nco-git
+
