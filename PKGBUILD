@@ -7,7 +7,7 @@ _pkgname=caddy
 pkgver=2.1.1
 _tag=v2.1.1
 _distcommit='a509155e3cff18af793f6af5f930a71c89e05df8'
-pkgrel=5
+pkgrel=6
 pkgdesc="Fast web server with automatic HTTPS"
 arch=('x86_64')
 url="https://caddyserver.com"
@@ -40,14 +40,6 @@ validpgpkeys=(
 
 prepare() {
   sed 's|/var/www/html|/srv/http|g' -i "${srcdir}/index-${_distcommit}.html"
-
-  # Build instructions as per https://github.com/caddyserver/caddy#with-version-information-andor-plugins
-  cd "${_pkgname}/cmd/caddy/"
-  if ! test -f go.mod; then
-    go mod init caddy
-  fi
-  go get github.com/caddyserver/caddy/v2@${_tag} # Pin version
-  go mod tidy # Update go.sum
 }
 
 build() {
@@ -57,6 +49,16 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+  
+  # Build instructions as per https://github.com/caddyserver/caddy#with-version-information-andor-plugins
+  if ! test -f go.mod; then
+    go mod init caddy
+  fi
+  go get github.com/caddyserver/caddy/v2@${_tag} # Pin version
+  go mod tidy # Update go.sum
+
+  # Add -mod=readonly
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   go build .
 }
