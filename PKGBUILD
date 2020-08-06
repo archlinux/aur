@@ -3,16 +3,16 @@
 
 _rockname=std-_debug
 pkgbase=lua-$_rockname
-pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 _pkgname=_debug
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 _rockrel=1
 pkgdesc='Lua Debug Hints Library'
 arch=('any')
 url="https://github.com/lua-stdlib/$_pkgname"
 license=('MIT')
-makedepends=('lua' 'lua52' 'lua51' 'luarocks')
+makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('efc560540f08dcf880ac48c6ab527bd741bbe3d6d66202a3c8be3ff5c9e1e907')
 
@@ -25,6 +25,11 @@ _package_helper() {
 
 package_lua-std-_debug() {
   depends+=('lua')
+  _package_helper 5.4
+}
+
+package_lua53-std-_debug() {
+  depends+=('lua53')
   _package_helper 5.3
 }
 
