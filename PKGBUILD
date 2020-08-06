@@ -2,7 +2,7 @@
 
 pkgname=qencoder
 _name="${pkgname#python-}"
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=1
 pkgdesc='A Qt video encoder GUI for open codec formats'
 url='https://github.com/natis1/qencoder'
@@ -22,7 +22,7 @@ depends=(
 optdepends=('vmaf: Target vmaf support',
 'python-scenedetect: Splitting based on scenedetect instead of (the slower but more accurate) firstpass')
 
-sha256sums=('acafd366e6bbb41e574da66a4366742cf761d07e2d6561e37de5fd6c3420cac6'
+sha256sums=('4f19e4392bdc99cfdb40548b141c67c9173d04a096bb5658b417035eecede8dd'
             '3e9786a3fe1b7d6e3798fcf07cdd1e5db29e125cdc4c559dc095a8b1a143b1a5')
 
 build() {
