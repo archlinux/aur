@@ -1,11 +1,12 @@
 pkgbase = lua-luassert
 	pkgdesc = Lua Assertions Extension
 	pkgver = 1.8.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://olivinelabs.com/busted/
 	arch = any
 	license = MIT
 	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
@@ -15,6 +16,10 @@ pkgbase = lua-luassert
 pkgname = lua-luassert
 	depends = lua
 	depends = lua-say
+
+pkgname = lua53-luassert
+	depends = lua53
+	depends = lua53-say
 
 pkgname = lua52-luassert
 	depends = lua52
