@@ -1,6 +1,6 @@
 pkgbase = linux-slim
 	pkgver = 5.8.v.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -18,7 +18,7 @@ pkgbase = linux-slim
 	source = linux.install
 	source = 5013_enable-cpu-optimizations-for-gcc10.patch
 	sha256sums = SKIP
-	sha256sums = 85b0078fda345f2607e7bcdc99eed2b824447d390e4b7aadf32d02756e6a79b2
+	sha256sums = 060fb0244856da0a1c106277771388a007fa0b5f635c6461dd0106b70d18d571
 	sha256sums = 41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 5ab29eb64e57df83b395a29a6a4f89030d142feffbfbf73b3afc6d97a2a7fd12
