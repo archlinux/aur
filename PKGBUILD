@@ -6,11 +6,11 @@
 pkgbase=libim
 pkgname=('libim' 'lua-im' 'lua51-im' 'lua52-im' 'lua53-im')
 pkgver=3.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolkit for digital imaging"
 arch=('i686' 'x86_64')
 url="https://www.tecgraf.puc-rio.br/im/"
-makedepends=('lsb-release' 'lua' 'lua51' 'lua52' 'lua53')
+makedepends=('lsb-release' 'lua' 'lua51' 'lua52' 'lua53' 'fftw')
 license=('MIT')
 source=(
   "https://downloads.sourceforge.net/project/imtoolkit/${pkgver}/Docs%20and%20Sources/im-${pkgver}_Sources.tar.gz"

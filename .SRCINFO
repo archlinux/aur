@@ -1,7 +1,7 @@
 pkgbase = libim
 	pkgdesc = Toolkit for digital imaging
 	pkgver = 3.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tecgraf.puc-rio.br/im/
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = libim
 	makedepends = lua51
 	makedepends = lua52
 	makedepends = lua53
+	makedepends = fftw
 	noextract = im-3.15_Sources.tar.gz
 	source = https://downloads.sourceforge.net/project/imtoolkit/3.15/Docs%20and%20Sources/im-3.15_Sources.tar.gz
 	source = https://downloads.sourceforge.net/project/imtoolkit/3.15/Docs%20and%20Sources/im-3.15_Docs.pdf
