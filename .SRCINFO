@@ -1,7 +1,7 @@
 pkgbase = lua-posix
 	pkgdesc = POSIX bindings for Lua
-	pkgver = 34.1.1
-	pkgrel = 4
+	pkgver = 35.0
+	pkgrel = 1
 	url = https://github.com/luaposix/luaposix
 	arch = x86_64
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = lua-posix
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
-	source = luaposix-34.1.1.tar.gz::https://github.com/luaposix/luaposix/archive/release-v34.1.1.tar.gz
-	sha256sums = 273df2dbd9581a2f22e4265f14d0d759c487c0c9830f94395d7d690474382810
+	source = luaposix-35.0.tar.gz::https://github.com/luaposix/luaposix/archive/v35.0.tar.gz
+	sha256sums = a4edf2f715feff65acb009e8d1689e57ec665eb79bc36a6649fae55eafd56809
 
 pkgname = lua-posix
 	depends = lua
