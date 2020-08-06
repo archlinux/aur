@@ -2,11 +2,11 @@
 
 pkgname=stig
 pkgver=0.11.2a0
-pkgrel=3
+pkgrel=4
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
 depends=('python' 'python-urwid' 'python-urwidtrees' 'python-aiohttp'
-	 'python-pyxdg' 'python-blinker' 'python-natsort')
+	 'python-pyxdg' 'python-blinker' 'python-natsort' 'python-mock')
 makedepends=('python-setuptools')
 optdepends=('python-pprofile: profiling'
 	    'python-setproctitle: prettifies the process name')
@@ -19,7 +19,6 @@ sha256sums=('cf2f57486fa980407b9762750e669099857069e6e17dd97860b5beada735efeb')
 
 prepare(){
 	cd "stig-${pkgver}"
-	sed -i 's/urwidtrees>=1.0.3dev0/urwidtrees>=1.0.2/' setup.py
 	rm .python-version
 }
 
