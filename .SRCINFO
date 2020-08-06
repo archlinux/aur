@@ -11,6 +11,7 @@ pkgbase = libxft-bgra-git
 	depends = fontconfig
 	depends = libxrender
 	depends = curl
+	depends = xorg-util-macros
 	provides = libxft
 	conflicts = libxft
 	source = git+https://gitlab.freedesktop.org/xorg/lib/libxft.git
