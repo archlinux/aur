@@ -1,6 +1,6 @@
 # Maintainer: Tomas Krizek <tomas.krizek@nic.cz>
 pkgname=dnsjit-git
-pkgver=v0.9.8.r264.1a1bf18
+pkgver=v1.0.0.r40.a5a96f1
 pkgrel=1
 pkgdesc="Engine for capturing, parsing and replaying DNS"
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
     )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname}::git+https://github.com/DNS-OARC/${pkgname%-git}.git")
+source=("git+https://github.com/DNS-OARC/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
