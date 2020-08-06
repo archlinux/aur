@@ -3,11 +3,11 @@
 
 pkgname=stig-git
 pkgver=0.11.2a0.r13.7d8b621d
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI and CLI client for the Transmission daemon'
 url='https://github.com/rndusr/stig'
 depends=('python' 'python-urwid' 'python-urwidtrees' 'python-aiohttp'
-	 'python-pyxdg' 'python-blinker' 'python-natsort' 'python-mock')
+	 'python-pyxdg' 'python-blinker' 'python-natsort')
 makedepends=('git' 'python-setuptools')
 optdepends=('python-aiohttp-socks: proxy support'
 	    'python-pprofile: profiling'
