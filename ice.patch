@@ -1,23 +1,23 @@
 diff -ru --color old/usr/bin/ice new/usr/bin/ice
---- old/usr/bin/ice	2020-02-15 01:22:24.116774879 +0100
-+++ new/usr/bin/ice	2020-02-15 01:23:35.936773243 +0100
-@@ -39,8 +39,8 @@
- _FF_PROFILES_DIR = "{0}/firefox".format(_ICE_DIR)
+--- old/usr/bin/ice	2020-08-06 16:16:29.766880323 +0200
++++ new/usr/bin/ice	2020-08-06 16:18:03.276808705 +0200
+@@ -44,8 +44,8 @@
  _ICE_ICON = "/usr/share/pixmaps/ice.png"
- _BRAVE_BIN = "/usr/bin/brave"
+ _ICON_DIR = "{0}/icons".format(_ICE_DIR)
+ _BRAVE_BIN = "/usr/bin/brave-browser"
 -_CHROME_BIN = "/usr/bin/google-chrome"
 -_CHROMIUM_BIN = "/usr/bin/chromium-browser"
 +_CHROME_BIN = "/usr/bin/google-chrome-stable"
 +_CHROMIUM_BIN = "/usr/bin/chromium"
  _VIVALDI_BIN = "/usr/bin/vivaldi-stable"
  _FIREFOX_BIN = "/usr/bin/firefox"
- 
-@@ -259,7 +259,7 @@
-     if chrome.get_active() == True:
-         browser = "google-chrome"
-     elif chromium.get_active() == True:
--        browser = "chromium-browser"
-+        browser = "chromium"
-     elif brave.get_active() == True:
-         browser = "brave"
-     elif vivaldi.get_active() == True:
+ _EPIPHANY_BIN = "/usr/bin/epiphany-browser"
+@@ -693,7 +693,7 @@
+         if self.chrome.get_active() is True:
+             self.browser = "google-chrome"
+         elif self.chromium.get_active() is True:
+-            self.browser = "chromium-browser"
++            self.browser = "chromium"
+         elif self.brave.get_active() is True:
+             self.browser = "brave"
+         elif self.vivaldi.get_active() is True:
