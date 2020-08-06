@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=avif-git
-pkgver=0.7.3.r87.gba1eb49
+pkgver=0.8.1.r1.g2ac8186
 pkgrel=1
 pkgdesc="Library for encoding and decoding .avif files"
 arch=('i686' 'x86_64')
 url="https://github.com/AOMediaCodec/libavif"
 license=('BSD')
 depends=('glibc' 'dav1d' 'libjpeg' 'rav1e')
-makedepends=('git' 'cmake' 'nasm' 'gdk-pixbuf2' 'pkgconf')
+makedepends=('git' 'cmake' 'nasm' 'pkgconf' 'gdk-pixbuf2')
 provides=('avif')
 conflicts=('avif')
 source=("git+https://github.com/AOMediaCodec/libavif.git")

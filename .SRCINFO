@@ -1,6 +1,6 @@
 pkgbase = avif-git
 	pkgdesc = Library for encoding and decoding .avif files
-	pkgver = 0.7.3.r87.gba1eb49
+	pkgver = 0.8.1.r1.g2ac8186
 	pkgrel = 1
 	url = https://github.com/AOMediaCodec/libavif
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = avif-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = nasm
-	makedepends = gdk-pixbuf2
 	makedepends = pkgconf
+	makedepends = gdk-pixbuf2
 	depends = glibc
 	depends = dav1d
 	depends = libjpeg
