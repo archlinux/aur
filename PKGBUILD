@@ -1,7 +1,7 @@
 # Maintainer: Jean-Francois Chevrette <jfchevrette@gmail.com>
 
 pkgname=ytt
-pkgver=0.28.0
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="YAML templating tool that works on YAML structure instead of text"
 url="https://get-ytt.io/"
@@ -33,7 +33,8 @@ build() {
 		cd pkg/website
 		./../../ytt \
 			-f . \
-			-f ../../examples/playground \
+			-f ../../examples/playground/basics \
+			-f ../../examples/playground/getting-started \
 			-f $build_values_path \
 			--file-mark 'alt-example**/*:type=data' \
 			--file-mark 'example**/*:type=data' \
@@ -52,3 +53,4 @@ package() {
 	install -Dm755 "${pkgname}" "${pkgdir}"/usr/bin/${pkgname}
 	install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
+sha256sums=('15d030b661dd16714625f514703b6b2706692070dee94277623a0dfe7ad36ae6')
