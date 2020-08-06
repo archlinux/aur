@@ -2,7 +2,7 @@
 # Contributor: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 pkgname=ckb-next
 pkgver=0.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Corsair Keyboard and Mouse Input Driver, release version"
 arch=('i686' 'x86_64')
 url="https://github.com/ckb-next/ckb-next"
@@ -13,8 +13,10 @@ optdepends=('libappindicator-gtk2: Ayatana indicators in Unity, KDE or Systray (
 conflicts=('ckb-git' 'ckb-git-latest' 'ckb-next-git')
 provides=('ckb-next')
 install=ckb-next.install
-source=("https://github.com/ckb-next/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('75b6908d5590c293dee8258a83d4ebe206306d3df9f867596e953ef7c6a86440')
+source=("https://github.com/ckb-next/$pkgname/archive/v$pkgver.tar.gz"
+        "a9f41cd8b8f5b04c0c66c6d94f96a9725943831e.patch")
+sha256sums=('75b6908d5590c293dee8258a83d4ebe206306d3df9f867596e953ef7c6a86440'
+            '33eb682dfb0b0651fcf7e922978fb09ae07f072dabe538976a3b1ecf9115120f')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -32,7 +34,7 @@ build() {
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  patch -p1 -i "$srcdir/../a9f41cd8b8f5b04c0c66c6d94f96a9725943831e.patch"
+  patch -p1 -i "$srcdir/a9f41cd8b8f5b04c0c66c6d94f96a9725943831e.patch"
 }
 
 package() {
