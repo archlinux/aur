@@ -1,0 +1,43 @@
+diff --unified --recursive --text JamTaba-2.1.15.orig/src/Common/gui/chat/ChatMessagePanel.h JamTaba-2.1.15.new/src/Common/gui/chat/ChatMessagePanel.h
+--- JamTaba-2.1.15.orig/src/Common/gui/chat/ChatMessagePanel.h	2020-08-05 22:22:24.785499649 +0200
++++ JamTaba-2.1.15.new/src/Common/gui/chat/ChatMessagePanel.h	2020-08-05 22:22:34.752167451 +0200
+@@ -4,6 +4,7 @@
+ #include <QFrame>
+ #include <QNetworkAccessManager>
+ #include <QNetworkReply>
++#include <QPainterPath>
+ 
+ namespace Ui {
+ class ChatMessagePanel;
+diff --unified --recursive --text JamTaba-2.1.15.orig/src/Common/gui/intervalProgress/PiePaintStrategy.cpp JamTaba-2.1.15.new/src/Common/gui/intervalProgress/PiePaintStrategy.cpp
+--- JamTaba-2.1.15.orig/src/Common/gui/intervalProgress/PiePaintStrategy.cpp	2020-08-05 22:22:02.162163006 +0200
++++ JamTaba-2.1.15.new/src/Common/gui/intervalProgress/PiePaintStrategy.cpp	2020-08-05 22:22:12.138831259 +0200
+@@ -1,5 +1,6 @@
+ #include "IntervalProgressDisplay.h"
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ void IntervalProgressDisplay::PiePaintStrategy::paint(QPainter &p, const PaintContext &context, const PaintColors &colors)
+ {
+diff --unified --recursive --text JamTaba-2.1.15.orig/src/Common/upnp/UPnPManager.cpp JamTaba-2.1.15.new/src/Common/upnp/UPnPManager.cpp
+--- JamTaba-2.1.15.orig/src/Common/upnp/UPnPManager.cpp	2020-08-05 21:50:58.039443247 +0200
++++ JamTaba-2.1.15.new/src/Common/upnp/UPnPManager.cpp	2020-08-05 22:18:41.992081993 +0200
+@@ -13,7 +13,6 @@
+ #include "miniwget.h"
+ #include "upnpcommands.h"
+ #include "upnperrors.h"
+-#include "miniupnpcstrings.h"
+ 
+ UPnPManager::UPnPManager() :
+     QObject(nullptr),
+diff --unified --recursive --text JamTaba-2.1.15.orig/src/Standalone/gui/LocalTrackViewStandalone.cpp JamTaba-2.1.15.new/src/Standalone/gui/LocalTrackViewStandalone.cpp
+--- JamTaba-2.1.15.orig/src/Standalone/gui/LocalTrackViewStandalone.cpp	2020-08-05 22:21:30.775489996 +0200
++++ JamTaba-2.1.15.new/src/Standalone/gui/LocalTrackViewStandalone.cpp	2020-08-05 22:21:40.152158778 +0200
+@@ -11,6 +11,7 @@
+ #include <QStyle>
+ #include <QSlider>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QDesktopWidget>
+ 
+ LocalTrackViewStandalone::LocalTrackViewStandalone(controller::MainControllerStandalone *mainController, int channelIndex) :

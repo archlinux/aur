@@ -1,0 +1,24 @@
+pkgbase = jamtaba
+	pkgdesc = Ninjam online music jamsession client.
+	pkgver = 2.1.15
+	pkgrel = 1
+	url = https://github.com/elieserdejesus/JamTaba/wiki
+	arch = i686
+	arch = x86_64
+	makedepends = steinberg-vst36
+	depends = qt5-base
+	depends = portaudio
+	depends = ffmpeg
+	depends = x264
+	depends = miniupnpc
+	depends = libvorbis
+	depends = libogg
+	depends = alsa-lib
+	provides = jamtaba
+	source = JamTaba-2.1.15.tar.gz::https://github.com/elieserdejesus/JamTaba/archive/v2.1.15.tar.gz
+	source = package.patch
+	sha256sums = 00d68b4207e87bd3311275ed221c041bd1b082149287d274c0f6a6058ee5bb2a
+	sha256sums = d4bc9cbc29332af16328a04f75ee6693e3858eac21545cdba38fd536113f0bdc
+
+pkgname = jamtaba
+
