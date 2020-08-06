@@ -1,12 +1,13 @@
 pkgbase = lua-lub
 	pkgdesc = Lubyk base module
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://lubyk.github.io/lubyk/lub.html
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
@@ -16,6 +17,10 @@ pkgbase = lua-lub
 pkgname = lua-lub
 	depends = lua
 	depends = lua-filesystem
+
+pkgname = lua53-lub
+	depends = lua53
+	depends = lua53-filesystem
 
 pkgname = lua52-lub
 	depends = lua52
