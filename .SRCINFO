@@ -1,14 +1,15 @@
 pkgbase = cloud-hypervisor
 	pkgdesc = A Rust-VMM based cloud hypervisor from Intel
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/cloud-hypervisor/cloud-hypervisor
 	arch = x86_64
+	arch = aarch64
 	license = Apache:2.0
 	makedepends = rust
 	depends = virtiofsd
-	source = https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v0.8.0.tar.gz
-	sha512sums = 836aa692028c5b84b122e6586b6da7a3d5cb526914cee541d857a07e83806fe3fabecfa4ebf9f8128ad6c2fb9d0a6ac287ce1bd5137c5a4cf8f5e98771eb8af2
+	source = https://github.com/cloud-hypervisor/cloud-hypervisor/archive/v0.9.0.tar.gz
+	sha512sums = af58060dcd8009b60b2adeea486c0a2a85d83212f742523931a013827bd7a500f58fa9805da2414575e8ce3d7070c72ffc384a1a9ad8c1c4af1cf7a19099bbf7
 
 pkgname = cloud-hypervisor
 
