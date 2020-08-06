@@ -1,0 +1,16 @@
+pkgbase = cool
+	pkgdesc = A little script that plays a random MOD file from modarchive.org
+	pkgver = 0.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL3
+	depends = curl
+	depends = xmp
+	source = cool::https://gist.githubusercontent.com/orhun/eda9701e357b625c2bada19563872715/raw/24e3a123f4024021c30bba2c77474832ede683ec/cool.sh
+	sha512sums = SKIP
+
+pkgname = cool
+
