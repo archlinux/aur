@@ -38,11 +38,6 @@ validpgpkeys=(
   '29D0817A67156E4F25DC24782A349DD577D586A5' # Matthew Holt <mholt@users.noreply.github.com>
 )
 
-pkgver() {
-  cd ${_pkgname}
-  git describe --tags --match 'v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
   sed 's|/var/www/html|/srv/http|g' -i "${srcdir}/index-${_distcommit}.html"
   sed 's|/etc/caddy/Caddyfile|/etc/caddy/caddy.conf|g' -i "${srcdir}/index-${_distcommit}.html"
