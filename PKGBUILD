@@ -2,12 +2,12 @@
 
 pkgname=theia-electron
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
 license=('EPL2')
-depends=('nodejs-lts-dubnium' 'nss' 'gtk3' 'libxss' 'libxkbfile')
+depends=('nodejs>=10.11.0' 'nodejs<13' 'nss' 'gtk3' 'libxss' 'libxkbfile')
 makedepends=('yarn' 'make' 'gcc' 'pkgconf' 'python2' 'node-gyp')
 optdepends=('git: git support')
 options=(!strip) #to speed up build
