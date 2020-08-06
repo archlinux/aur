@@ -2,7 +2,7 @@ pkgbase = dwm-supermario9590-git
 	pkgdesc = A heavily-patched and customized build of dwm from Supermario9590.
 	pkgver = 6.2.r2.b28cc27
 	pkgrel = 1
-	url = https://github.com/supermario9590/dwm-supermario9590.git
+	url = https://gitlab.com/supermario9590/dwm-supermario9590.git
 	arch = x86_64
 	arch = i686
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = dwm-supermario9590-git
 	optdepends = surf
 	provides = dwm
 	conflicts = dwm
-	source = git+https://github.com/supermario9590/dwm-supermario9590.git
+	source = git+https://gitlab.com/supermario9590/dwm-supermario9590.git
 	md5sums = SKIP
 
 pkgname = dwm-supermario9590-git
