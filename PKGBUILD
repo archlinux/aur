@@ -1,8 +1,7 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-professional
-pkgver=2020.2.0
-_pkgver=2020.2
+pkgver=2020.2
 pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64')
@@ -16,11 +15,11 @@ backup=(
     "opt/$pkgname/bin/idea.properties"
 )
 depends=('giflib' 'glibc' 'sh' 'libxtst' 'libxslt' 'python' 'libdbusmenu-glib')
-source=("https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz"
+source=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz"
         "pycharm-professional.desktop"
         "charm.desktop"
         "charm")
-# https://download.jetbrains.com/python/pycharm-professional-${_pkgver}.tar.gz.sha256
+# https://download.jetbrains.com/python/pycharm-professional-${pkgver}.tar.gz.sha256
 sha256sums=('5301e54af750d45bd53456c8330b76e5ce92977b75be45436587f930d4b20077'
             'aaf7113e8c56e4d977eca204d57350d9493eda2710abefd2488a2b5d47c53344'
             'b026ef96831448be743f86e7e44bfa676629e8c3eb418c893fd87515c06263a7'
@@ -47,7 +46,7 @@ optdepends=('python2: Python 2 support'
             'python-docutils-stubs: For build documentation with sphynx')
             
 build() {
-  cd "pycharm-$_pkgver"
+  cd "pycharm-$pkgver"
 
   # compile PyDev debugger used by PyCharm to speedup debugging
   python plugins/python/helpers/pydev/setup_cython.py build_ext --build-temp build --build-lib .
@@ -57,11 +56,11 @@ build() {
 
 package() {
   # workaround FS#40934
-  sed -i "s/lcd/on/" "pycharm-$_pkgver/bin/"*.vmoptions
+  sed -i "s/lcd/on/" "pycharm-$pkgver/bin/"*.vmoptions
 
   # base
   install -dm 755 "$pkgdir/opt/$pkgname"
-  cp -dr --no-preserve=ownership "pycharm-$_pkgver/"* "$pkgdir/opt/$pkgname/"
+  cp -dr --no-preserve=ownership "pycharm-$pkgver/"* "$pkgdir/opt/$pkgname/"
   install -dm 755 "$pkgdir/usr/share/"{applications,pixmaps}
   install -Dm 644 "$pkgdir/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/pixmaps/pycharm.png"
   install -Dm 644 pycharm-professional.desktop "$pkgdir/usr/share/applications/"
@@ -72,7 +71,7 @@ package() {
   
   # licenses
   install -dm 755 "$pkgdir/usr/share/licenses/$pkgname/"
-  cp -dr --no-preserve=ownership "pycharm-$_pkgver/license/"* "$pkgdir/usr/share/licenses/$pkgname/"
+  cp -dr --no-preserve=ownership "pycharm-$pkgver/license/"* "$pkgdir/usr/share/licenses/$pkgname/"
   
   # install charm application - for edit a single file in Pycharm
   install -Dm 755 charm "$pkgdir/usr/bin/"
