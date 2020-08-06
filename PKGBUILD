@@ -1,10 +1,11 @@
+# Maintained by johnnyapol (arch@johnnyapol.me)
 # Based off the discord community repo PKGBUILD by Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=discord_arch_electron
 _pkgname=discord
-pkgver=0.0.10
-pkgrel=5
-pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
+pkgver=0.0.11
+pkgrel=1
+pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord')
 conflicts=('discord')
@@ -16,7 +17,7 @@ optdepends=('libpulse: Pulseaudio support'
 source=("https://dl.discordapp.net/apps/linux/$pkgver/$_pkgname-$pkgver.tar.gz"
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
-sha512sums=('c30a1da037edb007821f55b4980a25949fed854c5cf01180d5a6cee7e14535eb0aa6ac002a2ece70121516b249aad5a7ac17d84e15858be5113c62830ec07429'
+sha512sums=('aac728bd514b2d3467bf21291fc96192cc3024b41471cd220e6fd74792a4131a1448cd2e0f5092e476b472be8d12c4deebcc46d2b0908e21b1626215ec7c4d5f'
              SKIP
              SKIP)
 
