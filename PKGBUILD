@@ -1,7 +1,7 @@
 # Contributor: Tomas Ostasevicius <t dot ostasevicius at gmail dot com>
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=hyperspy
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Hyperspectral data analysis"
 arch=('any')
@@ -14,10 +14,13 @@ depends=('python' 'python-scipy' 'python-matplotlib' 'python-numpy'
          'ipython-ipyparallel' 'python-dask' 'python-scikit-image'
          'python-pint' 'python-statsmodels' 'python-numexpr' 'python-sparse'
          'python-imageio' 'python-pyaml' 'python-ptable' 'python-tifffile'          
-         )
+         'python-numba' )
 
-optdepends=('python-pillow: tiff export'
-            'python-seaborn: prettier plotting')
+optdepends=('python-scikit-learn: learning'
+            'hyperspy-gui-ipywidgets: gui-jupyter'
+            'hyperspy-gui-traitsui: gui-traitsui' 
+	    'python-blosc: mrcz'
+            'cython: speed' )
 
 makedepends=('python-setuptools' )
 
@@ -25,7 +28,7 @@ provides=('hyperspy')
 conflicts=('hyperspy')
 
 source=(https://github.com/hyperspy/hyperspy/archive/v$pkgver.zip)
-sha256sums=('fd326d22be987038b2415d7886c39199569235d92aa2d6167c539a4dce125358')
+sha256sums=('942294a6a6f76ccb55c510ca07293ef93b3fe4eedd37b840b9c88366624b2026')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"

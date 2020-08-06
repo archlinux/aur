@@ -1,6 +1,6 @@
 pkgbase = hyperspy
 	pkgdesc = Hyperspectral data analysis
-	pkgver = 1.5.2
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://hyperspy.org
 	arch = any
@@ -29,12 +29,16 @@ pkgbase = hyperspy
 	depends = python-pyaml
 	depends = python-ptable
 	depends = python-tifffile
-	optdepends = python-pillow: tiff export
-	optdepends = python-seaborn: prettier plotting
+	depends = python-numba
+	optdepends = python-scikit-learn: learning
+	optdepends = hyperspy-gui-ipywidgets: gui-jupyter
+	optdepends = hyperspy-gui-traitsui: gui-traitsui
+	optdepends = python-blosc: mrcz
+	optdepends = cython: speed
 	provides = hyperspy
 	conflicts = hyperspy
-	source = https://github.com/hyperspy/hyperspy/archive/v1.5.2.zip
-	sha256sums = fd326d22be987038b2415d7886c39199569235d92aa2d6167c539a4dce125358
+	source = https://github.com/hyperspy/hyperspy/archive/v1.6.0.zip
+	sha256sums = 942294a6a6f76ccb55c510ca07293ef93b3fe4eedd37b840b9c88366624b2026
 
 pkgname = hyperspy
 
