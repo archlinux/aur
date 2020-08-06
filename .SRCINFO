@@ -1,0 +1,19 @@
+pkgbase = monica-git
+	pkgdesc = Personal CRM. Remember everything about your friends, family and business relationships
+	pkgver = v2.18.0.r145.g836e2ea5b
+	pkgrel = 1
+	url = https://www.monicahq.com
+	arch = any
+	license = AGPL-3.0
+	makedepends = composer
+	depends = php>=7.2
+	optdepends = mariadb: database
+	optdepends = mysql: database
+	optdepends = apache: web server
+	optdepends = nginx: web server
+	backup = etc/webapps/monica/config.env
+	source = git+https://github.com/monicahq/monica.git
+	sha512sums = SKIP
+
+pkgname = monica-git
+
