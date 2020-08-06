@@ -1,0 +1,17 @@
+pkgbase = libdesqui-git
+	pkgdesc = DesQ UI Library. This library contains all the common UI widget which are to be used across the DesQ Project.
+	pkgver = r6.4b03a50
+	pkgrel = 1
+	url = https://gitlab.com/DesQ
+	arch = any
+	groups = desq-git
+	license = none
+	makedepends = git
+	depends = libdesq-git
+	provides = libdesqui
+	conflicts = libdesqui
+	source = git+https://gitlab.com/Desq/libdesqui.git
+	md5sums = SKIP
+
+pkgname = libdesqui-git
+
