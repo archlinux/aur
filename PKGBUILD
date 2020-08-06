@@ -12,7 +12,7 @@ url="https://github.com/osch/lua-mtmsg#mtmsg"
 license=("MIT")
 depends=("lua51")
 makedepends=("luarocks")
-source=("https://github.com/osch/$pkgname/archive/v$pkgver.tar.gz")
+source=("https://github.com/osch/lua-$_pkgluaname/archive/v$pkgver.tar.gz")
 package() {
 	_luaver=$($_luacmd -e 'io.write(_VERSION:gsub("^.* (.*)$","%1"),"")')
 	cd "$srcdir/lua-mtmsg-$pkgver"
