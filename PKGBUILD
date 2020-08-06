@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=systemd-swap-git
-pkgver=4.2.2.r5.g292cd1b
+pkgver=4.3.3.r5.g34c22e6
 pkgrel=1
 pkgdesc="Script for creating hybrid swap space from zram swaps, swap files and swap partitions"
 arch=('any')
 url="https://github.com/Nefelim4ag/systemd-swap"
 license=('GPL3')
-depends=('bash' 'systemd')
+depends=('python' 'python-systemd' 'python-sysv-ipc')
 makedepends=('git')
 provides=('systemd-swap')
 conflicts=('systemd-swap')
