@@ -1,4 +1,5 @@
 # Maintainer: Christian Zugno < chriszugno [at] gmail [dot] com >
+# Contributor: Kazuo Teramoto < kaz.rag [at] gmail [dot] com >
 
 pkgname=stig
 pkgver=0.11.2a0
