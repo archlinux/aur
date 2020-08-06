@@ -1,0 +1,9 @@
+post_install() {
+  cat << EOF
+
+  Before running cmus-syncthing, you need to generate a config file :
+
+    $ cmus-syncthing init
+
+EOF
+}

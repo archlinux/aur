@@ -1,0 +1,17 @@
+pkgbase = cmus-syncthing
+	pkgdesc = Sync utility for cmus playlists using Syncthing
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/atrax-dev/cmus-syncthing
+	install = cmus-syncthing.install
+	arch = any
+	license = custom:0BSD
+	depends = python-pyxdg
+	depends = python-setuptools
+	optdepends = cmus: playlist creation
+	optdepends = syncthing: syncing
+	source = https://github.com/atrax-dev/cmus-syncthing/archive/v0.7.0.tar.gz
+	sha256sums = b5692e257b0af39c8e65bd9db35a78b99021cfa24eb7b1d14690755c29d1e472
+
+pkgname = cmus-syncthing
+
