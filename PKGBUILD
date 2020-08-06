@@ -1,21 +1,22 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tss-git
-pkgver=2.4.0.r81.15073cc3
+pkgver=3.0.0.r16.76be63d6
 pkgrel=1
 pkgdesc='Implementation of the TCG Trusted Platform Module 2.0 Software Stack (TSS2)'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-tss'
 license=('BSD')
 depends=('curl' 'json-c' 'openssl' 'libjson-c.so')
-makedepends=('git' 'autoconf-archive' 'doxygen')
-checkdepends=('cmocka' 'ibm-sw-tpm2' 'iproute2' 'uthash')
+makedepends=('git' 'autoconf-archive' 'cmocka' 'doxygen')
+checkdepends=('iproute2' 'swtpm' 'uthash')
 provides=("${pkgname%-git}" 'libtss2-esys.so' 'libtss2-fapi.so' 'libtss2-mu.so' 'libtss2-rc.so'
           'libtss2-sys.so' 'libtss2-tctildr.so')
 conflicts=("${pkgname%-git}")
 backup=('etc/tpm2-tss/fapi-config.json'
         'etc/tpm2-tss/fapi-profiles/P_ECCP256SHA256.json'
         'etc/tpm2-tss/fapi-profiles/P_RSA2048SHA256.json')
+options=('!emptydirs')
 source=("git+$url.git")
 sha512sums=('SKIP')
 
@@ -34,7 +35,7 @@ build() {
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
 	            --with-runstatedir=/run --with-sysusersdir=/usr/lib/sysusers.d \
 	            --with-tmpfilesdir=/usr/lib/tmpfiles.d --with-udevrulesprefix=60- \
-	            $( ((CHECKFUNC)) && echo --enable-unit --enable-integration)
+	            --enable-unit $( ((CHECKFUNC)) && echo --enable-integration)
 	make
 }
 
