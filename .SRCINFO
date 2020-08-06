@@ -1,7 +1,7 @@
 pkgbase = alien_package_converter
 	pkgdesc = Alien is a program that converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
 	pkgver = 8.95
-	pkgrel = 4
+	pkgrel = 5
 	url = http://joeyh.name/code/alien/
 	arch = any
 	license = GPL2
