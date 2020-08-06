@@ -3,10 +3,10 @@
 _rockname=testmore
 _project=lua-TestMore
 pkgbase=lua-$_rockname
-pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.3.5
 _rockrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc='A Lua port of the Perl Test::More unit testing framework'
 arch=('any')
 url="https://framagit.org/fperrad/$_project"
@@ -23,11 +23,16 @@ check() {
 _package_helper() {
   cd "$_project-$pkgver"
   make LUAVER="$1" PREFIX=/usr DESTDIR="$pkgdir" install
-  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYRIGHT
 }
 
 package_lua-testmore() {
   depends+=('lua')
+  _package_helper 5.4
+}
+
+package_lua53-testmore() {
+  depends+=('lua53')
   _package_helper 5.3
 }
 
