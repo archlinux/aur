@@ -1,0 +1,18 @@
+pkgbase = desq-settings-git
+	pkgdesc = Settings manager for DesQ.
+	pkgver = r5.e4aff68
+	pkgrel = 1
+	url = https://gitlab.com/DesQ
+	arch = any
+	groups = desq-git
+	license = none
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-quickcontrols2
+	provides = desq-settings
+	conflicts = desq-settings
+	source = git+https://gitlab.com/Desq/Settings.git
+	md5sums = SKIP
+
+pkgname = desq-settings-git
+
