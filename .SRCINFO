@@ -1,7 +1,7 @@
 pkgbase = lua-wcwidth
 	pkgdesc = Pure Lua implementation of the wcwidth() function
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aperezdc/lua-wcwidth
 	arch = any
 	license = custom
