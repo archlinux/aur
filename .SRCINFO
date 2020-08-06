@@ -1,16 +1,21 @@
 pkgbase = sia
-	pkgdesc = Blockchain-based marketplace for file storage
-	pkgver = 20170103
+	pkgdesc = Decentralized storage for the post-cloud world
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://sia.tech
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
-	makedepends = make
-	source = git+https://github.com/NebulousLabs/Sia
+	conflicts = sia-daemon
+	source = git+https://gitlab.com/NebulousLabs/Sia.git#tag=v1.5.0
 	sha256sums = SKIP
 
+pkgname = siac
+	pkgdesc = Sia Client - Decentralized storage for the post-cloud world
+	optdepends = siad: sia daemon to interact with
+
 pkgname = siad
+	pkgdesc = Sia Daemon - Decentralized storage for the post-cloud world
+	optdepends = siac: cli tool to manage a siad instance
 

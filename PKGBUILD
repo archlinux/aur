@@ -1,42 +1,50 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Didrole <Didrole@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgbase=sia
-pkgname=('siad')
-pkgver=20170103
+pkgname=('siac' 'siad')
+pkgver=1.5.0
 pkgrel=1
-pkgdesc="Blockchain-based marketplace for file storage"
-arch=('i686' 'x86_64')
-makedepends=('git' 'go' 'make')
-url="https://sia.tech"
+pkgdesc='Decentralized storage for the post-cloud world'
+arch=('x86_64')
+makedepends=('git' 'go')
+url='https://sia.tech'
 license=('MIT')
-source=(git+https://github.com/NebulousLabs/Sia)
+conflicts=('sia-daemon')
+source=("git+https://gitlab.com/NebulousLabs/Sia.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
-pkgver() {
+build() {
   cd "$srcdir/Sia"
-  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
+  
+  export GOPATH="$srcdir"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  
+  make dependencies
+  make release
 }
 
-build() {
-  msg2 'Building...'
-  export GOPATH="$srcdir"
-  go get -v -u github.com/NebulousLabs/Sia/...
-  cd "$GOPATH/src/github.com/NebulousLabs/Sia"
-  make release-std
+package_siac() {
+  pkgdesc="Sia Client - $pkgdesc"
+  optdepends=('siad: sia daemon to interact with')
+  
+  cd "$srcdir/Sia"
+  install -Dm 755 "$srcdir/bin/siac" -t "$pkgdir/usr/bin"
 }
 
 package_siad() {
+  pkgdesc="Sia Daemon - $pkgdesc"
+  optdepends=('siac: cli tool to manage a siad instance')
+
   cd "$srcdir/Sia"
 
-  msg2 'Installing license...'
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/siad"
-
-  msg2 'Installing documentation...'
-  install -dm 755 "$pkgdir/usr/share/doc/siad"
-  cp -dpr --no-preserve=ownership README.md doc/* "$pkgdir/usr/share/doc/siad"
-
-  msg2 'Installing...'
-  for _bin in siac siad; do
-    install -Dm 755 "$srcdir/bin/$_bin" -t "$pkgdir/usr/bin"
-  done
+  install -Dm 644 "LICENSE" -t "$pkgdir/usr/share/licenses/sia"
+  
+  install -dm 755 "$pkgdir/usr/share/doc/sia"
+  cp -dpr doc/* "$pkgdir/usr/share/doc/sia"
+  
+  install -dm 755 "$pkgdir/usr/share/man/man1"
+  cp -dp doc/manpages/* "$pkgdir/usr/share/man/man1"
+  
+  install -Dm 755 "$srcdir/bin/siad" -t "$pkgdir/usr/bin"
 }
