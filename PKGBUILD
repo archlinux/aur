@@ -5,7 +5,7 @@ pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rocknam
 pkgver=2.0.0
 _rockrel=1
 __rockrel=0
-pkgrel=9
+pkgrel=10
 pkgdesc='Elegant Lua unit testing'
 arch=('any')
 url="https://olivinelabs.com/$_rockname"
@@ -38,6 +38,7 @@ package_lua-busted() {
 package_lua53-busted() {
   depends+=('lua53' "${_lua_deps[@]/#/lua53-}")
   _package_helper 5.3
+  mv "$pkgdir"/usr/bin/busted{,53}
 }
 
 package_lua52-busted() {
