@@ -1,0 +1,14 @@
+pkgbase = fbsplash-theme-arch-black-extras
+	pkgdesc = An Archlinux black fbsplash theme with extra resolution config files
+	pkgver = 1.3
+	pkgrel = 1
+	url = http://www.opendesktop.org/content/show.php?content=118523
+	install = fbsplash-theme-arch-black-extras.install
+	arch = i686
+	arch = x86_64
+	optdepends = fbsplash: A userspace implementation of a splash screen for Linux
+	source = arch-black-1.3-1.tar.gz::http://sourceshark.com/sourcecode/khotnewstuff/bootsplashs/downloads/118524-arch-black-extras.tar.xz
+	md5sums = a8c4f48718a73943db16e3f0ee87eaba
+
+pkgname = fbsplash-theme-arch-black-extras
+
