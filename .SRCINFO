@@ -1,0 +1,14 @@
+pkgbase = brother-mfc8860dn-cups-bin
+	pkgdesc = CUPS wrapper for Brother MFC-8860DN printer
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=ca&lang=en&prod=mfc8860dn_all
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf006399/cupswrapperMFC8860DN-2.0.1-2.i386.deb
+	md5sums = e9885d2904fa77084b7a16c4f4ca2cd7
+
+pkgname = brother-mfc8860dn-cups-bin
+
