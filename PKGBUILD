@@ -3,7 +3,7 @@
 pkgname=google-play-music-desktop-player-bin
 _pkgname=${pkgname%-bin}
 pkgver=4.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music"
 arch=('x86_64' 'i686')
 url="https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-"
@@ -29,7 +29,7 @@ package() {
   rm -rf ${pkgdir}/usr/share/doc
 
   # app.asar
-  install -Dm644 -T ${pkgdir}/usr/share/${_pkgname}/resources/app.asar ${pkgdir}/usr/lib/${_pkgname}/resources
+  install -Dm644 ${pkgdir}/usr/share/${_pkgname}/resources/app.asar -t ${pkgdir}/usr/lib/${_pkgname}/resources
   rm -rf ${pkgdir}/usr/share/google-play-music-desktop-player
 
   # license

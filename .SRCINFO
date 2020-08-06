@@ -1,7 +1,7 @@
 pkgbase = google-play-music-desktop-player-bin
 	pkgdesc = A beautiful cross platform Desktop Player for Google Play Music
 	pkgver = 4.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-
 	arch = x86_64
 	arch = i686
