@@ -1,11 +1,12 @@
 pkgbase = ccache-git
 	pkgdesc = a fast compiler cache
-	pkgver = v3.7.1_14_g6e25ea2
+	pkgver = v3.7.1_844_g0789bc26
 	pkgrel = 1
 	url = https://ccache.dev
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = cmake
 	makedepends = git
 	makedepends = asciidoc
 	depends = zlib
