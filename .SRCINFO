@@ -1,12 +1,13 @@
 pkgbase = lua-path
 	pkgdesc = File system path manipulation library
 	pkgver = 0.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/moteus/lua-path
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
@@ -15,6 +16,9 @@ pkgbase = lua-path
 
 pkgname = lua-path
 	depends = lua
+
+pkgname = lua53-path
+	depends = lua53
 
 pkgname = lua52-path
 	depends = lua52
