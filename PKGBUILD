@@ -1,7 +1,7 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=cninja
-pkgver=3.1.0
-release_tag=v3.1.0
+pkgver=3.3.0
+release_tag=v3.3.0
 pkgrel=1
 pkgdesc="cninja, an opinionated cmake config manager"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("$pkgname=$pkgver")
 conflicts=()
 replaces=()
 source=("https://github.com/jcelerier/cninja/releases/download/v${pkgver}/cninja-${pkgver}-src.tar.gz")
-sha512sums=("319a873baf7a1bb0db3286f0daea4aaf50d542c6a183f15f5c467f63d9f1ba1475bcdc41fde93d8c7e2c8f05236c170d81dd46330a1ffabc870ec8b143841631")
+sha512sums=("4b00e76e16508ed0829d7c443c996c96afc1fbfbe9e46e37a3afb9274911ad44d2f140e7af5394ada1273143175eba1beb03b1ab4abaacc14ba649b30d0f04f2")
 
 build() {
   cd "$srcdir"
