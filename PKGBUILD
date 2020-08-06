@@ -5,10 +5,10 @@
 _rockname=messagepack
 _project=lua-MessagePack
 pkgbase=lua-$_rockname
-pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.5.2
 _rockrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pure Lua implementation of MessagePack spec v5'
 arch=('any')
 url="https://framagit.org/fperrad/$_project"
@@ -30,6 +30,11 @@ _package_helper() {
 
 package_lua-messagepack() {
   depends+=('lua')
+  _package_helper 5.4
+}
+
+package_lua53-messagepack() {
+  depends+=('lua53')
   _package_helper 5.3
 }
 

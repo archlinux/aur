@@ -1,7 +1,7 @@
 pkgbase = lua-messagepack
 	pkgdesc = Pure Lua implementation of MessagePack spec v5
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://framagit.org/fperrad/lua-MessagePack
 	arch = any
 	license = MIT
@@ -12,6 +12,9 @@ pkgbase = lua-messagepack
 
 pkgname = lua-messagepack
 	depends = lua
+
+pkgname = lua53-messagepack
+	depends = lua53
 
 pkgname = lua52-messagepack
 	depends = lua52
