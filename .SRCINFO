@@ -1,6 +1,6 @@
 pkgbase = wlrctl
 	pkgdesc = Utility for miscellaneous wlroots extensions
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://git.sr.ht/~brocellous/wlrctl
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = wlrctl
 	makedepends = ninja
 	depends = wayland
 	depends = libxkbcommon
-	source = wlrctl-0.2.0.tar.gz::https://git.sr.ht/~brocellous/wlrctl/archive/v0.2.0.tar.gz
-	md5sums = 03d62c7106e90b83f76545204e119ac0
+	source = wlrctl-0.2.1.tar.gz::https://git.sr.ht/~brocellous/wlrctl/archive/v0.2.1.tar.gz
+	md5sums = 8f7c7bb154f255905213896bdf4f985c
 
 pkgname = wlrctl
 
