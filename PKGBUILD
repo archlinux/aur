@@ -1,34 +1,35 @@
-# Maintainer: Aaron Blair <aaron@aaronpb.me>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Aaron Blair <aaron@aaronpb.me>
 
 pkgname=subfinder
-pkgver=1.2
-pkgrel=2
-pkgdesc="A subdomain discovery tool that discovers valid subdomains for websites."
+pkgver=2.3.8
+pkgrel=1
+pkgdesc='Subdomain discovery tool'
 arch=('x86_64')
-url="https://github.com/subfinder/subfinder"
+url='https://github.com/projectdiscovery/subfinder'
 license=('MIT')
-depends=()
-makedepends=('go>=1.10' 'git')
-optdepends=()
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/subfinder/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('2b8a09506466baa04c10404d38e0da6a2066a79e8b5c69a720d939804375ba2c')
-
-prepare() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
-  export GOPATH="${srcdir}"
-  export PATH="${PATH}:${srcdir}/bin"
-  install -d "${GOPATH}/src/github.com/subfinder"
-  cp -a "$(pwd)" "${GOPATH}/src/github.com/subfinder/subfinder"
-  go get -d
-}
+makedepends=('go')
+provides=("${pkgname}")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('78dda45f508ea699e762aec3a9160e8cec069f5af7bba722f09f2278eda9050d')
 
 build() {
-  cd "${GOPATH}/src/github.com/subfinder/subfinder"
-  go build
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOPATH="${srcdir}"
+
+  cd "${pkgname}-${pkgver}"
+  go build -v -o "${pkgname}" ."/cmd/${pkgname}"
 }
 
 package() {
-  cd "${GOPATH}/src/github.com/subfinder/subfinder"
-  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 -t "${pkgdir}/usr/bin" "${pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
+  install -Dm644 'LICENSE.md' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+# vim: ts=2 sw=2 et:
