@@ -1,5 +1,5 @@
 pkgname="mcreator"
-pkgver="2020.3”
+pkgver="2020.4”
 pkgrel=1
 arch=('x86_64')
 pkgdesc="MCreator is a software used to make Minecraft mods and data packs using intuitive easy-to-learn interface or with an integrated code editor. It is used worldwide by Minecraft players, aspiring mod developers, for education and by STEM workshops."
@@ -9,7 +9,7 @@ makedepends=('gendesk' 'dos2unix')
 depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
 
 source_x86_64=(
-	"MCreator.tar.gz::https://mcreator.net/repository/2020-3/MCreator%202020.3%20Linux%2064bit.tar.gz"
+	"MCreator.tar.gz::https://mcreator.net/repository/2020-4/MCreator%202020.4%20Linux%2064bit.tar.gz"
 )
 
 md5sums_x86_64=('SKIP')
