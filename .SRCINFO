@@ -1,12 +1,13 @@
 pkgbase = lua-luaepnf
 	pkgdesc = Extended PEG Notation Format (easy grammars for LPeg)
 	pkgver = 0.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://siffiejoe.github.com/lua-luaepnf
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = lua
+	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
@@ -16,6 +17,11 @@ pkgbase = lua-luaepnf
 pkgname = lua-luaepnf
 	depends = lua
 	depends = lua-lpeg
+	provides = lua-epnf
+
+pkgname = lua53-luaepnf
+	depends = lua53
+	depends = lua53-lpeg
 	provides = lua-epnf
 
 pkgname = lua52-luaepnf
