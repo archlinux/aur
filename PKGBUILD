@@ -6,7 +6,7 @@
 # Contributor: Otto Sabart <seberm[at]gmail[dot]com>
 
 pkgname=knot-git
-pkgver=3.0.dev.1577784203.e80907080
+pkgver=3.0.dev.r527.1e6928a83
 pkgrel=1
 pkgdesc="High-performance authoritative-only DNS server, development build"
 arch=('x86_64')
@@ -43,12 +43,12 @@ prepare() {
 }
 
 pkgver() {
-    grep 'PACKAGE_VERSION' "${_gitname}/src/config.h" | sed 's/.*"\(.*\)"/\1/'
+    cd "${_gitname}"
+    printf "%s" "$(git describe --match 'v*' --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
     cd "${_gitname}"
-
     make
 }
 
