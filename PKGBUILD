@@ -1,5 +1,5 @@
 # Maintainer: osch <oliver at luced de>
-pkgname=lua-lanes
+pkgname=lua53-lanes
 pkgver=3.13.0
 pkgrel=1
 epoch=
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/LuaLanes/lanes"
 license=('MIT')
 groups=()
-depends=('lua')
+depends=('lua53')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -30,23 +30,23 @@ prepare() {
 
 build() {
 	cd "lanes-$pkgver"
-	make LUA=/usr/bin/lua \
-	     LUA_FLAGS=`pkg-config --cflags lua` \
-	     LUA_LIBS=`pkg-config --libs lua` \
-	     CFLAGS="-O2 -fPIC `pkg-config --cflags lua`"
+	make LUA=/usr/bin/lua53 \
+	     LUA_FLAGS=`pkg-config --cflags lua53` \
+	     LUA_LIBS=`pkg-config --libs lua53` \
+	     CFLAGS="-O2 -fPIC `pkg-config --cflags lua53`"
 }
 
 package() {
 	cd "lanes-$pkgver"
 
-	install -d                "$pkgdir`pkg-config --variable=INSTALL_CMOD lua`/lanes"
-	install src/lanes/core.so "$pkgdir`pkg-config --variable=INSTALL_CMOD lua`/lanes/core.so"
+	install -d                "$pkgdir`pkg-config --variable=INSTALL_CMOD lua53`/lanes"
+	install src/lanes/core.so "$pkgdir`pkg-config --variable=INSTALL_CMOD lua53`/lanes/core.so"
 
-	install -d                  "$pkgdir`pkg-config --variable=INSTALL_LMOD lua`"
-	install -m644 src/lanes.lua "$pkgdir`pkg-config --variable=INSTALL_LMOD lua`"
+	install -d                  "$pkgdir`pkg-config --variable=INSTALL_LMOD lua53`"
+	install -m644 src/lanes.lua "$pkgdir`pkg-config --variable=INSTALL_LMOD lua53`"
 
-	install -d                  "$pkgdir`pkg-config --variable=INSTALL_INC lua`"
-	install -m644 src/lanes.h   "$pkgdir`pkg-config --variable=INSTALL_INC lua`"
+	install -d                  "$pkgdir`pkg-config --variable=INSTALL_INC lua53`"
+	install -m644 src/lanes.h   "$pkgdir`pkg-config --variable=INSTALL_INC lua53`"
 
 	install -d "$pkgdir/usr/share/licenses/$pkgname"
 	install -m644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname"
