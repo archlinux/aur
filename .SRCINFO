@@ -22,8 +22,8 @@ pkgbase = xdg-utils-slock
 	conflicts = xdg-utils
 	source = https://portland.freedesktop.org/download/xdg-utils-1.1.3.tar.gz
 	source = slock_support.diff
-	md5sums = 2d0aec6037769a5f138ff404b1bb4b15
 	md5sums = 902042508b626027a3709d105f0b63ff
+	md5sums = eab28cbb6c84860c19fb2a1bf58b9a55
 
 pkgname = xdg-utils-slock
 

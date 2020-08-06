@@ -24,8 +24,8 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=(https://portland.freedesktop.org/download/$_pkgname-$pkgver.tar.gz
         slock_support.diff)
-md5sums=('2d0aec6037769a5f138ff404b1bb4b15'
-         '902042508b626027a3709d105f0b63ff')
+md5sums=('902042508b626027a3709d105f0b63ff'
+         'eab28cbb6c84860c19fb2a1bf58b9a55')
 
 prepare() {
 	cd $_pkgname-$pkgver
