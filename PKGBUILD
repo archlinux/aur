@@ -2,7 +2,7 @@
 
 pkgname=ssh-chat
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Chat over SSH'
 arch=('x86_64')
 url='https://github.com/shazow/ssh-chat'
@@ -18,9 +18,10 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOPATH="${srcdir}"
 
   cd "${pkgname}-${pkgver}"
-  go build -v -o "${_pkgname}" ./cmd/ssh-chat
+  go build -v -o "${pkgname}" ."/cmd/${pkgname}"
 }
 
 package() {
