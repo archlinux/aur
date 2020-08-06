@@ -1,8 +1,8 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='goreleaser'
-pkgver=v0.140.1
-pkgrel=5
+pkgver=v0.141.0
+pkgrel=1
 pkgdesc='Deliver Go binaries as fast and easily as possible'
 url='https://goreleaser.com'
 arch=('x86_64' 'i686' 'aarch64')
