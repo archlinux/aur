@@ -18,7 +18,7 @@ diff -aur rtpproxy-2.0.0.orig/rpm/rtpproxy.socket rtpproxy-2.0.0/rpm/rtpproxy.so
  
  [Socket]
 -ListenStream=127.0.0.1:22222
-+ListenFIFO=/var/run/rtpproxy/rtpproxy.sock
++ListenFIFO=/run/rtpproxy/rtpproxy.sock
  Accept=false
  
  [Install]
@@ -27,4 +27,4 @@ diff -aur rtpproxy-2.0.0.orig/rpm/rtpproxy.sysconfig rtpproxy-2.0.0/rpm/rtpproxy
 +++ rtpproxy-2.0.0/rpm/rtpproxy.sysconfig	2017-05-16 15:59:55.013746076 -0400
 @@ -1 +1 @@
 -OPTIONS=""
-+OPTIONS="-s unix:/var/run/rtpproxy/rtpproxy.sock"
++OPTIONS="-s unix:/run/rtpproxy/rtpproxy.sock"
