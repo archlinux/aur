@@ -2,7 +2,7 @@
 
 pkgname=torchvision-cuda
 pkgdesc='datasets, transforms, and models specific to computer vision (C++ library only)'
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 license=("BSD")
 url='https://github.com/pytorch/vision'
@@ -15,7 +15,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/pytorch/vision/archive/v$pkgver.tar.gz"
 )
 
-sha512sums=('428235ae9412d176dc62eb42ed926caa5199bab448e7798fa240d69c1337e1ca5423c45a34bd6f4527e7ccafb927f53743311f8701dcee5f168bacc60f1d6750')
+sha512sums=('f22c8fd67f4efafa4a934ed5014e1ad661d0d0a800d4c8ae0e6b85f4860a5dc131c513428028949c9130486ba24ecf8a9f6b9881efc68a0c2158110924d05e81')
 
 depends=(
 	cuda
@@ -37,7 +37,10 @@ prepare() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -O3" \
 		-DWITH_CUDA=ON \
-		-DTORCH_CUDA_ARCH_LIST="3.5;3.7;5.0;5.2;5.3;6.0;6.0+PTX;6.1;6.1+PTX;6.2;6.2+PTX;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX"
+		-DTORCH_CUDA_ARCH_LIST="3.5;3.7;5.0;5.2;5.3;6.0;6.0+PTX;6.1;6.1+PTX;6.2;6.2+PTX;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX" \
+		-DCUDA_ARCH_LIST="3.5;3.7;5.0;5.2;5.3;6.0;6.0+PTX;6.1;6.1+PTX;6.2;6.2+PTX;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX" \
+		-DCMAKE_CUDA_ARCHITECTURES="35;37;50;52;53;60;60-virtual;61;61-virtual;62;62-virtual;70;70-virtual;72;72-virtual;75;75-virtual"
+
 }
 
 build() {
