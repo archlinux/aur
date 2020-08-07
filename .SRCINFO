@@ -1,0 +1,24 @@
+pkgbase = deepin-qt5platform-plugins-git
+	pkgdesc = Qt platform plugins for DDE
+	pkgver = 5.0.13.r30.g8586e63
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/qt5platform-plugins
+	arch = x86_64
+	groups = deepin-git
+	license = GPL3
+	makedepends = expac
+	makedepends = qt5-xcb-private-headers
+	makedepends = libglvnd
+	makedepends = libxcb
+	depends = cairo
+	depends = kwayland
+	depends = qt5-wayland
+	depends = qt5-x11extras
+	provides = deepin-qt5platform-plugins
+	conflicts = deepin-qt5platform-plugins
+	replaces = deepin-qt5platform-plugins
+	source = git://github.com/linuxdeepin/qt5platform-plugins
+	sha512sums = SKIP
+
+pkgname = deepin-qt5platform-plugins-git
+
