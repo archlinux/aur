@@ -8,8 +8,9 @@ pkgdesc="Command line tool to download a web page into a single HTML file"
 arch=('any')
 url="https://github.com/gildas-lormeau/SingleFile"
 license=('GNU Affero GPL')
-makedepends=('npm')
+makedepends=('git', 'npm')
 depends=('nodejs')
+provides=('single-file')
 source=("${_pkgname}::git://github.com/gildas-lormeau/SingleFile.git")
 sha256sums=('SKIP')
 
