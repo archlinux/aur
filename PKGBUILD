@@ -1,7 +1,7 @@
 # Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=armips-git
-pkgver=0.11.0
+pkgver=0.11.0.r79.g2c803b6
 pkgrel=1
 epoch=1
 pkgdesc='An assembler for various ARM and MIPS platforms'
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
     cd "$srcdir"/armips/build
-    cmake -DCMAKE_BUILD_TYPE=Release ..
+    cmake -DCMAKE_BUILD_TYPE=Release -DARMIPS_USE_STD_FILESYSTEM=ON -DARMIPS_PRECOMPILE_HEADERS=ON ..
     make armips-bin
 }
 
