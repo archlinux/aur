@@ -14,7 +14,7 @@
 
 pkgname=go-git
 epoch=1
-pkgver=2020.8.7
+pkgver=go1.15beta1.r138.gba9e1088997
 pkgrel=1
 pkgrepo=go
 pkgdesc='Core compiler tools for the Go programming language'
@@ -22,6 +22,8 @@ arch=(i686 x86_64)
 url='http://golang.org/'
 license=(BSD)
 makedepends=(git go)
+provides=(go)
+conficts=(go)
 options=(!strip staticlibs)
 source=(git+https://go.googlesource.com/go#branch=master)
 md5sums=('SKIP')
@@ -33,6 +35,11 @@ case "$CARCH" in
 esac
 export GOROOT_FINAL=/usr/lib/go
 export GOROOT_BOOTSTRAP=/usr/lib/go
+
+pkgver() {
+  cd go
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   export GOROOT="$srcdir/$pkgrepo"
