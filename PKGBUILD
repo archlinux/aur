@@ -2,7 +2,7 @@
 
 pkgname=stp-java
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Java bindings for the STP SMT solver"
 arch=('i686' 'x86_64')
 url="http://stp.github.io/"
