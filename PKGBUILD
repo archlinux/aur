@@ -10,7 +10,7 @@ url="https://github.com/named-data/${_pkgname}"
 license=('GPL')
 groups=()
 depends=('ndn-cxx' 'boost')
-makedepends=('git' 'gcc' 'python' 'boost' 'pkgconf' 'sqlite' 'openssl>=1.0.2')
+makedepends=('git' 'python' 'boost' 'sqlite' 'openssl>=1.0.2')
 checkdepends=()
 optdepends=()
 provides=("${_pkgname}")

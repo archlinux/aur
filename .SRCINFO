@@ -7,10 +7,8 @@ pkgbase = ndn-traffic-generator-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = gcc
 	makedepends = python
 	makedepends = boost
-	makedepends = pkgconf
 	makedepends = sqlite
 	makedepends = openssl>=1.0.2
 	depends = ndn-cxx
