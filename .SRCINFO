@@ -9,7 +9,9 @@ pkgbase = chromium-extension-privacybadger
 	depends = chromium
 	noextract = chromium-extension-privacybadger-2020.7.21.crx
 	source = chromium-extension-privacybadger-2020.7.21.crx::https://www.eff.org/files/privacy_badger-2020.7.21.crx
+	source = LICENSE-2020.7.21::https://raw.githubusercontent.com/EFForg/privacybadger/6a86f1266f3f88fbd3a1ce8fe77ed5964dcaf91f/LICENSE
 	b2sums = c87089f5de04d222dc976e68ea483c4544bcb65824dfd1117ecbe7ef8e012eba171dea8540fed9e9c3fc0d7bf2cbfa0a300ab8df3ab062f81cf80bba2f45db94
+	b2sums = b5865247e8de9c9f9bfefab669c2d31e26948393c90be7420756ef540fde9f2742ec137b065ad92516da52b3222ea619ec85b8106bba114dee735a3fc119ad6e
 
 pkgname = chromium-extension-privacybadger
 
