@@ -1,7 +1,7 @@
 # Maintainer: TDY <tdy@archlinux.info>
 
 pkgname=levee
-pkgver=3.5b
+pkgver=4.0
 pkgrel=1
 pkgdesc="A small, modal text editor based on vi"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('ncurses')
 conflicts=('lv') # see the build() function
 source=(http://www.pell.portland.or.us/~orc/Code/$pkgname/$pkgname-$pkgver.tar.bz2
         COPYING)
-md5sums=('fc19744ef17e980de9a4cc27fbaaeb90'
+md5sums=('e834d6c6547a51127613bc818cd6876c'
          'c3c3b5129975a2e707e2870735753853')
 
 build() {
