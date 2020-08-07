@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gonha-git
-pkgver=1.6.38.r284.f7e9531
+pkgver=1.6.42.r289.3654683
 pkgrel=1
 pkgdesc='Light-weight system monitor for Linux'
 arch=('any')
@@ -23,6 +23,7 @@ depends=('python-pyqt5'
          'python-coloredlogs'
          'python-numpy'
          'python-pyamdgpuinfo'
+         'python-babel'
          'python-prompt_toolkit1014'
          'ttf-fira-code'
          'hddtemp')
