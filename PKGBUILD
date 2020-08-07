@@ -2,8 +2,8 @@
 _reponame=NFD
 _pkgname=ndn-nfd
 pkgname=${_pkgname}-git
-pkgver=NFD.0.7.0.r21.gc68b2e8a
-pkgrel=5
+pkgver=NFD.0.7.0.r35.g5bafd2c7
+pkgrel=6
 # epoch=
 pkgdesc="NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol"
 arch=('i686' 'x86_64')
