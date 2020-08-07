@@ -2,8 +2,8 @@
 
 _pkgname=cavapify
 pkgname=$_pkgname-git
-pkgver=3
-pkgrel=2
+pkgver=r15.a2d3160
+pkgrel=3
 pkgdesc="Automatically change the color of the cava visualizer bars according to the color of the current album art of any media player that implements the MPRIS. Currently pointing at a patched fork"
 arch=(any)
 url="https://github.com/elmo-space/$_pkgname"
