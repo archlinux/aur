@@ -3,7 +3,7 @@ _reponame=ndn-cxx
 _pkgname=ndn-cxx
 pkgname=${_pkgname}
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 # epoch=
 pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
 arch=('i686' 'x86_64')
@@ -35,11 +35,11 @@ build() {
 	./waf build
 }
 
-check() {
-  echo >&2 echo "Tests can be skipped using the --nocheck arugment in makepkg"
-  cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
-  ./build/unit-tests
-}
+#check() {
+#  echo >&2 echo "Tests can be skipped using the --nocheck arugment in makepkg"
+#  cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
+#  ./build/unit-tests
+#}
 
 package() {
 	cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
