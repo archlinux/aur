@@ -1,0 +1,73 @@
+From 03fade52dae736275c4f4e7fe1cbd6fe82d7aa4c Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Sat, 2 May 2020 12:17:05 +0000
+Subject: [PATCH] IWYU: uint32_t is defined in cstdint
+
+This is required for gcc-10.
+
+Bug: None
+Change-Id: I0d04f720d09b42e1d54e058b897ddc047ef64bf6
+Reviewed-on: https://webrtc-review.googlesource.com/c/src/+/174204
+Reviewed-by: Magnus Flodman <mflodman@webrtc.org>
+Commit-Queue: Mirko Bonadei <mbonadei@webrtc.org>
+Cr-Commit-Position: refs/heads/master@{#31184}
+---
+ AUTHORS                   | 1 +
+ call/rtx_receive_stream.h | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/call/rtx_receive_stream.h b/call/rtx_receive_stream.h
+index 8ffa4400a9..a389fc2a57 100644
+--- a/call/rtx_receive_stream.h
++++ b/call/rtx_receive_stream.h
+@@ -11,6 +11,7 @@
+ #ifndef CALL_RTX_RECEIVE_STREAM_H_
+ #define CALL_RTX_RECEIVE_STREAM_H_
+ 
++#include <cstdint>
+ #include <map>
+ 
+ #include "call/rtp_packet_sink_interface.h"
+
+From 3ca2836f701fc2fbc2ddaa0000d6ad655b5e3caa Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Sun, 31 May 2020 09:01:38 +0000
+Subject: [PATCH] IWYU: size_t is defined in stddef.h
+
+This required for gcc-10.
+
+Bug: None
+Change-Id: Iba3ff0881005cb2ae4574e47284a1b881594de86
+Reviewed-on: https://webrtc-review.googlesource.com/c/src/+/176361
+Reviewed-by: Ivo Creusen <ivoc@webrtc.org>
+Commit-Queue: Ivo Creusen <ivoc@webrtc.org>
+Cr-Commit-Position: refs/heads/master@{#31417}
+---
+ modules/audio_processing/aec3/clockdrift_detector.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/modules/audio_processing/aec3/clockdrift_detector.h b/modules/audio_processing/aec3/clockdrift_detector.h
+index 22528c9489..2ba90bb889 100644
+--- a/modules/audio_processing/aec3/clockdrift_detector.h
++++ b/modules/audio_processing/aec3/clockdrift_detector.h
+@@ -11,6 +11,8 @@
+ #ifndef MODULES_AUDIO_PROCESSING_AEC3_CLOCKDRIFT_DETECTOR_H_
+ #define MODULES_AUDIO_PROCESSING_AEC3_CLOCKDRIFT_DETECTOR_H_
+ 
++#include <stddef.h>
++
+ #include <array>
+ 
+ namespace webrtc {
+
+diff --meow-im-a-cat a/modules/video_coding/decoding_state.h b/modules/video_coding/decoding_state.h
+--- a/modules/video_coding/decoding_state.h	2020-07-07 15:58:30.000000000 +0000
++++ b/modules/video_coding/decoding_state.h	2020-07-07 16:24:41.667578586 +0000
+@@ -11,6 +11,7 @@
+ #ifndef MODULES_VIDEO_CODING_DECODING_STATE_H_
+ #define MODULES_VIDEO_CODING_DECODING_STATE_H_
+ 
++#include <cstdint>
+ #include <map>
+ #include <set>
+ #include <vector>

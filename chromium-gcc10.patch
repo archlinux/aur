@@ -1,0 +1,34 @@
+From 17902f2263622eb21bd8adddf078355dbe7654a5 Mon Sep 17 00:00:00 2001
+From: Chisoon Jeong <chisoon.jeong@lge.com>
+Date: Tue, 31 Mar 2020 18:02:12 +0000
+Subject: [PATCH] Add #include <stddef.h> for clarity and supporting gcc
+ compilation
+
+Depending on compilation environments of gcc, supported_cdm_versions.h|cc
+is not compiled. To fix this issue add '#include <stddef.h>' in
+supported_cdm_versions.h
+
+Change-Id: I0f56cb4f69e1fb3867a1c168a28431661341784b
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2117912
+Reviewed-by: Nico Weber <thakis@chromium.org>
+Reviewed-by: Scott Violet <sky@chromium.org>
+Reviewed-by: John Rummell <jrummell@chromium.org>
+Commit-Queue: Nico Weber <thakis@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#755016}
+---
+ media/cdm/supported_cdm_versions.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/media/cdm/supported_cdm_versions.h b/media/cdm/supported_cdm_versions.h
+index dbe59ba5ea7..25bb6ed3f33 100644
+--- a/media/cdm/supported_cdm_versions.h
++++ b/media/cdm/supported_cdm_versions.h
+@@ -5,6 +5,8 @@
+ #ifndef MEDIA_CDM_SUPPORTED_CDM_VERSIONS_H_
+ #define MEDIA_CDM_SUPPORTED_CDM_VERSIONS_H_
+ 
++#include <stddef.h>
++
+ #include <array>
+ 
+ #include "media/base/media_export.h"

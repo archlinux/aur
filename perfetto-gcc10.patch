@@ -1,0 +1,28 @@
+From 0e7ca0bf9872932322563e70bcf84eb033ffde4f Mon Sep 17 00:00:00 2001
+From: Chisoon Jeong <chisoon.jeong@lge.com>
+Date: Tue, 24 Mar 2020 19:46:20 +0900
+Subject: [PATCH] Add #include <stdint.h> in
+ include/perfetto/base/task_runner.h
+
+Depending on compilation environment, task_runner.h|cc is
+not compiled due to missing stdint.h. This change includes stdint.h in
+task_runner.h to fix this issue.
+
+Change-Id: I6dcfbd4ad62cbd287b8e75e306930ad00731048a
+---
+ include/perfetto/base/task_runner.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/perfetto/base/task_runner.h b/include/perfetto/base/task_runner.h
+index cf6040123..040aab2b7 100644
+--- a/include/perfetto/base/task_runner.h
++++ b/include/perfetto/base/task_runner.h
+@@ -17,6 +17,8 @@
+ #ifndef INCLUDE_PERFETTO_BASE_TASK_RUNNER_H_
+ #define INCLUDE_PERFETTO_BASE_TASK_RUNNER_H_
+ 
++#include <stdint.h>
++
+ #include <functional>
+ 
+ #include "perfetto/base/export.h"

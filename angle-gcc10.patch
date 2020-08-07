@@ -1,0 +1,26 @@
+From 9a481b6ec835cfd0d4014c0b11f03c27a209f305 Mon Sep 17 00:00:00 2001
+From: Pierre-Marc Berube <pmberube@google.com>
+Date: Tue, 18 Feb 2020 19:21:34 -0500
+Subject: [PATCH] Add missing #include to fix build with GCC 10.
+
+Bug: angleproject:4389
+Change-Id: I4a2f04a12a059924871f5d54f137c67670747ebd
+Reviewed-on: https://chromium-review.googlesource.com/c/angle/angle/+/2063042
+Reviewed-by: Jamie Madill <jmadill@chromium.org>
+Commit-Queue: Jamie Madill <jmadill@chromium.org>
+---
+ include/platform/Platform.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/platform/Platform.h b/include/platform/Platform.h
+index b603ff9ba..131674008 100644
+--- a/include/platform/Platform.h
++++ b/include/platform/Platform.h
+@@ -10,6 +10,7 @@
+ #define ANGLE_PLATFORM_H
+ 
+ #include <stdint.h>
++#include <stdlib.h>
+ #include <array>
+ 
+ #define EGL_PLATFORM_ANGLE_PLATFORM_METHODS_ANGLEX 0x3482
