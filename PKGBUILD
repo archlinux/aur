@@ -2,7 +2,7 @@
 
 pkgname=thank-you-stars
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to star a PyPI package and its dependencies hosted on GitHub'
 arch=('any')
 url='https://github.com/thombashi/thank-you-stars'
@@ -19,6 +19,7 @@ depends=('python'
         'python-pygithub'
         'python-pytablewriter'
         'python-retryrequests'
+        'python-simplejson'
         'python-subprocrunner'
         'python-tqdm')
 makedepends=('python-setuptools')
