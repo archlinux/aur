@@ -2,3 +2,4 @@
 !.SRCINFO
 !PKGBUILD
 !.gitignore
+!use-correct-versions.patch
