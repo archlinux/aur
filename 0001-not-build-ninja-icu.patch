@@ -4,14 +4,19 @@ Date: Thu, 2 Jul 2020 04:15:26 +0200
 Subject: [PATCH] not build ninja, icu
 
 ---
- utils/build-presets.ini | 3 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ utils/build-presets.ini | 3 ---
+ 1 file changed, 3 deletions(-)
 
 diff --git a/utils/build-presets.ini b/utils/build-presets.ini
 index 23c50fd2ef2..ecd82cfa89d 100644
 --- a/utils/build-presets.ini
 +++ b/utils/build-presets.ini
-@@ -792,19 +792,17 @@ mixin-preset=
+@@ -790,21 +790,21 @@ mixin-preset=
+     mixin_linux_install_components_with_clang
+
++extra-cmake-options=
++   -DCMAKE_IGNORE_PATH="/usr/include/bits"
++
  llbuild
  swiftpm
  xctest
@@ -21,7 +26,6 @@ index 23c50fd2ef2..ecd82cfa89d 100644
  dash-dash
  
 -build-ninja
-+verbose-build
  install-llvm
  install-swift
  install-lldb
