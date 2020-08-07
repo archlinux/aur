@@ -1,4 +1,4 @@
-# Maintainer: Michael Yang <ohmyarchlinux@protonmail.com>
+# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 _gitname=rust-qt-binding-generator
 pkgname=rust-qt-binding-generator-git
@@ -36,6 +36,4 @@ package() {
   install -Dm755 ${srcdir}/rust-qt-binding-generator/target/release/rust_qt_binding_generator ${pkgdir}/usr/bin/rust_qt_binding_generator
   install -Dm644 COPYING ${pkgdir}/usr/share/licenses/rust-qt-binding-generator/COPYING
   install -Dm644 COPYING.EXCEPTION ${pkgdir}/usr/share/licenses/rust-qt-binding-generator/COPYING.EXCEPTION
-# install -Dm644 org.kde.rust_qt_binding_generator.desktop ${pkgdir}/usr/share/applications/org.kde.rust_qt_binding_generator.desktop
-# install -Dm644 org.kde.rust_qt_binding_generator.appdata.xml ${pkgdir}/usr/share/metainfo/org.kde.rust_qt_binding_generator.appdata.xml
 }
