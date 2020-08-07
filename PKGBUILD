@@ -6,7 +6,7 @@
 
 pkgbase=iup
 pkgname=('iup' 'lua-iup' 'lua51-iup' 'lua52-iup')
-pkgver=3.29
+pkgver=3.30
 pkgrel=1
 pkgdesc="C cross platform GUI toolkit"
 arch=('x86_64')
@@ -30,8 +30,8 @@ source=(
   "https://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Docs.pdf"
 )
 
-md5sums=('28ebb324b2916cb2e452f1ff6acfa60e'
-         '691e66dbc3141575d4d74020dc4486e1')
+md5sums=('2f01aed0de2186c08a0e639f46c08662'
+         '2ea3e7e6d462175c3a3583443678da63')
 
 prepare() {
   # Link to libcd, libim and libftgl dynamically (they are not part of iup source code)
