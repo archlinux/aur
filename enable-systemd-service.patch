@@ -1,0 +1,102 @@
+diff --unified --recursive --text a/hw/xfree86/xorg-wrapper.c b/hw/xfree86/xorg-wrapper.c
+--- a/hw/xfree86/xorg-wrapper.c	2020-03-29 13:21:15.000000000 -0700
++++ b/hw/xfree86/xorg-wrapper.c	2020-06-09 05:14:59.541064779 -0700
+@@ -189,7 +189,7 @@
+     return 0;
+ }
+ 
+-int main(int argc, char *argv[])
++int main(int argc, char *argv[], char *envp[])
+ {
+ #ifdef WITH_LIBDRM
+     struct drm_mode_card_res res;
+@@ -200,7 +200,6 @@
+     int total_cards = 0;
+     int allowed = CONSOLE_ONLY;
+     int needs_root_rights = -1;
+-    char *const empty_envp[1] = { NULL, };
+ 
+     progname = argv[0];
+ 
+@@ -281,7 +280,7 @@
+     if (getuid() == geteuid())
+         (void) execv(argv[0], argv);
+     else
+-        (void) execve(argv[0], argv, empty_envp);
++        (void) execve(argv[0], argv, envp);
+     fprintf(stderr, "%s: Failed to execute %s: %s\n",
+         progname, buf, strerror(errno));
+     exit(1);
+diff --unified --recursive --text a/include/meson.build b/include/meson.build
+--- a/include/meson.build	2020-03-29 13:21:15.000000000 -0700
++++ b/include/meson.build	2020-06-09 05:14:59.537731631 -0700
+@@ -16,6 +16,7 @@
+ conf_data.set('_DIX_CONFIG_H_', '1')
+ 
+ conf_data.set('HAVE_TYPEOF', cc.compiles('''
++
+     int foo(int bar) { typeof(bar) baz = 1; return baz; }
+ ''',
+     name: 'typeof()'))
+@@ -62,6 +63,11 @@
+ conf_data.set('HAVE_LIBBSD', libbsd_dep.found())
+ # XXX: HAVE_SYSTEMD_DAEMON
+ # XXX: HAVE_LIBUDEV
++if libsystemd_daemon_dep.found()
++  conf_data.set('HAVE_SYSTEMD_DAEMON', 1)
++else 
++  conf_data.set('HAVE_SYSTEMD_DAEMON', 0)
++endif
+ conf_data.set('CONFIG_UDEV', build_udev)
+ conf_data.set('CONFIG_UDEV_KMS', build_udev)
+ conf_data.set('HAVE_DBUS', build_dbus)
+diff --unified --recursive --text a/meson.build b/meson.build
+--- a/meson.build	2020-03-29 13:21:15.000000000 -0700
++++ b/meson.build	2020-06-09 05:14:59.567729961 -0700
+@@ -96,6 +96,12 @@
+ dbus_required = get_option('systemd_logind') == 'true'
+ dbus_dep = dependency('dbus-1', version: '>= 1.0', required: dbus_required)
+ 
++# libsystemd-daemon was moved into libsystemd in version 209
++libsystemd_daemon_dep = dependency('libsystemd', version: '>= 209', required: true)
++if not libsystemd_daemon_dep.found()
++    libsystemd_daemon_dep = dependency('libsystemd-daemon', required: true)
++endif
++
+ build_hashtable = false
+ 
+ # Resolve default values of some options
+@@ -456,6 +462,7 @@
+     xcmiscproto_dep,
+     bigreqsproto_dep,
+     xtrans_dep,
++    libsystemd_daemon_dep,
+ 
+     videoproto_dep,
+     compositeproto_dep,
+diff --unified --recursive --text a/os/connection.c b/os/connection.c
+--- a/os/connection.c	2020-03-29 13:21:15.000000000 -0700
++++ b/os/connection.c	2020-06-09 05:14:59.561063666 -0700
+@@ -116,6 +116,10 @@
+ #define zoneid_t int
+ #endif
+ 
++#ifdef HAVE_SYSTEMD_DAEMON
++#include <systemd/sd-daemon.h>
++#endif
++
+ #include "probes.h"
+ 
+ struct ospoll   *server_poll;
+@@ -220,6 +224,11 @@
+     }
+     if (RunFromSigStopParent)
+         raise(SIGSTOP);
++#ifdef HAVE_SYSTEMD_DAEMON
++    /* If we have been started as a systemd service, tell systemd that
++       we are ready. Otherwise sd_notify() won't do anything. */
++    int NotifyStatus = sd_notify(0, "READY=1");
++#endif
+ #endif
+ }
+ 
