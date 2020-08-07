@@ -6,8 +6,8 @@
 # Contributor: Christer Edwards <christer.edwards@gmail.com>
 
 pkgname=salt-py3
-pkgver=3001
-pkgrel=2
+pkgver=3001.1
+pkgrel=1
 
 pkgdesc='Central system and configuration manager'
 arch=('any')
@@ -37,17 +37,10 @@ backup=('etc/logrotate.d/salt'
 
 install=salt.install
 source=("https://pypi.io/packages/source/s/salt/salt-$pkgver.tar.gz"
-        "salt.logrotate"
-        "msgpack-requirements-fix.patch")
+        "salt.logrotate")
 
-sha256sums=('5ca60d1b2cc8e63db50995bd8b117914eeaf57c48ce2b3a3731ee57163adf154'
-            'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215'
-            '0cb1b198acc79640072fe7925630f4d1950b39208d247e99a8ce6cc9252a27f1')
-
-prepare() {
-  cd salt-$pkgver
-  patch -p1 <"${srcdir}/msgpack-requirements-fix.patch"
-}
+sha256sums=('e9ebb4d92fae8dabf21b8749dc126e4a4048bf8f613f5b1b851fe4b8226b5abc'
+            'abecc3c1be124c4afffaaeb3ba32b60dfee8ba6dc32189edfa2ad154ecb7a215')
 
 build() {
   cd salt-$pkgver
