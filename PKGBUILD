@@ -1,28 +1,39 @@
-# $Id$
-# Maintainer: Haruyuki lxz <lxz@ilxz.me>
+# Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-network-utils-git
-pkgver=0.0.1.r1.15f6cf0
+pkgver=5.1.0.2.r2.gd15232e
 pkgrel=1
-pkgdesc="Deepin network utils"
+pkgdesc='DDE network utils'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/dde-network-utils"
 license=('GPL3')
-groups=('deepin')
+depends=('deepin-qt-dbus-factory-git')
+makedepends=('git' 'qt5-tools')
+conflicts=('deepin-network-utils')
+replaces=('deepin-network-utils')
 provides=('deepin-network-utils')
-confticts=('deepin-network-utils')
-makedepends=('git')
-source=("${pkgname}"::'git+https://github.com/linuxdeepin/dde-network-utils.git')
+groups=('deepin-git')
+source=("git://github.com/linuxdeepin/dde-network-utils.git")
 sha512sums=('SKIP')
 
-build() {
-  cd ${pkgname}
-  git checkout 15f6cf0
-  qmake
-  make -j4
+pkgver() {
+    cd dde-network-utils
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd dde-network-utils
+  # Use our own url instead of third-party commercial company's homepage
+  sed -i '/www.baidu.com/i \    "https://www.archlinux.org/favicon.ico",' connectivitychecker.cpp
+}
+
+build(){
+  cd dde-network-utils
+  qmake-qt5 PREFIX=/usr
+  make
 }
 
 package() {
-  cd ${pkgname}
-  make INSTALL_ROOT="${pkgdir}" install
+  cd dde-network-utils
+  make INSTALL_ROOT="$pkgdir" install
 }
