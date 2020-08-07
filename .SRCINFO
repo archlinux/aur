@@ -1,0 +1,18 @@
+pkgbase = fbcondecor-openrc
+	pkgdesc = Simple openrc service to activate console decorations on system start. Requires fbsplash and a kernel with fbcondecor patch applied.
+	pkgver = 5.7.12
+	pkgrel = 1
+	url = http://sourceforge.net/projects/fbsplash.berlios/
+	install = fbcondecor-openrc.install
+	arch = any
+	license = GPL
+	depends = fbsplash
+	optdepends = linux-fbcondecor: enable console background images
+	optdepends = linux-ck-fbcondecor: enable console background images and linux-ck kernel patchset
+	conflicts = fbsplash-scripts
+	conflicts = initscripts-extras-fbsplash
+	source = fbcondecor
+	md5sums = 434dcb00413ad01a5c6873536fccc302
+
+pkgname = fbcondecor-openrc
+
