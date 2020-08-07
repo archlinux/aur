@@ -1,7 +1,7 @@
 pkgbase = ndn-tools
 	pkgdesc = A collection of basic tools for Named Data Networking
 	pkgver = 0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/named-data/ndn-tools
 	arch = i686
 	arch = x86_64
