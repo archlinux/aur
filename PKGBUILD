@@ -3,10 +3,10 @@
 pkgname=ipe
 _dirver=7.2
 pkgver=7.2.20
-pkgrel=2
+pkgrel=3
 pkgdesc="The extensible drawing editor"
 url="http://ipe.otfried.org/"
-depends=('lua' 'qt5-base' 'qt5-svg' 'freetype2' 'zlib' 'poppler' 'hicolor-icon-theme' 'gsl')
+depends=('lua53' 'qt5-base' 'qt5-svg' 'freetype2' 'zlib' 'poppler' 'hicolor-icon-theme' 'gsl')
 arch=('i686' 'x86_64')
 license=("GPL")
 conflicts=('ipe')
