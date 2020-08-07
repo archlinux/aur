@@ -1,9 +1,9 @@
 # Maintainer: Gerome Matilla <gerome.matilla07@gmail.com | gmail>
 
 pkgname=lightdm-webkit2-theme-glorious
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
-pkgdesc=" a modern and glorified lightdm webkit2 theme"
+pkgdesc="a sleek, modern and glorified lightdm webkit2 theme"
 arch=('any')
 url="https://github.com/manilarome/lightdm-webkit2-theme-glorious"
 license=('GPL3')
