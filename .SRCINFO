@@ -18,6 +18,7 @@ pkgbase = arrow
 	depends = gflags
 	depends = grpc>=1.27.0
 	depends = google-glog
+	depends = libutf8proc
 	depends = lz4
 	depends = protobuf
 	depends = rapidjson

@@ -8,7 +8,7 @@ pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
 url="https://arrow.apache.org"
 license=('Apache')
-depends=('boost-libs' 'brotli' 'double-conversion' 'c-ares-cmake' 'gflags' 'grpc>=1.27.0' 'google-glog' 'lz4' 'protobuf' 'rapidjson' 'snappy' 'thrift' 'uriparser' 'zstd')
+depends=('boost-libs' 'brotli' 'double-conversion' 'c-ares-cmake' 'gflags' 'grpc>=1.27.0' 'google-glog' 'libutf8proc' 'lz4' 'protobuf' 'rapidjson' 'snappy' 'thrift' 'uriparser' 'zstd')
 checkdepends=('git')
 optdepends=()
 provides=('parquet-cpp')
@@ -51,8 +51,7 @@ build(){
                                       -DARROW_USE_GLOG=ON \
                                       -DARROW_WITH_ZSTD=ON \
                                       -DARROW_WITH_BROTLI=ON \
-                                      -DGTest_SOURCE=BUNDLED \
-                                      -DgRPC_ROOT="/usr"
+                                      -DGTest_SOURCE=BUNDLED
   make
 }
 
@@ -65,9 +64,9 @@ package(){
 check(){
    cd "$srcdir"
    rm -rf parquet-testing
-   git clone https://github.com/apache/parquet-testing.git
+   git clone --depth 1 https://github.com/apache/parquet-testing.git
    rm -rf arrow-testing
-   git clone https://github.com/apache/arrow-testing.git
+   git clone --depth 1 https://github.com/apache/arrow-testing.git
    cd build
    PARQUET_TEST_DATA="$srcdir/parquet-testing/data" ARROW_TEST_DATA="$srcdir/arrow-testing/data" make test
 }
