@@ -3,5 +3,6 @@
 
 # Except ...
 !.gitignore
-!PKGBUILD
 !.SRCINFO
+!opentsdb.service
+!PKGBUILD

@@ -3,15 +3,17 @@
 
 pkgname="opentsdb"
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed, scalable Time Series Database (TSDB) written on top of HBase"
 arch=("x86_64" "i686" "arm" "armv6h" "armv7h" "aarch64")
 url="http://opentsdb.net/"
 license=("LGPL2.1")
 depends=("java-runtime" "hbase" "gnuplot")
 makedepends=("java-environment=7" "java-runtime=6")
-source=("https://github.com/OpenTSDB/opentsdb/archive/v${pkgver}.zip")
-sha512sums=("bec865831790fac91b90861451a8f14dc92992c2e5840ef663d728b68bf866c9bdda87f6562f1778e31e643d0cfb6f26d97e439e1ca990372d2cb81e28070fe9")
+source=("https://github.com/OpenTSDB/opentsdb/archive/v${pkgver}.zip"
+        "opentsdb.service")
+sha512sums=('bec865831790fac91b90861451a8f14dc92992c2e5840ef663d728b68bf866c9bdda87f6562f1778e31e643d0cfb6f26d97e439e1ca990372d2cb81e28070fe9'
+            '755dc59ff575f05caf49adef9b8c74ebc11b6bbed8cec7bb17dd7f88108ef26df750ef2b7f71d74c8fe121b523e8b745e7217c0c638cd6051ed1714c2f81ebb9')
 _watch="https://github.com/OpenTSDB/opentsdb/releases"
 
 prepare() {
@@ -59,15 +61,11 @@ package() {
     "$pkgdir/usr/share/opentsdb/etc/opentsdb/opentsdb.conf" \
     "$pkgdir/etc/opentsdb/opentsdb.conf"
 
-  jre_default="/usr/lib/jvm/default-runtime"
-
-  sed -i \
-    -e "s,Environment=JAVA_HOME=/usr/lib/jvm/jre-openjdk,Environment=JAVA_HOME=$jre_default,g" \
-    "$pkgdir/usr/share/opentsdb/etc/systemd/system/opentsdb@.service"
-  mkdir -p "$pkgdir/usr/lib/systemd/system"
-  ln -sf \
-    "/usr/share/opentsdb/etc/systemd/system/opentsdb@.service" \
-    "$pkgdir/usr/lib/systemd/system/opentsdb@.service"
+  systemd_units="$pkgdir/usr/lib/systemd/system"
+  mkdir -p "$systemd_units"
+  install -Dm644 \
+    "$srcdir/opentsdb.service" \
+    "$systemd_units/opentsdb.service"
 
   install -Dm644 \
     "$srcdir/$pkgname-$pkgver/COPYING" \
