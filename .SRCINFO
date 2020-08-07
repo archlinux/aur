@@ -1,0 +1,27 @@
+pkgbase = thank-you-stars
+	pkgdesc = CLI tool to star a PyPI package and its dependencies hosted on GitHub
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/thombashi/thank-you-stars
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-appconfigpy
+	depends = python-colorama
+	depends = python-datetimerange
+	depends = python-logbook
+	depends = python-mbstrdecoder
+	depends = python-msgfy
+	depends = python-path
+	depends = python-pathvalidate
+	depends = python-pygithub
+	depends = python-pytablewriter
+	depends = python-retryrequests
+	depends = python-subprocrunner
+	depends = python-tqdm
+	source = https://files.pythonhosted.org/packages/source/t/thank-you-stars/thank-you-stars-0.1.0.tar.gz
+	sha256sums = c5b47fff6dfc82a1699ad4d4a5e0858a38da6abaa47901a69ee6952376df3b4c
+
+pkgname = thank-you-stars
+
