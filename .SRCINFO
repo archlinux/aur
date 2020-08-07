@@ -1,7 +1,7 @@
 pkgbase = ndn-chronosync
 	pkgdesc = Synchronization library for distributed realtime applications for NDN
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/named-data/ChronoSync
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = ndn-chronosync
 	makedepends = sqlite
 	makedepends = openssl>=1.0.2
 	depends = boost
-	depends = ndn-chronosync
 	provides = ndn-chronosync
 	conflicts = ndn-chronosync
 	source = https://github.com/named-data/ChronoSync/archive/0.5.3.tar.gz
