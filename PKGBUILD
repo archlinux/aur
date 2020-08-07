@@ -3,15 +3,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-declarative-git
-pkgver=5.15.0.alpha1.r248.g48deaf9a3e
+pkgver=5.15.0.r1160.geb2ac8dadf
 pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Classes for QML and JavaScript languages'
 depends=(qt6-base-git)
-makedepends=(python vulkan-headers git)
+makedepends=(cmake python vulkan-headers at-spi2-core git)
 groups=(qt6)
+conflicts=(qt6-declarative)
+provides=(qt6-declarative)
 source=(git+https://code.qt.io/qt/qtdeclarative.git#branch=dev)
 sha256sums=('SKIP')
 
@@ -20,20 +22,13 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-
-  qmake-qt6 ../qtdeclarative QMAKE_SYNCQT=/usr/bin/syncqt.pl-qt6
-  make
+  cmake -B build -S qtdeclarative
+  cmake --build build
 }
 
 package() {
-  cd build
-  make INSTALL_ROOT="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 
   mkdir "$pkgdir"/usr/bin
   for b in "${pkgdir}"/usr/lib/qt6/bin/*; do
