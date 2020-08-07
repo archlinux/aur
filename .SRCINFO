@@ -1,7 +1,7 @@
 pkgbase = lrexlib
 	pkgdesc = Regular expression libraries for Lua
-	pkgver = 2.9.0
-	pkgrel = 2
+	pkgver = 2.9.1
+	pkgrel = 1
 	url = http://rrthomas.github.io/lrexlib/
 	arch = i686
 	arch = x86_64
