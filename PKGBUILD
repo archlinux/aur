@@ -1,6 +1,6 @@
 # Maintainer: Jojii <jojii@gmx.net>
 pkgname=yayim
-pkgver=10.0.3_2
+pkgver=10.0.3_3
 pkgrel=1
 pkgdesc="A modified version of yay with additional features, improvements and small bug fixes"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -17,7 +17,7 @@ makedepends=(
 provides=("yay")
 conflicts=("yay")
 source=("${pkgname}-${pkgver}.tar.gz::https://git.jojii.de/jojii/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('b8c56f2a1c97564d5b2efa11023d218b4091d935b08d91ab36f1cde3db30822e')
+sha256sums=('3ec1183ca1dc97d25585f02edc001a2c12cd37ce98eee9e5b707cc08534429be')
 
 build() {
   export GOPATH="$srcdir"/gopath
