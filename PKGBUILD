@@ -2,12 +2,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=blis-git
-pkgver=0.6.0.r55.g171f1006
-pkgrel=2
+pkgver=0.7.0.r38.g9c5b485d
+pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group"
 arch=('x86_64')
 license=('custom:BSD')
-makedepends=('python2')
+depends=('gcc-libs')
+makedepends=('python')
 conflicts=('blis')
 provides=('blis')
 url='https://github.com/flame/blis'
@@ -39,5 +40,5 @@ package() {
   cd "${pkgname%-git}"
 
   make DESTDIR="${pkgdir}" install
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
