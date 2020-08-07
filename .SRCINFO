@@ -1,0 +1,15 @@
+pkgbase = python-retryrequests
+	pkgdesc = Python library for HTTP requests using requests package with exponential back-off retry
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/thombashi/retryrequests
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-requests
+	provides = retryrequests
+	source = https://files.pythonhosted.org/packages/source/r/retryrequests/retryrequests-0.0.3.tar.gz
+	sha256sums = eddd18ea7034e2dc2a0708aa1de2aa3e611a7d423d8f40c9fcb4d63fdaa451f9
+
+pkgname = python-retryrequests
+
