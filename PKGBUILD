@@ -3,8 +3,8 @@
 
 _gitname=daala
 pkgname=${_gitname}-git
-pkgver=0.0.r1696.g7278368
-pkgrel=2
+pkgver=0.0.r1731.g694d4ce
+pkgrel=1
 pkgdesc="next-next-gen video compression technology from Xiph.org, Mozilla and others"
 arch=('i686' 'x86_64')
 url="https://www.xiph.org/daala/"
@@ -19,7 +19,7 @@ optdepends=("libogg: OGG support"
 provides=('libdaala' $_gitname)
 conflicts=('libdaala' $_gitname)
 options=('!libtool')
-source=(git+https://git.xiph.org/daala.git)
+source=(git+https://gitlab.xiph.org/xiph/daala.git)
 md5sums=('SKIP')
 
 
