@@ -15,25 +15,27 @@
 puredata=${puredata:-pd}
 pkgpref=$(echo "$puredata" | sed -e 's/-//g')
 
-# Branch to build (master by default).
-branch=${branch:-master}
+# Branch to build, master-dev by default. This is now a branch in our own fork
+# which is kept in sync with upstream at https://github.com/CICM/pd-faustgen,
+# but enables us to implement changes much more swiftly.
+branch=${branch:-master-dev}
 
 # Source and destination package names.
 src_pkgname=pd-faustgen
 dest_pkgname=$pkgpref-faustgen
 
 pkgname=$dest_pkgname-git
-pkgver=0.1.2.r0.g9e2aaea
-pkgrel=2
+pkgver=0.1.2.1.r0.g5cda070
+pkgrel=1
 pkgdesc="The FAUST compiler embedded in a Pd external - git version"
 arch=("i686" "x86_64")
 license=('MIT')
-url="https://github.com/CICM/$src_pkgname"
+url="https://github.com/agraef/$src_pkgname"
 depends=("$puredata" 'llvm-libs')
-makedepends=('cmake' 'llvm')
+makedepends=('cmake' 'faust' 'llvm')
 provides=("$dest_pkgname")
 conflicts=("$dest_pkgname")
-source=("git+https://github.com/CICM/$src_pkgname.git#branch=$branch")
+source=("git+https://github.com/agraef/$src_pkgname.git#branch=$branch")
 md5sums=('SKIP')
 
 pkgver() {
@@ -43,23 +45,25 @@ pkgver() {
 
 prepare() {
      cd "$src_pkgname"
-     git submodule update --init --recursive
-}
-
-build() {
-     cd "$src_pkgname"
-     mkdir build && cd build
-     cmake ..
-     make
+     # We don't have to initialize the faust submodules, as we're building
+     # against an installed libfaust. This makes checking out the submodules
+     # much quicker.
+     git submodule update --init pd.build pure-data
 }
 
 # Installation goes into /usr/lib/$puredata. Figure out the real name of that
 # directory in case it is a link (as is the case with purr-data).
 pdlibdir=$(cd /usr/lib/$puredata && pwd -P)
 
-package() {
+build() {
      cd "$src_pkgname"
-     mkdir -p "$pkgdir$pdlibdir/extra/faustgen~/libs"
-     cp -a external/* "$pkgdir$pdlibdir/extra/faustgen~"
-     cp -a faust/libraries/*.lib faust/libraries/old/*.lib "$pkgdir$pdlibdir/extra/faustgen~/libs"
+     rm -rf build
+     mkdir build && cd build
+     cmake .. -DCMAKE_INSTALL_PREFIX="$pdlibdir" -DINSTALL_DIR="extra/faustgen~" -DINSTALLED_FAUST=ON
+     make
+}
+
+package() {
+     cd "$src_pkgname/build"
+     make install DESTDIR="$pkgdir"
 }
