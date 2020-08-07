@@ -1,6 +1,6 @@
 pkgbase = minitube-aur
 	pkgdesc = A youtube client that does not need flash
-	pkgver = 3.4.2
+	pkgver = 3.5
 	pkgrel = 1
 	url = https://flavio.tordini.org/minitube
 	install = minitube-aur.install
