@@ -3,7 +3,7 @@ _reponame=PSync
 _pkgname=ndn-psync
 pkgname=$_pkgname
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 # epoch=
 pkgdesc="NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/named-data/${_reponame}"
 license=('GPL')
 groups=()
 depends=('ndn-cxx' 'boost')
-makedepends=('git' 'gcc' 'python' 'boost' 'pkgconf' 'sqlite' 'openssl>=1.0.2')
+makedepends=('git' 'python' 'boost' 'sqlite' 'openssl>=1.0.2')
 checkdepends=()
 optdepends=('valgrind: memory analysis'
             'doxygen: build documentation'
