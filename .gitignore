@@ -2,3 +2,4 @@
 /src/
 /pkgtop/
 *.tar.xz
+*.tar.zst

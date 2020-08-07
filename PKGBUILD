@@ -2,16 +2,14 @@
 
 pkgname=pkgtop-git
 pkgdesc="Interactive package manager & resource monitor"
-pkgver=2.3.r0.g26538c7
+pkgver=2.4.r0.g639b2fe
 pkgrel=1
-arch=('any')
+arch=('x86_64')
 url="https://github.com/orhun/pkgtop"
 license=('GPL3')
 depends=('git')
 makedepends=('go')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=('git://github.com/orhun/pkgtop.git#branch=master')
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
