@@ -13,10 +13,10 @@ pkgbase = hornet-bin
 	backup = var/lib/hornet/peering.json
 	backup = var/lib/hornet/profiles.json
 	backup = etc/default/hornet
-	source_x86_64 = https://github.com/gohornet/hornet/releases/download/v0.5.0-rc6/hornet_0.5.0-rc6_amd64.deb
-	sha256sums_x86_64 = bf9ece2fdf5f8e7a0bb5b16cafbfc1604cfbe07437d20ca5ece6e44506753dfd
-	source_aarch64 = https://github.com/gohornet/hornet/releases/download/v0.5.0-rc6/hornet_0.5.0-rc6_arm64.deb
-	sha256sums_aarch64 = 3875cbfb32e34e5aae6d41d5ecfea88b7d134502afa9b613ed0d125a52982d14
+	source_x86_64 = https://github.com/gohornet/hornet/releases/download/v0.5.0-rc8/hornet_0.5.0-rc8_amd64.deb
+	sha256sums_x86_64 = 982f320c79cf6b4f3805620f4ce738349b5de1c2e1d913c7fdcf2703be3027ec
+	source_aarch64 = https://github.com/gohornet/hornet/releases/download/v0.5.0-rc8/hornet_0.5.0-rc8_arm64.deb
+	sha256sums_aarch64 = f695bc9451d9bcf4d0481d24974072ce33f743ae84e5b6b0b2641da9b7c4de20
 
 pkgname = hornet-bin
 
