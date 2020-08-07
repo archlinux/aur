@@ -1,4 +1,5 @@
-# Maintainer: Robin Nehls <aur@manol.is>
+# Maintainer: blacktea <blackteahamburger@outlook.com>
+# Contributor: Robin Nehls <aur@manol.is>
 
 pkgname=buttersink-git
 _gitname=buttersink
