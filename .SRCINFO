@@ -1,0 +1,13 @@
+pkgbase = chaos-client-bin
+	pkgdesc = Client to communicate with Chaos DNS API
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/chaos-client
+	arch = x86_64
+	license = MIT
+	provides = chaos
+	source = chaos-0.1.6.tgz::https://github.com/projectdiscovery/chaos-client/releases/download/v0.1.6/chaos-client_0.1.6_linux_amd64.tar.gz
+	sha256sums = 7d0d30718517a64edf88ce5ab50aea7cdd2027652815bfeb06f294445e0853c6
+
+pkgname = chaos-client-bin
+
