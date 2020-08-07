@@ -2,7 +2,7 @@
 _reponame=infoedit
 _pkgname=ndn-infoedit
 pkgname=${_pkgname}-git
-pkgver=5e88552
+pkgver=r9.5e88552
 pkgrel=1
 # epoch=
 pkgdesc="Command Line Tools for Boost INFO Format"
@@ -11,7 +11,7 @@ url="https://github.com/NDN-Routing/${_reponame}"
 #license=('GPL')
 groups=()
 depends=('boost')
-makedepends=('git' 'gcc' 'python' 'pkgconf' 'sqlite' 'openssl>=1.0.2')
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=("${_pkgname}")
@@ -27,7 +27,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "${srcdir}/${_reponame}"
-	git rev-parse --short HEAD
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
