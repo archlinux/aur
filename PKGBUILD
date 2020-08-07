@@ -83,7 +83,7 @@ package() {
   install -D -m 755 $srcdir/code42-install/scripts/code42.desktop $pkgdir/usr/share/applications/crashplan.desktop
 
   # We need to change the name for now
-  ln -sf $pkgdir/opt/crashplan/bin/Code42Service $pkgdir/opt/crashplan/bin/CrashPlanService 
+  ln -sf "/opt/$_pkgname/bin/Code42Service" $pkgdir/opt/crashplan/bin/CrashPlanService 
 
   # rc.d daemon
   install -D -m 755 $srcdir/crashplan-pro $pkgdir/etc/rc.d/crashplan-pro
