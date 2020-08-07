@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-plotjuggler
 	pkgdesc = ROS - PlotJuggler: juggle with data
 	pkgver = 2.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.plotjuggler.io
 	arch = i686
 	arch = x86_64
@@ -30,7 +30,9 @@ pkgbase = ros-noetic-plotjuggler
 	depends = qt5-svg
 	depends = boost
 	source = ros-noetic-plotjuggler-2.8.3.tar.gz::https://github.com/facontidavide/PlotJuggler/archive/2.8.3.tar.gz
+	source = qpainterpath.patch::https://patch-diff.githubusercontent.com/raw/facontidavide/PlotJuggler/pull/313.patch
 	sha256sums = 2b8eb6b8fc8d1e259d2cf907eb0dc495cf1e3117f7683f4f5179beae76be628b
+	sha256sums = SKIP
 
 pkgname = ros-noetic-plotjuggler
 

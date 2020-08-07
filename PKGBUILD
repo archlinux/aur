@@ -4,7 +4,7 @@ url='https://www.plotjuggler.io'
 pkgname='ros-noetic-plotjuggler'
 pkgver='2.8.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('LGPLv3')
 
 ros_makedepends=(
@@ -42,8 +42,15 @@ depends=(
 )
 
 _dir="PlotJuggler-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz")
-sha256sums=('2b8eb6b8fc8d1e259d2cf907eb0dc495cf1e3117f7683f4f5179beae76be628b')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz"
+        "qpainterpath.patch"::"https://patch-diff.githubusercontent.com/raw/facontidavide/PlotJuggler/pull/313.patch")
+sha256sums=('2b8eb6b8fc8d1e259d2cf907eb0dc495cf1e3117f7683f4f5179beae76be628b'
+            'SKIP')
+
+prepare() {
+    cd "$srcdir/$_dir"
+    patch --forward --strip=1 --input="${srcdir}/qpainterpath.patch"
+}
 
 build() {
     # Use ROS environment variables.
