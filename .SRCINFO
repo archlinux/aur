@@ -1,0 +1,13 @@
+pkgbase = howdy-bin
+	pkgdesc = Windows Hello™ style facial authentication for Linux
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/boltgolt/howdy
+	arch = x86_64
+	groups = base-devel
+	license = MIT
+	source = https://github.com/boltgolt/howdy/releases/download/v2.6.0/howdy_2.6.0.deb
+	md5sums = 06e40cb2509db50c62924eb59f64e256
+
+pkgname = howdy-bin
+
