@@ -1,5 +1,5 @@
 pkgname='enroot'
-pkgver='3.0.0'
+pkgver='3.1.1'
 pkgrel='1'
 pkgdesc='A simple yet powerful tool to turn traditional container/OS images into unprivileged sandboxes.'
 url='https://github.com/NVIDIA/enroot'
