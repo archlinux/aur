@@ -1,6 +1,6 @@
 pkgbase = hornet-bin
 	pkgdesc = Powerful IOTA fullnode software (official precompiled binary)
-	pkgver = 0.5.0
+	pkgver = 0.5.0_rc8
 	pkgrel = 1
 	url = https://github.com/gohornet/hornet
 	install = hornet.install
