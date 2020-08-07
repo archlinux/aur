@@ -2,7 +2,7 @@
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Maintainer: Sander van Kasteel <info at sandervankasteel dot nl>
 pkgname=gtg-git
-pkgver=r5675.abe2a911
+pkgver=r5730.6623731f
 pkgrel=1
 pkgdesc="Personal GTD like organizer for the GNOME desktop environment. Git version."
 url="https://wiki.gnome.org/Apps/GTG"
@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('GPL')
 depends=('pygtk' 'python-gobject' 'python-configobj' 'dbus-python'
 'hicolor-icon-theme' 'desktop-file-utils' 'python2-gnomekeyring'
-'python-liblarch-git' 'python-cairo' 'python-pyxdg')
+'python-liblarch-git' 'python-cairo' 'python-pyxdg' 'python-lxml')
 makedepends=('git' 'python-gobject' 'meson')
 optdepends=(
 'pdftk: for Export and print plugin'
