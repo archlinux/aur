@@ -1,14 +1,14 @@
 pkgbase = equate-git
 	pkgdesc = Calculator based on EFL
-	pkgver = 0.99.0.14.ef2273a
-	pkgrel = 1
+	pkgver = 0.99.0.34.2afdce0
+	pkgrel = 2
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = efl
-	source = git://git.enlightenment.org/apps/equate.git
+	source = git+https://git.enlightenment.org/apps/equate.git
 	md5sums = SKIP
 
 pkgname = equate-git

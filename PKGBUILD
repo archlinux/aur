@@ -1,16 +1,17 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: blacktea <blackteahamburger@outlook.com>
+# Contributor: Doug Newgard <scimmia22 at outlook dot com>
 
 pkgname=equate-git
 _pkgname=${pkgname%-git}
-pkgver=0.99.0.14.ef2273a
-pkgrel=1
+pkgver=0.99.0.34.2afdce0
+pkgrel=2
 pkgdesc="Calculator based on EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('MIT')
 depends=('efl')
 makedepends=('git')
-source=("git://git.enlightenment.org/apps/$_pkgname.git")
+source=("git+https://git.enlightenment.org/apps/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
