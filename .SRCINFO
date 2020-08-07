@@ -14,9 +14,11 @@ pkgbase = iup
 	makedepends = lua
 	makedepends = lua51
 	makedepends = lua52
+	makedepends = lua53
 	makedepends = lua-cd
 	makedepends = lua51-cd
 	makedepends = lua52-cd
+	makedepends = lua53-cd
 	source = https://downloads.sourceforge.net/project/iup/3.30/Docs%20and%20Sources/iup-3.30_Sources.tar.gz
 	source = https://downloads.sourceforge.net/project/iup/3.30/Docs%20and%20Sources/iup-3.30_Docs.pdf
 	md5sums = 2f01aed0de2186c08a0e639f46c08662
@@ -31,7 +33,7 @@ pkgname = iup
 	depends = libxpm
 
 pkgname = lua-iup
-	pkgdesc = Lua 5.3 bindings for IUP GUI toolkit
+	pkgdesc = Lua 5.4 bindings for IUP GUI toolkit
 	depends = iup
 	depends = lua
 	optdepends = lua-im: IM toolkit support
@@ -50,4 +52,11 @@ pkgname = lua52-iup
 	depends = lua52
 	optdepends = lua52-im: IM toolkit support
 	optdepends = lua52-cd: Canvas Draw support
+
+pkgname = lua53-iup
+	pkgdesc = Lua 5.3 bindings for IUP GUI toolkit
+	depends = iup
+	depends = lua53
+	optdepends = lua53-im: IM toolkit support
+	optdepends = lua53-cd: Canvas Draw support
 

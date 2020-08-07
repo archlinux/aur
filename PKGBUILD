@@ -5,7 +5,7 @@
 # Contributor: Jiří Klimeš <blueowl@centrum.cz>
 
 pkgbase=iup
-pkgname=('iup' 'lua-iup' 'lua51-iup' 'lua52-iup')
+pkgname=('iup' 'lua-iup' 'lua51-iup' 'lua52-iup' 'lua53-iup')
 pkgver=3.30
 pkgrel=1
 pkgdesc="C cross platform GUI toolkit"
@@ -21,9 +21,11 @@ makedepends=('lsb-release'
              'lua'
              'lua51'
              'lua52'
+             'lua53'
              'lua-cd'
              'lua51-cd'
-             'lua52-cd')
+             'lua52-cd'
+             'lua53-cd')
 
 source=(
   "https://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Sources.tar.gz"
@@ -60,7 +62,7 @@ prepare() {
 }
 
 _lua_iup_build_helper() {
-  # $1 ... Lua version ("5.1", "5.2" or "5.3")
+  # $1 ... Lua version ("5.1", "5.2", "5.3" or "5.4")
   _lua_ver="$1"
 
   make \
@@ -113,15 +115,17 @@ build() {
     USE_PKGCONFIG=Yes \
     USE_GTK3=Yes
 
-  _lua_iup_build_helper "5.3"
+  _lua_iup_build_helper "5.4"
 
   _lua_iup_build_helper "5.1"
 
   _lua_iup_build_helper "5.2"
+
+  _lua_iup_build_helper "5.3"
 }
 
 _lua_iup_package_helper() {
-  # $1 ... Lua version ("5.1", "5.2", "5.3", ... or "none")
+  # $1 ... Lua version ("5.1", "5.2", "5.3", "5.4", ... or "none")
   _lua_ver="$1"
   _lua_ver_nodot="${_lua_ver//.}"
   _linux_ver="Linux$(uname -r | awk -v FS='.' -v OFS='' {'print $1,$2'})_64"
@@ -173,12 +177,12 @@ package_iup() {
 }
 
 package_lua-iup() {
-  pkgdesc="Lua 5.3 bindings for IUP GUI toolkit"
+  pkgdesc="Lua 5.4 bindings for IUP GUI toolkit"
   depends=('iup' 'lua')
   optdepends=('lua-im: IM toolkit support'
               'lua-cd: Canvas Draw support')
 
-  _lua_iup_package_helper "5.3"
+  _lua_iup_package_helper "5.4"
 }
 
 package_lua51-iup() {
@@ -197,4 +201,13 @@ package_lua52-iup() {
               'lua52-cd: Canvas Draw support')
 
   _lua_iup_package_helper "5.2"
+}
+
+package_lua53-iup() {
+  pkgdesc="Lua 5.3 bindings for IUP GUI toolkit"
+  depends=('iup' 'lua53')
+  optdepends=('lua53-im: IM toolkit support'
+              'lua53-cd: Canvas Draw support')
+
+  _lua_iup_package_helper "5.3"
 }
