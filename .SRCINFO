@@ -1,0 +1,15 @@
+pkgbase = python-appconfigpy
+	pkgdesc = Python library to create/load an application configuration file
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/thombashi/appconfigpy
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = appconfigpy
+	source = https://files.pythonhosted.org/packages/source/a/appconfigpy/appconfigpy-1.0.2.tar.gz
+	sha256sums = 114336a9e01d04c4818fd4512f470f611aabf2ea5925b7ba5a6ca25c70f173d8
+
+pkgname = python-appconfigpy
+
