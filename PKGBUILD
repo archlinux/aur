@@ -1,31 +1,34 @@
-# Maintainer: Sandy Carter <bwrsandman+aur@gmail.com>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Sandy Carter <bwrsandman+aur@gmail.com>
 
 pkgname=fuzzylite
 pkgver=6.0
-pkgrel=1
-pkgdesc="A Fuzzy Logic Control Library in C++"
-arch=('i686' 'x86_64')
-url="https://www.fuzzylite.com"
+pkgrel=2
+pkgdesc='C++ fuzzy logic control library'
+arch=('x86_64' 'aarch64')
+url='https://github.com/fuzzylite/fuzzylite'
 license=('GPL3')
-depends=()
-makedepends=('cmake' 'git')
-optdepends=()
-provides=()
-conflicts=()
-source=("https://github.com/fuzzylite/fuzzylite/archive/v${pkgver}.tar.gz")
+makedepends=('cmake')
+options=('zipman')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('7e9f56deb9baf063de2232bfd8285f57ddccb651dae842fe3f587d0ac65ecdb0')
 
 build() {
-  cd "${srcdir}/${pkgname}-6.0/${pkgname}"
-  cmake \
+  export CFLAGS+=" ${CPPFLAGS}"
+  export CXXFLAGS+=" ${CPPFLAGS}"
+  cmake -B build -S "${pkgname}-${pkgver}/${pkgname}" \
+    -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_BUILD_TYPE='Release'
-  make
+    -Wno-dev
+  make -C build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-6.0/${pkgname}"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" PREFIX="/usr" -C build install
+  cd "${pkgname}-${pkgver}"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
+  install -Dm644 -t "${pkgdir}/usr/share/man/man1" "${pkgname}/${pkgname}.1"
+  cp -r 'examples' "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:

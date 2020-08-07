@@ -1,14 +1,14 @@
 pkgbase = fuzzylite
-	pkgdesc = A Fuzzy Logic Control Library in C++
+	pkgdesc = C++ fuzzy logic control library
 	pkgver = 6.0
-	pkgrel = 1
-	url = https://www.fuzzylite.com
-	arch = i686
+	pkgrel = 2
+	url = https://github.com/fuzzylite/fuzzylite
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = cmake
-	makedepends = git
-	source = https://github.com/fuzzylite/fuzzylite/archive/v6.0.tar.gz
+	options = zipman
+	source = fuzzylite-6.0.tar.gz::https://github.com/fuzzylite/fuzzylite/archive/v6.0.tar.gz
 	sha256sums = 7e9f56deb9baf063de2232bfd8285f57ddccb651dae842fe3f587d0ac65ecdb0
 
 pkgname = fuzzylite
