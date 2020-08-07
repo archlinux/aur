@@ -1,6 +1,6 @@
 pkgbase = sameboy
 	pkgdesc = An accuracy-focused Game Boy/Game Boy Color emulator
-	pkgver = 0.13.3
+	pkgver = 0.13.5
 	pkgrel = 1
 	url = https://github.com/LIJI32/SameBoy
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = sameboy
 	makedepends = git
 	depends = sdl2
 	conflicts = sameboy-git
-	source = sameboy-0.13.3.tar.gz::https://github.com/LIJI32/SameBoy/archive/v0.13.3.tar.gz
-	md5sums = 8f0a741927949b88a4bac5c71f467f3c
+	source = sameboy-0.13.5.tar.gz::https://github.com/LIJI32/SameBoy/archive/v0.13.5.tar.gz
+	md5sums = 50c0edc972ac4fbae4becaf93ef0d41e
 
 pkgname = sameboy
 
