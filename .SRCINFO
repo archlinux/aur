@@ -1,7 +1,7 @@
 pkgbase = miopen-hip
 	pkgdesc = AMD's Machine Intelligence Library (HIP backend)
 	pkgver = 3.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ROCmSoftwarePlatform/MIOpen
 	arch = x86_64
 	license = custom:NCSAOSL
