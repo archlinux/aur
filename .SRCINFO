@@ -1,0 +1,21 @@
+pkgbase = material-gtk-framework
+	pkgdesc = Material GTK themes built with the Material GTK Framework
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/JaxWilko/material-gtk-framework
+	arch = any
+	license = GPL3
+	makedepends = sassc
+	makedepends = inkscape
+	makedepends = optipng
+	depends = gtk3
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	optdepends = vimix-icon-theme: suggested icon theme
+	source = material-gtk-framework-0.1.7.tar.gz::https://github.com/JaxWilko/material-gtk-framework/archive/v0.1.7.tar.gz
+	sha256sums = fb132bc3cc44443897470e5635349af78ad492dbaa5b9f2d6f10333cc4f5d30b
+
+pkgname = palenight-gtk-theme
+
+pkgname = amarena-gtk-theme
+
