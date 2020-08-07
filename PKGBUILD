@@ -1,7 +1,7 @@
 # Maintainer: buzz <buzz-AT-l4m1-DOT-de>
 pkgname=volctl
 _gitname=volctl
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Per-application volume control for GNU/Linux desktops"
 arch=("any")
@@ -11,7 +11,7 @@ depends=("python" "python-gobject" "python-setuptools" "pulseaudio" "desktop-fil
 optdepends=("pavucontrol: mixer support")
 makedepends=("git")
 options=(!emptydirs)
-source=("git+https://github.com/buzz/volctl.git#tag=${pkgver}")
+source=("git+https://github.com/buzz/volctl.git#tag=v${pkgver}")
 md5sums=("SKIP")
 
 package() {
