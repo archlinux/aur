@@ -31,7 +31,7 @@ pkgver(){
 
 build() {
     cd git-team
-    if [[ $GO_PATH != "" ]]; then
+    if [[ $GO_PATH == "" ]]; then
         GO_PATH=$HOME/go
     fi
     make
