@@ -1,13 +1,14 @@
 pkgbase = gammastep
 	pkgdesc = Adjusts the color temperature of your screen according to your surroundings.
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/chinstrap/gammastep
 	arch = x86_64
 	license = GPL3
 	makedepends = intltool
 	makedepends = python
 	makedepends = git
+	makedepends = systemd
 	depends = glib2
 	depends = wayland
 	depends = libdrm
