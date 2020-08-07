@@ -2,7 +2,7 @@
 
 pkgname=qv2ray-plugin-trojan
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Qv2ray Plugin: Trojan"
 arch=('x86_64')
 url="https://github.com/Qv2ray/QvPlugin-Trojan"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver/"
-    git submodule update --init --recursive
+    git submodule update --init
 }
 
 build() {
