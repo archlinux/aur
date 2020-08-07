@@ -54,6 +54,9 @@ prepare() {
 
   # Add required gmodule-2.0 to pkg-config (temporary patch to build successfully)
   sed '/PKGLIBS += $(shell pkg-config --libs gtk+-$(GTKSFX).0 gdk-$(GTKSFX).0/ { s/\(.*\))/\1 gmodule-2.0)/ }' -i "$srcdir"/iup/tecmake.mak
+
+  # Fix building iupweb library (temporary patch to build successfully)
+  sed 's|SRC = iup_webbrowser.c|SRC = iup_webbrowser.c ../src/iup_str.c|' -i "$srcdir"/iup/srcweb/config.mak
 }
 
 _lua_iup_build_helper() {
