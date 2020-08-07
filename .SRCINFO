@@ -1,7 +1,7 @@
 pkgbase = awesome-luajit
 	pkgdesc = Highly configurable framework window manager
 	pkgver = 4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://awesomewm.org/
 	arch = x86_64
 	license = GPL2
@@ -12,6 +12,7 @@ pkgbase = awesome-luajit
 	makedepends = imagemagick
 	makedepends = ldoc
 	makedepends = xmlto
+	makedepends = ttf-font
 	depends = cairo
 	depends = dbus
 	depends = gdk-pixbuf2

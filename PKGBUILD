@@ -9,7 +9,7 @@
 
 pkgname=awesome-luajit
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Highly configurable framework window manager'
 url='https://awesomewm.org/'
 arch=('x86_64')
@@ -17,7 +17,7 @@ license=('GPL2')
 depends=('cairo' 'dbus' 'gdk-pixbuf2' 'imlib2' 'libxdg-basedir' 'luajit' 'luajit-lgi' 'pango'
          'startup-notification' 'xcb-util-cursor' 'xcb-util-keysyms' 'xcb-util-wm'
          'xorg-xmessage' 'libxkbcommon-x11' 'libxkbcommon' 'xcb-util-xrm')
-makedepends=('asciidoc' 'cmake' 'docbook-xsl' 'doxygen' 'imagemagick' 'ldoc' 'xmlto')
+makedepends=('asciidoc' 'cmake' 'docbook-xsl' 'doxygen' 'imagemagick' 'ldoc' 'xmlto' 'ttf-font')
 optdepends=('rlwrap: readline support for awesome-client'
             'dex: autostart your desktop files'
             'vicious: widgets for the Awesome window manager')
@@ -31,13 +31,16 @@ validpgpkeys=('2BB32F88FF3D1E76E682303F22E428EBCB8FCB06') # Uli Schlachter <psyc
 
 prepare() {
   cd awesome-${pkgver}
-  sed -i 's/COMMAND lua\b/COMMAND luajit/' awesomeConfig.cmake tests/examples/CMakeLists.txt
-  sed -i 's/LUA_COV_RUNNER lua\b/LUA_COV_RUNNER luajit/' tests/examples/CMakeLists.txt
+  sed -i 's/COMMAND lua /COMMAND luajit /' awesomeConfig.cmake
+  sed -i 's| lua | luajit |;s/lua)/luajit)/' tests/examples/CMakeLists.txt
+  sed -i '1s|/usr/bin/env lua$|/usr/bin/env luajit|' build-utils/check_for_invalid_requires.lua
+  sed -i 's/"lua"/"luajit"/' tests/test-spawn.lua
   mkdir -p build
 }
 
 build() {
   cd awesome-${pkgver}/build
+  CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
   cmake .. \
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DCMAKE_INSTALL_PREFIX=/usr \
