@@ -1,6 +1,6 @@
 pkgbase = gtg-git
 	pkgdesc = Personal GTD like organizer for the GNOME desktop environment. Git version.
-	pkgver = r5675.abe2a911
+	pkgver = r5730.6623731f
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/GTG
 	install = gtg-git.install
@@ -19,6 +19,7 @@ pkgbase = gtg-git
 	depends = python-liblarch-git
 	depends = python-cairo
 	depends = python-pyxdg
+	depends = python-lxml
 	optdepends = pdftk: for Export and print plugin
 	optdepends = python-cheetah3: for Export and print plugin
 	optdepends = python2-libappindicator: for Notification area plugin (python-appindicator)
