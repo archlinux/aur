@@ -2,7 +2,7 @@
 
 pkgname=wob
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight overlay volume/backlight/progress/anything bar for Wayland'
 arch=('i686' 'x86_64')
 url='https://github.com/francma/wob'
