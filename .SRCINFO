@@ -1,0 +1,13 @@
+pkgbase = nuclei-bin
+	pkgdesc = Fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/nuclei
+	arch = x86_64
+	license = MIT
+	provides = nuclei
+	source = nuclei-2.1.0.tgz::https://github.com/projectdiscovery/nuclei/releases/download/v2.1.0/nuclei_2.1.0_linux_amd64.tar.gz
+	sha256sums = 29228a11ddca9a4992203facde9c8325f39bbfa8ecf5f8808f1aa243a5412159
+
+pkgname = nuclei-bin
+
