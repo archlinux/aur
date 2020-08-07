@@ -1,14 +1,15 @@
-pkgbase = vott
+pkgbase = vott-bin
 	pkgdesc = Visual Object Tagging Tool: An electron app for building end to end Object Detection Models from Images and Videos.
 	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/microsoft/VoTT
 	arch = x86_64
-	license = unknown
+	license = MIT
 	makedepends = squashfs-tools
 	provides = vott
+	conflicts = vott
 	source = https://github.com/microsoft/VoTT/releases/download/v2.2.0/vott-2.2.0-linux.snap
 	sha256sums = 639e5a8ecaab9e1425da11b59c87387cb383deb22d7b93ba7fa1c941dfd82c10
 
-pkgname = vott
+pkgname = vott-bin
 

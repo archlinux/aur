@@ -1,13 +1,14 @@
 # Maintainer: Arun Mahapatra <arun@codito.in>
 
-pkgname=vott
+pkgname=vott-bin
 pkgver=2.2.0
 pkgrel=1
 pkgdesc="Visual Object Tagging Tool: An electron app for building end to end Object Detection Models from Images and Videos."
 arch=('x86_64')
 url='https://github.com/microsoft/VoTT'
 provides=('vott')
-license=('unknown')
+conflicts=('vott')
+license=('MIT')
 makedepends=('squashfs-tools')
 source=("https://github.com/microsoft/VoTT/releases/download/v${pkgver}/vott-${pkgver}-linux.snap")
 sha256sums=('639e5a8ecaab9e1425da11b59c87387cb383deb22d7b93ba7fa1c941dfd82c10')
