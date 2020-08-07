@@ -1,27 +1,22 @@
 pkgbase = dave_gnukem
 	pkgdesc = 2D scrolling platform shooter inspired by Duke Nukem 1
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/davidjoffe/dave_gnukem
 	arch = x86_64
-	arch = i686
-	arch = arm
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
 	license = GPL2
 	license = MIT
 	depends = sdl_mixer
-	source = https://github.com/davidjoffe/dave_gnukem/archive/1.0.1.tar.gz
-	source = 1.0.1-data.tar.gz::https://github.com/davidjoffe/gnukem_data/archive/1.0.1.tar.gz
+	source = dave_gnukem-1.0.1.tar.gz::https://github.com/davidjoffe/dave_gnukem/archive/1.0.1.tar.gz
+	source = dave_gnukem-1.0.1-data.tar.gz::https://github.com/davidjoffe/gnukem_data/archive/1.0.1.tar.gz
 	source = dave_gnukem-wrapper.sh
 	source = dave_gnukem.desktop
 	source = dave_gnukem.png
 	sha256sums = 2f00a6c373e270578160a73a5484fb8ec92a9361c7960cb4670856bcdc7a8a14
 	sha256sums = 46c06c5fb7e1ca8d0848c1866d6e1df96e021ddf8cebc7e64d97cfee64232027
 	sha256sums = bdfa7b607418497e6f1448fe6bf407bd4a22fcea5efefedfeda90607566bf7d4
-	sha256sums = baf54018ab7a1b7607b2e726561d2c2ea2c62f7ce12e5056aac9d5b613536fb6
-	sha256sums = 07c150d5fe3cdad974917350ccf4d706eadaf847c5bf49248ef8748ec50c1350
+	sha256sums = 3e15644441db9586421c95879d7d9eb68c03fe204f43c3fbd744ac80431b4a91
+	sha256sums = 89cb35bd13682bb35f2e7e5a9fc36d0a0f9959b77261d538f8ab1d59edb0321e
 
 pkgname = dave_gnukem
 
