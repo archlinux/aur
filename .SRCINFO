@@ -1,0 +1,13 @@
+pkgbase = naabu-bin
+	pkgdesc = Fast port scanner with a focus on reliability and simplicity
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/projectdiscovery/naabu
+	arch = x86_64
+	license = GPL3
+	provides = naabu
+	source = naabu-1.1.4.tgz::https://github.com/projectdiscovery/naabu/releases/download/v1.1.4/naabu_1.1.4_linux_amd64.tar.gz
+	sha256sums = 897d950aaefb41a096a7396eddd97712c1330521b3feb3fc36ea3d0998599cd1
+
+pkgname = naabu-bin
+
