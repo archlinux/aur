@@ -64,7 +64,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.7.13
+pkgver=5.7.14
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -87,28 +87,33 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
   0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
+  fix_ck1_for_5.4.57.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('720cca6928590d6c0757426cf05f0b95cfcbdfede970399ff2d0873d8bc49262'
-            'SKIP'
-            '6313ccad7f8e4d8ce09dd5bdb51b8dfa124d0034d7097ba47008380a14a84f09'
-            '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
-            'e4a201e984cf229b66fbab713c49fa3a0e0e8f238f2216e503f9452a7a7a5e06'
-            '5a08ac04975fe784d16d6c8ec2be733c73cdcfc19795f5c7b97d7a1aa7f12328'
-            '961ed94b8d905f1e901cacb08d253c4170af0a25828111b7558d9c874e923558'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '06a9861b434f81c0d0f54c6c122df56cf0a730d0eafad888db8804152a7b9ea3'
-            'db7f7a86bba9a4959f3e4ab7d1beb51e09099ef8beb638dd4250aa375532b2c2'
-            'df205ac596ad9af28061a7dac833d52b5873882d129079ed57736dd77bbb5f8c')
+b2sums=('80e7c0d398f76d136463572ad435b444a9a0dc92a6d548ad4a13dc65fde7719adc7fc35e1e2e0319a8b0c61187f33007bec69ead2c01dd0b176803e913718ecc'
+        'SKIP'
+        '2377f8e52d8efe69c2b65269d35ecec455fb7efef74dd85cfa014b87e2df088d618ed13e16e093e31442879a476c33c3f833265d4254ce60331b41de4fab083f'
+        'c8d0697f99fe6105815217b8ec059d8f587415ea8dd2b88a65e1087feedf697341a64cd56810fde9e7aeada79125fc8235faccc7e7b06492c099e27a8abbe99c'
+        '29b2530e91a7c0f75c47d75361a94ec92fec398cef1b3e213e97c8f9e0ed210711c4c63ae7717f59273105a83e30397cbd5b7252cb94c06d9b328a24c70ad444'
+        '84c9438120100bb5b21122a29344b9e818514d94a31b6d57519a6e25385cb7f91a7f87c930da55c828c7a4330959a94b8a3a3d56773c46b335e1380cd00180b1'
+        '5dfb38f2096f27cf436afa6ac41d432f4e23295deb26d12146b31c57db85a8be59819f08f9c5197183c26c557b32e967edded22206c1abb9b89b83e61450ec5c'
+        'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
+        'cfac70bc43305a6dda6b812092da4e947bf91866a24fa62ecad40727e39cf9a54cc41fae0f9d6477e1b37731e39bce12a737ea421056a650b7f14236a8b3f870'
+        '3fb9b66e85cf1a6921dab85dc831a5f1a97e61bbbec3bcfe191962e52da8481876fe6599f7884265e9a5d9773baa31ae3770e954672f75a7cf62b62fdb9b985a'
+        'b7c825b9606dcb10a68a1efabfe1b8eeb8e2b0a1737fd0a263475729501095f877b00f5132c0ad3a2a9c1515572145f5dc7cbd290ded7be2abbc5210015604df'
+        '5d4275b060aac58206c5a76b554168dbcb95b2e469bdad6de78c8815d34eb970483f36a18b7343121dc70358c447d6fd66e30f64cf8c429656816aa8dd42db38')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
+  # changes from 5.7.13 to 5.7.14 breaks ck1
+  patch -Np1 -i fix_ck1_for_5.4.57.patch
+
   cd linux-${pkgver}
 
   echo "Setting version..."
