@@ -1,6 +1,6 @@
 pkgbase = qt6-base-git
 	pkgdesc = A cross-platform application and UI framework
-	pkgver = 5.15.0.r4555.g7d27316d9f
+	pkgver = 5.15.0.r4568.g9edfb7a1b5
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -42,6 +42,7 @@ pkgbase = qt6-base-git
 	depends = libcups
 	depends = double-conversion
 	depends = md4c
+	depends = brotli
 	optdepends = postgresql-libs: PostgreSQL driver
 	optdepends = mariadb-libs: MariaDB driver
 	optdepends = unixodbc: ODBC driver

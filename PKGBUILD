@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-git
-pkgver=5.15.0.r4555.g7d27316d9f
+pkgver=5.15.0.r4568.g9edfb7a1b5
 pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
@@ -11,7 +11,7 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework'
 depends=(libjpeg-turbo xcb-util-keysyms xcb-util-renderutil libgl fontconfig xdg-utils
          shared-mime-info xcb-util-wm libxrender libxi sqlite xcb-util-image mesa
-         tslib libinput libxkbcommon-x11 libproxy libcups double-conversion md4c)
+         tslib libinput libxkbcommon-x11 libproxy libcups double-conversion md4c brotli)
 makedepends=(cmake libfbclient mariadb-libs unixodbc postgresql-libs alsa-lib gst-plugins-base-libs
              gtk3 libpulse cups freetds vulkan-headers git)
 optdepends=('postgresql-libs: PostgreSQL driver'
