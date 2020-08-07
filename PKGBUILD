@@ -9,7 +9,6 @@ url='https://github.com/francma/wob'
 license=('ISC')
 depends=('wayland')
 makedepends=('meson' 'wayland-protocols' 'scdoc')
-provides=('wob')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/francma/wob/releases/download/${pkgver}/wob-${pkgver}.tar.gz"
 	"${pkgname}-${pkgver}.tar.gz.sig::https://github.com/francma/wob/releases/download/${pkgver}/wob-${pkgver}.tar.gz.sig"
