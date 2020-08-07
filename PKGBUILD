@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/named-data/${_reponame}"
 license=('GPL')
 groups=()
-depends=('boost')
+depends=('boost' 'ndn-chronosync')
 makedepends=('git' 'gcc' 'python' 'pkgconf' 'sqlite' 'openssl>=1.0.2')
 checkdepends=()
 optdepends=()
