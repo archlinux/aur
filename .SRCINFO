@@ -1,7 +1,7 @@
 pkgbase = lrexlib-pcre2
 	pkgdesc = Regular expression library for Lua - PCRE2 version
-	pkgver = 2.9.0
-	pkgrel = 2
+	pkgver = 2.9.1
+	pkgrel = 1
 	url = https://luarocks.org/modules/rrt/lrexlib-pcre2
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = lrexlib-pcre2
 	makedepends = luarocks
 	depends = lua
 	depends = pcre2
-	noextract = lrexlib-pcre2-2.9.0-1.src.rock
-	source = https://luarocks.org/lrexlib-pcre2-2.9.0-1.src.rock
-	md5sums = 336121adc7723803315d5bbdd312a1bb
+	noextract = lrexlib-pcre2-2.9.1-1.src.rock
+	source = https://luarocks.org/lrexlib-pcre2-2.9.1-1.src.rock
+	md5sums = e45c49302ee565a7b283009bcaadb927
 
 pkgname = lrexlib-pcre2
 
