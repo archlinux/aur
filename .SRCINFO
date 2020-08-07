@@ -1,7 +1,7 @@
 pkgbase = mini-ndn-git
 	pkgdesc = Lightweight networking emulation tool that enables testing, experimentation, and research on the NDN platform based on Mininet
 	pkgver = v0.4.0.r34.g76dbe66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/named-data/mini-ndn
 	arch = i686
 	arch = x86_64

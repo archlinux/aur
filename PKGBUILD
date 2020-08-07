@@ -3,7 +3,7 @@ _reponame=mini-ndn
 _pkgname=mini-ndn
 pkgname=${_pkgname}-git
 pkgver=v0.4.0.r34.g76dbe66
-pkgrel=1
+pkgrel=2
 # epoch=
 pkgdesc="Lightweight networking emulation tool that enables testing, experimentation, and research on the NDN platform based on Mininet"
 arch=('i686' 'x86_64')
@@ -32,7 +32,6 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_reponame}"
-  mkdir -p "${srcdir}/output"
   python3 setup.py build
 }
 
@@ -41,5 +40,5 @@ package() {
 
 	cd "${srcdir}/${_reponame}" 
   cp topologies/*.conf "${pkgdir}/usr/local/etc/mini-ndn/"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python3 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
