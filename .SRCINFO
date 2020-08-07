@@ -7,8 +7,11 @@ pkgbase = chromium-extension-decentraleyes
 	license = MPL2
 	depends = chromium
 	noextract = chromium-extension-decentraleyes-2.0.13.crx
+	noextract = LICENSE-2.0.13
 	source = chromium-extension-decentraleyes-2.0.13.crx::https://git.synz.io/Synzvato/decentraleyes/uploads/7038d13b79b312c606719ed60550e492/Decentraleyes.v2.0.13-chromium.crx
+	source = LICENSE-2.0.13::https://git.synz.io/Synzvato/decentraleyes/-/raw/29b029b24cba4f65b0cf031dd6e0ce9dd94439c9/LICENSE.txt
 	b2sums = 154af1a6c6b5dfda98954c3c01b3a42e1d11d33cba96425a016fccdc6a3f25e14cecdd165b7fefbe165df960c572a031790093796dc020f5daac6944581e7b85
+	b2sums = 1886e6edddc9c5c639654617ea3237cdfe83ae6b3a8e5e36552b6db2557e2e7516c43a67147ec9b94530ccaa68001540150c960ccad1ed894bf385bfa6d9093b
 
 pkgname = chromium-extension-decentraleyes
 
