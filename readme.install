@@ -2,19 +2,18 @@ post_install() {
   echo '------------------------------------------------------------------------------------'
   echo ' You must edit ~/.xscreensaver to add support for this screensaver'
   echo ' Find the line "programs:" and simply add the following below it:'
-  echo ' "ATV4-1080" atv4-1080 \n\'
+  echo ' "ATV4-2k" atv4-2k \n\'
   echo ' "ATV4-4k" atv4-4k \n\'
   echo '------------------------------------------------------------------------------------'
 }
 
 post_upgrade() {
-  # version 1.08 introduces new videos
-  if [[ "$(vercmp $2 1.08)" -lt 0 ]]; then
+  if [[ "$(vercmp $2 1.09)" -lt 0 ]]; then
     echo '------------------------------------------------------------------------------------'
     echo ' You must manually delete your day and night databases or wait for all videos to'
     echo ' cycle for the rebuild. New videos will be unavailable until either of these happen.'
     echo
-    echo ' Hint: the databases reside in $XDG_CONFIG_HOME/.atv4-{day,night} for 1080 and'
+    echo ' Hint: the databases reside in $XDG_CONFIG_HOME/.atv4-{day,night} for 2k and'
     echo ' in $XDG_CONFIG_HOME/.atv4-{day,night}-4k for 4k.'
     echo '------------------------------------------------------------------------------------'
   fi
