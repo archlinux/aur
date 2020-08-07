@@ -2,10 +2,10 @@
 # <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=8.2.0
-_pkgtimestamp=1525200006820
-_pkgbuild=487
-pkgrel=2
+pkgver=8.2.2
+_pkgtimestamp=1525200006822
+_pkgbuild=26
+pkgrel=1
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
 arch=('x86_64')
@@ -17,9 +17,9 @@ install=crashplan-pro.install
 source=(https://download.code42.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/install/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha256sums=('32601c720b9b21e13dd1143d0d6028deff8a897f26590d62a55a7a2aedf00864'
-            'b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6'
-            '6fcd25dd576c2a352262d3e63aff42f7af3934a4409cc30d9557ebaba5ca46fa')
+sha1sums=('896d6bcdd2682120f31c2629de013efb197a44df'
+          'c6bf34f1b0ba0bd8d9eb04f6b300112e3c053f84'
+          'f01486b90dafe714a69d20aaa873153ce069af13')
 options=(!strip)
 build() {
   cd $srcdir/code42-install
@@ -83,7 +83,7 @@ package() {
   install -D -m 755 $srcdir/code42-install/scripts/code42.desktop $pkgdir/usr/share/applications/crashplan.desktop
 
   # We need to change the name for now
-  ln -sf /opt/crashplan/bin/Code42Service $pkgdir/opt/crashplan/bin/CrashPlanService 
+  ln -sf $pkgdir/opt/crashplan/bin/Code42Service $pkgdir/opt/crashplan/bin/CrashPlanService 
 
   # rc.d daemon
   install -D -m 755 $srcdir/crashplan-pro $pkgdir/etc/rc.d/crashplan-pro
