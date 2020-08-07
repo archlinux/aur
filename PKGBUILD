@@ -3,7 +3,7 @@ _reponame=ChronoSync
 _pkgname=ndn-chronosync
 pkgname=${_pkgname}
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 # epoch=
 pkgdesc="Synchronization library for distributed realtime applications for NDN"
 arch=('i686' 'x86_64')
@@ -35,11 +35,11 @@ build() {
 	./waf build
 }
 
-check() {
-  echo >&2 echo "Tests can be skipped using the --nocheck arugment in makepkg"
-  cd "${srcdir}/${_reponame}-${pkgver}"
-  ./build/unit-tests
-}
+#check() {
+#  echo >&2 echo "Tests can be skipped using the --nocheck arugment in makepkg"
+#  cd "${srcdir}/${_reponame}-${pkgver}"
+#  ./build/unit-tests
+#}
 
 package() {
 	cd "${srcdir}/${_reponame}-${pkgver}"
