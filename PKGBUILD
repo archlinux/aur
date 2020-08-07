@@ -2,7 +2,7 @@
 
 _pkgname=word_forms
 pkgname=python-$_pkgname-git
-pkgver=0.3.0
+pkgver=r29.4e1d76f
 pkgrel=1
 pkgdesc="Accurately generate all possible forms of an English word"
 arch=('any')
@@ -12,6 +12,11 @@ depends=('python-nltk' 'python-inflect' 'python-unipath')
 makedepends=('python-setuptools')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "$srcdir/$_pkgname"

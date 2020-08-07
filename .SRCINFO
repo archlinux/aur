@@ -1,6 +1,6 @@
 pkgbase = python-word_forms-git
 	pkgdesc = Accurately generate all possible forms of an English word
-	pkgver = 0.3.0
+	pkgver = r29.4e1d76f
 	pkgrel = 1
 	url = https://github.com/gutfeeling/word_forms
 	arch = any
