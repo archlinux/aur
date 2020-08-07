@@ -1,0 +1,21 @@
+pkgbase = short-git
+	pkgdesc = A concise cli launcher / project manager using env files
+	pkgver = 0.3.2.r1.g451352e
+	pkgrel = 1
+	url = https://github.com/vincent-herlemont/short
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = Apache-2.0
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = openssl
+	makedepends = libgit2
+	source = short-git::git+https://github.com/vincent-herlemont/short.git
+	md5sums = SKIP
+
+pkgname = short-git
+
