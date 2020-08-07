@@ -5,13 +5,13 @@
 
 pkgname=notion-app
 pkgver=2.0.7
-pkgrel=3.1
+pkgrel=3.2
 epoch=1
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
 url="https://www.notion.so/desktop"
 license=('MIT')
-depends=('electron6' 're2' 'gtk3' 'xdg-utils')
+depends=('electron6-bin' 're2' 'gtk3' 'xdg-utils')
 makedepends=('dmg2img' 'p7zip' 'libicns')
 source=(
         "https://desktop-release.notion-static.com/Notion-"${pkgver}".dmg" 
