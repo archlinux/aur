@@ -1,16 +1,14 @@
 pkgbase = ndn-nlsr
 	pkgdesc = Named Data Link State Routing Protocol
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/named-data/NLSR
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = gcc
 	makedepends = python
 	makedepends = boost
-	makedepends = pkgconf
 	makedepends = sqlite
 	makedepends = openssl>=1.0.2
 	depends = ndn-cxx

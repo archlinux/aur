@@ -3,7 +3,7 @@ _reponame=NLSR
 _pkgname=ndn-nlsr
 pkgname=$_pkgname
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 # epoch=
 pkgdesc="Named Data Link State Routing Protocol"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/named-data/${_reponame}"
 license=('GPL')
 groups=()
 depends=('ndn-cxx' 'boost' 'ndn-psync')
-makedepends=('git' 'gcc' 'python' 'boost' 'pkgconf' 'sqlite' 'openssl>=1.0.2')
+makedepends=('git' 'python' 'boost' 'sqlite' 'openssl>=1.0.2')
 checkdepends=()
 optdepends=('valgrind: memory analysis'
             'doxygen: build documentation'
