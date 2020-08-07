@@ -1,0 +1,28 @@
+pkgbase = ttf-archivo-narrow
+	pkgdesc = Archivo Narrow was designed to be used simultaneously in print and digital platforms
+	pkgver = 3.000
+	pkgrel = 1
+	url = https://github.com/Omnibus-Type/ArchivoNarrow
+	arch = any
+	license = custom:OFL
+	source = https://github.com/Omnibus-Type/ArchivoNarrow/raw/0a98e4dd59de05b0caa3273ccb47cbd5ec2274cc/fonts/ttf/ArchivoNarrow-Bold.ttf
+	source = https://github.com/Omnibus-Type/ArchivoNarrow/raw/0a98e4dd59de05b0caa3273ccb47cbd5ec2274cc/fonts/ttf/ArchivoNarrow-BoldItalic.ttf
+	source = https://github.com/Omnibus-Type/ArchivoNarrow/raw/0a98e4dd59de05b0caa3273ccb47cbd5ec2274cc/fonts/ttf/ArchivoNarrow-Italic.ttf
+	source = https://github.com/Omnibus-Type/ArchivoNarrow/raw/0a98e4dd59de05b0caa3273ccb47cbd5ec2274cc/fonts/ttf/ArchivoNarrow-Medium.ttf
+	source = https://github.com/Omnibus-Type/ArchivoNarrow/raw/0a98e4dd59de05b0caa3273ccb47cbd5ec2274cc/fonts/ttf/ArchivoNarrow-MediumItalic.ttf
+	source = https://github.com/Omnibus-Type/ArchivoNarrow/raw/0a98e4dd59de05b0caa3273ccb47cbd5ec2274cc/fonts/ttf/ArchivoNarrow-Regular.ttf
+	source = https://github.com/Omnibus-Type/ArchivoNarrow/raw/0a98e4dd59de05b0caa3273ccb47cbd5ec2274cc/fonts/ttf/ArchivoNarrow-SemiBold.ttf
+	source = https://github.com/Omnibus-Type/ArchivoNarrow/raw/0a98e4dd59de05b0caa3273ccb47cbd5ec2274cc/fonts/ttf/ArchivoNarrow-SemiBoldItalic.ttf
+	source = https://github.com/Omnibus-Type/ArchivoNarrow/raw/0a98e4dd59de05b0caa3273ccb47cbd5ec2274cc/OFL.txt
+	sha256sums = 2653e11aa4d327ba05e7681647203d08b3eab053133a49b5cd9a6b7ec7d8528a
+	sha256sums = 3a6177e7f845cf9627cfe52577a35243fdc5f95a17d15c0b4cfbee0d119f2100
+	sha256sums = bd13f7e5639dc1d15179062d48518b96022c4548858e188693dbfc5974e4f967
+	sha256sums = 8e6e5cc836f3089a92c2f473c210f9bf7b8bbf858866bd651f8205039564fe3f
+	sha256sums = 448f2e840aadc5921a42f6a8db81bffce1b480ea9cbe4fedce821a783c47a188
+	sha256sums = 4cc05eb5d2cd6c0e1bb6bd0cd32f4409a86d8f1196175f734d0ef42003966c29
+	sha256sums = 9870ca133eba3cb525b32a4215b7604ec850c0781fdca07fc22ec8760332bdb2
+	sha256sums = d8ba7fee44aba9166ad40dfc4a370084f2faaec59ac5a9eb12e1e63aac5e4822
+	sha256sums = a4087edf95fb2a6bd38073ad005ced611695dc9d7d8fd5d04a888ef4f9c748ea
+
+pkgname = ttf-archivo-narrow
+
