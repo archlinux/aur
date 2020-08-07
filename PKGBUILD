@@ -2,7 +2,7 @@
 
 pkgname=python-easyocr-git
 _name=EasyOCR
-pkgver=1.1.5.r270.d518ded
+pkgver=1.1.6.r297.a36bb9e
 pkgrel=1
 pkgdesc="Ready-to-use OCR with 40+ languages supported including Chinese, Japanese, Korean and Thai"
 arch=("any")
