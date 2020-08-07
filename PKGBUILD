@@ -9,7 +9,16 @@ url='https://github.com/aws/aws-cli'
 license=('Apache')
 provides=('aws-cli')
 conflicts=('aws-cli' 'aws-cli-git' 'aws-cli-v2-bin')
-makedepends=('python-botocore-v2-git' 'python-colorama' 'python-docutils' 'python-cryptography' 'python-s3transfer' 'python-ruamel-yaml' 'python-prompt_toolkit')
+makedepends=(
+  'python-botocore-v2-git'
+  'python-colorama'
+  'python-cryptography'
+  'python-distro'
+  'python-docutils'
+  'python-prompt_toolkit'
+  'python-ruamel-yaml'
+  'python-s3transfer'
+)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aws/aws-cli/archive/$pkgver.tar.gz")
 sha256sums=('9f650319a8441da970c4fa6cdbcffbecaf728afda36f3bb417e12a68f4341d22')
 
