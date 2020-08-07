@@ -4,7 +4,7 @@ pkgbase = deepin-dock-git
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-dock
 	arch = x86_64
-	groups = deepin
+	groups = deepin-git
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
@@ -21,7 +21,7 @@ pkgbase = deepin-dock-git
 	provides = deepin-dock
 	conflicts = deepin-dock
 	replaces = deepin-dock
-	source = git://github.com/justforlxz/dde-dock.git
+	source = git://github.com/justforlxz/dde-dock
 	sha512sums = SKIP
 
 pkgname = deepin-dock-git

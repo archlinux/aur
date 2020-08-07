@@ -3,7 +3,6 @@
 
 pkgname=deepin-dock-git
 pkgver=5.3.0.3.r2.g52dbff80
-_commit=0fb8fbc5390b6bb518bbb92abebe8c4152c87697
 pkgrel=1
 pkgdesc='Deepin desktop-environment - dock module'
 arch=('x86_64')
@@ -15,8 +14,8 @@ makedepends=('git' 'cmake' 'ninja' 'qt5-tools')
 conflicts=('deepin-dock')
 replaces=('deepin-dock')
 provides=('deepin-dock')
-groups=('deepin')
-source=("git://github.com/justforlxz/dde-dock.git")
+groups=('deepin-git')
+source=("git://github.com/justforlxz/dde-dock")
 sha512sums=('SKIP')
 
 pkgver() {
