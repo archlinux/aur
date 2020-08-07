@@ -1,8 +1,8 @@
 pkgbase = rust-qt-binding-generator-git
 	pkgdesc = Generate code to build Qt applications with Rust
-	pkgver = 0.3.4.r331.874d6c3
+	pkgver = r365.41713b4
 	pkgrel = 1
-	url = https://phabricator.kde.org/source/rust-qt-binding-generator
+	url = https://invent.kde.org/sdk/rust-qt-binding-generator
 	arch = x86_64
 	license = GPL2
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = rust-qt-binding-generator-git
 	depends = gcc-libs
 	provides = rust-qt-binding-generator
 	conflicts = rust-qt-binding-generator
-	source = git+http://anongit.kde.org/rust-qt-binding-generator.git
+	source = git+https://invent.kde.org/sdk/rust-qt-binding-generator.git
 	sha512sums = SKIP
 
 pkgname = rust-qt-binding-generator-git

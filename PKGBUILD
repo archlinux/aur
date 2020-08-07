@@ -1,37 +1,38 @@
 # Maintainer: Michael Yang <ohmyarchlinux@protonmail.com>
 
+_gitname=rust-qt-binding-generator
 pkgname=rust-qt-binding-generator-git
-pkgver=0.3.4.r331.874d6c3
+pkgver=r365.41713b4
 pkgrel=1
 pkgdesc='Generate code to build Qt applications with Rust'
 arch=('x86_64')
-url='https://phabricator.kde.org/source/rust-qt-binding-generator'
+url='https://invent.kde.org/sdk/rust-qt-binding-generator'
 license=('GPL2')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 provides=('rust-qt-binding-generator')
 conflicts=('rust-qt-binding-generator')
-source=('git+http://anongit.kde.org/rust-qt-binding-generator.git')
+source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd rust-qt-binding-generator
-  printf "%s.r%s.%s" "$(grep --max-count=1 version Cargo.toml | cut --delimiter='"' --fields=2)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${_gitname}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+
 build() {
-  cd rust-qt-binding-generator
+  cd ${srcdir}/${_gitname}
   cargo build --release
 }
 
 check() {
-  cd rust-qt-binding-generator
+  cd ${srcdir}/${_gitname}
   cargo test --release
 }
 
 package() {
-  cd rust-qt-binding-generator
-
+  cd ${srcdir}/${_gitname}
   install -Dm755 ${srcdir}/rust-qt-binding-generator/target/release/rust_qt_binding_generator ${pkgdir}/usr/bin/rust_qt_binding_generator
   install -Dm644 COPYING ${pkgdir}/usr/share/licenses/rust-qt-binding-generator/COPYING
   install -Dm644 COPYING.EXCEPTION ${pkgdir}/usr/share/licenses/rust-qt-binding-generator/COPYING.EXCEPTION
