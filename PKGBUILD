@@ -3,7 +3,7 @@ _reponame=ChronoSync
 _pkgname=ndn-chronosync
 pkgname=${_pkgname}
 pkgver=0.5.3
-pkgrel=3
+pkgrel=4
 # epoch=
 pkgdesc="Synchronization library for distributed realtime applications for NDN"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/named-data/${_reponame}"
 license=('GPL')
 groups=()
 depends=('boost')
-makedepends=('git' 'gcc' 'python' 'pkgconf' 'sqlite' 'openssl>=1.0.2')
+makedepends=('git' 'python' 'sqlite' 'openssl>=1.0.2')
 checkdepends=()
 optdepends=()
 provides=("${pkgname}")
