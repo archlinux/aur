@@ -1,12 +1,14 @@
 pkgname=opencore-efi
-pkgver=0.5.9
+pkgver=0.6.0
 pkgrel=1
+_mode='RELEASE'
+# _mode='DEBUG'
 pkgdesc='OpenCore bootloader to provide supplemental functionality for Apple-specific UEFI drivers'
 url='https://github.com/acidanthera/OpenCorePkg'
 arch=('x86_64')
 license=('BSD')
-source=("https://github.com/acidanthera/OpenCorePkg/releases/download/$pkgver/OpenCore-$pkgver-RELEASE.zip")
-sha256sums=('54781875a7620efd32cc334a117984e8755b0e55565f9a65bb79f424fc758289')
+source=("https://github.com/acidanthera/OpenCorePkg/releases/download/$pkgver/OpenCore-$pkgver-$_mode.zip")
+sha256sums=('ca00d9113f67b55e86f1e39513dadf9b27312598ef20ca401bfb048572ea5def')
 
 package(){
   install -d "$pkgdir/boot/EFI"
