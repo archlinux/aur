@@ -1,14 +1,14 @@
 pkgbase = razer-laptop-control-dkms-git
-	pkgdesc = Kernel module for razer laptop's for RGB, fan and power control
-	pkgver = 1.2.2
+	pkgdesc = Kernel module and daemon for razer laptop's for RGB, fan and power control
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/rnd-ash/razer-laptop-control
+	install = driver.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = dkms
-	depends = udev
 	conflicts = openrazer-meta
 	conflicts = openrazer-driver-dkms
 	conflicts = openrazer-meta-git

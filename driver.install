@@ -1,0 +1,12 @@
+msg() {
+	echo "==> IMPORTANT:
+	Install razer-laptop-control-git to enable CLI and daemon interface!"
+}
+
+post_upgrade() {
+	msg
+}
+
+post_install() {
+	msg
+}
