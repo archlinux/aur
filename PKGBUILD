@@ -1,14 +1,14 @@
 # Maintainer: Jonathan Pettersson <anders.jonathan.p@gmail.com>
 pkgname=contain
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental CLI tool that transparently runs your development tools inside docker containers"
 url="https://github.com/jpettersson/contain"
 license=('GNU GPLv3')
 arch=('x86_64')
 depends=(docker)
 makedepends=(cargo git)
-_commit=bc6a07923de73378b91e0c78b0e9445282f20bea  # tags/0.1.0
+_commit=1cbb469fe240b353d3f84f2ea71ebf69c94c6d78  # tags/0.2.0
 source=("git+https://github.com/jpettersson/contain#commit=$_commit")
 sha512sums=('SKIP')
 
