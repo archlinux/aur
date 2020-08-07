@@ -2,7 +2,7 @@
 _pkgname=nlsr
 pkgname=ndn-${_pkgname}-git
 pkgver=NLSR.0.5.2.r10.g57a8717
-pkgrel=1
+pkgrel=2
 # epoch=
 pkgdesc="Named Data Link State Routing Protocol"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/named-data/${_pkgname}"
 license=('GPL')
 groups=()
 depends=('boost' 'ndn-cxx' 'ndn-psync')
-makedepends=('git' 'gcc' 'python' 'pkgconf' 'sqlite' 'openssl>=1.0.2')
+makedepends=('git''python' 'sqlite' 'openssl>=1.0.2')
 checkdepends=()
 optdepends=()
 provides=("ndn-${_pkgname}")
