@@ -6,7 +6,7 @@
 # Contributor: Ricardo Catalinas Jiménez <jimenezrick@gmail.com>
 
 pkgname=erlang-nox
-pkgver=23.0
+pkgver=23.0.3
 _docver=23.0
 pkgrel=1
 pkgdesc='General-purpose concurrent functional programming language (headless version)'
