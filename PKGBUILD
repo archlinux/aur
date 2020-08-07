@@ -87,7 +87,7 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
   0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
-  fix_ck1_for_5.4.57.patch
+  fix_ck1_for_5.7.14.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -112,7 +112,7 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 prepare() {
   # changes from 5.7.13 to 5.7.14 breaks ck1
-  patch -Np1 -i fix_ck1_for_5.4.57.patch
+  patch -Np1 -i fix_ck1_for_5.7.14.patch
 
   cd linux-${pkgver}
 
