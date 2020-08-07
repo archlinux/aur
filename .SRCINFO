@@ -1,0 +1,21 @@
+pkgbase = ndn-infoedit-git
+	pkgdesc = Command Line Tools for Boost INFO Format
+	pkgver = 5e88552
+	pkgrel = 1
+	url = https://github.com/NDN-Routing/infoedit
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = gcc
+	makedepends = python
+	makedepends = pkgconf
+	makedepends = sqlite
+	makedepends = openssl>=1.0.2
+	depends = boost
+	provides = ndn-infoedit
+	conflicts = ndn-infoedit
+	source = git+https://github.com/NDN-Routing/infoedit.git
+	sha256sums = SKIP
+
+pkgname = ndn-infoedit-git
+
