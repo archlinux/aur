@@ -1,12 +1,13 @@
 pkgbase = vmaf-git
 	pkgdesc = Perceptual video quality assessment algorithm based on multi-method fusion (git version)
-	pkgver = 1.5.1.r41.g23aa467a
+	pkgver = 1.5.2.r33.g08160410
 	pkgrel = 1
 	url = https://github.com/Netflix/vmaf/
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = meson
+	makedepends = nasm
 	depends = gcc-libs
 	provides = vmaf
 	provides = libvmaf-git
