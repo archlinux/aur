@@ -1,7 +1,7 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
 pkgname=nautilus-nutstore
-pkgver=4.3.2
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='Nutstore integration for Nautilus.'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://www.jianguoyun.com/'
 license=(CCPL:by-nd GPL2)
 depends=(libnautilus-extension nutstore)
 source=("https://www.jianguoyun.com/static/exe/installer/nutstore_linux_src_installer.tar.gz")
-sha256sums=('ad81c99da19e2f1f99d010bb2beb82fd14606dbd4034462d7284a8c2bc2ec91f')
+sha256sums=('3d4a9545d18686a146abb5e4b51633441f1978696a2d7b20db7812b2f27781b0')
 
 build() {
     cd $srcdir/nutstore_linux_src_installer
