@@ -1,0 +1,15 @@
+pkgbase = python-tcolorpy
+	pkgdesc = Python library to apply true color for terminal text
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/thombashi/tcolorpy
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = tcolorpy
+	source = https://files.pythonhosted.org/packages/source/t/tcolorpy/tcolorpy-0.0.6.tar.gz
+	sha256sums = 27505e616501a9a942bd108205d7394711bd78f55e1045058fd1e10bf1647fcd
+
+pkgname = python-tcolorpy
+
