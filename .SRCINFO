@@ -1,0 +1,28 @@
+pkgbase = mini-ndn
+	pkgdesc = Lightweight networking emulation tool that enables testing, experimentation, and research on the NDN platform based on Mininet
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/named-data/mini-ndn
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = ndn-cxx
+	makedepends = ndn-nfd
+	makedepends = ndn-chronosync
+	makedepends = ndn-tools
+	makedepends = ndn-nlsr
+	makedepends = ndn-infoedit
+	makedepends = mininet-git
+	makedepends = termshark
+	makedepends = python-igraph
+	makedepends = python-setuptools
+	makedepends = python-pyndn
+	depends = boost
+	provides = mini-ndn
+	conflicts = mini-ndn
+	source = https://github.com/named-data/mini-ndn/archive/v0.4.0.tar.gz
+	sha256sums = a6abcbe022b12c540584164ab68aa69192d4e15996861df1e16fda30884f60ce
+
+pkgname = mini-ndn
+
