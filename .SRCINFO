@@ -1,0 +1,26 @@
+pkgbase = ayatana-indicator-printers
+	pkgdesc = Ayatana Indicator showing active print jobs
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/AyatanaIndicators
+	arch = i686
+	arch = x86_64
+	arch = pentium4
+	license = GPL3
+	makedepends = mate-common
+	makedepends = glib2
+	makedepends = gtk3
+	makedepends = libdbusmenu-glib
+	makedepends = libdbusmenu-gtk3
+	makedepends = libayatana-indicator
+	makedepends = libcups
+	makedepends = systemd
+	depends = cups
+	depends = libayatana-indicator
+	optdepends = system-config-printer
+	options = !emptydirs
+	source = https://github.com/AyatanaIndicators/ayatana-indicator-printers/archive/0.1.10.tar.gz
+	md5sums = 6c434c128031e93f16e68df91a2e7dc8
+
+pkgname = ayatana-indicator-printers
+
