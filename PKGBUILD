@@ -1,9 +1,9 @@
-# Maintainer: Tony Fettes <feihaoxiang2014@gmail.com>
+# Maintainer: Tony Fettes < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=plasma5-applets-simplemenu-git
 _gitname=plasma-simplemenu
-pkgver=r91.1f0a9e3
-pkgrel=2
+pkgver=r92.dc841e7
+pkgrel=1
 pkgdesc="Simplified menu for your Plasma Desktop"
 arch=('any')
 url="https://invent.kde.org/plasma/plasma-simplemenu"
