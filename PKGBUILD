@@ -15,6 +15,12 @@ build() {
     cd "$srcdir/$pkgname-$pkgver"
     cargo build --locked --release --features i3
 }
+
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+    cargo test --locked --release --features i3
+}
+
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
