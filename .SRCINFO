@@ -1,15 +1,13 @@
 pkgbase = bibtool
 	pkgdesc = Command line manipulation of BibTeX files.
 	pkgver = 2.68
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gerd-neugebauer.de/software/TeX/BibTool/en/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = tar
 	depends = glibc
 	depends = texlive-bin
-	noextract = BibTool-2.68.tar.gz
 	source = http://www.gerd-neugebauer.de/software/TeX/BibTool/BibTool-2.68.tar.gz
 	sha256sums = 7134ce3a05fe94c04b88f18261139656ac4c0c0893de15acc0daabc90248b8fa
 
