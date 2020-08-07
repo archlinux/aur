@@ -1,7 +1,7 @@
 pkgbase = stretchly-bin
 	pkgdesc = Break time reminder app
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hovancik/stretchly/
 	install = Stretchly.install
 	arch = x86_64
