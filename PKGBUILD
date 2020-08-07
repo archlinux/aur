@@ -1,5 +1,5 @@
 pkgname='enroot-git'
-pkgver='3.0.0'
+pkgver='3.0.1'
 pkgrel='1'
 pkgdesc='A simple yet powerful tool to turn traditional container/OS images into unprivileged sandboxes.'
 url='https://github.com/NVIDIA/enroot'
@@ -7,7 +7,7 @@ arch=(x86_64)
 license=(Apache)
 makedepends=(git gcc make libtool)
 depends=(jq parallel squashfs-tools)
-optdepends=(fuse-overlayfs-git libnvidia-container-tools pigz pv squashfuse)
+optdepends=(fuse-overlayfs-git libnvidia-container-tools pigz squashfuse)
 conflicts=(enroot)
 provides=(enroot)
 install='enroot.install'
