@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-fmt
-pkgver=7.0.2
+pkgver=7.0.3
 pkgrel=1
 pkgdesc="{fmt} is an open-source formatting library for C++. It can be used as a safe and fast alternative to (s)printf and iostreams."
 url="https://fmt.dev/"
@@ -12,7 +12,7 @@ arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
 sha256sums=(
-	"7697e022f9cdc4f90b5e0a409643faa2cde0a6312f85e575c8388a1913374de5"
+	"b4b51bc16288e2281cddc59c28f0b4f84fed58d016fb038273a09f05f8473297"
 )
 source=(
 	"https://github.com/fmtlib/fmt/archive/${pkgver}.tar.gz"
