@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=vivaldi-snapshot-ffmpeg-codecs
-pkgver=84.0.4147.56
+pkgver=84.0.4147.105
 _vivaldi_major_version=3.2
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for vivaldi"
@@ -11,25 +11,23 @@ url="https://ffmpeg.org/"
 license=('LGPL2.1')
 depends=('glibc')
 makedepends=(
-  'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
-  'xdg-utils' 'gn' 'python2-xcb-proto'
+  'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python2' 'python'
+  'xdg-utils' 'gn'
 )
 options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('9ca1c7af3eb1c8807af314f9b756578232db28cc3cf8dd48a46b039ebfd9bd92f1d381785d7f533c308abf6bef4a4364c91ccf8aecae66c8b492f63585ff0a31')
+sha512sums=('23cdd8b49c3276b16f1b4753fadf9f428720f0a95a3f567d189ba0e8a231d7bc1f62e96da6188645243eedac15ecc554b97e83c1a63aa647e7946cc1ba015a8c')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
 
-  # Use Python 2
-  find -name '*.py' | xargs sed -e 's|env python|&2|g' -e 's|bin/python|&2|g' -i || true
+  # Force script incompatible with Python 3 to use /usr/bin/python2
+  sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
 
-  # force some 'older' binaries in the path
-  [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
-  mkdir "$srcdir/path"
-  ln -s /usr/bin/python2 "$srcdir/path/python"
+  # Make xcbgen available to ui/gfx/x/gen_xproto.py running under Python 2
+  ln -s /usr/lib/python3.*/site-packages/xcbgen "$srcdir/"
 
 }
 
@@ -38,7 +36,10 @@ build() {
 
   python2 tools/clang/scripts/update.py
 
-  export PATH="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin:$srcdir/path:$PATH"
+  export PATH="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin:$PATH"
+
+  # ui/gfx/x/gen_xproto.py needs xcbgen
+  export PYTHONPATH=$srcdir
 
   export CC="clang"
   export CXX="clang++"
