@@ -1,6 +1,6 @@
 pkgbase = whalebird
 	pkgdesc = An Electron based Mastodon, Pleroma and Misskey client
-	pkgver = 4.2.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://whalebird.social
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = whalebird
 	depends = libnotify
 	depends = libvpx
 	provides = whalebird
-	source = https://github.com/h3poteto/whalebird-desktop/releases/download/4.2.0/Whalebird-4.2.0-linux-x64.tar.bz2
+	source = https://github.com/h3poteto/whalebird-desktop/releases/download/4.2.1/Whalebird-4.2.1-linux-x64.tar.bz2
 	source = whalebird.desktop
-	md5sums = 322dd1165d7ef07641fb950ccd817cfe
+	md5sums = 86be140f31ce56f298baabee27f1dc21
 	md5sums = 2cf7ef689d208d2fa41ce3622dce3545
 
 pkgname = whalebird
