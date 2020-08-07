@@ -1,5 +1,5 @@
 pkgbase = ttf-archivo-narrow-git
-	pkgdesc = Archivo is a grotesque sans serif typeface family from Omnibus Type
+	pkgdesc = Archivo Narrow was designed to be used simultaneously in print and digital platforms
 	pkgver = r49.0a98e4d
 	pkgrel = 1
 	url = https://github.com/Omnibus-Type/ArchivoNarrow
