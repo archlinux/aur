@@ -14,7 +14,7 @@ optdepends=(
 )
 install=readme.install
 source=("https://github.com/graysky2/xscreensaver-aerial/archive/v$pkgver.tar.gz")
-sha256sums=('b7e25cf42111c54067defb3ac576f17174af576be736860033b21b73e4143b3a')
+sha256sums=('8a45892c7967ffa585cfdcce63b60ef3b891ab647eb27ca51baf1bb18beff82a')
 
 package() {
 	cd "$pkgname-$pkgver"
