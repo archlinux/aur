@@ -5,6 +5,7 @@ pkgbase = libipt-git
 	url = https://github.com/intel/libipt
 	arch = i686
 	arch = x86_64
+	license = BSD
 	makedepends = git
 	makedepends = cmake
 	source = libipt-git::git+https://github.com/intel/libipt.git

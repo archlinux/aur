@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc='An Intel(R) Processor Trace decoder library'
 arch=(i686  x86_64)
 url='https://github.com/intel/libipt'
+license=('BSD')
 makedepends=(git cmake)
 source=("${pkgname}::git+${url}.git")
 md5sums=(SKIP)
