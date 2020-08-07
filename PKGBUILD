@@ -5,8 +5,9 @@
 
 _pkgname=vokoscreenNG
 pkgname=vokoscreen-git
-pkgver=3.0.4.r41.g3ff00874
+pkgver=3.0.5.r4.g2b49a60b
 pkgrel=1
+epoch=1
 pkgdesc='An easy to use screencast creator. Development version.'
 arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
