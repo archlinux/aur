@@ -1,6 +1,6 @@
 pkgbase = auto-cpufreq-git
 	pkgdesc = Automatic CPU speed & power optimizer
-	pkgver = 1.1.2.r11.g629ba52
+	pkgver = 1.2.r0.g4833367
 	pkgrel = 1
 	url = https://github.com/AdnanHodzic/auto-cpufreq
 	install = auto-cpufreq-git.install
@@ -11,6 +11,8 @@ pkgbase = auto-cpufreq-git
 	depends = python-distro
 	depends = python-psutil
 	depends = python-click
+	depends = inxi
+	depends = lm_sensors
 	optdepends = cpufreqctl
 	optdepends = gnome-shell-extension-cpufreq
 	provides = auto-cpufreq
