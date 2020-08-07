@@ -1,4 +1,4 @@
-# Maintainer: obedmr <obed.n.munoz@gmail.com>
+# Maintainer: Obed N Munoz  <obed.n.munoz@gmail.com>
 # Contributor: Anthony Bonafide <AnthonyMBonafide@gmail.com>
 # Contributor: fzerorubigd <fzerorubigd@gmail.com>
 # Contributor: Vesa Kaihlavirta <vegai@iki.fi>
@@ -14,7 +14,7 @@
 
 pkgname=go-git
 epoch=1
-pkgver=c077c74312
+pkgver=2020.8.7
 pkgrel=1
 pkgrepo=go
 pkgdesc='Core compiler tools for the Go programming language'
