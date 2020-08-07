@@ -4,16 +4,16 @@
 
 pkgname=go-for-it
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A stylish to-do list with built-in productivity timer.'
 arch=('i686' 'x86_64')
-url='https://github.com/mank319/Go-For-It'
+url='https://github.com/JMoerman/Go-For-It'
 license=('GPL3')
 depends=('gtk3' 'libnotify')
 makedepends=('vala' 'cmake' 'intltool')
 conflicts=('go-for-it-git')
 install='go-for-it.install'
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mank319/Go-For-It/archive/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/JMoerman/Go-For-It/archive/${pkgver}.tar.gz")
 sha256sums=('a0e53c80ce43aa4ce15c71d239cc1a1847ab600821d9c77ba528f47d32173e08')
 
 build() {
