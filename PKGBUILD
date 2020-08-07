@@ -2,7 +2,7 @@
 pkgname=stretchly-bin
 _pkgname=Stretchly
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 _rlsver=v1.0.0
 pkgdesc="Break time reminder app"
 arch=('x86_64')
