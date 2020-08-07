@@ -6,13 +6,13 @@
 
 pkgname=asymptote-git
 epoch=2
-pkgver=2.65.git.4.g48777621
+pkgver=2.68.git.4.gd2f6e59e
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
 url="http://asymptote.sourceforge.net/"
 license=('LGPL3')
-depends=('gc' 'python' 'freeglut' 'glew' 'gsl' 'fftw' 'libsigsegv')
+depends=('gc' 'python' 'freeglut' 'gsl' 'fftw' 'libsigsegv')
 makedepends=('git' 'flex' 'ghostscript' 'imagemagick' 'glm' 'asymptote')
 optdepends=('python-pyqt5:      for the xasy GUI'
             'python-imaging:    for the xasy GUI'

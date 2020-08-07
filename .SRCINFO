@@ -1,6 +1,6 @@
 pkgbase = asymptote-git
 	pkgdesc = A vector graphics language (like metapost)
-	pkgver = 2.65.git.4.g48777621
+	pkgver = 2.68.git.4.gd2f6e59e
 	pkgrel = 1
 	epoch = 2
 	url = http://asymptote.sourceforge.net/
@@ -16,7 +16,6 @@ pkgbase = asymptote-git
 	depends = gc
 	depends = python
 	depends = freeglut
-	depends = glew
 	depends = gsl
 	depends = fftw
 	depends = libsigsegv
