@@ -15,6 +15,7 @@ pkgbase = ndn-nlsr
 	makedepends = openssl>=1.0.2
 	depends = ndn-cxx
 	depends = boost
+	depends = ndn-psync
 	optdepends = valgrind: memory analysis
 	optdepends = doxygen: build documentation
 	optdepends = python-sphinx: build documentation

@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/named-data/${_reponame}"
 license=('GPL')
 groups=()
-depends=('ndn-cxx' 'boost')
+depends=('ndn-cxx' 'boost' 'ndn-psync')
 makedepends=('git' 'gcc' 'python' 'boost' 'pkgconf' 'sqlite' 'openssl>=1.0.2')
 checkdepends=()
 optdepends=('valgrind: memory analysis'
