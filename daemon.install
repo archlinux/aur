@@ -1,0 +1,14 @@
+msg() {
+	echo "==> IMPORTANT: Please enable the daemon service with
+	\"systemctl enable --now razerdaemon.service\"
+	
+	=> run 'razer-cli help' for info on how to use the cli"
+}
+
+post_upgrade() {
+	msg
+}
+
+post_install() {
+	msg
+}

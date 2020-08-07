@@ -1,0 +1,22 @@
+pkgbase = razer-laptop-control-git
+	pkgdesc = Daemon and CLI for razer laptop's for RGB, fan and power control
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/rnd-ash/razer-laptop-control
+	install = daemon.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = razer-laptop-control-dkms-git
+	conflicts = openrazer-meta
+	conflicts = openrazer-driver-dkms
+	conflicts = openrazer-meta-git
+	conflicts = openrazer-daemon-git
+	source = git+https://github.com/rnd-ash/razer-laptop-control
+	md5sums = SKIP
+
+pkgname = razer-laptop-control-git
+
