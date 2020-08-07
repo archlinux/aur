@@ -13,7 +13,7 @@ optdepends=('linux-fbcondecor: enable console background images'
 conflicts=('fbsplash-scripts' 'initscripts-extras-fbsplash')
 install=$pkgname.install
 source=('fbcondecor')
-md5sums=('434dcb00413ad01a5c6873536fccc302')
+md5sums=('ba528a17722aa9e39dd8693ef7d19883')
 
 package() {
   msg2 "Installing fbcondecor for openrc support.."

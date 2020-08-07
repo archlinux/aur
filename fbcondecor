@@ -5,7 +5,7 @@ description="Set FbConDecor backgrounds"
 depend() {
 
 	# Make sure fbcondecor is up after xdm starts any dm
-#	after consolefont
+	after consolefont
 	before elogind
 }
 
@@ -21,7 +21,7 @@ retval=0
 		for tty in ${SPLASH_TTYS}; do
 			# avoid blinking on boot
 			[[ "$( fbcondecor_ctl --tty=${tty} -c getstate )" == *\ on ]] && continue
-			fbcondecor_set_theme ${SPLASH_THEME} ${tty} || retval=1
+			fbcondecor_set_theme ${SPLASH_THEME} ${tty} || sleep 5 || retval=1
 		done
 	eend $?
 	fi
