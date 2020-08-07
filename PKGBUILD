@@ -2,7 +2,7 @@
 
 pkgname=qv2ray-plugin-trojan
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Qv2ray Plugin: Trojan"
 arch=('x86_64')
 url="https://github.com/Qv2ray/QvPlugin-Trojan"
@@ -23,7 +23,6 @@ build() {
     mkdir -p build && cd build
     cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
-        -DFORCE_TCP_FASTOPEN=ON \
         -GNinja
     ninja
 }
