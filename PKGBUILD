@@ -10,9 +10,16 @@ url="http://opentsdb.net/"
 license=("LGPL2.1")
 depends=("java-runtime" "hbase" "gnuplot")
 makedepends=("java-environment=7" "java-runtime=6")
+backup=(
+  "etc/${pkgname}/logback.xml"
+  "etc/${pkgname}/opentsdb.conf"
+)
+install="${pkgname}.install"
 source=("https://github.com/OpenTSDB/opentsdb/archive/v${pkgver}.zip"
+        "${pkgname}.install"
         "opentsdb.service")
 sha512sums=('bec865831790fac91b90861451a8f14dc92992c2e5840ef663d728b68bf866c9bdda87f6562f1778e31e643d0cfb6f26d97e439e1ca990372d2cb81e28070fe9'
+            '8bfb4117802109d698f07754750a9f0ca24eac4209c9b73ecbdf50de16615c7f0fd9b3d60e45ea96a0b2e8b5a1b08e798c1672a6e66ac1e7b32b27a1bd55777d'
             '755dc59ff575f05caf49adef9b8c74ebc11b6bbed8cec7bb17dd7f88108ef26df750ef2b7f71d74c8fe121b523e8b745e7217c0c638cd6051ed1714c2f81ebb9')
 _watch="https://github.com/OpenTSDB/opentsdb/releases"
 

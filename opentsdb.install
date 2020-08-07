@@ -1,0 +1,9 @@
+post_install() {
+  getent group 'opentsdb' >/dev/null || groupadd -r 'opentsdb'
+  getent passwd 'opentsdb' >/dev/null || useradd -r -g 'opentsdb' 'opentsdb'
+}
+
+post_remove() {
+  getent passwd 'opentsdb' >/dev/null && userdel 'opentsdb'
+  getent group 'opentsdb' >/dev/null && groupdel 'opentsdb'
+}
