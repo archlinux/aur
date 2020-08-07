@@ -1,6 +1,6 @@
 pkgbase = fancon-git
 	pkgdesc = A Linux fan control daemon
-	pkgver = 0.20.1.r6.gde5bb40
+	pkgver = 0.23.0.r1.ad5ea79
 	pkgrel = 1
 	url = https://github.com/hbriese/fancon
 	arch = x86_64
@@ -20,4 +20,3 @@ pkgbase = fancon-git
 	sha512sums = SKIP
 
 pkgname = fancon-git
-

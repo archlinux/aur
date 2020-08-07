@@ -2,7 +2,7 @@
 
 _pkgbase=fancon
 pkgname=fancon-git
-pkgver=0.20.1.r6.gde5bb40
+pkgver=0.23.0.r1.ad5ea79
 pkgrel=1
 pkgdesc="A Linux fan control daemon"
 arch=('x86_64')
@@ -27,8 +27,7 @@ build() {
   export CC=clang
   export CXX=clang++
   export CCACHE_DISABLE=1
-  cmake -DCMAKE_BUILD_TYPE=Release \
-        -DNVIDIA_SUPPORT=ON \
+  cmake -DNVIDIA_SUPPORT=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         ..
   make
@@ -41,4 +40,5 @@ package() {
   cd "${srcdir}/${_pkgbase}/debian"
   install -Dm 644 fancon.service "${pkgdir}/usr/lib/systemd/system/fancon.service"
   install -Dm 644 fancon-resume.service "${pkgdir}/usr/lib/systemd/system/fancon-resume.service"
+    install -Dm 644 fancon-nvidia.service "${pkgdir}/usr/lib/systemd/system/fancon-nvidia.service"
 }
