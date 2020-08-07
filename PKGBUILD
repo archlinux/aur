@@ -1,12 +1,12 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=bibtool-git
-pkgver=2.68.r5.g58f538c
+pkgver=2.68.r14.g43de68a
 pkgrel=1
 pkgdesc="Command line manipulation of BibTeX files - from git-repo"
 arch=('i686' 'x86_64')
 url="http://www.gerd-neugebauer.de/software/TeX/BibTool/"
 license=('GPL')
-depends=('texlive-bin')
+depends=('texlive-bin' 'glibc')
 makedepends=('git')
 provides=('bibtool')
 conflicts=('bibtool')
