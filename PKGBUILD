@@ -1,7 +1,7 @@
 # Maintainer: Filippo Berto <berto.f@protonmail.com>
 _pkgname=nlsr
 pkgname=ndn-${_pkgname}-git
-pkgver=0.5.3.r9.g5f408ae
+pkgver=NLSR.0.5.2.r10.g57a8717
 pkgrel=1
 # epoch=
 pkgdesc="Named Data Link State Routing Protocol"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/named-data/${_pkgname}"
 license=('GPL')
 groups=()
-depends=('boost' 'ndn-nfd' 'ndn-chronosync')
+depends=('boost' 'ndn-cxx' 'ndn-psync')
 makedepends=('git' 'gcc' 'python' 'pkgconf' 'sqlite' 'openssl>=1.0.2')
 checkdepends=()
 optdepends=()

@@ -1,6 +1,6 @@
 pkgbase = ndn-nlsr-git
 	pkgdesc = Named Data Link State Routing Protocol
-	pkgver = 0.5.3.r9.g5f408ae
+	pkgver = NLSR.0.5.2.r10.g57a8717
 	pkgrel = 1
 	url = https://github.com/named-data/nlsr
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = ndn-nlsr-git
 	makedepends = sqlite
 	makedepends = openssl>=1.0.2
 	depends = boost
-	depends = ndn-nfd
-	depends = ndn-chronosync
+	depends = ndn-cxx
+	depends = ndn-psync
 	provides = ndn-nlsr
 	conflicts = ndn-nlsr
 	source = git+https://github.com/named-data/nlsr.git
