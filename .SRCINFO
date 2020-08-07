@@ -1,8 +1,8 @@
 pkgbase = ndn-chronosync-git
 	pkgdesc = Synchronization library for distributed realtime applications for NDN
 	pkgver = 0.5.3.r9.g5f408ae
-	pkgrel = 1
-	url = https://github.com/named-data/chronosync
+	pkgrel = 3
+	url = https://github.com/named-data/ChronoSync
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = ndn-chronosync-git
 	depends = ndn-cxx
 	provides = ndn-chronosync
 	conflicts = ndn-chronosync
-	source = git+https://github.com/named-data/chronosync.git
+	source = git+https://github.com/named-data/ChronoSync.git
 	sha256sums = SKIP
 
 pkgname = ndn-chronosync-git
