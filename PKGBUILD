@@ -16,10 +16,8 @@ source=(
   "https://github.com/hovancik/stretchly/releases/download/$_rlsver/$_pkgname-$pkgver.pacman"
   "LICENSE::https://github.com/hovancik/stretchly/blob/$_rlsver/LICENSE"
 )
-sha256sums=(
-  '368b077ff202f61bef22dbc3ab907420177c1d5c3ac094a72883232c47ae72d2'
-  'f3ef648ba055efa4299fcb25d7d6cef232caa72e1a9461b3a29cfdd0812940c7'
-)
+sha256sums=('368b077ff202f61bef22dbc3ab907420177c1d5c3ac094a72883232c47ae72d2'
+            '16dbfd55e41847ca5a82055ba15bc5c23aa96a49ba38200f26226b740b2f11d0')
 
 package() {
 	# copy binaries to fakeroot
