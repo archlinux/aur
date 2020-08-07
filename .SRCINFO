@@ -1,7 +1,7 @@
 pkgbase = cavapify-git
-	pkgdesc = Script that will automatically change the color of the cava visualizer bars according to the color of the current album art of any media player that implements the MPRIS D-Bus Interface Specification.
-	pkgver = r15.a2d3160
-	pkgrel = 1
+	pkgdesc = Automatically change the color of the cava visualizer bars according to the color of the current album art of any media player that implements the MPRIS. Currently pointing at a patched fork
+	pkgver = 3
+	pkgrel = 2
 	url = https://github.com/elmo-space/cavapify
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = cavapify-git
 	depends = playerctl
 	depends = wget
 	provides = cavapify
-	source = cavapify::git+https://github.com/elmo-space/cavapify.git
+	source = cavapify::git+https://github.com/timescam/cavapify.git
 	md5sums = SKIP
 
 pkgname = cavapify-git
