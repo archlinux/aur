@@ -3,7 +3,7 @@
 _pkgname=appconfigpy
 pkgname=python-${_pkgname}
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library to create/load an application configuration file'
 arch=('any')
 url='https://github.com/thombashi/appconfigpy'
@@ -24,6 +24,7 @@ package() {
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.rst'
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
+  rm -r "${pkgdir}/usr/lib/python"*'/site-packages/examples'
 }
 
 # vim: ts=2 sw=2 et:

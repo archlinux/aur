@@ -1,7 +1,7 @@
 pkgbase = python-appconfigpy
 	pkgdesc = Python library to create/load an application configuration file
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thombashi/appconfigpy
 	arch = any
 	license = MIT
