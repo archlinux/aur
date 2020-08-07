@@ -1,7 +1,7 @@
 pkgbase = dtkwidget-git
 	pkgdesc = Deepin graphical user interface library
 	pkgver = 5.2.2.3.r3.g4750dbfe
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxdeepin/dtkwidget
 	arch = x86_64
 	license = LGPL3

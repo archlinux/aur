@@ -2,7 +2,7 @@
 
 pkgname=dtkwidget-git
 pkgver=5.2.2.3.r3.g4750dbfe
-pkgrel=1
+pkgrel=2
 pkgdesc='Deepin graphical user interface library'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/dtkwidget"
