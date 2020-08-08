@@ -1,6 +1,6 @@
 pkgbase = gonha
 	pkgdesc = Light-weight system monitor for Linux
-	pkgver = 1.6.42
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://github.com/fredcox/gonha
 	arch = any
@@ -22,12 +22,14 @@ pkgbase = gonha
 	depends = python-coloredlogs
 	depends = python-numpy
 	depends = python-pyamdgpuinfo
+	depends = python-babel
+	depends = python-i18n
 	depends = python-prompt_toolkit1014
 	depends = ttf-fira-code
 	depends = hddtemp
-	source = https://pypi.org/packages/source/g/gonha/gonha-1.6.42.tar.gz
+	source = https://pypi.org/packages/source/g/gonha/gonha-1.7.4.tar.gz
 	source = https://github.com/fredcox/gonha/raw/master/LICENSE
-	sha256sums = a3b4d57c7ddd2a28e85f42955805d83d17190d080a8b8729d7fad20422efe4ab
+	sha256sums = 094701fc68e3f2755e3a550859b314782724fe6d07b3a2c6b7497f397c8b9a3f
 	sha256sums = 6ad1a8e638684d561aa06d48bf6adc181f5893beb513460d9a664a1da43bd101
 
 pkgname = gonha
