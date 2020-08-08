@@ -1,0 +1,11 @@
+--- ./Makefile	2020-08-09 02:46:05.399358061 +0500
++++ ./Makefile	2020-08-09 02:49:20.927300078 +0500
+@@ -11,7 +11,7 @@
+ # FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+ # for more details.
+ 
+-PYTHON = python
++PYTHON = python2
+ 
+ PREFIX = /usr/local
+ DESTDIR =
