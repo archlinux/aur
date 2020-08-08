@@ -4,13 +4,13 @@
 
 pkgname=xorg-fonts-75dpi-otb
 pkgver=1.0.3
-pkgrel=6
+pkgrel=7
 pkgdesc="X.org 75dpi fonts (OTB version)"
 arch=(any)
 url="https://xorg.freedesktop.org/"
 license=('custom')
-makedepends=('fonttosfnt')
-depends=(xorg-fonts-encodings xorg-fonts-alias xorg-font-utils fontconfig)
+makedepends=('fonttosfnt' 'xorg-bdftopcf' 'xorg-font-util' 'xorg-mkfontscale' 'xorg-util-macros')
+depends=('xorg-fonts-alias-75dpi')
 replaces=('xorg-fonts-75dpi')
 provides=('xorg-fonts-75dpi')
 conflicts=('xorg-fonts-75dpi')
