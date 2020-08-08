@@ -2,12 +2,12 @@
 
 pkgname=qv2ray-plugin-command
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Qv2ray Plugin: Command"
 arch=('x86_64')
 url="https://github.com/Qv2ray/QvPlugin-Command"
 license=('GPL3')
-depends=('qv2ray')
+depends=('qt5-base' 'qv2ray')
 makedepends=('cmake' 'git' 'ninja')
 groups=('qv2ray-plugin')
 source=("$pkgname-$pkgver::git+$url.git#tag=v$pkgver")
@@ -29,5 +29,5 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver/build/"
-    install -Dm 644 libQvCommandPlugin.so -t "$pkgdir/usr/share/qv2ray/plugins/"
+    install -Dm 755 libQvCommandPlugin.so -t "$pkgdir/usr/share/qv2ray/plugins/"
 }

@@ -1,7 +1,7 @@
 pkgbase = qv2ray-plugin-command
 	pkgdesc = Qv2ray Plugin: Command
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Qv2ray/QvPlugin-Command
 	arch = x86_64
 	groups = qv2ray-plugin
@@ -9,6 +9,7 @@ pkgbase = qv2ray-plugin-command
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
+	depends = qt5-base
 	depends = qv2ray
 	source = qv2ray-plugin-command-2.0.0::git+https://github.com/Qv2ray/QvPlugin-Command.git#tag=v2.0.0
 	sha256sums = SKIP
