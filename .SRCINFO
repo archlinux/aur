@@ -1,15 +1,14 @@
 pkgbase = osm-bin
 	pkgdesc = The Open Service Mesh CLI - binary
-	pkgver = 0.1.0
-	pkgrel = 1
+	pkgver = 0.2.0
+	pkgrel = 2
 	url = https://github.com/openservicemesh/osm
 	arch = x86_64
 	license = MIT
-	optdepends = git: required for most functionality
 	provides = osm
 	conflicts = osm
-	source = https://github.com/openservicemesh/osm/releases/download/v0.1.0/osm-v0.1.0-linux-amd64.tar.gz
-	sha256sums = 0edfe6842c56714c6407472e430ca839896efcd62ee246c0c0577f799bc5dfc3
+	source = https://github.com/openservicemesh/osm/releases/download/v0.2.0/osm-v0.2.0-linux-amd64.tar.gz
+	sha256sums = 91faacd60e1919ce70d3c68bbfa5e783d9116575f673d67b47eb41cf1bf909d3
 
 pkgname = osm-bin
 
