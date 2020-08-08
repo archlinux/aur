@@ -1,8 +1,8 @@
 pkgbase = pace
 	pkgdesc = A simple pacman.conf editor
 	pkgver = 1.4.0
-	pkgrel = 1
-	url = https://gitlab.com/softwareperonista/pace
+	pkgrel = 2
+	url = https://gitlab.com/tarmaciltur/pace
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
