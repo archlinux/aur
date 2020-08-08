@@ -1,9 +1,9 @@
 # Maintainer: Filippo Berto <berto.f@protonmail.com>
 _reponame=PyNDN2
-_pkgname=python-pyndn
+_pkgname=python2-pyndn
 pkgname=${_pkgname}
 pkgver=2.11beta1
-pkgrel=1
+pkgrel=2
 # epoch=
 pkgdesc="A Named Data Networking client library with TLV wire format support in native Python"
 arch=('i686' 'x86_64')
