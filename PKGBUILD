@@ -8,8 +8,8 @@ arch=('any')
 url="https://github.com/linuxdeepin/go-lib"
 license=('GPL3')
 depends=('dbus' 'go' 'libpulse' 'gdk-pixbuf2' 'mobile-broadband-provider-info' 'libx11'
-         'golang-gopkg-alecthomas-kingpin.v2' 'golang-deepin-gir-git'
-         'golang-github-linuxdeepin-go-x11-client' 'golang-golang-x-net' 'golang-golang-x-image')
+         'golang-gopkg-alecthomas-kingpin.v2' 'golang-deepin-gir-git-git'
+         'golang-github-linuxdeepin-go-x11-client-git' 'golang-golang-x-net' 'golang-golang-x-image')
          # 'golang-github-cryptix-wav' not packaged yet, paused until our go packaging standards formed
 checkdepends=('iso-codes' 'golang-gopkg-check.v1' 'git') # git needed only for go get
 replaces=('golang-deepin-lib')
