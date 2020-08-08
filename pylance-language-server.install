@@ -28,3 +28,7 @@ EOF
 post_upgrade() {
     chown -R "$(logname)" /opt/pylance-language-server
 }
+
+post_remove() {
+    rm -rf /opt/pylance-language-server
+}
