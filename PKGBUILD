@@ -2,13 +2,13 @@
 
 pkgname=python-av1an
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform all-in-one tool for streamlining AV1 encoding'
 arch=('any')
 url='https://github.com/master-of-zen/Av1an'
 license=('GPL3')
 makedepends=('python-setuptools')
-depends=('python>=3.6.0' 'python-numpy' 'python-scenedetect' 'opencv'
+depends=('python>=3.6.0' 'python-numpy' 'python-scenedetect' 'opencv' 'hdf5'
          'python-tqdm' 'python-psutil' 'python-scipy' 'python-matplotlib'
          'ffmpeg' 'aom')
 optdepends=('svt-av1: SVT-AV1 encoder support'
