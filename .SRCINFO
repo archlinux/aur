@@ -8,7 +8,6 @@ pkgbase = deepin-polkit-agent-git
 	license = GPL3
 	makedepends = git
 	makedepends = qt5-tools
-	depends = deepin-qt5integration-git
 	depends = deepin-qt-dbus-factory-git
 	depends = polkit-qt5
 	provides = deepin-polkit-agent
