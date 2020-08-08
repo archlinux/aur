@@ -3,7 +3,7 @@ _reponame=NFD
 _pkgname=ndn-nfd
 pkgname=$_pkgname
 pkgver=0.7.0
-pkgrel=5
+pkgrel=6
 # epoch=
 pkgdesc="NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol"
 arch=('i686' 'x86_64')
@@ -39,15 +39,28 @@ prepare() {
 
   cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
 
-  ./waf configure --prefix=/usr
+  ./waf configure --prefix=/usr --with-tests
 }
 
 build() {
 	cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
 	./waf build
+  ./waf docs
 }
 
+# Check disabled until upstream gets fixed
+#check() {
+#  cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
+#  ./waf install --destdir="${srcdir}/tests"
+#  for unit_test in ./build/unit-tests-*; do
+#    LD_LIBRARY_PATH="${srcdir}/tests/usr/lib" "$unit_test"
+#  done
+#}
+
 package() {
-	cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
-	./waf install --destdir="${pkgdir}"
+  install -dm 755 "${pkgdir}/usr/share/doc/$_pkgname"
+
+  cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
+  ./waf install --destdir="${pkgdir}"
+  cp -r "${srcdir}/${_reponame}-${_reponame}-${pkgver}/build/docs/"* "${pkgdir}/usr/share/doc/$_pkgname"
 }
