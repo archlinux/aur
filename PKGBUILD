@@ -20,11 +20,11 @@ package() {
 
   install -dm755 "${pkgdir}/usr/share/"{applications,icons}
   install -d "${pkgdir}/usr/bin"
-
   # Copy the whole SDK
-  cp -a . "${pkgdir}/usr/share/alchitry-labs"
+  cp -a . "${pkgdir}/usr/share/${_pkgname}"
 
-  install -m644 "${pkgdir}/usr/share/alchitry-labs/icon.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
+  install -m644 "${pkgdir}/usr/share/${_pkgname}/icon.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
   install -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  ln -s "${pkgdir}/usr/share/alchitry-labs/alchitry-labs" "${pkgdir}"/usr/bin/alchitry-labs
+  chmod +x "${pkgdir}/usr/share/${_pkgname}/alchitry-labs"
+  ln -s "/usr/share/${_pkgname}/alchitry-labs" "${pkgdir}"/usr/bin/alchitry-labs
 }
