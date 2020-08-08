@@ -1,5 +1,5 @@
 pkgbase = linux-mainline-bcachefs
-	pkgver = 5.7.12
+	pkgver = 5.7.14
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Bcachefs
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = linux-mainline-bcachefs
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.12.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.12.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.14.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.14.tar.sign
 	source = config
 	source = 0000-sphinx-workaround.patch
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
@@ -20,9 +20,9 @@ pkgbase = linux-mainline-bcachefs
 	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0008-5.7-bcachefs.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	md5sums = 76bfc439430bc6596f1b0bcfc9ccff5c
+	md5sums = e4630d01444e4f09521f2d6c7e6b2b86
 	md5sums = SKIP
-	md5sums = e6a07e8d39c0efbad3d470991e6b123e
+	md5sums = 94c6ee3eed73eb3fe39d5eac1e3b431b
 	md5sums = 2cebdad39da582fd6a0c01746c8adb42
 	md5sums = 3f9c557e2cad81e821c213e4e1097080
 	md5sums = b10e4c612d5240d66fad8f1c50fe3242
@@ -38,11 +38,11 @@ pkgname = linux-mainline-bcachefs
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-mainline-bcachefs=5.7.12
+	provides = linux-mainline-bcachefs=5.7.14
 
 pkgname = linux-mainline-bcachefs-headers
 	pkgdesc = Headers and scripts for building modules for Linux-mainline-bcachefs kernel
 	depends = linux-mainline-bcachefs
-	provides = linux-mainline-bcachefs-headers=5.7.12
-	provides = linux-headers=5.7.12
+	provides = linux-mainline-bcachefs-headers=5.7.14
+	provides = linux-headers=5.7.14
 
