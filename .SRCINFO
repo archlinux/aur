@@ -1,7 +1,7 @@
 pkgbase = squashfs-tools-ng
 	pkgdesc = A new set of tools and libraries for working with SquashFS images
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://infraroot.at/projects/squashfs-tools-ng/index.html
 	arch = x86_64
 	license = GPL3
