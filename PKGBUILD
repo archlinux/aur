@@ -10,10 +10,10 @@ license=('GPL3')
 depends=('deepin-desktop-schemas-git' 'ddcutil' 'deepin-api' 'gvfs' 'iso-codes' 'lsb-release'
          'mobile-broadband-provider-info' 'deepin-polkit-agent'
          'deepin-polkit-agent-ext-gnomekeyring' 'udisks2' 'upower'
-         'libxkbfile' 'accountsservice' 'deepin-desktop-base' 'bamf' 'pulseaudio'
+         'libxkbfile' 'accountsservice' 'deepin-desktop-base-git' 'bamf' 'pulseaudio'
          'org.freedesktop.secrets' 'noto-fonts' 'imwheel')
-makedepends=('golang-github-linuxdeepin-go-dbus-factory' 'golang-deepin-gir' 'golang-deepin-lib'
-             'golang-deepin-dde-api' 'golang-github-nfnt-resize' 'golang-gopkg-yaml.v2' 'sqlite' 'deepin-gettext-tools'
+makedepends=('golang-github-linuxdeepin-go-dbus-factory-git' 'golang-deepin-gir-git' 'golang-deepin-lib-git'
+             'deepin-api-git' 'golang-github-nfnt-resize' 'golang-gopkg-yaml.v2' 'sqlite' 'deepin-gettext-tools-git'
              'git' 'mercurial' 'python-gobject' 'networkmanager' 'bluez' 'go')
 optdepends=('networkmanager: for network management support'
             'bluez: for bluetooth support'
