@@ -1,6 +1,6 @@
 pkgbase = psync
 	pkgdesc = Python wrapper for rsync
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/jnphilipp/psync
 	arch = any

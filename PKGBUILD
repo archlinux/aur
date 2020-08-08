@@ -1,6 +1,6 @@
 # Maintainer: J. Nathanael Philipp <nathanael@philipp.land>
 pkgname=psync
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Python wrapper for rsync"
 arch=("any")
