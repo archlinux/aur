@@ -10,4 +10,3 @@ index 3c7bdf4cd31f..9a0ced58a3e9 100644
 +extensions = ['kerneldoc', 'rstFlatTable', 'kernel_include',
                'kfigure', 'sphinx.ext.ifconfig', 'automarkup',
                'maintainers_include']
- 

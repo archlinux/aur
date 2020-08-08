@@ -2,16 +2,15 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-zen-letsnote
-pkgver=5.7.3
-_pkgver=5.7.3.zen1
+pkgver=5.8.zen1
 pkgrel=1
 pkgdesc="Linux ZEN patched for Let's note"
-_srctag=v${_pkgver%.*}-${_pkgver##*.}
+_srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf
+  bc kmod libelf pahole
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
@@ -24,10 +23,9 @@ source=(
   lets-note.patch
 )
 sha256sums=('SKIP'
-            '01db2a42315527698b76edee1a836af56b805e18c363086aa7cc57db377ad553'
+            '89d672a1b6e4ea7fdf018716a945846f39ffc331c186693cbbdc19649c968713'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            'd7a7204385202abffce22babdabff58085d7a44babcde3de6b005ecd369e3b83'
-            )
+            'd7a7204385202abffce22babdabff58085d7a44babcde3de6b005ecd369e3b83')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -70,6 +68,7 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=()
 
   cd $_srcname
   local kernver="$(<version)"
@@ -84,7 +83,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -159,6 +158,9 @@ _package-headers() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
