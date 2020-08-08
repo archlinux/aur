@@ -1,7 +1,7 @@
-Index: b/gtk+-3.24.14/gtk/a11y/gtkaccessibility.c
+Index: b/gtk/a11y/gtkaccessibility.c
 ===================================================================
---- a/gtk+-3.24.14/gtk/a11y/gtkaccessibility.c
-+++ b/gtk+-3.24.14/gtk/a11y/gtkaccessibility.c
+--- a/gtk/a11y/gtkaccessibility.c
++++ b/gtk/a11y/gtkaccessibility.c
 @@ -989,7 +989,10 @@ _gtk_accessibility_init (void)
    do_window_event_initialization ();
  

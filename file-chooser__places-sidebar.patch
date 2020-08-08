@@ -1,7 +1,7 @@
-Index: b/gtk+-3.24.14/gtk/gtkplacessidebar.c
+Index: b/gtk/gtkplacessidebar.c
 ===================================================================
---- a/gtk+-3.24.14/gtk/gtkplacessidebar.c
-+++ b/gtk+-3.24.14/gtk/gtkplacessidebar.c
+--- a/gtk/gtkplacessidebar.c
++++ b/gtk/gtkplacessidebar.c
 @@ -633,6 +633,7 @@ open_home (GtkPlacesSidebar *sidebar)
  static void
  add_special_dirs (GtkPlacesSidebar *sidebar)
@@ -46,10 +46,10 @@ Index: b/gtk+-3.24.14/gtk/gtkplacessidebar.c
    sidebar->hostnamed_cancellable = g_cancellable_new ();
    g_dbus_proxy_new_for_bus (G_BUS_TYPE_SYSTEM,
                              G_DBUS_PROXY_FLAGS_GET_INVALIDATED_PROPERTIES,
-Index: b/gtk+-3.24.14/gtk/ui/gtkfilechooserwidget.ui
+Index: b/gtk/ui/gtkfilechooserwidget.ui
 ===================================================================
---- a/gtk+-3.24.14/gtk/ui/gtkfilechooserwidget.ui
-+++ b/gtk+-3.24.14/gtk/ui/gtkfilechooserwidget.ui
+--- a/gtk/ui/gtkfilechooserwidget.ui
++++ b/gtk/ui/gtkfilechooserwidget.ui
 @@ -16,7 +16,8 @@
                  <property name="visible">1</property>
                  <property name="hscrollbar-policy">never</property>

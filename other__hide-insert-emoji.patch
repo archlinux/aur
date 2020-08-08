@@ -1,7 +1,7 @@
-Index: b/gtk+-3.24.14/gtk/gtkentry.c
+Index: b/gtk/gtkentry.c
 ===================================================================
---- a/gtk+-3.24.14/gtk/gtkentry.c
-+++ b/gtk+-3.24.14/gtk/gtkentry.c
+--- a/gtk/gtkentry.c
++++ b/gtk/gtkentry.c
 @@ -9626,7 +9626,8 @@ popup_targets_received (GtkClipboard
            g_signal_connect_swapped (menuitem, "activate",
                                      G_CALLBACK (gtk_entry_insert_emoji), entry);
@@ -12,10 +12,10 @@ Index: b/gtk+-3.24.14/gtk/gtkentry.c
          }
  
        g_signal_emit (entry, signals[POPULATE_POPUP], 0, menu);
-Index: b/gtk+-3.24.14/gtk/gtktextview.c
+Index: b/gtk/gtktextview.c
 ===================================================================
---- a/gtk+-3.24.14/gtk/gtktextview.c
-+++ b/gtk+-3.24.14/gtk/gtktextview.c
+--- a/gtk/gtktextview.c
++++ b/gtk/gtktextview.c
 @@ -9537,7 +9537,8 @@ popup_targets_received (GtkClipboard
            g_signal_connect_swapped (menuitem, "activate",
                                      G_CALLBACK (gtk_text_view_insert_emoji), text_view);

@@ -1,7 +1,7 @@
-Index: b/gtk+-3.24.14/gtk/gtkwindow.c
+Index: b/gtk/gtkwindow.c
 ===================================================================
---- a/gtk+-3.24.14/gtk/gtkwindow.c
-+++ b/gtk+-3.24.14/gtk/gtkwindow.c
+--- a/gtk/gtkwindow.c
++++ b/gtk/gtkwindow.c
 @@ -147,7 +147,7 @@
   * widget that is added as a titlebar child.
   */
