@@ -19,8 +19,8 @@ install=desktop.install
 source=("hib://${_longname/ }-release-${pkgver}-linux.tar.gz"
         "${pkgname}.desktop"
         "starter.sh"
-        "${pkgname}.png::http://dinopoloclub.com/press/mini_metro/images/icon.png")
 md5sums=('1535053549257fd3139a46ed91c193a4'
+        "${pkgname}.png::${url%/*/*}/wp-content/uploads/2019/08/${_longname/ /-}-Icon.png")
          'b89a42a38136d0a126c8c13657b21c3f'
          '5006f1c488369854b7ac714168742aae'
          '8412b1e4cc11be455af993d921a68ced')
