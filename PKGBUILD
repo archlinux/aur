@@ -3,13 +3,13 @@
 
 pkgname=xorg-fonts-misc-otb
 pkgver=1.0.3
-pkgrel=7
+pkgrel=8
 pkgdesc="X.org misc fonts (OTB version)"
 arch=(any)
 url="https://xorg.freedesktop.org/"
 license=('custom')
-makedepends=('fonttosfnt')
-depends=('xorg-fonts-encodings' 'xorg-fonts-alias' 'xorg-font-utils' 'fontconfig')
+makedepends=('fonttosfnt' 'xorg-bdftopcf' 'xorg-mkfontscale' 'xorg-font-util' 'xorg-util-macros')
+depends=('xorg-fonts-alias-misc')
 replaces=('font-misc-ethiopic' 'font-misc-meltho' 'xorg-fonts-misc')
 provides=('font-misc-ethiopic' 'font-misc-meltho' 'xorg-fonts-misc')
 conflicts=('font-misc-ethiopic' 'font-misc-meltho' 'xorg-fonts-misc')
