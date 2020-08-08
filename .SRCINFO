@@ -1,12 +1,12 @@
 pkgbase = ruby-rugged-0
 	pkgdesc = Rugged is a Ruby binding to the libgit2 linkable library
 	pkgver = 0.99.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/libgit2/rugged
 	arch = any
 	license = MIT
-	makedepends = glibc
 	makedepends = ruby
+	makedepends = cmake
 	makedepends = libgit2.so=1.0-64
 	depends = ruby
 	provides = ruby-rugged=0.99.0
