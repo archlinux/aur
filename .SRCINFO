@@ -1,0 +1,16 @@
+pkgbase = ruby-mustache-0
+	pkgdesc = Mustache is a framework-agnostic way to render logic-free views.
+	pkgver = 0.99.8
+	pkgrel = 1
+	url = http://github.com/mustache/mustache
+	arch = any
+	license = MIT
+	depends = ruby
+	provides = ruby-mustache=0.99.8
+	noextract = mustache-0.99.8.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/mustache-0.99.8.gem
+	sha1sums = 0baaada539b2dcb5175bcdac186f407228acce7c
+
+pkgname = ruby-mustache-0
+
