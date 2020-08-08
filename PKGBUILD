@@ -8,7 +8,7 @@ pkgdesc='Deepin desktop-environment - dock module'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/dde-dock"
 license=('GPL3')
-depends=('qt5-svg' 'deepin-menu' 'deepin-daemon' 'deepin-launcher' 'deepin-qt5integration'
+depends=('qt5-svg' 'deepin-daemon-git' 'deepin-launcher-git' 'deepin-qt5integration-git'
          'deepin-qt-dbus-factory-git' 'deepin-network-utils-git' 'libdbusmenu-qt5')
 makedepends=('git' 'cmake' 'ninja' 'qt5-tools')
 conflicts=('deepin-dock')
