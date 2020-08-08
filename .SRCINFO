@@ -1,0 +1,31 @@
+pkgbase = deepin-session-ui-git
+	pkgdesc = Deepin desktop-environment - Session UI module
+	pkgver = 5.2.0.16.r1.gbc630c7d
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dde-session-ui
+	arch = x86_64
+	groups = deepin-git
+	license = GPL3
+	makedepends = deepin-gettext-tools
+	makedepends = qt5-tools
+	depends = gsettings-qt
+	depends = deepin-qt5integration-git
+	depends = liblightdm-qt5
+	depends = qt5-svg
+	depends = deepin-daemon
+	depends = deepin-wallpapers
+	provides = deepin-notifications
+	provides = deepin-session-ui
+	conflicts = dde-workspace
+	conflicts = deepin-session-ui
+	conflicts = deepin-notifications
+	replaces = dde-workspace
+	replaces = deepin-session-ui
+	replaces = deepin-notifications
+	source = git://github.com/linuxdeepin/dde-session-ui
+	source = deepin-session-ui-qt5.15.patch
+	sha512sums = SKIP
+	sha512sums = 846726964cac5005b0ac3a5043e5df914ff83faff68f98d2513d86494a9718a85ae4268776fd08ffe852e28ac0ae5878353d3c65db84fbd1509b2325e70fe8d6
+
+pkgname = deepin-session-ui-git
+
