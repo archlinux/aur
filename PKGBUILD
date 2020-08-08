@@ -8,7 +8,7 @@ pkgdesc="A Versatile Commodore Emulator , with enabled gtkglext"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://vice-emu.sourceforge.net"
-depends=('alsa-lib' 'gtkglext' 'giflib' 'libjpeg-turbo' 'libpng' 'libxrandr' 'vte' 'lame' 'libpcap' 'libnet')
+depends=('alsa-lib' 'gtkglext' 'giflib' 'libjpeg-turbo' 'libpng' 'libxrandr' 'vte' 'lame' 'libpcap' 'libnet' 'xa')
 makedepends=('pkg-config')
 provides=("vice=$pkgver")
 conflicts=('vice' 'vice-gtk' 'vice-sdl' 'vice-ethernet')
