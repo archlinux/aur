@@ -13,7 +13,7 @@ makedepends=('git' 'qt5-tools')
 conflicts=('dtkcore')
 replaces=('dtkcore')
 provides=('dtkcore')
-group=('deepin-git')
+groups=('deepin-git')
 source=("git://github.com/linuxdeepin/dtkcore.git")
 sha512sums=('SKIP')
 
