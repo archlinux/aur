@@ -3,19 +3,17 @@ _reponame=PSync
 _pkgname=ndn-psync
 pkgname=$_pkgname
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 # epoch=
-pkgdesc="NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol"
+pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
 arch=('i686' 'x86_64')
 url="https://github.com/named-data/${_reponame}"
 license=('GPL')
 groups=()
-depends=('ndn-cxx' 'boost')
-makedepends=('git' 'python' 'boost' 'sqlite' 'openssl>=1.0.2')
+depends=('boost' 'ndn-cxx')
+makedepends=('git' 'python' 'doxygen' 'python-sphinx')
 checkdepends=()
-optdepends=('valgrind: memory analysis'
-            'doxygen: build documentation'
-            'python-sphinx: build documentation')
+optdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 replaces=()
@@ -35,9 +33,14 @@ prepare() {
 build() {
 	cd "${srcdir}/${_reponame}-${pkgver}"
 	./waf build
+  ./waf docs
 }
 
 package() {
-	cd "${srcdir}/${_reponame}-${pkgver}"
-	./waf install --destdir="${pkgdir}"
+  install -dm 755 "${pkgdir}/usr/share/doc/ndn-psync"
+
+  cd "${srcdir}/${_reponame}-${pkgver}"
+  ./waf install --destdir="${pkgdir}"
+  cp -r "${srcdir}/${_reponame}-${pkgver}/build/docs/"* "${pkgdir}/usr/share/doc/ndn-psync"
 }
+

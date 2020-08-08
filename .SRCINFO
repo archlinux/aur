@@ -1,21 +1,17 @@
 pkgbase = ndn-psync
-	pkgdesc = NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol
+	pkgdesc = Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/named-data/PSync
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = python
-	makedepends = boost
-	makedepends = sqlite
-	makedepends = openssl>=1.0.2
-	depends = ndn-cxx
+	makedepends = doxygen
+	makedepends = python-sphinx
 	depends = boost
-	optdepends = valgrind: memory analysis
-	optdepends = doxygen: build documentation
-	optdepends = python-sphinx: build documentation
+	depends = ndn-cxx
 	provides = ndn-psync
 	conflicts = ndn-psync
 	source = https://github.com/named-data/PSync/archive/0.2.0.tar.gz
