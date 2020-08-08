@@ -1,0 +1,17 @@
+pkgbase = python-pyndn
+	pkgdesc = A Named Data Networking client library with TLV wire format support in native Python
+	pkgver = 2.11beta1
+	pkgrel = 1
+	url = https://github.com/named-data/PyNDN2
+	arch = i686
+	arch = x86_64
+	makedepends = ndn-cxx
+	depends = python2
+	depends = python2-cryptography
+	provides = python-pyndn
+	conflicts = python-pyndn
+	source = https://github.com/named-data/PyNDN2/archive/v2.11beta1.tar.gz
+	sha256sums = 65ec3f02f28fa5b3af50fc63cdf71f3be73b4c4292a48f480d21c3b24b1ca68a
+
+pkgname = python-pyndn
+
