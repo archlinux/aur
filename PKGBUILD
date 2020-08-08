@@ -7,6 +7,7 @@ pkgdesc='Command Line ToDo Management Application'
 arch=('x86_64')
 url='https://github.com/tarikguney/taskcore'
 license=("APACHE")
+depends=("icu")
 makedepends=("dotnet-sdk")
 options=("staticlibs")
 source=("${url}/archive/v${_pkgver}.tar.gz")

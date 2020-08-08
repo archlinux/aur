@@ -6,6 +6,7 @@ pkgbase = taskcore
 	arch = x86_64
 	license = APACHE
 	makedepends = dotnet-sdk
+	depends = icu
 	options = staticlibs
 	source = https://github.com/tarikguney/taskcore/archive/v1.0.0-beta.3.tar.gz
 	sha256sums = 8472c31bb7cff8b6f543a46288753747d9c47fee8f32b3e198f8da5bcea3fca6
