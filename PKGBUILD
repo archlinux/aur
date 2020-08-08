@@ -3,13 +3,14 @@
 # Contributor: nic96
 pkgname=fracplanet
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Fractal planet and terrain generator"
 url="http://sourceforge.net/projects/fracplanet/"
 license=('GPL2')
 arch=('i686' 'x86_64')
-depends=('boost' 'qt4' 'glu')
-source=("http://ufpr.dl.sourceforge.net/project/fracplanet/fracplanet/$pkgver/fracplanet-$pkgver.tar.gz"
+depends=('qt4' 'glu')
+makedepends=('boost')
+source=("http://downloads.sourceforge.net/project/fracplanet/fracplanet/$pkgver/fracplanet-$pkgver.tar.gz"
         "fracplanet.png"
         "fracplanet.desktop")
 sha256sums=('435dd07e1798f810280260d09d2ee85e870eb466411e49b859eb1bef6f336ade'
@@ -19,7 +20,7 @@ sha256sums=('435dd07e1798f810280260d09d2ee85e870eb466411e49b859eb1bef6f336ade'
 build() {
   cd $srcdir/$pkgname-$pkgver
   qmake-qt4 "VERSION_NUMBER=$VERSION_NUMBER" fracplanet.pro
-  make -j$(($(nproc) + 1))
+  make
 }
 
 package() {
