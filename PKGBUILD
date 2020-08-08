@@ -6,11 +6,11 @@
 
 _pkgname=arcanist
 pkgname="${_pkgname}-stable"
-pkgver=conduit.5.r1649.gbac20284
+pkgver=r2388.ccd39feb
 pkgrel=1
 pkgdesc='The command line interface for Phabricator'
 arch=('any')
-url="https://www.phacility.com/phabricator/"
+url='https://www.phacility.com/phabricator/arcanist'
 license=('Apache')
 depends=('libphutil' 'php' 'python')
 optdepends=('git: Git VCS support' 'subversion: Subversion VCS support' 'mercurial: Mercurial VCS support')
@@ -22,12 +22,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
   install -d "$pkgdir/usr/share/php/$_pkgname/" "$pkgdir/usr/bin/"
   cp -a $_pkgname/* "$pkgdir/usr/share/php/$_pkgname/"
-  install -Dm644 "$_pkgname/resources/shell/bash-completion" "$pkgdir/usr/share/bash-completion/completions/arc"
   ln -s "../share/php/$_pkgname/bin/arc" "$pkgdir/usr/bin/arc"
 }
