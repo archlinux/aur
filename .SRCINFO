@@ -1,0 +1,20 @@
+pkgbase = pace-cli
+	pkgdesc = A simple pacman.conf CLI editor
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://gitlab.com/tarmaciltur/pace
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	makedepends = git
+	makedepends = polkit
+	depends = glib2
+	optdepends = polkit
+	provides = pace
+	conflicts = pace
+	source = https://gitlab.com/tarmaciltur/pace/-/archive/1.4.0/pace-1.4.0.tar.gz
+	sha256sums = e1a954fdc6a5043f95c9d8b2fd68f6a38b79b32ad4a4d65e918e897aa255198f
+
+pkgname = pace-cli
+
