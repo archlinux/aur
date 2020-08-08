@@ -3,7 +3,7 @@
 
 pkgname=xorg-fonts-cyrillic-otb
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="X.org cyrillic fonts (OTB version)"
 arch=(any)
 url="https://xorg.freedesktop.org/"
@@ -11,8 +11,8 @@ license=('custom')
 replaces=('xorg-fonts-cyrillic')
 provides=('xorg-fonts-cyrillic')
 conflicts=('xorg-fonts-cyrillic')
-makedepends=('fonttosfnt')
-depends=(xorg-fonts-encodings xorg-fonts-alias xorg-font-utils fontconfig)
+makedepends=('fonttosfnt' 'xorg-bdftopcf' 'xorg-font-util' 'xorg-mkfontscale' 'xorg-util-macros')
+depends=('xorg-fonts-alias-cyrillic')
 source=(${url}/releases/individual/font/font-cronyx-cyrillic-${pkgver}.tar.bz2
         ${url}/releases/individual/font/font-misc-cyrillic-${pkgver}.tar.bz2
         ${url}/releases/individual/font/font-screen-cyrillic-1.0.4.tar.bz2
