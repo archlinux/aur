@@ -9,7 +9,11 @@ arch=('any')
 licence=('gpl')
 url='https://tambi-soft.github.io'
 makedepends=('git')
+<<<<<<< HEAD
+depends=('qt5-base' 'qt5-webview')
+=======
 depends=('qt5-base' 'qt5-webview' 'qt5-charts')
+>>>>>>> d58e99de85856238ad52264108e1592c48b2d4f6
 source=(${_pkgname}::git+https://github.com/tambi-soft/trinitrotoluol.git)
 sha256sums=('SKIP')
 
@@ -21,7 +25,11 @@ pkgver() {
 build() {
     cd "$srcdir"/"$_pkgname"
     qmake-qt5 -o Makefile trinitrotoluol.pro
+<<<<<<< HEAD
+    make  -j $(nproc)
+=======
     make -j $(nproc)
+>>>>>>> d58e99de85856238ad52264108e1592c48b2d4f6
     make clean
 }
 

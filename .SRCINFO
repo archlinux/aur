@@ -7,6 +7,7 @@ pkgbase = trinitrotoluol-git
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-webview
+	depends = qt5-charts
 	source = trinitrotoluol::git+https://github.com/tambi-soft/trinitrotoluol.git
 	sha256sums = SKIP
 
