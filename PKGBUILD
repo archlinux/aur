@@ -4,13 +4,15 @@
 _gemname=twitter-text
 pkgname=ruby-$_gemname-1
 pkgver=1.14.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Twitter text handling library'
 arch=(any)
 url='http://twitter.com'
 license=('Apache')
-depends=(ruby ruby-unf)
-provides=('ruby-twitter-text=1.14.7')
+depends=(ruby
+         'ruby-unf<2')
+makedepends=('ruby-rdoc')
+provides=("ruby-$_gemname=$pkgver")
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)

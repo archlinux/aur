@@ -1,12 +1,13 @@
 pkgbase = ruby-twitter-text-1
 	pkgdesc = Twitter text handling library
 	pkgver = 1.14.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://twitter.com
 	arch = any
 	license = Apache
+	makedepends = ruby-rdoc
 	depends = ruby
-	depends = ruby-unf
+	depends = ruby-unf<2
 	provides = ruby-twitter-text=1.14.7
 	noextract = twitter-text-1.14.7.gem
 	options = !emptydirs
