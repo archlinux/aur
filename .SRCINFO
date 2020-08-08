@@ -1,7 +1,7 @@
 pkgbase = ndn-chronosync-git
 	pkgdesc = Synchronization library for distributed realtime applications for NDN
 	pkgver = 0.5.3.r9.g5f408ae
-	pkgrel = 6
+	pkgrel = 8
 	url = https://github.com/named-data/ChronoSync
 	arch = i686
 	arch = x86_64
