@@ -1,0 +1,24 @@
+diff -ruN0 stfl-0.21-orig//Makefile.cfg stfl-0.21/Makefile.cfg
+--- stfl-0.21-orig//Makefile.cfg	2009-05-31 20:20:39.000000000 +0200
++++ stfl-0.21/Makefile.cfg	2010-03-25 20:01:19.000000000 +0100
+@@ -22 +22 @@
+-export prefix ?= /usr/local
++export prefix ?= /usr
+@@ -26 +26 @@
+-FOUND_SPL = 1
++FOUND_SPL = 0
+@@ -38 +38 @@
+-FOUND_PERL5 = 1
++FOUND_PERL5 = 0
+@@ -44 +44 @@
+-FOUND_PYTHON = 1
++FOUND_PYTHON = 0
+@@ -50 +50 @@
+-FOUND_RUBY = 1
++FOUND_RUBY = 0
+diff -ruN0 stfl-0.21-orig//stfl_internals.h stfl-0.21/stfl_internals.h
+--- stfl-0.21-orig//stfl_internals.h	2009-06-19 19:27:33.000000000 +0200
++++ stfl-0.21/stfl_internals.h	2010-03-25 20:00:52.000000000 +0100
+@@ -31 +31 @@
+-#include <ncursesw/ncurses.h>
++#include <ncurses.h>

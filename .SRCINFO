@@ -1,0 +1,20 @@
+pkgbase = stfl-git
+	pkgdesc = Fork of stfl which adds a few bugfixes
+	pkgver = 0.24.r4.gcc355eb
+	pkgrel = 1
+	url = https://github.com/dennisschagt/stfl
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = patch
+	makedepends = swig
+	depends = ncurses
+	provides = stfl
+	conflicts = stfl
+	source = stfl-git::git+https://github.com/dennisschagt/stfl.git#branch=master
+	source = stfl-archlinux.patch
+	sha256sums = SKIP
+	sha256sums = c7d7c787bcd287a776aad3b26e6a90a3b121c281125c34c7c35a87f36dcdc453
+
+pkgname = stfl-git
+
