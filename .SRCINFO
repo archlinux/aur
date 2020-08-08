@@ -1,0 +1,18 @@
+pkgbase = ruby-kramdown-parser-gfm-1_0
+	pkgdesc = kramdown-parser-gfm provides a kramdown parser for the GFM dialect of Markdown
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/kramdown/parser-gfm
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-kramdown<3
+	provides = ruby-kramdown-parser-gfm=1.0.1
+	noextract = kramdown-parser-gfm-1.0.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/kramdown-parser-gfm-1.0.1.gem
+	sha1sums = ffee0cb2cdcca0274cb662846bf0159f735a4605
+
+pkgname = ruby-kramdown-parser-gfm-1_0
+
