@@ -4,6 +4,7 @@ pkgbase = dtkwidget-git
 	pkgrel = 2
 	url = https://github.com/linuxdeepin/dtkwidget
 	arch = x86_64
+	groups = deepin-git
 	license = LGPL3
 	makedepends = git
 	makedepends = qt5-tools
