@@ -2,7 +2,7 @@
 #
 _pkgbase=veeam
 pkgname=veeam
-pkgver=4.0.0.1961
+pkgver=4.0.1.2365
 pkgrel=1
 pkgdesc="Veeam Agent for Linux"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('ncurses' 'lvm2' 'fuse' 'rpmextract')
 install=${pkgname}.install
 source=( "${url}/rpm/el/7/x86_64/veeam-${pkgver}-1.el7.x86_64.rpm" )
 conflicts=("${_pkgbase}")
-sha256sums=('7b72684922d71f71adda4111ff688735d5ea1f06eea4119be683dadf2af967d5')
+sha256sums=('0019944ce84cd06b76611c3f5471078934f0d1ae0d73fb9313a7f5e517993e58')
 backup=('etc/veeam/veeam.ini' 'var/lib/veeam/veeam_db.sqlite' 'var/lib/veeam/veeam_db.sqlite-shm' 'var/lib/veeam/veeam_db.sqlite-wal')
 #
 build() {
