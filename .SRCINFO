@@ -1,6 +1,6 @@
 pkgbase = straw-viewer-git
 	pkgdesc = Application for searching and streaming videos from YouTube, using the API of invidio.us (fork of youtube-viewer).
-	pkgver = 0.0.6.r0.g7332262
+	pkgver = 0.0.7.r0.gcaaebb6
 	pkgrel = 1
 	url = https://github.com/trizen/straw-viewer
 	arch = any
