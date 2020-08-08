@@ -1,0 +1,40 @@
+diff -ruN a/bardecode/code25i.hh b/bardecode/code25i.hh
+--- a/bardecode/code25i.hh	2019-01-28 07:12:58.000000000 -0500
++++ b/bardecode/code25i.hh	2020-08-08 05:17:42.560041847 -0400
+@@ -31,11 +31,11 @@
+         static const int END_SEQUENCE = 0xD;
+         static const char no_entry = 0;
+ 
+-        static const double n_lq = 15;
+-        static const double n_hq = 5.3;
+-        static const double w_lq = 5.2;
+-        static const double w_hq = 1.5;
+-        static const double tol = 0.2;
++        static constexpr double n_lq = 15;
++        static constexpr double n_hq = 5.3;
++        static constexpr double w_lq = 5.2;
++        static constexpr double w_hq = 1.5;
++        static constexpr double tol = 0.2;
+ 
+         static const usize_t min_quiet_usize = 5;
+         //static const usize_t min_quiet_usize = 10;
+diff -ruN a/codecs/jpeg2000.cc b/codecs/jpeg2000.cc
+--- a/codecs/jpeg2000.cc	2017-07-21 10:19:01.000000000 -0400
++++ b/codecs/jpeg2000.cc	2020-08-08 05:16:24.680041474 -0400
+@@ -67,14 +67,14 @@
+   return stream;
+ }
+ 
+-static int cpp_jas_read (jas_stream_obj_t* obj, char* buf, int cnt)
++static int cpp_jas_read (jas_stream_obj_t* obj, char* buf, unsigned int cnt)
+ {
+   std::istream* stream = (std::istream*) obj;
+   stream->read (buf, cnt);
+   return cnt;
+ }
+ 
+-static int cpp_jas_write (jas_stream_obj_t* obj, char* buf, int cnt)
++static int cpp_jas_write (jas_stream_obj_t* obj, char* buf, unsigned int cnt)
+ {
+   std::ostream* stream = (std::ostream*) obj;
+   stream->write (buf, cnt);
