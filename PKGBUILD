@@ -3,7 +3,7 @@ _reponame=NFD
 _pkgname=ndn-nfd
 pkgname=${_pkgname}-git
 pkgver=NFD.0.7.0.r35.g5bafd2c7
-pkgrel=7
+pkgrel=8
 # epoch=
 pkgdesc="NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol"
 arch=('i686' 'x86_64')
@@ -11,11 +11,9 @@ url="https://github.com/named-data/${_reponame}"
 license=('GPL')
 groups=()
 depends=('ndn-cxx' 'boost')
-makedepends=('git' 'python' 'boost' 'sqlite' 'openssl>=1.0.2')
+makedepends=('git' 'python' 'boost' 'python-sphinx' 'doxygen')
 checkdepends=()
-optdepends=('valgrind: memory analysis'
-            'doxygen: build documentation'
-            'python-sphinx: build documentation')
+optdepends=('valgrind: memory analysis')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 replaces=()
@@ -41,9 +39,22 @@ prepare() {
 build() {
 	cd "${srcdir}/${_reponame}"
 	./waf build
+  ./waf docs
 }
 
+# Check disabled until upstream gets fixed                     
+#check() {                                                     
+#  cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"          
+#  ./waf install --destdir="${srcdir}/tests"                   
+#  for unit_test in ./build/unit-tests-*; do                   
+#    LD_LIBRARY_PATH="${srcdir}/tests/usr/lib" "$unit_test"        
+#  done                                                                       
+#}
+
 package() {
-	cd "${srcdir}/${_reponame}"
+  install -dm 755 "${pkgdir}/usr/share/doc/$_pkgname"
+
+  cd "${srcdir}/${_reponame}"
 	./waf install --destdir="${pkgdir}"
+  cp -r "${srcdir}/${_reponame}-${_reponame}-${pkgver}/build/docs/"* "${pkgdir}/usr/share/doc/$_pkgname"
 }
