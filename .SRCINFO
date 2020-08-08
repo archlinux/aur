@@ -1,0 +1,16 @@
+pkgbase = ruby-rugged-0
+	pkgdesc = Rugged is a Ruby binding to the libgit2 linkable library
+	pkgver = 0.99.0
+	pkgrel = 1
+	url = https://github.com/libgit2/rugged
+	arch = any
+	license = MIT
+	depends = ruby
+	provides = ruby-rugged=0.99.0
+	noextract = rugged-0.99.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rugged-0.99.0.gem
+	sha1sums = 24c9a732fded03ec3c87ec42102f57147454fa4d
+
+pkgname = ruby-rugged-0
+
