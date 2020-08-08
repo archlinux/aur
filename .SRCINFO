@@ -1,0 +1,17 @@
+pkgbase = ruby-rss
+	pkgdesc = Family of libraries that support various formats of XML "feeds".
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/ruby/rss
+	arch = any
+	license = BSD
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-rexml
+	noextract = rss-0.2.9.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rss-0.2.9.gem
+	sha1sums = c3106e4fc1d24e8eacb80e1a615477f6d6d06e42
+
+pkgname = ruby-rss
+
