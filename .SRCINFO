@@ -1,10 +1,11 @@
 pkgbase = marktex
 	pkgdesc = Web service for files that support advanced Markdown commands mixed with LaTeX sections
 	pkgver = 1.0.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/AnonymerNiklasistanonym/MarkTeX
 	arch = x86_64
 	license = MIT
+	makedepends = node-prune
 	depends = nodejs
 	depends = inkscape
 	depends = pandoc

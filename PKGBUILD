@@ -1,12 +1,13 @@
 # Maintainer: AnonymerNiklasistanonym <niklas.mikeler@gmail.com>
 pkgname=marktex
 pkgver=1.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Web service for files that support advanced Markdown commands mixed with LaTeX sections'
 arch=('x86_64')
 url='https://github.com/AnonymerNiklasistanonym/MarkTeX'
 license=('MIT')
 depends=('nodejs' 'inkscape' 'pandoc' 'texlive-core')
+makedepends=('node-prune')
 provides=("$pkgname")
 conflicts=("$pkgname")
 _gitname="$pkgname.git"
@@ -17,8 +18,11 @@ build() {
   cd "$_gitname" || exit 1
   npm install
   npm run build
+  # Remove dev depdencies and only install production depdencies for deployment
   rm -rf node_modules
   npm install --only=production
+  # Remove unnecessary files from node_modules
+  node-prune
 }
 
 package() {
