@@ -1,4 +1,5 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Brad Ackerman <brad@facefault.org>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Jan Cholasta <grubber at grubber cz>
 # Contributor: François Steinmetz <francois.steinmetz@gmail.com>
 # Contributor: Zdenek Janecek <jan.zdenek@gmail.com>
@@ -21,14 +22,14 @@ options=(emptydirs)
 source=("https://releases.pagure.org/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
         0001-Adapt-to-Arch-Linux.patch)
 sha256sums=('60a3f58b6c43d5875cdeeeb75dfd5fb1cfa74c2576119d19bed6d2d03ed24456'
-            'e29e810aea0bdaaafde7350399c12018bb5a316f1258fe264e8db6ef57155602')
+            '0d7e49586a4cf449230234c192ca2b1846a69c7b4ffba2d46d91bd1128f30777')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
 
     rm -f man/en/system-login-ac.5
 
-    patch -p1 <"$srcdir"/0001-Adapt-to-Arch-Linux.patch
+    patch --verbose -p1 <"$srcdir"/0001-Adapt-to-Arch-Linux.patch
 
     autoreconf -fi
 }

@@ -24,7 +24,7 @@ pkgbase = authconfig
 	source = https://releases.pagure.org/authconfig/authconfig-7.0.1.tar.bz2
 	source = 0001-Adapt-to-Arch-Linux.patch
 	sha256sums = 60a3f58b6c43d5875cdeeeb75dfd5fb1cfa74c2576119d19bed6d2d03ed24456
-	sha256sums = e29e810aea0bdaaafde7350399c12018bb5a316f1258fe264e8db6ef57155602
+	sha256sums = 0d7e49586a4cf449230234c192ca2b1846a69c7b4ffba2d46d91bd1128f30777
 
 pkgname = authconfig
 

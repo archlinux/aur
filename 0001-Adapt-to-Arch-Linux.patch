@@ -48,10 +48,11 @@ index 1203a71114d0b700ff57802ece89b4a3e5351572..36e38418213c5c074178b8398ede8ade
  SSSD_AUTHCONFIG_DOMAIN = "default"
  
  if "lib64" in str(globals()["acutil"]):
--	LIBDIR = "/lib64"
-+	LIBDIR = "/lib"
+-	LIBDIR = "/usr/lib64"
++	LIBDIR = "/lib64"
  else:
- 	LIBDIR = "/lib"	
+-	LIBDIR = "/usr/lib"
++	LIBDIR = "/lib"
  
 @@ -994,9 +994,6 @@ class SafeFile:
  		self.file.flush()
