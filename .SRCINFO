@@ -1,15 +1,15 @@
 pkgbase = nodejs-hexo-cli
-    pkgdesc = Command line interface for Hexo: a fast, simple & powerful blog framework.
-    pkgver = 4.1.0
-    pkgrel = 1
-    url = https://hexo.io
-    arch = any
-    license = MIT
-    makedepends = npm
-    depends = nodejs
-    conflicts = nodejs-hexo
-    noextract = hexo-cli-4.1.0.tgz
-    source = https://registry.npmjs.org/hexo-cli/-/hexo-cli-4.1.0.tgz
-    sha1sums = 833b1726550830fbf592dd84ffe2e9d0eba09ca1
+	pkgdesc = Command line interface for Hexo: a fast, simple & powerful blog framework.
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://hexo.io
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	conflicts = nodejs-hexo
+	noextract = hexo-cli-4.2.0.tgz
+	source = https://registry.npmjs.org/hexo-cli/-/hexo-cli-4.2.0.tgz
+	sha1sums = 74647bc72a90b9cebf04af5bc70839ab281a305d
 
 pkgname = nodejs-hexo-cli
