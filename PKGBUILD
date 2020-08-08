@@ -3,7 +3,7 @@ _reponame=ChronoSync
 _pkgname=ndn-chronosync
 pkgname=${_pkgname}-git
 pkgver=0.5.3.r9.g5f408ae
-pkgrel=5
+pkgrel=6
 # epoch=
 pkgdesc="Synchronization library for distributed realtime applications for NDN"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/named-data/${_reponame}"
 license=('GPL')
 groups=()
 depends=('boost' 'ndn-cxx')
-makedepends=('git' 'python' 'sqlite' 'openssl>=1.0.2')
+makedepends=('git' 'python' 'doxygen' 'python-sphinx')
 checkdepends=()
 optdepends=()
 provides=("${_pkgname}")
@@ -38,14 +38,19 @@ prepare() {
 build() {
   cd "${srcdir}/${_reponame}"
 	./waf build
+  ./waf docs
 }
 
 check() {
   cd "${srcdir}/${_reponame}"
-	./build/unit-tests
+  ./waf install --destdir="${srcdir}/tests"
+	LD_LIBRARY_PATH="${srcdir}/tests/usr/lib" ./build/unit-tests
 }
 
 package() {
+  install -dm 755 "${pkgdir}/usr/share/doc/ndn-chronosync"
+
 	cd "${srcdir}/${_reponame}"
 	./waf install --destdir="${pkgdir}"
+  cp -r "${srcdir}/${_reponame}-${pkgver}/build/docs/"* "${pkgdir}/usr/share/doc/ndn-chronosync"
 }
