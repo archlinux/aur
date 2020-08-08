@@ -3,7 +3,7 @@
 
 pkgname=git-delta
 _name="${pkgname#*-}"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 
 pkgdesc='A syntax-highlighting pager for git and diff output'
@@ -15,7 +15,7 @@ depends=('git')
 makedepends=('rust' 'clang' 'llvm')
 
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('cae9bda3fb1b4e1adea439bb0e834d703d5925f0ace44eafa2d1b1293ae79209')
+sha256sums=('5c2e46e398702b13b2768043ba5dc6bea899fb34271120bad4608ff9a64b0434')
 
 
 prepare() {
@@ -43,12 +43,13 @@ check() {
 
 package() {
   cd "$_name-$pkgver"
-  install -Dm755 "target/release/$_name"     -t"$pkgdir/usr/bin/"
-  install -Dm644 README.md                   -t"$pkgdir/usr/share/doc/$_name/"
-  cp -a --no-preserve=ownership performance    "$pkgdir/usr/share/doc/$_name/"
-  install -Dm644 LICENSE                     -t"$pkgdir/usr/share/licenses/$_name/"
-  install -Dm644 completion/completion.bash    "$pkgdir/usr/share/bash-completion/completions/$_name"
-  install -Dm644 completion/completion.zsh     "$pkgdir/usr/share/zsh/site-functions/_$_name"
+  install -Dm755 "target/release/$_name"  -t"$pkgdir/usr/bin/"
+  install -Dm644 README.md                -t"$pkgdir/usr/share/doc/$_name/"
+  install -Dm644 LICENSE                  -t"$pkgdir/usr/share/licenses/$_name/"
+  cd etc
+  cp -a --no-preserve=ownership performance "$pkgdir/usr/share/doc/$_name/"
+  install -Dm644 completion/completion.bash "$pkgdir/usr/share/bash-completion/completions/$_name"
+  install -Dm644 completion/completion.zsh  "$pkgdir/usr/share/zsh/site-functions/_$_name"
 }
 
 
