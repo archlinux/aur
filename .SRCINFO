@@ -1,0 +1,18 @@
+pkgbase = python-i18n
+	pkgdesc = Easy to use i18n library for Python
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/danhper/python-i18n
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-yaml
+	depends = python-coveralls
+	source = https://pypi.org/packages/source/p/python-i18n/python-i18n-0.3.7.tar.gz
+	source = https://pypi.org/packages/source/p/python-i18n/python-i18n-0.3.7.tar.gz.asc
+	validpgpkeys = 1FEFF6D65203687AC33771CDA0B4CCFEBD33E18A
+	sha256sums = 095cb67a449f9caaddb4ca034255dcb442b1d1aca874294eda537bb5ea919892
+	sha256sums = SKIP
+
+pkgname = python-i18n
+
