@@ -13,3 +13,6 @@ Environment='JVMARGS=-Xmx6000m -DLOG_FILE=/var/log/opentsdb/%p_%i.log -DQUERY_LO
 ExecStart=/usr/bin/tsdb tsd --config /etc/opentsdb/opentsdb.conf
 Restart=always
 StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target
