@@ -1,12 +1,11 @@
 pkgbase = dina-font-otb
 	pkgdesc = A monospace bitmap font, primarily aimed at programmers (OTB Format)
 	pkgver = 2.92
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.dcmembers.com/jibsen/download/61/
 	arch = any
 	license = custom
 	makedepends = fonttosfnt
-	depends = xorg-font-utils
 	depends = fontconfig
 	conflicts = dina-font
 	conflicts = dina-powerline
