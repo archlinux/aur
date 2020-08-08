@@ -1,18 +1,18 @@
 pkgbase = flashplugin-debug
 	pkgdesc = Adobe Flash Player debugger
-	pkgver = 32.0.0.387
+	pkgver = 32.0.0.403
 	pkgrel = 1
 	url = https://www.adobe.com/support/flashplayer/debug_downloads.html
 	arch = x86_64
 	license = custom
 	license = LGPL
-	noextract = flash_player_npapi_linux_debug_32.0.0.387.x86_64.tar.gz
-	noextract = flash_player_ppapi_linux_debug_32.0.0.387.x86_64.tar.gz
+	noextract = flash_player_npapi_linux_debug_32.0.0.403.x86_64.tar.gz
+	noextract = flash_player_ppapi_linux_debug_32.0.0.403.x86_64.tar.gz
 	options = !strip
-	source = flash_player_npapi_linux_debug_32.0.0.387.x86_64.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/32/flash_player_npapi_linux_debug.x86_64.tar.gz
-	source = flash_player_ppapi_linux_debug_32.0.0.387.x86_64.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/32/flash_player_ppapi_linux_debug.x86_64.tar.gz
-	sha256sums = a013e65ee521f5cf15e16dfd8501e000508fef916691b91b7249666a2930b3f2
-	sha256sums = 3cdd19bc12a08ac9415e5932db4196f52d5e08c00db5dfc5d801682ebcc9d171
+	source = flash_player_npapi_linux_debug_32.0.0.403.x86_64.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/32/flash_player_npapi_linux_debug.x86_64.tar.gz
+	source = flash_player_ppapi_linux_debug_32.0.0.403.x86_64.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/32/flash_player_ppapi_linux_debug.x86_64.tar.gz
+	sha256sums = c34c33b817e4b59aac641a3396e8e914d9986d304575fdfe8668106a5477a05b
+	sha256sums = 4c22a089b5f8ebf9ae6fc773e2059f56bea833941b6b54f570be07b76938f0fe
 
 pkgname = flashplugin-debug
 	pkgdesc = Adobe Flash Player debugger NPAPI
@@ -22,13 +22,13 @@ pkgname = flashplugin-debug
 	depends = curl
 	depends = hicolor-icon-theme
 	optdepends = libvdpau: GPU acceleration on Nvidia cards
-	provides = flashplugin=32.0.0.387
+	provides = flashplugin=32.0.0.403
 	conflicts = flashplugin
 
 pkgname = pepper-flash-debug
 	pkgdesc = Adobe Flash Player debugger PPAPI
 	depends = gcc-libs
 	optdepends = flashplugin-debug: settings utility
-	provides = pepper-flash=32.0.0.387
+	provides = pepper-flash=32.0.0.403
 	conflicts = pepper-flash
 
