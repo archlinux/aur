@@ -25,10 +25,10 @@ groups=('selinux')
 arch=('i686' 'x86_64')
 url="https://github.com/SELinuxProject/setools/wiki"
 license=('GPL' 'LGPL')
-depends=('libsepol>=2.8' 'libselinux>=2.8' 'python' 'python-networkx>=2.0')
+depends=('libsepol>=2.8' 'libselinux>=2.8' 'python' 'python-networkx>=2.0' 'python-setuptools')
 optdepends=('python-pyqt5: needed for graphical tools'
             'qt5-tools: display apol help with Qt Assistant')
-makedepends=('cython' 'python-setuptools' 'python-tox')
+makedepends=('cython' 'python-tox')
 checkdepends=('checkpolicy')
 conflicts=("selinux-${pkgname}")
 provides=("selinux-${pkgname}=${pkgver}-${pkgrel}")

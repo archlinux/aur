@@ -10,12 +10,12 @@ pkgbase = setools
 	license = LGPL
 	checkdepends = checkpolicy
 	makedepends = cython
-	makedepends = python-setuptools
 	makedepends = python-tox
 	depends = libsepol>=2.8
 	depends = libselinux>=2.8
 	depends = python
 	depends = python-networkx>=2.0
+	depends = python-setuptools
 	optdepends = python-pyqt5: needed for graphical tools
 	optdepends = qt5-tools: display apol help with Qt Assistant
 	provides = selinux-setools=4.3.0-1
