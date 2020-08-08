@@ -1,6 +1,6 @@
 pkgname='lockbook'
 _pkgname="lockbook"
-pkgver=0.2.9
+pkgver=0.2.11
 pkgrel=3
 arch=('x86_64' 'i686')
 url="https://github.com/lockbook/lockbook"
