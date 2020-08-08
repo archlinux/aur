@@ -3,7 +3,7 @@
 
 pkgname="opentsdb"
 pkgver=2.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Distributed, scalable Time Series Database (TSDB) written on top of HBase"
 arch=("x86_64" "i686" "arm" "armv6h" "armv7h" "aarch64")
 url="http://opentsdb.net/"
@@ -19,7 +19,7 @@ source=("https://github.com/OpenTSDB/opentsdb/archive/v${pkgver}.zip"
         "${pkgname}.install"
         "opentsdb.service")
 sha512sums=('bec865831790fac91b90861451a8f14dc92992c2e5840ef663d728b68bf866c9bdda87f6562f1778e31e643d0cfb6f26d97e439e1ca990372d2cb81e28070fe9'
-            '99d5dd12ca066cd9b464e3ca40f8e66e0075039312717dba813b5e62f01da4a0d5a082df81fb0a10ca6def9c21ef26274bbe78e9594848f81cb6580960f560aa'
+            '558663fe8dabc02f779df2f8ae44656bc913706aafba33778627328460766f49ac7dac4a3c3d78e6f6b380d59d18258710455cdb70e6a780bd888bb880ea548f'
             '29aa52c408323f0586e51c2e682ccaed5e7ac3c9dfff6e35b0185c180ec61d969fcdba8407878ee6a0d9d5fa6a15aa29ddf54d8baa3458e4075a0f97ba718ebd')
 _watch="https://github.com/OpenTSDB/opentsdb/releases"
 
