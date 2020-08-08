@@ -1,0 +1,19 @@
+pkgbase = freetube-vue-git
+	pkgdesc = Rewrite of the open source desktop YouTube player built with privacy in mind.
+	pkgver = 290
+	pkgrel = 1
+	url = https://freetubeapp.io
+	arch = x86_64
+	arch = arm
+	license = AGPL3
+	makedepends = git
+	makedepends = npm
+	source = git+https://github.com/FreeTubeApp/FreeTube-Vue
+	source = package-only-necessary.diff
+	source = freetube-vue-git.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = freetube-vue-git
+
