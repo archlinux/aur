@@ -3,15 +3,15 @@ _reponame=ChronoSync
 _pkgname=ndn-chronosync
 pkgname=${_pkgname}
 pkgver=0.5.3
-pkgrel=4
+pkgrel=5
 # epoch=
 pkgdesc="Synchronization library for distributed realtime applications for NDN"
 arch=('i686' 'x86_64')
 url="https://github.com/named-data/${_reponame}"
 license=('GPL')
 groups=()
-depends=('boost')
-makedepends=('git' 'python' 'sqlite' 'openssl>=1.0.2')
+depends=('boost' 'ndn-cxx')
+makedepends=('git' 'python' 'doxygen' 'python-sphinx')
 checkdepends=()
 optdepends=()
 provides=("${pkgname}")
@@ -33,15 +33,19 @@ prepare() {
 build() {
   cd "${srcdir}/${_reponame}-${pkgver}"
 	./waf build
+  ./waf docs
 }
 
-#check() {
-#  echo >&2 echo "Tests can be skipped using the --nocheck arugment in makepkg"
-#  cd "${srcdir}/${_reponame}-${pkgver}"
-#  ./build/unit-tests
-#}
+check() {
+  cd "${srcdir}/${_reponame}-${pkgver}"
+  ./waf install --destdir="${srcdir}/tests"
+  LD_LIBRARY_PATH="${srcdir}/tests/usr/lib" ./build/unit-tests
+}
 
 package() {
-	cd "${srcdir}/${_reponame}-${pkgver}"
+	install -dm 755 "${pkgdir}/usr/share/doc/ndn-chronosync"
+
+  cd "${srcdir}/${_reponame}-${pkgver}"
 	./waf install --destdir="${pkgdir}"
+  cp -r "${srcdir}/${_reponame}-${pkgver}/build/docs/"* "${pkgdir}/usr/share/doc/ndn-chronosync"
 }
