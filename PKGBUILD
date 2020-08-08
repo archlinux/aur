@@ -3,7 +3,7 @@
 
 pkgname=mongodb-mtools
 _pkgname=mtools
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/rueckstiess/mtools"
@@ -13,7 +13,7 @@ depends=('python' 'python-dateutil' 'python-setuptools')
 optdepends=('python-psutil' 'python-pymongo' 'python-matplotlib' 'python-numpy')
 makedepends=('python-setuptools')
 source=("https://github.com/rueckstiess/mtools/archive/v$pkgver.tar.gz")
-sha256sums=('0a4cb7f256457d8fc89c4726e593866f42895355694d9c9018f5f4c679adda54')
+sha256sums=('420e22180130fc8c2b78b3a6cd9389f36badf5edfa58c34ca54729641ae5b666')
 
 package() {
   cd $srcdir/$_pkgname-${pkgver}

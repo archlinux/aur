@@ -1,6 +1,6 @@
 pkgbase = mongodb-mtools
 	pkgdesc = A collection of scripts to set up MongoDB test environments and parse and visualize MongoDB log files
-	pkgver = 1.6.3
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/rueckstiess/mtools
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = mongodb-mtools
 	optdepends = python-pymongo
 	optdepends = python-matplotlib
 	optdepends = python-numpy
-	source = https://github.com/rueckstiess/mtools/archive/v1.6.3.tar.gz
-	sha256sums = 0a4cb7f256457d8fc89c4726e593866f42895355694d9c9018f5f4c679adda54
+	source = https://github.com/rueckstiess/mtools/archive/v1.6.4.tar.gz
+	sha256sums = 420e22180130fc8c2b78b3a6cd9389f36badf5edfa58c34ca54729641ae5b666
 
 pkgname = mongodb-mtools
 
