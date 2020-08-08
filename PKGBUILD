@@ -2,8 +2,8 @@
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
-pkgver=4.0.2
-pkgrel=4
+pkgver=4.0.3
+pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/cheat/cheat"
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'conf.yml'
         "git+https://github.com/cheat/cheatsheets.git"
         "https://raw.githubusercontent.com/$pkgname/cheatsheets/master/.github/LICENSE.txt")
-sha256sums=('87c832b25794d7acac2fa4bd3389c81819535f32242d5e99284da76a1a86f1f3'
+sha256sums=('8266038022ec0ab75ea8c618f6d8ff2700f570763a9e61070f4935d37bc4ab9d'
             'a0aa691a318219d048107b835fe0e8cddfa734618fc5ccbb800b5bb463e00ea5'
             'SKIP'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
