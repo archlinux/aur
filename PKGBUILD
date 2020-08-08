@@ -2,7 +2,7 @@
 
 _ref=''
 pkgname=kak-lsp-git
-pkgver=4.0.0.r0.5c556a5
+pkgver=8.0.0.r94.a69bc95
 pkgrel=1
 pkgdesc='Kakoune Language Server Protocol Client'
 arch=('x86_64')
@@ -24,13 +24,11 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	cargo build --release
+	make build
 }
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	install -Dm755 -t "${pkgdir}/usr/bin" target/release/kak-lsp
-	install -Dm644 -t "${pkgdir}/usr/share/${pkgname}/examples/" kak-lsp.toml
-	install -Dm644 UNLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	make install DESTDIR=${pkgdir}
 }
 
