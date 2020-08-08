@@ -1,0 +1,17 @@
+pkgbase = pa_volume-git
+	pkgdesc = Set remembered PulseAudio volume
+	pkgver = 0.1.1.r41.8d69373
+	pkgrel = 1
+	url = https://github.com/rhaas80/pa_volume
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = pandoc
+	depends = libpulse
+	provides = pa_volume
+	conflicts = pa_volume
+	source = git+https://github.com/rhaas80/pa_volume.git
+	md5sums = SKIP
+
+pkgname = pa_volume-git
+
