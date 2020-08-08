@@ -9,8 +9,8 @@ url="https://github.com/linuxdeepin/dde-file-manager"
 license=('GPL3')
 # startdde: for com.deepin.SessionManager
 depends=('deepin-anything' 'disomaster' 'file' 'gio-qt' 'libmediainfo' 'avfs' 'polkit-qt5' 'poppler'
-         'ffmpegthumbnailer' 'jemalloc' 'kcodecs' 'startdde' 'taglib')
-makedepends=('git' 'qt5-tools' 'deepin-dock-git' 'deepin-movie' 'deepin-gettext-tools')
+         'ffmpegthumbnailer' 'jemalloc' 'kcodecs' 'startdde-git' 'taglib')
+makedepends=('git' 'qt5-tools' 'deepin-dock-git' 'deepin-movie' 'deepin-gettext-tools-git')
 optdepends=('deepin-manual: for help menual'
             'deepin-shortcut-viewer: for shortcut display'
             'deepin-screensaver: for screensaver chooser'
