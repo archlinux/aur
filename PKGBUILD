@@ -3,7 +3,6 @@
 pkgname=dtkcore-git
 pkgver=5.2.2.3.r0.g3241d4d
 pkgrel=1
-epoch=1
 pkgdesc='DTK core modules'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/dtkcore"
