@@ -1,6 +1,6 @@
 pkgbase = gretl
 	pkgdesc = A cross-platform software package for econometric analysis, written in the C programming language
-	pkgver = 2020c
+	pkgver = 2020d
 	pkgrel = 1
 	url = http://gretl.sourceforge.net/
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = gretl
 	optdepends = JSON-GLib: provides for parsing of data from various websites
 	optdepends = openmpi: provides means for dividing labor among multiple nodes
 	options = !makeflags
-	source = https://downloads.sourceforge.net/project/gretl/gretl/2020c/gretl-2020c.tar.xz
-	sha256sums = 15a0c18307dcb52e33eea088b4b94c32b32b3baa0e9f41145fa60b98da65e21d
+	source = https://downloads.sourceforge.net/project/gretl/gretl/2020d/gretl-2020d.tar.xz
+	sha256sums = 2309a5fa3cf98dc0469fb772e45e749433abcca7eca1fbdc3333aaac1ffe3901
 
 pkgname = gretl
 
