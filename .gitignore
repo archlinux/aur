@@ -1,5 +1,6 @@
 pkg/
 src/
-v1.0.0.tar.gz
+v*.tar.gz
 *.pkg.tar.xz
+*.pkg.tar.zst
 *~

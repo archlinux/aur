@@ -1,4 +1,5 @@
 post_install() {
+  echo "New configs are available in /etc/gittify/gitconfig.base"
   cat /etc/gittify/gitconfig.base | sed 's/#.*//g' | gawk '{ sub(/[\t ]*/, ""); if (/\[(.*)\]/) { prefix=substr($0, 2, length()-2); } else if ($0 ~ /[^\t ]/) { print prefix"."$0; } }' | sed 's/ = /\n/' | while read name; do
     read value;
     if git config --system "$name" > /dev/null; then
@@ -8,7 +9,7 @@ post_install() {
       git config --system "$name" "$value"
     fi
   done
-  echo "Done. Run gittify in any git repo to start."
+  echo "Run gittify in any git repo to start."
 }
 
 post_upgrade() {
