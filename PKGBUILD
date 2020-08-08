@@ -1,7 +1,7 @@
 # Maintainer: Thorsten Schifferdecker (curx) <ts@systs.org>
 
 pkgname=osm-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="The Open Service Mesh CLI - binary"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('osm')
 conflicts=('osm')
 source=("${url}/releases/download/v${pkgver}/osm-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('0edfe6842c56714c6407472e430ca839896efcd62ee246c0c0577f799bc5dfc3')
+sha256sums=('91faacd60e1919ce70d3c68bbfa5e783d9116575f673d67b47eb41cf1bf909d3')
 
 package() {
   cd "linux-amd64"
