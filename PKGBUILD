@@ -2,16 +2,16 @@
 _reponame=ndn-tools
 _pkgname=ndn-tools
 pkgname=${_pkgname}-git
-pkgver=ndn.tools.0.7.r15.g3527558
-pkgrel=2
+pkgver=ndn.tools.0.7.r16.g9a1b65d
+pkgrel=1
 # epoch=
 pkgdesc="A collection of basic tools for Named Data Networking"
 arch=('i686' 'x86_64')
 url="https://github.com/named-data/${_pkgname}"
 license=('GPL')
 groups=()
-depends=('ndn-cxx' 'boost')
-makedepends=('git' 'python' 'boost' 'sqlite' 'openssl>=1.0.2')
+depends=('ndn-cxx' 'boost' 'libpcap')
+makedepends=('git' 'python')
 checkdepends=()
 optdepends=()
 provides=("${_pkgname}")

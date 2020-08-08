@@ -1,18 +1,16 @@
 pkgbase = ndn-tools-git
 	pkgdesc = A collection of basic tools for Named Data Networking
-	pkgver = ndn.tools.0.7.r15.g3527558
-	pkgrel = 2
+	pkgver = ndn.tools.0.7.r16.g9a1b65d
+	pkgrel = 1
 	url = https://github.com/named-data/ndn-tools
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = python
-	makedepends = boost
-	makedepends = sqlite
-	makedepends = openssl>=1.0.2
 	depends = ndn-cxx
 	depends = boost
+	depends = libpcap
 	provides = ndn-tools
 	conflicts = ndn-tools
 	source = git+https://github.com/named-data/ndn-tools.git
