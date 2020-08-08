@@ -1,6 +1,6 @@
 pkgbase = deepin-desktop-schemas-git
 	pkgdesc = GSettings deepin desktop-wide schemas
-	pkgver = 5.6.0.14
+	pkgver = 5.6.0.13.r2.g4ff5aba
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/deepin-desktop-schemas
 	arch = any
