@@ -12,7 +12,6 @@ pkgbase = deepin-dock-git
 	makedepends = qt5-tools
 	depends = qt5-svg
 	depends = deepin-daemon-git
-	depends = deepin-launcher-git
 	depends = deepin-qt5integration-git
 	depends = deepin-qt-dbus-factory-git
 	depends = deepin-network-utils-git
