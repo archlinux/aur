@@ -1,6 +1,6 @@
 pkgbase = pace
 	pkgdesc = A simple pacman.conf editor
-	pkgver = 1.2.2
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://gitlab.com/softwareperonista/pace
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = pace
 	makedepends = meson
 	makedepends = vala
 	depends = gtksourceview4
-	source = https://gitlab.com/softwareperonista/pace/-/archive/1.2.2/pace-1.2.2.tar.gz
-	sha256sums = 2feca5daf7d34a0503d6cf8146cc63b014b8a4a5ff69980c51c2d9f915538a89
+	source = https://gitlab.com/tarmaciltur/pace/-/archive/1.4.0/pace-1.4.0.tar.gz
+	sha256sums = e1a954fdc6a5043f95c9d8b2fd68f6a38b79b32ad4a4d65e918e897aa255198f
 
 pkgname = pace
 

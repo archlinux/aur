@@ -2,7 +2,7 @@
 # Maintainer: Fernando Fernandez <fernando@softwareperonista.com.ar>
 
 pkgname=pace
-pkgver=1.2.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='A simple pacman.conf editor'
 arch=('x86_64')
@@ -10,13 +10,13 @@ license=('GPL3')
 url='https://gitlab.com/softwareperonista/pace'
 depends=('gtksourceview4')
 makedepends=('meson' 'vala')
-source=("https://gitlab.com/softwareperonista/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('2feca5daf7d34a0503d6cf8146cc63b014b8a4a5ff69980c51c2d9f915538a89')
+source=("https://gitlab.com/tarmaciltur/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('e1a954fdc6a5043f95c9d8b2fd68f6a38b79b32ad4a4d65e918e897aa255198f')
 
 build() {
   cd ${pkgname}-${pkgver}
 
-  arch-meson . build
+  arch-meson . build --wrap-mode=nofallback
 
   ninja -C build
 }
