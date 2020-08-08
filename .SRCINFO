@@ -13,6 +13,7 @@ pkgbase = deepin-control-center-git
 	depends = dtkwidget-git
 	depends = deepin-account-faces
 	depends = libpwquality
+	depends = startdde-git
 	depends = deepin-daemon-git
 	depends = startdde-git
 	depends = networkmanager-qt

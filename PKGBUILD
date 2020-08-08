@@ -8,7 +8,7 @@ pkgdesc='New control center for linux deepin'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/dde-control-center"
 license=('GPL3')
-depends=('dtkwidget-git' 'deepin-account-faces' 'libpwquality'
+depends=('dtkwidget-git' 'deepin-account-faces' 'libpwquality' 'startdde-git'
          'deepin-daemon-git' 'startdde-git' 'networkmanager-qt'
          'deepin-qt-dbus-factory-git' 'deepin-network-utils-git')
 makedepends=('git' 'cmake' 'ninja' 'qt5-tools')
