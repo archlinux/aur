@@ -1,0 +1,30 @@
+pkgbase = golang-deepin-lib-git
+	pkgdesc = A library containing many useful go routines for things such as glib, gettext, archive, graphic,etc.
+	pkgver = 5.5.0.1.r4.g67f7719
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/go-lib
+	arch = any
+	groups = deepin-git
+	license = GPL3
+	checkdepends = iso-codes
+	checkdepends = golang-gopkg-check.v1
+	checkdepends = git
+	depends = dbus
+	depends = go
+	depends = libpulse
+	depends = gdk-pixbuf2
+	depends = mobile-broadband-provider-info
+	depends = libx11
+	depends = golang-gopkg-alecthomas-kingpin.v2
+	depends = golang-deepin-gir-git
+	depends = golang-github-linuxdeepin-go-x11-client
+	depends = golang-golang-x-net
+	depends = golang-golang-x-image
+	provides = golang-deepin-lib
+	conflicts = golang-deepin-lib
+	replaces = golang-deepin-lib
+	source = git://github.com/linuxdeepin/go-lib/
+	sha512sums = SKIP
+
+pkgname = golang-deepin-lib-git
+
