@@ -6,7 +6,7 @@
 
 _pkgname=libphutil
 pkgname="${_pkgname}-stable"
-pkgver=conduit.5.r1417.g1750586f
+pkgver=r1717.5e0d5022
 pkgrel=1
 pkgdesc='A collection of PHP utility classes'
 arch=('any')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
