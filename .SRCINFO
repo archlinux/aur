@@ -1,6 +1,6 @@
 pkgbase = smith
 	pkgdesc = Smith is a simple terminal-based text editor written in Rust.
-	pkgver = 0.3.9
+	pkgver = 2.0.0
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
