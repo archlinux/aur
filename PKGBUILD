@@ -1,8 +1,8 @@
 # Maintainer: Martin Franc <me@martinfranc.eu>
 
 pkgname=wob
-pkgver=0.9
-pkgrel=2
+pkgver=0.10
+pkgrel=1
 pkgdesc='A lightweight overlay volume/backlight/progress/anything bar for Wayland'
 arch=('i686' 'x86_64')
 url='https://github.com/francma/wob'
@@ -15,7 +15,7 @@ source=(
 )
 validpgpkeys=('5C6DA024DDE27178073EA103F4B432D5D67990E3')
 sha512sums=(
-	'6dca402fb698866231da044e040c6d24ec2957d4b807d6b1a8e29a8ae3dd8f9761617cc1b26594b4eddf8bbfb84b44a72ce7b2eb5ce0ecebe3e9e39676ff87ca'
+	'7a4a9b854e5251a670c974f9c84803af8187a3b5ebdb014544e91f1d500398894ee79be33814c5539e5d2865ddefc22ad0b660ec2bdf551848996cca9868170e'
 	'SKIP'
 )
 
