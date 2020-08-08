@@ -1,7 +1,7 @@
 pkgbase = jellyfin-mpv-shim
 	pkgdesc = Cast media from Jellyfin Mobile and Web apps to MPV. (Unofficial)
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://github.com/iwalton3/jellyfin-mpv-shim
 	arch = any
 	license = MIT
@@ -10,17 +10,18 @@ pkgbase = jellyfin-mpv-shim
 	depends = python>=3.6
 	depends = python-mpv
 	depends = python-mpv-jsonipc>=1.1.9
-	depends = python-jellyfin-apiclient>=1.5.1
+	depends = python-jellyfin-apiclient>=1.6.0
 	depends = tk
 	optdepends = python-pystray: systray support
 	optdepends = python-jinja: display mirroring support
 	optdepends = python-pywebview>=3.3.1: desktop client and display mirroring support
 	optdepends = python-werkzeug: desktop client support
 	optdepends = python-flask: desktop client support
+	optdepends = jellyfin-mpv-shim-web: desktop client support
 	optdepends = svp: SmoothVideo Project server
 	optdepends = mpv-shim-default-shaders: default shader pack
-	source = jellyfin-mpv-shim-1.6.0.tar.gz::https://github.com/iwalton3/jellyfin-mpv-shim/archive/v1.6.0.tar.gz
-	sha256sums = 5adf171ee7f5e76a84ab65243e0043a9d3cbb37baf0964be58af94f534bc62a7
+	source = jellyfin-mpv-shim-1.7.0.tar.gz::https://github.com/iwalton3/jellyfin-mpv-shim/archive/v1.7.0.tar.gz
+	sha256sums = 8349f30c053e2a10a1f79762f3bfe37d2a55677573618685b9661ab7360ed222
 
 pkgname = jellyfin-mpv-shim
 
