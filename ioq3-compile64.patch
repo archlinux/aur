@@ -1,0 +1,29 @@
+From 207a182ac419504c919b4c82c7eec4b70ff7b114 Mon Sep 17 00:00:00 2001
+From: "J. Olsen" <joshuaolsen@gmail.com>
+Date: Fri, 7 Aug 2020 15:01:54 -0700
+Subject: [PATCH] ARCH_STRING missing on Linux/GNU x86_64 compile
+
+---
+ code/qcommon/q_platform.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/code/qcommon/q_platform.h b/code/qcommon/q_platform.h
+index 27ca856e..f3d0fe31 100644
+--- a/code/qcommon/q_platform.h
++++ b/code/qcommon/q_platform.h
+@@ -180,6 +180,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ 
+ #define PATH_SEP '/'
+ 
++#ifdef __x86_64__
++#define ARCH_STRING "x86_64"
++#elif defined __i386__
++#define ARCH_STRING "x86"
++#endif
++
+ #if !defined(ARCH_STRING)
+ # error ARCH_STRING should be defined by the Makefile
+ #endif
+-- 
+2.28.0
+

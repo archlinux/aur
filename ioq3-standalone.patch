@@ -1,0 +1,44 @@
+From b9e6f092901b1c9a67363060e206027edd1bc832 Mon Sep 17 00:00:00 2001
+From: "J. Olsen" <joshuaolsen@gmail.com>
+Date: Fri, 7 Aug 2020 14:20:03 -0700
+Subject: [PATCH] UrT STANDALONE
+
+---
+ code/qcommon/q_shared.h | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/code/qcommon/q_shared.h b/code/qcommon/q_shared.h
+index 86d9ac47..8c5c85c3 100644
+--- a/code/qcommon/q_shared.h
++++ b/code/qcommon/q_shared.h
+@@ -27,18 +27,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ // A user mod should never modify this file
+ 
+ #ifdef STANDALONE
+-  #define PRODUCT_NAME				"iofoo3"
+-  #define BASEGAME					"foobar"
+-  #define CLIENT_WINDOW_TITLE		"changeme"
+-  #define CLIENT_WINDOW_MIN_TITLE	"changeme2"
+-  #define HOMEPATH_NAME_UNIX		".foo"
+-  #define HOMEPATH_NAME_WIN			"FooBar"
++  #define PRODUCT_NAME				"ioq3"
++  #define BASEGAME					"q3ut4"
++  #define CLIENT_WINDOW_TITLE		"ioUrbanTerror"
++  #define CLIENT_WINDOW_MIN_TITLE	"ioUrbanTerror console"
++  #define HOMEPATH_NAME_UNIX		".config/urbanterror41"
++  #define HOMEPATH_NAME_WIN			"urbanterror41"
+   #define HOMEPATH_NAME_MACOSX		HOMEPATH_NAME_WIN
+ //  #define STEAMPATH_NAME			"Foo Bar"
+ //  #define STEAMPATH_APPID         ""
+-  #define GAMENAME_FOR_MASTER		"foobar"	// must NOT contain whitespace
+-  #define CINEMATICS_LOGO		"foologo.roq"
+-  #define CINEMATICS_INTRO		"intro.roq"
++  #define GAMENAME_FOR_MASTER		"q3ut4"	// must NOT contain whitespace
++  #define CINEMATICS_LOGO		"idlogo.RoQ"
++  #define CINEMATICS_INTRO		"intro.RoQ"
+ //  #define LEGACY_PROTOCOL	// You probably don't need this for your standalone game
+ #else
+   #define PRODUCT_NAME				"ioq3"
+-- 
+2.28.0
+

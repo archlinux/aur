@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Urban Terror 4.1
+Type=Application
+Categories=Game;
+Terminal=false
+Exec=/opt/urbanterror41/urbanterror41.x86_64
+Icon=/opt/urbanterror41/urbanterror41.svg
+Name[en_US]=Urban Terror 4.1
