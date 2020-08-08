@@ -1,7 +1,7 @@
 post_install() {
 	echo
 	echo "To make the environmental variables set automatically, \
-it's recommended not to use fish as your login shell."
+it's not recommended to use fish as your login shell."
 	echo 'Re-login or reboot to apply modify.'
 	echo
 }
