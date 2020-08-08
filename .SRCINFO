@@ -1,22 +1,19 @@
 pkgbase = ndn-nlsr
 	pkgdesc = Named Data Link State Routing Protocol
 	pkgver = 0.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/named-data/NLSR
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = python
-	makedepends = boost
-	makedepends = sqlite
-	makedepends = openssl>=1.0.2
+	makedepends = python-sphinx
+	makedepends = doxygen
 	depends = ndn-cxx
 	depends = boost
 	depends = ndn-psync
-	optdepends = valgrind: memory analysis
-	optdepends = doxygen: build documentation
-	optdepends = python-sphinx: build documentation
+	depends = ndn-chronosync
 	provides = ndn-nlsr
 	conflicts = ndn-nlsr
 	source = https://github.com/named-data/NLSR/archive/NLSR-0.5.2.tar.gz
