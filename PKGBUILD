@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ytmdesktop
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('libnotify: for desktop notifications'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('8a7916e5e2edc3a1c6df792e23abe183d78f0d3fbf61c101ff49691a1b00b5af'
+sha256sums=('cfe17ed78afbef56009f1b2bc4709e65d7aca3b21b58948e57b689dc752196bb'
             '4cbf5c9c7a2b24feb0fd623bf267cf8da1a9948431affba9b3927d5df84a269a'
             '3f937b477845f9b0391731a4e7b7cf3a52101c03f48eb34d29124b4664eb59a1')
 
