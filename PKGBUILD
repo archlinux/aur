@@ -16,7 +16,7 @@ pkgname=vmware-workstation11
 pkgver=11.1.4
 _buildver=3848939
 _pkgver=${pkgver}_${_buildver}
-pkgrel=11
+pkgrel=12
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -116,7 +116,7 @@ sha256sums=(
 
   '05e26d8b21d190ebabb7f693998114d9d5991d9dfb71acb4d990293a65b6b487'
   '6ce902b1dab8fc69be253abd8e79017011985eca850ff7acc7282f9ab668e35d'
-  '7762c254d656fa244f5e051bfa4bf0d357e6b94185e8b09ac86d8846149c8782'
+  '33f9a99d5c152ace972dbe227efe17ea0a2094bed3f10dafc99c85c5af91042e'
   '601a5b24aa23a995a79474a57de4056d3c2a27caf3a4c079b3a271d0d1eb4083'
 )
 options=(!strip emptydirs)
@@ -233,6 +233,7 @@ package() {
     vmware-network-editor-ui/bin/* \
     vmware-player-app/bin/* \
     "$pkgdir/usr/bin"
+    rm -f "$pkgdir/usr/bin/vm-support"
 
   cp -r \
     vmware-workstation/lib/* \
