@@ -3,7 +3,6 @@
 pkgname=deepin-file-manager-git
 pkgver=5.1.0.26.r213.g03f26b70
 pkgrel=1
-epoch=1
 pkgdesc='Deepin File Manager'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/dde-file-manager"
