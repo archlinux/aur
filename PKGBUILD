@@ -3,7 +3,7 @@ _reponame=NFD
 _pkgname=ndn-nfd
 pkgname=$_pkgname
 pkgver=0.7.0
-pkgrel=6
+pkgrel=7
 # epoch=
 pkgdesc="NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol"
 arch=('i686' 'x86_64')
@@ -11,11 +11,9 @@ url="https://github.com/named-data/${_reponame}"
 license=('GPL')
 groups=()
 depends=('ndn-cxx' 'boost')
-makedepends=('git' 'python' 'boost' 'sqlite' 'openssl>=1.0.2')
+makedepends=('git' 'python' 'python-sphinx' 'doxygen')
 checkdepends=()
-optdepends=('valgrind: memory analysis'
-            'doxygen: build documentation'
-            'python-sphinx: build documentation')
+optdepends=('valgrind: memory analysis')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 replaces=()
