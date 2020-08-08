@@ -3,14 +3,13 @@
 
 pkgname=deepin-qt-dbus-factory-git
 pkgver=5.3.0.1.r0.g23a7936
-_commit=23a793630a05b577e544ed1c3cd0e34a3a54f3ca
 pkgrel=1
 pkgdesc='A repository stores auto-generated Qt5 dbus code (libdframeworkdbus)'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/dde-qt-dbus-factory"
 license=('GPL3')
 depends=('qt5-base')
-makedepends=('git' 'dtkcore' 'python')
+makedepends=('git' 'dtkcore-git' 'python')
 conflicts=('deepin-qt-dbus-factory')
 replaces=('deepin-qt-dbus-factory')
 provides=('deepin-qt-dbus-factory')
