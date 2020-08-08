@@ -1,6 +1,6 @@
 pkgbase=gdm-git
 pkgname=('gdm-git' 'libgdm-git')
-pkgver=3.37.1+2+g5e321bbe
+pkgver=3.37.3+7+gdc10790e
 pkgrel=1
 pkgdesc="Display manager and login screen"
 url="https://wiki.gnome.org/Projects/GDM"
