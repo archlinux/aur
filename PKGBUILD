@@ -3,13 +3,13 @@
 
 pkgname=deepin-launcher-git
 _pkgname=deepin-launcher
-pkgver=5.2.0.14.r2.g8a4be27
+pkgver=5.3.0.3.r0.ge217d9b
 pkgrel=1
 pkgdesc='Deepin desktop-environment - Launcher module'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/dde-launcher"
 license=('GPL3')
-depends=('gsettings-qt' 'qt5-svg' 'qt5-x11extras' 'startdde-git' 'deepin-qt5integration-git' 'deepin-daemon-git' 'deepin-qt-dbus-factory-git' 'xdg-user-dirs')
+depends=('gsettings-qt' 'qt5-svg' 'qt5-x11extras' 'startdde-git' 'deepin-daemon-git' 'deepin-qt-dbus-factory-git' 'xdg-user-dirs')
 makedepends=('git' 'cmake' 'ninja' 'qt5-tools')
 conflicts=('deepin-launcher')
 replaces=('deepin-launcher')
