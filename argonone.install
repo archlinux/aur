@@ -40,6 +40,12 @@ post_install() {
   echo "  sudo systemctl enable argononed.service"
 }
 
+pre_upgrade() {
+  echo "Updating pip packages..."
+  /opt/argonone/bin/python3 -m pip install --upgrade pip pysmbus RPi.GPIO
+  echo "Update completed."
+}
+
 pre_remove() {
   systemctl stop argononed.service
 }
