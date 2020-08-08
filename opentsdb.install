@@ -2,7 +2,12 @@ post_install() {
   getent group 'opentsdb' >/dev/null || groupadd -r 'opentsdb'
   getent passwd 'opentsdb' >/dev/null || useradd -r -g 'opentsdb' 'opentsdb'
 
-  for fn in "/var/log/opentsdb" "/etc/opentsdb"; do
+  declare -a dirs=(
+    "/etc/opentsdb"
+    "/usr/share/opentsdb/plugins"
+    "/var/log/opentsdb"
+  )
+  for fn in "${dirs[@]}"; do
     if [[ ! -d "$fn" ]]; then
       mkdir -p "$fn"
     fi
