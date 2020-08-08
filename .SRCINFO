@@ -1,0 +1,17 @@
+pkgbase = gotify-cli-bin
+	pkgdesc = Command line interface for pushing messages to gotify server
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/gotify/cli
+	arch = x86_64
+	license = MIT
+	provides = gotify-cli
+	source = gotify-cli-2.1.1::https://github.com/gotify/cli/releases/download/v2.1.1/gotify-cli-linux-amd64
+	source = gotify-cli-2.1.1-README.md::https://raw.githubusercontent.com/gotify/cli/master/README.md
+	source = gotify-cli-2.1.1-LICENSE::https://raw.githubusercontent.com/gotify/cli/master/LICENSE
+	sha256sums = ef7f584b3e253ab4d73cfd602fac5d6ba0fdc4a970c18e5fc3cf560af956e4cd
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gotify-cli-bin
+
