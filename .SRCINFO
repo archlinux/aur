@@ -6,9 +6,7 @@ pkgbase = trinitrotoluol-git
 	arch = any
 	makedepends = git
 	depends = qt5-base
-	depends = qt5-multimedia
-	depends = qt5-svg
-	depends = ffmpeg
+	depends = qt5-webview
 	source = trinitrotoluol::git+https://github.com/tambi-soft/trinitrotoluol.git
 	sha256sums = SKIP
 
