@@ -1,42 +1,30 @@
-# Maintainer: Antonio Rojas <arojas@archlinux,org>
+# Maintainer katt <magunasu.b97@gmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux,org>
 
 pkgname=dolphin-git
-pkgver=r4888.8b12612
+pkgver=20.07.90.r21.g97a14db70
 pkgrel=1
-pkgdesc="File Manager"
+pkgdesc='KDE File Manager (Git)'
 arch=(i686 x86_64)
-url="http://kde.org/applications/system/dolphin/"
+url=https://kde.org/applications/en/system/org.kde.dolphin
 license=(LGPL)
-depends=(baloo-widgets-git knewstuff kio-extras ktexteditor kactivities-frameworks)
-makedepends=(extra-cmake-modules git kdoctools python)
-provides=(dolphin)
-conflicts=(dolphin kdebase-dolphin dolphin-frameworks-git)
-replaces=(dolphin-frameworks-git)
-source=('git://anongit.kde.org/dolphin.git')
-install=$pkgname.install
+depends=(baloo-widgets-git knewstuff kio-extras kcmutils kparts kinit)
+makedepends=(extra-cmake-modules kdoctools packagekit-qt5 git)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=(git+https://invent.kde.org/system/dolphin.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd dolphin
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+    git -C "${pkgname%-git}" describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-  cmake ../dolphin \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+    cmake -B build -S "${pkgname%-git}" \
+        -DBUILD_TESTING=OFF
+    cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+    DESTDIR="${pkgdir}" cmake --install build
 }
