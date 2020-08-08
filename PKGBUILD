@@ -2,16 +2,16 @@
 _reponame=ndn-cxx
 _pkgname=ndn-cxx
 pkgname=${_pkgname}-git
-pkgver=ndn.cxx.0.7.0.r47.g483087f5
-pkgrel=3
+pkgver=0.7.0.r47.g483087f5
+pkgrel=2
 # epoch=
 pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
 arch=('i686' 'x86_64')
 url="https://github.com/named-data/${_reponame}"
 license=('GPL')
 groups=()
-depends=('boost')
-makedepends=('git' 'python' 'sqlite' 'openssl>=1.0.2')
+depends=('boost' 'sqlite' 'openssl>=1.0.2')
+makedepends=('git' 'python' 'doxygen' 'python-sphinx')
 checkdepends=()
 optdepends=('boost-stacktrace-backtrace')
 provides=("${_pkgname}")
@@ -27,7 +27,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "${srcdir}/${_reponame}"
-	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^ndn.cxx.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -38,13 +38,14 @@ prepare() {
 build() {
   cd "${srcdir}/${_reponame}"
 	./waf build
+  ./waf docs
 }
 
-#check() {
-#  2>&1 echo "Tests can be skipped with the --nocheck argument in makepkg"
-#  cd "${srcdir}/${_reponame}"
-#  ./build/unit-tests
-#}
+#check() {                                    
+#  cd "${srcdir}/${_reponame}-${pkgver}"                          
+#  ./waf install --destdir="${srcdir}/tests"   
+#  LD_LIBRARY_PATH="${srcdir}/tests/usr/lib" ./build/unit-tests   
+#}    
 
 package() {
 	cd "${srcdir}/${_reponame}"
