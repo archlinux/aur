@@ -1,15 +1,15 @@
 pkgbase = ndn-psync-git
 	pkgdesc = Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications
 	pkgver = 0.2.0.r8.g042dfb3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/named-data/PSync
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = python
-	makedepends = sqlite
-	makedepends = openssl>=1.0.2
+	makedepends = doxygen
+	makedepends = python-sphinx
 	depends = boost
 	depends = ndn-cxx
 	provides = ndn-psync

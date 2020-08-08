@@ -3,7 +3,7 @@ _reponame=PSync
 _pkgname=ndn-psync
 pkgname=${_pkgname}-git
 pkgver=0.2.0.r8.g042dfb3
-pkgrel=5
+pkgrel=6
 # epoch=
 pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/named-data/${_reponame}"
 license=('GPL')
 groups=()
 depends=('boost' 'ndn-cxx')
-makedepends=('git' 'python' 'sqlite' 'openssl>=1.0.2')
+makedepends=('git' 'python' 'doxygen' 'python-sphinx')
 checkdepends=()
 optdepends=()
 provides=("${_pkgname}")
@@ -37,15 +37,20 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_reponame}"
-	./waf build
+  ./waf build
+  ./waf docs
 }
 
-check() {
-  cd "${srcdir}/${_reponame}"
-  ./build/unit-tests
-}
+#check() {
+#  cd "${srcdir}/${_reponame}"
+#  ./waf install --destdir="${srcdir}/tests"
+#  LD_LIBRARY_PATH="${srcdir}/tests" ./build/unit-tests
+#}
 
 package() {
-	cd "${srcdir}/${_reponame}"
-	./waf install --destdir="${pkgdir}"
+	install -dm 755 "${pkgdir}/usr/share/doc/ndn-psync"
+
+  cd "${srcdir}/${_reponame}"
+  ./waf install --destdir="${pkgdir}"
+  cp -r "${srcdir}/${_reponame}/build/docs/"* "${pkgdir}/usr/share/doc/ndn-psync"
 }
