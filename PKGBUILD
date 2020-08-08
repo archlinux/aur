@@ -1,26 +1,32 @@
-# $Id$
-# Maintainer: Michael Greene <mgreene@securityinnovation.com>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Michael Greene <mgreene@securityinnovation.com>
 
-pkgname=python-solid
-pkgver=0.2.0
+_pkgname=solid
+pkgname="python-${_pkgname}"
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="SolidPython: OpenSCAD for Python"
+pkgdesc='Python interface to the OpenSCAD declarative geometry language'
 arch=('any')
-license=('LGPL2.1')
-url="https://github.com/SolidCode/SolidPython"
-makedepends=()
-depends=('python-euclid3' 'python-pypng' 'python-prettytable')
-source=("https://pypi.io/packages/source/s/solidpython/solidpython-${pkgver}.tar.gz")
-sha256sums=(1047f222ce57335fdb3a91b2d90e1a36ed25cf1b627987b56de313032f5ac1d6)
-sha384sums=(cad00aa017d7d62b31f5cc97a108f68ebad41fc141551cff8ab81f3f54a91e797d19300f51d5d1b0f6b3fba3df946623)
-sha512sums=()
+url='https://github.com/SolidCode/SolidPython'
+_rawurl="https://raw.githubusercontent.com/${url##*github.com/}"
+license=('GPL2')
+depends=('python' 'python-euclid3' 'python-prettytable' 'python-pypng' 'python-regex')
+makedepends=('python-setuptools')
+provides=("${_pkgname}")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}python/${_pkgname}python-${pkgver}.tar.gz"
+        "${_pkgname}-${pkgver}-README.rst::${_rawurl}/master/README.rst")
+sha256sums=('b298ba3a2e9bd999fdb9cd95dc347aa3b92bce88c83d2e9527a77779ddef8940'
+            'SKIP')
 
 build() {
-    cd ${srcdir}/solidpython-${pkgver}
-    python setup.py build
+  cd "${_pkgname}python-${pkgver}"
+  python setup.py build
 }
 
 package() {
-    cd solidpython-${pkgver}
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 "${_pkgname}-${pkgver}-README.rst" "${pkgdir}/usr/share/doc/${_pkgname}/README.rst"
+  cd "${_pkgname}python-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
+
+# vim: ts=2 sw=2 et:
