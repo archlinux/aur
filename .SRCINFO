@@ -1,17 +1,23 @@
 pkgbase = git-delta-bin
 	pkgdesc = A viewer for git and diff output
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/dandavison/delta
+	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = MIT
 	conflicts = git-delta
 	conflicts = git-delta-git
-	source_x86_64 = https://github.com/dandavison/delta/releases/download/0.4.0/git-delta_0.4.0_amd64.deb
-	sha256sums_x86_64 = 0c64daa3dacf04937788154bf4439944c159b8ed612fad5f5f2511efa9b218bf
-	source_armv7h = https://github.com/dandavison/delta/releases/download/0.4.0/git-delta_0.4.0_armhf.deb
-	sha256sums_armv7h = 45a638cf984833c5a6064629343d2268de076c6729258f4f822d614442761a66
+	source_i686 = https://github.com/dandavison/delta/releases/download/0.4.1/git-delta_0.4.1_i386.deb
+	sha256sums_i686 = e1eecad69609d522ebc7084c2c34f62aadca7226f51669afd2d0d7dda8f7974c
+	source_x86_64 = https://github.com/dandavison/delta/releases/download/0.4.1/git-delta_0.4.1_amd64.deb
+	sha256sums_x86_64 = b5cbe9309edd0c3ef3c04e130d4aedebcefd345a92a36f73525383045d6566b1
+	source_armv7h = https://github.com/dandavison/delta/releases/download/0.4.1/git-delta_0.4.1_armhf.deb
+	sha256sums_armv7h = 06b2f9cedaabce4a69d7022f3e0435d3bea474df15f96d5d7c5c899557990281
+	source_aarch64 = https://github.com/dandavison/delta/releases/download/0.4.1/git-delta_0.4.1_arm64.deb
+	sha256sums_aarch64 = 0e6093a1822e16a2212a79d62141a01a766f197eb8cebfcfbde6aa490a2ddf74
 
 pkgname = git-delta-bin
 
