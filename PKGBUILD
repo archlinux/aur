@@ -1,5 +1,5 @@
 # Maintainer: reno.esper@gmail.com
-# Maintainer: geert@hendrickx.be
+# Contributor: geert@hendrickx.be
 
 pkgname=mongodb-mtools
 _pkgname=mtools
