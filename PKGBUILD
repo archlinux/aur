@@ -3,21 +3,21 @@
 _rockname=luautf8
 _pkgname=utf8
 pkgname=("lua-$_pkgname" "lua53-$_pkgname" "lua52-$_pkgname" "lua51-$_pkgname")
-pkgver=0.1.2
-_rockrel=0
-pkgrel=3
+pkgver=0.1.3
+_rockrel=1
+pkgrel=1
 pkgdesc='Add UTF-8 support to Lua, compatible with Lua string module'
 arch=('x86_64')
 url="https://github.com/starwing/$_rockname"
 license=('MIT')
 makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("$_rockname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('52578858e4519da7e09d019baef9135fef3ff2dfb0bc0a01e58fba7a70f7be26')
+sha256sums=('208b3423a03a6c2822a2fa6b7cc8092ed7d3c0d792ec12c7cd28d6afaa442e0b')
 
 _package_helper() {
   cd "$_rockname-$pkgver"
   luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
-    make --deps-mode=none --no-manifest "rockspecs/$_rockname-scm-$_rockrel.rockspec"
+    make --deps-mode=none --no-manifest "rockspecs/$_rockname-$pkgver-$_rockrel.rockspec"
 }
 
 package_lua-utf8() {
