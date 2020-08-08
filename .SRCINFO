@@ -1,0 +1,19 @@
+pkgbase = ruby-sprockets-3
+	pkgdesc = Rack-based asset packaging system
+	pkgver = 3.7.2
+	pkgrel = 1
+	url = https://github.com/rails/sprockets
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-rack
+	depends = ruby-concurrent
+	provides = ruby-sprockets=3.7.2
+	noextract = sprockets-3.7.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/sprockets-3.7.2.gem
+	sha1sums = 841a7f1086f1095dc11cbc422ee2487e48bc83db
+
+pkgname = ruby-sprockets-3
+
