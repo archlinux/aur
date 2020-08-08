@@ -5,3 +5,4 @@ pkg/
 src/
 
 wechat-devtools-*.pkg.tar.xz
+wechat-devtools-*.pkg.tar.zst
