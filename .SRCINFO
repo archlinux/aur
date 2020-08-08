@@ -1,7 +1,7 @@
 pkgbase = linux-wifi-hotspot
 	pkgdesc = Create virtual wifi hotspot using same wifi card which is connected to an AP + many features (a GUI tool)
 	pkgver = 2.0.0+4+g61ac43a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lakinduakash/linux-wifi-hotspot
 	install = linux-wifi-hotspot.install
 	arch = x86_64
@@ -16,10 +16,9 @@ pkgbase = linux-wifi-hotspot
 	depends = iproute2
 	optdepends = haveged: For random MAC generation
 	optdepends = wireless_tools: if iw cannot recognize your adapter
-	provides = create_ap
 	provides = wihotspot
-	conflicts = create_ap
 	conflicts = wihotspot
+	conflicts = create_ap
 	source = git+https://github.com/lakinduakash/linux-wifi-hotspot#commit=61ac43ab50b8a751d94d4ac78c2d9448fdb97a66
 	sha256sums = SKIP
 
