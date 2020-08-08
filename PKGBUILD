@@ -1,18 +1,18 @@
-# Maintainer: imoutocon <mail@niichan.moe>
+# Maintainer: imoutocon
 pkgname=uwu
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="uwu your terminal today!"
 arch=('x86_64')
-url="https://git.niichan.moe/98WuG/uwu"
+url="https://github.com/98WuG/uwu"
 license=('GPL')
 depends=('glibc')
 makedepends=('gcc')
 checkdepends=()
 changelog=
-source=("https://git.niichan.moe/98WuG/${pkgname}/archive/${pkgver}.tar.gz")
+source=("https://github.com/98WuG/${pkgname}/archive/v${pkgver}.tar.gz")
 noextract=()
-md5sums=("e8a17d4b4b927e6265d456eb4cbc09b1")
+md5sums=("ad5d777b3b155b025f237f9a4546f994")
 validpgpkeys=()
 
 build() {
