@@ -1,7 +1,7 @@
 pkgbase = citra-nightly
 	pkgdesc = Citra emulator 'nightly' branch binaries for Arch Linux
 	pkgver = 1600
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linux-gamers/arch-citra-nightly
 	arch = any
 	license = GNU General Public License v2.0

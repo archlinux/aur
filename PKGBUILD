@@ -3,7 +3,7 @@ pkgname='citra-nightly'
 provides=('citra' 'citra-qt' 'citra-room')
 conflicts=('citra-git' 'citra-canary-git' 'citra-canary-bin' 'citra-nightly-bin' 'citra-nightly-git')
 pkgver=1600
-pkgrel=1
+pkgrel=2
 pkgdesc="Citra emulator 'nightly' branch binaries for Arch Linux"
 arch=('any')
 url="https://github.com/linux-gamers/arch-citra-nightly"
@@ -16,13 +16,13 @@ package() {
   cd "${srcdir}/arch-${pkgname}-${pkgver}"
   
   mkdir -p $pkgdir/usr/bin
-  mv citra $pkgdir/usr/bin/
-  mv citra-qt $pkgdir/usr/bin/ 
-  mv citra-room $pkgdir/usr/bin/ 
+  mv dist/citra $pkgdir/usr/bin/
+  mv dist/citra-qt $pkgdir/usr/bin/ 
+  mv dist/citra-room $pkgdir/usr/bin/ 
 
   mkdir -p $pkgdir/usr/share/icons/hicolor/scalable/apps
-  mv citra.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/
+  mv dist/citra.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/
  
   mkdir -p $pkgdir/usr/share/applications
-  mv citra.desktop $pkgdir/usr/share/applications/
+  mv dist/citra.desktop $pkgdir/usr/share/applications/
 }
