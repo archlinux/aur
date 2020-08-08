@@ -1,0 +1,17 @@
+pkgbase = ruby-kramdown-2_1
+	pkgdesc = kramdown is a fast, pure-Ruby Markdown-superset converter.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = http://kramdown.gettalong.org
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	provides = ruby-kramdown=2.1.0
+	noextract = kramdown-2.1.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/kramdown-2.1.0.gem
+	sha1sums = caa3e24ec1ea7d42f3bb17de84971d798da71f96
+
+pkgname = ruby-kramdown-2_1
+
