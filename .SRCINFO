@@ -1,15 +1,15 @@
 pkgbase = nodejs-servor
 	pkgdesc = A close to the metal and dependency free server for single page app development
-	pkgver = 3.2.0
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://www.npmjs.com/package/servor
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = servor-3.2.0.tgz
-	source = http://registry.npmjs.org/servor/-/servor-3.2.0.tgz
-	md5sums = 61280bfe73259bd86c9dcb2f5bd6c624
+	noextract = servor-4.0.2.tgz
+	source = http://registry.npmjs.org/servor/-/servor-4.0.2.tgz
+	md5sums = c896f5b5eccf55c8a596e5c4d09025e7
 
 pkgname = nodejs-servor
 

@@ -2,7 +2,7 @@
 
 pkgname=nodejs-servor
 _npmpkgname=servor
-pkgver=3.2.0
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="A close to the metal and dependency free server for single page app development"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("http://registry.npmjs.org/$_npmpkgname/-/$_npmpkgname-$pkgver.tgz")
 noextract=("$_npmpkgname-$pkgver.tgz")
-md5sums=('61280bfe73259bd86c9dcb2f5bd6c624')
+md5sums=('c896f5b5eccf55c8a596e5c4d09025e7')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmpkgname-$pkgver.tgz"
