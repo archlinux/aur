@@ -2,7 +2,7 @@
 
 pkgname=vice-gtkglext
 _pkgname=vice
-pkgver=3.1
+pkgver=3.4
 pkgrel=1
 pkgdesc="A Versatile Commodore Emulator , with enabled gtkglext"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('vice' 'vice-gtk' 'vice-sdl' 'vice-ethernet')
 replaces=('vice')
 install=${pkgname}.install
 source=(http://downloads.sourceforge.net/project/vice-emu/releases/${_pkgname}-${pkgver}.tar.gz no-fc-cache.patch)
-sha256sums=('3eb8159633816095006dec36c5c3edd055a87fd8bda193a1194a6801685d1240'
+sha256sums=('4bd00c1c63d38cd1fe01b90032834b52f774bc29e4b67eeb1e525b14fee07aeb'
             '36e88f32137c96b14283b94a15c5d85425086312165d1392bde2cab7c14f45cc')
 
 
