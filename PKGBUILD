@@ -3,7 +3,7 @@ _reponame=ChronoSync
 _pkgname=ndn-chronosync
 pkgname=${_pkgname}
 pkgver=0.5.3
-pkgrel=5
+pkgrel=6
 # epoch=
 pkgdesc="Synchronization library for distributed realtime applications for NDN"
 arch=('i686' 'x86_64')
@@ -43,9 +43,9 @@ check() {
 }
 
 package() {
-	install -dm 755 "${pkgdir}/usr/share/doc/ndn-chronosync"
+	install -dm 755 "${pkgdir}/usr/share/doc/_pkgname"
 
   cd "${srcdir}/${_reponame}-${pkgver}"
 	./waf install --destdir="${pkgdir}"
-  cp -r "${srcdir}/${_reponame}-${pkgver}/build/docs/"* "${pkgdir}/usr/share/doc/ndn-chronosync"
+  cp -r "${srcdir}/${_reponame}-${pkgver}/build/docs/"* "${pkgdir}/usr/share/doc/_pkgname"
 }
