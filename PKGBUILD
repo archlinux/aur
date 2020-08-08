@@ -2,7 +2,7 @@
 
 pkgname=osm-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Service Mesh CLI - binary"
 arch=('x86_64')
 url=https://github.com/openservicemesh/osm
@@ -15,5 +15,5 @@ sha256sums=('91faacd60e1919ce70d3c68bbfa5e783d9116575f673d67b47eb41cf1bf909d3')
 package() {
   cd "linux-amd64"
   install -Dm755 osm "${pkgdir}/usr/bin/osm"
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/osm-cli-bin"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/osm-bin"
 }
