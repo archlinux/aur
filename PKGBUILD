@@ -2,19 +2,12 @@
 
 pkgname=nerd-fonts-inconsolata-go
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Patched font InconsolataGo from nerd-fonts library"
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
-depends=(
-	'fontconfig'
-	'wget'
-	'xorg-bdftopcf'
-	'xorg-font-util'
-	'xorg-mkfontdir'
-	'xorg-mkfontscale'
-)
+depends=()
 
 source=(
 	"InconsolataGo-v$pkgver.zip::$url/releases/download/v$pkgver/InconsolataGo.zip"
