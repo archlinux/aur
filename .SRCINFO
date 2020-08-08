@@ -1,7 +1,7 @@
 pkgbase = webots
 	pkgdesc = Mobile robot simulation software.
 	pkgver = 2020b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cyberbotics.com/
 	install = webots.install
 	arch = x86_64
