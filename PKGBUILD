@@ -1,7 +1,7 @@
 # Maintainer: Senderman <doletov.fyodor@yandex.ru>
 pkgname=nvidia-system-monitor-qt
-pkgver=1.1
-pkgrel=2
+pkgver=1.2.rc2
+pkgrel=1
 pkgdesc="Task Manager for Linux for Nvidia graphics cards (QT vesrion)"
 arch=('x86_64')
 url="https://github.com/congard/${pkgname}"
@@ -15,7 +15,7 @@ md5sums=('SKIP' 'SKIP')
 build() {
     cd $srcdir/${pkgname}-${pkgver}
     mkdir build
-    cmake -B build -DDistributive=Arch -G "Unix Makefiles"
+    cmake -DCMAKE_BUILD_TYPE=Release -B build -DDistributive=Arch -DVersionPrefix="rc1 AUR (compiled from source)" -G "Unix Makefiles"
     cmake --build build --target qnvsm -- -j 2
 }
 
