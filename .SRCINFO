@@ -1,7 +1,7 @@
 pkgbase = alchitry-labs-bin
 	pkgdesc = Alchitry Labs - The Easiest Way to Program FPGAs
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://alchitry.com/pages/alchitry-labs
 	arch = x86_64
 	license = custom: commercial

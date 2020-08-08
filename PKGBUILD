@@ -3,7 +3,7 @@
 pkgname=alchitry-labs-bin
 _pkgname=alchitry-labs
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Alchitry Labs - The Easiest Way to Program FPGAs'
 arch=(x86_64)
 license=('custom: commercial')
