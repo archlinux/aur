@@ -2,16 +2,21 @@
 # Contributor: Raedwulf
 
 pkgname=lemon
-pkgrel=4
-pkgver=1.69
+pkgrel=1
+pkgver=1.0.20200809
 pkgdesc="The LALR Parser Generator used in sqlite."
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.hwaci.com/sw/lemon/"
 license=('custom')
 depends=('glibc')
-source=( 'lemon.c::http://www.sqlite.org/src/raw/tool/lemon.c?name=680980c7935bfa1edec20c804c9e5ba4b1dd96f5'
-         'lempar.c::http://www.sqlite.org/src/raw/tool/lempar.c?name=01ca97f87610d1dac6d8cd96ab109ab1130e76dc'
+
+source=( 'lemon.c::https://www.sqlite.org/src/raw/tool/lemon.c?name=600a58b9d1b8ec5419373982428e927ca208826edacb91ca42ab94514d006039'
+         'lempar.c::https://www.sqlite.org/src/raw/tool/lempar.c?name=e8899b28488f060d0ff931539ea6311b16b22dce068c086c788a06d5e8d01ab7'
          lemon_share.diff license.txt )
+sha256sums=('049d9283c4a71c7cd57cf528cd7d4c079f6987343ca2b16b08c0f735ec4ae0be'
+            'f58c38f5f4f6c40d24cc9fbf378685b2444d704fca502b03622e7bc0b10ead63'
+            '6d09900e476262287c137e990db48283c37ab747df0d562eb4e486b490ea9e61'
+            '6b5ff92682dfbdfef6b66f7ab7a6455c081b0260f6e6d3a6669bf99ffb5333e6')
 
 prepare() {
 	mkdir -p ${srcdir}/build
@@ -31,9 +36,4 @@ package() {
 	install -Dm644 lempar.c ${pkgdir}/usr/share/lemon/lempar.c
 	install -Dm644 ${srcdir}/license.txt ${pkgdir}/usr/share/licenses/lemon/license.txt
 }
-
-sha256sums=('5dce8ffd620c9d6daca2c4718da5c8d436542dcf68b05b4b8f30c9f3a198b7b0'
-            '71f0880d170e600435b9f705dc5f4ac3bd8d7b23d009ae82664226e88d1a41ad'
-            '6d09900e476262287c137e990db48283c37ab747df0d562eb4e486b490ea9e61'
-            '6b5ff92682dfbdfef6b66f7ab7a6455c081b0260f6e6d3a6669bf99ffb5333e6')
 
