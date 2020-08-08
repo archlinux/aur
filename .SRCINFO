@@ -1,14 +1,12 @@
 pkgbase = tamsyn-font-otb
 	pkgdesc = A monospaced bitmap font for the console and X11 (OTB Format)
 	pkgver = 1.11
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.fial.com/~scott/tamsyn-font
 	arch = any
 	license = custom
 	makedepends = fonttosfnt
-	depends = fontconfig
 	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	provides = tamsyn-font
 	conflicts = tamsyn-font
 	source = https://www.fial.com/~scott/tamsyn-font/download/tamsyn-font-1.11.tar.gz
