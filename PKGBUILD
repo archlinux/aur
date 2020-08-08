@@ -1,6 +1,6 @@
 # Maintainer: langonginc <langonginc@yeah.net>
 pkgname=qtzff
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Zff game in QT5"
 arch=(any)
