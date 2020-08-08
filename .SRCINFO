@@ -1,0 +1,17 @@
+pkgbase = ruby-twitter-text-1
+	pkgdesc = Twitter text handling library
+	pkgver = 1.14.7
+	pkgrel = 1
+	url = http://twitter.com
+	arch = any
+	license = Apache
+	depends = ruby
+	depends = ruby-unf
+	provides = ruby-twitter-text=1.14.7
+	noextract = twitter-text-1.14.7.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/twitter-text-1.14.7.gem
+	sha1sums = cbc238cb3d27a49ab684ad3e2bdf688d98a7b0df
+
+pkgname = ruby-twitter-text-1
+
