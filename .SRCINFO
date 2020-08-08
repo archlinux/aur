@@ -1,7 +1,7 @@
 pkgbase = intel-parallel-studio-xe
 	pkgdesc = Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp
 	pkgver = 2020.2.254
-	pkgrel = 4
+	pkgrel = 5
 	url = http://software.intel.com/en-us/articles/non-commercial-software-download/
 	arch = x86_64
 	license = custom
@@ -27,6 +27,7 @@ pkgbase = intel-parallel-studio-xe
 	source = intel-ipp.conf
 	source = intel-tbb.conf
 	source = intel-tbb.install
+	source = zsh-fix.patch
 	source = EULA.txt
 	sha256sums = 4795c44374e8988b91da20ac8f13022d7d773461def4a26ca210a8694f69f133
 	sha256sums = 0704025fdfe40e4fce08e88b641128310c3a3b51332668aab60fb815b424f52b
@@ -41,6 +42,7 @@ pkgbase = intel-parallel-studio-xe
 	sha256sums = da6f41c2e002c9a793c75a18c8d1c85ef7ef5bf83a7a0a158ff144481491aac8
 	sha256sums = 5d3ac1ba31d7fc5795821d95b17956b0c977c8f3576b02f664f8ebf476213a43
 	sha256sums = fde83eb0071a5bd2887de127b56cc573a254e30131ec7b2d956987512c3e90c2
+	sha256sums = aa45c10e3a8b16509714a55927c91912451057abf2249432ef06c314bb03818a
 	sha256sums = 228ac25e147adb9b872e1a562e522d2fd48809ccae89b765112009896a6d55a5
 
 pkgname = intel-common-libs
