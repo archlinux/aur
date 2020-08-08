@@ -1,6 +1,6 @@
-# Maintainer: Michele Bovo <mbovo@gmx.com>
+# Maintainer: Mike Cuche <cuche@gmx.com>
 pkgname=keepassxc-wordlist-italian
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="Italian diceware wordlist for keepassxc"
 arch=('any')
@@ -8,19 +8,19 @@ url="https://www.taringamberini.com/it/diceware_it_IT/lista-di-parole-diceware-i
 license=('GPL')
 depends=('keepassxc>=2.2.0')
 source=(
-    "https://www.taringamberini.com/downloads/diceware_it_IT/lista-di-parole-diceware-in-italiano/3/word_list_diceware_it-IT-3.txt"
+    "https://www.taringamberini.com/downloads/diceware_it_IT/lista-di-parole-diceware-in-italiano/4/word_list_diceware_it-IT-4.txt"
     )
 sha256sums=(
-    "16c33bf4ba32ccd2918ca5155e6876ec0359a92f196095ec5756df65e0688ca6"
+    "b441559b64fb7041b9bbcecb3c43111f2523ec84e172670409f40c462eda0b93"
     )
 
 prepare() {
-    tail -n +18 word_list_diceware_it-IT-3.txt |
+    tail -n +18 word_list_diceware_it-IT-4.txt |
 	head -n 7776 |
-	sed 's/^[1-6]\+[ \t]\+\([^ \t]\+\).*$/\1/' > $srcdir/diceware-it-v3.wordlist
+	sed 's/^[1-6]\+[ \t]\+\([^ \t]\+\).*$/\1/' > $srcdir/diceware-it-v4.wordlist
 }
 
 package() {
-    install -Dm644 $srcdir/diceware-it-v3.wordlist \
-	$pkgdir/usr/share/keepassxc/wordlists/diceware-it-v3.wordlist
+    install -Dm644 $srcdir/diceware-it-v4.wordlist \
+	$pkgdir/usr/share/keepassxc/wordlists/diceware-it-v4.wordlist
 }
