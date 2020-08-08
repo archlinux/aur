@@ -1,11 +1,12 @@
 # Maintainer: IGI-111 <igi.222@gmail.com>
 pkgname=smith
-pkgver=0.3.9
+pkgver=2.0.0
 pkgrel=1
-makedepends=('rust' 'cargo')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Smith is a simple terminal-based text editor written in Rust."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://github.com/IGI-111/Smith"
 license=('MIT')
+makedepends=('cargo')
 
 build() {
     return 0
