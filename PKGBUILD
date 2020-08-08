@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/linuxdeepin/dde-daemon"
 license=('GPL3')
 depends=('deepin-desktop-schemas-git' 'ddcutil' 'deepin-api' 'gvfs' 'iso-codes' 'lsb-release'
-         'mobile-broadband-provider-info' 'deepin-polkit-agent'
+         'mobile-broadband-provider-info' 'deepin-polkit-agent-git'
          'deepin-polkit-agent-ext-gnomekeyring' 'udisks2' 'upower'
          'libxkbfile' 'accountsservice' 'deepin-desktop-base-git' 'bamf' 'pulseaudio'
          'org.freedesktop.secrets' 'noto-fonts' 'imwheel')
