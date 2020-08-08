@@ -1,16 +1,18 @@
 pkgbase = ndn-cxx
 	pkgdesc = Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications
 	pkgver = 0.7.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/named-data/ndn-cxx
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = python
-	makedepends = sqlite
-	makedepends = openssl>=1.0.2
+	makedepends = doxygen
+	makedepends = python-sphinx
 	depends = boost
+	depends = sqlite
+	depends = openssl>=1.0.2
 	optdepends = boost-stacktrace-backtrace
 	provides = ndn-cxx
 	conflicts = ndn-cxx
