@@ -1,7 +1,7 @@
 pkgbase = python-solid
 	pkgdesc = Python interface to the OpenSCAD declarative geometry language
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SolidCode/SolidPython
 	arch = any
 	license = GPL2
@@ -11,7 +11,7 @@ pkgbase = python-solid
 	depends = python-prettytable
 	depends = python-pypng
 	depends = python-regex
-	provides = solid
+	provides = python-solid
 	source = https://files.pythonhosted.org/packages/source/s/solidpython/solidpython-1.0.2.tar.gz
 	source = solid-1.0.2-README.rst::https://raw.githubusercontent.com/SolidCode/SolidPython/master/README.rst
 	sha256sums = b298ba3a2e9bd999fdb9cd95dc347aa3b92bce88c83d2e9527a77779ddef8940

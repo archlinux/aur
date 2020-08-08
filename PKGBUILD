@@ -4,7 +4,7 @@
 _pkgname=solid
 pkgname="python-${_pkgname}"
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Python interface to the OpenSCAD declarative geometry language'
 arch=('any')
 url='https://github.com/SolidCode/SolidPython'
@@ -12,7 +12,7 @@ _rawurl="https://raw.githubusercontent.com/${url##*github.com/}"
 license=('GPL2')
 depends=('python' 'python-euclid3' 'python-prettytable' 'python-pypng' 'python-regex')
 makedepends=('python-setuptools')
-provides=("${_pkgname}")
+provides=("${pkgname}")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}python/${_pkgname}python-${pkgver}.tar.gz"
         "${_pkgname}-${pkgver}-README.rst::${_rawurl}/master/README.rst")
 sha256sums=('b298ba3a2e9bd999fdb9cd95dc347aa3b92bce88c83d2e9527a77779ddef8940'
