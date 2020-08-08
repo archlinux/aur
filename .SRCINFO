@@ -1,0 +1,18 @@
+pkgbase = pingparsing
+	pkgdesc = Parser and transmitter for ping command
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/thombashi/pingparsing
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-humanreadable
+	depends = python-pyparsing
+	depends = python-subprocrunner
+	depends = python-typepy
+	source = https://files.pythonhosted.org/packages/source/p/pingparsing/pingparsing-1.0.3.tar.gz
+	sha256sums = a935023a5def02cf16e9e61990bcd895ea988677718bb242646c2db05150ae38
+
+pkgname = pingparsing
+
