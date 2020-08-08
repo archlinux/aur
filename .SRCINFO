@@ -8,7 +8,7 @@ pkgbase = alchitry-labs-bin
 	depends = java-environment>=8
 	provides = alchitry-labs
 	conflicts = alchitry-labs
-	source = alchitry-labs-bin-r1.1.6.tar.gz::https://cdn.alchitry.com/labs/alchitry-labs-1.1.6-linux.tgz
+	source = alchitry-labs-bin-1.1.6.tar.gz::https://cdn.alchitry.com/labs/alchitry-labs-1.1.6-linux.tgz
 	source = alchitry-labs.desktop
 	sha256sums = 52f63a8b2549c287dd5e7d6932d0e0098beaa5cf4c239cdd1d7cdb290016bb79
 	sha256sums = bd74a04852e5b7aa5b4764602900cadcccf7be22579a3e8090ee04a8f723c51b
