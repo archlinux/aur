@@ -14,7 +14,7 @@ license=('GPL3')
 # util-linux: rfkill used in device
 depends=('alsa-utils' 'bc' 'fontconfig' 'glib2' 'gdk-pixbuf2' 'gtk3' 'libcanberra-pulse' 'librsvg'
          'libxi' 'libxfixes' 'poppler-glib' 'util-linux' 'xcur2png' 'blur-effect')
-makedepends=('git' 'deepin-gettext-tools' 'golang-deepin-gir-git' 'golang-deepin-lib-git'
+makedepends=('git' 'deepin-gettext-tools-git' 'golang-deepin-gir-git' 'golang-deepin-lib-git'
              'golang-github-linuxdeepin-go-dbus-factory-git' 'golang-github-linuxdeepin-go-x11-client-git'
              'golang-github-nfnt-resize' 'bzr' 'go-pie')
 provides=('deepin-api')
