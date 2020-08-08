@@ -3,7 +3,7 @@
 
 pkgname="opentsdb"
 pkgver=2.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Distributed, scalable Time Series Database (TSDB) written on top of HBase"
 arch=("x86_64" "i686" "arm" "armv6h" "armv7h" "aarch64")
 url="http://opentsdb.net/"
