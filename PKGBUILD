@@ -8,10 +8,10 @@ pkgdesc='New control center for linux deepin'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/dde-control-center"
 license=('GPL3')
-depends=('desktop-file-utils' 'dtkwidget-git' 'deepin-account-faces' 'deepin-api-git' 'geoip' 'libpwquality'
-         'geoip-database' 'geoip-database-extra' 'deepin-daemon-git' 'startdde-git' 'networkmanager-qt'
-         'deepin-qt-dbus-factory-git' 'deepin-qt5integration-git' 'deepin-network-utils-git')
-makedepends=('git' 'cmake' 'deepin-dock' 'ninja' 'qt5-tools')
+depends=('dtkwidget-git' 'deepin-account-faces' 'libpwquality'
+         'deepin-daemon-git' 'startdde-git' 'networkmanager-qt'
+         'deepin-qt-dbus-factory-git' 'deepin-network-utils-git')
+makedepends=('git' 'cmake' 'ninja' 'qt5-tools')
 optdepends=('redshift: automatic color temperature support'
             'networkmanager-openconnect: for OpenConnect support'
             'networkmanager-openvpn: for OpenVPN support'
