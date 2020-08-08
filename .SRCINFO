@@ -1,5 +1,5 @@
 pkgbase = gsettings-xsettings-schemas
-	pkgdesc = GSettings schema of the XSETTINGS plugin from GNOME Settings Daemon
+	pkgdesc = Workaround for font rendering issues in Wayland clients, GSettings schema of the XSETTINGS plugin from GNOME Settings Daemon
 	pkgver = 3.36.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-settings-daemon
