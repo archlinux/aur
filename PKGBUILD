@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=emsdk
-pkgver=1.39.17
+pkgver=1.40.1
 pkgrel=1
 pkgdesc='The Emscripten SDK'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'cmake')
 source=("https://github.com/emscripten-core/emsdk/archive/${pkgver}.tar.gz"
         'emsdk.sh')
-sha256sums=('925dd5ca7dd783d0b367386e81847eaf680d54ae86017c4b5846dea951e17dc9'
+sha256sums=('81f620f17d81c18ab84c69ddfcabe813b2bf4250d69729b961ad57101a16c218'
             'd58940585324e582621a8ac5e28e913beee14a0b8e307f5413a6b0dcd6d2a139')
 
 package()
