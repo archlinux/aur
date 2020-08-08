@@ -1,6 +1,6 @@
 pkgbase = python-crate
 	pkgdesc = A Python client library for CrateDB
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/crate/crate-python
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-crate
 	depends = python
 	depends = python-urllib3
 	optdepends = python-sqlalchemy
-	source = https://files.pythonhosted.org/packages/source/c/crate/crate-0.24.0.tar.gz
-	sha256sums = 5e416ffeee74b839e297d60d930202c11fefe8855f4dae0a0a78628f434e1809
+	source = https://files.pythonhosted.org/packages/source/c/crate/crate-0.25.0.tar.gz
+	sha256sums = 23e525cfe83aa2e00c8c00bd2c4f7b3b7038bd65e27bd347d24491e42c42554a
 
 pkgname = python-crate
 
