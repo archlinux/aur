@@ -4,13 +4,13 @@
 _pkgroot=signal-desktop
 pkgname=${_pkgroot}-noto
 _pkgname=Signal-Desktop
-pkgver=1.34.4
+pkgver=1.34.5
 pkgrel=1
-pkgdesc="Electron application that links with Signal on mobile (Noto emoji version)"
+pkgdesc="Signal Private Messenger for Linux (Noto emoji version)"
 license=('GPL3')
 arch=('x86_64')
 url="https://github.com/Skycoder42/Signal-Desktop-Noto"
-depends=('electron' 'libvips')
+depends=('libvips')
 makedepends=('yarn' 'git' 'nodejs' 'npm' 'python')
 optdepends=("repkg: Automatically rebuild the package on dependency updates")
 provides=(signal signal-desktop signal-desktop-bin)
@@ -26,12 +26,12 @@ source=(
   "noto-emoji.patch"
   "$pkgname.rule"
 )
-sha512sums=('78637d183555f71131077bc6363fa9250195372bd1e1bb59eb8cccd14d913c4dcd3062580d98c04df79f41f808494662e6e0b7512d3a2cdd0a753cd2a7a990fe'
-            'c6ef4b73440bfc4e15114ffe6a7c8114e9d824fac08daafd5d13096e946c6fbb169a5d6cdbf1d34b956223ab14bd9bb9e173ae4d01025103d0ae61fc8de26189'
+sha512sums=('07c81b46791ab30e2ffa45f0bceb69dbf5a0029a6fa5da859c75917c012f97ed29154e19797d0ed962249516b9cf4365e54f6997d62c4069305f89eb54a86c01'
+            'bc70532c6591d15761df2d7eaf01875e77be756798728fb8fab442bb40e20893dac0148133f892de2db36395bf82c9d289440d64479b0d916d773570a2f7a39d'
             'a25698e39e2a3e88ce87e4b89bf222169c279a63359b576e05883682ee1553600b3e7afee5063aa901eaa8529a93d324b4e227d51d491a2054b559d9865ee6da'
             '1d0c276528b19b103a000d8640805971dc2b79b2ef785d3df2d31f610991b3404500ee7118d80da57332578132c04903fd9b9ff157144f2a0226a9efc73561a5'
             '42f57802fa91dafb6dbfb5a3f613c4c07df65e97f8da84c9a54292c97a4d170f8455461aac8f6f7819d1ffbea4bf6c28488f8950056ba988776d060be3f107dd'
-            '49f6388c970909967d314255eb1304958ebdcd41dbd42a2bfc7ec5c17b28ba257a0c1165ea4c34fa116d47734e146ac54f09e2108de4584f88dc66d1ea224251'
+            '59806cbc0fb4433b109e1969b874b11683b6b8070bc78a1f32efb8a2a2e2638c42035df226a05a0af150c501f074c8c657c9e142a0aa30300ab7768c7336caf2'
             '76856030f91b0b4af3d4113c6a991d0a25838c7b2f02e0819e7c683dd9f710d3e75a426dcba898e946f16829e58baaf45edcf4a29991eccd692429423c473ab2')
 
 prepare() {
@@ -44,9 +44,6 @@ prepare() {
   # See https://github.com/atom/node-spellchecker/issues/127
   sed -r 's#("spellchecker": ").*"#\1file:'"${srcdir}"'/613ff91dd2d9a5ee0e86be8a3682beecc4e94887.tar.gz"#' -i package.json
 
-  # Set system Electron version for ABI compatibility
-  sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron/version)'"#' -i package.json
-
   # Allow higher Node versions
   sed 's#"node": "#&>=#' -i package.json
  
@@ -56,7 +53,7 @@ prepare() {
   # https://github.com/sass/node-sass/issues/2716
   sed 's#"resolutions": {#"resolutions": {"node-sass/node-gyp": "^6.0.0",#' -i package.json
 
-  yarn install
+  yarn install --ignore-engines
 
   # Have SQLCipher dynamically link from OpenSSL
   # See https://github.com/signalapp/Signal-Desktop/issues/2634
@@ -73,20 +70,17 @@ build() {
   # See https://github.com/signalapp/Signal-Desktop/issues/2376
   yarn generate exec:build-protobuf exec:transpile concat copy:deps sass
 
-  yarn build-release
+  yarn build-release --dir
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
 
   install -d "${pkgdir}/usr/"{lib,bin}
-  cp -a release/linux-unpacked/resources "${pkgdir}/usr/lib/${_pkgroot}"
-  cat << EOF > "${pkgdir}"/usr/bin/${_pkgroot}
-#!/bin/sh
+  cp -a release/linux-unpacked "${pkgdir}/usr/lib/${pkgname}"
+  ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/"
 
-NODE_ENV=production electron /usr/lib/${_pkgroot}/app.asar "\$@"
-EOF
-  chmod +x "${pkgdir}/usr/bin/${_pkgroot}"
+  chmod u+s "${pkgdir}/usr/lib/signal-desktop/chrome-sandbox"
 
   install -Dm 644 "../${_pkgroot}.desktop" -t "${pkgdir}/usr/share/applications"
   for i in 16 24 32 48 64 128 256 512 1024; do

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Signal
-Comment=Electron application that links with Signal on mobile
+Comment=Signal Private Messenger for Linux
 Icon=signal-desktop
 Exec=signal-desktop --start-in-tray
 Terminal=false
