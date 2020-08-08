@@ -5,7 +5,7 @@ _pkgroot=signal-desktop
 pkgname=${_pkgroot}-noto
 _pkgname=Signal-Desktop
 pkgver=1.34.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Signal Private Messenger for Linux (Noto emoji version)"
 license=('GPL3')
 arch=('x86_64')
@@ -78,7 +78,7 @@ package() {
 
   install -d "${pkgdir}/usr/"{lib,bin}
   cp -a release/linux-unpacked "${pkgdir}/usr/lib/${pkgname}"
-  ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/"
+  ln -s "/usr/lib/${pkgname}/${_pkgroot}" "${pkgdir}/usr/bin/"
 
   chmod u+s "${pkgdir}/usr/lib/${pkgname}/chrome-sandbox"
 
