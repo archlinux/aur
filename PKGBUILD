@@ -1,7 +1,7 @@
 # Maintainer: imoutocon
 pkgname=uwu
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="uwu your terminal today!"
 arch=('x86_64')
 url="https://github.com/98WuG/uwu"
@@ -16,12 +16,12 @@ md5sums=("ad5d777b3b155b025f237f9a4546f994")
 validpgpkeys=()
 
 build() {
-	cd "$pkgname"
+	cd "$pkgname-$pkgver"
 	make
 }
 
 package() {
-	cd "$pkgname"
+	cd "$pkgname-$pkgver"
     mkdir -p $pkgdir/usr/bin
 	install -Dm755 uwu "$pkgdir/usr/bin/$pkgname"
 }

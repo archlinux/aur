@@ -1,7 +1,7 @@
 pkgbase = uwu
 	pkgdesc = uwu your terminal today!
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/98WuG/uwu
 	arch = x86_64
 	license = GPL
