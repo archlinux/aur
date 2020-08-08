@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd ${_pkgname}-${pkgver}
-  ./configure --prefix=/usr --libdir=/usr/lib --enable-gnomeui \
+  ./configure --prefix=/usr --libdir=/usr/lib --enable-native-gtk3ui \
     --enable-ethernet --disable-parsid
   make
 }
