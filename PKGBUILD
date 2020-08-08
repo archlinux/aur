@@ -3,22 +3,20 @@
 
 pkgname=yuna
 pkgver=1.4.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Anime player & list manager integrating AniList, Simkl, Crunchyroll, and Hidive'
 arch=(x86_64)
 url=https://yuna.moe
 license=(AGPL3)
 depends=('gtk3' 'libxss' 'nss')
-
 makedepends=('nodejs-lts-erbium' 'yarn' 'node-gyp' 'python2')
-
 options=(!strip)
 source=($pkgname-$pkgver.tar.gz::https://github.com/BeeeQueue/yuna/archive/v$pkgver.tar.gz
         electron-builder.patch
         yuna.desktop)
 sha512sums=('689a042c7fec1cc858b650e63805b89190617e0126f316e78b97366ffacc7dfe42ae5456b14af012e7d1f3336e8e5bd17008cf4bf8e7e7fc07f1237ba8f309a0'
             '893065948029906084e5a7f94982a666fc553b294d2a423dc1642d6c67b1755e1f6ac0304adf726ff26c6b1ce74fbb8fc76a8bd129527abb3d7529ca59ebf643'
-            '1853e9eac6b6a3b0734711d0803135902f118168603c795543de3296928293773d2be7a2aef05b045b737305d6cb50273e01843544de53d9caf06d0b4dc3e982')
+            'c6979b40c36a5a2763f1b56256a15e550a776ab75d99e64fb7772d91497ade0fed575b137fcfb8bc58c9729ad6460c9c012f7ebd57d342a2de4ba11886732277')
 
 prepare() {
   cd $pkgname-$pkgver
