@@ -1,7 +1,7 @@
 pkgbase = ndn-psync
 	pkgdesc = Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/named-data/PSync
 	arch = i686
 	arch = x86_64
