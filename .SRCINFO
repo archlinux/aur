@@ -1,7 +1,7 @@
 pkgbase = exact-image
 	pkgdesc = Fast image manipulation programs
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://exactcode.com/opensource/exactimage/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = exact-image
 	source = exact-image-types.patch
 	sha256sums = 0694c66be5dec41377acead475de69b3d7ffb42c702402f8b713f8b44cdc2791
 	sha256sums = 28509a0affb04336b16c8a8eddb19962a90f801743b76234e56e7d985df68293
-	sha256sums = 8b11e17a848a191db944dac497c29177ed8231ac6b78cc64933946cc2b0c718d
+	sha256sums = 2261015fbf19f48686f7c16c70295dbc71392c31426b469d45169d563dfa9e37
 	sha256sums = 1a1f35db1287981065367f95b1a7e5098ecf53576176ada2653a1dabfa94264d
 
 pkgname = exact-image
