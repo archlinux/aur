@@ -9,6 +9,7 @@ pkgbase = deepin-polkit-agent-git
 	makedepends = git
 	makedepends = qt5-tools
 	depends = deepin-qt-dbus-factory-git
+	depends = startdde-git
 	depends = polkit-qt5
 	provides = deepin-polkit-agent
 	conflicts = deepin-polkit-agent
