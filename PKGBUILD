@@ -3,7 +3,7 @@ _reponame=PSync
 _pkgname=ndn-psync
 pkgname=${_pkgname}-git
 pkgver=0.2.0.r8.g042dfb3
-pkgrel=6
+pkgrel=7
 # epoch=
 pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
 arch=('i686' 'x86_64')
@@ -48,7 +48,7 @@ build() {
 #}
 
 package() {
-	install -dm 755 "${pkgdir}/usr/share/doc/ndn-psync"
+  install -dm 755 "${pkgdir}/usr/share/doc/ndn-psync"
 
   cd "${srcdir}/${_reponame}"
   ./waf install --destdir="${pkgdir}"
