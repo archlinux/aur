@@ -4,7 +4,7 @@
 #               Lara Maia, Padfoot, Jorge Barroso, carstene1ns, Sebastian Lau
 
 pkgname=plymouth-git
-pkgver=0.9.4.r278.g60c8359
+pkgver=0.9.5.r6.g8176dc5
 pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support (Development version)"
 url="https://www.freedesktop.org/wiki/Software/Plymouth/"
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 
 depends=('libdrm' 'pango' 'systemd')
-makedepends=('git' 'docbook-xsl') # 'intltool'
+makedepends=('git' 'docbook-xsl')
 optdepends=('ttf-dejavu: For true type font support'
         'xf86-video-fbdev: Support special graphic cards on early startup'
         'cantarell-fonts: True Type support for BGRT theme')
@@ -44,7 +44,7 @@ source=("git+https://gitlab.freedesktop.org/plymouth/plymouth.git"
 sha256sums=('SKIP'
             '9bac679d2494d9b60b288be87021f1d7b85a9503ebbdce93d6e37c0fc07568ae'
             '7afa97d21444cbac7a6213edda09d9fa73ecbef1a6cea1e745f56669760c6120'
-            'b6193aefa4af4449a700bca25565ba13932ceaaf6ecd72ce1ff107f6c3466ad9'
+            '373ec20fe4c47e693a0c45cc06dd906e35dd1d70a85546bd1d571391de11763a'
             '0fabb974c1a301da000d5c4b9eea224ba508e577d3a6a798b67b94d4d54af255'
             '06b31999cf60f49e536c7a12bc1c4f75f2671feb848bf5ccb91a963147e2680d'
             '86d0230d9393c9d83eb7bb430e6b0fb5e3f32e78fcd30f3ecd4e6f3c30b18f71'
@@ -54,8 +54,8 @@ sha256sums=('SKIP'
             '3a46f7faced877a913506d59757f0af60ad3d5f0bc365c56ed7ecc7aef75c5eb'
             'ce3d62f4c5a1b5c0ccadd15406c7430251d1a42b232721bfbfc747da1b13e3ff'
             '2a80e2cad8de428358647677afa166219589d3338c5f94838146c804a29e2769'
-            'c7cb6fc10bc04afc8a661de4de85ebd3974bd8df695ad6043e4c9af5441bab49'
-            '0bb07ff5efa4d7b9afcedeffc35496edb7664c2a0a8030bbdc7b368c5030638d'
+            '897c2f1c9ec5e369dd11cba3ce6f5cb3d3d9a863a2016b6fa6bcc7df202cc030'
+            '4b81e5bd380aa0b61d12925b498c5d307d78484feec02254f3fcc6c667eed7f2'
             'a1766e3fae000e5158a23b5c01d2c615894e6c3f9923877ccc5ca1bcb36351fa'
             '74908ba59cea53c6a9ab67bb6dec1de1616f3851a0fd89bb3c157a1c54e6633a')
 
