@@ -7,8 +7,7 @@ pkgdesc="starter of deepin desktop environment"
 arch=('x86_64')
 url="https://github.com/linuxdeepin/startdde"
 license=('GPL3')
-depends=('deepin-daemon-git' 'deepin-dock-git' 'deepin-control-center-git' 'deepin-launcher-git' 'deepin-polkit-agent-git' 'deepin-file-manager-git'
-         'deepin-session-shell-git' 'deepin-session-ui-git' 'libgnome-keyring')
+depends=('libgnome-keyring')
 makedepends=('cmake' 'coffeescript' 'golang-github-linuxdeepin-go-dbus-factory-git' 'golang-deepin-gir-git'
              'golang-deepin-lib-git' 'deepin-api-git' 'go' 'git' 'jq'
              'golang-golang-x-net' 'golang-github-linuxdeepin-go-x11-client-git')
