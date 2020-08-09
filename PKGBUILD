@@ -2,13 +2,13 @@
 
 pkgname=controlloid-server-git
 pkgver=r23.1137a81
-pkgrel=1
+pkgrel=2
 pkgdesc="The server for the Android app Controlloid."
 arch=('x86_64' 'i686' 'armv6' 'armv7' 'aarch64')
 url="https://github.com/experiment322/controlloid-server"
 license=('GPLv3')
 groups=()
-depends=('websocketd' 'iproute2')
+depends=('websocketd-git' 'iproute2')
 makedepends=('make' 'git' 'gcc' 'cmake')
 optdepends=()
 install="controlloid-server.install"
