@@ -1,7 +1,8 @@
 # Maintainer: Tobias Borgert <tobias.borgert@gmail.com>
 # A lot of thanks go to the previous maintainer, Kartik Mohta, for his work.
+# Thank you to leuko for pointing out new build/run dependencies for rviz_ogre_vendor and rviz2.
 pkgname=ros2-arch-deps
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="Dependencies for building ROS2 on Arch"
 url="https://index.ros.org/doc/ros2/"
@@ -17,6 +18,7 @@ depends=('asio'
          'glu'
          'hdf5'
          'libxaw'
+         'libxrandr'
          'log4cxx'
          'opencv'
          'poco'
@@ -33,6 +35,7 @@ depends=('asio'
          'python-sip'
          'python-yaml'
          'qt5-base' 
+         'qt5-svg'
          'sip' 
          'tinyxml'
          'tinyxml2'
