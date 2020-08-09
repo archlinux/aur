@@ -10,8 +10,8 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='8a8b000d682a7108463c5c74bc876c5658d9de4a' # git rev-parse v${pkgver}
-pkgver=245.7
+_tag='7fb880ddf101b871f68aae0d86db652e2c13c5db' # git rev-parse v${pkgver}
+pkgver=246.1
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -37,7 +37,6 @@ validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <
 source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
         "git+https://github.com/systemd/systemd#tag=v${pkgver%.*}?signed"
         '0001-Use-Arch-Linux-device-access-groups.patch'
-        '0002-make-homed-userdbd-repart-services-installable.patch'
         'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev'
@@ -58,7 +57,6 @@ source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
 sha512sums=('SKIP'
             'SKIP'
             'e38c7c422c82953f9c2476a5ab8009d614cbec839e4088bff5db7698ddc84e3d8ed64f32ed323f57b1913c5c9703546f794996cb415ed7cdda930b627962a3c4'
-            '85d11bbbb5c10016e4a67eec051315e2e292939844f260bf698018c5bd1c516c28444f635eb15832a23e26891c4beda14bacfa57fdeda45c00f1b653abe3b123'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
             'f1f0bc599eb73b96f81e5413a55617ab82978d057dc0cabf226d225bb836a967fe13b84c4f24f64c074b6568026ab81d457512ff20a5918892c47a3a603eaa6e'
             'a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a'
@@ -78,8 +76,6 @@ sha512sums=('SKIP'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
 _backports=(
-  # systemd-resolved: use hostname for certificate validation in DoT
-  'eec394f10bbfcc3d2fc8504ad8ff5be44231abd5'
 )
 
 _reverts=(
@@ -103,9 +99,6 @@ prepare() {
 
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
   patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
-
-  # Make homed/userdbd/repart services installable (to allow uninstalling)
-  patch -Np1 -i ../0002-make-homed-userdbd-repart-services-installable.patch
 }
 
 build() {
@@ -218,10 +211,10 @@ package_systemd-selinux() {
   mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs
 
   # manpages shipped with systemd-sysvcompat
-  rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,runlevel,shutdown,telinit}.8
+  rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8
 
   # executable (symlinks) shipped with systemd-sysvcompat
-  rm "$pkgdir"/usr/bin/{halt,init,poweroff,reboot,runlevel,shutdown,telinit}
+  rm "$pkgdir"/usr/bin/{halt,init,poweroff,reboot,shutdown}
 
   # files shipped with systemd-resolvconf
   rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
@@ -232,7 +225,7 @@ package_systemd-selinux() {
     -e '/^C \/etc\/issue/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
 
   # add back tmpfiles.d/legacy.conf, normally omitted without sysv-compat
-  install -m0644 ${pkgbase/-selinux}-stable/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
+  install -m0644 "${pkgbase/-selinux}-stable/tmpfiles.d/legacy.conf" "$pkgdir"/usr/lib/tmpfiles.d
 
   # ship default policy to leave services disabled
   echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
@@ -265,7 +258,7 @@ package_systemd-selinux() {
 
 package_systemd-libs-selinux() {
   pkgdesc='systemd client libraries with SELinux support'
-  depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz' 'libselinux')
+  depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz' 'zstd' 'libselinux')
   license=('LGPL2.1')
   provides=('libsystemd' 'libsystemd.so' 'libudev.so'
             'libsystemd-selinux'
@@ -300,11 +293,11 @@ package_systemd-sysvcompat-selinux() {
             "selinux-systemd-sysvcompat=${pkgver}-${pkgrel}")
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
-    build/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
+    build/man/{halt,poweroff,reboot,shutdown}.8
 
   install -d -m0755 "$pkgdir"/usr/bin
   ln -s ../lib/systemd/systemd "$pkgdir"/usr/bin/init
-  for tool in runlevel reboot shutdown poweroff halt telinit; do
+  for tool in halt poweroff reboot shutdown; do
     ln -s systemctl "$pkgdir"/usr/bin/$tool
   done
 }
