@@ -4,7 +4,7 @@
 
 pkgname=bitwarden_rs-postgresql
 _pkgbase=bitwarden_rs
-pkgver=1.16.2
+pkgver=1.16.3
 pkgrel=1
 pkgdesc="An unofficial lightweight implementation of the bitwarden-server using rust and postgresql. Does NOT include the web-interface."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ source=("https://github.com/dani-garcia/bitwarden_rs/archive/$pkgver.tar.gz"
 	"${_pkgbase}.sysusers.conf"
 	"${_pkgbase}.tmpfiles.conf"
 	"0001-Disable-Vault.patch")
-sha512sums=('5fa2c7a430a85013f49d25a15400ef7b723a18cd4dcf85aef479788ebe08213be814c68217ae7cffa78e5928cdb89dd2541813fc3983b41ba06ce510191bde7c'
+sha512sums=('5c2eb9dfc249860b8e32678c510016a7c4b2abfa363d7c008801b79e02e39f305b36c7e2e5e492742dad7111d2e12bc37b59fa649bcc19a4d8429b2a3aa09162'
             '6bb58fc3d7e1869aafb985aa5fd26683e730ca6b93ddfba6a907aa2b1ca31b1b4280dbfff8c875668d6890e7198f4f0ac39c6f9be283fbfba347f85b987a11f9'
             '60a406c8fea4bb651974b3fd386f66a0fcf73bfcc29bffe171b92134e2e81b6374ac6be879eb420208ecd77911b7d157db587510347e56ecb72aec34ac90fbe6'
             '15b00b0dc9122f98ce8d7b55668fdfbb2e0387563e7d9ad6c0ebc73b75e46e1ccdb3a2186a453795a1b3e2d45358ff5a8076d5cf30319ab2c21539d20cff81c6'
