@@ -2,7 +2,7 @@
 # Contributor: Marcel O'Neil <marcel@marceloneil.com>
 
 pkgname=sia-daemon
-pkgver=1.4.11
+pkgver=1.5.0
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc="Blockchain-based marketplace for file storage"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('glibc')
 source=("https://sia.tech/releases/Sia-${_pkgver}-linux-amd64.zip"
 	"https://gitlab.com/NebulousLabs/Sia/-/raw/master/LICENSE")
-sha512sums=('6a3a78360428d526cfdb87ed2ff336aaf0d42fdd75da23e88c1603b3d8c21c80fa3947eadee33e2cf27757c73503c48d080329c6447094d83480d6c908a0de73'
+sha512sums=('6d20bd5206f2f0520751ac2afec0def423c9df546b63f595b5cc26ce147e161348ca79ba8ed3ff072b539ba955cc2589a0606f8e6f8bcc50757dc604b14a724a'
             'f2eb222fff7fe71e37e2e60ed34630fbcf5464a8b05de415b346002f8b33b0a2735027649d595280f026801ba26978442b743abc54dc5451c7f8396979f5b1ae')
 
 package() {
