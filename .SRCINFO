@@ -1,17 +1,22 @@
 pkgbase = mon2cam-git
 	pkgdesc = Workaround for multi-monitor Discord screensharing
-	pkgver = r32.8117a97
+	pkgver = r43.e0a319b
 	pkgrel = 1
 	url = https://github.com/ShayBox/Mon2Cam
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = deno
+	depends = deno
 	depends = xorg-xrandr
 	depends = ffmpeg
 	depends = v4l2loopback-dkms
+	optdepends = wf-recorder: wlroots compositor (wayland) support
 	provides = mon2cam
 	source = git+https://github.com/ShayBox/Mon2Cam.git
-	md5sums = SKIP
+	source = shebang
+	sha256sums = SKIP
+	sha256sums = 1174500c3fa06a04215189c9a9b6e334456c97fc962cc63c4ad6eee6bb215e98
 
 pkgname = mon2cam-git
 

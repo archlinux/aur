@@ -1,0 +1,1 @@
+#!/usr/bin/env -S deno run --unstable --allow-run --allow-read --allow-env
