@@ -1,6 +1,6 @@
 pkgbase = vopono-git
 	pkgdesc = Run applications through VPN connections in network namespaces
-	pkgver = r59.4a0daab
+	pkgver = r86.3c4709d
 	pkgrel = 1
 	url = https://github.com/jamesmcm/vopono
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = vopono-git
 	depends = findutils
 	optdepends = openvpn: for OpenVPN connections
 	optdepends = wireguard-tools: for Wireguard connections
+	optdepends = shadowsocks-libev: for Shadowsocks support (Mullvad)
 	provides = vopono
 	conflicts = vopono
 	source = git+https://github.com/jamesmcm/vopono
