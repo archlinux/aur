@@ -10,8 +10,8 @@ pkgbase = i3session
 	depends = python-i3-py
 	depends = i3-wm
 	depends = xorg-xprop
-	source = git://github.com/TheCynicalTeam/i3session.git
-	md5sums = SKIP
+	source = https://github.com/TheCynicalTeam/i3session/archive/2020.6.27-1.tar.gz
+	sha256sums = SKIP
 
 pkgname = i3session
 
