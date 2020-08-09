@@ -1,0 +1,17 @@
+pkgbase = pyinstaller-hooks-contrib
+	pkgdesc = Community maintained hooks for PyInstaller
+	pkgver = 2020.7
+	pkgrel = 1
+	url = https://github.com/pyinstaller/pyinstaller-hooks-contrib
+	arch = any
+	license = GPL
+	license = APACHE
+	depends = towncrier
+	depends = python-setuptools
+	depends = python-wheel
+	depends = twine
+	source = https://pypi.org/packages/source/p/pyinstaller-hooks-contrib/pyinstaller-hooks-contrib-2020.7.tar.gz
+	sha256sums = 74936d044f319cd7a9dca322b46a818fcb6e2af1c67af62e8a6a3121eb2863d2
+
+pkgname = pyinstaller-hooks-contrib
+
