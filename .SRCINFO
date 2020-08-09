@@ -1,6 +1,6 @@
 pkgbase = blender-git
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 2.91.r98410.g21810282924
+	pkgver = 2.91.r98801.gb522e834ec3
 	pkgrel = 1
 	url = https://blender.org/
 	arch = i686
@@ -50,7 +50,7 @@ pkgbase = blender-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a
-	sha256sums = 43581c10e325cef3eb55a1a274c15a00d948833af14398fde831a2ba9791a6ea
+	sha256sums = dd04c10b6a9c78849608eebfd1f2a5f2a280b7413a24a7f0337d67bceab90cb4
 
 pkgname = blender-git
 
