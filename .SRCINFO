@@ -1,7 +1,7 @@
 pkgbase = libzrtpcpp
 	pkgdesc = A C++ implementation of Phil Zimmermann's ZRTP specification
 	pkgver = 4.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wernerd/ZRTPCPP
 	arch = i686
 	arch = x86_64
