@@ -1,0 +1,23 @@
+pkgbase = vivaldi-codecs-ffmpeg-extra-bin-arm
+	pkgdesc = Prebuilt ffmpeg-codecs package for Vivaldi for arm
+	pkgver = 84.0.4147.105
+	pkgrel = 1
+	url = https://packages.ubuntu.com/bionic/arm64/chromium-codecs-ffmpeg-extra/download
+	install = vivaldi-codecs-ffmpeg-extra-bin.install
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = LGPL
+	depends = vivaldi
+	provides = vivaldi-ffmpeg-codecs
+	source = vivaldi-codecs-ffmpeg-extra-bin.install
+	sha256sums = c48d913c6080dbc6477d1d0a099c8ef5eda3959ed4abd6311dc93a338ce0a012
+	source_armv6h = http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_84.0.4147.105-0ubuntu0.18.04.1_armhf.deb
+	sha256sums_armv6h = 53f466657525f61ed48827af4774bc55617dab03d3cab292ed21280eee694855
+	source_armv7h = http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_84.0.4147.105-0ubuntu0.18.04.1_armhf.deb
+	sha256sums_armv7h = 53f466657525f61ed48827af4774bc55617dab03d3cab292ed21280eee694855
+	source_aarch64 = http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_84.0.4147.105-0ubuntu0.18.04.1_arm64.deb
+	sha256sums_aarch64 = 2b0a4b05dc8a1daa640ecc310b8618e5cfbbb62d0934c1db2bcaf51f0871c526
+
+pkgname = vivaldi-codecs-ffmpeg-extra-bin-arm
+
