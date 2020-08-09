@@ -17,7 +17,7 @@ md5sums=('24bcaa5ee64083e9da76ee3cb68c90a3')
 
 prepare() {
   sed 's/lib64/lib/g' -i ZRTPCPP-${pkgver}/CMakeLists.txt
-  git -C "$srcdir/ZRTPCPP-${pkgver}" apply -v "${srcdir}/.."/*patch
+  git -C "${srcdir}/ZRTPCPP-${pkgver}" apply -v "${srcdir}/.."/*patch || git apply -v -p2 ../*.patch
 }
 
 build() {
