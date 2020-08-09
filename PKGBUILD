@@ -2,7 +2,7 @@
 
 pkgname=sirius
 _PkgName=SIRIUS
-pkgver=6.5.4
+pkgver=6.5.6
 pkgrel=1
 pkgdesc="Domain specific library for electronic structure calculations"
 arch=('x86_64')
@@ -12,15 +12,14 @@ depends=('libvdwxc' 'libxc' 'spglib' 'elpa' 'spfft' 'gsl' 'hdf5')
 makedepends=('cmake')
 optdepends=('cuda: Linear algebra on GPU')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5f731926b882a567d117afa5e0ed33291f1db887fce52f371ba51f014209b85d')
+sha256sums=('c8120100bde4477545eae489ea7f9140d264a3f88696ec92728616d78f214cae')
 options=(!emptydirs)
 
 prepare() {
   mkdir "$srcdir/build"
   
   # Checking if nvcc is in PATH
-  if [[ $( echo -n $( which nvcc) | tail -c 4 ) == nvcc && \
-      -e /usr/lib/libmagma.so ]]
+  if [[ $( echo -n $( which nvcc) | tail -c 4 ) == nvcc ]]
   then
       export _ACC=ON
       export LDFLAGS="$LDFLAGS -L/opt/cuda/lib64"
