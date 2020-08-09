@@ -1,8 +1,8 @@
 pkgbase = plasma-pk-updates-git
 	pkgdesc = Plasma5 applet for software updates using PackageKit
-	pkgver = r167.4d6cfae
+	pkgver = r174.175927e
 	pkgrel = 1
-	url = https://quickgit.kde.org/?p=plasma-pk-updates.git
+	url = https://invent.kde.org/system/plasma-pk-updates.git
 	arch = any
 	license = GPL
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = plasma-pk-updates-git
 	depends = kdoctools
 	depends = kdesignerplugin
 	depends = packagekit-qt5
-	source = git://anongit.kde.org/plasma-pk-updates.git
+	source = git+https://invent.kde.org/system/plasma-pk-updates.git
 	md5sums = SKIP
 
 pkgname = plasma-pk-updates-git
