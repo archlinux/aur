@@ -11,17 +11,20 @@ groups=()
 depends=('websocketd' 'iproute2')
 makedepends=('make' 'git' 'gcc' 'cmake')
 optdepends=()
+install="controlloid-server.install"
 provides=('controlloid-server')
 source=("controlloid-server::git+https://github.com/experiment322/controlloid-server"
         "controlloid-server.sh"
         "controlloid-server.service"
         "controlloid.sysusers"
-        "77-controlloid-uinput.rules")
+        "77-controlloid-uinput.rules"
+        "controlloid-server.install")
 md5sums=('SKIP'
         '533ff33f7024a3efbf27584e01a86c79'
         '32f432c01af51b24a5382a5a0718dc61'
         '75a9fb6c38015c6da123e7633a216ec5'
-        '76b1380215f173064b7c89553394c372')
+        '76b1380215f173064b7c89553394c372'
+        '68ceff54b22691e3e8ed18dc4c9062e9')
 
 pkgver() {
 	cd "$srcdir/controlloid-server"

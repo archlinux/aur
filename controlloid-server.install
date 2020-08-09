@@ -1,0 +1,8 @@
+post_install() {
+    echo "Don't forget to add yourself to the 'controlloid' group!"
+}
+
+post_remove() {
+    echo "Removing the 'controlloid' group..."
+    groupdel controlloid
+}

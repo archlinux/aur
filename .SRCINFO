@@ -3,6 +3,7 @@ pkgbase = controlloid-server-git
 	pkgver = r23.1137a81
 	pkgrel = 1
 	url = https://github.com/experiment322/controlloid-server
+	install = controlloid-server.install
 	arch = x86_64
 	arch = i686
 	arch = armv6
@@ -21,11 +22,13 @@ pkgbase = controlloid-server-git
 	source = controlloid-server.service
 	source = controlloid.sysusers
 	source = 77-controlloid-uinput.rules
+	source = controlloid-server.install
 	md5sums = SKIP
 	md5sums = 533ff33f7024a3efbf27584e01a86c79
 	md5sums = 32f432c01af51b24a5382a5a0718dc61
 	md5sums = 75a9fb6c38015c6da123e7633a216ec5
 	md5sums = 76b1380215f173064b7c89553394c372
+	md5sums = 68ceff54b22691e3e8ed18dc4c9062e9
 
 pkgname = controlloid-server-git
 
