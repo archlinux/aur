@@ -1,7 +1,7 @@
 pkgbase = activinspire
 	pkgdesc = Presentation Software for use with Promethean Hardware products.
 	pkgver = 2.19.69200
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.prometheanworld.com/product/activinspire
 	arch = x86_64
 	license = unknown
@@ -17,6 +17,7 @@ pkgbase = activinspire
 	depends = libxcursor
 	depends = libxtst
 	depends = dbus
+	depends = icu60
 	optdepends = activdriver: Driver for Promethean hardware
 	optdepends = activtools: Tools for Promethean hardware, e.g. calibration or systray monitor
 	source = http://activsoftware.co.uk/linux/repos/ubuntu/pool/non-oss/a/activinspire/activinspire_2.19.69200.1804-1.amd64_amd64.deb

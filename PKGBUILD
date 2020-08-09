@@ -5,12 +5,12 @@
 
 pkgname=activinspire
 pkgver=2.19.69200
-pkgrel=1
+pkgrel=2
 pkgdesc="Presentation Software for use with Promethean Hardware products."
 arch=('x86_64')
 url="https://support.prometheanworld.com/product/activinspire"
 license=('unknown')
-depends=(libxmu gst-plugins-base libjpeg-turbo libxrender libgl fontconfig openssl-1.0 nss libxcomposite libxcursor libxtst dbus)
+depends=(libxmu gst-plugins-base libjpeg-turbo libxrender libgl fontconfig openssl-1.0 nss libxcomposite libxcursor libxtst dbus icu60)
 optdepends=('activdriver: Driver for Promethean hardware'
             'activtools: Tools for Promethean hardware, e.g. calibration or systray monitor')
 source=("http://activsoftware.co.uk/linux/repos/ubuntu/pool/non-oss/a/activinspire/activinspire_${pkgver}.1804-1.amd64_amd64.deb"
