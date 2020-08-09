@@ -1,6 +1,6 @@
 pkgbase = nextcloud-desktop-git
 	pkgdesc = Nextcloud desktop client
-	pkgver = 2.6.1.rc1.r2.ga6bb84080
+	pkgver = 2.6.5
 	pkgrel = 1
 	url = https://nextcloud.com/
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = nextcloud-desktop-git
 	conflicts = nextcloud-client
 	conflicts = nextcloud-client-git
 	conflicts = nextcloud-desktop
-	source = nextcloud-desktop-git::git+https://github.com/nextcloud/desktop.git#branch=stable-2.6
+	source = https://github.com/nextcloud/desktop/archive/v2.6.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = nextcloud-desktop-git

@@ -1,7 +1,7 @@
 # Maintainer: Tyler Dence <tyzoid@archlinux32.org>
 
 pkgname=nextcloud-desktop-git
-pkgver=2.6.1.rc1.r2.ga6bb84080
+pkgver=2.6.5
 pkgrel=1
 pkgdesc='Nextcloud desktop client'
 arch=('i686' 'x86_64')
@@ -15,16 +15,11 @@ optdepends=(
 )
 conflicts=('mirall-git' 'owncloud-client' 'owncloud-client-ngs' 'owncloud-client-git' 'nextcloud-client' 'nextcloud-client-git' 'nextcloud-desktop')
 provides=('nextcloud-client')
-source=("${pkgname}::git+https://github.com/nextcloud/desktop.git#branch=stable-2.6")
+source=("https://github.com/nextcloud/desktop/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
-pkgver() {
-	cd "$pkgname";
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//';
-}
-
 build() {
-	cd "${srcdir}/${pkgname}";
+	cd "${srcdir}/desktop-${pkgver}";
 
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
@@ -43,6 +38,6 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}";
+	cd "${srcdir}/desktop-${pkgver}";
 	make DESTDIR="${pkgdir}" install
 }
