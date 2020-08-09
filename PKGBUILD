@@ -2,13 +2,13 @@
 
 pkgname=hacker-typer
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A program that mimics the website hackertyper.com on your terminal."
 arch=('any')
 url="https://github.com/mads256h/hacker-typer"
 license=('GPL3')
 depends=('ncurses')
-makedepends=('cmake' 'gcc')
+makedepends=('cmake')
 source=("https://github.com/mads256h/hacker-typer/archive/v${pkgver}.tar.gz")
 sha256sums=('1b664345f90f54821d27656ed6cb27c5e6c315e0f3abf2753a09b9289af85da9')
 
