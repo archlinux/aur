@@ -1,6 +1,6 @@
 pkgbase = flashfocus-git
 	pkgdesc = Simple Xorg window focus animations for tiling window managers
-	pkgver = v0.3.6.r52.g519f89a
+	pkgver = v2.2.2.r0.gbd181ab
 	pkgrel = 1
 	url = https://www.github.com/fennerm/flashfocus
 	arch = any
