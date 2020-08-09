@@ -2,7 +2,7 @@
 
 _pkgname=pytest-md-report
 pkgname=python-${_pkgname}
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc='pytest plugin to create a report in Markdown table format'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-pathvalidate' 'python-pytablewriter' 'python-pytest' 'python-typepy')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('4e353c1a56d968f983a72b86bf9406427a2da7dc05af2a2e166feb329bbd55c8')
+sha256sums=('d5a4a562ae34fbe739139917bcbebd662b444987f498cf5bd46d1b4b04799606')
 
 build() {
   cd "${_pkgname}-${pkgver}"
