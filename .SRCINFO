@@ -1,6 +1,6 @@
 pkgbase = janus-gateway
 	pkgdesc = An open source, general purpose, WebRTC server
-	pkgver = 0.10.3
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://janus.conf.meetecho.com
 	arch = x86_64
@@ -61,10 +61,10 @@ pkgbase = janus-gateway
 	backup = etc/janus/janus.transport.pfunix.jcfg
 	backup = etc/janus/janus.transport.rabbitmq.jcfg
 	backup = etc/janus/janus.transport.websockets.jcfg
-	source = janus-gateway-0.10.3.tar.gz::https://github.com/meetecho/janus-gateway/archive/v0.10.3.tar.gz
+	source = janus-gateway-0.10.4.tar.gz::https://github.com/meetecho/janus-gateway/archive/v0.10.4.tar.gz
 	source = janus.service
 	source = janus.conf
-	sha256sums = 7f8c58e5c5ed94821ce877169da90c00e4adf81920ed383a2e0ec241960d121b
+	sha256sums = 9064479e59bf799dbe815a770d6ae629185294b5ee41dea1b36c62c20d940b4f
 	sha256sums = cf2b6c8fdcd60ccfa179c4cd207a23ee7edfee90588c2c3847aa6cda418bed7f
 	sha256sums = aa2480ba28a049ac3571159583736216e1a5db145c0df672d4ff0a2fc7d9789f
 
