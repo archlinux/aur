@@ -3,7 +3,7 @@
 # Contributor: FabioLolix <fabio.lolix@gmail.com>
 
 pkgname=liquidctl
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Cross-platform tool and drivers for liquid coolers and other devices"
 url="https://github.com/jonasmalacofilho/liquidctl"
@@ -12,7 +12,7 @@ makedepends=('python-pytest')
 license=('GPL3')
 arch=('any')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b35e6f297e67f9e145794bb57b88c626ef2bfd97e7fbb5b098f3dbf9ae11213e')
+sha256sums=('59a3bc65b3f3e71a5714224401fe6e95dfdee591a1d6f4392bc4e6d6ad72ff8d')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -32,6 +32,6 @@ package() {
 
 check() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	pytest -k "not test_backwards_compatibility_11"
+	pytest
 	python -m liquidctl.cli list --verbose
 }
