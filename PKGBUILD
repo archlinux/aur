@@ -9,7 +9,7 @@ url="https://github.com/TheCynicalTeam/$pkgname"
 license=('GNU General Public License v3.0')
 depends=('python-pyqt5' 'multimonitorlock' 'gtk-engine-murrine')
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('1bdfd110650887c90636051c9cf64c4a22336cbd129981693ca9084bf9bd55f6')
+sha256sums=('5f30f85115cd8d1970ff1b6ff1b540a809edb205a6e7deb24ed5b9746f641696')
 
 package() {
   cp -a $srcdir/$pkgname-$pkgver-$pkgrel/etc $pkgdir/etc
