@@ -1,13 +1,13 @@
 pkgbase = hacker-typer
 	pkgdesc = A program that mimics the website hackertyper.com on your terminal.
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mads256h/hacker-typer
 	arch = any
 	license = GPL3
 	makedepends = cmake
 	depends = ncurses
-	source = https://github.com/mads256h/hacker-typer/archive/v1.2.tar.gz
+	source = hacker-typer-1.2.tar.gz::https://github.com/mads256h/hacker-typer/archive/v1.2.tar.gz
 	sha256sums = 1b664345f90f54821d27656ed6cb27c5e6c315e0f3abf2753a09b9289af85da9
 
 pkgname = hacker-typer
