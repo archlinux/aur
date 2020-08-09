@@ -39,4 +39,3 @@ package() {
 
     install -Dm0644 "${srcdir}/nginx-module-vts-$pkgver"/LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
-
