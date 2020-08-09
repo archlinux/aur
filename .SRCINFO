@@ -1,0 +1,22 @@
+pkgbase = tijolo
+	pkgdesc = Lightweight, keyboard-oriented IDE for the masses
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hugopl/tijolo
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = crystal>=0.35.1
+	makedepends = shards>=0.11.0
+	depends = gc
+	depends = libevent
+	depends = pcre
+	depends = gtksourceview4
+	depends = nerd-fonts-jetbrains-mono
+	depends = libgit2
+	conflicts = tijolo-git
+	source = tijolo-0.1.0.tar.gz::https://github.com/hugopl/tijolo/archive/v0.1.0.tar.gz
+	sha256sums = c5f978c4fcce99bc97af58fb634f6699102b2eddd2d3816adaaeb315c863c9c8
+
+pkgname = tijolo
+
