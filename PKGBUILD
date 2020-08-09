@@ -19,7 +19,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-develop-git
-pkgver=2.91.r98402.g8c10e56331d
+pkgver=2.91.r98801.gb522e834ec3
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
@@ -54,7 +54,7 @@ sha256sums=('SKIP'
             'SKIP'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
             '12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a'
-            '43581c10e325cef3eb55a1a274c15a00d948833af14398fde831a2ba9791a6ea')
+            'dd04c10b6a9c78849608eebfd1f2a5f2a280b7413a24a7f0337d67bceab90cb4')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
