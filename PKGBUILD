@@ -1,50 +1,49 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
-maintaner="Milkii Brewster <milkii on Freenode IRC>"
-_pkgname="bschaffl.lv2"
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+_name="BSchaffl"
+_pkgname="${_name,,}.lv2"
+_plugin_uri="https://www.jahnichen.de/plugins/lv2/${_name}"
 pkgname="${_pkgname}-git"
-pkgdesc="Pattern-controlled MIDI amp & time stretch plugin to produce shuffle / swing effects. (Experimental)"
-pkgver=r222.97bfd40
+pkgdesc="Pattern-controlled MIDI amp & time stretch plugin to produce shuffle / swing effects (git version)"
+pkgver=0.3.r0.g2ca653c
 pkgrel=1
-epoch=
 arch=(x86_64)
-url="https://github.com/sjaehn/BJumblr"
-license=(GPL)
-groups=()
-depends=('git' 'lv2' 'libsndfile' 'cairo' 'pkg-config')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("bschaffl.lv2::git+https://github.com/sjaehn/BSchaffl")
-noextract=()
+url="https://github.com/sjaehn/BSchaffl"
+license=('GPL3')
+groups=('lv2-plugins' 'pro-audio')
+depends=('cairo' 'gcc-libs' 'glibc' 'libx11')
+makedepends=('git' 'lv2')
+checkdepends=('lv2lint')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+https://github.com/sjaehn/${_name}")
 md5sums=('SKIP')
 
+
 pkgver() {
-  cd "$_pkgname"
+  cd "${srcdir}/${_pkgname}"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
-prepare() {
-	cd "$_pkgname"
+build() {
+  cd "${srcdir}/${_pkgname}"
+  make
 }
 
-build() 
-{
-	cd "$_pkgname"
-	# ./configure --prefix=/usr
-	make
+check() {
+  cd "${srcdir}/${_pkgname}"
+  echo lv2lint -Mpack -I "${_name}.lv2/" "${_plugin_uri}"
+  lv2lint -Mpack -I "${_name}.lv2/" "${_plugin_uri}"
 }
 
 package() {
-	cd "$_pkgname"
-	make PREFIX="/usr" DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${_pkgname}"
+  make PREFIX="/usr" DESTDIR="$pkgdir/" install
+  install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  # remove useless license file
+  find "${pkgdir}/usr/lib/" -type f -iname "*LICENSE*" -delete
 }
