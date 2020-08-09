@@ -1,0 +1,15 @@
+[Unit]
+Description=The Minecraft Server
+After=network-online.target
+
+[Service]
+Type=simple
+User=minecraft-bedrock
+Group=minecraft-bedrock
+WorkingDirectory=/opt/minecraft-bedrock-server
+Environment="LD_LIBRARY_PATH=."
+ExecStart=/opt/minecraft-bedrock-server/bedrock_server
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
