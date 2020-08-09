@@ -1,12 +1,12 @@
 # Maintainer: jialeens <jialeadmin@163.com>
 
 pkgname=dida
-pkgver=r23.1fe24d6
+pkgver=1.0.0.g4ec2ba9
 pkgrel=1
 pkgdesc="使用electron包装的滴答客户端"
 arch=('any')
 url="https://github.com/jialeens/dida"
-license=('MIT')
+license=("MIT")
 groups=()
 depends=('electron')
 makedepends=('git' 'npm' 'sed' 'gcc')
