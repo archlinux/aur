@@ -1,4 +1,4 @@
-pkgbase = simplenote-electron-bin-aarch64
+pkgbase = simplenote-electron-bin-arm
 	pkgdesc = The simplest way to keep notes
 	pkgver = 1.20.0
 	pkgrel = 1
@@ -15,5 +15,5 @@ pkgbase = simplenote-electron-bin-aarch64
 	source_aarch64 = https://github.com/Automattic/simplenote-electron/releases/download/v1.20.0/Simplenote-linux-1.20.0-arm64.deb
 	sha256sums_aarch64 = 1e69a80a386ea70df0d8084df70da2052c03fead5e49523bfe82aa88bcf476d0
 
-pkgname = simplenote-electron-bin-aarch64
+pkgname = simplenote-electron-bin-arm
 

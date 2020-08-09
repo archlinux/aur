@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Feakins <feakster at posteo dot eu>
 # Modified PKGBUILD from https://aur.archlinux.org/packages/simplenote-electron-bin/
 
-pkgname=simplenote-electron-bin-$CARCH
+pkgname=simplenote-electron-bin-arm
 pkgver=1.20.0
 pkgrel=1
 pkgdesc="The simplest way to keep notes"
