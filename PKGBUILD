@@ -3,12 +3,13 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.9.r0.g4bcc47a
+pkgver=0.10.9.r108.gb6f880e
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
 license=('MIT')
-_lua_deps=('cassowary'
+_lua_deps=('bit32'
+           'cassowary'
            'cosmo'
            'cliargs'
            'expat'
