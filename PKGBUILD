@@ -9,7 +9,7 @@ url="https://www.minecraft.net/en-us/download/server/bedrock"
 license=('custom')
 noextract=('bedrock-server-${pkgver}.zip')
 makedepends=('unzip')
-backup=(server.properties
+backup=('server.properties
 	valid_known_packs.json
 	whitelist.json
 	permissions.json')

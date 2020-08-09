@@ -1,12 +1,13 @@
 pkgbase = minecraft-bedrock-server
-	pkgdesc = Minecraft Bedrock Server for Windows 10 and Xbox One Minecraft
+	pkgdesc = Minecraft Bedrock Server for Windows 10 and Xbox One versions of Minecraft
 	pkgver = 1.16.1.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.minecraft.net/en-us/download/server/bedrock
 	arch = x86_64
 	license = custom
 	makedepends = unzip
 	noextract = bedrock-server-${pkgver}.zip
+	backup = server.properties valid_known_packs.json whitelist.json permissions.json
 	source = https://minecraft.azureedge.net/bin-linux/bedrock-server-1.16.1.02.zip
 	source = minecraft-bedrock-server.service
 	source = minecraft-bedrock-server.sysusers
