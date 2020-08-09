@@ -2,7 +2,7 @@
 
 pkgname=sabnzbd
 pkgver=3.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A web-interface based binary newsgrabber with NZB file support'
 url='http://www.sabnzbd.org'
 arch=('any')

@@ -24,4 +24,14 @@ post_upgrade() {
     # Suggest removing /opt/sabnzbd.
     echo "Remove /opt/sabnzbd if everything is working correctly from /var/lib/sabnzbd now."
   fi
+
+  # Check and change the sabnzbd users home directory
+  SABNZBD_HOME="$( getent passwd sabnzbd | awk -F: '{ print $6 }' )"
+  if [[ "${SABNZBD_HOME}" != "/var/lib/sabnzbd" ]]; then
+    if usermod --home /var/lib/sabnzbd sabnzbd; then
+      echo "User sabnzbd home directory changed to /var/lib/sabnzbd."
+    else
+      echo "Error changing sabnzbd home directory, stop sabnzbd and run 'usermod --home /var/lib/sabnzbd sabnzbd' yourself."
+    fi
+  fi
 }
