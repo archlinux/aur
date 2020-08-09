@@ -4,38 +4,37 @@
 # Contributor: iboyperson <tjquillan at gmail dot com>
 # Contributor: Alessandro Pazzaglia <jackdroido at gmail dot com>
 pkgname=pyinstaller
-_name=PyInstaller
-pkgver=3.6
-pkgrel=6
+pkgver=4.0
+pkgrel=1
 pkgdesc="Bundles a Python application and all its dependencies into a single package"
-arch=('any')
-url="http://www.pyinstaller.org"
+arch=('i686' 'x86_64')
+url="https://github.com/pyinstaller/pyinstaller"
 license=('GPL')
-depends=('python-altgraph')
+depends=('python-altgraph' 'pyinstaller-hooks-contrib')
 makedepends=('python-setuptools')
 #checkdepends=('python-pycrypto' 'python-pytest-xdist' 'python-pytest-timeout'
 #              'python-psutil' 'python-lxml') #'python-flake8-diff'
 optdepends=('python-pycrypto: bytecode encryption support'
             'upx: executable compression support')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz") #{,.asc})
-#source=("https://github.com/pyinstaller/pyinstaller/releases/download/v$pkgver/$_name-$pkgver.tar.gz"{,.asc})
-sha256sums=('3730fa80d088f8bb7084d32480eb87cbb4ddb64123363763cf8f2a1378c1c4b7')
-            #'SKIP')
-#validpgpkeys=('D4AD8B9C167B757C4F08E8777B752811BF773B65')
+source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz" #{,.asc})
+        "https://keys.openpgp.org/vks/v1/by-fingerprint/B943509D633E80DD27FC4EED634A8DFFD3F631DF")
+sha256sums=('970beb07115761d5e4ec317c1351b712fd90ae7f23994db914c633281f99bab0'
+            'cafd68eb7cdafa4717e7bf577e7edf2da5175669bc53258a5cff99846889dfe5')
+validpgpkeys=('B943509D633E80DD27FC4EED634A8DFFD3F631DF')
 
 build() {
-	cd "$_name-$pkgver"
+	cd "$pkgname-$pkgver"
 	python setup.py build
 }
 
 #check() {
-#	cd "$_name-$pkgver"
+#	cd "$pkgname-$pkgver"
 #
 #	# Run only the unit and functional tests, but not the huge library test-suite
 #	pytest tests/unit tests/functional -k "not tests/functional/test_libraries.py"
 #}
 
 package() {
-	cd "$_name-$pkgver"
+	cd "$pkgname-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
