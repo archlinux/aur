@@ -1,0 +1,8 @@
+[Unit]
+Description=The server for the Android app Controlloid
+
+[Service]
+ExecStart=/usr/bin/controlloid-server
+
+[Install]
+WantedBy=default.target
