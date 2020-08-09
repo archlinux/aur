@@ -2,7 +2,7 @@
 
 pkgname=lemon-lime-git
 _pkgname=lemon-lime
-pkgver=0.2.2.r6.373c2b3
+pkgver=0.2.3rc3.r0.2049f82
 pkgrel=1
 epoch=1
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
@@ -13,7 +13,11 @@ groups=()
 depends=('qt5-base' 'qt5-tools' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'ninja')
 checkdepends=()
-optdepends=()
+optdepends=('gcc: C and C++ support'
+            'fpc: Pascal support'
+            'java-environment: Java support'
+            'freebasic: BASIC support'
+            'python: Python support')
 provides=("lemon-lime")
 conflicts=("lemon-lime")
 replaces=()
