@@ -11,7 +11,7 @@ depends=('i3lock-color' 'imagemagick' 'xorg-xrandr' 'xorg-xdpyinfo' 'bc')
 optdepends=('feh: Allows setting wallpaper' 'multimonitorlock-gui: Allows the background to be changed')
 conflicts=('multilockscreen-git' 'betterlockscreen' 'betterlockscreen-git')
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=("SKIP")
+sha256sums=("406a2c2da7f32b6bfd6af551c2430cf254dd6f89011654e2ef89b72363fa61a7")
 install=${pkgname}.install
 
 package() {

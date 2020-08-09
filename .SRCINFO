@@ -17,7 +17,7 @@ pkgbase = multimonitorlock
 	conflicts = betterlockscreen
 	conflicts = betterlockscreen-git
 	source = https://github.com/TheCynicalTeam/multimonitorlock/archive/2020.7.9-1.tar.gz
-	sha256sums = SKIP
+	sha256sums = 406a2c2da7f32b6bfd6af551c2430cf254dd6f89011654e2ef89b72363fa61a7
 
 pkgname = multimonitorlock
 
