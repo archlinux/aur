@@ -10,6 +10,11 @@ pkgbase = lemon-lime
 	makedepends = ninja
 	depends = qt5-base
 	depends = hicolor-icon-theme
+	optdepends = gcc: C and C++ support
+	optdepends = fpc: Pascal support
+	optdepends = java-environment: Java support
+	optdepends = freebasic: BASIC support
+	optdepends = python: Python support
 	provides = lemon-lime
 	conflicts = lemon-lime-git
 	source = LemonLime::git+https://github.com/iotang/Project_LemonLime#tag=v0.2.2
