@@ -1,0 +1,14 @@
+pkgbase = soulanchor
+	pkgdesc = X11 Bible tool
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://www.dropbox.com/sh/jhuutnchr7pxru3/AAA7rtTic8LdeUFTKEtsW2hPa?dl=0
+	arch = x86_64
+	license = custom:soulanchor
+	depends = qt5-base
+	depends = qt5-multimedia
+	source = https://www.dropbox.com/s/zaqi0bnhhk682f3/soulanchor-0.8.0.tar.gz
+	md5sums = 90dc5bf9f876b6d53724efdb5bdedb66
+
+pkgname = soulanchor
+
