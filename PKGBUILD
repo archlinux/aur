@@ -1,7 +1,7 @@
 # Author: Torkus
 # Maintainer: Torkus <48141663+ogri-la@users.noreply.github.com>
 pkgname=strongbox
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="World of Warcraft addon manager. F/OSS, ad-free and privacy respecting."
 arch=("x86_64")
@@ -10,10 +10,11 @@ license=("AGPL")
 depends=("java-runtime")
 provides=("$pkgname")
 conflicts=("$pkgname")
+replaces=("wowman")
 # e.g.: "https://github.com/ogri-la/strongbox/releases/download/1.2.3/strongbox-1.2.3-standalone.jar"
 source=("https://github.com/ogri-la/strongbox/releases/download/$pkgver/$pkgname-$pkgver-standalone.jar")
 noextract=("$pkgname-$pkgver-standalone.jar")
-sha256sums=("8986bf5e4e7815f7207d362f943cebb2d18112f2593eef77ed8a75bfc119ce92")
+sha256sums=("65bbe2bc010865bec5dd0c2b3273ae5eb3e9912ea5b7ad75a4216770da61c5a5")
 
 # following: https://wiki.archlinux.org/index.php/Java_package_guidelines
 package() {

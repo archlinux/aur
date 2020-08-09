@@ -1,6 +1,6 @@
 pkgbase = strongbox
 	pkgdesc = World of Warcraft addon manager. F/OSS, ad-free and privacy respecting.
-	pkgver = 1.1.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/ogri-la/strongbox
 	arch = x86_64
@@ -8,9 +8,10 @@ pkgbase = strongbox
 	depends = java-runtime
 	provides = strongbox
 	conflicts = strongbox
-	noextract = strongbox-1.1.0-standalone.jar
-	source = https://github.com/ogri-la/strongbox/releases/download/1.1.0/strongbox-1.1.0-standalone.jar
-	sha256sums = 8986bf5e4e7815f7207d362f943cebb2d18112f2593eef77ed8a75bfc119ce92
+	replaces = wowman
+	noextract = strongbox-2.0.0-standalone.jar
+	source = https://github.com/ogri-la/strongbox/releases/download/2.0.0/strongbox-2.0.0-standalone.jar
+	sha256sums = 65bbe2bc010865bec5dd0c2b3273ae5eb3e9912ea5b7ad75a4216770da61c5a5
 
 pkgname = strongbox
 
