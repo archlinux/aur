@@ -1,0 +1,18 @@
+pkgbase = rusty-man
+	pkgdesc = Command-line viewer for rustdoc documentation
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://sr.ht/~ireas/rusty-man
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	optdepends = rust-docs: Rust standard library documentation
+	source = rusty-man-0.1.3.tar.gz::https://git.sr.ht/~ireas/rusty-man/archive/v0.1.3.tar.gz
+	source = rusty-man-0.1.3.tar.gz.asc::https://git.sr.ht/~ireas/rusty-man/refs/v0.1.3/v0.1.3.tar.gz.asc
+	validpgpkeys = 28B13CD28267111859622B686D533958F070C57C
+	sha512sums = 105f891be935d77ef09da736bbaa9ba448c40a67b9fdda25f05a96f325529e2f6508999813687e48f46a9ff6faf791486b8ac1a9c2e273580968f09ed52e9fbe
+	sha512sums = ca407cefc740920fed0f0c53d31170760442924895c36c6cf6483d263d623e52b307650b3072582bb536d9e52abd1f6970eb2261c05e14dbd18e8a6857efde7c
+
+pkgname = rusty-man
+
