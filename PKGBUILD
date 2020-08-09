@@ -8,8 +8,8 @@ arch=("x86_64")
 conflicts=("tijolo")
 url="https://github.com/hugopl/tijolo"
 license=("MIT")
-depends=("gc" "libevent" "pcre" "libyaml>=0.2.0" "gtksourceview4" "nerd-fonts-jetbrains-mono" "libgit2")
-makedepends=("git" "crystal>=0.35.0" "shards>=0.10.0")
+depends=("gc" "libevent" "pcre" "gtksourceview4" "nerd-fonts-jetbrains-mono" "libgit2")
+makedepends=("git" "crystal>=0.35.1" "shards>=0.11.0")
 source=("tijolo-git::git+https://github.com/hugopl/tijolo.git")
 sha256sums=('SKIP')
 
