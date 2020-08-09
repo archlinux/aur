@@ -7,7 +7,7 @@
 # Contributor: Ben Alex <ben.alex@acegi.com.au>
 
 pkgname=influxdb-cli
-pkgver=1.7.9
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='InfluxDB command line interface'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ license=('MIT')
 makedepends=('go' 'git' 'asciidoc' 'xmlto' 'dep')
 conflicts=('influxdb')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/influxdata/influxdb/archive/v${pkgver}.tar.gz")
-sha256sums=('fad5107985395353a584978f6c0ad1fbd4f41ea71bdc9cf55a006cc9a88d2b61')
+sha256sums=('d811be2ec684ea224e1097bd0051e0f6dfcd30cdd1656d55e48883d61ce47ce9')
 
 prepare(){
   export GOPATH="$srcdir/gopath"
