@@ -3,7 +3,7 @@
 
 pkgname=man-pages-fr-git
 _gitname=manpages-l10n
-pkgver=r10158.22d941b2f
+pkgver=r11033.893337c95
 pkgrel=1
 pkgdesc="French man pages (Git version)"
 arch=('any')
