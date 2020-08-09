@@ -1,4 +1,5 @@
-# Maintainer: Alad Wenter <alad@archlinux.info>
+# Maintainer: Michael Riegert <michael at eowyn net>
+# Contributor: Alad Wenter <alad@archlinux.info>
 # Contributor: Daniel Landau <daniel+aur@landau.fi>
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 # Contributor: mmm
@@ -6,13 +7,13 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 pkgname=lightspark-git
-pkgver=test_travis.r6.gaba3311a
+pkgver=0.8.3.r9.g50645853
 pkgrel=1
 pkgdesc="An open source flash player implementation"
 arch=('i686' 'x86_64')
 url="http://lightspark.sourceforge.net"
 license=('LGPL3')
-depends=('boost-libs' 'glew' 'ffmpeg' 'rtmpdump' 'sdl2_mixer' 'glibmm')
+depends=('boost-libs' 'glew' 'ffmpeg' 'rtmpdump' 'sdl2_mixer' 'glibmm' 'pango')
 makedepends=('git' 'cmake' 'nasm' 'llvm' 'boost')
 optdepends=('gnash-gtk: Gnash fallback support')
 provides=('lightspark')
@@ -29,10 +30,8 @@ build() {
   cd "$pkgname"
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCOMPILE_PLUGIN=1 \
     -DCMAKE_BUILD_TYPE=Release \
-    -DGNASH_EXE_PATH=/usr/bin/gtk-gnash \
-    -DAUDIO_BACKEND="pulseaudio sdl"
+    -DGNASH_EXE_PATH=/usr/bin/gtk-gnash .
   make
 }
 

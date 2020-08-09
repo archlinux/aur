@@ -1,6 +1,6 @@
 pkgbase = lightspark-git
 	pkgdesc = An open source flash player implementation
-	pkgver = test_travis.r6.gaba3311a
+	pkgver = 0.8.3.r9.g50645853
 	pkgrel = 1
 	url = http://lightspark.sourceforge.net
 	arch = i686
@@ -17,6 +17,7 @@ pkgbase = lightspark-git
 	depends = rtmpdump
 	depends = sdl2_mixer
 	depends = glibmm
+	depends = pango
 	optdepends = gnash-gtk: Gnash fallback support
 	provides = lightspark
 	conflicts = lightspark
