@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Arbiter
+Comment=NOI Linux 评测工具
+Icon=user-info
+Exec=arbiter
+Type=Application
+Categories=Development;Science;
