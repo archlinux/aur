@@ -13,8 +13,8 @@ sha256sums=('c8833cc04465fb8b8e520f8cfd5d2da1954f7c47a24152471c87c53444d72ffe')
 
 package() {
   cp -a $srcdir/$pkgname-$pkgver-$pkgrel/etc $pkgdir/etc
-  mkdir -p $pkgdir/usr/local
-	cp -a $srcdir/$pkgname-$pkgver-$pkgrel/usr/local/bin $pkgdir/usr/local/bin
+  mkdir -p $pkgdir/usr
+	cp -a $srcdir/$pkgname-$pkgver-$pkgrel/usr/bin $pkgdir/usr/bin
   mkdir -p $pkgdir/usr/lib
 	cp -a $srcdir/$pkgname-$pkgver-$pkgrel/usr/lib/multimonitorlock-gui $pkgdir/usr/lib/multimonitorlock-gui
 }
