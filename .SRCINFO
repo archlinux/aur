@@ -1,7 +1,7 @@
 pkgbase = neatvnc
 	pkgdesc = Fast and neat VNC server library
 	pkgver = 0.2.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/any1/neatvnc
 	arch = x86_64
 	license = custom:ISC
@@ -11,6 +11,7 @@ pkgbase = neatvnc
 	depends = aml
 	depends = pixman
 	depends = gnutls
+	depends = libjpeg-turbo
 	source = neatvnc-v0.2.0.tar.gz::https://github.com/any1/neatvnc/archive/v0.2.0.tar.gz
 	sha512sums = 74ff4ec6a492eaeead90b5e5d789885c709e90d50f682ad127f0f364264324ed0e6c66859f4254cbe9b79ebabb20974ceded67d5cab6a5fa8fd1f664ea18b15f
 
