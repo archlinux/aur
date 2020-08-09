@@ -4,7 +4,7 @@
 # Contributor: Klemen Košir <klemen913@gmail.com>
 
 pkgname=cataclysm-dda-git
-pkgver=0.E.2020.06.17
+pkgver=0.E.2020.08.09
 _pkgver=0.E
 pkgrel=1
 pkgdesc="A post-apocalyptic roguelike."
@@ -42,8 +42,8 @@ prepare() {
 
 build() {
   cd "Cataclysm-DDA-master"
-  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 LANGUAGE="all" UNTESTS=0 LINTJSON=0 ASTYLE=0
-  make PREFIX=/usr RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 LANGUAGE="all" UNTESTS=0 LINTJSON=0 ASTYLE=0 TILES=1 SOUND=1
+  make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0
+  make PREFIX=/usr RELEASE=1 USE_XDG_DIR=1 LANGUAGE="all" RUNTESTS=0 LINTJSON=0 ASTYLE=0 PCH=0 TILES=1 SOUND=1
   # LOCALIZE = 0   to save 30MB
   # DYNAMIC_LINKING = 1 ?
 
@@ -56,11 +56,11 @@ package() {
 
   # no DESTDIR
   make PREFIX="$pkgdir/usr" \
-  RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 \
+  RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 PCH=0 \
   install
 
   make PREFIX="$pkgdir/usr" \
-  RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 TILES=1 SOUND=1 \
+  RELEASE=1 ZLEVELS=1 USE_XDG_DIR=1 PCH=0 TILES=1 SOUND=1 \
   install
 
   # Icon
