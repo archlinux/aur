@@ -17,14 +17,14 @@ package() {
   mkdir -p $pkgdir/usr/lib
 	cp -a $srcdir/usr/lib/jspeak $pkgdir/usr/lib/jspeak
 
-  mkdir -p $pkgdir/usr/local
-	cp -a $srcdir/usr/local/bin $pkgdir/usr/local/bin
-  chmod +x $pkgdir/usr/local/bin/$pkgname
+  mkdir -p $pkgdir/usr
+	cp -a $srcdir/usr/bin $pkgdir/usr/bin
+  chmod +x $pkgdir/usr/bin/$pkgname
 
   mkdir -p $pkgdir/usr/share/applications
-        cp -a $srcdir/usr/share/applications/jspeak.desktop $pkgdir/usr/share/applications/jspeak.desktop
+  cp -a $srcdir/usr/share/applications/jspeak.desktop $pkgdir/usr/share/applications/jspeak.desktop
 
   mkdir -p $pkgdir/usr/share/piximaps
-        cp -a $srcdir/usr/share/piximaps/jspeak.png $pkgdir/usr/share/piximaps/jspeak.png
+  cp -a $srcdir/usr/share/piximaps/jspeak.png $pkgdir/usr/share/piximaps/jspeak.png
 }
 
