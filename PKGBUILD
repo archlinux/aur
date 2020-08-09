@@ -4,7 +4,7 @@
 pkgname=pi-bluetooth
 pkgver=1.2_4
 pkgrel=1
-pkgdesc="Services, firmware and udev rules to get integrated bluetooth running in Raspberry Pi 3"
+pkgdesc="Firmware and services to get integrated Bluetooth running on Raspberry Pi 3"
 arch=('armv6h' 'armv7h' 'aarch64')
 url=""
 license=('multiple')

@@ -1,5 +1,5 @@
 pkgbase = pi-bluetooth
-	pkgdesc = Services, firmware and udev rules to get integrated bluetooth running in Raspberry Pi 3
+	pkgdesc = Firmware and services to get integrated Bluetooth running on Raspberry Pi 3
 	pkgver = 1.2_4
 	pkgrel = 1
 	install = pi-bluetooth.install
