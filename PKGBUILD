@@ -24,11 +24,13 @@ optdepends=(
 provides=("mon2cam")
 source=(
     "git+$url.git"
-"shebang"
+    "shebang"
+    "Mon2Cam.desktop"
 )
 sha256sums=(
     "SKIP"
     "1174500c3fa06a04215189c9a9b6e334456c97fc962cc63c4ad6eee6bb215e98"
+    "fcc598918d2628e8dd57b64d1487c604b2423f244f42580ece480c6e365335d3"
 )
 
 pkgver() {
@@ -48,5 +50,6 @@ package() {
     cd "$srcdir/$_pkgname"
 
     install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
