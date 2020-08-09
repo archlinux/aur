@@ -6,10 +6,10 @@
 _pkgbase="dddvb"
 pkgname="dddvb-dkms"
 pkgdesc="Official Digital Devices driver package as DKMS"
-pkgver=0.9.32
-pkgrel=2
+pkgver=0.9.37
+pkgrel=1
 arch=("any")
-url="http://download.digital-devices.de"
+url="https://github.com/DigitalDevices/dddvb"
 license=("GPL2")
 depends=("dkms")
 makedepends=('linux-headers')
@@ -17,10 +17,8 @@ replaces=('digitaldevices-dvb-drivers' 'dvbsky-dvb-drivers' 'technotrend-dvb-dri
 conflicts=('digitaldevices-dvb-drivers' 'dvbsky-dvb-drivers' 'technotrend-dvb-drivers')
 provides=('dddvb-dkms')
 install="${pkgname}.install"
-source=("https://github.com/DigitalDevices/$_pkgbase/archive/$pkgver.tar.gz"
-	"https://github.com/DigitalDevices/dddvb/commit/f84d196a1e9ea07e431ceff0627d209e5145de3b.patch")
-sha256sums=('58ed304a17815b1c0f97879ba62865392c3a9eb783ff2ea5d34f7aca75422f16'
-            '7990488d63189e9e8f9c539e8727d7a7f193f9a39c04f8619aae4a2e5da62f12')
+source=("https://github.com/DigitalDevices/$_pkgbase/archive/$pkgver.tar.gz")
+sha256sums=('c5439b6b3b19d4855e8367ee6e5fff5195fcf56e6d58999b7fceb96a00e2cd62')
 
 prepare() {
   cd "$srcdir"
@@ -32,13 +30,14 @@ prepare() {
   echo 'CLEAN="make clean"' >> dkms.conf
 
   cd "$srcdir/$_pkgbase-$pkgver"
-  patch -p1 < ../f84d196a1e9ea07e431ceff0627d209e5145de3b.patch
   sed -i '/apps/d' Makefile
   sed -i 's/lib\/modules/usr\/lib\/modules/g' Makefile
+  sed -i 's/mod\.c/mod/' Makefile
 }
 
 build() {
   cd "$srcdir/$_pkgbase-$pkgver"
+  # make, so we can figure out which kernel modules are provided by this package
   make
 
   # Borrowed from dahdi-linux
@@ -53,6 +52,7 @@ build() {
 
   make clean
   find -name modules.order -delete
+  rm -rf apps/
 }
 
 package() {
