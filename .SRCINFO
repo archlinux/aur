@@ -4,13 +4,19 @@ pkgbase = simplenote-electron-bin
 	pkgrel = 1
 	url = https://github.com/Automattic/simplenote-electron
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = GPL2
 	depends = nss
 	depends = gtk3
 	depends = libxss
 	provides = simplenote
-	source = https://github.com/Automattic/simplenote-electron/releases/download/v1.20.0/Simplenote-linux-1.20.0-amd64.deb
-	sha256sums = c78a061035b889a837aff29f22131cf367b7a596e49e2beaee7615a69645fb3b
+	source_x86_64 = https://github.com/Automattic/simplenote-electron/releases/download/v1.20.0/Simplenote-linux-1.20.0-amd64.deb
+	sha256sums_x86_64 = c78a061035b889a837aff29f22131cf367b7a596e49e2beaee7615a69645fb3b
+	source_armv7h = https://github.com/Automattic/simplenote-electron/releases/download/v1.20.0/Simplenote-linux-1.20.0-armv7l.deb
+	sha256sums_armv7h = 899016470eabbdf8dd404f5eefe282fa857debf3475a73a39c7cd7400db3a84c
+	source_aarch64 = https://github.com/Automattic/simplenote-electron/releases/download/v1.20.0/Simplenote-linux-1.20.0-arm64.deb
+	sha256sums_aarch64 = 1e69a80a386ea70df0d8084df70da2052c03fead5e49523bfe82aa88bcf476d0
 
 pkgname = simplenote-electron-bin
 
