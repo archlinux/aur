@@ -11,7 +11,7 @@ pkgbase = i3session
 	depends = i3-wm
 	depends = xorg-xprop
 	source = https://github.com/TheCynicalTeam/i3session/archive/2020.6.27-1.tar.gz
-	sha256sums = SKIP
+	sha256sums = bc3e5ecc99ed972d4b020790ee4eb56b2db8f1d0b3a1852f1214dbc11007be22
 
 pkgname = i3session
 

@@ -10,7 +10,7 @@ license=('GNU General Public License v3.0')
 depends=(python2-xdg python-i3-py i3-wm xorg-xprop)
 makedepends=('git')
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('bc3e5ecc99ed972d4b020790ee4eb56b2db8f1d0b3a1852f1214dbc11007be22')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver-$pkgrel"
