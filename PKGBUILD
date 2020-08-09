@@ -12,7 +12,7 @@
 __arch_pkg_commit="6cdc4ff886a3bdf6d02a674b119e6b42dad9675b"
 
 pkgname=freetype2-ultimate5
-pkgver=2.10.1
+pkgver=2.10.2
 pkgrel=1
 pkgdesc="FreeType patched for effect similar to Infinality's ultimate5 preset."
 url="https://www.freetype.org/"
@@ -35,13 +35,11 @@ source=(
 	# FreeType source code.
 	https://download-mirror.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.xz
 )
-sha1sums=(
-	"4d111cc93d9a7aca79b4a75ccd069df08aa2ad26"
-	"283427030ef4b942f01e24ba022f2b84f1733fa8"
-	"1efd1e1db64cb7705296b724920d6328ff5f1f14"
-	"6b289e2ba54a4513af9aa3981b374fccb20ffc89"
-	"79874ef4eaa52025126b71d836453b8279bdd331"
-)
+sha1sums=('4d111cc93d9a7aca79b4a75ccd069df08aa2ad26'
+          '283427030ef4b942f01e24ba022f2b84f1733fa8'
+          '1efd1e1db64cb7705296b724920d6328ff5f1f14'
+          '6b289e2ba54a4513af9aa3981b374fccb20ffc89'
+          'b074d5c34dc0e3cc150be6e7aa6b07c9ec4ed875')
 
 prepare()
 {

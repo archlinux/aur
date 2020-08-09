@@ -1,6 +1,6 @@
 pkgbase = freetype2-ultimate5
 	pkgdesc = FreeType patched for effect similar to Infinality's ultimate5 preset.
-	pkgver = 2.10.1
+	pkgver = 2.10.2
 	pkgrel = 1
 	url = https://www.freetype.org/
 	install = freetype2-ultimate5.install
@@ -11,19 +11,19 @@ pkgbase = freetype2-ultimate5
 	depends = bzip2
 	depends = libpng
 	depends = harfbuzz
-	provides = freetype2=2.10.1
+	provides = freetype2=2.10.2
 	provides = libfreetype.so
 	conflicts = freetype2
 	source = like-ultimate5.patch
 	source = upstream_1.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Enable-table-validation-modules.patch?h=packages/freetype2&id=6cdc4ff886a3bdf6d02a674b119e6b42dad9675b
 	source = upstream_2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Enable-infinality-subpixel-hinting.patch?h=packages/freetype2&id=6cdc4ff886a3bdf6d02a674b119e6b42dad9675b
 	source = upstream_3.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Enable-long-PCF-family-names.patch?h=packages/freetype2&id=6cdc4ff886a3bdf6d02a674b119e6b42dad9675b
-	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.10.1.tar.xz
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.10.2.tar.xz
 	sha1sums = 4d111cc93d9a7aca79b4a75ccd069df08aa2ad26
 	sha1sums = 283427030ef4b942f01e24ba022f2b84f1733fa8
 	sha1sums = 1efd1e1db64cb7705296b724920d6328ff5f1f14
 	sha1sums = 6b289e2ba54a4513af9aa3981b374fccb20ffc89
-	sha1sums = 79874ef4eaa52025126b71d836453b8279bdd331
+	sha1sums = b074d5c34dc0e3cc150be6e7aa6b07c9ec4ed875
 
 pkgname = freetype2-ultimate5
 
