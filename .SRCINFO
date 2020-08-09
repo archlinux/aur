@@ -1,6 +1,6 @@
 pkgbase = firejail-git
 	pkgdesc = Linux namespaces sandbox program (GIT version)
-	pkgver = r6217.378d0e61
+	pkgver = r6331.d3b58663
 	pkgrel = 1
 	url = https://github.com/netblue30/firejail
 	install = firejail.install
@@ -9,6 +9,7 @@ pkgbase = firejail-git
 	license = GPL2
 	makedepends = git
 	depends = apparmor
+	depends = xdg-dbus-proxy
 	provides = firejail
 	conflicts = firejail
 	backup = etc/firejail/login.users
