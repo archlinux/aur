@@ -1,6 +1,6 @@
 pkgname=python-django-silk
 _name=${pkgname#python-}
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Silky smooth profiling for Django'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python-django' 'python')
 makedepends=('python-pip')
 _wheel="${_name/-/_}-${pkgver}-py2.py3-none-any.whl"
-sha256sums=('56c2c5aefd1c65161df61e49cf2674862a748a43e81c7c470bcbc4c35c53491c')
+sha256sums=('a331e55618fa62eaf3cf5a63f31bc1e91205efbeeca5e587c577498b0e251ed8')
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/$_wheel")
 noextract=("$_wheel")
 

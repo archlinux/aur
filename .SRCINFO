@@ -1,6 +1,6 @@
 pkgbase = python-django-silk
 	pkgdesc = Silky smooth profiling for Django
-	pkgver = 4.0.1
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/jazzband/django-silk
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = python-django-silk
 	makedepends = python-pip
 	depends = python-django
 	depends = python
-	noextract = django_silk-4.0.1-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/d/django-silk/django_silk-4.0.1-py2.py3-none-any.whl
-	sha256sums = 56c2c5aefd1c65161df61e49cf2674862a748a43e81c7c470bcbc4c35c53491c
+	noextract = django_silk-4.1.0-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py2.py3/d/django-silk/django_silk-4.1.0-py2.py3-none-any.whl
+	sha256sums = a331e55618fa62eaf3cf5a63f31bc1e91205efbeeca5e587c577498b0e251ed8
 
 pkgname = python-django-silk
 
