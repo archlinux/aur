@@ -1,7 +1,7 @@
 pkgbase = sile
 	pkgdesc = Modern typesetting system inspired by TeX
 	pkgver = 0.10.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.sile-typesetter.org
 	arch = x86_64
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = sile
 	depends = icu
 	depends = libpng
 	depends = lua
+	depends = lua-bit32
 	depends = lua-cassowary
 	depends = lua-cosmo
 	depends = lua-cliargs
