@@ -1,0 +1,15 @@
+pkgbase = lua-resty-core
+	pkgdesc = Lua script engine for nginx lua module
+	pkgver = 0.1.19
+	pkgrel = 2
+	url = https://github.com/openresty/lua-resty-core
+	arch = any
+	license = BSD
+	depends = luajit
+	depends = lua-resty-lrucache
+	depends = nginx
+	source = https://github.com/openresty/lua-resty-core/archive/v0.1.19.tar.gz
+	sha256sums = 040878ed9a485ca7f0f8128e4e979280bcf501af875704c8830bec6a68f128f7
+
+pkgname = lua-resty-core
+
