@@ -1,0 +1,19 @@
+pkgbase = simplenote-electron-bin-aarch64
+	pkgdesc = The simplest way to keep notes
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://github.com/Automattic/simplenote-electron
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	provides = simplenote
+	source_armv7h = https://github.com/Automattic/simplenote-electron/releases/download/v1.20.0/Simplenote-linux-1.20.0-armv7l.deb
+	sha256sums_armv7h = 899016470eabbdf8dd404f5eefe282fa857debf3475a73a39c7cd7400db3a84c
+	source_aarch64 = https://github.com/Automattic/simplenote-electron/releases/download/v1.20.0/Simplenote-linux-1.20.0-arm64.deb
+	sha256sums_aarch64 = 1e69a80a386ea70df0d8084df70da2052c03fead5e49523bfe82aa88bcf476d0
+
+pkgname = simplenote-electron-bin-aarch64
+
