@@ -1,11 +1,59 @@
 Version history
 ===============
 
+0.9.33
+------
+
+2020-08-09
+
+Fix #402: With more than 18 assignments, the tweaker doesn't mispaint the
+line for current physics update over the tape recorder buttons anymore.
+
+Fix #401: The tweaker erases the lines properly when two assignments change
+order from tweaking. This fixes a mispainting of assignment lines.
+
+Fix #385: Before, with 18 or more assignments, the completely filled tweaker
+always hid the assignments that came last in the replay. Now, the tweaker
+hides assignments that are far away from the current physics update. Now, to
+view early assignments, rewind the game. To see late assignments, forward the
+game.
+
+0.9.32
+------
+
+2020-08-01
+
+Distribution: Lix has an openSUSE package for easy installation on openSUSE
+Linux, thanks to Martin H.! This is our third Linux packaging after Debian and
+Arch. Updated Lix's readme and documentation.
+
+Added Raymanni's crab trap at images/raymanni/crab.T.txt. There is an example
+level, Crab Nightmare, in levels/misc/simon/crabnightmare.txt.
+
+Added Thirteen Little Skills (version 2), a level contest entry by Proxima.
+
+Every Lix for Herself (lemforum Lovely): Quicken the spawn interval, to
+make it nicer to assign floaters to lix from the leftmost hatch.
+
+Multiplayer: Pressing twice the end-game key (Esc by default) doesn't
+exit the match, but rather opens and cancels the exit-match dialog.
+This avoids accidental exiting. To exit the match via keyboard,
+press Esc, then the key to delete files/lose data.
+
+Replay tweaker: Add an extra line for the currently-shown physics update.
+
+Remove the unnecessary translatable string optionShowButtonHotkeys. Button
+hotkeys are always shown, there is no option to disable that; this option was
+removed in Lix 0.9.30. This removes the leftover language field, so that
+data/language/*.txt doesn't warn on loading a language.
+
+Code: Fix deprecations according to DMD 2.093: Annotate ref-returning
+functions with return
+
 0.9.31
 ------
 
 2020-04-23
-----------
 
 Compiling yourself: On Windows, Lix requires LDC 1.21.0, LDC or newer to
 compile out of the box. For LDC 1.20.1 or older, in Lix's dub.json file, you
