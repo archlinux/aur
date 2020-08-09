@@ -4,7 +4,7 @@
  	.wmi_force_als_set = true,
  };
  
-+static struct quirk_entry quirk_asus_ga401 = {
++static struct quirk_entry quirk_asus_ga401i = {
 +	.wmi_backlight_power = true,
 +	.wmi_backlight_set_devstate = true,
 +};
@@ -12,7 +12,7 @@
  static int dmi_matched(const struct dmi_system_id *dmi)
  {
  	pr_info("Identified laptop model '%s'\n", dmi->ident);
-@@ -411,6 +416,15 @@
+@@ -411,6 +416,42 @@
  		},
  		.driver_data = &quirk_asus_forceals,
  	},
@@ -23,9 +23,35 @@
 +			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
 +			DMI_MATCH(DMI_PRODUCT_NAME, "GA401IV"),
 +		},
-+		.driver_data = &quirk_asus_ga401,
++		.driver_data = &quirk_asus_ga401i,
++	},
++	{
++		.callback = dmi_matched,
++		.ident = "ASUSTeK COMPUTER INC. GA401IU",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++			DMI_MATCH(DMI_PRODUCT_NAME, "GA401IU"),
++		},
++		.driver_data = &quirk_asus_ga401i,
++	},
++	{
++		.callback = dmi_matched,
++		.ident = "ASUSTeK COMPUTER INC. GA401II",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++			DMI_MATCH(DMI_PRODUCT_NAME, "GA401II"),
++		},
++		.driver_data = &quirk_asus_ga401i,
++	},
++	{
++		.callback = dmi_matched,
++		.ident = "ASUSTeK COMPUTER INC. GA401IH",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++			DMI_MATCH(DMI_PRODUCT_NAME, "GA401IH"),
++		},
++		.driver_data = &quirk_asus_ga401i,
 +	},
  	{},
  };
  
- static void asus_nb_wmi_quirks(struct asus_wmi_driver *driver)
