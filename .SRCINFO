@@ -1,6 +1,6 @@
 pkgbase = jdk8-j9-bin
 	pkgdesc = IBM® SDK, Java Technology Edition, Version 8
-	pkgver = 8.0.6.11
+	pkgver = 8.0.6.15
 	pkgrel = 1
 	url = https://developer.ibm.com/javasdk/downloads/sdk8/
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = jdk8-j9-bin
 	provides = java-environment=8
 	provides = java-runtime=8
 	provides = java-runtime-headless=8
-	source = install_8.0.6.11.bin::https://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/8.0.6.11/linux/x86_64/ibm-java-sdk-8.0-6.11-x86_64-archive.bin
-	sha256sums = 3bee7811d5beb382c4b08d1d1ca583613b88e79c4e631e47602baab4666b565b
+	source = install_8.0.6.15.bin::https://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/8.0.6.15/linux/x86_64/ibm-java-sdk-8.0-6.15-x86_64-archive.bin
+	sha256sums = 1770fc44e0061a72ab9cfc47fb9a1934b17581fee77a3cc32e83b4bee0084256
 
 pkgname = jdk8-j9-bin
 
