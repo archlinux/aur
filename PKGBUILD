@@ -22,8 +22,7 @@ optdepends=('libfdk-aac: FDK AAC codec support'
             'luajit: scripting support'
             'python: scripting support'
             'vlc: VLC Media Source support'
-            'obs-xdg-portal-git: screen capture with xdg-desktop-portal interface'
-            'xdg-desktop-portal-wlr: screen capture on wlroots compositors')
+            'wlrobs-hg: screen capture on wlroots compositors')
 source=(
   $_pkgname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz
   https://github.com/obsproject/obs-studio/commit/8a1429e29ebd6bf31ad6ae63c6992e2c03893767.patch
