@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=gnucash-select
-pkgver=1.2
+pkgver=1.4
 pkgrel=1
 pkgdesc="GnuCash File Selector"
 url="https://github.com/bulletmark/$pkgname"
@@ -8,7 +8,7 @@ license=("GPL3")
 arch=("any")
 depends=("python-pysimplegui")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('ec6171ce57dc015d15fc3b60c6306864')
+md5sums=('16c8081ea3170211db8e73e0d58d1302')
 
 package() {
   cd "$pkgname-$pkgver"
