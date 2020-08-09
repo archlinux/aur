@@ -6,6 +6,7 @@ pkgbase = golang-github-linuxdeepin-go-dbus-factory-git
 	arch = any
 	groups = deepin-git
 	license = GPL3
+	makedepends = git
 	makedepends = go
 	depends = golang-deepin-lib-git
 	provides = golang-github-linuxdeepin-go-dbus-factory
