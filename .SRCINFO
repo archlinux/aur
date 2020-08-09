@@ -1,8 +1,8 @@
 pkgbase = arbiter-bin
 	pkgdesc = 北京航空航天大学为 NOI Linux 开发的评测工具，用于各大 NOI 系列程序设计竞赛的评测
-	pkgver = 1.4
-	pkgrel = 515
-	epoch = 1
+	pkgver = 0.1
+	pkgrel = 1
+	epoch = 2
 	url = http://www.noi.cn/newsview.html?id=267&hash=BDBDBE&type=11
 	arch = x86_64
 	license = custom
@@ -12,12 +12,18 @@ pkgbase = arbiter-bin
 	depends = lib32-gcc-libs
 	depends = lib32-libxi
 	depends = lib32-libxrandr
+	depends = lib32-libpng12
+	depends = lib32-libjpeg-turbo
 	depends = lib32-libxcursor
+	optdepends = gcc: C/C++ support
+	optdepends = fpc: Pascal support
 	provides = arbiter
 	conflicts = arbiter
 	source = runarbiter.sh
+	source = arbiter.desktop
 	source = https://github.com/leedagee/arbiter-distro/releases/download/v0.1/arbiter.tar.zst
-	md5sums = 6b0d4c98fa90eb78cd7a3ab8daa76d2d
+	md5sums = 50738fe70ff208e8012a4d298e3166c4
+	md5sums = 49ff2ca08c59a2ce0a61d06414571ab9
 	md5sums = 07707ce5f8272a5b14df95b3cfe7c62a
 
 pkgname = arbiter-bin
