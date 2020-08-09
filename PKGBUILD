@@ -3,7 +3,7 @@
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
 pkgver=5.8.zen1
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux ZEN with patch for Zephyrus G14 (GA401IV)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -31,7 +31,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '89d672a1b6e4ea7fdf018716a945846f39ffc331c186693cbbdc19649c968713'
+            '6b635ee9d01865057f04f5c4606fbe37f37829d0d748d61e18490ecef943abb6'
             '2273fae30f712aa554dd10294a072b4934265b56e6146493a07c22c7df4af61d'
             'ac8d8a0d54ad79e44f25b255bfecc80d190502e1173df18b091f53e9882d4ac8'
             'fdea6ab1672ea4758359e9c6e743aba56f33224c5d759852817a01af5974fd4b'
