@@ -1,12 +1,12 @@
 pkgbase = ct-js-bin
 	pkgdesc = CTjs is a 2D game editor that makes its bet on good documentation, visual tools and smooth workflow
-	pkgver = 1.3.1
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://ctjs.rocks/
 	arch = x86_64
 	license = MIT
 	provides = CTjs
-	source = https://github.com/ct-js/ct-js/releases/download/v1.3.1/ct.js.v1.3.1.for.linux64.zip
+	source = https://github.com/ct-js/ct-js/releases/download/v1.4.0/ct.js.v1.4.0.for.linux64.zip
 	md5sums = SKIP
 
 pkgname = ct-js-bin
