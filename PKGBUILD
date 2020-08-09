@@ -14,10 +14,9 @@ depends=(
     'seafile'
     'qt5-base'
     'qt5-webengine'
-    'qt5-webkit'
     'qt5-tools'
-    'gtk-update-icon-cache'
 )
+optdepends=('gtk-update-icon-cache')
 makedepends=("cmake")
 conflicts=('seafile-client-qt5')
 provides=('seafile-client-qt5')
