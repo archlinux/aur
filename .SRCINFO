@@ -8,8 +8,8 @@ pkgbase = i3-swallow
 	makedepends = git
 	depends = xdo
 	conflicts = i3-swallow-git
-	source = git+https://github.com/TheCynicalTeam/i3-swallow.git
-	md5sums = SKIP
+	source = https://github.com/TheCynicalTeam/i3-swallow/archive/2020.6.27-1.tar.gz
+	sha256sums = fbe01e0dcf58efb3bfff0c438c6dfc1644c881f0418dd0516b6af9011361b414
 
 pkgname = i3-swallow
 

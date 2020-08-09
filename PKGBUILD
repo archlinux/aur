@@ -11,11 +11,11 @@ depends=('xdo')
 makedepends=('git')
 conflicts=('i3-swallow-git')
 changelog=
-source=("git+${url}.git")
-md5sums=('SKIP')
+source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
+sha256sums=('fbe01e0dcf58efb3bfff0c438c6dfc1644c881f0418dd0516b6af9011361b414')
 
 package() {
-  cd "$srcdir/${pkgname}"
+  cd "$srcdir/$pkgname-$pkgver-$pkgrel"
   install -Dm 755 swallow "$pkgdir/usr/bin/i3-swallow"
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
