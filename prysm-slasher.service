@@ -1,12 +1,12 @@
 [Unit]
-Description=Prysm beacon-chain client
+Description=Prysm slasher
 After=network-online.target
 
 [Service]
 DynamicUser=true
-ExecStart=/usr/bin/prysm.beacon-chain --datadir=/var/lib/prysm/beacon-chain
+ExecStart=/usr/bin/prysm.slasher --datadir=/var/lib/prysm/slasher
 Restart=always
-StateDirectory=prysm/beacon-chain
+StateDirectory=prysm/slasher
 
 NoNewPrivileges=yes
 CapabilityBoundingSet=
@@ -24,6 +24,7 @@ ProtectKernelLogs=yes
 ProtectKernelModules=yes
 ProtectKernelTunables=yes
 
+RestrictAddressFamilies=AF_INET AF_INET6
 RestrictNamespaces=yes
 RestrictRealtime=yes
 RestrictSUIDSGID=yes

@@ -5,9 +5,10 @@ After=network-online.target
 [Service]
 User=prysm
 EnvironmentFile=/etc/conf.d/prysm-validator.%i
-ExecStartPre=/usr/bin/mkdir -p /var/lib/prysm/validator.%i/keys /var/lib/prysm/validator.%i/data
-ExecStart=/usr/bin/prysm.validator --keymanager=keystore --keymanageropts='{"passphrase":"${password}","path":"/var/lib/prysm/validator.%i/keys"}' --beacon-rpc-provider=${beacon} --datadir=/var/lib/prysm/validator.%i/data
+ExecStartPre=/usr/bin/mkdir -p /var/lib/prysm/validator/%i/keys /var/lib/prysm/validator/%i/data
+ExecStart=/usr/bin/prysm.validator --keymanager=keystore --keymanageropts='{"passphrase":"${password}","path":"/var/lib/prysm/validator/%i/keys"}' --beacon-rpc-provider=${beacon} --datadir=/var/lib/prysm/validator/%i/data
 Restart=always
+StateDirectory=prysm/validator
 
 [Install]
 WantedBy=default.target
