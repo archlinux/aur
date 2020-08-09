@@ -1,0 +1,15 @@
+pkgbase = dromajo-git
+	pkgver = 1.0.r25.gee470be
+	pkgrel = 1
+	url = https://github.com/chipsalliance/dromajo/
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = git
+	provides = dromajo
+	conflicts = dromajo
+	source = git+https://github.com/chipsalliance/dromajo
+	md5sums = SKIP
+
+pkgname = dromajo-git
+
