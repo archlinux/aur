@@ -73,7 +73,7 @@ depends=('curl'
          'libshout'
          'libtiff'
          'lua'
-         'mpeg'
+         'ffmpeg'
          'openssl'
          'opus'
          'freetype2')
