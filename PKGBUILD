@@ -1,4 +1,6 @@
-# Maintainer: David Birks <david@tellus.space>
+# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
+# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Contributor: David Birks <david@tellus.space>
 # Contributor: Chrysostomus @forum.manjaro.org
 
 pkgname=pacli
