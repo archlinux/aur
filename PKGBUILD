@@ -4,13 +4,13 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=5.35
+pkgver=5.40
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
-arch=(i686 x86_64)
+arch=(x86_64)
 url='http://www.microchip.com/mplabx'
 license=(custom)
-depends=(gtk2 alsa-lib libxslt libxtst "java-runtime=8" java8-openjfx)
+depends=(gtk2 alsa-lib libxslt libxtst jre8-openjdk java8-openjfx)
 makedepends=(fakechroot desktop-file-utils)
 makedepends_x86_64=(lib32-fakechroot lib32-fakeroot)
 optdepends=('microchip-mplabxc8-bin: C compiler for PIC10 PIC12 PIC16 PIC18 MCUs'
@@ -22,7 +22,6 @@ optdepends=('microchip-mplabxc8-bin: C compiler for PIC10 PIC12 PIC16 PIC18 MCUs
 provides=(mplab)
 conflicts=(mplab)
 options=(!strip docs libtool emptydirs !zipman)
-install="${pkgname}.install"
 
 _mplabx_dir="/opt/microchip/mplabx/v${pkgver}"
 _mplabx_installer="MPLABX-v${pkgver}-linux-installer"
@@ -33,7 +32,7 @@ source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.ta
         "LICENSE"
         "mplabx-override.conf")
 
-md5sums=('aab958d023dc18197e1c32533a2e0d97'
+md5sums=('4ea9ab3dec4e3529cbf0cdce39799e73'
          'a34a85b2600a26f1c558bcd14c2444bd'
          'a476a71af625380a2fd52f82fb5d5492')
 
@@ -80,10 +79,14 @@ EOF
   # Rename udev rules to avoid conflict with jlink-software-and-documentation
   mv "${pkgdir}"/etc/udev/rules.d/{99-jlink,98-jlink-mplabx}.rules
 
+  # Move them to /usr/lib/udev/rules.d
+  mv "${pkgdir}/etc/udev" "${pkgdir}/usr/lib/"
+
   # Patch jdkhome to use system JRE
   local conf
   for conf in etc/mplab_ide.conf etc/mplab_ipe.conf harness/etc/app.conf mplab_ipe/ipecmd.sh; do
-    sed -i -r '\@^#?jdkhome=@c\jdkhome=/usr/lib/jvm/default-runtime/' "${pkgdir}${_mplabx_dir}/mplab_platform/${conf}"
+    sed -i -r '\@^#?jdkhome=@c\jdkhome=/usr/lib/jvm/java-8-openjdk/jre/' "${pkgdir}${_mplabx_dir}/mplab_platform/${conf}"
+  :
   done
 
   # Move config file to /etc (and add a symlink into the old location)
@@ -108,7 +111,7 @@ EOF
   ln -sf "${_mplabx_dir}/mplab_platform/bin/mdb.sh" "${pkgdir}/usr/bin/mdb"
   ln -sf "${_mplabx_dir}/mplab_platform/bin/prjMakefilesGenerator.sh" "${pkgdir}/usr/bin/prjMakefilesGenerator"
   ln -sf "${_mplabx_dir}/mplab_platform/bin/mplab_ipe" "${pkgdir}/usr/bin/"
-  ln -sf "${_mplabcomm_dstdir}/lib/mchplinusbdevice" "${pkgdir}/etc/.mplab_ide/"
+  ln -sf "${_mplabcomm_dstdir}/lib/mchplinusbmonitor" "${pkgdir}/etc/.mplab_ide/"
 
   # Symlink libs from MPLABCOMM
   local lib
@@ -122,6 +125,11 @@ EOF
     local bname=$(basename "$lib")
     local soname=${bname%.so.*}
     ln -sf ${bname} "${pkgdir}/usr/lib/${soname}.so"
+  done
+
+  # Make lock files world-writable
+  for lockfile in mchppnplock mchpsegpnplock; do
+    chmod a+w "${pkgdir}/etc/.mplab_ide/${lockfile}"
   done
 
   # Tweak .desktop files for better desktop integration
