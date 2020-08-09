@@ -13,6 +13,7 @@ pkgbase = multimonitorlock
 	depends = bc
 	optdepends = feh: Allows setting wallpaper
 	optdepends = multimonitorlock-gui: Allows the background to be changed
+	makedepends = git
 	conflicts = multilockscreen-git
 	conflicts = betterlockscreen
 	conflicts = betterlockscreen-git
