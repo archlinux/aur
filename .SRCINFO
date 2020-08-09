@@ -1,6 +1,6 @@
 pkgbase = seafile-client
 	pkgdesc = GUI client for synchronizing your local files with seafile server
-	pkgver = 7.0.8
+	pkgver = 7.0.9
 	pkgrel = 1
 	url = https://github.com/haiwen/seafile-client
 	arch = i686
@@ -17,9 +17,9 @@ pkgbase = seafile-client
 	optdepends = gtk-update-icon-cache
 	provides = seafile-client-qt5
 	conflicts = seafile-client-qt5
-	source = seafile-client-7.0.8.tar.gz::https://github.com/haiwen/seafile-client/archive/v7.0.8.tar.gz
+	source = seafile-client-7.0.9.tar.gz::https://github.com/haiwen/seafile-client/archive/v7.0.9.tar.gz
 	source = fix_QT5_v5.15_QPainterPath.diff
-	sha256sums = 9c737acc7d6e92e36625156346b866c2e90fa5900828fc77a28ed4f622629bae
+	sha256sums = 200b258339cafcaf809f85d88cc53ff15b265673d74f3777c86809e26bf49738
 	sha256sums = 300d77db22b8f0845faa4442afc557d46c21b758b7b3be75381e5a2dd58fef07
 
 pkgname = seafile-client
