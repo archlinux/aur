@@ -1,7 +1,7 @@
 pkgbase = maple2020
 	pkgdesc = A commercial computer algebra system developed and sold commercially by Maplesoft. Version 2020.
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.maplesoft.com/download/
 	install = maple2020.install
 	arch = x86_64
@@ -12,8 +12,10 @@ pkgbase = maple2020
 	options = !strip
 	source = maple2020.desktop
 	source = Maplesoft-x-maple-worksheet.xml
+	source = local://Maple2020.1LinuxX64Installer.run
 	sha256sums = e4cff7025bd62f66b8d2d361da87b2772c5eb86efa985cf286b5b48c02b6bfff
 	sha256sums = e29ded05d8cda39ae2c8dd2b204c3b47e5c432d75d8e2bde3ddae0b71136b643
+	sha256sums = SKIP
 
 pkgname = maple2020
 

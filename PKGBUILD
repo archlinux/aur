@@ -8,7 +8,7 @@
 
 pkgname=maple2020
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="A commercial computer algebra system developed and sold commercially by Maplesoft. Version 2020."
 arch=('x86_64')
 url=https://www.maplesoft.com/download/
@@ -17,23 +17,14 @@ depends=('ld-lsb')
 conflicts=(maple18 maple2019)
 options=(!strip)
 install='maple2020.install'
-source=(maple2020.desktop Maplesoft-x-maple-worksheet.xml)
+source=(maple2020.desktop Maplesoft-x-maple-worksheet.xml local://Maple2020.1LinuxX64Installer.run)
 sha256sums=('e4cff7025bd62f66b8d2d361da87b2772c5eb86efa985cf286b5b48c02b6bfff'
-            'e29ded05d8cda39ae2c8dd2b204c3b47e5c432d75d8e2bde3ddae0b71136b643')
-
-
-_mapleInstaller="Maple2020.1LinuxX64Installer.run"
+            'e29ded05d8cda39ae2c8dd2b204c3b47e5c432d75d8e2bde3ddae0b71136b643'
+            'SKIP')
 
 build() {
-  msg "Searching for installer in \"$startdir\"..."
-
-  if [[ ! -f "${startdir}/${_mapleInstaller}" ]]; then
-    error "Maple2020 installer not found! Please put the Maple installer next to the PKGBUILD"
-    return 1
-  fi
-
-  msg "Unpacking installer... If the installation fails make sure your /tmp directory is not full"
-  "${startdir}/${_mapleInstaller}" --mode unattended --installdir "${srcdir}/maple2020" --desktopshortcut 0 --defaultapp 0
+  echo "Unpacking installer... If the installation fails make sure your /tmp directory is not full"
+  "${srcdir}/Maple2020.1LinuxX64Installer.run" --mode unattended --installdir "${srcdir}/maple2020" --desktopshortcut 0 --defaultapp 0
 }
 
 package () {
