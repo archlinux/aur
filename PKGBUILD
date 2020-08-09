@@ -1,4 +1,4 @@
-# Maintainer: Sam L. Yes <manjaroyes123@outlook.com>
+# Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
 
 pkgname=('vst-video-bin')
 _pkgname='vst-video'
@@ -13,7 +13,7 @@ provides=(${_pkgname})
 depends=('qt5-multimedia')
 makedepends=('tar')
 optdepends=()
-source=("https://github.com/xymov/vst-video/releases/download/V${pkgver}/${_pkgname}.deb"
+source=("${_pkgname}-${pkgver}.deb::https://github.com/xymov/vst-video/releases/download/V${pkgver}/${_pkgname}.deb"
         "${_pkgname}.desktop"
         "${_pkgname}.sh")
 md5sums=('a12bc1fb1d82e0f2ad57ad2310f04176'
