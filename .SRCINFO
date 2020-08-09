@@ -1,7 +1,7 @@
 pkgbase = dida
 	pkgdesc = 使用electron包装的滴答客户端
-	pkgver = 1.0.1.g4498dd2
-	pkgrel = 2
+	pkgver = 1.0.1.g40a853e
+	pkgrel = 1
 	url = https://github.com/jialeens/dida
 	arch = any
 	license = MIT
