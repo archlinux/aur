@@ -6,8 +6,8 @@
 # Contributor: jibi <jibi@paranoici.org>
 
 pkgname='inspircd'
-pkgver='3.6.0'
-pkgrel='4'
+pkgver='3.7.0'
+pkgrel='1'
 pkgdesc='InspIRCd is a modular Internet Relay Chat (IRC) server written in C++ for Linux, BSD, Windows and macOS systems.'
 arch=('x86_64')
 url='https://www.inspircd.org/'
@@ -36,7 +36,7 @@ source=("https://github.com/inspircd/inspircd/archive/v$pkgver.tar.gz"
     "$pkgname.service"
     "$pkgname.sysusers"
     )
-sha512sums=('b1feaf983f30aa3192860d931f85bb2e5b5f10d3b7582b7e5faa8fc16a349c79506f5a7ba9e1f4f8b24d62639c0e0e88f2d97a3130473ee10eda93dd5c131630'
+sha512sums=('d683d54a046f9bf17ae1a7bb1e2ce94000455c0249478250fd7263f8ede12048ce3982b990bb47461a1c7d9ea5fc20836b3dd255924e72d187eb3a6d591fd51d'
             '5a16a7c237693ffc6a108358f339b6aa2451fb16430561848ae869f890199b38fab6a13640bcc35cf1d07e32d7e5fff405d88668ee05ddaffc2ef61cb42ee832'
             '90e7ae20a0d13cef2ff00c56382ea5cf1ed8843228937c49cab7fe0e2a34d02b9fac20dd55c6cd5e79533b5764a9d10d19e26b043a2d9c98a4384a7e1c2859c4')
 
