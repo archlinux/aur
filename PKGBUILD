@@ -1,7 +1,7 @@
 # Maintainer: jialeens <jialeadmin@163.com>
 
 pkgname=dida
-pkgver=1.0.0.5eeeec5
+pkgver=1.0.1.g4498dd2
 pkgrel=1
 pkgdesc="使用electron包装的滴答客户端"
 arch=('any')
