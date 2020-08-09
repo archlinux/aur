@@ -1,0 +1,19 @@
+pkgbase = nginx-mod-vts
+	pkgdesc = Nginx virtual host traffic status module
+	pkgver = 0.1.18
+	pkgrel = 1
+	url = https://github.com/vozlt/nginx-module-vts
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = nginx
+	source = http://nginx.org/download/nginx-1.18.0.tar.gz
+	source = http://nginx.org/download/nginx-1.18.0.tar.gz.asc
+	source = https://github.com/vozlt/nginx-module-vts/archive/v0.1.18.tar.gz
+	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
+	sha256sums = 4c373e7ab5bf91d34a4f11a0c9496561061ba5eee6020db272a17a7228d35f99
+	sha256sums = SKIP
+	sha256sums = 17ea41d4083f6d1ab1ab83dad9160eeca66867abe16c5a0421f85a39d7c84b65
+
+pkgname = nginx-mod-vts
+
