@@ -1,8 +1,8 @@
 pkgbase = ttf-nepali-font-git
 	pkgdesc = Collection Of Pupular Nepali Fonts
-	pkgver = r6.e645fa5
+	pkgver = 1.0.1
 	pkgrel = 1
-	url = git+https://github.com/SuphalBhattarai/nepali-fonts
+	url = https://github.com/SuphalBhattarai/nepali-fonts
 	arch = x86_64
 	arch = i686
 	makedepends = git
