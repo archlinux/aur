@@ -4,22 +4,23 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="Collection Of Pupular Nepali Fonts"
 arch=(x86_64 i686)
-url="https://github.com/SuphalBhattarai/nepali-fonts"
+url="https://gitlab.com/Suphal/ttf-nepali-font-git.git"
 depends=(fontconfig)
 makedepends=(git )
 provides=(ttf-nepali-font-git)
-source=("git+https://github.com/SuphalBhattarai/nepali-fonts")
+source=("git+https://gitlab.com/Suphal/ttf-nepali-font-git.git")
+
 md5sums=('SKIP')
 
 pkgver() {
-  cd "nepali-fonts"
+  cd "ttf-nepali-font-git"
   install -d "${pkgdir}/usr/share/fonts/TTF"
   printf "1.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
   install -d "${pkgdir}/usr/share/fonts/TTF"
-  install -m644 nepali-fonts/fonts/*.ttf "${pkgdir}/usr/share/fonts/TTF/"
+  install -m644 ttf-nepali-font-git/fonts/*.ttf "${pkgdir}/usr/share/fonts/TTF/"
 }
 
 post_install() {
