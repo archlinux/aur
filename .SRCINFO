@@ -1,7 +1,7 @@
 pkgbase = sse-file-pc
 	pkgdesc = Cross-platform java tool for file encryption
-	pkgver = 14R2C
-	pkgrel = 2
+	pkgver = 14R4C
+	pkgrel = 1
 	url = https://paranoiaworks.mobi/
 	arch = any
 	license = Apache

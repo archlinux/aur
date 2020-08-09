@@ -1,7 +1,7 @@
 # Maintainer: Senderman <doletov.fyodor@yandex.ru>
 pkgname=sse-file-pc
-pkgver=14R2C
-pkgrel=2
+pkgver=14R4C
+pkgrel=1
 pkgdesc="Cross-platform java tool for file encryption"
 arch=('any')
 url="https://paranoiaworks.mobi/"
