@@ -12,7 +12,7 @@ url="https://github.com/Manjaro-Pek/$pkgname"
 license=(GPL2)
 depends=('fzf'
 	'pacman'
-	'yay'
+	'pamac'
 	'pacman-mirrorlist'
 	'sudo'
 	'gzip'
