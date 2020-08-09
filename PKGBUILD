@@ -12,7 +12,11 @@ groups=()
 depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'ninja')
 checkdepends=()
-optdepends=()
+optdepends=('gcc: C and C++ support'
+            'fpc: Pascal support'
+            'java-environment: Java support'
+            'freebasic: BASIC support'
+            'python: Python support')
 provides=("lemon-lime")
 conflicts=("lemon-lime-git")
 replaces=()
@@ -20,6 +24,7 @@ backup=()
 options=()
 install=
 changelog=
+# TODO: use all source package in next update
 source=(
     "LemonLime::git+https://github.com/iotang/Project_LemonLime#tag=v${pkgver}"
     "singleapplication::git+https://github.com/itay-grudev/SingleApplication"
