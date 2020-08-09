@@ -6,7 +6,7 @@
 # Contributor: Douglas Soares de Andrade <dsandrade@gmail.com>
 
 pkgname=python2-urwid
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Curses-based user interface library'
 url='http://excess.org/urwid/'
@@ -15,8 +15,8 @@ license=('LGPL')
 depends=('python2' 'glibc')
 makedepends=('glibc' 'python2-setuptools')
 source=(https://github.com/urwid/urwid/archive/release-${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('2f35d3416f85c6ad3247fc37af450b342466827d8256512f4d28064c0020bca0')
-sha512sums=('14267d1076e51ef53dc187dc1395e9f4d968bc1019c2fc2209143eb29b9b138a378116fae30645f1183b2378ffe43ee3491de6181a51699f933970385012abe1')
+sha256sums=('06fc11e62083f0de2ae8525d278bd5ca7f06bcf10773e299812ab5f617f8bd50')
+sha512sums=('6ab861c02edff37e31b1a5b138e71abf978f8ef9a54e0993b740ec62c0986ce1e25c2421a4a4b0d428a8cd64970496b23790074c911b6e4990b3d821a3bf2b4c')
 
 build() {
   (cd urwid-release-${pkgver}
