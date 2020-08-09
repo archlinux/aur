@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=yandex-cloud-bin
-pkgver=0.59.0
+pkgver=0.61.0
 pkgrel=1
 pkgdesc='Yandex.Cloud CLI'
 arch=('x86_64')
@@ -19,11 +19,12 @@ build(){
 
 package(){
     mkdir -p "$pkgdir/usr/bin"
-    mkdir -p "$pkgdir/usr/share/yc/completion"
-
     cp "yc" "$pkgdir/usr/bin/yc"
     chmod +x "$pkgdir/usr/bin/yc"
 
-    $pkgdir/usr/bin/yc completion bash > "$pkgdir/usr/share/yc/completion/completion.bash"
-    $pkgdir/usr/bin/yc completion zsh > "$pkgdir/usr/share/yc/completion/completion.zsh"
+    mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+    $pkgdir/usr/bin/yc completion bash > "$pkgdir/usr/share/bash-completion/completions/yc"
+
+    mkdir -p "$pkgdir/usr/share/zsh/site-functions/"
+    $pkgdir/usr/bin/yc completion zsh > "$pkgdir/usr/share/zsh/site-functions/_yc"
 }
