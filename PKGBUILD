@@ -1,16 +1,16 @@
-# Maintainer: F Carpano < gmail-com: daert781 >
+# Maintainer: Radim Sückr <kontakt@radimsuckr.cz>
+# Contributor: F Carpano < gmail-com: daert781 >
 # Contributor: Anthony Samartsev <kycok@archlinux.info>
 
 pkgname=xcursor-osx-elcap
 pkgver=1.00
-pkgrel=3
+pkgrel=4
 pkgdesc="Cursor theme from OSX"
 arch=('any')
 url="https://www.gnome-look.org/p/1084939/"
 license=('GPL')
-_hash_time=($(curl -s "$url"|grep -e "hash =" -e "timetamp ="|sed "s/.*= '\(.*\)';/\1/"))
-source=("https://dl.opendesktop.org/api/files/downloadfile/id/1461053384/s/${_hash_time[0]}/t/${_hash_time[1]}/u/175749-OSX-ElCap.tar.bz2")
-sha512sums=('ae880f22446a531137250aec8bf282f1b68cfafe86cf742d13b950c7a3cf8ae923efecffde3915dd9d320dd549c0bcbea51b8be1a6f97ae7548b203ea09c4d39')
+source=('https://dllb2.pling.com/api/files/download/j/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1MTUzMDg3MzUiLCJ1IjpudWxsLCJsdCI6ImRvd25sb2FkIiwicyI6Ijg4MWZkNDU5NzQwNTI4NmE4OTBmMjVhNmNlYmFkMTlmYjI4ZmQ3NjM0NjZmMDRiNWY1ZTViM2M3Njk1ZTAwZDhkYjU0MTY1N2QxOWUzOTU2YmY1ZDUxZjBhMTM1ZTM4YWExZmMwNjNiNjQzOWZlZTU3OWU1ODg4NGUyMjI1YjlmIiwidCI6MTU5Njk5NTczOSwic3RmcCI6ImUxNDdlZGQ4YTliZWE4NmMyYTlmNjM5MjYyYjY2NjM1Iiwic3RpcCI6Ijg4LjEwMi42OC4xNzEifQ.uHfffxOp2MZF1RGX1E8Kf_h_T8RgcvU6H3AuUXaLtM8/OSX-ElCap-(KDE).R2.tar.bz2')
+sha512sums=('7db6bc6266fc99358e35d203b767ffb9a6883bad40d8f4332f85214609859583c29e637a339cc1f386e581bc43cd9365088cc277c8ee1493c49d03f17ec45695')
 
 build() {
 	true
@@ -19,5 +19,5 @@ build() {
 package() {
 	cd $srcdir
 	mkdir -p $pkgdir/usr/share/icons
-	cp -r OSX-ElCap/OSX-ElCap $pkgdir/usr/share/icons
+	cp -r 'OSX-ElCap-(KDE)/OSX-ElCap' $pkgdir/usr/share/icons
 }
