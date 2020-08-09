@@ -2,8 +2,8 @@
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
  
 pkgname=leao
-pkgver=2019.1.0
-pkgrel=4
+pkgver=2020.1.0
+pkgrel=1
 license=('custom')
  
 arch=(any)
@@ -11,16 +11,16 @@ pkgdesc='O Carnê-leão é o programa para a tributação do Imposto sobre a Ren
 url='http://www.receita.fazenda.gov.br'
  
 
-source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2019/leao/LEAO2019v1.0.zip		
+source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2020/leao/LEAO2020v1.0.zip		
 	$pkgname.png
         $pkgname.desktop
         $pkgname.install
 		$pkgname)
 
-noextract=(LEAO2019v1.0.zip)
+noextract=(LEAO2020v1.0.zip)
  
 
-md5sums=('c5b965c5cc73a180e2242d1572df6be4'
+md5sums=('41858ff5002b1363f98ce8520c0ba439'
          '725dc07b10c6debced300e9aa106e8fa'
          'e69686d7b2c901ba625d5745f58c6c4b'
          'b0a5c911f4a3ce472699aa8b81d21b3d'
@@ -33,12 +33,12 @@ makedepends=('unzip')
 install=$pkgname.install
 
 prepare() {
-  unzip LEAO2019v1.0.zip
+  unzip LEAO2020v1.0.zip
 } 
  
 package() {
-        cd "$srcdir"/LEAO2019
-        rm -f LEAO2019.exe
+        cd "$srcdir"/LEAO2020
+        rm -f LEAO2020.exe
 		rm -f exec.sh
 		rm -f Leia_me.htm
 		rm -f exec.bat
