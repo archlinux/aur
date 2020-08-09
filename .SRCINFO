@@ -1,13 +1,13 @@
 pkgbase = sprytile
 	pkgdesc = A blender addon for creating tile based low spec 3D scenes.
-	pkgver = 0.5.00
+	pkgver = 0.5.10
 	pkgrel = 1
 	url = https://github.com/Sprytile/Sprytile
 	arch = any
 	license = MIT
 	depends = blender
-	source = sprytile-0.5.00::https://github.com/Sprytile/Sprytile/archive/v0.5.00.tar.gz
-	md5sums = 1d5e0edcdb92b1ca7906cd2da4508f7b
+	source = sprytile-0.5.10::https://github.com/Sprytile/Sprytile/archive/v0.5.10.tar.gz
+	md5sums = cc7a0ebb992dd3b61d4b19d8cc838ff0
 
 pkgname = sprytile
 

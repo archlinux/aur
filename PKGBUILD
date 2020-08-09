@@ -1,6 +1,6 @@
 # Maintainer: Kat Witten <turtlewit@live.com>
 pkgname=sprytile
-pkgver=0.5.00
+pkgver=0.5.10
 pkgrel=1
 pkgdesc="A blender addon for creating tile based low spec 3D scenes."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/Sprytile/Sprytile"
 license=('MIT')
 depends=('blender')
 source=("${pkgname}-${pkgver}"::"https://github.com/Sprytile/Sprytile/archive/v${pkgver}.tar.gz")
-md5sums=('1d5e0edcdb92b1ca7906cd2da4508f7b')
+md5sums=('cc7a0ebb992dd3b61d4b19d8cc838ff0')
 
 package() {
 	cd "Sprytile-$pkgver"
