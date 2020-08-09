@@ -1,0 +1,42 @@
+diff --git a/util/grub.d/20_linux_xen.in b/util/grub.d/20_linux_xen.in
+index 3b1f47049..bb12d4a76 100644
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -245,9 +245,6 @@ while [ "x${xen_list}" != "x" ] ; do
+     if [ -z "$boot_device_id" ]; then
+ 	boot_device_id="$(grub_get_device_id "${GRUB_DEVICE}")"
+     fi
+-    if [ "x$is_top_level" != xtrue ]; then
+-	echo "	submenu '$(gettext_printf "Xen hypervisor, version %s" "${xen_version}" | grub_quote)' \$menuentry_id_option 'xen-hypervisor-$xen_version-$boot_device_id' {"
+-    fi
+     if ($grub_file --is-arm64-efi $current_xen); then
+ 	xen_loader="xen_hypervisor"
+ 	module_loader="xen_module"
+@@ -328,15 +325,14 @@ while [ "x${xen_list}" != "x" ] ; do
+ 	    linux_entry "${OS}" "${version}" "${xen_version}" simple \
+ 		"${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}" "${GRUB_CMDLINE_XEN} ${GRUB_CMDLINE_XEN_DEFAULT}"
+ 
+-	    submenu_indentation="$grub_tab$grub_tab"
++	    submenu_indentation="$grub_tab"
+     
+ 	    if [ -z "$boot_device_id" ]; then
+ 		boot_device_id="$(grub_get_device_id "${GRUB_DEVICE}")"
+ 	    fi
+             # TRANSLATORS: %s is replaced with an OS name
+ 	    echo "submenu '$(gettext_printf "Advanced options for %s (with Xen hypervisor)" "${OS}" | grub_quote)' \$menuentry_id_option 'gnulinux-advanced-$boot_device_id' {"
+-	echo "	submenu '$(gettext_printf "Xen hypervisor, version %s" "${xen_version}" | grub_quote)' \$menuentry_id_option 'xen-hypervisor-$xen_version-$boot_device_id' {"
+-	   is_top_level=false
++	    is_top_level=false
+ 	fi
+ 
+ 	linux_entry "${OS}" "${version}" "${xen_version}" advanced \
+@@ -348,9 +344,6 @@ while [ "x${xen_list}" != "x" ] ; do
+ 
+ 	list=`echo $list | tr ' ' '\n' | fgrep -vx "$linux" | tr '\n' ' '`
+     done
+-    if [ x"$is_top_level" != xtrue ]; then
+-	echo '	}'
+-    fi
+     xen_list=`echo $xen_list | tr ' ' '\n' | fgrep -vx "$current_xen" | tr '\n' ' '`
+ done
+ 

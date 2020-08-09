@@ -1,4 +1,5 @@
-# Maintainer: Llewelyn Trahaearn <WoefulDerelict [at] GMail [dot] com>
+# Maintainer: Chris Chapman <chris [dot] chapman [at] aggiemail [dot] usu [dot] edu>
+# Contributor: Llewelyn Trahaearn <WoefulDerelict [at] GMail [dot] com>
 # Contributor: Tobias Powalowski <tpowa [at] archlinux [dot] org>
 # Contributor: Ronald van Haren <ronald [at] archlinux [dot] org>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
@@ -9,17 +10,22 @@ _ia32_efi_in_arch_x64="1"
 ## "1" to enable EMU build, "0" to disable
 _grub_emu_build="1"
 
+## "1" to enable XEN build, "0" to disable
+_grub_xen_build="1"
+
 [[ "${CARCH}" == "x86_64" ]] && _target_arch="x86_64"
 [[ "${CARCH}" == "i686" ]] && _target_arch="i386"
 
 _build_platforms="i386-pc ${_target_arch}-efi"
 [[ "${CARCH}" == "x86_64" ]] && [[ "${_ia32_efi_in_arch_x64}" == "1" ]] && _build_platforms+=" i386-efi"
 [[ "${_grub_emu_build}" == "1" ]] && _build_platforms+=" ${_target_arch}-emu"
+[[ "${_grub_xen_build}" == "1" ]] && _build_platforms+=" i386-xen i386-xen_pvh"
+[[ "${_grub_xen_build}" == "1" ]] && [[ "${CARCH}" == "x86_64" ]] && _build_platforms+=" x86_64-xen"
 
-pkgname="grub-git"
-pkgver=2.04.rc1.r19.g4e7b5bb3b
+pkgname="grub-xen-git"
+pkgver=2.04.r141.ge7b8856f8
 pkgrel=1
-pkgdesc="GNU GRand Unified Bootloader (2)"
+pkgdesc="GNU GRand Unified Bootloader (2) with Xen platform support"
 arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/grub/"
 license=('GPL3')
@@ -38,8 +44,8 @@ if [[ "${_grub_emu_build}" == "1" ]]; then
     optdepends+=('libusb: For grub-emu USB support')
 fi
 
-provides=("${pkgname%-*}")
-conflicts=("${pkgname%-*}")
+provides=('grub')
+conflicts=('grub' 'grub-git')
 backup=('etc/default/grub'
         'etc/grub.d/40_custom')
 install="${pkgname}.install"
@@ -47,20 +53,48 @@ source=("grub::git+https://git.savannah.gnu.org/git/grub.git"
         "grub-extras::git+https://git.savannah.gnu.org/git/grub-extras.git"
         "gnulib::git+https://git.savannah.gnu.org/git/gnulib.git"
         '10_linux-detect-archlinux-initramfs.patch'
+        '20_linux_xen-detect-archlinux-initramfs.patch'
+        '20_linux_xen-detect-x86-xen-dom0-linux-list.patch'
+        '20_linux_xen-load-ucode-as-separate-multiboot-module.patch'
+        '20_linux_xen-remove-grub-submenu-for-multiple-xen-versions.patch'
+        '20_linux_xen-select-gzipped-xen-only.patch'
+        '20_linux_xen-support-xen-realmode-with-grub-efi-boot.patch'
         'add-GRUB_COLOR_variables.patch'
         'grub.default')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '171415ab075d1ac806f36c454feeb060f870416f24279b70104bba94bd6076d4'
+            'aa2f81e74c9eb09bfd0eced093ec0f38409b0001bd20e2cad9e2d9275c8e73c4'
+            '432ec7cda9d1a0c8e203d4cfd8ce8f046b967d2330a172ccbedca5345e5e7d08'
+            '0ac60de9cca4000825c34f601e1a135e01bda85af6e4bcd75751967c0cc5c00d'
+            'aa1edfce6193146def470ae61129af3cbdc20638419a37e7e72f543281cb9d53'
+            '7cec8e548a8cc6bd7dd26e7b81c1e43bfe270e89bff05382683ddbeeccf218bc'
+            'f0ccc146a3af7ecc14f5b1adbb0e0e5d03953839b336541741ba16737593e6ef'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
-            '690adb7943ee9fedff578a9d482233925ca3ad3e5a50fffddd27cf33300a89e3')
+            'bd464f665372ee5211fe825153f31d3d499589cb3e7e25070340ddc0602727c1')
  
 prepare() {
     cd grub
 
     # Patch grub-mkconfig to detect Arch Linux initramfs images.
     patch -Np1 -i "$srcdir"/10_linux-detect-archlinux-initramfs.patch
+    patch -Np1 -i "$srcdir"/20_linux_xen-detect-archlinux-initramfs.patch
+
+    # Patch grub-mkconfig to detect Dom0-ready Arch Linux kernels.
+    patch -Np1 -i "$srcdir"/20_linux_xen-detect-x86-xen-dom0-linux-list.patch
+
+    # Patch grub-mkconfig to load microcode as separate module that Xen will scan.
+    patch -Np1 -i "$srcdir"/20_linux_xen-load-ucode-as-separate-multiboot-module.patch
+
+    # Patch grub-mkconfig to remove superfluous submenu for selecting Xen versions.
+    patch -Np1 -i "$srcdir"/20_linux_xen-remove-grub-submenu-for-multiple-xen-versions.patch
+
+    # Patch grub-mkconfig to select gzipped Xen kernels only.
+    patch -Np1 -i "$srcdir"/20_linux_xen-select-gzipped-xen-only.patch
+
+    # Patch grub-mkconfig to support GRUB EFI boot.
+    patch -Np1 -i "$srcdir"/20_linux_xen-support-xen-realmode-with-grub-efi-boot.patch
 
     # Patch to enable GRUB_COLOR_* variables in grub-mkconfig.
     # Based on http://lists.gnu.org/archive/html/grub-devel/2012-02/msg00021.html
@@ -70,10 +104,10 @@ prepare() {
     sed 's|/usr/share/fonts/dejavu|/usr/share/fonts/dejavu /usr/share/fonts/TTF|g' -i "configure.ac"
 
     # Modify grub-mkconfig behaviour to silence warnings FS#36275
-    sed 's| ro | rw |g' -i "util/grub.d/10_linux.in"
+    sed 's| ro | rw |g' -i util/grub.d/{10_linux,20_linux_xen}.in
 
     # Modify grub-mkconfig behaviour so automatically generated entries read 'Arch Linux' FS#33393
-    sed 's|GNU/Linux|Linux|' -i "util/grub.d/10_linux.in"
+    sed 's|GNU/Linux|Linux|' -i util/grub.d/{10_linux,20_linux_xen}.in
 
     # Pull in latest language files
     ./linguas.sh

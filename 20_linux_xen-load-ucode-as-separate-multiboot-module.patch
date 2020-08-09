@@ -1,0 +1,44 @@
+diff --git a/util/grub.d/20_linux_xen.in b/util/grub.d/20_linux_xen.in
+index 3b1f47049..3d740264d 100644
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -112,6 +112,9 @@ linux_entry_xsm ()
+       xen_version="$(gettext_printf "%s (XSM enabled)" "$xen_version")"
+       # xen_version is used for messages only; actual file is xen_basename
+   fi
++  if [ -n "$initrd_early" ] ; then
++      xen_args="$xen_args ucode=scan"
++  fi
+   if [ -z "$boot_device_id" ]; then
+       boot_device_id="$(grub_get_device_id "${GRUB_DEVICE}")"
+   fi
+@@ -153,16 +156,27 @@ linux_entry_xsm ()
+ 	echo	'$(echo "$lmessage" | grub_quote)'
+ 	${module_loader}	${rel_dirname}/${basename} placeholder root=${linux_root_device_thisversion} ro ${args}
+ EOF
+-  if test -n "${initrd}" ; then
++  if test -n "${initrd_real}" ; then
+     # TRANSLATORS: ramdisk isn't identifier. Should be translated.
+     message="$(gettext_printf "Loading initial ramdisk ...")"
+     initrd_path=
+-    for i in ${initrd}; do
++    for i in ${initrd_real}; do
+        initrd_path="${initrd_path} ${rel_dirname}/${i}"
+     done
+     sed "s/^/$submenu_indentation/" << EOF
+ 	echo	'$(echo "$message" | grub_quote)'
+ 	${module_loader}	--nounzip   $(echo $initrd_path)
++EOF
++  fi
++  if test -n "${initrd_early}" ; then
++    message="$(gettext_printf "Loading early microcode updates ...")"
++    ucode_path=
++    for i in ${initrd_early}; do
++       ucode_path="${ucode_path} ${rel_dirname}/${i}"
++    done
++    sed "s/^/$submenu_indentation/" << EOF
++        echo	'$(echo "$message" | grub_quote)'
++	${module_loader}	$(echo $ucode_path)
+ EOF
+   fi
+   if test -n "${xenpolicy}" ; then

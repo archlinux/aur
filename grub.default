@@ -6,6 +6,12 @@ GRUB_DISTRIBUTOR="Arch"
 GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"
 GRUB_CMDLINE_LINUX=""
 
+GRUB_CMDLINE_LINUX_XEN_REPLACE_DEFAULT=""
+GRUB_CMDLINE_LINUX_XEN_REPLACE="earlyprintk=xen"
+
+GRUB_CMDLINE_XEN_DEFAULT=""
+GRUB_CMDLINE_XEN=""
+
 # Preload both GPT and MBR modules so that they are not missed
 GRUB_PRELOAD_MODULES="part_gpt part_msdos"
 

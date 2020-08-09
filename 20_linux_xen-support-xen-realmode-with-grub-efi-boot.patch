@@ -1,0 +1,13 @@
+diff --git a/util/grub.d/20_linux_xen.in b/util/grub.d/20_linux_xen.in
+index 3b1f47049..8fb1c87a4 100644
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -144,7 +144,7 @@ linux_entry_xsm ()
+   lmessage="$(gettext_printf "Loading Linux %s ..." ${version})"
+   sed "s/^/$submenu_indentation/" << EOF
+ 	echo	'$(echo "$xmessage" | grub_quote)'
+-        if [ "\$grub_platform" = "pc" -o "\$grub_platform" = "" ]; then
++        if [ "\$grub_platform" = "pc" -o "\$grub_platform" = "efi" -o "\$grub_platform" = "" ]; then
+             xen_rm_opts=
+         else
+             xen_rm_opts="no-real-mode edd=off"
