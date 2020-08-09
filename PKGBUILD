@@ -3,14 +3,14 @@
 
 pkgname=pacli
 pkgver=0.9.1
-pkgrel=2
+pkgrel=1
 pkgdesc="An interactive pacman interface using fzf"
 arch=(any)
 url="https://github.com/Manjaro-Pek/$pkgname"
 license=(GPL2)
 depends=('fzf'
 	'pacman'
-	'yaourt'
+	'yay'
 	'pacman-mirrorlist'
 	'sudo'
 	'gzip'

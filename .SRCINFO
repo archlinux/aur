@@ -1,14 +1,14 @@
 pkgbase = pacli
 	pkgdesc = An interactive pacman interface using fzf
 	pkgver = 0.9.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/Manjaro-Pek/pacli
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = fzf
 	depends = pacman
-	depends = yaourt
+	depends = yay
 	depends = pacman-mirrorlist
 	depends = sudo
 	depends = gzip
