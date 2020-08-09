@@ -1,4 +1,4 @@
 *.tar.gz
-*.pkg.tar.xz
+*.pkg.tar.zst
 industrial-arch/*
 lxdm-theme-archlinux/*
