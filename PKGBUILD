@@ -14,8 +14,8 @@ sha256sums=('2a5a75e5319333138a678ceed8c6d41d3b5380ae3f503bf21de9028a442df66c')
 
 package() {
   cp -a $srcdir/$pkgname-$pkgver-$pkgrel/etc $pkgdir/etc
-  mkdir -p $pkgdir/usr/local
-	cp -a $srcdir/$pkgname-$pkgver-$pkgrel/usr/local/bin $pkgdir/usr/local/bin
+  mkdir -p $pkgdir/usr
+	cp -a $srcdir/$pkgname-$pkgver-$pkgrel/usr/bin $pkgdir/usr/bin
   mkdir -p $pkgdir/usr/lib
 	cp -a $srcdir/$pkgname-$pkgver-$pkgrel/usr/lib/qt-logout $pkgdir/usr/lib/qt-logout
 }
