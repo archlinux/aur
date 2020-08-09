@@ -1,0 +1,22 @@
+Index: gauche-fastcgi-0.1.3/fcgi.stub
+===================================================================
+--- gauche-fastcgi-0.1.3.orig/fcgi.stub	2006-02-10 10:02:37.000000000 +0100
++++ gauche-fastcgi-0.1.3/fcgi.stub	2012-05-25 11:52:30.576199731 +0200
+@@ -42,7 +42,7 @@
+   ())
+ 
+ (define-cproc fcgx-is-cgi ()
+-  (return <boolean> "FCGX_IsCGI"))
++  (call <boolean> "FCGX_IsCGI"))
+ 
+ (define-cproc fcgx-accept ()
+   "  int r;
+@@ -64,7 +64,7 @@
+   ")
+ 
+ (define-cproc fcgx-finish ()
+-  (return <void> "FCGX_Finish"))
++  (call <void> "FCGX_Finish"))
+ 
+ (define-cproc fcgx-stream->port (stream::<fcgx-stream>)
+   "  SCM_RETURN(Scm_MakePortWithFcgxStream(stream->stream));")

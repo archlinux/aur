@@ -1,0 +1,21 @@
+pkgbase = gauche-fastcgi
+	pkgdesc = Gauche module for fastcgi
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://osdn.net/projects/gauche/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = make
+	makedepends = autoconf
+	depends = gauche
+	depends = fcgi
+	source = https://osdn.net/dl/gauche/Gauche-fastcgi-0.1.3.tgz
+	source = 00_posthook.patch
+	source = 01_fixstub.patch
+	sha1sums = 3d4a2188e2a57c5b355146dab1897390a41c5d37
+	sha1sums = 81825b5caa63743c6ac68a565e50e3fdd6116467
+	sha1sums = 3aa224bb5593732ec4eedf3c8db68b51e5fd532c
+
+pkgname = gauche-fastcgi
+

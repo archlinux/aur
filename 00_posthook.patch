@@ -1,0 +1,89 @@
+Index: gauche-fastcgi-0.1.3/www/fastcgi.scm
+===================================================================
+--- gauche-fastcgi-0.1.3.orig/www/fastcgi.scm	2006-01-14 05:18:31.000000000 +0100
++++ gauche-fastcgi-0.1.3/www/fastcgi.scm	2012-05-25 10:59:39.700990096 +0200
+@@ -45,7 +45,8 @@
+ (define (error->string obj)
+   (and (is-a? obj <error>) (ref obj 'message)))
+ 
+-(define (call-with-fastcgi proc)
++(define (call-with-fastcgi proc :key
++                           (post-hook #f))
+   (cond ((fcgx-is-cgi)
+          (proc (current-input-port)
+                (current-output-port)
+@@ -55,12 +56,20 @@
+          ;; rush into the infinity..
+          (let loop ()
+            ;; leave these signals to libfcgi
++           ;; todo: should we handle SIGTERM?
++           ;; (used for timeout!)
+            (set-signal-handler! SIGTERM #t)
+            (set-signal-handler! SIGHUP #t)
+            (set-signal-handler! SIGUSR1 #t)
+            ;; mod_fastcgi requires this!
+-           (set-signal-handler! SIGPIPE (lambda (k) (loop)))
+-
++           ;; (SIGPIPE is sent if request is canceled / http client
++           ;; disconnects without waiting for reply)
++           (set-signal-handler! SIGPIPE
++                                (lambda (k)
++                                  (when post-hook
++                                    (post-hook))
++                                  (loop)))
++           
+            (receive (in out err env) (fcgx-accept)
+              (let ((iport (fcgx-stream->port in))
+                    (oport (fcgx-stream->port out))
+@@ -71,22 +80,32 @@
+ 
+                (with-error-handler
+                  (lambda (e)
+-                   (display (if (error? e) (error->string e) e) eport)
+-                   (newline eport)
+-                   (close-input-port iport)
+-                   (close-output-port oport)
+-                   (close-output-port eport)
+-                   (fcgx-finish)
+-                   (raise e))
++                   ;; temporarily ignore SIGPIPE because eport might already be closed
++                   ;; for example in timeout case
++                   (with-signal-handlers
++                    ([SIGPIPE => #f])
++                    (lambda()
++                      (display (if (error? e) (error->string e) e) eport)
++                      (newline eport)
++                      (close-input-port iport)
++                      (close-output-port oport)
++                      (close-output-port eport)
++                      (fcgx-finish)
++                      (raise e))))
+                  (lambda ()
+                    (proc iport oport eport mvs)
+                    (close-input-port iport)
+                    (close-output-port oport)
+-                   (close-output-port eport)))))
++                   (close-output-port eport)
++                   (when post-hook
++                     (fcgx-finish)
++                     (post-hook))))))
+            (loop)))))
+ 
+-(define (with-fastcgi thunk)
+-  (call-with-fastcgi
++(define (with-fastcgi thunk . args)
++  (apply
++   call-with-fastcgi
++   (cons
+     (lambda (iport oport eport mvs)
+       (with-input-from-port iport
+         (lambda ()
+@@ -95,6 +114,7 @@
+               (with-error-to-port eport
+                 (lambda ()
+                   (parameterize ((cgi-metavariables mvs))
+-                    (thunk)))))))))))
++                    (thunk)))))))))
++    args)))
+ 
+ (provide "www/fastcgi")
