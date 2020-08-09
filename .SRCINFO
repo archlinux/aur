@@ -1,0 +1,26 @@
+pkgbase = kingstvis
+	pkgdesc = KingstVIS软件可以采集记录多路数字信号，可测量信号脉宽、周期、频率、占空比等，可依据多种标准协议解析出通信数据，具备演示模式可让你购买之前体验全部功能。
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = http://www.qdkingst.com/cn
+	arch = x86_64
+	depends = qt5-base
+	depends = qt5-svg
+	provides = kingstvis
+	source = kingstvis.tar.gz::http://www.qdkingst.com/kfs/KingstVIS_v3.4.2.tar.gz
+	source = kingstvis.desktop
+	source = logo-0.png
+	source = logo-1.png
+	source = logo-2.png
+	source = logo-3.png
+	source = logo-4.png
+	md5sums = 18e3967942ed1a01d0b26d2ca45cd889
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = kingstvis
+
