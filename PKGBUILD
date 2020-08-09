@@ -3,7 +3,7 @@
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=opennlp-bin
-pkgver=1.9.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc='Machine learning-based toolkit for processing natural language text (bin)'
 arch=(any)
@@ -11,7 +11,7 @@ url=https://opennlp.apache.org
 license=(Apache)
 depends=(java-environment)
 source=(https://www.apache.org/dist/opennlp/opennlp-$pkgver/apache-opennlp-$pkgver-bin.tar.gz{,.asc})
-sha512sums=('d92a470e907e5844fec8ac42a05eab8be80d7dbb6d57028abafbe5c4b5d525366eb60e33e155724cb5aaf23ca93c07cc76eb2f382ce584fd33291d7d07a6236e'
+sha512sums=('f93ac87ef2a050d77495f4e4bb92854f8429af8f0a14650db9c269378857849d251d927a22854b8a533332d69427be8519a0560116c2e3da8f433510326ac135'
             'SKIP')
 validpgpkeys=('6786BCFFBD2AE66E737FE97760E63AD841EF12D8')
 
