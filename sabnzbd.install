@@ -1,20 +1,23 @@
 post_upgrade() {
   # Test for the *old* config file and *lack* of new config file, move if needed.
   if [[ -f /opt/sabnzbd/sabnzbd.ini && ! -f /var/lib/sabnzbd/sabnzbd.ini ]]; then
-    mv /opt/sabnzbd/sabnzbd.ini /var/lib/sabnzbd/
-    echo "Moved sabnzbd.ini from /opt/sabnzbd to /var/lib/sabnzbd."
+    cp -a /opt/sabnzbd/sabnzbd.ini /var/lib/sabnzbd/
+    mv /opt/sabnzbd/sabnzbd.ini /opt/sabnzbd/sabnzbd.ini.saved
+    echo "Copied sabnzbd.ini from /opt/sabnzbd to /var/lib/sabnzbd and renamed /opt/sabnzbd/sabnzbd.ini to /opt/sabnzbd/sabnzbd.ini.saved."
   fi
 
   # Test for old admin folder and *lack* of new admin folder, move if needed.
   if [[ -d /opt/sabnzbd/admin && ! -d /var/lib/sabnzbd/admin ]]; then
-    mv /opt/sabnzbd/admin /var/lib/sabnzbd/
-    echo "Moved admin folder from /opt/sabnzbd to /var/lib/sabnzbd/."
+    cp -a /opt/sabnzbd/admin /var/lib/sabnzbd/
+    mv /opt/sabnzbd/admin /opt/sabnzbd/admin.saved
+    echo "Copied admin folder from /opt/sabnzbd to /var/lib/sabnzbd/ and renamed /opt/sabnzbd/admin to /opt/sabnzbd/admin.saved."
   fi
 
   # Test for old logs folder and *lack* of new logs folder, move if needed.
   if [[ -d /opt/sabnzbd/logs && ! -d /var/lib/sabnzbd/logs ]]; then
-    mv /opt/sabnzbd/logs /var/lib/sabnzbd/
-    echo "Moved logs folder from /opt/sabnzbd to /var/lib/sabnzbd/."
+    cp -a /opt/sabnzbd/logs /var/lib/sabnzbd/
+    mv /opt/sabnzbd/logs /opt/sabnzbd/logs.saved
+    echo "Moved logs folder from /opt/sabnzbd to /var/lib/sabnzbd/ and renamed /opt/sabnzbd/logs to /opt/sabnzbd/logs.saved."
   fi
 
   # Test for old install location, suggest removal.
