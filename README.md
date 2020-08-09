@@ -1,6 +1,6 @@
-# aur-hercules-analysis-git
+# aur-hercules-labours-git
 
-![AUR version](https://img.shields.io/aur/version/hercules-analysis-git)
+![AUR version](https://img.shields.io/aur/version/hercules-labours-git)
 
 A PKGBUILD for [hercules and labours](https://github.com/src-d/hercules).
 

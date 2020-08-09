@@ -3,7 +3,7 @@
 # This PKGBUILD is maintained on github:
 # https://github.com/elihunter173/aur-hercules-git
 
-pkgname=hercules-analysis-git
+pkgname=hercules-labours-git
 pkgver=10.7.2.r4.g13a2081
 pkgrel=1
 depends=(

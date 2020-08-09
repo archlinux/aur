@@ -1,4 +1,4 @@
-pkgbase = hercules-analysis-git
+pkgbase = hercules-labours-git
 	pkgdesc = Gaining advanced insights from Git repository history.
 	pkgver = 10.7.2.r4.g13a2081
 	pkgrel = 1
@@ -25,5 +25,5 @@ pkgbase = hercules-analysis-git
 	source = git+https://github.com/src-d/hercules.git
 	sha256sums = SKIP
 
-pkgname = hercules-analysis-git
+pkgname = hercules-labours-git
 
