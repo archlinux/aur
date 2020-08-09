@@ -1,0 +1,16 @@
+pkgbase = kubectl-doctor
+	pkgdesc = kubectl cluster triage plugin for k8s
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/emirozer/kubectl-doctor
+	arch = x86_64
+	arch = aarch64
+	groups = kubectl-plugins
+	license = Apache
+	makedepends = go
+	depends = glibc
+	source = https://github.com/emirozer/kubectl-doctor/archive/0.3.0/kubectl-doctor-0.3.0.tar.gz
+	sha256sums = 1d0faeba6875228bc9e77261e55cbc6c7b2ffaabf90c4c3f7fe96f8ea8e299bb
+
+pkgname = kubectl-doctor
+
