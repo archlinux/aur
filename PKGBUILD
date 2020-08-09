@@ -1,21 +1,21 @@
 # Maintainer: piegames <aur@piegames.de>
 pkgname=blockmap-git
-pkgver=2.2.0.r0.db49965
-pkgrel=2
+pkgver=2.2.1.r0.0171d5e
+pkgrel=1
 pkgdesc="Minecraft map viewer/renderer"
 arch=('any')
 url="https://github.com/Minecraft-Technik-Wiki/BlockMap"
 license=('MIT')
-depends=('java-runtime>=12' 'hicolor-icon-theme' 'archlinux-java-run' 'sh')
+depends=('java-runtime>=12' 'hicolor-icon-theme' 'archlinux-java-run>=8' 'sh')
 makedepends=('java-environment>=12' 'git')
 source=("${pkgname}"::'git+https://github.com/Minecraft-Technik-Wiki/BlockMap'
 		"blockmap.sh"
 		"blockmap-gui.sh"
 		"BlockMap.desktop")
 sha512sums=('SKIP'
-            '4b311ac92be3984eca9457f72c0fd87327532b063d5d6bdf38fec683ed2f14fd3dd252f7441e3b15429dcfe7618715da2c2c88adb9ef5b7be85b56d2b7aab35b'
-            '5915722b07aba215978ab13531e672f54fc26ebb27cc82fbd8c6103b2ba28c7a1829128dbad31e1682525e78812a8d472d92a66653a4f2d49d7fc5b2ac175bb5'
-            '1dee9e62b7b957fc0eb241555cd6037b3e6e4866ff9a05840fcff8f4f59082a212bbe8a4ff35b4dbc1ae605ba64c58a87044e34df21a50bb564b707600ff3025')
+	'4b311ac92be3984eca9457f72c0fd87327532b063d5d6bdf38fec683ed2f14fd3dd252f7441e3b15429dcfe7618715da2c2c88adb9ef5b7be85b56d2b7aab35b'
+	'5915722b07aba215978ab13531e672f54fc26ebb27cc82fbd8c6103b2ba28c7a1829128dbad31e1682525e78812a8d472d92a66653a4f2d49d7fc5b2ac175bb5'
+	'1dee9e62b7b957fc0eb241555cd6037b3e6e4866ff9a05840fcff8f4f59082a212bbe8a4ff35b4dbc1ae605ba64c58a87044e34df21a50bb564b707600ff3025')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"

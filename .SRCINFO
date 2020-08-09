@@ -1,6 +1,6 @@
 pkgbase = blockmap-git
 	pkgdesc = Minecraft map viewer/renderer
-	pkgver = 2.2.0.r0.db49965
+	pkgver = 2.2.1.r0.0171d5e
 	pkgrel = 1
 	url = https://github.com/Minecraft-Technik-Wiki/BlockMap
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = blockmap-git
 	makedepends = git
 	depends = java-runtime>=12
 	depends = hicolor-icon-theme
-	depends = archlinux-java-run
+	depends = archlinux-java-run>=8
 	depends = sh
 	source = blockmap-git::git+https://github.com/Minecraft-Technik-Wiki/BlockMap
 	source = blockmap.sh
