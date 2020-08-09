@@ -1,5 +1,7 @@
 # aur-hercules-analysis-git
 
+![AUR version](https://img.shields.io/aur/version/hercules-analysis-git)
+
 A PKGBUILD for [hercules and labours](https://github.com/src-d/hercules).
 
 ## Installation
