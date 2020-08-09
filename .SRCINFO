@@ -1,6 +1,6 @@
 pkgbase = homematic-manager-bin
 	pkgdesc = Homematic Device Configuration and Administration
-	pkgver = 2.6.2
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/hobbyquaker/homematic-manager
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = homematic-manager-bin
 	provides = homematic-manager
 	conflicts = homematic-manager
 	options = !strip
-	source = https://github.com/hobbyquaker/homematic-manager/releases/download/2.6.2/homematic-manager_2.6.2_amd64.deb
-	sha256sums = 38efa9f2ad79ddf00bf4011efb8538a7cb2684eb64481bd03b2357f2abe4bf2f
+	source = https://github.com/hobbyquaker/homematic-manager/releases/download/2.7.0/homematic-manager_2.7.0_amd64.deb
+	sha256sums = 61697706efb06f496b2ed3f18fc791a5042961fac0f63430d865f404b901ff76
 
 pkgname = homematic-manager-bin
 
