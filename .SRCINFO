@@ -1,0 +1,15 @@
+pkgbase = python-pyquaternion
+	pkgdesc = A fully featured, pythonic library for representing and using quaternions
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	source = https://api.github.com/repos/KieranWynn/pyquaternion/tarball/v0.9.5
+	sha512sums = 272fb4290cb99a8ffa733f5a45bcde97716523cde30a438b5248f38bc6d59c582ea17af73f8af235aec7be8dafcb4ea2e416de07b8263bd9fbf40c0f1595fe8b
+
+pkgname = python-pyquaternion
+
