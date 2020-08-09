@@ -1,7 +1,7 @@
 pkgbase = transgui
 	pkgdesc = A feature rich cross platform Transmission BitTorrent client. Faster and has more functionality than the built-in web GUI.
 	pkgver = 5.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/transmission-remote-gui/transgui
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,10 @@ pkgbase = transgui
 	makedepends = gtk2
 	source = https://github.com/transmission-remote-gui/transgui/archive/v5.18.0.tar.gz
 	source = transgui.desktop
+	source = https://github.com/transmission-remote-gui/transgui/pull/1329.patch
 	sha256sums = d1cbb16eb35d41e76f4a171a3887053899e8dc6a1124afc21615b5038ea60d78
 	sha256sums = 6c1723e084bd4afc908957e005dea60f919b42426d82cbcdee89239c64c6093d
+	sha256sums = f50857a783950421bb22b8c59923a84196968bac6c9488bcf241bb005298a390
 
 pkgname = transgui-qt
 	depends = qt5pas

@@ -1,0 +1,49 @@
+From 8d63a310cbdc99ff8d565e2429c0740a8be5c3cb Mon Sep 17 00:00:00 2001
+From: Kuzz <Kuzz@ThinkPad.localdomain>
+Date: Wed, 29 Jul 2020 21:24:21 +0300
+Subject: [PATCH] Deduplicate RequestInfo params. #1325
+
+---
+ rpc.pas | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/rpc.pas b/rpc.pas
+index 2cbfeee0..7f9254c8 100644
+--- a/rpc.pas
++++ b/rpc.pas
+@@ -816,21 +816,32 @@ function TRpc.RequestInfo(TorrentId: integer; const Fields: array of const; cons
+   req, args: TJSONObject;
+   _fields: TJSONArray;
+   i: integer;
++  sl: TStringList;
+ begin
+   Result:=nil;
+   req:=TJSONObject.Create;
++  sl:=TStringList.Create;
+   try
+     req.Add('method', 'torrent-get');
+     args:=TJSONObject.Create;
+     if TorrentId <> 0 then
+       args.Add('ids', TJSONArray.Create([TorrentId]));
+-    _fields:=TJSONArray.Create(Fields);
+-    for i:=Low(ExtraFields) to High(ExtraFields) do
+-      _fields.Add(ExtraFields[i]);
++    _fields:=TJSONArray.Create;
++    for i:=Low(Fields) to High(Fields) do
++      if (Fields[i].VType=vtAnsiString) then
++         sl.Add(String(Fields[i].VAnsiString));
++    sl.AddStrings(ExtraFields);
++    sl.Sort;
++    for i:=sl.Count-2 downto 0 do
++      if (sl[i]=sl[i+1]) then
++        sl.Delete(i+1);
++    for i:=0 to sl.Count-1 do
++      _fields.Add(sl[i]);
+     args.Add('fields', _fields);
+     req.Add('arguments', args);
+     Result:=SendRequest(req);
+   finally
++    sl.Free;
+     req.Free;
+   end;
+ end;
