@@ -2,7 +2,7 @@
 
 pkgname=asn-git
 _reponame=asn
-pkgver=r17.0705fd2
+pkgver=r19.dc7fb81
 pkgrel=1
 pkgdesc='ASN/IPv4/IPv6/Prefix/ASPath lookup tool'
 arch=('any')

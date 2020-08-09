@@ -1,6 +1,6 @@
 pkgbase = asn-git
 	pkgdesc = ASN/IPv4/IPv6/Prefix/ASPath lookup tool
-	pkgver = r17.0705fd2
+	pkgver = r19.dc7fb81
 	pkgrel = 1
 	url = https://github.com/nitefood/asn
 	arch = any
