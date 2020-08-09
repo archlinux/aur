@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=pingparsing
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Parser and transmitter for ping command'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-humanreadable' 'python-pyparsing' 'python-subprocrunner' 'python-typepy')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('a935023a5def02cf16e9e61990bcd895ea988677718bb242646c2db05150ae38')
+sha256sums=('0e6e008afef9eceb3cabaf11b71383fddbd254665d05a5eca17408f41bca1bab')
 
 build() {
   cd "${pkgname}-${pkgver}"
