@@ -1,14 +1,14 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gnome-shell-extension-system76-power-git
-pkgver=1.2.0.r7.gfd70291
+pkgver=1.2.0.r17.gfd70291
 pkgrel=1
 pkgdesc="Gnome shell extension for System76 power management"
 arch=('any')
 url="https://github.com/pop-os/gnome-shell-extension-system76-power"
 license=('MIT')
 depends=('gnome-shell' 'system76-power')
-makedepends=('git' 'make')
+makedepends=('git' 'make' 'typescript')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
