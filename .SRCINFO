@@ -1,6 +1,6 @@
 pkgbase = wingide
 	pkgdesc = Wing IDE Professional is the full-featured Python IDE for professional programmers.
-	pkgver = 7.2.1.0.1
+	pkgver = 7.2.3.0.1
 	pkgrel = 1
 	url = http://www.wingware.com
 	install = wingide.install
@@ -12,8 +12,8 @@ pkgbase = wingide
 	depends = xdg-utils
 	options = !strip
 	options = !emptydirs
-	source = https://wingware.com/pub/wingpro/7.2.1.0/wingpro-7.2.1.0-linux-x64.tar.bz2
-	md5sums = feec28355b9835d479bd1cfc06ec1f4d
+	source = https://wingware.com/pub/wingpro/7.2.3.0/wingpro-7.2.3.0-linux-x64.tar.bz2
+	md5sums = d6096999b98a1acc36eff1b500158909
 
 pkgname = wingide
 
