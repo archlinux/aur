@@ -3,7 +3,7 @@ _reponame=ndn-cxx
 _pkgname=ndn-cxx
 pkgname=${_pkgname}
 pkgver=0.7.0
-pkgrel=9
+pkgrel=10
 # epoch=
 pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ validpgpkeys=()
 
 prepare() {
 	cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
-	./waf configure --prefix=/usr/local --with-tests
+	./waf configure --prefix=/usr --with-tests
 }
 
 build() {
@@ -49,4 +49,5 @@ package() {
 	cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
 	./waf install --destdir="${pkgdir}"
   cp -r "${srcdir}/${_reponame}-${_reponame}-${pkgver}/build/docs/"* "${pkgdir}/usr/share/doc/$_pkgname"
+  mv "${pkgdir}/usr/etc" "${pkgdir}/"
 }
