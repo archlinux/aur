@@ -8,7 +8,7 @@
 # https://www.kernel.org/category/releases.html
 # 5.4 Greg Kroah-Hartman & Sasha Levin 2019-11-24 Dec, 2021
 _LLL_VER=5.4
-_LLL_SUBVER=50
+_LLL_SUBVER=57
 
 # Bisect debug, v5.4.47 -> v5.4.48
 _Bisect_debug=off # on, test, off
@@ -43,9 +43,9 @@ _UKSM_PATCH="https://raw.githubusercontent.com/dolohow/uksm/${_UKSM_COMMIT}/v5.x
 # https://github.com/Gentoo-zh/linux-cjktty
 # https://github.com/torvalds/linux/compare/v5.4...Gentoo-zh:5.4-utf8
 _CJKTTY_LLL_VER=5.4
-_CJKTTY_PATCH_FILE=linux-cjktty-${_CJKTTY_LLL_VER}.patch
+_CJKTTY_PATCH_FILE=linux-cjktty-${_CJKTTY_LLL_VER}
 _CJKTTY_PATCH_URL="https://github.com/torvalds/linux/compare/v${_CJKTTY_LLL_VER}...Gentoo-zh:${_CJKTTY_LLL_VER}-utf8.patch"
-_CJKTTY_PATCH="${_CJKTTY_PATCH_FILE}::${_CJKTTY_PATCH_URL}"
+_CJKTTY_PATCH="${_CJKTTY_PATCH_FILE}.patch::${_CJKTTY_PATCH_URL}"
 
 _PATHSET_DESC="ck${_CK_VER} uksm-${_UKSM_VER} and cjktty"
 
@@ -56,7 +56,7 @@ if [ "$_Bisect_debug" == "off" ]; then
 fi
 _srcname=linux-${_LLL_VER}
 pkgver=${_LLL_VER}.${_LLL_SUBVER}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -72,8 +72,10 @@ source=(
         ${_CJKTTY_PATCH}
         'legacy-wireless-ioctls-4.9+.patch'
         'sphinx-workaround.patch'
+        'ck-patch-for-5.4.57+.patch'
         'uksm-patch-for-5.4.33+.patch'
         'linux-cjktty-patch-for-5.4.36+.patch'
+        'linux-cjktty-patch-for-5.4.54+.patch'
         'broken-sleep-5.4.48+.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/patch/?id=f7757368e0f0b3e108088ca7b5b8abda6faa7ebc'
         'config'         # the main kernel config file
         '60-linux.hook'  # pacman hook for depmod
@@ -87,14 +89,16 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            'f510a113463889975233c14678664b3f777c744becc671e5416a3f9f21200e48'
+            '5b22c27823b8578c4e237f107658a9391d640110ce7bc4cca9f5366b5c6eaf72'
             'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
             '81d34bf02e771a126af5cb382d44a86dcc759c88b7c89fc7e5b7737731b9130e'
             '50213f3270499fceb452946252d61f5471571c77baf3dd510fbb00cfa9831c9a'
             'edfb9939840b8710d6ee0385a8e968609eef348295465bb087744c18ed3496e0'
             'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
+            'a10a4848c7a9842c0c7760b087ea38a4356dc1a2c2e26334cb0106c25785554f'
             '6826624f65276927de012f040e77b02231fe6345b9da7c702deacd9372ea001e'
             '573f1c40951a6ee4cf6b07a6a8a1123b00fcd8bff29843905cf191e08f1d87f2'
+            '2c9faabb5e09b1f818b051ced3eb90b6c04aa08616952d99eedf328c7c8dda2f'
             '9f9ec5becca27bc7b65b372254bcd4c64069deff1d3b7fa15e6e416595163654'
             '7ce388e429d8df479a721285e445e116c5ee41e3126a702862e59056460b655e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
@@ -135,6 +139,7 @@ prepare() {
   # Patch source with ck patch set
   msg "Patching source with ck${_CK_VER} including BFS"
   cp "../patch-${_LLL_VER}-ck${_CK_VER}" "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
+  patch -i ../ck-patch-for-5.4.57+.patch "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
   patch -Np1 -i "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
 
   msg "Patching source with uksm ${_UKSM_VER} patches"
@@ -143,8 +148,9 @@ prepare() {
   patch -Np1 -i "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
 
   msg "Patching source with Gentoo-zh/linux-cjktty patches"
-  cp "../${_CJKTTY_PATCH_FILE}" "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
+  cp "../${_CJKTTY_PATCH_FILE}.patch" "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
   patch -i ../linux-cjktty-patch-for-5.4.36+.patch "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
+  patch -i ../linux-cjktty-patch-for-5.4.54+.patch "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
   patch -Np1 -i "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
 
   msg "Patching source to reinstate the legacy wireless ioctls"

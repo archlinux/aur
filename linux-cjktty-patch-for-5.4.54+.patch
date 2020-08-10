@@ -1,0 +1,43 @@
+--- linux-cjktty-5.4.53.patch	2020-08-08 17:16:04.000000000 +0800
++++ linux-cjktty-5.4.54.patch	2020-08-08 23:18:35.000000000 +0800
+@@ -111,11 +111,11 @@
+  		notify_update(vc);
+  	}
+ @@ -1095,7 +1118,7 @@ int vc_allocate(unsigned int currcons)	/* return 0 on success */
+- 	if (!*vc->vc_uni_pagedir_loc)
+- 		con_set_default_unimap(vc);
+- 
++ 	    vc->vc_screenbuf_size > KMALLOC_MAX_SIZE || !vc->vc_screenbuf_size)
++ 		goto err_free;
++ 	err = -ENOMEM;
+ -	vc->vc_screenbuf = kzalloc(vc->vc_screenbuf_size, GFP_KERNEL);
+-+	vc->vc_screenbuf = kmalloc(vc->vc_screenbuf_size * 2, GFP_KERNEL);
+++	vc->vc_screenbuf = kzalloc(vc->vc_screenbuf_size * 2, GFP_KERNEL);
+  	if (!vc->vc_screenbuf)
+  		goto err_free;
+  
+@@ -137,11 +137,11 @@
+  	if (new_cols == vc->vc_cols && new_rows == vc->vc_rows)
+  		return 0;
+  
+- 	if (new_screen_size > KMALLOC_MAX_SIZE)
++ 	if (new_screen_size > KMALLOC_MAX_SIZE || !new_screen_size)
+  		return -EINVAL;
+ -	newscreen = kzalloc(new_screen_size, GFP_USER);
+ +
+-+	newscreen = kmalloc(new_screen_size * 2, GFP_USER);
+++	newscreen = kzalloc(new_screen_size * 2, GFP_USER);
+ +
+  	if (!newscreen)
+  		return -ENOMEM;
+@@ -245,9 +245,9 @@
+  				inverse = 0;
+  				width = 1;
+ @@ -3360,7 +3413,7 @@ static int __init con_init(void)
+- 		INIT_WORK(&vc_cons[currcons].SAK_work, vc_SAK);
+  		tty_port_init(&vc->port);
+  		visual_init(vc, currcons, 1);
++ 		/* Assuming vc->vc_{cols,rows,screenbuf_size} are sane here. */
+ -		vc->vc_screenbuf = kzalloc(vc->vc_screenbuf_size, GFP_NOWAIT);
+ +		vc->vc_screenbuf = kzalloc(vc->vc_screenbuf_size * 2, GFP_NOWAIT);
+  		vc_init(vc, vc->vc_rows, vc->vc_cols,
