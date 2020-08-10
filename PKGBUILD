@@ -1,7 +1,7 @@
 # Maintainer: stardust95
 # Contributor: Namarrgon
 pkgname=lebiniou
-pkgver=3.42.1
+pkgver=3.43
 pkgrel=1
 pkgdesc="A tool to create images from sound"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://biniou.net/"
 license=('GPL')
 depends=(libmagick6 fftw sdl2_ttf libcaca ffmpeg lebiniou-data)
 source=("https://gitlab.com/lebiniou/lebiniou/-/archive/version-$pkgver/lebiniou-version-$pkgver.tar.gz")
-sha256sums=('8398bf56ee3973472772f06ce51bcf551c617d9c959bfda8147f09863da452f5')
+sha256sums=('5da807992bcde951f827cf60848989bd687425ec638f67bb211609260c0b3074')
 
 build() {
 	cd "$pkgname-version-$pkgver"
