@@ -31,7 +31,7 @@ conflicts=('awesome')
 backup=('etc/xdg/awesome/rc.lua')
 source=("$pkgname::git+https://github.com/awesomeWM/awesome.git")
 md5sums=('SKIP')
-_LUA=5.3
+_LUA_VER=5.3
 
 pkgver() {
   cd $pkgname
@@ -41,8 +41,8 @@ pkgver() {
 prepare() {
   mkdir -p build
   cd $pkgname
-  sed -i "s/COMMAND lua\b/COMMAND lua${_LUA}/" awesomeConfig.cmake tests/examples/CMakeLists.txt
-  sed -i "s/LUA_COV_RUNNER lua\b/LUA_COV_RUNNER lua${_LUA}/" tests/examples/CMakeLists.txt
+  sed -i "s/COMMAND lua\b/COMMAND lua${_LUA_VER}/" awesomeConfig.cmake tests/examples/CMakeLists.txt
+  sed -i "s/LUA_COV_RUNNER lua\b/LUA_COV_RUNNER lua${_LUA_VER}/" tests/examples/CMakeLists.txt
 }
 
 build() {
@@ -51,8 +51,8 @@ build() {
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSYSCONFDIR=/etc \
-    -DLUA_INCLUDE_DIR=/usr/include/lua${_LUA} \
-    -DLUA_LIBRARY=/usr/lib/liblua.so."$_LUA"
+    -DLUA_INCLUDE_DIR=/usr/include/lua${_LUA_VER} \
+    -DLUA_LIBRARY=/usr/lib/liblua.so.${_LUA_VER}
   make
 }
 
