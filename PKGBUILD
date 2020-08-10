@@ -6,7 +6,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=fatsort-svn
-pkgver=1.6.3.r620
+pkgver=1.6.3.r623M
 pkgrel=1
 pkgdesc='Sorts directory structures of FAT16 and FAT32 file systems'
 arch=('x86_64')
@@ -27,10 +27,10 @@ pkgver() {
 
 build() {
   cd ${pkgname}
-  make
+  make src
 }
 
 package() {
   cd ${pkgname}
-  make DESTDIR="$pkgdir" SBINDIR=/usr/bin MANDIR=/usr/share/man/man1 install
+  install -Dm755 src/${pkgname%-svn} "$pkgdir"/usr/bin/${pkgname%-svn}
 }
