@@ -1,15 +1,16 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+
 pkgname=vmd-molfile-plugins
 pkgver=1.9.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Visual Molecular Dynamics - molfile plugins"
 url="https://www.ks.uiuc.edu/Research/vmd/plugins"
-license=('custom')
-arch=('x86_64')
-depends=('tcl' 'netcdf')
-makedepends=('make' 'gcc')
+license=(custom)
+arch=(x86_64)
+depends=(tcl netcdf gcc9)
+makedepends=(make patch)
 md5sums=('5706f88b9b77cc5fafda6fef3a82d6fa'
-         'd1eb2b1ab9771053153635fdaacb5a81'
+         'c2311f45d6524293627a9aca15613b53'
          'f60d4d3f9c39c0e9e997a6eacacbade1')
 
 # You should download the source package from the VMD site and put it in the PKGBUILD folder
@@ -48,4 +49,3 @@ package() {
   # install license
   install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
-
