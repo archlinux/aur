@@ -1,12 +1,14 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = xfs_undelete
+	pkgdesc = An undelete tool for the XFS filesystem by Jan Kandziora <jjj@gmx.de>
+	pkgver = git
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
-	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	url = https://github.com/ianka/xfs_undelete
+	arch = any
+	license = GPLv3
+	depends = tcl
+	depends = tcllib
+	source = git+https://github.com/ianka/xfs_undelete.git
+	md5sums = SKIP
 
-pkgname = yarxi
+pkgname = xfs_undelete
 
