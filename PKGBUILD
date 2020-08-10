@@ -38,5 +38,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 libwidevinecdm.so -t "$pkgdir/usr/lib/qt/plugins/ppapi/"
+  install -Dm644 $_pkgname-widevine-$pkgver/libwidevinecdm.so -t "$pkgdir/usr/lib/qt/plugins/ppapi/"
 }
