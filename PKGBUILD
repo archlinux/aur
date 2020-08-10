@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-nightlight-git
-pkgver=r144.9391435
+pkgver=2.0.4.r0.g3ea902a
 pkgrel=1
 pkgdesc='Winganel Nightlight Indicator'
 arch=(x86_64)
@@ -19,7 +19,7 @@ makedepends=(
   intltool
   meson
   vala
-  wingpanel-git
+  wingpanel
 )
 provides=(wingpanel-indicator-nightlight)
 conflicts=(wingpanel-indicator-nightlight)
@@ -29,7 +29,7 @@ sha256sums=(SKIP)
 pkgver() {
   cd wingpanel-indicator-nightlight
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

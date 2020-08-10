@@ -1,6 +1,6 @@
 pkgbase = wingpanel-indicator-nightlight-git
 	pkgdesc = Winganel Nightlight Indicator
-	pkgver = r144.9391435
+	pkgver = 2.0.4.r0.g3ea902a
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel-indicator-nightlight
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wingpanel-indicator-nightlight-git
 	makedepends = intltool
 	makedepends = meson
 	makedepends = vala
-	makedepends = wingpanel-git
+	makedepends = wingpanel
 	depends = glib2
 	depends = glibc
 	depends = gtk3
