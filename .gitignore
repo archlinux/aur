@@ -1,0 +1,5 @@
+faustfilters-*-source.tar.gz
+faustfilters-*.pkg.tar.xz
+faustfilters-*.pkg.tar.zst
+pkg/
+src/
