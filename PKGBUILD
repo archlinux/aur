@@ -1,14 +1,13 @@
 # Contributor: Darwin M. Bautista <djclue917@gmail.com>
 # Maintainer: aksr <aksr at t-com dot me>
+# Co-maintainer: Aanok <aanok.aur@gmail.com>
 pkgname=ttf-kochi-substitute
 pkgver=20030809
-pkgrel=5
+pkgrel=6
 pkgdesc="High quality Japanese TrueType fonts"
 arch=('any')
 url="http://sourceforge.jp/projects/efont/"
 license=('custom')
-depends=('fontconfig' 'xorg-font-utils')
-install=ttf.install
 source=("http://osdn.dl.sourceforge.jp/efont/5411/kochi-substitute-${pkgver}.tar.bz2")
 md5sums=('c4b14e287cf2b1688c649e2274e128b3')
 sha1sums=('9c48f3ba33558b4d48e7764b944fcb2f5f941dd8')

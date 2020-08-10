@@ -1,13 +1,10 @@
 pkgbase = ttf-kochi-substitute
 	pkgdesc = High quality Japanese TrueType fonts
 	pkgver = 20030809
-	pkgrel = 5
+	pkgrel = 6
 	url = http://sourceforge.jp/projects/efont/
-	install = ttf.install
 	arch = any
 	license = custom
-	depends = fontconfig
-	depends = xorg-font-utils
 	source = http://osdn.dl.sourceforge.jp/efont/5411/kochi-substitute-20030809.tar.bz2
 	md5sums = c4b14e287cf2b1688c649e2274e128b3
 	sha1sums = 9c48f3ba33558b4d48e7764b944fcb2f5f941dd8
