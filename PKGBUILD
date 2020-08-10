@@ -19,7 +19,7 @@ source=(
 	graylog.service
 )
 
-sha256sums=('4f8f4709a22540b8091eb784e096b43832033e53c0c03b83ceb1f9b672cc82f9'
+sha256sums=('fa59c73cb65006e68e292867ff29838591844b978650f96f3090d16bcab2d673'
             'SKIP'
             'SKIP')
 
