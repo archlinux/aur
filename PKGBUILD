@@ -4,7 +4,7 @@ _branch="master"
 
 pkgname="blih_cli-git"
 pkgdesc="Blih CLI (say blikli) is the Blih (Bocal Lightweight Interface for Humans) Js CLI (Command-Line Interface) for linux env."
-pkgver=r60.a92a49e
+pkgver=0.2.0_6_ga92a49e
 pkgrel=2
 
 arch=('i686' 'x86_64')
@@ -15,16 +15,9 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd "${pkgname}" || exit
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-prepare() {
-  cd "${pkgname}" || exit
-
-  command -v ${_basename} > /dev/null && sudo sh uninstall.sh
-  return 0
+  git show --format=\"%H\" --no-patch | git describe --tags | sed 's/v//' | sed 's/-/_/g'
 }
 build() {
-  # There is nothing to build ? Nice
   return 0
 }
 package() {
