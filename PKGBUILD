@@ -2,7 +2,7 @@
 
 pkgname=dida
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="使用electron包装的滴答客户端"
 arch=('any')
 url="https://github.com/jialeens/dida"
