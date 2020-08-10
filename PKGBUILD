@@ -3,7 +3,7 @@ _reponame=NFD
 _pkgname=ndn-nfd
 pkgname=$_pkgname
 pkgver=0.7.0
-pkgrel=8
+pkgrel=9
 # epoch=
 pkgdesc="NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ prepare() {
 
   cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
 
-  ./waf configure --prefix=/usr/local --with-tests
+  ./waf configure --prefix=/usr --with-tests
 }
 
 build() {
@@ -61,4 +61,5 @@ package() {
   cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
   ./waf install --destdir="${pkgdir}"
   cp -r "${srcdir}/${_reponame}-${_reponame}-${pkgver}/build/docs/"* "${pkgdir}/usr/share/doc/$_pkgname"
+  mv "${pkgdir}/usr/etc" "${pkgdir}/"
 }
