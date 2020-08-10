@@ -1,6 +1,6 @@
 pkgbase = wingpanel-git
 	pkgdesc = Stylish top panel that holds indicators and spawns an application launcher
-	pkgver = r543.fb81bcb
+	pkgver = 2.3.2.r5.ge864189
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = wingpanel-git
 	depends = libgee
 	depends = libgranite.so
 	depends = mutter
-	provides = libwingpanel-2.0.so
+	provides = libwingpanel-3.0.so
 	provides = wingpanel
 	conflicts = wingpanel
 	source = git+https://github.com/elementary/wingpanel.git

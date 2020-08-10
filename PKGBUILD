@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-git
-pkgver=r543.fb81bcb
+pkgver=2.3.2.r5.ge864189
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher'
 arch=(x86_64)
@@ -24,7 +24,7 @@ makedepends=(
   vala
 )
 provides=(
-  libwingpanel-2.0.so
+  libwingpanel-3.0.so
   wingpanel
 )
 conflicts=(wingpanel)
@@ -34,7 +34,7 @@ sha256sums=(SKIP)
 pkgver() {
   cd wingpanel
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
