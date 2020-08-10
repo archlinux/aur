@@ -2,7 +2,7 @@
 
 _pkgname=janet
 pkgname=janet-lang-git
-pkgver=1.11.0.r2299.fa55283f
+pkgver=1.11.4.r2336.6f2f3fdb
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -24,7 +24,8 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-
+    CFLAGS+=" -fPIC"
+    LDFLAGS+=" -rdynamic"
     make PREFIX="/usr" $janet_build
     make PREFIX="/usr" build/janet.pc
     make PREFIX="/usr" docs
