@@ -1,14 +1,13 @@
 # Maintainer: orhun <github.com/orhun>
 pkgname=zps-git
-pkgdesc="A small utility for listing and reaping zombie processes."
+pkgdesc="A small utility for listing and reaping zombie processes (git)"
 pkgver=1.2.3.r0.g9d08c49
 pkgrel=1
 arch=('any')
 url="https://github.com/orhun/zps"
 license=('GPL3')
 makedepends=('cmake')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 source=('git://github.com/orhun/zps.git')
 sha256sums=('SKIP')
 
