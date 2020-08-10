@@ -2,7 +2,7 @@
 
 pkgname=mon2cam-git
 _pkgname=Mon2Cam
-pkgver=r43.e0a319b
+pkgver=r45.d3c6a1c
 pkgrel=1
 pkgdesc="Workaround for multi-monitor Discord screensharing"
 arch=("any")
@@ -49,7 +49,7 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
 
-    install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm755 "$_pkgname" "$pkgdir/usr/bin/mon2cam"
     install -Dm644 "$srcdir/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
