@@ -1,7 +1,7 @@
 # Maintainer: Romain Bazile <gromain d0t baz at gmail dot com>
 
 pkgname=mcuxpresso-config-tools
-pkgver=7.0.1
+pkgver=8.0.1
 pkgrel=1
 epoch=
 pkgdesc="Integrated suite of configuration tools for NXP's microcontrollers. From BIN package distributed by NXP."
@@ -9,9 +9,9 @@ arch=('x86_64')
 url="http://www.nxp.com/products/software-and-tools/run-time-software/mcuxpresso-software-and-tools/mcuxpresso-config-tools:MCUXpresso-Config-Tools"
 license=('custom:"NXP"')
 depends=('java-environment' 'libxslt' 'libxtst' 'gcc-libs-multilib' 'gtk2' 'alsa-lib' 'libnet')
-source=("$pkgname.deb.bin::https://cache.nxp.com/secured/bsps/mcuxpresso-config-tools-v7.0.1-1_amd64.deb.bin?__gda__=1583741778_4f0a1178c18866aec9b7c6b80850a6f9&fileExt=.bin" "LICENSE" "${pkgname}.install")
-sha256sums=('0db62837f56f773ae01a0e41b00b4e36bce3234b08a25d8d0f5110fff0bb90d2'
-            'e2c42a6da340d06d39e184fdcf56dfa59c6ed60953627a2e36a0a665fd1f0f3a'
+source=("$pkgname.deb.bin::https://cache.nxp.com/secured/bsps/mcuxpresso-config-tools-v8-1_amd64.deb.bin?__gda__=1597045577_ba98084c01908bdd60d94d43c27382a5&fileExt=.bin" "LICENSE" "${pkgname}.install")
+sha256sums=('24b76f8c55035b62efa4a32633b51ef929f9dafba7e4abd8bbf614d92b6bf321'
+            '4890a24d8cfed2cc20efa8bed195c6eacb32ad5ec83d3b6129a88fd397602115'
             '6435144e9b28ec594ebea3e598e01e23a4d41c3787a67de68dafedcf71bc18ed')
 
 options=('!strip')
@@ -22,8 +22,8 @@ prepare() {
     rm mcuxpresso-config-tools.deb.bin
     cd ${srcdir}/
     mkdir -p mcuxpresso-config-tools
-    bsdtar -x -f mcuxpresso-config-tools-v7-1_amd64.deb -C mcuxpresso-config-tools
-    rm mcuxpresso-config-tools-v7-1_amd64.deb
+    bsdtar -x -f mcuxpresso-config-tools-v8-1_amd64.deb -C mcuxpresso-config-tools
+    rm mcuxpresso-config-tools-v8-1_amd64.deb
     bsdtar -x -f mcuxpresso-config-tools/data.tar.gz -C mcuxpresso-config-tools
     rm mcuxpresso-config-tools/data.tar.gz
 }
