@@ -1,7 +1,7 @@
 # Maintainer: Spider.007 <aur@spider007.net>
 pkgname=graylog
 pkgver=3.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB"
 arch=('any')
 url="https://www.graylog.org/"
@@ -29,10 +29,6 @@ prepare() {
 
 package() {
 	cd "$pkgdir"
-
-	install -d var/lib/graylog/spool
-	install -d var/lib/graylog/data/journal
-	chown nobody: -R var/lib/graylog/
 
 	for f in sigar.jar libsigar-{amd64,x86}-linux.so; do
 		install -Dm 644 "$srcdir/$pkgname-${pkgver/_/-}/lib/sigar/$f" usr/lib/graylog/lib/sigar/${f##*/}
