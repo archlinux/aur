@@ -8,7 +8,7 @@ pkgbase = sipvicious
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python>=3.6
-	depends = python-scapy
+	optdepends = python-scapy: allow svcrash to crash SIPVicious toolset
 	noextract = LICENSE
 	source = sipvicious-0.3.1.tar.gz::https://github.com/EnableSecurity/sipvicious/tarball/384c9d432a87568a4f3df9d4aefc8fdfbaecabc4
 	source = https://raw.githubusercontent.com/EnableSecurity/sipvicious/master/LICENSE

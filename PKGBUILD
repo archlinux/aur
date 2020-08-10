@@ -4,12 +4,13 @@
 
 pkgname=sipvicious
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of security tools that can be used to audit SIP based VoIP systems"
 arch=('any')
 url="https://github.com/EnableSecurity/sipvicious"
 license=('GPL3')
-depends=('python>=3.6' 'python-scapy')
+depends=('python>=3.6')
+optdepends=('python-scapy: allow svcrash to crash SIPVicious toolset')
 makedepends=('python-setuptools')
 changelog=$pkgname.changelog
 source=("$pkgname-$pkgver.tar.gz::https://github.com/EnableSecurity/sipvicious/tarball/384c9d432a87568a4f3df9d4aefc8fdfbaecabc4"
@@ -38,9 +39,9 @@ package() {
   python setup.py install -O2 --skip-build --root="$pkgdir"
 
   install -dm755 "$pkgdir/usr/share/man/man1"
-  gzip -c --best man1/svcrack.1 > "$pkgdir/usr/share/man/man1/svcrack.1.gz"
-  gzip -c --best man1/svcrash.1 > "$pkgdir/usr/share/man/man1/svcrash.1.gz"
-  gzip -c --best man1/svmap.1 > "$pkgdir/usr/share/man/man1/svmap.1.gz"
+  gzip -c --best man1/svcrack.1  > "$pkgdir/usr/share/man/man1/svcrack.1.gz"
+  gzip -c --best man1/svcrash.1  > "$pkgdir/usr/share/man/man1/svcrash.1.gz"
+  gzip -c --best man1/svmap.1    > "$pkgdir/usr/share/man/man1/svmap.1.gz"
   gzip -c --best man1/svreport.1 > "$pkgdir/usr/share/man/man1/svreport.1.gz"
-  gzip -c --best man1/svwar.1 > "$pkgdir/usr/share/man/man1/svwar.1.gz"
+  gzip -c --best man1/svwar.1    > "$pkgdir/usr/share/man/man1/svwar.1.gz"
 }
