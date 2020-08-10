@@ -2,7 +2,7 @@
 
 pkgname=kimageannotator
 _pkgname=kImageAnnotator
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Tool for annotating images'
 arch=('i686' 'x86_64')
@@ -44,4 +44,4 @@ package(){
   fi
 }
 
-sha256sums=('483bc305631c018c4d7fe835fe0d1c5b39b350b66b55698f5868d4879131a776')
+sha256sums=('d79d4132932ebf03f7f620281d033a74c7ee3fa7c5f204f2e86dac240cfaa8f1')
