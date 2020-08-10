@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-network-git
-pkgver=r463.b67512a
+pkgver=2.2.4.r10.gb2aa1ce
 pkgrel=1
 pkgdesc='Network indicator for Wingpanel'
 arch=('x86_64')
@@ -11,7 +11,7 @@ groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libnm-glib' 'networkmanager'
          'nm-connection-editor'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('git' 'granite-git' 'meson' 'vala' 'wingpanel-git')
+makedepends=('git' 'granite-git' 'meson' 'vala' 'wingpanel')
 provides=('wingpanel-indicator-network')
 conflicts=('wingpanel-indicator-network')
 replaces=('wingpanel-indicator-nztwork-bzr')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd wingpanel-indicator-network
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
