@@ -10,8 +10,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/named-data/${_reponame}"
 #license=('GPL')
 groups=()
-depends=('python' 'python-cryptography')
-makedepends=('ndn-cxx')
+depends=('python' 'python-cryptography' 'ndn-cxx')
+makedepends=()
 checkdepends=()
 optdepends=()
 provides=("${pkgname}")
@@ -27,10 +27,10 @@ validpgpkeys=()
 
 build() {
   cd "${srcdir}/${_reponame}-${pkgver}"
-	python setup.py build
+	python3 setup.py build
 }
 
 package() {
 	cd "${srcdir}/${_reponame}-${pkgver}"
-	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+	python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
