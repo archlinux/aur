@@ -1,7 +1,7 @@
 # Maintainer: jialeens <jialeadmin@163.com>
 
 pkgname=dida-git
-pkgver=1.0.4.r4.gc7a144a
+pkgver=1.0.4.r5.gbcb26e5
 pkgrel=1
 pkgdesc="使用electron包装的滴答客户端"
 arch=('any')
