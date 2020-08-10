@@ -1,6 +1,6 @@
 pkgbase = python-pytest-md-report
 	pkgdesc = pytest plugin to create a report in Markdown table format
-	pkgver = 0.0.13
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://github.com/thombashi/pytest-md-report
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-pytest-md-report
 	depends = python-pytablewriter
 	depends = python-pytest
 	depends = python-typepy
-	source = https://files.pythonhosted.org/packages/source/p/pytest-md-report/pytest-md-report-0.0.13.tar.gz
-	sha256sums = b802f46ebd63bc04afce8f9f32a85daae388f902c7c9516302dbd1fbf9e090e5
+	source = https://files.pythonhosted.org/packages/source/p/pytest-md-report/pytest-md-report-0.0.14.tar.gz
+	sha256sums = 9b560536a7192c67a6615b47eb320d9b86fa171d63700cad770bb790e33c51dd
 
 pkgname = python-pytest-md-report
 
