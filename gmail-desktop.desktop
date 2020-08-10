@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Gmail Desktop
+Exec=gmail-desktop
+Terminal=false
+Type=Application
+Icon=gmail-desktop
+StartupWMClass=Gmail Desktop
+Comment=Unofficial Gmail Desktop App
+Categories=Network;Office;

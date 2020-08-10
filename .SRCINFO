@@ -1,0 +1,20 @@
+pkgbase = gmail-desktop
+	pkgdesc = Unofficial Gmail desktop app
+	pkgver = 2.20.2
+	pkgrel = 1
+	url = https://github.com/timche/gmail-desktop
+	arch = x86_64
+	license = MIT
+	makedepends = yarn
+	depends = electron
+	optdepends = libnotify: desktop notifications
+	optdepends = libappindicator-gtk3: tray icon
+	source = gmail-desktop-2.20.2.tar.gz::https://github.com/timche/gmail-desktop/archive/v2.20.2.tar.gz
+	source = gmail-desktop.sh
+	source = gmail-desktop.desktop
+	sha256sums = f9143b122fc43144bfaeff7c98f64a0ca3750bcc30dbf3d73113b0412d6d3578
+	sha256sums = a1f2eb9525dd10556ffde37a4dc9e06636a81d1d9ce815d1167e48954abee1dc
+	sha256sums = 8c30e207fe88455f63f4c0b2ae9087a2ca2bbeaa68b9be244c31a9ec392373c4
+
+pkgname = gmail-desktop
+
