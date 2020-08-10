@@ -6,9 +6,9 @@
 # Contributor: z3ntu <WEI16416@spengergasse.at>
 
 pkgname=packettracer
-pkgver=7.3.0
-pkgrel=6
-pkgdesc="Cisco PacketTracer 7.3.0 installation package"
+pkgver=7.3.1
+pkgrel=1
+pkgdesc="Cisco PacketTracer 7.3.1 installation package"
 arch=( 'x86_64' )
 depends=('openssl-1.0' 'dbus' 'icu' 'glib2' 'libxml2' 'libjpeg-turbo' 'nss')
 options=('!strip' '!emptydirs')
@@ -16,9 +16,9 @@ url="https://www.netacad.com/courses/packet-tracer"
 install=${pkgname}.install
 license=('custom')
 
-source=('local://PacketTracer_730_amd64.deb'
+source=('local://PacketTracer_731_amd64.deb'
 	'packettracer.sh')
-sha512sums=('b06275775703791d56618d99fa7daf29a8a5c82dc17b66d12a9b29927f0a97deb082a757c0cdf72c2345ac32449d0506dad35237ac9935db2e86982e115f1ae1'
+sha512sums=('3fe369ef8cd1e0429422e58ce42d1b4288143e49cdf06e1c0bb15cb0b75a0d0fe0fcdaccdf244cb466cb700644ea8d792672f5a8caef3d307d5c071a97d5d42d'
 	    '09d07ec95712f562bb9217b40a0a04cbb16e42523801b62180050326d67d3592f2ce92444440a10a6e94951c6cf53e27fb360395ef5f3732c71edc51e6a85726')
 
 package() {
@@ -45,6 +45,5 @@ package() {
 
 	install -D -m644 "${pkgdir}/opt/packettracer/saves/Switch/IE_2000/upgrade_downgrade_license_on_ie2000.pkt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -D -m644 "${pkgdir}/opt/packettracer/help/default/copyrights.htm" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
-	install -D -m644 "${pkgdir}/opt/packettracer/eula730.txt" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
 
 }
