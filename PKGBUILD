@@ -3,7 +3,7 @@
 pkgname=st-sane-defaults
 _pkgname=st
 pkgver=0.8.2
-pkgrel=4
+pkgrel=5
 pkgdesc='A simple terminal emulator, with configurations fit for the average user.'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
@@ -13,7 +13,7 @@ source=(https://dl.suckless.org/$_pkgname/$_pkgname-$pkgver.tar.gz
 		sane-defaults-patch.diff
 		st-sane-defaults.desktop)
 sha256sums=('aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35'
-            '15fa8e3fd172bc25ea52d3532ac01edb88877c9af2cb8de140d178507ac9c552'
+            '13eff7da227d0e895d3167d9052f4b9e315a7556aca3bbdfffea229382c712b7'
             '17924fbac300031b0f8b0bbbf85d18c4637a78e7260350714d4062d64783d46d')
 provides=("st")
 conflicts=("st")
