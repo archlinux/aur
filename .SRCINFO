@@ -1,6 +1,6 @@
 pkgbase = feeluown-qqmusic
 	pkgdesc = feeluown qqmusic plugin
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/feeluown/feeluown-qqmusic
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = feeluown-qqmusic
 	depends = feeluown
 	depends = python-marshmallow
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/f/fuo_qqmusic/fuo_qqmusic-0.2.tar.gz
-	sha256sums = 31a944dcd5e57806bd049adc387b63c8dcef41b8a4cfbf948239fa88b02d4e6a
+	source = https://files.pythonhosted.org/packages/source/f/fuo_qqmusic/fuo_qqmusic-0.3.tar.gz
+	sha256sums = 0abb5bbadc2aa1d903b5f9652da04d40c426ad500d26e9ed98f0175966bb96dc
 
 pkgname = feeluown-qqmusic
 
