@@ -43,12 +43,15 @@ design = [                         # Common styles
   "VXAL",                          # flat top &
   "VXAT",                          # semi open 4
   "VXAQ",                          # bottom heavy B
-  "VXBA",                          # tailed q
   "VXBC",                          # straight 9
   "VXBE",                          # crossed zZ
   "VXBH",                          # rounder D
   "VXBL",                          # toothless cornered b
   "VXBQ",                          # tailed d
+  "VXBU",                          # tailed a
+  "VXBY",                          # hatless J
+  "VXCA",                          # crossing Q
+  "VXCT",                          # cornered tailed q
 
 ]
 
@@ -89,12 +92,15 @@ design = [                         # Common styles
   "VXAL",                          # flat top &
   "VXAT",                          # semi open 4
   "VXAQ",                          # bottom heavy B
-  "VXBA",                          # tailed q
   "VXBC",                          # straight 9
   "VXBE",                          # crossed zZ
   "VXBH",                          # rounder D
   "VXBL",                          # toothless cornered b
   "VXBQ",                          # tailed d
+  "VXBU",                          # tailed a
+  "VXBY",                          # hatless J
+  "VXCA",                          # crossing Q
+  "VXCT",                          # cornered tailed q
 
 ]
 # upright = []                     # Upright-only styles
@@ -134,12 +140,15 @@ design = [                         # Common styles
   "VXAL",                          # flat top &
   "VXAT",                          # semi open 4
   "VXAQ",                          # bottom heavy B
-  "VXBA",                          # tailed q
   "VXBC",                          # straight 9
   "VXBE",                          # crossed zZ
   "VXBH",                          # rounder D
   "VXBL",                          # toothless cornered b
   "VXBQ",                          # tailed d
+  "VXBU",                          # tailed a
+  "VXBY",                          # hatless J
+  "VXCA",                          # crossing Q
+  "VXCT",                          # cornered tailed q
 
 ]
 # upright = []                     # Upright-only styles
