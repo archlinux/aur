@@ -1,10 +1,11 @@
 pkgbase = blih_cli-git
 	pkgdesc = Blih CLI (say blikli) is the Blih (Bocal Lightweight Interface for Humans) Js CLI (Command-Line Interface) for linux env.
 	pkgver = r60.a92a49e
-	pkgrel = 1
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
 	depends = nodejs
+	depends = npm
 	options = !strip
 	source = blih_cli-git::git+https://github.com/GreenDjango/blih_cli.git#branch=master
 	sha256sums = SKIP

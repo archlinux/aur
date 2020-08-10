@@ -5,32 +5,31 @@ _branch="master"
 pkgname="blih_cli-git"
 pkgdesc="Blih CLI (say blikli) is the Blih (Bocal Lightweight Interface for Humans) Js CLI (Command-Line Interface) for linux env."
 pkgver=r60.a92a49e
-pkgrel=1
+pkgrel=2
 
 arch=('i686' 'x86_64')
 source=("${pkgname}::git+https://github.com/GreenDjango/${_basename}.git#branch=${_branch}")
-depends=('nodejs')
+depends=('nodejs' 'npm')
 options=("!strip")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "$srcdir/${pkgname}"
+  cd "${pkgname}" || exit
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 prepare() {
-  cd "$srcdir/${pkgname}"
+  cd "${pkgname}" || exit
 
-  # workaround to avoid sudo invokation by the "install.sh"
-  if command -v ${_basename}
-  then
-      sudo sh uninstall.sh
-  fi
+  command -v ${_basename} > /dev/null && sudo sh uninstall.sh
+  return 0
 }
 build() {
   # There is nothing to build ? Nice
-  cd "."
+  return 0
 }
 package() {
-  cd "$srcdir/${pkgname}"
+  cd "${pkgname}" || exit
+
   sudo sh ./install.sh
+  return 0
 }
