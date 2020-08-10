@@ -7,9 +7,9 @@
 pkgname=aerial-4k-videos
 pkgdesc='Apple TV4 HD aerial movies in 4k'
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 arch=(any)
-_url="https://sylvan.apple.com/Aerials/2x/Videos"
+_url="http://sylvan.apple.com/Aerials/2x/Videos"
 optdepends=('xscreensaver-aerial: xscreensaver hack that randomly selects one of the Apple TV4 HD aerial movies')
 source=(
   "$_url"/AK_A004_C012_SDR_20191217_SDR_4K_HEVC.mov
