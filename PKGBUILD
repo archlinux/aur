@@ -1,8 +1,9 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: Michael Riegert <michael at eowyn net>
+# Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Stefano Capitani <stefano@manjaro.org>
 
 pkgname=papirus-maia-icon-theme-git
-pkgver=20180417.6d88bb2
+pkgver=20200417.7338bf0
 pkgrel=1
 pkgdesc="Manjaro variation of Papirus icon theme (git version)"
 arch=('any')
