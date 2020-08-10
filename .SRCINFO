@@ -1,14 +1,14 @@
 pkgbase = tpm2-totp-git
 	pkgdesc = Attest the trustworthiness of a device against a human using time-based one-time passwords
-	pkgver = 0.2.0.r6.b4f26a9
+	pkgver = 0.2.0.r7.a93ddcc
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-totp
 	arch = x86_64
 	license = BSD
-	checkdepends = ibm-sw-tpm2
 	checkdepends = iproute2
 	checkdepends = oath-toolkit
 	checkdepends = procps-ng
+	checkdepends = swtpm
 	checkdepends = tpm2-tools
 	makedepends = git
 	makedepends = autoconf-archive

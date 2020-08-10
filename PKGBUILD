@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=tpm2-totp-git
-pkgver=0.2.0.r6.b4f26a9
+pkgver=0.2.0.r7.a93ddcc
 pkgrel=1
 pkgdesc='Attest the trustworthiness of a device against a human using time-based one-time passwords'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/tpm2-software/tpm2-totp'
 license=('BSD')
 depends=('qrencode' 'tpm2-tss' 'libtss2-esys.so' 'libtss2-mu.so' 'libtss2-tctildr.so')
 makedepends=('git' 'autoconf-archive' 'doxygen' 'pandoc' 'plymouth')
-checkdepends=('ibm-sw-tpm2' 'iproute2' 'oath-toolkit' 'procps-ng' 'tpm2-tools')
+checkdepends=('iproute2' 'oath-toolkit' 'procps-ng' 'swtpm' 'tpm2-tools')
 optdepends=('initramfs: dracut and mkinitcpio hooks to display the TOTP during boot'
             'plymouth: display the TOTP during boot using plymouth messages')
 provides=("${pkgname%-git}")
