@@ -12,8 +12,8 @@ depends=('electron')
 makedepends=('git' 'npm' 'sed' 'gcc')
 checkdepends=()
 optdepends=()
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
+provides=(${pkgname})
+conflicts=("dida")
 replaces=()
 backup=()
 options=()
@@ -40,7 +40,7 @@ build() {
 
 package() {
 	mkdir -p "$pkgdir/usr/lib/$pkgname"
-    cp -r --no-preserve='ownership' -- $pkgname/dist/dida-linux-x64/* "$pkgdir/usr/lib/$pkgname"
+	cp -r --no-preserve='ownership' -- $pkgname/dist/dida-linux-x64/* "$pkgdir/usr/lib/$pkgname"
 	install -Dm644 "$srcdir/$pkgname/dida.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/dida.png"
 	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm755 "dida.sh" "$pkgdir/usr/bin/dida"
