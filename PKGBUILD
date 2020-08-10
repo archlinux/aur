@@ -2,7 +2,7 @@
 
 _pkgname=wlc
 pkgname=weblate-${_pkgname}
-pkgver=1.2
+pkgver=1.5
 pkgrel=1
 pkgdesc="Weblate commandline client"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python-dateutil'
 makedepends=('python-setuptools')
 install="${pkgname}.install"
 source=("https://github.com/WeblateOrg/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('32e3c2c75111917bb4c4b36515ee938553aaf9d36e5bd448c58a745e92c1b5a6')
+sha256sums=('90f858901e55979b454716e813a8716ec1a88221bfb014ed43079444697083c8')
 
 build () {
     cd "$srcdir/${_pkgname}-${pkgver}"
