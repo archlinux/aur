@@ -1,0 +1,14 @@
+pkgbase = otf-coelacanth
+	pkgdesc = Ben Whitmore's old-style serif font family, after Bruce Rogers' Jensonesque Centaur.
+	pkgver = 2020.02.22
+	pkgrel = 1
+	url = https://fontlibrary.org/en/font/coelacanth
+	arch = any
+	license = custom:OFL
+	source = https://fontlibrary.org/assets/downloads/coelacanth/d40b6b08e184c21574151115a61a208d/coelacanth.zip
+	source = SIL-OFL.txt
+	sha256sums = 6926eab323cc893b7f5c6115514421c7b8d96d23376c8181e8342219816f925c
+	sha256sums = 0f1af6ee05ef171e2dcc6e59021848a2af26360b769dd4563df8710884e7f980
+
+pkgname = otf-coelacanth
+
