@@ -2,7 +2,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=aom-vmaf-git
-pkgver=r30937.g41ed65041d
+pkgver=r31032.g26050dd548
 pkgrel=1
 pkgdesc="An open, royalty-free video coding format designed for video transmissions over the Internet with support for vmaf"
 arch=('i686' 'x86_64')
