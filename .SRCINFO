@@ -1,0 +1,24 @@
+pkgbase = faustfilters-git
+	pkgdesc = A collection of virtual-analog filter plugins (git version)
+	pkgver = v0.3.0.r0.g5d74237
+	pkgrel = 1
+	url = https://github.com/SpotlightKid/faustfilters
+	arch = i686
+	arch = x86_64
+	groups = pro-audio
+	groups = ladspa-plugins
+	groups = lv2-plugins
+	groups = vst-plugins
+	license = MIT
+	makedepends = git
+	depends = gcc-libs
+	provides = faustfilters
+	provides = faustfilters=v0.3.0
+	conflicts = faustfilters
+	source = faustfilters::git+https://github.com/SpotlightKid/faustfilters.git
+	source = dpf::git+https://github.com/DISTRHO/DPF.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = faustfilters-git
+

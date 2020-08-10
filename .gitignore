@@ -1,0 +1,6 @@
+dpf/
+faustfilters/
+faustfilters-git-*.pkg.tar.xz
+faustfilters-git-*.pkg.tar.zst
+pkg/
+src/
