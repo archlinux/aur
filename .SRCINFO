@@ -1,9 +1,9 @@
 pkgbase = oxygen-sounds
 	pkgdesc = KDE Oxygen sound pack
 	pkgver = 5.19.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.kde.org/workspaces/plasmadesktop/
-	arch = x86_64
+	arch = any
 	license = LGPL
 	source = https://download.kde.org/stable/plasma/5.19.4/oxygen-5.19.4.tar.xz
 	b2sums = 86153365b2499e6cee2f60960f4be70e7fe954ee20dc3bee8f858084996e561bd2908034bff6ea1d7079a8f11adf521f02aa0233af789a46dc567205cbf5af08
