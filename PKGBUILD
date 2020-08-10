@@ -4,7 +4,7 @@
 
 pkgname=xritty
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham Radio RTTY engine using X/GTK+"
 arch=('i686' 'x86_64')
 url="http://www.qsl.net/5b4az/pkg/$pkgname/$pkgname.html"
@@ -24,6 +24,7 @@ prepare() {
 	cd $srcdir/$pkgname-$pkgver
 
 	patch -p0 < ../diff.Makefile.am
+	sed -i -e s:'1.15':'1.16': autogen.sh
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = xritty
 	pkgdesc = Ham Radio RTTY engine using X/GTK+
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.qsl.net/5b4az/pkg/xritty/xritty.html
 	arch = i686
 	arch = x86_64
