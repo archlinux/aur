@@ -1,74 +1,83 @@
---- Makefile	2018-11-09 23:14:44.000000000 +0300
-+++ Makefile	2019-01-23 14:31:17.359911095 +0300
-@@ -671,7 +671,7 @@
+--- charm-6.10.2/src/arch/common/cc-gcc.sh	2020-08-05 17:58:22.000000000 +0300
++++ charm-6.10.2/src/arch/common/cc-gcc.sh	2020-08-10 12:34:00.190585376 +0300
+@@ -1,11 +1,11 @@
+-CMK_CPP_CHARM="cpp -P"
+-CMK_CPP_C="gcc$CMK_COMPILER_SUFFIX"
+-CMK_CC="gcc$CMK_COMPILER_SUFFIX"
+-CMK_CXX="g++$CMK_COMPILER_SUFFIX"
+-CMK_LD="gcc$CMK_COMPILER_SUFFIX"
+-CMK_LDXX="g++$CMK_COMPILER_SUFFIX"
++CMK_CPP_CHARM="cpp-9 -P"
++CMK_CPP_C="gcc-9"
++CMK_CC="gcc-9"
++CMK_CXX="g++-9"
++CMK_LD="gcc-9"
++CMK_LDXX="g++-9"
+ 
+ CMK_CPP_C_FLAGS="-E"
+ 
+ CMK_LD_SHARED='-shared'
+ CMK_LD_LIBRARY_PATH="-Wl,-rpath,$CHARMLIBSO/"
+--- Make.charm	2020-08-05 20:51:20.000000000 +0300
++++ Make.charm	2020-08-10 12:23:57.005349008 +0300
+@@ -1,6 +1,6 @@
+ # Set CHARMBASE to the top level charm directory.
+ # The config script will override this setting if there is a directory
+ # called charm-6.10.2 or charm in the NAMD base directory.
+ 
+-CHARMBASE = /Projects/namd2/charm-6.10.2
++CHARMBASE = ./charm-6.10.2
+ 
+--- Makefile	2020-08-05 20:51:20.000000000 +0300
++++ Makefile	2020-08-10 12:23:24.245704240 +0300
+@@ -660,11 +660,11 @@
+ 
+ .SECONDARY:
  	# prevent gmake from deleting intermediate files
  
  $(INCDIR)/%.decl.h $(INCDIR)/%.def.h: $(MKINCDIR) $(SRCDIR)/%.ci
 -	cpp -E -P $(CIPPFLAGS) $(SRCDIR)/$*.ci > $(INCDIR)/$*.ci
-+	cpp-7 -E -P $(CIPPFLAGS) $(SRCDIR)/$*.ci > $(INCDIR)/$*.ci
++	cpp-9 -E -P $(CIPPFLAGS) $(SRCDIR)/$*.ci > $(INCDIR)/$*.ci
  	$(CHARMXI) $(INCDIR)/$*.ci
  	$(RM) $(INCDIR)/$*.ci
  	$(MOVE) $*.def.h $(INCDIR)
---- Make.charm	2018-08-30 19:07:32.050220504 +0300
-+++ Make.charm	2018-08-30 19:14:51.040637131 +0300
-@@ -1,6 +1,2 @@
--# Set CHARMBASE to the top level charm directory.
--# The config script will override this setting if there is a directory
--# called charm-6.8.2 or charm in the NAMD base directory.
--
--CHARMBASE = /Projects/namd2/charm-6.8.2
-+CHARMBASE = ./charm-6.8.2
-
---- arch/Linux-x86_64-g++.arch	2018-08-30 19:07:32.056887076 +0300
-+++ arch/Linux-x86_64-g++.arch	2018-08-30 19:17:08.078690680 +0300
-@@ -2,7 +2,7 @@
- CHARMARCH = multicore-linux64
+ 	$(MOVE) $*.decl.h $(INCDIR)
  
--CXX = g++ -m64 -std=c++0x -O3
-+CXX = g++-7 -m64 -std=c++0x -O3
--CXXOPTS = -fexpensive-optimizations -ffast-math 
-+CXXOPTS = -fexpensive-optimizations -ffast-math -fPIC 
--CC = gcc -m64 -O3
-+CC = gcc-7 -m64 -O3
--COPTS = -fexpensive-optimizations -ffast-math
-+COPTS = -fexpensive-optimizations -ffast-math -fPIC
-
---- arch/Linux-x86_64.fftw3	2011-07-12 22:23:09.000000000 +0400
-+++ arch/Linux-x86_64.fftw3	2018-03-20 16:41:30.256474225 +0300
-@@ -1,5 +1,5 @@
+--- arch/Linux-x86_64.tcl	2020-08-05 20:51:20.000000000 +0300
++++ arch/Linux-x86_64.tcl	2020-08-10 12:26:37.080503378 +0300
+@@ -1,8 +1,8 @@
+ 
+ #TCLDIR=/Projects/namd2/tcl/tcl8.5.9-linux-x86_64
+-TCLDIR=/Projects/namd2/tcl/tcl8.5.9-linux-x86_64-threaded
++TCLDIR=/opt/tcl85-static
+ TCLINCL=-I$(TCLDIR)/include
+ #TCLLIB=-L$(TCLDIR)/lib -ltcl8.5 -ldl
+ TCLLIB=-L$(TCLDIR)/lib -ltcl8.5 -ldl -lpthread
+ TCLFLAGS=-DNAMD_TCL
+ TCL=$(TCLINCL) $(TCLFLAGS)
+--- arch/Linux-x86_64.fftw3	2020-08-05 20:51:20.000000000 +0300
++++ arch/Linux-x86_64.fftw3	2020-08-10 12:25:54.367543846 +0300
+@@ -1,7 +1,7 @@
  
 -FFTDIR=$(HOME)/fftw3
 +FFTDIR=/opt/fftw-static
  FFTINCL=-I$(FFTDIR)/include
  FFTLIB=-L$(FFTDIR)/lib -lfftw3f
  FFTFLAGS=-DNAMD_FFTW -DNAMD_FFTW_3
---- arch/Linux-x86_64.tcl	2011-06-18 00:38:43.000000000 +0400
-+++ arch/Linux-x86_64.tcl	2018-03-20 19:03:56.218322669 +0300
-@@ -1,8 +1,6 @@
+ FFT=$(FFTINCL) $(FFTFLAGS)
  
--#TCLDIR=/Projects/namd2/tcl/tcl8.5.9-linux-x86_64
--TCLDIR=/Projects/namd2/tcl/tcl8.5.9-linux-x86_64-threaded
-+TCLDIR=/opt/tcl85-static
- TCLINCL=-I$(TCLDIR)/include
--#TCLLIB=-L$(TCLDIR)/lib -ltcl8.5 -ldl
- TCLLIB=-L$(TCLDIR)/lib -ltcl8.5 -ldl -lpthread
- TCLFLAGS=-DNAMD_TCL
- TCL=$(TCLINCL) $(TCLFLAGS)
---- charm-6.8.2/src/arch/common/cc-gcc.sh	2017-10-25 22:54:51.000000000 +0300
-+++ charm-6.8.2/src/arch/common/cc-gcc.sh	2019-01-23 14:12:39.450351575 +0300
-@@ -1,9 +1,9 @@
--CMK_CPP_CHARM='cpp -P'
--CMK_CPP_C='gcc -E'
--CMK_CC='gcc'
--CMK_CXX='g++'
--CMK_LD='gcc'
--CMK_LDXX='g++'
-+CMK_CPP_CHARM='cpp-7 -P'
-+CMK_CPP_C='gcc-7 -E'
-+CMK_CC='gcc-7'
-+CMK_CXX='g++-7'
-+CMK_LD='gcc-7'
-+CMK_LDXX='g++-7'
-
- CMK_LD_SHARED='-shared'
- CMK_LD_LIBRARY_PATH="-Wl,-rpath,$CHARMLIBSO/"
+--- arch/Linux-x86_64-g++.arch	2020-08-05 20:51:20.000000000 +0300
++++ arch/Linux-x86_64-g++.arch	2020-08-10 12:24:41.554894580 +0300
+@@ -1,8 +1,8 @@
+ NAMD_ARCH = Linux-x86_64
+ CHARMARCH = multicore-linux-x86_64
+ 
+-CXX = g++ -m64 -std=c++0x
+-CXXOPTS = -O3 -fexpensive-optimizations -ffast-math 
+-CC = gcc -m64
+-COPTS = -O3 -fexpensive-optimizations -ffast-math
++CXX = g++-9 -m64 -std=c++0x
++CXXOPTS = -O3 -fexpensive-optimizations -ffast-math -fPIC
++CC = gcc-9 -m64
++COPTS = -O3 -fexpensive-optimizations -ffast-math -fPIC
+ 

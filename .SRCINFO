@@ -1,7 +1,7 @@
 pkgbase = namd
 	pkgdesc = Scalable molecular dynamic engine
-	pkgver = 2.13
-	pkgrel = 2
+	pkgver = 2.14
+	pkgrel = 1
 	url = http://www.ks.uiuc.edu/Research/namd/
 	arch = x86_64
 	license = custom
@@ -9,16 +9,16 @@ pkgbase = namd
 	makedepends = patch
 	makedepends = fftw-static
 	makedepends = tcl85-static
-	depends = gcc7
-	depends = gcc7-libs
+	depends = gcc9
+	depends = gcc9-libs
 	options = staticlibs
 	options = !buildflags
-	source = http://charm.cs.illinois.edu/distrib/charm-6.8.2.tar.gz
-	source = local://NAMD_2.13_Source.tar.gz
+	source = http://charm.cs.illinois.edu/distrib/charm-6.10.2.tar.gz
+	source = local://NAMD_2.14_Source.tar.gz
 	source = namd.patch
-	md5sums = a887a34b638a5b2f7fcf7ff3c262496d
-	md5sums = 9e3323ed856e36e34d5c17a7b0341e38
-	md5sums = 835ce380b799d847347999e62966b411
+	md5sums = 7a827066e0d7f2a37f748ca9f165ea80
+	md5sums = 3dee29385fed05eb8f3d2d38dd799383
+	md5sums = b60e4b2ed31ee80140858dfea8abb44d
 
 pkgname = namd
 

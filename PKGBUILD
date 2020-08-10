@@ -1,18 +1,18 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=namd
-pkgver=2.13
-_charmver=6.8.2
-pkgrel=2
+pkgver=2.14
+_charmver=6.10.2
+pkgrel=1
 pkgdesc="Scalable molecular dynamic engine"
 url="http://www.ks.uiuc.edu/Research/namd/"
-license=('custom')
-arch=('x86_64')
-depends=('gcc7' 'gcc7-libs')
-makedepends=('make' 'patch' 'fftw-static' 'tcl85-static')
-md5sums=('a887a34b638a5b2f7fcf7ff3c262496d'
-         '9e3323ed856e36e34d5c17a7b0341e38'
-         '835ce380b799d847347999e62966b411')
+license=(custom)
+arch=(x86_64)
+depends=(gcc9 gcc9-libs)
+makedepends=(make patch fftw-static tcl85-static)
+md5sums=('7a827066e0d7f2a37f748ca9f165ea80'
+         '3dee29385fed05eb8f3d2d38dd799383'
+         'b60e4b2ed31ee80140858dfea8abb44d')
 options=(staticlibs !buildflags)
 
 # You MUST download the package from the NAMD url and put it in the PKGBUILD folder!
@@ -34,13 +34,13 @@ build() {
   # build Charm++
   cd ${srcdir}/NAMD_${pkgver}_Source/charm-${_charmver}
 
-  CC=gcc-7 CXX=g++-7 ./build charm++ multicore-linux64 --with-production
+  CC=gcc-9 CXX=g++-9 ./build charm++ multicore-linux64 --with-production
 
   # go to the NAMD build
   cd ${srcdir}/NAMD_${pkgver}_Source
 
   # configure and build NAMD
-  ./config Linux-x86_64-g++ --charm-arch multicore-linux64 --with-fftw3 --cc gcc-7 --cxx g++-7
+  ./config Linux-x86_64-g++ --charm-arch multicore-linux64 --with-fftw3 --cc gcc-9 --cxx g++-9
   cd Linux-x86_64-g++
   make
 }
