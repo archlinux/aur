@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-session-git
-pkgver=r292.1ae5d21
+pkgver=2.2.8.r34.g525324f
 pkgrel=1
 pkgdesc='Session indicator for Wingpanel'
 arch=('x86_64')
@@ -11,7 +11,7 @@ groups=('pantheon-unstable')
 depends=('accountsservice' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
          'libgranite.so' 'libwingpanel-2.0.so')
 makedepends=('git' 'gobject-introspection' 'granite-git' 'meson' 'vala'
-             'wingpanel-git')
+             'wingpanel')
 provides=('wingpanel-indicator-session')
 conflicts=('wingpanel-indicator-session')
 source=('git+https://github.com/elementary/wingpanel-indicator-session.git')
@@ -20,27 +20,18 @@ sha256sums=('SKIP')
 pkgver() {
   cd wingpanel-indicator-session
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
 
-  arch-meson ../wingpanel-indicator-session
-  ninja
+  arch-meson wingpanel-indicator-session build
+  ninja -C build
 }
 
 package() {
-  cd build
 
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
