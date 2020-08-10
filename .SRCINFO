@@ -1,7 +1,7 @@
 pkgbase = bludigon
 	pkgdesc = Configurable blue light filter
-	pkgver = 0.1.0.0
-	pkgrel = 4
+	pkgver = 0.1.1.0
+	pkgrel = 1
 	url = https://github.com/jumper149/bludigon
 	arch = x86_64
 	license = custom:BSD3
@@ -16,10 +16,10 @@ pkgbase = bludigon
 	depends = haskell-x11
 	depends = libx11
 	depends = libxrandr
-	source = https://github.com/jumper149/bludigon/archive/v0.1.0.0.tar.gz
+	source = https://github.com/jumper149/bludigon/archive/v0.1.1.0.tar.gz
 	source = compile-dynamically.patch
 	source = Setup.hs
-	sha256sums = 2abbcc209c53268542f663918a3774ffd60f27c57dc05a0ab1e97348aedb2d1e
+	sha256sums = ce75d074d6e074307c0e4488ee8cc10ce5accdf610539b7c6db48f47d54fb4bb
 	sha256sums = acb3e75bd709d855e4715bc48250fe01163ded72ad42a094d80925e3854b8b83
 	sha256sums = 5066653559d4d6134b022d66a634a17fdcf8db35d28b447e581fec284afa4689
 

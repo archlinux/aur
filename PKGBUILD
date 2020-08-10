@@ -1,8 +1,8 @@
 # Maintainer: Felix Springer <felixspringer149@gmail.com>
 
 pkgname=bludigon
-pkgver=0.1.0.0
-pkgrel=4
+pkgver=0.1.1.0
+pkgrel=1
 pkgdesc="Configurable blue light filter"
 url="https://github.com/jumper149/bludigon"
 license=('custom:BSD3')
@@ -26,7 +26,7 @@ source=(
   "Setup.hs"
 )
 sha256sums=(
-  '2abbcc209c53268542f663918a3774ffd60f27c57dc05a0ab1e97348aedb2d1e'
+  'ce75d074d6e074307c0e4488ee8cc10ce5accdf610539b7c6db48f47d54fb4bb'
   'acb3e75bd709d855e4715bc48250fe01163ded72ad42a094d80925e3854b8b83'
   '5066653559d4d6134b022d66a634a17fdcf8db35d28b447e581fec284afa4689'
 )
