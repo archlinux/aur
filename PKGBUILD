@@ -10,8 +10,15 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' 'glibc')
 #gcc-libs is somehow needed on arm architecture
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mighty-p/t2scan/archive/v$pkgver.tar.gz")
-sha256sums=('17820be2bc82bd14af93a38877ddc66e73dcea7440cf640c5dcee3dedbef0cf3')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mighty-p/t2scan/archive/v$pkgver.tar.gz"
+        "$pkgname-gcc10.patch::https://patch-diff.githubusercontent.com/raw/mighty-p/t2scan/pull/12.patch")
+sha256sums=('17820be2bc82bd14af93a38877ddc66e73dcea7440cf640c5dcee3dedbef0cf3'
+            '0e0eba4fb8a22a94134007cc6c5ccceafd52a0f2ec6749c03b6919ef21413e9d')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p1 -i "$srcdir/$pkgname-gcc10.patch"
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
