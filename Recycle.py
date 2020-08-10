@@ -109,11 +109,11 @@ def orderIds():
             call(['mv', pathDir+"/{itemId}".format(itemId=item), pathDir+"/{itemId}".format(itemId=num+1)])
 
     if notFound > 0:
-        print(_("\x1B[1;33mWARNING:\x1B[0m {items} item(s) were not found in {place} and cleaned.").format(items=notFound, place=dataDir))
+        print(("\x1B[1;33mWARNING:\x1B[0m {items} item(s) were not found in {place} and cleaned.").format(items=notFound, place=dataDir))
 
 def showHelp():
     print(basename(argv[0])+" [put <path [path [...]]> | list | drop <id [id [...]]> | restore <id [id [...]]> | gc]")
-    print(_("\n- put:\t\tPut items to recycle\n- list:\t\tList recycled items with their id\n- drop:\t\tDrop items from the recycle\n- empty:\tEmpty the recycle.\n- restore:\tRestore items from the recycle to their original path\n- gc:\t\tReorder items"))
+    print(("\n- put:\t\tPut items to recycle\n- list:\t\tList recycled items with their id\n- drop:\t\tDrop items from the recycle\n- empty:\tEmpty the recycle.\n- restore:\tRestore items from the recycle to their original path\n- gc:\t\tReorder items"))
 
 ##### Useful stuff #####
 def _checkRecycleDir_():
