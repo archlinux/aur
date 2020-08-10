@@ -1,6 +1,6 @@
 # Maintainer: dorianpb <dorian.peanut.butter@gmail.com>
 pkgname='mcpelauncher-hx-script'
-pkgver=v1.3
+pkgver=v1.4
 pkgrel=1
 #epoch=
 pkgdesc="A script that downloads ChristopherHX's mcpelauncher fork. Doesn't check for updates, so just run it every once and a while."
@@ -19,15 +19,13 @@ backup=()
 options=()
 #install=
 #changelog=
-source=("script.sh" "script.py")
+source=("script.py")
 noextract=()
 sha256sums=(
-    'ab79172ff9fc5e4e8c72ff9a1fe008e5b8666baa70065fe1d4eb040342bfed87'
-    '82937b6f0fbf38a899175381a95109adbb18a36a70bdf57579295125c5f4cc5c'
+    '27d13e591432b9323b9d7e7d32c73ac2b979d53accf9b15f947298af366f47a2'
 )
 
 package() {
     cd "${srcdir}"
     install -Dm755 script.sh "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 script.py "${pkgdir}/usr/share/${pkgname}/script.py"
 }

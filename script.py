@@ -1,3 +1,4 @@
+#!/bin/python
 import os, sys
 argv = sys.argv[1:]
 defpkglist = {

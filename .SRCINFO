@@ -1,6 +1,6 @@
 pkgbase = mcpelauncher-hx-script
 	pkgdesc = A script that downloads ChristopherHX's mcpelauncher fork. Doesn't check for updates, so just run it every once and a while.
-	pkgver = v1.3
+	pkgver = v1.4
 	pkgrel = 1
 	url = https://github.com/ChristopherHX/mcpelauncher-manifest
 	arch = any
@@ -9,10 +9,8 @@ pkgbase = mcpelauncher-hx-script
 	depends = mcpelauncher-msa-git
 	depends = mcpelauncher-msa-ui-qt-git
 	depends = python
-	source = script.sh
 	source = script.py
-	sha256sums = ab79172ff9fc5e4e8c72ff9a1fe008e5b8666baa70065fe1d4eb040342bfed87
-	sha256sums = 82937b6f0fbf38a899175381a95109adbb18a36a70bdf57579295125c5f4cc5c
+	sha256sums = 27d13e591432b9323b9d7e7d32c73ac2b979d53accf9b15f947298af366f47a2
 
 pkgname = mcpelauncher-hx-script
 
