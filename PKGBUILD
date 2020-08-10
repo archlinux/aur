@@ -24,24 +24,14 @@ pkgver() {
    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
-}
-
 build() {
-  cd build
-
-  arch-meson ../wingpanel-indicator-sound
-  ninja
+  arch-meson wingpanel-indicator-sound build
+  ninja -C build
 }
 
 package() {
-  cd build
 
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
