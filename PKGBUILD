@@ -2,7 +2,7 @@
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 
 pkgname=recycle-cli
-pkgver=2020.6.27
+pkgver=2020.8.10
 pkgrel=1
 pkgdesc='A recycle bin cli in python 3'
 arch=('any')
