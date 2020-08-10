@@ -1,15 +1,15 @@
 pkgbase = nodejs-n
 	pkgdesc = Node version manager
-	pkgver = 6.5.1
+	pkgver = 6.7.0
 	pkgrel = 1
 	url = https://github.com/tj/n
 	install = nodejs-n.install
 	arch = any
 	license = MIT
 	depends = bash
-	source = https://github.com/tj/n/archive/v6.5.1.zip
+	source = https://github.com/tj/n/archive/v6.7.0.zip
 	source = LICENSE.md
-	md5sums = b823cc462d676cfd561989b15129c9f6
+	md5sums = b6c0f8fa0bc5953a4e2105ee3d6cad3d
 	md5sums = 55761bbdb8c6dfe8c83a1f27122bdff1
 
 pkgname = nodejs-n
