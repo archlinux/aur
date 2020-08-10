@@ -1,6 +1,6 @@
 pkgbase = remind-dav-helper-git
 	pkgdesc = Helper scripts to sync 'remind' files with Nextcloud via CalDAV
-	pkgver = r3.410e6e4
+	pkgver = r4.2d28968
 	pkgrel = 1
 	url = https://www.kabus.eu/git/remind-dav-helper
 	arch = any
