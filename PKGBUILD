@@ -1,6 +1,7 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur
-pkgver=41.fac7d1e
+commit=2b928054c777dc59faa4a75396af34adc840f716
+pkgver=41.$commit
 pkgrel=1
 pkgdesc="An AUR helper with asp support."
 arch=(any)
@@ -9,20 +10,16 @@ license=('GPL v3')
 depends=('pacman' 'asp' 'devtools' 'git' 'python3')
 makedepends=('git')
 
-source=("$pkgname"::'git+https://github.com/lxgr-linux/buildaur.git')
+source=("${pkgname}.zip"::"https://github.com/lxgr-linux/buildaur/archive/${commit}.zip")
 md5sums=('SKIP')
 
-pkgver() {
-	    cd "$pkgname"
-	        echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
-prepare(){
-	cd "$srcdir/$pkgname"
-}
+# pkgver() {
+# 	    cd "$pkgname"
+# 	        echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+# }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$pkgname-$commit"
 	install -dm755 "${pkgdir}/usr/share/buildaur"
 	install -D -m644 blacklist "${pkgdir}/usr/share/buildaur"
 	install -dm755 "${pkgdir}/etc/buildaur"
