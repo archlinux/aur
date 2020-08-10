@@ -1,7 +1,7 @@
 pkgbase = ndn-nfd-git
 	pkgdesc = NFD is a network forwarder that implements and evolves together with the Named Data Networking (NDN) protocol
-	pkgver = NFD.0.7.0.r35.g5bafd2c7
-	pkgrel = 8
+	pkgver = NFD.0.7.0.r36.gbc0e617e
+	pkgrel = 1
 	url = https://github.com/named-data/NFD
 	arch = i686
 	arch = x86_64
