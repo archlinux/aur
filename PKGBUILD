@@ -1,9 +1,9 @@
 # Maintainer: Steven Seifried <gitlab@canox.net>
 # Contributor: Steven Seifried <gitlab@canox.net>
 pkgname=tuxedo-cc-wmi
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
-pkgdesc="WMI method control for TUXEDO laptops"
+pkgdesc="An interface to the WMI methods on TUXEDO laptops. "
 arch=(x86_64)
 url="https://github.com/tuxedocomputers/tuxedo-cc-wmi"
 license=('GPL3')
@@ -12,10 +12,10 @@ optdepends=('linux-headers: build modules against Arch kernel'
             'linux-lts-headers: build modules against LTS kernel'
             'linux-zen-headers: build modules against ZEN kernel'
             'linux-hardened-headers: build modules against the HARDENED kernel')
-conflicts=('tuxedo-wmi' 'tuxedo-wmi-dkms')
-source=('https://github.com/tuxedocomputers/tuxedo-cc-wmi/archive/v0.1.4.tar.gz')
-sha256sums=('6c8a8cef3288f3b336f19be161151be5e662779694c82b6a25a3fedd8ccbebe0')
-sha512sums=('a41faa7290859410eb8446dd02ee2bdf87a3085882f3fc6b968701bb14bab87bd6bcd4bf9839111c62eab8a8751f8c2cf378aa7297879f7781f73998199e5f27')
+conflicts=('tuxedo-wmi' 'tuxedo-wmi-dkms' 'tuexdo-cc-wmi-dkms')
+source=(https://github.com/tuxedocomputers/tuxedo-cc-wmi/archive/v${pkgver}.tar.gz)
+sha256sums=('ee7b5ea5c37d53e3108b7da6482f226111561a75952c14067dbbe8d5c530e535')
+sha512sums=('7207335a45532b39f0765497c2f65c44bbdb224d49c6f5741417223355ef5560ac116102be3539f66613756e9572b24a6cdca800874b3d4bd6af8d6d763ee3b8')
 
 package() {
   tar -vxzf "v${pkgver}.tar.gz" 
