@@ -1,7 +1,7 @@
-From a38d07d9423eb81b36acc78a4f1dfa512347ddb9 Mon Sep 17 00:00:00 2001
+From 8e9c5db5501512822ecf77cd90b60d4ac08fbf4a Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Mon, 25 Nov 2019 10:14:30 +1100
-Subject: [PATCH 1/7] fix: use ozone version of global_shortcut_listener when
+Subject: [PATCH 1/8] fix: use ozone version of global_shortcut_listener when
  use_ozone is set
 
 ---
@@ -9,10 +9,10 @@ Subject: [PATCH 1/7] fix: use ozone version of global_shortcut_listener when
  1 file changed, 12 insertions(+), 2 deletions(-)
 
 diff --git a/chromium_src/BUILD.gn b/chromium_src/BUILD.gn
-index 4a391514c..6a4710b1e 100644
+index ab6b3fc56..08749078d 100644
 --- a/chromium_src/BUILD.gn
 +++ b/chromium_src/BUILD.gn
-@@ -73,9 +73,19 @@ static_library("chrome") {
+@@ -78,9 +78,19 @@ static_library("chrome") {
  
    if (is_linux) {
      sources += [ "//chrome/browser/icon_loader_auralinux.cc" ]
@@ -35,5 +35,5 @@ index 4a391514c..6a4710b1e 100644
        "//chrome/browser/ui/views/status_icons/concat_menu_model.h",
        "//chrome/browser/ui/views/status_icons/status_icon_linux_dbus.cc",
 -- 
-2.26.1
+2.28.0
 

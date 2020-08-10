@@ -1,7 +1,7 @@
-From c54847e3e9599700b58aa998b28d37bca76339d0 Mon Sep 17 00:00:00 2001
+From f2c9c70a8c3bedad7f2f3986f46ae46f77571339 Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Mon, 25 Nov 2019 10:54:34 +1100
-Subject: [PATCH 3/7] fix: fix ifdefs and add NOTIMPLEMENTEDs to make
+Subject: [PATCH 3/8] fix: fix ifdefs and add NOTIMPLEMENTEDs to make
  native_window_views compile on linux ozone builds
 
 ---
@@ -10,7 +10,7 @@ Subject: [PATCH 3/7] fix: fix ifdefs and add NOTIMPLEMENTEDs to make
  2 files changed, 30 insertions(+), 7 deletions(-)
 
 diff --git a/shell/browser/browser_linux.cc b/shell/browser/browser_linux.cc
-index fcbb359e0..b8835a45d 100644
+index c6029854e..2378acc0e 100644
 --- a/shell/browser/browser_linux.cc
 +++ b/shell/browser/browser_linux.cc
 @@ -15,7 +15,7 @@
@@ -19,11 +19,11 @@ index fcbb359e0..b8835a45d 100644
  
 -#if defined(USE_X11)
 +#if defined(OS_LINUX)
- #include "chrome/browser/ui/libgtkui/gtk_util.h"
  #include "shell/browser/linux/unity_service.h"
+ #include "ui/gtk/gtk_util.h"
  #endif
 diff --git a/shell/browser/native_window_views.cc b/shell/browser/native_window_views.cc
-index 00da49a73..908de47dc 100644
+index e9605a376..0483fba3d 100644
 --- a/shell/browser/native_window_views.cc
 +++ b/shell/browser/native_window_views.cc
 @@ -43,13 +43,15 @@
@@ -88,7 +88,7 @@ index 00da49a73..908de47dc 100644
  }
  #endif
  
-@@ -788,9 +801,14 @@ bool NativeWindowViews::IsClosable() {
+@@ -800,9 +813,14 @@ bool NativeWindowViews::IsClosable() {
      return false;
    }
    return !(info.fState & MFS_DISABLED);
@@ -104,7 +104,7 @@ index 00da49a73..908de47dc 100644
  }
  
  void NativeWindowViews::SetAlwaysOnTop(ui::ZOrderLevel z_order,
-@@ -1352,9 +1370,14 @@ bool NativeWindowViews::CanMaximize() const {
+@@ -1369,9 +1387,14 @@ bool NativeWindowViews::CanMaximize() const {
  bool NativeWindowViews::CanMinimize() const {
  #if defined(OS_WIN)
    return minimizable_;
@@ -121,5 +121,5 @@ index 00da49a73..908de47dc 100644
  
  base::string16 NativeWindowViews::GetWindowTitle() const {
 -- 
-2.26.1
+2.28.0
 

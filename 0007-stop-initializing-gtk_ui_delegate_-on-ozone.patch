@@ -1,0 +1,83 @@
+From 01bce9c80ea6a9738fcbf4fb33e7efc8dd8dd492 Mon Sep 17 00:00:00 2001
+From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
+Date: Sun, 14 Jun 2020 01:16:53 +1000
+Subject: [PATCH 7/8] stop initializing gtk_ui_delegate_-on ozone
+
+---
+ shell/browser/electron_browser_main_parts.cc | 8 ++++++--
+ shell/browser/electron_browser_main_parts.h  | 7 +++++--
+ 2 files changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/shell/browser/electron_browser_main_parts.cc b/shell/browser/electron_browser_main_parts.cc
+index ce4945155..735dec434 100644
+--- a/shell/browser/electron_browser_main_parts.cc
++++ b/shell/browser/electron_browser_main_parts.cc
+@@ -213,7 +213,9 @@ int X11EmptyErrorHandler(Display* d, XErrorEvent* error) {
+ int X11EmptyIOErrorHandler(Display* d) {
+   return 0;
+ }
++#endif
+ 
++#if defined(OS_LINUX)
+ // GTK does not provide a way to check if current theme is dark, so we compare
+ // the text and background luminosity to get a result.
+ // This trick comes from FireFox.
+@@ -231,7 +233,7 @@ void UpdateDarkThemeSetting() {
+ 
+ }  // namespace
+ 
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+ class DarkThemeObserver : public ui::NativeThemeObserver {
+  public:
+   DarkThemeObserver() = default;
+@@ -410,11 +412,13 @@ void ElectronBrowserMainParts::PostDestroyThreads() {
+ }
+ 
+ void ElectronBrowserMainParts::ToolkitInitialized() {
++#if defined(OS_LINUX)
+ #if defined(USE_X11)
+   // In Aura/X11, Gtk-based LinuxUI implementation is used.
+   gtk_ui_delegate_ = std::make_unique<ui::GtkUiDelegateX11>(gfx::GetXDisplay());
+   ui::GtkUiDelegate::SetInstance(gtk_ui_delegate_.get());
+-  views::LinuxUI* linux_ui = BuildGtkUi(gtk_ui_delegate_.get());
++#endif
++  views::LinuxUI* linux_ui = BuildGtkUi(ui::GtkUiDelegate::instance());
+   views::LinuxUI::SetInstance(linux_ui);
+   linux_ui->Initialize();
+ 
+diff --git a/shell/browser/electron_browser_main_parts.h b/shell/browser/electron_browser_main_parts.h
+index f63a862ba..8f5101f37 100644
+--- a/shell/browser/electron_browser_main_parts.h
++++ b/shell/browser/electron_browser_main_parts.h
+@@ -29,7 +29,7 @@ class WMState;
+ }
+ #endif
+ 
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+ namespace ui {
+ class GtkUiDelegate;
+ }
+@@ -59,7 +59,7 @@ class ViewsDelegate;
+ class ViewsDelegateMac;
+ #endif
+ 
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+ class DarkThemeObserver;
+ #endif
+ 
+@@ -134,6 +134,9 @@ class ElectronBrowserMainParts : public content::BrowserMainParts {
+ 
+ #if defined(USE_X11)
+   std::unique_ptr<ui::GtkUiDelegate> gtk_ui_delegate_;
++#endif
++
++#if defined(OS_LINUX)
+   // Used to notify the native theme of changes to dark mode.
+   std::unique_ptr<DarkThemeObserver> dark_theme_observer_;
+ #endif
+-- 
+2.28.0
+

@@ -1,29 +1,32 @@
-From 5c70a2690a04e417767c54b728644353968eb2b7 Mon Sep 17 00:00:00 2001
+From 4b5b4136ad79d53371fd398f20f3fda027fb7167 Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Mon, 25 Nov 2019 13:46:20 +1100
-Subject: [PATCH 7/7] fix: add ifdefs around some X11 specific code to focus
+Subject: [PATCH 6/8] fix: add ifdefs around some X11 specific code to focus
  dialogs
 
 ---
- shell/browser/ui/file_dialog_gtk.cc | 4 ++++
- shell/browser/ui/message_box_gtk.cc | 5 +++++
- 2 files changed, 9 insertions(+)
+ shell/browser/ui/file_dialog_gtk.cc | 7 ++++++-
+ shell/browser/ui/message_box_gtk.cc | 6 ++++++
+ 2 files changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/shell/browser/ui/file_dialog_gtk.cc b/shell/browser/ui/file_dialog_gtk.cc
-index d7991a2a8..9755d7bcb 100644
+index 146201f66..d9d371ac0 100644
 --- a/shell/browser/ui/file_dialog_gtk.cc
 +++ b/shell/browser/ui/file_dialog_gtk.cc
-@@ -15,7 +15,9 @@
+@@ -14,8 +14,11 @@
  #include "shell/browser/unresponsive_suppressor.h"
  #include "shell/common/gin_converters/file_path_converter.h"
  #include "ui/base/glib/glib_signal.h"
+-#include "ui/events/platform/x11/x11_event_source.h"
+ #include "ui/gtk/gtk_util.h"
 +#if !defined(USE_OZONE)
- #include "ui/views/widget/desktop_aura/x11_desktop_handler.h"
++#include "ui/events/platform/x11/x11_event_source.h"
++#include "ui/views/widget/desktop_aura/x11_desktop_handler.h"
 +#endif
  
  namespace file_dialog {
  
-@@ -134,10 +136,12 @@ class FileChooserDialog {
+@@ -134,10 +137,12 @@ class FileChooserDialog {
                       this);
      gtk_widget_show_all(dialog_);
  
@@ -37,20 +40,20 @@ index d7991a2a8..9755d7bcb 100644
  
    void RunSaveAsynchronous(
 diff --git a/shell/browser/ui/message_box_gtk.cc b/shell/browser/ui/message_box_gtk.cc
-index e5ec1bfc6..1414244ac 100644
+index 6dbe28e86..ce7ff6bb6 100644
 --- a/shell/browser/ui/message_box_gtk.cc
 +++ b/shell/browser/ui/message_box_gtk.cc
-@@ -15,7 +15,9 @@
- #include "shell/browser/unresponsive_suppressor.h"
- #include "ui/base/glib/glib_signal.h"
+@@ -16,6 +16,9 @@
+ #include "ui/events/platform/x11/x11_event_source.h"
  #include "ui/gfx/image/image_skia.h"
+ #include "ui/gtk/gtk_util.h"
 +#if !defined(USE_OZONE)
- #include "ui/views/widget/desktop_aura/x11_desktop_handler.h"
++#include "ui/views/widget/desktop_aura/x11_desktop_handler.h"
 +#endif
  
  #define ANSI_FOREGROUND_RED "\x1b[31m"
  #define ANSI_FOREGROUND_BLACK "\x1b[30m"
-@@ -133,10 +135,13 @@ class GtkMessageBox : public NativeWindowObserver {
+@@ -133,10 +136,13 @@ class GtkMessageBox : public NativeWindowObserver {
  
    void Show() {
      gtk_widget_show(dialog_);
@@ -65,5 +68,5 @@ index e5ec1bfc6..1414244ac 100644
  
    int RunSynchronous() {
 -- 
-2.26.1
+2.28.0
 

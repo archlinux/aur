@@ -1,0 +1,204 @@
+From 1247fdba5c60035024d74264661f8c610107d113 Mon Sep 17 00:00:00 2001
+From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
+Date: Sat, 8 Aug 2020 12:00:35 +1000
+Subject: [PATCH 8/8] fix: change some X11 specific ifdefs to linux
+
+---
+ shell/browser/common_web_contents_delegate.h  |  2 +-
+ .../common_web_contents_delegate_views.cc     |  4 ++--
+ shell/browser/native_window_views.cc          | 23 +++++++++++++------
+ shell/browser/native_window_views.h           |  2 +-
+ .../inspectable_web_contents_view_delegate.h  |  2 +-
+ .../inspectable_web_contents_view_views.cc    |  2 +-
+ 6 files changed, 22 insertions(+), 13 deletions(-)
+
+diff --git a/shell/browser/common_web_contents_delegate.h b/shell/browser/common_web_contents_delegate.h
+index 456e86274..15eaf6723 100644
+--- a/shell/browser/common_web_contents_delegate.h
++++ b/shell/browser/common_web_contents_delegate.h
+@@ -131,7 +131,7 @@ class CommonWebContentsDelegate : public content::WebContentsDelegate,
+ #if defined(TOOLKIT_VIEWS) && !defined(OS_MACOSX)
+   gfx::ImageSkia GetDevToolsWindowIcon() override;
+ #endif
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+   void GetDevToolsWindowWMClass(std::string* name,
+                                 std::string* class_name) override;
+ #endif
+diff --git a/shell/browser/common_web_contents_delegate_views.cc b/shell/browser/common_web_contents_delegate_views.cc
+index 45c785684..ca17e42c0 100644
+--- a/shell/browser/common_web_contents_delegate_views.cc
++++ b/shell/browser/common_web_contents_delegate_views.cc
+@@ -11,7 +11,7 @@
+ #include "shell/browser/web_contents_preferences.h"
+ #include "ui/events/keycodes/keyboard_codes.h"
+ 
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+ #include "shell/browser/browser.h"
+ #endif
+ 
+@@ -49,7 +49,7 @@ gfx::ImageSkia CommonWebContentsDelegate::GetDevToolsWindowIcon() {
+       ->GetWindowAppIcon();
+ }
+ 
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+ void CommonWebContentsDelegate::GetDevToolsWindowWMClass(
+     std::string* name,
+     std::string* class_name) {
+diff --git a/shell/browser/native_window_views.cc b/shell/browser/native_window_views.cc
+index 0483fba3d..9f843d345 100644
+--- a/shell/browser/native_window_views.cc
++++ b/shell/browser/native_window_views.cc
+@@ -46,11 +46,13 @@
+ #if defined(OS_LINUX)
+ #include "shell/browser/ui/views/frameless_view.h"
+ #include "shell/browser/ui/views/native_frame_view.h"
+-
+-#if defined(USE_X11)
+ #include "base/strings/string_util.h"
+ #include "shell/browser/browser.h"
+ #include "shell/browser/linux/unity_service.h"
++#include "ui/views/window/native_frame_view.h"
++#include "ui/views/widget/desktop_aura/desktop_window_tree_host_linux.h"
++
++#if defined(USE_X11)
+ #include "shell/browser/ui/views/global_menu_bar_x11.h"
+ #include "shell/browser/ui/x/event_disabler.h"
+ #include "shell/browser/ui/x/window_state_watcher.h"
+@@ -58,7 +60,6 @@
+ #include "ui/base/x/x11_util.h"
+ #include "ui/gfx/x/x11_types.h"
+ #include "ui/views/widget/desktop_aura/desktop_window_tree_host_x11.h"
+-#include "ui/views/window/native_frame_view.h"
+ #endif
+ 
+ #elif defined(OS_WIN)
+@@ -194,7 +195,7 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
+     params.parent = parent->GetNativeWindow();
+ 
+   params.native_widget = new ElectronDesktopNativeWidgetAura(this);
+-#elif defined(USE_X11)
++#elif defined(OS_LINUX)
+   std::string name = Browser::Get()->GetName();
+   // Set WM_WINDOW_ROLE.
+   params.wm_role_name = "browser-window";
+@@ -211,9 +212,11 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
+   std::string window_type;
+   options.Get(options::kType, &window_type);
+ 
++#if defined(OS_LINUX)
+ #if defined(USE_X11)
+   // Start monitoring window states.
+   window_state_watcher_ = std::make_unique<WindowStateWatcher>(this);
++#endif
+ 
+   // Set _GTK_THEME_VARIANT to dark if we have "dark-theme" option set.
+   bool use_dark_theme = false;
+@@ -221,6 +224,7 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
+     SetGTKDarkThemeEnabled(use_dark_theme);
+   }
+ 
++#if defined(USE_X11)
+   // Before the window is mapped the SetWMSpecState can not work, so we have
+   // to manually set the _NET_WM_STATE.
+   std::vector<::Atom> state_atom_list;
+@@ -233,16 +237,20 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
+   if (fullscreen) {
+     state_atom_list.push_back(GetAtom("_NET_WM_STATE_FULLSCREEN"));
+   }
++#endif
+ 
+   if (parent) {
+     SetParentWindow(parent);
+     // Force using dialog type for child window.
+     window_type = "dialog";
++#if defined(USE_X11)
+     // Modal window needs the _NET_WM_STATE_MODAL hint.
+     if (is_modal())
+       state_atom_list.push_back(GetAtom("_NET_WM_STATE_MODAL"));
++#endif
+   }
+ 
++#if defined(USE_X11)
+   if (!state_atom_list.empty())
+     ui::SetAtomArrayProperty(GetAcceleratedWidget(), "_NET_WM_STATE", "ATOM",
+                              state_atom_list);
+@@ -251,6 +259,7 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
+   if (!window_type.empty())
+     SetWindowType(GetAcceleratedWidget(), window_type);
+ #endif
++#endif
+ 
+ #if defined(OS_WIN)
+   if (!has_frame()) {
+@@ -1145,7 +1154,7 @@ void NativeWindowViews::SetProgressBar(double progress,
+                                        NativeWindow::ProgressState state) {
+ #if defined(OS_WIN)
+   taskbar_host_.SetProgressBar(GetAcceleratedWidget(), progress, state);
+-#elif defined(USE_X11)
++#elif defined(OS_LINUX)
+   if (unity::IsRunning()) {
+     unity::SetProgressFraction(progress);
+   }
+@@ -1199,7 +1208,7 @@ content::DesktopMediaID NativeWindowViews::GetDesktopMediaID() const {
+ #if defined(OS_WIN)
+   window_handle =
+       reinterpret_cast<content::DesktopMediaID::Id>(accelerated_widget);
+-#elif defined(USE_X11)
++#elif defined(OS_LINUX)
+   window_handle = accelerated_widget;
+ #endif
+   aura::WindowTreeHost* const host =
+@@ -1302,7 +1311,7 @@ void NativeWindowViews::SetIcon(HICON window_icon, HICON app_icon) {
+   SendMessage(hwnd, WM_SETICON, ICON_BIG,
+               reinterpret_cast<LPARAM>(app_icon_.get()));
+ }
+-#elif defined(USE_X11)
++#elif defined(OS_LINUX)
+ void NativeWindowViews::SetIcon(const gfx::ImageSkia& icon) {
+   auto* tree_host = views::DesktopWindowTreeHostLinux::GetHostForWidget(
+       GetAcceleratedWidget());
+diff --git a/shell/browser/native_window_views.h b/shell/browser/native_window_views.h
+index d4eab6dfa..fb7434c90 100644
+--- a/shell/browser/native_window_views.h
++++ b/shell/browser/native_window_views.h
+@@ -153,7 +153,7 @@ class NativeWindowViews : public NativeWindow,
+                     LPARAM l_param,
+                     LRESULT* result);
+   void SetIcon(HICON small_icon, HICON app_icon);
+-#elif defined(USE_X11)
++#elif defined(OS_LINUX)
+   void SetIcon(const gfx::ImageSkia& icon);
+ #endif
+ 
+diff --git a/shell/browser/ui/inspectable_web_contents_view_delegate.h b/shell/browser/ui/inspectable_web_contents_view_delegate.h
+index 73c4214d3..0f2acc3cf 100644
+--- a/shell/browser/ui/inspectable_web_contents_view_delegate.h
++++ b/shell/browser/ui/inspectable_web_contents_view_delegate.h
+@@ -23,7 +23,7 @@ class InspectableWebContentsViewDelegate {
+   // Returns the icon of devtools window.
+   virtual gfx::ImageSkia GetDevToolsWindowIcon();
+ 
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+   // Called when creating devtools window.
+   virtual void GetDevToolsWindowWMClass(std::string* name,
+                                         std::string* class_name) {}
+diff --git a/shell/browser/ui/views/inspectable_web_contents_view_views.cc b/shell/browser/ui/views/inspectable_web_contents_view_views.cc
+index d6321c8ff..6702c7a2c 100644
+--- a/shell/browser/ui/views/inspectable_web_contents_view_views.cc
++++ b/shell/browser/ui/views/inspectable_web_contents_view_views.cc
+@@ -188,7 +188,7 @@ void InspectableWebContentsViewViews::SetIsDocked(bool docked, bool activate) {
+     params.delegate = devtools_window_delegate_;
+     params.bounds = inspectable_web_contents()->GetDevToolsBounds();
+ 
+-#if defined(USE_X11)
++#if defined(OS_LINUX)
+     params.wm_role_name = "devtools";
+     if (GetDelegate())
+       GetDelegate()->GetDevToolsWindowWMClass(&params.wm_class_name,
+-- 
+2.28.0
+
