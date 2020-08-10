@@ -8,7 +8,7 @@ pkgdesc="CastBlock skips integrated youtube sponsors on all chromecasts on the n
 arch=('any')
 url="https://github.com/stephen304/castblock"
 license=('GPL3')
-depends=('jq' 'bc' 'diffutils' 'coreutils')
+depends=('jq' 'bc' 'diffutils' 'coreutils' 'go-chromecast-git')
 provides=('castblock')
 conflicts=('castblock')
 source=("git+${url}.git#branch=master")

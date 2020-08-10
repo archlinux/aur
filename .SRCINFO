@@ -9,6 +9,7 @@ pkgbase = castblock-git
 	depends = bc
 	depends = diffutils
 	depends = coreutils
+	depends = go-chromecast-git
 	provides = castblock
 	conflicts = castblock
 	source = git+https://github.com/stephen304/castblock.git#branch=master
