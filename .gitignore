@@ -1,5 +1,5 @@
 /pkg/
 /src/
 /zps/
-*.tar.gz
-*.tar.xz
+*.tar.*
+*.tar.*
