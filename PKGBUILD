@@ -7,9 +7,9 @@
 pkgname=aerial-2k-videos
 pkgdesc='Apple TV4 HD aerial movies in 2k'
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 arch=(any)
-_url="https://sylvan.apple.com/Aerials/2x/Videos"
+_url="http://sylvan.apple.com/Aerials/2x/Videos"
 optdepends=('xscreensaver-aerial: xscreensaver hack that randomly selects one of the Apple TV4 HD aerial movies')
 source=(
   "$_url"/AK_A004_C012_SDR_20191217_SDR_2K_HEVC.mov
@@ -41,7 +41,7 @@ source=(
   "$_url"/comp_GMT026_363A_103NC_E1027_KOREA_JAPAN_NIGHT_v17_SDR_FINAL_25062018_SDR_2K_HEVC.mov
   "$_url"/comp_GMT110_112NC_364D_1054_AURORA_ANTARTICA__COMP_FINAL_v34_PS_SDR_20181107_SDR_2K_HEVC.mov
   "$_url"/comp_GMT306_139NC_139J_3066_CALI_TO_VEGAS_v07_SDR_FINAL_22062018_SDR_2K_HEVC.mov
-  https://sylvan.apple.com/Videos/comp_GMT307_136NC_134K_8277_NY_NIGHT_01_v25_SDR_PS_20180907_SDR_2K_AVC.mov
+   http://sylvan.apple.com/Videos/comp_GMT307_136NC_134K_8277_NY_NIGHT_01_v25_SDR_PS_20180907_SDR_2K_AVC.mov
   "$_url"/comp_GMT308_139K_142NC_CARIBBEAN_DAY_v09_SDR_FINAL_22062018_SDR_2K_HEVC.mov
   "$_url"/comp_GMT312_162NC_139M_1041_AFRICA_NIGHT_v14_SDR_FINAL_20180706_SDR_2K_HEVC.mov
   "$_url"/comp_GMT314_139M_170NC_NORTH_AMERICA_AURORA__COMP_v22_SDR_20181206_v12CC_SDR_2K_HEVC.mov
