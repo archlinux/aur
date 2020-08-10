@@ -2,7 +2,7 @@
 _reponame=nlsr
 _pkgname=nlsr
 pkgname=ndn-${_pkgname}-git
-pkgver=0.5.2.r10.g57a8717
+pkgver=0.5.2.r11.g7a231c0
 pkgrel=1
 # epoch=
 pkgdesc="Named Data Link State Routing Protocol"
@@ -55,4 +55,5 @@ package() {
   cd "${srcdir}/${_reponame}"
 	./waf install --destdir="${pkgdir}"
   cp -r "${srcdir}/${_reponame}/build/docs/"* "${pkgdir}/usr/share/doc/$_pkgname"
+  mv "${pkgdir}/usr/etc" "${pkgdir}/"
 }
