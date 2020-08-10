@@ -1,4 +1,5 @@
 # Maintainer: Radek Podgorny <radek@podgorny.cz>
+# Co-maintainer: Tyler Langlois <ty |at| tjll |dot| net>
 
 pkgname=nomad
 pkgver=0.11.3
