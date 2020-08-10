@@ -25,7 +25,7 @@ source=("$pkgname::git+$url.git"
 noextract=()
 sha256sums=("SKIP"
             "2900c26c1209f94033b94c38ad754aa2941f2acbf681f8c30a04f83b128d3f13"
-			"24a3b6e4300741f8184395a9d628076205f249201658a318c1eebaec6f613884")
+			"4b5aaa36e4834e14b931d71492426d0300b45c5dbb9bc654be939c74cc466096")
 
 pkgver() {
     cd "$srcdir/$pkgname"
