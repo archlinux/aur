@@ -1,18 +1,20 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Maintainer: Anatoly Bashmakov <anatoly at posteo dot net>
+# Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=execjs
 pkgname=ruby-$_gemname
 pkgver=2.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Run JavaScript code from Ruby'
 arch=('any')
 url='https://github.com/rails/execjs'
 license=('MIT')
-depends=('ruby')
+depends=('ruby' 'nodejs')
+makedepends=('ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('d6456bf36f4f4b3b9a3db36a5c31462c4f6ac09b02fc962b3f5c153ecec4d78acdecfb853c3255d69209e5d4342a3e485a7c59e29aded1e4065e63731e6bb16e')
+sha256sums=('e1fae0c5c831934c47d92363b4ea66ef2951350ab91b5d8d3174342b9c2ee5fb')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
