@@ -4,7 +4,7 @@
 
 pkgname=sipvicious
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Set of security tools that can be used to audit SIP based VoIP systems"
 arch=('any')
 url="https://github.com/EnableSecurity/sipvicious"
@@ -14,7 +14,7 @@ optdepends=('python-scapy: allow svcrash to crash SIPVicious toolset')
 makedepends=('python-setuptools')
 changelog=$pkgname.changelog
 source=("$pkgname-$pkgver.tar.gz::https://github.com/EnableSecurity/sipvicious/tarball/384c9d432a87568a4f3df9d4aefc8fdfbaecabc4"
-        "https://raw.githubusercontent.com/EnableSecurity/sipvicious/master/LICENSE")
+        "LICENSE-$pkgname-$pkgver::https://raw.githubusercontent.com/EnableSecurity/sipvicious/master/LICENSE")
 noextract=("LICENSE")
 b2sums=('f314601435f6e7acb6474550d36d209d60213c6e8dd5ca569072b58877035727630d72205e7feeb74ef2c538b4f2c6a322d67316fb500e4304aeeae835d474ee'
         '583328dc620cc2fddcfc4114d2d772820c815d7269cb231cec46fd6e2bc78d5c816da2183be5707a50b3c0a97cc99719679a5d394a8c11a72e30901822b69673')
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE-$pkgname-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   cd "$srcdir/EnableSecurity-sipvicious-384c9d4"
 
