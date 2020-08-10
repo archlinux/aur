@@ -19,7 +19,7 @@ pkgver() {
 }
 prepare() {
   cd "$srcdir/${pkgname}"
-  
+
   # workaround to avoid sudo invokation by the "install.sh"
   if command -v ${_basename}
   then
@@ -28,7 +28,7 @@ prepare() {
 }
 build() {
   # There is nothing to build ? Nice
-  cd "$srcdir/${pkgname}"
+  cd "."
 }
 package() {
   cd "$srcdir/${pkgname}"
