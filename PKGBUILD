@@ -10,7 +10,7 @@ _name=alice-vision
 _fragment="#branch=develop"
 
 pkgname=${_name}-git
-pkgver=2.2.0.r946.g5c0412194
+pkgver=2.2.0.r948.g32e626e2e
 pkgrel=1
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('i686' 'x86_64')
@@ -29,13 +29,11 @@ source=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragme
         "ute_lib::git+https://github.com/alicevision/uncertaintyTE.git"
         "geogram::git+https://github.com/alicevision/geogram.git"
         "submodule.patch"
-        "cuda11.patch"
         )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22'
-            'fbf961b52a13105fc3190ee1213872cb421cd5351065bee423f12f8606b76373')
+            'ddbe76933cea0300b577095afa7459113a2d2ef02d4f300424261165ad9dee22')
 
 pkgver() {
   cd "${pkgname}"
@@ -51,7 +49,6 @@ prepare() {
 #  git config submodule.src/dependencies/osi_clp.url
   git submodule update
   git apply "${srcdir}/submodule.patch"
-  git apply "${srcdir}/cuda11.patch"
 # fix doc build
   sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt
 }
