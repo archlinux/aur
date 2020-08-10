@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=Development;
+Comment=dida
+Comment[zh_CN]=滴答清单
+Exec="/usr/bin/dida"
+GenericName=dida
+GenericName[zh_CN]=滴答清单
+Icon=dida
+MimeType=
+Name=滴答清单
+Name[zh_CN]=滴答清单
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.9.1
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
