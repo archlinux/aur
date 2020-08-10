@@ -2,7 +2,7 @@
 
 _pkgname=faustfilters
 pkgname="${_pkgname}-git"
-pkgver=v0.3.0.r0.g5d74237
+pkgver=0.3.0.r0.g5d74237
 pkgrel=1
 pkgdesc="A collection of virtual-analog filter plugins (git version)"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
   (
     set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
