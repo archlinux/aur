@@ -33,14 +33,14 @@ def putToRecycle(files):
         with open(pathDir+"/{itemId}".format(itemId=_id), "w") as f:
             f.write("{path}".format(path=pathItem))
 
-        print(_("Recycled [{itemId}] {path}").format(path=item, itemId=_id))
+        print(("Recycled [{itemId}] {path}").format(path=item, itemId=_id))
         _id += 1
 
 def listRecycle():
     items = [int(i) for i in listdir(pathDir)]
     items.sort()
     itemLen = len("%d" % max(items+[1]))
-    print(_("Total size : %s\n") % _recycleSize_()[1])
+    print(("Total size : %s\n") % _recycleSize_()[1])
 
     for item in items:
         with open(pathDir+"/{itemId}".format(itemId=item), "r") as f:
@@ -60,7 +60,7 @@ def dropItems(ids):
 
         dataItem = dataDir+"/{itemId}".format(itemId=item)
         if not exists(dataItem) and not islink(dataItem):
-            print(_("ERR: Item #{itemId} was not found in the recycle.").format(itemId=item))
+            print(("ERR: Item #{itemId} was not found in the recycle.").format(itemId=item))
 
         if isfile(pathDir+"/{itemId}".format(itemId=item)):
             with open(pathDir+"/{itemId}".format(itemId=item), "r") as f:
@@ -68,14 +68,14 @@ def dropItems(ids):
             unlink(pathDir+"/{itemId}".format(itemId=item))
 
         call(['rm', '-r', '{d}/{item}'.format(d=dataDir, item=item)])
-        print(_("Dropped [{itemId}] {itemPath}").format(itemId=item, itemPath=path))
+        print(("Dropped [{itemId}] {itemPath}").format(itemId=item, itemPath=path))
 
 def restoreItems(ids):
     for item in ids:
         path = ""
         dataItem = dataDir+"/{itemId}".format(itemId=item)
         if not exists(dataItem) and not islink(dataItem):
-            print(_("ERR: Item #{itemId} was not found in the recycle.").format(itemId=item))
+            print(("ERR: Item #{itemId} was not found in the recycle.").format(itemId=item))
             continue
 
         if isfile(pathDir+"/{itemId}".format(itemId=item)):
@@ -84,7 +84,7 @@ def restoreItems(ids):
 
         call(['mv', dataDir+"/{itemId}".format(itemId=item), path])
         unlink(pathDir+"/{itemId}".format(itemId=item))
-        print(_("Restored [{itemId}] {itemPath}").format(itemId=item, itemPath=path))
+        print(("Restored [{itemId}] {itemPath}").format(itemId=item, itemPath=path))
 
 def emptyRecycle():
     call(['rm', '-r', dataDir])
@@ -94,15 +94,15 @@ def emptyRecycle():
 def orderIds():
     notFound = 0
     for num, item in enumerate([int(i) for i in listdir(pathDir)]):
-        print(_("Ordering items… %s") % "|/—\\"[num%4], end="\r")
+        print(("Ordering items… %s") % "|/—\\"[num%4], end="\r")
 
         dataItem = dataDir+"/{itemId}".format(itemId=item)
         if exists(dataItem) or islink(dataItem):
             if num+1 != item:
-                print(_("\rMoved {old} to {new}\x1B[0K").format(old=item, new=num+1))
+                print(("\rMoved {old} to {new}\x1B[0K").format(old=item, new=num+1))
                 call(['mv', dataDir+"/{itemId}".format(itemId=item), dataDir+"/{itemId}".format(itemId=num+1)])
         else:
-            print(_("\r\x1B[1;31mERR:\x1B[0m Item #{itemId} does not exist under {path}, deleting its metadata\x1B[0K").format(itemId=item, path=dataDir))
+            print(("\r\x1B[1;31mERR:\x1B[0m Item #{itemId} does not exist under {path}, deleting its metadata\x1B[0K").format(itemId=item, path=dataDir))
             unlink(pathDir+"/{itemId}".format(itemId=item))
             notFound += 1
         if num+1 != item:

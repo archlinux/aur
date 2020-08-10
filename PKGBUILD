@@ -11,7 +11,7 @@ license=('GPL')
 depends=('coreutils' 'gettext' 'python>=3.4')
 source=("Recycle.py")
 
-sha256sums=('1aa14f8c2d8fceb7eba0f07955e59e8614bc560e206b6a1545bb71126d4974c2')
+sha256sums=('5314c6d1237aa449f5925563117c9f12de8740e87654b70b419fd73772dbb5ca')
 
 package() {
 	cd "$srcdir"
