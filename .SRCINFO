@@ -1,6 +1,6 @@
 pkgbase = fetchpac-git
 	pkgdesc = A CLI tool written in Bash for printing system package information.
-	pkgver = 1.1.r5.g7e4285a
+	pkgver = 1.1.r7.gd26f5af
 	pkgrel = 1
 	url = https://github.com/sky-aw/fetchpac
 	arch = any
