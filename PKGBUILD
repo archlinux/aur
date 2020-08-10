@@ -6,8 +6,8 @@
 
 pkgname=aerial-2k-videos
 pkgdesc='Apple TV4 HD aerial movies in 2k'
-pkgver=1.10
-pkgrel=5
+pkgver=1.11
+pkgrel=1
 arch=(any)
 _url="https://sylvan.apple.com/Aerials/2x/Videos"
 optdepends=('xscreensaver-aerial: xscreensaver hack that randomly selects one of the Apple TV4 HD aerial movies')
