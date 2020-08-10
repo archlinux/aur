@@ -1,13 +1,13 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=plumed-mpi
-pkgver=2.6.0
-pkgrel=2
+pkgver=2.6.1
+pkgrel=1
 pkgdesc="An open source plugin for free energy calculations in molecular systems which works together with some of the most popular molecular dynamics engines (with MPI support)"
 url="http://www.plumed.org/"
 license=(GPL)
 arch=(i686 x86_64)
-depends=(lapack zlib gsl gcc8 openmpi-gcc8 netcdf)
+depends=(lapack zlib gsl gcc9 openmpi-gcc9 netcdf)
 optdepends=('vmd-molfile-plugins: add capability to read vmd compatible trajectories'
             'xdrfile: GROMACS trajectory format support'
             'python-setuptools: Python module support'
