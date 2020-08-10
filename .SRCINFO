@@ -24,9 +24,9 @@ pkgbase = falkon-widevine-git
 	source = https://github.com/TheCynicalTeam/falkon-widevine/releases/download/3.1.0/falkon-3.1.0.tar.xz.sig
 	source = https://github.com/TheCynicalTeam/falkon-widevine/archive/3.1.0.tar.gz
 	validpgpkeys = 3CB7B8416EF6778B409FDC43EBC3FC294452C6D8
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = ce743cd80c0e2d525a784e29c9b487f73480119b0567f9ce8ef1f44cca527587
+	sha256sums = 7244087a0822953f05be8530f0b760a5e358f2dbdc8b6a36efd18c9a49139173
+	sha256sums = 82331187f473032fd17007209e74d03d308f5152457d2e209b67dccd01cc8469
 
 pkgname = falkon-widevine-git
 

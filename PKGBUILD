@@ -18,9 +18,9 @@ replaces=(qupzilla)
 source=("https://github.com/TheCynicalTeam/$_pkgname-widevine/releases/download/$pkgver/$_pkgname-$pkgver.tar.xz"
         "https://github.com/TheCynicalTeam/$_pkgname-widevine/releases/download/$pkgver/$_pkgname-$pkgver.tar.xz.sig"
         "https://github.com/TheCynicalTeam/$_pkgname-widevine/archive/$pkgver.tar.gz")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('ce743cd80c0e2d525a784e29c9b487f73480119b0567f9ce8ef1f44cca527587'
+            '7244087a0822953f05be8530f0b760a5e358f2dbdc8b6a36efd18c9a49139173'
+            '82331187f473032fd17007209e74d03d308f5152457d2e209b67dccd01cc8469')
 validpgpkeys=(3CB7B8416EF6778B409FDC43EBC3FC294452C6D8) # David Rosca <nowrep@gmail.com>
 
 prepare() {
