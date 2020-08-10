@@ -1,13 +1,12 @@
 pkgbase = libgav1-git
-	pkgdesc = A profile 0 and 1 compliant AV1 decoder by Google (git version)
-	pkgver = r5.g2db0515
+	pkgdesc = A main profile (0) and high profile (1) compliant AV1 decoder (git version)
+	pkgver = 0.16.0.r0.ge46493b
 	pkgrel = 1
 	url = https://chromium.googlesource.com/codecs/libgav1/
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = cmake
-	depends = gcc-libs
 	provides = libgav1
 	conflicts = libgav1
 	source = git+https://chromium.googlesource.com/codecs/libgav1
