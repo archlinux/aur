@@ -1,6 +1,6 @@
 pkgbase = vivaldi-codecs-ffmpeg-extra-bin
 	pkgdesc = Prebuilt ffmpeg codecs package for Vivaldi
-	pkgver = 83.0.4103.61
+	pkgver = 84.0.4147.105
 	pkgrel = 1
 	url = https://packages.ubuntu.com/bionic/amd64/chromium-codecs-ffmpeg-extra/download
 	changelog = changes
@@ -11,8 +11,8 @@ pkgbase = vivaldi-codecs-ffmpeg-extra-bin
 	depends = perl
 	provides = vivaldi-ffmpeg-codecs
 	conflicts = vivaldi-ffmpeg-codecs
-	source = http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_83.0.4103.61-0ubuntu0.18.04.1_amd64.deb
-	md5sums = a39dffacdaf52763eb0e1a7bace86295
+	source = http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_84.0.4147.105-0ubuntu0.18.04.1_amd64.deb
+	md5sums = da7a885514d6f077f21fe04e6b48658e
 
 pkgname = vivaldi-codecs-ffmpeg-extra-bin
 

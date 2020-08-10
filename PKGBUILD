@@ -2,7 +2,7 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 # Maintainer: Matti Viljanen <matti.viljanen@kapsi.fi>
 pkgname=vivaldi-codecs-ffmpeg-extra-bin
-pkgver=83.0.4103.61
+pkgver=84.0.4147.105
 _ubuver=0ubuntu0
 _ubudist=18.04.1
 pkgrel=1
@@ -22,7 +22,7 @@ conflicts=(
 source=(
   "http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-${_ubuver}.${_ubudist}_amd64.deb"
 )
-md5sums=('a39dffacdaf52763eb0e1a7bace86295')
+md5sums=('da7a885514d6f077f21fe04e6b48658e')
 
 prepare() {
   tar -xJf data.tar.xz
