@@ -24,7 +24,7 @@ _GRUB_EXTRAS_COMMIT="8a245d5c1800627af4cefa99162a89c7a46d8842"
 pkgname="grub-silent"
 pkgdesc="GNU GRand Unified Bootloader (2) [without welcome and kernel messages]"
 pkgver=2.04
-pkgrel=2
+pkgrel=3
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -39,10 +39,9 @@ provides=('grub' 'grub-common' 'grub-bios' 'grub-emu' "grub-efi-${_EFI_ARCH}")
 
 makedepends=('autogen' 'bdf-unifont' 'git' 'help2man'
              'python' 'rsync' 'texinfo' 'ttf-dejavu')
-depends=('device-mapper' 'gettext')
+depends=('device-mapper' 'gettext' 'efibootmgr')
 optdepends=('freetype2: For grub-mkfont usage'
             'fuse2: For grub-mount usage'
-            'efibootmgr: For grub-install EFI support'
             'dosfstools: For grub-mkrescue FAT FS and EFI support'
             'libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue'
             'os-prober: To detect other OSes when generating grub.cfg in BIOS systems'
