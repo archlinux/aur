@@ -1,6 +1,6 @@
-diff -ura bludigon.orig/src/Bludigon/Main/CLI.hs bludigon/src/Bludigon/Main/CLI.hs
---- bludigon.orig/src/Bludigon/Main/CLI.hs	2020-08-02 01:26:50.529886479 +0200
-+++ bludigon/src/Bludigon/Main/CLI.hs	2020-08-02 01:39:45.761627593 +0200
+diff -ura blucontrol.orig/src/Blucontrol/Main/CLI.hs blucontrol/src/Blucontrol/Main/CLI.hs
+--- blucontrol.orig/src/Blucontrol/Main/CLI.hs	2020-08-02 01:26:50.529886479 +0200
++++ blucontrol/src/Blucontrol/Main/CLI.hs	2020-08-02 01:39:45.761627593 +0200
 @@ -79,6 +79,7 @@
      runProcess "ghc" [ "--make"
                       , configLeafname
