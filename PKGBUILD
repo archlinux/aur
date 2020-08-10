@@ -1,7 +1,7 @@
 # Maintainer: Stephen Smith <stephen304@gmail.com>
 
 pkgname=castblock-git
-pkgbase=castblock
+_pkgname=castblock
 pkgver=9.5ac271c
 pkgrel=1
 pkgdesc="CastBlock skips integrated youtube sponsors on all chromecasts on the network."
@@ -15,12 +15,12 @@ source=("git+${url}.git#branch=master")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgname"
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 package() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$_pkgname"
 
   install -Dm755 castblock "${pkgdir}/usr/bin/castblock"
   install -Dm644 contrib/castblock.service "$pkgdir"/usr/lib/systemd/system/castblock.service
