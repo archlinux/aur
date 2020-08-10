@@ -4,7 +4,7 @@
 # Contributor: cute.tec@gmail.com
 
 pkgname=xfwm4-git
-pkgver=4.14.0+169+gb835473b2
+pkgver=4.15.1+1+g6117ce1f4
 pkgrel=1
 pkgdesc="Xfce window manager (git version)"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd xfwm4
-  git describe --long --match 'xfwm4-*' | sed 's/xfwm4-//;s/-/+/g'
+  git describe --long --match 'xfwm4-*' | sed 's/xfwm4-//;s/^\([[:digit:]]\)-/\1./;s/-/+/g'
 }
 
 build() {
