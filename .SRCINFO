@@ -1,13 +1,13 @@
 pkgbase = roundcubemail-plugin-chbox
 	pkgdesc = This chbox plugin adds the convenient functionality of making single and/or multiple selections from a number of emails in Roundcube message list.
-	pkgver = 0.2.4
-	pkgrel = 2
+	pkgver = 1.3.7
+	pkgrel = 1
 	url = https://plugins.roundcube.net/packages/roundcube/chbox
 	arch = any
 	license = GPL3
 	depends = roundcubemail
-	source = https://github.com/6ec123321/chbox/archive/0.2.4.tar.gz
-	md5sums = a647981b8b09d37a02401c9ccf0d5add
+	source = https://github.com/6ec123321/chbox/archive/chbox-1.3.7.tar.gz
+	md5sums = 4457db89d720203364a527e58fc8aa2d
 
 pkgname = roundcubemail-plugin-chbox
 
