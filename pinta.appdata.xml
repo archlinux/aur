@@ -54,6 +54,6 @@
     <binary>pinta</binary>
   </provides>
   <releases>
-    <release version="1.6" date="2015-03-01"/>
+    <release version="1.7" date="2020-08-04"/>
   </releases>
 </component>

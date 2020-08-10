@@ -1,19 +1,20 @@
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Konrad <konrad AT knauber DOT name>
 
 pkgname=pinta
-pkgver=1.6
-pkgrel=4
+pkgver=1.7
+pkgrel=1
 pkgdesc="Drawing/editing program modeled after Paint.NET. It's goal is to provide a simplified alternative to GIMP for casual users"
-arch=('any')
+arch=(any)
 url="https://pinta-project.com/"
-license=('MIT')
-depends=('gtk-sharp-2' 'mono-addins')
-makedepends=('intltool')
+license=(MIT)
+depends=(gtk-sharp-2 mono-addins)
+makedepends=(intltool)
 source=(https://github.com/PintaProject/Pinta/releases/download/$pkgver/$pkgname-$pkgver.tar.gz
         pinta.appdata.xml)
-sha256sums=('f1ea9e95f1051b92c8d8b6f622dfb77bd26254a165a836ec179aae10eb99d881'
-            '37132612c9bf08b95cd3ce12ec8e3e5e76511d1e7e719d1ef5ad97e41bdd74b4')
+sha256sums=('678c0d5c6e41da77696180efc71476ccfda3238a3d68d7331198c8a431dbf96c'
+            '7873caf68d056369a25185d2f61f108b30b1f42173f4bafa9ed0d4b5fe7e86de')
 
 prepare() {
   cd $pkgname-$pkgver
