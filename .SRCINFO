@@ -1,0 +1,18 @@
+pkgbase = castblock
+	pkgdesc = CastBlock skips integrated youtube sponsors on all chromecasts on the network.
+	pkgver = 8.40aafd0
+	pkgrel = 1
+	url = https://github.com/stephen304/castblock
+	arch = any
+	license = GPL3
+	depends = jq
+	depends = bc
+	depends = diffutils
+	depends = coreutils
+	provides = castblock
+	conflicts = castblock
+	source = git+https://github.com/stephen304/castblock.git#branch=master
+	sha512sums = SKIP
+
+pkgname = castblock-git
+
