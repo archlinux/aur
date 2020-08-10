@@ -1,7 +1,7 @@
 pkgbase = office-code-pro
 	pkgdesc = Customized version of Source Code Pro
 	pkgver = 1.004
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/nathco/Office-Code-Pro
 	arch = any
 	license = custom: SIL Open Font License 1.1
