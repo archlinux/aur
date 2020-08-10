@@ -3,7 +3,7 @@ _reponame=mini-ndn
 _pkgname=mini-ndn
 pkgname=${_pkgname}-git
 pkgver=v0.4.0.r34.g76dbe66
-pkgrel=3
+pkgrel=4
 # epoch=
 pkgdesc="Lightweight networking emulation tool that enables testing, experimentation, and research on the NDN platform based on Mininet"
 arch=('i686' 'x86_64')
@@ -44,6 +44,7 @@ package() {
   cd "${srcdir}/${_reponame}" 
   cp topologies/*.conf "${pkgdir}/usr/local/etc/mini-ndn/"
   cp examples/mnndn.py "${pkgdir}/usr/bin/mnndn"
+  chmod 775 "${pkgdir}/usr/bin/mnndn"
   python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
   sed -i "1i#!/usr/bin/env python2" "${pkgdir}/usr/bin/mnndn"
 }
