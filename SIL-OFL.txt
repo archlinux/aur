@@ -1,5 +1,5 @@
-Copyright (c) 2014--2020, Ben Whitmore (https://fontlibrary.org/en/member/Fuzzypeg),
-with Reserved Font Name <Coelacanth>.
+Copyright (c) February 2020, Ben Whitmore (ben.whitmore0@gmail.com, Waiheke, New Zealand),
+with Reserved Font Name "Coelacanth".
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
