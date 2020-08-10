@@ -2,8 +2,8 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=play.it
-pkgver=2.11.4
-pkgrel=3
+pkgver=2.12.0
+pkgrel=1
 pkgdesc="Easy way to install games on Linux"
 arch=('any')
 url="https://wiki.dotslashplay.it"
@@ -18,11 +18,13 @@ optdepends=(
   'unzip: to extract some archives'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://forge.dotslashplay.it/play.it/scripts/-/archive/${pkgver}/scripts-${pkgver}.tar.gz")
-sha1sums=('9858a16af2e9398c8e27a15c68d43447a42a79f9')
+sha256sums=('413f2ffb7af50e44c03abc04bade37494eb47b936c8ef7bee01872b71c371549')
 
 prepare() {
   cd scripts-$pkgver
   sed -i '/DEFAULT_OPTION_PREFIX/s,=.*,=/usr,' play.it-2/src/99_init.sh
+  sed -i '/PATH_DESK/s,=.*,=/usr/share/applications,' play.it-2/src/99_init.sh
+  sed -i '/PATH_ICON_BASE/s,=.*,=/usr/share/icons/hicolor,' play.it-2/src/99_init.sh
 }
 
 build() {
