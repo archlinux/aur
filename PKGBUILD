@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-power-git
-pkgver=r394.89005f7
+pkgver=2.1.5.r25.g7ae1a7c
 pkgrel=1
 pkgdesc='Power indicator for Wingpanel'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('bamf' 'glib2' 'glibc' 'gtk3' 'libgee' 'libgtop'
          'libgranite.so' 'libudev.so' 'libwingpanel-2.0.so')
-makedepends=('git' 'granite-git' 'meson' 'vala' 'wingpanel-git')
+makedepends=('git' 'granite-git' 'meson' 'vala' 'wingpanel')
 provides=('wingpanel-indicator-power')
 conflicts=('wingpanel-indicator-power')
 source=('git+https://github.com/elementary/wingpanel-indicator-power.git')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd wingpanel-indicator-power
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
