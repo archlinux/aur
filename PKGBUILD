@@ -6,8 +6,8 @@
 _pkgbase=lgi
 pkgbase=lua-lgi-git
 pkgname=$pkgbase
-pkgver=0.9.1.r26.g93eab44
-pkgrel=2
+pkgver=0.9.2.r55.g05038e4
+pkgrel=1
 pkgdesc='Lua bindings for gnome/gobject using gobject-introspection library'
 arch=(i686 x86_64)
 url='https://github.com/pavouk/lgi'
@@ -19,6 +19,7 @@ conflicts=('lgi' 'lua-lgi')
 provides=('lua-lgi')
 source=('git+https://github.com/pavouk/lgi.git')
 md5sums=('SKIP')
+_LUA_VER=5.4
 
 pkgver() {
   cd $_pkgbase
@@ -28,14 +29,15 @@ pkgver() {
 
 build() {
   cd $_pkgbase
-  make
+  make LUA_INCDIR=/usr/include/lua${_LUA_VER}/ \
+    LUA_CFLAGS="$(pkg-config --cflags lua${_LUA_VER}) -O2"
 }
 
 package() {
   cd $_pkgbase
   make \
-    LUA_LIBDIR=/usr/lib/lua/5.3 \
-    LUA_SHAREDIR=/usr/share/lua/5.3 \
+    LUA_LIBDIR=/usr/lib/lua/${_LUA_VER} \
+    LUA_SHAREDIR=/usr/share/lua/${_LUA_VER} \
     DESTDIR="$pkgdir/" install
 
   # dump typelib tool

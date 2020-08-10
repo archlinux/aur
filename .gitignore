@@ -1,4 +1,4 @@
 lgi/
 pkg/
 src/
-*.pkg.tar.xz
+*.pkg.*
