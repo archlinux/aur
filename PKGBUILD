@@ -3,7 +3,7 @@ _reponame=NLSR
 _pkgname=ndn-nlsr
 pkgname=$_pkgname
 pkgver=0.5.2
-pkgrel=3
+pkgrel=4
 # epoch=
 pkgdesc="Named Data Link State Routing Protocol"
 arch=('i686' 'x86_64')
@@ -53,4 +53,5 @@ package() {
 	cd "${srcdir}/${_reponame}-${_reponame}-${pkgver}"
 	./waf install --destdir="${pkgdir}"
   cp -r "${srcdir}/${_reponame}-${_reponame}-${pkgver}/build/docs/"* "${pkgdir}/usr/share/doc/$_pkgname" 
+  mv "${pkgdir}/usr/etc" "${pkgdir}/"
 }
