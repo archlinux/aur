@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=sabnzbd-desktop
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc='Desktop tools for sabnzbd.'
 arch=('any')
@@ -29,7 +29,7 @@ sha256sums=('4e7aaa06e871196a66fe678977bf5715fb8dfdd717ebb62345a1857967b3c978'
 
 package() {
   mkdir -p "${pkgdir}/usr/lib/sabnzbd-desktop"
-  install -D -m 755 "${srcdir}/sabnzbd"       "${pkgdir}/usr/bin/sabnzbd}"
+  install -D -m 755 "${srcdir}/sabnzbd"       "${pkgdir}/usr/bin/sabnzbd"
   install -D -m 644 "${srcdir}/sabnzbd.confd" "${pkgdir}/etc/conf.d/sabnzbd"
   install -D -m 755 "${srcdir}/sabnzbd.desktop" "${pkgdir}/usr/share/applications/sabnzbd.desktop"
   install -D -m 755 "${srcdir}/addnzb.sh"    "${pkgdir}/usr/lib/sabnzbd-desktop/addnzb.sh"
