@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=sabnzbd-desktop
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='Desktop tools for sabnzbd.'
 arch=('any')
@@ -18,7 +18,7 @@ source=('sabnzbd.desktop'
         'sabnzbd.png'
         'x-nzb.xml')
 
-sha256sums=('59efec8ea5d26356ea151add32e6f050f64f4edf2022fb47a78d98b7f933249d'
+sha256sums=('a2da09adc328425e33c2ed2442c4edd75ecf3833835fdabad903a5e54d4ad002'
             '8462203454d488b5d4f7beb85e61da2efa42d3dffa465f3bf16a95abe0bc7c0a'
             '30ffff8b9c00e91358cd6c5dca89f9d9f8f12843e7b3c44c6d5b0f09b0ea424a'
             'ef8f4fb1a3a0750c74b7addd302ab8733187ad370b5d27336afb2677d7154571'
