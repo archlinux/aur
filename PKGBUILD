@@ -1,6 +1,7 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=xfce4-sysinfo
-pkgver=152.4b855d6
+commit=4b855d608f0948b40af94581330d602a04927640
+pkgver=152.${commit}
 pkgrel=1
 pkgdesc="A tool to show systeminformation in xfce"
 arch=(any)
@@ -9,21 +10,21 @@ license=('GPL v3')
 depends=('gtk3' 'gtkdialog' 'zenity')
 makedepends=('git')
 
-source=("$pkgname"::'git://github.com/lxgr-linux/xfce4-sysinfo.git')
+source=("xfce4-sysinfo.zip::https://github.com/lxgr-linux/xfce4-sysinfo/archive/${commit}.zip")
 md5sums=('SKIP')
 
-pkgver() {
-	    cd "$pkgname"
-	        echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
+#pkgver() {
+#	    cd "$pkgname"
+#	        echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+#}
 
-prepare(){
-	cd "$srcdir/$pkgname"
-	chmod +x sysinfo
-}
+#prepare(){
+#	cd "$srcdir/$pkgname-$commit"
+#	chmod +x sysinfo
+#}
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/$pkgname-$commit"
 	install -dm755 "${pkgdir}/usr/share/pixmaps"
 
 	install -Dm0644 -t "$pkgdir/etc" "xfce4-sysinfo.conf"
