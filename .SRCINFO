@@ -1,14 +1,15 @@
 pkgbase = wayback-machine-archiver
 	pkgdesc = Submit web pages to the Wayback Machine for archiving
-	pkgver = 1.6.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/agude/wayback-machine-archiver
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python
 	depends = python-requests
-	source = wayback-machine-archiver-1.6.0.tar.gz::https://github.com/agude/wayback-machine-archiver/archive/1.6.0.tar.gz
-	sha256sums = 3684f43e24254f036ea8c2fc49cdaeb135729fb10bf34c1e44d5aa8f82a8b42f
+	source = wayback-machine-archiver-1.7.1.tar.gz::https://github.com/agude/wayback-machine-archiver/archive/1.7.1.tar.gz
+	sha256sums = 90092061a21e2219eb89e658b2dfd34db33bb1c467e4cbbd388f4ed2332f0414
 
 pkgname = wayback-machine-archiver
 
