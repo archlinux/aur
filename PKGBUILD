@@ -14,7 +14,7 @@ depends=(qt5-webengine qt5-x11extras qt5-svg)
 makedepends=(extra-cmake-modules qt5-tools kio purpose libgnome-keyring pyside2 shiboken2)
 optdepends=('kio: KDE integration' 'purpose: KDE integration' 'libgnome-keyring: gnome keyring integration'
             'pyside2: Python plugins')
-replaces=(qupzilla)
+replaces=('qupzilla' 'qupzilla-qt5' 'qupzilla-qt5-git' 'falkon' 'falkon-git')
 source=("https://github.com/TheCynicalTeam/$_pkgname-widevine/releases/download/$pkgver/$_pkgname-$pkgver.tar.xz"
         "https://github.com/TheCynicalTeam/$_pkgname-widevine/releases/download/$pkgver/$_pkgname-$pkgver.tar.xz.sig"
         "https://github.com/TheCynicalTeam/$_pkgname-widevine/archive/$pkgver.tar.gz")
