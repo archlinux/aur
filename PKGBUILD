@@ -1,7 +1,7 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur
 commit=2b928054c777dc59faa4a75396af34adc840f716
-pkgver=42.$commit
+pkgver=42.${commit:0:7}
 pkgrel=1
 pkgdesc="An AUR helper with asp support."
 arch=(any)
@@ -10,7 +10,7 @@ license=('GPL v3')
 depends=('pacman' 'asp' 'devtools' 'git' 'python3')
 makedepends=('git')
 
-source=("${pkgname}.zip"::"https://github.com/lxgr-linux/buildaur/archive/${commit}.zip")
+source=("${pkgname}.tar.gz"::"https://github.com/lxgr-linux/buildaur/archive/${commit}.tar.gz")
 md5sums=('SKIP')
 
 # pkgver() {
