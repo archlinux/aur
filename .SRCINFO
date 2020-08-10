@@ -1,6 +1,6 @@
 pkgbase = python-ase
 	pkgdesc = Atomic Simulation Environment (ASE) is a set of tools and Python modules for setting up, manipulating, running, visualizing and analyzing atomistic simulations.
-	pkgver = 3.19.1
+	pkgver = 3.20.0
 	pkgrel = 1
 	url = http://wiki.fysik.dtu.dk/ase
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-ase
 	depends = python-scipy
 	optdepends = python-matplotlib: plotting
 	optdepends = python-flask: for ase.db web-interface
-	source = https://gitlab.com/ase/ase/repository/archive.tar.gz?ref=3.19.1
-	md5sums = 4ae942961ae3a672ddc679f7fdc410b2
+	source = https://gitlab.com/ase/ase/repository/archive.tar.gz?ref=3.20.0
+	md5sums = 0bdadc924c6413e9735d4540c96ac117
 
 pkgname = python-ase
 
