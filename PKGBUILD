@@ -1,7 +1,7 @@
 # Maintainer: Aman Sinha
 
 pkgname=mongodb-shell
-pkgver=0.0.8
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='The MongoDB Shell includes all features of legacy mongo shell with new syntax highligting, clear error messages and intelligent autocomplete.'
 url='https://www.mongodb.com/'
