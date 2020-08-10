@@ -19,6 +19,7 @@ conflicts=('lgi' 'lua53-lgi')
 provides=('lua53-lgi')
 source=('git+https://github.com/pavouk/lgi.git')
 md5sums=('SKIP')
+_LUA_VER=5.3
 
 pkgver() {
   cd $_pkgbase
@@ -28,15 +29,15 @@ pkgver() {
 
 build() {
   cd $_pkgbase
-  make LUA_INCDIR=/usr/include/lua5.3/ \
-    LUA_CFLAGS="$(pkg-config --cflags lua5.3) -O2"
+  make LUA_INCDIR=/usr/include/lua${_LUA_VER}/ \
+    LUA_CFLAGS="$(pkg-config --cflags lua${_LUA_VER}) -O2"
 }
 
 package() {
   cd $_pkgbase
   make \
-    LUA_LIBDIR=/usr/lib/lua/5.3 \
-    LUA_SHAREDIR=/usr/share/lua/5.3 \
+    LUA_LIBDIR=/usr/lib/lua/${_LUA_VER} \
+    LUA_SHAREDIR=/usr/share/lua/${_LUA_VER} \
     DESTDIR="$pkgdir/" install
 
   # dump typelib tool
