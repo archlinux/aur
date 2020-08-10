@@ -1,0 +1,27 @@
+pkgbase = openmpi-gcc9
+	pkgdesc = High performance message passing library (MPI) (built with GCC9)
+	pkgver = 4.0.4
+	pkgrel = 1
+	url = https://www.open-mpi.org
+	arch = x86_64
+	license = custom:OpenMPI
+	makedepends = inetutils
+	makedepends = valgrind
+	makedepends = gcc9-fortran
+	depends = libltdl
+	depends = hwloc
+	depends = openssh
+	depends = zlib
+	depends = libnl
+	depends = gcc9
+	depends = gcc9-libs
+	optdepends = gcc9-fortran: fortran support
+	provides = openmpi=4.0.4
+	conflicts = openmpi
+	options = staticlibs
+	source = https://www.open-mpi.org/software/ompi/v4.0/downloads/openmpi-4.0.4.tar.bz2
+	sha256sums = 47e24eb2223fe5d24438658958a313b6b7a55bb281563542e1afc9dec4a31ac4
+	sha512sums = 6c193b4b5cbfd9d48fa5efcef01372c424b51ae5e9727ccf4235e3b14556dfeb010865e41a9473419ccda16559139aa469086b1fff9abfd337e87387fdec1c64
+
+pkgname = openmpi-gcc9
+
