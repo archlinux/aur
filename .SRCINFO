@@ -1,7 +1,7 @@
 pkgbase = aerial-2k-videos
 	pkgdesc = Apple TV4 HD aerial movies in 2k
 	pkgver = 1.10
-	pkgrel = 3
+	pkgrel = 4
 	arch = any
 	optdepends = xscreensaver-aerial: xscreensaver hack that randomly selects one of the Apple TV4 HD aerial movies
 	source = https://sylvan.apple.com/Aerials/2x/Videos/comp_CH_C007_C011_PSNK_v02_SDR_PS_FINAL_20180709_SDR_2K_HEVC.mov
