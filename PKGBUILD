@@ -1,30 +1,34 @@
 # Maintainer: djazz
 
 pkgname=fimfic2epub
-pkgver=1.7.42
+pkgver=1.7.45
 pkgrel=1
 pkgdesc="Tool to generate improved EPUB ebooks from Fimfiction stories"
 arch=('any')
-url="https://github.com/daniel-j/fimfic2epub"
+url="https://github.com/daniel-j/${pkgname}"
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs' 'libjpeg-turbo' 'pango')
 makedepends=('npm')
 options=(!strip)
-source=("https://github.com/daniel-j/fimfic2epub/archive/v${pkgver}.tar.gz")
+source=("https://github.com/daniel-j/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=(
-  '508c404cf683941ecedacdf5587974eaa2a5dc2bba5425d30d002b6f4eb0f328'
+  '446f4e03c37cb766099344e2694558f62defe856ea728b226526b982e9c9339f'
 )
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   echo "Installing dependencies..."
-  npm install --cache "${srcdir}/npm-cache"
+  npm install --cache "${srcdir}/npm-cache" --build-from-source
 
-  echo "Building fimfic2epub..."
+
+  echo "Building ${pkgname}..."
   npm run -- build webpack --standalone
 
-  install -D "bin/fimfic2epub" "${pkgdir}/usr/bin/${pkgname}"
+  install -d "${pkgdir}/usr/lib/${pkgname}"
+  install "build/${pkgname}" "build/"*".node" "${pkgdir}/usr/lib/${pkgname}"
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   chown -R root:root "$pkgdir"
