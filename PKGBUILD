@@ -3,7 +3,7 @@ _reponame=ndn-cxx
 _pkgname=ndn-cxx
 pkgname=${_pkgname}-git
 pkgver=0.7.0.r48.g599623c3
-pkgrel=1
+pkgrel=2
 # epoch=
 pkgdesc="Library implementing Named Data Networking (NDN) primitives that can be used to write various NDN applications"
 arch=('i686' 'x86_64')
@@ -53,4 +53,5 @@ package() {
   cd "${srcdir}/${_reponame}"
   ./waf install --destdir="${pkgdir}"
   cp -r "${srcdir}/${_reponame}/build/docs/"* "${pkgdir}/usr/share/doc/$_pkgname"
+  mv "${pkgdir}/usr/etc" "${pkgdir}/"
 }
