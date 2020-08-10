@@ -1,7 +1,7 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur
 commit=2b928054c777dc59faa4a75396af34adc840f716
-pkgver=41.$commit
+pkgver=42.$commit
 pkgrel=1
 pkgdesc="An AUR helper with asp support."
 arch=(any)
