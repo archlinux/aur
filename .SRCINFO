@@ -1,0 +1,17 @@
+pkgbase = zps-bin
+	pkgdesc = A small utility for listing and cleaning up zombie processes
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/orhun/zps
+	arch = x86_64
+	license = GPL3
+	conflicts = zps
+	conflicts = zps-git
+	source = https://github.com/orhun/zps/releases/download/1.2.3/zps-1.2.3.tar.gz
+	source = https://github.com/orhun/zps/releases/download/1.2.3/zps-1.2.3.tar.gz.sig
+	validpgpkeys = 39E678DF63BE20EA5A175156B928720AEC532117
+	sha512sums = 13fa805228957b56a4849cee92814533648be843b5b8a29709c33b8c8e240922735439c6dc48832da6c182a3c5d50f7406a1c6a37f090502dd9eeebf4142a0b8
+	sha512sums = SKIP
+
+pkgname = zps-bin
+
