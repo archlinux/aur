@@ -10,8 +10,8 @@ license=('AGPL3')
 makedepends=('git' 'npm')
 url=https://freetubeapp.io
 source=(git+https://github.com/FreeTubeApp/FreeTube-Vue
-		package-only-necessary.diff
-		freetube-vue-git.desktop)
+        package-only-necessary.diff
+        freetube-vue-git.desktop)
 sha256sums=(SKIP SKIP SKIP)
 
 pkgver() {
