@@ -1,7 +1,7 @@
 # Maintainer: Price Clark <gpwclark at gmail dot com>
 
 pkgname=sl-sh-git
-pkgver=0.8.77
+pkgver=0.8.80
 pkgrel=1
 epoch=
 pkgdesc='simple lisp based shell'
