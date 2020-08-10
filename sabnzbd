@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Default location is ~/.sabnzbd/sabnzbd.ini, but package previously used ~/.sabnzbd.ini so default to that
+python /usr/lib/sabnzbd/SABnzbd.py --browser 1 -f ${HOME}/.sabnzbd.ini "${@}"
