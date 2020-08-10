@@ -27,5 +27,5 @@ sha256sums=(
 
 package() {
     cd "${srcdir}"
-    install -Dm755 script.sh "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 script.py "${pkgdir}/usr/bin/${pkgname}"
 }
