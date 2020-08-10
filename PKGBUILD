@@ -8,7 +8,7 @@ gitname='TauonMusicBox'
 arch=('any')
 license=('GPL3')
 
-pkgver=6.1.2
+pkgver=6.1.3
 pkgrel=1
 
 depends=('python3' 'noto-fonts' 'noto-fonts-extra' 'sdl2_image' 'python-pillow' 'python-pylast' 'python-gobject' 'xdg-utils' 'python-beautifulsoup4' 'python-requests' 'python-cairo' 'python-flask' 'python-setproctitle' 'flac' 'python-musicbrainzngs' 'alsa-plugins' 'gstreamer' 'gst-plugins-base' 'python-dbus' 'python-oauthlib' 'python-six' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'noto-fonts-cjk' 'python-discogs-client' 'python-hsaudiotag3k' 'python-pylyrics' 'python-pypresence' 'python-send2trash' 'python-stagger' 'python-pysdl2')
