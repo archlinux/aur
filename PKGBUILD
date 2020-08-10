@@ -2,9 +2,9 @@
 
 pkgname=exhale
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source xHE-AAC encoder"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://gitlab.com/ecodis/exhale"
 license=('custom')
 depends=('gcc-libs')
