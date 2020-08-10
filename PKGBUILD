@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=darknet-alexeyab-git
-pkgver=r1748.9a234475
+pkgver=r1994.9dc897d2
 pkgrel=1
 pkgdesc='YOLO: Real Time Object Detection Neural Network Library (AlexeyAB fork)'
 arch=('i686' 'x86_64')
@@ -57,7 +57,7 @@ package() {
 
   # lib
   mkdir $pkgdir/usr/lib
-  cp $srcdir/${_pkgname}/build-release/libdark.so $pkgdir/usr/lib/
+  cp $srcdir/${_pkgname}/build-release/libdarknet.so $pkgdir/usr/lib/
 
   chown -R root:root $pkgdir/usr
   chmod -R 755 $pkgdir/usr
