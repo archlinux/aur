@@ -11,7 +11,6 @@ depends=('fuse3' 'zlib' 'hicolor-icon-theme')
 makedepends=('sed')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-changelog='CHANGELOG'
 source=("${_appimage}::https://onepassword.s3.amazonaws.com/linux/appimage/1password-latest.AppImage")
 noextract=("${_appimage}")
 sha256sums=('046e32056111ed19a3dc9d4e5937189d15f741e7dae6778cc3fd58a92114eca1')

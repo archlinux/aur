@@ -3,7 +3,6 @@ pkgbase = 1password
 	pkgver = 0.8.1.23078
 	pkgrel = 1
 	url = https://1password.com/
-	changelog = CHANGELOG
 	arch = x86_64
 	license = unknown
 	makedepends = sed
