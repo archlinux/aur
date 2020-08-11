@@ -1,17 +1,17 @@
-# Maintainer: Nils Kvist <robstenklippa@gmail.com>
-# Contributor: Nils Kvist <robstenklippa@gmail.com>
+# Maintainer: budRich
+# Contributor: budRich
 
 pkgname=i3ass
-pkgver=2020.01.26.6
+pkgver=2020.08.11.1
 pkgrel=1
 pkgdesc='A bash-script collection to assist the use of i3-wm.'
 arch=('any')
 url='https://github.com/budlabs/i3ass'
 license=('MIT')
 groups=()
-depends=('bash>=4.0.0')
+depends=('bash>=4.0.0' 'i3-wm' 'gawk' 'sed')
 makedepends=()
-optdepends=('xdotool: floating window placement'  'i3-wm: duh')
+optdepends=('rofi' 'xdotool')
 provides=()
 conflicts=()
 replaces=()
@@ -19,14 +19,13 @@ backup=()
 options=()
 install=
 changelog=
-source=("$url/archive/$pkgver.tar.gz")
+source=("$url/archive/$pkgver/${pkgname}-$pkgver.tar.gz")
 noextract=()
-sha256sums=('10c6095ee760f8d66b5a47c21872f2c93d9d30fd106e41b0a4c341dcffeb1b2e')
+sha256sums=('a31b332ff5c4884f02dc4ae9bc34e111857920cc969e62e466b6967cd4d567b3')
 
 package() {
   cd "$pkgname-$pkgver"
 
-  make DESTDIR="$pkgdir/" PREFIX=/usr uninstall
   make DESTDIR="$pkgdir/" PREFIX=/usr install
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
