@@ -1,6 +1,6 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
-pkgname='gnabel'
+pkgname='gnabel-git'
 pkgver=57ff9c3
 pkgrel=1
 pkgdesc='A translation app for GTK environments based on Google Translate'
