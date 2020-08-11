@@ -1,6 +1,6 @@
 pkgbase = postman
 	pkgdesc = Build, test, and document your APIs faster
-	pkgver = 7.30.0
+	pkgver = 7.30.1
 	pkgrel = 1
 	url = https://www.getpostman.com/downloads/
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = postman
 	source = postman.sh
 	sha1sums = 35194ee810e13d3a21f224c6d46104fc201631c1
 	sha1sums = 7c00d44372bea7447ee8ef2acb03dcbdd3a9a279
-	source_x86_64 = postman-7.30.0-x86_64.orig.tar.gz::https://dl.pstmn.io/download/version/7.30.0/linux64
-	sha1sums_x86_64 = 31c9a991513ffc5556f23a002e4101c09d87064e
+	source_x86_64 = postman-7.30.1-x86_64.orig.tar.gz::https://dl.pstmn.io/download/version/7.30.1/linux64
+	sha1sums_x86_64 = c1242e68d2708074c88c530282f7ec6bd1571cd7
 
 pkgname = postman
 
