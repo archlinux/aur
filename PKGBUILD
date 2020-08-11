@@ -10,18 +10,17 @@ url='https://github.com/Alecaddd/sequeler'
 license=('GPL3')
 depends=('granite' 'libgda-mysql' 'libgda-postgres')
 makedepends=('meson' 'vala')
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('471fdf63fda568d4caddf6182897518e4b7abc1b4f5dfb466bd1dfc86d380f0c')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  meson build --prefix=/usr
-  ninja -C build
+  arch-meson "${pkgname}-${pkgver}" build
+  meson compile -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C "${pkgname}-${pkgver}/build" install
-  install -Dm644 "${pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  DESTDIR="${pkgdir}" meson install -C build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${pkgname}-${pkgver}/README.md"
 }
 
 # vim: ts=2 sw=2 et:

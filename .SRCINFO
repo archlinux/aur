@@ -10,7 +10,7 @@ pkgbase = sequeler
 	depends = granite
 	depends = libgda-mysql
 	depends = libgda-postgres
-	source = https://github.com/Alecaddd/sequeler/archive/v0.8.0.tar.gz
+	source = sequeler-0.8.0.tar.gz::https://github.com/Alecaddd/sequeler/archive/v0.8.0.tar.gz
 	sha256sums = 471fdf63fda568d4caddf6182897518e4b7abc1b4f5dfb466bd1dfc86d380f0c
 
 pkgname = sequeler
