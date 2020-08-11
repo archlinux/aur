@@ -1,14 +1,15 @@
 pkgbase = orcaqm
-	pkgdesc = ORCA is an ab initio, DFT, and semi-empirical SCF-MO package
+	pkgdesc = Ab initio, DFT, and semi-empirical SCF-MO package
 	pkgver = 4.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://orcaforum.kofo.mpg.de/app.php/portal
 	arch = x86_64
 	license = custom
 	makedepends = xz
-	depends = openmpi>=3
-	depends = openmpi<4
+	depends = openmpi
 	noextract = orca_4_2_1_linux_x86-64_shared_openmpi314.tar.xz
+	options = staticlibs
+	options = !strip
 	source = local://orca_4_2_1_linux_x86-64_shared_openmpi314.tar.xz
 	source = orcaqm
 	sha1sums = fe16ea2d16b04ba9edac98498aa8f5bb2448463d
