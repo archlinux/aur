@@ -2,9 +2,9 @@
 
 pkgname=blucontrol
 pkgver=0.2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Configurable blue light filter"
-url="https://github.com/jumper149/blucontrol"
+url="https://github.com/jumper149/${pkgname}"
 license=('custom:BSD3')
 arch=('x86_64')
 depends=(
@@ -21,7 +21,7 @@ depends=(
   'libxrandr'
 )
 source=(
-  "https://github.com/jumper149/${pkgname}/archive/v${pkgver}.tar.gz"
+  "${url}/archive/v${pkgver}.tar.gz"
   "compile-dynamically.patch"
   "Setup.hs"
 )
