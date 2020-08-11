@@ -1,7 +1,7 @@
 # Maintainer: Boris Timofeev <mashin87@gmail.com>
 pkgname=punes
-pkgver=0.105
-pkgrel=2
+pkgver=0.106
+pkgrel=1
 epoch=
 pkgdesc="Nintendo Entertaiment System emulator"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ options=()
 install=$pkgname.install
 changelog=
 source=("https://github.com/punesemu/puNES/archive/v$pkgver.tar.gz")
-md5sums=('5c75d2071ac69a2f67d6c735b982e632')
+md5sums=('e85ba4a99e933abee5df72f98bbbc7a9')
 noextract=()
 
 

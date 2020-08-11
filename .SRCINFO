@@ -1,7 +1,7 @@
 pkgbase = punes
 	pkgdesc = Nintendo Entertaiment System emulator
-	pkgver = 0.105
-	pkgrel = 2
+	pkgver = 0.106
+	pkgrel = 1
 	url = https://github.com/punesemu/puNES
 	install = punes.install
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = punes
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	depends = nvidia-cg-toolkit
-	source = https://github.com/punesemu/puNES/archive/v0.105.tar.gz
-	md5sums = 5c75d2071ac69a2f67d6c735b982e632
+	source = https://github.com/punesemu/puNES/archive/v0.106.tar.gz
+	md5sums = e85ba4a99e933abee5df72f98bbbc7a9
 
 pkgname = punes
 
