@@ -5,7 +5,7 @@
 # Contributor: Fabrizio Antonangeli <fabrizio.antonangeli@gmail.com>
 
 pkgname=dfu-util-git
-pkgver=20170603
+pkgver=20200630
 pkgrel=1
 pkgdesc='Tool intended to download and upload firmware using DFU protocol to devices connected over USB'
 url='http://dfu-util.gnumonks.org'
