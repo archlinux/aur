@@ -3,7 +3,7 @@
 
 pkgname=adminer
 pkgver=4.7.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A full-featured MySQL management tool written in PHP."
 arch=('any')
 license=('Apache' 'GPL')
@@ -13,10 +13,10 @@ url="https://www.adminer.org"
 install=${pkgname}.install
 source=("${pkgname}.install"
         "httpd-${pkgname}.conf"
-        "https://www.adminer.org/static/download/${pkgver}/${pkgname}-${pkgver}.php") 
+        "https://github.com/vrana/adminer/releases/download/v${pkgver}/adminer-${pkgver}.php")
 sha256sums=('a9b786e220c0deabcb96849ffa511f1ef0b130836f978a8504e1ffbc9c723e51'
             '176b392620e8d972188685e0e202cba853a2ff5e3d0c90fef130ef1c8c2491c2'
-            '8f100782206f89fe2ae9562bfad9c92a92b87d6a6fe69a26d976b512d57f71bc')
+            '566152a2d86186dcfb28856b4ed0dfdb60e355d93ab693f7931201f75868fff0')
 
 package() {
     cd "$srcdir"
