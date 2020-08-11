@@ -1,7 +1,7 @@
 pkgbase = distrho-lv2-git
 	pkgdesc = Distrho LV2 Audio Plugins, using the JUCE Toolkit
 	pkgver = r492.062a0f61
-	pkgrel = 2
+	pkgrel = 3
 	url = http://distrho.sourceforge.net/
 	arch = i686
 	arch = x86_64
