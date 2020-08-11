@@ -2,14 +2,14 @@
 
 pkgname=xmrig-cuda
 pkgver=6.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA CUDA plugin for XMRig miner.'
 arch=('x86_64')
 url='https://github.com/xmrig/xmrig-cuda'
-depends=('xmrig>=5.11.0' 'cuda>=10.2.89-5')
+depends=('xmrig>=5.11.0' 'cuda>=11.0.0-1')
 optdepends=('monero: wallet')
 # We unfortunately need to be hard on which version of CUDA we use
-makedepends=('cmake' 'openssl' 'cuda>=10.2.89-5')
+makedepends=('cmake' 'openssl' 'cuda>=11.0.0-1')
 license=('GPL')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('80cb04afc1f32aff1cb0693eed30e96c64fdc3510a8fe189237d5f098da101cd')
@@ -24,8 +24,8 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}/build"
 
-  # CUDA on ArchLinux uses GCC 8.0
-  cmake -DCMAKE_C_COMPILER=/usr/bin/gcc-8 -DCMAKE_CXX_COMPILER=/usr/bin/g++-8 ..
+  # CUDA on ArchLinux uses GCC 9.0
+  cmake -DCMAKE_C_COMPILER=/usr/bin/gcc-9 -DCMAKE_CXX_COMPILER=/usr/bin/g++-9 ..
   make
 }
 
