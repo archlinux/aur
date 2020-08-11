@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=car
-_cranver=3.0-8
+_cranver=3.0-9
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(GPL2 GPL3)
 depends=('r>=3.5.0' 'r-cardata>=3.0.0' r-abind 'r-pbkrtest>=0.4.4' r-quantreg r-maptools r-rio r-lme4)
 optdepends=(r-alr4 r-boot r-coxme r-knitr r-leaps r-lmtest r-matrixmodels r-rgl r-sandwich r-sparsem r-survey)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('93eef8897c52db29a9cc5aac7bbd3d32')
+md5sums=('8bff927565d50fd12abd1adad13805a3')
 
 build() {
   cd "${srcdir}"
