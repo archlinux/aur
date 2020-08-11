@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname='gnabel-git'
-pkgver=57ff9c3
+pkgver=r30.57ff9c3
 pkgrel=1
 pkgdesc='A translation app for GTK environments based on Google Translate'
 arch=('any')
@@ -25,7 +25,11 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/gnabel"
-  git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  (
+    set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 package() {
