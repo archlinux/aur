@@ -13,7 +13,7 @@ provides=('mprime')
 conflicts=('mprime')
 depends=('gcc-libs')
 source=("ftp://mersenne.org/gimps/p95v$pkgver.linux64.tar.gz")
-sha256sums=('0679552e6935a616e266f5d021a48584dadb59a484ed86f545b3c1c4c6239506')
+b2sums=('aba3e419449391a5b55bf0dcd11a5c0ea87c7c042506a64fb7a29e5f09e3a59d831035d3003a7c2597adad15c998e32b98025def4863b0d7127a6d2cef7e1850')
 
 package() {
 	install -Dm755 mprime ${pkgdir}/usr/bin/mprime
