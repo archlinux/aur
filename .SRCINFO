@@ -46,7 +46,7 @@ pkgname = garuda-settings-manager-notifier-git
 	pkgdesc = Garuda Linux System Settings Tool (Notifier) (manjaro settings manager ported to work with arch standards and limited to only dkms drivers)
 	depends = garuda-settings-manager
 	provides = garuda-settings-manager-notifier
-	conflicts = garuda-settings-manager-knotifier
+	conflicts = garuda-settings-manager-notifier
 	replaces = garuda-settings-manager-notifier
 
 pkgname = garuda-settings-manager-knotifier-git
@@ -54,6 +54,6 @@ pkgname = garuda-settings-manager-knotifier-git
 	depends = garuda-settings-manager
 	depends = knotifications
 	provides = garuda-settings-manager-knotifier
-	conflicts = garuda-settings-manager-notifier
+	conflicts = garuda-settings-manager-knotifier
 	replaces = garuda-settings-manager-knotifier
 
