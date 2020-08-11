@@ -1,5 +1,5 @@
 pkgbase = slock-blurscreen
-	pkgdesc = A simple screen locker for X(patched with blug image background)
+	pkgdesc = A simple screen locker for X(patched with blur image background)
 	pkgver = 1.4
 	pkgrel = 1
 	url = https://tools.suckless.org/slock
