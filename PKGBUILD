@@ -8,12 +8,12 @@ pkgrel=2
 pkgdesc='Securely transfer files between devices. Go implementation of magic wormhole.'
 arch=('x86_64')
 url='https://github.com/psanford/wormhole-william'
+_rawurl="https://raw.githubusercontent.com/${url##*github.com/}"
 license=('MIT')
-depends=('glibc')
 provides=("${_pkgname}")
 source=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64"
-        "${_pkgname}-${pkgver}-README.md::https://raw.githubusercontent.com/psanford/${_pkgname}/master/README.md"
-        "${_pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/psanford/${_pkgname}/master/LICENSE")
+        "${_pkgname}-${pkgver}-README.md::${_rawurl}/master/README.md"
+        "${_pkgname}-${pkgver}-LICENSE::${_rawurl}/master/LICENSE")
 sha256sums=('1dbb936fcecdc07e9bd8463e97da282db5c8acee864661ed689a5ce40a64ffdb'
             'SKIP'
             'SKIP')

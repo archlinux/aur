@@ -5,7 +5,6 @@ pkgbase = wormhole-william-bin
 	url = https://github.com/psanford/wormhole-william
 	arch = x86_64
 	license = MIT
-	depends = glibc
 	provides = wormhole-william
 	source = wormhole-william-1.0.4::https://github.com/psanford/wormhole-william/releases/download/v1.0.4/wormhole-william-linux-amd64
 	source = wormhole-william-1.0.4-README.md::https://raw.githubusercontent.com/psanford/wormhole-william/master/README.md
