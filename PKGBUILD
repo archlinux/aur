@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@prok.pw>
 
 pkgname=networkmanager-iwd-overlay
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Configure NetworkManager to use iwd instead of wpa_supplicant"
 arch=('any')
@@ -19,5 +19,5 @@ sha256sums=('bc39a5cf9a99c73af9056b58396b070095a3711c21fbc5be9e4cb7e2109a8a9e'
 package() {
 	install -Dm644 "$srcdir/10-wifi-backend.conf" -t "$pkgdir/usr/lib/NetworkManager/conf.d"
 	install -Dm644 "$srcdir/50-networkmanager.conf" -t "$pkgdir/usr/lib/systemd/system/iwd.service.d"
-	install -Dm644 "$srcdir/50-iwd.conf" -t "$pkgdir/usr/lib/systemd/system/networkmanager.service.d"
+	install -Dm644 "$srcdir/50-iwd.conf" -t "$pkgdir/usr/lib/systemd/system/NetworkManager.service.d"
 }
