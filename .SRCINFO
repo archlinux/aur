@@ -3,13 +3,11 @@ pkgbase = uconv-c
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/kevinboone/uconv
-	install = info.install
+	install = readme.install
 	arch = x86_64
-	arch = i686
 	license = GPL3
 	provides = uconv-c
-	conflicts = uconv-c
-	source = https://github.com/kevinboone/uconv/archive/0.0.1.tar.gz
+	source = uconv-0.0.1.tar.gz::https://github.com/kevinboone/uconv/archive/0.0.1.tar.gz
 	sha256sums = 7a3e421a156aebae8bfb0b21e256059fbcff4a2085ed2dd4e75eb38455c9f2b7
 
 pkgname = uconv-c
