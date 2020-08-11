@@ -4,12 +4,11 @@ pkgbase = regextester
 	pkgrel = 2
 	url = https://github.com/artemanufrij/regextester
 	arch = x86_64
-	arch = i686
 	license = GPL3
 	makedepends = meson
 	makedepends = vala
 	depends = granite
-	source = https://github.com/artemanufrij/regextester/archive/1.1.0.tar.gz
+	source = regextester-1.1.0.tar.gz::https://github.com/artemanufrij/regextester/archive/1.1.0.tar.gz
 	sha256sums = a9785c86357288632079bad7d897af7d2216e8ed2fcf6467f9991fd7adb26d3b
 
 pkgname = regextester
