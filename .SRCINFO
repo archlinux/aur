@@ -4,9 +4,8 @@ pkgbase = epub2txt
 	pkgrel = 1
 	url = https://github.com/kevinboone/epub2txt2
 	arch = x86_64
-	arch = i686
 	license = GPL3
-	source = https://github.com/kevinboone/epub2txt2/archive/v2.01.tar.gz
+	source = epub2txt-2.01.tar.gz::https://github.com/kevinboone/epub2txt2/archive/v2.01.tar.gz
 	sha256sums = 82c96c713c8a6e10d7b37e96db83a9d5f50fcb4b65034b4a1df1024776b6591f
 
 pkgname = epub2txt
