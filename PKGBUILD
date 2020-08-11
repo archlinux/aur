@@ -11,23 +11,18 @@ depends=('gtk3' 'udisks2')
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('1dc151d08e99f298b4b1cb9000b6adb94ab765a2816da4b33c8ccc52f08ec99d')
 
-prepare() {
-  # Remove sticky bit and group from the installed usbimager binary
-  sed -i 's/2755 -g disk/755/g' "${pkgname}-${pkgver}/src/Makefile"
-}
-
 build() {
-  USE_LIBUI=yes USE_UDISKS2=yes \
-    make -C "${pkgname}-${pkgver}/src"
+  USE_LIBUI=yes USE_UDISKS2=yes make -C "${pkgname}-${pkgver}/src"
 }
 
 package() {
-  install -d "${pkgdir}/usr/bin"
-  USE_LIBUI=yes USE_UDISKS2=yes \
-    make DESTDIR="${pkgdir}" PREFIX="usr" -C "${pkgname}-${pkgver}/src" install
-  install -Dm644 "${pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "${pkgname}-${pkgver}/${pkgname}-manual.pdf" "${pkgdir}/usr/share/doc/${pkgname}/manual.pdf"
-  install -Dm644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 -t "${pkgdir}/usr/bin" "src/${pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/share/applications" "src/misc/${pkgname}.desktop"
+  install -Dm644 "src/misc/icon128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 -t "${pkgdir}/usr/share/man/man8" "src/misc/${pkgname}.8.gz"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" {README.md,"${pkgname}-manual.pdf"}
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE'
 }
 
 # vim: ts=2 sw=2 et:
