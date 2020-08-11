@@ -1,0 +1,13 @@
+pkgbase = got-bin
+	pkgdesc = CLI tool to download large files faster than cURL and Wget
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/melbahja/got
+	arch = x86_64
+	license = MIT
+	provides = got
+	source = got-0.1.2::https://github.com/melbahja/got/releases/download/v0.1.2/got_0.1.2_Linux_amd64.tar.gz
+	sha256sums = 8dc436530af5d8ea809996a43aaff9f36ce61883102e99e60caaf311c3389431
+
+pkgname = got-bin
+
