@@ -1,12 +1,12 @@
 pkgbase = crex
 	pkgdesc = Explore, test, and check regular expressions in the terminal
 	pkgver = 0.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://octobanana.com/software/crex
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	source = https://github.com/octobanana/crex/archive/0.2.5.tar.gz
+	source = crex-0.2.5.tar.gz::https://github.com/octobanana/crex/archive/0.2.5.tar.gz
 	sha256sums = c6a166b7a1e696a7babeaf7c5728eece1624704a18357f827129fc95ef2ecc56
 
 pkgname = crex
