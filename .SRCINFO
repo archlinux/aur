@@ -1,7 +1,7 @@
 pkgbase = freenet
 	pkgdesc = A peer-to-peer platform for censorship-resistant communication and publishing
-	pkgver = 0.7.5.1485
-	pkgrel = 2
+	pkgver = 0.7.5.1486
+	pkgrel = 1
 	url = https://freenetproject.org
 	install = freenet.install
 	arch = i686
@@ -17,11 +17,11 @@ pkgbase = freenet
 	depends = java-service-wrapper
 	backup = opt/freenet/wrapper.config
 	backup = opt/freenet/conf/freenet.ini
-	source = git+https://github.com/freenet/fred.git?signed#tag=build01485
+	source = git+https://github.com/freenet/fred.git?signed#tag=build01486
 	source = git+https://github.com/freenet/plugin-KeyUtils.git#tag=v5026
 	source = git+https://github.com/freenet/plugin-UPnP.git#tag=10007
-	source = git+https://github.com/redwerk/plugin-Library.git#tag=v37-dw-rw3
-	source = git+https://github.com/xor-freenet/plugin-WebOfTrust.git#branch=next-30
+	source = git+https://github.com/redwerk/plugin-Library.git#branch=frn-97-4
+	source = git+https://github.com/xor-freenet/plugin-WebOfTrust.git#branch=next
 	source = git+https://github.com/freenet/seedrefs.git
 	source = IpToCountry.dat::http://software77.net/geo-ip/?DL=4
 	source = run.sh
