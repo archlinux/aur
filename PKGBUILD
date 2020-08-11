@@ -2,7 +2,7 @@
 
 pkgname='firefox-extension-cookie-autodelete'
 pkgver=3.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Firefox extension that automatically deletes cookies."
 license=('MIT')
 arch=('any')
@@ -24,6 +24,10 @@ prepare() {
 
 build() {
     npm --silent -C "Cookie-AutoDelete-$pkgver" run build
+}
+
+check() {
+    npm --silent -C "Cookie-AutoDelete-$pkgver" test
 }
 
 package() {
