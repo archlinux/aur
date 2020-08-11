@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rqt-bag
 	pkgdesc = ROS - rqt_bag provides a GUI plugin for displaying and replaying ROS bag files.
-	pkgver = 0.4.12
-	pkgrel = 2
+	pkgver = 0.4.13
+	pkgrel = 1
 	url = https://wiki.ros.org/rqt_bag
 	arch = any
 	license = BSD
@@ -17,8 +17,8 @@ pkgbase = ros-noetic-rqt-bag
 	depends = ros-noetic-rospy
 	depends = ros-noetic-roslib
 	depends = python-rospkg
-	source = ros-noetic-rqt-bag-0.4.12.tar.gz::https://github.com/ros-visualization/rqt_bag/archive/0.4.12.tar.gz
-	sha256sums = 99038e0053546f7a4eaff1ff0df3f206494eca254324325cfc315aad5507443a
+	source = ros-noetic-rqt-bag-0.4.13.tar.gz::https://github.com/ros-visualization/rqt_bag/archive/0.4.13.tar.gz
+	sha256sums = 4a0cb38568c012d4eb7dd5d49b1568a1ce200de222c4860d7bf5411578d0fcff
 
 pkgname = ros-noetic-rqt-bag
 

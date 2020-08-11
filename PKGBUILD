@@ -1,64 +1,61 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - rqt_bag provides a GUI plugin for displaying and replaying ROS bag files."
 url='https://wiki.ros.org/rqt_bag'
 
 pkgname='ros-noetic-rqt-bag'
-pkgver='0.4.12'
-_pkgver_patch=0
+pkgver='0.4.13'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-noetic-catkin
+    ros-noetic-catkin
 )
 
 makedepends=(
-	'cmake'
-	'ros-build-tools'
-	${ros_makedepends[@]}
+    cmake
+    ros-build-tools
+    ${ros_makedepends[@]}
 )
 
 ros_depends=(
-	ros-noetic-rqt-gui-py
-	ros-noetic-rosbag
-	ros-noetic-rosnode
-	ros-noetic-rosgraph-msgs
-	ros-noetic-python-qt-binding
-	ros-noetic-rqt-gui
-	ros-noetic-rospy
-	ros-noetic-roslib
+    ros-noetic-rqt-gui-py
+    ros-noetic-rosbag
+    ros-noetic-rosnode
+    ros-noetic-rosgraph-msgs
+    ros-noetic-python-qt-binding
+    ros-noetic-rqt-gui
+    ros-noetic-rospy
+    ros-noetic-roslib
 )
 
 depends=(
-	${ros_depends[@]}
-	python-rospkg
+    ${ros_depends[@]}
+    python-rospkg
 )
 
 _dir="rqt_bag-${pkgver}/rqt_bag"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_bag/archive/${pkgver}.tar.gz")
-sha256sums=('99038e0053546f7a4eaff1ff0df3f206494eca254324325cfc315aad5507443a')
+sha256sums=('4a0cb38568c012d4eb7dd5d49b1568a1ce200de222c4860d7bf5411578d0fcff')
 
 build() {
-	# Use ROS environment variables.
-	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
+    # Use ROS environment variables.
+    source /usr/share/ros-build-tools/clear-ros-env.sh
+    [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
-	# Create the build directory.
-	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-	cd ${srcdir}/build
+    # Create the build directory.
+    [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
+    cd ${srcdir}/build
 
-	# Build the project.
-	cmake ${srcdir}/${_dir} \
-		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
-	make
+    # Build the project.
+    cmake ${srcdir}/${_dir} \
+        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
+        -DSETUPTOOLS_DEB_LAYOUT=OFF
+    make
 }
 
 package() {
-	cd "${srcdir}/build"
-	make DESTDIR="${pkgdir}/" install
+    cd "${srcdir}/build"
+    make DESTDIR="${pkgdir}/" install
 }
