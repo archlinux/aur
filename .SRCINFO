@@ -12,6 +12,7 @@ pkgbase = darktable-git
 	makedepends = cmake
 	makedepends = librsvg
 	makedepends = flickcurl
+	makedepends = perl-pod-parser
 	depends = exiv2>=0.18
 	depends = intltool>=0.40
 	depends = lcms2

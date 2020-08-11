@@ -16,7 +16,7 @@ depends=('exiv2>=0.18' 'intltool>=0.40' 'lcms2' 'lensfun>=0.2.3' 'libglade' 'dbu
 	 'curl' 'libgnome-keyring' 'libgphoto2' 'libusb-compat' 'openexr' 'sqlite' 'libxslt'
 	 'libsoup' 'osm-gps-map' 'pugixml' 'colord' 'lua52' 'libsecret' 'colord-gtk'
 	 'sdl' 'openjpeg2' 'graphicsmagick' 'glu' )
-makedepends=(git 'intltool>=0.40' 'cmake' 'librsvg' 'flickcurl')
+makedepends=(git 'intltool>=0.40' 'cmake' 'librsvg' 'flickcurl' 'perl-pod-parser')
 optdepends=('librsvg' 'flickcurl: flickr upload' 'avif')
 conflicts=(darktable)
 provides=(darktable)
