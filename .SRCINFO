@@ -6,10 +6,8 @@ pkgbase = clidrag
 	arch = x86_64
 	license = Unlicense
 	depends = qt5-base
-	source = https://raw.githubusercontent.com/rkevin-arch/CLIdrag/v1.0/drag.cpp
-	source = https://raw.githubusercontent.com/rkevin-arch/CLIdrag/v1.0/drag.pro
-	sha256sums = 769d957b658af7148050295e01e9ef939a757e1fdc6f7b6bd6dbc64c13872726
-	sha256sums = 8b2591eb5b5c2e6d763427eac7f1eb114a6b37114d60867a63a8fac2dbd5a11c
+	source = https://github.com/rkevin-arch/CLIdrag/releases/download/v1.0/clidrag-1.0-src.tar.gz
+	sha256sums = 6b7776553b0be9ee09790d2e6ca40a4a4db4a3e84a79631cf215ff4f39b469e4
 
 pkgname = clidrag
 
