@@ -1,7 +1,7 @@
 pkgbase = pyidm
 	pkgdesc = Python open source alternative to IDM (Internet Download Manager)
 	pkgver = 2020.6.27
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pyIDM/PyIDM
 	changelog = pyidm.changelog
 	arch = any
@@ -18,7 +18,9 @@ pkgbase = pyidm
 	depends = python-pillow
 	depends = ffmpeg
 	source = pyidm-2020.6.27.tar.gz::https://github.com/pyIDM/PyIDM/archive/2020.6.27.tar.gz
+	source = no_update.patch
 	b2sums = a697c73d85956920e0ad859dea7bb1f2c4b7dc8a36ccfaabb893553bf037b464945dce482ba2cb8793f25ded2499e9ceaa87e07c250aa764d400d0997a79a20b
+	b2sums = 584ee8e745066428a688d756ed89c67f681b9f974818a800e96f8eb5c93f05748c7a167612f056dc78d9d3b14e5ad0c64a12d2b08d97845357d1271c3e7ace4c
 
 pkgname = pyidm
 
