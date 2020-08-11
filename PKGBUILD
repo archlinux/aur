@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://octobanana.com/software/nyble'
 license=('MIT')
 depends=('boost-libs' 'mpfr')
-makedepends=('cmake')
+makedepends=('boost' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/octobanana/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('c05b842fa7cae9def06e6916690e12be249ad584d195c3fdc1f56d44bb87a47e')
 
