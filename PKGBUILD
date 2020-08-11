@@ -3,7 +3,7 @@
 
 pkgname=brave-nightly-bin
 pkgver=1.14.29
-pkgrel=1
+pkgrel=6
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
 arch=('x86_64')
 url='https://brave.com/download-nightly'
@@ -42,6 +42,11 @@ package() {
     install -Dm0644 -t "$pkgdir/usr/share/applications" "$pkgname.desktop"
     install -Dm0644 "braveAbout.png" "$pkgdir/usr/share/pixmaps/brave-nightly.png"
     install -Dm0664 -t "$pkgdir/usr/share/licenses/$pkgname" "MPL2"
-#    mv "$pkgdir/usr/lib/$pkgname/"{LICENSE,LICENSES.chromium.html} "$pkgdir/usr/share/licenses/$pkgname"
-
+    
+    sudo ln -sf "/usr/lib/libGLESv2.so.2.1.0" "$pkgdir/usr/lib/brave-nightly-bin/libGLESv2.so.2.1.0"
+    sudo ln -sf "/usr/lib/libGLESv2.so.2" "$pkgdir/usr/lib/brave-nightly-bin/libGLESv2.so.2"
+    sudo ln -sf "/usr/lib/libEGL.so.1.1.0" "$pkgdir/usr/lib/brave-nightly-bin/libEGL.so.1.1.0"
+    sudo ln -sf "/usr/lib/libEGL.so.1" "$pkgdir/usr/lib/brave-nightly-bin/libEGL.so.1"
+    sudo ln -sf "/usr/lib/libEGL.so" "$pkgdir/usr/lib/brave-nightly-bin/libEGL.so"
+    sudo ln -sf "/usr/lib/libGLESv2.so" "$pkgdir/usr/lib/brave-nightly-bin/libGLESv2.so"
 }
