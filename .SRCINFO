@@ -1,6 +1,6 @@
 pkgbase = vmware-horizon-client
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop
-	pkgver = 5.4.1
+	pkgver = 2006
 	pkgrel = 1
 	url = https://www.vmware.com/go/viewclients
 	arch = x86_64
@@ -8,17 +8,15 @@ pkgbase = vmware-horizon-client
 	makedepends = libxslt
 	makedepends = patchelf
 	makedepends = librsvg
-	source = vmware-horizon-client-5.4.1-15988340-x86_64.bundle::https://download3.vmware.com/software/view/viewclients/CART21FQ1/VMware-Horizon-Client-5.4.1-15988340.x64.bundle
+	source = vmware-horizon-client-2006-8.0.0-16522670-x86_64.bundle::https://download3.vmware.com/software/view/viewclients/CART21FQ2/VMware-Horizon-Client-2006-8.0.0-16522670.x64.bundle
 	source = http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/eclass/vmware-bundle.eclass
 	source = vmware-horizon-usb
 	source = vmware-horizon-usb.service
-	source = vmware-horizon-virtual-printing.service
 	source = vmware-horizon.svg
-	sha256sums = c115e8417ffaef6a4b74cbe70a7f4280891eee7e654cae74daa0bbffc58c14d3
+	sha256sums = 77aa390140316956c21910108d440fac6a261fe5e57110ebce5229c9b9a95ccd
 	sha256sums = d8794c22229afdeb698dae5908b7b2b3880e075b19be38e0b296bb28f4555163
 	sha256sums = 008b60ebf45f7d1e033c8ad8ce1688d5e1c59fc0668493067fb89b563b1dc00f
 	sha256sums = a897c1b9e8928fc222880ebbfc7bb6aff940bff4acf4e4e0cd4002fff81c7226
-	sha256sums = e47e770a1e19ed321de7c2765b2d682f59ac466aef92b2e4ea5e65cacf56de36
 	sha256sums = cea92d3ed97b717c631fed5664c06fc71a6deac21ba32da78970c582ed48c747
 
 pkgname = vmware-horizon-client
@@ -39,17 +37,35 @@ pkgname = vmware-horizon-client
 	optdepends = freerdp: RDP remote desktop connections
 	optdepends = libpulse: audio support via pulse sound server
 	optdepends = rdesktop: RDP remote desktop connections
+	optdepends = vmware-horizon-integrated-printing: integrated printing
+	optdepends = vmware-horizon-mmr: multimedia redirection
 	optdepends = vmware-horizon-rtav: Real-Time Audio-Video (webcam and audio-in)
 	optdepends = vmware-horizon-smartcard: smartcard authentication
-	optdepends = vmware-horizon-usb: USB device redirection
-	optdepends = vmware-horizon-virtual-printing: virtual printing
 	optdepends = vmware-horizon-tsdr: folder sharing
-	optdepends = vmware-horizon-mmr: multimedia redirection
+	optdepends = vmware-horizon-usb: USB device redirection
 	conflicts = vmware-view-open-client
 	conflicts = vmware-view-open-client-beta
 	conflicts = vmware-view-client
 	conflicts = vmware-horizon-pcoip
 	replaces = vmware-horizon-pcoip
+
+pkgname = vmware-horizon-integrated-printing
+	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop - integrated printing
+	depends = vmware-horizon-client
+	depends = libcups
+	depends = zlib
+	conflicts = vmware-horizon-virtual-printing
+	replaces = vmware-horizon-virtual-printing
+
+pkgname = vmware-horizon-mmr
+	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop - multimedia redirection
+	depends = vmware-horizon-client
+	depends = gst-plugins-base
+	depends = libpulse
+	depends = libxml2
+	depends = glib2
+	optdepends = gstreamer-vaapi: MMR with Intel VAAPI
+	optdepends = gst-plugins-bad: MMR with NVIDIA VDPAU
 
 pkgname = vmware-horizon-rtav
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop - Real-Time Audio-Video (webcam and audio-in)
@@ -65,32 +81,15 @@ pkgname = vmware-horizon-smartcard
 	depends = pcsclite
 	depends = glib2
 
-pkgname = vmware-horizon-usb
-	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop - USB device redirection
-	install = vmware-horizon-usb.install
-	depends = vmware-horizon-client
-	depends = glib2
-
-pkgname = vmware-horizon-virtual-printing
-	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop - virtual printing
-	install = vmware-horizon-virtual-printing.install
-	depends = vmware-horizon-client
-	depends = libcups
-	depends = zlib
-
 pkgname = vmware-horizon-tsdr
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop - folder sharing
 	depends = vmware-horizon-client
 	depends = glibmm
 	depends = glib2
 
-pkgname = vmware-horizon-mmr
-	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop - multimedia redirection
+pkgname = vmware-horizon-usb
+	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop - USB device redirection
+	install = vmware-horizon-usb.install
 	depends = vmware-horizon-client
-	depends = gst-plugins-base
-	depends = libpulse
-	depends = libxml2
 	depends = glib2
-	optdepends = gstreamer-vaapi: MMR with Intel VAAPI
-	optdepends = gst-plugins-bad: MMR with NVIDIA VDPAU
 
