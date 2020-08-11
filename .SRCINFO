@@ -18,3 +18,4 @@ pkgbase = gnabel-git
 	sha512sums = SKIP
 
 pkgname = gnabel-git
+
