@@ -2,7 +2,7 @@
 # Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
 
 pkgname=simplenote-electron-bin
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="The simplest way to keep notes"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -13,9 +13,9 @@ provides=('simplenote')
 source_x86_64=("${url}/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-amd64.deb")
 source_armv7h=("${url}/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-armv7l.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}/Simplenote-linux-${pkgver}-arm64.deb")
-sha256sums_x86_64=('c78a061035b889a837aff29f22131cf367b7a596e49e2beaee7615a69645fb3b')
-sha256sums_armv7h=('899016470eabbdf8dd404f5eefe282fa857debf3475a73a39c7cd7400db3a84c')
-sha256sums_aarch64=('1e69a80a386ea70df0d8084df70da2052c03fead5e49523bfe82aa88bcf476d0')
+sha256sums_x86_64=('4186484985bd691fb5ae771fb98880b36fb2e505efa838f4d3353efc14796d1c')
+sha256sums_armv7h=('a6214a2a87d4ad2a2a9263b5ec9b1eae7e37b7ee3a18f305af3fe98e7b6943bf')
+sha256sums_aarch64=('717508a6b78038921b18a7a976107f08fe19124e9bf86577105d5a505bf85c9e')
 
 # Warning: the release deb file has been known to be silently modified,
 # resulting in a different checksum. If the checksum fails to validate, this is
