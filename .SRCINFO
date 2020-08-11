@@ -9,7 +9,7 @@ pkgbase = subminder
 	makedepends = meson
 	makedepends = vala
 	depends = granite
-	source = https://github.com/jeremyvaartjes/subminder/archive/1.2.0.tar.gz
+	source = subminder-1.2.0.tar.gz::https://github.com/jeremyvaartjes/subminder/archive/1.2.0.tar.gz
 	sha256sums = 86cacd55fbddfc248a4a79c5d11e871f3b5d117e8489b0de72a16da55510afe8
 
 pkgname = subminder
