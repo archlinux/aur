@@ -1,7 +1,7 @@
 pkgbase=watchdog-ddns
 pkgname=("${pkgbase}-server" "${pkgbase}-client")
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='开箱即用的 Dynamic DNS 客户端，现已支持 DNSPod 阿里云 Cloudflare，支持网卡 IP'
 arch=('any')
 url="https://github.com/yzy613/${pkgbase}"
@@ -13,8 +13,8 @@ backup=('etc/watchdog-ddns/conf/client.json' 'etc/watchdog-ddns/conf/server.json
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/yzy613/${pkgbase}/archive/v${pkgver}.tar.gz"
         "${pkgname[0]}.service"
         "${pkgname[1]}.service")
-sha256sums=('786ea066e14f3a302eb794f11d3005cca2a5982879dd6e810c4e81fa8456caf6'
-            '11a824bba9a0d1ed85dc8e0d074c9739a4635e21a20acc236301bffe8ab5db57'
+sha256sums=('ab15035d8189c89afb89af65c649db71e4972498244d2704f49ca5fa7219bb22'
+            '716b1ef0bb2ec291b2abebf0b638c92b5c4155de1254740176ce24c8c3d2ac77'
             '1450f602fae151903290374b717ecc08d34da0df17f0ad161f902d736b91da33')
 
 prepare(){
@@ -31,19 +31,19 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   go build \
-  	-ldflags "-w -s" \
-	-o build  \
-	./main-code/client/ddns-client.go
+    -ldflags "-w -s" \
+    -o build  \
+    ./main-code/client/watchdog-ddns-client.go
 
   go build \
-  	-ldflags "-w -s" \
-	-o  build  \
-	./main-code/server/ddns-server.go
+    -ldflags "-w -s" \
+    -o  build  \
+    ./main-code/server/watchdog-ddns-server.go
 }
 
 package_watchdog-ddns-server() {
   cd "$pkgbase-$pkgver"
-  install -Dm755 build/ddns-server "$pkgdir"/usr/bin/ddns-server
+  install -Dm755 build/${pkgname} "$pkgdir"/usr/bin/${pkgname}
 
   install -dm 755 ${pkgdir}/etc/${pkgbase}/conf
   touch ${pkgdir}/etc/${pkgbase}/conf/server.json
@@ -53,7 +53,7 @@ package_watchdog-ddns-server() {
 }
 package_watchdog-ddns-client() {
   cd "$pkgbase-$pkgver"
-  install -Dm755 build/ddns-client "$pkgdir"/usr/bin/ddns-client
+  install -Dm755 build/${pkgname} "$pkgdir"/usr/bin/${pkgname}
 
   install -dm 755 ${pkgdir}/etc/${pkgbase}/conf
   touch ${pkgdir}/etc/${pkgbase}/conf/client.json

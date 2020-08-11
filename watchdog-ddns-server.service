@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/ddns-server -conf_path /etc/watch-ddns/conf
+ExecStart=/usr/bin/ddns-server
 Restart=on-failure
 
 [Install]
