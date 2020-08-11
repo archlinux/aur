@@ -8,8 +8,8 @@ pkgdesc="Sparse multidimensional arrays on top of numpy and scipy"
 arch=('any')
 url="https://sparse.pydata.org"
 license=('BSD-3-clause')
-checkdepends=('python-dask' 'python-pytest' 'python-pytest-black' 'python-pytest-cov' 'python-pytest-flake8')
-depends=('python' 'python-numpy' 'python-scipy' 'python-numba')
+checkdepends=('python-dask' 'python-pytest' 'python-pytest-black' 'python-pytest-cov' 'python-pytest-flake8' 'python-toolz')
+depends=('python-numpy' 'python-scipy' 'python-numba')
 optdepends=()
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pydata/sparse/archive/$pkgver.tar.gz")
@@ -24,6 +24,6 @@ package(){
 
 check(){
   cd "$srcdir/$_pkgname-$pkgver"
-  PYTHONPATH=. py.test sparse/tests
+  PYTHONPATH=. pytest sparse
 }
 # vim:ts=2:sw=2:et:
