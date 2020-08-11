@@ -1,8 +1,8 @@
 # Maintainer: Plague-doctor <plague at privacyrequired dot com >
 
 pkgname=moneydance
-pkgver=2019.1880
-pkgrel=2
+pkgver=2020.1919
+pkgrel=1
 pkgdesc="A personal finance manager for Mac, Windows and Linux"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://www.moneydance.com/"
@@ -39,5 +39,5 @@ package() {
 }
 sha256sums=('eff9da311388e046e33f2c3669b0229b92bc650eb5f76589233afaa41dc39109'
             '242dc66a95c4842099e41092bd87ccaf97c314bed1f9865f5c6a72f135f7de21')
-sha256sums_x86_64=('9670ef2977c3cbff41666bd6a6c83ef8e81343ab1b2d009d4e07dd99acb30d25')
-sha256sums_aarch64=('9670ef2977c3cbff41666bd6a6c83ef8e81343ab1b2d009d4e07dd99acb30d25')
+sha256sums_x86_64=('45c43d53550e970d344509a38edb0f29cfa3b89c753892b6a3cb2f6605963d4d')
+sha256sums_aarch64=('45c43d53550e970d344509a38edb0f29cfa3b89c753892b6a3cb2f6605963d4d')
