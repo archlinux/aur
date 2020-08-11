@@ -1,14 +1,14 @@
 pkgbase = ffmt-bin
 	pkgdesc = FFXIV_Modding_Tool (FFMT for short) is a crossplatform commandline interface for Final Fantasy XIV Modding.
 	pkgver = 0.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ffmt.pwd.cat/docs/
 	arch = i686
 	arch = x86_64
 	license = GNU General Public License v3.0
 	depends = dotnet-runtime
 	source = https://github.com/fosspill/FFXIV_Modding_Tool/releases/download/v0.9.3/FFXIV_Modding_Tool.zip
-	sha256sums = bc0c66ac7a44e892de16597b300a9933f195b4822230cf9658ea29a44f963046
+	sha256sums = 82724b2fbc311f0e615273dee7414e89ecc06b6f49ce79c39e500dd01086e54a
 
 pkgname = ffmt-bin
 
