@@ -1,7 +1,7 @@
 pkgbase = openfpgaloader-git
-	pkgdesc = An open source flash player implementation
+	pkgdesc = Universal utility for programming FPGA
 	pkgver = 0.1.r.12.gdcf4468
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lightspark.sourceforge.net
 	arch = i686
 	arch = x86_64

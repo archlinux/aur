@@ -2,8 +2,8 @@
 
 pkgname=openfpgaloader-git
 pkgver=0.1.r.12.gdcf4468
-pkgrel=1
-pkgdesc="An open source flash player implementation"
+pkgrel=2
+pkgdesc="Universal utility for programming FPGA"
 arch=('i686' 'x86_64')
 url="http://lightspark.sourceforge.net"
 license=('AGPL3')
