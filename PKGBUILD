@@ -67,7 +67,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck-fbcondecor
-pkgver=5.7.12
+pkgver=5.7.14
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -90,14 +90,14 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
   0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
-  0004-drm-amd-display-Clear-dm_state-for-fast-updates.patch
+  fix_ck1_for_5.7.14.patch
   fbcondecor-5.7.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('7a54cf89d7198d99004495c0e3a25d3af05c5d5b70cccf92237f603d7fa15e08'
+sha256sums=('189adf783670b2a4d04c11d645d5ad346261212b47ab31ec7e8b6e070a772f47'
             'SKIP'
             '5f8b083c777a2eaeaaaab9188d2a6e9af34ebb9f424fbf2bae9ff3b18fbec00e'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
@@ -108,7 +108,7 @@ sha256sums=('7a54cf89d7198d99004495c0e3a25d3af05c5d5b70cccf92237f603d7fa15e08'
             '06a9861b434f81c0d0f54c6c122df56cf0a730d0eafad888db8804152a7b9ea3'
             'db7f7a86bba9a4959f3e4ab7d1beb51e09099ef8beb638dd4250aa375532b2c2'
             'df205ac596ad9af28061a7dac833d52b5873882d129079ed57736dd77bbb5f8c'
-            'e9b37c73e0d81b70bc92dec7703549ab5e54f6c1d2b076e2f851e27f0b38e123'
+            '64174da03b1995d93f61389f2fe124cea89eac794e686025db543802ef140e51'
             '3912d52df46d0b1aa4e7851050115aefcb75b8d884eed4cae8d9db6dd6f48b7f')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -116,6 +116,9 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
+  # changes from 5.7.13 to 5.7.14 breaks ck1
+  patch -Np1 -i fix_ck1_for_5.7.14.patch
+
   cd linux-${pkgver}
 
   echo "Setting version..."

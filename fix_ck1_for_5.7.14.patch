@@ -1,0 +1,13 @@
+--- a/patch-5.7-ck1	2020-08-07 05:36:15.476245061 -0400
++++ b/patch-5.7-ck1	2020-08-07 05:35:31.961907618 -0400
+@@ -12805,9 +12805,9 @@ index a5221abb4594..9a9287cb2a37 100644
+ --- a/kernel/time/timer.c
+ +++ b/kernel/time/timer.c
+ @@ -43,6 +43,7 @@
+- #include <linux/sched/debug.h>
+  #include <linux/slab.h>
+  #include <linux/compat.h>
++ #include <linux/random.h>
+ +#include <linux/freezer.h>
+  
+  #include <linux/uaccess.h>
