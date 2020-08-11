@@ -7,7 +7,7 @@ _gitsha256='d05ba89605fd601b2c5ddd09e019d9912207674825c463cdd32c8c057cb68e94'
 pkgbase=octopi
 pkgname='octopi'
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful Pacman frontend using Qt5 libs"
 arch=('i686' 'x86_64')
 url="https://tintaescura.com/projects/octopi/"
@@ -30,6 +30,7 @@ _subdirs=(helper repoeditor cachecleaner sudo)
 
 prepare() {
   cd "${srcdir}/${_pkggit}-${_gitcommit}"
+  cp resources/images/octopi_green.png resources/images/octopi.png
 }
 
 build() {
