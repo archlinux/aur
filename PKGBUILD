@@ -8,17 +8,18 @@ url='https://github.com/pressly/goose'
 license=('MIT')
 depends=('go')
 makedepends=('git' 'go')
-source=('git+https://github.com/pressly/goose.git')
-sha256sums=('SKIP')
+source=("https://github.com/pressly/$pkgname/archive/v$pkgver.tar.gz")
+noextract=("v$pkgver.tar.gz")
+sha256sums=('389953f40e567fd92090fd29d60e1baec576e6432e689f11ef54e6493502383a')
 
 build() {
-	cd goose
-	git checkout v2.6.0
-	go get ./...
+	tar -xzf v$pkgver.tar.gz
+	cd $pkgname-$pkgver
+	go get ./... || true
 	go build -i -o goose ./cmd/goose	
 }
 
 package() {
-	cd goose
-	install -Dm755 "goose" "${pkgdir}/usr/bin/awstail"
+	cd $pkgname-$pkgver
+	install -Dm755 "goose" "${pkgdir}/usr/bin/goose"
 }

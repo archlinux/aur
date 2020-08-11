@@ -9,8 +9,9 @@ pkgbase = goose
 	makedepends = git
 	makedepends = go
 	depends = go
-	source = git+https://github.com/pressly/goose.git
-	sha256sums = SKIP
+	noextract = v2.6.0.tar.gz
+	source = https://github.com/pressly/goose/archive/v2.6.0.tar.gz
+	sha256sums = 389953f40e567fd92090fd29d60e1baec576e6432e689f11ef54e6493502383a
 
 pkgname = goose
 
