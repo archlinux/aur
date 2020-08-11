@@ -1,0 +1,4 @@
+pkg/
+src/
+blucontrol-*.pkg.tar.zst
+v*.tar.gz
