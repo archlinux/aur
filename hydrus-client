@@ -1,3 +1,2 @@
 #!/bin/sh
-export QT_API="${QT_API:-pyqt5}"
 exec python -OO /opt/hydrus/client.pyw "$@"

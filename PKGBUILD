@@ -15,8 +15,8 @@ url=http://hydrusnetwork.github.io/hydrus/
 depends=(python opencv python-beautifulsoup4 python-yaml
          'python-lz4>=0.10.1' python-numpy python-twisted python-pillow
          python-pysocks python-psutil python-send2trash python-html5lib
-         python-requests python-pyqt5 python-qtpy python-pyopenssl
-         emoji-font python-mpv)
+         python-requests python-qtpy python-pyopenssl emoji-font python-mpv
+         qt5-python-bindings)
 makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
@@ -31,7 +31,7 @@ source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=
         hydrus.desktop)
 sha256sums=('SKIP'
             'c3a171448f6904434d720a394c11ff405a960f17079a7ae2c4ef6e0395198ee0'
-            '7b0dbc6f38f9aaff409e435ba807199575166976b52715d6b54418f89dbde634'
+            'd2cb826ce0dd1892ab95fc3b14dbe6bd312210f653d0aea31938eeb7e361fdc5'
             '463841cc16059b516cc327cfbc30d3383e2236b085ba2d503e82f5be39444806'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')
 
