@@ -14,6 +14,8 @@ depends=(
   'python-pydub' # aur only
 )
 makedepends=('git')
+provides=('gnabel')
+conflicts=('gnabel')
 url='https://github.com/gi-lom/gnabel'
 license=('GPL-3.0')
 source=(
