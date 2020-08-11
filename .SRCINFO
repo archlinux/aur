@@ -1,0 +1,23 @@
+pkgbase = python-jedi-git
+	pkgdesc = An awesome autocompletion, static analysis and refactoring library for Python
+	pkgver = v0.17.2.r141.216f976f
+	pkgrel = 0
+	epoch = 0
+	url = https://github.com/davidhalter/jedi
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-jedi
+	conflicts = python-jedi
+	options = !emptydirs
+	source = git+https://github.com/davidhalter/jedi.git
+	source = git+https://github.com/davidhalter/typeshed
+	source = git+https://github.com/typeddjango/django-stubs
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = python-jedi-git
+
