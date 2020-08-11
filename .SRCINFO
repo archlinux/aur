@@ -1,0 +1,12 @@
+pkgbase = skk-emoji-jisyo-ja
+	pkgdesc = Emoji Dictionaries for the SKK Japanese input method in Japanese
+	pkgver = 20180513
+	pkgrel = 1
+	url = https://github.com/ymrl/SKK-JISYO.emoji-ja
+	arch = any
+	license = BSD
+	source = https://github.com/ymrl/SKK-JISYO.emoji-ja/archive/master.zip
+	md5sums = e482f85cbd0cb38a7dbd5efaf94a7749
+
+pkgname = skk-emoji-jisyo-ja
+
