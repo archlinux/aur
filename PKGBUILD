@@ -68,7 +68,7 @@ _localmodcfg=
 
 pkgbase=linux-ck-fbcondecor
 pkgver=5.7.14
-pkgrel=1
+pkgrel=4
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
