@@ -1,0 +1,16 @@
+pkgbase = ecpprog-git
+	pkgdesc = A basic driver for FTDI based JTAG probes to program ECP5 FPGAs
+	pkgver = r28.2b3e8ea
+	pkgrel = 1
+	url = https://github.com/gregdavill/ecpprog
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = libftdi
+	provides = ecpprog
+	conflicts = ecpprog
+	source = ecpprog-git::git+https://github.com/gregdavill/ecpprog.git
+	md5sums = SKIP
+
+pkgname = ecpprog-git
+
