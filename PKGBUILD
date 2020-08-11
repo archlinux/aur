@@ -2,7 +2,7 @@
 
 pkgname=lemon-lime-git
 _pkgname=lemon-lime
-pkgver=0.2.3rc3.r0.2049f82
+pkgver=0.2.3rc3.r15.c6b8c30
 pkgrel=1
 epoch=1
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
@@ -26,11 +26,9 @@ options=()
 install=
 changelog=
 source=('Project_LemonLime::git+https://github.com/iotang/Project_LemonLime.git'
-		"lemon-lime.desktop"
 		)
 noextract=()
-md5sums=('SKIP'
-         '707ae7795aab12effd83e92e394bccf4')
+md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
@@ -58,22 +56,25 @@ build() {
 	g++ watcher_unix.cpp -o watcher_unix -O2
 	#qmake lemon.pro
 	#make
-	cmake -DCMAKE_BUILD_TYPE=Release -GNinja .
+	cmake . \
+		-DCMAKE_BUILD_TYPE=Release \
+		-GNinja \
+		-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr
 	ninja
 
 }
 
 package() {
-	#cd "$srcdir/Project_LemonLime"
-	#ninja install
+	cd "$srcdir/Project_LemonLime"
+	ninja install
 	#cd "$pkgdir/bin"
 	#mv lemon lemon-lime
-	cd "$srcdir/Project_LemonLime"
-	install -D -m755 lemon "$pkgdir/usr/bin/$_pkgname"
+	#cd "$srcdir/Project_LemonLime"
+	#install -D -m755 lemon "$pkgdir/usr/bin/$_pkgname"
 
 	#install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	install -D -m644 assets/lemon-lime.png "$pkgdir/usr/share/icons/hicolor/256x256/lemon-lime.png"
-	install -D -m755 assets/$_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+	#install -D -m644 assets/lemon-lime.png "$pkgdir/usr/share/icons/hicolor/256x256/lemon-lime.png"
+	#install -D -m755 assets/$_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
 	install -D -m644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 	#install -D -m644 Changelog.md "$pkgdir/usr/share/doc/$pkgname/Changelog.md"
 }
