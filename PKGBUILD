@@ -5,7 +5,7 @@ DOC_DIRS=(opt/hydrus/help)
 pkgbase=hydrus
 pkgname=(hydrus)
 pkgver=407
-pkgrel=1
+pkgrel=2
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
 license=(WTFPL)
@@ -15,7 +15,7 @@ url=http://hydrusnetwork.github.io/hydrus/
 depends=(python opencv python-beautifulsoup4 python-yaml
          'python-lz4>=0.10.1' python-numpy python-twisted python-pillow
          python-pysocks python-psutil python-send2trash python-html5lib
-         python-requests hdf5 python-pyqt5 python-qtpy python-pyopenssl
+         python-requests python-pyqt5 python-qtpy python-pyopenssl
          emoji-font python-mpv)
 makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
