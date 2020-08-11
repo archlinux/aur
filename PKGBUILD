@@ -1,8 +1,8 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=sqlitecpp
 _dirname='SQLiteCpp'
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc='A smart and easy to use C++ SQLite3 wrapper.'
 arch=('i686' 'x86_64')
 url='https://github.com/SRombauts/SQLiteCpp'
@@ -12,8 +12,14 @@ license=('MIT')
 depends=('sqlite>=3.19')
 optdepends=('sqlcipher: for database encryption API')
 makedepends=('cmake>=3.1')
-source=("$pkgname-$pkgver::https://github.com/SRombauts/SQLiteCpp/archive/${pkgver}.tar.gz")
-sha512sums=('bbff198c1be2d4e7e596fc51b55808170f9fa1f37557209b92e49ba3017d367ea8e3df67518320a0d0c5afb5db9bfc0e599676e20b2fbb4ce8adcb831a4218ac')
+source=("$pkgname-$pkgver::https://github.com/SRombauts/SQLiteCpp/archive/${pkgver}.tar.gz"
+	'0001-Fix-compilation-if-using-SQLITE_HAS_CODEC.patch')
+sha512sums=('2415f2c775a9c1c4cf709cfbd9e130fbf96a116b5b526c78fc03c87fba6b91058c03584e7b1700b37063c5232ff4b93eb8f30506624cb3f507f9787bcb2e6864'
+            '355ca5c9b0b26c5d9006227fb998fd2704fbbc2cdc9d9a75193b8046061d3e879df692041e9124144422ae612c3c8e40beabb6c93b10b9e8dbe245dcec85c2ca')
+prepare() {
+	cd "$_dirname-$pkgver"
+	patch --forward --strip=1 --input="${srcdir}/0001-Fix-compilation-if-using-SQLITE_HAS_CODEC.patch"
+}
 build() {
 	_has_sqlcipher='false'
 
@@ -38,9 +44,8 @@ build() {
 	cmake --build .
 }
 package() {
-	cd "$_dirname-$pkgver/build"
-	cmake --build . --target install DESTDIR="$pkgdir"
-	cd ..
+	cd "$_dirname-$pkgver"
+	cmake --build build --target install DESTDIR="$pkgdir"
 	install -Dm644 'LICENSE.txt' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 'docs/README.md' "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

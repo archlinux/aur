@@ -1,0 +1,68 @@
+From 15b307a09973d74bc20fda6d2b9789572e1bb67a Mon Sep 17 00:00:00 2001
+From: sum01 <sum01@protonmail.com>
+Date: Tue, 11 Aug 2020 14:51:31 -0400
+Subject: [PATCH] Fix compilation if using SQLITE_HAS_CODEC
+
+It was failing to compile since it wasn't linking against the sqlcipher
+library if using the system libraries. This fix simply links the library
+& includes the header path.
+
+PkgConf is optional in this process, and it will fall back to regular
+search for header & lib if it's not installed.
+---
+ CMakeLists.txt | 39 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 810a993..2d80cb4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -239,6 +239,45 @@ else (SQLITECPP_INTERNAL_SQLITE)
+     if(SQLite3_VERSION VERSION_LESS "3.19")
+         set_target_properties(SQLiteCpp PROPERTIES COMPILE_FLAGS "-DSQLITECPP_HAS_MEM_STRUCT")
+     endif()
++
++    # When using the SQLite codec, we need to link against the sqlcipher lib & include <sqlcipher/sqlite3.h>
++    # So this gets the lib & header, and links/includes everything
++    if(SQLITE_HAS_CODEC)
++        # Make PkgConfig optional since Windows doesn't usually have it installed.
++        find_package(PkgConfig QUIET)
++        if(PKG_CONFIG_FOUND)
++            # IMPORTED_TARGET was added in 3.6.3
++            if(CMAKE_VERSION VERSION_LESS 3.6.3)
++                pkg_check_modules(sqlcipher REQUIRED sqlcipher)
++                # Only used in Database.cpp so PRIVATE to hide from end-user
++                # Since we can't use IMPORTED_TARGET on this older Cmake version, manually link libs & includes
++                target_link_libraries(SQLiteCpp PRIVATE ${sqlcipher_LIBRARIES})
++                target_include_directories(SQLiteCpp PRIVATE ${sqlcipher_INCLUDE_DIRS})
++            else()
++                pkg_check_modules(sqlcipher REQUIRED IMPORTED_TARGET sqlcipher)
++                # Only used in Database.cpp so PRIVATE to hide from end-user
++                target_link_libraries(SQLiteCpp PRIVATE PkgConfig::sqlcipher)
++            endif()
++        else()
++            # Since we aren't using pkgconf here, find it manually
++            find_library(sqlcipher_LIBRARY "sqlcipher")
++            find_path(sqlcipher_INCLUDE_DIR "sqlcipher/sqlite3.h"
++                PATH_SUFFIXES
++                    "include"
++                    "includes"
++            )
++            # Hides it from the GUI
++            mark_as_advanced(sqlcipher_LIBRARY sqlcipher_INCLUDE_DIR)
++            if(NOT sqlcipher_INCLUDE_DIR)
++                message(FATAL_ERROR "${PROJECT_NAME} requires the \"<sqlcipher/sqlite3.h>\" header to use the codec functionality but it wasn't found.")
++            elseif(NOT sqlcipher_LIBRARY)
++                message(FATAL_ERROR "${PROJECT_NAME} requires the sqlcipher library to use the codec functionality but it wasn't found.")
++            endif()
++            # Only used in Database.cpp so PRIVATE to hide from end-user
++            target_include_directories(SQLiteCpp PRIVATE "${sqlcipher_INCLUDE_DIR}/sqlcipher")
++            target_link_libraries(SQLiteCpp PRIVATE ${sqlcipher_LIBRARY})
++        endif()
++    endif()
+ endif (SQLITECPP_INTERNAL_SQLITE)
+ 
+ # Link target with pthread and dl for Unix
+-- 
+2.28.0
+
