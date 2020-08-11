@@ -1,0 +1,21 @@
+pkgbase = watchdog-ddns
+	pkgdesc = 开箱即用的 Dynamic DNS 客户端，现已支持 DNSPod 阿里云 Cloudflare，支持网卡 IP
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/yzy613/watchdog-ddns-server
+	arch = any
+	license = Apache
+	makedepends = go
+	provides = watchdog-ddns-git
+	provides = watchdog-ddns-bin
+	conflicts = watchdog-ddns-git
+	conflicts = watchdog-ddns-bin
+	backup = etc/watchdog-ddns/conf/client.json
+	backup = etc/watchdog-ddns/conf/server.json
+	source = watchdog-ddns-1.1.0.tar.gz::https://github.com/yzy613/watchdog-ddns/archive/v1.1.0.tar.gz
+	sha256sums = 786ea066e14f3a302eb794f11d3005cca2a5982879dd6e810c4e81fa8456caf6
+
+pkgname = watchdog-ddns-server
+
+pkgname = watchdog-ddns-client
+
