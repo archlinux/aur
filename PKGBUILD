@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=cpp11
-_cranver=0.1.0
+_cranver=0.2.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,9 +10,9 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=(r)
-optdepends=(r-bench r-brio r-cli r-callr r-covr r-decor r-desc r-glue r-ggplot2 r-knitr r-lobstr r-mockery r-scales r-testthat r-tibble r-vctrs r-withr r-xml2 r-rmarkdown)
+optdepends=(r-bench r-brio r-callr r-cli r-covr r-decor r-desc r-ggplot2 r-glue r-knitr r-lobstr r-mockery r-progress r-rmarkdown r-scales r-testthat r-tibble r-vctrs r-withr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('71082320c43d86b20a2f9360ee2b9783')
+md5sums=('20d528e3927aed1f99bb18a4142edb8e')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
