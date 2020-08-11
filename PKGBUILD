@@ -37,7 +37,7 @@ package() {
 
   sed -i "/\"version\":/s/\"[^\"]*\"$/\"$_vers\"/" _version.py
 
-  # Ignore failures on legacy python2 files ..
+  # Compile bytecode. Ignore failures on legacy python2 files ..
   python -O -m compileall -qq . || true
 }
 
