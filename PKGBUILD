@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=wayback-machine-archiver
-pkgver=1.7.1
+pkgver=1.7.3
 pkgrel=1
 pkgdesc='Submit web pages to the Wayback Machine for archiving'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-requests')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('90092061a21e2219eb89e658b2dfd34db33bb1c467e4cbbd388f4ed2332f0414')
+sha256sums=('2ca0fb80487a8b75e7d135c4c604cb933f2ad3548b8e479e8f0435cdaba72430')
 
 build() {
   cd "${pkgname}-${pkgver}"
