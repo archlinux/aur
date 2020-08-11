@@ -1,14 +1,14 @@
 pkgbase = bpytop
 	pkgdesc = Resource monitor that shows usage and stats for processor, memory, disks, network and processes
-	pkgver = 1.0.10
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://github.com/aristocratos/bpytop
 	arch = x86_64
 	license = Apache
 	depends = python3
 	depends = python-psutil
-	source = https://github.com/aristocratos/bpytop/archive/v1.0.10.tar.gz
-	sha256sums = 1071a1bd1731aa2022340542a6eb57b541701ea8fc72848edeabafd591fafb7b
+	source = https://github.com/aristocratos/bpytop/archive/v1.0.11.tar.gz
+	sha256sums = 86e90c0207eeb44885e061ca716081447b363e4b8c73f967f1b40e55fd5bf37c
 
 pkgname = bpytop
 
