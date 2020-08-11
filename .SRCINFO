@@ -1,6 +1,6 @@
 pkgbase = gnome-tour-git
 	pkgdesc = A guided tour and greeter for GNOME
-	pkgver = 0.0.1.r5.g92c75f1
+	pkgver = 3.37.1.r44.gfc8565f
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-tour
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = gnome-tour-git
 	makedepends = rust
 	makedepends = meson
 	makedepends = git
-	depends = gtk3
+	depends = libhandy1
+	provides = gnome-tour
 	conflicts = gnome-tour
 	source = git+https://gitlab.gnome.org/GNOME/gnome-tour
 	md5sums = SKIP
