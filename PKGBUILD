@@ -24,15 +24,17 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOPATH="${srcdir}"
 
   cd "${_pkgname}"
   go build -v -o "${_pkgname}" main.go
 }
 
 package() {
-  install -Dm755 "${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${_pkgname}/README.mkd" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  cd "${_pkgname}"
+  install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.mkd'
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
 }
 
 # vim: ts=2 sw=2 et:
