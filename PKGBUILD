@@ -17,12 +17,12 @@ sha256sums=('49a11062ac722236c2f265358b96ffaad803e530ff5c7192e68d329564f8ba66'
             'SKIP')
 
 package() {
-  install -Dm644 "${_pkgname}-${pkgver}-manual.pdf" "${pkgdir}/usr/share/doc/${_pkgname}/manual.pdf"
+  install -Dm755 -t "${pkgdir}/usr/bin" "bin/${_pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/share/applications" "share/applications/${_pkgname}.desktop"
+  install -Dm644 -t "${pkgdir}/usr/share/pixmaps" "share/icons/hicolor/128x128/apps/${_pkgname}.png"
+  install -Dm644 -t "${pkgdir}/usr/share/man/man8" "share/man/man8/${_pkgname}.8.gz"
+  install -Dm644 "${_pkgname}-${pkgver}-manual.pdf" "${pkgdir}/usr/share/doc/${_pkgname}/${_pkgname}-manual.pdf"
   install -Dm644 "${_pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm755 "bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install -Dm644 "share/man/man8/${_pkgname}.8.gz" "${pkgdir}/usr/share/man/man8/${_pkgname}.8.gz"
-  cp -r 'share/icons' "${pkgdir}/usr/share"
 }
 
 # vim: ts=2 sw=2 et:
