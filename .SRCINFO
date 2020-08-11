@@ -1,0 +1,19 @@
+pkgbase = glfw2to3-git
+	pkgdesc = Porting library to make GLFW 2.x games run on top of GLFW 3.x
+	pkgver = 2.7.10
+	pkgrel = 1
+	url = https://www.glfw.org/
+	arch = x86_64
+	license = ZLIB
+	makedepends = git
+	makedepends = meson
+	depends = glfw
+	provides = glfw2to3
+	provides = glfw2
+	conflicts = glfw2to3
+	conflicts = glfw2
+	source = git+https://github.com/linkmauve/glfw2to3
+	sha256sums = SKIP
+
+pkgname = glfw2to3-git
+
