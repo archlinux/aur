@@ -1,7 +1,7 @@
 # Maintainer: Vincent Herlemont <vincentherl@leszeros.com>
 pkgname=short-git
 pkgver=0.3.2.r2.g58096a7
-pkgrel=2
+pkgrel=3
 pkgdesc="A concise cli launcher / project manager using env files"
 source=("${pkgname}::git+https://github.com/vincent-herlemont/short.git")
 url="https://github.com/vincent-herlemont/short"
@@ -29,8 +29,6 @@ package() {
 
    # Licenses:
    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-   install -m 644 LICENSE-APACHE \
-      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
    install -m 644 LICENSE-MIT    \
       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
 
