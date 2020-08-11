@@ -10,18 +10,17 @@ url='https://github.com/jeremyvaartjes/comgen'
 license=('GPL3')
 depends=('figlet' 'granite')
 makedepends=('meson' 'vala')
-source=("${url}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('59149626b0ea2b01972775817c3798defcc24d31ce668f06adfd62e73236aa4d')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  meson build --prefix=/usr
-  ninja -C build
+  arch-meson "${pkgname}-${pkgver}" build
+  meson compile -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C "${pkgname}-${pkgver}/build" install
-  install -Dm644 "${pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  DESTDIR="${pkgdir}" meson install -C build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${pkgname}-${pkgver}/README.md"
 }
 
 # vim: ts=2 sw=2 et:

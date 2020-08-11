@@ -9,7 +9,7 @@ pkgbase = comgen
 	makedepends = vala
 	depends = figlet
 	depends = granite
-	source = https://github.com/jeremyvaartjes/comgen/archive/1.1.0.tar.gz
+	source = comgen-1.1.0.tar.gz::https://github.com/jeremyvaartjes/comgen/archive/1.1.0.tar.gz
 	sha256sums = 59149626b0ea2b01972775817c3798defcc24d31ce668f06adfd62e73236aa4d
 
 pkgname = comgen
