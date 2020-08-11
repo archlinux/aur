@@ -1,14 +1,14 @@
 # Maintainer: Helg1980 <depositmail@rambler.ru>
 pkgname=cine-encoder
 _name=${pkgname#python-}
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="Cine Encoder 2020SE"
 arch=(x86_64)
 url="https://github.com/CineEncoder/cine-encoder.git"
 license=('GPL')
-depends=('mkvtoolnix-cli' 'ffmpeg' 'mediainfo' 'python>=3.8.3' 'python-pyqt5' 'python-pymediainfo')
-source=("https://github.com/CineEncoder/cine-encoder/archive/1.0.tar.gz")
+depends=('mkvtoolnix-cli' 'ffmpeg' 'python>=3.8.3' 'python-pyqt5' 'python-pymediainfo')
+source=("https://github.com/CineEncoder/cine-encoder/archive/2.0.tar.gz")
 md5sums=('SKIP')
 
 build() {
