@@ -2,7 +2,7 @@
 
 pkgname=wayfire-desktop-git
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://wayfire.org/'
 pkgdesc='A meta package to use Wayfire as a desktop'
@@ -31,14 +31,14 @@ depends=(
         'kvantum-qt5'
         'clipman'
         'wl-clipboard-x11'
-        'bemenu-dmenu'
         'brightnessctl'
         'pulseaudio-ctl'
         'playerctl'
         'ydotool-git'
         'wlogout'
         'wofi'
-        'sgtk-menu'
+        'bemenu-dmenu'
+        'bemenu-wlroots'
 		'perl-file-mimeinfo'
 		'xdg-user-dirs-gtk'
 		'xdg-utils'
