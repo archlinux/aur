@@ -1,11 +1,12 @@
 [Unit]
-Description=watchdog ddns-client Service
+Description=watchdog-ddns-client Service
 After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/ddns-client -conf_path /etc/watchdog-ddns/conf
+ExecStart=/usr/bin/watchdog-ddns-client -conf_path /etc/watchdog-ddns/conf
 Restart=on-failure
+RestartSec=2
 
 [Install]
 WantedBy=multi-user.target
