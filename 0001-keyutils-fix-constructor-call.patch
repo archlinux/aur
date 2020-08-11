@@ -1,0 +1,58 @@
+From 1b4899895442c368707035ea6b3bf9205beb08fe Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?David=20=E2=80=98Bombe=E2=80=99=20Roden?=
+ <bombe@pterodactylus.net>
+Date: Tue, 11 Aug 2020 09:56:07 +0200
+Subject: [PATCH] Fix constructor call
+
+---
+ src/plugins/KeyUtils/VerySimpleGetter.java | 23 +---------------------
+ 1 file changed, 1 insertion(+), 22 deletions(-)
+
+diff --git a/src/plugins/KeyUtils/VerySimpleGetter.java b/src/plugins/KeyUtils/VerySimpleGetter.java
+index 7eec25c..7e691cf 100644
+--- a/src/plugins/KeyUtils/VerySimpleGetter.java
++++ b/src/plugins/KeyUtils/VerySimpleGetter.java
+@@ -10,7 +10,6 @@
+ import freenet.keys.FreenetURI;
+ import freenet.node.RequestClient;
+ import freenet.support.Logger;
+-import freenet.support.io.ResumeFailedException;
+ 
+ /**
+  * @author saces
+@@ -25,26 +24,6 @@
+ 	}
+ 
+ 	private FreenetURI uri;
+-	
+-	private static class FakeCallback implements ClientBaseCallback {
+-	    
+-	    FakeCallback(RequestClient client) {
+-	        this.client = client;
+-	    }
+-	    
+-	    final RequestClient client;
+-
+-        @Override
+-        public void onResume(ClientContext context) throws ResumeFailedException {
+-            throw new UnsupportedOperationException();
+-        }
+-
+-        @Override
+-        public RequestClient getRequestClient() {
+-            return client;
+-        }
+-	    
+-	}
+ 
+ 	/**
+ 	 * @param priorityclass 
+@@ -54,7 +33,7 @@ public RequestClient getRequestClient() {
+ 	 * 
+ 	 */
+ 	public VerySimpleGetter(short priorityclass, FreenetURI uri2, RequestClient client2) {
+-		super(priorityclass, new FakeCallback(client2));
++		super(priorityclass, client2);
+ 		uri = uri2;
+ 	}
+ 	

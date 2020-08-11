@@ -29,6 +29,7 @@ pkgbase = freenet
 	source = freenet.ini
 	source = freenet.service
 	source = freenet.tmpfiles
+	source = 0001-keyutils-fix-constructor-call.patch
 	validpgpkeys = B30C3D91069F81ECFEFED0B1B41A6047FD6C57F9
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -42,6 +43,7 @@ pkgbase = freenet
 	sha256sums = 1171d0545882e45e03531e760fd28024700bf50400a3e3a13f31deeace8dbb03
 	sha256sums = 10f97306ef75953f20978d3d2aa5d14daa8fa13e4db88e8270ea951239212c20
 	sha256sums = 8f35e9d7d00e4caa26d0c1cbcbcedc9081ed0535d0c67e3f9d2d75c11ff9e847
+	sha256sums = 0211a8778328805db1c9ed6991203c5bb097d00cfb7112a9c7db53df0b2bfb3c
 
 pkgname = freenet
 

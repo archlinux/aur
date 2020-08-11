@@ -7,7 +7,7 @@ _keyutils=v5026
 _upnp=10007
 _library=frn-97-4
 
-_plugins=('WebOfTrust' 'UPnP' 'Library') #'KeyUtils'
+_plugins=('WebOfTrust' 'UPnP' 'KeyUtils' 'Library')
 
 pkgname=freenet
 pkgver=0.7.5.1486
@@ -32,7 +32,9 @@ source=("git+https://github.com/freenet/fred.git?signed#tag=$_fred"
         "git+https://github.com/xor-freenet/plugin-WebOfTrust.git#branch=$_wot"
         "git+https://github.com/freenet/seedrefs.git"
         "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
-        'run.sh' 'wrapper.config' freenet.{ini,service,tmpfiles})
+        'run.sh' 'wrapper.config' freenet.{ini,service,tmpfiles}
+        '0001-keyutils-fix-constructor-call.patch'
+)
 
 sha256sums=('SKIP'
             'SKIP'
@@ -45,7 +47,8 @@ sha256sums=('SKIP'
             '9c8a99f7644859f37242465c2646f819c9458c4c0fe8d930db32837ddb2c6daf'
             '1171d0545882e45e03531e760fd28024700bf50400a3e3a13f31deeace8dbb03'
             '10f97306ef75953f20978d3d2aa5d14daa8fa13e4db88e8270ea951239212c20'
-            '8f35e9d7d00e4caa26d0c1cbcbcedc9081ed0535d0c67e3f9d2d75c11ff9e847')
+            '8f35e9d7d00e4caa26d0c1cbcbcedc9081ed0535d0c67e3f9d2d75c11ff9e847'
+            '0211a8778328805db1c9ed6991203c5bb097d00cfb7112a9c7db53df0b2bfb3c')
 
 pkgver() {
     cd fred
@@ -63,6 +66,9 @@ prepare() {
     for node in "$srcdir"/seedrefs/0* ;do
         printf "%s\n\n" "$(<$node)" >>seednodes.fref
     done
+
+    cd ../plugin-KeyUtils
+    patch -Np1 -i "$srcdir/0001-keyutils-fix-constructor-call.patch"
 }
 
 build() {
