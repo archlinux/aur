@@ -1,6 +1,6 @@
 pkgbase = gnabel-git
 	pkgdesc = A translation app for GTK environments based on Google Translate
-	pkgver = 57ff9c3
+	pkgver = r30.57ff9c3
 	pkgrel = 1
 	url = https://github.com/gi-lom/gnabel
 	arch = any
