@@ -1,12 +1,12 @@
 pkgbase = social-git
 	pkgdesc = A Mastodon and Pleroma application for GNOME
-	pkgver = 226
+	pkgver = 236
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Social
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
-	makedepends = vala
+	makedepends = cargo
 	depends = glib2
 	depends = gtk3
 	depends = libhandy

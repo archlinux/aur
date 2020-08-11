@@ -2,12 +2,12 @@
 
 pkgname=social-git
 _pkgname=Social
-pkgver=226
+pkgver=236
 pkgrel=1
 pkgdesc="A Mastodon and Pleroma application for GNOME"
 arch=('x86_64')
 depends=('glib2' 'gtk3' 'libhandy' 'gtksourceview4')
-makedepends=('meson' 'vala')
+makedepends=('meson' 'cargo')
 conflicts=("social")
 provides=("social")
 url="https://gitlab.gnome.org/World/Social"
@@ -29,6 +29,5 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
     install -Dm755 LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
-    #cd $srcdir/$_pkgname-$pkgver/_build
     DESTDIR="$pkgdir/" ninja -C _build install
 }
