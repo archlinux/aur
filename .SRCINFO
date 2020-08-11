@@ -1,0 +1,19 @@
+pkgbase = slock-blurscreen
+	pkgdesc = A simple screen locker for X(patched with blug image background)
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://tools.suckless.org/slock
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	license = MIT
+	depends = libxext
+	depends = libxrandr
+	conflicts = slock
+	source = https://dl.suckless.org/tools/slock-1.4.tar.gz
+	source = slock-blur_pixelated_screen-1.4.diff
+	sha256sums = b53849dbc60109a987d7a49b8da197305c29307fd74c12dc18af0d3044392e6a
+	sha256sums = 07254d038a731ee16781f13ba5ba77da9200a4e8e026a30a5f3674f632b9e42e
+
+pkgname = slock-blurscreen
+

@@ -1,0 +1,356 @@
+From 36a4863f9a399740aaf8b1e01926485c0a055e1c Mon Sep 17 00:00:00 2001
+From: Lars Niesen <iah71niesen@gso-koeln.de>
+Date: Wed, 29 Apr 2020 13:52:42 +0200
+Subject: [PATCH 1/8] Added Bg patch and screenshot capabilities
+
+---
+ config.mk |  2 +-
+ slock.c   | 35 +++++++++++++++++++++++++++++++----
+ 2 files changed, 32 insertions(+), 5 deletions(-)
+
+diff --git a/config.mk b/config.mk
+index 74429ae..987819e 100644
+--- a/config.mk
++++ b/config.mk
+@@ -12,7 +12,7 @@ X11LIB = /usr/X11R6/lib
+ 
+ # includes and libs
+ INCS = -I. -I/usr/include -I${X11INC}
+-LIBS = -L/usr/lib -lc -lcrypt -L${X11LIB} -lX11 -lXext -lXrandr
++LIBS = -L/usr/lib -lc -lcrypt -L${X11LIB} -lX11 -lXext -lXrandr -lImlib2
+ 
+ # flags
+ CPPFLAGS = -DVERSION=\"${VERSION}\" -D_DEFAULT_SOURCE -DHAVE_SHADOW_H
+diff --git a/slock.c b/slock.c
+index 5ae738c..7c63f34 100644
+--- a/slock.c
++++ b/slock.c
+@@ -18,6 +18,7 @@
+ #include <X11/keysym.h>
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
++#include <Imlib2.h>
+ 
+ #include "arg.h"
+ #include "util.h"
+@@ -35,6 +36,7 @@ struct lock {
+ 	int screen;
+ 	Window root, win;
+ 	Pixmap pmap;
++	Pixmap bgmap;
+ 	unsigned long colors[NUMCOLS];
+ };
+ 
+@@ -46,6 +48,8 @@ struct xrandr {
+ 
+ #include "config.h"
+ 
++Imlib_Image image;
++
+ static void
+ die(const char *errstr, ...)
+ {
+@@ -190,9 +194,10 @@ readpw(Display *dpy, struct xrandr *rr, struct lock **locks, int nscreens,
+ 			color = len ? INPUT : ((failure || failonclear) ? FAILED : INIT);
+ 			if (running && oldc != color) {
+ 				for (screen = 0; screen < nscreens; screen++) {
+-					XSetWindowBackground(dpy,
+-					                     locks[screen]->win,
+-					                     locks[screen]->colors[color]);
++                    if(locks[screen]->bgmap)
++                        XSetWindowBackgroundPixmap(dpy, locks[screen]->win, locks[screen]->bgmap);
++                    else
++                        XSetWindowBackground(dpy, locks[screen]->win, locks[screen]->colors[0]);
+ 					XClearWindow(dpy, locks[screen]->win);
+ 				}
+ 				oldc = color;
+@@ -235,6 +240,17 @@ lockscreen(Display *dpy, struct xrandr *rr, int screen)
+ 	lock->screen = screen;
+ 	lock->root = RootWindow(dpy, lock->screen);
+ 
++    if(image) 
++    {
++        lock->bgmap = XCreatePixmap(dpy, lock->root, DisplayWidth(dpy, lock->screen), DisplayHeight(dpy, lock->screen), DefaultDepth(dpy, lock->screen));
++        imlib_context_set_image(image);
++        imlib_context_set_display(dpy);
++        imlib_context_set_visual(DefaultVisual(dpy, lock->screen));
++        imlib_context_set_colormap(DefaultColormap(dpy, lock->screen));
++        imlib_context_set_drawable(lock->bgmap);
++        imlib_render_image_on_drawable(0, 0);
++        imlib_free_image();
++    }
+ 	for (i = 0; i < NUMCOLS; i++) {
+ 		XAllocNamedColor(dpy, DefaultColormap(dpy, lock->screen),
+ 		                 colorname[i], &color, &dummy);
+@@ -251,6 +267,8 @@ lockscreen(Display *dpy, struct xrandr *rr, int screen)
+ 	                          CopyFromParent,
+ 	                          DefaultVisual(dpy, lock->screen),
+ 	                          CWOverrideRedirect | CWBackPixel, &wa);
++    if(lock->bgmap)
++        XSetWindowBackgroundPixmap(dpy, lock->win, lock->bgmap);
+ 	lock->pmap = XCreateBitmapFromData(dpy, lock->win, curs, 8, 8);
+ 	invisible = XCreatePixmapCursor(dpy, lock->pmap, lock->pmap,
+ 	                                &color, &color, 0, 0);
+@@ -354,7 +372,16 @@ main(int argc, char **argv) {
+ 		die("slock: setgid: %s\n", strerror(errno));
+ 	if (setuid(duid) < 0)
+ 		die("slock: setuid: %s\n", strerror(errno));
+-
++		
++	/*Create screenshot Image*/
++	Screen *scr = ScreenOfDisplay(dpy, DefaultScreen(dpy));
++	image = imlib_create_image(scr->width,scr->height);
++	imlib_context_set_image(image);
++	imlib_context_set_display(dpy);
++	imlib_context_set_visual(DefaultVisual(dpy,0));
++	imlib_context_set_drawable(RootWindow(dpy,XScreenNumberOfScreen(scr)));	
++	imlib_copy_drawable_to_image(0,0,0,scr->width,scr->height,0,0,1);
++	
+ 	/* check for Xrandr support */
+ 	rr.active = XRRQueryExtension(dpy, &rr.evbase, &rr.errbase);
+ 
+-- 
+2.27.0
+
+
+From 9d89604ac52b0949d047dae2f9b78cb5085ee1a2 Mon Sep 17 00:00:00 2001
+From: Lars Niesen <iah71niesen@gso-koeln.de>
+Date: Wed, 29 Apr 2020 14:15:59 +0200
+Subject: [PATCH 2/8] Added blur function
+
+---
+ config.def.h | 3 +++
+ slock.c      | 3 ++-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/config.def.h b/config.def.h
+index c8e52d6..fcc1b39 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -10,3 +10,6 @@ static const char *colorname[NUMCOLS] = {
+ 
+ /* treat a cleared input like a wrong password (color) */
+ static const int failonclear = 1;
++
++/*Set Blur radius*/
++static const int blurRadius=5;
+\ No newline at end of file
+diff --git a/slock.c b/slock.c
+index 7c63f34..0f24cd7 100644
+--- a/slock.c
++++ b/slock.c
+@@ -372,7 +372,7 @@ main(int argc, char **argv) {
+ 		die("slock: setgid: %s\n", strerror(errno));
+ 	if (setuid(duid) < 0)
+ 		die("slock: setuid: %s\n", strerror(errno));
+-		
++
+ 	/*Create screenshot Image*/
+ 	Screen *scr = ScreenOfDisplay(dpy, DefaultScreen(dpy));
+ 	image = imlib_create_image(scr->width,scr->height);
+@@ -381,6 +381,7 @@ main(int argc, char **argv) {
+ 	imlib_context_set_visual(DefaultVisual(dpy,0));
+ 	imlib_context_set_drawable(RootWindow(dpy,XScreenNumberOfScreen(scr)));	
+ 	imlib_copy_drawable_to_image(0,0,0,scr->width,scr->height,0,0,1);
++	imlib_image_blur(blurRadius);
+ 	
+ 	/* check for Xrandr support */
+ 	rr.active = XRRQueryExtension(dpy, &rr.evbase, &rr.errbase);
+-- 
+2.27.0
+
+
+From 069aabd7e30244befd4efe74c85d3468ed076c21 Mon Sep 17 00:00:00 2001
+From: Lars Niesen <iah71niesen@gso-koeln.de>
+Date: Wed, 29 Apr 2020 17:33:09 +0200
+Subject: [PATCH 4/8] added Pixelation
+
+---
+ config.def.h |  3 ++-
+ slock.c      | 42 ++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 44 insertions(+), 1 deletion(-)
+
+diff --git a/config.def.h b/config.def.h
+index fcc1b39..1c1aef3 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -12,4 +12,5 @@ static const char *colorname[NUMCOLS] = {
+ static const int failonclear = 1;
+ 
+ /*Set Blur radius*/
+-static const int blurRadius=5;
+\ No newline at end of file
++static const int blurRadius=0;
++static const int pixelSize=5;
+diff --git a/slock.c b/slock.c
+index 0f24cd7..33ca569 100644
+--- a/slock.c
++++ b/slock.c
+@@ -381,7 +381,49 @@ main(int argc, char **argv) {
+ 	imlib_context_set_visual(DefaultVisual(dpy,0));
+ 	imlib_context_set_drawable(RootWindow(dpy,XScreenNumberOfScreen(scr)));	
+ 	imlib_copy_drawable_to_image(0,0,0,scr->width,scr->height,0,0,1);
++	
++	/*Blur function*/
+ 	imlib_image_blur(blurRadius);
++
++
++	/*Pixelation*/
++	int width = scr->width;
++	int height = scr->height;
++	
++	for(int y = 0; y < height; y += pixelSize)
++	{
++		for(int x = 0; x < width; x += pixelSize)
++		{
++			int red = 0;
++			int green = 0;
++			int blue = 0;
++
++			Imlib_Color pixel; 
++			Imlib_Color* pp;
++			pp = &pixel;
++			for(int j = 0; j < pixelSize && j < height; j++)
++			{
++				for(int i = 0; i < pixelSize && i < width; i++)
++				{
++					imlib_image_query_pixel(x+i,y+j,pp);
++					red += pixel.red;
++					green += pixel.green;
++					blue += pixel.blue;
++				}
++			}
++			red /= (pixelSize*pixelSize);
++			green /= (pixelSize*pixelSize);
++			blue /= (pixelSize*pixelSize);
++			printf("R/G/B: %i/%i/%i\n",red,green,blue);
++			imlib_context_set_color(red,green,blue,pixel.alpha);
++			imlib_image_fill_rectangle(x,y,pixelSize,pixelSize);
++			red = 0;
++			green = 0;
++			blue = 0;
++		}
++	}
++	
++	
+ 	
+ 	/* check for Xrandr support */
+ 	rr.active = XRRQueryExtension(dpy, &rr.evbase, &rr.errbase);
+-- 
+2.27.0
+
+
+From 109bac015c1c7fbf8440fb42588fe7e0e9cb5e62 Mon Sep 17 00:00:00 2001
+From: Lars Niesen <iah71niesen@gso-koeln.de>
+Date: Wed, 29 Apr 2020 17:42:39 +0200
+Subject: [PATCH 6/8] removed debug printf
+
+---
+ slock.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/slock.c b/slock.c
+index 33ca569..f54c459 100644
+--- a/slock.c
++++ b/slock.c
+@@ -414,7 +414,6 @@ main(int argc, char **argv) {
+ 			red /= (pixelSize*pixelSize);
+ 			green /= (pixelSize*pixelSize);
+ 			blue /= (pixelSize*pixelSize);
+-			printf("R/G/B: %i/%i/%i\n",red,green,blue);
+ 			imlib_context_set_color(red,green,blue,pixel.alpha);
+ 			imlib_image_fill_rectangle(x,y,pixelSize,pixelSize);
+ 			red = 0;
+-- 
+2.27.0
+
+
+From a13a0f4ac86f82e4dff145b7ebd93e52d07492c9 Mon Sep 17 00:00:00 2001
+From: Lars Niesen <iah71niesen@gso-koeln.de>
+Date: Sun, 3 May 2020 18:03:38 +0200
+Subject: [PATCH 7/8] Changed compilerflag to fast
+
+---
+ config.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config.mk b/config.mk
+index 987819e..d0c2f01 100644
+--- a/config.mk
++++ b/config.mk
+@@ -16,7 +16,7 @@ LIBS = -L/usr/lib -lc -lcrypt -L${X11LIB} -lX11 -lXext -lXrandr -lImlib2
+ 
+ # flags
+ CPPFLAGS = -DVERSION=\"${VERSION}\" -D_DEFAULT_SOURCE -DHAVE_SHADOW_H
+-CFLAGS = -std=c99 -pedantic -Wall -Os ${INCS} ${CPPFLAGS}
++CFLAGS = -std=c99 -pedantic -Wall -Ofast ${INCS} ${CPPFLAGS}
+ LDFLAGS = -s ${LIBS}
+ COMPATSRC = explicit_bzero.c
+ 
+-- 
+2.27.0
+
+
+From 31a7001c4954606c066cc3df4318fafd6d216bcd Mon Sep 17 00:00:00 2001
+From: Lars Niesen <iah71niesen@gso-koeln.de>
+Date: Mon, 4 May 2020 10:00:40 +0200
+Subject: [PATCH 8/8] Added defines for BLUR/PIXELATION to remove from code by
+ compilation
+
+---
+ config.def.h | 11 ++++++++---
+ slock.c      |  9 ++++++---
+ 2 files changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 1c1aef3..5407953 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -11,6 +11,11 @@ static const char *colorname[NUMCOLS] = {
+ /* treat a cleared input like a wrong password (color) */
+ static const int failonclear = 1;
+ 
+-/*Set Blur radius*/
+-static const int blurRadius=0;
+-static const int pixelSize=5;
++/*Enable blur*/
++#define BLUR
++/*Set blur radius*/
++static const int blurRadius=5;
++/*Enable Pixelation*/
++//#define PIXELATION
++/*Set pixelation radius*/
++static const int pixelSize=0;
+diff --git a/slock.c b/slock.c
+index f54c459..1a4d6e3 100644
+--- a/slock.c
++++ b/slock.c
+@@ -381,11 +381,14 @@ main(int argc, char **argv) {
+ 	imlib_context_set_visual(DefaultVisual(dpy,0));
+ 	imlib_context_set_drawable(RootWindow(dpy,XScreenNumberOfScreen(scr)));	
+ 	imlib_copy_drawable_to_image(0,0,0,scr->width,scr->height,0,0,1);
+-	
++
++#ifdef BLUR
++
+ 	/*Blur function*/
+ 	imlib_image_blur(blurRadius);
++#endif // BLUR	
+ 
+-
++#ifdef PIXELATION
+ 	/*Pixelation*/
+ 	int width = scr->width;
+ 	int height = scr->height;
+@@ -423,7 +426,7 @@ main(int argc, char **argv) {
+ 	}
+ 	
+ 	
+-	
++#endif
+ 	/* check for Xrandr support */
+ 	rr.active = XRRQueryExtension(dpy, &rr.evbase, &rr.errbase);
+ 
+-- 
+2.27.0
+
