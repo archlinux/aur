@@ -1,0 +1,14 @@
+pkgbase = python-simpleaudio
+	pkgdesc = A simple audio playback Python extension
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/hamiltron/py-simple-audio
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.org/packages/source/s/simpleaudio/simpleaudio-1.0.4.tar.gz
+	sha256sums = 691c88649243544db717e7edf6a9831df112104e1aefb5f6038a5d071e8cf41d
+
+pkgname = python-simpleaudio
+
