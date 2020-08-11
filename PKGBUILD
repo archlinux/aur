@@ -7,8 +7,9 @@ pkgdesc='A snake game for the terminal'
 arch=('x86_64')
 url='https://octobanana.com/software/nyble'
 license=('MIT')
-makedepends=('boost' 'cmake')
-source=("https://github.com/octobanana/${pkgname}/archive/${pkgver}.tar.gz")
+depends=('boost-libs' 'mpfr')
+makedepends=('cmake')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/octobanana/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('c05b842fa7cae9def06e6916690e12be249ad584d195c3fdc1f56d44bb87a47e')
 
 build() {
@@ -23,9 +24,8 @@ build() {
 
 package() {
   make DESTDIR="${pkgdir}" PREFIX="/usr" -C build install
-  install -Dm644 "${pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "${pkgname}-${pkgver}/doc/help.txt" "${pkgdir}/usr/share/doc/${pkgname}/help.txt"
-  install -Dm644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${pkgname}-${pkgver}/"{README.md,doc/help.txt}
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgname}-${pkgver}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
