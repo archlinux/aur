@@ -1,8 +1,8 @@
 # Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/vorbote>
 # Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=otf-literata
-pkgver=1.00
-pkgrel=5
+pkgver=2.00
+pkgrel=1
 pkgdesc="Google's default typeface for Play Books. Android distribution."
 arch=('any')
 url="https://play.google.com/store/apps/details?id=com.google.android.apps.books"
@@ -13,13 +13,21 @@ replaces=('ttf-literata')
 #
 # If this doesn't work, please let me know. I may need to find an alternative solution.
 #
-source=("https://dw51.uptodown.com/dwn/NNTq5NARkhAvzpZFRWJy_qDg0TZXbCd_dxSsXki2lxxlrA5RMMPphu-iNCmGh3qYQIWzWrKEz9NEmE7wMtdRbfMQAoK8sQeP5NE0_cuVg20QJECy6Dt5p2phdK9x7rFI/aPaK75RXUWGvVfZzLLR045pd5tnnABxiXBT4YcBzVXxGNjKVHXmqrUpj1WOKR5utdmNZZQrdmozvE5XxtgseUk_YU7_9mzM_nWsgnnmCDsXmIvITkklP2LLzIbs8Etry/Mc6dny-s3qLobptBQ6v847yj2foAyVpnqobfwV2_yJmMZZ9VeOTgEkct29cLXV2iHYj68pCrqUhowHjImmMiPVBAJEDC_DoZUSln6mxgpc8=/google-play-books-5-9-11-rc11-322191871.apk")
-b2sums=('5590a36527a8a34d1c3f60790bec91c18e10aab0b87942569395f91426d513fefdebeb78cb1551ec20d33a3d1f07eeb2a4b4b75d820a28ba1bbee8c36355a392')
+source=(
+	"https://gitlab.com/vorbote/lit/-/blob/master/lit.otf"
+	"https://gitlab.com/vorbote/lit/-/blob/master/liti.otf"
+	"https://gitlab.com/vorbote/lit/-/blob/master/litb.otf"
+	"https://gitlab.com/vorbote/lit/-/blob/master/litbi.otf"
+)
+b2sums=('f9786aa3152e63c38d9f3274a06edffb59a41b1cc3ac294d24bb819458396872a8117557562909a0e1da4bf98c413486cab5f4f0b6d78e4839d45da2a6730be9'
+        '7242c9f3edaeea6e9c4a0cd5a8d8c1850cdba9345352165464c68614fd75f26d90550462f6ff644cd5d6fdc75c262842a964b3e7af2d35b39ce32fd14219ddeb'
+        '36db3ab9e4f7bad889c6ba48ecc5eba08738c8426baa9ac567c498cd3f125886bc66d95502ed0f65bccade89e6f92a10dc44f8b4593ebd06fcd690d482f1bc9d'
+        'c721534e5a9cf44a997f2f2b0ea3d38f2115afe61d987b71c80ed07493b2d3a1496e92df6dc1054efd5125ba32e2e26821081e647bd9b2e47650556b5b99cb9f')
 
 package() {
-  cd "$srcdir/assets/fonts"
+  cd "$srcdir"
 
   install -dm755 "$pkgdir/usr/share/fonts/OTF/literata"
 
-  install -m644 literata*.otf "$pkgdir/usr/share/fonts/OTF/literata"
+  install -m644 lit*.otf "$pkgdir/usr/share/fonts/OTF/literata"
 }
