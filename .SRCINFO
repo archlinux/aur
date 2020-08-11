@@ -7,7 +7,7 @@ pkgbase = uconv-c-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	provides = uconv-c-git-c
+	provides = uconv-c
 	source = git+https://github.com/kevinboone/uconv.git
 	sha256sums = SKIP
 
