@@ -1,17 +1,20 @@
-pkgbase = gnabel
+pkgbase = gnabel-git
 	pkgdesc = A translation app for GTK environments based on Google Translate
-	pkgver = 0.0.0
-	pkgrel = 2
+	pkgver = 57ff9c3
+	pkgrel = 1
 	url = https://github.com/gi-lom/gnabel
 	arch = any
 	license = GPL-3.0
+	makedepends = git
 	depends = python>=3
 	depends = python-pyperclip
 	depends = python-gobject
 	depends = python-googletrans
 	depends = python-gtts
 	depends = python-pydub
-	source = https://github.com/gi-lom/gnabel/archive/57ff9c3d3631b04ddb8369e31ad2cfe46ec9099f.zip
+	provides = gnabel
+	conflicts = gnabel
+	source = gnabel::git+https://github.com/gi-lom/gnabel
 	sha512sums = SKIP
 
-pkgname = gnabel
+pkgname = gnabel-git
