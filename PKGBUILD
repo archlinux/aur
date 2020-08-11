@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='Package desktop applications as AppImages'
 arch=('x86_64')
 url='https://github.com/AppImage/AppImageKit'
-_rawurl='https://raw.githubusercontent.com/AppImage/AppImageKit'
+_rawurl="https://raw.githubusercontent.com/${url##*github.com/}"
 license=('MIT')
 depends=('libappimage')
 optdepends=('zsync: binary delta updates')
@@ -26,8 +26,8 @@ build() {
 }
 
 package(){
-  install -Dm755 "squashfs-root/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm755 "squashfs-root/usr/lib/appimagekit/mksquashfs" "${pkgdir}/usr/lib/appimagekit/mksquashfs"
+  install -Dm755 -t "${pkgdir}/usr/bin" "squashfs-root/usr/bin/${_pkgname}"
+  install -Dm755 -t "${pkgdir}/usr/lib/appimagekit" "squashfs-root/usr/lib/appimagekit/mksquashfs"
   install -Dm644 "${_pkgname}-${pkgver}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "${_pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
