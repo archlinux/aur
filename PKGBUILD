@@ -10,7 +10,7 @@ url='https://octobanana.com/software/hr'
 license=('MIT')
 makedepends=('cmake')
 provides=("${_pkgname}")
-source=("https://github.com/octobanana/${_pkgname}/archive/${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/octobanana/${_pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('18b499b7886acdd3099768e1789c4d5f73195976df65bbf1e201a995f491a9bd')
 
 build() {
@@ -25,8 +25,8 @@ build() {
 
 package() {
   make DESTDIR="${pkgdir}" PREFIX="/usr" -C build install
-  install -Dm644 "${_pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_pkgname}-${pkgver}/README.md"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" "${_pkgname}-${pkgver}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:

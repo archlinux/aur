@@ -7,7 +7,7 @@ pkgbase = horizontal-rule
 	license = MIT
 	makedepends = cmake
 	provides = hr
-	source = https://github.com/octobanana/hr/archive/0.5.0.tar.gz
+	source = hr-0.5.0.tar.gz::https://github.com/octobanana/hr/archive/0.5.0.tar.gz
 	sha256sums = 18b499b7886acdd3099768e1789c4d5f73195976df65bbf1e201a995f491a9bd
 
 pkgname = horizontal-rule
