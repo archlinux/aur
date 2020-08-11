@@ -1,17 +1,17 @@
 # Maintainer: skydrome <skydrome at@at proton mail dot com>
 # Contributors: Thynix
 
-_fred=build01485
+_fred=build01486
 _wot=next
 _keyutils=v5026
 _upnp=10007
-_library=v37-dw-rw3
+_library=frn-97-4
 
-_plugins=('WebOfTrust' 'UPnP' 'KeyUtils' 'Library')
+_plugins=('WebOfTrust' 'UPnP' 'Library') #'KeyUtils'
 
 pkgname=freenet
-pkgver=0.7.5.1485
-pkgrel=2
+pkgver=0.7.5.1486
+pkgrel=1
 pkgdesc="A peer-to-peer platform for censorship-resistant communication and publishing"
 url="https://freenetproject.org"
 license=('GPL2')
@@ -28,7 +28,7 @@ validpgpkeys=('B30C3D91069F81ECFEFED0B1B41A6047FD6C57F9')
 source=("git+https://github.com/freenet/fred.git?signed#tag=$_fred"
         "git+https://github.com/freenet/plugin-KeyUtils.git#tag=$_keyutils"
         "git+https://github.com/freenet/plugin-UPnP.git#tag=$_upnp"
-        "git+https://github.com/redwerk/plugin-Library.git#tag=$_library"
+        "git+https://github.com/redwerk/plugin-Library.git#branch=$_library"
         "git+https://github.com/xor-freenet/plugin-WebOfTrust.git#branch=$_wot"
         "git+https://github.com/freenet/seedrefs.git"
         "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
@@ -57,7 +57,7 @@ prepare() {
     cd fred
 
     # Java 14 support
-    git pull -r -v https://github.com/skydrome/fred.git gradle-6.4-aur -q
+    git pull -r -v https://github.com/skydrome/fred.git gradle-6.6-aur -q
 
     rm -f seednodes.fref
     for node in "$srcdir"/seedrefs/0* ;do
