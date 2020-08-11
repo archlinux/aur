@@ -1,7 +1,7 @@
 # Maintainer: Sky Aw <sky100aw@gmail.com>
 
 pkgname=fetchpac-git
-pkgver=1.1.r7.gd26f5af
+pkgver=1.1.r8.g2bbf273
 pkgrel=1
 pkgdesc="A CLI tool written in Bash for printing system package information."
 arch=('any')
