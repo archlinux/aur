@@ -1,7 +1,7 @@
 pkgbase = genesis-starter
 	pkgdesc = Character creation tool for Splittermond
 	pkgver = 6.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://blog.rpgframework.de
 	arch = any
 	license = unknown
@@ -16,8 +16,8 @@ pkgbase = genesis-starter
 	source = genesis-starter.sh
 	source = genesis-starter.desktop
 	sha256sums = a65f42bbfb134392ab4d74d50e33cea1f44fdf6ae204e6903e8975aeefd063a8
-	sha256sums = 50d8d2308c5727ab160a69c09c8e5f30f21c9159ef78ceff5c7cff33d3ec45c9
-	sha256sums = 30c582b5d315c01c78428eed5f2f43fd2667f1c23f9005964301de84dcbfa14e
+	sha256sums = 634e6da4ff95c3868fd0a77da9b7a016d449151c6532b51af68f38336e0ec941
+	sha256sums = 38f5092e84411445e085bdd9e2bca579029406379042337fd0a72fccbf4f363d
 
 pkgname = genesis-starter
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
-Comment=
+Comment=Character creation tool for Splittermond
 Terminal=false
 Name=Genesis
 Exec=genesis-starter
