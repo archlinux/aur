@@ -1,7 +1,7 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 pkgname=sensu-go-agent
-pkgver=5.21.1
-_pkgbuild=25872
+pkgver=6.0.0
+_pkgbuild=3003
 _pkgver="${pkgver}-${_pkgbuild}"
 pkgrel=1
 pkgdesc="Sensu Go Agent"
@@ -13,7 +13,7 @@ conflicts=("${pkgname/-go-/-}")
 source=("${pkgname}-${_pkgver}_amd64.deb::https://packagecloud.io/sensu/stable/packages/debian/buster/${pkgname}_${_pkgver}_amd64.deb/download.deb"
         "sensu.sysusers"
         "sensu.tmpfiles")
-sha1sums=('cd6c78437551a09b23c87a2a9d9a1d911aaaa89d'
+sha1sums=('aed7241013dea95d4cb85706fb8d25bdc509f7ee'
           '054c2cfb7b2c4e6900fe79620b40fd060dbc0d8a'
           '9cca06fcbb23d5618382cc14e4ab4cc73c1f91fa')
 
