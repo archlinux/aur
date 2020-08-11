@@ -2,7 +2,7 @@
 # Maintainer: Marcin Mikołajczak <me@mkljczk.pl>
 
 pkgname=kscreenlocker-git
-pkgver=v5.17.90.r20.gf2c89ed
+pkgver=v5.18.90.r21.gf53b9b3
 pkgrel=1
 pkgdesc='Library and components for secure lock screen architecture'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=(plasma-framework kidletime kwayland libxcursor)
 makedepends=(extra-cmake-modules git python kdoctools)
 provides=(kscreenlocker)
 conflicts=(kscreenlocker)
-source=('git://anongit.kde.org/kscreenlocker.git')
+source=('git+https://anongit.kde.org/kscreenlocker.git')
 md5sums=('SKIP')
 
 pkgver() {
