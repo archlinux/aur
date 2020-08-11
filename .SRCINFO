@@ -1,6 +1,6 @@
 pkgbase = linux-ck-fbcondecor
 	pkgver = 5.7.14
-	pkgrel = 4
+	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
