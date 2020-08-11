@@ -1,10 +1,11 @@
 # Maintainer: Arley Henostroza < arllk at gmail dot com >
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
-_svt_hevc_ver='1.4.3'
+_svt_hevc_ver='1.5.0'
+_svt_vp9_ver='0.2.2'
 
 pkgname=ffmpeg-intel-full-git
-pkgver=4.4.r98503.g68c56082d3
+pkgver=4.4.r98687.g6e951d0cf8
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)'
 arch=('x86_64')
@@ -23,8 +24,8 @@ depends=(
         'x264'  'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2'
         'lilv' 'xz' 'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
         'libxv' 'libx11'  'libxext' 'zlib' 'libomxil-bellagio' 'libdrm' 'vmaf'
-        'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc'
-        'glslang' 'librabbitmq-c' 'vulkan-icd-loader' 'svt-av1'
+        'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc' 'srt'
+        'glslang' 'librabbitmq-c' 'vulkan-icd-loader' 'svt-av1' 'svt-vp9'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
         'libopenmpt-svn' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
@@ -41,23 +42,25 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswresample.so' 'ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-intel')
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
-        # Removed 010 because is for AMD
-        "020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
-        "030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        "040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-AV1/master/ffmpeg_plugin/0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch"
+        '010-ffmpeg-fix-vmaf-model-path.patch'
+	'020-ffmpeg-add-svt-hevc.patch'
+	"030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
+	"040-ffmpeg-add-svt-vp9-${_svt_vp9_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/v${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         'LICENSE')
+
 sha256sums=('SKIP'
-            '878757eb6d7072521caaeb71f1453ec3fc0f91a12936ef302e1625184787c6a6'
+	    'b6fcef2f4cbb1daa47d17245702fbd67ab3289b6b16f090ab99b9c2669453a02'
+            'fecb280e4ebb4ad8a3ec0385f6f32fcf90656fea989a6182abcc4104f266bde4'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            '5e960b4dab495437082d0838a40a8cae9b67d1cef1ffd57da960afaa2bfd3719'
+            'b74be6d805672210e226e7c0b403f88b0ee8a53c732c9bdc873c4b44aeb75c96'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
-    rm -f ffmpeg/libavcodec/libsvt_{hevc,av1}.c
-    # AMD specific patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-${_svt_hevc_ver}.patch"
+    rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
+    patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-av1-${_svt_av1_ver}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-${_svt_vp9_ver}.patch"
 }
 
 pkgver() {
@@ -146,9 +149,10 @@ build() {
         --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
-        --disable-libsrt \
+        --enable-libsrt \
         --enable-libssh \
         --enable-libsvthevc \
+	--enable-libsvtav1 \
         --enable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
@@ -160,6 +164,7 @@ build() {
         --enable-libvo-amrwbenc \
         --enable-libvorbis \
         --enable-libvpx \
+	--enable-libsvtvp9 \
         --enable-libwavpack \
         --enable-libwebp \
         --enable-libx264 \
