@@ -1,7 +1,7 @@
 pkgbase = go-tun2socks
 	pkgdesc = A tun2socks implementation written in Go.
 	pkgver = 1.16.11
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/eycorsican/go-tun2socks
 	arch = x86_64
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: DDoSolitary <DDoSolitary@gmail.com>
 pkgname=go-tun2socks
 pkgver=1.16.11
-pkgrel=0
+pkgrel=1
 pkgdesc="A tun2socks implementation written in Go."
 arch=(x86_64)
 url=https://github.com/eycorsican/go-tun2socks
