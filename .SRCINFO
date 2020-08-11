@@ -1,7 +1,7 @@
 pkgbase = lemon-lime
 	pkgdesc = 为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus
 	pkgver = 0.2.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/iotang/Project_LemonLime
 	arch = x86_64
 	license = GPL3

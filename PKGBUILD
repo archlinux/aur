@@ -2,7 +2,7 @@
 
 pkgname=lemon-lime
 pkgver=0.2.2
-pkgrel=6
+pkgrel=7
 epoch=
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
 arch=(x86_64)
@@ -65,7 +65,7 @@ package() {
 	install -D -m755 lemon "$pkgdir/usr/bin/$pkgname"
 
 	#install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -D -m644 pics/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/lemon-lime.png"
+	install -D -m644 pics/icon.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/lemon-lime.png"
 	install -D -m755 $srcdir/$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 	install -D -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	#install -D -m644 Changelog.md "$pkgdir/usr/share/doc/$pkgname/Changelog.md"
