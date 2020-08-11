@@ -1,7 +1,7 @@
 pkgbase = gnabel
 	pkgdesc = A translation app for GTK environments based on Google Translate
 	pkgver = 0.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/gi-lom/gnabel
 	arch = any
 	license = GPL-3.0

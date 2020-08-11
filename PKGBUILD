@@ -4,7 +4,7 @@ set -o errexit -o pipefail
 
 pkgname='gnabel'
 pkgver='0.0.0'
-pkgrel='0'
+pkgrel='1'
 pkgdesc='A translation app for GTK environments based on Google Translate'
 arch=('any')
 depends=(
