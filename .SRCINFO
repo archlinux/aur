@@ -1,0 +1,20 @@
+pkgbase = swayimg
+	pkgdesc = Image viewer for Sway/Wayland
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/artemsen/swayimg
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = cairo
+	depends = json-c
+	optdepends = libjpeg: JPEG images support
+	optdepends = giflib: GIF images support
+	source = swayimg-1.0.tar.gz::https://github.com/artemsen/swayimg/archive/v1.0.tar.gz
+	md5sums = 308063c564fdc97dad40c6b5ea227d88
+
+pkgname = swayimg
+
