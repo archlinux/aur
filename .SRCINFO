@@ -1,14 +1,14 @@
 pkgbase = got
 	pkgdesc = Simple golang package and CLI tool to download large files faster than cURL and Wget!
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/melbahja/got
 	arch = x86_64
 	arch = arm64
 	license = MIT
 	makedepends = go
-	source = https://github.com/melbahja/got/archive/v0.1.1.tar.gz
-	sha256sums = fa55f71c584814d07562d8935c851816cde542e361bbb27b4cffe729a70679fc
+	source = https://github.com/melbahja/got/archive/v0.1.2.tar.gz
+	sha256sums = 528c2dd6ed56646976ea498cd64cd5a32ffbb6e73c3f4a51a01f1c50ea00a414
 
 pkgname = got
 
