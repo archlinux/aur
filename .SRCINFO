@@ -1,5 +1,5 @@
 pkgbase = watchdog-ddns
-	pkgdesc = 开箱即用的 Dynamic DNS 客户端，现已支持 DNSPod 阿里云 Cloudflare，支持网卡 IP
+	pkgdesc = 开箱即用的可常驻 Dynamic DNS 客户端，现已支持 DNSPod 阿里云 Cloudflare，支持网卡 IP
 	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/yzy613/watchdog-ddns
