@@ -9,6 +9,7 @@ pkgbase = coreterminal-git
 	makedepends = git
 	depends = libcprime-git
 	depends = qtermwidget
+	depends = qt5-serialport
 	provides = coreterminal
 	conflicts = coreterminal
 	source = git+https://gitlab.com/cubocore/coreterminal.git
