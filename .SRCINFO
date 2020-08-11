@@ -1,6 +1,6 @@
 pkgbase = webots-nightly
 	pkgdesc = Mobile robot simulation software.
-	pkgver = 202087
+	pkgver = 2020810
 	pkgrel = 1
 	url = https://cyberbotics.com/
 	install = webots.install
@@ -71,8 +71,8 @@ pkgbase = webots-nightly
 	optdepends = zlib
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/cyberbotics/webots/releases/download/nightly_7_8_2020/webots_2020b-rev1_amd64.deb
-	sha512sums_x86_64 = f9539207eee3a02346a7dada64bf71ac0b35bc2f8dc135a146b318256d5fb3c90c64705b5d7c3167d3e56f0990b9d8b9ac7cc847ea07efa075e1ee61352ea556
+	source_x86_64 = https://github.com/cyberbotics/webots/releases/download/nightly_10_8_2020/webots_2020b-rev1_amd64.deb
+	sha512sums_x86_64 = ff66fd5ac8e7024ae077c245dc70dc70cfb8cee6b0d4d08f8bf0cc5c8c28e776746510a73c2d093f493f1a9a86a4ce55bf160a997bfe076c535e490e39c048d6
 
 pkgname = webots-nightly
 
