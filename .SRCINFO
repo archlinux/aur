@@ -1,6 +1,6 @@
 pkgbase = cinnamon-slim
 	pkgdesc = Innovative Linux desktop. Slim version.
-	pkgver = 4.6.6
+	pkgver = 4.6.7
 	pkgrel = 1
 	url = https://github.com/linuxmint/cinnamon
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = cinnamon-slim
 	optdepends = gnome-panel: fallback mode
 	optdepends = metacity: fallback mode
 	optdepends = system-config-printer: printer settings
-	provides = cinnamon=4.6.6
+	provides = cinnamon=4.6.7
 	conflicts = cinnamon
 	replaces = cinnamon
 	options = !emptydirs

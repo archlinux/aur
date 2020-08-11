@@ -3,7 +3,7 @@
 # Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgname=cinnamon-slim
-pkgver=4.6.6
+pkgver=4.6.7
 pkgrel=1
 _commit=7dcb5e73ba4aeb41ece18680515f8a3466b4d076 # tags/4.6.6^0
 pkgdesc="Innovative Linux desktop. Slim version."
