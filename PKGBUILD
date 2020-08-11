@@ -1,21 +1,21 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=imcompressor
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Simple & lossless image compressor."
 arch=('any')
 url="https://github.com/Huluti/ImCompressor"
 license=('GPL3')
 depends=('gtk3' 'python-gobject' 'jpegoptim' 'optipng' 'pngquant')
-makedepends=('meson' 'appstream-glib')
+makedepends=('meson')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c019d709d85cf99f99c89a146d5586f6f1efab4e8b80c8dfa392c274c28544dc')
+sha256sums=('fa53b73e1134dea17c3f44473d8df2ce5db382ae3d2b639993fcba7c970a5012')
 
 build() {
-	arch-meson "ImCompressor-$pkgver" _build
-	ninja -C _build
+	arch-meson "ImCompressor-$pkgver" build
+	meson compile -C build
 }
 
 package() {
-	DESTDIR="$pkgdir" ninja -C _build install
+	DESTDIR="$pkgdir" meson install -C build
 }
