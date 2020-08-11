@@ -1,6 +1,6 @@
 pkgbase = kscreenlocker-git
 	pkgdesc = Library and components for secure lock screen architecture
-	pkgver = v5.17.90.r20.gf2c89ed
+	pkgver = v5.18.90.r21.gf53b9b3
 	pkgrel = 1
 	url = https://projects.kde.org/kscreenlocker
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = kscreenlocker-git
 	depends = libxcursor
 	provides = kscreenlocker
 	conflicts = kscreenlocker
-	source = git://anongit.kde.org/kscreenlocker.git
+	source = git+https://anongit.kde.org/kscreenlocker.git
 	md5sums = SKIP
 
 pkgname = kscreenlocker-git
