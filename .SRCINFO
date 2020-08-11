@@ -1,14 +1,14 @@
 pkgbase = contain
 	pkgdesc = An experimental CLI tool that transparently runs your development tools inside docker containers
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/jpettersson/contain
 	arch = x86_64
 	license = GNU GPLv3
 	makedepends = cargo
 	makedepends = git
 	depends = docker
-	source = git+https://github.com/jpettersson/contain#commit=1cbb469fe240b353d3f84f2ea71ebf69c94c6d78
+	source = git+https://github.com/jpettersson/contain#commit=9e4b92d34b6dceb317d993fe62851132355a8742
 	sha512sums = SKIP
 
 pkgname = contain
