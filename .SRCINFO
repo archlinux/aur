@@ -1,6 +1,6 @@
 pkgbase = linux-amd
-	pkgver = 5.8.v.0
-	pkgrel = 2
+	pkgver = 5.8.v.1
+	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -12,13 +12,13 @@ pkgbase = linux-amd
 	makedepends = git
 	makedepends = libelf
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.8
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.8.1
 	source = config.x86_64
 	source = linux-amd.preset
 	source = linux.install
 	source = 5013_enable-cpu-optimizations-for-gcc10.patch
 	sha256sums = SKIP
-	sha256sums = 8efab7a3853f472feeda0a6e1bad56c2d144ad0bf12e2ec0a8ec7f49c617504b
+	sha256sums = 5468f446841126804c0af496f4a0232a07328ba3c87454ac5fde91d12914f312
 	sha256sums = 71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 5ab29eb64e57df83b395a29a6a4f89030d142feffbfbf73b3afc6d97a2a7fd12
