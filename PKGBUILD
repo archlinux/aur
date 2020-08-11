@@ -2,7 +2,7 @@
 # Maintainer: Abraham Levine <echo iue@trnspljc.890 | tr ietursnpl890jc acprlsurecomed>
 
 pkgname=aptpac
-pkgver=2.2.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="a pacman wrapper with syntax from debian's apt"
 arch=('any')
