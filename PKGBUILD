@@ -3,7 +3,7 @@
 _pkgbasename=distrho-lv2
 pkgname=${_pkgbasename}-git
 pkgver=r492.062a0f61
-pkgrel=1
+pkgrel=2
 pkgdesc="Distrho LV2 Audio Plugins, using the JUCE Toolkit"
 arch=('i686' 'x86_64')
 url="http://distrho.sourceforge.net/"
@@ -24,15 +24,13 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgbasename}"
 
+  meson configure build -Dprefix="${pkgdir}/usr" -Dbuild-vst2=false -Dbuild-vst3=false
   meson build --buildtype release
   ninja -C build
-#  ninja -C build install
 }
 
 package() {
   cd "${srcdir}/${_pkgbasename}"
 
-  # lv2 plugins
-  install -d "$pkgdir/usr/lib/lv2"
-  cp -a bin/lv2/*.lv2 "$pkgdir/usr/lib/lv2"
+  ninja -C build install
 }
