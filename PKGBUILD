@@ -1,7 +1,5 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
-set -o errexit -o pipefail
-
 pkgname='gnabel'
 pkgver='0.0.0'
 pkgrel='2'
