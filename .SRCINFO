@@ -1,14 +1,14 @@
 pkgbase = kubeaudit-bin
 	pkgdesc = kubeaudit is a command line tool and a Go package to audit Kubernetes clusters for various different security concerns.
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Shopify/kubeaudit
 	arch = x86_64
 	license = MIT
 	source = https://github.com/Shopify/kubeaudit/releases/download/v0.9.0/kubeaudit_0.9.0_linux_amd64.tar.gz
 	source = https://github.com/Shopify/kubeaudit/blob/v0.9.0/LICENSE
 	sha256sums = 08ef3f6797b26be9a7c2f572aa6b0ab771f2ce60dc4c68dfcf1bf6109871c05d
-	sha256sums = c10410d02ed565696f3804b055391354ce279d44392c286fd35754818ea2aa3f
+	sha256sums = 0bae2f961a14387d6ce71babb4bb9cef45203cb28efe1c3976e7b81a542dafe5
 
 pkgname = kubeaudit-bin
 
