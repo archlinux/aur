@@ -2,7 +2,7 @@
 
 pkgname='python-pytest-freezegun'
 _pkgbase="${pkgname//python-/}"
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Easily freeze time in pytest test + fixtures"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/ktosiek/pytest-freezegun"
 depends=('python-black' 'python-pytest' 'python-freezegun')
 makedepends=('python-setuptools-scm')
 source=("${_pkgbase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('42cebf13538e9a8aa992555e086886210dfb40b95fd8a4bb8bb79c5968e08aafa1979ff3cb28425993b71f5df91d77012946e36f14ad512a9d3d856eddb5fe3e')
+sha512sums=('2bea7746e4e6a7f2a979cbc5c6d7a2576e0e2631a4e1d5abb7f27f76d6c32b0520a277474c092c5e05ce257f2ba19091918f67e28b7a2da1d5829037c6b70c55')
 
 # setuptools won't find version from git tag
 export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
