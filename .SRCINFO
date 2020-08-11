@@ -8,7 +8,6 @@ pkgbase = git-get-git
 	makedepends = git
 	depends = git
 	provides = git-get
-	options = zipman
 	source = git+https://github.com/b1f6c1c4/git-get.git
 	sha256sums = SKIP
 

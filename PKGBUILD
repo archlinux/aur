@@ -12,7 +12,6 @@ license=('MIT')
 depends=('git')
 makedepends=('git')
 provides=("${_pkgname}")
-options=('zipman')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
