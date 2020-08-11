@@ -13,14 +13,13 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('51d8e5d8e6eab405a713dcb635bfbff75c3187fdf8a0c5e16d5bec400a81a758')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  meson build --prefix=/usr
-  ninja -C build
+  arch-meson "${pkgname}-${pkgver}" build
+  meson compile -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C "${pkgname}-${pkgver}/build" install
-  install -Dm644 "${pkgname}-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  DESTDIR="${pkgdir}" meson install -C build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${pkgname}-${pkgver}/README.md"
 }
 
 # vim: ts=2 sw=2 et:
