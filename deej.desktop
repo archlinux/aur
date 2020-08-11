@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Deej
+Comment=Open-source hardware volume mixer
+Exec=sh -c "cd /opt/deej; ./deej"
+Icon=deej
+Type=Application
+Terminal=false
+Categories=Audio;AudioVideo;Music;

@@ -1,0 +1,6 @@
+*.tar.gz
+*.tar.gz
+deej-git-*
+pkg
+src
+*.orig

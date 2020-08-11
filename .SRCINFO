@@ -1,0 +1,20 @@
+pkgbase = deej-git
+	pkgdesc = Open-source hardware volume mixer
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = http://deej.rocks/
+	install = deej-git.install
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = libappindicator-gtk3
+	depends = webkit2gtk
+	source = LICENSE
+	source = deej.desktop
+	source = deej-git-0.9.9::https://github.com/omriharel/deej/archive/v0.9.9.tar.gz
+	sha256sums = 8e64cfc2670d5a75ce040e0c2d581b22c6bb2c86cf7222152e14ee6569b94eef
+	sha256sums = ef67ab46badeb9395e51747716792c0e1319e6e56d1850d7e10cc96a5c294f17
+	sha256sums = 2e7f9e0c11dfe12706ada531507b48f0a9ae30d7a15b38c6b435ab7888b485ec
+
+pkgname = deej-git
+
