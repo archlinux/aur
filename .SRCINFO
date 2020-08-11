@@ -1,16 +1,18 @@
-pkgbase = miniserve-bin
-	pkgdesc = Tool to serve files via HTTP
-	pkgver = 0.8.0
-	pkgrel = 1
-	url = https://github.com/svenstaro/miniserve
-	arch = x86_64
-	license = MIT
-	provides = miniserve
-	conflicts = miniserve
-	source = miniserve-0.8.0::https://github.com/svenstaro/miniserve/releases/download/v0.8.0/miniserve-v0.8.0-linux-x86_64
-	source = https://github.com/svenstaro/miniserve/raw/v0.8.0/LICENSE
-	sha512sums = SKIP
+pkgbase = gnabel
+	pkgdesc = A translation app for GTK environments based on Google Translate
+	pkgver = 0.0.0
+	pkgrel = 0
+	url = https://github.com/gi-lom/gnabel
+	arch = any
+	license = GPL-3.0
+	makedepends = xdg-utils
+	depends = python>=3
+	depends = python-pyperclip
+	depends = python-gobject
+	depends = python-googletrans
+	depends = python-gtts
+	depends = python-pydub
+	source = https://github.com/gi-lom/gnabel/archive/57ff9c3d3631b04ddb8369e31ad2cfe46ec9099f.zip
 	sha512sums = SKIP
 
-pkgname = miniserve-bin
-
+pkgname = gnabel
