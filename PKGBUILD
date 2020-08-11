@@ -3,15 +3,16 @@
 # Contributor: sysrq
 
 pkgname=picard
-pkgver=2.4
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Official MusicBrainz tagger'
 url='https://picard.musicbrainz.org/'
 license=('GPL')
 arch=('x86_64')
-depends=('python-pyqt5' 'python-mutagen')
+depends=('python-pyqt5' 'python-mutagen' 'python-dateutil')
 optdepends=('chromaprint: fingerprinting'
             'python-discid: cd lookup'
+            'python-markdown: doc rendering'
             'qt5-multimedia: media player toolbar'
             'qt5-translations: full UI translation')
 makedepends=('git' 'python-setuptools')
