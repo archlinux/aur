@@ -1,0 +1,19 @@
+pkgbase = ftba
+	pkgdesc = Offers many different styles of Minecraft modpacks to the community.
+	pkgver = 202007161516_479dedc615_release
+	pkgrel = 1
+	arch = any
+	license = LGPL2
+	depends = java-runtime
+	noextract = FTBA_linux_202007161516-479dedc615-release.deb
+	noextract = run-ftb.sh
+	noextract = ftbapp.desktop
+	source = https://apps.modpacks.ch/FTBApp/release/202007161516-479dedc615-release/FTBA_linux_202007161516-479dedc615-release.deb
+	source = run-ftb.sh
+	source = ftbapp.desktop
+	md5sums = 81e16f05647b8b6888c1613eed3779a4
+	md5sums = 838d9b7c27dbbda0dcd8cc59d301e0e0
+	md5sums = 0775efb989c973eb7a080e6dae2f9e8d
+
+pkgname = ftba
+
