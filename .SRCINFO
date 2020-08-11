@@ -1,6 +1,6 @@
 pkgbase = xscreensaver-aerial-videos
 	pkgver = 1.10
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	source = https://sylvan.apple.com/Aerials/2x/Videos/comp_CH_C007_C011_PSNK_v02_SDR_PS_FINAL_20180709_SDR_2K_HEVC.mov
 	source = https://sylvan.apple.com/Aerials/2x/Videos/comp_CH_C002_C005_PSNK_v05_SDR_PS_FINAL_20180709_SDR_2K_HEVC.mov
