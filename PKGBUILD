@@ -2,7 +2,7 @@
 
 pkgname=moonfm-appimage
 _pkgname=moonfm
-pkgver=1.8.16
+pkgver=1.8.23
 pkgrel=1
 pkgdesc="An easy to use podcast player for podcast lovers, discover the best of over 600,000+ podcasts.(AppImage version)"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('unknown')
 provides=("moonfm")
 conflicts=('moonfm')
 source=("https://moon.fm/dist/MoonFM-${pkgver}-${arch}.AppImage"
-        "moonfm.sh")
-sha256sums=('0d4bb899d9ecb38679787bbc819f831ebca52d1e678771c95b86f56d11354c1d'
+        "${_pkgname}.sh")
+sha256sums=('86aaf0fa90ae734fc9de71aacdbcd8a489101c08153e0023864b4a76b66bb784'
             'f416432624a4c44dbee95dc0c7554345fc8f6310bea4bbbeefca878dafe7cdcb')
 options=(!strip)
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
@@ -20,6 +20,7 @@ _filename=./MoonFM-${pkgver}-${arch}.AppImage
 
 prepare() {
   cd "${srcdir}"
+
   chmod +x ${_filename}
   ${_filename} --appimage-extract
   sed -i "s,Exec=AppRun,Exec=/usr/bin/${_pkgname} %U,g" "squashfs-root/${_pkgname}.desktop"

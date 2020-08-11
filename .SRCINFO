@@ -1,6 +1,6 @@
 pkgbase = moonfm-appimage
 	pkgdesc = An easy to use podcast player for podcast lovers, discover the best of over 600,000+ podcasts.(AppImage version)
-	pkgver = 1.8.16
+	pkgver = 1.8.23
 	pkgrel = 1
 	url = https://moon.fm/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = moonfm-appimage
 	provides = moonfm
 	conflicts = moonfm
 	options = !strip
-	source = https://moon.fm/dist/MoonFM-1.8.16-x86_64.AppImage
+	source = https://moon.fm/dist/MoonFM-1.8.23-x86_64.AppImage
 	source = moonfm.sh
-	sha256sums = 0d4bb899d9ecb38679787bbc819f831ebca52d1e678771c95b86f56d11354c1d
+	sha256sums = 86aaf0fa90ae734fc9de71aacdbcd8a489101c08153e0023864b4a76b66bb784
 	sha256sums = f416432624a4c44dbee95dc0c7554345fc8f6310bea4bbbeefca878dafe7cdcb
 
 pkgname = moonfm-appimage
