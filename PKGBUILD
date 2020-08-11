@@ -1,5 +1,5 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
-# Maintainer: b1f6c1c4 <b1f6c1c4@gmail.com>
+# Contributor: b1f6c1c4 <b1f6c1c4@gmail.com>
 
 _pkgname=git-get
 pkgname=${_pkgname}-git
