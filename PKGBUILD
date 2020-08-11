@@ -3,15 +3,15 @@
 pkgname=pmemd
 pkgver=20
 _toolsver=20
-_gccver=8.4.0
-pkgrel=1
+_gccver=9.3.0
+pkgrel=2
 pkgdesc="PMEMD module of AMBER software package"
 url="http://ambermd.org/"
 license=(custom)
 arch=(x86_64)
 depends=(ambertools)
-makedepends=('cmake>=3.8.1' make gcc8 flex bison patch tcsh imake openmpi-gcc8 'cuda>=7.5')
-optdepends=('openmpi-gcc8: MPI support'
+makedepends=('cmake>=3.8.1' make gcc9 flex bison patch tcsh imake openmpi-gcc9 'cuda>=7.5')
+optdepends=('openmpi-gcc9: MPI support'
             'cuda: GPU acceleration support'
             'plumed: metadynamics support'
             'plumed-mpi: metadynamics support with MPI'
@@ -44,7 +44,7 @@ build() {
 
   export AMBER_PREFIX="${srcdir}"
 
-  CC=gcc-8 CXX=g++-8 FC=gfortran-8 cmake $AMBER_PREFIX/amber${pkgver}_src \
+  CC=gcc-9 CXX=g++-9 FC=gfortran-9 cmake $AMBER_PREFIX/amber${pkgver}_src \
       -DCMAKE_INSTALL_PREFIX=/opt/amber \
       -DCOMPILER=MANUAL  \
       -DMPI=TRUE -DCUDA=TRUE \
