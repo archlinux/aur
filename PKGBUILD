@@ -9,7 +9,6 @@ arch=('x86_64' 'aarch64')
 url='https://github.com/fuzzylite/fuzzylite'
 license=('GPL3')
 makedepends=('cmake')
-options=('zipman')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('7e9f56deb9baf063de2232bfd8285f57ddccb651dae842fe3f587d0ac65ecdb0')
 

@@ -7,7 +7,6 @@ pkgbase = fuzzylite
 	arch = aarch64
 	license = GPL3
 	makedepends = cmake
-	options = zipman
 	source = fuzzylite-6.0.tar.gz::https://github.com/fuzzylite/fuzzylite/archive/v6.0.tar.gz
 	sha256sums = 7e9f56deb9baf063de2232bfd8285f57ddccb651dae842fe3f587d0ac65ecdb0
 
