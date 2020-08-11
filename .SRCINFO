@@ -1,5 +1,5 @@
 pkgbase = alo.lv2-git
-	pkgdesc = A Looper plugin originally made for the MOD Duo
+	pkgdesc = Looper plugin originally made for the MOD Duo hardware.
 	pkgver = 0.7.r14.ge8cd661
 	pkgrel = 1
 	url = https://github.com/devcurmudgeon/alo
