@@ -39,5 +39,5 @@ package() {
   install -Dm755 gnabel.desktop "$pkgdir/usr/share/applications/gnabel.desktop"
 
   msg2 'Installing icon'
-  install -Dm644 icon.png "$pkgdir/usr/share/icons/default/64x64/gnabel.png"
+  install -Dm644 icon.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/gnabel.png"
 }
