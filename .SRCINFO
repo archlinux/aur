@@ -1,5 +1,5 @@
 pkgbase = linux-slim
-	pkgver = 5.8.v.0
+	pkgver = 5.8.v.1
 	pkgrel = 4
 	url = http://www.kernel.org/
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = linux-slim
 	makedepends = git
 	makedepends = libelf
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.8
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#tag=v5.8.1
 	source = config.x86_64
 	source = linux-slim.preset
 	source = linux.install
 	source = 5013_enable-cpu-optimizations-for-gcc10.patch
 	sha256sums = SKIP
-	sha256sums = a2252b04be61cdb4fb92dd4013bc5e6ae3f641bfff73f0e4e6020aec5f3a3452
+	sha256sums = df3208b62f876504878e14cf9ab19013ffe9933df653ceeb268eb41fff530136
 	sha256sums = 41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 5ab29eb64e57df83b395a29a6a4f89030d142feffbfbf73b3afc6d97a2a7fd12
