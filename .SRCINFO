@@ -1,0 +1,15 @@
+pkgbase = pngcrypt
+	pkgdesc = Utility to store encrypted data inside a PNG
+	pkgver = 0.1.0+r4+ge3c04ee
+	pkgrel = 1
+	url = https://github.com/youssefhabri/pngcrypt
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	source = git+https://github.com/youssefhabri/pngcrypt#commit=e3c04eec83858bb614f3213fcff49e9c55f7bb75
+	sha512sums = SKIP
+
+pkgname = pngcrypt
+
