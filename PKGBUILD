@@ -1,8 +1,8 @@
 # Maintainer: Felix Springer <felixspringer149@gmail.com>
 
 pkgname=blucontrol
-pkgver=0.2.0.0
-pkgrel=2
+pkgver=0.2.1.0
+pkgrel=1
 pkgdesc="Configurable blue light filter"
 url="https://github.com/jumper149/${pkgname}"
 license=('custom:BSD3')
@@ -26,8 +26,8 @@ source=(
   "Setup.hs"
 )
 sha256sums=(
-  'b187c341ab66ac54970b3b4a3ed7e28162da85219fa33342599eefdc2c571a36'
-  '5d9a96b72f4f4ee68a767334cc4dbcf82d8a91f09f000e1900bd399d17363cdb'
+  '131632f6a952cb8325726c368a8fedd670aa7e0c9ce57b4cc7dc00270a4e6f39'
+  '5f535fb64bf4da30547721608039eab4a399547a752dbf405baff36f0c9f6286'
   '5066653559d4d6134b022d66a634a17fdcf8db35d28b447e581fec284afa4689'
 )
 

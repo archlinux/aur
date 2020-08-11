@@ -1,11 +1,10 @@
-diff -ura blucontrol.orig/src/Blucontrol/Main/CLI.hs blucontrol/src/Blucontrol/Main/CLI.hs
---- blucontrol.orig/src/Blucontrol/Main/CLI.hs	2020-08-02 01:26:50.529886479 +0200
-+++ blucontrol/src/Blucontrol/Main/CLI.hs	2020-08-02 01:39:45.761627593 +0200
-@@ -79,6 +79,7 @@
-     runProcess "ghc" [ "--make"
-                      , configLeafname
-                      , "-main-is", "main"
-+                     , "-dynamic"
-                      , "-v0"
-                      , "-o", cacheDir </> compiledConfigLeafname
-                      ] (Just configDir) Nothing Nothing Nothing Nothing
+diff -ura blucontrol-0.2.0.0.orig/src/Blucontrol/Main/GHC/Internal.hs blucontrol-0.2.0.0/src/Blucontrol/Main/GHC/Internal.hs
+--- blucontrol-0.2.0.0.orig/src/Blucontrol/Main/GHC/Internal.hs	2020-08-12 00:12:17.591886622 +0200
++++ blucontrol-0.2.0.0/src/Blucontrol/Main/GHC/Internal.hs	2020-08-12 00:09:06.162270141 +0200
+@@ -7,5 +7,5 @@
+ ghcBinary = "ghc"
+ 
+ ghcAdditionalFlags :: [String]
+-ghcAdditionalFlags = [
++ghcAdditionalFlags = [ "-dynamic"
+                      ]
