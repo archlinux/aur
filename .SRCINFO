@@ -1,6 +1,6 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, pipewire, or chromedriver
-	pkgver = 84.0.4147.105
+	pkgver = 84.0.4147.125
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	install = chromium.install
@@ -55,9 +55,9 @@ pkgbase = chromium-no-extras
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: for storing passwords in KWallet on KDE desktops
-	provides = chromium=84.0.4147.105
+	provides = chromium=84.0.4147.125
 	conflicts = chromium
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-84.0.4147.105.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-84.0.4147.125.tar.xz
 	source = chromium-launcher-6.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v6.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-84-patchset-3/chromium-84-patchset-3.tar.xz
 	source = remove-NotifyError-calls-and-just-send-a-normal-message.patch
@@ -66,7 +66,7 @@ pkgbase = chromium-no-extras
 	source = chromium-ffmpeg-4.3.patch
 	source = chromium-fix-vaapi-on-intel.patch
 	source = chromium-skia-harmony.patch
-	sha256sums = caf4ebeb2a2333454c3067a2534aeecaab5029aa78fc0d8b27f79ad3b9c5ccac
+	sha256sums = 98439626cf2d8d3d8f9486d08a99cbc1e4981b3f3427a072d5eaaf6ded4daff5
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
 	sha256sums = f77088dd59b170b767ba91c6b410abb778ff2e68553433b24124d398fa4d3ce7
 	sha256sums = 3b10917f646f88ae988ca18be9cbef82025abb6a6e5cb00b77a11077192ce32c
