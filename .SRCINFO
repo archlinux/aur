@@ -1,5 +1,5 @@
 pkgbase = office-code-pro
-	pkgdesc = Customized version of Source Code Pro
+	pkgdesc = Customized version of Source Code Pro font
 	pkgver = 1.004
 	pkgrel = 3
 	url = https://github.com/nathco/Office-Code-Pro
