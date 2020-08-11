@@ -42,7 +42,7 @@ build() {
         mkdir -p build
         cd build
         qmake CONFIG+=release INSTALL_PREFIX=/usr ..
-        make -j4
+        make
 }
 
 check() {
