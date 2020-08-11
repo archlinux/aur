@@ -3,7 +3,7 @@
 # Maintainer: Thore Bödecker <foxxx0@archlinux.org>
 
 pkgname=cpp-hocon
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="C++ port of the Typesafe Config library"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('boost-libs' 'gcc-libs' 'glibc' 'leatherman' 'leatherman_util.so' 'leat
 makedepends=('boost' 'cmake' 'leatherman' 'rapidjson')
 provides=('libcpp-hocon.so')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/puppetlabs/cpp-hocon/archive/$pkgver.tar.gz")
-sha512sums=('2a0c6aa4cabab18282bacc7cbbc4d9f237ab7073bfe12cb6fb1ea706761336bae0cf22a76c66d649a61b6bc6279c9db5ba8993bd0eb53fb88835c73570863948')
+sha512sums=('de997e6d90330f901863b7da0d6f6e069a31e052b6f31c1e3009a9559c863f08879ecf4e202c763ec32567dd3a1e436ff5d3bf0b3009a085ef3ee95e5ca6c7e5')
 
 prepare() {
   cd "$pkgname-$pkgver"
