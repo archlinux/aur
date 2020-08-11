@@ -26,13 +26,11 @@ sha256sums_aarch64=('2b0a4b05dc8a1daa640ecc310b8618e5cfbbb62d0934c1db2bcaf51f087
 
 prepare() {
   tar -xJf data.tar.xz
-  gzip -f usr/share/doc/chromium-codecs-ffmpeg-extra/copyright # New
+  gzip -f usr/share/doc/chromium-codecs-ffmpeg-extra/copyright
 }
 
 package() {
   VIVALDI_VERSION=$(cat /opt/vivaldi/vivaldi | perl -ne '/(?:VIVALDI_VERSION=.)(\d*\.\d*)/ and print "$1";')
-  #mkdir -p "$pkgdir/usr/share/vivaldi-codecs"
-  #cp "$srcdir/usr/lib/chromium-browser/libffmpeg.so" "$pkgdir/usr/share/vivaldi-codecs/libffmpeg.so"
   install -Dm644 "usr/lib/chromium-browser/libffmpeg.so" "$pkgdir/opt/vivaldi/libffmpeg.so.$VIVALDI_VERSION"
   install -Dm644 "usr/share/doc/chromium-codecs-ffmpeg-extra/copyright.gz" "$pkgdir/usr/share/doc/$pkgname/copyright.gz"
   install -Dm644 "usr/share/doc/chromium-codecs-ffmpeg-extra/changelog.Debian.gz" "$pkgdir/usr/share/doc/$pkgname/changelog.Debian.gz"
