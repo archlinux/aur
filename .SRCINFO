@@ -1,13 +1,13 @@
 pkgbase = soundcraft-utils
 	pkgdesc = Linux Utilities for Soundcraft Notepad Mixers
-	pkgver = 0.3.2
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/lack/soundcraft-utils
 	install = soundcraft-utils.install
 	arch = any
 	license = MIT
 	depends = python>=3.6
-	source = https://github.com/lack/soundcraft-utils/archive/v0.3.2.tar.gz
+	source = https://github.com/lack/soundcraft-utils/archive/v0.3.4.tar.gz
 	md5sums = SKIP
 
 pkgname = soundcraft-utils

@@ -1,6 +1,6 @@
 # Maintainer: udaemon <soffioalcuore@posteo.net>
 pkgname=soundcraft-utils
-pkgver=0.3.2
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Linux Utilities for Soundcraft Notepad Mixers"
 arch=('any')
