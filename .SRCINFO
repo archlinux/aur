@@ -1,6 +1,6 @@
 pkgbase = o
 	pkgdesc = Small, fast and VT100-compatible text editor
-	pkgver = 2.32.2
+	pkgver = 2.32.4
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
@@ -22,8 +22,11 @@ pkgbase = o
 	optdepends = crystal: for compiling Crystal
 	optdepends = java-environment: for compiling Java
 	optdepends = google-java-format: for formatting Java
+	optdepends = fpc: for compiling Object Pascal
+	optdepends = lua-format: for formatting Lua
+	optdepends = lua: for compiling Lua
 	options = !strip
-	source = git+https://github.com/xyproto/o#commit=cc165ce013be015b81f643610836e632985b1e81
+	source = git+https://github.com/xyproto/o#commit=8d2860a7b4baea09b10251bbf450b6e9f9e29a96
 	sha256sums = SKIP
 
 pkgname = o
