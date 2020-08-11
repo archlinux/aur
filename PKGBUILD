@@ -2,12 +2,13 @@
 
 pkgname=minecraft-bedrock-server
 pkgver=1.16.20.03
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft Bedrock Server for Windows 10 and Xbox One versions of Minecraft"
 arch=('x86_64')
 url="https://www.minecraft.net/en-us/download/server/bedrock"
 license=('custom')
 noextract=('bedrock-server-${pkgver}.zip')
+backup=(opt/minecraft-bedrock-server/{server.properties,permissions.json,whitelist.json})
 makedepends=('unzip')
 source=("https://minecraft.azureedge.net/bin-linux/bedrock-server-${pkgver}.zip"
         'minecraft-bedrock-server.service'
