@@ -1,0 +1,23 @@
+pkgbase = alo.lv2-git
+	pkgdesc = A Looper plugin originally made for the MOD Duo
+	pkgver = 0.7.r14.ge8cd661
+	pkgrel = 1
+	url = https://github.com/devcurmudgeon/alo
+	arch = x86_64
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL3
+	checkdepends = lv2lint
+	makedepends = git
+	makedepends = lv2
+	depends = cairo
+	depends = gcc-libs
+	depends = glibc
+	depends = libx11
+	provides = alo.lv2
+	conflicts = alo.lv2
+	source = alo.lv2::git+https://github.com/devcurmudgeon/Alo
+	md5sums = SKIP
+
+pkgname = alo.lv2-git
+
