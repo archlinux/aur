@@ -1,6 +1,6 @@
 pkgbase = mantisbt
 	pkgdesc = Web-based issue tracking system
-	pkgver = 2.24.1
+	pkgver = 2.24.2
 	pkgrel = 1
 	url = https://www.mantisbt.org/
 	install = mantisbt.install
@@ -19,14 +19,18 @@ pkgbase = mantisbt
 	backup = etc/webapps/mantisbt/custom_relationships_inc.php
 	backup = etc/webapps/mantisbt/custom_functions_inc.php
 	backup = etc/webapps/mantisbt/custom_constants_inc.php
-	source = https://downloads.sourceforge.net/project/mantisbt/mantis-stable/2.24.1/mantisbt-2.24.1.tar.gz
+	source = https://downloads.sourceforge.net/project/mantisbt/mantis-stable/2.24.2/mantisbt-2.24.2.tar.gz
 	source = mantisbt.sysusers
 	source = mantisbt.tmpfiles
 	source = mantisbt.uwsgi
-	sha512sums = b2aa8e01cd1fe513cdd1fbadfbdd9f66e367d9d4f71d9cab1b370066fbec8f94fe013a2587c591d958aa7422dee210a7c4abc4af62d6b9267d49a8dd47a2cec4
+	sha512sums = 81d339aa60b8878b5398d7f7ef1f66151877742fac22944e67394ac087c1f4f2c8d5f270127dacc59cbead1a478a6698380b113abbc6a38177e87cc78cd0acd8
 	sha512sums = 3fd4e7faad7774892abfd20006ae3efcd7b0ba315447da9cea8d7352d5fd1e7f0c558d3855ad4e667a0bfe6ae0d95d12c848a78d53312521a7f551f2edca723e
 	sha512sums = b1b9145d1ba423055d5e45734a9d74c639b75ae5b5d580024b50626332a74830dd39b976de590549ff1c47c400ba4e1c20b27b69fb140f7d8527d8d281d0c7bd
 	sha512sums = 1b36d8956986360306eb15a9279c54eba46e74dfe0623dc26b3be3e8f409ab4f0afe6b34a9001cbeb9f33452fec5ccc8089a53352fa885894cc262ca9c12bc39
+	b2sums = c0167726f62d408610d7092b1aed7d691f9699ffa8667874335754c5a4bdc9b6184b83aed361c8a15d63b742b8daa730d20c8b8fd9a2bf6cdf15a618af62a950
+	b2sums = a533265d7bbbf1ae059a128baa43fb639e803094c62179252b416957fcfdb43a6068182d2bf29003c8fa55757a95bb1c3f054622bb0926055819c5dc989fe067
+	b2sums = c70218e3aae3f7af3d5e7989545f3a21b93c0eae80d40ea2f89571d4a6d9181ec069323478fa20f6db66137f0c26777dceb37d19aeccc2351229dc8be3fc4417
+	b2sums = 2aa889fc1ded36b4229c3c77fad20c9699604f7d67bcecf09b0ba7cb81e01c0ba0cf309195475d6f96a28016bc2941e7241c4fce75db97056f77cbbe12d4e3bc
 
 pkgname = mantisbt
 
