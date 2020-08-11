@@ -1,0 +1,26 @@
+post_install() {
+    echo ""
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    echo "!"
+    echo "! IMPORTANT:"
+    echo "!"
+    echo "!   + A sample configuration is included at /opt/deej/default-config.yaml"
+    echo "!     You must create your own configuration at /opt/deej/config.yaml"
+    echo "!"
+    echo "!   + Deej must run from the same directory as it's configuration file"
+    echo "!     The provided .desktop entry will accomplish this for you"
+    echo "!"
+    echo "! https://github.com/omriharel/deej#how-to-run"
+    echo "!"
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    echo ""
+
+    if [[ ! -f /opt/deej/config.yaml ]]; then
+        cp -r /opt/deej/default-config.yaml /opt/deej/config.yaml
+        chmod a+rw /opt/deej/config.yaml
+    fi
+}
+
+pre_remove() {
+    rm -rf /opt/deej/logs
+}

@@ -1,0 +1,6 @@
+*.tar.gz
+*.tar.xz
+deej-*
+pkg
+src
+*.orig
