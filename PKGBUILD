@@ -1,10 +1,8 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
-set -o errexit -o pipefail
-
 pkgname='gnabel'
-pkgver='0.0.0'
-pkgrel='2'
+pkgver=57ff9c3
+pkgrel=1
 pkgdesc='A translation app for GTK environments based on Google Translate'
 arch=('any')
 depends=(
@@ -15,16 +13,21 @@ depends=(
   'python-gtts' # aur only
   'python-pydub' # aur only
 )
+makedepends=('git')
 url='https://github.com/gi-lom/gnabel'
 license=('GPL-3.0')
-_git_ref='57ff9c3d3631b04ddb8369e31ad2cfe46ec9099f'
 source=(
-  "https://github.com/gi-lom/gnabel/archive/$_git_ref.zip"
+  "gnabel::git+https://github.com/gi-lom/gnabel"
 )
 sha512sums=('SKIP')
 
+pkgver() {
+  cd "$srcdir/gnabel"
+  git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
-  cd "gnabel-$_git_ref"
+  cd "$srcdir/gnabel"
 
   msg2 'Installing LICENSE'
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
