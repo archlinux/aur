@@ -3,7 +3,7 @@
 
 pkgname=fluent-bit
 
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 epoch=
 
@@ -69,4 +69,4 @@ package() {
     install -Dm 644 *.md Dockerfile* -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
-sha512sums=('a994feb086373a14731ba24e99b5b0127698893ad1f3b87ee8c670c2314330511c4a70bd3bcc5be7b0502ef301bddfc371d15124f2006f560a02157dbcf32dc6')
+sha512sums=('e6ecb98e67f14081a3a61622308259fab551fd553eda639224e915a66c54199eb8b47a45a99980fd4c3ef27636bf61029112de7f2b0c5d8163053b517d127d24')
