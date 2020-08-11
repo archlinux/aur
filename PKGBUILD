@@ -2,10 +2,10 @@
 
 pkgname=openfpgaloader-git
 pkgver=0.1.r.12.gdcf4468
-pkgrel=2
+pkgrel=3
 pkgdesc="Universal utility for programming FPGA"
 arch=('i686' 'x86_64')
-url="http://lightspark.sourceforge.net"
+url="https://github.com/trabucayre/openFPGALoader"
 license=('AGPL3')
 depends=('libftdi')
 optdepends=('libudev.so: (e)udev support (used to open a device via /dev/[device node])')

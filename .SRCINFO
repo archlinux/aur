@@ -1,7 +1,7 @@
 pkgbase = openfpgaloader-git
 	pkgdesc = Universal utility for programming FPGA
 	pkgver = 0.1.r.12.gdcf4468
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/trabucayre/openFPGALoader
 	arch = i686
 	arch = x86_64
