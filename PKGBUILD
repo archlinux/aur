@@ -2,16 +2,17 @@
 # Maintainer: Fernando Fernandez <fernando@softwareperonista.com.ar>
 
 pkgname=pace
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc='A simple pacman.conf editor'
 arch=('x86_64')
 license=('GPL3')
 url='https://gitlab.com/tarmaciltur/pace'
 depends=('gtksourceview4')
+optdepends=('diffutils: diff preview support')
 makedepends=('meson' 'vala')
 source=("https://gitlab.com/tarmaciltur/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e1a954fdc6a5043f95c9d8b2fd68f6a38b79b32ad4a4d65e918e897aa255198f')
+sha256sums=('69af3b5f70c6f4d4fed96da2fe2365285171785025e34ff564965802be23bcde')
 
 build() {
   cd ${pkgname}-${pkgver}
