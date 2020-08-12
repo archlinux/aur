@@ -1,10 +1,10 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=luacov
-pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.14.0
 _rockrel=1
-pkgrel=4
+pkgrel=5
 pkgdesc='Coverage analysis tool for Lua scripts'
 arch=('i686' 'x86_64')
 url="https://keplerproject.github.io/$_rockname"
@@ -22,7 +22,13 @@ _package_helper() {
 }
 
 package_lua-luacov() {
+  _package_helper 5.4
+}
+
+package_lua53-luacov() {
+  depends+=('lua53')
   _package_helper 5.3
+  rm "$pkgdir"/usr/bin/luacov
 }
 
 package_lua52-luacov() {
