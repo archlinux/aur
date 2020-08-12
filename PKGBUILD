@@ -1,7 +1,7 @@
 # Maintainer: Sam Linnfer <littlelightlittlefire@gmail.com>
 
 pkgname='python-arviz'
-pkgver=0.7.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Exploratory analysis of Bayesian models with Python"
 url="https://arviz-devs.github.io/arviz/"
@@ -9,8 +9,8 @@ arch=('any')
 license=('Apache License 2.0')
 depends=('python>=3.5' 'python-numpy' 'python-scipy' 'python-xarray' 'python-matplotlib' 'python-netcdf4')
 makedepends=()
-source=("$pkgname-$pkgver.tar.gz::https://github.com/arviz-devs/arviz/archive/${pkgver}.tar.gz")
-sha256sums=('7a6c00fe14eb1ec1191af9b686ad69961a209f28970300a86d6f7c588c10e254')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/arviz-devs/arviz/archive/v${pkgver}.tar.gz")
+sha256sums=('47231be885068584a531c1345f20ca8c51af9742a23c0ebc0ba6b90a6aef3a52')
 
 
 build() {
