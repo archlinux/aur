@@ -1,7 +1,7 @@
 #Maintainer: Skykey <zcxzxlc@163.com>
 
 pkgname=('clashy-git')
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 pkgdesc="A GUI proxy client for Windows / Mac / Ubuntu Desktop based on Clash and Electron. Windows / Mac / Ubuntu 适用的Clash客户端."
 provides=("clashy")
@@ -16,7 +16,7 @@ license=()
 
 prepare(){
       cd "${srcdir}"/Clashy
-      git checkout -b master origin/master
+      git checkout -b development origin/development
       
       cd "${srcdir}"
       echo -e "[Desktop Entry]\nName=Clashy\nExec=/opt/Clashy/clashy %U\nTerminal=false\nType=Application\nIcon=clashy\nStartupWMClass=Clashy\nComment=Electron based Clash client. For Windows, macOS & Ubuntu\nCategories=Utility;"  >  clashy.desktop
