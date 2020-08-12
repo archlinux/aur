@@ -2,7 +2,7 @@
 
 pkgname='gnabel'
 pkgver='0.0.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A translation app for GTK environments based on Google Translate'
 arch=('any')
 depends=(
