@@ -2,11 +2,11 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 _modname="ngx_secure_token"
-_nginxver=1.19.1
+_nginxver=1.19.2
 
 pkgname=nginx-mainline-mod-secure-token-git
 pkgver=r155.eca7cfe
-pkgrel=1
+pkgrel=2
 pkgdesc="Generates CDN tokens, either as a cookie or as a query string parameter."
 arch=('i686' 'x86_64')
 depends=("nginx-mainline=$_nginxver")
@@ -25,7 +25,7 @@ validpgpkeys=(
   'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('a004776c64ed3c5c7bc9b6116ba99efab3265e6b81d49a57ca4471ff90655492'
+sha256sums=('7c1f7bb13e79433ee930c597d272a64bc6e30c356a48524f38fd34fa88d62473'
             'SKIP'
             'SKIP')
 
