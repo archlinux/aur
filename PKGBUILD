@@ -6,7 +6,7 @@
 pkgname=vmd-src
 _pkgname=vmd
 pkgver=1.9.4a43
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Molecular Dynamics"
 url="http://www.ks.uiuc.edu/Research/vmd/"
 license=('custom')
@@ -25,7 +25,7 @@ source=("local://$_pkgname-${pkgver}.src.tar.gz"
         "configure.patch"
         "mpi.patch")
 sha256sums=('84323b2c34db8ce5739372dd6e225ef1fa1dc5c4b82d3810d55923a653b1bdc0'
-            'a0f4a14355aaa00c4b80b4c1115ea7731b7a5a1d65d5c0df6ed7f13665fecf75'
+            'a7d905ecc3fdba7ea14e1c1774919c1c0e3058fdd4a2fd896781be7c7e3c5df8'
             'e281a57831b8ff60c5a644219f0b6289d32bee239978af676474941c7d8548c0')
 
 prepare() {
@@ -52,7 +52,7 @@ prepare() {
 
 build() {
   cd "$srcdir/plugins"
-  make -j1 LINUXAMD64 world
+  make -j1 LINUXAMD64
   make distrib
   cd ../$_pkgname-$pkgver
   ./configure LINUXAMD64 OPENGL EGLPBUFFER FLTKOPENGL FLTK TK $ACC IMD OPENCL MPI XINERAMA XINPUT LIBOSPRAY LIBPNG ZLIB NETCDF COLVARS TCL PYTHON PTHREADS GCC

@@ -1,15 +1,21 @@
 --- configure	2020-01-23 14:40:20.000000000 +0300
 +++ configure	2020-01-23 14:56:53.679636518 +0300
-@@ -483,7 +483,7 @@
+@@ -493,11 +493,10 @@
  
  $arch_cc          = "cc";
  $arch_ccpp        = "CC";
 -$arch_nvcc        = "/usr/local/cuda-10.2/bin/nvcc";
 +$arch_nvcc        = "nvcc";
  $arch_nvccflags   = "-lineinfo --ptxas-options=-v " . 
-                     "-gencode arch=compute_30,code=compute_30 " .
-                     "-gencode arch=compute_30,code=sm_35 " .
-@@ -767,8 +767,8 @@
+-                    "-gencode arch=compute_30,code=compute_30 " .
+-                    "-gencode arch=compute_30,code=sm_35 " .
+-                    "-gencode arch=compute_30,code=sm_37 " .
++                    "-gencode arch=compute_35,code=sm_35 " .
++                    "-gencode arch=compute_35,code=sm_37 " .
+                     "-gencode arch=compute_50,code=compute_50 " .
+                     "-gencode arch=compute_50,code=sm_50 " .
+                     "-gencode arch=compute_60,code=compute_60 " .
+@@ -777,8 +776,8 @@
  if ($config_tk) { $tcl_include .= " -I$stock_tk_include_dir"; }
  $tcl_library      = "-L$stock_tcl_library_dir";
  if ($config_tk) { $tcl_library .= " -L$stock_tk_library_dir"; }
@@ -20,7 +26,7 @@
  
  @tcl_cc           = ();
  @tcl_cu           = ();
-@@ -895,13 +895,7 @@
+@@ -906,13 +905,7 @@
  $system_dir           = "";
  $system_include       = "-I.";
  $system_library       = "";
@@ -35,7 +41,7 @@
  @system_cc             = ();
  @system_cu             = ();
  @system_ccpp           = ();
-@@ -931,7 +925,7 @@
+@@ -942,7 +935,7 @@
  #   This option enables the use of CUDA GPU acceleration functions.
  #######################
  $cuda_defines     = "-DVMDCUDA -DMSMPOT_CUDA";
@@ -44,7 +50,7 @@
  $cuda_include     = "";
  $cuda_library     = "";
  $cuda_libs        = "-Wl,-rpath -Wl,\$\$ORIGIN/ -lcudart_static -lrt";
-@@ -1145,7 +1145,7 @@
+@@ -1151,7 +1144,7 @@
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-5.0.1-linux64";
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-5.1.0-linux64";
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-6.0.0-linux64";
@@ -53,7 +59,7 @@
  # $liboptix_dir         = "/usr/local/encap/NVIDIA-OptiX-SDK-7.0.0-linux64";
  
  # NCSA Blue Waters
-@@ -1211,7 +1211,7 @@
+@@ -1217,7 +1210,7 @@
    $libospray_dir         = "/usr/local/ospray-1.8.5.x86_64.linux";
    $libospray_include     = "-I$libospray_dir/include -I$libospray_dir/ospray/include ";
    $libospray_library     = "-L$libospray_dir/lib ";
@@ -62,7 +68,7 @@
  }
  
  
-@@ -1459,20 +1453,20 @@
+@@ -1591,20 +1584,20 @@
  ###################
  # location of Python library and include file.
  # If left blank, standard system  directories will be searched.
@@ -89,7 +95,7 @@
  @python_h           = ('PythonTextInterp.h',
                         'VMDTkinterMenu.h',
  		       'py_commands.h',
-@@ -2368,9 +2362,9 @@
+@@ -2499,9 +2492,9 @@
        # for compiling with g++:
        $arch_cc		= "gcc";
        $arch_ccpp  	= "g++";
@@ -101,7 +107,7 @@
  
        # so far only STATIC version tested
        if ($config_static) {
-@@ -2382,7 +2376,7 @@
+@@ -2513,7 +2506,7 @@
  
      if ($config_cuda) {
        $arch_nvccflags   .= " --machine 64 -O3 $cuda_include";
@@ -110,3 +116,42 @@
      }
  
      $arch_lex		= "flex"; # has problems with vendor lex
+@@ -2551,7 +2544,7 @@
+ 
+   $arch_nvcc     = "/usr/local/cuda/bin/nvcc";
+   $arch_nvccflags   = "--ptxas-options=-v " .
+-                    "-gencode arch=compute_30,code=compute_30 " .
++                    "-gencode arch=compute_35,code=compute_35 " .
+                     "-gencode arch=compute_70,code=compute_70 " .
+                     "--ftz=true ";
+   $cuda_library     = "-L/usr/local/cuda/lib64";
+@@ -2575,11 +2568,7 @@
+ 
+   $arch_nvcc     = "/usr/local/cuda-5.5/bin/nvcc";
+   $arch_nvccflags   = "--ptxas-options=-v " . 
+-                    "-gencode arch=compute_20,code=sm_20 " .
+-                    "-gencode arch=compute_30,code=sm_30 " .
+                     "-gencode arch=compute_35,code=sm_35 " .
+-                    "-gencode arch=compute_20,code=compute_20 " .
+-                    "-gencode arch=compute_30,code=compute_30 " .
+                     "--ftz=true ";
+   $cuda_library     = "-L/usr/local/cuda/lib";
+   $arch_cc       = "cc";
+@@ -2913,7 +2902,7 @@
+   
+       # Only generate code for SM 7.0 on Summit
+       $arch_nvccflags   = "--ptxas-options=-v " .
+-                      "-gencode arch=compute_30,code=compute_30 " .
++                      "-gencode arch=compute_35,code=compute_35 " .
+                       "-gencode arch=compute_70,code=sm_70 " .
+                       "--ftz=true ";
+       $arch_nvccflags   .= " --machine 64 -O3 $cuda_include";
+@@ -3541,7 +3530,7 @@
+ 
+ .cu.ptx:
+ 	\$(ECHO) "Compiling " \$< " --> " \$*.ptx " ..."; \\
+-	\$(NVCC) \$(DEFINES) --use_fast_math $liboptix_include -gencode arch=compute_30,code=compute_30 -ptx \$< $arch_coptout$vmd_arch_dir/\$\@
++	\$(NVCC) \$(DEFINES) --use_fast_math $liboptix_include -gencode arch=compute_35,code=compute_35 -ptx \$< $arch_coptout$vmd_arch_dir/\$\@
+ 
+ .y.o:
+ 
