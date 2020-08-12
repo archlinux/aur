@@ -5,7 +5,6 @@ pkgbase = xfce4-sysinfo
 	url = https://github.com/lxgr-linux/xfce4-sysinfo
 	arch = any
 	license = GPL3
-	makedepends = git
 	depends = gtk3
 	depends = gtkdialog
 	depends = zenity
