@@ -19,8 +19,7 @@ source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
   config         # the main kernel config file
   sphinx-workaround.patch
-  init-hook-anbox
-  init-install-anbox
+  dev-binderfs.mount
   linux-zen-anbox.install
 )
 validpgpkeys=(
@@ -31,8 +30,7 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '3d34fc8d8f91207e2fef981954c7e2eea35a9ce454726b46684b46ef815344d1'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '020e26191a5e16ac2a8768055f2f88b8b47bf112713808b40c16e960aeea675a'
-            '17388cc99581a3db9935a94a34c04acc32e234db6ec96b1992fcf886090a8075'
+            'a64e5a390b458fdaa373c7125a6732acd9b24b9e6596b8fcd865bf8656a059b5'
             '6a759fdca5cd5275334b05a62d699006a05d631e67a9902d9cb78a471b5ec246')
 install=$pkgbase.install
 export KBUILD_BUILD_HOST=archlinux
@@ -93,9 +91,8 @@ _package() {
   echo "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
-  echo "Installing anbox hook..."
-  install -Dm644 "$srcdir/init-install-anbox" "$pkgdir/usr/lib/initcpio/install/anbox"
-  install -Dm644 "$srcdir/init-hook-anbox" "$pkgdir/usr/lib/initcpio/hooks/anbox"
+  echo "Installing mount unit..."
+  install -Dm644 "$srcdir/dev-binderfs.mount" "$pkgdir/usr/lib/systemd/system/dev-binderfs.mount"
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
