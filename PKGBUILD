@@ -2,7 +2,7 @@
 
 pkgname=lemon-lime-git
 _pkgname=lemon-lime
-pkgver=0.2.3rc3.r15.c6b8c30
+pkgver=0.2.3rc4.r8.6e9604c
 pkgrel=1
 epoch=1
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
@@ -52,10 +52,6 @@ prepare() {
 
 build() {
 	cd "$srcdir/Project_LemonLime"
-	#./configure --prefix=/usr
-	g++ watcher_unix.cpp -o watcher_unix -O2
-	#qmake lemon.pro
-	#make
 	cmake . \
 		-DCMAKE_BUILD_TYPE=Release \
 		-GNinja \
