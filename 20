@@ -9,12 +9,13 @@ proc ModulesHelp { } {
 module-whatis "AmberTools20 package"
 
 set             AMBERHOME       /opt/amber
-set             _gccver         8.4.0
+set             _gccver         9.3.0
+set             _pyver          3.8
 
 setenv          AMBERHOME       ${AMBERHOME}
 
 prepend-path    PATH            ${AMBERHOME}/bin
 prepend-path    LD_LIBRARY_PATH ${AMBERHOME}/lib
 prepend-path    PERL5LIB        ${AMBERHOME}/lib/perl
-prepend-path    PYTHONPATH      ${AMBERHOME}/lib/python3.8/site-packages
+prepend-path    PYTHONPATH      ${AMBERHOME}/lib/python${_pyver}/site-packages
 prepend-path    LD_LIBRARY_PATH /usr/lib/gcc/x86_64-pc-linux-gnu/${_gccver}

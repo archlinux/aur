@@ -13,11 +13,12 @@ else
     export PERL5LIB="${AMBERHOME}/lib/perl:${PERL5LIB}"
 fi
 
+export _pyver=3.8
 if [ -z "${PYTHONPATH}" ]; then
-    export PYTHONPATH="${AMBERHOME}/lib/python3.8/site-packages"
+    export PYTHONPATH="${AMBERHOME}/lib/python${_pyver}/site-packages"
 else
-    export PYTHONPATH="${AMBERHOME}/lib/python3.8/site-packages:${PYTHONPATH}"
+    export PYTHONPATH="${AMBERHOME}/lib/python${_pyver}/site-packages:${PYTHONPATH}"
 fi
 
-export _gccver=8.4.0
+export _gccver=9.3.0
 export LD_LIBRARY_PATH="/usr/lib/gcc/x86_64-pc-linux-gnu/${_gccver}:${LD_LIBRARY_PATH}"
