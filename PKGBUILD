@@ -3,11 +3,12 @@ pkgname='itch-setup-git'
 _gitname='itch-setup'
 pkgdesc='An installer for the itch.io desktop app'
 arch=('x86_64' 'i686')
+url='https://itch.io/'
 license=('MIT')
 depends=()
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'npm')
 provides=('itch' 'kitch')
-pkgver=1.13.0.r0.g8780d58
+pkgver=1.24.0.r0.g083c5ca
 pkgrel=1
 source=(
   "git+https://github.com/itchio/${_gitname}.git"
@@ -19,6 +20,11 @@ sha256sums=(
 pkgver() {
   cd "$_gitname"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/$_gitname"
+  npm install
 }
 
 build() {
