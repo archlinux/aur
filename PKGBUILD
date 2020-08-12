@@ -28,10 +28,10 @@ source=("local://AmberTools${_toolsver}.tar.bz2"
         "pmemd.cuda.MPI")
 md5sums=('8c1fe81833796a9cb823019e02c522e0'
          '559d5b7b872344c268a62ebd5d33f71d'
-         '9a4dab06ab1ba04f12950b26ec5285e5'
-         'a9a440a1e0c1b1aee7f356869d03b18e'
-         '69c5d2bdc5e1f6e854c640db7ce1c2ff'
-         '451eec2b6fa7572f6b61104709588824')
+         '44632310820b4d915a169d13d6a60be2'
+         '9e030fb76a31f133a59b33734e674ac1'
+         'eba440f07f04c80d2cb22752bea01d65'
+         '14a2068da46e104553224fb523ea5bd4')
 
 prepare() {
   cd ${srcdir}/amber${pkgver}_src
