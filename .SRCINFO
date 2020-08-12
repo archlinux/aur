@@ -1,6 +1,6 @@
 pkgbase = whitesur-kde-theme-git
 	pkgdesc = MacOS big sur like theme for KDE Plasma
-	pkgver = r14.b53b3c5
+	pkgver = r22.ce5a374
 	pkgrel = 1
 	url = https://github.com/vinceliuice/WhiteSur-kde
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = whitesur-kde-theme-git
 	optdepends = kvantum-qt5: for included kvantum theme
 	optdepends = sddm: for included sddm theme
 	optdepends = whitesur-icon-theme-git: matching icon theme
+	optdepends = whitesur-cursor-theme-git: matching cursor theme
 	optdepends = whitesur-gtk-theme-git: matching gtk theme
 	optdepends = latte-dock: for included latte theme
 	source = git+https://github.com/vinceliuice/WhiteSur-kde.git
