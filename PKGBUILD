@@ -23,6 +23,7 @@ prepare() {
 }
 
 build() {
+  export CFLAGS="$CFLAGS -fcommon"
   cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr \
     --mandir=/usr/share/man --docdir=/usr/share/doc \
