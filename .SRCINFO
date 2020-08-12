@@ -1,6 +1,6 @@
 pkgbase = status
 	pkgdesc = Simple status thing for using with i3
-	pkgver = 1
+	pkgver = 4
 	pkgrel = 1
 	url = https://github.com/sandsmark/status
 	arch = x86_64
@@ -8,8 +8,9 @@ pkgbase = status
 	license = GPL2
 	makedepends = gcc
 	depends = libpulse
-	source = https://github.com/sandsmark/status/archive/1.tar.gz
-	sha256sums = 496d996053193984f44bc8d183afa17422abf10d7a83da8dba819564fb835c72
+	depends = systemd
+	source = https://github.com/sandsmark/status/archive/4.tar.gz
+	sha256sums = b7eda2d4af5c0262aa7ffc12257099cc51cd9948804dedc6c24c383850a552d4
 
 pkgname = status
 
