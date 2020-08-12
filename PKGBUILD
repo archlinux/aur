@@ -2,7 +2,7 @@
 # Contributor: Blackleg <blackleg@openaliasbox.org>
 
 pkgname=ca-certificates-dnie
-pkgver=20200305
+pkgver=20200812
 pkgrel=1
 pkgdesc="Spanish DNIE root certificates"
 arch=('any')
@@ -37,7 +37,7 @@ sha256sums=('6e0235376d543d19c7fa765b66ec14fab785e0fb6076b16682649eb3934655bd'
             '7571df00556f41af9b552982f102529c20adb597fafe0865ccee89f735193458'
             '948ca3f851a4fd11483af67761c4d0603036231ec0611fe06d0e93212ac4d172'
             '25588e7328336f999a2650f60041f5fc107f1709960636b4a14b84cd8b866d54'
-            '78101b497e4c33692a01fcd972b2134bb03c25ec581bfd97906526628e8ee097'
+            'f2316d5166b1717a30ae2852b3cd958c1819fa320d5d4f8c4df2d715887dd7b9'
             )
 
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
@@ -52,11 +52,12 @@ package() {
   install -Dm644 "AC DNIE 004.crt"                                                          "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_DNIE_004_SHA2.crt"
   install -Dm644 "AC DNIE 005.crt"                                                          "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_DNIE_005_SHA2.crt"
   install -Dm644 "AC DNIE 006.crt"                                                          "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AC_DNIE_006_SHA2.crt"
-  install -Dm644 "Certificados OCSP Responder FNMT/OCSP Responder DNIE 001.cer"             "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_Responder_DNIE_001.cer"
-  install -Dm644 "Certificados OCSP Responder FNMT/OCSP Responder DNIE 002.cer"             "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_Responder_DNIE_002.cer"
-  install -Dm644 "Certificados OCSP Responder FNMT/OCSP Responder DNIE 003.cer"             "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_Responder_DNIE_003.cer"
-  install -Dm644 "Certificados OCSP Responder FNMT/OCSP Responder DNIE 004.cer"             "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_Responder_DNIE_004.cer"
-  install -Dm644 "Certificados OCSP Responder FNMT/OCSP Responder DNIE 005.cer"             "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_Responder_DNIE_005.cer"
-  install -Dm644 "Certificados OCSP Responder FNMT/OCSP Responder DNIE 006.cer"             "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_Responder_DNIE_006.cer"
+  install -Dm644 "Certificados OCSP Responder FNMT.cer/AV DNIE FNMT.cer"                    "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AV_DNIE_FNMT.cer"
+  install -Dm644 "Certificados OCSP Responder FNMT.cer/OCSP Responder DNIE 001.cer"         "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_Responder_DNIE_001.cer"
+  install -Dm644 "Certificados OCSP Responder FNMT.cer/OCSP Responder DNIE 002.cer"         "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_Responder_DNIE_002.cer"
+  install -Dm644 "Certificados OCSP Responder FNMT.cer/OCSP Responder DNIE 003.cer"         "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_Responder_DNIE_003.cer"
+  install -Dm644 "Certificados OCSP Responder FNMT.cer/OCSP Responder DNIE 004.cer"         "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_Responder_DNIE_004.cer"
+  install -Dm644 "Certificados OCSP Responder FNMT.cer/OCSP Responder DNIE 005.cer"         "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_Responder_DNIE_005.cer"
+  install -Dm644 "Certificados OCSP Responder FNMT.cer/OCSP Responder DNIE 006.cer"         "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/OCSP_Responder_DNIE_006.cer"
 #   install -Dm644 "AVDNIEMINHAP_SHA2.cer"                "${pkgdir}/usr/share/ca-certificates/trust-source/anchors/AV_DNIE_MINHAP_SHA2.cer"
 }
