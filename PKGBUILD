@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Portable Shell Initialization"
 arch=(any)
 license=(GPL2)
-url="https://github.com/bourne-again/poshinit"
+url="https://github.com/bourne-again/${pkgname}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bourne-again/${pkgname}/archive/${pkgver}.tar.gz")
 
 package() {
