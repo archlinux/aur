@@ -1,6 +1,6 @@
 # Maintainer: Mounir Erhili <mounirerhili@gmail.com>
 
-pkgname=rtl8821ce-dkms-git
+pkgname=rtl8821ce-dkms
 _pkgbase=rtl8821ce
 pkgver=1.0.5.r101.g77ca48c
 pkgrel=1

@@ -1,4 +1,4 @@
-pkgbase = rtl8821ce-dkms-git
+pkgbase = rtl8821ce-dkms
 	pkgdesc = rtl8821CE driver with firmware
 	pkgver = 1.0.5.r101.g77ca48c
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = rtl8821ce-dkms-git
 	source = git+https://github.com/MounirErhili/rtl8821ce.git
 	sha256sums = SKIP
 
-pkgname = rtl8821ce-dkms-git
+pkgname = rtl8821ce-dkms
 
