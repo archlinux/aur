@@ -1,6 +1,6 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
 pkgname=i3-workspace-brightness-git
-pkgver=1.0.0.r0.g6f560c3
+pkgver=1.0.1.r0.gb8ab1f4
 pkgrel=1
 pkgdesc="Utility to auto-adjust the brightness of i3wm workspaces (git)"
 arch=('x86_64')
