@@ -1,0 +1,13 @@
+pkgbase = kaerukaeru-font
+	pkgdesc = A display typeface from Velvetyne inspired by frogs and Japanese woodcuts
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://velvetyne.fr/fonts/kaerukaeru
+	arch = any
+	license = OFL
+	source = https://gitlab.com/velvetyne/kaerukaeru/-/archive/dae804908ffb9249af2c4ee0b65a4a9084620de5/kaerukaeru-1.000.tar.bz2
+	sha256sums = 13405a38d169c883f3b9b3e5cf188d29012a88dd147018cb315fe3c3f396bc37
+
+pkgname = otf-kaerukaeru
+	provides = kaerukaeru-font
+
