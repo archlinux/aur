@@ -9,7 +9,7 @@ url='https://github.com/aws/aws-cli'
 license=('Apache')
 provides=('aws-cli')
 conflicts=('aws-cli' 'aws-cli-git' 'aws-cli-v2-bin')
-makedepends=(
+depends=(
   'python-botocore-v2-git'
   'python-colorama'
   'python-cryptography'
