@@ -8,7 +8,7 @@ pkgbase=tensorflow-rocm
 pkgname=(tensorflow-rocm tensorflow-opt-rocm python-tensorflow-rocm python-tensorflow-opt-rocm)
 pkgver=2.3.0
 _pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -60,6 +60,10 @@ prepare() {
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-rocm
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-rocm
 
+}
+
+build() {
+
   # These environment variables influence the behavior of the configure call below.
   export PYTHON_BIN_PATH=/usr/bin/python
   export USE_DEFAULT_PYTHON_LIB_PATH=1
@@ -98,9 +102,7 @@ prepare() {
   # Required until https://github.com/tensorflow/tensorflow/issues/39467 is fixed.
   export CC=gcc-9
   export CXX=g++-9
-}
 
-build() {
   echo "Building with rocm and without non-x86-64 optimizations"
   cd "${srcdir}"/tensorflow-${_pkgver}-rocm
   export CC_OPT_FLAGS="-march=x86-64"
