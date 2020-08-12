@@ -5,7 +5,7 @@
 pkgname=mdcat-bin
 _pkgname="${pkgname%-bin}"
 
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 
 pkgdesc='Sophisticated Markdown rendering for the terminal'
