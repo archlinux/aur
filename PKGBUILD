@@ -1,8 +1,8 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=comrak-git
-pkgver=0.7.0.r17.g500d73f
-pkgrel=3
+pkgver=0.8.1.r0.g4b41ce7
+pkgrel=1
 pkgdesc='CommonMark + GFM compatible Markdown parser and renderer'
 arch=('x86_64' 'i686')
 url="https://github.com/kivikakk/${pkgname%-git}"
@@ -15,25 +15,23 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
-    git describe --always --tags --abbrev=7 HEAD |
+    git describe --long --always --tags --abbrev=7 HEAD |
         sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd "${pkgname%-git}"
-    rustup toolchain list | grep -q '^nightly' ||
-        rustup install --no-self-update nightly
-    cargo +nightly fetch
+    cargo fetch
 }
 
 build() {
     cd "${pkgname%-git}"
-    cargo +nightly build --release --locked --all-features
+    cargo build --release --locked --features clap
 }
 
 check() {
     cd "${pkgname%-git}"
-    cargo +nightly test --release --locked
+    cargo test --release --locked
 }
 
 package () {
