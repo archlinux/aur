@@ -1,0 +1,13 @@
+pkgbase = whitesur-cursor-theme-git
+	pkgdesc = WhiteSur cursors theme for linux desktops
+	pkgver = r3.1ada17d
+	pkgrel = 1
+	url = https://github.com/vinceliuice/WhiteSur-cursors
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/vinceliuice/WhiteSur-cursors.git
+	sha256sums = SKIP
+
+pkgname = whitesur-cursor-theme-git
+
