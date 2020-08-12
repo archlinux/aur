@@ -1,0 +1,59 @@
+From 6ad1caa0eaaea22e3277b055474f0ded92c4dabd Mon Sep 17 00:00:00 2001
+From: Casper Meijn <casper@meijn.net>
+Date: Thu, 30 Apr 2020 09:11:10 +0200
+Subject: [PATCH 1/2] OnvifDeviceDiscover: Move over to changed api of
+ kdsoap-ws-discovery-client
+
+diff --git a/src/onvifdevicediscover.cpp b/src/onvifdevicediscover.cpp
+index 13594dc..c7ed106 100644
+--- a/src/onvifdevicediscover.cpp
++++ b/src/onvifdevicediscover.cpp
+@@ -66,15 +66,15 @@ void OnvifDeviceDiscover::start()
+ #endif
+ }
+
+-void OnvifDeviceDiscover::matchReceived(const QSharedPointer<WSDiscoveryTargetService>& matchedService)
++void OnvifDeviceDiscover::matchReceived(const WSDiscoveryTargetService& matchedService)
+ {
+ #ifdef WITH_KDSOAP_WSDISCOVERY_CLIENT
+-    OnvifDeviceDiscoverMatch* deviceMatch = m_matchMap.value(matchedService->endpointReference());
++    OnvifDeviceDiscoverMatch* deviceMatch = m_matchMap.value(matchedService.endpointReference());
+     if (deviceMatch == nullptr) {
+         deviceMatch = new OnvifDeviceDiscoverMatch();
+     }
+-    deviceMatch->m_endpoint = matchedService->endpointReference();
+-    for (auto& scope : matchedService->scopeList()) {
++    deviceMatch->m_endpoint = matchedService.endpointReference();
++    for (auto& scope : matchedService.scopeList()) {
+         if (scope.scheme() == "onvif" &&
+                 scope.authority().toLower() == "www.onvif.org") {
+             auto splitPath = scope.path().split("/", QString::SkipEmptyParts);
+@@ -86,10 +86,10 @@ void OnvifDeviceDiscover::matchReceived(const QSharedPointer<WSDiscoveryTargetSe
+             }
+         }
+     }
+-    for (auto& xAddr : matchedService->xAddrList()) {
++    for (auto& xAddr : matchedService.xAddrList()) {
+         deviceMatch->m_xAddr = xAddr;
+     }
+-    deviceMatch->m_lastSeen = matchedService->lastSeen();
++    deviceMatch->m_lastSeen = matchedService.lastSeen();
+
+     m_matchMap.insert(deviceMatch->m_endpoint, deviceMatch);
+     emit matchListChanged(matchList());
+diff --git a/src/onvifdevicediscover.h b/src/onvifdevicediscover.h
+index a12f473..eb3413d 100644
+--- a/src/onvifdevicediscover.h
++++ b/src/onvifdevicediscover.h
+@@ -68,7 +68,7 @@ public slots:
+     void start();
+
+ private slots:
+-    void matchReceived(const QSharedPointer<WSDiscoveryTargetService>& matchedService);
++    void matchReceived(const WSDiscoveryTargetService& matchedService);
+
+ private:
+     WSDiscoveryClient* m_client;
+--
+GitLab
+
