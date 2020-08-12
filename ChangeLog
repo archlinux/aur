@@ -1,5 +1,9 @@
+2020-08-12 Pierre Choffet <peuc@wanadoo.fr>
+	* r4685.b153c4897-1 :
+	Update build after upstream changes
+
 2019-10-17 Pierre Choffet <peuc@wanadoo.fr>
-	* r4467.3af7f7c76 :
+	* r4467.3af7f7c76-1 :
 	Force build to use system libsamplerate
 
 2019-05-02 Pierre Choffet <peuc@wanadoo.fr>
