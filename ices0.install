@@ -1,8 +1,8 @@
-post_install() {
-  echo "To avoid conflict with ices2, ices binary has been renamed to ices0 (so as man page) 
-  and sample config files have been installed in /usr/share/ices0/."
+post_install(){
+ echo "To avoid conflict with ices2, ices binary has been renamed to ices0 (so as man page) 
+and sample config files have been installed in /usr/share/ices0/."
 }
 
-post_upgrade() {
-  post_install $1
+post_upgrade(){
+ post_install $1
 }

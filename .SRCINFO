@@ -22,7 +22,7 @@ pkgbase = ices0
 	optdepends = libvorbis: vorbis audio support
 	options = !docs
 	source = https://github.com/Moonbase59/ices0/archive/v0.4.11.tar.gz
-	sha512sums = df8d7d7a52c690ee26d5b3716a8ac92f1bf79f84efb975b9036c8cd42d0fcd3a5a07b04a78de39afe80e50e341da476b42b03a7e241e83496ec7f8ac1a42710a
+	md5sums = 9b599abf4bcd66761fe99c024644f623
 
 pkgname = ices0
 
