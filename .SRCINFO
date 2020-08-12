@@ -1,6 +1,6 @@
 pkgbase = buildaur
 	pkgdesc = An AUR helper with asp support.
-	pkgver = 42.0.1
+	pkgver = 42.0.2
 	pkgrel = 1
 	url = https://github.com/lxgr-linux/buildaur
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = buildaur
 	depends = devtools
 	depends = git
 	depends = python3
-	source = buildaur.tar.gz::https://github.com/lxgr-linux/buildaur/archive/42.0.1.tar.gz
+	source = buildaur.tar.gz::https://github.com/lxgr-linux/buildaur/archive/42.0.2.tar.gz
 	md5sums = SKIP
 
 pkgname = buildaur
