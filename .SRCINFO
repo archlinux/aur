@@ -1,6 +1,6 @@
 pkgbase = discord-canary
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
-	pkgver = 0.0.107
+	pkgver = 0.0.108
 	pkgrel = 1
 	url = https://discordapp.com/
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = discord-canary
 	optdepends = ttf-symbola: Font for emoji support.
 	optdepends = noto-fonts-cjk: Font for special characters such as /shrug face.
 	provides = discord-canary
-	source = https://dl-canary.discordapp.net/apps/linux/0.0.107/discord-canary-0.0.107.tar.gz
+	source = https://dl-canary.discordapp.net/apps/linux/0.0.108/discord-canary-0.0.108.tar.gz
 	source = LICENSE
 	source = discord-canary.sh
-	sha256sums = 864ee9003938abde97ff7ac0534b8aaf8fa4c2b9887f97444f2386ddbc46b393
+	sha256sums = 3abebbe719c6df8944c6ea9070d245ecbdf6f04077e536fb4c3887ca4c5e5e23
 	sha256sums = 9be5f85421c9094c390c25bf1f45157c3c8dcf592feb8acb0810a61f11d80b90
 	sha256sums = 7119a3345162d39bf86813d19546b488a1bdba12d38c3d39749f86bd587f0a0c
 
