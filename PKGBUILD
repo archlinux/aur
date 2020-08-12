@@ -1,7 +1,7 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=xfce4-sysinfo
 pkgver=152.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to show systeminformation in xfce"
 arch=(any)
 url="https://github.com/lxgr-linux/xfce4-sysinfo"
@@ -10,7 +10,7 @@ depends=('gtk3' 'gtkdialog' 'zenity')
 makedepends=('git')
 
 source=("xfce4-sysinfo.tar.gz::https://github.com/lxgr-linux/xfce4-sysinfo/archive/${pkgver}.tar.gz")
-md5sums=('SKIP')
+md5sums=('6f50821b7c80d78163a62580d5499d2d')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
