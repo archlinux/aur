@@ -1,16 +1,16 @@
 pkgbase = ttf-ligatured-hack
 	pkgdesc = Latest ligatures with Hack font built with fully automated CI/CD by gaplo917
-	pkgver = v3.003+FC3.1+JBMv2.001
-	pkgrel = 2
+	pkgver = v3.003+Nv2.1.0+FC3.1+JBMv2.001
+	pkgrel = 1
 	url = https://github.com/gaplo917/Ligatured-Hack
 	arch = any
 	license = GPL3
 	depends = fontconfig
 	provides = ttf-hack
 	conflicts = ttf-hack-ligatured
-	source = https://github.com/gaplo917/Ligatured-Hack/releases/download/v3.003+FC3.1+JBMv2.001/HackLigatured-v3.003+FC3.1+JBMv2.001.zip
-	source = v3.003+FC3.1+JBMv2.001-LICENSE::https://raw.githubusercontent.com/gaplo917/Ligatured-Hack/master/LICENSE
-	sha256sums = 5de88284b3e0a428146e46c0671dbe3044406d8fad18c0fa2edd35ae33ba2a74
+	source = https://github.com/gaplo917/Ligatured-Hack/releases/download/v3.003+Nv2.1.0+FC3.1+JBMv2.001/HackLigatured-v3.003+Nv2.1.0+FC3.1+JBMv2.001.zip
+	source = v3.003+Nv2.1.0+FC3.1+JBMv2.001-LICENSE::https://raw.githubusercontent.com/gaplo917/Ligatured-Hack/master/LICENSE
+	sha256sums = 82ffde5a31acf4ec36dd783e84cf36e1faceb7ab13a9ac119531106ebf1fab6b
 	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
 
 pkgname = ttf-ligatured-hack
