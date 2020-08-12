@@ -1,0 +1,12 @@
+pkgbase = gtk-theme-framework
+	pkgdesc = Placeholder
+	pkgver = 0
+	pkgrel = 0
+	url = https://github.com/jaxwilko/gtk-theme-framework
+	arch = any
+	license = GPL3
+	conflicts = material-gtk-framework
+	replaces = material-gtk-framework
+
+pkgname = gtk-theme-framework
+
