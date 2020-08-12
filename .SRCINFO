@@ -1,0 +1,13 @@
+pkgbase = avara-font
+	pkgdesc = A typeface from Velvetyne using curveless design based on a square grid
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://velvetyne.fr/fonts/avara
+	arch = any
+	license = OFL
+	source = https://gitlab.com/velvetyne/Avara/-/archive/c0dee5aed1135a5adb3dea0aafe5de1b31e0903c/avara-1.000.tar.bz2
+	sha256sums = d8b512e0311e9ced918534094c513f172a89bed36000f795e1bb01786561e136
+
+pkgname = otf-avara
+	provides = avara-font
+
