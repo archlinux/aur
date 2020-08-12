@@ -67,7 +67,7 @@ _pfrel=7
 _kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
-_bmppatchname=bmq_v5.7-r1.patch
+_projectcpatchname=prjc_v5.7-r3.patch
 _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER PSC
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
@@ -76,7 +76,7 @@ pkgname=('linux-pf')
 pkgdesc="Linux with the pf-kernel patch (uksm, BMQ, ZSTD, FSGSBASE and more)"
 pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_unpatched_sublevel}.${_kernelname}${_pfrel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
 license=('GPL2')
@@ -89,7 +89,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
         'linux.preset'			        # standard config files for mkinitcpio ramdisk
 	      "${_pfpatchhome}/${_pfpatchname}"	# the -pf patchset
         # bmq-scheudler
-        "https://gitlab.com/alfredchen/bmq/-/raw/master/$_major.$_minor/$_bmppatchname"
+        "https://gitlab.com/alfredchen/projectc/raw/master/$_major.$_minor/$_projectcpatchname"
         "90-linux.hook"
         "60-linux.hook"
        )
@@ -101,7 +101,7 @@ prepare() {
   cd "${srcdir}/linux-${_basekernel}"
   msg "Applying pf-kernel patch"
   patch -Np1 < ${srcdir}/${_pfpatchname}
-  patch -Np1 < ${srcdir}/${_bmppatchname}
+  patch -Np1 < ${srcdir}/${_projectcpatchname}
   
   if [ "$CARCH" = "x86_64" ]; then
 	  cat "${startdir}/config.x86_64" >| .config
@@ -624,7 +624,7 @@ sha256sums=('de8163bb62f822d84f7a3983574ec460060bf013a78ff79cd7c979ff1ec1d7e0'
             'b6aeb6c460f08443ecce4006d8da83c5f01a224ad2123998ae351b5357286bcd'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             'e49f77180b3149da4fd1ea15b179118c7d057f805b8dbfc1c17ca17d7cfcad2f'
-            '9cf60ec74848ef807fc97e1c0f4bccca73ec65763a2adefa6758a4f7c0f243a7'
+            'b2a2ae866fc3f1093f67e69ba59738827e336b8f800fb0487599127f7f3ef881'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
 # vim:set ts=2 sw=2 tw=0 et:
