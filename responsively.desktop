@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Responsively
+Comment=A modified browser built using Electron that helps in responsive web development
+Exec=responsively
+Icon=responsively
+Terminal=false
+StartupNotify=false
+Categories=Development;Network;WebBrowser;
