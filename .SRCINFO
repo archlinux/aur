@@ -1,6 +1,6 @@
 pkgbase = monica-git
 	pkgdesc = Personal CRM. Remember everything about your friends, family and business relationships
-	pkgver = v2.18.0.r159.g0db37fdd7
+	pkgver = v2.18.0.r159.g0db37fdd
 	pkgrel = 1
 	url = https://www.monicahq.com/
 	arch = any

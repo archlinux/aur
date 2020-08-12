@@ -1,8 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname=monica-git
-_pkgname=monica
-pkgver=v2.18.0.r159.g0db37fdd7
+pkgver=v2.18.0.r159.g0db37fdd
 pkgrel=1
 pkgdesc="Personal CRM. Remember everything about your friends, family and business relationships"
 arch=("any")
@@ -17,34 +16,37 @@ optdepends=("mariadb: database"
             "redis: cache and session driver")
 source=("git+https://github.com/monicahq/monica.git")
 md5sums=("SKIP")
-backup=("etc/webapps/$_pkgname/config.env")
+backup=("etc/webapps/monica/config.env")
 
 pkgver(){
- cd "$_pkgname"
+ cd "$srcdir/monica"
  git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 package(){
- cd "$srcdir/$_pkgname"
+ cd "$srcdir/monica"
  composer install --no-interaction --no-suggest --no-dev --ignore-platform-reqs
 
- install -d "$pkgdir/usr/share/webapps/$_pkgname" "$pkgdir/usr/share/licenses/$_pkgname" "$pkgdir/etc/webapps/$_pkgname"
- cp -rv * "$pkgdir/usr/share/webapps/$_pkgname"
- install -D "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname"
-
- cp -v .env.example "$pkgdir/etc/webapps/$_pkgname/config.env"
- ln -s "/etc/webapps/$_pkgname/config.env" "$pkgdir/usr/share/webapps/$_pkgname/.env"
- chown http: "$pkgdir/etc/webapps/$_pkgname/config.env"
- chmod 660 "$pkgdir/etc/webapps/$_pkgname/config.env"
+ install -d "$pkgdir/usr/share/webapps/monica"  
+ cp -rv * "$pkgdir/usr/share/webapps/monica"
  
- rm -rf "$pkgdir/usr/share/webapps/$_pkgname/bootstrap/cache"
- mkdir -p "$pkgdir/var/cache/$_pkgname"
- chown http:http "$pkgdir/var/cache/$_pkgname"
- ln -s "/var/cache/$_pkgname" "$pkgdir/usr/share/webapps/$_pkgname/bootstrap/cache"
+ install -d "$pkgdir/usr/share/licenses/monica"
+ install -D "$srcdir/monica/LICENSE" "$pkgdir/usr/share/licenses/monica"
 
- mkdir -p "$pkgdir/var/lib"
- mv "$pkgdir/usr/share/webapps/$_pkgname/storage" "$pkgdir/var/lib/$_pkgname"
- chown -R http: "$pkgdir/var/lib/$_pkgname"
- chmod 775 "$pkgdir/var/lib/$_pkgname"
- ln -s "/var/lib/$_pkgname" "$pkgdir/usr/share/webapps/$_pkgname/storage"
+ install -d "$pkgdir/etc/webapps/monica"
+ install -D .env.example "$pkgdir/etc/webapps/monica/config.env"
+ ln -s "/etc/webapps/monica/config.env" "$pkgdir/usr/share/webapps/monica/.env"
+ chown root:http "$pkgdir/etc/webapps/monica/config.env"
+ chmod 640 "$pkgdir/etc/webapps/monica/config.env"
+ 
+ install -d "$pkgdir/var/cache/"
+ mv "$pkgdir/usr/share/webapps/monica/bootstrap/cache" "$pkgdir/var/cache/monica"
+ ln -s "/var/cache/monica" "$pkgdir/usr/share/webapps/monica/bootstrap/cache"
+ chown -R http: "$pkgdir/var/cache/monica"
+
+ install -d "$pkgdir/var/lib/"
+ mv "$pkgdir/usr/share/webapps/monica/storage" "$pkgdir/var/lib/monica"
+ ln -s "/var/lib/monica" "$pkgdir/usr/share/webapps/monica/storage"
+ chown -R http: "$pkgdir/var/lib/monica"
+ chmod 750 "$pkgdir/var/lib/monica"
 }
