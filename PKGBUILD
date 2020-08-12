@@ -5,7 +5,7 @@ pkgname=dupliseek-git
 
 epoch=1
 pkgver() { git -C "${pkgname%-git}" describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
-pkgver=0.0.3.r24.4faf56e
+pkgver=0.0.3.r36.6c5cc90
 pkgrel=1
 
 pkgdesc='Duplicate image finder written in Python/Qt5'
@@ -16,7 +16,7 @@ license=('MIT')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-depends=('python-pyqt5' 'python-numpy' 'python-imutils' 'opencv')
+depends=('python-pyqt5' 'python-numpy' 'python-imutils' 'python-send2trash' 'opencv')
 makedepends=('git' 'python-setuptools' 'python-pip')
 
 source=("git+$url.git")
@@ -27,6 +27,7 @@ prepare() {
   sed -i "s|\(/usr/share/\)icons\(/${pkgname%-git}\)|\1pixmaps\2.png|;
           s|^\(Categories=.*\)|\1\;Utility|" "${pkgname%-git}.desktop"
   sed -i "s|opencv-python|opencv|" setup.py
+  rm -r send2trash
 }
 
 build() {
