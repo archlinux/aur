@@ -1,7 +1,7 @@
 pkgbase = libva-intel-driver-g45-h264
 	pkgdesc = Video Acceleration (VA) API for Linux
-	pkgver = 2.4.0
-	pkgrel = 2
+	pkgver = 2.4.1
+	pkgrel = 1
 	epoch = 1
 	url = https://01.org/linuxmedia/vaapi
 	arch = i686
@@ -17,12 +17,8 @@ pkgbase = libva-intel-driver-g45-h264
 	conflicts = libva-intel-driver
 	conflicts = intel-gpu-tools
 	replaces = libva-intel-driver
-	source = https://bitbucket.org/alium/g45-h264/downloads/intel-driver-g45-h264-2.4.0-2.tar.gz
-	source = gcc10.patch
-	source = gcc10-2.patch
-	sha256sums = 6850c0e519b09bd720bab8bdbf8e53974c44fec7ebca7389990cd1262ce35f09
-	sha256sums = ca9db2bace98932deadc1301d57194b8ad777ecb43b31b10e76b2b6b1ac2bfd9
-	sha256sums = f87c8398a26faf50fa23769a3bbbedb865ced964a2257a14211eb3434c4a5658
+	source = https://bitbucket.org/alium/g45-h264/downloads/intel-driver-g45-h264-2.4.1.tar.gz
+	sha256sums = f9d18a4b9d5007bc606d125b553a3d053d3295dd295ea477e43396a751e706fd
 
 pkgname = libva-intel-driver-g45-h264
 
