@@ -1,0 +1,13 @@
+pkgbase = vg5000-font
+	pkgdesc = A typeface from Velvetyne inspired by the homonymous computer manufactured by Phillips
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://velvetyne.fr/fonts/vg5000
+	arch = any
+	license = OFL
+	source = https://gitlab.com/velvetyne/vg5000/-/archive/e4eeaed973f75fd5bafe2c69de60e8ad0f710f58/vg5000-1.000.tar.bz2
+	sha256sums = 2ca05bb2f75edb074b25b931fbdd70bd42e0a36a9aacb679c00ee43c9cb0122e
+
+pkgname = otf-vg5000
+	provides = vg5000-font
+
