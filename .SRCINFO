@@ -1,0 +1,13 @@
+pkgbase = mourier-font
+	pkgdesc = A typeface from Velvetyne with quasi-abstract geometric shapes
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://velvetyne.fr/fonts/mourier
+	arch = any
+	license = OFL
+	source = https://gitlab.com/velvetyne/mourier/-/archive/344849db8495978f01d28cc9230f82a1628da7fe/mourier-1.000.tar.bz2
+	sha256sums = 99f058426eb3354370a053b6d4d556679db1a0cdf06bb7e325eccf6829df04ff
+
+pkgname = otf-mourier
+	provides = mourier-font
+
