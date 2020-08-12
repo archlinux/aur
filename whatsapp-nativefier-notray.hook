@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = whatsapp-nativefier
+
+[Action]
+Description = Disabling tray...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/whatsapp-nativefier-notray
