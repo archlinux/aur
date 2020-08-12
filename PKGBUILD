@@ -15,7 +15,7 @@ depends=(
 )
 url='https://github.com/gi-lom/gnabel'
 license=('GPL-3.0')
-_git_ref='57ff9c3d3631b04ddb8369e31ad2cfe46ec9099f'
+_git_ref='4559acb895d754ecd985dab686eb1acd7e5f37b4'
 source=(
   "https://github.com/gi-lom/gnabel/archive/$_git_ref.zip"
 )
@@ -34,5 +34,5 @@ package() {
   install -Dm755 gnabel.desktop "$pkgdir/usr/share/applications/gnabel.desktop"
 
   msg2 'Installing icon'
-  install -Dm644 icon.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/gnabel.png"
+  install -Dm644 icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/gnabel.svg"
 }

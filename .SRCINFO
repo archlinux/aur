@@ -11,7 +11,7 @@ pkgbase = gnabel
 	depends = python-googletrans
 	depends = python-gtts
 	depends = python-pydub
-	source = https://github.com/gi-lom/gnabel/archive/57ff9c3d3631b04ddb8369e31ad2cfe46ec9099f.zip
+	source = https://github.com/gi-lom/gnabel/archive/4559acb895d754ecd985dab686eb1acd7e5f37b4.zip
 	sha512sums = SKIP
 
 pkgname = gnabel
