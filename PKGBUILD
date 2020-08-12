@@ -6,7 +6,7 @@
 _pkgname=libxfce4ui
 pkgname="${_pkgname}"-git
 epoch=1
-pkgver=4.15.2+67+gdd59c9e
+pkgver=4.15.3+58+g2bece1f
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -37,9 +37,7 @@ build() {
     --localstatedir=/var \
     --disable-static \
     --enable-gtk-doc \
-    --disable-debug \
-    --enable-maintainer-mode \
-    --with-vendor-info='Arch Linux'
+    --disable-debug
   make
 }
 
