@@ -2,7 +2,7 @@
 
 _pkgname=got
 pkgname="${_pkgname}-bin"
-pkgver=0.1.3
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='CLI tool to download large files faster than cURL and Wget'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/melbahja/got'
 license=('MIT')
 provides=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_amd64.tar.gz")
-sha256sums=('ba25f1ba93f3831fbbdb72cb2fc1bce8a79957a3305ff21a461b03087487187d')
+sha256sums=('5ff65a0f4e9c542c385577c2d37ccf9a54d2fd7a89ddf9cd60067cea6dbb4eea')
 
 package() {
   install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}"
