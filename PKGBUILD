@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=23911
+pkgver=23977
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ license=('GPL' 'LGPL')
 url="http://www.scribus.net"
 depends=('hunspell' 'podofo' 'libcups' 'graphicsmagick' 'poppler'
 	 'libcdr' 'libvisio' 'libpagemaker' 'harfbuzz-icu' 'python'
-	 'qt5-declarative' 'libmspub' 'openscenegraph' 'libqxp'
-	 'desktop-file-utils' 'libzmf' 'libfreehand')
+	 'qt5-declarative' 'libmspub' 'libqxp' 'hicolor-icon-theme'
+	 'libzmf' 'libfreehand')
 makedepends=('subversion' 'cmake' 'qt5-tools')
 optdepends=('lib2geom: for mesh distortion')
 conflicts=('scribus')
@@ -31,10 +31,8 @@ build() {
   cd $_svnmod/Scribus
   LANG=C
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-	-DCMAKE_SKIP_RPATH:BOOL=YES \
 	-DWANT_GRAPHICSMAGICK:BOOL=YES \
 	-DCMAKE_LIBRARY_PATH:PATH=/usr/lib \
-	-DCMAKE_INCLUDE_PATH:PATH=/usr/include/python3.7 \
 	-DCMAKE_EXE_LINKER_FLAGS:STRING="-lQt5Quick -lQt5PrintSupport" \
 	-DQT_PREFIX:PATH="/usr" -DWANT_SVNVERSION:BOOL=YES
   make
@@ -44,9 +42,9 @@ package () {
   cd "$srcdir"/$_svnmod/Scribus
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
-  install -Dm644 scribus.desktop $pkgdir/usr/share/applications/scribus.desktop
-  install -d "${pkgdir}"/usr/share/pixmaps
-  ln -s /usr/share/scribus/icons/1_5_0/scribus.png "${pkgdir}"/usr/share/pixmaps/scribus.png
+  install -Dm644 scribus.desktop "$pkgdir"/usr/share/applications/scribus.desktop
+  install -d "$pkgdir"/usr/share/pixmaps
+  ln -s /usr/share/scribus/icons/1_5_0/scribus.png "$pkgdir"/usr/share/pixmaps/scribus.png
   # move around some picture files
   for _i in AppIcon.png AllCaps.png Kapital.xpm Strike.xpm \
 		       outlined.png shadow.png shade.png Revers.png zeichen.png
