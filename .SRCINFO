@@ -1,7 +1,7 @@
 pkgbase = cantique-font
-	pkgdesc = A typeface marking the marriage between human calligraphy and geometric shapes
+	pkgdesc = A typeface mixing human calligraphy and geometric shapes, from Velvetyne Type Foundry
 	pkgver = 1.000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ggvelvetyne.fr/fonts/cantique
 	arch = any
 	license = OFL
