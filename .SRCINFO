@@ -1,0 +1,13 @@
+pkgbase = ouroboros-font
+	pkgdesc = A typeface from Velvetyne for alchemists, witches, heretics, outsiders and curious
+	pkgver = 2.000
+	pkgrel = 1
+	url = https://velvetyne.fr/fonts/ouroboros
+	arch = any
+	license = custom:Velvetyne Open License
+	source = https://gitlab.com/velvetyne/ouroboros/-/archive/0a35d93ed80ed2254bb8856a17a7da7bdb20c961/ouroboros-2.000.tar.bz2
+	sha256sums = 4fdb360960b663d87be5fe29343900a03842be3e4b5b376a09f276231654acd0
+
+pkgname = otf-ouroboros
+	provides = ouroboros-font
+
