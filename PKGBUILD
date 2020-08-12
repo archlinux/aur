@@ -2,14 +2,14 @@
 
 _pkgname=phallus-fonts
 pkgname=${_pkgname}-git
-pkgver=166.e237278
+pkgver=199.99faf2a
 pkgrel=1
 pkgdesc="Lemon and Uushi fonts by phallus"
 arch=('any')
 url="https://github.com/phallus/fonts"
 license=('custom:WTFPL')
 depends=()
-makedepends=('git' 'fontconfig' 'xorg-font-utils')
+makedepends=('git' 'fontconfig' 'xorg-font-util' 'xorg-bdftopcf')
 install="${_pkgname}.install"
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
