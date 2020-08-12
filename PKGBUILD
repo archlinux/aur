@@ -3,12 +3,12 @@
 
 pkgname=ddnet
 pkgver=14.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.tw"
 license=('custom:BSD' 'CCPL:by-nc-sa')
-depends=('sdl2' 'freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'pnglite' 'ffmpeg' 'libnotify' 'miniupnpc')
+depends=('sdl2' 'freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'pnglite' 'ffmpeg' 'libnotify' 'miniupnpc' 'sqlite')
 makedepends=('cmake' 'ninja' 'python')
 checkdepends=('gtest')
 optdepends=('ddnet-skins: A collection with more than 700 custom tee skins.'
