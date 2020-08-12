@@ -1,0 +1,13 @@
+pkgbase = format-1452-font
+	pkgdesc = A typeface from Velvetyne without any optical corrections with a Din-like design
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://velvetyne.fr/fonts/format-1452
+	arch = any
+	license = OFL
+	source = https://gitlab.com/velvetyne/format-1452/-/archive/4af715b8a873139975d2651f0e316604508635ff/format-1452-1.000.tar.bz2
+	sha256sums = 3c1e9805ffd5921bc51fb007e4539fd7a41fd7a5daf34f6bb1af5af3358cf2f4
+
+pkgname = otf-format-1452
+	provides = format-1452-font
+
