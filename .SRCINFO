@@ -10,7 +10,7 @@ pkgbase = git-fuzzy-git
 	optdepends = git-delta-git: improved diff highlighting
 	optdepends = diff-so-fancy: improved diff highlighting
 	optdepends = bat: syntax highlighting
-	optdepends = exa:
+	optdepends = exa
 	source = git+https://github.com/bigH/git-fuzzy.git
 	sha512sums = SKIP
 

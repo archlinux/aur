@@ -12,7 +12,7 @@ depends=('fzf')
 optdepends=('git-delta-git: improved diff highlighting'
             'diff-so-fancy: improved diff highlighting'
             'bat: syntax highlighting'
-            'exa: ')
+            'exa')
 url="https://github.com/bigH/git-fuzzy"
 source=("git+https://github.com/bigH/git-fuzzy.git")
 sha512sums=('SKIP')
