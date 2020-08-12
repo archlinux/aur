@@ -2,25 +2,26 @@
 
 pkgname=monica-git
 _pkgname=monica
-pkgver=v2.18.0.r145.g836e2ea5b
+pkgver=v2.18.0.r159.g0db37fdd7
 pkgrel=1
-pkgdesc='Personal CRM. Remember everything about your friends, family and business relationships'
-arch=('any')
-url='https://www.monicahq.com'
-license=('AGPL-3.0')
-depends=('php>=7.2')
-makedepends=('composer')
-optdepends=('mariadb: database'
-            'mysql: database'
-            'apache: web server'
-            'nginx: web server')
-source=('git+https://github.com/monicahq/monica.git')
-sha512sums=('SKIP')
+pkgdesc="Personal CRM. Remember everything about your friends, family and business relationships"
+arch=("any")
+url="https://www.monicahq.com/"
+license=("AGPL-3.0")
+depends=("php>=7.2")
+makedepends=("composer")
+optdepends=("mariadb: database"
+            "mysql: database"
+            "apache: web server"
+            "nginx: web server"
+            "redis: cache and session driver")
+source=("git+https://github.com/monicahq/monica.git")
+md5sums=("SKIP")
 backup=("etc/webapps/$_pkgname/config.env")
 
 pkgver(){
  cd "$_pkgname"
- git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+ git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 package(){
