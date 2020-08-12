@@ -1,0 +1,21 @@
+pkgbase = shlink
+	pkgdesc = The definitive self-hosted URL shortener
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/shlinkio/shlink
+	arch = any
+	license = MIT
+	depends = php>=7.4
+	depends = php-gd
+	optdepends = mariadb: database
+	optdepends = mssql-server: database
+	optdepends = mysql: database
+	optdepends = postgresql: database
+	optdepends = sqlite: database
+	optdepends = apache: web server
+	optdepends = nginx: web server
+	source = https://github.com/shlinkio/shlink/releases/download/v2.3.0/shlink_2.3.0_dist.zip
+	md5sums = 1d7e43ef5822f42e29db314b0c95df54
+
+pkgname = shlink
+
