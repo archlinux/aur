@@ -1,7 +1,7 @@
 pkgbase = pmemd
 	pkgdesc = PMEMD module of AMBER software package
 	pkgver = 20
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ambermd.org/
 	arch = x86_64
 	license = custom
