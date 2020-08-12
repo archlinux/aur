@@ -2,7 +2,7 @@
 
 pkgname=can-isotp-dkms-git
 _pkgbase=can-isotp
-pkgver=r22.7c03198
+pkgver=r26.ced84ca
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
