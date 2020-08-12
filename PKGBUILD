@@ -22,6 +22,7 @@ package(){
  cd "$srcdir/${pkgname}_${pkgver}_dist"
  install -d "$pkgdir/usr/share/webapps/$pkgname"
  cp -rv * "$pkgdir/usr/share/webapps/$pkgname" 
+ chown -R http: "$pkgdir/usr/share/webapps/$pkgname/config/params"
  chown -R http: "$pkgdir/usr/share/webapps/$pkgname/data"
 
  install -d "$pkgdir/usr/share/licenses/$pkgname"
