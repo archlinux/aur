@@ -1,0 +1,15 @@
+pkgbase = swaykbdd
+	pkgdesc = Per-window keyboard layouts for Sway (KBDD replacement)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/artemsen/swaykbdd
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	depends = json-c
+	source = swaykbdd-1.0.tar.gz::https://github.com/artemsen/swaykbdd/archive/v1.0.tar.gz
+	md5sums = d7371d58205468ac73dfdbe9975f8c41
+
+pkgname = swaykbdd
+
