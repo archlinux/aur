@@ -1,12 +1,12 @@
 pkgbase = mpy-cross
 	pkgdesc = MicroPython cross compiler compiles .py scripts into .mpy files
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/micropython/micropython/tree/master/mpy-cross
 	arch = any
 	license = MIT
 	source = https://github.com/micropython/micropython/releases/download/v1.12/micropython-1.12.tar.gz
-	b2sums = c95907e0f03b3dba69b4f756915258e4ef212e4b3d78f89af9daa723d029ae7823b5a6b426bc9536fe58b46d90918d98c08f33e4f6c381a747482992b6931c68
+	sha256sums = be2041924496f49b580f06c2d328c7757bbc7b62408abb11841ebeb87302c575
 
 pkgname = mpy-cross
 
