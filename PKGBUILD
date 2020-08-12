@@ -1,22 +1,17 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=deheader
-pkgver=1.6
-pkgrel=4
+pkgver=1.7
+pkgrel=1
 pkgdesc='Find and optionally remove unneeded includes in C or C++ source files'
 arch=('any')
 url='http://www.catb.org/~esr/deheader/'
 license=('BSD')
 depends=('python')
 source=("$url/$pkgname-$pkgver.tar.gz" 'deheader_use-system-python.patch')
-noextract=("$pkgname-$pkgver.tar.gz")
-sha512sums=('8278d845bf618aabe1fb1da77fb99f6de5efe76a8bd8ae12da0327c0e4df184b7c4d50b2ac2be4a3dd271b8b010818fef83cd80d81f2be2b04bd09e2fee1cea3'
-            'e864cd32dca820844c5d4a0ff4f15f18bf7be53231daba54111ea914cbd594f9d0244e4ec05cf806ef85a86662ce434acc41ace97106e846ddb7409be793a0d3')
+sha512sums=('611c7c71a2a5c79ca79fd0de26b53fdd10a7e4b090330c35c3f7d56737b0b3c6736a6b98ca568320a36452a157af4642912e78d02c77bd43c2ef32541f4a09ed'
+            '1f4d63ec337ed2f4672124abae2637605f88e3580205b744d82d505ab0d3cfe67988eb2f5c698d2a41b908c99ce66fe7da8b965073465b80ccadc1a9b0d2a72b')
 
 prepare() {
-	# Invalid hardlink in release tarball leads to bsdtar errors during extraction
-	# (https://gitlab.com/esr/deheader/issues/7)
-	bsdtar --extract -s '|deheader-1.6/deheader.1||R' --file "$pkgname-$pkgver.tar.gz"
-
 	cd "$pkgname-$pkgver"
 	patch --strip=1 --input="$srcdir/deheader_use-system-python.patch"
 }
