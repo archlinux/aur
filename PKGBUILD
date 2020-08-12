@@ -3,32 +3,25 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-git
-pkgver=5.5r20200331.11125
+pkgver=5.5r20200810.11231
 _majorver=5.5
 pkgrel=1
 pkgdesc="A command-line driven interactive function and data plotting utility - git version"
 arch=('i686' 'x86_64')
 url="https://github.com/gnuplot/gnuplot"
 license=('custom')
-depends=('gd'  'lua' 'qt5-svg' 'pango')
+depends=('gd' 'lua' 'qt5-svg' 'pango' 'libcerf')
 makedepends=('git' 'qt5-tools' 'emacs')
-provides=('gnuplot=5.3')
+provides=("gnuplot=${_majorver}")
 conflicts=('gnuplot')
-source=("${pkgname%-git}::git+https://git.code.sf.net/p/gnuplot/gnuplot-main" lua53_compat.patch)
-sha256sums=('SKIP'
-            'bfd8a61abbf4491c74225cb9fd252619d4fc29751838bcb4c0639ffe05a00695')
-options=('!makeflags')
+source=("${pkgname%-git}::git+https://git.code.sf.net/p/gnuplot/gnuplot-main")
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
   printf "%sr%s.%s" $(echo $_majorver) $(git log -1 --format="%cd" --date=short | tr -d '-') \
 	 "$(git rev-list --count HEAD)"
 }
-
-prepare() {
-  cd ${pkgname%-git}
-  patch -p1 < "$srcdir"/lua53_compat.patch
-}  
 
 build() {
   cd ${pkgname%-git}
@@ -39,7 +32,7 @@ build() {
 	  --with-texdir=/usr/share/texmf \
 	  --with-readline=gnu \
 	  --disable-wxwidgets \
-	  --without-libcerf \
+	  --enable-kpsexpand \
 	  --with-qt=qt5 
   make pkglibexecdir=/usr/bin
   cd docs
