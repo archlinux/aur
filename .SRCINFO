@@ -1,12 +1,12 @@
 pkgbase = i3-workspace-brightness
 	pkgdesc = Utility to auto-adjust the brightness of i3wm workspaces
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/orhun/i3-workspace-brightness
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	source = i3-workspace-brightness-1.0.0.tar.gz::https://github.com/orhun/i3-workspace-brightness/archive/1.0.0.tar.gz
+	source = i3-workspace-brightness-1.0.1.tar.gz::https://github.com/orhun/i3-workspace-brightness/archive/1.0.1.tar.gz
 	sha512sums = SKIP
 
 pkgname = i3-workspace-brightness
