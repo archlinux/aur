@@ -1,5 +1,5 @@
 pkgbase = dbeaver-ce-latest-deb
-	pkgdesc = DBeaver Community Edition
+	pkgdesc = DBeaver Community Edition, Universal Database Manager and SQL Client
 	pkgver = 7.1.4
 	pkgrel = 1
 	url = https://dbeaver.io

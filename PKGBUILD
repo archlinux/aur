@@ -4,7 +4,7 @@
 pkgname=dbeaver-ce-latest-deb
 pkgver=7.1.4
 pkgrel=1
-pkgdesc="DBeaver Community Edition"
+pkgdesc="DBeaver Community Edition, Universal Database Manager and SQL Client"
 arch=('x86_64')
 url="https://dbeaver.io"
 license=('GPL')
