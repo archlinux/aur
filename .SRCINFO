@@ -1,7 +1,7 @@
 pkgbase = itch-setup-git
 	pkgdesc = An installer for the itch.io desktop app
 	pkgver = 1.24.0.r0.g083c5ca
-	pkgrel = 1
+	pkgrel = 2
 	url = https://itch.io/
 	arch = x86_64
 	arch = i686

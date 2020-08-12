@@ -9,7 +9,7 @@ depends=()
 makedepends=('git' 'go-pie' 'npm')
 provides=('itch' 'kitch')
 pkgver=1.24.0.r0.g083c5ca
-pkgrel=1
+pkgrel=2
 source=(
   "git+https://github.com/itchio/${_gitname}.git"
 )
@@ -34,6 +34,7 @@ build() {
   cd "$_gitname"
   go get -v -u
   go build
+  go clean -modcache
 }
 
 package() {
