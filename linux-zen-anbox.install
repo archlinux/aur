@@ -1,0 +1,3 @@
+post_install() {
+	echo "Be sure to enable anbox-container-manager.service, and add anbox to your initramfs."
+}
