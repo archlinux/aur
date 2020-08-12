@@ -1,0 +1,13 @@
+pkgbase = happy-times-font
+	pkgdesc = A typeface mixing human calligraphy and geometric shapes, from Velvetyne Type Foundry
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://velvetyne.fr/fonts/happy-times
+	arch = any
+	license = OFL
+	source = https://gitlab.com/velvetyne/Happy-Times-at-the-IKOB/-/archive/0fc4cf5da8c67bd19c3b88b20f233a3564516427/happy-times-1.000.tar.bz2
+	sha256sums = 9927092f67cc8bf8b021c2f55aa9c9c2362924ef719922cbcff33bd1df0bb190
+
+pkgname = otf-happy-times
+	provides = happy-times-font
+
