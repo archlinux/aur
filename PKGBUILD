@@ -3,7 +3,7 @@
 pkgname=dovecot-fts-xapian
 _reponame=fts-xapian
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Dovecot FTS plugin based on Xapian"
 arch=(x86_64)
