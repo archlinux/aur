@@ -9,7 +9,7 @@ license=('MIT')
 arch=('any')
 makedepends=('git')
 depends=('fzf')
-optdepends=('git-delta-git: improved diff highlighting'
+optdepends=('git-delta: improved diff highlighting'
             'diff-so-fancy: improved diff highlighting'
             'bat: syntax highlighting'
             'exa')
