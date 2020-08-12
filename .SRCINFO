@@ -2,13 +2,14 @@ pkgbase = whatsapp-nativefier-notray-hook
 	pkgdesc = Pacman hook to disable whatsapp-nativefier tray after install or upgrade.
 	pkgver = 1
 	pkgrel = 1
+	install = whatsapp-nativefier-notray-hook.install
 	arch = any
-	license = GPL
+	license = MIT
 	depends = whatsapp-nativefier
 	source = whatsapp-nativefier-notray.hook
 	source = whatsapp-nativefier-notray
-	md5sums = SKIP
-	md5sums = SKIP
+	sha1sums = 7288399ae0ece37b1e1d0b8515145bcd24c005c6
+	sha1sums = bd27f755644f15ea26fbbc8004e62f93f852fefe
 
 pkgname = whatsapp-nativefier-notray-hook
 

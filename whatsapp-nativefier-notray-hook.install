@@ -1,0 +1,4 @@
+post_install() {
+	echo "Disabling tray in the current whatsapp-nativefier install"
+	sed -i 's/"tray":true/"tray":false/g' /opt/whatsapp-nativefier/resources/app/nativefier.json
+}
