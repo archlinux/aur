@@ -6,7 +6,7 @@ arch=('x86_64' 'i686')
 url='https://itch.io/'
 license=('MIT')
 depends=()
-makedepends=('git' 'go' 'npm')
+makedepends=('git' 'go-pie' 'npm')
 provides=('itch' 'kitch')
 pkgver=1.24.0.r0.g083c5ca
 pkgrel=1
@@ -32,7 +32,8 @@ build() {
   export GOBIN="$GOPATH/bin"
   mkdir -p $GOPATH $GOBIN
   cd "$_gitname"
-  go get -v -tags gtk_3_18
+  go get -v -u
+  go build
 }
 
 package() {
