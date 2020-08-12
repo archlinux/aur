@@ -1,4 +1,5 @@
-# Maintainer: Giusy Margarita <kurmikon at libero dot it>
+# Maintainer: Nico <desoxhd@gmail.com>
+# Contributor: Giusy Margarita <kurmikon at libero dot it>
 
 pkgname=korla-icon-theme
 pkgver=1.2.9
