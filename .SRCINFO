@@ -1,0 +1,30 @@
+pkgbase = discord-development
+	pkgdesc = All-in-one voice and text chat for gamers that's free and secure.
+	pkgver = 0.0.92
+	pkgrel = 1
+	url = https://discord.com/
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = libnotify
+	depends = libxss
+	depends = glibc
+	depends = alsa-lib
+	depends = nspr
+	depends = nss
+	depends = xdg-utils
+	depends = libcups
+	optdepends = libpulse: For pulseaudio support
+	optdepends = noto-fonts-emoji: Google font for emoji support.
+	optdepends = ttf-symbola: Font for emoji support.
+	optdepends = noto-fonts-cjk: Font for special characters such as /shrug face.
+	provides = discord
+	source = https://dl-development.discordapp.net/apps/linux/0.0.92/discord-development-0.0.92.tar.gz
+	source = LICENSE
+	source = discord-development.sh
+	sha256sums = c907fc049a88aa51952234ae85b068303246e4ca80e4c7aa01127441f2e2bce4
+	sha256sums = 9be5f85421c9094c390c25bf1f45157c3c8dcf592feb8acb0810a61f11d80b90
+	sha256sums = 105aa35a4babefed67893e3f62a5f8d758abc958edbde7c6a6686b403ac24f6b
+
+pkgname = discord-development
+
