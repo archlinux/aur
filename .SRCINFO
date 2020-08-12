@@ -1,25 +1,24 @@
 pkgbase = watchdog-ddns
 	pkgdesc = 开箱即用的可常驻 Dynamic DNS 客户端，现已支持 DNSPod 阿里云 Cloudflare，支持网卡 IP
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/yzy613/watchdog-ddns
 	arch = any
 	license = Apache
 	makedepends = go
-	provides = watchdog-ddns-git
-	provides = watchdog-ddns-bin
-	conflicts = watchdog-ddns-git
-	conflicts = watchdog-ddns-bin
-	backup = etc/watchdog-ddns/conf/client.json
-	backup = etc/watchdog-ddns/conf/server.json
-	source = watchdog-ddns-1.2.0.tar.gz::https://github.com/yzy613/watchdog-ddns/archive/v1.2.0.tar.gz
+	source = watchdog-ddns-1.2.1.tar.gz::https://github.com/yzy613/watchdog-ddns/archive/v1.2.1.tar.gz
 	source = watchdog-ddns-server.service
 	source = watchdog-ddns-client.service
-	sha256sums = ab15035d8189c89afb89af65c649db71e4972498244d2704f49ca5fa7219bb22
-	sha256sums = 716b1ef0bb2ec291b2abebf0b638c92b5c4155de1254740176ce24c8c3d2ac77
-	sha256sums = 1450f602fae151903290374b717ecc08d34da0df17f0ad161f902d736b91da33
+	sha256sums = 30a9804b6494473fdc3693504b3c78a3ab77ff3fc8cbf954f122eebc0edce0fd
+	sha256sums = e5d1cd8822d45ed8586ca23f8f893fda6636171c9109341e05816355089237bc
+	sha256sums = 245e4aa6bb204ca0cecef5d3e22643935d187dca068bb23562f604f3277ae5ed
 
 pkgname = watchdog-ddns-server
+	backup = etc/watchdog-ddns/server.json
 
 pkgname = watchdog-ddns-client
+	backup = etc/watchdog-ddns/client.json
+	backup = etc/watchdog-ddns/aliyun.json
+	backup = etc/watchdog-ddns/cloudflare.json
+	backup = etc/watchdog-ddns/dnspod.json
 

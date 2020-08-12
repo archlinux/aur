@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/watchdog-ddns-client -conf_path /etc/watchdog-ddns/conf
+ExecStart=/usr/bin/watchdog-ddns-client -conf_path /etc/watchdog-ddns/
 Restart=on-failure
 RestartSec=2
 

@@ -1,21 +1,18 @@
 pkgbase=watchdog-ddns
 pkgname=("${pkgbase}-server" "${pkgbase}-client")
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='开箱即用的可常驻 Dynamic DNS 客户端，现已支持 DNSPod 阿里云 Cloudflare，支持网卡 IP'
 arch=('any')
 url="https://github.com/yzy613/${pkgbase}"
 license=('Apache')
 makedepends=('go')
-provides=("$pkgbase"-git "$pkgbase"-bin)
-conflicts=("$pkgbase"-git "$pkgbase"-bin)
-backup=('etc/watchdog-ddns/conf/client.json' 'etc/watchdog-ddns/conf/server.json')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/yzy613/${pkgbase}/archive/v${pkgver}.tar.gz"
         "${pkgname[0]}.service"
         "${pkgname[1]}.service")
-sha256sums=('ab15035d8189c89afb89af65c649db71e4972498244d2704f49ca5fa7219bb22'
-            '716b1ef0bb2ec291b2abebf0b638c92b5c4155de1254740176ce24c8c3d2ac77'
-            '1450f602fae151903290374b717ecc08d34da0df17f0ad161f902d736b91da33')
+sha256sums=('30a9804b6494473fdc3693504b3c78a3ab77ff3fc8cbf954f122eebc0edce0fd'
+            'e5d1cd8822d45ed8586ca23f8f893fda6636171c9109341e05816355089237bc'
+            '245e4aa6bb204ca0cecef5d3e22643935d187dca068bb23562f604f3277ae5ed')
 
 prepare(){
   cd "$pkgbase-$pkgver"
@@ -41,26 +38,34 @@ build() {
     ./main-code/server/watchdog-ddns-server.go
 }
 
+packaging() {
+  # binary
+  install -Dm755 build/${1} ${pkgdir}/usr/bin/${1}
+
+  # conf
+  install -dm 755 ${pkgdir}/etc/${pkgbase}
+  ${pkgdir}/usr/bin/${1} -init -conf_path ${pkgdir}/etc/${pkgbase}/
+
+  # systemd service
+  install -Dm644 ${srcdir}/${1}.service ${pkgdir}/usr/lib/systemd/system/${1}.service
+}
+
 package_watchdog-ddns-server() {
   cd "$pkgbase-$pkgver"
-  install -Dm755 build/${pkgname} "$pkgdir"/usr/bin/${pkgname}
-
-  install -dm 755 ${pkgdir}/etc/${pkgbase}/conf
-  touch ${pkgdir}/etc/${pkgbase}/conf/server.json
-
-  install -dm 755 ${pkgdir}/usr/lib/systemd/system
-  install -Dm644 ${srcdir}/${pkgname}.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
+  
+  backup=('etc/watchdog-ddns/server.json')
+  
+  packaging $pkgname
 }
 package_watchdog-ddns-client() {
   cd "$pkgbase-$pkgver"
-  install -Dm755 build/${pkgname} "$pkgdir"/usr/bin/${pkgname}
 
-  install -dm 755 ${pkgdir}/etc/${pkgbase}/conf
-  touch ${pkgdir}/etc/${pkgbase}/conf/client.json
+  backup=('etc/watchdog-ddns/client.json'
+          'etc/watchdog-ddns/aliyun.json'
+          'etc/watchdog-ddns/cloudflare.json'
+          'etc/watchdog-ddns/dnspod.json')
 
-
-  install -dm 755 ${pkgdir}/usr/lib/systemd/system
-  install -Dm644 ${srcdir}/${pkgname}.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
+  packaging $pkgname
 }
 
 # vim: set sw=2 ts=2 et:
