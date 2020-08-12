@@ -2,7 +2,7 @@
 # Contributor: Nils Czernia <nils[at]czserver[dot]de>
 
 pkgname=librenms
-pkgver=1.64.1
+pkgver=1.66
 pkgrel=1
 pkgdesc='Autodiscovering PHP/MySQL/SNMP based network monitoring'
 arch=('any')
@@ -19,21 +19,29 @@ backup=("etc/webapps/${pkgname}/config.php"
         "etc/webapps/${pkgname}/.env"
         "etc/php/conf.d/${pkgname}.ini"
         "etc/cron.d/${pkgname}")
-source=("${pkgname}.sysusers"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
+        "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "${pkgname}.uwsgi"
         "apache.example.conf"
         "nginx.example.conf")
-sha512sums=('19fa542b7597adeccdb94add97102a86ba4a238ba44e999c6e8d186cb7d5ed0523893559719e0b8036acd90cdc1a908497c3027ed49b028fba729ed61ad34052'
+sha512sums=('ab51b4a7bbd39cd11de59ddc6d8c67a2b653e3458ad46d46a5e73b47da738cd2cdebf51868dfa8372df113e6df1b145e059628052163047facdbc76f772a354e'
+            '19fa542b7597adeccdb94add97102a86ba4a238ba44e999c6e8d186cb7d5ed0523893559719e0b8036acd90cdc1a908497c3027ed49b028fba729ed61ad34052'
             'ce020d1a85b9c897dacceb45840aae30e305b65d96854e19a4a58e3ddbc1c78694de1a8665a51c2fb53929f8f52c94bc0d918ab3fd06ede4935e8a617e755f24'
             'f575ed35f6fa1ae9ffd2b7c00e292de574e4a62e60fba7b653e9f55f4d987959be08331c08afa7afe8a616eb9f3a35f304912416f07ea170b70887bf8ff94c2f'
             '150aa9912d25502d9397f0c4a6831363c79c1603ff65151d4efc0061516ee19586f3cc38f08f9e60530176c103c845d0cc1a46f685cb22c1a8a7cb8db4ab6274'
             'cde868416a13353290e4063c937e13b029e616abe3416e4e7c906bbd8000f871429546335470bbc2b219c1bcc95d6ee0f79481ee765c7351bbed6487ad42fee4')
+b2sums=('db02c89f920116e48906fbab6a863cca7a03db47c3dd904a55bd1d85df9af62f2e125d7f57c24dd53b2543a01cc0224d9ed8646620a6ad725aa7328792289a61'
+        'f0c69bb17540b00df6cae0d29fbdfaf547de69a7e20ab31292a9b89bda8db1af332416165baec975bdbc41799ae5868ac1848b615195c960a4498cc2b86b581d'
+        '90cdfb3a448c63a5fbc1c79ae86a11131946a9e42bfe234561376ae0930522d429a8f3f68f0878dde1cb99985d557dd9b8f21cc23c091713cee304536149bbe5'
+        '2c00ee62d12c2fba040e1ebea9f11e0de453cbbc2a124e70f9dc362a2adbb848b8834c074739eb640150e12c502bcf917254f2987ac4922a47952d12c1614c80'
+        'afca25d3045ada5e7c96979ae9441b80f955a77c22841d1db2618201885cc43c1250cfa5a54342485484edcdac2136d7f468a72e7899138677bcb3e171cd4986'
+        'a2f6938fb6f679571d1909f80600cd29b50f77c86986d92862732ce7fc26a2543fa5b2e18875629ed732f8f37f28d857bb6e30090b152098c307a14e7d3e80ba')
 
 build(){
-  php -d 'extension=gd' -d 'extension=sockets' \
-    /usr/bin/composer create-project --no-dev -n ${pkgname}/${pkgname} ${pkgname}-${pkgver} ${pkgver}
   cd "${pkgname}-${pkgver}"
+  php -d 'extension=gd' -d 'extension=sockets' \
+    /usr/bin/composer install --no-interaction --prefer-dist --no-suggest --no-dev
   # make cron jobs compatible with package locations
   # disable daily.sh (update job)
   sed -e 's|/opt/librenms|/usr/share/webapps/librenms|g' \
