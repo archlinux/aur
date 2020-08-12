@@ -1,16 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=whitesur-gtk-theme-git
-pkgver=r8.b7385f7
+pkgver=r25.9adb711
 pkgrel=1
-pkgdesc="MacOS Big Sur like theme for Gnome desktops"
+pkgdesc="MacOS Big Sur like theme for GNOME desktops"
 arch=('any')
 url="https://github.com/vinceliuice/WhiteSur-gtk-theme"
 license=('GPL')
 depends=('gtk-engine-murrine' 'gtk-engines' 'gtk3')
 makedepends=('git' 'sassc' 'optipng' 'inkscape')
 optdepends=('whitesur-icon-theme-git: matching icon theme'
-            'mcmojave-circle-icon-theme: suggested icon theme'
-            'mcmojave-cursors: suggested cursor theme'
+            'whitesur-cursor-theme-git: matching cursor theme'
             'plank: for included plank theme')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
