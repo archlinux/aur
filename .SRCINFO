@@ -1,16 +1,17 @@
 pkgbase = python-sn3218
-	pkgdesc = Python bindings for SN3218 18-channel PWM LED driver.
-	pkgver = r11.656910a
+	pkgdesc = Python library for the SN3218 18-channel LED driver.
+	pkgver = 1.2.7
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/pimoroni/sn3218
 	arch = armv6h
 	license = GPL
 	makedepends = python
 	makedepends = git
 	depends = python
-	depends = python-smbus
-	source = python-sn3218::git://github.com/pimoroni/sn3218.git
-	sha256sums = SKIP
+	depends = python-smbus-git
+	source = python-sn3218::https://github.com/pimoroni/sn3218/archive/v1.2.7.tar.gz
+	sha256sums = db6745bb1a1438509221ff13bccf3d7247ea26c1668d9256c36d5ca451ed6291
 
 pkgname = python-sn3218
 

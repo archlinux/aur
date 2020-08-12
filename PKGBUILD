@@ -1,30 +1,25 @@
-# Maintainer: Michael Goehler <somebody dot here at gmx dot de>
+# Maintainer: Michal Wojdyla <micwoj9292 at gmail dot com>
+# Contributor: Michael Goehler <somebody dot here at gmx dot de>
 
 pkgname=python-sn3218
-pkgver=r11.656910a
+epoch=1
+pkgver=1.2.7
 pkgrel=1
-pkgdesc="Python bindings for SN3218 18-channel PWM LED driver."
+pkgdesc="Python library for the SN3218 18-channel LED driver."
 arch=('armv6h')
 url="https://github.com/pimoroni/sn3218"
 license=('GPL')
-depends=('python' 'python-smbus')
+depends=('python' 'python-smbus-git')
 makedepends=('python' 'git')
-source=($pkgname::git://github.com/pimoroni/sn3218.git)
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=($pkgname::https://github.com/pimoroni/sn3218/archive/v"$pkgver".tar.gz)
+sha256sums=('db6745bb1a1438509221ff13bccf3d7247ea26c1668d9256c36d5ca451ed6291')
 
 build() {
-  cd "$srcdir/$pkgname/python"
+  cd "$srcdir/sn3218-"$pkgver"/library"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/$pkgname/python"
+  cd "$srcdir/sn3218-"$pkgver"/library"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:
