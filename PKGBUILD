@@ -6,8 +6,8 @@
 pkgname=pi-hole-ftl
 _pkgname=FTL
 _servicename=pihole-FTL
-pkgver=5.1
-pkgrel=3
+pkgver=5.2
+pkgrel=1
 _now=`date +%N`
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
@@ -26,8 +26,8 @@ source=($pkgname-v$pkgver.tar.gz::"https://github.com/pi-hole/FTL/archive/v$pkgv
         "$pkgname.service"
         "$pkgname.db"
         "$pkgname.conf")
-md5sums=('546936fe650370a15fcc4111352c072c'
-         'aba775c8297ac1dbdf8ecd250024568b'
+md5sums=('f97134439dd96f59180d49e6a9d4f245'
+         '89979ad786434e577536008f82e7e161'
          'ca844c23699ba64777571253bc7ccb21'
          '455c38b73491bf641e422be3652698b7'
          '5e135fd2729441f908d848a45b1ff289'
@@ -46,7 +46,7 @@ build() {
 
 package() {
   cd "$srcdir"
-  install -Dm755 "$_pkgname"-$pkgver/pihole-FTL "${pkgdir}"/usr/bin/pihole-FTL
+  install -Dm775 "$_pkgname"-$pkgver/pihole-FTL "${pkgdir}"/usr/bin/pihole-FTL
   
   install -Dm644 "$pkgname.tmpfile" "$pkgdir"/usr/lib/tmpfiles.d/$pkgname.conf
   install -Dm644 "$pkgname.sysuser" "$pkgdir"/usr/lib/sysusers.d/$pkgname.conf
