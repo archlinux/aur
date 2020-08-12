@@ -17,13 +17,13 @@ optdepends=("flac: flac audio support"
             "libogg: vorbis audio support"
             "libvorbis: vorbis audio support")
 makedepends=("autoconf" "pkgconf")
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("$url/archive/v$pkgver.tar.gz")
 md5sums=("9b599abf4bcd66761fe99c024644f623")
 options=("!docs")
 install="$pkgname.install"
 
 build(){
- cd "${srcdir}/$pkgname-$pkgver"
+ cd "$srcdir/$pkgname-$pkgver"
  aclocal
  autoreconf -fi
  automake --add-missing
@@ -33,11 +33,11 @@ build(){
 }
 
 package(){
- cd "${srcdir}/$pkgname-$pkgver"
- make DESTDIR="${pkgdir}" install
+ cd "$srcdir/$pkgname-$pkgver"
+ make DESTDIR="$pkgdir" install
  # Rename files to avoid conflict with ices2
- mv "${pkgdir}/usr/bin/ices" "${pkgdir}/usr/bin/ices0"
- mv "${pkgdir}/usr/share/man1/ices.1" "${pkgdir}/usr/share/man1/ices0.1"
- install -Dm644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/COPYING"
+ mv "$pkgdir/usr/bin/ices" "$pkgdir/usr/bin/ices0"
+ mv "$pkgdir/usr/share/man1/ices.1" "$pkgdir/usr/share/man1/ices0.1"
+ install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
