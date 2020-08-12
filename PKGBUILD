@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=downzemall
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="A mass download manager based on the Qt5 framework and written in C/C++"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('libnotify: desktop notifications'
             'libappindicator-gtk3: tray icon')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/DownZemAll/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('7e27e7ef86078ad1b85ee9f2ab31ca21257e8f0aa0a34ac953889a1fbb518f2c'
+sha256sums=('f760b96f0feca3f508b4801dd3e1881b0566cd753a1478fa81181a5a72e1b842'
             '3cb8f2eefbd9f04dd4b3a706058d8ab82c42514db81fbfbdf213fc833ca01eff')
 
 prepare() {
@@ -49,7 +49,7 @@ package() {
 	install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
 	install -Dm644 src/icons/logo/DownZemAll.svg \
-		"$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.png"
+		"$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 	for icon_size in 16 24 32 48 64 128 256 512 1024; do
 		icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
 		install -d $pkgdir/$icons_dir
