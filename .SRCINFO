@@ -1,0 +1,13 @@
+pkgbase = backout-font
+	pkgdesc = A humanist typeface from Velvetyne with African Glyphic design
+	pkgver = 2.000
+	pkgrel = 1
+	url = https://velvetyne.fr/fonts/backout
+	arch = any
+	license = OFL
+	source = https://gitlab.com/velvetyne/backout/-/archive/3be76e8d9698905cf12381d2ae2cd9333c22b713/backout-2.000.tar.bz2
+	sha256sums = 532585ac9dd456ff8263cd1e7de2f401d6e14378a3c464125bf5680ddaa9053e
+
+pkgname = otf-backout
+	provides = backout-font
+
