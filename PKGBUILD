@@ -1,18 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('palenight-gtk-theme' 'amarena-gtk-theme' 'gruvterial-gtk-theme')
 pkgbase=material-gtk-framework
-pkgver=0.1.10
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Material GTK themes built with the Material GTK Framework"
+pkgdesc="GTK themes built with the GTK Theme Framework"
 arch=('any')
-url="https://github.com/JaxWilko/material-gtk-framework"
+url="https://github.com/jaxwilko/gtk-theme-framework"
 license=('GPL3')
 depends=('gtk3' 'gtk-engine-murrine' 'gtk-engines')
 makedepends=('sassc' 'inkscape' 'optipng')
 options=('!strip')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'git+https://github.com/vinceliuice/vimix-icon-theme.git')
-sha256sums=('e3e3bdc23325474f6ec241eb496e8247d1c8198fa3fce71cf9a9c6c335c49bda'
+sha256sums=('a94cb2d2934e61c8763905f3f974973b17fe30e5d7791c521ee0b0cf16bc907a'
             'SKIP')
 
 prepare() {
