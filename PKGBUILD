@@ -104,7 +104,7 @@ build () {
        --wrap-mode=nofallback \
        -D prefix=/usr \
        -D sysconfdir=/etc \
-       -D platforms=x11,wayland,drm \
+       -D platforms=x11,wayland \
        -D dri-drivers=i915,i965,r200,r100,nouveau \
        -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink \
        -D vulkan-drivers=amd,intel \
