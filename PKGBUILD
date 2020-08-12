@@ -4,7 +4,7 @@ _svt_hevc_ver='1.5.0'
 _svt_vp9_ver='0.2.2'
 
 pkgname=ffmpeg-full-git
-pkgver=4.4.r98638.g9c0beaf0d3
+pkgver=4.4.r98723.gbb59bdbcd1
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=(
         'libilbc' 'jack' 'kvazaar' 'lensfun' 'libmodplug' 'lame' 'opencore-amr'
         'openjpeg2' 'opus' 'pulseaudio' 'librabbitmq-c' 'rav1e' 'librsvg' 'rubberband'
         'rtmpdump' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc' 'svt-av1'
-        'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
+        'svt-vp9' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
         'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'x264' 'x265'
         'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
         'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
@@ -80,7 +80,7 @@ build() {
     
     ./configure \
         --prefix='/usr' \
-        --extra-cflags='-I/opt/cuda/include -I/usr/include/tensorflow' \
+        --extra-cflags='-I/opt/cuda/include' \
         --extra-ldflags='-L/opt/cuda/lib64' \
         \
         --disable-rpath \
@@ -154,7 +154,7 @@ build() {
         --enable-libssh \
         --enable-libsvthevc \
         --enable-libsvtav1 \
-        --enable-libtensorflow \
+        --disable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
         --disable-libtls \
