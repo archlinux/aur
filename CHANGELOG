@@ -1,5 +1,10 @@
+Version 6.02
+
+    - try to do as little own decoding as possible
+    - issue #8
+
 Version 6.01
-TODO
+
     - fixes of reported issues on github up to #7
 
 Version 6.00
@@ -40,7 +45,7 @@ Version 5.9
 
 Version 5.8
 9 November 2018
-    -fix problem handling IMAP errors introduced in 5.7.  Thanks: 
+    -fix problem handling IMAP errors introduced in 5.7.  Thanks:
     Andreas Reuleaux.
 
 Version 5.7
@@ -91,12 +96,12 @@ Version 5.0
     server's certificate does not match the domain name used to connect to
     it.  Thanks:  "Andre".
     -fix error message not actually giving the header field name incorrectly
-    specified as containing the envelope recipient address.  Thanks:  Hardy 
+    specified as containing the envelope recipient address.  Thanks:  Hardy
     Braunsdorf.
     -add new password_command configuration parameter for retrievers, allowing
-    getmail to retrieve the account password from any arbitrary external 
+    getmail to retrieve the account password from any arbitrary external
     command.  Suggestion:  "ng0".
-    
+
 Version 4.54.0
 19 February 2017
     -fix error running getmail_fetch introduced in 4.53.0.  Thanks: "fsckd"
@@ -113,29 +118,29 @@ Version 4.52.0
     -add `ignore_header_shrinkage` parameter to Filter_external for users who
     know it is normal for their particular filter to result in a smaller message
     header than the source message, for example when the filter encapsulates
-    the original message in a simpler wrapper message.  Thanks: "RW", 
+    the original message in a simpler wrapper message.  Thanks: "RW",
     Tristan Miller, Francesco Ariis.
-    -EXPERIMENTAL: when deleting a message from an IMAP mailbox, set the \Seen 
-    flag in addition to the the \Deleted flag.  This apparently prevents 
-    the ever-innovatively-broken MSExchange from sending a spurious incorrect 
-    disposition-notification message to the sender of the message.  I do not 
-    know if this will cause problems with other broken IMAP server 
+    -EXPERIMENTAL: when deleting a message from an IMAP mailbox, set the \Seen
+    flag in addition to the the \Deleted flag.  This apparently prevents
+    the ever-innovatively-broken MSExchange from sending a spurious incorrect
+    disposition-notification message to the sender of the message.  I do not
+    know if this will cause problems with other broken IMAP server
     implementations; please send a report to the getmail-user's mailing list if
     you see odd behaviour with this change.  Thanks: John Hein.
     -enable socket timeouts for IMAP SSL classes by default.  They were disabled
-    in the code because they were incompatible with SSL in older versions of 
+    in the code because they were incompatible with SSL in older versions of
     Python.  If you see problems with Python 2.6 or 2.7 now, please let me know.
-    
+
 Version 4.51.0
 11 September 2016
-    -fix exception when using MDA_External and an IMAP mailbox whose name 
+    -fix exception when using MDA_External and an IMAP mailbox whose name
     contains non-ASCII chars.  Thanks:  "drtmk".
 
 Version 4.50.0
 11 July 2016
     -maybe fix handling of OSX keychain passwords containing double-quote chars.
     Thanks: Teddy Wing, Patrick Asselman.
-    -fix getmail erroring out on IMAP folders containing i18n chars.  
+    -fix getmail erroring out on IMAP folders containing i18n chars.
     Thanks: Jan Stühler.
 
     Version 4.49.0
@@ -146,27 +151,27 @@ Version 4.50.0
 
 Version 4.48.0
 31 May 2015
-    -work around brain-damaged change in Python's poplib which causes 
+    -work around brain-damaged change in Python's poplib which causes
    message retrieval errors if any line of a message has more than
    2048 characters in it.
-    -restore link to moved Marc mailing list archive.  Thanks:  
+    -restore link to moved Marc mailing list archive.  Thanks:
     David J. Weller-Fahy.
 
 Version 4.47.0
 25 February 2015
-    -try to work around pathological breakage in one random POP server 
+    -try to work around pathological breakage in one random POP server
     implementation.  Thanks: Michael Thomas Kockmeyer.
     -remove dead marc.theaimsgroup.com list archive from docs.  Thanks:
     Miroslav Rovis.
-    -bugfix: if you combined IMAP IDLE mode with delete_after, getmail would, 
+    -bugfix: if you combined IMAP IDLE mode with delete_after, getmail would,
     after remaining connected to the server for the number of days configured,
     begin deleting messages immediately after retrieval instead of after the
     configured delay.  Now fixed.  Thanks: Johannes Weißl.
 
 Version 4.46.0
 6 April 2014
-    -fix --idle checking Python version incorrectly, resulting in incorrect 
-    warning about running with Python < 2.5.  Thanks: "Voytek", Krzysztof 
+    -fix --idle checking Python version incorrectly, resulting in incorrect
+    warning about running with Python < 2.5.  Thanks: "Voytek", Krzysztof
     Warzecha.
     -add missing support for SSL certificate checking in POP3 which broke
     POP retrieval in v4.45.0.  Requires Python 2.6 or newer.  Thanks: "mancha".
@@ -179,7 +184,7 @@ Version 4.45.0
 
 Version 4.44.0
 22 March 2014
-    -add extended SSL options for IMAP retrievers, allowing certificate 
+    -add extended SSL options for IMAP retrievers, allowing certificate
     verification and other features.  Thanks: Steven Murdoch.
     -fix missing plaintext versions of documentation.  Thanks: Osamu Aoki.
     -fix "Header instance has no attribute 'strip'" error which cropped up
@@ -219,7 +224,7 @@ Version 4.40.1
 
 Version 4.40.0
 21 April 2013
-    -convert SIGTERM to SIGINT so getmail can cleanup and exit normally if 
+    -convert SIGTERM to SIGINT so getmail can cleanup and exit normally if
     killed with a default signal.  Thanks: Carl Lei.
     -fix change which resulted in passing full protocol name to OSX keyring
     program, which can't handle it (restricted to 4-character code).
@@ -233,7 +238,7 @@ Version 4.39.1
 
 Version 4.39.0
 22 February 2013
-    -fix an oldmail filename issue that occurred with certain non-ASCII 
+    -fix an oldmail filename issue that occurred with certain non-ASCII
     characters in an IMAP mailbox name.  Thanks: Michael Kockmeyer.
 
 Version 4.38.0
@@ -241,13 +246,13 @@ Version 4.38.0
     -fix retrieving mail from an IMAP mailbox with non-ASCII characters in its
     name causing difficult-to-understand unicode errors during delivery.
     Thanks: "fsLeg", Krzysztof Warzecha.
-    
+
 Version 4.37.0
 27 January 2013
-    -handle IMAP servers which include "/" in message IDs better, so those 
+    -handle IMAP servers which include "/" in message IDs better, so those
     messages aren't always thought to be new.  Thanks: Bradley Rintoul.
     -record (IMAP) mailbox retrieved from in X-getmail-retrieved-from-mailbox:
-    header field, and make it available as %(mailbox) substitution in 
+    header field, and make it available as %(mailbox) substitution in
     MDA_external arguments.  Thanks: Les Barstow.
     -add delete_bigger_than option to allow removal of large messages after
     retrieval, even if not deleting messages otherwise.  Thanks: Jan Vereecke.
@@ -259,9 +264,9 @@ Version 4.36.0
 
 Version 4.35.0
 24 October 2012
-    -fix From_ quoting in mbox delivery; use of the Python stdlib function 
+    -fix From_ quoting in mbox delivery; use of the Python stdlib function
     meant getmail was incorrectly using mboxo-style quoting instead of
-    mboxrd quoting, probably since early in the v4 series.  
+    mboxrd quoting, probably since early in the v4 series.
     Thanks: Christoph Mitterer.
 
 Version 4.34.0
@@ -287,7 +292,7 @@ Version 4.32.0
 Version 4.31.0
 5 July 2012
     -improved backwards compatibility with pre-v.4.22.0 oldmail files, so IMAP
-    mail is not re-retrieved if you upgrade from a 4.22 or earlier to this one; 
+    mail is not re-retrieved if you upgrade from a 4.22 or earlier to this one;
     no user action necessary.  Thanks: Osamu Aoki, Tim van der Molen.
 
 Version 4.30.2
@@ -298,7 +303,7 @@ Version 4.30.2
 Version 4.30.1
 21 June 2012
     -silence a nuisance deprecation warning about the sets module when running
-    with Python >= 2.5 which was reintroduced in 4.29.0.  Thanks: Stephan 
+    with Python >= 2.5 which was reintroduced in 4.29.0.  Thanks: Stephan
     Schulz.
 
 Version 4.30.0
@@ -306,7 +311,7 @@ Version 4.30.0
     -fix breakage introduced in 4.29.0 where BrokenUIDLPOP3Retriever would fail
     with a TypeError at logout time.  Thanks: Scott Robbins, Stephan Schulz.
     -fix breakage introduced in 4.29.0 where deleted mail was not being expunged
-    from the last (or only) folder retrieved from in an IMAP session.  Thanks: 
+    from the last (or only) folder retrieved from in an IMAP session.  Thanks:
     Paul Howarth.
 
 Version 4.29.0
@@ -327,7 +332,7 @@ Version 4.28.0
     Thanks: Les Barstow.
     -do IMAP modified-utf7 conversion of mailbox names containing non-ASCII
     characters.  Thanks: A. Lapraitis, Randall Mason.
-    -add special ALL value for retrieving mail from all selectable IMAP 
+    -add special ALL value for retrieving mail from all selectable IMAP
     mailboxes in the account.
     -change IMAP retrieval strategy to retrieve all messages from a mailbox,
     then move on to the next mailbox, etc.  Should result in increased speed,
@@ -336,8 +341,8 @@ Version 4.28.0
 
 Version 4.27.0
 20 May 2012
-    -make use of IMAP BODY.PEEK configurable; set the IMAP retriever parameter 
-    `use_peek` to False to disable use of PEEK to get getmail's historical IMAP 
+    -make use of IMAP BODY.PEEK configurable; set the IMAP retriever parameter
+    `use_peek` to False to disable use of PEEK to get getmail's historical IMAP
     behaviour.
 
 Version 4.26.0
@@ -348,13 +353,13 @@ Version 4.26.0
 
 Version 4.25.0
 1 February 2012
-    -add support for storing POP/IMAP password in OSX keychain.  Thanks: Adam 
+    -add support for storing POP/IMAP password in OSX keychain.  Thanks: Adam
     Lazur.
 
 Version 4.24.0
 11 December 2011
-    -add an explicit expunge when closing an IMAP mailbox, for servers that 
-    incorrectly do not do this when the mailbox is closed.  Thanks: Nicolas 
+    -add an explicit expunge when closing an IMAP mailbox, for servers that
+    incorrectly do not do this when the mailbox is closed.  Thanks: Nicolas
     Pomarède.
     -fix incorrect section reference for `mailboxes` parameter in documentation.
     Thanks: Ross Boylan.
@@ -363,21 +368,21 @@ Version 4.24.0
 Version 4.23.0
 20 November 2011
 
-    -fix race if new message shows up in POP3 mailbox between running the UIDL 
+    -fix race if new message shows up in POP3 mailbox between running the UIDL
     and LIST commands.  Thanks: Roland Koebler, Osamu Aoki.
 
 Version 4.22.2
 12 November 2011
 
-  -fix an error when logging a bad response to an IMAP SELECT command, 
+  -fix an error when logging a bad response to an IMAP SELECT command,
   introduced in 4.21.0.  Thanks: "kureshii".
 
 Version 4.22.1
 30 September 2011
 
-  -fix BrokenUIDLPOP3Retriever breakage from 4.21.0.  Thanks: Scott Robbins, 
+  -fix BrokenUIDLPOP3Retriever breakage from 4.21.0.  Thanks: Scott Robbins,
   "hgolden".
-  
+
 Version 4.22.0
 25 September 2011
 
@@ -388,7 +393,7 @@ Version 4.22.0
 Version 4.21.0
 23 September 2011
 
-  -automatically open IMAP folders read-only if neither the delete nor 
+  -automatically open IMAP folders read-only if neither the delete nor
   delete_after options are in use; necessary to access chatlogs via Gmail.
   Thanks: Daniel M. Drucker.
   -avoid sorting msgids on each retrieval, reducing overhead when dealing with
@@ -413,17 +418,17 @@ Version 4.20.2
 Version 4.20.1
 7 Apr 2011
   -ensure correct remote address and port is included in the Received: trace
-  headers generated by getmail.  Previously the first address found for the 
+  headers generated by getmail.  Previously the first address found for the
   server was used even if another address was actually used to connect to the
   server.  Thanks: Frédéric Perrin.
   -add workaround for Python issue http://bugs.python.org/issue1389051 which
   affects Python < 2.5.3, causing message retrieval of large messages from IMAP4
-  SSL servers to consume pathologically large amounts of memory.  
+  SSL servers to consume pathologically large amounts of memory.
   Thanks: Bill Janssen.
 
 Version 4.20.0
 29 June 2010
-  -fix crap code from bad svn merge that slipped into 4.18.0, triggering 
+  -fix crap code from bad svn merge that slipped into 4.18.0, triggering
   exceptions in MDA_external configs.  Thanks: Paul Howarth.
 
 Version 4.19.0
@@ -433,11 +438,11 @@ Version 4.19.0
 Version 4.18.0
 26 June 2010
   -update broken link in FAQ.  Thanks: Stefan Kangas.
-  -strip a few extra problematic (on non-Unix systems) characters when 
+  -strip a few extra problematic (on non-Unix systems) characters when
   generating oldmail filenames; backslash was requested by Andy Ross.
   If upgrading and your current oldmail file contains any of these
-  characters: 
-      \ ; < > | 
+  characters:
+      \ ; < > |
   ... then rename it, replacing runs of one or more of those characters with
   a single "-".
   -improve clarity of message logged by getmail when an external program exits
@@ -457,13 +462,13 @@ Version 4.16.0
 
 Version 4.15.0
 2 December 2009
-  -default port for MultidropIMAPSSLRetriever was incorrect.  Thanks: David 
+  -default port for MultidropIMAPSSLRetriever was incorrect.  Thanks: David
   Lehn.
 
 Version 4.14.0
 23 November 2009
   -handle additional cases where IMAP (and for good measure, POP3) server is
-  broken and offers a message that it then fails to return.  Thanks: Eric 
+  broken and offers a message that it then fails to return.  Thanks: Eric
   Waguespack.
 
 Version 4.13.0
@@ -472,7 +477,7 @@ Version 4.13.0
 
 Version 4.12.0
 7 October 2009
-  -handle MSExchange failure to deliver message gracefully.  Thanks: Morty 
+  -handle MSExchange failure to deliver message gracefully.  Thanks: Morty
   Abzug.
   -documentation updates regarding Python IMAP memory bug.  Thanks: "spig".
   -fix bad tag in documentation.
