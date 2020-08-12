@@ -7,8 +7,8 @@ pkgdesc='GTK+ application to easily compress pdf files using Ghostscript'
 arch=('any')
 url='https://github.com/hkdb/Densify'
 license=('MIT')
-depends=('ghostscript' 'python-gobject')
-source=("${url}/archive/v${pkgver}.tar.gz"
+depends=('ghostscript' 'python' 'python-gobject')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}-wrapper.sh"
         "${pkgname}.desktop")
 sha256sums=('593108c30551efc82db7e3931714e3b2571e86ab93b4aef4a711ac610ce67ae0'
@@ -17,14 +17,13 @@ sha256sums=('593108c30551efc82db7e3931714e3b2571e86ab93b4aef4a711ac610ce67ae0'
 
 package() {
   install -Dm755 "${pkgname}-wrapper.sh" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgname}.desktop"
   cd "Densify-${pkgver}"
-  install -Dm755 "${pkgname}" "${pkgdir}/usr/share/${pkgname}/${pkgname}"
   install -Dm644 'desktop-icon.png' "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 'header.png' "${pkgdir}/usr/share/${pkgname}/header.png"
-  install -Dm644 'icon.png' "${pkgdir}/usr/share/${pkgname}/icon.png"
-  install -Dm644 'README.md' "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 -t "${pkgdir}/usr/share/${pkgname}" "${pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/share/${pkgname}" {header,icon}.png
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE'
 }
 
 # vim: ts=2 sw=2 et:
