@@ -1,4 +1,4 @@
-run_earlyhook(){
+run_hook(){
         /usr/bin/mkdir -p /dev/binderfs
 	/usr/bin/mount -t binder binder /dev/binderfs
 }
