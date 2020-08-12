@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=nasc
-pkgver=0.6.1
+pkgver=0.7.4
 _qalculate_ver=9587044297dfe0f6de02df0af77c511236406a2a
 pkgrel=1
 pkgdesc='Do maths like a normal person.'
@@ -13,7 +13,7 @@ makedepends=(vala git meson intltool)
 conflicts=(nasc-git nasc-bzr)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/parnold-x/nasc/archive/$pkgver.tar.gz"
 		"libqalculate-$_qalculate_ver::git+https://github.com/parnold-x/libqalculate#commit=$_qalculate_ver")
-sha512sums=('fcb8b1c19349e18fdf81f3f6609c658b079880ff73caf40b8c8dd5e553cbb2cac11f6e58ea6caaf76105d83a44d9a9968bb6e2cfa06ccf1b425443ee6504c269'
+sha512sums=('23ed8e3facc20d8ae4a9f9d7927426ee298301254377af6318f5b22f48b30a400c64ecef5fbd81d62d53236ced7b39d47ef45c7d4c88473164483b57e81dc6a8'
             'SKIP')
 
 prepare () {
