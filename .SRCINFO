@@ -1,10 +1,25 @@
 pkgbase = material-gtk-framework
-	pkgdesc = Project renamed to gtk-theme-framework
-	pkgver = 0
-	pkgrel = 0
+	pkgdesc = GTK themes built with the GTK Theme Framework
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/jaxwilko/gtk-theme-framework
 	arch = any
 	license = GPL3
+	makedepends = sassc
+	makedepends = inkscape
+	makedepends = optipng
+	depends = gtk3
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	options = !strip
+	source = material-gtk-framework-0.2.0.tar.gz::https://github.com/jaxwilko/gtk-theme-framework/archive/v0.2.0.tar.gz
+	source = git+https://github.com/vinceliuice/vimix-icon-theme.git
+	sha256sums = a94cb2d2934e61c8763905f3f974973b17fe30e5d7791c521ee0b0cf16bc907a
+	sha256sums = SKIP
 
-pkgname = material-gtk-framework
+pkgname = palenight-gtk-theme
+
+pkgname = amarena-gtk-theme
+
+pkgname = gruvterial-gtk-theme
 
