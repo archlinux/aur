@@ -1,6 +1,6 @@
 pkgbase = python39
 	pkgdesc = Major release 3.9 of the Python high-level programming language
-	pkgver = 3.9.0b5
+	pkgver = 3.9.0rc1
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = python39
 	optdepends = tk: for tkinter
 	optdepends = sqlite
 	options = !makeflags
-	source = https://www.python.org/ftp/python/3.9.0/Python-3.9.0b5.tar.xz
-	sha256sums = 6ce1d77cba57cccb3e43cdb76217beacd7c7cd66a17d065523e4139cb5401564
+	source = https://www.python.org/ftp/python/3.9.0/Python-3.9.0rc1.tar.xz
+	sha256sums = fba7a73e7359356967b853c234b97f4a4114f02b8bd60d6bde6e2f97bcdfdc70
 
 pkgname = python39
 

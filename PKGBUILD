@@ -2,7 +2,7 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python39
-pkgver=3.9.0b5
+pkgver=3.9.0rc1
 pkgrel=1
 _pyver=3.9.0
 _pybasever=3.9
@@ -16,7 +16,7 @@ makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
 source=(https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz)
-sha256sums=('6ce1d77cba57cccb3e43cdb76217beacd7c7cd66a17d065523e4139cb5401564')
+sha256sums=('fba7a73e7359356967b853c234b97f4a4114f02b8bd60d6bde6e2f97bcdfdc70')
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
