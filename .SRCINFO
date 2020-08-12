@@ -6,6 +6,7 @@ pkgbase = gtk-recordmydesktop
 	arch = any
 	license = GPL3
 	license = LGPL3
+	makedepends = autoconf
 	makedepends = automake>=1.5.0
 	depends = gtk2
 	depends = python2>=2.4.0
