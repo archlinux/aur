@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=akira
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc='Native Linux App for UI and UX Design built in Vala and Gtk'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ makedepends=('appstream'
              'meson'
              'vala')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('56d11b1688e41e1495fbad4f47220403d8823a48a18d6f48c6780baf1f27c993')
+sha256sums=('1fd59caf8d4d32934552ac643fca5f31fe9365ae46080d9bb2fac88e73c0faed')
 
 build() {
   cd "${pkgname^}-$pkgver"
