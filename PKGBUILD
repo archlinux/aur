@@ -2,7 +2,7 @@
 # Maintainer: Abraham Levine <echo iue@trnspljc.890 | tr ietursnpl890jc acprlsurecomed>
 
 pkgname=aptpac
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="a pacman wrapper with syntax from debian's apt"
 arch=('any')
@@ -19,6 +19,7 @@ conflicts=('apt' 'apt-git' 'aptpac-git')
 package() {
         cd "${_gitname}-${pkgver}" &&
         install -m 755 -D aptpac "${pkgdir}/usr/bin/aptpac"
+        install -m 755 -D LICENSE "${pkgdir}/usr/share/licenses/aptpac/LICENSE"
         cd "${pkgdir}/usr/bin/"
         ln -s "aptpac" "apt"
         ln -s "aptpac" "apt-get"
