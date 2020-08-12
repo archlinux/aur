@@ -1,7 +1,7 @@
 # Maintainer: Felix Springer <felixspringer149@gmail.com>
 
 pkgname=blucontrol
-pkgver=0.2.1.0
+pkgver=0.2.1.1
 pkgrel=1
 pkgdesc="Configurable blue light filter"
 url="https://github.com/jumper149/${pkgname}"
@@ -23,19 +23,16 @@ depends=(
 source=(
   "${url}/archive/v${pkgver}.tar.gz"
   "compile-dynamically.patch"
-  "Setup.hs"
 )
 sha256sums=(
-  '131632f6a952cb8325726c368a8fedd670aa7e0c9ce57b4cc7dc00270a4e6f39'
+  '6a0f9535de073ab0ae901217d97258cd3c7088a2af424a02cf70c8c89aeb6ba4'
   '5f535fb64bf4da30547721608039eab4a399547a752dbf405baff36f0c9f6286'
-  '5066653559d4d6134b022d66a634a17fdcf8db35d28b447e581fec284afa4689'
 )
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
   patch -p1 -i "${srcdir}/compile-dynamically.patch"
-  cp "${srcdir}/Setup.hs" "./"
 }
 
 build() {

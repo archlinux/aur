@@ -1,6 +1,6 @@
 pkgbase = blucontrol
 	pkgdesc = Configurable blue light filter
-	pkgver = 0.2.1.0
+	pkgver = 0.2.1.1
 	pkgrel = 1
 	url = https://github.com/jumper149/blucontrol
 	arch = x86_64
@@ -16,12 +16,10 @@ pkgbase = blucontrol
 	depends = haskell-x11
 	depends = libx11
 	depends = libxrandr
-	source = https://github.com/jumper149/blucontrol/archive/v0.2.1.0.tar.gz
+	source = https://github.com/jumper149/blucontrol/archive/v0.2.1.1.tar.gz
 	source = compile-dynamically.patch
-	source = Setup.hs
-	sha256sums = 131632f6a952cb8325726c368a8fedd670aa7e0c9ce57b4cc7dc00270a4e6f39
+	sha256sums = 6a0f9535de073ab0ae901217d97258cd3c7088a2af424a02cf70c8c89aeb6ba4
 	sha256sums = 5f535fb64bf4da30547721608039eab4a399547a752dbf405baff36f0c9f6286
-	sha256sums = 5066653559d4d6134b022d66a634a17fdcf8db35d28b447e581fec284afa4689
 
 pkgname = blucontrol
 
