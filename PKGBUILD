@@ -2,7 +2,7 @@
 
 pkgname=onvifviewer
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc='ONVIF camera viewer for Plasma Mobile and Linux desktop'
 arch=(x86_64)
 license=('GPL3')

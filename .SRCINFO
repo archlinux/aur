@@ -1,7 +1,7 @@
 pkgbase = onvifviewer
 	pkgdesc = ONVIF camera viewer for Plasma Mobile and Linux desktop
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake>=3.7
