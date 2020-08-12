@@ -9,7 +9,7 @@ depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
 pkgver=2.45.3.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -62,7 +62,7 @@ build() {
   # is not exactly the same as -ldflags "-extldflags '-foo'" use the array trick
   # to pass exactly what we want
   flags=(-buildmode=pie -ldflags "-s -extldflags '$LDFLAGS'")
-  staticflags=(-buildmode=pie -ldflags "-s -extldflags '$LDFLAGS -static'")
+  staticflags=(-buildmode=pie -ldflags "-s -linkmode external -extldflags '$LDFLAGS -static'")
   # Build/install snap and snapd
   go build "${flags[@]}" -o "$srcdir/go/bin/snap" "${_gourl}/cmd/snap"
   go build "${flags[@]}" -o "$srcdir/go/bin/snapd" "${_gourl}/cmd/snapd"
