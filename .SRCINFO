@@ -1,13 +1,14 @@
 pkgbase = git-delta-bin
 	pkgdesc = A viewer for git and diff output
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dandavison/delta
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = MIT
+	provides = git-delta
 	conflicts = git-delta
 	conflicts = git-delta-git
 	source_i686 = https://github.com/dandavison/delta/releases/download/0.4.1/git-delta_0.4.1_i386.deb
