@@ -1,0 +1,15 @@
+pkgbase = blink-bin
+	pkgdesc = Instant code search, source files locator. Index management for multiple projects
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/ychclone/blink
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	provides = blink
+	options = !strip
+	source = blink-1.4.AppImage::https://github.com/ychclone/blink/releases/download/1.4/Blink-x86_64.AppImage
+	sha256sums = 8587692dcb24f7087aa2f7ec7da02a6f1dd9fe80206ace0b453affb58dfe6124
+
+pkgname = blink-bin
+
