@@ -1,0 +1,13 @@
+pkgbase = compagnon-font
+	pkgdesc = A multi-style typeface inspired by Typewriter specimens, from Velvetyne Type Foundry
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://velvetyne.fr/fonts/compagnon
+	arch = any
+	license = OFL
+	source = https://gitlab.com/velvetyne/compagnon/-/archive/4f2344df5adb6eaf9ffd9215c5406c0729fb7aa1/compagnon-1.000.tar.bz2
+	sha256sums = ddc2a4080b1472c2420df6df31d8e1f839b25f26468c525b5f24389ae15b2fcb
+
+pkgname = otf-compagnon
+	provides = compagnon-font
+
