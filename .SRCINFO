@@ -1,0 +1,13 @@
+pkgbase = murmure-font
+	pkgdesc = A custom typeface created for Agence Murmure, from Velvetyne Type Foundry
+	pkgver = 1.002
+	pkgrel = 1
+	url = https://velvetyne.fr/fonts/murmure
+	arch = any
+	license = custom:Velvetyne Open License
+	source = https://gitlab.com/velvetyne/murmure/-/archive/1969599c54206ad6427579cee9d1bb0f4665ddfa/murmure-1.002.tar.bz2
+	sha256sums = 237c797b48a299a0bed1c535db978a45861dce8c6234bcea6055e8a07b322f01
+
+pkgname = otf-murmure
+	provides = murmure-font
+
