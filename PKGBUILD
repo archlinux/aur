@@ -11,7 +11,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=20.2.0_devel.126685.b5558f2d2aa
+pkgver=20.3.0_devel.127075.6723addd8a7
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -132,15 +132,10 @@ build () {
        -D vulkan-overlay-layer=true \
        -D vulkan-device-select-layer=true \
        -D tools=[] \
-       -D zstd=enabled \
+       -D zstd=enabled
        
     meson configure _build
     
-    # quoted from https://www.mesa3d.org/meson.html
-    # Note: autotools automatically updated translation files (used by the DRI configuration tool) as part of the build process, Meson does not do this. 
-    # Instead, you will need do this: 
-    # ninja $NINJAFLAGS -C _build xmlpool-pot xmlpool-update-po xmlpool-gmo
-    # mesa devs handle driconf translation differently now, above command is no longer needed
     ninja $NINJAFLAGS -C _build
 }
 
