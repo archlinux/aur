@@ -1,34 +1,35 @@
-post_install() {
-  echo "    To add a ed25519 signature, first run \`dknewkey -k ed25519 selectorname\`
-    to generate a new keypair, then add to '/etc/dkimpy-milter/dkimpy-milter.conf'
-    the following lines:
+post_install(){
+ echo "To add an ed25519 signature, first run \`dknewkey -k ed25519 selectorname\`
+to generate a new keypair, then add to \"/etc/dkimpy-milter/dkimpy-milter.conf\"
+the following lines:
 
-KeyFileEd25519  /path/to/selectorname.key
-SelectorEd25519 selectorname
+    KeyFileEd25519  /path/to/selectorname.key
+    SelectorEd25519 selectorname
 
-    To configure postfix, add to '/etc/postfix/main.conf' the following lines:
+To configure postfix, add to \"/etc/postfix/main.conf\" the following lines:
 
-smtpd_milters = unix:/var/run/dkimpy-milter/dkimpy-milter.sock
-non_smtpd_milters = $smtpd_milters
-milter_default_action = accept
+    smtpd_milters = unix:/var/run/dkimpy-milter/dkimpy-milter.sock
+    non_smtpd_milters = $smtpd_milters
+    milter_default_action = accept
 
-    You will also need to modify '/etc/postfix/master.cf' to contain the following:
+You will also need to modify \"/etc/postfix/master.cf\" and add the following directives:
 
-smtp      inet  n       -       n       -       -       smtpd
-  -o smtpd_milters=unix:/var/run/dkimpy-milter/dkimpy-milter.sock
-  -o milter_macro_daemon_name=VERIFYING
+    smtp            inet  n      -      n      -     -      smtpd
+     -o milter_macro_daemon_name=VERIFYING
 
-submission      inet  n      -      n      -     -      smtpd
-  -o smtpd_milters=unix:/var/run/dkimpy-milter/dkimpy-milter.sock
-  -o milter_macro_daemon_name=ORIGINATING
+    submission      inet  n      -      n      -     -      smtpd
+     -o milter_macro_daemon_name=ORIGINATING
+
+    submissions     inet  n      -      n      -     -      smtpd
+     -o milter_macro_daemon_name=ORIGINATING
   
-    Don't forget to change the socket permissions in '/etc/dkimpy-milter/dkimpy-milter.conf'
-    according to your MTA:
+Don't forget to change the socket permissions in '/etc/dkimpy-milter/dkimpy-milter.conf'
+according to your MTA user group:
 
-UserID                  dkimpy-milter:postfix
+    UserID                  dkimpy-milter:postfix
 "
 }
 
-post_upgrade() {
-  post_install $1
+post_upgrade(){
+ post_install $1
 }
