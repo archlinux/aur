@@ -11,6 +11,7 @@ pkgbase = apache-orc
 	makedepends = snappy-static
 	makedepends = zlib-static
 	makedepends = zstd-static
+	depends = gcc-libs
 	options = staticlibs
 	source = orc-1.6.3.tar.gz::https://github.com/apache/orc/archive/rel/release-1.6.3.tar.gz
 	source = cmake.patch
