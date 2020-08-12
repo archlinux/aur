@@ -3,7 +3,7 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=pulseeffects-git
-pkgver=4.7.1.r2.g38355f59
+pkgver=4.7.3.r88.g497ce9de
 pkgrel=1
 pkgdesc='Audio Effects for Pulseaudio Applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -12,12 +12,11 @@ license=('GPL3')
 depends=('gtk3' 'gtkmm3' 'glibmm' 'libpulse' 'gstreamer' 'gst-plugins-good' 'gst-plugins-bad'
         'lilv' 'boost-libs' 'libsigc++' 'libsndfile' 'libsamplerate' 'zita-convolver' 'libebur128')
 makedepends=('meson' 'boost' 'itstool' 'appstream-glib'
-             'calf' 'zam-plugins' 'rubberband' 'mda.lv2')
+             'calf' 'zam-plugins' 'rubberband')
 optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'zam-plugins: maximizer'
             'rubberband: pitch shifting'
             'lsp-plugins: equalizer, delay'
-            'mda.lv2: loudness'
             'yelp: in-app help')
 source=("git+https://github.com/wwmm/pulseeffects.git")
 conflicts=(pulseeffects)
