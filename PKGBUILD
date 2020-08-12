@@ -1,12 +1,13 @@
+# Maintainer: Angel Perez <near1297@nauta.cu>
 # Maintainer: Daniel Case <daniel@dashlabs.org>
 # Maintainer: Andy Kluger <AndyKluger@gmail.com>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=electrum-dash
-_pkgname=Electrum-DASH
-pkgver=3.0.6.3
-pkgrel=3
+_pkgname=Dash-Electrum
+pkgver=3.3.8.6
+pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet, fork for DASH"
 arch=('any')
 depends=(
@@ -38,7 +39,7 @@ optdepends=(
 url="https://electrum-dash.org"
 license=(MIT)
 source=("https://github.com/akhavr/electrum-dash/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('45314890f229d0959b28fcb35d57d8d3416bf26c683bb629dec340fe6cb35105')
+sha256sums=('71d0387a208bc45eeec08a7c779993ff841562613b11f6107f79e540dc1f7282')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
