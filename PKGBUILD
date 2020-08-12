@@ -2,11 +2,11 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 _modname="ngx_brotli"
-_nginxver=1.19.1
+_nginxver=1.19.2
 
 pkgname=nginx-mainline-mod-brotli-git
 pkgver=r53.25f86f0
-pkgrel=1
+pkgrel=2
 pkgdesc="Brotli compression filter module for mainline nginx"
 arch=('any')
 depends=("nginx-mainline=$_nginxver" 'brotli')
@@ -25,7 +25,7 @@ validpgpkeys=(
   'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('a004776c64ed3c5c7bc9b6116ba99efab3265e6b81d49a57ca4471ff90655492'
+sha256sums=('7c1f7bb13e79433ee930c597d272a64bc6e30c356a48524f38fd34fa88d62473'
             'SKIP'
             'SKIP')
 
