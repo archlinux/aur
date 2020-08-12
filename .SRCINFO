@@ -1,0 +1,23 @@
+pkgbase = python-pyperclip-git
+	pkgdesc = A cross-platform clipboard module for Python (git)
+	pkgver = r197.d72f3ce
+	pkgrel = 1
+	url = https://github.com/asweigart/pyperclip
+	arch = any
+	license = BSD
+	checkdepends = xorg-server-xvfb
+	checkdepends = python-pytest
+	checkdepends = xsel
+	checkdepends = xclip
+	makedepends = python-setuptools
+	depends = python
+	optdepends = xclip: xclip backend
+	optdepends = xsel: xsel backend
+	optdepends = plasma-workspace: klipper backend
+	provides = python-pyperclip
+	conflicts = python-pyperclip
+	source = pyperclip::git+https://github.com/asweigart/pyperclip.git
+	sha512sums = SKIP
+
+pkgname = python-pyperclip-git
+
