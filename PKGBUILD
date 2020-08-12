@@ -3,15 +3,16 @@
 # Maintainer: liupold <rohhnch@protonmail.ch>
 
 pkgname=pidswallow-dev-git
-pkgrel=7
+pkgrel=8
 pkgver=2.0.d # dev
 pkgdesc="A script to swallow your terminal automatically"
 arch=(x86_64)
 url="https://github.com/Liupold/pidswallow/tree/dev"
 license=('APACHE')
-depends=(xdotool)
+depends=(xdo xorg-xprop xorg-xev xorg-xwininfo sh)
 makedepends=(git)
 checkdepends=(shellcheck)
+optdepends=('xdotool: Workspace/Desktop Management')
 provides=(pidswallow)
 conflicts=(pidswallow)
 
