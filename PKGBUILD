@@ -4,7 +4,7 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=puppetserver
-pkgver=6.12.0
+pkgver=6.12.1
 pkgrel=1
 pkgdesc="Server automation framework and application"
 arch=('any')
@@ -26,7 +26,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz.asc"
         'facter-3.14.9.gemspec')
-sha512sums=('31b515d365795ceaa6359f562ef9988c81c1dbd9a19f9101a83627f8c7eac5447f16e62275e15256dcc60c798f11024dde0cd2d4437305f5f40c49dd8a32f351'
+sha512sums=('9ad5d3e266f91b8a1ef09302a1f8889f139909fb20268f714fb894dcff2379a01c78baafdab1102a26c26903cefe92ac833c2b20e9ea6f8d379af2dd11c20407'
             'SKIP'
             '3341d62606d9426b4f810d873ec93b1c2888032dc5a1eb17afb38382f4f4463489a338d470367e8d129c1103efb9183bb941cc9de56815184f859823c99e91f9')
 validpgpkeys=('6F6B15509CF8E59E6E469F327F438280EF8D349F')
@@ -80,6 +80,7 @@ _app_logdir=${_app_logdir:=/var/log/puppetlabs/${_real_name}}
     ln -s "${_symbindir}/${_real_name}" "${pkgdir}/usr/bin/${_real_name}"
     install -d "${pkgdir}"/opt/puppetlabs/server/data/puppetserver/jruby-gems
     rm -r "${pkgdir}"/var/run
+    sed -i 's/\/var\/run/\/run/g' "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
     install -D -m 0644 "${srcdir}/facter-3.14.9.gemspec" "${pkgdir}$( ruby -e 'puts Gem.default_dir' )/specifications/facter-3.14.9.gemspec"
 }
