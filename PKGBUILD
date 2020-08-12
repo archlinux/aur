@@ -1,17 +1,16 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-colander
-pkgver=1.7.0
-pkgrel=4
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="A simple schema-based serialization and deserialization library"
 url="https://docs.pylonsproject.org/projects/colander/en/latest/"
 license=('BSD')
 arch=('any')
-depends=('python-translationstring' 'python-iso8601')
-makedepends=('python-setuptools')
-checkdepends=('python-nose')
+depends=('python-iso8601' 'python-setuptools' 'python-translationstring')
+checkdepends=('python-pytest-cov' 'python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Pylons/colander/archive/$pkgver.tar.gz")
-sha512sums=('6f1862c8d4eb615365fe9b833ea679711e4af9fea8060d3da05ca31dca67ba70fef5c6a93ea3dd7d006cf894d465431296fc55902712ac8b5f95463ec4a55d9e')
+sha512sums=('43ab774e3c73942bd1d744e631763104d3a5bb0ca8baa26b8af65b6b3e3c3b90e58c09437d28c157dde4fe9f6dda6a8afa5320de02151d96a812a22c8973b0ce')
 
 build() {
   cd colander-$pkgver
@@ -20,7 +19,7 @@ build() {
 
 check() {
   cd colander-$pkgver
-  python setup.py nosetests
+  python setup.py pytest
 }
 
 package() {
