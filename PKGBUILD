@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.32.4
+pkgver=2.32.5
 pkgrel=1
 pkgdesc='Small, fast and VT100-compatible text editor'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
 fmakedepends=(git go)
-source=("git+$url#commit=8d2860a7b4baea09b10251bbf450b6e9f9e29a96") # tag: 2.32.4
+source=("git+$url#commit=774b7be49e02f1142b314b878717109597b00daa") # tag: 2.32.5
 sha256sums=('SKIP')
 options=(!strip)
 optdepends=('cxx: for compiling C++'
@@ -42,7 +42,7 @@ build() {
 
 package() {
   install -Dm755 $pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"
-  install -Dm755 $pkgname/$pkgname "$pkgdir/usr/bin/red"
+  ln -sf '/usr/bin/o' "$pkgdir/usr/bin/red"
   install -Dm644 $pkgname/$pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
