@@ -17,7 +17,7 @@ arch=('any')
 url="http://$_reponame.sourceforge.net"
 license=('GPL3' 'LGPL3')
 depends=('python' 'python-pyqt4>=4.1.0' 'qt4>=4.2.0' "$_reponame>=0.3.8.1" 'xorg-xwininfo')
-makedepends=('automake>=1.5.0')
+makedepends=('autoconf' 'automake>=1.5.0')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://downloads.sourceforge.net/project/$_reponame/qt-$_projectname/$_pkgver/$pkgname-$_pkgver.tar.gz"
 	'autogen.sh'
