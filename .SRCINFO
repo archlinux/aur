@@ -1,0 +1,14 @@
+pkgbase = git-fuzzy-git
+	pkgdesc = interactive git with the help of fzf
+	pkgver = 0.r27
+	pkgrel = 3
+	url = https://github.com/bigH/git-fuzzy
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fzf
+	source = git+https://github.com/bigH/git-fuzzy.git
+	sha512sums = SKIP
+
+pkgname = git-fuzzy-git
+
