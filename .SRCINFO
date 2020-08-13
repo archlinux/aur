@@ -1,13 +1,13 @@
 pkgbase = may
 	pkgdesc = CLI tool to easily list and manage git repositories all across your system.
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/robin-mbg/may
 	arch = x86_64
 	license = GPL
 	makedepends = go
-	source = https://github.com/robin-mbg/may/archive/v1.0.0.tar.gz
-	sha256sums = 48fc67a805add03bca8af263f62e72c6a4e6d989d635faa00f3d1c93f4fd8c9c
+	source = https://github.com/robin-mbg/may/archive/v1.1.0.tar.gz
+	sha256sums = 1139f257fdc6bb61ada221081186ad59b4e1d90c700eec70468141774e706614
 
 pkgname = may
 
