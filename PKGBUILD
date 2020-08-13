@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _pipname=sfdnormalize
-pkgname=python-$_pipname-git
+pkgname=$_pipname-git
 pkgver=0.3.0.r1.g63c0888
 pkgrel=1
 pkgdesc='SFD normalizer, discards GUI information from SFD files'
