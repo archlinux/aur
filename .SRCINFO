@@ -1,8 +1,9 @@
 pkgbase = zsxd
 	pkgdesc = Free and opensource, amateur Zelda game with humoristic characters.
 	pkgver = 1.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zelda-solarus.com/
+	changelog = zsxd.changelog
 	arch = any
 	license = GPL3
 	license = custom
