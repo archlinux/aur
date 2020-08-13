@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://sourceforge.net/projects/$pkgname/"
 license=('BSD')
 depends=('dcraw' 'exiv2' 'gnuplot' 'opencv' 'qt5-charts')
-makedepends=('asciidoc' 'eigen' 'tclap' 'subversion')
+makedepends=('asciidoc' 'cmake' 'eigen' 'tclap' 'subversion')
 options=('!makeflags')  # The build process for the documentation is not parallel-safe.
 source=("$pkgname::svn+https://svn.code.sf.net/p/$pkgname/code/trunk#revision=632"
         'opencv4.patch')

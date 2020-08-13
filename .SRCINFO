@@ -6,6 +6,7 @@ pkgbase = mtfmapper
 	arch = x86_64
 	license = BSD
 	makedepends = asciidoc
+	makedepends = cmake
 	makedepends = eigen
 	makedepends = tclap
 	makedepends = subversion
