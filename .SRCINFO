@@ -16,6 +16,7 @@ pkgbase = libappindicator-sharp
 	makedepends = perl-xml-libxml
 	makedepends = pygtk
 	makedepends = vala
+	makedepends = python-dulwich
 	depends = libappindicator-gtk2
 	depends = gtk-sharp-2
 	options = !emptydirs

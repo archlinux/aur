@@ -18,7 +18,7 @@ url='https://launchpad.net/libappindicator'
 arch=('x86_64')
 depends=('libappindicator-gtk2' 'gtk-sharp-2')
 license=('LGPL2.1' 'LGPL3')
-makedepends=('bzr' 'dbus-glib' 'gnome-common' 'gobject-introspection' 'gtk-doc' 'libdbusmenu-gtk2' 'libindicator-gtk2' 'perl-xml-libxml' 'pygtk' 'vala')
+makedepends=('bzr' 'dbus-glib' 'gnome-common' 'gobject-introspection' 'gtk-doc' 'libdbusmenu-gtk2' 'libindicator-gtk2' 'perl-xml-libxml' 'pygtk' 'vala' 'python-dulwich')
 options=('!emptydirs')
 source=(bzr+lp:libappindicator#revision=$_bzrrev
         no-host.patch)
