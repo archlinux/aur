@@ -2,7 +2,7 @@
 
 pkgname=rime-zijinmaa
 pkgver=0.0.0.20200813
-_commit=ad5bf19f200290bb6b221a2fee046bb3797abebe
+_commit=f425af390b211041fa96710ec3a9e545364ffec6
 pkgrel=1
 pkgdesc="Zijinmaa input for rime"
 arch=('any')
@@ -13,7 +13,7 @@ license=('CCPL:cc-by')
 depends=('rime-cantonese' 'rime-luna-pinyin')
 makedepends=('librime' 'rime-prelude' 'rime-essay')
 source=("https://github.com/redchenjs/rime-zijinmaa/archive/$_commit/rime-zijinmaa-$_commit.tar.gz")
-sha512sums=('710c738cd85f1013c750b3bb0c7cf88249672c6b55a6c562a450672da4586094aba1cb2b4a57cb341bdbbd5c0f21370042d27eec344319a14576ebe2dbe38e09')
+sha512sums=('edc08c0b45576519bcbdbb42cdd258cbe9e53bcb6fcf2dc72e9de592210a4941e2f553a82badbe3f81dbe7b84a5654d5db56077fecd7f69c757e54f115c4c1d0')
 
 prepare() {
     cd $pkgname-$_commit
