@@ -1,10 +1,11 @@
 # Maintainer: Joan Figueras <ffigue at gmail dot com>
+# Contributor: Jacek Szafarkiewicz <szafar@linux.pl>
 # Contributor: Maxim Baz <$pkgname at maximbaz dot com>
 
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-##   Example: env USE_SCCACHE=1 BUILD_RELEASE=0 makepkg -sc
+##   Example: env USE_SCCACHE=1 COMPONENT=1 makepkg -sc
 ##
 ## sccache for faster builds - https://github.com/brave/brave-browser/wiki/sccache-for-faster-builds
 ## Valid numbers between: 0 and 1
@@ -18,6 +19,7 @@ fi
 ## 1 -> release (default)
 ## 2 -> static
 ## 3 -> debug
+## 4 -> release with custom cflags and system libs
 ## https://github.com/brave/brave-browser/wiki#clone-and-initialize-the-repo
 if [ -z ${COMPONENT+x} ]; then
   COMPONENT=1
@@ -32,19 +34,24 @@ pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
 license=('custom')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'libva')
-makedepends=('git' 'npm' 'python2' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'python2-setuptools')
+depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'libva' 'libpulse' 'pciutils')
+makedepends=('git' 'npm' 'python2' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'python2-setuptools' 'lld' 'libva' 'libpipewire02' 'python2-xcb-proto')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support'
             'libpipewire02: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops'
             'sccache: For faster builds')
+chromium_base_ver="84"
+patchset="3"
+patchset_name="chromium-${chromium_base_ver}-patchset-${patchset}"
 source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'brave-vaapi-enable.patch'
         'chromium-no-history.patch'
         'brave-launcher'
-        'brave-browser.desktop')
+        'brave-browser.desktop'
+        "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
+        'brave-custom-build.patch')
 arch_revision=2efd12e6db7c47f6d433971406fb271a1fb0c839
 for Patches in \
         chromium-ffmpeg-4.3.patch \
@@ -63,10 +70,39 @@ sha256sums=('SKIP'
             'c090e4d26847831a719aea4a8cf722b7f6b6726bd7b6bf4da984e59567095917'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
+            'f77088dd59b170b767ba91c6b410abb778ff2e68553433b24124d398fa4d3ce7'
+            '69f380666f67918273fb4fc2674e53636de52c040a4ab00c220891d08b3d9f07'
             '5390304b5f544868985ce00a3ec082d4ece2dacb1c73cdb35dd4facfea12449a'
             'abc3fad113408332c3b187b083bf33eba59eb5c87fa3ce859023984b5804623c'
             'e495f2477091557b15bff2c99831e0a3db64ea2ebde7dcb22857a6469c944b9a'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
+
+# Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
+# Keys are the names in the above script; values are the dependencies in Arch
+declare -gA _system_libs=(
+  [ffmpeg]=ffmpeg
+  [flac]=flac
+  [fontconfig]=fontconfig
+  [freetype]=freetype2
+  [harfbuzz-ng]=harfbuzz
+  [icu]=icu
+  [libdrm]=
+  [libjpeg]=libjpeg
+  [libpng]=libpng
+  [libvpx]=libvpx
+  [libwebp]=libwebp
+  [libxml]=libxml2
+  [libxslt]=libxslt
+  [opus]=opus
+  [re2]=re2
+  [snappy]=snappy
+  [zlib]=minizip
+)
+_unwanted_bundled_libs=(
+  $(printf "%s\n" ${!_system_libs[@]} | sed 's/^libjpeg$/&_turbo/')
+)
+
+depends+=(${_system_libs[@]})
 
 prepare() {
     cd "${_reponame}"
@@ -116,6 +152,35 @@ prepare() {
 
     # Hacky patching
     sed -e 's/enable_distro_version_check = true/enable_distro_version_check = false/g' -i chrome/installer/linux/BUILD.gn
+
+    if [ "$COMPONENT" = "4" ]; then
+        # Allow building against system libraries in official builds
+
+        sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
+            tools/generate_shim_headers/generate_shim_headers.py
+
+        msg2 "Add patches for custom build"
+        local _patch
+        for _patch in "$srcdir/brave-custom-build.patch" "$srcdir/patches"/*.patch; do
+            patch -Np1 -i "$_patch"
+        done
+
+        # Remove bundled libraries for which we will use the system copies; this
+        # *should* do what the remove_bundled_libraries.py script does, with the
+        # added benefit of not having to list all the remaining libraries
+        local _lib
+        for _lib in ${_unwanted_bundled_libs[@]}; do
+            find "third_party/$_lib" -type f \
+            \! -path "third_party/$_lib/chromium/*" \
+            \! -path "third_party/$_lib/google/*" \
+            \! -path "third_party/harfbuzz-ng/utils/hb_scoped.h" \
+            \! -regex '.*\.\(gn\|gni\|isolate\)' \
+            -delete
+        done
+
+        python2 build/linux/unbundle/replace_gn_files.py \
+            --system-libraries "${!_system_libs[@]}"
+    fi
 }
 
 build() {
@@ -136,6 +201,45 @@ build() {
         echo "sccache = /usr/bin/sccache" >> .npmrc
     fi
 
+    npm_args=()
+    if [ "$COMPONENT" = "4" ]; then
+        local _flags=(
+            'custom_toolchain="//build/toolchain/linux/unbundle:default"'
+            'host_toolchain="//build/toolchain/linux/unbundle:default"'
+            'clang_use_chrome_plugins=false'
+            'treat_warnings_as_errors=false'
+            'fieldtrial_testing_like_official_build=true'
+            'proprietary_codecs=true'
+            'rtc_use_pipewire=true'
+            'link_pulseaudio=true'
+            'use_gnome_keyring=false'
+            'use_sysroot=false'
+            'use_custom_libcxx=false'
+            'use_vaapi=true'
+        )
+
+        if [[ -n ${_system_libs[icu]+set} ]]; then
+            _flags+=('icu_use_data_file=false')
+        fi
+
+        if check_option strip y; then
+            _flags+=('symbol_level=0')
+        fi
+
+        # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
+        CFLAGS+='   -Wno-builtin-macro-redefined'
+        CXXFLAGS+=' -Wno-builtin-macro-redefined'
+        CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
+
+        # Do not warn about unknown warning options
+        CFLAGS+='   -Wno-unknown-warning-option'
+        CXXFLAGS+=' -Wno-unknown-warning-option'
+
+        npm_args+=(
+            $(echo ${_flags[@]} | tr ' ' '\n' | sed -e 's/=/:/' -e 's/^/--gn=/')
+        )
+    fi
+
     ## See explanation on top to select your build
     case ${COMPONENT} in
         0)
@@ -150,10 +254,15 @@ build() {
             msg2 "Debug build"
             npm run build -- Debug
             ;;
+        4)
+            msg2 "Release custom build"
+            npm run build Release -- "${npm_args[@]}"
+            ;;
         *)
             msg2 "Release build"
             npm run build Release
-    esac 
+            ;;
+    esac
 }
 
 package() {
@@ -167,11 +276,16 @@ package() {
         brave \
         brave_*.pak \
         chrome_*.pak \
-        icudtl.dat \
         resources.pak \
         v8_context_snapshot.bin \
         "${pkgdir}/usr/lib/brave/"
         # In v1.3.115 sync is disabled, so natives_blob.bin is not available. Remember to put it back when sync is working again
+
+    if [ "$COMPONENT" != "4" ] || [[ -z ${_system_libs[icu]+set} ]]; then
+        cp -a --reflink=auto \
+            icudtl.dat \
+            "${pkgdir}/usr/lib/brave/"
+    fi
 
     cd "${srcdir}"
     install -Dm0755 brave-launcher "${pkgdir}/usr/bin/${pkgname}"
