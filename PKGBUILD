@@ -8,7 +8,7 @@ pkgbase=tensorflow-rocm
 pkgname=(tensorflow-rocm tensorflow-opt-rocm python-tensorflow-rocm python-tensorflow-opt-rocm)
 pkgver=2.3.0
 _pkgver=2.3.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -21,10 +21,11 @@ optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
         numpy1.20.patch::https://github.com/tensorflow/tensorflow/commit/75ea0b31477d6ba9e990e296bbbd8ca4e7eebadf.patch
         build-against-actual-mkl.patch
-        "fix_hip_hcc_path.patch"::"https://github.com/tensorflow/tensorflow/commit/6175b78d8386bd6e5b2beebedb9f40e6b887d5a9.patch"
-        "fix_hipcc_path.patch"::"https://patch-diff.githubusercontent.com/raw/tensorflow/tensorflow/pull/42292.patch"
-        "fix_gpu_atomic_redef.patch"::"https://github.com/tensorflow/tensorflow/commit/c054f40f66fa625f51085a20c48554c61d05c5fd.patch"
-        "fix_ldexp_float.patch"::"https://github.com/tensorflow/tensorflow/commit/655ce09f679a90ecd561538227c703b42d0fc5fa.patch")
+        fix_hip_hcc_path.patch::https://github.com/tensorflow/tensorflow/commit/6175b78d8386bd6e5b2beebedb9f40e6b887d5a9.patch
+        fix_hipcc_path.patch::https://patch-diff.githubusercontent.com/raw/tensorflow/tensorflow/pull/42292.patch
+        fix_gpu_atomic_redef.patch::https://github.com/tensorflow/tensorflow/commit/c054f40f66fa625f51085a20c48554c61d05c5fd.patch
+        fix_ldexp_float.patch::https://github.com/tensorflow/tensorflow/commit/655ce09f679a90ecd561538227c703b42d0fc5fa.patch
+        fix_occupancy_block.patch)
 
 sha512sums=('86aa087ea84dac1ecc1023b23a378100d41cc6778ccd20404a4b955fc67cef11b3dc08abcc5b88020124d221e6fb172b33bd5206e9c9db6bc8fbeed399917eac'
             'df2e0373e2f63b8766f31933f7db57f6a7559b8f03af1db51644fba87731451a7cd3895529a3192e5394612fcb42f245b794b1c9ca3c05881ca03a547c8c9acc'
@@ -32,7 +33,8 @@ sha512sums=('86aa087ea84dac1ecc1023b23a378100d41cc6778ccd20404a4b955fc67cef11b3d
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '88c04ed7a766193687d7079102332e3c63d6f0accbda777836abe5e03e9ebb83fd1aeaa9e4adca70310ce18bf3c6c3907f1f8a11c13e67e3ef79497b91bbf126')
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
@@ -72,6 +74,10 @@ prepare() {
 
   # Fix ldexp float method
   patch -Np1 -d tensorflow-${_pkgver} -i "$srcdir"/fix_ldexp_float.patch
+
+  # Fix missing hipOccupancyMaxPotentialBlockSize method
+  # https://github.com/tensorflow/tensorflow/commit/22def20bae7be6d5b790b360abed5919385b16c2
+  patch -Np1 -d tensorflow-${_pkgver} -i "$srcdir"/fix_occupancy_block.patch
 
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-rocm
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-rocm
