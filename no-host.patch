@@ -1,0 +1,65 @@
+=== modified file 'src/app-indicator.c'
+--- src/app-indicator.c	2020-04-08 18:39:30 +0000
++++ src/app-indicator.c	2020-07-03 10:12:45 +0000
+@@ -213,6 +213,38 @@
+ G_DEFINE_TYPE (AppIndicator, app_indicator, G_TYPE_OBJECT);
+ 
+ static void
++check_is_host_registered (AppIndicator *self)
++{
++	GVariant *variant;
++	gboolean is_host_registered;
++
++	variant = g_dbus_proxy_get_cached_property (self->priv->watcher_proxy,
++	                                            "IsStatusNotifierHostRegistered");
++
++	is_host_registered = FALSE;
++	if (variant != NULL) {
++		is_host_registered = g_variant_get_boolean (variant);
++		g_variant_unref (variant);
++	}
++
++	if (!is_host_registered) {
++		start_fallback_timer (self, FALSE);
++		return;
++	}
++
++	check_connect (self);
++}
++
++static void
++watcher_properties_changed_cb (GDBusProxy   *proxy,
++                               GVariant     *changed_properties,
++                               GStrv         invalidated_properties,
++                               AppIndicator *self)
++{
++	check_is_host_registered (self);
++}
++
++static void
+ watcher_ready_cb (GObject      *source_object,
+                   GAsyncResult *res,
+                   gpointer      user_data)
+@@ -230,7 +262,12 @@
+ 		return;
+ 	}
+ 
+-	check_connect (self);
++	g_signal_connect (self->priv->watcher_proxy,
++	                  "g-properties-changed",
++	                  G_CALLBACK (watcher_properties_changed_cb),
++	                  self);
++
++	check_is_host_registered (self);
+ 	g_object_unref (self);
+ }
+ 
+@@ -243,7 +280,6 @@
+ 	AppIndicator *self = (AppIndicator *) user_data;
+ 
+ 	g_dbus_proxy_new (self->priv->connection,
+-	                  G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES |
+ 	                  G_DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS,
+ 	                  watcher_interface_info,
+ 	                  NOTIFICATION_WATCHER_DBUS_ADDR,
+
