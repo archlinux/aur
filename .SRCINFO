@@ -1,12 +1,26 @@
 pkgbase = sequoia-redactor
 	pkgdesc = Text editor
 	pkgver = 1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AlexVIM1/sequoia
-	arch = x86_64
+	arch = any
 	license = GPLv3
-	source = https://raw.githubusercontent.com/AlexVIM1/sequoia/pkg/SequoiaRedactor-1.5-2-x86_64-pkg.tar.gz
-	md5sums = 9ce103c1cc69dbc38c118f6494821f5f
+	makedepends = qt5-base
+	source = https://raw.githubusercontent.com/AlexVIM1/sequoia/pkg/SequoiaRedactor-1.5-3.tar.gz
+	md5sums = aee06491219fa28668ce773f554afde6
+
+pkgname = sequoia-redactor
+
+pkgbase = sequoia-redactor
+	pkgdesc = Text editor
+	pkgver = 1.5
+	pkgrel = 3
+	url = https://github.com/AlexVIM1/sequoia
+	arch = any
+	license = GPLv3
+	makedepends = qt5-base
+	source = https://raw.githubusercontent.com/AlexVIM1/sequoia/pkg/SequoiaRedactor-1.5-3.tar.gz
+	md5sums = aee06491219fa28668ce773f554afde6
 
 pkgname = sequoia-redactor
 
