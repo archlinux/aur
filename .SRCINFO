@@ -1,6 +1,6 @@
 pkgbase = azuredatastudio-bin
 	pkgdesc = Azure Data Studio is a data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW (official prebuilt version)
-	pkgver = 1.20.1
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://github.com/Microsoft/azuredatastudio
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = azuredatastudio-bin
 	optdepends = krb5: Windows authentication support
 	conflicts = azuredatastudio
 	options = staticlibs
-	source = azuredatastudio-bin-1.20.1.tar.gz::https://go.microsoft.com/fwlink/?linkid=2135267
+	source = azuredatastudio-bin-1.21.0.tar.gz::https://go.microsoft.com/fwlink/?linkid=2138706
 	source = azuredatastudio.desktop
-	sha256sums = 1d2d5beea53b3c6fb624e93a3f228e372ff29e8fa92236412878ff12fa3fa97a
+	sha256sums = 7c89304adefa5aaa5ac146da3128bce817f2a71ff51d78725d5432dc06323ed1
 	sha256sums = 460ef23631450298409a96c75662428ffc356b666eefbab813e78ef71e346727
 
 pkgname = azuredatastudio-bin
