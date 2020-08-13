@@ -1,0 +1,24 @@
+pkgbase = fpga-toolchain-bin
+	pkgdesc = Nightly builds of open-source FPGA tools
+	pkgver = 20200812
+	pkgrel = 1
+	url = https://github.com/open-tool-forge/fpga-toolchain
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = bash
+	conflicts = yosys
+	conflicts = ghdl-yosys-plugin
+	conflicts = ghdl
+	conflicts = trellis
+	conflicts = icestorm
+	conflicts = nextpnr
+	conflicts = dfu-util
+	conflicts = dfu-util-git
+	conflicts = ecpprog
+	conflicts = openfpgaloader
+	source_x86_64 = https://github.com/open-tool-forge/fpga-toolchain/releases/download/nightly-20200812/fpga-toolchain-linux_x86_64-nightly-20200812.tar.xz
+	sha256sums_x86_64 = 032e1c1073ca0e81a9d7a5ef7de8db9c0c280afcd42947be588bad54ecc21f3b
+
+pkgname = fpga-toolchain-bin
+
