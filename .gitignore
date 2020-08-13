@@ -3,3 +3,4 @@ src/
 _rebar3
 *.tar.gz
 *.tar.xz
+*.zst
