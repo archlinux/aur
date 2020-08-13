@@ -1,0 +1,15 @@
+pkgbase = flowy-git
+	pkgdesc = Dynamic desktop wallpaper changer
+	pkgver = 0.3.2.r1.ce22ef8
+	pkgrel = 1
+	url = https://github.com/vineetred/flowy
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	source = flowy-git::git+https://github.com/vineetred/flowy.git
+	md5sums = SKIP
+
+pkgname = flowy-git
+
