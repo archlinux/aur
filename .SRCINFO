@@ -11,6 +11,7 @@ pkgbase = pgyvpn-bin
 	license = custom
 	provides = pgyvpn
 	conflicts = pgyvpn
+	replaces = pgyvpn
 	source = LICENSE::https://service.oray.com/question/1820.html
 	source = pgyvpn.service
 	sha256sums = SKIP

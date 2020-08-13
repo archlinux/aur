@@ -8,6 +8,7 @@ pkgdesc="Suitable for business personnal long-distance intelligent network acces
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://pgy.oray.com/download/"
 provides=(${pkgname%-bin})
+replaces=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 license=('custom')
 install='.INSTALL'
