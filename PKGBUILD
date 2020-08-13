@@ -3,12 +3,12 @@
 _pkgname=waybackurls
 pkgname=${_pkgname}-git
 pkgver=0.0.2.r6.g89da10c
-pkgrel=2
+pkgrel=3
 pkgdesc='Fetch all the URLs that the Wayback Machine knows about for a domain'
 arch=('x86_64')
 url='https://github.com/tomnomnom/waybackurls'
-_rawurl='https://raw.githubusercontent.com/tomnomnom/gron'
 # License from gron as per https://github.com/BlackArch/blackarch/blob/master/packages/waybackurls/PKGBUILD#L27
+_rawurl="https://raw.githubusercontent.com/tomnomnom/gron"
 license=('MIT')
 makedepends=('git' 'go')
 provides=("${_pkgname}")
@@ -26,14 +26,15 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOPATH="${srcdir}"
 
   cd "${_pkgname}"
   go build -v -o "${_pkgname}" main.go
 }
 
 package() {
-  install -Dm755 "${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}/${_pkgname}"
   install -Dm644 "${_pkgname}/README.mkd" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 "${_pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
