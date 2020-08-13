@@ -16,7 +16,7 @@ build() {
     make
 }
 package() {
-    cd ${srcdir}/build/src
+    	cd ${srcdir}/build/src
 	mkdir -p "${pkgdir}/usr/bin/"
 	mkdir -p "${pkgdir}/usr/share/applications"
 	mkdir -p "${pkgdir}/usr/share/pixmaps"
