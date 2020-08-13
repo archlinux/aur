@@ -2,7 +2,7 @@
 
 pkgname=kde-svn2git
 _name=${pkgname#kde-}
-pkgver=1.0.16
+pkgver=1.0.18
 pkgrel=1
 pkgdesc="A fast-import based converter for an svn repo to git repos (aka svn-all-fast-export or KDE svn2git)"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=(apr git subversion)
 makedepends=(qt5-base make)
 source=("https://github.com/svn-all-fast-export/${_name}/archive/${pkgver}.tar.gz")
-md5sums=('c5eae13c9a32a5b1f63cb093dcaab8d1')
+md5sums=('57eccceef1f775202e91df5107c5e15b')
 
 build() {
   cd "$srcdir/${_name}-$pkgver"

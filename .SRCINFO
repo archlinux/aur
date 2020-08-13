@@ -1,6 +1,6 @@
 pkgbase = kde-svn2git
 	pkgdesc = A fast-import based converter for an svn repo to git repos (aka svn-all-fast-export or KDE svn2git)
-	pkgver = 1.0.16
+	pkgver = 1.0.18
 	pkgrel = 1
 	url = https://github.com/svn-all-fast-export/svn2git
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = kde-svn2git
 	depends = apr
 	depends = git
 	depends = subversion
-	source = https://github.com/svn-all-fast-export/svn2git/archive/1.0.16.tar.gz
-	md5sums = c5eae13c9a32a5b1f63cb093dcaab8d1
+	source = https://github.com/svn-all-fast-export/svn2git/archive/1.0.18.tar.gz
+	md5sums = 57eccceef1f775202e91df5107c5e15b
 
 pkgname = kde-svn2git
 
