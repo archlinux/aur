@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-colander
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="A simple schema-based serialization and deserialization library"
 url="https://docs.pylonsproject.org/projects/colander/en/latest/"
@@ -10,7 +10,7 @@ arch=('any')
 depends=('python-iso8601' 'python-setuptools' 'python-translationstring')
 checkdepends=('python-pytest-cov' 'python-pytest-runner')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Pylons/colander/archive/$pkgver.tar.gz")
-sha512sums=('43ab774e3c73942bd1d744e631763104d3a5bb0ca8baa26b8af65b6b3e3c3b90e58c09437d28c157dde4fe9f6dda6a8afa5320de02151d96a812a22c8973b0ce')
+sha512sums=('20ba1ad67aab42df3142531066fa44ce227b335962e9a423d3d26d34ffc1f931c3669a1a43769fc9c0ed5e88a28e3ebbfc78fc8575723c112e146216f923dec0')
 
 build() {
   cd colander-$pkgver
