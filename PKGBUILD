@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=akonadi-notes
-pkgver=20.04.3
+pkgver=20.08.0
 pkgrel=1
 pkgdesc="Libraries and daemons to implement management of notes in Akonadi"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(LGPL)
 depends=(kmime)
 makedepends=(extra-cmake-modules)
 source=("https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('e1b4b6d2347038774589a9a8a935e4697d248008dfd2b5b496e6555974c96a55'
+sha256sums=('aeb348d6af30e8775d60cab0894634c6e5ac95a3baf97f69407602dea5944525'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
