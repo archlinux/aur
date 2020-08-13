@@ -1,4 +1,6 @@
 post_upgrade() {
-  echo ">>> I've renamed the binary to helm2 and removed the"
-  echo ">>> conflicts with both kubernetes-helm and helm."
+  echo ">>> This is the final bugfix release as part of the deprecation plan for"
+  echo ">>> Helm v2. If you have not started a migration to Helm v3 we highly"
+  echo ">>> recommend it. You can read more about the deprecation in the recent blog"
+  echo ">>> post about it: https://helm.sh/blog/helm-v2-deprecation-timeline/"
 }
