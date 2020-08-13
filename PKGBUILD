@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=heif
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc='High Efficiency Image File Format'
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('gcc-libs')
 makedepends=('cmake')
 source=("https://github.com/nokiatech/heif/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('7e3285c4dc80c5c34ee667b6488529cbf3a0cf4878f8eff656b91bdb96cb05623e9b9df2f015e3ceb77b0b19efd3e7a0d482b04fc5ec0987270f055bccde9885')
+b2sums=('d3fdc1db3f8d8b6c9c4a7fc6451b222abb56619d085fc9c5742daf6ffdf06967031c5d057aba8eb26132e3ce41548bc72b297250ef9bfe2ca84ea6776a0660f6')
 
 build() {
   cd ${pkgname}-${pkgver}/build/

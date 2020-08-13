@@ -1,6 +1,6 @@
 pkgbase = heif
 	pkgdesc = High Efficiency Image File Format
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://nokiatech.github.io/heif/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = heif
 	license = custom
 	makedepends = cmake
 	depends = gcc-libs
-	source = https://github.com/nokiatech/heif/archive/v3.6.0/heif-3.6.0.tar.gz
-	b2sums = 7e3285c4dc80c5c34ee667b6488529cbf3a0cf4878f8eff656b91bdb96cb05623e9b9df2f015e3ceb77b0b19efd3e7a0d482b04fc5ec0987270f055bccde9885
+	source = https://github.com/nokiatech/heif/archive/v3.6.1/heif-3.6.1.tar.gz
+	b2sums = d3fdc1db3f8d8b6c9c4a7fc6451b222abb56619d085fc9c5742daf6ffdf06967031c5d057aba8eb26132e3ce41548bc72b297250ef9bfe2ca84ea6776a0660f6
 
 pkgname = heif
 
