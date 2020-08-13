@@ -1,0 +1,33 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+
+_pipname=sfdnormalize
+pkgname=python-$_pipname-git
+pkgver=0.0.0.r50.g8ec261a
+pkgrel=1
+pkgdesc='SFD normalizer, discards GUI information from SFD files'
+arch=('any')
+url="https://github.com/alerque/$_pipname"
+license=('CCO')
+depends=('python')
+makedepends=('python-setuptools')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$pkgname"
+    git tag | grep -Fq 'v0.0.0' || git tag 'v0.0.0' 41974d6
+    git describe --long --tags --abbrev=7 --match="v*" HEAD |
+        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+    cd "$pkgname"
+    python setup.py build
+}
+
+package() {
+    cd "$pkgname"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
