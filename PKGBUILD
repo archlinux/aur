@@ -1,6 +1,6 @@
 pkgname=pantheon-git-meta
-pkgver=20200522
-pkgrel=4
+pkgver=20200813
+pkgrel=1
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
@@ -41,7 +41,7 @@ depends=(granite-git
 	switchboard-plug-security-privacy-git
 	switchboard-plug-sharing-git
 	switchboard-plug-user-accounts-git
-	wingpanel-git
+  switchboard
 	wingpanel-indicator-bluetooth-git
 	wingpanel-indicator-datetime-git
 	wingpanel-indicator-network-git
