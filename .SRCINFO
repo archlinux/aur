@@ -1,0 +1,19 @@
+pkgbase = constellation
+	pkgdesc = A graph-focused data visualisation and interactive analysis application
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://constellation-app.com
+	arch = x86_64
+	license = Apache
+	depends = java-runtime
+	depends = libnet
+	depends = lib32-glibc
+	depends = gtk3
+	depends = gtk2
+	source = constellation-2.0.0.tar.gz::https://github.com/constellation-app/constellation/releases/download/v2.0.0/constellation-linux-v2.0.0.tar.gz
+	source = icon.png
+	sha256sums = 0ce920db6309b4418de4644aa21f4fa2ef7252ec828293f70b5fd6b10c24bb85
+	sha256sums = SKIP
+
+pkgname = constellation
+
