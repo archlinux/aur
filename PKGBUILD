@@ -19,7 +19,7 @@ depends=(
         'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi'
         'libgme' 'gsm' 'libilbc' 'libiec61883' 'kvazaar' 'lensfun' 'libmodplug' 'lame'
         'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio' 'librsvg' 'rubberband' 'rtmpdump'
-        'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'tensorflow' 'tesseract' 'libtheora'
+        'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'tesseract' 'libtheora'
         'twolame' 'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'wavpack' 'libwebp'
         'x264'  'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2'
         'lilv' 'xz' 'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
@@ -80,7 +80,6 @@ build() {
     
     ./configure \
         --prefix='/usr' \
-        --extra-cflags='-I/usr/include/tensorflow' \
         \
         --disable-rpath \
         --enable-gpl \
@@ -153,7 +152,7 @@ build() {
         --enable-libssh \
         --enable-libsvthevc \
 	--enable-libsvtav1 \
-        --enable-libtensorflow \
+        --disable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
         --disable-libtls \

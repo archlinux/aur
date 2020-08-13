@@ -55,7 +55,6 @@ pkgbase = ffmpeg-intel-full-git
 	depends = speex
 	depends = srt
 	depends = libssh
-	depends = tensorflow
 	depends = tesseract
 	depends = libtheora
 	depends = twolame
