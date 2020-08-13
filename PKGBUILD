@@ -11,9 +11,9 @@ makedepends=('qt5-base')
 source=("https://raw.githubusercontent.com/AlexVIM1/sequoia/pkg/${_pkgname}-${pkgver}-${pkgrel}.tar.gz")
 md5sums=('aee06491219fa28668ce773f554afde6')
 build() {
-    cd ${srcdir}/build/src
-    qmake
-    make
+	cd ${srcdir}/build/src
+    	qmake
+    	make
 }
 package() {
     	cd ${srcdir}/build/src
