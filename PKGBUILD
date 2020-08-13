@@ -5,17 +5,17 @@
 
 _pkgname=gnuplot
 pkgname=gnuplot-svg
-pkgver=5.2.8
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="Plotting package. Only SVG terminal support (for web-servers)" 
-arch=('x86_64')
+arch=(x86_64)
 url="http://www.gnuplot.info" 
-license=('custom') 
-depends=('readline' 'gnutls') 
-provides=('gnuplot')
-conflicts=('gnuplot')
+license=(custom) 
+depends=(readline gnutls) 
+provides=(gnuplot)
+conflicts=(gnuplot)
 source=("https://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha1sums=('dc018b1e0a31b770d4635958badff13498babc4d')
+sha1sums=('b4660dff7d047a453c55fd77faba11f63bb2d5ed')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
