@@ -11,7 +11,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=20.2.0_devel.126685.b5558f2d2aa
+pkgver=20.3.0_devel.127075.6723addd8a7
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -107,7 +107,7 @@ build () {
         -D prefix=/usr \
         -D sysconfdir=/etc \
         --libdir=/usr/lib32 \
-        -D platforms=x11,wayland,drm,surfaceless \
+        -D platforms=x11,wayland \
         -D dri-drivers=i915,i965,r200,r100,nouveau \
         -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink \
         -D vulkan-drivers=amd,intel \
@@ -139,11 +139,6 @@ build () {
 
     meson configure _build
     
-    # quoted from https://www.mesa3d.org/meson.html
-    # Note: autotools automatically updated translation files (used by the DRI configuration tool) as part of the build process, Meson does not do this. 
-    # Instead, you will need do this: 
-    # ninja $NINJAFLAGS -C _build xmlpool-pot xmlpool-update-po xmlpool-gmo
-    # DRICONF translation files are now handled differently, see https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/5440
     ninja  $NINJAFLAGS -C _build
 }
 
