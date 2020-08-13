@@ -2,7 +2,7 @@
 
 _pipname=sfdnormalize
 pkgname=python-$_pipname-git
-pkgver=0.0.0.r50.g8ec261a
+pkgver=0.3.0.r1.g63c0888
 pkgrel=1
 pkgdesc='SFD normalizer, discards GUI information from SFD files'
 arch=('any')
@@ -17,7 +17,6 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git tag | grep -Fq 'v0.0.0' || git tag 'v0.0.0' 41974d6
     git describe --long --tags --abbrev=7 --match="v*" HEAD |
         sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
