@@ -1,0 +1,17 @@
+pkgbase = lottie-qml
+	pkgdesc = This provides a QML Item to render Adobe® After Effects™ animations exported as JSON with Bodymovin using the Lottie Web library.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/kbroulik/lottie-qml
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	source = lottie-qml::git+https://github.com/kbroulik/lottie-qml.git
+	md5sums = SKIP
+
+pkgname = lottie-qml
+
