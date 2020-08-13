@@ -1,7 +1,7 @@
 pkgbase = remotemouse
 	pkgdesc = Turn your mobile phone or tablet into a set of wireless mouse and keyboard.
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://remotemouse.net/
 	arch = any
 	license = Unknown

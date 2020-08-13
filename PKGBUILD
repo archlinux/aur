@@ -3,7 +3,7 @@
 
 pkgname=remotemouse
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Turn your mobile phone or tablet into a set of wireless mouse and keyboard."
 arch=("any")
 url="https://remotemouse.net/"
@@ -23,8 +23,8 @@ md5sums=('2aec443671771d5905601395a904aeba'
 package() {
   cd "$srcdir"
 
-  install -Dm 644 RemoteMouse.exe "$pkgdir/opt/remotemouse/RemoteMouse.exe"
-  install -Dm 644 rm.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/RemoteMouse.svg"
+  install -Dm 644 RemoteMouse/RemoteMouse.exe "$pkgdir/opt/remotemouse/RemoteMouse.exe"
+  install -Dm 644 RemoteMouse/rm.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/RemoteMouse.svg"
   install -Dm 755 remotemouse.sh "$pkgdir/usr/bin/remotemouse"
   install -Dm 644 RemoteMouse.service "$pkgdir/usr/lib/systemd/user/RemoteMouse.service"
   install -Dm 644 RemoteMouse.desktop "$pkgdir/usr/share/applications/RemoteMouse.desktop"
