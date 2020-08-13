@@ -30,6 +30,7 @@ depends=(
 	"lxqt-session"
 	"lxqt-sudo"
 	"lxqt-themes"
+	"xsettingsd"
 	#kwin
 	"lxqt-kcm-integration-extra-git"
 )

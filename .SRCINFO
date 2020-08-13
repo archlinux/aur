@@ -26,6 +26,7 @@ pkgbase = lxqt-kwin-desktop-git
 	depends = lxqt-session
 	depends = lxqt-sudo
 	depends = lxqt-themes
+	depends = xsettingsd
 	depends = lxqt-kcm-integration-extra-git
 	optdepends = lxqt_wallet
 	optdepends = lxqt-organizer
