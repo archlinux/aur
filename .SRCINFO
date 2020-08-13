@@ -1,14 +1,14 @@
 pkgbase = subfinder
 	pkgdesc = Subdomain discovery tool
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/subfinder
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	provides = subfinder
-	source = subfinder-2.4.0.tar.gz::https://github.com/projectdiscovery/subfinder/archive/v2.4.0.tar.gz
-	sha256sums = 91facb6d7156d6d959abccfb4b126bf582bee19e4c33f30c620d6996c5dc8b87
+	source = subfinder-2.4.1.tar.gz::https://github.com/projectdiscovery/subfinder/archive/v2.4.1.tar.gz
+	sha256sums = bb5cee73d754cb92729eb4c446fd6cda87b4709e4e32996f5eedae7cb1967dfc
 
 pkgname = subfinder
 
