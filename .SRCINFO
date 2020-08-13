@@ -1,0 +1,20 @@
+pkgbase = weechat-matrix-rs-git
+	pkgdesc = Rust rewrite of the Python weechat-matrix script
+	pkgver = r206.fcd3da2
+	pkgrel = 1
+	url = https://github.com/poljar/weechat-matrix-rs
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = clang
+	makedepends = llvm
+	makedepends = rust
+	depends = openssl
+	depends = weechat
+	provides = weechat-matrix-rs
+	conflicts = weechat-matrix-rs
+	source = git+https://github.com/poljar/weechat-matrix-rs.git
+	sha512sums = SKIP
+
+pkgname = weechat-matrix-rs-git
+
