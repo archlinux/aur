@@ -2,7 +2,7 @@
 
 pkgname=rime-jyutgaan
 pkgver=0.0.0.20200811
-_commit=728b7a9708695232c7c296c3fa6890671b2c7fb9
+_commit=050d49d080ee2f75ca77be0625dd11f07c712797
 pkgrel=1
 pkgdesc="Jyutgaan input for rime"
 arch=('any')
@@ -13,7 +13,7 @@ license=('CCPL:cc-by')
 depends=('rime-cantonese' 'rime-luna-pinyin')
 makedepends=('librime' 'rime-prelude' 'rime-essay')
 source=("https://github.com/redchenjs/rime-jyutgaan/archive/$_commit/rime-jyutgaan-$_commit.tar.gz")
-sha512sums=('53eff73e7465059652b9fc68f785e04c310ada658e59cb2e606a2a76c06877e7fed43e7d3b1ef372e67763c6fa5e31d436437c217bbeb2355825acb06154567d')
+sha512sums=('8ed51d909ad1396b504ba72d4897346b8ce940388952deefb4a6a4a100c74f79e43ff9fdfba52bf7c92faba414ec3be318bafdf0a4fbc194a3d87e8ad4fa5298')
 
 prepare() {
     cd $pkgname-$_commit
