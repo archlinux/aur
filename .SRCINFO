@@ -1,0 +1,18 @@
+pkgbase = uoj-data-converter-git
+	pkgdesc = 将各种各样格式的数据转换为 UOJ 的格式
+	pkgver = 0.4.0.r4.g936adc3
+	pkgrel = 1
+	url = https://github.com/ouuan/uoj-data-converter
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = qt5-base
+	provides = uoj-data-converter
+	conflicts = uoj-data-converter
+	source = git://github.com/ouuan/uoj-data-converter.git
+	md5sums = SKIP
+
+pkgname = uoj-data-converter-git
+
