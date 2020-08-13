@@ -7,7 +7,7 @@
 
 pkgname=solarus-run
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, free and open-source game engine for Action-RPGs"
 arch=('i686' 'x86_64')
 url="http://www.solarus-games.org/"
@@ -23,7 +23,7 @@ depends=('glm'
          'sdl2_image'
          'sdl2_ttf')
 makedepends=('cmake')
-provides=('solarus')
+provides=("solarus=$pkgver")
 conflicts=('solarus')
 source=("https://gitlab.com/solarus-games/solarus/-/archive/v${pkgver}/solarus-v${pkgver}.tar.gz")
 b2sums=('fdf9b6703af8424b4731b25b307dcc7a0966cbf89a0bf043bcfb6745d0c6e8aa1fee026f206a41ebf6c8d54b23a9a3816a6c2d7ae004c9db7c436425a94aa7d3')
