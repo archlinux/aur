@@ -1,42 +1,31 @@
-# Maintainer: BenObiWan <benobiwan @t gmail dot com>
+# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Contributor: BenObiWan <benobiwan @t gmail dot com>
 # Contributor: Sam101 <zoetrem @t gmail dot com>
 # Contributor: BenObiWan <benobiwan @t gmail dot com>
 # Contributor: Huulivoide
 
 pkgname=zsxd
-pkgver=1.12.0
+pkgver=1.12.2
 pkgrel=1
-epoch=
 pkgdesc="Free and opensource, amateur Zelda game with humoristic characters."
 arch=('any')
 url="http://www.zelda-solarus.com/"
-license=('custom')
-groups=()
+license=('GPL3' 'custom')
 depends=('solarus>=1.6.0')
-makedepends=('zip' 'cmake')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=(http://www.zelda-solarus.com/downloads/zsxd/$pkgname-$pkgver.tar.gz)
-noextract=()
-md5sums=('f2574d6cca5d81c0cdb8559b50ffd524')
+makedepends=('cmake')
+source=("https://gitlab.com/solarus-games/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+b2sums=('1cba628a427cae10e0b08498690b95ef5a60f62531b1b4c7635ccbd561201ff54511b5c32e8e5e3251625e08276466ef2faa81f62eb2b67669cc001b00b7f215')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i "s/echo 'solarus /echo 'solarus_run /" CMakeLists.txt
-  cmake -D CMAKE_INSTALL_PREFIX="/usr" -D CMAKE_BUILD_TYPE=Release .
-  make
+  cd "${pkgname}-v${pkgver}"
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release .
+  make ${MAKEFLAGS}
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}/" PREFIX="/usr" install
+  cd "${pkgname}-v${pkgver}"
+  make DESTDIR="${pkgdir}/" install
+  install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 
