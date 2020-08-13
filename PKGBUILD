@@ -7,9 +7,10 @@ url="https://github.com/AlexVIM1/distroflex"
 license=('GPLv3')
 optdepends=(
 	'lsb-release: get kernel info'
-	'xrandr: video settings'
+	'xorg-xrandr: video settings'
 	'lm_sensors: get CPU temperature'
-	'alsa: sound settings'
+	'alsa-lib: sound library'
+	'alsa-utils: sound settings'
 )
 source=("https://raw.githubusercontent.com/AlexVIM1/distroflex/pkg/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
 md5sums=('e9b39bbfb9213bdb32ecaa8300e2500b')

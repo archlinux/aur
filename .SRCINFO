@@ -6,9 +6,10 @@ pkgbase = distroflex
 	arch = any
 	license = GPLv3
 	optdepends = lsb-release: get kernel info
-	optdepends = xrandr: video settings
+	optdepends = xorg-xrandr: video settings
 	optdepends = lm_sensors: get CPU temperature
-	optdepends = alsa: sound settings
+	optdepends = alsa-lib: sound library
+	optdepends = alsa-utils: sound settings
 	source = https://raw.githubusercontent.com/AlexVIM1/distroflex/pkg/distroflex-1.0-1.tar.gz
 	md5sums = e9b39bbfb9213bdb32ecaa8300e2500b
 
