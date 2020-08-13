@@ -4,21 +4,21 @@
 # Contributor: aorth for his check-firmware-version.sh
 
 pkgname=intel-ucode-clear
-pkgver=33250
+pkgver=33600
 pkgrel=1
 pkgdesc="Intel cpu microcode and i915 firmware used by Clear Linux"
 arch=(x86_64)
-url=""
+url="https://clearlinux.org/"
 license=()
-#provides=(intel-ucode)
-_ucode=f1d12a1788b7c0d81b32375cb4c7d9d13dd8b8edccb381ee3e8addd6fb84f876
-_i915=4dc9995ee42c3d78e54a7b9e193e04c504ba8fff12c9106852dfaedf5083fc3f
+provides=(intel-ucode)
+_ucode=dafc994b611551d56ec40fafe77f552770d5e1c72b870e323191a95c8abf2700
+_i915=17f0707b6321d2cc43db42468197677177e3c2c07712b026d28716595128a5cd
 source=("${pkgver}-Manifest.linux-firmware::https://cdn.download.clearlinux.org/update/${pkgver}/Manifest.linux-firmware"
         "${pkgver}-00-intel-ucode.cpio.tar::https://cdn.download.clearlinux.org/update/${pkgver}/files/${_ucode}.tar"
         "${pkgver}-i915-firmware.cpio.xz.tar::https://cdn.download.clearlinux.org/update/${pkgver}/files/${_i915}.tar")
-sha256sums=('c88cae5cd183cd72f7200cd2516871d932cd10c520389796fc25dd4558a0a899'
-            'b3caf7ad3dc5995ba96081f5926c6789b70f16c27074080d89ea9589b0eb8d0b'
-            '1a55ff0562ccb3d2b56fc3bf09ea433ad05adc92b21b2c41923ec1b2b4441752')
+sha256sums=('cc64eee07250a31d7b07b80345838242c384516bafc52b6415ed5f286d9e6caf'
+            '3258b131aecf607a901f56d550da3fb3c063ee530fbd7cfc7b6f79e4991a2f9a'
+            '6bda1869f067d19c8a97093821b76e085ed8bd76b255fdf24c8dc9de4aa437b9')
 
 build() {
   mv "${_ucode}" intel-ucode.cpio
