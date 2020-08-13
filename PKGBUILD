@@ -1,19 +1,19 @@
 # Maintainer: Alex Dewar <a.dewar@sussex.ac.uk>
 pkgname=genn_cpu_only
-pkgver=4.2.1
+pkgver=4.3.2
 pkgrel=1
-pkgdesc="GeNN: GPU-enhanced neural networks (version 4; without CUDA backend)"
+pkgdesc="GeNN: GPU-enhanced neural networks (without CUDA backend)"
 epoch=2
 arch=(x86_64)
 url="https://github.com/genn-team/genn"
 license=('GPL')
-makedepends=(doxygen doxypypy python python-numpy swig)
+makedepends=(doxygen doxypypy python python-setuptools python-numpy swig)
 optdepends=("python: for pygenn" "python-numpy: for pygenn" "spinecreator: for spineml2genn")
 options=(staticlibs !emptydirs)
 provides=(genn)
 conflicts=(genn)
 source=("$url/archive/${pkgver//_/-}.tar.gz")
-sha256sums=('39af16ab8b79f57b50e0a2796e89c2e1c568ab5c5373830009bf86fa00b6ea72')
+sha256sums=('3d865367a51a9c23a5f7987b0197c55caf7e6e77e65d9180b63ead1b540dfe11')
 
 # Make sure we aren't building with CUDA support
 export CUDA_PATH=
@@ -58,11 +58,19 @@ package() {
 	PREFIX="$pkgdir"/usr/ make install
 
 	# Install documentation
-	mkdir -p "$pkgdir"/usr/share/genn/documentation
-	cp -rf documentation/html/* "$pkgdir"/usr/share/genn/documentation
+	mkdir -p "$pkgdir"/usr/share/doc/genn
+	cp -rf documentation/html/* "$pkgdir"/usr/share/doc/genn
 
 	# Copy userproject folder
-	cp -R userproject "$pkgdir"/usr/src/genn
+	mkdir -p "$pkgdir"/usr/share/genn
+	cp -R userproject "$pkgdir"/usr/share/genn/
+
+	# Make symlinks to userproject headers
+	pushd "$pkgdir"/usr/share/genn/userproject/include
+	for file in *; do
+		ln -s /usr/share/genn/userproject/include/$file "$pkgdir"/usr/include/genn/
+	done
+	popd
 
 	# Install standalone SpineML generator
 	install -m755 bin/spineml_* "$pkgdir"/usr/bin
@@ -71,7 +79,14 @@ package() {
 	install -m644 lib/libspineml_*.a "$pkgdir"/usr/lib
 
 	# Copy SpineML2GeNN headers
-	cp -R include/spineml "$pkgdir"/usr/include
+	cp -R include/spineml "$pkgdir"/usr/include/
+
+	# The headers in common don't seem to always get included properly
+	pushd "$pkgdir"/usr/include/spineml/common
+	for f in *;do
+		ln -s /usr/include/spineml/common/$f "$pkgdir"/usr/include/spineml/
+	done
+	popd
 
 	# Install pygenn
 	python setup.py install --prefix=/usr --root="$pkgdir"
