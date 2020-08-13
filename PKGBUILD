@@ -2,7 +2,7 @@
 
 pkgname=dovecot-fts-elastic
 _reponame=fts-elastic
-pkgver=r122.6c79520
+pkgver=r123.ce47a7d
 pkgrel=1
 pkgdesc="Dovecot FTS plugin for elasticsearch"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(dovecot elasticsearch json-c)
 makedepends=(git)
 backup=('etc/dovecot/conf.d/90-fts.conf')
 
-source=("git+https://github.com/filiphanes/fts-elastic#commit=6c79520838df775087c368d74cb01380acf364a5"
+source=("git+https://github.com/filiphanes/fts-elastic#commit=ce47a7d0f026f9d35399096d4ccfa390ee83df0d"
 	    "90-fts.conf")
 
 sha256sums=('SKIP'
