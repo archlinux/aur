@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail.com>
 
 pkgname=noi-despised-git
-pkgver=r31.70aa9e3
+pkgver=r33.3776635
 pkgrel=1
 pkgdesc='NOI 背笔试工具'
 arch=('x86_64')
@@ -24,5 +24,7 @@ build() {
 }
 
 package() {
-	install -Dm755 "Despised/despised" "$pkgdir/usr/bin/despised"
+	cd Despised
+	install -Dm755 despised "$pkgdir/usr/bin/despised"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
