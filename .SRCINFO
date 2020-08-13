@@ -5,6 +5,7 @@ pkgbase = distroflex
 	url = https://github.com/AlexVIM1/distroflex
 	arch = any
 	license = GPLv3
+	makedepends = qt5-base
 	optdepends = lsb-release: get kernel info
 	optdepends = xorg-xrandr: video settings
 	optdepends = lm_sensors: get CPU temperature

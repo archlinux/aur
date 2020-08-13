@@ -5,6 +5,7 @@ pkgdesc="Cross-distro settings tool"
 arch=('any')
 url="https://github.com/AlexVIM1/distroflex"
 license=('GPLv3')
+makedepends=('qt5-base')
 optdepends=(
 	'lsb-release: get kernel info'
 	'xorg-xrandr: video settings'
