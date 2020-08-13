@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OWON VDS Oscilloscope
+GenericName=Oscilloscope
+Comment=Analyze electrical signals
+Exec=owon-vds-tiny
+Icon=owon-vds-tiny
+Terminal=false
+Type=Application
+Categories=Electronics;Engineering

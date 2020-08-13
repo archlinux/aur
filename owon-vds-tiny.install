@@ -1,0 +1,16 @@
+_user=det            # User
+_home=/home/$_user/  # $HOME
+
+post_install() {
+	udevadm control --reload-rules
+	udevadm trigger
+}
+
+pre_upgrade() {
+	rm -f "${_home}/.${pkgname}/preferences*" # Issues were reported with "dirty" upgrades
+}
+
+post_upgrade() {
+	udevadm control --reload-rules
+	udevadm trigger
+}

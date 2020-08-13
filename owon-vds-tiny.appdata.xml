@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+​<component type="desktop">
+    <id>owon-vds-tiny</id>
+    <name>OWON VDS Oscilloscope</name>
+    <summary>OWON VDS1022(I)-VDS2052 oscilloscope application</summary>
+    <description><p>Unofficial release with fixes and improvements</p></description>
+    <launchable type="desktop-id">owon-vds.desktop</launchable>
+    <url type="homepage">https://github.com/ceres-c/OWON-VDS1022.git</url>
+    <provides><binary>owon-vds-tiny</binary></provides>
+    <update_contact>aur@ceres-c.it</update_contact>
+​</component>
