@@ -1,0 +1,19 @@
+pkgbase = ttf-gost
+	pkgdesc = Font GOST 2.304-81 type A and type B
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://dwg.ru/dnl/14411
+	arch = any
+	license = custom
+	provides = ttf-font
+	source = GOST2304_TypeA.ttf
+	source = GOST2304_TypeA_italic.ttf
+	source = GOST2304_TypeB.ttf
+	source = GOST2304_TypeB_italic.ttf
+	md5sums = 4010fba09f4fdf729951bf9e629d9781
+	md5sums = 8cbfe2c5abc618cdec1e3c2b550f0679
+	md5sums = 825e24a8642afb9144e0dcbdf8cba287
+	md5sums = f86234dc5a6c9f06d1913e35ab403d0a
+
+pkgname = ttf-gost
+
