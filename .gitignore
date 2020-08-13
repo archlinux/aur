@@ -1,0 +1,5 @@
+pkg/
+src/
+pianoteq-stage-trial-bin-*.pkg.tar.xz
+pianoteq-stage-trial-bin-*.pkg.tar.zst
+pianoteq_icon_128.png
