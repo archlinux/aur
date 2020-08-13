@@ -87,6 +87,7 @@ options=('!strip')
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config
+  "https://github.com/graysky2/kernel_gcc_patch/blob/master/enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v5.7%2B.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0002-clear-patches.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0003-glitched-base.patch"
@@ -105,6 +106,7 @@ validpgpkeys=(
 md5sums=('31965edc4b4473959a6692db3b200846'
          'SKIP'
          '91db2f49d9ec23865eb553f8606977ec'
+         'ac9931a3feca7dc3fadc20f0022dd558'
          'f89cd458929e9817a41861119bf8fcc1'
          'b10e4c612d5240d66fad8f1c50fe3242'
          'a22cddcadc0da933dac13a6ab49b7ed9'
@@ -153,6 +155,10 @@ prepare() {
 #  done
     
   patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  
+  # graysky's cpu opts - https://github.com/graysky2/kernel_gcc_patch
+  msg2 "Applying graysky's cpu opts patch"
+  patch -Np1 -i ../enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v5.7%2B.patch
   
     # TkG
   patch -Np1 -i ../0002-clear-patches.patch
