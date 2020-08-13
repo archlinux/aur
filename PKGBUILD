@@ -1,7 +1,7 @@
 # Maintainer: Vincent Herlemont <vincentherl@leszeros.com>
 pkgname=short-git
-pkgver=0.3.2.r2.g58096a7
-pkgrel=3
+pkgver=0.3.3.r0.g68325f5
+pkgrel=1
 pkgdesc="A concise cli launcher / project manager using env files"
 source=("${pkgname}::git+https://github.com/vincent-herlemont/short.git")
 url="https://github.com/vincent-herlemont/short"
