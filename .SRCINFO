@@ -1,17 +1,21 @@
 pkgbase = python-drizzlepac
 	pkgdesc = AstroDrizzle for HST images
-	pkgver = 3.1.6
+	pkgver = 3.1.8
 	pkgrel = 1
 	url = http://www.stsci.edu/scientific-community/software/drizzlepac.html
 	arch = i686
 	arch = x86_64
 	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-stsci.skypac
+	checkdepends = python-ci_watson
+	checkdepends = python-fitsblender
 	makedepends = python-setuptools
 	makedepends = python-relic
 	makedepends = python-astropy
-	source = https://files.pythonhosted.org/packages/source/d/drizzlepac/drizzlepac-3.1.6.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/drizzlepac/drizzlepac-3.1.8.tar.gz
 	source = https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/LICENSE.txt
-	md5sums = f3649c579580ed444bf865cffcf53c83
+	md5sums = 44e4658c3af5e1cac72608e4625434e6
 	md5sums = SKIP
 
 pkgname = python-drizzlepac
@@ -19,14 +23,15 @@ pkgname = python-drizzlepac
 	depends = python-nose
 	depends = python-matplotlib
 	depends = python-requests
+	depends = python-scikit-learn>=0.20
 	depends = python-spherical_geometry>=1.2.17
 	depends = python-stsci.tools>=3.6
 	depends = python-stsci.image>=2.3.0
 	depends = python-stsci.imagestats
-	depends = python-stsci.skypac
+	depends = python-stsci.skypac>=1.0
 	depends = python-stsci.stimage
-	depends = python-stwcs
-	depends = python-tweakwcs>=0.5.0
+	depends = python-stwcs>=1.5.3
+	depends = python-tweakwcs>=0.6.3
 	depends = python-stregion
 	depends = python-fitsblender
 	depends = python-acstools
