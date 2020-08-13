@@ -1,9 +1,8 @@
 # Maintainer: Johannes Joens <johannes@joens.email>
 
 pkgname=waterfall
-pkgver=366
+pkgver=369
 pkgrel=1
-_pkgver=`wget -qO- https://papermc.io/ci/job/Waterfall/lastSuccessfulBuild/buildNumber`
 pkgdesc="A fork of BungeeCord to improve performance and stability."
 arch=('any')
 url="https://papermc.io/"
@@ -14,14 +13,14 @@ optdepends=("tar: needed in order to create backups"
 makedepends=('wget')
 backup=('etc/conf.d/waterfall')
 install="${pkgname}.install"
-source=("${pkgname}.${_pkgver}.jar"::"https://papermc.io/ci/job/Waterfall/lastSuccessfulBuild/artifact/Waterfall-Proxy/bootstrap/target/Waterfall.jar"
+source=("${pkgname}.${pkgver}.jar"::"https://papermc.io/ci/job/Waterfall/lastSuccessfulBuild/artifact/Waterfall-Proxy/bootstrap/target/Waterfall.jar"
 	"${pkgname}-backup.service"
 	"${pkgname}-backup.timer"
 	"${pkgname}.service"
 	"${pkgname}.conf"
 	"${pkgname}.sh"
 	"LICENSE.txt"::"https://raw.githubusercontent.com/PaperMC/Waterfall/master/LICENSE.txt")
-noextract=("${pkgname}.${_pkgver}.jar")
+noextract=("${pkgname}.${pkgver}.jar")
 sha512sums=('SKIP'
             'ea7d97c4193efca14a286fd72dbf44c0b20ec94be40c5da646c141f7cd30d1e67c07349f2d1edc5e08489b0aecec4d940ea8fbca6da03ebd1f04802a67262f63'
             '2e21b6e5c9bc4ca4ea7cedd79811afcb4a9b0dc0f51a92fa2bc4dcf33f0f7ef88a165e3621cb4752877c69758bba651016761c69e53f9be93ce7c3c2a372c1a4'
@@ -29,9 +28,6 @@ sha512sums=('SKIP'
             '80ed2d6a8fb3f3995e37a17619403697e21dd99d21839e8b807b289113f9fe44e815ebe004f41c371a71182fb0800c09a381a6be0cac53ca3907799b10717244'
             'e55d174655d82eb45b0f9afb3276db7db5feb5b964265a36853f24e6da37d57e8702276e357e1d75234477422a25ac89103d6ac87c11a7e50142e50c6249d1c8'
             'SKIP')
-pkgver()	{
-	printf `wget -qO- https://papermc.io/ci/job/Waterfall/lastSuccessfulBuild/buildNumber`
-}
 _game="${pkgname}"
 _server_root="/srv/${pkgname}"
 package() {
@@ -40,8 +36,8 @@ package() {
 	install -Dm644 ${_game}.service           "${pkgdir}/usr/lib/systemd/system/${_game}.service"
 	install -Dm644 ${_game}-backup.service    "${pkgdir}/usr/lib/systemd/system/${_game}-backup.service"
 	install -Dm644 ${_game}-backup.timer      "${pkgdir}/usr/lib/systemd/system/${_game}-backup.timer"
-	install -Dm644 ${_game}.${_pkgver}.jar     "${pkgdir}/${_server_root}/${_game}.${_pkgver}.jar"
-	ln -s "${_game}.${_pkgver}.jar" "${pkgdir}${_server_root}/${_game}_server.jar"
+	install -Dm644 ${_game}.${pkgver}.jar     "${pkgdir}/${_server_root}/${_game}.${pkgver}.jar"
+	ln -s "${_game}.${pkgver}.jar" "${pkgdir}${_server_root}/${_game}_server.jar"
 
 	# Link the log files
 	mkdir -p "${pkgdir}/var/log/"
