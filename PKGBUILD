@@ -1,5 +1,5 @@
 pkgname=nsdiff
-pkgver=1.79
+pkgver=1.81
 pkgrel=1
 pkgdesc="Create an 'nsupdate' script from DNS zone file differences"
 url="https://dotat.at/prog/nsdiff/"
@@ -13,15 +13,25 @@ depends=(
 provides=(
   nspatch=$pkgver
   nsvi=$pkgver
+  perl-dns-nsdiff=$pkgver
 )
-source=("https://dotat.at/prog/nsdiff/nsdiff-$pkgver.tar.gz")
-#source=("git+https://github.com/fanf2/nsdiff.git")
-#source=("git+https://git.uis.cam.ac.uk/x/uis/ipreg/nsdiff.git")
-sha256sums=('ae0ceb0989953080fe713d73bc42a23582a9ad804e2b6cd73d6097ec84420f9e')
+options=(!emptydirs)
+source=("https://dotat.at/prog/nsdiff/DNS-nsdiff-$pkgver.tar.gz")
+sha256sums=('869dddadfe5f137855da41e1705a43dbf1f60d31374edc8822c827f2b7ed4d41')
+#_commit=f2979fd03bbede624709700dfb65b26d94a0f2f2 # 1.81
+#source=("git+https://github.com/fanf2/nsdiff.git#commit=$_commit")
+#source=("git+https://git.uis.cam.ac.uk/x/uis/ipreg/nsdiff.git=$_commit")
+#sha256sums=('SKIP')
+
+build() {
+  cd DNS-nsdiff-$pkgver
+  perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
 
 package() {
-  cd nsdiff-$pkgver
-  make prefix="$pkgdir/usr" install
+  cd DNS-nsdiff-$pkgver
+  make DESTDIR="$pkgdir" install
 }
 
 # vim: ts=2:sw=2:et
