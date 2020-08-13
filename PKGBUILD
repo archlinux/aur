@@ -1,42 +1,44 @@
-# Maintainer: Jerome Leclanche <jerome@leclan.ch>
+# Maintainer: Librewish <librewish@gmail.com>
 
 _pkgname=lxqt-kwin-desktop
 pkgname=$_pkgname-git
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The LXQt-Kwin desktop"
 arch=("any")
 url="http://lxqt.org"
 license=("GPL2")
 depends=(
-	"pcmanfm-qt-git"
-	"lximage-qt-git"
-	"qterminal-git"
-	"pavucontrol-qt-git"
+	"pcmanfm-qt"
+	"lximage-qt"
+	"qterminal"
+	"pavucontrol-qt"
+	"featherpad"
 	# components
-	"lxqt-about-git"
-	"lxqt-admin-git"
-	"lxqt-archiver-git"
-	"lxqt-config-git"
-	"lxqt-globalkeys-git"
-	"lxqt-notificationd-git"
-	"lxqt-openssh-askpass-git"
-	"lxqt-panel-git"
-	"lxqt-policykit-git"
-	"lxqt-powermanagement-git"
-	"lxqt-qtplugin-git"
-	"lxqt-runner-git"
-	"lxqt-session-git"
-	"lxqt-sudo-git"
-	"lxqt-themes-git"
-	"lxqt_wallet-git"
+	"lxqt-about"
+	"lxqt-admin"
+	"lxqt-archiver"
+	"lxqt-config"
+	"lxqt-globalkeys"
+	"lxqt-notificationd"
+	"lxqt-openssh-askpass"
+	"lxqt-panel"
+	"lxqt-policykit"
+	"lxqt-powermanagement"
+	"lxqt-qtplugin"
+	"lxqt-runner"
+	"lxqt-session"
+	"lxqt-sudo"
+	"lxqt-themes"
+	#kwin
 	"lxqt-kcm-integration-extra-git"
-	"lxqt-organizer-git"
 )
-optdepends=("lxqt-connman-applet: Qt front-end to ConnMan"
+optdepends=(
+	"lxqt_wallet"
+	"lxqt-organizer"
+	"lxqt-connman-applet: Qt front-end to ConnMan"
 	"cmst: a connman system tray"
 	"kvantum-qt5: SVG-based Qt5 theme engine plus a config tool and extra themes"
-	"featherpad: Pure Qt text editor"
 	"feathernotes: Lightweight Qt hierarchical notes-manager for Linux"
 	"qps: Task Monitoring"
 	"lector: Qt based ebook reader with support for PDF, epub, djvu, fb2, comicbooks, mobi, azw"
@@ -58,14 +60,13 @@ optdepends=("lxqt-connman-applet: Qt front-end to ConnMan"
 	"kdocker: An application to help you dock any application into the system tray"
 	"speedcrunch: Simple, high precision and powerful calculator."
 	"sddm: Recommended display manager"
-	"sddm-config-editor-git: an sddm config editor"
-	"nm-tray-git: Qt front-end to NetworkManager"
-	"meteo-qt-git: System tray application for weather status information"
+	"sddm-config-editor: an sddm config editor"
+	"nm-tray: Qt front-end to NetworkManager"
+	"meteo-qt: System tray application for weather status information"
 )
 makedepends=("git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/lxde/lxqt.git")
 sha256sums=("SKIP")
 
 build() {
