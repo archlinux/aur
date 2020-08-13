@@ -1,6 +1,6 @@
 pkgbase = gvisor-bin
 	pkgdesc = OCI container sandbox runtime focused on security, efficiency, and ease of use
-	pkgver = 20200522.0
+	pkgver = 20200810.0
 	pkgrel = 1
 	url = https://gvisor.dev
 	install = gvisor-bin.install
@@ -11,8 +11,8 @@ pkgbase = gvisor-bin
 	provides = runsc
 	conflicts = gvisor-git
 	conflicts = runsc
-	source = gvisor-bin-20200522.0::https://storage.googleapis.com/gvisor/releases/release/20200522.0/runsc
-	sha256sums = b10c7c31e4a7a1b9d92e5b7053ad92ae8d36aab2585cf712d1b3f228a77aa235
+	source = gvisor-bin-20200810.0::https://storage.googleapis.com/gvisor/releases/release/20200810.0/runsc
+	sha256sums = 3b74b38e934e7b5185a6a276c50501ebac67f4cabc1641e61dd9dc01dad68034
 
 pkgname = gvisor-bin
 
