@@ -1,7 +1,7 @@
 # Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
 pkgname=jellyfin-mpv-shim
-pkgver='1.7.0'
+pkgver='1.7.1'
 pkgrel=1
 pkgdesc="Cast media from Jellyfin Mobile and Web apps to MPV. (Unofficial)"
 arch=('any')
@@ -16,9 +16,10 @@ optdepends=('python-pystray: systray support'
 	'python-flask: desktop client support'
 	'jellyfin-mpv-shim-web: desktop client support'
 	'svp: SmoothVideo Project server'
-	'mpv-shim-default-shaders: default shader pack')
+	'mpv-shim-default-shaders: default shader pack'
+	'python-pypresence: Discord Rich Presence integration')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iwalton3/jellyfin-mpv-shim/archive/v$pkgver.tar.gz")
-sha256sums=('8349f30c053e2a10a1f79762f3bfe37d2a55677573618685b9661ab7360ed222')
+sha256sums=('377768fbf3051a63272a3582fe0eb0d72cff8c99fbf68248b8caa545fe8a579c')
 
 build() {
 	cd "${srcdir}/jellyfin-mpv-shim-${pkgver}"
