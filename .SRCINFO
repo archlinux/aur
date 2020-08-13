@@ -1,6 +1,6 @@
 pkgbase = noi-despised-git
 	pkgdesc = NOI 背笔试工具
-	pkgver = r33.3776635
+	pkgver = r34.296c3fc
 	pkgrel = 1
 	url = https://github.com/ouuan/Despised
 	arch = x86_64
