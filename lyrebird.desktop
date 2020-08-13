@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Lyrebird
+GenericName=Voice Changer
+Icon=lyrebird
+Exec=python3 /usr/lib/python3.8/site-packages/lyrebird/app.py
+Path=/usr/lib/python3.8/site-packages/lyrebird/
+Terminal=false
+Categories=Audio;
