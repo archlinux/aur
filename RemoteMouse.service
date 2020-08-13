@@ -1,6 +1,6 @@
 [Unit]
 ConditionPathExists=/usr/bin/remotemouse
-Description=Use a mobile phone or tablet as a wireless mouse and keyboard
+Description=Turn your mobile phone or tablet into a set of wireless mouse, keyboard and trackpad
 Documentation=https://remotemouse.net/
 
 [Service]
