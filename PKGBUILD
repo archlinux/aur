@@ -8,7 +8,7 @@ _pkgauthor=CircleCI-Public
 _upstream_pkgname=circleci-cli
 _upstream_elfname=circleci
 pkgname=circleci-cli-bin
-pkgver=0.1.9066
+pkgver=0.1.9321
 pkgrel=1
 pkgdesc="CircleCI's new command-line application."
 arch=('x86_64')
@@ -22,7 +22,7 @@ license=("MIT")
 source=("${_upstream_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgauthor}/${_upstream_pkgname}/releases/download/v${pkgver}/${_upstream_pkgname}_${pkgver}_${_goos}_${_goarch}.tar.gz"
   "LICENSE::https://raw.githubusercontent.com/${_pkgauthor}/${_upstream_pkgname}/master/LICENSE")
 sha256sums=(
-  "5e7b3e1ee857e76417b65aea10768863a462fbdc7ffd91701552a34a6a6cd957"
+  "26a4b0c56c1e0ad32ee42368ee098dbe8e917006cbd45c36a5cfc079f6888d3b"
   "89f336660e1dea7ea005892dc44696fb15544cbffedfbddcd4f6671a735763a9"
 )
 
