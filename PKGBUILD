@@ -1,25 +1,33 @@
-# Maintainer: peeweep <peeweep at 0x0 dot ee>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: peeweep <peeweep at 0x0 dot ee>
 
-pkgname=python-torrequest
 _pkgname=torrequest
+pkgname=python-${_pkgname}
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="Simple Python interface for HTTP(s) requests over Tor"
+pkgrel=2
+pkgdesc='Simple Python interface for HTTP(s) requests over Tor'
 arch=('any')
-url="https://pypi.org/project/torrequest"
+url='https://github.com/erdiaker/torrequest'
+_rawurl="https://raw.githubusercontent.com/${url##*github.com/}"
 license=('MIT')
+# No licence file available upstream
 depends=('python' 'python-pysocks' 'python-requests' 'python-stem')
-source=("https://files.pythonhosted.org/packages/a3/d2/00538e47a2c80979231313c346a0abc3927c7b230d69eb923bb5b221ec62/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('3745d4ea3ffda98d7a034363c787adb37aab77bdab40094a4d937392cd4dae82')
+makedepends=('python-setuptools')
+provides=("${_pkgname}")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
+        "${_pkgname}-${pkgver}-README.md::${_rawurl}/master/README.md")
+sha256sums=('3745d4ea3ffda98d7a034363c787adb37aab77bdab40094a4d937392cd4dae82'
+            'SKIP')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+  install -Dm644 "${_pkgname}-${pkgver}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  cd "${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
