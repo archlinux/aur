@@ -16,9 +16,9 @@ optdepends=(
 source=("https://raw.githubusercontent.com/AlexVIM1/distroflex/pkg/${pkgname}-${pkgver}-${pkgrel}.tar.gz")
 md5sums=('e9b39bbfb9213bdb32ecaa8300e2500b')
 build() {
-    cd "${srcdir}/build"
-    qmake
-    make
+	cd "${srcdir}/build"
+    	qmake
+    	make
 }
 package() {
     	cd "${srcdir}/build"
