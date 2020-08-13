@@ -87,7 +87,7 @@ options=('!strip')
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config
-  "https://github.com/graysky2/kernel_gcc_patch/blob/master/enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v5.7%2B.patch"
+  "https://github.com/graysky2/kernel_gcc_patch/raw/master/enable_additional_cpu_optimizations_for_gcc_v10.1%2B_kernel_v5.7%2B.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0002-clear-patches.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0003-glitched-base.patch"
