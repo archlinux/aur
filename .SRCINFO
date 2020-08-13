@@ -1,7 +1,7 @@
 pkgbase = rtl8723bu-git-dkms
 	pkgdesc = Driver for RTL8723BU DKMS version
-	pkgver = 240
-	pkgrel = 3
+	pkgver = 242
+	pkgrel = 1
 	url = https://github.com/lwfinger/rtl8723bu
 	install = rtl8723bu-git-dkms.install
 	arch = any
