@@ -35,7 +35,7 @@ source=("git+https://git.torproject.org/tor.git#branch=${_branch:-master}"
         'tor.logrotate' 'tor.service' 'tor.tmpfiles' 'tor.sysusers')
 
 sha256sums=('SKIP'
-            '4fe3fd1042b369ed5d45e95a214dfef315bf756dc44f51d8fdb775aab1dcffd9'
+            'e739da6271814ef8dd928a0b5d3338ef4370d0c131e86ec26cea4d7f96572d0b'
             '72ed5d90c54d9d5354af0d9fc7eb1412c548cc308868b85a99278abe8ccbf145'
             '90a588c3c2dc7826172341453f76739e8f48df7b0c858adebd12e97f047bde26'
             '7fbb63e9411eee2176964449a3d6809d16e1120152c6ff201ecea1d1f97f102b'
