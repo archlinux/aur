@@ -1,5 +1,5 @@
 pkgbase = linux-bcachefs-ck
-	pkgver = 5.7.13
+	pkgver = 5.7.15
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
@@ -8,11 +8,10 @@ pkgbase = linux-bcachefs-ck
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.13.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.13.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.15.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.15.tar.sign
 	source = config
-	source = 0000-sphinx-workaround.patch
-	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0002-clear-patches.patch
 	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0003-glitched-base.patch
 	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0004-5.7-ck1.patch
@@ -22,11 +21,10 @@ pkgbase = linux-bcachefs-ck
 	source = https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0008-5.7-bcachefs.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	md5sums = e220616e90908bf303916e57f11dfebd
+	md5sums = 31965edc4b4473959a6692db3b200846
 	md5sums = SKIP
-	md5sums = 58cbbcf8f07027987ea694eb84b13090
-	md5sums = 2cebdad39da582fd6a0c01746c8adb42
-	md5sums = cb960fcd1691d360491ed5c97a63a032
+	md5sums = 91db2f49d9ec23865eb553f8606977ec
+	md5sums = f89cd458929e9817a41861119bf8fcc1
 	md5sums = b10e4c612d5240d66fad8f1c50fe3242
 	md5sums = a22cddcadc0da933dac13a6ab49b7ed9
 	md5sums = aa8f5bb0b644cbef02c4d55c3956026a
@@ -42,11 +40,11 @@ pkgname = linux-bcachefs-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-bcachefs-ck=5.7.13
+	provides = linux-bcachefs-ck=5.7.15
 
 pkgname = linux-bcachefs-ck-headers
 	pkgdesc = Headers and scripts for building modules for Linux-bcachefs-ck kernel
 	depends = linux-bcachefs-ck
-	provides = linux-bcachefs-ck-headers=5.7.13
-	provides = linux-headers=5.7.13
+	provides = linux-bcachefs-ck-headers=5.7.15
+	provides = linux-headers=5.7.15
 

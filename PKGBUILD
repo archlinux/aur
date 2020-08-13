@@ -58,13 +58,13 @@ _subarch=
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+_localmodcfg=/home/sayad/.config/modprobed.db
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-bcachefs-ck
-pkgver=5.7.13
-_pkgverpntrel=13
+pkgver=5.7.15
+_pkgverpntrel=15
 pkgrel=1
 _ckpatchversion=1
 _cpusched="MuQSS"
@@ -87,8 +87,7 @@ options=('!strip')
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config
-  0000-sphinx-workaround.patch
-  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0002-clear-patches.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0003-glitched-base.patch"
   "https://github.com/Frogging-Family/linux-tkg/raw/master/linux57-tkg/linux57-tkg-patches/0004-5.7-ck1.patch"
@@ -103,11 +102,10 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-md5sums=('e220616e90908bf303916e57f11dfebd'
+md5sums=('31965edc4b4473959a6692db3b200846'
          'SKIP'
-         '58cbbcf8f07027987ea694eb84b13090'
-         '2cebdad39da582fd6a0c01746c8adb42'
-         'cb960fcd1691d360491ed5c97a63a032'
+         '91db2f49d9ec23865eb553f8606977ec'
+         'f89cd458929e9817a41861119bf8fcc1'
          'b10e4c612d5240d66fad8f1c50fe3242'
          'a22cddcadc0da933dac13a6ab49b7ed9'
          'aa8f5bb0b644cbef02c4d55c3956026a'
@@ -153,10 +151,8 @@ prepare() {
 #    echo "Applying patch $src..."
 #    patch -Np1 < "../$src"
 #  done
-  
-  patch -Np1 -i ../0000-sphinx-workaround.patch
-  
-  patch -Np1 -i ../0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+    
+  patch -Np1 -i ../0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
   
     # TkG
   patch -Np1 -i ../0002-clear-patches.patch
