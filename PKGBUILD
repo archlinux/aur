@@ -7,18 +7,13 @@ arch=('any')
 url="https://github.com/vineetred/flowy"
 license=('GPL3')
 depends=('gcc-libs')
-makedepends=('git' 'cargo') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git' 'cargo')
 source=("$pkgname::git+https://github.com/vineetred/flowy.git")
 md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 	printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
-
-prepare() {
-	cd "${srcdir}/${pkgname}"
-	rm -r "./demo"
 }
 
 build() {
