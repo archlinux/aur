@@ -1,0 +1,14 @@
+pkgbase = zramen-runit
+	pkgdesc = Zramen and runit init scripts
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/zramen-runit
+	arch = any
+	license = GPL3
+	depends = runit
+	replaces = zramen-runit
+	source = https://github.com/atweiden/zramen/releases/download/0.2.1/zramen-0.2.1.tar.gz
+	sha256sums = 368d384eff501392e8dd12dbd12cc490352267fb214ec78f9b5f08f0883bc7c1
+
+pkgname = zramen-runit
+
