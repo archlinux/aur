@@ -1,7 +1,7 @@
 # Maintainer: Christian Mauderer <oss@c-mauderer.de>
 pkgname=sasquatch-git
-pkgrel=1
-pkgver=r60.982cc25
+pkgrel=3
+pkgver=r58.3e0cc40
 pkgdesc='Patched unsquashfs utility with support for vendor-specific SquashFS implementations.'
 arch=('x86_64')
 url='https://github.com/devttys0/sasquatch'
@@ -16,8 +16,8 @@ sha512sums=('SKIP'
 
 prepare() {
 	cd "$pkgname"
-	git am "${srcdir}/0001-No-install.patch"
-	git am "${srcdir}/0002-Make_build_gcc_10_compatible.patch"
+	patch -p1 < "${srcdir}/0001-No-install.patch"
+	patch -p1 < "${srcdir}/0002-Make_build_gcc_10_compatible.patch"
 }
 
 pkgver() {

@@ -1,7 +1,7 @@
 pkgbase = sasquatch-git
 	pkgdesc = Patched unsquashfs utility with support for vendor-specific SquashFS implementations.
-	pkgver = r60.cfac6d8
-	pkgrel = 2
+	pkgver = r58.3e0cc40
+	pkgrel = 3
 	url = https://github.com/devttys0/sasquatch
 	arch = x86_64
 	license = unknown
