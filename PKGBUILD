@@ -6,7 +6,7 @@
 # Contributor: Matthias Lisin <ml@visu.li>
 
 pkgname=helm2-bin
-pkgver=2.16.9
+pkgver=2.16.10
 pkgrel=1
 pkgdesc="The Kubernetes Package Manager"
 arch=(
@@ -33,10 +33,10 @@ validpgpkeys=(  # https://raw.githubusercontent.com/helm/helm/master/KEYS
 sha256sums=('SKIP')
 
 case "${CARCH}" in
-  x86_64)    _CARCH=amd64 && sha256sums+=('197b9338129000f5d085b37e93ae3bcdd785901356a426dfa1f948d6b7a5a744');;
-  aarch64)   _CARCH=arm64 && sha256sums+=('81e2c7472f4a1e3ce3722a6793ea6de8e6c30016419a5cfea588acd33e43b31d');;
-  arm*)      _CARCH=arm   && sha256sums+=('ddb62df4b6fb8ebac4d4eb25da9bf9530eaea07545a1d4f3867d1714832d55d1');;
-  i486|i686) _CARCH=386   && sha256sums+=('08c4d13be1e2d4ca05ae4bda52e4475e22fa66c413f39d7615219ece676d40cd');;
+  x86_64)    _CARCH=amd64 && sha256sums+=('65a4857611a4e65b255ec192cbdb34d47212f041260f81a1039c05a8bb9ea041');;
+  aarch64)   _CARCH=arm64 && sha256sums+=('9ed3b0aefbe856d720b48c74dcd9c30c8dde0d1df385d62c1fb191b36f9cfb92');;
+  arm*)      _CARCH=arm   && sha256sums+=('c891d66cfc09dbf32e3ea83879c8afe8b3f2462d62d6970a9a229424180eebd7');;
+  i486|i686) _CARCH=386   && sha256sums+=('9d6299ce1ce8b91bc09c6fbd9634a40fe8332a37f3d94b42c225e9b78e33ed3f');;
 esac
 
 source=(
