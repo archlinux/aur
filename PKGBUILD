@@ -9,7 +9,7 @@ pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
 pkgver=4.1.0
 secp256k1ver=0.20.9
-pkgrel=4
+pkgrel=5
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -67,6 +67,8 @@ prepare() {
 }
 
 build() {
+  export GIT_SUBMODULE_SKIP=1;
+
   cd "Electron-Cash-${pkgver}"
 
   # python2-pyqt5 and qt5-base are needed for _only_ the icons...
