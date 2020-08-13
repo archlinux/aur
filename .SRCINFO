@@ -1,6 +1,6 @@
 pkgbase = dpdk-git
 	pkgdesc = A set of libraries and drivers for fast packet processing
-	pkgver = v19.08.r64.bd253daa7
+	pkgver = v20.08.r6.b9b10ddb4
 	pkgrel = 1
 	url = https://www.dpdk.org
 	arch = x86_64
@@ -12,12 +12,13 @@ pkgbase = dpdk-git
 	depends = libpcap
 	depends = python
 	depends = libelf
+	depends = libbsd
+	depends = libbpf
+	depends = jansson
 	provides = dpdk
 	options = staticlibs
 	source = dpdk-git::git+https://dpdk.org/git/dpdk
-	source = Add-prefix-to-install-rpath-for-dpdk-test.patch
 	sha256sums = SKIP
-	sha256sums = b6988c8f103c93ee3216d393f0167f2a174a993a9977f9571cd9dc6a45bcec63
 
 pkgname = dpdk-git
 
