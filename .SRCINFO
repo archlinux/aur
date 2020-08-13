@@ -1,0 +1,15 @@
+pkgbase = noi-despised-git
+	pkgdesc = NOI 背笔试工具
+	pkgver = r31.e8faf30
+	pkgrel = 1
+	url = https://github.com/ouuan/Despised
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = noi-despised
+	conflicts = noi-despised
+	source = git://github.com/ouuan/Despised.git
+	md5sums = SKIP
+
+pkgname = noi-despised-git
+
