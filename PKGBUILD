@@ -3,10 +3,10 @@
 pkgname=dduper-bin
 provides=('dduper')
 conflicts=('dduper')
-_gitver=v0.01-7-gb703d79
-pkgver=0.01.r7.gb703d79
+_gitver=v0.01-10-g688a1c6
+pkgver=0.01.r10.g688a1c6
 pkgrel=1
-pkgdesc="Fast block-level offline BTRFS deduplication tool."
+pkgdesc="Fast block-level out-of-band BTRFS deduplication tool."
 arch=('x86_64')
 url='https://github.com/Lakshmipathi/dduper'
 license=('GPL2')
