@@ -2,7 +2,7 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
 pkgname=swift-bin
-pkgver=5.2.4
+pkgver=5.2.5
 pkgrel=1
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip')
 provides=('swift-language')
 replaces=('swift-language-bin')
 source=("https://swift.org/builds/swift-$pkgver-release/centos8/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-centos8.tar.gz")
-sha256sums=('dd07e4e8f57b8339d4a720c45b1279a8e8d8d3ce6695f82919db1674923d8794')
+sha256sums=('f232397ff96399d491c2f5a95d3df320c42dcf92fd60b4844af5511eee30aec9')
 
 package() {
   find_elf_only() {
