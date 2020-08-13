@@ -22,8 +22,8 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 "${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${_pkgname}/README" "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}/${_pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_pkgname}/README"
 }
 
 # vim: ts=2 sw=2 et:
