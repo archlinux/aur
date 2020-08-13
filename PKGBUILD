@@ -5,7 +5,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-clojure-mode
-pkgver=5.11.0
+pkgver=5.12.0
 pkgrel=1
 arch=('any')
 pkgdesc="Emacs major mode for the clojure language"
@@ -15,7 +15,7 @@ depends=('emacs')
 optdepends=('paredit: enhanced LISP structure editing')
 install=$pkgname.install
 source=("${pkgname#emacs-}-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz")
-sha256sums=('f732885f077820331d5fe093c039b70dd1a7da4491db08c37bf030bcb6fa9bd3')
+sha256sums=('7c54940619456ad308c2c55026e8ec792d01ae3c7f3498507f1eb0a1dac5fb9c')
 
 build() {
   cd clojure-mode-${pkgver}
