@@ -2,7 +2,7 @@
 pkgname='tu2'
 pkgver=1.2.3
 pkgrel=1
-pkgdesc="Simple Project Management System with presentation"
+pkgdesc="Specalized Project Management System with presentation"
 arch=('i686' 'x86_64')
 url="http://github.com/ntropy83/tu2"
 license=('GPL')

@@ -1,5 +1,5 @@
 pkgbase = tu2
-	pkgdesc = Simple Project Management System with presentation
+	pkgdesc = Specalized Project Management System with presentation
 	pkgver = 1.2.3
 	pkgrel = 1
 	url = http://github.com/ntropy83/tu2
