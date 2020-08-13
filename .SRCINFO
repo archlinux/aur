@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-gl-transition
-	pkgdesc = Complete solution to record, convert and stream audio and video, with support for GL-transitions video filters
-	pkgver = 4.2.3
+	pkgdesc = Complete solution to record, convert and stream audio/video (w/ gl-transition patch)
+	pkgver = 4.3.1
 	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org/
@@ -35,6 +35,7 @@ pkgbase = ffmpeg-gl-transition
 	depends = libmodplug
 	depends = libomxil-bellagio
 	depends = libpulse
+	depends = librav1e.so
 	depends = libraw1394
 	depends = libsoxr
 	depends = libssh
@@ -81,7 +82,7 @@ pkgbase = ffmpeg-gl-transition
 	provides = libswscale.so
 	provides = ffmpeg
 	conflicts = ffmpeg
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=d3b963cc41824a3c5b2758ac896fb23e20a87875
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=6b6b9e593dd4d3aaf75f48d40a13ef03bdef9fdb
 	source = vmaf-model-path.patch
 	source = https://raw.githubusercontent.com/transitive-bullshit/ffmpeg-gl-transition/master/vf_gltransition.c
 	source = ffmpeg_vf_gltransition.patch
