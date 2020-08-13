@@ -1,6 +1,6 @@
 # Maintainer: agilob <archlinux@agilob.net>
 pkgname=nault-bin
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc='Official Nault AppImage client'
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=(!strip)
 _appimage="nault.AppImage"
 source=("https://github.com/Nault/Nault/releases/download/v${pkgver}/Nault-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha512sums=('ed21c663384059b7e39a0e8f407a8fabea98e96780e67d184441a6e24fa17acf8c5bb6635692c4b7f6ab4c2dc02f38f391f0cd51a45933441e09b6ae849d52ec')
+sha512sums=('c29492579961f5b1cef992bb1b3269862d036897a06f22259017ae832e1c7daa9ff965166e6f3b96fa3c937fe45bd489695dbab142b77cca51a7e2de15ee5847')
 install="${pkgname}.install"
 
 # extracting icons doesnt work now, this is here for future purposes
