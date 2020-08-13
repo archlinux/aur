@@ -1,0 +1,37 @@
+pkgbase = aegisub-wangqr-git
+	pkgdesc = A general-purpose subtitle editor with ASS/SSA support (wangqr fork)
+	pkgver = 3.3.1.r63.3bde4dd75
+	pkgrel = 1
+	url = http://www.aegisub.org
+	arch = x86_64
+	license = GPL
+	license = BSD
+	makedepends = autoconf-archive
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	makedepends = intltool
+	makedepends = lua
+	makedepends = mesa
+	depends = alsa-lib
+	depends = avisynthplus
+	depends = boost-libs
+	depends = fftw
+	depends = fontconfig
+	depends = hunspell
+	depends = icu
+	depends = libass.so
+	depends = libffms2.so
+	depends = libgl
+	depends = libpulse
+	depends = wxgtk3
+	depends = uchardet
+	depends = zlib
+	provides = aegisub
+	conflicts = aegisub
+	conflicts = aegisub-git
+	source = git+https://github.com/wangqr/Aegisub.git
+	sha256sums = SKIP
+
+pkgname = aegisub-wangqr-git
+
