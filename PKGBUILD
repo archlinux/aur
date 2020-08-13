@@ -7,11 +7,10 @@ arch=('any')
 url="https://github.com/chxrlt/lyrebird"
 license=('MIT')
 depends=('python>=3.8' 'python-toml' 'gtk3')
-optdepends=('pavucontrol: audio support')
 conflicts=('lyrebird')
 provides=('lyrebird')
 
-source=("https://github.com/chxrlt/lyrebird/archive/v${pkgver}.tar.gz" "lyrebird.desktop" "config.toml")
+source=("$url/archive/v${pkgver}.tar.gz" "lyrebird.desktop" "config.toml")
 sha256sums=('cf869cfd6b1237ad58ff8bd55fdf9f2032ba6d7159801395bec4a007245fd4ab' '912d5fbd57a0a1ea2a0f17bd41f9ddf687722c9c9ab88f51d3f33d3894417ca7' 'efe34e18fec84afca1bc64eaad4984125a35dfd55d1e8b604ede9186c6fda7e3')
 
 package() {
