@@ -1,6 +1,6 @@
 pkgbase = cutechess
 	pkgdesc = Tools for working with chess engines
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = http://cutechess.com
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = cutechess
 	license = GPL3
 	makedepends = doxygen
 	depends = qt5-svg
-	source = https://github.com/cutechess/cutechess/archive/gui-1.0.0.tar.gz
-	sha256sums = b85967c225e70eed88c1b64d42542bdb21c8f3f52fd17765200073e390aaba04
+	source = https://github.com/cutechess/cutechess/archive/1.2.0.tar.gz
+	sha256sums = d0e1b2c9c2eaccf0f8c4d5e5fe7e169358f5de9606bd27de3f9d1ce4ddcdb0bc
 
 pkgname = cutechess
 	pkgdesc = A graphical interface for chess
