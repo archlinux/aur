@@ -1,0 +1,17 @@
+pkgbase = legendary-run-git
+	pkgdesc = bash script to check updates and launch a game using legendary
+	pkgver = r2.2cd5616
+	pkgrel = 1
+	url = https://gitlab.com/lesf0/legendary-run
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = legendary
+	depends = zenity
+	provides = legendary-run-git
+	conflicts = legendary-run-git
+	source = legendary-run::git+https://gitlab.com/lesf0/legendary-run.git
+	md5sums = SKIP
+
+pkgname = legendary-run-git
+
