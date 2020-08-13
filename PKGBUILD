@@ -6,7 +6,7 @@ pkgdesc="Simple and powerful voice changer for Linux, written in GTK 3."
 arch=('any')
 url="https://github.com/chxrlt/lyrebird"
 license=('MIT')
-depends=('python>=3.8' 'python-toml' 'gtk3' 'python-gobject' 'sox' 'libsoxr')
+depends=('python>=3.8' 'python-toml' 'gtk3' 'python-gobject' 'sox' 'libsoxr' 'pulseaudio')
 conflicts=('lyrebird')
 provides=('lyrebird')
 

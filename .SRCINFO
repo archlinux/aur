@@ -11,6 +11,7 @@ pkgbase = lyrebird
 	depends = python-gobject
 	depends = sox
 	depends = libsoxr
+	depends = pulseaudio
 	provides = lyrebird
 	conflicts = lyrebird
 	source = https://github.com/chxrlt/lyrebird/archive/v1.0.1.tar.gz
