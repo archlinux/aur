@@ -2,25 +2,25 @@
 
 
 pkgname=octetos-core
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="C/C++ library to mainly provide Semantic Versioned inplmetation"
 arch=('x86_64')
 license=('GPL')
 url="https://github.com/azaeldevel/octetos-core.git"
-depends=('gcc' 'bison' 'libconfig' 'perl-xml-parser' 'intltool')
+depends=('bison' 'libconfig' 'intltool')
 #backup=('etc/nanorc')
-md5sums=('5eccd80fdadde558d9d93be996154901')
-source=(https://github.com/azaeldevel/octetos-core/archive/2.3.1-beta.1.tar.gz)
+md5sums=('952853ca87cbf5ddd888aec14138c0d7')
+source=(https://github.com/azaeldevel/octetos-core/archive/2.2.0-beta.3.tar.gz)
 
 build() {
-    cd octetos-core-2.3.1-beta.1
+    cd octetos-core-2.2.0-beta.3
     autoreconf -fi
     ./configure --prefix=/usr --sysconfdir=/etc
     make
 }
 
 package() {
-  cd octetos-core-2.3.1-beta.1
+  cd octetos-core-2.2.0-beta.3
   make DESTDIR="${pkgdir}" install
 }
