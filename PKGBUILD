@@ -8,7 +8,7 @@ _svt_vp9_ver='0.2.2'
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=4.4.r98639.g6ce4338943
+pkgver=4.4.r98723.gbb59bdbcd1
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('i686' 'x86_64')
@@ -84,7 +84,6 @@ build() {
     
     ./configure \
         --prefix='/usr' \
-        --extra-cflags="-I/usr/include/tensorflow" \
         \
         --disable-rpath \
         --enable-gpl \
@@ -156,7 +155,6 @@ build() {
         --enable-libssh \
         --enable-libsvthevc \
         --enable-libsvtav1 \
-        --enable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
         --disable-libtls \
