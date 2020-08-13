@@ -1,6 +1,6 @@
 pkgbase = lib32-libinput
 	pkgdesc = Input device management and event handling library (32-bit)
-	pkgver = 1.16.0
+	pkgver = 1.16.1
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/libinput/
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = lib32-libinput
 	depends = lib32-libevdev
 	depends = lib32-libwacom
 	depends = libinput
-	source = https://freedesktop.org/software/libinput/libinput-1.16.0.tar.xz
-	source = https://freedesktop.org/software/libinput/libinput-1.16.0.tar.xz.sig
+	source = https://freedesktop.org/software/libinput/libinput-1.16.1.tar.xz
+	source = https://freedesktop.org/software/libinput/libinput-1.16.1.tar.xz.sig
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
-	sha512sums = 0c932a88f2a1d23ebef0d58c0cdbfb558e9e3d990fca15b21f5b9011bdd1bc2da81aad374fcdb8f4590f6ee2fc45e668e0583371ceb354437e585240e687aac6
+	sha512sums = 86b2d563c2cff2b3d3cae3acdd399030cc785cc9859a06357a99565ef51f95122a8427c8c0883121fb0760613460a29c8cd8c7a7e3ac68115c10330b3b75cbe0
 	sha512sums = SKIP
 
 pkgname = lib32-libinput
