@@ -1,20 +1,20 @@
 pkgname=hunspell-gl
-pkgver=18.07
-pkgrel=2
+pkgver=20.08
+pkgrel=1
 epoch=2
 pkgdesc="Galician hunspell dictionaries. RAG/ILG normative"
 arch=(any)
-url="https://github.com/meixome/hunspell-gl"
+url="https://gitlab.com/proxecto-trasno/hunspell-gl"
 license=('GPL3')
 optdepends=('hunspell:  the spell checking libraries and apps')
 makedepends=('scons' 'python-pyicu')
 provides=($pkgname)
 conflicts=($pkgname)
-source=("${pkgname}.tar.gz::https://github.com/meixome/hunspell-gl/archive/${pkgver}.tar.gz")
-md5sums=('f997f11bcfc0eefd923af03d71c107ad')
+source=("${pkgname}.tar.bz2::https://gitlab.com/proxecto-trasno/hunspell-gl/-/archive/${pkgver}/hunspell-gl-${pkgver}.tar.bz2")
+md5sums=('9355f8752e2ae5a3ce7b8dd574f2dced')
 
 prepare() {
-  mkdir -p "$srcdir/$pkgname" && tar xfz "$pkgname.tar.gz" -C "$pkgname" --strip-components 1
+  mkdir -p "$srcdir/$pkgname" && tar xfz "$pkgname.tar.bz2" -C "$pkgname" --strip-components 1
 }
 
 build() {
