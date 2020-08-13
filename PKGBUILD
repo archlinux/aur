@@ -1,8 +1,8 @@
 # Maintainer: Louis Cornell <lpcornel@gmail.com>
 pkgname=archsimian-git
-pkgver=r422.b414c8a
+pkgver=r424.ee0d7c4
 pkgrel=1
-pkgdesc="Advanced playlist creator that uses your MediaMonkey library data "
+pkgdesc="Advanced playlist creator that uses your MediaMonkey library data"
 arch=('x86_64')
 url="https://github.com/Harpo3/archsimian"
 license=('GPL3')
