@@ -1,7 +1,7 @@
 pkgbase = ffmt-bin
 	pkgdesc = FFXIV_Modding_Tool (FFMT for short) is a crossplatform commandline interface for Final Fantasy XIV Modding.
 	pkgver = 0.9.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmt.pwd.cat/docs/
 	arch = i686
 	arch = x86_64
