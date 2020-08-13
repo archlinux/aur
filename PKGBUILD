@@ -3,7 +3,7 @@
 # Previous Contributors: kainlite <kainlite@gmail.com>
 
 pkgname=libcouchbase
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="The C library provides fast access to documents in the latest Couchbase Server"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ install=$pkgname.install
 source=(
     "https://github.com/couchbase/libcouchbase/releases/download/${pkgver}/libcouchbase-${pkgver}.tar.gz"
 )
-md5sums=('4a06a65931a9dc26d34b89a9bbe2dddd')
+md5sums=('53aebe88e542d6a23b8ac45e1d03b99f')
 
 build() {
   tar -xzf "libcouchbase-${pkgver}.tar.gz" -C "${srcdir}/libcouchbase-${pkgver}"
