@@ -2,7 +2,7 @@
 
 pkgname=genie-systemd-git
 _pkgname=genie
-pkgver=1.24.r3.g02a262a
+pkgver=1.27.r5.gfd49285
 pkgrel=1
 pkgdesc="A quick way into a systemd \"bottle\" for WSL (development version)"
 arch=('x86_64')
@@ -30,20 +30,16 @@ build() {
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
   cd "$srcdir/$_pkgname/$_pkgname"
-  dotnet publish -c Release -r linux-x64 --self-contained false
+  export DESTDIR=$pkgdir
+  ls -alh
+  make build
 }
 
 package() {
   cd "$srcdir/$_pkgname/$_pkgname"
-  install -Dm 4755 -o root "bin/Release/netcoreapp3.1/linux-x64/publish/genie" -t "$pkgdir/usr/bin"
-  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Release/netcoreapp3.1/linux-x64/publish/genie.dll" -t "$pkgdir/usr/bin"
-  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Release/netcoreapp3.1/linux-x64/publish/Linux.ProcessManager.dll" -t "$pkgdir/usr/bin"
-  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Release/netcoreapp3.1/linux-x64/publish/System.CommandLine.dll" -t "$pkgdir/usr/bin"
-  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Release/netcoreapp3.1/linux-x64/publish/Tmds.LibC.dll" -t "$pkgdir/usr/bin"
-  install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname/bin/Release/netcoreapp3.1/linux-x64/publish/genie.runtimeconfig.json" -t "$pkgdir/usr/bin"
-  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/usr/lib/genie/dumpwslenv.sh" -t "$pkgdir/usr/lib/genie/"
-  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/usr/lib/genie/readwslenv.sh" -t "$pkgdir/usr/lib/genie/"
-  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/usr/lib/genie/runinwsl.sh" -t "$pkgdir/usr/lib/genie/"
-  install -Dm 755 -o root "$srcdir/$_pkgname/systemd-genie/usr/lib/systemd/system-environment-generators/10-genie-envar.sh" -t "$pkgdir/usr/lib/systemd/system-environment-generators"
+  make install
   install -Dm 644 "${srcdir}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  mkdir -p ${pkgdir}/usr/bin
+  chmod +x ${pkgdir}/usr/libexec/genie
+  ln -s /usr/libexec/genie/main/genie ${pkgdir}/usr/bin/genie
 }
