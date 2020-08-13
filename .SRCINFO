@@ -1,13 +1,14 @@
 pkgbase = tbt
 	pkgdesc = Thunderbolt(TM) user-space components
 	pkgver = 0.9.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/01org/thunderbolt-software-user-space
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	makedepends = boost
 	makedepends = txt2tags
+	makedepends = python-setuptools
 	depends = boost-libs
 	source = https://github.com/01org/thunderbolt-software-user-space/archive/v0.9.3/tbt-0.9.3.tar.gz
 	b2sums = afc614d0d2f7de3c23988e08c0053d24a04be51d22986497e3863b76ad59f1a8a9e2ab323210df27a3fa2f07ab05122666a3c6bfde146250f0854b2dfb6748f8
