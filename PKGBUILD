@@ -1,7 +1,7 @@
 # Maintainer: Eric Langlois <eric@langlois.xyz>
 pkgname=python-mujoco-py
 _name=${pkgname#python-}
-pkgver=2.0.2.11
+pkgver=2.0.2.12
 pkgrel=1
 pkgdesc="Python interface to the MuJoCo physics engine"
 arch=('x86_64')
@@ -29,9 +29,9 @@ options=(!strip)
 # Also, there is no release marked for the recent pip package version,
 # so use the lastest commit (at the time of writing).
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-        "$_name-$pkgver-LICENSE.md::https://raw.githubusercontent.com/openai/mujoco-py/fe8373df3a36c4fb8631b0f3289fa8ecce182e0b/LICENSE.md"
+        "$_name-$pkgver-LICENSE.md::https://raw.githubusercontent.com/openai/mujoco-py/89a953c5baea15b03fade1365ddf10d206591f68/LICENSE.md"
         "$_name.patch")
-sha256sums=('68d5a15c77634a458a5bb7a41d376467a1992591379ec43799092bf416221c47'
+sha256sums=('1e214a70902c91b73223f43b8ace9791a54d8163480f90cbfb4c9e30d2e3fec0'
             'fb896a8cbad505b0fe1f324e7d4f02032e56885c6544b7644180258d6077a71a'
             '21163edd7ef1046d504caec64d517a79af8603e54cc0edb6819d34e9d9529865')
 
