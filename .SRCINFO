@@ -1,6 +1,6 @@
 pkgbase = kpt
 	pkgdesc = Toolkit to manage, manipulate, customize, and apply Kubernetes Resource configurations
-	pkgver = 0.32.0
+	pkgver = 0.33.0
 	pkgrel = 1
 	url = https://googlecontainertools.github.io/kpt/
 	install = kpt.install
@@ -8,8 +8,9 @@ pkgbase = kpt
 	license = Apache
 	makedepends = go
 	depends = git
-	source = https://github.com/GoogleContainerTools/kpt/archive/v0.32.0/kpt-0.32.0.tar.gz
-	sha256sums = 4c17a63531acd5c6327dca55f5662d996a6bbcb18a7db989afae1cfe7ef71e45
+	optdepends = asciinema: ttl command
+	source = https://github.com/GoogleContainerTools/kpt/archive/v0.33.0/kpt-0.33.0.tar.gz
+	sha256sums = 6f50acd4bcebc7ad0668a43ba6e10651749d40ffb30ae0d331a31b5188cac25e
 
 pkgname = kpt
 
