@@ -7,7 +7,7 @@ pkgver=0.4.4
 pkgrel=1
 
 _modname="ngx_fancyindex"
-_nginxver=1.19.1
+_nginxver=1.19.2
 
 pkgdesc='Fancy indexes module for the Nginx web server'
 arch=('i686' 'x86_64' 'armv7h')
@@ -22,7 +22,7 @@ source=(
 	https://nginx.org/download/nginx-$_nginxver.tar.gz{,.asc}
     "$_modname::git+https://github.com/aperezdc/ngx-fancyindex.git"
 )
-sha256sums=('a004776c64ed3c5c7bc9b6116ba99efab3265e6b81d49a57ca4471ff90655492'
+sha256sums=('7c1f7bb13e79433ee930c597d272a64bc6e30c356a48524f38fd34fa88d62473'
             'SKIP'
             'SKIP')
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>

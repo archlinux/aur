@@ -8,14 +8,14 @@ pkgbase = nginx-mainline-mod-fancyindex-git
 	arch = armv7h
 	license = CUSTOM
 	makedepends = git
-	depends = nginx-mainline=1.19.1
+	depends = nginx-mainline=1.19.2
 	provides = nginx-mainline-mod-fancyindex
 	conflicts = nginx-mainline-mod-fancyindex
 	source = https://nginx.org/download/nginx-1.19.1.tar.gz
 	source = https://nginx.org/download/nginx-1.19.1.tar.gz.asc
 	source = ngx_fancyindex::git+https://github.com/aperezdc/ngx-fancyindex.git
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = a004776c64ed3c5c7bc9b6116ba99efab3265e6b81d49a57ca4471ff90655492
+	sha256sums = 7c1f7bb13e79433ee930c597d272a64bc6e30c356a48524f38fd34fa88d62473
 	sha256sums = SKIP
 	sha256sums = SKIP
 
