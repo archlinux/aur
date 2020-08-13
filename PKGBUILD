@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 
 pkgname=pro_office_calc
-pkgver=1.0.6
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="A completely normal office calculator."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=(qt5-base qt5-multimedia tinyxml2)
 makedepends=(cmake)
 checkdepends=(gtest)
 source=("https://github.com/RobJinman/pro_office_calc/archive/v${pkgver}.tar.gz")
-md5sums=('92eb7de2705ea6f4a183df0c21616fb5')
+md5sums=('3723a59176aefab284a6a1f5e852798e')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
