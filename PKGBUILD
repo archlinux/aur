@@ -5,7 +5,7 @@
 
 _pkgbasename='waffle'
 pkgname="lib32-${_pkgbasename}"
-pkgver='1.6.0'
+pkgver='1.6.1'
 pkgrel='1'
 pkgdesc='a library for choosing window system and OpenGL API at runtime (32 bits)'
 arch=('x86_64')
@@ -14,8 +14,8 @@ license=('BSD')
 depends=('lib32-libx11' 'lib32-libxcb' 'lib32-wayland' "${_pkgbasename}=${pkgver}")
 makedepends=('cmake' 'xcb-proto' 'lib32-mesa-libgl' 'lib32-mesa' 'gcc-multilib')
 
-source=("https://gitlab.freedesktop.org/mesa/waffle/-/archive/v1.6.0/waffle-v1.6.0.tar.gz")
-sha256sums=('d2ee1eef9f0e35ae1cd916db24e46ce4358c94a82776dcb89f5f72bd97a7e9ba')
+source=("https://gitlab.freedesktop.org/mesa/waffle/-/archive/v$pkgver/waffle-v$pkgver.tar.gz")
+sha256sums=('4eb4dfe18b5a88e6ea2b6b0a0c415caeaa453ea8eb37a757c100e24e18c317dd')
 
 build() {
 	cd "$srcdir/${_pkgbasename}-v$pkgver"
