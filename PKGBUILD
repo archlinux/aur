@@ -10,7 +10,7 @@ depends=('pacman' 'asp' 'devtools' 'git' 'python3')
 makedepends=()
 
 source=("${pkgname}.tar.gz"::"https://github.com/lxgr-linux/buildaur/archive/${pkgver}.tar.gz")
-md5sums=('94ed75eb5f5d148cf053456042a567b4')
+md5sums=('ae5de88ce23692a6eecebe10c4029a9d')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"

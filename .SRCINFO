@@ -11,7 +11,7 @@ pkgbase = buildaur
 	depends = git
 	depends = python3
 	source = buildaur.tar.gz::https://github.com/lxgr-linux/buildaur/archive/42.0.3.1.tar.gz
-	md5sums = 94ed75eb5f5d148cf053456042a567b4
+	md5sums = ae5de88ce23692a6eecebe10c4029a9d
 
 pkgname = buildaur
 
