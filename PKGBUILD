@@ -3,7 +3,7 @@
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio
-pkgver=0.17.79
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories (stable branch)."
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('jq')
 source=(factorio.desktop
         LICENSE)
 sha256sums=('5f62aa7763f9ad367a051371bc16f3c174022bb3380eb221ba06bac395bf9815'
-            'e35912b1446981445f8f386e8cd9377f0649d3ff53467721c6ee119b142bee16')
+            'ed3853194ab2573fdc0fbc18c7edd291f8df066b3e26c47cfa5edb1317679a97')
 _url=https://factorio.com/get-download/${pkgver}/alpha/linux64
 _gamepkg=factorio_alpha_x64_${pkgver}.tar.xz
 

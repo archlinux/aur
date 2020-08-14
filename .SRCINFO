@@ -1,6 +1,6 @@
 pkgbase = factorio
 	pkgdesc = A 2D game about building and maintaining factories (stable branch).
-	pkgver = 0.17.79
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = http://www.factorio.com/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = factorio
 	source = factorio.desktop
 	source = LICENSE
 	sha256sums = 5f62aa7763f9ad367a051371bc16f3c174022bb3380eb221ba06bac395bf9815
-	sha256sums = e35912b1446981445f8f386e8cd9377f0649d3ff53467721c6ee119b142bee16
+	sha256sums = ed3853194ab2573fdc0fbc18c7edd291f8df066b3e26c47cfa5edb1317679a97
 
 pkgname = factorio
 
