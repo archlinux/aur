@@ -1,11 +1,10 @@
 # Maintainer: Robert Tari <robert at tari dot in>
-# Contributor: Valentin Huélamo <vhuelamo at gmail dot com>
 
 pkgname="ayatana-indicator-application"
 pkgver="0.5.3"
 pkgrel="1"
 pkgdesc="Ayatana Application Indicators"
-arch=("i686" "x86_64")
+arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators"
 license=("GPL3")
 depends=("libayatana-indicator" "dbus-glib" "libayatana-appindicator")

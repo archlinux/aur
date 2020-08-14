@@ -5,6 +5,7 @@ pkgbase = ayatana-indicator-application
 	url = https://github.com/AyatanaIndicators
 	arch = i686
 	arch = x86_64
+	arch = pentium4
 	license = GPL3
 	makedepends = mate-common
 	makedepends = xorg-server-xvfb
