@@ -3,7 +3,7 @@
 
 pkgname=kubelet-bin
 pkgdesc="Kubernetes.io kubelet binary"
-pkgver=1.18.6
+pkgver=1.18.8
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="http://kubernetes.io"
@@ -17,13 +17,13 @@ sha256sums=('3ea2a2c44642a584d9ae603fd4dccd401b06bf82338dba893c82a3ed41401a29')
 
 case "$CARCH" in
   arm*) _pkgarch="arm"
-    sha256sums+=('5f8367f9f5de77c022ec5d0cd86e897b7a33318185eaadb7736033d8dabcdbdb')
+    sha256sums+=('831f50ea45384884c50395c288d493e75dd134a962dc95261ce122de5e6a17ec')
     ;;
   aarch64) _pkgarch="arm64"
-    sha256sums+=('257fd42be375025fb93724bda9bef23b73eb40531f22bab9e19f6d6ff1ca57cf')
+    sha256sums+=('d36e2d656bad232e8b48b19c948164ee3966669f4566cf5ea43ca22f6eed1aa5')
     ;;
   x86_64) _pkgarch="amd64"
-    sha256sums+=('2eb9baf5a65a7b94c653dbd7af03a768a520961eb27ef369e43ef12711e22d4a')
+    sha256sums+=('a4116675ac52bf80e224fba8ff6db6f2d7aed192bf6fffd5f8e4d5efb4368f31')
     ;;
 esac
 
