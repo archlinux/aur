@@ -7,7 +7,7 @@ _pkgname=caddy
 pkgver=2.1.1
 _tag=v2.1.1
 _distcommit='a509155e3cff18af793f6af5f930a71c89e05df8'
-pkgrel=6
+pkgrel=7
 pkgdesc="Fast web server with automatic HTTPS"
 arch=('x86_64')
 url="https://caddyserver.com"
@@ -28,7 +28,7 @@ source=("git+https://github.com/caddyserver/caddy#tag=${_tag}?signed"
         Caddyfile)
 sha512sums=('SKIP'
             '2abccd41f770daebf61285dc017249f20c707877ea3c870f4a2375bbbd2bf481a8652d1fd3c7afd7d6b5c54838e9d8474a33e2c9790ef67dcf9d79c4e52953b4'
-            '69a619f2be6df77ac516621ad7b27dd6adde0b40cf4680c3afb25e94ac7c1cd6afb42a650d47a4fb096503dec85988af08e85a617b5290cf3a3d9b50b2e2ec46'
+            'efea5a97eac1d4d047c46f63fd23f5e23f86eb5b9d29b69bc544f024083b5af2f752b8104f756c2f26e6f0379954c3599d8ff8529dab5d2ca74e26a04ca44196'
             'eeb352e023331a3e3d88e47cc52f8786864abeb66bccc864d2557722afd54bdfcee9781590c3cf204923c8c0fa37029ba417a6a65ccd5569f8cbc214eb3ce642'
             '41d6b82ab99ca729d5b48d77d4557f3c5368b63847054216018547ea40e0cc302bc36668e9a57ba63e8983205febffee18eae1c306a665365a13da54010cd415'
             'a9b3e4af421a4be0193d9a452cdf6b66b8f03fbf8bce3de4454a2ee70556c156c458b12a141fefb3e15a2acbb0f3acedc09cbccbecf82aa8916b9b6d799ec066'

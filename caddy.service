@@ -25,9 +25,9 @@ StartLimitBurst=10
 User=caddy
 Group=caddy
 Environment=XDG_DATA_HOME=/var/lib
-Environment=XDG_CONFIG_HOME=/etc
-ExecStart=/usr/bin/caddy run --adapter caddyfile --environ --config /etc/caddy/caddy.conf
-ExecReload=/usr/bin/caddy reload --adapter caddyfile --config /etc/caddy/caddy.conf
+Environment=XDG_CONFIG_HOME=/var/lib/caddy/.config
+ExecStart=/usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
+ExecReload=/usr/bin/caddy reload --config /etc/caddy/Caddyfile
 
 # Do not allow the process to be restarted in a tight loop. If the
 # process fails to start, something critical needs to be fixed.
