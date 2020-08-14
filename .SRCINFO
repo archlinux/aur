@@ -6,7 +6,7 @@ pkgbase = i3title
 	arch = any
 	license = GPL2
 	makedepends = git
-	depends = i3ipc-python
+	depends = python-i3ipc
 	source = git+https://github.com/jtsymon/i3title.git
 	md5sums = SKIP
 
