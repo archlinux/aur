@@ -3,15 +3,15 @@
 
 pkgname=ostorybook
 _pkgname=oStorybook
-pkgver=5.04.05d
+pkgver=5.05.01
 pkgrel=1
 pkgdesc="Open Source Novel Writing Software for Novelists, Authors and Creative Writers"
 arch=(any)
 url="http://ostorybook.tuxfamily.org"
 license=(GPL)
-depends=(java-runtime-headless=8)
-source=("http://download.tuxfamily.org/ostorybook/${pkgver}/oStorybook-${pkgver}-linux.bin")
-sha256sums=('c86aff19cc681a58909ad332a8bc1c1cd3239d09262854861d88b40e3a03fed3')
+depends=('java-runtime-headless>8')
+source=("http://download.tuxfamily.org/ostorybook/current/oStorybook-${pkgver}-linux.bin")
+sha256sums=('180648cc530383385efbb623fb1dd08b32c0d1b8d75404c9dbbc85c9a1bd7762')
 options=('!strip')
 
 package()
@@ -24,7 +24,7 @@ package()
   USRBINFILE="${pkgdir}"/usr/bin/"${_pkgname}"
   echo '#!/bin/bash' > "${USRBINFILE}"
   echo "cd /usr/share/${_pkgname}" >> "${USRBINFILE}"
-  echo "/usr/lib/jvm/java-8-openjdk/jre/bin/java -Xmx256m -splash:splash.png -jar ${_pkgname}.jar" >> "${USRBINFILE}"
+  echo "java -Xmx256m -splash:splash.png -jar ${_pkgname}.jar" >> "${USRBINFILE}"
   chmod +x "${USRBINFILE}"
   mkdir -p "${pkgdir}"/usr/share/applications
   DESKTOPFILE="${pkgdir}"/usr/share/applications/"${_pkgname}".desktop
