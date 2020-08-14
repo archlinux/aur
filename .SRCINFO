@@ -1,0 +1,21 @@
+pkgbase = odio-sacd-bzr
+	pkgdesc = SACD decoder
+	pkgver = 20.5.11.5
+	pkgrel = 1
+	url = https://tari.in/www/software/odio-sacd
+	arch = i686
+	arch = x86_64
+	arch = pentium4
+	license = GPL3
+	makedepends = breezy
+	makedepends = gcc
+	makedepends = libodiosacd
+	depends = libodiosacd
+	provides = odio-sacd
+	conflicts = odio-sacd
+	options = !emptydirs
+	source = bzr+lp:odio-sacd
+	md5sums = SKIP
+
+pkgname = odio-sacd-bzr
+
