@@ -1,6 +1,4 @@
 # Maintainer: Robert Tari <robert at tari dot in>
-# Contributor: Valentin Huélamo <vhuelamo at gmail dot com>
-# Contributor: Ilya Fedin <fedin-ilja2010 at ya dot ru>
 
 pkgname="ayatana-indicator-sound"
 pkgver="0.1"
