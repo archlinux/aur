@@ -1,16 +1,17 @@
 # Maintainer: alpha0x00 <li_tking@163.com>
+# Maintainer: lightning1141 <lightning1141@gmail.com>
 
 pkgname=xmind-2020
 # the versin is from deb package
-pkgver=10.1.2
-pkgrel=2
+pkgver=10.2.1
+pkgrel=1
 pkgdesc="XMind - The most popular mind mapping software"
 arch=("x86_64")
 url="https://www.xmind.net/"
 license=('custom')
 depends=('libxss' 'nss' 'libxtst' 'alsa-lib' 'gtk3')
 
-source=("https://dl3.xmind.net/XMind-2020-for-Linux-amd-64bit-$pkgver-202004142327.deb"
+source=("https://dl3.xmind.net/XMind-2020-for-Linux-amd-64bit-$pkgver-202008051959.deb"
         'xmind.xml')
 
 sha256sums=('SKIP'
