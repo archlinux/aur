@@ -9,7 +9,7 @@ url="https://github.com/hen6003/golaunch"
 license=('MIT')
 makedepends=('go' 'git')
 source=("https://github.com/hen6003/golaunch/archive/master.tar.gz")
-md5sums=("a2e271a579b432a185b598fbf30e51d0")
+md5sums=("68676131b1053517bb66324d835d6d40")
 
 prepare() {
   go get -u \
