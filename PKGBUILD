@@ -2,7 +2,7 @@
 
 pkgname=lemon-lime-git
 _pkgname=lemon-lime
-pkgver=0.2.3rc4.r8.6e9604c
+pkgver=0.2.2.8.r265.131a89f
 pkgrel=1
 epoch=1
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
@@ -26,28 +26,31 @@ options=()
 install=
 changelog=
 source=('Project_LemonLime::git+https://github.com/iotang/Project_LemonLime.git'
+		'SingleApplication::git+https://github.com/itay-grudev/SingleApplication.git'
 		)
 noextract=()
-md5sums=('SKIP')
+sha512sums=('SKIP'
+            'SKIP'
+            )
 validpgpkeys=()
 
 pkgver() {
 	cd "$srcdir/Project_LemonLime"
-	#git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 # Git, tags available
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//g')"
- #   printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-
-# Git, no tags available
-#	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	#printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//g')"
+    printf "%s.%s.r%s.%s" $(cat ./makespec/VERSION) $(cat ./makespec/BUILDVERSION) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 
 }
 
 prepare() {
 	cd "$srcdir/Project_LemonLime"
-	#sed -i '/unix:QMAKE_LFLAGS += -no-pie/d' lemon.pro
-	sed -i '/add_link_options(-no-pie)/d' CMakeLists.txt
-    git submodule update --init --recursive
+    git submodule init
+    submodules=('SingleApplication')
+    for module in ${submodules[@]}; do
+        git config submodule."3rdparty/$module".url "${srcdir}/$module"
+    done
+    
+    git submodule update
 }
 
 build() {
@@ -55,7 +58,9 @@ build() {
 	cmake . \
 		-DCMAKE_BUILD_TYPE=Release \
 		-GNinja \
-		-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr
+		-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
+		-DLEMON_BUILD_INFO="Build for Arch Linux" \
+		-DLEMON_BUILD_EXTRA_INFO="Build on $(uname -a | cut -d " " -f3,13)"
 	ninja
 
 }
@@ -63,14 +68,6 @@ build() {
 package() {
 	cd "$srcdir/Project_LemonLime"
 	ninja install
-	#cd "$pkgdir/bin"
-	#mv lemon lemon-lime
-	#cd "$srcdir/Project_LemonLime"
-	#install -D -m755 lemon "$pkgdir/usr/bin/$_pkgname"
-
-	#install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	#install -D -m644 assets/lemon-lime.png "$pkgdir/usr/share/icons/hicolor/256x256/lemon-lime.png"
-	#install -D -m755 assets/$_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
 	install -D -m644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 	#install -D -m644 Changelog.md "$pkgdir/usr/share/doc/$pkgname/Changelog.md"
 }
