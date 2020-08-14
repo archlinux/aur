@@ -5,8 +5,10 @@ pkgbase = single-file-git
 	url = https://github.com/gildas-lormeau/SingleFile
 	arch = any
 	license = GNU Affero GPL
+	makedepends = git
 	makedepends = npm
 	depends = nodejs
+	provides = single-file
 	source = single-file::git://github.com/gildas-lormeau/SingleFile.git
 	sha256sums = SKIP
 
