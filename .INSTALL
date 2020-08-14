@@ -1,0 +1,37 @@
+post_install() {
+	ECHOLEN=$(echo -e|awk '{print length($0)}')
+	if [ ${ECHOLEN} = '0' ]
+  	then
+		ECHO='echo -e'
+	else
+		ECHO='echo'
+	fi
+
+	$ECHO ""
+	$ECHO " \033[32m+------------------------------------------------------+\033[0m"
+	$ECHO " \033[32m|  phddns start（启动）| stop（停止)                   |\033[0m"
+	$ECHO " \033[32m|         status（状态 | restart（重启)|version（版本）|\033[0m"
+	$ECHO " \033[32m|         version（版本）                              |\033[0m"
+	$ECHO " \033[32m+------------------------------------------------------+\033[0m"
+}
+
+post_upgrade() {
+	ECHOLEN=$(echo -e|awk '{print length($0)}')
+	if [ ${ECHOLEN} = '0' ]
+  	then
+		ECHO='echo -e'
+	else
+		ECHO='echo'
+	fi
+
+	$ECHO ""
+	$ECHO " \033[32m+------------------------------------------------------+\033[0m"
+	$ECHO " \033[32m|  phddns start（启动）| stop（停止)                   |\033[0m"
+	$ECHO " \033[32m|         status（状态 | restart（重启)|version（版本）|\033[0m"
+	$ECHO " \033[32m|         version（版本）                              |\033[0m"
+	$ECHO " \033[32m+------------------------------------------------------+\033[0m"
+}
+
+# vim : set sw=2 ts=2 et:
+
+
