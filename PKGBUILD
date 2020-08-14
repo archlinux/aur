@@ -3,7 +3,7 @@
 # Completion changes and optdepends by Artemis
 
 pkgname=yadm
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Yet Another Dotfiles Manager"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('gnupg: encrypt/decrypt sensitive files'
 provides=('yadm')
 conflicts=('yadm-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TheLocehiliosan/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('37efea63dc9c77951433c841bde34e0a042dc561e8c026e690d146e768701b0f')
+sha256sums=('d022d118a1a477e09afa00c80e10bd94b150d99709e57f01ba48ca2eaaeeb2de')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
@@ -24,4 +24,5 @@ package() {
   install -D -m 644 yadm.1 $pkgdir/usr/share/man/man1/yadm.1
   install -D -m 644 completion/yadm.bash_completion "${pkgdir}/usr/share/bash-completion/completions/yadm"
   install -D -m 644 completion/yadm.zsh_completion "${pkgdir}/usr/share/zsh/site-functions/_yadm"
+  install -D -m 644 completion/yadm.fish_completion "${pkgdir}/usr/share/fish/vendor_completions.d/yadm.fish"
 }
