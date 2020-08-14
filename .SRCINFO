@@ -17,6 +17,7 @@ pkgbase = lollypop-next-git
 	depends = python-cairo
 	depends = python-gobject
 	depends = python-pillow
+	depends = gst-python
 	depends = totem-plparser
 	optdepends = easytag: Modify tags
 	optdepends = gst-libav: FFmpeg plugin for GStreamer

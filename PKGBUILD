@@ -18,6 +18,7 @@ depends=(
 	python-cairo
 	python-gobject
 	python-pillow
+        gst-python
 	totem-plparser
 )
 makedepends=(
