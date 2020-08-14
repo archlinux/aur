@@ -1,5 +1,5 @@
 pkgbase = libmupdf-pymupdf
-	pkgdesc = Lightweight PDF and XPS viewer with patch to build PyMuPDF
+	pkgdesc = Library for Lightweight PDF and XPS viewer with patch to build PyMuPDF
 	pkgver = 1.17.0
 	pkgrel = 2
 	url = https://mupdf.com/
@@ -30,5 +30,4 @@ pkgbase = libmupdf-pymupdf
 	sha256sums = a435f44425f5432c074dee745d8fbaeb879038ec1f1ec64f037c74662f09aca8
 
 pkgname = libmupdf-pymupdf
-	pkgdesc = Library for Lightweight PDF and XPS viewer
 

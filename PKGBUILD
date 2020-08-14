@@ -9,7 +9,7 @@
 pkgname=libmupdf-pymupdf
 pkgver=1.17.0
 pkgrel=2
-pkgdesc='Lightweight PDF and XPS viewer with patch to build PyMuPDF'
+pkgdesc='Library for Lightweight PDF and XPS viewer with patch to build PyMuPDF'
 arch=('x86_64')
 url='https://mupdf.com/'
 license=('AGPL3')
@@ -56,8 +56,6 @@ build() {
 }
 
 package() {
-  pkgdesc='Library for Lightweight PDF and XPS viewer'
-
   cd mupdf-${pkgver/_/}-source
 
   make build=release prefix="$pkgdir"/usr install
