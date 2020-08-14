@@ -1,4 +1,4 @@
-# Maintainer: Franck Stauffer <franck.stauffer@telecom-sudparis.eu>
+# Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
 
 pkgname='firefox-extension-cookie-autodelete'
 pkgver=3.4.0
