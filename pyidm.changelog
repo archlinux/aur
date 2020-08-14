@@ -1,3 +1,16 @@
+2020.8.13:
+- Ability to delete any item while download in progress.
+- added buttons for open log file, or log folder, issue #134
+- Fixed arabic language display on linux issue #88
+- Fixed failed downloads if target folder's name has spaces issue #130
+- Fix for table colors on tkinter 8.6.9
+- Stop log auto scroll if user scroll up.
+- Added horizontal scrollbar for log window.
+- Fixed fetching youtube channel videos as a playlist, issue #146
+- Fixed metadata error issue #138
+- interactive terminal support.
+- Auto correct file name extension (ask user first) issue #137
+
 2020.6.27:
 - Write metadata info to media files issue #124, Settings>General
 - fixed fragmented video download

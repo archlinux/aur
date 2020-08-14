@@ -1,7 +1,6 @@
-Only in PyIDM: build
-diff --color --unified --recursive --text PyIDM.orig/pyidm/config.py PyIDM/pyidm/config.py
---- PyIDM.orig/pyidm/config.py	2020-08-11 09:17:50.841427964 +0200
-+++ PyIDM/pyidm/config.py	2020-08-11 08:59:33.694722005 +0200
+diff --color --unified --recursive --text PyIDM-2020.8.13.orig/pyidm/config.py PyIDM-2020.8.13/pyidm/config.py
+--- PyIDM-2020.8.13.orig/pyidm/config.py	2020-08-14 08:30:11.528633421 +0200
++++ PyIDM-2020.8.13/pyidm/config.py	2020-08-14 08:31:15.721969874 +0200
 @@ -138,11 +138,6 @@
  active_downloads = set()  # indexes for active downloading items
  d_list = []
@@ -23,10 +22,18 @@ diff --color --unified --recursive --text PyIDM.orig/pyidm/config.py PyIDM/pyidm
                   'log_level', 'download_folder', 'manually_select_dash_audio', 'use_referer', 'referer_url',
                   'close_action', 'process_playlist', 'keep_temp', 'auto_rename', 'dynamic_theme_change', 'checksum',
                   'use_proxy_dns', 'use_thread_pool_executor', 'write_metadata']
-diff --color --unified --recursive --text PyIDM.orig/pyidm/gui.py PyIDM/pyidm/gui.py
---- PyIDM.orig/pyidm/gui.py	2020-08-11 09:17:50.844761298 +0200
-+++ PyIDM/pyidm/gui.py	2020-08-11 09:06:29.088070216 +0200
-@@ -469,25 +469,6 @@
+diff --color --unified --recursive --text PyIDM-2020.8.13.orig/pyidm/gui.py PyIDM-2020.8.13/pyidm/gui.py
+--- PyIDM-2020.8.13.orig/pyidm/gui.py	2020-08-14 08:30:11.528633421 +0200
++++ PyIDM-2020.8.13/pyidm/gui.py	2020-08-14 08:47:00.598682433 +0200
+@@ -23,7 +23,6 @@
+ from . import setting
+ from . import config
+ from .config import Status
+-from . import update
+ from .brain import brain
+ from . import video
+ from .video import Video, check_ffmpeg, download_ffmpeg, unzip_ffmpeg, get_ytdl_options, process_video_info, \
+@@ -469,25 +468,6 @@
              [sg.T('', size=(1, 1))]
          ]
  
@@ -52,17 +59,16 @@ diff --color --unified --recursive --text PyIDM.orig/pyidm/gui.py PyIDM/pyidm/gu
          advanced = [
  
              [sg.T('')],
-@@ -506,8 +487,7 @@
+@@ -506,7 +486,7 @@
          layout = [
              [sg.T('', size=(70, 1)), ],
              [sg.TabGroup([[sg.Tab('General   ', general), sg.Tab('Network  ', network), sg.Tab('SysTray  ', systray),
 -                           sg.Tab('Update    ', update), sg.Tab('Advanced ', advanced)]],
--                         tab_location='lefttop')]
-+                           sg.Tab('Advanced ', advanced)]], tab_location='lefttop')]
++                           sg.Tab('Advanced ', advanced)]],
+                          tab_location='lefttop')]
          ]
  
-         return layout
-@@ -858,11 +838,6 @@
+@@ -861,11 +841,6 @@
              speed_limit = size_format(config.speed_limit) if config.speed_limit > 0 else "_no limit_"
              self.window['current_speed_limit'](f'Current value: {speed_limit}')
  
@@ -74,7 +80,7 @@ diff --color --unified --recursive --text PyIDM.orig/pyidm/gui.py PyIDM/pyidm/gu
              # update total speed
              total_speed = 0
              for i in self.active_downloads:
-@@ -1558,22 +1533,6 @@
+@@ -1561,22 +1536,6 @@
  
                  # log('user, pass:', config.username, config.password)
  
@@ -97,7 +103,7 @@ diff --color --unified --recursive --text PyIDM.orig/pyidm/gui.py PyIDM/pyidm/gu
              # systray -------------------------------------------------
              elif event in ('radio_close', 'radio_minimize', 'radio_quit'):
                  config.close_action = event.replace('radio_', '')
-@@ -1641,44 +1600,6 @@
+@@ -1644,44 +1603,6 @@
                  # check availability of ffmpeg in the system or in same folder with this script
                  self.ffmpeg_check()
  
@@ -142,7 +148,7 @@ diff --color --unified --recursive --text PyIDM.orig/pyidm/gui.py PyIDM/pyidm/gu
              # reset statusbar periodically
              if time.time() - self.statusbar_timer >= 10:
                  self.statusbar_timer = time.time()
-@@ -2893,59 +2814,6 @@
+@@ -2958,59 +2879,6 @@
  
      # endregion
  
@@ -202,62 +208,4 @@ diff --color --unified --recursive --text PyIDM.orig/pyidm/gui.py PyIDM/pyidm/gu
  # Note every window class must have self.active property and close method
  class DownloadWindow:
  
-@@ -3598,58 +3466,6 @@
- 
-         self.window.close()
- 
--
--class UpdateWindow:
--
--    def __init__(self, update_description):
--        self.active = True  # if False, object will be removed from "active windows list"
--        self.update_description = update_description
--        self.window = None
--
--    def setup(self):
--
--        # create gui
--        buttons = []
--        if config.FROZEN: # show update button for Frozen versions only i.e. "windows portable version"
--            buttons.append(sg.B('Update'))
--
--        buttons += [sg.B('website'), sg.Cancel()]
--
--        layout = [
--            [sg.T('New update available:')],
--            [sg.Multiline(self.update_description, size=(70, 10))],
--            buttons
--        ]
--
--        self.window = sg.Window('Update Application', layout, finalize=True, keep_on_top=True)
--
--    def focus(self):
--        self.window.BringToFront()
--
--    def run(self):
--
--        # using this technique we can start gui window from a thread
--        if not self.window:
--            self.setup()
--
--        # read events
--        event, values = self.window.read(timeout=10, timeout_key='_TIMEOUT_')
--
--        if event == 'Update':
--            Thread(target=update.update).start()
--            execute_command('select_tab', 'Log')
--
--        elif event == 'website':
--            update.open_update_link()
--
--        if event != '_TIMEOUT_':
--            self.close()
--
--    def close(self):
--        self.active = False
--        self.window.Close()
--
--
- class SysTray:
-     """
-     systray icon using pystray package
+Only in PyIDM-2020.8.13.orig/pyidm: update.py
