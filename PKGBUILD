@@ -18,4 +18,7 @@ validpgpkeys=("4FA73DE89ADE75998AC24E97B8C1D523FE7AAA84")
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make PREFIX=/usr DESTDIR="${pkgdir}" install
+
+  # apparently keyringer looks for /usr/share/keyringer for some things
+  ln -s "/usr/lib/${pkgname}" "${pkgdir}/usr/share/${pkgname}"
 }
