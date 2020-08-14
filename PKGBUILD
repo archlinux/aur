@@ -1,6 +1,6 @@
 pkgname=got
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple golang package and CLI tool to download large files faster than cURL and Wget!'
 arch=('x86_64' 'arm64')
 url="https://github.com/melbahja/$pkgname"
@@ -21,6 +21,7 @@ build() {
 		-buildmode=pie \
 		-mod=readonly \
 		-modcacherw \
+		-ldflags "-X main.version=$pkgver" \
 		-o got
 }
 
