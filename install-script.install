@@ -2,7 +2,7 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 post_install() {
-	echo -e "${RED}!!! Modify /etc/conduit/env to suit your configuration needs !!!${NC}"
+	echo -e "${RED}!!! Modify /etc/conduit/config to suit your configuration needs !!!${NC}"
 	echo -e "Don't forget to enable conduit:"
 	echo -e "	systemctl enable --now conduit"
 }
