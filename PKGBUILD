@@ -4,7 +4,7 @@
 
 pkgname=airtame-application
 pkgver=4.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Airtame official screen streaming application."
 arch=('x86_64')
 url="https://airtame.com"
@@ -28,7 +28,7 @@ package() {
   patchelf --force-rpath --set-rpath "\$ORIGIN" "${pkgdir}/opt/${pkgname}/resources/build/native/out/lib/libAirtameEncryption.so"
 
   # Install main license
-  install -m 644 -D <(hq -f LICENSE.html .legal_page data | tidy -i -ashtml -utf8 -) "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
+  install -m 644 -D <(hq -f LICENSE.html .legal_page data | tidy -i -ashtml -utf8 - 2> /dev/null) "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
 
   # Install licenses
   install -m 644 -D "${pkgdir}/opt/${pkgname}/LICENSE.electron.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
