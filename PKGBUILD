@@ -26,7 +26,8 @@ options=('!emptydirs' '!makeflags' 'zipman')
 _filesrev=29877042dd393774197b134426e37cb0dbabef34
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-classic-kpe
 _commit=0e169d03648f6fc0e5ce7aafa4c2ec426f24dea3
-source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
+#"git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
+source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver-classic"
         "waterfox-classic.desktop::$_filesurl/waterfox-classic.desktop"
         "kde.js::$_filesurl/kde.js"
         "distribution.ini::$_filesurl/distribution.ini"
