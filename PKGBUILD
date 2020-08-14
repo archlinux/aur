@@ -2,7 +2,7 @@
 
 pkgname=waterfox-current-kpe
 pkgver=2020.07.2.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -22,7 +22,7 @@ provides=("waterfox-current=${pkgver}")
 conflicts=('waterfox-current')
 options=('!emptydirs' '!makeflags' 'zipman')
 replaces=("waterfox-beta-kde")
-_filesrev=b4b192baec602e311ea90d68eb67c6bc6e8c9a0d
+_filesrev=7503e9eab01217181860f0acc2c17adc0ad4311f
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-current-kpe
 #_commit=e738dcbd3104694c191b5dae09e08cef68da5fb5
 #"git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
@@ -36,6 +36,8 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver-current"
         "current-kde.patch::$_filesurl/patches/current-kde.patch"
         "current-kde-xul.patch::$_filesurl/patches/current-kde-xul.patch"
         "Bug1654465.patch::$_filesurl/patches/Bug1654465.patch"
+        "about_text_color.patch::$_filesurl/patches/about_text_color.patch"
+        "revert_problematic_changes.patch::$_filesurl/patches/revert_problematic_changes.patch"
         )
 sha256sums=('SKIP'
             'ca152a5d24a59aa5552cc49915b13eef5181aac4ac6d2efa02c705efaeaed97b'
@@ -46,7 +48,9 @@ sha256sums=('SKIP'
             'ffa9d71bd6dd60eaaef70ba67444c75b6ce0313a107b5b086fd3d30df865ccbf'
             '547233b3a9143f0b03d39655cb705b55cb6df6a2e97e4423f07c38386638ade5'
             'e3db65f1d86d00f8a21379a865f2c7767f57b96e1ab9f7c6f50e984784c5b80a'
-            '503ca153bac18d7aed9ba28e2779366401dc28fc239786a135881c2a50ffc9ee')
+            '503ca153bac18d7aed9ba28e2779366401dc28fc239786a135881c2a50ffc9ee'
+            '00438eefeb5f6aa67f1fc7a10933ce53ed058aad4476b7b4ae2658f1a0941f36'
+            '0aa65c03d49a3cfacaf73c4cdc97475678b90a95312715b5bddf37a9a90a815b')
 
 prepare() {
 
@@ -56,6 +60,8 @@ prepare() {
   patch -Np1 -i ../current-kde-xul.patch
   patch -Np1 -i ../mozilla-nongnome-proxies.patch
   patch -Np1 -i ../Bug1654465.patch
+  patch -Np1 -i ../about_text_color.patch
+  patch -Np1 -i ../revert_problematic_changes.patch
 
   cat >.mozconfig <<END
 export CC=clang

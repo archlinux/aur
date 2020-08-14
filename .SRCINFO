@@ -1,7 +1,7 @@
 pkgbase = waterfox-current-kpe
 	pkgdesc = Customizable privacy conscious web browser with better integration with KDE
 	pkgver = 2020.07.2.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.waterfox.net/
 	arch = x86_64
 	license = MPL
@@ -53,15 +53,17 @@ pkgbase = waterfox-current-kpe
 	options = !makeflags
 	options = zipman
 	source = git+https://github.com/MrAlex94/Waterfox.git#tag=2020.07.2.1-current
-	source = waterfox-current.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b4b192baec602e311ea90d68eb67c6bc6e8c9a0d/waterfox-current-kpe/waterfox-current.desktop
-	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b4b192baec602e311ea90d68eb67c6bc6e8c9a0d/waterfox-current-kpe/distribution.ini
-	source = vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b4b192baec602e311ea90d68eb67c6bc6e8c9a0d/waterfox-current-kpe/vendor.js
-	source = waterfox-current.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b4b192baec602e311ea90d68eb67c6bc6e8c9a0d/waterfox-current-kpe/waterfox-current.1
-	source = syspref.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b4b192baec602e311ea90d68eb67c6bc6e8c9a0d/waterfox-current-kpe/syspref.js
-	source = mozilla-nongnome-proxies.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b4b192baec602e311ea90d68eb67c6bc6e8c9a0d/waterfox-current-kpe/patches/mozilla-nongnome-proxies.patch
-	source = current-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b4b192baec602e311ea90d68eb67c6bc6e8c9a0d/waterfox-current-kpe/patches/current-kde.patch
-	source = current-kde-xul.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b4b192baec602e311ea90d68eb67c6bc6e8c9a0d/waterfox-current-kpe/patches/current-kde-xul.patch
-	source = Bug1654465.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/b4b192baec602e311ea90d68eb67c6bc6e8c9a0d/waterfox-current-kpe/patches/Bug1654465.patch
+	source = waterfox-current.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/7503e9eab01217181860f0acc2c17adc0ad4311f/waterfox-current-kpe/waterfox-current.desktop
+	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/7503e9eab01217181860f0acc2c17adc0ad4311f/waterfox-current-kpe/distribution.ini
+	source = vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/7503e9eab01217181860f0acc2c17adc0ad4311f/waterfox-current-kpe/vendor.js
+	source = waterfox-current.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/7503e9eab01217181860f0acc2c17adc0ad4311f/waterfox-current-kpe/waterfox-current.1
+	source = syspref.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/7503e9eab01217181860f0acc2c17adc0ad4311f/waterfox-current-kpe/syspref.js
+	source = mozilla-nongnome-proxies.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/7503e9eab01217181860f0acc2c17adc0ad4311f/waterfox-current-kpe/patches/mozilla-nongnome-proxies.patch
+	source = current-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/7503e9eab01217181860f0acc2c17adc0ad4311f/waterfox-current-kpe/patches/current-kde.patch
+	source = current-kde-xul.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/7503e9eab01217181860f0acc2c17adc0ad4311f/waterfox-current-kpe/patches/current-kde-xul.patch
+	source = Bug1654465.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/7503e9eab01217181860f0acc2c17adc0ad4311f/waterfox-current-kpe/patches/Bug1654465.patch
+	source = about_text_color.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/7503e9eab01217181860f0acc2c17adc0ad4311f/waterfox-current-kpe/patches/about_text_color.patch
+	source = revert_problematic_changes.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/7503e9eab01217181860f0acc2c17adc0ad4311f/waterfox-current-kpe/patches/revert_problematic_changes.patch
 	sha256sums = SKIP
 	sha256sums = ca152a5d24a59aa5552cc49915b13eef5181aac4ac6d2efa02c705efaeaed97b
 	sha256sums = bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26
@@ -72,6 +74,8 @@ pkgbase = waterfox-current-kpe
 	sha256sums = 547233b3a9143f0b03d39655cb705b55cb6df6a2e97e4423f07c38386638ade5
 	sha256sums = e3db65f1d86d00f8a21379a865f2c7767f57b96e1ab9f7c6f50e984784c5b80a
 	sha256sums = 503ca153bac18d7aed9ba28e2779366401dc28fc239786a135881c2a50ffc9ee
+	sha256sums = 00438eefeb5f6aa67f1fc7a10933ce53ed058aad4476b7b4ae2658f1a0941f36
+	sha256sums = 0aa65c03d49a3cfacaf73c4cdc97475678b90a95312715b5bddf37a9a90a815b
 
 pkgname = waterfox-current-kpe
 
