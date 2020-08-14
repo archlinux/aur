@@ -19,7 +19,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname"-master
+  cd "$pkgname"-"$pkgname"
   go build \
     -gcflags "all=-trimpath=$PWD" \
     -asmflags "all=-trimpath=$PWD" \
