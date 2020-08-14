@@ -1,47 +1,45 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-screenshot-git
-pkgver=r581.4f8a110
+pkgver=1.7.1.r85.g1d72fc1
 pkgrel=1
 pkgdesc='The Pantheon Screenshot Tool'
 arch=('x86_64')
 url='https://github.com/elementary/screenshot-tool'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libcanberra'
+depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 
+         'gtk3' 'libcanberra' 'libhandy1'
          'libgranite.so')
 makedepends=('git' 'granite-git' 'intltool' 'meson' 'vala')
 provides=('pantheon-screenshot')
 conflicts=('pantheon-screenshot')
-source=("pantheon-screenshot::git+https://github.com/elementary/screenshot-tool.git")
-sha256sums=('SKIP')
+source=("pantheon-screenshot::git+https://github.com/elementary/screenshot-tool.git"
+        "0001-support-libhandy1.patch")
+sha256sums=('SKIP'
+            'b300a47911342fbe1cf22ccae0287b53ca584bff873d3491ef480687d8d9933a')
 
 pkgver() {
   cd pantheon-screenshot
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
-
   sed 's/extra/io.elementary.screenshot-tool.extra/' -i pantheon-screenshot/po/extra/meson.build
+
+   cd pantheon-screenshot
+   patch -Np1 -i ../0001-support-libhandy1.patch
 }
 
 build() {
-  cd build
-
-  arch-meson ../pantheon-screenshot
-  ninja
+  arch-meson pantheon-screenshot build
+  ninja -C build
 }
 
 package() {
-  cd build
 
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
