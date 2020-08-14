@@ -1,0 +1,35 @@
+pkgbase = odio-bzr
+	pkgdesc = Audio compression tool for FLAC and Nero AAC
+	pkgver = 20.5.21.244
+	pkgrel = 1
+	url = https://tari.in/www/software/odio-bzr
+	arch = any
+	license = GPL3
+	makedepends = breezy
+	makedepends = python-setuptools
+	makedepends = python-polib
+	depends = gst-python
+	depends = gst-plugins-base
+	depends = gst-libav
+	depends = python-html5lib
+	depends = python-beautifulsoup4
+	depends = python-lxml
+	depends = python-psutil
+	depends = flac
+	depends = cuetools
+	depends = shntool
+	depends = atomicparsley
+	depends = mac
+	depends = lsdvd
+	depends = mplayer
+	depends = odio-edit
+	depends = neroaacenc-bin
+	depends = libodiosacd
+	provides = odio
+	conflicts = odio
+	options = !emptydirs
+	source = bzr+lp:odio
+	md5sums = SKIP
+
+pkgname = odio-bzr
+
