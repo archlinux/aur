@@ -1,72 +1,44 @@
-#! /bin/bash
-# Maintainer: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
-
-_pkgname=desmume
-pkgname=${_pkgname}-git
-pkgdesc='Nintendo DS emulator'
-url='http://desmume.org/'
+_pkgname='desmume'
+pkgname="$_pkgname-git"
+_pkgver='0.9.11'
+_lastrelease='ccbf85ed42e4350af415d56b1465e83614c85ef8'
+pkgver=0.9.11.r1384.316103d2
+pkgrel=1
+pkgdesc="Nintendo DS emulator"
 arch=('i686' 'x86_64')
-license=('GPL')
-
-# The developers do not seem to make consistent use of tags
-# I've manually specified the commit where the branch of the latest release (as
-# of this writing) split from master, and we use this to get the rev number.
-_last_rtm_ver=0.9.11
-_last_rtm_commit=ccbf85ed42e4350af415d56b1465e83614c85ef8
-pkgver="${_last_rtm_ver}.r583.07a68db"
-pkgrel=2
-
-depends=('gtkglext'
-         'libglade'
-         'libgl'
-         'openal'
-         'sdl'
-         'soundtouch'
-         'lua51')
-makedepends=('autoconf'
-             'automake'
-             'pkg-config'
-             'git'
-             'lua')
-
+url="https://desmume.org/"
+license=('GPL2')
 provides=('desmume')
-replaces=('desmume-sourceforge'
-          'desmume-svn'
-          'desmume-jit-svn')
-conflicts=("${provides[@]}" "${replaces[@]}")
-
-source=('git+https://github.com/TASVideos/desmume.git')
+conflicts=('desmume')
+depends=('gtk2' 'soundtouch' 'zlib' 'zziplib' 'libpcap' 'glib2' 'glu' 'openal' 'sdl' 'libpng' 'libgl')
+makedepends=('autoconf' 'automake' 'pkg-config' 'git' 'gtk2' 'lua' 'zlib' 'intltool' 'glu' 'sdl' 'zziplib' 'soundtouch' 'libpcap' 'glib2' 'sdl' 'desktop-file-utils' 'openal' 'libpng' 'libgl')
+source=("$_pkgname::git+https://github.com/TASVideos/desmume.git")
 sha512sums=('SKIP')
 
-_builddir="${_pkgname}/src/frontend/posix"
+_builddir="$_pkgname/src/frontend/posix"
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
+  echo "$_pkgver.r$(git rev-list --count $_lastrelease..HEAD).$(git rev-parse --short HEAD)"
 
-  local revnum="$(git rev-list --count ${_last_rtm_commit}..HEAD)"
-  local shorthash="$(git rev-parse --short HEAD)"
-
-  printf "%s.r%s.%s" "${_last_rtm_ver}" "${revnum}" "${shorthash}"
 }
 
 prepare(){
+  cd "${srcdir}/$_pkgname"
+  git submodule init
+  git submodule update --init --recursive
+
   cd "${srcdir}/${_pkgname}/${_builddir}"
-
-  # lua5.1 package is named lua51 on Arch
-  # we could probably just make it compile against the current lua
-  sed -i 's/lua5.1/lua51/' configure.ac
-
   ./autogen.sh
 
-  # Hud causes segfault in gtk version. Wifi doesn't really work.
-  CFLAGS="-O3 -march=native" \
-  CXXFLAGS="-O3 -march=native" \
+
+  CFLAGS="-O2 -march=native -minline-all-stringops" \
+  CXXFLAGS=$CFLAGS \
   ./configure \
     --prefix=/usr \
-    --enable-osmesa \
-    --enable-glx \
     --enable-openal \
-    --enable-glade
+    --enable-wifi #\
+#    --enable-hud  #requires agg in AUR
 }
 
 build() {
