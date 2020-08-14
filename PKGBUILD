@@ -31,6 +31,12 @@ pkgver() {
   echo ${pkgver}
 }
 
+_handle_lsmod() {
+  if [ -f "$HOME/.config/modprobed.db" ]; then
+    make HOSTCC=clang CC=clang LSMOD=$HOME/.config/modprobed.db localmodconfig
+  fi
+}
+
 prepare() {
   cd "linux-nitrous"
 
@@ -39,9 +45,7 @@ prepare() {
 
   rm -f .clang
   make HOSTCC=clang CC=clang nitrous_defconfig
-  if [ -f "$HOME/.config/modprobed.db" ]; then
-    make HOSTCC=clang CC=clang LSMOD=$HOME/.config/modprobed.db localmodconfig
-  fi
+  _handle_lsmod
 
   # get kernel version
   #make prepare
@@ -61,6 +65,7 @@ build() {
   cd "linux-nitrous"
 
   make HOSTCC=clang CC=clang nitrous_defconfig
+  _handle_lsmod
   makeflags="${MAKEFLAGS}"
   if [[ "$MAKEFLAGS" != *"-j"* ]]; then
     makeflags="$makeflags -j$(nproc --all)"   
