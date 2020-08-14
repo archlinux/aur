@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-music-git
-pkgver=r3871.62f2cce5
+pkgver=r4012.af29a5ff
 pkgrel=1
 pkgdesc='The Pantheon Music Player'
 arch=(x86_64)
@@ -19,6 +19,7 @@ depends=(
   json-glib
   libaccounts-glib
   libgda
+  libhandy1
   libgee
   libgpod
   libgranite.so
@@ -49,7 +50,7 @@ optdepends=(
 provides=(pantheon-music)
 conflicts=(pantheon-music)
 source=(pantheon-music::git+https://github.com/elementary/music.git)
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 pkgver() {
   cd pantheon-music
