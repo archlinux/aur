@@ -14,6 +14,8 @@ pkgbase = lampswitch-bzr
 	depends = python-gobject
 	depends = libayatana-appindicator
 	depends = desktop-file-utils
+	provides = lampswitch
+	conflicts = lampswitch
 	source = bzr+lp:lampswitch
 	md5sums = SKIP
 

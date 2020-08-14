@@ -14,6 +14,8 @@ makedepends=("breezy" "python-setuptools" "python-polib")
 install="${_pkgname}.install"
 source=("bzr+lp:${_pkgname}")
 md5sums=("SKIP")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 
 pkgver()
 {
