@@ -20,16 +20,16 @@ pkgver() {
 }
 
 build() {
-    arch-meson libhandy build -Dgtk_doc=true -Dexamples=false
-    meson compile -C build
+	arch-meson libhandy build -Dgtk_doc=true -Dexamples=false
+	meson compile -C build
 }
 
 check() {
-    dbus-run-session xvfb-run \
-        -s '-screen 0 1920x1080x24 -nolisten local' \
-        meson test -C build --print-errorlogs
+	dbus-run-session xvfb-run \
+		-s '-screen 0 1920x1080x24 -nolisten local' \
+		meson test -C build --print-errorlogs
 }
 
 package() {
-    DESTDIR="$pkgdir" meson install -C build
+	DESTDIR="$pkgdir" meson install -C build
 }
