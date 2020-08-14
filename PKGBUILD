@@ -1,8 +1,10 @@
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Based on aur/vmware-workstation by:
 # Maintainer: Jean-Marc Lenoir <archlinux "at" jihemel "dot" com>
 # Contributor: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
-# To enable macOS guests sup.port, uncomment the line below:
-_enable_macOS_guests=y
+# To enable macOS guests support, uncomment the line below:
+#_enable_macOS_guests=y
 # CAUTION: Running macOS on VMware Workstation on non Apple computer is forbidden by
 # Apple and VMware EULAs.
 
@@ -18,10 +20,10 @@ pkgname=${_basepkgname}-tech-preview
 pkgver=16540321
 _pkgver=20h2
 _pkgver=${_pkgver}_${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC (Tech Preview).'
 arch=(x86_64)
-url='https://blogs.vmware.com/workstation'
+url='https://blogs.vmware.com/workstation/vmware-workstation/technology-preview'
 license=(custom)
 install="vmware-workstation.install"
 conflicts=(
@@ -97,7 +99,7 @@ sha256sums=('ebf938cad942e1fe1b119eb84c52461cfb789c2809951addc8344218e4519349'
             'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
             '05e26d8b21d190ebabb7f693998114d9d5991d9dfb71acb4d990293a65b6b487'
             '6ce902b1dab8fc69be253abd8e79017011985eca850ff7acc7282f9ab668e35d'
-            'f23aa17b29cc95b9e78f27d862a95f5f3da6608096646d175f305f9ac1b8f54a'
+            '9156b7905f1431cd5c4e208abb5276a9a2959ee5cc5bf890e24a95c3c2b1a8e5'
             'c1302d45008865537583b99d53ed0ea4a1d672227f190177fc63fc0c2f980151')
 options=(!strip emptydirs)
 
@@ -113,7 +115,7 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=11.5.5_16269456
+_vmware_fusion_ver=11.5.6_16696540
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 _unlocker_ver=3.0.3
@@ -131,7 +133,7 @@ source+=(
   "efi-unlocker-patch-${_efi_unlocker_ver}.txt"
 )
 sha256sums+=(
-  'fedd67ec2a50ffcc71376dbeeea1f5c0577dfcfcd2bcc7bf91239f3c18d7dcf9'
+  '8205f598be56ebbe5ddf23e2484ff067fd4a0a8543cd5408c390ea6bb1ae0364'
   '1c27547dcf6fb2f436c96ee62ae8c7f5cfd14b40d8bbd35dc385e247c4fb7e0f'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
@@ -151,14 +153,14 @@ _create_database_file() {
 
   for isoimage in ${_isoimages[@]}
   do
-	local version=$(cat "$srcdir/extracted/vmware-tools-$isoimage/manifest.xml" | grep -oPm1 "(?<=<version>)[^<]+")
-	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"$version\",\"${pkgver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
+  local version=$(cat "$srcdir/extracted/vmware-tools-$isoimage/manifest.xml" | grep -oPm1 "(?<=<version>)[^<]+")
+  sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"$version\",\"${_pkgver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
   done
 
 if [ -n "$_enable_macOS_guests" ]; then
   for isoimage in ${_fusion_isoimages[@]}
   do
-	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"1\",\"${_vmware_fusion_ver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
+  sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"1\",\"${_vmware_fusion_ver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
   done
 fi
 }
@@ -168,7 +170,7 @@ prepare() {
   [[ -d "$extracted_dir" ]] && rm -r "$extracted_dir"
 
   bash \
-    "$(readlink -f $srcdir/${_bundle_name})" \
+    "$(readlink -f "${_bundle_name}")" \
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then
