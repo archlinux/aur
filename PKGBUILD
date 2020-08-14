@@ -1,11 +1,11 @@
-# Maintainer: relrelb <relrelbachar@gmail.com>
+# Maintainer: relrel <relrelbachar@gmail.com>
 pkgname=android-completion
-pkgver=20200805193204.a39e39f
+pkgver=20200814022526.278f11b
 pkgrel=1
 pkgdesc="Bash completion for adb and fastboot"
 arch=(any)
 url="https://android.googlesource.com/platform/system/core/"
-license=('GPL')
+license=('Apache')
 depends=('android-sdk-platform-tools' 'bash' 'bash-completion')
 conflicts=('android-bash-completion')
 _commit=$(echo $pkgver | cut -d. -f2)
@@ -19,7 +19,7 @@ sha512sums=('450cdf58661537b0d1fcdf191a6b635ac87eb3cfeb3187106409bb92f71ae0b73df
 pkgver() {
 	head=$(curl -sSf 'https://android.googlesource.com/platform/system/core/+/HEAD?format=JSON' | sed 's/$/\\n/' | tr -d '\n')
 	commit=$(echo -e $head | grep -oP '^\s*"commit":\s*"\K[0-9a-f]+(?=",?)')
-	timestamp=$(echo -e $head | grep -A3 '^\s*"committer": {' | grep -oP '^\s*"time":\s*"\K.+(?=",?)')
+	timestamp=$(echo -e $head | grep -A3 '^\s*"committer":\s*{' | grep -oP '^\s*"time":\s*"\K.+(?=",?)')
 	month=$(echo $timestamp | cut -d' ' -f2)
 	day=$(echo $timestamp | cut -d' ' -f3)
 	time=$(echo $timestamp | cut -d' ' -f4)
