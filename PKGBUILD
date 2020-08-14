@@ -1,4 +1,3 @@
-# Maintainer: Guillaume Hayot <ghayot[at]postblue[dot]info>
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="libayatana-appindicator"
@@ -9,10 +8,10 @@ arch=("i686" "x86_64" "pentium4")
 url="https://github.com/AyatanaIndicators/libayatana-appindicator"
 license=("LGPL2.1" "LGPL3")
 makedepends=("gtk3" "glib2" "libayatana-indicator" "libdbusmenu-gtk3" "dbus-glib" "mate-common" "gobject-introspection")
-depends=('libdbusmenu-gtk3' 'libayatana-indicator')
+depends=("libdbusmenu-gtk3" "libayatana-indicator")
 optdepends=("vala" "mono" "gtk-sharp-3")
 source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('fd6705ad2793dced95056036ecd73b7f')
+md5sums=("fd6705ad2793dced95056036ecd73b7f")
 conflicts=("${pkgname}-gtk3")
 replaces=("${pkgname}-gtk3")
 
