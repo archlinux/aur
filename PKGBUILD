@@ -4,21 +4,20 @@
 
 pkgname=('python-pymupdf')
 _name='PyMuPDF'
-pkgver=1.17.4
+pkgver=1.17.5
 pkgrel=1
 pkgdesc='Python bindings for MuPDF'
 arch=('x86_64')
 url='https://github.com/pymupdf/PyMuPDF'
 license=('AGPL3')
 depends=('python' 'libjpeg-turbo' 'jbig2dec' 'openjpeg2'  'freetype2')
-makedepends=('python-setuptools' 'libmupdf>=1.17' 'libmupdf<1.18')
+makedepends=('python-setuptools' 'libmupdf-pymupdf>=1.17' 'libmupdf-pymupdf<1.18')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-${pkgver}.tar.gz")
-sha256sums=('e04421ac7e9e892ea482d0bbf8b590ae7a4f82858faa6fd24943b037122971c0')
+sha256sums=('ddec02c4dd1c2e0ead4d61cd97b52e725d643602f1f7832b5016190f5c653add')
 
 prepare() {
   cd "${_name}-${pkgver}"
-  sed -i "s:# 'jbig2dec', 'openjp2', 'jpeg', 'freetype',:'jbig2dec', 'openjp2', 'jpeg', 'freetype',:g" setup.py
 }
 
 build() {
