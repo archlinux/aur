@@ -2,7 +2,7 @@
 
 _pkgname=tcolorpy
 pkgname=python-${_pkgname}
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='Python library to apply true color for terminal text'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-setuptools')
 provides=("${_pkgname}")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('3e7745620908d3a7883558e2e9217c8d6186c3060dc32f71b52d766970a78a2d')
+sha256sums=('ffbe886f1321dab88d9cfd4218ea8d93d50d6ad0875c3741dd75fe1437379406')
 
 build() {
   cd "${_pkgname}-${pkgver}"
