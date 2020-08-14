@@ -1,6 +1,6 @@
 # Maintainer: Adam Harvey <aharvey@sourcegraph.com>
 pkgname=comby
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 epoch=
 pkgdesc="A tool for structural code search and replace that supports ~every language"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/comby-tools/$pkgname/archive/$pkgver.tar.gz")
 noextract=()
-sha512sums=('408a9b6124eb9984c29e635d18428046d3d9bce1c979aa874c6fa15c15c4ec7d9f0cc64aebf69da085cb92f3af1b967255af11507fb281ac82472724785be115')
+sha512sums=('ce8a5c4fa2a92c381f893e4dea7d10ee60e7dc4dcd8166fd700475da52f77ddc52a60b0606dd64ca33501683707cbfdb5b6311d804cba20665b48bc8d99185e9')
 validpgpkeys=()
 
 build() {
@@ -43,6 +43,7 @@ build() {
     # but many do not, and some rely on forks of upstream packages. To minimise
     # drift from upstream, let's just build everything.
     opam update
+    opam upgrade -y
     opam install . --deps-only -y
 
     # Actually build comby.
