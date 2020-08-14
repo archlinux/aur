@@ -4,8 +4,8 @@
 pkgname=brisk-menu-git
 _pkgname=brisk-menu
 _gitname=brisk
-pkgver=0.6.1.r7.g19a6382
-pkgrel=2
+pkgver=0.6.2.r0.g2b02795
+pkgrel=1
 pkgdesc='Modern, efficient menu for the MATE Desktop Environment - git version'
 arch=('i686' 'x86_64')
 url='https://github.com/getsolus/brisk-menu'
