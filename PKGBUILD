@@ -4,12 +4,12 @@
 
 pkgname=protonmail-bridge
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://www.protonmail.com/bridge"
 license=('GPL3')
-makedepends=('go' 'gcc')
+makedepends=('go' 'gcc' 'git')
 depends=('hicolor-icon-theme' 'libsecret' 'qt5-multimedia' 'ttf-dejavu')
 optdepends=(
     'gnome-keyring: supported password manager (password manager is required)'
@@ -17,14 +17,15 @@ optdepends=(
 )
 conflicts=('protonmail-bridge-bin')
 options=('!emptydirs' '!strip')
-source=("https://github.com/ProtonMail/proton-bridge/archive/v${pkgver}.tar.gz"
+source=("git://github.com/ProtonMail/proton-bridge.git"
         "protonmail-bridge.desktop")
-sha256sums=('613907baa5d5c93cebb2581adeb7259eab750cebe04a9db6873b592138686209'
+sha256sums=('SKIP'
             '226bc140ec5c34cfdff42b33058d045446a4006518d2660db932c7f51632b48a')
 
 prepare() {
-    cd ${srcdir}/proton-bridge-${pkgver}/
+    cd ${srcdir}/proton-bridge/
     export PATH=$PATH:$(go env GOPATH)/bin/
+    git checkout "v${pkgver}"
     make clean
     make build
 }
@@ -32,9 +33,9 @@ prepare() {
 package() {
     mkdir -p "${pkgdir}"/opt
     mkdir -p "${pkgdir}"/usr/bin
-    cp -r "${srcdir}"/proton-bridge-${pkgver}/cmd/Desktop-Bridge/deploy/linux/ "${pkgdir}"/opt/protonmail-bridge
+    cp -r "${srcdir}"/proton-bridge/cmd/Desktop-Bridge/deploy/linux/ "${pkgdir}"/opt/protonmail-bridge
     install -D -m644 "${pkgdir}"/opt/protonmail-bridge/LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
     install -D -m644 "${pkgdir}"/opt/protonmail-bridge/logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/"${pkgname}".svg
     install -D -m644 "${srcdir}"/protonmail-bridge.desktop -t "${pkgdir}"/usr/share/applications/
-    ln -s "/opt/protonmail-bridge/proton-bridge-${pkgver}" "$pkgdir/usr/bin/protonmail-bridge"
+    ln -s "/opt/protonmail-bridge/proton-bridge" "$pkgdir/usr/bin/protonmail-bridge"
 }
