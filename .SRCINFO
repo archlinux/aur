@@ -1,6 +1,6 @@
 pkgbase = fetchcord-git
 	pkgdesc = FetchCord grabs your OS info and displays it as Discord Rich Presence
-	pkgver = 2.2
+	pkgver = r261.c567d52
 	pkgrel = 1
 	url = https://github.com/MrPotatoBobx/fetchcord
 	arch = any
