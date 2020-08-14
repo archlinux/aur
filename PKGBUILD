@@ -2,56 +2,33 @@
 
 pkgname=phddns-bin
 _pkgname=${pkgname%-bin}
-pkgver=3.0.4
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc="Peanut shell is a dynamic DNS software, any place, any time, any lines, all can through fixed domain access to the remote host services"
-arch=("armv7h")
+arch=("x86_64" "i686")
 url="https://hsk.oray.com/download/"
 license=('custom')
-options=('!strip')
 install='.INSTALL'
 source=('LICENSE::https://service.oray.com/question/1820.html')
-source_armv7h=("http://download.oray.com/peanuthull/embed/${_pkgname}_${pkgver}_systemd.deb")
+source_x86_64=("http://dl-cdn.oray.com/hsk/linux/${_pkgname}-${pkgver}-amd64.deb")
+source_i686=("http://dl-cdn.oray.com/hsk/linux/${_pkgname}-${pkgver}-i386.deb")
 
 sha256sums=('SKIP')
-sha256sums_armv7h=('d8fb134ecb61058e2e1a243755bfae656eaf1e0deaec6e8070a99d26c253265f')
+sha256sums_x86_64=('f27b86a13684212b9e852a6ac20256d9fadf7ca3a402d4f4c5d70530dffd1c1c')
+sha256sums_i686=('882aaca32b86d1beb3d0daf3f3bce35ff1eb7500729a3cec48ee3427fb2e8b7b')
 
 package() {
-  tar -xf data.tar.xz -C ${pkgdir}
-  
-  # systemd service
-  cd ${pkgdir}
-  for service in lib/systemd/system/*;
-  do
-    install -Dm644 $service usr/$service
-  done
-  rm -rf lib
-
-  sed -i 's|/usr/orayapp/|/usr/bin/|g' usr/lib/systemd/system/*
-  sed -i 's|/bin/rm|/usr/bin/rm -fr|g' usr/lib/systemd/system/*
-  sed -i 's|/usr/orayapp|/usr/share/pgyvpn|g' usr/lib/systemd/system/phddns_sl.service 
+  install -dm755 ${srcdir}/${pkgname}
+  tar -xf data.tar.xz -C ${srcdir}/${pkgname}
 
   # binary
-  install -Dm755 usr/sbin/phddns usr/bin/phddns
-  install -Dm755 usr/orayapp/oraynewph usr/bin/oraynewph
-  install -Dm755 usr/orayapp/oraysl usr/bin/oraysl
-  rm -rf usr/orayapp/oray*
-  rm -rf usr/sbin
-
-  # scripts
-  for scripts in usr/orayapp/*;
-  do
-    install -Dm755 $scripts usr/share/${_pkgname}/`basename $scripts`
-  done
-  rm -rf usr/orayapp
-
-  # permisson fixed
-  chmod 755 usr
-  chown root:root usr
-
+  install -Dm755  -t ${pkgdir}/usr/bin/ ${srcdir}/${pkgname}/usr/bin/phtunnel
+  
+  # systemd service
+  install -Dm644 -t ${pkgdir}/usr/lib/systemd/system/ ${srcdir}/${pkgname}/tmp/pht_script/phtunnel.service
+  
   # license
-  install -Dm644 ${srcdir}/LICENSE usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 -t ${pkgdir}/usr/share/licenses/${pkgname}/ ${srcdir}/LICENSE
 }    
-
 
 # vim: ts=2 sw=2 et:  
