@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=shortwave-git
-pkgver=1.0.1.r34.g5454d6e
+pkgver=1.1.1.r45.g4ab88a6
 pkgrel=1
 pkgdesc="Find and listen to internet radio stations"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://gitlab.gnome.org/World/Shortwave"
 license=('GPL3')
-depends=('gst-plugins-bad' 'libhandy')
+depends=('gst-plugins-bad' 'libhandy1-wip')
 makedepends=('git' 'gobject-introspection' 'libdazzle' 'meson' 'rust' 'xorgproto')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -21,13 +21,13 @@ pkgver() {
 
 build() {
 	arch-meson "${pkgname%-git}" build
-	ninja -C build
+	meson compile -C build
 }
 
 check() {
-	ninja -C build test
+	meson test -C build
 }
 
 package() {
-	DESTDIR="$pkgdir/" ninja -C build install
+	DESTDIR="$pkgdir" meson install -C build
 }
