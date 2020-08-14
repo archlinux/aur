@@ -1,6 +1,6 @@
 pkgbase = ayatana-ido
 	pkgdesc = Ayatana Indicator Display Objects
-	pkgver = 0.5.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-ido
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ayatana-ido
 	makedepends = vala
 	depends = gtk3
 	depends = glib2
-	source = https://github.com/AyatanaIndicators/ayatana-ido/archive/0.5.0.tar.gz
+	source = https://github.com/AyatanaIndicators/ayatana-ido/archive/0.8.0.tar.gz
 	sha512sums = 573dd0d6693670bfda0e883c94d483d708bb83f20eb621eae26a0624aa76045ba6e9563ce36587c9ca3d5acfe4b4c0d9f9ce8da62a788d206f3d00ebdded0228
 
 pkgname = ayatana-ido

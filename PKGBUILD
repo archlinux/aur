@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Hayot <ghayot[at]postblue[dot]info>
 pkgname=ayatana-ido
-pkgver=0.5.0
+pkgver="0.8.0"
 pkgrel=1
 pkgdesc='Ayatana Indicator Display Objects'
 arch=('x86_64')
