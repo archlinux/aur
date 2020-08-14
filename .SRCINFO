@@ -1,12 +1,14 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = golaunch
+	pkgdesc = a simple .desktop launcher written in go.
+	pkgver = 0.3
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	url = https://github.com/hen6003/golaunch
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = https://github.com/hen6003/golaunch/archive/master.tar.gz
+	md5sums = a2e271a579b432a185b598fbf30e51d0
 
-pkgname = yarxi
+pkgname = golaunch
 
