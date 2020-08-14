@@ -1,7 +1,7 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=jellyfin-server-bin
-pkgver="10.6.1_1"
+pkgver="10.6.2_1"
 _pkgver=$(echo "$pkgver" | cut -f1 -d"_")
 _pkgverfull="${pkgver//_/-}"
 pkgrel=1
@@ -25,9 +25,9 @@ sha256sums=('1ea19635cced6672484937903c27976a5a145d708caff06a687a8defdd23d549'
             '0f8511673816daf528625366b6c27bc7e6182e4ac789191c87474667398376e2'
             '9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228'
             'b7faa4b0c756cdb361ef5b04fddfdc416b00f1246bb3a19a34bf4d185a6a7e5a')
-sha256sums_x86_64=('a823a682a9d81a82c0608bc51d8cb771ef690e4033afd1a592237720492255a4')
-sha256sums_aarch64=('f7a8ccf33cc3a0e925e0f5f356efb85f5613625fe36f4a9227ecd08432a0e9cc')
-sha256sums_armv7h=('3aedba5cd37fffe2ca90d8dfe72e576347444d1bdd4164cc97fff0ee278af571')
+sha256sums_x86_64=('78b75475105409f063322c5a4d432c6b4cc7fe1f399a1b9f7f89216054af1ede')
+sha256sums_aarch64=('1dc9e3f9c48354120db899742402e3dccd3aaeebe1402f4140bb6b49c57763a7')
+sha256sums_armv7h=('a341ae36f6524784c4c43557b987c458f7e6145c326219f8cc7673318deb6e0d')
 
 options=('staticlibs')
 
