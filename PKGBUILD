@@ -9,15 +9,15 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=84.0.4147.105
+pkgver=84.0.4147.125
 pkgrel=1
 _pkgname=$pkgname
 _pkgver=$pkgver
 # sometimes an ungoogled patches can be combined with a new chromium release
 # only if the release only includes security fixes
-_ungoogled_ver=84.0.4147.105-1
+_ungoogled_ver=84.0.4147.125-1
 _uc_url="$_pkgname-$_ungoogled_ver.tar.gz::https://github.com/Eloston/ungoogled-chromium/archive/$_ungoogled_ver.tar.gz"
-_uc_sum="af7999a71db3236eaa1d514cf901fb65db37dac40b65c1089a786c3f913ecb0e"
+_uc_sum="41585d66f394a60f8eb236e598b8f13f01ee78d086865412b8612de5f089b371"
 _launcher_ver=6
 _gcc_patchset=3
 pkgdesc="A lightweight approach to removing Google web service dependency"
@@ -52,7 +52,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         wayland-egl.patch
         nvidia-vdpau.patch
         chromium-skia-harmony.patch)
-sha256sums=('caf4ebeb2a2333454c3067a2534aeecaab5029aa78fc0d8b27f79ad3b9c5ccac'
+sha256sums=('98439626cf2d8d3d8f9486d08a99cbc1e4981b3f3427a072d5eaaf6ded4daff5'
             $_uc_sum
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
