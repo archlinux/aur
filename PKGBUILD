@@ -10,7 +10,7 @@ depends=("imagemagick")
 optdepends=("fbsplash: To set the fbsplash theme")
 source=("$pkgname-$pkgver.tar.gz::http://sourceshark.com/sourcecode/tarballs/${pkgname}-${pkgver}.tar.gz")
 options=(!strip)
-sha512sums=('5691ebbfb24d2940b1f82cc11e56af3af295287a2b367e3057396d60673944ae22de9459ad56608ab72d323ba9d2e920a2d2cda0b692760a2d1133a581050368')
+sha512sums=('6bfb4156aeed0e7abee003996cebd1d80903669725050ad80e23136f1dad3e6aadb72dc14bc546fb42d8ad2357d2f3fda090459b0b8e267d03b303ae3a08e3aa')
     noextract=("$pkgname-$pkgver.zip")
 
     prepare() {
