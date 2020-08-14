@@ -2,8 +2,8 @@
 
 _pkgname=withings-garmin-v2
 pkgname=$_pkgname
-pkgver=37
-pkgrel=2
+pkgver=38
+pkgrel=1
 pkgdesc="Sync Withing Scale stats to Garmin Connect"
 arch=('any')
 license=('MIT')
@@ -11,6 +11,7 @@ url="https://github.com/jaroslawhartman/withings-garmin-v2"
 provides=(${_pkgname})
 depends=('python'
          'python-requests'
+         'python-lxml'
          'python-simplejson')
 source=("${_pkgname}::git://github.com/jaroslawhartman/withings-garmin-v2.git"
         "${_pkgname}.service"

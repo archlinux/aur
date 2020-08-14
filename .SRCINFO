@@ -1,12 +1,13 @@
 pkgbase = withings-garmin-v2
 	pkgdesc = Sync Withing Scale stats to Garmin Connect
-	pkgver = 37
-	pkgrel = 2
+	pkgver = 38
+	pkgrel = 1
 	url = https://github.com/jaroslawhartman/withings-garmin-v2
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-requests
+	depends = python-lxml
 	depends = python-simplejson
 	provides = withings-garmin-v2
 	source = withings-garmin-v2::git://github.com/jaroslawhartman/withings-garmin-v2.git
