@@ -1,14 +1,14 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-applications-git
-pkgver=r317.d241d8f
+pkgver=2.1.7.r108.gcbf1998
 pkgrel=1
 pkgdesc='Switchboard Applications Plug'
 arch=('x86_64')
 url='https://github.com/elementary/switchboard-plug-applications'
 license=('GPL3')
 groups=('pantheon-unstable')
-depends=('glib2' 'glibc' 'gtk3' 'libgee'
+depends=('glib2' 'glibc' 'gtk3' 'libgee' 'flatpak'
          'libgranite.so' 'libswitchboard-2.0.so')
 makedepends=('git' 'granite-git' 'meson' 'switchboard-git' 'vala')
 provides=('switchboard-plug-applications')
@@ -20,27 +20,16 @@ sha256sums=('SKIP')
 pkgver() {
   cd switchboard-plug-applications
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-
-  arch-meson ../switchboard-plug-applications
-  ninja
+  arch-meson switchboard-plug-applications build
+  ninja -C build
 }
 
 package() {
-  cd build
-
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
