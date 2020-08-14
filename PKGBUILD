@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgbase=python-class
 pkgname=("python-class")  
-pkgver=2.9.3
+pkgver=2.9.4
 pkgrel=1
 pkgdesc="CLASS: Cosmic Linear Anisotropy Solving System"
 arch=(any)
@@ -16,7 +16,8 @@ depends=('cython')
 options=(!emptydirs)
 install=
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d20bbe92f320085a3f010fff20dbd3dd20968cb74fc5234f7a6b8de1c7164f90')
+sha256sums=('60dc445a733e94f9a862c81447cccdc60af02b9517461e20ee30b2a0901cec8e')
+
 package() {
   cd "$srcdir/class_public-${pkgver}/"
   make -j libclass.a
