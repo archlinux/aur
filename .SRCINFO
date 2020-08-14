@@ -1,0 +1,21 @@
+pkgbase = lampswitch-bzr
+	pkgdesc = Indicator and control applet for Apache
+	pkgver = 20.7.23.42
+	pkgrel = 1
+	url = https://tari.in/www/software/lampswitch
+	install = lampswitch.install
+	arch = any
+	license = GPL3
+	makedepends = breezy
+	makedepends = python-setuptools
+	makedepends = python-polib
+	depends = gobject-introspection
+	depends = gtk3
+	depends = python-gobject
+	depends = libayatana-appindicator
+	depends = desktop-file-utils
+	source = bzr+lp:lampswitch
+	md5sums = SKIP
+
+pkgname = lampswitch-bzr
+
