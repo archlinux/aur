@@ -1,0 +1,33 @@
+pkgbase = electrumx-git
+	pkgdesc = Server implementation for the Electrum wallet (git version)
+	pkgver = 1.15.0.r1945.148df48
+	pkgrel = 1
+	url = https://github.com/spesmilo/electrumx
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = leveldb
+	depends = python>=3.7
+	depends = python-aiorpcx>=0.18.3
+	depends = python-aiorpcx<0.19.0
+	depends = python-attrs
+	depends = python-plyvel
+	depends = python-pylru
+	depends = python-aiohttp>=3.3.0
+	depends = python-websockets
+	optdepends = bitcoin-daemon: Bitcoin core headless P2P node
+	optdepends = electrum: Bitcoin thin client
+	conflicts = electrumx
+	backup = etc/electrumx/electrumx.conf
+	source = git+https://github.com/spesmilo/electrumx.git
+	source = electrumx.conf
+	source = electrumx.service
+	source = electrumx.sysusers
+	sha256sums = SKIP
+	sha256sums = ca05f8e8cf01c5074376df75a6691c1aea74cf278244f86ac838900cad9547fb
+	sha256sums = ece0696dc82e0159d9a266834e6e9e1e518caa68e6f145d262b291e1fc09d67e
+	sha256sums = 761a21723d21348d598be96655e6de4827b2fcff93270895303e82670e0532f1
+
+pkgname = electrumx-git
+

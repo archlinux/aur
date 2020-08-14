@@ -1,0 +1,16 @@
+[Unit]
+Description=ElectrumX Server
+Wants=bitcoind.service
+After=network.target bitcoind.service
+
+[Service]
+EnvironmentFile=/etc/electrumx/electrumx.conf
+ExecStart=/usr/bin/electrumx-server
+ExecStop=/usr/bin/electrumx-rpc stop
+User=electrumx
+Group=electrumx
+LimitNOFILE=infinity
+TimeoutStopSec=30min
+
+[Install]
+WantedBy=multi-user.target
