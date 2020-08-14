@@ -1,8 +1,8 @@
 # Maintainer: eriXD <the.eriXD {a.t} gmail {d.o.t} com>
 
 pkgname=coppeliasim
-pkgver=4_0_0
-pkgrel=2
+pkgver=4_1_0
+pkgrel=1
 pkgdesc="CoppeliaSim, formerly known as V-REP, is the Swiss army knife among robot simulators."
 arch=("x86_64")
 url="http://www.coppeliarobotics.com/index.html"
@@ -13,9 +13,9 @@ optdepends=('icu60: BlueZero api dependency')
 options=(!strip)
 provides=('vrep')
 install=""
-source=("http://www.coppeliarobotics.com/files/CoppeliaSim_Edu_V${pkgver}_Ubuntu18_04.tar.xz"
+source=("http://www.coppeliarobotics.com/files/CoppeliaSim_Edu_V${pkgver}_Ubuntu20_04.tar.xz"
         "coppeliasim.sh")
-md5sums=('3634eaa7b5e01c258422b11761430dfc'
+md5sums=('e09e9cf3d2b14353c9d8c29d58d05910'
          'c6ac387b3f540d5d6a7bcb0b97c67828')
 prepare()
 {
@@ -32,9 +32,9 @@ package() {
 
     if [ "$CARCH" = x86_64 ]
     then
-        cd "${srcdir}/CoppeliaSim_Edu_V${pkgver}_Ubuntu18_04"
+        cd "${srcdir}/CoppeliaSim_Edu_V${pkgver}_Ubuntu20_04"
     else
-        cd "${srcdir}/CoppeliaSim_Edu_V${pkgver}_Ubuntu18_04"
+        cd "${srcdir}/CoppeliaSim_Edu_V${pkgver}_Ubuntu20_04"
     fi
 
     # Copy the whole thing
