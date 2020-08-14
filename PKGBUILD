@@ -1,25 +1,23 @@
 # Maintainer: MadTux <andreasgwilt@gmail.com>
 
 pkgname=minetest-lott-git
-pkgver=1.0.0.r25.ga0936cc
+pkgver=1.1.0.r79.ge41f502
 pkgrel=1
 pkgdesc="A Lord of the Rings-based game for the Minetest engine."
 arch=('any')
-url="http://minetest.ig42.org/"
+url="https://minetest-lotr.github.io/"
 license=('LGPL2')
 depends=('minetest')
 provides=('minetest-lott')
 conflicts=('minetest-lott')
 
 makedepends=('git')
-source=("$pkgname::git://github.com/minetest-LOTT/Lord-of-the-Test.git")
+source=("$pkgname::git://github.com/minetest-LOTR/Lord-of-the-Test.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${_gitname:-$pkgname}
-  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
-  [ ${PIPESTATUS[0]} -ne 0 ] && \
-printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
