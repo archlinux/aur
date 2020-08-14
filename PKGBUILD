@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-terminal-git
-pkgver=r1769.11e3666
+pkgver=5.5.2.r80.g0bb980e0
 pkgrel=1
 pkgdesc='The Pantheon Terminal Emulator'
 arch=('x86_64')
@@ -13,15 +13,21 @@ depends=('glib2' 'gtk3' 'libnotify' 'pango' 'vte3'
 makedepends=('appstream' 'git' 'granite-git' 'intltool' 'meson' 'vala')
 provides=('pantheon-terminal')
 conflicts=('pantheon-terminal')
-source=('pantheon-terminal::git+https://github.com/elementary/terminal.git')
-sha256sums=('SKIP')
+source=('pantheon-terminal::git+https://github.com/elementary/terminal.git'
+        '0001-libhandy1-support.patch')
+sha256sums=('SKIP'
+            'ff08cdcbc3a16f99e65814abb8d933b43a75161250e0140792cf27f476e1741c')
 
 pkgver() {
   cd pantheon-terminal
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare(){
+  cd pantheon-terminal
+  patch -Np1 -i ../0001-libhandy1-support.patch
+}
 build() {
   arch-meson pantheon-terminal build \
     -Dubuntu-bionic-patched-vte='false'
