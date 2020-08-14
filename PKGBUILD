@@ -1,16 +1,16 @@
 # Maintainer: Parker Reed <parker.l.reed@gmail.com>
 
-pkgname=joycond-git
-pkgver=r31.a7dcddd
+pkgname=joycond-nicman23-git
+pkgver=r80.371b5b4
 pkgrel=1
-pkgdesc='Userspace daemon to combine joy-cons from the hid-joycon kernel driver'
+pkgdesc='Userspace daemon to combine joy-cons from the hid-joycon kernel driver. Patched to not conflict with steam and auto-pair Pro controllers.'
 arch=('any')
 url='https://github.com/DanielOgorchock/joycond'
 license=('GPL3')
 makedepends=('cmake' 'git')
 provides=("${pkgname%}")
-conflicts=("${pkgname%}")
-source=('git+https://github.com/DanielOgorchock/joycond.git')
+conflicts=("${pkgname%}" joycond-git)
+source=('git+https://github.com/nicman23/joycond.git')
 md5sums=('SKIP')
 
 pkgver() {

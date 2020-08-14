@@ -1,16 +1,17 @@
-pkgbase = joycond-git
-	pkgdesc = Userspace daemon to combine joy-cons from the hid-joycon kernel driver
-	pkgver = r31.a7dcddd
+pkgbase = joycond-nicman23-git
+	pkgdesc = Userspace daemon to combine joy-cons from the hid-joycon kernel driver. Patched to not conflict with steam and auto-pair Pro controllers.
+	pkgver = r80.371b5b4
 	pkgrel = 1
 	url = https://github.com/DanielOgorchock/joycond
 	arch = any
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
-	provides = joycond-git
+	provides = joycond-nicman23-git
+	conflicts = joycond-nicman23-git
 	conflicts = joycond-git
-	source = git+https://github.com/DanielOgorchock/joycond.git
+	source = git+https://github.com/nicman23/joycond.git
 	md5sums = SKIP
 
-pkgname = joycond-git
+pkgname = joycond-nicman23-git
 
