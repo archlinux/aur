@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/hen6003/golaunch"
 license=('MIT')
 makedepends=('go' 'git')
+optdepends=('fzf: for choosing the app')
 source=("https://github.com/hen6003/golaunch/archive/$pkgver.tar.gz")
 sha256sums=("248c97776235358ec4c13d3c77d5f5e798ccbf2160d631b11c1469a27b754e72")
 
