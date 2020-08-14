@@ -8,19 +8,19 @@
 
 _pkgbasename=x264
 pkgname=lib32-x264
-pkgver=0.159.r2999.296494a
-pkgrel=3
+pkgver=0.160.r3011.cde9a93
+pkgrel=1
 epoch=3
 pkgdesc='Open Source H264/AVC video encoder (32 bit)'
 arch=('x86_64')
 url='https://www.videolan.org/developers/x264.html'
 license=('GPL')
-depends=('x264' 'lib32-glibc')
-makedepends=('git' 'l-smash' 'nasm' 'lib32-gcc-libs')
+depends=('x264' 'lib32-glibc' 'lib32-l-smash')
+makedepends=('git' 'nasm' 'lib32-gcc-libs')
 provides=('lib32-libx264' 'libx264.so')
 conflicts=('lib32-libx264' 'lib32-libx264-10bit' 'lib32-libx264-all')
 replaces=('lib32-libx264' 'lib32-libx264-10bit' 'lib32-libx264-all')
-_commit='296494a4011f58f32adc54304a2654627558c59a'
+_commit='cde9a93319bea766a92e306d69059c76de970190'
 source=("git+https://git.videolan.org/git/x264.git#commit=${_commit}")
 sha256sums=('SKIP')
 
@@ -51,12 +51,20 @@ build() {
         --enable-pic \
         --enable-lto \
         --disable-avs \
-        --extra-cflags="-flto -ffat-lto-objects"
+        --disable-swscale \
+        --disable-lavf
     make
 }
 
 package() {
     make -C build DESTDIR="${pkgdir}" install-cli install-lib-shared
-    cd "$pkgdir/usr"
-    rm -rf {bin,include}/
+
+    # Keep files in bin since this is not a library only package. 
+    # Use the same naming scheme as proposed in Arch's wiki:  https://wiki.archlinux.org/index.php/32-bit_package_guidelines
+    # which is "--program-suffix="-32" with Autoconf
+    for i in "${pkgdir}/usr/bin/"*; do
+        mv "$i" "$i"-32
+    done
+
+    rm -rf "${pkgdir}"/usr/include
 }
