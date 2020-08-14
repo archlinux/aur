@@ -5,10 +5,18 @@
 # Contributor: Thibault Lorrain (fredszaq) <fredszaq@gmail.com>
 
 pkgbase=tensorflow-rocm
-pkgname=(tensorflow-rocm tensorflow-opt-rocm python-tensorflow-rocm python-tensorflow-opt-rocm)
+
+# Flags for building without/with cpu optimizations
+_build_no_opt=1
+_build_opt=1
+
+pkgname=()
+[ -n "$_build_no_opt" ] && pkgname+=(tensorflow-rocm python-tensorflow-rocm)
+[ -n "$_build_opt" ] && pkgname+=(tensorflow-opt-rocm python-tensorflow-opt-rocm)
+
 pkgver=2.3.0
 _pkgver=2.3.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -22,7 +30,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archi
         numpy1.20.patch::https://github.com/tensorflow/tensorflow/commit/75ea0b31477d6ba9e990e296bbbd8ca4e7eebadf.patch
         build-against-actual-mkl.patch
         fix_hip_hcc_path.patch::https://github.com/tensorflow/tensorflow/commit/6175b78d8386bd6e5b2beebedb9f40e6b887d5a9.patch
-        fix_hipcc_path.patch::https://patch-diff.githubusercontent.com/raw/tensorflow/tensorflow/pull/42292.patch
+        fix_hipcc_path.patch::https://github.com/tensorflow/tensorflow/commit/9d2b338025dc61828ccf8196bb042ab9c586c7b3.patch
         fix_gpu_atomic_redef.patch::https://github.com/tensorflow/tensorflow/commit/c054f40f66fa625f51085a20c48554c61d05c5fd.patch
         fix_ldexp_float.patch::https://github.com/tensorflow/tensorflow/commit/655ce09f679a90ecd561538227c703b42d0fc5fa.patch
         fix_occupancy_block.patch)
@@ -30,10 +38,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archi
 sha512sums=('86aa087ea84dac1ecc1023b23a378100d41cc6778ccd20404a4b955fc67cef11b3dc08abcc5b88020124d221e6fb172b33bd5206e9c9db6bc8fbeed399917eac'
             'df2e0373e2f63b8766f31933f7db57f6a7559b8f03af1db51644fba87731451a7cd3895529a3192e5394612fcb42f245b794b1c9ca3c05881ca03a547c8c9acc'
             'e51e3f3dced121db3a09fbdaefd33555536095584b72a5eb6f302fa6fa68ab56ea45e8a847ec90ff4ba076db312c06f91ff672e08e95263c658526582494ce08'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+            '7acc2f2579158be1d8c824da0f6d44d084a56182f1aab3cd7a78d513931b3a16ce72f2e05b44b1de76f5519af39e80431660de294ff337842e4ee8949cb85b28'
+            '136d91db88658dd0eab1543f8dec1cd20dca86afc6970606a722e7d01a645d64c42564d590fc1ecb04c204ae0b0fa8f78cf9998e9bcf367f4cc795fa59677591'
+            '75972acf0ec53b28aa6c93de77a385acaf675c0d0ae93b6545f67414e9895cbd1074a5d65b211390846b736df271a567b49ec4c992883ad83c060f708bbe0d20'
+            '42fc09bc15412f3b9a82f36485735faed0dcc2f47d72c5bfc451bc09a2aad472db59edb387455fb6594b1606de3a7789917e1fb31280c7044898097ec37db3d5'
             '88c04ed7a766193687d7079102332e3c63d6f0accbda777836abe5e03e9ebb83fd1aeaa9e4adca70310ce18bf3c6c3907f1f8a11c13e67e3ef79497b91bbf126')
 
 get_pyver () {
@@ -131,7 +139,7 @@ build() {
   export TF_NEED_CUDA=0
   export TF_NEED_ROCM=1
   ./configure
-  bazel \
+  [ -n "$_build_no_opt" ] && bazel \
     build --config=mkl -c opt \
       //tensorflow:libtensorflow.so \
       //tensorflow:libtensorflow_cc.so \
@@ -146,7 +154,7 @@ build() {
   export TF_NEED_CUDA=0
   export TF_NEED_ROCM=1
   ./configure
-  bazel \
+  [ -n "$_build_opt" ] && bazel \
     build --config=mkl --config=avx2_linux -c opt \
       //tensorflow:libtensorflow.so \
       //tensorflow:libtensorflow_cc.so \
