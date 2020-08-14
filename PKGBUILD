@@ -1,21 +1,44 @@
-# Maintainer: Fabio Zanini <fabio.zanini _at_ stanford.edu>
-pkgname=python-hdbscan
-pkgver=0.8.19
-pkgrel=1
-pkgdesc='Hierarchical Density-Based Spatial Clustering of Applications with Noise'
-arch=('x86_64')
-url='http://github.com/scikit-learn-contrib/hdbscan'
-license=('BSD')
-groups=()
-depends=('python' 'python-scikit-learn>=0.16')
-makedepends=('python-setuptools' 'cython>=0.17')
-options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/22/8d/1fc4bfd17ae871441fd6440abc3da5fdecf34831aa711e3e52727ab00556/hdbscan-${pkgver}.tar.gz")
-sha256sums=('7bd74c7bd16540d7f437cf6cb61ceb4d23506f4d040c436d7570d104c1297e31')
+# Maintainer: peippo <christoph+aur@christophfink.com>
 
-package() {
-  cd "$srcdir/hdbscan-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+pkgname="python-hdbscan"
+_name=${pkgname#python-}
+pkgdesc="Hierarchical Density-Based Spatial Clustering of Applications with Noise"
+url="http://github.com/scikit-learn-contrib/hdbscan"
+
+pkgver=0.8.26
+pkgrel=1
+
+arch=("x86_64")
+license=("BSD")
+
+makedepends=(
+    "python-setuptools"
+    "cython"
+)
+depends=(
+    "python"
+    "python-numpy"
+    "python-scipy"
+    "python-scikit-learn"
+    "python-joblib"
+    "python-six"
+)
+
+source=(
+    "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+)
+sha256sums=(
+    "81a61cd011e010b20e7cbd8d235053a98892504d32881d379d1902278817927e"
+)
+
+build() {
+    cd "${srcdir}"/${_name}-${pkgver}
+    python setup.py build
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+    cd "${srcdir}/${_name}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
