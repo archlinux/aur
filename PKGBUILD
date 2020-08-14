@@ -4,19 +4,26 @@
 # Contributor: Sebastien Piccand <sebcactus gmail com>
 
 pkgname=('handbrake-fdkaac' 'handbrake-cli-fdkaac')
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
 _commondeps=('libxml2' 'libass' 'libvorbis' 'opus' 'speex' 'libtheora' 'lame'
-             'x264' 'jansson' 'libvpx' 'libva' 'numactl'
-             'bzip2' 'gcc-libs' 'zlib' 'xz')
+             'x264' 'jansson' 'libvpx' 'libva' 'numactl' 'bzip2' 'gcc-libs'
+             'zlib' 'xz')
 _guideps=('gst-plugins-base' 'gtk3' 'librsvg' 'libgudev')
 makedepends=('intltool' 'python' 'nasm' 'wget' 'cmake' 'meson'
              "${_commondeps[@]}" "${_guideps[@]}")
-source=(https://github.com/HandBrake/HandBrake/releases/download/$pkgver/HandBrake-$pkgver-source.tar.bz2)
-sha256sums=('ec6feba97f426d545ec56cf1472eae5795d768bc1aec56c23bb76fc6b2ecf270')
+source=(https://github.com/HandBrake/HandBrake/releases/download/$pkgver/HandBrake-$pkgver-source.tar.bz2
+        handbrake-fix-close-button-in-about-dialog.patch::https://github.com/HandBrake/HandBrake/commit/d3eb4a11ac.patch)
+sha256sums=('218a37d95f48b5e7cf285363d3ab16c314d97627a7a710cab3758902ae877f85'
+            'd4ec5689a3ff6bb1d350ffc63199199ad45d90178a318070faed8a869fe5639b')
+
+prepare() {
+  cd "$srcdir/HandBrake-$pkgver"
+  patch -Np1 -i ../handbrake-fix-close-button-in-about-dialog.patch
+}
 
 build() {
   cd "$srcdir/HandBrake-$pkgver"
