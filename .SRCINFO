@@ -1,13 +1,13 @@
 pkgbase = smart-units
 	pkgdesc = A pretty clever command-line units converter. (written in Sidef)
-	pkgver = 0.11
+	pkgver = 0.12
 	pkgrel = 1
 	url = https://github.com/trizen/smart-units
 	arch = any
 	license = GPL3
 	depends = sidef
-	source = smart-units-0.11.tar.gz::https://github.com/trizen/smart-units/archive/0.11.tar.gz
-	sha256sums = ff4d069800cb9aa2f41a342b756fac5bf5983fd2e658cf5a07c3b8a42526634c
+	source = smart-units-0.12.tar.gz::https://github.com/trizen/smart-units/archive/0.12.tar.gz
+	sha256sums = df3985c24b42b9ebe4f03876f3853175da1674000a18cf10741046766f735606
 
 pkgname = smart-units
 
