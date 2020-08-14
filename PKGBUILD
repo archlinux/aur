@@ -1,4 +1,3 @@
-# Maintainer: Guillaume Hayot <ghayot[at]postblue[dot]info>
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="libayatana-indicator"
