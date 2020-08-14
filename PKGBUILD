@@ -6,6 +6,7 @@ pkgrel=4
 pkgdesc="Firefox extension that automatically deletes cookies."
 license=('MIT')
 arch=('any')
+makedepends=('npm')
 url="https://github.com/Cookie-AutoDelete/Cookie-AutoDelete"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Cookie-AutoDelete/Cookie-AutoDelete/archive/v$pkgver.tar.gz")
 b2sums=('09fb14d9950982ab503c6f8489e6acd7435e1bc1a2f3815adde891021c17ffe243bb56687a8a940d1c08a66a273a965d4e0397c2c9940d10218751c317976494')
