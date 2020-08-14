@@ -6,8 +6,8 @@
 
 pkgname=zsxd
 pkgver=1.12.2
-pkgrel=2
-pkgdesc="Free and opensource, amateur Zelda game with humoristic characters."
+pkgrel=3
+pkgdesc="Zelda: Mystery of Solarus XD: parodic fangame"
 arch=('any')
 url="http://www.zelda-solarus.com/"
 license=('GPL3' 'custom')
