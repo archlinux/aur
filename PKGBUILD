@@ -3,7 +3,7 @@
 pkgname=voadi
 pkgver=0.3
 pkgrel=1
-pkgdesc="2D adventure game about being a vegan on a desert island"
+pkgdesc="Vegan on a Desert Island: 2D adventure game about being a vegan on a desert island"
 arch=('any')
 url="https://voadi.com"
 license=('GPL3' 'custom')
