@@ -5,15 +5,15 @@
 pkgname=firefox-kde-opensuse-bin
 pkgver=79.0
 _pkgrel=1
-pkgrel=${_pkgrel}
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox"
 depends=('mozilla-common' 'libxt' 'mime-types'
          'dbus-glib' 'hicolor-icon-theme'
-	 'libvpx' 'icu'  'libevent' 'nss>=3.28.3' 'nspr>=4.10.6' 'hunspell'
-	 'sqlite' 'libnotify' 'kmozillahelper' 'ffmpeg' 'gtk3'
+         'libvpx' 'icu'  'libevent' 'nss>=3.28.3' 'nspr>=4.10.6' 'hunspell'
+         'sqlite' 'libnotify' 'kmozillahelper' 'ffmpeg' 'gtk3'
          # system av1
          'dav1d' 'aom'
          # system harfbuzz
@@ -31,18 +31,16 @@ provides=("firefox=${pkgver}")
 conflicts=('firefox' 'firefox-kde-opensuse')
 options=('!emptydirs' 'debug' 'strip')
 
-source=(https://repo.itmettke.de/firefox-kde-opensuse-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz{,.sig})
+source=(https://thaodan.de/public/archlinux/home-thaodan/x86_64/firefox-kde-opensuse-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz{,.sig})
 noextract=(firefox-kde-opensuse-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz)
 validpgpkeys=(
-	81E604C18BFD3FA9986E32D91E74416BECD445A4
-	A5A10C4B2F5A417A106DACB8449D5E71988FE637
+        BBFE2FD421597395E4FC8C8DF6C85FEE79D661A4 # Björn "Thaodan" Bidar <theodorstormgrade@gmail.com>
 )
 
-sha256sums=(
-	'7a67f142974f66aadc1afa46f18d6857809adc926b529d9a6d57da4aa97b5aea'
-	'SKIP'
-)
+sha256sums=('4c332eea30a7ad0cc18891156e215f54b677bcbcdb9c4a564631958ff096c17c'
+            'SKIP')
 
 package() {
 	tar -xf $srcdir/firefox-kde-opensuse-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz -C $pkgdir --exclude=".*"
 }
+
