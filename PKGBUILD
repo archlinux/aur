@@ -8,8 +8,8 @@ arch=('x86_64')
 url="https://github.com/hen6003/golaunch"
 license=('MIT')
 makedepends=('go' 'git')
-source=("https://github.com/hen6003/golaunch/archive/master.tar.gz")
-md5sums=("68676131b1053517bb66324d835d6d40")
+source=("https://github.com/hen6003/golaunch/archive/$pkgver.tar.gz")
+sha256sums=("248c97776235358ec4c13d3c77d5f5e798ccbf2160d631b11c1469a27b754e72")
 
 prepare() {
   go get -u \
@@ -28,6 +28,5 @@ build() {
 
 package() {
   cd "$pkgname"-master
-  mkdir -p "$pkgdir"/usr/bin/
   install -Dm755 $pkgname "$pkgdir"/usr/bin/"$pkgname"
 }
