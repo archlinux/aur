@@ -1,0 +1,27 @@
+pkgbase = libhandy1-wip-git
+	pkgdesc = Library full of GTK+ widgets for mobile phones
+	pkgver = 0.85.0.r41.g75a5abd
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/libhandy
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = LGPL2.1
+	checkdepends = xorg-server-xvfb
+	makedepends = git
+	makedepends = glade
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	provides = libhandy1-wip
+	provides = libhandy1
+	provides = libhandy-1.so
+	conflicts = libhandy1-wip
+	conflicts = libhandy1
+	source = git+https://gitlab.gnome.org/GNOME/libhandy.git#branch=wip/haecker-felix/flap-widget
+	sha256sums = SKIP
+
+pkgname = libhandy1-wip-git
+
