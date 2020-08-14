@@ -1,9 +1,4 @@
-# Maintainer: MCMic <come@chilliet.eu>
-# Contributor: MCMic <come@chilliet.eu>
-# Contributor: Sam101 <zoetrem @t gmail dot com>
-# Contributor: BenObiWan <benobiwan @t gmail dot com>
-# Contributor: Huulivoide
-# Contributor: Fernando Carmona Varo <ferkiwi @t gmail dot com>
+# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
 
 pkgname=solarus-run
 pkgver=1.6.4
