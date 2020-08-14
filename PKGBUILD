@@ -4,7 +4,7 @@
 pkgname="odio-edit-bzr"
 _pkgname="odio-edit"
 pkgver="20.5.11.22"
-pkgrel="3"
+pkgrel="1"
 pkgdesc="A lightweight audio wave editor"
 arch=("i686" "x86_64" "pentium4")
 url="https://tari.in/www/software/odio-edit"
