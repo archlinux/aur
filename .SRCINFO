@@ -1,0 +1,23 @@
+pkgbase = filezilla-bin
+	pkgdesc = Free, open source FTP, FTPS and SFTP client
+	pkgver = 3.49.1
+	pkgrel = 1
+	url = https://filezilla-project.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = curl
+	depends = pugixml
+	depends = wxgtk3
+	depends = xdg-utils
+	depends = gmp
+	depends = gnutls
+	depends = nettle
+	depends = sqlite
+	provides = filezilla
+	conflicts = filezilla
+	source = FileZilla_3.49.1_x86_64-linux-gnu.tar.bz2::https://dl3.cdn.filezilla-project.org/client/FileZilla_3.49.1_x86_64-linux-gnu.tar.bz2?h=B4YMUwovpvAXnVxTDxxU6w&x=1597378984
+	sha512sums = 6de3f2f4f08bb6ec83cf0e40ca67504e0d25302700c5f7b5778a0d54d9741cf7a75ffb9085e8e6bdd648d2e6bbcd6f5cf1104b91fe80757ce1d3fe1aa7f48f83
+
+pkgname = filezilla-bin
+
