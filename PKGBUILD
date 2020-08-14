@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.9.r108.gb6f880e
+pkgver=0.10.10.r0.g94a2267
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
@@ -81,5 +81,5 @@ check () {
 package () {
     cd "${pkgname%-git}"
     make install DESTDIR="$pkgdir"
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+    mv "$pkgdir/usr/share/licenses/"{sile,$pkgname}
 }
