@@ -1,0 +1,31 @@
+pkgbase = unity-mail-bzr
+	pkgdesc = Mail notifications and count for Unity/MATE/Xfce/LXDE/etc.
+	pkgver = 20.7.7.156
+	pkgrel = 1
+	url = https://tari.in/www/software/unitymail
+	install = unity-mail.install
+	arch = any
+	license = GPL3
+	makedepends = breezy
+	makedepends = python-setuptools
+	makedepends = python-polib
+	depends = ayatana-indicator-messages
+	depends = hicolor-icon-theme
+	depends = dconf
+	depends = gobject-introspection
+	depends = desktop-file-utils
+	depends = libnotify
+	depends = libcanberra
+	depends = python-babel
+	depends = python-gobject
+	depends = python-psutil
+	depends = python-secretstorage
+	depends = python-urllib3
+	optdepends = libunity
+	provides = unity-mail
+	conflicts = unity-mail
+	source = bzr+lp:unity-mail
+	md5sums = SKIP
+
+pkgname = unity-mail-bzr
+
