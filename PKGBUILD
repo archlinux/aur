@@ -1,7 +1,7 @@
 # Maintainer Henry Smith <henrysmith6003@protonmail.com>
 
 pkgname=golaunch
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc='a simple .desktop launcher written in go.'
 arch=('x86_64')
