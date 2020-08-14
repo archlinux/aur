@@ -1,12 +1,13 @@
 pkgbase = luxcorerender
 	pkgdesc = Physically correct, unbiased rendering engine.
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	epoch = 2
 	url = https://www.luxcorerender.org/
 	arch = x86_64
 	license = Apache
 	makedepends = opencl-headers
+	makedepends = cuda
 	makedepends = boost
 	makedepends = git
 	makedepends = doxygen
@@ -24,14 +25,12 @@ pkgbase = luxcorerender
 	optdepends = opencl-driver: for gpu acceleration
 	optdepends = pyside2: for pyluxcoretools gui
 	provides = luxrays
-	source = https://github.com/LuxCoreRender/LuxCore/archive/luxcorerender_v2.3.tar.gz
+	source = https://github.com/LuxCoreRender/LuxCore/archive/luxcorerender_v2.4.tar.gz
 	source = python.patch
 	source = glfw.patch
-	source = boost016900_serialization.patch
-	sha256sums = d0afda77bd2a89ac050255495d8b0939096d259a92cf99fa5a92a51256a3d8a4
-	sha256sums = a00ee865eee4d9edf685bd4010aea4c3ae96ba5d22c2e17cda313b4d3468a806
+	sha256sums = b80486f2340a130257a50686337be04802c32df8a4e2dfe2ac6ccc1e2b6e7482
+	sha256sums = f639fb7e31056b6c7214e303c90fe06665572ffafc11e545f7c05128a8d85dc4
 	sha256sums = 4e04c3eb653f00d2389aff8e7fda2d244e258cbca3a22e32c13388a3984e4bb1
-	sha256sums = 495d183aef045e53ec8c53aa08cdcc082fb4e69ccb0857693cb0cf2684db0760
 
 pkgname = luxcorerender
 
