@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
-pkgver=1.0.4
+pkgver=1.3.5
 pkgrel=4
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -27,6 +27,7 @@ optdepends=(
     'net-tools: for optional network monitoring'
     'boxtron: for optional Boxtron support'
     'scummvm: for optional ScummVM support via Roberta'
+    'wine: for optional Vortex Mod Manager support'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
