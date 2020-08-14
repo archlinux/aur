@@ -1,15 +1,15 @@
 # Maintainer: MadTux <andreasgwilt@gmail.com>
 pkgname=minetest-lott
-pkgver=1.0.0
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A Lord of the Rings-based game for the Minetest engine."
-url="http://minetest.ig42.org/"
+url="https://minetest-lotr.github.io/"
 arch=('any')
 license=('LGPL2')
 depends=('minetest')
 conflicts=('minetest-lott-git')
-source=("https://github.com/minetest-LOTT/Lord-of-the-Test/archive/v${pkgver}.tar.gz")
-md5sums=('f51902cd6f165cf9cdf7a7e7330eef1a')
+source=("https://github.com/minetest-LOTR/Lord-of-the-Test/archive/v${pkgver}.tar.gz")
+md5sums=('34a30ca84abbf0b8e0ee23eabb69023f')
 
 package() {
   cd "${srcdir}/Lord-of-the-Test-${pkgver}"
