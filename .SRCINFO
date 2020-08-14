@@ -1,6 +1,6 @@
 pkgbase = python2-schema
 	pkgdesc = Python module to validate and convert data structures.
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/keleshev/schema
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python2-schema
 	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-contextlib2
-	source = https://files.pythonhosted.org/packages/source/s/schema/schema-0.7.2.tar.gz
-	sha256sums = b536f2375b49fdf56f36279addae98bd86a8afbd58b3c32ce363c464bed5fc1c
+	source = https://files.pythonhosted.org/packages/source/s/schema/schema-0.7.3.tar.gz
+	sha256sums = 4cf529318cfd1e844ecbe02f41f7e5aa027463e7403666a52746f31f04f47a5e
 
 pkgname = python2-schema
 
