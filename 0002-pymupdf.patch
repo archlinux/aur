@@ -1,0 +1,301 @@
+diff -ru mupdf-1.17.0-source-orig/include/mupdf/fitz/config.h mupdf-1.17.0-source/include/mupdf/fitz/config.h
+--- mupdf-1.17.0-source-orig/include/mupdf/fitz/config.h	2020-05-05 19:29:09.000000000 +0800
++++ mupdf-1.17.0-source/include/mupdf/fitz/config.h	2020-08-09 23:10:55.615700000 +0800
+@@ -2,13 +2,13 @@
+ 
+ #define FZ_CONFIG_H
+ 
+-/**
++/*
+ 	Enable the following for spot (and hence overprint/overprint
+ 	simulation) capable rendering. This forces FZ_PLOTTERS_N on.
+ */
+ /* #define FZ_ENABLE_SPOT_RENDERING 1 */
+ 
+-/**
++/*
+ 	Choose which plotters we need.
+ 	By default we build all the plotters in. To avoid building
+ 	plotters in that aren't needed, define the unwanted
+@@ -19,7 +19,7 @@
+ /* #define FZ_PLOTTERS_CMYK 1 */
+ /* #define FZ_PLOTTERS_N 1 */
+ 
+-/**
++/*
+ 	Choose which document agents to include.
+ 	By default all are enabled. To avoid building unwanted
+ 	ones, define FZ_ENABLE_... to 0.
+@@ -32,12 +32,12 @@
+ /* #define FZ_ENABLE_HTML 1 */
+ /* #define FZ_ENABLE_EPUB 1 */
+ 
+-/**
++/*
+ 	Choose whether to enable ICC color profiles.
+ */
+-/* #define FZ_ENABLE_ICC 1 */
++#define FZ_ENABLE_ICC 1
+ 
+-/**
++/*
+ 	Choose whether to enable JPEG2000 decoding.
+ 	By default, it is enabled, but due to frequent security
+ 	issues with the third party libraries we support disabling
+@@ -45,14 +45,13 @@
+ */
+ /* #define FZ_ENABLE_JPX 1 */
+ 
+-/**
++/*
+ 	Choose whether to enable JavaScript.
+-	By default JavaScript is enabled both for mutool and PDF
+-	interactivity.
++	By default JavaScript is enabled both for mutool and PDF interactivity.
+ */
+ /* #define FZ_ENABLE_JS 1 */
+ 
+-/**
++/*
+ 	Choose which fonts to include.
+ 	By default we include the base 14 PDF fonts,
+ 	DroidSansFallback from Android for CJK, and
+@@ -61,35 +60,32 @@
+ 	unwanted fonts.
+ */
+ /* To avoid all noto fonts except CJK, enable: */
+-/* #define TOFU */
++#define TOFU // <=== PyMuPDF: not the complete NOTO!
+ 
+-/* To skip the CJK font, enable: (this implicitly enables TOFU_CJK_EXT
+- * and TOFU_CJK_LANG) */
++/* To skip the CJK font, enable: (this implicitly enables TOFU_CJK_EXT and TOFU_CJK_LANG) */
+ /* #define TOFU_CJK */
+ 
+-/* To skip CJK Extension A, enable: (this implicitly enables
+- * TOFU_CJK_LANG) */
+-/* #define TOFU_CJK_EXT */
++/* To skip CJK Extension A, enable: (this implicitly enables TOFU_CJK_LANG) */
++#define TOFU_CJK_EXT // <=== PyMuPDF: causes 1.5 MB extra size
+ 
+ /* To skip CJK language specific fonts, enable: */
+-/* #define TOFU_CJK_LANG */
++#define TOFU_CJK_LANG // <=== PyMuPDF
+ 
+ /* To skip the Emoji font, enable: */
+-/* #define TOFU_EMOJI */
++#define TOFU_EMOJI // <=== PyMuPDF
+ 
+ /* To skip the ancient/historic scripts, enable: */
+-/* #define TOFU_HISTORIC */
++#define TOFU_HISTORIC // <=== PyMuPDF
+ 
+ /* To skip the symbol font, enable: */
+-/* #define TOFU_SYMBOL */
++#define TOFU_SYMBOL // <=== PyMuPDF
+ 
+ /* To skip the SIL fonts, enable: */
+-/* #define TOFU_SIL */
++// #define TOFU_SIL // <=== PyMuPDF: ok to have it, only small fonts
+ 
+ /* To skip the Base14 fonts, enable: */
+ /* #define TOFU_BASE14 */
+-/* (You probably really don't want to do that except for measurement
+- * purposes!) */
++/* (You probably really don't want to do that except for measurement purposes!) */
+ 
+ /* ---------- DO NOT EDIT ANYTHING UNDER THIS LINE ---------- */
+ 
+diff -ru mupdf-1.17.0-source-orig/source/fitz/encode-fax.c mupdf-1.17.0-source/source/fitz/encode-fax.c
+--- mupdf-1.17.0-source-orig/source/fitz/encode-fax.c	2020-05-05 19:29:09.000000000 +0800
++++ mupdf-1.17.0-source/source/fitz/encode-fax.c	2020-08-09 23:10:55.615700000 +0800
+@@ -120,7 +120,7 @@
+ {
+ 	int a, b;
+ 
+-	if (!line)
++	if (!line || x >= w)
+ 		return w;
+ 
+ 	if (x == -1)
+@@ -147,7 +147,7 @@
+ static inline int
+ find_changing_color(const unsigned char *line, int x, int w, int color)
+ {
+-	if (!line)
++	if (!line || x >= w)
+ 		return w;
+ 	x = find_changing(line, x, w);
+ 	if (x < w && getbit(line, x) != color)
+diff -ru mupdf-1.17.0-source-orig/source/pdf/pdf-font-add.c mupdf-1.17.0-source/source/pdf/pdf-font-add.c
+--- mupdf-1.17.0-source-orig/source/pdf/pdf-font-add.c	2020-05-05 19:29:09.000000000 +0800
++++ mupdf-1.17.0-source/source/pdf/pdf-font-add.c	2020-08-09 23:10:55.615700000 +0800
+@@ -21,10 +21,14 @@
+ #else
+ 	const char *kind = FT_Get_X11_Font_Format(face);
+ #endif
+-	if (!strcmp(kind, "TrueType")) return 2;
+-	if (!strcmp(kind, "Type 1")) return 1;
+-	if (!strcmp(kind, "CFF")) return 3;
+-	if (!strcmp(kind, "CID Type 1")) return 1;
++	if (!strcmp(kind, "TrueType"))
++		return 2;
++	if (!strcmp(kind, "Type 1"))
++		return 1;
++	if (!strcmp(kind, "CFF"))
++		return 3;
++	if (!strcmp(kind, "CID Type 1"))
++		return 1;
+ 	return 0;
+ }
+ 
+@@ -54,7 +58,7 @@
+ 	return fz_lookup_base14_font(ctx, pdf_clean_font_name(font->name), &size) == data;
+ }
+ 
+-static pdf_obj*
++static pdf_obj *
+ pdf_add_font_file(fz_context *ctx, pdf_document *doc, fz_font *font)
+ {
+ 	fz_buffer *buf = font->buffer;
+@@ -136,9 +140,15 @@
+ 			switch (ft_font_file_kind(face))
+ 			{
+ 			default:
+-			case 1: pdf_dict_put_drop(ctx, fdobj, PDF_NAME(FontFile), fileref); break;
+-			case 2: pdf_dict_put_drop(ctx, fdobj, PDF_NAME(FontFile2), fileref); break;
+-			case 3: pdf_dict_put_drop(ctx, fdobj, PDF_NAME(FontFile3), fileref); break;
++			case 1:
++				pdf_dict_put_drop(ctx, fdobj, PDF_NAME(FontFile), fileref);
++				break;
++			case 2:
++				pdf_dict_put_drop(ctx, fdobj, PDF_NAME(FontFile2), fileref);
++				break;
++			case 3:
++				pdf_dict_put_drop(ctx, fdobj, PDF_NAME(FontFile3), fileref);
++				break;
+ 			}
+ 		}
+ 
+@@ -151,7 +161,7 @@
+ }
+ 
+ static void
+-pdf_add_simple_font_widths(fz_context *ctx, pdf_document *doc, pdf_obj *fobj, fz_font *font, const char * const encoding[])
++pdf_add_simple_font_widths(fz_context *ctx, pdf_document *doc, pdf_obj *fobj, fz_font *font, const char *const encoding[])
+ {
+ 	int width_table[256];
+ 	pdf_obj *widths;
+@@ -196,7 +206,12 @@
+ }
+ 
+ /* Different states of starting, same width as last, or consecutive glyph */
+-enum { FW_START, FW_SAME, FW_RUN };
++enum
++{
++	FW_START,
++	FW_SAME,
++	FW_RUN
++};
+ 
+ /* ToDo: Ignore the default sized characters */
+ static void
+@@ -329,7 +344,7 @@
+ }
+ 
+ /* Descendant font construction used for CID font creation from ttf or Adobe type1 */
+-static pdf_obj*
++static pdf_obj *
+ pdf_add_descendant_cid_font(fz_context *ctx, pdf_document *doc, fz_font *font)
+ {
+ 	FT_Face face = font->ft_face;
+@@ -372,9 +387,9 @@
+ 	int n;
+ 	for (n = 1; k + n < size; ++n)
+ 	{
+-		if ((k & 0xFF00) != ((k+n) & 0xFF00)) /* high byte changes */
++		if ((k & 0xFF00) != ((k + n) & 0xFF00)) /* high byte changes */
+ 			break;
+-		if (table[k] + n != table[k+n])
++		if (table[k] + n != table[k + n])
+ 			break;
+ 	}
+ 	return n;
+@@ -474,7 +489,7 @@
+ 							fz_append_printf(ctx, buf, "%d beginbfrange\n", num_seq);
+ 						count = 0;
+ 					}
+-					fz_append_printf(ctx, buf, "<%04x> <%04x> <%04x>\n", k, k+n-1, table[k]);
++					fz_append_printf(ctx, buf, "<%04x> <%04x> <%04x>\n", k, k + n - 1, table[k]);
+ 					++count;
+ 				}
+ 			}
+@@ -582,7 +597,7 @@
+ 		const char *glyph = glyph_names[i];
+ 		if (glyph)
+ 		{
+-			if (last != i-1)
++			if (last != i - 1)
+ 				pdf_array_push_int(ctx, diff, i);
+ 			last = i;
+ 			pdf_array_push_name(ctx, diff, glyph);
+@@ -624,9 +639,15 @@
+ 	switch (encoding)
+ 	{
+ 	default:
+-	case PDF_SIMPLE_ENCODING_LATIN: enc = fz_glyph_name_from_windows_1252; break;
+-	case PDF_SIMPLE_ENCODING_GREEK: enc = fz_glyph_name_from_iso8859_7; break;
+-	case PDF_SIMPLE_ENCODING_CYRILLIC: enc = fz_glyph_name_from_koi8u; break;
++	case PDF_SIMPLE_ENCODING_LATIN:
++		enc = fz_glyph_name_from_windows_1252;
++		break;
++	case PDF_SIMPLE_ENCODING_GREEK:
++		enc = fz_glyph_name_from_iso8859_7;
++		break;
++	case PDF_SIMPLE_ENCODING_CYRILLIC:
++		enc = fz_glyph_name_from_koi8u;
++		break;
+ 	}
+ 
+ 	fobj = pdf_add_new_dict(ctx, doc, 10);
+@@ -667,8 +688,7 @@
+ 	return fref;
+ }
+ 
+-int
+-pdf_font_writing_supported(fz_font *font)
++int pdf_font_writing_supported(fz_font *font)
+ {
+ 	if (font->ft_face == NULL || font->buffer == NULL || font->buffer->len < 4)
+ 		return 0;
+@@ -686,7 +706,7 @@
+ {
+ 	pdf_obj *fref, *font, *subfont, *fontdesc;
+ 	pdf_obj *dfonts;
+-	fz_rect bbox = { -200, -200, 1200, 1200 };
++	fz_rect bbox = {-200, -200, 1200, 1200};
+ 	unsigned char digest[16];
+ 	int flags;
+ 
+@@ -769,3 +789,21 @@
+ 
+ 	return fref;
+ }
++
++void jm_valid_chars(fz_context *ctx, fz_font *font, void *arr)
++{
++	FT_Face face = font->ft_face;
++	FT_ULong ucs;
++	FT_UInt gid;
++	long *table = (long *)arr;
++	fz_lock(ctx, FZ_LOCK_FREETYPE);
++	ucs = FT_Get_First_Char(face, &gid);
++	while (gid > 0)
++	{
++		if (gid < (FT_ULong)face->num_glyphs && face->num_glyphs > 0)
++			table[gid] = (long)ucs;
++		ucs = FT_Get_Next_Char(face, ucs, &gid);
++	}
++	fz_unlock(ctx, FZ_LOCK_FREETYPE);
++	return;
++}

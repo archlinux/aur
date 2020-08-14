@@ -1,0 +1,24 @@
+From: Tor Andersson <tor.andersson@artifex.com>
+Date: Thu, 4 Jun 2020 14:38:01 +0000 (+0200)
+Subject: Set noexecstack on linker-generated binary data files.
+X-Git-Url: https://git.ghostscript.com/?p=mupdf.git;a=commitdiff_plain;h=e52e0c2c0297d70d0e4fc293ccd047becb18f322;hp=a86b1fa0119edef1683dc06f035bd329b54613a5
+
+Set noexecstack on linker-generated binary data files.
+
+This will prevent the linker from flagging the mupdf library and
+executables as needing an executable stack.
+---
+
+diff --git a/Makefile b/Makefile
+index f812ac074..417663dd8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -64,7 +64,7 @@ endif
+ LINK_CMD = $(QUIET_LINK) $(MKTGTDIR) ; $(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ TAGS_CMD = $(QUIET_TAGS) ctags -R --c-kinds=+p
+ WINDRES_CMD = $(QUIET_WINDRES) $(MKTGTDIR) ; $(WINDRES) $< $@
+-OBJCOPY_CMD = $(QUIET_OBJCOPY) $(MKTGTDIR) ; $(LD) -r -b binary -o $@ $<
++OBJCOPY_CMD = $(QUIET_OBJCOPY) $(MKTGTDIR) ; $(LD) -r -b binary -z noexecstack -o $@ $<
+ 
+ # --- Rules ---
+ 
