@@ -1,6 +1,5 @@
 post_install() {
 	systemctl daemon-reload
-	systemctl enable phtunnel.service
 	systemctl start phtunnel.service
 
 	snbuf=$(wget 127.0.0.1:16062/ora_service/getsn -T 3 -q -O - 2>/dev/null)
@@ -22,7 +21,6 @@ post_install() {
 
 post_upgrade() {
 	systemctl daemon-reload
-	systemctl enable phtunnel.service
 	systemctl start phtunnel.service
 	
 	snbuf=$(wget 127.0.0.1:16062/ora_service/getsn -T 3 -q -O - 2>/dev/null)
