@@ -4,7 +4,7 @@
 pkgname=java-openjdk-ea-bin
 
 _majorver=15
-_buildver=35
+_buildver=36
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 
@@ -34,14 +34,14 @@ provides=(
   "java-runtime-headless-openjdk=${_majorver}"
 )
 #source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-${_JARCH}_bin.tar.gz")
-source=("https://download.java.net/java/GA/jdk15/779bf45e88a44cbd9ea6621d33e33db1/35/GPL/openjdk-15_linux-x64_bin.tar.gz")
+source=("https://download.java.net/java/GA/jdk15/779bf45e88a44cbd9ea6621d33e33db1/36/GPL/openjdk-15_linux-x64_bin.tar.gz")
 
 if [[ $_JARCH == "x64" ]]; then
-sha256sums=('38ee0f312e507b1a32b09e558552091cf249933bfc6918ae3cfa52406247885c')
-source=("https://download.java.net/java/GA/jdk15/779bf45e88a44cbd9ea6621d33e33db1/35/GPL/openjdk-15_linux-x64_bin.tar.gz")
+sha256sums=('bb67cadee687d7b486583d03c9850342afea4593be4f436044d785fba9508fb7')
+source=("https://download.java.net/java/GA/jdk15/779bf45e88a44cbd9ea6621d33e33db1/36/GPL/openjdk-15_linux-x64_bin.tar.gz")
 else
-sha256sums=('e5b7110c2fb889096b4fa5942b51c6b12dd892ca4325861d58131cad737a743b')
-source=("https://download.java.net/java/GA/jdk15/779bf45e88a44cbd9ea6621d33e33db1/35/GPL/openjdk-15_linux-aarch64_bin.tar.gz")
+sha256sums=('01e7e07dd8a67a65b32fdcaff75ba3f21cd9cfc749287e7c9b1c6037f96a3537')
+source=("https://download.java.net/java/GA/jdk15/779bf45e88a44cbd9ea6621d33e33db1/36/GPL/openjdk-15_linux-aarch64_bin.tar.gz")
 fi
 
 
