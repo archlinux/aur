@@ -1,2 +1,2 @@
-#!/usr/bin/bash
-python /usr/share/sherlock/sherlock.py "$@"
+#!/bin/sh
+cd /usr/share/sherlock && exec python sherlock.py "$@"
