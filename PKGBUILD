@@ -1,7 +1,7 @@
 # Maintainer: Katie Wolfe <wolfe@katie.host
 pkgname=otb-tewi-git
 pkgver=r313.a975d38
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiny bitmap font'
 arch=('any')
 url='https://github.com/lucy/tewi-font'
@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/tewi-font"
+	make var
 	for f in *.bdf; do
 		fonttosfnt -v -c -b -g 2 -m 1 -o "${f%.bdf}.otb" "${f}"
 	done

@@ -1,7 +1,7 @@
 pkgbase = otb-tewi-git
 	pkgdesc = Tiny bitmap font
 	pkgver = r313.a975d38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lucy/tewi-font
 	arch = any
 	license = MIT
