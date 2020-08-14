@@ -2,7 +2,7 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2020.07.2
+pkgver=2020.07.2.1
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
@@ -47,8 +47,7 @@ sha256sums=('SKIP'
             '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             '6ff820e43a48ce9450e59e02877ff574a1921d0b286737d55949ad40865add08'
-            '7b408abf1048c7da504ba1e8fe1da51199f6c011bbe80af1595d9fd810445612'
-            )
+            '7b408abf1048c7da504ba1e8fe1da51199f6c011bbe80af1595d9fd810445612')
 
 prepare() {
   # Fix openSUSE's patches for Waterfox

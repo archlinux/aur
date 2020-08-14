@@ -1,6 +1,6 @@
 pkgbase = waterfox-classic-kpe
 	pkgdesc = Customizable privacy conscious web browser with better integration with KDE
-	pkgver = 2020.07.2
+	pkgver = 2020.07.2.1
 	pkgrel = 0
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -42,7 +42,7 @@ pkgbase = waterfox-classic-kpe
 	optdepends = jack: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = waterfox-classic=2020.07.2
+	provides = waterfox-classic=2020.07.2.1
 	conflicts = waterfox-classic
 	conflicts = waterfox-kde
 	replaces = waterfox-kde
