@@ -1,0 +1,25 @@
+pkgbase = caja-rename-bzr
+	pkgdesc = Batch renaming extension for Caja
+	pkgver = 20.1.25.42
+	pkgrel = 1
+	url = https://tari.in/www/software/caja-rename
+	install = caja-rename.install
+	arch = any
+	license = GPL3
+	makedepends = breezy
+	makedepends = python-setuptools
+	makedepends = python-polib
+	depends = caja
+	depends = python-caja
+	depends = python
+	depends = python-gobject
+	depends = gobject-introspection
+	depends = gtk3
+	provides = caja-rename
+	conflicts = caja-rename
+	options = !emptydirs
+	source = bzr+lp:cajarename
+	md5sums = SKIP
+
+pkgname = caja-rename-bzr
+
