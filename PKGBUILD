@@ -28,14 +28,14 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.11.104
+pkgver=1.12.112
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
 license=('custom')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'libva' 'libpulse' 'pciutils')
-makedepends=('git' 'npm' 'python2' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'python2-setuptools' 'lld' 'libva' 'libpipewire02' 'python2-xcb-proto')
+depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'libva')
+makedepends=('git' 'npm' 'python2' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang' 'python2-setuptools')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support'
             'libpipewire02: WebRTC desktop sharing under Wayland'
@@ -104,6 +104,12 @@ _unwanted_bundled_libs=(
 
 depends+=(${_system_libs[@]})
 
+# Add depends if user wants a release with custom cflags and system libs
+if [ "$COMPONENT" = "4" ]; then
+    depends+=('libpulse' 'pciutils')
+    makedepends+=('lld' 'libva' 'libpipewire02' 'python2-xcb-proto')
+fi
+
 prepare() {
     cd "${_reponame}"
 
@@ -153,9 +159,8 @@ prepare() {
     # Hacky patching
     sed -e 's/enable_distro_version_check = true/enable_distro_version_check = false/g' -i chrome/installer/linux/BUILD.gn
 
+    # Allow building against system libraries in official builds
     if [ "$COMPONENT" = "4" ]; then
-        # Allow building against system libraries in official builds
-
         sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
             tools/generate_shim_headers/generate_shim_headers.py
 
