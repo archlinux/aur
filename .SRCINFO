@@ -1,7 +1,7 @@
 pkgbase = python-vermin
 	pkgdesc = Concurrently detect the minimum Python versions needed to run code
-	pkgver = 0.10.1
-	pkgrel = 2
+	pkgver = 0.10.2
+	pkgrel = 1
 	url = https://github.com/netromdk/vermin
 	arch = any
 	license = MIT
@@ -9,9 +9,9 @@ pkgbase = python-vermin
 	depends = python>=2.7
 	conflicts = vermin
 	replaces = vermin
-	noextract = vermin-0.10.1.tar.gz
-	source = vermin-0.10.1.tar.gz::https://github.com/netromdk/vermin/archive/v0.10.1.tar.gz
-	md5sums = c1a2ebde82ca5e516cda6841a29c0172
+	noextract = vermin-0.10.2.tar.gz
+	source = vermin-0.10.2.tar.gz::https://github.com/netromdk/vermin/archive/v0.10.2.tar.gz
+	md5sums = 278b8c4bc3a8a0dc55236c9c17abf0ba
 
 pkgname = python-vermin
 
