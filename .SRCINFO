@@ -1,10 +1,11 @@
 pkgbase = ruby-gollum-rugged_adapter
 	pkgdesc = Adapter for Gollum to use Rugged (libgit2) at the backend.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gollum/rugged_adapter
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-rugged<1
 	depends = ruby-mime-types

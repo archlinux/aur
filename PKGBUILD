@@ -4,7 +4,7 @@
 _gemname=gollum-rugged_adapter
 pkgname=ruby-$_gemname
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Adapter for Gollum to use Rugged (libgit2) at the backend.'
 arch=(any)
 url='https://github.com/gollum/rugged_adapter'
@@ -12,10 +12,11 @@ license=(MIT)
 depends=(ruby
          'ruby-rugged<1'
          ruby-mime-types)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
 sha1sums=('5a8a6b5d9f69d81c503f179b7295573989dc0cb0')
+noextract=($_gemname-$pkgver.gem)
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
