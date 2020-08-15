@@ -73,7 +73,7 @@ build() {
 
 	cd "${srcdir}/${_pkgname}"
 
-	sed -i 's|conky\:\:run_all_callbacks\(\)\;||' src/conky.cc
+	sed -i 's|conky::run_all_callbacks();||' src/conky.cc
 
 ################################################################
 
