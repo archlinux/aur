@@ -6,12 +6,12 @@ pkgname=ttf-averia-serif
 pkgver=20111103
 _font_slug="averia-serif"
 _dlhash="51e3ae7cf61b932c613416e6e0a05e40"
-pkgrel=1
+pkgrel=2
 pkgdesc='The Average Font, serif version.'
 url="http://iotic.com/averia/"
 license=('GPL' 'custom:OFL')
 arch=('any')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=()
 source=(${pkgname}-${pkgver}::"http://openfontlibrary.org/assets/downloads/${_font_slug}/${_dlhash}/${_font_slug}.zip")
 install="${pkgname}.install"
 
