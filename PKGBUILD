@@ -9,6 +9,7 @@ arch=('any')
 url='https://www.eff.org/https-everywhere'
 depends=('chromium')
 changelog="$pkgname.changelog"
+replaces=('https-everywhere-chrome')
 source=("$pkgname-$pkgver.crx::https://www.eff.org/files/https-everywhere-chrome-$pkgver.crx"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/EFForg/https-everywhere/ba42442493a616d3cf6cf699784fd77aec01f51f/LICENSE.txt")
 noextract=("$pkgname-$pkgver.crx"

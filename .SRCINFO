@@ -7,6 +7,7 @@ pkgbase = chromium-extension-https-everywhere
 	arch = any
 	license = GPL2
 	depends = chromium
+	replaces = https-everywhere-chrome
 	noextract = chromium-extension-https-everywhere-2020.5.20.crx
 	noextract = LICENSE-2020.5.20
 	source = chromium-extension-https-everywhere-2020.5.20.crx::https://www.eff.org/files/https-everywhere-chrome-2020.5.20.crx
