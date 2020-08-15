@@ -12,26 +12,18 @@ pkgdesc="永中办公 2019 | Yozo Office 2019 - An M$ Office Compatible Office S
 url="https://www.yozosoft.com/product-officelinux.html"
 options=('!strip')
 license=("custom")
-arch=('x86_64') 
-replaces=('yozo-office-2019')
-conflicts=('yozo-office-2019')
-source_x86_64=("http://www.yozosoft.com/portal-download/fileManager/PRODUCT/yozo-office_${pkgver}_amd64.deb")
-md5sums_x86_64=('cf22531071e607019c02a1a046f70e5c')
+arch=('x86_64')
+source_x86_64=("https://dl.yozosoft.com/portal-download/fileManager/PRODUCT/yozo-office_${pkgver}_amd64.deb")
+sha256sums_x86_64=('0896ca9d4b7163e769ba0be0da0862ed4322dabb18909a3309822832d0047d8f')
 
-package_yozo-office() {
-    depends=('java-runtime=8' 'libxt' 'libxmu' 'gtk2' 'libglvnd' 'vlc')
-    optdepends=('ttf-ms-fonts: Arial, Times, Courier etc.'
-    		    'ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.'
-                'yozo-office-fonts: UI Fonts')
-    install=${pkgname}.install
+prepare() {
     cd "${srcdir}"
-    tar -xJf data.tar.xz -C "${pkgdir}"
-    chmod 755 $pkgdir/usr/lib
-    chmod 755 $pkgdir/usr/lib64
-    chmod 755 $pkgdir/usr
-    chmod 755 $pkgdir/usr/bin
-    #Delete uesless files
-    cd "${pkgdir}"
+    tar -xJf data.tar.xz # -C "${pkgdir}"
+    # Premission fix
+    find "${srcdir}" -type d -exec chmod 755 {} +
+    
+    # Remove unnecessary files
+    cd "${srcdir}"
     rm -rf etc/xdg
     rm -rf etc/skel
     rm -rf opt/Yozosoft/Yozo_Office/Upgrade
@@ -40,12 +32,22 @@ package_yozo-office() {
     rm -rf usr/share/mime
     rm -rf usr/share/applications/yozo-uninstall.desktop
     rm -rf opt/Yozosoft/Yozo_Office/Templates
-    #Split fonts files
-    cd "${srcdir}"
-    mkdir -p usr/share/fonts/truetype
-    mv "${pkgdir}"/usr/share/fonts/truetype/yozo usr/share/fonts/truetype
+}
+package_yozo-office() {
+    depends=('java-runtime=8' 'libxt' 'libxmu' 'gtk2' 'libglvnd')
+    optdepends=('ttf-ms-fonts: Arial, Times, Courier etc.'
+    		    'ttf-ms-win10-zh_cn: SimSun, SimHei, MSYH, Tahoma etc.'
+                'yozo-office-fonts: UI Fonts')
+    install=${pkgname}.install
     
-    #Redirect Java bin
+    # Move to pkgdir
+    cd "${srcdir}"
+    cp -r usr opt etc "${pkgdir}"
+    
+    # Separate font files
+    rm -rf "${pkgdir}"/usr/share/fonts
+    
+    # Redirect Java binary
     rm -rf "${pkgdir}"/opt/Yozosoft/Yozo_Office/Jre/bin
     ln -sf /usr/lib/jvm/java-8-openjdk/jre/bin "${pkgdir}"/opt/Yozosoft/Yozo_Office/Jre/bin
     cd $pkgdir/opt/Yozosoft/Yozo_Office/Jre/lib
@@ -54,11 +56,11 @@ package_yozo-office() {
             rm -rf $j
         fi
     done
-    #Redirect VLC lib
+    # Redirect VLC lib
     #mkdir -p "${pkgdir}"/usr/lib/Yozo_Office/
     #mv "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib/* "${pkgdir}"/usr/lib/Yozo_Office
-    rm -rf "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib/media/vlc
-    ln -sf /usr/lib/vlc "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib/media/vlc
+    #rm -rf "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib/media/vlc
+    #ln -sf /usr/lib/vlc "${pkgdir}"/opt/Yozosoft/Yozo_Office/Lib/media/vlc
     
     install -Dm644 "${pkgdir}"/opt/Yozosoft/Yozo_Office/thirdpartylicensereadme.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
     
