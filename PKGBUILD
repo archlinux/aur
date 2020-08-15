@@ -4,19 +4,19 @@ pkgname=ttf-archivo-narrow
 pkgver=3.000
 pkgrel=1
 _commit="0a98e4dd59de05b0caa3273ccb47cbd5ec2274cc"
-pkgdesc="Archivo Narrow was designed to be used simultaneously in print and digital platforms"
+pkgdesc="A grotesque sans serif typeface family from Omnibus-Type"
 arch=('any')
 url="https://github.com/Omnibus-Type/ArchivoNarrow"
 license=('custom:OFL')
-source=("https://github.com/Omnibus-Type/ArchivoNarrow/raw/$_commit/fonts/ttf/ArchivoNarrow-Bold.ttf"
-        "https://github.com/Omnibus-Type/ArchivoNarrow/raw/$_commit/fonts/ttf/ArchivoNarrow-BoldItalic.ttf"
-        "https://github.com/Omnibus-Type/ArchivoNarrow/raw/$_commit/fonts/ttf/ArchivoNarrow-Italic.ttf"
-        "https://github.com/Omnibus-Type/ArchivoNarrow/raw/$_commit/fonts/ttf/ArchivoNarrow-Medium.ttf"
-        "https://github.com/Omnibus-Type/ArchivoNarrow/raw/$_commit/fonts/ttf/ArchivoNarrow-MediumItalic.ttf"
-        "https://github.com/Omnibus-Type/ArchivoNarrow/raw/$_commit/fonts/ttf/ArchivoNarrow-Regular.ttf"
-        "https://github.com/Omnibus-Type/ArchivoNarrow/raw/$_commit/fonts/ttf/ArchivoNarrow-SemiBold.ttf"
-        "https://github.com/Omnibus-Type/ArchivoNarrow/raw/$_commit/fonts/ttf/ArchivoNarrow-SemiBoldItalic.ttf"
-        "https://github.com/Omnibus-Type/ArchivoNarrow/raw/$_commit/OFL.txt")
+source=("$url/raw/$_commit/fonts/ttf/ArchivoNarrow-Bold.ttf"
+        "$url/raw/$_commit/fonts/ttf/ArchivoNarrow-BoldItalic.ttf"
+        "$url/raw/$_commit/fonts/ttf/ArchivoNarrow-Italic.ttf"
+        "$url/raw/$_commit/fonts/ttf/ArchivoNarrow-Medium.ttf"
+        "$url/raw/$_commit/fonts/ttf/ArchivoNarrow-MediumItalic.ttf"
+        "$url/raw/$_commit/fonts/ttf/ArchivoNarrow-Regular.ttf"
+        "$url/raw/$_commit/fonts/ttf/ArchivoNarrow-SemiBold.ttf"
+        "$url/raw/$_commit/fonts/ttf/ArchivoNarrow-SemiBoldItalic.ttf"
+        "$url/raw/$_commit/OFL.txt")
 sha256sums=('2653e11aa4d327ba05e7681647203d08b3eab053133a49b5cd9a6b7ec7d8528a'
             '3a6177e7f845cf9627cfe52577a35243fdc5f95a17d15c0b4cfbee0d119f2100'
             'bd13f7e5639dc1d15179062d48518b96022c4548858e188693dbfc5974e4f967'
