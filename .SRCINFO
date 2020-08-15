@@ -1,0 +1,13 @@
+pkgbase = todo-git
+	pkgdesc = A simple utility for managing a to-do list
+	pkgver = r38.5ee1311
+	pkgrel = 1
+	url = https://github.com/maxrbriggs/todo
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = git+https://github.com/maxrbriggs/todo.git
+	md5sums = SKIP
+
+pkgname = todo-git
+
