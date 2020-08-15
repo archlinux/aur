@@ -2,7 +2,7 @@
 
 pkgname=cemu
 pkgver=1.20.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Wii U emulator (via wine). Includes the Cemuhook plugin"
 arch=(x86_64)
 url="http://cemu.info/"
@@ -15,7 +15,7 @@ source=(
   cemu.desktop
   http://cemu.info/releases/cemu_${pkgver}.zip
   https://files.sshnuke.net/cemuhook_${_cemuhookver}.zip
-  https://web.archive.org/web/20180907210517/https://files.sshnuke.net/sharedFonts.7z
+  https://web.archive.org/web/20180907210517if_/https://files.sshnuke.net/sharedFonts.7z
 )
 # The link for the sharedFonts comes from here: https://github.com/decaf-emu/decaf-emu/issues/29#issuecomment-315511347
 noextract=("cemuhook_${_cemuhookver}.zip")
