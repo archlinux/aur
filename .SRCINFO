@@ -1,6 +1,6 @@
 pkgbase = xde-applets-git
 	pkgdesc = X Desktop Environment System Tray Icons and Dock Apps
-	pkgver = 0.9.r1.g2e560f5
+	pkgver = 0.10.r1.gf09165b
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-applets
 	arch = i686
