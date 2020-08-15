@@ -6,7 +6,7 @@
 pkgbase=nvidia-390xx
 pkgname=(nvidia-390xx nvidia-390xx-dkms)
 pkgver=390.138
-pkgrel=3
+pkgrel=5
 pkgdesc="NVIDIA drivers for linux, 390xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -16,9 +16,11 @@ license=('custom')
 options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
-        'kernel-4.16.patch')
+        'kernel-4.16.patch'
+        'kernel-5.8.patch')
 sha256sums=('a34a19b618be0eb06c4699247489833a8f22c59423f246248614e0a59b1508da'
-            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385')
+            '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385'
+            'e3df2945e29a9834d2c1c21eb6871b1672f25bd809b413cd5e0b45d0d2c815a5')
 
 prepare() {
     sh "${_pkg}.run" --extract-only
@@ -27,6 +29,9 @@ prepare() {
     # Restore phys_to_dma support (still needed for 396.18) (and still needed for 390.138)
     # https://bugs.archlinux.org/task/58074
     patch -Np1 -i ../kernel-4.16.patch
+
+    # 5.8 Patch
+    patch -Np1 -i ../kernel-5.8.patch
 
 
     ## OLD PATCHES [390.132] ##
