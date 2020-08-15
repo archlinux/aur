@@ -55,9 +55,6 @@ case ${_myopts} in
 		git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 	}
 
-	cd "${srcdir}/${_pkgname}"
-	sed -i 's|conky\:\:run_all_callbacks\(\)\;||' src/conky.cc
-
 	md5sums=('SKIP')
     ;;
 1)  ### _myopts=1 for release version #################################
@@ -75,6 +72,8 @@ esac
 build() {
 
 	cd "${srcdir}/${_pkgname}"
+
+	sed -i 's|conky\:\:run_all_callbacks\(\)\;||' src/conky.cc
 
 ################################################################
 
