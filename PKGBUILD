@@ -3,12 +3,12 @@
 pkgname=ttf-averia
 pkgver=20120214
 _dlhash="dc61396d0f8e3b0130933b1227022c20"
-pkgrel=3
+pkgrel=4
 pkgdesc='The Average Font'
 url="http://iotic.com/averia/"
 license=('GPL' 'custom:OFL')
 arch=('any')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=()
 source=(${pkgname}-${pkgver}::"http://openfontlibrary.org/assets/downloads/averia/${_dlhash}/averia.zip")
 
 package() {
