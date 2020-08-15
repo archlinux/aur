@@ -10,8 +10,8 @@ pkgbase = rime-zijinmaa
 	makedepends = rime-essay
 	depends = rime-cantonese
 	depends = rime-luna-pinyin
-	source = https://github.com/redchenjs/rime-zijinmaa/archive/18dc759b9e96c76168d7f75070fb810d1a83b752/rime-zijinmaa-18dc759b9e96c76168d7f75070fb810d1a83b752.tar.gz
-	sha512sums = 41479a5910a11869579c92586b69a50d66a6e1072a6800edb6490c0a5cddb7598a622615153441aaf754395f12d2b6866135df249a8bccdf1da4451b7444feda
+	source = https://github.com/redchenjs/rime-zijinmaa/archive/f0bb9d338e862d7492985f7e7c7d3cb47a61502b/rime-zijinmaa-f0bb9d338e862d7492985f7e7c7d3cb47a61502b.tar.gz
+	sha512sums = e0d07e5ebb67bf82eb4c1a2448a3e181586df0e74486413c04205d1a0bcba6f044bb42604b617a3c1ceb97daa217958eae4d5b2f88e7b185ae8ecd30008c6ca0
 
 pkgname = rime-zijinmaa
 
