@@ -19,6 +19,7 @@ class ClashUp:
     "http_port": 7890,
     "socks5_port": 7891,
     "redir_port": 7892,
+    "mixed_port": 7893,
     "allow_lan": true,
     "external_controller": "127.0.0.1:9090",
     "subscribe_url": "",
@@ -67,6 +68,7 @@ class ClashUp:
         self._load_conf(config, 'http_port', 'port')
         self._load_conf(config, 'socks5_port', 'socks-port')
         self._load_conf(config, 'redir_port', 'redir-port')
+        self._load_conf(config, 'mixed_port', 'mixed-port')
         self._load_conf(config, 'allow_lan', 'allow-lan')
         self._load_conf(config, 'external_controller', 'external-controller')
         config['rules'] = self.config.get('custom_rules', []) + config.get('rules', [])
