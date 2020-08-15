@@ -1,16 +1,16 @@
 # Maintainer: Tom Wadley <tom@tomwadley.net>
 pkgname=gdx-skin-composer
-pkgver=34
+pkgver=37
 pkgrel=1
 pkgdesc="Create skins for LibGDX scene2d.ui with a graphical interface"
 arch=('any')
 url="https://github.com/raeleus/skin-composer"
 license=('MIT')
-depends=('java-runtime')
-source=("$pkgname-$pkgver.zip::https://github.com/raeleus/skin-composer/releases/download/$pkgver/skin-composer-linux.zip"
+depends=('java-runtime>=11')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/raeleus/skin-composer/releases/download/$pkgver/skin-composer-linux.tar.gz"
         "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/raeleus/skin-composer/$pkgver/LICENSE")
-sha256sums=('94bec1d8513aa6eb180612201704a66651867bd86c53e9a0bedd8d9071a151e6'
-            '65692928853a587a07bafe89d2449e1cf0f28dcc3fd2b0c4116a646ef63d7bcd')
+sha256sums=('4d4716989bf37a15a179352c2acbe2dfc5e0e986948bd4eacb33e2ee7a23220b'
+            '2c3616ce4f347fcb73d94f27aa5a5e37ecbf5c8511ea993a2a2ad2c89daa8a3e')
 
 prepare() {
     cat <<EOF > $pkgname
@@ -33,6 +33,6 @@ package() {
   install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
   install -Dm 644 $pkgname-$pkgver-LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm 644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm 644 app/SkinComposer.jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
-  install -Dm 644 bin/SkinComposer.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm 644 lib/app/SkinComposer.jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+  install -Dm 644 lib/SkinComposer.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
