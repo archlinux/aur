@@ -1,7 +1,7 @@
 pkgbase = plasma5-applets-plastweet
 	pkgdesc = A small plasmoid to send tweets directly from the desktop
-	pkgver = 0.2
-	pkgrel = 1
+	pkgver = 0.1
+	pkgrel = 2
 	url = https://github.com/gustawho/plastweet
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = plasma5-applets-plastweet
 	depends = plasma-workspace
 	depends = jsoncpp
 	depends = curl
-	source = plasma5-applets-plastweet-0.2::git+https://github.com/gustawho/plastweet.git#commit=fc367a8b5c82b34cf94d6d7ebfeb5835a8bd796f
+	source = plasma5-applets-plastweet-0.1::git+https://github.com/gustawho/plastweet.git#commit=6613b7b0ce2cc3229770c1e92a736f5e7daa7cd1
 	sha256sums = SKIP
 
 pkgname = plasma5-applets-plastweet
