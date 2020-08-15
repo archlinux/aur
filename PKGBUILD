@@ -4,16 +4,17 @@
 _gemname=prawn-templates
 pkgname=ruby-$_gemname
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Allows using PDFs as templates in Prawn.'
 arch=(any)
 url='https://github.com/prawnpdf/prawn-templates'
 license=(custom GPL2 GPL3)
 depends=(ruby ruby-pdf-reader ruby-prawn)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
 sha1sums=('9c6f4cb788f5c95cf3cb940eabb8bd7e277688b3')
+noextract=($_gemname-$pkgver.gem)
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
