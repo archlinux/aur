@@ -1,7 +1,7 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=python-pynamodb
-pkgver=4.3.2
+pkgver=4.3.3
 pkgrel=1
 pkgdesc="A pythonic interface to Amazon's DynamoDB"
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=(
   'python-blinker: for signals'
 )
 source=("https://github.com/pynamodb/PynamoDB/archive/$pkgver/PynamoDB-$pkgver.tar.gz")
-sha256sums=('b60eb0be775693a597271409102305ff7f8265b614f54c40173b9abf29795f11')
+sha256sums=('4505cbf5b38b5eb5b90082dbf7b90bd122077f7ead34b4588c5a0b8b18588647')
 
 build() {
   cd PynamoDB-$pkgver
