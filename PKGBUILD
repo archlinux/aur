@@ -11,7 +11,7 @@ license=('GPL2')
 provides=('desmume')
 conflicts=('desmume')
 depends=('gtk2' 'soundtouch' 'zlib' 'zziplib' 'libpcap' 'glib2' 'glu' 'openal' 'sdl' 'libpng' 'libgl')
-makedepends=('autoconf' 'automake' 'pkg-config' 'git' 'gtk2' 'lua' 'zlib' 'intltool' 'glu' 'sdl' 'zziplib' 'soundtouch' 'libpcap' 'glib2' 'sdl' 'desktop-file-utils' 'openal' 'libpng' 'libgl')
+makedepends=('autoconf' 'automake' 'pkg-config' 'git' 'gtk2' 'zlib' 'intltool' 'glu' 'sdl' 'zziplib' 'soundtouch' 'libpcap' 'glib2' 'sdl' 'desktop-file-utils' 'openal' 'libpng' 'libgl')
 source=("$_pkgname::git+https://github.com/TASVideos/desmume.git")
 sha512sums=('SKIP')
 
@@ -32,7 +32,7 @@ prepare(){
   ./autogen.sh
 
 
-  CFLAGS="-O2 -march=native -minline-all-stringops" \
+  CFLAGS="-O2 -minline-all-stringops" \
   CXXFLAGS=$CFLAGS \
   ./configure \
     --prefix=/usr \
