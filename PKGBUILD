@@ -1,4 +1,4 @@
-# Maintainer: Lucas Carvalho <lucassinx6@gmail.com>
+# Maintainer: Lucas Carvalho <zsinx6@users.noreply.github.com>
 
 _name=musthe
 pkgname="python-${_name}"
