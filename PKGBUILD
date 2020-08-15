@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Contributor: Ole Ernst <olebowle[at]gmx[dot]com>
 pkgname=graphlcd-base
-pkgver=1.0.1.r0.g55d4bd8
-_gitver=55d4bd88164f02e33d2c3d75a036437c50afe40e
+pkgver=2.0.0.r0.g046178b
+_gitver=046178bd27005e28b8db7d8e06a21cf74a26bae0
 pkgrel=1
 epoch=1
 pkgdesc="Project to support graphical LC displays connected to the PC"
