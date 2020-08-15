@@ -2,7 +2,7 @@
 
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdrpbd
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A daemon to handle ACPI power button event on VDR systems"
 url="http://projects.vdr-developer.org/projects/vdrpbd"
@@ -12,7 +12,7 @@ depends=('perl-net-dbus')
 makedepends=('perl')
 backup=('etc/vdrpbd.conf')
 source=("https://projects.vdr-developer.org/git/vdrpbd.git/snapshot/$pkgname-$pkgver.tar.bz2")
-sha256sums=('4511ff354d8e430df7743e1bfedb05f580a358d7726cdbc57b1014aa9e88fede')
+sha256sums=('3882eb918217d190a5a1742dff454ad81136360d7d91d278a5883832ab993539')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
