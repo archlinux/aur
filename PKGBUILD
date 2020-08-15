@@ -1,14 +1,16 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libcutensor
-pkgver=1.0.1
+pkgver=1.2.0
 _pkg_file_name="libcutensor-linux-x86_64-${pkgver}.tar.gz"
 pkgrel=1
 pkgdesc="GPU-accelerated tensor linear algebra library"
 arch=('x86_64')
 url='https://developer.nvidia.com/cutensor'
-license=('custom::NVIDIA')
-depends=('gcc-libs')
+license=('custom:NVIDIA')
+depends=('gcc-libs'
+         'cuda'
+         )
 
 _DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
 if [ ! -f ${PWD}/${_pkg_file_name} ]; then
@@ -38,8 +40,8 @@ _create_links() {
 package() {
   cd libcutensor
   for i in $(find include -type f); do install -Dm644 ${i} "${pkgdir}/usr/${i}"; done
-  install -Dm644 "lib/10.2/${pkgname}_static.a" "${pkgdir}/usr/lib/${pkgname}_static.a"
-  install -Dm755 "lib/10.2/${pkgname}.so.${pkgver}" "${pkgdir}/usr/lib/${pkgname}.so.${pkgver}"
+  install -Dm644 "lib/11.0/${pkgname}_static.a" "${pkgdir}/usr/lib/${pkgname}_static.a"
+  install -Dm755 "lib/11.0/${pkgname}.so.${pkgver}" "${pkgdir}/usr/lib/${pkgname}.so.${pkgver}"
 
   _create_links
 
