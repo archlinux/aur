@@ -2,7 +2,7 @@
 pkgname=powercord-git
 _pkgname=powercord
 pkgver=r1178.41cb7ce
-pkgrel=4
+pkgrel=5
 pkgdesc="A lightweight discord client mod focused on simplicity and performance."
 arch=("any")
 url="https://github.com/powercord-org/$_pkgname"
@@ -38,6 +38,10 @@ prepare() {
 	patch -u ${srcdir}/${_pkgname}/src/Powercord/plugins/pc-settings/index.js -i ${srcdir}/pc-settings_index.js.patch
 	patch -u ${srcdir}/${_pkgname}/src/Powercord/plugins/pc-updater/index.js -i ${srcdir}/pc-updater_index.js.patch
 	patch -u ${srcdir}/${_pkgname}/src/Powercord/plugins/pc-updater/components/Settings.jsx -i ${srcdir}/pc-updater_settings.jsx.patch
+	
+	cd "${srcdir}/${_pkgname}"
+	local _revision="$(git rev-list HEAD | head -n 1)"
+	sed -i "s/REVISION_NUMBER/${_revision}/" "${srcdir}/${_pkgname}/src/Powercord/index.js"
 }
 
 pkgver() {
