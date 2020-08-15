@@ -5,6 +5,7 @@ pkgbase = ruby-css_parser
 	url = https://github.com/premailer/css_parser
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-addressable
 	provides = ruby-css_parser=1.7.1
