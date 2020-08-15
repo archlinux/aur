@@ -24,7 +24,7 @@ source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$
         "dolphin-meld.patch")
 sha256sums=('fe5a68d9afd0771ba9ffc2d5d79e7bc43da85fd3ee3c2493a9a2d5c359c3cd6f'
             'SKIP'
-            '13107b72348bd7eea5665196dc4a37c21bff131bbc8457efe77ef8c3e9450c7b')
+            '9bf8e1d53bb482e3cc2f3a114fb894fc3d0216ad2933d0c6e1f0b7df6d640b7a')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
 
