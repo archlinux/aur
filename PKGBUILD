@@ -70,8 +70,8 @@ NOGZ="YES"        # Don't compress .el files.
 
 ################################################################################
 pkgname="emacs27-git"
-pkgver=27.0.60.140075
-pkgrel=2
+pkgver=27.1.50.140516
+pkgrel=1
 pkgdesc="GNU Emacs. emacs-27 release branch."
 arch=('x86_64' )
 url="http://www.gnu.org/software/emacs/"
@@ -164,7 +164,7 @@ pkgver() {
 
   printf "%s.%s" \
     "$(grep AC_INIT configure.ac | \
-    sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\?\).\+$/\1/')" \
+    sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\(\.[0-9]\+\)\?\).\+$/\1/')" \
     "$(git rev-list --count HEAD)"
 }
 
