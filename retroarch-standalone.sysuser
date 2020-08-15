@@ -1,4 +1,4 @@
-u retroarch - /sbin/nologin "Retroarch user" /home/retroarch
+u retroarch - "Retroarch user" /home/retroarch /sbin/nologin
 m retroarch video
 m retroarch audio
 m retroarch input
