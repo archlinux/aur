@@ -15,6 +15,8 @@ makedepends=('autoconf' 'automake' 'pkg-config' 'git' 'gtk2' 'zlib' 'intltool' '
 source=("$_pkgname::git+https://github.com/TASVideos/desmume.git")
 sha512sums=('SKIP')
 
+optdepends=('agg: to enable the HUD, requires --enable-hud at build time')
+
 _builddir="$_pkgname/src/frontend/posix"
 
 pkgver() {
@@ -38,7 +40,7 @@ prepare(){
     --prefix=/usr \
     --enable-openal \
     --enable-wifi #\
-#    --enable-hud  #requires agg in AUR
+#    --enable-hud  #requires https://aur.archlinux.org/packages/agg/
 }
 
 build() {

@@ -35,6 +35,7 @@ pkgbase = desmume-git
 	depends = sdl
 	depends = libpng
 	depends = libgl
+	optdepends = agg: to enable the HUD, requires --enable-hud at build time
 	provides = desmume
 	conflicts = desmume
 	source = desmume::git+https://github.com/TASVideos/desmume.git
