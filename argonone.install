@@ -3,6 +3,7 @@ pre_install() {
   if [[ $(grep "Raspberry Pi 3" /proc/device-tree/model) || $(grep "Raspberry Pi 4" /proc/device-tree/model) ]] ; then
     echo "Building New Virtual Environment in /opt/argonone..."
     python -m venv --clear /opt/argonone
+    /opt/argonone/bin/python3 -m pip install --upgrade pip
     /opt/argonone/bin/python3 -m pip install pysmbus RPi.GPIO
 
     echo "Enabling i2C..."
