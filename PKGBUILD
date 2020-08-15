@@ -8,6 +8,7 @@ pkgdesc="免费、强大、易用的在线电路设计软件"
 arch=('x86_64')
 url="https://lceda.cn/page/download"
 license=('custom')
+depends=('gtk3' 'nss' 'libxss')
 makedepends=('unzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
