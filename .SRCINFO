@@ -1,14 +1,14 @@
 pkgbase = iwgtk
 	pkgdesc = Lightweight, graphical wifi management utility
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/J-Lentz/iwgtk
 	arch = x86_64
 	license = GPL3
 	depends = iwd
 	depends = gtk3
-	source = iwgtk-0.2.tar.gz::https://github.com/J-Lentz/iwgtk/archive/v0.2.tar.gz
-	sha256sums = c1a26589c31cafc79794a9b1d9c82cbcaa4eff221a0743238e9541bdf20c2eef
+	source = iwgtk-0.3.tar.gz::https://github.com/J-Lentz/iwgtk/archive/v0.3.tar.gz
+	sha256sums = 28e39c4a0b0267068ca80697145c137c9ed5acf281ca8bb2ffd2d88b4e2547a8
 
 pkgname = iwgtk
 
