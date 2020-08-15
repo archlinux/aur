@@ -45,7 +45,7 @@ package() {
 
   echo 'Installing color-schemes...'
   install -dm755 "${pkgdir}/usr/share/color-schemes"
-  cp color-schemes/* "${pkgdir}/usr/share/color-schemes"
+  cp Color-schemes/* "${pkgdir}/usr/share/color-schemes"
   cp "Moe-Dark color-schemes"/* "${pkgdir}/usr/share/color-schemes"
 
   echo 'Installing desktoptheme...'
