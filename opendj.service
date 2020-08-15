@@ -1,0 +1,15 @@
+[Unit]
+Description=OpenDJ server
+
+[Service]
+Type=simple
+User=opendj
+Group=opendj
+SyslogIdentifier=opendj
+ExecStartPre=/usr/bin/opendj-check-config
+ExecStart=/usr/bin/opendj-start-ds --nodetach
+ExecStop=/usr/bin/opendj-stop-ds
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target

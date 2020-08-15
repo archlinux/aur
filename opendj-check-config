@@ -1,0 +1,21 @@
+#!/bin/sh
+
+read INSTANCE 2>/dev/null < /usr/share/opendj/instance.loc
+
+if [ -z "$INSTANCE" ]
+then
+    echo "Didn't found OpenDJ instance. Verify that you've installed OpenDJ correctly."
+    exit 1
+fi
+
+if [ ! -f "$INSTANCE/config/config.ldif" ]
+then
+    # No existing config! Warn user to configure OpenDJ
+    echo $"OpenDJ instance at \"$INSTANCE\" is not configured. Use a command like"
+    echo $"  su opendj -s /bin/sh /usr/share/opendj/setup"
+    echo $"to configure it."
+    exit 1
+fi
+
+exit 0
+

@@ -1,0 +1,2 @@
+d /var/lib/opendj 755 opendj opendj
+h /var/lib/opendj/db -   -        -        - +C
