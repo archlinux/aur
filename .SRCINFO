@@ -1,7 +1,7 @@
 pkgbase = firefox-kde-opensuse-bin
 	pkgdesc = Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE
 	pkgver = 79.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox
 	arch = x86_64
 	license = MPL
@@ -38,11 +38,10 @@ pkgbase = firefox-kde-opensuse-bin
 	options = !emptydirs
 	options = debug
 	options = strip
-	source = https://repo.itmettke.de/firefox-kde-opensuse-79.0-1-x86_64.pkg.tar.xz
-	source = https://repo.itmettke.de/firefox-kde-opensuse-79.0-1-x86_64.pkg.tar.xz.sig
-	validpgpkeys = 81E604C18BFD3FA9986E32D91E74416BECD445A4
-	validpgpkeys = A5A10C4B2F5A417A106DACB8449D5E71988FE637
-	sha256sums = 7a67f142974f66aadc1afa46f18d6857809adc926b529d9a6d57da4aa97b5aea
+	source = https://thaodan.de/public/archlinux/home-thaodan/x86_64/firefox-kde-opensuse-79.0-1-x86_64.pkg.tar.xz
+	source = https://thaodan.de/public/archlinux/home-thaodan/x86_64/firefox-kde-opensuse-79.0-1-x86_64.pkg.tar.xz.sig
+	validpgpkeys = BBFE2FD421597395E4FC8C8DF6C85FEE79D661A4
+	sha256sums = 4c332eea30a7ad0cc18891156e215f54b677bcbcdb9c4a564631958ff096c17c
 	sha256sums = SKIP
 
 pkgname = firefox-kde-opensuse-bin
