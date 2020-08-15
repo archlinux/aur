@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.5.0.18
-pkgrel=3
+pkgrel=4
 _ffmpeg_ver=2020_05_23
 _ffdetect_ver=2020_05_23
 pkgdesc='Bring together your videos, music, photos, and live television'
