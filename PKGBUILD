@@ -6,13 +6,13 @@ pkgver=0.8
 pkgrel=1
 pkgdesc='iOS Push Email for Dovecot - dovecot plugin'
 arch=('any')
-url='https://github.com/st3fan/dovecot-xaps-plugin'
+url='https://github.com/freswa/dovecot-xaps-plugin'
 license=('custom:MIT')
 depends=('dovecot' 'dovecot-xaps-daemon')
 makedepends=('git' 'cmake')
 provides=('dovecot-xaps-plugin')
 conflicts=('dovecot-xaps-plugin')
-source=("git+https://github.com/st3fan/dovecot-xaps-plugin.git")
+source=("git+https://github.com/freswa/dovecot-xaps-plugin.git")
 b2sums=('SKIP')
 
 pkgver() {

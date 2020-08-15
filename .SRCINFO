@@ -2,7 +2,7 @@ pkgbase = dovecot-xaps-plugin-git
 	pkgdesc = iOS Push Email for Dovecot - dovecot plugin
 	pkgver = 0.8
 	pkgrel = 1
-	url = https://github.com/st3fan/dovecot-xaps-plugin
+	url = https://github.com/freswa/dovecot-xaps-plugin
 	arch = any
 	license = custom:MIT
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = dovecot-xaps-plugin-git
 	depends = dovecot-xaps-daemon
 	provides = dovecot-xaps-plugin
 	conflicts = dovecot-xaps-plugin
-	source = git+https://github.com/st3fan/dovecot-xaps-plugin.git
+	source = git+https://github.com/freswa/dovecot-xaps-plugin.git
 	b2sums = SKIP
 
 pkgname = dovecot-xaps-plugin-git
