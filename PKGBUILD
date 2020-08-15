@@ -24,7 +24,7 @@
 pkgname=conky-cairo
 pkgver=1.11.3
 pkgrel=1
-pkgdesc='conky - built for nvidia - conky now has built in lua 5.3 support (tolua++_5.3 NOT required) - See this PKGBUILD source - Just change one variable to build the git version - defaults to release version.'
+pkgdesc='conky - built for nvidia - Just change one variable to build the git version - defaults to release version.'
 url='https://github.com/brndnmtthws/conky'
 license=('GPL3' 'BSD')
 arch=('i686' 'x86_64')
@@ -44,7 +44,6 @@ _myopts=1
 
 case ${_myopts} in
 0)  ### _myopts=0 for git version #####################################
-	### we now have tolua++ 5.3 support built in !!!
 
 	_pkgname=conky
 
@@ -59,8 +58,6 @@ case ${_myopts} in
     ;;
 1)  ### _myopts=1 for release version #################################
 
-	### NOTE: Install tolua++_5.3 from AUR - one of my other packages besides conkywx weather program
-
 	_pkgname="conky-${pkgver}"
 
 	source=(${url}/archive/v${pkgver}.tar.gz)
@@ -73,6 +70,7 @@ build() {
 
 	cd "${srcdir}/${_pkgname}"
 
+	## correction to conky.cc for the git version
 	sed -i 's|conky::run_all_callbacks();||' src/conky.cc
 
 ################################################################
