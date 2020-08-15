@@ -1,0 +1,6 @@
+#!/bin/sh
+
+sol="$HOME/.appdata/edu.media.mit.Scratch2Editor/Local Store/#SharedObjects/Scratch.swf/scratchLocalData.sol"
+[ -f "$sol" ] || cp /opt/airapps/scratch2/scratchLocalData.sol "$sol"
+
+/opt/adobe-air-sdk/bin/adl -nodebug /opt/airapps/scratch2/META-INF/AIR/application.xml /opt/airapps/scratch2/ -- "$@"

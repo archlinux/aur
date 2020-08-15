@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info"> 
-    <mime-type type="application/x-scratch2-project"> 
-        <comment>Scratch 2.0 project file</comment> 
-	<generic-icon name="x-scratch2-project"/>
-        <glob pattern="*.sb2"/> 
-    </mime-type> 
-</mime-info> 
+<?xml version="1.0"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+	<mime-type type="application/x-scratch2-project">
+		<comment>Scratch 2.0 Project File</comment>
+		<icon name="x-scratch2-project"/>
+		<glob-deleteall/>
+		<glob pattern="*.sb2"/>
+	</mime-type>
+</mime-info>
