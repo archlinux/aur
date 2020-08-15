@@ -5,7 +5,7 @@ pkgver=0.16.0
 pkgrel=1
 arch=(any)
 license=('GPL3')
-pkgdesc="Provides systray integration."
+pkgdesc="Allows to create a system tray icon"
 url="https://github.com/moses-palmer/pystray"
 depends=('python-six' 'python-pillow' 'python-xlib>=0.17')
 makedepends=('python>=3.4' 'python-setuptools' 'python-pip' 'python-wheel')

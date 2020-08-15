@@ -1,5 +1,5 @@
 pkgbase = python-pystray
-	pkgdesc = Provides systray integration.
+	pkgdesc = Allows to create a system tray icon
 	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/moses-palmer/pystray
