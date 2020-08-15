@@ -1,6 +1,6 @@
 # Maintainer: Tang Yuming <felinae225@qq.com>
 pkgname=clashup
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="auto update clash's config file"
 license=('GPL')
@@ -14,5 +14,5 @@ package() {
     install -Dm755 clashup ${pkgdir}/usr/bin/clashup
     install -Dm644 clashup.conf ${pkgdir}/etc/systemd/user/clash.service.d/clashup.conf
 }
-md5sums=('c94bf9a47483488b688b130ac36665b0'
+md5sums=('46d5dd8412a3df09b7fcea5213780193'
          '177338346005e11d33e27edc1f8ab780')
