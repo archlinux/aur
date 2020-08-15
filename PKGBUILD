@@ -5,13 +5,13 @@ pkgname=vdr-graphlcd
 pkgver=1.0.0.r0.ga6c8e3d
 _gitver=a6c8e3d4383ae164e26149888bbdc91cbd448ba8
 _vdrapi=2.4.3
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="VDR Plugin to support graphical LC displays"
 url="http://projects.vdr-developer.org/projects/show/graphlcd"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
-depends=('graphlcd-base' 'ttf-dejavu' "vdr-api=${_vdrapi}")
+depends=('graphlcd-base>=2.0.0' 'ttf-dejavu' 'ttf-bitstream-vera' "vdr-api=${_vdrapi}")
 optdepends=('serdisplib: Support more modern LCDs')
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
@@ -35,13 +35,8 @@ package() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
   make DESTDIR="${pkgdir}" install
 
-  cd "$pkgdir/usr/share/vdr/plugins/graphlcd/fonts"
-  rm *.ttf
-  ln -s /usr/share/fonts/TTF/DejaVuSans-Bold.ttf .
-  ln -s /usr/share/fonts/TTF/DejaVuSans-Bold.ttf VeraBd.ttf
-  ln -s /usr/share/fonts/TTF/DejaVuSans.ttf .
-  ln -s /usr/share/fonts/TTF/DejaVuSans.ttf Vera.ttf
-  ln -s /usr/share/fonts/TTF/DejaVuSansCondensed.ttf .
+  # Make use of the graphlcd >= 2.0.0 system font directory search
+  rm "$pkgdir/usr/share/vdr/plugins/graphlcd/fonts/"*.ttf
 
   install -Dm644 "$srcdir/50-$_plugname.conf" "$pkgdir/etc/vdr/conf.avail/50-$_plugname.conf"
 }
