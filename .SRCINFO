@@ -1,14 +1,14 @@
 pkgbase = archiva
 	pkgdesc = Apache Archiva™ is an extensible repository management software that helps taking care of your own personal or enterprise-wide build artifact repository
-	pkgver = 2.2.4
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = http://archiva.apache.org/
 	arch = any
 	license = Apache
 	depends = java-runtime-headless>=7
-	source = https://www.apache.org/dist/archiva/2.2.4/binaries/apache-archiva-2.2.4-bin.tar.gz
+	source = https://www.apache.org/dist/archiva/2.2.5/binaries/apache-archiva-2.2.5-bin.tar.gz
 	source = archiva.service
-	md5sums = 597aeb9f42e634ae58256fb99997040f
+	md5sums = e27373f465bf6d1c00c044c0474a27e9
 	md5sums = d741d8899541001f6ab062b2772428e4
 
 pkgname = archiva
