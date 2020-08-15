@@ -10,11 +10,12 @@ arch=(any)
 url='https://github.com/premailer/css_parser'
 license=(MIT)
 depends=(ruby ruby-addressable)
+makedepends=(ruby-rdoc)
 provides=('ruby-css_parser=1.6.0')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
 sha1sums=('0635fd837668266ec5d1916fc2251ea66273da37')
+noextract=($_gemname-$pkgver.gem)
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
