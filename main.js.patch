@@ -1,0 +1,11 @@
+--- ../powercord/injectors/main.js	2020-08-14 23:38:07.596542247 +0200
++++ ./main.js	2020-08-15 13:46:16.208269548 +0200
+@@ -9,7 +9,7 @@
+ exports.inject = async ({ getAppDir }) => {
+   const appDir = await getAppDir();
+   if (await exists(appDir)) {
+-    console.log('Looks like you already have an injector in place. Try uninjecting (`npm run unplug`) and try again.');
++    console.log('Looks like you already have an injector in place. Try uninjecting (`powercord uninject`) and try again.');
+     return false;
+   }
+ 

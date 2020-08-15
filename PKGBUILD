@@ -1,8 +1,6 @@
 # Maintainer: Szentesi Botond
 pkgname=powercord-git
 _pkgname=powercord
-patches=powercord-patches
-
 pkgver=r1178.41cb7ce
 pkgrel=1
 pkgdesc="A lightweight discord client mod focused on simplicity and performance."
@@ -11,17 +9,23 @@ url="https://github.com/powercord-org/$_pkgname"
 license=('Parkord')
 depends=('nodejs')
 makedepends=('git' 'npm' 'jq')
-source=("git+https://github.com/powercord-org/powercord#branch=v2"
-	"git+https://github.com/botiapa/powercord-patches"
-       )
-md5sums=('SKIP'
-         'SKIP'
-        )
+source=(
+	"git+https://github.com/powercord-org/powercord#branch=v2"
+	"index.js.patch"
+	"main.js.patch"
+	"powercord.8"
+	)
+md5sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	)
 options=('!strip')
 
 prepare() {
-  patch -u ${srcdir}/${_pkgname}/injectors/index.js -i ${srcdir}/${patches}/index.js.patch
-  patch -u ${srcdir}/${_pkgname}/injectors/main.js -i ${srcdir}/${patches}/main.js.patch
+  patch -u ${srcdir}/${_pkgname}/injectors/index.js -i ${srcdir}/index.js.patch
+  patch -u ${srcdir}/${_pkgname}/injectors/main.js -i ${srcdir}/main.js.patch
 }
 
 pkgver() {
@@ -53,7 +57,7 @@ package() {
 	chown -R root:root "${install_dir}/${_pkgname}/"
 	find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 
-	install -g 0 -o 0 -Dm 0644 "${srcdir}/${patches}/powercord.8" -t ${pkgdir}/usr/share/man/man8/
+	install -g 0 -o 0 -Dm 0644 "${srcdir}/powercord.8" -t ${pkgdir}/usr/share/man/man8/
 	gzip ${pkgdir}/usr/share/man/man8/powercord.8
 
 	# This is not ideal. It's only required because it seems like discord needs write and execute permissions.
