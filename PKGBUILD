@@ -6,6 +6,7 @@ pkgver=5.0.0
 pkgrel=1
 pkgdesc="Peanut shell is a dynamic DNS software, any place, any time, any lines, all can through fixed domain access to the remote host services"
 arch=("x86_64" "i686")
+depends=('wget')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 url="https://hsk.oray.com/download/"
