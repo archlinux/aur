@@ -1,0 +1,12 @@
+pkgbase = dbseeder
+	pkgdesc = A database seeder for MySQL
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://laravelarticle.com
+	arch = x86_64
+	license = 
+	source = https://github.com/haruncpi/db-seeder/releases/download/v1.0.1/dbseeder_1.0.1_amd64.deb
+	sha256sums = 74a7a092dd1d617c282a41ec110c6ba2bf4e73d96a1470bbb0e78b5db8b2f6c5
+
+pkgname = dbseeder
+
