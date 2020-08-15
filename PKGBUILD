@@ -7,7 +7,7 @@
 _pkgbasename=ffmpeg
 pkgname=("lib32-$_pkgbasename" "lib32-lib$_pkgbasename")
 pkgver=4.3.1
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -49,7 +49,7 @@ license=('GPL3')
       'lib32-libvpx'
       'lib32-libwebp'
       'lib32-libx11'
-      'lib32-x264>=0.159'
+      'lib32-x264>=0.160'
       'lib32-x265>=3.3'
       'lib32-libxcb'
       'lib32-libxext'
