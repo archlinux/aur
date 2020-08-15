@@ -2,14 +2,15 @@
 
 pkgname=utopia
 pkgver=1.0.5986
-pkgrel=1
+pkgrel=2
 pkgdesc='Client for Utopia, an "Anti Orwellian Ecosystem"'
 arch=('x86_64')
 url='https://u.is'
 license=('')
 source=(https://update.u.is/downloads/linux/utopia-latest.amd64.deb)
 sha256sums=('f68ea2dbdc1d18496868e9b1323ad3e218cc39d37b196901210ba3385d4249cb')
-
+depends=(lib32-libx11 lib32-libglvnd libpulse lib32-fontconfig)
+#apt-get install *libx11-xcb1 *libgl1-mesa-glx *libpulse-mainloop-glib0 *libfontconfig
 build() {
 
   ar -x ${srcdir}/utopia-latest.amd64.deb

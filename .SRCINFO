@@ -1,10 +1,14 @@
 pkgbase = utopia
 	pkgdesc = Client for Utopia, an "Anti Orwellian Ecosystem"
 	pkgver = 1.0.5986
-	pkgrel = 1
+	pkgrel = 2
 	url = https://u.is
 	arch = x86_64
 	license = 
+	depends = lib32-libx11
+	depends = lib32-libglvnd
+	depends = libpulse
+	depends = lib32-fontconfig
 	source = https://update.u.is/downloads/linux/utopia-latest.amd64.deb
 	sha256sums = f68ea2dbdc1d18496868e9b1323ad3e218cc39d37b196901210ba3385d4249cb
 
