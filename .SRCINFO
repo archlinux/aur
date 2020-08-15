@@ -1,0 +1,17 @@
+pkgbase = dbus-codegen-rust
+	pkgdesc = This program takes D-Bus XML Introspection data and generates Rust code for calling and implementing the interfaces in the introspection data.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://crates.io/crates/dbus-codegen/
+	arch = any
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	depends = dbus
+	provides = dbus-codegen-rust
+	noextract = LICENSE
+	source = https://raw.githubusercontent.com/tokio-rs/tokio/master/LICENSE
+	md5sums = 448c359b06622c5317ee59a95e89731c
+
+pkgname = dbus-codegen-rust
+
