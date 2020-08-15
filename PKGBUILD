@@ -52,6 +52,8 @@ case ${_myopts} in
 
 	pkgver() {
 		cd "${srcdir}/${_pkgname}"
+		sed -i 's|^.*run_all_callbacks.*$||' src/conky.cc
+
 		git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 	}
 	md5sums=('SKIP')
