@@ -1,6 +1,6 @@
 pkgbase = phoc
 	pkgdesc = Wlroots based Phone compositor
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/phoc
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = phoc
 	makedepends = vala
 	depends = mutter
 	depends = wlroots
-	source = https://source.puri.sm/Librem5/phoc/-/archive/v0.4.1/phoc-v0.4.1.tar.gz
-	sha256sums = 420a4e8b1b15a99475fda1221249a7ca7c1f77c09fee114530f2a4612fde84fc
+	source = https://source.puri.sm/Librem5/phoc/-/archive/v0.4.2/phoc-v0.4.2.tar.gz
+	sha256sums = bdb34644c7d49c953239c1e939bc5ee2bc26f6187b9d756b70b113d2734c712c
 
 pkgname = phoc
 
