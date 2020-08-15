@@ -1,12 +1,13 @@
 pkgbase = ruby-ttfunk-1.5
 	pkgdesc = TrueType Font Metrics Parser
 	pkgver = 1.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://prawnpdf.org
 	arch = any
 	license = custom
 	license = GPL2
 	license = GPL3
+	makedepends = ruby-rdoc
 	depends = ruby
 	provides = ruby-ttfunk=1.5.1
 	noextract = ttfunk-1.5.1.gem
