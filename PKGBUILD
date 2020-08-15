@@ -2,9 +2,9 @@
 
 pkgname=bpytop
 pkgver=1.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Resource monitor that shows usage and stats for processor, memory, disks, network and processes"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/aristocratos/bpytop"
 license=('Apache')
 depends=('python3' 'python-psutil')
