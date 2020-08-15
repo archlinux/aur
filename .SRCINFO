@@ -1,6 +1,6 @@
 pkgbase = squeekboard
 	pkgdesc = Virtual keyboard supporting Wayland, built primarily for the Librem 5 phone
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/squeekboard
 	arch = i686
@@ -13,10 +13,11 @@ pkgbase = squeekboard
 	makedepends = intltool
 	makedepends = rust
 	makedepends = gtk-doc
+	depends = feedbackd
 	depends = gnome-desktop
 	depends = python
-	source = https://source.puri.sm/Librem5/squeekboard/-/archive/v1.9.2/squeekboard-v1.9.2.tar.gz
-	sha256sums = 765420dec94241d1f63bf3d2faea55bdf987f76b283b3f48a42c55a96c98b763
+	source = https://source.puri.sm/Librem5/squeekboard/-/archive/v1.9.3/squeekboard-v1.9.3.tar.gz
+	sha256sums = b99e56faace3986bf752e08c104cea60ed896d514284840655033dd9457db824
 
 pkgname = squeekboard
 
