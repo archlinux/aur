@@ -53,13 +53,16 @@ zectl_create () {
 zectl_list () {
     # TOFIX: sort https://github.com/johnramsden/zectl/issues/18
     # Here: sorting on the be name which contains date
-    $BIN list -H | grep $PREFIX | grep -Ev '\ N\ |\ NR\ |\ R\ ' | sort -k1
+    $BIN list -H | grep "$PREFIX" | grep -Ev '\s+N\s+|\s+NR\s+|\s+R\s+' | sort -k1
 }
 
 # Remove latest prefixed boot env 
 zectl_purge () {
-    latest=$(zectl_list | head -n1 | grep "$PREFIX" | awk '{print $1}')
-    $BIN destroy "$latest" && print "Destroyed $latest"
+    latest=$(zectl_list | head -n1 | awk '{print $1}')
+    if [[ ! -z $latest ]]
+    then
+        $BIN destroy "$latest" && print "Destroyed $latest"
+    fi
 }
 
 # Args
