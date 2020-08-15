@@ -1,7 +1,7 @@
 pkgbase = backdoor
 	pkgdesc = A deck-building card roguelike cyberpunk game.
-	pkgver = 0.6.1
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://uspgamedev.org
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = backdoor
 	makedepends = make
 	depends = luajit
 	depends = love
-	source = https://github.com/uspgamedev/backdoor/archive/v0.6.1.tar.gz
+	source = https://github.com/uspgamedev/backdoor/archive/v0.7.0.tar.gz
 	sha512sums = 1f003dea0ee0e8c79e864d6d080cd42383cd94b099f40417ef7bcdcf36cb5f462a0d00e129bfb27ec148a44607d5cbad1d763798c32272d93bcc585755d08f6b
 
 pkgname = backdoor

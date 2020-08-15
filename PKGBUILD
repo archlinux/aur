@@ -1,8 +1,8 @@
 # Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=backdoor
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='A deck-building card roguelike cyberpunk game.'
 url="https://uspgamedev.org"
 license=('GPL3')
