@@ -1,7 +1,7 @@
 pkgbase = opendj
 	pkgdesc = OpenDJ is an LDAPv3 compliant directory service
 	pkgver = 4.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openidentityplatform.org/opendj
 	arch = any
 	license = CDDL

@@ -2,7 +2,7 @@
 
 pkgname=opendj
 pkgver=4.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenDJ is an LDAPv3 compliant directory service"
 arch=("any")
 url="https://www.openidentityplatform.org/opendj"
@@ -27,6 +27,7 @@ fix_script() {
     sed -i "/^cd ../d" "$script"
     sed -i "s|\SCRIPT_DIR=.*|SCRIPT_DIR=/usr/share/opendj/bin|" "$script"
     sed -i "s|\${SCRIPT_DIR}/../lib/|/usr/share/opendj/lib/|" "$script"
+    sed -i "s|\${SCRIPT_DIR}/lib/|/usr/share/opendj/lib/|" "$script"
     sed -i "s|^INSTALL_ROOT=.*|INSTALL_ROOT=/usr/share/opendj|" "$script"
     sed -i "s|\${INSTANCE_ROOT}/lib/|/usr/share/java/opendj/|" "$script"
     sed -i "s|\${INSTALL_ROOT}/lib/\(.*\).jar|/usr/share/java/opendj/\\1.jar|" "$script"
@@ -49,12 +50,13 @@ package() {
     cp lib/*.jar -t "$jardest"
     cp -r lib/extensions "$jardest"
     cp -r * "$dest"
-    rm -rf "$dest/"{bat,bin,lib,*.bat,QuickSetup.app,Uninstall.app,uninstall*,upgrade*}
+    rm -rf "$dest/"{bat,bin,lib,*.bat,QuickSetup.app,Uninstall.app,uninstall*}
 
     mkdir -p "$dest/bin" "$dest/lib"
     cp lib/*.sh "$dest/lib/"
 
     fix_script "$dest/setup"
+    fix_script "$dest/upgrade"
     sed -i "/export SCRIPT_NAME/a SCRIPT_ARGS=\"-Dorg.opends.quicksetup.Root=/usr/share/opendj/ \${SCRIPT_ARGS}\"" "$dest/setup"
     for script in "$dest/lib/"*.sh; do
         fix_script "$script"
