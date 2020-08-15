@@ -11,7 +11,7 @@ pkgbase = zectl-pacman-hook
 	source = zectl-prune
 	source = UNLICENSE
 	sha256sums = 9e212d633cb87ac2789ece3c5a86db6a93f266327db8a360e882dfd9583ac0c9
-	sha256sums = b38b0b2fca33ce64d5c1e713feb3bd7d3a0e85fa8d5c4c5220edefc2a63440da
+	sha256sums = 836816615a87b7497bd7386b6e2871052170cbf2045aad1394fdae9fcf3bb5ed
 	sha256sums = d3c4f1607c9488b22732511b83e6f6173d82499c0678c899666ca12c36517f72
 
 pkgname = zectl-pacman-hook
