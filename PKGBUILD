@@ -2,7 +2,7 @@
 pkgname=powercord-git
 _pkgname=powercord
 pkgver=r1178.41cb7ce
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight discord client mod focused on simplicity and performance."
 arch=("any")
 url="https://github.com/powercord-org/$_pkgname"
