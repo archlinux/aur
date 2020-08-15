@@ -19,11 +19,16 @@ sha256sums=('104aada01fb19dc8a6cfe3913971eb0b78caf6aedf3f56b01015038721c5ba96'
 package() {
   
   install -dm755 ${pkgdir}/opt/${_pkgname}
-  unzip lceda-linux-x64.zip -d ${pkgdir}/opt/${_pkgname}
+  unzip -q lceda-linux-x64.zip -d ${pkgdir}/opt/${_pkgname}
   
   # icon
-  install -dm755 ${pkgdir}/usr/share/icons/
-  mv ${pkgdir}/opt/${_pkgname}/icon ${pkgdir}/usr/share/icons/hicolor
+  install -dm755 ${pkgdir}/usr/share/icons/hicolor/
+  for icon in 16 32 48 64 128 256;
+  do
+    install -Dm644 ${pkgdir}/opt/${_pkgname}/icon/${icon}x${icon}/${_pkgname}.png \
+    ${pkgdir}/usr/share/icons/hicolor/${icon}x${icon}/apps/${_pkgname}.png
+  done
+  rm -rf ${pkgdir}/opt/${_pkgname}/icon
 
   # desktop entry
   install -Dm644 ${pkgdir}/opt/${_pkgname}/LCEDA.dkt ${pkgdir}/usr/share/applications/${_pkgname}.desktop
