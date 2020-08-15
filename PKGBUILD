@@ -7,16 +7,17 @@ pkgdesc="Python open source alternative to IDM (Internet Download Manager)"
 arch=('any')
 url="https://github.com/pyIDM/PyIDM"
 license=('LGPL3')
-depends=('python>=3.6' 
-         'python-pysimplegui>=4.18' 
-         'python-pyperclip' 
-         'python-plyer' 
+depends=('ffmpeg'
+         'python>=3.6' 
          'python-certifi' 
-         'youtube-dl'
-         'python-pycurl' 
          'python-pillow'
-         'ffmpeg')
-makedepends=('python-setuptools' 'python-pip')
+         'python-plyer' 
+         'python-pycurl' 
+         'python-pyperclip' 
+         'python-pysimplegui>=4.18' 
+         'python-pystray'
+         'youtube-dl')
+makedepends=('python-setuptools')
 changelog=$pkgname.changelog
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pyIDM/PyIDM/archive/$pkgver.tar.gz"
         "no_update.patch")
@@ -36,9 +37,6 @@ build() {
 
 package() {
   cd "$srcdir/PyIDM-$pkgver"
-
-  # python-pystray does not work in AUR
-  pip install pystray
 
   python setup.py install --root="$pkgdir" --skip-build --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
