@@ -1,6 +1,5 @@
-# Maintainer: Vincent Herlemont <vincentherl@leszeros.com>
 pkgname=short-git
-pkgver=0.3.3.r0.g68325f5
+pkgver=0.3.4.r0.gfc58ea5
 pkgrel=1
 pkgdesc="Concise cli launcher / project manager using env files"
 source=("${pkgname}::git+https://github.com/vincent-herlemont/short.git")
@@ -18,7 +17,7 @@ pkgver() {
 
 build() {
     cd ${pkgname};
-    cargo build --release --locked --features disabled_check_new_version
+    cargo build --release --locked --no-default-features
 }
 
 package() {
