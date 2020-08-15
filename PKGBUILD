@@ -1,7 +1,7 @@
 # Author: Julian Xhokaxhiu <info@julianxhokaxhiu.com>
 pkgname=retroarch-standalone-service
 pkgver=2
-pkgrel=12
+pkgrel=13
 pkgdesc="Systemd service and user to run Retroarch in stand-alone mode"
 url=""
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=(
   '5efc1dcc2d220a33f0d53d6abe4538227f434ff2a00f5165bb209cf6e0bae4a3'
-  '5e757f5279e349a6d0b775a493ab845a7cabdd7d68c946dffdf02868fc3806b2'
+  '48d9f35b943209764990050a06dea9bd356aa275adccb3e0a835e738e6beb0c6'
   '4c56ad43f3a5f209b4f3fb433b9ce4e0573b032cee21e587f912d6bc1d851423'
   '4eb68b4b61e812d7047cf52ebd14c590637bb2b0594b13a288134a827a8429c1'
 )
