@@ -1,0 +1,14 @@
+pkgbase = mementodb
+	pkgdesc = Memento Database for android, Linux, Windows, Mac
+	pkgver = 1.8.4
+	pkgrel = 1
+	url = https://mementodatabase.com/
+	arch = x86_64
+	license = Custom:MementoDB Inc
+	source = https://mementodatabase.com/download/mementodb-1.8.4-x86_64.deb
+	source = copyright
+	sha256sums = f4ec321b1c41371489a459f60993ffc66dfeb6da8721088efda98d2853287812
+	sha256sums = 1c0bcd640026cb8a6baf15cdf9c037223b2da364eddf868022219b574663460e
+
+pkgname = mementodb
+
