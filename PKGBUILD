@@ -34,9 +34,7 @@ package() {
 	
 	local install_dir="${pkgdir}/opt"
 	install -d "${install_dir}"
-	cp -a "${srcdir}/${_pkgname}" "${install_dir}"
-	chmod 755 "${install_dir}/${_pkgname}"	
-	
+	cp -a "${srcdir}/${_pkgname}" "${install_dir}"	
 	cd "${install_dir}/${_pkgname}"
 	npm install --only=prod
 	
@@ -57,6 +55,9 @@ package() {
 
 	install -g 0 -o 0 -Dm 0644 "${srcdir}/${patches}/powercord.8" -t ${pkgdir}/usr/share/man/man8/
 	gzip ${pkgdir}/usr/share/man/man8/powercord.8
+
+	# This is not ideal. It's only required because it seems like discord needs write and execute permissions.
+	chmod -R 757 "${install_dir}/${_pkgname}"	
 
 	echo -e "\e[5m\e[101mWARNING"
 	echo -e "\e[5m\e[101mWARNING\e[49m \e[91m \e[4mUsing this tool could get you banned. Read the whole disclaimer on the github page!\e[0m\e[39m"	
