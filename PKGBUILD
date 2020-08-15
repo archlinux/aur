@@ -2,12 +2,12 @@
 
 pkgname=tym
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiny term for minimalists"
 arch=('x86_64')
 url="https://github.com/endaaman/tym"
 license=('MIT')
-depends=('vte3' 'lua')
+depends=('vte3' 'lua53')
 source=("https://github.com/endaaman/${pkgname}/releases/download/$pkgver/${pkgname}-$pkgver.tar.gz")
 sha1sums=('09aac9c5d46037386f8670c0c8626cd2cf2dddd3')
 build() {
