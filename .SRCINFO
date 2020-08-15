@@ -12,6 +12,7 @@ pkgbase = jetbrains-toolbox
 	depends = libxslt
 	depends = libxss
 	depends = xcb-util-keysyms
+	optdepends = xdg-utils: open URLs
 	options = !strip
 	source = https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.17.7391.tar.gz
 	source = jetbrains-toolbox.desktop

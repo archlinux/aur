@@ -8,6 +8,7 @@ arch=('x86_64' 'i686')
 url='https://www.jetbrains.com/toolbox/'
 license=('custom:jetbrains')
 depends=('java-runtime>=8' 'fuse' 'glib2' 'libxslt' 'libxss' 'xcb-util-keysyms')
+optdepends=('xdg-utils: open URLs')
 options=('!strip')
 source=("https://download.jetbrains.com/toolbox/${pkgname}-${pkgver}.tar.gz"
         jetbrains-toolbox.desktop
