@@ -1,10 +1,11 @@
 pkgbase = ruby-sinatra-contrib
 	pkgdesc = Collection of useful Sinatra extensions
 	pkgver = 2.0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sinatrarb.com/contrib/
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-sinatra
 	depends = ruby-mustermann

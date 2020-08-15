@@ -3,7 +3,7 @@
 _gemname=sinatra-contrib
 pkgname=ruby-$_gemname
 pkgver=2.0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of useful Sinatra extensions'
 arch=(any)
 url='http://sinatrarb.com/contrib/'
@@ -15,10 +15,11 @@ depends=(ruby
          ruby-tilt
          ruby-rack-protection
          ruby-multi_json)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
 sha1sums=('400d357e0d491fb2a0a02eaffedcfd19e4b21470')
+noextract=($_gemname-$pkgver.gem)
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
