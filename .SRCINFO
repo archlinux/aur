@@ -1,6 +1,6 @@
 pkgbase = python-coveralls
 	pkgdesc = Provide Seemless integration with coveralls.io
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/coveralls-clients/coveralls-python
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-coveralls
 	depends = python-requests
 	depends = python-docopt
 	depends = python>3.4
-	source = coveralls-python-2.1.1.tar.gz::https://github.com/coveralls-clients/coveralls-python/archive/2.1.1.tar.gz
-	sha256sums = 0efd19aa235304bcf0fcb49e8cf0bd72db5060fac69f84e4685a01b287184d0f
+	source = coveralls-python-2.1.2.tar.gz::https://github.com/coveralls-clients/coveralls-python/archive/2.1.2.tar.gz
+	sha256sums = 137325ebf3ebfe8bd8d297eab70fb29c451bb212c163551ec548e81fad925b25
 
 pkgname = python-coveralls
 
