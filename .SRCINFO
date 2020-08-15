@@ -1,6 +1,6 @@
 pkgbase = tbs-linux_media-git
 	pkgdesc = TBS linux open source drivers
-	pkgver = r1149.639c351_4.20.4_arch1_1_ARCH
+	pkgver = r1325.17b4bfa_5.8.1_arch1_1
 	pkgrel = 1
 	url = https://github.com/tbsdtv/linux_media
 	arch = x86_64
