@@ -1,26 +1,19 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helm-diff
 pkgver=3.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Helm plugin that shows a diff explaining what a helm upgrade would change'
 arch=('x86_64')
 url='https://github.com/databus23/helm-diff'
 license=('Apache')
 install=helm-diff.install
 depends=('helm')
-# `go mod init` wants git
-makedepends=('git' 'go')
+makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('db5be9cfb14c811a0145900ab995586821625090c28180900e0e49f51d65778f')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  # fails when go.mod present from previous run
-  #[[ ! -f go.mod ]] && go mod init github.com/databus23/helm-diff
-  # go mod init didn't catch stretchr/testify
-  #go mod edit -require github.com/stretchr/testify@v1.5.1
-  # `go mod download` fails to get all required modules and `go build -mod=readonly` fails
-  #go mod tidy
   go mod download
   sed -i '/^hooks:$/Q' plugin.yaml
 }
