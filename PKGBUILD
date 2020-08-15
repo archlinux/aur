@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.7
-_minor=13
-_clr=975
+_minor=15
+_clr=977
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,11 +16,11 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33590
+_clear_version=33610
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=4c7f83ae536ee016b021882325e609fa353249a110b726c3184061444ec564db
+_config_hash=f86d43295f10b4cfe498dc223712845922e0aaab9ed1749bdc3f5bc1a8d44e83
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -115,3 +115,6 @@ b2sums=('e3f6e1c97a17d6026cd34d5ce02777a82e44e62f05629e013cbfdd12370bddfc58951e0
 b2sums=('876dd91c88cc26af8a023b5ff6b97001e5f033c717ed13813eb70c5d726674ae531a30a8c625abd43766505a71a43fa78ac18e0671e0ed66c1b917b21e074821'
         'd399934ffe2a354aade93ea6a9afb03c12a7acf37024d5c9ef9d1930b3bb3d5259e2226d1245fa63464be19ab2c770b53ede672d0a3e3ef17dfca9262306295a'
         'bc2738b49c2f17f3447ea7821a09da380dd8b68dff2462213ef50e8ce91e9a117bfc978af3fdd4925a9b4ced3b1a1b3df8d16f37ecb62d1d215dce8fba8e34d0')
+b2sums=('e986bf571191108ff9711b4114deb03755f2fe0a8f6f8ad0bedb61baab31be721838d64c398377701fe5e1f4960c7a50b93c28440c378d80496b3f41d9e0a15d'
+        '51526a44db53815d026f8fc24092c64fdbba678131ec8a8aeedf1c74599279b9040e701ed603d2d4efcb421989876aa9f75a395e2a5df83dff848360d7ef03f6'
+        'bd8b24f921990edf657f12db7bc42eed0db36b57db85841b95da27cfc7facdf3d7ed290ea9a323c46df5caf4662dc694344800bde99c503c7fa96df692adfc7b')
