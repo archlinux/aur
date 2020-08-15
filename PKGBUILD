@@ -2,7 +2,7 @@
 # Contributor: paul2lv [at] gmail dot com
 
 pkgname=fahcontrol-beta
-pkgver=7.6.14
+pkgver=7.6.15
 pkgrel=1
 pkgdesc='A Graphical User Interface (GUI) for Folding@Home - Beta version'
 url="https://foldingathome.org"
@@ -13,7 +13,7 @@ options=('!docs' '!libtool')
 conflicts=('fahcontrol')
 provides=('fahcontrol')
 source=(https://download.foldingathome.org/releases/beta/release/fahcontrol/debian-stable-64bit/v7.6/fahcontrol_${pkgver}-1_all.deb)
-sha256sums=('5920075d8d92acf432918359d74baf3707197e6b4e5fb0b227e99ecf95c96d09')
+sha256sums=('ebfa5f2e5edd8ea6a546f6964c66cfca4b11a9cec8661c261466ccdb13786134')
 
 package() {
   cd ${srcdir}
