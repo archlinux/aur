@@ -1,12 +1,13 @@
 pkgbase = ruby-pdf-core-0.7
 	pkgdesc = PDF::Core is used by Prawn to render PDF documents
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://prawn.majesticseacreature.com
 	arch = any
 	license = custom:PRAWN
 	license = GPL2
 	license = GPL3
+	makedepends = ruby-rdoc
 	depends = ruby
 	provides = ruby-pdf-core=0.7.0
 	noextract = pdf-core-0.7.0.gem
