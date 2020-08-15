@@ -1,7 +1,7 @@
 pkgbase = compiz
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM
 	pkgver = 0.9.14.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/compiz
 	arch = i686
 	arch = x86_64
@@ -53,7 +53,7 @@ pkgbase = compiz
 	sha256sums = 6ec9c04540ca1649c687d9ab2c8311caea7075831e2cffe719ec7958c9ebab7b
 	sha256sums = 89ee91a8ea6b1424ef76661ea9a2db43412366aacddc12d24a7adf5e04bfbc61
 	sha256sums = 4ab3277da201314b3f65e30128bc30704ddee584fdbbfc8d0d83c7e0de91fa9a
-	sha256sums = 580f237fc4800669d5c50d9af392dd5f5cf2750131a9fa1d5edfd17df02d0a3c
+	sha256sums = eca2918214e81f742b7617ede20b81b8690ac723d756f690286e73ab3cbb6068
 
 pkgname = compiz
 
