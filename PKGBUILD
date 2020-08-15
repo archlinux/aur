@@ -5,16 +5,17 @@
 _gemname=json_pure
 pkgname=ruby-$_gemname
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='JSON Implementation for Ruby'
 arch=(any)
 url='http://flori.github.com/json'
 license=(RUBY)
 depends=(ruby)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
 sha1sums=('4c430a262f59edb0cd081145999ec3d5894b0ea9')
+noextract=($_gemname-$pkgver.gem)
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
