@@ -16,6 +16,11 @@ md5sums=('f0c0638e118e615d5005d4a55cb7315a'
          'fafaef86844ead59b3837a5909bf780f')
 noextract=("eula.docx")
 
+pkgver() {
+  echo -n '300.'
+  strings "$srcdir/Write/Write" | grep -oP 'Write \Kr[0-9]+'
+}
+
 prepare() {
   desktop-file-edit --set-key=Exec --set-value=/usr/bin/write_stylus "$srcdir/Write/Write.desktop"
   desktop-file-edit --set-key=Icon --set-value=/usr/share/icons/hicolor/144x144/apps/write_stylus.png "$srcdir/Write/Write.desktop"
