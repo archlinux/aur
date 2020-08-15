@@ -2,13 +2,13 @@
 pkgname=powercord-git
 _pkgname=powercord
 pkgver=r1178.41cb7ce
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight discord client mod focused on simplicity and performance."
 arch=("any")
 url="https://github.com/powercord-org/$_pkgname"
-license=('Parkord')
-depends=('nodejs')
-makedepends=('git' 'npm' 'jq')
+license=('Porkord')
+depends=('nodejs' 'git' 'npm')
+makedepends=('jq')
 source=(
 	"git+https://github.com/powercord-org/powercord#branch=v2"
 	"index.js.patch"
