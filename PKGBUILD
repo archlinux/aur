@@ -56,7 +56,7 @@ case ${_myopts} in
 	}
 
 	cd "${srcdir}/${_pkgname}"
-	sed -i 's|^.*run_all_callbacks.*$||' src/conky.cc
+	sed -i 's|conky::run_all_callbacks();||' src/conky.cc
 
 	md5sums=('SKIP')
     ;;
