@@ -8,9 +8,7 @@ pkgbase = mimi-bachoseven-git
 	makedepends = git
 	depends = bash
 	provides = mimi-git
-	provides = xdg-utils
 	conflicts = mimi-git
-	conflicts = xdg-utils
 	source = git+https://github.com/BachoSeven/mimi.git
 	md5sums = SKIP
 
