@@ -10,7 +10,7 @@ url="http://www.styluslabs.com/"
 license=('custom')
 depends=(sdl2)
 makedepends=(desktop-file-utils)
-source=("http://www.styluslabs.com/write/write${pkgver%.r*}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz"::"http://www.styluslabs.com/write/write${pkgver%.r*}.tar.gz"
 		"http://www.styluslabs.com/write/eula.docx")
 md5sums=('f0c0638e118e615d5005d4a55cb7315a'
          'fafaef86844ead59b3837a5909bf780f')
