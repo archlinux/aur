@@ -1,23 +1,22 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-ray
-pkgver=0.8.6
-pkgrel=2
+pkgver=0.8.7
+pkgrel=1
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
 arch=('x86_64')
 url='https://ray.io'
 license=('Apache-2.0')
-depends=(psmisc python python-aiohttp python-click python-colorama
-         python-filelock python-google python-grpcio python-jsonschema
-         python-msgpack python-numpy python-protobuf py-spy python-pyaml
-         python-redis)
+depends=(psmisc python python-aiohttp python-aioredis python-click
+         python-colorama python-colorful python-filelock python-google
+         python-gpustat python-grpcio python-jsonschema python-msgpack
+         python-numpy python-protobuf py-spy python-pyaml python-requests
+         python-redis python-opencensus python-prometheus-client)
 optdepends=(
-            'python-requests: for ray[dashboard] module'
-            'python-gpustat: for ray[dashboard] module'
             'uvicorn: for ray[serve] module'
             'python-flask: for ray[serve] module'
-            'python-blist: for ray[server] module'
+            'python-blist: for ray[serve] module'
             'python-tabulate: for ray[tune] and ray[rllib] module'
             'python-tensorboardx: for ray[tune] and ray[rllib] module'
             'python-pandas: for ray[tune] and ray[rllib] module'
@@ -28,12 +27,11 @@ optdepends=(
             'opencv: for ray[rllib] module'
             'python-pyaml: for ray[rllib] module'
             'python-scipy: for ray[rllib] module'
-            'python-msgpack: for ray[streaming] module'
            )
 makedepends=(python python-setuptools python-wheel python-pip cython bazel)
 _pkgname=ray
-source=("${_pkgname}-${pkgver}::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz")
-sha256sums=('c0366e3911f6b4f9eec1aae7969c12882df9bcf408bbcdc1fceb18f3b303543c')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz")
+sha256sums=('2df328f1bcd3eeb4fa33119142ea0d669396f4ab2a3e78db90178757aa61534b')
 
 build() {
   cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}/python"
