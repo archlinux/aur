@@ -1,0 +1,17 @@
+pkgbase = alass-git
+	pkgdesc = Command line tool to synchronize subtitles
+	pkgver = 2.0.0.r2
+	pkgrel = 1
+	url = https://github.com/kaegi/alass
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = ffmpeg
+	provides = alass
+	conflicts = alass
+	source = git+https://github.com/kaegi/alass
+	sha256sums = SKIP
+
+pkgname = alass-git
+
