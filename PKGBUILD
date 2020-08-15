@@ -1,8 +1,8 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=archivebox
-pkgver=0.4.13
-pkgrel=2
+pkgver=0.4.14
+pkgrel=1
 pkgdesc="The open source self-hosted web archive"
 arch=("any")
 url="https://github.com/pirate/ArchiveBox"
@@ -16,7 +16,7 @@ depends=('python-django' 'python-mypy_extensions' 'wget'
          'youtube-dl' 'curl' 'single-file-git')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('69ec4e65a64db145bfcdd30a0362ce43a328f71b1f8b572402ca247396f6168b')
+sha256sums=('e3cac8277a31c34876e0b92de2b3d74687810586000c613bd91bd6c16d25d250')
 
 build() {
   cd ${pkgname}-${pkgver}
