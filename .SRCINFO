@@ -1,26 +1,19 @@
 pkgbase = python-pystray
 	pkgdesc = Provides systray integration.
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/moses-palmer/pystray
 	arch = any
-	license = GPL
-	makedepends = python
-	makedepends = python2
+	license = GPL3
+	makedepends = python>=3.4
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	makedepends = python-sphinx
-	makedepends = python2-sphinx
-	source = https://github.com/moses-palmer/pystray/archive/v0.15.0.tar.gz
-	sha512sums = 889730ef8b7967f60538bf1354fb9864c9136d4c5700c2eab411164f1878938a0c2c2d0946c9df58892f3d3a27832316f5413a462741166b81f49f9d915dfc1f
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python-six
+	depends = python-pillow
+	depends = python-xlib>=0.17
+	source = https://github.com/moses-palmer/pystray/archive/v0.16.0.tar.gz
+	sha512sums = 1571a91851cb9ff85cc7497162db687d3cef3ff6c863d1f8ede4ca1275de1f0a1dcf09a313a744f39f5666765c507c0dccf5f75320e5c7bd6dd4074ef2e5b83a
 
 pkgname = python-pystray
-	depends = python-pillow
-	depends = python-six
-	depends = python-xlib
-
-pkgname = python2-pystray
-	depends = python2-pillow
-	depends = python2-six
-	depends = python2-xlib
 
