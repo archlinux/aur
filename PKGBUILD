@@ -2,25 +2,24 @@
 
 
 pkgname=octetos-db-maria
-pkgver=1.2.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="C++ library for Database Acces."
 arch=('x86_64')
 license=('GPL')
 url="https://github.com/azaeldevel/octetos-db"
-depends=('octetos-core' 'mariadb-connector-c')
-#backup=('etc/nanorc')
-md5sums=('421c868a351e0c350827905ab561b8e3')
-source=(https://github.com/azaeldevel/octetos-db/archive/1.2.2-alpha.6.tar.gz)
+depends=('octetos-db')
+md5sums=('e5471c2458e615cb4c92858469d0b588')
+source=(https://github.com/azaeldevel/octetos-db/archive/1.3.2-alpha.tar.gz)
 
 build() {
-    cd octetos-db-1.2.2-alpha.6
+    cd octetos-db-1.3.2-alpha
     autoreconf -fi
-    ./configure --prefix=/usr --sysconfdir=/etc --with-mariadb
+    ./configure --prefix=/usr --sysconfdir=/etc --docdir=${datarootdir}/doc/${pkgname}-${pkgver} --with-mariadb
     make
 }
 
 package() {
-  cd octetos-db-1.2.2-alpha.6
+  cd octetos-db-1.3.2-alpha
   make DESTDIR="${pkgdir}" install
 }
