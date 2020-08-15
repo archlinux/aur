@@ -1,6 +1,6 @@
 pkgbase = clasp-cl-git
 	pkgdesc = Bringing Common Lisp and C++ Together
-	pkgver = 0.4.2.r2802.g80be1eee1
+	pkgver = 0.4.2.r2955.gbdc09b2fe
 	pkgrel = 1
 	url = https://github.com/clasp-developers/clasp
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = clasp-cl-git
 	source = git://github.com/clasp-developers/clasp.git
 	source = wscript.config
 	sha512sums = SKIP
-	sha512sums = 597b10fa3e5bc72373c96c0b8d42f9b879121d72fa747a70855c1020fcfee8a366e468df7557a26d162933c8331dbd0d317d198013e42c79d9f8b16103062eed
+	sha512sums = e3280bf14b0fc066c1bc95b9ea79244f487dbd3fb04e6f527fdf47da57edb6ab8a4b8cb633ab36b3d2a5f406192ad825e790a0fadf4a451a683d1d98d11f45dd
 
 pkgname = clasp-cl-git
 

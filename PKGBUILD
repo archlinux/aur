@@ -2,7 +2,7 @@
 _srcname=clasp
 pkgname=clasp-cl
 pkgname=clasp-cl-git
-pkgver=0.4.2.r2802.g80be1eee1
+pkgver=0.4.2.r2955.gbdc09b2fe
 pkgrel=1
 pkgdesc="Bringing Common Lisp and C++ Together"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('cclasp-boehm' 'common-lisp' 'clasp-cl' 'cando')
 source=('git://github.com/clasp-developers/clasp.git'
         'wscript.config')
 sha512sums=('SKIP'
-            '597b10fa3e5bc72373c96c0b8d42f9b879121d72fa747a70855c1020fcfee8a366e468df7557a26d162933c8331dbd0d317d198013e42c79d9f8b16103062eed')
+            'e3280bf14b0fc066c1bc95b9ea79244f487dbd3fb04e6f527fdf47da57edb6ab8a4b8cb633ab36b3d2a5f406192ad825e790a0fadf4a451a683d1d98d11f45dd')
 
 pkgver() {
   cd "$_srcname"
@@ -32,12 +32,12 @@ build() {
     sed -i s/subprocess.call/print/g extensions/cando/wscript
     sed -i s/os.symlink/print/g extensions/cando/wscript
     ./waf configure
-    ./waf build_cboehm
+    ./waf build_cmps
 }
 
 package() {
   cd "$_srcname/"
-  ./waf install_cboehm --destdir "$pkgdir"
-  ln -s /usr/bin/ccando-boehm "$pkgdir/usr/bin/cando"
-  ln -s /usr/bin/cleap-boehm "$pkgdir/usr/bin/cleap"
+  ./waf install_cmps --destdir "$pkgdir"
+  ln -s /usr/bin/ccando-mps "$pkgdir/usr/bin/cando"
+  ln -s /usr/bin/cleap-mps "$pkgdir/usr/bin/cleap"
 }
