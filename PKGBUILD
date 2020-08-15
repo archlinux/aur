@@ -2,7 +2,7 @@
 
 pkgname=dovecot-xaps-daemon
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='iOS Push Email for Dovecot - xaps daemon'
 arch=('x86_64')
 url='https://github.com/freswa/dovecot-xaps-daemon'
