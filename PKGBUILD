@@ -2,7 +2,7 @@
 pkgname=powercord-git
 _pkgname=powercord
 pkgver=r1178.41cb7ce
-pkgrel=3
+pkgrel=4
 pkgdesc="A lightweight discord client mod focused on simplicity and performance."
 arch=("any")
 url="https://github.com/powercord-org/$_pkgname"
@@ -11,11 +11,19 @@ depends=('nodejs' 'git' 'npm')
 makedepends=('jq')
 source=(
 	"git+https://github.com/powercord-org/powercord#branch=v2"
+	"injector_index.js.patch"
+	"injector_main.js.patch"
 	"index.js.patch"
-	"main.js.patch"
+	"pc-settings_index.js.patch"
+	"pc-updater_index.js.patch"
+	"pc-updater_settings.jsx.patch"
 	"powercord.8"
 	)
 md5sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -24,13 +32,17 @@ md5sums=(
 options=('!strip')
 
 prepare() {
-  patch -u ${srcdir}/${_pkgname}/injectors/index.js -i ${srcdir}/index.js.patch
-  patch -u ${srcdir}/${_pkgname}/injectors/main.js -i ${srcdir}/main.js.patch
+	patch -u ${srcdir}/${_pkgname}/injectors/index.js -i ${srcdir}/injector_index.js.patch
+	patch -u ${srcdir}/${_pkgname}/injectors/main.js -i ${srcdir}/injector_main.js.patch
+	patch -u ${srcdir}/${_pkgname}/src/Powercord/index.js -i ${srcdir}/index.js.patch
+	patch -u ${srcdir}/${_pkgname}/src/Powercord/plugins/pc-settings/index.js -i ${srcdir}/pc-settings_index.js.patch
+	patch -u ${srcdir}/${_pkgname}/src/Powercord/plugins/pc-updater/index.js -i ${srcdir}/pc-updater_index.js.patch
+	patch -u ${srcdir}/${_pkgname}/src/Powercord/plugins/pc-updater/components/Settings.jsx -i ${srcdir}/pc-updater_settings.jsx.patch
 }
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${srcdir}/${_pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

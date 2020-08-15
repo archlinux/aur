@@ -1,0 +1,38 @@
+--- /opt/powercord/src/Powercord/plugins/pc-updater/components/Settings.jsx	2020-08-15 18:33:09.000000000 +0200
++++ ./pc-updater_settings.jsx	2020-08-15 21:48:42.927277433 +0200
+@@ -83,7 +83,7 @@
+         <div className="about">
+           <div>
+             <span>{Messages.POWERCORD_UPDATES_UPSTREAM}</span>
+-            <span>{powercord.gitInfos.upstream.replace(REPO_URL, Messages.POWERCORD_UPDATES_UPSTREAM_OFFICIAL)}</span>
++            <span>{powercord.gitInfos.upstream.replace(REPO_URL, Messages.POWERCORD_UPDATES_UPSTREAM_OFFICIAL)} (AUR)</span>
+           </div>
+           <div>
+             <span>{Messages.POWERCORD_UPDATES_REVISION}</span>
+@@ -200,17 +200,6 @@
+         >
+           {Messages.POWERCORD_UPDATES_OPTS_CHANGE_LOGS}
+         </ButtonItem>
+-        <ButtonItem
+-          note={Messages.POWERCORD_UPDATES_OPTS_RELEASE_DESC}
+-          button={powercord.gitInfos.branch === 'v2'
+-            ? Messages.POWERCORD_UPDATES_OPTS_RELEASE_DEVELOP_BTN
+-            : Messages.POWERCORD_UPDATES_OPTS_RELEASE_STABLE_BTN}
+-          onClick={() => this.askChangeChannel(
+-            () => this.plugin.changeBranch(powercord.gitInfos.branch === 'v2' ? 'v2-dev' : 'v2')
+-          )}
+-        >
+-          {Messages.POWERCORD_UPDATES_OPTS_RELEASE}
+-        </ButtonItem>
+ 
+         <Category
+           name={Messages.POWERCORD_UPDATES_OPTS_DEBUG}
+@@ -394,7 +383,7 @@
+ 
+           <b>Git </b>
+           <div className='row'>
+-            <div className='column'>Upstream:&#10;{powercord.gitInfos.upstream.replace(REPO_URL, 'Official')}</div>
++            <div className='column'>Upstream:&#10;{powercord.gitInfos.upstream.replace(REPO_URL, 'Official')} (AUR)</div>
+             <div className='column'>Revision:&#10;
+               <a
+                 href={`https://github.com/${powercord.gitInfos.upstream}/commit/${powercord.gitInfos.revision}`}

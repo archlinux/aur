@@ -1,0 +1,12 @@
+--- /opt/powercord/src/Powercord/plugins/pc-updater/index.js	2020-08-15 18:33:09.000000000 +0200
++++ ./pc-updater_index.js	2020-08-15 21:53:34.084949377 +0200
+@@ -70,9 +70,6 @@
+     const themes = [ ...powercord.styleManager.themes.values() ].filter(t => t.isTheme);
+ 
+     const entities = plugins.concat(themes).filter(e => !disabled.includes(e.updateIdentifier) && e.isUpdatable());
+-    if (!disabled.includes(powercord.updateIdentifier)) {
+-      entities.push(powercord);
+-    }
+ 
+     let done = 0;
+     const updates = [];
