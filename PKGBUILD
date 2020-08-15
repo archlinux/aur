@@ -2,7 +2,7 @@
 
 pkgname=fbsplash-theme-gen
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="fbsplash-theme-gen allows you to create fbsplash compatible themes automatically from any image file(s)."
 arch=("x86_64")
 url="http://sourceshark.com/sourcecode/tarballs/${pkgname}-${pkgver}.tar.gz"
