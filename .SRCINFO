@@ -7,8 +7,8 @@ pkgbase = mimi-bachoseven-git
 	license = GPL2
 	makedepends = git
 	depends = bash
-	provides = mimi-git
-	conflicts = mimi-git
+	provides = xdg-utils
+	conflicts = xdg-utils
 	source = git+https://github.com/BachoSeven/mimi.git
 	md5sums = SKIP
 

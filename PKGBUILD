@@ -13,8 +13,8 @@ makedepends=('git')
 source=("git+${url}.git")
 md5sums=('SKIP')
 
-provides=('mimi-git')
-conflicts=('mimi-git')
+provides=('xdg-utils')
+conflicts=('xdg-utils')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
