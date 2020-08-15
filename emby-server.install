@@ -1,0 +1,8 @@
+post_upgrade() {
+  if [ $(vercmp $2 4.4.0.40-4) -lt 0 ]; then
+    cat << EOF
+The systemd service now uses DynamicUser to manage the emby user.
+You may safely userdel the old emby user.
+EOF
+  fi
+}

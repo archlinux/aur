@@ -5,7 +5,7 @@
 
 pkgname=emby-server-beta
 pkgver=4.5.0.18
-pkgrel=1
+pkgrel=3
 _ffmpeg_ver=2020_05_23
 _ffdetect_ver=2020_05_23
 pkgdesc='Bring together your videos, music, photos, and live television'
@@ -43,6 +43,8 @@ depends=('alsa-lib'
          'zvbi')
 makedepends=('ffnvcodec-headers8.1'
              'nasm')
+optdepends=('intel-media-sdk: Intel QuickSync support (requires Emby Premiere)'
+            'nvidia-utils: Nvidia NVDEC/NVENC support (requires Emby Premiere)')
 provides=('emby-server')
 conflicts=('emby-server')
 source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgver}/embyserver-netcore_${pkgver}.zip"
@@ -51,19 +53,16 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
         'emby-server'
         'emby-server.conf'
         'emby-server.service'
-        'emby-server.sysusers'
-        'emby-server.tmpfiles'
         'license.docx')
 noextract=(license.docx)
 backup=('etc/conf.d/emby-server')
+install=emby-server.install
 sha256sums=('1a24b50d0204d5bbdcc13b7c01067e0fa955c0f92f5bb618b3e7ff492e38bb25'
             'ed2fde500b705b06a0b82a9bf6b367c63b0fc899f69f77691bc68d61f3862a77'
             'c66e73c86ebfdfb169dbdc3c6731f09bd82382dda3fb8a77abe19d6973c09b51'
             '0351d6e9118853e3aa275d62b67dce4444b3d85130b05fb889b2069f364f47ca'
             '5e3470f834808babe7d60b8d86f462e7945c3617499539e5af45eb55d7b87b23'
             '2e7f778fd47cad0670690beaab2453fde37c2a3e7d0e7b2ca83b2cbb66087b3c'
-            'f7fa33949757ffc587ecf82496dc35ebc8c8e5c98b882b31dc40a24263d3921a'
-            '16ead857a1756e3e8cfc3e70f481d14d791a262b79733065a4f7371f21a97abe'
             'a6d7ea65dcb06392479a85e1a10a7aeb872d803da6f784f6935fcd4ee63008c6')
 
 prepare() {
@@ -117,8 +116,6 @@ package() {
   install -Dm 755 ffmpeg-${_ffmpeg_ver}_*/ffmpeg "${pkgdir}"/usr/bin/ffmpeg-emby
   install -Dm 755 ffmpeg-${_ffmpeg_ver}_*/ffprobe "${pkgdir}"/usr/bin/ffprobe-emby
   install -Dm 644 emby-server.service -t "${pkgdir}"/usr/lib/systemd/system/
-  install -Dm 644 emby-server.sysusers "${pkgdir}"/usr/lib/sysusers.d/emby-server.conf
-  install -Dm 644 emby-server.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/emby-server.conf
   install -Dm 644 emby-server.conf "${pkgdir}"/etc/conf.d/emby-server
   install -Dm 644 license.docx -t "${pkgdir}"/usr/share/licenses/$pkgname/license.docx
 }
