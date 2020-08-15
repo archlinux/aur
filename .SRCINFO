@@ -5,6 +5,7 @@ pkgbase = ruby-gemojione
 	url = http://github.com/jonathanwiesel/gemojione
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-json
 	noextract = gemojione-4.3.3.gem

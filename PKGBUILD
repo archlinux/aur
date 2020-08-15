@@ -11,10 +11,11 @@ arch=(any)
 url='http://github.com/jonathanwiesel/gemojione'
 license=('MIT')
 depends=(ruby ruby-json)
+makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
 sha1sums=('c64756133979460a702dea14908729f9178ee1ca')
+noextract=($_gemname-$pkgver.gem)
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
