@@ -3,7 +3,7 @@
 
 pkgname=slack-electron
 _pkgname=slack
-pkgver=4.7.0
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux, modified to use the system 'electron' package instead of its own"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('electron')
 provides=('slack' 'slack-desktop')
 conflicts=('slack-desktop')
 source=("https://downloads.slack-edge.com/linux_releases/${_pkgname}-desktop-${pkgver}-amd64.deb")
-sha256sums=('83a7fc575f77faca1771762cb97eaa8649092295f33ac62098e92bc5c0a19edb')
+sha256sums=('60febe824334cbc33e4c63e7ac133a53efc325447405fc8a3ffa426ecbbf1861')
 
 prepare() {
     cd "${srcdir}"
@@ -45,7 +45,7 @@ package() {
     # Install resources
     cd "${srcdir}/usr/lib/slack/resources"
 	install -Dm644 app.asar "${pkgdir}/usr/share/${_pkgname}/app.asar"
-    
+	
     cd app.asar.unpacked
 	find . -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}/app.asar.unpacked/{}" \;
 
