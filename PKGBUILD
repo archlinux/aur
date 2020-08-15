@@ -1,25 +1,42 @@
-# Maintainer: Alessandro Righi <alerighi4@gmail.com>
+# Maintainer: Otreblan <otreblain@gmail.com>
 
-pkgbase='python-gql'
 pkgname='python-gql'
-pkgver=0.2.0
+pkgver=3.0.0a1
 pkgrel=1
 pkgdesc="Python GraphQL client"
 arch=('any')
+provides=()
+conflicts=()
 url="https://github.com/graphql-python/gql"
 license=('MIT')
-depends=('python-six' 'python-graphql-core' 'python-promise' 'python-requests')
+depends=(
+	'python-aiohttp'
+	'python-graphql-core'
+	'python-requests'
+	'python-websockets'
+	'python-yarl'
+)
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/c4/6f/cf9a3056045518f06184e804bae89390eb706168349daa9dff8ac609962a/gql-0.2.0.tar.gz")
-sha256sums=('ad0f0b8226428d727c8e1d1cac4e521d83ed024d814921bd55b8adb997dadf4b')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('3254a6010464932e3700a8d225cf6e40a6983aaf5f279615504c8196a374daf9')
+
+prepare() {
+	cd "$srcdir"
+
+	# Add python- at the start of the directory
+	mv {${pkgname#python-},$pkgname}-$pkgver
+}
 
 build() {
-  cd "$srcdir"/gql-$pkgver
-  python setup.py build
+	cd "$srcdir/$pkgname-$pkgver"
+
+	python setup.py build
 }
 
 package() {
-  cd "$srcdir"/gql-$pkgver
-  python setup.py install --skip-build -O1 --root="$pkgdir"
-}
+	cd "$srcdir/$pkgname-$pkgver"
 
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
