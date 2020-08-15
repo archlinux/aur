@@ -1,7 +1,7 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=uhhyou.lv2-git
-pkgdesc="Vaious synth and effect LV2 plugins."
-pkgver=r493.add78df
+pkgdesc="Various synth, effect and CV LV2 plugins."
+pkgver=r505.23e2d7d
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/ryukau/LV2Plugins"
 license=(GPL)
 groups=()
 depends=()
-makedepends=('jack' 'mesa' 'liblo' 'python-rdflib')
+makedepends=('lv2' 'jack' 'mesa' 'liblo' 'python-rdflib')
 checkdepends=()
 optdepends=()
 provides=()
@@ -34,7 +34,7 @@ pkgver() {
 prepare() {
   cd LV2Plugins
   git submodule update --init --recursive
-  cp patch/NanoVG.cpp lib/DPF/dgl/src/NanoVG.cpp
+  # cp patch/NanoVG.cpp lib/DPF/dgl/src/NanoVG.cpp
 }
 
 build() {

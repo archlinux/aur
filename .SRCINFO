@@ -1,10 +1,11 @@
 pkgbase = uhhyou.lv2-git
-	pkgdesc = Vaious synth and effect LV2 plugins.
-	pkgver = r493.add78df
+	pkgdesc = Various synth, effect and CV LV2 plugins.
+	pkgver = r505.23e2d7d
 	pkgrel = 1
 	url = https://github.com/ryukau/LV2Plugins
 	arch = x86_64
 	license = GPL
+	makedepends = lv2
 	makedepends = jack
 	makedepends = mesa
 	makedepends = liblo
