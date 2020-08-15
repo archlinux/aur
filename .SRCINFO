@@ -1,10 +1,11 @@
 pkgbase = ruby-octicons-8
 	pkgdesc = A package that distributes Octicons in a gem
 	pkgver = 8.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/primer/octicons
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-nokogiri
 	provides = ruby-octicons=8.5.0

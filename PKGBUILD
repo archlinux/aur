@@ -4,17 +4,18 @@
 _gemname=octicons
 pkgname=ruby-$_gemname-8
 pkgver=8.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A package that distributes Octicons in a gem"
 arch=(any)
 url='https://github.com/primer/octicons'
 license=(MIT)
 depends=(ruby ruby-nokogiri)
+makedepends=(ruby-rdoc)
 provides=('ruby-octicons=8.5.0')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
 sha1sums=('5ece8aa9bea4ce6073e190cdabc1a6b4b5ebd304')
+noextract=($_gemname-$pkgver.gem)
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
