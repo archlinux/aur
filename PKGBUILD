@@ -1,4 +1,5 @@
-# Maintainer: Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
+# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Contributor: Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 
 pkgname="python-pystray"
 pkgver=0.16.0
