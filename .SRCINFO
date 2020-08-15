@@ -1,6 +1,6 @@
 pkgbase = ttf-nepali-font-git
-	pkgdesc = Collection Of Pupular Nepali Fonts
-	pkgver = 1.0.1
+	pkgdesc = Collection Of Pupular Nepali Fonts including Preeti, Kantipur, himali, Mukta, etc
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://gitlab.com/Suphal/ttf-nepali-font-git.git
 	arch = x86_64

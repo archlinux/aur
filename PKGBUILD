@@ -1,8 +1,8 @@
 # Maintainer: Suphal Bhattarai suphalbhattarai4@gmail.com
 pkgname=ttf-nepali-font-git
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
-pkgdesc="Collection Of Pupular Nepali Fonts"
+pkgdesc="Collection Of Pupular Nepali Fonts including Preeti, Kantipur, himali, Mukta, etc"
 arch=(x86_64 i686)
 url="https://gitlab.com/Suphal/ttf-nepali-font-git.git"
 depends=(fontconfig)
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "ttf-nepali-font-git"
   install -d "${pkgdir}/usr/share/fonts/TTF"
-  printf "1.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.0.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
