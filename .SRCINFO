@@ -1,6 +1,6 @@
 pkgbase = xde-applets
 	pkgdesc = X Desktop Environment System Tray Icons and Dock Apps
-	pkgver = 0.9
+	pkgver = 0.10
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-applets
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = xde-applets
 	depends = cpupower
 	depends = upower
 	optdepends = xdg-launch-git: launch with recent update and launch notification
-	source = https://github.com/bbidulock/xde-applets/releases/download/0.9/xde-applets-0.9.tar.lz
-	md5sums = 0883a6871fa258f611d15e887f915cf2
+	source = https://github.com/bbidulock/xde-applets/releases/download/0.10/xde-applets-0.10.tar.lz
+	md5sums = 454689ac1831143fd7dad3e698e272b4
 
 pkgname = xde-applets
 
