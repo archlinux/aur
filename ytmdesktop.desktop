@@ -2,7 +2,7 @@
 Name=YouTube Music
 Comment=A desktop app for YouTube Music
 GenericName=YouTube Music
-Exec=ytmdesktop %U
+Exec=env XDG_CURRENT_DESKTOP=KDE ytmdesktop %U
 Icon=ytmdesktop
 Type=Application
 StartupNotify=true
