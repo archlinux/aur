@@ -1,0 +1,29 @@
+pkgbase = gnome-notes-git
+	pkgdesc = Write out notes, every detail matters
+	pkgver = 3.37.90+2+gcd4c135
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Notes
+	arch = x86_64
+	license = GPL
+	makedepends = evolution
+	makedepends = python
+	makedepends = appstream-glib
+	makedepends = yelp-tools
+	makedepends = git
+	makedepends = meson
+	depends = tracker
+	depends = webkit2gtk
+	depends = gnome-online-accounts
+	depends = evolution-data-server
+	depends = libhandy
+	provides = bijiben=3.37.90+2+gcd4c135
+	provides = gnome-notes
+	conflicts = bijiben
+	conflicts = gnome-notes
+	source = git+https://gitlab.gnome.org/GNOME/gnome-notes.git
+	source = git+https://gitlab.gnome.org/GNOME/libgd.git
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = gnome-notes-git
+
