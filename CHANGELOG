@@ -1,3 +1,29 @@
+2020-08-15 GregTheMadMonk <yagreg7@gmail.com>
+	* 1.4.4
+	- Add custom status fields:
+		+ Custom status field is set via "fields.status.X" where X - is a field letter (uppercase or lowercase)
+		+ ":set fields.status.X value" - value is a string, that, after being "formatted" (cvars replaced with values), is displayed in status
+		+ %fields.status.X% returns field as it would be displayed in UI
+		+ See scripts/prettier_status.conf for an example of "prettyifying" the status
+	- Allow to access meta properties directly through %meta.prop_name% cvars (read/write)
+	- Allow to access alias code through %alias.alias_name% (read-only)
+	- Add more keys that ":bind" recognizes:
+		+ "home"
+		+ "end"
+		+ "backspace"
+		+ "delete"
+		+ "codeNUMBER" for key with code NUMBER
+		+ PageUp as "pgup"
+		+ PageDown as "pgdn"
+	- Make ":bind" recognize multi-key input:
+		+ "c^key" for ctrl+key
+		+ "a^key" for alt+key
+		+ can be combined like "a^c^key" or "c^a^key"
+	- Changing only background or foreground color with terminal sequence does not reset the
+	other color from now
+	- Move [prefix]_[name] to namespaces [prefix] in code
+	- Move cvar initialization to noaftodo_def.cpp
+
 2020-08-07 GregTheMadMonk <yagreg7@gmail.com>
 	* 1.4.3r276.ff71532
 	- Fix a stupiddd typo in default config
