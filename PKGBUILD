@@ -58,7 +58,7 @@ _subarch=
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=/home/sayad/.config/modprobed.db
+_localmodcfg=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -106,11 +106,11 @@ validpgpkeys=(
 md5sums=('31965edc4b4473959a6692db3b200846'
          'SKIP'
          '91db2f49d9ec23865eb553f8606977ec'
-         'ac9931a3feca7dc3fadc20f0022dd558'
+         'c22798dae23cde0141c891660312ece9'
          'f89cd458929e9817a41861119bf8fcc1'
          'b10e4c612d5240d66fad8f1c50fe3242'
          'a22cddcadc0da933dac13a6ab49b7ed9'
-         'aa8f5bb0b644cbef02c4d55c3956026a'
+         '83b17512a54ed65e6a1be42668a3dddb'
          '75602fa70033aef9cb42f3df16ec2eb3'
          '168a924c7c83ecdc872a9a1c6d1c8bdb'
          '228b33d0cb13cab162b3e051ec9bb88d'
@@ -164,11 +164,11 @@ prepare() {
   patch -Np1 -i ../0002-clear-patches.patch
 
   patch -Np1 -i ../0003-glitched-base.patch
-  
+    
   patch -Np1 -i ../0004-5.7-ck1.patch
-  
+
   patch -Np1 -i ../0004-glitched-muqss.patch
-  
+
   echo "Setting config..."
   cp ../config .config
   
@@ -432,11 +432,11 @@ prepare() {
   # acs override
   patch -Np1 -i ../0006-add-acs-overrides_iommu.patch
   
-  # fsync support
-  patch -Np1 -i ../0007-v5.7-fsync.patch
-
   # bcachefs
   patch -Np1 -i ../0008-5.7-bcachefs.patch
+
+  # fsync support
+  patch -Np1 -i ../0007-v5.7-fsync.patch
   
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
