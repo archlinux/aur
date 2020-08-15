@@ -1,6 +1,6 @@
 pkgbase = dmenufm-git
 	pkgdesc = A simple file manager using dmenu
-	pkgver = r189.a132436
+	pkgver = 2.0.r0.ge658354
 	pkgrel = 1
 	url = https://github.com/huijunchen9260/dmenufm
 	arch = any
