@@ -1,7 +1,7 @@
 pkgbase = backdoor
 	pkgdesc = A deck-building card roguelike cyberpunk game.
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://uspgamedev.org
 	arch = x86_64
 	license = GPL3

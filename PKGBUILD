@@ -2,7 +2,7 @@
 
 pkgname=backdoor
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A deck-building card roguelike cyberpunk game.'
 url="https://uspgamedev.org"
 license=('GPL3')
