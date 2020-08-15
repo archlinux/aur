@@ -2,7 +2,7 @@
 # Info: https://github.com/johnramsden/zectl/issues/16
 pkgname=zectl-pacman-hook
 pkgrel=1
-pkgver=0.1.2
+pkgver=0.1.3
 pkgdesc="Automate boot environment creation and rotation before kernel upgrade"
 arch=('any')
 url="https://github.com/eoli3n/$pkgname"
