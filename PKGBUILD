@@ -1,11 +1,11 @@
 # Maintainer: SanskritFritz (gmail)
 
-pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_futoshiki pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_masyu pzl_minesweeper pzl_numberlink pzl_nurikabe pzl_scrabbler pzl_othello pzl_ripple pzl_shikaku pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_wordwheel pzl_wordladder)
+pkgname=(pzl_common pzl_ajs pzl_akari pzl_arrowsudoku pzl_boggle pzl_bridges pzl_codeword pzl_fillomino pzl_futoshiki pzl_gol pzl_hidato pzl_hitori pzl_jigsaw pzl_jigsawsudoku pzl_kakuro pzl_masyu pzl_minesweeper pzl_numberlink pzl_nurikabe pzl_scrabbler pzl_othello pzl_ripple pzl_shikaku pzl_sokoban pzl_sudoku pzl_suguru pzl_sumpuzzle pzl_tetrofit pzl_wordwheel pzl_wordladder)
 pkgbase="pzl_games"
-pkgver=20.0
-_pkgver=20_0
+pkgver=22.0
+_pkgver=22_0
 pkgrel=1
-pkgdesc="Small collection of puzzle games."
+pkgdesc="Collection of puzzle games."
 arch=('any')
 url="http://pzl.org.uk/"
 license=('GPL')
@@ -18,6 +18,7 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_codeword.desktop"
         "pzl_fillomino.desktop"
         "pzl_futoshiki.desktop"
+        "pzl_gol.desktop"
         "pzl_hidato.desktop"
         "pzl_hitori.desktop"
         "pzl_jigsaw.desktop"
@@ -35,10 +36,11 @@ source=("http://pzl.org.uk/pzl3_$_pkgver.zip"
         "pzl_sudoku.desktop"
         "pzl_suguru.desktop"
         "pzl_sumpuzzle.desktop"
+        "pzl_tetrofit.desktop"
         "pzl_wordwheel.desktop"
         "pzl_wordladder.desktop")
 
-md5sums=('4758a02e8ac34feb748f1666b1d7d8f0'
+md5sums=('30b05da39dca725698dac334a6c90cff'
          '6f5058e263976d69a2eb356ca2c2a6b5'
          '37af6d1fa020f7fa532a69a0e07b32ad'
          'a1e25c7621e92598bcdb8d442133031a'
@@ -47,6 +49,7 @@ md5sums=('4758a02e8ac34feb748f1666b1d7d8f0'
          '02df03e4c57e8b77062df51971f7c582'
          '493fa819c6a145a873ec81bab55bf96a'
          '744840240079721ae72b14b49589ef4b'
+         '512c219ec03d89e100e0aca6ff5b3f42'
          'a07ce126d031c9fbed8c1cbe2c6af1a1'
          'c16b0f4c92f3d37269097f138c820e54'
          '00333ad5a67aa529189cb8d5efce7ec2'
@@ -64,6 +67,7 @@ md5sums=('4758a02e8ac34feb748f1666b1d7d8f0'
          '068873d936f6592065010b056da87cc7'
          '0c1b99051ab88c9aacf108a4d7d577e2'
          '652ec7a6aa6a225f62579a315bd98421'
+         'adf64f6092e1d05aafb1bc0c093d56b2'
          'b7b52cd6e554eb01aa0537bb5526e297'
          'b0afcb5b6a3f2f05b8fd8e6d59d8e6ca')
 
@@ -156,6 +160,16 @@ package_pzl_futoshiki() {
 	install -m644 pzl3_download/futoshiki.pyw "$pkgdir/usr/share/pzl_games"
 	install -m644 pzl3_download/futoshiki_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
 	install -m644 pzl_futoshiki.desktop "$pkgdir/usr/share/applications"
+}
+
+package_pzl_gol() {
+	pkgdesc="Game of life."
+	url="http://pzl.org.uk/gol.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/gol.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/gol_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_gol.desktop "$pkgdir/usr/share/applications"
 }
 
 package_pzl_hidato() {
@@ -334,6 +348,17 @@ package_pzl_suguru() {
 	install -m644 pzl3_download/suguru.pyw "$pkgdir/usr/share/pzl_games"
 	install -m644 pzl3_download/suguru_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
 	install -m644 pzl_suguru.desktop "$pkgdir/usr/share/applications"
+}
+
+package_pzl_tetrofit() {
+	pkgdesc="Use Tetromino shapes to exacly cover a grid."
+	url="http://pzl.org.uk/tetrofit.html"
+	depends=('pzl_common')
+	install -dm755 "$pkgdir"/usr/share/{applications,pixmaps/pzl_games,pzl_games}
+	install -m644 pzl3_download/tetrofit.pyw "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/tetrofit_data.py "$pkgdir/usr/share/pzl_games"
+	install -m644 pzl3_download/tetrofit_icon.png "$pkgdir/usr/share/pixmaps/pzl_games"
+	install -m644 pzl_tetrofit.desktop "$pkgdir/usr/share/applications"
 }
 
 package_pzl_wordwheel() {
