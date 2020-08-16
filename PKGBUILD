@@ -3,7 +3,7 @@
 
 pkgname=syncterm
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 epoch=1
 _ver=1.1
 pkgdesc="A BBS terminal program, Supports ANSI music and the IBM charset when possible. Will run from a console, under X11 using XLib, or using SDL."
@@ -20,12 +20,12 @@ md5sums=('f528a1fdbe87a69a52582582d99e4032')
 build() {
   cd "$srcdir/syncterm-$_ver"
   cd "src/syncterm/"
-  make MANPREFIX="$pkgdir/usr/share" SRC_ROOT="$(realpath ..)" PREFIX="/usr" || true
+  make MANPREFIX="$pkgdir/usr/share" SRC_ROOT="$(realpath ..)" PREFIX="/usr" RELEASE=1 || true
 }
 
 package() {
   cd "$srcdir/syncterm-$_ver"
   cd "src/syncterm/"
-  make MANPREFIX="$pkgdir/usr/share" SRC_ROOT="$(realpath ..)" PREFIX="$pkgdir/usr" install
+  make install MANPREFIX="$pkgdir/usr/share" SRC_ROOT="$(realpath ..)" PREFIX="$pkgdir/usr" RELEASE=1
 }
 
