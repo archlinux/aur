@@ -7,7 +7,7 @@ pkgbase = nvoc
 	license = GPL
 	depends = nvidia-settings
 	depends = bash
-	source = https://github.com/yagoplx/nvoc/archive/1.0.3.tar.gz
+	source = nvoc-1.0.3.tar.gz::https://github.com/yagoplx/nvoc/archive/1.0.3.tar.gz
 	md5sums = cd9bd790997f3283c00a8fd6b28e15c5
 
 pkgname = nvoc

@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/yagoplx/nvoc"
 license=('GPL')
 depends=('nvidia-settings' 'bash')
-source=(https://github.com/yagoplx/nvoc/archive/1.0.3.tar.gz)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/yagoplx/nvoc/archive/1.0.3.tar.gz")
 md5sums=('cd9bd790997f3283c00a8fd6b28e15c5')
 
 package() {
