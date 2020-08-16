@@ -1,18 +1,14 @@
-pkgbase = gnabel
-	pkgdesc = A translation app for GTK environments based on Google Translate
-	pkgver = 0.0.0
-	pkgrel = 3
-	url = https://github.com/gi-lom/gnabel
-	arch = any
-	license = GPL-3.0
-	depends = python>=3
-	depends = python-pyperclip
-	depends = python-gobject
-	depends = python-googletrans
-	depends = python-gtts
-	depends = python-pydub
-	source = https://github.com/gi-lom/gnabel/archive/4559acb895d754ecd985dab686eb1acd7e5f37b4.zip
+pkgbase = dprint-bin
+	pkgdesc = Pluggable and configurable code formatting platform written in Rust.
+	pkgver = 0.9.0
+	pkgrel = 0
+	url = https://dprint.dev/
+	arch = x86_64
+	license = custom
+	source = https://github.com/dprint/dprint/releases/download/0.9.0/dprint-x86_64-unknown-linux-gnu.zip
+	source = https://github.com/dprint/dprint/raw/master/LICENSE
+	sha512sums = SKIP
 	sha512sums = SKIP
 
-pkgname = gnabel
+pkgname = dprint-bin
 
