@@ -3,7 +3,7 @@
 # Contributor: Frederik AlkÃ¦rsig (FALKER) <havnelisten AT gmail.com>
 
 pkgname=thinkfan
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A minimalist fan control program. Supports the sysfs hwmon interface and thinkpad_acpi"
 url="https://github.com/vmatare/thinkfan"
@@ -16,7 +16,7 @@ license=('GPL')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vmatare/$pkgname/archive/$pkgver.tar.gz"
         'thinkfan.service'
         'thinkpad_acpi.conf')
-sha256sums=('f178ee2851b11796fddb367cdd2fa1ab306f1e5e07f44cb2e59a7c1786b84292'
+sha256sums=('a03fc0ed5bee33a1576c631e327fdd10f89fd906c5a413a8b01bd73d3fd97d25'
             '5b743256afc30d8a2db840f16b03871abbe0a033dd1b0d3f1b7d5a544808271f'
             '28874576641b3cc1aa486e1bc9ed40eadfe8b13d6d3014016e31fedc5dc5195f')
 install=thinkfan.install
