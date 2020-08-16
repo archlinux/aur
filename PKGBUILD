@@ -1,4 +1,4 @@
-# Maintainer: Johnny Halfmoon <jhalfmoon@milksnot.com>
+# Maintainer: wtx <sdrb.onet.eu>
 
 pkgname=arm-none-eabi-gcc47-linaro-alternative
 _relver=4.7
@@ -8,7 +8,7 @@ _relverdate=${_relver}-${_reldate}
 # This is how I want to define the pkgver, but the AUR doesn't understand it, because multiple _ characters are not allowed
 #pkgver=${_relver}_${_reldate//-/_}
 pkgver=4.7_2014.06
-pkgrel=1
+pkgrel=2
 _newlibver=linaro-2.1.0-2014.09
 #_newlibver=2.0.0
 pkgdesc="The GNU Compiler Collection - cross compiler for ARM EABI (bare-metal) target."
@@ -22,10 +22,11 @@ makedepends=('flex' 'bison')
 #conflicts=()
 options=(staticlibs !libtool !emptydirs !strip zipman docs)
 source=(https://launchpad.net/gcc-linaro/${_relver}/${_relverdate}/+download/gcc-linaro-${_relverdate}.tar.bz2
-        http://releases.linaro.org/14.09/components/toolchain/newlib-linaro/newlib-${_newlibver}.tar.bz2
+        http://releases.linaro.org/archive/14.09/components/toolchain/newlib-linaro/newlib-${_newlibver}.tar.bz2
         gcc-${_relver}-multilib2.patch
         gcc-${_relver}-no-exceptions.patch
-        libc_name_p.patch)
+        libc_name_p.patch
+        Makefile-info.patch)
 _basedir=gcc-linaro-${_relverdate}
 
 build() {
@@ -37,6 +38,10 @@ build() {
   patch -Np0 -i "${srcdir}/gcc-${_relver}-multilib2.patch"
   patch -Np0 -i "${srcdir}/gcc-${_relver}-no-exceptions.patch"
   patch -Np1 -i "${srcdir}/libc_name_p.patch"
+
+
+  patch -Np0 -i "${srcdir}/Makefile-info.patch"
+
 
   mkdir build
   cd build
@@ -72,6 +77,7 @@ build() {
 #               --libexecdir=/usr/lib \
 
 
+
   make
 }
 
@@ -88,4 +94,5 @@ sha256sums=('4fc5c9fb78882857f988bec979947fc2e55a3ea31640b7ace601bcee3c86fd37'
             'ed92e8547246834725a3c5743fa41d3f573e3e5d2e5066d433ac3c29e6676fc8'
             '104b9aa652804a56338470983e6975af1d1e5440eb8bddae3a01a966d2b332cf'
             '3cd19aac3d1c4f46377bf6d82a0130686c6677ee5e817a702a34238f6a748dcd'
-            '9bc036c18d91593dc7cdece388723f38df9a7115d0c7857be35893f42ddda338')
+            '9bc036c18d91593dc7cdece388723f38df9a7115d0c7857be35893f42ddda338'
+            'SKIP')
