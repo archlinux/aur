@@ -1,7 +1,7 @@
 pkgbase = nanopb
 	pkgdesc = Protocol Buffers with small code size
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jpa.kapsi.fi/nanopb/
 	arch = any
 	license = zlib
