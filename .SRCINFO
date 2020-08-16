@@ -1,0 +1,22 @@
+pkgbase = screentorch
+	pkgdesc = An Instant Replay/ReLive-like program for Linux
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/sneakysnakeX299/screentorch
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = ppc
+	arch = ppc64
+	arch = arm
+	arch = arm64
+	arch = armv7h
+	arch = armv6h
+	license = GPL
+	depends = ffmpeg
+	depends = pulseaudio
+	source = git+https://github.com/sneakysnakeX299/screentorch.git
+	sha256sums = SKIP
+
+pkgname = screentorch
+
