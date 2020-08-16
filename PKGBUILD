@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=wine-staging-git
-pkgver=5.4.r8.g53b02cd0+wine.5.4.r128.gc43998cb51
+pkgver=5.15.2.r2.g68c50a8f
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ _depends=(
     'faudio'                'lib32-faudio'
     'desktop-file-utils'
 )
-makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
+makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex' 'mingw-w64-gcc'
     'gcc>=4.5.0-2'
     'giflib'                'lib32-giflib'
     'libpng'                'lib32-libpng'
@@ -126,47 +126,39 @@ else
 fi
 
 prepare() {
-    # delete old build dirs (from previous builds) and make new ones
     rm    -rf "$pkgname"-{32,64}-build
     mkdir -p  "$pkgname"-32-build
     [ "$CARCH" = 'x86_64' ] && mkdir "$pkgname"-64-build
     
-    cd wine
-    
     # restore the wine tree to its git origin state, without wine-staging patches
-    # (necessary for reapllying wine-staging patches in succedent builds,
-    # otherwise the patches will fail to be reapplied)
     printf '%s\n' '  -> Cleaning wine source code tree...'
-    git reset --hard HEAD  # restore tracked files
-    git clean -xdf         # delete untracked files
+    git -C wine reset --hard HEAD  # restore tracked files
+    git -C wine clean -xdf         # delete untracked files
     
     # change back to the wine upstream commit that this version of wine-staging is based in
     printf '%s\n' '  -> Changing wine HEAD to the wine-staging base commit...'
-    git checkout "$(../wine-staging/patches/patchinstall.sh --upstream-commit)"
+    git -C wine config --local advice.detachedHead false
+    git -C wine checkout "$(wine-staging/patches/patchinstall.sh --upstream-commit)"
     
     # fix path of opencl headers
-    sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
+    sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i wine/configure*
     
     # apply all wine-staging patches
     printf '%s\n' '  -> Applying wine-staging patches...'
-    cd "${srcdir}/wine-staging/patches"
-    ./patchinstall.sh DESTDIR="${srcdir}/wine" --all
+    wine-staging/patches/patchinstall.sh DESTDIR="${srcdir}/wine" --all
 }
 
 pkgver() {
     local _staging_tag
     local _staging_version
-    local _wine_version
     
-    cd wine-staging
-    _staging_tag="$(git tag --sort='version:refname' | tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
-    _staging_version="$(git describe --long --tags \
-                          | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/' \
-                          | sed "s/^latest.release/${_staging_tag}/")"
-    cd "${srcdir}/wine"
-    _wine_version="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/')"
+    _staging_tag="$(git -C wine-staging tag --sort='version:refname' |
+                        tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
+    _staging_version="$(git -C wine-staging describe --long --tags |
+                            sed -e 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/' \
+                                -e "s/^latest.release/${_staging_tag}/")"
     
-    printf '%s+%s' "$_staging_version" "$_wine_version"
+    printf '%s' "$_staging_version"
 }
 
 build() {
