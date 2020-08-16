@@ -1,6 +1,6 @@
 pkgbase = opensnitch-git
 	pkgdesc = A GNU/Linux application firewall
-	pkgver = 1.0.0.r8.08245a0
+	pkgver = 1.0.1.r3.544ce11
 	pkgrel = 1
 	url = https://github.com/gustavo-iniguez-goya/opensnitch
 	install = opensnitch.install
@@ -19,7 +19,7 @@ pkgbase = opensnitch-git
 	depends = python-grpcio
 	depends = python-protobuf
 	depends = python-pyinotify
-	depends = python-unicode-slugify
+	depends = python-slugify
 	depends = python-pyqt5
 	optdepends = logrotate: for logfile rotation support
 	provides = opensnitch

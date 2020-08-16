@@ -3,7 +3,7 @@
 # Contributor: Adam Hose <adis@blad.is>
 
 pkgname=opensnitch-git
-pkgver=1.0.0.r8.08245a0
+pkgver=1.0.1.r3.544ce11
 pkgrel=1
 pkgdesc="A GNU/Linux application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ url="https://github.com/gustavo-iniguez-goya/opensnitch"
 license=('GPL3')
 makedepends=('git' 'go' 'python-setuptools' 'python-grpcio-tools')
 depends=('libnetfilter_queue' 'libpcap' 'python-grpcio' 'python-protobuf'
-         'python-pyinotify' 'python-unicode-slugify' 'python-pyqt5')
+         'python-pyinotify' 'python-slugify' 'python-pyqt5')
 optdepends=('logrotate: for logfile rotation support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
