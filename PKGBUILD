@@ -10,13 +10,20 @@ url="https://github.com/dudik/$_pkgname"
 source=("git+https://github.com/dudik/$_pkgname.git")
 md5sums=('SKIP')
 
+prepare() {
+	cd $_pkgname
+	if [ -f "$srcdir/config.h" ]; then
+		cp -f "$srcdir/config.h" config.h
+	fi
+}
+
 build () {
-        cd "$_pkgname"
-        make
+	cd "$_pkgname"
+	make
 }
 
 package () {
-        cd "$_pkgname"
-        mkdir -p "$pkgdir/usr/local/bin"
-        cp $_pkgname "$pkgdir/usr/local/bin/"
+	cd "$_pkgname"
+	mkdir -p "$pkgdir/usr/local/bin"
+	cp $_pkgname "$pkgdir/usr/local/bin/"
 }
