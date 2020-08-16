@@ -1,0 +1,6 @@
+*.zip
+LICENSE.txt
+*.zst
+src/
+pkg/
+gml-linux
