@@ -1,0 +1,18 @@
+[Unit]
+Description=Free Point-Of-Service/Point-Of-Sale software (POS) for the gastronomy.
+
+
+[Service]
+Type=simple
+PermissionsStartOnly=true
+EnvironmentFile=-/etc/conf.d/ordersprinter
+User=ordersprinter
+Group=ordersprinter
+SyslogIdentifier=OrderSprinter
+PIDFile=/run/ordersprinter/ordersprinter.pid
+ExecStartPre=/usr/bin/install -d -m755 -o ordersprinter -g ordersprinter /run/ordersprinter
+ExecStart=/usr/bin/ordersprinter --pidfile=/run/ordersprinter/ordersprinter.pid
+ExecStop=/bin/kill $MAINPID
+
+[Install]
+WantedBy=multi-user.target

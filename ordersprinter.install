@@ -1,0 +1,7 @@
+post_upgrade() {
+  # hooks are ran *after* this function, so we have to call
+  # systemd-sysusers manually to make sure the ordersprinter user exists
+  systemd-sysusers
+  mkdir -p /var/lib/ordersprinter
+  chown -R ordersprinter:ordersprinter /var/lib/ordersprinter
+}

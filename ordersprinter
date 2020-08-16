@@ -1,0 +1,7 @@
+#!/bin/sh
+
+. /etc/ordersprinter/ordersprinter.conf
+
+php -S ${wi_host}:${wi_port} -t ${app_root}/webapp && \
+java -jar ${app_root}/printserver/javaprinter/javaprinter.jar -mode=cups -configfile=${app_root}/printserver/javaprinter/config.json && \
+java -jar ${app_root}/tseconnector/swissbit/tseconnector.jar &&

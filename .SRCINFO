@@ -1,0 +1,23 @@
+pkgbase = ordersprinter
+	pkgdesc = OrderSprinter is a free Point-Of-Service/Point-Of-Sale software (POS) for the gastronomy.
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://ordersprinter.de/
+	install = ordersprinter.install
+	arch = any
+	license = Creative Commons License BY-NC-ND
+	depends = mysql
+	depends = php
+	source = https://ordersprinter.de/ordersprinter-2_0_3.zip
+	source = ordersprinter.conf
+	source = ordersprinter.service
+	source = ordersprinter.sysusers
+	source = ordersprinter
+	md5sums = 1178a85b08ed1fd07c48219ac9f55c79
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ordersprinter
+
