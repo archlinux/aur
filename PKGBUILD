@@ -11,11 +11,12 @@ source=("git+https://github.com/dudik/$_pkgname.git")
 md5sums=('SKIP')
 
 build () {
-	cd "$_pkgname"
-	make
+        cd "$_pkgname"
+        make
 }
 
 package () {
-	cd "$_pkgname"
-	cp $_pkgname $pkgdir$prefix
+        cd "$_pkgname"
+        mkdir -p "$pkgdir/usr/local/bin"
+        cp $_pkgname "$pkgdir/usr/local/bin/"
 }
