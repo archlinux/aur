@@ -1,5 +1,9 @@
 # Maintainer: Richard Pruitt <SmoochySix4@gmail.com>
 
+_svt_hevc_ver='1.5.0'
+_svt_vp9_ver='0.2.2'
+
+
 pkgname=ffmpeg-full-git-hardened
 pkgver=4.3.1.git
 pkgrel=1
@@ -37,8 +41,29 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
           'libswresample.so' 'ffmpeg' 'ffmpeg-full' 'ffmpeg-git')
 conflicts=('ffmpeg')
-source=('git+https://git.ffmpeg.org/ffmpeg.git')
-sha256sums=('SKIP')
+source=('git+https://git.ffmpeg.org/ffmpeg.git'
+        '010-ffmpeg-fix-vmaf-model-path.patch'
+        '015-ffmpeg-cuda11-fix.patch'
+        '020-ffmpeg-add-svt-hevc.patch'
+        "030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
+        "040-ffmpeg-add-svt-vp9-${_svt_vp9_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/v${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
+        'LICENSE')
+sha256sums=('SKIP'
+            'b6fcef2f4cbb1daa47d17245702fbd67ab3289b6b16f090ab99b9c2669453a02'
+            '12cb889fd2ddd03ecc0f5fa2e345c7787ff4b28c4d284a5c694c71d5a590763c'
+            'fecb280e4ebb4ad8a3ec0385f6f32fcf90656fea989a6182abcc4104f266bde4'
+            '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
+            'b74be6d805672210e226e7c0b403f88b0ee8a53c732c9bdc873c4b44aeb75c96'
+            '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
+            
+prepare() {
+    rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
+    patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/015-ffmpeg-cuda11-fix.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-${_svt_vp9_ver}.patch"
+}
 
 pkgver() {
     local _version
