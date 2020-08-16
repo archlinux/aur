@@ -4,8 +4,8 @@
 # Contributor: Douglas Soares de Andrade <dsa@aur.archlinux.br> (from python-pyro)
 
 pkgname=python-pyro5
-pkgver=5.10
-pkgrel=3
+pkgver=5.11
+pkgrel=1
 epoch=0
 pkgdesc='Distributed object middleware for Python (RPC), Version 5'
 url='https://github.com/irmen/Pyro5'
