@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libwnck3'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('git' 'granite-git' 'meson' 'vala' 'wingpanel')
+makedepends=('git' 'granite' 'meson' 'vala' 'wingpanel')
 provides=('wingpanel-indicator-notifications')
 conflicts=('wingpanel-indicator-notifications')
 source=('git+https://github.com/elementary/wingpanel-indicator-notifications.git')
