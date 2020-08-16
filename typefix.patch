@@ -1,0 +1,136 @@
+diff --git a/src/gtkmeter.c b/src/gtkmeter.c
+index dda8dc9..c1aa9a6 100644
+--- a/src/gtkmeter.c
++++ b/src/gtkmeter.c
+@@ -56,25 +56,27 @@ static int meter_count = 0;
+ 
+ static GtkWidgetClass *parent_class = NULL;
+ 
+-guint
++GType
+ gtk_meter_get_type ()
+ {
+-  static guint meter_type = 0;
++  static GType meter_type = 0;
+ 
+   if (!meter_type)
+     {
+-      GtkTypeInfo meter_info =
++      static const GTypeInfo meter_info =
+       {
+-	"GtkMeter",
+-	sizeof (GtkMeter),
+-	sizeof (GtkMeterClass),
+-	(GtkClassInitFunc) gtk_meter_class_init,
+-	(GtkObjectInitFunc) gtk_meter_init,
+-	/*(GtkArgSetFunc)*/ NULL,
+-	/*(GtkArgGetFunc)*/ NULL,
+-      };
+-
+-      meter_type = gtk_type_unique (gtk_widget_get_type (), &meter_info);
++				sizeof(GtkMeterClass),
++				NULL,
++				NULL,
++				(GClassInitFunc) gtk_meter_class_init,
++				NULL,
++				NULL,
++				sizeof(GtkMeter),
++				0,
++				(GInstanceInitFunc) gtk_meter_init,
++				NULL
++			};
++			meter_type = g_type_register_static(GTK_TYPE_WIDGET,"GtkMeter",&meter_info,(GTypeFlags)0);
+     }
+ 
+   return meter_type;
+@@ -120,7 +122,7 @@ gtk_meter_new (GtkAdjustment *adjustment, gint direction)
+ {
+   GtkMeter *meter;
+ 
+-  meter = gtk_type_new (gtk_meter_get_type ());
++  meter = g_object_new (gtk_meter_get_type (), NULL);
+ 
+   if (!adjustment)
+     adjustment = (GtkAdjustment*) gtk_adjustment_new (0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+diff --git a/src/gtkmeter.h b/src/gtkmeter.h
+index 347ea37..2269cf1 100644
+--- a/src/gtkmeter.h
++++ b/src/gtkmeter.h
+@@ -90,7 +90,7 @@ struct _GtkMeterClass
+ GtkWidget*     gtk_meter_new                    (GtkAdjustment *adjustment,
+ 						 gint direction);
+ 
+-guint          gtk_meter_get_type               (void);
++GType          gtk_meter_get_type               (void);
+ GtkAdjustment* gtk_meter_get_adjustment         (GtkMeter     *meter);
+ 
+ void           gtk_meter_set_adjustment         (GtkMeter     *meter,
+diff --git a/src/gtkmeterscale.c b/src/gtkmeterscale.c
+index 8273faf..2e9532f 100644
+--- a/src/gtkmeterscale.c
++++ b/src/gtkmeterscale.c
+@@ -45,26 +45,27 @@ static void meterscale_draw_notch(GtkMeterScale *meterscale, float db, int
+ 
+ static GtkWidgetClass *parent_class = NULL;
+ 
+-guint
++GType
+ gtk_meterscale_get_type ()
+ {
+-  static guint meterscale_type = 0;
++  static GType meterscale_type = 0;
+ 
+   if (!meterscale_type)
+     {
+-      GtkTypeInfo meterscale_info =
+-      {
+-	"GtkMeterScale",
+-	sizeof (GtkMeterScale),
+-	sizeof (GtkMeterScaleClass),
+-	(GtkClassInitFunc) gtk_meterscale_class_init,
+-	(GtkObjectInitFunc) gtk_meterscale_init,
+-	/*(GtkArgSetFunc)*/ NULL,
+-	/*(GtkArgGetFunc)*/ NULL,
+-      };
+-
+-      meterscale_type = gtk_type_unique (gtk_widget_get_type (),
+-		      &meterscale_info);
++      static const GTypeInfo meterscale_info =
++			{
++				sizeof(GtkMeterScaleClass),
++				NULL,
++				NULL,
++				(GClassInitFunc) gtk_meterscale_class_init,
++				NULL,
++				NULL,
++				sizeof(GtkMeterScale),
++				0,
++				(GInstanceInitFunc) gtk_meterscale_init,
++				NULL
++			};
++			meterscale_type = g_type_register_static(gtk_widget_get_type(),"GtkMeterScale",&meterscale_info,(GTypeFlags)0);
+     }
+ 
+   return meterscale_type;
+@@ -104,7 +105,7 @@ gtk_meterscale_new (gint direction, float min, float max)
+ {
+   GtkMeterScale *meterscale;
+ 
+-  meterscale = gtk_type_new (gtk_meterscale_get_type ());
++  meterscale = g_object_new (gtk_meterscale_get_type (), NULL);
+ 
+   meterscale->direction = direction;
+   meterscale->lower = min;
+diff --git a/src/gtkmeterscale.h b/src/gtkmeterscale.h
+index 788db79..acac745 100644
+--- a/src/gtkmeterscale.h
++++ b/src/gtkmeterscale.h
+@@ -67,7 +67,7 @@ GtkWidget*     gtk_meterscale_new               (gint direction,
+ 						 gfloat min,
+ 						 gfloat max);
+ 
+-guint          gtk_meterscale_get_type          (void);
++GType          gtk_meterscale_get_type          (void);
+ 
+ #ifdef __cplusplus
+ }

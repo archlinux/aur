@@ -1,0 +1,27 @@
+pkgbase = jamin-gtk2
+	pkgdesc = A JACK Audio Connection Kit Audio Mastering interface
+	pkgver = 0.98.3
+	pkgrel = 1
+	url = http://jamin.sourceforge.net/
+	install = jamin-gtk2.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perl-xml-parser
+	makedepends = ladspa
+	makedepends = cvs
+	makedepends = intltool
+	depends = jack
+	depends = libxml2
+	depends = gtk2
+	depends = swh-plugins
+	depends = fftw
+	depends = liblo
+	provides = jamin
+	conflicts = jamin
+	options = !libtool
+	source = typefix.patch
+	md5sums = a0a18224447f431503471b3dfe1b715c
+
+pkgname = jamin-gtk2
+
