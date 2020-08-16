@@ -7,13 +7,13 @@
 pkgname=rethinkdb
 pkgver=2.4.0
 _node=6.11.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Distributed NoSQL database for realtime applications'
 arch=(x86_64)
 url=https://www.rethinkdb.com
 license=(Apache)
-depends=(curl)
-makedepends=(clang boost jemalloc git python2 make)
+depends=(curl jemalloc)
+makedepends=(clang boost git python2 make)
 backup=(etc/rethinkdb/instances.d/default.conf)
 install=rethinkdb.install
 options=(!emptydirs)
