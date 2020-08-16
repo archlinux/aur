@@ -1,7 +1,7 @@
 pkgbase = pam-selinux
 	pkgdesc = SELinux aware PAM (Pluggable Authentication Modules) library
-	pkgver = 1.3.1
-	pkgrel = 1
+	pkgver = 1.4.0
+	pkgrel = 3
 	url = http://linux-pam.org
 	arch = x86_64
 	groups = selinux
@@ -11,29 +11,39 @@ pkgbase = pam-selinux
 	makedepends = docbook-xml>=4.4
 	makedepends = docbook-xsl
 	depends = glibc
-	depends = cracklib
 	depends = libtirpc
 	depends = pambase-selinux
+	depends = audit
 	depends = libselinux
-	provides = pam=1.3.1-1
-	provides = selinux-pam=1.3.1-1
+	optdepends = pambase-selinux: SELinux aware base PAM configuration
+	provides = pam=1.4.0-3
+	provides = selinux-pam=1.4.0-3
 	conflicts = pam
 	conflicts = selinux-pam
 	options = !emptydirs
 	backup = etc/security/access.conf
+	backup = etc/security/faillock.conf
 	backup = etc/security/group.conf
 	backup = etc/security/limits.conf
 	backup = etc/security/namespace.conf
 	backup = etc/security/namespace.init
 	backup = etc/security/pam_env.conf
 	backup = etc/security/time.conf
-	backup = etc/default/passwd
 	backup = etc/environment
-	source = https://github.com/linux-pam/linux-pam/releases/download/v1.3.1/Linux-PAM-1.3.1.tar.xz
-	source = https://github.com/linux-pam/linux-pam/releases/download/v1.3.1/Linux-PAM-1.3.1.tar.xz.asc
+	source = https://github.com/linux-pam/linux-pam/releases/download/v1.4.0/Linux-PAM-1.4.0.tar.xz
+	source = https://github.com/linux-pam/linux-pam/releases/download/v1.4.0/Linux-PAM-1.4.0.tar.xz.asc
+	source = 395915dae1571e10e2766c999974de864655ea3a.patch
+	source = af0faf666c5008e54dfe43684f210e3581ff1bca.patch
+	source = 0e9b286afe1224b91ff00936058b084ad4b776e4.patch
+	source = pam.tmpfiles
 	validpgpkeys = 8C6BFD92EE0F42EDF91A6A736D1A7F052E5924BB
-	md5sums = 558ff53b0fc0563ca97f79e911822165
-	md5sums = SKIP
+	validpgpkeys = 296D6F29A020808E8717A8842DB5BD89A340AEB7
+	sha256sums = cd6d928c51e64139be3bdb38692c68183a509b83d4f2c221024ccd4bcddfd034
+	sha256sums = SKIP
+	sha256sums = cd2440d7bec55fa91e499060c0bf248f4fd20e7a0ef613eb7a06ee083f7ce21b
+	sha256sums = ac3e1d307756f5975587a7846500414c02d2b60acb271017b9c7aa6f47c89875
+	sha256sums = 68f81b67dde5ee6003524b6b14e2d6f27edcfc0a2bde4c55a1cacbc6e299c207
+	sha256sums = 5631f224e90c4f0459361c2a5b250112e3a91ba849754bb6f67d69d683a2e5ac
 
 pkgname = pam-selinux
 

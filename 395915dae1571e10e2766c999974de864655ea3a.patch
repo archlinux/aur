@@ -1,0 +1,47 @@
+From 395915dae1571e10e2766c999974de864655ea3a Mon Sep 17 00:00:00 2001
+From: ikerexxe <ipedrosa@redhat.com>
+Date: Mon, 15 Jun 2020 09:52:11 +0200
+Subject: [PATCH] pam_faillock: change /run/faillock/$USER permissions to 0660
+
+Nowadays, /run/faillock/$USER files have user:root ownership and 0600
+permissions. This forces the process that writes to these files to have
+CAP_DAC_OVERRIDE capabilites. Just by changing the permissions to 0660
+the capability can be removed, which leads to a more secure system.
+
+Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=1661822
+---
+ modules/pam_faillock/faillock.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/modules/pam_faillock/faillock.c b/modules/pam_faillock/faillock.c
+index e492f5f9..4ea94cbe 100644
+--- a/modules/pam_faillock/faillock.c
++++ b/modules/pam_faillock/faillock.c
+@@ -76,7 +76,7 @@ open_tally (const char *dir, const char *user, uid_t uid, int create)
+ 		flags |= O_CREAT;
+ 	}
+ 
+-	fd = open(path, flags, 0600);
++	fd = open(path, flags, 0660);
+ 
+ 	free(path);
+ 
+@@ -88,6 +88,18 @@ open_tally (const char *dir, const char *user, uid_t uid, int create)
+ 			if (st.st_uid != uid) {
+ 				ignore_return(fchown(fd, uid, -1));
+ 			}
++
++			/*
++			 * If umask is set to 022, as will probably in most systems, then the
++			 * group will not be able to write to the file. So, change the file
++			 * permissions just in case.
++			 * Note: owners of this file are user:root, so if the permissions are
++			 * not changed the root process writing to this file will require
++			 * CAP_DAC_OVERRIDE.
++			 */
++			if (!(st.st_mode & S_IWGRP)) {
++				ignore_return(fchmod(fd, 0660));
++			}
+ 		}
+ 	}
+ 

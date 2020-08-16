@@ -1,0 +1,31 @@
+From 0e9b286afe1224b91ff00936058b084ad4b776e4 Mon Sep 17 00:00:00 2001
+From: ikerexxe <ipedrosa@redhat.com>
+Date: Tue, 16 Jun 2020 14:44:04 +0200
+Subject: [PATCH] pam_usertype: avoid determining if user exists
+
+Taking a look at the time for the password prompt to appear it was
+possible to determine if a user existed in a system. Solved it by
+matching the runtime until the password prompt was shown by always
+checking the password hash for an existing and a non-existing user.
+
+Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=1629598
+---
+ modules/pam_usertype/pam_usertype.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/modules/pam_usertype/pam_usertype.c b/modules/pam_usertype/pam_usertype.c
+index 2807c306..d03b73b5 100644
+--- a/modules/pam_usertype/pam_usertype.c
++++ b/modules/pam_usertype/pam_usertype.c
+@@ -139,8 +139,11 @@ pam_usertype_get_uid(struct pam_usertype_opts *opts,
+                        "error retrieving information about user %s", username);
+         }
+ 
++        pam_modutil_getpwnam(pamh, "root");
++
+         return PAM_USER_UNKNOWN;
+     }
++    pam_modutil_getpwnam(pamh, "pam_usertype_non_existent:");
+ 
+     *_uid = pwd->pw_uid;
+ 

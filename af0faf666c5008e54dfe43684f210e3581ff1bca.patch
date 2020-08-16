@@ -1,0 +1,85 @@
+From af0faf666c5008e54dfe43684f210e3581ff1bca Mon Sep 17 00:00:00 2001
+From: ikerexxe <ipedrosa@redhat.com>
+Date: Tue, 16 Jun 2020 14:32:36 +0200
+Subject: [PATCH] pam_unix: avoid determining if user exists
+
+Taking a look at the time for the password prompt to appear it was
+possible to determine if a user existed in a system. Solved it by
+matching the runtime until the password prompt was shown by always
+checking the password hash for an existing and a non-existing user.
+
+Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=1629598
+---
+ modules/pam_unix/passverify.c |  6 ++++++
+ modules/pam_unix/support.c    | 33 ++++++++++++++++++++++++++-------
+ 2 files changed, 32 insertions(+), 7 deletions(-)
+
+diff --git a/modules/pam_unix/passverify.c b/modules/pam_unix/passverify.c
+index a571b4f7..7455eae6 100644
+--- a/modules/pam_unix/passverify.c
++++ b/modules/pam_unix/passverify.c
+@@ -1096,6 +1096,12 @@ helper_verify_password(const char *name, const char *p, int nullok)
+ 	if (pwd == NULL || hash == NULL) {
+ 		helper_log_err(LOG_NOTICE, "check pass; user unknown");
+ 		retval = PAM_USER_UNKNOWN;
++	} else if (p[0] == '\0' && nullok) {
++		if (hash[0] == '\0') {
++			retval = PAM_SUCCESS;
++		} else {
++			retval = PAM_AUTH_ERR;
++		}
+ 	} else {
+ 		retval = verify_pwd_hash(p, hash, nullok);
+ 	}
+diff --git a/modules/pam_unix/support.c b/modules/pam_unix/support.c
+index 41db1f04..dc67238c 100644
+--- a/modules/pam_unix/support.c
++++ b/modules/pam_unix/support.c
+@@ -601,6 +601,8 @@ _unix_blankpasswd (pam_handle_t *pamh, unsigned long long ctrl, const char *name
+ 	char *salt = NULL;
+ 	int daysleft;
+ 	int retval;
++	int execloop = 1;
++	int nonexistent = 1;
+ 
+ 	D(("called"));
+ 
+@@ -624,14 +626,31 @@ _unix_blankpasswd (pam_handle_t *pamh, unsigned long long ctrl, const char *name
+ 
+ 	/* UNIX passwords area */
+ 
+-	retval = get_pwd_hash(pamh, name, &pwd, &salt);
++	/*
++	 * Execute this loop twice: one checking the password hash of an existing
++	 * user and another one for a non-existing user. This way the runtimes
++	 * are equal, making it more difficult to differentiate existing from
++	 * non-existing users.
++	 */
++	while (execloop) {
++		retval = get_pwd_hash(pamh, name, &pwd, &salt);
+ 
+-	if (retval == PAM_UNIX_RUN_HELPER) {
+-		/* salt will not be set here so we can return immediately */
+-		if (_unix_run_helper_binary(pamh, NULL, ctrl, name) == PAM_SUCCESS)
+-			return 1;
+-		else
+-			return 0;
++		if (retval == PAM_UNIX_RUN_HELPER) {
++			execloop = 0;
++			if(nonexistent) {
++				get_pwd_hash(pamh, "pam_unix_non_existent:", &pwd, &salt);
++			}
++			/* salt will not be set here so we can return immediately */
++			if (_unix_run_helper_binary(pamh, NULL, ctrl, name) == PAM_SUCCESS)
++				return 1;
++			else
++				return 0;
++		} else if (retval == PAM_USER_UNKNOWN) {
++			name = "root";
++			nonexistent = 0;
++		} else {
++			execloop = 0;
++		}
+ 	}
+ 
+ 	/* Does this user have a password? */
