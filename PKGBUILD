@@ -6,13 +6,14 @@
 
 pkgname=dfu-util-git
 pkgver=20200630
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool intended to download and upload firmware using DFU protocol to devices connected over USB'
 url='http://dfu-util.gnumonks.org'
 license=(GPL2)
 arch=('i686' 'x86_64')
 depends=('libusb')
 conflicts=('dfu-util')
+provides=('dfu-util')
 install=dfu-util.install
 _gitroot=git://git.code.sf.net/p/dfu-util/dfu-util
 _gitname=dfu-util
