@@ -3,13 +3,13 @@
 
 pkgname=libuiohook
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-platform C library to provide global input/ouput hooking from userland."
 arch=('i686' 'x86_64')
 url="https://github.com/kwhat/libuiohook"
 license=('GPL3')
 groups=()
-depends=("libx11" "libxt" "libxtst" "libxinerama")
+depends=("libxt" "libxtst" "libxinerama")
 makedepends=() # All included in base-devel
 optdepends=()
 conflicts=()
