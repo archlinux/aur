@@ -1,0 +1,16 @@
+pkgbase = smackage-git
+	pkgdesc = Package Manager for Standard ML
+	pkgver = 1.4.3.r298
+	pkgrel = 1
+	url = https://github.com/standardml/smackage
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = mlton
+	depends = gmp
+	provides = smackage
+	source = smackage::git+http://github.com/standardml/smackage.git#branch=master
+	md5sums = SKIP
+
+pkgname = smackage-git
+
