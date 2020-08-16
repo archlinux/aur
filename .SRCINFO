@@ -7,12 +7,14 @@ pkgbase = submit50
 	groups = cs50
 	license = GPL
 	makedepends = python-setuptools
+	depends = lib50
 	depends = python
 	depends = python-pexpect
 	source = https://files.pythonhosted.org/packages/source/s/submit50/submit50-3.0.2.tar.gz
 	sha256sums = bb3fd00b74d39be92d66ff129e9e9580fefa2e68312be43bd434cda5fe17c618
 
 pkgname = submit50
+	depends = lib50
 	depends = python
 	depends = python-pexpect
 
