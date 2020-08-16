@@ -1,0 +1,27 @@
+pkgbase = jamin
+	pkgdesc = A JACK Audio Connection Kit Audio Mastering interface
+	pkgver = 0.98.9
+	pkgrel = 1
+	url = http://jamin.sourceforge.net/
+	install = jamin.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = perl-xml-parser
+	makedepends = ladspa
+	makedepends = intltool
+	depends = jack
+	depends = libxml2
+	depends = gtk3
+	depends = swh-plugins
+	depends = fftw
+	depends = liblo
+	provides = jamin
+	conflicts = jamin-gtk2
+	conflicts = jamin-cvs
+	options = !libtool
+	source = jamin-code::git+https://git.code.sf.net/p/jamin/code
+	md5sums = SKIP
+
+pkgname = jamin
+
