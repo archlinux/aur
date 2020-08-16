@@ -1,7 +1,7 @@
 # Maintainer: Rowisi < nomail <at> private <dot> com >
 
 pkgname=hmcl-bin
-pkgver=3.3.163
+pkgver=3.3.175
 pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
@@ -13,11 +13,11 @@ conflicts=('hmcl')
 source=("hmcl.desktop"
         "hmcl-launch-script"
         "craft_table.png"
-        "${pkgname}-${pkgver}-${pkgrel}.jar::${url}/releases/download/v${pkgver}/HMCL-${pkgver}.jar")
-sha256sums=('875ae9220fbe452ab4e35ad912ca94133b223e9f133163762f57d9ca4f300863'
-            'cef85329b2b3131a0020efdf29037535ad138c201a6593b2029127ce60a4184c'
-            '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
-            'd2a9b72eb7f8c9d65bf85c34497ee5590881249a6bd91c6e3e048ed2a5d1ae93')
+        "${pkgname}-${pkgver}-${pkgrel}.jar::https://ci.huangyuhui.net/job/HMCL/lastSuccessfulBuild/artifact/HMCL/build/libs/HMCL-${pkgver}.jar")
+sha1sums=('0101c05c6c924f11bd3116ae4d8f904190af0227'
+          '0101c05c6c924f11bd3116ae4d8f904190af0227'
+          '635509ef81b82837fcd1f7d4b24a7d44241559c2'
+          '8a5ad45429fec62b755331efcacf7c3879f2bc6f')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
 

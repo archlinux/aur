@@ -8,3 +8,4 @@ Icon=hmcl-bin
 Terminal=false
 StartupNotify=false
 Categories=Game;
+StartupWMClass=org.jackhuang.hmcl.Launcher
