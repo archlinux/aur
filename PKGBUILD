@@ -10,7 +10,7 @@ license=('GPL2')
 groups=('pantheon-unstable')
 depends=('accountsservice' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('git' 'gobject-introspection' 'granite-git' 'meson' 'vala'
+makedepends=('git' 'gobject-introspection' 'granite' 'meson' 'vala'
              'wingpanel')
 provides=('wingpanel-indicator-session')
 conflicts=('wingpanel-indicator-session')
