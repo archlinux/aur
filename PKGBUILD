@@ -17,8 +17,7 @@ install=${pkgname}.install
 
 package() {
 	cd "$pkgname-$pkgver-$pkgrel"
-	install -Dm 755 "$
-	" "$pkgdir/usr/bin/$pkgname"
+	install -Dm 755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -Dm 644 "system/$pkgname@.service" "$pkgdir/usr/lib/systemd/system/$pkgname@.service"
 	install -Dm 644 "examples/config" "$pkgdir/usr/share/doc/$pkgname/examples/config"
 	install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
