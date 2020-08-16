@@ -2,7 +2,7 @@
 # Upstream: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-zen-vfio
-pkgver=5.7.10.zen1
+pkgver=5.8.1.zen1
 pkgrel=1
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -29,9 +29,9 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '4c278bafc2e5a04fd584ca45ddfe8bdacf52d8f5a2aac9df17d7a20479e893bf'
-            '551d2ec326df256256a9e30d336a074493435fe0dbca77fd18216f9e91c0dd00'
-            'ccb814e2c382a59b907ccb183836eda72f21214484e489b5f473beca97856704'
+            '6b635ee9d01865057f04f5c4606fbe37f37829d0d748d61e18490ecef943abb6'
+            '147fbdb1b7e30f323175f5d6701fc1fd0cfddc9fdd86275086284dc0f6754d8e'
+            '1c9bae55dc1cd0ded83774116105a24a73ad4269cdc395f9f177b20d3206497a'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
 export KBUILD_BUILD_HOST=archlinux
