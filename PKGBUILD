@@ -19,7 +19,7 @@ pkgver() {
 
 makedepends=(gcc make mercurial autoconf)
 # hopefully I should be able to remove glib2 and add sdl2-mixer soon
-depends=(lua json-c sdl2 sdl2_image sdl2_ttf glib2)
+depends=(lua json-c sdl2 sdl2_image sdl2_ttf sdl2_mixer glib2)
 
 source=(git://github.com/cosmo-ray/yirl.git)
 sha256sums=("SKIP")
