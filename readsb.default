@@ -1,0 +1,1 @@
+#USER_OPTIONS="--device 0 --lat 123 --lon 321 --net-beast-reduce-interval 0.5 --net-connector feed.adsbexchange.com,30005,beast_reduce_out"

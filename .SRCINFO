@@ -1,0 +1,33 @@
+pkgbase = readsb
+	pkgdesc = A Mode-S/ADSB/TIS decoder for RTLSDR, BladeRF, Modes-Beast and GNS5894 devices.
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/Mictronics/readsb-protobuf
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	depends = bladerf
+	depends = libiio
+	depends = libad9361
+	depends = rtl-sdr
+	depends = protobuf-c
+	depends = ncurses
+	depends = rrdtool
+	provides = readsb
+	provides = dump1090-fa
+	backup = etc/default/readsb
+	source = readsb-v4.0.0.tar.gz::https://github.com/Mictronics/readsb-protobuf/archive/v4.0.0.tar.gz
+	source = readsb.default
+	source = readsb.sysusers
+	source = readsb.service
+	source = readsb.tmpfiles
+	sha256sums = 89c7d28a56f2cf56a619c381463f4073a1ddb22309e67642531aaf7f603f4baa
+	sha256sums = 1b6721ee262fdc04f9009a793eca96b81127145b4314e21b3ad468c504c1c9d6
+	sha256sums = 3da99128f5a89aef6f9748f1e09f0120940f123e80c007e7d5ac2d0571740a05
+	sha256sums = da7b799553bf6098573a9a03fce4baaf1ef20f668a7a4772d4c1bd62aaf08736
+	sha256sums = 39ed9d33054f7e7bb7f97b7ef27bd17f12f8fd01e4f341328ab735474464592b
+
+pkgname = readsb
+
