@@ -19,6 +19,7 @@ pkgbase = jamin-gtk2
 	depends = liblo
 	provides = jamin
 	conflicts = jamin
+	conflicts = jamin-cvs
 	options = !libtool
 	source = typefix.patch
 	md5sums = a0a18224447f431503471b3dfe1b715c
