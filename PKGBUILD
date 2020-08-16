@@ -9,6 +9,7 @@ depends=('harfbuzz' 'libgl' 'qt5-base' 'qt5-imageformats' 'qt5-multimedia' 'qt5-
 url='https://cancel.fm/ripcord/'
 license=('custom')
 validpgpkeys=('ABBAD1CB484F53024CF5868B69332F9203F21F5C')
+conflicts=('ripcord')
 
 _file="Ripcord-$pkgver-x86_64.AppImage"
 source=("https://cancel.fm/dl/$_file"{,.asc} LICENSE)
