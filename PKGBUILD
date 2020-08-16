@@ -2,17 +2,17 @@
 
 _pkgname=tamzen-font
 pkgname=$_pkgname-git
-pkgver=42.72b0582
+pkgver=92.9ae700d
 pkgrel=1
 pkgdesc="A monospaced bitmap font for the console and X11 (tamsyn-font fork)"
 arch=('any')
 url="https://github.com/sunaku/tamzen-font"
 license=('custom')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
+depends=()
+makedepends=('git')
 install=tamzen-font.install
 source=("git://github.com/sunaku/$_pkgname.git")
 md5sums=('SKIP')
-
 
 pkgver() {
   cd $_pkgname
