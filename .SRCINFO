@@ -1,6 +1,6 @@
 pkgbase = check50
 	pkgdesc = This is check50, with which you can check solutions to problems for CS50.
-	pkgver = 2.2.7
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/cs50/check50
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = check50
 	makedepends = python-setuptools
 	depends = python
 	depends = submit50
-	source = https://files.pythonhosted.org/packages/source/c/check50/check50-2.2.7.tar.gz
-	sha256sums = 6ad46b75f1b19d485a105976a684ec67a37356471a2c2b206cf85086624bde8c
+	source = https://files.pythonhosted.org/packages/source/c/check50/check50-3.1.2.tar.gz
+	sha256sums = e34d39c9a230e80dc2105737f64f9d93bcecb150e184fc70bff2ac849c5f9bd4
 
 pkgname = check50
 	depends = python
