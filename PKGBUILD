@@ -1,9 +1,9 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Sidney Crestani <sidneycrestani@archlinux.net>
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=4.20.r74.ga9c4b309f6
+pkgver=5.15.r0.g019fcaa3641
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ _depends=(
     'faudio'                'lib32-faudio'
     'desktop-file-utils'
 )
-makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
+makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex' 'mingw-w64-gcc'
     'gcc>=4.5.0-2'
     'giflib'                'lib32-giflib'
     'libpng'                'lib32-libpng'
@@ -111,20 +111,16 @@ else
 fi
 
 prepare() {
-    # delete old build dirs (from previous builds) and make new ones
     rm    -rf "$pkgname"-{32,64}-build
     mkdir -p  "$pkgname"-32-build
     [ "$CARCH" = 'x86_64' ] && mkdir "$pkgname"-64-build
     
-    cd wine
-    
     # fix path of opencl headers
-    sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
+    sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i wine/configure*
 }
 
 pkgver() {
-    cd wine
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^wine.//;s/^v//;s/\.rc/rc/'
+    git -C wine describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^wine.//;s/^v//;s/\.rc/rc/'
 }
 
 build() {
