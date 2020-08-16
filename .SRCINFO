@@ -8,11 +8,13 @@ pkgbase = check50
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
+	depends = python-pyaml
 	depends = submit50
 	source = https://files.pythonhosted.org/packages/source/c/check50/check50-3.1.2.tar.gz
 	sha256sums = e34d39c9a230e80dc2105737f64f9d93bcecb150e184fc70bff2ac849c5f9bd4
 
 pkgname = check50
 	depends = python
+	depends = python-pyaml
 	depends = submit50
 
