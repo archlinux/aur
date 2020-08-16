@@ -1,7 +1,7 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgrel=1
-pkgver=r57.17a6e47
+pkgver=r58.7ba7d42
 _pkgname=prezto-contrib
 pkgname=prezto-contrib-git
 pkgdesc="A set of additional plugins designed to work easily with prezto"
@@ -27,6 +27,11 @@ build() {
         echo "\$ZPREZTODIR should be equal to /usr/lib/prezto"
         exit 1
     fi
+
+    # Remove Fish specific files of Enhancd
+    pushd "enhancd/external" >/dev/null
+    rm -rf functions conf.d init.fish uninstall.fish
+    popd >/dev/null
 
 }
 

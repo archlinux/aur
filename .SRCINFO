@@ -1,6 +1,6 @@
 pkgbase = prezto-contrib-git
 	pkgdesc = A set of additional plugins designed to work easily with prezto
-	pkgver = r57.17a6e47
+	pkgver = r58.7ba7d42
 	pkgrel = 1
 	url = https://github.com/belak/prezto-contrib
 	arch = any
