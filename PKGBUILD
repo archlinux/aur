@@ -2,7 +2,7 @@
 
 pkgname=mame-git
 pkgver=0.223.r0.gc55a261d26d
-pkgrel=1
+pkgrel=2
 pkgdesc='A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support (git version)'
 url='https://www.mamedev.org/'
 license=('GPL')
