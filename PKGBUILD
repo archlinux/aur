@@ -2,7 +2,7 @@
 #Maintainer: William Leven <boogrocha@sidus.io>
 
 pkgname=boogrocha
-pkgver=r46.b1d7201
+pkgver=r50.ac4da89
 pkgrel=1
 pkgdesc="A lightweight, easy to use application for managing your group room bookings at Chalmers University of Technology"
 arch=('x86_64')
