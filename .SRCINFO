@@ -1,6 +1,6 @@
 pkgbase = boogrocha
 	pkgdesc = A lightweight, easy to use application for managing your group room bookings at Chalmers University of Technology
-	pkgver = r50.ac4da89
+	pkgver = r51.7f48f84
 	pkgrel = 1
 	url = https://github.com/sidusio/boogrocha
 	arch = x86_64
