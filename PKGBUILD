@@ -16,7 +16,7 @@ depends=('python'
         'python-pytest-md-report'
         'python-typepy')
 makedepends=('python-setuptools')
-checkdepends=('python-mock')
+checkdepends=('python-pytest' 'python-mock')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('a7008333f23f05a33e75683e1f50c88ec27fd583abc89698c336dd099edd3722')
 

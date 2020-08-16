@@ -5,6 +5,7 @@ pkgbase = python-pytest-discord
 	url = https://github.com/thombashi/pytest-discord
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	checkdepends = python-mock
 	makedepends = python-setuptools
 	depends = python
