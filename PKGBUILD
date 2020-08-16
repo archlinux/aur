@@ -1,7 +1,7 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=multimonitorlock
-pkgver=2020.7.9
+pkgver=2020.8.16
 pkgrel=1
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('feh: Allows setting wallpaper' 'multimonitorlock-gui: Allows the ba
 makedepends=('git')
 conflicts=('multilockscreen-git' 'betterlockscreen' 'betterlockscreen-git')
 source=("https://github.com/TheCynicalTeam/$pkgname/archive/$pkgver-$pkgrel.tar.gz")
-sha256sums=("406a2c2da7f32b6bfd6af551c2430cf254dd6f89011654e2ef89b72363fa61a7")
+sha256sums=("c1f9abf45cb1010e0a7d972b94eb1e696659ed9b7ab65654622c0eac1f277d2d")
 install=${pkgname}.install
 
 package() {

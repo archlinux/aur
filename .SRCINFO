@@ -1,11 +1,12 @@
 pkgbase = multimonitorlock
 	pkgdesc = A simple lock script for i3lock-color
-	pkgver = 2020.7.9
+	pkgver = 2020.8.16
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/multimonitorlock
 	install = multimonitorlock.install
 	arch = any
 	license = GNU General Public License v3.0
+	makedepends = git
 	depends = i3lock-color
 	depends = imagemagick
 	depends = xorg-xrandr
@@ -13,12 +14,11 @@ pkgbase = multimonitorlock
 	depends = bc
 	optdepends = feh: Allows setting wallpaper
 	optdepends = multimonitorlock-gui: Allows the background to be changed
-	makedepends = git
 	conflicts = multilockscreen-git
 	conflicts = betterlockscreen
 	conflicts = betterlockscreen-git
-	source = https://github.com/TheCynicalTeam/multimonitorlock/archive/2020.7.9-1.tar.gz
-	sha256sums = 406a2c2da7f32b6bfd6af551c2430cf254dd6f89011654e2ef89b72363fa61a7
+	source = https://github.com/TheCynicalTeam/multimonitorlock/archive/2020.8.16-1.tar.gz
+	sha256sums = c1f9abf45cb1010e0a7d972b94eb1e696659ed9b7ab65654622c0eac1f277d2d
 
 pkgname = multimonitorlock
 
