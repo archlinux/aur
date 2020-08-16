@@ -1,0 +1,22 @@
+pkgbase = tuf-manager
+	pkgdesc = Program to control ASUS TUF laptop keyboard lighting and fan modes
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://git.cromer.cl/cromer/tuf-manager
+	arch = x86_64
+	license = BSD3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = gtk3>=3.14
+	depends = glib2
+	depends = dbus-glib
+	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = polkit
+	depends = faustus-dkms-git
+	source = https://git.cromer.cl/cromer/tuf-manager/archive/1.2.1.tar.gz
+	sha512sums = 046a19f346fe4075130f979de2c5be30d08347bfab7c61179518d228729c927ef73aaa7e2818be76936bf332f81daa761b0a86cc74842b893a5aa4587ef50041
+
+pkgname = tuf-manager
+
