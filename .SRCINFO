@@ -1,0 +1,18 @@
+pkgbase = stiki
+	pkgdesc = Wikipedia anti-vandalism tool
+	pkgver = 2018_12_08
+	pkgrel = 1
+	url = https://en.wikipedia.org/wiki/Wikipedia:STiki
+	arch = x86_64
+	license = GPL
+	makedepends = gendesk
+	depends = java-runtime
+	source = http://www.andrew-g-west.com/docs/STiki_exec_2018_12_08.zip
+	source = stiki.sh
+	source = stiki.svg::https://upload.wikimedia.org/wikipedia/commons/5/54/STiki_logo_without_background_image.svg
+	sha256sums = fa68c89ad68f14349427c813fa8ffe41f6564133c4b6307c9917ba1dd86cc69d
+	sha256sums = b64353870fee3129922d12a7e1799d533e2acb1d6029e6f8a6bb04a003522321
+	sha256sums = 6b52a46af5f6f13a6ecf0cea0b3a1f45107db80cc11b961f6ea8612a7669e2c3
+
+pkgname = stiki
+
