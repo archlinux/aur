@@ -1,13 +1,14 @@
 # Maintainer: Niels Martignène <niels.martignene@gmail.com>
 
 pkgname=tytools-git
-pkgver=0.8.0.r87.g3e14db7
+pkgver=0.9.2.r0.gf3f2a20
 pkgrel=1
 pkgdesc="GUI and command-line tools to manage Teensy devices"
 arch=('x86_64' 'i686')
 url="http://github.com/Koromix/tytools"
 license=('custom:Unlicense')
-depends=('teensyduino' 'libudev.so' 'qt5-base')
+depends=('libudev.so' 'qt5-base')
+optdepends=('teensyduino: Arduino integration')
 makedepends=('git' 'imagemagick')
 provides=('tytools' 'ty')
 conflicts=('ty' 'teensytools')
