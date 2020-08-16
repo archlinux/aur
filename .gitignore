@@ -1,0 +1,8 @@
+.AURINFO
+pkg/
+src/
+mamba/
+xputty/
+mamba-git-*.tar.xz
+mamba-git-*.tar.zst
+mamba-git-*.src.tar.gz
