@@ -2,10 +2,10 @@
 
 pkgname=gush-git
 pkgver=0.1.0.r1.g755f5b4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Genetic programming / stack based language on top of Guile"
-arch=('any')
+arch=('x86_64')
 url="https://gitlab.com/dustyweb/gush"
 license=('GPL')
 depends=('guile')
