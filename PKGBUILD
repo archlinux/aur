@@ -2,7 +2,7 @@
 # Maintainer: Jonathan Herlin <jonher937+aur@gmail.com>
 
 pkgname=terraform-provider-openstack
-pkgver=1.27.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="Terraform OpenStack provider"
 url="https://github.com/terraform-providers/terraform-provider-openstack"
@@ -12,7 +12,7 @@ makedepends=("go-pie" "git")
 _gourl="github.com/terraform-providers"
 depends=('terraform')
 source=("https://github.com/terraform-providers/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('4c06de15838a93ca48c33e3e484229310a470241fe3c0da454960aa93e605424')
+sha256sums=('8892f193184aa05ba1b44965bc3a3f8ca236ded842395006ea0c5c97d1f2faf2')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
