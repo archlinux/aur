@@ -42,7 +42,7 @@ pkgname = linux-xanmod-anbox
 	replaces = linux-xanmod-anbox-git
 
 pkgname = linux-xanmod-anbox-headers
-	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel with ashmem and binder
+	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel with ashmem and binder enabled
 	provides = linux-headers
 	provides = linux-xanmod-anbox-git-headers
 	conflicts = linux-xanmod-anbox-git-headers

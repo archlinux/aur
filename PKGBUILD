@@ -251,7 +251,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for Xanmod Linux kernel with ashmem and binder"
+  pkgdesc="Header files and scripts for building modules for Xanmod Linux kernel with ashmem and binder enabled"
   provides=('linux-headers' 'linux-xanmod-anbox-git-headers')
   replaces=('linux-xanmod-anbox-git-headers')
   conflicts=('linux-xanmod-anbox-git-headers')
