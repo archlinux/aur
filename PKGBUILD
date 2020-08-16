@@ -16,15 +16,10 @@ sha256sums=("406a2c2da7f32b6bfd6af551c2430cf254dd6f89011654e2ef89b72363fa61a7")
 install=${pkgname}.install
 
 package() {
-	_srcdir="$srcdir/$pkgname-$pkgver-$pkgrel"
-	mkdir -p "$pkgdir/usr/bin"
-	cp "$srcdir/$pkgname-$pkgver-$pkgrel/$pkgname" "$pkgdir/usr/bin/$pkgname"
-	if [[ $(pidof systemd) ]]; then
-		_serviceloc="$pkgdir/usr/lib/systemd/system"
-		mkdir -p "$_serviceloc"
-		_servicename="$pkgname@.service"
-		cp "$_srcdir/system/$_servicename" "$_serviceloc/$_servicename"
-	fi
-	mkdir -p "$pkgdir/usr/share/doc/$pkgname/examples"
-	cp "$_srcdir/examples/config" "$pkgdir/usr/share/doc/$pkgname/examples/config"
+	cd "$pkgname-$pkgver-$pkgrel"
+	install -Dm 755 "$
+	" "$pkgdir/usr/bin/$pkgname"
+	install -Dm 644 "system/$pkgname@.service" "$pkgdir/usr/lib/systemd/system/$pkgname@.service"
+	install -Dm 644 "examples/config" "$pkgdir/usr/share/doc/$pkgname/examples/config"
+	install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

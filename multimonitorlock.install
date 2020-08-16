@@ -1,7 +1,7 @@
 post_install() {
 	if [[ $(pidof systemd) ]]; then
 		echo "Systemd service installed, to enable type:"
-		echo 'sudo systemctl enable multilockscreen@$USER'
+		echo 'sudo systemctl enable multimonitorlock@$USER'
 	fi
 }
 
