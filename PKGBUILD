@@ -1,14 +1,14 @@
 # Maintainer: Yago Mont' Alverne <yagocl@protonmail.ch>
 pkgname=nvoc
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Saves nvidia overclocking settings to automatically apply them on session start, without hanging around as a background process."
 arch=('any')
 url="https://github.com/yagoplx/nvoc"
 license=('GPL')
 depends=('nvidia-settings' 'bash')
-source=(https://github.com/yagoplx/nvoc/archive/1.0.2.tar.gz)
-md5sums=('5fe52191c13916ad74a6d6926f5e42c5')
+source=(https://github.com/yagoplx/nvoc/archive/1.0.3.tar.gz)
+md5sums=('cd9bd790997f3283c00a8fd6b28e15c5')
 
 package() {
   cd "$pkgname-$pkgver"
