@@ -1,3 +1,5 @@
+# Maintainer: 40Two (https://forum.dwg.ru/member.php?u=141931)
+
 pkgname=ttf-gost
 pkgver=1.0
 pkgrel=1
