@@ -1,11 +1,11 @@
-# Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 # Contributor: Tristelune <tristelune@archlinux.info>
 
 _pkgname=PDFStudio
 pkgname=${_pkgname,,}-bin
 _pkgver=2019
-pkgver=$_pkgver.2.2
+pkgver=$_pkgver.2.3
 pkgrel=1
 pkgdesc='Review, annotate, and edit PDF Documents'
 arch=('x86_64' 'i686')
@@ -21,8 +21,8 @@ source_x86_64=("https://download.qoppa.com/${pkgname%-bin}/v$_pkgver/${_pkgname}
 source_i686=("https://download.qoppa.com/${pkgname%-bin}/v$_pkgver/${_pkgname}_v${pkgver//./_}_linux.deb")
 sha256sums=('8bbf7d3aaedfdde658e8fe5fc9bf30b92f1643986507b3d90e0eb6ebf1c39a0c'
             '0a3c1c337a22228f3df28412ca65d45d0d8067b508cf7b1cf93810fc17c9b447')
-sha256sums_x86_64=('29f1169cc58cb9e6f858ce26922460884c7dd556ea85ab66c1d106e5a1249dcd')
-sha256sums_i686=('0ce3aa39211a8d43ad92160549783b164b4bdfc2fa7d5e641c2739648dc38ef4')
+sha256sums_x86_64=('81f2b5867094bb63f5fb99fb2e8706cf1b9f5130ee58043c218d1843c9b385ce')
+sha256sums_i686=('496c1adf6a9ba3366e64aa947157ade6dc65b6b3aa12cf9fe52bc17d39a4c2a2')
 
 prepare() {
 	bsdtar xf data.tar.gz
