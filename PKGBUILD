@@ -3,7 +3,7 @@
 
 pkgname=submit50
 _module='submit50' # PyPI specific
-pkgver=2.4.11
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="This is submit50, with which you can submit solutions to problems for CS50."
 arch=('any')
@@ -11,41 +11,17 @@ url="https://github.com/cs50/submit50"
 license=('GPL')
 groups=('cs50')
 depends=('python' 'python-pexpect')
-makedepends=('python-setuptools' 'python-pip')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
+sha256sums=('bb3fd00b74d39be92d66ff129e9e9580fefa2e68312be43bd434cda5fe17c618')
 
-# Pass variables to child processes - Used to check if need to install other dependencies
-export backports_shutil_which
-export backports_shutil_get_terminal_size
-
-prepare() {
-	# Check if dependency backports.shutil-which is installed
-	if ! pip list | grep backports.shutil-which; then
-		backports_shutil_which=1
-	else
-		backports_shutil_which=0
-	fi
-
-	# Check if dependency backports.shutil-get-terminal-size is installed
-	if ! pip list | grep backports.shutil-get-terminal-size; then
-		backports_shutil_get_terminal_size=1
-	else
-		backports_shutil_get_terminal_size=0
-	fi
+build() {
+	cd "${srcdir}/${_module}-${pkgver}"
+	python setup.py build
 }
 
 package() {
-	# Install dependency backports.shutil-which if not already installed
-	if [ "$backports_shutil_which" -eq "1" ]; then
-		echo -e "\033[0;31mDependency backports.shutil-which not found. Adding to package.\033[0m"
-		PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps backports.shutil-which
-	fi
-
-	# Install dependency backports.shutil-get-terminal-size if not already installed
-	if [ "$backports_shutil_get_terminal_size" -eq "1" ]; then
-		echo -e "\033[0;31mDependency backports.shutil-get-terminal-size not found. Adding to package.\033[0m"
-		PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps backports.shutil-get-terminal-size
-	fi
-
-	# Install submit50
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps submit50
+	depends+=()
+	cd "${srcdir}/${_module}-${pkgver}"
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
