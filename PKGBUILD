@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/cs50/check50"
 license=('GPL')
 groups=('cs50');
-depends=('python' 'python-bs4' 'python-pyaml' 'submit50')
+depends=('lib50' 'python' 'python-bs4' 'python-pyaml' 'submit50')
 makedepends=('python-setuptools')
 source=(
 	"https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz"
