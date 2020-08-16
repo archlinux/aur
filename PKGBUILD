@@ -13,6 +13,7 @@ license=('GPL')
 groups=('cs50')
 depends=('python' 'autopep8' 'icdiff' 'python-argparse' 'python-jsbeautifier' 'python-termcolor')
 makedepends=('python-setuptools')
+install=${pkgname}.install
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
 sha256sums=('6bee9cd5b7a02242a627a472b8618768f83c654f4b507f4c2b047437630266c3')
 

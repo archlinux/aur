@@ -3,6 +3,7 @@ pkgbase = style50
 	pkgver = 2.7.4
 	pkgrel = 1
 	url = https://github.com/cs50/style50
+	install = style50.install
 	arch = any
 	groups = cs50
 	license = GPL
