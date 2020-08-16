@@ -1,0 +1,7 @@
+.AURINFO
+pkg/
+src/
+Mamba_*.tar.gz
+mamba-*.pkg.tar.xz
+mamba-*.pkg.tar.zst
+mamba-*.src.tar.gz
