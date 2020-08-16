@@ -14,27 +14,22 @@ source=('smackage::git+http://github.com/standardml/smackage.git#branch=master')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
     printf "%s" "$(git tag | tail -n1 | cut -c2-).r$(git rev-list --count HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	make mlton
-}
-
-check() {
-	cd "$srcdir/${pkgname%-git}"
-    [ -e bin/smackage ]
+    cd "$srcdir/${pkgname%-git}"
+    make mlton
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
     # Install BSD 2-clause license 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	DESTDIR="$pkgdir/usr/" make install
+    DESTDIR="$pkgdir/usr/" make install
 }
