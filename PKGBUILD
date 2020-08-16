@@ -5,20 +5,30 @@
 
 pkgname=xscorch
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A clone of the classic DOS game Scorched Earth"
 depends=('gtk2' 'libmikmod')
 arch=('i686' 'x86_64')
 license=('GPL2')
-url="http://xscorch.org"
-source=($url/releases/$pkgname-$pkgver.tar.gz
-        $pkgname.desktop)
+#url="http://xscorch.org"
+#url="http://freshmeat.sourceforge.net/projects/xscorch"
+url="https://packages.debian.org/sid/games/xscorch"
+source=("http://deb.debian.org/debian/pool/main/x/xscorch/xscorch_$pkgver.orig.tar.gz"
+        "http://deb.debian.org/debian/pool/main/x/xscorch/xscorch_$pkgver-1+nmu4.debian.tar.xz"
+        "$pkgname.desktop")
 md5sums=('9c3a08cc97242ff9a1fad010dc40d9a7'
+         'adc98fc3984ee26b23d78816b65241b8'
          '31b8021889053c13058b13c79af87d48')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 -i "$srcdir/debian/patches/overlapping-memcpy"
+  patch -p1 -i "$srcdir/debian/patches/gdk-include"
+  patch -p1 -i "$srcdir/debian/patches/gcc10.patch"
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's|MEMCPY|MEMMOVE|' libj/jstr/str_trim.c
   ./configure --prefix=/usr
   make
 }
