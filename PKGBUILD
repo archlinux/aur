@@ -1,7 +1,7 @@
 # Maintainer: Baltazár Radics <baltazar.radics@gmail.com>
 pkgname=nanopb
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Protocol Buffers with small code size'
 arch=(any)
 url='https://jpa.kapsi.fi/nanopb/'
@@ -37,4 +37,17 @@ package() {
 	install -Dm755 generator/{nanopb_generator.py,protoc,protoc-gen-nanopb} -t "$pkgdir/usr/share/$pkgname/generator"
 	install -Dm644 generator/proto/{__init__.py,nanopb_pb2.py,_utils.py}    -t "$pkgdir/usr/share/$pkgname/generator/proto"
 	python -m compileall -d /usr/share/$pkgname/generator                      "$pkgdir/usr/share/$pkgname/generator"
+	install                                                                 -d "$pkgdir/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/nanopb"
+	ln -s ../../../../../../nanopb                                             "$pkgdir/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/nanopb/src"
+	cat <<-EOF                                                                >"$pkgdir/usr/share/arduino/hardware/archlinux-arduino/avr/libraries/nanopb/library.properties"
+		name=Nanopb
+		version=$pkgver
+		author=Petteri Aimonen <jpa@npb.mail.kapsi.fi>
+		maintainer=Baltazár Radics <baltazar.radics@gmail.com>
+		sentence=Protocol Buffers with small code size.
+		paragraph=Nanopb is an ANSI-C library for encoding and decoding messages in Google's Protocol Buffers format with minimal requirements for RAM and code space. It is primarily suitable for 32-bit microcontrollers.
+		category=Communication
+		url=https://jpa.kapsi.fi/nanopb/
+		architectures=*
+	EOF
 }
