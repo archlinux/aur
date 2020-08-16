@@ -2,7 +2,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 _pkgver=5.4.54
-_rtpatchver=32
+_rtpatchver=33
 pkgbase=linux-rt-lts
 pkgver=${_pkgver}.${_rtpatchver}
 pkgrel=1
@@ -10,37 +10,35 @@ pkgdesc='Linux RT LTS'
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
-makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'kmod' 'libelf'
-'python-sphinx' 'python-sphinx_rtd_theme' 'xmlto')
+makedepends=('bc' 'graphviz' 'imagemagick' 'kmod' 'libelf' 'python-sphinx'
+'python-sphinx_rtd_theme' 'xmlto')
 options=('!strip')
 _srcname=linux-${_pkgver}
 source=(
-  "https://www.kernel.org/pub/linux/kernel/v${_pkgver%%.*}.x/linux-${_pkgver}.tar.xz"
-  "https://www.kernel.org/pub/linux/kernel/v${_pkgver%%.*}.x/linux-${_pkgver}.tar.sign"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.xz"
-  "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.sign"
+  "https://www.kernel.org/pub/linux/kernel/v${_pkgver%%.*}.x/linux-${_pkgver}.tar."{xz,sign}
+  "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch."{xz,sign}
   'config'
   '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch'
   'sphinx-workaround.patch'
 )
-validpgpkeys=(
-  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-  '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt (Der Hacker) <rostedt@goodmis.org>
-)
 sha512sums=('1cf9e16648c4941637b009800270e9bd06445d9762aefdad3c3d02dbc76b1321f214fc5ea79ec5d6dc6d4e6dd86ccf19feca8edd77ffe0862da1ec16bfd98a4d'
             'SKIP'
-            '76f0e655989cd22275e4a8b6edaa5c93b7987672f4614b95f1c9244a9745ff42ee3ffe43987cefbbf21f8be63806fc7a562fc9136479a5e7d84e82169486c0db'
+            'bcebba6e88ed0dacfb8c7aeed8e8a822316ecb05112674fd6195dd5e210345e4bfd42683748bf676b8238fa0357b2bb49a25b877876c7097ee941e500b07b607'
             'SKIP'
             '05a8063f44147f6a43d8612968b7bca169f7ddf3fc74509980f36b36fbd377692522ce040205e21c6b44b8d2e3175b2c8a4fc548071e5a242a53bbe7ec9806d6'
             '5f196378d50dd737d727e424d8f31b7fa8a6b92ba88f0a1467ef79bc37a097160da1fc1fd5cfb4b8983f36f2afdf27eb229ec61b35a15ac2343d660eb416a230'
             '8081673a6594e5fc2fddc98fa434e99817aa822f7136d3c14c8d465fa7b93c9ac5d3a4150a5b632e25b1dc76a814dfa19d8aede37d58b935db288465b6585c58')
 b2sums=('69d321681db0fd6e459c5b8ec2aa3a2dd4aaa130455b3df6eb368e33d5514329a1485b9cba2875f7f3f2b53a778ec76ca9b84df127947d4d9323e3e105437463'
         'SKIP'
-        'fdc72ca2d2da6116e95f3eb7cb27b94d59707251565bc01257537eda773fe27cb562806466a35ab1d08e0f0c517b1418716acedb528ff894d03cf0add6ba1504'
+        '82e334ed77aae742974d3b121b9e787efbe17f5bd32949d1fce4afbb58a14ccc8b9c8f0a92949c2de907032051e274d56134743aa81354daab06a62a69beaab9'
         'SKIP'
         'aa5939657bbcd961a9b459b252b643ea4bca87091414d426b3d14570f0f5c911e7b0f36aae1924a8763a055781fde03270287d8623da6e0db7582027975e4593'
         '3c3be0e85347bf3825f855a0a399ed60497cd0376f4b8ee1fe89df9bd90fe01cdd97fb3f4c4eea3918ba3769fc79961b6c58ba997326cbdf9dd7fb9540d8f6d6'
         '657fd0e70d29eee5518c27af7eec73a18f399215d2a21cf7b92c9914bee16d1e0981c00065ccb12f0534e57af906af63b17221c65a61146ec8894c88420fa56c')
+validpgpkeys=(
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+  '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt (Der Hacker) <rostedt@goodmis.org>
+)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
