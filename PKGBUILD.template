@@ -1,0 +1,22 @@
+# Maintainer: Jonas Dellinger <jonas@dellinger.dev>
+pkgname="rancher-k3d-beta-bin"
+pkgver=$NEW_RELEASE
+pkgrel=1
+pkgdesc='Little helper to run Rancher Labs k3s in Docker'
+arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
+url='https://github.com/rancher/k3d'
+license=('MIT')
+provides=("k3d")
+conflicts=("rancher-k3d-bin")
+
+case "${CARCH}" in
+  x86_64)    _CARCH=amd64 && $SHA256_SUMS_x86_64;;
+  aarch64)   _CARCH=arm64 && $SHA256_SUMS_aarch64;;
+  arm*)      _CARCH=arm   && $SHA256_SUMS_arm;;
+esac
+
+source=("${pkgname}-${pkgver}-${_CARCH}::https://github.com/rancher/k3d/releases/download/v${pkgver/_/-}/k3d-linux-${_CARCH}")
+
+package() {
+  install -Dm 0755 ${pkgname}-${pkgver}-${_CARCH} "$pkgdir/usr/bin/k3d"
+}
