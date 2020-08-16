@@ -25,7 +25,7 @@ makedepends=(
     'ninja'
     'boost'
     'cereal'
-    'eigen3'
+    'eigen'
     'gtest'
 )
 source=(
