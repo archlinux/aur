@@ -1,0 +1,12 @@
+pkgbase = sukeban-git
+	pkgdesc = FOSS JRPG about school and stuff, still heavilly in devlopement
+	pkgver = r666.602304d
+	pkgrel = 1
+	url = http://github.com/ArthurRobein/Pre-Hangover-Quest
+	arch = x86_64
+	depends = yirl-git
+	source = git://github.com/ArthurRobein/Pre-Hangover-Quest.git
+	sha256sums = SKIP
+
+pkgname = sukeban-git
+
