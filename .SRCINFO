@@ -7,6 +7,8 @@ pkgbase = got
 	arch = arm64
 	license = MIT
 	makedepends = go
+	provides = got
+	conflicts = got
 	source = https://github.com/melbahja/got/archive/v0.2.0.tar.gz
 	sha256sums = b327bddeac1ad58319c22ed2ed744d294735a47dafa29b84db7177c352cf4024
 
