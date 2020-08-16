@@ -1,0 +1,16 @@
+_usage() {
+  echo ""
+  echo "Build with Qt for WebAssembly:"
+  echo "source /opt/qt5-wasm/qtwasm_env.sh"
+  echo "qmake"
+  echo "make"
+  echo ""
+}
+
+post_install() {
+  _usage
+}
+
+post_upgrade() {
+  _usage
+}
