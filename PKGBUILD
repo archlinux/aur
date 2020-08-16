@@ -1,21 +1,21 @@
 # Contributor : chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|tr -d '[0-9]'
 
 pkgname=ares
-pkgver=2.4.9.3075
+pkgver=2.5.2.3078
 pkgrel=1
 pkgdesc="A free open source file sharing program that enables users to share any digital file including images, audio, video, software, documents, etc. (via wine)"
 arch=(i686 x86_64)
-url="https://aresgalaxy.io/"
+url="https://web.archive.org/web/20190515175058/https://aresgalaxy.io/"
 license=('GPL')
 depends=('wine')
 makedepends=(p7zip)
-_version=249
+_version=252
 _filename="aresregular"$_version"_installer.exe"
-source=(ares.sh ares.desktop ares.xpm https://aresgalaxy.io/$_filename)
+source=(ares.sh ares.desktop ares.xpm https://web.archive.org/web/20190501072741if_/https://aresgalaxy.io/$_filename)
 md5sums=('c7bc3239f0a3f6e001942823f882bdcb'
-         '673b1c2d2ef64f7fd9b1b879df3f3904'
+         '752293e683546937e2258b0b22406c10'
          'f89b51f21633e02c9017222b33544c1b'
-         '0fce6ef36b4eb4118adcd4f5c121d1b1')
+         '9ff5736e1626e8bf51fb70c3bb3bffc2')
 
 noextract=()
 options=(!strip)
