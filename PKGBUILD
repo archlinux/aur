@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('bluez' 'glib2' 'glibc' 'gtk3' 'libgee'
          'libwingpanel-2.0.so')
-makedepends=('git' 'granite-git' 'intltool' 'meson' 'vala' 'wingpanel')
+makedepends=('git' 'granite' 'intltool' 'meson' 'vala' 'wingpanel')
 provides=('wingpanel-indicator-bluetooth')
 conflicts=('wingpanel-indicator-bluetooth')
 source=('git+https://github.com/elementary/wingpanel-indicator-bluetooth.git')
