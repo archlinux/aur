@@ -1,0 +1,15 @@
+pkgbase = faustus-rublag-dkms-git
+	pkgdesc = Experimental unofficial Linux platform driver module for ASUS TUF Gaming series laptops with fan mode polling.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/rublag/faustus
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	conflicts = faustus-dkms-git
+	source = git+https://github.com/hackbnw/faustus.git
+	sha512sums = SKIP
+
+pkgname = faustus-rublag-dkms-git
+
