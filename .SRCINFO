@@ -1,0 +1,11 @@
+pkgbase = rime-symbolic-simp
+	pkgdesc = Symbolic input for rime (Simplified Chinese version)
+	pkgver = 0.0.0.20200813
+	pkgrel = 1
+	url = https://github.com/sgalal/rime-symbolic-simp
+	arch = x86_64
+	license = CC0
+	source = https://github.com/sgalal/rime-symbolic-simp/archive/c35e657952c7333d43fe1ed7403d507f282316f8/rime-symbolic-simp-c35e657952c7333d43fe1ed7403d507f282316f8.tar.gz
+
+pkgname = rime-symbolic-simp
+
