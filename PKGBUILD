@@ -11,7 +11,7 @@ groups=('pantheon-unstable')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk2' 'gtk3' 'libcanberra'
          'libgee' 'libnotify' 'libpulse'
          'libgranite.so' 'libwingpanel-2.0.so')
-makedepends=('git' 'gobject-introspection' 'granite-git' 'gtk2' 'meson' 'vala'
+makedepends=('git' 'gobject-introspection' 'granite' 'gtk2' 'meson' 'vala'
              'wingpanel')
 provides=('wingpanel-indicator-sound')
 conflicts=('wingpanel-indicator-sound')
