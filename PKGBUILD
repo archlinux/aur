@@ -15,4 +15,5 @@ package() {
 	install -d "$pkgdir"/usr/share/man/man1/
 	install mgitstatus "$pkgdir"/usr/bin/
 	install mgitstatus.1 "$pkgdir"/usr/share/man/man1/
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
