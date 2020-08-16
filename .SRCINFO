@@ -8,6 +8,7 @@ pkgbase = gtk-theme-elementary-git
 	license = GPL3
 	makedepends = git
 	makedepends = meson
+	makedepends = sassc
 	optdepends = gtk-engine-murrine: GTK2 theme
 	provides = gtk-theme-elementary
 	conflicts = gtk-theme-elementary
