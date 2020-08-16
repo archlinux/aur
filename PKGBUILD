@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee-pay
-pkgver=2020.04.1
+pkgver=2020.05.1
 pkgrel=1
 pkgdesc="Flowee Payment solution"
 arch=('x86_64')
@@ -10,9 +10,8 @@ license=('GPL3')
 depends=('flowee-libs' 'qt5-base')
 makedepends=('boost' 'cmake')
 provides=('flowee-pay')
-source=("git+https://gitlab.com/FloweeTheHub/pay.git#branch=master")
-
-sha256sums=('SKIP')
+source=("https://gitlab.com/FloweeTheHub/pay/-/archive/$pkgver/pay-$pkgver.tar.gz")
+sha256sums=('6ab2a878321655f98529bba58122efbd4ed36eb796be99b47ca462b7d1e7cc44')
 
 build() {
   mkdir -p build
