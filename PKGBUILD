@@ -4,17 +4,17 @@
 
 pkgname=python-factory_boy
 _pkgname="${pkgname#python-}"
-pkgver=2.12.0
+pkgver=3.0.1
 pkgrel=2
-pkgdesc="A fixtures replacement based on thoughtbot's factory_girl for Ruby."
+pkgdesc="A fixtures replacement based on thoughtbot’s factory_bot."
 arch=(any)
 url='https://github.com/FactoryBoy/factory_boy'
 license=(MIT)
-depends=('python-faker>=0.7.0')
+depends=('python-faker>=0.7.0' 'python>=3.5')
 makedepends=(python-distribute)
 options=(!emptydirs)
 source=("https://github.com/FactoryBoy/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('717c7f865f0228196f8170b09004c05e9576f78211986397abbabff565106c3f')
+sha256sums=('0eb0b39c2c05eb27164a7df9ebb69f132a36d7e49284ce437bc18e01d55e3e27')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
