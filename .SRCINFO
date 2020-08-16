@@ -1,0 +1,17 @@
+pkgbase = nanopb
+	pkgdesc = Protocol Buffers with small code size
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://jpa.kapsi.fi/nanopb/
+	arch = any
+	license = zlib
+	checkdepends = scons
+	makedepends = python-docutils
+	depends = python-protobuf
+	source = https://jpa.kapsi.fi/nanopb/download/nanopb-0.4.2.tar.gz
+	source = protoc-gen-nanopb
+	sha256sums = 3fae3a8efb61cf06124732fc775088389f259f0c8d85f1ca3330da295282f912
+	sha256sums = cd1ff902034d8deabf2d8ad3fadcdc4860d0b5d3be746e2b4b7427b9a7aca9c0
+
+pkgname = nanopb
+
