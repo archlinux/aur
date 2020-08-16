@@ -6,17 +6,17 @@ _pkgname=PDFStudio
 pkgname=${_pkgname,,}-bin
 _pkgver=2019
 pkgver=$_pkgver.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Review, annotate, and edit PDF Documents'
 arch=('x86_64' 'i686')
 url='https://www.qoppa.com/pdfstudio/'
 license=('custom')
 depends=('java-runtime>=6')
-source=("${pkgname%-bin}.desktop"
-	    "${pkgname%-bin}.png")
 provides=("${pkgname%-bin}=$pkgver")
 conflicts=("${pkgname%-bin}")
 replaces=("${pkgname%-bin}")
+source=("${pkgname%-bin}.desktop"
+	    "${pkgname%-bin}.png")
 source_x86_64=("https://download.qoppa.com/${pkgname%-bin}/v$_pkgver/${_pkgname}_v${pkgver//./_}_linux64.deb")
 source_i686=("https://download.qoppa.com/${pkgname%-bin}/v$_pkgver/${_pkgname}_v${pkgver//./_}_linux.deb")
 sha256sums=('8bbf7d3aaedfdde658e8fe5fc9bf30b92f1643986507b3d90e0eb6ebf1c39a0c'
@@ -33,7 +33,7 @@ prepare() {
 package() {
 	install -Dm644 -t "$pkgdir/usr/share/applications/" "${pkgname%-bin}.desktop"
 	install -Dm644 -t "$pkgdir/usr/share/pixmaps/" "${pkgname%-bin}.png"
-	install -Dm644 -t "$pkgdir/usr/share/licenses/${pkgname%-bin}/" resources/license.html
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" resources/license.html
 	install -dm 755 "$pkgdir/usr/share/"
 	cp -r "opt/${pkgname%-bin}$_pkgver" "$pkgdir/usr/share/${pkgname%-bin}"
 	install -dm 755 "$pkgdir/usr/bin"
