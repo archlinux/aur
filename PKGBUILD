@@ -1,7 +1,7 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=perl-app-perlall
-pkgver=0.50
+pkgver=0.51
 pkgrel=1
 _author="R/RU/RURBAN"
 _perlmod="App-perlall"
@@ -23,7 +23,7 @@ perl-devel-patchperl-plugin-compiler
 )
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('8717d0446c8619628959b807f7e112b44027ad457d7fbf167bf209d6d8fc5301')
+sha256sums=('ea586ab7a818d2c4206449f2023faac5cbcca77239578201d9de05e408d2a27e')
 unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
 export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps MODULEBUILDRC=/dev/null
 
