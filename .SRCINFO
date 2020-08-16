@@ -30,7 +30,7 @@ pkgbase = linux-xanmod-anbox
 	sha256sums = 6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991
 
 pkgname = linux-xanmod-anbox
-	pkgdesc = The Linux kernel and modules with Xanmod patches
+	pkgdesc = The Linux kernel and modules with Xanmod patches and ashmem and binder enabled
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -42,7 +42,7 @@ pkgname = linux-xanmod-anbox
 	replaces = linux-xanmod-anbox-git
 
 pkgname = linux-xanmod-anbox-headers
-	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel
+	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel with ashmem and binder
 	provides = linux-headers
 	provides = linux-xanmod-anbox-git-headers
 	conflicts = linux-xanmod-anbox-git-headers

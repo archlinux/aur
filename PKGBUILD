@@ -223,7 +223,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with Xanmod patches"
+  pkgdesc="The Linux kernel and modules with Xanmod patches and ashmem and binder enabled"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
@@ -251,7 +251,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for Xanmod Linux kernel"
+  pkgdesc="Header files and scripts for building modules for Xanmod Linux kernel with ashmem and binder"
   provides=('linux-headers' 'linux-xanmod-anbox-git-headers')
   replaces=('linux-xanmod-anbox-git-headers')
   conflicts=('linux-xanmod-anbox-git-headers')
