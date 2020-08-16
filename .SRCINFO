@@ -1,15 +1,12 @@
 pkgbase = otf-ryman-eco
-	pkgdesc = The world's most beautiful sustainable font
+	pkgdesc = Environmentally sustainable typeface
 	pkgver = 1.0
-	pkgrel = 0
-	url = http://rymaneco.co.uk
-	install = otf.install
+	pkgrel = 2
+	url = https://rymaneco.co.uk
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = http://rymaneco.co.uk/download/ryman-eco.zip
-	md5sums = faca025548b89add18d3891593f800e5
+	license = custom
+	source = ryman-eco-1.0.zip::https://rymaneco.co.uk/download/ryman-eco.zip
+	sha256sums = be47185a8ae794ce56a837aae7d7687d46b0c6fd009fde8d299829e7950caa86
 
 pkgname = otf-ryman-eco
 
