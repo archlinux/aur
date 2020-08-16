@@ -15,7 +15,7 @@ optdepends=('subversion: download source code using svn'
             'git: download source code using git')
 conflicts=('kdesrc-build')
 provides=('kdesrc-build')
-source=("git://anongit.kde.org/kdesrc-build.git")
+source=("git+https://anongit.kde.org/kdesrc-build.git")
 md5sums=('SKIP')
 
 pkgver() {

@@ -18,7 +18,7 @@ pkgbase = kdesrc-build-git
 	optdepends = git: download source code using git
 	provides = kdesrc-build
 	conflicts = kdesrc-build
-	source = git://anongit.kde.org/kdesrc-build.git
+	source = git+https://anongit.kde.org/kdesrc-build.git
 	md5sums = SKIP
 
 pkgname = kdesrc-build-git
