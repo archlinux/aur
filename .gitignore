@@ -1,0 +1,10 @@
+\#*#
+.#*
+*~
+devilspy-*.pkg.tar.zst
+devilspy/
+src/
+pkg/
+.BUILDINFO
+.MTREE
+.PKGINFO

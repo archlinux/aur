@@ -1,0 +1,19 @@
+pkgbase = devilspy
+	pkgdesc = Window matching utility
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://buzz.github.io/devilspy/
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = python-setuptools
+	depends = python-click
+	depends = python-yaml
+	options = !emptydirs
+	source = git+https://github.com/buzz/devilspy.git#tag=v0.0.4
+	md5sums = SKIP
+
+pkgname = devilspy
+
