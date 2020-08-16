@@ -101,7 +101,7 @@ ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
-ac_add_options --with-system-png
+#ac_add_options --with-system-png # doesn't work because of missing APNG support
 ac_add_options --with-system-libevent
 ac_add_options --enable-system-sqlite
 ac_add_options --enable-system-ffi
