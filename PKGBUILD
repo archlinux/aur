@@ -1,21 +1,29 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=readsb-git
-_gitname=readsb
-pkgver=3.8.2.r7.ge622f70
+_gitname=readsb-protobuf
+pkgver=4.0.0.r36.g566804a
 pkgrel=1
 pkgdesc="A Mode-S/ADSB/TIS decoder for RTLSDR, BladeRF, Modes-Beast and GNS5894 devices."
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/Mictronics/readsb"
+url="https://github.com/Mictronics/readsb-protobuf"
 license=('GPL3')
-depends=('bladerf' 'libiio' 'libad9361' 'rtl-sdr')
+depends=(
+  'bladerf'
+  'libiio'
+  'libad9361'
+  'rtl-sdr'
+  'protobuf-c'
+  'ncurses'
+  'rrdtool'
+)
 provides=('readsb'
           'dump1090-fa-git')
 conflicts=('readsb')
 makedepends=('git')
 backup=('etc/default/readsb')
 
-source=('readsb::git+git://github.com/Mictronics/readsb'
+source=('git+https://github.com/Mictronics/readsb-protobuf.git'
         'readsb.default'
         'readsb.sysusers'
 	'readsb.service'
@@ -34,7 +42,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  make BLADERF=yes RTLSDR=yes PLUTOSDR=yes
+  make -j1 BLADERF=yes RTLSDR=yes PLUTOSDR=yes
 }
 
 package() {
