@@ -5,7 +5,6 @@ pkgbase = mockingbot
 	url = https://mockingbot.com/downloads
 	arch = x86_64
 	license = custom
-	depends = gconf
 	source = https://cdn.modao.cc/linux/mockingbot_0.7.8_amd64.deb
 	sha512sums = SKIP
 

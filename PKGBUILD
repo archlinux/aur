@@ -7,7 +7,7 @@ pkgdesc="A prototyping & collaboration tool.墨刀/modao/MockingBot"
 arch=('x86_64')
 url="https://mockingbot.com/downloads"
 license=('custom')
-depends=('gconf')
+#depends=('')
 
 source=("https://cdn.modao.cc/linux/mockingbot_${pkgver}_amd64.deb")
 sha512sums=('SKIP')
