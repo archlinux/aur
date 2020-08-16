@@ -3,7 +3,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=2.2.11
+pkgver=2.2.12
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64')
@@ -39,8 +39,16 @@ optdepends=(
 install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service")
-sha256sums=('60f2d6eec1cd745e2a5a8781f30c9d3d7f3da541d3d6830348b25bf65d575b96'
+sha256sums=('30fd21ad475b724b686f15932e7a41db6e0cf0a9ee797348390034dba536f231'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    # Arch usually has the latest versions. Patch requirements to allow them.
+    sed -i \
+        -e 's|^psutil==5\.6\.7$|psutil>=5.6.7|' \
+        requirements.txt
+}
 
 build() {
     cd "$pkgname-$pkgver"
