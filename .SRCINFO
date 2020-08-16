@@ -1,6 +1,6 @@
 pkgbase = flowee-pay-git
 	pkgdesc = Flowee Payment solution
-	pkgver = 2020.04.1
+	pkgver = b2d1486
 	pkgrel = 1
 	url = https://flowee.org/
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee-pay-git
-pkgver=2020.04.1
+pkgver=b2d1486
 pkgrel=1
 pkgdesc="Flowee Payment solution"
 arch=('x86_64')
@@ -13,6 +13,11 @@ provides=('flowee-pay')
 source=("git+https://gitlab.com/FloweeTheHub/pay.git#branch=master")
 
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/pay"
+  git rev-parse --short HEAD
+}
 
 build() {
   mkdir -p build
