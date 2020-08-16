@@ -1,6 +1,6 @@
 pkgbase = python-pytest-discord
 	pkgdesc = pytest plugin to report test results to a Discord channel
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/thombashi/pytest-discord
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-pytest-discord
 	depends = python-pytest
 	depends = python-pytest-md-report
 	depends = python-typepy
-	source = https://files.pythonhosted.org/packages/source/p/pytest-discord/pytest-discord-0.0.4.tar.gz
-	sha256sums = 58a4e9b6ded8459aebfcb0f14cad98084418c61fb4f48f0d5ac7f0e9fee4e781
+	source = https://files.pythonhosted.org/packages/source/p/pytest-discord/pytest-discord-0.0.5.tar.gz
+	sha256sums = a7008333f23f05a33e75683e1f50c88ec27fd583abc89698c336dd099edd3722
 
 pkgname = python-pytest-discord
 

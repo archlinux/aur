@@ -2,7 +2,7 @@
 
 _pkgname=pytest-discord
 pkgname=python-${_pkgname}
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='pytest plugin to report test results to a Discord channel'
 arch=('any')
@@ -18,7 +18,7 @@ depends=('python'
 makedepends=('python-setuptools')
 checkdepends=('python-mock')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('58a4e9b6ded8459aebfcb0f14cad98084418c61fb4f48f0d5ac7f0e9fee4e781')
+sha256sums=('a7008333f23f05a33e75683e1f50c88ec27fd583abc89698c336dd099edd3722')
 
 build() {
   cd "${_pkgname}-${pkgver}"
