@@ -2,7 +2,7 @@
 # Do not forget SRCINFO :  makepkg --printsrcinfo > .SRCINFO
 pkgname=soapui
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical Java program for inspecting, invoking, monitoring, simulating/mocking and functional/load/compliance/surveillance testing of REST/WADL and SOAP/WSDL-based Web Services over HTTP."
 arch=('i686' 'x86_64')
 url="http://www.soapui.org/"
@@ -18,17 +18,14 @@ source=("https://s3.amazonaws.com/downloads.eviware/soapuios/$pkgver/SoapUI-$pkg
 md5sums=('10be0158efbe3ab77eaf19c664454f03'
          '3cc08aca62edb502fc53013edf69f640'
          'f0e2fa73dd9a7c271e38c179b4e284a3'
-         'b1eb2bcf5a0ff86bf128d13dc41d83de')
+         '2cd183f3ffcb9d4560dd6f275323baa5')
 sha1sums=('8fdf1dddd2250fa14fe5878a7271f6693427de10'
           '9f12e2f0db63083a3fa4e5b6fdfd10c8dfd038c0'
           '4ced7d28c3c5880db600bf4769fdb1a3dc3a6fce'
-          '89c2d3aabacb88343d60f57f4fe47546ab95ccf5')
+          '9a4b0d63fed9af9f4619beed02fbe62f08c214f4')
 
 build() {
   cd "${srcdir}/SoapUI-${pkgver}"
-
-  #Correction du bug jxplorer
-  sed -i -e 's/^java/${JAVA_HOME}\/bin\/java/' bin/soapui.sh
 }
 
 package() {
