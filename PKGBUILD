@@ -20,6 +20,12 @@ validpgpkeys+=('SKIP') # Matthieu Herrb <matthieu.herrb@laas.fr>
 validpgpkeys+=('SKIP') # Matt Turner <mattst88@gmail.com>
 validpgpkeys+=('SKIP') # Adam Jackson <ajax@nwnk.net>
 
+pkgver() {
+  cd "libx11"
+
+  git describe --long --tags | sed 's/^libX11-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
   export CC="gcc -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
