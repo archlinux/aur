@@ -1,6 +1,6 @@
 pkgbase = tpm2-pkcs11-git
 	pkgdesc = PKCS#11 interface for Trusted Platform Module 2.0 hardware
-	pkgver = 1.3.2rc0.r339.00faef9
+	pkgver = 1.4.0rc0.r0.05e15d4
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-pkcs11
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tpm2-pkcs11-git
 	checkdepends = junit
 	checkdepends = libp11
 	checkdepends = opensc
-	checkdepends = tpm2-abrmd-git
+	checkdepends = tpm2-abrmd
 	checkdepends = tpm2-tss-engine
 	checkdepends = wget
 	checkdepends = xxd
