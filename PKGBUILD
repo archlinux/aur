@@ -17,9 +17,8 @@ build() {
 }
 
 package() {
-	cd "SoulAnchor-$pkgname-$pkgver/install"
-	cp -a --no-preserve=ownership usr/ "$pkgdir/"
-	install -Dm644 ../README.md "$pkgdir/usr/share/doc/soulanchor/README.md"
-	install -Dm644 ../LICENSE "$pkgdir/usr/share/doc/soulanchor/LICENSE"
-	install -Dm644 ../MOD "$pkgdir/usr/share/doc/soulanchor/MOD"
+	cd "SoulAnchor-$pkgname-$pkgver"
+	cp -a --no-preserve=ownership install/usr/ "$pkgdir/"
+	install -Dm644 -t "$pkgdir/usr/share/doc/soulanchor/" MOD README.md
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/soulanchor/LICENSE"
 }
