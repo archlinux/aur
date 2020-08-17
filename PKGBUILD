@@ -2,7 +2,7 @@
 _name=umps
 _ver=3
 pkgname=$_name$_ver
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Virtual machine simulator based around the MIPS R2/3000 microprocessor."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('qt5-base' 'libelf' 'boost' 'libsigc++' "cross-mipsel-linux-gnu-gcc")
 makedepends=('cmake')
 conflicts=("umps3-git")
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('045bdca958d16a951ddcacf23f59ec2f7d0fafaf775adcd10e828a7b3d11f523')
+sha256sums=('0f3072ac6295f58f9980d43f0dd3991771ebe6b1cd1d1c55b08323b06edac674')
 
 build() {
   cmake -B build -S $pkgname-$pkgver -DCMAKE_BUILD_TYPE=Release
