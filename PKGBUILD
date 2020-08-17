@@ -3,8 +3,8 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=5.9.98
-pkgrel=2
+pkgver=5.9.99
+pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(i686 x86_64)
 url=https://users.notam02.no/~kjetism/radium
@@ -15,12 +15,14 @@ depends=(
   glu
   gsfonts
   hicolor-icon-theme
-  jack
+  jack2
+  liblo
   liblrdf
   libmpc
   libsndfile
-  python2
+  python
   qt5-webkit
+  qt5-svg
   qt5-x11extras
   speex
   ttf-bitstream-vera
@@ -42,36 +44,20 @@ makedepends=(
 optdepends=(
   'calf-ladspa: Default chorus plugin'
   'ladspa-plugins: Package group for default radium plugins included in binary releases'
-  'python: Used for scheme scripting'
 )
 options=(!strip)
-source=(https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz
-        0001-Linux-Macosx-Fix-compiling-with-newer-bdf.h.patch
-        0002-Build-Add-RADIUM_VST2SDK_PATH-environment-variable.patch
-        0003-Editor-Fix-assertion-window-popping-up-when-assignin.patch
-        0004-MIDI-Don-t-apply-channel-to-MIDI-system-messages-0xf.patch
-        0005-Sequencer-Fix-vertical-seqtrack-scrollbar-not-always.patch
-        0006-Blocks-Fix-undo-delete-insert-block.-It-messed-up-th.patch
-        0007-Linux-Only-use-included-libxcb-if-the-system-version.patch
-        0008-Build-Allow-skipping-libxcb-compile-with-env-vars.patch
-        0009-Build-Switch-to-clang-to-build-libpd-master.patch)
-sha256sums=('3b1b5b9f72536d79561f602f278611979fbc9a8720cd3064c001998a22de9e90'
-            'cd8a424cbe379ab38eb705d6b56a1e65b67879fee1eb87f7e226b944af9ad3de'
-            '83d90f5418ca7429ed4e3c7ba9392b3bb4191528c2681f076f56ffe6f7617eef'
-            '9baab8d625955070dbf92b37095c34b8b3c7fa80c1838e651f2f1430b5221a34'
-            '4642e56d315d65a8a60f5bc57fabcee5daa1a7fc45feca88a472d8d3cfedda36'
-            '34f9d7e75978e8dffcb4c1f56b0d7f69376037c7c04daa44b8a7cf6b90cb0342'
-            'e3e1ab4936ddbbc37eb4d0da6f6d6b8013aca22afa5944c0148675325a7760b0'
-            '0be52efa89ba74c9f90cdfd5fcc29dbfbeb1f9bae12f59def113f682de84d7f6'
-            'f64abc5bd3eb9373f62702dd58e047e6cad7e5c3774f5a7c1045cc58e05a5111'
-            'd8610fb4e104ea6763777001c614f35ff109da046b9d47b4955a014397368fdf')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz"
+       add-vstsdk-location-var.patch
+       fix-packages-compile.patch)
+sha256sums=('a6140ed5287c01e8c502e56802d19cae7c1e5a30f610d3eeef005c893c26b9fc'
+            '46b2a16f9faf0b01a3e66bf5ca589be95dcdfb9fe887a339269be1b74e8ba3f3'
+            '3afbb5f4f7757056dc5f84b01a4787e5d8824214eb9b2d81908574e2fe5ed77d')
 
 prepare() {
   cd radium-$pkgver
 
-  # Hotfixes for 5.9.98 release suggested by developer, see issue #1250
-  # https://github.com/kmatheussen/radium/issues/1250#issuecomment-631935368
-  for commit in "$srcdir"/000?-*.patch; do patch -p1 < "$commit"; done
+  patch -p1 < "$srcdir/add-vstsdk-location-var.patch" # Reverted PR 1247
+  patch -p1 < "$srcdir/fix-packages-compile.patch" # PRs 1275-1276
 
   # Edit new file template and demo songs to be compatible with chorus plugin from calf-ladspa
   for file in bin/sounds/*.rad; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
