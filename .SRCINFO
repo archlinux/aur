@@ -19,7 +19,6 @@ pkgbase = lib32-libx11-git
 	validpgpkeys = SKIP
 	validpgpkeys = SKIP
 	sha512sums = SKIP
-	sha512sums = SKIP
 
 pkgname = lib32-libx11-git
 
