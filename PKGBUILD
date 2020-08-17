@@ -1,9 +1,11 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
+_binver=1.4
+
 pkgname=kotlin-native-bin
-pkgver=1.3.72
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="An LLVM backend for the Kotlin compiler"
+pkgdesc="Kotlin/Native infrastructure"
 arch=('x86_64')
 url="https://github.com/JetBrains/kotlin-native"
 license=('Apache')
@@ -15,17 +17,17 @@ optdepends=(
 provides=('kotlin-native')
 conflicts=('kotlin-native' 'kotlin-native-git')
 source=(
-  "https://github.com/JetBrains/kotlin/releases/download/v${pkgver}/kotlin-native-linux-${pkgver}.tar.gz"
+  "https://github.com/JetBrains/kotlin/releases/download/v${pkgver}/kotlin-native-linux-${_binver}.tar.gz"
 )
 sha256sums=(
-  '85534a02d7cb6c07f51945e98cd4c0f2644e8528176da17c351b605845857b8c'
+  'ca4981eab287315bb53aee153cee5e703adf651dd3f0f0229d12124f65ce8d56'
 )
 
 package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/lib"
 
-  cp -r "kotlin-native-linux-${pkgver}" "${pkgdir}/usr/lib/kotlin-native"
+  cp -r "kotlin-native-linux-${_binver}" "${pkgdir}/usr/lib/kotlin-native"
   # Fix permissions for some files, e.g. /usr/lib/kotlin-native/klib/common/stdlib/ir/ir_tables/*.knt
   chmod -R +r "${pkgdir}/usr/lib/kotlin-native"
 
