@@ -1,8 +1,8 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=bitcoin-cash-node
-pkgver=0.21.2
-pkgrel=2
+pkgver=22.0.0
+pkgrel=0
 pkgdesc="Bitcoin Cash Node with bitcoind, bitcoin-tx, bitcoin-seeder and bitcoin-cli"
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
@@ -15,7 +15,7 @@ source=(https://github.com/bitcoin-cash-node/bitcoin-cash-node/archive/v$pkgver.
         bitcoin.service
         bitcoin-reindex.service
         bitcoin.install)
-sha256sums=('a4f959edc39523423e6f791aef5a448b5c2ab9ca3319f329fd6facc7af422843'
+sha256sums=('a748dfbddede65bebbc8c820c591c17b7ea756bc92185ae035294e900dbaeb38'
             'c30e5c7e0e97b001fdeac5f4510d5ebc0e0499ec086325e845db609a24f2e22f'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             'f2fd9d8331238727333cf2412ba3759cb194a65b2060eff36808b24c06382104'
@@ -59,10 +59,6 @@ package() {
 
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname}"
-
-  msg2 'Installing examples...'
-  install -Dm644 "contrib/debian/examples/bitcoin.conf" \
-    -t "$pkgdir/usr/share/doc/bitcoin/examples"
 
   msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/bitcoin"
