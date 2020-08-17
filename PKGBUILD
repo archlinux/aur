@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 url="https://github.com/lelit/pglast"
 license=('GPL3')
 options=('!emptydirs')
-source=('git+https://github.com/lelit/pglast.git#branch=v2' 'parallel_build.patch')
+source=('git+https://github.com/lelit/pglast.git#branch=v2')
 md5sums=('SKIP'
          'b20f4566d377186322eae5d1ab451495')
 prepare() {
@@ -18,7 +18,6 @@ prepare() {
   git submodule init
   git submodule update
   cd libpg_query
-  patch -p1 < ${srcdir}/parallel_build.patch
 }
 
 pkgver() {
