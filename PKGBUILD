@@ -2,7 +2,7 @@
 # Contributor: Valentin Huélamo <vhuelamo at gmail dot com>
 
 pkgname="ayatana-indicator-power"
-pkgver="2.0.95"
+pkgver="2.1.0"
 pkgrel="1"
 pkgdesc="Ayatana Indicator showing power state"
 arch=("i686" "x86_64" "pentium4")
@@ -12,7 +12,7 @@ depends=("libayatana-indicator" "upower" "systemd" "libnotify" "dconf")
 makedepends=("cmake" "cmake-extras" "libnotify" "glib2" "python")
 optdepends=("mate-ayatana-indicator-applet" "zenity" "mate-control-center" "mate-power-manager")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("fb07dee2f4b2567d4ab45b0d7075d551")
+md5sums=("33aa62fb24766532206eb0d9775174da")
 options=("!emptydirs")
 
 build()
