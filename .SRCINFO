@@ -1,0 +1,15 @@
+pkgbase = gpstk
+	pkgdesc = Algorithms and frameworks supporting the development of processing and analysis applications in navigation and global positioning
+	pkgver = 2.12.1
+	pkgrel = 1
+	url = http://www.gpstk.org
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	provides = gpstk
+	conflicts = gpstk
+	source = https://gitlab.com/sgl-ut/GPSTk/-/archive/v2.12.1/GPSTk-v2.12.1.tar.gz
+	sha256sums = 0c4442126654857a424584263c9f6a40871c492fc98f7b59bf7122051a2d9dba
+
+pkgname = gpstk
+
