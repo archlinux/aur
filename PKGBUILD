@@ -8,7 +8,7 @@ pkgdesc='Git client with Hg and SVN support.'
 arch=('any')
 url="http://www.syntevo.com/smartgit"
 license=('custom')
-depends=('java-runtime>=8' 'desktop-file-utils' 'git' 'gtk2')
+depends=('desktop-file-utils' 'git' 'gtk3')
 optdepends=('mercurial: hg repositories support')
 replaces=('smartgithg')
 
