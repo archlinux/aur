@@ -1,32 +1,29 @@
-# Maintainer:  Vincent Grande <shoober420@gmail.com>
-# Contributor: Brian Bidulock <bidulock@openss7.org>
-# Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
-# Contributor: Mikko Seppälä <t-r-a-y@mbnet.fi>
+# Contributor: Mikko Sepp\u00e4l\u00e4 <t-r-a-y@mbnet.fi>
 
-_pkgbasename=gtk2
-pkgname=lib32-$_pkgbasename-git
-pkgver=2.24.32+62+g56c6970b02
+pkgname=lib32-gtk2-git
+pkgver=2.24.32
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (legacy) (32-bit)"
 arch=('x86_64')
 url="https://www.gtk.org/"
 install=gtk2.install
-provides=(lib32-gtk2)
-conflicts=(lib32-gtk2)
 depends=(lib32-{'atk>=1.30.0','pango>=1.28.0','cairo>=1.10.0','gdk-pixbuf2>=2.22.1'}
          lib32-lib{'cups>=1.4.4',xcursor,'xrandr>=1.3','xi>=1.3',xinerama,xcomposite,xdamage}
-         $_pkgbasename)
+         gtk2)
+provides=(lib32-gtk2)
+conflicts=(lib32-gtk2)
 makedepends=('python')
 license=('LGPL')
-source=(git+https://gitlab.gnome.org/GNOME/gtk.git)
+source=(git+https://gitlab.gnome.org/GNOME/gtk.git#branch=gtk-2-24)
 sha256sums=('SKIP')
 
-pkgver() {
+prepare() {
   cd gtk
-  git describe --tags | sed 's/-/+/g'
+
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
@@ -40,8 +37,7 @@ build() {
       --sysconfdir=/etc \
       --localstatedir=/var \
       --libdir=/usr/lib32 \
-      --with-xinput=yes \
-      --disable-gtk-doc
+      --with-xinput=yes
 
   #https://bugzilla.gnome.org/show_bug.cgi?id=655517
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -59,3 +55,4 @@ package() {
   mv gtk-query-immodules-2.0 gtk-query-immodules-2.0-32
   rm -f gtk-builder-convert gtk-demo gtk-update-icon-cache
 }
+
