@@ -3,7 +3,7 @@
 # Contributor: Apostolos Bessas <mpessas at gmail dot com>
 
 pkgname=otf-gfs
-pkgver=20191228
+pkgver=20200817
 pkgrel=1
 pkgdesc='Selection of open type fonts from the Greek Font Society.'
 arch=(any)
@@ -37,6 +37,7 @@ source=("http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Pyrsos.zip"
 	"http://www.greekfontsociety-gfs.gr/_assets/fonts/GFS_Galatea.zip"
 	"LICENSE")
 noextract=(${source[@]##*/})
+
 md5sums=('ad4bce50a20830c93bc6e4437f674e95'
          'ed0fd6e096eaa27f1e4d75dab59b353b'
          'fc4b7dd7537e5cd0b700bb897d71ae18'
@@ -44,7 +45,7 @@ md5sums=('ad4bce50a20830c93bc6e4437f674e95'
          'c557a9e9e366b938d4c85ef15059b868'
          '3cba29df7b102c10c1612f15d0b6b6d3'
          '2672799c089cc78212046e7effcd0b3b'
-         'f07c7b92d98a99bfbab579b8780a922d'
+         '8cb879757dc13726d754b395caf7c122'
          '2409b756a28631aae2912004c2a867e9'
          '55684035c46a240699d3d13b34c6affe'
          '7294978fb48cec9317d68d68378f2abb'
@@ -53,7 +54,7 @@ md5sums=('ad4bce50a20830c93bc6e4437f674e95'
          '77c82259cf77c40f0a647d8e54780f37'
          'b2b4c8db6c51a7db93d614b29387ac42'
          '0c63e5ce5d1949d7ea98cf99baa53096'
-         'b837d9b9945f67d6b88ab7572eb0a00c'
+         'c6950b30fc57ba35ffab6c5e29da9e57'
          '2a29df9769ce7b3be5d995aadb3283ab'
          'a4c893f33da31e6152b5bd06c516b52d'
          'a4f88fe7b6a598c5ed12f6c54dc03a8f'
