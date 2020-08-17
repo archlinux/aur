@@ -1,4 +1,5 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Mikko Sepp\u00e4l\u00e4 <t-r-a-y@mbnet.fi>
