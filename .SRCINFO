@@ -10,6 +10,7 @@ pkgbase = kscreenlocker-git
 	makedepends = git
 	makedepends = python
 	makedepends = kdoctools
+	makedepends = kcmutils
 	depends = plasma-framework
 	depends = kidletime
 	depends = kwayland
