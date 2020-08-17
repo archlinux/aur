@@ -59,7 +59,6 @@ pkgbase = lxqt-kwin-desktop-git
 	optdepends = meteo-qt: System tray application for weather status information
 	provides = lxqt-kwin-desktop
 	conflicts = lxqt-kwin-desktop
-	sha256sums = SKIP
 
 pkgname = lxqt-kwin-desktop-git
 
