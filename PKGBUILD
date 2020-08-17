@@ -1,7 +1,7 @@
 # Maintainer: BrLi <brli at chakralinux dot org>
 
 pkgname=zettlr
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=(yarn git gulp)
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
             'ttf-lato: Display output in a more comfortable way')
-_commit=8b08c0249bf7946ccd2809d81b8c827470f4ee86 # v1.7.4^0
+_commit=0c4a2c21ca08464127dcc11dedf9117eb57b7bac # v1.7.5^0
 source=(git+https://github.com/Zettlr/Zettlr.git#commit="${_commit}")
 sha1sums=('SKIP')
 
@@ -29,7 +29,11 @@ prepare() {
 build() {
     cd "${srcdir}/Zettlr"
     local NODE_ENV=''
-    yarn install --pure-lockfile --no-bin-links --cache-folder "${srcdir}/cache" --link-folder "${srcdir}/link"
+    yarn install --pure-lockfile \
+                 --no-bin-links \
+                 --cache-folder "${srcdir}/cache" \
+                 --link-folder "${srcdir}/link" \
+                 --ignore-scripts
     yarn less
     yarn handlebars
     yarn lang:refresh
