@@ -1,7 +1,7 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=pineapple-pictures-git
-pkgver=r82.90d0869
+pkgver=r88.d64e9cf
 pkgrel=1
 pkgdesc='Yet another lightweight image viewer'
 arch=('x86_64')
@@ -20,29 +20,29 @@ optdepends=(
     'qt5-imageformats: TIFF, WEBP, and other extra image formats'
 )
 source=(
-    'git+https://github.com/BLumia/PineapplePictures.git'
+    'git+https://github.com/BLumia/pineapple-pictures.git'
 )
 md5sums=(
     'SKIP'
 )
 
 pkgver() {
-    cd ${srcdir}/PineapplePictures
+    cd ${srcdir}/pineapple-pictures
 
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build () {
-    cd ${srcdir}/PineapplePictures
+    cd ${srcdir}/pineapple-pictures
     cmake -DCMAKE_INSTALL_PREFIX=/usr .
     make
 }
 
 package() {
-    make -C ${srcdir}/PineapplePictures DESTDIR="$pkgdir" install
-    cd ${srcdir}/PineapplePictures
+    make -C ${srcdir}/pineapple-pictures DESTDIR="$pkgdir" install
+    cd ${srcdir}/pineapple-pictures
     #make INSTALL_ROOT="$pkgdir" install
-    #install -Dm755 ./PineapplePictures ${pkgdir}/usr/bin/PineapplePictures
+    #install -Dm755 ./ppic ${pkgdir}/usr/bin/ppic
     mkdir -p ${pkgdir}/usr/share/licenses/pineapple-pictures-git
     install ./LICENSE ${pkgdir}/usr/share/licenses/pineapple-pictures-git/LICENSE
 }
