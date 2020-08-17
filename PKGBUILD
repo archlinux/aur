@@ -2,9 +2,9 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epg2vdr
-pkgver=1.1.113
+pkgver=1.1.115
 _vdrapi=2.4.3
-pkgrel=2
+pkgrel=1
 pkgdesc="Used to retrieve EPG data into the VDR"
 url="http://projects.vdr-developer.org/projects/plg-epg2vdr"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ _plugname=${pkgname//vdr-/}
 source=("https://projects.vdr-developer.org/git/vdr-plugin-epg2vdr.git/snapshot/vdr-plugin-$_plugname-$pkgver.tar.bz2")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'var/lib/vdr/plugins/epg2vdr/epg.dat')
-sha256sums=('ed7de006892342fe5f562cd96e0f0396ac4d44c9546008e3cfcbd467f18c7080')
+sha256sums=('a27c5f3fd4ce9aa22fc1a83cce61970aa24840b2b132debcc38272e334d1ce8b')
 
 build() {
   cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
