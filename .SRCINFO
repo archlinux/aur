@@ -12,7 +12,7 @@ pkgbase = python-pystray
 	depends = python-six
 	depends = python-pillow
 	depends = python-xlib>=0.17
-	source = https://github.com/moses-palmer/pystray/archive/v0.16.0.tar.gz
+	source = python-pystray-0.16.0.tar.gz::https://github.com/moses-palmer/pystray/archive/v0.16.0.tar.gz
 	sha512sums = 1571a91851cb9ff85cc7497162db687d3cef3ff6c863d1f8ede4ca1275de1f0a1dcf09a313a744f39f5666765c507c0dccf5f75320e5c7bd6dd4074ef2e5b83a
 
 pkgname = python-pystray

@@ -10,7 +10,7 @@ pkgdesc="Allows to create a system tray icon"
 url="https://github.com/moses-palmer/pystray"
 depends=('python-six' 'python-pillow' 'python-xlib>=0.17')
 makedepends=('python>=3.4' 'python-setuptools' 'python-pip' 'python-wheel')
-source=("https://github.com/moses-palmer/pystray/archive/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/moses-palmer/pystray/archive/v${pkgver}.tar.gz")
 sha512sums=('1571a91851cb9ff85cc7497162db687d3cef3ff6c863d1f8ede4ca1275de1f0a1dcf09a313a744f39f5666765c507c0dccf5f75320e5c7bd6dd4074ef2e5b83a')
 
 build() {
