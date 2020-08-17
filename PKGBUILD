@@ -1,33 +1,32 @@
-# Maintainer: Steffen Weber <-boenki-gmx-de->
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Steffen Weber <-boenki-gmx-de->
 # Contributor: Dan Serban
 # Contributor: Henrik Olsson
 
 pkgname=sunflower
-pkgver=0.3
-pkgrel=4
-pkgdesc="Small, customizable twin-panel file manager"
+_pkgver=0.4-62
+pkgver=${_pkgver//-/.}
+pkgrel=1
+pkgdesc="Small and highly customizable twin-panel file manager for Linux with support for plugins"
+arch=(any)
+license=(GPL3)
 url="https://sunflower-fm.org"
-arch=('any')
-license=('GPL3')
-depends=('desktop-file-utils' 'pygtk' 'librsvg' 'python2-chardet')
-optdepends=('python2-gnomekeyring: password storage for remote mounts'
-            'python2-notify: desktop notifications service'
-            'vte: integrated vte-based terminal'
-            'mutagen: audio-metadata support'
-            'gvfs: mount-management'
-            'python2-dbus: single application instance support')
-options=(!strip !zipman)
-source=($url/pub/${pkgname}-${pkgver}-61.tgz
-        sunflower)
-md5sums=('a5cd28438e83b88e5a4edeb3aacef0c6'
-         '2b82893044516c131b6d05dba5b94807')
+depends=(gtk3 python-gobject python-chardet librsvg)
+optdepends=('vte3: integrated vte-based terminal'
+            'python-mutagen: audio-metadata support'
+            'gvfs: mount-management')
+source=("https://github.com/MeanEYE/Sunflower/releases/download/0.4-62/sunflower-${_pkgver}.tgz")
+sha256sums=('f2c47e58efb460f18b4bbaf839a9765ac0e2ae1805d7cbd04b3e345d2d74e900')
+
+build() {
+  cd "${srcdir}/Sunflower"
+  python setup.py build
+}
 
 package() {
-  install -Dm755 sunflower "${pkgdir}/usr/bin/sunflower"
-  install -d "${pkgdir}/usr/share/sunflower"
-  cd Sunflower
-  cp -r * "${pkgdir}/usr/share/sunflower"
-  install -Dm644 Sunflower.desktop "${pkgdir}/usr/share/applications/sunflower.desktop"
-  install -Dm644 images/sunflower.svg "${pkgdir}/usr/share/pixmaps/sunflower.svg"
+  cd "${srcdir}/Sunflower"
+  python setup.py install --root="$pkgdir/" --optimize=1  --skip-build
   install -Dm644 images/sunflower.png "${pkgdir}/usr/share/pixmaps/sunflower.png"
+  rm -rd "${pkgdir}/usr/images"
+  cp -r "${srcdir}"/Sunflower/translations/ "${pkgdir}/usr/share/locale"
 }
