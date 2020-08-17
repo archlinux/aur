@@ -19,7 +19,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  scons aff=norma,trasno,unidades dic=comunidade,rag,iso639,iso4217,norma,trasno,unidades,uvigo,wikipedia,wiktionary rep=comunidade,rag,wikipedia code=gl_ES
+  scons code=gl_ES
 }
 
 package(){
