@@ -1,48 +1,51 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
-# Contributor: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: alex korobtsov <korobcoff@gmail.com>
 # Contributor: Alexander Bantyev <balsoft@yandex.ru>
 
 pkgname=qomp
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Quick(Qt) Online Music Player"
-arch=('i686' 'x86_64')
-url="http://qomp.sourceforge.net/"
-license=('GPL2')
-depends=('taglib' 'qt5-base' 'qt5-tools' 'qt5-x11extras'
-         'qt5-multimedia' 'qt5-xmlpatterns'
-         'gstreamer' 'libcue' 'gst-plugins-good')
-optdepends=('gst-plugins-bad'
-            'gst-plugins-ugly')
-makedepends=('git' 'cmake')
-_commit=3cbc6ccc5653737b3e1e0b4884bb370e67144604 #tag 1.4.0
-source=(git+https://github.com/qomp/qomp.git#commit=$_commit)
-sha256sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+arch=(i686 x86_64)
+url="https://qomp.sourceforge.net/"
+license=(GPL2)
+depends=(taglib qt5-base qt5-x11extras
+         qt5-multimedia qt5-xmlpatterns
+         gstreamer libcue gst-plugins-good)
+optdepends=('gst-libav: additional codecs'
+            'gst-plugins-bad: additional codecs'
+            'gst-plugins-ugly: additional codecs')
+makedepends=(git cmake qt5-tools)
+source=("git+https://github.com/qomp/qomp#tag=${pkgver}"
+        "git+https://github.com/qomp/translations"
+        "git+https://github.com/qomp/themes"
+        "git+https://github.com/wadealer/SingleApplication")
+sha256sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 prepare() {
+  cd "${srcdir}/${pkgname}"
 
- cd "$srcdir/$pkgname"
- git submodule init
- git submodule update
+  git submodule init
+  git config 'submodule.translations.url' "${srcdir}/translations"
+  git config 'submodule.themes.url' "${srcdir}/themes"
+  git config 'submodule.src/singleapplication.url' "${srcdir}/SingleApplication"
+  git submodule update
 
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr/ \
+	-DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir/"  install
+  cd "${srcdir}/${pkgname}"
+  make DESTDIR="${pkgdir}/"  install
 }
-
-
