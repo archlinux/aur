@@ -1,5 +1,5 @@
 pkgname=mysterium-node
-pkgver=0.31.1
+pkgver=0.38.1
 pkgrel=1
 
 pkgdesc='Mysterium Node for decentralised VPN Network'
@@ -12,7 +12,7 @@ makedepends=('go')
 _dirname=node-${pkgver}
 
 
-source=("https://github.com/mysteriumnetwork/node/archive/0.31.1.tar.gz"
+source=("https://github.com/mysteriumnetwork/node/archive/${pkgver}.tar.gz"
 "initd.sh"
 "myst.service"
 "sudoers"
@@ -25,6 +25,10 @@ build() {
   cd ${_dirname}
   #export GOOS=linux
   #export GOARCH=arm64
+  export BUILD_COMMIT=1ceee6dc179aa83511a343e893c75d0db04b818a
+  export BUILD_BRANCH=master
+  export BUILD_NUMBER=1
+  export BUILD_VERSION=0.38.1
   make build
 }
 
@@ -48,14 +52,14 @@ package() {
   install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/MYSTERIUM" LICENSE
 }
 
-md5sums=('bd08d899033aa3ee3f3d00aee08e4910'
+md5sums=('70f0dc2dcb92ce7559bcb17ffa23954d'
          '98c921e848f46630097311d88ebd4c80'
          'b8f7e06c5fcccacb45be75b028f6bb5c'
          '720de49cf62f9e1b182da83c22db1034'
          '2541dec04c7fd8c9f0d55c81f5abef07'
          '90d849e9a576d28aaeb84ae10d53273b'
          'ef2fbcfa9beaba00013e4c03704a3bb2')
-sha512sums=('e068536b193d776bcf000f0eace884a58865909e6f77498c7276f13b437a82bba645a97db6a736cf09993034487f00a0fd53464d7e903384c5090f62ad160c5d'
+sha512sums=('bd0c326096d6b623a1dc36e981be4c57e9f6b7048173cd1c52554a8e128fb0d95f6c5b9fc9521dd1ae999a603eb895ac742b79d1f7b3320ab8241d628b6f79cd'
             '2d833621aa158fc7c0d08a863f83e94199c3f0ce6d687605a1c9463941126e78d792c82a2b2da0dadf2735a6f4e97c6140a4ac5c0dc7b31641011dd26a580a59'
             'f922077dfee324fd7081dc2445de3add7e6ebcfb2021b38a57a326e7c3885715d242cc522bb05391b78566dbc8b7c00ebb8719868ec84556a72ed420e3656c3e'
             '10d7634be184eda83f10d8fc4a0800716c92c48132f57ba8758c87ea5cc3d0d2586e0be8961c231aa1d8450b65fca1ac1691a4fe0af936208181527354ecc158'

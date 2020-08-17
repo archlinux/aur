@@ -1,0 +1,5 @@
+pkg
+src
+00
+aarch64
+*.pkg.tar.*
