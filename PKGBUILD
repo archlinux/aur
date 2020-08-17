@@ -1,9 +1,10 @@
 # Maintainer: Thor77 <thor77 at thor77 dot org>
 # Maintainer: Clar Charr <clar@charr.xyz>
+# Contributor: somini <dev at somini dot xyz>
 
 pkgname=miniflux
 pkgver=2.0.23
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalist Feed Reader'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://miniflux.app'
@@ -40,6 +41,13 @@ esac
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
+
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
   GOPATH="${srcdir}" PATH="${PATH}:${GOPATH}/bin/" make linux-$_target
 }
 
