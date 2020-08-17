@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=glimpse-editor-git
-pkgver=0.1.0.r95.gf1cd9dc9cd
+pkgver=0.1.0.r1080.g6af7a42098
 pkgrel=1
 pkgdesc="Fork of the GNU Image Manipulation Program"
 arch=(i686 x86_64)
