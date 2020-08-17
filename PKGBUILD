@@ -1,14 +1,15 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: shellkr <shellkr at protonmail dot com>
 pkgname=systemd-manager-git
 pkgver=1.0.0.r5.g946de58
 pkgrel=1
 pkgdesc="A systemd service manager written in Rust with the GTK-rs wrapper and direct integration with dbus"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://gitlab.com/mmstick/systemd-manager"
 license=('MIT')
 depends=('gtk3')
-makedepends=('git' 'cargo')
+makedepends=('git' 'rust')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.com/mmstick/systemd-manager.git')
@@ -28,12 +29,12 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	cargo build --release --all-features
+	cargo build --release --all-features --target-dir=target
 }
 
 check() {
 	cd "$srcdir/${pkgname%-git}"
-	cargo test --release
+	cargo test --release --target-dir=target
 }
 
 package() {
