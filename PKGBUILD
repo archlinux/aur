@@ -3,7 +3,7 @@
 
 pkgname='navi'
 pkgdesc='An interactive cheatsheet tool for the command-line'
-pkgver='2.7.1'
+pkgver='2.8.0'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/denisidoro/navi'
@@ -14,7 +14,7 @@ makedepends=('rust' 'gcc')
 checkdepends=('rust' 'git')
 provides=('navi')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/denisidoro/navi/archive/v${pkgver}.tar.gz")
-sha256sums=('e14bc6ebcf2c9071c1b437f77b88da2a70d1616dedf2174589967eb4aec20acc')
+sha256sums=('9c8a450b7ebb1a34025ef6a77be8e59bcc096f379eed20750083f31a6c50fdaa')
 
 build() {
     cd "$pkgname-$pkgver"
