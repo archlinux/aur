@@ -1,15 +1,14 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=polo
 pkgrel=1
-pkgver=18.8
-_channel=beta
+pkgver=18.8.3
 pkgdesc="A modern, light-weight GTK file manager for Linux,  currently in beta"
-arch=('i686' 'x86_64')
+arch=(686 x86_64)
 url="https://teejee2008.github.io/polo/"
-license=('GPL2')
-depends=('gtk3' 'libgee' 'libsoup' 'vte3' 'rsync' 'gvfs' 'p7zip')
-makedepends=('vala')
+license=(GPL2)
+depends=(gtk3 libgee libsoup vte3 rsync gvfs p7zip)
+makedepends=(vala0.44)
 optdepends=('mediainfo: read media properties from audio and video files'
             'fish: terminal shell'
             'perl-image-exiftool: read EXIF properties from JPG/TIFF/PNG/PDF files'
@@ -19,25 +18,24 @@ optdepends=('mediainfo: read media properties from audio and video files'
             'gnome-disk-utility'
             'lzop'
             'polo-donation-plugins')
-provides=('polo')
-conflicts=('polo' 'polo-bin')
-source=("${pkgname}-${pkgver}-${_channel}.tar.gz::https://github.com/teejee2008/polo/archive/v${pkgver}-${_channel}.tar.gz"
+_commit=538be6950d9394c90aa90be3973a3c8d9a27b999
+source=("${pkgname}-${pkgver}-${_commit}.tar.gz::https://github.com/teejee2008/polo/archive/${_commit}.tar.gz"
         '0001-Re-add-support-for-vte291-0.52.patch')
-sha256sums=('1112469c2107ac1ed08d1f2f966d7ee21baff773ff56dc56c137eaef2468515f'
+sha256sums=('ac96ad931024d7b96d5458f963753bf2bc92dc697dbfe5bb8bbc90aa98824443'
             '4ae33547220a7bfb7cd9806bd121acbc54c35a06958d40aa3cb1621688b5f69f')
 
 prepare() {
-  cd "$srcdir/${pkgname}-${pkgver}-${_channel}"
+  cd "${pkgname}-${_commit}"
   patch -Np1 -i ../0001-Re-add-support-for-vte291-0.52.patch
 }
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}-${_channel}"
+  cd "${pkgname}-${_commit}"
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}-${_channel}"
+  cd "${pkgname}-${_commit}"
   make DESTDIR="${pkgdir}" install
 
   ln -s /usr/bin/polo-gtk "${pkgdir}"/usr/bin/polo
