@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Signal Desktop Beta
+Comment=Signal Private Messenger for Linux
+Icon=signal-desktop-beta
+Exec=signal-desktop-beta %U
+Terminal=false
+Categories=Network;InstantMessaging;Chat;
+StartupWMClass=Signal Beta
+MimeType=x-scheme-handler/sgnl;
