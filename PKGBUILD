@@ -68,7 +68,6 @@ optdepends=(
 makedepends=("git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-sha256sums=("SKIP")
 
 build() {
 	msg2 "This is a metapackage. Nothing will be built."
