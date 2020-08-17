@@ -15,7 +15,6 @@ pkgbase = retroshare
 	depends = qt5-x11extras
 	depends = libupnp
 	depends = libxss
-	depends = libmicrohttpd
 	depends = sqlcipher
 	optdepends = tor: tor hidden node support
 	optdepends = i2p: i2p hidden node support

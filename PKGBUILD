@@ -35,7 +35,7 @@ pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://retroshare.cc/'
 license=('GPL2')
-depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libxss' 'libmicrohttpd' 'sqlcipher')
+depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libxss' 'sqlcipher') # 'libmicrohttpd'
 makedepends=('git' 'qt5-tools')
 optdepends=('tor: tor hidden node support'
             'i2p: i2p hidden node support')
@@ -98,6 +98,7 @@ build() {
 	qmake   CONFIG-=debug CONFIG+=release \
 		${_optJsonapi} ${_optAutol} ${_optClang} \
 		${_optPlugin} ${_optWiki} \
+		CONFIG+=no_libresapihttpserver \
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
 		RetroShare.pro
