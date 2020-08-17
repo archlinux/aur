@@ -3,7 +3,7 @@
 
 pkgname=gmusicbrowser-git
 pkgver=1.1.15.r66.g7d0819c
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source jukebox for large collections of mp3/ogg/flac files, written in perl."
 arch=(i686 x86_64 aarch64)
 url="http://gmusicbrowser.org/"
