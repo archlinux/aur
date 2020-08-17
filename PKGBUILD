@@ -1,4 +1,4 @@
-# Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
+# Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jicofo
 _tag=623
@@ -7,7 +7,7 @@ _version=1.0+623
 _pkgbase=${_basename}-nightly
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="JItsi meet COnference FOcus nightly binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
