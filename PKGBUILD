@@ -5,8 +5,8 @@
 # This file is based on original PKGBUILD of GTK3 package.
 # https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/gtk3
 
-__arch_pkg_commit="dd59624b448ca6f6e48d4f1268fd3c871a20ae76"
-_gtkver=3.24.21
+__arch_pkg_commit="a539a763eb4b5b7a7dfb6605c37b71a87af2666d"
+_gtkver=3.24.22
 
 pkgbase=gtk3-classic
 pkgname=($pkgbase lib32-$pkgbase)
@@ -85,15 +85,15 @@ sha256sums=('4935ec23cbd0150bd479fc457861d3a665354509c3ff933997827c7141c8657c'
             '7157b665e2ae724bb6abe8fc382d7178dc4d8d00f29bc63ed2942307ff41914b'
             '2b10b436ebcf8c124fac6e7867f0bf0573ecfb70130893fea37724c5f6719caf'
             'eba56921250bbf6767dab9de219bf81763ed7891014d76c3a1fe6c82c32b7359'
-            '570b2d6ada08c007ba3771a86863ea438cbc03e78997773782c742cacbe7fd8b'
+            '974374f2799aaa48b9ded985c47d2dda45d2fcdcd63f1749e74b243279467d49'
             '9761a289cf93558ec67bb498b765ccb757027b10071da938ff14fca695a0103d'
             'bf0e188ba6cfb24b506e4eab7e62a020348cce307d4eecde571227a058c441ad'
             '17aa98262b96817396c74c303c83eee2a0c9c94b10e31d8de48a44cb17b08dc1'
             'af2d2d4a0d876f9abc350a1cdb09ffc016a8894ee3c46030c3d90c6e99b27c5a'
             'ba93f62e249f2713dbfe6c82de1be4ac655264d6407ed3dc5e05323027520f31'
-            'aeea6ae7cd35e83dfc7699be716519faefca346c62e784dd1a37d9df94c08f52'
+            'bf18a4a5dff28a7b02aaef1b949c2d09c96c18387eddab152bb4cd55a5b67dda'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
-            'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845'
+            'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '1d2e3c41c7de03a31d717b09e053c88cbaca2ae74eefd982549c49de81c21ada')
 
 prepare()

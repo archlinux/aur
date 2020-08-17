@@ -2,7 +2,7 @@ Index: b/gtk/gtkentry.c
 ===================================================================
 --- a/gtk/gtkentry.c
 +++ b/gtk/gtkentry.c
-@@ -9626,7 +9626,8 @@ popup_targets_received (GtkClipboard
+@@ -9627,7 +9627,8 @@ popup_targets_received (GtkClipboard
            g_signal_connect_swapped (menuitem, "activate",
                                      G_CALLBACK (gtk_entry_insert_emoji), entry);
            gtk_widget_show (menuitem);
@@ -16,7 +16,7 @@ Index: b/gtk/gtktextview.c
 ===================================================================
 --- a/gtk/gtktextview.c
 +++ b/gtk/gtktextview.c
-@@ -9537,7 +9537,8 @@ popup_targets_received (GtkClipboard
+@@ -9555,7 +9555,8 @@ popup_targets_received (GtkClipboard
            g_signal_connect_swapped (menuitem, "activate",
                                      G_CALLBACK (gtk_text_view_insert_emoji), text_view);
            gtk_widget_show (menuitem);
