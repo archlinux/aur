@@ -43,7 +43,23 @@
       "end": 50100
     },
     "certificate_file": "",
-    "certificate_key_file": ""
+    "certificate_key_file": "",
+    "tls_mode": 0
+  },
+  "webdavd": {
+    "bind_port": 0,
+    "bind_address": "",
+    "certificate_file": "",
+    "certificate_key_file": "",
+    "cors": {
+      "enabled": false,
+      "allowed_origins": [],
+      "allowed_methods": [],
+      "allowed_headers": [],
+      "exposed_headers": [],
+      "allow_credentials": false,
+      "max_age": 0
+    }
   },
   "data_provider": {
     "driver": "sqlite",
@@ -66,7 +82,9 @@
     "external_auth_hook": "",
     "external_auth_scope": 0,
     "credentials_path": "/var/lib/sftpgo/credentials",
-    "pre_login_hook": ""
+    "pre_login_hook": "",
+    "post_login_hook": "",
+    "post_login_scope": 0
   },
   "httpd": {
     "bind_port": 8080,
