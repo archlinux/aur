@@ -1,15 +1,15 @@
 # Maintainer: Aleksandar Trifunović <akstrfn@gmail.com>
 
 pkgname=prime_server
-pkgver=0.6.4
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Non-blocking server API for distributed computing and SOA based on zeromq."
 arch=('x86_64')
 url="https://github.com/kevinkreiser/prime_server"
 license=('custom')
-depends=('curl' 'czmq')
+depends=('curl' 'zeromq' 'czmq')
 source=("https://github.com/kevinkreiser/prime_server/archive/$pkgver.tar.gz")
-sha256sums=('af2e679f97b34cb8750c5c3bea3cef932d10cfda9acbb3374c7814c2cf78d9c9')
+sha256sums=('30ccd40689e50f55ea01015331e14b7c0d7efdab5641e2831851545cb86ed6fb')
 
 prepare() {
   cd "$pkgname-$pkgver"
