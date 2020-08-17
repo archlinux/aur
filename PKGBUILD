@@ -1,7 +1,8 @@
-# Maintainer: Ricardo Band <email@ricardo.band>
+# Maintainer: Yoan Blanc <yoan@dosimple.ch>
+# Contributor: Ricardo Band <email@ricardo.band>
 pkgname=linuxkit-git
 _pkgname=linuxkit
-pkgver=0.7.r249.gfce020a11
+pkgver=0.8.r9.ga2869a354
 pkgrel=1
 pkgdesc="A toolkit for building secure, portable and lean operating systems for containers - git version"
 arch=('x86_64')
@@ -23,9 +24,7 @@ build() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    #make DESTDIR="${pkgdir}/" install
     install -dm755 "${pkgdir}/usr/bin"
-    install -Dm755  bin/linuxkit "${pkgdir}/usr/bin"
-    install -Dm755  bin/rtf "${pkgdir}/usr/bin"
+    install -Dm755 bin/linuxkit "${pkgdir}/usr/bin"
+    install -Dm755 bin/rtf "${pkgdir}/usr/bin"
 }
-
