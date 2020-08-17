@@ -2,9 +2,9 @@
 # Adopted from: Félix Saparelli <aur@passcod.name>
 pkgname=sirikali-git
 _pkgname=${pkgname%-git}
-pkgver=1.3.7.r0.48e9937
+pkgver=1.4.6.r9.d73a7ab
 pkgrel=1
-pkgdesc="A Qt/C++ GUI front end to cryfs, gocryptfs, securefs and encfs"
+pkgdesc="A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs"
 arch=('i686' 'x86_64')
 url="https://mhogomchungu.github.io/sirikali/"
 license=('GPL')
@@ -13,11 +13,13 @@ makedepends=('git' 'cmake' 'libgcrypt' 'gcc-libs')
 optdepends=('lxqt_wallet: use an external lxqt_wallet (must recompile)'
             'libsecret: support for Gnome libsecret password storage (must recompile)'
             'kwallet: support for KDE wallet storage (must recompile)'
-            'cryfs: for CryFS support'
-            'gocryptfs: for gocryptfs support'
-            'securefs: for securefs support'
-            'encfs: for EncFS support'
-            'ecryptfs-simple: for eCryptfs support')
+            'cryfs: for CryFS backend'
+            'ecryptfs-simple: for eCryptfs backend'
+            'encfs: for EncFS backend'
+            'fscrypt: for fscrypt backend'
+            'gocryptfs: for gocryptfs backend'
+            'securefs: for securefs backend'
+            'sshfs: for SSHFS backend')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('sirikali::git+https://github.com/mhogomchungu/sirikali.git')
