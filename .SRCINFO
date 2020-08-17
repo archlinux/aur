@@ -1,15 +1,16 @@
 pkgbase = virtualbox-ext-oracle-manjaro
-	pkgdesc = Oracle VM VirtualBox Extension Pack for Manjaro
-	pkgver = 5.1.28
+	pkgdesc = Oracle VM VirtualBox Extension Pack
+	pkgver = 6.1.12
 	pkgrel = 1
-	url = http://www.virtualbox.org/
-	install = virtualbox-ext-oracle.install
+	url = https://www.virtualbox.org/
+	install = virtualbox-ext-oracle-manjaro.install
 	arch = any
 	license = custom:PUEL
-	noextract = Oracle_VM_VirtualBox_Extension_Pack-5.1.28.vbox-extpack
+	conflicts = virtualbox-ext-oracle
+	noextract = Oracle_VM_VirtualBox_Extension_Pack-6.1.12.vbox-extpack
 	options = !strip
-	source = http://download.virtualbox.org/virtualbox/5.1.28/Oracle_VM_VirtualBox_Extension_Pack-5.1.28.vbox-extpack
-	sha256sums = 1a2551b204bd53a252a75a4653b983427bb15d473bc77b14149c7870ce049871
+	source = https://download.virtualbox.org/virtualbox/6.1.12/Oracle_VM_VirtualBox_Extension_Pack-6.1.12.vbox-extpack
+	sha256sums = 8c43fc6ab19fc83ed3c73c6e62f7f02886503cc800d27198e8bee89586b18eda
 
 pkgname = virtualbox-ext-oracle-manjaro
 	depends = virtualbox

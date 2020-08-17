@@ -1,16 +1,19 @@
-# Maintainer: TuxnVape Elrondo46 <elrond94athotmail.com>
+# Maintainer: kikadf <kikadf.01@gmail.com>
+# Contributor: Sébastien Luttringer
+
 pkgname=virtualbox-ext-oracle-manjaro
-pkgver=5.1.28
+pkgver=6.1.12
 pkgrel=1
-pkgdesc='Oracle VM VirtualBox Extension Pack for Manjaro'
+pkgdesc='Oracle VM VirtualBox Extension Pack'
 arch=('any')
-url='http://www.virtualbox.org/'
+url='https://www.virtualbox.org/'
 license=('custom:PUEL')
 options=('!strip')
-install=virtualbox-ext-oracle.install
-source=("http://download.virtualbox.org/virtualbox/$pkgver/Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack")
+conflicts=(virtualbox-ext-oracle)
+install=virtualbox-ext-oracle-manjaro.install
+source=("https://download.virtualbox.org/virtualbox/$pkgver/Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack")
 noextract=("Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack")
-sha256sums=('1a2551b204bd53a252a75a4653b983427bb15d473bc77b14149c7870ce049871')
+sha256sums=('8c43fc6ab19fc83ed3c73c6e62f7f02886503cc800d27198e8bee89586b18eda')
 
 prepare() {
   # shrink uneeded cpuarch
@@ -28,5 +31,3 @@ package() {
   install -Dm 644 shrunk/ExtPack-license.txt \
     "$pkgdir/usr/share/licenses/$pkgname/PUEL"
 }
-
-# vim:set ts=2 sw=2 et:
