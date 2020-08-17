@@ -18,6 +18,7 @@ pkgbase = sdl2-hg
 	makedepends = libxxf86vm
 	makedepends = mercurial
 	makedepends = hidapi
+	makedepends = ninja
 	depends = glibc
 	depends = libxext
 	depends = libxrender
