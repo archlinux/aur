@@ -1,10 +1,11 @@
 pkgbase = zenith-git
 	pkgdesc = In terminal graphical metrics for your *nix system written in Rust
 	pkgver = r174.cbe523d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bvaisvil/zenith
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = rust
 	provides = zenith
 	conflicts = zenith
