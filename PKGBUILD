@@ -2,13 +2,13 @@
 
 pkgname=tijolo
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, keyboard-oriented IDE for the masses"
 arch=("x86_64")
 conflicts=("tijolo-git")
 url="https://github.com/hugopl/tijolo"
 license=("MIT")
-depends=("gc" "libevent" "pcre" "gtksourceview4" "nerd-fonts-jetbrains-mono" "libgit2")
+depends=("gc" "libevent" "pcre" "gtksourceview4" "nerd-fonts-jetbrains-mono" "libgit2" "harfbuzz<=2.7.0")
 makedepends=("git" "crystal>=0.35.1" "shards>=0.11.0")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hugopl/tijolo/archive/v${pkgver}.tar.gz")
 sha256sums=('c5f978c4fcce99bc97af58fb634f6699102b2eddd2d3816adaaeb315c863c9c8')
