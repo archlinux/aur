@@ -1,0 +1,17 @@
+pkgbase = sm64ex-nightly-git
+	pkgdesc = Nightly branch of sm64ex with 60fps patch. PKGBUILD based on sm64pc-git.
+	pkgver = r563.417d59e7
+	pkgrel = 1
+	url = https://github.com/sm64pc/sm64ex
+	arch = any
+	license = reverse-engineered and unlicensed
+	depends = python
+	depends = audiofile
+	depends = sdl2
+	depends = glew
+	provides = sm64ex-nightly
+	source = git+https://github.com/sm64pc/sm64ex.git#branch=nightly
+	sha256sums = SKIP
+
+pkgname = sm64ex-nightly-git
+

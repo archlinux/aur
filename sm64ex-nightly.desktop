@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=SM64 PC (Nightly)
+Name[pl]=SM64 PC (Wczesne wydanie)
+GenericName=Super Mario 64 Nightly
+Comment=Native port of Super Mario 64, nightly build.
+Comment[pl]=Natywny port Super Mario 64, wczesne wydanie.
+Exec=sm64ex-nightly
+Icon=SM64nightly
+Type=Application
+Categories=Game;Retro;Emulator;
