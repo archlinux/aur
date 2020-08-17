@@ -27,17 +27,4 @@ package() {
        install -Dm755 "$file" $pkgdir/$HOME/.config/screentorch/assets
        chown $USER $file
     done
-    #    CONFDIR=`eval echo "~/.config/screentorch"`
-    #if [ -d "$CONFDIR" ]; then
-    #    echo "Folder already exists!"
-    #else
-    #    mkdir ~/.config/screentorch
-    #fi
-    #install -Dm755 -d "$HOME/.config/screentorch/assets"
-    #for file in ${srcdir}/screentorch/assets/*;do
-    #	install -m 755 "$file" $HOME/.config/screentorch/assets/
-    #done
-    #install -Dm755 "/usr/bin/ffmpeg" "$HOME/.config/screentorch/assets/recorder"
-    #install -Dm755 "${pkgname}/screentorch.py" "$HOME/.config/screentorch/assets/"
-    #sudo install -Dm755 "${pkgname}/screentorch" "/usr/bin/screentorch"
 }
