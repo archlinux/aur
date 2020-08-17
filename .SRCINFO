@@ -1,20 +1,23 @@
-pkgbase = lib32-harfbuzz-git
+pkgbase = lib32-harfbuzz
 	pkgdesc = OpenType text shaping engine (32-bit)
-	pkgver = 2.1.1+174+g6c22f3fd
+	pkgver = 2.7.1
 	pkgrel = 1
-	url = http://www.freedesktop.org/wiki/Software/HarfBuzz
+	url = https://www.freedesktop.org/wiki/Software/HarfBuzz
 	arch = x86_64
 	license = MIT
+	checkdepends = python-fonttools
+	checkdepends = python-setuptools
 	makedepends = lib32-glib2
 	makedepends = lib32-freetype2
 	makedepends = lib32-cairo
 	makedepends = lib32-icu
-	makedepends = gcc-multilib
 	makedepends = ragel
 	makedepends = git
 	makedepends = python
+	makedepends = meson
 	makedepends = harfbuzz
-	makedepends = gobject-introspection
+	provides = lib32-harfbuzz
+	conflicts = lib32-harfbuzz
 	source = git+https://github.com/harfbuzz/harfbuzz
 	sha256sums = SKIP
 
@@ -25,19 +28,15 @@ pkgname = lib32-harfbuzz-git
 	depends = libfreetype.so
 	depends = libgobject-2.0.so
 	depends = harfbuzz
-	provides = lib32-harfbuzz
 	provides = libharfbuzz.so
 	provides = libharfbuzz-subset.so
 	provides = libharfbuzz-gobject.so
-	conflicts = lib32-harfbuzz
 
 pkgname = lib32-harfbuzz-icu-git
-	pkgdesc = OpenType text shaping engine (32-bit, ICU integration)
-	depends = lib32-harfbuzz
+	pkgdesc = OpenType text shaping engine (32-bit) (ICU integration)
+	depends = lib32-harfbuzz=2.7.1-1
 	depends = lib32-icu
-	depends = harfbuzz-icu
 	depends = libharfbuzz.so
-	provides = lib32-harfbuzz-icu
+	depends = harfbuzz-icu
 	provides = libharfbuzz-icu.so
-	conflicts = lib32-harfbuzz-icu
 
