@@ -1,4 +1,4 @@
-pkgbase = lib32-harfbuzz
+pkgbase = lib32-harfbuzz-git
 	pkgdesc = OpenType text shaping engine (32-bit)
 	pkgver = 2.7.1
 	pkgrel = 1

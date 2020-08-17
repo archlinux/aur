@@ -2,7 +2,6 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 
-pkgbase=lib32-harfbuzz
 pkgname=(lib32-harfbuzz-git lib32-harfbuzz-icu-git)
 pkgver=2.7.1
 pkgrel=1
