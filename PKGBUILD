@@ -1,9 +1,9 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Alberto Fangul
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=akira-git
-pkgver=r430.0b5ca73
+pkgver=0.0.12.r3.gfb4735a
 pkgrel=1
 pkgdesc="Native Linux App for UI and UX Design built in Vala and Gtk"
 arch=(x86_64 aarch64)
@@ -18,10 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
