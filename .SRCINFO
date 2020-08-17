@@ -1,6 +1,6 @@
 pkgbase = mpvpaper-git
 	pkgdesc = A video wallpaper program for wlroots based wayland compositors.
-	pkgver = r8.4927e4e
+	pkgver = r29.94ff0b0
 	pkgrel = 1
 	url = https://github.com/GhostNaN/mpvpaper
 	arch = i686
