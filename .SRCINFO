@@ -1,0 +1,21 @@
+pkgbase = python-pyjks
+	pkgdesc = library to load and manipulate java keystores (jks)
+	pkgver = 20.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/pyjks/
+	arch = any
+	license = MIT
+	checkdepends = python-py
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyasn1
+	depends = python-pyasn1-modules
+	depends = python-javaobj-py3
+	depends = python-pycryptodomex
+	depends = python-twofish
+	source = python-pyjks-20.0.0.tar.gz::https://github.com/kurtbrose/pyjks/archive/v20.0.0.tar.gz
+	sha256sums = e015b607e406421768abc5fe9b068959aad477b11b3f48a2d53294f895e317bb
+
+pkgname = python-pyjks
+
