@@ -1,0 +1,15 @@
+pkgbase = python-twofish
+	pkgdesc = Bindings for the Twofish implementation by Niels Ferguson
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://pypi.org/project/twofish/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/twofish/twofish-0.3.0.tar.gz
+	sha256sums = b09d8bb50d33b23ff34cafb1f9209f858f752935c6a5c901efb92a41acb830fa
+
+pkgname = python-twofish
+
