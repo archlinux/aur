@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship-git
-pkgver=0.1.1.r22.geff9d42
+pkgver=0.3.0.r6.gbabf954
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
@@ -38,7 +38,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
-    git describe --long --abbrev=7 --match 'v*' --tags |
+    git describe --long --abbrev=7 --match 'v*.*.*' --tags |
         sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
