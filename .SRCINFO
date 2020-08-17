@@ -1,7 +1,7 @@
 pkgbase = popsicle-git
 	pkgdesc = Linux utility for flashing multiple USB devices in parallel, written in Rust
-	pkgver = 0.1.5.r180.g4bbdffc
-	pkgrel = 2
+	pkgver = 1.1.0.r1.g903614f
+	pkgrel = 1
 	url = https://github.com/pop-os/popsicle
 	arch = x86_64
 	arch = i686
