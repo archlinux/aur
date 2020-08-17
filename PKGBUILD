@@ -2,7 +2,7 @@
 
 pkgname=lftp-git
 pkgver=4.9.2.r0.g586b2562
-pkgrel=1
+pkgrel=2
 pkgdesc="Sophisticated file transfer program"
 arch=('i686' 'x86_64')
 url="https://lftp.yar.ru/"
@@ -37,8 +37,8 @@ build() {
   ./bootstrap
   ./configure \
     --prefix="/usr" \
-    --disable-static || true  # ignore errors temporarily
-  make
+    --disable-static
+  make -k || true  # ignore errors temporarily
 }
 
 check() {

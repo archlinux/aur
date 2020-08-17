@@ -1,7 +1,7 @@
 pkgbase = lftp-git
 	pkgdesc = Sophisticated file transfer program
 	pkgver = 4.9.2.r0.g586b2562
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lftp.yar.ru/
 	arch = i686
 	arch = x86_64
