@@ -2,7 +2,7 @@
 # Contributor: Wei-Ning Huang <aitjcize@gmail.com>
 pkgname=cppman
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ 98/11/14 manual pages for Linux/MacOS"
 arch=('any')
 url="https://github.com/aitjcize/cppman"
@@ -23,4 +23,14 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   python setup.py install --root=${pkgdir}/ --optimize=1
+
+  mkdir -p ${pkgdir}/usr/share/zsh/site-functions
+  mv ${pkgdir}/usr/share/zsh-completion/completions/cppman.zsh ${pkgdir}/usr/share/zsh/site-functions/_cppman
+  rmdir ${pkgdir}/usr/share/zsh-completion/completions ${pkgdir}/usr/share/zsh-completion/
+
+  chmod 644 ${pkgdir}/usr/share/zsh/site-functions/_cppman \
+    ${pkgdir}/usr/share/bash-completion/completions/cppman.bash \
+    ${pkgdir}/usr/share/man/man1/cppman.1 \
+    ${pkgdir}/usr/share/doc/cppman/*
+
 }

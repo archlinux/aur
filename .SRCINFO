@@ -1,7 +1,7 @@
 pkgbase = cppman
 	pkgdesc = C++ 98/11/14 manual pages for Linux/MacOS
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aitjcize/cppman
 	arch = any
 	license = GPL3
