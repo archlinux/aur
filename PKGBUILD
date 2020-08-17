@@ -2,14 +2,14 @@
 
 pkgbase=sol2-git
 pkgname=(sol2-git sol2-single-git)
-pkgver=v3.0.3.r38.g21c03093
+pkgver=v3.2.1.r15.gde87bec1
 pkgrel=1
 pkgdesc="C++ <-> Lua Wrapper Library"
 arch=('any')
 url="http://sol2.rtfd.io/"
 license=('MIT')
 makedepends=('git' 'python')
-optdepends=('lua' 'lua51' 'lua52' 'luajit')
+optdepends=('lua' 'lua51' 'lua52' 'lua53' 'luajit')
 conflicts=('sol2')
 provides=('sol2')
 source=('sol2::git+https://github.com/ThePhD/sol2.git')

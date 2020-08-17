@@ -1,6 +1,6 @@
 pkgbase = sol2-git
 	pkgdesc = C++ <-> Lua Wrapper Library
-	pkgver = v3.0.3.r38.g21c03093
+	pkgver = v3.2.1.r15.gde87bec1
 	pkgrel = 1
 	url = http://sol2.rtfd.io/
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = sol2-git
 	optdepends = lua
 	optdepends = lua51
 	optdepends = lua52
+	optdepends = lua53
 	optdepends = luajit
 	provides = sol2
 	conflicts = sol2
