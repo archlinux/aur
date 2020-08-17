@@ -3,18 +3,18 @@
 
 pkgname=rclone-browser
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple cross-platform GUI for rclone"
 arch=(x86_64 i686 armv6h armv7h aarch64)
 url="https://github.com/kapitainsky/RcloneBrowser"
-license=('custom:Public Domain')
+license=(MIT)
 depends=(qt5-base rclone)
 makedepends=(cmake)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kapitainsky/RcloneBrowser/archive/${pkgver}.tar.gz")
 sha256sums=('5f8242a011b85477749127b7e94e874035c431c2fa6df817e5603ed891604beb')
 
 prepare() {
-  cd "$srcdir/RcloneBrowser-${pkgver}"
+  cd "${srcdir}/RcloneBrowser-${pkgver}"
   sed -i 's/ -Werror//g' src/CMakeLists.txt
   install -d build
 }
@@ -29,6 +29,6 @@ build() {
 package() {
   cd "${srcdir}/RcloneBrowser-${pkgver}/build"
   cmake --build . --target install
-  install -Dm644 "$srcdir"/RcloneBrowser-${pkgver}/LICENSE \
-                "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 "${srcdir}"/RcloneBrowser-${pkgver}/LICENSE \
+                 "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }

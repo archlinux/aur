@@ -1,14 +1,14 @@
 pkgbase = rclone-browser
 	pkgdesc = Simple cross-platform GUI for rclone
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kapitainsky/RcloneBrowser
 	arch = x86_64
 	arch = i686
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = custom:Public Domain
+	license = MIT
 	makedepends = cmake
 	depends = qt5-base
 	depends = rclone
