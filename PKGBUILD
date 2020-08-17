@@ -18,7 +18,7 @@
 pkgbase="zfs-linux"
 pkgname=("zfs-linux" "zfs-linux-headers")
 _zfsver="0.8.4"
-_kernelver="5.7.12.arch1-1"
+_kernelver="5.8.1.arch1-1"
 _extramodules="${_kernelver/.arch/-arch}"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
@@ -26,10 +26,18 @@ pkgrel=1
 makedepends=("linux-headers=${_kernelver}")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
-sha256sums=("2b988f5777976f09d08083f6bebf6e67219c4c4c183c1f33033fb7e5e5eacafb")
+source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz"
+        "linux-5.8-compat-__vmalloc.patch"
+)
+sha256sums=("2b988f5777976f09d08083f6bebf6e67219c4c4c183c1f33033fb7e5e5eacafb"
+            "264728b1e4f7f7509fde76b6049c93033aa813ae6324f37609ff95db8c9e8959"
+)
 license=("CDDL")
 depends=("kmod" "zfs-utils=${_zfsver}" "linux=${_kernelver}")
+prepare() {
+    cd "${srcdir}/zfs-${_zfsver}"
+    patch -Np1 -i ${srcdir}/linux-5.8-compat-__vmalloc.patch
+}
 
 build() {
     cd "${srcdir}/zfs-${_zfsver}"
