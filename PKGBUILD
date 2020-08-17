@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=microserver
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Simple ad-hoc server with SPA support based on Warp!. Excellent for testing React, Angular, Vue apps and the like."
 url="https://github.com/robertohuertasm/$pkgname"
@@ -8,7 +8,7 @@ arch=("x86_64")
 license=("MIT" "Apache")
 depends=("cargo" "valgrind")
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('bf1b831548b9ed2b9588bcd8919d3228d79e7113c606d6f32528d53f37544e71')
+sha256sums=('56163f69ec541707a6c917f1b5961be9c715c81de92dc5bb9fb9695e29bcc236')
 
 build()
 {
