@@ -9,7 +9,7 @@ url="https://tunics.legofarmen.se/"
 license=('GPL3' 'MIT' 'custom')
 depends=('solarus>=1.5.0')
 makedepends=('cmake')
-source=("https://github.com/Legofarmen/$pkgname/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Legofarmen/$pkgname/archive/$pkgver.tar.gz")
 b2sums=('8f92a0cade4c02ccc9c785ddb7209c98ce33a050c8f086457d4fa6a6b024c374d03eeb89a320f60cf6b72a4414ab75df98d7b469d75e5848f40e3434fcc6ba68')
 
 prepare() {
