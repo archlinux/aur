@@ -1,0 +1,19 @@
+[Unit]
+Description=Hacker News RSS
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/hnrss.conf
+User=hnrss
+ExecStart=/usr/bin/go-hnrss -bind ${LISTEN_ADDR} -rootRedirect ${ROOT_REDIRECT}
+Restart=always
+
+ProtectSystem=strict
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+
+[Install]
+WantedBy=multi-user.target
+
