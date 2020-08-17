@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-EnvironmentFile=/etc/hnrss.conf
+EnvironmentFile=/etc/go-hnrss.conf
 User=hnrss
 ExecStart=/usr/bin/go-hnrss -bind ${LISTEN_ADDR} -rootRedirect ${ROOT_REDIRECT}
 Restart=always
