@@ -14,7 +14,7 @@ license=('LGPL')
 source=("https://download.kde.org/stable/plasma/$pkgver/oxygen-$pkgver.tar.xz"{,.sig})
 sha256sums=('f2f164e651af56610d870f9c92ad22922e0d74fd51e8b30daf568e6d97ea226d'
             'SKIP')
-signingkey=('2D1D5B0588357787DE9EE225EC94D18F7F05997E') # Jonathan Riddell <jr@jriddell.org>
+validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E') # Jonathan Riddell <jr@jriddell.org>
 
 package() {
   cd "oxygen-$pkgver"
