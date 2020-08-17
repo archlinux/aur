@@ -1,9 +1,9 @@
-# Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
+# Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jitsi-meet
 _pkgname=turnserver
-_tag=4353
-_version=1.0.4353
+_tag=4356
+_version=1.0.4356
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
