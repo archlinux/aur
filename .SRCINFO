@@ -1,12 +1,12 @@
 pkgbase = nvoc
 	pkgdesc = Saves nvidia overclocking settings to automatically apply them on session start, without hanging around as a background process.
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yagoplx/nvoc
 	arch = any
 	license = GPL
-	depends = nvidia-settings
 	depends = bash
+	optdepends = nvidia-settings
 	source = nvoc-1.0.3.tar.gz::https://github.com/yagoplx/nvoc/archive/1.0.3.tar.gz
 	md5sums = cd9bd790997f3283c00a8fd6b28e15c5
 
