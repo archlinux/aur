@@ -1,13 +1,14 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 # Contributor: Iiridayn
 # Contributor: hucsmn
+# Contributor: mqs
 
 _binname=stdiscosrv
 _pkgname=syncthing
 pkgname=$_pkgname-discosrv
 epoch=1
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Discover server for the syncthing P2P synchronization utility'
 url='http://syncthing.net'
 license=('MIT')
@@ -33,13 +34,13 @@ prepare() {
   install -d src/github.com/$_pkgname
   mv $_pkgname-$pkgver src/github.com/$_pkgname/$_pkgname
   cd src/github.com/$_pkgname/$_pkgname
-  go mod vendor
+  go mod vendor -modcacherw
 }
 
 build() {
   export GOPATH="$srcdir"
   cd src/github.com/$_pkgname/$_pkgname/cmd/stdiscosrv
-  go build -x -i -v -ldflags -w
+  go build -modcacherw -x -i -v -ldflags -w
 }
 
 package() {
