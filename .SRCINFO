@@ -1,12 +1,12 @@
 pkgbase = selene-media-converter
-	pkgdesc = A simple but powerful audio/video converter for many formats
+	pkgdesc = Simple but powerful audio/video converter for many formats
 	pkgver = 17.7
 	pkgrel = 2
-	url = http://teejeetech.blogspot.in/p/selene-media-encoder.html
+	url = https://github.com/teejee2008/selene
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = vala
+	makedepends = vala0.44
 	makedepends = chrpath
 	depends = gtk3
 	depends = json-glib
@@ -35,7 +35,7 @@ pkgbase = selene-media-converter
 	conflicts = selene-media-encoder
 	conflicts = selene-media-encoder-bzr
 	source = selene-media-converter-17.7.tar.gz::https://github.com/teejee2008/selene-media-converter/archive/v17.7.tar.gz
-	md5sums = 8af31e921872c102d54c0db3b1d1c8fc
+	sha256sums = 4068d7269a219afa973592860171b0d9d07fc7165a3234dab968320c2507b32c
 
 pkgname = selene-media-converter
 
