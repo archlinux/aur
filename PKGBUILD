@@ -4,7 +4,7 @@ _branch="master"
 
 pkgname="blih_cli-git"
 pkgdesc="(dev version) Blih CLI (say blikli) is the Blih (Bocal Lightweight Interface for Humans) Js CLI (Command-Line Interface) for linux env."
-pkgver=0.2.0_29_g4ebbfb3
+pkgver=0.2.0_30_gaf7a961
 pkgrel=2
 
 arch=('i686' 'x86_64')
