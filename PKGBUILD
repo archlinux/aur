@@ -7,7 +7,7 @@ arch=(any)
 url="https://gitlab.com/proxecto-trasno/hunspell-gl"
 license=('GPL3')
 optdepends=('hunspell:  the spell checking libraries and apps')
-makedepends=('scons' 'python-pyicu')
+makedepends=('scons' 'python-pyicu' 'qt5-webengine')
 provides=($pkgname)
 conflicts=($pkgname)
 source=("${pkgname}.tar.bz2::https://gitlab.com/proxecto-trasno/hunspell-gl/-/archive/${pkgver}/hunspell-gl-${pkgver}.tar.bz2")
@@ -36,6 +36,12 @@ package(){
     popd
 
     # docs
-    install -dm755 $pkgdir/usr/share/doc/$pkgname
-}
+    install -dm644 $pkgdir/usr/share/doc/$pkgname
 
+    # Install webengine dictionaries
+    install -d "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/
+    for _file in "$pkgdir"/usr/share/hunspell/*.dic; do
+    _filename=$(basename $_file)
+      qwebengine_convert_dict $_file "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/${_filename/\.dic/\.bdic}
+    done
+}
