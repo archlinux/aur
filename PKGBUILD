@@ -1,9 +1,9 @@
-# Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
+# Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jitsi-meet
 _pkgname=turnserver
-_tag=4353
-_version=1.0.4353
+_tag=4356
+_version=1.0.4356
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}
@@ -43,4 +43,4 @@ package() {
 	# install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/debian/jitsi-meet-turn/turnserver.conf doc/debian/jitsi-meet/jitsi-meet.conf doc/debian/jitsi-meet-turn/coturn-certbot-deploy.sh
         chown -R root:root "${pkgdir}"
 }
-sha256sums=('b23e0409db2df2568bd64955e7715964cf87a778343259da53c5134afd857c3c')
+sha256sums=('db89f78d2b8aab92df27e60f24277ab60ca931bc34f4c6a2144995f7e08a73f3')
