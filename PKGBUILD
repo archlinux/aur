@@ -1,9 +1,9 @@
-# Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
+# Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jitsi
 _pkgname=videobridge
-_tag=2.1-296-g817c1a45
-_version=2.1+296+g817c1a45
+_tag=2.1-299-g79d0d7a5
+_version=2.1+299+g79d0d7a5
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
