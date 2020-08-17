@@ -1,9 +1,9 @@
-# Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
+# Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jitsi-meet
 _pkgname=prosody
-_tag=4353
-_version=1.0.4353
+_tag=4356
+_version=1.0.4356
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}
@@ -48,4 +48,4 @@ package() {
 	
 
 }
-sha256sums=('158379934c4eb116bd416cb8c8bccbbd2befb7577483f851eec1430ac5e1bcae')
+sha256sums=('924ca7d93ff0db7cb6b97cd5796b0e198fafcf8b1a93c285b2253c0d87dbeb32')
