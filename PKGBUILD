@@ -2,7 +2,7 @@
 
 pkgbase=sol2
 pkgname=(sol2 sol2-single)
-pkgver=3.0.3
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="C++ <-> Lua Wrapper Library"
 arch=('any')
@@ -10,11 +10,11 @@ options=(!strip)
 url="http://sol2.rtfd.io/"
 license=('MIT')
 makedepends=('git' 'python')
-optdepends=('lua' 'lua51' 'lua52' 'luajit')
+optdepends=('lua' 'lua51' 'lua53' 'lua52' 'luajit')
 conflicts=('sol2')
 provides=('sol2')
 source=("https://github.com/ThePhD/sol2/archive/v$pkgver.tar.gz")
-sha256sums=('bf089e50387edfc70063e24fd7fbb693cceba4a50147d864fabedd1b33483582')
+sha256sums=('b10f88dc1246f74a10348faef7d2c06e2784693307df74dcd87c4641cf6a6828')
 
 package_sol2() {
   cd "./$pkgbase-$pkgver"
