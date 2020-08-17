@@ -6,7 +6,7 @@
 
 pkgname=fife
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 _githubname=fifengine
 pkgdesc="Flexible Isometric Free Engine is a cross platform game creation framework"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ sha512sums=('2b92e936d3f900532c5dee235a217c338941c44da479dceb3e48b3e8b93a402b31d
             '59b47dabc2b02a807c978837ab47498dca140f156159ada2c2cdbcf7a912bd95fcaf622bb92bcd585b1c722d4023f50330c4320d59a76e4ba12bb344da43996c')
 
 prepare() {
-    cd "$_githubname-$pkgver"
+    cd "$_githubname-$pkgver" || exit
     patch --forward --strip=1 \
         --input="$srcdir/$pkgname-[PATCH]-removed-flags-that-are-not-supported-with-swig-4.0.patch"
     patch --forward --strip=1 \
@@ -30,23 +30,18 @@ prepare() {
 }
 
 build() {
-    cd "$_githubname-$pkgver"
-    [[ -d "build" ]] && rm -r "build"
-    mkdir -p "build" && cd "build"
-
     cmake \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    -Wno-dev \
-    ..
+        -B "$_githubname-$pkgver/build" \
+        -S "$_githubname-$pkgver" \
+        -DCMAKE_INSTALL_PREFIX:PATH="/usr" \
+        -Wno-dev
 
-    make
     # If compilation seems to stall at 99% for ages, do not abort!
     # While not perfectly convenient, that is to be expected from
     # SWIG. Eventually, you'll reach the holy triple-digit land.
+    cmake --build "$_githubname-$pkgver/build"
 }
 
 package() {
-    cd "$_githubname-$pkgver"
-    cd "build"
-    make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir/" cmake --install "$_githubname-$pkgver/build"
 }

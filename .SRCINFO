@@ -1,7 +1,7 @@
 pkgbase = fife
 	pkgdesc = Flexible Isometric Free Engine is a cross platform game creation framework
 	pkgver = 0.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://fifengine.net/
 	arch = i686
 	arch = x86_64
