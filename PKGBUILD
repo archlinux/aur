@@ -3,16 +3,16 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-5.7
-_major=5.7
+_srcname=linux-5.8
+_major=5.8
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=12
+_minor=1
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
 #_fullver=$_major
-_rcver=3
+_rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
 arch=(x86_64)
@@ -30,22 +30,20 @@ source=(
   config         # the main kernel config file
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
-  0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
+  0002-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('81f8c5a1c43a85c8d6874980d10fdf137964779bbc9f7f569016604d85b8c77d'
-            'SKIP'
-            '7a54cf89d7198d99004495c0e3a25d3af05c5d5b70cccf92237f603d7fa15e08'
-            'SKIP'
-            '6313ccad7f8e4d8ce09dd5bdb51b8dfa124d0034d7097ba47008380a14a84f09'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '06a9861b434f81c0d0f54c6c122df56cf0a730d0eafad888db8804152a7b9ea3'
-            'db7f7a86bba9a4959f3e4ab7d1beb51e09099ef8beb638dd4250aa375532b2c2'
-            'df205ac596ad9af28061a7dac833d52b5873882d129079ed57736dd77bbb5f8c')
+b2sums=('323ec48398a3b9cfb988cd12cd8576061cd5578563a6dcb14c5e6188c856f5f848344d759ab15c18f333694d929690243fe057071e88188377ff2f9ebf4fb63a'
+        'SKIP'
+        '40d5bdd654b9c9771c5adca3b068e383390cfd643ad10cbc189b05257c0fe2095c8c76b316430fab8e6adee887ddac31665df8c97c477b73a613669a60d4aad8'
+        'SKIP'
+        '43284b02f435b4c2d7a77c1015bc934095dbef80630218fc9a6903fd7e6d8662073cd89948d9c290cd290dbd3368b308e4187f81045fd7bc6620efebe0723001'
+        'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
+        '25392b86a741ae3fead7adb2db8f4626670c57582546917609cd679fc89d8804bc08f1db5ce5c7d6b3ea4f79bfd9cdaf841a0fc65bba1ede78ee7ca7662130e7'
+        '3f9aabcf8555147a70eff260ef51a0634f494bda72fcbc315bd775b668e71aa9c8434420bef17da74f9ab473eb33aafe9cc1a0289fd15c1cbe344eb6484e305a')
 
 
 export KBUILD_BUILD_HOST=archlinux

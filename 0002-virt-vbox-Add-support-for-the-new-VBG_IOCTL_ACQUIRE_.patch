@@ -1,7 +1,7 @@
-From 7c4142e5f1bd5a4746e50aa8db163778daa8aa87 Mon Sep 17 00:00:00 2001
+From 26576b7d34c870319a9cb51f8a062cfa011f4bac Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
 Date: Wed, 15 Jul 2020 22:42:07 +0200
-Subject: [PATCH 3/5] virt: vbox: Add support for the new
+Subject: [PATCH 2/3] virt: vbox: Add support for the new
  VBG_IOCTL_ACQUIRE_GUEST_CAPABILITIES ioctl
 
 https://lore.kernel.org/patchwork/cover/1270301/
@@ -641,5 +641,5 @@ index f79d7abe27db..15125f6ec60d 100644
  struct vbg_ioctl_set_guest_caps {
  	/** The header. */
 -- 
-2.27.0
+2.28.0
 
