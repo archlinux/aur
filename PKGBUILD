@@ -17,7 +17,7 @@ md5sums=('SKIP')
 provides=('repoctl')
 conflicts=('repoctl' 'repoctl-git')
 
-pkgver=0.18.r16.g717a4e1
+pkgver=0.20.r11.g1102d3c
 pkgrel=1
 pkgver() {
   cd "${_pkgname}"
@@ -33,7 +33,10 @@ prepare() {
 build() {
   src="$srcdir/src/github.com/cassava/repoctl"
   cd "$src/cmd/repoctl"
-  GOPATH="$srcdir" go build -trimpath -ldflags "-extldflags ${LDFLAGS}" .
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOPATH="$srcdir"
+  go build
 }
 
 package() {
@@ -47,10 +50,6 @@ package() {
   install -d "$pkgdir/usr/share/doc/repoctl"
   install -m644 README.md NEWS.md "$pkgdir/usr/share/doc/repoctl/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/repoctl/LICENSE"
-
-  # Install completion files
-  install -Dm644 contrib/repoctl_completion.zsh "$pkgdir/usr/share/zsh/site-functions/_repoctl"
-  install -Dm644 contrib/repoctl_completion.bash "$pkgdir/usr/share/bash-completion/completions/repoctl"
 }
 
 # vim: set ts=2 sw=2:
