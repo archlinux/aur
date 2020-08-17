@@ -1,29 +1,28 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 # Contributor: TheAssassin
 
-_pkgname=AppImageLauncher
 pkgname=appimagelauncher-git
-pkgver=r976.d1be7e7
+pkgver=r1068.7cb4d70
 pkgrel=1
 pkgdesc="A Helper application for running and integrating AppImages."
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/TheAssassin/AppImageLauncher"
-license=('MIT')
-depends=(qt5-base fuse)
-makedepends=(git cmake extra-cmake-modules xxd qt5-tools wget boost gtest)
+license=(MIT)
+depends=(qt5-base fuse2 squashfuse libappimage)
+makedepends=(git cmake boost qt5-tools)
 provides=(appimagelauncher)
 conflicts=(appimagelauncher)
-source=("git+https://github.com/TheAssassin/AppImageLauncher.git"
+source=("${pkgname%-git}::git+https://github.com/TheAssassin/AppImageLauncher.git"
         "git+https://github.com/AppImage/AppImageUpdate.git"
         "git+https://github.com/AppImage/libappimage.git"
-        "git+https://github.com/TheAssassin/zsync2"
-        "git+https://github.com/TheAssassin/fltk-1.3.4"
-        "git+https://github.com/TheAssassin/libdesktopenvironments"
-        "git+https://github.com/arsenm/sanitizers-cmake"
+        "git+https://github.com/TheAssassin/zsync2.git"
+        "git+https://github.com/TheAssassin/fltk-1.3.4.git"
+        "git+https://github.com/TheAssassin/libdesktopenvironments.git"
+        "git+https://github.com/arsenm/sanitizers-cmake.git"
         "git+https://github.com/google/googletest.git"
-        "git+https://github.com/AppImage/cpr"
-        "git+https://github.com/Taywee/args"
+        "git+https://github.com/AppImage/cpr.git"
+        "git+https://github.com/Taywee/args.git"
         'appimage-binfmt-remove.hook')
 sha256sums=('SKIP'
             'SKIP'
@@ -38,19 +37,20 @@ sha256sums=('SKIP'
             '72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 #  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/${pkgname%-git}"
+
   git submodule init
   git config submodule.lib/AppImageUpdate.url "${srcdir}/AppImageUpdate"
   git config submodule.lib/libappimage.url "${srcdir}/libappimage"
   git submodule update 
 
-  cd "$srcdir/$_pkgname/lib/AppImageUpdate"
+  cd "$srcdir/${pkgname%-git}/lib/AppImageUpdate"
   git submodule init
   git config submodule.lib/zsync2.url "${srcdir}/zsync2"
   git config submodule.lib/fltk.url "${srcdir}/fltk-1.3.4"
@@ -59,41 +59,39 @@ prepare() {
   git config submodule.lib/libappimage.url "${srcdir}/libappimage"
   git submodule update
 
-  cd "$srcdir/$_pkgname/lib/AppImageUpdate/lib/libappimage"
+  cd "$srcdir/${pkgname%-git}/lib/AppImageUpdate/lib/libappimage"
   git submodule init
   git config submodule.lib/gtest.url "${srcdir}/googletest"
   git submodule update
 
-  cd "$srcdir/$_pkgname/lib/AppImageUpdate/lib/zsync2"
+  cd "$srcdir/${pkgname%-git}/lib/AppImageUpdate/lib/zsync2"
   git submodule init
   git config submodule.lib/cpr.url "${srcdir}/cpr"
   git config submodule.lib/args.url "${srcdir}/args"
   git config submodule.lib/gtest.url "${srcdir}/googletest"
   git submodule update
 
-  cd "${srcdir}/$_pkgname/lib/libappimage"
+  cd "${srcdir}/${pkgname%-git}/lib/libappimage"
   git submodule init
   git config submodule.lib/gtest.url "${srcdir}/googletest"
   git submodule update
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/${pkgname%-git}"
 
   cmake . \
         -DCMAKE_INSTALL_PREFIX=/usr/ \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        -DUSE_SYSTEM_GTEST=ON \
-        -DUSE_SYSTEM_XZ=ON \
-        -DUSE_SYSTEM_LIBARCHIVE=ON \
+        -DUSE_SYSTEM_LIBAPPIMAGE=ON \
         -DBUILD_TESTING=OFF
-  make libappimage libappimageupdate libappimageupdate-qt
+  make libappimageupdate libappimageupdate-qt
   cmake .
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/${pkgname%-git}"
   make DESTDIR="$pkgdir" install
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 ../appimage-binfmt-remove.hook "$pkgdir"/usr/share/libalpm/hooks/appimage-binfmt-remove.hook
