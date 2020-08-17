@@ -1,6 +1,6 @@
 pkgbase = fontship
 	pkgdesc = A font development toolkit and collaborative work flow
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/theleagueof/fontship
 	arch = any
@@ -29,8 +29,8 @@ pkgbase = fontship
 	depends = ttfautohint
 	depends = woff2
 	depends = zsh
-	source = https://github.com/theleagueof/fontship/releases/download/v0.3.0/fontship-0.3.0.tar.xz
-	sha256sums = a85c98c0262e190b337768b0f2391af6225092682fdce453b3b0a4de9c37d0ef
+	source = https://github.com/theleagueof/fontship/releases/download/v0.3.1/fontship-0.3.1.tar.xz
+	sha256sums = b3848baa1957c1029adbf57c89cd566a56744acc64c253cbd133c91b740f5c53
 
 pkgname = fontship
 
