@@ -1,16 +1,16 @@
 pkgbase = rsbot
 	pkgdesc = The world's most popular RuneScape® bot since 2006 (aka powerbot)
-	pkgver = 8.0.1
+	pkgver = 8.1.2
 	pkgrel = 1
 	url = http://www.powerbot.org/
 	arch = any
 	license = custom
 	depends = java-runtime
-	noextract = RSBot-8.0.1.jar
-	source = https://www.powerbot.org/rsbot/releases/RSBot-8.0.1.jar
+	noextract = RSBot-8.1.2.jar
+	source = https://www.powerbot.org/rsbot/releases/RSBot-8.1.2.jar
 	source = icon.png
 	source = rsbot.desktop
-	sha256sums = a27abf637dd4c7c1206c3a026ce5e515b95adff4737a2765f299385129c06a0e
+	sha256sums = dc07e7934da4bbd43b0543e0fd36e0104c6511e1a1f83bf84fbcac418a26171b
 	sha256sums = f120b8935e7e1cb8b5991198c95a65f401cb0ca434f1461c7c58a39ec04ae6fc
 	sha256sums = 44467f5336d0806985c0972ac7710bbcdb4c5858f16716ab9ceccc45353a4240
 
