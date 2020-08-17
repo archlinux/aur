@@ -1,6 +1,6 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma-runners-translator
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Translates words and sentences into any language"
 arch=('i686' 'x86_64')
@@ -17,9 +17,9 @@ backup=()
 options=()
 install=''
 changelog=''
-source=("$pkgname-$pkgver.tar.gz::https://github.com/naraesk/krunner-translator/archive/v1.1.2.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/naraesk/krunner-translator/archive/v1.1.3.tar.gz")
 noextract=()
-sha256sums=('df2b411bf03fb72b05e98402b2fdc5dc8e7e9d68684e240cf02f762772ee9ab8')
+sha256sums=('6f13f7ee5290b616680dcc8c224ead5efebd2ba169c8a9fc2edb57d6840eac74')
 
 prepare() {
   cd krunner-translator-${pkgver}
@@ -33,7 +33,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` \
     -DKDE_INSTALL_QTPLUGINDIR=`qtpaths --plugin-dir` \
     -DCMAKE_BUILD_TYPE=Release
-  make
+  make -j$(nproc)
 }
 
 package() {
