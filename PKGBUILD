@@ -3,7 +3,7 @@
 # Contributer: Jesus Franco <jesusfranco at gmail dot com>
 
 pkgname=ciano-git
-pkgver=0.2.1.r4.g9d222e3
+pkgver=0.2.4.r0.ge7dd4bd
 pkgrel=1
 pkgdesc="A simple multimedia file converter for elementary OS"
 arch=(i686 x86_64)
