@@ -3,7 +3,7 @@
 
 pkgname=virtualbox-ext-oracle-manjaro
 pkgver=6.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Oracle VM VirtualBox Extension Pack'
 arch=('any')
 url='https://www.virtualbox.org/'
