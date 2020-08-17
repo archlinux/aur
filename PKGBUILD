@@ -3,23 +3,24 @@
 # Contributor: Alexander Bantyev <balsoft@yandex.ru>
 
 pkgname=qomp-git
-pkgver=1.3.1.r11.g78886ed
-pkgrel=2
+pkgver=1.4.r5.ge70259a
+pkgrel=1
 pkgdesc="Quick(Qt) Online Music Player"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="https://qomp.sourceforge.net/"
-license=('GPL2')
-depends=('taglib' 'qt5-base' 'qt5-tools' 'qt5-x11extras'
-         'qt5-multimedia' 'qt5-xmlpatterns'
-         'gstreamer' 'libcue' 'gst-plugins-good')
-optdepends=('gst-plugins-bad'
-            'gst-plugins-ugly')
-makedepends=('git' 'make' 'cmake')
+license=(GPL2)
+depends=(taglib qt5-base qt5-x11extras
+         qt5-multimedia qt5-xmlpatterns
+         gstreamer libcue gst-plugins-good)
+optdepends=('gst-libav: additional codecs'
+            'gst-plugins-bad: additional codecs'
+            'gst-plugins-ugly: additional codecs')
+makedepends=(git cmake qt5-tools)
 source=("${pkgname}::git+https://github.com/qomp/qomp"
         "git+https://github.com/qomp/translations"
         "git+https://github.com/qomp/themes"
         "git+https://github.com/wadealer/SingleApplication")
-md5sums=('SKIP'
+sha256sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
@@ -33,11 +34,9 @@ prepare() {
   cd "${srcdir}/${pkgname}"
 
   git submodule init
-
   git config 'submodule.translations.url' "${srcdir}/translations"
   git config 'submodule.themes.url' "${srcdir}/themes"
   git config 'submodule.src/singleapplication.url' "${srcdir}/SingleApplication"
-
   git submodule update
 }
 
@@ -46,7 +45,6 @@ build() {
 
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr/ \
-	-DUSE_QT5=ON \
 	-DCMAKE_BUILD_TYPE=Release
 make
 }
