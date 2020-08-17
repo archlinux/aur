@@ -1,4 +1,4 @@
-# Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
+# Maintainer: Parker Reed <parker.l.reed@gmail.com>
 
 # WARNING: This package is very large.  It requires upwards 6 GiB of
 #   space to completely build, so make sure you have plenty of room
@@ -19,17 +19,19 @@
 
 pkgname=fs2_open-data
 pkgver=1.20
-pkgrel=9
+pkgrel=10
 pkgdesc="FreeSpace 2 retail data for fs2_open"
 arch=('any')
 url="https://www.gog.com/game/freespace_2"
 license=('custom:freespace2')
 makedepends=('icoutils' 'innoextract' 'recode')
 PKGEXT=".pkg.tar"
-source=('file://setup_freespace_2_1.20.exe')
-sha256sums=('6070befe0e041aa80c824593ac3ed2430ea18eb14aba6bdb1704fd375786c707')
+source=('file://setup_freespace_2_1.20_v2_(33372).exe'
+        'file://setup_freespace_2_1.20_v2_(33372)-1.bin')
+sha256sums=('2c31941a639ea96df8bb0a8f95dcc3230e3affdc56c2e9ba609ff8fc5e20c712'
+            '13f15ef7387b0db1a565172e459f949be98588ed0843e568f8c3cb5dbcab496d')
 prepare() {
-    local _gog_exe="setup_freespace_2_1.20.exe"
+    local _gog_exe="setup_freespace_2_1.20_v2_(33372).exe"
     mkdir -p build
     cd build
     innoextract ../$_gog_exe

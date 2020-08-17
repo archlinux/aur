@@ -1,15 +1,17 @@
 pkgbase = fs2_open-data
 	pkgdesc = FreeSpace 2 retail data for fs2_open
 	pkgver = 1.20
-	pkgrel = 9
+	pkgrel = 10
 	url = https://www.gog.com/game/freespace_2
 	arch = any
 	license = custom:freespace2
 	makedepends = icoutils
 	makedepends = innoextract
 	makedepends = recode
-	source = file://setup_freespace_2_1.20.exe
-	sha256sums = 6070befe0e041aa80c824593ac3ed2430ea18eb14aba6bdb1704fd375786c707
+	source = file://setup_freespace_2_1.20_v2_(33372).exe
+	source = file://setup_freespace_2_1.20_v2_(33372)-1.bin
+	sha256sums = 2c31941a639ea96df8bb0a8f95dcc3230e3affdc56c2e9ba609ff8fc5e20c712
+	sha256sums = 13f15ef7387b0db1a565172e459f949be98588ed0843e568f8c3cb5dbcab496d
 
 pkgname = fs2_open-data
 	license = custom:goodoldgames
