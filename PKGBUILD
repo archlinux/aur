@@ -9,8 +9,8 @@ url='https://github.com/elementary/terminal'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'gtk3' 'libnotify' 'pango' 'vte3'
-         'libgranite.so')
-makedepends=('appstream' 'git' 'granite-git' 'intltool' 'meson' 'vala')
+         'libgranite.so' 'libhandy-1.so')
+makedepends=('appstream' 'git' 'granite' 'intltool' 'meson' 'vala' 'libhandy1')
 provides=('pantheon-terminal')
 conflicts=('pantheon-terminal')
 source=('pantheon-terminal::git+https://github.com/elementary/terminal.git'
