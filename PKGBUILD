@@ -18,10 +18,6 @@ pkgver() {
     printf "%s" "$(git tag | tail -n1 | cut -c2-).r$(git rev-list --count HEAD)"
 }
 
-prepare() {
-    cd "$srcdir/${pkgname%-git}"
-}
-
 build() {
     cd "$srcdir/${pkgname%-git}"
     make mlton
