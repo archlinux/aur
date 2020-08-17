@@ -2,15 +2,15 @@
 # Maintainer: Arthur Zamarin <arthurzam@gmail.com> 
 
 pkgname=clib
-pkgver=1.11.3
+pkgver=2.1.13
 pkgrel=1
 pkgdesc="C package manager-ish"
 arch=(i686 x86_64)
-url="https://github.com/clibs/clib"
-license=('MIT')
-depends=('curl')
+url=https://github.com/clibs/clib
+license=(custom:MIT)
+depends=(curl)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/clibs/clib/archive/$pkgver.tar.gz")
-sha512sums=('daf511262880aa0f0a2d0310ebf16e49714e28e6fcfee37872440ee3b4571cee6c58de23d5726aaaa14c89e0f668e38383854dd9d1f9cfec553d772a0a08e896')
+sha512sums=('14b6a0fa7495cdb08434e76226579e5f68362ab1dab88b85b4bb16555d1bd2e29892feea375773c755023fdaf7c4ead7ac9732d8f90ceeaaedd22c2c47d57bb7')
 
 prepare () {
   cat >> "$srcdir/$pkgname-$pkgver/Makefile" <<-EOF
