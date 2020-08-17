@@ -25,7 +25,7 @@ makedepends=(
 )
 provides=(disman)
 conflicts=(disman)
-source=('git+https://gitlab.com/kwinft/disman.git#branch=Plasma/5.19')
+source=('git+https://gitlab.com/kwinft/disman.git')
 sha512sums=('SKIP')
 
 pkgver() {
