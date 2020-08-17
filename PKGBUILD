@@ -2,7 +2,7 @@
 # Contributor: Kyle Laker <kyle@laker.email>
 
 pkgname=warpinator
-pkgver=1.0.6
+pkgver=1.0.7
 _pkgver=ulyana
 pkgrel=1
 pkgdesc="Allows simple local network file sharing"
@@ -33,14 +33,14 @@ conflicts=(
     warpinator-git
 )
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}+${_pkgver}.tar.xz")
-sha256sums=('f511a75765ef02345635598cab00457c1054e4cf5810291eea254f91e425937d')
+sha256sums=('7eab3bdfcbaa7b2a01335b18e6d702ae25e67fb4419450828763fd7d55038d9c')
 
 prepare() {
 	cd "$srcdir/warpinator"
 
 	# Fix hard-coded libexec dir
 	sed -i 's/libexec/lib/g' \
-		"bin/warpinator" \
+		bin/warpinator.in \
 		install-scripts/meson_generate_and_install_protobuf_files.py
 }
 
