@@ -2,7 +2,7 @@
 # Contributor: Joakim Hernberg <jhernberg at alchemy dot lu>
 _pkgbasename=gettext
 pkgname=lib32-$_pkgbasename
-pkgver=0.20.2
+pkgver=0.21
 pkgrel=1
 pkgdesc="GNU internationalization library (32-bit)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('lib32-acl' lib32-gcc-libs $_pkgbasename)
 makedepends=(gcc-multilib)
 options=(!docs)
 source=(https://ftp.gnu.org/pub/gnu/gettext/${_pkgbasename}-${pkgver}.tar.gz{,.sig})
-sha512sums=('50b0520230dba5da6e04e51b2317e073cacf1536d73ea88e4b5dc6cc5bd97cf2c9a279c3c3ada1067f39c8b3bb0b1ce8e0823cc1dd4c33f4f10860bdf787009d'
+sha512sums=('bbe590c5dd3580c75bf30ff768da99a88eb8d466ec1ac9eea20be4cab4357ecf72448e6b81b47425e39d50fa6320ba426632914d7898dfebb4f159abc39c31d1'
             'SKIP')
 validpgpkeys=(462225C3B46F34879FC8496CD605848ED7E69871
               68D94D8AAEEAD48AE7DC5B904F494A942E4616C2
