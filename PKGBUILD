@@ -3,7 +3,7 @@
 pkgname=go-hnrss
 pkgver=1.1
 _pkgver="v$pkgver"
-pkgrel=3
+pkgrel=4
 pkgdesc='Hacker News RSS'
 arch=('x86_64' 'aarch64')
 url='https://edavis.github.io/hnrss/'
@@ -43,8 +43,8 @@ build() {
 package() {
   cd "$srcdir"
   install -Dm644 "${pkgname}.conf" "${pkgdir}/etc/${pkgname}.conf"
-  install -Dm644 "${pkgname}.service" "${pkgdir}$(pkg-config systemd --variable=systemd_system_unit_dir)/${pkgname}.service"
-  install -Dm644 "${pkgname}.sysusers" "${pkgdir}/$(pkg-config systemd --variable=sysusers_dir)/${pkgname}.conf"
+  install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 
   cd "$srcdir/$pkgname-$_pkgver"
   install -Dm755 "${pkgname}.${_target}" "${pkgdir}/usr/bin/${pkgname}"
