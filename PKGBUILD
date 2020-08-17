@@ -48,8 +48,8 @@ prepare() {
   # https://github.com/sass/node-sass/issues/2716
   sed 's#"resolutions": {#"resolutions": {"node-sass/node-gyp": "^6.0.0",#' -i package.json
 
-  yarn prepare-beta-build
   yarn install --ignore-engines
+  yarn prepare-beta-build
 
   # Have SQLCipher dynamically link from OpenSSL
   # See https://github.com/signalapp/Signal-Desktop/issues/2634
