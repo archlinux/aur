@@ -1,8 +1,8 @@
 pkgbase = python-django-markdown-deux
 	pkgdesc = A django app that provides Markdown-related template tags
 	pkgver = 1.0.5
-	pkgrel = 3
-	url = http://github.com/trentm/django-markdown-deux
+	pkgrel = 4
+	url = https://github.com/trentm/django-markdown-deux
 	arch = any
 	license = BSD
 	makedepends = python

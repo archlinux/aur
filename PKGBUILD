@@ -1,11 +1,11 @@
-# Maintainer: Miguel de Val-Borro <miguel at archlinux dot net>
+# Maintainer: Miguel de Val-Borro <miguel dot deval at gmail dot com>
 
 pkgname=('python-django-markdown-deux' 'python2-django-markdown-deux')
 pkgver=1.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A django app that provides Markdown-related template tags"
 arch=('any')
-url="http://github.com/trentm/django-markdown-deux"
+url="https://github.com/trentm/django-markdown-deux"
 license=('BSD')
 depends=('python-markdown2' 'python2-markdown2')
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
