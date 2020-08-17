@@ -1,7 +1,7 @@
 pkgbase = sonobuoy
 	pkgdesc = Diagnostic tool for Kubernetes clusters
 	pkgver = 0.18.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vmware-tanzu/sonobuoy
 	arch = x86_64
 	license = Apache

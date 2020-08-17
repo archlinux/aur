@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=sonobuoy
 pkgver=0.18.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Diagnostic tool for Kubernetes clusters'
 arch=('x86_64')
 url='https://github.com/vmware-tanzu/sonobuoy'
@@ -34,12 +34,12 @@ build() {
     "github.com/vmware-tanzu/sonobuoy/pkg/buildinfo.Version=v${pkgver}"
     "github.com/vmware-tanzu/sonobuoy/pkg/buildinfo.GitSHA=${_commit}"
   )
-  go build -o "$pkgname" -ldflags "${_defines[*]/#/-X=}"
+  go build -o "$pkgname" -ldflags "-linkmode=external ${_defines[*]/#/-X=}"
 }
 
 check() {
   cd "${pkgname}-${pkgver}"
-  go test ./cmd/... ./pkg/...
+  GODEBUG=x509ignoreCN=0 go test ./cmd/... ./pkg/...
 }
 
 package() {
