@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=scanpy
-pkgver=1.4.6
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Single-Cell Analysis in Python'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(
 	'python-anndata>=0.6.22'
 	'python-matplotlib>=3.0'
 	'python-pandas>=0.21'
-	'python-scipy>=1.3'
+	'python-scipy>=1.4'
 	python-seaborn
 	python-h5py
 	python-pytables
@@ -21,7 +21,7 @@ depends=(
 	'python-scikit-learn>=0.21.2'
 	'python-statsmodels>=0.10.0'
 	python-patsy
-	python-networkx
+	'python-networkx>=2.3'
 	python-natsort
 	python-joblib
 	'python-numba>=0.41.0'
@@ -29,6 +29,7 @@ depends=(
 	python-legacy-api-wrap
 	python-setuptools_scm
 	python-packaging
+	python-sinfo
 )
 optdepends=(
 	'python-bbknn: Batch balanced KNN (batch correction)'
@@ -39,7 +40,7 @@ optdepends=(
 makedepends=(install-wheel-scripts)
 _wheel="$pkgname-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/$_wheel")
-sha256sums=('029f52b481a5e8216dc9876670845f8db069802a0ca8721c4f1e4711a0496dd1')
+sha256sums=('d17b9052440392d5a4f7d1b5aa1b131f46c470953ded348375a4ee2f0519a55a')
 noextract=("$_wheel")
 
 package() {
