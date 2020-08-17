@@ -1,11 +1,12 @@
 pkgbase = mingw-w64-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (mingw-w64)
 	pkgver = 4.3.1
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://ffmpeg.org/
 	arch = any
 	license = GPL3
+	makedepends = mingw-w64-avisynthplus
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-pkg-config
 	makedepends = git

@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-ffmpeg
 pkgver=4.3.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -45,9 +45,7 @@ depends=(
 # TODO: Add vmaf dependency
 #'mingw-w64-vmaf'
 options=(!strip !buildflags staticlibs)
-# TODO: Add avisynth dependency
-#'mingw-w64-avisynthplus'
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
+makedepends=('mingw-w64-avisynthplus' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
 _tag=6b6b9e593dd4d3aaf75f48d40a13ef03bdef9fdb
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
 source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
@@ -90,6 +88,7 @@ build() {
       --enable-gmp \
       --enable-gnutls \
       --enable-gpl \
+      --enable-avisynth \
       --enable-libaom \
       --enable-libass \
       --enable-libbluray \
@@ -123,8 +122,6 @@ build() {
       --disable-doc \
       --x86asmexe=yasm
 
-# TODO: Add avisynth dependency
-#      --enable-avisynth \
 # TODO: Add vmaf dependency
 #      --enable-libvmaf \
 
