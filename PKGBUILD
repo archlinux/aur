@@ -4,7 +4,7 @@
 
 pkgname=akira-git
 pkgver=0.0.12.r3.gfb4735a
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Linux App for UI and UX Design built in Vala and Gtk"
 arch=(x86_64 aarch64)
 url="https://github.com/akiraux/Akira"
@@ -30,4 +30,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname%-git}"
   DESTDIR="${pkgdir}" ninja -C build install
+  ln -s /usr/bin/com.github.akiraux.akira "$pkgdir/usr/bin/akira"
 }
