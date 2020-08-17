@@ -14,6 +14,8 @@ depends=(lib32-pcre lib32-libffi lib32-util-linux lib32-zlib glib2)
 makedepends=(gettext shared-mime-info python lib32-libelf git util-linux
              meson lib32-dbus)
 #checkdepends=(desktop-file-utils lib32-glib2)
+provides=(lib32-glib2)
+conflicts=(lib32-glib2)
 source=("git+https://gitlab.gnome.org/GNOME/glib.git"
         multilib.diff
         gio-querymodules-32.hook)
