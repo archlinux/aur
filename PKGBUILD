@@ -6,8 +6,9 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # Contributor: Ben Alex <ben.alex@acegi.com.au>
 
+_pkgname=influxdb
 pkgname=influxdb-cli
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc='InfluxDB command line interface'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -15,42 +16,50 @@ url='https://github.com/InfluxData/influxdb'
 license=('MIT')
 makedepends=('go' 'git' 'asciidoc' 'xmlto' 'dep')
 conflicts=('influxdb')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/influxdata/influxdb/archive/v${pkgver}.tar.gz")
-sha256sums=('d811be2ec684ea224e1097bd0051e0f6dfcd30cdd1656d55e48883d61ce47ce9')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/influxdata/influxdb/archive/v${pkgver}.tar.gz"
+        "fix-go114.patch::https://github.com/Foxboron/influxdb/commit/f8453b48862b50fe44021e320332f75e32457f29.patch"
+        "fix-go115.patch::https://github.com/influxdata/influxdb/commit/3a03ad500a4b2bba65a4af74995ad54e88de7210.patch")
+sha256sums=('59ee1d3bc591d932acad918f3a46b07207beed9c0e717ee28da8c9565e646eda'
+            '2812f5cd31bdf6b9f587d471c249fb90ea58c4000ce52e3b91de7b17ca74dc7d'
+            '616ce43eebc1cbbe5d6376dd6306ffddc3aa1ab0cd396e1b9918ae43e6a27572')
 
 prepare(){
-  export GOPATH="$srcdir/gopath"
-
-  mkdir -p "$GOPATH/src/github.com/influxdata/"
-  cp -r "${srcdir}/influxdb-$pkgver" "$GOPATH/src/github.com/influxdata/influxdb"
-  cd "$GOPATH/src/github.com/influxdata/influxdb"
-  dep ensure
+  cd "${_pkgname}-${pkgver}"
+  patch -Np1 < "$srcdir/fix-go114.patch"
+  patch -Np1 < "$srcdir/fix-go115.patch"
+  mkdir -p build
 }
 
 build(){
-  export GOPATH="$srcdir/gopath"
-
-  _LDFLAGS="-X main.version=$pkgver -X main.branch=master -extldflags ${LDFLAGS}"
-  go install -v -ldflags="$_LDFLAGS" -gcflags "all=-trimpath=${GOPATH}" -asmflags "all=-trimpath=${GOPATH}" "github.com/influxdata/influxdb/cmd/..."
-
-  cd "$GOPATH/src/github.com/influxdata/influxdb/man/"
+  cd "${_pkgname}-${pkgver}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  _LDFLAGS="-linkmode external -X main.version=$pkgver -X main.branch=master"
+  go build -v -ldflags="$_LDFLAGS" -o build ./cmd/...
+  cd "man"
   make
 }
 
 check(){
-  export GOPATH="$srcdir/gopath"
-  go test "github.com/influxdata/influxdb/..."
+  cd "${_pkgname}-${pkgver}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go test ./...
 }
 
 package(){
-  export GOPATH="$srcdir/gopath"
+  cd "${_pkgname}-${pkgver}"
 
-  cd "$GOPATH/bin"
   install -d "$pkgdir/usr/bin/"
-  install -Dm755 influx         "$pkgdir/usr/bin/"
+  install -Dm755 build/influx  "$pkgdir/usr/bin/"
 
-  cd "$GOPATH/src/github.com/influxdata/influxdb"
-  install -Dm644 LICENSE                  "$pkgdir/usr/share/licenses/influxdb-cli/LICENSE"
+  install -Dm644 LICENSE       "$pkgdir/usr/share/licenses/influxdb-cli/LICENSE"
 
   # Install man pages
   install -d "$pkgdir/usr/share/man/man1"
