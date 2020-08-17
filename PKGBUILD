@@ -1,28 +1,33 @@
-# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
-
+# Contributor: John Jenkins <twodopeshaggy@gmail.com>
+# Maintainer: aksr <aksr at t-com dot me>
 pkgname=nes-git
-pkgver=r103.9d56bd1
+pkgver=r192.c94772f
 pkgrel=1
 pkgdesc="NES emulator written in Go."
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/fogleman/nes"
 license=('MIT')
-makedepends=('go' 'git' 'mercurial')
+makedepends=('git' 'go' 'mercurial')
 options=('!strip' '!emptydirs')
-source=($pkgname::git+https://github.com/fogleman/nes.git)
-md5sums=('SKIP')
 _gourl=github.com/fogleman/nes
+
 pkgver() {
-  cd $srcdir/$pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	GOPATH="$srcdir" go get -d ${_gourl}
+	cd "$srcdir/src/${_gourl}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  export GOPATH=$srcdir
-  go get $_gourl
+	GOPATH="$srcdir" go get -fix -v ${_gourl}
+}
+
+check() {
+	GOPATH="$srcdir" go test -v -x ${_gourl}
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
+	cd "$srcdir"
+	install -D -m755 bin/nes "$pkgdir/usr/bin/nes"
+	install -D -m644 src/${_gourl}/README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
+	install -D -m644 src/${_gourl}/LICENSE.md $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
