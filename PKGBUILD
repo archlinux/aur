@@ -1,9 +1,9 @@
-# Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
+# Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jitsi
 _pkgname=meet
-_tag=4353
-_version=1.0.4353
+_tag=4356
+_version=1.0.4356
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}-web
@@ -67,5 +67,5 @@ package() {
         
         chown -R root:root "${pkgdir}"
 }
-sha256sums=('0d2e3075d1facc70a1ad7466d33fcfc9377ad55052b55539b8368d371cc9c318'
-            'f763e1622749a0343f1ce2b91414ccbb215e690dec57bd0bdb019cfccd763018')
+sha256sums=('104827f09fbc26b9450f7f6032c7d22023970f7cc9015df98be7af32e5d571c7'
+            '45ad302dcf64597e292ce7acd9a95cc49c72aef4ac234a845bc8ad32ac907b9c')
