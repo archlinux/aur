@@ -1,12 +1,14 @@
 pkgbase = qpdftools
 	pkgdesc = Qpdf Tools is an easy-to-use Qt interface for Ghostscript and Stapler
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/silash35/qpdftools
 	arch = x86_64
 	license = Unlicense
 	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-base
 	depends = ghostscript
 	depends = stapler
 	depends = qt5-base
