@@ -3,7 +3,7 @@
 pkgname=go-hnrss
 pkgver=1.1
 _pkgver="v$pkgver"
-pkgrel=2
+pkgrel=3
 pkgdesc='Hacker News RSS'
 arch=('x86_64' 'aarch64')
 url='https://edavis.github.io/hnrss/'
@@ -24,7 +24,7 @@ sha512sums=('60e377ff63bb582d1ae2315c2c87bf62b013577804489ea00191d5372131acb2388
 
 case "$CARCH" in
   x86_64) _target=amd64 ;;
-  aarch64) _target=armv8 ;;
+  aarch64) _target=arm64 ;;
   *) return 1 ;;
 esac
 
@@ -37,7 +37,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  GOOS=linux GOARCH="$_target" go build -v -o "${pkgname}.${_target}"
+  GOARCH="$_target" go build -v -o "${pkgname}.${_target}"
 }
 
 package() {
