@@ -5,18 +5,18 @@
 # Contributor: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 pkgname=gamehub-git
-pkgver=0.16.0.2.dev.r0.g7fac970
+pkgver=0.16.0.28.dev.r0.g53606c8
 pkgrel=1
-pkgdesc="Games manager, downloader, library that supports GOG, Steam and Humble Bundle. Designed for Pantheon Shell"
+pkgdesc="Games manager, downloader, library that supports GOG, Steam and Humble Bundle"
 arch=(i686 x86_64 armv6h armv7h aarch64)
-url="https://github.com/tkashkin/GameHub"
+url="https://tkashkin.tk/projects/gamehub/"
 license=(GPL3)
 depends=(gtk3 glib2 libgee libsoup json-glib sqlite webkit2gtk libmanette libxtst)
 makedepends=(git meson ninja vala)
 provides=(gamehub)
 conflicts=(gamehub)
 options=(!strip debug)
-source=("git+${url}.git#branch=dev")
+source=("git+https://github.com/tkashkin/GameHub.git#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {
