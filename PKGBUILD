@@ -1,19 +1,23 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier@gmail.com>
 
 pkgname=qt5-shadertools-git
-_qtver=5.15.0
-pkgver=${_qtver/-/}
-pkgrel=2
+pkgver=r33.ef4b17c
+pkgrel=1
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='QtShaderTools module for Qt5'
 depends=('qt5-base' 'vulkan-headers')
-makedepends=()
+makedepends=('git')
 optdepends=('vulkan-extra-layers')
 groups=('qt' 'qt5')
 source=('git://github.com/jcelerier/qtshadertools.git')
 sha256sums=('SKIP')
+
+pkgver() {
+  cd qtshadertools
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   mkdir -p build

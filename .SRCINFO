@@ -1,7 +1,7 @@
 pkgbase = qt5-shadertools-git
 	pkgdesc = QtShaderTools module for Qt5
-	pkgver = 5.15.0
-	pkgrel = 2
+	pkgver = r33.ef4b17c
+	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt
@@ -10,6 +10,7 @@ pkgbase = qt5-shadertools-git
 	license = LGPL3
 	license = FDL
 	license = custom
+	makedepends = git
 	depends = qt5-base
 	depends = vulkan-headers
 	optdepends = vulkan-extra-layers
