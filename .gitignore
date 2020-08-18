@@ -1,0 +1,5 @@
+bjumblr.lv2/
+bjumblr.lv2-git-*.pkg.tar.xz
+bjumblr.lv2-git-*.pkg.tar.zst
+pkg/
+src/
