@@ -1,6 +1,6 @@
 pkgname=nbopen
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Opens an Jupyter notebook in the best available server'
 url="https://github.com/takluyver/$pkgname"
 arch=('any')
@@ -16,7 +16,7 @@ package() {
 	mkdir -p "$site"
 	unzip "$_wheel" -d "$site"
 	install-wheel-scripts --prefix="$pkgdir/usr" "$_wheel"
-	chmod 644 "$site/nbopen-0.6.dist-info/"*
+	chmod 644 "$site/$pkgname-$pkgver.dist-info/"*
 	
 	cd "$srcdir/$pkgname"
 	local desktopfile="$pkgdir/usr/share/applications/nbopen.desktop"

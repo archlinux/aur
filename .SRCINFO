@@ -1,7 +1,7 @@
 pkgbase = nbopen
 	pkgdesc = Opens an Jupyter notebook in the best available server
 	pkgver = 0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/takluyver/nbopen
 	arch = any
 	license = BSD
