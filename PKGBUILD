@@ -7,7 +7,7 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=5.0.r807.g6b7ed93d54
+pkgver=5.0.r865.g4c8a2267e0
 pkgrel=1
 epoch=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
@@ -15,7 +15,8 @@ arch=('any')
 url="https://www.jabref.org"
 depends=('archlinux-java-run>=7' 'java-runtime=14')
 license=('MIT')
-makedepends=('git' 'java-environment=14') # tested with  openjdk 14 from official repos
+makedepends=('git' 'java-environment=14') # tested with openjdk 14 from official repos,
+# openjfx must not be installed
 optdepends=('gsettings-desktop-schemas: For web search support')
 provides=('jabref')
 conflicts=('jabref')
@@ -28,7 +29,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags |cut -c2-|sed 's+-+.r+'|sed 's+-+.+'
+  git describe --tags |cut -c2-|sed 's+-+.r+'|tr - .
 }
 
 build() {
@@ -36,11 +37,14 @@ build() {
   [[ -d "$srcdir"/gradle ]] && install -d "$srcdir"/gradle
   export GRADLE_USER_HOME="$srcdir"/gradle
   
-  export JAVA_HOME=$(archlinux-java-run -a 14 -f jdk -j)
+#  export JAVA_HOME=/usr/lib/jvm/liberica-jdk-full
+  export JAVA_HOME=/usr/lib/jvm/java-14-openjdk
   echo "Using JDK from $JAVA_HOME to build JabRef."
   
   ./gradlew --no-daemon -PprojVersion="${pkgver}" \
-    -PprojVersionInfo="${pkgver}--ArchLinux--${pkgrel}" assemble
+	    -PprojVersionInfo="${pkgver}--ArchLinux--${pkgrel}" assemble
+  ./gradlew --no-daemon --no-parallel -PprojVersion="${pkgver}" \
+	    -PprojVersionInfo="${pkgver}--ArchLinux--${pkgrel}" jlink 
 }
 
 package() {
@@ -52,8 +56,6 @@ package() {
   install -Dm644 LICENSE.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md
   install -Dm644 src/main/resources/icons/jabref.svg "${pkgdir}"/usr/share/pixmaps/${pkgname}.svg
 
-  cd build
-  cp -r resources "${pkgdir}"/usr/share/java/${pkgname}
-  tar xf distributions/JabRef-${pkgver}.tar -C "${pkgdir}"/usr/share/java/${pkgname} JabRef-${pkgver}/lib --strip-components=1
-  rm "${pkgdir}"/usr/share/java/${pkgname}/lib/*-mac.*
+  install -d "${pkgdir}/opt"
+  cp -R build/image "${pkgdir}"/opt/jabref
 }
