@@ -1,0 +1,6 @@
+*.tar.gz
+*.tar.xz
+git-secret-*
+pkg
+src
+*.orig
