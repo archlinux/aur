@@ -1,17 +1,17 @@
 pkgbase = readability-cli
 	pkgdesc = Firefox Reader Mode in your terminal! - CLI tool for Mozilla's Readability library
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
-	url = https://www.npmjs.com/package/@gardenapple/readability-cli
+	url = https://www.npmjs.com/package/readability-cli
 	arch = any
 	license = GPL3
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = readability-cli-1.1.4.tgz
-	source = https://registry.npmjs.org/@gardenapple/readability-cli/-/readability-cli-1.1.4.tgz
-	sha256sums = 4b413d6d6a1211fe16b887aea54791a4b32bf1701767fa6c445108f7b165c15e
-	b2sums = 9166cc327c1b793fcc9bf3ca646b683ea14c39311ec8b32f6ee489170f8f0e3c74c7ac733ad0fd42f8eabc3cdf7d225e646c087da588fc5013cf7b04b737eaa8
+	noextract = readability-cli-1.1.5.tgz
+	source = https://registry.npmjs.org/readability-cli/-/readability-cli-1.1.5.tgz
+	sha256sums = ec63a60766c4a2514f0bfd8fa669ab910d26db91b4c51b07b833b9d95aa774d5
+	b2sums = 1adb20bb5fada6a9449e7216c8e62ba01c1e7c4cdd839bc329933f3876b95f35d6fe270678a420834aeea5ea43c00970297fd7dd309cab1631c32c58b3eb487e
 
 pkgname = readability-cli
 
