@@ -17,7 +17,7 @@
 
 pkgname=protonmail-bridge-nogui
 
-_pkgver=1.3.2
+_pkgver=1.3.3
 _rev=""
 _srcver="$_pkgver"
 _srcname=proton-bridge-"$_srcver"
@@ -39,7 +39,7 @@ conflicts=('protonmail-bridge-bin' 'protonmail-bridge')
 options=('!emptydirs' '!strip')
 source=("$_srcname.tar.gz::https://github.com/ProtonMail/proton-bridge/archive/v"$_srcver".tar.gz"
 	"bridge.service")
-sha256sums=('fb614a2bc2c2b56f7c47a9e6c46e059cc1deff643f5ba83d8272c29657d00072'
+sha256sums=('613907baa5d5c93cebb2581adeb7259eab750cebe04a9db6873b592138686209'
             '6b2fd1e042b55dc6d0ffe5eb44e82ffd233452b4571ef571132600e7ec0d5d82')
 
 prepare() {
