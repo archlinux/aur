@@ -28,11 +28,6 @@ build(){
   env CARGO_INCREMENTAL=1 cargo build --release --locked
 }
 
-check(){
-  cd "$_pkgname"
-  env CARGO_INCREMENTAL=1 cargo test --release
-}
-
 package() {
   cd $_pkgname
   install -D -m755 "target/release/conduit" "$pkgdir/usr/bin/conduit"
