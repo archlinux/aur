@@ -10,7 +10,7 @@ url="https://github.com/pyinv/damm32"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools' 'python-dephell')
-source=("https://api.github.com/repos/pyinv/damm32/tarball/v1.1.0")
+source=('https://api.github.com/repos/pyinv/damm32/tarball/v1.1.0')
 sha512sums=('c5b41698bfdb8e0576279cc9ed76f98c10caa782ed75d888e441a20caddfa7f92904e4233f5aabb6c0f3ad508ccf522e4800024e978d91f0775a2cddf18e797e')
 
 prepare() {
