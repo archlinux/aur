@@ -3,7 +3,7 @@
 
 pkgname=clweather
 _pkgname=clweather.py
-pkgver=1.2.r0.gbcca994
+pkgver=1.3
 pkgrel=1
 pkgdesc="small weather forecast script for the command line"
 arch=('any')
@@ -33,10 +33,10 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe
 }
 
 package() {
   cd $pkgname
-  install -Dm755 $_pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm 755 $_pkgname "$pkgdir/usr/bin/$pkgname"
 }
