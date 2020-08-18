@@ -37,14 +37,14 @@ prepare(){
 package(){
     cd "${srcdir}/data/noarch"
     # Install game
-    install -d "${pkgdir}/home/theo/Windows-data/Jeux/${pkgname}/"
-    install -d "${pkgdir}/home/theo/Windows-data/Jeux/${pkgname}/support"
+    install -d "${pkgdir}/opt/${pkgname}/"
+    install -d "${pkgdir}/opt/${pkgname}/support"
     install -d "${pkgdir}/usr/bin/"
-    cp -r "game/" "${pkgdir}/home/theo/Windows-data/Jeux/${pkgname}/"
-    chmod -R 666 "${pkgdir}/home/theo/Windows-data/Jeux/${pkgname}/game/resources/"
-    install -Dm755 "start.sh" "${pkgdir}/home/theo/Windows-data/Jeux/${pkgname}/"
-    install -Dm644 "gameinfo" "${pkgdir}/home/theo/Windows-data/Jeux/${pkgname}/"
-    install -Dm755 support/*.{sh,shlib} -t "${pkgdir}/home/theo/Windows-data/Jeux/${pkgname}/support"
+    cp -r "game/" "${pkgdir}/opt/${pkgname}/"
+    chmod -R 666 "${pkgdir}/opt/${pkgname}/game/resources/"
+    install -Dm755 "start.sh" "${pkgdir}/opt/${pkgname}/"
+    install -Dm644 "gameinfo" "${pkgdir}/opt/${pkgname}/"
+    install -Dm755 support/*.{sh,shlib} -t "${pkgdir}/opt/${pkgname}/support"
 
     # Desktop integration
     install -Dm 644 "support/icon.png" \
