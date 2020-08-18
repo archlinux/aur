@@ -87,6 +87,8 @@ package() {
   cd tarantool
   make install DESTDIR="$pkgdir"
 
+  sed 's|/var/run/|/run/|' -i "$pkgdir"/usr/lib/tmpfiles.d/tarantool.conf # https://github.com/tarantool/tarantool/issues/5227
+
   install -D -m644 $srcdir/tarantool.sysusers "$pkgdir/usr/lib/sysusers.d/tarantool.conf"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
