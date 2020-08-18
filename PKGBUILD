@@ -7,8 +7,8 @@
 pkgname=fanshim
 _name=fanshim
 pkgver=0.0.5
-pkgrel=1
-_scripthash="99151b84b975df72b4af34d71117885184e740db"
+pkgrel=2
+_scripthash="5a23a4661258db90ce347d2ba1e1ad284af6566c"
 pkgdesc="Automatic control of Pimoroni Fan Shim for Raspberry Pi."
 arch=('any')
 url="https://github.com/pimoroni/fanshim-python"
@@ -24,7 +24,7 @@ source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_
         'fanshim.service')
 
 sha512sums=('e81de34579c6d3312a4647fae3a11bae034769f28b3bdef01b2bf8a32fdd5e49900c8bf9a063f4875fb9a2880c5e54a70847d0a479254782500eda02f1b15979'
-            '35db868516da1d5ba5f4d337de3fa0c43b210d4b4a6e37efba45801e12f88c7c0e66d39c5307f98811f3268af2b2bc69a9cc476b8986abc699aed2ff0e6b0ae0'
+            '0a469afdb5f7d3f7b6a2e508ef98640fb21c93d4c6900dca2692641372c1fff33ae407ea070cfead21ee3d9cfc3cf85cef5802e3b1284cc9bb6fd236fb767ccc'
             '10bf465ab1d5d5a769ad2f656030cd6e9cf247efc0a7446797ae2df70bc10e91f1e0b5a478f68a46974a3aa84c01f35bd4119c17739b1bbb0cb98806382354e5')
 
 package() {
