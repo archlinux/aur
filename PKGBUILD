@@ -1,7 +1,7 @@
 # Maintainer: morpheusthewhite <zffromGerace@hotmail.it>
 
 pkgname=spicetify-themes-git
-pkgver=r5.7b1ab7a
+pkgver=r7.658997f
 pkgrel=1
 pkgdesc="A community-driven collection of themes for spicetify"
 arch=('any')
@@ -16,22 +16,21 @@ replaces=()
 backup=()
 options=()
 install=spicetify-themes-git.install
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/morpheusthewhite/spicetify-themes/archive/master.tar.gz")
+source=("$pkgname"::"git+https://github.com/morpheusthewhite/spicetify-themes")
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir"
+    cd "$srcdir"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	mkdir -p "${pkgdir}"/usr/share/spicetify-cli/Extensions
+    mkdir -p "${pkgdir}"/usr/share/spicetify-cli/Extensions
 
-	cp -R "$srcdir/${pkgname%-git}-master" "${pkgdir}"/usr/share/spicetify-cli/Themes
-	rm -r "${pkgdir}"/usr/share/spicetify-cli/Themes/README.md "${pkgdir}"/usr/share/spicetify-cli/Themes/LICENSE
+    cp -R "$srcdir/${pkgname}" "${pkgdir}"/usr/share/spicetify-cli/Themes
+    rm -r "${pkgdir}"/usr/share/spicetify-cli/Themes/README.md "${pkgdir}"/usr/share/spicetify-cli/Themes/LICENSE
 
     # for Dribbblish theme
-	cp -R "$srcdir/${pkgname%-git}-master/Dribbblish/dribbblish.js" "${pkgdir}"/usr/share/spicetify-cli/Extensions/dribbblish.js
+    cp -R "$srcdir/${pkgname}/Dribbblish/dribbblish.js" "${pkgdir}"/usr/share/spicetify-cli/Extensions/dribbblish.js
 }
-
