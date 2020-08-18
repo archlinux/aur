@@ -1,10 +1,11 @@
 pkgbase = fontship-git
 	pkgdesc = A font development toolkit and collaborative work flow
-	pkgver = 0.3.0.r6.gbabf954
+	pkgver = 0.3.1.r3.gfc3eb9d
 	pkgrel = 1
 	url = https://github.com/theleagueof/fontship
 	arch = any
 	license = AGPL3
+	depends = diffutils
 	depends = entr
 	depends = font-v
 	depends = gftools

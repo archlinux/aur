@@ -1,13 +1,14 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship-git
-pkgver=0.3.0.r6.gbabf954
+pkgver=0.3.1.r3.gfc3eb9d
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
 url="https://github.com/theleagueof/${pkgname%-git}"
 license=('AGPL3')
-depends=('entr'
+depends=('diffutils'
+         'entr'
          'font-v'
          'gftools'
          'git'
