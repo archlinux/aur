@@ -2,32 +2,32 @@
 # Contributor: Sergey Malkin  <adresatt@gmail.com>
 
 pkgname=nemu
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="ncurses interface for QEMU"
 arch=(i686 x86_64)
-url="https://bitbucket.org/PascalRD/nemu"
+url="https://github.com/nemuTUI/nemu"
 license=(BSD)
 depends=(qemu ncurses sqlite udev libusb)
 makedepends=(cmake)
-source=("$pkgname-$pkgver.tar.bz2::https://bitbucket.org/PascalRD/$pkgname/get/v$pkgver.tar.bz2"
+source=("$pkgname-$pkgver.tar.bz2::https://github.com/nemuTUI/nemu/archive/v${pkgver}.tar.gz"
 		"https://bitbucket.org/PascalRD/$pkgname/raw/1e73a64638ef804f0e241e89aeb31305eb4f602d/LICENSE")
-sha256sums=('28bd8b9bf591ec73b0bcf34f199617626d5e93961255ca0893eec9910b857742'
+sha256sums=('7b2bc1833b31fed61f02aa5490d382651b25e07cfd39d65b6a1ec399f1411928'
             '0853b096d8bc114f9e17a36939192982eb4440a15a00bb375a45bd6d27cd3210')
 
 prepare() {
-  cd "PascalRD-nemu-ddddcdf0cf9c"
-  mkdir build
+  cd "${pkgname}-${pkgver}"
+  install -d build
 }
 
 build() {
-  cd "PascalRD-nemu-ddddcdf0cf9c/build"
-  cmake ../
+  cd "${pkgname}-${pkgver}/build"
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd "PascalRD-nemu-ddddcdf0cf9c/build"
+  cd "${pkgname}-${pkgver}/build"
   make DESTDIR="$pkgdir/" install
   install -D -m644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
