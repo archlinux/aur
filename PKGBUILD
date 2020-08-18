@@ -3,7 +3,7 @@
 
 _pkgname=libertinus
 pkgname="otf-$_pkgname-git"
-pkgver=6.12.r3.gddf6c2f
+pkgver=7.000.r0.g2802fff
 pkgrel=1
 pkgdesc='The Libertinus font family, a fork of Linux Libertine and Biolinum with OpenType math'
 arch=('any')
@@ -11,42 +11,24 @@ url="https://github.com/alerque/$_pkgname"
 license=('OFL')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-_py_deps=('cffsubr'
-          'fonttools'
-          'fs'
-          'lxml'
-          'pcpp'
-          'skia-pathops'
-          'ufo2ft'
-          'ufolib2>=0.7.1')
-makedepends=('mupdf-tools'
-             'psautohint'
-             'python'
-             "${_py_deps[@]/#/python-}"
-             'sfd2ufo>=1.0.4'
-             'texlive-core')
+makedepends=('fontship')
 source=("$pkgname::git+$url")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$pkgname"
-  sed -i -e '/^DIST/s/=/?=/;/zip -rq/d' Makefile
+  git describe --long --tags --match="v[0-9]*" |
+    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "$pkgname"
-  make -j$(nproc)
-  make dist DIST=dist
+  fontship make
 }
 
 package() {
-  cd "$pkgname/dist"
+  cd "$pkgname"
   install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" "${_pkgname^}"*.otf
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt AUTHORS.txt
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md FONTLOG.txt documentation/*
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md preview.svg FONTLOG.txt documentation/*.pdf
 }
