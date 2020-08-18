@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-videos-git
-pkgver=r1325.b0e05b8
+pkgver=2.7.2.r11.g8606dfc5
 pkgrel=1
 pkgdesc='The Pantheon Video Player'
 arch=('x86_64')
@@ -11,7 +11,7 @@ groups=('pantheon-unstable')
 depends=('clutter' 'clutter-gst' 'clutter-gtk' 'gdk-pixbuf2' 'glib2' 'glibc'
          'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'libgee' 'libx11'
          'libgranite.so')
-makedepends=('git' 'granite-git' 'intltool' 'meson' 'vala')
+makedepends=('git' 'granite' 'intltool' 'meson' 'vala')
 provides=('pantheon-videos')
 conflicts=('pantheon-videos')
 source=('pantheon-videos::git+https://github.com/elementary/videos.git')
@@ -20,27 +20,16 @@ sha256sums=('SKIP')
 pkgver() {
   cd pantheon-videos
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-
-  arch-meson ../pantheon-videos
-  ninja
+  arch-meson pantheon-videos build
+  ninja -C build
 }
 
 package() {
-  cd build
-
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
