@@ -2,12 +2,13 @@
 
 pkgname=fontship
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
 url="https://github.com/theleagueof/$pkgname"
 license=('AGPL3')
-depends=('entr'
+depends=('diffutils'
+         'entr'
          'font-v'
          'gftools'
          'git'
