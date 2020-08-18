@@ -1,11 +1,11 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-security-privacy-git
-pkgver=r813.ef433d5
+pkgver=2.2.4.r11.gc8e422e
 pkgrel=1
 pkgdesc='Switchboard Security & Privacy Plug'
 arch=(x86_64)
-url=https://launchpad.net/switchboard-plug-security-privacy
+url=https://github.com/elementary/switchboard-plug-security-privacy
 license=(GPL3)
 depends=(
   glib2
@@ -22,9 +22,9 @@ depends=(
 )
 makedepends=(
   git
-  granite-git
+  granite
   meson
-  switchboard-git
+  switchboard
   vala
 )
 provides=(switchboard-plug-security-privacy)
@@ -34,8 +34,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd switchboard-plug-security-privacy
-
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' 
 }
 
 build() {
