@@ -9,6 +9,7 @@ _fragment=${FRAGMENT:-#branch=master}
 
 #some extra, unofficially supported stuff goes here:
 _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
+_CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
 pkgver=2.91.r98801.gb522e834ec3
