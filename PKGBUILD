@@ -3,10 +3,10 @@
 # Contributor: Samsagax <samsagax at gmail {dot} com>
 # Contributor : abbradar <nikoamia at gmail {dot} com>
 
-pkgname=bbswitch-dkms-git
+pkgname=bbswitch-dkms-g14-git
 _pkgname='bbswitch'
-pkgver=0.8.r0.g0c38f97
-pkgrel=4
+pkgver=0.8.r5.gddbd243
+pkgrel=1
 pkgdesc="kernel module allowing to switch dedicated graphics card on Optimus laptops, dkms version"
 arch=('i686' 'x86_64')
 url="http://github.com/Bumblebee-Project/bbswitch"
@@ -17,8 +17,10 @@ depends=('dkms' 'linux-headers')
 makedepends=('git')
 _gitroot='git://github.com/Bumblebee-Project/bbswitch.git'
 _gitbranch='develop'
-source=("${_gitroot}#branch=${_gitbranch}")
-sha256sums=("SKIP")
+source=("${_gitroot}#branch=${_gitbranch}"
+	"bbswitch-dkms-git-zephyrus14.patch")
+sha256sums=("SKIP"
+	    "SKIP")
 
 
 pkgver() {
@@ -35,7 +37,7 @@ prepare() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-
+  patch -p1 bbswitch.c ${srcdir}/bbswitch-dkms-git-zephyrus14.patch
   install -dm755 "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
   install -Dm644 Makefile bbswitch.c dkms/dkms.conf "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
 
