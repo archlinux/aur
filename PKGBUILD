@@ -5,7 +5,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=2020.07.1
+pkgver=2020.07.2.1
 pkgrel=1
 pkgdesc="Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch."
 arch=(x86_64)
@@ -23,13 +23,14 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
-_archivename=2020.07.1-current # patch releases don't follow the same format so we can't use $pkgver
+_archivename=2020.07.2.1-1-current # patch releases don't follow the same format so we can't use $pkgver
 source=(Waterfox-$_archivename.tar.gz::https://github.com/MrAlex94/Waterfox/archive/$_archivename.tar.gz
         $pkgname.desktop
 	bug1654465.diff)
-sha256sums=('71be464bd6c593245a237a43f2e125a4e7dd45f8f6c96528d478ce2af150bc42'
+sha256sums=('a43c42cd1169a3182bc9305bbdc4c0b41db00c7b8fa132153b9051f49b069609'
             '3c8a3e73ffcb4670ca25fc7087b9c5d93ebbef2f3be8a33cf81ae424c3f27fa3'
             '4d181c76060845048092724b2fc6f0c2aa76db543c9ba3490f313651de6bb97d')
+#_disable_pgo=y # uncomment this to disable building the profiled browser and using PGO
 
 prepare() {
   mkdir -p mozbuild
@@ -88,41 +89,57 @@ build() {
   CFLAGS="${CFLAGS/-fno-plt/}"
   CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
-  # Do 3-tier PGO
-  echo "Building instrumented browser..."
-  cat >.mozconfig ../mozconfig - <<END
+  # prevents references to $srcdir being included in error messages
+  # some references still remain in libxul.so and omni.ja
+  CFLAGS+=" -ffile-prefix-map=$srcdir=."
+  CXXFLAGS+=" -ffile-prefix-map=$srcdir=."
+
+  # supress warnings
+  CFLAGS+=" -w"
+  CXXFLAGS+=" -w"
+
+  if [[ -z $_disable_pgo ]]; then
+	# Do 3-tier PGO
+	echo "Building instrumented browser..."
+	cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-generate
 END
-  ./mach build
-  ./mach package
+	./mach build
+	./mach package
 
-  echo "Profiling instrumented browser..."
-  LLVM_PROFDATA=llvm-profdata \
-    JARLOG_FILE="$PWD/jarlog" \
-    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-    ./mach python build/pgo/profileserver.py
-  llvm-profdata merge -o merged.profdata *.profraw
+	echo "Profiling instrumented browser..."
+	LLVM_PROFDATA=llvm-profdata \
+				 JARLOG_FILE="$PWD/jarlog" \
+				 xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
+				 ./mach python build/pgo/profileserver.py
+	llvm-profdata merge -o merged.profdata *.profraw
 
-  if [[ ! -s merged.profdata ]]; then
-    echo "No profile data produced."
-    return 1
-  fi
+	if [[ ! -s merged.profdata ]]; then
+      echo "No profile data produced."
+      return 1
+	fi
 
-  if [[ ! -s jarlog ]]; then
-    echo "No jar log produced."
-    return 1
-  fi
+	if [[ ! -s jarlog ]]; then
+      echo "No jar log produced."
+      return 1
+	fi
 
-  echo "Removing instrumented browser..."
-  ./mach clobber
+	echo "Removing instrumented browser..."
+	./mach clobber
 
-  echo "Building optimized browser..."
-  cat >.mozconfig ../mozconfig - <<END
+	echo "Building optimized browser..."
+	cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto
 ac_add_options --enable-profile-use
 ac_add_options --with-pgo-profile-path=${PWD@Q}
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
+  else
+	echo "Building browser without PGO..."
+	cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto
+END
+  fi
   ./mach build
 }
 
