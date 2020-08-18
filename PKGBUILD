@@ -7,7 +7,7 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.2.24
+pkgver=1.2.25
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
@@ -80,7 +80,7 @@ SPIRV-Headers.git#commit=29c11140baaf9f7fdaa39a583672c556bf1795a1"
 #commit=ea3ba903faac98b64b2bf8de5e98cd97b335a474"
 "gn::https://chromium-gn.storage-download.googleapis.com/3523d50538357829725d4ed74b777a572ce0ac74"
 )
-sha256sums=('72018ed7752219f024ba1f1c96bf2b9bc88174648528f641277bec7a7fdca1da'
+sha256sums=('c5496ad159454b44e9b6c0f872553a192a7d20feeb6337a799c3f7009cdda558'
             'deaf646a615c79a4672b087562a09c44beef37e7acfc6f5f66a437d4f3b97a25'
             'SKIP'
             'SKIP'
@@ -173,6 +173,7 @@ build() {
     -DLAF_BACKEND=skia \
     -DSKIA_DIR="${srcdir}/skia" \
     -DSKIA_LIBRARY_DIR="${srcdir}/skia/out/Release-x64" \
+    -DSKIA_LIBRARY="${srcdir}/deps/skia/out/Release-x64/libskia.a" \
     -G Ninja \
     ..
 
