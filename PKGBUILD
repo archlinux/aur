@@ -26,13 +26,11 @@ behave==1.2.5
 jsonschema==2.5.1
 
 #setup.py
-[metadata]
-requires-dist =
-    python-dateutil>=2.1,<3.0.0
-    jmespath>=0.7.1,<1.0.0
-    docutils>=0.10,<0.16
-    urllib3>=1.20,<1.25.8; python_version=='3.4'
-    urllib3>=1.20,<1.26; python_version!='3.4'
+requires = [
+    'jmespath>=0.7.1,<1.0.0',
+    'docutils>=0.10,<0.16',
+    'python-dateutil>=2.1,<3.0.0',
+]
 
 
 if sys.version_info[:2] == (3, 4):
@@ -48,7 +46,7 @@ set -u
 _pyver="python"
 _pybase='botocore'
 pkgname="${_pyver}-${_pybase}-git"
-pkgver=1.15.45.r6694.g6c73c753d
+pkgver=1.17.44.r7044.g5986ae80c
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
@@ -82,7 +80,7 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('3b7dc218a8535918b53784beb0d36e231444e6f20475f50e262662bb38523cc8')
+sha256sums=('07e902e82963b98af99606fc58f2d04dfec5b2768209477ac1642c4ee1550574')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
