@@ -11,8 +11,8 @@ license=('MIT')
 depends=('python' 'python-j5')
 optdepends=('python-zoloto')
 makedepends=('python-setuptools' 'python-dephell')
-source=("https://api.github.com/repos/sourcebots/sbot/tarball/v0.8.0")
-sha512sums=('f17637ee2ae6c6ac2b3ad5a1aecd3cc2258bf0612c26983c5de8429bab82f0bb742c1ef2b3690a4d2186f0bb341544b128cac23285bf2be17a97dea4b525b25b')
+source=("")
+sha512sums=('')
 
 prepare() {
     cd $(ls ${srcdir} | grep sbot)
