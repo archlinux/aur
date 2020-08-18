@@ -2,6 +2,7 @@
 
 gpu_mem=64
 arm_64bit=1
+dtoverlay=dwc2
 
 device_tree=broadcom/bcm2711-rpi-4-b.dtb
 overlay_prefix=overlays/
