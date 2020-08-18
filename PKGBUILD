@@ -1,8 +1,9 @@
-# Maintainer: Federico Cassani <federico dot cassani at outlook dot com> 
+# Maintainer: Mufeed Ali <fushinari@protonmail.com>
+# Contributor: Federico Cassani <federico dot cassani at outlook dot com> 
 
 pkgname=python-wn
 _pkgname=wn
-pkgver=0.0.19
+pkgver=0.0.23
 pkgrel=1
 pkgdesc="Stand-alone WordNet API"
 arch=('any')
@@ -10,8 +11,8 @@ url='https://github.com/alvations/wordnet'
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/34/cc/45d03eb6defd1e96a3e35edd6032818f0318b2b4ff2f3cfffa3b675f1722/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('72f8259487a09d7716bce02cc4f1f1c79e9c102b5d2c4a0bc5e935e55ce71f59')
+source=("https://files.pythonhosted.org/packages/bc/f6/72db36e8afc977ae1a1cbb22afc77fd9b514e9bc6927ae8f4aae36665961/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('eee5b09a346600d2e33d6e69113a530283bbb422f04f9af6b277f2ca4ad514bd')
 
 build() {
     cd $srcdir/$_pkgname-$pkgver
