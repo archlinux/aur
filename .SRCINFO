@@ -13,7 +13,7 @@ pkgbase = buildaur
 	backup = etc/buildaur/buildaur.conf
 	backup = usr/share/buildaur/blacklist
 	source = buildaur.tar.gz::https://github.com/lxgr-linux/buildaur/archive/42.0.4.1.tar.gz
-	md5sums = 680f8ff6e2575cc2a83c9e73f235b206
+	md5sums = c06cf01f2ecb3ea29a70e0d8dfafc148
 
 pkgname = buildaur
 

@@ -11,7 +11,7 @@ makedepends=()
 backup=('etc/buildaur/buildaur.conf' 'usr/share/buildaur/blacklist')
 
 source=("${pkgname}.tar.gz"::"https://github.com/lxgr-linux/buildaur/archive/${pkgver}.tar.gz")
-md5sums=('680f8ff6e2575cc2a83c9e73f235b206')
+md5sums=('c06cf01f2ecb3ea29a70e0d8dfafc148')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
