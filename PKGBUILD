@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-desktop-git
-pkgver=r1039.473a199
+pkgver=2.8.4.r102.g7b966cc
 pkgrel=1
 pkgdesc='Switchboard Desktop Plug'
 arch=(x86_64)
@@ -22,10 +22,10 @@ depends=(
 )
 makedepends=(
   git
-  granite-git
+  granite
   libgexiv2
   meson
-  switchboard-git
+  switchboard
   vala
 )
 provides=(switchboard-plug-desktop)
@@ -36,7 +36,7 @@ sha256sums=(SKIP)
 pkgver() {
   cd switchboard-plug-desktop
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
