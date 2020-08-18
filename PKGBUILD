@@ -10,21 +10,21 @@ license=("custom:${pkgname}")
 provides=('codelobster-ide')
 options=('!strip')
 depends=('rtmpdump'
-				 'libxcomposite'
-				 'qt5-svg'
-				 'hicolor-icon-theme'
-				 'libxrandr'
-				 'libssh'
-				 'openssl-1.0'
-				 'qt5-webchannel'
-				 'qt5-location'
-				 'nss'
-				 'qt5-multimedia'
-				 'libxcursor')
+         'libxcomposite'
+         'qt5-svg'
+         'hicolor-icon-theme'
+         'libxrandr'
+         'libssh'
+         'openssl-1.0'
+         'qt5-webchannel'
+         'qt5-location'
+         'nss'
+         'qt5-multimedia'
+         'libxcursor')
 source=("${pkgname}-${pkgver}.rpm::http://codelobsteride.com/download/codelobsteride-${pkgver}-1.x86_64.rpm"
-				'LICENSE')
+        'LICENSE')
 sha256sums=('6f52b8249dcb57f1e6ac0a2d7537031fdcc188c6dd0e7ba7807fdc2c9cda47aa'
-						'SKIP')
+            'SKIP')
 
 package() {
  mv "${srcdir}/opt" "${pkgdir}"
