@@ -13,6 +13,7 @@ pkgbase = yirl-git
 	depends = sdl2
 	depends = sdl2_image
 	depends = sdl2_ttf
+	depends = sdl2_mixer
 	depends = glib2
 	source = git://github.com/cosmo-ray/yirl.git
 	sha256sums = SKIP
