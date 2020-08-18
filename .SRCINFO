@@ -1,15 +1,16 @@
 pkgbase = ddpt
 	pkgdesc = Variant of the standard 'dd' for SCSI/storage devices
-	pkgver = 0.95
+	pkgver = 0.96
 	pkgrel = 1
 	url = http://sg.danny.cz/sg/ddpt.html
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = sg3_utils
-	source = http://sg.danny.cz/sg/p/ddpt-0.95.tar.xz
-	sha1sums = 611cd93e6457abc7fc09f63ff7cb6e797ff74abd
-	sha256sums = 1bfd63c96d7da65164a7ee5f85c50eefe9bc336709036821d7f456329714669a
+	source = http://sg.danny.cz/sg/p/ddpt-0.96.tar.xz
+	md5sums = 4166b452421276d2a9b3d9071d4df7ad
+	sha1sums = 049322b132e99453d43af998f20700967361335f
+	sha256sums = 63e28a191568af0273624f5ed77428820fcc289b99aa604ac7682b2f98a143ca
 
 pkgname = ddpt
 
