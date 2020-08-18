@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libswitchboard-2.0.so' 'libgtop' )
-makedepends=('git' 'granite-git' 'meson' 'switchboard-git' 'vala')
+makedepends=('git' 'granite' 'meson' 'switchboard' 'vala')
 provides=('switchboard-plug-about')
 conflicts=('switchboard-plug-about')
 source=('git+https://github.com/elementary/switchboard-plug-about.git')
