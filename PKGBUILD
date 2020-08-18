@@ -20,7 +20,7 @@ depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 optdepends=('cuda: CUDA support in Cycles'
-            'optix: OptiX support in Cycles'
+            'optix=7.1.0: OptiX support in Cycles'
             'usd=20.05: USD export Scene'
             'openimagedenoise: Intel Open Image Denoise support in compositing')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'ninja' 'llvm')
