@@ -3,14 +3,14 @@
 _pkgname=garcon
 pkgname=${_pkgname}-devel
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of the freedesktop.org menu specification"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
 license=('LGPL')
 groups=('xfce4-devel')
 depends=('libxfce4ui>=4.15.2' 'libxfce4util>=4.15.2')
-makedepends=('intltool' 'python')
+makedepends=('intltool' 'python' 'gobject-introspection')
 replaces=('libxfce4menu')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
