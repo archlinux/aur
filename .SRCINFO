@@ -1,0 +1,14 @@
+pkgbase = python-apa102
+	pkgdesc = Push Notifications that work with just about every platform
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/pimoroni/apa102-python
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/apa102/apa102-0.0.3.tar.gz
+	sha256sums = ae73bdea26f027b57052ab990004ca8faa0f160d10bcacf5bd07e04769513cf9
+
+pkgname = python-apa102
+
