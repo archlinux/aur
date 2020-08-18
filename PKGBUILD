@@ -9,7 +9,7 @@
 pkgbase=handbrake-git
 pkgname=(handbrake-git handbrake-cli-git)
 pkgver=1.3.3.r11.gbb0e87129
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=(i686 x86_64)
 url="https://handbrake.fr/"
@@ -107,6 +107,8 @@ package_handbrake-cli-git() {
   pkgdesc="Multithreaded video transcoder (CLI)"
   depends=("${_commondeps[@]}")
   optdepends=('libdvdcss: for decoding encrypted DVDs')
+  provides=(handbrake-cli)
+  conflicts=(handbrake-cli)
 
   cd "$srcdir/handbrake/build"
   install -D HandBrakeCLI "$pkgdir/usr/bin/HandBrakeCLI"
