@@ -2,7 +2,7 @@
 
 _pkgname=zdict
 pkgname=python-$_pkgname
-pkgver=3.6.1
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="CLI dictionary framework mainly focus on any kind of online dictionary"
 arch=('any')
@@ -15,7 +15,7 @@ checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-flake8' 'python
 _completion_commit=8698dc733b3174f5aac319234fec60dfa380a87e
 source=("https://pypi.io/packages/source/z/zdict/$_pkgname-$pkgver.tar.gz"
         git+https://github.com/zdict/zdict.sh.git#commit=$_completion_commit)
-sha256sums=('59332d74820d53d16cf1d207ea8a5a01f105651aaa9ceb60d4ca9087a98b0628'
+sha256sums=('d2b3c00cf66515a601a8da3069608905691faa164225a6c09a7aca0ffc07d2bb'
             'SKIP')
 
 build() {
