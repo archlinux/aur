@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-music-git
-pkgver=r4012.af29a5ff
+pkgver=5.0.5.r37.gaf29a5ff
 pkgrel=1
 pkgdesc='The Pantheon Music Player'
 arch=(x86_64)
@@ -35,7 +35,7 @@ makedepends=(
   appstream
   git
   gobject-introspection
-  granite-git
+  granite
   intltool
   meson
   vala
@@ -55,7 +55,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd pantheon-music
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
