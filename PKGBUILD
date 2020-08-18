@@ -16,11 +16,10 @@ license=('MIT/X11')
 depends=("firefox")
 source=("https://addons.cdn.mozilla.net/user-media/addons/${_addon_id}/${_addon_filename}")
 noextract=("${_addon_filename}")
-sha256sums=('65b9b0fb5af16aa1017b739bcaed515dbf8ff08fc95f63325aee22d1f1dfb56f')
+sha256sums=('392ef6ff878f4969bf753801a4e99f19ff2108e2d9c978e2d5570c8b13e0a2ac')
 
 
 package() {
     cd "${srcdir}"
     install -Dm644 "${_addon_filename}" "${pkgdir}/usr/lib/firefox/browser/extensions/${_gecko_id}.xpi"
 }
-sha256sums=('392ef6ff878f4969bf753801a4e99f19ff2108e2d9c978e2d5570c8b13e0a2ac')
