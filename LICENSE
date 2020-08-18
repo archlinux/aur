@@ -1,0 +1,76 @@
+EULA - End User License Agreement
+
+End-User License Agreement for CodeLobster IDE("Software")
+Copyright (c) 2017-2020 CodeLobster Software
+All Rights Reserved.
+
+BY DOWNLOADING AND/OR IMPLEMENTING THIS SOFTWARE YOU AGREE TO THE FOLLOWING LICENSE:
+
+DEFINITIONS
+
+"You" and "Licensee" refers to the person, entity or organization which is using the Software known as "CodeLobster IDE", and any successor or assignee of same.
+"CodeLobster IDE" refers to CodeLobster and its successors, or manufacturer and owner of this Software.
+
+AGREEMENT
+
+After reading this agreement carefully, if you ("Customer") do not agree to all of the terms of this agreement, you may not use this Software. Unless you have a different license agreement signed by CodeLobster Software that covers this copy of the Software, your use of this Software indicates your acceptance of this license agreement and warranty. All updates to the Software shall be considered part of the Software and subject to the terms of this Agreement. Changes to this Agreement may accompany updates to the Software, in which case by installing such update Customer accepts the terms of the Agreement as changed. The Agreement is not otherwise subject to addition, amendment, modification, or exception unless in writing signed by an officer of both Customer andCodeLobster.
+If you do not wish to agree to the terms of this Agreement, do not install or use this Software.
+
+1. OWNERSHIP OF SOFTWARE AND COPYRIGHTS.
+
+The Software is copyrighted and protected by the laws of the United States and other countries, and international treaty provisions. You may not remove any copyright notices from the Software.
+CodeLobster may make changes to the Software at any time without notice, but is not obligated to support or update the Software.
+Except as otherwise expressly provided, CodeLobster Software grants no express or implied right under CodeLobster Software patents, copyrights, trademarks, or other intellectual property rights. You may transfer the Software only if the recipient agrees to be fully bound by these terms and if you retain no copies of the Software.
+
+2. GRANT OF LICENSE AND PROHIBITIONS.
+
+Title to all copies of the Software remains with CodeLobster Software.
+This Software is licensed to you. You are not obtaining title to the Software or any copyrights. You may not sublicense, rent, lease, convey, translate, decompile, or disassemble the Software for any purpose.
+The license may be transferred to another Licensee if you keep no copies of the Software. Permission must be obtained before mirroring or redistributing the evaluation copies of the Software.
+You may not convert this Software or its parts to a different computer language or environment, either manually, or using an automated conversion tool, such that this Software or any modification thereof will run under any language, software, or program other than implemented by CodeLobster Software. You agree that any modifications made to this Software belong to CodeLobster Software and are permitted for your exclusive use during the period of this License Agreement, and may not be transferred, sold or licensed to another entity.
+
+3. USE AND DEMO VERSION.
+
+You may install and use one copy of this Software on one client computer for software development purposes. Subsequent installations require you to obtain additional licenses unless you are transferring this Software to another computer.
+You may not network this Software or otherwise use it on more than one computer or computer terminal at one time.
+You may not lease or otherwise rent the Software, but you may transfer the Software and accompanying written materials on a permanent basis provided the recipient agrees to the terms of this Agreement.
+You may not sublicense or permit simultaneous use of the Software by more than one user.
+This demo version differs from the registered version in the clip and images creation result,
+all clips and images created by demo version will be marked as a demo product.
+Warning or Please note: After buying CodeLobster IDE you can register it only 3 times!!!
+
+4. LIMITED WARRANTY.
+
+THE SOFTWARE IS PROVIDED AS IS AND CODELOBSTER SOFTWARE DISCLAIMS ALL WARRANTIES RELATING TO THIS SOFTWARE, WHETHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+5. LIMITATION ON CONSEQUENTIAL DAMAGES.
+
+NEITHER CODELOBSTER SOFTWARE NOR ANYONE INVOLVED IN THE CREATION, PRODUCTION, OR DELIVERY OF THIS SOFTWARE SHALL BE LIABLE FOR ANY INDIRECT, CONSEQUENTIAL, OR INCIDENTAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE SUCH SOFTWARE EVEN IF CODELOBSTER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES OR CLAIMS. IN NO EVENT SHALL CODELOBSTER'S LIABILITY FOR ANY DAMAGES EXCEED THE PRICE PAID FOR THE LICENSE TO USE THE SOFTWARE, REGARDLESS OF THE FORM OF CLAIM. THE PERSON USING THE SOFTWARE BEARS ALL RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE.
+IN NO EVENT WILL CODELOBSTER SOFTWARE BE LIABLE FOR ANY AMOUNT GREATER THAN WHAT YOU ACTUALLY PAID FOR THE SOFTWARE.
+
+6. TERMINATION.
+
+This Agreement is effective until terminated.
+This Agreement terminates on the date of the first occurrence of either of the following events: (1) The expiration of one month from written notice of termination from Customer to CodeLobster Software; or (2) At any time if you violate the terms of this Agreement.
+Upon termination you shall destroy the written materials and all copies of the Software, including modified copies, if any.
+You agree that monetary damages alone is not an adequate and just relief resulting from any breach of this License, that a court order prohibiting any further breach of this License is necessary to prevent further damages, and that you will not oppose any reasonable request for a temporary restraining order, preliminary injunction, or other relief sought by CodeLobster in the event of a breach of this License.
+CodeLobster shall not be required to notify you of any breach, nor make any demand or claim against you resulting from any such breach, or for a demand to stop any use or distribution in violation of the terms of this License, and you agree that any breach of this License and damages resulting therefrom shall relate back to the first and earliest breach thereof. Failure of CodeLobster to enforce its rights pursuant to this License shall not constitute a waiver of such rights, and shall not prejudice CodeLobster Software in any later enforcement of its rights or rights to seek damages therefrom.
+
+7. UPGRADES.
+
+If you acquired this Software as an upgrade of a previous version, this Agreement replaces and supercedes any prior Agreements. You may continue to use the previous version of the Software, provided that both the previous version and the upgrade are installed on the same computer at all times. You may not have a previous version and the related upgrade version installed on separate computers at any time.
+
+8. ENTIRE AGREEMENT
+
+This End-User Agreement is the entire agreement between you and CodeLobster Software relating to the Licensed Software, and supercedes all prior written or oral statements, promises, representations and agreements.
+
+9. GOVERNING LAW.
+
+The agreement shall be governed by the laws of the State of California. Any action or proceeding brought by either party against the other arising out of or related to this agreement shall be brought only in a state or federal court of competent jurisdiction located in San Mateo County, California. The parties hereby consent to the personal jurisdiction of such courts.
+
+10. U.S. GOVERNMENT RESTRICTED RIGHTS. This Software is provided with RESTRICTED RIGHTS. Use, duplication, or disclosure by the Government is subject to restrictions as set forth in subparagraph (c)(1)(ii) of the Rights in Technical Data and Computer Software clause at DFARS 252.227-7013 or subparagraphs (c)(1) and (2) of the Commercial Computer Software -- Restricted Rights clause at 48 CFR 52.227-19, as applicable. Contractor is:
+
+CodeLobster Software
+
+web: http://www.codelobsteride.com
+e-mail: support@codelobster.com 
