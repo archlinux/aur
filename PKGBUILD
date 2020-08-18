@@ -3,11 +3,11 @@
 # Contributor: Samsagax <samsagax at gmail {dot} com>
 # Contributor : abbradar <nikoamia at gmail {dot} com>
 
-pkgname=bbswitch-dkms-g14-git
+pkgname=bbswitch-g14-dkms-git
 _pkgname='bbswitch'
 pkgver=0.8.r5.gddbd243
 pkgrel=1
-pkgdesc="kernel module allowing to switch dedicated graphics card on Optimus laptops, dkms version"
+pkgdesc="kernel module allowing to switch dedicated graphics card on the Zephyrus G14, dkms version"
 arch=('i686' 'x86_64')
 url="http://github.com/Bumblebee-Project/bbswitch"
 license=('GPL')
