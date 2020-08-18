@@ -21,20 +21,21 @@ sha256sums=('8219b42cb56fc07b2aa660574e6211ac38eefdbf21f41b698d3348793ba5d8f7'
             '74d6a02b97a17fffddcc0a3dc830e811348b1f6c6b84f867882c776d50f00ea4')
 
 prepare() {
-    cp "$srcdir"/configure.local $pkgname-$pkgver
+    cd "$pkgname-$pkgver"
+    cp "$srcdir"/configure.local .
 
     # fix configure script - see https://aur.archlinux.org/packages/mandoc/#comment-739085
-    sed -i -e 's/^CC=.*/CC=cc/' $pkgname-$pkgver/configure
+    sed -i -e 's/^CC=.*/CC=cc/' ./configure
 }
 
 build() {
-    cd $pkgname-$pkgver
+    cd "$pkgname-$pkgver"
     ./configure
     make
 }
 
 package() {
-    cd $pkgname-$pkgver
+    cd "$pkgname-$pkgver"
     DESTDIR="$pkgdir" make install
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
