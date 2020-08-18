@@ -1,44 +1,27 @@
 # Maintainer: Artemii Bigdan <reverse ni.nadgib@metra>
 pkgname=fakecam
 pkgver=0.0
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="A fake webcam provider to stream custom video"
 arch=('i686' 'x86_64')
-url=""
 license=('MIT')
 groups=()
 depends=(
 	'v4l2loopback-dkms'
 	'gtk3'
-	'grep'
-	'sed'
-	'coreutils'
 	'polkit'
-	'bash'
 )
 makedepends=(
 	'go'
 )
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=(
-	"fakecam-cli.zip::https://github.com/UQuark0/fakecam-cli/archive/v$pkgver.zip"
-	"fakecam-gui.zip::https://github.com/UQuark0/fakecam-gui/archive/v$pkgver.zip"	
+	"fakecam-cli-v$pkgver.zip::https://github.com/UQuark0/fakecam-cli/archive/v$pkgver.zip"
+	"fakecam-gui-v$pkgver.zip::https://github.com/UQuark0/fakecam-gui/archive/v$pkgver.zip"	
 )
-noextract=()
 sha256sums=(
 	"682410da3ec34ac7d3415096f4deeb4620bd95c8dbc86c28bc1c80c419400833"
 	"205612773dbde6197e32c417f3d008847c6b61f8b3e3436bff2d1ede14822c68"
 )
-validpgpkeys=()
 
 build() {
 	cd "$srcdir"
@@ -62,4 +45,8 @@ package() {
 	mkdir -p "$pkgdir/usr/bin"
 	mv "fakecam-cli-$pkgver/fakecam-cli" "$pkgdir/usr/bin"
 	mv "fakecam-gui-$pkgver/fakecam-gui" "$pkgdir/usr/bin"
+
+	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+	mv "fakecam-cli-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/cli"
+	mv "fakecam-gui-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/gui"
 }
