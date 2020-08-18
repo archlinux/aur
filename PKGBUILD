@@ -5,7 +5,7 @@
 
 pkgname=distcc-git
 _pkgname=distcc
-pkgver=v3.3.3.r21.gc9d4259
+pkgver=v3.3.3.r33.g10addba
 pkgrel=1
 pkgdesc='Distributed C, C++ and Objective-C compiler, git version'
 arch=('x86_64')
@@ -20,10 +20,12 @@ backup=('etc/conf.d/distccd'
         'etc/distcc/hosts')
 source=("git://github.com/distcc/distcc.git"
         'distccd.conf.d'
-        'distccd.service')
-sha256sums=('SKIP'
-            '43e02b461841ca2976816c244a0eca8b24820ca143f73cc0924403d75a8c012f'
-            '0f18ffb58647eeba643f28e9029a5d307100df3470eb228097f2b3f4196d8098')
+        'distccd.service'
+        'sysusers.conf')
+b2sums=('SKIP'
+        'c48a6daea2cae5e5865c488e612c819e6f9bf4a1b205e2cd264b795de3450d40b0fe05264fbd8a3fe861f03e38d91e7e791ad67e22da5b5d0b43bcb380b8b4c9'
+        '9b6ffc02e9360fd92f7595e96ef2d69b5f6d72acf343009375fa081f86b26f51960b139c4f6e0e3c8befa37eba4894d61351bbfab6386389c262db0cc01a8b8e'
+        'd1b057ce49994ac61e9d5a861c1c770452102300d47a9c396b3272d7f5afbd3fe3e865e6db11c046e73ae3b6886bc8970a10624650731d55132362436904f989')
 pkgver() {
   cd "$_pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -80,6 +82,9 @@ package() {
     # Needed for makepkg to work
     ln -sf "../../../bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/bin/$bin"
   done
+
+ # FS#67629
+ install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/distccd.conf"
 }
 
 # getver: distcc.org
