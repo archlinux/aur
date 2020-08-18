@@ -1,0 +1,14 @@
+pkgbase = update-motd
+	pkgdesc = compliments pam_motd in libpam-modules
+	pkgver = 3.6
+	pkgrel = 0
+	url = https://launchpad.net/update-motd
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	depends = show-motd
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/update-motd_3.6-0ubuntu7_all.deb
+	md5sums = c3b5630023e3b08a99070e414eed8e8e
+
+pkgname = update-motd
+
