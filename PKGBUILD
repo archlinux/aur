@@ -1,6 +1,6 @@
 # Maintainer: Quentin Boyer <(firstname) at familleboyer DOT net>
 pkgname=nextpass
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='CLI client for nextcloud passwords'
 arch=('x86_64' 'aarch64' 'armv7')
