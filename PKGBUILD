@@ -1,7 +1,7 @@
 # Maintainer: Artemii Bigdan <reverse ni.nadgib@metra>
 pkgname=fakecam
 pkgver=0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fake webcam provider to stream custom video"
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -10,6 +10,7 @@ depends=(
 	'v4l2loopback-dkms'
 	'gtk3'
 	'polkit'
+	'ffmpeg'
 )
 makedepends=(
 	'go'

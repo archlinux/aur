@@ -1,7 +1,7 @@
 pkgbase = fakecam
 	pkgdesc = A fake webcam provider to stream custom video
 	pkgver = 0.0
-	pkgrel = 2
+	pkgrel = 3
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = fakecam
 	depends = v4l2loopback-dkms
 	depends = gtk3
 	depends = polkit
+	depends = ffmpeg
 	source = fakecam-cli-v0.0.zip::https://github.com/UQuark0/fakecam-cli/archive/v0.0.zip
 	source = fakecam-gui-v0.0.zip::https://github.com/UQuark0/fakecam-gui/archive/v0.0.zip
 	sha256sums = 682410da3ec34ac7d3415096f4deeb4620bd95c8dbc86c28bc1c80c419400833
