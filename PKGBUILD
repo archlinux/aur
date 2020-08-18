@@ -9,7 +9,7 @@
 pkgbase=handbrake-full
 pkgname=(handbrake-full handbrake-full-cli)
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=(i686 x86_64)
 url="https://handbrake.fr/"
@@ -101,6 +101,8 @@ package_handbrake-full() {
 package_handbrake-full-cli() {
   pkgdesc="Multithreaded video transcoder (CLI)"
   depends=("${_commondeps[@]}")
+  provides=(handbrake-cli)
+  conflicts=(handbrake-cli)
 
   cd "$srcdir/handbrake/build"
   install -D HandBrakeCLI "$pkgdir/usr/bin/HandBrakeCLI"
