@@ -13,7 +13,7 @@ pkgbase = hunspell-gl
 	provides = hunspell-gl
 	conflicts = hunspell-gl
 	source = hunspell-gl.tar.bz2::https://gitlab.com/proxecto-trasno/hunspell-gl/-/archive/20.08/hunspell-gl-20.08.tar.bz2
-	md5sums = 9355f8752e2ae5a3ce7b8dd574f2dced
+	md5sums = 3530407085f8fc49bd3bd5f5488be565
 
 pkgname = hunspell-gl
 
