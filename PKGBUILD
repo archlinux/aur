@@ -20,17 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-# Maintainer: Your Name <sonotsugipaa@gmail.com>
+# Maintainer: Parola Marco <mark.prl.97@gmail.com>
 pkgname=ndd-git
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A simple command-line number representation converter"
 arch=('any')
 url="https://github.com/Sonotsugipaa/ndd"
 license=('custom:MIT')
 makedepends=('git' 'gcc' 'cmake' 'sudo')
-source=('https://github.com/Sonotsugipaa/ndd/archive/v1.1.tar.gz#43710bf')
-md5sums=('1a361b4b4a8f26468708788a6b312953')
+source=('https://github.com/Sonotsugipaa/ndd/archive/v1.2.tar.gz#beb7de4')
+md5sums=('542c99eceb3ef67a1b2f32ccfb9363a0')
 
 build() {
         echo "CD IN '$srcdir/${pkgname%-git}'" 1>&2
