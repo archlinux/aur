@@ -37,5 +37,5 @@ make
 }
   
 package() {
-    make -C ffmpeg DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install
 }
