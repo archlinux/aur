@@ -11,7 +11,7 @@ makedepends=('scons' 'python-pyicu' 'qt5-webengine')
 provides=($pkgname)
 conflicts=($pkgname)
 source=("${pkgname}.tar.bz2::https://gitlab.com/proxecto-trasno/hunspell-gl/-/archive/${pkgver}/hunspell-gl-${pkgver}.tar.bz2")
-md5sums=('9355f8752e2ae5a3ce7b8dd574f2dced')
+md5sums=('3530407085f8fc49bd3bd5f5488be565')
 
 prepare() {
   mkdir -p "$srcdir/$pkgname" && tar xfz "$pkgname.tar.bz2" -C "$pkgname" --strip-components 1
