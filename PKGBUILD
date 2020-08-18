@@ -1,9 +1,9 @@
 pkgname=lpcscrypt
-pkgver=2.1.0.842
+pkgver=2.1.1.15
 pkgrel=0
 pkgdesc="Programming tool for LPC1800 and LPC4000 series microcontrollers"
 arch=('x86_64')
-url="https://www.nxp.com/support/developer-resources/software-development-tools/lpc-developer-resources-/lpc-microcontroller-utilities/lpcscrypt-v2.0.0:LPCSCRYPT"
+url="https://www.nxp.com/design/microcontrollers-developer-resources/lpc-microcontroller-utilities/lpcscrypt-v2-1-1:LPCSCRYPT"
 license=('proprietary')
 makedepends=(libarchive unmakeself)
 depends=(dfu-util libutil-linux)
@@ -14,7 +14,7 @@ _pkgver_rel=${pkgver##*.}
 _pkgver_u=${_pkgver_main}_${_pkgver_rel}
 _src="$pkgname-$_pkgver_u.x86_64.deb.bin"
 source=("https://www.nxp.com/downloads/en/software/$_src")
-sha384sums=('665d6ae03ce3ac9bbbaeb975bbd9ef65eaeb44e7cc3073cc9027bbe9ba43104cf81736d50916ddce230d56c4c9eb4db4')
+sha384sums=('990a784e98b0cd00f9b1e308a3a4caab0458a0fb8d72214448a28a74e97966291176a3f579d173001e383aa21728e4b6')
 
 prepare() {
     mkdir -p $pkgname-$_pkgver_u
