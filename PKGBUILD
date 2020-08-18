@@ -6,6 +6,7 @@
 # Configuration.
 _fragment=${FRAGMENT:-#branch=master}
 [[ -v CUDA_ARCH ]] && _CUDA_ARCH=(${CUDA_ARCH})
+((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
 
 #some extra, unofficially supported stuff goes here:
 _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
