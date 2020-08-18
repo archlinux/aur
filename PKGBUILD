@@ -3,7 +3,7 @@
 
 pkgname="trougnouf-backgrounds"
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wallpapers made of photographs posted by User:Trougnouf on Wikimedia Commons, with GNOME integration and transitions built-in to match the time pictures were taken"
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
@@ -51,11 +51,11 @@ _images=(
 
 
 _stimes=(
-    6000 # 3h46 to 5h26 = 100 minutes       Stuor_Dáhtá_lake_along_the_Kungsleden_trail_during_golden_hour_in_Kvikkjokk-Kabla_fjällurskog_(DSCF2557).jpg
+    7800 # 3h46 to 5h56 = 130 minutes       Stuor_Dáhtá_lake_along_the_Kungsleden_trail_during_golden_hour_in_Kvikkjokk-Kabla_fjällurskog_(DSCF2557).jpg
     7560 # 5h56 to 8h02 = 126 minutes       Mont_des_Arts_during_morning_civil_twilight_(DSCF7450).jpg
     960  # 8h02 to 8h18 = 16 minutes        1987,_European_year_of_the_environment_at_Place_Schuman_by_Fred_Bellefroid_and_Herman_Dottermans_(DSCF7552).jpg
     7080 # 8h18 to 10h16 = 118 minutes      Tent_camping_along_the_Sulayr_trail_in_La_Taha,_Sierra_Nevada_National_Park_(DSCF5147).jpg
-	7500 # 10h16 to 12h21 = 135 minutes     Inside_an_abandoned_military_building_in_Fort_de_la_Chartreuse,_Liege,_Belgium_(DSCF3343).jpg
+	7500 # 10h16 to 12h21 = 125 minutes     Inside_an_abandoned_military_building_in_Fort_de_la_Chartreuse,_Liege,_Belgium_(DSCF3343).jpg
 	600  # 12h21 to 12h31 = 10 minutes      Lemonnier_premetro_station_rails_tunnel_in_Brussels,_BE_(DSCF5655).jpg
 	2160 # 12h31 to 13h07 = 36 minutes      Pears_covered_in_snow_at_Marché_de_Boitsfort_(Belgium).jpg
 	2580 # 13h07 to 13h50 = 43 minutes      Fagne_Tirifaye_with_the_Hill_river_in_Waimes,_Belgium_(DSCF3679).jpg
@@ -64,7 +64,7 @@ _stimes=(
 	1080 # 14h20 to 14h38 = 18 minutes      Snowy_trees_on_the_GR-16_between_Membre_and_Vresse-sur-Semois_(DSCF4800).jpg
 	1080 # 14h38 to 14h56 = 18 minutes      Pipes_in_the_water_treatment_plant_of_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3276).jpg
 	2040 # 14h56 to 15h30 = 34 minutes      Water_treatment_plant_in_an_abandoned_steel_factory_in_Oupeye,_Belgium_(DSCF3285).jpg
-	780  # 15h30 to 16h43 = 13 minutes      A_tree_South_of_Doel,_Belgium_(DSCF3811).jpg
+	780  # 15h30 to 15h43 = 13 minutes      A_tree_South_of_Doel,_Belgium_(DSCF3811).jpg
 	2280 # 15h43 to 16h21 = 38 minutes      The_village_of_Bubiòn_viewed_from_Plaza_Vieja_in_Capileira_(DSCF5824).jpg
 	840  # 16h21 to 16h35 = 14 minutes      Lac_de_Virelles_(frozen),_Chimay_(DSC_0251).jpg
 	2220 # 16h35 to 17h12 = 37 minutes      Street_art_in_the_tunnel_at_Rue_des_Tanneurs_under_the_railway_(Brussels,_Belgium).jpg
@@ -83,7 +83,7 @@ _stimes=(
 	1980 # 21h11 to 21h44 = 33 minutes      Western_moose_in_the_Bowron_Slough_(DSCF4301).jpg
 	2400 # 21h44 to 22h24 = 40min           Civil_twilight_sunset_over_Sandy_Lake_(DSCF2996).jpg
 	1320 # 22h24 to 22h46 = 22min           Nautical_twilight_sunset_over_Sandy_Lake_(DSCF3005).jpg
-	3780 # 22h46 to 23h47 = 61 minutes      Antwerpen-Centraal_railway_station_platform_21,_Belgium_(DSCF4760).jpg
+	3660 # 22h46 to 23h47 = 61 minutes      Antwerpen-Centraal_railway_station_platform_21,_Belgium_(DSCF4760).jpg
 	120 # 23h47 to 23h49 = 2 minutes        Ausulsjokk stream during golden hour (DSCF3045-DSCF3072).jpg
 	14220 # 23h49 to 3h46 = 237 min         Campsite_38_in_Bowron_Lake_Provincial_Park_at_night_(DSCF3026).jpg
 )
@@ -135,12 +135,12 @@ echo "
 <!-- Author: trougnouf (Benoit Brummer), license: CC-BY-SA -->
 <background>
   <starttime>
-    <year>2018</year>
-    <month>01</month>
-    <day>29</day>
-    <hour>10</hour>
-    <minute>16</minute>
-    <second>32</second>
+    <year>2019</year>
+    <month>07</month>
+    <day>09</day>
+    <hour>3</hour>
+    <minute>46</minute>
+    <second>55</second>
   </starttime>" > "${pkgdir}/usr/share/backgrounds/trougnouf/trougnouf-timed.xml"
 for i in `seq 0 $[${#_images[@]}-1]`
 do
