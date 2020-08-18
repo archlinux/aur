@@ -1,14 +1,14 @@
-pkgbase = fet.sh
+pkgbase = fet.sh-git
 	pkgdesc = A simple fetch written in POSIX shell without any external commands
-	pkgver = 1.2
+	pkgver = 1.2.r1.gd336d54
 	pkgrel = 1
 	url = https://github.com/6gk/fet.sh
 	arch = any
 	license = ISC
 	makedepends = git
 	provides = fet.sh
-	source = fet.sh::git+https://github.com/6gk/fet.sh
+	source = fet.sh-git::git+https://github.com/6gk/fet.sh
 	md5sums = SKIP
 
-pkgname = fet.sh
+pkgname = fet.sh-git
 
