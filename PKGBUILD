@@ -2,8 +2,8 @@
 
 _pkgname=Jellyamp
 pkgname=jellyamp-appimage
-pkgver=0.9.6
-pkgrel=1
+pkgver=0.9.7
+pkgrel=2
 pkgdesc="A stylish, cross-platform desktop client for listening to music from a Jellyfin server. Inspired by Plexamp."
 provides=('jellyamp')
 conflicts=('jellyamp')
@@ -17,8 +17,6 @@ source=("${_appimage}::https://github.com/m0ngr31/jellyamp/releases/download/v${
                "https://raw.githubusercontent.com/m0ngr31/jellyamp/v${pkgver}/LICENSE"
        )
 noextract=("${_appimage}")
-sha256sums=('54ca6e39c329cc6a1f4b21ff56148588810af8ffe23fcb54dbe657556a99df93'
-            'b801c8d677ef9701149e05cf98f28b82a56832dd67c94d96d36d25d063b1b353')
 
 prepare() {
     chmod +x "${_appimage}"
@@ -54,3 +52,6 @@ package() {
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
     ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
+
+md5sums=('3b8b14977134f9c6034eaf67875e82f1'
+         'f320c21f36aa4854c516c2393ba9de69')
