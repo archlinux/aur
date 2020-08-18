@@ -1,13 +1,13 @@
 pkgbase = prysm
 	pkgdesc = go implementation of the Ethereum 2.0 blockchain
-	pkgver = 1.0.0_alpha.22
+	pkgver = 1.0.0_alpha.23
 	pkgrel = 1
 	url = https://prysmaticlabs.com/
 	arch = x86_64
 	license = GPLv3
 	makedepends = go
 	options = emptydirs
-	source = git+https://github.com/prysmaticlabs/prysm.git#tag=v1.0.0-alpha.22
+	source = git+https://github.com/prysmaticlabs/prysm.git#tag=v1.0.0-alpha.23
 	source = prysm-validator@.service
 	source = prysm-beacon-chain.service
 	source = prysm-slasher.service
