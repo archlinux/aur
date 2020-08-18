@@ -1,0 +1,20 @@
+pkgbase = airwindows-git
+	pkgdesc = Airwindows plugins are modular, graphic-less, stripped-down, VST plugins for Mac and PC
+	pkgver = r130.0d16be1
+	pkgrel = 1
+	url = https://www.airwindows.com/
+	arch = x86_64
+	groups = vst-plugins
+	groups = pro-audio
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = steinberg-vst36
+	provides = airwindows
+	source = git+https://github.com/airwindows/airwindows.git
+	source = https://raw.githubusercontent.com/magnetophon/airwindows/master/plugins/LinuxVST/include/vstsdk/CMakeLists.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = airwindows-git
+
