@@ -3,7 +3,7 @@
 
 pkgname=libwacom-surface
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched libwacom for Microsoft Surface devices"
 arch=('x86_64')
 url="https://github.com/linux-surface/libwacom"
@@ -15,24 +15,32 @@ conflicts=('libwacom')
 provides=("libwacom=${pkgver}")
 
 source=(
-    '0001-Add-support-for-Intel-Management-Engine-bus.patch'
-    '0002-data-Add-Microsoft-Surface-Pro-4.patch'
-    '0003-data-Add-Microsoft-Surface-Pro-5.patch'
-    '0004-data-Add-Microsoft-Surface-Pro-6.patch'
-    '0005-data-Add-Microsoft-Surface-Book.patch'
-    '0006-data-Add-Microsoft-Surface-Book-2-13.5.patch'
-    '0007-data-Add-Microsoft-Surface-Book-2-15.patch'
-    '0008-data-Add-Microsoft-Surface-Go.patch'
+    '0001-Add-support-for-BUS_VIRTUAL.patch'
+    '0002-Add-support-for-Intel-Management-Engine-bus.patch'
+    '0003-data-Add-Microsoft-Surface-pro-4.patch'
+    '0004-data-Add-Microsoft-Surface-pro-5.patch'
+    '0005-data-Add-Microsoft-Surface-pro-6.patch'
+    '0006-data-Add-Microsoft-Surface-pro-7.patch'
+    '0007-data-Add-Microsoft-Surface-Book.patch'
+    '0008-data-Add-Microsoft-Surface-Book-2-13.5.patch'
+    '0009-data-Add-Microsoft-Surface-Book-2-15.patch'
+    '0010-data-Add-Microsoft-Surface-Book-3-13.5.patch'
+    '0011-data-Add-Microsoft-Surface-Book-3-15.patch'
+    '0012-data-Add-Microsoft-Surface-Go.patch'
     "https://github.com/linuxwacom/libwacom/releases/download/libwacom-${pkgver}/libwacom-${pkgver}.tar.bz2"{,.sig}
 )
-sha256sums=('2bb41c3b1b23670c5f5ccf2fbb851827b6fbcaa8cead8f56de571a740e4e21b2'
-            'c728251446d677df44635e2329fe9cb31077b500e587fd505c7b2b5fe5d15a60'
-            'd75087e2bcb05f373609c2f4e8ca114fd681ebed2234624aaca265bb7f1a9c17'
-            '6fdae3834af15bcb68917eb2a3fd29bb7fd384025c7226659681b6f030f65f1f'
-            '2a0c08be2b3273bd439bac0b373e20335631e29591f2d6cd8b33ad7fce142e3c'
-            '2e482b9cf1f5f1308ca4a2f38aea0874cea0cee7fb52897c738d31570c73d07e'
-            '15ed034d7e359a59051ec2d8f0d2508bf725ec42f8499209de8f2ecba4eeef82'
-            '7b66af8c01423d5c7b93ddb1b77910c6be91e8a332cc16f3c42ff7ac3ab7ddfb'
+sha256sums=('140de2c9ed7350248f20137942f46c48c84468b1e82169cea3c56c211199c461'
+            'a41bab123588c5c67c8a05e01338b13f13c59f29695084cd9b6ce8e585e82a3a'
+            '73d4cfd588a568775fe2a6d859a7223c48b6c17e8ccde7e3691b7ab30f9fefe6'
+            'ca2f7a787ac80abcf9cb022ee87c2923ab6636e9fad181b9d6c28d153c046ea3'
+            'b49f60e700d1cce47d59145ad86df4a50a57b1ea577d4958c18252a40fd3c2d9'
+            '1b58b993a57669bba910794df7949c77af281813c56edb7eee9205744003fd26'
+            '5041c7c8b216d223f5e33773fcd430d36ca4ca67b9ee9c7ace6bfb077c20e9b9'
+            '4478ba5fdfb032e5841f29d16ad01711a6ad3d426bccf22f2c0901621987f999'
+            '5a039a3633523297f1aa34f01bbe43272999201659a3f11f14d343e0d634f438'
+            '8a7470b8a4bf4d8fbd29fa6f191bafc3bb34f76aee4c696b9308bb8b63f91ea8'
+            '937ecf67fa4e47dafd5a5ca7bb84de8db185c990ff50988966af51e7f9274ffe'
+            'cc670a133023308d62f24d9e853673db9644337ebad4e8ed5be55785e2c0f6e2'
             '07839c542940776c402168c7b73c04b346ba7557eb3f25a23a49893aff86ab08'
             'SKIP')
 
