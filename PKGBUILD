@@ -1,17 +1,19 @@
 # AdPlug's UNIX console-based frontend
 # Maintainer: Jerry Xiao <isjerryxiao at outlook dot com>
 
+_pkgbase=adplay
 _srcname=adplay-unix
-pkgname=adplay-git
-pkgver=1.8.2.gccd1b88
+pkgname=${_pkgbase}-git
+pkgver=1.8.1.2.g391902f
 pkgrel=1
+epoch=1
 pkgdesc="AdPlug's UNIX console-based frontend"
 arch=('i686' 'x86_64')
 url="https://github.com/adplug/adplay-unix"
 license=('GPL')
-depends=('adplug-git')
-provides=('adplay')
-conflicts=('adplay')
+depends=('adplug')
+provides=("$_pkgbase")
+conflicts=("$_pkgbase")
 source=(
   "${_srcname}::git+https://github.com/adplug/adplay-unix.git#branch=master"
 )
