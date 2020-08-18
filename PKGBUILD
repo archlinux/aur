@@ -9,7 +9,7 @@ license=('GPL3')
 makedepends=('rust')
 depends=('openssl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('f1f9ca69880d0d03ae92a1545ef58eee7c26a9593218a2e72723c242a2fb15a2')
+sha256sums=('c7ce542e9d026df4814f9040fd5aa641faa7fe0709e32b2df3dca1bd25aef955')
 
 build() {
 	cd "$pkgname-$pkgver"
