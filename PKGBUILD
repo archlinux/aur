@@ -3,18 +3,20 @@
 
 pkgname=pcloud-drive
 pkgver=1.8.6
-pkgrel=4
+pkgrel=5
 pkgdesc='pCloud drive. Electron edition.'
 arch=('x86_64')
 url='https://www.pcloud.com/'
 license=('custom')
 depends=('fuse3')
-makedepends=('sed' 'jq')
+makedepends=('sed')
 replaces=('pcloud-git' 'pcloud')
-_api_url='https://api.pcloud.com/getpublinkdownload?code='
 _api_code='XZM0dakZjHLyhvrBu0BXRSmnTXNHbSbiodj7'
+_api_response="$(curl -s "https://api.pcloud.com/getpublinkdownload?code=${_api_code}")"
+_dlhost="$(echo ${_api_response} | grep -E -o '[a-zA-Z0-9\-]+\.pcloud\.com' | head -n 2 | sort -R | head -n 1)"
+_dlpath="$(echo ${_api_response} | grep -E -o "\"path\":\s{0,1}\".+\"" | cut -d '"' -f 4 | tr -d '\\')"
 source=('LICENSE'
-        "${pkgname}-${pkgver}-${pkgrel}::https://$(curl "${_api_url}${_api_code}" 2> /dev/null | jq -r '.hosts[] + .path' | sort -r | head -n1 )"
+        "${pkgname}-${pkgver}-${pkgrel}::https://${_dlhost}${_dlpath}"
 )
 sha256sums=('d512ec90082d82ef0e1fe5d7b14d63ae835f955d3119436d5c08761ff4e3366a'
             'db01bf8a151b80e99ba54c25a06276c109f81538c0d6e417deefc2f14f55525c'
