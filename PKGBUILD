@@ -3,14 +3,14 @@
 pkgname=qt5-shadertools-git
 _qtver=5.15.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='QtShaderTools module for Qt5'
-depends=('qt5-base')
+depends=('qt5-base' 'vulkan-headers')
 makedepends=()
-optdepends=()
+optdepends=('vulkan-extra-layers')
 groups=('qt' 'qt5')
 source=('git://github.com/jcelerier/qtshadertools.git')
 sha256sums=('SKIP')
