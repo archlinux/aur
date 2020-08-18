@@ -71,8 +71,8 @@ pkgbase = webots
 	optdepends = zlib
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = 
-	sha512sums_x86_64 = 
+	source_x86_64 = https://github.com/cyberbotics/webots/releases/download/R2020b/webots_2020b_amd64.deb
+	sha512sums_x86_64 = a4a34e5ed0745987e71ac4a7b642d96adfa3ffff9b85fab67e418bae1fb9431887a98d77d744aa17285a70c5eb6f25de92c31e74d0c94b8205ce0374dc0c66da
 
 pkgname = webots
 
