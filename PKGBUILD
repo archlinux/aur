@@ -1,7 +1,7 @@
 pkgname=screentorch
 pkgdesc="An Instant Replay/ReLive-like program for Linux"
 url="https://github.com/sneakysnakeX299/screentorch"
-pkgver=1
+pkgver=1.01
 pkgrel=1
 source=(
     "git+https://github.com/sneakysnakeX299/screentorch.git"
