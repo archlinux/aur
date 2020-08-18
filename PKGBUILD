@@ -2,7 +2,7 @@
 
 pkgname=python-aigpy
 _pkgname=aigpy
-pkgver=2020.7.3.0
+pkgver=2020.8.18.0
 pkgrel=1
 pkgdesc="Python Common Lib"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('python-setuptools')
 source=(
   "https://pypi.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
   "https://raw.githubusercontent.com/yaronzz/AIGPY/master/LICENSE")
-sha256sums=('b1c7b68fbfd1ef448384c166ef1514281a7348a6b8eba5ce80a4c098f8923faf'
+sha256sums=('18d15b747e7653ffc45afa54ab55f42550a1fc8db63c8974f3930bcf72ea2919'
             '83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c')
 
 build() {
