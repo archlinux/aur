@@ -1,12 +1,12 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5fpc
 pkgver=7190.2020.0221
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line VPN client using FastPPP to connect to F5Networks BIG-IP APM 13.0'
 arch=(x86_64 armv7h)
 source=('LICENSE')
-source_x86_64=("linux_f5cli-${pkgver}.x86_64.deb::https://connect.healthsystem.virginia.edu/public/download/linux_f5cli.x86_64.deb")
-source_armv7h=("linux_f5cli-${pkgver}.armhf.deb::https://connect.healthsystem.virginia.edu/public/download/linux_f5cli.armhf.deb")
+source_x86_64=("linux_f5cli-${pkgver}.x86_64.deb::https://vpn.emory.edu/public/download/linux_f5cli.x86_64.deb")
+source_armv7h=("linux_f5cli-${pkgver}.armhf.deb::https://vpn.emory.edu/public/download/linux_f5cli.armhf.deb")
 sha256sums=(a8f4b5d965dc0279dd5173109892251ce5d107d9912836e6d83a9b6896eb19a1)
 sha256sums_x86_64=(84d155c2e77b0317f9f2b1f0c0dcc1f328d052e598249300277daa475687d5cb)
 sha256sums_armv7h=(bd7ad730af27132a56ea4c4c00c2dfed9e54366346c6bb3edeb7931bd82064ea)
