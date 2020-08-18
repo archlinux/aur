@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-shortcut-overlay-git
-pkgver=r217.bc242d1
+pkgver=1.1.2.r8.gb5194c7
 pkgrel=1
 pkgdesc='A native, OS-wide shortcut overlay'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so')
-makedepends=('git' 'granite-git' 'meson' 'vala')
+makedepends=('git' 'granite' 'meson' 'vala')
 provides=('pantheon-shortcut-overlay')
 conflicts=('pantheon-shortcut-overlay')
 source=('pantheon-shortcut-overlay::git+https://github.com/elementary/shortcut-overlay.git')
@@ -19,27 +19,16 @@ sha256sums=('SKIP')
 pkgver() {
   cd pantheon-shortcut-overlay
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-
-  arch-meson ../pantheon-shortcut-overlay
-  ninja
+  arch-meson pantheon-shortcut-overlay build
+  ninja -C build
 }
 
 package() {
-  cd build
-
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
