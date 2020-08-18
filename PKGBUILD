@@ -11,8 +11,8 @@ license=('MIT')
 depends=('python' 'python-pyusb' 'python-pyserial' 'python-cached-property' 'python-typing_extensions' 'python-pyquaternion')
 optdepends=('python-zoloto')
 makedepends=('python-setuptools' 'python-dephell')
-source=("https://api.github.com/repos/j5api/j5/tarball/v0.10.0")
-sha512sums=('f7994ed9664c281ff9d24305a7b89b2ade4cab71eb62d2c281c16c99fabb10cc78c19a770273a385828985d2556bfe4b7b09b8021d4877186b98ad151a8d82eb')
+source=("")
+sha512sums=('')
 
 prepare() {
     cd $(ls ${srcdir} | grep j5)
