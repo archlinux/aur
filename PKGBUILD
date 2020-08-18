@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('accountsservice' 'glib2' 'glibc' 'gnome-desktop' 'gtk3' 'ibus'
          'libgee' 'polkit'
          'libswitchboard-2.0.so' 'libgranite.so')
-makedepends=('git' 'granite' 'meson' 'switchboard-git' 'vala')
+makedepends=('git' 'granite' 'meson' 'switchboard' 'vala')
 provides=('switchboard-plug-locale')
 conflicts=('switchboard-plug-locale')
 source=('git+https://github.com/elementary/switchboard-plug-locale.git')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd switchboard-plug-locale
 
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+ git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
