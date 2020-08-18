@@ -1,7 +1,7 @@
 pkgbase = ngs-lang
 	pkgdesc = Next Generation Shell (NGS)
-	pkgver = 0.2.7
-	pkgrel = 2
+	pkgver = 0.2.8
+	pkgrel = 1
 	url = https://github.com/ngs-lang/ngs
 	arch = x86_64
 	license = GPL3
@@ -15,8 +15,8 @@ pkgbase = ngs-lang
 	depends = libffi
 	depends = pcre
 	provides = ngs
-	source = ngs-lang-0.2.7.tar.gz::https://github.com/ngs-lang/ngs/archive/v0.2.7.tar.gz
-	sha256sums = edc842fcf8ced6ff9ef8ddfe6470ac4f94b7ba79415c41d5ed7a4fc93339f2f2
+	source = ngs-lang-0.2.8.tar.gz::https://github.com/ngs-lang/ngs/archive/v0.2.8.tar.gz
+	sha256sums = 469d0286b506ef06fe30359e1e85e316090ec2f5e5d78eebe7ae1d76d5f660c9
 
 pkgname = ngs-lang
 
