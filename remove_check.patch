@@ -1,0 +1,16 @@
+diff --git a/configure.ac b/configure.ac
+index b5f25905..b9a15afb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -463,11 +463,6 @@ if test "x$enable_zram" = "xyes" \
+         fi
+     fi
+ 
+-    # needs systemd
+-    if test -z "$systemdsystemunitdir"; then
+-        AC_MSG_ERROR([systemd is required for ZRAM support])
+-    fi
+-
+     have_zram="yes"
+ 
+     if test "$have_kbd" = "yes" -a "$have_swap" = "yes"; then
