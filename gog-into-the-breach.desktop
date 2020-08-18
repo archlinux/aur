@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Into the Breach
+Description=Mecha turn-based startegy game
+Exec=gog-into-the-breach
+Icon=gog-into-the-breach
+Type=Application
+Categories=Game;StrategyGame;

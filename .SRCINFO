@@ -1,0 +1,16 @@
+pkgbase = gog-into-the-breach
+	pkgdesc = Mecha turn based strategy game (GOG version)
+	pkgver = 1.2.24.38624
+	pkgrel = 1
+	url = http://subsetgames.com/itb.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sdl2
+	source = gog://into_the_breach_1_2_24_38624.sh
+	source = gog-into-the-breach.desktop
+	sha256sums = 16dce36cc511b4a838dda27384dbe662a25612dc1187d2ec7f1336f9d95b32d5
+	sha256sums = f1217b1fa26bf9fa1cf4c3f6fce23bc7f989e0d1396adfad8f5d0a6d31b5eaef
+
+pkgname = gog-into-the-breach
+
