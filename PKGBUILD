@@ -1,5 +1,5 @@
 # Maintainer: Kevin Puertas <kevinpr@jkanetwork.com>
-# Co-Maintainer: 1ace <arch.aur@engestrom.ch>
+# Co-Maintainer: Eric Engestrom <arch.aur@engestrom.ch>
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=gdevelop
