@@ -8,7 +8,7 @@ set -u
 _perlmod='Text-Aligner'
 _modnamespace="${_perlmod%%-*}"
 pkgname="perl-${_perlmod,,}"
-pkgver='0.13'
+pkgver='0.16'
 pkgrel='1'
 pkgdesc="Perl CPAN ${_perlmod//-/::} - Align text in columns"
 arch=('any')
@@ -19,9 +19,9 @@ options=('!emptydirs')
 _verwatch=("http://www.cpan.org/modules/by-module/${_modnamespace}/" "${_perlmod}-\([0-9\.]*\)\.tar\.gz" 'l')
 _srcdir="${_perlmod}-${pkgver}"
 source=("${_verwatch[0]}${_perlmod}-${pkgver}.tar.gz")
-md5sums=('a084016cb3fa9caa858f297d524cc3d7')
-sha256sums=('e61c1c93cdefd9cc2a40f12fa8bfb12e64bb06d2375ba9e61534249865103eef')
-sha512sums=('493ab6b32319e74c4b08b8473a17e69d5ce49d28495c7c759709661863a88613b766c3275035ea43f82448ea4f37a02ae2ab8f7baf68d79388b125dbd440004a')
+md5sums=('2306e6b557c434a33fe030cd6ee84142')
+sha256sums=('5c857dbce586f57fa3d7c4ebd320023ab3b2963b2049428ae01bd3bc4f215725')
+sha512sums=('ad3135de32ce870fbb9e5ccf9ad0d02f655c3e37397127009ad46e7baca515f9bb011251958c7fdbcc2ceabcfbbcb4dc8608c0b70ec3e4086492e1c6c1b38dfb')
 
 build() {
   set -u
