@@ -14,7 +14,7 @@ source=("${pkgname}.tar.bz2::https://gitlab.com/proxecto-trasno/hunspell-gl/-/ar
 md5sums=('3530407085f8fc49bd3bd5f5488be565')
 
 prepare() {
-  mkdir -p "$srcdir/$pkgname" && tar xfz "$pkgname.tar.bz2" -C "$pkgname" --strip-components 1
+  mkdir -p "$srcdir/$pkgname" && tar xfj "$pkgname.tar.bz2" -C "$pkgname" --strip-components 1
 }
 
 build() {
