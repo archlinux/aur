@@ -1,7 +1,7 @@
 pkgbase = fanshim
 	pkgdesc = Automatic control of Pimoroni Fan Shim for Raspberry Pi.
 	pkgver = 0.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pimoroni/fanshim-python
 	arch = any
 	license = MIT
@@ -10,6 +10,8 @@ pkgbase = fanshim
 	depends = python-psutil
 	depends = python-plasmalights
 	depends = python-raspberry-gpio
+	depends = python-spidev
+	depends = python-apa102
 	source = https://files.pythonhosted.org/packages/source/f/fanshim/fanshim-0.0.5.tar.gz
 	source = fanshim-5a23a4661258db90ce347d2ba1e1ad284af6566c.py::https://raw.githubusercontent.com/pimoroni/fanshim-python/5a23a4661258db90ce347d2ba1e1ad284af6566c/examples/automatic.py
 	source = fanshim.service
