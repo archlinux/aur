@@ -2,7 +2,7 @@
 
 _pkgname='surface-control'
 pkgname="${_pkgname}-bin"
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 _pkgrel=1
 pkgdesc='Control various aspects of Microsoft Surface devices from the Command-Line'
@@ -18,7 +18,7 @@ source=(
     "https://github.com/linux-surface/surface-control/releases/download/v${pkgver}-${_pkgrel}/surface-control-${pkgver}.${_pkgrel}-${CARCH}.bin.tar.xz"
 )
 
-sha256sums=('27f0eebb7ffe1723cfac68e4175862e48c1a7228c992683d13b4367d36c9ebcd')
+sha256sums=('0b43b3163e4170a3452ab8c312d484a0a5bcd9e1ede6d285b126d3a84846803a')
 
 
 package() {
