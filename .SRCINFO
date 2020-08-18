@@ -1,0 +1,13 @@
+pkgbase = show-motd
+	pkgdesc = show message of the day in interactive shells
+	pkgver = 3.6
+	pkgrel = 0
+	url = https://launchpad.net/update-motd
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/show-motd_3.6-0ubuntu7_all.deb
+	md5sums = 143b600bd5b1876d6bb3ad4318bfa933
+
+pkgname = show-motd
+
