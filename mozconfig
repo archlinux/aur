@@ -70,7 +70,7 @@ ac_add_options --with-system-nss
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
-ac_add_options --with-system-png
+#ac_add_options --with-system-png # TODO: if this ever gets adjusted it'd be nice to use system again
 ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-icu
