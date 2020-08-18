@@ -1,8 +1,8 @@
 # Maintainer: Formed <formed at tuta dot io>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=viper4linux-git
-pkgver=r2.a208c06
-pkgrel=2
+pkgver=r6.b4daf28
+pkgrel=1
 epoch=1
 pkgdesc="Implementation of the libviper library for modern Linux desktops."
 arch=('x86_64')
@@ -24,6 +24,8 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm755 viper -t "$pkgdir/usr/bin"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
-	install -Dm644 "${pkgname%-git}/audio.conf" -t "$pkgdir/usr/share/doc/${pkgname%-git}/examples"
-	install -m644 "${pkgname%-git}/"*.conf.template "$pkgdir/usr/share/doc/${pkgname%-git}"
+	install -Dm644 "${pkgname%-git}/audio.conf" \
+		"$pkgdir/usr/share/doc/${pkgname%-git}/audio.conf.example"
+	install -m644 "${pkgname%-git}/"*.conf.template \
+		"$pkgdir/usr/share/doc/${pkgname%-git}"
 }
