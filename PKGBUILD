@@ -6,13 +6,14 @@
 pkgname=sunflower
 _pkgver=0.4-62
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Small and highly customizable twin-panel file manager for Linux with support for plugins"
 arch=(any)
 license=(GPL3)
 url="https://sunflower-fm.org"
-depends=(gtk3 python-gobject python-chardet librsvg)
-optdepends=('vte3: integrated vte-based terminal'
+depends=(gtk3 vte3 python-gobject python-chardet librsvg)
+makedepends=(libnotify)
+optdepends=('libnotify'
             'python-mutagen: audio-metadata support'
             'gvfs: mount-management')
 source=("https://github.com/MeanEYE/Sunflower/releases/download/0.4-62/sunflower-${_pkgver}.tgz")
@@ -26,6 +27,7 @@ build() {
 package() {
   cd "${srcdir}/Sunflower"
   python setup.py install --root="$pkgdir/" --optimize=1  --skip-build
+  install -Dm644 images/sunflower.svg "${pkgdir}"/usr/lib/python3.8/site-packages/images/sunflower.svg
   install -Dm644 images/sunflower.png "${pkgdir}/usr/share/pixmaps/sunflower.png"
   rm -rd "${pkgdir}/usr/images"
   cp -r "${srcdir}"/Sunflower/translations/ "${pkgdir}/usr/share/locale"
