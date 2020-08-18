@@ -1,0 +1,10 @@
+pkgbase = fantome-gtk
+	pkgdesc = Breeze widget theme for GTK 2 and 3
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/addy-dclxvi/gtk-theme-collections/tree/master/Fantome
+	arch = any
+	license = GPLv3
+
+pkgname = fantome-gtk
+
