@@ -2,7 +2,7 @@
 # Contributor: Stephen Gregoratto <dev@sgregoratto.me>
 pkgname=doas
 pkgver=6.3p2
-pkgrel=1
+pkgrel=2
 pkgdesc="A port of OpenBSD's doas(1), an alternative to sudo(1)"
 license=('BSD')
 url="https://github.com/slicer69/doas"
