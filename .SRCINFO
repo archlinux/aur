@@ -1,0 +1,17 @@
+pkgbase = locale-en_at-git
+	pkgdesc = English language locale for Austria (en_AT)
+	pkgver = r31.3541f07
+	pkgrel = 1
+	url = https://gitlab.com/mokman/locale-en_at
+	install = locale-en_at-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = locale-en_at
+	conflicts = locale-en_at
+	source = locale-en_at-git::git+https://gitlab.com/mokman/locale-en_at
+	sha512sums = SKIP
+
+pkgname = locale-en_at-git
+
