@@ -1,0 +1,31 @@
+pkgbase = ayatana-webmail
+	pkgdesc = Webmail notifications and actions for any desktop
+	pkgver = 20.8.16
+	pkgrel = 1
+	url = https://tari.in/www/software/ayatana-webmail/
+	install = ayatana-webmail.install
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-polib
+	depends = ayatana-indicator-messages
+	depends = hicolor-icon-theme
+	depends = dconf
+	depends = gobject-introspection
+	depends = desktop-file-utils
+	depends = libnotify
+	depends = libcanberra
+	depends = python-babel
+	depends = python-gobject
+	depends = python-psutil
+	depends = python-secretstorage
+	depends = python-urllib3
+	optdepends = libunity
+	conflicts = unity-mail
+	replaces = unity-mail
+	options = !emptydirs
+	source = https://github.com/AyatanaIndicators/ayatana-webmail/archive/20.8.16.tar.gz
+	md5sums = 69238f1ff07fb16db8e522cfb5c97597
+
+pkgname = ayatana-webmail
+
