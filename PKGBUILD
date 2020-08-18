@@ -1,7 +1,7 @@
 pkgname=lighthouse-ethereum
-pkgver=0.2.4
+pkgver=0.2.5
 _pkgname=lighthouse
-_commit=9a97a0b14fdcd265769981a02e9cb37dac3b553a
+_commit=33b2a3d0e016310556b27d2d03150123ace8c186
 pkgrel=1
 pkgdesc='Ethereum 2.0 client'
 arch=('x86_64')
