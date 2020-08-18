@@ -1,0 +1,168 @@
+###NEEDS TO BE UPDATED###
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Marius Knaust <marius.knaust@gmail.com>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Stéphane Gaudreault <stephane@archlinux.org>
+# Contributor: kevin <kevin@archlinux.org>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
+# Contributor: Kritoke <kritoke@gamebox.net>
+# Contributor: Luca Roccia <little_rock@users.sourceforge.net>
+
+pkgbase=boost-git
+pkgname=('boost-libs-git' 'boost-git')
+pkgver=1.75.0
+pkgrel=2
+pkgdesc='Free peer-reviewed portable C++ source libraries'
+url='https://www.boost.org/'
+arch=('x86_64')
+license=('custom')
+makedepends=('icu' 'python' 'python2' 'python-numpy' 'python2-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd' 'findutils')
+#source=(${pkgbase}::git+https://github.com/boostorg/boost.git)
+#sha256sums=('SKIP')
+#b2sums=('ab270a0e3cb24da687d86785e2d2e6d7731b4dbc07bd839eadb642dfa5a428ad584acb1f3529661a8de9a986008ff3427491041059ea2b742348d02e00761cd8')
+
+prepare() {
+   cd ${srcdir}
+   if [ ! -d ${pkgbase} ]; then
+   	git clone https://github.com/boostorg/boost.git ${pkgbase}
+   	cd ${pkgbase}
+   	git submodule update --init
+   else
+   	cd ${pkgbase}
+   	git config pull.rebase false
+	git pull
+   	git submodule update
+   fi
+}
+
+build() {
+   export _stagedir="${srcdir}/stagedir"
+   local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
+
+   cd ${pkgbase}
+
+   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python2
+
+   install -Dm755 tools/build/src/engine/b2 "${_stagedir}"/bin/b2
+
+   # Support for OpenMPI
+   echo "using mpi ;" >> project-config.jam
+
+   # boostbook is needed by quickbook
+   install -dm755 "${_stagedir}"/share/boostbook
+   cp -a tools/boostbook/{xsl,dtd} "${_stagedir}"/share/boostbook/
+
+   # default "minimal" install: "release link=shared,static
+   # runtime-link=shared threading=single,multi"
+   # --layout=tagged will add the "-mt" suffix for multithreaded libraries
+   # and installs includes in /usr/include/boost.
+   # --layout=system no longer adds the -mt suffix for multi-threaded libs.
+   # install to ${_stagedir} in preparation for split packaging
+   "${_stagedir}"/bin/b2 \
+      variant=release \
+      debug-symbols=off \
+      threading=multi \
+      runtime-link=shared \
+      link=shared,static \
+      toolset=gcc \
+      python=2.7 \
+      cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
+      cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
+      linkflags="${LDFLAGS}" \
+      --layout=system \
+      ${JOBS} \
+      \
+      --prefix="${_stagedir}" \
+      install
+
+   # because b2 in boost 1.62.0 doesn't seem to respect python parameter, we
+   # need another run for liboost_python3.so
+
+   ./bootstrap.sh \
+     --with-toolset=gcc \
+     --with-icu \
+     --with-python=/usr/bin/python3 \
+     --with-libraries=python
+
+   "${_stagedir}"/bin/b2 clean
+   "${_stagedir}"/bin/b2 \
+      variant=release \
+      debug-symbols=off \
+      threading=multi \
+      runtime-link=shared \
+      link=shared,static \
+      toolset=gcc \
+      python=3.8 \
+      cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
+      cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
+      linkflags="${LDFLAGS}" \
+      --layout=system \
+      ${JOBS} \
+      \
+      --prefix="${_stagedir}/python3" \
+      --with-python \
+      install
+}
+
+package_boost-git() {
+   pkgdesc+=' - development headers'
+   depends=("boost-libs=${pkgver}")
+   optdepends=('python: for python bindings'
+               'python2: for python2 bindings')
+   options=('staticlibs')
+
+   install -dm755 "${pkgdir}"/usr
+   cp -a "${_stagedir}"/{bin,include,share} "${pkgdir}"/usr
+
+   install -d "${pkgdir}"/usr/lib
+   cp -a "${_stagedir}"/lib/*.a "${pkgdir}"/usr/lib/
+   cp -a "${_stagedir}"/lib/cmake "${pkgdir}"/usr/lib/
+
+   install -Dm644 "${srcdir}/"${pkgbase}/LICENSE_1_0.txt \
+      "${pkgdir}"/usr/share/licenses/boost/LICENSE_1_0.txt
+
+   install -Dm644 "${_stagedir}"/python3/lib/libboost_*.a \
+      "${pkgdir}"/usr/lib/
+   cp -a "${_stagedir}"/python3/lib/cmake/* "${pkgdir}"/usr/lib/cmake/
+
+   ln -s /usr/bin/b2 "$pkgdir"/usr/bin/bjam
+}
+
+package_boost-libs-git() {
+   pkgdesc+=' - runtime libraries'
+   depends=('bzip2' 'zlib' 'icu' 'zstd')
+   optdepends=('openmpi: for mpi support')
+   provides=(libboost_atomic.so libboost_chrono.so libboost_container.so
+     libboost_context.so libboost_contract.so libboost_coroutine.so
+     libboost_date_time.so libboost_fiber.so libboost_filesystem.so
+     libboost_graph.so libboost_graph_parallel.so libboost_iostreams.so
+     libboost_locale.so libboost_log.so libboost_log_setup.so
+     libboost_math_c99.so libboost_math_c99f.so libboost_math_c99l.so
+     libboost_math_tr1.so libboost_math_tr1f.so libboost_math_tr1l.so
+     libboost_mpi.so libboost_numpy27.so libboost_numpy38.so
+     libboost_prg_exec_monitor.so libboost_program_options.so
+     libboost_python27.so libboost_python38.so libboost_random.so
+     libboost_regex.so libboost_serialization.so
+     libboost_stacktrace_addr2line.so libboost_stacktrace_basic.so
+     libboost_stacktrace_noop.so libboost_system.so libboost_thread.so
+     libboost_timer.so libboost_type_erasure.so libboost_unit_test_framework.so
+     libboost_wave.so libboost_wserialization.so)
+
+   install -dm755 "${pkgdir}"/usr
+   cp -a "${_stagedir}"/lib "${pkgdir}"/usr
+   cp -a "${_stagedir}"/python3/lib/libboost_* "${pkgdir}"/usr/lib
+   rm "${pkgdir}"/usr/lib/*.a
+   rm -r "${pkgdir}"/usr/lib/cmake
+
+   # https://github.com/boostorg/python/issues/203#issuecomment-391477685
+   for _lib in python numpy; do
+     ln -srL "${pkgdir}"/usr/lib/libboost_${_lib}{27,}.so
+     ln -srL "${pkgdir}"/usr/lib/libboost_${_lib}3{8,}.so
+   done
+
+   install -Dm644 "${srcdir}/"${pkgbase}/LICENSE_1_0.txt \
+      "${pkgdir}"/usr/share/licenses/boost-libs/LICENSE_1_0.txt
+}
+
+# vim: ts=2 sw=2 et:
