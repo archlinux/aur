@@ -1,0 +1,4 @@
+post_install() {
+	echo "	>>	Edit the configuration in /etc/doas.conf"
+	echo "	>>	by adding your username or other values"
+}

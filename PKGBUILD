@@ -1,4 +1,5 @@
-# Maintainer: lennivh24@gmail.com
+# Maintainer: Leonard von Hagen <lennivh24@gmail.com>
+# Contributor: Stephen Gregoratto <dev@sgregoratto.me>
 pkgname=doas
 pkgver=6.3p2
 pkgrel=1
@@ -6,11 +7,13 @@ pkgdesc="A port of OpenBSD's doas(1), an alternative to sudo(1)"
 license=('BSD')
 url="https://github.com/slicer69/doas"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('pam' 'bison')
+makedepends=('bison')
+optdepends=('vi: default editor for vidoas')
 backup=('etc/doas.conf'
         'etc/pam.d/doas')
-provides=('doas')
-replaces=('opendoas' 'opendoas-git')
+install="doas.install"
+changelog="doas.changelog"
+conflicts=('opendoas' 'opendoas-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 				'00-Makefile.patch'
         'doas-pam'
@@ -36,4 +39,9 @@ package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+post_install() {
+	echo "Edit the configuration in /etc/doas.conf"
+	echo "by adding your username or other values"
 }

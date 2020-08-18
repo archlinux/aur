@@ -1,0 +1,29 @@
+2020-08-07 Jesse Smith <jsmith@resonatingmedia.com>
+	* Added tool to edit and check doas.conf
+
+2020-08-06 Jesse Smith <jsmith@resonatingmedia.com>
+	* Double-dash no longer needed on Linux
+
+2020-06-22 Jesse Smith <jsmith@resonatingmedia.com>
+	* Added interactive login shell option
+
+2020-04-21 Jesse Smith <jsmith@resonatingmedia.com>
+	* Added example PAM configuration file for FreeBSD
+
+2019-12-28 Jesse Smith <jsmith@resonatingmedia.com>
+	* doas 6.2p4 Keeping environment variables with keepenv
+
+2019-12-28 Jesse Smith <jsmith@resonatingmedia.com>
+	* doas 6.2p3 Made sure parse.o is cleaned up
+
+2019-10-12 Jesse Smith <jsmith@resonatingmedia.com>
+	* doas 6.2p2 Introducing macOS support
+
+2019-09-10 Jesse Smith <jsmith@resonatingmedia.com>
+	* doas 6.2p1 Code reorganization, fix Linux crash, remove numeric UID matches
+
+2019-09-03 Jesse Smith <jsmith@resonatingmedia.com>
+	* doas 6.2 Linux group permissions, bug fix and optimizations
+
+2019-09-02 Jesse Smith <jsmith@resonatingmedia.com>
+	* doas 6.1p1 ported to illumos
