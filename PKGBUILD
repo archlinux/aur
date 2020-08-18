@@ -1,10 +1,9 @@
 # Maintainer: CyrIng <labs[at]cyring[dot]fr>
-# Contributor: CyrIng <labs[at]cyring[dot]fr>
 _gitname=CoreFreq
 pkgname=corefreq-git
 realname=corefreq
 pkgver=1.80
-pkgrel=1
+pkgrel=2
 pkgdesc="CoreFreq, Processor monitoring software with BIOS like functionalities"
 arch=('x86_64')
 url='https://github.com/cyring/CoreFreq'
