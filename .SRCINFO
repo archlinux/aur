@@ -1,6 +1,6 @@
 pkgbase = switchboard-plug-locale-git
 	pkgdesc = Switchboard Locale Plug
-	pkgver = r320.84b55a8
+	pkgver = 2.5.2.r10.g0ee8275
 	pkgrel = 1
 	url = https://github.com/elementary/switchboard-plug-locale
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = switchboard-plug-locale-git
 	makedepends = git
 	makedepends = granite
 	makedepends = meson
-	makedepends = switchboard-git
+	makedepends = switchboard
 	makedepends = vala
 	depends = accountsservice
 	depends = glib2
