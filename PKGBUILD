@@ -2,7 +2,7 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=6.6.4.r34.gc8fb684
+pkgver=6.6.4.r35.gb8e051d
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
@@ -22,7 +22,6 @@ optdepends=(
 	'jdk-openjdk: compile Java support'
 	'jre-openjdk: execute Java support'
 	'python: execute Python support'
-	'xterm: detached run support'
 )
 provides=('cpeditor')
 conflicts=("cpeditor")
