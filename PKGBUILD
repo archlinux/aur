@@ -4,14 +4,14 @@
 
 pkgname=idris2
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Funtional Programming Lanugage with Dependent Types"
 url="https://www.idris-lang.org/"
 license=('custom')
 arch=('x86_64')
 depends=('chez-scheme')
 makedepends=('git')
-source=('https://www.idris-lang.org/idris2-src/idris2-latest.tgz')
+source=("https://www.idris-lang.org/idris2-src/idris2-${pkgver}.tgz")
 sha256sums=('03869e02cf983947c30fe66660b305114e2d21c96d3dab17efc0c7923d940db6')
 
 _srcname="Idris2-$pkgver"
@@ -41,7 +41,7 @@ package() {
 
     PREFIX="$pkgdir/usr/lib" make install-idris2
     PREFIX="$pkgdir/usr/lib" make install-support
-    for lib in prelude base network contrib ; do
+    for lib in prelude base contrib network ; do
         cd libs/$lib
         IDRIS2_PREFIX="$pkgdir/usr/lib" ../../build/exec/idris2 --install $lib.ipkg
         cd ../..
