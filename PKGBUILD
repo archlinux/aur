@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-sound-git
-pkgver=r264.fa991cb
+pkgver=2.2.4.r15.gd6db05a
 pkgrel=1
 pkgdesc='Switchboard Sound Plug'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libcanberra' 'libgee' 'libpulse'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('git' 'granite-git' 'gtk2' 'meson' 'switchboard-git' 'vala')
+makedepends=('git' 'granite' 'meson' 'switchboard' 'vala')
 provides=('switchboard-plug-sound')
 conflicts=('switchboard-plug-sound')
 source=('git+https://github.com/elementary/switchboard-plug-sound.git')
@@ -19,27 +19,16 @@ sha256sums=('SKIP')
 pkgver() {
   cd switchboard-plug-sound
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-
-  arch-meson ../switchboard-plug-sound
-  ninja
+  arch-meson switchboard-plug-sound build
+  ninja -C build
 }
 
 package() {
-  cd build
-
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
