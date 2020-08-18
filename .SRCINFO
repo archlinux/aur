@@ -1,0 +1,18 @@
+pkgbase = apron-git
+	pkgdesc = The Apron Numerical Abstract Domain Library
+	pkgver = r237.9ad5af8
+	pkgrel = 1
+	url = https://github.com/antoinemine/apron
+	arch = any
+	license = LGPL
+	depends = gmp
+	depends = mpfr
+	depends = ppl
+	provides = apron
+	conflicts = apron
+	source = git://github.com/antoinemine/apron.git
+	sha256sums = SKIP
+	sha512sums = SKIP
+
+pkgname = apron-git
+
