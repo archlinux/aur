@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'flatpak'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('git' 'granite-git' 'meson' 'switchboard-git' 'vala')
+makedepends=('git' 'granite' 'meson' 'switchboard' 'vala')
 provides=('switchboard-plug-applications')
 conflicts=('switchboard-plug-applications')
 replaces=('switchboard-plug-applications-bzr')
