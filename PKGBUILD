@@ -1,10 +1,9 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
-_projectname='migrate-parsetree'
-pkgname="ocaml-$_projectname"
+pkgname='ocaml-migrate-parsetree'
 pkgver='1.7.3'
-pkgrel='2'
-pkgdesc='Convert OCaml parsetrees between different major versions'
+pkgrel='3'
+pkgdesc='Convert OCaml parsetrees between different major versions - 1.7.x version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$pkgname"
 license=('custom:LGPL2.1 with linking exception')
@@ -18,17 +17,17 @@ _sourcedirectory="$pkgname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build -p "$pkgname" --verbose
+	dune build --release --verbose
 }
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune runtest -p "$pkgname" --verbose
+	dune runtest --release --verbose
 }
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml' --release --verbose
 
 	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
 	mv "$pkgdir/usr/doc/$pkgname/"* "$pkgdir/usr/share/doc/$pkgname/"
