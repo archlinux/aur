@@ -1,18 +1,14 @@
-pkgbase = gnabel
-	pkgdesc = A translation app for GTK environments based on Google Translate
-	pkgver = 0.0.0
-	pkgrel = 3
-	url = https://github.com/gi-lom/gnabel
-	arch = any
-	license = GPL-3.0
-	depends = python>=3
-	depends = python-pyperclip
-	depends = python-gobject
-	depends = python-googletrans
-	depends = python-gtts
-	depends = python-pydub
-	source = https://github.com/gi-lom/gnabel/archive/4559acb895d754ecd985dab686eb1acd7e5f37b4.zip
+pkgbase = emulsion-bin
+	pkgdesc = A fast and minimalistic image viewer
+	pkgver = 5.0
+	pkgrel = 0
+	url = https://arturkovacs.github.io/emulsion-website/
+	arch = x86_64
+	license = MIT
+	makedepends = coreutils
+	makedepends = tar
+	source = https://github.com/ArturKovacs/emulsion/releases/download/v5.0/Emulsion-Linux.deb-v5.0.deb
 	sha512sums = SKIP
 
-pkgname = gnabel
+pkgname = emulsion-bin
 

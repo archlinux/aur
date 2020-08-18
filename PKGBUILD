@@ -1,38 +1,32 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
-pkgname='gnabel'
-pkgver='0.0.0'
-pkgrel='3'
-pkgdesc='A translation app for GTK environments based on Google Translate'
-arch=('any')
-depends=(
-  'python>=3'
-  'python-pyperclip'
-  'python-gobject'
-  'python-googletrans' # aur only
-  'python-gtts' # aur only
-  'python-pydub' # aur only
+pkgname='emulsion-bin'
+pkgver='5.0'
+pkgrel='0'
+pkgdesc='A fast and minimalistic image viewer'
+arch=('x86_64')
+makedepends=(
+  'coreutils'
+  'tar'
 )
-url='https://github.com/gi-lom/gnabel'
-license=('GPL-3.0')
-_git_ref='4559acb895d754ecd985dab686eb1acd7e5f37b4'
+url='https://arturkovacs.github.io/emulsion-website/'
+license=('MIT')
 source=(
-  "https://github.com/gi-lom/gnabel/archive/$_git_ref.zip"
+  "https://github.com/ArturKovacs/emulsion/releases/download/v$pkgver/Emulsion-Linux.deb-v$pkgver.deb"
 )
 sha512sums=('SKIP')
 
+_mirror() {
+  install "$1" "usr/$2" "$pkgdir/usr/$2"
+}
+
 package() {
-  cd "gnabel-$_git_ref"
+  msg2 'Extracting data...'
+  tar xf data.tar.gz
 
-  msg2 'Installing LICENSE'
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  msg2 'Installing executable'
-  install -Dm755 gnabel.py "$pkgdir/usr/bin/gnabel"
-
-  msg2 'Installing desktop file'
-  install -Dm755 gnabel.desktop "$pkgdir/usr/share/applications/gnabel.desktop"
-
-  msg2 'Installing icon'
-  install -Dm644 icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/gnabel.svg"
+  msg2 'Installing...'
+  install -Dm644 usr/lib/emulsion/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  _mirror -Dm755 bin/emulsion
+  _mirror -Dm755 share/applications/emulsion.desktop
+  _mirror -Dm644 share/icons/hicolor/256x256/apps/emulsion.png
 }
