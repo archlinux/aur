@@ -33,9 +33,11 @@ build() {
   --enable-qsv \
   --harden
   
-make
+make -C build
 }
   
 package() {
+    cd "$srcdir/HandBrake-$pkgver/build"
+    
     make DESTDIR="$pkgdir" install
 }
