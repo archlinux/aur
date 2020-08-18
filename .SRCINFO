@@ -1,0 +1,17 @@
+pkgbase = hyrule-conquest
+	pkgdesc = Hyrule Conquest. Mod for 0ad created by Undying Nephalim.
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://www.moddb.com/mods/hyrule-conquest
+	arch = x86_64
+	license = unknown
+	makedepends = xz
+	makedepends = curl
+	depends = 0ad
+	noextract = hyrule.tar.xz?dl=0
+	options = !strip
+	source = https://www.dropbox.com/s/c3pzx72sarj0hog/hyrule.tar.xz?dl=0
+	md5sums = 23c5e3402ff13433409a1d149b54b83c
+
+pkgname = hyrule-conquest
+
