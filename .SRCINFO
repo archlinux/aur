@@ -1,0 +1,22 @@
+pkgbase = fakecam
+	pkgdesc = A fake webcam provider to stream custom video
+	pkgver = 0.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = v4l2loopback-dkms
+	depends = gtk3
+	depends = grep
+	depends = sed
+	depends = coreutils
+	depends = polkit
+	depends = bash
+	source = fakecam-cli.zip::https://github.com/UQuark0/fakecam-cli/archive/v0.0.zip
+	source = fakecam-gui.zip::https://github.com/UQuark0/fakecam-gui/archive/v0.0.zip
+	sha256sums = 682410da3ec34ac7d3415096f4deeb4620bd95c8dbc86c28bc1c80c419400833
+	sha256sums = 205612773dbde6197e32c417f3d008847c6b61f8b3e3436bff2d1ede14822c68
+
+pkgname = fakecam
+
