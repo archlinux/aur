@@ -1,0 +1,20 @@
+--- tbl_term.c	2020-08-18 12:35:27.290953791 +0200
++++ tbl_term.c	2020-08-18 12:35:23.450952148 +0200
+@@ -626,7 +626,7 @@
+ 
+ 		lw = cpp == NULL || cpn == NULL ||
+ 		    (cpn->pos != TBL_CELL_DOWN &&
+-		     (dpn == NULL || strcmp(dpn->string, "\\^") != 0))
++		     (dpn == NULL || dpn->pos == TBL_DATA_NONE || strcmp(dpn->string, "\\^") != 0))
+ 		    ? hw : 0;
+ 		tbl_direct_border(tp, BHORIZ * lw,
+ 		    col->width + col->spacing / 2);
+@@ -670,7 +670,7 @@
+ 
+ 		rw = cpp == NULL || cpn == NULL ||
+ 		    (cpn->pos != TBL_CELL_DOWN &&
+-		     (dpn == NULL || strcmp(dpn->string, "\\^") != 0))
++		     (dpn == NULL || dpn->pos == TBL_DATA_NONE || strcmp(dpn->string, "\\^") != 0))
+ 		    ? hw : 0;
+ 
+ 		/* The line crossing at the end of this column. */
