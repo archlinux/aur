@@ -1,4 +1,4 @@
-pkgbase = cynpapers
+pkgbase = cynicalteam-wallpapers
 	pkgdesc = A collection of cool wall papers!
 	pkgver = 2020.8.18
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = cynpapers
 	source = https://github.com/TheCynicalTeam/wallpapers/archive/2020.8.18-1.tar.gz
 	sha256sums = SKIP
 
-pkgname = cynpapers
+pkgname = cynicalteam-wallpapers
 
