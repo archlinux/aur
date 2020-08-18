@@ -1,6 +1,6 @@
 pkgbase = dolphin-git
 	pkgdesc = KDE File Manager (Git)
-	pkgver = 20.07.90.r21.g97a14db70
+	pkgver = 20.08.0.r18.g257eeebf4
 	pkgrel = 1
 	url = https://kde.org/applications/en/system/org.kde.dolphin
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = dolphin-git
 	makedepends = kdoctools
 	makedepends = packagekit-qt5
 	makedepends = git
-	depends = baloo-widgets-git
+	depends = baloo-widgets
 	depends = knewstuff
 	depends = kio-extras
 	depends = kcmutils

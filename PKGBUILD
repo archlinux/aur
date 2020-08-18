@@ -2,13 +2,13 @@
 # Contributor: Antonio Rojas <arojas@archlinux,org>
 
 pkgname=dolphin-git
-pkgver=20.07.90.r21.g97a14db70
+pkgver=20.08.0.r18.g257eeebf4
 pkgrel=1
 pkgdesc='KDE File Manager (Git)'
 arch=(i686 x86_64)
 url=https://kde.org/applications/en/system/org.kde.dolphin
 license=(LGPL)
-depends=(baloo-widgets-git knewstuff kio-extras kcmutils kparts kinit)
+depends=(baloo-widgets knewstuff kio-extras kcmutils kparts kinit)
 makedepends=(extra-cmake-modules kdoctools packagekit-qt5 git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
