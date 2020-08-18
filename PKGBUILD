@@ -1,8 +1,9 @@
 # Maintainer: Adam Nielsen <malvineous@shikadi.net>
 
 pkgname=adplug-git
-pkgver=20160430
+pkgver=0
 pkgrel=1
+epoch=1
 pkgdesc="AdLib sound player library"
 arch=('i686' 'x86_64')
 url="http://adplug.github.io"
@@ -17,6 +18,11 @@ prepare() {
   cd "$srcdir/adplug"
 
   autoreconf -fis
+}
+
+pkgver() {
+  cd "$srcdir/adplug"
+  git describe --tags | sed 's/^adplug-//g; s/^v//; s/-/./g'
 }
 
 build() {
