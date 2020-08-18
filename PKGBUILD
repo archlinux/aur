@@ -19,7 +19,7 @@ pkgname="${_pyver}-${_pybase}"
 _pyverother='' #python-'
 fi
 _pybasend="${_pybase//-/}"
-pkgver='3.16.0'
+pkgver='3.18.2'
 pkgrel='1'
 pkgdesc='The API and CLI tools that provide access to Amazon Elastic Beanstalk awsebcli'
 arch=('any')
@@ -32,7 +32,7 @@ _srcdir="${_pybasend}-${pkgver}"
 # https://bitbucket.org/pypa/pypi/issues/438/backwards-compatible-un-hashed-package
 # https://bitbucket.org/pypa/pypi/issues/447/direct-links-of-packages-gone
 source=("https://files.pythonhosted.org/packages/source/${_pybasend: 0:1}/${_pybasend}/${_pybasend}-${pkgver}.tar.gz")
-sha256sums=('03252f15f06f131e17644333cabe0221e446ff36fccad3d9434eeb7aef226c35')
+sha256sums=('70c247f9d54b8071d7550127e665a42a837f72812c5a1749ddb17104fbdba8db')
 
 # Convert python requires to PKGBUILD depends
 # $1: prefix python- or python2-
@@ -44,13 +44,12 @@ _fn_pydepends() {
   # Paste in from setup.py. This function does NOT work in zsh.
 local _requires="
 requires = [
-    'botocore>1.13.0,<1.14',
+    'botocore>=1.15,<1.16',
     'cement==2.8.2',
-    'colorama>=0.3.9,<0.4.0',  # use the same range that 'docker-compose' uses
+    'colorama>=0.4,<1.0',  # use the same range that 'docker-compose' uses
     'future>=0.16.0,<0.17.0',
     'pathspec==0.5.9',
-    'python-dateutil>=2.1,<3.0.0',  # use the same range that 'botocore' uses
-    'PyYAML>=3.10,<=3.13',  # use the same range that 'aws-cli' uses. This is also compatible with 'docker-compose'
+    'python-dateutil>=2.1,<2.8.1',  # use the same range that 'botocore' uses
     'requests>=2.20.1,<2.21',
     'setuptools >= 20.0',
     'semantic_version == 2.5.0',
@@ -59,8 +58,11 @@ requires = [
     'urllib3>=1.24.1,<1.25',
     'wcwidth>=0.1.7,<0.2.0',
     #found further down in setup.py
-    'docker-compose >= 1.23.2, < 1.24.0',
+    'PyYAML>=5.3.1,<5.4',  # use the same range that 'aws-cli' uses. This is also compatible with 'docker-compose'
+    'docker-compose >= 1.25.2, < 1.26.0',
     'blessed>=1.9.5',
+    #Part of Botocore
+    'docutils<0.16,>=0.10'
 ]
 "
   # Convert requires=[] to local _requires=()
