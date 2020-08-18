@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-sharing-git
-pkgver=r200.23bb1e3
+pkgver=2.1.4.r25.g2eb240b
 pkgrel=1
 pkgdesc='Switchboard Sharing Plug'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('git' 'granite-git' 'meson' 'switchboard-git' 'vala')
+makedepends=('git' 'granite' 'meson' 'switchboard' 'vala')
 provides=('switchboard-plug-sharing')
 conflicts=('switchboard-plug-sharing')
 source=('git+https://github.com/elementary/switchboard-plug-sharing.git')
@@ -19,27 +19,16 @@ sha256sums=('SKIP')
 pkgver() {
   cd switchboard-plug-sharing
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-
-  arch-meson ../switchboard-plug-sharing
-  ninja
+  arch-meson switchboard-plug-sharing build
+  ninja -C build
 }
 
 package() {
-  cd build
-
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et:
