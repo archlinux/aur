@@ -14,6 +14,7 @@ pkgbase = scr-git
 	optdepends = wmutils-git
 	optdepends = dmenu
 	optdepends = rofi
+	optdepends = shotgun
 	provides = scr
 	source = scr-git::git+https://github.com/6gk/scr
 	md5sums = SKIP
