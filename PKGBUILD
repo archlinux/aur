@@ -5,6 +5,8 @@ pkgver='5.0'
 pkgrel='0'
 pkgdesc='A fast and minimalistic image viewer'
 arch=('x86_64')
+conflicts=('emulsion')
+provides=('emulsion')
 makedepends=(
   'coreutils'
   'tar'
