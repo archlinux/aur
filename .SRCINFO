@@ -1,8 +1,8 @@
 pkgbase = python-nbclean
 	pkgdesc = Tools for preprocessing and cleaning Jupyter Notebooks.
 	pkgver = 0.3.2
-	pkgrel = 1
-	url = https://github.com/theislab/nbclean
+	pkgrel = 2
+	url = https://predictablynoisy.com/nbclean
 	arch = any
 	license = MIT
 	depends = python-nbgrader

@@ -3,10 +3,10 @@
 _name=nbclean
 pkgname=python-$_name
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools for preprocessing and cleaning Jupyter Notebooks.'
 arch=(any)
-url="https://github.com/theislab/$_name"
+url="https://predictablynoisy.com/$_name"
 license=(MIT)
 depends=(
 	python-nbgrader
@@ -24,4 +24,5 @@ package() {
 	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
 	mkdir -p "$site"
 	unzip "$_wheel" -d "$site"
+	chmod 644 "$site/$_name-$pkgver.dist-info/"*
 }
