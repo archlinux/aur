@@ -13,7 +13,7 @@ epoch=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('any')
 url="https://www.jabref.org"
-depends=('archlinux-java-run>=7' 'java-runtime=14')
+depends=('java-runtime=14')
 license=('MIT')
 makedepends=('git' 'java-environment=14') # tested with openjdk 14 from official repos,
 # openjfx must not be installed
