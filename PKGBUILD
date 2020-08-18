@@ -16,11 +16,10 @@ license=('MPL2')
 depends=("firefox")
 source=("https://addons.cdn.mozilla.net/user-media/addons/${_addon_id}/${_addon_filename}")
 noextract=("${_addon_filename}")
-sha256sums=('46f98677258a2f4f66831774f46dcab72541fedeaef2e9639accbfadbe1630ad')
+sha256sums=('5a4d4219df6596d89769b24d0c7b9c67a6845e4ab792254579d8ebe2bfaf690a')
 
 
 package() {
     cd "${srcdir}"
     install -Dm644 "${_addon_filename}" "${pkgdir}/usr/lib/firefox/browser/extensions/${_gecko_id}.xpi"
 }
-sha256sums=('5a4d4219df6596d89769b24d0c7b9c67a6845e4ab792254579d8ebe2bfaf690a')
