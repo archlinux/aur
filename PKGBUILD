@@ -53,6 +53,6 @@ package(){
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm 644 "${srcdir}/${pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    ln -s "/home/theo/Windows-data/Jeux/${pkgname}/start.sh" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/opt/${pkgname}/start.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
  
