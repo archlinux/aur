@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-photos-git
-pkgver=r3907.47ed37bc
+pkgver=2.7.0.r27.gb5b892d5
 pkgrel=1
 pkgdesc='The Pantheon Photos Manager'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('cairo' 'gdk-pixbuf2' 'geocode-glib' 'glib2' 'gst-plugins-base-libs'
          'libgphoto2' 'libraw' 'libsoup' 'libxml2' 'pango' 'rest' 'sqlite'
          'webkit2gtk'
          'libgranite.so' 'libgudev-1.0.so')
-makedepends=('git' 'granite-git' 'intltool' 'meson' 'vala')
+makedepends=('git' 'granite' 'intltool' 'meson' 'vala')
 provides=('pantheon-photos')
 conflicts=('pantheon-photos')
 source=('pantheon-photos::git+https://github.com/elementary/photos.git')
@@ -22,7 +22,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd pantheon-photos
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
