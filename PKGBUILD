@@ -1,7 +1,7 @@
 # Maintainer: Stephen Smith <stephen304@gmail.com>
 
 pkgname=caffeine-bzr
-pkgver=r670
+pkgver=r675
 pkgrel=1
 pkgdesc="A easy way to control powersaving on your desktop."
 arch=(any)
