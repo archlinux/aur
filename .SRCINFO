@@ -1,5 +1,5 @@
 pkgbase = nvidia-440xx-dkms
-	pkgdesc = NVIDIA driver sources for Linux, 440xx
+	pkgdesc = NVIDIA driver sources for Linux, 440xx, legacy branch
 	pkgver = 440.100
 	pkgrel = 1
 	url = http://www.nvidia.com/

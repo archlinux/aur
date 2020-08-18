@@ -1,11 +1,12 @@
  
 # Contributor: Andrey Alekseev andrey.android7890@gmail.com
+# Maintainer: Isaak I. Aleksandrov https://gitlab.com/snippets/1925454
 
 pkgbase=nvidia-440xx-dkms
 pkgname=nvidia-440xx-dkms
 pkgver=440.100
 pkgrel=1
-pkgdesc="NVIDIA driver sources for Linux, 440xx"
+pkgdesc="NVIDIA driver sources for Linux, 440xx, legacy branch"
 arch=('x86_64')
 url="http://www.nvidia.com/"
 depends=('dkms' "nvidia-utils=$pkgver" 'libglvnd' 'linux-headers')
