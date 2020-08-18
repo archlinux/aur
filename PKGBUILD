@@ -13,7 +13,6 @@ makedepends=()
 groups=()
 
 build(){
-    rm -rf gtk-theme-collections
     git clone --depth 1 $src
 }
 
