@@ -2,12 +2,12 @@
 pkgname=cninja
 pkgver=3.3.0
 release_tag=v3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="cninja, an opinionated cmake config manager"
 arch=('x86_64')
 url="https://github.com/jcelerier/cninja"
 license=('AGPLv3')
-depends=('cmake' 'clang' 'lld' 'ninja')
+depends=('cmake' 'clang' 'lld' 'ninja' 'libc++')
 makedepends=('boost')
 optdepends=()
 provides=("$pkgname=$pkgver")
