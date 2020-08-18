@@ -1,6 +1,6 @@
 pkgbase = android-platform
 	pkgdesc = Android SDK Platform, latest API
-	pkgver = 30_r02
+	pkgver = 30_r03
 	pkgrel = 1
 	url = http://developer.android.com/sdk/index.html
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = android-platform
 	provides = android-platform-30
 	conflicts = android-platform-30
 	options = !strip
-	source = https://dl.google.com/android/repository/platform-30_r02.zip
+	source = https://dl.google.com/android/repository/platform-30_r03.zip
 	source = package.xml
-	sha1sums = 0b1102c5f0be7bc629e396fcefd36b9f1edfa0a7
-	sha1sums = e34e8d2b834bc3015ff96b2187000eec44802c77
-	sha384sums = 035f8aa55d9543b21406d9e9956f65bc427b3812420b53618ec1b810ae1adb9c2dbeecafdab1d83d4901943bec63cc14
-	sha384sums = 0f5890d7e2a9fec4fae0cfdc37ef1cf459b5a6b66cc36af79d5af0b3d9a19746cc007572b5d8074a5cbc940c74f6bec9
+	sha1sums = e7c6280901dcfa511af098d67dd88c4dfcbc6ea2
+	sha1sums = 146112fc3e86f7af1001d5bafb4e398a8a2ac142
+	sha384sums = 2ff53b95a4584f86ab06c5daaf8aabe6e8bb28eaa3cd2e4e06b9762959d84a0a331721eb3c6e39f49dd0691a961fa46c
+	sha384sums = de3cb56bdd0e78c94a05a209765378cb60e162dc98d828b5526958ffa97b933aa738d1475224c7005af77c311b72f39f
 
 pkgname = android-platform
 	depends = android-sdk
