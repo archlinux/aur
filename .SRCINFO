@@ -1,6 +1,6 @@
 pkgbase = screentorch
 	pkgdesc = An Instant Replay/ReLive-like program for Linux
-	pkgver = 1
+	pkgver = 1.01
 	pkgrel = 1
 	url = https://github.com/sneakysnakeX299/screentorch
 	arch = x86_64
