@@ -10,7 +10,7 @@ license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gnome-settings-daemon' 'gtk3' 'libgee' 'polkit'
          'libswitchboard-2.0.so')
-makedepends=('git' 'granite' 'meson' 'switchboard-git' 'vala')
+makedepends=('git' 'granite' 'meson' 'switchboard' 'vala')
 provides=('switchboard-plug-power')
 conflicts=('switchboard-plug-power')
 source=('git+https://github.com/elementary/switchboard-plug-power.git')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd switchboard-plug-power
 
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
