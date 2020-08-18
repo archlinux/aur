@@ -2,14 +2,14 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-code-git
-pkgver=3.4.1.r53.g4ade741f
-pkgrel=1
+pkgver=3.4.1.r54.gf2286b1f
+pkgrel=2
 pkgdesc="The Pantheon Code Editor"
 arch=(x86_64)
 url="https://github.com/elementary/code"
 license=(GPL3)
 groups=(pantheon-unstable)
-depends=(libgranite.so editorconfig-core-c gtksourceview3 libgit2-glib libpeas zeitgeist)
+depends=(libgranite.so editorconfig-core-c gtksourceview4 libgit2-glib libpeas zeitgeist)
 makedepends=(appstream git gobject-introspection
              gtkspell3 intltool meson vala vte3 webkit2gtk)
 optdepends=('gtkspell3: Spell Check extension'
