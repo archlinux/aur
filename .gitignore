@@ -1,6 +1,4 @@
-*
-!/PKGBUILD
-!/.SRCINFO
-!/.gitignore
-!/doas.patch
-!/doas-pam
+doas-*.pkg.*
+doas-*.tar.gz
+pkg/
+src/

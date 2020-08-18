@@ -1,23 +1,28 @@
 pkgbase = doas
-	pkgdesc = Port of OpenBSD's doas(1), an alternative to sudo(1)
-	pkgver = 6.2p2
+	pkgdesc = A port of OpenBSD's doas(1), an alternative to sudo(1)
+	pkgver = 6.3p2
 	pkgrel = 1
 	url = https://github.com/slicer69/doas
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
-	license = custom: ISC
+	license = BSD
 	depends = pam
+	depends = bison
 	provides = doas
 	replaces = opendoas
 	replaces = opendoas-git
-	source = doas-6.2p2.tar.gz::https://github.com/slicer69/doas/archive/6.2p2.tar.gz
-	source = doas.patch
+	backup = etc/doas.conf
+	backup = etc/pam.d/doas
+	source = doas-6.3p2.tar.gz::https://github.com/slicer69/doas/archive/6.3p2.tar.gz
+	source = 00-Makefile.patch
 	source = doas-pam
-	sha256sums = b8dc7e3357d12335ab6890d8303523862112416136bb50f170400cf5746dfd16
-	sha256sums = 44c737230bb5dcd797a856c3298a4154d49fea2c1823a0531dcb43076f42caee
-	sha256sums = f61f6b6d2e495dac44dd0d5ee870edf6d8bacbcc8a5059d74c4b91d2bf5c9d6f
+	source = doas.conf
+	sha256sums = 037813a404bfe35289f2c6cb22a8c4de6f636b2a491e546a90d2ae2afa54aa64
+	sha256sums = 600c7686b4c52bb28951e6e0815530d4bc8fec159637ad93d9b0757e750bcabd
+	sha256sums = b064704fb3448c3511904c3963b0e167ecf6274aea48afb9c42d452447dfd042
+	sha256sums = 1f28802fad6ae0eaa5b94bb8d945ada923631ddfb7ae63e934962dbe41774976
 
 pkgname = doas
 
