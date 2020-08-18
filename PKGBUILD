@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-keyboard-git
-pkgver=2.4.0.r16.g9d1ece0
+pkgver=2.4.0.r21.g967ff9a
 pkgrel=1
 pkgdesc='Switchboard Keyboard Plug'
 arch=('x86_64')
@@ -11,7 +11,7 @@ groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' 'libgee' 'libgnomekbd' 
          'libxklavier' 'libxml2' 'ibus'
          'libgranite.so' 'libswitchboard-2.0.so')
-makedepends=('git' 'granite-git' 'meson' 'switchboard-git' 'vala')
+makedepends=('git' 'granite' 'meson' 'switchboard' 'vala')
 provides=('switchboard-plug-keyboard')
 conflicts=('switchboard-plug-keyboard')
 source=('git+https://github.com/elementary/switchboard-plug-keyboard.git')
