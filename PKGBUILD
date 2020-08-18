@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-online-accounts-git
-pkgver=r707.9eefff8
+pkgver=2.0.1.r391.gb1853b7
 pkgrel=1
 pkgdesc='Switchboard Online Accounts Plug'
 arch=(x86_64)
@@ -24,9 +24,9 @@ depends=(
 )
 makedepends=(
   git
-  granite-git
+  granite
   meson
-  switchboard-git
+  switchboard
   vala
 )
 provides=(switchboard-plug-online-accounts)
@@ -37,7 +37,7 @@ sha256sums=(SKIP)
 pkgver() {
   cd switchboard-plug-online-accounts
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
