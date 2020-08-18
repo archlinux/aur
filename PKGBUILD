@@ -2,7 +2,7 @@
 
 _pkgname='surface-control'
 pkgname="${_pkgname}-git"
-pkgver=0.2.6.1.r0.gd2b4fea
+pkgver=0.2.7.1.r0.gf34dae0
 pkgrel=1
 pkgdesc='Control various aspects of Microsoft Surface devices from the Command-Line'
 url='https://github.com/linux-surface/surface-control'
@@ -18,9 +18,7 @@ source=(
     "${_pkgname}::git+https://github.com/linux-surface/surface-control.git"
 )
 
-sha256sums=(
-    'SKIP'
-)
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
