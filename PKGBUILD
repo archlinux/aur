@@ -3,7 +3,7 @@
 # Contributor sumt <sumt at sci dot fi>
 
 pkgname=yle-dl
-pkgver=20200628
+pkgver=20200807
 pkgrel=1
 pkgdesc="Download video and audio from YLE Areena."
 arch=('any')
@@ -14,14 +14,13 @@ depends=('ffmpeg'
        'python-configargparse>=0.13.0'
        'python-future'
        'python-lxml'
-       'python-mini-amf'
        'python-requests'
 )
 optdepends=('youtube-dl: an alternative downloader backend to AdobeHDS.php'
             'wget: for some rare streams')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/y/yle-dl/yle-dl-${pkgver}.tar.gz")
-sha256sums=('034db2735b2b603b4a9050919bdf7217adf68491506d6f555a54995be365e93b')
+sha256sums=('168709513671525e4adb5d733c563a297a24a7324b369301c7f1ffbb6817e938')
 
 
 build() {
