@@ -173,7 +173,7 @@ build() {
     -DLAF_BACKEND=skia \
     -DSKIA_DIR="${srcdir}/skia" \
     -DSKIA_LIBRARY_DIR="${srcdir}/skia/out/Release-x64" \
-    -DSKIA_LIBRARY="${srcdir}/deps/skia/out/Release-x64/libskia.a" \
+    -DSKIA_LIBRARY="${srcdir}/skia/out/Release-x64/libskia.a" \
     -G Ninja \
     ..
 
