@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: graysky <graysky AT archlinux DOT us>
 # Contributor: jiribb <jiribb@gmail.com>
 # Contributor: David Spicer <azleifel at googlemail dot com>
@@ -8,17 +8,17 @@
 
 pkgbase=handbrake-git
 pkgname=(handbrake-git handbrake-cli-git)
-pkgver=1.3.0.r95.gc8e4c8c34
-pkgrel=3
+pkgver=1.3.3.r11.gbb0e87129
+pkgrel=1
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=(i686 x86_64)
-url="http://handbrake.fr/"
+url="https://handbrake.fr/"
 license=(GPL)
-source=("${pkgname%-git}::git+https://github.com/HandBrake/HandBrake.git"
+source=("${pkgname%-git}::git+https://github.com/HandBrake/HandBrake.git#branch=1.3.x"
         'https://download.handbrake.fr/handbrake/contrib/AMF-1.4.9.tar.gz'
         'https://download.handbrake.fr/handbrake/contrib/dav1d-0.5.1.tar.bz2'
         'https://download.handbrake.fr/handbrake/contrib/fdk-aac-2.0.1.tar.gz'
-        'https://download.handbrake.fr/handbrake/contrib/ffmpeg-4.2.1.tar.bz2'
+        'https://download.handbrake.fr/handbrake/contrib/ffmpeg-4.2.2.tar.bz2'
     	'https://download.handbrake.fr/handbrake/contrib/libbluray-1.1.2.tar.bz2'
 	    'https://download.handbrake.fr/handbrake/contrib/libdvdnav-6.0.1.tar.bz2'
 	    'https://download.handbrake.fr/handbrake/contrib/libdvdread-6.0.2.tar.bz2'
@@ -37,7 +37,7 @@ sha256sums=('SKIP'
             'd10f75612da5bcbc26325adecc5d398dcddf216c0dae3406d9a29b9d0b44b112'
             '0214d201a338e8418f805b68f9ad277e33d79c18594dee6eaf6dcd74db2674a9'
             'a4142815d8d52d0e798212a5adea54ecf42bcd4eec8092b37a8cb615ace91dc6'
-            '682a9fa3f6864d7f0dbf224f86b129e337bc60286e0d00dffcd710998d521624'
+            'b620d187c26f76ca19e74210a0336c3b8380b97730df5cdf45f3e69e89000e5c'
             'a3dd452239b100dc9da0d01b30e1692693e2a332a7d29917bf84bb10ea7c0b42'
             'e566a396f1950017088bfd760395b0565db44234195ada5413366c9d23926733'
             'f91401af213b219cdde24b46c50a57f29301feb7f965678f1d7ed4632cc6feb0'
@@ -50,7 +50,7 @@ noextract=(
     'AMF-1.4.9.tar.gz'
     'dav1d-0.5.1.tar.bz2'
     'fdk-aac-2.0.1.tar.gz'
-    'ffmpeg-4.2.1.tar.bz2'
+    'ffmpeg-4.2.2.tar.bz2'
     'libbluray-1.1.2.tar.bz2'
     'libdvdnav-6.0.1.tar.bz2'
     'libdvdread-6.0.2.tar.bz2'
