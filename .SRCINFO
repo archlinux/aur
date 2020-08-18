@@ -1,13 +1,14 @@
 pkgbase = soundfont-jeux
 	pkgdesc = Jeux organ soundfont
 	pkgver = 2.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://realmac.info/jeux1.htm
 	arch = any
 	license = custom:Public Domain
-	noextract = jeux14.sf2
-	source = http://www.realmac.info/jeux14.sf2
-	md5sums = 44470f0a99b3819d057399f452a760ea
+	depends = unrar
+	noextract = Jeux14rev.rar
+	source = https://www.realmac.info/Jeux14rev.rar
+	md5sums = aec5602545283a50340fb80da8c3e316
 
 pkgname = soundfont-jeux
 
