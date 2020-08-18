@@ -8,7 +8,6 @@ pkgdesc="Mantained fork of mimi, a minimal and lightweight xdg-open drop-in repl
 url='https://github.com/BachoSeven/mimi'
 arch=('any')
 license=('GPL2')
-depends=('bash')
 makedepends=('git')
 source=("git+${url}.git")
 md5sums=('SKIP')
