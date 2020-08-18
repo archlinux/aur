@@ -64,11 +64,13 @@ pkgname = boost-libs-git
 	provides = libboost_unit_test_framework.so
 	provides = libboost_wave.so
 	provides = libboost_wserialization.so
+	provides = boost-libs
 
 pkgname = boost-git
 	pkgdesc = Free peer-reviewed portable C++ source libraries - development headers
 	depends = boost-libs=1.75.0
 	optdepends = python: for python bindings
 	optdepends = python2: for python2 bindings
+	provides = boost
 	options = staticlibs
 

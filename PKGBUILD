@@ -110,6 +110,7 @@ package_boost-git() {
    depends=("boost-libs=${pkgver}")
    optdepends=('python: for python bindings'
                'python2: for python2 bindings')
+   provides=('boost')
    options=('staticlibs')
 
    install -dm755 "${pkgdir}"/usr
@@ -147,7 +148,7 @@ package_boost-libs-git() {
      libboost_stacktrace_addr2line.so libboost_stacktrace_basic.so
      libboost_stacktrace_noop.so libboost_system.so libboost_thread.so
      libboost_timer.so libboost_type_erasure.so libboost_unit_test_framework.so
-     libboost_wave.so libboost_wserialization.so)
+     libboost_wave.so libboost_wserialization.so boost-libs)
 
    install -dm755 "${pkgdir}"/usr
    cp -a "${_stagedir}"/lib "${pkgdir}"/usr
