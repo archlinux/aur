@@ -1,12 +1,12 @@
 pkgbase = chkascii
 	pkgdesc = Check a file for any invalid ASCII characters
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/bourne-again/chkascii
 	arch = x86_64
-	license = GPL2
-	source = chkascii-2.1.tar.gz::https://github.com/bourne-again/chkascii/archive/2.1.tar.gz
-	sha256sums = fc485e01e1d641e1f980d2c4e31728ee8b8c2df0c821c58d36aef12b89d774e9
+	license = BSD
+	source = chkascii-2.2.tar.gz::https://github.com/bourne-again/chkascii/archive/2.2.tar.gz
+	sha256sums = f3c764eaed78b3ae14f7def83aa0ef2f4752e75db06125373d9644a1567e1c05
 
 pkgname = chkascii
 
