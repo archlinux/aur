@@ -1,0 +1,17 @@
+pkgbase = udprelay-git
+	pkgver = 1.0.0.r6.c861f84
+	pkgrel = 1
+	url = https://git.sr.ht/~kt/udprelay
+	arch = any
+	license = Unlicense
+	makedepends = make
+	makedepends = scdoc
+	makedepends = go
+	makedepends = git
+	provides = udprelay
+	conflicts = udprelay
+	source = udprelay::git+https://git.sr.ht/~kt/udprelay
+	sha512sums = SKIP
+
+pkgname = udprelay-git
+
