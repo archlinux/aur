@@ -1,6 +1,6 @@
 # Maintainer: Kevin Kaland <kevin@wizone.solutions>
 pkgname=platformsh-cli
-pkgver=3.60.3
+pkgver=3.62.0
 pkgrel=1
 pkgdesc="Platform.sh CLI"
 arch=('any')
@@ -19,7 +19,7 @@ options=()
 install=
 changelog=
 source=("$pkgname-$pkgver.phar::https://github.com/platformsh/platformsh-cli/releases/download/v$pkgver/platform.phar")
-sha256sums=('5f082fb0842dda60dd0265392ac23b4ecae09689b800722e524868a7f4176c81')
+sha256sums=('268164bb583dec30862098ccf9cc96cf9c998f54cb5bb01c34a58dd7715a7841')
 noextract=('$pkgname-$pkgver.phar')
 
 build() {
