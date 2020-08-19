@@ -6,7 +6,7 @@ _pkgname="${_name,,}.lv2"
 _plugin_uri="https://www.jahnichen.de/plugins/lv2/${_name}"
 pkgname="${_pkgname}-git"
 pkgdesc="Pattern-controlled MIDI amp & time stretch plugin to produce shuffle / swing effects (git version)"
-pkgver=0.3.r0.g2ca653c
+pkgver=1.2.0.r0.g0c0658c
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/sjaehn/BSchaffl"
@@ -36,7 +36,6 @@ build() {
 
 check() {
   cd "${srcdir}/${_pkgname}"
-  echo lv2lint -Mpack -I "${_name}.lv2/" "${_plugin_uri}"
   lv2lint -Mpack -I "${_name}.lv2/" "${_plugin_uri}"
 }
 

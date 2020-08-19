@@ -1,6 +1,6 @@
 pkgbase = bschaffl.lv2-git
 	pkgdesc = Pattern-controlled MIDI amp & time stretch plugin to produce shuffle / swing effects (git version)
-	pkgver = 0.3.r0.g2ca653c
+	pkgver = 1.2.0.r0.g0c0658c
 	pkgrel = 1
 	url = https://github.com/sjaehn/BSchaffl
 	arch = x86_64
