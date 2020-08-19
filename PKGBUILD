@@ -4,7 +4,7 @@
 
 pkgname=balena-etcher
 _pkgname=etcher
-pkgver=1.5.102
+pkgver=1.5.103
 pkgrel=1
 epoch=2
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
@@ -38,7 +38,7 @@ build() {
   cd "${_pkgname}"
   export NPM_VERSION=$(npm --version)
   make electron-develop
-  make webpack
+  npm run webpack
   npm prune --production
 }
 
