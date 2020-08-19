@@ -2,7 +2,7 @@
 # Contributor: Martin Wagner <martin.wagner.dev@gmail.com>
 
 pkgname=mpdevil-git
-pkgver=v0.4.4.r2.g08ff73d
+pkgver=v0.8.4.r28.g54e612a
 pkgrel=1
 pkgdesc="A small MPD client written in python (git version)"
 arch=('any')
