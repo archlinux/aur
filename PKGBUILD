@@ -2,13 +2,13 @@
 
 pkgname="deemix-pyweb-git"
 _pkgname="deemix-pyweb"
-pkgver=r234.2d94c24
+pkgver=r287.041f285
 pkgrel=1
 pkgdesc="This is a pywebview wrapper for deemix-webui"
 arch=('any')
 url="https://codeberg.org/RemixDev/$_pkgname"
 license=('gpl3')
-depends=('python>=3.6' 'deemix' 'python-flask' 'python-flask-socketio' 'python-pywebview' 'webkit2gtk>=2.22' 'python-gobject' 'python-cairo')
+depends=('python>=3.6' 'deemix' 'python-flask' 'python-flask-socketio' 'python-pywebview' 'python-pyqt5' 'python-pyqt5-sip' 'python-pyqtwebengine')
 makedepends=('git')
 provides=('deemix-pyweb')
 source=("${_pkgname}::git+https://codeberg.org/RemixDev/$_pkgname"
