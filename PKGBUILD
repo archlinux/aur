@@ -139,6 +139,7 @@ build() {
   # LTO/PGO needs more open files
   ulimit -n 4096
 
+  ./mach bootstrap --application-choice browser --no-interactive
   xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
   ./mach buildsymbols
 }
