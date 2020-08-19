@@ -10,6 +10,7 @@ license=('GPL-3.0')
 groups=()
 depends=()
 makedepends=(
+    "git"
 )
 
 options=()
@@ -26,12 +27,12 @@ pkgver() {
 build() {
 	cd "$srcdir/bruteforce-luks"
 	./autogen.sh
-        ./configure
-        make
+    ./configure
+    make
 }
 
 package() {
 	cd "$srcdir/bruteforce-luks"
-        mkdir -p $pkgdir/usr/bin
-        install -DT bruteforce-luks $pkgdir/usr/bin/bruteforce-luks
+    mkdir -p $pkgdir/usr/bin
+    install -DT bruteforce-luks $pkgdir/usr/bin/bruteforce-luks
 }
