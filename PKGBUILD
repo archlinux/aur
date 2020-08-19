@@ -2,16 +2,16 @@
 pkgbase=python-parfive
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A HTTP and FTP parallel file downloader"
 arch=('i686' 'x86_64')
 url="https://parfive.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools-scm' 'python-sphinx-astropy' 'python-aiohttp' 'python-tqdm' 'graphviz' 'python-sunpy-sphinx-theme')
-#checkdepends=('python-pytest-localserver' 'python-pytest-asyncio' 'python-pytest-socket' 'python-aioftp')
+checkdepends=('python-pytest-localserver' 'python-pytest-asyncio' 'python-pytest-socket' 'python-aioftp')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('2fe38ca23ee2c7bea7714b44c2cad10c')
+md5sums=('798f4a6b9067f45b76771d4926c1ab0a')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -24,11 +24,11 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   pytest
+    pytest || warning "Tests failed"
 }
 
 package_python-parfive() {
-    depends=('python>=3.6' 'python-tqdm' 'python-aiohttp')
+    depends=('python>=3.7' 'python-tqdm' 'python-aiohttp')
     optdepends=('python-aioftp: For downloads over FTP'
                 'python-parfive-doc: Documentation for Parfive')
     cd ${srcdir}/${_pyname}-${pkgver}
