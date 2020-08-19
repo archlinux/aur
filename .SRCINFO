@@ -1,6 +1,6 @@
 pkgbase = gnome-color-manager-git
 	pkgdesc = GNOME Color Profile Tools
-	pkgver = 3.35.90+1+g98904208
+	pkgver = 3.36.0+6+g589d24a4
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-color-manager
 	arch = x86_64
@@ -13,16 +13,13 @@ pkgbase = gnome-color-manager-git
 	makedepends = docbook-utils
 	makedepends = docbook-sgml
 	makedepends = perl-sgmls
-	depends = libcanberra
-	depends = vte3
-	depends = exiv2
 	depends = shared-color-targets
-	depends = colord-gtk
-	depends = libexif
-	optdepends = argyllcms: color calibration
+	depends = colord
+	depends = gtk3
+	depends = lcms2
 	provides = gnome-color-manager
 	conflicts = gnome-color-manager
-	source = git+https://gitlab.gnome.org/GNOME/gnome-color-manager.git#commit=
+	source = git+https://gitlab.gnome.org/GNOME/gnome-color-manager.git
 	sha512sums = SKIP
 
 pkgname = gnome-color-manager-git

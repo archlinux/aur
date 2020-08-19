@@ -1,18 +1,17 @@
 pkgname=gnome-color-manager-git
 _pkgname=gnome-color-manager
-pkgver=3.35.90+1+g98904208
+pkgver=3.36.0+6+g589d24a4
 pkgrel=1
 pkgdesc="GNOME Color Profile Tools"
 url="https://gitlab.gnome.org/GNOME/gnome-color-manager"
 arch=(x86_64)
 license=(GPL2)
-depends=('libcanberra' 'vte3' 'exiv2' 'shared-color-targets' 'colord-gtk' 'libexif')
+depends=('shared-color-targets' 'colord' 'gtk3' 'lcms2')
 makedepends=('yelp-tools' 'git' 'appstream-glib' 'meson' 'docbook-utils' 'docbook-sgml' 'perl-sgmls')
 checkdepends=('xorg-server-xvfb')
-optdepends=('argyllcms: color calibration')
 provides=('gnome-color-manager')
 conflicts=('gnome-color-manager')
-source=("git+https://gitlab.gnome.org/GNOME/gnome-color-manager.git#commit=$_commit")
+source=("git+https://gitlab.gnome.org/GNOME/gnome-color-manager.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -21,12 +20,14 @@ pkgver() {
 }
 
 build() {
-  arch-meson $_pkgname build -D packagekit=false
+  arch-meson $_pkgname build
   ninja -C build
 }
 
 check() {
-  xvfb-run meson test -C build
+  dbus-run-session xvfb-run \
+    -s '-screen 0 1920x1080x24 -nolisten local' \
+    meson test -C build --print-errorlogs
 }
 
 package() {
