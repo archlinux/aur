@@ -1,0 +1,35 @@
+--- src/pdf2htmlEX-continuous/pdf2htmlEX/CMakeLists.txt	2020-06-30 11:55:17.000000000 +0200
++++ CMakeLists.txt	2020-08-19 17:30:41.428261768 +0200
+@@ -270,18 +270,18 @@
+ 
+ ## tests:
+ 
+-set(PDF2HTMLEX_PATH ${CMAKE_BINARY_DIR}/pdf2htmlEX)
+-set(PDF2HTMLEX_TMPDIR /tmp/pdf2htmlEX/tmp)
+-set(PDF2HTMLEX_DATDIR /tmp/pdf2htmlEX/dat)
+-set(PDF2HTMLEX_PNGDIR /tmp/pdf2htmlEX/png)
+-set(PDF2HTMLEX_OUTDIR /tmp/pdf2htmlEX/out)
+-set(PDF2HTMLEX_HTMDIR /tmp/pdf2htmlEX/html)
+-file(MAKE_DIRECTORY ${PDF2HTMLEX_TMPDIR})
+-file(MAKE_DIRECTORY ${PDF2HTMLEX_DATDIR})
+-file(MAKE_DIRECTORY ${PDF2HTMLEX_PNGDIR})
+-file(MAKE_DIRECTORY ${PDF2HTMLEX_OUTDIR})
+-configure_file(${CMAKE_SOURCE_DIR}/test/test.py.in ${CMAKE_SOURCE_DIR}/test/test.py)
++#set(PDF2HTMLEX_PATH ${CMAKE_BINARY_DIR}/pdf2htmlEX)
++#set(PDF2HTMLEX_TMPDIR /tmp/pdf2htmlEX/tmp)
++#set(PDF2HTMLEX_DATDIR /tmp/pdf2htmlEX/dat)
++#set(PDF2HTMLEX_PNGDIR /tmp/pdf2htmlEX/png)
++#set(PDF2HTMLEX_OUTDIR /tmp/pdf2htmlEX/out)
++#set(PDF2HTMLEX_HTMDIR /tmp/pdf2htmlEX/html)
++#file(MAKE_DIRECTORY ${PDF2HTMLEX_TMPDIR})
++#file(MAKE_DIRECTORY ${PDF2HTMLEX_DATDIR})
++#file(MAKE_DIRECTORY ${PDF2HTMLEX_PNGDIR})
++#file(MAKE_DIRECTORY ${PDF2HTMLEX_OUTDIR})
++#configure_file(${CMAKE_SOURCE_DIR}/test/test.py.in ${CMAKE_SOURCE_DIR}/test/test.py)
+ 
+-include(CTest)
+-add_test(test_basic   python ${CMAKE_SOURCE_DIR}/test/test_output.py)
+-add_test(test_browser python ${CMAKE_SOURCE_DIR}/test/test_local_browser.py)
++#include(CTest)
++#add_test(test_basic   python ${CMAKE_SOURCE_DIR}/test/test_output.py)
++#add_test(test_browser python ${CMAKE_SOURCE_DIR}/test/test_local_browser.py)
