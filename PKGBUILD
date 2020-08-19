@@ -2,18 +2,18 @@
 
 pkgname='python-asv'
 _pkgname='asv'
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A simple benchmarking tool with web-based reporting."
-arch=('any')
+arch=('x86_64')
 url="https://asv.readthedocs.io"
 license=('BSD-3')
 depends=()
 checkdepends=('python-pytest' 'python-virtualenv')
 optdepends=()
 makedepends=('cython')
-source=("https://github.com/airspeed-velocity/asv/archive/v$pkgver.tar.gz")
-sha256sums=('68fe2035e1bc983c444a5b9e01919afaf2c9d92851791ea37e58a3bc611c92e5')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/airspeed-velocity/asv/archive/v$pkgver.tar.gz")
+sha256sums=('af5c83d4a5048be8147668564eb6da75a8e8284d5d0372cf956f880acfc09670')
 
 
 build(){
