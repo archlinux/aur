@@ -1,0 +1,14 @@
+pkgbase = golang-clash-geoip
+	pkgdesc = A GeoLite2 data created by MaxMind
+	pkgver = 20200812
+	pkgrel = 1
+	url = https://github.com/Dreamacro/maxmind-geoip
+	arch = any
+	license = custom
+	source = https://github.com/Dreamacro/maxmind-geoip/releases/download/20200812/Country.mmdb
+	md5sums = 09a90b1a1dd36ffdcfdd21fac4ab4c2f
+	sha1sums = 86bd25e7c30b1f67115421acd3e32f7522a33877
+	sha256sums = b0868bd0e4f9885d607befb31167fe5723d7579acb842862fd2fd04ec547b406
+
+pkgname = golang-clash-geoip
+
