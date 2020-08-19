@@ -30,7 +30,6 @@ pkgbase = hydrus
 	optdepends = miniupnpc: automatic port forwarding
 	optdepends = desktop-file-utils: to add Hydrus to your desktop environment menus
 	optdepends = python-cloudscraper: bypass cloudflare "checking your browser" challenges
-	optdepends = python-cloudscraper: bypass cloudflare "checking your browser" challenges
 	optdepends = python-pyqtchart: display bandwidth usage charts
 	conflicts = hydrus-docs
 	conflicts = hydrus-sources

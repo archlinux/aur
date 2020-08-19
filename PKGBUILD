@@ -22,7 +22,6 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
             'desktop-file-utils: to add Hydrus to your desktop environment menus'
             'python-cloudscraper: bypass cloudflare "checking your browser" challenges'
-            'python-cloudscraper: bypass cloudflare "checking your browser" challenges'
             'python-pyqtchart: display bandwidth usage charts')
 source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=730b21f8a37a632b9c446c017887c4fbb7d0fc97"
         paths-in-opt.patch
