@@ -8,7 +8,7 @@
 
 pkgname=findutils-selinux
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU utilities to locate files with SELinux support"
 arch=('x86_64')
 license=('GPL3')
@@ -30,6 +30,7 @@ build() {
   # which is a secure version of locate.
   sed -e '/^SUBDIRS/s/locate//' -e 's/frcode locate updatedb//' -i Makefile.in
 
+  autoreconf
   ./configure --prefix=/usr
   # don't build locate, but the docs want a file in there.
   make -C locate dblocation.texi

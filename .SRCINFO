@@ -1,7 +1,7 @@
 pkgbase = findutils-selinux
 	pkgdesc = GNU utilities to locate files with SELinux support
 	pkgver = 4.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/findutils/
 	arch = x86_64
 	groups = selinux
@@ -9,8 +9,8 @@ pkgbase = findutils-selinux
 	depends = glibc
 	depends = sh
 	depends = libselinux
-	provides = findutils=4.7.0-1
-	provides = selinux-findutils=4.7.0-1
+	provides = findutils=4.7.0-2
+	provides = selinux-findutils=4.7.0-2
 	conflicts = findutils
 	conflicts = selinux-findutils
 	source = https://ftp.gnu.org/pub/gnu/findutils/findutils-4.7.0.tar.xz
