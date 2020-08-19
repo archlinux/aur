@@ -1,7 +1,7 @@
 # Maintainer: Katie Wolfe <wolfe@katie.host>
 pkgname=udprelay
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('any')
 url='https://git.sr.ht/~kt/udprelay'
@@ -22,5 +22,5 @@ package() {
 	cd "${pkgname}-v${pkgver}"
 	install -Dm755 udprelay "${pkgdir}/usr/bin/udprelay"
 	install -Dm644 udprelay.1 "${pkgdir}/usr/share/man/man1/udprelay.1"
-	install -Dm644 udprelay.7 "${pkgdir}/usr/share/man/man1/udprelay.7"
+	install -Dm644 udprelay.7 "${pkgdir}/usr/share/man/man7/udprelay.7"
 }

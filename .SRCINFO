@@ -1,6 +1,6 @@
 pkgbase = udprelay
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~kt/udprelay
 	arch = any
 	license = Unlicense
