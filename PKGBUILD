@@ -2,7 +2,7 @@
 
 pkgname=lightdm-guest-account
 pkgver=1.30.0
-pkgrel=3
+pkgrel=4
 pkgdesc="LightDM shell script to enable guest account session."
 arch=('any')
 url="https://github.com/canonical/lightdm"
