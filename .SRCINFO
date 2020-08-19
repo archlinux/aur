@@ -1,6 +1,6 @@
 pkgbase = cfn-guard-git
 	pkgdesc = A set of tools to check AWS CloudFormation templates for policy compliance using a simple, policy-as-code, declarative syntax
-	pkgver = v0.5.beta.r0.g5cb0ac3
+	pkgver = v0.6.0.beta.r3.g952faf5
 	pkgrel = 1
 	url = https://github.com/aws-cloudformation/cloudformation-guard
 	arch = x86_64
