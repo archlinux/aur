@@ -1,6 +1,6 @@
 pkgbase = buildbox-common
 	pkgdesc = Shared protocol-buffer definitions and various helper functions
-	pkgver = 0.0.15.r0.gcd1802a
+	pkgver = 0.0.16.r0.g33de1f6
 	pkgrel = 1
 	url = https://buildgrid.build
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = buildbox-common
 	depends = grpc
 	depends = gtest
 	depends = gmock
-	source = git+https://gitlab.com/BuildGrid/buildbox/buildbox-common#commit=cd1802adaf3e62d8c5bca26c9c017c0ceec178ea
+	source = git+https://gitlab.com/BuildGrid/buildbox/buildbox-common#commit=33de1f641a396cee141d3b7c4939fdfcb3cbc60a
 	sha256sums = SKIP
 
 pkgname = buildbox-common
