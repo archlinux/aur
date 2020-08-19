@@ -22,7 +22,7 @@ optdepends=('python-neovim: for Python 3 plugin support (see :help python)'
             'wl-clipboard: for clipboard support on wayland (see :help clipboard)')
 source=("${pkgname}::git+https://github.com/neovim/neovim.git#tag=nightly")
 sha256sums=('SKIP')
-provides=("neovim=${_base_version}", "vim-plugin-runtime")
+provides=("neovim=${_base_version}" 'vim-plugin-runtime')
 conflicts=('neovim')
 options=(!strip)
 
