@@ -1,7 +1,7 @@
 # Maintainer: architekton <architekton350@gmail.com>
 
 pkgname=amass
-pkgver=3.8.2
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="In-depth subdomain enumeration written in Go"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/OWASP/Amass"
 license=('Apache')
 makedepends=('go' 'git')
 source=(Amass-$pkgver.tar.gz::https://github.com/OWASP/Amass/archive/v${pkgver}.tar.gz)
-sha512sums=('aec0b88200ab8fbcf0e610f1cb0d8131bb362390e9edaec202d519da7f634b0328712ae2f413b68027c2a7a4dfc6a52444d74180ac352500d1261fa4f37b6e19')
+sha512sums=('73294753eb2666200c4bed795fdd8eef68e73d8868f6c2fa61a5f9c84bcdfa41bf8fa9023bab786f95982285cf7bbd49dd870135b7235c5e877346628cb6c0e7')
 
 build() {
   cd "Amass-$pkgver"
@@ -37,5 +37,6 @@ package() {
   install -Dm 755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
   cp -a --no-preserve=ownership "examples/" "${pkgdir}/usr/share/${pkgname}"
-  chmod 644 "${pkgdir}/usr/share/${pkgname}/examples/"*
+  find "${pkgdir}/usr/share/${pkgname}/examples" -type d -exec chmod 755 {} \;
+  find "${pkgdir}/usr/share/${pkgname}/examples" -type f -exec chmod 644 {} \;
 }
