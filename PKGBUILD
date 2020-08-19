@@ -39,6 +39,6 @@ package() {
     mkdir -p "$pkgdir"/usr/bin
     chown -R root "$pkgdir"/opt/$pkgname/
     chmod 755 "$pkgdir"/opt/$pkgname/$pkgname
-    ln -s "$pkgdir"/opt/$pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname
+    ln -sf /opt/$pkgname/$pkgname "$pkgdir"/usr/bin/$pkgname 
     install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
