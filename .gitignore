@@ -1,4 +1,5 @@
 /pkg
 /src
 /*.tar.xz
-/mirror-all.jar
+/*.zst
+/mirror-*.jar
