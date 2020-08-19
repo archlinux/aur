@@ -1,13 +1,13 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=wp2latex-hg
-pkgver=r369.690681b7d114
+pkgver=r407.b8c3a686d9da
 pkgrel=1
 pkgdesc="Converts WordPerfect document formats to LaTeX"
 url="http://www.penguin.cz/~fojtik/${pkgname%-hg}/${pkgname%-hg}.htm"
 arch=('i686' 'x86_64')
 license=('GPL')
-source=("${pkgname%-hg}::hg+https://bitbucket.org/JaFojtik/wp2latex")
+source=("hg+https://hg.sr.ht/~haawda/${pkgname%-hg}")
 sha256sums=('SKIP')
 depends=('libjpeg' 'gcc-libs' 'libpng')
 makedepends=('mercurial')
@@ -17,8 +17,6 @@ pkgver() {
   cd ${pkgname%-hg}
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
-#prepare() {
-#}
 
 build() {
   # normal build
