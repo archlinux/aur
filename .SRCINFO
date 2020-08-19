@@ -1,0 +1,17 @@
+pkgbase = readability-extractor-git
+	pkgdesc = Wrapper around mozilla/readability to keep archivebox free from nodejs
+	pkgver = r7.0098f14
+	pkgrel = 1
+	url = https://github.com/pirate/readability-extractor
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = nodejs
+	provides = readability-extractor
+	conflicts = readability-extractor
+	source = readability-extractor::git+https://github.com/pirate/readability-extractor
+	sha256sums = SKIP
+
+pkgname = readability-extractor-git
+
