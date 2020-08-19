@@ -2,7 +2,7 @@
 
 _pkgname=tblfaker
 pkgname=python-${_pkgname}
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Python library to generate fake tabular data'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-faker' 'python-tabledata')
 makedepends=('python-setuptools')
 provides=("${_pkgname}")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('fa1581cbf7f352ae32adf1093f3973c6341fc67abbddc8c5e7ecd1df48456e7b')
+sha256sums=('48e3ff4f2c58d7d3c51ca61a2dcf807c394f54b1cac443d15241127a6169b198')
 
 build() {
   cd "${_pkgname}-${pkgver}"
