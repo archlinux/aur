@@ -1,15 +1,16 @@
 # Maintainer: Leonard von Hagen <lennivh24 at gmail dot com>
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
-pkgname=pdf2htmlEX
+pkgname=pdf2html-ex
+_p2hname=pdf2htmlEX
 pkgver=continuous
-pkgrel=1
-popplerver=0.89.0
-popplerurl="https://poppler.freedesktop.org/poppler"
-popplerdataver=0.4.9
-popplerdataurl="https://poppler.freedesktop.org/poppler-data"
-fontforgever=20200314
-fontforgeurl="https://github.com/fontforge/fontforge/archive"
+pkgrel=2
+_popplerver=0.89.0
+_popplerurl="https://poppler.freedesktop.org/poppler"
+_popplerdataver=0.4.9
+_popplerdataurl="https://poppler.freedesktop.org/poppler-data"
+_fontforgever=20200314
+_fontforgeurl="https://github.com/fontforge/fontforge/archive"
 pkgdesc="Convert PDF to HTML without losing text or format."
 arch=('x86_64')
 url="https://github.com/pdf2htmlEX/pdf2htmlEX"
@@ -19,10 +20,10 @@ depends=('freetype2' 'fontconfig' 'libjpeg-turbo' 'cairo' 'python3')
 makedepends=('cmake' 'git')
 # pkgconfig ruby openjdk8 jq
 optdepends=('ttfautohint: Provides automated hinting process for web fonts')
-source=("$pkgname-poppler-$popplerver.tar.xz::$popplerurl-$popplerver.tar.xz"
-        "$pkgname-poppler-data-$popplerdataver.tar.gz::$popplerdataurl-$popplerdataver.tar.gz"
-        "$pkgname-fontforge-$fontforgever.tar.gz::$fontforgeurl/$fontforgever.tar.gz"
-        "$pkgname-$pkgver.tar.gz::$url/archive/continuous.tar.gz"
+source=("$_p2hname-poppler-$_popplerver.tar.xz::$_popplerurl-$_popplerver.tar.xz"
+        "$_p2hname-poppler-data-$_popplerdataver.tar.gz::$_popplerdataurl-$_popplerdataver.tar.gz"
+        "$_p2hname-fontforge-$_fontforgever.tar.gz::$_fontforgeurl/$_fontforgever.tar.gz"
+        "$_p2hname-$pkgver.tar.gz::$url/archive/continuous.tar.gz"
         "50-disable-pdf2htmlex-tests.patch"
         "popplerFlags" "fontforgeFlags")
 sha256sums=('fba230364537782cc5d43b08d693ef69c36586286349683c7b127156a8ef9b5c'
@@ -35,18 +36,18 @@ sha256sums=('fba230364537782cc5d43b08d693ef69c36586286349683c7b127156a8ef9b5c'
             '35e431f050037d653a61654f9d9d3a13fe790178f4803ce045964fed4d9b7228')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "$_p2hname-$pkgver"
   patch "pdf2htmlEX/CMakeLists.txt" "${srcdir}/50-disable-pdf2htmlex-tests.patch"
 	rm -rf "poppler/" "poppler-data/" "fontforge/"
-	mv "../poppler-$popplerver/" "poppler/"
-	mv "../poppler-data-$popplerdataver/" "poppler-data/"
-	mv "../fontforge-$fontforgever/" "fontforge/"
+	mv "../poppler-$_popplerver/" "poppler/"
+	mv "../poppler-data-$_popplerdataver/" "poppler-data/"
+	mv "../fontforge-$_fontforgever/" "fontforge/"
 	rm -rf "pdf2htmlEX/build"
 	mkdir "poppler/build/" "fontforge/build/" "pdf2htmlEX/build"
 }
 
 build() {
-	cd "$pkgname-$pkgver/poppler/build/"
+	cd "$_p2hname-$pkgver/poppler/build/"
 	# ignore the commented flags using grep
 	cmake $(grep -v "^#" ${srcdir}/popplerFlags) ..
 	make
@@ -65,6 +66,6 @@ build() {
 package() {
   cd "$srcdir/pdf2htmlEX-${pkgver}/pdf2htmlEX/build/"
   make DESTDIR="${pkgdir}/" install
-  #install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  #install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${_p2hname}/LICENSE"
 	# don't need the license as it's bundled with the common licenses package
 }
