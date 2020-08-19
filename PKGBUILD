@@ -2,7 +2,7 @@
 # Contributor: CubeTheThird <cubethethird@gmail.com>
 
 pkgname=amidst
-_version='4.4'
+_version='4.5'
 pkgver=${_version//_/-}
 _jarver="v${_version}"
 _jarfile="${pkgname}-${_jarver/./-}.jar"
@@ -17,7 +17,7 @@ noextract=("$_jarfile")
 changelog=ChangeLog
 source=("https://github.com/toolbox4minecraft/amidst/releases/download/$_jarver/$_jarfile"
         amidst.desktop)
-md5sums=('6f7c05bd9af84b9d0803b2a393740379'
+md5sums=('61b9430299816a3d2ddeae97400401c0'
          'b56a5d2ba2e3c71ca2c7824d2434d823')
 
 prepare() {
@@ -41,7 +41,6 @@ package() {
 
     icon_sizes=(16 32 48 64 128 256)
     for s in "${icon_sizes[@]}"; do
-    echo $s
         install -Dm644 "amidst/icon/amidst-${s}x${s}.png" "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/amidst.png"
     done
 }

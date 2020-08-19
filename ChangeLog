@@ -1,3 +1,30 @@
+2020-08-18 CubeTheThird <cubethethird@gmail.com>
+
+	* 4.5-1 :
+	Version Bump.
+	
+	Upstream Changelog:
+	4.5:
+    - Add support up to Minecraft 1.16.2
+    - Add Bastion Remnants
+    - Fix full-resolution biome export not working correctly
+    - Fix 0 seed being wrongly interpreted as a random seed
+    - Fix Large Biomes worlds not being detected correctly
+    - Add missing copy/paste shortcuts on OS X
+	4.5_beta_3:
+	- Fix NoSuchMethodException crash when loading a world.
+	4.5_beta_2:
+    - 1.16 world saves now load correctly
+    - Fix inconsistent order in profile selection screen
+	4.5_beta_1:
+    - add support up to Minecraft 1.16.1 (no Nether biomes, for now)
+    - show correct biomes names when viewing a post-1.13 world
+    - add World > Export Biomes to Image menu item to export full-resolution biome data
+    - add Settings > Biome Profile > Create Example Profile menu item
+    - display profile icons in the profile selection screen
+    - display CPU usage along with FPS
+    - adjust zoom levels to cleanly hit powers of two
+
 2020-02-06 CubeTheThird <cubethethird@gmail.com>
 
 	* 4.4-1 :
