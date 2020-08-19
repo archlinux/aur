@@ -2,7 +2,7 @@
 # Contributor: laptander <dev-laptander a|t yandex d|o|t ru>
 pkgname=ipwebcam-gst-git
 pkgver=r118.e993f58
-pkgrel=1
+pkgrel=2
 pkgdesc="Use Android smartphone as webcam and/or microphone"
 arch=('any')
 url="https://github.com/bluezio/ipwebcam-gst"
@@ -16,8 +16,8 @@ depends=('android-tools'
 	 'zenity')
 makedepends=('git')
 optdepends=('pavucontrol: change playback/record devices')
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
+provides=("${pkgname%-gst-git}")
+conflicts=("${pkgname%-gst-git}")
 source=("$pkgname::git+$url.git#branch=master")
 sha256sums=('SKIP')
 

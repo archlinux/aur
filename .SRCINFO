@@ -14,8 +14,8 @@ pkgbase = ipwebcam-gst-git
 	depends = v4l2loopback-dkms
 	depends = zenity
 	optdepends = pavucontrol: change playback/record devices
-	provides = ipwebcam-gst-git
-	conflicts = ipwebcam-gst-git
+	provides = ipwebcam
+	conflicts = ipwebcam
 	source = ipwebcam-gst-git::git+https://github.com/bluezio/ipwebcam-gst.git#branch=master
 	sha256sums = SKIP
 
