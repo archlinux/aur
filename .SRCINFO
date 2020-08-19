@@ -1,0 +1,15 @@
+pkgbase = palmkit
+	pkgdesc = Publicly Available Language Modeling Toolkit
+	pkgver = 1.0.32
+	pkgrel = 1
+	url = http://palmkit.sourceforge.net/
+	arch = x86_64
+	license = unknown
+	makedepends = autoconf
+	depends = awk
+	depends = ruby
+	source = http://palmkit.sourceforge.net/palmkit-1.0.32.tar.gz
+	sha256sums = bbd26daa4c04104fdbc7fa7e45d8aec551cdf362c2c5ca882529d85bb61fa962
+
+pkgname = palmkit
+
