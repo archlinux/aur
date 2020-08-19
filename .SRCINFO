@@ -1,0 +1,16 @@
+pkgbase = python-ipysheet
+	pkgdesc = Spreadsheet in the jupyter notebook
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/QuantStack/ipysheet
+	arch = any
+	license = MIT
+	depends = python-six
+	depends = python-ipywidgets
+	optdepends = python-pandas
+	options = !emptydirs
+	source = python-ipysheet-0.4.4.tar.gz::https://pypi.org/packages/source/i/ipysheet/ipysheet-0.4.4.tar.gz
+	sha256sums = 54e9dffb4384db8586d3ca6be6fd5679157f6cf98ecc9ad368fa938f889e58b2
+
+pkgname = python-ipysheet
+
