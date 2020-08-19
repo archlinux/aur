@@ -3,7 +3,7 @@
 pkgname=disk-image-scripts
 pkgver=1.0
 pkgrel=1
-pkgdesc="Scripts for manipulating"
+pkgdesc="Scripts for manipulating raw images of disks as files"
 arch=('any')
 url="https://github.com/GIJack/disk-image-scripts"
 license=('GPLv3')

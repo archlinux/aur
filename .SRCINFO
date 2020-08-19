@@ -1,5 +1,5 @@
 pkgbase = disk-image-scripts
-	pkgdesc = Scripts for manipulating
+	pkgdesc = Scripts for manipulating raw images of disks as files
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/GIJack/disk-image-scripts
