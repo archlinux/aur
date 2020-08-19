@@ -1,0 +1,30 @@
+From a0535494becd877747261ff18b545a4d77c980ff Mon Sep 17 00:00:00 2001
+From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
+Date: Fri, 6 Mar 2020 18:53:42 -0300
+Subject: [PATCH 13/16] libobs: Add a Wayland platform
+
+Introduce the OBS_NIX_PLATFORM_WAYLAND enum value, and try to detect
+it when OBS Studio runs by looking into the platform name.
+---
+ UI/CMakeLists.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/UI/CMakeLists.txt b/UI/CMakeLists.txt
+index 171efa2b..70d6da79 100644
+--- a/UI/CMakeLists.txt
++++ b/UI/CMakeLists.txt
+@@ -408,6 +408,11 @@ if (ENABLE_WAYLAND)
+ 	include_directories(${Qt5Gui_PRIVATE_INCLUDE_DIRS})
+ endif()
+ 
++if (ENABLE_WAYLAND)
++	find_package(Qt5Gui)
++	include_directories(${Qt5Gui_PRIVATE_INCLUDE_DIRS})
++endif()
++
+ define_graphic_modules(obs)
+ 
+ install_obs_core(obs)
+-- 
+2.28.0
+

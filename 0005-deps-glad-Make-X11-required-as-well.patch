@@ -1,7 +1,7 @@
-From 6b71db73fb1aef30ad06e576d2b2377052ed9f56 Mon Sep 17 00:00:00 2001
+From 8191cd88f8273430e2976d774ac9189d17661f73 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Sat, 11 Apr 2020 23:49:05 -0300
-Subject: [PATCH 05/15] deps/glad: Make X11 required as well
+Subject: [PATCH 05/16] deps/glad: Make X11 required as well
 
 To keep consistency with the EGL line
 ---

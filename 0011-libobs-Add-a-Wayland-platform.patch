@@ -1,7 +1,7 @@
-From de53eda26763e1aa7ec82803fd231c0cf9c0a6c4 Mon Sep 17 00:00:00 2001
+From 5c5cf8e4dfd6b2930a25c5772a5679d39c75fc0d Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Fri, 6 Mar 2020 18:53:42 -0300
-Subject: [PATCH 11/15] libobs: Add a Wayland platform
+Subject: [PATCH 11/16] libobs: Add a Wayland platform
 
 Introduce the OBS_NIX_PLATFORM_WAYLAND enum value, and try to detect
 it when OBS Studio runs by looking into the platform name.

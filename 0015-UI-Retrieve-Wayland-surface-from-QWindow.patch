@@ -1,7 +1,7 @@
-From ded1e2a0201d3160ff1b427bab104870f29d516b Mon Sep 17 00:00:00 2001
+From 9a69ae56d2204501b45cf7b5471279e7d61e65ba Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Mon, 9 Mar 2020 21:23:37 -0300
-Subject: [PATCH 14/15] UI: Retrieve Wayland surface from QWindow
+Subject: [PATCH 15/16] UI: Retrieve Wayland surface from QWindow
 
 On Wayland, we want to query the window's underlying
 platform for the Wayland surface, instead of foolishly
