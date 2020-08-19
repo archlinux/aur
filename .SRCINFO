@@ -1,6 +1,6 @@
 pkgbase = hikari
 	pkgdesc = Stacking Wayland compositor with additional tiling capabilities, heavily inspired by the Calm Window manager (cwm)
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	epoch = 1
 	url = https://hikari.acmelabs.space
@@ -13,8 +13,8 @@ pkgbase = hikari
 	depends = pango
 	depends = xorg-server-xwayland
 	depends = libucl-git
-	source = https://hikari.acmelabs.space/releases/hikari-2.1.1.tar.gz
-	sha256sums = ab75c4563aa57ae3f207b05cbb6e023cad9fd2f96cabafa1b16ed7eaf22f546d
+	source = https://hikari.acmelabs.space/releases/hikari-2.1.2.tar.gz
+	sha256sums = 58300a67809b856ccb7d186a77b6cc8d29af36a7250783bd5d67dfd4d92fde31
 
 pkgname = hikari
 
