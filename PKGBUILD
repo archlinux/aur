@@ -1,26 +1,26 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=wp2latex  
-pkgver=3.88
+pkgver=3.91
 pkgrel=1
 pkgdesc="Converts WordPerfect document formats to LaTeX"
 url="http://www.penguin.cz/~fojtik/$pkgname/$pkgname.htm"
 arch=('i686' 'x86_64')
 license=('GPL')
-source=("${pkgname%-hg}::hg+https://bitbucket.org/JaFojtik/wp2latex#revision=347")
-sha256sums=('SKIP')
+source=("http://www.penguin.cz/~fojtik/$pkgname/$pkgname-$pkgver.zip")
+sha256sums=('968a6720eeaff958ee4a6e1603a36fdceb82946b76732fadab91ee27d64c4900')
 depends=('libjpeg' 'gcc-libs' 'libpng')
 options=('!strip')
 
 build() {
-  cd $pkgname/trunk
+  cd $pkgname-$pkgver
   autoconf
   CPPFLAGS+="-fpermissive" ./configure --prefix=/usr
   make x2latex
 }
 
 package() {
-  cd $pkgname/trunk
+  cd $pkgname-$pkgver
   install -Dm755 "${srcdir}"/$pkgname/trunk/bin/linux/$pkgname \
     $pkgdir/usr/bin/$pkgname 
   for _i in cs de
