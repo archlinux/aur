@@ -1,6 +1,6 @@
 pkgbase = buildbox-casd
 	pkgdesc = Local cache and proxy for remote CAS servers
-	pkgver = 0.0.15.r0.gc8c57e7
+	pkgver = 0.0.16.r0.g40abb9a
 	pkgrel = 1
 	url = https://buildgrid.build
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = buildbox-casd
 	makedepends = cmake
 	makedepends = git
 	depends = buildbox-common
-	source = git+https://gitlab.com/BuildGrid/buildbox/buildbox-casd#commit=c8c57e71b8d95f8cce5c4dbcdc1539bfa283fce2
+	source = git+https://gitlab.com/BuildGrid/buildbox/buildbox-casd#commit=40abb9af6047c73282cb0efb0cd1bc545d400e30
 	sha256sums = SKIP
 
 pkgname = buildbox-casd
