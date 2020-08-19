@@ -15,7 +15,7 @@ pkgdesc="Convert PDF to HTML without losing text or format."
 arch=('x86_64')
 url="https://github.com/pdf2htmlEX/pdf2htmlEX"
 license=('GPL3')
-depends=('freetype2' 'fontconfig' 'libjpeg-turbo' 'cairo' 'python3')
+depends=('fontconfig' 'freetype2' 'libjpeg-turbo' 'cairo' 'python3' 'libxml2')
 # gnu-libiconv-dev libpng-dev glib-dev libxml2-dev
 makedepends=('cmake' 'git')
 # pkgconfig ruby openjdk8 jq
