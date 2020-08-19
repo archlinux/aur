@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-messages"
-pkgver="0.6.2"
+pkgver="0.8.0"
 pkgrel="1"
 pkgdesc="Ayatana Indicator that collects messages that need a response"
 arch=("i686" "x86_64" "pentium4")
@@ -11,7 +11,7 @@ depends=("glib2" "accountsservice" "hicolor-icon-theme" "dconf")
 makedepends=("gobject-introspection" "gtk-doc" "intltool" "accountsservice" "mate-common" "vala")
 optdepends=("mate-ayatana-indicator-applet")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("da0c10624c6a1f967797d594f835b7a3")
+md5sums=("477bdef294633403d944bdb5b05b1527")
 options=("!emptydirs")
 provides=("indicator-messages")
 conflicts=("indicator-messages")
