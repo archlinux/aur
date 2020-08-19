@@ -1,7 +1,7 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 _pkgname=Weblate
 pkgname=weblate
-pkgver=4.1.1
+pkgver=4.2
 pkgrel=1
 
 pkgdesc="Web based localization tool with tight version control integration"
@@ -13,7 +13,7 @@ depends=('python-bleach'
          'borg'
          'python-celery'
          'cython'
-         'python-diff-match-patch'
+         'python-diff-match-patch>=20200713'
          'python-django-appconf'
          'python-django-compressor'
          'python-django-crispy-forms'
@@ -40,14 +40,16 @@ depends=('python-bleach'
          'python-sentry_sdk'
          'python-setuptools'
          'python-siphashc'
-         'python-social-auth-core>=3.3.3'
-         'python-social-auth-app-django>=3.4.0'
+         'python-social-auth-core'
+         'python-social-auth-app-django'
          'translate-toolkit'
          'python-translation-finder'
-         'python-user-agents>=2.0'
+         'python-user-agents'
          'python-weblate_schemas'
          'python-whoosh'
          'python-waitress'
+         'python-cssselect'
+         'python-methodtools'
          'systemd')
 optdepends=('python-psycopg2: postgres support'
             'python-mysqlclient: MySQL support'
@@ -68,11 +70,11 @@ source=("https://github.com/WeblateOrg/weblate/releases/download/weblate-${pkgve
         'celery-weblate.service'
         'logrotate-celery')
 
-sha256sums=('e878707ae8d93af90380e7d0cd78ee808b2c5038789d75461700fb09daa48712'
+sha256sums=('2883ff477b6cef2651fe8eaa0d64c2b2c6df57dc6157a6a867aedd5d5990e133'
             '115c69062ac231d71596ce6b7d4afd0c6ea9b934f50de062c58315b2ef007137'
-            '2f35e9244bd8af8a4432ebe87c4150989d7f00b740cdb1203153ed2e7325977d'
+            '094525f9bf6e40f96c58e089fc596319f557a4a20bd1b23f426352f94fa43dad'
             '065247e8a96f6db16c0d08b919e53cd5e04d71a2be94f2ff949dd726dee06394'
-            '3bc1748f72bee5023c7540b6c1335d7187111529b6ccdfc356131859fb169544'
+            'bd05e7b9ce5b2f03ce4c687d8d9e0308c02057ade6a594678e9ba72cd7bb633d'
             'd96c6e95c1f021343382582c6233c61dfdf04f8a99c16a3a9be9fc4eb6030ad6'
             '9825ea64a5f66dc17622ad86659867ea98810e757b2ba679de9b9e10e9ac3e06')
 install=weblate.install
