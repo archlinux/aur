@@ -1,6 +1,6 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgname=rubymine-eap
-pkgver=202.6948.7
+pkgver=202.6948.34
 _pkgname=RubyMine
 _pkgver=2020.2.1
 pkgrel=1
@@ -15,7 +15,7 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine-eap.desktop
         rubymine.install)
-sha256sums=('6080e4a509f40ae1acb07ef53be369c46569c81d61b8b5ef726168139bd887fe'
+sha256sums=('1e0685d4f84499d1ed8ce53a979e70d3c5eac606a4d0162216ec667d643f2ff4'
             '02b32d973da26ef7d61e4c291fff71229729b203661dc75cc947c8098cb8e660'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
