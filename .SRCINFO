@@ -1,0 +1,33 @@
+pkgbase = neovim-nightly-git
+	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs (pre-release build)
+	pkgver = 0.5.0.r634.g161cdba1e
+	pkgrel = 1
+	url = https://neovim.io
+	arch = x86_64
+	license = custom:neovim
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = lua51-mpack
+	makedepends = lua51-lpeg
+	makedepends = gperf
+	depends = libtermkey
+	depends = libuv
+	depends = msgpack-c
+	depends = unibilium
+	depends = libvterm
+	depends = luajit
+	depends = libluv
+	optdepends = python-neovim: for Python 3 plugin support (see :help python)
+	optdepends = xclip: for clipboard support on X11 (or xsel) (see :help clipboard)
+	optdepends = xsel: for clipboard support on X11 (or xclip) (see :help clipboard)
+	optdepends = wl-clipboard: for clipboard support on wayland (see :help clipboard)
+	provides = neovim=0.5.0,
+	provides = vim-plugin-runtime
+	conflicts = neovim
+	options = !strip
+	backup = etc/xdg/nvim/sysinit.vim
+	source = neovim-nightly-git::git+https://github.com/neovim/neovim.git#tag=nightly
+	sha256sums = SKIP
+
+pkgname = neovim-nightly-git
+
