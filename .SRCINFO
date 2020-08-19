@@ -1,0 +1,20 @@
+pkgbase = mpdevil
+	pkgdesc = A small MPD client written in python
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/SoongNoonien/mpdevil
+	arch = any
+	license = GPL3
+	makedepends = intltool
+	depends = python-mpd2
+	depends = gtk3
+	depends = libnotify
+	depends = python-gobject
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-dbus
+	source = https://github.com/SoongNoonien/mpdevil/archive/v0.8.4.tar.gz
+	sha256sums = 0407f44f1edc7e9a44e32db7c2e8e996e8fe8413ae62f18adf18ece304831c42
+
+pkgname = mpdevil
+
