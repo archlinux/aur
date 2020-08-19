@@ -15,6 +15,7 @@ pkgbase = ayatana-webmail
 	depends = desktop-file-utils
 	depends = libnotify
 	depends = libcanberra
+	depends = gnome-keyring
 	depends = python-babel
 	depends = python-gobject
 	depends = python-psutil
