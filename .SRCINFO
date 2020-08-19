@@ -1,14 +1,14 @@
 pkgbase = choose
 	pkgdesc = A human-friendly and fast alternative to cut and (sometimes) awk
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/theryangeary/choose
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
 	depends = gcc-libs
-	source = choose-1.3.0.tar.gz::https://github.com/theryangeary/choose/archive/v1.3.0.tar.gz
-	sha256sums = 95889215c57e3be9ea14b929f8a09858c740b1e78c608c2096812ce420eb099a
+	source = choose-1.3.1.tar.gz::https://github.com/theryangeary/choose/archive/v1.3.1.tar.gz
+	sha256sums = 6c44170f456f410370ba31d59bfad1f54a71ba80a79b87debbe235672a2ea0dd
 
 pkgname = choose
 
