@@ -1,12 +1,16 @@
 pkgname=subtitleedit
 pkgver=3.5.16
-pkgrel=1
+pkgrel=2
 pkgdesc="A subtitle editor"
 arch=('any')
 url="http://www.nikse.dk/subtitleedit/"
 license=('GPL3')
 depends=('mono')
-optdepends=('vlc: Video support')
+optdepends=(
+    'vlc: Video support'
+    'mpv: Video support'
+    'tesseract: OCR support'
+)
 makedepends=('unzip' 'imagemagick')
 _pkgver_nz="${pkgver%.0}"
 source=(
