@@ -1,0 +1,114 @@
+From 8b45f9589b3eb1ff46d16c774b017794e553db8e Mon Sep 17 00:00:00 2001
+From: Frediano Ziglio <fziglio@redhat.com>
+Date: Wed, 29 Jan 2020 09:06:54 +0000
+Subject: [PATCH] Fix poll_for_response race condition
+
+In poll_for_response is it possible that event replies are skipped
+and a more up to date message reply is returned.
+This will cause next poll_for_event call to fail aborting the program.
+
+This was proved using some slow ssh tunnel or using some program
+to slow down server replies (I used a combination of xtrace and strace).
+
+How the race happens:
+- program enters into poll_for_response;
+- poll_for_event is called but the server didn't still send the reply;
+- pending_requests is not NULL because we send a request (see call
+  to  append_pending_request in _XSend);
+- xcb_poll_for_reply64 is called from poll_for_response;
+- xcb_poll_for_reply64 will read from server, at this point
+  server reply with an event (say sequence N) and the reply to our
+  last request (say sequence N+1);
+- xcb_poll_for_reply64 returns the reply for the request we asked;
+- last_request_read is set to N+1 sequence in poll_for_response;
+- poll_for_response returns the response to the request;
+- poll_for_event is called (for instance from another poll_for_response);
+- event with sequence N is retrieved;
+- the N sequence is widen, however, as the "new" number computed from
+  last_request_read is less than N the number is widened to N + 2^32
+  (assuming last_request_read is still contained in 32 bit);
+- poll_for_event enters the nested if statement as req is NULL;
+- we compare the widen N (which now does not fit into 32 bit) with
+  request (which fits into 32 bit) hitting the throw_thread_fail_assert.
+
+To avoid the race condition and to avoid the sequence to go back
+I check again for new events after getting the response and
+return this last event if present saving the reply to return it
+later.
+
+To test the race and the fix it's helpful to add a delay (I used a
+"usleep(5000)") before calling xcb_poll_for_reply64.
+
+Signed-off-by: Frediano Ziglio <fziglio@redhat.com>
+---
+ src/Xxcbint.h |  1 +
+ src/xcb_io.c  | 28 ++++++++++++++++++++++++++--
+ 2 files changed, 27 insertions(+), 2 deletions(-)
+
+diff --git a/src/Xxcbint.h b/src/Xxcbint.h
+index 4ef13d2f..d8293259 100644
+--- a/src/Xxcbint.h
++++ b/src/Xxcbint.h
+@@ -27,6 +27,7 @@ typedef struct _X11XCBPrivate {
+ 	PendingRequest *pending_requests;
+ 	PendingRequest *pending_requests_tail;
+ 	xcb_generic_event_t *next_event;
++	void *next_response;
+ 	char *real_bufmax;
+ 	char *reply_data;
+ 	int reply_length;
+diff --git a/src/xcb_io.c b/src/xcb_io.c
+index 6a12d150..bc76b69f 100644
+--- a/src/xcb_io.c
++++ b/src/xcb_io.c
+@@ -274,6 +274,7 @@ static xcb_generic_reply_t *poll_for_response(Display *dpy)
+ {
+ 	void *response;
+ 	xcb_generic_error_t *error;
++	xcb_generic_reply_t *event;
+ 	PendingRequest *req;
+ 	while(!(response = poll_for_event(dpy, False)) &&
+ 	      (req = dpy->xcb->pending_requests) &&
+@@ -281,14 +282,37 @@ static xcb_generic_reply_t *poll_for_response(Display *dpy)
+ 	{
+ 		uint64_t request;
+ 
+-		if(!xcb_poll_for_reply64(dpy->xcb->connection, req->sequence,
+-					 &response, &error)) {
++		/* xcb_poll_for_reply64 could not set error */
++		error = NULL;
++
++		/* return next pending response relative to req */
++		if(dpy->xcb->next_response)
++		{
++			response = dpy->xcb->next_response;
++			dpy->xcb->next_response = NULL;
++			if (((xcb_generic_reply_t*)response)->response_type == X_Error)
++			{
++				error = response;
++				response = NULL;
++			}
++		}
++		else if (!xcb_poll_for_reply64(dpy->xcb->connection, req->sequence,
++					       &response, &error)) {
+ 			/* xcb_poll_for_reply64 may have read events even if
+ 			 * there is no reply. */
+ 			response = poll_for_event(dpy, True);
+ 			break;
+ 		}
+ 
++		/* xcb_poll_for_reply64 may have read events */
++		event = poll_for_event(dpy, True);
++		if(event)
++		{
++			dpy->xcb->next_response = error ? error : response;
++			response = event;
++			break;
++		}
++
+ 		request = X_DPY_GET_REQUEST(dpy);
+ 		if(XLIB_SEQUENCE_COMPARE(req->sequence, >, request))
+ 		{
+-- 
+2.28.0
+
