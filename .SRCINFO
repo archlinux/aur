@@ -1,0 +1,16 @@
+pkgbase = python-methodtools
+	pkgdesc = Expand functools features to methods, classmethods, staticmethods.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/methodtools/
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	depends = python-wirerope
+	source = methodtools-0.4.2.tar.gz::https://github.com/youknowone/methodtools/archive/0.4.2.tar.gz
+	sha256sums = 084e8cc6dc1e261938ea6d4240897677a048eae0214e1576673ee3be94e0ec92
+
+pkgname = python-methodtools
+
