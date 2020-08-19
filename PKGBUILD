@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=dmenu-term
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 license=('MIT')
 pkgdesc='dmenu as a terminal with fuzzy filter'
@@ -14,7 +14,7 @@ optdepends=('fzf: fuzzy filter'
             'kitty: currently supported terminal')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/maximbaz/${pkgname}/archive/${pkgver}.tar.gz"
         "https://github.com/maximbaz/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('d40627f5a25c58b41fd0e0d87b26e53db3594da0aacf872587ab6b4d10828561'
+sha256sums=('68643e96d460d9a5d8525420614cbab58152e5ff1ba176627d6744b753a882ed'
             'SKIP')
 validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
 
