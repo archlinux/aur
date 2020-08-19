@@ -1,8 +1,8 @@
-# Maintainer: NebulaNeko <chfsefefgesfen foxmail>
+# Maintainer: seiuneko <chfsefefgesfen foxmail>
 # Contributor: Radek Podgorny <radek@podgorny.cz>
 
 pkgname=novnc
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="HTML VNC Client Library and Application"
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('bash')
 optdepends=('websockify: WebSockets support for any application/server, also depend by novnc launch script.')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/noVNC/noVNC/archive/v${pkgver}.tar.gz")
-sha512sums=('9c736912f5a3051027efe779fc64b182f523b9378ff412d78202e52665772678846d97fe3cc5ac18f5c29dd83d5ff2a2dd915e5eadf9af3573fe871db2e7821e')
+sha512sums=('461490da7bb983e9c94b8ce39f8455ee6609b5a9df8d88254bcc37ebaa5153f5ee9db6afbd88b51762d6d55661bc5cde6fbe70616597583bfce1203e337adf75')
 
 
 prepare(){
