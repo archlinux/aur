@@ -1,0 +1,17 @@
+pkgbase = python-wirerope
+	pkgdesc = Wrapper interface for python callable
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/wirerope/
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	source = wirerope-0.4.2.tar.gz::https://github.com/youknowone/wirerope/archive/0.4.2.tar.gz
+	sha256sums = 48b7733ac4a2680e93c939099aad1e50a495373fde29c34e86f6425de5121f5a
+
+pkgname = python-wirerope
+
