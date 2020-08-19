@@ -3,7 +3,7 @@
 
 pkgname=icingaweb2-git
 _pkgname=icingaweb2
-pkgver=2.6.2.r21.g9571d1059
+pkgver=2.8.0.r23.ge5af1684a
 pkgrel=1
 pkgdesc="Icinga Web 2 Interface"
 license=('GPL')

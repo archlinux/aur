@@ -1,6 +1,6 @@
 pkgbase = icingaweb2-git
 	pkgdesc = Icinga Web 2 Interface
-	pkgver = 2.6.2.r21.g9571d1059
+	pkgver = 2.8.0.r23.ge5af1684a
 	pkgrel = 1
 	url = http://www.icinga.org
 	install = icingaweb2-git.install
