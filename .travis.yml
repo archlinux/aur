@@ -33,6 +33,7 @@ archlinux:
   - cuda
   - moreutils
   - openimagedenoise
+  - qt4
   - usd=20.05
   before_install:
 # 1.Override `package-cleanup.hook` to preserve cache for travis.
