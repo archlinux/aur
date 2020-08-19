@@ -5,6 +5,7 @@ pkgbase = rscrevolution
 	url = https://gitlab.com/gamerworld/application
 	arch = any
 	license = N/A
+	makedepends = git
 	depends = java-runtime>=11
 	provides = rscrevolution
 	conflicts = rscrevolution

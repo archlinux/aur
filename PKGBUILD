@@ -7,7 +7,7 @@ arch=('any')
 url="https://gitlab.com/gamerworld/application"
 license=('N/A')
 depends=('java-runtime>=11')
-makedepends=()
+makedepends=('git')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
 source=('git+https://gitlab.com/coreybruce/rscrevolution')
