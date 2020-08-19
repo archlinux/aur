@@ -2,7 +2,7 @@
 pkgname=fakecam-cli
 pkgver=0.0
 pkgrel=3
-pkgdesc="A fake webcam provider to stream custom video"
+pkgdesc="A fake webcam provider to stream custom video (CLI)"
 arch=('i686' 'x86_64')
 license=('MIT')
 groups=()
