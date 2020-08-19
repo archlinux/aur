@@ -1,6 +1,6 @@
 pkgbase = r-dplyr
 	pkgdesc = A Grammar of Data Manipulation
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dplyr
 	arch = i686
@@ -35,8 +35,8 @@ pkgbase = r-dplyr
 	optdepends = r-rsqlite
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/dplyr_1.0.1.tar.gz
-	md5sums = eef5c65425e70b4f3be766d734be3ce7
+	source = https://cran.r-project.org/src/contrib/dplyr_1.0.2.tar.gz
+	md5sums = ab151337eebdda1ed5d323605af6c5dd
 
 pkgname = r-dplyr
 
