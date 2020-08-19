@@ -1,7 +1,7 @@
 pkgbase = polo
 	pkgdesc = A modern, light-weight GTK file manager for Linux, currently in beta
 	pkgver = 18.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://teejee2008.github.io/polo/
 	arch = 686
 	arch = x86_64
@@ -24,9 +24,11 @@ pkgbase = polo
 	optdepends = lzop
 	optdepends = polo-donation-plugins
 	source = polo-18.8.3-538be6950d9394c90aa90be3973a3c8d9a27b999.tar.gz::https://github.com/teejee2008/polo/archive/538be6950d9394c90aa90be3973a3c8d9a27b999.tar.gz
-	source = 0001-Re-add-support-for-vte291-0.52.patch
+	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/polo-Re-add-support-for-vte291-0.52.patch
+	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/polo-fix-build.patch
 	sha256sums = ac96ad931024d7b96d5458f963753bf2bc92dc697dbfe5bb8bbc90aa98824443
 	sha256sums = 4ae33547220a7bfb7cd9806bd121acbc54c35a06958d40aa3cb1621688b5f69f
+	sha256sums = 895c7f21844fead0df7b044396ee972f55cd03e4cb5a218adc30e1605e274f45
 
 pkgname = polo
 
