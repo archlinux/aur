@@ -6,7 +6,7 @@ _svt_vp9_ver='0.2.2'
 
 
 pkgname=ffmpeg-full-git-hardened
-pkgver=4.4.r98732.g9f702fc8f4
+pkgver=4.3.git
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version; hardened toolchain; hardcoded tables; link time optimization)'
 arch=('x86_64')
