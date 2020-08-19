@@ -3,7 +3,7 @@
 
 _limit='ipt-ratelimit'
 pkgname='ipt_ratelimit'
-pkgver='0.3.1'
+pkgver='0.3.2'
 pkgrel='1'
 pkgdesc='Rate Policer as netfilter extension.'
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('linux' 'iptables')
 makedepends=('gcc')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ec6799f76e085f4e86e79565aa534f4652c0d6e1814187d19472ea2e5f74299f')
+sha256sums=('a1e6ba3039a0042fe31e4f6a5073842987618f405708e514ba9070c87056f75c')
 # define '-lts' for linux-lts package
 _linux_custom=""
 _kdir="`pacman -Ql linux${_linux_custom} | awk '/(\/modules\/)([0-9.-])+-(.*)'${_linux_custom}'\/$/ {print $2}' | head -n1`"
