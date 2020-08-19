@@ -2,7 +2,7 @@
 
 pkgname=flucky
 pkgver=v0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight golang program to read values from different sensors'
 arch=('any')
 url=https://git.cryptic.systems/volker.raschek/flucky
