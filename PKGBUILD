@@ -2,12 +2,12 @@
 
 pkgname=wp2latex-hg
 pkgver=r407.b8c3a686d9da
-pkgrel=1
+pkgrel=2
 pkgdesc="Converts WordPerfect document formats to LaTeX"
 url="http://www.penguin.cz/~fojtik/${pkgname%-hg}/${pkgname%-hg}.htm"
 arch=('i686' 'x86_64')
 license=('GPL')
-source=("hg+https://hg.sr.ht/~haawda/${pkgname%-hg}")
+source=("hg+http://hg.code.sf.net/p/wp2latex/wp2latex")
 sha256sums=('SKIP')
 depends=('libjpeg' 'gcc-libs' 'libpng')
 makedepends=('mercurial')
