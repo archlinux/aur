@@ -1,0 +1,17 @@
+pkgbase = fakecam-gui
+	pkgdesc = A fake webcam provider to stream custom video (GUI)
+	pkgver = 0.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = v4l2loopback-dkms
+	depends = gtk3
+	depends = polkit
+	depends = ffmpeg
+	source = fakecam-gui-v0.0.zip::https://github.com/UQuark0/fakecam-gui/archive/v0.0.zip
+	sha256sums = 205612773dbde6197e32c417f3d008847c6b61f8b3e3436bff2d1ede14822c68
+
+pkgname = fakecam-gui
+
