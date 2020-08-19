@@ -7,7 +7,7 @@
 # Contributor:  The Bitcoin Developers
 
 pkgname=electrum-nmc
-pkgver=3.3.10
+pkgver=3.3.11
 pkgrel=1
 pkgdesc='Namecoin port of Electrum client with name support'
 
@@ -54,7 +54,7 @@ conflicts=('electrum-nmc')
 
 source=("https://github.com/namecoin/electrum-nmc/archive/nc${pkgver}.tar.gz")
 
-sha256sums=('7f7e9b728c2ee648006d96fa1320279b62f1705fd7859e3274a579991fc09066')
+sha256sums=('8b21ba61e3792e1da592546379451f5a0d12ab30c357e2e90a1d3c5b3cd2ed67')
 
 prepare() {
     cd "$srcdir/electrum-nmc-nc${pkgver}/"
