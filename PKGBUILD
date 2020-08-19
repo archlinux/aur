@@ -2,7 +2,7 @@
 
 pkgname="razer-laptop-control-git"
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon and CLI for razer laptop's for RGB, fan and power control"
 arch=('i686' 'x86_64')
 url="https://github.com/rnd-ash/razer-laptop-control"
