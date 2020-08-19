@@ -1,0 +1,15 @@
+pkgbase = disk-image-scripts
+	pkgdesc = Scripts for manipulating
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/GIJack/disk-image-scripts
+	arch = any
+	license = GPLv3
+	depends = bash
+	depends = parted
+	depends = qemu
+	source = disk-image-scripts-1.0.tar.gz::https://github.com/GIJack/disk-image-scripts/archive/v1.0.tar.gz
+	sha256sums = 8624a59b079e32e3b6b2e2a6c985abdce760d59fdc2e93e127f87763e83d7eca
+
+pkgname = disk-image-scripts
+
