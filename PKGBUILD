@@ -8,8 +8,8 @@ pkgname=java-openjdk-loom-ea-bin
 
 # loom is currently based on JDK 16
 _majorver=16
-_prerelease=5
-_buildno=101
+_prerelease=6
+_buildno=105
 
 
 _buildver=${_prerelease}_${_buildno}
@@ -17,7 +17,7 @@ _buildver=${_prerelease}_${_buildno}
 pkgver=${_majorver}_${_buildver}
 pkgrel=1
 # must stick to use epoch as the old upstream broke version comparisons
-epoch=38
+epoch=39
 
 # Virtual threads (fibers) and continuations for the JVM
 # Early-Access JVM prototype - don't use in production
@@ -44,7 +44,7 @@ provides=(
 
 source=("https://download.java.net/java/early_access/loom/${_prerelease}/openjdk-${_majorver}-loom+${_prerelease}-${_buildno}_linux-x64_bin.tar.gz")
 
-sha256sums=('9497eb63dda1d83db325a625120fcb8fbf58eee11304ab056f28f557dc7dc100')
+sha256sums=('1ead1a760dd6b0daf981cb59752b60350b376aa1705080837aec2d828b2e2faa')
 
 _eaname=java-openjdk-loom-ea
 _jvmdir=/usr/lib/jvm/${_eaname}
