@@ -1,7 +1,7 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=sqlitecpp
 _dirname='SQLiteCpp'
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='A smart and easy to use C++ SQLite3 wrapper.'
 arch=('i686' 'x86_64')
@@ -12,14 +12,8 @@ license=('MIT')
 depends=('sqlite>=3.19')
 optdepends=('sqlcipher: for database encryption API')
 makedepends=('cmake>=3.1')
-source=("$pkgname-$pkgver::https://github.com/SRombauts/SQLiteCpp/archive/${pkgver}.tar.gz"
-	'0001-Fix-compilation-if-using-SQLITE_HAS_CODEC.patch')
-sha512sums=('2415f2c775a9c1c4cf709cfbd9e130fbf96a116b5b526c78fc03c87fba6b91058c03584e7b1700b37063c5232ff4b93eb8f30506624cb3f507f9787bcb2e6864'
-            '355ca5c9b0b26c5d9006227fb998fd2704fbbc2cdc9d9a75193b8046061d3e879df692041e9124144422ae612c3c8e40beabb6c93b10b9e8dbe245dcec85c2ca')
-prepare() {
-	cd "$_dirname-$pkgver"
-	patch --forward --strip=1 --input="${srcdir}/0001-Fix-compilation-if-using-SQLITE_HAS_CODEC.patch"
-}
+source=("$pkgname-$pkgver::https://github.com/SRombauts/SQLiteCpp/archive/${pkgver}.tar.gz")
+sha512sums=('9030b5249c149db8a5b2fe350f71613e4ee91061765a771640ed3ffa7c24aada4000ba884ef91790fdc0f13dc4519038c1edeba64b85b85ac09c3e955a7988a1')
 build() {
 	_has_sqlcipher='false'
 
