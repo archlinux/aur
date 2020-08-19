@@ -3,8 +3,8 @@
 # Maintainer: Cebtenzzre <cebtenzzre (at) gmail (dot) com>
 
 pkgname=libx11-threadsafe
-pkgver=1.6.9
-pkgrel=3
+pkgver=1.6.11
+pkgrel=1
 pkgdesc="X11 client-side library - threadsafe patches by Jacek Caban"
 arch=(x86_64)
 url="https://xorg.freedesktop.org/"
@@ -17,7 +17,7 @@ conflicts=("libx11=${pkgver}")
 license=('custom:XFREE86')
 source=(${url}/releases/individual/lib/libX11-${pkgver}.tar.bz2{,.sig}
         threadsafe.patch)
-sha512sums=('fc18f0dc17ade1fc37402179f52e1f2b9c7b7d3a1a9590fea13046eb0c5193b4796289431cd99388eac01e8e59de77db45d2c9675d4f05ef8cf3ba6382c3dd31'
+sha512sums=('2cb4e215c1e3ccb327e02586844f8c426068536a0f472a39f12191feace607f61a6a08586f03758248199678c2f6897a984b0f1222bc0d68fd2e02702f4ce0bf'
             'SKIP'
             '625e747ddbbd6d84d9198199ecb9d93aad4e39c2b20b618bb2cc283c4c5aa3dd83bc80d45b002b612ffff2c70bf8d7cf1d07152097221b0c144a6cc06e0f5d63')
 validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # Alan Coopersmith <alanc@freedesktop.org>
