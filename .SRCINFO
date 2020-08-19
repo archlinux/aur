@@ -1,6 +1,6 @@
 pkgbase = purple-gowhatsapp-git
 	pkgdesc = A libpurple/Pidgin plugin for WhatsApp Web, Powered by go-whatsapp
-	pkgver = r122.6930e00
+	pkgver = r157.be9ccd1
 	pkgrel = 1
 	url = https://github.com/hoehermann/purple-gowhatsapp
 	arch = x86_64

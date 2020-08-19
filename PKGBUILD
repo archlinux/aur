@@ -1,7 +1,7 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 pkgname=purple-gowhatsapp-git
 _pkgname=purple-gowhatsapp
-pkgver=r122.6930e00
+pkgver=r157.be9ccd1
 pkgrel=1
 pkgdesc="A libpurple/Pidgin plugin for WhatsApp Web, Powered by go-whatsapp"
 arch=('x86_64' 'i686')
