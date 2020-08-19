@@ -1,7 +1,7 @@
 pkgbase = fakecam
 	pkgdesc = A fake webcam provider to stream custom video
 	pkgver = 0.0
-	pkgrel = 3
+	pkgrel = 4
 	arch = i686
 	arch = x86_64
 	license = MIT
