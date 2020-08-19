@@ -1,0 +1,12 @@
+pkgbase = unimgc
+	pkgdesc = tool to decompress HDDGuru HDD Raw Copy Tool's proprietary .imgc compression format
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Shizmob/unimgc
+	arch = x86_64
+	license = WTFPL
+	source = https://github.com/Shizmob/unimgc/archive/v0.1.tar.gz
+	sha512sums = f70c5f39da60b67ece3a5dee807e66be88749af36f9dab5ea7ed45155d64eb3d5115d4b5b3df57941f44e702f67a754c14e0a419bb148660457bbef4e4244b8d
+
+pkgname = unimgc
+
