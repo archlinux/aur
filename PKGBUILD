@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=wl-clipboard-manager
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 license=('MIT')
 pkgdesc='Clipboard manager for Wayland'
@@ -15,7 +15,7 @@ depends=('wl-clipboard'
          'python')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/maximbaz/${pkgname}/archive/${pkgver}.tar.gz"
         "https://github.com/maximbaz/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('c94b786697596b31b7f7e95befc28189c0a49e450727db56d7aa24e54a8edbac'
+sha256sums=('8297e1c3e0b9577627e263899886e6bb0ace3c884b2f2ec5114d900d86dcfa91'
             'SKIP')
 validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
 
