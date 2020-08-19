@@ -1,0 +1,6 @@
+#!/bin/sh
+FNMT_ARGS=
+[ -e /usr/lib/libpcsclite.so.1 ] && \
+  FNMT_ARGS="-Dsun.security.smartcardio.library=/usr/lib/libpcsclite.so.1"
+CLASSPATH="/usr/share/java/configuradorfnmt/configuradorfnmt.jar"
+java ${FNMT_ARGS} -jar "${CLASSPATH}" "$@"

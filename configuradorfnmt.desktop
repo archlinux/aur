@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Configurador FNMT
+Comment=Tool for request keys and certificates of FNMT
+Exec=configuradorfnmt %U
+Icon=configuradorfnmt
+Terminal=false
+StartupNotify=true
+MimeType=x-scheme-handler/fnmtcr;
+Categories=System;Security;
+Keywords=FNMT;certificate;
