@@ -6,7 +6,7 @@
 
 _pkgname=plymouth
 pkgname=$_pkgname-nosystemd
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support for non systemd setups."
 url="http://www.freedesktop.org/wiki/Software/Plymouth"
@@ -20,7 +20,7 @@ conflicts=("plymouth" "plymouth-git")
 replaces=("plymouth" "plymouth-git")
 options=("!libtool" "!emptydirs")
 backup=("etc/plymouth/plymouthd.conf")
-source=("http://www.freedesktop.org/software/$_pkgname/releases/$_pkgname-$pkgver.tar.xz"
+source=("https://gitlab.freedesktop.org/$_pkgname/$_pkgname/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz"
         "arch-logo.png"
         "plymouth-start.path"
         "plymouth.encrypt_hook"
@@ -29,7 +29,7 @@ source=("http://www.freedesktop.org/software/$_pkgname/releases/$_pkgname-$pkgve
         "plymouth.initcpio_install"
         "plymouth-quit.service.in.patch"
         "plymouth-update-initrd.patch")
-sha256sums=("4a197a4f1a05785d7453dd829b231352fb2d09171bd86c5ffaafbb2dd6791351"
+sha256sums=("55a461003ece0a4daeffb8b7ac2178977c5ce024a7e688d24f6d2230465b50ba"
             "9bac679d2494d9b60b288be87021f1d7b85a9503ebbdce93d6e37c0fc07568ae"
             "ce3d62f4c5a1b5c0ccadd15406c7430251d1a42b232721bfbfc747da1b13e3ff"
             "cbfb5bcb6897703e088eefdee9d578f75d987116becafecbb2018b283ba3865e"
@@ -47,7 +47,7 @@ prepare() {
 
 build() {
   cd $_pkgname-$pkgver
-  LDFLAGS="$LDFLAGS -ludev" ./configure \
+  LDFLAGS="$LDFLAGS -ludev" ./autogen.sh \
     --prefix=/usr \
     --exec-prefix=/usr \
     --sysconfdir=/etc \
