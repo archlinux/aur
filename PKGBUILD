@@ -2,7 +2,7 @@
 
 _pkgbase=amd-sfh-hid
 pkgname="${_pkgbase}-dkms"
-pkgver=2.2.7
+pkgver=2.2.8
 pkgrel=1
 pkgdesc="Experimental HID driver modules for the AMD Sensor Fusion Hub (DKMS)"
 arch=('i686' 'x86_64')
@@ -25,11 +25,7 @@ package() {
 		install -m 644 "${file}" "${DEST}"
 	done
 
-	# Copy dkms.conf
-	install -m 644 dkms.conf "${DEST}"
-
-	# Set name and version
 	sed -e "s/@PKGNAME@/${_pkgbase}/" \
 	    -e "s/@PKGVER@/${pkgver}/" \
-	    -i "${DEST}/dkms.conf"
+	    dkms.conf > "${DEST}/dkms.conf"
 }
