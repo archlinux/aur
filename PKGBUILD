@@ -2,9 +2,9 @@
 
 pkgname=flucky
 pkgver=v0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A lightweight golang program to read values from different sensors'
-arch=('any')
+arch=('x86_64' 'armv7h')
 url=https://git.cryptic.systems/volker.raschek/flucky
 license=('Apache 2.0')
 makedepends=('git' 'go' 'make')
