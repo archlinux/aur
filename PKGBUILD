@@ -1,6 +1,7 @@
 # Maintainer: Patrik Bachan  <patrikbachan@gmail.com>
 _pkgname=lcd-image-converter
 pkgname=lcd-image-converter-git
+provides=('lcd-image-converter')
 pkgver=r1720.52ca14a
 pkgrel=1
 pkgdesc="Tool to create bitmaps and fonts for embedded applications. Tracking develop branch."

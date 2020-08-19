@@ -10,6 +10,7 @@ pkgbase = lcd-image-converter-git
 	depends = hicolor-icon-theme
 	depends = qt5-xmlpatterns
 	depends = qt5-svg
+	provides = lcd-image-converter
 	source = lcd-image-converter::git+https://github.com/riuson/lcd-image-converter.git#branch=develop
 	source = lcd-image-converter.desktop
 	sha1sums = SKIP
