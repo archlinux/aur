@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <m@mzz.pub>
 
 pkgname=v2raya
-pkgver=0.7.1.3
+pkgver=1.0.0
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports V2Ray, SS, SSR, Trojan and Pingtunnel protocols"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/mzz2017/v2rayA"
 license=('GPL')
 depends=('glibc' 'v2ray')
-makedepends=('go>=2:1.12.3-1')
+makedepends=('go>=2:1.12.3-1' 'nodejs>=12.13.0-1')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mzz2017/v2rayA/archive/v$pkgver.tar.gz")
 sha512sums=('SKIP')
 
@@ -18,6 +18,7 @@ build() {
     export GO111MODULE=on
     export GOPROXY=https://goproxy.io
     go build -ldflags="-X github.com/mzz2017/v2rayA/global.Version=$pkgver" -o v2raya
+    cd ../gui && npm install && npm run build
 }
 
 package() {
@@ -28,4 +29,7 @@ package() {
 
     install -Dm644 "gui/public/img/icons/android-chrome-512x512.png" "$pkgdir/usr/share/icons/v2raya.png"
     install -Dm755 "install/universal/v2raya.desktop" -t "$pkgdir/usr/share/applications/"
+
+    install -d -Dm755 "web" "$pkgdir/etc/v2raya/web"
+    cp -r web/* "$pkgdir/etc/v2raya/web"
 }
