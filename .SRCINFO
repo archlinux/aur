@@ -1,0 +1,24 @@
+pkgbase = stm32cubemonitor
+	pkgdesc = graphical software for helping debug and diagnose STM32 applications while they are running by reading and displaying their variables in real-time
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://my.st.com/content/my_st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-performance-and-debuggers/stm32cubemonitor.html
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = nodejs
+	depends = nss
+	depends = libxss
+	depends = libnotify
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libutil-linux
+	provides = stm32cubemonitor-bin
+	conflicts = stm32cubemonitor-bin
+	options = !strip
+	source = local://en.STM32CubeMonitor_lin.zip
+	sha256sums = d82c5282b8d3f64c68b58426bacd1b2139e3984bdb6df6262d3efa67712c9dfd
+
+pkgname = stm32cubemonitor
+
