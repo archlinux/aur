@@ -1,4 +1,4 @@
-pkgbase = notekit
+pkgbase = notekit-clatexmath-git
 	pkgdesc = A GTK3 hierarchical markdown notetaking application with tablet support.
 	pkgver = r107.61ad2d4
 	pkgrel = 1
@@ -20,5 +20,5 @@ pkgbase = notekit
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = notekit
+pkgname = notekit-clatexmath-git
 

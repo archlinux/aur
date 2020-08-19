@@ -5,8 +5,8 @@
 # Based on the work of AUR user atemu (notekit-git, https://aur.archlinux.org/packages/notekit-git/)
 #
 
-pkgname=notekit
-basename=${pkgname%-git}
+pkgname=notekit-clatexmath-git
+basename=${pkgname%-clatexmath-git}
 pkgver=r107.61ad2d4
 pkgrel=1
 pkgdesc="A GTK3 hierarchical markdown notetaking application with tablet support."
@@ -15,8 +15,8 @@ url="https://github.com/blackhole89/notekit"
 license=('GPL3')
 depends=('gtkmm3>=3.2' 'gtksourceviewmm>=3.18' 'jsoncpp' 'zlib')
 makedepends=('gcc' 'make' 'cmake')
-provides=("${pkgname}")
-conflicts=("${pkgname}" "${pkgname}-git")
+provides=("${basename}")
+conflicts=("${basename}" "${basename}-git")
 source=('git+https://github.com/blackhole89/notekit.git'
 	'git+https://github.com/NanoMichael/cLaTeXMath.git')
 sha256sums=('SKIP'
