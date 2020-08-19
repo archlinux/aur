@@ -3,7 +3,7 @@
 # Contributor: Xu Fasheng <fasheng.xu[AT]gmail.com>
 
 pkgname=udisks2-qt5
-pkgver=5.0.4
+pkgver=5.0.5
 pkgrel=1
 pkgdesc='UDisks2 DBus interfaces binding for Qt5'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url="https://github.com/linuxdeepin/udisks2-qt5"
 license=('GPL3')
 depends=('qt5-base' 'udisks2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/linuxdeepin/udisks2-qt5/archive/$pkgver.tar.gz")
-sha512sums=('70b6a4f9a9483760af9e5482cf9a094b79792df93ff58198e167b95892fdf364bf6c738d69d78b679bc4c95f92a4f2ff3b46d8eae948c1e0ea909cfa6594020b')
+sha512sums=('518e130077f2267939f91027d8dd6bdc7ecf266167bff6bd5dca7ae07b62d7cf5dde939a74dd53e97710b788ab456fb46d458694f1bf631c7704becd353aafcf')
 
 build() {
   cd udisks2-qt5-$pkgver
