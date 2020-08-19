@@ -3,7 +3,7 @@
 # Contributor: Stéphane Graber <stgraber AT ubuntu DOT com>
 
 pkgname=distrobuilder
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="System container image builder for LXC and LXD"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(rsync squashfs-tools gnupg debootstrap)
 makedepends=(go git)
 conflicts=(distrobuilder-git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lxc/$pkgname/archive/$pkgname-$pkgver.tar.gz")
-sha512sums=('f322435df87fc21fe479894a7d85df75fbf419f29371cca7ad621a1d7686162386c2a74a5dccfe09dc939023ac4e30508ae46a43b0e909ff2a82c78c25cb6d62')
+sha512sums=('cdbc99d30aacc6efcb6e499a8f5ad3df89d16726cc9513ee08976d01a1e86dacd4e88c37715e11da9a727e013af60481ac2ec3b3dab52ea039c5ec7d6e2f9586')
 
 prepare() {
   # create $GOPATH directory, plus some extras
