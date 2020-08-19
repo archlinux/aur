@@ -1,0 +1,19 @@
+Nope, we do not ignore the fread result, we actually check it like it should
+have been done ...
+---
+diff --no-dereference -urpN a/source/paint/detail/image_png.hpp b/source/paint/detail/image_png.hpp
+--- a/source/paint/detail/image_png.hpp	2020-08-19 18:36:32.888420665 +0200
++++ b/source/paint/detail/image_png.hpp	2020-08-19 18:39:25.116094825 +0200
+@@ -133,10 +133,10 @@ namespace nana
+ 				bool is_opened = false;
+ 
+ 				png_byte png_sig[8];
+-				::fread(png_sig, 1, 8, fp);
++				size_t result = ::fread(png_sig, 1, 8, fp);
+ 
+ 				//Test whether the file is a png.
+-				if(0 == png_sig_cmp(png_sig, 0, 8))
++				if((8 == result) && (0 == png_sig_cmp(png_sig, 0, 8)))
+ 				{
+ 					png_structp png_ptr = ::png_create_read_struct(PNG_LIBPNG_VER_STRING, 0, 0, 0);
+ 					if(png_ptr)

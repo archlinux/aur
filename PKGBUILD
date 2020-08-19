@@ -1,7 +1,7 @@
 # Maintainer: Wilken 'Akiko' Gottwalt <akiko@mailbox.org>
 
 pkgname=nana
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="An opensource cross-platform GUI library written in modern C++11 for static linking"
 arch=("i686" "x86_64")
@@ -10,20 +10,26 @@ license=("custom:Boost Software License")
 depends=("alsa-lib" "libjpeg-turbo" "libpng" "libx11" "libxft")
 makedepends=("alsa-lib" "cmake" "libjpeg-turbo" "libpng" "libx11" "libxft" "xorgproto")
 source=("https://sourceforge.net/projects/nanapro/files/Nana/Nana 1.x/nana_${pkgver}.zip"
-        "fix_the_little_issues.patch")
-sha256sums=('af69c2d570d32efdc386c5245cfcd05ebdde4e21c1459b229a78496d2609a9c3'
-            '0a00b824b90b9380be9a4376507b0880fb75466b8114275156f2d3bd44c9f32b')
+        "fix_the_little_issues.patch"
+        "fix_ignored_fread_png_value.patch")
+sha256sums=('c5a2e3cf83a9c43a61262c25921ed793280d6d3afbf2ea65364e5dd42440176a'
+            'fc49f8e342b1193e7eb36b83b82512b4e1250e58d23912b5a8b1a124944515c9'
+            '87af9d37341b588c9f52193ee241211366122e95b4392098a849e22bb9736801')
 
 prepare() {
     cd ${srcdir}/${pkgname}
 
     patch -Np1 -i ../fix_the_little_issues.patch
+    patch -Np1 -i ../fix_ignored_fread_png_value.patch
 }
 
 build() {
-    cd ${srcdir}/${pkgname}
-
-    cmake \
+    if [ ! -d "${srcdir}/${pkgname}_build_static" ]
+    then
+        mkdir ${srcdir}/${pkgname}_build_static
+    fi
+    cd ${srcdir}/${pkgname}_build_static
+    cmake ../${pkgname} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DNANA_CMAKE_ENABLE_AUDIO=YES \
@@ -31,10 +37,16 @@ build() {
         -DNANA_CMAKE_ENABLE_PNG=YES \
         -DNANA_CMAKE_INSTALL=YES \
         -DNANA_CMAKE_NANA_FILESYSTEM_FORCE=NO \
-        -DNANA_CMAKE_STD_FILESYSTEM_FORCE=YES
+        -DNANA_CMAKE_STD_FILESYSTEM_FORCE=YES \
+        -DNANA_CMAKE_INSTALL=ON
     make
 
-    cmake \
+    if [ ! -d "${srcdir}/${pkgname}_build_shared" ]
+    then
+        mkdir ${srcdir}/${pkgname}_build_shared
+    fi
+    cd ${srcdir}/${pkgname}_build_shared
+    cmake ../${pkgname} \
         -DBUILD_SHARED_LIBS=YES \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -43,15 +55,16 @@ build() {
         -DNANA_CMAKE_ENABLE_PNG=YES \
         -DNANA_CMAKE_INSTALL=YES \
         -DNANA_CMAKE_NANA_FILESYSTEM_FORCE=NO \
-        -DNANA_CMAKE_STD_FILESYSTEM_FORCE=YES
+        -DNANA_CMAKE_STD_FILESYSTEM_FORCE=YES \
+        -DNANA_CMAKE_INSTALL=ON
     make
 }
 
 package() {
-    cd ${srcdir}/${pkgname}
-
+    cd ${srcdir}/${pkgname}_build_shared
     make DESTDIR="${pkgdir}" install
-    cp ${srcdir}/${pkgname}/libnana.a ${pkgdir}/usr/lib
+
+    cp ${srcdir}/${pkgname}_build_static/libnana.a ${pkgdir}/usr/lib
 
     cd ${pkgdir}/usr/lib
     mv libnana.so libnana.so.${pkgver}
