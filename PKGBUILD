@@ -12,10 +12,16 @@ arch=('i686' 'x86_64')
 url='http://drawpile.net/'
 license=('GPL3')
 makedepends=('cmake' 'extra-cmake-modules' 'karchive' 'qt5-multimedia' 'qt5-svg' 'qt5-tools' 'qt5-x11extras')
-source=("http://drawpile.net/files/src/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('ee7f7ba81e6f1a9c3c32275f84364d10713c24ec040da8cb4b13c3ea6bb09086')
+source=("http://drawpile.net/files/src/${pkgbase}-${pkgver}.tar.gz" "qtfix.diff::https://github.com/drawpile/Drawpile/commit/b46115160c5587aae9306e57d4223906e74ed512.diff")
+sha256sums=('ee7f7ba81e6f1a9c3c32275f84364d10713c24ec040da8cb4b13c3ea6bb09086' '5b9f5d42f0db081496f9c5bde295751dba0e029dac7bf0a0b0c1d32eef60c5de')
 
-_cmakeargs+=('-Wno-dev' '-DKIS_TABLET=ON')
+_cmakeargs+=('-Wno-dev' '-DKIS_TABLET=ON' '-DSERVER=OFF' '-DSERVERGUI=OFF')
+
+prepare() {
+	cd "${pkgbase}-${pkgver}"
+	
+	patch --forward --strip=1 --input="${srcdir}/qtfix.diff"
+}
 
 build() {
 	cd "${pkgbase}-${pkgver}"

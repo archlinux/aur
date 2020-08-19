@@ -14,7 +14,9 @@ pkgbase = drawpile
 	makedepends = qt5-tools
 	makedepends = qt5-x11extras
 	source = http://drawpile.net/files/src/drawpile-2.1.17.tar.gz
+	source = qtfix.diff::https://github.com/drawpile/Drawpile/commit/b46115160c5587aae9306e57d4223906e74ed512.diff
 	sha256sums = ee7f7ba81e6f1a9c3c32275f84364d10713c24ec040da8cb4b13c3ea6bb09086
+	sha256sums = 5b9f5d42f0db081496f9c5bde295751dba0e029dac7bf0a0b0c1d32eef60c5de
 
 pkgname = drawpile
 	pkgdesc = Collaborative drawing program specially made for use with pen tablets (meta package)
