@@ -1,7 +1,7 @@
 # Maintainer: K900 <me@0upti.me>
 pkgname=windows2usb
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Windows 7/8/8.1/10 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS)"
 arch=("any")
@@ -9,6 +9,8 @@ url="https://github.com/ValdikSS/windows2usb"
 license=("Apache")
 
 depends=("bash" "awk" "ntfs-3g" "dosfstools" "util-linux" "p7zip" "ms-sys")
+
+conflicts=("windows2usb-git")
 
 source=(
     "git+https://github.com/ValdikSS/windows2usb.git#tag=${pkgver}"
