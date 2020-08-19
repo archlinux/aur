@@ -2,7 +2,7 @@
 # Contributor: Stephen Gregoratto <dev at sgregoratto dot me>
 pkgname=doas
 pkgver=6.3p2
-pkgrel=2
+pkgrel=3
 pkgdesc="A port of OpenBSD's doas(1), an alternative to sudo(1)"
 license=('BSD')
 url="https://github.com/slicer69/doas"
@@ -25,8 +25,7 @@ sha256sums=('037813a404bfe35289f2c6cb22a8c4de6f636b2a491e546a90d2ae2afa54aa64'
             '1f28802fad6ae0eaa5b94bb8d945ada923631ddfb7ae63e934962dbe41774976')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-	patch -i "${srcdir}/00-Makefile.patch"
+  patch "$pkgname-$pkgver/Makefile" "${srcdir}/00-Makefile.patch"
 }
 
 build() {
