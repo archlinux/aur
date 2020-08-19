@@ -1,7 +1,7 @@
 # Maintainer: Artemii Bigdan <reverse ni.nadgib@metra>
 pkgname=fakecam-gui
 pkgver=0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="A fake webcam provider to stream custom video (GUI)"
 arch=('i686' 'x86_64')
 license=('MIT')
