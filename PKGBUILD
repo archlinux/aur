@@ -1,7 +1,7 @@
 # Maintainer: Artemii Bigdan <reverse ni.nadgib@metra>
 pkgname=fakecam-gui
 pkgver=0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fake webcam provider to stream custom video (GUI)"
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -41,5 +41,5 @@ package() {
 	mv "fakecam-gui-$pkgver/fakecam-gui" "$pkgdir/usr/bin"
 
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-	mv "fakecam-gui-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname"
+	mv "fakecam-gui-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/"
 }
