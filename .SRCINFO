@@ -1,0 +1,13 @@
+pkgbase = otf-tex-gyre-dejavu-math
+	pkgdesc = The TeX Gyre DejaVu Math font is a math companion to the fine and popular DejaVu text fonts
+	pkgver = 1.106
+	pkgrel = 1
+	url = http://www.gust.org.pl/projects/e-foundry/tex-gyre-dejavu-math
+	arch = any
+	license = custom:GFL
+	conflicts = ttf-dejavu
+	source = http://www.gust.org.pl/projects/e-foundry/tex-gyre-dejavu-math/download/texgyredejavu-math-1106.zip
+	b2sums = 801ae4545d03d261050e6ab2d642a471c9664fa8e08a3633dee454eb99b43e910a3653a1b9caba9b1a91f1201d0885c6dc0ba9459062ec8d9e695c3dced678a9
+
+pkgname = otf-tex-gyre-dejavu-math
+
