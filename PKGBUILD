@@ -1,7 +1,7 @@
 # Maintainer: Artemii Bigdan <reverse ni.nadgib@metra>
 pkgname=fakecam-cli
 pkgver=0.0
-pkgrel=3
+pkgrel=1
 pkgdesc="A fake webcam provider to stream custom video (CLI)"
 arch=('i686' 'x86_64')
 license=('MIT')
