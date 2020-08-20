@@ -2,12 +2,12 @@
 
 pkgname=otf-kodomo-maru-gothic-narrow
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Japanese light rounded gothic font (Handwritten style)"
 arch=('any')
 url="http://typingart.net/?p=51"
 license=('custom')
-depends=('fontconfig' 'xorg-font-util')
+depends=('fontconfig' 'xorg-font-util' 'xorg-mkfontscale')
 makedepends=('unzip')
 install=otf-kodomo-maru-gothic-narrow.install
 source=("http://typingart.net/fontdata/kodomo_light.zip")
