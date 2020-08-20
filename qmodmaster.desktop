@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=qModMaster
+Comment=A free Qt-based implementation of a ModBus master application.
+Exec=qmodmaster
+Icon=/usr/share/qmodmaster/data/icon.png
+Type=Application
+StartupNotify=true

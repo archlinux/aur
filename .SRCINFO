@@ -1,0 +1,16 @@
+pkgbase = qmodmaster
+	pkgdesc = QModMaster is a free Qt-based implementation of a ModBus master application. A graphical user interface allows easy communication with ModBus RTU and TCP slaves. QModMaster also includes a bus monitor for examining all traffic on the bus.
+	pkgver = 0.5.2
+	pkgrel = 3
+	url = https://sourceforge.net/projects/qmodmaster/
+	arch = any
+	license = LGPLv3
+	makedepends = qt5-tools
+	depends = qt5-base
+	source = qmodmaster-code-0.5.2-3.zip::https://sourceforge.net/projects/qmodmaster/files/qModMaster-code-0.5.2-3.zip/download
+	source = qmodmaster.desktop
+	md5sums = a6d99220ab398395e40df27f7a6765bb
+	md5sums = 90ac286373187fbd954b5e12dd477ccf
+
+pkgname = qmodmaster
+
