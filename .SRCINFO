@@ -1,13 +1,13 @@
 pkgbase = python-fastprogress
 	pkgdesc = Simple and flexible progress bar for Jupyter Notebook and console
-	pkgver = 0.2.6
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/fastai/fastprogress
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
-	source = python-fastprogress-0.2.6.tar.gz::https://files.pythonhosted.org/packages/source/f/fastprogress/fastprogress-0.2.6.tar.gz
-	sha512sums = 6576dbf51efcc20c75298bd9be847f72c386dc53b16f662402fc9d9245137aaed8804c691c98f06524d74940969ea71e89d69d7248068790a5bee748e8a15713
+	source = python-fastprogress-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/f/fastprogress/fastprogress-1.0.0.tar.gz
+	sha512sums = d1ab29f18974bd15161bb337288dadc3df817cc6e7db90f8c37243797589bf90ae9bb107d1450bfdfdc6978ba9766daf134cc11620f93839f2b68042be296540
 
 pkgname = python-fastprogress
 
