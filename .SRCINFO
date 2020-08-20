@@ -1,6 +1,6 @@
 pkgbase = python-av1an-git
 	pkgdesc = A cross-platform all-in-one tool for streamlining AV1 encoding
-	pkgver = 1.12.r133.gca54cd3
+	pkgver = 1.12.r140.g6a27720
 	pkgrel = 1
 	url = https://github.com/master-of-zen/Av1an
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = python-av1an-git
 	depends = python-matplotlib
 	depends = ffmpeg
 	depends = aom
+	depends = hdf5
 	optdepends = svt-av1: SVT-AV1 encoder support
 	optdepends = rav1e: rav1e encoder support
 	optdepends = libvpx: vpx encoder support
