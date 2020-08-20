@@ -1,0 +1,22 @@
+pkgbase = haskell-hspec-hedgehog
+	pkgdesc = Integrate Hedgehog and Hspec!
+	pkgver = 0.0.1.2
+	pkgrel = 1
+	url = https://github.com/parsonsmatt/hspec-hedgehog/
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	makedepends = haskell-hspec
+	makedepends = haskell-hspec-core
+	makedepends = haskell-hedgehog
+	depends = ghc-libs
+	depends = haskell-hspec
+	depends = haskell-hspec-core
+	depends = haskell-hedgehog
+	depends = haskell-hunit
+	depends = haskell-quickcheck
+	source = https://hackage.haskell.org/packages/archive/hspec-hedgehog/0.0.1.2/hspec-hedgehog-0.0.1.2.tar.gz
+	sha256sums = 23582ee0f9807b2e49de5da4ae8ef83cb56db63a045a7db73d537eab35c9eb9d
+
+pkgname = haskell-hspec-hedgehog
+
