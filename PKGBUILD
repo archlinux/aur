@@ -4,12 +4,12 @@
 
 pkgname=pycharm-community-eap
 
-_buildver=202.6397.98
-_pkgver=2020.2
-_eap=n
+_buildver=202.6948.52
+_pkgver=2020.2.1
+_eap=y
 pkgver="$_pkgver.$_buildver"
 pkgrel=1
-epoch=6
+epoch=7
 
 pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build. Community edition.'
 arch=('any')
