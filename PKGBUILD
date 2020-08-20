@@ -3,9 +3,8 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 # Contributor: soloturn@gmail.com
 
-
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.07.22.a.r354.g79ff5e36e8d
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.08.18.a.r47.gfc34e4cf542
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -62,6 +61,12 @@ md5sums=(
     'SKIP'
 )
 
+
+# By default makepkg runs strip on binaries. This seems to cause issues with the Swift REPL.
+# Disable it in the PKGBUILD with:
+# from https://github.com/RLovelett/swift-aur/blob/master/PKGBUILD, not sure if necessary
+#options=(!strip)
+
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-not-build-ninja-icu.patch" )
     ( cd swift && patch -p1 -i "$srcdir/0003-swift-python2-as-fallback-only.patch" )
@@ -81,13 +86,14 @@ build() {
     find "$srcdir/llvm-project/clang-tools-extra" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
     # Release build
     #LDFLAGS='-ldl -lpthread' python utils/build-script -b -p --foundation --xctest -R
-    LDFLAGS='-ldl -lpthread' python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="$srcdir/build" installable_package="$srcdir/swift-arch-pkg.tar.gz"
+    LDFLAGS='-ldl -lpthread' python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="/opt/swift" installable_package="$srcdir/swift.tar.gz"
 }
 
 package() {
-  cd "$srcdir/build"
+  cd "$pkgdir"
   mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
-  cp -R Ninja-ReleaseAssert "$pkgdir/opt/swift"
+  # unpack the produced tar, to pack it again. how to avoid this pack-unpack-pack? 
+  tar xvf $srcdir/swift.tar.gz
   ln -s /opt/swift/swift-linux-$CARCH/bin/{lldb-moduleimport-test,sil-extract,sil-opt,swift,swift-autolink-extract,swiftc,swift-demangle,swift-ide-test,swift-llvm-opt} "$pkgdir/usr/bin"
 }
 
