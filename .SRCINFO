@@ -1,4 +1,4 @@
-pkgbase = pdf2html-ex
+pkgbase = pdf2htmlex
 	pkgdesc = Convert PDF to HTML without losing text or format.
 	pkgver = continuous
 	pkgrel = 2
@@ -29,5 +29,5 @@ pkgbase = pdf2html-ex
 	sha256sums = 55558182468c5b96a0c0ed0c3ce7d936c906d1cf3ec232d0a37735cdd8190a10
 	sha256sums = 35e431f050037d653a61654f9d9d3a13fe790178f4803ce045964fed4d9b7228
 
-pkgname = pdf2html-ex
+pkgname = pdf2htmlex
 

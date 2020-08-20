@@ -1,7 +1,7 @@
 # Maintainer: Leonard von Hagen <lennivh24 at gmail dot com>
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
-pkgname=pdf2html-ex
+pkgname=pdf2htmlex
 _p2hname=pdf2htmlEX
 pkgver=continuous
 pkgrel=2
