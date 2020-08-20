@@ -1,0 +1,19 @@
+pkgbase = haskell-hspec-golden
+	pkgdesc = Golden tests for hspec.
+	pkgver = 0.1.0.3
+	pkgrel = 1
+	url = https://github.com/stackbuilders/hspec-golden
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	makedepends = haskell-hspec
+	makedepends = haskell-hspec-core
+	makedepends = haskell-silently
+	depends = ghc-libs
+	depends = haskell-hspec-core
+	depends = haskell-optparse-applicative
+	source = https://hackage.haskell.org/packages/archive/hspec-golden/0.1.0.3/hspec-golden-0.1.0.3.tar.gz
+	sha256sums = 9418291aed76e7654591074a04e0ff4b25b2443f8b628370983c3860c958aab4
+
+pkgname = haskell-hspec-golden
+
