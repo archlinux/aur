@@ -1,0 +1,57 @@
+# Maintainer: Ben Golberg <ben@benaaron.dev>
+# Contributor: Felix Yan <felixonmars@archlinux.org
+# Contributor: Maxim Baz <$pkgname at maximbaz dot com>
+# Contributor: Pablo Arias <pabloariasal@gmail.com>
+# Contributor: John Jenkins <twodopeshaggy@gmail.com>
+
+pkgname=nnn-icons
+pkgver=3.4
+pkgrel=1
+pkgdesc="The fastest terminal file manager ever written. (with icon support)"
+arch=('x86_64')
+depends=('bash' 'icons-in-terminal')
+optdepends=(
+    'atool: for more archive formats'
+    'libarchive: for more archive formats'
+    'zip: for zip archive format'
+    'unzip: for zip archive format'
+    'trash-cli: to trash files'
+    'sshfs: mount remotes'
+    'rclone: mount remotes'
+    'fuse2: unmount remotes'
+    'xdg-utils: desktop opener'
+)
+url="https://github.com/jarun/nnn"
+license=('BSD')
+provides=(nnn)
+conflicts=(nnn)
+source=("nnn-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+        "nnn-${pkgver}.tar.gz.sig::${url}/releases/download/v${pkgver}/nnn-${pkgver}.tar.gz.sig")
+sha256sums=('7803ae6e974aeb4008507d9d1afbcca8d084a435f36ff636b459ca50414930a1'
+            'SKIP')
+validpgpkeys=('BBAD0B2F3093A7C3377A8F6BA75979F35C080412')
+
+prepare() {
+    sed -i 's/install: all/install:/' "nnn-${pkgver}/Makefile"
+}
+
+build() {
+    cd "nnn-${pkgver}"
+    make O_ICONS=1
+}
+
+package() {
+    cd "nnn-${pkgver}"
+    make DESTDIR="${pkgdir}" PREFIX=/usr install
+    make DESTDIR="${pkgdir}" PREFIX=/usr install-desktop
+
+    install -Dm644 misc/auto-completion/fish/nnn.fish "${pkgdir}/usr/share/fish/vendor_completions.d/nnn.fish"
+    install -Dm644 misc/auto-completion/bash/nnn-completion.bash "${pkgdir}/usr/share/bash-completion/completions/nnn"
+    install -Dm644 misc/auto-completion/zsh/_nnn "${pkgdir}/usr/share/zsh/site-functions/_nnn"
+
+    install -Dm644 -t "${pkgdir}/usr/share/nnn/quitcd/" misc/quitcd/*
+
+    cp -a plugins "${pkgdir}/usr/share/nnn/plugins/"
+
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/nnn/" LICENSE
+}
