@@ -4,7 +4,7 @@ pkgname=pmemd
 pkgver=20
 _toolsver=20
 _gccver=9.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="PMEMD module of AMBER software package"
 url="http://ambermd.org/"
 license=(custom)
@@ -46,6 +46,7 @@ build() {
 
   CC=gcc-9 CXX=g++-9 FC=gfortran-9 cmake $AMBER_PREFIX/amber${pkgver}_src \
       -DCMAKE_INSTALL_PREFIX=/opt/amber \
+      -DCHECK_UPDATES=FALSE \
       -DCOMPILER=MANUAL  \
       -DMPI=TRUE -DCUDA=TRUE \
       -DOPENMP=TRUE \
@@ -53,6 +54,7 @@ build() {
       -DDOWNLOAD_MINICONDA=FALSE \
       -DFORCE_DISABLE_LIBS="plumed" \
       -DFORCE_INTERNAL_LIBS="arpack;xblas;netcdf;netcdf-fortran;pnetcdf;fftw;boost;mpi4py" \
+      -Wno-dev \
       2>&1 | tee cmake.log
 
   cd src
