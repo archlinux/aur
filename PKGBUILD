@@ -1,19 +1,17 @@
 # Maintainer: Edward Pacman <edward@edward-p.xyz>
 
 pkgname=go-stun-git
-pkgver=r116.be486d1
+pkgver=r125.d587b28
 pkgrel=1
 pkgdesc="A go implementation of the STUN client (RFC 3489 and RFC 5389)"
 arch=('x86_64')
 url="https://github.com/ccding/go-stun"
 license=('Apache')
-source=("git+https://github.com/ccding/go-stun.git"
-        "10-build-in-src.patch")
+source=("git+https://github.com/ccding/go-stun.git")
 makedepends=("go" "git")
 provides=(go-stun)
 conflicts=(go-stun)
-sha256sums=('SKIP'
-            '1cc32a4bace519635092657b861fbf4d02753ec7480790c738f133fba97cc4fd')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/go-stun"
@@ -23,11 +21,6 @@ pkgver() {
   )
 }
 
-
-prepare(){
-    cd "${srcdir}/go-stun"
-    patch -Np1 < ../10-build-in-src.patch
-}
 
 build(){
     cd "${srcdir}/go-stun"
