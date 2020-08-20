@@ -28,10 +28,9 @@ build() {
   cmake ../ZRTPCPP-${pkgver} \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
-  make
+  cmake --build .
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  cmake --install build --prefix "${pkgdir}"/usr
 }
