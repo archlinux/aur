@@ -5,7 +5,7 @@
 # Contributor: tobias <tobias@archlinux.org>
 
 pkgname=libxfce4util-git
-pkgver=4.15.2.r1.ge475294
+pkgver=4.15.2.r2.g2fe428a
 pkgrel=1
 pkgdesc="Basic utility non-GUI functions for Xfce"
 arch=(i686 x86_64)
@@ -14,9 +14,8 @@ license=(GPL2)
 groups=(xfce4-git)
 depends=(glib2)
 makedepends=(git xfce4-dev-tools gobject-introspection vala)
-provides=(${pkgname%-*}=$pkgver)
+provides=(${pkgname%-*}=$pkgver%%+*)
 conflicts=(${pkgname%-*})
-options=(!libtool)
 source=($pkgname::git+https://gitlab.xfce.org/xfce/${pkgname%-*})
 sha256sums=('SKIP')
 sha512sums=('SKIP')
