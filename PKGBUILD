@@ -3,11 +3,12 @@
 
 pkgname=pambase-homed
 pkgver=20200524.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Base PAM configuration for services (systemd-homed version)"
 arch=('any')
 provides=('pambase=20190105.1-2')
 conflicts=('pambase')
+depends=('pam<1.4')
 url="https://wiki.archlinux.org/index.php/Systemd-homed"
 license=('GPL')
 source=('system-auth'

@@ -1,10 +1,11 @@
 pkgbase = pambase-homed
 	pkgdesc = Base PAM configuration for services (systemd-homed version)
 	pkgver = 20200524.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Systemd-homed
 	arch = any
 	license = GPL
+	depends = pam<1.4
 	provides = pambase=20190105.1-2
 	conflicts = pambase
 	backup = etc/pam.d/system-auth
