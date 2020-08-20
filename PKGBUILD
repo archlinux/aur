@@ -11,10 +11,11 @@ depends=('electron')
 makedepends=(
   'curl'
   'gendesk'
-  'nodejs-nativefier'
+  'nodejs'
+  'npm'
 )
 
-_name="Webex Teams"
+_name="Webex-Teams"
 
 prepare() {
   cat > "${pkgname}" <<EOF
@@ -28,6 +29,7 @@ EOF
     -n \
     -f
   curl https://mediafiles.webex.com/content/dam/wbx/us/images/hp/hp_56565/Teams_Iconx2.png > "${pkgname}.png"
+  npm install -g nativefier
 }
 
 build() {

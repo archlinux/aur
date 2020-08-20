@@ -1,5 +1,5 @@
 pkgbase = webex-teams
-	pkgdesc = Webex Teams, conference software from Webex
+	pkgdesc = Webex Teams, conference software from Cisco.
 	pkgver = 2020.08.20
 	pkgrel = 2
 	url = https://www.webex.com
@@ -7,7 +7,8 @@ pkgbase = webex-teams
 	license = MIT
 	makedepends = curl
 	makedepends = gendesk
-	makedepends = nodejs-nativefier
+	makedepends = nodejs
+	makedepends = npm
 	depends = electron
 
 pkgname = webex-teams
