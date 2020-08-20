@@ -1,7 +1,7 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=webex-teams
-pkgver=2020.08.20_2
+pkgver=2020.08.20_3
 pkgrel=2
 pkgdesc='Webex Teams, conference software from Cisco.'
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=(
   'nodejs-nativefier'
 )
 
-_name="Webex Teams"
+_name="webex-teams"
 
 prepare() {
   cat > "${pkgname}" <<EOF
@@ -43,8 +43,8 @@ build() {
 
 package() {
   mkdir -p "${pkgdir}/usr/share"
-  local _x=`echo "${_name}-linux-"*`
-  cp -r "${_x}/resources/app" "${pkgdir}/usr/share/${pkgname}"
+  ## local _x=`echo "${_name}-linux-"*`
+  cp -r "${srcdir}/resources/app" "${pkgdir}/usr/share/${pkgname}"
   install -Dm 755 -t "${pkgdir}/usr/bin/" "${pkgname}"
   install -Dm 644 -t "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
   install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_x}/LICENSE"

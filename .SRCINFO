@@ -1,6 +1,6 @@
 pkgbase = webex-teams
 	pkgdesc = Webex Teams, conference software from Cisco.
-	pkgver = 2020.08.20_2
+	pkgver = 2020.08.20_3
 	pkgrel = 2
 	url = https://www.webex.com
 	arch = any
