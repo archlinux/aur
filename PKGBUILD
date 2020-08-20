@@ -6,7 +6,7 @@
 pkgname=firefox-esr68
 _pkgname=firefox-esr
 pkgver=68.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release - 68.x branch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -14,7 +14,7 @@ url="https://www.mozilla.org/en-US/firefox/organizations/"
 depends=(gtk3 libxt startup-notification mime-types dbus-glib
          ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
-             xorg-server-xvfb autoconf2.13 rust=1.44.1 clang llvm jack gtk2
+             xorg-server-xvfb autoconf2.13 rust=1:1.44.1 clang llvm jack gtk2
              python nodejs python2-psutil cbindgen nasm)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
