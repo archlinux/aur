@@ -1,0 +1,13 @@
+pkgbase = hascard
+	pkgdesc = A TUI for reviewing notes using 'flashcards' written with markdown-like syntax.
+	pkgver = 0.2.1.0
+	pkgrel = 1
+	url = https://github.com/Yvee1/hascard
+	arch = x86_64
+	license = BSD-3
+	makedepends = stack
+	source = https://github.com/Yvee1/hascard/archive/v0.2.1.0.tar.gz
+	sha256sums = 9b49886c72c49424ba26314b0d5da2f595110b379c4ef612dc5a604b6543ad54
+
+pkgname = hascard
+
