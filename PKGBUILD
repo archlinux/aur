@@ -3,7 +3,7 @@
 _hkgname=tomland
 pkgname=haskell-tomland
 pkgver=1.3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of bidirectional TOML serialization."
 url="https://github.com/kowainik/tomland"
 license=('MPL2')
@@ -13,7 +13,7 @@ makedepends=('ghc' 'haskell-hedgehog' 'haskell-hspec' 'haskell-hspec-golden' 'ha
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz"
         Setup.hs
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('248675247b8664087ad037851610ec311b6e0c73a89b9cf4de1ddf97ddc07f95' '1e1679046e10c31286fee3e631e57e4ef60c89e562270c8a2a7131c051959916')
 
 prepare(){
   cd $_hkgname-$pkgver
