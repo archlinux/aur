@@ -15,8 +15,7 @@ makedepends=('rustup'
 checkdepends=()
 optdepends=()
 provides=("sl-sh-git")
-conflicts=("sl-sh-git"
-"sl-sh")
+conflicts=("sl-sh")
 replaces=()
 backup=()
 options=()
@@ -27,26 +26,28 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-prepare() {
-    mv "${pkgname%-git}" "${pkgname%-git}-$pkgver"
-}
-
 build() {
-    cd "${pkgname%-git}-$pkgver"
+    cd "${pkgname%-git}"
+    rustup toolchain install stable
     rustup target add x86_64-unknown-linux-musl
     # TODO look into using --locked, will require some new CI
     cargo build --release --target x86_64-unknown-linux-musl --all-features
 }
 
 check() {
-    cd "${pkgname%-git}-$pkgver"
+    cd "${pkgname%-git}"
     cargo check
 }
 
 package() {
-    cd "${pkgname%-git}-$pkgver"
-    strip "${srcdir}/${pkgname%-git}-$pkgver/target/x86_64-unknown-linux-musl/release/sl-sh"
-    install -D -m 755 "${srcdir}/${pkgname%-git}-$pkgver/target/x86_64-unknown-linux-musl/release/sl-sh" -t "${pkgdir}/usr/bin"
+    cd "${pkgname%-git}"
+    strip "${srcdir}/${pkgname%-git}/target/x86_64-unknown-linux-musl/release/sl-sh"
+    install -D -m 755 "${srcdir}/${pkgname%-git}/target/x86_64-unknown-linux-musl/release/sl-sh" -t "${pkgdir}/usr/bin"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
-    cp ${srcdir}/${pkgname%-git}-$pkgver/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    cp ${srcdir}/${pkgname%-git}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+}
+
+
+pkgver() {
+    echo "${pkgver}_$(git describe --always)"
 }
