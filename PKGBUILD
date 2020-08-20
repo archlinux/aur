@@ -1,7 +1,7 @@
 # Maintainer: silenf positron1998@gmail.com
 
 pkgname=joplin-appimage
-pkgver=1.0.233
+pkgver=1.0.235
 pkgrel=1
 pkgdesc="The latest pre-released AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
@@ -13,8 +13,8 @@ source=(
   ${url}/releases/download/v${pkgver}/Joplin-${pkgver}.AppImage
   ${url}/raw/v${pkgver}/LICENSE
 )
-sha256sums=(
-  e1e1e3b1430a5a0fccd921ca7e9fa83c7c87f2bdb0864372f0149c959629b3ba
+sha512sums=(
+  f57352ab8153a2abc43cb9c25f45f56e12a17ab436d2fafc28fb6fbe529e8792fb3edfaf78db1f1054c77183851f5a7f22152e34d0712c906b7c3b33ed229463
   SKIP
 )
 

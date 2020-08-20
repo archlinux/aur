@@ -1,15 +1,15 @@
 pkgbase = joplin-appimage
 	pkgdesc = The latest pre-released AppImage of Joplin - a cross-platform note taking and to-do app
-	pkgver = 1.0.233
+	pkgver = 1.0.235
 	pkgrel = 1
 	url = https://github.com/laurent22/joplin
 	arch = x86_64
 	license = MIT
 	options = !strip
-	source = https://github.com/laurent22/joplin/releases/download/v1.0.233/Joplin-1.0.233.AppImage
-	source = https://github.com/laurent22/joplin/raw/v1.0.233/LICENSE
-	sha256sums = e1e1e3b1430a5a0fccd921ca7e9fa83c7c87f2bdb0864372f0149c959629b3ba
-	sha256sums = SKIP
+	source = https://github.com/laurent22/joplin/releases/download/v1.0.235/Joplin-1.0.235.AppImage
+	source = https://github.com/laurent22/joplin/raw/v1.0.235/LICENSE
+	sha512sums = f57352ab8153a2abc43cb9c25f45f56e12a17ab436d2fafc28fb6fbe529e8792fb3edfaf78db1f1054c77183851f5a7f22152e34d0712c906b7c3b33ed229463
+	sha512sums = SKIP
 
 pkgname = joplin-appimage
 
