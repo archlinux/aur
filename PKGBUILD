@@ -25,7 +25,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-  cd "${_pkgname}"
+	cd "$srcdir/$pkgname-$pkgver"
   printf "1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
