@@ -1,56 +1,42 @@
-# Maintainer: James Zhu <james.zhu.engineer@gmail.com>
+# Maintainer: Lukas1818 <aur at lukas1818 dot de>
 
 pkgname=gog-ftl
 _name=gog-ftl-advanced-edition
-pkgver=2.0.0.2
+epoch=1
+pkgver=1.6.12
 pkgrel=1
 pkgdesc="Spaceship simulation roguelike-like (GOG version). Take your ship and crew through a randomly generated galaxy filled with glory and bitter defeat."
-url="http://subsetgames.com/ftl.html"
+url="https://www.gog.com/game/faster_than_light"
 license=('custom')
 arch=('i686' 'x86_64')
+makedepends=('lgogdownloader')
 depends=('sdl2')
-source=("gog://${_name//-/_}_${pkgver}.sh"
-        "${pkgname}.desktop")
-sha256sums=('bda9a40e1ce857eaa9102fe9c0ec405d94c8a120657b5fab29315e70f63cc5ae'
-            'e78e5e92de0677770ecbc981acccef10766bcb3c384b50da60a3dfa3b217de16')
+source=("ftl_advanced_edition.sh_${pkgver}.sh::gogdownloader://1207659102/en3installer0"
+        "ftl.desktop")
+sha256sums=('aac8bdcbbf47b823f77889e27be77d52dfde041c4977ec375176a2a52063e0c9'
+            '34d225685c9b06ba2f70a08ab5f341a271c1b98c8ff7e3b593432a45c79b8dec')
 
-PKGEXT='.pkg.tar'
-
-# You need to download the gog.com installer file manually or with lgogdownloader.
-DLAGENTS+=("gog::/usr/bin/echo %u - This is is not a real URL, you need to download the GOG file manually to \"$PWD\" or setup a gog:// DLAGENT. Read this PKGBUILD for more information.")
+DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 
 prepare(){
-    # Unzip will produce an error code because it is unable to unzip the Installer.
-    # Therefore, a conditional into a no-op command will keep the PKGBUILD from failing
-    # Of course, if you have any real problems unzipping the PKGBUILD will not abort.
-    unzip "${_name//-/_}_${pkgver}.sh" || :
-    cd "${srcdir}/data/noarch"
-
-    sed -r -i \
-    's/(CURRENT_DIR="\$\( cd "\$\( dirname )'`
-      `'"\$\{BASH_SOURCE\[0\]\}"(.*$)'`
-      `'/\1$( readlink -nf "${BASH_SOURCE[0]}" )\2/' \
-    "start.sh"
+	sed -i 's/^here=.*$/here=\/opt\/gog-ftl\ncd "$here"/' "${srcdir}/data/noarch/game/data/FTL"
+	sed -i 's/^command=.*$/command=FTL/'                  "${srcdir}/data/noarch/game/data/FTL" 
 }
 
 package(){
-    cd "${srcdir}/data/noarch"
-    # Install game
-    install -d "${pkgdir}/opt/${pkgname}/"
-    install -d "${pkgdir}/opt/${pkgname}/support"
-    install -d "${pkgdir}/usr/bin/"
-    cp -r "game/" "${pkgdir}/opt/${pkgname}/"
-    chmod -R 666 "${pkgdir}/opt/${pkgname}/game/data/resources/"
-    install -Dm755 "start.sh" "${pkgdir}/opt/${pkgname}/"
-    install -Dm644 "gameinfo" "${pkgdir}/opt/${pkgname}/"
-    install -Dm755 support/*.{sh,shlib} -t "${pkgdir}/opt/${pkgname}/support"
+	# Install game
+	mkdir -p "${pkgdir}/opt/$pkgname"
+	cp -r "${srcdir}/data/noarch/game/data" -T "${pkgdir}/opt/$pkgname"
+	chmod -R 644 "${pkgdir}/opt/$pkgname/"
+	chmod    755 "${pkgdir}/opt/$pkgname" "${pkgdir}/opt/$pkgname/FTL" "${pkgdir}/opt/$pkgname/FTL.amd64" "${pkgdir}/opt/$pkgname/FTL.x86"
 
-    # Desktop integration
-    install -Dm 644 "support/icon.png" \
-        "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "docs/End User License Agreement.txt" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm 644 "${srcdir}/${pkgname}.desktop" \
-        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    ln -s "/opt/${pkgname}/start.sh" "${pkgdir}/usr/bin/${pkgname}"
+	# Desktop integration
+	install -Dm 644 "${srcdir}/data/noarch/game/data/exe_icon.bmp" \
+		"${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -Dm 644 "${srcdir}/data/noarch/docs/End User License Agreement.txt" \
+		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm 644 "${srcdir}/ftl.desktop" \
+ 		"${pkgdir}/usr/share/applications/ftl.desktop"
+ 	install -dm 755 "${pkgdir}/usr/bin/" 
+	mv "${pkgdir}/opt/${pkgname}/FTL" "${pkgdir}/usr/bin/ftl"
 }

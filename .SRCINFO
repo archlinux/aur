@@ -1,16 +1,18 @@
 pkgbase = gog-ftl
 	pkgdesc = Spaceship simulation roguelike-like (GOG version). Take your ship and crew through a randomly generated galaxy filled with glory and bitter defeat.
-	pkgver = 2.0.0.2
+	pkgver = 1.6.12
 	pkgrel = 1
-	url = http://subsetgames.com/ftl.html
+	epoch = 1
+	url = https://www.gog.com/game/faster_than_light
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = lgogdownloader
 	depends = sdl2
-	source = gog://gog_ftl_advanced_edition_2.0.0.2.sh
-	source = gog-ftl.desktop
-	sha256sums = bda9a40e1ce857eaa9102fe9c0ec405d94c8a120657b5fab29315e70f63cc5ae
-	sha256sums = e78e5e92de0677770ecbc981acccef10766bcb3c384b50da60a3dfa3b217de16
+	source = ftl_advanced_edition.sh_1.6.12.sh::gogdownloader://1207659102/en3installer0
+	source = ftl.desktop
+	sha256sums = aac8bdcbbf47b823f77889e27be77d52dfde041c4977ec375176a2a52063e0c9
+	sha256sums = 34d225685c9b06ba2f70a08ab5f341a271c1b98c8ff7e3b593432a45c79b8dec
 
 pkgname = gog-ftl
 
