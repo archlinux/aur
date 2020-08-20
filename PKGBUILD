@@ -4,7 +4,7 @@
 # Contributor: Fredy García <frealgagu at gmail dot com>
 
 pkgname=mongodb-tools
-pkgver=4.2.7
+pkgver=4.2.8
 pkgrel=1
 pkgdesc="The MongoDB tools provide import, export, and diagnostic capabilities."
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('Apache')
 depends=('libpcap')
 makedepends=('go-pie')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mongodb/mongo-tools/archive/r${pkgver}.tar.gz")
-sha512sums=('f39f1df5d3ff6dac3a6f7cc52c210daaac6bee939f840394dfefc44d93d1c5ccee8a6f8b4fedabdb328fe3036bd9ffeb26f31a7d5c6a17ae60ecec6b67cd353f')
+sha512sums=('c0fca14c60e5f399934f4dfad5be832684d2c1a1145967a4c395b246774f73f71e506bff902a634b7f08f7133304c09f14eb56a1a6fc8585608f537e59d9c899')
 
 _tools=('bsondump' 'mongostat' 'mongofiles' 'mongoexport' 'mongoimport' 'mongorestore' 'mongodump' 'mongotop' 'mongoreplay')
 
