@@ -1,4 +1,4 @@
-# Maintainer: Leonard von Hagen <lennivh24 at gmail dot com>
+# Maintainer: d0lphin <scrouthtv [at] gmail [dot] com>
 # Contributor: Stephen Gregoratto <dev at sgregoratto dot me>
 pkgname=doas
 pkgver=6.3p2
