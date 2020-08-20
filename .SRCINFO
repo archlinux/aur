@@ -1,0 +1,21 @@
+pkgbase = meteodata-git
+	pkgdesc = A C++ parser that provides real-time meteo data from pogodynka.pl/IMGW
+	pkgver = 20200820
+	pkgrel = 1
+	url = https://github.com/sgrams/meteodata
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nlohmann-json
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = curl
+	depends = curl
+	provides = meteodata
+	conflicts = meteodata
+	source = git+https://github.com/sgrams/meteodata
+	md5sums = SKIP
+
+pkgname = meteodata-git
+
