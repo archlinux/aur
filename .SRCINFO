@@ -1,14 +1,14 @@
 pkgbase = blimp-bin
 	pkgdesc = CLI for Kelda's Blimp (Docker Compose for the Cloud)
-	pkgver = 0.13.22
+	pkgver = 0.13.23
 	pkgrel = 1
 	url = https://kelda.io/blimp
 	arch = x86_64
 	license = Apache
 	optdepends = docker: support for locally building custom images
 	options = !strip
-	source = https://blimp-releases.s3-us-west-1.amazonaws.com/blimp-linux-0.13.22
-	sha256sums = f1a5d956b289922541af6edc643d24c497e065b87f24f617de20fe09c9aa20bc
+	source = https://blimp-releases.s3-us-west-1.amazonaws.com/blimp-linux-0.13.23
+	sha256sums = 10271ab062f0b00519d36801c17eda219db353e7db8ad802e5d0668a3446963a
 
 pkgname = blimp-bin
 
