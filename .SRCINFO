@@ -1,4 +1,4 @@
-pkgbase = transwhat
+pkgbase = python-transwhat
 	pkgdesc = A gateway between the XMPP and the WhatsApp IM networks
 	pkgver = 0.2.2
 	pkgrel = 1
@@ -8,26 +8,16 @@ pkgbase = transwhat
 	license = GPL
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	options = !strip
-	options = !emptydirs
-	source = python-transwhat-0.2.2.tar.gz::https://github.com/stv0g/transwhat/archive/v0.2.2.tar.gz
-	md5sums = 75f44a8dd5a1abb449e0b4426f457dc7
-
-pkgname = python-transwhat
 	depends = python
 	depends = python-protobuf
 	depends = python-pillow
 	depends = python-dateutil
 	depends = python-yowsup>=2
 	depends = python-e4u
+	options = !strip
+	options = !emptydirs
+	source = python-transwhat-0.2.2.tar.gz::https://github.com/stv0g/transwhat/archive/v0.2.2.tar.gz
+	md5sums = 75f44a8dd5a1abb449e0b4426f457dc7
 
-pkgname = python2-transwhat
-	pkgdesc = A gateway between the XMPP and the WhatsApp IM networks - Python 2
-	depends = python2
-	depends = python2-protobuf
-	depends = python2-pillow
-	depends = python2-dateutil
-	depends = python2-yowsup>=2
-	depends = python2-e4u
-	depends = python-transwhat=1:0.2.2-1
+pkgname = python-transwhat
 
