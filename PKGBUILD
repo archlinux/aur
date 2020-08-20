@@ -3,7 +3,7 @@
 
 _basename=imagemagick
 pkgname=lib32-imagemagick
-pkgver=7.0.10.18
+pkgver=7.0.10.26
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (32-bit)"
 url="https://www.imagemagick.org/"
@@ -18,7 +18,7 @@ _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
 source=(https://imagemagick.org/download/releases/$_tarname.tar.xz{,.asc}
         arch-fonts.diff
         imagemagick-inkscape-1.0.patch)
-sha256sums=('efcbb20d3204dc03ff0473af19a01b5b986c97ff03ee2e0e57aa45aa21f1a108'
+sha256sums=('7bd6c9e9f18093630ff2cb5992b3f4e190f105f73eabf3de1093542f0da8f32b'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73'
             'dd856b0d7b5b98535d2bc61dfa995f4162677486c1eac14b384668a28a60af30')
@@ -70,7 +70,8 @@ build() {
         --without-fftw \
         --without-fpx \
         --without-gcc-arch \
-        --without-gvc
+        --without-gvc \
+        --without-libzip
 
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
