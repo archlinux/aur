@@ -15,7 +15,7 @@ sha1sums=("a383b6e84689bcba3832b04d6a395f17b079a44c")
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     meson build --buildtype=release -Dprefix="/usr" -Dweb=false
-    ninja -j2 -C build
+    ninja -C build
 }
 
 package() {
