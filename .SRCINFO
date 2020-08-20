@@ -17,7 +17,6 @@ pkgbase = ayatana-indicator-messages
 	depends = accountsservice
 	depends = hicolor-icon-theme
 	depends = dconf
-	optdepends = mate-ayatana-indicator-applet
 	provides = indicator-messages
 	conflicts = indicator-messages
 	options = !emptydirs

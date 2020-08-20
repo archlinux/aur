@@ -9,7 +9,6 @@ url="https://github.com/AyatanaIndicators"
 license=("GPL3")
 depends=("glib2" "accountsservice" "hicolor-icon-theme" "dconf")
 makedepends=("gobject-introspection" "gtk-doc" "intltool" "accountsservice" "mate-common" "vala")
-optdepends=("mate-ayatana-indicator-applet")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("477bdef294633403d944bdb5b05b1527")
 options=("!emptydirs")
