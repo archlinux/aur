@@ -1,0 +1,14 @@
+pkgbase = python-cssutils
+	pkgdesc = A CSS Cascading Style Sheets library for Python
+	pkgver = 1.0.2
+	pkgrel = 5
+	url = http://cthedot.de/cssutils/
+	arch = any
+	license = LGPL3
+	checkdepends = python-pbr
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/cssutils/cssutils-1.0.2.tar.gz
+	md5sums = dc66d96c2d78f1687f59ac412fe9d318
+
+pkgname = python-cssutils
