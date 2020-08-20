@@ -5,12 +5,9 @@ pkgbase = python-free-tls-certificates-git
 	url = https://github.com/mail-in-a-box/free_tls_certificates
 	arch = any
 	license = CC0
+	depends = python-acme
 	source = git+https://github.com/mail-in-a-box/free_tls_certificates.git
 	md5sums = SKIP
 
 pkgname = python-free-tls-certificates-git
-	depends = python-acme
-
-pkgname = python2-free-tls-certificates-git
-	depends = python2-acme
 
