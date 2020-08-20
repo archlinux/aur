@@ -5,7 +5,6 @@ pkgbase = cjose
 	url = https://github.com/cisco/cjose
 	arch = x86_64
 	license = MIT
-	makedepends = jansson
 	depends = openssl
 	depends = jansson
 	source = https://github.com/cisco/cjose/archive/0.6.1.tar.gz
