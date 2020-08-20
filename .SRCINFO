@@ -1,0 +1,16 @@
+pkgbase = picgo-appimage-beta
+	pkgdesc = A simple & beautiful tool for pictures uploading built by vue-cli-electron-builder
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://molunerfinn.com/PicGo/
+	arch = x86_64
+	license = MIT
+	noextract = PicGo-2.3.0-beta.3.Appimage
+	options = !strip
+	source = https://github.com/Molunerfinn/PicGo/releases/download/v2.3.0-beta.3/PicGo-2.3.0-beta.3.AppImage
+	source = picgo.png
+	source = picgo.desktop
+	sha256sums = 87af7f01462e03dc8ef84241a282cb0b236a2dba8f0e0a8fe7df5ab6a28a6eb0
+
+pkgname = picgo-appimage-beta
+
