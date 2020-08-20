@@ -1,6 +1,6 @@
 pkgbase = jet-git
 	pkgdesc = Persist or retrieve strings over streams.
-	pkgver = 1.1
+	pkgver = 1.1.r32.663d367
 	pkgrel = 1
 	url = https://github.com/cognocoder/jet.git
 	arch = x86_64
