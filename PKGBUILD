@@ -5,12 +5,12 @@
 
 pkgname=nginx-mainline
 pkgver=1.19.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('x86_64')
 url='https://nginx.org'
 license=('custom')
-depends=('pcre' 'zlib' 'openssl' 'geoip' 'mailcap')
+depends=('pcre' 'zlib' 'openssl' 'geoip' 'mailcap' 'libxcrypt')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
