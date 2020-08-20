@@ -1,0 +1,27 @@
+pkgbase = clickhouse-lts
+	pkgdesc = An open-source column-oriented database management system that allows generating analytical data reports in real time. LTS version
+	pkgver = 20.3.17.173
+	pkgrel = 1
+	url = https://clickhouse.tech/
+	install = clickhouse-lts.install
+	arch = x86_64
+	license = Apache
+	depends = tzdata
+	depends = libcap
+	provides = clickhouse
+	conflicts = clickhouse
+	noextract = clickhouse-common-static_20.3.17.173_amd64.deb
+	noextract = clickhouse-client_20.3.17.173_all.deb
+	noextract = clickhouse-server_20.3.17.173_all.deb
+	backup = etc/clickhouse-client/config.xml
+	backup = etc/clickhouse-server/config.xml
+	backup = etc/clickhouse-server/users.xml
+	source = https://repo.clickhouse.tech/deb/lts/main/clickhouse-common-static_20.3.17.173_amd64.deb
+	source = https://repo.clickhouse.tech/deb/lts/main/clickhouse-client_20.3.17.173_all.deb
+	source = https://repo.clickhouse.tech/deb/lts/main/clickhouse-server_20.3.17.173_all.deb
+	sha256sums = c4d8dd667dc21f616f0f228426badffbd8922223ce0ce79f444537130bad223c
+	sha256sums = 46180eae29011212c61443ed73b50a27740ab30feb684648d35763310071ee85
+	sha256sums = fb782d0309bb9607ca87a7247f3f9dfc7fc8faf542c73459ec69c391ee0cf250
+
+pkgname = clickhouse-lts
+
