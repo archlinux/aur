@@ -1,0 +1,16 @@
+pkgbase = colorthis-git
+	pkgdesc = Make your pipe and logfile colorful
+	pkgver = r10.a3f47ea
+	pkgrel = 1
+	url = https://github.com/Sasasu/ColorThis
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	provides = colorthis
+	conflicts = colorthis
+	source = colorthis-git::git+https://github.com/Sasasu/ColorThis.git
+	md5sums = SKIP
+
+pkgname = colorthis-git
+
