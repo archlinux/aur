@@ -1,0 +1,15 @@
+post_install() {
+    echo "################################################################################"
+    echo "Be sure to modify /etc/ImageMagick-7/policy.xml to allow for ImageMagick to work"
+    echo "with PDFs and PNGs if you haven't already, i.e.:"
+    echo "  <policymap>"
+    echo "    <!-- <policy domain=\"delegate\" rights=\"none\" pattern=\"gs\" /> -->"
+    echo "    <policy domain=\"coder\" rights=\"read|write\" pattern=\"{PNG,PDF}\" />"
+    echo "  </policymap>"
+    echo "See https://wiki.archlinux.org/index.php/ImageMagick"
+    echo "################################################################################"
+}
+
+post_upgrade() {
+    post_install
+}

@@ -1,14 +1,17 @@
 pkgbase = tex2im
-	pkgdesc = Tex2im is a simple tool that converts LaTeX formulas into high resolution pixmap graphics for inclusion in text processors or presentations.
-	pkgver = 1.8
+	pkgdesc = A simple tool that converts LaTeX formulas into high resolution pixmap graphics for inclusion in text processors or presentations.
+	pkgver = 2.0.2
 	pkgrel = 1
-	url = http://www.nought.de/tex2im.php
+	url = https://github.com/CD3/tex2im
+	install = tex2im.install
 	arch = any
-	license = GPLv2
+	license = GPL2
 	depends = imagemagick
-	depends = texlive-bin
-	source = http://www.nought.de/tex2im-1.8.tar.gz
-	sha256sums = e97f771eacb4e4bd82476d1ee559f8aaa2f40bd93650895e766b37169d3006ee
+	depends = texlive-core
+	depends = python
+	provides = im2tex
+	source = tex2im-2.0.2.tar.gz::https://github.com/CD3/tex2im/archive/2.0.2.tar.gz
+	sha256sums = 7bb49760c4c103e09c96b980857d008345b0eb8a8fd071881076175d69c46847
 
 pkgname = tex2im
 
