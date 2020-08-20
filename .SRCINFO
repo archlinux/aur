@@ -6,13 +6,8 @@ pkgbase = python-pymodbustcp
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = python-pymodbustcp-0.1.8.tar.gz::https://github.com/sourceperl/pyModbusTCP/archive/v0.1.8.tar.gz
 	md5sums = 46ab9813475e6509c111a450dfe815a0
 
 pkgname = python-pymodbustcp
-	depends = python
-
-pkgname = python2-pymodbustcp
-	depends = python2
 
