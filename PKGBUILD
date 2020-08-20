@@ -9,11 +9,11 @@ url="https://github.com/kazhala/dotbare"
 license=("MIT")
 depends=('fzf')
 optdepends=(
-    'tree: Provide a directory tree view when finding directory',
-    'bat: Syntax highlighting when previewing files',
-    'highlight: Syntax highlighting when previewing files',
-    'ruby-coderay: Syntax highlighting when previewing files',
-    'git-delta: Fancy git diff preview',
+    'tree: Provide a directory tree view when finding directory'
+    'bat: Syntax highlighting when previewing files'
+    'highlight: Syntax highlighting when previewing files'
+    'ruby-coderay: Syntax highlighting when previewing files'
+    'git-delta: Fancy git diff preview'
     'diff-so-fancy: Fancy git diff preview')
 source=("https://github.com/kazhala/dotbare/archive/v${pkgver}.tar.gz" "${pkgname}")
 md5sums=('d5d44dd0511102c16b70941618410a2f'
