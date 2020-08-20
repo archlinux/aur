@@ -1,6 +1,6 @@
 pkgbase = rpmdevtools
 	pkgdesc = RPM Development Tools
-	pkgver = 9.0
+	pkgver = 9.1
 	pkgrel = 1
 	url = https://pagure.io/rpmdevtools
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = rpmdevtools
 	depends = python-requests_download
 	depends = rpm-tools
 	optdepends = unzip: for zip support in rpmdev-extract command
-	source = https://releases.pagure.org/rpmdevtools/rpmdevtools-9.0.tar.xz
-	md5sums = 12f01db226012f0f285a8980f8745442
+	source = https://releases.pagure.org/rpmdevtools/rpmdevtools-9.1.tar.xz
+	md5sums = 2f5ec56eb195245e0f62bdddc06a2816
 
 pkgname = rpmdevtools
 
