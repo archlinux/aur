@@ -9,8 +9,4 @@ pkgbase = python-treebeard
 	md5sums = e45a45cbd3f6d4bb872ef4675e93ece2
 
 pkgname = python-treebeard
-	depends = python
-
-pkgname = python2-treebeard
-	depends = python2
 
