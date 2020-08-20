@@ -1,0 +1,12 @@
+pkgbase = nodejs-epicgames-client
+	pkgdesc = Unofficial EpicGames Client for Node.js
+	pkgver = 2.0.25
+	pkgrel = 1
+	url = https://github.com/SzymonLisowiec/node-epicgames-client
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+
+pkgname = nodejs-epicgames-client
+
