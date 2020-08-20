@@ -1,0 +1,16 @@
+pkgbase = haskell-shellmet
+	pkgdesc = Shellmet provides easy and convenient way to call shell commands from Haskell programs.
+	pkgver = 0.0.3.1
+	pkgrel = 1
+	url = hhttps://github.com/kowainik/shellmet
+	arch = x86_64
+	license = MPL2
+	makedepends = ghc
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/shellmet/0.0.3.1/shellmet-0.0.3.1.tar.gz
+	source = Setup.hs
+	sha256sums = b9f084f47a6ae711b1e505e2f90d8d202d94f62950be98ceafc668b306473b25
+	sha256sums = 1e1679046e10c31286fee3e631e57e4ef60c89e562270c8a2a7131c051959916
+
+pkgname = haskell-shellmet
+
