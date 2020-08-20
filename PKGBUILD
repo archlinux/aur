@@ -4,12 +4,13 @@
 pkgname=buttersink-git
 _gitname=buttersink
 pkgver=0.6.8.r0.gb0ca6ef
-pkgrel=1
+pkgrel=2
 pkgdesc="Buttersink is like rsync for btrfs snapshots"
 arch=('any')
 url="https://github.com/AmesCornish/buttersink.git"
 license=('GPL3')
 depends=('btrfs-progs' 'python2-boto' 'python2-crcmod' 'python2-flake8' 'python2-psutil')
+makedepends=('git')
 conflicts=('buttersink')
 provides=('buttersink')
 source=('git+https://github.com/AmesCornish/buttersink.git')
