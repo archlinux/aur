@@ -2,10 +2,10 @@
 pkgname=python-pebble
 _name=${pkgname#python-}
 pkgver=4.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Pebble provides a neat API to manage threads and processes within an application"
 arch=('any')
-url="https://mne.tools/stable/index.html"
+url="https://github.com/noxdafox/pebble"
 license=('LGPL')
 groups=()
 depends=('python')
