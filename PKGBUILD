@@ -1,7 +1,7 @@
 # Maintainer sukanka <su975853527 at gmail dot com>
 
 pkgname='zwcad-bin'
-pkgver=3.0.102
+pkgver=4.0.109
 pkgrel=1
 pkgdesc="ZWSOFT研发的二维CAD软件，可满足看图、审图、打印工作需要"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://www.zwcad.com"
 provides=("zwcad")
 depends=('qt5-base' 'hicolor-icon-theme' 'glu')
 source=("${pkgname}-${pkgver}.deb::https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.zwsoft.zwcad/com.zwsoft.zwcad_${pkgver}-${pkgrel}_amd64.deb")
-sha512sums=('b4a0bc7351a323f396a645731c9af95361752b7fee1b92711610b4b938bc499f34ff580aee54c953ff0cfd1afb72062213001b35d7ab7cd80d4df05f400594a4')
+sha512sums=('31b76261ae21cdc72a411605b27f59d17d9784eeacdef31ef63e6dbc966f2e042080c9a9f9d43a0c610ff1dbbb00573256b2d4ab99e710f6a6af3ccdf0179162')
 
 prepare(){
     cd $srcdir
