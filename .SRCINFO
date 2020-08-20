@@ -1,7 +1,7 @@
 pkgbase = haskell-shellmet
 	pkgdesc = Shellmet provides easy and convenient way to call shell commands from Haskell programs.
 	pkgver = 0.0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = hhttps://github.com/kowainik/shellmet
 	arch = x86_64
 	license = MPL2

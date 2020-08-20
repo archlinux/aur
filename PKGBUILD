@@ -3,7 +3,7 @@
 _hkgname=shellmet
 pkgname=haskell-shellmet
 pkgver=0.0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Shellmet provides easy and convenient way to call shell commands from Haskell programs."
 url="hhttps://github.com/kowainik/shellmet"
 license=('MPL2')
@@ -27,7 +27,7 @@ build() {
   cd $_hkgname-$pkgver    
     
   runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
-    --prefix=/usr --docdir=/usr/share/doc/$pkgname \
+    --prefix=/usr --docdir=/usr/share/doc/$pkgname --enable-tests \
     --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
     --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
     --ghc-option='-pie'
@@ -39,6 +39,10 @@ build() {
   sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
 
+check() {
+    cd $_hkgname-$pkgver
+    LC_CTYPE=en_US.UTF-8 runhaskell Setup test || warning "Test failed!"
+}
 
 package() {
   cd $_hkgname-$pkgver
