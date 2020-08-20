@@ -1,22 +1,24 @@
 pkgbase = thunar-volman-devel
 	pkgdesc = automatic management for removeable devices in thunar
-	pkgver = 0.9.4
+	pkgver = 4.15.0
 	pkgrel = 1
 	epoch = 1
 	url = https://goodies.xfce.org/projects/thunar-plugins/thunar-volman
 	arch = i686
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	groups = xfce4-goodies-devel
 	license = GPL2
 	makedepends = intltool
 	depends = thunar
 	depends = libxfce4ui
 	depends = hicolor-icon-theme
-	provides = thunar-volman=0.9.4
+	provides = thunar-volman=4.15.0
 	conflicts = thunar-volman
 	options = !libtool
-	source = https://archive.xfce.org/src/xfce/thunar-volman/0.9/thunar-volman-0.9.4.tar.bz2
-	sha256sums = c050f80a976fbb5f862c9c99857c761402ddd7980dc6f00d30002903f72abcb6
+	source = https://archive.xfce.org/src/xfce/thunar-volman/4.15/thunar-volman-4.15.0.tar.bz2
+	sha256sums = c17d1948ad6eeb689cf83443a7826ac9bfab6772d8458735da5c0ee6c82f8983
 
 pkgname = thunar-volman-devel
 
