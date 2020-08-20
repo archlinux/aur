@@ -1,4 +1,5 @@
 pkg/
 src/
+otf-literata/
 *.tar.*
 *.otf
