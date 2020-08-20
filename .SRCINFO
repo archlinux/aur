@@ -1,7 +1,7 @@
 pkgbase = ambertools
 	pkgdesc = Biomolecular simulation package (tools only)
 	pkgver = 20
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ambermd.org/
 	arch = x86_64
 	license = GPL
