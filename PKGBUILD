@@ -1,7 +1,8 @@
 # meson/ninja build() & package() taken from community/radare2
 # Contributor: 0xAA <0xaa at dmg dot sx>
+# Contributor: bratus
 pkgname=radare2-git
-pkgver=4.5.0.r24194.11e35c5acb
+pkgver=4.6.0.r24570.3c88900134
 pkgrel=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 arch=('i686' 'x86_64')
@@ -45,7 +46,6 @@ package() {
   cd ${srcdir}/${pkgname}
   DESTDIR="${pkgdir}" ninja -C build install
   cp -r doc/* "${pkgdir}/usr/share/doc/radare2"
-  ln -s /usr/bin/radare2 "${pkgdir}/usr/bin/r2"
   ln -s /usr/share/man/man1/radare2.1.gz "${pkgdir}/usr/share/man/man1/r2.1.gz"
   install -D -m644 man/* "${pkgdir}/usr/share/man/man1" 
 
