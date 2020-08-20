@@ -2,14 +2,21 @@
 
 pkgname=dotbare
 pkgdesc="Manage your dotfiles interactively with fzf"
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 arch=("any")
 url="https://github.com/kazhala/dotbare"
 license=("MIT")
 depends=('fzf')
+optdepends=(
+    'tree: Provide a directory tree view when finding directory',
+    'bat: Syntax highlighting when previewing files',
+    'highlight: Syntax highlighting when previewing files',
+    'ruby-coderay: Syntax highlighting when previewing files',
+    'git-delta: Fancy git diff preview',
+    'diff-so-fancy: Fancy git diff preview')
 source=("https://github.com/kazhala/dotbare/archive/v${pkgver}.tar.gz" "${pkgname}")
-md5sums=('df84e77b42b306aac346232376e9c32f'
+md5sums=('d5d44dd0511102c16b70941618410a2f'
          'f6c62c573ace6e97e1948944cf6454cd')
 
 package() {

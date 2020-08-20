@@ -1,14 +1,20 @@
 pkgbase = dotbare
 	pkgdesc = Manage your dotfiles interactively with fzf
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/kazhala/dotbare
 	arch = any
 	license = MIT
 	depends = fzf
-	source = https://github.com/kazhala/dotbare/archive/v1.2.2.tar.gz
+	optdepends = tree: Provide a directory tree view when finding directory,
+	optdepends = bat: Syntax highlighting when previewing files,
+	optdepends = highlight: Syntax highlighting when previewing files,
+	optdepends = ruby-coderay: Syntax highlighting when previewing files,
+	optdepends = git-delta: Fancy git diff preview,
+	optdepends = diff-so-fancy: Fancy git diff preview
+	source = https://github.com/kazhala/dotbare/archive/v1.3.0.tar.gz
 	source = dotbare
-	md5sums = df84e77b42b306aac346232376e9c32f
+	md5sums = d5d44dd0511102c16b70941618410a2f
 	md5sums = f6c62c573ace6e97e1948944cf6454cd
 
 pkgname = dotbare
