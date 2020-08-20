@@ -1,6 +1,6 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
-_pkgver="0.1.0-beta2"
+_pkgver="0.1.1-beta"
 pkgname=midiomatic
 pkgver=${_pkgver//-/_}
 pkgrel=1
@@ -12,7 +12,7 @@ groups=('pro-audio' 'lv2-plugins' 'vst-plugins')
 source=(
     "https://github.com/SpotlightKid/midiomatic/releases/download/v${_pkgver}/${pkgname}-${_pkgver}.tar.gz"
 )
-sha256sums=('b66fc543e85c03995b7cc3e907f3670c0c1ad1bcd9ec72b1463ed52a31926488')
+sha256sums=('d3bd9fba0581279eefa9d9b354c8da7b1ae335251498e2c12ea8f46056bed5d0')
 
 
 build() {
