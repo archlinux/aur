@@ -1,8 +1,12 @@
 # Maintainer : Ashcon Mohseninia <ashcon50@gmail.com>
 
+pkgver() {
+  cd "razer-laptop-control"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+pkgver=v1.0.1.r60.gdd4ffa0
 pkgname="razer-laptop-control-git"
-pkgver=1.5
-pkgrel=2
+pkgrel=1
 pkgdesc="Daemon and CLI for razer laptop's for RGB, fan and power control"
 arch=('i686' 'x86_64')
 url="https://github.com/rnd-ash/razer-laptop-control"
