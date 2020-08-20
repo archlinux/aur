@@ -32,7 +32,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/pkulchenko/$_pkgname/archiv
         'user.lua')
 sha256sums=('62307538cb1daa8c298c838f124f7cfff13c29e4c64c4ffea72191a6f1347ff2'
             '44f3a18f169a571bace71c67c398917ea0ff1c163c7d22bec49aed7585bcb9b2'
-            '475fe6e129f9469100a941fc74b90a9fe4bc5eceaca447d2899a1511212cbfcc')
+            '46c752eb6fc3493d7c4123f543379b29dc25a7a0b6d56d155867d6aff6908b59')
 
 prepare() {
     cd "$_pkgname-$pkgver"
