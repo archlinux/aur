@@ -1,9 +1,9 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=cninja
-pkgver=3.5.2
-release_tag=v3.5.2
+pkgver=3.5.3
+release_tag=v3.5.3
 pkgrel=1
-pkgdesc="cninja, an opinionated cmake config manager"
+pkgdesc="Opinionated CMake config manager"
 arch=('x86_64')
 url="https://github.com/jcelerier/cninja"
 license=('AGPLv3')
@@ -14,7 +14,7 @@ provides=("$pkgname=$pkgver")
 conflicts=()
 replaces=()
 source=("https://github.com/jcelerier/cninja/releases/download/v${pkgver}/cninja-v${pkgver}-src.tar.gz")
-sha512sums=("2fa3ebda3b24da54e5dab21b0b90225080c753effece0416730d2036bd3da324f0f5aa7222da6b5414ff62ddf0cd163fd31f97da40a17f91ed9a8143fb45bb6b")
+sha512sums=("915495dcd0abfda9adc7c7b69bb195929a9e26e5052314f9d14596924dac5c62487b488a5926fc59b5e2bf44ea033acbb2c49adb88f5e5ed180f2b6398936f8d")
 
 build() {
   cd "$srcdir"
