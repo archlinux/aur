@@ -12,7 +12,6 @@ pkgbase = pam-selinux
 	makedepends = docbook-xsl
 	depends = glibc
 	depends = libtirpc
-	depends = pambase-selinux
 	depends = audit
 	depends = libselinux
 	optdepends = pambase-selinux: SELinux aware base PAM configuration
