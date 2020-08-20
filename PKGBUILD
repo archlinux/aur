@@ -3,7 +3,7 @@
 
 _basename=openexr
 pkgname=lib32-openexr
-pkgver=2.5.1
+pkgver=2.5.3
 pkgrel=1
 pkgdesc="An high dynamic-range image file format library (32-bit)"
 url="https://www.openexr.com/"
@@ -14,30 +14,24 @@ makedepends=('cmake' 'lib32-fltk' 'lib32-freeglut')
 conflicts=('lib32-ilmbase')
 replaces=('lib32-ilmbase')
 source=($_basename-$pkgver.tar.gz::"https://github.com/openexr/openexr/archive/v$pkgver.tar.gz")
-sha256sums=('11f806bf256453e39fc33bd1cf1fa576a54f144cedcdd3e6935a177e5a89d02e')
+sha256sums=('6a6525e6e3907715c6a55887716d7e42d09b54d2457323fcee35a0376960bebf')
 
 build() {
     export CC='gcc -m32'
     export CXX='g++ -m32'
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-    mkdir -p build
-
-    cd build
-
-    cmake ../$_basename-$pkgver \
+    cmake -B build -S $_basename-$pkgver \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib32 \
         -DPYILMBASE_ENABLE=false \
         -DOPENEXR_BUILD_UTILS=false
 
-    make
+    cmake --build build
 }
 
 package() {
-    cd build
-
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" cmake --install build
 
     rm -r "${pkgdir}/usr/include"
     rm -r "${pkgdir}/usr/share"
