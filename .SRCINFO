@@ -7,7 +7,6 @@ pkgbase = mod_auth_openidc
 	license = Apache
 	makedepends = apache
 	makedepends = jansson
-	makedepends = cjose
 	depends = curl
 	depends = cjose
 	depends = pcre
