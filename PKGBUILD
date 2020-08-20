@@ -1,8 +1,9 @@
-# Maintainer: Ykkzde <dmitry@ykkz.de>
+# Maintainer: Evan McCarthy <evan@mccarthy.mn>
+# Contributor: Ykkzde <dmitry@ykkz.de>
+
 pkgname=otf-san-francisco-compact
 pkgver=1.0
-pkgrel=2
-epoch=1
+pkgrel=3
 pkgdesc='This sans-serif typeface is the system font for watchOS, and includes a rounded variant. It suits a wide range of content and is easily legible in a variety of contexts.'
 arch=('any')
 license=('custom')
