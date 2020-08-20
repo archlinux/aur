@@ -9,17 +9,17 @@ license=('GPL')
 arch=('any')
 depends=('quake3-defrag')
 makedepends=('unzip')
-source=('http://www.german-defrag.de/files/defrag/defragpak1.zip' \
-        'http://www.german-defrag.de/files/defrag/defragpak2.zip' \
-        'http://www.german-defrag.de/files/defrag/defragpak3.zip' \
-        'http://www.german-defrag.de/files/defrag/defragpak4.zip' \
-        'http://www.german-defrag.de/files/defrag/defragpak5.zip' \
-        'http://www.german-defrag.de/files/defrag/defragcpmpak01.zip' \
-        'http://www.german-defrag.de/files/defrag/defragpak7.zip' \
-        'http://www.german-defrag.de/files/defrag/defragpak8.zip' \
-        'http://www.german-defrag.de/files/defrag/defragpak9.zip' \
-        'http://www.german-defrag.de/files/defrag/defragpak10.zip' \
-        'http://www.german-defrag.de/files/defrag/defragpak11.zip')
+source=('http://slashbunny.com/aur/quake3-defrag-maps/defragpak1.zip' \
+        'http://slashbunny.com/aur/quake3-defrag-maps/defragpak2.zip' \
+        'http://slashbunny.com/aur/quake3-defrag-maps/defragpak3.zip' \
+        'http://slashbunny.com/aur/quake3-defrag-maps/defragpak4.zip' \
+        'http://slashbunny.com/aur/quake3-defrag-maps/defragpak5.zip' \
+        'http://slashbunny.com/aur/quake3-defrag-maps/defragcpmpak01.zip' \
+        'http://slashbunny.com/aur/quake3-defrag-maps/defragpak7.zip' \
+        'http://slashbunny.com/aur/quake3-defrag-maps/defragpak8.zip' \
+        'http://slashbunny.com/aur/quake3-defrag-maps/defragpak9.zip' \
+        'http://slashbunny.com/aur/quake3-defrag-maps/defragpak10.zip' \
+        'http://slashbunny.com/aur/quake3-defrag-maps/defragpak11.zip')
 noextract=('defragpak1.zip' 'defragpak2.zip' 'defragpak3.zip' \
            'defragpak4.zip' 'defragpak5.zip' 'defragcpmpak01.zip' \
            'defragpak7.zip' 'defragpak8.zip' 'defragpak9.zip' \
