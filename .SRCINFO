@@ -16,7 +16,6 @@ pkgbase = ayatana-indicator-session
 	depends = systemd
 	depends = glib2
 	optdepends = mate-screensaver
-	optdepends = mate-ayatana-indicator-applet
 	optdepends = mate-control-center
 	optdepends = yelp
 	optdepends = firefox
