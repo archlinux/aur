@@ -1,12 +1,11 @@
-# Maintainer: fordprefect <fordprefect@dukun.de>
-pkgbase=python-amoeba
-pkgname=("python-amoeba" "python2-amoeba")
+pkgname=python-amoeba
 pkgver=1.2
 pkgrel=2
 pkgdesc="Amoeba fit routine based on the method of Nelder and Meads"
 url="https://stitchpanorama.sourceforge.net/Python/amoeba.py"
 arch=('any')
 license=('GPL2')
+depends=('python')
 makedepends=("python" "python2")
 source=("http://stitchpanorama.sourceforge.net/Python/amoeba.py"
         "deepcopy.patch"
@@ -21,13 +20,6 @@ prepare() {
     patch amoeba.py deepcopy.patch
 }
 
-package_python2-amoeba() {
-    depends=('python2')
-    python2 setup.py install --root="${pkgdir}/" --optimize=1
-
-}
-
-package_python-amoeba() {
-    depends=('python')
+package() {
     python setup.py install --root="${pkgdir}/" --optimize=1
 }
