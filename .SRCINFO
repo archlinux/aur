@@ -1,0 +1,12 @@
+pkgbase = ttf-fredoka-one
+	pkgdesc = Round, bold font by Milena Brandao
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Fredoka+One
+	arch = any
+	license = OFL
+	source = ttf-fredoka-one.zip::https://fonts.google.com/download?family=Fredoka+One
+	sha256sums = bd70b3c662dde03bc03a5831a2e99779da9976d0101b4fff894f6f9af5162c36
+
+pkgname = ttf-fredoka-one
+
