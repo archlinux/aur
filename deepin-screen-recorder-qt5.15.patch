@@ -1,0 +1,36 @@
+diff --git a/src/utils.cpp b/src/utils.cpp
+index 96f2226..7076d09 100755
+--- a/src/utils.cpp
++++ b/src/utils.cpp
+@@ -27,6 +27,7 @@
+ #include <QDebug>
+ #include <QFontMetrics>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QDBusInterface>
+ #include <QtX11Extras/QX11Info>
+ #include <X11/extensions/shape.h>
+diff --git a/src/widgets/shapeswidget.cpp b/src/widgets/shapeswidget.cpp
+index 127620e..38638df 100755
+--- a/src/widgets/shapeswidget.cpp
++++ b/src/widgets/shapeswidget.cpp
+@@ -20,6 +20,7 @@
+ #include "shapeswidget.h"
+ #include <QApplication>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QDebug>
+ 
+ #include "../utils/calculaterect.h"
+diff --git a/src/widgets/tooltips.cpp b/src/widgets/tooltips.cpp
+index afd844a..0f377bb 100644
+--- a/src/widgets/tooltips.cpp
++++ b/src/widgets/tooltips.cpp
+@@ -33,6 +33,7 @@
+ #include <QHBoxLayout>
+ #include <QLabel>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QGraphicsDropShadowEffect>
+ #include <QPropertyAnimation>
+ #include <QGraphicsOpacityEffect>

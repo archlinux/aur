@@ -1,0 +1,25 @@
+pkgbase = deepin-screen-recorder-copy-patch
+	pkgdesc = Easy-to-use screen recording tool for linuxdeepin desktop environment with xclip copy patch
+	pkgver = 5.8.0.11
+	pkgrel = 3
+	url = https://github.com/linuxdeepin/deepin-screen-recorder
+	arch = x86_64
+	groups = deepin-extra
+	license = GPL3
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = deepin-qt5integration
+	depends = dtkwm
+	depends = deepin-turbo
+	provides = deepin-screen-recorder
+	conflicts = deepin-screen-recorder
+	conflicts = deepin-screenshot-copy-patch
+	source = deepin-screen-recorder-copy-patch-5.8.0.11.tar.gz::https://github.com/linuxdeepin/deepin-screen-recorder/archive/5.8.0.11.tar.gz
+	source = deepin-screen-recorder-qt5.15.patch
+	source = deepin-screen-recorder-copy.patch
+	sha512sums = 8fb57603905d46efa52fb347a9b9e0101b55ff747ea8beed7cd248be9f488927f3a809bb112e98fddd16bb574386dba5706f71f181a19615cd2f1bf4e769d28e
+	sha512sums = aaef789b5b1e74c9b2972bf94134b639393247ea4c6459e90d0b875d692b6adca71cafc27f1cc402fc81126eb47c52ae816867d7a3d2dfa775594dd839840247
+	sha512sums = 1dd96cf8fcdb4aae97e082619844d135181ee76490b8be54c5eff821ed544499d38381e6f88ca88a5b16b9ce30d9d69aaaf13d98e7d1f6c64f90bc9ae566868d
+
+pkgname = deepin-screen-recorder-copy-patch
+
