@@ -1,7 +1,7 @@
 # Maintainer: Yuanji <self@gimo.me>
 pkgname=mecab-ipadic-neologd-git
 _pkgname=mecab-ipadic-neologd
-pkgver=r20191028
+pkgver=r20200716
 pkgrel=1
 pkgdesc="Neologism dictionary for MeCab"
 arch=('any')
@@ -16,6 +16,8 @@ prepare() {
     cd "$srcdir/${_pkgname}"
     # change hardcoded mecab libexecdir.
     sed -i 's!`${MECAB_PATH}-config --libexecdir`!${MECAB_DIC_DIR%/dic}!g' libexec/make-mecab-ipadic-neologd.sh
+    # `file` command can't work in fakeroot environment.
+    sed -i 's!xargs file!sed "s/$/:/"!' libexec/make-mecab-ipadic-neologd.sh
 }
 
 pkgver() {
