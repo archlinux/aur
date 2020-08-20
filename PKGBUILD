@@ -2,8 +2,8 @@
 
 pkgbase=viennarna
 pkgname=('viennarna' 'python-rna' 'python2-rna' 'perl-rna')
-pkgver=2.4.14
-pkgrel=2
+pkgver=2.4.15
+pkgrel=1
 pkgdesc="RNA Secondary Structure Prediction and Comparison"
 arch=('x86_64' 'i686')
 license=('Custom')
@@ -16,16 +16,13 @@ makedepends=( 'perl'
               'check'
               'mpfr'
               'gsl')
-source=(http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-${pkgver}.tar.gz
-        '0001-Fix-compilation-issues-with-GCC-10.patch')
+source=(http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-${pkgver}.tar.gz)
 
 options=('staticlibs' '!strip')
-sha256sums=('ba9cfc8a48e457fc891628f3229a3924de31714460dc4a4dec081868f802cc28'
-            '4fb955d969b9a4c9fba7b3e7be7727c008454d1a2ea7ef5263ffc2544c0fe352')
+sha256sums=('9ae7614586941ff3471596eade743bd2ec416b2d5c185f35ef93b9845c761d10')
 
 prepare() {
   cd "${srcdir}/ViennaRNA-${pkgver}"
-  patch -d src/Kinfold -p1 -i "${srcdir}/0001-Fix-compilation-issues-with-GCC-10.patch"
   ./configure \
       --with-cluster \
       --with-kinwalker \
@@ -49,7 +46,7 @@ package_viennarna() {
            'mpfr'
            'gsl')
   optdepends=('gri: create 2D plots of secondary structure landscape with RNA2Dfold')
-  provides=('Kinfold=1.3'
+  provides=('Kinfold=1.4'
             'RNAforester=2.0'
             'kinwalker=2.0'
             "viennarna2=${pkgver}"

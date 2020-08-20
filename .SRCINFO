@@ -1,7 +1,7 @@
 pkgbase = viennarna
 	pkgdesc = RNA Secondary Structure Prediction and Comparison
-	pkgver = 2.4.14
-	pkgrel = 2
+	pkgver = 2.4.15
+	pkgrel = 1
 	url = http://www.tbi.univie.ac.at/RNA
 	arch = x86_64
 	arch = i686
@@ -16,31 +16,29 @@ pkgbase = viennarna
 	makedepends = gsl
 	options = staticlibs
 	options = !strip
-	source = http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-2.4.14.tar.gz
-	source = 0001-Fix-compilation-issues-with-GCC-10.patch
-	sha256sums = ba9cfc8a48e457fc891628f3229a3924de31714460dc4a4dec081868f802cc28
-	sha256sums = 4fb955d969b9a4c9fba7b3e7be7727c008454d1a2ea7ef5263ffc2544c0fe352
+	source = http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-2.4.15.tar.gz
+	sha256sums = 9ae7614586941ff3471596eade743bd2ec416b2d5c185f35ef93b9845c761d10
 
 pkgname = viennarna
 	depends = perl
 	depends = mpfr
 	depends = gsl
 	optdepends = gri: create 2D plots of secondary structure landscape with RNA2Dfold
-	provides = Kinfold=1.3
+	provides = Kinfold=1.4
 	provides = RNAforester=2.0
 	provides = kinwalker=2.0
-	provides = viennarna2=2.4.14
-	provides = libRNA=2.4.14
+	provides = viennarna2=2.4.15
+	provides = libRNA=2.4.15
 
 pkgname = python-rna
 	depends = python
-	depends = viennarna=2.4.14
+	depends = viennarna=2.4.15
 
 pkgname = python2-rna
 	depends = python2
-	depends = viennarna=2.4.14
+	depends = viennarna=2.4.15
 
 pkgname = perl-rna
 	depends = perl
-	depends = viennarna=2.4.14
+	depends = viennarna=2.4.15
 
