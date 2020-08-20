@@ -1,7 +1,7 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=webex-teams
-pkgver=2020.08.20
+pkgver=2020.08.20_2
 pkgrel=2
 pkgdesc='Webex Teams, conference software from Cisco.'
 arch=('any')
@@ -11,11 +11,10 @@ depends=('electron')
 makedepends=(
   'curl'
   'gendesk'
-  'nodejs'
-  'npm'
+  'nodejs-nativefier'
 )
 
-_name="Webex-Teams"
+_name="Webex Teams"
 
 prepare() {
   cat > "${pkgname}" <<EOF
@@ -29,7 +28,6 @@ EOF
     -n \
     -f
   curl https://mediafiles.webex.com/content/dam/wbx/us/images/hp/hp_56565/Teams_Iconx2.png > "${pkgname}.png"
-  npm install -g nativefier
 }
 
 build() {
