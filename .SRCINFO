@@ -1,7 +1,7 @@
 pkgbase = lib32-gupnp
 	pkgdesc = An object-oriented UPNP framework (32-bit)
-	pkgver = 1.2.2
-	pkgrel = 2
+	pkgver = 1.2.4
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GUPnP
 	arch = x86_64
 	license = LGPL
@@ -11,7 +11,7 @@ pkgbase = lib32-gupnp
 	makedepends = vala
 	depends = lib32-gssdp
 	depends = gupnp
-	source = git+https://gitlab.gnome.org/GNOME/gupnp.git#commit=76f6a78e99f4a4e80f31678ba99e8068131c79ff
+	source = git+https://gitlab.gnome.org/GNOME/gupnp.git#commit=a066f3d70d7712976311c906afc3ca57be8a694d
 	sha256sums = SKIP
 
 pkgname = lib32-gupnp
