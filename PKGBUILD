@@ -5,7 +5,7 @@
 _basename=gst-plugins-ugly
 pkgname=lib32-gst-plugins-ugly
 pkgver=1.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GStreamer open-source multimedia framework ugly plugins (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -40,7 +40,7 @@ build() {
         -D package-name="GStreamer Ugly Plugins (Arch Linux)" \
         -D package-origin="https://www.archlinux.org/"
 
-    ninja -C build
+    meson compile -C build
 }
 
 check() {
