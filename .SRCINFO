@@ -1,6 +1,6 @@
 pkgbase = zettlr-bin
 	pkgdesc = A markdown editor for writing academic texts and taking notes
-	pkgver = 1.7.3
+	pkgver = 1.7.5
 	pkgrel = 1
 	url = https://www.zettlr.com
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = zettlr-bin
 	optdepends = pandoc: export support
 	optdepends = texlive-bin: pdf etc support
 	provides = zettlr
-	source = https://github.com/Zettlr/Zettlr/releases/download/v1.7.3/Zettlr-1.7.3-x86_64.rpm
-	sha256sums = a243ad7571c4250681923c60ee05ddff50c06a702a2fb7ba5f93a2d865e3d3d1
+	source = https://github.com/Zettlr/Zettlr/releases/download/v1.7.5/Zettlr-1.7.5-x86_64.rpm
+	sha256sums = 6d4fc584688a4d65133b0a036a48d9c17f3307ffd3ac2649819f32e328acb9c4
 
 pkgname = zettlr-bin
 
