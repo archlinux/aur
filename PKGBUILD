@@ -1,7 +1,7 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier at gmail dot com>
 pkgname=cninja
-pkgver=3.5.0
-release_tag=v3.5.0
+pkgver=3.5.2
+release_tag=v3.5.2
 pkgrel=1
 pkgdesc="cninja, an opinionated cmake config manager"
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=()
 provides=("$pkgname=$pkgver")
 conflicts=()
 replaces=()
-source=("https://github.com/jcelerier/cninja/releases/download/v${pkgver}/cninja-${pkgver}-src.tar.gz")
-sha512sums=("19a07699e19c9b7259d869d4fbbf3a8cfc27598b3714b79553f60eb5e8f96028a743fbf42b4cb550d388be3b38348c9ad8f09e0cd849480f6330d940a188f625")
+source=("https://github.com/jcelerier/cninja/releases/download/v${pkgver}/cninja-v${pkgver}-src.tar.gz")
+sha512sums=("2fa3ebda3b24da54e5dab21b0b90225080c753effece0416730d2036bd3da324f0f5aa7222da6b5414ff62ddf0cd163fd31f97da40a17f91ed9a8143fb45bb6b")
 
 build() {
   cd "$srcdir"
@@ -24,7 +24,7 @@ build() {
   cmake \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
-	  -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/bin" \
+	  -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
 	  "$srcdir"
 
   cmake --build .
