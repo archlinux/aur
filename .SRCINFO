@@ -1,0 +1,18 @@
+pkgbase = evolution-etesync-git
+	pkgdesc = EteSync (end-to-end encrypted sync) plugin for Evolution
+	pkgver = r55.833f264
+	pkgrel = 1
+	url = https://gitlab.gnome.org/nourmat/evolution-etesync/
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	depends = libgee
+	depends = json-glib
+	depends = evolution-data-server
+	depends = evolution
+	depends = etesync
+	source = evolution-etesync::git+https://gitlab.gnome.org/nourmat/evolution-etesync.git
+	sha512sums = SKIP
+
+pkgname = evolution-etesync-git
+
