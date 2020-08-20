@@ -1,4 +1,4 @@
-# Maintainer: Giovanni Scafora <giovanni@archlinux.org>
+# Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Simon Sapin <simon dot sapin at exyr dot org>
 # Contributor: Michal Marek <reqamst at gmail dot com>
 # Contributor: Rick W. Chena <stuffcorpse@archlinux.us>
