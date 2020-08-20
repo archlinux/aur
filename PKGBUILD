@@ -5,7 +5,7 @@
 pkgname=gcstar
 _pkgname=GCstar
 pkgver=1.7.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A collection management application"
 arch=('any')
 url="http://www.gcstar.org"
@@ -16,7 +16,8 @@ depends=('gtk2-perl' 'perl-libwww' 'perl-xml-simple'
 	 'perl-http-message' 'perl-http-date' 'perl-http-cookies'
 	 'perl-gd' 'perl-date-calc' 'perl-lwp-protocol-https'
 	 'perl-archive-zip' 'perl-datetime-format-strptime'
-	 'perl-gdgraph' 'perl-mp3-info')
+	 'perl-gdgraph' 'perl-mp3-info' 'perl-mp3-tag'
+	 'perl-net-freedb' 'perl-ogg-vorbis-header-pureperl')
 optdepends=('perl-image-exiftool:  to retrieve data from a mkv file')
 source=(https://gitlab.com/Kerenoc/GCstar/-/archive/v$pkgver/${_pkgname}-v$pkgver.tar.bz2)
 sha256sums=('0f0ff1a8ac7dcd9ce6c83ebc46692260b8a1c123918227a97883e24db4952ee0')
