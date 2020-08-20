@@ -2,8 +2,8 @@
 pkgname=('palenight-gtk-theme' 'amarena-gtk-theme' 'gruvterial-gtk-theme')
 pkgbase=material-gtk-framework
 _pkgbase=gtk-theme-framework
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="GTK themes built with the GTK Theme Framework"
 arch=('any')
 url="https://github.com/jaxwilko/gtk-theme-framework"
@@ -13,7 +13,7 @@ makedepends=('sassc' 'inkscape' 'optipng')
 options=('!strip')
 source=("$_pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'git+https://github.com/vinceliuice/vimix-icon-theme.git')
-sha256sums=('a94cb2d2934e61c8763905f3f974973b17fe30e5d7791c521ee0b0cf16bc907a'
+sha256sums=('90fdab6c78b8cbb262cc9b99125a156bcdda1133f8d69a71d94b7ca6baae9fe9'
             'SKIP')
 
 prepare() {
