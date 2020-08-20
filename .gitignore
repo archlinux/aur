@@ -1,0 +1,6 @@
+*.mp3
+test/
+GDCSD/
+src/
+pkg/
+*.tar*

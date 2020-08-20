@@ -1,0 +1,16 @@
+pkgbase = gdcsd-git
+	pkgdesc = Geometry Dash Custom Song Downloader, downloading audios from Newgrounds to Geometry Dash
+	pkgver = r8.bd59fad
+	pkgrel = 1
+	url = https://github.com/SamLukeYes/GDCSD
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = aria2
+	provides = gdcsd
+	source = git+https://github.com/SamLukeYes/GDCSD.git
+	md5sums = SKIP
+
+pkgname = gdcsd-git
+
