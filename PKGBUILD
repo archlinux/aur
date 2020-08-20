@@ -43,8 +43,8 @@ build() {
 
 package() {
   mkdir -p "${pkgdir}/usr/share"
-  ## local _x=`echo "${_name}-linux-"*`
-  cp -r "${srcdir}/resources/app" "${pkgdir}/usr/share/${pkgname}"
+  local _x=`echo "${_name}-linux-"*`
+  cp -r "${srcdir}/${pkgdir}/resources/app" "${pkgdir}/usr/share/${pkgname}"
   install -Dm 755 -t "${pkgdir}/usr/bin/" "${pkgname}"
   install -Dm 644 -t "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
   install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_x}/LICENSE"
