@@ -2,7 +2,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=aom-vmaf-git
-pkgver=r31032.g26050dd548
+pkgver=r31096.g962b35e8eb
 pkgrel=1
 pkgdesc="An open, royalty-free video coding format designed for video transmissions over the Internet with support for vmaf"
 arch=('i686' 'x86_64')
@@ -28,6 +28,7 @@ pkgver() {
 build() {
   cd "aom"
 
+  #curl -L "https://aomedia-review.googlesource.com/changes/aom~116821/revisions/4/patch?download" | base64 -d | patch -p1
   mkdir -p "_build" && cd "_build"
   sed -i 's/libvmaf.a//' ../CMakeLists.txt
   cmake \

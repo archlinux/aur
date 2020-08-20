@@ -1,6 +1,6 @@
 pkgbase = aom-vmaf-git
 	pkgdesc = An open, royalty-free video coding format designed for video transmissions over the Internet with support for vmaf
-	pkgver = r31032.g26050dd548
+	pkgver = r31096.g962b35e8eb
 	pkgrel = 1
 	url = https://aomedia.org/
 	arch = i686
