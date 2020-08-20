@@ -1,0 +1,30 @@
+pkgbase = mtscan-git
+	pkgdesc = Mikrotik RouterOS wireless scanner
+	pkgver = 20200531
+	pkgrel = 1
+	url = https://github.com/kkonradpl/mtscan
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = curl
+	makedepends = openssl
+	makedepends = zlib
+	makedepends = yajl
+	makedepends = libssh
+	makedepends = gtk2
+	depends = curl
+	depends = openssl
+	depends = zlib
+	depends = yajl
+	depends = libssh
+	depends = gtk2
+	provides = mtscan
+	conflicts = mtscan
+	source = git+https://github.com/kkonradpl/mtscan
+	md5sums = SKIP
+
+pkgname = mtscan-git
+
