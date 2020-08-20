@@ -5,24 +5,16 @@ pkgbase = python-fipy
 	url = http://www.ctcms.nist.gov/fipy
 	arch = any
 	license = custom:Public Domain
-	makedepends = python2-setuptools
 	makedepends = python-setuptools
 	makedepends = python
 	makedepends = python-future
-	makedepends = python2-future
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
 	optdepends = gmsh: creation of irregular meshes
 	source = fipy-3.4.2.1.tar.gz::https://github.com/usnistgov/fipy/archive/3.4.2.1.tar.gz
 	sha256sums = f7dfeb1aaf7c723c7287e7c9a6978f2c7c4828a87bfa11d901b0f8c319a3b0ee
 
 pkgname = python-fipy
-	depends = python
-	depends = python-numpy
-	depends = python-scipy
-	depends = python-matplotlib
-
-pkgname = python2-fipy
-	depends = python2
-	depends = python2-numpy
-	depends = python2-scipy
-	depends = python2-matplotlib
 
