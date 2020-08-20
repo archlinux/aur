@@ -11,7 +11,7 @@ depends=()
 makedepends=(cmake)
 source=("http://cdsarc.u-strasbg.fr/viz-bin/nph-Cat/tar.gz?bincats/GSC_${pkgver}"
         "gsc.sh")
-sha256sums=('bd7334acf54d3ed3cd577e7afcf895d410462dc9691135875aa099302f6544e7'
+sha256sums=('SKIP'
             '59387f8ab62f582465ea97e9b586cccb5f0432f9f8158774ac66030e1bb911f8')
 
 build() {
