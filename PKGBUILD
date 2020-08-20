@@ -1,7 +1,7 @@
 # Maintainer: Price Clark <gpwclark at gmail dot com>
 
 pkgname=sl-sh-git
-pkgver=0.8.88
+pkgver=
 pkgrel=1
 epoch=
 pkgdesc='simple lisp based shell'
@@ -49,5 +49,5 @@ package() {
 
 
 pkgver() {
-    echo "${pkgver}_$(git describe --always)"
+    echo "0.8.89_$(git describe --always)"
 }
