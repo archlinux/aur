@@ -4,40 +4,40 @@
 # Contributor: BenObiWan <benobiwan @t gmail dot com>
 # Contributor: Huulivoide
 # Contributor: Fernando Carmona Varo <ferkiwi @t gmail dot com>
+# Contributor: Franck Stauffer <franck.stauffer@monaco.mc>
 
 pkgname=solarus
-pkgver=1.6.2
+pkgver=1.6.4
 pkgrel=1
-epoch=
 pkgdesc="A lightweight, free and open-source game engine for Action-RPGs"
 arch=('i686' 'x86_64')
 url="http://www.solarus-games.org/"
-license=('GPL')
-groups=()
-depends=('luajit' 'sdl2_image' 'sdl2_ttf' 'physfs' 'openal' 'libvorbis' 'libmodplug' 'qt5-tools' 'qt5-base' 'libglvnd')
+license=('GPL3')
+depends=('glm'
+         'hicolor-icon-theme'
+         'libmodplug>=0.8.8.4'
+         'libvorbis'
+         'luajit>=2.0'
+         'openal'
+         'physfs'
+         'qt5-base'
+         'sdl2>=2.0.6'
+         'sdl2_image'
+         'sdl2_ttf')
 makedepends=('cmake')
-checkdepends=()
-optdepends=('zsxd' 'zsdx' 'zelda-roth-se')
-provides=('solarus-engine')
-conflicts=('zsdxdemo-en' 'zsdxdemo-de' 'zsdxdemo-fr' 'solarus-git')
-replaces=('zsdxdemo-en' 'zsdxdemo-de' 'zsdxdemo-fr' 'solarus-git')
-backup=()
-options=()
-install=
-changelog=
+conflicts=('solarus-git' 'solarus-run')
 source=("https://gitlab.com/solarus-games/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-noextract=()
-md5sums=('f5ea8ccddb3d26136b5de51e255e991f')
+b2sums=('fdf9b6703af8424b4731b25b307dcc7a0966cbf89a0bf043bcfb6745d0c6e8aa1fee026f206a41ebf6c8d54b23a9a3816a6c2d7ae004c9db7c436425a94aa7d3')
+
+prepare() {
+  cd "$pkgname-v$pkgver"
+  cmake -Wno-dev -DSOLARUS_TESTS=OFF -DCMAKE_INSTALL_PREFIX="/usr"  -DCMAKE_BUILD_TYPE=Release .
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-v${pkgver}"
-
-  cmake -D CMAKE_INSTALL_PREFIX="/usr" -D CMAKE_BUILD_TYPE=Release -D DEFAULT_QUEST=/usr/share/solarus/zsdx .
-  make
+  make -C "$pkgname-v$pkgver" ${MAKEFLAGS}
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-v${pkgver}"
-  make DESTDIR="${pkgdir}/" PREFIX="/usr" install
+  make -C "$pkgname-v$pkgver" DESTDIR="${pkgdir}/" install
 }
-
