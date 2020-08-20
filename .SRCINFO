@@ -1,0 +1,12 @@
+pkgbase = ttf-permanent-marker
+	pkgdesc = handwritten-style font by Font Diner
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Permanent+Marker
+	arch = any
+	license = OFL
+	source = ttf-permanent-marker.zip::https://fonts.google.com/download?family=Permanent+Marker
+	sha256sums = 22ac9cb8e38f9c78e9a6bae39753c68bef3b65174a3980ccd4173d2a76690164
+
+pkgname = ttf-permanent-marker
+
