@@ -1,0 +1,22 @@
+pkgbase = haskell-microaeson
+	pkgdesc = A tiny JSON library with light dependency footprint.
+	pkgver = 0.1.0.0
+	pkgrel = 1
+	url = https://github.com/haskell-hvr/microaeson
+	arch = x86_64
+	license = GPL3
+	makedepends = ghc
+	makedepends = alex
+	makedepends = haskell-aeson
+	makedepends = haskell-quickcheck
+	makedepends = haskell-quickcheck-instances
+	makedepends = haskell-vector
+	makedepends = haskell-tasty
+	makedepends = haskell-tasty-quickcheck
+	makedepends = haskell-unordered-containers
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/microaeson/0.1.0.0/microaeson-0.1.0.0.tar.gz
+	sha256sums = 3f9e852e8985e9313ec260afaddecb7d6b202e6e1778010b6ad6ea74cdf777c1
+
+pkgname = haskell-microaeson
+
