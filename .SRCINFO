@@ -1,0 +1,23 @@
+pkgbase = haskell-validation-selective
+	pkgdesc = Lighweight pure data validation based on Applicative and Selective functors.
+	pkgver = 0.1.0.0
+	pkgrel = 1
+	url = https://github.com/kowainik/validation-selective
+	arch = x86_64
+	license = MPL2
+	makedepends = ghc
+	makedepends = haskell-hedgehog
+	makedepends = haskell-hedgehog
+	makedepends = haskell-hspec
+	makedepends = haskell-hspec-hedgehog
+	makedepends = haskell-doctest
+	makedepends = haskell-doctest
+	depends = ghc-libs
+	depends = haskell-selective
+	source = https://hackage.haskell.org/packages/archive/validation-selective/0.1.0.0/validation-selective-0.1.0.0.tar.gz
+	source = Setup.hs
+	sha256sums = c7d9cb37649ff7dddfa7c97e882d86b2f2edd646ce9fa42d50f78c1098784345
+	sha256sums = 1e1679046e10c31286fee3e631e57e4ef60c89e562270c8a2a7131c051959916
+
+pkgname = haskell-validation-selective
+
