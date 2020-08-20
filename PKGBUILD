@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=glibc-git
-pkgver=2.31.r148.gca843defbc
+pkgver=2.32.r35.gcd71f47acc
 pkgrel=1
 pkgdesc='GNU C Library'
 arch=('i686' 'x86_64')
@@ -22,12 +22,10 @@ options=('staticlibs')
 install='glibc-git.install'
 source=('git+https://sourceware.org/git/glibc.git'
         'locale-gen'
-        '0001-Revert-elf-Correct-absolute-SHN_ABS-symbol-run-time-.patch'
-        'bz20338.patch')
+        '0001-Revert-elf-Correct-absolute-SHN_ABS-symbol-run-time-.patch')
 sha256sums=('SKIP'
             '05fbb88877cdddc99ef25e48304d6e5ac236660c20925d461cb4e90ebcb3b7de'
-            '6a3de26cec7b5b3e05090e85e970705454d9d749dcd4a2e1d35bee11d4e3637b'
-            '7ff38c08e51c4a0a3d7fd2712cf435f700bef078fb8f4e7566424ae3d1754bab')
+            '6a3de26cec7b5b3e05090e85e970705454d9d749dcd4a2e1d35bee11d4e3637b')
 
 # remove default hardening for building libraries
 CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
@@ -40,8 +38,6 @@ pkgver() {
 
 prepare() {
     cd glibc
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=20338
-    patch -p1 -i ../bz20338.patch
     # revert commit breaking proprietary electron apps for now; this is lld's fault
     # but it's too serious a regression to break software in the wild until users
     # have a solution. See https://bugs.archlinux.org/task/59550 and
@@ -119,6 +115,9 @@ package() {
 
     # Shipped in tzdata
     rm -f "$pkgdir"/usr/bin/{tzselect,zdump,zic}
+
+    # Provided by libxcrypt; keep the old shared library for backwards compatibility
+    rm -f "$pkgdir"/usr/include/crypt.h "$pkgdir"/usr/lib/libcrypt.a
 
     # handle selectively stripping unless debug packages are requested
     if check_option 'debug' n; then
