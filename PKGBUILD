@@ -1,22 +1,21 @@
-# $Id: PKGBUILD 110172 2014-04-25 19:26:00Z jelle $
-# Maintainer: Black_Codec <orso.f.regna@gmail.com>
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: Black_Codec <orso.f.regna@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt4-private-headers-dev
-#pkgname=qt4-private-headers
 pkgver=4.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt4 private headers for development"
 arch=('any')
-license=('GPL3' 'LGPL')
-url="http://qt-project.org/"
+license=('GPL3' 'LGPL' 'FDL' 'custom')
+url='https://www.qt.io'
 depends=("qt4=${pkgver}")
 conflicts=('qt-private-headers' 'qt4-private-headers')
 replaces=('qt-private-headers')
 provides=('qt4-private-headers')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
-source=("http://download.qt-project.org/official_releases/qt/${pkgver%.*}/${pkgver}/${_pkgfqn}.tar.gz")
-md5sums=('d990ee66bf7ab0c785589776f35ba6ad')
+source=("https://download.qt.io/archive/qt/4.8/${pkgver}/${_pkgfqn}.tar.gz")
+sha256sums=('e2882295097e47fe089f8ac741a95fef47e0a73a3f3cdf21b56990638f626ea0')
 
 package() {
     install -d "${pkgdir}"/usr/include/qt4/{QtCore,QtDeclarative,QtGui,QtScript}
