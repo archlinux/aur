@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=buildstream-git
-pkgver=1.93.3+78+g654bf559d
+pkgver=1.93.5.r0.g51afe1c81
 pkgrel=1
 pkgdesc="Framework for modelling build pipelines in a declarative YAML format"
 arch=('any')
@@ -30,7 +30,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd buildstream
-  git describe --tags | sed 's/-/+/g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
