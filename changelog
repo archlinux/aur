@@ -1,3 +1,14 @@
+2020-08-19 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.2.4.0-1:
+    Added POST /Api/Bot/{botNames}/TwoFactorAuthentication/Confirmations API endpoint which allows to accept/reject confirmations with more parameters.
+    Added a workaround against Steam wrongly returning InvalidPassword for valid login details (rare situation which happens after maintenance when their password validation module is non-responding).
+    Fixed ASF not accepting backup 2FA codes as valid input (#1900).
+    Fixed generic-netf builds not serializing Version objects as strings.
+    Fixed ASF not following RFC on 303 HTTP status codes (#1907).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    [Deprecation] Endpoints Confirmations/Accept and Confirmations/Cancel of /Api/Bot/{botNames}/TwoFactorAuthentication have been deprecated in favour of new Confirmations endpoint, which allows to achieve the same (on top of additional functionalities). They'll be removed in the next ASF version, please update your usage of Confirmations/Accept and Confirmations/Cancel to Confirmations.
 2020-07-17 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.2.3.6-1:
     [!] Fixed ASF's inability to resolve public inventory status (and therefore SteamTradeMatcher feature) due to latest Steam breaking change (#1866).
