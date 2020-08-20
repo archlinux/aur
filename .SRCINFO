@@ -1,6 +1,6 @@
 pkgbase = mtscan-git
 	pkgdesc = Mikrotik RouterOS wireless scanner
-	pkgver = 20200531
+	pkgver = 20200820
 	pkgrel = 1
 	url = https://github.com/kkonradpl/mtscan
 	arch = x86_64

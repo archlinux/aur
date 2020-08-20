@@ -1,7 +1,7 @@
 # Maintainer: Stanislaw Grams <sjg@fmdx.pl>
 
 pkgname=mtscan-git
-pkgver=20200531
+pkgver=20200820
 pkgrel=1
 pkgdesc="Mikrotik RouterOS wireless scanner"
 arch=('x86_64')
