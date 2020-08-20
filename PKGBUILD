@@ -2,7 +2,7 @@
 
 pkgname=taskell
 pkgver=1.9.3.0
-pkgrel=13
+pkgrel=14
 pkgdesc='A command-line kanban board/task manager'
 license=(BSD)
 arch=(x86_64)
@@ -16,7 +16,7 @@ sha512sums=('61d9615d20585345a0a7d8864c7c817196b3ebf9a7ec3aa3f592f0f6df89d14c6c6
 
 prepare() {
   cd $pkgname-$pkgver
-  sed -i 's/== *0.52/==0.55/;s/== *5.26/==5.30/;s/< *4/<5/;s/< *2/<3/;s/< *1/<2/;s/< *0.7/<1/;s/>=1.2.4.0/>=1.2/' $pkgname.cabal
+  sed -i 's/== *0.52/==0.55/;s/== *5.26/==5.30/;s/< *4/<5/;s/< *2/<3/;s/< *1/<2/;s/< *0.7/<1/;s/>=1.2.4.0/>=1.2/;s/< *0.12/<1/' $pkgname.cabal
   cp ../roadmap.md test/Taskell/IO/data/
 }
 
