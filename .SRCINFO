@@ -21,7 +21,6 @@ pkgbase = ayatana-indicator-datetime
 	depends = glib2
 	depends = evolution-data-server
 	depends = libaccounts-glib
-	optdepends = mate-ayatana-indicator-applet
 	optdepends = geoclue
 	options = !emptydirs
 	source = https://github.com/AyatanaIndicators/ayatana-indicator-datetime/archive/0.8.0.tar.gz
