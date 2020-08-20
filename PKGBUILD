@@ -3,7 +3,7 @@
 
 pkgname=man-pages-fr
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="French man pages"
 arch=('any')
 url="https://salsa.debian.org/manpages-l10n-team/manpages-l10n"

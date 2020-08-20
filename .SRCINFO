@@ -1,7 +1,7 @@
 pkgbase = man-pages-fr
 	pkgdesc = French man pages
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salsa.debian.org/manpages-l10n-team/manpages-l10n
 	changelog = man-pages-fr.changelog
 	arch = any
