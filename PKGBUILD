@@ -1,6 +1,6 @@
 # Maintainer: Breno Martins da costa corrêa e Souza <breno.ec@gmail.com>
 pkgname=jet-git
-pkgver=1.0.r31.b9677cc
+pkgver=1.0.1.r31.b9677cc
 pkgrel=1
 epoch=
 pkgdesc="Persist or retrieve strings over streams."
