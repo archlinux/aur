@@ -1,6 +1,6 @@
 pkgbase = jpcre2
 	pkgdesc = C++ wrapper for PCRE2 library
-	pkgver = 10.31.04
+	pkgver = 10.32.01
 	pkgrel = 1
 	url = https://github.com/jpcre2/jpcre2
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = jpcre2
 	depends = pcre2
 	provides = libjpcre2
 	provides = libjpcre2-dev
-	source = https://github.com/jpcre2/jpcre2/archive/10.31.04.tar.gz
+	source = https://github.com/jpcre2/jpcre2/archive/10.32.01.tar.gz
 	validpgpkeys = 3331 6137 5B22 27AC F7AA 6351 A4A2 CA5B 6BDA A871
-	md5sums = a8f28d479d405f62f26d4eea66c316c8
+	md5sums = a511343ef217351f123eee608f66930b
 
 pkgname = jpcre2
 
