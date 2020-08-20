@@ -49,5 +49,5 @@ package() {
 
 pkgver() {
     cd "${pkgname%-git}"
-    echo "0.8.90_$(git describe --always)"
+    echo "0.8.91_$(git describe --always)"
 }
