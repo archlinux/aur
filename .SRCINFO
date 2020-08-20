@@ -1,7 +1,7 @@
 pkgbase = lib32-liblrdf
 	pkgdesc = A library for the manipulation of RDF file in LADSPA plugins (32 bit)
 	pkgver = 0.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/swh/LRDF
 	arch = x86_64
 	license = GPL2

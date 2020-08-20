@@ -5,7 +5,7 @@
 _pkgname=liblrdf
 pkgname=lib32-liblrdf
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for the manipulation of RDF file in LADSPA plugins (32 bit)"
 arch=('x86_64')
 url="https://github.com/swh/LRDF"
@@ -28,6 +28,9 @@ build() {
     export CC='gcc -m32'
     export CXX='g++ -m32'
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+
+    # raptor.h changed location
+    export CXXFLAGS="$(pkg-config --cflags raptor2) ${CXXFLAGS}"
 
     ./configure \
         --build=i686-pc-linux-gnu \
