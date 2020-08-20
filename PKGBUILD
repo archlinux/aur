@@ -1,30 +1,34 @@
-# Maintainer: ValHue <vhuelamo at gmail dot com>
-#
-# Contributor: Stefano Capitani <stefano at manjaro dot org>
-#
-pkgname="mate-indicator-applet"
-pkgver=1.22.0
-pkgrel=1
-pkgdesc="Applet to display information from various applications consistently in the MATE panel."
-url="https://github.com/mate-desktop/${pkgname}"
-arch=('i686' 'x86_64')
-license=('GPLv3')
-makedepends=('intltool' 'mate-common')
-depends=('mate-panel' 'libappindicator-gtk3' 'ido')
-optdepends=('indicator-sound')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2df9841d42d89f0e058a6059db61bfe65e6527f4812b8577710047d26f01f11c')
+# Maintainer: Robert Tari <robert at tari dot in>
 
-build() {
-    cd "${pkgname}-${pkgver}"
-    ./autogen.sh
-    ./configure --prefix=/usr
+pkgname="mate-indicator-applet"
+pkgver="1.25.0"
+pkgrel="1"
+pkgdesc="Applet to display information from various applications consistently in the MATE panel (Built with Ayatana support)"
+arch=("i686" "x86_64" "pentium4")
+url="http://www.mate-desktop.org/"
+license=("LGPL2.1" "GPL3")
+depends=("mate-panel" "ayatana-ido" "libayatana-indicator")
+makedepends=("intltool" "gtk3" "ayatana-ido" "libayatana-indicator" "libtool" "libx11" "libxml2" "mate-common")
+source=("https://github.com/mate-desktop/${pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=("ab125c672ea26172a55d8aefdee277c3")
+options=("!emptydirs")
+
+prepare()
+{
+    cd ${srcdir}/${pkgname}-${pkgver}
+    NOCONFIGURE=1 ./autogen.sh
+}
+
+build()
+{
+    cd ${srcdir}/${pkgname}-${pkgver}
+    ./configure --prefix=/usr --disable-static --libexecdir=/usr/lib --with-ayatana-indicators=yes
     make
 }
 
-package() {
-    cd "${pkgname}-${pkgver}"
-    make DESTDIR=${pkgdir} install
+package()
+{
+    cd ${srcdir}/${pkgname}-${pkgver}
+    make DESTDIR="${pkgdir}" install
 }
 
-# vim: set ts=4 sw=4 et syn=sh ft=sh:
