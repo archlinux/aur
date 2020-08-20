@@ -1,14 +1,14 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.7.11-arch1 Kernel Configuration
+# Linux/x86 5.7.16 Kernel Configuration
 #
 
 #
-# Compiler: gcc (GCC) 10.1.0
+# Compiler: gcc (GCC) 10.2.0
 #
 CONFIG_CC_IS_GCC=y
-CONFIG_GCC_VERSION=100100
-CONFIG_LD_VERSION=234000000
+CONFIG_GCC_VERSION=100200
+CONFIG_LD_VERSION=235000000
 CONFIG_CLANG_VERSION=0
 CONFIG_CC_CAN_LINK=y
 CONFIG_CC_HAS_ASM_GOTO=y
