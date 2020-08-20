@@ -3,20 +3,25 @@
 _basename=lilv
 pkgname=lib32-lilv
 pkgver=0.24.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library interface to the LV2 plug-in standard (32-bit)"
 arch=('x86_64')
 url="https://drobilla.net/software/lilv/"
 license=('custom:ISC')
 depends=('lib32-sratom' 'lilv')
 makedepends=('lib32-libsndfile' 'lib32-lv2' 'waf')
-source=("https://download.drobilla.net/$_basename-$pkgver.tar.bz2"{,.sig})
+source=("https://download.drobilla.net/$_basename-$pkgver.tar.bz2"{,.sig}
+        "$_basename-0.24.8-fix_translations.patch")
 sha512sums=('f2b2638372a8280041f6e88e2077f2109f89dad6feedb9d07a88c6b5a05c37b62112f5d03282da4335ddd0d14339cfb49ad96a3df3de310265a40c24718be192'
-            'SKIP')
+            'SKIP'
+            '71a38be9d33a21e2d2a9500e37efee9825124bab817c8e459790c00c28b9b27a1c9a3b611955790542b55253ae656dad58be934199a854cd7a5e16daed485b68')
 validpgpkeys=('907D226E7E13FA337F014A083672782A9BF368F3')
 
 prepare() {
     cd "$_basename-$pkgver"
+
+    # patch translation issues
+    patch -Np1 -i "../$_basename-0.24.8-fix_translations.patch"
 
     # let wscript(s) find the custom waf scripts
     mkdir -pv tools
