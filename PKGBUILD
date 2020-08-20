@@ -9,7 +9,6 @@ url="https://github.com/AyatanaIndicators"
 license=("GPL3")
 depends=("glib2" "libayatana-indicator")
 makedepends=("intltool" "libayatana-indicator" "glib2" "gdk-pixbuf2" "gtk3" "mate-common")
-optdepends=("mate-ayatana-indicator-applet")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("aba7f4b24ddf5412cec469ce1f22471a")
 options=("!emptydirs")

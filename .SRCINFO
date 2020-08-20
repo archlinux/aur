@@ -14,7 +14,6 @@ pkgbase = ayatana-indicator-notifications
 	makedepends = mate-common
 	depends = glib2
 	depends = libayatana-indicator
-	optdepends = mate-ayatana-indicator-applet
 	options = !emptydirs
 	source = https://github.com/AyatanaIndicators/ayatana-indicator-notifications/archive/0.8.0.tar.gz
 	md5sums = aba7f4b24ddf5412cec469ce1f22471a
