@@ -3,7 +3,7 @@
 pkgname=gdcsd-git
 pkgver=r8.bd59fad
 pkgrel=1
-pkgdesc="Geometry Dash Custom Song Downloader, downloading audios from Newgrounds to Geometry Dash"
+pkgdesc="Geometry Dash Custom Song Downloader, a CLI audio downloader from Newgrounds to Geometry Dash"
 arch=('any')
 url="https://github.com/SamLukeYes/GDCSD"
 license=('GPL3')
