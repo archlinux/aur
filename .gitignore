@@ -1,5 +1,5 @@
 *.zip
-LICENSE.txt
+LICENSE
 *.zst
 src/
 pkg/

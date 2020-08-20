@@ -9,10 +9,10 @@ license=('MIT')
 depends=()
 makedepends=()
 source=("https://github.com/xmdhs/gomclauncher/releases/download/v$pkgver/gml-linux"
-	"https://raw.githubusercontent.com/xmdhs/gomclauncher/v$pkgver/LICENSE.txt")
+	"https://raw.githubusercontent.com/xmdhs/gomclauncher/v$pkgver/LICENSE")
 
 md5sums=('a77baf2ad47e549f88bf43009ab804ac'
-         '47d894a54821060b37984df5ee85c467')
+         'aca4188a0e8807e4aecc6b293f32ce42')
 
 prepare() {
 	cd $srcdir
@@ -23,5 +23,5 @@ package() {
 	mkdir -p "$pkgdir/usr/bin/"
 	mkdir -p "$pkgdir/usr/share/licenses/gomclauncher/"
 	install -Dm755 "$srcdir/gml-linux" "$pkgdir/usr/bin/gml"
-	install -Dm644 "$srcdir/LICENSE.txt" "$pkgdir/usr/share/licenses/gomclauncher/LICENSE"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/gomclauncher/LICENSE"
 }
