@@ -1,9 +1,8 @@
 pkgbase = phoronix-test-suite-git
 	pkgdesc = The most comprehensive testing and benchmarking platform available for Linux
-	pkgver = 9.6.0m2.r0.g9f67a61b4
+	pkgver = 10.0.0m1.r0.g3b7fb553f
 	pkgrel = 1
 	url = http://www.phoronix-test-suite.com/
-	install = phoronix-test-suite-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -20,8 +19,11 @@ pkgbase = phoronix-test-suite-git
 	optdepends = openmpi: required for universe-cli test suite
 	provides = phoronix-test-suite
 	conflicts = phoronix-test-suite
-	source = phoronix-test-suite-git::git://github.com/phoronix-test-suite/phoronix-test-suite.git
-	md5sums = SKIP
+	options = !strip
+	source = phoronix-test-suite::git://github.com/phoronix-test-suite/phoronix-test-suite.git
+	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/phoronix-test-suite-launcher.patch
+	sha256sums = SKIP
+	sha256sums = 577326343d0303a59fd469c3f9c9740e756dd59c0660c54363b62d6fd1cee26d
 
 pkgname = phoronix-test-suite-git
 
