@@ -1,7 +1,7 @@
 # Maintainer: Edward Pacman <edward@edward-p.xyz>
 
 pkgname=httpflow-git
-pkgver=r45.14ec857
+pkgver=r66.53d560a
 pkgrel=1
 pkgdesc="Packet capture and analysis utility similar to tcpdump for HTTP"
 arch=('x86_64')

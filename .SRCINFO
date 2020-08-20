@@ -1,6 +1,6 @@
 pkgbase = httpflow-git
 	pkgdesc = Packet capture and analysis utility similar to tcpdump for HTTP
-	pkgver = r45.14ec857
+	pkgver = r66.53d560a
 	pkgrel = 1
 	url = https://github.com/six-ddc/httpflow
 	arch = x86_64
