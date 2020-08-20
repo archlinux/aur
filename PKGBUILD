@@ -5,19 +5,20 @@
 
 _pkgname=xfce4-panel
 pkgname=${_pkgname}-git
-pkgver=4.15.2+57+g61671349
+pkgver=4.15.3+75+g09a78c28
 pkgrel=1
 pkgdesc="Panel for the Xfce desktop environment - git checkout"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="http://docs.xfce.org/xfce/xfce4-panel/start"
 license=('GPL2')
 groups=('xfce4-git')
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" 'xfce4-statusnotifier-plugin')
 provides=("${_pkgname}=${pkgver%%+*}")
 depends=('exo' 'garcon' 'libxfce4ui>=4.15.1' 'libwnck3' 'hicolor-icon-theme'
-         'desktop-file-utils' 'xfconf' 'libxfce4util')
+         'desktop-file-utils' 'xfconf' 'libxfce4util>=4.15.2' 'libdbusmenu-gtk3')
 makedepends=('intltool' 'gtk-doc' 'git' 'xfce4-dev-tools' 'gobject-introspection' 'vala')
 optdepends=('xfce4-panel-profiles')
+replaces=('xfce4-statusnotifier-plugin')
 source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}")
 sha256sums=('SKIP')
 

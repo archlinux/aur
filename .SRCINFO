@@ -1,6 +1,6 @@
 pkgbase = xfce4-panel-git
 	pkgdesc = Panel for the Xfce desktop environment - git checkout
-	pkgver = 4.15.2+57+g61671349
+	pkgver = 4.15.3+75+g09a78c28
 	pkgrel = 1
 	url = http://docs.xfce.org/xfce/xfce4-panel/start
 	arch = x86_64
@@ -22,10 +22,13 @@ pkgbase = xfce4-panel-git
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	depends = xfconf
-	depends = libxfce4util
+	depends = libxfce4util>=4.15.2
+	depends = libdbusmenu-gtk3
 	optdepends = xfce4-panel-profiles
-	provides = xfce4-panel=4.15.2
+	provides = xfce4-panel=4.15.3
 	conflicts = xfce4-panel
+	conflicts = xfce4-statusnotifier-plugin
+	replaces = xfce4-statusnotifier-plugin
 	source = xfce4-panel::git+https://gitlab.xfce.org/xfce/xfce4-panel
 	sha256sums = SKIP
 
