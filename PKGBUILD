@@ -25,17 +25,17 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+	cd jet
   printf "1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd jet
 	make build
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd jet
 	sudo make install
   sudo install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   sudo install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
