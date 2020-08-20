@@ -6,30 +6,27 @@
 
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
-pkgver=3.0.13
-pkgrel=3
+pkgver=3.2.2
+pkgrel=1
 pkgdesc="An email, contacts and calendar server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.cyrusimap.org/"
 license=('BSD')
 makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
-             'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'shapelib'
-             'libldap' 'libcap' 'net-snmp' 'xapian-core' 'perl' 'clamav' 'rsync'
-             'python-sphinx<3' 'perl-pod-pom-view-restructured')
+             'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'zstd'
+             'shapelib' 'libldap' 'libcap' 'xapian-core' 'perl' 'clamav' 'rsync'
+             'libchardet' 'python-sphinx' 'python-gitpython'
+             'perl-pod-pom-view-restructured')
 source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-${pkgver}/${pkgbase}-${pkgver}.tar.gz"{,.sig}
-        "libcap.patch::https://github.com/cyrusimap/cyrus-imapd/pull/2991.patch"
-        "perl-libs.patch"
-        "vzic-flags.patch"
+        "sphinx3.patch"
         "imapd.conf.patch"
         "cyrus-imapd.service"
         "cyrus-imapd.sysusers.conf"
         "cyrus-imapd.tmpfiles.conf")
 validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
-sha512sums=('5cd066916797efb975cdb97720f65edc72d3fe82afbd78a26aa8369d95ae4ca09c0593dd4bec5521156c64ea38af7a13065f3b35447a76267dec93feb0ac6ac6'
+sha512sums=('13e50e2bbf4184539dfea2dbacc88246e8bc07387c7c3f444526520c95956b72b5da45c8e06e7700fa363b7aca2c30e2eb60ab5ab71824e79f20b12873936414'
             'SKIP'
-            '9b2b0dfb5b37bed874f6f57920397af1b422fc3b0d2b5b1171f2bd7b73e4e778e4adc7a28cb2d48becc12b50626017aa4a5a206201f660533ae283a6b78add7e'
-            '63fdce85cd89ea8cdce31c36546c1d600620ef2c9a2f2426e0301e76887c6b56602687c8551b2f5d1b1ae948b21a964dffcf6da41745d9481f2b734f936093d1'
-            'ff1adb55abb059f0c022ae3e375c0a099278d69174bef712b85af40b00fa68a6d49604d09f80195a429ff842813e914557d7aff773231776cbbc5037164c180a'
+            '3f4cb6d4383cd41ce168255d5c5123ff2c350d33e293643971e51c4fd04faaab2b08067d77559376cbd60663358f467284097d86bb476eb85312797354bab174'
             '0862ffc8c05208efd4d2fb50a6e3719ebc65fc2d72f8e6404235aa32cc44d8227056a17b78f2726e15ff8e38d473795f837c34bfbe89b694b2298c9baab9d5db'
             '738242e80cec2c25ae6a85a889cc8d35d7c2f43b2b4d64d74f99a230b21024f168a885f1e319aec1aab0e0599e41211478b99dc608a4ba036be90f8d7e23fd96'
             '28612e491371515b414ce6d34554f1c2286624f5b80872e6be7037a2cccba1ed5bd2c4bfed27ed978478debdfb5f3d56aaa30d767f50b125f2ad38e76a37702c'
@@ -38,16 +35,14 @@ sha512sums=('5cd066916797efb975cdb97720f65edc72d3fe82afbd78a26aa8369d95ae4ca09c0
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
-  patch -Np1 < "${srcdir}/libcap.patch"
-  patch -Np1 < "${srcdir}/perl-libs.patch"
-  patch -Np1 < "${srcdir}/vzic-flags.patch"
-  autoreconf
+  patch -Np1 < "${srcdir}/sphinx3.patch"
 }
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
   export PERL_MM_OPT="NO_PACKLIST=true"
+  export LIBCHARDET_CFLAGS="-I/usr/include/chardet"
   # Work around Cyrus bug #2629
   export LDFLAGS="${LDFLAGS/,--as-needed}"
 
@@ -63,6 +58,7 @@ build() {
     --enable-murder \
     --enable-http \
     --enable-calalarmd \
+    --enable-jmap \
     --enable-replication \
     --enable-backup \
     --with-mysql=yes \
@@ -73,7 +69,6 @@ build() {
     --with-syslogfacility=MAIL
 
   make
-  make -C tools/vzic
 }
 
 check() {
@@ -84,8 +79,8 @@ check() {
 
 package_cyrus-imapd() {
   depends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
-           'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'shapelib'
-           'libldap' 'libcap' 'net-snmp' 'xapian-core' 'perl')
+           'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'zstd'
+           'shapelib' 'libldap' 'libcap' 'xapian-core' 'perl' 'libchardet')
   optdepends=('cyrus-imapd-docs: documentation'
               'clamav: for cyr_virusscan'
               'rsync: for compacting Xapian databases')
@@ -114,14 +109,6 @@ package_cyrus-imapd() {
            translatesieve; do
     install -Dm755 "tools/${i}" "${pkgdir}/usr/bin/${i}"
   done
-  # Vzic is needed to convert timezone information for CalDAV. Since Cyrus
-  # includes a variant that has been modified for its own needs, we're
-  # installing it under a different name to avoid conflicts
-  install -Dm755 tools/vzic/vzic \
-    "${pkgdir}/usr/bin/cyrus-vzic"
-  install -Dm755 tools/vzic/vzic-merge.pl \
-    "${pkgdir}/usr/bin/cyrus-vzic-merge.pl"
-  # vzic-test.pl and vzic-dump.pl appear to be meant for development/testing
 
   # Install additional manpages
   for i in arbitronsort.pl synctest dav_reconstruct; do
@@ -139,10 +126,6 @@ package_cyrus-imapd() {
   install -Dm644 doc/examples/imapd_conf/normal.conf \
     "${pkgdir}/etc/cyrus/imapd.conf"
   patch "${pkgdir}/etc/cyrus/imapd.conf" "${srcdir}/imapd.conf.patch"
-  # Example cyrus.conf and imapd.conf use different socket paths, but they need
-  # to match
-  sed -i 's@/var/imap/socket/@/run/cyrus/socket/@' \
-    "${pkgdir}/etc/cyrus/cyrus.conf"
 
   # Install default directories
   install -dm750 -o70 -gmail \
