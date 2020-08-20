@@ -1,14 +1,14 @@
 pkgbase = python-wasabi
 	pkgdesc = Lightweight console printing and formatting toolkit
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://pypi.org/project/wasabi/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/04/e5/aa1892776a8ed6f6d552ba1be0640e6403f07e850d36e79f475f1e605aa9/wasabi-0.7.0.tar.gz
-	sha256sums = e875f11d7126a2796999ff7f092195f24005edbd90b32b2df16dde5d392ecc8c
+	source = https://files.pythonhosted.org/packages/4e/d1/a23917773a5759b36d1dc8433d15fb40700ca29d5ba924d6350c38a8ef8e/wasabi-0.7.1.tar.gz
+	sha256sums = ee3809f4ce00e1e7f424b1572c753cff0dcaca2ca684e67e31f985033a9f070b
 
 pkgname = python-wasabi
 
