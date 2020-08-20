@@ -1,7 +1,7 @@
 # Maintainer: Antoine POPINEAU <antoine at popineau dot eu>
 
 pkgname=greetd-tuigreet
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 
 pkgdesc='A console UI greeter for greetd'
@@ -14,7 +14,7 @@ depends=()
 makedepends=(rust)
 
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('7e9c9a929835d3385a4ba9dd33c750fdef86066a61e80e7994ea2f034c188346')
+sha256sums=('40784a8eb2d44e956b31d3a36604e6ae0b740938eb4d94134b9881e570caa551')
 
 build() {
   cd "tuigreet-${pkgver}"
@@ -24,4 +24,6 @@ build() {
 package() {
   install -Dm755 "${srcdir}/tuigreet-${pkgver}/target/release/tuigreet" "${pkgdir}/usr/bin/tuigreet"
   install -Dm644 "${srcdir}/tuigreet-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/tuigreet/LICENSE"
+
+  install -Dd -ogreeter -ggreeter -m755 "${pkgdir}/var/cache/tuigreet"
 }

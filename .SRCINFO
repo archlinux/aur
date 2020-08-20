@@ -1,6 +1,6 @@
 pkgbase = greetd-tuigreet
 	pkgdesc = A console UI greeter for greetd
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/apognu/tuigreet
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = greetd-tuigreet
 	makedepends = rust
 	conflicts = greetd-tuigreet-bin
 	conflicts = greetd-tuigreet-git
-	source = https://github.com/apognu/tuigreet/archive/0.1.1.tar.gz
-	sha256sums = 7e9c9a929835d3385a4ba9dd33c750fdef86066a61e80e7994ea2f034c188346
+	source = https://github.com/apognu/tuigreet/archive/0.2.0.tar.gz
+	sha256sums = 40784a8eb2d44e956b31d3a36604e6ae0b740938eb4d94134b9881e570caa551
 
 pkgname = greetd-tuigreet
 
