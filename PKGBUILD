@@ -4,28 +4,20 @@
 _basename=libkate
 pkgname="lib32-$_basename"
 pkgver=0.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A karaoke and text codec for embedding in ogg (32-bit)"
 url="https://wiki.xiph.org/OggKate"
 license=('BSD')
 arch=('x86_64')
 depends=('lib32-libogg' 'lib32-libpng' 'libkate')
 makedepends=('pkg-config' 'git')
-source=("$_basename::git+git://git.xiph.org/users/oggk/kate.git#tag=kate-${pkgver}"
+source=("https://download.videolan.org/contrib/kate/$_basename-$pkgver.tar.gz"
         0001-Fix-automake-warnings.patch)
-sha512sums=('SKIP'
+sha512sums=('2635237753abc0f6c43fc07bd0ecc57c2f3c893efa6c62ad08de9191045612477302ed45acd61cdfea7447efd654ebbe0ed2d6a2cbf867eb834581d7ee43377b'
             '525d120cddd040441859f2783e6e566da631ba304074bfa40a34399879fc3053577e8e71ef804168aeef519fac62e205829b50a61d770cddd46f7dbfba660842')
 
-prepare() {
-    cd $_basename
-
-    patch -Np1 -i "$srcdir/0001-Fix-automake-warnings.patch"
-
-    ./autogen.sh
-}
-
 build() {
-    cd $_basename
+    cd $_basename-$pkgver
 
     export CC='gcc -m32'
     export CXX='g++ -m32'
@@ -43,7 +35,7 @@ build() {
 }
 
 package() {
-    cd $_basename
+    cd $_basename-$pkgver
 
     make DESTDIR=$pkgdir PYTHON=/usr/bin/python2 install
 
