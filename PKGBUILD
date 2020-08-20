@@ -4,7 +4,7 @@ pkgname=('pipewire-git'
          'pipewire-jack-git'
          'pipewire-pulse-git'
          )
-pkgver=0.3.2.114.g5e99e7da
+pkgver=0.3.10.24.g157b15d6
 pkgrel=1
 pkgdesc='Server and user space API to deal with multimedia pipelines. (GIT version)'
 arch=('x86_64')
@@ -53,6 +53,7 @@ build() {
   CFLAGS+=" -Wformat"
 
   arch-meson ../pipewire \
+    -D udevrulesdir=/usr/lib/udev/rules.d \
     -D docs=true \
     -D gstreamer=false \
     -D ffmpeg=true \
