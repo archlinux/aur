@@ -1,7 +1,7 @@
 pkgbase = wxlua
 	pkgdesc = Lua bindings for wxWidgets (Lua 5.3 compatible fork)
 	pkgver = 3.0.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pkulchenko/wxlua
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wxlua
 	makedepends = cmake
 	depends = desktop-file-utils
 	depends = wxgtk2
-	depends = lua
+	depends = lua53
 	optdepends = webkit2gtk
 	source = wxlua-3.0.0.8.tar.gz::https://github.com/pkulchenko/wxlua/archive/v3.0.0.8.tar.gz
 	sha256sums = 85d5182eec6e7cbb8428b9c144ef7fbe364f4fed6411aafcead648893e5b6fa0

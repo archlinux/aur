@@ -6,12 +6,12 @@
 
 pkgname=wxlua
 pkgver=3.0.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Lua bindings for wxWidgets (Lua 5.3 compatible fork)"
 arch=('i686' 'x86_64')
 url="https://github.com/pkulchenko/$pkgname"
 license=('custom:wxWindows')
-depends=('desktop-file-utils' 'wxgtk2' 'lua')
+depends=('desktop-file-utils' 'wxgtk2' 'lua53')
 optdepends=('webkit2gtk')
 makedepends=('cmake')
 checkdepends=('cppcheck')
@@ -23,8 +23,8 @@ build() {
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
         -DwxLua_LUA_LIBRARY_USE_BUILTIN=FALSE \
         -DwxLua_LUA_LIBRARY_BUILD_SHARED=TRUE \
-        -DwxLua_LUA_LIBRARY="/usr/lib/liblua.so" \
-        -DwxLua_LUA_INCLUDE_DIR="/usr/include/" \
+        -DwxLua_LUA_LIBRARY="/usr/lib/liblua.so.5.3" \
+        -DwxLua_LUA_INCLUDE_DIR="/usr/include/lua5.3" \
         -DCMAKE_BUILD_TYPE=Release \
         -DwxWidgets_COMPONENTS="stc;gl;html;aui;adv;core;net;base" \
         -DwxLuaBind_COMPONENTS="stc;gl;html;aui;adv;core;net;base" \
