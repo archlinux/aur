@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-sound"
-pkgver="0.1"
+pkgver="0.8.0"
 pkgrel="1"
 pkgdesc="Ayatana system sound indicator"
 arch=("i686" "x86_64" "pentium4")
@@ -11,7 +11,7 @@ depends=("pulseaudio" "libayatana-indicator" "glib2" "accountsservice" "dconf" "
 makedepends=("cmake" "cmake-extras" "dbus" "accountsservice" "mate-common" "gsettings-desktop-schemas" "intltool" "vala" "glib2" "libpulse" "libnotify" "libgee" "libxml2" "pulseaudio" "qt5-base" "qt5-declarative" "systemd" "gobject-introspection")
 optdepends=("pavucontrol" "mate-media")
 source=("https://github.com/tari01/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=("adf98b6e6d86bbe8f71d0d80af18c52f")
+md5sums=("862f0a57eefa7d805b7f997da9d44eb9")
 options=("!emptydirs")
 
 build()
