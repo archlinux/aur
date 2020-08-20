@@ -1,6 +1,6 @@
 # Maintainer: Breno Martins da costa corrêa e Souza <breno.ec@gmail.com>
 pkgname=jet-git
-pkgver=1.1.r31.b9677cc
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="Persist or retrieve strings over streams."
@@ -37,6 +37,4 @@ build() {
 package() {
 	cd jet
 	sudo make install
-  sudo install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  sudo install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
