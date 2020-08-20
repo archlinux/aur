@@ -1,0 +1,16 @@
+pkgbase = disable-rtc-dkms
+	pkgdesc = Disable real time clock (DKMS)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/isjerryxiao/disable-rtc
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	conflicts = disable-rtc
+	source = https://github.com/isjerryxiao/disable-rtc/archive/1bd72723766be039f3af073f6ca2c2b69eef936e.tar.gz
+	source = dkms.conf
+	sha512sums = f0e7fb1ae562dec7d4320ade0067e11f854c9b061feb9777f067fb9f4e753213cf7974b02c135d67168bf2bee7d8a8724de17e529427901c17e32408f48a73a0
+	sha512sums = ec7e4cf8cfe631d5e3985f5e3e4ecfade14bde45ac97a11d66629d3f843b6118513aee0980fc6e0def9915d44a96c3d40ded244a0c0b1c0df814836b8b940795
+
+pkgname = disable-rtc-dkms
+
