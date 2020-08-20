@@ -1,6 +1,6 @@
 # Maintainer: Breno Martins da costa corrêa e Souza <breno.ec@gmail.com>
 pkgname=jet-git
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Persist or retrieve strings over streams."
 arch=('any')
@@ -14,5 +14,5 @@ md5sums=('SKIP')
 
 package() {
 	cd jet
-	make DESTDIR="$pkgdir" PREFIX=/usr install
+	sudo make DESTDIR="$pkgdir" PREFIX=/usr install
 }
