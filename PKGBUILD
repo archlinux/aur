@@ -79,7 +79,7 @@ source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/google/fonts/archiv
 sha256sums=('fc0d93228b98c1ed12c2a62362276110a1107ff7db2c0c06f0abc6d96fc4256b')
 
 package() {
-	cd "$srcdir/fonts-$_commit"
+	cd "$srcdir/fonts-$_commit/"
 
 	install -Dm644 'ofl/alegreya/OFL.txt' "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
 
