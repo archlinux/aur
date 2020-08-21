@@ -1,18 +1,8 @@
 [Desktop Entry]
-Comment[en_US]=
-Comment=
+Type=Application
+Name=TouchOSC Editor
+Comment=Graphical layout editor for TouchOSC
 Exec=touchosc-editor %f
 Icon=touchosc-editor
 MimeType=application/touchosc
-Name=TouchOSC Editor
-Name[en_US]=TouchOSC Editor
-Path=
-StartupNotify=false
-Terminal=false
-TerminalOptions=
-Type=Application
 Categories=AudioVideo;Music;Utility;
-X-DBUS-ServiceName=
-X-DBUS-StartupType=
-X-KDE-SubstituteUID=false
-X-KDE-Username=
