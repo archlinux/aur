@@ -1,7 +1,7 @@
 pkgbase = pe-bear
 	pkgdesc = Freeware reversing tool for PE files
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hshrzd.wordpress.com/pe-bear/
 	arch = x86_64
 	license = custom
