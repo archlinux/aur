@@ -3,7 +3,7 @@
 # Contributor: Rowisi < nomail <at> private <dot> com >
 
 pkgname=vscodium-bin
-pkgver=1.48.0
+pkgver=1.48.1
 pkgrel=1
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,11 +18,11 @@ optdepends=(
         'libdbusmenu-glib: For KDE global menu'
 )
 provides=('code')
-conflicts=('code')
+conflicts=('code' 'vscode')
 
-sha256sums_x86_64=('cc6c3ce8f968e0fa859a0b4acc73148c8dfe9ec9c8daccc88a0c85bab2f9c2fd')
-sha256sums_aarch64=('1e6d3b01fbf1e522675887da9705eadebff8a2b337441c2f9bad5e75a2683e4a')
-sha256sums_armv7h=('71657e1cd5a4cdb270b8a6e9470b12df170b44da672cfb7a4cc102a8032aa859')
+sha256sums_x86_64=('38b6008efd1673ccc741d2e81abb1eb3ab5a465299acfe455debc46152111739')
+sha256sums_aarch64=('3528496a5a5cbe443e67327bca4a8666cd9a2fc32ceafc807336b16ef133e98f')
+sha256sums_armv7h=('cf653db9c223bfaa21b1af33464d946cbf19f3f764f37a2de939c2bea565fc86')
 
 source=(vscodium-bin.desktop)
 sha256sums=('5504e93bd55f2bc068c29e4fa962c1eddc6e08edb39c3255319dd5ad998a1b86')
