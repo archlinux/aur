@@ -1,6 +1,6 @@
 pkgbase = kitty-bitmap
 	pkgdesc = A modern, hackable, featureful, OpenGL-based terminal emulator. Patched to support bitmap fonts.
-	pkgver = 0.18.1
+	pkgver = 0.18.3
 	pkgrel = 1
 	url = https://github.com/kovidgoyal/kitty
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = kitty-bitmap
 	optdepends = imagemagick: viewing images with icat
 	provides = kitty
 	conflicts = kitty
-	source = kitty-0.18.1.tar.gz::https://github.com/kovidgoyal/kitty/archive/v0.18.1.tar.gz
+	source = kitty-0.18.3.tar.gz::https://github.com/kovidgoyal/kitty/archive/v0.18.3.tar.gz
 	source = Allow-bitmap-fonts.patch
-	sha512sums = 8eb5d16c342be8ba88aaadc591e2a04df01b1f5c87b5b5a04026acdf60c4770e07f43d88f82eca70f0c310e93432c8f25d5ccd6d6e83b49f0e2f735aac61e630
+	sha512sums = dee04572905f735ac098e8406ec3f36c2eb4d21ff0c6ff1b94216fab2b861c4d72a865b36cc18be1d9ed77235c33cc01a207e1992260da47679ff8b83f62f6e8
 	sha512sums = SKIP
 
 pkgname = kitty-bitmap
