@@ -7,12 +7,11 @@
 _pkgname=terminus-font
 pkgname=${_pkgname}-td1-ttf
 pkgver=4.48
-pkgrel=1
+pkgrel=2
 pkgdesc="Fixed-width bitmap font (td1 patch) (TTF version)"
 arch=("any")
 url="https://files.ax86.net/terminus-ttf"
 license=("GPL2" "custom:OFL")
-depends=("xorg-fonts-encodings" "xorg-font-utils")
 makedepends=("python" "fontforge" "potrace" "mkbold-mkitalic" "git")
 conflicts=("terminus-font-ttf")
 provides=("terminus-font-ttf")

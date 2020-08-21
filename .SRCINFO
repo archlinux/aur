@@ -1,7 +1,7 @@
 pkgbase = terminus-font-td1-ttf
 	pkgdesc = Fixed-width bitmap font (td1 patch) (TTF version)
 	pkgver = 4.48
-	pkgrel = 1
+	pkgrel = 2
 	url = https://files.ax86.net/terminus-ttf
 	arch = any
 	license = GPL2
@@ -11,8 +11,6 @@ pkgbase = terminus-font-td1-ttf
 	makedepends = potrace
 	makedepends = mkbold-mkitalic
 	makedepends = git
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
 	provides = terminus-font-ttf
 	conflicts = terminus-font-ttf
 	source = https://downloads.sourceforge.net/project/terminus-font/terminus-font-4.48/terminus-font-4.48.tar.gz
