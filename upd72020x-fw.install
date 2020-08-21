@@ -1,0 +1,11 @@
+post_install() {
+    mkinitcpio -P
+}
+
+post_upgrade() {
+    mkinitcpio -P
+}
+
+post_remove() {
+    mkinitcpio -P
+}
