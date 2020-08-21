@@ -1,11 +1,12 @@
 pkgbase = etesync-git
 	pkgdesc = EteSync C library
-	pkgver = 0.1.0.75
+	pkgver = 0.1.0.r75.917fff5
 	pkgrel = 1
 	url = https://github.com/etesync/etesync-rs
 	arch = x86_64
 	license = LGPL
 	makedepends = cargo
+	makedepends = git
 	depends = openssl
 	provides = etesync
 	conflicts = etesync
