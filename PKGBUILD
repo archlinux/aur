@@ -2,8 +2,8 @@
 # Contributor: alejandrogomez <alejandroogomez@gmail.com>
 
 pkgname=ydiff
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="Colored, incremental, side-by-side diff viewer"
 arch=('any')
 url="http://pypi.python.org/pypi/ydiff/"
@@ -12,7 +12,7 @@ depends=('python')
 optdepends=("patchutils: uses filterdiff for context diffs")
 conflicts=('cdiff')
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('b8ef08b5fb5e77860922cbf96ad034a5')
+md5sums=('f11c69a90774ec0f3fb3e45137fca931')
 
 
 package() {
