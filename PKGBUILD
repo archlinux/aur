@@ -11,14 +11,14 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=20.3.0_devel.127075.6723addd8a7
+pkgver=20.3.0_devel.127495.2da1178bf3e
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
-              'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libomxil-bellagio' 'libxrandr'
-              'ocl-icd' 'libgcrypt'  'wayland' 'wayland-protocols' 'meson' 'ninja')
+              'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
+              'ocl-icd' 'wayland-protocols' 'meson' 'ninja' 'glslang')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'glslang' 'vulkan-icd-loader' 'zstd')
+         'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-driver' 'opengl-driver' 'opencl-driver')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau')
@@ -61,7 +61,7 @@ case $MESA_WHICH_LLVM in
         # depending on aur-llvm-* to avoid mixup with LH llvm-git
         makedepends+=('aur-llvm-git')
         depends+=('aur-llvm-libs-git')
-        optdepends+=('llvm-git: opencl')
+        optdepends+=('aur-llvm-git: opencl')
         ;;
     3)
         # mesa-git/llvm-git (lordheavy unofficial repo)
@@ -98,7 +98,7 @@ prepare() {
 
 build () {
     meson setup mesa _build \
-       -D b_ndebug=false \
+       -D b_ndebug=true \
        -D b_lto=true \
        -D buildtype=plain \
        --wrap-mode=nofallback \
