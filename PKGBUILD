@@ -2,7 +2,7 @@
 
 pkgname=pb-for-desktop
 pkgrel=1
-pkgver=10.5.0
+pkgver=11.0.2
 pkgdesc="The Desktop application for Pushbullet"
 url="https://github.com/sidneys/pb-for-desktop"
 provides=('pb-for-desktop')
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('MIT')
 depends=('libnotify' 'notify-osd' 'gconf' 'libappindicator-gtk2' 'libappindicator-gtk3' 'libxtst' 'nss')
 source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-x64.pacman")
-sha256sums_x86_64=('6797ac0e25709a5be64266431eb8f17694ad29fa61d8911f6618160c57011a07')
+sha256sums_x86_64=('bb5b29578b0685ed3c5356df18e72b17bc88cc52f9cc8a63bc1e6d2a1f9074f5')
 
 package() {
     # Install the application files in /opt
