@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <privat@arne.beer>
 
 pkgname=pueue-bin
-pkgver='0.7.0'
+pkgver='0.7.1'
 pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
@@ -11,13 +11,13 @@ provides=('pueue')
 url='https://github.com/nukesor/pueue'
 source=(
     "https://github.com/Nukesor/pueue/releases/download/v${pkgver}/systemd.pueued.service"
-    "pueue-linux-amd64-${pkgver}::https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueue-linux-amd64"
-    "pueued-linux-amd64-${pkgver}::https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueued-linux-amd64"
+    "pueue-linux-amd64-${pkgver}::https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueue-linux-x86_64"
+    "pueued-linux-amd64-${pkgver}::https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueued-linux-x86_64"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Nukesor/pueue/master/LICENSE"
 )
 md5sums=('c4c2767651d310f0db7f078846e1b8a4'
-         '85c0813999b3348ed4a499c3a6f0d23d'
-         '29ccbe86419fa60692f7aadaee8cd286'
+         '76ccb16ca8406de6da86f023eb38eb7e'
+         '15d4012f7be56b8e923b3c8e124f6cbc'
          '5e29c92edf8c4dfe90cda870a7e6c51e')
 
 build() {
