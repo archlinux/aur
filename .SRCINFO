@@ -1,0 +1,16 @@
+pkgbase = color-scripts-launcher-git
+	pkgdesc = Preview color scripts before launching them
+	pkgver = r13.876a869
+	pkgrel = 1
+	url = https://gitlab.com/timescam/color-scripts-launcher
+	arch = any
+	license = WTFPL
+	makedepends = git
+	depends = fzf
+	optdepends = shell-color-scripts: provide colorscripts
+	provides = color
+	source = color-scripts-launcher::git+https://gitlab.com/timescam/color-scripts-launcher.git
+	md5sums = SKIP
+
+pkgname = color-scripts-launcher-git
+
