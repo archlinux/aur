@@ -22,7 +22,7 @@ package() {
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$pkgname"
 #!/bin/sh
-cd '/usr/lib/$pkgname'
+cd '/usr/lib/$pkgname/'
 exec python '${_reponame^}.py' "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$pkgname"
