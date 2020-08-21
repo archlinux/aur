@@ -33,7 +33,7 @@ package() {
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$_pkgname"
 #!/bin/sh
-cd '/usr/lib/$_pkgname'
+cd '/usr/lib/$_pkgname/'
 exec python '${_reponame^}.py' "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$_pkgname"
