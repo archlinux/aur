@@ -39,12 +39,6 @@ package() {
   rm "${pkgdir}/opt/${pkgname}/XnView.desktop"
   chmod 644 "${pkgdir}/opt/${pkgname}"/xnview*.png
   chmod 755 "${pkgdir}/opt/${pkgname}/XnView"
-
-  # Some old version of libfreetype started getting shipped in 0.95.
-  # libfreetype depends on libfontconfig, but since libfontconfig is not
-  # provided in the archive and the system one is not compatible, we need to
-  # remove it so that the XnView uses the system libfreetype.
-  rm "${pkgdir}/opt/${pkgname}/lib/libfreetype.so"*
 }
 
 # vim:set ts=2 sw=2 et:
