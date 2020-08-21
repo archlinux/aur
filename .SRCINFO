@@ -1,19 +1,18 @@
 pkgbase = mingw-w64-libexif
 	pkgdesc = A library to parse an EXIF file and read the data from those tags (mingw-w64)
-	pkgver = 0.6.21
+	pkgver = 0.6.22
 	pkgrel = 1
-	url = https://sourceforge.net/projects/libexif
+	url = https://github.com/libexif/libexif
 	arch = any
 	license = LGPL
 	makedepends = mingw-w64-configure
-	makedepends = mingw-w64-pkg-config
 	depends = mingw-w64-crt
 	depends = mingw-w64-gettext
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://downloads.sourceforge.net/sourceforge/libexif/libexif-0.6.21.tar.bz2
-	md5sums = 27339b89850f28c8f1c237f233e05b27
+	source = https://github.com/libexif/libexif/archive/libexif-0_6_22-release.tar.gz
+	sha256sums = 46498934b7b931526fdee8fd8eb77a1dddedd529d5a6dbce88daf4384baecc54
 
 pkgname = mingw-w64-libexif
 
