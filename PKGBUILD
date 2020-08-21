@@ -2,10 +2,11 @@
 
 pkgname=cheat-bin
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="cheat allows you to create and view interactive cheatsheets on the command-line"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 conflicts=('cheat')
+provides=('cheat')
 source_i686=("$pkgname-$pkgver.gz::https://github.com/cheat/cheat/releases/download/$pkgver/cheat-linux-386.gz")
 source_x86_64=("$pkgname-$pkgver.gz::https://github.com/cheat/cheat/releases/download/$pkgver/cheat-linux-amd64.gz")
 source_armv5h=("$pkgname-$pkgver.gz::https://github.com/cheat/cheat/releases/download/$pkgver/cheat-linux-arm5.gz")
