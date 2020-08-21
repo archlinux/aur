@@ -1,7 +1,7 @@
 # Maintainer: OriginCode <self@origincode.me>
 
 pkgbase=linux-froidzen
-pkgver=5.8.zen1
+pkgver=5.8.2.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with Patches'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -19,7 +19,7 @@ source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
   config         # the main kernel config file
   sphinx-workaround.patch
-  "aosc-univt.patch::https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/stable-proposed/extra-kernel/linux-kernel/autobuild/patches/8000-aosc-feature-univt.patch" # CJK Patch
+  "https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/rckernel/extra-kernel/linux-kernel/autobuild/patches/8000-feature-aosc-univt.patch" # CJK Patch
   "https://raw.githubusercontent.com/dolohow/uksm/master/v5.x/uksm-5.8.patch" # UKSM Patch
 )
 validpgpkeys=(
@@ -28,9 +28,9 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '89d672a1b6e4ea7fdf018716a945846f39ffc331c186693cbbdc19649c968713'
+            '6b635ee9d01865057f04f5c4606fbe37f37829d0d748d61e18490ecef943abb6'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '2d827875db540356c18b604f9f9ac7178bcf0ec605672e29d99d7eeb1ae9721d'
+            'a6a75e87c7eba04cc6bc650b52eca147acaebb3f6ee70d5a2104730df6bbbb8e'
             '0389c65d8357f8b22f65aceaf9ceda5a3c76e60ca34f713ff9a09ec379f51dc7')
 
 export KBUILD_BUILD_HOST=archlinux
