@@ -23,7 +23,7 @@ Comment[de]=Ein Mega Man Fangame, erstellt mit Godot
 Path=/opt/megaman-rocknroll/
 
 # The executable of the application, possibly with arguments.
-Exec=MegaMan_RocknRoll
+Exec=/opt/megaman-rocknroll/MegaMan_RocknRoll
 
 # The name of the icon that will be used to display this entry
 Icon=mmrnr

@@ -1,7 +1,7 @@
 pkgbase = megaman-rocknroll
 	pkgdesc = Mega Man fangame made with Godot
 	pkgver = 1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://dennisengelhard.com/rock-n-roll/
 	install = megaman-rocknroll.install
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = megaman-rocknroll
 	source = megaman-rocknroll.desktop
 	source = mmrnr.png
 	sha256sums = f916bdf0dec0983274609b36fce2c04eb49c91dbf57255884bbcb07938516464
-	sha256sums = dadf5257374b113563bc92c2429a0b972bf61653f99d1530853b9d95682cc08b
+	sha256sums = 39de3a403d1e0be869b7d4be7fe5a7988fb9b35912d49c386c2aa97931b7e3be
 	sha256sums = 93d862cacc440d79434450e345cfcdf7e84791bd550ea0ccb234acd9a0d62613
 
 pkgname = megaman-rocknroll

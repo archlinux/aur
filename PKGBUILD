@@ -1,7 +1,7 @@
 # Maintainer: Michael Roth <mail.michael.roth+aur@gmail.com>
 pkgname=megaman-rocknroll
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 
 pkgdesc="Mega Man fangame made with Godot"
 url="https://dennisengelhard.com/rock-n-roll/"
@@ -22,7 +22,7 @@ source=("https://dennisengelhard.files.wordpress.com/2020/02/megaman_rocknroll_l
 )
 
 sha256sums=('f916bdf0dec0983274609b36fce2c04eb49c91dbf57255884bbcb07938516464'
-            'dadf5257374b113563bc92c2429a0b972bf61653f99d1530853b9d95682cc08b'
+            '39de3a403d1e0be869b7d4be7fe5a7988fb9b35912d49c386c2aa97931b7e3be'
             '93d862cacc440d79434450e345cfcdf7e84791bd550ea0ccb234acd9a0d62613')
 
 
