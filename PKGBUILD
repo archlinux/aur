@@ -12,7 +12,7 @@ license=('GPL3')
 options=('!emptydirs')
 source=('git+https://github.com/lelit/pglast.git#branch=v2')
 md5sums=('SKIP'
-         'b20f4566d377186322eae5d1ab451495')
+         )
 prepare() {
   cd $srcdir/pglast
   git submodule init

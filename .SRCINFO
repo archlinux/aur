@@ -10,7 +10,6 @@ pkgbase = python-pglast-git
 	options = !emptydirs
 	source = git+https://github.com/lelit/pglast.git#branch=v2
 	md5sums = SKIP
-	md5sums = b20f4566d377186322eae5d1ab451495
 
 pkgname = python-pglast-git
 
