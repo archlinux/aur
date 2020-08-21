@@ -2,7 +2,7 @@
 
 pkgbase=linux-froidzen
 pkgver=5.8.2.zen1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux ZEN with Patches'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -19,7 +19,7 @@ source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
   config         # the main kernel config file
   sphinx-workaround.patch
-  "https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/rckernel/extra-kernel/linux-kernel/autobuild/patches/8000-feature-aosc-univt.patch" # CJK Patch
+  "https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/stable-proposed/extra-kernel/linux-kernel/autobuild/patches/8000-feature-aosc-univt.patch" # CJK Patch
   "https://raw.githubusercontent.com/dolohow/uksm/master/v5.x/uksm-5.8.patch" # UKSM Patch
 )
 validpgpkeys=(
