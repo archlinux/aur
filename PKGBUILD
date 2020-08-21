@@ -2,7 +2,7 @@
 
 pkgbase=linux-zencjk
 pkgver=5.8.2.zen1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux ZEN with CJK Patch'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -19,7 +19,7 @@ source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
   config         # the main kernel config file
   sphinx-workaround.patch
-  "https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/rckernel/extra-kernel/linux-kernel/autobuild/patches/8000-feature-aosc-univt.patch" # CJK Patch
+  "https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/stable-proposed/extra-kernel/linux-kernel/autobuild/patches/8000-feature-aosc-univt.patch" # CJK Patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -29,7 +29,7 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '6b635ee9d01865057f04f5c4606fbe37f37829d0d748d61e18490ecef943abb6'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            'a6a75e87c7eba04cc6bc650b52eca147acaebb3f6ee70d5a2104730df6bbbb8e')
+            '25788fac99aa9711ad61a9614ebe99ad9217619f2ebdc43a295f251972a2dab2')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
