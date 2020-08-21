@@ -5,7 +5,7 @@ arch=(armv7h aarch64)
 _date=20200812
 # inspect source tarball under $name/share/gcc-x.y.z
 pkgver=10.2.0.$_date
-pkgrel=2
+pkgrel=3
 license=('GPL' )
 url="https://github.com/graysky2/crosstool-ng_for_distcc"
 pkgdesc="Toolchain for x86_64 builds on Arch ARM volunteers via distcc"
@@ -46,7 +46,7 @@ package() {
   done
 
  # FS#67629
- install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/distccd.conf"
+ install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/distccd-x86_64.conf"
 
   # install service and config
   install -Dm644 "${srcdir}/distccd-x86_64.service" \
