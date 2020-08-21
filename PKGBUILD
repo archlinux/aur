@@ -2,8 +2,8 @@
 pkgname=volctl
 _gitname=volctl
 pkgver=0.7.8
-pkgrel=2
-pkgdesc="Per-application volume control for GNU/Linux desktops"
+pkgrel=3
+pkgdesc="Per-application volume control and OSD for Linux desktops."
 arch=("any")
 url="https://buzz.github.io/volctl/"
 license=("GPL")

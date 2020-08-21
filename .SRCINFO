@@ -1,7 +1,7 @@
 pkgbase = volctl
-	pkgdesc = Per-application volume control for GNU/Linux desktops
+	pkgdesc = Per-application volume control and OSD for Linux desktops.
 	pkgver = 0.7.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://buzz.github.io/volctl/
 	arch = any
 	license = GPL
