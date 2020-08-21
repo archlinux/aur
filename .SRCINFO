@@ -1,0 +1,13 @@
+pkgbase = vim-mojom
+	pkgdesc = Syntax highlighting support for Mojom IDL
+	pkgver = 20200821.7ab28be723
+	pkgrel = 1
+	url = https://chromium.googlesource.com/chromium/src.git/+/HEAD/tools/vim/mojom/
+	arch = any
+	groups = vim-plugins
+	license = BSD
+	makedepends = git
+	depends = vim
+
+pkgname = vim-mojom
+
