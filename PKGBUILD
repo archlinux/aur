@@ -1,4 +1,5 @@
 # Maintainer: trougnouf (Benoit Brummer) <trougnouf at gmail dot com>
+# Co-maintainer: Romain Bazile <gromain.baz@gmail.com>
 # Contributor: Bruno Rodriguez (brunorro)
 # Contributor: Øyvind 'Mr.Elendig' Heggstad <mrelendig at har-ikkje dot net>
 # Contributor: Travis Fickett <tfickett AT ufl DOT edu>
@@ -7,12 +8,12 @@
 pkgname=opencpn
 _name="OpenCPN"
 pkgver=5.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source Chart Plotting / Marine Navigation"
 arch=('x86_64')
 license=("GPL2")
 depends=('wxgtk3' 'gpsd' 'portaudio' 'tinyxml' 'hicolor-icon-theme' 'webkit2gtk')
-makedepends=('cmake')
+makedepends=('cmake' 'lsb-release')
 url="http://opencpn.org"
 install=opencpn.install
 source=("https://github.com/${_name}/${_name}/archive/v${pkgver}.tar.gz")
