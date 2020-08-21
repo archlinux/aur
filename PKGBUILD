@@ -1,13 +1,13 @@
 # Maintainer: Patrick Oppenlander <patrick.oppenlander@gmail.com>
 
 pkgname=trace32
-pkgver=2019_09_000114442
+pkgver=2020_02_000121039
 pkgrel=1
 pkgdesc="Lauterbach TRACE32 - REQUIRES MANUAL DOWNLOAD"
 arch=(x86_64)
 url="https://www.lauterbach.com/"
 source=(local://TRACE32_R_$pkgver.tar.xz install.sh)
-md5sums=(79bf3e82128097281caa16acf952f8e6 afce9a50619896f769c88a8cee144749)
+md5sums=(3dffffeae09b894f5e50fd41d67d4524 afce9a50619896f769c88a8cee144749)
 depends=(openmotif libjpeg6-turbo qt4)
 options=(!strip)
 

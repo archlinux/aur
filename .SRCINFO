@@ -1,6 +1,6 @@
 pkgbase = trace32
 	pkgdesc = Lauterbach TRACE32 - REQUIRES MANUAL DOWNLOAD
-	pkgver = 2019_09_000114442
+	pkgver = 2020_02_000121039
 	pkgrel = 1
 	url = https://www.lauterbach.com/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = trace32
 	depends = libjpeg6-turbo
 	depends = qt4
 	options = !strip
-	source = local://TRACE32_R_2019_09_000114442.tar.xz
+	source = local://TRACE32_R_2020_02_000121039.tar.xz
 	source = install.sh
-	md5sums = 79bf3e82128097281caa16acf952f8e6
+	md5sums = 3dffffeae09b894f5e50fd41d67d4524
 	md5sums = afce9a50619896f769c88a8cee144749
 
 pkgname = trace32
