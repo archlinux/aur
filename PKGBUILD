@@ -8,7 +8,7 @@ pkgname=("${_subarchs[@]/#/$pkgbase-}")
 _date=20200428
 # inspect source tarball under $name/share/gcc-x.y.z
 pkgver=9.3.0.$_date
-pkgrel=2
+pkgrel=3
 _pkgrel_upstream=1
 #_URL="https://archlinuxarm.org/builder/xtools/$pkgver-$pkgrel"
 _URL="https://archlinuxarm.org/builder/xtools"
@@ -87,7 +87,7 @@ _package_subarch() {
   bsdtar -x --uid 0 --gid 0 -f "${srcdir}/$2-$_date.tar.xz" -C "${pkgdir}/opt"
 
   # FS#67629
-  install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/distccd.conf"
+  install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/distccd-$1.conf"
 
   # install services
   install -Dm644 "${srcdir}/distccd-$1.service" \
