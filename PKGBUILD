@@ -1,6 +1,7 @@
 # Maintainer: relrel <relrelbachar@gmail.com>
+
 pkgname=android-completion
-pkgver=20200814022526.278f11b
+pkgver=20200821110121.5ca85a0
 pkgrel=1
 pkgdesc="Bash completion for adb and fastboot"
 arch=(any)
@@ -38,6 +39,6 @@ prepare() {
 
 package() {
 	for i in adb fastboot; do
-		install -Dm644 "$srcdir"/$i.bash "$pkgdir"/usr/share/bash-completion/completions/$i.bash
+		install -Dm644 -t "$pkgdir/usr/share/bash-completion/completions/" "$srcdir/$i.bash"
 	done
 }
