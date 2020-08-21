@@ -1,8 +1,7 @@
 [Desktop Entry]
 Type=Application
-Version=1.0
 Name=Scratch 3
-Comment=Scratch 3
-Exec=scratch3
+Comment=Create stories, games, and animations, share with others around the world
+Exec=scratch3 %f
 Icon=scratch3
 Terminal=false
