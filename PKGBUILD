@@ -2,7 +2,7 @@
 
 pkgname='python-zulip-term-git'
 _pkgname='zulip-terminal'
-pkgver=0.4.0.r151.3ac7991
+pkgver=0.5.2.r50.da539ce497
 pkgrel=1
 pkgdesc="An interactive terminal interface for Zulip"
 url="https://github.com/zulip/zulip-terminal"
@@ -12,10 +12,11 @@ depends=('python'
          'python-urwid'
          'python-urwid_readline'
          'python-lxml'
-         'python-emoji'
          'python-beautifulsoup4'
-         'python-mypy_extensions'
-         'python-zulip-api')
+         'python-zulip-api'
+         'python-typing_extensions'
+         'python-dateutil'
+         'python-tzlocal')
 makedepends=('python-setuptools')
 provides=('python-zulip-term')
 conflicts=('python-zulip-term')
