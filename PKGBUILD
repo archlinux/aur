@@ -1,6 +1,6 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
 pkgname=kmon-git
-pkgver=1.4.0.r0.gcf63e70
+pkgver=1.4.0.r5.gb76594b
 pkgrel=1
 pkgdesc="Linux kernel manager and activity monitor (git)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
