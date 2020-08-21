@@ -1,0 +1,14 @@
+pkgbase = xfce-hkmon
+	pkgdesc = Hacker's monitor for XFCE
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://lightful.github.io/xfce-hkmon
+	install = readme.install
+	arch = x86_64
+	license = GPL
+	depends = xfce4-genmon-plugin
+	source = xfce-hkmon-0.09.tar.gz::https://github.com/lightful/xfce-hkmon/archive/6862a03e9ca7d2b0e96bece4cb88dfc9b3518987.tar.gz
+	b2sums = ae6184e1ff2e85cd8a71d5854f355f534ed7fec48a673ae45fadff3a86ff72b14ac7f0e94f0f0c8d93dd71df81c86e531b8230e9ac4cd1c9af10b6c36a873949
+
+pkgname = xfce-hkmon
+

@@ -1,0 +1,4 @@
+post_install() {
+  echo '--> Using a generic monitor applet, make the command value:'
+  echo '--> /usr/bin/xfce-hkmon NET CPU TEMP IO RAM'
+}
