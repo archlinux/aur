@@ -1,29 +1,29 @@
-# Maintainer: Aniket-Pradhan aniket17133@iiitd.ac.in
+# Maintainer: LightDot <lightdot -a-t- g m a i l>
 
 pkgname=alpine
-pkgver=2.21
+pkgver=2.23
 pkgrel=1
-pkggit=3443fe5
-arch=("x86_64")
-pkgdesc="Apache licensed PINE mail user agent"
-url="http://repo.or.cz/alpine.git"
-license=("APACHE")
-depends=("libldap" "krb5" "gettext")
-optdepends=("aspell: for spell-checking support"
-			"hunspell: for spell-checking support"
-			"topal: glue program that links GnuPG and alpine")
-provides=("pine")
-conflicts=("pine" "re-alpine")
-replaces=("pine")
+arch=('i686' 'x86_64')
+pkgdesc="Apache licensed PINE mail user agent."
+url="http://alpine.x10host.com/"
+license=('APACHE')
+depends=('gettext' 'krb5' 'libldap' 'pam')
+optdepends=('aspell: for spell-checking support'
+			'hunspell: for spell-checking support'
+			'topal: glue program that links GnuPG and alpine')
+provides=('pine' 're-alpine')
+conflicts=('pine' 're-alpine')
+replaces=('pine' 're-alpine')
 options=("!makeflags")
-source=(https://repo.or.cz/alpine.git/snapshot/3443fe5fcfcb33d3a2510111855e619632de57df.tar.gz)
+source=("http://alpine.x10host.com/alpine/release/src/alpine-2.23.tar.xz")
+md5sums=('2ea4e6612c503ae3bdced2b6e4364d48')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkggit}"
+	cd "${pkgname}-${pkgver}"
 
 	# Configure Alpine
 	LIBS+="-lpam -lkrb5 -lcrypto" ./configure --prefix=/usr \
-	--without-passfile --without-tcl --disable-shared \
+	--with-passfile=.alpine.passfile --without-tcl --disable-shared \
 	--with-system-pinerc=/etc/${pkgname}.d/pine.conf \
 	--with-system-fixed-pinerc=/etc/${pkgname}.d/pine.conf.fixed
 
@@ -31,13 +31,10 @@ build() {
 	make
 }
 
-
 package() {
-	cd "${srcdir}/${pkgname}-${pkggit}"
+	cd "${pkgname}-${pkgver}"
 
 	# Install Alpine
 	make DESTDIR="${pkgdir}" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-md5sums=('59360da211af2c6c06241ea560e912f8')
