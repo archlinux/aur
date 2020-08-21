@@ -1,0 +1,15 @@
+pkgbase = rime-lua-cloud
+	pkgdesc = RIME 云输入插件
+	pkgver = 0.0.0.20200821
+	pkgrel = 1
+	url = https://github.com/hchunhui/librime-cloud
+	arch = any
+	license = custom
+	depends = librime
+	depends = rime-lua-hook
+	depends = lua53-socket
+	source = https://github.com/hchunhui/librime-cloud/archive/fdea7ea7a4bd6eb26dcb3ad2834306b3b605bc96/librime-cloud-fdea7ea7a4bd6eb26dcb3ad2834306b3b605bc96.tar.gz
+	sha512sums = 54e9827f8603ab956bc15a0750d96face00f3ec65b2dcc6ede0627b9480514ded3c78352f995cfa78d8394498b4ecce59bf7d5715f6c4cf72346d2907cb99c2f
+
+pkgname = rime-lua-cloud
+
