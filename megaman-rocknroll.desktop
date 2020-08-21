@@ -7,16 +7,16 @@ Type=Application
 Version=1.2
 
 # The name of the application
-Name=MegaMan - Rock n Roll
+Name=Mega Man - Rock n Roll
 
 # A comment which can/will be used as a tooltip
-Comment=A MegaMan based fan game made with Godot
+Comment=A Mega Man fangame made with Godot
 
-Name[en_GB]=MegaMan - Rock n Roll
-Comment[en_GB]=A MegaMan based fan game made with Godot
+Name[en_GB]=Mega Man - Rock n Roll
+Comment[en_GB]=A Mega Man fangame made with Godot
 
-Name[de]=MegaMan - Rock n Roll
-Comment[de]=Ein MegaMan basiertes Fan Game erstellt mit Godot
+Name[de]=Mega Man - Rock n Roll
+Comment[de]=Ein Mega Man Fangame, erstellt mit Godot
 
 
 # The path to the folder in which the executable is run
