@@ -39,7 +39,7 @@ prepare() {
 }
 
 package() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	python2 setup.py install --root="$pkgdir"
 	rename '.py' '' "$pkgdir/usr/bin/"*
 }
