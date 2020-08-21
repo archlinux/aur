@@ -35,7 +35,7 @@ prepare() {
 }
 
 package() {
-	cd "$srcdir/$_sourcedirectory/files"
+	cd "$srcdir/$_sourcedirectory/files/"
 	opam-installer --libdir="$pkgdir$(ocamlfind -printconf destdir)"
 	install -Dm644 '../COPYING' "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
