@@ -1,0 +1,14 @@
+pkgbase = rime-liangfen
+	pkgdesc = unapproved fork of LiangFen by Sim CheonHyeong
+	pkgver = 0.0.0.20200821
+	pkgrel = 1
+	url = https://github.com/szc126/rime-liangfen
+	arch = any
+	license = custom
+	makedepends = librime
+	depends = rime-prelude
+	source = https://github.com/szc126/rime-liangfen/archive/a67ea69d45c2785048ad05b1639d9f01ad5a01f0/rime-liangfen-a67ea69d45c2785048ad05b1639d9f01ad5a01f0.tar.gz
+	sha512sums = 6590ada15b096fdcd6d02bffe1fe46112dbaa873388130d86d08914ede53f59487b4fc77ed10f55b559c79e50141d41dad6c1f4b42831d04e46c363082e568fa
+
+pkgname = rime-liangfen
+
