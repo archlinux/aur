@@ -1,0 +1,17 @@
+pkgbase = laborejo-nativefier
+	pkgdesc = Electron wrapper for the website laborejo.org built with Nativefier
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://laborejo.org
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	source = laborejo-nativefier.png
+	source = laborejo-nativefier.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = laborejo-nativefier
+
