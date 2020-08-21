@@ -14,10 +14,12 @@ pkgbase = ocaml-ppx_sexp_conv
 	makedepends = dune>=2.0.0
 	depends = ocaml>=4.04.2
 	depends = ocaml-base>=0.14.0
-	depends = ocaml-ppxlib>=0.11.0
+	depends = ocaml-ppxlib>=0.15.0
 	depends = ocaml-sexplib0>=0.14.0
 	options = !strip
 	source = ocaml-ppx_sexp_conv-1:0.14.0-1.tar.gz::https://github.com/janestreet/ppx_sexp_conv/archive/v0.14.0.tar.gz
+	source = ppxlib_longident.diff
 	sha256sums = 4ec3e7999affd70689cdb6681e600cefa78032af2235733e6c012ac0b93e1dd6
+	sha256sums = 57022c76bf54fe3ded5d2a5318b293a4f18d02923644b64158b2f2b5cea55ff6
 
 pkgname = ocaml-ppx_sexp_conv
