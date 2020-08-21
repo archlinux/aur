@@ -1,0 +1,17 @@
+pkgbase = dockclock
+	pkgdesc = A clock dockapp that supports multiple time zones
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/cqexbesd/dockclock
+	arch = x86_64
+	license = BSD
+	makedepends = bmake
+	makedepends = pkgconf
+	depends = libx11
+	depends = glib2
+	depends = gtk3
+	source = https://gitlab.com/cqexbesd/dockclock/-/archive/v1.0/dockclock-v1.0.tar.gz
+	sha256sums = 681c76803cf9c563ce4f5917417acafbcb6615cc31264076aaf6520ccdd77e49
+
+pkgname = dockclock
+
