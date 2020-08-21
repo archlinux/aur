@@ -8,14 +8,13 @@ pkgdesc="rime 有声调普通话拼音方案"
 arch=('any')
 url="https://github.com/ayaka14732/rime-putonghua"
 license=('custom:CC-BY' 'custom:CC-BY-SA')
-# TODO: librime-cloud
-# Maybe we need a hook?
 # dependency for reverse lookup
 depends=(   'rime-stroke'
             'rime-essay-simp'
             'rime-liangfen'
             'rime-symbolic-simp'
             'rime-emoji'
+			'rime-lua-cloud'
             )
 makedepends=('librime' 'rime-prelude')
 source=("https://github.com/ayaka14732/rime-putonghua/archive/$_commit/rime-putonghua-$_commit.tar.gz")
@@ -39,7 +38,7 @@ package() {
   rm build/liangfen.*
   install -Dm644 *.yaml -t "$pkgdir"/usr/share/rime-data/
   install -Dm644 build/* -t "$pkgdir"/usr/share/rime-data/build/
-  
+
   install -Dm644 LICENSE-CC-BY -t "$pkgdir"/usr/share/licenses/
   install -Dm644 LICENSE-CC-BY-SA -t "$pkgdir"/usr/share/licenses/
 }

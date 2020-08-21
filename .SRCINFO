@@ -13,6 +13,7 @@ pkgbase = rime-putonghua
 	depends = rime-liangfen
 	depends = rime-symbolic-simp
 	depends = rime-emoji
+	depends = rime-lua-cloud
 	source = https://github.com/ayaka14732/rime-putonghua/archive/2e0e8bd4d6bdede29daac7ff2cfd369795d528bf/rime-putonghua-2e0e8bd4d6bdede29daac7ff2cfd369795d528bf.tar.gz
 	sha512sums = bd17a0b0950d8640f19b4bdf2d896c0f4e0b96fb2b92cb80bb4fe50cac9ab2320cdb458c8128ed786e6794d932047514e4950cec3b1c7f39e765862a7a805d10
 
