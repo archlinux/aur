@@ -6,20 +6,19 @@
 
 pkgname=waterfox
 pkgver=2020.07.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch."
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.waterfox.net/"
 depends=(gtk3 gtk2 libxt startup-notification mime-types dbus-glib nss ttf-font)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
-             xorg-server-xvfb autoconf2.13 rust clang llvm jack
-             python nodejs python2-psutil cbindgen nasm)
-optdepends=('networkmanager: Location detection via available WiFi networks'
-            'libnotify: Notification integration'
-            'pulseaudio: Audio support'
-			'libpulse: Audio support'
-			'ffmpeg: Multimedia playback'
+             xorg-server-xvfb autoconf2.13 rust clang llvm lld jack
+             python nodejs python2-psutil cbindgen nasm libpulse)
+optdepends=('libnotify: Notification integration'
+	    'libpulse: Audio support via Pulseaudio'
+	    'jack: Audio support via JACK'
+	    'ffmpeg: Multimedia playback'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
