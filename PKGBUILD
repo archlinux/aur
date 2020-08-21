@@ -3,7 +3,7 @@
 pkgname=upd72020x-fw
 pkgver=20200821
 pkgrel=1
-pkgdesc="Renesas uPD72020x USB 3.0 chipsets firmware"
+pkgdesc="Renesas uPD720201 / uPD720202 USB 3.0 chipsets firmware"
 arch=('any')
 url="https://github.com/denisandroid/uPD72020x-Firmware"
 license=('custom')
