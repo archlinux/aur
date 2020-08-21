@@ -3,7 +3,7 @@
 
 pkgname=terragrunt
 pkgver=0.23.33
-pkgrel=2
+pkgrel=3
 pkgdesc="A thin wrapper for Terraform that provides extra tools for working with multiple Terraform modules"
 url="https://github.com/gruntwork-io/terragrunt"
 arch=('x86_64')
