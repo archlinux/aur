@@ -1,7 +1,7 @@
 # Maintainer Matthew Croughan <matthew.croughan@foundries.io>
 
 pkgname=fioctl-bin
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc='A simple tool for controlling the Foundries.io REST API'
 arch=('x86_64')
