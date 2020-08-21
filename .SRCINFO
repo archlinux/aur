@@ -1,0 +1,17 @@
+pkgbase = zweistein
+	pkgdesc = TUI reimplementation of the Eistein puzzle
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/ANGulchenko/ZweiStein
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = make
+	depends = ncurses
+	depends = glibc
+	source = https://github.com/ANGulchenko/ZweiStein/archive/0.0.4.tar.gz
+	md5sums = 5d107458e0a75279ccf280a6c6c8ac48
+
+pkgname = zweistein
+
