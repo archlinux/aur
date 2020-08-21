@@ -16,13 +16,13 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=11.0.0_r356572.3ebbe353638
+pkgver=12.0.0_r364174.5e3fd471acb7
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
-             'python-sphinx' 'python-recommonmark' 'swig')
+             'python-sphinx' 'python-recommonmark' 'swig' 'libxcrypt')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
                 'llvm-config.h')
 md5sums=('SKIP'
