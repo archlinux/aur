@@ -1,4 +1,4 @@
-# Maintainer: Mike Yuan <me@yhndnzj.com>
+# Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
 
 pkgname=rime-lua-hook-git
 pkgver=r2.4d04015
@@ -23,7 +23,7 @@ pkgver() {
 
 package() {
     cd $srcdir/rime-lua-hook
-    
+
     install -Dm644 rime-lua.hook "$pkgdir/usr/share/libalpm/hooks/rime-lua.hook"
     install -Dm755 rime-lua "$pkgdir/usr/share/libalpm/scripts/rime-lua"
 
