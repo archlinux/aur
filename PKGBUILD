@@ -2,7 +2,7 @@
 # Contributor: Kyle Laker <kyle@laker.email>
 
 pkgname=warpinator
-pkgver=1.0.7
+pkgver=1.0.8
 _pkgver=ulyana
 pkgrel=1
 pkgdesc="Allows simple local network file sharing"
@@ -14,6 +14,7 @@ depends=(
     python-cryptography
     python-gobject
     python-grpcio
+    python-packaging
     python-protobuf
     python-pynacl
     python-setproctitle
@@ -33,7 +34,7 @@ conflicts=(
     warpinator-git
 )
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}+${_pkgver}.tar.xz")
-sha256sums=('7eab3bdfcbaa7b2a01335b18e6d702ae25e67fb4419450828763fd7d55038d9c')
+sha256sums=('61d01d204a38e344234f981ef519aeacf3d3e64d3a5ac5f500ed86eaa50b46be')
 
 prepare() {
 	cd "$srcdir/warpinator"
