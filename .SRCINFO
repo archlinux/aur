@@ -1,0 +1,17 @@
+pkgbase = brfares-nativefier
+	pkgdesc = Electron wrapper for the website brfares.com built with Nativefier
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://www.realtimetrains.co.uk
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	source = brfares-nativefier.png
+	source = brfares-nativefier.desktop
+	sha256sums = 4a25333b2243f22f7f18fe3bb962e12e49b7aa3fbba7e829db5bde593b774921
+	sha256sums = 638737c8b0915e541dffe491efec14deac0718943fb1e31f0a9a79c604049195
+
+pkgname = brfares-nativefier
+

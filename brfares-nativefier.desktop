@@ -1,0 +1,15 @@
+[Desktop Entry]
+# Type
+Type=Application
+
+# Name
+Name=BR Fares
+
+# Description
+Comment=British Rail Fares
+
+# Exec
+Exec=brfares
+
+# Term
+Terminal=false
