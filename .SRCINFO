@@ -1,0 +1,21 @@
+pkgbase = haskell-summoner-tui
+	pkgdesc = Tool for scaffolding fully configured batteries-included production-level Haskell projects using TUI.
+	pkgver = 2.0.1.1
+	pkgrel = 1
+	url = https://github.com/kowainik/summoner
+	arch = x86_64
+	license = MPL2
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-summoner
+	depends = haskell-microlens
+	depends = haskell-microlens-th
+	depends = haskell-vty
+	depends = haskell-brick
+	source = https://hackage.haskell.org/packages/archive/summoner-tui/2.0.1.1/summoner-tui-2.0.1.1.tar.gz
+	source = Setup.hs
+	sha256sums = 9f840f25d72c54b4b5ed0c5e6755e52ca71e9961759de6bd0046d567bd1f2c27
+	sha256sums = 1e1679046e10c31286fee3e631e57e4ef60c89e562270c8a2a7131c051959916
+
+pkgname = haskell-summoner-tui
+
