@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+mkdir -p ~/".cache/.egstore"
+cd ~/".cache"
+
+mkdir -p ~/".config/epicgames"
+
+[ ! -e ~/".config/epicgames/config.json" ] && cp "/usr/lib/node_modules/epicgames-freebies-claimer/config.json" ~/".config/epicgames/"
+
+entry=
+
+node "/usr/lib/node_modules/epicgames-freebies-claimer/$entry" "$@"
+

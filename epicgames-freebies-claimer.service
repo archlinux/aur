@@ -1,0 +1,15 @@
+[Unit]
+Description=Automatically claim free game promotions from the Epic Game Store
+After=network.target
+
+StartLimitIntervalSec=200
+StartLimitBurst=3
+
+[Service]
+ExecStart=/usr/bin/epicgames-freebies-claimer
+Restart=on-failure
+RestartSec=60
+
+[Install]
+WantedBy=default.target
+
