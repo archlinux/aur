@@ -1,7 +1,7 @@
 pkgbase = armorpaint-git
 	pkgdesc = ArmorPaint is a software for 3D PBR texture painting
-	pkgver = 0.8.r1209.ga7fdc07
-	pkgrel = 1
+	pkgver = 0.8.r1614.gd0e03ad
+	pkgrel = 2
 	url = https://armorpaint.org/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = armorpaint-git
 	depends = alsa-lib
 	depends = libxinerama
 	depends = gcc-libs
+	depends = nodejs
 	source = git+https://github.com/armory3d/armorpaint
 	source = armorpaint.sh
 	source = armorpaint.desktop
