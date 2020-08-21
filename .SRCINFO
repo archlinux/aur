@@ -1,6 +1,6 @@
 pkgbase = kdepim-runtime-etesync-git
 	pkgdesc = Extends the functionality of kdepim (with etesync modules)
-	pkgver = v20.04.1.r188.g7de456e37
+	pkgver = v20.04.1.r189.gbed707724
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = kdepim-runtime-etesync-git
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
 	makedepends = boost
+	makedepends = git
 	depends = libkolabxml
 	depends = kdav
 	depends = akonadi-calendar
