@@ -1,4 +1,5 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Michal Wojdyla <micwoj9292 at gmail dot com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
 # Contributor: Ray Rashif <schiv@archlinux.org>
@@ -9,7 +10,7 @@
 _name=scipy
 pkgname=python2-scipy
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering."
 arch=(x86_64)
 url="https://www.scipy.org/"
@@ -32,7 +33,7 @@ build() {
        sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
   done
 
-  python2 setup.py config_fc --fcompiler=gnu95 build
+  python2 setup.py config_fc --fcompiler=gnu95 --f77flags="-Wall -g -ffixed-form -fno-second-underscore -fallow-argument-mismatch" --f90flags="-Wall -g -fno-second-underscore -fallow-argument-mismatch" build
 }
 
 check() {
@@ -59,4 +60,3 @@ package() {
   install -Dm644 LICENSE.txt \
     "$pkgdir"/usr/share/licenses/python2-scipy/LICENSE
 }
-
