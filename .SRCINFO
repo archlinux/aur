@@ -1,0 +1,13 @@
+pkgbase = vim-torque
+	pkgdesc = Syntax highlighting support for the V8 Torque domain-specific language
+	pkgver = 20200821.e0973e6
+	pkgrel = 1
+	url = https://chromium.googlesource.com/v8/v8/+/HEAD/tools/torque/vim-torque/
+	arch = any
+	groups = vim-plugins
+	license = BSD
+	makedepends = git
+	depends = vim
+
+pkgname = vim-torque
+
