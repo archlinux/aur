@@ -32,12 +32,12 @@ build() {
     sed -i s/subprocess.call/print/g extensions/cando/wscript
     sed -i s/os.symlink/print/g extensions/cando/wscript
     ./waf configure
-    ./waf build_cmps
+    ./waf build_cboehm
 }
 
 package() {
   cd "$_srcname/"
-  ./waf install_cmps --destdir "$pkgdir"
-  ln -s /usr/bin/ccando-mps "$pkgdir/usr/bin/cando"
-  ln -s /usr/bin/cleap-mps "$pkgdir/usr/bin/cleap"
+  ./waf install_cboehm --destdir "$pkgdir"
+  ln -s /usr/bin/ccando-boehm "$pkgdir/usr/bin/cando"
+  ln -s /usr/bin/cleap-boehm "$pkgdir/usr/bin/cleap"
 }
