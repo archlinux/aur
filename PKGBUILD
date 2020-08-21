@@ -11,7 +11,7 @@ provides=("fioctl=$pkgver")
 conflicts=("fioctl")
 depends=('glibc')
 source=("https://github.com/foundriesio/fioctl/releases/download/${pkgver}/fioctl-linux-amd64")
-md5sums=("bf93cecbabeee240705aba93da43c1f6")
+md5sums=("309b329f7d22eb5bc9309acc5d11903a")
 
 package() {
   install -Dm755 "$srcdir/fioctl-linux-amd64" "$pkgdir/usr/bin/fioctl"
