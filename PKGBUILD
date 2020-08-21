@@ -11,8 +11,8 @@ url="https://armorpaint.org/"
 license=('ZLIB')
 depends=('mesa' 'alsa-lib' 'libxinerama' 'gcc-libs' 'nodejs')
 makedepends=('git' 'nodejs' 'clang' 'make' 'gcc')
-provides='armorpaint'
-conflicts='armorpaint'
+provides=('armorpaint')
+conflicts=('armorpaint')
 source=("git+https://github.com/armory3d/armorpaint"
         "armorpaint.sh"
         "armorpaint.desktop"
