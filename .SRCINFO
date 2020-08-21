@@ -1,7 +1,7 @@
 pkgbase = linux-rt-lts
 	pkgdesc = Linux RT LTS
 	pkgver = 5.4.58.35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.linuxfoundation.org/realtime/start
 	arch = x86_64
 	license = GPL2
