@@ -8,9 +8,6 @@ Name=Real Time Trains
 # Description
 Comment=Live Timtabling data for Britain's Railways
 
-# Path
-Path=/home/jed/bin
-
 # Exec
 Exec=rtt
 
