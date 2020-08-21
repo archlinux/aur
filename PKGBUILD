@@ -1,7 +1,7 @@
 # Maintainer: orhun <github.com/orhun>
 pkgname=kermit-git
 pkgdesc="A VTE-based, simple and froggy terminal emulator (git)"
-pkgver=3.0.r2.g867571f
+pkgver=3.0.r1.g02fb19d
 pkgrel=1
 arch=('any')
 url="https://github.com/orhun/kermit"
