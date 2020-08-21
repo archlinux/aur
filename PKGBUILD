@@ -26,5 +26,6 @@ build() {
 package() {
   cd "${srcdir}/${_module}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  rm -rf "${pkgdir}/usr/lib/python3.8/site-packages/tests"
 }
 
