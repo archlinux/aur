@@ -3,7 +3,7 @@
 _projectname='ppx_bench'
 pkgname="ocaml-$_projectname"
 pkgver='0.14.1'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='Syntax extension for writing in-line benchmarks in ocaml code'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,19 +12,10 @@ license=('MIT')
 depends=('ocaml>=4.04.2' 'ocaml-ppx_inline_test>=0.14.0' 'ocaml-ppxlib>=0.14.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
-source=(
-	"$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
-	'invalid-dune-project.diff'
-)
-sha256sums=('b8b8c3e8d990eb93d9b196ed5bd2315454dca2ae0abd05b07075737aa8b1aa60'
-            '21327b5018b0c63dbd3dfedc3d19fafe6cc338824f3cff92818a56951c2ab766')
+source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('6eb8b9495d9d66ea4ebe0518b1cac022109aae4a3922464c27094dfd896323cb')
 
 _sourcedirectory="$_projectname-$pkgver"
-
-prepare() {
-	cd "$srcdir/$_sourcedirectory/"
-	patch --forward -p1 < '../invalid-dune-project.diff'
-}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
