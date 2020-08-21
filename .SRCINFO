@@ -1,0 +1,29 @@
+pkgbase = haskell-summoner
+	pkgdesc = Tool for scaffolding fully configured batteries-included production-level Haskell projects.
+	pkgver = 2.0.1.1
+	pkgrel = 1
+	url = https://github.com/kowainik/summoner
+	arch = x86_64
+	license = MPL2
+	makedepends = ghc
+	makedepends = haskell-hedgehog
+	makedepends = haskell-hspec
+	makedepends = haskell-hspec-hedgehog
+	makedepends = haskell-tree-diff
+	depends = ghc-libs
+	depends = haskell-colourista
+	depends = haskell-generic-data
+	depends = haskell-gitrev
+	depends = haskell-optparse-applicative
+	depends = haskell-shellmet
+	depends = haskell-tomland
+	depends = haskell-validation-selective
+	depends = haskell-neat-interpolation
+	depends = haskell-aeson
+	source = https://hackage.haskell.org/packages/archive/summoner/2.0.1.1/summoner-2.0.1.1.tar.gz
+	source = Setup.hs
+	sha256sums = 5b6eee2848e2fb0b65d34f4a980ecd6e7766629a42394348dc2166e2216fc496
+	sha256sums = 1e1679046e10c31286fee3e631e57e4ef60c89e562270c8a2a7131c051959916
+
+pkgname = haskell-summoner
+
