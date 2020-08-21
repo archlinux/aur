@@ -5,7 +5,7 @@ pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
 url="https://www.mesa3d.org/"
 license=("custom")
-makedepends=('mingw-w64-meson' 'python-mako')
+makedepends=('mingw-w64-meson' 'mingw-w64-cmake' 'python-mako')
 depends=('mingw-w64-dlfcn' 'mingw-w64-llvm')
 provides=('mingw-w64-mesa')
 conflicts=('mingw-w64-mesa')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "${srcdir}"/mesa
   for _arch in ${_architectures}; do
-    ${_arch}-meson build-${_arch}
+    ${_arch}-meson build-${_arch} -Db_lto=false
     ninja -C build-${_arch}
   done
 }
