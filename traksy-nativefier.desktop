@@ -3,13 +3,13 @@
 Type=Application
 
 # Name
-Name=Real Time Trains
+Name=Traksy
 
 # Description
-Comment=Live Timtabling data for Britain's Railways
+Comment=Live signalling movements on Britain's railways
 
 # Exec
-Exec=rtt
+Exec=traksy
 
 # Term
 Terminal=false

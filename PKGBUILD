@@ -13,7 +13,7 @@ makedepends=(nodejs nodejs-nativefier npm)
 sha256sums=('80d2d640bdf3aa66ea4d308f78eb529f2fc8d12ddc031540d8482b764f671fb6'
             'cdbf312e4c1b3d3d6a00e82adb200b3c43a17fa2ba192a43d372829735072250')
 
-_instname=realtimetrains
+_instname=traksy
 
 build() {
     nativefier "https://traksy.uk" \
