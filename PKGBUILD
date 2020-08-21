@@ -1,25 +1,23 @@
 # Maintainer: Thomas Hobson <thomas@hexf.me>
 pkgname=python3-yamale
-pkgver=2.0.1
+pkgver=3.0.2
 pkgrel=1
 epoch=0
+source=('https://github.com/23andMe/Yamale/archive/a49760d57b94619543325b06582cfdf15772a26b.zip')
+sha256sums=('da25f464f480402b97a37a838250a23b1402392c35dca97bdecbac78b0746eb4')
 pkgdesc="YAML schema validator"
 arch=('x86_64')
 url="https://github.com/23andMe/Yamale"
 license=('MIT')
-makedepends=('python-setuptools')
 depends=('python-pyaml' 'python')
 optdepends=('python-ruamel-yaml')
+makedepends=('python-setuptools')
 provides=('yamale' 'python-yamale')
-source=("https://github.com/23andMe/Yamale/archive/2.0.1.zip")
-sha256sums=('53a2e3cc85487208d5f37314b49bb9920c5b349a6755da9fe08c5cef4b8b4690')
-
 build() {
-    cd Yamale-*/
-    python setup.py build
+  cd $(dirname */setup.py)
+  python setup.py build
 }
-
 package() {
-    cd Yamale-*/
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd $(dirname */setup.py)
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
