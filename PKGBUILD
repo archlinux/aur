@@ -9,7 +9,7 @@ url='https://sourceforge.net/projects/eli-project/'
 license=('GPL2')
 depends=('bash' 'libxaw')
 makedepends=('gcc9')
-source=("$pkgname-$pkgdir.tar.bz2::https://sourceforge.net/projects/eli-project/files/Eli/Eli%20$pkgver/$pkgname-$pkgver.tar.bz2/download")
+source=("$pkgname-$pkgver.tar.bz2::https://sourceforge.net/projects/eli-project/files/Eli/Eli%20$pkgver/$pkgname-$pkgver.tar.bz2/download")
 sha256sums=('12f2e02ebd807f936fd3c9225b0947c88d0fe7275146d64ace7cc1810ab22aef')
 
 build() {
