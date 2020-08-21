@@ -1,7 +1,7 @@
 pkgbase = bauh-staging
 	pkgdesc = Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web). Testing branch (it may not be working properly).
 	pkgver = 0.9.7.RC
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/vinifmor/bauh
 	arch = any
 	license = zlib/libpng
@@ -39,12 +39,13 @@ pkgbase = bauh-staging
 	optdepends = patch: may be required to compile some AUR packages
 	optdepends = pkgconf: may be required to compile some AUR packages
 	optdepends = ccache: can improve AUR packages compilation speed
-	optdepends = aria2: faster AppImages and AUR source downloads
-	optdepends = breeze: for KDE Plasma main theme be available
+	optdepends = aria2: multi-threaded downloading support
+	optdepends = breeze: KDE Plasma main theme
+	optdepends = axel: multi-threaded downloading support
 	provides = bauh
 	conflicts = bauh
-	source = https://github.com/vinifmor/bauh/archive/dcd2cfd8df96cd6b78cfdbd2568e240d61010a0c.tar.gz
-	sha512sums = a6bcf1f5cff0366374473c32827d173950720bf0a0c05fd7933c9e2d63142fc14dcfc040cb1d5638533e06e93f95c395b865ed6cbaee43c528f829af53b9ac1d
+	source = https://github.com/vinifmor/bauh/archive/019444347040f6768bb444e29b36558f135fe0dd.tar.gz
+	sha512sums = f913ce2577d46355a90e63e6dba467f6636770e05d5b7748bb6e8f730a1ce98abe8c0e921730b6c9bbc8c6759c279036cb81afab3d857c664800bdfd216054c1
 
 pkgname = bauh-staging
 

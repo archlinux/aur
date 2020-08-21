@@ -2,8 +2,8 @@
 
 pkgname=bauh-staging
 pkgver=0.9.7.RC
-pkgrel=8
-_commit="dcd2cfd8df96cd6b78cfdbd2568e240d61010a0c"
+pkgrel=9
+_commit="019444347040f6768bb444e29b36558f135fe0dd"
 pkgdesc="Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web). Testing branch (it may not be working properly)."
 arch=('any')
 url="https://github.com/vinifmor/bauh"
@@ -32,13 +32,14 @@ optdepends=('flatpak: required for Flatpak support'
             'patch: may be required to compile some AUR packages'
             'pkgconf: may be required to compile some AUR packages'            
             'ccache: can improve AUR packages compilation speed' 
-            'aria2: faster AppImages and AUR source downloads'
-            'breeze: for KDE Plasma main theme be available')
+            'aria2: multi-threaded downloading support'
+            'breeze: KDE Plasma main theme'
+            'axel: multi-threaded downloading support')
 makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 provides=("bauh")
 conflicts=('bauh')
 source=("${url}/archive/${_commit}.tar.gz")
-sha512sums=('a6bcf1f5cff0366374473c32827d173950720bf0a0c05fd7933c9e2d63142fc14dcfc040cb1d5638533e06e93f95c395b865ed6cbaee43c528f829af53b9ac1d')
+sha512sums=('f913ce2577d46355a90e63e6dba467f6636770e05d5b7748bb6e8f730a1ce98abe8c0e921730b6c9bbc8c6759c279036cb81afab3d857c664800bdfd216054c1')
 
 build() {
   cd "${srcdir}/bauh-${_commit}"
