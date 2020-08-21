@@ -1,0 +1,23 @@
+pkgbase = haskell-relude
+	pkgdesc = Safe, performant, user-friendly and lightweight Haskell Standard Library.
+	pkgver = 0.7.0.0
+	pkgrel = 1
+	url = https://github.com/kowainik/relude
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	makedepends = haskell-gauge
+	makedepends = haskell-unordered-containers
+	makedepends = haskell-doctest
+	makedepends = haskell-hashable
+	makedepends = haskell-glob
+	depends = ghc-libs
+	depends = haskell-unordered-containers
+	depends = haskell-hashable
+	source = https://hackage.haskell.org/packages/archive/relude/0.7.0.0/relude-0.7.0.0.tar.gz
+	source = Setup.hs
+	sha256sums = c7492118453176e9ffbfca6c6723d4429d1d11f2133325ce06e87353cc80a1bf
+	sha256sums = 1e1679046e10c31286fee3e631e57e4ef60c89e562270c8a2a7131c051959916
+
+pkgname = haskell-relude
+
