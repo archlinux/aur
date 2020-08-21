@@ -1,0 +1,21 @@
+pkgbase = xkcd
+	pkgdesc = CLI tool to fetch XKCD comics
+	pkgver = 20200403.r55_g29aa764
+	pkgrel = 1
+	url = https://github.com/itsron717/XKCD
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-click
+	depends = python-pillow
+	depends = python-requests
+	provides = xkcd
+	conflicts = xkcd
+	source = XKCD::git://github.com/itsron717/XKCD#branch=master
+	sha256sums = SKIP
+
+pkgname = xkcd
+
