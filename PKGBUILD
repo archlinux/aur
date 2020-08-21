@@ -1,7 +1,7 @@
 # Maintainer: Azael Reyes <azael.devel@gmail.com>
 
 
-pkgname=octetos-bibion
+pkgname=octetos-biblion
 pkgver=0.1.1
 pkgrel=1
 pkgdesc="Library for reading biblia."

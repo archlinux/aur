@@ -1,4 +1,4 @@
-pkgbase = octetos-bibion
+pkgbase = octetos-biblion
 	pkgdesc = Library for reading biblia.
 	pkgver = 0.1.1
 	pkgrel = 1
@@ -9,5 +9,5 @@ pkgbase = octetos-bibion
 	source = https://github.com/azaeldevel/octetos-biblion/archive/0.1.1-alpha.tar.gz
 	md5sums = d81bf1e9b27cf3839f65a0de3b521232
 
-pkgname = octetos-bibion
+pkgname = octetos-biblion
 
