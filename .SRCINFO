@@ -1,0 +1,13 @@
+pkgbase = octetos-bibion
+	pkgdesc = Library for reading biblia.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/azaeldevel/octetos-biblion.git
+	arch = x86_64
+	license = GPL
+	depends = octetos-core
+	source = https://github.com/azaeldevel/octetos-biblion/archive/0.1.1-alpha.tar.gz
+	md5sums = d81bf1e9b27cf3839f65a0de3b521232
+
+pkgname = octetos-bibion
+
