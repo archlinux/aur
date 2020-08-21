@@ -1,11 +1,11 @@
 pkgname=mingw-w64-mesa
-pkgver=20.1.5
+pkgver=20.1.6
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
 url="https://www.mesa3d.org/"
 license=("custom")
-makedepends=('mingw-w64-meson' 'python-mako')
+makedepends=('mingw-w64-meson' 'mingw-w64-cmake' 'python-mako')
 depends=('mingw-w64-dlfcn' 'mingw-w64-llvm')
 options=('staticlibs' '!strip' '!buildflags')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
@@ -15,7 +15,7 @@ validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l
               '71C4B75620BC75708B4BDB254C95FAAB3EB073EC'  # Dylan Baker <dylan@pnwbakers.com>
               '57551DE15B968F6341C248F68D8E31AFC32428A6') # Eric Engestrom <eric@engestrom.ch>
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig})
-sha256sums=('fac1861e6e0bf1aec893f8d86dbfb9d8a0f426ff06b05256df10e3ad7e02c69b'
+sha256sums=('23bed40114b03ad640c95bfe72cc879ed2f941d0d481b77b5204a1fc567fa93c'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -27,7 +27,7 @@ prepare () {
 build() {
   cd "${srcdir}"/mesa-${pkgver}
   for _arch in ${_architectures}; do
-    ${_arch}-meson build-${_arch}
+    ${_arch}-meson build-${_arch} -Db_lto=false
     ninja -C build-${_arch}
   done
 }
