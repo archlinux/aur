@@ -1,0 +1,11 @@
+pkgbase = mojom-lsp
+	pkgdesc = A language server for Mojom IDL
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/GoogleChromeLabs/mojom-language-support
+	arch = any
+	license = Apache
+	makedepends = rust
+
+pkgname = mojom-lsp
+
