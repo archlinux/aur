@@ -1,0 +1,15 @@
+pkgbase = eli
+	pkgdesc = A programming environment that supports all phases of translator construction.
+	pkgver = 4.8.1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/eli-project/
+	arch = x86_64
+	license = GPL2
+	makedepends = gcc9
+	depends = bash
+	depends = libxaw
+	source = eli-4.8.1.tar.bz2::https://sourceforge.net/projects/eli-project/files/Eli/Eli%204.8.1/eli-4.8.1.tar.bz2/download
+	sha256sums = 12f2e02ebd807f936fd3c9225b0947c88d0fe7275146d64ace7cc1810ab22aef
+
+pkgname = eli
+
