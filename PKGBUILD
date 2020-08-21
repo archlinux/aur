@@ -11,7 +11,7 @@ source=($pkgname.png
         $pkgname.desktop)
 makedepends=(nodejs nodejs-nativefier npm)
 sha256sums=('80d2d640bdf3aa66ea4d308f78eb529f2fc8d12ddc031540d8482b764f671fb6'
-            'cdbf312e4c1b3d3d6a00e82adb200b3c43a17fa2ba192a43d372829735072250')
+            'd010044fcc92b000eb457c843c7759b066f0b75a51cae0eca22c2180d62ba9c8')
 
 _instname=traksy
 
