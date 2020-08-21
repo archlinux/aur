@@ -1,6 +1,6 @@
 pkgbase = xapian-tcl-bindings
 	pkgdesc = Bindings allowing Xapian to be used from Tcl
-	pkgver = 1.4.10
+	pkgver = 1.4.16
 	pkgrel = 1
 	url = http://xapian.org/docs/bindings/tcl/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = xapian-tcl-bindings
 	depends = tcl
 	depends = tcllib
 	depends = xapian-core
-	source = http://oligarchy.co.uk/xapian/1.4.10/xapian-bindings-1.4.10.tar.xz
-	md5sums = 5fa7b00fce9f3b8720bc5d276ff97713
+	source = http://oligarchy.co.uk/xapian/1.4.16/xapian-bindings-1.4.16.tar.xz
+	md5sums = 333b7b2771dca0f07b092490468f75ef
 
 pkgname = xapian-tcl-bindings
 
