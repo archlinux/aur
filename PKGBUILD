@@ -12,6 +12,7 @@ depends=('java-environment' 'lpsolve' 'openscenegraph' 'python' 'ruby' 'suitespa
 makedepends=('autoconf' 'automake' 'libtool' 'gcc' 'gcc-fortran-multilib' 'boost' 'clang' 'cmake' 'jre7-openjdk' 'antlr2' 'subversion' 'lib32-expat' 'lib32-ncurses' 'lib32-readline')
 provides=('openmodelica')
 conflicts=('openmodelica' 'openmodelica-svn' 'openmodelica-dev')
+options=('!buildflags') #needed to avoid the qwt_plot.f file not found error
 #source=('git+https://github.com/ppenguin/OpenModelica.git')
 #md5sums=('SKIP')
 
@@ -35,7 +36,7 @@ prepare() {
 build() {
 cd "$srcdir/OpenModelica"
 ./build.sh
-make -j1
+make
 }
  
 package() {  

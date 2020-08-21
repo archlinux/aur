@@ -38,6 +38,7 @@ pkgbase = openmodelica-git
 	conflicts = openmodelica
 	conflicts = openmodelica-svn
 	conflicts = openmodelica-dev
+	options = !buildflags
 
 pkgname = openmodelica-git
 
