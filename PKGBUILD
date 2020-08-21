@@ -19,7 +19,7 @@ sha256sums=('468c8502b14e8626d7aeb82e19db14acb1fbcec161d0784bc55263e63e67e907')
 _sourcedirectory="$pkgname-$pkgver"
 
 build() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	# ignore warnings that upstream escalates to errors for some reason
 	OCAMLPARAM='_,warn-error=-60-67' make
 }
@@ -30,7 +30,7 @@ check() {
 }
 
 package() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	install -Dm755 "bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 'resources/shell/bash-completion' "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
