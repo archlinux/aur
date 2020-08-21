@@ -2,13 +2,13 @@
 pkgname=gst-plugins-opencv
 _pkgname=gst-plugins-bad
 pkgver=1.16.2
-pkgrel=4
+pkgrel=5
 pkgdesc="GStreamer open-source multimedia framework OpenCV plugins"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
 license=(LGPL)
 depends=(gst-plugins-base-libs opencv)
-makedepends=(meson)
+makedepends=(meson git)
 _commit=a6f26408f74a60d02ce6b4f0daee392ce847055f  # tags/1.16.2^0
 source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit"
   "4.4.0.patch")
