@@ -3,7 +3,7 @@
 
 pkgbase=linux-rt
 _pkgver=5.6.19
-_rtpatchver=11
+_rtpatchver=12
 pkgver="${_pkgver}.${_rtpatchver}"
 pkgrel=1
 pkgdesc='Linux RT'
@@ -22,24 +22,24 @@ source=(
   config
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   sphinx-workaround.patch)
-validpgpkeys=(
-  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
-  '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
-)
 sha512sums=('0b3c64ab4f63431c2da6786b4f85237f20c86f20a1faa79440d9cbc2aa6101118b0f18b6688ca7ad27dbcc4978d197fae52886fc23a3e2deb3c0a1d9c82c386b'
             'SKIP'
-            '522bae99bbfb272deb71700b0e3bb5bb8b43253e8c94ff6fb902d6584ea54700722afede9a6ccb3ba1a6b99eb7f6a82e4872ee807aa0b28cc8d75ab7fc5f3fa4'
+            '5b6497b1c798358ae75f15b6c649e06a8db6200ce618776ac8cafc4a24e92ad4d257b10f72b8c03ba471549a3320f9a127f85530ad912ccf691538c068a07481'
             'SKIP'
             'dcabb2c35a5b54d7fee81437f86da98da65323b0c2ba793247781befbcb78f59f31afbc77f3987ea3524d9a2c144a98cd6b18099a4b5c8dd8af86e33f0f0d85c'
             'b1966327fac96607d052b5648e28728fdc94a14cc41e108fe336e16e8b9bad8b0ea4df0c27e13bb0ed32acb785bd7f6bf91b65f778eab3aff7695f94d348e26f'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be')
 b2sums=('7c0afa0e3d322314992022272614973311a8dfb85de5e0710dd4c929b0abc0a2389b49938f7df4256ea5719bf2a56a7d6eed2eebb51c337fd5fb277747a6620a'
         'SKIP'
-        'ab6de55cac59c2bd2d29009aea8db129c85ac0c816186b1c8561062f49eb91fc384dbad6003e4f4b63989eed6e614116ce189270d2fc7081b89d031c8af1a0ee'
+        'f41194b4311f68f27cd58e4adadf510e9ddb68fde824e6cf31af9331a3dd3adc5284097226158d4ceadf4c738896fff347d9877e54bb7998e86f44d94025ad7a'
         'SKIP'
         '720bb287882fdab7a9ee052a32f57452a2c083dfbbd1fbf90dca142a896ab95a1c3f3adad5ede2afd265cd724d5ce8e795388625585c33bf805efe71163cb435'
         '9afbf0527415c8fc49c624f2eae17473f4f212c494a08faf4ccb08e2be9ec426bfd36bfbf56bf5a1d917fa5eb33f454454beb214c0281c06ebf01a804c5a011d'
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95')
+validpgpkeys=(
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
+  '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
+)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
