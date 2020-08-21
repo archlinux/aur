@@ -1,16 +1,16 @@
 #Maintainer: Skykey <zcxzxlc@163.com>
 
 pkgname=('clashy-bin')
-pkgver=0.1.17
+pkgver=0.1.18
 pkgrel=1
 pkgdesc="A GUI proxy client for Windows / Mac / Ubuntu Desktop based on Clash and Electron. Windows / Mac / Ubuntu 适用的Clash客户端."
 provides=("clashy")
 url='https://github.com/SpongeNobody/Clashy'
 arch=('x86_64')
 depends=('libnotify' 'nss' 'libxss' 'xdg-utils' 'libappindicator-gtk3' 'libsecret' 'gobject-introspection-runtime' 'ffmpeg')
-source=("https://github.com/SpongeNobody/Clashy/releases/download/v0.1.17/Clashy_0.1.17_amd64.deb"
+source=("https://github.com/SpongeNobody/Clashy/releases/download/v0.1.18/Clashy_0.1.18_amd64.deb"
 )
-md5sums=('73fa5c0700658fb44866808d5fcc4080'
+md5sums=('8ad4048063cf7314f10ccf568644b424'
 )
 license=()
 
