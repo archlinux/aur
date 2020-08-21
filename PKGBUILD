@@ -29,13 +29,6 @@ build() {
   go build -o "./out/${pkgname}"
 }
 
-check() {
-  cd ${pkgname}-${pkgver}
-
-  # some tests require AWS credentials and are therefore excluded here
-  go test ./cli/... ./config/... ./configstack/... ./shell/... ./util/...
-}
-
 package() {
   cd ${pkgname}-${pkgver}
 
