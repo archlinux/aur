@@ -2,7 +2,7 @@
 
 pkgname=fontship
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
 url="https://github.com/theleagueof/$pkgname"
@@ -28,6 +28,7 @@ depends=('diffutils'
          'python-ufonormalizer'
          'python-unicodedata2' # fonttools optdepends
          'python-zopfli' # fonttools optdepends
+         'sfdnormalize'
          'sfnt2woff-zopfli'
          'ttfautohint'
          'woff2'
