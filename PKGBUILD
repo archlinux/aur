@@ -11,7 +11,7 @@ license=('MIT')
 provides=('c4go')
 depends=('clang')
 makedepends=('git' 'go')
-source=("git+${url}")
+source=("c4go::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
