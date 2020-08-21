@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
 
 pkgname=python-remi-git
-pkgver=2020.03.10.r47.g5767ef2
+pkgver=2020.08.06.5ec099f
 pkgrel=1
 pkgdesc="Cross-platform GUI library which renders in a web browser."
 arch=('any')
@@ -15,7 +15,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/remi"
-  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+  #git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+  version=`cat setup.py | grep version= | sed "s/\s\+version='//g" | sed "s/',//g"`
+  printf "%s.%s" "$version" "$(git rev-parse --short HEAD)"
 }
 
 package() {
