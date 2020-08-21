@@ -1,0 +1,17 @@
+pkgbase = rime-lua-hook-git
+	pkgdesc = Pacman hook to merge rime lua plugin
+	pkgver = r2.4d04015
+	pkgrel = 1
+	url = https://github.com/ayalhw/rime-lua-hook
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = librime
+	provides = rime-lua-hook
+	conflicts = rime-lua-hook
+	source = rime-lua-hook::git+https://github.com/ayalhw/rime-lua-hook.git
+	sha256sums = SKIP
+
+pkgname = rime-lua-hook-git
+
