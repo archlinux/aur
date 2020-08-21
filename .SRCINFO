@@ -1,0 +1,14 @@
+pkgbase = hosts-modifier
+	pkgdesc = A small go program used to manage the hosts file.
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/BrosSquad/hosts
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	source = https://github.com/BrosSquad/hosts/archive/v1.0.8.tar.gz
+	md5sums = 1027d27526a794bc9e8f9b9177d3a3df
+	sha256sums = 1600c0513d96b5a338d41ad769d62a0da40729cae1097bcee64b3c0b8349477f
+
+pkgname = hosts-modifier
+
