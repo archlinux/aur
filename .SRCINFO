@@ -1,0 +1,38 @@
+pkgbase = emacs-pgtk-native-comp-git
+	pkgdesc = GNU Emacs. Unofficial pgtk-nativecomp branch.
+	pkgver = 28.0.50.143231
+	pkgrel = 1
+	url = http://www.gnu.org/software/emacs/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = xorgproto
+	depends = alsa-lib
+	depends = gnutls
+	depends = libxml2
+	depends = jansson
+	depends = libotf
+	depends = harfbuzz
+	depends = gpm
+	depends = libgccjit
+	depends = gtk3
+	depends = libjpeg-turbo
+	depends = giflib
+	depends = cairo
+	depends = webkit2gtk
+	provides = emacs
+	provides = emacs-seq
+	conflicts = emacs
+	conflicts = emacs26-git
+	conflicts = emacs-27-git
+	conflicts = emacs-git
+	conflicts = emacs-seq
+	replaces = emacs26-git
+	replaces = emacs27-git
+	replaces = emacs-git
+	replaces = emacs-seq
+	source = emacs-git::git://github.com/fejfighter/emacs.git#branch=pgtk-nativecomp
+	md5sums = SKIP
+
+pkgname = emacs-pgtk-native-comp-git
+
