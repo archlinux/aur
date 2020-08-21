@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Electron wrapper for the website brfares.com built with Nativefier"
 arch=(x86_64)
 license=(MIT)
-url=https://www.realtimetrains.co.uk
+url=http://www.brfares.com
 source=($pkgname.png
         $pkgname.desktop)
 makedepends=(nodejs nodejs-nativefier npm)
