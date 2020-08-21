@@ -1,7 +1,7 @@
 # Maintainer: relrel <relrelbachar@gmail.com>
 
 pkgname=android-completion
-pkgver=20200821110121.5ca85a0
+pkgver=20200821.cdfef7f
 pkgrel=1
 pkgdesc="Bash completion for adb and fastboot"
 arch=(any)
@@ -26,7 +26,7 @@ pkgver() {
 	time=$(echo $timestamp | cut -d' ' -f4)
 	year=$(echo $timestamp | cut -d' ' -f5)
 	timezone=$(echo $timestamp | cut -d' ' -f6)
-	printf "%s.%s" $(date -d "${day} ${month} ${year} ${time} ${timezone}" +%Y%m%d%H%M%S) ${commit:0:7}
+	printf "%s.%s" $(date -d "${day} ${month} ${year} ${time} ${timezone}" +%Y%m%d) ${commit:0:7}
 }
 
 prepare() {
