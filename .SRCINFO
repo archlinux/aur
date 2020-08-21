@@ -1,0 +1,17 @@
+pkgbase = traksy-nativefier
+	pkgdesc = Electron wrapper for the website traksy.uk built with Nativefier
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://traksy.uk
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	source = traksy-nativefier.png
+	source = traksy-nativefier.desktop
+	sha256sums = 80d2d640bdf3aa66ea4d308f78eb529f2fc8d12ddc031540d8482b764f671fb6
+	sha256sums = cdbf312e4c1b3d3d6a00e82adb200b3c43a17fa2ba192a43d372829735072250
+
+pkgname = traksy-nativefier
+

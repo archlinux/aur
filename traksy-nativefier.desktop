@@ -1,0 +1,15 @@
+[Desktop Entry]
+# Type
+Type=Application
+
+# Name
+Name=Real Time Trains
+
+# Description
+Comment=Live Timtabling data for Britain's Railways
+
+# Exec
+Exec=rtt
+
+# Term
+Terminal=false
