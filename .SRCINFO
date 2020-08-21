@@ -9,10 +9,10 @@ pkgbase = godot-beta-bin
 	provides = godot-beta-bin
 	source = godot-beta.desktop
 	sha256sums = 53912a2e312559455045e8e83f6e239a2cbc6f891ebb393f441c772063bb9497
-	source_i686 = https://downloads.tuxfamily.org/godotengine/3.2.3/rc3/Godot_v3.2.3-rc3_x11.32.zip
-	sha512sums_i686 = b668b54e5253d9ed989c45d31c980f638a2b7c882395387dbbc37835532b723674c85708f211f3e101b39938424e7a4c8b3160b589fa463464cfc81f35eeac6e
-	source_x86_64 = https://downloads.tuxfamily.org/godotengine/3.2.3/rc3/Godot_v3.2.3-rc3_x11.64.zip
-	sha512sums_x86_64 = 9122109bb498e59325b0e57d4786cd89038eb91a367a0617055b72863557c70836b8d56e92db5f61519fe45f114cf1d34150b99cf6cb50ad5576c93608f8e9af
+	source_i686 = https://downloads.tuxfamily.org/godotengine/3.2.3/rc4/Godot_v3.2.3-rc4_x11.32.zip
+	sha512sums_i686 = f6b8b82edc20f9cedc8f63e04b07a9ea9494dd8852f81d3aef464c84eecc16c3bab6792554436644f1425a5f4bf32eabd19da1f483c4fe183dd9c05fa4504773
+	source_x86_64 = https://downloads.tuxfamily.org/godotengine/3.2.3/rc4/Godot_v3.2.3-rc4_x11.64.zip
+	sha512sums_x86_64 = c556994cd184cd429fc8137296ec67a92bbc5f46f3ff083f69fb3f982d1832fa816340800cdb6c8960e823392e1781c8a550e43bd81cd917218b652455b8d53f
 
 pkgname = godot-beta-bin
 
