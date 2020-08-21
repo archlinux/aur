@@ -62,8 +62,8 @@ _localmodcfg=
 
 _major=5.6
 _minor=19
-_rtpatchver=11
-_clr=${_major}.17-68
+_rtpatchver=12
+_clr=${_major}.19-69
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}.${_rtpatchver}
@@ -321,7 +321,7 @@ done
 
 sha256sums=('62532fb257fe98a68601e4ca36bd3d34300b4f26f447bf495df4693442601ee8'
             'SKIP'
-            '14c80c40f5b247deead9e9d1d31b8b4f5f0b4f4425e6eb12291fd3e505fc8414'
+            '9a770fd15cc89f6f171f36b103a62aecbccc081181df4bb4f8a0976040cf4845'
             'SKIP'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90')
 
