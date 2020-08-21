@@ -4,7 +4,7 @@
 # Simutrans Extended is in active development - this package is updated nightly
 
 pkgname=simutrans-extended
-pkgver=20200723
+pkgver=20200821
 pkgrel=1
 pkgdesc="Transportation simulation game - Extended Version"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(git+https://github.com/jamespetts/simutrans-extended/
         "How to add files and paksets.md")
 sha256sums=('SKIP'
             'c0c2dd5da146f64901b00c6ee67e0818a166b983a81cee7897c4843aa9f21c81'
-            'eda4cc07461c77b5af211ea40dc0a400b045b088c50c442b34e6e762974629da'
+            '7ed69019ba97849b65e2b8ac5ad8bf2110a7f048e3590d67c76c9cfca8a10b8d'
             '28c6f1b652de1b1979407c5b764774f4a342035a933945f1b82da1e1d92d02b4'
             'd38e01738dbdd02ab52b600cec5019d9465b4f177b0f61b249e01de5e85631f4'
             '0efcf72d3670c53de99c44cb0d8f43f7e7663fda5df0f631ba6c687cc85967d3'
