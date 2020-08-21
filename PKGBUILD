@@ -1,7 +1,7 @@
 # Maintainer: QuantMint <qua/nt/mint/@/tuta/nota.de>
 # Contributor: Ivan Fonseca <ivanfon@riseup.net>
 pkgname=godot-beta-bin
-pkgver=3.2.3_rc3
+pkgver=3.2.3_rc4
 _v1=3.2.3
 _v2=rc4
 pkgrel=1

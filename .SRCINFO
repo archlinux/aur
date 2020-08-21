@@ -1,6 +1,6 @@
 pkgbase = godot-beta-bin
 	pkgdesc = The latest official beta release of the Godot game engine
-	pkgver = 3.2.3_rc3
+	pkgver = 3.2.3_rc4
 	pkgrel = 1
 	url = https://godotengine.org
 	arch = i686
