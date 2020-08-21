@@ -27,7 +27,7 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	# ignore warnings that upstream escalates to errors for some reason
 	OCAMLPARAM='_,warn-error=-60-67' make
 }
@@ -38,7 +38,7 @@ check() {
 }
 
 package() {
-	cd "$srcdir/$_sourcedirectory"
+	cd "$srcdir/$_sourcedirectory/"
 	install -Dm755 "bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 	install -Dm644 'resources/shell/bash-completion' "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
