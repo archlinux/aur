@@ -1,0 +1,18 @@
+[Desktop Entry]
+# Type
+Type=Application
+
+# Name
+Name=Real Time Trains
+
+# Description
+Comment=Live Timtabling data for Britain's Railways
+
+# Path
+Path=/home/jed/bin
+
+# Exec
+Exec=rtt
+
+# Term
+Terminal=false

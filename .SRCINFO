@@ -1,0 +1,17 @@
+pkgbase = realtimetrains-nativefier
+	pkgdesc = Electron wrapper for the website realtimetrains.co.uk built with Nativefier
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://www.realtimetrains.co.uk
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	source = realtimetrains-nativefier.png
+	source = realtimetrains-nativefier.desktop
+	sha256sums = e514c51e5823536e3c1e992d0adfea94d6bd8ef7b2460c153fecd9c879ab303d
+	sha256sums = 37a1eb39c01579a72e5da4837abb44f7dd0e6b660b89dc66cc752e21c34cebd8
+
+pkgname = realtimetrains-nativefier
+
