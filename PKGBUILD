@@ -13,7 +13,7 @@ depends=('tesseract'
          'hicolor-icon-theme')
 makedepends=('cmake'
              'qt5-base')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/danpla/dpscreenocr/archive/v1.0.2.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/danpla/dpscreenocr/archive/v${pkgver}.tar.gz")
 sha256sums=('497e79f05c48ffe5781d2cf524c811ab4f8008842191d1d4b85f87fc4a186ce5')
 
 build() {
