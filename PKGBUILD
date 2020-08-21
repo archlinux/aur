@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=nostalgia
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Set historic GNOME wallpapers"
 arch=(i686 x86_64 armv7h aarch64)
@@ -12,7 +12,7 @@ makedepends=(gobject-introspection
              meson
              vala)
 source=("https://gitlab.gnome.org/bertob/nostalgia/-/archive/$pkgver/nostalgia-$pkgver.tar.gz")
-sha256sums=('044be070bac4c620a8a71e347605a4c78b6095c720157f72814117109188b95f')
+sha256sums=('ff8e63abfcbc68aa27c6a9bcbcc84d184975cf235abf2aff40de5341cbc96a7e')
 
 
 build() {
