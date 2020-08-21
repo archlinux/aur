@@ -2,8 +2,8 @@
 # Contributor: Dhananjay Balan <mail@dbalan.in>
 
 pkgname=minio-client
-pkgver=2020.05.16
-_timever=T01:44:37Z
+pkgver=2020.08.20
+_timever=T00:23:01Z
 _pkgver="${pkgver//./-}${_timever//:/-}"
 pkgrel=1
 pkgdesc='Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage'
@@ -21,7 +21,7 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd mc
 
