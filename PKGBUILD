@@ -12,7 +12,7 @@ arch=('any')
 url=https://github.com/CadQuery/OCP
 license=('Apache 2.0 or LGPL2')
 depends=(python opencascade)
-makedepends=(gcc pybind11 python-setuptools ninja cmake python-logzero python-tqdm python-toposort python-cymbal python-schema)
+makedepends=(python-click python-pandas python-path gcc pybind11 python-setuptools ninja cmake python-logzero python-tqdm python-toposort python-cymbal python-schema)
 source=("https://github.com/CadQuery/OCP/archive/${_pkgver}.tar.gz" "https://github.com/CadQuery/pywrap/archive/${_pywrap_hash}.tar.gz")
 sha256sums=('cd04ad30d38a4836ed2cd0c7ba77174aa41f42f487ba42baf7094624802194d5'
             '1cdc071e4c731d853efbb14f00a7a40ebbf01c189a5c11c83a7f74af96d6c265')
@@ -39,11 +39,16 @@ build() {
   CONDA_PREFIX=/usr PYTHONPATH=pywrap python -m bindgen -n $(nproc) generate ${_config_file} out_f.pkl
   mkdir -p ${_output}
   cp -a out*.pkl ${_output}/.
-  #CONDA_PREFIX=/usr cmake -B build -S "${_output}" -G Ninja -DCMAKE_BUILD_TYPE=Release
+  CONDA_PREFIX=/usr cmake -B build -S "${_output}" -G Ninja -DCMAKE_BUILD_TYPE=Release
   #CONDA_PREFIX=/usr cmake --build build -j $(nproc) -- -k 0
   #rm -rf build/CMakeFiles
   
   #python setup.py build
+}
+
+check() {
+  cd "OCP-${_pkgver}"
+  python -c "from OCP.gp import gp_Vec, gp_Ax1, gp_Ax3, gp_Pnt, gp_Dir, gp_Trsf, gp_GTrsf, gp, gp_XYZ"
 }
 
 
