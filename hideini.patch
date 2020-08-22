@@ -1,0 +1,14 @@
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
+     //Modbus Adapter
+     ModbusAdapter modbus_adapt(NULL);
+     //Program settings
+-    ModbusCommSettings settings("qModMaster.ini");
++    ModbusCommSettings settings(".qModMaster.ini");
+ 
+     //show main window
+     mainWin = new MainWindow(NULL, &modbus_adapt, &settings);
+-- 
+2.28.0
+
