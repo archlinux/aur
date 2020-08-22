@@ -32,7 +32,7 @@ archlinux:
 # cuda need to be installed before `makepkg` invocation in order to allow nvcc-ccache logic to work.
   - cuda
   - moreutils
-  - usd=19.11
+  - usd=20.05
   before_install:
 # 1.Override `package-cleanup.hook` to preserve cache for travis.
 # 2.Enable ccache
