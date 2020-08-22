@@ -1,4 +1,6 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
+
 pkgname=kmon-git
 pkgver=1.4.0.r5.gb76594b
 pkgrel=1
