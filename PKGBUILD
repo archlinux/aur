@@ -6,7 +6,7 @@
 pkgname=moneymanagerex-git
 _gitname=moneymanagerex
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest stable version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
