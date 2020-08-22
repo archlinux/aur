@@ -1,8 +1,8 @@
 # Maintainer: b00rt00s <b00rt00s.aur@gmail.com>
 
 pkgname=vesta
-pkgver=3.4.8
-pkgrel=4
+pkgver=3.5.2
+pkgrel=1
 pkgdesc="3D visualization program for structural models, volumetric data such as electron/nuclear densities, and crystal morphologies."
 url="https://jp-minerals.org/vesta"
 license=('custom')
@@ -14,10 +14,10 @@ source_x86_64=("${_url}/${pkgver}/VESTA-gtk3.tar.bz2")
 source=('VESTA.desktop' 'vesta.install')
 md5sums=('fdd7040720e4b58a26caa7db09669acf'
          'caabe467168af9e44cf380af1abfe280')
-md5sums_x86_64=('b646a3f2999aafc0969434019fa2c61b')
+md5sums_x86_64=('d77a235993e6a02094330cef9a0d5eaa')
 sha256sums=('4eae00cd081d7b628858a03593a265c6f7698461bd265b873198d5c347c151e4'
             '35d44e99185caa17fbf69938bcccc252fde70fb7bc2d407ef376ba512db08b43')
-sha256sums_x86_64=('27eabe856200969712afe63225f3a9e5c5c2eea8fb98efa2d1f30f0bf757f9ed')
+sha256sums_x86_64=('556f4b073f6451fbbfbcaf702a8747c77003946c0bbcc74f92433daf5cf5c191')
 install="vesta.install"
 
 
