@@ -11,8 +11,7 @@ depends=('java-environment>=8'
          'opencv'
          'tesseract'
          'jython'
-         'jruby'
-         'opencv-java')
+         'jruby')
 makedepends=('unzip' 'gendesk')
 provides=('sikulixide' 'sikulix')
 source=("${pkgname}-${pkgver}.jar::https://launchpad.net/sikuli/sikulix/${pkgver}/+download/sikulixide-${pkgver}.jar"

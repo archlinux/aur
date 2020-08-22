@@ -12,7 +12,6 @@ pkgbase = sikulixide-bin
 	depends = tesseract
 	depends = jython
 	depends = jruby
-	depends = opencv-java
 	provides = sikulixide
 	provides = sikulix
 	noextract = sikulixide-bin-2.0.4.jar
