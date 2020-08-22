@@ -15,7 +15,6 @@ pkgbase = xfce4-devel-meta
 	depends = xfce4-power-manager-devel
 	depends = xfce4-session-devel
 	depends = xfce4-settings-devel
-	depends = xfce4-terminal-devel
 	depends = xfconf-devel
 	depends = xfdesktop-devel
 	depends = xfwm4-devel

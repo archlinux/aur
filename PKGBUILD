@@ -19,7 +19,6 @@ depends=(
 	xfce4-power-manager-devel
 	xfce4-session-devel
 	xfce4-settings-devel
-	xfce4-terminal-devel
 	xfconf-devel
 	xfdesktop-devel
 	xfwm4-devel
