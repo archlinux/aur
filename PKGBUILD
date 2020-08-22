@@ -1,4 +1,6 @@
-# Maintainer: orhun <github.com/orhun>
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
+
 pkgname=zps-git
 pkgdesc="A small utility for listing and reaping zombie processes (git)"
 pkgver=1.2.3.r0.g9d08c49
