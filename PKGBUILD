@@ -8,7 +8,7 @@ pkgdesc='Library containing the definition of S-expressions and some base conver
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('glibc' 'ocaml>=4.04.2')
+depends=('ocaml>=4.04.2')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
