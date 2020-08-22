@@ -21,15 +21,15 @@ source=(git+https://github.com/moneymanagerex/moneymanagerex.git#tag=v1.3.5)
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_gitname"
-	printf "%s" "$(git describe --long --tag | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd "$srcdir/$_gitname"
+  printf "%s" "$(git describe --long --tag | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
   cd "$srcdir/$_gitname"
   mkdir -p build
   git submodule update --init
-	# TODO Workaround: https://github.com/moneymanagerex/moneymanagerex/issues/2685
+  # TODO Workaround: https://github.com/moneymanagerex/moneymanagerex/issues/2685
   sed -i "s/luaL_checkint(/luaL_checkinteger(/g" ./3rd/LuaGlue/include/LuaGlue/LuaGlueApplyTuple.h
 }
 
