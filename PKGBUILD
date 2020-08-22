@@ -1,7 +1,7 @@
 # Maintainer: jojolepro <jojolepro[at]jojolepro[at]com>
 pkgname=inv
 _pkgcomplete=inventory-managoat
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 url="https://github.com/jojolepro/inventory-managoat"
 pkgdesc="Inventory Managoat - A Simple Inventory Manager"
@@ -10,7 +10,7 @@ makedepends=('rust' 'cargo')
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jojolepro/inventory-managoat/archive/${pkgver}.tar.gz")
-sha256sums=('c3ea6bb9f458a04364695b8e01c847119893fb125a5c7b681dfdf4b871be17f6')
+sha256sums=('c7ee16467068766d625574d21b9ae4ebdbfbeb6dc5dbc83adf473b20b471b9f9')
 
 build() {
     cd "$srcdir/$_pkgcomplete-$pkgver"
