@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Böhmke <benjamin at boehmke dot net>
 pkgname=emby-theater-bin
 pkgver=3.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc='An Electron app for Emby'
 license=('GPL2')
 arch=('x86_64')
@@ -30,6 +30,6 @@ package(){
     # Extract package data
     tar xf data.tar.xz -C "${pkgdir}"
 
-    install -D -m644 "/usr/lib/emby-theater/resources/app/node_modules/validate-npm-package-license/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 "/usr/share/doc/emby-theater/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+    install -D -m644 "${pkgdir}/usr/lib/emby-theater/resources/app/node_modules/validate-npm-package-license/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "${pkgdir}/usr/share/doc/emby-theater/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 }
