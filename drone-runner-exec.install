@@ -1,0 +1,31 @@
+post_install() {
+	echo ""
+	echo "##########"
+	echo "#"
+	echo "#   Remember to configure the runner via its configuration variables under /etc/drone-runner-exec.env"
+	echo "#   After that, start/enable the server via 'systemctl enable drone-runner-exec.service --now'"
+	echo "#"
+	echo "##########"
+	echo ""
+
+}
+
+post_upgrade() {
+	echo "#   Remember to restart the drone-runner-exec unit via 'systemctl restart drone-runner-exec.service', if neccessary."
+}
+
+pre_remove() {
+	# Stop service
+	systemctl --quiet --no-reload disable --now drone-runner-exec.service
+}
+
+post_remove() {
+	echo ""
+	echo "##########"
+	echo "#"
+	echo "#   Remember to remove the user/group drone-runner-exec, if neccessary."
+	echo "#   All runner data in /var/lib/drone-runner-exec was NOT deleted!"
+	echo "#"
+	echo "##########"
+	echo ""
+}

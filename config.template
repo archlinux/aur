@@ -1,0 +1,156 @@
+# Optional string value configures the http listener port. The default value is
+# :3000. Overriding this value is not recommended.
+# DRONE_HTTP_BIND=:3000
+
+# Optional string value that configures the http listener hostname. 
+# The default value is an empty string. Setting this value is not recommended.
+# DRONE_HTTP_HOST=
+
+# Optional string value configures the http listener protocol. 
+# The default value is http. Overriding this value is not recommended.
+# DRONE_HTTP_PROTO=
+
+# Optional comma-separated string value. Provides a white list of build events
+# that can be processed by this runner. This provides an extra layer of security
+# to limit the kind of workloads this runner can process.
+# DRONE_LIMIT_EVENTS=
+
+# Optional comma-separated string value. Configures the runner to only process
+# matching repositories. This provides an extra layer of security and can stop
+# untrusted repositories from executing pipelines with this runner.
+# DRONE_LIMIT_REPOS=
+
+# Optional boolean value. Configures the runner to only process trusted
+# repositories. This provides an extra layer of security and can stop untrusted
+# repositories from executing pipelines with this runner.
+# DRONE_LIMIT_TRUSTED=
+
+# Optional string value. Configures the host machine architecture. Overriding
+# the default value should never be necessary and may lead to unexpected behavior.
+# DRONE_PLATFORM_ARCH=
+
+# Optional string value. Configures the host machine architecture. Overriding
+# the default value should never be necessary and may lead to unexpected behavior.
+# DRONE_PLATFORM_KERNEL=
+
+# Optional string value. Configures the host machine operating system.
+# Overriding the default value should never be necessary and may lead to
+# unexpected behavior.
+# DRONE_PLATFORM_OS=
+
+# Optional string value. Configures the host operating system variant.
+# The default values is empty. This may be used with arm to differentiate between
+# v7, v8 and so on.
+# DRONE_PLATFORM_VARIANT=
+
+# Optional boolean value. Enables dumping the http request and response to the
+# logs for debugging purposes. This should only be enabled while debugging
+# connectivity issues between the runner and server.
+# DRONE_RPC_DUMP_HTTP=
+
+# Optional boolean value. Enables dumping the http request and response body to the
+# logs for debugging purposes. This should only be enabled while debugging
+# connectivity issues between the runner and server.
+# DRONE_RPC_DUMP_HTTP_BODY=
+
+# Required string values. Defines the hostname (and optional port) used to connect
+# to the Drone server.
+# DRONE_RPC_HOST=
+
+# Required string value. Defines the protocol used to connect to the Drone server.
+# The value must be either http or https.
+# DRONE_RPC_PROTO=
+
+# Required string value. Provides the shared secret used by the Drone server to
+# authenticate http requests.
+# DRONE_RPC_SECRET=
+
+# Optional boolean value. Disable SSL verification when making http requests to
+# the Drone server. This is unsafe and is not recommended.
+# DRONE_RPC_SKIP_VERIFY=
+
+# Optional number value. Limits the number of concurrent pipelines that a runner
+# can execute. This does not limit the number of concurrent pipelines that can
+# execute on a single remote instance.
+# DRONE_RUNNER_CAPACITY=
+
+# Optional string. Provides a path to an environment file containing global
+# environment variables that are injected into every pipeline step. The environment
+# file is a text file that defines environment variables in key value format.
+# Please see the envfile documentation for more details about the file format.
+# DRONE_RUNNER_ENVFILE=
+
+# Optional string map. Provides a set of global environment variables that are
+# injected into every pipeline step.
+# DRONE_RUNNER_ENVIRON=foo:bar,baz:qux
+
+# Optional string map. Provides a set of labels used to route a pipeline to a
+# specific machine or set of machines.
+# DRONE_RUNNER_LABELS=foo:bar,baz:qux
+
+# Optional number value. Limits the number of concurrent steps that a runner can
+# execute for a single pipeline. This is disabled by default. This can be useful if
+# you need to throttle the maximum number of parallel steps to prevent resource exhaustion.
+# DRONE_RUNNER_MAX_PROCS=
+
+# Optional string value. Sets the name of the runner. The runner name is stored in
+# the server and can be used to trace a build back to a specific runner.
+# DRONE_RUNNER_NAME=
+
+# Optional string value. Sets the PATH variable for all pipeline steps. This may be
+# required if the pipeline shell cannot find your commands, and you receive command
+# not found errors.
+# DRONE_RUNNER_PATH=/tmp
+
+# Optional string value. Sets a custom root build path instead of a folder within
+# the system temp directory.
+# DRONE_RUNNER_ROOT=
+
+# Optional string value. Provides the endpoint used to make http requests to an
+# external secret plugin. The external secret plugin (e.g. vault) can be used to
+# source secrets from third party system.
+# DRONE_SECRET_PLUGIN_ENDPOINT=
+
+# Optional boolean value. Disable SSL verification when making http requests to
+# the plugin endpoint. This is unsafe and is not recommended.
+# DRONE_SECRET_PLUGIN_SKIP_VERIFY=
+
+# Optional string value. Provides the secret token used to authenticate http
+# requests to the plugin endpoint.
+# DRONE_SECRET_PLUGIN_TOKEN=
+
+# Optional boolean value. Enables trace level logging.
+# DRONE_TRACE=
+
+# Enables debug level logging
+# DRONE_DEBUG=false
+
+# Recommended string value. Provides the file location of the runner logs.
+# DRONE_LOG_FILE=
+
+# Optional integer value. Configures the maximum number of days to retain a 
+# backup log file.
+# DRONE_LOG_FILE_MAX_AGE=
+
+# Optional integer value. Configures the maximum number of files the system 
+# should retain.
+# DRONE_LOG_FILE_MAX_BACKUPS=
+
+# Optional integer value. Configures the maximum file size in megabytes before
+# the log file is rotated.
+# DRONE_LOG_FILE_MAX_SIZE=
+
+# Optional boolean value. Disables the runner’s user interface.
+# DRONE_UI_DISABLED=
+
+# Optional string value. Sets the basic authentication password used to authenticate
+# and access the web dashboard. If no password is provided the web dashboard is disabled.
+# DRONE_UI_PASSWORD=
+
+# Optional string value. Sets the basic authentication realm used to authenticate and
+# access the web dashboard.
+# DRONE_UI_REALM=
+
+# Optional string value. Sets the basic authentication username used to authenticate
+# and access the web dashboard.
+# DRONE_UI_USERNAME=
