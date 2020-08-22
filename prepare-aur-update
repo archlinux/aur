@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# Run after makepkg -i
+#
+
+source PKGBUILD
+
+echo "--- Updating .SRCINFO"
+makepkg --printsrcinfo > .SRCINFO
+
+echo "--- Checking PKGBUILD"
+namcap PKGBUILD
+
+echo "--- Checking "
+_pkgarch="$(grep 'arch = ' .SRCINFO | cut -d ' ' -f 3)"
+namcap "$pkgname-$epoch:$pkgver-$pkgrel-$_pkgarch.pkg.tar"
