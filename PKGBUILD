@@ -18,13 +18,13 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    cargo build --release --locked
+    cargo build --release
     strip target/release/${pkgname%-git}
 }
 
 check() {
     cd "$srcdir/${pkgname%-git}"
-    cargo test --release --locked
+    cargo test --release
 }
 
 package() {
