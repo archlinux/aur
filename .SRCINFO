@@ -1,0 +1,24 @@
+pkgbase = olc-git
+	pkgdesc = Open Lighting Console
+	pkgver = 0.2.alpha
+	pkgrel = 1
+	url = https://github.com/mikacousin/olc
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	depends = ola-git
+	depends = gtk3
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-psutil
+	depends = portmidi
+	depends = python-mido
+	depends = python-pyliblo
+	provides = olc
+	source = git+https://github.com/mikacousin/olc
+	md5sums = SKIP
+
+pkgname = olc-git
+
