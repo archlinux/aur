@@ -6,7 +6,7 @@
 pkgname=moneymanagerex-git
 _gitname=moneymanagerex
 pkgver=1.3.5
-pkgrel=3
+pkgrel=5
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest stable version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -17,11 +17,11 @@ optdepends=('cups: for printing support')
 replaces=('mmex')
 provides=('moneymanagerex')
 conflicts=('moneymanagerex')
-source=(git+https://github.com/moneymanagerex/moneymanagerex.git#tag=v1.3.5)
+source=(git+https://github.com/moneymanagerex/moneymanagerex.git#tag=v$pkgver)
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$pkgname"
+  cd "$_gitname"
   mkdir -p build
   git submodule update --init
   # TODO Workaround: https://github.com/moneymanagerex/moneymanagerex/issues/2685
@@ -29,13 +29,13 @@ prepare() {
 }
 
 build() {
-  cd cd "$pkgname/build"
+  cd "$_gitname/build"
   cmake -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 ..
   cmake --build . --target package
 }
 
 package() {
-  cd "$pkgname/build"
+  cd "$_gitname/build"
 
   make DESTDIR="${pkgdir}" install
 }
