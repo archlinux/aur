@@ -1,18 +1,17 @@
 pkgbase = wikiman
 	pkgdesc = Browse ArchWiki and manual pages from your terminal
-	pkgver = 1
-	pkgrel = 1
+	pkgver = 1.0
+	pkgrel = 2
 	url = https://github.com/filiparag/wikiman
 	arch = any
 	license = MIT
-	makedepends = git
 	depends = man
 	depends = arch-wiki-docs
 	depends = links
 	depends = fzf
 	depends = ripgrep
 	depends = awk
-	source = git+https://github.com/filiparag/wikiman.git
+	source = wikiman-1.0.tar.gz::https://github.com/filiparag/wikiman/archive/1.0.tar.gz
 	sha1sums = SKIP
 
 pkgname = wikiman
