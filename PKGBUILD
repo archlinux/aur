@@ -1,6 +1,6 @@
 # Maintainer: Lyova Potyomkin <lyova.potyomkin@gmail.com>
 pkgname='rusted-tetris-git'
-pkgver='0.1.0'
+pkgver='0.1.1'
 pkgrel='1'
 pkgdesc="Terminal-based tetris clone written in pure Rust"
 arch=('x86_64')
