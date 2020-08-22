@@ -1,19 +1,12 @@
-pkgbase = wikiman
-	pkgdesc = Browse ArchWiki and manual pages from your terminal
-	pkgver = 1
+pkgbase = pkgbase
+	pkgdesc = Japanese-Russian kanji and word dictionary
+	pkgver = 1.10
 	pkgrel = 1
-	url = https://github.com/filiparag/wikiman
-	arch = any
-	license = MIT
-	makedepends = git
-	depends = man
-	depends = arch-wiki-docs
-	depends = links
-	depends = fzf
-	depends = ripgrep
-	depends = awk
-	source = git+https://github.com/filiparag/wikiman.git
-	sha1sums = SKIP
+	url = http://www.susi.ru/yarxi/
+	arch = x86_64
+	license = custom
+	depends = ttf-sazanami
+	depends = nas
 
-pkgname = wikiman
+pkgname = yarxi
 
