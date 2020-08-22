@@ -1,93 +1,61 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: kfgz <kfgz@interia.pl>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=x265-hg
-pkgver=2.5.r12.fcd9154fa4e2
+pkgver=3.4.r11.244186fe0ab6
 pkgrel=1
-pkgdesc='Open Source H265/HEVC video encoder'
-arch=('i686' 'x86_64')
-url='https://bitbucket.org/multicoreware/x265'
+pkgdesc='Open source H.265/HEVC video encoder (hg version)'
+arch=('x86_64')
+url='https://www.videolan.org/developers/x265.html'
 license=('GPL')
-depends=('gcc-libs')
-makedepends=('cmake' 'mercurial' 'yasm')
-provides=('x265'
-          'libx265.so')
+makedepends=('mercurial' 'cmake' 'nasm')
+provides=('x265' 'libx265.so')
 conflicts=('x265')
-source=('hg+https://bitbucket.org/multicoreware/x265')
+source=('hg+http://hg.videolan.org/x265')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd x265
-
-  echo "$(hg log -r. --template "{latesttag}").r$(hg log -r. --template "{latesttagdistance}").$(hg log -r. --template "{node|short}")"
-}
-
-prepare() {
-  cd x265
-
-  for d in 8 $([[ $CARCH == 'x86_64' ]] && echo "10 12"); do
-    if [[ -d build-$d ]]; then
-      rm -rf build-$d
-    fi
-    mkdir build-$d
-  done
+    printf '%s.r%s.%s' "$(hg -R x265 log -r. --template '{latesttag}')" \
+                       "$(hg -R x265 log -r. --template '{latesttagdistance}')" \
+                       "$(hg -R x265 log -r. --template '{node|short}')"
 }
 
 build() {
-  if [[ $CARCH == x86_64 ]]; then
-
-    cd x265/build-12
-
-    cmake ../source \
-      -DCMAKE_INSTALL_PREFIX='/usr' \
-      -DHIGH_BIT_DEPTH='TRUE' \
-      -DMAIN12='TRUE' \
-      -DEXPORT_C_API='FALSE' \
-      -DENABLE_CLI='FALSE' \
-      -DENABLE_SHARED='FALSE'
-    make
-
-    cd ../build-10
-
-    cmake ../source \
-      -DCMAKE_INSTALL_PREFIX='/usr' \
-      -DHIGH_BIT_DEPTH='TRUE' \
-      -DEXPORT_C_API='FALSE' \
-      -DENABLE_CLI='FALSE' \
-      -DENABLE_SHARED='FALSE'
-    make
-
-    cd ../build-8
-
-    ln -s ../build-10/libx265.a libx265_main10.a
-    ln -s ../build-12/libx265.a libx265_main12.a
-
-    cmake ../source \
-      -DCMAKE_INSTALL_PREFIX='/usr' \
-      -DENABLE_SHARED='TRUE' \
-      -DENABLE_HDR10_PLUS='TRUE' \
-      -DEXTRA_LIB='x265_main10.a;x265_main12.a' \
-      -DEXTRA_LINK_FLAGS='-L.' \
-      -DLINKED_10BIT='TRUE' \
-      -DLINKED_12BIT='TRUE'
-    make
-
-  else
-
-    cd x265/build-8
-
-    cmake ../source \
-      -DCMAKE_INSTALL_PREFIX='/usr' \
-      -DENABLE_SHARED='TRUE'
-
-  fi
+    cmake -S x265/source -B build-12 \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DHIGH_BIT_DEPTH='ON' \
+        -DMAIN12='ON' \
+        -DEXPORT_C_API='OFF' \
+        -DENABLE_CLI='OFF' \
+        -DENABLE_SHARED='OFF' \
+        -Wno-dev
+    make -C build-12
+    
+    cmake -S x265/source -B build-10 \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DHIGH_BIT_DEPTH='ON' \
+        -DEXPORT_C_API='OFF' \
+        -DENABLE_CLI='OFF' \
+        -DENABLE_SHARED='OFF' \
+        -Wno-dev
+    make -C build-10
+    
+    cmake -S x265/source -B build \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DENABLE_SHARED='ON' \
+        -DENABLE_HDR10_PLUS='ON' \
+        -DEXTRA_LIB='x265_main10.a;x265_main12.a' \
+        -DEXTRA_LINK_FLAGS='-L.' \
+        -DLINKED_10BIT='ON' \
+        -DLINKED_12BIT='ON' \
+        -Wno-dev
+    ln -s ../build-10/libx265.a build/libx265_main10.a
+    ln -s ../build-12/libx265.a build/libx265_main12.a
+    make -C build
 }
 
 package() {
-  cd x265/build-8
-
-  make DESTDIR="${pkgdir}" install
+    make -C build DESTDIR="$pkgdir" install
 }
-
-# vim: ts=2 sw=2 et:
