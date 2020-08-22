@@ -121,10 +121,7 @@ prepare() {
   # Install skia deps (essentially runs git-sync-deps with the files already downloaded)
   mkdir --parents --verbose skia/third_party/externals
 
-  for _dep in buildtools common
-  do
-    ln --force --symbolic --verbose "../${_dep}" skia
-  done
+  ln --force --symbolic --verbose ../{buildtools,common} skia
 
   for _dep in angle2 dawn dng_sdk egl-registry expat freetype harfbuzz icu imgui opencl-registry \
               libjpeg-turbo libpng libwebp lua microhttpd opencl-lib opengl-registry piex \
@@ -138,7 +135,7 @@ prepare() {
   cp --verbose skia/bin/gn skia/buildtools/linux64/gn
 
   mkdir --parents --verbose binsub
-  ln --force --symbolic /usr/bin/python2 binsub/python
+  ln --force --symbolic $(which python2) binsub/python
 }
 
 build() {
