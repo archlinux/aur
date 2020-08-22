@@ -1,0 +1,13 @@
+[Unit]
+Description=Blockchain daemon for LBRY
+
+[Service]
+User=lbrycrd
+Group=lbrycrd
+#WorkingDirectory=/var/lib/lbrycrd
+ExecStart=/usr/bin/lbrycrdd -server
+#SyslogIdentifier=zeronet
+#Restart=on-failure
+
+[Install]
+WantedBy=default.target

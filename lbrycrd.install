@@ -1,0 +1,7 @@
+post_install() {
+    getent passwd lbrycrd &>/dev/null || {
+        echo -n ">>> Creating lbrycrd user... "
+        useradd --system --user-group -m --home /var/lib/lbrycrd lbrycrd
+        echo "done"
+    } # NOTE: we do not autoremove user due to security concerns (Arch policy)
+}

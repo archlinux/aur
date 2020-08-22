@@ -1,0 +1,29 @@
+pkgbase = lbrycrd
+	pkgdesc = Blockchain daemon that provides the digital content namespace for the LBRY protocol
+	pkgver = 0.17.3.2
+	pkgrel = 1
+	url = https://lbry.tech
+	install = lbrycrd.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = boost
+	depends = boost-libs
+	depends = db4.8
+	depends = libevent
+	depends = openssl
+	optdepends = miniupnpc
+	optdepends = qt5-base
+	optdepends = protobuf
+	optdepends = qrencode
+	source = lbrycrd-0.17.3.2.tar.gz::https://github.com/lbryio/lbrycrd/archive/v0.17.3.2.tar.gz
+	source = lbrycrd.service
+	source = include.patch
+	sha256sums = 1ac547aed45272ad4f5ff557407b804b37fc54b5e0b0bc0addedd2c9cb00a970
+	sha256sums = ce31e5a787cafe6591f8c987049f93ea9417bc37ec48fa11dc5e521942d1f333
+	sha256sums = a29e666e626cf20df809a689fcb76e0950b7c2fbd6fb41eaccb71de1fbef3c51
+
+pkgname = lbrycrd
+
