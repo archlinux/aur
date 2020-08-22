@@ -4,12 +4,13 @@ pkgbase = teaspeak-client
 	pkgrel = 1
 	url = https://teaspeak.de/gb
 	arch = x86_64
-	license = GPL3
+	license = custom:teaspeak-client
 	depends = libxss
 	depends = nss
 	depends = gtk3
 	source = teaspeak-client-1.4.8.deb::http://clientapi.teaspeak.de/files/release/1.4.8/TeaClient-linux_x64.deb
 	sha256sums = 4cdfc0870f927450bb0f1b76bddec5eace5b51bfc7879d171e6638bea240a465
+	sha256sums = LICENSE
 
 pkgname = teaspeak-client
 
