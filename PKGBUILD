@@ -2,7 +2,7 @@
 pkgname=gst-plugins-opencv
 _pkgname=gst-plugins-bad
 pkgver=1.16.2
-pkgrel=5
+pkgrel=6
 pkgdesc="GStreamer open-source multimedia framework OpenCV plugins"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -36,7 +36,8 @@ build() {
 
 package() {
   install -d "$pkgdir"/usr/lib
-  find build/gst-libs/gst/opencv/*.so* | xargs cp -P -t "$pkgdir"/usr/lib/
+  find build/gst-libs/gst/opencv/*.so* -maxdepth 0 -type f | xargs cp -P -t "$pkgdir"/usr/lib/
+  find build/gst-libs/gst/opencv/*.so* -maxdepth 0 -type l | xargs cp -P -t "$pkgdir"/usr/lib/
   install -Dm755 build/ext/opencv/libgstopencv.so "$pkgdir"/usr/lib/gstreamer-1.0/libgstopencv.so
 }
 
