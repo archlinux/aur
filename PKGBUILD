@@ -3,7 +3,7 @@
 
 pkgname=sameboy
 pkgdesc="An accuracy-focused Game Boy/Game Boy Color emulator"
-pkgver=0.13.5
+pkgver=0.13.6
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/LIJI32/SameBoy"
@@ -13,7 +13,7 @@ conflicts=(sameboy-git)
 # Upstream suggests using clang, but gcc is supported on Linux: https://github.com/LIJI32/SameBoy/issues/164#issuecomment-486464194
 makedepends=(rgbds make git)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LIJI32/SameBoy/archive/v${pkgver}.tar.gz")
-md5sums=('50c0edc972ac4fbae4becaf93ef0d41e')
+md5sums=('9e8ff8562f6dc715e3bfda60a584ba41')
 
 build(){
 	cd "${srcdir}/SameBoy-${pkgver}"
@@ -26,5 +26,5 @@ package(){
 	find build/bin/SDL -type f -not -executable | while read f; do
 		install -Dm644 "$f" "$pkgdir/usr/share/games/sameboy/${f#build/bin/SDL/}"
 	done
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/sameboy-git/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/sameboy/LICENSE"
 }
