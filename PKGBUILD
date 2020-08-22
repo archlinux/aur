@@ -6,12 +6,12 @@
 
 pkgname=hsa-rocr
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='ROCm Platform Runtime: ROCr a HPC market enhanced HSA based runtime'
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/ROCR-Runtime.html'
 license=('custom:NCSAOSL')
-depends=('libelf' 'hsakmt-roct')
+depends=('libelf' 'hsakmt-roct' 'xxd')
 makedepends=('cmake')
 provides=("rocr-runtime=$pkgver")
 replaces=('rocr-runtime')
@@ -30,8 +30,6 @@ prepare() {
 
 build() {
   cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm \
-        -DHSAKMT_INC_PATH=/opt/rocm/include \
-        -DHSAKMT_LIB_PATH=/opt/rocm/lib \
         "$_dirname/src"
   make
 }
