@@ -1,15 +1,15 @@
 [Unit]
-Description=Bitwarden Server (Rust Edition)
-Documentation=https://github.com/dani-garcia/bitwarden_rs
+Description=Drone CI/CD Baremetal Runner
+Documentation=https://github.com/drone-runners/drone-runner-exec
 After=network.target
 
 [Service]
-# The user/group bitwarden_rs is run under. the working directory (see below) should allow write and read access to this user/group
+# The user/group drone-runner-exec is run under. the working directory (see below) should allow write and read access to this user/group
 User=drone-runner-exec
 Group=drone-runner-exec
 
 # The location of the compiled binary
-ExecStart=/usr/bin/drone-runner-exec "service" "run" "--config" "/etc/drone-runner-exec.env"
+ExecStart=/usr/bin/drone-runner-exec service run --config /etc/drone-runner-exec.env
 
 # Set reasonable connection and process limits
 LimitNOFILE=1048576
@@ -19,7 +19,7 @@ LimitNPROC=64
 WorkingDirectory=/var/lib/drone-runner-exec
 ReadWritePaths=/var/lib/drone-runner-exec
 
-# Prevent bitwarden_rs from doing anything stupid and/or unneccessary.
+# Prevent drone-runner-exec from doing anything stupid and/or unneccessary.
 LockPersonality=yes
 MemoryDenyWriteExecute=yes
 NoNewPrivileges=yes
@@ -49,12 +49,12 @@ SystemCallFilter=@system-service
 SystemCallFilter=~@resources
 SystemCallFilter=~@privileged
 
-# Allow bitwarden_rs to bind ports in the range of 0-1024
+# Allow drone-runner-exec to bind ports in the range of 0-1024
 AmbientCapabilities=CAP_NET_BIND_SERVICE
-# Restrict bitwarden_rs to only this capability
+# Restrict drone-runner-exec to only this capability
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 
-# If bitwarden_rs is run at ports >1024, you can enable (remove the leading '#' of)
+# If drone-runner-exec is run at ports >1024, you can enable (remove the leading '#' of)
 # the following lines:
 #PrivateUsers=yes
 #CapabilityBoundingSet=
