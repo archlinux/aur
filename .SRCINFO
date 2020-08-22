@@ -1,0 +1,14 @@
+pkgbase = bim-git
+	pkgdesc = Inspired by Vim, originally written for ToaruOS
+	pkgver = r821.cd56264
+	pkgrel = 1
+	url = https://github.com/klange/bim
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	conflicts = bim
+	source = git+https://github.com/klange/bim.git
+	sha256sums = SKIP
+
+pkgname = bim-git
+
