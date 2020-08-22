@@ -1,0 +1,23 @@
+pkgbase = solarus-bin
+	pkgdesc = A lightweight, free and open-source game engine for Action-RPGs
+	pkgver = 1.6.4
+	pkgrel = 1
+	url = http://www.solarus-games.org/
+	arch = x86_64
+	license = GPL3
+	depends = glm
+	depends = hicolor-icon-theme
+	depends = libmodplug>=0.8.8.4
+	depends = libvorbis
+	depends = luajit>=2.0
+	depends = openal
+	depends = physfs
+	depends = qt5-base
+	depends = sdl2>=2.0.6
+	depends = sdl2_image
+	depends = sdl2_ttf
+	source = https://gitlab.com/solarus-games/solarus/-/jobs/692515257/artifacts/download
+	md5sums = 1aef95f59f9c68beec7166ec9a80a4b1
+
+pkgname = solarus-bin
+
