@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-cadquery-git
-pkgver=2.0RC1.r61.g74573fc
+pkgver=2.0.1.r55.gc7b7e95
 pkgrel=1
 pkgdesc="A parametric CAD scripting framework based on PythonOCC built from git"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/CadQuery/cadquery"
 license=('Apache')
 provides=('python-cadquery')
 conflicts=('python-cadquery')
-depends=('python-occ-cadquery-git' 'python')
+depends=('python-ocp' 'python')
 checkdepends=('python-pytest' 'python-pytest-cov')
 
 source=("git+https://github.com/CadQuery/cadquery.git")
@@ -27,8 +27,13 @@ check() {
   pytest -v --cov || true
 }
 
+build() {
+  cd cadquery
+  python setup.py build
+}
+
 package() {
   cd cadquery
-  python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
