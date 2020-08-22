@@ -1,5 +1,5 @@
 /pkg/
 /src/
+/*-git/
 /*.log
-/*.tar.gz
-/*.pkg.tar*
+/*.tar*
