@@ -19,6 +19,7 @@ depends=(
 	python-gobject
 	python-pillow
         gst-python
+	libhandy1
 	totem-plparser
 )
 makedepends=(
