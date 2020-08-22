@@ -1,11 +1,13 @@
-# Maintainer: Sammay Sarkar <(my-name-without-vowels)@gmail.com>
+# Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 pkgname="openbangla-keyboard-git"
 pkgver=1.5.1.r77.ga289143
-pkgrel=1
+pkgrel=2
 pkgdesc="An OpenSource, Unicode compliant Bengali Input Method"
 arch=('x86_64')
 url="http://openbangla.github.io"
 license=('GPL3')
+provides=( 'openbangla-keyboard' )
+conflicts=( 'openbangla-keyboard' )
 depends=('ibus' 'qt5-base')
 makedepends=('cmake')
 optdepends=('ttf-indic-otf: fonts for Bangla and other Indic scripts'
@@ -24,7 +26,6 @@ pkgver()
         git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
-    pkgrel=$(git diff --shortstat|cut -d' ' -f2)
 }
 
 prepare() {
