@@ -15,7 +15,7 @@ _patch_url_prefix=https://wingware.com/pub/wingpro/$_wingver/patches/
 source=("https://wingware.com/pub/wingpro/$_wingver/wingpro-$_wingver-linux-x64.tar.bz2" ${_wingpatch[*]})
 depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
-md5sums=('d6096999b98a1acc36eff1b500158909')
+md5sums=('67dea6afa4474478dab1f060831f62f1')
 
 install=${pkgname}.install
 

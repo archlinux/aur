@@ -13,7 +13,7 @@ pkgbase = wingide
 	options = !strip
 	options = !emptydirs
 	source = https://wingware.com/pub/wingpro/7.2.4.0/wingpro-7.2.4.0-linux-x64.tar.bz2
-	md5sums = d6096999b98a1acc36eff1b500158909
+	md5sums = 67dea6afa4474478dab1f060831f62f1
 
 pkgname = wingide
 
