@@ -1,16 +1,14 @@
 pkgbase = league-spartan-font-git
 	pkgdesc = A geometric sans-serif revival of ATF’s classic Spartan
-	pkgver = 2.201.r1.g3675ae1
-	pkgrel = 2
+	pkgver = 2.210.r0.gb901cb0
+	pkgrel = 1
 	url = https://www.theleagueofmoveabletype.com/league-spartan
 	arch = any
 	groups = lmt-fonts
 	license = OFL
-	makedepends = gftools
-	makedepends = python-fontmake
-	makedepends = sfnt2woff-zopfli
-	makedepends = ttfautohint
-	source = league-spartan-git::git+https://github.com/theleagueof/league-spartan.git
+	makedepends = fontship
+	makedepends = git
+	source = league-spartan-font-git::git+https://github.com/theleagueof/league-spartan.git
 	sha256sums = SKIP
 
 pkgname = otf-league-spartan-git
