@@ -16,6 +16,7 @@ pkgbase = lollypop-stable-git
 	depends = python-beautifulsoup4
 	depends = python-cairo
 	depends = python-gobject
+	depends = libhandy1
 	depends = python-pillow
 	depends = gst-python
 	depends = totem-plparser

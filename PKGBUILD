@@ -17,6 +17,7 @@ depends=(
 	python-beautifulsoup4
 	python-cairo
 	python-gobject
+	libhandy1
 	python-pillow
 	gst-python
 	totem-plparser
