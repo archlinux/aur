@@ -1,4 +1,5 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
 
 pkgname=graphenex
 _pkgfolder=GrapheneX
