@@ -1,7 +1,7 @@
 # Maintainer: Luca Stefani <luca.stefani.ge1@gmail.com>
 
 pkgbase=linux-llvm
-pkgver=5.8.arch1
+pkgver=5.8.3.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -29,7 +29,6 @@ source=(
   0006-x86-Add-support-for-ZSTD-compressed-kernel.patch
   0007-.gitignore-add-ZSTD-compressed-files.patch
   # LTO
-  0001-bitfield.h-don-t-compile-time-validate-_val-in-FIELD.patch
   0002-objtool-use-sh_info-to-find-the-base-for-.rela-secti.patch
   0003-objtool-don-t-autodetect-vmlinux.o.patch
   0004-kbuild-add-support-for-Clang-LTO.patch
@@ -55,12 +54,11 @@ source=(
   0024-x86-build-allow-LTO_CLANG-and-THINLTO-to-be-selected.patch
   # LTO custom
   0001-RAS-CEC-Fix-cec_init-prototype.patch
-  0002-kbuild-Rollback-required-CLANG-version-to-10-for-LTO.patch
   # CPU
   enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch
 )
 sha256sums=('SKIP'
-            '2742a1348f1d7685671480ee24661a4d439f66c335a7e908b51290774e85a0dd'
+            'b40d47edc300846dd4ff1c3f4ab748e061b633cd35f692f0b4b210d88d4ff7d3'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '2f0090ec0c9a72e6241bbea05faaef979405119ce8ef669d84dead36c8e2246e'
             '5f21c12f002e71ec5b5db96832b415ce291a7e230fa07b328c21760274e72e9d'
@@ -69,7 +67,6 @@ sha256sums=('SKIP'
             '2b558cc58e95343bb2e3cfd96c668b671251c543124176b8687baf12cdf999d5'
             '84c275eb98fb908b742ffe51faa7feb0312550712b0cd729bf72941a2f633a65'
             'f88df9ee297e229792e516ac9fb6f35ddc1aa13c3fdeb9ba15fb4de8b1dcd7c7'
-            '524b329a965f1b983fd4b78e1827854727d4ebb9c21cc9f245bf2ce91c2bed1d'
             '053582c4fa855a9219f45f864d7a03b3a28cfd04ec798b0cc47080c836669184'
             '7e155527495f8a009efc6edc43d44c1775de64c750c9c112f6964d599eada3ef'
             '2ef22d6b576ebf452238ae48658515d5d484b3ab7448b9d62fc1295570bb8f14'
@@ -94,7 +91,6 @@ sha256sums=('SKIP'
             '539794c1dc9b8e35a73e2e165040f363d0c7f32bc5da415ae6b27a9ffe57dde2'
             '3b956c3768e59f2d5fb0546a855138319eff60e077822667befed734c7ac84af'
             'd89d15358b42c56bbb83a9f9d38bd25666d44a6f91be1029e5297bf79f8fbdc6'
-            '575e1c1353d4dca1773ac6e4b60f8d32e1611381596389c8b06a73aed0fe010a'
             '5ab29eb64e57df83b395a29a6a4f89030d142feffbfbf73b3afc6d97a2a7fd12')
 
 export KBUILD_BUILD_HOST=archlinux
