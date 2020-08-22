@@ -12,7 +12,7 @@ pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
 _pkgmajor=2.36
 pkgver=${_pkgmajor}
-pkgrel=1
+pkgrel=2
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url='https://github.com/karelzak/util-linux'
 arch=('x86_64')
@@ -22,7 +22,7 @@ groups=('selinux')
 #   systemd depends on libutil-linux and util-linux depends on libudev
 #   provided by libsystemd (FS#39767).  To break this cycle, make
 #   util-linux-selinux depend on systemd at build time.
-makedepends=('systemd' 'python' 'libcap-ng' 'libselinux')
+makedepends=('systemd' 'python' 'libcap-ng' 'libselinux' 'libxcrypt')
 license=('GPL2')
 options=('strip')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
@@ -80,7 +80,9 @@ package_util-linux-selinux() {
             "${pkgname/-selinux}=${pkgver}-${pkgrel}"
             "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
   depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux'
-           'systemd-libs-selinux' 'libcap-ng' 'libutil-linux-selinux')
+           'systemd-libs-selinux' 'libsystemd.so' 'libudev.so'
+           'libcap-ng' 'libxcrypt' 'libcrypt.so' 'libutil-linux-selinux'
+           'libmagic.so' 'libncursesw.so' 'libreadline.so')
   optdepends=('python: python bindings to libmount'
               'words: default dictionary for look')
   backup=(etc/pam.d/chfn

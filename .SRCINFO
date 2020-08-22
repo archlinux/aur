@@ -1,7 +1,7 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
 	pkgver = 2.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/karelzak/util-linux
 	arch = x86_64
 	groups = selinux
@@ -10,6 +10,7 @@ pkgbase = util-linux-selinux
 	makedepends = python
 	makedepends = libcap-ng
 	makedepends = libselinux
+	makedepends = libxcrypt
 	options = strip
 	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-2.36.tar.xz
 	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-2.36.tar.sign
@@ -38,13 +39,20 @@ pkgname = util-linux-selinux
 	depends = shadow-selinux
 	depends = coreutils-selinux
 	depends = systemd-libs-selinux
+	depends = libsystemd.so
+	depends = libudev.so
 	depends = libcap-ng
+	depends = libxcrypt
+	depends = libcrypt.so
 	depends = libutil-linux-selinux
+	depends = libmagic.so
+	depends = libncursesw.so
+	depends = libreadline.so
 	optdepends = python: python bindings to libmount
 	optdepends = words: default dictionary for look
 	provides = rfkill
-	provides = util-linux=2.36-1
-	provides = selinux-util-linux=2.36-1
+	provides = util-linux=2.36-2
+	provides = selinux-util-linux=2.36-2
 	conflicts = rfkill
 	conflicts = util-linux
 	conflicts = selinux-util-linux
@@ -64,6 +72,6 @@ pkgname = libutil-linux-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = libutil-linux=2.36-1
+	provides = libutil-linux=2.36-2
 	conflicts = libutil-linux
 
