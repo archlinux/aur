@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-rocclr
-pkgver=3.5.1
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
@@ -12,11 +12,12 @@ provides=('hip')
 conflicts=('hip')
 _git='https://github.com/ROCm-Developer-Tools/HIP'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('f91cf5ef846b6b916d0258a967b6cb63e236dd777eb0e01c88337d72b5bde000')
+sha256sums=('757b392c3beb29beea27640832fbad86681dbd585284c19a4c2053891673babd')
 
 build() {
   cmake -B build -Wno-dev \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
+        -DCMAKE_PREFIX_PATH='/opt/rocm/lib/cmake/hsa-runtime64;/opt/rocm/lib/cmake/amd_comgr' \
         -DHIP_COMPILER=clang \
         -DHIP_PLATFORM=rocclr \
         -DROCCLR_DIR=/opt/rocm/rocclr \

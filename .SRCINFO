@@ -1,6 +1,6 @@
 pkgbase = hip-rocclr
 	pkgdesc = Heterogeneous Interface for Portability ROCm
-	pkgver = 3.5.1
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = hip-rocclr
 	depends = libelf
 	provides = hip
 	conflicts = hip
-	source = hip-rocclr-3.5.1.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-3.5.1.tar.gz
-	sha256sums = f91cf5ef846b6b916d0258a967b6cb63e236dd777eb0e01c88337d72b5bde000
+	source = hip-rocclr-3.7.0.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-3.7.0.tar.gz
+	sha256sums = 757b392c3beb29beea27640832fbad86681dbd585284c19a4c2053891673babd
 
 pkgname = hip-rocclr
 
