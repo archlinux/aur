@@ -1,4 +1,6 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
+
 pkgname=passwall-server-git
 pkgdesc="Core backend infrastructure of the PassWall platform (git)"
 pkgver=1.1.2.r5.g11d7778
