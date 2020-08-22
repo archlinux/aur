@@ -1,6 +1,6 @@
 pkgbase = inv
 	pkgdesc = Inventory Managoat - A Simple Inventory Manager
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/jojolepro/inventory-managoat
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = inv
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = inv-0.1.0.tar.gz::https://github.com/jojolepro/inventory-managoat/archive/0.1.0.tar.gz
-	sha256sums = c3ea6bb9f458a04364695b8e01c847119893fb125a5c7b681dfdf4b871be17f6
+	source = inv-0.2.0.tar.gz::https://github.com/jojolepro/inventory-managoat/archive/0.2.0.tar.gz
+	sha256sums = c7ee16467068766d625574d21b9ae4ebdbfbeb6dc5dbc83adf473b20b471b9f9
 
 pkgname = inv
 
