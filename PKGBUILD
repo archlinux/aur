@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship-git
-pkgver=0.3.2.r5.gb8c336e
+pkgver=0.3.3.r1.g7fb84cb
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
