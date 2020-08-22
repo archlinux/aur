@@ -1,4 +1,6 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
+
 pkgname=cool
 pkgver=0.1
 pkgrel=1
