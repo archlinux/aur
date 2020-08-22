@@ -1,16 +1,16 @@
 pkgbase = libeweather-git
 	pkgdesc = EFL based library for weather information
-	pkgver = 0.2.0.77.020f66c
+	pkgver = 0.2.0.79.f88cb2c
 	pkgrel = 1
-	url = http://www.enlightenment.org
+	url = https://www.enlightenment.org
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = git
 	depends = efl
-	provides = libeweather=0.2.0.77.020f66c
+	provides = libeweather=0.2.0.79.f88cb2c
 	conflicts = libeweather
-	source = git://git.enlightenment.org/libs/libeweather.git
+	source = git+https://git.enlightenment.org/libs/libeweather.git
 	sha256sums = SKIP
 
 pkgname = libeweather-git

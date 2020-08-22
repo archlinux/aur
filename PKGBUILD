@@ -3,17 +3,17 @@
 
 _pkgname=libeweather
 pkgname=$_pkgname-git
-pkgver=0.2.0.77.020f66c
+pkgver=0.2.0.79.f88cb2c
 pkgrel=1
 pkgdesc="EFL based library for weather information"
 arch=('i686' 'x86_64')
-url="http://www.enlightenment.org"
+url="https://www.enlightenment.org"
 license=('LGPL2.1')
 depends=('efl')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://git.enlightenment.org/libs/$_pkgname.git")
+source=("git+https://git.enlightenment.org/libs/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
