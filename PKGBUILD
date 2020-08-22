@@ -3,7 +3,7 @@
 _pkgname=magewell-pro-capture
 pkgname=${_pkgname}-dkms
 pkgver=1.3.0.4186
-pkgrel=1
+pkgrel=2
 pkgdesc='Driver for Magewell Pro Capture Family'
 arch=('x86_64')
 url='https://www.magewell.com/downloads/pro-capture#/driver/linux-x86'
@@ -18,6 +18,7 @@ package() {
     cd ${_pkgname}-${pkgver}
 
     install -Dm644 scripts/dkms.conf src/Makefile src/ProCaptureLib_64.lib -t ${destdir}
+    touch ${destdir}/.ProCaptureLib.o.cmd
     cp -r src/public src/sources ${destdir}
 
     install -Dm644 src/res/* -t ${pkgdir}/usr/share/ProCapture/res
