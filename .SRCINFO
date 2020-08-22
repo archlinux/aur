@@ -5,6 +5,7 @@ pkgbase = pamtester
 	url = http://pamtester.sourceforge.net/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = custom
 	depends = pam
 	source = http://sourceforge.net/projects/pamtester/files/pamtester/0.1.2/pamtester-0.1.2.tar.gz
