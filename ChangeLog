@@ -1,3 +1,13 @@
+2020-08-22 CubeTheThird <cubethethird@gmail.com>
+	* 4.6-1
+	Version Bump.
+
+	Upstream Changelog:
+	4.6:
+    - Fix crash when creating a world with a 1.16.1 profile
+    - Biome Highlighter state now persists when switching worlds
+    - Improve performance of the Biome Export feature
+
 2020-08-18 CubeTheThird <cubethethird@gmail.com>
 
 	* 4.5-1 :

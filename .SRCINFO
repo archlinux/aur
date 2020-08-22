@@ -1,6 +1,6 @@
 pkgbase = amidst
 	pkgdesc = Advanced Minecraft Interface and Data/Structure Tracking
-	pkgver = 4.5
+	pkgver = 4.6
 	pkgrel = 1
 	url = https://github.com/toolbox4minecraft/amidst
 	changelog = ChangeLog
@@ -11,10 +11,10 @@ pkgbase = amidst
 	depends = hicolor-icon-theme
 	optdepends = minecraft: the game itself
 	optdepends = minecraft-launcher: The new game launcher
-	noextract = amidst-v4-5.jar
-	source = https://github.com/toolbox4minecraft/amidst/releases/download/v4.5/amidst-v4-5.jar
+	noextract = amidst-v4-6.jar
+	source = https://github.com/toolbox4minecraft/amidst/releases/download/v4.6/amidst-v4-6.jar
 	source = amidst.desktop
-	md5sums = 61b9430299816a3d2ddeae97400401c0
+	md5sums = 401d9d2de09661ccde32dddfa7e5451d
 	md5sums = b56a5d2ba2e3c71ca2c7824d2434d823
 
 pkgname = amidst
