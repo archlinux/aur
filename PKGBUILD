@@ -1,4 +1,5 @@
-# Maintainer: Mr. Tao <tao@post.cz>
+# Maintainer: somini <dev@somini.xyz>
+# Contributor: Mr. Tao <tao@post.cz>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
@@ -8,14 +9,14 @@
 pkgname=('pidgin-gnutls' 'libpurple-gnutls' 'finch-gnutls')
 pkgbase=pidgin
 pkgver=2.14.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://pidgin.im/"
 license=('GPL')
-makedepends=('startup-notification' 'gnutls' 'gtkspell' 'libxss' 'libsasl' 'libsm'
+makedepends=('startup-notification' 'gtkspell' 'libxss' 'gnutls' 'libsasl' 'libsm'
              'libidn' 'libgadu' 'python' 'hicolor-icon-theme' 'farstream' 'tk'
              'libnsl' 'avahi' 'ca-certificates' 'intltool' 'libnm' 'dbus-glib'
-             'libgnt')
+             'libgnt' 'libxcrypt')
 source=(https://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/${pkgname%-gnutls}-$pkgver.tar.bz2{,.asc})
 sha256sums=('f132e18d551117d9e46acce29ba4f40892a86746c366999166a3862b51060780'
             'SKIP')
@@ -33,25 +34,24 @@ build() {
     --sysconfdir=/etc \
     --disable-schemas-install \
     --disable-meanwhile \
+    --enable-gnutls=yes \
+    --enable-nss=no \
+    --with-gnutls-includes=/usr/include/gnutls \
+    --with-gnutls-libs=/usr/lib \
     --enable-cyrus-sasl \
     --disable-doxygen \
     --enable-nm \
-    --with-system-ssl-certs=/etc/ssl/certs \
-    --enable-nss=no \
-    --enable-gnutls=yes \
-    --with-gnutls-includes=/usr/include/gnutls \
-    --with-gnutls-libs=/usr/lib
+    --with-system-ssl-certs=/etc/ssl/certs
     make
 }
 
 package_pidgin-gnutls(){
-  pkgdesc="Multi-protocol instant messaging client"
   provides=('pidgin')
   conflicts=('pidgin')
+  pkgdesc="Multi-protocol instant messaging client"
   depends=('libpurple-gnutls' 'startup-notification' 'gtkspell' 'libxss' 'libsm'
            'gst-plugins-base' 'gst-plugins-good' 'hicolor-icon-theme')
-  optdepends=('aspell: for spelling correction'
-              'purple-hangouts-hg: for Google Hangouts connectivity')
+  optdepends=('aspell: for spelling correction')
 
   cd $pkgbase-$pkgver
 
@@ -68,11 +68,11 @@ package_pidgin-gnutls(){
 }
 
 package_libpurple-gnutls(){
-  pkgdesc="IM library extracted from Pidgin"
   provides=('libpurple')
   conflicts=('libpurple')
+  pkgdesc="IM library extracted from Pidgin"
   depends=('farstream' 'libsasl' 'libidn' 'libnsl' 'libgadu' 'dbus-glib' 'gnutls'
-           'libnm')
+           'libnm' 'libxcrypt')
   optdepends=('avahi: Bonjour protocol support'
               'ca-certificates: SSL CA certificates'
               'python-dbus: for purple-remote and purple-url-handler'
@@ -86,9 +86,9 @@ package_libpurple-gnutls(){
 }
 
 package_finch-gnutls(){
-  pkgdesc="A ncurses-based messaging client"
   provides=('finch')
   conflicts=('finch')
+  pkgdesc="A ncurses-based messaging client"
   depends=('libpurple-gnutls' 'libgnt' 'libx11')
 
   cd $pkgbase-$pkgver
