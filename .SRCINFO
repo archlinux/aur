@@ -1,6 +1,6 @@
 pkgbase = rusted-tetris-git
 	pkgdesc = Terminal-based tetris clone written in pure Rust
-	pkgver = 0.1.1
+	pkgver = 0.1.0.r3
 	pkgrel = 1
 	url = https://github.com/lyova-potyomkin/rusted-tetris
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: Lyova Potyomkin <lyova.potyomkin@gmail.com>
 pkgname='rusted-tetris-git'
-pkgver='0.1.1'
+pkgver='0.1.0.r3'
 pkgrel='1'
 pkgdesc="Terminal-based tetris clone written in pure Rust"
 arch=('x86_64')
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-    printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    git describe --tags | sed 's/v//;s/-[^-]*$//;s/-/.r/'
 }
 
 build() {
