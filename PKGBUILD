@@ -10,8 +10,8 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=pd-l2ork
-pkgver=20190812.r1771.42cedfa8
-pkgrel=2
+pkgver=20200822.r1790.15f00bbf
+pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
 arch=('i686' 'x86_64')
@@ -23,14 +23,12 @@ depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'libxxf86vm' 'libtiff' 'libiec61883' 'libraw1394'
   'libv4l' 'libvorbis' 'lua51' 'portaudio'
   'smpeg' 'speex' 'stk' 'gtk2' 'tk' 'tkpng' 'vlc' 'xapian-tcl-bindings' 'zlib')
-makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync')
+makedepends=('autoconf' 'automake' 'libtool' 'git' 'rsync' 'python2')
 conflicts=('pd-l2ork')
 install=pd-l2ork.install
 options=('!makeflags')
-source=("$pkgname::git+https://github.com/pd-l2ork/pd.git#commit=42cedfa82c8a6aea20caa8b46ed22a98763646f6"
-	"RTcmix-pd-LCPLAY-stabilize.patch")
-md5sums=('SKIP'
-         '39c53063dc18681f29b12c08d9c453aa')
+source=("$pkgname::git+https://github.com/pd-l2ork/pd.git#commit=15f00bbf096fb86cc13b48a5d6a04286aab711ca")
+md5sums=('SKIP')
 
 # Run 'makepkg buildopt=-b' for an incremental build (this skips recompiling
 # Gem which takes a *long* time to build). Note that this will only produce a
@@ -50,8 +48,6 @@ prepare() {
   git submodule foreach git checkout .
   # check out the latest source of all submodules
   git submodule update --init
-  # make the sources compile with gcc 6.1+
-  cd $srcdir/$pkgname/l2ork_addons/rtcmix-in-pd && patch -Np1 < $srcdir/RTcmix-pd-LCPLAY-stabilize.patch
 }
 
 build() {
