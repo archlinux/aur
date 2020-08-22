@@ -1,7 +1,7 @@
 # Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
 
 pkgname=rime-putonghua
-pkgver=0.0.0.20200821
+pkgver=0.0.0.20200822
 _commit=2e0e8bd4d6bdede29daac7ff2cfd369795d528bf
 pkgrel=1
 pkgdesc="rime 有声调普通话拼音方案"
@@ -23,7 +23,7 @@ sha512sums=('bd17a0b0950d8640f19b4bdf2d896c0f4e0b96fb2b92cb80bb4fe50cac9ab2320cd
 prepare() {
   cd $pkgname-$_commit
   # Link essentials
-  for _f in $(pacman -Qql rime-prelude rime-essay-simp rime-liangfen rime-symbolic-simp | grep -v "/$"); do ln -sf $_f; done
+  for _f in $(pacman -Qql rime-prelude rime-essay-simp rime-symbolic-simp | grep -v "/$"); do ln -sf $_f; done
 }
 
 build(){
@@ -35,7 +35,6 @@ package() {
   cd $pkgname-$_commit
   find . -type l -delete
   rm build/*.txt
-  rm build/liangfen.*
   install -Dm644 *.yaml -t "$pkgdir"/usr/share/rime-data/
   install -Dm644 build/* -t "$pkgdir"/usr/share/rime-data/build/
 

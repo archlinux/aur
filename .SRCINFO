@@ -1,6 +1,6 @@
 pkgbase = rime-putonghua
 	pkgdesc = rime 有声调普通话拼音方案
-	pkgver = 0.0.0.20200821
+	pkgver = 0.0.0.20200822
 	pkgrel = 1
 	url = https://github.com/ayaka14732/rime-putonghua
 	arch = any
