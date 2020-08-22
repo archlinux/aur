@@ -2,13 +2,13 @@
 
 pkgname=sensei-raw-ctl
 pkgver=2f70930
-pkgrel=2
+pkgrel=3
 pkgdesc="SteelSeries Sensei Raw configuration tool"
 arch=('i686' 'x86_64')
 url="https://git.janouch.name/p/sensei-raw-ctl"
 makedepends=('git' 'make' 'cmake' 'help2man')
 provides=('sensei-raw-ctl')
-source=('git://git.janouch.name/p/sensei-raw-ctl#commit=2f70930')
+source=('git+https://git.janouch.name/p/sensei-raw-ctl.git#commit=2f70930')
 md5sums=('SKIP')
 license=('Custom')
 
