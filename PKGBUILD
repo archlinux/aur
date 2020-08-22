@@ -1,4 +1,5 @@
-# Maintainer: orhun <github.com/orhun>
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
 
 pkgname=pkgtop-git
 pkgdesc="Interactive package manager & resource monitor"
