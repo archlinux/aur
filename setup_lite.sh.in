@@ -82,9 +82,9 @@ check_req() {
     cd ../
     rm -rf evelauncher/
     if [ "x$req" != "x" ] ;then
-	printf "\nError: Following requirements are missed:\n"
+	printf "\nError: Following requirements are missing:\n"
 	printf "\n$req\n"
-	printf "Please install these requirements with your Package Manager.\n"
+	printf "\nPlease install these requirements with your Package Manager.\n"
 	printf "\nLeaving.\n\n"
 	exit 0
     fi
