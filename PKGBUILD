@@ -1,4 +1,6 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
+
 pkgname=notp-git
 pkgver=2.1.0.r57.g0aa13af
 pkgrel=1
