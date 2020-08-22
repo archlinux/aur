@@ -11,7 +11,7 @@ source=("git+$url")
 sha256sums=('SKIP')
 conflicts=(seatd libseat)
 provides=(seatd libseat)
-depends=()
+depends=(systemd)
 makedepends=(meson ninja scdoc)
 
 pkgver() {

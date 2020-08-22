@@ -8,6 +8,7 @@ pkgbase = seatd-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = scdoc
+	depends = systemd
 	provides = seatd
 	provides = libseat
 	conflicts = seatd
