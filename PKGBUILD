@@ -39,7 +39,7 @@ containsElement () {
 
 pkgname=e-modules-extra-git
 pkgver=20200822
-pkgrel=1
+pkgrel=2
 pkgdesc="Enlightenment modules: Extra unsupported modules in Git not already packaged elsewhere"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
@@ -55,7 +55,7 @@ depends=('enlightenment')
 makedepends=('git')
 provides=("${pkgname%-*}")
 for _module in ${_module_list[@]}; do
-  source+=("git://git.enlightenment.org/enlightenment/modules/$_module.git")
+  source+=("git+https://git.enlightenment.org/enlightenment/modules/$_module.git")
   sha256sums+=('SKIP')
 done
 
