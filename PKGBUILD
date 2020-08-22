@@ -2,7 +2,7 @@
 # Ex-Maintainer: Max Falk <gmdfalk at gmail dot com>
 
 pkgname=rocketchat-server
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=1
 pkgdesc="The Ultimate Open Source WebChat Platform"
 arch=("any")
@@ -20,7 +20,7 @@ source=("rocketchat-${pkgver}::https://releases.rocket.chat/${pkgver}/download"
     "rocketchat-server.conf"
     "rocketchat-user.conf"
 "rocketchat.service")
-sha512sums=('1be44073ae574942ea99a150756648df50ebcd6f6d9bf21800914250feeed0e3559062f07d558b23654d9335d099b89151352116f5ecd0979293c1ce2a98aabf'
+sha512sums=('b2787d772e8110b173d00bba82a2908eaeb1661dcec1b8c64bb592dd23e3e574c854747b9489db1142802fe15f3a95b7d3308b3c3eff42e7dc90eff427a5268f'
     '6700fae043f59881c0c8821db176a8d9cbbf7f047bd48750dbcd7abd7c531831436f910a28745b40d4d2fcbb7d2081b5512a5ee23ea6355bb065fde3b0672edc'
     '4ff8899a47612a81f73c1c6449fb30a7ddfb0b199756db7f73e0a3078cf818b88e481fd828296b148a348d137ae529ce591d6c2bd6b57ae9278188e715086b59'
     '0086f72f16a594116586d4b6783b104f7bba779e4f8e31e5988c7fa67e1c7d9fc95215d0a04c4f24c72b4183774a9768a29b05c828990125dd4a3379a69aa648'
