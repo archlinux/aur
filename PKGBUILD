@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=nnrss-qt
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='nano nano rss client in QT'
 url='https://git.roshless.me/roshless/nnrss-qt'
@@ -22,8 +22,9 @@ package() {
 
   cd $pkgname-$pkgver
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "dist/feed_icon.svg" -t "$pkgdir/usr/share/$pkgname/"
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
-md5sums=('6245b822c5c2a8923a2c2ce03554810b'
+md5sums=('2418a250de7643fb31cde77006a044b7'
          'a22ce9790bda6c105744ad122224e1a2')
