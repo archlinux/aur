@@ -1,0 +1,19 @@
+pkgbase = unfuckify-git
+	pkgdesc = Makes c++ code using `auto` readable, i. e. unfucks it
+	pkgver = r33.8148439
+	pkgrel = 1
+	url = https://github.com/sandsmark/unfuckify
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = llvm
+	makedepends = cmake
+	depends = clang
+	provides = unfuckify
+	conflicts = unfuckify
+	source = git://github.com/sandsmark/unfuckify.git
+	md5sums = SKIP
+
+pkgname = unfuckify-git
+
