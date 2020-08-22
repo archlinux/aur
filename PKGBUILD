@@ -1,7 +1,7 @@
 # Maintainer: Fabio Manganiello <info@fabiomanganiello.com>
 
 pkgname=platypush
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('python-paho-mqtt: MQTT integrations support'
 conflicts=('platypush-git')
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BlackLight/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('5569b75c38949c73f759f4a6e1dd249a4aa0dfe5d0e893859c166814efafc09dcda91b5b642cb9ba2b36dadda2119fca155281491428dfc9b27d940646a374b6')
+sha512sums=('182a7087bbbb01dfc3b4c76439f8cf215b58248b935b2a5924a85753ab4adf5224049935fb7980a03d0a14627ae11301cc43cb06229127f674c1ae828cb3f840')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
