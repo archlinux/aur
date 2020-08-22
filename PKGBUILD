@@ -8,17 +8,16 @@ gitname='TauonMusicBox'
 arch=('any')
 license=('GPL3')
 
-pkgver=6.1.3
+pkgver=6.2.0
 pkgrel=1
 
-depends=('python3' 'noto-fonts' 'noto-fonts-extra' 'sdl2_image' 'python-pillow' 'python-pylast' 'python-gobject' 'xdg-utils' 'python-beautifulsoup4' 'python-requests' 'python-cairo' 'python-flask' 'python-setproctitle' 'flac' 'python-musicbrainzngs' 'alsa-plugins' 'gstreamer' 'gst-plugins-base' 'python-dbus' 'python-oauthlib' 'python-six' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'noto-fonts-cjk' 'python-discogs-client' 'python-hsaudiotag3k' 'python-pylyrics' 'python-pypresence' 'python-send2trash' 'python-stagger' 'python-pysdl2')
+depends=('python3' 'noto-fonts' 'noto-fonts-extra' 'sdl2_image' 'python-pillow' 'python-pylast' 'python-gobject' 'xdg-utils' 'python-beautifulsoup4' 'python-requests' 'python-cairo' 'python-flask' 'python-setproctitle' 'flac' 'python-musicbrainzngs' 'alsa-plugins' 'gstreamer' 'gst-plugins-base' 'python-dbus' 'python-oauthlib' 'python-six' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'noto-fonts-cjk' 'python-discogs-client' 'python-hsaudiotag3k' 'python-pylyrics' 'python-pypresence' 'python-send2trash' 'python-stagger' 'python-pysdl2' 'ffmpeg')
 
-optdepends=('ffmpeg: File transcoding' 'p7zip: 7z archive extraction support' 'unrar: RAR archive extraction support' 'python-plexapi: PLEX streaming' 'python-tekore: Spotify playback control' 'picard: Tag editing')
+optdepends=('p7zip: 7z archive extraction support' 'unrar: RAR archive extraction support' 'python-plexapi: PLEX streaming' 'python-tekore: Spotify playback control' 'picard: Tag editing')
 
 source=("git+https://github.com/Taiko2k/TauonMusicBox.git#tag=v$pkgver" "https://files.pythonhosted.org/packages/1e/d3/1491ad4be5f67d89ad83c9fd751f5d6b83d052c1a8ddd994f37ae37b0d9d/isounidecode-0.3.tar.gz")
 
 sha256sums=("SKIP" "4db0a962c6341826c9a69acaabc2f923a5b124d53a335be892ef29173bc31c5b")
-
 
 
 build() {
