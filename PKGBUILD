@@ -32,7 +32,7 @@ package() {
 	install -dm 755 "$pkgdir/usr/share/${pkgname%-git}"
 	cp -r build/linux-unpacked/* "$pkgdir/usr/share/${pkgname%-git}"
 	install -dm 755 "$pkgdir/usr/local/bin"
-	ln -s "$pkgdir/usr/share/${pkgname%-git}/$_pkgname" "$pkgdir/usr/local/bin/$_pkgname"
+	ln -s "/usr/share/${pkgname%-git}/$_pkgname" "$pkgdir/usr/local/bin/$_pkgname"
 
 	# Install pixmaps and fonts
 	install -dm 755 "$pkgdir/usr/share/pixmaps"
