@@ -2,7 +2,7 @@
 
 pkgname=mkinitcpio-zstd
 pkgver=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Modular initramfs image creation utility"
 arch=('any')
 url="https://projects.archlinux.org/mkinitcpio.git/"
@@ -23,7 +23,7 @@ source=("https://sources.archlinux.org/other/${pkgname%-zstd}/${pkgname%-zstd}-$
         "0001-mkinitcpio-Add-support-for-the-zstd-compressor.patch")
 install=mkinitcpio.install
 sha256sums=('bf83a158786d272d8046a4dd48bfcc343ec37de2cae0ae65c59132a45744808c'
-            '5586552495dc7cafefea8ccf9f2006194b96ccc7867cf006e1b197279e3ce27f')
+            'a93de2d8a301f0d7d6317ec301cd0e0bf3665c8fa3e123579b3ca8d2f0a531c9')
 
 prepare() {
   cd ${pkgname%-zstd}-$pkgver

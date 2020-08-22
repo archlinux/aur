@@ -1,15 +1,15 @@
-From a8184dc767520b4f4904fc5787b14ff9ffe4c1b4 Mon Sep 17 00:00:00 2001
+From 852917d99cda518917343bb9546a1867775379c6 Mon Sep 17 00:00:00 2001
 From: Luca Stefani <luca.stefani.ge1@gmail.com>
 Date: Sun, 26 Jul 2020 12:33:33 +0200
 Subject: [PATCH] mkinitcpio: Add support for the zstd compressor
 
 ---
  PKGBUILD                  | 1 +
- lsinitcpio                | 6 ++++++
- man/mkinitcpio.conf.5.txt | 2 +-
+ lsinitcpio                | 4 ++++
+ man/mkinitcpio.conf.5.txt | 6 ++++--
  mkinitcpio                | 3 +++
  mkinitcpio.conf           | 1 +
- 5 files changed, 12 insertions(+), 1 deletion(-)
+ 5 files changed, 13 insertions(+), 2 deletions(-)
 
 diff --git a/PKGBUILD b/PKGBUILD
 index 3536a48..c7e1ed5 100644
@@ -24,37 +24,39 @@ index 3536a48..c7e1ed5 100644
  backup=(etc/mkinitcpio.conf)
  
 diff --git a/lsinitcpio b/lsinitcpio
-index bcb4a19..c170985 100755
+index bcb4a19..4715783 100755
 --- a/lsinitcpio
 +++ b/lsinitcpio
-@@ -131,6 +131,12 @@ detect_filetype() {
-         return
-     fi
+@@ -113,6 +113,10 @@ detect_filetype() {
+             echo 'lz4 -l'
+             return
+             ;;
++        fd2fb528)
++            echo 'zstd'
++            return
++            ;;
+     esac
  
-+    read -rd '' bytes < <(hexdump -n 4 -e '"%x"' "$1")
-+    if [[ $bytes == 'fd2fb528' ]]; then
-+        echo 'zstd'
-+        return
-+    fi
-+
-     # still nothing? hrmm, maybe the user goofed and it's a kernel
-     if kver "$1" >/dev/null; then
-         die '%s is a kernel image, not an initramfs image!' "$1"
+     read -rd '' bytes < <(hexdump -n 3 -e '"%c"' "$1")
 diff --git a/man/mkinitcpio.conf.5.txt b/man/mkinitcpio.conf.5.txt
-index 9c8d000..83037ca 100644
+index 9c8d000..fe4d077 100644
 --- a/man/mkinitcpio.conf.5.txt
 +++ b/man/mkinitcpio.conf.5.txt
-@@ -54,7 +54,7 @@ Variables
+@@ -54,8 +54,10 @@ Variables
  
  	Defines a program to filter the generated image through. As of linux 2.6.38,
  	the kernel understands the compression formats yielded by the *gzip*, *bzip2*,
 -	*lz4*, *lzop*, *lzma*, and *xz* compressors. If unspecified, this setting
-+	*lz4*, *lzop*, *lzma*, *xz* and *zstd* compressors. If unspecified, this setting
- 	defaults to *gzip* compression. In order to create an uncompressed image, define
+-	defaults to *gzip* compression. In order to create an uncompressed image, define
++	*lz4*, *lzop*, *lzma*, and *xz* compressors. As of linux 5.9 the kernel also
++	understands the compression formats yielded by the *zstd* compressor.
++	If unspecified, this setting defaults to *gzip* compression.
++	In order to create an uncompressed image, define
  	this variable as *cat*.
  +
+ It's not hard to realize that a filter such as a *tac* or *rev* will cause
 diff --git a/mkinitcpio b/mkinitcpio
-index ba27433..e6390d6 100755
+index ba27433..a9706d0 100755
 --- a/mkinitcpio
 +++ b/mkinitcpio
 @@ -211,6 +211,9 @@ build_image() {
@@ -62,7 +64,7 @@ index ba27433..e6390d6 100755
              COMPRESSION_OPTIONS+=('-l')
              ;;
 +        zstd)
-+            COMPRESSION_OPTIONS+=('-22' '--ultra')
++            COMPRESSION_OPTIONS+=('-19')
 +            ;;
      esac
  
@@ -79,6 +81,3 @@ index b926b90..ba1cce3 100644
  
  # COMPRESSION_OPTIONS
  # Additional options for the compressor
--- 
-2.28.0
-
