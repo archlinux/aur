@@ -1,25 +1,28 @@
-pkgname=xfce4-git-meta
+# Maintainer: Jonathon Fernyhough <jonathon+m2x.dev>
+# Contributor: SolarAquarion (xfce4-git-meta)
+
+pkgname=xfce4-devel-meta
 pkgver=4.15
 pkgrel=1
-pkgdesc='Meta package for installing the xfce4 group'
+pkgdesc='Meta package for installing the xfce4-devel group'
 arch=(any)
 url='https://www.archlinux.org/'
 license=(GPL)
 depends=(
-	exo-git
-	garcon-git
-	thunar-git
-	thunar-volman-git
-	tumbler-git
-	xfce4-appfinder-git
-	xfce4-panel-git
-	xfce4-power-manager-git
-	xfce4-session-git
-	xfce4-settings-git
-	xfce4-terminal-git
-	xfconf-git
-	xfdesktop-git
-	xfwm4-git
+	exo-devel
+	garcon-devel
+	thunar-devel
+	thunar-volman-devel
+	tumbler-devel
+	xfce4-appfinder-devel
+	xfce4-panel-devel
+	xfce4-power-manager-devel
+	xfce4-session-devel
+	xfce4-settings-devel
+	xfce4-terminal-devel
+	xfconf-devel
+	xfdesktop-devel
+	xfwm4-devel
 )
 
 package() {
