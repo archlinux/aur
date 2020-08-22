@@ -7,7 +7,7 @@
 # Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
 
 pkgname=('pidgin-gnutls' 'libpurple-gnutls' 'finch-gnutls')
-pkgbase=pidgin
+pkgbase=pidgin-gnutls
 pkgver=2.14.1
 pkgrel=3
 arch=('x86_64')
