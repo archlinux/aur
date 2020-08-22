@@ -1,4 +1,6 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
+
 pkgname=i3-workspace-brightness-git
 pkgver=1.0.1.r1.gbb55b27
 pkgrel=1
