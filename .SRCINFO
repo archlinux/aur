@@ -1,7 +1,7 @@
 pkgbase = ino
 	pkgdesc = Command line toolkit for working with Arduino hardware
 	pkgver = 0.3.6
-	pkgrel = 8
+	pkgrel = 9
 	url = http://inotool.org/
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = ino
 	depends = picocom
 	depends = avrdude
 	options = !emptydirs
-	source = http://pypi.python.org/packages/source/i/ino/ino-0.3.6.tar.gz
+	source = https://pypi.python.org/packages/source/i/ino/ino-0.3.6.tar.gz
 	source = fix-avrdude-conf.patch
 	source = cppoption1.patch::https://github.com/maharifu/ino/commit/e5be3c6779892514cf8fc491ed927d36f292a2f9.diff
 	md5sums = d2ca04f862ded04b19a5473467aff146
