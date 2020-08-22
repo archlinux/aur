@@ -1,5 +1,29 @@
+diff --git a/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c b/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
+index a7063d85..a55cd647 100644
+--- a/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
++++ b/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
+@@ -547,17 +547,14 @@ static inline int open_output_file(struct ffmpeg_mux *ffm)
+ 	}
+ 
+ 	ret = avformat_write_header(ffm->output, &dict);
++	av_dict_free(&dict);
+ 	if (ret < 0) {
+-		fprintf(stderr, "Error opening '%s': %s", ffm->params.file,
++		fprintf(stderr, "Error opening '%s': %s\n", ffm->params.file,
+ 			av_err2str(ret));
+ 
+-		av_dict_free(&dict);
+-
+ 		return ret == -22 ? FFM_UNSUPPORTED : FFM_ERROR;
+ 	}
+ 
+-	av_dict_free(&dict);
+-
+ 	return FFM_SUCCESS;
+ }
+ 
 diff --git a/plugins/obs-ffmpeg/obs-ffmpeg-vaapi.c b/plugins/obs-ffmpeg/obs-ffmpeg-vaapi.c
-index 9f2660a4..b8f5c289 100644
+index 9f2660a4..cdf8f8a8 100644
 --- a/plugins/obs-ffmpeg/obs-ffmpeg-vaapi.c
 +++ b/plugins/obs-ffmpeg/obs-ffmpeg-vaapi.c
 @@ -69,10 +69,35 @@ struct vaapi_encoder {
@@ -163,7 +187,7 @@ index 9f2660a4..b8f5c289 100644
  
  	obs_properties_t *props = obs_properties_create();
  	obs_property_t *list;
-@@ -544,41 +581,52 @@ static obs_properties_t *vaapi_properties(void *unused)
+@@ -544,41 +581,44 @@ static obs_properties_t *vaapi_properties(void *unused)
  		}
  	}
  
@@ -195,14 +219,6 @@ index 9f2660a4..b8f5c289 100644
 -	obs_property_list_add_int(list, "5.1", 51);
 -	obs_property_list_add_int(list, "5.2", 52);
 +	if (codec->id == AV_CODEC_ID_H264) {
-+		list = obs_properties_add_list(props, "vaapi_codec",
-+					       "VAAPI Codec",
-+					       OBS_COMBO_TYPE_LIST,
-+					       OBS_COMBO_FORMAT_INT);
-+
-+		obs_property_list_add_int(list, "H.264 (default)",
-+					  AV_CODEC_ID_H264);
-+
 +		list = obs_properties_add_list(props, "profile", "Profile",
 +					OBS_COMBO_TYPE_LIST,
 +					OBS_COMBO_FORMAT_INT);
@@ -246,7 +262,7 @@ index 9f2660a4..b8f5c289 100644
  
  	obs_property_set_modified_callback(list, rate_control_modified);
  
-@@ -597,6 +645,7 @@ static obs_properties_t *vaapi_properties(void *unused)
+@@ -597,6 +637,7 @@ static obs_properties_t *vaapi_properties(void *unused)
  			       obs_module_text("KeyframeIntervalSec"), 0, 20,
  			       1);
  
@@ -254,7 +270,7 @@ index 9f2660a4..b8f5c289 100644
  	return props;
  }
  
-@@ -626,11 +675,26 @@ struct obs_encoder_info vaapi_encoder_info = {
+@@ -626,11 +667,26 @@ struct obs_encoder_info vaapi_encoder_info = {
  	.create = vaapi_create,
  	.destroy = vaapi_destroy,
  	.encode = vaapi_encode,
