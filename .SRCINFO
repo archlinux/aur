@@ -1,6 +1,6 @@
 pkgbase = wxlua-git
 	pkgdesc = Lua bindings for wxWidgets (Lua 5.3 compatible fork)
-	pkgver = 3.0.0.8.r7.g7684ddf
+	pkgver = 3.0.0.8.r22.gdfd9963
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/pkulchenko/wxlua

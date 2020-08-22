@@ -6,7 +6,7 @@
 
 pkgname=wxlua-git
 _pkgname=${pkgname/%-git}
-pkgver=3.0.0.8.r7.g7684ddf
+pkgver=3.0.0.8.r22.gdfd9963
 pkgrel=1
 epoch=1
 pkgdesc="Lua bindings for wxWidgets (Lua 5.3 compatible fork)"
@@ -45,8 +45,8 @@ package() {
     make DESTDIR="$pkgdir/" install
     rm -f "$pkgdir"/usr/bin/lua{,c}
 
-    install -d "$pkgdir/usr/lib/lua/5.3"
-    mv "$pkgdir/usr/lib/libwx.so" "$pkgdir/usr/lib/lua/5.3/wx.so"
+    install -d "$pkgdir/usr/lib/lua/5.4"
+    mv "$pkgdir/usr/lib/libwx.so" "$pkgdir/usr/lib/lua/5.4/wx.so"
 
     pushd ..
 
