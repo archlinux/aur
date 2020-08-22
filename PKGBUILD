@@ -20,7 +20,6 @@ depends=('glm'
          'sdl2_ttf')
 source=("https://gitlab.com/solarus-games/solarus/-/jobs/692515257/artifacts/download")
 provides=('solarus')
-conflicts=('solarus')
 package() {
     mkdir -p "$pkgdir/usr"
 	cd $srcdir
