@@ -26,7 +26,7 @@ package() {
 	install -dm 755 "$pkgdir/usr/share/$pkgname"
 	cp -r build/linux-unpacked/* "$pkgdir/usr/share/$pkgname"
 	install -dm 755 "$pkgdir/usr/local/bin"
-	ln -s "$pkgdir/usr/share/$pkgname/$_pkgname" "$pkgdir/usr/local/bin/$_pkgname"
+	ln -s "/usr/share/$pkgname/$_pkgname" "$pkgdir/usr/local/bin/$_pkgname"
 
 	# Install pixmaps and fonts
 	install -dm 755 "$pkgdir/usr/share/pixmaps"
