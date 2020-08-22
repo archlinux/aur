@@ -11,9 +11,15 @@ provides=("${pkgname%-git}")
 source=("git+$url")
 md5sums=('SKIP')
 
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+    printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
 build() {
     cd "$srcdir/${pkgname%-git}"
     cargo build --release --locked
+    strip target/release/${pkgname%-git}
 }
 
 check() {
@@ -23,6 +29,6 @@ check() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    install -Dm 755 target/release/${pkgname%-git} -t "${pkgdir}/usr/bin"
+    install -Dm 755 target/release/${pkgname%-git} -t "$pkgdir/usr/bin"
     install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
