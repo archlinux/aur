@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=wingide
-_wingver=7.2.3.0
+_wingver=7.2.4.0
 _wing_patch_lvl=1 #bump this when adding a patch
 pkgver=$_wingver.$_wing_patch_lvl
 pkgrel=1
