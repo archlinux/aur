@@ -1,6 +1,6 @@
 pkgbase = powershell-bin
 	pkgdesc = A cross-platform automation and configuration tool/framework (binary package)
-	pkgver = 7.0.2
+	pkgver = 7.0.3
 	pkgrel = 1
 	url = https://github.com/Powershell/Powershell
 	install = powershell.install
@@ -16,8 +16,8 @@ pkgbase = powershell-bin
 	conflicts = powershell
 	options = staticlibs
 	options = !strip
-	source = https://github.com/PowerShell/PowerShell/releases/download/v7.0.2/powershell_7.0.2-1.ubuntu.18.04_amd64.deb
-	sha256sums = a28c95b376e6dd7ef0bf523b6bd329485948a53e27fd2e8b3dded6981471214c
+	source = https://github.com/PowerShell/PowerShell/releases/download/v7.0.3/powershell_7.0.3-1.ubuntu.18.04_amd64.deb
+	sha256sums = d302325dbc54bc1a0a097e5fdf25e286a7572865ac30b3bf748b3e329ebf55d0
 
 pkgname = powershell-bin
 
