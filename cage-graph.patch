@@ -1,0 +1,98 @@
+diff -u a/CaGe.ini b/CaGe.ini
+--- a/CaGe.ini	2015-04-30 15:08:14.000000000 +0200
++++ b/CaGe.ini	2020-08-22 14:31:28.220417000 +0200
+@@ -20,7 +20,7 @@
+ 
+ # If this is true (or yes or 1), let user edit generator and embedder commands
+ # and suppress the warning about Rasmol's unreliability.
+-CaGe.ExpertMode:	false
++CaGe.ExpertMode:	true
+ 
+ 
+ # If this is true (or yes or 1), print detailed information to standard error.
+@@ -55,13 +55,13 @@
+ #   The installation includes an empty subdirectory called "Data"
+ #   and here, commented out, is a setting for RunDir that uses it.
+ # CaGe.Generators.RunDir:		$[CaGe.InstallDir]/Data
+-CaGe.Generators.RunDir:		.
++CaGe.Generators.RunDir:		${HOME}/.cage
+ 
+ # The search path used for generator and embedder processes, as well as
+ # any other pipes started by entering file names starting with '|'.
+ # - Separate path entries by space, not by ':' or ';' or whatever.
+ # - The search path is relative to RunDir, not to the start directory.
+-CaGe.Generators.Path:		$[CaGe.InstallDir]/Generators ${PATH}
++CaGe.Generators.Path:		$(CaGe.Generators.RunDir)/Generators $[CaGe.InstallDir]/Generators ${PATH}
+ 
+ # A file for generators' stderr output, relative to the start directory.
+ # CaGe tries to delete this at the end, even if no generator was ever run.
+@@ -255,4 +255,4 @@
+ # The following property specifies the class for the default type
+ Scad.type: cage.writer.scad.BallStickType
+ # The next property specifies the default resolution to use for SCAD outputs
+-Scad.resolution: medium
+\ No newline at end of file
++Scad.resolution: medium
+diff -u a/cage.sh b/cage.sh
+--- a/cage.sh	2015-07-15 10:28:04.000000000 +0200
++++ b/cage.sh	2020-08-22 15:00:33.654414263 +0200
+@@ -80,9 +80,9 @@
+         -classpath "$cp1$cp2" \
+         -Xdock:name="CaGe" \
+         -Xdock:icon=img/logo.png \
+-        cage.CaGe 2>"$CaGe_InstallDir"./cage.log
++        cage.CaGe
+   else sh "$CaGe_InstallDir"./java \
+         -D"CaGe.InstallDir=$CaGe_InstallDir_NoSlash" \
+         -classpath "$cp1$cp2" \
+-        cage.CaGe 2>"$CaGe_InstallDir"./cage.log
++        cage.CaGe
+ fi
+diff -u a/INSTALL.sh b/INSTALL.sh
+--- a/INSTALL.sh	2015-03-05 14:14:22.000000000 +0100
++++ b/INSTALL.sh	2020-08-22 14:58:33.640648487 +0200
+@@ -165,11 +165,8 @@
+ }
+ 
+ 
+-add_to_javadirlist "$PATH" ":"
+-prepare_javadirlist_prompt
+-
+ choice=""
+-while [ -z "$choice" ]
++while false
+ do
+    echo ""
+    test -n "$javadirlist" && echo "$nl$javadirlist"
+@@ -217,7 +214,7 @@
+    fi
+ done
+ 
+-javadir="` cd \"$javadir\"; pwd `"
++javadir="/usr/lib/jvm/java-8-openjdk"
+ echo ""
+ echo "   Ok."
+ echo ""
+@@ -257,7 +254,7 @@
+ echo ""
+ (
+ cd PreCompute &&
+-make
++make CFLAGS="-O4 -w -fcommon"
+ make compute &
+ ) || error_exit "-  'make' failure, aborting."
+ echo ""
+@@ -269,7 +266,7 @@
+ echo ""
+ (
+ cd Generators &&
+-make
++make CFLAGS="-O4 -w -fcommon"
+ ) || error_exit "-  'make' failure, aborting."
+ echo ""
+ echo "   Ok."
+@@ -293,4 +290,3 @@
+ echo "   CaGe is started by the 'cage.sh' command."
+ echo "   The file 'CaGe.ini' contains some options and comments."
+ echo ""
+-

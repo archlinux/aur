@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=CaGe
+Comment=Chemical & abstract Graph environment
+Categories=Education;Science;Math;Chemistry;ComputerScience;
+Icon=/usr/lib/cage-graph/img/logo.png
+TryExec=/usr/bin/cage-graph
+Exec=/usr/bin/cage-graph
+StartupWMClass=cage-CaGe

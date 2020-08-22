@@ -1,0 +1,3 @@
+#! /bin/sh
+mkdir -p $HOME/.cage/Generators
+exec sh /usr/lib/cage-graph/cage.sh

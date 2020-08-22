@@ -1,0 +1,19 @@
+pkgbase = cage-graph
+	pkgdesc = The Chemical & abstract Graph environment.
+	pkgver = 2016.02.23
+	pkgrel = 1
+	url = https://caagt.ugent.be/CaGe
+	arch = x86_64
+	license = unknown
+	depends = jdk8-openjdk
+	source = https://github.com/CaGe-graph/CaGe/releases/download/2016-02-23/CaGe.zip
+	source = cage-graph.patch
+	source = cage-graph.desktop
+	source = cage-graph
+	sha256sums = 42dd2f67d44826849426f347d0bc8fdbac4e194881d62c9cab36bb66964c27b8
+	sha256sums = 95a026eb3df6b9ddacbe0869473d9f3eba163d5db7091e5c3dd25d40d6bf817e
+	sha256sums = cb161b27d20728851f697851be87cea4f37e5711241a4367569ee8bfae40c0a5
+	sha256sums = 2abd0e5128c265421d4563466eceedc5f475b5a9ee0ae8c2e947c73f21aa3fa3
+
+pkgname = cage-graph
+
