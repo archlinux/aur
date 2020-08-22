@@ -1,0 +1,19 @@
+pkgbase = ztdns-git
+	pkgdesc = DNS server for a ZeroTier virtual network.
+	pkgver = 0.0.2.r4.g5fdb3bc
+	pkgrel = 1
+	url = https://github.com/uxbh/ztdns
+	install = ztdns.install
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = ztdns
+	conflicts = ztdns
+	backup = etc/.ztdns.toml
+	source = ztdns::git+https://github.com/uxbh/ztdns#branch=master
+	md5sums = SKIP
+
+pkgname = ztdns-git
+
