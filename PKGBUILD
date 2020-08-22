@@ -8,8 +8,9 @@
 
 pkgname=('pidgin-gnutls' 'libpurple-gnutls' 'finch-gnutls')
 pkgbase=pidgin-gnutls
+_pkgname="${pkgname%-gnutls}"
 pkgver=2.14.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://pidgin.im/"
 license=('GPL')
@@ -17,17 +18,17 @@ makedepends=('startup-notification' 'gtkspell' 'libxss' 'gnutls' 'libsasl' 'libs
              'libidn' 'libgadu' 'python' 'hicolor-icon-theme' 'farstream' 'tk'
              'libnsl' 'avahi' 'ca-certificates' 'intltool' 'libnm' 'dbus-glib'
              'libgnt' 'libxcrypt')
-source=(https://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/${pkgname%-gnutls}-$pkgver.tar.bz2{,.asc})
+source=(https://downloads.sourceforge.net/project/pidgin/Pidgin/$pkgver/$_pkgname-$pkgver.tar.bz2{,.asc})
 sha256sums=('f132e18d551117d9e46acce29ba4f40892a86746c366999166a3862b51060780'
             'SKIP')
 validpgpkeys=('40DE1DC7288FE3F50AB938C548F66AFFD9BDB729') # Gary Kramlich <grim@reaperworld.com>
 
 prepare() {
-  cd $pkgbase-$pkgver
+  cd "$_pkgname-$pkgver"
 }
 
 build() {
-  cd $pkgbase-$pkgver
+  cd "$_pkgname-$pkgver"
 
   ./configure \
     --prefix=/usr \
@@ -53,7 +54,7 @@ package_pidgin-gnutls(){
            'gst-plugins-base' 'gst-plugins-good' 'hicolor-icon-theme')
   optdepends=('aspell: for spelling correction')
 
-  cd $pkgbase-$pkgver
+  cd "$_pkgname-$pkgver"
 
   # For linking
   make -C libpurple DESTDIR="$pkgdir" install-libLTLIBRARIES
@@ -78,7 +79,7 @@ package_libpurple-gnutls(){
               'python-dbus: for purple-remote and purple-url-handler'
               'tk: Tcl/Tk scripting support')
 
-  cd $pkgbase-$pkgver
+  cd "$_pkgname-$pkgver"
 
   for _dir in libpurple share/sounds share/ca-certs m4macros po; do
     make -C "$_dir" DESTDIR="$pkgdir" install
@@ -91,7 +92,7 @@ package_finch-gnutls(){
   pkgdesc="A ncurses-based messaging client"
   depends=('libpurple-gnutls' 'libgnt' 'libx11')
 
-  cd $pkgbase-$pkgver
+  cd "$_pkgname-$pkgver"
 
   # For linking
   make -C libpurple DESTDIR="$pkgdir" install-libLTLIBRARIES
