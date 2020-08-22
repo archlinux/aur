@@ -1,5 +1,4 @@
 #!/bin/bash
-tar -xf /usr/share/gamejolt/data-376715-852660.tar.gz
-/usr/share/gamejolt/game-jolt-client
+/opt/gamejolt/game-jolt-client
 
 
