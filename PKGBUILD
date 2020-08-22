@@ -2,17 +2,17 @@
 
 _pkgname=enjoy
 pkgname=$_pkgname-git
-pkgver=0.1.0.205.aa8fec6
+pkgver=0.1.0.216.a6c788f
 pkgrel=1
 pkgdesc="Music player based on EFL"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('LGPL3')
-depends=('elementary' 'lightmediascanner')
+depends=('efl' 'lightmediascanner')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://git.enlightenment.org/apps/$_pkgname.git")
+source=("git+https://git.enlightenment.org/apps/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {

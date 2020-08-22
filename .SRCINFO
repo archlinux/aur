@@ -1,17 +1,17 @@
 pkgbase = enjoy-git
 	pkgdesc = Music player based on EFL
-	pkgver = 0.1.0.205.aa8fec6
+	pkgver = 0.1.0.216.a6c788f
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
 	license = LGPL3
 	makedepends = git
-	depends = elementary
+	depends = efl
 	depends = lightmediascanner
-	provides = enjoy=0.1.0.205.aa8fec6
+	provides = enjoy=0.1.0.216.a6c788f
 	conflicts = enjoy
-	source = git://git.enlightenment.org/apps/enjoy.git
+	source = git+https://git.enlightenment.org/apps/enjoy.git
 	sha256sums = SKIP
 
 pkgname = enjoy-git
