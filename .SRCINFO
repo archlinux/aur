@@ -1,18 +1,17 @@
 pkgbase = otf-inconsolata-powerline-git
 	pkgdesc = Inconsolata for Powerline
-	pkgver = r100.a44abd0
-	pkgrel = 2
+	pkgver = r202.e80e3eb
+	pkgrel = 1
 	url = https://github.com/powerline/fonts
-	install = otf-inconsolata-powerline-git.install
 	arch = any
-	license = custom:SIL Open Font License, Version 1.0
+	license = OFL
 	makedepends = git
-	depends = fontconfig
-	depends = xorg-font-utils
+	provides = otf-inconsolata-powerline
+	conflicts = otf-inconsolata-powerline
 	conflicts = powerline-fonts
 	conflicts = powerline-fonts-git
-	source = git+https://github.com/powerline/fonts.git
-	md5sums = SKIP
+	source = otf-inconsolata-powerline-git::git+https://github.com/powerline/fonts.git
+	sha256sums = SKIP
 
 pkgname = otf-inconsolata-powerline-git
 
