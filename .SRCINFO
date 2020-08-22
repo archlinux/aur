@@ -5,6 +5,7 @@ pkgbase = otpw
 	url = http://www.cl.cam.ac.uk/~mgk25/otpw.html
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = custom
 	depends = pam
 	source = http://www.cl.cam.ac.uk/~mgk25/download/otpw-1.5.tar.gz
