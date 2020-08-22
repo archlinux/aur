@@ -1,32 +1,29 @@
-# Maintainer: Leo Mao <leomaoyw at gmail dot com>
+# Maintainer: Hao Long <aur@esd.cc>
+# Contributor: Leo Mao <leomaoyw at gmail dot com>
+
 pkgname=python-gym
 _pkgname=gym
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="A toolkit for developing and comparing reinforcement learning algorithms."
 arch=('any')
-_github='openai/gym'
-_pypiname='gym'
 url="https://gym.openai.com/"
 license=('MIT')
-depends=('python' 'python-scipy' 'python-numpy' 'python-six' 'python-pyglet' 'python-cloudpickle')
-optdepends=(
-  'python-atari-py'
-  'python-pillow'
-  'python-opengl'
-)
+depends=('python-scipy' 'python-numpy' 'python-six' 'python-pyglet' 'python-cloudpickle')
+optdepends=('python-atari-py' 'python-pillow' 'python-opengl')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/${_github}/archive/${pkgver}.tar.gz")
-md5sums=('bbd7b8ed85bf5fb951b13856ba6009dd')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
+        "https://raw.githubusercontent.com/openai/gym/master/LICENSE.md")
+sha256sums=('bb495aa56995b01274a2213423bf5ba05b8f4fd51c6dc61e9d4abddd1189718e'
+            '35a71b00eb145a1f5102fc80f383cf5fe915e55d677aa3f7ac6f9ea1f56a7040')
 
 build() {
-  msg "Building Python 3"
-  cd "$srcdir/${_pkgname}-${pkgver}"
+  cd ${_pkgname}-${pkgver}
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir"/ --optimize=1 --skip-build
-  install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.md"
+  cd ${_pkgname}-${pkgver}
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 ${srcdir}/LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.md"
 }
