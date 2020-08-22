@@ -2,7 +2,7 @@
 
 pkgname=pantalaimon
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Pantalaimon is an end-to-end encryption aware Matrix reverse proxy daemon.'
 arch=('any')
 url='https://github.com/matrix-org/pantalaimon'
@@ -15,6 +15,10 @@ sha256sums=('dd7c2356cf1abddfcdf9ba35e2f0baffa19faded9a193c2bb5a301fc1f32b728'
 
 build() {
         cd "${pkgname}-${pkgver}"
+	#remove dumb version dependency kurwa mac ja pierdole
+	sed -i -e 's/, < 0.15//g' setup.py
+	#Increase the max POST size
+	sed -i -e 's/app = web.Application()/app = web.Application(client_max_size=1024 ** 2 * 100)/g' pantalaimon/main.py
 }
 
 package() {
