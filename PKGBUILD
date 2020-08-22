@@ -123,22 +123,22 @@ prepare() {
 
   for _dep in buildtools common
   do
-    mv --force --no-target-directory --verbose "${_dep}" "skia/${_dep}"
+    ln --force --symbolic --verbose "../${_dep}" skia
   done
 
   for _dep in angle2 dawn dng_sdk egl-registry expat freetype harfbuzz icu imgui opencl-registry \
               libjpeg-turbo libpng libwebp lua microhttpd opencl-lib opengl-registry piex \
               sdl sfntly spirv-cross spirv-headers spirv-tools swiftshader zlib wuffs
   do
-    mv --force --no-target-directory --verbose "${_dep}" "skia/third_party/externals/${_dep}"
+    ln --force --symbolic --verbose "../../../${_dep}" skia/third_party/externals
   done
 
   chmod u=rwx,g=rx,o=rx --verbose gn
   mv --verbose gn skia/bin/gn
   cp --verbose skia/bin/gn skia/buildtools/linux64/gn
 
-  mkdir --verbose binsub
-  ln --symbolic /usr/bin/python2 binsub/python
+  mkdir --parents --verbose binsub
+  ln --force --symbolic /usr/bin/python2 binsub/python
 }
 
 build() {
