@@ -1,4 +1,6 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
+
 pkgname=notp-bin
 pkgver=2.1.0
 pkgrel=1
