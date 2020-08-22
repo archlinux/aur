@@ -12,6 +12,14 @@ if [ -z "$NW_VERSION" ]; then
     exit 1
 fi
 
+TEMP_DIR=$(mktemp -d)
+trap "{ rm -rf $TEMP_DIR; }" EXIT
+
+# prepare python2
+# fix https://github.com/nwjs/nw-gyp/issues/122
+ln -sf "$(which python2)" "$TEMP_DIR/python"
+export PATH=$TEMP_DIR:$PATH
+
 node_modules="$NW_PACKAGE_DIR/node_modules"
 dry_run="n"
 

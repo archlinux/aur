@@ -64,11 +64,6 @@ build() {
     _log "copy node exectuable"
     cp "$(which node)" "${srcdir}/node.${_node_version}"
 
-    # prepare python2
-    # fix https://github.com/nwjs/nw-gyp/issues/122
-    ln -sf $(which python2) ${srcdir}/python 
-    export PATH=${srcdir}:$PATH
-
     # run fix scripts
     export NW_PACKAGE_DIR="${srcdir}/wechat_devtools/code/package.nw"
     export NW_VERSION=$_nwjs_ver
