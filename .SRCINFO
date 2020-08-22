@@ -1,7 +1,7 @@
 pkgbase = pd-l2ork-git
 	pkgdesc = L2Ork (Linux Laptop Orchestra) version of PureData (git version)
-	pkgver = r1771.42cedfa8
-	pkgrel = 2
+	pkgver = r1790.15f00bbf
+	pkgrel = 1
 	url = http://l2ork.music.vt.edu/main/?page_id=56
 	install = pd-l2ork.install
 	arch = i686
@@ -54,9 +54,7 @@ pkgbase = pd-l2ork-git
 	conflicts = pd-l2ork
 	options = !makeflags
 	source = pd-l2ork-git::git+https://github.com/pd-l2ork/pd.git
-	source = RTcmix-pd-LCPLAY-stabilize.patch
 	md5sums = SKIP
-	md5sums = 39c53063dc18681f29b12c08d9c453aa
 
 pkgname = pd-l2ork-git
 

@@ -11,8 +11,8 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=pd-l2ork-git
-pkgver=r1771.42cedfa8
-pkgrel=2
+pkgver=r1790.15f00bbf
+pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData (git version)"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
 arch=('i686' 'x86_64')
@@ -29,10 +29,8 @@ provides=('pd-l2ork')
 conflicts=('pd-l2ork')
 install=pd-l2ork.install
 options=('!makeflags')
-source=("$pkgname::git+https://github.com/pd-l2ork/pd.git"
-	"RTcmix-pd-LCPLAY-stabilize.patch")
-md5sums=('SKIP'
-         '39c53063dc18681f29b12c08d9c453aa')
+source=("$pkgname::git+https://github.com/pd-l2ork/pd.git")
+md5sums=('SKIP')
 
 # Run 'makepkg buildopt=-b' for an incremental build (this skips recompiling
 # Gem which takes a *long* time to build). Note that this will only produce a
@@ -52,8 +50,6 @@ prepare() {
   git submodule foreach git checkout .
   # check out the latest source of all submodules
   git submodule update --init
-  # make the sources compile with gcc 6.1+
-  cd $srcdir/$pkgname/l2ork_addons/rtcmix-in-pd && patch -Np1 < $srcdir/RTcmix-pd-LCPLAY-stabilize.patch
 }
 
 build() {
