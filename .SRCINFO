@@ -1,0 +1,15 @@
+pkgbase = firstsnow
+	pkgdesc = Prequel spinoff of the visual novel Twofold, focused on Allison and Eileen’s first months in community college
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://firstsnow.salty-salty-studios.com/
+	arch = any
+	license = custom
+	depends = renpy
+	source = https://dl.salty-salty-studios.com/firstsnow/1.0/[SSS]_First_Snow_v1.0_[linux][382AD630].tar
+	source = firstsnow
+	sha256sums = 722fe8c84d200fdb4f6482ba6b6a51a133144b19c12c436eeb4606f28b840fd3
+	sha256sums = 363899f509c23ec65d563415883959a2a9e887a688cfeafbf6e40ade72dbe58c
+
+pkgname = firstsnow
+
