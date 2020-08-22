@@ -8,7 +8,7 @@ pkgbase = kermit
 	makedepends = cmake
 	depends = gtk3>=3.18.9
 	depends = vte3>=0.42.5
-	source = https://github.com/orhun/kermit/archive/3.0.tar.gz
+	source = kermit-3.0.tar.gz::https://github.com/orhun/kermit/archive/3.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = kermit

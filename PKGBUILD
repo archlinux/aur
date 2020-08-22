@@ -1,4 +1,6 @@
-# Maintainer: orhun <github.com/orhun>
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# https://github.com/orhun/pkgbuilds
+
 pkgname=kermit
 pkgdesc="A VTE-based, simple and froggy terminal emulator"
 pkgver=3.0
