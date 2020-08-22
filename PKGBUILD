@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Jacob Mischka <jacob@mischka.me>
 pkgname=gnomecast-git
 pkgver=1.9.9.r174.b87b597
