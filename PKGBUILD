@@ -1,4 +1,5 @@
 pkgname=st-luca
+_originalpkgname=st
 pkgver=0.8.4
 pkgrel=1
 pkgdesc='Lucas Version of Suckless terminal with (all) scrollback and newterm patches'
@@ -10,7 +11,7 @@ _patches=("https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e
           "https://st.suckless.org/patches/scrollback/st-scrollback-mouse-20191024-a2c479c.diff"
           "https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-20200416-5703aa0.diff"
           "https://raw.githubusercontent.com/Quoteme/st/master/st-newterm-scrollbackfix.diff")
-source=(https://dl.suckless.org/st/st-$pkgver.tar.gz
+source=(https://dl.suckless.org/$originalpkgname/$originalpkgname-$pkgver.tar.gz
         "${_patches[@]}"
 	)
 sha256sums=('d42d3ceceb4d6a65e32e90a5336e3d446db612c3fbd9ebc1780bc6c9a03346a6'
@@ -19,7 +20,7 @@ sha256sums=('d42d3ceceb4d6a65e32e90a5336e3d446db612c3fbd9ebc1780bc6c9a03346a6'
             'cb87eb654985da46ff63663407184402393ad3d3013c8795570552fe56a15b9d'
             '321cd37aca1cc99c47754d773e13bd8b9c7162f3b9f01e946495b594422a38c6')
 
-_sourcedir=$pkgname-$pkgver
+_sourcedir=$originalpkgname-$pkgver
 _makeopts="--directory=$_sourcedir"
 
 prepare() {
@@ -68,10 +69,10 @@ build() {
 package() {
   local installopts='--mode 0644 -D --target-directory'
   local shrdir="$pkgdir/usr/share"
-  local licdir="$shrdir/licenses/$pkgname"
-  local docdir="$shrdir/doc/$pkgname"
+  local licdir="$shrdir/licenses/$originalpkgname"
+  local docdir="$shrdir/doc/$originalpkgname"
   make $_makeopts PREFIX=/usr DESTDIR="$pkgdir" install
   install $installopts "$licdir" "$_sourcedir/LICENSE"
   install $installopts "$docdir" "$_sourcedir/README"
-  install $installopts "$shrdir/$pkgname" "$_sourcedir/st.info"
+  install $installopts "$shrdir/$originalpkgname" "$_sourcedir/st.info"
 }
