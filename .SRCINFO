@@ -1,6 +1,6 @@
 pkgbase = llvm-amdgpu
 	pkgdesc = Radeon Open Compute - LLVM toolchain (llvm, clang, lld)
-	pkgver = 3.5.1
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/llvm-project
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = llvm-amdgpu
 	makedepends = cmake
 	makedepends = python
 	depends = z3
-	source = llvm-amdgpu-3.5.1.tar.gz::https://github.com/RadeonOpenCompute/llvm-project/archive/rocm-3.5.1.tar.gz
-	sha256sums = 9ccfdd2b97a2848856cda1f67212145a5b8e2c6b802530c84341ea6e33658658
+	source = llvm-amdgpu-3.7.0.tar.gz::https://github.com/RadeonOpenCompute/llvm-project/archive/rocm-3.7.0.tar.gz
+	sha256sums = 3e2542ce54b91b5c841f33d542143e0e43eae95e8785731405af29f08ace725b
 
 pkgname = llvm-amdgpu
 
