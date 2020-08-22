@@ -1,9 +1,10 @@
 # Maintainer: dudemanguy <random342@airmail.cc>
 # Contributor: Vaporeon <vaporeon@vaporeon.io>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.64.4
+pkgver=2.64.5
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
@@ -19,7 +20,7 @@ optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-repor
             'libelf: gresource inspection tool')
 options=('!docs')
 license=(LGPL2.1)
-_commit=551bd5c1d1db1aa10d71acb9cde6a088a374d8bb  # tags/2.64.4^0
+_commit=2560f61370a143e6a056b99d1e918a58f40e3710  # tags/2.64.5^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         noisy-glib-compile-schemas.diff
         glib-compile-schemas.hook
