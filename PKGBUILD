@@ -1,24 +1,28 @@
 # Maintainer: jojii <jojii@gmx.net>
 pkgname=rsv
-pkgver=1.2.0
-pkgrel=2
-pkgdesc="Runits sv command rewritten in rust with additional features"
-makedepends=('rust' 'cargo')
-arch=('x86_64')
-license=('MIT')
-url="https://github.com/JojiiOfficial/rsv"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JojiiOfficial/rsv/archive/v${pkgver}.tar.gz")
-sha256sum=('SKIP')
-validpgpkeys=("A32580B1BFA49E9C1CEACB28215E57FE946BC9C2") # Jojii s <jojii@gmx.net>
-md5sums=('ccfe954edf34f2fabe16d5ae5ce99b58')
+pkgver=1.1.0
+pkgrel=1
+pkgdesc="The runit sv command rewritten in rust with additional features"
+license=("GPL-3.0")
+arch=("x86_64")
+makedepends=("cargo")
+provides=("rsv")
+
+pkgver() {
+    (git describe --long --tags || echo "$pkgver") | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    cargo build --release --locked
+    export CARGO_TARGET_DIR="${srcdir}/${pkgname}-${pkgver}"
+    cargo build --release
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    return 0
+    export CARGO_TARGET_DIR="${srcdir}/${pkgname}-${pkgver}"
+    cd ..
+    usrdir="$pkgdir/usr"
+    mkdir -p $usrdir
+    cargo install --path . --root "$usrdir"
+    rm -f $usrdir/.crates.toml
 }
+
