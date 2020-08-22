@@ -7,12 +7,13 @@
 
 pkgname=discord-canary
 pkgver=0.0.111
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure."
 arch=('x86_64')
 url='https://discordapp.com/'
 provides=('discord-canary')
 license=('custom')
+makedepends=('asar')
 depends=('gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
 optdepends=('libpulse: For pulseaudio support'
             'noto-fonts-emoji: Google font for emoji support.'
@@ -26,6 +27,13 @@ sha256sums=('c416e42685837926c24a914941ccae5bd313ae4fc82fe7fb6e9e3b7e0159f559'
             '7119a3345162d39bf86813d19546b488a1bdba12d38c3d39749f86bd587f0a0c')
 
 package() {
+    # Patch
+    rm -rf "${srcdir}/unpack"
+    mkdir "${srcdir}/unpack"
+    asar extract "${srcdir}/DiscordCanary/resources/app.asar" "${srcdir}/unpack"
+    sed -i 's/emit..update-manually.*)/emit("update-not-available")/' "${srcdir}/unpack/app_bootstrap/hostUpdater.js"
+    asar pack "${srcdir}/unpack" "${srcdir}/DiscordCanary/resources/app.asar"
+
     # Install the main files.
     install -d "${pkgdir}/opt/${pkgname}"
     cp -a "${srcdir}/DiscordCanary/." "${pkgdir}/opt/${pkgname}"
