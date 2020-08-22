@@ -1,0 +1,21 @@
+pkgbase = xmonad-extras-git
+	pkgdesc = Third party extensions for xmonad with wacky dependencies
+	pkgver = r154.b2772a5
+	pkgrel = 1
+	url = http://hackage.haskell.org/package/xmonad-extras
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = git
+	depends = haskell-x11>=1.4.3
+	depends = haskell-containers
+	depends = haskell-mtl
+	depends = xmonad-contrib
+	depends = haskell-alsa-mixer
+	provides = xmonad-extras
+	conflicts = xmonad-extras
+	source = git://github.com/xmonad/xmonad-extras
+	md5sums = SKIP
+
+pkgname = xmonad-extras-git
+
