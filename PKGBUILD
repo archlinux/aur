@@ -2,12 +2,12 @@
 pkgname=picgo
 _name=PicGo
 pkgver=2.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple & beautiful tool for pictures uploading built by electron-vue"
 arch=('x86_64' 'i686')
 url="https://github.com/Molunerfinn/PicGo"
 license=('MIT')
-depends=('electron6')
+depends=('electron8')
 makedepends=('npm')
 provides=('picgo')
 conflicts=('picgo-appimage')
@@ -18,7 +18,7 @@ sha256sums=('19d140f45bc788b2782408f7dd8cde17106eabd2f27b7905bb035610f826bad7')
 
 prepare() {
 	cd "$_name-$pkgver"
-	electronDist="\/usr\/lib\/electron6"
+	electronDist="\/usr\/lib\/electron8"
 	sed -i "s/productName: 'PicGo',/productName: 'PicGo', electronDist: '$electronDist',/" vue.config.js
 	yarn
 }
@@ -36,7 +36,7 @@ package() {
 
 	# Install start script
 	echo "#!/usr/bin/env sh
-exec electron6 /usr/share/picgo/app.asar \$@
+exec electron8 /usr/share/picgo/app.asar \$@
 " > "$srcdir/picgo.sh"
 	install -Dm755 "$srcdir/picgo.sh" "$pkgdir/usr/bin/picgo"
 
