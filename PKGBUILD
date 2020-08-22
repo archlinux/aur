@@ -1,29 +1,32 @@
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Cravix < dr dot neemous at gmail dot org >
 # Contributor: Ronald van Haren <ronald.archlinux.org>
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 
 # IMPORTANT!!! Modify this list for your specific installation
 _module_list=(
   'alarm'
-# 'cpu'                  # not compatible with Enlightenment < 0.19.99
+  'cpu'
+  'desksanity'
 # 'diskio'               # not compatible with EFL >= 1.13
   'eenvader.fractal'
 # 'elev8'                # adds dep on v8, not compatible with v8 >= 3.19.16
 # 'elfe'                 # not compatible with Enlightenemnt >= 0.19.0
 # 'empris'               # not compatible with Enlightenment >= 0.19.0, adds dep on e_dbus
-  'everything-places'
-  'everything-websearch' # adds dep on e_dbus
+# 'everything-places'    # fails to compile
+# 'everything-websearch' # fails to compile, adds dep on e_dbus
+  'eweather'
 # 'forecasts'            # not compatible with Enlightenment < 0.19.99
 # 'mail'                 # not compatible with Enlightenment >= 0.19.0
-# 'mem'                  # not compatible with Enlightenment < 0.19.99
+  'mem'
 # 'moon'                 # not compatible with Enlightenment >= 0.19.0
-  'mpdule'               # not compatible with Enlightenment >= 0.19.99, adds dep on libmpd
-# 'net'                  # not compatible with Enlightenment < 0.19.99
+# 'mpdule'               # not compatible with Enlightenment >= 0.19.99, adds dep on libmpd
+  'net'
 # 'news'                 # not compatible with Enlightenment >= 0.19.0
-  'penguins'
+# 'penguins'		 # fails to compile
 # 'photo'                # not compatible with Enlightenment >= 0.18.0
 # 'share'                # not compatible with Enlightenment >= 0.19.0, adds dep on libbsd
-# 'tclock'               # not compatible with Enlightenment < 0.19.99
+  'tclock'
 # 'wallpaper2'           # not compatible with Enlightenment < 0.19.99
   'wlan'
 )
@@ -35,7 +38,7 @@ containsElement () {
 }
 
 pkgname=e-modules-extra-git
-pkgver=20140921
+pkgver=20200822
 pkgrel=1
 pkgdesc="Enlightenment modules: Extra unsupported modules in Git not already packaged elsewhere"
 arch=('i686' 'x86_64')
