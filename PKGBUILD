@@ -4,9 +4,8 @@
 # Contributor: TDY <tdy@gmx.com>
 
 pkgname=moneymanagerex-git
-_gitname=moneymanagerex
 pkgver=1.3.5
-pkgrel=5
+pkgrel=6
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest stable version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -21,7 +20,7 @@ source=(git+https://github.com/moneymanagerex/moneymanagerex.git#tag=v$pkgver)
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$_gitname"
+  cd "${pkgname%-git}"
   mkdir -p build
   git submodule update --init
   # TODO Workaround: https://github.com/moneymanagerex/moneymanagerex/issues/2685
@@ -29,13 +28,13 @@ prepare() {
 }
 
 build() {
-  cd "$_gitname/build"
+  cd "${pkgname%-git}/build"
   cmake -DCMAKE_BUILD_TYPE=Release -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 ..
   cmake --build . --target package
 }
 
 package() {
-  cd "$_gitname/build"
+  cd "${pkgname%-git}/build"
 
   make DESTDIR="${pkgdir}" install
 }
