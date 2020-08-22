@@ -2,7 +2,7 @@
 
 pkgname=zrepl
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='One-stop ZFS backup & replication solution'
 arch=('x86_64')
 url='https://zrepl.github.io/'
@@ -35,10 +35,15 @@ package() {
     install -d "${pkgdir}/usr/share/licenses/${pkgname}"
     install -d "${pkgdir}/usr/share/${pkgname}"
     install -d "${pkgdir}/usr/lib/systemd/system"
+    install -d "${pkgdir}/usr/share/bash-completion/completions"
+    install -d "${pkgdir}/usr/share/zsh/site-functions"
 
     install -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -m644 "dist/systemd/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     cp -r "config/samples" "${pkgdir}/usr/share/${pkgname}/samples"
+
+    "${pkgdir}/usr/bin/${pkgname}" gencompletion zsh "${pkgdir}/usr/share/zsh/site-functions/_zrepl"
+    "${pkgdir}/usr/bin/${pkgname}" gencompletion bash "${pkgdir}/usr/share/bash-completion/completions/zrepl"
 
     sed -i s:/usr/local/bin/:/usr/bin/:g "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 }
