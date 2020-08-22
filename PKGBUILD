@@ -10,7 +10,7 @@ _patches=("https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e
           "https://st.suckless.org/patches/scrollback/st-scrollback-mouse-20191024-a2c479c.diff"
           "https://st.suckless.org/patches/scrollback/st-scrollback-mouse-altscreen-20200416-5703aa0.diff"
           "https://raw.githubusercontent.com/Quoteme/st/master/st-newterm-scrollbackfix.diff")
-source=(https://dl.suckless.org/$pkgname/$pkgname-$pkgver.tar.gz
+source=(https://dl.suckless.org/st/st-$pkgver.tar.gz
         "${_patches[@]}"
 	)
 sha256sums=('d42d3ceceb4d6a65e32e90a5336e3d446db612c3fbd9ebc1780bc6c9a03346a6'
