@@ -7,7 +7,7 @@ pkgdesc='Convert OCaml parsetrees between different major versions - 1.7.x versi
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$pkgname"
 license=('custom:LGPL2.1 with linking exception')
-depends=('glibc' 'ocaml>=4.02.3' 'ocaml-ppx_derivers' 'ocaml-result')
+depends=('ocaml>=4.02.3' 'ocaml-ppx_derivers' 'ocaml-result')
 makedepends=('dune>=1.9.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
