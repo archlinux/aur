@@ -1,17 +1,21 @@
 pkgbase = nps
 	pkgdesc = a lightweight, high-performance, powerful intranet penetration proxy server, with a powerful web management terminal.
-	pkgver = 0.26.7
-	pkgrel = 2
+	pkgver = 0.26.8
+	pkgrel = 1
 	url = https://github.com/ehang-io/nps
 	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = arm
 	license = GPL3
 	makedepends = go
 	source = nps.service
 	source = npc.service
-	source = nps-0.26.7.tar.gz::https://github.com/ehang-io/nps/archive/v0.26.7.tar.gz
+	source = nps-0.26.8.tar.gz::https://github.com/ehang-io/nps/archive/v0.26.8.tar.gz
 	md5sums = a31b25cbee5112bb6518eb30ed99c9c8
 	md5sums = 19604ddc44a9be0b5ffe4e42d8b91ed0
-	md5sums = b53cd2a24d017a9fc5e6a7b8e101a456
+	md5sums = 832c49f201ae52ba21d4fdd79d55b02f
 
 pkgname = nps
 	backup = etc/nps/conf/.conf
