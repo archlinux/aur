@@ -1,7 +1,7 @@
-From 7e2e627ebf4d9f52afebb7dcda95429f68362f32 Mon Sep 17 00:00:00 2001
+From bab8f9d12fb7b534a6915cfef91b765603563238 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Tue, 18 Aug 2020 19:38:29 -0300
-Subject: [PATCH 16/16] UI: Destroy obs_display when becoming invisible
+Subject: [PATCH 15/20] UI: Destroy display when becoming invisible
 
 When a window is made invisible, then visible again, the
 obs_display is reused. Turns out, QT destroys the wl_surface
@@ -10,10 +10,13 @@ surface created on top of this wl_surface is not, and any
 attempt to attach a new buffer to it will crash OBS.
 
 Destroy the obs_display when becoming invisible, and when
-running as a Wayland client.
+running as a Wayland client. Also nullify the display
+variable on destruction, to avoid subclasses double-freeing
+the obs display.
 ---
  UI/qt-display.cpp | 13 ++++++++++++-
- 1 file changed, 12 insertions(+), 1 deletion(-)
+ UI/qt-display.hpp |  1 +
+ 2 files changed, 13 insertions(+), 1 deletion(-)
 
 diff --git a/UI/qt-display.cpp b/UI/qt-display.cpp
 index 685ee6f9..fc83e0e0 100644
@@ -47,6 +50,18 @@ index 685ee6f9..fc83e0e0 100644
  
  		if (!display) {
  			CreateDisplay();
+diff --git a/UI/qt-display.hpp b/UI/qt-display.hpp
+index a2e5a3ef..50f891f8 100644
+--- a/UI/qt-display.hpp
++++ b/UI/qt-display.hpp
+@@ -25,6 +25,7 @@ signals:
+ public:
+ 	OBSQTDisplay(QWidget *parent = nullptr,
+ 		     Qt::WindowFlags flags = nullptr);
++	~OBSQTDisplay() { display = nullptr; }
+ 
+ 	virtual QPaintEngine *paintEngine() const override;
+ 
 -- 
 2.28.0
 

@@ -1,7 +1,7 @@
-From 79ec8d09ce00ae6645604a3fd7562832c2400790 Mon Sep 17 00:00:00 2001
+From 0c83de87856f6bffb5744353afc13f624836c792 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Tue, 7 Apr 2020 23:17:02 -0300
-Subject: [PATCH 09/16] UI: Set the Unix platform on startup
+Subject: [PATCH 09/20] UI: Set the Unix platform on startup
 
 Move the OBS_USE_EGL environment variable check to obs-app.cpp,
 and set the OBS platform to be either OBS_NIX_PLATFORM_X11_GLX

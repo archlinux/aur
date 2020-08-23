@@ -1,7 +1,7 @@
-From 6a15695f885d372909c3eeadd091abd640fca937 Mon Sep 17 00:00:00 2001
+From f4dc111b8acbdd2be0bb077f1ac8d703d92d497c Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Mon, 9 Mar 2020 13:19:31 -0300
-Subject: [PATCH 02/16] libobs-opengl: Rename gl-x11.c to gl-x11-glx.c
+Subject: [PATCH 02/20] libobs-opengl: Rename gl-x11.c to gl-x11-glx.c
 
 This is in preparation for the future abstraction layer (gl-x11-*)
 and also to match the actual name of the windowing system. When
