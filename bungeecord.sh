@@ -26,6 +26,7 @@ case $# in
 		# If one, check wheter it's a command or a subserver
 		if [ "$1" == "start"   ] ||
 		   [ "$1" == "stop"    ] ||
+		   [ "$1" == "status"  ] ||
 		   [ "$1" == "restart" ] ||
 		   [ "$1" == "console" ] ||
 		   [ "$1" == "command" ] ||
