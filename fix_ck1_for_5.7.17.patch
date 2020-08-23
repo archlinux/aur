@@ -1,0 +1,14 @@
+Thanks to ooo for pointing this out
+https://aur.archlinux.org/packages/linux-ck/#comment-762177
+
+--- a/patch-5.7-ck1	2020-06-10 00:59:29.000000000 +0300
++++ b/patch-5.7-ck1	2020-08-23 13:42:46.304190376 +0300
+@@ -12162,7 +12162,7 @@
+ @@ -211,7 +217,7 @@ unsigned long schedutil_cpu_util(int cpu, unsigned long util_cfs,
+  	struct rq *rq = cpu_rq(cpu);
+  
+- 	if (!IS_BUILTIN(CONFIG_UCLAMP_TASK) &&
++ 	if (!uclamp_is_used() &&
+ -	    type == FREQUENCY_UTIL && rt_rq_is_runnable(&rq->rt)) {
+ +	    type == FREQUENCY_UTIL && rt_rq_runnable(rq)) {
+  		return max;
