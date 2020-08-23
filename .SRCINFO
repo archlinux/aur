@@ -1,0 +1,21 @@
+pkgbase = indicator-weather-git
+	pkgdesc = Comprehensive weather notification system, implemented using the indicator applet API (Canonical Ayatana Project)
+	pkgver = r579.328ad88
+	pkgrel = 1
+	url = https://launchpad.net/weather-indicator
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python2-distutils-extra
+	depends = libappindicator-gtk3
+	depends = libgweather
+	depends = python2-pywapi
+	depends = python2-pytz
+	optdepends = python2-unidecode: for ASCII transliterations of Unicode text
+	provides = indicator-weather
+	conflicts = indicator-weather
+	source = indicator-weather-git::git+https://git.launchpad.net/~khurshid-alam/weather-indicator/+git/trunk
+	md5sums = SKIP
+
+pkgname = indicator-weather-git
+
