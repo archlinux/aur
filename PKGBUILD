@@ -5,8 +5,8 @@
 
 #pkgbase=linux-mainline               # Build stock -ARCH kernel
 pkgbase=linux-mainline-bootsplash       # Build kernel with a different name
-_tag=v5.8
-pkgver=5.8
+_tag=v5.9-rc1
+pkgver=5.9rc1
 pkgrel=1
 pkgdesc="Linux Mainline - with bootsplash support"
 arch=(x86_64)
@@ -42,10 +42,10 @@ source=(
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
+  'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'c5d24fdb54ed0672d0e2b258c4db8014d66c9a798c88e16ac1c4e188758a9384'
+            '457d5c9717048cd5334ba3d14dfb37699ac1d2c6dc2fd1df93adb487d6921f2f'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             'a504f6cf84094e08eaa3cc5b28440261797bf4f06f04993ee46a20628ff2b53c'
             'e096b127a5208f56d368d2cb938933454d7200d70c86b763aa22c38e0ddb8717'
