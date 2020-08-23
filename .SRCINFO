@@ -20,6 +20,7 @@ pkgbase = dv-runtime
 	depends = lz4
 	depends = zstd
 	source = https://gitlab.com/inivation/dv/dv-runtime/-/archive/1.2.3/dv-runtime-1.2.3.tar.gz
+	sha256sums = d38b69edd5a7136c6b423b175c4c8b5887dc9c831e27fd3c2c59a099818e3794
 
 pkgname = dv-runtime
 
