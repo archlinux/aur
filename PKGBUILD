@@ -3,7 +3,7 @@
 _lua_version=5.4
 
 pkgname=fennel-git
-pkgver=r1027.a39c4d0
+pkgver=r1047.beafb1e
 pkgrel=1
 pkgdesc="A Lua Lisp language"
 arch=('x86_64')
@@ -18,22 +18,22 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname%-git}::git+https://github.com/bakpakin/Fennel.git")
+source=('git+https://git.sr.ht/~technomancy/fennel')
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "${srcdir}/fennel"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "${srcdir}/fennel"
 	make fennel fennel.lua fennelview.lua
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "${srcdir}/fennel"
 
 	install -Dm644 "fennel.lua" "fennelview.lua" \
 		-t "${pkgdir}/usr/lib/lua/${_lua_version}"
