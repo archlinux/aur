@@ -2,7 +2,7 @@
 # Contributor: Aaron Blair <aaron@aaronpb.me>
 
 pkgname=subfinder
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='Subdomain discovery tool'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('go')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('bb5cee73d754cb92729eb4c446fd6cda87b4709e4e32996f5eedae7cb1967dfc')
+sha256sums=('5a98284a509f848934019e2152ac93b9cb1a5cc8613e3346df79ed80f2045260')
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
