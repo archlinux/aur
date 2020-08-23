@@ -1,0 +1,13 @@
+pkgbase = fcitx-table-flypy
+	pkgdesc = XiaoHe shuangpin table for fcitx, also known as flypy or xhup.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = http://www.flypy.com
+	arch = any
+	license = GPL
+	depends = fcitx
+	source = git://github.com/rydesun/fcitx-table-flypy.git
+	md5sums = SKIP
+
+pkgname = fcitx-table-flypy
+
