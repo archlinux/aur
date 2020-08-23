@@ -1,26 +1,26 @@
+# Maintainer:  Amanoel Dawod <amoka at amanoel dot com>
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
-# Maintainer: Amanoel Dawod <amoka at amanoel dot com>
 # Contributor: Yichao Yu <yyc1992@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: Vincent Grande <shoober420@gmail.com>
 
 pkgname=fontconfig-git
-pkgver=2.13.91+18+g01e4f08
+pkgver=2.13.91+63+g9133e79
 pkgrel=1
-pkgdesc="A library for configuring and customizing font access (from git)"
-arch=('x86_64')
+pkgdesc="Library for configuring and customizing font access (from git)"
 url="https://www.freedesktop.org/wiki/Software/fontconfig/"
+arch=('x86_64')
 license=('custom')
-depends=('expat' 'freetype2')
-makedepends=('git' 'autoconf-archive' 'gperf' 'python-lxml' 'python-six' 'json-c')
+depends=('expat' 'libfreetype.so')
+makedepends=('git' 'autoconf-archive' 'gperf' 'python-lxml' 'python-six' 'json-c' 'expat' 'freetype2')
+provides=('fontconfig' 'libfontconfig.so')
 conflicts=('fontconfig')
-provides=('fontconfig')
 install=fontconfig-git.install
+backup=(etc/fonts/fonts.conf)
 source=("git+https://anongit.freedesktop.org/git/fontconfig"
          fontconfig-git.hook)
 sha256sums=('SKIP'
-            '672f6a1c5e164671955ce807e670306194142a1794ce88df653aa717a972e274')
+            '8883f7e6e9d574ed52b89256507a6224507925715ddc85b3dfab9683df2f1e25')
 
 pkgver() {
 	cd fontconfig
@@ -37,7 +37,6 @@ build() {
 	./configure --prefix=/usr \
 	  --sysconfdir=/etc \
 	  --with-templatedir=/etc/fonts/conf.avail \
-	  --with-xmldir=/etc/fonts \
 	  --localstatedir=/var \
 	  --disable-static \
 	  --disable-docs \
@@ -46,19 +45,10 @@ build() {
 	make
 }
 
-#check() {
-#	cd fontconfig
-#	make -k check
-#}
-
-_install_conf() {
-	install -m644 "$1" "$pkgdir/etc/fonts/conf.avail"
-	ln -s "../conf.avail/${1##*/}" "$pkgdir/etc/fonts/conf.d"
-}
-
 package() {
 	cd fontconfig
 	make DESTDIR="$pkgdir" install
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/fontconfig/COPYING"
-	install -Dm644 ../fontconfig-git.hook "$pkgdir/usr/share/libalpm/hooks/fontconfig-git.hook"
+
+	install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 ../*.hook
+	install -Dt "$pkgdir/usr/share/licenses/fontconfig" -m644 COPYING
 }
