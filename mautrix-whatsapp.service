@@ -1,0 +1,13 @@
+[Unit]
+Description=Matrix-WhatsApp puppeting bridge
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+Type=simple
+User=synapse
+Group=synapse
+ExecStart=/usr/bin/mautrix-whatsapp -c /etc/synapse/mautrix-whatsapp/mautrix-whatsapp.yaml
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,3 @@
+post_install() {
+  echo "-- See example config and service files: /usr/share/mautrix-whatsapp/"
+}
