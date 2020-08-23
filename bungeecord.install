@@ -18,10 +18,11 @@ post_install() {
 	chown -R ${_user}:${_user} "${_server_root}"
 
 	echo "The server data is stored under ${_server_root} and the server runs as ${_user} user to increase security."
-	echo "Use the ${_game} script under /usr/bin/${_game}d to start, stop or backup each individual server, specifying its name."
+	echo "Use the ${_game} script under /usr/bin/${_game} to start, stop or backup each individual server, specifying its name."
 	echo "Adjust the global configuration file under /etc/conf.d/${_game} to your liking."
         echo "You can create as many servers as you want. Just create a servername folder and servername.conf under ${_server_root}/servers for each one, tweak the configuration to your liking and put whichever server software you need (spigot, paper, etc)."
-        echo "By default, bungeecord is installed under ${_server_root}/servers/proxy"
+        echo "By default, ${_game} is installed as subserver proxy, under ${_server_root}/servers/proxy"
+        echo "You can start it by using ${_game} proxy start"
 }
 
 post_upgrade() {
