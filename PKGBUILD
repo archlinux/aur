@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=6.82e
-pkgrel=3
+pkgrel=4
 epoch=29
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,11 +12,11 @@ groups=('jlink')
 depends=('glibc' 'libudev0-shim')
 source_x86_64=("JLink_Linux_${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("JLink_Linux_${pkgver/./}_i686.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_i386.tgz")
-source_armv7h=("https://www.segger.com/downloads/JLink_Linux_arm.tgz")
+source_armv7h=("JLink_Linux_${pkgver/./}_arm.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V${pkgver/./}_arm.tgz")
 source=("99-jlink.rules.patch")
 md5sums_i686=('0b8458d06e293c1990b417c09b3dd0c1')
 md5sums_x86_64=('b51bfc45719c0c44a28e9338b5e6b743')
-md5sums_armv7h=('d41d8cd98f00b204e9800998ecf8427e')
+md5sums_armv7h=('6e2ce839500ad83825e1123a09579f2d')
 md5sums=('a57d93b791581c1f36e4c672303bb85d')
 install=$pkgname.install
 url="https://www.segger.com/jlink-software.html"
@@ -29,8 +29,10 @@ prepare() {
     # Change src path name
     if [ ${CARCH} = "i686" ]; then
         mv JLink_Linux_V${pkgver/./}_i386 JLink
-    else
-        mv JLink_Linux_V${pkgver/./}_x86_64 JLink
+    else if [ ${CARCH} = "x86_64" ]; then
+             mv JLink_Linux_V${pkgver/./}_x86_64 JLink
+         else mv JLink_Linux_V${pkgver/./}_arm JLink
+    	 fi
     fi
 }
 
@@ -47,7 +49,10 @@ package(){
     cd "${srcdir}/JLink"
 
     # Bulk copy everything
-    cp --preserve=mode -r J* Doc Samples ETC Devices ThirdParty README.txt GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
+    if [ ${CARCH} = "armv7h" ]; then
+        cp --preserve=mode -r J* Devices README.txt GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
+    else cp --preserve=mode -r J* Doc Samples ETC Devices ThirdParty README.txt GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
+    fi
     if [ ${CARCH} = "x86_64" ]; then
         cp --preserve=mode -r x86 "${pkgdir}/opt/SEGGER/JLink"
     fi
