@@ -27,6 +27,6 @@ package() {
   cd "$srcdir/fetchcord"
   python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
-  install -Dm644 systemd/fetchcord.service "$pkgdir"/usr/lib/systemd/system/fetchcord.service
+  install -Dm644 systemd/fetchcord.service "$pkgdir"${HOME}/.config/systemd/user/fetchcord.service
   ln -sfn /usr/bin/fetchcord /home/*/.local/bin/
 }
