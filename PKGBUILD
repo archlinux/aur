@@ -12,8 +12,6 @@ license=(MIT)
 makedepends=(lib32-glib2 lib32-freetype2 lib32-cairo lib32-icu ragel git python
              meson harfbuzz)
 checkdepends=(python-fonttools python-setuptools)
-provides=(lib32-harfbuzz)
-conflicts=(lib32-harfbuzz)
 source=("git+https://github.com/harfbuzz/harfbuzz")
 sha256sums=('SKIP')
 

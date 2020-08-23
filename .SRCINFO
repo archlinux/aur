@@ -16,8 +16,6 @@ pkgbase = lib32-harfbuzz-git
 	makedepends = python
 	makedepends = meson
 	makedepends = harfbuzz
-	provides = lib32-harfbuzz
-	conflicts = lib32-harfbuzz
 	source = git+https://github.com/harfbuzz/harfbuzz
 	sha256sums = SKIP
 
