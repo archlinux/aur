@@ -1,5 +1,5 @@
 pkgname=librepo
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="Repodata downloading library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ checkdepends=('check' 'python-flask' 'python-gpgme' 'python-nose'
               'python-pyxattr' 'python-requests')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('3eee4084da834c264af2038f7bec4210')
+md5sums=('52521f10eb5aa0cabcf65cae540039c5')
 
 prepare() {
 	cd "$pkgname-$pkgver"
