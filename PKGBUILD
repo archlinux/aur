@@ -3,11 +3,11 @@
 pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
-pkgver='0.1.12'
+pkgver='0.1.13'
 pkgrel='0'
 epoch=
 arch=('i686' 'x86_64')
-url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
+url='https://github.com/X3n0m0rph59/eruption-roccat-vulcan'
 license=('GPL3+')
 groups=()
 depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus' 'libpulse')
@@ -21,7 +21,7 @@ backup=(etc/eruption/eruption.conf usr/share/eruption/scripts/lib/themes/* usr/s
 options=()
 install='eruption.install'
 changelog=
-source=('git+https://gitlab.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=bf17f5999987535e3a882d53af7a7325f277db85')
+source=('git+https://github.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=9d24f34c52af0fc56d112fafcadd32dd44fe0df4')
 noextract=()
 sha512sums=('SKIP')
 
@@ -48,6 +48,8 @@ package() {
     mkdir -p "$pkgdir/usr/lib/systemd/system"
     mkdir -p "$pkgdir/usr/lib/systemd/system-preset"
 
+    mkdir -p "$pkgdir/usr/lib/systemd/system-sleep"
+
     mkdir -p "$pkgdir/usr/lib/udev/rules.d/"
 
     mkdir -p "$pkgdir/etc/dbus-1/system.d"
@@ -63,6 +65,8 @@ package() {
 
     install -m 755 "target/release/eruption" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruptionctl" "$pkgdir/usr/bin/"
+
+    install -m 755 "support/systemd/eruption-suspend.sh" "$pkgdir/usr/lib/systemd/system-sleep/eruption"
 
     install -m 644 "support/config/eruption.conf" "$pkgdir/etc/eruption/"
 
@@ -213,6 +217,7 @@ package() {
     install -m 644 "support/profiles/vu-meter.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/swirl-perlin.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/swirl-perlin-blue-red.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/swirl-perlin-rainbow.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/swirl-perlin-red-yellow.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/swirl-turbulence.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/swirl-voronoi.profile" "$pkgdir/var/lib/eruption/profiles/"
