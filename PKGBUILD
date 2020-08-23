@@ -10,7 +10,7 @@ url="https://github.com/CadQuery/cadquery"
 license=('Apache')
 provides=('python-cadquery')
 conflicts=('python-cadquery')
-depends=('python-ocp' 'python')
+depends=(python-ocp python python-ezdxf)
 checkdepends=('python-pytest' 'python-pytest-cov')
 
 source=("git+https://github.com/CadQuery/cadquery.git")
@@ -23,8 +23,7 @@ pkgver() {
 
 check() {
   cd cadquery
-  #pytest -v --cov
-  pytest -v --cov || true
+  pytest -v --cov
 }
 
 build() {

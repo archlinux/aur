@@ -9,6 +9,7 @@ pkgbase = python-cadquery-git
 	checkdepends = python-pytest-cov
 	depends = python-ocp
 	depends = python
+	depends = python-ezdxf
 	provides = python-cadquery
 	conflicts = python-cadquery
 	source = git+https://github.com/CadQuery/cadquery.git
