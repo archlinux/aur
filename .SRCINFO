@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-autohide-battery
 	pkgdesc = GNOME Shell extension to hide battery icon, if battery is fully charged and AC is connected
 	pkgver = 17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ai/autohide-battery
 	install = gschemas.install
 	arch = any
