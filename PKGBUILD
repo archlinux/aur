@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bh322yoo@gmail.com>
 # Contributor: Byeonghoon Yoo <bh322yoo@gmail.com>
 
-pkgname=adguardhome-bin
+pkgname=adguardhome-binary
 _pkgname=AdGuardHome
 pkgver=0.103.3
 pkgrel=1
