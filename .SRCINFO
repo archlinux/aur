@@ -1,0 +1,22 @@
+pkgbase = simplicitystudio5-bin
+	pkgdesc = Design tools, documentation, software and support resources for EFM32™, EFM8™, 8051, Wireless MCUs and Wireless SoCs.
+	pkgver = 5
+	pkgrel = 1
+	url = https://www.silabs.com/products/development-tools/software/simplicity-studio
+	install = simplicitystudio5.install
+	arch = x86_64
+	license = unknown
+	depends = qt5-base
+	depends = libxtst
+	optdepends = wine: for IAR support
+	optdepends = lib32-qt4: for old tools like battery estimator
+	optdepends = qt4: for Segger tools like systemview
+	options = !strip
+	backup = opt//studio.ini
+	source = https://www.silabs.com/documents/login/software/SimplicityStudio-5.tgz
+	source = simplicitystudio5.desktop
+	sha256sums = SKIP
+	sha256sums = d0c7b8d6f8b9bcb8d900dfdb047d5a833aae2d131bc4c675e67aec7e3ac3f0e7
+
+pkgname = simplicitystudio5-bin
+

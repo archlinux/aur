@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=5
+Type=Application
+Terminal=false
+Exec=/usr/bin/simplicitystudio5
+Name=Simplicity Studio
+Path=/opt/simplicitystudio5
+Icon=/opt/simplicitystudio5/icon.xpm
+Categories=Development
