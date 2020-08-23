@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.7.12.arch1
+pkgver=5.8.3.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -85,7 +85,7 @@ _repo_url="https://git.archlinux.org/$_reponame"
 
 _reponame_gcc_patch="kernel_gcc_patch"
 _repo_url_gcc_patch="https://github.com/graysky2/$_reponame_gcc_patch"
-_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+.patch"
+_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch"
 
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
@@ -94,7 +94,7 @@ source=(
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
     sphinx-workaround.patch
-    0005-v5.7_undead-pds099o.patch
+    0005-v5.8_undead-pds099o.patch
     0005-glitched-pds.patch
 )
 validpgpkeys=(
@@ -104,9 +104,9 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '8f4bb51a63f81bcf76973cd8580f4a9f4ca4b311b733da63810def43282cd9151856bd354e873680b5e782b6665eaf07c30c95509e9bfd38e1a7c2b56eddc361'
+            'df9e470bd85b484756ca91cca4dd8eb47375b2da8679039e4d24cd16338fdc87a6192a9ac256cfb99b3ec5c818715340da8b2a0e0bf9977f0b0329fbd7be997d'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            'c4ca80f506c01bc1d13d9d7bc7336f9ff77a24aa8343c40cd02e073ae5cf280dbabf1a9ddbd2064edf054de383fd510a8915b7d8f47b5bc76147109a5f424e92'
+            '2fdedae6a8233520119dc0874a38460253f9644413ba4b73083e33a098e9b5121a4f5f94e97ce872727533febba91093b7aa580809624883416f010a0c33cae6'
             'dca2b705810db5e3c3782ac4c11f499e010752055629213ccada09c8e748d20cd1e8c49a93d2e28c5b0c7bf23a2247f0d9858a26d4a56b7cef35108c731cff1c')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -131,7 +131,7 @@ prepare() {
     # From https://github.com/Frogging-Family/linux-tkg/tree/master/linux56-tkg/linux56-tkg-patches
     msg2 "Patching with Undead PDS 0.99o patches, rebased by TkG"
     for MyPatch in \
-        0005-v5.7_undead-pds099o.patch \
+        0005-v5.8_undead-pds099o.patch \
         0005-glitched-pds.patch
     do
         msg2 "Applying patch $MyPatch..."
