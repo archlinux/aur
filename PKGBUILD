@@ -2,7 +2,7 @@
 
 _pkgname=rhkhm
 pkgname=${_pkgname}-git
-pkgver=r47.7f6c68f
+pkgver=r61.e03506e
 pkgrel=1
 pkgdesc='Parse and fuzzy-find keybinds from sxhkd-configuration - built from latest sources at github'
 arch=('any')
@@ -28,5 +28,6 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    install -D -m 644 rhkhm.ini "${pkgdir}/usr/share/doc/${_pkgname}/rhkhm.ini"
     install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
