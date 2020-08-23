@@ -1,53 +1,6 @@
 pkgbase = puppet3
 	pkgdesc = Server automation framework and application
 	pkgver = 3.8.7
-	pkgrel = 4
-	url = http://puppetlabs.com/puppet/puppet-open-source
-	install = puppet.install
-	arch = any
-	license = APACHE
-	depends = facter2
-	depends = hiera
-	optdepends = ruby-shadow: user password management
-	optdepends = logrotate
-	provides = puppet=3.8.7
-	conflicts = puppet
-	backup = etc/puppet/auth.conf
-	backup = etc/puppet/fileserver.conf
-	backup = etc/puppet/puppet.conf
-	backup = etc/puppet/tagmail.conf
-	source = http://downloads.puppetlabs.com/puppet/puppet-3.8.7.tar.gz
-	md5sums = 99061eb4f868a03f0d524de2af10855d
-
-pkgname = puppet3
-
-pkgbase = puppet3
-	pkgdesc = Server automation framework and application
-	pkgver = 3.8.7
-	pkgrel = 4
-	url = http://puppetlabs.com/puppet/puppet-open-source
-	install = puppet.install
-	arch = any
-	license = APACHE
-	depends = facter2
-	depends = hiera
-	depends = ruby-sync
-	optdepends = ruby-shadow: user password management
-	optdepends = logrotate
-	provides = puppet=3.8.7
-	conflicts = puppet
-	backup = etc/puppet/auth.conf
-	backup = etc/puppet/fileserver.conf
-	backup = etc/puppet/puppet.conf
-	backup = etc/puppet/tagmail.conf
-	source = http://downloads.puppetlabs.com/puppet/puppet-3.8.7.tar.gz
-	md5sums = 99061eb4f868a03f0d524de2af10855d
-
-pkgname = puppet3
-
-pkgbase = puppet3
-	pkgdesc = Server automation framework and application
-	pkgver = 3.8.7
 	pkgrel = 5
 	url = http://puppetlabs.com/puppet/puppet-open-source
 	install = puppet.install
