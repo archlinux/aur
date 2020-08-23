@@ -1,0 +1,15 @@
+pkgbase = hid-asus-rog-dkms-git
+	pkgdesc = kernel module allowing to switch dedicated graphics card on the Zephyrus G14, dkms version
+	pkgver = 0.2.0.r0.gdad662c
+	pkgrel = 1
+	url = https://gitlab.com/asus-linux/hid-asus-rog
+	arch = x86_64
+	depends = dkms
+	provides = hid-asus-rog
+	source = git+https://gitlab.com/asus-linux/hid-asus-rog.git
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = a9d78677756306c7687bef847f81425b5d04a53bb16cee8c586a6fce1e93777d
+
+pkgname = hid-asus-rog-dkms-git
+
