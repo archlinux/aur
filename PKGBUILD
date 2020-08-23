@@ -2,7 +2,7 @@
 # Maintainer : Nicolas Perrin <booloki@lokizone.net>
 
 pkgname=wait-for-it
-pkgver=0.0+git20200205
+pkgver=0.0+git20200823
 pkgrel=1
 pkgdesc="Script that will wait on the availability of a host and TCP port"
 arch=(any)
