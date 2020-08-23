@@ -16,7 +16,7 @@ pkgbase = bup-git
 	depends = readline
 	depends = attr
 	depends = git
-	optdepends = python2-tornado: launch a web server to examine backup sets
+	optdepends = python-tornado: launch a web server to examine backup sets
 	provides = bup=0.31.r0.g63046f3
 	conflicts = bup
 	source = bup-git::git+https://github.com/bup/bup.git

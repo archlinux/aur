@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url='https://bup.github.io/'
 license=('GPL')
 depends=('python-fuse' 'par2cmdline' 'python-pyxattr' 'acl' 'readline' 'attr' 'git')
-optdepends=('python2-tornado: launch a web server to examine backup sets')
+optdepends=('python-tornado: launch a web server to examine backup sets')
 makedepends=('pandoc')
 checkdepends=('rsync')
 provides=("bup=${pkgver}")
