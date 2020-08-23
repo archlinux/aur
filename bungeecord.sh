@@ -24,10 +24,18 @@ case $# in
 		;;
 	1)
 		# If one, check wheter it's a command or a subserver
-		possible_commands=("start", "stop", "status", "restart", "console", "command", "backup", "restore", "idle_server_daemon", "-h", "--help")
-		if [[ " ${possible_commands[@]} " =~ " $1 " ]]; then
+		if [ "$1" == "start"   ] ||
+		   [ "$1" == "stop"    ] ||
+		   [ "$1" == "restart" ] ||
+		   [ "$1" == "console" ] ||
+		   [ "$1" == "command" ] ||
+		   [ "$1" == "backup"  ] ||
+		   [ "$1" == "restore" ] ||
+		   [ "$1" == "-h"      ] || 
+		   [ "$1" == "--help"  ] ||
+		   [ "$1" == "idle_server_daemon" ]; then
 			# If a command, use the proxy server
-                        declare -r subserver="${PROXY_NAME}"
+			declare -r subserver="${PROXY_NAME}"
 		else
 			# If not, use the argument as subserver
 			declare -r subserver="$1"
@@ -46,6 +54,15 @@ echo "Using subserver: ${subserver}"
 # The full command name, including the subserver
 declare -r fullname="${myname} ${subserver}"
 
+# Default stop and say commands
+if [ ${subserver} == ${PROXY_NAME} ]; then
+	declare -r default_stop_command="end"
+	declare -r default_say_command="alert"
+else
+	declare -r default_stop_commannd="stop"
+	declare -r default_say_command="say"
+fi
+
 # Subserver settings
 
 [[ -n "${SERVER_ROOT}" ]]     && declare -r SERVER_ROOT=${SERVER_ROOT}         || SERVER_ROOT="${MAIN_ROOT}/servers/${subserver}"
@@ -55,6 +72,8 @@ declare -r fullname="${myname} ${subserver}"
 [[ -n "${KEEP_BACKUPS}" ]]    && declare -r KEEP_BACKUPS=${KEEP_BACKUPS}       || KEEP_BACKUPS="10"
 [[ -n "${MAIN_EXECUTABLE}" ]] && declare -r MAIN_EXECUTABLE=${MAIN_EXECUTABLE} || MAIN_EXECUTABLE="server.jar"
 [[ -n "${SESSION_NAME}" ]]    && declare -r SESSION_NAME=${SESSION_NAME}       || SESSION_NAME="${game}_${subserver}"
+[[ -n "${SAY_COMMAND}" ]]     && declare -r SAY_COMMAND=${SAY_COMMAND}         || SAY_COMMAND="${default_say_command}"
+[[ -n "${STOP_COMMAND}" ]]    && declare -r STOP_COMMAND=${STOP_COMMAND}       || STOP_COMMAND="${default_stop_command}"
 
 # Command and parameter declaration with which to start the server
 [[ -n "${SERVER_START_CMD}" ]] && declare -r SERVER_START_CMD=${SERVER_START_CMD} || SERVER_START_CMD="java -Xms512M -Xmx1024M -XX:ParallelGCThreads=1 -jar './${MAIN_EXECUTABLE}' nogui"
@@ -275,22 +294,21 @@ server_stop() {
 		if is_player_online; then
 			# No player was seen on the server through list
 			echo -en "Server is going down..."
-			game_command stop
 		else
 			# Player(s) were seen on the server through list (or an error occurred)
 			# Warning the users through the server console
-						game_command say "This server is going down in 10 seconds."
+			game_command ${SAY_COMMAND} "This server is going down in 10 seconds."
 			game_command save-all
 			echo -en "Server going down in..."
 			for i in {1..10}; do
-								if [[ $i -lt 3 ]]; then
-				  game_command say "$(( 10 - i ))"
-								fi
-				echo -n " $(( 10 - i ))"
+ 	  			if [[ $i -gt 7 ]]; then
+					game_command ${SAY_COMMAND} "$(( 11 - i ))"
+				fi
+				echo -n " $(( 11 - i ))"
 				sleep 1
 			done
-			game_command stop
 		fi
+		game_command ${STOP_COMMAND}
 
 		# Finish as soon as the server has shut down completely
 		for i in {1..100}; do
