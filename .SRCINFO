@@ -1,13 +1,13 @@
 pkgbase = vim-log-highlighting
 	pkgdesc = Syntax highlighting for generic log files in VIM
-	pkgver = 1.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/MTDL9/vim-log-highlighting
 	arch = any
 	license = MIT
 	depends = vim
-	source = vim-log-highlighting-1.0.zip::https://github.com/MTDL9/vim-log-highlighting/archive/master.zip
-	sha256sums = 4bd22376c8bd02e1cd2cdef37206e39afda41fd0b6cb2c3eae5d2e389ea3ced3
+	source = vim-log-highlighting-1.0.0.tar.gz::https://github.com/MTDL9/vim-log-highlighting/archive/v1.0.0.tar.gz
+	b2sums = f93e66e827eef20e7d941503826a576b0699c3e59bc1d818782f83cd060b49d0bed2fbdf31359d063e3c5ae6f2355639ee05a331d96ce4ba5fef80749c83fbca
 
 pkgname = vim-log-highlighting
 
