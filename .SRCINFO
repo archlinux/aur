@@ -1,0 +1,15 @@
+pkgbase = paddlepaddle-gpu
+	pkgdesc = An opensourced deeplearning framework derived from industral practice.
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://github.com/paddlepaddle/paddle
+	arch = x86_64
+	license = custom
+	depends = cuda-10.1
+	source = https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libcudnn8_8.0.2.39-1+cuda10.1_amd64.deb
+	source = https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libcudnn8-dev_8.0.2.39-1+cuda10.1_amd64.deb
+	md5sums = fe72d96b7c1fbd05eb0906f3bc95f325
+	md5sums = 8e8d8955f5454649705b32eafdf6e953
+
+pkgname = paddlepaddle-gpu
+
