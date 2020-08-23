@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/fiskhest/aur-${pkgname}"
 license=('BSD')
 depends=('sxhkd' 'python' 'bash' 'rofi' 'grep')
+install=${pkgname}.install
 makedepends=('git' 'python-setuptools')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

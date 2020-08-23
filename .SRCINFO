@@ -3,6 +3,7 @@ pkgbase = rhkhm-git
 	pkgver = r61.e03506e
 	pkgrel = 1
 	url = https://github.com/fiskhest/aur-rhkhm-git
+	install = rhkhm-git.install
 	arch = any
 	license = BSD
 	makedepends = git
