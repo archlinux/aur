@@ -35,9 +35,8 @@ wheel>0.24.0,<0.30.0
 #setup.py
 
 install_requires = [
-    'botocore==1.15.45',
+    'botocore==1.17.43',
     'docutils>=0.10,<0.16',
-    'rsa>=3.1.2,<=3.5.0',
     's3transfer>=0.3.0,<0.4.0',
 ]
 
@@ -45,9 +44,12 @@ install_requires = [
 if sys.version_info[:2] == (3, 4):
     install_requires.append('PyYAML>=3.10,<5.3')
     install_requires.append('colorama>=0.2.5,<0.4.2')
+    install_requires.append('rsa>=3.1.2,<=4.0.0')
 else:
     install_requires.append('PyYAML>=3.10,<5.4')
     install_requires.append('colorama>=0.2.5,<0.4.4')
+    install_requires.append('rsa>=3.1.2,<=4.5.0')
+
 
 "
 }
@@ -63,7 +65,7 @@ else
 pkgname="${_pyver}-${_pybase}"
 _pyverother='python'
 fi
-pkgver=1.18.45
+pkgver=1.18.120
 # Generally when this version changes, the version of botocore also changes
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
@@ -72,9 +74,9 @@ url="https://github.com/aws/${_pybase}"
 license=('Apache') # Apache License 2.0
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
   # setup.py
-  "${_pyver}-botocore>=1.15.45" # COM ==
+  "${_pyver}-botocore>=1.17.43" # COM ==
   "${_pyver}-docutils"'>=0.10' # ,'<0.16'} # COM
-  "${_pyver}-rsa"'>=3.1.2' #,'<=3.5.0'}
+  "${_pyver}-rsa"'>=3.1.2' #,'<=4.5.0'}
   #"${_pyver}-cryptography"'>=2.8.0' # ,'<=2.9.0'}
   "${_pyver}-s3transfer"'>=0.3.0' # ,'<0.4.0'} # COM
   "${_pyver}-yaml"">=3.10" #"<=5.4"} # COM
@@ -107,7 +109,8 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!emptydirs' '!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('3da8c6b5fc8b0dbc254297adf020ca984756b7fcc5d6ecb855dde7dc7f07b7ee')
+md5sums=('2825bb6c92018dfbf0c0e7697aed399f')
+sha256sums=('21bc80ba44dcaccc00ac1449a03cb8cc8af1bf9f72284ef01d1a1e0364c08483')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
