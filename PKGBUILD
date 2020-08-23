@@ -6,7 +6,7 @@
 
 pkgname=(pulseaudio-airplay libpulse-airplay pulseaudio-airplay-{zeroconf,lirc,jack,bluetooth,equalizer})
 pkgdesc="A featureful, general-purpose sound server"
-pkgver=12.0+527+g938fb6411
+pkgver=13.99.1+98+g317fd09b7
 pkgrel=1
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
@@ -15,8 +15,8 @@ makedepends=(libasyncns libcap attr libxtst libsm libsndfile rtkit libsoxr
              speexdsp tdb systemd dbus avahi bluez bluez-libs jack2 sbc
              lirc openssl fftw orc gtk3 webrtc-audio-processing check git meson
              xmltoman)
-_commit=938fb6411540e31137396b97dd2011ebba4bd650  # tags/v13.0^0
-source=("git+https://gitlab.freedesktop.org/ckdo/pulseaudio.git#commit=$_commit"
+_commit=317fd09b72e3c33ecdbffaecc00fd6ff0c1a7e74  # tags/v13.0^0
+source=("git+https://gitlab.freedesktop.org/mr-tao/pulseaudio.git#commit=$_commit"
         0001-meson-Define-TUNNEL_SINK-for-module-tunnel-sink.patch)
 sha256sums=('SKIP'
             '4ff133e2847baad5bb6798b5816d67551cfba2efabb2f1f348628d7217abd07d')

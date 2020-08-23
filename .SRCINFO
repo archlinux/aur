@@ -1,6 +1,6 @@
 pkgbase = pulseaudio-airplay
 	pkgdesc = A featureful, general-purpose sound server
-	pkgver = 12.0+527+g938fb6411
+	pkgver = 13.99.1+98+g317fd09b7
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/PulseAudio/
 	arch = x86_64
@@ -32,14 +32,14 @@ pkgbase = pulseaudio-airplay
 	makedepends = git
 	makedepends = meson
 	makedepends = xmltoman
-	source = git+https://gitlab.freedesktop.org/ckdo/pulseaudio.git#commit=938fb6411540e31137396b97dd2011ebba4bd650
+	source = git+https://gitlab.freedesktop.org/mr-tao/pulseaudio.git#commit=317fd09b72e3c33ecdbffaecc00fd6ff0c1a7e74
 	source = 0001-meson-Define-TUNNEL_SINK-for-module-tunnel-sink.patch
 	sha256sums = SKIP
 	sha256sums = 4ff133e2847baad5bb6798b5816d67551cfba2efabb2f1f348628d7217abd07d
 
 pkgname = pulseaudio-airplay
 	install = pulseaudio.install
-	depends = libpulse-airplay=12.0+527+g938fb6411-1
+	depends = libpulse-airplay=13.99.1+98+g317fd09b7-1
 	depends = rtkit
 	depends = libltdl
 	depends = speexdsp
@@ -74,7 +74,7 @@ pkgname = libpulse-airplay
 
 pkgname = pulseaudio-airplay-zeroconf
 	pkgdesc = Zeroconf support for PulseAudio
-	depends = pulseaudio-airplay=12.0+527+g938fb6411-1
+	depends = pulseaudio-airplay=13.99.1+98+g317fd09b7-1
 	depends = avahi
 	depends = openssl
 	provides = pulseaudio-zeroconf
@@ -82,21 +82,21 @@ pkgname = pulseaudio-airplay-zeroconf
 
 pkgname = pulseaudio-airplay-lirc
 	pkgdesc = IR (lirc) support for PulseAudio
-	depends = pulseaudio-airplay=12.0+527+g938fb6411-1
+	depends = pulseaudio-airplay=13.99.1+98+g317fd09b7-1
 	depends = lirc
 	provides = pulseaudio-lirc
 	conflicts = pulseaudio-lirc
 
 pkgname = pulseaudio-airplay-jack
 	pkgdesc = Jack support for PulseAudio
-	depends = pulseaudio-airplay=12.0+527+g938fb6411-1
+	depends = pulseaudio-airplay=13.99.1+98+g317fd09b7-1
 	depends = jack
 	provides = pulseaudio-jack
 	conflicts = pulseaudio-jack
 
 pkgname = pulseaudio-airplay-bluetooth
 	pkgdesc = Bluetooth support for PulseAudio
-	depends = pulseaudio-airplay=12.0+527+g938fb6411-1
+	depends = pulseaudio-airplay=13.99.1+98+g317fd09b7-1
 	depends = bluez
 	depends = bluez-libs
 	depends = sbc
@@ -105,7 +105,7 @@ pkgname = pulseaudio-airplay-bluetooth
 
 pkgname = pulseaudio-airplay-equalizer
 	pkgdesc = Equalizer for PulseAudio
-	depends = pulseaudio-airplay=12.0+527+g938fb6411-1
+	depends = pulseaudio-airplay=13.99.1+98+g317fd09b7-1
 	depends = python-pyqt5
 	depends = python-dbus
 	depends = python-sip
