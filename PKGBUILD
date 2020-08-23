@@ -1,18 +1,19 @@
-# Maintainer : Davi da Silva Böger <dsboger at gmail dot com>
+# Maintainer : Cole Deck <cole at deck dot sh>
+# Contributor : Davi da Silva Böger <dsboger at gmail dot com>
 # Contributor : adytzu2007 <adybac at gmail {dot} com>
-# Contributor: Samsagax <samsagax at gmail {dot} com>
+# Contributor : Samsagax <samsagax at gmail {dot} com>
 # Contributor : abbradar <nikoamia at gmail {dot} com>
 
 pkgname=bbswitch-g14-dkms-git
 _pkgname='bbswitch'
 pkgver=0.8.r5.gddbd243
 pkgrel=1
-pkgdesc="kernel module allowing to switch dedicated graphics card on the Zephyrus G14, dkms version"
+pkgdesc="kernel module allowing to switch dedicated graphics card on the Zephyrus G14 and other similar laptops"
 arch=('i686' 'x86_64')
-url="http://github.com/Bumblebee-Project/bbswitch"
+url="https://github.com/Bumblebee-Project/bbswitch"
 license=('GPL')
 provides=('bbswitch')
-conflicts=('bbswitch-git' 'bbswitch' 'bbswitch-dkms' 'dkms-bbswitch')
+conflicts=('bbswitch-git' 'bbswitch' 'bbswitch-dkms' 'dkms-bbswitch' 'bbswitch-dkms-git')
 depends=('dkms' 'linux-headers')
 makedepends=('git')
 _gitroot='git://github.com/Bumblebee-Project/bbswitch.git'
@@ -20,7 +21,7 @@ _gitbranch='develop'
 source=("${_gitroot}#branch=${_gitbranch}"
 	"bbswitch-dkms-git-zephyrus14.patch")
 sha256sums=("SKIP"
-	    "SKIP")
+	    "c26e9a63e28575cee6518a7e8b21e6886f70b96e9ca922d9b46cfc5b2247a6fe")
 
 
 pkgver() {

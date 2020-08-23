@@ -1,8 +1,8 @@
 pkgbase = bbswitch-g14-dkms-git
-	pkgdesc = kernel module allowing to switch dedicated graphics card on the Zephyrus G14, dkms version
+	pkgdesc = kernel module allowing to switch dedicated graphics card on the Zephyrus G14 and other similar laptops
 	pkgver = 0.8.r5.gddbd243
 	pkgrel = 1
-	url = http://github.com/Bumblebee-Project/bbswitch
+	url = https://github.com/Bumblebee-Project/bbswitch
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -14,10 +14,11 @@ pkgbase = bbswitch-g14-dkms-git
 	conflicts = bbswitch
 	conflicts = bbswitch-dkms
 	conflicts = dkms-bbswitch
+	conflicts = bbswitch-dkms-git
 	source = git://github.com/Bumblebee-Project/bbswitch.git#branch=develop
 	source = bbswitch-dkms-git-zephyrus14.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = c26e9a63e28575cee6518a7e8b21e6886f70b96e9ca922d9b46cfc5b2247a6fe
 
 pkgname = bbswitch-g14-dkms-git
 
