@@ -1,8 +1,8 @@
 pkgbase = vim-pythonhelper
 	pkgdesc = Displays Python class, method or function the cursor is in on the status line
 	pkgver = 0.83
-	pkgrel = 4
-	url = http://www.vim.org/scripts/script.php?script_id=435
+	pkgrel = 5
+	url = https://www.vim.org/scripts/script.php?script_id=435
 	install = vimdoc.install
 	arch = any
 	groups = vim-plugins

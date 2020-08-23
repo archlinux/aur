@@ -6,12 +6,12 @@
 
 pkgname=vim-pythonhelper
 pkgver=0.83
-pkgrel=4
+pkgrel=5
 _scriptid=12010
 _scriptname=pythonhelper.vim
 pkgdesc="Displays Python class, method or function the cursor is in on the status line"
 arch=('any')
-url="http://www.vim.org/scripts/script.php?script_id=435"
+url="https://www.vim.org/scripts/script.php?script_id=435"
 license=('unknown')
 groups=('vim-plugins')
 depends=('vim' 'python2')
@@ -19,8 +19,6 @@ install='vimdoc.install'
 source=(${_scriptname}::http://www.vim.org/scripts/download_script.php?src_id=${_scriptid})
 md5sums=('84b9e7c94167eb859b6a729559294869')
 
-build() {
+package() {
   install -Dm644 ${srcdir}/${_scriptname} ${pkgdir}/usr/share/vim/vimfiles/ftplugin/python/${_scriptname}
 }
-
-# vim:set ts=2 sw=2 et:
