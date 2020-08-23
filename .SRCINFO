@@ -1,0 +1,17 @@
+pkgbase = panda-dock-git
+	pkgdesc = Dock for PandaOS
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/pandaos/panda-dock
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = kwindowsystem
+	depends = qt5-x11extras
+	depends = qt5-svg
+	source = panda-dock-git-ef4472b76c9ab4ef03a40d6e0372be471b749354.tar.gz::https://github.com/pandaos/panda-dock/archive/ef4472b76c9ab4ef03a40d6e0372be471b749354.tar.gz
+	sha512sums = 08b4486afdb7b3cf4f44cfb11a96a478a4f9c35e63bf5479f4cebdc030c6640d26720b54276f1ef0775ec5c86ca3fbb9a5dd59008d0f22a5f862ba0305cc204f
+
+pkgname = panda-dock-git
+
