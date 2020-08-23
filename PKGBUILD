@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=mastotool
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="a collection of tools to work with your Mastodon account"
 arch=('x86_64' 'i686')

@@ -1,6 +1,6 @@
 pkgbase = mastotool
 	pkgdesc = a collection of tools to work with your Mastodon account
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/muesli/mastotool
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mastotool
 	options = !strip
 	options = !emptydirs
 	options = !makeflags
-	source = mastotool-0.2.0::git+https://github.com/muesli/mastotool#tag=v0.2.0
+	source = mastotool-0.2.1::git+https://github.com/muesli/mastotool#tag=v0.2.1
 	sha256sums = SKIP
 
 pkgname = mastotool
