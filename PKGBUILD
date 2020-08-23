@@ -2,7 +2,7 @@
 # Upstream: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-zen-vfio
-pkgver=5.8.1.zen1
+pkgver=5.8.3.zen1
 pkgrel=1
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
