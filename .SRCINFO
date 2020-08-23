@@ -1,7 +1,7 @@
 pkgbase = bungeecord
 	pkgdesc = BungeeCord is a sophisticated proxy and API designed mainly to teleport players between multiple Minecraft servers.
 	pkgver = 1532
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.spigotmc.org/
 	install = bungeecord.install
 	arch = any
