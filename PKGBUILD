@@ -3,7 +3,7 @@
 _basename=sord
 pkgname=lib32-sord
 pkgver=0.16.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight C library for storing RDF data in memory (32-bit)"
 arch=('x86_64')
 url="https://drobilla.net/software/sord/"
@@ -40,6 +40,7 @@ build() {
     export CC='gcc -m32'
     export CXX='g++ -m32'
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+    export CFLAGS="$(echo "$CFLAGS" | sed 's/ -fno-plt//')"
 
     waf configure --prefix=/usr \
                           --libdir=/usr/lib32 \
