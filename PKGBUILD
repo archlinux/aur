@@ -7,6 +7,8 @@ pkgdesc="Parallax backgrounds manager"
 install=komorebi-bin.install
 arch=("x86_64")
 url="https://github.com/Komorebi-Fork/komorebi"
+provides=("komorebi")
+conflicts=("komorebi")
 license=("GPL")
 depends=("desktop-file-utils" "glib2>=2.38" "gtk3>=3.14" "hicolor-icon-theme" "libgtop" "libgee" "libwnck" "clutter" "clutter-gtk" "clutter-gst" "webkit2gtk")
 md5sums=("b48f5d61e73e8357ba0a7c82d69216ed")
