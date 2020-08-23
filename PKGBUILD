@@ -2,7 +2,7 @@
 
 pkgname=lceda-bin
 _pkgname=${pkgname%-bin}
-pkgver=6.3.53
+pkgver=6.4.5
 pkgrel=1
 pkgdesc="免费、强大、易用的在线电路设计软件"
 arch=('x86_64')
@@ -12,9 +12,9 @@ depends=('gtk3' 'nss' 'libxss')
 makedepends=('unzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}-${pkgver}.zip::https://image.lceda.cn/files/${_pkgname}-${pkgver}-linux-x64.zip"
+source=("${_pkgname}-${pkgver}.zip::https://image.lceda.cn/files/${_pkgname}-linux-x64-${pkgver}.zip"
         "LICENSE")
-sha256sums=('104aada01fb19dc8a6cfe3913971eb0b78caf6aedf3f56b01015038721c5ba96'
+sha256sums=('efe5075733212b24e70bda7fc918151545d866587b0ac738cf671370912f3a43'
             '686f681d913d7f943bb5aac66cc902f2eb251e7a20fda43412c048d6134b3592')
 
 package() {
