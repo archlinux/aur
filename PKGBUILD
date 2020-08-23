@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=plastex-git
-pkgver=2.1.r7.rgb561804
+pkgver=2.1.r146.g9369e35b
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Python-based LaTeX document processing framework"
 arch=('any')
 url="http://tiarno.github.io/plastex/"
@@ -17,7 +17,7 @@ _gitname="plastex"
 
 pkgver() {
  cd ${pkgname%-git}
- git describe --tags | sed 's|-|.r|g'
+ git describe --tags | sed 's|-|.r|' |tr - .
 }
 
 prepare() {
