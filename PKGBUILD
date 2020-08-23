@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.0.r158.61f3258b9
+pkgver=1.7.0.r175.dc5bfbb47
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -60,7 +60,7 @@ build() {
     -DGAMEINDEX_DIR=/usr/share/pcsx2 \
     -DPACKAGE_MODE=ON \
     -DXDG_STD=TRUE
-  make
+  make -j4
 }
 
 package() {
