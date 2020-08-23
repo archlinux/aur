@@ -9,8 +9,9 @@ pkgbase = teaspeak-client
 	depends = nss
 	depends = gtk3
 	source = teaspeak-client-1.4.8.deb::http://clientapi.teaspeak.de/files/release/1.4.8/TeaClient-linux_x64.deb
+	source = LICENSE
 	sha256sums = 4cdfc0870f927450bb0f1b76bddec5eace5b51bfc7879d171e6638bea240a465
-	sha256sums = LICENSE
+	sha256sums = SKIP
 
 pkgname = teaspeak-client
 

@@ -10,9 +10,10 @@ license=("custom:${pkgname}")
 depends=('libxss'
          'nss'
          'gtk3')
-source=("${pkgname}-${pkgver}.deb::http://clientapi.teaspeak.de/files/release/${pkgver}/TeaClient-linux_x64.deb")
+source=("${pkgname}-${pkgver}.deb::http://clientapi.teaspeak.de/files/release/${pkgver}/TeaClient-linux_x64.deb"
+        'LICENSE')
 sha256sums=('4cdfc0870f927450bb0f1b76bddec5eace5b51bfc7879d171e6638bea240a465'
-            'LICENSE')
+            'SKIP')
 
 package() {
   tar xvf data.tar.xz -C "${pkgdir}/"
