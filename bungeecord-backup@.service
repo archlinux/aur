@@ -1,0 +1,12 @@
+[Unit]
+Description=BungeeCord Server (%I) World Backup
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bungeecord %I backup
+User=bungeecord
+Group=bungeecord
+
+[Install]
+WantedBy=multi-user.target

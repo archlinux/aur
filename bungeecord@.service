@@ -1,0 +1,13 @@
+[Unit]
+Description=BungeeCord Server (%I)
+After=local-fs.target network.target multi-user.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/bungeecord %I start
+ExecStop=/usr/bin/bungeecord %I stop
+User=bungeecord
+Group=bungeecord
+
+[Install]
+WantedBy=multi-user.target
