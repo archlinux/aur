@@ -7,7 +7,7 @@ pkgdesc="Python-based LaTeX document processing framework"
 arch=('any')
 url="http://tiarno.github.io/plastex/"
 license=('custom')
-depends=('python2' 'texlive-core')
+depends=('python' 'texlive-core')
 makedepends=('git')
 provides=('plastex')
 conflicts=('plastex')
@@ -20,14 +20,14 @@ pkgver() {
  git describe --tags | sed 's|-|.r|' |tr - .
 }
 
-prepare() {
-  cd ${pkgname%-git}
-  find  . -name "*.py" -exec sed -i '1s+python+python2+' {} \;
-}
+#prepare() {
+#  cd ${pkgname%-git}
+#  find  . -name "*.py" -exec sed -i '1s+python+python2+' {} \;
+#}
 
 package() {
   cd ${pkgname%-git}
-  python2 setup.py install --root="$pkgdir"/ 
+  python setup.py install --root="$pkgdir"/ 
   install -Dm644 LICENSE \
     "$pkgdir"/usr/share/licenses/$pkgname/LICENSE 
   for _i in  licenses/*
