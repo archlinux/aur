@@ -9,18 +9,19 @@
 # Contributor: SanskritFritz (gmail)
 
 pkgname=bup
-pkgver=0.30
-pkgrel=8
+pkgver=0.31
+pkgrel=1
 pkgdesc='Efficient backup system based on the git packfile format'
 arch=('x86_64')
 url='https://bup.github.io/'
 license=('GPL')
-depends=('python2-fuse' 'par2cmdline' 'pylibacl' 'python2-pyxattr' 'git')
-makedepends=('ruby-ronn' 'git' 'setconf' 'pandoc')
-checkdepends=('rsync' 'python2-tornado')
-optdepends=('python2-tornado: for bup web')
+depends=('python-fuse' 'par2cmdline' 'python-pyxattr' 'acl' 'readline' 'attr' 'git')
+optdepends=('python-tornado: for bup web')
+makedepends=('pandoc')
+checkdepends=('rsync' 'python-tornado')
+conflicts=('bup-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bup/bup/archive/${pkgver}.tar.gz")
-sha512sums=('8c500568ca2609e6b437b3a67c08976bbdb6fbad39c77eb7e74e503b5ffdc1cbe1e51b5e834e7db0481a3cfc38a55aeae49a8e53657994524b612e54136e7af1')
+sha256sums=('2f54351aed653b4b9567d3a534af598a5bc63b32efd7cc593bcecac3b89e16d1')
 changelog=changelog.md
 
 build() {

@@ -1,133 +1,77 @@
 
-Notable changes in 0.30 as compared to 0.29.3
-=============================================
+Notable changes in 0.31 (since 0.30.1)
+======================================
+
+* Python 3 is now supported, and Python 2 support is deprecated.  It's
+  possible that we'll stop new development for Python 2 fairly soon.
+  If so, we'll probably continue to fix bugs in the last Python 2
+  compatible version for a while, but please make plans to migrate.
+
+* `bup features` has been added.  It reports information about bup
+  itself, including the Python version, and the current availability
+  of features like readline or support for POSIX ACLs.
 
 May require attention
 ---------------------
 
-* The minimum `git` version required is now 1.5.6.
+* bup now relies on libacl directly instead of python-pylibacl, which
+  will require installing the relevant packages (e.g. libacl1-dev)
+  before building.
 
-* The `prune-older` command now keeps the most recent save in each
-  period group (day, week, month, ...) rather than the oldest.
+* bup now relies on libreadline directly instead of python's built-in
+  support, which will require installing the relevant packages
+  (e.g. libreadline-dev) before building.
 
-* `bup` now adds a zero-padded suffix to the names of saves with the
-  same timestamp (e.g. 1970-01-01-214640-07) in order to avoid
-  duplicates.  The sequence number currently represents the save's
-  reversed position in default `git rev-list` order, so that given:
-    
-      /foo/1970-01-01-214640-09
-      /foo/1970-01-01-214640-10
-    
-  In the normal case, the -10 save would be the next save made after
-  -09 (and the -09 save would be the single parent commit for -10).
+* `bup version --tag` has been removed.  It was actually a synonym for
+  `bup version`, which still works fine.  The fact that the version
+  may have a corresponding git tag is no longer relevant to the
+  command.
 
-* `bup` is not currently compatible with Python 3 and will now refuse
-  to run if the Python version is not 2 unless
-  `BUP_ALLOW_UNEXPECTED_PYTHON_VERSION=true` is set in the environment
-  (which can be useful for development and testing).
-
-* `bup ls -s` now reports the tree hash for commits unless
-  `--commit-hash` is also specified.
+* `git describe` style strings will no longer appear in the `bup
+  version` for non-release builds.  The version in that case will
+  currently just be formatted as `PENDING_RELEASE~HASH`, where `~` has
+  the [Debian semantics](https://www.debian.org/doc/debian-policy/ch-controlfields.html#version),
+  for example, 0.31~5ac3821c0f1fbd6a1b1742e91ffd556cd1116041).  This
+  is part of the fix for the issue with varying `git archive` content
+  mentioned below.
 
 General
 -------
 
-* `bup get` has been added.  This command allows the transfer or
-  rewriting of data within and between repositories, local or remote.
-  Among other things, it can be used to append remote saves to a local
-  branch, which by extension supports merging repositories.  See
-  `bup-get(1)` for further information, and please note, this is a new
-  *EXPERIMENTAL* command that can (intentionally) modify your data in
-  destructive ways.  It is potentially much more dangerous than most
-  `bup` commands.  Treat with caution.
+* `bup fsck` should now avoid displaying `par2` errors when testing it
+  for parallel processing support.
 
-* `bup` can now restore directly from a remote repository via `bup
-  restore -r host:path ...`.  See `bup-restore(1)` for more
-  information.
-
-* `bup ls` can now report information for remote repositories via `bup
-  ls -r host:path ...`.  See `bup-ls(1)` for more information.
-
-* `bup` should respect the git pack.packSizeLimit setting when writing
-  packfiles, though at the moment it will only affect a remote
-  repository when the option is set there directly.
-
-* `bup save` now stores the size for all links and normal files.  For
-  directories saved using this new format retrieving file sizes for
-  larger files should be notably less expensive.  Among other things
-  this may improve the performance of commands like `bup ls -l` or
-  `find /some/fuse/dir -ls`.
-
-* The VFS (Virtual File System) that underlies many operations, and
-  provides the basis for commands like `restore`, `ls`, etc. has been
-  rewritten in a way that makes remote repository access easier,
-  should decrease the memory footprint in some cases (e.g. for bup
-  fuse), and should make it easier to provide more selective caching.
-  At the moment, data is just evicted at random once a threshold is
-  reached.
-
-* A `--noop <--blobs|--tree>` option has been added to `bup split`
-  which prints the resulting id without storing the data in the
-  repository.
+* The documentation for the hashsplit algorithm in DESIGN has been
+  updated to reflect quirks of the implementation, which didn't quite
+  match the original specification.
 
 Bugs
 ----
 
-* The way `bup` handles output from subprocesses (diagnostics,
-  progress, etc.) has been adjusted in a way that should make it less
-  likely that bup might continue running after the main process has
-  exited, say via a C-c (SIGINT).
+* When running `bup on` with a remote ssh `ForceCommand`, bup should
+  now respect that setting when running sub-commands.
 
-* `bup` should now respect the specified compression level when
-  writing to a remote repository.
+* It should no longer be possible for the content of archives generated
+  by `git archive` (including releases retrieved from github) to vary
+  based on the current set of repository refs (tags, branches, etc.).
+  Previously archives generated from the same tag could differ
+  slightly in content.
 
-* `bup restore` now creates FIFOs with mkfifo, not mknod, which is
-  more portable.  The previous approach did not work correctly on (at
-  least) some versions of NetBSD.
+Build and install
+-----------------
 
-* `bup` should no longer just crash when it encounters a commit with a
-  "mergetag" header.  For the moment, it just ignores them, and
-  they'll be discarded whenever `bup` rewrites a commit, say via the
-  `rm`, `prune-older`, or `get` commands.
+* `bup` itself is now located in now located in the cmd/ directory in
+  the install tree and finds sub-commands, etc. relative to its own
+  location.
 
-* The bloom command should now end progress messages with \r, not \n,
-  which avoids leaving spurious output lines behind at exit.
-
-* A missing space has been added to the `bup split --bench` output.
-
-* Various Python version compatibility problems have been fixed,
-  including some of the incompatibilities introduced by Python 3.
-
-* Some issues with mincore on WSL have been fixed.
-
-* Some Android build incompatibilities have been fixed.
-
-
-Build system
-------------
-
-* The tests no longer assume pwd is in /bin.
-
-* The tests should be less sensitive to the locale.
-
-* `test-meta` should no longer try to apply chattr +T to files.  'T'
-  only works for directories, and newer Linux kernels actually reject
-  the attempt (as of at least 4.12, and maybe 4.10).
-
-* `test-rm` should no longer fail when newer versions of git
-  automatically create packed-refs.
-
-* `test-sparse-files` should be less likely to fail when run inside a
-  container.
-
-* `test-index-check-device` and `test-xdev` now use separate files for
-  their loopback mounts.  Previously each was mounting the same image
-  twice, which could produce the same device number.
+* The metadata tests should no longer fail on systems with SELinux
+  enabled.
 
 Thanks to (at least)
 ====================
 
-Alexander Barton, Artem Leshchev, Ben Kelly, Fabian 'xx4h' Melters,
-Greg Troxel, Jamie Wyrick, Julien Goodwin, Mateusz Konieczny,
-Nathaniel Filardo, Patrick Rouleau, Paul Kronenwetter, Rob Browning,
-Robert Evans, Tim Riemenschneider, and bedhanger
+Aaron M. Ucko, Aidan Hobson Sayers, Alexander Barton, Brian Minton,
+Christian Cornelssen, Eric Waguespack, Gernot Schulz, Greg Troxel,
+Hartmut Krafft, Johannes Berg, Luca Carlon, Mark J Hewitt, Ralf
+Hemmecke, Reinier Maas, Rob Browning, Robert Edmonds, Wyatt Alt, Zev
+Eisenberg, gkonstandinos, and kd7spq
