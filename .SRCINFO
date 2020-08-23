@@ -1,11 +1,13 @@
 pkgbase = klee
 	pkgdesc = Symbolic virtual machine built on top of the LLVM compiler infrastructure
 	pkgver = 2.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://klee.github.io/
 	arch = x86_64
 	license = custom:UIUC
 	checkdepends = python-tabulate
+	makedepends = gperftools
+	makedepends = z3
 	makedepends = llvm>=3.8
 	makedepends = clang
 	makedepends = cmake

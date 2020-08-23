@@ -2,7 +2,7 @@
 # Contributor: r7v
 pkgname=klee
 pkgver=2.1
-pkgrel=7
+pkgrel=8
 epoch=
 pkgdesc="Symbolic virtual machine built on top of the LLVM compiler infrastructure"
 arch=('x86_64')
@@ -16,7 +16,9 @@ depends=('gperftools'
          'llvm-libs>=3.8'
          'klee-uclibc'
          'sqlite')
-makedepends=('llvm>=3.8'
+makedepends=('gperftools'
+             'z3'
+             'llvm>=3.8'
              'clang'
              'cmake'
              'git')
