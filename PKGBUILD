@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-ezdxf
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc="Python interface to DXF"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(python python-pyparsing)
 makedepends=(python-setuptools)
 source=(https://github.com/mozman/ezdxf/archive/v${pkgver}.tar.gz)
-sha256sums=('1f62771c69e51cbf26a762a796c9d7bcfb7e41ff2c80cd091244590bf7dacf1f')
+sha256sums=('d89e9d2734b7e19535833f4b6e8ab906f2f19f9079660585bf87b7fb0100c404')
 
 prepare() {
   cd "$srcdir/ezdxf-$pkgver"
