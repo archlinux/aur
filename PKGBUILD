@@ -26,14 +26,14 @@ source=(https://download.samba.org/pub/ppp/ppp-${pkgver}.tar.gz{,.asc}
         CVE-2015-3310.patch
         ppp-build-fix.patch::"https://github.com/paulusmack/ppp/commit/50a2997b.patch"
         ppp-openssl.patch::https://github.com/paulusmack/ppp/commit/3c7b86229f7bd2600d74db14b1fe5b3896be3875.patch
-        adaptive_echos.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/adaptive_echos
-        cifdefroute.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/cifdefroute.dif
-        close_dev_ppp.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/close_dev_ppp
-        ipv6-accept-remote.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/ipv6-accept-remote
+        adaptive_echos.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4+deb9u1/debian/patches/adaptive_echos
+        cifdefroute.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4+deb9u1/debian/patches/cifdefroute.dif
+        close_dev_ppp.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4+deb9u1/debian/patches/close_dev_ppp
+        ipv6-accept-remote.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4+deb9u1/debian/patches/ipv6-accept-remote
         ppp_ifname.patch::https://github.com/paulusmack/ppp/commit/bbcdc4366bbee6c3f4e1ddda31e4eec8c1b3ccc2.patch
-        strip_msdomain.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/ppp-2.4.2-stripMSdomain
-        https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/pr-28-pppoe-custom-host-uniq-tag.patch
-        radius_mtu.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4/debian/patches/radius_mtu
+        strip_msdomain.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4+deb9u1/debian/patches/ppp-2.4.2-stripMSdomain
+        https://sources.debian.org/data/main/p/ppp/2.4.7-1+4+deb9u1/debian/patches/pr-28-pppoe-custom-host-uniq-tag.patch
+        radius_mtu.patch::https://sources.debian.org/data/main/p/ppp/2.4.7-1+4+deb9u1/debian/patches/radius_mtu
         LICENSE)
 sha256sums=('02e0a3dd3e4799e33103f70ec7df75348c8540966ee7c948e4ed8a42bbccfb30'
             'SKIP'
