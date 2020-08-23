@@ -1,4 +1,4 @@
-PACKAGER='Simone Scalabrino <s.scalabrino9@gmail.com>'
+# Maintainer: Simone Scalabrino <s.scalabrino9@gmail.com>
 _appname="google-travel"
 _appdesc="Standalone silo app for Google Travel"
 _gittag="0.1"
@@ -10,10 +10,10 @@ pkgrel=1
 pkgdesc="${_appdesc}"
 arch=('i686' 'x86_64')
 url="https://github.com/intersimone999/${_gitname}"
-license=('GPLv3')
+license=('GPL3')
 depends=('silos')
 makedepends=('git')
-source=("git+${url}.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 package() {
