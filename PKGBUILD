@@ -8,7 +8,7 @@ ARCHIVE_PATH="/installers/release-1.1.0/1.1.0.c6d10c8c/linux/MbedStudio.tar.gz"
 CLANGD_FILENAME="clangd-8.0.2.zip"
 INTERNAL_CLANG_VER="8"
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="free IDE and toolchain for Mbed OS 5 application and library development, run as root for armc6 compiler"
 arch=('x86_64')
 url="https://os.mbed.com/studio/"
@@ -36,6 +36,7 @@ package() {
     # move the tools where needed
     mkdir -p "$INSTALL_PATH"
     cp -r "$_archivename/$_binname-tools" "$INSTALL_PATH"
+    chmod -R 755 "$TOOLS_PATH/ac6"
     
     # move clangd as needed
     mkdir -p "$TOOLS_PATH/clangd"
@@ -83,7 +84,7 @@ package() {
 	chmod +x "$EXEC_PATH"
 }
 
-md5sums=('25a817e402ae7ab24f31f01c10e96a34'
+md5sums=('d16cca5f110a3121fef70b46780103cf'
          '8ad430c3206be9d37c9af03b0262a4b4'
          'ba5f16b0d7eeef5b124cd68078a38672'
          '7cf4ae1f6777f0c610125a59b0fefca6')
