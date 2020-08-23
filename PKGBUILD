@@ -56,6 +56,6 @@ md5sums=('4d97ea8f661e1b1295ce1a36eb3b022b'
          '360e85e09794e41552bf257f4e655507'
          'de4e626d540090bc211349725eba4071'
          '1b12e11d8089fdb0a7ea4cd09d788467'
-         '5ab101d54f287f86df27dbab7d2b628f'
+         'ba069d3a7cc3422f0f7c4330a5b69abc'
          '68c2350a4584fb7c9b7edaa857e44761'
          'SKIP')

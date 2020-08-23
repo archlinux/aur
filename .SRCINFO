@@ -29,9 +29,9 @@ pkgbase = bungeecord
 	md5sums = 360e85e09794e41552bf257f4e655507
 	md5sums = de4e626d540090bc211349725eba4071
 	md5sums = 1b12e11d8089fdb0a7ea4cd09d788467
-	md5sums = 5ab101d54f287f86df27dbab7d2b628f
+	md5sums = ba069d3a7cc3422f0f7c4330a5b69abc
 	md5sums = 68c2350a4584fb7c9b7edaa857e44761
-	md5sums = 1ebbd3e34237af26da5dc08a4e440464
+	md5sums = SKIP
 
 pkgname = bungeecord
 

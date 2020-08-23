@@ -60,7 +60,7 @@ if [ ${subserver} == ${PROXY_NAME} ]; then
 	declare -r default_stop_command="end"
 	declare -r default_say_command="alert"
 else
-	declare -r default_stop_commannd="stop"
+	declare -r default_stop_command="stop"
 	declare -r default_say_command="say"
 fi
 
