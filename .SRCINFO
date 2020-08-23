@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-mpfr
 	pkgdesc = Multiple-precision floating-point library (mingw-w64)
-	pkgver = 4.0.2
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = http://www.mpfr.org
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = mingw-w64-mpfr
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://www.mpfr.org/mpfr-4.0.2/mpfr-4.0.2.tar.xz
-	source = http://www.mpfr.org/mpfr-4.0.2/mpfr-4.0.2.tar.xz.asc
+	source = http://www.mpfr.org/mpfr-4.1.0/mpfr-4.1.0.tar.xz
+	source = http://www.mpfr.org/mpfr-4.1.0/mpfr-4.1.0.tar.xz.asc
 	validpgpkeys = 07F3DBBECC1A39605078094D980C197698C3739D
-	sha256sums = 1d3be708604eae0e42d578ba93b390c2a145f17743a744d8f3f8c2ad5855a38a
+	sha256sums = 0c98a3f1732ff6ca4ea690552079da9c597872d30e96ec28414ee23c95558a7f
 	sha256sums = SKIP
 
 pkgname = mingw-w64-mpfr
