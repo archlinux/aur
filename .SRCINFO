@@ -1,7 +1,8 @@
 pkgbase = qvdpautest-git
 	pkgdesc = A VDPAU Benchmark. (GIT version)
-	pkgver = 0.5.2.r29.d4396a3
+	pkgver = r31.1538ce0
 	pkgrel = 1
+	epoch = 1
 	url = http://www.nvnews.net/vbulletin/showthread.php?p=2015214
 	arch = i686
 	arch = x86_64
