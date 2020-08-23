@@ -1,7 +1,7 @@
 # Maintainer Lingfeng Ren <lastname+firstname+8thfibonaccinumber@gmail.com>
 
 pkgname=fetchcord-git
-pkgver=r459.355f498
+pkgver=r464.245a30b
 pkgrel=1
 pkgdesc="FetchCord grabs your OS info and displays it as Discord Rich Presence"
 arch=('any')
@@ -27,8 +27,5 @@ package() {
   cd "$srcdir/fetchcord"
   python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
-  for d in $(ls /home/); do
-    install -Dm644 systemd/fetchcord.service /home/$d/.config/systemd/user/fetchcord.service
-    ln -sfn /usr/bin/fetchcord /home/$d/.local/bin/
-  done
+  install -Dm644 systemd/fetchcord.service "$pkgdir"/usr/lib/systemd/system/fetchcord.service
 }
