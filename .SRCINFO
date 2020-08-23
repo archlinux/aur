@@ -7,7 +7,7 @@ pkgbase = jlink-software-and-documentation
 	install = jlink-software-and-documentation.install
 	arch = i686
 	arch = x86_64
-	arch = arm
+	arch = armv7h
 	groups = jlink
 	license = custom
 	depends = glibc
@@ -21,7 +21,8 @@ pkgbase = jlink-software-and-documentation
 	md5sums_i686 = 0b8458d06e293c1990b417c09b3dd0c1
 	source_x86_64 = JLink_Linux_682e_x86_64.tgz::https://www.segger.com/downloads/jlink/JLink_Linux_V682e_x86_64.tgz
 	md5sums_x86_64 = b51bfc45719c0c44a28e9338b5e6b743
-	md5sums_arm = 6e2ce839500ad83825e1123a09579f2d
+	source_armv7h = https://www.segger.com/downloads/JLink_Linux_arm.tgz
+	md5sums_armv7h = 6e2ce839500ad83825e1123a09579f2d
 
 pkgname = jlink-software-and-documentation
 
