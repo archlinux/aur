@@ -2,7 +2,7 @@
 
 pkgname=nco-git
 _pkgname=nco
-pkgver=r14171.1ce76d6e0
+pkgver=r14241.2940d4b61
 pkgrel=1
 pkgdesc="Manipulate and analyze data stored in netCDF-accessible formats"
 arch=('x86_64')
@@ -25,12 +25,12 @@ build() {
   cmake ../nco \
     -DCMAKE_INSTALL_PREFIX=/usr/bin \
     -DCMAKE_BUILD_TYPE=Release
-  make ${MAKEFLAGS:--j1}
+  cmake --build .
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+
+  cmake --install build --prefix "${pkgdir}"/usr/bin
 
   install -Dm644 ${srcdir}/${_pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

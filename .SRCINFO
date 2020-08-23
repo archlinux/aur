@@ -1,6 +1,6 @@
 pkgbase = nco-git
 	pkgdesc = Manipulate and analyze data stored in netCDF-accessible formats
-	pkgver = r14171.1ce76d6e0
+	pkgver = r14241.2940d4b61
 	pkgrel = 1
 	url = http://nco.sourceforge.net
 	arch = x86_64
