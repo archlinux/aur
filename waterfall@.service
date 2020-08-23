@@ -1,0 +1,13 @@
+[Unit]
+Description=Waterfall Server (%I)
+After=local-fs.target network.target multi-user.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/waterfall %I start
+ExecStop=/usr/bin/waterfall %I stop
+User=waterfall
+Group=waterfall
+
+[Install]
+WantedBy=multi-user.target

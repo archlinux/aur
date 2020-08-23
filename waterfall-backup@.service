@@ -1,0 +1,12 @@
+[Unit]
+Description=Waterfall Server (%I) World Backup
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/waterfall %I backup
+User=waterfall
+Group=waterfall
+
+[Install]
+WantedBy=multi-user.target
