@@ -7,13 +7,15 @@ pkgdesc='Blockchain daemon that provides the digital content namespace for the L
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://lbry.tech"
 license=('MIT')
-depends=('boost-libs' 'db4.8' 'libevent' 'openssl')
+depends=('boost-libs' 'db' 'libevent' 'openssl') # db4.8 does not build for aarch64
 optdepends=('miniupnpc' 'qt5-base' 'protobuf' 'qrencode')
 makedepends=('boost')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lbryio/lbrycrd/archive/v${pkgver}.tar.gz"
 	${pkgname}.service
+	${pkgname}.conf
 	include.patch)
 install=$pkgname.install
+backup=("etc/${pkgname}.conf")
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -24,7 +26,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
 
   ./autogen.sh
-  ./configure --prefix=/usr --without-gui
+  ./configure --prefix=/usr --without-gui --with-incompatible-bdb
   make
 }
 
@@ -49,5 +51,6 @@ check() {
 }
 
 sha256sums=('1ac547aed45272ad4f5ff557407b804b37fc54b5e0b0bc0addedd2c9cb00a970'
-            'ce31e5a787cafe6591f8c987049f93ea9417bc37ec48fa11dc5e521942d1f333'
+            'd6424f9341ed1b21774fb9341721044cc737e7d633641cb92781773c2b2f77a8'
+            'b97c87108220abf125421eef77f12718ffcff75c22765a0933858dcaf547f32c'
             'a29e666e626cf20df809a689fcb76e0950b7c2fbd6fb41eaccb71de1fbef3c51')

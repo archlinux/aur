@@ -5,8 +5,12 @@ Description=Blockchain daemon for LBRY
 User=lbrycrd
 Group=lbrycrd
 #WorkingDirectory=/var/lib/lbrycrd
-ExecStart=/usr/bin/lbrycrdd -server
-#SyslogIdentifier=zeronet
+RuntimeDirectory=lbrycrd
+RuntimeDirectoryMode=0700
+Type=forking
+ExecStart=/usr/bin/lbrycrdd -conf=/etc/lbrycrd.conf -pid=/run/lbrycrd/lbrycrd.pid
+PIDFile=/run/lbrycrd/lbrycrd.pid
+#SyslogIdentifier=lbrycrd
 #Restart=on-failure
 
 [Install]
