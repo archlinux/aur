@@ -1,6 +1,6 @@
 pkgbase = wait-for-it
 	pkgdesc = Script that will wait on the availability of a host and TCP port
-	pkgver = 0.0+git20200205
+	pkgver = 0.0+git20200823
 	pkgrel = 1
 	url = https://github.com/vishnubob/wait-for-it
 	arch = any
