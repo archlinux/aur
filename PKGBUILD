@@ -1,10 +1,10 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-accelerated
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++, using the LuaJIT engine"
-arch=('x86_64' 'i386' 'armv7l' 'aarch64')
+arch=('x86_64' 'i386' 'armv7l')
 url="https://www.craftos-pc.cc/"
 license=('MIT')
 groups=()
