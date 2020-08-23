@@ -199,7 +199,7 @@ idle_server_daemon() {
 					${myname} ${PROXY_NAME} command alert "Suspending server ${subserver}"
 					player=$(${NETCAT_CMD} -i 1 -l -p ${GAME_PORT} | cut -d '' -f6 | tr -dc '[:alnum:]')
 					IDLE_SERVER="false" ${fullname} start
-					if [[ -n $name ]]; then
+					if [[ -n $player ]]; then
 						${myname} ${PROXY_NAME} command alert "Starting server ${subserver}, as requested by $player"
 						sleep 20
 						${myname} ${PROXY_NAME} command send $player ${subserver}
@@ -218,7 +218,7 @@ idle_server_daemon() {
 			${myname} ${PROXY_NAME} command alert "Suspending server ${subserver}"
 			player=$(${NETCAT_CMD} -i 1 -l -p ${GAME_PORT} | cut -d '' -f6 | tr -dc '[:alnum:]')
 			IDLE_SERVER="false" ${fullname} start
-			if [[ -n $name ]]; then
+			if [[ -n $player ]]; then
 				${myname} ${PROXY_NAME} command alert "Starting server ${subserver}, as requested by $player"
 				sleep 20
 				${myname} ${PROXY_NAME} command send $player ${subserver}

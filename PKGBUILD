@@ -6,7 +6,7 @@
 
 pkgname=bungeecord
 pkgver=1532
-pkgrel=5
+pkgrel=6
 pkgdesc="BungeeCord is a sophisticated proxy and API designed mainly to teleport players between multiple Minecraft servers."
 arch=('any')
 url="https://www.spigotmc.org/"
@@ -56,6 +56,6 @@ md5sums=('4d97ea8f661e1b1295ce1a36eb3b022b'
          '360e85e09794e41552bf257f4e655507'
          'de4e626d540090bc211349725eba4071'
          '1b12e11d8089fdb0a7ea4cd09d788467'
-         'ba069d3a7cc3422f0f7c4330a5b69abc'
+         'd08f160d1dff2b980312b1758aff586e'
          '68c2350a4584fb7c9b7edaa857e44761'
          'SKIP')
