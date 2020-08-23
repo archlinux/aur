@@ -30,7 +30,7 @@ prepare() {
     cp -R craftos2-luajit-2.4.1/* "craftos2-$pkgver-luajit/craftos2-luajit/"
     cd "craftos2-$pkgver-luajit"
     mkdir icons
-    unzip linux-icons.zip -d icons
+    unzip resources/linux-icons.zip -d icons
 }
 
 build() {
