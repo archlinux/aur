@@ -2,13 +2,13 @@
 
 pkgname="deemix-pyweb-git"
 _pkgname="deemix-pyweb"
-pkgver=r287.041f285
+pkgver=r306.2d44132745
 pkgrel=1
 pkgdesc="This is a pywebview wrapper for deemix-webui"
 arch=('any')
 url="https://codeberg.org/RemixDev/$_pkgname"
 license=('gpl3')
-depends=('python>=3.6' 'deemix' 'python-flask' 'python-flask-socketio' 'python-pywebview' 'python-pyqt5' 'python-pyqt5-sip' 'python-pyqtwebengine')
+depends=('python>=3.6' 'deemix' 'python-flask' 'python-flask-socketio' 'python-pyqt5' 'python-pyqt5-sip' 'python-pyqtwebengine')
 makedepends=('git')
 provides=('deemix-pyweb')
 source=("${_pkgname}::git+https://codeberg.org/RemixDev/$_pkgname"
@@ -28,12 +28,12 @@ package() {
 	cp -dr --no-preserve=ownership deemix-webui/* "${pkgdir}/usr/lib/${_pkgname}/webui"
 
 	chmod +x "${pkgdir}/usr/lib/${_pkgname}/server.py"
-	chmod +x "${pkgdir}/usr/lib/${_pkgname}/deemix_gui.py"
+	chmod +x "${pkgdir}/usr/lib/${_pkgname}/deemix-pyweb.py"
 
 	install -dm755 "${pkgdir}/usr/share/applications/"
 	ln -s  "/usr/lib/${_pkgname}/deemix-pyweb.desktop" "${pkgdir}/usr/share/applications/deemix-pyweb.desktop"
 
 	install -dm755 "${pkgdir}/usr/bin"
 	ln -s "/usr/lib/${_pkgname}/server.py" "${pkgdir}/usr/bin/${_pkgname}-server"
-	ln -s "/usr/lib/${_pkgname}/deemix_gui.py" "${pkgdir}/usr/bin/${_pkgname}"
+	ln -s "/usr/lib/${_pkgname}/deemix-pyweb.py" "${pkgdir}/usr/bin/${_pkgname}"
 }
