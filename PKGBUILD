@@ -16,7 +16,7 @@ replaces=()
 options=()
 source=("http://release.inivation.com/$pkgname/$pkgname-linux-$pkgver.zip")
 noextract=()
-sha256sums=('')
+sha256sums=('984e5c8d5dd90f15e2bab609376dab064cc0ecbec471955d039a08f6cc70b833')
 
 package() {
 	cd "$srcdir/$pkgname-linux-$pkgver"
