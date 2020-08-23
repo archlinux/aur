@@ -1,38 +1,39 @@
-# Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
-# Contributor: corubba <corubba at gmx dot de>
-# Contributor: Jakub Kozisek <nodevel at gmail dot com>
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 
 pkgname=puddletag-git
-pkgdesc="An audio tag editor for GNU/Linux."
-license=('GPL')
-url="http://docs.puddletag.net/"
-pkgver=758.489acd2
+pkgver=r973.66636fc
 pkgrel=1
-
-provides=('puddletag')
-conflicts=('puddletag')
-
-source=("$pkgname::git://github.com/keithgg/puddletag#branch=pyqt5")
-md5sums=('SKIP')
-depends=('python2' 'mutagen' 'python2-pyqt5' 'python2-pyparsing' 'python2-configobj' 'python2-musicbrainz2')
+pkgdesc="An audio tag editor for GNU/Linux, git version"
+url="https://github.com/puddletag/puddletag"
+license=('GPL3')
+arch=('any')
+depends=('python-mutagen' 
+	 'python-pyparsing' 
+	 'python-configobj' 
+	 'python-pyqt5' 
+	 'qt5-svg' 
+	 'python-pillow')
 makedepends=('git')
-optdepends=('python2-imaging: edit/view FLAC cover art'
-            'quodlibet: edit a QuodLibet library')
-arch=('i686' 'x86_64')
+optdepends=('chromaprint: AcoustID support' 
+	    'quodlibet: QuodLibet library support')
+provides=('puddletag'
+	  'puddletag-qt5-git')
+conflicts=('puddletag'
+	   'puddletag-qt5-git')
+source=("${pkgname}::git+https://github.com/puddletag/puddletag")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/$pkgname/source"
-
-    python2 setup.py config
+  cd "${pkgname}/source"
+  python setup.py config
 }
 
 package() {
-    cd "$srcdir/$pkgname/source"
-
-    python2 setup.py install --root="$pkgdir" --optimize=1 || return 1
+  cd "${pkgname}/source"
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
