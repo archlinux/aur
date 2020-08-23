@@ -1,14 +1,15 @@
-pkgbase = fcitx5-flypy
+pkgbase = fcitx5-flypy-git
 	pkgdesc = XiaoHeYinXing table for fcitx, also known as flypy or xhup.
-	pkgver = 0.0.1
+	pkgver = r3.6d9e657
 	pkgrel = 1
 	url = http://www.flypy.com
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = fcitx5
 	depends = fcitx5-chinese-addons
-	source = git://github.com/thallium/fcitx5-flypy.git
+	source = git://github.com/thallium/fcitx5-flypy-git.git
 	md5sums = SKIP
 
-pkgname = fcitx5-flypy
+pkgname = fcitx5-flypy-git
 

@@ -1,7 +1,7 @@
 # Maintainer: thallium <tuogengchen@gmail.com>
 
-pkgname=fcitx5-flypy
-pkgver=0.0.1
+pkgname=fcitx5-flypy-git
+pkgver=r3.6d9e657
 pkgrel=1
 pkgdesc='XiaoHeYinXing table for fcitx, also known as flypy or xhup.'
 arch=('any')
@@ -9,12 +9,12 @@ license=('GPL')
 makedepends=('git')
 depends=('fcitx5' 'fcitx5-chinese-addons')
 url='http://www.flypy.com'
-source=("git://github.com/thallium/fcitx5-flypy.git")
+source=("git://github.com/thallium/fcitx5-flypy-git.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
