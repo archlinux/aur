@@ -1,14 +1,16 @@
 pkgbase = hsa-rocr
 	pkgdesc = ROCm Platform Runtime: ROCr a HPC market enhanced HSA based runtime
 	pkgver = 3.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rocmdocs.amd.com/en/latest/Installation_Guide/ROCR-Runtime.html
 	arch = x86_64
 	license = custom:NCSAOSL
 	makedepends = cmake
+	makedepends = llvm-amdgpu
+	makedepends = xxd
 	depends = libelf
 	depends = hsakmt-roct
-	depends = xxd
+	depends = rocm-device-libs
 	provides = rocr-runtime=3.7.0
 	conflicts = rocr-runtime
 	replaces = rocr-runtime
