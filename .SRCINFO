@@ -26,15 +26,19 @@ pkgname = lib32-harfbuzz-git
 	depends = libfreetype.so
 	depends = libgobject-2.0.so
 	depends = harfbuzz
+	provides = lib32-harfbuzz
 	provides = libharfbuzz.so
 	provides = libharfbuzz-subset.so
 	provides = libharfbuzz-gobject.so
+	conflicts = lib32-harfbuzz
 
 pkgname = lib32-harfbuzz-icu-git
 	pkgdesc = OpenType text shaping engine (32-bit) (ICU integration)
-	depends = lib32-harfbuzz=2.7.1-1
+	depends = lib32-harfbuzz
 	depends = lib32-icu
 	depends = libharfbuzz.so
 	depends = harfbuzz-icu
+	provides = lib32-harfbuzz-icu
 	provides = libharfbuzz-icu.so
+	conflicts = lib32-harfbuzz-icu
 

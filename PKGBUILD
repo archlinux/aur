@@ -45,7 +45,8 @@ check() {
 package_lib32-harfbuzz-git() {
   depends=(lib32-glib2 lib32-freetype2 libglib-2.0.so libfreetype.so
            libgobject-2.0.so harfbuzz)
-  provides=(libharfbuzz.so libharfbuzz-subset.so libharfbuzz-gobject.so)
+  provides=(lib32-harfbuzz libharfbuzz.so libharfbuzz-subset.so libharfbuzz-gobject.so)
+  conflicts=(lib32-harfbuzz)
 
   DESTDIR="$pkgdir" meson install -C build
   rm -rf "${pkgdir}"/usr/{include,share,bin}
@@ -60,8 +61,9 @@ package_lib32-harfbuzz-git() {
 
 package_lib32-harfbuzz-icu-git() {
   pkgdesc="$pkgdesc (ICU integration)"
-  depends=("lib32-harfbuzz=$pkgver-$pkgrel" lib32-icu libharfbuzz.so harfbuzz-icu)
-  provides=(libharfbuzz-icu.so)
+  depends=(lib32-harfbuzz lib32-icu libharfbuzz.so harfbuzz-icu)
+  provides=(lib32-harfbuzz-icu libharfbuzz-icu.so)
+  conflicts=(lib32-harfbuzz-icu)
 
   mv hb-icu/* "$pkgdir"
 
