@@ -3,16 +3,17 @@
 # Contributor: Matthieu Rakotojaona <rakoo>
 
 pkgname=bup-git
-pkgver=1863.e059fb8
+epoch=1
+pkgver=0.31.r0.g63046f3
 pkgrel=1
 pkgdesc='Efficient file backup system based on the git packfile format'
 arch=('i686' 'x86_64')
 url='https://bup.github.io/'
 license=('GPL')
-depends=('python2-fuse' 'par2cmdline' 'pylibacl' 'python2-pyxattr' 'acl' 'attr' 'git')
+depends=('python-fuse' 'par2cmdline' 'python-pyxattr' 'acl' 'readline' 'attr' 'git')
 optdepends=('python2-tornado: launch a web server to examine backup sets')
 makedepends=('pandoc')
-#checkdepends=('rsync')
+checkdepends=('rsync')
 provides=("bup=${pkgver}")
 conflicts=("bup")
 source=("${pkgname}"::"git+https://github.com/bup/bup.git")
@@ -20,24 +21,26 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	( set -o pipefail
+	git describe --long 2>/dev/null | sed 's/^slurm-//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+	|| printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
 
-	# Configure the program to use python2 everywhere
-	PYTHON=/usr/bin/python2 ./configure
+	# Configure the program to use python3 everywhere
+	PYTHON=/usr/bin/python3 ./configure
 }
 
 build() {
 	make -C "${srcdir}/${pkgname}"
 }
 
-# Disabled in favor of increased speed - it should pass if run
-#check() {
-#	make -C "${srcdir}/${pkgname}" test
-#}
+check() {
+	make -C "${srcdir}/${pkgname}" test
+}
 
 package() {
 	make -C "${srcdir}/${pkgname}" DESTDIR="${pkgdir}" PREFIX="/usr" install
