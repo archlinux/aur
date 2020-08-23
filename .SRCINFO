@@ -1,8 +1,8 @@
 pkgbase = linux-zen-g14
-	pkgdesc = Linux ZEN with patch for Zephyrus G14 (GA401IV)
-	pkgver = 5.7.10.zen1
-	pkgrel = 3
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.7.10-zen1
+	pkgdesc = Linux ZEN with patch for Zephyrus G14 (GA401I)
+	pkgver = 5.8.3.zen1
+	pkgrel = 1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.8.3-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -12,17 +12,24 @@ pkgbase = linux-zen-g14
 	makedepends = xmlto
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.7.10-zen1
-	source = https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.7.patch
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.8.3-zen1
+	source = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=279d711a7eed64877421ebd53c71305ac29b5d1d
+	source = i8042.patch
+	source = asus-n-key-keyboard.patch::https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/-/raw/master/kernel_patches/5.8/5.8.2/0001-HID-asus-add-support-for-ASUS-N-Key-keyboard-v5.8.patch
+	source = amdgpu-backlight.patch::https://lore.kernel.org/lkml/20200804201313.6464-1-amonakov@ispras.ru/raw
+	source = https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.8.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 4c278bafc2e5a04fd584ca45ddfe8bdacf52d8f5a2aac9df17d7a20479e893bf
-	sha256sums = 8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c
+	sha256sums = 6b635ee9d01865057f04f5c4606fbe37f37829d0d748d61e18490ecef943abb6
+	sha256sums = c305c2b3fa3123719ef58a4e7bd155da088958291991d29994a2a9f1cb76d71b
+	sha256sums = fdea6ab1672ea4758359e9c6e743aba56f33224c5d759852817a01af5974fd4b
+	sha256sums = 7573ea16b7a54aba6b7b160051c1efa4fc3471c341a27bcfcc60e0ba832e409d
+	sha256sums = 0389c65d8357f8b22f65aceaf9ceda5a3c76e60ca34f713ff9a09ec379f51dc7
 
 pkgname = linux-zen-g14
-	pkgdesc = The Linux ZEN with patch for Zephyrus G14 (GA401IV) kernel and modules
+	pkgdesc = The Linux ZEN with patch for Zephyrus G14 (GA401I) kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -33,5 +40,5 @@ pkgname = linux-zen-g14
 	replaces = 
 
 pkgname = linux-zen-g14-headers
-	pkgdesc = Headers and scripts for building modules for the Linux ZEN with patch for Zephyrus G14 (GA401IV) kernel
+	pkgdesc = Headers and scripts for building modules for the Linux ZEN with patch for Zephyrus G14 (GA401I) kernel
 
