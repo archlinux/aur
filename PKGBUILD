@@ -19,6 +19,11 @@ license=('LGPL')
 source=(git+https://gitlab.gnome.org/GNOME/gtk.git#branch=gtk-2-24)
 sha256sums=('SKIP')
 
+pkgver() {
+  cd gtk
+  git describe --tags | sed 's/-/+/g'
+}
+
 prepare() {
   cd gtk
 
