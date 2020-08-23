@@ -1,14 +1,14 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-accelerated
-pkgver=2.2.1
-pkgrel=3
+pkgver=2.4.1
+pkgrel=1
 epoch=
-pkgdesc="Advanced ComputerCraft emulator written in C++"
+pkgdesc="Advanced ComputerCraft emulator written in C++, using the LuaJIT engine"
 arch=('x86_64' 'i386' 'armv7l' 'aarch64')
-url="https://github.com/MCJack123/craftos2"
+url="https://www.craftos-pc.cc/"
 license=('MIT')
 groups=()
-depends=('craftos-pc-data>=2.2.2' 'sdl2>=2.0.8' 'sdl2_mixer' 'poco')
+depends=('craftos-pc-data>=2.4.1' 'sdl2>=2.0.8' 'sdl2_mixer' 'poco')
 makedepends=()
 optdepends=('libharu: PDF output support' 'png++: PNG screenshot support' 'ncurses: CLI mode support')
 checkdepends=()
@@ -20,20 +20,14 @@ options=()
 install=
 changelog=
 source=("craftos2.tar.gz::https://github.com/MCJack123/craftos2/archive/v${pkgver}-luajit.tar.gz"
-        "craftos2-luajit.tar.gz::https://github.com/MCJack123/craftos2-luajit/archive/v2.0.5-cc2.2.1.tar.gz"
-        "updater-fix.json::https://api.github.com/repos/MCJack123/craftos2/commits/da749f574f626b733b7053e8c47947c7ab1c8bb8")
+        "craftos2-luajit.tar.gz::https://github.com/MCJack123/craftos2-luajit/archive/v2.4.1.tar.gz")
 noextract=()
-sha256sums=('276227c213b181b5642148bafc931fb1b5b486f0ca7866b6163a06749746c51f'
-            '2680159260552e27cb8bf3c3fe2621a67026229eeeed116eba8523d39f0c482a'
-            '6906ad34202ee2e30c4a30d3fa8487aed39054c82577c1b981e6be04a355e45e')
+sha256sums=('64514e8d2771682fb214f1e39183be30d72b96d91287fe83be9c7938483548c8'
+            '2587c32585f070ab0e6da5614f327770c69292a55e09aa78ba13585fcceca86f')
 validpgpkeys=()
 
 prepare() {
-    cp -R craftos2-luajit-2.0.5-cc2.2.1/* "craftos2-$pkgver-luajit/craftos2-luajit/"
-    # Late-breaking patch, DELETE AFTER v2.2.1!
-    python3 -c "import json, sys, io; file = io.open('updater-fix.json'); print(json.load(file)['files'][0]['patch']); file.close()" > updater-fix.patch
-    patch -p1 craftos2-$pkgver-luajit/src/main.cpp updater-fix.patch
-    # -=-
+    cp -R craftos2-luajit-2.4.1/* "craftos2-$pkgver-luajit/craftos2-luajit/"
     cd "craftos2-$pkgver-luajit"
     mkdir icons
     unzip linux-icons.zip -d icons
@@ -53,7 +47,7 @@ check() {
 package() {
 	cd "craftos2-$pkgver-luajit"
 	install -D -m 0755 craftos "$pkgdir/usr/bin/craftos-luajit"
-	install -D -m 0644 icons/CraftOS-PC-Accelerated.desktop "$pkgdir/usr/share/applications/CraftOS-PC-Accelerated.desktop"
+	install -D -m 0644 icons/CraftOS-PC.desktop "$pkgdir/usr/share/applications/CraftOS-PC-Accelerated.desktop"
 	install -D -m 0644 icons/16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/craftos-luajit.png"
 	install -D -m 0644 icons/24.png "$pkgdir/usr/share/icons/hicolor/24x24/apps/craftos-luajit.png"
 	install -D -m 0644 icons/32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/craftos-luajit.png"
