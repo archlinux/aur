@@ -4,7 +4,7 @@
 
 pkgname=rescribe-bin
 # update version in package.json, not here
-pkgver=0.0.19
+pkgver=0.0.20
 pkgrel=1
 epoch=
 pkgdesc="reScribe code search engine. CLI for interacting with reScribe api."
@@ -25,7 +25,7 @@ install=$pkgname.install
 changelog=
 source=("https://cli.rescribe.dev/linux.zip")
 noextract=()
-md5sums=("7f029e3787b6cb887e44d1f77b1482c3")
+md5sums=("1964abcd390dddef2bafe00530dfb395")
 validpgpkeys=()
 
 package() {
