@@ -1,17 +1,16 @@
-# Maintainer : Maël Kerbiriou <m431.ker.biriou at gmail dot com>
+# Maintainer : Maël Kerbiriou <m431.ker.biriou+aur at gmail dot com>
 
 pkgbase=duckdb-git
 pkgname=('duckdb-git' 'python-duckdb-git')
-pkgver=v0.1.8.r6.g439acd03a
+pkgver=v0.2.0.r377.g78f745252
 pkgrel=1
 pkgdesc="Embeddable SQL OLAP Database Management System"
 arch=('x86_64')
 url="https://www.duckdb.org/"
 license=('MIT')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'python-setuptools' 'python-numpy' 'python-pandas')
 checkdepends=('python-pytest')
-depends=('gcc-libs' 'python-numpy' 'python-pandas')
-provides=('duckdb' 'python-duckdb')
+depends=('gcc-libs')
 source=("${pkgbase}::git+https://github.com/cwida/${pkgbase%-git}.git")
 md5sums=('SKIP')
 
@@ -21,18 +20,22 @@ pkgver() {
 }
 
 prepare() {
-  cmake -S "${srcdir}/${pkgbase}" -B "${srcdir}/build" \
+  cd "${srcdir}/${pkgbase}"
+  python "scripts/amalgamation.py"
+
+  cmake -S . -B "${srcdir}/build" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr/ \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DAMALGAMATION_BUILD=1 \
+    -DTREAT_WARNINGS_AS_ERRORS=1 \
+    -DBUILD_PARQUET_EXTENSION=1 \
     -DBUILD_TESTING=ON
 }
 
 build() {
-  cd "${srcdir}/build"
-  make
+  cmake --build "${srcdir}/build"
 
-  cd "${srcdir}/${pkgbase}/tools/pythonpkg"
-  python setup.py build
+  python "${srcdir}/${pkgbase}/tools/pythonpkg/setup.py" build
 }
 
 check() {
@@ -44,16 +47,29 @@ check() {
 }
 
 package_duckdb-git() {
-  cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}" install
+  provides=('duckdb')
+
+  DESTDIR="${pkgdir}" cmake --install "${srcdir}/build"
+
+  # Command line and tools do not have a install() decl yet
+  for bin in duckdb tools/rest/duckdb_dbgen tools/rest/duckdb_rest_server; do
+      install -D -m755 "${srcdir}/build/$bin" \
+        "${pkgdir}/usr/bin/$(basename $bin)"
+  done
+
+  install -D -m755 "${srcdir}/build/tools/sqlite3_api_wrapper/libsqlite3_api_wrapper.so" \
+    "${pkgdir}/usr/lib/libsqlite3_api_wrapper.so"
 
   install -D -m644 "${srcdir}/${pkgbase}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python-duckdb-git() {
+  optdepends=('python-numpy' 'python-pandas')
+  provides=('python-duckdb')
+
   cd "${srcdir}/${pkgbase}/tools/pythonpkg"
-  python setup.py install --root="${pkgdir}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   install -D -m644 "${srcdir}/${pkgbase}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
