@@ -9,6 +9,7 @@ pkgbase = duckdb-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = python-setuptools
+	makedepends = pybind11
 	makedepends = python-numpy
 	makedepends = python-pandas
 	depends = gcc-libs
