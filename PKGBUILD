@@ -88,7 +88,7 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  make localmodconfig
+  make olddefconfig
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -97,6 +97,7 @@ prepare() {
 build() {
   cd $_srcname
   make all
+  make htmldocs
 }
 
 _package() {
@@ -223,7 +224,7 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers")
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
