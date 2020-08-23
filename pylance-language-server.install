@@ -18,7 +18,9 @@ post_install() {
                 "python.analysis.autoSearchPaths": true,
                 "python.analysis.extraPaths": [],
                 "python.analysis.diagnosticSeverityOverrides": {},
-                "python.analysis.useLibraryCodeForTypes": true
+                "python.analysis.useLibraryCodeForTypes": true,
+                "python.analysis.autoImportCompletions": true,
+                "python.analysis.completeFunctionParens": false
             }
         }
 EOF
