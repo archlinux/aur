@@ -3,7 +3,7 @@
 _pkgname=matrix-dimension
 pkgname=dimension
 pkgver=r530.db22981
-pkgrel=1
+pkgrel=2
 
 pkgdesc="An open source integrations manager for matrix clients, like Riot."
 url="https://github.com/turt2live/matrix-dimension"
@@ -18,7 +18,7 @@ source=("git+https://github.com/turt2live/matrix-dimension#commit=db2298172f8379
 	"${pkgname}.service")
 
 sha256sums=('SKIP'
-            'e51e15b65ff47d22f51bcbecb8c74b6d947b603f1ebe3ecb0eb607e17d56d3ae')
+            '5da286eab86577a78aa370693894f51ea1faa070d2c41b92abe308cab6ba7a89')
 
 pkgver() {
   cd "$_pkgname"
@@ -30,14 +30,14 @@ prepare() {
   # Bump sharp and node-sass to make dimension compatible with node12 and node14
   # ref: https://github.com/turt2live/matrix-dimension/pull/352
   sed -i -e 's/"sharp": "^0.21.1"/"sharp": "^0.25.4"/' -e 's/node-sass": "^4.12.0/node-sass": "^4.14.1/'  package.json
+
 }
 
 build() {
   cd $_pkgname
+  # make angular run production mode
+  sed -i -e 's/process.env.ENV === "build"/true/' web/main.ts
   npm install --build-from-source --sass-binary-site=http://localhost:0 --sqlite=/usr
-  # This certainly breaks reproduciblity but we'll leave this in for now as dimension's locked depenencies are quite outdated.
-  # This should be removed as soon as dimension gets regular dependency updates again.
-  npm audit fix
   npm run build
   # development dependencies are required for building the front and backend but we don't want this to end up in the package 
   # where we need to package the whole node_modules directory
@@ -53,6 +53,3 @@ package() {
   install -dm755 -o 198 -g 198 "$pkgdir"/etc/$pkgname
   install -Dm644 config/default.yaml "$pkgdir"/etc/$pkgname/production.yaml
 }
-
-sha256sums=('SKIP'
-            '5da286eab86577a78aa370693894f51ea1faa070d2c41b92abe308cab6ba7a89')
