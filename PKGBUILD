@@ -11,12 +11,12 @@
 
 pkgname=puppet3
 pkgver=3.8.7
-pkgrel=4
+pkgrel=5
 pkgdesc="Server automation framework and application"
 arch=('any')
 url="http://puppetlabs.com/puppet/puppet-open-source"
 license=('APACHE')
-depends=('facter2' 'hiera')
+depends=('facter2' 'hiera' 'ruby-sync')
 optdepends=('ruby-shadow: user password management'
             'logrotate')
 provides=("puppet=$pkgver")
