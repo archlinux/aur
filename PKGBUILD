@@ -10,7 +10,7 @@ url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
 arch=(x86_64)
 license=(MIT)
 makedepends=(lib32-glib2 lib32-freetype2 lib32-cairo lib32-icu ragel git python
-             meson harfbuzz)
+             meson harfbuzz harfbuzz-icu)
 checkdepends=(python-fonttools python-setuptools)
 source=("git+https://github.com/harfbuzz/harfbuzz")
 sha256sums=('SKIP')
@@ -43,8 +43,6 @@ check() {
 }
 
 package_lib32-harfbuzz-git() {
-  depends=(lib32-glib2 lib32-freetype2 libglib-2.0.so libfreetype.so
-           libgobject-2.0.so harfbuzz)
   provides=(lib32-harfbuzz libharfbuzz.so libharfbuzz-subset.so libharfbuzz-gobject.so)
   conflicts=(lib32-harfbuzz)
 
@@ -61,7 +59,6 @@ package_lib32-harfbuzz-git() {
 
 package_lib32-harfbuzz-icu-git() {
   pkgdesc="$pkgdesc (ICU integration)"
-  depends=(lib32-harfbuzz lib32-icu libharfbuzz.so harfbuzz-icu)
   provides=(lib32-harfbuzz-icu libharfbuzz-icu.so)
   conflicts=(lib32-harfbuzz-icu)
 
