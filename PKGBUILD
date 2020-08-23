@@ -4,17 +4,17 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-libmpc
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Library for the arithmetic of complex numbers with arbitrarily high precision (mingw-w64)"
 arch=('any')
 url="http://www.multiprecision.org/mpc/"
 license=('LGPL')
-depends=('mingw-w64-mpfr')
+depends=('mingw-w64-mpfr>=4.1.0')
 makedepends=('mingw-w64-configure')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://ftp.gnu.org/gnu/mpc/mpc-${pkgver}.tar.gz"{,.sig})
-sha256sums=('6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e'
+sha256sums=('e90f2d99553a9c19911abdb4305bf8217106a957e3994436428572c8dfe8fda6'
             'SKIP')
 validpgpkeys=('AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3') # Andreas Enge <andreas@enge.fr>
 
