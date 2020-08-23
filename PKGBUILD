@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Modern software-defined video compression format"
 arch=('x86_64')
 url="https://xvc.io/"
-license=('custom')
+license=('LGPL2.1')
 depends=('gcc-libs')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
@@ -21,7 +21,7 @@ pkgver() {
 build() {
 	mkdir -p build
 	cd build
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "$srcdir"/xvc
+	cmake -DCMAKE_INSTALL_PREFIX=/usr "$srcdir"/xvc
 	make
 }
 
@@ -33,5 +33,4 @@ check() {
 package() {
 	cd build
 	make DESTDIR="$pkgdir/" install
-	install -Dm644 "$srcdir"/xvc/LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
