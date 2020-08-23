@@ -56,18 +56,18 @@ _BATCH_MODE=n # enable batch mode
 ##
 
 _major=5
-_minor=7
+_minor=8
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_unpatched_sublevel=10
-_pfrel=7
+_unpatched_sublevel=3
+_pfrel=2
 _kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
-_projectcpatchname=prjc_v5.7-r3.patch
+_projectcpatchname=prjc_v5.8-r1.patch
 _CPUSUFFIXES_KBUILD=(
   CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER PSC
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
@@ -76,7 +76,7 @@ pkgname=('linux-pf')
 pkgdesc="Linux with the pf-kernel patch (uksm, BMQ, ZSTD, FSGSBASE and more)"
 pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_unpatched_sublevel}.${_kernelname}${_pfrel}
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
 license=('GPL2')
@@ -308,87 +308,87 @@ _package() {
     case $CPU in
       CORE2)
         pkgname="${pkgbase}-core2"
-        pkgdesc="${_pkgdesc} Intel Core2 optimized."
+        pkgdesc="${pkgdesc} Intel Core2 optimized."
         ;;
       K7)
         pkgname="${pkgbase}-k7"
-        pkgdesc="${_pkgdesc} AMD K7 optimized."
+        pkgdesc="${pkgdesc} AMD K7 optimized."
         ;;
       K8)
         pkgname="${pkgbase}-k8" 
-        pkgdesc="${_pkgdesc} AMD K8 optimized."
+        pkgdesc="${pkgdesc} AMD K8 optimized."
 	      ;;
       K10)
         pkgname="${pkgbase}-k10"
-	      pkgdesc="§{_pkgdesc} AMD K10 optimized"
+	      pkgdesc="§{pkgdesc} AMD K10 optimized"
         ;;
       BARCELONA)
         pkgname="${pkgbase}-barcelona"
-        pkgdesc="${_pkgdesc} AMD Barcelona optimized."
+        pkgdesc="${pkgdesc} AMD Barcelona optimized."
 	      ;;
       BOBCAT)
 	      pkgname="${pkgbase}-bobcat"
-	      pkgdesc="${_pkgdesc} AMD Bobcat optimized."
+	      pkgdesc="${pkgdesc} AMD Bobcat optimized."
 	      ;;
       BULLDOZER)
 	      pkgname="${pkgbase}-bulldozer"
-	      pkgdesc="${_pkgdesc} AMD Bulldozer optimized."
+	      pkgdesc="${pkgdesc} AMD Bulldozer optimized."
 	      ;;
       PILEDRIVER)
 	      pkgname="${pkgbase}-piledriver"
-	      pkgdesc="${_pkgdesc} AMD Piledriver optimized."
+	      pkgdesc="${pkgdesc} AMD Piledriver optimized."
 	      ;;
       PSC)
         pkgname="${pkgbase}-psc"
-        pkgdesc="${_pkgdesc} Intel Pentium4/D/Xeon optimized."
+        pkgdesc="${pkgdesc} Intel Pentium4/D/Xeon optimized."
         ;;
       ATOM)
         pkgname="${pkgbase}-atom"
-        pkgdesc="${_pkgdesc} Intel Atom optimized."
+        pkgdesc="${pkgdesc} Intel Atom optimized."
         ;;
       PENTIUMII)
         pkgname="${pkgbase}-p2"
-        pkgdesc="${_pkgdesc} Intel Pentium2 optimized."
+        pkgdesc="${pkgdesc} Intel Pentium2 optimized."
         ;;
       PENTIUMIII)
         pkgname="${pkgbase}-p3"
-        pkgdesc="${_pkgdesc} Intel Pentium3 optimized."
+        pkgdesc="${pkgdesc} Intel Pentium3 optimized."
         ;;
       PENTIUMM)
         pkgname="${pkgbase}-pm"
-        pkgdesc="${_pkgdesc} Intel Pentium-M optimized."
+        pkgdesc="${pkgdesc} Intel Pentium-M optimized."
         ;;
       PENTIUM4)
         pkgname="${pkgbase}-p4"
-        pkgdesc="${_pkgdesc} Intel Pentium4 optimized."
+        pkgdesc="${pkgdesc} Intel Pentium4 optimized."
         ;;
       NEHALEM)
 	      pkgname="${pkgbase}-nehalem"
-        pkgdesc="${_pkgdesc} Intel Core Nehalem optimized."
+        pkgdesc="${pkgdesc} Intel Core Nehalem optimized."
 	      ;;
       SANDYBRIDGE)
         pkgname="${pkgbase}-sandybridge"
-        pkgdesc="${_pkgdesc} Intel 2nd Gen Core processors including Sandy Bridge."
+        pkgdesc="${pkgdesc} Intel 2nd Gen Core processors including Sandy Bridge."
 	      ;;
       IVYBRIDGE)
         pkgname="${pkgbase}-ivybridge"
-        pkgdesc="${_pkgdesc} Intel 3rd Gen Core processors including Ivy Bridge."
+        pkgdesc="${pkgdesc} Intel 3rd Gen Core processors including Ivy Bridge."
 	      ;;
       HASWELL)
         pkgname="${pkgbase}-haswell"
-        pkgdesc="${_pkgdesc} 4th Gen Core processors including Haswell."
+        pkgdesc="${pkgdesc} 4th Gen Core processors including Haswell."
 	      ;;
       BROADWELL)
         pkgname="${pkgbase}-broadwell"
-        pkgdesc="${_pkgdesc} 5th Gen Core processors including Broadwell."
+        pkgdesc="${pkgdesc} 5th Gen Core processors including Broadwell."
 	      ;;
       SILVERMONT)
         pkgname="${pkgbase}-silvermont"
-        pkgdesc="${_pkgdesc} 6th Gen Core processors including Silvermont."
+        pkgdesc="${pkgdesc} 6th Gen Core processors including Silvermont."
 	      ;;
       SKYLAKE)
         pkgname="${pkgbase}-skylake"
-        pkgdesc="${_pkgdesc} 6th Gen Core processors including Skylake."
+        pkgdesc="${pkgdesc} 6th Gen Core processors including Skylake."
         ;;
     esac
 
@@ -618,13 +618,13 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
      }"
 
 
-sha256sums=('de8163bb62f822d84f7a3983574ec460060bf013a78ff79cd7c979ff1ec1d7e0'
-            'ed60b20ee841e16038da0d145fbf3f53fac94122c4001d6cd03abe64e9e760f6'
-            '887b13d1ef8334f13c4bf94e92a16361dd88bd004df738b066b693fb104634df'
+sha256sums=('e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5'
+            '457d5c9717048cd5334ba3d14dfb37699ac1d2c6dc2fd1df93adb487d6921f2f'
+            'd7124b20ed9830e59c18608a251b45da33ceb223a88360d6bf0a7506e9be8da5'
             'b6aeb6c460f08443ecce4006d8da83c5f01a224ad2123998ae351b5357286bcd'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'e49f77180b3149da4fd1ea15b179118c7d057f805b8dbfc1c17ca17d7cfcad2f'
-            'b2a2ae866fc3f1093f67e69ba59738827e336b8f800fb0487599127f7f3ef881'
+            '3fb1d54985b0f02519352e22bae16f33a688f77cb030ccc4e0ae0a01bf23ae6d'
+            '1656a20d3bab28c72e004778f77e880bba8d02eba8d18a81558cdc9d6733b1f1'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21')
 # vim:set ts=2 sw=2 tw=0 et:
