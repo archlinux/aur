@@ -1,33 +1,33 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
-	pkgver = 5.8.2.arch1
+	pkgver = 5.8.3.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.8.2-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.8.3-arch1
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = https://mirrors.neusoft.edu.cn/archlinux/core/os/x86_64/linux-5.8.2.arch1-1-x86_64.pkg.tar.zst
-	source = https://mirrors.neusoft.edu.cn/archlinux/core/os/x86_64/linux-headers-5.8.2.arch1-1-x86_64.pkg.tar.zst
-	source = https://mirrors.neusoft.edu.cn/archlinux/core/os/x86_64/linux-docs-5.8.2.arch1-1-x86_64.pkg.tar.zst
-	sha256sums = f0df0bcc85dc82674e9d9886700f454e9607e41f303f668f00b94e8dababc541
-	sha256sums = 0e5cae295ca9c5442c80e1ef75d999f39d41b4e4838e9447449d41c4dcdd26cc
-	sha256sums = 1a6a3a83eb3230038e4dd7f64d02e42ef3239337f7dd779d48c82ff08870730b
+	source = https://mirrors.neusoft.edu.cn/archlinux/core/os/x86_64/linux-5.8.3.arch1-1-x86_64.pkg.tar.zst
+	source = https://mirrors.neusoft.edu.cn/archlinux/core/os/x86_64/linux-headers-5.8.3.arch1-1-x86_64.pkg.tar.zst
+	source = https://mirrors.neusoft.edu.cn/archlinux/core/os/x86_64/linux-docs-5.8.3.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = 7efb422f08d606c1b538c6c7500875e01e289c1ec89271a499bb55a3c22e991b
+	sha256sums = 49fab550ca49348f0969edd2b7de5ccd7e7e022e4bd25e09ead802d1cc14a111
+	sha256sums = 701916c91b9a91ca0f20783f55e2a426fedebc33e22d44947dcb53d8e9b10d56
 
 pkgname = linux-versioned-bin
-	pkgdesc = Dummy package depending on linux5.8.2.arch1-1-bin
-	depends = linux5.8.2.arch1-1-bin
+	pkgdesc = Dummy package depending on linux5.8.3.arch1-1-bin
+	depends = linux5.8.3.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.8.2.arch1-1-headers-bin
-	depends = linux5.8.2.arch1-1-headers-bin
+	pkgdesc = Dummy package depending on linux5.8.3.arch1-1-headers-bin
+	depends = linux5.8.3.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.8.2.arch1-1-docs-bin
-	depends = linux5.8.2.arch1-1-docs-bin
+	pkgdesc = Dummy package depending on linux5.8.3.arch1-1-docs-bin
+	depends = linux5.8.3.arch1-1-docs-bin
 
-pkgname = linux5.8.2.arch1-1-bin
-	pkgdesc = The Linux kernel and modules, version 5.8.2-arch1-1
+pkgname = linux5.8.3.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 5.8.3-arch1-1
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -35,11 +35,11 @@ pkgname = linux5.8.2.arch1-1-bin
 	optdepends = linux-firmware: firmware images needed for some devices
 	conflicts = linux
 
-pkgname = linux5.8.2.arch1-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.8.2-arch1-1
+pkgname = linux5.8.3.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.8.3-arch1-1
 	conflicts = linux-headers
 
-pkgname = linux5.8.2.arch1-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.8.2-arch1-1
+pkgname = linux5.8.3.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.8.3-arch1-1
 	conflicts = linux-docs
 
