@@ -7,7 +7,7 @@
 
 pkgname=wine-lol-glibc
 pkgdesc='GNU C Library patched for wine-lol'
-pkgver=2.31
+pkgver=2.32
 pkgrel=1
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
@@ -19,10 +19,8 @@ options=(!strip staticlibs)
 #_commit=067fc32968b601493f4b247a3ac00caeea3f3d61
 #source=(git+https://sourceware.org/git/glibc.git#commit=$_commit
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz
-        bz20338.patch
         wine-lol-poc1-glibc.diff::https://bugs.winehq.org/attachment.cgi?id=64482)
-md5sums=('78a720f17412f3c3282be5a6f3363ec6'
-         '430673eccc78e52c249aa4b0f1786450'
+md5sums=('720c7992861c57cf97d66a2f36d8d1fa'
          '65e6d204ab9ad787c8dce999c4ba5c17')
 
 prepare() {
@@ -34,7 +32,7 @@ prepare() {
   local i; for i in ${source[@]}; do
     case ${i%::*} in
       *.patch)
-        msg2 "Applying ${i}"
+        echo "  -> Applying ${i}"
         patch -p1 -i "$srcdir/${i}"
         ;;
     esac
