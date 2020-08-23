@@ -15,6 +15,7 @@ pkgbase = dv-gui
 	depends = libxrender
 	depends = libxtst
 	source = http://release.inivation.com/gui/dv-gui-linux-1.2.3.tar.gz
+	sha256sums = 6c14e1d7a666b471f0aa1c446714966b7c1ae7ae45de82c3e43d45b788463a8c
 
 pkgname = dv-gui
 
