@@ -1,6 +1,6 @@
 # Maintainer: Tom Wambold <tom5760@gmail.com>
 pkgname=emane
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Extendable Mobile Ad-hoc Network Emulator"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=(libxml2 libpcap pcre libutil-linux python-protobuf python-lxml)
 optdepends=('python: Python bindings')
 makedepends=(python protobuf)
 source=("https://github.com/adjacentlink/emane/archive/v$pkgver.tar.gz")
-md5sums=('41a25a22fbc248edeab50a5abf732f31')
+md5sums=('28e0178b352d3d74a12dcbde1b0d6d06')
 
 build() {
   cd "$srcdir/emane-$pkgver"
