@@ -1,5 +1,5 @@
 pkgbase = wikiman
-	pkgdesc = Browse ArchWiki and manual pages from your terminal
+	pkgdesc = Offline search engine for ArchWiki and manual pages combined
 	pkgver = 1.0
 	pkgrel = 2
 	url = https://github.com/filiparag/wikiman
