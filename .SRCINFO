@@ -1,6 +1,6 @@
 pkgbase = nnrss-qt
 	pkgdesc = nano nano rss client in QT
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://git.roshless.me/roshless/nnrss-qt
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = nnrss-qt
 	depends = qt5-base
 	depends = python-requests
 	depends = libnotify
-	source = https://git.roshless.me/~roshless/nnrss-qt/archive/1.3.0.tar.gz
+	source = https://git.roshless.me/~roshless/nnrss-qt/archive/1.3.1.tar.gz
 	source = nnrss-qt.desktop
-	md5sums = 2418a250de7643fb31cde77006a044b7
+	md5sums = 21ed9dcf6dd9deb6cd2377bf0d4a3f7b
 	md5sums = a22ce9790bda6c105744ad122224e1a2
 
 pkgname = nnrss-qt

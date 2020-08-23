@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=nnrss-qt
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='nano nano rss client in QT'
 url='https://git.roshless.me/roshless/nnrss-qt'
@@ -26,5 +26,5 @@ package() {
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
-md5sums=('2418a250de7643fb31cde77006a044b7'
+md5sums=('21ed9dcf6dd9deb6cd2377bf0d4a3f7b'
          'a22ce9790bda6c105744ad122224e1a2')
