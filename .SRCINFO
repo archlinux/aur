@@ -6,6 +6,7 @@ pkgbase = autotiling-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python-i3ipc
 	provides = autotiling
 	conflicts = autotiling
