@@ -1,0 +1,12 @@
+pkgbase = bootstub-updater
+	pkgdesc = A utility to facilitate the maintenance of your EFI bootstub.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/RAR27/bootstub-updater
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	source = bootstub-updater-1.0.0.tar.gz::https://github.com/RAR27/bootstub-updater/archive/v1.0.0.tar.gz
+	sha256sums = f318e65cb3ca8eede7e075f99058f714f47ed2678b53cde3cf50320a37b68a41
+
+pkgname = bootstub-updater
