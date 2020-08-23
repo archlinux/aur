@@ -3,7 +3,7 @@
 pkgname=jdk-jetbrains
 _major=11
 _minor=0.8
-_build=1035.1
+_build=1046.1
 pkgver=${_major}.${_minor}b${_build}
 pkgrel=1
 pkgdesc='OpenJDK development kit with some fixes and enhancements by JetBrains'
@@ -16,7 +16,7 @@ provides=("java-runtime=$_major"         "java-runtime-headless=$_major"     "ja
 replaces=('intellij-jdk' 'jdk-jetbrains')
 _zipname="jbrsdk-${_major}_${_minor//./_}-linux-x64-b${_build}.tar.gz"
 source=("${_zipname}::https://bintray.com/jetbrains/intellij-jbr/download_file?file_path=${_zipname}")
-b2sums=('6b3fe3bd9e7168599909d708a284a2198845dcb4de40f64bd3c346cfea8f3d5dad14bda39650f4445a9797076052f47ec9a07755b96d96ca0ec89b2e75498f20')
+b2sums=('2a786f3e3f208a6dc35191173a8a4b117d6569a68204789b83ca1a561259408414fa55a3c1097d778fbdf32973fd77eb36f67d6491c0ce9cf52843c80e3a5fc4')
 
 package() {
   find . -exec chmod g+r,o+r {} +
