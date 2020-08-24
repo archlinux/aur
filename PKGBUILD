@@ -1,8 +1,8 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=hippoplayer-git
-pkgver=r421.ffd6581
-pkgrel=2
+pkgver=0.1.9.r1.gf2a9b36
+pkgrel=1
 pkgdesc="A modern music player for your oldsk00l needs"
 arch=('x86_64')
 url='https://github.com/emoon/HippoPlayer'
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
   cd hippoplayer
   git submodule update --init --recursive
-  sed -i "124s|.*|const char* core_name = \"/usr/share/hippoplayer/libhippo_core.so\";|" src/hippo_core_loader/hippo_core_loader.c
+  sed -i "145s|.*|const char* core_name = \"/usr/share/hippoplayer/libhippo_core.so\";|" src/hippo_core_loader/hippo_core_loader.c
   sed -i "s|VGMEnd|VGMEndFmts|g" src/plugins/playback/vgm/VGMPlay/VGMPlay_AddFmts.c
 }
 
