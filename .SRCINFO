@@ -1,0 +1,13 @@
+pkgbase = f33-backgrounds
+	pkgdesc = Fedora 33 backgrounds
+	pkgver = 33.0.2
+	pkgrel = 1
+	url = https://fedoraproject.org/wiki/F33_Artwork
+	arch = i686
+	arch = x86_64
+	license = CC-BY-SA
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f33-backgrounds-33.0.2-1.fc34.src.rpm
+	sha256sums = ecdf9eec04413fb35b9d64d053d8ce39af0c3c838451cc61c054468a822d2c3f
+
+pkgname = f33-backgrounds
+
