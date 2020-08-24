@@ -1,0 +1,13 @@
+[Unit]
+Description=Minecraft Fabric Server
+After=local-fs.target network.target multi-user.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/fabricd start
+ExecStop=/usr/bin/fabricd stop
+User=fabric
+Group=fabric
+
+[Install]
+WantedBy=multi-user.target
