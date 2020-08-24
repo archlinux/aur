@@ -9,7 +9,7 @@ url='https://github.com/deplinenoise/tundra'
 license=('MIT')
 provides=('tundra2')
 depends=('gcc-libs')
-makedepends=('git')
+makedepends=('git' 'clang')
 source=("tundra2::git+${url}")
 sha256sums=('SKIP')
 

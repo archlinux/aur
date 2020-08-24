@@ -6,6 +6,7 @@ pkgbase = tundra2-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = clang
 	depends = gcc-libs
 	provides = tundra2
 	source = tundra2::git+https://github.com/deplinenoise/tundra
