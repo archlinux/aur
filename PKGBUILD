@@ -16,7 +16,7 @@
 # Maintainer: Samuel Littley <samuellittley@google.com>
 
 pkgname='build-arch-gce'
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc='Builds an Arch image for Google Compute Engine'
 arch=('any')
@@ -24,7 +24,7 @@ url='https://github.com/GoogleCloudPlatform/compute-archlinux-image-builder'
 license=('Apache')
 depends=('arch-install-scripts' 'e2fsprogs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/compute-archlinux-image-builder/archive/$pkgver.tar.gz")
-sha256sums=('9b54c85687ed024a675ceea97836ab98bb0cfc60a7094f652e8dcd09e385d17c')
+sha256sums=('2e611d5c9ba793bfbdaf9ca4cbf72c901bf349bd93d24db25db30c3ea35f50e9')
 
 package() {
 	cd "compute-archlinux-image-builder-$pkgver"
