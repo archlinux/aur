@@ -1,7 +1,7 @@
 # Maintainer Torsten Keßler <t dot kessler at posteo dot de>
 pkgname=rocclr
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Radeon Open Compute Common Language Runtime'
 arch=('x86_64')
 url='https://github.com/ROCm-Developer-Tools/ROCclr'
@@ -26,5 +26,6 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" make -C build install
+    sed -i "s@$srcdir/build@/opt/rocm/rocclr@" "$pkgdir/opt/rocm/rocclr/lib/cmake/rocclr/ROCclrConfig.cmake"
     install -Dm644 "$_dirname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
