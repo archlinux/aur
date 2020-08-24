@@ -2,7 +2,7 @@
 
 _name=ddnet-maps
 pkgname=$_name-git
-pkgver=r1225.gbba7abb1
+pkgver=r1289.gc3ac2521
 pkgrel=1
 pkgdesc="All released maps with configs for DDraceNetwork server"
 arch=(any)
@@ -14,6 +14,8 @@ backup=('usr/share/ddnet/data/autoexec_server.cfg'
         'usr/share/ddnet/data/storage.cfg')
 source=("git+https://github.com/ddnet/$_name.git")
 md5sums=('SKIP')
+
+# Override compression, because default xz takes too much time to compress
 PKGEXT='.pkg.tar'
 
 pkgver() {
@@ -59,6 +61,7 @@ package() {
   done
 
     # Avoid file conflicts as they are already provided in DDNet package
-  rm "$_datadir/maps/Goo!.map"
-  rm "$_datadir/maps/Kobra 4.map"
+  rm "$_datadir/maps/Goo!.map" \
+     "$_datadir/maps/Kobra 4.map" \
+     "$_datadir/maps/Gold Mine.map"
 }
