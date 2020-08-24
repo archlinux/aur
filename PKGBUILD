@@ -3,7 +3,7 @@
 # part of this script is taken from cudnn package at https://www.archlinux.org/packages/community/x86_64/cudnn/
 
 pkgname=paddlepaddle-gpu
-pkgver=1.9.5
+pkgver=1.9.6
 pkgrel=2
 # epoch=
 pkgdesc="An opensourced deeplearning framework derived from industral practice."
@@ -62,8 +62,10 @@ package() {
   pip3.7 install --upgrade pip
   python3.7 -m pip install --no-cache-dir paddlepaddle-gpu==1.8.3.post107 -i https://mirror.baidu.com/pypi/simple
   echo "export LD_LIBRARY_PATH=/opt/cuda/lib64" >> ~/.bashrc
-  echo "Installation complete, check by typing:"
-  echo "python3.7"
-  echo "import paddle.fluid"
-  echo "paddle.fluid.install_check.run_check()"
+
+
+  echo "Installation complete, install additional packages with pip3.7."
+  echo "Check installation with"
+  echo "python3.7 -c 'import paddle.fluid; paddle.fluid.install_check.run_check()'"
+
 }
