@@ -25,7 +25,7 @@ package_vim-edge-git() {
     provides=("${_variant}-${_colorscheme}")
     conflicts=("${_variant}-${_colorscheme}")
     cd "${srcdir}/${_colorscheme}"
-    find "autoload/${_colorscheme}.vim" doc colors -type f -exec \
+    find 'autoload/*.vim' doc colors -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/usr/share/vim/vimfiles/{}" \;
     install -Dm 644 "${srcdir}/${_colorscheme}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
