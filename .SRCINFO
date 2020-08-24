@@ -1,6 +1,6 @@
 pkgbase = pymol-git
 	pkgdesc = Molecular visualization system on an Open Source foundation
-	pkgver = r4707.7b4e2af9
+	pkgver = r4806.c7095ec2
 	pkgrel = 1
 	url = https://pymol.org/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = pymol-git
 	optdepends = python-pmw: pmw based UI
 	optdepends = python-pyqt5: Qt5 based UI
 	optdepends = ffmpeg: MPEG encoding
-	provides = pymol=r4707.7b4e2af9
+	provides = pymol=r4806.c7095ec2
 	conflicts = pymol
 	source = pymol::git+https://github.com/schrodinger/pymol-open-source.git
 	source = pymol.png::https://c.fsdn.com/allura/p/pymol/icon
