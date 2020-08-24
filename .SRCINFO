@@ -1,0 +1,29 @@
+pkgbase = neovim-gruvbox-material-git
+	pkgver = v1.2.0.r12.g8c5607c
+	pkgrel = 1
+	url = https://github.com/sainnhe/gruvbox-material
+	arch = any
+	license = MIT
+	source = gruvbox-material::git+https://github.com/sainnhe/gruvbox-material.git
+	sha256sums = SKIP
+
+pkgname = neovim-gruvbox-material-git
+	pkgdesc = Gruvbox with Material Palette
+	depends = neovim
+	provides = neovim-gruvbox-material
+	conflicts = neovim-gruvbox-material
+
+pkgname = neovim-airline-gruvbox-material-git
+	pkgdesc = gruvbox-material color scheme for airline
+	depends = neovim-gruvbox-material
+	depends = neovim-airline
+	provides = neovim-airline-gruvbox-material
+	conflicts = neovim-airline-gruvbox-material
+
+pkgname = neovim-lightline-gruvbox-material-git
+	pkgdesc = gruvbox-material color scheme for lightline
+	depends = neovim-gruvbox-material
+	depends = neovim-lightline
+	provides = neovim-lightline-gruvbox-material
+	conflicts = neovim-lightline-gruvbox-material
+
