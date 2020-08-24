@@ -2,7 +2,7 @@
 
 _npmname=localtunnel
 pkgname=nodejs-$_npmname
-pkgver=1.9.2
+pkgver=2.0.0
 pkgrel=1
 #epoch=
 pkgdesc="Expose localhost to the world"
@@ -16,7 +16,7 @@ makedepends=('jq' 'npm')
 #source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
 # Get the NPM registry build, as in: https://git.archlinux.org/svntogit/community.git/tree/trunk/PKGBUILD?h=packages/nodejs-emojione
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha512sums=('344285edb0c913d537c7326ede46dac85d164ef9e0e8fc30eedcea35bfd7b44011630ab0ec22845fb06f38c83df05b44f5eb360918b397ad60915de14bc76a62')
+sha512sums=('83a13468b818603bd00f1223217920268dbea478f7b068385b3fd73f78762ad66746c58f6ce418fa1c351fc67dd637a9f7df1f91c544f65fa48213bef7bbe596')
 
 package() {
     export npm_config_cache="$srcdir/npm_cache"
