@@ -3,13 +3,13 @@
 _pkgname=xfce4-appfinder
 pkgname=${_pkgname}-devel
 pkgver=4.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An application finder for Xfce"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4-devel')
-depends=('libxfce4ui>=4.15.2' 'garcon' 'xfconf' 'hicolor-icon-theme')
+depends=('libxfce4ui' 'libxfce4util>=4.15.2' 'garcon' 'xfconf' 'hicolor-icon-theme')
 makedepends=('intltool')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")

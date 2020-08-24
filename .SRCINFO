@@ -1,7 +1,7 @@
 pkgbase = xfce4-appfinder-devel
 	pkgdesc = An application finder for Xfce
 	pkgver = 4.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xfce.org/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = xfce4-appfinder-devel
 	groups = xfce4-devel
 	license = GPL2
 	makedepends = intltool
-	depends = libxfce4ui>=4.15.2
+	depends = libxfce4ui
+	depends = libxfce4util>=4.15.2
 	depends = garcon
 	depends = xfconf
 	depends = hicolor-icon-theme
