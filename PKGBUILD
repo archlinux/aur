@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc='Webex Teams, conference software from Cisco.'
 arch=('any')
 url='https://www.webex.com'
-license=('MIT')
+license=('custom')
 depends=('electron')
 makedepends=(
   'curl'
