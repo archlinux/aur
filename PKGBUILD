@@ -10,7 +10,7 @@ pkgname='cnrdrvcups-sfp'
 _pkgver='5.00';  _dl='0/0100005950/10'
 
 pkgver="${_pkgver}"
-pkgrel='1'
+pkgrel='3'
 pkgdesc='Canon UFRII LT Printer Driver for Linux (LBP112/912, LBP113/913, LBP151dw, LBP6030/LBP6040/LBP6018L, LBP6230/LBP6240, LBP7100C/LBP7110C, LBP8100)'
 arch=('x86_64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
