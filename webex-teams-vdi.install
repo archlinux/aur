@@ -1,0 +1,159 @@
+pre_install() {
+
+	Citrix_PID=`pidof -s wfica`
+
+	if [ $Citrix_PID ]; then
+	    echo "============================================================================="
+	    echo "                                                                             "
+	    echo "Detected that Citrix Workspace is opened. You must close it and then reinstall........"
+	    echo "                                                                             "
+	    echo "============================================================================="
+	    exit 1
+	else
+	    echo "Citrix Workspace is not running."
+
+	fi
+
+	TeamsVDI_PID=`pidof -s TeamsVDI`
+
+	if [ $TeamsVDI_PID ]; then
+	    echo "============================================================================="
+	    echo "                                                                             "
+	    echo "Detected that Teams VDI is opened and VMWare View may be open. You must close these and then reinstall........"
+	    echo "                                                                             "
+	    echo "============================================================================="
+	    exit 1
+	else
+	    echo "TeamsVDI is not running."
+
+	fi
+
+}
+
+post_install() {
+	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+
+	Citrix_PID=`pidof -s wfica`
+
+	if [ $Citrix_PID ]; then
+	    exit 1
+	fi
+
+	TeamsVDI_PID=`pidof -s TeamsVDI`
+
+	if [ $TeamsVDI_PID ]; then
+	    exit 1
+	fi
+
+	GNOME_ESTABLISHED=/tmp
+	GNOME_ESTABLISHED=$GNOME_ESTABLISHED/gnome-session-established
+	touch $GNOME_ESTABLISHED
+
+	LIB_STDCXX=/opt/cisco/TeamsVDI/libstdc++.so.6
+	if [ -f $LIB_STDCXX ]; then
+	    rm -f /opt/cisco/TeamsVDI/libstdc++.so.6
+	fi
+	ln -s /opt/cisco/TeamsVDI/libstdc++.so.6.0.27 /opt/cisco/TeamsVDI/libstdc++.so.6
+	sudo udevadm control --reload-rules
+
+	THINPRO=`dpkg -l | grep thinpro-base | cut -d ' ' -f3`
+	if [ $THINPRO ]; then
+	    fsunlock
+	fi
+
+	if [ -z $THINPRO ]; then
+	    test ! -d /opt/Citrix/ICAClient/ && mkdir -p /opt/Citrix/ICAClient/
+	    ln -fs /usr/lib/ICAClient/libCiscoTeamsCitrixPlugin.so /opt/Citrix/ICAClient/libCiscoTeamsCitrixPlugin.so
+	fi
+
+	chmod 755 /opt/cisco/TeamsVDI/citrix-plugin-install.sh
+	/opt/cisco/TeamsVDI/citrix-plugin-install.sh add Teams
+
+	#collect telemetry data on Ubuntu - start
+	echo CPU: | tr "\n" " " > /etc/TEAMSPlatformInfo.cisco
+	grep -m 1 "model name" /proc/cpuinfo | cut -c 14- >> /etc/TEAMSPlatformInfo.cisco
+
+	echo MEMORY: | tr "\n" " " >> /etc/TEAMSPlatformInfo.cisco
+	var=$(dmidecode -t memory | grep '^[[:blank:]]Size:.*MB' | grep -v 'No Module' | cut -c 8 ) 2>>/etc/TEAMSInstallError.log
+	sum=0
+	num=$(echo "$var" | wc -l)
+	i=1
+	while [ $i -le $num ]; do
+		tmp_var=`echo $var | cut -d ' ' -f$i`
+		sum=$((sum + tmp_var)) 2>>/etc/TEAMSInstallError.log
+		i=$((i + 1))	
+	done
+	echo $sum >> /etc/TEAMSPlatformInfo.cisco
+
+	echo VXCVersion:  | tr "\n" " " >> /etc/TEAMSPlatformInfo.cisco
+	vxme_version=$(cat /etc/build.teamsvdi.cisco ) 2>>/etc/TEAMSInstallError.log
+	echo ${vxme_version} >> /etc/TEAMSPlatformInfo.cisco
+
+	echo InstallationID: | tr "\n" " " >> /etc/TEAMSPlatformInfo.cisco
+	cat /proc/sys/kernel/random/uuid >> /etc/TEAMSPlatformInfo.cisco
+
+	echo SystemName: | tr "\n" " " >> /etc/TEAMSPlatformInfo.cisco
+	system_name=$(cat /proc/version | cut -d '(' -f4 | cut -d ')' -f1) 2>>/etc/TEAMSInstallError.log
+	echo ${system_name} >> /etc/TEAMSPlatformInfo.cisco
+
+	echo SystemDistribution: | tr "\n" " " >> /etc/TEAMSPlatformInfo.cisco
+	distribution=$(lsb_release -i | tr "\t" " " | cut -d " " -f3)
+	echo ${distribution} >> /etc/TEAMSPlatformInfo.cisco
+
+	echo SystemVersion: | tr "\n" " " >> /etc/TEAMSPlatformInfo.cisco
+	system_version=$(lsb_release -d | tr "\t" " " | cut -d " " -f3,4) 2>>/etc/TEAMSInstallError.log
+	echo ${system_version} >> /etc/TEAMSPlatformInfo.cisco
+
+	echo 64bitOS: | tr "\n" " " >> /etc/TEAMSPlatformInfo.cisco
+	os=`uname -m | grep 64 | cat` 2>>/etc/TEAMSInstallError.log
+	if [ -z $os ]
+	  then echo no >> /etc/TEAMSPlatformInfo.cisco
+	  else echo yes >> /etc/TEAMSPlatformInfo.cisco
+	fi
+	echo CitrixClientVersion: | tr "\n" " " >> /etc/TEAMSPlatformInfo.cisco
+	citrixversion=`dpkg -l | grep icaclient | awk '{print $3}'` 2>>/etc/TEAMSInstallError.log
+	echo $citrixversion >> /etc/TEAMSPlatformInfo.cisco
+
+	echo VMWareClientVersion: | tr "\n" " " >> /etc/TEAMSPlatformInfo.cisco
+	vmwareversion=$(/usr/bin/vmware-view --version|grep 'VMware Horizon Client'| awk '{print $4}') 2>>/etc/TEAMSInstallError.log
+	echo $vmwareversion >> /etc/TEAMSPlatformInfo.cisco
+
+	echo HardwareInformation: | tr "\n" " " >> /etc/TEAMSPlatformInfo.cisco
+	hardwareinformation=`dmidecode |grep -A 9 "System Information"| grep -w 'Product Name'| cut -d " " -f3` 2>>/etc/TEAMSInstallError.log
+	echo $hardwareinformation >> /etc/TEAMSPlatformInfo.cisco
+
+	echo CPUHardwareInformation: | tr "\n" " " >> /etc/TEAMSPlatformInfo.cisco
+	cpuhardwareinformation=`cat /proc/cpuinfo | grep name| cut -f2 -d: | uniq -c` 2>>/etc/TEAMSInstallError.log
+	echo $cpuhardwareinformation >> /etc/TEAMSPlatformInfo.cisco
+
+	echo ComputerManufacturer: | tr "\n" " " >> /etc/TEAMSPlatformInfo.cisco
+	computermanufacturer=`dmidecode |grep -A 9 "System Information"| grep -w 'Manufacturer'| cut -d: -f2` 2>>/etc/TEAMSInstallError.log
+	echo $computermanufacturer >> /etc/TEAMSPlatformInfo.cisco
+
+	#collect telemetry data on Ubuntu - end
+	update-desktop-database -q
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+
+	if [ -e /opt/Citrix/ICAClient/libCiscoTeamsCitrixPlugin.so ] ; then
+	   rm -f /opt/Citrix/ICAClient/libCiscoTeamsCitrixPlugin.so
+	fi
+
+
+	chmod 755 /opt/cisco/TeamsVDI/citrix-plugin-install.sh
+	/opt/cisco/TeamsVDI/citrix-plugin-install.sh remove Teams
+}
+
+post_remove() {
+	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
+	update-desktop-database -q
+}
