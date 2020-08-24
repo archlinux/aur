@@ -2,17 +2,18 @@
 # Contributor: Mikhail f. Shiryaev <mr<dot>felixoid<at>gmail<dot>com>
 pkgbase=komodo-pydbgp
 pkgname=(python-pydbgp python2-pydbgp)
-_srcrel=91033
-_srcver=11.1.0
-pkgver=11.1.0.${_srcrel}
+_srcrel=91869
+_srcver=12.0.1
+pkgver=${_srcver}.${_srcrel}
 pkgrel=1
 pkgdesc="The Komodo IDE Python Remote Debugging component"
 arch=('x86_64')
 url="http://code.activestate.com/komodo/remotedebugging/"
 license=('MIT')
 depends=()
+makedepends=('python' 'python2')
 source=("http://downloads.activestate.com/Komodo/releases/${_srcver}/remotedebugging/Komodo-PythonRemoteDebugging-${_srcver}-${_srcrel}-linux-${arch[*]}.tar.gz")
-md5sums=('09756df44b52d6d1e31d0ad0caa6d44a')
+sha256sums=(217f13e51ea37e28714ef29c4a35c72e3c8fdf562610f8366702b103ffca2bf9)
 
 build() {
 	cd "$srcdir/Komodo-PythonRemoteDebugging-${_srcver}-${_srcrel}-linux-${arch[*]}"
@@ -24,7 +25,7 @@ build() {
 package_python-pydbgp() {
 	depends=(python)
 	# Terrible hack to get site-packages of current python
-	site_dir=$(python -c 'import sys; print(next(d for d in sys.path if "site-packages" in d))')
+	local site_dir=$(python -c 'import site; print(site.getsitepackages()[0])')
 	cd "$srcdir/Komodo-PythonRemoteDebugging-${_srcver}-${_srcrel}-linux-${arch[*]}"
 	mkdir -p "${pkgdir}/usr/bin/" "${pkgdir}/${site_dir}"
 	cp py3_dbgp "${pkgdir}/usr/bin/"
@@ -35,7 +36,7 @@ package_python-pydbgp() {
 package_python2-pydbgp() {
 	depends=(python2)
 	# Terrible hack to get site-packages of current python
-	site_dir=$(python2 -c 'import sys; print(next(d for d in sys.path if "site-packages" in d))')
+	local site_dir=$(python2 -c 'import site; print(site.getsitepackages()[0])')
 	cd "$srcdir/Komodo-PythonRemoteDebugging-${_srcver}-${_srcrel}-linux-${arch[*]}"
 	mkdir -p "${pkgdir}/usr/bin/" "${pkgdir}/${site_dir}"
 	cp pydbgp "${pkgdir}/usr/bin/"

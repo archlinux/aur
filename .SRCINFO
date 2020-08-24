@@ -1,12 +1,14 @@
 pkgbase = komodo-pydbgp
 	pkgdesc = The Komodo IDE Python Remote Debugging component
-	pkgver = 11.1.0.91033
+	pkgver = 12.0.1.91869
 	pkgrel = 1
 	url = http://code.activestate.com/komodo/remotedebugging/
 	arch = x86_64
 	license = MIT
-	source = http://downloads.activestate.com/Komodo/releases/11.1.0/remotedebugging/Komodo-PythonRemoteDebugging-11.1.0-91033-linux-x86_64.tar.gz
-	md5sums = 09756df44b52d6d1e31d0ad0caa6d44a
+	makedepends = python
+	makedepends = python2
+	source = http://downloads.activestate.com/Komodo/releases/12.0.1/remotedebugging/Komodo-PythonRemoteDebugging-12.0.1-91869-linux-x86_64.tar.gz
+	sha256sums = 217f13e51ea37e28714ef29c4a35c72e3c8fdf562610f8366702b103ffca2bf9
 
 pkgname = python-pydbgp
 	depends = python
