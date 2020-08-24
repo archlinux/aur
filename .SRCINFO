@@ -1,7 +1,7 @@
 pkgbase = bonsai.sh-git
 	pkgdesc = bonsai tree generator written in bash
-	pkgver = r84.6c3812b
-	pkgrel = 2
+	pkgver = r88.0a3ecf1
+	pkgrel = 1
 	url = https://gitlab.com/jallbrit/bonsai.sh
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = bonsai.sh-git
 	provides = bonsai.sh
 	conflicts = bonsai.sh
 	source = bonsai.sh::git+https://gitlab.com/jallbrit/bonsai.sh.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = bonsai.sh-git
 
