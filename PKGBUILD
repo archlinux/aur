@@ -1,6 +1,7 @@
 # Maintainer: rafaelff <rafaelff@gnome.org>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Themaister <maister@archlinux.us>
+# Contributor: WeirdBeard <obarrtimothy@gmail.com>
 
 pkgname=pcsx2-git
 pkgver=1.7.0.r188.91326e1d9
@@ -41,14 +42,8 @@ pkgver() {
   git describe --tags | sed 's/^v//; s/-dev//; s/-/.r/; s/-g/./'
 }
 
-prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
-}
-
 build() {
+  mkdir -p build
   cd build
 
   cmake ../pcsx2 \
