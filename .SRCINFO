@@ -1,14 +1,23 @@
 pkgbase = bshapr-git
-	pkgdesc = Beat / envelope shaper LV2 plugin
-	pkgver = r145.caa3557
+	pkgdesc = A beat / envelope shaper LV2 plugin (git version)
+	pkgver = 0.9.r5.gd19b0d6
 	pkgrel = 1
 	url = https://github.com/sjaehn/BShapr
 	arch = x86_64
-	license = GPL
-	depends = xorg-server
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL3
+	checkdepends = lv2lint
+	makedepends = git
+	makedepends = lv2
 	depends = cairo
-	depends = lv2
-	source = git+https://github.com/sjaehn/BShapr
+	depends = gcc-libs
+	depends = glibc
+	depends = libx11
+	provides = bshapr
+	provides = bshapr=0.9
+	conflicts = bshapr
+	source = bshapr::git+https://github.com/sjaehn/BShapr
 	md5sums = SKIP
 
 pkgname = bshapr-git

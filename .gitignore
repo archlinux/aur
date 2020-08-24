@@ -1,0 +1,5 @@
+bshapr/
+bshapr-git-*.pkg.tar.xz
+bshapr-git-*.pkg.tar.zst
+pkg/
+src/
