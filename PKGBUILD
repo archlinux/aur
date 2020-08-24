@@ -2,7 +2,7 @@
  
 _pkgname=silentdragonlite
 pkgname=silentdragonlite-appimage
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc='HUSH Lite wallet that supports zaddrs (binary AppImage version)'
 url='http://github.com/MyHush/SilentDragonLite'
@@ -11,9 +11,9 @@ license=('GPL3')
 depends=('libsodium' 'qt5-websockets' 'qt5-base' 'qt5-tools')
 conflicts=('silentdragonlite')
 options=(!strip) # needed for AppImage
-source=("${_pkgname}-${pkgver}.AppImage::https://github.com/MyHush/SilentDragonLite/releases/download/$pkgver/Linux-binaries-SilentDragonLite-v$pkgver.AppImage")
+source=("${_pkgname}-${pkgver}.AppImage::https://github.com/MyHush/SilentDragonLite/releases/download/v$pkgver/Linux-binaries-SilentDragonLite-v$pkgver.AppImage")
 noextract=("${_pkgname}-${pkgver}.AppImage")
-sha256sums=('61012d46bdf62a1b34f5633de0e3988c9f4393bd56ff67937d988bddee85db93')
+sha256sums=('f713487b23b14a28653a0d9fc90b078bd3583cd5126156f2b624651f298f92e9')
 
 _filename=${_pkgname}-${pkgver}.AppImage
 
