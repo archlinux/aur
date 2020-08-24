@@ -7,8 +7,8 @@
 # Contributor: Netboy3
 
 pkgname=snort
-pkgver=2.9.16
-pkgrel=2
+pkgver=2.9.16.1
+pkgrel=1
 pkgdesc='A lightweight network intrusion detection system.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
 url='http://www.snort.org'
@@ -25,13 +25,7 @@ install='snort.install'
 source=("https://www.snort.org/downloads/snort/${pkgname}-${pkgver}.tar.gz"
     "http://rules.emergingthreats.net/open/${pkgname}-2.9.0/emerging.rules.tar.gz"
     'snort@.service'
-    'snort-2.9.15.1-fno-common.patch'
 )
-
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    patch -Np1 -i ../snort-2.9.15.1-fno-common.patch
-}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -66,7 +60,6 @@ package() {
     cp ${srcdir}/rules/* "${pkgdir}/etc/snort/rules"
 }
 
-md5sums=('1cec58babaea3420014d61a93e6e1545'
-    'SKIP'
-    'a847030a34396e6b2d1cacd272ad42da'
-'101bc0617d1547b14359ad884ac70541')
+md5sums=('ec148a494cde9095fb590a51efa306de'
+         'SKIP'
+         'a847030a34396e6b2d1cacd272ad42da')
