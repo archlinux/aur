@@ -1,10 +1,11 @@
-# Maintainer: K900 <me@0upti.me>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: K900 <me@0upti.me>
 _pkgname=windows2usb
 pkgname=${_pkgname}-git
-pkgver=0.1.5
-pkgrel=4
+pkgver=0.1.6.r1.gf0679bf
+pkgrel=1
 
-pkgdesc="Windows 7/8/8.1/10 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS)"
+pkgdesc="Windows 7/8/8.1/10 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS) - git version"
 arch=("any")
 url="https://github.com/ValdikSS/windows2usb"
 license=("Apache")
@@ -19,6 +20,11 @@ sha512sums=(
     "SKIP"
     "139be9b1db2fa227590a26b15a380e1fa5855436521db7365953d80d8ec3935fb427248c5de8ed5f90846f4b3946d7bdb6cdab326a2016d8d51721e612b70c9b"
 )
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
     install -Dm644 $srcdir/uefi-ntfs.img "$pkgdir/usr/share/$_pkgname/uefi-ntfs.img"

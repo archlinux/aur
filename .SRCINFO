@@ -1,7 +1,7 @@
 pkgbase = windows2usb-git
-	pkgdesc = Windows 7/8/8.1/10 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS)
-	pkgver = 0.1.5
-	pkgrel = 4
+	pkgdesc = Windows 7/8/8.1/10 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS) - git version
+	pkgver = 0.1.6.r1.gf0679bf
+	pkgrel = 1
 	url = https://github.com/ValdikSS/windows2usb
 	arch = any
 	license = Apache
