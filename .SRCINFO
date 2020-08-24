@@ -1,6 +1,6 @@
 pkgbase = asf-ui-git
 	pkgdesc = Standalone web interface for ASF.
-	pkgver = r1030.e4b02e9
+	pkgver = r1262.6e7611d
 	pkgrel = 1
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	arch = any

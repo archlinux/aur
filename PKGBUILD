@@ -2,7 +2,7 @@
 # Contributor: Lucki
 
 pkgname="asf-ui-git"
-pkgver=r1030.e4b02e9
+pkgver=r1262.6e7611d
 pkgrel=1
 pkgdesc="Standalone web interface for ASF."
 arch=('any')
@@ -15,7 +15,7 @@ source=("asf-ui::git+https://github.com/JustArchiNET/ASF-ui.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd asf-ui
     ( set -o pipefail
       git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
