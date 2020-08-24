@@ -1,0 +1,16 @@
+pkgbase = apple-sdk-macos
+	pkgdesc = macOS SDKs
+	pkgver = 10.15
+	pkgrel = 1
+	url = https://github.com/phracker/MacOSX-SDKs
+	install = sdk.install
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = findutils
+	options = !strip
+	source = apple-sdk-macos::git+https://github.com/phracker/MacOSX-SDKs.git
+	sha512sums = SKIP
+
+pkgname = apple-sdk-macos
+
