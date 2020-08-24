@@ -3,7 +3,7 @@ pkgname=paddlepaddle-gpu
 pkgver=1.8.3
 pkgrel=1
 # epoch=
-pkgdesc="An opensourced deeplearning framework derived from industral practice."
+pkgdesc="An opensourced deeplearning framework derived from industral practive."
 arch=('x86_64')
 url="https://github.com/paddlepaddle/paddle"
 license=('custom')
@@ -34,7 +34,7 @@ package() {
 
   mkdir libcudnn${_majorver}
   cd libcudnn${_majorver}
-  ar xv "${srcdir}"/libcudnn${_majorver}_${pkgver}-1+cuda${cuda_version}_amd64.deb
+  ar xv "${srcdir}"/libcudnn${_majorver}_${cudnn_version}+cuda${cuda_version}_amd64.deb
   tar xf data.tar.xz
   cp -a usr/lib/x86_64-linux-gnu/* "${pkgdir}"/usr/lib/
 
