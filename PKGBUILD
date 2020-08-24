@@ -10,7 +10,7 @@
 # Contributor: fana-m <geminin@gmx.net>
 
 pkgname=freeorion-git
-pkgver=0.4.9.1337.g7d37633fd
+pkgver=0.4.9.1477.g6884d52c7
 pkgrel=1
 pkgdesc="turn-based space empire and galactic conquest (4X) computer game"
 url="http://www.freeorion.org/"
@@ -22,7 +22,7 @@ provides=('freeorion')
 conflicts=('freeorion')
 
 source=("$pkgname::git+https://github.com/freeorion/freeorion.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd $srcdir/$pkgname
