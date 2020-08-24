@@ -2,7 +2,7 @@
 
 _gitname=complete-alias
 pkgname=bash-${_gitname}
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='automagical bash shell alias completion'
 arch=(any)
