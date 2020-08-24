@@ -2,8 +2,8 @@
 # Maintainer: Ruben De Smet <ruben dot de dot smet at glycos dot org>
 # Contributor: Jashandeep Sohi <jashandeep.s.sohi@gmail.com>
 
-_gccmajor="10.1.0"
-_gccver="10.1.0"
+_gccmajor="10.2.0"
+_gccver="10.2.0"
 _gccsrc="gcc-${_gccver}"
 
 pkgname='libgccjit'
@@ -17,7 +17,7 @@ license=(
 source=(
    "ftp://gcc.gnu.org/pub/gcc/releases/gcc-$_gccmajor/$_gccsrc.tar.xz"
 )
-sha512sums=('0cb2a74c793face751f42bc580960b00e2bfea785872a0a2155f1f1dbfaa248f9591b67f4322db0f096f8844aca9243bc02732bda106c3b6e43b02bb67eb3096')
+sha512sums=('42ae38928bd2e8183af445da34220964eb690b675b1892bbeb7cd5bb62be499011ec9a93397dba5e2fb681afadfc6f2767d03b9035b44ba9be807187ae6dc65e')
 #  "https://sources.archlinux.org/other/gcc/gcc-8.2.1-20180831.tar.xz"
 arch=(
  'i686'
