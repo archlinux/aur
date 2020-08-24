@@ -1,4 +1,4 @@
-# Maintainer: Leonard von Hagen <lennivh24 at gmail dot com>
+# Maintainer: d0lphin <scrouthtv [at] gmail [dot] com>
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=pdf2htmlex
