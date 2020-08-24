@@ -1,0 +1,5 @@
+bslizr/
+bslizr-git-*.pkg.tar.xz
+bslizr-git-*.pkg.tar.zst
+pkg/
+src/
