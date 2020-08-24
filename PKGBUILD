@@ -2,7 +2,7 @@
 pkgname=geant4-incldata
 _dataname="G4INCL"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Data files for proton and neutron density profiles in INCL"
 url="http://geant4.cern.ch/"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('geant4>=10.5')
 #it cannot be optdepend since we require the geant4.sh file to exist
 #to setup the environment variable
 install="${pkgname}.install"
-source=("http://geant4.cern.ch/support/source/${_dataname}.${pkgver}.tar.gz"
+source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
   "${pkgname}.install")
 sha256sums=('716161821ae9f3d0565fbf3c2cf34f4e02e3e519eb419a82236eef22c2c4367d'
             '6cceb92f5ce8ffff1630d39d1fe7f2f8dc3be431ff3506914eb3e3655bb9e7a4')
