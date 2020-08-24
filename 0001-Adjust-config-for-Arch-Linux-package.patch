@@ -1,40 +1,26 @@
-From 25d1ec73cde6321e90bb6088fd6409dd95b310fa Mon Sep 17 00:00:00 2001
+From 371b5cfba7b3fa111cc24807b77b12b983f6f9b1 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 19 Mar 2017 18:03:36 +0100
 Subject: [PATCH 1/2] Adjust config for Arch Linux package
 
 ---
- conf/app.ini | 31 +++++++++++++++++++------------
- 1 file changed, 19 insertions(+), 12 deletions(-)
+ conf/app.ini | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/conf/app.ini b/conf/app.ini
-index 0c6512b17..42723cfd5 100644
+index f58e60d4e..690273b38 100644
 --- a/conf/app.ini
 +++ b/conf/app.ini
-@@ -1,11 +1,18 @@
--# !!! NEVER EVER MODIFY THIS FILE !!!
--# !!! PLEASE MAKE CHANGES ON CORRESPONDING CUSTOM CONFIG FILE !!!
--# !!! IF YOU ARE PACKAGING PROVIDER, PLEASE MAKE OWN COPY OF IT !!!
-+# Feel free to modify this file!
-+# In case a new version of this file is availabe, pacman will notify automatically when
-+# updating and creates the new version as app.ini.pacnew. You can use diff or a similar
-+# tool to see the changes between your configuration and the new default configuration.
-+
-+# There is also a copy of this file under /usr/share/gogs/conf/app.ini in case
-+# you need to go back.
-+
-+# It is also possible to remove all default values and just specify what you want
-+# to change because /usr/share/gogs/conf/app.ini also serves as fallback.
- 
- ; App name that shows on every page title
- APP_NAME = Gogs
- ; The name of the system user that runs Gogs
+@@ -6,7 +6,7 @@
+ BRAND_NAME = Gogs
+ ; The system user who should be running the applications. It has no effect on Windows,
+ ; otherwise, it should match the value of $USER environment variable.
 -RUN_USER = git
 +RUN_USER = gogs
- ; Either "dev", "prod" or "test"
+ ; The running mode of the application, can be either "dev", "prod" or "test".
  RUN_MODE = dev
  
-@@ -56,16 +63,16 @@ DISABLE_ROUTER_LOG = false
+@@ -29,8 +29,8 @@ HTTP_PORT = 3000
  ; not forget to export the private key):
  ; $ openssl pkcs12 -in cert.pfx -out cert.pem -nokeys
  ; $ openssl pkcs12 -in cert.pfx -out key.pem -nocerts -nodes
@@ -42,55 +28,72 @@ index 0c6512b17..42723cfd5 100644
 -KEY_FILE = custom/https/key.pem
 +CERT_FILE = /var/lib/gogs/cert/cert.pem
 +KEY_FILE = /var/lib/gogs/cert/key.pem
- ; Allowed TLS version values: SSL30, TLS10, TLS11, TLS12
- TLS_MIN_VERSION = TLS10
+ ; The minimum allowed TLS version, currently supports "TLS10", "TLS11", "TLS12", and "TLS13".
+ TLS_MIN_VERSION = TLS12
+ ; File permission when serve traffic via Unix domain socket.
+@@ -48,7 +48,7 @@ DISABLE_ROUTER_LOG = true
+ ENABLE_GZIP = false
  
- ; Upper level of template and static file path
- ; default is the path where Gogs is executed
--STATIC_ROOT_PATH =
-+STATIC_ROOT_PATH = /usr/share/gogs
- ; Default path for App data
+ ; The path for storing application specific data.
 -APP_DATA_PATH = data
 +APP_DATA_PATH = /var/lib/gogs/data
- ; Application level GZIP support
- ENABLE_GZIP = false
- ; Landing page for non-logged users, can be "home" or "explore"
-@@ -73,7 +80,7 @@ LANDING_PAGE = home
+ ; Whether to enable to load assets (i.e. "conf", "templates", "public") from disk instead of embedded bindata.
+ LOAD_ASSETS_FROM_DISK = false
+ 
+@@ -91,7 +91,7 @@ DSA     = 1024
  
  [repository]
- ; Root path for storing repositories's data, default is "~/<username>/gogs-repositories"
+ ; The root path for storing managed repositories, default is "~/gogs-repositories"
 -ROOT =
 +ROOT = /var/lib/gogs/repos
- ; The script type server supports, sometimes could be "sh"
+ ; The script type server supports, sometimes could be "sh".
  SCRIPT_TYPE = bash
- ; Default ANSI charset for an unrecognized charset
-@@ -113,7 +120,7 @@ PREVIEWABLE_FILE_MODES = markdown
- ; Enable repository file uploads.
+ ; Default ANSI charset for an unrecognized charset.
+@@ -126,7 +126,7 @@ PREVIEWABLE_FILE_MODES = markdown
+ ; Whether to enable repository file uploads.
  ENABLED = true
- ; Path to temporarily store uploads (default path gets cleaned by Gogs in every start)
+ ; The path to temporarily store uploads (content under this path gets wiped out on every start).
 -TEMP_PATH = data/tmp/uploads
 +TEMP_PATH = /var/cache/gogs
- ; File types that are allowed to be uploaded, e.g. image/jpeg|image/png. Leave empty means allow any file type
+ ; File types that are allowed to be uploaded, e.g. "image/jpeg|image/png". Leave empty to allow any file type.
  ALLOWED_TYPES =
- ; Maximum size of each file in MB
-@@ -172,7 +179,7 @@ PASSWD =
- ; For "postgres" only, either "disable", "require" or "verify-full"
+ ; The maximum size of each file in MB.
+@@ -145,7 +145,7 @@ PASSWORD =
+ ; For "postgres" only, either "disable", "require" or "verify-full".
  SSL_MODE = disable
- ; For "sqlite3" and "tidb", use absolute path when you start as service
+ ; For "sqlite3" only, make sure to use absolute path.
 -PATH = data/gogs.db
 +PATH = /var/lib/gogs/gogs.db
+ ; The maximum open connections of the pool.
+ MAX_OPEN_CONNS = 30
+ ; The maximum idle connections of the pool.
+@@ -273,7 +273,7 @@ OBJECTS_PATH = data/lfs-objects
+ ; Whether to enabled upload attachments in general.
+ ENABLED = true
+ ; The path to store attachments on the file system.
+-PATH = data/attachments
++PATH = /var/lib/gogs/attachments
+ ; File types that are allowed to be uploaded, e.g. "image/jpeg|image/png". Leave empty to allow any file type.
+ ALLOWED_TYPES = image/jpeg|image/png
+ ; The maximum size of each file in MB.
+@@ -300,7 +300,7 @@ FORMAT = RFC1123
  
- [admin]
- ; Disable regular (non-admin) users to create organizations
-@@ -319,7 +326,7 @@ FORMAT =
- 
- ; General settings of loggers
+ [picture]
+ ; The path to store user avatars on the file system.
+-AVATAR_UPLOAD_PATH = data/avatars
++AVATAR_UPLOAD_PATH = /var/lib/gogs/avatars
+ ; The path to store repository avatars on the file system.
+ REPOSITORY_AVATAR_UPLOAD_PATH = data/repo-avatars
+ ; Chinese users can use a custom avatar source, such as http://cn.gravatar.com/avatar/.
+@@ -347,7 +347,7 @@ PAGING_NUM = 10
+ ; General settings of loggers.
  [log]
+ ; The root path for all log files, default is "log/" subdirectory.
 -ROOT_PATH =
 +ROOT_PATH = /var/log/gogs
- ; Can be "console" and "file", default is "console"
+ ; Can be "console", "file", "slack" and "discord".
  ; Use comma to separate multiple modes, e.g. "console, file"
  MODE = console
 -- 
-2.19.0
+2.28.0
 

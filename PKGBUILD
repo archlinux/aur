@@ -10,7 +10,7 @@ _confdir=conf
 _scriptsdir=scripts
 
 pkgname=$_pkgname
-pkgver=0.11.91
+pkgver=0.12.0
 pkgrel=1
 epoch=1
 pkgdesc='Self Hosted Git Service written in Go'
@@ -31,9 +31,9 @@ backup=("etc/$_pkgname/app.ini")
 source=("$_pkgname-$pkgver::https://github.com/$_orga/$_pkgname/archive/v${pkgver}.tar.gz"
         '0001-Adjust-config-for-Arch-Linux-package.patch'
         '0002-Adjust-service-file-for-Arch-Linux-package.patch')
-sha512sums=('9c92d198f48e879a783f0e2e066db946a67a52d6ce3429a9ffeb531c53657b0dd81962e3e1e7fac0871eb9689c94538c9678d6cf56360b670ea020951c995dbb'
-            'b1ae473eba5bfb693e507ce82f2a81beb066ab5869d8d089963f8d4740cc77e203b8653cbeeb196a86e65d04e2a288056fb3196364e247dd11906b77fd7ace8b'
-            '71c38f86b3e351f8f69504835082618cf5f63897246ee0691f1b7d518e164bd68681e14134e97fcfb369c960c6a81da92c86bc40b5c9ee6f171af1f1a1a7e8a4')
+sha512sums=('e682df4609e47d7db60a9cec19cf771c372b5028ae3ed43dd8fa0cfcd8292f13cfc833c50698bb5cd0872fabb472b0ee84f3f0ba45ab559d84b39cd7d9519770'
+            '763ea6857a2bd28d1e6d95f58d67de0503b3f36ee1419dd1efce6ae187d7f529e4f1674b160a5902f16bc180983f3b29bcbe4ec8fc3c0d32de7374939ea364c5'
+            '162c9dd3b5c5f2910b3887109d460dcb82631b2e5b8d906699e5a581c3350a9b0511ccc470621828f8839ad7bac240439d01461ae5fb3efdee948307ef195c2d')
 _goroot='/usr/lib/go'
 
 prepare() {
@@ -102,8 +102,10 @@ package() {
 
   mkdir -p "$pkgdir/usr/share/${_pkgname}"
   cp -r "$srcdir/build/src/${_gourl}/${_confdir}" "$pkgdir/usr/share/${_pkgname}"
-  cp -r "$srcdir/build/src/${_gourl}/public" "$pkgdir/usr/share/${_pkgname}"
-  cp -r "$srcdir/build/src/${_gourl}/templates" "$pkgdir/usr/share/${_pkgname}"
+  if [[ $pkgname != 'gogs' ]]; then
+    cp -r "$srcdir/build/src/${_gourl}/public" "$pkgdir/usr/share/${_pkgname}"
+    cp -r "$srcdir/build/src/${_gourl}/templates" "$pkgdir/usr/share/${_pkgname}"
+  fi
 
   mkdir -p "$pkgdir/etc/$_pkgname"
   chmod 775 "$pkgdir/etc/$_pkgname"
