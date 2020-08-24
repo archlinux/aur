@@ -1,0 +1,16 @@
+pkgbase = qt-avif-image-plugin-libavif-git
+	pkgdesc = Qt plug-in to allow Qt and KDE based applications to read/write AVIF images.
+	pkgver = r68.6920fe4
+	pkgrel = 1
+	url = https://github.com/novomesk/qt-avif-image-plugin
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	depends = libavif-git
+	source = git+https://github.com/novomesk/qt-avif-image-plugin.git
+	sha256sums = SKIP
+
+pkgname = qt-avif-image-plugin-libavif-git
+
