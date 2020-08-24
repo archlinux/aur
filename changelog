@@ -1,3 +1,7 @@
+2020-08-24 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 0.13.r5484.4321df3d-1 :
+	  sources moved to https://invent.kde.org/sdk/pology.git
+
 2019-08-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 	* 0.13.r5408.6112c713-1 :
 	  upstream migrated to a git repository
