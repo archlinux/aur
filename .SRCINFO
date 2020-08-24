@@ -1,0 +1,13 @@
+pkgbase = gitmirror
+	pkgdesc = Auto sync GitHub to GitLab
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sequencer/gitmirror
+	arch = any
+	license = BSD
+	makedepends = mill
+	depends = java-environment
+	source = https+git://github.com/sequencer/gitmirror
+
+pkgname = gitmirror
+
