@@ -7,7 +7,7 @@ _srcname=linux-5.8
 _major=5.8
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=1
+_minor=3
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -36,14 +36,14 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('323ec48398a3b9cfb988cd12cd8576061cd5578563a6dcb14c5e6188c856f5f848344d759ab15c18f333694d929690243fe057071e88188377ff2f9ebf4fb63a'
+b2sums=('69db6692db126fe277a7c06d7930c87094743ca1f9fd91172b613985d824a98bfffe746f62c0abf2bb75fcc23b470396ccba396cc4664ad66fac355e0d37ee76'
         'SKIP'
-        '40d5bdd654b9c9771c5adca3b068e383390cfd643ad10cbc189b05257c0fe2095c8c76b316430fab8e6adee887ddac31665df8c97c477b73a613669a60d4aad8'
+        '9d2913bbaf4afabd8f654abd0a2a3c62df043a613cbc2518944f5889d1a760ab6401e76d0b67b0cc9fbe05c8a0e280fe9b2ebf125f50ff5962f097956642fd8e'
         'SKIP'
         '43284b02f435b4c2d7a77c1015bc934095dbef80630218fc9a6903fd7e6d8662073cd89948d9c290cd290dbd3368b308e4187f81045fd7bc6620efebe0723001'
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
-        '25392b86a741ae3fead7adb2db8f4626670c57582546917609cd679fc89d8804bc08f1db5ce5c7d6b3ea4f79bfd9cdaf841a0fc65bba1ede78ee7ca7662130e7'
-        '3f9aabcf8555147a70eff260ef51a0634f494bda72fcbc315bd775b668e71aa9c8434420bef17da74f9ab473eb33aafe9cc1a0289fd15c1cbe344eb6484e305a')
+        'a9828cf991aaac1c926ecbdaf4c5ea6daa91c5d1d0bc3f339a6b5d99a17898be609fc64fba728b6c1431e2645cf600ec44b9f799560c3103bcec855d0ad55495'
+        '86d81cb04e8706336f796824bf8e47da6bc962ae680ac07f77728a4fb5bb4ee008060cd84b6aeedb073afee4b9c97b47bf4513ddb50c951af3cbf122995aa487')
 
 
 export KBUILD_BUILD_HOST=archlinux
