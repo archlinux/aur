@@ -2,7 +2,7 @@
 
 _pkgname=thunar
 pkgname=${_pkgname}-devel
-pkgver=4.15.1
+pkgver=4.15.2
 pkgrel=1
 pkgdesc='file manager for xfce'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('xfce4-devel')
 url='https://thunar.xfce.org'
 depends=('desktop-file-utils' 'exo' 'gtk3' 'hicolor-icon-theme' 'libgudev'
-         'libexif' 'libnotify' 'libpng' 'libxfce4ui>=4.15.3' 'libxfce4util')
+         'libexif' 'libnotify' 'libpng' 'libxfce4ui>=4.15.3' 'libxfce4util>=4.15.2')
 makedepends=('intltool' 'xfce4-panel' 'gtk-doc' 'gobject-introspection') # 'xfce4-dev-tools')
 optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
 	        'xfce4-panel: trash applet'
@@ -21,7 +21,7 @@ optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('2d0e361c54a5237cf2edfe5f9489420678ff222fa9285a1b57a65895d34d1751')
+sha256sums=('cad54d1a5989fcec3de9797bdb682f6d9b325d1912ca03ac06d5ae3625a1b1bb')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
