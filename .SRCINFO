@@ -1,7 +1,7 @@
 pkgbase = bpkg-git
 	pkgdesc = Lightweight bash package manager
-	pkgver = 0.3.1.0.g66ffdf2
-	pkgrel = 2
+	pkgver = 0.3.1.7.g707863e
+	pkgrel = 1
 	url = http://www.bpkg.sh/
 	arch = any
 	license = MIT

@@ -1,9 +1,10 @@
-# Maintainer: Marcos Ferreira <merkkp at gmail dot com>
+# Maintainer: d0lphin <scrouthtv [at] gmail [dot] com>
+# Contributor: Marcos Ferreira <merkkp at gmail dot com>
 
 _gitname="bpkg"
 pkgname="${_gitname}-git"
-pkgver=0.3.1.0.g66ffdf2
-pkgrel=2
+pkgver=0.3.1.7.g707863e
+pkgrel=1
 pkgdesc="Lightweight bash package manager"
 arch=("any")
 url="http://www.bpkg.sh/"
