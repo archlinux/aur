@@ -2,7 +2,7 @@
 
 pkgname=ttf-anka-coder
 pkgver=1.100
-pkgrel=1
+pkgrel=2
 pkgdesc="A monospaced font"
 arch=('any')
 url="https://code.google.com/archive/p/anka-coder-fonts"
