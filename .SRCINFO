@@ -1,0 +1,19 @@
+pkgbase = xar-tpoechtrage-git
+	pkgdesc = eXtensible ARchive format
+	pkgver = xar.1.6.1.r12.g2b9a4ab
+	pkgrel = 1
+	url = https://github.com/tpoechtrager/xar
+	arch = x86_64
+	license = custom:BSD
+	makedepends = git
+	depends = libxml2
+	depends = bzip2
+	depends = acl
+	depends = openssl
+	provides = xar
+	conflicts = xar
+	source = git+https://github.com/tpoechtrager/xar.git
+	sha256sums = SKIP
+
+pkgname = xar-tpoechtrage-git
+
