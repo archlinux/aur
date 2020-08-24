@@ -1,6 +1,6 @@
 pkgbase = ttf-anka-coder
 	pkgdesc = A monospaced font
-	pkgver = 1.101
+	pkgver = 1.102
 	pkgrel = 1
 	url = https://code.google.com/archive/p/anka-coder-fonts
 	install = ttf.install

@@ -1,7 +1,7 @@
 # Maintainer: kungfubeaner <kungfubeaner@yahoo.com>
 
 pkgname=ttf-anka-coder
-pkgver=1.101
+pkgver=1.102
 pkgrel=1
 pkgdesc="A monospaced font"
 arch=('any')
