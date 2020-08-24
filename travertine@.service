@@ -1,0 +1,13 @@
+[Unit]
+Description=Travertine Server (%I)
+After=local-fs.target network.target multi-user.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/travertine %I start
+ExecStop=/usr/bin/travertine %I stop
+User=travertine
+Group=travertine
+
+[Install]
+WantedBy=multi-user.target
