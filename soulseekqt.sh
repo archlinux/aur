@@ -1,3 +1,2 @@
 #!/bin/bash
-cd /opt/soulseekqt
-./SoulseekQt
+exec /opt/soulseekqt/SoulseekQt
