@@ -8,7 +8,6 @@ arch=('x86_64')
 url='https://1password.com/'
 license=('unknown')
 depends=('fuse3' 'zlib' 'hicolor-icon-theme')
-makedepends=('sed')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::https://onepassword.s3.amazonaws.com/linux/appimage/1password-latest.AppImage")
