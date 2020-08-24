@@ -2,12 +2,12 @@
 
 pkgname=chromium-ublock-origin
 pkgver=1.29.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An efficient blocker for Chromium'
 arch=('any')
 url='https://github.com/gorhill/uBlock'
 license=('GPL3')
-makedepends=('git' 'zip')
+makedepends=('zip')
 optdepends=("chromium: open-source web browser from Google"
             "google-chrome: Google's freeware web browser")
 install="${pkgname}.install"
