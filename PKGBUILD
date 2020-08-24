@@ -28,6 +28,7 @@ depends=(
 # 'isl>=0.14'
  'libmpc'
  'zlib'
+ libgcc=$pkgver
 )
 makedepends=(
  'binutils'
