@@ -1,6 +1,6 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=mtfmapper
-pkgver=0.7.29
+pkgver=0.7.30
 pkgrel=1
 pkgdesc="A utility to produce MTF (modulation transfer function, a measure of edge acuity) maps  of images"
 arch=('x86_64')
@@ -9,19 +9,8 @@ license=('BSD')
 depends=('dcraw' 'exiv2' 'gnuplot' 'opencv' 'qt5-charts')
 makedepends=('asciidoc' 'cmake' 'eigen' 'tclap' 'subversion')
 options=('!makeflags')  # The build process for the documentation is not parallel-safe.
-source=("$pkgname::svn+https://svn.code.sf.net/p/$pkgname/code/trunk#revision=632"
-        'opencv4.patch')
-b2sums=('SKIP'
-        '05846e04735f019f12913517181537fd76f1e1144202fd1632844cb7a6324032f141bb980fd2262756933c1e8a4668c4df78183f24bbb069a75a71696e94ff44')
-
-prepare() {
-	cd "$pkgname"
-
-	patch -Np1 < "$srcdir"/opencv4.patch
-
-	# Interferes with the system-wide scripts in /usr/lib/cmake/opencv4.
-	rm -f cmake_helpers/FindOpenCV.cmake
-}
+source=("$pkgname::svn+https://svn.code.sf.net/p/$pkgname/code/trunk#revision=645")
+b2sums=('SKIP')
 
 build() {
 	mkdir -p build
