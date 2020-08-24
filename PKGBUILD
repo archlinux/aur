@@ -3,7 +3,7 @@
 
 _pkgname=man-pages
 pkgname=man-pages-posix-hyphens-fixed
-pkgver=5.05
+pkgver=5.08
 _posixver=2013-a
 pkgrel=1
 pkgdesc="Linux man pages"
@@ -11,11 +11,11 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname=$pkgver")
 arch=('any')
 license=('GPL' 'custom')
-url="http://man7.org/linux/man-pages/index.html"
+url="https://www.kernel.org/doc/man-pages/"
 source=(https://www.kernel.org/pub/linux/docs/man-pages/$_pkgname-$pkgver.tar.{xz,sign}
         https://www.kernel.org/pub/linux/docs/man-pages/man-pages-posix/$_pkgname-posix-${_posixver}.tar.{xz,sign})
 # https://www.kernel.org/pub/linux/docs/man-pages/sha256sums.asc
-sha256sums=('d5b135b1196d9258138610dbc47190d8b9ac9dee7f8ee6d9196f7fc6a036eb47'
+sha256sums=('cea7cd31f8080ed8ec6725419e58bbe04ab0dd4fa0071526bd7cf0cd8d1bf7f7'
             'SKIP'
             '19633a5c75ff7deab35b1d2c3d5b7748e7bd4ef4ab598b647bb7e7f60b90a808'
             'SKIP')
@@ -47,26 +47,13 @@ package() {
   install -m644 "${srcdir}"/$_pkgname-posix-${_posixver}/POSIX-COPYRIGHT "${pkgdir}/usr/share/licenses/${_pkgname}/POSIX-COPYRIGHT"
 
   cd "${pkgdir}"/usr/share/man
-  # included in coreutils
-  rm -f man1/{chgrp,chmod,chown,cp,dir,dd}.1
-  rm -f man1/{df,dircolors,du,install,ln,ls}.1
-  rm -f man1/{mkdir,mkfifo,mknod,mv,rm,rmdir}.1
-  rm -f man1/{touch,vdir}.1
   # included in shadow
-  rm -f man5/passwd.5
-  rm -f man3/getspnam.3
-  # included in diffutils
-  rm -f man1/diff.1
-  # included in xf86-input-mouse
-  rm -f man4/mouse.4
-  # included in attr
-  rm -f man5/attr.5
-  # included in lirc
-  rm -f man4/lirc.4
-  # included in keyutils
-  rm -f man7/{keyrings.7,persistent-keyring.7,process-keyring.7,session-keyring.7,thread-keyring.7,user-keyring.7,user-session-keyring.7}
+  rm man5/passwd.5
+  rm man3/getspnam.3
   # included in tzdata
-  rm -f man5/tzfile.5 man8/{tzselect,zdump,zic}.8
+  rm man5/tzfile.5 man8/{tzselect,zdump,zic}.8
   # included in bpf
-  rm -f man7/bpf-helpers.7
+  rm man7/bpf-helpers.7
+  # included in libxcrypt
+  rm man3/crypt*.3
 }
