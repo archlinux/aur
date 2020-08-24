@@ -1,0 +1,4 @@
+exif/
+pkg/
+src/
+*.zst

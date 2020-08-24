@@ -1,0 +1,17 @@
+pkgbase = python-exif-git
+	pkgdesc = Read and modify image EXIF metadata using Python without any third-party software dependencies
+	pkgver = r46.16c306c
+	pkgrel = 1
+	url = https://github.com/TNThieding/exif
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	provides = python-exif
+	conflicts = python-exif
+	source = git+https://github.com/TNThieding/exif.git#branch=master
+	md5sums = SKIP
+
+pkgname = python-exif-git
+
