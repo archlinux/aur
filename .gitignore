@@ -1,0 +1,7 @@
+*.tar.gz
+*.tar.xz
+tableplus*
+pkg
+deb
+src
+*.orig
