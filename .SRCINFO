@@ -6,6 +6,7 @@ pkgbase = rxvt-unicode-better-wheel-scrolling-unicode3
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = perl-pod-parser
 	depends = rxvt-unicode-terminfo
 	depends = gcc-libs
 	depends = libxft
