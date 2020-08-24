@@ -16,24 +16,32 @@
 # Maintainer: Samuel Littley <samuellittley@google.com>
 
 pkgname='google-compute-engine-oslogin'
-pkgver=20200507.00
+pkgver=20200819.00
 pkgrel=1
-pkgdesc='Google Compute Engine OS login support'
+pkgdesc='OS Login Guest Environment for Google Compute Engine'
 arch=('x86_64')
 url='https://github.com/GoogleCloudPlatform/guest-oslogin'
 license=('Apache')
 depends=('curl' 'json-c' 'pam')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/guest-oslogin/archive/$pkgver.tar.gz")
-sha256sums=('d75b72bc465554d8b68c2b604fdb2270619b20be9d1a0de5d6859763719f2ab3')
+checkdepends=('gtest')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/guest-oslogin/archive/$pkgver.tar.gz"
+        'google-compute-engine-oslogin.install')
+sha256sums=('11be57b2573dea6ca2f823256db9e78c2a8fbfebd0136dd974a8536ff09ac303'
+            'b7d7d409a22602967c110ed80293223f904737e3683b0b7cd07fe94a2c52fb8d')
+install='google-compute-engine-oslogin.install'
 
 build() {
 	cd "guest-oslogin-$pkgver"
 	make
 }
 
+check() {
+	cd "guest-oslogin-$pkgver"
+	make GTEST_DIR=/usr/src/googletest non_network_tests
+}
+
 package() {
 	cd "guest-oslogin-$pkgver"
-	make DESTDIR="$pkgdir/" SYSTEMDDIR=/usr/lib/systemd/system \
+	make VERSION="$pkgver" DESTDIR="$pkgdir/" SYSTEMDDIR=/usr/lib/systemd/system \
 		PRESETDIR=/usr/lib/systemd/system-preset install
-	rm -r "$pkgdir/usr/lib/systemd/system-preset"
 }
