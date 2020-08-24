@@ -1,0 +1,15 @@
+pkgbase = mpd-art-box
+	pkgdesc = A window displaying the cover for the currently playing MPD track - nothing more
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/nvllsvm/mpd-art-box
+	arch = any
+	license = MIT
+	depends = python-configargparse
+	depends = python-gobject
+	depends = python-mpd2
+	source = https://files.pythonhosted.org/packages/source/m/mpd-art-box/mpd-art-box-0.0.3.tar.gz
+	sha256sums = d77619ac62b01d4171ae616653e7ec54a57b726a5075ffcf707def5c4ef65f5c
+
+pkgname = mpd-art-box
+
