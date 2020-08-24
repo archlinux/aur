@@ -1,0 +1,15 @@
+pkgbase = vim-man-git
+	pkgdesc = View man pages in vim. Grep for the man pages.
+	pkgver = v0.1.0.r30.gcfdc78f
+	pkgrel = 1
+	url = https://github.com/vim-utils/vim-man
+	arch = any
+	license = custom
+	depends = vim
+	source = git+https://github.com/vim-utils/vim-man
+	source = https://raw.githubusercontent.com/vim/vim/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vim-man-git
+
