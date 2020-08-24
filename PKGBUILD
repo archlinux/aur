@@ -4,7 +4,7 @@
 
 pkgname=morris
 pkgver=0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="An implementation of the board game Nine Men's Morris"
 arch=('i686' 'x86_64')
 url="http://nine-mens-morris.net/"
@@ -19,7 +19,10 @@ sha512sums=('bd22f76f3ad8558018cb923592e55090febbc7421a073dd3a377f92fbf51dd7f810
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
+  patch -Np1 < "${srcdir}/debian/patches/autoreconf.patch"
   patch -Np1 < "${srcdir}/debian/patches/boost-signals.patch"
+  autoreconf -if
+  intltoolize -c -f
 }
 
 build() {
