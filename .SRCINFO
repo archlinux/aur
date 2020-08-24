@@ -1,12 +1,13 @@
 pkgbase = bjumblr.lv2-git
 	pkgdesc = A pattern-controlled audio stream re-sequencer LV2 plugin (git version)
-	pkgver = 1.4.0.r2.g9195f1b
+	pkgver = 1.4.2.r0.gfd90fae
 	pkgrel = 1
 	url = https://github.com/sjaehn/BJumblr
 	arch = x86_64
 	groups = lv2-plugins
 	groups = pro-audio
 	license = GPL3
+	checkdepends = lv2lint
 	makedepends = git
 	makedepends = lv2
 	depends = cairo
