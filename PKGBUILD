@@ -26,8 +26,8 @@ build() {
 
 check() {
   cd "$srcdir/$pkgname-v$pkgver"
-  # Disabled check for beta4 due to known bug in test suite
-  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver pytest
+  # Disabled check for beta6 due to known bug in test suite
+  # SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver pytest
 }
 
 package() {
