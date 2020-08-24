@@ -1,0 +1,27 @@
+pkgbase = python-lvis
+	pkgdesc = Python API for LVIS Dataset
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/lvis-dataset/lvis-api
+	arch = any
+	license = BSD
+	checkdepends = hdf5
+	checkdepends = qt5-base
+	makedepends = git
+	makedepends = cython
+	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = opencv
+	depends = python-cycler
+	depends = python-dateutil
+	depends = python-kiwisolver
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pyparsing
+	depends = python-pycocotools
+	depends = python-six
+	source = lvis::git+https://github.com/lvis-dataset/lvis-api.git
+	sha512sums = SKIP
+
+pkgname = python-lvis
+
