@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Eric Bélanger <eric at archlinux dot org>
 pkgname=hardinfo-git
-pkgver=0.6.alpha.1319.gaa4dc1a
+pkgver=0.6.alpha.1330.g0557696
 pkgrel=1
 pkgdesc="A system information and benchmark tool."
 arch=('x86_64')
@@ -23,6 +23,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
+	CFLAGS+=' -fcommon' # https://wiki.gentoo.org/wiki/Gcc_10_porting_notes/fno_common
 	cmake -B build -S . \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
