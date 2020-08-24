@@ -1,17 +1,17 @@
 # Maintainer: unknowndev <unknowndev at archlinux.info>
 
 pkgname=v2ray-exporter
-pkgver=0.3.0
-pkgrel=1
+pkgver=0.4.0
+pkgrel=2
 pkgdesc="An exporter that collect V2Ray metrics over its Stats API and export them to Prometheus"
 arch=('x86_64')
 url="https://github.com/wi1dcard/v2ray-exporter"
 license=('MIT')
 depends=('glibc')
+optdepends=('v2ray: provide v2ray status')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('bc3f759afb72d7d268a4f9001fa2f3a3a3f312ee27f3e9de72133cfe3b5c2a7f14df8776935ecc10d6dd5dd012c80f70e715fa96c7a59a33514e0e258021dd46')
-
+sha512sums=('4784a869cc63998c2c0fcc0df9d6c826c6b94eee2ba9f58e5c79655a6eb9ce23e439c31855fae0b06a84151b454fe639cc3a6d3f3f2e7d229b4b09485a33fa2f')
 
 
 build() {
@@ -40,3 +40,4 @@ package() {
 #    install -Dm644 "v2ray-exporter@.service" -t     "$pkgdir/usr/lib/systemd/system"
     install -Dm755 "v2ray-exporter" -t              "${pkgdir}/usr/bin"
 }
+
