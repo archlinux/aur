@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=85.0.4183.26
+pkgver=86.0.4238.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -61,7 +61,6 @@ makedepends=(
              'git'
              'hwids'
              'nodejs'
-             'gn-git>=r1734.82d673ac'
              )
 optdepends=(
             'pepper-flash: PPAPI Flash Player'
@@ -157,7 +156,6 @@ _keeplibs=(
            'third_party/breakpad'
            'third_party/breakpad/breakpad/src/third_party/curl'
            'third_party/brotli'
-           'third_party/cacheinvalidation'
            'third_party/catapult'
            'third_party/catapult/common/py_vulcanize/third_party/rcssmin'
            'third_party/catapult/common/py_vulcanize/third_party/rjsmin'
@@ -186,14 +184,22 @@ _keeplibs=(
            'third_party/cros_system_api'
            'third_party/dav1d'
            'third_party/dawn'
+           'third_party/dawn/third_party/gn'
+           'third_party/dawn/third_party/khronos'
            'third_party/depot_tools'
            'third_party/depot_tools/third_party/six'
            'third_party/devscripts'
            'third_party/devtools-frontend'
            'third_party/devtools-frontend/src/front_end/third_party/acorn'
+           'third_party/devtools-frontend/src/front_end/third_party/chromium'
            'third_party/devtools-frontend/src/front_end/third_party/codemirror'
            'third_party/devtools-frontend/src/front_end/third_party/fabricjs'
+           'third_party/devtools-frontend/src/front_end/third_party/i18n'
+           'third_party/devtools-frontend/src/front_end/third_party/intl-messageformat'
            'third_party/devtools-frontend/src/front_end/third_party/lighthouse'
+           'third_party/devtools-frontend/src/front_end/third_party/lit-html'
+           'third_party/devtools-frontend/src/front_end/third_party/lodash-isequal'
+           'third_party/devtools-frontend/src/front_end/third_party/marked'
            'third_party/devtools-frontend/src/front_end/third_party/wasmparser'
            'third_party/devtools-frontend/src/third_party'
            'third_party/dom_distiller_js'
@@ -241,6 +247,7 @@ _keeplibs=(
            'third_party/mesa'
            'third_party/metrics_proto'
            'third_party/modp_b64'
+           'third_party/nearby'
            'third_party/nasm'
            'third_party/node'
            'third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2'
@@ -273,6 +280,7 @@ _keeplibs=(
            'third_party/rnnoise'
            'third_party/s2cellid'
            'third_party/schema_org'
+           'third_party/securemessage'
            'third_party/simplejson'
            'third_party/shaderc'
            'third_party/skia'
@@ -287,12 +295,13 @@ _keeplibs=(
            'third_party/sqlite'
            'third_party/swiftshader'
            'third_party/swiftshader/third_party/astc-encoder'
-           'third_party/swiftshader/third_party/llvm-7.0'
+           'third_party/swiftshader/third_party/llvm-10.0'
            'third_party/swiftshader/third_party/llvm-subzero'
            'third_party/swiftshader/third_party/marl'
            'third_party/swiftshader/third_party/subzero'
            'third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1'
            'third_party/tcmalloc'
+           'third_party/ukey2'
            'third_party/unrar'
            'third_party/usrsctp'
            'third_party/vulkan'
@@ -310,6 +319,7 @@ _keeplibs=(
            'third_party/woff2'
            'third_party/wuffs'
            'third_party/xcbproto'
+           'third_party/zxcvbn-cpp'
            'third_party/zlib' # /google'
            'tools/grit/third_party/six'
            'url/third_party/mozilla'
@@ -346,6 +356,7 @@ _flags=(
         'is_official_build=false'
         'is_component_build=true'
         'enable_widevine=true'
+        'enable_js_type=true'
         'enable_hangout_services_extension=true'
         "ffmpeg_branding=\"ChromeOS\""
         'proprietary_codecs=true'
@@ -538,7 +549,9 @@ prepare() {
   sed 's|//third_party/usb_ids/usb.ids|/usr/share/hwdata/usb.ids|g' -i services/device/usb/BUILD.gn
 
   # Setup the linker in chromium.
-  sed "s|fuse-ld=lld|fuse-ld=${_clang_path}${_lld}|g" -i build/config/compiler/BUILD.gn
+  sed "s|-fuse-ld=lld|-fuse-ld=${_clang_path}${_lld}|g" \
+    -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py \
+    -i build/config/compiler/BUILD.gn
 
   # Setup bundled ffmpeg.
   # Add build verbose output.
@@ -573,7 +586,6 @@ build() {
     --cxx="${_clang_path}clang++" \
     --ld="${_clang_path}clang" \
     --ar="${_clang_path}llvm-ar" \
-    --extra-ldflags="-fuse-ld=${_clang_path}${_lld}" \
 #     --disable-asm
 
   chromium/scripts/copy_config.sh
@@ -582,7 +594,7 @@ build() {
 
 
   msg2 "Starting building Chromium..."
-  LC_ALL=C gn gen out/Release -v --args="${_flags[*]}" --script-executable=/usr/bin/python2
+  LC_ALL=C buildtools/linux64/gn gen out/Release -v --args="${_flags[*]}" --script-executable=/usr/bin/python2
 
   # Build all.
   LC_ALL=C ninja -C out/Release -v chrome chrome_sandbox chromedriver
