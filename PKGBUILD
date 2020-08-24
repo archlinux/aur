@@ -2,13 +2,11 @@
 
 pkgname=ttf-pirata-one
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A gothic textura font, simplified and optimized to work well on screen and pixel displays."
 arch=('any')
 url="http://www.rfuenzalida.com/"
 license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
-install=ttf.install
 source=(http://www.1001freefonts.com/d/5814/pirata_one.zip)
 md5sums=('150aae277366407f44abd3340fea58f6')
 
