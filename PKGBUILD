@@ -1,7 +1,7 @@
 # Maintainer: John Moon <john@jmoon.dev>
 pkgname=mozwire
 _pkgname_caps=MozWire
-pkgver=0.4.1
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A cross-platform client for MozillaVPN'
 url='https://github.com/NilsIrl/MozWire'
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('e747a5cc4764f4be557f055f91dec93003f28b48403cf4d0fd5ddd1b423009ea9fe408bf656d851b7053d07dda130184e7368c1c280aed36ea04f1abe28f0885')
-b2sums=('8caf7d811d6eb39efbf5ffa6f8fb2704473cde6e1f7623bd508c0dbf25d4ce9b425bcc0e515dcb695f90ec48ba31b09ed51e712758b3b33f5b817606737c2cfe')
+sha512sums=('ccaafec43beee77195f537a40fea4e745dd621737bac1eca93590d8e4f10879bfd686a7facae38587e8bc4f491c9415101a86025c62d2db6e0e1caa6cee63789')
+b2sums=('543968c0d742abc9f3135ab3c90f25bdbdd2631d2afb01aa0b9b27a6f94b31bb631bc27d0cae4d0eae1e2d93ef96c347a0a2911de6f3293215e68301fc80bd7a')
 
 prepare() {
     cd "${_pkgname_caps}-${pkgver}"
@@ -33,3 +33,4 @@ package() {
     install -Dm 755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
     install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
+
