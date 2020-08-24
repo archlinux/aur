@@ -2,7 +2,7 @@
 
 _name=pymol
 pkgname="${_name}-git"
-pkgver=r4707.7b4e2af9
+pkgver=r4806.c7095ec2
 pkgrel=1
 pkgdesc="Molecular visualization system on an Open Source foundation"
 arch=('x86_64')
@@ -16,11 +16,9 @@ optdepends=('python-pmw: pmw based UI'
 conflicts=('pymol')
 provides=("${_name}=${pkgver}")
 source=(${_name}::"git+https://github.com/schrodinger/pymol-open-source.git"
-		${_name}.png::"https://c.fsdn.com/allura/p/pymol/icon"
-        "apbstools_tcltk8.6.patch")
+		${_name}.png::"https://c.fsdn.com/allura/p/pymol/icon")
 md5sums=('SKIP'
-         'a6b62ae41658a772f75b3b123a8e5c0b'
-         '138550367b74fd62a7c7bc48d339eb2d')
+         'a6b62ae41658a772f75b3b123a8e5c0b')
 
 pkgver() {
     cd "${srcdir}/${_name}"
@@ -35,10 +33,6 @@ prepare() {
 
   # suppress non-zero exit code that breaks makepkg
   sed -i '/sys.exit/ s,2,0,' "${srcdir}/${_name}/setup.py"
-
-  # fix FS#39526
-  cd "${srcdir}/${_name}"
-  patch -p0 -i "${srcdir}/apbstools_tcltk8.6.patch"
 }
 
 build() {
