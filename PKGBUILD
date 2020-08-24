@@ -3,7 +3,7 @@ pkgname=geant4-abladata
 _dataname="G4ABLA"
 _foldername="G4ABLA"
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Data files for nuclear shell effects in INCL/ABLA hadronic mode"
 url="http://geant4.cern.ch/"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('geant4>=10.4.0')
 #it cannot be optdepend since we require the geant4.sh file to exist
 #to setup the environment variable
 install="${pkgname}.install"
-source=("http://geant4.cern.ch/support/source/${_dataname}.${pkgver}.tar.gz"
+source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
   "${pkgname}.install")
 sha256sums=('7698b052b58bf1b9886beacdbd6af607adc1e099fc730ab6b21cf7f090c027ed'
             '89ddd9fb1b7d855cd1bbe75c7c7e3843b48adc4afeaaaf846d6355cd3e86f9b8')
