@@ -4,15 +4,13 @@
 # Contributor: Chris <alostengineer at narmos dot org>
 pkgname=pam_ssh_agent_auth
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="PAM module which permits authentication via the keyring in a forwarded ssh-agent."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/jbeverly/pam_ssh_agent_auth"
 license=('custom:OpenSSL')
-source=(git://github.com/jbeverly/pam_ssh_agent_auth.git#tag=$pkgname-$pkgver
-        git://github.com/floodyberry/ed25519-donna#commit=8757bd4cd209cb032853ece0ce413f122eef212c)
-md5sums=('SKIP'
-         'SKIP')
+source=(git://github.com/jbeverly/pam_ssh_agent_auth.git#tag=$pkgname-$pkgver)
+md5sums=('SKIP')
 makedepends=('git')
 depends=('openssl')
 optdepends=('openssh: standard ssh-agent'
@@ -21,7 +19,6 @@ optdepends=('openssh: standard ssh-agent'
 prepare() {
   cd "$srcdir/$pkgname/ed25519-donna"
   git submodule init
-  git config submodule.ed25519-donna.url $srcdir/ed25519-donna
   git submodule update
 }
 
