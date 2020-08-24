@@ -60,7 +60,7 @@ build() {
     -DGAMEINDEX_DIR=/usr/share/pcsx2 \
     -DPACKAGE_MODE=ON \
     -DXDG_STD=TRUE
-  make -j4
+  make
 }
 
 package() {
