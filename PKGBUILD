@@ -69,7 +69,7 @@ pkgbase=linux-xanmod-anbox
 pkgver=5.8.3
 _major=5.8
 _branch=5.x
-xanmod=1
+xanmod=2
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod with ashmem and binder enabled for Anbox'
 url="http://www.xanmod.org/"
@@ -101,7 +101,7 @@ done
 
 sha256sums=('e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5'
             'SKIP'
-            '956ee2c57d352b17ed801e46c11c759d8897fe05eb9726f554c738bb86d58c35'
+            '08f5391cf0bf176ba3090e6d4d1affddaecd746d3cafbddfea72277900401496'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991')
 
