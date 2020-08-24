@@ -7,7 +7,8 @@ pkgbase = gitmirror
 	license = BSD
 	makedepends = mill
 	depends = java-environment
-	source = https+git://github.com/sequencer/gitmirror
+	source = https://github.com/sequencer/gitmirror/archive/1.0.0.tar.gz
+	md5sums = 5d41c909362b4f911077894d4b057dd5
 
 pkgname = gitmirror
 
