@@ -1,0 +1,16 @@
+pkgbase = kubectl-unused-volumes
+	pkgdesc = Clean up Kuberntes yaml and json output to make it readable
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/dirathea/kubectl-unused-volumes
+	arch = x86_64
+	arch = i686
+	groups = kubectl-plugins
+	license = Apache
+	makedepends = go
+	depends = kubectl
+	source = https://github.com/dirathea/kubectl-unused-volumes/archive/v0.1.2/kubectl-unused-volumes-0.1.2.tar.gz
+	sha256sums = 4743b53246ed24593a522c7d45710ff7e2808ee7eed87b69e9b5ea406844fbdb
+
+pkgname = kubectl-unused-volumes
+
