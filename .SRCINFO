@@ -1,0 +1,26 @@
+pkgbase = linhpsdr-git
+	pkgdesc = Linux HPSDR
+	pkgver = r218.4284530
+	pkgrel = 1
+	url = https://github.com/g0orx/linhpsdr
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = wdsp
+	depends = unixcw
+	depends = fftw
+	depends = pulseaudio
+	depends = libsoundio
+	depends = gtk3
+	depends = soapysdr
+	provides = linhpsdr
+	conflicts = linhpsdr
+	source = linhpsdr::git+https://github.com/g0orx/linhpsdr
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+	sha384sums = SKIP
+	sha512sums = SKIP
+
+pkgname = linhpsdr-git
+
