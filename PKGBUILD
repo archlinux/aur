@@ -1,7 +1,7 @@
 # Maintainer: Akritas Akritidis <akritasak@gmail.com>
 pkgname=execfs
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The superior FUSE filesystem for exec on file open"
 arch=('any')
 url="http://github.com/MaanooAk/execfs"
@@ -20,5 +20,7 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 

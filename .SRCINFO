@@ -1,7 +1,7 @@
 pkgbase = execfs
 	pkgdesc = The superior FUSE filesystem for exec on file open
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/MaanooAk/execfs
 	arch = any
 	license = MIT
