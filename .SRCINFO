@@ -1,0 +1,29 @@
+pkgbase = neovim-edge-git
+	pkgver = v0.1.3.r4.g3231c16
+	pkgrel = 1
+	url = https://github.com/sainnhe/edge
+	arch = any
+	license = MIT
+	source = edge::git+https://github.com/sainnhe/edge.git
+	sha256sums = SKIP
+
+pkgname = neovim-edge-git
+	pkgdesc = Clean & Elegant Color Scheme inspired by Atom One and Material
+	depends = neovim
+	provides = neovim-edge
+	conflicts = neovim-edge
+
+pkgname = neovim-airline-edge-git
+	pkgdesc = edge color scheme for airline
+	depends = neovim-edge
+	depends = neovim-airline
+	provides = neovim-airline-edge
+	conflicts = neovim-airline-edge
+
+pkgname = neovim-lightline-edge-git
+	pkgdesc = edge color scheme for lightline
+	depends = neovim-edge
+	depends = neovim-lightline
+	provides = neovim-lightline-edge
+	conflicts = neovim-lightline-edge
+
