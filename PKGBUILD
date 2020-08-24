@@ -5,9 +5,8 @@
 
 
 pkgname=neovim-nightly-git
-# Upstream uses the upcoming version number; TODO: automate
-_base_version=0.5.0
-pkgver=0.5.0.r634.g161cdba1e
+_upcoming_version=0.5.0
+pkgver=${_upcoming_version}.r635.g8c49e3d50
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs (pre-release build)'
 arch=('x86_64')
@@ -22,14 +21,14 @@ optdepends=('python-neovim: for Python 3 plugin support (see :help python)'
             'wl-clipboard: for clipboard support on wayland (see :help clipboard)')
 source=("${pkgname}::git+https://github.com/neovim/neovim.git#tag=nightly")
 sha256sums=('SKIP')
-provides=("neovim=${_base_version}" 'vim-plugin-runtime')
+provides=("neovim=${_upcoming_version}" 'vim-plugin-runtime')
 conflicts=('neovim')
 options=(!strip)
 
 pkgver() {
   cd "${pkgname}"
-  _git_version_stamp=$(git describe --long --first-parent nightly | sed 's/[^-]*-//;s/\([^-]*-g\)/r\1/;s/-/./g')
-  echo "${_base_version}.${_git_version_stamp}"
+  printf '%s.%s' ${_upcoming_version} $(git describe --long --first-parent nightly | sed 's/[^-]*-//;s/\([^-]*-g\)/r\1/;s/-/./g')
+
 }
 
 build() {
