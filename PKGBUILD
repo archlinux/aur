@@ -6,7 +6,7 @@ _basever=5.7
 _arch_pkgver=${_basever}.12.arch1
 pkgver=5.7.12.arch1.bcachefs.r550.g86fa1258a3ef
 pkgrel=1
-pkgdesc='Linux'
+pkgdesc='Linux with bcachefs'
 _srctag=v${_arch_pkgver%.*}-${_arch_pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
 arch=(x86_64)
