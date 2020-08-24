@@ -2,13 +2,13 @@
 
 pkgname=quikman
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="A FreeBSD/Linux/Unix GUI manual viewer/reader written in Qt"
+pkgrel=2
+pkgdesc="A FreeBSD/Linux/Unix GUI manual viewer/reader written in Qt4"
 url="https://code.google.com/p/quikman/"
 arch=('x86_64' 'i686')
 license=( 'BSD' )
 depends=( 'qt4' 'man2html' )
-source=( "http://$pkgname.googlecode.com/files/$pkgname-$pkgver.tar.gz" )
+source=( "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/quikman/quikman-1.0.0.tar.gz" )
 sha1sums=('6b68e97120dbe8f33480e6151c71bc289cd3f269')
 
 build() {
