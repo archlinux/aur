@@ -1,6 +1,6 @@
 pkgbase = paddlepaddle-gpu
 	pkgdesc = An opensourced deeplearning framework derived from industral practice.
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 2
 	url = https://github.com/paddlepaddle/paddle
 	arch = x86_64
