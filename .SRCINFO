@@ -1,0 +1,29 @@
+pkgbase = vim-forest-night-git
+	pkgver = v0.1.1.r40.gf4e0c92
+	pkgrel = 1
+	url = https://github.com/sainnhe/forest-night
+	arch = any
+	license = MIT
+	source = forest-night::git+https://github.com/sainnhe/forest-night.git
+	sha256sums = SKIP
+
+pkgname = vim-forest-night-git
+	pkgdesc = Comfortable & Pleasant Color Scheme
+	depends = vim
+	provides = vim-forest-night
+	conflicts = vim-forest-night
+
+pkgname = vim-airline-forest-night-git
+	pkgdesc = forest-night color scheme for airline
+	depends = vim-forest-night
+	depends = vim-airline
+	provides = vim-airline-forest-night
+	conflicts = vim-airline-forest-night
+
+pkgname = vim-lightline-forest-night-git
+	pkgdesc = forest-night color scheme for lightline
+	depends = vim-forest-night
+	depends = vim-lightline-git
+	provides = vim-lightline-forest-night
+	conflicts = vim-lightline-forest-night
+
