@@ -2,7 +2,7 @@
 
 pkgname=python-irc3
 _pkgname=irc3
-pkgver=1.1.3
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="plugable irc client library based on asyncio"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('python' 'python-venusian')
 makedepends=('python-setuptools')
 optdepends=('python-docopt: for the irc3 command')
 source=("https://pypi.io/packages/source/i/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('154913b379f4e5e803cf2e14e1b5272138b495a10003a6c1c6bb969c415a3283')
+sha256sums=('7c6e43c939804355021d1c6c7c3be9c962df592bd1a3d39d3acdf7fcef62508d')
 
 build() {
     cd $_pkgname-$pkgver
