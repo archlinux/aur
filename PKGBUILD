@@ -3,7 +3,7 @@
 # Contributor: hardfalcon <?>
 _pkgname=libnfc
 pkgname="${_pkgname}-no_alternate_usb-git"
-pkgver=1.7.1.r223.gf8b2852
+pkgver=1.8.0.r41.gd9a04a5
 pkgrel=1
 pkgdesc='Platform independent Near Field Communication (NFC) library'
 arch=('i686' 'x86_64')
@@ -14,8 +14,10 @@ makedepends=('doxygen' 'zip' 'git')
 provides=("libnfc=${pkgver}")
 conflicts=(libnfc libnfc-svn libnfc-git)
 replaces=(libnfc-svn)
-source=("git+https://github.com/nfc-tools/libnfc.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/nfc-tools/libnfc.git"
+		"acr122bug.patch")
+sha256sums=('SKIP'
+            '11645025ea9e791dd8fd308694061eac1c5003bf60dc071f33bd615cc70c385b')
 
 pkgver() {
     cd "$_pkgname"
@@ -28,8 +30,7 @@ prepare() {
     if [ ! -e README-Windows.txt ]; then
         ln -s README-Windows.{md,txt}
     fi
-    ls
-    patch -p1 < ../../acr122bug.patch
+    patch -p1 < "${srcdir}/acr122bug.patch"
     ./make_release.sh
     #autoreconf -vis
     ./configure --prefix /usr --enable-doc --sysconfdir=/etc
