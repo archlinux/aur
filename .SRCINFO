@@ -1,0 +1,15 @@
+pkgbase = interrofont
+	pkgdesc = General purpose tool for investigating OTF/TTF information from the command line
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://www.corvelsoftware.co.uk/software/interrofont
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-fonttools
+	source = https://files.pythonhosted.org/packages/source/i/interrofont/interrofont-0.1.2.tar.gz
+	sha256sums = f3093163d86a5ba4cd9802f2fdeb047bf7269da757114389ead33f5a2b40b5aa
+
+pkgname = interrofont
+
