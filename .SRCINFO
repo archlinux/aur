@@ -1,0 +1,15 @@
+pkgbase = neovim-man-git
+	pkgdesc = View man pages in neovim. Grep for the man pages.
+	pkgver = v0.1.0.r30.gcfdc78f
+	pkgrel = 1
+	url = https://github.com/vim-utils/vim-man
+	arch = any
+	license = custom
+	depends = neovim
+	source = neovim-man::git+https://github.com/vim-utils/vim-man
+	source = https://raw.githubusercontent.com/vim/vim/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = neovim-man-git
+
