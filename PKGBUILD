@@ -1,6 +1,6 @@
 # Maintainer: David Lin <davidlindev@qq.com>
 pkgname=paddlepaddle-gpu
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=2
 # epoch=
 pkgdesc="An opensourced deeplearning framework derived from industral practice."
@@ -24,7 +24,7 @@ md5sums=(
 )
 
 package() {
-  python3 --version
+  python3.7 --version
   python --version
   mkdir -p "${pkgdir}"/usr/{lib,include}
 
@@ -55,6 +55,6 @@ package() {
   ln -s libcudnn.so.${_majorver} "${pkgdir}"/usr/lib/libcudnn.so
   ln -s libcudnn_static_v${_majorver}.a "${pkgdir}"/usr/lib/libcudnn_static.a
 
-  python3 -m pip install paddlepaddle-gpu==1.8.3.post107 -i https://mirror.baidu.com/pypi/simple
+  python3.7 -m pip install paddlepaddle-gpu==1.8.3.post107 -i https://mirror.baidu.com/pypi/simple
 
 }
