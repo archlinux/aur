@@ -27,7 +27,7 @@ checkdepends=('gtest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/guest-oslogin/archive/$pkgver.tar.gz"
         'google-compute-engine-oslogin.install')
 sha256sums=('11be57b2573dea6ca2f823256db9e78c2a8fbfebd0136dd974a8536ff09ac303'
-            'b7d7d409a22602967c110ed80293223f904737e3683b0b7cd07fe94a2c52fb8d')
+            '3e488f66f6ddc5882d731bd951391efe588c1fbb19afcf4de5283ec7fd481039')
 install='google-compute-engine-oslogin.install'
 
 build() {
