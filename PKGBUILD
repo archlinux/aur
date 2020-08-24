@@ -1,9 +1,9 @@
 # Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
 
 pkgbase=mangohud
-pkgname=('mangohud' 'lib32-mangohud')
+pkgname=('mangohud' 'lib32-mangohud' 'mangohud-common')
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
@@ -29,18 +29,19 @@ build() {
 
 package_mangohud() {
     pkgdesc='A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more'
-    depends=('gcc-libs')
+    depends=('gcc-libs' 'mangohud-common')
     optdepends=('bash: mangohud helper script'
                 'libxnvctrl: support for older NVIDIA GPUs')
 
     DESTDIR="$pkgdir" ninja -C build64 install
+    rm -r "$pkgdir/usr/bin" "$pkgdir/usr/share/doc" "$pkgdir/usr/share/man"
 
     install -Dm644 "$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_lib32-mangohud() {
     pkgdesc='A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more (32-bit)'
-    depends=('lib32-gcc-libs' 'mangohud')
+    depends=('lib32-gcc-libs' 'mangohud' 'mangohud-common')
     optdepends=('lib32-libxnvctrl: support for older NVIDIA GPUs)')
 
     DESTDIR="$pkgdir" ninja -C build32 install
@@ -49,3 +50,14 @@ package_lib32-mangohud() {
 
     install -Dm644 "$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+package_mangohud-common() {
+    pkgdesc='Common files for mangohud and lib32-mangohud'
+    optdepends=('bash: mangohud helper script')
+
+    DESTDIR="$pkgdir" ninja -C build64 install
+    rm -r "$pkgdir/usr/lib" "$pkgdir/usr/share/vulkan"
+
+    install -Dm644 "$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
