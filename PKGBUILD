@@ -19,7 +19,9 @@ pkgver() {
 package() {
     cd "${srcdir}/lightline"
     nvim -es --cmd ":helptags doc" --cmd ":q"
-    find autoload doc plugin test -type f -exec \
+    find autoload -type f -exec \
+        install -Dm 644 '{}' "${pkgdir}/usr/share/nvim/runtime/{}" \;
+    find doc plugin test -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/usr/local/share/nvim/site/pack/neovim-lightline/start/neovim-lightline/{}" \;
     install -Dm 644 "${srcdir}/lightline/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
