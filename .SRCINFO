@@ -1,0 +1,29 @@
+pkgbase = neovim-sonokai-git
+	pkgver = v0.2.0.r4.g2236d0c
+	pkgrel = 1
+	url = https://github.com/sainnhe/sonokai
+	arch = any
+	license = MIT
+	source = sonokai::git+https://github.com/sainnhe/sonokai.git
+	sha256sums = SKIP
+
+pkgname = neovim-sonokai-git
+	pkgdesc = High Contrast & Vivid Color Scheme based on Monokai Pro
+	depends = neovim
+	provides = neovim-sonokai
+	conflicts = neovim-sonokai
+
+pkgname = neovim-airline-sonokai-git
+	pkgdesc = sonokai color scheme for airline
+	depends = neovim-sonokai
+	depends = neovim-airline
+	provides = neovim-airline-sonokai
+	conflicts = neovim-airline-sonokai
+
+pkgname = neovim-lightline-sonokai-git
+	pkgdesc = sonokai color scheme for lightline
+	depends = neovim-sonokai
+	depends = neovim-lightline
+	provides = neovim-lightline-sonokai
+	conflicts = neovim-lightline-sonokai
+
