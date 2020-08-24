@@ -7,8 +7,8 @@ pkgrel=1
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
 url="https://github.com/mywave82/opencubicplayer"
-depends=('libxxf86vm' 'libvorbis' 'libxpm' 'alsa-lib' 'libmad' 'flac' 'sdl2' 'adplug' 'libjpeg-turbo' 'libpng' 'freetype2' 'ttf-unifont' 'patch' 'xa')
-makedepends=('desktop-file-utils')
+depends=('libxxf86vm' 'libvorbis' 'libxpm' 'alsa-lib' 'libmad' 'flac' 'sdl2' 'adplug' 'libjpeg-turbo' 'libpng' 'freetype2' 'ttf-unifont')
+makedepends=('desktop-file-utils' 'git' 'xa' 'patch')
 license=('GPL')
 source=(git+https://github.com/mywave82/opencubicplayer.git#tag=v${pkgver}
         git+https://github.com/mywave82/timidity.git
