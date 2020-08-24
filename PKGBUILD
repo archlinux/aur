@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=kubectl-neat
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Clean up Kuberntes yaml and json output to make it readable'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('kubectl')
 makedepends=('go')
 groups=('kubectl-plugins')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('56171143c38ec40b0268866ec940bfe74bd721bd4567bdbe6311af778bf6850d')
+sha256sums=('6393112f66e6a50ee6dfcadadc65d143a50fe6ae2466ec6d000a3ca8d8b304cd')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -24,7 +24,7 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
-  export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
+  export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly -ldflags=-linkmode=external'
   go build -o "$pkgname"
 }
 
