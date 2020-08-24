@@ -1,7 +1,7 @@
 post_install() {
 	echo "
 When compiling an app for iOS, you may need to point it to the sysroot
-The sysroot is `/opt/apple-sdk-ios`.
+The sysroot is \"/opt/apple-sdk-ios\".
 You may be able to do \"export SDKROOT=/opt/apple-sdk-ios\".
 	"
 }

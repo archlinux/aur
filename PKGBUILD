@@ -1,7 +1,7 @@
 # Maintainer: aspen <luxx4x@protonmail.com>
 
 pkgname="apple-sdk-ios"
-pkgver=20200709.r1
+pkgver=13.4
 pkgrel=1
 arch=('any')
 pkgdesc="iOS SDKs, from on DragonBuild's repository."
@@ -12,6 +12,7 @@ install="sdk.install"
 makedepends=('git' 'findutils')
 source=("$pkgname::git+$url.git")
 sha512sums=('SKIP')
+options=(!strip)
 
 pkgver() {
 	cd "$pkgname"
