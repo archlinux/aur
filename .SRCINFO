@@ -1,5 +1,5 @@
 pkgbase = wdsp-git
-	pkgdesc = A collection of scripts using the VOACAP HF propagation prediction engine
+	pkgdesc = NR0V DSP library ported to linux
 	pkgver = r56.c55342c
 	pkgrel = 1
 	url = https://github.com/g0orx/wdsp
