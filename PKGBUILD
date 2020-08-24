@@ -1,6 +1,6 @@
 # Maintainer: David Lin <davidlindev@qq.com>
 pkgname=paddlepaddle-gpu
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 # epoch=
 pkgdesc="An opensourced deeplearning framework derived from industral practice."
