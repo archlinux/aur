@@ -1,13 +1,14 @@
 # Maintainer: David Lin <davidlindev@qq.com>
 pkgname=paddlepaddle-gpu
-pkgver=1.8.6
+pkgver=1.9
 pkgrel=2
 # epoch=
 pkgdesc="An opensourced deeplearning framework derived from industral practice."
 arch=('x86_64')
 url="https://github.com/paddlepaddle/paddle"
 license=('custom')
-depends=('cuda-10.1')
+depends=('cuda-10.1'
+        'python37')
 cudnn_version=8.0.2.39-1
 cuda_version=10.1
 _majorver=8
@@ -51,4 +52,7 @@ package() {
   ln -s cudnn_version_v${_majorver}.h "${pkgdir}"/usr/include/cudnn_version.h
   ln -s libcudnn.so.${_majorver} "${pkgdir}"/usr/lib/libcudnn.so
   ln -s libcudnn_static_v${_majorver}.a "${pkgdir}"/usr/lib/libcudnn_static.a
+
+  python3 -m pip install paddlepaddle-gpu==1.8.3.post107 -i https://mirror.baidu.com/pypi/simple
+
 }
