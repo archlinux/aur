@@ -1,0 +1,29 @@
+pkgbase = neovim-forest-night-git
+	pkgver = v0.1.1.r40.gf4e0c92
+	pkgrel = 1
+	url = https://github.com/sainnhe/forest-night
+	arch = any
+	license = MIT
+	source = forest-night::git+https://github.com/sainnhe/forest-night.git
+	sha256sums = SKIP
+
+pkgname = neovim-forest-night-git
+	pkgdesc = Comfortable & Pleasant Color Scheme
+	depends = neovim
+	provides = neovim-forest-night
+	conflicts = neovim-forest-night
+
+pkgname = neovim-airline-forest-night-git
+	pkgdesc = forest-night color scheme for airline
+	depends = neovim-forest-night
+	depends = neovim-airline
+	provides = neovim-airline-forest-night
+	conflicts = neovim-airline-forest-night
+
+pkgname = neovim-lightline-forest-night-git
+	pkgdesc = forest-night color scheme for lightline
+	depends = neovim-forest-night
+	depends = neovim-lightline
+	provides = neovim-lightline-forest-night
+	conflicts = neovim-lightline-forest-night
+
