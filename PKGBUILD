@@ -9,7 +9,6 @@ arch=('x86_64')
 url='https://www.pcloud.com/'
 license=('custom')
 depends=('fuse3')
-makedepends=('sed')
 replaces=('pcloud-git' 'pcloud')
 _api_code='XZM0dakZjHLyhvrBu0BXRSmnTXNHbSbiodj7'
 _api_response="$(curl -s "https://api.pcloud.com/getpublinkdownload?code=${_api_code}")"
