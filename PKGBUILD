@@ -9,7 +9,7 @@ _pkgname=cinelerra-gg
 _pkgver=5.1
 
 pkgname=cin-git
-pkgver=5.1.20200131
+pkgver=5.1.20200731
 pkgrel=1
 pkgdesc="Cinelerra maintained by Good Guy (git version)"
 arch=('x86_64')
@@ -58,6 +58,7 @@ makedepends=('yasm'
              'cmake'
              'git'
              'ctags'
+             'python'
              'libxml2'
              'perl-xml-libxml'
              'perl-xml-parser')
@@ -71,7 +72,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}/cinelerra-${_pkgver}"
-  sed -i 's/\<python\>/python2.7/' ./guicast/Makefile
   ./autogen.sh
 }
 
