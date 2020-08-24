@@ -16,33 +16,24 @@
 # Maintainer: Samuel Littley <samuellittley@google.com>
 
 pkgname='google-compute-engine'
-pkgver=20191210
+pkgver=20200731.00
 pkgrel=1
-pkgdesc='Google Compute Engine guest environment'
+pkgdesc='Linux Guest Environment for Google Compute Engine'
 arch=('any')
-url='https://github.com/GoogleCloudPlatform/compute-image-packages'
+url='https://github.com/GoogleCloudPlatform/guest-configs'
 license=('Apache')
-depends=('ethtool' 'google-compute-engine-oslogin' 'inetutils' 'python-boto' 'python-distro' 'python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/compute-image-packages/archive/v$pkgver.tar.gz")
-sha256sums=('19a2ca537f876e4a19341646f2865c6429b8ea041a3a6651ff8c1ed966f72fe1')
-
-build() {
-	cd "compute-image-packages-$pkgver/packages/python-google-compute-engine"
-	python setup.py build
-}
+depends=('google-compute-engine-oslogin' 'google-guest-agent')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/guest-configs/archive/$pkgver.tar.gz"
+        'google-compute-engine.install')
+sha256sums=('a5a8297ea30ba13c238a9a31e30daafd0d939507ab3310270b4becf6daa8128d'
+            '9b31cc5146d83374cc8f8da9f0ce924bbafeb932d0cf0ce60e4aec71d1f981b7')
+install='google-compute-engine.install'
 
 package() {
-	cd "compute-image-packages-$pkgver/packages"
-	pushd python-google-compute-engine
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	popd
-
-	pushd google-compute-engine/src
-	install -m644 -Dt "$pkgdir/etc/modprobe.d" etc/modprobe.d/*
-	install -m644 -Dt "$pkgdir/etc/sysctl.d" etc/sysctl.d/*
-	install -m644 -Dt "$pkgdir/usr/lib/systemd/system/" lib/systemd/system/*
-	install -m644 -Dt "$pkgdir/usr/lib/udev/rules.d" lib/udev/rules.d/*
-	install -m755 -Dt "$pkgdir/usr/bin" usr/bin/*
+	cd "guest-configs-$pkgver"
+	install -m644 -Dt "$pkgdir/etc/modprobe.d" src/etc/modprobe.d/*
+	install -m644 -Dt "$pkgdir/etc/sysctl.d" src/etc/sysctl.d/*
+	install -m644 -Dt "$pkgdir/usr/lib/udev/rules.d" src/lib/udev/rules.d/*
+	install -m755 -Dt "$pkgdir/usr/bin" src/usr/bin/*
 	ln -s /usr/bin/google_set_hostname "$pkgdir/etc/dhclient-exit-hooks"
-	popd
 }
