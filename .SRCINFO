@@ -1,0 +1,29 @@
+pkgbase = vim-edge-git
+	pkgver = v0.1.3.r4.g3231c16
+	pkgrel = 1
+	url = https://github.com/sainnhe/edge
+	arch = any
+	license = MIT
+	source = edge::git+https://github.com/sainnhe/edge.git
+	sha256sums = SKIP
+
+pkgname = vim-edge-git
+	pkgdesc = Clean & Elegant Color Scheme inspired by Atom One and Material
+	depends = vim
+	provides = vim-edge
+	conflicts = vim-edge
+
+pkgname = vim-airline-edge-git
+	pkgdesc = edge color scheme for airline
+	depends = vim-edge
+	depends = vim-airline
+	provides = vim-airline-edge
+	conflicts = vim-airline-edge
+
+pkgname = vim-lightline-edge-git
+	pkgdesc = edge color scheme for lightline
+	depends = vim-edge
+	depends = vim-lightline-git
+	provides = vim-lightline-edge
+	conflicts = vim-lightline-edge
+
