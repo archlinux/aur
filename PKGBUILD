@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.0.r175.dc5bfbb47
+pkgver=1.7.0.r188.91326e1d9
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -16,14 +16,14 @@ license=(
 )
 
 depends=(
-  lib32-libaio
-  lib32-libjpeg-turbo
-  lib32-libpcap
-  lib32-libpulse
-  lib32-portaudio
-  lib32-sdl2
-  lib32-soundtouch
-  lib32-wxgtk2
+  libaio
+  libjpeg-turbo
+  libpcap
+  libpulse
+  portaudio
+  sdl2
+  soundtouch
+  wxgtk2
 )
 makedepends=(
   cmake
