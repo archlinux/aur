@@ -1,15 +1,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ttm
-pkgver=4.04
-pkgrel=4
+pkgver=4.05
+pkgrel=1
 pkgdesc="TeX to MathML translator"
 url="http://hutchinson.belmont.ma.us/tth/"
 arch=('i686' 'x86_64')
 optdepends=('tth: for providing some scripts ttm could also use')
 license=('GPL')
 source=(http://hutchinson.belmont.ma.us/tth/mml/ttmC.tar.gz)
-md5sums=('491aefd525efa804c5a203c5a8c4a281')
+sha256sums=('7023abe91e924c6f29f89546079b5f4aa8a27ae9d424c125bff13481d53c3804')
 
 build() {
   cd ttmC
