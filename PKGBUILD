@@ -1,5 +1,5 @@
-# Maintainer:geekmar
-pkgname=panda-statusbar
+# Maintainer:geekmar <xzh2002436@gmail.com>
+pkgname=panda-statusbar-git 
 pkgver=1.0.
 _commit=82709ae970074df15a543a9384b29e238466ddce
 pkgrel=1
