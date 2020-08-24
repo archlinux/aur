@@ -1,7 +1,7 @@
 pkgbase = deej
 	pkgdesc = Open-source hardware volume mixer
 	pkgver = 0.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://deej.rocks/
 	install = deej.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = deej
 	makedepends = go
 	depends = libappindicator-gtk3
 	depends = webkit2gtk
+	depends = hicolor-icon-theme
 	source = LICENSE
 	source = deej.desktop
 	source = deej-0.9.9::https://github.com/omriharel/deej/archive/v0.9.9.tar.gz

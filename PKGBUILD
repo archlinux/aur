@@ -2,12 +2,12 @@
 
 pkgname=deej
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source hardware volume mixer'
 arch=('any')
 url='http://deej.rocks/'
 license=('MIT')
-depends=('libappindicator-gtk3' 'webkit2gtk')
+depends=('libappindicator-gtk3' 'webkit2gtk' 'hicolor-icon-theme')
 makedepends=('go')
 source=('LICENSE'
         "${pkgname}.desktop"
