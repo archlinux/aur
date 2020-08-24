@@ -2,15 +2,18 @@
 # Contributor: Tomas Kral <tomas.kral@gmail.com>
 
 pkgname=rememberthemilk
-pkgver=1.2.3
-pkgrel=2
+pkgver=1.2.5
+pkgrel=1
 pkgdesc="The smart to-do app for busy people."
 arch=('x86_64')
 url="https://www.rememberthemilk.com"
 license=('custom:none' 'MIT' 'Apache')
 source=("https://www.rememberthemilk.com/download/linux/debian/pool/main/r/rememberthemilk/rememberthemilk_${pkgver}_amd64.deb")
-sha256sums=('13f5aa79ec85a5cbeeca7caa6b6d0d44ab8e0d41d10eb8b5f60553c9d396c338')
-depends=('gconf' 'gtk2' 'gtk3' 'nss')
+sha256sums=('5ac9ad993499a672d965663eb3370c7395f75b3f3f144d11a86c99fcefdfdeb7')
+
+# Dependencies listed in deb file that are satisfied by other dependencies: gtk3 libxtst at-spi2-atk libutil-linux
+# Dependencies listed in deb file that are not satisfied by other dependencies
+depends=(libnotify nss libxss xdg-utils libappindicator-gtk3 libsecret)
 
 prepare() {
   cd ${srcdir}
