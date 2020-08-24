@@ -26,7 +26,7 @@ source=(https://dl.winehq.org/wine/source/5.x/wine-$_pkgbasever.tar.xz
         "wine-staging-v$_pkgbasever.tar.gz::https://github.com/wine-staging/wine-staging/archive/v$_pkgbasever.tar.gz"
         https://raw.githubusercontent.com/wine-staging/wine-staging/8d4d0a840e6ce434483edd81acb3be90fd734e44/patches/user32-rawinput-mouse/0005-server-Broadcast-rawinput-message-if-request-flag-is.patch
         30-win32-aliases.conf
-        420CustomPatch1.diff)
+        wine-lol-bug-47198-fix.patch)
 sha512sums=('b12b0eff228ecd783fec8bf91f97e4387125226b172046d800e1fbffa303ceca32f1f647b9e8ceb24d303c23eb57188be14ddd8ba5fc04ba781a69186fbe6be4'
             '7ddf5699834a6e04b094a7cae008175c874415d22554bac38176f3121b9533071ef610f8b5a0dd3ce3e4adf8a9d4ac214aa1cee7634959c5150b66fbb74710b7'
             '13ce85885270990f8f2cf6c1f872fc855b3caf5bc1de01022caf0b05dd6957e55391cd8dcd15ff0cc18cf3035851a8289a2e12e17f2f50b626b68afd10e3f315'
@@ -138,7 +138,7 @@ prepare() {
 
   # Apply League Of Legends fixes
   pushd "$srcdir/$pkgname"
-  patch -p1 -i "$srcdir/420CustomPatch1.diff"
+  patch -p1 -i "$srcdir/wine-lol-bug-47198-fix.patch"
   popd
 
   # Fix opencl header path
