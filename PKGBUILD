@@ -39,12 +39,10 @@ package() {
 
 
 	cp -fR $srcdir/pharolauncher/shared/* $pkgdir/usr/share/pharo-launcher/
-	chgrp -R users $pkgdir/usr/share/pharo-launcher/
-	chmod -R 775 $pkgdir/usr/share/pharo-launcher/
+	chmod -R 777 $pkgdir/usr/share/pharo-launcher/
 
 	cp -fR $srcdir/pharolauncher/pharo-vm/* $pkgdir/usr/share/pharo-vm/
-	chgrp -R users $pkgdir/usr/share/pharo-vm/
-	chmod -R 775 $pkgdir/usr/share/pharo-vm/
+	chmod -R 777 $pkgdir/usr/share/pharo-vm/
 
 	sed -i 's/ROOT=`dirname "$DIR"`/ROOT=\/usr\/share/' $srcdir/pharolauncher/pharo-launcher
 	sed -i 's/LINUX="$ROOT\/bin"/LINUX="$ROOT\/pharo"/' $srcdir/pharolauncher/pharo-launcher

@@ -2,3 +2,6 @@ src/*
 pkg/*
 pharo-launcher-1*
 PharoLauncher-linux-*
+PharoDebug.log
+
+PharoLauncher.changes
