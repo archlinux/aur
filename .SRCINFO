@@ -1,11 +1,12 @@
 pkgbase = vim-markdown-toc-git
 	pkgdesc = A vim 7.4+ plugin to generate table of contents for Markdown files.
 	pkgver = v1.4.0.r30.g2e86c72
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mzlogin/vim-markdown-toc
 	arch = any
 	license = MIT
 	depends = vim
+	conflicts = vim-markdown-toc
 	source = git+https://github.com/mzlogin/vim-markdown-toc
 	sha256sums = SKIP
 
