@@ -1,13 +1,14 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=blackchocobo-git
 conflicts=('blackchocobo')
-pkgver=v1.10.0.r24.gdb82321
+pkgver=v1.10.0.r36.g4dfbf4a
 pkgrel=1
 pkgdesc="Final Fantasy 7 Save Editor"
 arch=('any')
 url="http://www.blackchocobo.com/"
 license=('GPL3')
-depends=('qt5-base') #Qt5)
+depends=('qt5-base')
+makedepends=('cmake')
 #optdepends=('otf-ipafont: font for displaying japanese')
 install=$pkgname.install
 source=('git://github.com/sithlord48/blackchocobo.git')
@@ -21,12 +22,10 @@ pkgver() {
 
 build() {
   cd "blackchocobo"
-  qmake-qt5 Black_Chocobo.pro #Qt5 Build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr CMakeLists.txt
   make
 }
 package(){
   cd "blackchocobo"
-  INSTALL_ROOT=$pkgdir make install 
-  install -D -m644 debian/menu "$pkgdir"/usr/share/menu/blackchocobo
-  install -D -m644 debian/blackchocobo.sharedmimeinfo "$pkgdir"/usr/share/mime/blackchocobo.xml
-}  
+  make DESTDIR=$pkgdir install
+}
