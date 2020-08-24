@@ -1,0 +1,29 @@
+pkgbase = vim-gruvbox-material-git
+	pkgver = v1.2.0.r12.g8c5607c
+	pkgrel = 1
+	url = https://github.com/sainnhe/gruvbox-material
+	arch = any
+	license = MIT
+	source = gruvbox-material::git+https://github.com/sainnhe/gruvbox-material.git
+	sha256sums = SKIP
+
+pkgname = vim-gruvbox-material-git
+	pkgdesc = Gruvbox with Material Palette
+	depends = vim
+	provides = vim-gruvbox-material
+	conflicts = vim-gruvbox-material
+
+pkgname = vim-airline-gruvbox-material-git
+	pkgdesc = gruvbox-material color scheme for airline
+	depends = vim-gruvbox-material
+	depends = vim-airline
+	provides = vim-airline-gruvbox-material
+	conflicts = vim-airline-gruvbox-material
+
+pkgname = vim-lightline-gruvbox-material-git
+	pkgdesc = gruvbox-material color scheme for lightline
+	depends = vim-gruvbox-material
+	depends = vim-lightline-git
+	provides = vim-lightline-gruvbox-material
+	conflicts = vim-lightline-gruvbox-material
+
