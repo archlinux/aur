@@ -13,6 +13,7 @@ url="https://github.com/sainnhe/${_colorscheme}"
 license=('MIT')
 source=("${_colorscheme}::git+${url}.git")
 sha256sums=('SKIP')
+makedepends=('git')
 
 pkgver() {
     cd "${srcdir}/${_colorscheme}"

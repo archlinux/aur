@@ -4,6 +4,7 @@ pkgbase = vim-gruvbox-material-git
 	url = https://github.com/sainnhe/gruvbox-material
 	arch = any
 	license = MIT
+	makedepends = git
 	source = gruvbox-material::git+https://github.com/sainnhe/gruvbox-material.git
 	sha256sums = SKIP
 
