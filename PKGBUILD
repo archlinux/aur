@@ -1,4 +1,5 @@
 # Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=rocm-opencl-runtime
 pkgver=3.7.0
@@ -10,9 +11,9 @@ license=('MIT')
 depends=('hsakmt-roct' 'hsa-rocr' 'rocclr' 'opencl-icd-loader')
 makedepends=('cmake' 'rocm-cmake')
 provides=("$pkgname" 'opencl-driver')
-source=("$pkgname-$pkgver::git+$url#branch=rocm-3.7.x")
-sha256sums=('SKIP')
-_dirname="rocm-opencl-runtime-$pkgver"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
+sha256sums=('283e1dfe4c3d2e8af4d677ed3c20e975393cdb0856e3ccd77b9c7ed2a151650b')
+_dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
     CFLAGS="$CFLAGS -isystem /opt/rocm/rocclr/include/include -isystem /opt/rocm/rocclr/include/compiler/lib -isystem /opt/rocm/rocclr/include/compiler/lib/include" \
