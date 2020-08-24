@@ -1,6 +1,6 @@
 pkgname=turtlico-git
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0.r24.g7b49bce
+pkgrel=1
 pkgdesc="The easy programming tool"
 arch=('any')
 url="https://turtlico.gitlab.io/"
