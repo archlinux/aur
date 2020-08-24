@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/emoon/HippoPlayer'
 license=('MIT' 'APACHE')
 install=hippoplayer.install
-provides=("${pkgname%}")
+provides=("${pkgname}")
 depends=('alsa-lib' 'qt5-base')
 makedepends=('git' 'tundra2' 'rustup' 'qt5-base' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/emoon/HippoPlayer/archive/${pkgver}.tar.gz")
@@ -48,12 +48,12 @@ package() {
   cp -R data/ "${pkgdir}/usr/share/hippoplayer/"
   cp -R bin/ "${pkgdir}/usr/share/hippoplayer/"
   rm -rf "${pkgdir}/usr/share/hippoplayer/data/mac"
-  gendesk -f -n --pkgname "${pkgname%}" \
+  gendesk -f -n --pkgname "${pkgname}" \
           --pkgdesc "$pkgdesc" \
           --name "HippoPlayer" \
           --comment "$pkgdesc" \
-          --exec "${pkgname%}" \
+          --exec "${pkgname}" \
           --categories 'Utility;Audio;AudioVideo' \
-          --icon "${pkgname%}"
-  install -Dm644 "${pkgname%}.desktop" -t "${pkgdir}/usr/share/applications"
+          --icon "${pkgname}"
+  install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
