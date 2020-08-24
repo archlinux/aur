@@ -1,0 +1,19 @@
+pkgbase = wdsp-git
+	pkgdesc = A collection of scripts using the VOACAP HF propagation prediction engine
+	pkgver = r56.c55342c
+	pkgrel = 1
+	url = https://github.com/g0orx/wdsp
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	provides = wdsp
+	conflicts = wdsp
+	source = wdsp::git+https://github.com/g0orx/wdsp
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+	sha384sums = SKIP
+	sha512sums = SKIP
+
+pkgname = wdsp-git
+
