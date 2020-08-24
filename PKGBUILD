@@ -2,13 +2,13 @@
 
 pkgname=ttm
 pkgver=4.05
-pkgrel=1
+pkgrel=2
 pkgdesc="TeX to MathML translator"
 url="http://hutchinson.belmont.ma.us/tth/"
 arch=('i686' 'x86_64')
 optdepends=('tth: for providing some scripts ttm could also use')
 license=('GPL')
-source=(http://hutchinson.belmont.ma.us/tth/mml/ttmC.tar.gz)
+source=($pkgname-$pkgver.tar.gz::http://hutchinson.belmont.ma.us/tth/mml/ttmC.tar.gz)
 sha256sums=('7023abe91e924c6f29f89546079b5f4aa8a27ae9d424c125bff13481d53c3804')
 
 build() {
