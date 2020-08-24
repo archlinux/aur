@@ -1,7 +1,7 @@
 # Maintainer: zan <zan@420blaze.it>
 
 pkgname=qt-avif-image-plugin-git
-_basename=${pkgname%-git}
+_name=${pkgname%-git}
 pkgver=r68.6920fe4
 pkgrel=1
 pkgdesc='Qt plug-in to allow Qt and KDE based applications to read/write AVIF images.'
@@ -14,22 +14,16 @@ source=("git+https://github.com/novomesk/qt-avif-image-plugin.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_basename"
+  cd $_name
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake "../$_basename"
-  make
+  cmake -B build -S $_name
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
-  install -Dm644 "$srcdir/$_basename/LICENSE" "$pkgdir/usr/share/licenses/$_basename/LICENSE"
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "$srcdir/$_name/LICENSE" "$pkgdir/usr/share/licenses/$_name/LICENSE"
 }
