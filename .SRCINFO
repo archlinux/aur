@@ -1,7 +1,7 @@
 pkgbase = dnswalk
 	pkgdesc = A DNS debugger
 	pkgver = 2.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sourceforge.net/projects/dnswalk/
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,11 @@ pkgbase = dnswalk
 	source = https://sourceforge.net/projects/dnswalk/files/dnswalk/2.0.2/dnswalk-2.0.2.tar.gz/download
 	source = dnswalk.patch
 	source = makereports.patch
+	source = 0001-Incorporated-PR-from-vanmelick-to-fix-SOA-and-define.patch
 	sha256sums = b49ea147a00e95e80330534d43f8737c2367ae862050e9a8009a607c49f0ea6b
 	sha256sums = 57468e00d5beffd89f0982d92195b3e01b977690a4a178a7b45462f9f335db7c
 	sha256sums = 7e6f82d474872234ae2c7e7fca9328fa7a8bad285f5bff3886a1226258070de9
+	sha256sums = 563240cb0aca1b81d80fddf7ec51c8f1e05dd7eca2d3baa93f22e4cf93d32366
 
 pkgname = dnswalk
 

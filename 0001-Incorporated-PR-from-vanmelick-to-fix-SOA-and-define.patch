@@ -1,0 +1,146 @@
+From daab93c8d790d819e2bdbb4993ade65a9d63b6fd Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C5=81aurent=20=CA=98=E2=9D=A2=C5=A6=20=C5=A6ough?=
+ <laurent.fough@gmail.com>
+Date: Sun, 23 Aug 2020 14:05:49 -0700
+Subject: [PATCH] Incorporated PR from @vanmelick to fix SOA and defined array
+ issues
+
+---
+ dnswalk | 44 +++++++++++++++++++++++---------------------
+ 1 file changed, 23 insertions(+), 21 deletions(-)
+
+diff --git a/dnswalk b/dnswalk
+index 356867f..94883ab 100755
+--- a/dnswalk
++++ b/dnswalk
+@@ -56,9 +56,9 @@ sub dowalk {
+     return unless $domain;
+     print "Checking $domain\n";
+     @subdoms=&doaxfr($domain);
+-    &check_zone($domain) if (defined(@zone) && @zone);
++    &check_zone($domain) if (@zone);
+     undef @zone;
+-    return if (!(defined(@subdoms) && @subdoms));
++    return if (!@subdoms);
+     @sortdoms = sort byhostname @subdoms;
+     local ($subdom);
+     if ($opt_r) {
+@@ -74,7 +74,7 @@ sub doaxfr {
+     local (%subdoms)=();
+     local ($subdom);
+     local(@servers) = &getauthservers($domain);
+-    &printerr("BAD", "$domain has only one authoritative nameserver\n") 
++    &printerr("BAD", "$domain has only one authoritative nameserver\n")
+ 	if (scalar(@servers) == 1);
+     &printerr("BAD", "$domain has NO authoritative nameservers!\n")
+ 	if (scalar(@servers) == 0);
+@@ -84,7 +84,7 @@ sub doaxfr {
+ 	my $res = new Net::DNS::Resolver;
+ 	$res->nameservers($server);
+ 	@zone=$res->axfr($domain);
+-	unless (defined(@zone) && @zone) {
++	unless (@zone) {
+ 	    print STDERR "failed\n";
+ 		&printerr("FAIL",
+ 			"Zone transfer of $domain from $server failed: ".
+@@ -104,7 +104,7 @@ sub doaxfr {
+         print STDERR "done.\n";
+         last SERVER;
+     } # foreach #
+-    unless (defined(@zone) && @zone) {
++    unless (@zone) {
+ 	    &printerr("BAD","All zone transfer attempts of $domain failed!\n");
+ 	    return undef;
+     }
+@@ -125,8 +125,8 @@ sub getauthservers {
+     return if (!$domain);
+     $res = new Net::DNS::Resolver;
+     $ns_req = $res->query($domain, "NS");
+-    &printerr("FAIL", "No nameservers found for $domain: ". 
+-	$res->errorstring ."\n") 
++    &printerr("FAIL", "No nameservers found for $domain: ".
++	$res->errorstring ."\n")
+ 	    unless (defined($ns_req) and ($ns_req->header->ancount > 0));
+     foreach $ns ($ns_req->answer) {
+ 	$ns_tmp = $ns->nsdname;
+@@ -150,11 +150,11 @@ sub getmaster {
+     my ($packet) = new Net::DNS::Packet($zone, "SOA", "IN");
+     my ($soa_req) = $res->send($packet);
+     unless (defined($soa_req)) {
+-	&printerr("FAIL", "Cannot get SOA record for $zone:". 
++	&printerr("FAIL", "Cannot get SOA record for $zone:".
+ 	    $res->errorstring ."\n");
+ 	return "";
+     }
+-    unless (($soa_req->header->ancount >= 1) && 
++    unless (($soa_req->header->ancount >= 1) &&
+ 	   (($soa_req->answer)[0]->type eq "SOA")) {
+ 	&printerr("BAD", "SOA record not found for $zone\n");
+ 	return "";
+@@ -180,11 +180,13 @@ sub check_zone {
+         }
+         if ($rr->type eq "SOA") {
+ 	    print STDERR 's' if $opt_d;
+-	    print "SOA=". $rr->mname ."	contact=". $rr->rname ."\n";
++	    my @soa = split(/\s+/,$rr->rdstring);
++	    my $rname = $soa[1];
++	    print "SOA=". $rr->mname ."	contact=". $rname ."\n";
+ 	    # basic address check.  No "@", and user.dom.ain (two or more dots)
+-	    if (($rr->rname =~ /@/)||!($rr->rname =~ /\..*\./)) {
+-		&printerr("WARN", "SOA contact name (". 
+-		    $rr->rname .") is invalid\n");
++	    if (($rname =~ /@/)||!($rname =~ /[^.]+(\.[^.]+){2,}/)) {
++		&printerr("WARN", "SOA contact name (".
++		    $rname .") is invalid\n");
+ 	    }
+         } elsif ($rr->type eq "PTR") {
+             print STDERR 'p' if $opt_d;
+@@ -197,7 +199,7 @@ sub check_zone {
+ 			    @addrs)=gethostbyname($rr->ptrdname);
+ #                   if (!(($name, $aliases, $addrtype, $length,
+ #			    @addrs)=gethostbyname($rr->ptrdname))) {
+-#                        &printerr("FAIL", "gethostbyname(". 
++#                        &printerr("FAIL", "gethostbyname(".
+ #			    $rr->ptrdname ."): $!\n");
+ #                   }
+ #                   else {
+@@ -206,9 +208,9 @@ sub check_zone {
+ 				." PTR ". $rr->ptrdname .": unknown host\n");
+                         }
+                         elsif (!&equal($name,$rr->ptrdname)) {
+-                            &printerr("WARN", $rr->name 
++                            &printerr("WARN", $rr->name
+ 			      ." PTR ". $rr->ptrdname .": CNAME (to $name)\n");
+-                        }    
++                        }
+                         elsif (!&matchaddrlist($rr->name)) {
+                             &printerr("WARN", $rr->name
+ 			     ." PTR ". $rr->ptrdname .": A record not found\n");
+@@ -230,10 +232,10 @@ sub check_zone {
+ 	    }
+ 	    elsif ($opt_F && !&equal($name,$rr->name)) {
+ 		# Filter out "hostname-something" (like "neptune-le0")
+-		if (index(split (/\./, $rr->name, 2) . "-", 
++		if (index(split (/\./, $rr->name, 2) . "-",
+ 			    split (/\./, $name, 2)) == -1 ) {
+-			&printerr("WARN", $rr->name ." A ". 
+-			    $rr->address .": points to $name\n") 
++			&printerr("WARN", $rr->name ." A ".
++			    $rr->address .": points to $name\n")
+ 			    if ((split(/\./,$name))[0] ne "localhost");
+ 		}
+ 	    }
+@@ -408,7 +410,7 @@ sub checklamer {
+ 		$res->errorstring ."\n");
+ 	return;
+     }
+-    &printerr("BAD", "$zone NS $nameserver: lame NS delegation\n") 
++    &printerr("BAD", "$zone NS $nameserver: lame NS delegation\n")
+ 	unless ($soa_req->header->aa);
+     return;
+-}
++}
+\ No newline at end of file
+-- 
+2.28.0
+
