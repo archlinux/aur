@@ -1,6 +1,6 @@
 pkgname=neovim-vimtex-opt-git
 _pkgname=vimtex
-pkgver=3262.9194c10d
+pkgver=3412.10af281d
 pkgrel=1
 pkgdesc='A modern (neo)vim plugin for editing LaTeX files.'
 arch=('any')
@@ -28,8 +28,8 @@ package() {
 
     install -dvm755 "${pkgdir}/${_installpath}"
 
-    cp -rvt "${pkgdir}/${_installpath}" after autoload compiler doc ftplugin indent
-  
+    cp -rvt "${pkgdir}/${_installpath}" after autoload compiler doc ftplugin indent plugin
+
     install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }

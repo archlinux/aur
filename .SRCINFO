@@ -1,6 +1,6 @@
 pkgbase = neovim-vimtex-opt-git
 	pkgdesc = A modern (neo)vim plugin for editing LaTeX files.
-	pkgver = 2502.068ef61
+	pkgver = 3412.10af281d
 	pkgrel = 1
 	url = https://github.com/lervag/vimtex
 	arch = any
