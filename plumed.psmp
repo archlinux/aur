@@ -3,9 +3,9 @@ CXX         = g++
 CPP         = 
 FC          = mpifort
 LD          = mpifort
-#
+
 AR          = ar -r
-#
+
 DFLAGS      = -D__FFTW3                                         \
               -D__LIBINT                                        \
               -D__parallel -D__SCALAPACK                        \
@@ -14,21 +14,23 @@ DFLAGS      = -D__FFTW3                                         \
               -D__LIBXC                                         \
               -D__SPGLIB                                        \
               -D__PLUMED2
-#
+
 INCS        = -I/usr/include                                    \
               -I/usr/include/elpa_openmp-$(_elpaver)/elpa       \
               -I/usr/include/elpa_openmp-$(_elpaver)/modules
-#
-OPTFLAGS    = -O3 -march=native -fopenmp -ftree-vectorize
-#
+
+OPTFLAGS    = -O2 -march=native -fopenmp
+
 CFLAGS      = $(DFLAGS) $(INCS) $(OPTFLAGS)
 CXXFLAGS    = $(DFLAGS) $(INCS) $(OPTFLAGS) -std=c++11
 CPPFLAGS    = 
 FCFLAGS     = $(DFLAGS) $(INCS) $(OPTFLAGS)                     \
-              -ffree-form -ffree-line-length-none
-#
+              -ffree-form -ffree-line-length-none               \
+              -fallow-argument-mismatch                         \
+              -fno-tree-loop-vectorize
+
 LDFLAGS     = $(FCFLAGS)
-#
+
 LIBS        = -lxsmmf -lxsmm                                    \
               -lelpa_openmp -lscalapack -lblas -llapack         \
               -lfftw3 -lfftw3_threads                           \
@@ -37,5 +39,5 @@ LIBS        = -lxsmmf -lxsmm                                    \
               -lsymspg                                          \
               -l$(_plumed)                                      \
               -lstdc++ -lpthread -lm -ldl -lz
-#
+
 include /usr/lib/$(_plumed)/src/lib/Plumed.inc

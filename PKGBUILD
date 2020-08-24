@@ -4,12 +4,16 @@
 pkgname=cp2k
 pkgver=7.1.0
 _dbcsrver=2.0.1
-pkgrel=2
+pkgrel=3
+# NVIDIA GPU Generation: Kepler, Pascal, or Volta;
+# please specify one closest to yours or leave unchanged
+# if CUDA isn't supposed to be used
+_GPU=Kepler
 pkgdesc="A quantum chemistry and solid state physics software package"
 arch=("x86_64")
 url="https://www.cp2k.org"
 license=("GPL2")
-depends=('fftw' 'elpa' 'libxc' 'libint2' 'libxsmm' 'spglib')
+depends=('fftw' 'elpa' 'libxc<5.0' 'libint2' 'libxsmm' 'spglib')
 makedepends=('gcc-fortran' 'python' 'sed')
 checkdepends=('numactl')
 optdepends=('cuda: GPU calculations support'
@@ -21,40 +25,43 @@ source=("https://github.com/cp2k/cp2k/archive/v$pkgver.tar.gz"
         "basic.psmp"
         "cuda_plumed.psmp"
         "cuda.psmp"
-        "plumed.psmp")
+        "plumed.psmp"
+        "lapack.patch")
 sha256sums=('e244f76d7e1e98da7e4e4b2e6cefb723fa1205cfae4f94739413be74952e8b4e'
             '1e283a3b9ce90bda321d77f4fa611b09a7eaad167d7bc579b2e9311f7b97b5ec'
-            'ecbb19d6f40bf28abd7b4771e6ad0df899634f31d11ac2da89e58becb01f3ec3'
-            'db6654c5d62f09a1ab166e5f82969f5cbf304cba633a286afd262eb048f5c5f0'
-            'e9c97e220257d0ecf9bec4bd9aaa64c348416286fffc82d2d6f6ceda333196e8'
-            '514d6ea683bb7b904df804e258f9de18274088fc0184a56c2fd4827aa0ae63fe')
+            'f1e92ff252a3ee814b63111928dfdda9f9d1fd2e18a3de7a0a3e8d3629628a44'
+            '8e130a0cd75a66efc9bd8765cf3b8e081611e8f45d1f0851d3d8e8a76d93f78c'
+            'ac1ffe638743453234e447c6996e9c0786d67efbd4c9e3ee95142eacb45d2ad1'
+            '70af5b75ef78a27ff996867dddcedd8d265ac2609cb2a0304ff45100f854af2b'
+            'f566a9941f27c9d55c528acf0aacbb8ed686067777ce48f1e206432d259ee8a1')
 
 prepare() {
-  cd $srcdir/$pkgname-$pkgver
-  
+  cd "$srcdir/$pkgname-$pkgver"
+
   # Prepare DBCSR
-  cp -r $srcdir/dbcsr-$_dbcsrver/* exts/dbcsr
-  
+  cp -r ../dbcsr-$_dbcsrver/* exts/dbcsr
+  patch -p1 < ../lapack.patch
+
   # Set up the default build environment
   export _buildmode=0
   export _arch="basic"
   export _corenumber=$( grep -c ^processor /proc/cpuinfo )
   export _elpaver=$( ls /usr/include | grep elpa | sed 's/elpa_openmp-//g' )
   export _plumed=$( find /usr/lib -maxdepth 1 -type d -name "plumed*" | awk -F'/' '{print $4}' )
-  
+
   # Enable additional features
   if [ $( echo -n $( which nvcc) | tail -c 4 ) == nvcc ]
   then
     echo "Adding CUDA support"
     _buildmode=$((_buildmode | 1))
   fi
-  
+
   if [[ $_plumed ]]
   then
     echo "Adding PLUMED support"
     _buildmode=$((_buildmode | 2))
   fi
-  
+
   case $_buildmode in
     0)
       _arch="basic"
@@ -70,33 +77,46 @@ prepare() {
       ;;
   esac
   
+  case $_GPU in
+    Kepler)
+      export _gpuver=K20X
+      ;;
+    Pascal)
+      export _gpuver=P100
+      ;;
+    Volta)
+      export _gpuver=V100
+      ;;
+  esac
+
   # Move arch-file into a proper directory  
   mv ../$_arch.psmp arch
-  
+
   # Changing the location of the data directory
   sed -i 's@$(CP2KHOME)/data@/usr/share/cp2k/data@g' Makefile
 }
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
   make ARCH=$_arch VERSION=psmp
 }
 
 check() {
   export DATA_DIR=$srcdir/$pkgname-$pkgver/data
   cd $srcdir/$pkgname-$pkgver/tools/regtesting
-  
+
   # In the case of a test failure you must examine it carefully
   # because it can lead to an unpredictable error during a production run.
   ./do_regtest -cp2kdir ../.. -version psmp -arch $_arch -nobuild -maxtasks $_corenumber
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver/exe/$_arch
-  install -dm755 $pkgdir/usr/{bin,share/$pkgname}
-  install -Dm755 cp2k.psmp $pkgdir/usr/bin/cp2k
-  install -Dm755 cp2k_shell.psmp $pkgdir/usr/bin/cp2k-shell
-  install -Dm755 graph.psmp $pkgdir/usr/bin/cp2k-graph
-  cp -r ../../data $pkgdir/usr/share/$pkgname
-  chmod -R 755 $pkgdir/usr/share/$pkgname
+  cd "$pkgdir"
+  install -dm755 usr/{bin,share/$pkgname}
+  cd "$srcdir/$pkgname-$pkgver/exe/$_arch"
+  install -Dm755 cp2k.psmp "$pkgdir/usr/bin/cp2k"
+  install -Dm755 cp2k_shell.psmp "$pkgdir/usr/bin/cp2k-shell"
+  install -Dm755 graph.psmp "$pkgdir/usr/bin/cp2k-graph"
+  cp -r ../../data "$pkgdir/usr/share/$pkgname"
+  chmod -R 755 "$pkgdir/usr/share/$pkgname"
 }

@@ -1,0 +1,35 @@
+diff --color -Naur cp2k-7.1.0/exts/dbcsr/src/block/dbcsr_block_access.f90 cp2k-7.1.0/exts/dbcsr/src/block/dbcsr_block_access.f90
+--- cp2k-7.1.0/exts/dbcsr/src/block/dbcsr_block_access.f90	2020-08-23 20:35:29.901247410 +0300
++++ cp2k-7.1.0/exts/dbcsr/src/block/dbcsr_block_access.f90	2020-08-23 20:50:07.031730990 +0300
+@@ -432,8 +432,8 @@
+                  data_block, found, data_block2, replace=.FALSE.)
+               IF (found) THEN
+                  IF (nze > 0) &
+-                    CALL ${nametype1}$axpy(nze, ${one1[n]}$, block(1), 1, &
+-                                           data_block2%p(1, 1), 1)
++                    CALL ${nametype1}$axpy(nze, ${one1[n]}$, block, 1, &
++                                           data_block2%p, 1)
+                  IF (.NOT. ASSOCIATED(data_block%p)) &
+                     DBCSR_WARN("Data was not present in block")
+                  IF (ASSOCIATED(data_block%p)) DEALLOCATE (data_block%p)
+diff --color -Naur cp2k-7.1.0/exts/dbcsr_old/src/tas/dbcsr_tas_test.F cp2k-7.1.0/exts/dbcsr/src/tas/dbcsr_tas_test.F
+--- cp2k-7.1.0/exts/dbcsr_old/src/tas/dbcsr_tas_test.F	2020-08-23 20:35:29.931248791 +0300
++++ cp2k-7.1.0/exts/dbcsr/src/tas/dbcsr_tas_test.F	2020-08-23 20:51:02.614321285 +0300
+@@ -79,7 +79,7 @@
+       INTEGER(KIND=int_8)                                :: col, col_s, row, row_s
+       INTEGER, DIMENSION(2)                              :: pcoord, pdims
+       LOGICAL                                            :: reuse_comm_prv, tr
+-      REAL(KIND=real_8)                                  :: rn
++      REAL(KIND=real_8), DIMENSION(1)                    :: rn
+       REAL(KIND=real_8), ALLOCATABLE, DIMENSION(:, :)    :: values
+       TYPE(dbcsr_tas_blk_size_arb)                         :: cbsize_obj, rbsize_obj
+       TYPE(dbcsr_tas_dist_cyclic)                          :: col_dist_obj, row_dist_obj
+@@ -125,7 +125,7 @@
+       DO row = 1, dbcsr_tas_nblkrows_total(matrix)
+          DO col = 1, dbcsr_tas_nblkcols_total(matrix)
+             CALL RANDOM_NUMBER(rn)
+-            IF (rn .LT. sparsity) THEN
++            IF (rn(1) .LT. sparsity) THEN
+                tr = .FALSE.
+                row_s = row; col_s = col
+                CALL dbcsr_tas_get_stored_coordinates(matrix, row_s, col_s, node_holds_blk)
