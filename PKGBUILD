@@ -1,6 +1,6 @@
 # Maintainer: David Lin <davidlindev@qq.com>
 pkgname=paddlepaddle-gpu
-pkgver=1.8.5
+pkgver=1.8.6
 pkgrel=2
 # epoch=
 pkgdesc="An opensourced deeplearning framework derived from industral practice."
@@ -51,7 +51,4 @@ package() {
   ln -s cudnn_version_v${_majorver}.h "${pkgdir}"/usr/include/cudnn_version.h
   ln -s libcudnn.so.${_majorver} "${pkgdir}"/usr/lib/libcudnn.so
   ln -s libcudnn_static_v${_majorver}.a "${pkgdir}"/usr/lib/libcudnn_static.a
-
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
 }
