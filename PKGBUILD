@@ -1,11 +1,14 @@
+# Maintainer: Dominik Stańczak <stanczakdominik at gmail dot com>
+# Maintainer: xia0er <xia0er at gmail dot com>
+
 pkgname=python-pymc3
 pkgver=3.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Probabilistic Programming in Python. Uses Theano as a backend, supports NUTS and ADVI."
 arch=('any')
 url="http://docs.pymc.io"
 license=('APACHE')
-depends=('python>=3.4' 'python-scipy' 'python-numpy' 'python-matplotlib' 'python-theano' 'python-pandas' 'python-tqdm' 'python-joblib' 'python-h5py')
+depends=('python>=3.6' 'python-scipy' 'python-numpy' 'python-matplotlib' 'python-theano' 'python-pandas' 'python-tqdm' 'python-joblib' 'python-h5py' 'python-fastprogress' 'python-arviz' 'python-typing_extensions')
 optdepends=('python-patsy' 'python-six')
 options=(!emptydirs)
 source=("https://github.com/pymc-devs/pymc3/archive/v${pkgver}.tar.gz")
