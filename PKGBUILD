@@ -2,7 +2,7 @@
 pkgname=geant4-particlehpdata
 _dataname="G4TENDL"
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Optional data files for incident particles"
 url="http://geant4.cern.ch/"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('geant4>=10.5')
 #it cannot be optdepend since we require the geant4.sh file to exist
 #to setup the environment variable
 install="${pkgname}.install"
-source=("http://geant4.cern.ch/support/source/${_dataname}.${pkgver}.tar.gz"
+source=("https://cern.ch/geant4-data/datasets/${_dataname}.${pkgver}.tar.gz"
   "${pkgname}.install")
 sha256sums=('3b2987c6e3bee74197e3bd39e25e1cc756bb866c26d21a70f647959fc7afb849'
             '97529ca4fb0c633986f364c9c652dbd2c0aa587cd6632ecf51f237ce33164d1e')
