@@ -2,7 +2,7 @@
 
 _pkgname='krew'
 pkgname="${_pkgname}-bin"
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Krew is the package manager for kubectl plugins.'
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=("${_pkgname}")
 provides=('krew' 'krew-bin')
 
 source=("https://github.com/kubernetes-sigs/krew/releases/download/v${pkgver}/krew.tar.gz")
-sha256sums=('6629b1d7ad215322361f8dd270396fd1a23555fdbde8dcc1ba4ad860978b319a')
+sha256sums=('039fbb18c784f6b097b7ee6d048d36dfdb055c6e3a7c76e7251536594d6027a2')
 
 package() {
 	cd "${srcdir}"
