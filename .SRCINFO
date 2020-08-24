@@ -1,6 +1,6 @@
 pkgbase = disk-image-scripts
 	pkgdesc = Scripts for manipulating raw images of disks as files
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/GIJack/disk-image-scripts
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = disk-image-scripts
 	depends = bash
 	depends = parted
 	depends = qemu
-	source = disk-image-scripts-1.0.tar.gz::https://github.com/GIJack/disk-image-scripts/archive/v1.0.tar.gz
-	sha256sums = 8624a59b079e32e3b6b2e2a6c985abdce760d59fdc2e93e127f87763e83d7eca
+	source = disk-image-scripts-1.1.tar.gz::https://github.com/GIJack/disk-image-scripts/archive/v1.1.tar.gz
+	sha256sums = 6400be98b6837c514a29e3396a0ca30da8460237f241b5c75a3bed8b5833ab11
 
 pkgname = disk-image-scripts
 
