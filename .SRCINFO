@@ -1,15 +1,15 @@
 pkgbase = energyplus
 	pkgdesc = A building energy simulation engine to model energy and water use in buildings
-	pkgver = 9.2.0
-	pkgrel = 1
+	pkgver = 9.3.0
+	pkgrel = 2
 	url = http://apps1.eere.energy.gov/buildings/energyplus/
 	install = energyplus.install
 	arch = x86_64
 	license = GPL
 	depends = tar
 	depends = gzip
-	source = https://github.com/NREL/EnergyPlus/releases/download/v9.2.0/EnergyPlus-9.2.0-921312fa1d-Linux-x86_64.sh
-	md5sums = 624092d040ba71684eece747e4d7c65b
+	source = https://github.com/NREL/EnergyPlus/releases/download/v9.3.0/EnergyPlus-9.3.0-64d91887f6-Linux-x86_64.sh
+	md5sums = d41d8cd98f00b204e9800998ecf8427e
 
 pkgname = energyplus
 
