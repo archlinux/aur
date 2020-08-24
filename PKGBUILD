@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc='A light and configurable statusline/tabline plugin'
 url='https://github.com/itchyny/lightline.vim'
 depends=('neovim')
+makedepends=('git')
 provides=('neovim-lightline')
 arch=('any')
 license=('MIT')
