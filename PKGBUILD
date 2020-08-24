@@ -1,7 +1,7 @@
 # Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
 
 pkgname=rocm-opencl-runtime
-pkgver=3.5.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc='Radeon Open Compute - OpenCL runtime'
 arch=('x86_64')
@@ -10,9 +10,9 @@ license=('MIT')
 depends=('hsakmt-roct' 'hsa-rocr' 'rocclr' 'opencl-icd-loader')
 makedepends=('cmake' 'rocm-cmake')
 provides=("$pkgname" 'opencl-driver')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/roc-$pkgver.tar.gz")
-sha256sums=('511b617d5192f2d4893603c1a02402b2ac9556e9806ff09dd2a91d398abf39a0')
-_dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
+source=("$pkgname-$pkgver::git+$url#branch=rocm-3.7.x")
+sha256sums=('SKIP')
+_dirname="rocm-opencl-runtime-$pkgver"
 
 build() {
     CFLAGS="$CFLAGS -isystem /opt/rocm/rocclr/include/include -isystem /opt/rocm/rocclr/include/compiler/lib -isystem /opt/rocm/rocclr/include/compiler/lib/include" \
