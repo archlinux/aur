@@ -42,7 +42,7 @@ package_mangohud() {
 package_lib32-mangohud() {
     pkgdesc='A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more (32-bit)'
     depends=('lib32-gcc-libs' 'mangohud' 'mangohud-common')
-    optdepends=('lib32-libxnvctrl: support for older NVIDIA GPUs)')
+    optdepends=('lib32-libxnvctrl: support for older NVIDIA GPUs')
 
     DESTDIR="$pkgdir" ninja -C build32 install
     rm -r "$pkgdir/usr/bin" "$pkgdir/usr/share/doc" "$pkgdir/usr/share/man"

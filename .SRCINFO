@@ -28,7 +28,7 @@ pkgname = lib32-mangohud
 	depends = lib32-gcc-libs
 	depends = mangohud
 	depends = mangohud-common
-	optdepends = lib32-libxnvctrl: support for older NVIDIA GPUs)
+	optdepends = lib32-libxnvctrl: support for older NVIDIA GPUs
 
 pkgname = mangohud-common
 	pkgdesc = Common files for mangohud and lib32-mangohud
