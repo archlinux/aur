@@ -38,8 +38,8 @@ package() {
   tar xf data.tar.xz
   cp -a usr/lib/x86_64-linux-gnu/* "${pkgdir}"/usr/lib/
 
-  Get rid of some Ubuntu-isms but at the same time still allow for them to
-  work because nobody is ever quite sure what the right names are.
+  # Get rid of some Ubuntu-isms but at the same time still allow for them to
+  # work because nobody is ever quite sure what the right names are.
   ln -s cudnn_v${_majorver}.h "${pkgdir}"/usr/include/cudnn.h
   ln -s cudnn_adv_infer_v${_majorver}.h "${pkgdir}"/usr/include/cudnn_adv_infer.h
   ln -s cudnn_adv_train_v${_majorver}.h "${pkgdir}"/usr/include/cudnn_adv_train.h
