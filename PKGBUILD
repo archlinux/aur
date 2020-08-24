@@ -3,7 +3,7 @@
 # part of this script is taken from cudnn package at https://www.archlinux.org/packages/community/x86_64/cudnn/
 
 pkgname=paddlepaddle-gpu
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=2
 # epoch=
 pkgdesc="An opensourced deeplearning framework derived from industral practice."
@@ -27,6 +27,7 @@ md5sums=(
 )
 
 package() {
+  export TMPDIR=~/Desktop
   python3.7 --version
   python --version
   mkdir -p "${pkgdir}"/usr/{lib,include}
