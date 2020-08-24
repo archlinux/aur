@@ -6,7 +6,7 @@ _pkgname="${_name,,}.lv2"
 _plugin_uri="https://www.jahnichen.de/plugins/lv2/${_name}"
 pkgname="${_pkgname}-git"
 pkgdesc="Pattern-controlled MIDI amp & time stretch plugin to produce shuffle / swing effects (git version)"
-pkgver=1.2.0.r0.g0c0658c
+pkgver=1.2.0.r1.g3c6aee3
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/sjaehn/BSchaffl"
@@ -15,8 +15,8 @@ groups=('lv2-plugins' 'pro-audio')
 depends=('cairo' 'gcc-libs' 'glibc' 'libx11')
 makedepends=('git' 'lv2')
 checkdepends=('lv2lint')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_name,,}" "${_name,,}=${pkgver//.r*/}" "${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
+conflicts=("${_name,,}" "${_pkgname}")
 source=("${_pkgname}::git+https://github.com/sjaehn/${_name}")
 md5sums=('SKIP')
 
