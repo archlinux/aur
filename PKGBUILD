@@ -31,6 +31,6 @@ build() {
 
 package() {
   cd "$_pkgname"
-  install -D wdsp.h "${pkgdir}/usr/include/wdsp.h"
+  install -D wdsp.h -m 0644 "${pkgdir}/usr/include/wdsp.h"
   install -D libwdsp.so "${pkgdir}/usr/lib/libwdsp.so"
 }
