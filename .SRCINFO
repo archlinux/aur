@@ -1,0 +1,14 @@
+pkgbase = neovim-lightline-git
+	pkgdesc = A light and configurable statusline/tabline plugin
+	pkgver = r639.1b412cf
+	pkgrel = 1
+	url = https://github.com/itchyny/lightline.vim
+	arch = any
+	license = MIT
+	depends = neovim
+	provides = neovim-lightline
+	source = lightline::git+https://github.com/itchyny/lightline.vim.git
+	sha256sums = SKIP
+
+pkgname = neovim-lightline-git
+
