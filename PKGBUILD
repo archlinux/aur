@@ -2,9 +2,9 @@
 
 _rockname=cluacov
 pkgbase="lua-$_rockname"
-pkgname=("lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname") # "lua-$_rockname"
+pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='C extensions for LuaCov'
 arch=('x86_64' 'i686')
 url="https://github.com/luarocks/$_rockname"

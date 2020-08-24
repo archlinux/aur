@@ -1,7 +1,7 @@
 pkgbase = lua-cluacov
 	pkgdesc = C extensions for LuaCov
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/luarocks/cluacov
 	arch = x86_64
 	arch = i686
@@ -14,6 +14,10 @@ pkgbase = lua-cluacov
 	depends = lua
 	source = cluacov-0.1.2.tar.gz::https://github.com/luarocks/cluacov/archive/0.1.2.tar.gz
 	sha256sums = fcc09eb18819f665e075f4abec8da90e5208d5c2d46dfb8b992ca2bf2b4d3e05
+
+pkgname = lua-cluacov
+	depends = lua
+	depends = lua-luacov
 
 pkgname = lua53-cluacov
 	depends = lua53
