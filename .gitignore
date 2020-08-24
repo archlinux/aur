@@ -1,0 +1,5 @@
+bchoppr/
+pkg/
+src/
+bchoppr-git-*.pkg.tar.xz
+bchoppr-git-*.pkg.tar.zst
