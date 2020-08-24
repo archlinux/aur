@@ -1,7 +1,7 @@
 # Maintainer: Shatur95 <genaloner@gmail.com>
 
 pkgname=telegram-desktop-aarch64-bin
-pkgver=1.4.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Telegram Desktop aarch64 binaries from Debian"
 arch=('aarch64' 'x86_64')
@@ -16,15 +16,15 @@ optdepends=('libappindicator-gtk2: to hide Telegram in the tray bar (GTK2-based 
 conflicts=('telegram-desktop' 'telegram-desktop-git')
 provides=('telegram-desktop')
 source=("telegram-desktop.desktop"
-        "http://ftp.us.debian.org/debian/pool/main/t/telegram-desktop/telegram-desktop_${pkgver}-${pkgrel}%2bb1_arm64.deb")
+        "http://ftp.us.debian.org/debian/pool/main/t/telegram-desktop/telegram-desktop_${pkgver}%2Bds-${pkgrel}_arm64.deb")
 sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
-	    'aacd5c7fe4a4416a6dcc9a62eb0c407b97accff773998def0e76fd9b9e434378')
+            '9eba0fd2a6ffc1e8c5f82530a32205971cdd3a2d197dfe3cf02af7204c5b5ab0')
 
 package() {
 	cd "$srcdir/"
 
 	# Unarchive Deb
-	ar vx "$srcdir/telegram-desktop_${pkgver}-${pkgrel}%2bb1_arm64.deb"
+	ar vx "$srcdir/telegram-desktop_${pkgver}%2Bds-${pkgrel}_arm64.deb"
 	tar -xf "$srcdir/data.tar.xz"
 
 	# Creating needed directories
