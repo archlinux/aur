@@ -2,7 +2,7 @@
 # Import the PGP key first: gpg --recv-key 2F062CD1542547AF71BD9B818FC5CD2B9DFB1B4B
 # You can also find that key referenced here: https://www.thethingsnetwork.org/docs/network/cli/quick-start.html
 pkgname=ttnctl-bin
-pkgver=2.10.4
+pkgver=2.11.0
 pkgrel=2
 pkgdesc="Command line tool for The Things Network (TTN)"
 arch=('i686' 'x86_64' 'arm')
@@ -15,6 +15,8 @@ conflicts=()
 replaces=()
 backup=()
 _baseurl="https://ttnreleases.blob.core.windows.net/release"
+# Note: Not renaming source files here, because otherwise checksums don't validate
+# without patching the checksum file...
 source=(
         "${_baseurl}/v${pkgver}/checksums"
         "${_baseurl}/v${pkgver}/checksums.sig"
