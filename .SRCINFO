@@ -1,18 +1,20 @@
-pkgbase = gnabel
-	pkgdesc = A translation app for GTK environments based on Google Translate
-	pkgver = 0.0.0
-	pkgrel = 3
-	url = https://github.com/gi-lom/gnabel
-	arch = any
-	license = GPL-3.0
-	depends = python>=3
-	depends = python-pyperclip
-	depends = python-gobject
-	depends = python-googletrans
-	depends = python-gtts
-	depends = python-pydub
-	source = https://github.com/gi-lom/gnabel/archive/4559acb895d754ecd985dab686eb1acd7e5f37b4.zip
-	sha512sums = SKIP
+pkgbase = nushell-latest-bin
+	pkgdesc = A new type of shell
+	pkgver = 0.18.1
+	pkgrel = 1
+	url = http://nushell.sh
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = libxcb
+	depends = openssl
+	depends = libgit2
+	optdepends = libx11: for binaryview plugin
+	provides = nushell
+	conflicts = nushell
+	conflicts = nushell-bin
+	source = https://github.com/nushell/nushell/releases/download/0.18.1/nu_0_18_1_linux.tar.gz
+	sha256sums = SKIP
 
-pkgname = gnabel
+pkgname = nushell-latest-bin
 

@@ -1,38 +1,33 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
-pkgname='gnabel'
-pkgver='0.0.0'
-pkgrel='3'
-pkgdesc='A translation app for GTK environments based on Google Translate'
-arch=('any')
+# This package was made because the author of nushell-bin never update theirs
+
+pkgname=nushell-latest-bin
+pkgver=0.18.1
+_suffix="${pkgver//./_}"
+_basename="nu_${_suffix}_linux"
+pkgrel=1
 depends=(
-  'python>=3'
-  'python-pyperclip'
-  'python-gobject'
-  'python-googletrans' # aur only
-  'python-gtts' # aur only
-  'python-pydub' # aur only
+  'zlib'
+  'libxcb'
+  'openssl'
+  'libgit2'
 )
-url='https://github.com/gi-lom/gnabel'
-license=('GPL-3.0')
-_git_ref='4559acb895d754ecd985dab686eb1acd7e5f37b4'
+optdepends=('libx11: for binaryview plugin')
+arch=('x86_64')
+pkgdesc='A new type of shell'
+provides=('nushell')
+conflicts=('nushell' 'nushell-bin')
 source=(
-  "https://github.com/gi-lom/gnabel/archive/$_git_ref.zip"
+  "https://github.com/nushell/nushell/releases/download/$pkgver/$_basename.tar.gz"
 )
-sha512sums=('SKIP')
+url="http://nushell.sh"
+license=('MIT')
+sha256sums=('SKIP')
 
 package() {
-  cd "gnabel-$_git_ref"
-
-  msg2 'Installing LICENSE'
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  msg2 'Installing executable'
-  install -Dm755 gnabel.py "$pkgdir/usr/bin/gnabel"
-
-  msg2 'Installing desktop file'
-  install -Dm755 gnabel.desktop "$pkgdir/usr/share/applications/gnabel.desktop"
-
-  msg2 'Installing icon'
-  install -Dm644 icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/gnabel.svg"
+  cd "$_basename/nushell-$pkgver"
+  install -Dm644 LICENSE "$pkgdir/usr/share/$pkgname/LICENSE"
+  install -Dm755 nu "$pkgdir/usr/bin/nu"
+  cp nu_plugin_* "$pkgdir/usr/bin/"
 }
