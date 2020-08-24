@@ -1,8 +1,9 @@
 pkgbase = cups-noudev
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.cups.org/
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	license = custom
 	makedepends = libtiff
@@ -21,9 +22,9 @@ pkgbase = cups-noudev
 	makedepends = libusb
 	makedepends = avahi
 	makedepends = hicolor-icon-theme
+	makedepends = libxcrypt
 	makedepends = inetutils
 	makedepends = libpaper
-	makedepends = valgrind
 	source = https://github.com/apple/cups/releases/download/v2.3.3/cups-2.3.3-source.tar.gz
 	source = https://github.com/apple/cups/releases/download/v2.3.3/cups-2.3.3-source.tar.gz.sig
 	source = cups.logrotate
@@ -52,6 +53,7 @@ pkgname = libcups-noudev
 	depends = krb5
 	depends = avahi
 	depends = libusb
+	depends = libxcrypt
 	provides = libcups=2.3.3
 	conflicts = libcups
 

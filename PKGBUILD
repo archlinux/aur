@@ -11,13 +11,13 @@ _pkgbase="cups"
 pkgbase="cups-noudev"
 pkgname=('libcups-noudev' 'cups-noudev')
 pkgver=2.3.3
-pkgrel=1
-arch=('x86_64')
+pkgrel=3
+arch=('x86_64' 'aarch64')
 license=('Apache' 'custom')
 url="https://www.cups.org/"
 makedepends=('libtiff' 'libpng' 'acl' 'pam' 'xdg-utils' 'krb5' 'gnutls'
              'cups-filters' 'bc' 'colord' 'xinetd' 'gzip' 'autoconf' 'libusb'
-             'avahi'  'hicolor-icon-theme' 'inetutils' 'libpaper' 'valgrind')
+             'avahi'  'hicolor-icon-theme' 'libxcrypt' 'inetutils' 'libpaper')
 source=(https://github.com/apple/cups/releases/download/v${pkgver}/cups-${pkgver}-source.tar.gz{,.sig}
         cups.logrotate
         cups.pam
@@ -99,7 +99,7 @@ check() {
 
 package_libcups-noudev() {
 pkgdesc="The CUPS Printing System - client libraries and headers"
-depends=('gnutls' 'libtiff>=4.0.0' 'libpng>=1.5.7' 'krb5' 'avahi' 'libusb')
+depends=('gnutls' 'libtiff>=4.0.0' 'libpng>=1.5.7' 'krb5' 'avahi' 'libusb' 'libxcrypt')
 provides=("libcups=${pkgver}")
 conflicts=("libcups")
   cd ${_pkgbase}-${pkgver}
