@@ -1,0 +1,4 @@
+pkg/
+src/
+*.pkg.*
+androidscreencast-bin*.tgz
