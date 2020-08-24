@@ -1,4 +1,4 @@
-Maintainer: Ndoskrnl <lollipop.studio.cn@gmail.com>
+# Maintainer: Ndoskrnl <lollipop.studio.cn@gmail.com>
 
 # Based on the 'forge-server' AUR package by:
 # Maintainer: Nitroretro <nitroretro@protonmail.com>
