@@ -2,13 +2,13 @@
 
 _pkgname=charm-crypto
 pkgname=python-${_pkgname}-git
-pkgver=v0.43.r151.g3527a695
+pkgver=v0.43.r243.g531fcb4a
 pkgrel=1
 pkgdesc="A framework for rapidly prototyping advanced cryptosystems"
 arch=(i686 x86_64)
 url="https://github.com/JHUISI/charm"
 license=('LGPL3')
-depends=('openssl' 'pbc' 'python-pyparsing')
+depends=('openssl-1.0' 'pbc' 'python-pyparsing')
 makedepends=('python')
 source=("${_pkgname}::git+https://github.com/JHUISI/charm.git")
 
