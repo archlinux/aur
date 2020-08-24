@@ -60,6 +60,8 @@ prepare() {
   done
 
   echo "Applying bcachefs..."
+  git config --local user.name "bcachefs builder"
+  git config --local user.email bcachefs-builder@example.com
   git remote add bcachefs https://evilpiepirate.org/git/bcachefs.git
   git fetch --no-tags bcachefs master tag v${_basever}
   git merge --no-commit --no-ff bcachefs/master
