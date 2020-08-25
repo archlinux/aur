@@ -1,0 +1,26 @@
+pkgbase = gtg
+	pkgdesc = Personal GTD like organizer for the GNOME desktop environment
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/GTG
+	arch = any
+	license = GPL
+	makedepends = meson
+	makedepends = ninja
+	makedepends = python-mock
+	makedepends = python-nose
+	depends = hicolor-icon-theme
+	depends = python-cairo
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-liblarch
+	depends = python-pyxdg
+	optdepends = pdftk: for the export and print plugin
+	optdepends = python-cheetah3: for the export and print plugin
+	optdepends = texlive-bin: for pdflatex, needed by the export and print plugin
+	optdepends = texlive-core: for pdfjam, needed by the export and print plugin
+	source = https://github.com/getting-things-gnome/gtg/releases/download/v0.4/gtg-0.4.0.tar.xz
+	sha512sums = f2677f6bbc0b6cb21b7882a2bd0342b4919581c12e4aa43c13b5dbc48740418c512a41619584d0d75bfa63ebc4a5460abfbc27360e1817c8832cbecf3c34a60e
+
+pkgname = gtg
+
