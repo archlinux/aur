@@ -1,0 +1,59 @@
+pkgbase = pamac-all
+	pkgdesc = A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)
+	pkgver = 9.5.8
+	pkgrel = 1
+	url = https://gitlab.manjaro.org/applications/pamac
+	install = pamac.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = gettext
+	makedepends = itstool
+	makedepends = vala>=0.45
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gobject-introspection
+	makedepends = xorgproto
+	depends = glib2>=2.42
+	depends = json-glib
+	depends = libsoup
+	depends = dbus-glib
+	depends = polkit
+	depends = vte3>=0.38
+	depends = gtk3>=3.22
+	depends = libnotify
+	depends = desktop-file-utils
+	depends = pacman>=5.2
+	depends = gnutls>=3.4
+	depends = git
+	depends = appstream-glib
+	depends = archlinux-appstream-data
+	depends = flatpak
+	depends = snapd
+	depends = snapd-glib
+	depends = libappindicator-gtk3
+	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
+	provides = pamac=9.5.8-1
+	provides = pamac-snap-plugin
+	provides = pamac-tray-appindicator
+	conflicts = pamac
+	conflicts = pamac-gtk
+	conflicts = pamac-cli
+	conflicts = pamac-common
+	conflicts = pamac-aur
+	conflicts = pamac-aur-git
+	conflicts = pamac-flatpak-plugin
+	conflicts = pamac-snap-plugin
+	conflicts = pamac-tray-appindicator
+	conflicts = pamac-aur-tray-appindicator-git
+	options = !emptydirs
+	backup = etc/pamac.conf
+	source = pamac-9.5.8.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/v9.5.8/pamac-v9.5.8.tar.gz
+	sha256sums = 7bd05f1dbb815ebddcfca85e54c873a0d376e55797ca58e2ad11e815962aca29
+
+pkgname = pamac-all
+
