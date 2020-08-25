@@ -1,39 +1,102 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+
 pkgname=apbs
-pkgver=1.5
-pkgrel=4
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Electrostatic and solvation properties for complex molecules"
-arch=(x86_64 i686)
+arch=(x86_64)
 url="http://www.poissonboltzmann.org/"
-license=('MIT')
-depends=('swig' 'python2')
-makedepends=('cmake' 'git' 'gcc')
-source=("git+https://github.com/Electrostatics/apbs-pdb2pqr.git#commit=aa353941cfadc09ccd113075d261a427864c2979")
-md5sums=('SKIP')
+license=(custom)
+depends=(python boost eigen termcap swig)
+makedepends=('cmake>=3.12' make git wget)
+provides=(apbs)
+conflicts=(apbs-bin)
+source=("https://github.com/Electrostatics/apbs/releases/download/v3.0.0/APBS-3.0.0_Source-Code.tar.gz"
+        "globals_apbs.patch"
+        "globals_bem.patch")
+sha256sums=('3cf8b227a205cdcbd13246489427606f256f2356343fc954734fd39975e5cbdb'
+            '6bc1f2dc7a454aa8b0799641f78ee571ba04795821a9bcac356cbe496bdb3df6'
+            '3d8cc3d052a60a36d79ab95b8c89c03d79bdcca9958c2936513d92c23acb097b')
+options=(!makeflags !buildflags)
+
+prepare() {
+    # patch APBS building issues
+    cd "${srcdir}/${pkgname}-${pkgver}/apbs"
+    patch -Np0 -i "${srcdir}/globals_apbs.patch"
+
+    # get external modules
+    cd "${srcdir}/${pkgname}-${pkgver}/apbs/externals"
+
+    # mesh_routines
+    mkdir -p mesh_routines/NanoShaper/Linux64
+    mkdir -p mesh_routines/msms/msms_i86_64Linux2_2.6.1
+    wget https://github.com/lwwilson1/mesh_routines/releases/download/v1.5/NanoShaper_Linux64 -O mesh_routines/NanoShaper/Linux64/NanoShaper
+    wget https://github.com/lwwilson1/mesh_routines/releases/download/v1.5/msms.x86_64Linux2.2.6.1.staticgcc -O mesh_routines/msms/msms_i86_64Linux2_2.6.1/msms.x86_64Linux2.2.6.1.staticgcc
+
+    # PBAM/PBSAM
+    git clone https://github.com/Electrostatics/pb_solvers.git pb_s_am
+    cd pb_s_am
+    git checkout 7ca2a8a491c0cf746074053005fcae026acc4da5
+    cd ..
+
+    # FETK
+    git clone https://github.com/Electrostatics/FETK.git fetk
+    cd fetk
+    git checkout 0c6fdeabe8929acea7481cb1480b5706b343b7e0
+    cd ..
+
+    # Geometric Flow
+    git clone https://github.com/Electrostatics/geoflow_c.git geoflow_c
+    cd geoflow_c
+    git checkout 99446ec841647419411d23bad632d50405913a06
+    cd ..
+
+    # TABI-PB (BEM)
+    git clone https://github.com/Electrostatics/TABIPB.git bem
+    cd bem
+    git checkout de187a41720887d667edcfb6c23bb61fbbe06b5b
+
+    # patch BEM building issues
+    patch -Np0 -i "${srcdir}/globals_bem.patch"
+    cd ..
+}
 
 build() {
-	cd ${srcdir}/apbs-pdb2pqr
+    cd "${srcdir}/${pkgname}-${pkgver}/apbs"
 
-    git submodule init
-    git submodule update
+    mkdir build
+    cd build
 
-    cd apbs
+    cmake \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DENABLE_GEOFLOW=ON \
+        -DENABLE_BEM=ON \
+        -DENABLE_FETK=ON \
+        -DENABLE_OPENMP=ON \
+        -DENABLE_PBAM=ON \
+        -DENABLE_PBSAM=ON \
+        -DENABLE_PYTHON=ON \
+        -DENABLE_TESTS=OFF \
+        -DBUILD_SHARED_LIBS=ON \
+        -DBUILD_DOC=OFF \
+        -Wno-dev \
+        ..
 
-    cmake -Wno-dev -DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_MODULE_LINKER_FLAGS="" -DCMAKE_SHARED_LINKER_FLAGS="" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python2 -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so -DPYTHON_LIBRARIES=/usr/lib/libpython2.7.so -DENABLE_PYTHON=ON -DBUILD_SHARED_LIBS=ON .
-	make
+    make
 }
 
 package() {
-	cd ${srcdir}/apbs-pdb2pqr/apbs
+    cd "${srcdir}/${pkgname}-${pkgver}/apbs/build"
 
-	make DESTDIR=$pkgdir install
+    # install base components
+    make DESTDIR="$pkgdir" install
 
-    # fix python versions in scripts
-    sed -i 's|/bin/python|/usr/bin/python2|g' ${pkgdir}/usr/share/apbs/examples/protein-rna/apbs_unix_dx.py
-    sed -i 's|/usr/bin/env python|/usr/bin/python2|g' ${pkgdir}/usr/share/apbs/examples/protein-rna/fit.py
-    sed -i 's|/usr/bin/env python|/usr/bin/python2|g' ${pkgdir}/usr/share/apbs/tools/manip/psize.py
-    sed -i 's|/usr/bin/python|/usr/bin/python2|g' ${pkgdir}/usr/share/apbs/tools/python/noinput.py
+    # install license
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/apbs/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    find "${pkgdir}/usr/share/apbs/tests" -name '*.py' -type f -exec \
-       sed -i 's|/usr/bin/env python|/usr/bin/python2|g' {} \;
+    # cleanup conflicting symlinks
+    cd "${pkgdir}/usr/lib"
+
+    rm -f libamd.so libblas.so libsuperlu.so libumfpack.so
 }

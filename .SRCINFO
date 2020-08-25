@@ -1,18 +1,29 @@
 pkgbase = apbs
 	pkgdesc = Electrostatic and solvation properties for complex molecules
-	pkgver = 1.5
-	pkgrel = 4
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = http://www.poissonboltzmann.org/
 	arch = x86_64
-	arch = i686
-	license = MIT
-	makedepends = cmake
+	license = custom
+	makedepends = cmake>=3.12
+	makedepends = make
 	makedepends = git
-	makedepends = gcc
+	makedepends = wget
+	depends = python
+	depends = boost
+	depends = eigen
+	depends = termcap
 	depends = swig
-	depends = python2
-	source = git+https://github.com/Electrostatics/apbs-pdb2pqr.git#commit=aa353941cfadc09ccd113075d261a427864c2979
-	md5sums = SKIP
+	provides = apbs
+	conflicts = apbs-bin
+	options = !makeflags
+	options = !buildflags
+	source = https://github.com/Electrostatics/apbs/releases/download/v3.0.0/APBS-3.0.0_Source-Code.tar.gz
+	source = globals_apbs.patch
+	source = globals_bem.patch
+	sha256sums = 3cf8b227a205cdcbd13246489427606f256f2356343fc954734fd39975e5cbdb
+	sha256sums = 6bc1f2dc7a454aa8b0799641f78ee571ba04795821a9bcac356cbe496bdb3df6
+	sha256sums = 3d8cc3d052a60a36d79ab95b8c89c03d79bdcca9958c2936513d92c23acb097b
 
 pkgname = apbs
 
