@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-liblarch
-pkgver=3.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Python library to easily handle data structure"
 arch=('any')
@@ -15,7 +15,7 @@ checkdepends=('python-nose')
 provides=('python-liblarch_gtk')
 conflicts=('python-liblarch_gtk')
 source=("https://github.com/liblarch/liblarch/archive/v${pkgver}.tar.gz")
-sha256sums=('3d8b337d7a71ea84387e90196b465f617649b59a1c8f0b0c49e6655987ac730c')
+sha256sums=('3a866cc43873454b88ae5526207555aca1f0e16e3120577d6135ea13db98ca68')
 
 check() {
   cd "$srcdir/liblarch-${pkgver}"
