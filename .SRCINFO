@@ -1,0 +1,15 @@
+pkgbase = herbe
+	pkgdesc = Daemon-less notifications without D-Bus. Minimal and lightweight.
+	pkgver = 1.0.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/trizen/herbe
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	source = herbe-1.0.0.tar.gz::https://github.com/dudik/herbe/archive/1.0.0.tar.gz
+	sha256sums = 78e454159050c86e030fb5a6cf997ac914345210cdf5a4ca4d7600c5296b7f76
+
+pkgname = herbe
+
