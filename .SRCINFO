@@ -1,0 +1,16 @@
+pkgbase = python-restfly
+	pkgdesc = A library to make API wrappers creation easier
+	pkgver = 1.3.5
+	pkgrel = 1
+	url = https://github.com/stevemcgrath/restfly
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-box
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/r/restfly/restfly-1.3.5.tar.gz
+	sha512sums = d39f08a4f13ecb49a662e21b094b0b164eb57f93377dc953e2fabd80e33ace3bf898a3e9529733976f9095ef58d14bfe099d8052d9abf43e7f0b61175a214e4f
+
+pkgname = python-restfly
+
