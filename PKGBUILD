@@ -3,7 +3,7 @@
 pkgname=routahe
 _npmpkgname=routahe
 pkgver=0.2.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line client for finding public transporation routes in
 Helsinki, Finland"
 arch=('any')
