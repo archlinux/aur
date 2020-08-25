@@ -1,6 +1,6 @@
 pkgbase = asus-rog-nb-wmi-dkms-git
 	pkgdesc = Kernel module to patch asus-nb-wmi to support more ROG laptops
-	pkgver = 0.1.0.r0.g1fd6b5c
+	pkgver = 0.2.0.r0.gfa91078
 	pkgrel = 1
 	url = https://gitlab.com/asus-linux/asus-rog-nb-wmi
 	arch = x86_64
