@@ -4,7 +4,7 @@
 _pkgbase="sddm"
 pkgname="$_pkgbase-git"
 pkgver=0.18.1.1.g5342323
-pkgrel=2
+pkgrel=3
 pkgdesc="The Simple Desktop Display Manager"
 arch=("x86_64")
 url="https://github.com/sddm/sddm"
@@ -19,16 +19,21 @@ backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm-autologin'
         'etc/pam.d/sddm-greeter')
 source=("git://github.com/sddm/sddm.git#branch=master"
-sddm.sysusers sddm.tmpfiles)
+sddm.sysusers sddm.tmpfiles pam-faillock.diff)
 sha256sums=('SKIP'
             '9fce66f325d170c61caed57816f4bc72e9591df083e89da114a3bb16b0a0e60f'
-            'db625f2a3649d6d203e1e1b187a054d5c6263cadf7edd824774d8ace52219677')
+            'db625f2a3649d6d203e1e1b187a054d5c6263cadf7edd824774d8ace52219677'
+            '1ac9d20f6476cbfc5123460e924bd46ac9fcd0aa5131758054d762ffa86db516')
 
 pkgver() {
 	cd $_pkgbase
 	#_ver="$(cat CMakeLists.txt | grep -m3 -e _VERSION_MAJOR -e _VERSION_MINOR -e _VERSION_PATCH | grep -o "[[:digit:]]*" | paste -sd'.')"
         #echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 	git describe --tags --long | sed 's/^v//;s/-/./g'
+}
+
+prepare() {
+  patch -d $_pkgbase -p1 -i ../pam-faillock.diff
 }
 
 build() {
