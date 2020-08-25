@@ -1,6 +1,6 @@
 pkgbase = licensecheck
 	pkgdesc = Simple license checker for source files
-	pkgver = 3.0.46
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://salsa.debian.org/build-common-team/licensecheck
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = licensecheck
 	checkdepends = perl-encode-locale
 	checkdepends = perl-test2-suite
 	checkdepends = perl-test-command-simple
+	checkdepends = perl-software-license
 	depends = perl
 	depends = perl-array-intspan
 	depends = perl-getopt-long-descriptive
@@ -28,8 +29,8 @@ pkgbase = licensecheck
 	depends = perl-namespace-clean
 	depends = perl-re-engine-re2
 	depends = perl-strictures
-	source = https://www.cpan.org/modules/by-module/App/App-Licensecheck-v3.0.46.tar.gz
-	sha512sums = e96f077c44bce2bea29782506164076753e0513bacc1d175dab6f5a871c6809ba2d8fedb1741dd1e14a2befc0f44cc23c79905f84fb1528c22369c5a4bde5e34
+	source = https://www.cpan.org/modules/by-module/App/App-Licensecheck-v3.1.1.tar.gz
+	sha512sums = c84aebc08019128b3aa812ba6e4f93d6d8ec8d6b31a405490609b80f03692d0f95e2ea1f9cad5eea6efa706d7837dca0b8ab1227065e3c5abbfa46e909831ea8
 
 pkgname = licensecheck
 

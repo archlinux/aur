@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=licensecheck
-pkgver=3.0.46
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Simple license checker for source files"
 arch=('any')
@@ -14,14 +14,15 @@ depends=('perl' 'perl-array-intspan' 'perl-getopt-long-descriptive'
          'perl-regexp-pattern-license' 'perl-sort-key' 'perl-string-copyright'
          'perl-string-escape' 'perl-try-tiny' 'perl-namespace-clean'
          'perl-re-engine-re2' 'perl-strictures')
-checkdepends=('perl-encode-locale' 'perl-test2-suite' 'perl-test-command-simple')
+checkdepends=('perl-encode-locale' 'perl-test2-suite' 'perl-test-command-simple'
+              'perl-software-license')
 source=("https://www.cpan.org/modules/by-module/App/App-Licensecheck-v${pkgver}.tar.gz")
-sha512sums=('e96f077c44bce2bea29782506164076753e0513bacc1d175dab6f5a871c6809ba2d8fedb1741dd1e14a2befc0f44cc23c79905f84fb1528c22369c5a4bde5e34')
+sha512sums=('c84aebc08019128b3aa812ba6e4f93d6d8ec8d6b31a405490609b80f03692d0f95e2ea1f9cad5eea6efa706d7837dca0b8ab1227065e3c5abbfa46e909831ea8')
 
 build() {
   cd "${srcdir}/App-Licensecheck-v${pkgver}"
 
-  perl Makefile.PL NO_PACKLIST=true
+  perl Makefile.PL NO_PACKLIST=true NO_PERLLOCAL=true
   make
 }
 
@@ -34,5 +35,5 @@ check() {
 package() {
   cd "${srcdir}/App-Licensecheck-v${pkgver}"
 
-  make pure_install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
+  make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 }
