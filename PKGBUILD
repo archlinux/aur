@@ -2,7 +2,7 @@
 
 pkgname=corectrl
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Core control application"
 url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
@@ -18,15 +18,14 @@ source=("https://gitlab.com/corectrl/corectrl/-/archive/v${pkgver}/${pkgname}-v$
 sha512sums=('196bcb34e60923736840a5178638f0eac6106beb0f69f405e8d64f150e7d304f459b8093a209ef4aaa8588def7ceed48879831e737dc467c3abcde6c46edd5c1')
 
 build() {
-  cd "${srcdir}/${pkgname}-v${pkgver}"
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF ..
-  make ${MAKEFLAGS}
+  cmake -B build -S "$pkgname-v$pkgver" \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DBUILD_TESTING=OFF \
+  -Wno-dev
+  make -C build
 }
 
+
 package() {
-  cd "${srcdir}/${pkgname}-v${pkgver}/build" 
-  sed -i -- 's/\/usr/${CMAKE_INSTALL_PREFIX}/g' src/helper/cmake_install.cmake
-  make install
+  make -C build DESTDIR="$pkgdir" install
 }
