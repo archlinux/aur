@@ -1,0 +1,4 @@
+pkg/
+src/
+import.sh
+*.tar.zst
