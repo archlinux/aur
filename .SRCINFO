@@ -1,10 +1,11 @@
 pkgbase = kdrive-bin
 	pkgdesc = Infomaniak Drive desktop synchronization client (pre-compiled version)
 	pkgver = 3.0.9.20200820
-	pkgrel = 1
+	pkgrel = 2
 	url = https://drive.infomaniak.com
 	arch = x86_64
 	license = GPL2
+	depends = libgnome-keyring
 	provides = kdrive
 	conflicts = kdrive
 	options = !strip
