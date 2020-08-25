@@ -1,0 +1,16 @@
+pkgbase = six-cli-bin
+	pkgdesc = 6盘(https://6pan.cn/)命令行工具.
+	pkgver = V0.0.6.alpha
+	pkgrel = 1
+	url = https://github.com/Mrs4s/six-cli/releases
+	arch = x86_64
+	license = MIT
+	provides = six-cli
+	conflicts = six-cli
+	source = https://raw.githubusercontent.com/Mrs4s/six-cli/master/LICENSE
+	sha256sums = da83bd24e0b998c9e08439af1c0ea997d6c395bfbf3a380aa0441cb9ae575f1f
+	source_x86_64 = https://github.com/Mrs4s/six-cli/releases/download/V0.0.6-alpha/six-cli_V0.0.6-alpha_linux_amd64.tar.gz
+	sha256sums_x86_64 = d2c4ea3d017cca4b8fc5b8afc443bf140c6a9e8ce24a9811a036d8d89aa7facf
+
+pkgname = six-cli-bin
+
