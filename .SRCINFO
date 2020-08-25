@@ -1,0 +1,20 @@
+pkgbase = ospray-studio-git
+	pkgdesc = Application to showcase OSPRay's rendering capabilities (git version)
+	pkgver = r168.gde9e9c4
+	pkgrel = 1
+	url = https://github.com/ospray/ospray_studio/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = openimagedenoise
+	makedepends = tbb
+	makedepends = ispc
+	depends = ospray
+	depends = glfw
+	depends = libgl
+	source = git+https://github.com/ospray/ospray_studio.git
+	sha256sums = SKIP
+
+pkgname = ospray-studio-git
+
