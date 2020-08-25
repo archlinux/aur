@@ -4,6 +4,10 @@ pkgbase = python-yacker-git
 	pkgrel = 1
 	url = https://gitlab.com/matilda.peak/yacker
 	arch = any
+	makedepends = python-setuptools
+	depends = packer
+	depends = python
+	depends = python-pyaml
 	source = git+https://gitlab.com/matilda.peak/yacker.git
 	md5sums = SKIP
 

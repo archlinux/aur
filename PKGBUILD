@@ -8,6 +8,8 @@ arch=('any')
 url="https://gitlab.com/matilda.peak/yacker"
 source=('git+https://gitlab.com/matilda.peak/yacker.git')
 md5sums=('SKIP')
+depends=('packer' 'python' 'python-pyaml')
+makedepends=('python-setuptools')
 
 _name=yacker
 
