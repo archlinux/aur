@@ -1,0 +1,15 @@
+pkgbase = python-confluent_kafka
+	pkgdesc = Confluent's Kafka Python Client
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/confluentinc/confluent-kafka-python
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = librdkafka
+	source = python-confluent_kafka-1.5.0.tar.gz::https://github.com/confluentinc/confluent-kafka-python/archive/v1.5.0.tar.gz
+	sha512sums = 8ac0e021a85932eef4034940d0d620788753ccc585e5b26f066ae62e4db5a5595e16a40e6f6a70160ee9f43e7fbe3c99416c68f844cc737cdf762bda7c0a0bb4
+
+pkgname = python-confluent_kafka
+
