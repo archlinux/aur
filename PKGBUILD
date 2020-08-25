@@ -2,15 +2,18 @@
 
 pkgname=cflow
 pkgver=1.6
-pkgrel=0
+pkgrel=1
 pkgdesc="GNU cflow - for diagramming C program flow from sources"
 arch=('i686' 'x86_64')
-url="http://ftp.gnu.org/gnu/cflow/cflow-1.5.tar.xz"
+url="https://www.gnu.org/software/cflow/"
 license=('GPL')
-options=('staticlibs' 'libtool' '!emptydirs')
+options=('!staticlibs' 'libtool' '!emptydirs')
 # install='pkgname.install'
-source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('4c8e02bb8d0b35c965559f0c8d42af84')
+source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"
+        "http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz.sig")
+sha256sums=('d5392a6d8a63ba2f41df9f88b51f97bc0452c5262762a3c27e0412a6c03c06db'
+            'SKIP')
+validpgpkeys=('325F650C4C2B6AD58807327A3602B07F55D0C732')
 
 build() {
 
