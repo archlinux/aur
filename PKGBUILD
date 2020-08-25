@@ -3,7 +3,7 @@
 pkgname=kanttiinit-git
 dest=cli
 pkgver=v0.0.3.r13.g7600b66
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line interface for Kanttiinit, a Finnish student restaurant
 menu tool (git)"
 arch=('any')

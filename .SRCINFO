@@ -1,11 +1,12 @@
 pkgbase = kanttiinit-git
 	pkgdesc = Command-line interface for Kanttiinit, a Finnish student restaurant menu tool (git)
 	pkgver = v0.0.3.r13.g7600b66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kanttiinit/cli
 	arch = any
 	makedepends = gcc
 	makedepends = make
+	makedepends = git
 	source = git+https://github.com/Kanttiinit/cli
 	md5sums = SKIP
 
