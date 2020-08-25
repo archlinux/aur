@@ -1,0 +1,14 @@
+pkgbase = hyperpotamus
+	pkgdesc = YAML/JSON automation scripting for web requests
+	pkgver = 0.37.3
+	pkgrel = 1
+	url = https://github.com/pmarkert/hyperpotamus
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = hyperpotamus-0.37.3.tar.gz::https://github.com/pmarkert/hyperpotamus/archive/v0.37.3.tar.gz
+	sha512sums = b8d1b48e78518bcf2fa1027e53e94c5be6576aa1dee999fc38ffc2c722ab9abd4f67353982ba676bcf57c460ed074629015f9c560243a408e958d8887a5a1700
+
+pkgname = hyperpotamus
+
