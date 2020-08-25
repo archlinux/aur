@@ -1,6 +1,6 @@
 # Maintainer: Pierre Mavro <deimosfr@gmail.com>
 pkgname=commitizen-go
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=2
 pkgdesc="Command line utility to standardize git commit messages, golang version"
 arch=(x86_64)
@@ -18,4 +18,4 @@ package() {
 	cd "$pkgname-$pkgver"
     sudo make install
 }
-md5sums=('89331e0516895e467bc49a1a17e8bb0a')
+md5sums=('b35e8fa0b64b253ee627a4b5fd67b8e0')
