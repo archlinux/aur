@@ -1,8 +1,8 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-current-kpe
-pkgver=2020.07.2.1
-pkgrel=1
+pkgver=2020.08
+pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -11,7 +11,7 @@ depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' '
          'ttf-font' 'hicolor-icon-theme' 'kwaterfoxhelper')
 makedepends=('unzip' 'zip' 'diffutils' 'python' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-server-xvfb'
              'autoconf2.13' 'rust' 'clang' 'llvm' 'libpulse' 'alsa-lib' 'jack' 'cbindgen' 'nasm' 'python2-setuptools'
-             'nodejs' 'python2-psutil' 'nss' 'nspr' 'binutils' 'git')
+             'nodejs' 'python2-psutil' 'nss>=3.44.4' 'nspr>=4.21.1' 'binutils' 'git')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -35,9 +35,6 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=$pkgver-current"
         "mozilla-nongnome-proxies.patch::$_filesurl/patches/mozilla-nongnome-proxies.patch"
         "current-kde.patch::$_filesurl/patches/current-kde.patch"
         "current-kde-xul.patch::$_filesurl/patches/current-kde-xul.patch"
-        "Bug1654465.patch::$_filesurl/patches/Bug1654465.patch"
-        "about_text_color.patch::$_filesurl/patches/about_text_color.patch"
-        "revert_problematic_changes.patch::$_filesurl/patches/revert_problematic_changes.patch"
         )
 sha256sums=('SKIP'
             'ca152a5d24a59aa5552cc49915b13eef5181aac4ac6d2efa02c705efaeaed97b'
@@ -47,10 +44,7 @@ sha256sums=('SKIP'
             '0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab'
             'ffa9d71bd6dd60eaaef70ba67444c75b6ce0313a107b5b086fd3d30df865ccbf'
             '547233b3a9143f0b03d39655cb705b55cb6df6a2e97e4423f07c38386638ade5'
-            'e3db65f1d86d00f8a21379a865f2c7767f57b96e1ab9f7c6f50e984784c5b80a'
-            '503ca153bac18d7aed9ba28e2779366401dc28fc239786a135881c2a50ffc9ee'
-            '00438eefeb5f6aa67f1fc7a10933ce53ed058aad4476b7b4ae2658f1a0941f36'
-            '0aa65c03d49a3cfacaf73c4cdc97475678b90a95312715b5bddf37a9a90a815b')
+            'e3db65f1d86d00f8a21379a865f2c7767f57b96e1ab9f7c6f50e984784c5b80a')
 
 prepare() {
 
@@ -59,9 +53,6 @@ prepare() {
   patch -Np1 -i ../current-kde.patch
   patch -Np1 -i ../current-kde-xul.patch
   patch -Np1 -i ../mozilla-nongnome-proxies.patch
-  patch -Np1 -i ../Bug1654465.patch
-  patch -Np1 -i ../about_text_color.patch
-  patch -Np1 -i ../revert_problematic_changes.patch
 
   cat >.mozconfig <<END
 export CC=clang
