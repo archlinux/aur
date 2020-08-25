@@ -1,0 +1,6 @@
+/*.log
+/*.tar.xz
+/*.tar.gz
+/*.tar.zst
+/*.tar.gz.sig
+/matterircd/
