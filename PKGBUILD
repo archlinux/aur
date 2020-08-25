@@ -10,8 +10,8 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-udf-patched
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.3.2
+pkgrel=1
 pkgdesc='Telegram Desktop client with several personal patches'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -27,7 +27,7 @@ conflicts=('telegram-desktop')
 
 source=(
     "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
-    "set_webrtc_location.patch::https://github.com/desktop-app/cmake_helpers/commit/7dc5da757124cb2d644e289a37d8957823a7f6c9.patch"
+    "Use-tg_owt-webrtc-fork.patch"
     # Custom patches
     "always_delete_for_everyone.patch"
     "always_clear_history_for_everyone.patch"
@@ -36,8 +36,8 @@ source=(
     "force_gtk_integration.patch"
 )
 sha512sums=(
-    '65fa7641ed9ba2fcd4181e3f6bbc036dcf2ddcb12eb10a15a601e0fce79c0f99741b55741bb3c18b9de5d3cdb07190761ea0f8fbe111563f784e0ad3faea2ede'
-    '5405ec01bd19350141588aad40eec63e47cd601d4945ed28ba2aaf077b398f4b746c3299e047bf0fb534f073ac1b9d4a515c5cc3eca9cdc754ccf87d2ce7176e'
+    '757e57389ce24656c1d6676d6f0808e3d444785394e916b9f5fb47511662f01b6742c88c2a27274c4d9bb58263ae281218579c78cce7db119e2c863c1eaacc90'
+    '071591c6bb71435f8186dcaf570703718051f00366dbbe3f13c4df3706d3de1f168bff4bfa707ad1d6f09f5505c925f0b01d76fd65efe904f3ba7db693d63f43'
     # Custom patches
     'e88fa96024efc6176c818d0a46684e0ee1fb3a7bdadb323ad3b29f736209c80b6c31b135cf84389e7e2bbd614e57b241e4437c94b6fd114e73cfc418bf130015'
     '4a7e9de924bbf32fb4cd24ffa2764bcf49e0540bba649829b180da20a62810d4a21ebf11529d4eca22c9ceaa93b434ca3fbfd0b636795f8109ea4e1eddbff8f3'
@@ -48,7 +48,7 @@ sha512sums=(
 
 prepare() {
     cd tdesktop-$pkgver-full/cmake
-    patch -Np1 -i ../../set_webrtc_location.patch
+    patch -R -Np1 -i ${srcdir}/Use-tg_owt-webrtc-fork.patch
     sed 's|set(webrtc_build_loc ${webrtc_loc}/out/$<CONFIG>/obj)|set(webrtc_build_loc /usr/lib)|' -i external/webrtc/CMakeLists.txt
 
     cd ..
@@ -75,7 +75,6 @@ build() {
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
         -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
         -DTDESKTOP_LAUNCHER_BASENAME="telegramdesktop" \
-        -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
         -DDESKTOP_APP_SPECIAL_TARGET="" \
         -DDESKTOP_APP_WEBRTC_LOCATION=/usr/include/libwebrtc \
         -DTDESKTOP_USE_GTK_FILE_DIALOG=ON
