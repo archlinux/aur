@@ -1,7 +1,7 @@
 pkgbase = matterircd-git
 	pkgdesc = Minimal IRC server which integrates with mattermost and slack
 	pkgver = 0.19.4.63.gb0eefb2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/42wim/matterircd
 	arch = x86_64
 	arch = armv7h
