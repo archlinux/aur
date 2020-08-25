@@ -1,6 +1,6 @@
 pkgbase = arch-secure-boot
 	pkgdesc = UEFI Secure Boot for Arch Linux + btrfs snapshot recovery
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/maximbaz/arch-secure-boot
 	arch = any
@@ -9,12 +9,14 @@ pkgbase = arch-secure-boot
 	depends = sbsigntools
 	depends = efibootmgr
 	depends = binutils
+	depends = edk2-shell
+	depends = linux-lts
 	depends = snapper
 	depends = snap-pac
-	source = arch-secure-boot-1.0.0.tar.gz::https://github.com/maximbaz/arch-secure-boot/archive/1.0.0.tar.gz
-	source = https://github.com/maximbaz/arch-secure-boot/releases/download/1.0.0/arch-secure-boot-1.0.0.tar.gz.asc
+	source = arch-secure-boot-1.0.1.tar.gz::https://github.com/maximbaz/arch-secure-boot/archive/1.0.1.tar.gz
+	source = https://github.com/maximbaz/arch-secure-boot/releases/download/1.0.1/arch-secure-boot-1.0.1.tar.gz.asc
 	validpgpkeys = EB4F9E5A60D32232BB52150C12C87A28FEAC6B20
-	sha256sums = 58470778b63f237a3845f649c59352bdbf089755342f687daa70e3336bafa9c0
+	sha256sums = 47df838870622b176e1d68a01154552b537afd6ae6dfcad62aab4532e57adcef
 	sha256sums = SKIP
 
 pkgname = arch-secure-boot
