@@ -1,0 +1,14 @@
+pkgbase = python-propka
+	pkgdesc = Heuristic pKa calculations with ligands
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/propka
+	arch = any
+	license = BSD
+	depends = python>=3.6
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/p/propka/propka-3.3.0.tar.gz
+	sha256sums = 2fc79dbd921c2e0db01692dc6775a3a693be6ca7320bd811b03a14a3dda10779
+
+pkgname = python-propka
+
