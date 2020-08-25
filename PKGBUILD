@@ -1,7 +1,7 @@
 # Maintainer: Cirk2 <privat+aur at cirk2 dot de> 
 
 pkgname=sdbus-cpp
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=2
 pkgdesc="sdbus-c++ is a high-level C++ D-Bus library for Linux designed to provide expressive, easy-to-use API in modern C++"
 url="https://github.com/Kistler-Group/sdbus-cpp"
