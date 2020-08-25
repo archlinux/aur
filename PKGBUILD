@@ -158,6 +158,7 @@ build() {
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
+  export MACH_USE_SYSTEM_PYTHON=1
 
   # LTO needs more open files
   ulimit -n 4096
