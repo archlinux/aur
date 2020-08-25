@@ -1,0 +1,34 @@
+--- pdb2pqr/main.py	2020-08-25 20:53:35.000000000 +0300
++++ pdb2pqr/main.py	2020-08-25 21:15:39.017396736 +0300
+@@ -470,17 +470,16 @@
+             hydrogen_routines.optimize_hydrogens()
+         hydrogen_routines.cleanup()
+ 
+     _LOGGER.info("Applying force field to biomolecule states.")
+     protein.set_states()
+-    hitlist, misslist = protein.apply_force_field(forcefield_)
++    matched_atoms, missing_atoms = protein.apply_force_field(forcefield_)
+ 
+     if args.ligand is not None:
+         _LOGGER.info("Processing ligand.")
+         _LOGGER.warning("Using ZAP9 forcefield for ligand radii.")
+         ligand.assign_parameters()
+-        missing_atoms = []
+         lig_atoms = []
+         for residue in protein.residues:
+             tot_charge = 0
+             for pdb_atom in residue.atoms:
+                 # Only check residues with HETATM
+@@ -497,11 +496,11 @@
+                         "Can't find HETATM {r.name} {r.res_seq} {a.name} "
+                         "in MOL2 file").format(r=residue, a=pdb_atom)
+                     _LOGGER.warning(err)
+                     missing_atoms.append(pdb_atom)
+ 
+-    matched_atoms = hitlist + lig_atoms
++        matched_atoms += lig_atoms
+ 
+     for residue in protein.residues:
+         if not isclose(
+                 residue.charge, int(residue.charge), abs_tol=CHARGE_ERROR):
+             err = (
