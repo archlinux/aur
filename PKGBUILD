@@ -1,7 +1,7 @@
 # Maintainer: Sauyon Lee <me at sjl dot re>
 pkgname=codeql
-pkgver=2.2.4
-pkgrel=2
+pkgver=2.2.5
+pkgrel=1
 epoch=
 pkgdesc="The CLI tool for GitHub's CodeQL"
 arch=('i686' 'x86_64')
@@ -20,9 +20,15 @@ options=()
 install=
 changelog=
 source=("$pkgname-v$pkgver.zip::https://github.com/github/codeql-cli-binaries/releases/download/v$pkgver/$pkgname-linux64.zip")
-sha256sums=('b044485df9ebc4aa4414a1ed3fa4867de51893cc8f964a6caaa7e7ec612a0757')
+md5sums=('15ee0ab93859842bfddd5c5f5e8daa4a')
 
 noextract=()
+
+prepare() {
+  cd "$srcdir"
+
+  ln -sf "lib64trace.so" "codeql/tools/linux64/libtrace.so"
+}
 
 package() {
   cd "$srcdir"
