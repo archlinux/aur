@@ -28,11 +28,26 @@ source=(
   0005-x86-bump-ZO_z_extra_bytes-margin-for-zstd.patch
   0006-x86-Add-support-for-ZSTD-compressed-kernel.patch
   0007-.gitignore-add-ZSTD-compressed-files.patch
+  # HID Nintendo
+  0001-HID-nintendo-add-nintendo-switch-controller-driver.patch
+  0002-HID-nintendo-add-player-led-support.patch
+  0003-HID-nintendo-add-power-supply-support.patch
+  0004-HID-nintendo-add-home-led-support.patch
+  0005-HID-nintendo-add-rumble-support.patch
+  0006-HID-nintendo-improve-subcommand-reliability.patch
+  0007-HID-nintendo-send-subcommands-after-receiving-input-.patch
+  0008-HID-nintendo-reduce-device-removal-subcommand-errors.patch
+  0009-HID-nintendo-patch-hw-version-for-userspace-HID-mapp.patch
+  0010-HID-nintendo-set-controller-uniq-to-MAC.patch
+  0011-HID-nintendo-add-support-for-charging-grip.patch
+  0012-HID-nintendo-add-support-for-reading-user-calibratio.patch
+  0013-HID-nintendo-prevent-needless-queueing-of-the-rumble.patch
+  0014-HID-nintendo-add-IMU-support.patch
   # CPU
   enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch
 )
 sha256sums=('SKIP'
-            'b40d47edc300846dd4ff1c3f4ab748e061b633cd35f692f0b4b210d88d4ff7d3'
+            'c761dae2f35885eb52fb93e8df821267453e2cbfe2f98e685437c0e7e0c9f733'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '2f0090ec0c9a72e6241bbea05faaef979405119ce8ef669d84dead36c8e2246e'
             '5f21c12f002e71ec5b5db96832b415ce291a7e230fa07b328c21760274e72e9d'
@@ -41,6 +56,20 @@ sha256sums=('SKIP'
             '2b558cc58e95343bb2e3cfd96c668b671251c543124176b8687baf12cdf999d5'
             '84c275eb98fb908b742ffe51faa7feb0312550712b0cd729bf72941a2f633a65'
             'f88df9ee297e229792e516ac9fb6f35ddc1aa13c3fdeb9ba15fb4de8b1dcd7c7'
+            '7bf881f1a8d64c43c39f54520f30c4927a67bf462d2c1e960b0703132509a71d'
+            '90f200daaa7c0c2edfaf5365c0f1836065364e3c24b55ee72a8c39c927d6e70c'
+            'dac2eaa04c33739e6e3d59f65c03b324d03204702431866e335f1be05fca0800'
+            '5a28934f973c92bc7586882d462da174acc9327c8536e7b5bf3ad48e0338e1bc'
+            'b3ed0e211a9d0340987b9d2798ed1cc479c6c238b9957d99206f35689037e907'
+            '5076b003c49af19a1e9ed8091b46382fdc51d04d63790f6af2f09b3099973412'
+            '06fa906b3592a49de487621854ff39ee4f6c2741c22f28cc6a6b9c5e20621902'
+            'ed65c66b9967f590d1575c52664825c278beff54fb7e8226c8751e431095eb00'
+            'be3103f49ef7211640b52d5cd43a38509b515dfb597ba92e2f8938ef556e78a7'
+            'dd6e7854a72d479862dd772f232b9c440f4588bb8916006e8991c717679d9fdb'
+            'a1f1d735bdbed62e0ee3bfed5afa0e4b4c79a9fb0f6e643415f80ef037769ed7'
+            'befc88e05cde258f22e2e482fb99bd561fba0509439088ecfcbd46616984d229'
+            'f1fad6499fe8b16ad62caf5fffa401678609ec5cffe5274f7b7f6e10b5eb1532'
+            '08a4e35d8ab2e7855d51d46f0ad9d38c2c7093ddf6de807673ffafbd15dbc49d'
             '5ab29eb64e57df83b395a29a6a4f89030d142feffbfbf73b3afc6d97a2a7fd12')
 
 export KBUILD_BUILD_HOST=archlinux
