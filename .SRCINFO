@@ -1,0 +1,15 @@
+pkgbase = topicctl
+	pkgdesc = Declarative management of Kafka topics
+	pkgver = 0+r55+g4bca417
+	pkgrel = 1
+	url = https://github.com/segmentio/topicctl
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = git+https://github.com/segmentio/topicctl#commit=4bca41738e78c3eb77e4ffa5e6843c176e9fca48
+	sha512sums = SKIP
+
+pkgname = topicctl
+
