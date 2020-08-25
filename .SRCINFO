@@ -1,5 +1,5 @@
 pkgbase = apbs
-	pkgdesc = Electrostatic and solvation properties for complex molecules
+	pkgdesc = Software for biomolecular electrostatics and solvation calculations
 	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://www.poissonboltzmann.org/

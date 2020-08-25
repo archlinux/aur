@@ -3,7 +3,7 @@
 pkgname=apbs
 pkgver=3.0.0
 pkgrel=1
-pkgdesc="Electrostatic and solvation properties for complex molecules"
+pkgdesc="Software for biomolecular electrostatics and solvation calculations"
 arch=(x86_64)
 url="http://www.poissonboltzmann.org/"
 license=(custom)
