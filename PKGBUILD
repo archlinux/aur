@@ -1,10 +1,10 @@
 # Maintainer:  VirtualTam  <virtualtam@flibidi.net>
 # Contributor: Uwe Koloska <kolewu@koloro.de>
 pkgname=minetestmapper-git
-pkgver=07c371f
+pkgver=6bb818a
 pkgrel=1
 pkgdesc="Minetest map generator"
-arch=('i686' 'x86_64')
+arch=('armv7h' 'i686' 'x86_64')
 url="http://wiki.minetest.net/Minetestmapper"
 license=('LGPL')
 depends=('gd' 'leveldb' 'postgresql-libs' 'sqlite')
