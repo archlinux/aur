@@ -1,7 +1,7 @@
 pkgbase = lbt
 	pkgdesc = Command-line tools for interacting with the LBRY network
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/gardenappl/lbt
 	arch = any
 	license = GPL3

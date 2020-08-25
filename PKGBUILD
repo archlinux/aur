@@ -3,7 +3,7 @@
 pkgname=lbt
 _author=gardenappl
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line tools for interacting with the LBRY network'
 arch=('any')
 url='https://gitlab.com/gardenappl/lbt'
