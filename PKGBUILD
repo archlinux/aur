@@ -4,7 +4,7 @@ pkgver=V0.0.6.alpha.r0.g0eba4dc
 pkgrel=1
 pkgdesc="6盘(https://6pan.cn/)命令行工具."
 arch=('x86_64')
-# depends=('glibc')
+depends=()
 makedepends=('git' 'go-pie')
 conflicts=("six-cli")
 provides=("six-cli")
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
     cd "${pkgname}"
-    CGO_ENABLED=0 go build -x -v -ldflags "-extldflags ${LDFLAGS} -X main.Version=${pkgver} -s -w"
+    go build -x -v -ldflags "-extldflags 'static' -s -w"
 }
 
 package() {
@@ -34,4 +34,4 @@ package() {
     install -Dm644 ${srcdir}/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
- 
+
