@@ -4,25 +4,24 @@ pkgver=0.4.1
 pkgrel=3
 pkgdesc="A CLI tool to manage your devcontainers using docker-compose"
 arch=('x86_64')
-url="https://git.karolak.fr/nicolas/devc"
+url="https://git.sr.ht/~nka/devc"
 license=('GPL3')
 depends=('docker-compose')
 makedepends=(
 	'make'
 	'go'
 )
-source=("$pkgname-$pkgver.tar.gz::https://git.karolak.fr/nicolas/$pkgname/archive/v$pkgver.tar.gz")
-#validpgpkeys=('722F069CE8337170B4A2B30370D56B0C9C0FCF6B')
-md5sums=('e50a360f6bd820300baf184ef66b5c07')
-sha256sums=('ae78ee92ef4bdac31c309ad8af995ac386490df6c8ba0b1f4ea9d1993548bb2b')
-sha512sums=('df1edb7e69564c04796e8a064eab892f02af346d796a6bb263cb2191d523879165957c1768c839c9dbfdf758cef5e8638228ef11403a9a4d62b0f71f20f0dd55')
+source=("$pkgname-v$pkgver.tar.gz::https://git.sr.ht/~nka/$pkgname/archive/v$pkgver.tar.gz")
+md5sums=('1879b64d5bbb04549d96d5ea66377c58')
+sha256sums=('1874012cc1baea51ec15ab55cf36477f766b0fab991beba57cf522fc7b80122f')
+sha512sums=('a36b6d52456f5139be04237602fd65e57f07a77962d8d705d579f1052c205c7fdcb8400e506ff88a0dd8bdc3d6a4542e89cc3363ec5c5155a43bd5e0ca226e4c')
 
 build() {
-	cd "$pkgname"
+	cd "$pkgname-v$pkgver"
 	make
 }
 
 package() {
-	cd "$pkgname"
+	cd "$pkgname-v$pkgver"
 	make DESTDIR="$pkgdir" PREFIX="/usr" install
 }

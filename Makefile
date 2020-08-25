@@ -14,7 +14,7 @@ install:
 	@makepkg --syncdeps --install --rmdeps
 
 .PHONY: sum
-## sum: Update the .SRCINFO file
+## sum: Generate sums
 sum:
 	@makepkg --geninteg
 
@@ -33,5 +33,5 @@ clean:
 .PHONY: help
 ## help: Prints this help message
 help:
-	@echo "Usage: \n"
+	@echo -e "Usage: \n"
 	@sed -n 's/^##//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/ /'
