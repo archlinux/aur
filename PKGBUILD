@@ -2,7 +2,7 @@
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
 pkgname=i2p-bin
-pkgver=0.9.46
+pkgver=0.9.47
 pkgrel=1
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="https://geti2p.net"
@@ -29,7 +29,7 @@ source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
         'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
         'i2prouter.bash' 'i2prouter.sh' 'chromium-i2p.sh')
 
-sha256sums=('bc8ec63e1df5eba7b22c57a143ff177a1fb208f793f07ecf249f3589029def1e'
+sha256sums=('3ddf3afb0c06edeed4810c6d1f34d909959dd94640adf7c638781b4a3b282e9e'
             'SKIP'
             '925d931aae2bd03c08555536b1c836654a72cc4acfd9f440f1ad43958ba2108d'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
@@ -38,7 +38,7 @@ sha256sums=('bc8ec63e1df5eba7b22c57a143ff177a1fb208f793f07ecf249f3589029def1e'
             '90f202e5b66d5a5b425522b409e71fb892d34c534e32ce2d6fe5284015cacf94'
             '7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a'
             '8d39f080c7a2e49226db3a785f3e18583159ef2f95e1ab467fd9984c4e38c9f5'
-            '77e359cf880ccc09f504372ef85c8ad3ab7d1186106a4ae92c4ff4f37ae650e0')
+            'a7076156703e2b949331e450455813432caeb4e5712f1c7b668974eb06a69fb9')
 
 package() {
     cd "$pkgdir"
