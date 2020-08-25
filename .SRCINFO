@@ -1,0 +1,18 @@
+pkgbase = gomuks-midek-git
+	pkgdesc = A terminal based Matrix client written in Go. Upload and pantalaimon support
+	pkgver = r560.235d8f2
+	pkgrel = 1
+	url = https://github.com/Midek/gomuks
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = go-pie
+	makedepends = git
+	depends = libolm
+	provides = gomuks
+	conflicts = gomuks
+	source = git://github.com/Midek/gomuks.git
+	sha512sums = SKIP
+
+pkgname = gomuks-midek-git
+
