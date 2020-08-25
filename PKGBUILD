@@ -5,7 +5,7 @@
 export LG2=en
 
 pkgname=i2p-dev
-pkgver=0.9.46.0
+pkgver=0.9.47.0
 pkgrel=1
 pkgdesc="A distributed anonymous network (daily mtn->git sync)"
 url="https://geti2p.net"
@@ -23,8 +23,8 @@ options=(!strip)
 _gitname=i2p.i2p
 _commit=master
 
-#mirror: https://gitlab.com/I2P/i2p.i2p.git
 source=("git+https://github.com/i2p/${_gitname}.git#commit=${_commit}"
+        #"git+https://gitlab.com/I2P/${_gitname}.git#commit=${_commit}"
         'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
         'i2prouter.bash' 'i2prouter.sh' 'chromium-i2p.sh')
 
@@ -35,7 +35,7 @@ sha256sums=('SKIP'
             '60d187565befa0d8ca8171b517d61d84145179aef0816b39fed63ddaf87f2523'
             '7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a'
             '8d39f080c7a2e49226db3a785f3e18583159ef2f95e1ab467fd9984c4e38c9f5'
-            '77e359cf880ccc09f504372ef85c8ad3ab7d1186106a4ae92c4ff4f37ae650e0')
+            'a7076156703e2b949331e450455813432caeb4e5712f1c7b668974eb06a69fb9')
 
 pkgver() {
     cd "$_gitname"
