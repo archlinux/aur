@@ -1,6 +1,6 @@
 pkgbase = blender-2.83-git
 	pkgdesc = LTS Maintenance version of blender-v2.83-release branch
-	pkgver = 2.83.r95643.gd5809b39d5b
+	pkgver = 2.83.r95674.gc2b144df395
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog
@@ -45,6 +45,7 @@ pkgbase = blender-2.83-git
 	source = usd_python.patch
 	source = embree.patch
 	source = cuda11.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/a9644c812fc17b38503828d6edf7d259b6fe0e74
+	source = cpp14.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/171c4fb238a2a65291540ac5406187bc69f3a6bc
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -54,6 +55,7 @@ pkgbase = blender-2.83-git
 	sha256sums = 12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a
 	sha256sums = 42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4
 	sha256sums = 2e5cf80c760aaf7326505b81f408c90fb6c4ff22b8cbb3638397809011a13562
+	sha256sums = 44fad9ac2320d20d21b7aef46f70c05d55697ecde1446513f0a5842014a9d99c
 
 pkgname = blender-2.83-git
 
