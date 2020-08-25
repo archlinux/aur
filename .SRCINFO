@@ -1,5 +1,5 @@
 pkgbase = nushell-bin
-	pkgdesc = A shell for the GitHub era
+	pkgdesc = A new type of shell
 	pkgver = 0.18.1
 	pkgrel = 1
 	url = http://nushell.sh
