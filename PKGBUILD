@@ -12,6 +12,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/froyotam/ferrite-core/a
 sha256sums=('3ecd9c181e746bd2b92c5fc429cfb0a3a61456637ab5a5d6d4d46dd0ca96c7ba')
 
 package_ttf-ferrite-core() {
+  pkgdesc="Ferrite Core DX font family by Froyo Tam(TTF True Type Font)"
   conflicts=("ttf-ferrite-core-git")
   cd "${pkgbase}-${pkgver}"
   install -Dm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -24,6 +25,7 @@ package_ttf-ferrite-core() {
 }
 
 package_otf-ferrite-core() {
+  pkgdesc="Ferrite Core DX font family by Froyo Tam(OTF Open Type Font)"
   cd "${pkgbase}-${pkgver}"
   install -Dm644 OFL.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 fonts/otf/FerriteCore-Regular.otf "${pkgdir}/usr/share/fonts/OTF/FerriteCore-Regular.otf"
