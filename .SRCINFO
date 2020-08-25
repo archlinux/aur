@@ -8,13 +8,13 @@ pkgbase = openbazaar
 	arch = x86_64
 	license = MIT
 	makedepends = npm
-	depends = electron6
+	depends = electron7
 	options = !strip
 	source = https://github.com/OpenBazaar/openbazaar-desktop/archive/v2.4.7.tar.gz
 	source = openbazaar.js
 	source = openbazaar.desktop
 	md5sums = b05520316946fc82626135fd33affcb6
-	md5sums = 9cbd95a65cb9d7a81cb39ec02127ac8d
+	md5sums = b893d2174c2c52b0d7fc0023999aa42e
 	md5sums = 2e7c7804b970baa7f9274dae47618a52
 
 pkgname = openbazaar
