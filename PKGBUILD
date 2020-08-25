@@ -1,30 +1,25 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-syslog
-pkgver=1.4
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="syslog(3) routines for OCaml"
 arch=('x86_64')
-url="http://homepage.mac.com/letaris"
+url="https://github.com/geneanet/ocaml-syslog"
 license=('LGPL')
-depends=('ocaml')
-makedepends=('ocaml-findlib')
-options=('!strip')
-source=("https://archive.org/download/syslog-${pkgver}/syslog-${pkgver}.tar.gz")
-md5sums=('3042185e6f511aea9956cd8f172b1a84')
+depends=('ocaml' 'glibc')
+makedepends=('dune')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/geneanet/ocaml-syslog/archive/v${pkgver}.tar.gz")
+sha512sums=('dc7d4ac2250e7d1d35d8c1cbeb0e369e9a7a0f78cc13d1727b0a9cac047b4d4a587921acb2999ae887e0437c99b0a64b2d1d2bb091645e9c99353a856fa1d2f5')
 
 build() {
-  cd "${srcdir}/syslog-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  # Fix compilation with OCaml>=4.06 by restoring default behaviour of <4.06
-  export OCAMLFLAGS="-unsafe-string"
-  make reallyall
+  dune build --release
 }
 
 package() {
-  cd "${srcdir}/syslog-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  mkdir -p "${OCAMLFIND_DESTDIR}"
-  make install
+  dune install --destdir "${pkgdir}"
 }
