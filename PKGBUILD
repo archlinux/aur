@@ -4,12 +4,12 @@
 
 pkgname=elmerfem
 pkgver=8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A finite element software for multiphysical problems"
 arch=('x86_64')
 url="http://www.elmerfem.org"
 license=('GPL')
-depends=('arpack' 'blas' 'qt5-script' 'netcdf-fortran' 'mmg3d' 'paraview')
+depends=('arpack' 'blas' 'qt5-script' 'netcdf-fortran' 'mmg' 'paraview')
 makedepends=('gcc-fortran' 'cmake')
 conflicts=('elmerfem-git')
 options=(!emptydirs !makeflags)
@@ -22,12 +22,14 @@ prepare() {
   cd "$srcdir/$pkgname-release-$pkgver"
   mkdir ../build
   sed -i 's/1 depth/1 ${depth}/g' fem/tests/CMakeLists.txt
+  sed -i '/#include <QPainter>/a #include <QPainterPath>' ElmerGUI/Application/twod/renderarea.cpp
 }
 
 build() {
   cd "$srcdir/build"
   cmake ../$pkgname-release-$pkgver \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_Fortran_FLAGS="$FCFLAGS -fallow-argument-mismatch -fallow-invalid-boz" \
         -DELMER_INSTALL_LIB_DIR=/usr/lib \
         -DWITH_CONTRIB=ON \
         -DWITH_ELMERGUI=ON \
