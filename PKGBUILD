@@ -2,7 +2,7 @@
 
 pkgname=asus-rog-nb-wmi-dkms-git
 _pkgname=asus-rog-nb-wmi
-pkgver=0.1.0.r0.g1fd6b5c
+pkgver=0.2.0.r0.gfa91078
 pkgrel=1
 pkgdesc="Kernel module to patch asus-nb-wmi to support more ROG laptops"
 arch=('x86_64')
@@ -23,8 +23,9 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}"
-  sed -e "s/REPLACE_ME/${pkgver}/" -i "dkms.conf"
+  cd "${srcdir}/${_pkgname}"
+  _pkgver=$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+  sed -e "s/REPLACE_ME/$_pkgver/" -i "../dkms.conf"
 }
 
 package() {
