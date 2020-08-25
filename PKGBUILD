@@ -18,7 +18,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 }
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
 #shellcheck disable=SC2015
-((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
+((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix=7.0'); }
 
 pkgname=blender-${_suffix}-git
 pkgver=2.83.r97300.g6692ca602ca
@@ -48,6 +48,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         SelectCudaComputeArch.patch
         addon_path.patch
         embree.patch #add missing embree link.
+        'cuda11.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/a9644c812fc17b38503828d6edf7d259b6fe0e74'
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -56,7 +57,8 @@ sha256sums=('SKIP'
             'SKIP'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
             'ff05a19c9ff8aa3622b7d31f86c6218ac1a3ac06ad1a7cfd7e0587f623b3bd2f'
-            '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4')
+            '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4'
+            '2e5cf80c760aaf7326505b81f408c90fb6c4ff22b8cbb3638397809011a13562')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -77,6 +79,7 @@ prepare() {
     git -C "$srcdir/blender" apply -v <(sed "s/@@_suffix@@/${_suffix}/g" "${srcdir}/addon_path.patch")
   fi
   ((DISABLE_EMBREE)) || git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
+  git -C "$srcdir/blender" apply -v "$srcdir/cuda11.patch"
 }
 
 build() {
@@ -84,7 +87,7 @@ build() {
   msg "python version detected: ${_pyver}"
 
   # determine whether we can precompile CUDA kernels
-  _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
+  _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
   if [ "$_CUDA_PKG" != "" ] && ! ((DISABLE_CUDA)) ; then
     _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
                   -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
