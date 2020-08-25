@@ -2,7 +2,7 @@
 # Maintainer: BachoSeven <ascoli dot minnocci at gmail dot com>
 
 pkgname=bastet-xdg-git
-pkgver=0.43.2.r3.g1b3e692
+pkgver=0.43.2.r5.gad5de50
 pkgrel=1
 pkgdesc="Tetris(r) clone with 'bastard' block-choosing AI - Git version with support for Xdg Base Directories"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('boost-libs' 'ncurses')
 makedepends=('git' 'boost')
 conflicts=('bastet')
-source=("$pkgname::git+https://github.com/fph/bastet.git")
+source=("$pkgname::git+https://github.com/BachoSeven/bastet.git")
 md5sums=('SKIP')
 
 pkgver() {
