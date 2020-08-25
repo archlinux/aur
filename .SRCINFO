@@ -1,6 +1,6 @@
 pkgbase = emacs-pgtk-native-comp-git
 	pkgdesc = GNU Emacs. Unofficial pgtk-nativecomp branch.
-	pkgver = 28.0.50.143231
+	pkgver = 28.0.50.143467
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = emacs-pgtk-native-comp-git
 	replaces = emacs27-git
 	replaces = emacs-git
 	replaces = emacs-seq
-	source = emacs-git::git://github.com/fejfighter/emacs.git#branch=pgtk-nativecomp
+	source = emacs-git::git://github.com/flatwhatson/emacs.git#branch=pgtk-nativecomp
 	md5sums = SKIP
 
 pkgname = emacs-pgtk-native-comp-git
