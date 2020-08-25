@@ -1,6 +1,6 @@
-diff --unified --recursive --text fvwm-2.6.9/fvwm/ewmh_icons.c fvwm-2.6.9.new/fvwm/ewmh_icons.c
+diff --unified --recursive --text fvwm-2.6.9/fvwm/ewmh_icons.c fvwm-patched/fvwm/ewmh_icons.c
 --- fvwm-2.6.9/fvwm/ewmh_icons.c	2018-05-26 05:35:26.000000000 -0600
-+++ fvwm-2.6.9.new/fvwm/ewmh_icons.c	2020-01-31 18:45:31.860931662 -0700
++++ fvwm-patched/fvwm/ewmh_icons.c	2020-08-21 16:47:11.016481431 -0600
 @@ -714,10 +714,10 @@
  
  	if (is_mini_icon)

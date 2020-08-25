@@ -1,0 +1,200 @@
+diff --unified --recursive --text fvwm-2.6.9/fvwm/builtins.c fvwm-patched/fvwm/builtins.c
+--- fvwm-2.6.9/fvwm/builtins.c	2018-05-27 09:47:03.000000000 -0600
++++ fvwm-patched/fvwm/builtins.c	2020-08-21 16:10:56.462693301 -0600
+@@ -482,6 +482,21 @@
+ 			if (action)
+ 				action += next;
+ 		}
++		else if (!do_add && StrEquals(parm,"buttonwidth"))
++		{
++			int width = 0;
++			int next = 0;
++
++			sscanf(action, "%d%n", &width, &next);
++
++			if (decor->button_width != width)
++			{
++				decor->button_width = width;
++				decor->flags.has_changed = 1;
++			}
++			if (action)
++				action += next;
++		}
+ 		else if (!do_add && StrEquals(parm,"MinHeight"))
+ 		{
+ 			int height = 0;
+Only in fvwm-patched/fvwm: builtins.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/frame.c fvwm-patched/fvwm/frame.c
+--- fvwm-2.6.9/fvwm/frame.c	2020-08-21 16:09:27.172710920 -0600
++++ fvwm-patched/fvwm/frame.c	2020-08-21 16:10:56.466693390 -0600
+@@ -1372,7 +1372,14 @@
+ 	tb_thick = fw->title_thickness;
+ 	nbuttons = fw->nr_left_buttons + fw->nr_right_buttons;
+ 	nbuttons_big = 0;
+-	b_length = tb_thick;
++	if (fw->decor->button_width == 0)
++	{
++		b_length = tb_thick;
++	}
++	else
++	{
++		b_length = fw->decor->button_width;
++	}
+ 	t_length = tb_length - nbuttons * b_length;
+ 	if (nbuttons > 0 && t_length < MIN_WINDOW_TITLE_LENGTH)
+ 	{
+Only in fvwm-patched/fvwm: frame.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/fvwm.h fvwm-patched/fvwm/fvwm.h
+--- fvwm-2.6.9/fvwm/fvwm.h	2020-08-21 16:09:27.172710920 -0600
++++ fvwm-patched/fvwm/fvwm.h	2020-08-21 16:10:56.466693390 -0600
+@@ -274,6 +274,7 @@
+ 		unsigned has_rounded_corners_top : 1;
+ 		unsigned has_rounded_corners_bottom : 1;
+ 		unsigned has_slightly_rounded_corners : 1;
++		unsigned has_no_top_border : 1;
+ 		focus_policy_t focus_policy;
+ 	} s;
+ } common_flags_t;
+Only in fvwm-patched/fvwm: fvwm.h.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/geometry.c fvwm-patched/fvwm/geometry.c
+--- fvwm-2.6.9/fvwm/geometry.c	2020-08-21 16:09:27.176711008 -0600
++++ fvwm-patched/fvwm/geometry.c	2020-08-21 16:10:56.466693390 -0600
+@@ -489,6 +489,7 @@
+ 	const FvwmWindow *fw, size_borders *borders, Bool is_shaded)
+ {
+ 	int title_thickness;
++	int *title_border = NULL;
+ 	int bw;
+ 	
+ 	bw = HAS_FLUXBOX_HANDLES(fw) ? 1 : fw->boundary_width;
+@@ -506,18 +507,25 @@
+ 	switch (GET_TITLE_DIR(fw))
+ 	{
+ 	case DIR_N:
+-		borders->top_left.height += title_thickness;
++		title_border = &borders->top_left.height;
+ 		break;
+ 	case DIR_S:
+-		borders->bottom_right.height += title_thickness;
++		title_border = &borders->bottom_right.height;
+ 		break;
+ 	case DIR_W:
+-		borders->top_left.width += title_thickness;
++		title_border = &borders->top_left.width;
+ 		break;
+ 	case DIR_E:
+-		borders->bottom_right.width += title_thickness;
++		title_border = &borders->bottom_right.width;
+ 		break;
+ 	}
++
++	if (HAS_NO_TOP_BORDER(fw))
++	{
++		*title_border = 1;
++	}
++	*title_border += title_thickness;
++	
+ 	borders->total_size.width =
+ 		borders->top_left.width + borders->bottom_right.width;
+ 	borders->total_size.height =
+@@ -538,6 +546,26 @@
+ 	borders->bottom_right.width = bw;
+ 	borders->top_left.height = bw;
+ 	borders->bottom_right.height = fw->boundary_width;
++	
++	if (HAS_NO_TOP_BORDER(fw))
++	{
++		switch (GET_TITLE_DIR(fw))
++		{
++		case DIR_N:
++			borders->top_left.height = 1;
++			break;
++		case DIR_S:
++			borders->bottom_right.height = 1;
++			break;
++		case DIR_W:
++			borders->top_left.width = 1;
++			break;
++		case DIR_E:
++			borders->bottom_right.width = 1;
++			break;
++		}
++	}
++
+ 	borders->total_size.width =
+ 		borders->top_left.width + borders->bottom_right.width;
+ 	borders->total_size.height =
+Only in fvwm-patched/fvwm: geometry.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/screen.h fvwm-patched/fvwm/screen.h
+--- fvwm-2.6.9/fvwm/screen.h	2020-08-21 15:30:39.091737766 -0600
++++ fvwm-patched/fvwm/screen.h	2020-08-21 16:10:56.466693390 -0600
+@@ -284,6 +284,7 @@
+ 	char *tag;                    /* general style tag */
+ 	int title_height;           /* explicitly specified title bar height */
+ 	int min_title_height;
++	int button_width;
+ 	/* titlebar buttons */
+ 	TitleButton buttons[NUMBER_OF_TITLE_BUTTONS];
+ 	TitleButton titlebar;
+Only in fvwm-patched/fvwm: screen.h.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/style.c fvwm-patched/fvwm/style.c
+--- fvwm-2.6.9/fvwm/style.c	2020-08-21 16:09:27.176711008 -0600
++++ fvwm-patched/fvwm/style.c	2020-08-21 16:10:56.466693390 -0600
+@@ -4714,6 +4714,12 @@
+ 			ps->change_mask.has_title_format_string = 1;
+ 
+ 		}
++		else if (StrEquals(token, "TopBorder"))
++		{
++			S_SET_HAS_NO_TOP_BORDER(SCF(*ps), !on);
++			S_SET_HAS_NO_TOP_BORDER(SCM(*ps), 1);
++			S_SET_HAS_NO_TOP_BORDER(SCC(*ps), 1);
++		}
+ 		else if (StrEquals(token, "TopTitleRotated"))
+ 		{
+ 			S_SET_IS_TOP_TITLE_ROTATED(SCF(*ps), on);
+@@ -5315,6 +5321,11 @@
+ 	{
+ 		flags->do_redecorate = True;
+ 	}
++
++	if (S_HAS_NO_TOP_BORDER(SCC(*ret_style)))
++	{
++		flags->do_redecorate = True;
++	}
+ 
+ 	/* has_mwm_border
+ 	 * has_mwm_buttons */
+Only in fvwm-patched/fvwm: style.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/style.h fvwm-patched/fvwm/style.h
+--- fvwm-2.6.9/fvwm/style.h	2020-08-21 16:09:27.176711008 -0600
++++ fvwm-patched/fvwm/style.h	2020-08-21 16:10:56.466693390 -0600
+@@ -395,6 +395,11 @@
+ 	((c).s.has_slightly_rounded_corners)
+ #define S_SET_HAS_SLIGHTLY_ROUNDED_CORNERS(c,x) \
+ 	((c).s.has_slightly_rounded_corners = !!(x))
++#define S_HAS_NO_TOP_BORDER(c) \
++	((c).s.has_no_top_border)
++#define S_SET_HAS_NO_TOP_BORDER(c,x) \
++	((c).s.has_no_top_border = !!(x))
++
+ #define S_DO_EWMH_MINI_ICON_OVERRIDE(c) \
+ 	((c).s.do_ewmh_mini_icon_override)
+ #define S_SET_DO_EWMH_MINI_ICON_OVERRIDE(c,x) \
+Only in fvwm-patched/fvwm: style.h.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/window_flags.h fvwm-patched/fvwm/window_flags.h
+--- fvwm-2.6.9/fvwm/window_flags.h	2020-08-21 16:09:27.176711008 -0600
++++ fvwm-patched/fvwm/window_flags.h	2020-08-21 16:10:56.466693390 -0600
+@@ -358,6 +358,12 @@
+ 	(fw)->flags.common.s.has_slightly_rounded_corners = !!(x)
+ #define SETM_HAS_SLIGHTLY_ROUNDED_CORNERS(fw,x) \
+ 	(fw)->flag_mask.common.s.has_slightly_rounded_corners = !!(x)
++#define HAS_NO_TOP_BORDER(fw) \
++	((fw)->flags.common.s.has_no_top_border)
++#define SET_HAS_NO_TOP_BORDER(fw,x) \
++	(fw)->flags.common.s.has_no_top_border = !!(x)
++#define SETM_HAS_NO_TOP_BORDER(fw,x) \
++	(fw)->flag_mask.common.s.has_no_top_border = !!(x)
+ 
+ /* access to the special flags of a window */
+ #define DO_REUSE_DESTROYED(fw) \

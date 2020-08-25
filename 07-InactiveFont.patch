@@ -1,0 +1,345 @@
+diff --unified --recursive --text fvwm-2.6.9/fvwm/add_window.c fvwm-patched/fvwm/add_window.c
+--- fvwm-2.6.9/fvwm/add_window.c	2018-05-26 05:35:26.000000000 -0600
++++ fvwm-patched/fvwm/add_window.c	2020-08-21 16:05:17.755315854 -0600
+@@ -763,6 +763,18 @@
+ 	fw->title_font = Scr.DefaultFont;
+ 	SET_USING_DEFAULT_WINDOW_FONT(fw, 1);
+ 
++	if (IS_INACTIVE_WINDOW_FONT_LOADED(fw) && !USING_DEFAULT_INACTIVE_WINDOW_FONT(fw) &&
++	    fw->title_font != Scr.DefaultFont)
++	{
++		FlocaleUnloadFont(dpy, fw->title_font);
++	}
++	SET_INACTIVE_WINDOW_FONT_LOADED(fw, 0);
++	/* Fall back to default font. There are some race conditions when a
++	 * window is destroyed and recaptured where an invalid font might be
++	 * accessed  otherwise. */
++	fw->title_font = Scr.DefaultFont;
++	SET_USING_DEFAULT_INACTIVE_WINDOW_FONT(fw, 1);
++	
+ 	return;
+ }
+ 
+@@ -1963,6 +1975,25 @@
+ 		}
+ 		SET_WINDOW_FONT_LOADED(fw, 1);
+ 	}
++	/* load inactive font */
++	if (!IS_INACTIVE_WINDOW_FONT_LOADED(fw))
++	{
++		if (S_HAS_INACTIVE_WINDOW_FONT(SCF(*pstyle)) &&
++		    SGET_INACTIVE_WINDOW_FONT(*pstyle) &&
++		    (fw->inactive_title_font =
++		     FlocaleLoadFont(dpy, SGET_INACTIVE_WINDOW_FONT(*pstyle), "FVWM")))
++		{
++			SET_USING_DEFAULT_INACTIVE_WINDOW_FONT(fw, 0);
++		}
++		else
++		{
++			/* no explicit font or failed to load, use active title font
++			 * instead */
++			fw->inactive_title_font = fw->title_font;
++			SET_USING_DEFAULT_INACTIVE_WINDOW_FONT(fw, 1);
++		}
++		SET_INACTIVE_WINDOW_FONT_LOADED(fw, 1);
++	}
+ 	setup_title_geometry(fw, pstyle);
+ 
+ 	return;
+Only in fvwm-patched/fvwm: add_window.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/borders.c fvwm-patched/fvwm/borders.c
+--- fvwm-2.6.9/fvwm/borders.c	2020-08-21 16:04:22.090148699 -0600
++++ fvwm-patched/fvwm/borders.c	2020-08-21 16:05:17.759315938 -0600
+@@ -3912,7 +3912,7 @@
+ 
+ static void border_draw_title_mono(
+ 	FvwmWindow *fw, titlebar_descr *td, title_draw_descr *tdd,
+-	FlocaleWinString *fstr, Pixmap dest_pix)
++	FlocaleWinString *fstr, Pixmap dest_pix, Bool do_hilight)
+ {
+ 	int has_vt;
+ 
+@@ -3922,7 +3922,8 @@
+ 		td->offset - 2, 0, td->length+4, fw->title_thickness);
+ 	if (fw->visible_name != (char *)NULL)
+ 	{
+-		FlocaleDrawString(dpy, fw->title_font, fstr, 0);
++		FlocaleDrawString(dpy, do_hilight ? fw->title_font :
++			fw->inactive_title_font, fstr, 0);
+ 	}
+ 	/* for mono, we clear an area in the title bar where the window
+ 	 * title goes, so that its more legible. For color, no need */
+@@ -3986,7 +3987,7 @@
+ 
+ static void border_draw_title_deep(
+ 	FvwmWindow *fw, titlebar_descr *td, title_draw_descr *tdd,
+-	FlocaleWinString *fstr, Pixmap dest_pix, Window w)
++	FlocaleWinString *fstr, Pixmap dest_pix, Window w, Bool do_hilight)
+ {
+ 	DecorFace *df;
+ 	pixmap_background_type bg;
+@@ -4008,14 +4009,15 @@
+ 				1);
+ 		}
+ 	}
+-	FlocaleDrawString(dpy, fw->title_font, &tdd->fstr, 0);
++	FlocaleDrawString(dpy, do_hilight ? fw->title_font :
++		fw->inactive_title_font, &tdd->fstr, 0);
+ 
+ 	return;
+ }
+ 
+ static void border_get_titlebar_draw_descr(
+ 	FvwmWindow *fw, titlebar_descr *td, title_draw_descr *tdd,
+-	Pixmap dest_pix)
++	Pixmap dest_pix, Bool do_hilight)
+ {
+ 	memset(tdd, 0, sizeof(*tdd));
+ 	/* prepare the gcs and variables */
+@@ -4029,7 +4031,8 @@
+ 		tdd->rgc = td->cd->relief_gc;
+ 		tdd->sgc = td->cd->shadow_gc;
+ 	}
+-	NewFontAndColor(fw->title_font, td->cd->fore_color, td->cd->back_color);
++	NewFontAndColor(do_hilight ? fw->title_font : fw->inactive_title_font,
++		td->cd->fore_color, td->cd->back_color);
+ 	tdd->tstyle = &TB_STATE(
+ 		GetDecor(fw, titlebar))[td->tbstate.tstate].style;
+ 	tdd->df = &TB_STATE(GetDecor(fw, titlebar))[td->tbstate.tstate];
+@@ -4066,7 +4069,7 @@
+ }
+ 
+ static void border_set_title_pixmap(
+-	FvwmWindow *fw, titlebar_descr *td, Pixmap *dest_pix, Window w)
++	FvwmWindow *fw, titlebar_descr *td, Pixmap *dest_pix, Window w, Bool do_hilight)
+ {
+ 	pixmap_background_type bg;
+ 	title_draw_descr tdd;
+@@ -4074,7 +4077,7 @@
+ 	Bool free_bg_pixmap = False;
+ 	rectangle pix_g;
+ 
+-	border_get_titlebar_draw_descr(fw, td, &tdd, *dest_pix);
++	border_get_titlebar_draw_descr(fw, td, &tdd, *dest_pix, do_hilight);
+ 	/* prepare background, either from the window colour or from the
+ 	 * border style */
+ 	if (!DFS_USE_BORDER_STYLE(*tdd.tstyle))
+@@ -4142,11 +4145,11 @@
+ 
+ 	if (Pdepth < 2)
+ 	{
+-		border_draw_title_mono(fw, td, &tdd, &fstr, *dest_pix);
++		border_draw_title_mono(fw, td, &tdd, &fstr, *dest_pix, do_hilight);
+ 	}
+ 	else
+ 	{
+-		border_draw_title_deep(fw, td, &tdd, &fstr, *dest_pix, w);
++		border_draw_title_deep(fw, td, &tdd, &fstr, *dest_pix, w, do_hilight);
+ 	}
+ 	border_draw_title_relief(fw, td, &tdd, *dest_pix);
+ 	border_draw_title_stick_lines(fw, td, &tdd, *dest_pix);
+@@ -4155,7 +4158,7 @@
+ }
+ 
+ static void border_draw_title(
+-	FvwmWindow *fw, titlebar_descr *td)
++	FvwmWindow *fw, titlebar_descr *td, Bool do_hilight)
+ {
+ 	Pixmap p;
+ 
+@@ -4173,7 +4176,7 @@
+ #if 0
+ 	fprintf(stderr,"drawing title\n");
+ #endif
+-	border_set_title_pixmap(fw, td, &p, FW_W_TITLE(fw));
++	border_set_title_pixmap(fw, td, &p, FW_W_TITLE(fw), do_hilight);
+ 	if (td->draw_rotation != ROTATION_0)
+ 	{
+ 		Pixmap tmp;
+@@ -4662,9 +4665,9 @@
+ 	if (fw->visible_name != (char *)NULL)
+ 	{
+ 		ret_td->length = FlocaleTextWidth(
+-			fw->title_font, fw->visible_name,
+-			(ret_td->has_vt) ? -strlen(fw->visible_name) :
+-			strlen(fw->visible_name));
++			do_hilight ? fw->title_font : fw->inactive_title_font,
++			fw->visible_name, (ret_td->has_vt) ?
++			-strlen(fw->visible_name) : strlen(fw->visible_name));
+ 		if (ret_td->length > fw->title_length -
+ 		    2*MIN_WINDOW_TITLE_TEXT_OFFSET)
+ 		{
+@@ -4770,7 +4773,7 @@
+ 	}
+ 	if ((draw_parts & PART_TITLE) != PART_NONE)
+ 	{
+-		border_draw_title(fw, &td);
++		border_draw_title(fw, &td, do_hilight);
+ 	}
+ 	if ((draw_parts & PART_BUTTONS) != PART_NONE)
+ 	{
+Only in fvwm-patched/fvwm: borders.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/fvwm.h fvwm-patched/fvwm/fvwm.h
+--- fvwm-2.6.9/fvwm/fvwm.h	2020-08-21 16:04:22.090148699 -0600
++++ fvwm-patched/fvwm/fvwm.h	2020-08-21 16:05:17.759315938 -0600
+@@ -198,6 +198,7 @@
+ 	unsigned has_icon_font : 1;
+ 	unsigned has_no_border : 1;
+ 	unsigned has_window_font : 1;
++	unsigned has_inactive_window_font : 1;
+ 	unsigned title_dir : 2;
+ 	unsigned user_states : 32;
+ 	/* static flags that do not change dynamically after the window has
+@@ -360,11 +361,13 @@
+ 	unsigned is_viewport_moved : 1;
+ 	unsigned is_window_being_moved_opaque : 1;
+ 	unsigned is_window_font_loaded : 1;
++	unsigned is_inactive_window_font_loaded : 1;
+ 	unsigned is_window_shaded : 1;
+ 	unsigned used_title_dir_for_shading : 1;
+ 	unsigned shaded_dir : 3;
+ 	unsigned using_default_icon_font : 1;
+ 	unsigned using_default_window_font : 1;
++	unsigned using_default_inactive_window_font : 1;
+ #define ICON_HINT_NEVER    0
+ #define ICON_HINT_ONCE     1
+ #define ICON_HINT_MULTIPLE 2
+@@ -679,6 +682,7 @@
+ 	signed char icon_title_relief;
+ 	char *icon_font;
+ 	char *window_font;
++	char *inactive_window_font;
+ 	char *fore_color_name;
+ 	char *back_color_name;
+ 	char *fore_color_name_hi;
+@@ -838,6 +842,7 @@
+ 
+ 	/* title font */
+ 	FlocaleFont *title_font;
++	FlocaleFont *inactive_title_font;
+ 	/* /Y coordinate to draw the title name */
+ 	short title_text_offset;
+ 	short title_length;
+Only in fvwm-patched/fvwm: fvwm.h.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/style.c fvwm-patched/fvwm/style.c
+--- fvwm-2.6.9/fvwm/style.c	2020-08-21 16:04:22.090148699 -0600
++++ fvwm-patched/fvwm/style.c	2020-08-21 16:05:17.759315938 -0600
+@@ -440,6 +440,22 @@
+ 				*merged_style, SGET_WINDOW_FONT(*add_style));
+ 		}
+ 	}
++	if (S_HAS_INACTIVE_WINDOW_FONT(SCF(*add_style)))
++	{
++		if (do_free_src_and_alloc_copy)
++		{
++			SAFEFREE(SGET_INACTIVE_WINDOW_FONT(*merged_style));
++			SSET_INACTIVE_WINDOW_FONT(
++				*merged_style, (SGET_INACTIVE_WINDOW_FONT(*add_style)) ?
++				safestrdup(SGET_INACTIVE_WINDOW_FONT(*add_style)) :
++				NULL);
++		}
++		else
++		{
++			SSET_INACTIVE_WINDOW_FONT(
++				*merged_style, SGET_INACTIVE_WINDOW_FONT(*add_style));
++		}
++	}
+ 	if (add_style->flags.use_start_on_desk)
+ 	{
+ 		SSET_START_DESK(*merged_style, SGET_START_DESK(*add_style));
+@@ -931,6 +947,10 @@
+ 	{
+ 		SAFEFREE(SGET_WINDOW_FONT(*style));
+ 	}
++	if (pmask->common.has_inactive_window_font)
++	{
++		SAFEFREE(SGET_INACTIVE_WINDOW_FONT(*style));
++	}
+ 	if (pmask->has_icon)
+ 	{
+ 		SAFEFREE(SGET_ICON_NAME(*style));
+@@ -3359,6 +3379,15 @@
+ 			S_SET_IS_UNICONIFIABLE(SCM(*ps), 1);
+ 			S_SET_IS_UNICONIFIABLE(SCC(*ps), 1);
+ 		}
++		else if (StrEquals(token, "InactiveFont"))
++		{
++			SAFEFREE(SGET_INACTIVE_WINDOW_FONT(*ps));
++			rest = GetNextToken(rest, &token);
++			SSET_INACTIVE_WINDOW_FONT(*ps, token);
++			S_SET_HAS_INACTIVE_WINDOW_FONT(SCF(*ps), (token != NULL));
++			S_SET_HAS_INACTIVE_WINDOW_FONT(SCM(*ps), 1);
++			S_SET_HAS_INACTIVE_WINDOW_FONT(SCC(*ps), 1);
++		}
+ 		else if (StrEquals(token, "IndexedWindowName"))
+ 		{
+ 			char *format;
+@@ -5216,6 +5245,12 @@
+ 		flags->do_update_window_font = 1;
+ 	}
+ 
++	/* has_inactive_window_font */
++	if (S_HAS_INACTIVE_WINDOW_FONT(SCC(*ret_style)))
++	{
++		flags->do_update_window_font = True;
++	}
++
+ 	/* has_stippled_title */
+ 	if (S_HAS_STIPPLED_TITLE(SCC(*ret_style)) ||
+ 	    S_HAS_NO_STICKY_STIPPLED_TITLE(SCC(*ret_style)) ||
+Only in fvwm-patched/fvwm: style.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/style.h fvwm-patched/fvwm/style.h
+--- fvwm-2.6.9/fvwm/style.h	2020-08-21 16:04:22.090148699 -0600
++++ fvwm-patched/fvwm/style.h	2020-08-21 16:05:17.759315938 -0600
+@@ -293,6 +293,10 @@
+ 	((c).has_window_font)
+ #define S_SET_HAS_WINDOW_FONT(c,x) \
+ 	((c).has_window_font = !!(x))
++#define S_HAS_INACTIVE_WINDOW_FONT(c) \
++	((c).has_inactive_window_font)
++#define S_SET_HAS_INACTIVE_WINDOW_FONT(c,x) \
++	((c).has_inactive_window_font = !!(x))
+ #define S_ICON_OVERRIDE(c) \
+ 	((c).s.icon_override)
+ #define S_SET_ICON_OVERRIDE(c,x) \
+@@ -487,6 +491,10 @@
+ 	((s).window_font)
+ #define SSET_WINDOW_FONT(s,x) \
+ 	((s).window_font = (x))
++#define SGET_INACTIVE_WINDOW_FONT(s) \
++	((s).inactive_window_font)
++#define SSET_INACTIVE_WINDOW_FONT(s,x) \
++	((s).inactive_window_font = (x))
+ #define SGET_COLORSET(s) \
+ 	((s).colorset)
+ #define SSET_COLORSET(s,x) \
+Only in fvwm-patched/fvwm: style.h.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/window_flags.h fvwm-patched/fvwm/window_flags.h
+--- fvwm-2.6.9/fvwm/window_flags.h	2020-08-21 16:04:22.094148783 -0600
++++ fvwm-patched/fvwm/window_flags.h	2020-08-21 16:05:17.759315938 -0600
+@@ -580,6 +580,12 @@
+ 	(fw)->flags.is_window_font_loaded = !!(x)
+ #define SETM_WINDOW_FONT_LOADED(fw,x) \
+ 	(fw)->flag_mask.is_window_font_loaded = !!(x)
++#define IS_INACTIVE_WINDOW_FONT_LOADED(fw) \
++	((fw)->flags.is_inactive_window_font_loaded)
++#define SET_INACTIVE_WINDOW_FONT_LOADED(fw,x) \
++	(fw)->flags.is_inactive_window_font_loaded = !!(x)
++#define SETM_INACTIVE_WINDOW_FONT_LOADED(fw,x) \
++	(fw)->flag_mask.is_inactive_window_font_loaded = !!(x)
+ #define CR_MOTION_METHOD(fw) \
+ 	((fw)->flags.cr_motion_method)
+ #define SET_CR_MOTION_METHOD(fw,x) \
+@@ -622,6 +628,12 @@
+ 	(fw)->flags.using_default_window_font = !!(x)
+ #define SETM_USING_DEFAULT_WINDOW_FONT(fw,x) \
+ 	(fw)->flag_mask.using_default_window_font = !!(x)
++#define USING_DEFAULT_INACTIVE_WINDOW_FONT(fw) \
++	((fw)->flags.using_default_inactive_window_font)
++#define SET_USING_DEFAULT_INACTIVE_WINDOW_FONT(fw,x) \
++	(fw)->flags.using_default_inactive_window_font = !!(x)
++#define SETM_USING_DEFAULT_INACTIVE_WINDOW_FONT(fw,x) \
++	(fw)->flag_mask.using_default_inactive_window_font = !!(x)
+ #define USING_DEFAULT_ICON_FONT(fw) \
+ 	((fw)->flags.using_default_icon_font)
+ #define SET_USING_DEFAULT_ICON_FONT(fw,x) \

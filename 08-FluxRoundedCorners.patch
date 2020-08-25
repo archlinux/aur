@@ -1,7 +1,7 @@
-diff --unified --recursive --text fvwm-2.6.9/fvwm/add_window.c new/fvwm/add_window.c
---- fvwm-2.6.9/fvwm/add_window.c	2018-05-26 05:35:26.000000000 -0600
-+++ new/fvwm/add_window.c	2020-02-02 16:19:32.245060960 -0700
-@@ -1916,6 +1916,7 @@
+diff --unified --recursive --text fvwm-2.6.9/fvwm/add_window.c fvwm-patched/fvwm/add_window.c
+--- fvwm-2.6.9/fvwm/add_window.c	2020-08-21 16:07:19.993929916 -0600
++++ fvwm-patched/fvwm/add_window.c	2020-08-21 16:08:05.602920846 -0600
+@@ -1928,6 +1928,7 @@
  {
  	int width;
  	int offset;
@@ -9,7 +9,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/add_window.c new/fvwm/add_wind
  
  	get_title_font_size_and_offset(
  		fw, S_TITLE_DIR(SCF(*pstyle)),
-@@ -1927,6 +1928,10 @@
+@@ -1939,6 +1940,10 @@
  	fw->title_thickness = width;
  	fw->title_text_offset = offset;
  	fw->corner_width = fw->title_thickness + fw->boundary_width;
@@ -20,7 +20,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/add_window.c new/fvwm/add_wind
  	if (!HAS_TITLE(fw))
  	{
  		fw->title_thickness = 0;
-@@ -2828,6 +2833,8 @@
+@@ -2859,6 +2864,8 @@
  		fw = NULL;
  	}
  
@@ -29,11 +29,11 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/add_window.c new/fvwm/add_wind
  	return fw;
  }
  
-Only in new/fvwm: add_window.c.orig
-diff --unified --recursive --text fvwm-2.6.9/fvwm/borders.c new/fvwm/borders.c
---- fvwm-2.6.9/fvwm/borders.c	2018-05-26 05:35:26.000000000 -0600
-+++ new/fvwm/borders.c	2020-02-02 16:19:32.245060960 -0700
-@@ -1377,6 +1377,24 @@
+Only in fvwm-patched/fvwm: add_window.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/borders.c fvwm-patched/fvwm/borders.c
+--- fvwm-2.6.9/fvwm/borders.c	2020-08-21 16:07:19.993929916 -0600
++++ fvwm-patched/fvwm/borders.c	2020-08-21 16:08:05.602920846 -0600
+@@ -1745,6 +1745,24 @@
  	return;
  }
  
@@ -58,11 +58,11 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/borders.c new/fvwm/borders.c
  /* create a root transparent colorset bg, we take in account a possible
   * drawing rotation */
  static Pixmap border_create_root_transparent_pixmap(
-@@ -1592,12 +1610,28 @@
+@@ -1989,12 +2007,28 @@
  	pix_g.width = part_g.width;
  	pix_g.height = part_g.height;
  	border_fill_pixmap_background(p, &pix_g, &bg, cd);
-+	if (HAS_FLUXBOX_HANDLES(fw))
++	if (HAS_FLUXBOX_HANDLES(fw) && (part & PART_BOTTOM))
 +	{
 +		pix_g.y = part_g.height - fw->boundary_width;
 +		if (part != PART_BORDER_S)
@@ -88,7 +88,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/borders.c new/fvwm/borders.c
  	{
  		border_draw_part_relief(br, frame_g, &part_g, p, is_inverted);
  		/* draw the handle marks */
-@@ -4113,6 +4147,9 @@
+@@ -4514,6 +4548,9 @@
  	JustificationType just;
  	int lbl = 0;
  	int rbl = 0;
@@ -98,7 +98,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/borders.c new/fvwm/borders.c
  
  	ret_td->cd = cd;
  	ret_td->frame_g = *new_g;
-@@ -4150,16 +4187,16 @@
+@@ -4551,16 +4588,16 @@
  	/* geometry of the title bar title + buttons */
  	if (!ret_td->has_vt)
  	{
@@ -119,7 +119,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/borders.c new/fvwm/borders.c
  		ret_td->bar_g.x = ret_td->layout.title_g.x;
  	}
  
-@@ -4211,7 +4248,7 @@
+@@ -4612,7 +4649,7 @@
  		{
  			ret_td->left_buttons_g.height = rbl;
  			ret_td->right_buttons_g.height = lbl;
@@ -128,7 +128,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/borders.c new/fvwm/borders.c
  			ret_td->right_buttons_g.x = ret_td->bar_g.x;
  			ret_td->left_buttons_g.y = ret_td->layout.title_g.y +
  				ret_td->layout.title_g.height;
-@@ -4221,7 +4258,7 @@
+@@ -4622,7 +4659,7 @@
  		{
  			ret_td->left_buttons_g.width = rbl;
  			ret_td->right_buttons_g.width = lbl;
@@ -137,7 +137,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/borders.c new/fvwm/borders.c
  			ret_td->right_buttons_g.y = ret_td->bar_g.y;
  			ret_td->left_buttons_g.x = ret_td->layout.title_g.x +
  				ret_td->layout.title_g.width;
-@@ -4234,7 +4271,7 @@
+@@ -4635,7 +4672,7 @@
  		{
  			ret_td->left_buttons_g.height = lbl;
  			ret_td->right_buttons_g.height = rbl;
@@ -146,7 +146,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/borders.c new/fvwm/borders.c
  			ret_td->left_buttons_g.x = ret_td->bar_g.x;
  			ret_td->right_buttons_g.y = ret_td->layout.title_g.y +
  				ret_td->layout.title_g.height;
-@@ -4244,7 +4281,7 @@
+@@ -4645,7 +4682,7 @@
  		{
  			ret_td->left_buttons_g.width = lbl;
  			ret_td->right_buttons_g.width = rbl;
@@ -155,16 +155,16 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/borders.c new/fvwm/borders.c
  			ret_td->left_buttons_g.y = ret_td->bar_g.y;
  			ret_td->right_buttons_g.x = ret_td->layout.title_g.x +
  				ret_td->layout.title_g.width;
-@@ -4586,7 +4623,7 @@
- {
+@@ -4988,7 +5025,7 @@
  	int bw;
+ 	Bool title;
  
 -	bw = fw->boundary_width;
 +	bw = HAS_FLUXBOX_HANDLES(fw) ? 1 : fw->boundary_width;
  	/* ret_g->x and ret->y is just an offset relatively to the w,
  	 * maybe we can take the relief in account? */
  	switch (part)
-@@ -4604,6 +4641,10 @@
+@@ -5006,6 +5043,10 @@
  	case PART_BORDER_S:
  		ret_g->x = sidebar_g->x;
  		ret_g->y = 2 * sidebar_g->y + sidebar_g->height - bw;
@@ -175,7 +175,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/borders.c new/fvwm/borders.c
  		*ret_w = FW_W_SIDE(fw, 2);
  		break;
  	case PART_BORDER_W:
-@@ -4638,9 +4679,14 @@
+@@ -5040,9 +5081,14 @@
  	switch (part)
  	{
  	case PART_BORDER_N:
@@ -190,10 +190,10 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/borders.c new/fvwm/borders.c
  		break;
  	case PART_BORDER_E:
  	case PART_BORDER_W:
-Only in new/fvwm: borders.c.orig
-diff --unified --recursive --text fvwm-2.6.9/fvwm/frame.c new/fvwm/frame.c
+Only in fvwm-patched/fvwm: borders.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/frame.c fvwm-patched/fvwm/frame.c
 --- fvwm-2.6.9/fvwm/frame.c	2018-05-26 05:35:26.000000000 -0600
-+++ new/fvwm/frame.c	2020-02-02 16:19:32.245060960 -0700
++++ fvwm-patched/fvwm/frame.c	2020-08-21 16:08:05.606920933 -0600
 @@ -438,6 +438,8 @@
  		BroadcastConfig(M_CONFIGURE_WINDOW,fw);
  	}
@@ -422,10 +422,10 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/frame.c new/fvwm/frame.c
  /****************************************************************************
   *
   * Sets up the shaped window borders
-Only in new/fvwm: frame.c.orig
-diff --unified --recursive --text fvwm-2.6.9/fvwm/frame.h new/fvwm/frame.h
+Only in fvwm-patched/fvwm: frame.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/frame.h fvwm-patched/fvwm/frame.h
 --- fvwm-2.6.9/fvwm/frame.h	2016-10-15 08:51:45.000000000 -0600
-+++ new/fvwm/frame.h	2020-02-02 16:19:32.245060960 -0700
++++ fvwm-patched/fvwm/frame.h	2020-08-21 16:08:05.606920933 -0600
 @@ -5,6 +5,8 @@
  
  /* ---------------------------- included header files ---------------------- */
@@ -443,13 +443,13 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/frame.h new/fvwm/frame.h
 +void draw_rounded_mask(Window win, int width, int height, Bool slightlyrounded, window_parts draw_parts, int col);
  
  #endif /* FRAME_H */
-diff --unified --recursive --text fvwm-2.6.9/fvwm/fvwm.h new/fvwm/fvwm.h
---- fvwm-2.6.9/fvwm/fvwm.h	2019-08-24 16:50:07.000000000 -0600
-+++ new/fvwm/fvwm.h	2020-02-02 16:19:32.245060960 -0700
-@@ -267,6 +267,10 @@
- #define WINDOWSHADE_LAZY_MASK   0x3
+diff --unified --recursive --text fvwm-2.6.9/fvwm/fvwm.h fvwm-patched/fvwm/fvwm.h
+--- fvwm-2.6.9/fvwm/fvwm.h	2020-08-21 16:07:19.993929916 -0600
++++ fvwm-patched/fvwm/fvwm.h	2020-08-21 16:08:05.606920933 -0600
+@@ -270,6 +270,10 @@
  		unsigned windowshade_laziness : 2;
  		unsigned use_title_decor_rotation : 1;
+ 		unsigned has_border_under_title : 1;
 +		unsigned has_fluxbox_handles : 1;
 +		unsigned has_rounded_corners_top : 1;
 +		unsigned has_rounded_corners_bottom : 1;
@@ -457,7 +457,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/fvwm.h new/fvwm/fvwm.h
  		focus_policy_t focus_policy;
  	} s;
  } common_flags_t;
-@@ -548,6 +552,7 @@
+@@ -553,6 +557,7 @@
  	unsigned has_edge_resistance_move : 1;
  	unsigned has_edge_resistance_xinerama_move : 1;
  	unsigned has_handle_width : 1;
@@ -465,7 +465,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/fvwm.h new/fvwm/fvwm.h
  	unsigned has_icon : 1;
  	unsigned has_icon_boxes : 1;
  	unsigned has_icon_size_limits : 1;
-@@ -675,6 +680,7 @@
+@@ -713,6 +718,7 @@
  	short border_width;
  	/* resize handle width */
  	short handle_width;
@@ -473,36 +473,34 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/fvwm.h new/fvwm/fvwm.h
  	int layer;
  	int start_desk;
  	int start_page_x;
-Only in new/fvwm: fvwm.h.orig
-diff --unified --recursive --text fvwm-2.6.9/fvwm/geometry.c new/fvwm/geometry.c
---- fvwm-2.6.9/fvwm/geometry.c	2018-04-28 05:46:28.000000000 -0600
-+++ new/fvwm/geometry.c	2020-02-02 16:19:32.245060960 -0700
-@@ -479,10 +479,21 @@
- void get_window_borders(
- 	const FvwmWindow *fw, size_borders *borders)
+Only in fvwm-patched/fvwm: fvwm.h.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/geometry.c fvwm-patched/fvwm/geometry.c
+--- fvwm-2.6.9/fvwm/geometry.c	2020-08-21 16:04:22.090148699 -0600
++++ fvwm-patched/fvwm/geometry.c	2020-08-21 16:08:05.606920933 -0600
+@@ -489,16 +489,18 @@
+ 	const FvwmWindow *fw, size_borders *borders, Bool is_shaded)
  {
+ 	int title_thickness;
++	int bw;
+ 	
 -	borders->top_left.width = fw->boundary_width;
 -	borders->bottom_right.width = fw->boundary_width;
 -	borders->top_left.height = fw->boundary_width;
-+	int title_thickness;
-+	int bw;
-+
 +	bw = HAS_FLUXBOX_HANDLES(fw) ? 1 : fw->boundary_width;
 +	borders->top_left.width = bw;
 +	borders->bottom_right.width = bw;
 +	borders->top_left.height = bw;
  	borders->bottom_right.height = fw->boundary_width;
-+	
-+	title_thickness = fw->title_thickness;
-+	if (HAS_TITLE(fw))
-+	{
-+		title_thickness += bw;
-+	}
-+	
- 	switch (GET_TITLE_DIR(fw))
+ 
+ 	title_thickness = fw->title_thickness;
+ 	if (HAS_TITLE(fw) && HAS_BORDER_UNDER_TITLE(fw) && !is_shaded)
  	{
- 	case DIR_N:
-@@ -510,9 +521,13 @@
+-		title_thickness += fw->boundary_width;
++		title_thickness += bw;
+ 	}
+ 	
+ 	switch (GET_TITLE_DIR(fw))
+@@ -528,9 +530,13 @@
  void get_window_borders_no_title(
  	const FvwmWindow *fw, size_borders *borders)
  {
@@ -519,10 +517,10 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/geometry.c new/fvwm/geometry.c
  	borders->bottom_right.height = fw->boundary_width;
  	borders->total_size.width =
  		borders->top_left.width + borders->bottom_right.width;
-Only in new/fvwm: geometry.c.orig
-diff --unified --recursive --text fvwm-2.6.9/fvwm/menus.c new/fvwm/menus.c
---- fvwm-2.6.9/fvwm/menus.c	2018-05-26 05:35:26.000000000 -0600
-+++ new/fvwm/menus.c	2020-02-02 16:19:32.248394323 -0700
+Only in fvwm-patched/fvwm: geometry.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/menus.c fvwm-patched/fvwm/menus.c
+--- fvwm-2.6.9/fvwm/menus.c	2020-08-21 15:53:07.026125528 -0600
++++ fvwm-patched/fvwm/menus.c	2020-08-21 16:08:05.606920933 -0600
 @@ -60,6 +60,7 @@
  #include "menugeometry.h"
  #include "menuparameters.h"
@@ -531,7 +529,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/menus.c new/fvwm/menus.c
  #include "libs/FGettext.h"
  
  /* ---------------------------- local definitions -------------------------- */
-@@ -3130,6 +3131,13 @@
+@@ -3190,6 +3191,13 @@
  	return x_overlap;
  }
  
@@ -545,47 +543,57 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/menus.c new/fvwm/menus.c
  /*
   *
   *  Procedure:
-@@ -3706,6 +3714,8 @@
+@@ -3763,6 +3771,8 @@
  	 * Pop up the menu
  	 */
  
 +	menu_make_rounded_corners(mr);
 +
  	XMoveWindow(dpy, MR_WINDOW(mr), x, y);
- 	XSelectInput(dpy, MR_WINDOW(mr), event_mask);
- 	XMapRaised(dpy, MR_WINDOW(mr));
-Only in new/fvwm: menus.c.orig
-diff --unified --recursive --text fvwm-2.6.9/fvwm/menustyle.c new/fvwm/menustyle.c
---- fvwm-2.6.9/fvwm/menustyle.c	2018-05-26 05:35:26.000000000 -0600
-+++ new/fvwm/menustyle.c	2020-02-02 16:19:32.248394323 -0700
+ 	MR_X(mr) = x;
+ 	MR_Y(mr) = y;
+Only in fvwm-patched/fvwm: menus.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/menustyle.c fvwm-patched/fvwm/menustyle.c
+--- fvwm-2.6.9/fvwm/menustyle.c	2020-08-21 15:53:07.026125528 -0600
++++ fvwm-patched/fvwm/menustyle.c	2020-08-21 16:08:05.606920933 -0600
 @@ -431,6 +431,7 @@
  		"TitleColorset", "HilightTitleBack",
  		"TitleFont",
- 		"VerticalMargins",
+ 		"VerticalMargins", "FlatSeparators",
 +		"RoundedCorners", "SlightlyRoundedCorners",
  		"UniqueHotkeyActivatesImmediate",
  		NULL
  	};
-@@ -1605,6 +1606,12 @@
- 		case 63: /* UniqueHotKeyActivatesImmediate */
- 			ST_HOTKEY_ACTIVATES_IMMEDIATE(tmpms) = on;
+@@ -1603,12 +1604,18 @@
+ 				&ST_VERTICAL_MARGIN_BOTTOM(tmpms),
+ 				0, 0);
  			break;
-+                case 64: /* RoundedCorners */
-+                        ST_HAS_ROUNDED_CORNERS(tmpms) = on;
-+                        break;
-+                case 65: /* SlightlyRoundedCorners */
-+                        ST_HAS_SLIGHTLY_ROUNDED_CORNERS(tmpms) = on;
-+                        break;
+-		case 63: /* UniqueHotKeyActivatesImmediate */
+-			ST_HOTKEY_ACTIVATES_IMMEDIATE(tmpms) = on;
+-			break;
+ 		case 63: /* FlatSeparators */
+ 			ST_DO_FLAT_SEPARATOR(tmpms) = on;
+ 			break;
++		case 64: /* UniqueHotKeyActivatesImmediate */
++			ST_HOTKEY_ACTIVATES_IMMEDIATE(tmpms) = on;
++			break;
++		case 65: /* RoundedCorners */
++			ST_HAS_ROUNDED_CORNERS(tmpms) = on;
++			break;
++		case 66: /* SlightlyRoundedCorners */
++			ST_HAS_SLIGHTLY_ROUNDED_CORNERS(tmpms) = on;
++			break;
  
  #if 0
  		case 99: /* PositionHints */
-diff --unified --recursive --text fvwm-2.6.9/fvwm/menustyle.h new/fvwm/menustyle.h
---- fvwm-2.6.9/fvwm/menustyle.h	2016-10-15 08:51:45.000000000 -0600
-+++ new/fvwm/menustyle.h	2020-02-02 16:19:32.248394323 -0700
-@@ -23,6 +23,10 @@
- #define MST_FACE(m)                   ((m)->s->ms->look.face)
- #define ST_DO_HILIGHT_BACK(s)         ((s)->look.flags.do_hilight_back)
+Only in fvwm-patched/fvwm: menustyle.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/menustyle.h fvwm-patched/fvwm/menustyle.h
+--- fvwm-2.6.9/fvwm/menustyle.h	2020-08-21 15:53:07.026125528 -0600
++++ fvwm-patched/fvwm/menustyle.h	2020-08-21 16:08:05.606920933 -0600
+@@ -25,6 +25,10 @@
  #define MST_DO_HILIGHT_BACK(m)        ((m)->s->ms->look.flags.do_hilight_back)
+ #define ST_DO_FLAT_SEPARATOR(s)       ((s)->look.flags.do_flat_separator)
+ #define MST_DO_FLAT_SEPARATOR(m)      ((m)->s->ms->look.flags.do_flat_separator)
 +#define ST_HAS_ROUNDED_CORNERS(s)     ((s)->look.flags.has_rounded_corners)
 +#define MST_HAS_ROUNDED_CORNERS(m)    ((m)->s->ms->look.flags.has_rounded_corners)
 +#define ST_HAS_SLIGHTLY_ROUNDED_CORNERS(s)     ((s)->look.flags.has_slightly_rounded_corners)
@@ -593,19 +601,19 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/menustyle.h new/fvwm/menustyle
  #define ST_DO_HILIGHT_FORE(s)         ((s)->look.flags.do_hilight_fore)
  #define MST_DO_HILIGHT_FORE(m)        ((m)->s->ms->look.flags.do_hilight_fore)
  #define ST_DO_HILIGHT_TITLE_BACK(s)   ((s)->look.flags.do_hilight_title_back)
-@@ -282,6 +286,8 @@
- 		unsigned has_title_cset : 1;
+@@ -285,6 +289,8 @@
  		unsigned do_hilight_title_back : 1;
  		unsigned using_default_titlefont : 1;
-+                unsigned has_rounded_corners : 1;
-+                unsigned has_slightly_rounded_corners : 1;
+ 		unsigned do_flat_separator : 1;
++		unsigned has_rounded_corners : 1;
++		unsigned has_slightly_rounded_corners : 1;
  	} flags;
  	unsigned char ReliefThickness;
  	unsigned char TitleUnderlines;
-diff --unified --recursive --text fvwm-2.6.9/fvwm/style.c new/fvwm/style.c
---- fvwm-2.6.9/fvwm/style.c	2018-05-26 05:35:26.000000000 -0600
-+++ new/fvwm/style.c	2020-02-02 16:19:32.248394323 -0700
-@@ -537,6 +537,10 @@
+diff --unified --recursive --text fvwm-2.6.9/fvwm/style.c fvwm-patched/fvwm/style.c
+--- fvwm-2.6.9/fvwm/style.c	2020-08-21 16:07:19.993929916 -0600
++++ fvwm-patched/fvwm/style.c	2020-08-21 16:08:05.606920933 -0600
+@@ -553,6 +553,10 @@
  		SSET_HANDLE_WIDTH(
  			*merged_style, SGET_HANDLE_WIDTH(*add_style));
  	}
@@ -616,7 +624,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/style.c new/fvwm/style.c
  	if (add_style->flags.has_icon_size_limits)
  	{
  		SSET_MIN_ICON_WIDTH(
-@@ -2370,6 +2374,20 @@
+@@ -2590,6 +2594,20 @@
  			ps->change_mask.has_color_back = 1;
  			break;
  		}
@@ -637,7 +645,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/style.c new/fvwm/style.c
  		else if (StrEquals(token, "CirculateSkipIcon"))
  		{
  			S_SET_DO_CIRCULATE_SKIP_ICON(SCF(*ps), on);
-@@ -2682,6 +2700,15 @@
+@@ -2902,6 +2920,15 @@
  			S_SET_HAS_MWM_BORDER(SCM(*ps), 1);
  			S_SET_HAS_MWM_BORDER(SCC(*ps), 1);
  		}
@@ -653,7 +661,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/style.c new/fvwm/style.c
  		else if (StrEquals(token, "FocusFollowsMouse"))
  		{
  			style_set_old_focus_policy(ps, 1);
-@@ -3752,6 +3779,50 @@
+@@ -4097,6 +4124,50 @@
  			S_SET_IS_RIGHT_TITLE_ROTATED_CW(SCM(*ps), 1);
  			S_SET_IS_RIGHT_TITLE_ROTATED_CW(SCC(*ps), 1);
  		}
@@ -704,7 +712,7 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/style.c new/fvwm/style.c
  		else
  		{
  			found = False;
-@@ -3886,6 +3957,12 @@
+@@ -4231,6 +4302,12 @@
  			S_SET_HAS_NO_STICKY_STIPPLED_ICON_TITLE(SCM(*ps), 1);
  			S_SET_HAS_NO_STICKY_STIPPLED_ICON_TITLE(SCC(*ps), 1);
  		}
@@ -717,28 +725,28 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/style.c new/fvwm/style.c
  		else if (StrEquals(token, "Slippery"))
  		{
  			S_SET_IS_STICKY_ACROSS_PAGES(SCF(*ps), !on);
-@@ -4875,6 +4952,20 @@
+@@ -5219,6 +5296,20 @@
+ 	{
  		flags->do_update_rotated_title = 1;
  	}
- 
-+        /* has_fluxbox_handles */
-+        if (S_HAS_FLUXBOX_HANDLES(SCC(*ret_style)))
-+        {
-+                flags->do_redecorate = True;
-+        }
 +
-+        /* has_rounded_corners */
-+        if (S_HAS_ROUNDED_CORNERS_TOP(SCC(*ret_style))
-+                || S_HAS_ROUNDED_CORNERS_BOTTOM(SCC(*ret_style))
-+                || S_HAS_SLIGHTLY_ROUNDED_CORNERS(SCC(*ret_style)))
-+        {
-+                flags->do_redecorate = True;
-+        }
++	/* has_fluxbox_handles */
++	if (S_HAS_FLUXBOX_HANDLES(SCC(*ret_style)))
++	{
++		flags->do_redecorate = True;
++	}
 +
- 	/* has_mwm_border
- 	 * has_mwm_buttons */
- 	if (S_HAS_MWM_BORDER(SCC(*ret_style)) ||
-@@ -5127,6 +5218,12 @@
++	/* has_rounded_corners */
++	if (S_HAS_ROUNDED_CORNERS_TOP(SCC(*ret_style))
++		|| S_HAS_ROUNDED_CORNERS_BOTTOM(SCC(*ret_style))
++		|| S_HAS_SLIGHTLY_ROUNDED_CORNERS(SCC(*ret_style)))
++	{
++		flags->do_redecorate = True;
++	}
+ 	
+ 	if (S_HAS_BORDER_UNDER_TITLE(SCC(*ret_style)))
+ 	{
+@@ -5483,6 +5574,12 @@
  		flags->do_update_modules_flags = 1;
  	}
  
@@ -751,10 +759,10 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/style.c new/fvwm/style.c
  	if (ret_style->change_mask.do_save_under ||
  	    ret_style->change_mask.use_backing_store ||
  	    ret_style->change_mask.use_parent_relative)
-Only in new/fvwm: style.c.orig
-diff --unified --recursive --text fvwm-2.6.9/fvwm/style.h new/fvwm/style.h
---- fvwm-2.6.9/fvwm/style.h	2018-05-26 05:35:26.000000000 -0600
-+++ new/fvwm/style.h	2020-02-02 16:19:32.248394323 -0700
+Only in fvwm-patched/fvwm: style.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/style.h fvwm-patched/fvwm/style.h
+--- fvwm-2.6.9/fvwm/style.h	2020-08-21 16:07:19.993929916 -0600
++++ fvwm-patched/fvwm/style.h	2020-08-21 16:08:05.606920933 -0600
 @@ -21,6 +21,8 @@
  	((sf)->has_color_fore)
  #define SHAS_HANDLE_WIDTH(sf) \
@@ -764,30 +772,30 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/style.h new/fvwm/style.h
  #define SHAS_ICON(sf) \
  	((sf)->has_icon)
  #define SHAS_ICON_BOXES(sf) \
-@@ -333,6 +335,22 @@
- 	((c).s.use_title_decor_rotation)
- #define S_SET_USE_TITLE_DECOR_ROTATION(c,x) \
- 	((c).s.use_title_decor_rotation = !!(x))
+@@ -377,6 +379,22 @@
+ 	((c).s.has_border_under_title)
+ #define S_SET_HAS_BORDER_UNDER_TITLE(c,x) \
+ 	((c).s.has_border_under_title = !!(x))
 +#define S_HAS_FLUXBOX_HANDLES(c) \
-+        ((c).s.has_fluxbox_handles)
++	((c).s.has_fluxbox_handles)
 +#define S_SET_HAS_FLUXBOX_HANDLES(c,x) \
-+        ((c).s.has_fluxbox_handles = !!(x))
++	((c).s.has_fluxbox_handles = !!(x))
 +#define S_HAS_ROUNDED_CORNERS_TOP(c) \
-+        ((c).s.has_rounded_corners_top)
++	((c).s.has_rounded_corners_top)
 +#define S_SET_HAS_ROUNDED_CORNERS_TOP(c,x) \
-+        ((c).s.has_rounded_corners_top = !!(x))
++	((c).s.has_rounded_corners_top = !!(x))
 +#define S_HAS_ROUNDED_CORNERS_BOTTOM(c) \
-+        ((c).s.has_rounded_corners_bottom)
++	((c).s.has_rounded_corners_bottom)
 +#define S_SET_HAS_ROUNDED_CORNERS_BOTTOM(c,x) \
-+        ((c).s.has_rounded_corners_bottom = !!(x))
++	((c).s.has_rounded_corners_bottom = !!(x))
 +#define S_HAS_SLIGHTLY_ROUNDED_CORNERS(c) \
-+        ((c).s.has_slightly_rounded_corners)
++	((c).s.has_slightly_rounded_corners)
 +#define S_SET_HAS_SLIGHTLY_ROUNDED_CORNERS(c,x) \
-+        ((c).s.has_slightly_rounded_corners = !!(x))
++	((c).s.has_slightly_rounded_corners = !!(x))
  #define S_DO_EWMH_MINI_ICON_OVERRIDE(c) \
  	((c).s.do_ewmh_mini_icon_override)
  #define S_SET_DO_EWMH_MINI_ICON_OVERRIDE(c,x) \
-@@ -485,6 +503,10 @@
+@@ -597,6 +615,10 @@
  	((s).handle_width)
  #define SSET_HANDLE_WIDTH(s,x) \
  	((s).handle_width = (x))
@@ -798,11 +806,11 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/style.h new/fvwm/style.h
  #define SGET_LAYER(s) \
  	((s).layer)
  #define SSET_LAYER(s,x) \
-Only in new/fvwm: style.h.orig
-diff --unified --recursive --text fvwm-2.6.9/fvwm/window_flags.h new/fvwm/window_flags.h
---- fvwm-2.6.9/fvwm/window_flags.h	2016-10-15 08:51:45.000000000 -0600
-+++ new/fvwm/window_flags.h	2020-02-02 16:19:32.248394323 -0700
-@@ -314,18 +314,42 @@
+Only in fvwm-patched/fvwm: style.h.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/window_flags.h fvwm-patched/fvwm/window_flags.h
+--- fvwm-2.6.9/fvwm/window_flags.h	2020-08-21 16:07:19.993929916 -0600
++++ fvwm-patched/fvwm/window_flags.h	2020-08-21 16:08:05.610921020 -0600
+@@ -316,12 +316,12 @@
  	(fw)->flags.common.s.is_bottom_title_rotated = !!(x)
  #define SETM_IS_BOTTOM_TITLE_ROTATED(fw,x) \
  	(fw)->flag_mask.common.s.is_bottom_title_rotated = !!(x)
@@ -821,40 +829,40 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/window_flags.h new/fvwm/window
  #define USE_TITLE_DECOR_ROTATION(fw) \
  	((fw)->flags.common.s.use_title_decor_rotation)
  #define SET_USE_TITLE_DECOR_ROTATION(fw,x) \
- 	(fw)->flags.common.s.use_title_decor_rotation = !!(x)
- #define SETM_USE_TITLE_DECOR_ROTATION(fw,x) \
- 	(fw)->flag_mask.common.s.use_title_decor_rotation = !!(x)
+@@ -334,6 +334,30 @@
+ 	(fw)->flags.common.s.has_border_under_title = !!(x)
+ #define SETM_HAS_BORDER_UNDER_TITLE(fw,x) \
+ 	(fw)->flag_mask.common.s.has_border_under_title = !!(x)
 +#define HAS_FLUXBOX_HANDLES(fw) \
-+        ((fw)->flags.common.s.has_fluxbox_handles && (fw->flags.has_handles))
++	((fw)->flags.common.s.has_fluxbox_handles && (fw->flags.has_handles))
 +#define SET_HAS_FLUXBOX_HANDLES(fw,x) \
-+        (fw)->flags.common.s.has_fluxbox_handles = !!(x)
++	(fw)->flags.common.s.has_fluxbox_handles = !!(x)
 +#define SETM_HAS_FLUXBOX_HANDLES(fw,x) \
-+        (fw)->flag_mask.common.s.has_fluxbox_handles = !!(x)
++	(fw)->flag_mask.common.s.has_fluxbox_handles = !!(x)
 +#define HAS_ROUNDED_CORNERS_TOP(fw) \
-+        ((fw)->flags.common.s.has_rounded_corners_top)
++	((fw)->flags.common.s.has_rounded_corners_top)
 +#define SET_HAS_ROUNDED_CORNERS_TOP(fw,x) \
-+        (fw)->flags.common.s.has_rounded_corners_top = !!(x)
++	(fw)->flags.common.s.has_rounded_corners_top = !!(x)
 +#define SETM_HAS_ROUNDED_CORNERS_TOP(fw,x) \
-+        (fw)->flag_mask.common.s.has_rounded_corners_top = !!(x)
++	(fw)->flag_mask.common.s.has_rounded_corners_top = !!(x)
 +#define HAS_ROUNDED_CORNERS_BOTTOM(fw) \
-+        ((fw)->flags.common.s.has_rounded_corners_bottom)
++	((fw)->flags.common.s.has_rounded_corners_bottom)
 +#define SET_HAS_ROUNDED_CORNERS_BOTTOM(fw,x) \
-+        (fw)->flags.common.s.has_rounded_corners_bottom = !!(x)
++	(fw)->flags.common.s.has_rounded_corners_bottom = !!(x)
 +#define SETM_HAS_ROUNDED_CORNERS_BOTTOM(fw,x) \
-+        (fw)->flag_mask.common.s.has_rounded_corners_bottom = !!(x)
++	(fw)->flag_mask.common.s.has_rounded_corners_bottom = !!(x)
 +#define HAS_SLIGHTLY_ROUNDED_CORNERS(fw) \
-+        ((fw)->flags.common.s.has_slightly_rounded_corners)
++	((fw)->flags.common.s.has_slightly_rounded_corners)
 +#define SET_HAS_SLIGHTLY_ROUNDED_CORNERS_BOTTOM(fw,x) \
-+        (fw)->flags.common.s.has_slightly_rounded_corners = !!(x)
++	(fw)->flags.common.s.has_slightly_rounded_corners = !!(x)
 +#define SETM_HAS_SLIGHTLY_ROUNDED_CORNERS(fw,x) \
-+        (fw)->flag_mask.common.s.has_slightly_rounded_corners = !!(x)
++	(fw)->flag_mask.common.s.has_slightly_rounded_corners = !!(x)
  
  /* access to the special flags of a window */
  #define DO_REUSE_DESTROYED(fw) \
-Only in new/fvwm: window_flags.h.orig
-diff --unified --recursive --text fvwm-2.6.9/fvwm/windowshade.c new/fvwm/windowshade.c
+diff --unified --recursive --text fvwm-2.6.9/fvwm/windowshade.c fvwm-patched/fvwm/windowshade.c
 --- fvwm-2.6.9/fvwm/windowshade.c	2018-05-26 05:35:26.000000000 -0600
-+++ new/fvwm/windowshade.c	2020-02-02 16:19:32.248394323 -0700
++++ fvwm-patched/fvwm/windowshade.c	2020-08-21 16:08:05.610921020 -0600
 @@ -211,6 +211,7 @@
  	border_draw_decorations(
  		fw, PART_TITLEBAR, (fw == get_focus_window()) ? True : False,
@@ -863,4 +871,4 @@ diff --unified --recursive --text fvwm-2.6.9/fvwm/windowshade.c new/fvwm/windows
  	/* update hints and inform modules */
  	BroadcastConfig(M_CONFIGURE_WINDOW, fw);
  	BroadcastPacket(
-Only in new/fvwm: windowshade.c.orig
+Only in fvwm-patched/fvwm: windowshade.c.orig

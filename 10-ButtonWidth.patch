@@ -1,0 +1,26 @@
+diff --unified --recursive --text fvwm-2.6.9/fvwm/builtins.c fvwm-patched/fvwm/builtins.c
+--- fvwm-2.6.9/fvwm/builtins.c	2020-08-21 16:11:42.983734347 -0600
++++ fvwm-patched/fvwm/builtins.c	2020-08-21 16:12:21.224593859 -0600
+@@ -497,6 +497,21 @@
+ 			if (action)
+ 				action += next;
+ 		}
++		else if (!do_add && StrEquals(parm,"buttonwidth"))
++		{
++			int width = 0;
++			int next = 0;
++
++			sscanf(action, "%d%n", &width, &next);
++
++			if (decor->button_width != width)
++			{
++				decor->button_width = width;
++				decor->flags.has_changed = 1;
++			}
++			if (action)
++				action += next;
++		}
+ 		else if (!do_add && StrEquals(parm,"MinHeight"))
+ 		{
+ 			int height = 0;
+Only in fvwm-patched/fvwm: builtins.c.orig

@@ -1,0 +1,18 @@
+diff --unified --recursive --text fvwm-2.6.9/fvwm/menus.c fvwm-patched/fvwm/menus.c
+--- fvwm-2.6.9/fvwm/menus.c	2020-08-21 16:16:28.114047517 -0600
++++ fvwm-patched/fvwm/menus.c	2020-08-21 16:40:31.318886523 -0600
+@@ -3348,6 +3348,13 @@
+ 	}
+ 	context = (*pexc)->w.wcontext;
+ 
++	/* Popup menu with first item (not title) under pointer */
++	if(MI_IS_TITLE(MR_FIRST_ITEM(mr)))
++	{
++		y-=MI_HEIGHT(MR_FIRST_ITEM(mr));
++		do_warp_to_item = True;
++	}
++
+ 	/*
+ 	 * Create a new menu instance (if necessary)
+ 	 */
+Only in fvwm-patched/fvwm: menus.c.orig

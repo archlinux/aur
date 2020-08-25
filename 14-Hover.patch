@@ -1,0 +1,295 @@
+diff --unified --recursive --text fvwm-2.6.9/fvwm/borders.c fvwm-patched/fvwm/borders.c
+--- fvwm-2.6.9/fvwm/borders.c	2020-08-21 16:16:28.114047517 -0600
++++ fvwm-patched/fvwm/borders.c	2020-08-21 16:34:52.530676541 -0600
+@@ -58,6 +58,7 @@
+ /* ---------------------------- imports ------------------------------------ */
+ 
+ extern Window PressedW;
++extern Window HoverW;
+ 
+ /* ---------------------------- included code files ------------------------ */
+ 
+@@ -235,6 +236,7 @@
+ 	unsigned clear_bmask : NUMBER_OF_TITLE_BUTTONS;
+ 	unsigned draw_bmask : NUMBER_OF_TITLE_BUTTONS;
+ 	unsigned max_bmask : NUMBER_OF_TITLE_BUTTONS;
++	unsigned hover_bmask : NUMBER_OF_TITLE_BUTTONS;
+ 	ButtonState bstate[NUMBER_OF_TITLE_BUTTONS];
+ 	unsigned is_title_pressed : 1;
+ 	unsigned is_title_lit : 1;
+@@ -340,8 +342,12 @@
+ 
+ /* rules to get button state */
+ static ButtonState border_flags_to_button_state(
+-	int is_pressed, int is_lit, int is_toggled)
++	int is_pressed, int is_lit, int is_toggled, int is_hover)
+ {
++	if (is_lit && is_hover && Scr.gs.use_hover_buttons)
++	{
++		return BS_ActiveHover;
++	}
+ 	if (!is_lit && Scr.gs.use_inactive_buttons)
+ 	{
+ 		if (is_pressed && Scr.gs.use_inactive_down_buttons)
+@@ -862,7 +868,7 @@
+ 	/* check if state changed */
+ 	old_state = border_flags_to_button_state(
+ 		(fw->decor_state.parts_inverted & PART_TITLE),
+-		(fw->decor_state.parts_lit & PART_TITLE), 0);
++		(fw->decor_state.parts_lit & PART_TITLE), 0, 0);
+ 	if (old_state != td->tbstate.tstate)
+ 	{
+ 		draw_parts |= PART_TITLE;
+@@ -886,7 +892,8 @@
+ 		old_state = border_flags_to_button_state(
+ 			(fw->decor_state.buttons_inverted & mask),
+ 			(fw->decor_state.buttons_lit & mask),
+-			(fw->decor_state.buttons_toggled & mask));
++			(fw->decor_state.buttons_toggled & mask),
++			(fw->decor_state.buttons_hover & mask));
+ 		if (old_state != td->tbstate.bstate[i])
+ 		{
+ 			draw_parts |= PART_BUTTONS;
+@@ -4392,6 +4399,7 @@
+ 	fw->decor_state.buttons_inverted = td->tbstate.pressed_bmask;
+ 	fw->decor_state.buttons_lit = td->tbstate.lit_bmask;
+ 	fw->decor_state.buttons_toggled = td->tbstate.toggled_bmask;
++	fw->decor_state.buttons_hover = td->tbstate.hover_bmask;
+ 
+ 	return;
+ }
+@@ -4660,13 +4668,18 @@
+ 		{
+ 			tbstate->toggled_bmask |= mask;
+ 		}
++		if (FW_W_BUTTON(fw, i) == HoverW)
++		{
++			tbstate->hover_bmask |= mask;
++		}
+ 		tbstate->bstate[i] = border_flags_to_button_state(
+ 			tbstate->pressed_bmask & mask,
+ 			tbstate->lit_bmask & mask,
+-			tbstate->toggled_bmask & mask);
++			tbstate->toggled_bmask & mask,
++			tbstate->hover_bmask & mask);
+ 	}
+ 	tbstate->tstate = border_flags_to_button_state(
+-		tbstate->is_title_pressed, tbstate->is_title_lit, 0);
++		tbstate->is_title_pressed, tbstate->is_title_lit, 0, 0);
+ }
+ 
+ static window_parts border_get_titlebar_descr(
+@@ -4931,6 +4944,7 @@
+ 		fw->decor_state.buttons_lit = 0;
+ 		fw->decor_state.buttons_inverted = 0;
+ 		fw->decor_state.buttons_toggled = 0;
++		fw->decor_state.buttons_hover = 0;
+ 		return;
+ 	}
+ 	memset(&td, 0, sizeof(td));
+@@ -4982,6 +4996,7 @@
+ 		fw->decor_state.buttons_toggled =
+ 			(fw->decor_state.buttons_toggled &
+ 			 ~td.tbstate.max_bmask) | td.tbstate.toggled_bmask;
++		fw->decor_state.buttons_hover &= td.tbstate.hover_bmask;
+ 	}
+ 
+ 	return;
+@@ -5072,11 +5087,12 @@
+ 	ButtonState bs;
+ 	int is_pressed;
+ 	int is_toggled;
++	int is_hover;
+ 	int i;
+ 
+ 	/* title */
+ 	is_pressed = (FW_W_TITLE(fw) == PressedW);
+-	bs = border_flags_to_button_state(is_pressed, has_focus, 0);
++	bs = border_flags_to_button_state(is_pressed, has_focus, 0, 0);
+ 	if (DFS_USE_BORDER_STYLE(TB_STATE(GetDecor(fw, titlebar))[bs].style))
+ 	{
+ 		return 1;
+@@ -5089,8 +5105,9 @@
+ 		}
+ 		is_pressed = (FW_W_BUTTON(fw, i) == PressedW);
+ 		is_toggled = (is_button_toggled(fw, i) == True);
++		is_hover = (FW_W_BUTTON(fw, i) == HoverW);
+ 		bs = border_flags_to_button_state(
+-			is_pressed, (has_focus == True), is_toggled);
++			is_pressed, (has_focus == True), is_toggled, is_hover);
+ 		if (DFS_USE_BORDER_STYLE(
+ 			    TB_STATE(GetDecor(fw, buttons[i]))[bs].style))
+ 		{
+@@ -5551,6 +5568,7 @@
+ 				DEFAULT_USE_INACTIVE_BUTTONS;
+ 			Scr.gs.use_inactive_down_buttons =
+ 				DEFAULT_USE_INACTIVE_DOWN_BUTTONS;
++			Scr.gs.use_hover_buttons = 0;
+ 			return;
+ 		}
+ 		first = False;
+@@ -5572,6 +5590,12 @@
+ 				action, &action,
+ 				DEFAULT_USE_INACTIVE_DOWN_BUTTONS, True);
+ 		}
++		else if (StrEquals("hover", token))
++		{
++			Scr.gs.use_hover_buttons = ParseToggleArgument(
++				action, &action,
++				0, True);
++		}
+ 		else
+ 		{
+ 			Scr.gs.use_active_down_buttons =
+@@ -5580,6 +5604,7 @@
+ 				DEFAULT_USE_INACTIVE_BUTTONS;
+ 			Scr.gs.use_inactive_down_buttons =
+ 				DEFAULT_USE_INACTIVE_DOWN_BUTTONS;
++			Scr.gs.use_hover_buttons = 0;
+ 			fvwm_msg(ERR, "cmd_button_state",
+ 				 "Unknown button state %s", token);
+ 			return;
+Only in fvwm-patched/fvwm: borders.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/builtins.c fvwm-patched/fvwm/builtins.c
+--- fvwm-2.6.9/fvwm/builtins.c	2020-08-21 16:16:28.114047517 -0600
++++ fvwm-patched/fvwm/builtins.c	2020-08-21 16:34:52.530676541 -0600
+@@ -94,12 +94,16 @@
+ {
+ 	"ActiveUp",
+ 	"ActiveDown",
++	"ActiveHover",
+ 	"InactiveUp",
+ 	"InactiveDown",
++	"InactiveHover",
+ 	"ToggledActiveUp",
+ 	"ToggledActiveDown",
++	"ToggledActiveHover",
+ 	"ToggledInactiveUp",
+ 	"ToggledInactiveDown",
++	"ToggledInactiveHover",
+ 	"Active",
+ 	"Inactive",
+ 	"ToggledActive",
+@@ -110,10 +114,13 @@
+ 	"AllInactive",
+ 	"AllUp",
+ 	"AllDown",
++	"AllHover",
+ 	"AllActiveUp",
+ 	"AllActiveDown",
++	"AllActiveHover",
+ 	"AllInactiveUp",
+ 	"AllInactiveDown",
++	"AllInactiveHover",
+ 	NULL
+ };
+ 
+Only in fvwm-patched/fvwm: builtins.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/events.c fvwm-patched/fvwm/events.c
+--- fvwm-2.6.9/fvwm/events.c	2018-05-26 05:35:26.000000000 -0600
++++ fvwm-patched/fvwm/events.c	2020-08-21 16:38:28.601284882 -0600
+@@ -184,6 +184,7 @@
+ 
+ int last_event_type = 0;
+ Window PressedW = None;
++Window HoverW = None;
+ 
+ /* ---------------------------- local functions ---------------------------- */
+ 
+@@ -1785,6 +1786,23 @@
+ 	return;
+ }
+ 
++static void redraw_hover(FvwmWindow* fw, Window w)
++{
++	if (fw)
++	{
++		int i;
++		for (i = 0; i < NUMBER_OF_TITLE_BUTTONS; i++)
++		{
++			if (w == FW_W_BUTTON(fw, i))
++			{
++				HoverW = FW_W_BUTTON(fw, i);
++			}
++		}
++		border_redraw_decorations(fw);
++		HoverW = None;
++	}
++}
++
+ /* ---------------------------- event handlers ----------------------------- */
+ 
+ void HandleButtonPress(const evh_args_t *ea)
+@@ -1980,6 +1998,8 @@
+ 	ewp = &te->xcrossing;
+ ENTER_DBG((stderr, "++++++++ en (%d): fw %p w 0x%08x sw 0x%08x mode 0x%x detail 0x%x '%s'\n", ++ecount, fw, (int)ewp->window, (int)ewp->subwindow, ewp->mode, ewp->detail, fw?fw->visible_name:"(none)"));
+ 
++	redraw_hover(fw, ewp->window);
++
+ 	if (
+ 		ewp->window == Scr.Root &&
+ 		ewp->detail == NotifyInferior && ewp->mode == NotifyNormal)
+@@ -2687,6 +2707,8 @@
+ 
+ 	DBUG("HandleLeaveNotify", "Routine Entered");
+ 
++	redraw_hover(fw, te->xcrossing.window);
++
+ ENTER_DBG((stderr, "-------- ln (%d): fw %p w 0x%08x sw 0x%08x mode 0x%x detail 0x%x '%s'\n", ++ecount, fw, (int)te->xcrossing.window, (int)te->xcrossing.subwindow, te->xcrossing.mode, te->xcrossing.detail, fw?fw->visible_name:"(none)"));
+ 	lwp = &te->xcrossing;
+ 	if (
+Only in fvwm-patched/fvwm: events.c.orig
+diff --unified --recursive --text fvwm-2.6.9/fvwm/fvwm.h fvwm-patched/fvwm/fvwm.h
+--- fvwm-2.6.9/fvwm/fvwm.h	2020-08-21 16:11:42.983734347 -0600
++++ fvwm-patched/fvwm/fvwm.h	2020-08-21 16:34:52.534676586 -0600
+@@ -827,6 +827,7 @@
+ 		unsigned buttons_lit : NUMBER_OF_TITLE_BUTTONS;
+ 		unsigned buttons_inverted : NUMBER_OF_TITLE_BUTTONS;
+ 		unsigned buttons_toggled : NUMBER_OF_TITLE_BUTTONS;
++		unsigned buttons_hover : NUMBER_OF_TITLE_BUTTONS;
+ 		unsigned parts_drawn : 12;
+ 		unsigned parts_lit : 12;
+ 		unsigned parts_inverted : 12;
+diff --unified --recursive --text fvwm-2.6.9/fvwm/screen.h fvwm-patched/fvwm/screen.h
+--- fvwm-2.6.9/fvwm/screen.h	2020-08-21 16:16:28.118047433 -0600
++++ fvwm-patched/fvwm/screen.h	2020-08-21 16:34:52.534676586 -0600
+@@ -202,12 +202,16 @@
+ 	BS_All = -1,
+ 	BS_ActiveUp,
+ 	BS_ActiveDown,
++	BS_ActiveHover,
+ 	BS_InactiveUp,
+ 	BS_InactiveDown,
++	BS_InactiveHover,
+ 	BS_ToggledActiveUp,
+ 	BS_ToggledActiveDown,
++	BS_ToggledActiveHover,
+ 	BS_ToggledInactiveUp,
+ 	BS_ToggledInactiveDown,
++	BS_ToggledInactiveHover,
+ 	BS_MaxButtonState,
+ 	BS_MaxButtonStateMask = BS_MaxButtonState - 1,
+ 	BS_Active,
+@@ -220,10 +224,13 @@
+ 	BS_AllInactive,
+ 	BS_AllUp,
+ 	BS_AllDown,
++	BS_AllHover,
+ 	BS_AllActiveUp,
+ 	BS_AllActiveDown,
++	BS_AllActiveHover,
+ 	BS_AllInactiveUp,
+ 	BS_AllInactiveDown,
++	BS_AllInactiveHover,
+ 	BS_MaxButtonStateName
+ } ButtonState;
+ 
+@@ -511,6 +518,7 @@
+ 		unsigned use_active_down_buttons : 1;
+ 		unsigned use_inactive_buttons : 1;
+ 		unsigned use_inactive_down_buttons : 1;
++		unsigned use_hover_buttons : 1;
+ 	} gs; /* global style structure */
+ 	struct
+ 	{
+Only in fvwm-patched/fvwm: screen.h.orig
