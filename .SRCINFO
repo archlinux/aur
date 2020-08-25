@@ -17,7 +17,6 @@ pkgbase = retroarch-rbp4
 	depends = libswresample.so
 	depends = libswscale.so
 	depends = libudev.so
-	depends = libusb-1.0.so
 	depends = libxkbcommon
 	depends = mbedtls
 	depends = mesa

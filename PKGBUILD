@@ -26,7 +26,6 @@ depends=(
   libswresample.so
   libswscale.so
   libudev.so
-  libusb-1.0.so
   libxkbcommon
   mbedtls
   mesa
