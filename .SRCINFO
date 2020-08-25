@@ -1,5 +1,5 @@
-pkgbase = bastet-git
-	pkgdesc = Tetris(r) clone with 'bastard' block-choosing AI
+pkgbase = bastet-xdg-git
+	pkgdesc = Tetris(r) clone with 'bastard' block-choosing AI - Git version with support for Xdg Base Directories
 	pkgver = 0.43.2.r3.g1b3e692
 	pkgrel = 1
 	url = https://github.com/BachoSeven/bastet/
@@ -11,8 +11,8 @@ pkgbase = bastet-git
 	depends = boost-libs
 	depends = ncurses
 	conflicts = bastet
-	source = bastet-git::git+https://github.com/fph/bastet.git
+	source = bastet-xdg-git::git+https://github.com/fph/bastet.git
 	md5sums = SKIP
 
-pkgname = bastet-git
+pkgname = bastet-xdg-git
 

@@ -1,10 +1,10 @@
 # Contributor: Alexandre Dantas <eu @ alexdantas DOT net>
 # Maintainer: BachoSeven <ascoli dot minnocci at gmail dot com>
 
-pkgname=bastet-git
+pkgname=bastet-xdg-git
 pkgver=0.43.2.r3.g1b3e692
 pkgrel=1
-pkgdesc="Tetris(r) clone with 'bastard' block-choosing AI"
+pkgdesc="Tetris(r) clone with 'bastard' block-choosing AI - Git version with support for Xdg Base Directories"
 arch=('x86_64' 'i686')
 url="https://github.com/BachoSeven/bastet/"
 license=('GPL3')
