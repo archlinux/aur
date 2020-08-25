@@ -1,12 +1,12 @@
 pkgname=freedesktop-templates-libreoffice
-pkgver=6.3.3
-pkgrel=3
+pkgver=6.4.5_1~bpo10+1
+pkgrel=1
 pkgdesc='LibreOffice Templates for the “Create New...” menu'
 arch=('any')
 license=('unknown')
 depends=('dolphin' 'libreoffice')
-source=("http://ftp.debian.org/debian/pool/main/libr/libreoffice/libreoffice-kde5_${pkgver/_/-}-${pkgrel}_amd64.deb")
-sha256sums=('798d6389b87343a69369156e30ec2c7b8afcffae7eb1f5bba06be9359af8d6e4')
+source=("http://ftp.debian.org/debian/pool/main/libr/libreoffice/libreoffice-plasma_${pkgver/_/-}_amd64.deb")
+sha256sums=('31e5902ae9185deae6aa44ab06e33fcf67ca3d956657ae2c1f2a5476c49b577e')
 
 prepare() {
 	tar xf data.tar.xz
