@@ -1,8 +1,8 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=nnrss
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='Web/API RSS aggregator'
 url='https://git.roshless.me/~roshless/nnrss'
 arch=('any')
@@ -34,7 +34,7 @@ package() {
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 
-md5sums=('a2e19fa7207950b693eb2caed8038aef'
+md5sums=('25bc59c60113f623d49a7973d28ecb84'
          '85e39687367524c7b87bfb95571020bf'
          '8b9a147720fbe9f6c013f6aa7dbb8140'
          '364b51a829d7cf46a9557b97f8d3ce28')
