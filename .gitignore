@@ -1,5 +1,5 @@
-pkg
-src
-*.tar
-*.tar.gz
-*.tar.xz
+*
+!.SRCINFO
+!PKGBUILD
+!LICENSE
+!nushell-bin.install
