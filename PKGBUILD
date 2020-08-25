@@ -2,7 +2,7 @@
 
 pkgname=gitlab-glab
 _realpkgname=glab
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=2
 pkgdesc='GLab is an open source Gitlab Cli tool written in Go to help work seamlessly with Gitlab from the command line.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('go')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4df30e9570308019f633d14f69ba78b295a9b15f54ad1c5c8786cbb018bb1a01')
+sha256sums=('1051df68c2249bb88754324ee2ac549924c1b847fab13d20f2cecc8c61195586')
 
 prepare(){
   cd "${_realpkgname}-${pkgver}"
@@ -26,7 +26,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   _builddate=$(date -u +%m/%d/%Y)
-  go build -o build -trimpath -buildmode=pie -ldflags "-extldflags \"${LDFLAGS}\" -X main.version=v${pkgver} -X main.build=${_builddate} -s -w" -modcacherw ./cmd/glab/main.go
+  go build -o build -trimpath -buildmode=pie -ldflags "-extldflags \"${LDFLAGS}\" -X main.version=v${pkgver} -X main.build=${_builddate} -X main.usageMode=prod -s -w" -modcacherw ./cmd/glab/main.go
 }
 
 package() {
