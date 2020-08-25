@@ -2,7 +2,7 @@
 
 pkgname=hid-asus-rog-dkms-git
 _pkgname=hid-asus-rog
-pkgver=0.2.0.r0.gdad662c
+pkgver=0.2.0.r3.ge62d1ff
 pkgrel=1
 pkgdesc="Kernel module to patch hid-asus to support more ROG laptops"
 arch=('x86_64')
@@ -23,8 +23,9 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}"
-  sed -e "s/REPLACE_ME/${pkgver}/" -i "dkms.conf"
+  cd "${srcdir}/${_pkgname}"
+  _pkgver=$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+  sed -e "s/REPLACE_ME/$_pkgver/" -i "../dkms.conf"
 }
 
 package() {
