@@ -49,6 +49,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         addon_path.patch
         embree.patch #add missing embree link.
         'cuda11.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/a9644c812fc17b38503828d6edf7d259b6fe0e74'
+        'cpp14.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/171c4fb238a2a65291540ac5406187bc69f3a6bc'
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -58,7 +59,8 @@ sha256sums=('SKIP'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
             'ff05a19c9ff8aa3622b7d31f86c6218ac1a3ac06ad1a7cfd7e0587f623b3bd2f'
             '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4'
-            '2e5cf80c760aaf7326505b81f408c90fb6c4ff22b8cbb3638397809011a13562')
+            '2e5cf80c760aaf7326505b81f408c90fb6c4ff22b8cbb3638397809011a13562'
+            '44fad9ac2320d20d21b7aef46f70c05d55697ecde1446513f0a5842014a9d99c')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -80,6 +82,7 @@ prepare() {
   fi
   ((DISABLE_EMBREE)) || git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
   git -C "$srcdir/blender" apply -v "$srcdir/cuda11.patch"
+  git -C "$srcdir/blender" apply -v "$srcdir/cpp14.patch"
 }
 
 build() {
