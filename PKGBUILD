@@ -3,7 +3,7 @@
 _name=nbgrader
 pkgname=python-$_name
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A system for assigning and grading notebooks'
 arch=(any)
 url="https://github.com/jupyter/$_name"
@@ -17,7 +17,7 @@ depends=(
 	python-requests
 	python-jsonschema
 	python-alembic
-	python-rapidfuzz
+	python-fuzzywuzzy  # python-rapidfuzz
 	jupyter
 	jupyter-notebook
 	jupyter-nbconvert

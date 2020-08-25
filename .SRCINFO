@@ -1,7 +1,7 @@
 pkgbase = python-nbgrader
 	pkgdesc = A system for assigning and grading notebooks
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jupyter/nbgrader
 	arch = any
 	license = BSD
@@ -14,7 +14,7 @@ pkgbase = python-nbgrader
 	depends = python-requests
 	depends = python-jsonschema
 	depends = python-alembic
-	depends = python-rapidfuzz
+	depends = python-fuzzywuzzy
 	depends = jupyter
 	depends = jupyter-notebook
 	depends = jupyter-nbconvert
