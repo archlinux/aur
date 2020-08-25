@@ -1,7 +1,7 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname=('python-django-dynamic-preferences' 'python2-django-dynamic-preferences')
-pkgver=1.8.1
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Dynamic global and instance settings for your django project"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/EliotBerriot/django-dynamic-preferences"
 license=('BSD')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('06628ce33787535cf4c1ec6eb1b110e9f2fb87f8c52af5277b9b7e47f290909f')
+sha256sums=('f7ded092990ab0dafd50db696475a34a5ae52873d48d08915635862c7a532707')
 makedepends=('python-setuptools' 'python2-setuptools')
 
 package_python-django-dynamic-preferences() {
