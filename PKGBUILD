@@ -2,7 +2,7 @@
 
 pkgname=lib32-libcap-ng
 _pkgbasename=libcap-ng
-pkgver=0.7.10
+pkgver=0.7.11
 pkgrel=1
 pkgdesc='Library making programming with POSIX capabilities easier than traditional libcap (32-bit)'
 url='https://people.redhat.com/sgrubb/libcap-ng/'
@@ -10,8 +10,8 @@ arch=('x86_64')
 license=('LGPL2.1')
 depends=('lib32-glibc' 'libcap-ng')
 makedepends=('gcc-multilib')
-source=(${_pkgbasename}-${pkgver}.tar.gz::https://github.com/stevegrubb/libcap-ng/archive/v${pkgver}.tar.gz)
-sha512sums=('371dc1c1f6e2999ef4b4173e12338e9a794e9f48bd5ce8fb4d0c05884cff277ecf24f51e4b300487f9b5f52d93de7eeb1542ebb49c82226d06dd44fa76092367')
+source=(https://github.com/stevegrubb/libcap-ng/archive/v${pkgver}/${_pkgbasename}-${pkgver}.tar.gz)
+sha512sums=('ad2f07df90b730831fda87f2f8ad889602ac627d63dbdb5db8a39af6ad65a0b3e08eb37ea99cf5604a16f0b526ae3f847e03493663f66178590a8c6dfadae4eb')
 
 prepare() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
