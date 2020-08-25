@@ -1,8 +1,8 @@
 # Maintainer: SebRmv
 _pkgbase=ia32_aout
 pkgname=ia32_aout-dkms
-pkgver=5.4
-pkgrel=2
+pkgver=5.8
+pkgrel=1
 pkgdesc='ia32_aout kernel module, for running an a.out binary format (DKMS)'
 arch=('x86_64')
 depends=('dkms')
@@ -15,7 +15,7 @@ source=("https://raw.githubusercontent.com/torvalds/linux/v${pkgver}/arch/x86/ia
         'Makefile'
         'dkms.conf')
 # updpkgsums
-sha1sums=('ec51162ce24aa0711cce26cd6341a045f739997d'
+sha1sums=('8dd58b9a2f787ec185f6c955677c64f6b2eaa8aa'
           '843ea355c7475bd77408814e2a48a53af4856d8d'
           '42244650cd11033033f49a7909e5825584afd0cb')
 
