@@ -2,7 +2,7 @@
 
 pkgname=openbazaar
 pkgver=2.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(i686 x86_64)
 url="https://github.com/OpenBazaar/openbazaar-desktop"
