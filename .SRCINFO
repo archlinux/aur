@@ -1,0 +1,17 @@
+pkgbase = python-pdb2pqr
+	pkgdesc = Automates many of the common tasks of preparing structures for continuum solvation calculations as well as many other types of biomolecular structure modeling, analysis, and simulation.
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/pdb2pqr
+	arch = any
+	license = BSD
+	depends = python>=3.5
+	depends = python-propka>=3.2
+	depends = python-pandas>=1.0
+	depends = python-pytest>=5.4.1
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/p/pdb2pqr/pdb2pqr-3.0.1.tar.gz
+	sha256sums = 15ac0ce77dc17fb459092aca12cc7c2c070904f77914f1197282e28f418b6bd0
+
+pkgname = python-pdb2pqr
+
