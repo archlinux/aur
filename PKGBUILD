@@ -3,7 +3,7 @@
 
 pkgname=novnc
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML VNC Client Library and Application"
 arch=('any')
 url="https://github.com/novnc/noVNC"
@@ -18,7 +18,7 @@ prepare(){
   cd "noVNC-$pkgver"
   sed \
     -e 's#\(share\)#\1/webapps#g' \
-    -e '119,+28c WEBSOCKIFY=/usr/bin/websockify' \
+    -e '2 i WEBSOCKIFY=/usr/bin/websockify' \
     -i utils/launch.sh
 }
 
