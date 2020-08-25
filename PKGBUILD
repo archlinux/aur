@@ -4,7 +4,7 @@ pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
 pkgver=6.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern streamlined music player"
 arch=('any')
 url="https://tauonmusicbox.rocks"
@@ -25,8 +25,6 @@ depends=('python-pillow'
          'python-beautifulsoup4'
          'python-requests'
          'python-dbus'
-         'python-oauthlib'
-         'python-six'
          'alsa-plugins'
          'ffmpeg'
          'flac'
