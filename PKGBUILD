@@ -2,7 +2,7 @@
 # Maintainer: Greg White <gwhite@kupulau.com>
 
 pkgname=brave-nightly-bin
-pkgver=1.15.8
+pkgver=1.15.9
 pkgrel=1
 chrome_version=86.0.4229.0
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
@@ -21,7 +21,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/d
         "braveAbout.png"
         "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_${chrome_version}-1_amd64.deb")
 options=(!strip)
-sha512sums=('8142652b5a5d3d5925c84202ef656d1b824392a8b1af4e78cb192f5a501f10abfd20009d094c58c10a5e3020cc86b52135c6d223b12118b1b1f1f8ea2f8a98cf'
+sha512sums=('cb3316f4f562c726b8e12b9dab677c8505ccaa9d7a2dbdc23e4ec01ffe2a10473c7d1cb2f6671838535e9d3a65c519cb88ff36b50d9079d76243275322a5530f'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f'
             'e4f153529ad3dff82a7b08eba34857b3b81070a68f458a811a09695419cb513b82e6a3f0323cf3abedee126aff306ba23f703014bdfbd180f64373b84984e652'
             '86cf37b0dc8b37390da9341200af511721c8d2d81ccd45f565322271654058cf47680ae263cf5339feddd42d16bfce7f0aa824f2a45a7c446ed81fe6f749bb92'
