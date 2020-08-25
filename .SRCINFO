@@ -1,0 +1,18 @@
+pkgbase = necroedit
+	pkgdesc = External level edit for Crypt of the Necrodancer
+	pkgver = 0.11
+	pkgrel = 1
+	url = https://github.com/Marukyu/NecroEdit
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = cmake
+	provides = necroedit
+	conflicts = necroedit
+	source = https://github.com/Marukyu/NecroEdit/archive/v0.11.tar.gz
+	source = necroedit
+	sha256sums = 5dcdcc45da43b4a2da1576e38095781f6d774c008c908b8f34927a1e33e0054d
+	sha256sums = 275de615fb6b4494972f5c11de44bd199f546a6d7d9271cd5c3b42e871d3c04e
+
+pkgname = necroedit
+
