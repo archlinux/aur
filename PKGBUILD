@@ -3,7 +3,7 @@
 pkgorg='humanoid-path-planner'
 pkgname=('hpp-fcl' 'hpp-fcl-docs')
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -32,7 +32,7 @@ package_hpp-fcl() {
     make DESTDIR="$pkgdir/" install
     rm -rf $pkgdir/usr/share/doc
     sed -i 's=;/usr/\.\./include/include==' "$pkgdir/usr/lib/cmake/hpp-fcl/hpp-fclTargets.cmake"
-    sed -i '/Boost COMPONENTS/s/python3/python/' "$pkgdir/usr/lib/cmake/hpp-fcl/hpp-fclConfig.cmake"
+    sed -i '/Boost COMPONENTS/s/python3//' "$pkgdir/usr/lib/cmake/hpp-fcl/hpp-fclConfig.cmake"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
