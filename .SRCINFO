@@ -37,7 +37,8 @@ pkgbase = pamac-all
 	depends = snapd-glib
 	depends = libappindicator-gtk3
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
-	provides = pamac=9.5.8-1
+	provides = pamac
+	provides = pamac-flatpak-plugin
 	provides = pamac-snap-plugin
 	provides = pamac-tray-appindicator
 	conflicts = pamac

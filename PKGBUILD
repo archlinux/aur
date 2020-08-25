@@ -23,7 +23,7 @@ optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome')
 makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspection' 'xorgproto')
 backup=('etc/pamac.conf')
 conflicts=('pamac' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur-git')
-provides=("pamac=$pkgver-$pkgrel")
+provides=("pamac")
 options=(!emptydirs)
 install=pamac.install
 source=(
@@ -35,6 +35,7 @@ define_meson=''
 if [ "${ENABLE_FLATPAK}" = 1 ]; then
   depends+=('flatpak')
   define_meson+=' -Denable-flatpak=true'
+  provides+=('pamac-flatpak-plugin')
   conflicts+=('pamac-flatpak-plugin')
 fi
 
