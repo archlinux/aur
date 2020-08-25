@@ -1,20 +1,18 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern streamlined music player
-	pkgver = 6.2.1
-	pkgrel = 2
+	pkgver = 6.2.2
+	pkgrel = 1
 	url = https://tauonmusicbox.rocks
 	arch = any
 	license = GPL3
 	depends = python-pillow
 	depends = python-pylast
-	depends = python-flask
 	depends = python-hsaudiotag3k
 	depends = python-pysdl2
 	depends = python-stagger
 	depends = python-send2trash
 	depends = python-pylyrics
 	depends = python-musicbrainzngs
-	depends = python-discogs-client
 	depends = python-isounidecode
 	depends = python-setproctitle
 	depends = python-gobject
@@ -39,8 +37,8 @@ pkgbase = tauon-music-box
 	optdepends = python-pypresence: Discord status support
 	optdepends = python-tekore: Spotify playback control
 	optdepends = picard: Tag editing
-	source = tauon-music-box-6.2.1.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v6.2.1.tar.gz
-	sha256sums = 90ac549dd86467dfeeb1bb9a5282bc08f48300294b6466a8902e2f18fd381873
+	source = tauon-music-box-6.2.2.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v6.2.2.tar.gz
+	sha256sums = 4eaeae7231fb46d30be4a1a93fa110875833cb5d66565c4f50b74ffcfd09b112
 
 pkgname = tauon-music-box
 

@@ -3,8 +3,8 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
-pkgver=6.2.1
-pkgrel=2
+pkgver=6.2.2
+pkgrel=1
 pkgdesc="A modern streamlined music player"
 arch=('any')
 url="https://tauonmusicbox.rocks"
@@ -12,14 +12,12 @@ license=('GPL3')
 
 depends=('python-pillow'
          'python-pylast'
-         'python-flask'
          'python-hsaudiotag3k'
          'python-pysdl2' # AUR
          'python-stagger' # AUR
          'python-send2trash'
          'python-pylyrics' # AUR
          'python-musicbrainzngs'
-         'python-discogs-client'
          'python-isounidecode' # AUR
          'python-setproctitle'
          'python-gobject'
@@ -47,7 +45,7 @@ optdepends=('p7zip: 7z archive extraction support'
             'picard: Tag editing')
             
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v$pkgver.tar.gz")
-sha256sums=('90ac549dd86467dfeeb1bb9a5282bc08f48300294b6466a8902e2f18fd381873')
+sha256sums=('4eaeae7231fb46d30be4a1a93fa110875833cb5d66565c4f50b74ffcfd09b112')
 
 build() {
     cd "$_gitname-$pkgver"
@@ -61,7 +59,11 @@ package() {
     ln -s "/opt/$pkgname/tauon.py" "$pkgdir/usr/bin/$_pkgname"
  
     install -Dm644 input.txt -t "$pkgdir/opt/$pkgname"
-    cp -r  locale assets templates theme t_modules "$pkgdir/opt/$pkgname"
+    cp -r  assets templates theme t_modules "$pkgdir/opt/$pkgname"
+ 
+    for t in de fr_FR ja_JP nb_NO pt_BR pt_PT sv zh_CN; do
+        install -Dm644 locale/${t}/LC_MESSAGES/*.mo -t "$pkgdir/usr/share/locale/${t}/LC_MESSAGES"
+    done
  
     install -Dm644 "extra/$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
     install -Dm644 "extra/$_pkgname-symbolic.svg" -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps"
