@@ -3,7 +3,7 @@
 
 pkgname=nushell-bin
 pkgver=0.18.1
-_underscoredpkgver=0_18_1
+_underscoredpkgver="${pkgver//./_}"
 pkgrel=1
 depends=('zlib' 'libxcb' 'openssl' 'libgit2')
 optdepends=('libx11: for binaryview plugin')
