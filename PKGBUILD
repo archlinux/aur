@@ -4,7 +4,7 @@
 # code adapted from https://github.com/jaredallard/notion-app
 
 pkgname=notion-app
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=3.2
 epoch=1
 pkgdesc="The all-in-one workspace for your notes and tasks"
@@ -17,10 +17,9 @@ source=(
         "https://desktop-release.notion-static.com/Notion-"${pkgver}".dmg" 
         'notion-app'
         'notion-app.desktop')
-md5sums=('3f56f1fde5ba090d0a7ecd8af39d1e91'
+md5sums=('045d90d0322a82ff349a83725bb5c3b6'
          'ad3c23bc7d0186e2f622aa4b7310deac'
          '557f7e0acfb56649f9ce7d9f7f85f7e6')
-
 build() {
   msg "Converting dmg image..."
   mkdir -p "${srcdir}/tmp/build"
