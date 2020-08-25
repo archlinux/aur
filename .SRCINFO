@@ -1,0 +1,16 @@
+pkgbase = six-cli-git
+	pkgdesc = 6盘(https://6pan.cn/)命令行工具.
+	pkgver = V0.0.6.alpha.r0.g0eba4dc
+	pkgrel = 1
+	url = https://github.com/Mrs4s/six-cli
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go-pie
+	provides = six-cli
+	conflicts = six-cli
+	source = six-cli-git::git+https://github.com/Mrs4s/six-cli
+	sha256sums = SKIP
+
+pkgname = six-cli-git
+
