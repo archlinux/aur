@@ -7,6 +7,7 @@ pkgbase = ayatana-indicator-printers
 	arch = x86_64
 	arch = pentium4
 	license = GPL3
+	makedepends = intltool
 	makedepends = mate-common
 	makedepends = glib2
 	makedepends = gtk3
