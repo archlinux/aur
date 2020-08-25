@@ -1,44 +1,33 @@
-# Maintainer KDE
-# Maintainer Stoyan Minaev <stoyan.minaev@gmail.com>
+# Maintainer Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
-pkgbase=plasma-angelfish
 pkgname=plasma-angelfish
 pkgver=1.5.1
 pkgrel=1
-pkgdesc="Plasma Demo Webbrowser for Mobile Devices"
-url="https://github.com/KDE/plasma-angelfish"
-license=('GPL2')
-source=(
-    https://codeload.github.com/KDE/$pkgname/tar.gz/v$pkgver
-)
-md5sums=(
-    'c59f96e6b118cfe2073c2fef3fda6951'
-)
 arch=('x86_64')
-
-depends=(
-   plasma-framework
-)
-
-makedepends=(
-    extra-cmake-modules
-)
+pkgdesc="Plasma Demo Webbrowser for Mobile Devices"
+url="https://invent.kde.org/plasma-mobile/plasma-angelfish"
+license=('GPL2')
+depends=('qt5-webengine' 'purpose' 'kirigami2')
+makedepends=('extra-cmake-modules')
+source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+sha512sums=('99a9d2fecad07ce4c8ebc39847ec6d006f1ca212c597738f42e9f84c5a06d960eeb17089edcd2671ea8ab133c41d3834155118c5d975a9bc6de7e6f9d18a72f5')
 
 prepare() {
-    cd $srcdir/$pkgname-$pkgver
-    mkdir -p build
+  cd ${srcdir}/${pkgname}-v${pkgver}
+  mkdir -p build
 }
 
 build() {
-    cd $srcdir/$pkgname-$pkgver
-    cd build
-    cmake -DCMAKE_INSTALL_PREFIX="/usr/local" -DBUILD_TESTING=OFF ..
+  cd ${srcdir}/${pkgname}-v${pkgver}/build
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  make
 }
 
 package() {
-    cd $srcdir/$pkgname-$pkgver
-    cd build
-    make DESTDIR="$pkgdir" install
+    cd ${srcdir}/${pkgname}-v${pkgver}/build
+    make DESTDIR="${pkgdir}" install
 }
 
 #vim: syntax=sh
