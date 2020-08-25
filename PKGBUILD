@@ -9,7 +9,7 @@ pkgbase=gdm-plymouth-nox
 pkgname=(gdm-plymouth-nox libgdm-plymouth-nox)
 pkgver=3.36.3
 pkgrel=3
-pkgdesc="Display manager and login screen with plymouth support"
+pkgdesc="Display manager and login screen with plymouth support, but without xorg-server"
 url="https://wiki.gnome.org/Projects/GDM"
 arch=(x86_64)
 license=(GPL)
@@ -29,13 +29,13 @@ sha256sums=('SKIP'
             'ba98385cf1de00560f77d75a241b1895567c6b8d4babf230d10ae7fd19739fda')
 
 pkgver() {
-  cd gdm
+  cd $_pkgbase
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
   mkdir -p build
-  cd gdm
+  cd $_pkgbase
   patch -Np1 -i ../0001-Xsession-Don-t-start-ssh-agent-by-default.patch
 
   # https://bugs.archlinux.org/task/63706
@@ -50,7 +50,7 @@ prepare() {
 
 build() {
   cd build
-  ../gdm/configure \
+  ../$_pkgbase/configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \

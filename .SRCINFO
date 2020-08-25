@@ -1,5 +1,5 @@
 pkgbase = gdm-plymouth-nox
-	pkgdesc = Display manager and login screen with plymouth support
+	pkgdesc = Display manager and login screen with plymouth support, but without xorg-server
 	pkgver = 3.36.3
 	pkgrel = 3
 	url = https://wiki.gnome.org/Projects/GDM
