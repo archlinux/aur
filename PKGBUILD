@@ -16,7 +16,6 @@ conflicts=("${_pkgname}")
 depends=(
   ffmpeg
   libegl
-  libpng
   libretro-core-info
   libzip
   snappy

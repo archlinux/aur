@@ -12,7 +12,6 @@ pkgbase = libretro-ppsspp-rbp
 	makedepends = python
 	depends = ffmpeg
 	depends = libegl
-	depends = libpng
 	depends = libretro-core-info
 	depends = libzip
 	depends = snappy
