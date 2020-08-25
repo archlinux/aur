@@ -9,7 +9,7 @@
 pkgname=jabberd2
 pkgver=r1175.376e632
 _commit=${pkgver#*.}
-pkgrel=27
+pkgrel=28
 pkgdesc='Scalable, architecturally sound, and extensible XMPP server'
 arch=('i686' 'pentium4' 'x86_64' 'armv6h')
 url='http://jabberd2.org/'
@@ -19,6 +19,7 @@ _pinned_dependencies=(
   'expat=2.2.9'
   'glibc>=2.31'
   'gsasl=1.8.1'
+  'libcrypt.so=2'
   'libidn=1.36'
   'openssl=1.1.1.g'
   'pam=1.4.0'
