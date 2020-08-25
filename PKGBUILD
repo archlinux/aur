@@ -10,6 +10,7 @@ url="https://github.com/BachoSeven/bastet/"
 license=('GPL3')
 depends=('boost-libs' 'ncurses')
 makedepends=('git' 'boost')
+provides=('bastet')
 conflicts=('bastet')
 source=("$pkgname::git+https://github.com/BachoSeven/bastet.git")
 md5sums=('SKIP')

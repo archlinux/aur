@@ -10,6 +10,7 @@ pkgbase = bastet-xdg-git
 	makedepends = boost
 	depends = boost-libs
 	depends = ncurses
+	provides = bastet
 	conflicts = bastet
 	source = bastet-xdg-git::git+https://github.com/BachoSeven/bastet.git
 	md5sums = SKIP
