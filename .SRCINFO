@@ -1,0 +1,18 @@
+pkgbase = bastet-git
+	pkgdesc = Tetris(r) clone with 'bastard' block-choosing AI
+	pkgver = 0.43.2.r3.g1b3e692
+	pkgrel = 1
+	url = https://github.com/BachoSeven/bastet/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = boost
+	depends = boost-libs
+	depends = ncurses
+	conflicts = bastet
+	source = bastet-git::git+https://github.com/fph/bastet.git
+	md5sums = SKIP
+
+pkgname = bastet-git
+
