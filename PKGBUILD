@@ -48,10 +48,10 @@ fi
 
 pkgname=firefox-beta
 _pkgname=firefox
-pkgver=80.0rc2
+pkgver=81.0b1
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
-_pkgver=80.0
+_pkgver=81.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta"
 arch=(i686 x86_64)
@@ -72,7 +72,7 @@ options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz{,.asc}
         0001-Use-remoting-name-for-GDK-application-names.patch
         $pkgname.desktop)
-sha256sums=('380d9853e0712442ba2d4acd85c0e09c19ad36561a3ea8932705ad6b8a91146a'
+sha256sums=('02866d4c80b64f1b1644cce5d23cff2e0fda9960066f6a7c4449ca5cfc5cdb7e'
             'SKIP'
             '3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75'
             '54d93249fedc9c4cdc5eb82da498b08f08bcb089f85a138b457f3251a0913ad1')
@@ -109,6 +109,7 @@ prepare() {
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
+mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
@@ -160,11 +161,6 @@ build() {
 
   # LTO needs more open files
   ulimit -n 4096
-
-  # -fno-plt with cross-LTO causes obscure LLVM errors
-  # LLVM ERROR: Function Import: link error
-  CFLAGS="${CFLAGS/-fno-plt/}"
-  CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
   if [ "$enable_pgo" = "y" ]; then
     # Do 3-tier PGO
@@ -277,11 +273,10 @@ END
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
 
-  if [[ -f "$startdir/.crash-stats-api.token" ]]; then
-    find . -name '*crashreporter-symbols-full.zip' -exec \
-      "$startdir/upload-symbol-archive" "$startdir/.crash-stats-api.token" {} +
+  export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
+  if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
+      make -C obj uploadsymbols
   else
-    find . -name '*crashreporter-symbols-full.zip' -exec \
-      cp -fvt "$startdir" {} +
+      cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.zip
   fi
 }
