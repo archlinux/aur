@@ -16,7 +16,6 @@ sha256sums=('98449c90d6585430fc2d590aeb4b7cb476789ef94f856a305cbfd0113dfe2bda')
 
 prepare() {
   cd "HippoPlayer-${pkgver}"
-  git submodule update --init --recursive
   sed -i "145s|.*|const char* core_name = \"/usr/share/hippoplayer/libhippo_core.so\";|" src/hippo_core_loader/hippo_core_loader.c
   sed -i "s|VGMEnd|VGMEndFmts|g" src/plugins/playback/vgm/VGMPlay/VGMPlay_AddFmts.c
 }
