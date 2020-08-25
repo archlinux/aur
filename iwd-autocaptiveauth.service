@@ -1,0 +1,19 @@
+[Unit]
+Description=iwd auto captive portal authenticate
+After=network.target
+
+[Service]
+User=iwdautocaptive
+Group=iwdautocaptive
+Type=simple
+ExecStart=/usr/lib/iwd-autocaptiveauth/iwd-autocaptiveauth
+WorkingDirectory=/usr/lib/iwd-autocaptiveauth
+LimitNOFILE=1048576
+LimitNPROC=64
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target

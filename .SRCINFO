@@ -1,0 +1,21 @@
+pkgbase = iwd-autocaptiveauth-git
+	pkgdesc = Automatically authenticate to captive portals, supports iwd
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.project-insanity.org/onny/py-iwd-autocaptiveauth
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = iwd
+	depends = hyperpotamus
+	depends = python-dbus
+	depends = python-gobject
+	source = git+https://git.project-insanity.org/onny/py-iwd-autocaptiveauth.git
+	source = iwd-autocaptiveauth.service
+	source = iwd-autocaptiveauth.sysusers
+	sha512sums = SKIP
+	sha512sums = dabd1b0341e8037ae579f701a50eb06159b01d6865d3d1925514566fba4aaa1fc6a46f6f24ede7c7cf856f9b2b9d6f9340de530eac6be6be876fc46037981ac4
+	sha512sums = b7010111ebc6eac6fb721c6465876f52f7218fe52b85f13a475ba2783cd1d455e12f11c3b26b220415b5c6fb597e0fd276dfaa65a9d203f72b988fb2f035c979
+
+pkgname = iwd-autocaptiveauth-git
+
