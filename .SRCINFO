@@ -1,16 +1,15 @@
 pkgbase = postgrest-bin
 	pkgdesc = REST API for any Postgres database
-	pkgver = 6.0.0
+	pkgver = 7.0.1
 	pkgrel = 1
-	url = https://github.com/begriffs/postgrest
+	url = https://github.com/PostgREST/postgrest
 	arch = x86_64
 	license = MIT
 	depends = postgresql-libs>=9.5
 	provides = postgrest
 	provides = postgrest-bin
 	conflicts = postgrest
-	source = https://github.com/PostgREST/postgrest/releases/download/v6.0.0/postgrest-v6.0.0-ubuntu.tar.xz
-	sha512sums = 640829c160cb21f75a9d524d384508d59b29969d6f9de195c2f60a9be757dbeb193be9b00245b3686aa9b192d1bf8406305c480277fd626d9452cb3529a89b3f
+	source = https://github.com/PostgREST/postgrest/releases/download/v7.0.1/postgrest-v7.0.1-ubuntu.tar.xz
+	sha512sums = 87a8be36f791954a12a1c75e71ec0cff7050778b53f39941a8bd4b058039d52bde98ab44d9f7f9bd319dd7a8a7abea595c563d737a97078142da3e292fb3fa7e
 
 pkgname = postgrest-bin
-
