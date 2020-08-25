@@ -5,7 +5,7 @@ _name='matterircd'
 _github_path="github.com/42wim/${_name}"
 _go_pkg_path="src/${_github_path}"
 pkgver=0.19.4.63.gb0eefb2
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal IRC server which integrates with mattermost and slack'
 arch=('x86_64' 'armv7h')
 url='https://github.com/42wim/matterircd'
@@ -56,5 +56,5 @@ package() {
     cd "${_go_pkg_path}"
     install -Dm755 "${_name}" "${pkgdir}/usr/bin/${_name}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 matterircd.toml.example "${pkgdir}/etc/${pkgname}/config.toml"
+    install -Dm644 matterircd.toml.example "${pkgdir}/etc/${_name}/config.toml"
 }
