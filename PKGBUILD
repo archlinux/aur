@@ -2,22 +2,34 @@
 # Contributor: Kyle Meyer <kyle@kyleam.com>
 
 pkgname=snakemake
-pkgver=5.19.2
+pkgver=5.23.0
 pkgrel=1
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
 url='https://snakemake.readthedocs.io'
 depends=(
-	python python-requests python-wrapt python-ratelimiter
-	python-configargparse python-yaml python-appdirs
-	python-docutils python-datrie python-jsonschema
-	python-toposort jupyter-nbformat
+	python
+	python-wrapt
+	python-requests
+	python-ratelimiter
+	python-yaml
+	python-configargparse
+	python-appdirs
+	python-datrie
+	python-jsonschema
+	python-docutils
+	python-gitpython
+	python-psutil
+	jupyter-nbformat
+	python-toposort
+	python-pulp
 )
-makedepends=(python-setuptools python-gitpython)
+makedepends=(python-setuptools)
 optdepends=(
-	'graphviz: For DAG visualization'
 	'python-jinja: For report generation'
 	'python-networkx: For report generation'
+	'python-pygments: For report generation'
+	'python-pygraphviz: For report generation'
 	'python-biopython: For GenBank/NCBI Entrez support'
 	'python-easywebdav: For WebDAV support'
 	'python-pysftp: For SFTP support'
@@ -25,13 +37,12 @@ optdepends=(
 	'python-moto: For AWS support'
 	'python-dropbox: For Dropbox support'
 	'python-ftputil: For FTP support'
-	'xrootd: For XRootD support'
-	'python-psutil: For benchmarking'
+	'python-xrootd: For XRootD support'
 	'slacker: For messaging'
 )
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('e5e80b482a73d3a3c3f58f9391a857d58cb80aa92498ac7468e6893ee3e2de60')
+sha256sums=('d8bbde85fa8d93bd6312cae5d39247b316ead0589022aa7b48760374b1994b79')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
