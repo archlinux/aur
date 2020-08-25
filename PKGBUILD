@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=kubectl-krew
 _pkgname=${pkgname#kubectl-}
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Plugin manager for kubectl command-line tool'
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ makedepends=('go')
 install=kubectl-krew.install
 groups=('kubectl-plugins')
 source=("https://github.com/kubernetes-sigs/krew/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('dc96db650fb7f973a6a3fcf6ce35bb6ba1218bca9c3858459d5cacc2c321113c')
+sha256sums=('1950c8cbd76bbe27589b7e76ed8b79a2d1b97faef238376bf68a3c2a8f48b182')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -33,13 +33,13 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
-  go build -o . -ldflags "${x[*]/#/-X=}" ./cmd/{krew,validate-krew-manifest}
+  go build -o . -ldflags "-linkmode=external ${x[*]/#/-X=}" ./cmd/{krew,validate-krew-manifest}
 }
 
 check() {
   cd "${_pkgname}-${pkgver}"
   # unit- and integrationtests
-  KREW_BINARY="${PWD}/${pkgname#kubectl-}" go test ./...
+  KREW_BINARY="${PWD}/${pkgname#kubectl-}" go test -short ./...
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = kubectl-krew
 	pkgdesc = Plugin manager for kubectl command-line tool
-	pkgver = 0.3.4
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://krew.sigs.k8s.io/
 	install = kubectl-krew.install
@@ -14,8 +14,8 @@ pkgbase = kubectl-krew
 	makedepends = go
 	depends = kubectl
 	depends = git
-	source = https://github.com/kubernetes-sigs/krew/archive/v0.3.4/kubectl-krew-0.3.4.tar.gz
-	sha256sums = dc96db650fb7f973a6a3fcf6ce35bb6ba1218bca9c3858459d5cacc2c321113c
+	source = https://github.com/kubernetes-sigs/krew/archive/v0.4.0/kubectl-krew-0.4.0.tar.gz
+	sha256sums = 1950c8cbd76bbe27589b7e76ed8b79a2d1b97faef238376bf68a3c2a8f48b182
 
 pkgname = kubectl-krew
 
