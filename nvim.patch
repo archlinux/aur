@@ -1,0 +1,12 @@
+diff --unified --recursive --text package.orig/dotfiles/tag-scripts/local/bin/pacnews package.new/dotfiles/tag-scripts/local/bin/pacnews
+--- dotfiles/tag-scripts/local/bin/pacnews	2020-08-25 15:06:16.716219465 +0200
++++ dotfiles/tag-scripts/local/bin/pacnews	2020-08-25 15:07:26.552883421 +0200
+@@ -17,7 +17,7 @@
+ for file; do
+   current="${file/.pacnew/}"
+
+-  ${DIFFTOOL:-vimdiff} "$current" "$file"
++  ${DIFFTOOL:-nvim -d} "$current" "$file"
+
+   rm -iv "$file" # -i gets us prompting for free
+   [[ -f "$file" ]] && mv -iv "$file" "$current"
