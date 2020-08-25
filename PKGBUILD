@@ -4,7 +4,7 @@
 pkgname=cp2k
 pkgver=7.1.0
 _dbcsrver=2.0.1
-pkgrel=3
+pkgrel=4
 # NVIDIA GPU Generation: Kepler, Pascal, or Volta;
 # please specify one closest to yours or leave unchanged
 # if CUDA isn't supposed to be used
@@ -47,7 +47,7 @@ prepare() {
   export _arch="basic"
   export _corenumber=$( grep -c ^processor /proc/cpuinfo )
   export _elpaver=$( ls /usr/include | grep elpa | sed 's/elpa_openmp-//g' )
-  export _plumed=$( find /usr/lib -maxdepth 1 -type d -name "plumed*" | awk -F'/' '{print $4}' )
+  export _plumed=$( find /usr/lib -maxdepth 1 -type d -name "plumed-mpi" | awk -F'/' '{print $4}' )
 
   # Enable additional features
   if [ $( echo -n $( which nvcc) | tail -c 4 ) == nvcc ]
