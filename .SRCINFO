@@ -1,0 +1,15 @@
+pkgbase = pyghdl-git
+	pkgdesc = VHDL Language Server and interface to ghdl, a VHDL analyzer
+	pkgver = v0.37.0.r975.1a1e3212
+	pkgrel = 1
+	url = https://github.com/ghdl/ghdl
+	arch = any
+	license = GPLv2
+	makedepends = python-setuptools
+	depends = ghdl-git
+	depends = python
+	source = ghdl::git+https://github.com/ghdl/ghdl.git
+	sha256sums = SKIP
+
+pkgname = pyghdl-git
+
