@@ -2,7 +2,7 @@
 
 pkgname=pinentry-wayland
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A small shell script wrapper for setting different pinentry-clients for Wayland GUI and terminal usage."
 arch=('any')
 url="https://github.com/otahontas/pinentry-wayland/blob/master/README.md"

@@ -1,7 +1,7 @@
 pkgbase = pinentry-wayland
 	pkgdesc = A small shell script wrapper for setting different pinentry-clients for Wayland GUI and terminal usage.
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/otahontas/pinentry-wayland/blob/master/README.md
 	arch = any
 	license = CC0 1.0 Universal
