@@ -6,7 +6,7 @@
 pkgname=zerobrane-studio
 _pkgname=ZeroBraneStudio
 pkgver=1.90
-pkgrel=5
+pkgrel=6
 pkgdesc="A lightweight Lua-based IDE for Lua"
 arch=('any')
 url='https://studio.zerobrane.com/'
@@ -17,11 +17,11 @@ _lua_deps=('copas'
            'sec'
            'socket')
 depends=('hicolor-icon-theme'
-        'lua53'
-         "${_lua_deps[@]/#/lua53-}"
-        'wxlua')
+        'lua'
+         "${_lua_deps[@]/#/lua-}"
+        'wxlua>=3.0.0.9')
 makedepends=('cmake')
-optdepends=('lua53-busted: to debug busted test specs'
+optdepends=('lua-busted: to debug busted test specs'
             'gsl-shell: te debug GNU Scientific Library shell programs'
             'love: to debug löve programs'
             'lua51: to debug lua51 programs'
