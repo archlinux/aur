@@ -8,7 +8,7 @@ _gccsrc="gcc-${_gccver}"
 
 pkgname='libgccjit'
 pkgver="${_gccver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Just-In-Time Compilation using GCC.'
 url='https://gcc.gnu.org/wiki/JIT'
 license=(
@@ -28,7 +28,7 @@ depends=(
 # 'isl>=0.14'
  'libmpc'
  'zlib'
- libgcc=$pkgver
+ "gcc-libs=$pkgver"
 )
 makedepends=(
  'binutils'

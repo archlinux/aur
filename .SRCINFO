@@ -1,7 +1,7 @@
 pkgbase = libgccjit
 	pkgdesc = Just-In-Time Compilation using GCC.
 	pkgver = 10.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gcc.gnu.org/wiki/JIT
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = libgccjit
 	depends = glibc
 	depends = libmpc
 	depends = zlib
-	depends = libgcc=10.2.0
+	depends = gcc-libs=10.2.0
 	options = !emptydirs
 	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-10.2.0/gcc-10.2.0.tar.xz
 	sha512sums = 42ae38928bd2e8183af445da34220964eb690b675b1892bbeb7cd5bb62be499011ec9a93397dba5e2fb681afadfc6f2767d03b9035b44ba9be807187ae6dc65e
