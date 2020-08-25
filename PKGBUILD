@@ -14,7 +14,7 @@ depends=('glibc')
 makedepends=('go>=1.8' 'git')
 provides=('matterircd')
 conflicts=('matterircd')
-backup=("etc/${pkgname}/config.toml")
+backup=("etc/${_name}/config.toml")
 validpgpkeys=('CC7D978417C1AEA1E4CDD7240E41AB4BF4C610B4')
 
 source=(
