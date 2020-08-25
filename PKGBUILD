@@ -9,7 +9,8 @@ arch=('any')
 url='https://gitlab.com/gardenappl/lbt'
 license=('GPL3')
 depends=('jq' 'curl')
-optdepends=("lbry-app-bin>=0.47.1: LBRY application")
+optdepends=("lbry-app-bin>=0.47.1: Full LBRY application"
+            "lbrynet: Standalone LBRY daemon")
 source=("https://gitlab.com/$_author/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 
 package() {
