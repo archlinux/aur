@@ -1,7 +1,7 @@
 pkgbase = hyperpotamus
 	pkgdesc = YAML/JSON automation scripting for web requests
 	pkgver = 0.37.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pmarkert/hyperpotamus
 	arch = x86_64
 	license = MIT

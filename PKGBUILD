@@ -3,7 +3,7 @@
 
 pkgname=hyperpotamus
 pkgver=0.37.3
-pkgrel=1
+pkgrel=2
 pkgdesc="YAML/JSON automation scripting for web requests"
 arch=('x86_64')
 url="https://github.com/pmarkert/hyperpotamus"
@@ -20,10 +20,12 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -d "${pkgdir}/usr/lib"
+  install -d "${pkgdir}/usr/lib/hyperpotamus"
   install -d "${pkgdir}/usr/bin"
-  cp -r cli docs examples hdb.js hyperpotamus.js lib node_modules  "${pkgdir}/usr/lib/"
+  cp -r cli docs examples hdb.js hyperpotamus.js lib node_modules package.json  "${pkgdir}/usr/lib/hyperpotamus"
   echo -e '#!/usr/bin/bash\nnode /usr/lib/hyperpotamus/hyperpotamus.js "$@"' > "${pkgdir}/usr/bin/hyperpotamus"
   chmod +x "${pkgdir}/usr/bin/hyperpotamus"
+
+  install -D "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
