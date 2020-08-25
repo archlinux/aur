@@ -5,7 +5,7 @@ _name='matterircd'
 _github_path="github.com/42wim/${_name}"
 _go_pkg_path="src/${_github_path}"
 pkgver=0.19.4.63.gb0eefb2
-pkgrel=2
+pkgrel=3
 pkgdesc='Minimal IRC server which integrates with mattermost and slack'
 arch=('x86_64' 'armv7h')
 url='https://github.com/42wim/matterircd'
@@ -25,7 +25,7 @@ source=(
 
 sha512sums=(
     'SKIP'
-    'a1c8947ca8ed510b0abd94e1eb3f049a7179a596e20975f343f1fd6a034512b3e7d5daa082ed0e7662757d416b3b10f318de5a8fe9c44923d2cfbd15742d3ba0'
+    'd2ba51e00d7ca3a18fe861c90d39ca0370b7350009051a2787da3365f54deeee506306b4458bace3bce7c8a6be85d9cd1c5414193788af1387fa7ea1f4f447e5'
     '80db251f5b087ba6bcdd6f266063fb749107a441f794678d645acf32d44aba7b53c2c9ef7a9c3962abfd6e8af20a2d29e93bde1c15358d9f2011ce98b68e56dc'
 )
 

@@ -2,7 +2,7 @@
 Description = minimal IRC server which integrates with mattermost and slack
 
 [Service]
-ExecStart = /usr/bin/matterircd -conf /etc/matterircd/config.toml
+ExecStart = /usr/bin/matterircd --conf /etc/matterircd/config.toml
 User = matterircd
 
 [Install]
