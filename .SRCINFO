@@ -8,6 +8,7 @@ pkgbase = fetchcord-git
 	depends = python-pypresence
 	depends = neofetch
 	depends = python-psutil
+	depends = python-setuptools
 	provides = fetchcord
 	source = fetchcord::git+https://github.com/MrPotatoBobx/fetchcord#branch=master
 	sha256sums = SKIP
