@@ -3,7 +3,7 @@
 
 pkgname=python-liblarch
 pkgver=3.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Python library to easily handle data structure"
 arch=(any)
 url=https://wiki.gnome.org/action/show/Projects/liblarch
@@ -13,7 +13,7 @@ makedepends=(python-distribute)
 checkdepends=(python-nose)
 provides=(python-liblarch_gtk)
 conflicts=(python-liblarch_gtk)
-source=("https://github.com/liblarch/liblarch/archive/v${pkgver}.tar.gz")
+source=("liblarch-${pkgver}.tar.gz::https://github.com/liblarch/liblarch/archive/v${pkgver}.tar.gz")
 sha256sums=('3a866cc43873454b88ae5526207555aca1f0e16e3120577d6135ea13db98ca68')
 
 check() {
