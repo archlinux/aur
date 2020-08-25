@@ -1,6 +1,6 @@
 pkgbase = linuxdeployqt
 	pkgdesc = Makes Linux applications self-contained by copying in the libraries and plugins that the application uses
-	pkgver = 20180317
+	pkgver = 20200825
 	pkgrel = 1
 	url = https://github.com/probonopd/linuxdeployqt
 	arch = x86_64

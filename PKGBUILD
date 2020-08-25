@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Lau <lauseb644@gmail.com>
 
 pkgname="linuxdeployqt"
-pkgver=20180317
+pkgver=20200825
 pkgrel=1
 pkgdesc="Makes Linux applications self-contained by copying in the libraries and plugins that the application uses"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3' 'LGPL3')
 depends=('qt5-base' 'patchelf')
 makedepends=('git' 'cmake')
 provides=('linuxdeployqt')
-_commit="37631e5640d8f7c31182fa72b31266bbdf6939fc"
+_commit="d41e2345694e6d09820df66e5edb6e8c01db9fb9"
 source=("git+https://github.com/probonopd/linuxdeployqt.git#commit=${_commit}")
 md5sums=('SKIP')
 
