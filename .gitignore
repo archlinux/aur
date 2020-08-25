@@ -1,0 +1,5 @@
+pkg/
+src/
+*.pkg.tar.*
+lbrynet-linux.zip
+lbrynet-LICENSE
