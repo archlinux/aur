@@ -1,0 +1,10 @@
+# Brazil - UFSCar
+Server = http://lonewolf-builder.duckdns.org/$repo/$arch
+# Brazil - UFSCar (Cloudflare cache)
+Server = https://lonewolf.pedrohlc.com/$repo/$arch
+# USA (Cloudflare proxy)
+Server = https://repo.kitsuna.net/$arch
+# Germany
+Server = http://chaotic.bangl.de/$repo/$arch
+# Netherlands
+Server = https://chaotic.tn.dedyn.io/$arch
