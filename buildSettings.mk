@@ -46,10 +46,10 @@ LIB_PNG = /usr/lib
 INC_PNG = /usr/include/libpng16
 # PROB library
 LIB_PROB = ${FSLEXTLIB}
-INC_PROB = ${FSLEXTINC}/libprob
+INC_PROB = ${FSLEXTINC}/cprob
 # CPROB library
 LIB_CPROB = ${FSLEXTLIB}
-INC_CPROB = ${FSLEXTINC}/libcprob
+INC_CPROB = ${FSLEXTINC}/
 # NEWRAN library
 LIB_NEWRAN = ${FSLEXTLIB}
 INC_NEWRAN = ${FSLEXTINC}/newran
@@ -78,9 +78,9 @@ INC_NEWMAT = ${FSLEXTINC}/armawrap/armawrap -DARMA_USE_LAPACK -DARMA_USE_BLAS -D
 #####################################################################
 ifeq ($(SYSTYPE), Darwin)
 ###############   System Vars   #####################################
-CC = cc
-CXX = c++
-CXX11 = clang++
+CC = cc-9
+CXX = c++-9
+CXX11 = clang++-9
 CSTATICFLAGS =
 CXXSTATICFLAGS =
 CFLAGS = -std=c99
@@ -124,9 +124,9 @@ endif # if Darwin
 #####################################################################
 ifeq ($(SYSTYPE), Linux)
 ###############   System Vars   #####################################
-CC = gcc
-CXX = c++
-CXX11 = c++
+CC = gcc-9
+CXX = c++-9
+CXX11 = c++-9
 CSTATICFLAGS = -static
 CXXSTATICFLAGS = -static
 ARCHFLAGS = -m64
@@ -170,12 +170,15 @@ LIB_NEWMAT = /usr/lib -llapack -lopenblas
 #$(info GCC MAJ VER $(GCCMAJ))
 #$(info GCC MIN VER $(GCCMIN))
 #$(info GCC PAT VER $(GCCPAT))
-# Alter this is host default c++ does not support C++11
-HOSTNAME := $(shell hostname -s)
-ifeq ($(HOSTNAME), caper)
-CXX11  = scl enable devtoolset-2 -- c++
-NVCC11 = scl enable devtoolset-2 -- ${CUDA_INSTALLATION}/bin/nvcc
-endif # if GCCMIN
-#Project specific variables                                                                                                                                 
-EDDYBUILDPARAMETERS="cuda=1 CUDAVER=8.0" "cuda=1 CUDAVER=9.1" "cpu=1"
+
+#Project specific variables
+EDDYBUILDPARAMETERS = "cuda=1 CUDAVER=8.0" "cuda=1 CUDAVER=9.1" "cpu=1"
+fdt_MASTERBUILD     = COMPILE_GPU = 1
+ptx2_MASTERBUILD    = COMPILE_GPU = 1
+define newline
+
+
+endef
+#PTX2_MASTER_COMMANDS = COMPILE_GPU = 1$(newline)FOO=2
 endif # if Linux
+

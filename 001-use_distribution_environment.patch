@@ -63,8 +63,8 @@
      fi
  done
  
---- a/fsl/src/mist-clean/Makefile	2018-10-17 13:00:28.000000000 +0200
-+++ b/fsl/src/mist-clean/Makefile	2018-11-25 11:26:42.643047048 +0100
+--- a/fsl/src/mist/Makefile	2018-10-17 13:00:28.000000000 +0200
++++ b/fsl/src/mist/Makefile	2018-11-25 11:26:42.643047048 +0100
 @@ -2,15 +2,15 @@
  
  NLOPT_INC = ${FSLEXTINC}

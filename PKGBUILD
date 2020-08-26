@@ -2,7 +2,7 @@
 # Contributor: fishburn <frankthefishburn@gmail.com>
 
 pkgname=fsl
-pkgver=6.0.3
+pkgver=6.0.4
 pkgrel=1
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("x86_64")
@@ -20,18 +20,22 @@ source=("https://www.fmrib.ox.ac.uk/fsldownloads/fsl-${pkgver}-sources.tar.gz"
 	"001-use_distribution_environment.patch"
 	"002-fix_meldata_usage_of_ifstream.patch"
 	"003-fix_fsl_exec_empty_errorCode.patch"
-	"004-fix_missing_LIB_PROB.patch")
+	"004-fix_missing_LIB_PROB.patch"
+	"005-fix_cuda_thrust_include.patch"
+	"006-compile_ptx2_without_std-c++11.patch")
 
-sha256sums=('9eec9b4f5d67fa727b50ad6d4c8265b82403dd6163c4747797ef910f826a2636'
-	    '719d9e12e165c1a40d411dae2aca53e8d9033192c91853a6c60e5a55c0c022fb'
-	    'e73d3b7289981c95581d9378c2a39694bc0fcdf7170c5defc864a47871e98df1'
-            'c61f185fbe7e297c4518e96377aa5ff4852f90eda0dbb9ae8edc5e24735e14ad'
-	    '7a1039cdc38b4d728f14efce3b0fda0cadc7bfcd3432556c3f3113985bf2720a'
-	    'b6f61a6d5672b6684f19150f6e21ded1bd04ec6415dcf07a32291e4002bfa5d8'
-	    '8c85234f03d3cd226f84fd1aa446e46a8f00c2c6ae3cc7fefedc1e48ffc61daa'
+sha256sums=('58b88f38e080b05d70724d57342f58e1baf56e2bd3b98506a72b4446cad5033e'
+	    '411daed14287d6ba536cb531450941ab1f570309cd561de4e2a4b0ec43a7e9f7'
+	    'c7f93adcf037a73182ae42ae6a59d3eb04a492888b6c2a6b528f9cd16539b2b2'
+            '8aac3a2ea61bb4c38eb363262ab7f89e55c49a5feb9912fd2ff71f2439f11fc9'
+	    'b3280bafc86d04dfa8835ef21f50469f2645bf09c36edcdd3f04349ce2c74225'
+	    '8e343b0ff93477280fd9a980822ddc9980afa7201dea51c886376c189c234c99'
+	    '906ac7de8068e5a5487b083844b50b6afd7562866088a4175fd88030182affdd'
 	    '13d4cf35343e7a73bc2534c94b1b0d4db41c338d374e6982091e4cf7a421d420'
 	    '64b4ccefa63a3cf920b185dd52e94b918c24f2cedaebcec8efb767bd80a6418a'
-	    'adea0372f42026e72e385f1bec19ecc8cffa46de1f617271f14c9345c6b83c04')
+	    'adea0372f42026e72e385f1bec19ecc8cffa46de1f617271f14c9345c6b83c04'
+    	    '9471addfc2f880350eedadcb99cb8b350abf42be1c0652ccddf49e34e5e48734'
+            'ab68cb802243ce715eff0d1136cfa29fa34a3e09934e5e20e02a092d69028df1')
 
 prepare() {
 	cd "${srcdir}"
@@ -49,6 +53,10 @@ prepare() {
 	patch -Np1 -i "${srcdir}"/003-fix_fsl_exec_empty_errorCode.patch
 	# I'm not sure why -L${LIB_PROB} is missing in some Makefiles 
 	patch -Np1 -i "${srcdir}"/004-fix_missing_LIB_PROB.patch
+	# Adapted from Caspar van Leeuwen's patch: https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=FSL;2b74023.2006
+	patch -Np1 -i "${srcdir}"/005-fix_cuda_thrust_include.patch
+	# ptx2 does not compile when assuming C++11 standard
+	patch -Np1 -i "${srcdir}"/006-compile_ptx2_without_std-c++11.patch
 
 	# Insert makepkg build flags into configuration
 	sed -i '0,/${AccumulatedIncFlags}/{s^${AccumulatedIncFlags}^& '"${CFLAGS}"'^}' "${srcdir}/fsl/config/common/vars.mk"

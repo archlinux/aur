@@ -1,0 +1,10 @@
+--- a/fsl/src/ptx2/Makefile	2020-01-24 11:47:42.000000000 +0100
++++ b/fsl/src/ptx2/Makefile	2020-08-25 23:34:22.215595885 +0200
+@@ -24,6 +24,7 @@
+ USRLDFLAGS = -L${LIB_NEWMAT} -L${LIB_NEWRAN} -L${LIB_CPROB} -L${LIB_PROB} -L${LIB_ZLIB}
+ 
+ DLIBS =  -lnewmeshclass -lwarpfns -lbasisfield -lfslsurface  -lfslvtkio -lmeshclass -lnewimage -lutils -lmiscmaths -lnewmat -lnewran -lNewNifti -lgiftiio -lexpat -lfirst_lib -lznz -lcprob -lutils -lprob -lm -lz
++GNU_ANSI_FLAGS = -Wall -ansi -pedantic -Wno-long-long
+ 
+ CCOPS=ccops
+ PTX=probtrackx2

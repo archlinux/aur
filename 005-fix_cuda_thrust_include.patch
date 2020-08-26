@@ -1,0 +1,76 @@
+# Author: Caspar van Leeuwen (SURF)
+# FSL includes thrust headers by doing #include <device_vector.h>
+# and then include -I$CUDA_ROOT/include/thrust
+# This results in errors like
+# /sw/arch/Debian10/EB_production/2019/software/CUDA/10.1.243/include/cuda_runtime_api.h(7397):
+# error: identifier "UINT_MAX" is undefined
+# This is normally defined in the standard C header 'limits.h'.
+# However, by doing -I$CUDA_ROOT/include/thrust, the limits.h from Thrust is picked up instead!
+# According to the Thrust docs, includes should be done as #include <thrust/device_vector.h>
+# This way, -I$CUDA_ROOT/include is sufficient, and the limits.h from thrust
+# no longer erroneously gets picked up.
+diff -Nru a/fsl/src/fdt/CUDA/diffmodels.cuh fsl/src/fdt/CUDA/diffmodels.cuh
+--- a/fsl/src/fdt/CUDA/diffmodels.cuh	2020-06-09 20:41:17.117128671 +0200
++++ b/fsl/src/fdt/CUDA/diffmodels.cuh	2020-06-09 20:42:44.045211731 +0200
+@@ -66,7 +66,7 @@
+     University, to negotiate a licence. Contact details are:
+     <a href="/cgi-bin/wa-jisc.exe?LOGON=A3%3Dind2006%26L%3DFSL%26E%3Dbase64%26P%3D3480627%26B%3D------%253D_Part_434001_1485233425.1591892113317%26T%3Dtext%252Fx-patch%3B%2520name%3D%2522FSL-6.0.2_thrust.patch%2522%26N%3DFSL-6.0.2_thrust.patch%26attachment%3Dq%26XSS%3D3" target="_parent" >[log in to unmask]</a> quoting Reference Project 9564, FSL.*/
+ 
+-#include <device_vector.h>
++#include <thrust/device_vector.h>
+ 
+ void fit_PVM_single(	//INPUT
+ 			const vector<ColumnVector> 	datam_vec, 
+diff -Nru a/fsl/src/fdt/CUDA/runmcmc.cu fsl/src/fdt/CUDA/runmcmc.cu
+--- a/fsl/src/fdt/CUDA/runmcmc.cu	2020-06-09 20:41:17.101128655 +0200
++++ b/fsl/src/fdt/CUDA/runmcmc.cu	2020-06-09 20:43:13.649240030 +0200
+@@ -71,8 +71,8 @@
+ #include "runmcmc_kernels.cu"
+ #include "sync_check.h"
+ 
+-#include <host_vector.h>
+-#include <device_vector.h> 
++#include <thrust/host_vector.h>
++#include <thrust/device_vector.h> 
+ 
+ #include <time.h>
+ #include <sys/time.h>
+diff -Nru a/fsl/src/fdt/CUDA/xfibres_gpu.cu fsl/src/fdt/CUDA/xfibres_gpu.cu
+--- a/fsl/src/fdt/CUDA/xfibres_gpu.cu	2020-06-09 20:41:17.117128671 +0200
++++ b/fsl/src/fdt/CUDA/xfibres_gpu.cu	2020-06-09 20:44:00.621284957 +0200
+@@ -76,8 +76,8 @@
+ #include "samples.h"
+ #include "options.h"
+ 
+-#include <host_vector.h>
+-#include <device_vector.h> 
++#include <thrust/host_vector.h>
++#include <thrust/device_vector.h> 
+ 
+ #include <time.h>
+ #include <sys/time.h>
+diff -Nru a/fsl/src/fdt/CUDA/xfibres_gpu.cuh fsl/src/fdt/CUDA/xfibres_gpu.cuh
+--- a/fsl/src/fdt/CUDA/xfibres_gpu.cuh	2020-06-09 20:41:17.113128667 +0200
++++ b/fsl/src/fdt/CUDA/xfibres_gpu.cuh	2020-06-09 20:43:38.469263769 +0200
+@@ -67,8 +67,8 @@
+     <a href="/cgi-bin/wa-jisc.exe?LOGON=A3%3Dind2006%26L%3DFSL%26E%3Dbase64%26P%3D3480627%26B%3D------%253D_Part_434001_1485233425.1591892113317%26T%3Dtext%252Fx-patch%3B%2520name%3D%2522FSL-6.0.2_thrust.patch%2522%26N%3DFSL-6.0.2_thrust.patch%26attachment%3Dq%26XSS%3D3" target="_parent" >[log in to unmask]</a> quoting Reference Project 9564, FSL.*/
+ 
+ #include "newimage/newimageall.h"
+-#include <host_vector.h>
+-#include <device_vector.h> 
++#include <thrust/host_vector.h>
++#include <thrust/device_vector.h> 
+ 
+ #include "fibre_gpu.h"
+ #include <curand_kernel.h>
+--- a/fsl/src/fdt/Makefile	2020-08-25 21:32:15.316740340 +0200
++++ b/fsl/src/fdt/Makefile	2020-08-25 21:34:28.163670755 +0200
+@@ -171,7 +171,7 @@
+ 		   ${CXX} ${CXXFLAGS} ${LDFLAGS} -o $@ ${EDDYCOMBINEOBJS} ${DLIBS}
+ 
+ ${LIBBEDPOSTX_CUDA}:
+-		${NVCC} --shared --compiler-options '-fPIC' -o CUDA/libbedpostx_cuda.so CUDA/init_gpu.cu CUDA/samples.cu CUDA/diffmodels.cu CUDA/runmcmc.cu  CUDA/xfibres_gpu.cu -O3 ${GENCODE_FLAGS} -lcudart -lcuda -lcurand -I. -L${LIB_CUDA} -L${LIB_CUDA}/stubs -ICUDA/options -I${INC_NEWMAT} -I${FSLDIR}/include -I${INC_BOOST} -I${INC_CUDA} -I${INC_CUDA}/thrust -maxrregcount=64
++		${NVCC} --shared --compiler-options '-fPIC' -o CUDA/libbedpostx_cuda.so CUDA/init_gpu.cu CUDA/samples.cu CUDA/diffmodels.cu CUDA/runmcmc.cu  CUDA/xfibres_gpu.cu -O3 ${GENCODE_FLAGS} -lcudart -lcuda -lcurand -I. -L${LIB_CUDA} -L${LIB_CUDA}/stubs -ICUDA/options -I${INC_NEWMAT} -I${FSLDIR}/include -I${INC_BOOST} -I${INC_CUDA} -I${INC_CUDA} -maxrregcount=64
+ 		@if [ ! -d ${FSLDEVDIR}/lib/ ] ; then ${MKDIR} ${FSLDEVDIR}/lib ; fi
+ 		${CP} -rf CUDA/libbedpostx_cuda.so ${FSLDEVDIR}/lib
+ 
