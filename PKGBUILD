@@ -2,9 +2,9 @@
 # Maintainer: Stephanie Wilde-Hobbs <hi@stephanie.is>
 
 pkgbase=linux-bcachefs-steph-git
-_basever=5.7
-_arch_pkgver=${_basever}.12.arch1
-pkgver=5.7.12.arch1.bcachefs.r550.g86fa1258a3ef
+_basever=5.8
+_arch_pkgver=${_basever}.3.arch1
+pkgver=5.8.3.arch1.bcachefs.r295.g7e04f345cc3a
 pkgrel=1
 pkgdesc='Linux with bcachefs'
 _srctag=v${_arch_pkgver%.*}-${_arch_pkgver##*.}
@@ -29,7 +29,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '6313ccad7f8e4d8ce09dd5bdb51b8dfa124d0034d7097ba47008380a14a84f09'
+            '457d5c9717048cd5334ba3d14dfb37699ac1d2c6dc2fd1df93adb487d6921f2f'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -68,7 +68,7 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  echo "CONFIG_BCACHEFS_FS=y" >> .config
+  echo "CONFIG_BCACHEFS_FS=m" >> .config
   echo "CONFIG_BCACHEFS_QUOTA=y" >> .config
   echo "CONFIG_BCACHEFS_POSIX_ACL=y" >> .config
   make olddefconfig
