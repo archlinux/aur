@@ -1,14 +1,15 @@
 pkgbase = pak-bin
 	pkgdesc = Changes pacman syntax to be more like APT
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	arch = x86_64
+	arch = aarch64
 	license = GPLv3
 	depends = pak-config
 	provides = pak
 	conflicts = pak
-	source = https://ci.appveyor.com/api/buildjobs/aooeaj5pxbsic4mb/artifacts/pak-linux
-	md5sums = f7ab6972c028372efb16b5610d06a66c
+	source = https://ci.appveyor.com/api/buildjobs/3fx9sm8uw8nbx621/artifacts/pak-linux-x86_64
+	md5sums = SKIP
 
 pkgname = pak-bin
 
