@@ -2,13 +2,13 @@
 
 pkgname=dftbplus
 pkgver=20.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A quantum mechanical simulation software package based on the DFTB method'
 arch=('x86_64')
 url='https://www.dftbplus.org'
 license=('LGPL3' 'GPL3')
-depends=('scalapack')
-makedepends=('gcc-fortran' 'cmake' 'python')
+depends=('scalapack' 'python-numpy')
+makedepends=('gcc-fortran' 'cmake')
 source=("https://github.com/dftbplus/dftbplus/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
         "https://www.dftb.org/fileadmin/DFTB/public/slako-unpacked.tar.xz")
 sha256sums=('04c2b906b8670937c8ddd9c5fb68e7e9921b464840cf54aa3d698db98167d0b7'
