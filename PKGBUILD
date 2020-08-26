@@ -3,7 +3,7 @@
 pkgname=adobe-source-han-mono-classic-fonts
 pkgver=1.002
 _commit=5888cdabc66f48976e7a9605aae91ed39cea27f8
-pkgrel=5
+pkgrel=6
 pkgdesc='Adobe Source Han Mono - Classic Style Chinese Character'
 arch=('any')
 url="https://github.com/redchenjs/source-han-mono-classic"
@@ -15,5 +15,5 @@ package() {
     cd source-han-mono-classic-$_commit
     mkdir -p "$pkgdir/usr/share/fonts/adobe-source-han-sans/"
     install -Dm644 *.otf "$pkgdir/usr/share/fonts/adobe-source-han-sans/"
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
