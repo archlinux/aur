@@ -1,0 +1,19 @@
+pkgbase = mips64-ultra-elf-gdb
+	pkgdesc = The GNU Debugger (mips64-ultra-elf)
+	pkgver = 9.2_r134.54b8f95
+	pkgrel = 1
+	url = https://www.gnu.org/software/gdb/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = xz
+	depends = gdb-common
+	depends = mpfr
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/gdb/gdb-9.2.tar.xz
+	source = git+https://github.com/glankk/n64.git#branch=n64-ultra
+	sha256sums = 360cd7ae79b776988e89d8f9a01c985d0b1fa21c767a4295e5f88cb49175c555
+	sha256sums = SKIP
+
+pkgname = mips64-ultra-elf-gdb
+
