@@ -1,0 +1,19 @@
+pkgbase = ros-melodic-moveit-resources-pr2-description
+	pkgdesc = ROS - PR2 Resources used for MoveIt! testing.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = h
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	source = ros-melodic-moveit-resources-pr2-description-0.7.0.tar.gz::https://github.com/ros-gbp/moveit_resources-release/archive/release/melodic/moveit_resources_pr2_description/0.7.0.tar.gz
+	sha256sums = 0ccf03e91f75d1f48c1b50dfba09cde3f08a32a6cb348773cb904ee033a0c901
+
+pkgname = ros-melodic-moveit-resources-pr2-description
+
