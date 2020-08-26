@@ -3,7 +3,7 @@
 _pkgname=Jellyamp
 pkgname=jellyamp-appimage
 pkgver=0.9.8
-pkgrel=3
+pkgrel=4
 pkgdesc="A stylish, cross-platform desktop client for listening to music from a Jellyfin server. Inspired by Plexamp."
 provides=('jellyamp')
 conflicts=('jellyamp')

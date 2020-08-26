@@ -1,7 +1,7 @@
 pkgbase = jellyamp-appimage
 	pkgdesc = A stylish, cross-platform desktop client for listening to music from a Jellyfin server. Inspired by Plexamp.
 	pkgver = 0.9.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/m0ngr31/jellyamp
 	arch = x86_64
 	license = MIT
