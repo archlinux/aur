@@ -3,7 +3,7 @@
 
 pkgname=yarntown
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Zeldalike tribute to Bloodborne. Explore the streets of a cursed, gothic town, hunting beasts and uncovering twisted bosses."
 arch=('any')
 url="https://maxatrillionator.itch.io/yarntown"
@@ -21,10 +21,10 @@ options=()
 install=
 changelog=
 source=("https://github.com/MaxMraz/${pkgname}/releases/download/v${pkgver}/${pkgname}.solarus"
-        "https://github.com/MaxMraz/${pkgname}/raw/master/yarntown-web-assets/icon_128.png")
+        "https://github.com/MaxMraz/${pkgname}/raw/master/medias/icon/icon_128.png")
 noextract=("${pkgname}.solarus")
 md5sums=('662e020063bac3e07c9e1322fce81ef8'
-        '1c40e5b7e722708b4bea87855e25876e')
+        '9257c8b911a185e243970ef7411c9bbc')
 
 _name="Yarntown"
 _categories="Game;ActionGame"
