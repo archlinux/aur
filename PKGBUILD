@@ -3,9 +3,9 @@ pkgdesc="ROS - Components of MoveIt that offer simpler interfaces to planning an
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-ros-planning-interface'
-pkgver='1.0.3'
+pkgver='1.0.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf-conversions
@@ -50,15 +50,10 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="moveit-${pkgver}/moveit_ros/planning_interface"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz"
-  "eigenpy.patch")
-sha256sums=('b0ac91cd4c4dc29d9bd5e3885a1a457252495b3f2bedb46ddfe04154f5ac2358'
-  'afce9fb9948f8a1c4f619745426843eac6257d8169f9989499b33e324b4c0356')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
+sha256sums=('a633830d2ed7e23089f9642d99298cb6eb96148c695c0b4890f2792eac4904b4')
 
 prepare() {
-  cd ${srcdir}/${_dir}
-  patch -uN CMakeLists.txt ${srcdir}/eigenpy.patch || return 1
-
   cd ${srcdir}
   find . \( -iname *.cpp -o -iname *.h \) \
 	  -exec sed -r -i "s/[^_]logError/CONSOLE_BRIDGE_logError/" {} \; \
