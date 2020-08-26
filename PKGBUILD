@@ -16,7 +16,7 @@ conflicts=('parquet-cpp')
 makedepends=('apache-orc' 'boost' 'cmake' 'flatbuffers' 'python-numpy')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz"
   "cmake.patch")
-sha256sums=('08fbd4c633c08939850d619ca0224c75d7a0526467c721c0838b8aa7efccb270'
+sha256sums=('dac59f4d42416224419c020ed2e8f8371e85c1d9ff4368ed5b5c026ee28d3fd4'
             '8dcc91a9187faa885771e1cef207136d90b3b5ad645ab39d7016a0e50f9c90dd')
 
 prepare(){
