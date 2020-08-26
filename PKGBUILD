@@ -2,7 +2,7 @@
 
 pkgname=python-dash-renderer
 _pkgname=dash_renderer
-pkgver=1.5.1
+pkgver=1.95.1
 pkgrel=1
 pkgdesc="Dash front-end"
 arch=('any')
