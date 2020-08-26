@@ -9,7 +9,7 @@ pkgbase = apple-sdk-ios
 	makedepends = git
 	makedepends = findutils
 	options = !strip
-	source = apple-sdk-ios::git+https://github.com/dragonbuild/sdks.git
+	source = apple-sdk-ios::git+https://github.com/dragonbuild/sdks.git#commit=0bba3608a865c6e7a11054413de38e3579d70cbe
 	sha512sums = SKIP
 
 pkgname = apple-sdk-ios

@@ -2,22 +2,18 @@
 
 pkgname="apple-sdk-ios"
 pkgver=13.4
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="iOS SDKs, from on DragonBuild's repository."
 url="https://github.com/dragonbuild/sdks"
+_rev="0bba3608a865c6e7a11054413de38e3579d70cbe"
 license=('custom')
 depends=()
 install="sdk.install"
 makedepends=('git' 'findutils')
-source=("$pkgname::git+$url.git")
+source=("$pkgname::git+$url.git#commit=$_rev")
 sha512sums=('SKIP')
 options=(!strip)
-
-pkgver() {
-	cd "$pkgname"
-	printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
-}
 
 prepare() {
 	cd "$pkgname"
