@@ -2,7 +2,7 @@
 
 pkgname=crystallauncher
 pkgrel=1
-pkgver=1.1.0.0
+pkgver=1.1.0.1
 pkgdesc="Crystal Launcher is a unofficial Minecraft launcher with support for modpacks and custom HD skin and cape system"
 arch=('i686' 'x86_64')
 url="https://crystal-launcher.net/"
@@ -18,7 +18,7 @@ source=("https://crystal-launcher.net/releases/other/CrystalLauncher.jar"
 
 noextract=('jar')
 sha256sums=('cb495e726512a039df6f6d297ba7cfd9ce0b1fe368bad5ba20abe7852d65527a'
-            'e0a4ecd9122c81bb6949db9b12e174e1e79b5cdff52073f22b7f812577b56825'
+            '57e4de6813299249bd3e2739999ab69d9bd8202a01d30547049b24063dd0d192'
             '08fd03cd4f89291b2290f96aeec2bd40c267b03afbabd42a3ad5b127c43cc3f2'
             '214f4f12eb772d2ce945723ab7b126b1fb3e78c009f4132d6b0f98ea2270ab0c')
 

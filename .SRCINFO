@@ -18,7 +18,7 @@ pkgbase = crystallauncher
 	source = crystallauncher.desktop
 	source = crystallauncher.png
 	sha256sums = cb495e726512a039df6f6d297ba7cfd9ce0b1fe368bad5ba20abe7852d65527a
-	sha256sums = e0a4ecd9122c81bb6949db9b12e174e1e79b5cdff52073f22b7f812577b56825
+	sha256sums = 57e4de6813299249bd3e2739999ab69d9bd8202a01d30547049b24063dd0d192
 	sha256sums = 08fd03cd4f89291b2290f96aeec2bd40c267b03afbabd42a3ad5b127c43cc3f2
 	sha256sums = 214f4f12eb772d2ce945723ab7b126b1fb3e78c009f4132d6b0f98ea2270ab0c
 
