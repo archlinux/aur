@@ -1,6 +1,6 @@
 pkgbase = crystallauncher
 	pkgdesc = Crystal Launcher is a unofficial Minecraft launcher with support for modpacks and custom HD skin and cape system
-	pkgver = 1.1.0.0
+	pkgver = 1.1.0.1
 	pkgrel = 1
 	url = https://crystal-launcher.net/
 	arch = i686
