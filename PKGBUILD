@@ -1,12 +1,11 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
-
 _target=mips64-ultra-elf
 pkgname=${_target}-newlib
 _newlibver=3.3.0
-pkgver=3.3.0_r128.79c3ef4
+pkgver=3.3.0_r134.54b8f95
 pkgrel=1
 pkgdesc="A C library intended for use on embedded systems (${_target})"
-arch=('any')
+arch=('x86_64')
 url='http://sourceware.org/newlib/'
 license=('BSD')
 makedepends=("${_target}-gcc-stage1" "git")
@@ -65,4 +64,3 @@ package()
   install -d "$pkgdir"/usr/share/licenses/$pkgname/
   install -m644 -t "$pkgdir"/usr/share/licenses/$pkgname/ "$srcdir"/newlib-$_newlibver/COPYING*
 }
-

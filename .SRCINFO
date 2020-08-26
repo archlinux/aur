@@ -1,9 +1,9 @@
 pkgbase = mips64-ultra-elf-newlib
 	pkgdesc = A C library intended for use on embedded systems (mips64-ultra-elf)
-	pkgver = 3.3.0_r128.79c3ef4
+	pkgver = 3.3.0_r134.54b8f95
 	pkgrel = 1
 	url = http://sourceware.org/newlib/
-	arch = any
+	arch = x86_64
 	license = BSD
 	makedepends = mips64-ultra-elf-gcc-stage1
 	makedepends = git
