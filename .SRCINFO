@@ -1,0 +1,19 @@
+pkgbase = ros-melodic-moveit-resources-fanuc-description
+	pkgdesc = ROS - Fanuc Resources used for MoveIt! testing.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = h
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	source = ros-melodic-moveit-resources-fanuc-description-0.7.0.tar.gz::https://github.com/ros-gbp/moveit_resources-release/archive/release/melodic/moveit_resources_fanuc_description/0.7.0.tar.gz
+	sha256sums = 24b04c31d760d13565a22a03c281fa5607c087e4d378c1fdf1b302cecba3ebdd
+
+pkgname = ros-melodic-moveit-resources-fanuc-description
+
