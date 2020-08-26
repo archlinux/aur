@@ -2,11 +2,11 @@
 pkgname=ytd101
 pkgver=1.0
 pkgrel=1
-pkgdesc="A youtube download script in Shell Scripting"
+pkgdesc="A youtube download script in Bash"
 arch=( 'any' )
 url="https://github.com/JohnGavr/ytd101"
 license=('MIT')
-depends=('youtube-dl' 'ffmpeg')
+depends=('youtube-dl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JohnGavr/ytd101/archive/v${pkgver}.tar.gz")
 md5sums=('SKIP')
 
