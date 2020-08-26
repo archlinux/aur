@@ -1,9 +1,8 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
-
 _target=mips64-ultra-elf
 pkgname=${_target}-binutils
-_binutilsver=2.34
-pkgver=2.34_r128.79c3ef4
+_binutilsver=2.35
+pkgver=2.35_r134.54b8f95
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files for ${_target}"
 url="http://www.gnu.org/software/binutils/"
@@ -13,7 +12,7 @@ makedepends=('git')
 depends=('libelf')
 source=("ftp://ftp.gnu.org/gnu/binutils/binutils-${_binutilsver}.tar.xz"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra")
-sha256sums=('f00b0e8803dc9bab1e2165bd568528135be734df3fabf8d0161828cd56028952'
+sha256sums=('1b11659fb49e20e18db460d44485f09442c8c56d5df165de9461eb09c8302f85'
             'SKIP')
 
 pkgver() {
@@ -38,6 +37,11 @@ prepare() {
   cat "config/ld/configure.tgt.ultra" >> ${CP_DIR}/ld/configure.tgt
   cd ${CP_DIR}
 
+  # -- Configure n64. Note that the sysroot dir is set to $(prefix)$/(target)
+  # -- in the package itself.
+  cd $srcdir/n64
+  ./configure --prefix=/usr/
+
 }
 
 build() {
@@ -50,7 +54,7 @@ build() {
   ./configure \
     --target=${_target} \
     --prefix=/usr \
-    --with-sysroot=/usr/${_target} \
+    --with-sysroot=/usr/${_target}/n64-sysroot/ \
     --with-gnu-as \
     --with-gnu-ld \
     --enable-64-bit-bfd \
@@ -82,4 +86,8 @@ package() {
 
   # Remove info documents that conflict with host version
   rm -rf "$pkgdir"/usr/share/info
+
+  # Install the library files in the sysroot.
+  cd $srcdir/n64
+  make DESTDIR="${pkgdir}" install-sys
 }
