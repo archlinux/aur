@@ -8,7 +8,7 @@
 
 pkgname=solarus
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, free and open-source game engine for Action-RPGs"
 arch=('i686' 'x86_64')
 url="http://www.solarus-games.org/"
@@ -21,6 +21,7 @@ depends=('glm'
          'openal'
          'physfs'
          'qt5-base'
+         'qt5-tools'
          'sdl2>=2.0.6'
          'sdl2_image'
          'sdl2_ttf')
