@@ -8,7 +8,7 @@ _major=8
 _minor=261
 
 pkgver=${_major}u${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Java Development Kit (v8) for ARMv7, ARMv6 and ARMv8 (64-bit)"
 arch=('armv6h' 'armv7h' 'aarch64')
 url=http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -51,7 +51,7 @@ source_armv6h=("manual://$_pkgname-$pkgver-linux-arm32-vfp-hflt.tar.gz")
 source_armv7h=("$source_armv6h")
 source_aarch64=("manual://$_pkgname-$pkgver-linux-arm64-vfp-hflt.tar.gz")
 
-md5sums=('b3c7031bc65c28c2340302065e7d00d3'
+md5sums=('a3e1ae256538e8b4162ee8cb0642cb5d'
          'b4f0da18e03f7a9623cb073b65dde6c1'
          '8f0ebcead2aecad67fbd12ef8ced1503'
          'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
@@ -59,7 +59,7 @@ md5sums=('b3c7031bc65c28c2340302065e7d00d3'
 md5sums_armv6h=('3ce447155860135d65523bd648ac11fb')
 md5sums_armv7h=('3ce447155860135d65523bd648ac11fb')
 md5sums_aarch64=('3002c500b2b59e73aea7d499ecbfb391')
-sha256sums=('f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
+sha256sums=('9c64997edfce44e29296bfbd0cf90abf8b6b9ef2ea64733adae3bdac9ae2c5a6'
             '105bac73e3b028a3502379e8f51e6c3ecf21e520d85b2b10d4a1103a0dd4cf4b'
             '3c790fd076f5877a4a4604ef4860ee5fe63a75f1c33bde1e9505f7fe246bf8a5'
             '142adba64bba9cafeca2a5e3622a09646fa8b285bb57d63d9f03096580044a61'
