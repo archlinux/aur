@@ -1,12 +1,12 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5vpn
 pkgver=7183.2020.0108.1
-pkgrel=1
+pkgrel=2
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM 13.0'
 arch=('x86_64')
 source=('LICENSE'
         'no-desktop-file-dbus.patch')
-source_x86_64=("linux_${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm::https://vpn.tcu.edu/public/download/linux_${pkgname}.x86_64.rpm")
+source_x86_64=("linux_${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm::https://new.vpn.msu.edu/public/download/linux_${pkgname}.x86_64.rpm")
 sha256sums=('a8f4b5d965dc0279dd5173109892251ce5d107d9912836e6d83a9b6896eb19a1'
             '3ecd8a10941a7d81b9d16aecdf6ac9caa1f957e32a2d2c65bde5181abd1fcb73')
 sha256sums_x86_64=('5ce1e05a353e5a95c2fa5f7a4411c62c58a54dbd867630c5164aa46c5525e2a6')
