@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=chowtapemodel.lv2-git
 pkgdesc="Physical modelling signal processing for analog tape recording."
-pkgver=r102.a598bae
+pkgver=r114.6236290
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -21,10 +21,12 @@ options=()
 install=
 changelog=
 source=("$pkgname::git+https://github.com/jatinchowdhury18/AnalogTapeModel"
-        "https://github.com/jatinchowdhury18/JUCE.git"
-        "https://github.com/ffAudio/foleys_gui_magic.git")
+        "git+https://github.com/jatinchowdhury18/JUCE.git"
+        "git+https://github.com/ffAudio/foleys_gui_magic.git")
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP')
 
 pkgver() {
   cd "$pkgname"
@@ -36,6 +38,10 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
+  rm -rf Plugin/Juce
+  ln -s ../../JUCE Plugin/Juce
+  rm -rf Plugin/foleys_gui_magic
+  ln -s ../../foleys_gui_magic Plugin/foleys_gui_magic
   rm -rf Juce/VST2_SDK
 }
 

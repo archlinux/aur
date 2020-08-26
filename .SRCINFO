@@ -1,6 +1,6 @@
 pkgbase = chowtapemodel.lv2-git
 	pkgdesc = Physical modelling signal processing for analog tape recording.
-	pkgver = r102.a598bae
+	pkgver = r114.6236290
 	pkgrel = 1
 	url = https://github.com/jatinchowdhury18/AnalogTapeModel
 	arch = x86_64
@@ -12,8 +12,10 @@ pkgbase = chowtapemodel.lv2-git
 	depends = freeglut
 	depends = jack
 	source = chowtapemodel.lv2-git::git+https://github.com/jatinchowdhury18/AnalogTapeModel
-	source = https://github.com/jatinchowdhury18/JUCE.git
-	source = https://github.com/ffAudio/foleys_gui_magic.git
+	source = git+https://github.com/jatinchowdhury18/JUCE.git
+	source = git+https://github.com/ffAudio/foleys_gui_magic.git
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = chowtapemodel.lv2-git
