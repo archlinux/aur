@@ -1,0 +1,28 @@
+pkgbase = ttrv-git
+	pkgdesc = Tilde Terminal Reddit Viewer - fork of rtv
+	pkgver = 20200805.r1660_e827187
+	pkgrel = 1
+	url = https://github.com/tildeclub/ttrv
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest>=3.1.0
+	checkdepends = python-coverage
+	checkdepends = python-coveralls
+	checkdepends = python-mock
+	checkdepends = python-pylint
+	checkdepends = python-vcrpy
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-beautifulsoup4
+	depends = python-decorator
+	depends = python-kitchen
+	depends = python-requests>=2.4.0
+	depends = python-six
+	provides = ttrv
+	conflicts = ttrv
+	source = ttrv::git://github.com/tildeclub/ttrv#branch=master
+	sha256sums = SKIP
+
+pkgname = ttrv-git
+
