@@ -3,12 +3,12 @@
 
 pkgname=octopus
 pkgver=9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Real-space Time-Dependent Density Functional Theory code"
 arch=('x86_64')
 url="https://octopus-code.org"
 license=('LGPL')
-depends=('elpa' 'gd' 'gsl' 'libxc' 'libvdwxc' 'perl')
+depends=('elpa' 'gd' 'gsl' 'libxc' 'libvdwxc' 'netcdf-fortran')
 makedepends=('gcc-fortran')
 checkdepends=('procps-ng')
 source=("https://gitlab.com/octopus-code/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
@@ -18,7 +18,7 @@ prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   autoreconf -if
   export _elpaver=$( ls /usr/include | grep elpa | sed 's/elpa_openmp-//g' )
-  export OPTFLAGS="-O2 -march=native"
+  export OPTFLAGS="-O3 -march=native"
 }
 
 build() {
