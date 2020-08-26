@@ -12,6 +12,8 @@ pkgbase = chowtapemodel.lv2-git
 	depends = freeglut
 	depends = jack
 	source = chowtapemodel.lv2-git::git+https://github.com/jatinchowdhury18/AnalogTapeModel
+	source = https://github.com/jatinchowdhury18/JUCE.git
+	source = https://github.com/ffAudio/foleys_gui_magic.git
 	md5sums = SKIP
 
 pkgname = chowtapemodel.lv2-git

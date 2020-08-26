@@ -20,7 +20,9 @@ backup=()
 options=()
 install=
 changelog=
-source=($pkgname::git+https://github.com/jatinchowdhury18/AnalogTapeModel)
+source=("$pkgname::git+https://github.com/jatinchowdhury18/AnalogTapeModel"
+        "https://github.com/jatinchowdhury18/JUCE.git"
+        "https://github.com/ffAudio/foleys_gui_magic.git")
 noextract=()
 md5sums=('SKIP')
 
@@ -34,7 +36,6 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
-  git submodule update --init
   rm -rf Juce/VST2_SDK
 }
 
