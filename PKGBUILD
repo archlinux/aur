@@ -9,7 +9,7 @@
 
 pkgname=('python-dlib-cuda')
 _pkgname='dlib'
-pkgver=19.20
+pkgver=19.21
 pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques."
 arch=('x86_64')
@@ -22,12 +22,11 @@ optdepends=('cblas: for BLAS support'
             'lapack: for LAPACK support'
             'libjpeg-turbo: for JPEG support'
             'libpng: for PNG support'
-            'neon: for neon support'
             'sqlite: for sqlite support'
             'ccache-ext: for ccache support during compiling'
             'python-numpy: for running numpy based tests')
 source=("http://dlib.net/files/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('df9aa456ed5e190597fa8dafc1471670ced0128d0f115f2be7677c9c42f4328d')
+sha256sums=('be728a03ae8c4dc8b48408d90392a3c28bc6642a6eb22f3885895b434d7df53c')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -46,11 +45,6 @@ build() {
 
   if ! grep -q sse4 /proc/cpuinfo; then
     _compiler_opts+=( '--no' 'USE_SSE4_INSTRUCTIONS' )
-  fi
-
-  # Checking if neon is installed
-  if [[ ! -f '/usr/lib/libneon.so' ]]; then
-    _compiler_opts+=( '--no' 'USE_NEON_INSTRUCTIONS' )
   fi
 
   # Preparing array of variables setting the compiler for CUDA and optionally
