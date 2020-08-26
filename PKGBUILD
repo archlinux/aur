@@ -2,9 +2,9 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.8.3
-pkgver=5.8.v.3
-pkgrel=2
+gitver=v5.8.4
+pkgver=5.8.v.4
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -23,7 +23,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '4634b66fd1531cacca1ebda3ffcc810e85ac88e3bbe1ec415ef47b43d61e0dcf'
+            'e000c2db99f5516db611a8165b29b2e88fe24aa518d6b8d44a11c720e54453f3'
             #.preset file
             '41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367'
             #linux install file
@@ -62,10 +62,12 @@ prepare() {
 
 
   # get kernel version
+  msg2 "Preparing kernel"
   yes "" | make prepare
 
   # load configuration
-  # config was manually staged.
+  msg2 "Preparing config"
+  make olddefconfig # old config from previous kernel, defaults for new options
 }
 
 build() {
