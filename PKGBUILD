@@ -2,9 +2,9 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.8.3
-pkgver=5.8.v.3
-pkgrel=2
+gitver=v5.8.4
+pkgver=5.8.v.4
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -23,7 +23,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '3f062e6a2338b91de142404399d9f4f8c34118c3ab532084b2cfb049fdf93798'
+            'fae9d6dd835be206c4d997bfd21ba4096c4a552474f26b1af7704840d4298006'
             #.preset file
             '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
             #linux install file
@@ -58,9 +58,11 @@ prepare() {
   done <<< $(ls ../*.patch)
 
   # get kernel version
+  msg2 "Preparing kernel"
   yes "" | make prepare
 
   # load configuration
+  msg2 "Preparing config"
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
