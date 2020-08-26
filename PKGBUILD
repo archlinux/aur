@@ -2,7 +2,7 @@
 
 pkgname='arrow'
 _pkgname='arrow-apache-arrow'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
