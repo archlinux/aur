@@ -2,8 +2,8 @@
 _projectname='pysmart'
 _reponame='py-SMART'
 pkgname="python2-$_projectname"
-pkgver='20200316'
-_commit='a8ba87e25ccbea04b80806073d0714ea6c1a540c'
+pkgver='20200825'
+_commit='9a75ddccd5bd49751919f66591ed54a70b500fac'
 pkgrel='1'
 pkgdesc='Wrapper for smartctl (smartmontools) - FreeNAS fork - python2 version'
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL2.1')
 depends=('python2' 'smartmontools')
 makedepends=('python2-setuptools')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('9c0112c36e363abc4ed2380e3e68ebefaa889da59606becb06d10f5b1e481799')
+sha256sums=('70faa9dc03151ee765a71ee4701412d24ff733f8b3e70df3a290fb4e2510d5e8')
 
 _sourcedirectory="$_reponame-$_commit"
 
