@@ -1,0 +1,4 @@
+pkg/
+src/
+pia-linux*.run
+piavpn-bin*.pkg.tar*
