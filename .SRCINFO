@@ -1,5 +1,5 @@
 pkgbase = linux-ck
-	pkgver = 5.7.17
+	pkgver = 5.7.18
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = linux-ck
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.17.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.17.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.18.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.18.tar.sign
 	source = config
 	source = enable_additional_cpu_optimizations-20200615.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20200615.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.7/5.7-ck1/patch-5.7-ck1.xz
@@ -24,7 +24,7 @@ pkgbase = linux-ck
 	source = 0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	b2sums = ef73f9c940d678465d1ff2c4eb880b6878827f563942666aab0fb49be9c24d6a12a78a2c569c9cb35023c82a195945b392ca00a933726701c0cff092f71141b6
+	b2sums = 22fb5388521bd824a8ecbde7484db3319817eaebc6c74b5f615b872ec18b1cf6abd6b9aed651400bfee2b12e2d759a066ea79412021202a05b8fa1934b9b14aa
 	b2sums = SKIP
 	b2sums = 4fcc0fb8672d93c2702d7e42ed15824dd58f6822fd14fb4439aca773e9860c942c833586c47e4707832fc2fb4eda832dc4fd1506c8bfe3f99fe2654bfd54e5bd
 	b2sums = c8d0697f99fe6105815217b8ec059d8f587415ea8dd2b88a65e1087feedf697341a64cd56810fde9e7aeada79125fc8235faccc7e7b06492c099e27a8abbe99c
@@ -46,11 +46,11 @@ pkgname = linux-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-ck=5.7.17
+	provides = linux-ck=5.7.18
 
 pkgname = linux-ck-headers
 	pkgdesc = Headers and scripts for building modules for Linux-ck kernel
 	depends = linux-ck
-	provides = linux-ck-headers=5.7.17
-	provides = linux-headers=5.7.17
+	provides = linux-ck-headers=5.7.18
+	provides = linux-headers=5.7.18
 
