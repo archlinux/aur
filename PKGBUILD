@@ -7,7 +7,7 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=79.0
+pkgver=80.0
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
@@ -28,14 +28,12 @@ options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
         0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop
-        bug1654465.diff
         unity-menubar.patch)
-sha256sums=('12a922855914ec6b4d4f06a4ac58bc549aca6bdafd3722d68a3d709a935e5713'
+sha256sums=('380d9853e0712442ba2d4acd85c0e09c19ad36561a3ea8932705ad6b8a91146a'
             'SKIP'
             '3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75'
             '34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c'
-            'e577f7e5636deda0026b0e385186f3ecb2212c9b84b6a2949a1811dab3e410d6'
-            '3cc18a835a12cedee7ffdbe71df21c57cdcf68ea9f11e6198b764c13a0c82fbe')
+            '7945c168afbcf99027ebc8060eb1a31fcdb4a4cee7eb05daeb5359ae51fdba8b')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -57,11 +55,8 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1654465
-  patch -Np1 -i ../bug1654465.diff
-
   # actual appmenu patch from ubuntu repos
-  # http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_79.0+build1-0ubuntu0.16.04.2.debian.tar.xz
+  # http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_80.0+build2-0ubuntu0.16.04.1.debian.tar.xz
   patch -Np1 -i ../unity-menubar.patch
 
   echo -n "$_google_api_key" >google-api-key
@@ -69,6 +64,7 @@ prepare() {
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
+mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
@@ -120,11 +116,6 @@ build() {
 
   # LTO needs more open files
   ulimit -n 4096
-
-  # -fno-plt with cross-LTO causes obscure LLVM errors
-  # LLVM ERROR: Function Import: link error
-  CFLAGS="${CFLAGS/-fno-plt/}"
-  CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
   # Do 3-tier PGO
   echo "Building instrumented browser..."
@@ -225,12 +216,11 @@ END
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
 
-  if [[ -f "$startdir/.crash-stats-api.token" ]]; then
-    find . -name '*crashreporter-symbols-full.zip' -exec \
-      "$startdir/upload-symbol-archive" "$startdir/.crash-stats-api.token" {} +
+  export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
+  if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
+    make -C obj uploadsymbols
   else
-    find . -name '*crashreporter-symbols-full.zip' -exec \
-      cp -fvt "$startdir" {} +
+  cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.zip
   fi
 }
 
