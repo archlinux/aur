@@ -1,0 +1,17 @@
+pkgbase = asetroot
+	pkgdesc = A lightweight animated wallpaper program for openbox & other light WMs
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Wilnath/asetroot
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = git
+	depends = imlib2
+	depends = libx11
+	provides = asetroot
+	source = git+https://github.com/Wilnath/asetroot.git
+	md5sums = SKIP
+
+pkgname = asetroot
+
