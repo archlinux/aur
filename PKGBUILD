@@ -1,7 +1,8 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer : Tony Benoy <me@tonybenoy.com>
+# Contributor:: Jean Lucas <jean@4ray.co>
 
 pkgname=python-mail-parser
-pkgver=3.9.3
+pkgver=3.12.0
 pkgrel=1
 pkgdesc='Tokenizer for raw mails'
 arch=(any)
@@ -12,7 +13,7 @@ depends=(python-ipaddress
          python-six)
 makedepends=(python-setuptools)
 source=(https://pypi.python.org/packages/source/m/mail-parser/mail-parser-$pkgver.tar.gz)
-sha512sums=('14b7e6116bd4941b09e2f53769786adf519ffd5c4c5bee4d6916b8810ba21b1dee60785019d932767460a7b4f0b55abf40a24cdd141365c175372ade720f410c')
+sha256sums=('e8ff4ac4b27d4a0a87fe69cdaca9a9123f9662b28991b3b838e449a779345214')
 
 package() {
   cd mail-parser-$pkgver
