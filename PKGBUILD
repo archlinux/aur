@@ -1,14 +1,15 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=gtg
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Personal GTD like organizer for the GNOME desktop environment'
 url=https://wiki.gnome.org/Apps/GTG
 arch=(any)
 license=(GPL)
 depends=(hicolor-icon-theme python-cairo python-dbus python-gobject
          python-liblarch python-pyxdg)
-makedepends=(meson ninja python-mock python-nose)
+checkdepends=(python-mock python-nose)
+makedepends=(meson ninja)
 optdepends=('pdftk: for the export and print plugin'
             'python-cheetah3: for the export and print plugin'
 			'texlive-bin: for pdflatex, needed by the export and print plugin'
