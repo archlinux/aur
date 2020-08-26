@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-pyamdgpuinfo
 _name=${pkgname#python-}
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="AMD GPU stats"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python' 'libdrm')
 makedepends=('python-setuptools' 'cython')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('32ee95d818270c6617c59f778a40eb304ae030c0f1ee7e09bfb14b483e00a827')
+sha256sums=('09782a1cc8d05f955016f26a492e2bb884f1424d263889c5fdae6671c83b32ce')
 
 build() {
 	cd "$_name-$pkgver"
