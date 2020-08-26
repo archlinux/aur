@@ -6,11 +6,11 @@ pkgname=mdcat-bin
 _pkgname="${pkgname%-bin}"
 
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('x86_64')
-url="https://github.com/lunaryorn/${pkgname%-bin}"
+url="https://github.com/lunaryorn/$_pkgname"
 license=('MPL2')
 
 provides=("$_pkgname")
@@ -31,11 +31,13 @@ b2sums=($(curl -sL "$url/releases/download/$_pkgname-$pkgver/B2SUMS.txt" | \
 
 package() {
   cd "$_srcname"
-  install -Dm755 "$_pkgname"                  -t"$pkgdir/usr/bin/"
-  install -Dm755 {README,CHANGELOG}.md        -t"$pkgdir/usr/share/doc/$_pkgname/"
+  install -Dm644 {README,CHANGELOG}.md        -t"$pkgdir/usr/share/doc/$_pkgname/"
   install -Dm644 "completions/_$_pkgname"     -t"$pkgdir/usr/share/zsh/site-functions/"
   install -Dm644 "completions/$_pkgname.fish" -t"$pkgdir/usr/share/fish/vendor_completions.d/"
   install -Dm644 "completions/$_pkgname.bash"   "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+  install -Dm755 "$_pkgname"                  -t"$pkgdir/usr/bin/"
+  # If run as `mdless`, mdcat uses "$PAGER" (like `mdcat -p`), so let's hardlink mdless to mdcat :
+  cp -l "$pkgdir"/usr/bin/md{cat,less}
 }
 
 

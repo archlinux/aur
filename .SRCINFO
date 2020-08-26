@@ -1,7 +1,7 @@
 pkgbase = mdcat-bin
 	pkgdesc = Sophisticated Markdown rendering for the terminal
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lunaryorn/mdcat
 	changelog = CHANGELOG.md
 	arch = x86_64
