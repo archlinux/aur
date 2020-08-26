@@ -1,17 +1,18 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
-pkgname='dmon'
-pkgver='0.4.5'
-pkgrel='3'
+pkgname=dmon
+pkgver=0.4.5
+pkgrel=4
 pkgdesc='Toolset for daemonizing and supervising processes'
-arch=('i686' 'x86_64' 'arm')
-url='https://github.com/aperezdc/dmon'
-license=('MIT')
-depends=('glibc')
-makedepends=('make' 'gnupg' 'git')
+arch=(i686 x86_64 arm)
+url=https://github.com/aperezdc/dmon
+license=(custom:MIT)
+depends=(glibc)
+makedepends=(make gnupg git)
+conflicts=(dmon-git)
 validpgpkeys=('5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
 source=("git+https://github.com/aperezdc/dmon.git#tag=v${pkgver}"
         "git+https://github.com/aperezdc/wheel.git")
-sha1sums=('SKIP' 'SKIP')
+sha1sums=(SKIP SKIP)
 
 _checktag () {
   local -a line
@@ -35,12 +36,12 @@ prepare () {
 
 build() {
   cd dmon
-  make MULTICALL=1 prefix=/usr
+  make MULTICALL=1 prefix=/usr CFLAGS="${CFLAGS} -fcommon" LDFLAGS="${LDFLAGS}"
 }
 
 package() {
   cd dmon
   make MULTICALL=1 prefix=/usr DESTDIR="${pkgdir}/" install
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgver}/README"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
