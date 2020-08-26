@@ -5,7 +5,7 @@
 # Refactored by Blaž "Speed" Hrastnik <https://github.com/archSeer>
 
 pkgname=elasticsearch-xpack
-pkgver=7.8.1
+pkgver=7.9.0
 pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
   elasticsearch-tmpfile.conf
   elasticsearch.default
 )
-sha512sums=('6fedff92e7ece524f5ba7d64a0349f8aeddbd2eb16dde44cd5f9e5a1fc0de0e6e7a1697e64fcd287cad6c86dc23d029f0363ff775a58c218ea2ca7c1882cbca7'
+sha512sums=('70e6050fc2078ace94d92a38b6a8b30f1c81aadc5a0165c864c6f2dcbb33f0d741af9eaeae92c7530c2a4f295c958887d93a343a046cfef01b795ee5613186bb'
             '52556e0709590f0e15039d89b64c08c9bbeb0c61d29e3cd5a4471744968c882eb559081db1c89e846fa33d50b31e2fe9ba46d7e7e2cf5d4a23e78bc97a50c853'
             '8280cfd911c1762a1cba67a72bf01c593dbcec00ab02b5f7ca2ef05dbcbae835f2d0e20f3143b0f601e233708e7a60148a1b2087aaff0e0b239361ca4792409f'
             '712974b708f54b631d635601e7dff037a2fff0cd927cd09b27974fdb9232c1e495d70232afad5eaa4d2876665e099f880c23f914ed602700ef1962b5f137879f'
@@ -38,10 +38,14 @@ sha512sums=('6fedff92e7ece524f5ba7d64a0349f8aeddbd2eb16dde44cd5f9e5a1fc0de0e6e7a
             'af1af8854ca5a129b6c1d5fd3d977d99af0acef4490f2a9d39ee0746467a3305e223031c4ca5cebbb1629b8611e04ea61a1bf57f7fcef4ff4da0d6bae0df8c72'
             '4ef74026f82b6f0cb6cec9b992cd3f9b145083da39a37b7d8da01824c44054c72644ee0fe6d92f0329496f0fce97b7b913bca1402ef922b6cceccc360e35c5b1')
 
-backup=('etc/elasticsearch/elasticsearch.yml'
-        'etc/elasticsearch/log4j2.properties'
+backup=('etc/default/elasticsearch'
+        'etc/elasticsearch/elasticsearch.yml'
         'etc/elasticsearch/jvm.options'
-        'etc/default/elasticsearch')
+        'etc/elasticsearch/log4j2.properties'
+        'etc/elasticsearch/roles.yml'
+        'etc/elasticsearch/role_mapping.yml'
+        'etc/elasticsearch/users'
+        'etc/elasticsearch/users_roles')
 
 prepare() {
   cd "$srcdir"
