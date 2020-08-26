@@ -1,3 +1,2 @@
 #!/bin/bash
-java -jar /usr/bin/portmapper*.jar
-
+java -jar /usr/share/portmapper/portmapper.jar

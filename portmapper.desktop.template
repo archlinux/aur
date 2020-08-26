@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=
+Name=Portmapper
+Comment=A tool for managing port forwardings via UPnP
+Exec=portmapper
+Icon=application-x-java-archive
+Terminal=false
+Type=Application
+Categories=Internet;Utilities
