@@ -9,7 +9,7 @@
 
 _pkgname=synergy
 pkgname=$_pkgname-git
-pkgver=20191216.r3353.b2173efb
+pkgver=20200826.r3607.9b29327b4
 pkgrel=1
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='http://synergy-foss.org'
@@ -17,8 +17,8 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=('avahi' 'curl' 'libxinerama' 'libxrandr' 'libxtst')
-makedepends=('cmake' 'git' 'libxt')
+depends=('avahi' 'curl' 'libxinerama' 'libxrandr' 'libxtst' 'qt5-base')
+makedepends=('cmake' 'git' 'libxt' 'qt5-tools')
 optdepends=('openssl: encryption support')
 
 source=(
