@@ -1,0 +1,27 @@
+pkgbase = openvpn-resolv-conf
+	pkgdesc = An easy-to-use, robust and highly configurable VPN (Virtual Private Network)
+	pkgver = 2.4.9
+	pkgrel = 2
+	url = https://openvpn.net/index.php/open-source.html
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = systemd
+	depends = openssl
+	depends = lzo
+	depends = iproute2
+	depends = systemd-libs
+	depends = pkcs11-helper
+	optdepends = easy-rsa: easy CA and certificate handling
+	optdepends = pam: authenticate via PAM
+	provides = openvpn
+	conflicts = openvpn
+	source = git+https://github.com/OpenVPN/openvpn.git#tag=v2.4.9?signed
+	source = https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh
+	validpgpkeys = F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7
+	validpgpkeys = B62E6A2B4E56570B7BDC6BE01D829EFECA562812
+	sha256sums = SKIP
+	sha256sums = e6da6b3e8025f4fb0b4c3ce04f782f33833fbfdf43623a3963f80c41fecd1408
+
+pkgname = openvpn-resolv-conf
+
