@@ -2,8 +2,8 @@
 
 _gemname=elftools
 pkgname=ruby-$_gemname
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.1.3
+pkgrel=1
 pkgdesc="ELF parser library implemented in pure Ruby"
 arch=(any)
 url='https://github.com/david942j/rbelftools/'
@@ -13,7 +13,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('7caf1e0535600fdb73063e8a96f440cd6fb2514ec39e82e8c4d767a934ab3f80')
+sha256sums=('d17c7483c221397fbae144c82d905b739152c0281f51df7dda4e8faf89e4265d')
 
 package() {
   local _gemdir="$(ruby -rrubygems -e'puts Gem.default_dir')"
