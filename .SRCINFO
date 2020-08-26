@@ -1,0 +1,20 @@
+pkgbase = dmon-git
+	pkgdesc = Toolset for daemonizing and supervising processes (Git build)
+	pkgver = 0.4.5+40
+	pkgrel = 1
+	url = https://git.sr.ht/~aperezdc/dmon
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = custom:MIT
+	makedepends = make
+	makedepends = gnupg
+	makedepends = git
+	depends = glibc
+	provides = dmon
+	conflicts = dmon
+	source = dmon-git::git+https://git.sr.ht/~aperezdc/dmon
+	sha512sums = SKIP
+
+pkgname = dmon-git
+
