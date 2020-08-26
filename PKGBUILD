@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-i18n
-pkgver=0.3.7
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="Easy to use i18n library for Python"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('python-yaml' 'python-coveralls')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc})
-sha256sums=('095cb67a449f9caaddb4ca034255dcb442b1d1aca874294eda537bb5ea919892'
+sha256sums=('df97f3d2364bf3a7ebfbd6cbefe8e45483468e52a9e30b909c6078f5f471e4e8'
             'SKIP')
 validpgpkeys=('1FEFF6D65203687AC33771CDA0B4CCFEBD33E18A') # Daniel Perez <tuvistavie@gmail.com>
 
