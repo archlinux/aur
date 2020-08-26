@@ -1,6 +1,6 @@
 pkgbase = dexbot
 	pkgdesc = Trading bot for the DEX (BitShares)
-	pkgver = 0.17.8.r0.ga2ec28b
+	pkgver = 1.0.0.r0.g44588f0
 	pkgrel = 1
 	url = https://dexbot.info
 	arch = any
