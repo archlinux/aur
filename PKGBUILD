@@ -1,47 +1,25 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 pkgname=dmon
-pkgver=0.4.5
-pkgrel=4
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='Toolset for daemonizing and supervising processes'
 arch=(i686 x86_64 arm)
 url=https://github.com/aperezdc/dmon
 license=(custom:MIT)
 depends=(glibc)
-makedepends=(make gnupg git)
+makedepends=(make)
 conflicts=(dmon-git)
-validpgpkeys=('5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
-source=("git+https://github.com/aperezdc/dmon.git#tag=v${pkgver}"
-        "git+https://github.com/aperezdc/wheel.git")
-sha1sums=(SKIP SKIP)
-
-_checktag () {
-  local -a line
-  while read -r -a line ; do
-    if [[ ${line[1]} = VALIDSIG && ${line[-1]} = ${validpgpkeys[0]} ]] ; then
-      return 0
-    fi
-  done < <( git verify-tag "v${pkgver}" --raw 2>&1 )
-  return 1
-}
-
-prepare () {
-  cd dmon
-  git submodule init
-  git config submodule.wheel.url "${srcdir}/wheel"
-  git submodule update
-  if ! git verify-tag "v${pkgver}" || ! _checktag ; then
-    exit 42
-  fi
-}
+source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha512sums=('c44c9fc629a28970f4b353f7b0a8d3e539e45142ebcc76832689d4df4891cd565bf9d3e817a4ffca904ed6d76605ef8b9df4bc934f7c2eab021033ff68642d8b')
 
 build() {
-  cd dmon
-  make MULTICALL=1 prefix=/usr CFLAGS="${CFLAGS} -fcommon" LDFLAGS="${LDFLAGS}"
+  cd "${pkgname}-${pkgver}"
+  make PREFIX=/usr CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
 package() {
-  cd dmon
-  make MULTICALL=1 prefix=/usr DESTDIR="${pkgdir}/" install
+  cd "${pkgname}-${pkgver}"
+  make PREFIX=/usr DESTDIR="${pkgdir}/" install
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
