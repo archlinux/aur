@@ -1,6 +1,6 @@
 pkgbase = comby
 	pkgdesc = A tool for structural code search and replace that supports ~every language
-	pkgver = 0.18.1
+	pkgver = 0.18.3
 	pkgrel = 1
 	arch = x86_64
 	license = Apache
@@ -8,8 +8,8 @@ pkgbase = comby
 	makedepends = opam
 	depends = pkgconf
 	depends = pcre
-	source = https://github.com/comby-tools/comby/archive/0.18.1.tar.gz
-	sha512sums = 408a9b6124eb9984c29e635d18428046d3d9bce1c979aa874c6fa15c15c4ec7d9f0cc64aebf69da085cb92f3af1b967255af11507fb281ac82472724785be115
+	source = https://github.com/comby-tools/comby/archive/0.18.3.tar.gz
+	sha512sums = 7940d2435ec529d3b568c5ded0d746c3494e30f887bdb3ef953a543facb8a9aa9f67cbbdc1f653bce82e6a48db9b52efb64011d7f487cd6b280be86c639f6e41
 
 pkgname = comby
 
