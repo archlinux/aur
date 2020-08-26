@@ -4,7 +4,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com
 pkgname=('pidgin-hg') #'libpurple-hg' 'finch-hg')
 _hgname=pidgin
-pkgver=3.r40406.0908be6e73de
+pkgver=3.r40521.c4269b37a13a
 pkgrel=1
 provides=("pidgin" "libpurple" "finch")
 conflicts=("pidgin" "libpurple" "finch")
@@ -30,7 +30,7 @@ makedepends=('mercurial' 'python2' 'avahi' 'tk' "gobject-introspection" 'ca-cert
              'libgnome-keyring' 'gplugin-hg')
 makedepends+=('libx11' 'meson')
 options=('!libtool')
-source=('pidgin::hg+https://bitbucket.org/pidgin/main#branch=default')
+source=('pidgin::hg+https://keep.imfreedom.org/pidgin/pidgin#branch=default')
 sha256sums=('SKIP')
 
 pkgver() {
