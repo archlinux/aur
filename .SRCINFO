@@ -8,6 +8,8 @@ pkgbase = topicctl-git
 	makedepends = git
 	makedepends = go
 	depends = glibc
+	provides = topicctl
+	conflicts = topicctl
 	source = git+https://github.com/segmentio/topicctl
 	sha512sums = SKIP
 

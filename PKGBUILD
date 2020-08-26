@@ -10,7 +10,9 @@ url=https://github.com/segmentio/$_pkgname
 license=(MIT)
 depends=(glibc)
 makedepends=(git go)
-source=(git+https://github.com/segmentio/$_pkgname)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=(git+$url)
 sha512sums=('SKIP')
 
 pkgver() {
