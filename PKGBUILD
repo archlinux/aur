@@ -4,7 +4,7 @@
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
 
 pkgname=simgear
-pkgver=2020.1.2
+pkgver=2020.1.3
 _pkgver=${pkgver%.*}
 pkgrel=1
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
@@ -15,20 +15,21 @@ license=("GPL")
 url="http://www.flightgear.org/"
 options=('makeflags' 'staticlibs')
 source=("https://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('afc5563c9bfe1ddafd6767017b05a851e896539d6da3316bd10cf20db0e07889')
-
-prepare() {
-  cd "$srcdir"/simgear-$pkgver
-  sed -i -e "s|#include <simgear/structure/map.hxx>|#include <simgear/structure/map.hxx>\n#include <boost/utility/enable_if.hpp>|g" simgear/nasal/cppbind/NasalHash.hxx
-}
+sha256sums=('66da2c4f68058f6854206f2dd9c03c9223851ade24a50216e88b4e50598c13d1')
 
 build() {
-  cd "$srcdir"/simgear-$pkgver
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=off ../simgear-${pkgver}
+  mkdir -p "$srcdir"/simgear-build
+  cd "$srcdir"/simgear-build
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_TESTS=off \
+    ../simgear-${pkgver}
   make
 }
 
 package() {
-  cd "$srcdir"/simgear-$pkgver
+  cd "$srcdir"/simgear-build
   make DESTDIR="$pkgdir" install
 }
