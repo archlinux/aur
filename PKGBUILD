@@ -18,5 +18,5 @@ sha512sums=(
 
 package() {
     install -Dm644 UPDATE.mem "$pkgdir/usr/lib/firmware/renesas_usb_fw.mem"
-    install -Dm644 License.rtf "$pkgdir/usr/share/doc/$pkgname/License.rtf"
+    install -Dm644 License.rtf "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rtf"
 }
