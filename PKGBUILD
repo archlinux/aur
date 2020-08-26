@@ -3,7 +3,7 @@
 _pkgname=flake8-isort
 pkgname=python-$_pkgname
 
-pkgver=3.0.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="flake8 plugin to validate annotations complexity"
 
@@ -14,7 +14,7 @@ license=('GPLv3')
 depends=('python' 'python-testfixtures' 'python-isort')
 
 source=("https://github.com/gforcada/$_pkgname/archive/$pkgver.tar.gz")
-sha512sums=('bdd72c69368fd6c76e6a1c23bb71178dba03ea851dfe9d4df3dbf65a44a7c0623604e6a125dd2010c054d7f470fea9114d2a28d2bd6ac0cb48d370086dd08eb8')
+sha512sums=('4c6b8301d17fdd97fbdfda0f26b2d6f2af95a2ff427c6c3d48da9607bb82c16a54ea8ab622147378cd9b3432c1ef56d23843c8e17329cdc2d6703a323289f50b')
 
 package() {
     cd "$_pkgname-$pkgver"
