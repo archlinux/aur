@@ -13,7 +13,13 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-melodic-joint-state-publisher
-  ros-melodic-robot-state-publisher)
+  ros-melodic-robot-state-publisher
+  ros-melodic-moveit-resources-fanuc-description
+  ros-melodic-moveit-resources-fanuc-moveit-config
+  ros-melodic-moveit-resources-panda-description
+  ros-melodic-moveit-resources-panda-moveit-config
+  ros-melodic-moveit-resources-pr2-description
+)
 depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)

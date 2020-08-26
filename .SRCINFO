@@ -10,6 +10,11 @@ pkgbase = ros-melodic-moveit-resources
 	makedepends = ros-melodic-catkin
 	depends = ros-melodic-joint-state-publisher
 	depends = ros-melodic-robot-state-publisher
+	depends = ros-melodic-moveit-resources-fanuc-description
+	depends = ros-melodic-moveit-resources-fanuc-moveit-config
+	depends = ros-melodic-moveit-resources-panda-description
+	depends = ros-melodic-moveit-resources-panda-moveit-config
+	depends = ros-melodic-moveit-resources-pr2-description
 	source = ros-melodic-moveit-resources-0.7.0.tar.gz::https://github.com/ros-planning/moveit_resources/archive/0.7.0.tar.gz
 	sha256sums = 521eaaea0d06db554014f7a925918c7f34463ffd58c8f0f64bda3bbc6a9ebb55
 
