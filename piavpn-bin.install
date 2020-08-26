@@ -32,6 +32,7 @@ post_remove() {
 }
 
 post_upgrade() {
+	systemctl daemon-reload
 	if systemctl is-active piavpn >/dev/null; then
 		systemctl restart piavpn
 	fi
