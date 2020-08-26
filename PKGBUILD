@@ -1,5 +1,5 @@
 pkgname=shellcheck-git-static
-pkgver=0.4.7
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="shellcheck-static, but using the latest-commit builds maintained by the author"
 license=("AGPL3")
@@ -9,7 +9,7 @@ conflicts=("shellcheck")
 provides=("shellcheck=${pkgver}")
 
 source=(
-    "https://storage.googleapis.com/shellcheck/shellcheck-latest.linux.x86_64.tar.xz"
+    "https://github.com/koalaman/shellcheck/releases/download/latest/shellcheck-latest.linux.x86_64.tar.xz"
 )
 sha256sums=('SKIP')
 
