@@ -7,7 +7,7 @@ pkgbase = snot
 	arch = i686
 	license = GPL3
 	makedepends = git
-	makedepends = go-pie
+	makedepends = go
 	makedepends = python-docutils
 	depends = btrfs-progs
 	backup = etc/pacman.d/hooks/snot.hook
@@ -19,7 +19,7 @@ pkgbase = snot
 	backup = etc/snot/list.init
 	backup = etc/snot/restore.conf
 	backup = etc/snot/restore.init
-	source = snot::git+https://gitlab.com/goeb/snot.git#tag=0.3
+	source = snot::git+https://gitlab.com/goeb/snot.git#tag=0.3-pie
 	sha256sums = SKIP
 
 pkgname = snot
