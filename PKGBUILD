@@ -2,7 +2,7 @@
 # Maintainer: Pig Monkey <pm@pig-monkey.com>
 
 pkgname=monolith
-pkgver=2.1.2
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='CLI to save web pages as single HTML files'
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ license=(Unlicense)
 depends=(openssl)
 makedepends=(cargo)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha512sums=('fedaa19b8f0e508ee5864c5228b00720b1535d91ef8b4a48e50b7ed65ca672310d8086ad3d9d467087772ce8a031283ddc0a19249a47da5fd551c52f358231a6')
+sha512sums=('b09c1dbad47fd0b34dffb0a9b38a72b54bff9dcc9420f8a4e5eb8aa1ac42632ab8fbd9b96080b852954df42dc2eb25aca3689956962711f7d321c58e79ade471')
 
 
 build() {
