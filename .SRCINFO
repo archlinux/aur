@@ -1,5 +1,5 @@
 pkgbase = ytd101
-	pkgdesc = A youtube download script in Bash
+	pkgdesc = A youtube download script.
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/JohnGavr/ytd101

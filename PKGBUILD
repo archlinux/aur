@@ -2,7 +2,7 @@
 pkgname=ytd101
 pkgver=1.0
 pkgrel=1
-pkgdesc="A youtube download script in Bash"
+pkgdesc="A youtube download script."
 arch=( 'any' )
 url="https://github.com/JohnGavr/ytd101"
 license=('MIT')
