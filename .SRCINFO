@@ -5,7 +5,6 @@ pkgbase = python-pypng
 	url = https://github.com/drj11/pypng
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
 	depends = python
 	source = https://github.com/drj11/pypng/archive/pypng-0.0.20.tar.gz
 	sha256sums = d008a1f1f79633937ed2aa1742c7c077359edce53764b8b247891056ddca913c

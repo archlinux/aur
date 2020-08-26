@@ -8,7 +8,6 @@ arch=(any)
 url="https://github.com/drj11/pypng"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
 source=("$url/archive/pypng-$pkgver.tar.gz")
 
 build() {
