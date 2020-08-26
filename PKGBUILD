@@ -5,16 +5,15 @@
 
 pkgname=firefox-esr68
 _pkgname=firefox-esr
-pkgver=68.11.0
-pkgrel=3
+pkgver=68.12.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release - 68.x branch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/en-US/firefox/organizations/"
-depends=(gtk3 libxt startup-notification mime-types dbus-glib
-         ffmpeg nss ttf-font libpulse)
+depends=(dbus-glib ffmpeg gtk3 libpulse libxt mime-types nss startup-notification ttf-font)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
-             xorg-server-xvfb autoconf2.13 rust=1:1.44.1 clang llvm jack gtk2
+             xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
              python nodejs python2-psutil cbindgen nasm)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -26,7 +25,7 @@ conflicts=(firefox firefox-esr)
 options=(!emptydirs !makeflags)
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox.desktop firefox-symbolic.svg 0001-Use-remoting-name-for-GDK-application-names.patch)
-sha256sums=('91c1f7caaf1ba785b74799865227456bf784ba614d17cf5f0f41a5f25d6d2160'
+sha256sums=('ae692bf2a15908cacbb9d4c7ccf78525a87410ff3f13befedc1926f849bc27cc'
             'ba8a1610fe3ccc65cb58f2651df0ae9df632ecc17b3af8d13670950e9e2d27d8'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
             'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894')
