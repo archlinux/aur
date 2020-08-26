@@ -6,6 +6,7 @@ pkgbase = python-exiv2
 	arch = x86_64
 	license = GPL3
 	makedepends = boost
+	makedepends = python-setuptools
 	depends = python
 	depends = boost-libs
 	depends = exiv2
