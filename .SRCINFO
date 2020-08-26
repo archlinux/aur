@@ -1,17 +1,21 @@
 pkgbase = plib
 	pkgdesc = Set of libraries to write games and other realtime interactive applications
 	pkgver = 1.8.5
-	pkgrel = 8
+	pkgrel = 9
 	url = http://plib.sourceforge.net/
 	arch = x86_64
+	arch = aarch64
 	license = custom:LGPL
-	makedepends = mesa-libgl
+	makedepends = mesa
 	makedepends = libxi
 	makedepends = libxmu
 	options = staticlibs
 	source = http://plib.sourceforge.net/dist/plib-1.8.5.tar.gz
+	source = config.guess::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD
+	source = config.sub::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD
 	md5sums = 47a6fbf63668c1eed631024038b2ea90
-	sha1sums = c2cf7e3e1e58f7b63dae4bb21e4fa82c3e4d4cfc
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = plib
 
