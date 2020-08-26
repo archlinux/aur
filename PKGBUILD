@@ -8,7 +8,7 @@ url="https://somas.pages.gitlab.gnome.org/apostrophe"
 license=('GPL3')
 depends=('webkit2gtk' 'gspell' 'python-pypandoc' 'python-regex' 'python-levenshtein'
          'python-pyenchant' 'python-gobject' 'python-cairo' 'gobject-introspection')
-makedepends=('git' 'meson')
+makedepends=('meson')
 checkdepends=('appstream')
 optdepends=('texlive-latexextra: for the pdftex module'
             'mathjax: for formula preview'

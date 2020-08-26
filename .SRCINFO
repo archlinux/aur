@@ -6,7 +6,6 @@ pkgbase = apostrophe
 	arch = any
 	license = GPL3
 	checkdepends = appstream
-	makedepends = git
 	makedepends = meson
 	depends = webkit2gtk
 	depends = gspell
