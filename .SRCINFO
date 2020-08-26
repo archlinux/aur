@@ -1,0 +1,19 @@
+pkgbase = homemgr
+	pkgdesc = Manager of home directories in Linux.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/BiteDasher/homemgr
+	arch = any
+	license = MIT
+	depends = bash
+	depends = sed
+	depends = coreutils
+	depends = shadow
+	depends = e2fsprogs
+	depends = glibc
+	depends = tar
+	source = homemgr-1.0.tar.gz::https://github.com/BiteDasher/homemgr/archive/1.0.tar.gz
+	sha256sums = bab219c73722ce255157192f14c88cb9584a53ef0a3b13391864cd5cf85c79c3
+
+pkgname = homemgr
+
