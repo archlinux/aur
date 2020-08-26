@@ -3,7 +3,7 @@
 _name=azure-cli
 pkgname=python-$_name
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft Azure Command-Line Tools"
 arch=('any')
 url="https://github.com/Azure/azure-cli"
