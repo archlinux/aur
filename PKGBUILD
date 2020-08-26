@@ -20,10 +20,7 @@ sha256sums=('2a3eae24e2e88f2895f685294f4927f2d11ab2ba41e249d9bb0812a1b2cfd9f6')
 build() {
   cd "$_name-$_name-$pkgver/src"
 
-  for d in azure-cli \
-               azure-cli-core \
-               azure-cli-nspkg \
-               azure-cli-command_modules-nspkg;
+  for d in azure-cli azure-cli-core
   do cd $d;
      python setup.py build;
      cd -;
@@ -33,15 +30,9 @@ build() {
 package() {
   cd "$_name-$_name-$pkgver/src"
 
-  for d in azure-cli \
-               azure-cli-core \
-               azure-cli-nspkg \
-               azure-cli-command_modules-nspkg;
+  for d in azure-cli azure-cli-core
   do cd $d;
      python setup.py install --root="$pkgdir" --optimize=1
      cd -;
   done;
-
-  rm "$pkgdir"/usr/lib/python3.?/site-packages/azure/__init__.py
-  rm "$pkgdir"/usr/lib/python3.?/site-packages/azure/__pycache__/__init__.*
 }
