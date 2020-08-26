@@ -1,6 +1,6 @@
 pkgbase = x16-rom
 	pkgdesc = ROM files for The 8-Bit Guy's Commander X16
-	pkgver = r37
+	pkgver = r38
 	pkgrel = 1
 	url = http://commanderx16.com/
 	install = x16-rom.install
@@ -10,9 +10,9 @@ pkgbase = x16-rom
 	makedepends = cc65
 	makedepends = pandoc
 	optdepends = x16-emulator: emulator for the ROMs
-	source = x16-rom-r37.tar.gz::https://github.com/commanderx16/x16-rom/archive/r37.tar.gz
-	source = https://raw.githubusercontent.com/commanderx16/x16-emulator/r37/github-pandoc.css
-	md5sums = 930646f7eb0c58f53f3feab1a3d4e75e
+	source = x16-rom-r38.tar.gz::https://github.com/commanderx16/x16-rom/archive/r38.tar.gz
+	source = https://raw.githubusercontent.com/commanderx16/x16-emulator/r38/github-pandoc.css
+	md5sums = 731d58201e7f0b4b978bc2f981d53576
 	md5sums = 3accdbadaf70264c743b1f655f5dc146
 
 pkgname = x16-rom
