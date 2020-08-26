@@ -43,7 +43,6 @@ package() {
   install -Dm755 t2-output/linux-gcc-debug-default/*.so -t "${pkgdir}/usr/share/hippoplayer/"
   chmod 757 "${pkgdir}/usr/share/hippoplayer/"
   install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
-  install -Dm644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
   cp -R data/ "${pkgdir}/usr/share/hippoplayer/"
   cp -R bin/ "${pkgdir}/usr/share/hippoplayer/"
   rm -rf "${pkgdir}/usr/share/hippoplayer/data/mac"
