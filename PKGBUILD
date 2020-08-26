@@ -3,7 +3,7 @@
 
 pkgname=tlf
 _author=Tlf
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Ham Radio networked logging and contest program - CLI"
 arch=('i686' 'x86_64')
@@ -48,11 +48,11 @@ package() {
 	install -D -m 644 ../$pkgname.png $pkgdir/usr/share/pixmaps
 	install -D -m 644 ../$pkgname.desktop $pkgdir/usr/share/applications
 }
-md5sums=('f4e52d0b4ac494ccc2fb25f6147604aa'
+md5sums=('90a5525d163b5c1e923ab8be1da244e9'
          'b83cca73cea288ed139993efceb245b5'
          'f148583e02660cb430f638fd8f71f452'
          'b706428f41d32bd5f4f6f671057638c0')
-sha256sums=('61d0f53ec1b9edd4c3bd4146137c5a205843968953c8d198cfa87a51d8512b92'
+sha256sums=('a5a4d0492d206fe67d324271c50c48801236a955c36edddc198289330cb17386'
             'cc7b5bcf825ea342d126a54a778c4f837ea0da4a12101383f99282041eb5d574'
             '0ddcde4f0dfa98540d4314660108ed49bfa0bc3d8b87cb46906dfd6f12be2497'
             '766253a6f4b1d7e0526366875a46e220d637665c3c44e551f8d3db4ed88aaf81')
