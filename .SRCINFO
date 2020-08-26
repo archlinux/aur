@@ -1,10 +1,11 @@
 pkgbase = neovim-nightly-git
 	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs (pre-release build)
-	pkgver = 0.5.0.r635.g8c49e3d50
+	pkgver = 0.5.0.r637.g43202964f
 	pkgrel = 1
 	url = https://neovim.io
 	arch = x86_64
 	license = custom:neovim
+	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = lua51-mpack
@@ -26,7 +27,7 @@ pkgbase = neovim-nightly-git
 	conflicts = neovim
 	options = !strip
 	backup = etc/xdg/nvim/sysinit.vim
-	source = neovim-nightly-git::git+https://github.com/neovim/neovim.git#tag=nightly
+	source = neovim-nightly-git::git+https://github.com/neovim/neovim.git
 	sha256sums = SKIP
 
 pkgname = neovim-nightly-git

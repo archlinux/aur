@@ -6,7 +6,7 @@
 
 pkgname=neovim-nightly-git
 _upcoming_version=0.5.0
-pkgver=${_upcoming_version}.r635.g8c49e3d50
+pkgver=0.5.0.r637.g43202964f
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs (pre-release build)'
 arch=('x86_64')
@@ -14,21 +14,26 @@ url='https://neovim.io'
 backup=('etc/xdg/nvim/sysinit.vim')
 license=('custom:neovim')
 depends=('libtermkey' 'libuv' 'msgpack-c' 'unibilium' 'libvterm' 'luajit' 'libluv')
-makedepends=('cmake' 'ninja' 'lua51-mpack' 'lua51-lpeg' 'gperf')
+makedepends=('git' 'cmake' 'ninja' 'lua51-mpack' 'lua51-lpeg' 'gperf')
 optdepends=('python-neovim: for Python 3 plugin support (see :help python)'
             'xclip: for clipboard support on X11 (or xsel) (see :help clipboard)'
             'xsel: for clipboard support on X11 (or xclip) (see :help clipboard)'
             'wl-clipboard: for clipboard support on wayland (see :help clipboard)')
-source=("${pkgname}::git+https://github.com/neovim/neovim.git#tag=nightly")
+source=("${pkgname}::git+https://github.com/neovim/neovim.git")
 sha256sums=('SKIP')
 provides=("neovim=${_upcoming_version}" 'vim-plugin-runtime')
 conflicts=('neovim')
 options=(!strip)
 
+# Checkout the latest `nightly` tag without messing up `yay`
+prepare() {
+  cd "${pkgname}"
+  git reset --hard nightly
+}
+
 pkgver() {
   cd "${pkgname}"
   printf '%s.%s' ${_upcoming_version} $(git describe --long --first-parent nightly | sed 's/[^-]*-//;s/\([^-]*-g\)/r\1/;s/-/./g')
-
 }
 
 build() {
