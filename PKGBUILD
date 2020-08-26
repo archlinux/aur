@@ -2,22 +2,19 @@
 pkgname=fulcrum-git
 _pkgname=${pkgname/-git/}
 pkgdesc='A fast & nimble SPV server for Bitcoin Cash'
-pkgver=1.1.1.r0.g2bc06f1
+pkgver=1.2.9.r22.g22d3d8f
 pkgrel=1
 url='https://github.com/cculianu/Fulcrum'
 arch=('any')
 license=('GPL3')
-depends=(
-  'qt5-base'
-  'rocksdb'
-  'python'
-)
+depends=('qt5-base'
+         'rocksdb'
+         'python')
+optdepends=('jemalloc: reduce memory fragmentation (recommended)')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+https://github.com/cculianu/Fulcrum.git")
 sha256sums=('SKIP')
-
-_qmake_args="CONFIG+=release"
 
 pkgver() {
   cd "$pkgname"
@@ -26,7 +23,7 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  qmake -makefile features= Fulcrum.pro
+  qmake -makefile CONFIG+=recheck CONFIG+=release Fulcrum.pro
 }
 
 build() {
