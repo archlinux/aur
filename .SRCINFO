@@ -1,11 +1,10 @@
 pkgbase = monolith-git
 	pkgdesc = CLI to save web pages as single HTML files (git)
-	pkgver = 2.0.1+r18+gcc09c2b
+	pkgver = 2.3.1+r393+g8462b6b
 	pkgrel = 1
 	url = https://github.com/Y2Z/monolith
-	arch = i686
 	arch = x86_64
-	license = custom
+	license = Unlicense
 	makedepends = git
 	makedepends = cargo
 	depends = openssl

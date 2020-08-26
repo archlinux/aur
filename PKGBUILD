@@ -1,13 +1,13 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=monolith-git
-_pkgname=${pkgname/-git/}
-pkgver=2.0.1+r18+gcc09c2b
+_pkgname=${pkgname%-git}
+pkgver=2.3.1+r393+g8462b6b
 pkgrel=1
 pkgdesc='CLI to save web pages as single HTML files (git)'
-arch=(i686 x86_64)
+arch=(x86_64)
 url=https://github.com/Y2Z/monolith
-license=(custom)
+license=(Unlicense)
 depends=(openssl)
 makedepends=(git cargo)
 provides=(monolith)
@@ -27,7 +27,6 @@ build() {
 
 package() {
   cd $_pkgname
-  install -D target/release/monolith -t "$pkgdir"/usr/bin
+  install -D target/release/$_pkgname -t "$pkgdir"/usr/bin
   install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$_pkgname
-  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$_pkgname
 }
