@@ -4,26 +4,17 @@ pkgname=chowtapemodel.lv2-git
 pkgdesc="Physical modelling signal processing for analog tape recording."
 pkgver=r114.6236290
 pkgrel=1
-epoch=
 arch=(x86_64)
 url="https://github.com/jatinchowdhury18/AnalogTapeModel"
 license=(GPL)
-groups=()
-depends=('alsa-lib' 'libxcursor' 'libxinerama' 'libxrandr' 'freeglut' 'jack')
+groups=(lv2plugins)
+conflicts=(chowtapemodel.lv2)
+provides=(chowtapemodel.lv2)
+depends=('git' 'alsa-lib' 'libxcursor' 'libxinerama' 'libxrandr' 'freeglut' 'jack')
 makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("$pkgname::git+https://github.com/jatinchowdhury18/AnalogTapeModel"
         "git+https://github.com/jatinchowdhury18/JUCE.git"
         "git+https://github.com/ffAudio/foleys_gui_magic.git")
-noextract=()
 md5sums=('SKIP'
          'SKIP'
          'SKIP')
@@ -38,16 +29,20 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
+
   rm -rf Plugin/Juce
-  ln -s ../../JUCE Plugin/Juce
   rm -rf Plugin/foleys_gui_magic
-  ln -s ../../foleys_gui_magic Plugin/foleys_gui_magic
+  git submodule init
+  git config submodule.Plugin/Juce.url "${srcdir}"/JUCE
+  git config submodule.Plugin/foleys_gui_magic.url "${srcdir}"/foleys_gui_magic
+  git submodule sync --recursive
+  git submodule update
+
   rm -rf Juce/VST2_SDK
 }
 
 build() {
-	cd "$pkgname"
-  cd Plugin/ && bash build_linux.sh
+	cd "$pkgname"/Plugin && bash build_linux.sh
 }
 
 package() {
