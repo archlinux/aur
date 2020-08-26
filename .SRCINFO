@@ -1,0 +1,24 @@
+pkgbase = xava
+	pkgdesc = X11 Audio Visualizer for Alsa/Pulseaudio/FIFO
+	pkgver = 0.6.3.0
+	pkgrel = 1
+	url = https://github.com/nikp123/xava
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = fftw
+	depends = alsa-lib
+	depends = iniparser
+	depends = libx11
+	depends = sdl2
+	depends = portaudio
+	depends = sndio
+	depends = mesa
+	provides = xava
+	conflicts = xava-git
+	source = https://github.com/nikp123/xava/archive/0.6.3.0.tar.gz
+	sha256sums = 745da4f6690f58e29d9f20ca790b3f354a1f53ef810d4ab6b1027bcac7e62fbf
+
+pkgname = xava
+
