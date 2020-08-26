@@ -2,28 +2,25 @@
 
 pkgname=crystallauncher
 pkgrel=1
-pkgver=1.0.0.1
-pkgdesc="Crystal Launcher is a unofficial launcher for Minecraft that has own packages repository. It can also run official launcher packages."
-arch=('any')
+pkgver=1.1.0.0
+pkgdesc="Crystal Launcher is a unofficial Minecraft launcher with support for modpacks and custom HD skin and cape system"
+arch=('i686' 'x86_64')
 url="https://crystal-launcher.net/"
 license=('CCPL')
-depends=('jdk8-openjdk' 'openal' 'java8-openjfx')
+depends=('java-runtime=8' 'java8-openjfx' 'bash' 'zenity')
 makedepends=('unzip')
 provides=('crystallauncher')
 
-source=("http://main.crystal-launcher.pl/releases/other/CrystalLauncher.jar"
-        "crystallauncher"
-        "crystallauncher.desktop"
-        "crystallauncher.png"
-        )
+source=("https://crystal-launcher.net/releases/other/CrystalLauncher.jar"
+            "crystallauncher"
+            "crystallauncher.desktop"
+            "crystallauncher.png")
+
 noextract=('jar')
-
-
-md5sums=('5a1ad091cd288d88c4132d8d9a616a00'
-         '39650fe38b376bcd45090640fa867cc3'
-         '4724472411e932b005f1b0d66a47f14e'
-         '1fc2ef4be5729d96f9928af152fc1763')
-
+sha256sums=('cb495e726512a039df6f6d297ba7cfd9ce0b1fe368bad5ba20abe7852d65527a'
+            'e0a4ecd9122c81bb6949db9b12e174e1e79b5cdff52073f22b7f812577b56825'
+            '08fd03cd4f89291b2290f96aeec2bd40c267b03afbabd42a3ad5b127c43cc3f2'
+            '214f4f12eb772d2ce945723ab7b126b1fb3e78c009f4132d6b0f98ea2270ab0c')
 
 pkgver() {
     echo $pkgver
@@ -39,9 +36,8 @@ package() {
     # install shell wrapper script
     install -D -m755 "${srcdir}/crystallauncher"         "${pkgdir}/usr/bin/crystallauncher"
 
-noextract=('jar')
     # install jar
-    install -D -m644 "${srcdir}/CrystalLauncher.jar" "${pkgdir}/usr/share/java/CrystalLauncher/launcher.jar"
+    install -D -m644 "${srcdir}/CrystalLauncher.jar"     "${pkgdir}/usr/share/java/CrystalLauncher/launcher.jar"
 
     # install desktop launcher with icon
     install -D -m644 "${srcdir}/crystallauncher.desktop" "${pkgdir}/usr/share/applications/crystallauncher.desktop"

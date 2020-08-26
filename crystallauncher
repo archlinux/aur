@@ -1,13 +1,97 @@
-#!/bin/sh
+#!/bin/bash
 
-# fix for users of special IM modules
+# env
+JVM_EXEC_ORACLE=/1usr/lib/jvm/java-8-jdk/jre/bin/java
+JVM_EXEC=/usr/lib/jvm/java-8-openjdk/jre/bin/java
+JVM=java
+IS_OPENJDK=0
+
+# env fixes
 unset XMODIFIERS GTK_IM_MODULE QT_IM_MODULE
+unset CLASSPATH
+unset JAVA_OPTIONS
 
-mkdir -p ${HOME}/.local/share/CrystalLauncher
-echo ${HOME}/.local/share/CrystalLauncher > ${HOME}/.crystalinst
+assert_check_jvm_env() {
+   if [ -f $JVM_EXEC_ORACLE ]; then
+      JVM=$JVM_EXEC_ORACLE
+   elif [ -f $JVM_EXEC ]; then
+      JVM=$JVM_EXEC;
+   else
+      if ! command -v $JVM &> /dev/null; then
+         show_message "Java not found!!!";
+	 exit 1;
+      else
+         _tmp=`command -v $JVM`
+	JVM=`realpath $_tmp`
+      fi
+   fi
+   IS_OPENJDK="$(is_openjdk)";
+}
 
-if [ ! -f ${HOME}/.local/share/CrystalLauncher/launcher.jar ]; then
-    touch ${HOME}/.local/share/CrystalLauncher/launcher.jar
-fi
+is_openjdk() {
+    if [[ $($JVM -version 2>&1 | grep "OpenJDK") ]]; then echo 1; else echo 0; fi;
+}
 
-exec java -jar /usr/share/java/CrystalLauncher/launcher.jar $@
+assert_is_java8() {
+    version="$(jdk_version)";
+    if [[ "$version" == "8" ]]; then
+	return 0;
+    else         
+	show_message "You're using Java $version, which is not supported by Crystal Launcher! Please install openjdk8 or oracle jdk8...";
+        exit 1;
+    fi
+}
+
+jdk_version() {
+  local result
+  local java_cmd
+  java_cmd=$JVM
+  local IFS=$'\n'
+  # remove \r for Cygwin
+  local lines=$("$java_cmd" -Xms32M -Xmx32M -version 2>&1 | tr '\r' '\n')
+  if [[ -z $java_cmd ]]
+  then
+    result=no_java
+  else
+    for line in $lines; do
+      if [[ (-z $result) && ($line = *"version \""*) ]]
+      then
+        local ver=$(echo $line | sed -e 's/.*version "\(.*\)"\(.*\)/\1/; 1q')
+        # on macOS, sed doesn't support '?'
+        if [[ $ver = "1."* ]]
+        then
+          result=$(echo $ver | sed -e 's/1\.\([0-9]*\)\(.*\)/\1/; 1q')
+        else
+          result=$(echo $ver | sed -e 's/\([0-9]*\)\(.*\)/\1/; 1q')
+        fi
+      fi
+    done
+  fi
+  echo "$result"
+}
+
+show_message() {
+   zenity --info --text="$1"
+}
+
+run() {
+   mkdir -p ${HOME}/.local/share/CrystalLauncher
+   echo ${HOME}/.local/share/CrystalLauncher > ${HOME}/.crystalinst
+
+   if [ ! -f ${HOME}/.local/share/CrystalLauncher/launcher.jar ]; then
+      touch ${HOME}/.local/share/CrystalLauncher/launcher.jar
+   fi
+
+   exec $JVM -jar /usr/share/java/CrystalLauncher/launcher.jar $@ | sed 's/\\n/\n/g; s/\\r/\r/g' #console output fix
+}
+
+echo "Crystal Launcher launch script";
+assert_check_jvm_env;
+echo "Using Java executable: $JVM"
+assert_is_java8;
+echo "Using Java version: $version";
+
+if [[ "$IS_OPENJDK" == "1" ]]; then
+   echo "[WARNING] Using OpenJDK implementation of Java... It's strongly recommended to use Oracle Java for best performance!";
+fi;
+run;
