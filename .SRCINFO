@@ -1,6 +1,6 @@
 pkgbase = gplugin-hg
 	pkgdesc = GObject based library that implements a reusable plugin system
-	pkgver = 1718.f02e7e4b875f
+	pkgver = 1730.71e98ba93d21
 	pkgrel = 1
 	url = https://bitbucket.org/gplugin/gplugin
 	arch = i686
@@ -23,8 +23,7 @@ pkgbase = gplugin-hg
 	optdepends = lua-lgi: for Lua support
 	provides = gplugin=0.0.23
 	conflicts = gplugin
-	options = debug
-	source = gplugin::hg+https://bitbucket.org/gplugin/gplugin#branch=develop
+	source = gplugin::hg+https://keep.imfreedom.org/gplugin/gplugin#branch=develop
 	sha256sums = SKIP
 
 pkgname = gplugin-hg

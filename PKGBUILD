@@ -2,7 +2,7 @@
 # Co-Maintainer: Solomon Choina <shlomochoina@gmail.com>
 _pkgbase=gplugin
 pkgname="$_pkgbase-hg"
-pkgver=1718.f02e7e4b875f
+pkgver=1730.71e98ba93d21
 pkgrel=1
 pkgdesc="GObject based library that implements a reusable plugin system"
 arch=('i686' 'x86_64' 'armv7h')
@@ -16,9 +16,8 @@ optdepends=('gtk3: for GTK+ support'
             'lua-lgi: for Lua support')            
 provides=("$_pkgbase=0.0.23")
 conflicts=("$_pkgbase")
-source=("$_pkgbase::hg+https://bitbucket.org/gplugin/gplugin#branch=develop")
+source=("$_pkgbase::hg+https://keep.imfreedom.org/gplugin/gplugin#branch=develop")
 sha256sums=('SKIP')
-options=('debug')
 
 pkgver() {
   cd "$srcdir/$_pkgbase"
