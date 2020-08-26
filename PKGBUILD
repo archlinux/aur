@@ -3,7 +3,7 @@
 
 pkgname=octopus
 pkgver=9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-space Time-Dependent Density Functional Theory code"
 arch=('x86_64')
 url="https://octopus-code.org"
@@ -18,7 +18,7 @@ prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   autoreconf -if
   export _elpaver=$( ls /usr/include | grep elpa | sed 's/elpa_openmp-//g' )
-  export OPTFLAGS="-O2 -march=native -ftree-vectorize"
+  export OPTFLAGS="-O2 -march=native"
 }
 
 build() {
@@ -34,7 +34,7 @@ build() {
               LIBS_ELPA="-lelpa_openmp" \
               CFLAGS="$OPTFLAGS" \
               CXXFLAGS="$OPTFLAGS" \
-              FCFLAGS="$OPTFLAGS"
+              FCFLAGS="$OPTFLAGS -fallow-argument-mismatch -fallow-invalid-boz"
   make
 }
 
