@@ -2,7 +2,7 @@
 pkgname=piavpn-bin
 pkgver=2.3.1_05354
 _pkgver=2.3.1-05354
-pkgrel=2
+pkgrel=3
 pkgdesc="Private Internet Access client"
 arch=(x86_64)
 url="https://privateinternetaccess.com/"
@@ -47,4 +47,12 @@ package() {
 
 	mkdir -p $pkgdir/usr/share/licenses/$pkgname/
 	cp $pkgdir/opt/piavpn/share/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/
+
+	# limit log to the minimum to avoid excessive flooding
+	cat > $pkgdir/opt/piavpn/var/debug.txt << EOF
+[rules]
+*.debug=false
+*.info=false
+*.warning=false
+EOF
 }

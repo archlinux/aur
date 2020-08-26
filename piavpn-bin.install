@@ -18,6 +18,11 @@ pre_install() {
 	addRoutingTable piavpnWgrt
 }
 
+pre_remove() {
+	systemctl stop piavpn
+	systemctl disable piavpn
+}
+
 post_remove() {
 	sed -i '/.*piavpnrt$/d' /etc/iproute2/rt_tables
 	sed -i '/.*piavpnOnlyrt$/d' /etc/iproute2/rt_tables
@@ -27,8 +32,8 @@ post_remove() {
 }
 
 post_upgrade() {
-	if systemctl is-active pia-daemon >/dev/null; then
-		systemctl restart pia-daemon
+	if systemctl is-active piavpn >/dev/null; then
+		systemctl restart piavpn
 	fi
 }
 
