@@ -1,6 +1,6 @@
 pkgbase = rime-putonghua
 	pkgdesc = rime 有声调普通话拼音方案
-	pkgver = 0.0.0.20200822
+	pkgver = 0.0.0.20200825
 	pkgrel = 1
 	url = https://github.com/ayaka14732/rime-putonghua
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = rime-putonghua
 	depends = rime-liangfen
 	depends = rime-symbolic-simp
 	depends = rime-emoji
-	depends = rime-lua-cloud
-	source = https://github.com/ayaka14732/rime-putonghua/archive/2e0e8bd4d6bdede29daac7ff2cfd369795d528bf/rime-putonghua-2e0e8bd4d6bdede29daac7ff2cfd369795d528bf.tar.gz
-	sha512sums = bd17a0b0950d8640f19b4bdf2d896c0f4e0b96fb2b92cb80bb4fe50cac9ab2320cdb458c8128ed786e6794d932047514e4950cec3b1c7f39e765862a7a805d10
+	optdepends = rime-lua-cloud
+	source = https://github.com/ayaka14732/rime-putonghua/archive/efeee372309af32755908ea89f7f1c2e5a794638/rime-putonghua-efeee372309af32755908ea89f7f1c2e5a794638.tar.gz
+	sha512sums = 8a994adc31f8631a325cb61858c7c9bf68cd46626578a0825db64038f9badb7175f970441917fce8a21c08b4e5c5ffe8daf024bc8f27ba3153719f7bce3744ee
 
 pkgname = rime-putonghua
 
