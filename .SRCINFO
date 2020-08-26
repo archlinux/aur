@@ -1,0 +1,15 @@
+pkgbase = pcg-c-git
+	pkgdesc = C implementation of a fast, statistically excellent family of random number generators
+	pkgver = latest
+	pkgrel = 1
+	url = http://www.pcg-random.org/
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = git
+	provides = pcg-c
+	source = git+https://github.com/imneme/pcg-c.git
+	sha256sums = SKIP
+
+pkgname = pcg-c-git
+
