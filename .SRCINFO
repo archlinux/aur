@@ -1,0 +1,15 @@
+pkgbase = swap-runit
+	pkgdesc = Runit swap service
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/swap-runit
+	arch = any
+	license = GPL3
+	depends = runit
+	depends = util-linux>=2.26
+	replaces = runit-swap
+	source = https://github.com/thypon/runit-swap/archive/v2.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = swap-runit
+
