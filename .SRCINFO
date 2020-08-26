@@ -9,7 +9,7 @@ pkgbase = apple-sdk-macos
 	makedepends = git
 	makedepends = findutils
 	options = !strip
-	source = apple-sdk-macos::git+https://github.com/phracker/MacOSX-SDKs.git
+	source = apple-sdk-macos::git+https://github.com/phracker/MacOSX-SDKs.git#branch=ef9fe35d5691b6dd383c8c46d867a499817a01b6
 	sha512sums = SKIP
 
 pkgname = apple-sdk-macos

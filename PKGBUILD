@@ -6,18 +6,14 @@ pkgrel=1
 arch=('any')
 pkgdesc="macOS SDKs"
 url="https://github.com/phracker/MacOSX-SDKs"
+_rev="ef9fe35d5691b6dd383c8c46d867a499817a01b6"
 license=('custom')
 depends=()
 install="sdk.install"
 makedepends=('git' 'findutils')
-source=("$pkgname::git+$url.git")
+source=("$pkgname::git+$url.git#commit=$_rev")
 sha512sums=('SKIP')
 options=(!strip)
-
-pkgver() {
-	cd "$pkgname"
-	printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
-}
 
 prepare() {
 	cd "$pkgname"
