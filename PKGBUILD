@@ -6,14 +6,14 @@
 pkgbase=kate-root
 _pkgbase=${pkgbase%-root}
 pkgname=(kwrite-root kate-root)
-pkgver=19.04.2
+pkgver=20.08.0
 pkgrel=1
 arch=(armv7h i686 x86_64)
 license=(GPL LGPL FDL)
 makedepends=(extra-cmake-modules kdoctools plasma-framework knewstuff ktexteditor threadweaver kitemmodels kactivities)
-source=("https://download.kde.org/stable/applications/$pkgver/src/$_pkgbase-$pkgver.tar.xz"{,.sig}
+source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgbase-$pkgver.tar.xz"{,.sig}
         0001-Defuse-root-block.patch)
-sha512sums=('568af7df0588d65f386f482f944b44c7bacffeecf374fce4b4e276be8ca556cbf983c2df2e99a3900c15bd7dfaa0d71b6540c37b4c2773a5293b3e5cba1d3939'
+sha512sums=('223b90e9e17a4b3e41df64cb923b9d62783e49215d4e68722cfd81db0278b122aea5be61cc6fdd9ba87051992c1f3cf2fe3a74042f8d1b4b9a225e7fa93b6e41'
             'SKIP'
             '01f7fd779d2e2c87ccb78e1f6014b89687b87af33831eae74864c66ed52e18d2adbb9b2803574cd8a55f7feacd24c9b1afbf3cba5b7b45b2746a36d6072894df')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
@@ -49,7 +49,7 @@ package_kwrite-root() {
   rm -r "$pkgdir"/usr/lib/qt/plugins/ktexteditor \
         "$pkgdir"/usr/share/doc/HTML/*/{kate,katepart} \
         "$pkgdir"/usr/share/katexmltools \
-        "$pkgdir"/usr/share/locale/*/LC_MESSAGES/{kterustcompletion,tabswitcherplugin,ktexteditorpreviewplugin}.mo \
+        "$pkgdir"/usr/share/locale/*/LC_MESSAGES/{ktexteditorpreviewplugin,lspclient,tabswitcherplugin}.mo \
         "$pkgdir"/usr/share/plasma/plasmoids
 }
 
