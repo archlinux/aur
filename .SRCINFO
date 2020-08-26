@@ -1,0 +1,15 @@
+pkgbase = python-pyenvinfo
+	pkgdesc = Python Library to get execution environment information
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/thombashi/pyenvinfo
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = pyenvinfo
+	source = https://files.pythonhosted.org/packages/source/p/pyenvinfo/pyenvinfo-0.0.1.tar.gz
+	sha256sums = 5e541a1c083c34ce00258dfccb38b5e8a9a2120fca9b164e5bbcc314d54091c5
+
+pkgname = python-pyenvinfo
+
