@@ -12,7 +12,7 @@ pkgbase = gplugin-hg
 	makedepends = gobject-introspection
 	makedepends = gtk3
 	makedepends = python-gobject
-	makedepends = lua-lgi
+	makedepends = lua53-lgi
 	makedepends = libxslt
 	makedepends = help2man
 	makedepends = vala
@@ -20,7 +20,7 @@ pkgbase = gplugin-hg
 	depends = gobject-introspection-runtime
 	optdepends = gtk3: for GTK+ support
 	optdepends = python-gobject: for Python support
-	optdepends = lua-lgi: for Lua support
+	optdepends = lua53-lgi: for Lua support
 	provides = gplugin=0.0.23
 	conflicts = gplugin
 	source = gplugin::hg+https://keep.imfreedom.org/gplugin/gplugin#branch=develop
