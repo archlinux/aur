@@ -2,23 +2,17 @@
 
 pkgname=fcitx-skin-aqua
 pkgver=0.1
-pkgrel=2
-pkgdesc='Fcitx Skin - Aqua'
+_commit=fdc8379b94ea79e9215673eb84e41fa40cae1ca9
+pkgrel=3
+pkgdesc="Aqua - fcitx skin"
 arch=('any')
-url='https://github.com/redchenjs/fcitx-skin-aqua/'
+url="https://github.com/redchenjs/fcitx-skin-aqua"
 license=('Apache')
-depends=(
-    'fcitx'
-)
-source=(
-    'https://github.com/redchenjs/fcitx-skin-aqua/archive/v'${pkgver}'.tar.gz'
-)
-md5sums=(
-    '126d58f4a094c31c775d2341b8c65afe'
-)
+source=("https://github.com/redchenjs/fcitx-skin-aqua/archive/$_commit/fcitx-skin-aqua-$_commit.tar.gz")
+sha512sums=('7ba3dec58dba2a1fd52ec2661cd54cc4e85b2ffbe601b9ee1c67c0402a00daf48d707dd0b53880d82e8c65c65973b88ebdfe23de77714d633adfa9bb4f55f427')
 
 package() {
-    install -dm 755 ${pkgdir}/usr/share/fcitx/skin/aqua/
-    install -Dm 644 ${srcdir}/fcitx-skin-aqua-${pkgver}/aqua/* \
-                    ${pkgdir}/usr/share/fcitx/skin/aqua/
+    cd $pkgname-$_commit
+    mkdir -p "$pkgdir/usr/share/fcitx/skin/aqua/"
+    install -Dm644 aqua/* "$pkgdir/usr/share/fcitx/skin/aqua/"
 }
