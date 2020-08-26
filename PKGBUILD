@@ -2,12 +2,13 @@
 pkgname=piavpn-bin
 pkgver=2.3.1_05354
 _pkgver=2.3.1-05354
-pkgrel=1
+pkgrel=2
 pkgdesc="Private Internet Access client"
 arch=(x86_64)
 url="https://privateinternetaccess.com/"
 license=('custom')
-depends=(net-tools libnl libxkbcommon-x11 openvpn wireguard-tools WIREGUARD-MODULE)
+depends=(net-tools libxkbcommon-x11 libnl xcb-util-wm xcb-util-image xcb-util-keysyms xcb-util-renderutil)
+optdepends=('WIREGUARD-MODULE: to use the wireguard kernel module instead')
 makedepends=(libcap)
 provides=(piavpn)
 conflicts=(pia-launch pia-manager pia-tools private-internet-access-vpn)

@@ -27,7 +27,7 @@ post_remove() {
 }
 
 post_upgrade() {
-	if systemctl is-active pia-daemon; then
+	if systemctl is-active pia-daemon >/dev/null; then
 		systemctl restart pia-daemon
 	fi
 }
