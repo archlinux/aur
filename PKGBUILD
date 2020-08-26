@@ -3,7 +3,7 @@
 # Contributor: Rowisi < nomail <at> private <dot> com >
 
 pkgname=vscodium-bin
-pkgver=1.48.1
+pkgver=1.48.2
 pkgrel=1
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -20,9 +20,9 @@ optdepends=(
 provides=('code')
 conflicts=('code' 'vscode')
 
-sha256sums_x86_64=('38b6008efd1673ccc741d2e81abb1eb3ab5a465299acfe455debc46152111739')
-sha256sums_aarch64=('3528496a5a5cbe443e67327bca4a8666cd9a2fc32ceafc807336b16ef133e98f')
-sha256sums_armv7h=('cf653db9c223bfaa21b1af33464d946cbf19f3f764f37a2de939c2bea565fc86')
+sha256sums_x86_64=('bd5d8f798a2b5ab32cac4f5d22e965e90200785d65e9b32a10b49c11a96fd99d')
+sha256sums_aarch64=('f328c9534a6ad61fb0e72ef264739d8efa7af6c6c63470d484e079ae22db1f87')
+sha256sums_armv7h=('da05339713eb4b8aac2164817e23231c3791df50f4e5ba0c4e95e7a3d4472cde')
 
 source=(vscodium-bin.desktop)
 sha256sums=('5504e93bd55f2bc068c29e4fa962c1eddc6e08edb39c3255319dd5ad998a1b86')
