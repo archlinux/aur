@@ -2,7 +2,7 @@
 
 pkgname=python-dash
 _pkgname=dash
-pkgver=1.13.4
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="A python framework for building analytical web applications"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = python-dash
 	pkgdesc = A python framework for building analytical web applications
-	pkgver = 1.13.4
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://plot.ly/products/dash/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-dash
 	depends = python-future
 	depends = python-plotly
 	depends = python-requests
-	source = https://pypi.org/packages/source/d/dash/dash-1.13.4.tar.gz
+	source = https://pypi.org/packages/source/d/dash/dash-1.14.0.tar.gz
 	sha256sums = 70943518849167177e0532faf36f04ad2a57573eef9ef30428db5fc195fb6e8a
 
 pkgname = python-dash
