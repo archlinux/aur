@@ -1,7 +1,7 @@
 pkgbase = libgnt3-hg
 	pkgdesc = The GLib Ncurses Toolkit
-	pkgver = r1374.8672fda6d081
-	pkgrel = 2
+	pkgver = r1396.d67ecd2b2223
+	pkgrel = 1
 	epoch = 1
 	url = https://bitbucket.org/pidgin/libgnt
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = libgnt3-hg
 	provides = libgnt
 	conflicts = libgnt3
 	conflicts = libgnt
-	source = hg+https://bitbucket.org/pidgin/libgnt#branch=default
+	source = hg+https://keep.imfreedom.org/libgnt/libgnt#branch=default
 	sha256sums = SKIP
 
 pkgname = libgnt3-hg
