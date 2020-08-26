@@ -1,6 +1,6 @@
 pkgbase = ace
 	pkgdesc = Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems.
-	pkgver = 6.5.10
+	pkgver = 6.5.11
 	pkgrel = 1
 	url = https://github.com/DOCGroup/ACE_TAO/releases
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = ace
 	license = custom
 	conflicts = libace
 	options = !libtool
-	source = https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-6_5_10/ACE-6.5.10.tar.gz
-	sha256sums = 16b3668bfd47008a9ec2d916afeaea9c6e36205f7daed34eb305a1a99e4cfa3d
+	source = https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-6_5_11/ACE-6.5.11.tar.gz
+	sha256sums = f92748cce861809a99326e99abeba6762dd666b1dcb738aa1bf0c960e4ecf6c2
 
 pkgname = ace
