@@ -1,5 +1,6 @@
 # -*- mode: pkgbuild; -*-
-# Maintainer: Denis Zheleztsov <difrex.punk@gmail.com>
+# Maintainer: Christopher Snowhill <chris@kode54.net>
+# Contributor: Denis Zheleztsov <difrex.punk@gmail.com>
 pkgname=wlr-randr
 pkgver=r16.988a802
 pkgrel=1
