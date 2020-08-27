@@ -3,7 +3,7 @@
 _pkgname=zap-desktop
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.6.2_beta
+pkgver=0.7.2_beta
 # Actual version used by project
 _ver=${pkgver//_/-}
 pkgrel=2
@@ -18,7 +18,7 @@ source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/LN-Zap/zap-des
                "https://raw.githubusercontent.com/LN-Zap/zap-desktop/v${_ver}/LICENSE"
               )
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha256sums_x86_64=('8202e036481b08035c9267f846b650064b8dc46915c6056867fb40b2a943c2da'
+sha256sums_x86_64=('03d87861cd2928fe07d25ae02edd42ee2aed9826e43540bc26d1212bb7c181fa'
                    'c7779cd186930fa9bd4d900b2243b3302f01cd593ac19098bbeb123c8ebf9d72')
 
 prepare() {
