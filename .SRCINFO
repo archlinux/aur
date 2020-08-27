@@ -1,6 +1,6 @@
 pkgbase = homemgr
 	pkgdesc = Manager of home directories in Linux.
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/BiteDasher/homemgr
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = homemgr
 	depends = e2fsprogs
 	depends = glibc
 	depends = tar
-	source = homemgr-1.1.tar.gz::https://github.com/BiteDasher/homemgr/archive/1.1.tar.gz
-	sha256sums = 4e4e04b5032e4a9c46ea2981df084bc1e5db2d833838edc9bf18cf230f68a1e7
+	source = homemgr-1.2.tar.gz::https://github.com/BiteDasher/homemgr/archive/1.2.tar.gz
+	sha256sums = d83f5d0c1aac36858615c7f2486194bffc09437c9eb0972b687a9d18373f7a95
 
 pkgname = homemgr
 
