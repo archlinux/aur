@@ -11,7 +11,7 @@ depends=(python termcap swig)
 makedepends=('cmake>=3.12' make git wget)
 provides=(apbs)
 conflicts=(apbs-bin)
-source=("https://github.com/Electrostatics/apbs/releases/download/v3.0.0/APBS-3.0.0_Source-Code.tar.gz"
+source=("https://github.com/Electrostatics/apbs/releases/download/v${pkgver}/APBS-${pkgver}_Source-Code.tar.gz"
         "globals_apbs.patch")
 sha256sums=('3cf8b227a205cdcbd13246489427606f256f2356343fc954734fd39975e5cbdb'
             '6bc1f2dc7a454aa8b0799641f78ee571ba04795821a9bcac356cbe496bdb3df6')
