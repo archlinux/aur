@@ -5,7 +5,7 @@
  #BACKEND = opengl
  #BACKEND = sdl
 -#BACKEND = sdl2
-+BACKEND = sdl2
++BACKEND = mixer_sdl2
  #BACKEND = mixer_sdl
  #BACKEND = posix
  
