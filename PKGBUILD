@@ -2,7 +2,7 @@
 
 pkgname=wmrc
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='WMRC is a shell utility for extending window manager capabilities using modules with dependency and error checking.'
 arch=('any')
 url='https://github.com/filiparag/wmrc'
@@ -15,11 +15,6 @@ sha1sums=('SKIP')
 prepare() {
   cd "${pkgname}"
   git checkout "tags/${pkgver}"
-}
-
-pkgver() {
-  cd "${pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
