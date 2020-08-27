@@ -1,8 +1,8 @@
-# Maintainer: Daniel Kamil Kozar <dkk089@gmail.com>
+# Maintainer: Louis Heili <_@ludwhe.dev>
 
 pkgname=libfprint-vfs_proprietary-git
 _reponame=libfprint-vfs_proprietary-driver
-pkgver=r32.19f1b5a
+pkgver=0.99.0
 pkgrel=1
 pkgdesc="libfprint with support for the Validity/VFS proprietary driver"
 arch=(x86_64)
@@ -10,6 +10,7 @@ url="https://github.com/rindeal/libfprint-vfs_proprietary-driver"
 license=(LGPL)
 depends=(libusb nss pixman glib2 vfs495-daemon)
 makedepends=(git meson gtk-doc vfs495-daemon)
+provides=(libfprint)
 conflicts=(libfprint)
 source=("git+https://github.com/rindeal/libfprint-vfs_proprietary-driver.git"
         'build-vfs_proprietary.patch')
