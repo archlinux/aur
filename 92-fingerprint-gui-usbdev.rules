@@ -1,0 +1,4 @@
+# udev rules for fingerprint-gui (uinput)
+
+# set permissions for uinput
+SUBSYSTEM=="usb", ATTR{product}=="Fingerprint Sensor", MODE="0660", GROUP="plugdev"
