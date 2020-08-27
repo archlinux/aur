@@ -21,5 +21,6 @@ pkgname = openal-minimal-git
 	optdepends = qt5-base: alsoft-config GUI Configurator
 	optdepends = fluidsynth: MIDI rendering
 	provides = openal=1.18.1.r84.g5ec11a01
+	provides = openal
 	conflicts = openal
 

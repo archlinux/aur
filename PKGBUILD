@@ -35,7 +35,7 @@ build() {
 package_openal-minimal-git() {
   optdepends=('qt5-base: alsoft-config GUI Configurator'
               'fluidsynth: MIDI rendering')
-  provides=("openal=$pkgver")
+  provides=("openal=$pkgver" openal)
   conflicts=("openal")
 
   DESTDIR="$pkgdir" ninja -C openal-soft install
