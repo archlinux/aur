@@ -3,7 +3,7 @@
 pkgname=python-xdoctest
 _pkgname="${pkgname#python-}"
 _name="${_pkgname/-/_}"
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="rewrite of doctest module (with pytest integration)"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('c110cbaeac38846f457b0221e57e21d1e26d3be38fd6e53d8239521fc15f04b44c7b319d93a07e85be1d2f173ad757314194e3bfd1db8755aa2f7b0e4edf9ccd')
+b2sums=('c40e2156eabf29358c9440e0fe0955db2b306ca7fdb527c31f9539af2837de17004271818d8fcac97c6b34bbcc2a7db72c90217ed6c47d725fd9c62f8d90798b')
 
 build() {
   cd "$_pkgname-$pkgver"
