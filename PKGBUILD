@@ -3,14 +3,14 @@
 pkgname=libfprint-vfs_proprietary-git
 _reponame=libfprint-vfs_proprietary-driver
 pkgver=0.99.0
-pkgrel=2
+pkgrel=3
 pkgdesc="libfprint with support for the Validity/VFS proprietary driver"
 arch=(x86_64)
 url="https://github.com/rindeal/libfprint-vfs_proprietary-driver"
 license=(LGPL)
 depends=(libusb nss pixman glib2 vfs495-daemon)
 makedepends=(git meson gtk-doc vfs495-daemon)
-provides=(libfprint)
+provides=(libfprint=0.99.0)
 conflicts=(libfprint)
 source=("git+https://github.com/rindeal/libfprint-vfs_proprietary-driver.git"
         'build-vfs_proprietary.patch')
