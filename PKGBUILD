@@ -1,6 +1,6 @@
 # Maintainer: Tom van der Lee <t0m.vd.l33@gmail.com>
 pkgname=liquidprompt
-pkgver=1.11
+pkgver=1.12.0
 pkgrel=2
 pkgdesc="A useful adaptive prompt for Bash & Zsh"
 arch=("any")
@@ -15,11 +15,11 @@ depends=("ncurses"
 	 "coreutils")
 optdepends=("acpi: Battery and temperature status"
 	    "lm_sensors: Temperature status")
-source=(https://github.com/nojhan/liquidprompt/archive/v_$pkgver.tar.gz)
-md5sums=('4b2562a5cc66829d18c0bffe368af8f0')
+source=(https://github.com/nojhan/liquidprompt/archive/v$pkgver.tar.gz)
+md5sums=('9bc79c5c51a1494466f18051d7cc07ca')
 
 package() {
-	cd "$pkgname-v_$pkgver"
+	cd "$pkgname-$pkgver"
 	install -Dm755 liquidprompt "$pkgdir/usr/bin/liquidprompt"
 	install -Dm644 liquidpromptrc-dist "$pkgdir/etc/liquidpromptrc"
 }
