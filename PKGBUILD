@@ -1,18 +1,18 @@
 # Maintainer: Frederic Van Assche <frederic@fredericva.com>
 
 pkgname=sigasi
-pkgver=4.3.2
+pkgver=4.8.0
 pkgrel=1
 pkgdesc='IDE for VHDL editing and browsing'
 arch=('x86_64')
 url='http://www.sigasi.com/'
 license=('custom')
-source=('http://download.sigasi.com/updates/latest/com.sigasi.hdt.product-linux.gtk.x86_64.zip'
+source=('http://download.sigasi.com/updates/4.8.0/com.sigasi.hdt.product-linux.gtk.x86_64.zip'
         'sigasi.desktop')
 depends=('glib2')
 makedepends=('unzip')
 options=('!strip')
-sha256sums=('81f8c3ff1b8e5537b7e1243e921689b0e7fac42b33ea8e7da9513a5837176ec2'
+sha256sums=('693324ac608bb231c135953c6560bb0c9ba15dc616fc6f64b5ca1189ca418f91'
             'a8084b3146904c2accd5946e2aa493e133c56e4f8f0d7f582a0edcb080a7958c')
 
 package() {
