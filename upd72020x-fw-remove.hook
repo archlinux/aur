@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Remove
+Target = upd72020x-fw
+
+[Action]
+Description = Updating linux initcpios...
+Depends = mkinitcpio
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/upd72020x-fw remove

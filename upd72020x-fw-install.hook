@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = upd72020x-fw
+
+[Action]
+Description = Updating linux initcpios...
+Depends = mkinitcpio
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/upd72020x-fw install
