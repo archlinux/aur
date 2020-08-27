@@ -1,7 +1,7 @@
 pkgbase = mautrix-whatsapp
 	pkgdesc = A Matrix-WhatsApp puppeting bridge
 	pkgver = 0.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tulir/mautrix-whatsapp
 	install = mautrix-whatsapp.install
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = mautrix-whatsapp
 	source = https://github.com/tulir/mautrix-whatsapp/archive/v0.1.3.tar.gz
 	source = mautrix-whatsapp.service
 	md5sums = 671ad744ec61e065ab5dabc6426eeebd
+	md5sums = 052bb6a4ca9945799051560a7c5ed5d2
 
 pkgname = mautrix-whatsapp
 

@@ -1,7 +1,7 @@
 # Maintainer: Matthew Murray <matt@compti.me>
 pkgname=mautrix-whatsapp
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A Matrix-WhatsApp puppeting bridge"
 arch=('any')
 license=('AGPL')
@@ -12,7 +12,8 @@ install=mautrix-whatsapp.install
 url="https://github.com/tulir/${pkgname}"
 source=("${url}/archive/v${pkgver}.tar.gz" 
         mautrix-whatsapp.service)
-md5sums=('671ad744ec61e065ab5dabc6426eeebd')
+md5sums=('671ad744ec61e065ab5dabc6426eeebd'
+         '052bb6a4ca9945799051560a7c5ed5d2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -28,7 +29,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "example-config.yaml" "$pkgdir/usr/share/$pkgname/example-config.yaml"
-  install -Dm644 "mautrix-whatsapp.service" "$pkgdir/usr/share/$pkgname/mautrix-whatsapp.service"
+  install -Dm644 "$srcdir/mautrix-whatsapp.service" "$pkgdir/usr/share/$pkgname/mautrix-whatsapp.service"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
