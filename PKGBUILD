@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=genact
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A nonsense activity generator"
 url="https://github.com/svenstaro/genact"
@@ -9,7 +9,7 @@ license=("MIT")
 depends=('gcc-libs')
 makedepends=("rust")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/svenstaro/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('119d3ecc1cc00834b51c83f1b26bb87d4ebaf867410b9649b267f0bdb0297a2b153df2c708d7efeb23970d45c9e764095369055f9629da960053d642d6b18358')
+sha512sums=('75a270b6ca70d496057611d32097cf1c52b756d4bff80e5f93398f7ad4ecb4bf73864605a606efa9c146be4145a9f87028290046cb343445e52105908e5c795f')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
