@@ -3,7 +3,7 @@
 
 pkgname=ttf-hack-ligatured
 pkgver=v3.003+Nv2.1.0+FC3.1+JBMv2.001
-pkgrel=2
+pkgrel=3
 pkgdesc="Latest ligatures with Hack font built with fully automated CI/CD by gaplo917"
 arch=("any")
 url="https://github.com/gaplo917/Ligatured-Hack"
