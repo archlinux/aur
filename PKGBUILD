@@ -4,7 +4,7 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Jason Chu <jchu@xentac.net>
 
-pkgname=(openal-git)
+pkgname=(openal-minimal-git)
 pkgver=1.18.1.r84.g5ec11a01
 pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation"
@@ -32,7 +32,7 @@ build() {
   ninja
 }
 
-package_openal-git() {
+package_openal-minimal-git() {
   optdepends=('qt5-base: alsoft-config GUI Configurator'
               'fluidsynth: MIDI rendering')
   provides=("openal=$pkgver")
