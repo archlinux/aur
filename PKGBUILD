@@ -1,6 +1,6 @@
 # Maintainer: Rodolphe Bréard <packages@what.tf>
 pkgname=acmed
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="An ACME (RFC 8555) client daemon"
 arch=('x86_64')
@@ -11,8 +11,8 @@ makedepends=('rust' 'cargo')
 backup=('etc/acmed/acmed.toml')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/breard-r/$pkgname/archive/v$pkgver.tar.gz"
         "acmed.service")
-sha256sums=('1f03782dd7bfbe797228e7fd6fb1502b3753efd1db53968b73748ec423e6202f'
-            '5dbe0f15b41b26224f778750e24f8f5d2fe754ad7baf1e77c5f74f7f38cbe54d')
+sha256sums=('6e4fa46f139993035d98b9f87256269e6de989bc692066f0a15a504a647f0cea'
+            '41d96853da7de90f66ae89cba4ffa59360587ea79bdc39e0710935de9eee0afe')
 
 build() {
   cd "$pkgname-$pkgver"
