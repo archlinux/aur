@@ -1,0 +1,28 @@
+pkgbase = raleway-font-git
+	pkgdesc = An elegant sans-serif font family, originally in a single thin weight, now 9 weights
+	pkgver = 4.100.r2.g9af4c69
+	pkgrel = 1
+	url = https://www.theleagueofmoveabletype.com/raleway
+	arch = any
+	groups = lmt-fonts
+	license = OFL
+	makedepends = fontship
+	makedepends = git
+	source = raleway-font-git::git+https://github.com/theleagueof/raleway.git
+	sha256sums = SKIP
+
+pkgname = otf-raleway-git
+	provides = otf-raleway
+	provides = raleway-font
+	conflicts = otf-raleway
+
+pkgname = ttf-raleway-git
+	provides = ttf-raleway
+	provides = raleway-font
+	conflicts = ttf-raleway
+
+pkgname = ttf-raleway-variable-git
+	provides = ttf-raleway-variable
+	provides = raleway-font-variable
+	conflicts = ttf-raleway-variable
+
