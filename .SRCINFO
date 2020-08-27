@@ -1,20 +1,17 @@
 pkgbase = python-rarfile
-	pkgdesc = Rar archive reader for Python
-	pkgver = 3.1
+	pkgdesc = Python module for RAR archive reading
+	pkgver = 4.0
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/rarfile
+	url = https://github.com/markokr/rarfile
 	arch = any
-	license = custom:ISC
-	makedepends = python
-	makedepends = python-docutils
-	makedepends = python-sphinx
+	license = ISC
+	makedepends = python-setuptools
 	depends = python
-	optdepends = unrar: Decompressing compressed files
-	optdepends = libarchive: Alternative to "unrar"
-	optdepends = python-crypto: Parsing encrypted headers
-	provides = python-rarfile
-	source = https://pypi.io/packages/source/r/rarfile/rarfile-3.1.tar.gz
-	md5sums = d94cde501770c037b2054539d2977ff2
+	optdepends = unarchiver: alternative decompression backend
+	optdepends = libarchive: alternative decompression backend
+	optdepends = python-crypto: process archives with password-protected headers
+	source = https://pypi.org/packages/source/r/rarfile/rarfile-4.0.tar.gz
+	sha256sums = 67548769229c5bda0827c1663dce3f54644f9dbfba4ae86d4da2b2afd3e602a1
 
 pkgname = python-rarfile
 
