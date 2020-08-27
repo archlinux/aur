@@ -6,7 +6,7 @@ url='https://wiki.ros.org/camera_calibration_parsers'
 pkgname='ros-melodic-camera-calibration-parsers'
 pkgver='1.11.13'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=5
+pkgrel=6
 license=('BSD')
 
 ros_makedepends=(
@@ -46,7 +46,7 @@ sha256sums=('32a2e07724dec6eaaace21eae006274436d70d40bfe205249438570275c43cac'
 
 prepare() {
     cd "${srcdir}/${_dir}"
-    patch -uN CMakeLists.txt ../../../boost-fix.patch || return 1
+    patch -uN CMakeLists.txt ${srcdir}/boost-fix.patch || return 1
 }
 
 build() {
