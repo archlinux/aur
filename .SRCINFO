@@ -1,0 +1,22 @@
+pkgbase = prometheus-filestat-exporter
+	pkgdesc = Prometheus exporter gathering metrics about file size, modification time and other stats
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/michael-doubez/filestat_exporter
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache License 2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = https://github.com/michael-doubez/filestat_exporter/archive/v0.3.1.tar.gz
+	source = filestat_exporter.service
+	sha256sums = dfac613ac847f68bd108304c04aed291d9a4867765ea022671d092415eaa2451
+	sha256sums = 98fe9a057165078f200c7e389d6d11f128d1e2a2c2276dda5f240474ce5b4a15
+
+pkgname = prometheus-filestat-exporter
+

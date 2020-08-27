@@ -1,0 +1,12 @@
+[Unit]
+Description=File Stat Exporter for Prometheus
+
+[Service]
+User=root
+Type=simple
+ExecStart=/usr/bin/filestat_exporter --config.path /etc/filestat_exporter/filestat.yaml --web.listen-address=:9943
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
