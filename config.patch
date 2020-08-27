@@ -5,7 +5,7 @@
  #BACKEND = sdl
  #BACKEND = sdl2
 -#BACKEND = mixer_sdl
-+BACKEND = mixer_sdl
++BACKEND = mixer_sdl2
  #BACKEND = mixer_sdl2
  #BACKEND = posix
  

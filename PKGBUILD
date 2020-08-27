@@ -3,15 +3,16 @@
 # PKGBUILD adapted from Simutrans https://www.archlinux.org/packages/community/x86_64/simutrans/
 
 pkgname=simutrans-nightly
-pkgver=20200826
+pkgver=20200827
 pkgrel=1
 pkgdesc="Transportation simulation game - Nightly build"
-arch=('x86_64')
+arch=('any')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
-depends=('gcc-libs' 'zlib' 'sdl_mixer' 'bzip2' 'hicolor-icon-theme' 'freetype2' 'miniupnpc')
+install="$pkgname.install"
+depends=('gcc-libs' 'zlib' 'sdl2_mixer' 'bzip2' 'hicolor-icon-theme' 'freetype2' 'miniupnpc')
 makedepends=('dos2unix' 'git' 'pkgconf')
-optdepends=('timidity++: play MIDI music'
+optdepends=('fluidsynth: play MIDI music'
             'simutrans-pak32.comic: Lowest resolution graphics set for Simutrans'
             'simutrans-pak48.excentrique: Low resolution graphics set for Simutrans, with an eccentric theme'
             'simutrans-pak64: Low resolution graphics set for Simutrans'
@@ -43,10 +44,10 @@ sha256sums=('SKIP'
             'c0c2dd5da146f64901b00c6ee67e0818a166b983a81cee7897c4843aa9f21c81'
             '671398550f46525ef0dae338d9e1984bfc0e1ec36153e1c4163c8c35de240c7e'
             '0d37c0d25928fc4f8a6fc30e4dbf7b2b949f183e87e27f69494f38bbab5708f0'
-            'da30fa691324fa1705c93be9b82e025f76ded9249e8c82acd4fa4fb537edd23c'
+            'ec089577494bf0555cbf9190dd366587baaa1e3fbd4f3d6401f8898b84d8be57'
             '99545152f5e739b7eb028152383fa10d3e3d303c99167e1c6e5a6bd7dcd00fa3'
-            'f933d5608052b73e03e21d4ade0909e471c643ee5493023921fa5bc963a06ab3')
-
+            'f933d5608052b73e03e21d4ade0909e471c643ee5493023921fa5bc963a06ab3')      
+            
 prepare() {
   # Some files are distributed in DOS format
   find . -type f -exec dos2unix -q '{}' \;
@@ -81,4 +82,5 @@ package() {
 
   #license
   install -Dm644 simutrans/simutrans/license.txt "$pkgdir/usr/share/licenses/simutrans/license.txt"
+  
 }
