@@ -12,7 +12,7 @@ depends=('gtkmm3' 'libpkcs11-dnie')
 source=("https://www.dnielectronico.es/descargas/Apps/DNIeRemoteSetup_${pkgver}-${pkgrel}_amd64.deb"
         "https://www.dnielectronico.es/PDFs/DNIeRemote_user_manual.pdf")
 noextract=("DNIeRemoteSetup_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=('e9540741fdc1def06bcf82a463f1241c66eb0e44e00815d6ec3c913617827d10'
+sha256sums=('dbae5a50b943e52ff03186e0b99abac387004e6c2f62c8dce0fd2569c00eb28c'
             'c236326ba5bb2354e2a62b1be38e673f8a0a392423de354e8663c9069145022d')
 
 # Misconfigured server
