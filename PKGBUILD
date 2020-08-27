@@ -1,6 +1,6 @@
 # Maintainer: leogx9r
 pkgname=gtk-theme-windows10-dark-git
-pkgver=b8e55e4
+pkgver=r117.b8e55e4
 pkgrel=1
 pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines. Keeps upstream with master branch."
 arch=('any')
@@ -13,7 +13,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "${themename}"
-	git rev-parse --short HEAD
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
