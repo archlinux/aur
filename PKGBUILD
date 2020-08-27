@@ -24,7 +24,7 @@ pkgver() {
 }
 
 build() {
-  cd build
+  cd openal-soft
   cmake ../openal-soft -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
@@ -38,6 +38,6 @@ package_openal-minimal-git() {
   provides=("openal=$pkgver")
   conflicts=("openal")
 
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C openal-soft install
   install -Dt "$pkgdir/usr/share/doc/openal" -m644 openal-soft/docs/*
 }
