@@ -2,10 +2,11 @@
 
 pkgname=kubeaudit
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="kubeaudit is a command line tool and a Go package to audit Kubernetes clusters for various different security concerns."
 makedepends=('go')
 arch=('x86_64')
+conflicts=('kubeaudit-bin')
 url="https://github.com/Shopify/kubeaudit"
 license=('MIT')
 source=("https://github.com/Shopify/kubeaudit/archive/v${pkgver}.tar.gz")
