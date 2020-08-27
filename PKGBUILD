@@ -5,7 +5,7 @@
 
 pkgname=libtcod-git
 _pkgname="${pkgname%-git}"
-pkgver=1.12.2.r0.gde3b645
+pkgver=1.16.0.alpha.12.r0.g1c8be39
 pkgrel=1
 pkgdesc="Roguelike graphics/utility library. Development version."
 arch=('i686' 'x86_64')
@@ -24,14 +24,14 @@ pkgver() {
 }
 
 build() {
-   cd "$srcdir/$_pkgname/build/autotools"
+   cd "$srcdir/$_pkgname/buildsys/autotools"
    autoreconf -i
    ./configure --prefix=/usr
    make
 }
 
 package() {
-   cd "$srcdir/${_pkgname}/build/autotools"
+   cd "$srcdir/${_pkgname}/buildsys/autotools"
    make DESTDIR="$pkgdir" install
    
    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
