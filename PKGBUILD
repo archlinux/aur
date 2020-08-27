@@ -2,7 +2,7 @@
 
 pkgname=dsremote-git
 _pkgname=DSRemote
-pkgver=r231.6b28e72
+pkgver=r257.9fb5ac3
 pkgrel=1
 pkgdesc="Operate your Rigol oscilloscope from your Linux desktop."
 arch=('any')
