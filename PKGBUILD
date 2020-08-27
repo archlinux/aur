@@ -8,7 +8,7 @@
 # Contributor: William Penton <william@penton.us>
 
 pkgname=gitkraken-standalone
-pkgrel=1
+pkgrel=2
 pkgver=7.3.0
 pkgdesc="Stand-alone version of GitKraken for labs and computers without internet access (requires license file)."
 url="https://support.gitkraken.com/standalone/standalone/"
