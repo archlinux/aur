@@ -1,5 +1,5 @@
 pkgbase = raleway-font
-	pkgdesc = An elegant sans-serif font family, originally designed in a single thin weight
+	pkgdesc = An elegant sans-serif font family, originally in a single thin weight, now 9 weights
 	pkgver = 4.100
 	pkgrel = 1
 	url = https://www.theleagueofmoveabletype.com/raleway
@@ -8,12 +8,6 @@ pkgbase = raleway-font
 	license = OFL
 	source = https://github.com/theleagueof/raleway/releases/download/4.100/Raleway-4.100.tar.xz
 	sha256sums = c233fbe5d9577b449ff745b8baa95b006ea1fdada1280d5aa6ba08aa2c13f37a
-
-pkgname = otf-raleway
-	provides = raleway-font
-
-pkgname = ttf-raleway
-	provides = raleway-font
 
 pkgname = ttf-raleway-variable
 	provides = raleway-font-variable

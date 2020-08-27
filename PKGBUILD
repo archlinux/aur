@@ -5,10 +5,10 @@
 _name=raleway
 _fname=Raleway
 pkgbase=$_name-font
-pkgname=(otf-$_name ttf-$_name ttf-$_name-variable)
+pkgname=(ttf-$_name-variable) # otf-$_name ttf-$_name
 pkgver=4.100
 pkgrel=1
-pkgdesc='An elegant sans-serif font family, originally designed in a single thin weight'
+pkgdesc='An elegant sans-serif font family, originally in a single thin weight, now 9 weights'
 arch=('any')
 url="https://www.theleagueofmoveabletype.com/$_name"
 license=('OFL')
