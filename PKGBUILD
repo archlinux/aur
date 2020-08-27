@@ -33,8 +33,19 @@ depends=(
 )
 
 _dir="orocos_kinematics_dynamics-${pkgver}/python_orocos_kdl"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/orocos/orocos_kinematics_dynamics/archive/v${pkgver}.tar.gz")
-sha256sums=('05b93e759923684dc07433ccae1e476d158d89b3c2be5079c20062406da7b4dd')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/orocos/orocos_kinematics_dynamics/archive/v${pkgver}.tar.gz"
+sip.patch
+sip2.patch)
+sha256sums=('05b93e759923684dc07433ccae1e476d158d89b3c2be5079c20062406da7b4dd'
+            '8c95f5794d6ff18fdf32a836443a2cbfd8bd8255bd3ec792b333d53280213049'
+            '0887640880a9fdc3f6a879fd9dce92b64e0b84a712daab28b2758ba7638930a7')
+
+prepare() {
+  cd "${srcdir}/${_dir}"
+  patch --forward --strip=0 --input="${srcdir}/sip.patch"
+  patch --forward --strip=0 --input="${srcdir}/sip2.patch"
+
+}
 
 build() {
 	# Use ROS environment variables.

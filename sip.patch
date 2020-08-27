@@ -1,0 +1,10 @@
+--- PyKDL/dynamics.sip.1	2020-08-27 21:11:55.074548650 +0200
++++ PyKDL/dynamics.sip	2020-08-27 21:11:22.887641819 +0200
+@@ -72,4 +72,7 @@
+     int JntToCoriolis(const JntArray &q, const JntArray &q_dot, JntArray &coriolis);
+ 	int JntToMass(const JntArray &q, JntSpaceInertiaMatrix& H);
+ 	int JntToGravity(const JntArray &q,JntArray &gravity);
++
++private:
++    ChainDynParam& operator=(const ChainDynParam&);
+ };
