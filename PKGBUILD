@@ -2,7 +2,7 @@
 
 pkgname=sqlitebiter
 pkgver=0.34.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert CSV, Excel, HTML, JSON, Jupyter Notebook, LDJSON, LTSV, Markdown, SSV, TSV, Google-Sheets to SQLite database file'
 arch=('any')
 url='https://github.com/thombashi/sqlitebiter'
@@ -12,6 +12,7 @@ depends=('jupyter-nbformat'
         'python-appconfigpy'
         'python-click'
         'python-dataproperty'
+        'python-envinfopy'
         'python-loguru'
         'python-msgfy'
         'python-path'
@@ -22,24 +23,12 @@ depends=('jupyter-nbformat'
         'python-tcolorpy'
         'python-typepy')
 makedepends=('python-setuptools')
-checkdepends=('jupyter-nbformat'
-              'python-pytest'
-              'python-pytest-discord'
-              'python-pytest-md-report'
-              'python-responses'
-              'python-sqliteschema'
-              'python-xlsxwriter')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('e368036cfdda09970c15bdc0bc220b9e5206182ebd41539a1da85fad69513ab7')
 
 build() {
   cd "${pkgname}-${pkgver}"
   python setup.py build
-}
-
-check() {
-  cd "${pkgname}-${pkgver}"
-  pytest
 }
 
 package() {
