@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=siggo
-pkgver=0.5.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='A terminal gui for signal-cli, written in Go.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('libmatthew-unix-java' 'signal-cli')
 makedepends=('go')
 source=("https://github.com/derricw/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('eba16004968285852c76ad21638d779cdafd1d1960daaa17171b66f57e292e2e1fbeb4264640ac66589dde9b5ce12010d1f73cb2b81ef76a91e7a0274e1da71d')
+b2sums=('cf65a298433768b72e01eb1ede666265d33bf14fd5e3f291cf79c2409999de36d8ee69a198b7fce7f497da80aaefd5ecff4f13ee1fe09d0e7b6c19cc910a1574')
 
 build() {
   cd ${pkgname}-${pkgver}
