@@ -2,7 +2,7 @@
 
 pkgname=ansible-runner
 pkgver=1.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool and python library that helps when interfacing with Ansible directly"
 arch=("any")
 url="https://github.com/ansible/ansible-runner"
@@ -22,7 +22,10 @@ build() {
 }
 
 package() {
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
     cd ${pkgname}-${pkgver}
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    rm -rf "${pkgdir}${site_packages}/test"
     install -Dm644 LICENSE.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }

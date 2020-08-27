@@ -1,7 +1,7 @@
 pkgbase = ansible-runner
 	pkgdesc = A tool and python library that helps when interfacing with Ansible directly
 	pkgver = 1.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ansible/ansible-runner
 	arch = any
 	license = Apache
