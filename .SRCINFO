@@ -1,0 +1,21 @@
+pkgbase = haskell-wstunnel-bin
+	pkgdesc = Tunneling over websocket protocol
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/erebe/wstunnel
+	arch = x86_64
+	license = BSD
+	provides = haskell-wstunnel
+	conflicts = haskell-wstunnel
+	conflicts = nodejs-wstunnel
+	source = haskell-wstunnel-bin-3.0.zip::https://github.com/erebe/wstunnel/releases/download/v3.0/wstunnel-x64-linux.zip
+	source = haskell-wstunnel-bin-3.0-LICENSE::https://github.com/erebe/wstunnel/raw/v3.0/LICENSE
+	source = haskell-wstunnel-bin-3.0-README.md::https://github.com/erebe/wstunnel/raw/v3.0/README.md
+	source = haskell-wstunnel-bin-3.0-logo.png::https://github.com/erebe/wstunnel/raw/v3.0/logo_wstunnel.png
+	sha256sums = 040b3d6d98b8d3ff0df2ba05b6b89e8a6820be981ffe4a3b39af563225f66098
+	sha256sums = eaea4f8a2ebca92e3ca13f77d01364b110723c70ed6370ce1ecdb4f84261d411
+	sha256sums = c408ac4b73b05052357f6a598b961f9fb73ddc29df296febdf06842ceaaa6422
+	sha256sums = e193de98502986dfb54639058b1409e92282f78b54d04b0d2735d4b4c9be2b77
+
+pkgname = haskell-wstunnel-bin
+
