@@ -1,6 +1,6 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=5.8.3
+_kernver=5.8.4
 _archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
@@ -42,9 +42,9 @@ source=("${_kernsrc}"
         "${_headerssrc}"
         "${_docssrc}")
 
-sha256sums=('7efb422f08d606c1b538c6c7500875e01e289c1ec89271a499bb55a3c22e991b'
-            '49fab550ca49348f0969edd2b7de5ccd7e7e022e4bd25e09ead802d1cc14a111'
-            '701916c91b9a91ca0f20783f55e2a426fedebc33e22d44947dcb53d8e9b10d56')
+sha256sums=('7a656e04fa2ef858b0e8c8c328c2ae0b056887ab87a62bcfed0bf0a512b8db9e'
+            '01e51a9be30b883c5a9e116dc5231c15e06d777cea8df154697fe49efef00f16'
+            'a16feb82bfcc0a95062bee2535f36dc051d4ec0c5b384de74d8098894c38fec9')
 
 package_linux-versioned-bin() {
     pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -62,18 +62,20 @@ package_linux-versioned-docs-bin() {
     depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.8.3.arch1-1-bin() {
+package_linux5.8.4.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils kmod initramfs)
   conflicts=("${_pkgname}")
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=(virtualbox-guest-modules-arch wireguard-arch)
   tar -xf "${_kernpkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.8.3.arch1-1-headers-bin() {
+package_linux5.8.4.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -81,7 +83,7 @@ package_linux5.8.3.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.8.3.arch1-1-docs-bin() {
+package_linux5.8.4.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
