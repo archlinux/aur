@@ -1,12 +1,12 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
-pkgname='naconnect'
+pkgname=naconnect
 pkgdesc='ncurses-based ALSA MIDI sequencer connection manager'
-pkgver='85'
-pkgrel='1'
-url='http://nedko.arnaudov.name/soft/naconnect/'
-arch=('x86_64')
-license=('GPL2')
-depends=('alsa-lib' 'ncurses')
+pkgver=85
+pkgrel=2
+url=http://web.archive.org/web/20160402080632/http://nedko.arnaudov.name/soft/naconnect/
+arch=(x86_64)
+license=(GPL2)
+depends=(alsa-lib ncurses)
 source=("${url}/${pkgname}-r${pkgver}.tar.bz2"
         'http://www.mcs.anl.gov/~kazutomo/list/list.h')
 sha512sums=('90bb5e4861668d4accbf51f8c06690d29498f8cc206cd82e008def185807d1ea53f84ff5370bd88ae2162976c198b27f30abecf036bbdc3286ecc694fbbe6c3a'
