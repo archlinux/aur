@@ -2,14 +2,14 @@
 # Contributor: Martin Wagner <martin.wagner.dev@gmail.com>
 
 pkgname=mpdevil-git
-pkgver=v0.8.4.r28.g54e612a
+pkgver=v0.8.5.r18.g7f83de0
 pkgrel=1
 pkgdesc="A small MPD client written in python (git version)"
 arch=('any')
 license=('GPL3')
 url="https://github.com/SoongNoonien/mpdevil"
-depends=('python-mpd2' 'gtk3' 'libnotify' 'python-gobject' 'python-requests' 'python-beautifulsoup4' 'python-dbus')
-makedepends=('git' 'intltool')
+depends=('python-mpd2' 'gtk3' 'libnotify' 'python-gobject' 'python-requests' 'python-beautifulsoup4' 'python-dbus' 'python-setuptools')
+makedepends=('git' 'python-distutils-extra')
 provides=('mpdevil')
 conflicts=('mpdevil')
 source=('git+https://github.com/SoongNoonien/mpdevil.git')
@@ -21,19 +21,14 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "${srcdir}/${_gitname}"
-  NOCONFIGURE=1 ./autogen.sh
-}
-
 build() {
   cd "${srcdir}/${_gitname}"
-  ./configure --prefix=/usr 
-  make
+  python setup.py build
 }
 
 package() {
   cd "${srcdir}/${_gitname}"
-  make DESTDIR="${pkgdir}" install
+  python setup.py install --prefix=$pkgdir/usr
+  rm "${pkgdir}/usr/share/glib-2.0/schemas/gschemas.compiled"  # let pacman compile schemas
 }
 
