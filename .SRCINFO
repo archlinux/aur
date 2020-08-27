@@ -1,13 +1,19 @@
-pkgbase = cloud-init-extra
+pkgbase = clout-init-extra
 	pkgdesc = Extra configs and templates for cloud-init
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/GIJack/cloud-init-extra
 	arch = any
 	license = GPL
 	depends = cloud-init
-	source = cloud-init-extra-1.0.tar.gz::https://github.com/GIJack/cloud-init-extra/archive/v1.0.tar.gz
-	sha256sums = 4cf1ac772773466c3418605ebf357e7a3d8660286af0721d69331b4c4efdd41d
+	source = cloud-init-extra-1.1.tar.gz::https://github.com/GIJack/cloud-init-extra/archive/v1.1.tar.gz
+	sha256sums = 2f6040e4e8e0e16a5097375ae4beaa816d48f7422f4bb12eadd125952bbff189
 
 pkgname = cloud-init-extra
+
+pkgname = cloud-init-runonce
+	pkgdesc = Dummy Package that runs an initialization script for cloud-init
+	install = runonce.install
+	depends = cloud-init
+	depends = cloud-init-extra
 

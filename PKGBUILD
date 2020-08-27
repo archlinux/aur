@@ -1,7 +1,7 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
-
-pkgname=cloud-init-extra
-pkgver=1.0
+pkgbase=clout-init-extra
+pkgname=('cloud-init-extra' 'cloud-init-runonce')
+pkgver=1.1
 pkgrel=1
 pkgdesc="Extra configs and templates for cloud-init"
 arch=('any')
@@ -9,11 +9,15 @@ url="https://github.com/GIJack/cloud-init-extra"
 license=('GPL')
 depends=('cloud-init')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/GIJack/cloud-init-extra/archive/v${pkgver}.tar.gz")
-sha256sums=('4cf1ac772773466c3418605ebf357e7a3d8660286af0721d69331b4c4efdd41d')
+sha256sums=('2f6040e4e8e0e16a5097375ae4beaa816d48f7422f4bb12eadd125952bbff189')
 
-package() {
+package_cloud-init-extra() {
   cd "${pkgname}-${pkgver}"
-  #make DESTDIR="$pkgdir/" install
-  install -Dm644 config/00_datasources.cfg "${pkgdir}/etc/cloud/cloud.cfg.d/00_datasources.cfg"
-  install -Dm644 template/hosts.arch.tmpl "${pkgdir}/etc/cloud/templates/hosts.arch.tmpl"
+  make DESTDIR="$pkgdir/" PREFIX="/usr" install
+}
+
+package_cloud-init-runonce() {
+  pkgdesc="Dummy Package that runs an initialization script for cloud-init"
+  depends+=("cloud-init-extra")
+  install=runonce.install
 }
