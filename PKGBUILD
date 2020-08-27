@@ -2,7 +2,7 @@
 
 pkgname=rustscan
 _pkgname=RustScan
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Faster Nmap Scanning with Rust"
 arch=("x86_64" "i686")
