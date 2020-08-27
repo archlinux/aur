@@ -14,7 +14,7 @@ pkgbase = nvidia-settings-gtk2
 	makedepends = libvdpau
 	makedepends = nvidia-utils
 	makedepends = libxext
-	makedepends = libxnvctl
+	makedepends = libxnvctrl
 	options = staticlibs
 	source = nvidia-settings-450.66.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/450.66.tar.gz
 	source = libxnvctrl_so.patch
@@ -27,7 +27,7 @@ pkgname = nvidia-settings-gtk2
 
 pkgname = libxnvctrl-gtk2
 	pkgdesc = NVIDIA NV-CONTROL X extension
-	provides = libxnvctl
+	provides = libxnvctrl
 	provides = libXNVCtrl.so
-	conflicts = libxnvctl
+	conflicts = libxnvctrl
 

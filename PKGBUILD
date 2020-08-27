@@ -9,7 +9,7 @@ pkgdesc='Tool for configuring the NVIDIA graphics driver'
 url='https://github.com/NVIDIA/nvidia-settings'
 arch=('x86_64')
 license=('GPL2')
-makedepends=('git' 'inetutils' 'gtk2' 'jansson' 'gtk3' 'libxv' 'libvdpau' 'nvidia-utils' 'libxext' 'libxnvctl')
+makedepends=('git' 'inetutils' 'gtk2' 'jansson' 'gtk3' 'libxv' 'libvdpau' 'nvidia-utils' 'libxext' 'libxnvctrl')
 options=('staticlibs')
 source=(nvidia-settings-${pkgver}.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/${pkgver}.tar.gz
         libxnvctrl_so.patch)
@@ -45,8 +45,8 @@ package_nvidia-settings-gtk2() {
 
 package_libxnvctrl-gtk2() {
   pkgdesc='NVIDIA NV-CONTROL X extension'
-  provides=('libxnvctl' 'libXNVCtrl.so')
-  conflicts=('libxnvctl')
+  provides=('libxnvctrl' 'libXNVCtrl.so')
+  conflicts=('libxnvctrl')
 
   cd nvidia-settings-${pkgver}
   install -Dm 644 doc/{NV-CONTROL-API.txt,FRAMELOCK.txt} -t "${pkgdir}/usr/share/doc/${pkgname}"
