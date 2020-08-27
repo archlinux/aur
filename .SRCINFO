@@ -1,15 +1,13 @@
 pkgbase = ndd-git
 	pkgdesc = A simple command-line number representation converter
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/Sonotsugipaa/ndd
 	arch = any
-	license = custom:MIT
-	makedepends = git
+	license = MIT
 	makedepends = gcc
 	makedepends = cmake
-	makedepends = sudo
-	source = https://github.com/Sonotsugipaa/ndd/archive/v1.2.tar.gz#beb7de4
-	md5sums = 542c99eceb3ef67a1b2f32ccfb9363a0
+	source = git+https://github.com/Sonotsugipaa/ndd.git
+	md5sums = SKIP
 
 pkgname = ndd-git

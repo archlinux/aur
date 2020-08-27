@@ -1,46 +1,28 @@
-# MIT License
-#
-# Copyright (c) 2020 Parola Marco
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 # Maintainer: Parola Marco <mark.prl.97@gmail.com>
 pkgname=ndd-git
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A simple command-line number representation converter"
 arch=('any')
 url="https://github.com/Sonotsugipaa/ndd"
-license=('custom:MIT')
-makedepends=('git' 'gcc' 'cmake' 'sudo')
-source=('https://github.com/Sonotsugipaa/ndd/archive/v1.2.tar.gz#beb7de4')
-md5sums=('542c99eceb3ef67a1b2f32ccfb9363a0')
+license=('MIT')
+makedepends=('gcc' 'cmake')
+source=('git+https://github.com/Sonotsugipaa/ndd.git')
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	printf "%s" "$(git describe | sed 's/^v//' | sed 's/-/_/g')"
+}
 
 build() {
-        echo "CD IN '$srcdir/${pkgname%-git}'" 1>&2
-        cd "$srcdir/${pkgname%-git}-$pkgver"
-        ./build.sh -r release
+	cd "$srcdir/${pkgname%-git}"
+	./build.sh -r release
 }
 
 package() {
-        cd "$srcdir/${pkgname%-git}-$pkgver"
-        mkdir "$pkgdir"/usr
-        mkdir "$pkgdir"/usr/bin
-        ln release/build/bin/ndd "$pkgdir"/usr/bin/ndd
+	cd "$srcdir/${pkgname%-git}"
+	mkdir "$pkgdir"/usr
+	mkdir "$pkgdir"/usr/bin
+	ln release/build/bin/ndd "$pkgdir"/usr/bin/ndd
 }
