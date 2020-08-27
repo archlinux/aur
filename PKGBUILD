@@ -21,14 +21,13 @@ source=(git+https://github.com/silnrsi/graphite)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd build
+  cd graphite
   git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  mkdir build
-  cd build
-  cmake -G "Unix Makefiles" ../graphite2-${pkgver} \
+  cd graphite
+  cmake -G "Unix Makefiles" ../graphite \
 	-DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE:STRING=Release \
@@ -47,7 +46,7 @@ build() {
 #}
 
 package() {
-  cd "${srcdir}"/build
+  cd graphite
   make DESTDIR="$pkgdir/" install
   # install doc files
   mkdir -p "${pkgdir}"/usr/share/doc/graphite2/api
@@ -55,6 +54,6 @@ package() {
   cp -vrf doc/{GTF,manual}.html "${pkgdir}"/usr/share/doc/graphite2
 
   # licenses
-  mkdir -p "${pkgdir}"/usr/share/licenses/${pkgname}
-  install -m644 "${srcdir}"/graphite2-${pkgver}/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/
+  mkdir -p "${pkgdir}"/usr/share/licenses/graphite
+  install -m644 "${srcdir}"/graphite/COPYING "${pkgdir}"/usr/share/licenses/graphite/
 }
