@@ -8,10 +8,13 @@ pkgbase = orocos-kdl-python
 	license = GPL
 	makedepends = cmake
 	makedepends = python2-sip
+	makedepends = sip
 	depends = orocos-kdl
 	depends = python-sip
 	source = https://github.com/orocos/orocos_kinematics_dynamics/archive/v1.4.0.tar.gz
+	source = declare-assignment-operator-private-for-SIP.patch
 	sha512sums = 7156465e2aff02f472933617512069355836a03a02d4587cfe03c1b1d667a9762a4e3ed6e055b2a44f1fce1b6746179203c7204389626a7b458dcab1b28930d8
+	sha512sums = 61a2abc5bce5e59dc3b9d6c3b4e10575053a730d08de5984da66bebcfdb4b0a7c5b5f3330974f7c44455012ba306768b8ea20b9f2e3e8a3ba0295339ce696feb
 
 pkgname = orocos-kdl-python
 
