@@ -1,7 +1,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=ddnet-skins
-pkgver=20200408
+pkgver=20200825
 pkgrel=1
 pkgdesc="DDraceNetwork skin database"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://ddnet.tw"
 license=('GPL')
 makedepends=('unzip')
 source=("$pkgname-$pkgver.zip::https://ddnet.tw/skins/zip/database.zip")
-sha256sums=('55388dda0be880eaf89006ffc866c75ab92f1befcfe3600a139b9f1cdaae92a8')
+sha256sums=('3dbdd66ddb51fe7e4b1e4a3eef804f9e3492741ea874182e23327cd0d13b85a3')
 
 prepare() {
   rm -rf $pkgname-$pkgver
