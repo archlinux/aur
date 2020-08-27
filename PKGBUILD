@@ -1,7 +1,7 @@
 # Maintainer: Nico <desoxhd@gmail.com>
 pkgname=lyrebird
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Simple and powerful voice changer for Linux, written in GTK 3."
 arch=('any')
 url="https://github.com/chxrlt/lyrebird"
@@ -11,7 +11,7 @@ conflicts=('lyrebird')
 provides=('lyrebird')
 
 source=("$url/archive/v${pkgver}.tar.gz" "lyrebird.desktop" "config.toml")
-sha256sums=('cf869cfd6b1237ad58ff8bd55fdf9f2032ba6d7159801395bec4a007245fd4ab' '912d5fbd57a0a1ea2a0f17bd41f9ddf687722c9c9ab88f51d3f33d3894417ca7' 'efe34e18fec84afca1bc64eaad4984125a35dfd55d1e8b604ede9186c6fda7e3')
+sha256sums=('6f3df1bfa90cbfd6f260997f9fdcc95b5b4812a3606f11c8bf57cdd6f3d50dd1' '912d5fbd57a0a1ea2a0f17bd41f9ddf687722c9c9ab88f51d3f33d3894417ca7' 'efe34e18fec84afca1bc64eaad4984125a35dfd55d1e8b604ede9186c6fda7e3')
 
 package() {
     BIN_PATH="$pkgdir/usr/lib/python3.8/site-packages/$pkgname"
