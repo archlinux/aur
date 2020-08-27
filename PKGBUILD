@@ -2,7 +2,7 @@
 
 pkgname=python-dash
 _pkgname=dash
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="A python framework for building analytical web applications"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-dash-renderer' 'python-dash-core-components' 'python-d
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('70943518849167177e0532faf36f04ad2a57573eef9ef30428db5fc195fb6e8a')
+sha256sums=('9fd85d652d67638f7aa480c52a7b761bd3967b4d63d075ac8680d07e775e6b9d')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
