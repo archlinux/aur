@@ -1,0 +1,30 @@
+pkgbase = tcconfig-git
+	pkgdesc = A simple tc command wrapper
+	pkgver = v0.26.0.r10.gb5b24ab
+	pkgrel = 1
+	url = https://github.com/thombashi/tcconfig
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = iproute2
+	depends = python-pygments
+	depends = python-dataproperty
+	depends = python-docker
+	depends = python-humanreadable
+	depends = python-loguru
+	depends = python-msgfy
+	depends = python-path
+	depends = python-pyparsing
+	depends = python-pyroute2
+	depends = python-simplesqlite
+	depends = python-subprocrunner
+	depends = python-typepy
+	depends = python-voluptuous
+	optdepends = docker: Docker container queue discipline support
+	provides = tcconfig
+	conflicts = tcconfig
+	source = tcconfig::git+https://github.com/thombashi/tcconfig.git
+	sha512sums = SKIP
+
+pkgname = tcconfig-git
+
