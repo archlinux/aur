@@ -3,12 +3,13 @@
 # Previous maintainer: Bjoern Franke <bjo at nord-west.org>
 pkgname=stapler
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A small utility making use of the pypdf library to provide a (somewhat) lighter alternative to pdftk"
 arch=('any')
 url="https://github.com/hellerbarde/stapler"
 license=('BSD')
 depends=('python' 'python-pypdf2' 'python-more-itertools')
+makedepends=('python-pip')
 conflicts=('stapler-git')
 
 source=("https://github.com/hellerbarde/stapler/archive/$pkgver.tar.gz")
@@ -20,7 +21,7 @@ package() {
       --no-warn-script-location \
       --root="$pkgdir" --isolated \
       --compile -I .
-  rm "$pkgdir/usr/bin/pdf-stapler" # Same as stapler.
+  rm -f "$pkgdir/usr/bin/pdf-stapler" # Same as stapler.
 
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/stapler/LICENSE
   install -Dm644 README.rst $pkgdir/usr/share/doc/stapler/README
