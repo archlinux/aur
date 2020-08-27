@@ -1,7 +1,7 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fontship-git
-pkgver=0.3.3.r1.g7fb84cb
+pkgver=0.4.0.r0.gd52fe11
 pkgrel=1
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=('any')
@@ -27,6 +27,7 @@ depends=('diffutils'
          'python-ufo2ft'
          'python-ufonormalizer'
          'python-unicodedata2' # fonttools optdepends
+         'python-vttlib'
          'python-zopfli' # fonttools optdepends
          'sfdnormalize'
          'sfnt2woff-zopfli'
