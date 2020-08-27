@@ -4,7 +4,7 @@
 pkgname=discord_arch_electron
 _pkgname=discord
 pkgver=0.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord')
@@ -39,7 +39,7 @@ package() {
 
   # Create starter script for discord
   echo "#!/bin/sh" >> "$pkgdir"/opt/$_pkgname/$_pkgname
-  echo "electron /opt/$_pkgname/resources/app.asar $@" >> "$pkgdir"/opt/$_pkgname/$_pkgname
+  echo "electron /opt/$_pkgname/resources/app.asar \$@" >> "$pkgdir"/opt/$_pkgname/$_pkgname
 
   # Set Permissions, symlinks
   chmod 755 "$pkgdir"/opt/$_pkgname/$_pkgname
