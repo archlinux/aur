@@ -7,7 +7,7 @@ pkgdesc='IDE for VHDL editing and browsing'
 arch=('x86_64')
 url='http://www.sigasi.com/'
 license=('custom')
-source=('http://download.sigasi.com/updates/4.8.0/com.sigasi.hdt.product-linux.gtk.x86_64.zip'
+source=("${pkgname}-${pkgver}-x86_64.zip::http://download.sigasi.com/updates/${pkgver}/com.sigasi.hdt.product-linux.gtk.x86_64.zip"
         'sigasi.desktop')
 depends=('glib2')
 makedepends=('unzip')
