@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.7
-_minor=15
-_clr=977
+_minor=17
+_clr=979
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,11 +16,11 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33610
+_clear_version=33650
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=f86d43295f10b4cfe498dc223712845922e0aaab9ed1749bdc3f5bc1a8d44e83
+_config_hash=6786bef855b697c248e6e246fad83753853d82575a0c05d822393ea19aa21a4c
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -118,3 +118,6 @@ b2sums=('876dd91c88cc26af8a023b5ff6b97001e5f033c717ed13813eb70c5d726674ae531a30a
 b2sums=('e986bf571191108ff9711b4114deb03755f2fe0a8f6f8ad0bedb61baab31be721838d64c398377701fe5e1f4960c7a50b93c28440c378d80496b3f41d9e0a15d'
         '51526a44db53815d026f8fc24092c64fdbba678131ec8a8aeedf1c74599279b9040e701ed603d2d4efcb421989876aa9f75a395e2a5df83dff848360d7ef03f6'
         'bd8b24f921990edf657f12db7bc42eed0db36b57db85841b95da27cfc7facdf3d7ed290ea9a323c46df5caf4662dc694344800bde99c503c7fa96df692adfc7b')
+b2sums=('8e494f15d33ab821ab0424295e410d01facad44b31d8f566847f73b189cea142e9804c90a3e654444cff2a3003898fa838d37f371b76f1a2bf626bab471cd017'
+        'b098d60c80f5423b1123c9072067d58dd7abfde94dc65d64b8b86b466bde73ec08433924a3af65bcfb2ae3a07906f618de4c3a41225700bd737282ccb014e089'
+        '00c8ae687e92b5da2818f9fe3795aa1ce5a4f55de47ea821d8d9a8df521662e0b47004b6062bd4a4e97014ac45324656cb049258b1fb1c0dc1d10d40305f6aae')
