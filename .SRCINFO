@@ -1,15 +1,12 @@
 pkgbase = otf-allerta
-	pkgdesc = Allerta is an open source typeface designed for use in signage
+	pkgdesc = Open-source signage typeface
 	pkgver = 1.001
-	pkgrel = 1
-	url = http://pixelspread.com/allerta/
-	install = updatefont.install
+	pkgrel = 2
+	url = https://pixelspread.com/allerta/
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
+	license = OFL
 	conflicts = ttf-allerta
-	source = http://pixelspread.com/allerta/allerta.zip
+	source = https://pixelspread.com/allerta/allerta.zip
 	md5sums = 944ee51768a80bdbe822c2c2f0b8d6a1
 
 pkgname = otf-allerta
