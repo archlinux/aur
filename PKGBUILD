@@ -2,7 +2,7 @@
 # Contributor: Emil Renner Berthing <aur@esmil.dk>
 
 pkgname=riscv-openocd-git
-pkgver=1
+pkgver=v20180629.r1233.gc116dc50b
 pkgrel=1
 pkgdesc='Fork of OpenOCD that has RISC-V support'
 arch=('x86_64')
@@ -29,7 +29,7 @@ build() {
   ./bootstrap
   ./configure \
     --prefix=/usr \
-    --program-prefix=riscv64-linux-gnu \
+    --program-prefix=riscv64-linux-gnu- \
     --disable-werror \
     --with-gnu-ld
 
