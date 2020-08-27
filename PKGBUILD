@@ -3,13 +3,13 @@
 # Contributor: fxbru <frxbru[at]gmail>
 
 pkgname=sqlmap-git
-pkgver=1.0.12.7616.bb6e8fd4
+pkgver=1.4.8.r17.gdf5fabbbb
 pkgrel=1
 pkgdesc='Automatic SQL injection and database takeover tool'
 url='http://sqlmap.org'
 arch=('any')
 license=('GPL2')
-depends=('python2' 'sh')
+depends=('python' 'sh')
 makedepends=('git')
 provides=('sqlmap')
 conflicts=('sqlmap')
@@ -19,14 +19,13 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s.%s" "$(git describe --tags --abbrev=0|sed 's/^v//'|sed 's/\-/_/')" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd ${pkgname}
-  python2 -m compileall .
-  python2 -O -m compileall .
+  python -m compileall .
+  python -O -m compileall .
 }
 
 package() {
@@ -45,12 +44,12 @@ package() {
   cat > "${pkgdir}/usr/bin/sqlmap" << EOF
 #!/bin/sh
 cd /opt/${pkgname}
-python2 sqlmap.py "\$@"
+python sqlmap.py "\$@"
 EOF
   cat > "${pkgdir}/usr/bin/sqlmapapi" << EOF
 #!/bin/sh
 cd /opt/${pkgname}
-python2 sqlmapapi.py "\$@"
+python sqlmapapi.py "\$@"
 EOF
 
   chmod 755 "${pkgdir}/usr/bin/sqlmap"

@@ -1,12 +1,12 @@
 pkgbase = sqlmap-git
 	pkgdesc = Automatic SQL injection and database takeover tool
-	pkgver = 1.0.12.7616.bb6e8fd4
+	pkgver = 1.4.8.r17.gdf5fabbbb
 	pkgrel = 1
 	url = http://sqlmap.org
 	arch = any
 	license = GPL2
 	makedepends = git
-	depends = python2
+	depends = python
 	depends = sh
 	provides = sqlmap
 	conflicts = sqlmap
