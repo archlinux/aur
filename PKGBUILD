@@ -2,8 +2,8 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_sexp_conv'
 pkgname="ocaml-$_projectname"
-pkgver='0.14.0'
-pkgrel='2'
+pkgver='0.14.1'
+pkgrel='1'
 epoch='1'
 pkgdesc='Generation of S-expression conversion functions from type definitions'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
 	'ppxlib_longident.diff'
 )
-sha256sums=('4ec3e7999affd70689cdb6681e600cefa78032af2235733e6c012ac0b93e1dd6'
+sha256sums=('ce69e7e278866f57219db2360a1d12c811047716a2ad4e72da886ac4853d5e13'
             '57022c76bf54fe3ded5d2a5318b293a4f18d02923644b64158b2f2b5cea55ff6')
 
 _sourcedirectory="$_projectname-$pkgver"
