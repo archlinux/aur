@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=glibc-git
-pkgver=2.32.r35.gcd71f47acc
+pkgver=2.32.r69.g567b170501
 pkgrel=1
 pkgdesc='GNU C Library'
 arch=('i686' 'x86_64')
@@ -117,7 +117,7 @@ package() {
     rm -f "$pkgdir"/usr/bin/{tzselect,zdump,zic}
 
     # Provided by libxcrypt; keep the old shared library for backwards compatibility
-    rm -f "$pkgdir"/usr/include/crypt.h "$pkgdir"/usr/lib/libcrypt.a
+    rm -f "$pkgdir"/usr/include/crypt.h "$pkgdir"/usr/lib/libcrypt.{a,so}
 
     # handle selectively stripping unless debug packages are requested
     if check_option 'debug' n; then
