@@ -2,21 +2,19 @@
 
 pkgname=apbs
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for biomolecular electrostatics and solvation calculations"
 arch=(x86_64)
 url="http://www.poissonboltzmann.org/"
 license=(custom)
-depends=(python boost eigen termcap swig)
+depends=(python termcap swig)
 makedepends=('cmake>=3.12' make git wget)
 provides=(apbs)
 conflicts=(apbs-bin)
 source=("https://github.com/Electrostatics/apbs/releases/download/v3.0.0/APBS-3.0.0_Source-Code.tar.gz"
-        "globals_apbs.patch"
-        "globals_bem.patch")
+        "globals_apbs.patch")
 sha256sums=('3cf8b227a205cdcbd13246489427606f256f2356343fc954734fd39975e5cbdb'
-            '6bc1f2dc7a454aa8b0799641f78ee571ba04795821a9bcac356cbe496bdb3df6'
-            '3d8cc3d052a60a36d79ab95b8c89c03d79bdcca9958c2936513d92c23acb097b')
+            '6bc1f2dc7a454aa8b0799641f78ee571ba04795821a9bcac356cbe496bdb3df6')
 options=(!makeflags !buildflags)
 
 prepare() {
@@ -54,10 +52,7 @@ prepare() {
     # TABI-PB (BEM)
     git clone https://github.com/Electrostatics/TABIPB.git bem
     cd bem
-    git checkout de187a41720887d667edcfb6c23bb61fbbe06b5b
-
-    # patch BEM building issues
-    patch -Np0 -i "${srcdir}/globals_bem.patch"
+    git checkout 322a8d66180285250cd2f01e6b60584efcba9b65
     cd ..
 }
 
