@@ -1,8 +1,9 @@
 # -*- mode: pkgbuild; -*-
 # Maintainer: Christopher Snowhill <chris@kode54.net>
 # Contributor: Denis Zheleztsov <difrex.punk@gmail.com>
-pkgname=wlr-randr
-pkgver=r16.988a802
+pkgname=wlr-randr-git
+_pkgname=${pkgname/-git}
+pkgver=0.1.0.r0.g988a802
 pkgrel=1
 pkgdesc="Utility to manage outputs of a Wayland compositor. You need a support wlr-output-management-unstable-v1 in the compositor."
 arch=('x86_64')
@@ -17,23 +18,23 @@ source=("git+https://github.com/emersion/wlr-randr.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$_pkgname"
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$pkgname"
+  cd "$_pkgname"
   meson --prefix /usr "$srcdir/build"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
 
   ninja -C "$srcdir/build"
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$_pkgname"
 
   DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
 }

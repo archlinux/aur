@@ -1,6 +1,6 @@
-pkgbase = wlr-randr
+pkgbase = wlr-randr-git
 	pkgdesc = Utility to manage outputs of a Wayland compositor. You need a support wlr-output-management-unstable-v1 in the compositor.
-	pkgver = r16.988a802
+	pkgver = 0.1.0.r0.g988a802
 	pkgrel = 1
 	url = https://github.com/emersion/wlr-randr
 	arch = x86_64
@@ -14,5 +14,5 @@ pkgbase = wlr-randr
 	source = git+https://github.com/emersion/wlr-randr.git
 	md5sums = SKIP
 
-pkgname = wlr-randr
+pkgname = wlr-randr-git
 
