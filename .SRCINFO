@@ -13,6 +13,7 @@ pkgbase = lib32-openal-minimal-git
 	makedepends = gcc-multilib
 	depends = lib32-glibc
 	depends = openal
+	provides = lib32-openal=1.18.1.r84.g5ec11a01
 	provides = lib32-openal
 	conflicts = lib32-openal
 	conflicts = lib32-openal-git

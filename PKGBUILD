@@ -14,7 +14,7 @@ license=(LGPL)
 depends=(lib32-glibc openal)
 makedepends=(lib32-alsa-lib lib32-libpulse
              git cmake ninja gcc-multilib)
-provides=(lib32-openal)
+provides=("lib32-openal=$pkgver" lib32-openal)
 conflicts=(lib32-openal lib32-openal-git)
 source=("git+https://github.com/kcat/openal-soft")
 md5sums=('SKIP')
