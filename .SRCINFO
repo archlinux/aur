@@ -1,6 +1,6 @@
 pkgbase = giph-git
-	pkgdesc = gif recorder that records the desktop, a window or a selection
-	pkgver = 1.0.r0.gd7eccda
+	pkgdesc = video recorder that records the desktop, a window or a selection
+	pkgver = 1.1.r0.gb0ddda6
 	pkgrel = 1
 	url = https://github.com/phisch/giph
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = giph-git
 	depends = xdotool
 	optdepends = slop: for interactive selection
 	optdepends = libnotify: for error and success notifications
+	optdepends = procps-ng: for pgrep used in the --stop flag
 	provides = giph
 	conflicts = giph
 	source = giph-git::git://github.com/phisch/giph.git
