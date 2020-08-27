@@ -2,8 +2,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=goya
-pkgver=0.0.9a.r2dba18e6b3
+pkgver=0.0.9a.r.2dba18e6b3
 pkgrel=1
+_commit=2dba18e
 pkgdesc='Pixel art editor'
 arch=('any')
 url='https://github.com/jackschaedler/goya'
@@ -15,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  printf %s.r%s $(grep .version src/cljs/$pkgname/appstate.cljs | cut -d\" -f2|cut -c2-) $(git rev-parse HEAD | cut -b-10)
+  printf %s.r.%s $(grep .version src/cljs/$pkgname/appstate.cljs | cut -d\" -f2|cut -c2-) $(git rev-parse HEAD | cut -b-10)
 }
 
 prepare() {
