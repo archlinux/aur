@@ -1,7 +1,7 @@
 pkgbase = bugwarrior
 	pkgdesc = pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbucket, etc.)
 	pkgver = 1.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bugwarrior.readthedocs.io
 	arch = any
 	license = GPL3
@@ -24,6 +24,8 @@ pkgbase = bugwarrior
 	optdepends = python-offtrac: Trac support
 	optdepends = python-google-api-python-client: gmail support
 	optdepends = python-oauth2client<4.0.0: gmail support
+	optdepends = pyhton-phabricator: phabricator support
+	optdepends = python-bugzilla: bugzilla support
 	conflicts = bugwarrior-git
 	source = bugwarrior-1.7.0.tar.gz::https://github.com/ralphbean/bugwarrior/archive/1.7.0.tar.gz
 	sha256sums = 2d7cee5043e35aa1a63d13eeccd14264759ae4358fdd60178bb96eda51b6b487
