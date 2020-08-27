@@ -26,7 +26,6 @@ sha512sums=(
 package() {
     install -Dm644 UPDATE.mem "$pkgdir/usr/lib/firmware/renesas_usb_fw.mem"
     install -Dm644 License.rtf "$pkgdir/usr/share/licenses/$pkgname/LICENSE.rtf"
-
     install -Dm755 upd72020x-fw "$pkgdir/usr/share/libalpm/scripts/upd72020x-fw"
     install -Dm644 upd72020x-fw-remove.hook "$pkgdir/usr/share/libalpm/hooks/upd72020x-fw-remove.hook"
     install -Dm644 upd72020x-fw-install.hook "$pkgdir/usr/share/libalpm/hooks/upd72020x-fw-install.hook"
