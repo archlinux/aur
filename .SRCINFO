@@ -1,7 +1,7 @@
 pkgbase = libfprint-vfs_proprietary-git
 	pkgdesc = libfprint with support for the Validity/VFS proprietary driver
 	pkgver = 0.99.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rindeal/libfprint-vfs_proprietary-driver
 	arch = x86_64
 	license = LGPL
