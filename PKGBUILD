@@ -39,7 +39,7 @@ package() {
 
   # Create starter script for discord
   echo "#!/bin/sh" >> "$pkgdir"/opt/$_pkgname/$_pkgname
-  echo "electron /opt/$_pkgname/resources/app.asar" >> "$pkgdir"/opt/$_pkgname/$_pkgname
+  echo "electron /opt/$_pkgname/resources/app.asar $@" >> "$pkgdir"/opt/$_pkgname/$_pkgname
 
   # Set Permissions, symlinks
   chmod 755 "$pkgdir"/opt/$_pkgname/$_pkgname
