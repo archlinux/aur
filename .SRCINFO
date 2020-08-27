@@ -1,6 +1,6 @@
 pkgbase = esp8266-nonos-sdk
 	pkgdesc = ESP8266 nonOS SDK
-	pkgver = 3.0
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/espressif/ESP8266_NONOS_SDK
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = esp8266-nonos-sdk
 	depends = python2
 	optdepends = xtensa-lx106-elf-gcc-bin: Toolchain for the ESP8266
 	options = !strip
-	source = https://github.com/espressif/ESP8266_NONOS_SDK/archive/v3.0.tar.gz
-	sha256sums = b2c99cb95afc17474123dfc2f79d835543294c4fdf1aa3829d67f73d81fb2bc2
+	source = https://github.com/espressif/ESP8266_NONOS_SDK/archive/v3.0.4.tar.gz
+	sha256sums = 3bfb8ea34724c91b80481882c080ed04225cfeff7b8c92b7b21120496297ae1b
 
 pkgname = esp8266-nonos-sdk
 
