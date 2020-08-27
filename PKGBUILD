@@ -1,5 +1,5 @@
-# Maintainer: PSposito <http://bit.do/linuxer> 
-# 			      <https://gitlab.com/psposito>
+# Maintainer: linuxer <https://linuxer.gr> 
+# 			      <https://gitlab.com/linuxer.gr>
 # Maintainer: Justin Vreeland <vreeland.justin@gmail.com>
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 # Contributor: Charles Pigott <charlespigott@googlemail.com>
