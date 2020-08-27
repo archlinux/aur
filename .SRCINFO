@@ -1,7 +1,7 @@
 pkgbase = notion-enhancer
 	pkgdesc = An enhancer / customiser for the Notion productivity software
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dragonwocky/notion-enhancer
 	arch = any
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: Nek.12 <vaizin.nikita@gmail.com>
 pkgname='notion-enhancer'
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhancer / customiser for the Notion productivity software"
 arch=('any')
 url="https://github.com/dragonwocky/notion-enhancer"
@@ -21,7 +21,9 @@ source=("https://registry.npmjs.org/notion-enhancer/-/$pkgname-$pkgver.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
 md5sums=('SKIP')
 package() {
-    npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+    npm install -g --user root --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
+
+    #fix file permissions
     find "${pkgdir}/usr" -type d -exec chmod 755 {} +
     chown -R root:root "${pkgdir}"
 
