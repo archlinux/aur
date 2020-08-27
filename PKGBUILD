@@ -2,7 +2,7 @@
 # Contributor: Tudhalyas <tudhalyas_AT_gmail_DOT_com>
 
 pkgname=amulegui-upnp
-pkgver=11025
+pkgver=11055
 pkgrel=1
 pkgdesc="Remote GUI for the aMule Daemon, an eMule-like client for the ed2k p2p network"
 arch=('i686' 'x86_64')
@@ -13,12 +13,13 @@ makedepends=('crypto++')
 conflicts=('amule' 'amule-svn' 'amule-noupnp-svn' 'amule-noupnp')
 provides=("amulegui=${pkgver}")
 source=(http://amule.sourceforge.net/tarballs/aMule-SVN-r${pkgver}.tar.bz2)
-md5sums=('c16f708e3d6171f670766888ee682d3c')
+md5sums=('8ae6755065cf8e12988c5448a059c3d1')
 
 build() {
   cd ${srcdir}/aMule-SVN-r${pkgver}
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
+              --with-wx-config=/usr/bin/wx-config-gtk3 \
               --enable-optimize \
               --enable-amule-gui \
               --disable-cas \
