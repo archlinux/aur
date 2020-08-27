@@ -2,7 +2,7 @@
 # Contributor: Kelsey Maes <kelseymaes at outlook dot com>
 
 pkgname=python-msrestazure
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="The runtime library \"msrestazure\" for AutoRest generated Python clients."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-adal' 'python-keyring' 'python-msrest')
 makedepends=('python-setuptools')
 source=("https://github.com/Azure/msrestazure-for-python/archive/v${pkgver}.tar.gz")
-sha256sums=('c429caaf44494063ae006f0de497c0c23eea75880e532a2a087ac2a61e096cbc')
+sha256sums=('7e9ca8fccf8fc24286f8aaef90e69534c92989d3f2eaebc83fd59523f30d7a4a')
 
 build() {
   cd "msrestazure-for-python-${pkgver}"
