@@ -1,44 +1,60 @@
 # Maintainer :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 # Contributor : Phil Schaf <flying-sheep(at)web.de>
 
+#####################################################################################################
+ ## NOTE: Removing python2 as mandatory makedep; if you want to have a precomiled Python 2 debugger ##
+  ##      packaged, make sure that `python2-setuptools` is installed _before_ building this package. ##
+   #####################################################################################################
 
 pkgname=pycharm-community-eap
 
-_buildver=202.6948.52
+_buildver=202.6948.78
 _pkgver=2020.2.1
-_eap=y
+_eap=n
 pkgver="$_pkgver.$_buildver"
 pkgrel=1
 epoch=7
 
-pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build. Community edition.'
+pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build, Community Edition'
 arch=('any')
-url=http://www.jetbrains.com/pycharm/
+url=http://www.jetbrains.com/pycharm
 license=('Apache')
 
 provides=('pycharm-community-edition')
 conflicts=('pycharm-community-edition')
 
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools')  # 'python2-setuptools'
 depends=('libdbusmenu-glib')
 
 options=('!strip')
 
-if [ "$_eap" = y ]; then
-    _filever="$_buildver"
-else
-    _filever="$_pkgver"
-fi
+_filever="$([ $_eap = y ] && echo -n $_buildver || echo -n $_pkgver)"
 source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz")
-# The website doesn't provide the checksum atm, so we hard code it in the PKGBUILD for the time being
 sha256sums=($(curl -s "https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz.sha256" | cut -d' ' -f1))
 
 
 prepare() {
 	if [ -d "pycharm-community-$_pkgver" ]; then
-		mv "pycharm-community-$_pkgver" "pycharm-community-$_buildver"
+		mv pycharm-community-{"$_pkgver","$_buildver"}
 	fi
-	cat >"$pkgname.desktop" <<-EOF
+}
+
+build() {
+	cd "pycharm-community-$_buildver/plugins/python-ce/helpers/pydev/"
+
+	# using absolute paths to the python executables so that users with an activated virtual env
+	# (like e.g. anaconda) can build without issues
+	/usr/bin/python3 ./setup_cython.py build_ext --inplace
+	if pacman -Qq python2-setuptools &>/dev/null; then
+		/usr/bin/python2 ./setup_cython.py build_ext --inplace
+	fi
+}
+
+package() {
+	install -dm755 "$pkgdir"/{opt,usr/{bin,share/pixmaps}}
+	cp -R "pycharm-community-$_buildver" "$pkgdir/opt/$pkgname"
+
+	install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<-EOF
 		[Desktop Entry]
 		Version="$pkgver"
 		Type=Application
@@ -51,22 +67,6 @@ prepare() {
 		StartupNotify=true
 		StartupWMClass=jetbrains-pycharm-ce
 	EOF
-}
-
-build() {
-	cd "pycharm-community-$_buildver/plugins/python-ce/helpers/pydev/"
-
-	# use absolute paths to the python executables so that users with an activated
-	# virtual environment (like e.g. anaconda) can build without issues
-	/usr/bin/python2 ./setup_cython.py build_ext --inplace
-	/usr/bin/python3 ./setup_cython.py build_ext --inplace
-}
-
-package() {
-	install -dm755 "$pkgdir"/{opt,usr/{bin,share/pixmaps}}
-	cp -R "pycharm-community-$_buildver" "$pkgdir/opt/$pkgname"
-
-	install -Dm755 "$pkgname.desktop" -t"$pkgdir/usr/share/applications/"
 	ln -s "/opt/$pkgname/bin/pycharm.sh" "$pkgdir/usr/bin/pycharm-ce"
 	ln -s "/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/pixmaps/"
 
