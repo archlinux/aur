@@ -1,0 +1,26 @@
+pkgbase = trigger-rally-svn
+	pkgdesc = A fast-paced free software rally racing game
+	pkgver = 0.6.7r982
+	pkgrel = 1
+	url = https://trigger-rally.sourceforge.io/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = gcc
+	makedepends = subversion
+	depends = opengl-driver
+	depends = glu
+	depends = glew
+	depends = openal
+	depends = freealut
+	depends = physfs
+	depends = sdl2
+	depends = sdl2_image
+	depends = tinyxml2
+	conflicts = trigger-rally
+	source = trigger-rally-svn::svn+https://svn.code.sf.net/p/trigger-rally/code
+	md5sums = SKIP
+
+pkgname = trigger-rally-svn
+
