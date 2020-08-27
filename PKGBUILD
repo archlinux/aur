@@ -1,15 +1,16 @@
-# Maintainer: Philipp Schaffrath <aur at philipp dot schaffrath dot email>
+# Maintainer: Philipp Schaffrath <philipp dot schaffrath at gmail dot com>
 
 pkgname=giph-git
-pkgver=1.0.r0.gd7eccda
+pkgver=1.1.r0.gb0ddda6
 pkgrel=1
-pkgdesc='gif recorder that records the desktop, a window or a selection'
+pkgdesc='video recorder that records the desktop, a window or a selection'
 url='https://github.com/phisch/giph'
 license=('MIT')
 arch=('any')
 depends=('bash' 'ffmpeg' 'xdotool')
 optdepends=('slop: for interactive selection'
-            'libnotify: for error and success notifications')
+            'libnotify: for error and success notifications'
+            'procps-ng: for pgrep used in the --stop flag')
 makedepends=('git')
 provides=('giph')
 conflicts=('giph')
