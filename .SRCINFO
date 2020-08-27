@@ -1,0 +1,12 @@
+pkgbase = sweet-theme-ambar-blue
+	pkgdesc = Light and dark colorful Gtk3.20+ theme
+	pkgver = 1.10.5
+	pkgrel = 1
+	url = https://github.com/EliverLara/Sweet
+	arch = any
+	license = GPL3
+	source = https://github.com/EliverLara/Sweet/releases/download/v1.10.5/Sweet-Ambar-Blue.zip
+	md5sums = d22354d4d3ea84e53b1fb8a6b5147f3c
+
+pkgname = sweet-theme-ambar-blue
+
