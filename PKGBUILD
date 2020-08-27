@@ -4,7 +4,7 @@
 pkgname=discord_arch_electron
 _pkgname=discord
 pkgver=0.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord')
