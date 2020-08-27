@@ -11,7 +11,7 @@
 # Building: Nikita Tarasov <nikatar@disroot.org>
 
 pkgname=thunderbird-appmenu-bin
-pkgver=68.10.0
+pkgver=68.11.0
 _pkgrel=1
 pkgrel=${_pkgrel}
 pkgdesc="Thunderbird-appmenu, binary version"
@@ -24,14 +24,14 @@ optdepends=('libcanberra: sound support')
 provides=("thunderbird=$pkgver")
 conflicts=("thunderbird")
 options=(!emptydirs !makeflags)
-source=(https://github.com/nikatar/AUR/raw/master/thunderbird-appmenu-bin/thunderbird-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz{,.sig})
-noextract=(thunderbird-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz)
+source=(https://github.com/nikatar/AUR/raw/master/thunderbird-appmenu-bin/thunderbird-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst{,.sig})
+noextract=(thunderbird-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst)
 validpgpkeys=(85F86E317555BECC1C2184BF2C45BA09ABC5D7DA)
 sha256sums=(
-	'9142ed336b7f5d2cb6ec5d731911a9fceb3819cca20af62be527226b57e6d0c1'
+	'1aa64acff22e874f5c28a5d41d75f356778d1ab22d22974a0121a226d0f8f08e'
 	'SKIP'
 )
 
 package() {
-	tar -xf $srcdir/thunderbird-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz -C $pkgdir --exclude=".*"
+	tar -xf $srcdir/thunderbird-appmenu-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst -C $pkgdir --exclude=".*"
 }
