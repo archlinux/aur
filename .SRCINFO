@@ -1,0 +1,21 @@
+pkgbase = python-pycocotools-openmm-git
+	pkgdesc = Official APIs for the MS-COCO dataset (openmm lab fork)
+	pkgver = 12.0.0.r215.9fa16b4
+	pkgrel = 1
+	url = https://github.com/open-mmlab/cocoapi
+	arch = x86_64
+	license = BSD
+	makedepends = cython
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-matplotlib
+	depends = python-numpy
+	provides = python-pycocotools
+	provides = python-pycocotools-openmm
+	conflicts = python-pycocotools
+	conflicts = python-pycocotools-openmm
+	source = pycocotools::git+https://github.com/open-mmlab/cocoapi.git
+	sha512sums = SKIP
+
+pkgname = python-pycocotools-openmm-git
+
