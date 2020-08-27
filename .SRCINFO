@@ -5,6 +5,7 @@ pkgbase = upd72020x-fw
 	url = https://github.com/denisandroid/uPD72020x-Firmware
 	arch = any
 	license = custom
+	depends = bash
 	source = https://raw.githubusercontent.com/denisandroid/uPD72020x-Firmware/master/UPDATE.mem
 	source = https://raw.githubusercontent.com/denisandroid/uPD72020x-Firmware/master/License.rtf
 	source = upd72020x-fw

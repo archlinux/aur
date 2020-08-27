@@ -7,6 +7,7 @@ pkgdesc="Renesas uPD720201 / uPD720202 USB 3.0 chipsets firmware"
 arch=('any')
 url="https://github.com/denisandroid/uPD72020x-Firmware"
 license=('custom')
+depends=('bash')
 source=(
     "https://raw.githubusercontent.com/denisandroid/uPD72020x-Firmware/master/UPDATE.mem"
     "https://raw.githubusercontent.com/denisandroid/uPD72020x-Firmware/master/License.rtf"
