@@ -23,4 +23,5 @@ pkgname = openal-minimal-git
 	provides = openal=1.18.1.r84.g5ec11a01
 	provides = openal
 	conflicts = openal
+	conflicts = openal-git
 
