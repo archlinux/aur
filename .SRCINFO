@@ -5,7 +5,6 @@ pkgbase = lbrynet-bin
 	url = https://lbry.tech/
 	arch = x86_64
 	license = MIT
-	makedepends = unzip
 	provides = lbrynet
 	conflicts = lbry-app-bin>=0.47.1
 	source = https://github.com/lbryio/lbry-sdk/releases/download/v0.81.0/lbrynet-linux.zip

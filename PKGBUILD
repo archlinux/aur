@@ -9,7 +9,6 @@ url='https://lbry.tech/'
 license=('MIT')
 conflicts=('lbry-app-bin>=0.47.1')
 provides=('lbrynet')
-makedepends=('unzip')
 source=("https://github.com/lbryio/lbry-sdk/releases/download/v$pkgver/lbrynet-linux.zip"
         'lbrynet-LICENSE::https://raw.githubusercontent.com/lbryio/lbry-sdk/master/LICENSE')
 
