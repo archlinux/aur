@@ -1,0 +1,13 @@
+pkgbase = ttf-gaegu
+	pkgdesc = Gaegu is a Korean and Latin font that features various facial expressions and fairytale-like images using freeform pen writing
+	pkgver = 1
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Gaegu
+	arch = any
+	license = OFL
+	depends = fontconfig
+	source = https://fonts.google.com/download?family=Gaegu
+	md5sums = b429c9f61fb935a71246705d31ed0ab8
+
+pkgname = ttf-gaegu
+
