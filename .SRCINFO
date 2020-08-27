@@ -1,10 +1,10 @@
 pkgbase = sublist3r
-	pkgdesc = A python tool designed to enumerate subdoamins of websites using OSINT.
+	pkgdesc = A python tool designed to enumerate subdomains of websites using OSINT.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aboul3la/Sublist3r
 	arch = any
-	license = GPL
+	license = GPL2
 	makedepends = git
 	depends = python-requests
 	depends = python-argparse
