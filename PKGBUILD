@@ -3,7 +3,7 @@
 
 pkgname=bugwarrior
 pkgver=1.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="pull issues from issue trackers into taskwarrior (GitHub, GitLab, Bitbucket, etc.)"
 arch=(any)
 conflicts=(bugwarrior-git)
@@ -22,7 +22,7 @@ optdepends=('python-keyring: keyring support'
             'python-offtrac: Trac support'
             'python-google-api-python-client: gmail support'
             'python-oauth2client<4.0.0: gmail support'
-            'pyhton-phabricator: phabricator support'
+            'python-phabricator: phabricator support'
             'python-bugzilla: bugzilla support')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ralphbean/bugwarrior/archive/$pkgver.tar.gz")
