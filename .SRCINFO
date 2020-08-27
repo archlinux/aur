@@ -5,7 +5,6 @@ pkgbase = ttf-hack-ligatured
 	url = https://github.com/gaplo917/Ligatured-Hack
 	arch = any
 	license = GPL3
-	provides = ttf-hack
 	replaces = ttf-ligatured-hack
 	source = https://github.com/gaplo917/Ligatured-Hack/releases/download/v3.003+Nv2.1.0+FC3.1+JBMv2.001/HackLigatured-v3.003+Nv2.1.0+FC3.1+JBMv2.001.zip
 	source = v3.003+Nv2.1.0+FC3.1+JBMv2.001-LICENSE::https://raw.githubusercontent.com/gaplo917/Ligatured-Hack/master/LICENSE

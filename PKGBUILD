@@ -8,7 +8,6 @@ pkgdesc="Latest ligatures with Hack font built with fully automated CI/CD by gap
 arch=("any")
 url="https://github.com/gaplo917/Ligatured-Hack"
 license=("GPL3")
-provides=("ttf-hack")
 replaces=("ttf-ligatured-hack")
 source=("https://github.com/gaplo917/Ligatured-Hack/releases/download/${pkgver}/HackLigatured-${pkgver}.zip"
         "${pkgver}-LICENSE::https://raw.githubusercontent.com/gaplo917/Ligatured-Hack/master/LICENSE")
