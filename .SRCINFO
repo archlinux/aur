@@ -1,0 +1,28 @@
+pkgbase = python-lvis-openmm-git
+	pkgdesc = Python API for LVIS Dataset (openmm lab fork)
+	pkgver = 10.5.2.r215.9fa16b4
+	pkgrel = 1
+	url = https://github.com/open-mmlab/cocoapi
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = opencv
+	depends = python-cycler
+	depends = python-dateutil
+	depends = python-kiwisolver
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pyparsing
+	depends = python-pycocotools-openmm
+	depends = python-six
+	provides = python-lvis
+	provides = python-lvis-openmm
+	conflicts = python-lvis
+	conflicts = python-lvis-openmm
+	source = lvis::git+https://github.com/open-mmlab/cocoapi.git
+	sha512sums = SKIP
+
+pkgname = python-lvis-openmm-git
+
