@@ -4,7 +4,6 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Jason Chu <jchu@xentac.net>
 
-pkgbase=openal-git
 pkgname=(openal-git)
 pkgver=1.18.1.r84.g5ec11a01
 pkgrel=1
