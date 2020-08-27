@@ -2,7 +2,7 @@
 pkgname=piavpn-bin
 pkgver=2.3.1_05354
 _pkgver=2.3.1-05354
-pkgrel=4
+pkgrel=5
 pkgdesc="Private Internet Access client"
 arch=(x86_64)
 url="https://privateinternetaccess.com/"
@@ -18,7 +18,7 @@ options=(!strip)
 sha256sums=('f04fc91ac37c0097eafd773036b2e4a27d9ad2bb88f3a18a8d720bd8bfdff22b')
 
 prepare() {
-	sh pia-linux-${_pkgver}.run --noexec --target "${srcdir}/$pkgname-${_pkgver}"
+	/bin/sh pia-linux-${_pkgver}.run --noexec --target "${srcdir}/$pkgname-${_pkgver}"
 }
 
 package() {
@@ -28,6 +28,9 @@ package() {
 	cp installfiles/*.sh $pkgdir/opt/piavpn/bin
 	chmod +x $pkgdir/opt/piavpn/bin/*.sh
 	setcap 'cap_net_bind_service=+ep' $pkgdir/opt/piavpn/bin/pia-unbound
+	# we don't need these scripts
+	rm $pkgdir/opt/piavpn/bin/install-wireguard.sh
+	rm $pkgdir/opt/piavpn/bin/pia-uninstall.sh
 
 	mkdir $pkgdir/opt/piavpn/var
 
