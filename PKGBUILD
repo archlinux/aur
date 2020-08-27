@@ -31,14 +31,15 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DUSE_SYSTEM_TAGLIB=1 \
-    -DWITH_TESTS=1
   make
+
+#    -DWITH_TESTS=1
 }
 
-check() {
-  cd "$srcdir/${pkgname}/build"
-  make test
-}
+#check() {
+#  cd "$srcdir/${pkgname}/build"
+#  make test
+#}
  
 package() {
   cd "$srcdir/${pkgname}/build"
