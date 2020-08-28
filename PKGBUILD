@@ -2,7 +2,7 @@
 # Contributor: Martin Wagner <martin.wagner.dev@gmail.com>
 
 pkgname=mpdevil-git
-pkgver=v0.8.5.r18.g7f83de0
+pkgver=v0.8.5.r19.gadd6234
 pkgrel=1
 pkgdesc="A small MPD client written in python (git version)"
 arch=('any')
@@ -29,6 +29,5 @@ build() {
 package() {
   cd "${srcdir}/${_gitname}"
   python setup.py install --prefix=$pkgdir/usr
-  rm "${pkgdir}/usr/share/glib-2.0/schemas/gschemas.compiled"  # let pacman compile schemas
 }
 

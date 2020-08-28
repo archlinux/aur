@@ -1,6 +1,6 @@
 pkgbase = mpdevil-git
 	pkgdesc = A small MPD client written in python (git version)
-	pkgver = v0.8.5.r18.g7f83de0
+	pkgver = v0.8.5.r19.gadd6234
 	pkgrel = 1
 	url = https://github.com/SoongNoonien/mpdevil
 	arch = any
