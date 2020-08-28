@@ -30,7 +30,7 @@ sha256sums=('ad3e8e2201772de5e689ba1eee2d845bea1c7f3cdf08de6d282583fbe699856c'
 
 prepare() {
   cd ${srcdir}/${_dir}
-  patch -uN demos/PlannerData.cpp ../../boost-fix.patch || return 1
+  patch -uN demos/PlannerData.cpp ${srcdir}/boost-fix.patch || return 1
 }
 
 build() {
