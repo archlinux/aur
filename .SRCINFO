@@ -1,0 +1,15 @@
+pkgbase = preserve-git
+	pkgdesc = Efficiency oriented media player/jellyfin frontend
+	pkgver = 0.2.0.r9.g43f09e2
+	pkgrel = 1
+	url = https://gitlab.com/tonyfinn/preserve
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = jq
+	makedepends = npm
+	source = git+https://gitlab.com/tonyfinn/preserve.git
+	sha256sums = SKIP
+
+pkgname = preserve-git
+
