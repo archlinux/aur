@@ -1,7 +1,7 @@
 pkgbase = craftos-pc-accelerated-ccemux
 	pkgdesc = CCEmuX plugin wrapper for CraftOS-PC, providing the ccemux API for compatibility with CCEmuX-enhanced programs.
 	pkgver = 2.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.craftos-pc.cc/
 	arch = x86_64
 	arch = i386
