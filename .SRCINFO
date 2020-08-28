@@ -1,6 +1,6 @@
 pkgbase = dv-runtime
 	pkgdesc = C++ event-based processing framework for neuromorphic cameras, targeting embedded and desktop systems.
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://gitlab.com/inivation/dv/dv-runtime/
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = dv-runtime
 	depends = libx11
 	depends = lz4
 	depends = zstd
-	source = https://gitlab.com/inivation/dv/dv-runtime/-/archive/1.2.4/dv-runtime-1.2.4.tar.gz
-	sha256sums = e13b0bb4b0ba6251f1e7d25869713b03c00f3917fb448bdd3617b55c32e3ac14
+	source = https://gitlab.com/inivation/dv/dv-runtime/-/archive/1.2.5/dv-runtime-1.2.5.tar.gz
+	sha256sums = 26f3716f0331123f0572a6073ec11f98b6e5a10241050d3ac2220fcc00b38656
 
 pkgname = dv-runtime
 
