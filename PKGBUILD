@@ -8,7 +8,7 @@ pkgdesc="Perforce Visual Client"
 arch=('x86_64')
 url="http://www.perforce.com"
 license=('custom:p4v')
-depends=(libxcb)
+depends=('libxcb' 'qt5-base')
 options=('!strip')
 
 _url="${url}/downloads/perforce"
@@ -32,7 +32,7 @@ sha256sums=('1fc7ea925fdcb38915f191b6a9c85fb46db9ef501dbaa077e8f38876c5e8fda0'
 
 pkgver() {
   # grab the build version from the downloaded file itself
-  echo "${_version}.$(find ${srcdir} -type d -name ${pkgname}-${pkgver:0:7}'*' | awk -F'.' '{print $(NF)}')"
+  echo "${_version}.$(find ${srcdir} -type d -name ${pkgname}-${pkgver:0:7}'*' | head -n1 | awk -F'.' '{print $(NF)}')"
 }
 
 package() {
