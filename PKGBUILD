@@ -11,7 +11,7 @@ _scriptsdir=scripts
 
 pkgname=$_pkgname
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Self Hosted Git Service written in Go'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -26,7 +26,6 @@ optdepends=('sqlite: SQLite support'
             'openssh: GIT over SSH support')
 makedepends=('go>=1.3')
 conflicts=("$_pkgname-bin" "$_pkgname-git" "$_pkgname-dev-git")
-options=('!strip')
 backup=("etc/$_pkgname/app.ini")
 source=("$_pkgname-$pkgver::https://github.com/$_orga/$_pkgname/archive/v${pkgver}.tar.gz"
         '0001-Adjust-config-for-Arch-Linux-package.patch'
@@ -69,6 +68,12 @@ prepare() {
 build() {
   export GOROOT="$srcdir/build/go"
   export GOPATH="$srcdir/build"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+
   cd "$GOPATH/src/${_gourl}"
 
   go fix

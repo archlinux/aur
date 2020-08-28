@@ -1,7 +1,7 @@
 pkgbase = gogs
 	pkgdesc = Self Hosted Git Service written in Go
 	pkgver = 0.12.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://gogs.io
 	arch = i686
@@ -22,7 +22,6 @@ pkgbase = gogs
 	conflicts = gogs-bin
 	conflicts = gogs-git
 	conflicts = gogs-dev-git
-	options = !strip
 	backup = etc/gogs/app.ini
 	source = gogs-0.12.1::https://github.com/gogs/gogs/archive/v0.12.1.tar.gz
 	source = 0001-Adjust-config-for-Arch-Linux-package.patch
