@@ -1,0 +1,14 @@
+pkgbase = mautrix-telegram-runit
+	pkgdesc = runit service scripts for mautrix-telegram
+	pkgver = 20200829
+	pkgrel = 1
+	url = https://artixlinux.org
+	arch = any
+	license = BSD
+	depends = mautrix-telegram-git
+	conflicts = systemd-sysvcompat
+	source = mautrix-telegram.run
+	sha256sums = a24e9447b92d19f5213a981db183264cb1a083ec357de74346bf5612249a1997
+
+pkgname = mautrix-telegram-runit
+

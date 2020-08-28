@@ -1,0 +1,12 @@
+#!/bin/sh
+
+cfgfile=/etc/mautrix-telegram/config.yaml
+regfile=/etc/mautrix-telegram/registration.yaml
+
+[ ! -f "$regfile" ] &&
+  mautrix-telegram --config "$cfgfile" --registration "$regfile" --generate-registration
+
+cd /etc/mautrix-telegram || exit
+alembic -x "config=$cfgfile" upgrade head
+
+exec mautrix-telegram --config "$cfgfile" --registration "$regfile"
