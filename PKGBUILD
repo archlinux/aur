@@ -1,4 +1,4 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=opencollada
 pkgver=1.6.68
 pkgrel=2
@@ -17,13 +17,13 @@ sha256sums=('2fc9656a2b881ca4528416daa91fc525adaa97d73e96a18b41aa7856270eba1f'
             'SKIP')
 
 prepare() {
-  cd "$srcdir"/OpenCOLLADA
+  cd OpenCOLLADA
 
   patch -Np1 -i "$srcdir"/pcre.patch
 }
 
 build() {
-  cd "$srcdir"/OpenCOLLADA
+  cd OpenCOLLADA
 
   [[ -d build ]] && rm -r build
   mkdir build && cd build
@@ -36,11 +36,11 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/OpenCOLLADA/build
+  cd OpenCOLLADA/build
 
-  make DESTDIR=$pkgdir install
+  make DESTDIR="$pkgdir" install
 
-  install -Dm644 $srcdir/opencollada.conf $pkgdir/etc/ld.so.conf.d/opencollada.conf
+  install -Dm644 "$srcdir"/opencollada.conf "$pkgdir"/etc/ld.so.conf.d/opencollada.conf
 }
 
 # vim:set ts=2 sw=2 et:
