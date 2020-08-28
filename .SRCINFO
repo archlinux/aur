@@ -1,0 +1,20 @@
+pkgbase = panda-files-git
+	pkgdesc = file manager for PandaOS
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/pandaos/panda-files
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = kwindowsystem
+	depends = qt5-x11extras
+	depends = qt5-svg
+	depends = libexif
+	depends = menu-cache
+	depends = qt5-base
+	source = panda-files-git-b3b039fa20efb59a19c4508dfe4eeca4ec488796.tar.gz::https://github.com/pandaos/panda-files/archive/b3b039fa20efb59a19c4508dfe4eeca4ec488796.tar.gz
+	sha512sums = afaa0eeaaf6033d8c77c84160d71c9325de5d90db8476d4db68a7eee1ab5dd487ea617d21406ddb1376886eee0f48f8b55adadd4ec97a0af267edb8c3bf9fa3b
+
+pkgname = panda-files-git
+
