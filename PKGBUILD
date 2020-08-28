@@ -2,7 +2,7 @@
 # Contributer: Mateen Ulhaq <mulhaq2005+aur at gmail dot com>
 
 pkgname=clojure-lsp-bin
-pkgver=20200827T150720
+pkgver=20200828T065654
 pkgrel=1
 pkgdesc="Language Server (LSP) for Clojure"
 arch=("x86_64")
@@ -14,7 +14,7 @@ conflicts=('clojure-lsp')
 
 source=("https://github.com/snoe/clojure-lsp/releases/download/release-${pkgver}/clojure-lsp")
 
-sha256sums=('8ccd426368e918ca4463b72757a7430a00251c5db9c90a3ce73cc65cd8d28dc5')
+sha256sums=('c25969a376498594a232912f317d40d6b7002d3d706c19fc57fb2c6b99ec298d')
 
 package() {
     install -Dm755 clojure-lsp "${pkgdir}/usr/bin/clojure-lsp"
