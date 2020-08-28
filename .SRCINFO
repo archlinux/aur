@@ -1,0 +1,25 @@
+pkgbase = bespokesynth-git
+	pkgdesc = Software modular synth, VST host input, transport/Ableton Push, and Python scripting
+	pkgver = r255.5763dd9
+	pkgrel = 1
+	url = https://github.com/awwbees/BespokeSynth
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = libx11
+	makedepends = libxinerama
+	makedepends = freetype2
+	depends = jack
+	depends = curl
+	depends = mesa
+	depends = xorg-xrandr
+	depends = python
+	provides = bespokesynth
+	provides = bespokesynth-bin
+	conflicts = bespokesynth
+	conflicts = bespokesynth-bin
+	source = bespokesynth::git+https://github.com/awwbees/BespokeSynth
+	md5sums = SKIP
+
+pkgname = bespokesynth-git
+
