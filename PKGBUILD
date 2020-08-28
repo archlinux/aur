@@ -1,7 +1,7 @@
 # Maintainer:geekmar <xzh2002436@gmail.com>
 pkgname=panda-statusbar-git
-pkgver=1.0.
-_commit=82709ae970074df15a543a9384b29e238466ddce
+pkgver=1.1
+_commit=d3a3e546d0adc3b743c0c4bd74d18f5ecdf5c5ee
 pkgrel=1
 pkgdesc="statusbar for PandaOS"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('kwindowsystem' 'qt5-x11extras' 'qt5-svg')
 makedepends=('extra-cmake-modules' 'qt5-tools' 'qt5-base' 'libxcomposite' 'libxcb' 'libxrender' 'kdbusaddons' 'libdbusmenu-qt5' 'libxdamage' 'libxtst')
 source=("$pkgname-$_commit.tar.gz::https://github.com/pandaos/panda-statusbar/archive/$_commit.tar.gz")
-sha512sums=('6c93e34d37eec3f773abc9aa12d34e793794cb9cc53bd4cc5f2aaaa86b737a483118b09a5ef53c493a21b89fb2f7d7120d72202f421d227cb578737b611ead5e')
+sha512sums=('35c6e97a618834c99e6297be8db57a277355e3d8d5a86dd92eed5c5991009885544ab4f9408029bd36d5ab0fd686104229b88107d02fcc03f50e1980f74826ba')
 
 
 build() {
