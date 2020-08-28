@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.2.beta7.r0.g83caa4befa
+pkgver=9.2.beta10.r0.g30cac80dd7
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -35,29 +35,25 @@ optdepends=('cython: to compile cython code' 'python-pkgconfig: to compile cytho
   'python-pip: to install optional packages with sage -pip')
 makedepends=(cython boost ratpoints python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe primecount git)
 source=(git://git.sagemath.org/sage.git#branch=develop
-        package.patch
+        sagemath-optional-packages.patch
         latte-count.patch
         test-optional.patch
         sagemath-cremona.patch
         sagemath-singular-4.1.2.patch
-        sagemath-ipython7.patch
         sagemath-python-3.8.patch
         sagemath-pexpect-4.8.patch
         sagemath-gap-4.11.patch
-        sagemath-flint-2.6.patch
-        sagemath-matplotlib-3.3.patch)
+        sagemath-flint-2.6.patch)
 sha256sums=('SKIP'
-            '5dbff7afecbc78e8ff7749b2ac929e8d2104e205bb2193f05a9687ce5ce65cf4'
+            '4fb46b12b5ee5e5bde87f646dc69a7b8929886be247e2d9a9ae1f12efbe5b580'
             'd6d8dd7d75e29a9ddbbb0da6fe18f86ee3ff49aad4af71104da38a8fa0d4c3db'
             '77aa8e99aae5da74a9486f01b603a0b5d224c3d13e9d9fab681fb71a6af149f1'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
             '6f98488d0eb3a12b958cd1a34f85b7bee950ac756430371c1e134e564cbbf7d3'
-            'b2a7055bc380c1d86a9514540d985fc4bce3cea1ea865e13642f11b1bf0f6e50'
-            '3cc81dc565201925bc3e146b49dcd790980d1ea0d85e009f9e870978c4d4e2c7'
+            '5e2a231f2728d6e425a67ff4e51cf355ef05b05e683393afb17a53c7d1a468d2'
             '5e6d1aa34959bd4369bd08a80648a5c7bc2d38e72c97e9a5f986e91f8a7aca07'
             'aeb6bb7a8d40f3d3b3547ee5f1e67e876051d9463cd1e0000b497c4d0f3e2fe9'
-            'b881d4a6867a6f5360fd204e6a86fd27c6177c539b06f521402e2bcb5a6209cd'
-            '8a80c522f17291c60eb8d11150c0b98c50359b23f5f1c241db6088c6b2576c2a')
+            'b881d4a6867a6f5360fd204e6a86fd27c6177c539b06f521402e2bcb5a6209cd')
 
 pkgver() {
   cd sage
@@ -76,12 +72,10 @@ prepare(){
   patch -p1 -i ../sagemath-singular-4.1.2.patch
 # Fix segfault and tests with flint 2.6 https://trac.sagemath.org/ticket/29719
   patch -p1 -i ../sagemath-flint-2.6.patch
-# Fixes for matplotlib 3.3 https://trac.sagemath.org/ticket/30176
-  patch -p1 -i ../sagemath-matplotlib-3.3.patch
 
 # Arch-specific patches
 # assume all optional packages are installed
-  patch -p0 -i ../package.patch
+  patch -p1 -i ../sagemath-optional-packages.patch
 # don't list optional packages when running tests
   patch -p0 -i ../test-optional.patch
 # use correct latte-count binary name
@@ -90,8 +84,6 @@ prepare(){
   patch -p1 -i ../sagemath-python-3.8.patch
 # Fix expect_peek with pexpect 4.8
   patch -p1 -i ../sagemath-pexpect-4.8.patch
-# Support IPython 7
-  patch -p1 -i ../sagemath-ipython7.patch
 # Fix mathjax path
   sed -e 's|mathjax|mathjax2|g' -i src/sage/env.py
 # Fix gap.version() and doctests with GAP 4.11
