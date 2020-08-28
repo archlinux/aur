@@ -2,9 +2,9 @@
 
 pkgname=teleport
 pkgver=4.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
-arch=('x86_64' 'arm')
+arch=('x86_64' 'arm' 'armv7h') 
 url="https://gravitational.com/teleport"
 license=('Apache')
 depends=('glibc')
@@ -30,6 +30,8 @@ sha256sums_arm=(
     'a4e7bb81be841bccedc493824d8740f5addc1d8f4cb483e0883f9650c7369f47'
     '3b26c48a1ade6feea6658a663fe5db7210df24a191816ce95939dc0eddefa0bc'
     )
+source_armv7h=("${source_arm[@]}")
+sha256sums_armv7h=("${sha256sums_arm[@]}")
 options=(!strip)
 
 backup=('etc/teleport/teleport.yaml')
