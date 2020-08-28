@@ -1,5 +1,5 @@
 pkgbase = scratux
-	pkgdesc = The Linux binary for Scratch
+	pkgdesc = Linux binary for Scratch. Fixed depend errorsfron the original package.
 	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/scratux/scratux/
