@@ -1,0 +1,23 @@
+pkgbase = izpack
+	pkgdesc = Tool for packaging applications on the Java platform as cross-platform installers
+	pkgver = 5.1.3
+	pkgrel = 1
+	url = http://izpack.org/
+	arch = any
+	license = Apache
+	checkdepends = gtk2
+	checkdepends = gnome-themes-standard
+	makedepends = maven
+	depends = sh
+	depends = java-environment=8
+	depends = hicolor-icon-theme
+	optdepends = python: for wrapper utils
+	optdepends = p7zip: for izpack2exe wrapper
+	optdepends = upx: for izpack2exe wrapper
+	source = https://github.com/izpack/izpack/archive/izpack-5.1.3/izpack-5.1.3.tar.gz
+	source = 010-izpack-compile.patch
+	sha256sums = 5c82c115ce58d476cc8dbc7c7e5aa6069511df0dcc8b657c3a7ddb9afc0363be
+	sha256sums = 42609fa684456afe770d43670fcc1ffcce099f25a76cea00df3f8323aa95f582
+
+pkgname = izpack
+
