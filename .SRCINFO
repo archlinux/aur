@@ -1,0 +1,18 @@
+pkgbase = python-imagecorruptions
+	pkgdesc = Python package to corrupt arbitrary images
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/bethgelab/imagecorruptions
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = opencv
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-scipy
+	depends = python-scikit-image
+	source = python-imagecorruptions-1.1.tar.gz::https://github.com/bethgelab/imagecorruptions/archive/v1.1.tar.gz
+	sha512sums = 80a865d65f42e886e6a358702dc49d9df39f700069047d287e70647e81dbcf2b9d1fd27b2b01087b738b96a25c2251618dd8f4d59b7a428c621f6fbff79c6e02
+
+pkgname = python-imagecorruptions
+
