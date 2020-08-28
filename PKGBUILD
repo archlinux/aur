@@ -1,15 +1,14 @@
 _name=fuse3-p7zip
 pkgname="$_name-git"
-pkgver=0.9.4
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="fuse3 file system that uses the p7zip library to mount archives"
 arch=('x86_64')
 url="https://github.com/andrew-grechkin/fuse3-p7zip"
 license=('GPL')
 depends=('fuse3' 'p7zip')
-makedepends=('cmake')
-_commit=5d2a577b45f3b11458308ba7f3027e2420de7850
-source=("git+https://github.com/andrew-grechkin/fuse3-p7zip#commit=$_commit")
+makedepends=('cmake' 'go-md2man')
+source=("git+https://github.com/andrew-grechkin/fuse3-p7zip#commit=08b07f2ada5e1090c4a99aea5f94a98d19bc9ae4")
 sha256sums=('SKIP')
 
 prepare() {
@@ -29,9 +28,11 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-S . -B "build-release"
 	make -j -C "build-release"
+	go-md2man -in=README.md -out="${_name}.1"
 }
 
 package() {
 	cd "$_name"
 	make DESTDIR="$pkgdir" install -C "build-release"
+	install -Dm644 "${_name}.1" "$pkgdir/usr/share/man/man1/${_name}.1"
 }

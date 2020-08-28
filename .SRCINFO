@@ -1,14 +1,15 @@
 pkgbase = fuse3-p7zip-git
 	pkgdesc = fuse3 file system that uses the p7zip library to mount archives
-	pkgver = 0.9.4
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/andrew-grechkin/fuse3-p7zip
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
+	makedepends = go-md2man
 	depends = fuse3
 	depends = p7zip
-	source = git+https://github.com/andrew-grechkin/fuse3-p7zip#commit=5d2a577b45f3b11458308ba7f3027e2420de7850
+	source = git+https://github.com/andrew-grechkin/fuse3-p7zip#commit=08b07f2ada5e1090c4a99aea5f94a98d19bc9ae4
 	sha256sums = SKIP
 
 pkgname = fuse3-p7zip-git
