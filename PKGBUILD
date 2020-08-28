@@ -40,11 +40,11 @@ check() {
 
 package() {
   cd ${_pkgbasename}-${pkgver}
-  make PREFIX=/usr LIBDIR=/usr/lib32 DESTDIR=${pkgdir} install
+  make PREFIX=/usr LIBDIR=/usr/lib32 DESTDIR="${pkgdir}" install
 
   rm -rf "${pkgdir}"/usr/{include,share,bin}
-  install -m755 -d ${pkgdir}/usr/share/licenses
-  ln -s $_pkgbasename "$pkgdir/usr/share/licenses/$pkgname"
+  install -m755 -d "${pkgdir}/usr/share/licenses"
+  ln -s $_pkgbasename "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
