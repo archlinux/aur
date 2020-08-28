@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 # Contributor: Victor3D <webmaster@victor3d.com.br>
 pkgname=fetchmail
-pkgver=6.4.8
+pkgver=6.4.10
 pkgrel=1
 pkgdesc="A remote-mail retrieval utility"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('tk: for using fetchmailconf'
 options=('!makeflags')
 source=("https://sourceforge.net/projects/fetchmail/files/branch_${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"
         'fetchmail.tmpfiles' 'fetchmail.sysusers' 'fetchmail.service')
-sha256sums=('26cd936ece146e056cdf79a676a33738b4eab0a5ae2edf3fce5ba034721b09bd'
+sha256sums=('dbbefd43b8a8ac0517b817fdb63629d321e53fd63143b92d117bbd7d91d7b25e'
             'dcf0eb2f86fb00faf447b22edbf8e93f3045130c45395357a0ffb8243fd95f96'
             '262903b345c67a1e772ba8623300de88ae1d263e9573d5b7e5ee6e3b2c96772e'
             '0b5a70eac28e4a5aab36ca7e1d0e31139833b977ce689f683b5c666fa36475c8')
