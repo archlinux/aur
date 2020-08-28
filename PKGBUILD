@@ -6,7 +6,7 @@
 
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="An email, contacts and calendar server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -24,7 +24,7 @@ source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-$
         "cyrus-imapd.sysusers.conf"
         "cyrus-imapd.tmpfiles.conf")
 validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
-sha512sums=('13e50e2bbf4184539dfea2dbacc88246e8bc07387c7c3f444526520c95956b72b5da45c8e06e7700fa363b7aca2c30e2eb60ab5ab71824e79f20b12873936414'
+sha512sums=('17548b4e2025539ff8c7c23a5e7bbf72c7480f0e1179f50ea3b1eeb2f49d71546752d9946ddf52188215224c34fb17ad401bb6b9345e9eef3449e0b8887a8367'
             'SKIP'
             '3f4cb6d4383cd41ce168255d5c5123ff2c350d33e293643971e51c4fd04faaab2b08067d77559376cbd60663358f467284097d86bb476eb85312797354bab174'
             '0862ffc8c05208efd4d2fb50a6e3719ebc65fc2d72f8e6404235aa32cc44d8227056a17b78f2726e15ff8e38d473795f837c34bfbe89b694b2298c9baab9d5db'
@@ -41,7 +41,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
-  export PERL_MM_OPT="NO_PACKLIST=true"
+  export PERL_MM_OPT="NO_PACKLIST=true NO_PERLLOCAL=true"
   export LIBCHARDET_CFLAGS="-I/usr/include/chardet"
   # Work around Cyrus bug #2629
   export LDFLAGS="${LDFLAGS/,--as-needed}"
@@ -92,11 +92,6 @@ package_cyrus-imapd() {
 
   make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 
-  # perllocal.pod is undesired in packages
-  eval local $(perl -V:installarchlib)
-  rm "${pkgdir}/${installarchlib}/perllocal.pod"
-  rmdir "${pkgdir}/${installarchlib}"
-    
   # Rename httpd.8 and master.8 so they don't conflict with the identically
   # named manpages from postfix and apache
   mv "${pkgdir}/usr/share/man/man8/httpd.8" \
@@ -133,7 +128,7 @@ package_cyrus-imapd() {
     "${pkgdir}/var/spool/cyrus" \
     "${pkgdir}/var/spool/sieve"
 
-  # Install system files
+  # Install system configuration
   install -Dm644 "${srcdir}/cyrus-imapd.service" \
     "${pkgdir}/usr/lib/systemd/system/cyrus-imapd.service"
   install -Dm644 "${srcdir}/cyrus-imapd.sysusers.conf" \
@@ -141,7 +136,7 @@ package_cyrus-imapd() {
   install -Dm644 "${srcdir}/cyrus-imapd.tmpfiles.conf" \
     "${pkgdir}/usr/lib/tmpfiles.d/cyrus-imapd.conf"
 
-  # Install Documentation
+  # Install basic documentation
   install -Dm644 -t "${pkgdir}/usr/share/doc/cyrus-imapd/" \
     README.md doc/README.*
   cp -r doc/examples "${pkgdir}/usr/share/doc/cyrus-imapd/examples"
