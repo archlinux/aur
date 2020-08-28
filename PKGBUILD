@@ -15,11 +15,11 @@ license=('GPL')
 md5sums=('7d5b96e5f7b79b883d8350f104043366')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "${srcdir}"/$pkgname-$pkgver
   ./configure --prefix=/usr
   make
 }
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make prefix=$pkgdir/usr install 
+  cd "${srcdir}"/$pkgname-$pkgver
+  make prefix="${pkgdir}"/usr install 
 }
