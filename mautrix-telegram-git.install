@@ -1,0 +1,32 @@
+post_install() {
+  echo "Your config files are at /etc/mautrix-telegram .
+
+Create an app at https://my.telegram.org/apps and put the api id and hash in
+/etc/mautrix-telegram/config.yaml . You can also edit other settings here.
+
+It's recommended to install mautrix-telegram-runit if you use runit which will install a service
+that automatically initializes the bridge and starts it.
+
+If you can't use the runit package, here's how to set up the bridge yourself:
+
+Run this once to generate your registration file
+
+  sudo mautrix-telegram \\
+    --config /etc/mautrix-telegram/config.yaml \\
+    --registration /etc/mautrix-telegram/registration.yaml \\
+    --generate-registration
+
+Edit your homeserver config and add the registration.yaml, for synapse it would be:
+
+  app_service_config_files:
+      - /etc/mautrix-telegram/registration.yaml
+
+Now you can start the bridge:
+
+  cd /etc/mautrix-telegram
+  sudo alembic -x config=/etc/mautrix-telegram/config.yaml upgrade head
+  sudo mautrix-telegram \\
+    --config /etc/mautrix-telegram/config.yaml \\
+    --registration /etc/mautrix-telegram/registration.yaml
+"
+}
