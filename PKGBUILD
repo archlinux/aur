@@ -5,8 +5,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=firefox-nightly-hg
 _pkgname=firefox-nightly
-pkgver=80.0a1.r538848.5766d99b88f3
-_pkgver=80.0a1
+pkgver=82.0a1.r546634.109f3a4de567
+_pkgver=82.0a1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, nightly version"
 arch=(x86_64)
@@ -113,7 +113,7 @@ build() {
 
     # LTO/PGO needs more open files
     ulimit -n 4096
- 
+    ./mach bootstrap
     xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
     ./mach buildsymbols
 }
