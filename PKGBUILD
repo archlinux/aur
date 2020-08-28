@@ -2,7 +2,7 @@
 
 pkgname=zsa-wally
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wally: Flash your ZSA Keyboard the EZ way."
 arch=('i686' 'x86_64')
 url="https://github.com/zsa/wally"
@@ -19,7 +19,7 @@ sha256sums=('9dd7dc0b62e3b8ae15684cb10995a8ff04e285ef0bf1a61069040bd7c5c13683'
 build() {
      export GOPATH="$srcdir"/gopath
      cd "$srcdir/wally-$pkgver-linux"
-     go get -u github.com/wailsapp/wails/cmd/wails
+     go get github.com/wailsapp/wails/cmd/wails
      wails build
 }
 
@@ -27,4 +27,5 @@ build() {
 package() {
 	install -Dm644 50-wally.rules "$pkgdir"/etc/udev/rules.d/50-wally.rules
 	install -Dm755 $srcdir/wally-$pkgver-linux/build/wally "$pkgdir"/usr/bin/wally
+     chmod -R uag+rw $srcdir
 }
