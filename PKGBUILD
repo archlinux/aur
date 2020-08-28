@@ -3,17 +3,17 @@
 _pkgname=filezilla
 pkgname="$_pkgname-bin"
 pkgver=3.50.0
-pkgrel=2
-pkgdesc='Free, open source FTP, FTPS and SFTP client'
+pkgrel=3
+pkgdesc='Free, open source FTP, FTPS and SFTP client (Pre-built binary)'
 arch=('i686' 'x86_64')
 url='https://filezilla-project.org'
 license=('GPL')
 depends=('pugixml' 'wxgtk3' 'xdg-utils' 'gmp' 'gnutls' 'nettle' 'sqlite')
 makedepends=('curl')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("${_pkgname}" "${_pkgname}-git")
+conflicts=("${_pkgname}" "${_pkgname}-git")
 
-machine_arch=$(uname -m)
+machine_arch="$(uname -m)"
 
 source=(
     "FileZilla_${pkgver}_${machine_arch}-linux-gnu.tar.bz2::https://download.filezilla-project.org/client/FileZilla_${pkgver}_${machine_arch}-linux-gnu.tar.bz2"
