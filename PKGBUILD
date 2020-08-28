@@ -1,7 +1,7 @@
 # Maintainer: Alice Gaudon <alice at gaudon dot pro>
 
 pkgname='tabs-app'
-pkgver=1.1.10
+pkgver=1.1.11
 pkgrel=1
 pkgdesc='Persistent and separate browser tabs in one window'
 arch=('x86_64')
