@@ -7,7 +7,7 @@
 
 pkgname=firefox-esr-bin
 _pkgname=${pkgname/-bin/}
-pkgver=78.1.0
+pkgver=78.2.0
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org - Extended Support Release'
 url='http://www.mozilla.org/en-US/firefox/organizations/'
@@ -18,16 +18,16 @@ provides=('firefox=78')
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
 
-sha512sums=('7ec97105c047b4935cf1354811c67d307f5d1c3091b83913efc1bfc4ec44d4407570aba39808ff456974236c3af6f9040a83966fe249d0d0be94f27291384d25'
+sha512sums=('af733f1a7f84d0b7c540bf793dcd7706d1894fb3ee96d322583e640ad486eaffd8b35abd3c6e62c1d0a50a82f80368f6e1a7c9694a7872d485662ca8f66c0ca6'
             'c585f6e8ac7abfc96ad4571940b6f0dcc3f7331a18a518b4fe5d19b45e4c2d96c394524ea5c115c8fdd256c9229ea2fabeb1fc04ca7102f1626fd20728aef47d'
             'ab2fa2e08c7a65ac0bfe169a4b579e54b038bddabf838cd3df5ab341bd77be7c101092d0123598944d2174ab3a8fbc70dfbd692b2944016efdb7a69216a74428')
-[[ "$CARCH" == "i686" ]] && sha512sums[0]='70e12d9dccf0d139ed27bf4df22d375a1f8f623807f82b0485826afa55660d72456bd598fd26da25f6ce40c565b9c964a03d2db008084824fbae762cacbbe845'
+[[ "$CARCH" == "i686" ]] && sha512sums[0]='38bd4fcf422831be0a2fbb1ee853da2db52300c25aa5cde6e901af9f159d2c1cc4a410678e64e42cb30f7cc48c89b9a54d7d184f25800ea7ee84fa8f6cc734b9'
 
 if [[ -n "$FIREFOX_ESR_BIN_PREFER_OLDER" ]]; then
     pkgver=68.11.0
     provides=('firefox=68')
-    sha512sums[0]='1eefd8f0de8ace89eeb6f01c3cd9a491eaa7a408095bf9abed46c50ead7c9a5958bc098432f5911980e6e0193da3aa8b8eefd353df322a0bc944f51bcdd31977'
-    [[ "$CARCH" == "i686" ]] && sha512sums[0]='fa67ee3c9018596109005ffff13cc87a3b1a6d6407ea276b823d05480dda5263d168b9759688b140221cf58b1ce1f3059e3dede341db0d9f1a9e4ad593a4c50c'
+    sha512sums[0]='d71d18a430c3deda64533d7330974c90355bd25fda774b4267dabeb5ce54d6a9056f236abfbe99eb66ed0290eda5e45a6772110e7d283593fd66e950fc8f2277'
+    [[ "$CARCH" == "i686" ]] && sha512sums[0]='8b1e66019dd18a665c4fc6219747ed2e2f0f2070cffefdebe32b41118e60f235bdcbdb72ad5ecf58314c114bae8bdbe55399d7cfb9ad2493c47d0da2cfbe61b7'
 fi
 
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/linux-$CARCH/en-US/firefox-${pkgver}esr.tar.bz2
