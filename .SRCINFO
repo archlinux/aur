@@ -1,13 +1,14 @@
 pkgbase = ros-melodic-kalman-filter
 	pkgdesc = ROS - Simple Kalman Filter in Python.
 	pkgver = 0.2.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/kalman_filter
 	arch = any
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roslint
 	makedepends = ros-melodic-rospy
 	depends = ros-melodic-rospy
 	source = ros-melodic-kalman-filter-0.2.6.tar.gz::https://github.com/DLu/wu_ros_tools/archive/0.2.6.tar.gz
