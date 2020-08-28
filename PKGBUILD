@@ -7,9 +7,9 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=5.0.r865.g4c8a2267e0
+pkgver=5.0.r927.gc617d341ce
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
 arch=('any')
 url="https://www.jabref.org"
