@@ -1,6 +1,6 @@
 pkgbase = white_dune
 	pkgdesc = white_dune X3D/VRML97 tool, 3D modeller and animation-tool
-	pkgver = 1.944
+	pkgver = 1.948
 	pkgrel = 1
 	url = http://wdune.ourproject.org/
 	arch = x64_86
