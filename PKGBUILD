@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Meleshko <dmytro.meleshko@gmail.com>
 _pkgname=rx
 pkgname=${_pkgname}-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A modern and extensible pixel editor implemented in Rust (this package downloads and extracts the official AppImage)"
 arch=("x86_64")
@@ -14,7 +14,7 @@ options=(!strip)
 _appimage_file="$_pkgname-$pkgver-$CARCH.AppImage"
 source=("https://github.com/cloudhead/rx/releases/download/v$pkgver/$_appimage_file")
 noextract=("$_appimage_file")
-sha256sums=('c32bd63f33809a84547937dfc6b68c0f321050d8283659155964e469733c5bb6')
+sha256sums=('bfc50922b9dfd4442067a423789aea3190c55e92878ab072f8cce886017974ee')
 
 build() {
   chmod +x "$_appimage_file"
