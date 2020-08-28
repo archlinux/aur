@@ -1,7 +1,7 @@
 pkgbase = xmind-2020
 	pkgdesc = XMind - The most popular mind mapping software
 	pkgver = 10.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xmind.net/
 	arch = x86_64
 	license = custom

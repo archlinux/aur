@@ -4,7 +4,7 @@
 pkgname=xmind-2020
 # the versin is from deb package
 pkgver=10.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="XMind - The most popular mind mapping software"
 arch=("x86_64")
 url="https://www.xmind.net/"
@@ -25,7 +25,7 @@ package() {
               ${pkgdir}"/opt/XMind/resources/"
 
     mkdir -p ${pkgdir}/usr/bin/
-    ln -s "/opt/XMind/XMind" ${pkgdir}/usr/bin/xmind-2020
+    ln -s "/opt/XMind/xmind" ${pkgdir}/usr/bin/xmind-2020
 
     mkdir -p ${pkgdir}/usr/share/mime/packages
     install -Dm644 xmind.xml ${pkgdir}/usr/share/mime/packages/
