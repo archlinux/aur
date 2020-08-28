@@ -7,10 +7,11 @@ pkgname='ros-melodic-diff-drive-controller'
 pkgver='0.16.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
+	ros-melodic-control-msgs
 	ros-melodic-urdf
 	ros-melodic-dynamic-reconfigure
 	ros-melodic-realtime-tools
@@ -27,6 +28,7 @@ makedepends=(
 )
 
 ros_depends=(
+	ros-melodic-control-msgs
 	ros-melodic-urdf
 	ros-melodic-dynamic-reconfigure
 	ros-melodic-realtime-tools
