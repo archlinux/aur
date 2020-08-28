@@ -5,6 +5,7 @@ pkgbase = ayatana-indicator-session
 	url = https://github.com/AyatanaIndicators
 	arch = i686
 	arch = x86_64
+	arch = pentium4
 	license = GPL2
 	license = GPL3
 	makedepends = cmake
