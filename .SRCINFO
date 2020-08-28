@@ -1,6 +1,6 @@
 pkgbase = nextpass
 	pkgdesc = CLI client for nextcloud passwords
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/traxys/nextpass
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = nextpass
 	license = GPL3
 	makedepends = rust
 	depends = openssl
-	source = nextpass-0.3.1.tar.gz::https://github.com/traxys/nextpass/archive/0.3.1.tar.gz
-	sha256sums = c7ce542e9d026df4814f9040fd5aa641faa7fe0709e32b2df3dca1bd25aef955
+	source = nextpass-0.4.0.tar.gz::https://github.com/traxys/nextpass/archive/0.4.0.tar.gz
+	sha256sums = 4d72674a4180b22f3e3d8b1e43eeb7b4d708c5dcad9dbc003accb47a34f9b954
 
 pkgname = nextpass
 
