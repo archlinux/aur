@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=84.0.4147.125
+pkgver=85.0.4183.83
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone"
@@ -28,11 +28,9 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        force-mp3-files-to-have-a-start-time-of-zero.patch
         chromium-skia-harmony.patch)
-sha256sums=('98439626cf2d8d3d8f9486d08a99cbc1e4981b3f3427a072d5eaaf6ded4daff5'
+sha256sums=('2064aa4502b87c025f2233b59d94e9e3d1c00bfeaf891e1d973687de5740e73b'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'abc3fad113408332c3b187b083bf33eba59eb5c87fa3ce859023984b5804623c'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -88,9 +86,6 @@ prepare() {
     third_party/blink/renderer/core/xml/*.cc \
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
-
-  # https://chromium-review.googlesource.com/c/chromium/src/+/2268221
-  patch -Np1 -i ../force-mp3-files-to-have-a-start-time-of-zero.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
