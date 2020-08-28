@@ -1,0 +1,16 @@
+pkgbase = tcppc
+	pkgdesc = A simple honeypot to capture TCP/TLS/UDP payloads on ALL ports
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/md-irohas/tcppc-go
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	depends = glibc
+	backup = etc/tcppc.toml
+	source = tcppc-0.4.0.tar.gz::https://github.com/md-irohas/tcppc-go/archive/0.4.0.tar.gz
+	sha256sums = 8c2d678a20d03e1ebfd6cf9921df84f4a2f54818df88b8600897fc5221884f91
+
+pkgname = tcppc
+
