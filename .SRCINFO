@@ -1,7 +1,7 @@
 pkgbase = kotlin-vim
 	pkgdesc = Kotlin plugin for Vim
 	pkgver = r75.2697016
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/udalov/kotlin-vim
 	arch = any
 	groups = vim-plugins

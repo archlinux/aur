@@ -3,7 +3,7 @@
 # Contributor: Mikhail felixoid Shiryaev <mr dot felixoid na gmail com>
 pkgname=kotlin-vim
 pkgver=r75.2697016
-pkgrel=1
+pkgrel=2
 pkgdesc="Kotlin plugin for Vim"
 arch=('any')
 url="https://github.com/udalov/$pkgname"
@@ -22,8 +22,10 @@ pkgver() {
 package() {
 	cd "$srcdir/$pkgname"
 
-	install -d "$pkgdir/usr/share/vim/vimfiles/"
-	cp -r -t "$pkgdir/usr/share/vim/vimfiles/" syntax/ indent/ ftdetect/ ftplugin/
+	for dirname in syntax indent ftdetect ftplugin; do
+		install -Dm644 -t "$pkgdir/usr/share/vim/vimfiles/$dirname/" "$dirname/kotlin.vim"
+	done
+	cp -r -t "$pkgdir/usr/share/vim/vimfiles/" syntax_checkers/
 
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
