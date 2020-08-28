@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!vfs495-daemon.install
+!vfs495-daemon.service
+!vfs495-sleep
