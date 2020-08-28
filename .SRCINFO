@@ -1,0 +1,23 @@
+pkgbase = gf-git
+	pkgdesc = Gamedev Framework (gf) is a framework to build 2D games in C++14. It is based on SDL and OpenGL ES 2.0, and presents an API that is very similar to the graphics module of SFML with additional features (development version).
+	pkgver = 0.17.4.r30.g32d3c45
+	pkgrel = 1
+	url = https://gamedevframework.github.io/
+	arch = x86_64
+	arch = i686
+	license = ZLIB
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	depends = sdl2
+	depends = boost-libs
+	depends = freetype2
+	depends = zlib
+	depends = pugixml
+	provides = gf
+	conflicts = gf
+	source = git+https://github.com/GamedevFramework/gf
+	sha256sums = SKIP
+
+pkgname = gf-git
+
