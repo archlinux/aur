@@ -6,7 +6,7 @@ url='https://wiki.ros.org/control_msgs'
 pkgname='ros-melodic-control-msgs'
 pkgver='1.5.1'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -36,7 +36,7 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="control_msgs-${pkgver}"
+_dir="control_msgs-${pkgver}/control_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/control_msgs/archive/${pkgver}.tar.gz")
 sha256sums=('fb16f5748963616099e9b8f92a36ee8a57240dc80e3a7b74e45499ebb9825887')
 
