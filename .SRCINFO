@@ -1,6 +1,6 @@
 pkgbase = android-completion
 	pkgdesc = Bash completion for adb and fastboot
-	pkgver = 20200821.cdfef7f
+	pkgver = 20200828.86f1921
 	pkgrel = 1
 	url = https://android.googlesource.com/platform/system/core/
 	arch = any
@@ -9,12 +9,10 @@ pkgbase = android-completion
 	depends = bash
 	depends = bash-completion
 	conflicts = android-bash-completion
-	source = adb.bash.b64::https://android.googlesource.com/platform/system/core/+/cdfef7f/adb/adb.bash?format=TEXT
-	source = fastboot.bash.b64::https://android.googlesource.com/platform/system/core/+/cdfef7f/fastboot/fastboot.bash?format=TEXT
-	source = android-completion.patch
+	source = adb.bash.b64::https://android.googlesource.com/platform/system/core/+/86f1921/adb/adb.bash?format=TEXT
+	source = fastboot.bash.b64::https://android.googlesource.com/platform/system/core/+/86f1921/fastboot/fastboot.bash?format=TEXT
 	sha512sums = 450cdf58661537b0d1fcdf191a6b635ac87eb3cfeb3187106409bb92f71ae0b73df27a0fa2c7b1a2e16552ed04e6b0660e88e737058abf6b97051558564d85fb
 	sha512sums = 7a386704e5cb02ffcc921e3f6db81401ec292dcd18374bae9cdd68d086baf52905cc2db75c3f661eb06fdc1a8401f2cc40b7ba9dd249be4e235052a003ca90b5
-	sha512sums = da0cfc049bfcb1cf1c3baf274079f146efb2abc30863c585a8f4221aca5292c9de2a7e57efe808dfbf3ef2aa3c340b19bba01f23ce77ed4ef62bb9b9afe4ef5a
 
 pkgname = android-completion
 
