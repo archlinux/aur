@@ -1,6 +1,6 @@
 # Maintainer: Senderman <doletov.fyodor@yandex.ru>
 pkgname=nvidia-system-monitor-qt
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Task Manager for Linux for Nvidia graphics cards (QT vesrion)"
 arch=('x86_64')
