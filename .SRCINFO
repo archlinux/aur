@@ -1,7 +1,7 @@
 pkgbase = spark
 	pkgdesc = Cross-platform real-time collaboration client optimized for business and organizations.
-	pkgver = 2.8.3
-	pkgrel = 2
+	pkgver = 2.9.1
+	pkgrel = 1
 	url = http://www.igniterealtime.org/projects/spark/
 	arch = any
 	license = LGPL
@@ -10,8 +10,8 @@ pkgbase = spark
 	depends = libxtst
 	conflicts = spark-svn
 	options = !strip
-	source = http://download.igniterealtime.org/spark/spark_2_8_3.deb
-	md5sums = 12335bc5cbf223f128e44da44b620942
+	source = http://download.igniterealtime.org/spark/spark_2_9_1.deb
+	sha512sums = 65c015bba8c1616b06a40722d04b9a37271858ad2fa33ed52039c3be8f75f820fde37ec3883d5fd297dd784ba9a2e57ade8efe2cc97051405773588ae65ca3d5
 
 pkgname = spark
 
