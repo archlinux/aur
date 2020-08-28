@@ -3,7 +3,7 @@
 _pkgname=qt-creator-terminalplugin
 pkgname=qtcreator-terminal-plugin-git
 pkgver=2119fe7
-pkgrel=1
+pkgrel=2
 pkgdesc="A konsole-like terminal plugin for Qt Creator"
 groups=('qt' 'qt5')
 arch=('i686' 'x86_64')

@@ -1,7 +1,7 @@
 pkgbase = qtcreator-terminal-plugin-git
 	pkgdesc = A konsole-like terminal plugin for Qt Creator
 	pkgver = 2119fe7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/manyoso/qt-creator-terminalplugin
 	arch = i686
 	arch = x86_64
