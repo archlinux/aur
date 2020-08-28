@@ -2,7 +2,7 @@
 pkgname=scratux
 pkgver=1.4.1
 pkgrel=1
-pkgdesc="Linux binary for Scratch. Fixed depend errorsfron the original package. "
+pkgdesc="Linux binary for Scratch. Fixed depend errors from the original package. "
 arch=('x86_64')
 url="https://github.com/scratux/scratux/"
 license=('BSD-3-Clause')
