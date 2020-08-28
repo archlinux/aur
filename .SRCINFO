@@ -1,7 +1,7 @@
 pkgbase = filezilla-bin
 	pkgdesc = Free, open source FTP, FTPS and SFTP client
 	pkgver = 3.50.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://filezilla-project.org
 	arch = i686
 	arch = x86_64

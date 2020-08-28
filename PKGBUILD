@@ -3,7 +3,7 @@
 _pkgname=filezilla
 pkgname="$_pkgname-bin"
 pkgver=3.50.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Free, open source FTP, FTPS and SFTP client'
 arch=('i686' 'x86_64')
 url='https://filezilla-project.org'
@@ -22,7 +22,7 @@ source=(
 sha512sums=(
     "$(
         _url="https://download.filezilla-project.org/client/FileZilla_${pkgver}.sha512"
-        _sum=$(curl -L "${_url}" | grep "FileZilla_${pkgver}_${machine_arch}-linux-gnu.tar.bz2" | awk '{print $1}')
+        _sum=$(curl --silent -L "${_url}" | grep "FileZilla_${pkgver}_${machine_arch}-linux-gnu.tar.bz2" | awk '{print $1}')
         if [[ ! "${?}" = 0 ]] || [[ ! -v "_sum" ]]; then
             echo -n "SKIP"
         else
