@@ -1,0 +1,15 @@
+pkgbase = semver-cpp
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/Neargye/semver
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	optdepends = gcc: c++ compiler
+	optdepends = clang: c++ compiler
+	source = https://github.com/Neargye/semver/archive/v0.2.2.tar.gz
+	sha512sums = f299e6d74f0232f40e20959ed3d7138d5faff924f60748827849e21951d76d34070bac2479a35f3ea6e801ec5e23ebf8391adedc70d778c4aa5e4c89b20c332c
+
+pkgname = semver-cpp
+
