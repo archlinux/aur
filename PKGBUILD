@@ -1,31 +1,31 @@
-# Maintainer: kusakata <shohei atmark kusakata period com>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: kusakata <shohei atmark kusakata period com>
 
-pkgname=piu-piu-sh-git
-pkgver=r223.6fc9547
+_pkgname='piu-piu'
+pkgname="${_pkgname}-sh-git"
+pkgver=r373.4ecf0ea
 pkgrel=1
-pkgdesc="Old School horizontal scroller 'Shoot Them All' game in bash"
+pkgdesc='Old School horizontal scroller "Shoot Them All" game in bash'
 arch=('any')
-url="https://github.com/vaniacer/piu-piu-SH"
-license=("MIT")
-provides=('piu-piu-sh')
-conflicts=('piu-piu-sh')
-depends=('bash' 'ncurses')
+url='https://github.com/vaniacer/piu-piu-SH'
+license=('MIT')
 makedepends=('git')
-source=("git+https://github.com/vaniacer/piu-piu-SH")
-sha1sums=('SKIP')
+optdepends=('netcat: multiplayer mode')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}-sh")
+source=("${_pkgname}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/piu-piu-SH"
+  cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "${srcdir}/piu-piu-SH"
-  sed -n '/License/,/SOFTWARE\./p' piu-piu > LICENSE
+package() {
+  cd "${_pkgname}"
+  install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
+  install -Dm644 'LICENSE.md' "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
-package() {
-  cd "${srcdir}/piu-piu-SH"
-  install -Dm755 piu-piu "${pkgdir}/usr/bin/piu-piu"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
+# vim: ts=2 sw=2 et:

@@ -1,17 +1,16 @@
 pkgbase = piu-piu-sh-git
-	pkgdesc = Old School horizontal scroller 'Shoot Them All' game in bash
-	pkgver = r223.6fc9547
+	pkgdesc = Old School horizontal scroller "Shoot Them All" game in bash
+	pkgver = r373.4ecf0ea
 	pkgrel = 1
 	url = https://github.com/vaniacer/piu-piu-SH
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = bash
-	depends = ncurses
-	provides = piu-piu-sh
+	optdepends = netcat: multiplayer mode
+	provides = piu-piu
 	conflicts = piu-piu-sh
-	source = git+https://github.com/vaniacer/piu-piu-SH
-	sha1sums = SKIP
+	source = piu-piu::git+https://github.com/vaniacer/piu-piu-SH.git
+	sha256sums = SKIP
 
 pkgname = piu-piu-sh-git
 
