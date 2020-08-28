@@ -2,16 +2,16 @@
 
 _pkgname=dragonfly-reverb
 pkgname="${_pkgname}-git"
-_name=DragonflyReverb
-pkgver=3.0.0.r276.85dc8b8
+pkgver=3.2.1.r295.0e1413d
 pkgrel=1
 pkgdesc="An algorithmic hall reverb and a room reverb (git version)"
 arch=('i686' 'x86_64')
 url="https://michaelwillis.github.io/dragonfly-reverb/"
 license=('GPL3')
 groups=('pro-audio' 'lv2-plugins' 'vst-plugins')
-depends=('freeverb3' 'jack' 'libglvnd')
-makedepends=('gendesk' 'git' 'liblo' 'lv2')
+depends=('gcc-libs' 'glibc' 'libglvnd' 'libx11')
+makedepends=('freeverb3' 'gendesk' 'git' 'jack' 'lv2')
+optdepends=('jack: for standalone applications')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("$_pkgname::git+https://github.com/michaelwillis/dragonfly-reverb.git"
@@ -56,7 +56,7 @@ build() {
     local _name="${_reverb%% - *}"
     local _desc="${_reverb#* - }"
     gendesk -f -n \
-      --pkgname ${_name} \
+      --pkgname "io.github.michaelwillis.${_name}" \
       --pkgdesc "${_desc}" \
       --name ${_name} \
       --exec ${_name} \
@@ -68,7 +68,28 @@ build() {
   make
 }
 
+# not working yet
+check() {
+  cd "${srcdir}/${_pkgname}"
+
+  declare -A _plugin_uris=(
+    ["DragonflyEarlyReflections"]='urn:dragonfly:early'
+    ["DragonflyHallReverb"]='https://github.com/michaelwillis/dragonfly-reverb'
+    ["DragonflyPlateReverb"]='urn:dragonfly:plate'
+    ["DragonflyRoomReverb"]='urn:dragonfly:room'
+  )
+
+  for _reverb in "${_reverbs[@]}"; do
+    local _name="${_reverb%% - *}"
+    lv2lint -M pack \
+      -s lv2_generate_ttl \
+      -t "Plugin License" \
+      -I "bin/${_name}.lv2/" "${_plugin_uris[${_name}]}"
+  done
+}
+
 package() {
+  depends+=('libfreeverb3.so')
   cd "${srcdir}/${_pkgname}"
 
   for _reverb in "${_reverbs[@]}"; do
@@ -76,10 +97,12 @@ package() {
     # Stand-alone JACK clients
     install -Dm 755 "bin/${_reverb}" -t "${pkgdir}/usr/bin"
     # Desktop integration
-    install -Dm 644 "${_reverb}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm 644 "io.github.michaelwillis.${_reverb}.desktop" \
+      -t "${pkgdir}/usr/share/applications"
 
     # VST2 plugins
-    install -Dm 755 "bin/${_reverb}-vst.so" -t "${pkgdir}/usr/lib/vst"
+    install -Dm 755 "bin/${_reverb}-vst.so" \
+      -t "${pkgdir}/usr/lib/vst"
     # LV2 bundles
     install -Dm 755 "bin/${_reverb}.lv2/"*.so \
       -t "${pkgdir}/usr/lib/lv2/${_reverb}.lv2/"

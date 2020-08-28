@@ -1,6 +1,6 @@
 pkgbase = dragonfly-reverb-git
 	pkgdesc = An algorithmic hall reverb and a room reverb (git version)
-	pkgver = 3.0.0.r276.85dc8b8
+	pkgver = 3.2.1.r295.0e1413d
 	pkgrel = 1
 	url = https://michaelwillis.github.io/dragonfly-reverb/
 	arch = i686
@@ -9,13 +9,16 @@ pkgbase = dragonfly-reverb-git
 	groups = lv2-plugins
 	groups = vst-plugins
 	license = GPL3
+	makedepends = freeverb3
 	makedepends = gendesk
 	makedepends = git
-	makedepends = liblo
+	makedepends = jack
 	makedepends = lv2
-	depends = freeverb3
-	depends = jack
+	depends = gcc-libs
+	depends = glibc
 	depends = libglvnd
+	depends = libx11
+	optdepends = jack: for standalone applications
 	provides = dragonfly-reverb
 	conflicts = dragonfly-reverb
 	source = dragonfly-reverb::git+https://github.com/michaelwillis/dragonfly-reverb.git
@@ -24,4 +27,9 @@ pkgbase = dragonfly-reverb-git
 	sha512sums = SKIP
 
 pkgname = dragonfly-reverb-git
+	depends = gcc-libs
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	depends = libfreeverb3.so
 
