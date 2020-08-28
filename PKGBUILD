@@ -37,5 +37,5 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}-${_pkgver}"
 
-  make prefix=${pkgdir}/usr install
+  make prefix="${pkgdir}"/usr install
 }
