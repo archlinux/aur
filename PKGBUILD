@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=79.0
+pkgver=80.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -26,8 +26,7 @@ source_x86_64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/f
                "git+https://gitlab.com/${pkgname}-community/browser/common.git"
                "git+https://gitlab.com/${pkgname}-community/settings.git"
                "megabar.patch"
-               "remove_addons.patch"
-               https://raw.githubusercontent.com/archlinux/svntogit-packages/master/firefox/repos/extra-x86_64/bug1654465.diff)
+               "remove_addons.patch")
 source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
                 $pkgname.desktop
                 "git+https://gitlab.com/${pkgname}-community/browser/common.git"
@@ -35,25 +34,22 @@ source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/
                 "megabar.patch"
                 "remove_addons.patch"
                 arm.patch
-                https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
-                https://raw.githubusercontent.com/archlinux/svntogit-packages/master/firefox/repos/extra-x86_64/bug1654465.diff)
+                https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
 
-sha256sums_x86_64=('12a922855914ec6b4d4f06a4ac58bc549aca6bdafd3722d68a3d709a935e5713'
+sha256sums_x86_64=('380d9853e0712442ba2d4acd85c0e09c19ad36561a3ea8932705ad6b8a91146a'
                    '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                    'SKIP'
                    'SKIP'
                    '2bef819c55935f6c72a7aa28273ecddfce0888429a32465feb6c34a16ff1ed9c'
-                   '4425388d62cbb7ec3808926ae5e04021b17af8a0b6ba47c08a253ecfdcc264c0'
-                   'e577f7e5636deda0026b0e385186f3ecb2212c9b84b6a2949a1811dab3e410d6')
-sha256sums_aarch64=('12a922855914ec6b4d4f06a4ac58bc549aca6bdafd3722d68a3d709a935e5713'
+                   'd191e65a0ce3eeba0a3171c143fc93e3ded6c29eb751b90d58a7d3bf1983aca6')
+sha256sums_aarch64=('380d9853e0712442ba2d4acd85c0e09c19ad36561a3ea8932705ad6b8a91146a'
                     '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                     'SKIP'
                     'SKIP'
                     '2bef819c55935f6c72a7aa28273ecddfce0888429a32465feb6c34a16ff1ed9c'
-                    '4425388d62cbb7ec3808926ae5e04021b17af8a0b6ba47c08a253ecfdcc264c0'
+                    'd191e65a0ce3eeba0a3171c143fc93e3ded6c29eb751b90d58a7d3bf1983aca6'
                     '6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
-                    '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9'
-                    'e577f7e5636deda0026b0e385186f3ecb2212c9b84b6a2949a1811dab3e410d6')
+                    '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
 
 prepare() {
   mkdir mozbuild
@@ -61,6 +57,7 @@ prepare() {
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
+mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 # This supposedly speeds up compilation (We test through dogfooding anyway)
 ac_add_options --disable-tests
@@ -130,9 +127,6 @@ ac_add_options --enable-optimize
 END
 fi
 
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1654465
-  patch -Np1 -i ../bug1654465.diff
-
   # Remove some pre-installed addons that might be questionable
   patch -p1 -i ../remove_addons.patch
 
@@ -171,8 +165,8 @@ build() {
 
   # -fno-plt with cross-LTO causes obscure LLVM errors
   # LLVM ERROR: Function Import: link error
-  CFLAGS="${CFLAGS/-fno-plt/}"
-  CXXFLAGS="${CXXFLAGS/-fno-plt/}"
+  # CFLAGS="${CFLAGS/-fno-plt/}"
+  # CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
   # Do 3-tier PGO
   echo "Building instrumented browser..."
