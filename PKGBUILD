@@ -2,8 +2,8 @@
 
 _pkgname=kapp
 pkgname=${_pkgname}-git
-pkgver=r193.b0d6b82
-pkgrel=3
+pkgver=r517.0fc63da
+pkgrel=1
 pkgdesc='kapp is a simple deployment tool focused on the concept of "Kubernetes application"'
 url="https://get-kapp.io/"
 license=('Apache')
@@ -38,7 +38,7 @@ build() {
 			-f . \
 			-f $build_values_path \
 			--file-mark 'generated.go.txt:exclusive-for-output=true' \
-			--output-directory ../../../tmp/
+			--dangerous-emptied-output-directory ../../../tmp/
 	)
 	mv tmp/generated.go.txt pkg/kapp/website/generated.go
 

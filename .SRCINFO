@@ -1,7 +1,7 @@
 pkgbase = kapp-git
 	pkgdesc = kapp is a simple deployment tool focused on the concept of "Kubernetes application"
-	pkgver = r193.b0d6b82
-	pkgrel = 3
+	pkgver = r517.0fc63da
+	pkgrel = 1
 	url = https://get-kapp.io/
 	arch = x86_64
 	license = Apache
