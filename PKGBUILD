@@ -1,7 +1,7 @@
 # Maintainer: Nek.12 <vaizin.nikita@gmail.com>
 pkgname='notion-enhancer'
 pkgver=0.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An enhancer/customiser for the all-in-one productivity workspace notion.so"
 arch=('any')
 url="https://github.com/dragonwocky/notion-enhancer"

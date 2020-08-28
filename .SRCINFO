@@ -1,7 +1,7 @@
 pkgbase = notion-enhancer
 	pkgdesc = An enhancer/customiser for the all-in-one productivity workspace notion.so
 	pkgver = 0.8.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dragonwocky/notion-enhancer
 	install = notion-enhancer
 	arch = any
