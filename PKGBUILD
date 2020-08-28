@@ -2,7 +2,7 @@
 
 _pkgname=qtc-markview
 pkgname=qtcreator-markview-plugin
-pkgver=4.12.0
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="Qt Creator markup plugin"
 groups=('qt' 'qt5')
@@ -13,8 +13,8 @@ depends=('qtcreator')
 makedepends=('qtcreator-src')
 provides=('qtcreator-markview-plugin')
 conflicts=('qtcreator-markview-plugin-git')
-source=("${pkgname}-${pkgver}::https://github.com/OneMoreGres/qtc-markview/archive/4.12.0.zip")
-sha512sums=('84381831918727ef103ccc188ead65d482da3cd9c774fe94639e6cb42fda38bd90aaf13491b797500fafb4d16369fdf8eb5acf899261b38cd687cfa69e5ac20f')
+source=("${pkgname}-${pkgver}::https://github.com/OneMoreGres/qtc-markview/archive/${pkgver}.zip")
+sha512sums=('9a9917d7fd90827656431265e22ba507a1344accc9c6f5fa2f77f60baf72609210f428183f4451bcfe2a8845d96f5eb147fb91cde2895e81f281c22656431757')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
