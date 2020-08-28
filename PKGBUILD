@@ -15,16 +15,16 @@ source=("https://github.com/stratis-storage/${_pkgname}/archive/v${pkgver}.tar.g
 sha256sums=('1fa4f8cea63cabac761b32fa851cc1e85abc60a354c55fbce133412b89ee6dbd')
 
 check() {
-    cd $srcdir/${_pkgname}-${pkgver}
+    cd ${_pkgname}-${pkgver}
     nosetests
 }
  
 build() {
-    cd $srcdir/${_pkgname}-${pkgver}
+    cd ${_pkgname}-${pkgver}
     python setup.py build
 }
 
 package() {
-    cd $srcdir/${_pkgname}-${pkgver}
-    python setup.py install --root="$pkgdir" --optimize=1 
+    cd ${_pkgname}-${pkgver}
+    python setup.py install --root="${pkgdir}" --optimize=1 
 }
