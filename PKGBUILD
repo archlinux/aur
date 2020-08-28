@@ -1,6 +1,6 @@
 # Author: Artemii Sudakov <finziyr@yandex.ru>
 pkgname=homemgr
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="Manager of home directories in Linux."
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=(
 	'glibc: native getent command'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BiteDasher/homemgr/archive/${pkgver}.tar.gz")
-sha256sums=("fecf50ea898fb6b6797adbd3c96f3b3160cf45555f3ebec366dfaae85e6b6232")
+sha256sums=("32854c752d39c1be25c216276ac96f9bc01069210f9ce7649fde1630aff21313")
 package() {
 install -Dm 755 $srcdir/$pkgname-$pkgver/homemgr $pkgdir/usr/bin/$pkgname
 }
