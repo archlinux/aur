@@ -1,4 +1,4 @@
-pkgbase = gitter
+pkgbase = gitter-bin
 	pkgdesc = Where developers come to talk
 	pkgver = 5.0.1
 	pkgrel = 1
@@ -11,12 +11,13 @@ pkgbase = gitter
 	makedepends = binutils
 	depends = libsystemd
 	depends = desktop-file-utils
-	depends = gconf
 	depends = gtk2
 	depends = alsa-lib
 	depends = nss
 	depends = libnotify
 	depends = libxtst
+	provides = gitter
+	conflicts = gitter
 	noextract = gitter_5.0.1_amd64.deb
 	noextract = gitter_5.0.1_i386.deb
 	options = !strip
@@ -29,5 +30,5 @@ pkgbase = gitter
 	sha256sums_i686 = 9a89739cf256fe2a2f4821feab6aebdf80b99f53c27211ccccf3210827c3318c
 	sha256sums_i686 = c29fbff9e3ad766c49407cb29aa5ba7131f4de9f48c71928ffcf8b3bcd2a2cde
 
-pkgname = gitter
+pkgname = gitter-bin
 
