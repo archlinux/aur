@@ -1,7 +1,7 @@
 pkgbase = raleway-font
 	pkgdesc = An elegant sans-serif font family, originally in a single thin weight, now 9 weights
 	pkgver = 4.100
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.theleagueofmoveabletype.com/raleway
 	arch = any
 	groups = lmt-fonts
@@ -11,9 +11,15 @@ pkgbase = raleway-font
 
 pkgname = otf-raleway
 	provides = raleway-font
+	provides = otf-impallari-raleway-family
+	conflicts = otf-impallari-raleway-family
+	replaces = otf-impallari-raleway-family
 
 pkgname = ttf-raleway
 	provides = raleway-font
+	provides = ttf-impallari-raleway-family
+	conflicts = ttf-impallari-raleway-family
+	replaces = ttf-impallari-raleway-family
 
 pkgname = ttf-raleway-variable
 	provides = raleway-font-variable
