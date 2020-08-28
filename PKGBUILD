@@ -18,7 +18,7 @@ sha512sums=('2b7cd66cff617f7592863a1a8e03754b3dea314c8eeb98bf0993601d4d4db848a74
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver
-  patch -Np1 -i $srcdir/0001-Replace-removed-is_error-macro.patch
+  patch -Np1 -i "${srcdir}"/0001-Replace-removed-is_error-macro.patch
 }
 
 build() {
