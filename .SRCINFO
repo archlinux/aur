@@ -1,14 +1,14 @@
 pkgbase = dptf
 	pkgdesc = Intel (R) Dynamic Platform and Thermal Framework (Intel (R) DPTF)
-	pkgver = 8.7.10101
+	pkgver = 8.7.10103
 	pkgrel = 1
 	url = https://github.com/intel/dptf
 	arch = x86_64
 	license = custom
 	makedepends = cmake
 	depends = readline
-	source = https://github.com/intel/dptf/archive/8.7.10101.tar.gz
-	sha256sums = 4a92a6cf2d0b97ed2c4ecaa27275c57c3171ba9cf0660e79cd56d80c921e6f1e
+	source = dptf-8.7.10103.tar.gz::https://github.com/intel/dptf/archive/8.7.10103.tar.gz
+	sha256sums = cca7a0fa85f17a1d6d460eb99c4aaab6478894d512a92d04b32bd5a6d0842c7c
 
 pkgname = dptf
 

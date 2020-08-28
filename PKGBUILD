@@ -1,5 +1,5 @@
 pkgname=dptf
-pkgver=8.7.10101
+pkgver=8.7.10103
 pkgrel=1
 pkgdesc='Intel (R) Dynamic Platform and Thermal Framework (Intel (R) DPTF)'
 arch=('x86_64')
@@ -7,14 +7,14 @@ url='https://github.com/intel/dptf'
 license=('custom')
 depends=('readline')
 makedepends=('cmake')
-source=("https://github.com/intel/dptf/archive/$pkgver.tar.gz")
-sha256sums=('4a92a6cf2d0b97ed2c4ecaa27275c57c3171ba9cf0660e79cd56d80c921e6f1e')
+source=("dptf-$pkgver.tar.gz::https://github.com/intel/dptf/archive/$pkgver.tar.gz")
+sha256sums=('cca7a0fa85f17a1d6d460eb99c4aaab6478894d512a92d04b32bd5a6d0842c7c')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
 
     export CXXFLAGS="${CXXFLAGS} -Wno-error=catch-value -Wno-error=stringop-truncation -ffile-prefix-map='$srcdir/$pkgname-$pkgver'="
-    export CFLAGS="${CFLAGS} -Wno-error=format-truncation -ffile-prefix-map='$srcdir/$pkgname-$pkgver'="
+    export CFLAGS="${CFLAGS} -Wno-error=format-truncation -Wno-error=format-overflow -ffile-prefix-map='$srcdir/$pkgname-$pkgver'="
 
     pushd DPTF/Linux/build
     cmake ..
