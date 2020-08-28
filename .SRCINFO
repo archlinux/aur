@@ -9,7 +9,7 @@ pkgbase = zsa-wally-cli
 	depends = libusb
 	provides = wally-cli
 	source = https://github.com/zsa/wally/releases/download/1.1.1-linux/wally-cli
-	source = 50-wally.rules
+	source = 50-wally-cli.rules
 	sha256sums = b968aeba6f17d0873b26371307179dc02cd360a4cfa74732ab5c814607479d82
 	sha256sums = SKIP
 
