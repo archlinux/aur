@@ -10,7 +10,7 @@
 
 pkgname=opera
 pkgver=70.0.3728.133
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
 options=(!strip !zipman)
