@@ -1,4 +1,4 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Bill Fraser <wfraser@codewise.org>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
@@ -23,7 +23,7 @@ build() {
 	export CXX="g++ -m32"
 	export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-	cd ${srcdir}/${_pkgbasename}-${pkgver}
+	cd ${_pkgbasename}-${pkgver}
 	./configure \
 		--prefix=/usr \
 		--libdir=/usr/lib32 \
@@ -33,12 +33,12 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/${_pkgbasename}-${pkgver}
+	cd ${_pkgbasename}-${pkgver}
 
 	make DESTDIR=${pkgdir} install
 
-	rm -rf ${pkgdir}/usr/lib32/libpcap.a
-	rm -rf ${pkgdir}/usr/{include,share,bin}
+	rm -rf "${pkgdir}"/usr/lib32/libpcap.a
+	rm -rf "${pkgdir}"/usr/{include,share,bin}
 
 	mkdir -p "${pkgdir}/usr/share/licenses"
 	ln -s ${_pkgbasename} "${pkgdir}/usr/share/licenses/${pkgname}"
