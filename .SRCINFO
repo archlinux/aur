@@ -1,0 +1,27 @@
+pkgbase = scratux
+	pkgdesc = The Linux binary for Scratch
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/scratux/scratux/
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	depends = libnotify
+	depends = libappindicator-gtk3
+	provides = scratux
+	source = scratux-1.4.1.pacman::https://github.com/scratux/scratux/releases/tag/1.4.1/scratux-1.4.1.pacman
+	md5sums = e341ad8bf3134a652b03143719782371
+
+pkgname = scratux
+
