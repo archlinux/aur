@@ -4,7 +4,7 @@
 # Contributor: Lukas Weber <laochailan@web.de>
 
 pkgname=taisei-git
-pkgver=1.3.r398.g8480d41b
+pkgver=1.3.r425.g8f3b3fa0
 pkgrel=1
 pkgdesc="Open source Touhou clone (development version)"
 arch=('i686' 'x86_64')
@@ -17,8 +17,9 @@ makedepends=('git' 'meson' 'python-docutils')
 source=('git+https://github.com/taisei-project/taisei.git'
         'git+https://github.com/taisei-project/cglm.git'
         'git+https://github.com/taisei-project/SDL_GameControllerDB.git'
-        'git+https://github.com/taisei-project/koishi.git')
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+        'git+https://github.com/taisei-project/koishi.git'
+        'git+https://github.com/taisei-project/basis_universal.git')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd taisei
@@ -30,6 +31,7 @@ prepare() {
   git config submodule.cglm.url ../cglm
   git config submodule.gamecontrollerdb.url ../SDL_GameControllerDB
   git config submodule.external/koishi.url ../koishi
+  git config submodule.external/basis_universal.url ../basis_universal
   git submodule update
   arch-meson build -Dvalidate_glsl=false
 }
