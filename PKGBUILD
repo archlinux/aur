@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=zip
-_cranver=2.1.0
+_cranver=2.1.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,10 +11,9 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(CC0)
 depends=(r)
-makedepends=(gcc)
 optdepends=(r-covr r-processx r-r6 r-testthat r-withr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('1f63f43f7047c635b8610c8b2d8b05ec')
+md5sums=('4c1e601dfcb8b229426caf657e93b592')
 
 build() {
   cd "${srcdir}"
