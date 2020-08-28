@@ -2,17 +2,17 @@
 
 pkgbase=wikiman
 pkgname=wikiman
-pkgver=1.0
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc="Offline search engine for ArchWiki and manual pages combined"
 url="https://github.com/filiparag/wikiman"
 license=('MIT')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/filiparag/wikiman/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 arch=('any')
-sha1sums=('SKIP')
-depends=(man arch-wiki-docs links fzf ripgrep awk)
+sha256sums=('aa42612314d13e21f73f5a3e390c28e7804d50f62e660792f0f91d23a518688f')
+depends=('man' 'arch-wiki-docs' 'fzf' 'ripgrep' 'awk' 'xdg-utils')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   install -Dm 755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
