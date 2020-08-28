@@ -6,7 +6,7 @@
 
 _pkgname=gnupg
 pkgname=gnupg-scdaemon-shared-access
-pkgver=2.2.21
+pkgver=2.2.22
 pkgrel=1
 pkgdesc='This package adds shared-access option that uses PCSC_SHARE_SHARED for pcsc_connect in scdaemon when using pcsc backend for smartcard access'
 url='https://www.gnupg.org/'
@@ -21,14 +21,14 @@ optdepends=('libldap: gpg2keys_ldap'
             'pcsclite: scdaemon')
 validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'
               '46CC730865BB5C78EBABADCF04376F3EE0856959'
-              '031EC2536E580D8EA286A9F22071B08A33BD3F06'
-              'D238EA65D64C67ED4C3073F28A861B1C7EFD60D9')
+              '5B80C5754298F0CB55D8ED6ABCEF7E294B092E28'
+              '6DAA6E64A76D2840571B4902528897B826403ADA')
 source=("https://gnupg.org/ftp/gcrypt/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"{,.sig}
         'drop-import-clean.patch'
         'avoid-beta-warning.patch'
         'do-not-rebuild-defsincdate.patch'
         "scdaemon_shared-access.patch")
-sha256sums=('61e83278fb5fa7336658a8b73ab26f379d41275bb1c7c6e694dd9f9a6e8e76ec'
+sha256sums=('7c1370565e1910b9d8c4e0fb57b9de34aa062ec7bb91abad5803d791f38d855b'
             'SKIP'
             '02d375f0045f56f7dd82bacdb5ce559afd52ded8b75f6b2673c39ec666e81abc'
             '22fdf9490fad477f225e731c417867d9e7571ac654944e8be63a1fbaccd5c62d'
