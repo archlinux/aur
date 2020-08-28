@@ -1,7 +1,7 @@
 pkgbase = linx-client
 	pkgdesc = Simple client for linx-server
-	pkgver = 1.5.1
-	pkgrel = 2
+	pkgver = 1.5.2
+	pkgrel = 1
 	url = https://github.com/andreimarcu/linx-client
 	arch = x86_64
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = linx-client
 	makedepends = go
 	makedepends = git
 	makedepends = mercurial
-	source = https://github.com/andreimarcu/linx-client/archive/v1.5.1.tar.gz
-	sha256sums = 7c0c2abd1b51a13da3bb03065862c14c1f10444bef1a3390a0df5b79fd1f7268
+	source = https://github.com/andreimarcu/linx-client/archive/v1.5.2.tar.gz
+	sha256sums = 00b50f3c50aca19726ab204f9469adf252f7a8c011eed39e4bf3f2952f3d6ddd
 
 pkgname = linx-client
 

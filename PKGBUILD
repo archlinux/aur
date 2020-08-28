@@ -2,15 +2,15 @@
 # Maintainer: Vyacheslav Konovalov <vyachkonovalov@protonmail.com>
 
 pkgname=linx-client
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.5.2
+pkgrel=1
 pkgdesc='Simple client for linx-server'
 arch=('x86_64' 'i686' 'arm')
 url='https://github.com/andreimarcu/linx-client'
 license=('GPLv3')
 makedepends=('go' 'git' 'mercurial')
 source=("https://github.com/andreimarcu/linx-client/archive/v$pkgver.tar.gz")
-sha256sums=('7c0c2abd1b51a13da3bb03065862c14c1f10444bef1a3390a0df5b79fd1f7268')
+sha256sums=('00b50f3c50aca19726ab204f9469adf252f7a8c011eed39e4bf3f2952f3d6ddd')
 
 build() {
     case $CARCH in
