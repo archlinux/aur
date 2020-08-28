@@ -1,11 +1,11 @@
 pkgbase = cloud-hypervisor-bin
 	pkgdesc = A Rust-VMM based cloud hypervisor from Intel (binary source)
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloud-hypervisor/cloud-hypervisor
 	arch = x86_64
 	license = Apache:2.0
-	depends = virtiofsd
+	depends = qemu
 	provides = cloud-hypervisor
 	conflicts = cloud-hypervisor
 	source = https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v0.9.0/ch-remote
