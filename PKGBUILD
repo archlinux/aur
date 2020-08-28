@@ -28,7 +28,7 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.12.114
+pkgver=1.13.82
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -42,8 +42,8 @@ optdepends=('cups: Printer support'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops'
             'sccache: For faster builds')
-chromium_base_ver="84"
-patchset="3"
+chromium_base_ver="85"
+patchset="2"
 patchset_name="chromium-${chromium_base_ver}-patchset-${patchset}"
 source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'brave-vaapi-enable.patch'
@@ -52,11 +52,10 @@ source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'brave-browser.desktop'
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
         'brave-custom-build.patch')
-arch_revision=2efd12e6db7c47f6d433971406fb271a1fb0c839
+arch_revision=51efcaea600acd0648cb70730911f64f332feb95
 for Patches in \
-        chromium-ffmpeg-4.3.patch \
-        force-mp3-files-to-have-a-start-time-of-zero.patch \
         chromium-fix-vaapi-on-intel.patch \
+        media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch \
         chromium-skia-harmony.patch
 do
   source+=("${Patches}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${Patches}?h=packages/chromium&id=${arch_revision}")
@@ -70,11 +69,10 @@ sha256sums=('SKIP'
             'c090e4d26847831a719aea4a8cf722b7f6b6726bd7b6bf4da984e59567095917'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
-            'f77088dd59b170b767ba91c6b410abb778ff2e68553433b24124d398fa4d3ce7'
+            '2194fe22b9e5ccdc4a86da4e3572214f670c561486671f57c90636fd3cbfa43e'
             '69f380666f67918273fb4fc2674e53636de52c040a4ab00c220891d08b3d9f07'
-            '5390304b5f544868985ce00a3ec082d4ece2dacb1c73cdb35dd4facfea12449a'
-            'abc3fad113408332c3b187b083bf33eba59eb5c87fa3ce859023984b5804623c'
             'e495f2477091557b15bff2c99831e0a3db64ea2ebde7dcb22857a6469c944b9a'
+            '0f041d655335cd2a4773ae7ca5e301a0ff12c6c53f57b7cf6651c268e0420a1c'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -89,7 +87,7 @@ declare -gA _system_libs=(
   [libdrm]=
   [libjpeg]=libjpeg
   [libpng]=libpng
-  [libvpx]=libvpx
+  #[libvpx]=libvpx
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
@@ -138,20 +136,14 @@ prepare() {
         third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
         third_party/libxml/chromium/*.cc
 
-    # https://chromium-review.googlesource.com/c/chromium/src/+/2268221
-    patch -Np1 -i "${srcdir}"/force-mp3-files-to-have-a-start-time-of-zero.patch
-
-    # https://crbug.com/1095962
-    patch -Np1 -i "${srcdir}"/chromium-ffmpeg-4.3.patch
-
     # https://crbug.com/skia/6663#c10
     patch -Np0 -i "${srcdir}"/chromium-skia-harmony.patch
 
     # Patch from rpmfusion: chromium-freeworld
-    patch -Np1 -i "${srcdir}"/chromium-fix-vaapi-on-intel.patch
+    patch -Np1 -i "${srcdir}"/chromium-fix-vaapi-on-intel.patch || true
 
-    # Fix VA-API on Nvidia
-#    patch -Np1 -i "${srcdir}"/vdpau-support.patch
+    # https://crbug.com/1095962
+    patch -Np1 -i "${srcdir}"/media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch
 
     # Force script incompatible with Python 3 to use /usr/bin/python2
     sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
