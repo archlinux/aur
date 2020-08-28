@@ -1,7 +1,7 @@
 pkgbase = cnijfilter-mg4200
 	pkgdesc = Canon IJ Printer Driver (for mg4200 series)
 	pkgver = 3.80
-	pkgrel = 4
+	pkgrel = 5
 	url = https://sg.canon/en/support/0100469302
 	arch = i686
 	arch = x86_64

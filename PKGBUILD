@@ -48,6 +48,10 @@ build() {
   patch -p1 -i ${srcdir}/fix_png.patch || return 1
   patch -p1 -i ${srcdir}/fix_configures.patch || return 1
 
+  ## Fix build with glibc 2.32+
+  ## Remove a deprecated (& rather pointless) header inclusion
+  sed -i "36d" cngpijmon/cnijnpr/cnijnpr/cnijnpr.c
+
   ## Compile model specific stuff
   # ppd file
   msg "Compile PPD file..."
