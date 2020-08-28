@@ -26,6 +26,5 @@ source=("${pkgname}-${pkgver}.pacman::https://github.com/scratux/scratux/release
 md5sums=(e341ad8bf3134a652b03143719782371)
 
 package() {
-	bsdtar -xf ${pkgname}-${pkgver}.pacman
 	sed -i '36d' ${pkgname}-${pkgver}.pacman
 }
