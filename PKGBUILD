@@ -1,7 +1,7 @@
 # Maintainer: Leon Plickat <leonhenrik.plickat@stud.uni-goettingen.de>
 
 pkgname=lavalauncher
-pkgver=1.7.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A simple launcher panel for Wayland'
 arch=(x86_64)
@@ -9,19 +9,20 @@ url='https://git.sr.ht/~leon_plickat/lavalauncher'
 license=(GPL3)
 depends=(cairo wayland wayland-protocols scdoc)
 makedepends=(git gcc meson ninja)
+optdepends=(librsvg)
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-	printf "1.7.1"
+	printf "2.0.0"
 }
 
 prepare()
 {
 	cd "${pkgname%-*}"
-	git checkout v1.7.1
+	git checkout v2.0.0
 }
 
 build()
