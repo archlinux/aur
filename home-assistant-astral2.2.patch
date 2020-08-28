@@ -1,21 +1,27 @@
-From 1cbaf123c0e38581d3df0be0ad1fb6b15ad8622b Mon Sep 17 00:00:00 2001
-From: Maxime Gauduin <alucryd@archlinux.org>
-Date: Thu, 27 Feb 2020 17:27:37 +0100
-Subject: [PATCH 1/2] bump astral to 2.1
-
----
- homeassistant/components/sun/__init__.py | 19 ++++-----
- homeassistant/helpers/sun.py             | 50 +++++++++++++++---------
- homeassistant/package_constraints.txt    |  2 +-
- requirements_all.txt                     |  2 +-
- setup.py                                 |  2 +-
- 5 files changed, 44 insertions(+), 31 deletions(-)
-
+diff --git a/homeassistant/components/moon/sensor.py b/homeassistant/components/moon/sensor.py
+index 3a25b68eea..20ee6c1c54 100644
+--- a/homeassistant/components/moon/sensor.py
++++ b/homeassistant/components/moon/sensor.py
+@@ -1,7 +1,7 @@
+ """Support for tracking the moon phases."""
+ import logging
+ 
+-from astral import Astral
++from astral import moon
+ import voluptuous as vol
+ 
+ from homeassistant.components.sensor import PLATFORM_SCHEMA
+@@ -91,4 +91,4 @@ class MoonSensor(Entity):
+     async def async_update(self):
+         """Get the time and updates the states."""
+         today = dt_util.as_local(dt_util.utcnow()).date()
+-        self._state = Astral().moon_phase(today)
++        self._state = moon.phase(today)
 diff --git a/homeassistant/components/sun/__init__.py b/homeassistant/components/sun/__init__.py
-index 9529a9c0cada..f3137ced65f7 100644
+index fe89413f4d..677948de02 100644
 --- a/homeassistant/components/sun/__init__.py
 +++ b/homeassistant/components/sun/__init__.py
-@@ -92,6 +92,7 @@ def __init__(self, hass):
+@@ -92,6 +92,7 @@ class Sun(Entity):
          """Initialize the sun."""
          self.hass = hass
          self.location = None
@@ -23,25 +29,29 @@ index 9529a9c0cada..f3137ced65f7 100644
          self._state = self.next_rising = self.next_setting = None
          self.next_dawn = self.next_dusk = None
          self.next_midnight = self.next_noon = None
-@@ -100,7 +101,7 @@ def __init__(self, hass):
+@@ -100,10 +101,11 @@ class Sun(Entity):
          self._next_change = None
  
-         def update_location(event):
--            self.location = get_astral_location(self.hass)
-+            self.location, self.elevation = get_astral_location(self.hass)
+         def update_location(_event):
+-            location = get_astral_location(self.hass)
++            location, elevation = get_astral_location(self.hass)
+             if location == self.location:
+                 return
+             self.location = location
++            self.elevation = elevation
              self.update_events(dt_util.utcnow())
  
          update_location(None)
-@@ -137,7 +138,7 @@ def state_attributes(self):
+@@ -140,7 +142,7 @@ class Sun(Entity):
  
-     def _check_event(self, utc_point_in_time, event, before):
+     def _check_event(self, utc_point_in_time, sun_event, before):
          next_utc = get_location_astral_event_next(
--            self.location, event, utc_point_in_time
-+            self.location, self.elevation, event, utc_point_in_time
+-            self.location, sun_event, utc_point_in_time
++            self.location, self.elevation, sun_event, utc_point_in_time
          )
          if next_utc < self._next_change:
              self._next_change = next_utc
-@@ -164,7 +165,7 @@ def update_events(self, utc_point_in_time):
+@@ -167,7 +169,7 @@ class Sun(Entity):
          )
          self.location.solar_depression = -10
          self._check_event(utc_point_in_time, "dawn", PHASE_SMALL_DAY)
@@ -50,7 +60,7 @@ index 9529a9c0cada..f3137ced65f7 100644
          self._check_event(utc_point_in_time, "dusk", PHASE_DAY)
          self.next_setting = self._check_event(
              utc_point_in_time, SUN_EVENT_SUNSET, PHASE_SMALL_DAY
-@@ -175,9 +176,7 @@ def update_events(self, utc_point_in_time):
+@@ -178,9 +180,7 @@ class Sun(Entity):
          self._check_event(utc_point_in_time, "dusk", PHASE_NAUTICAL_TWILIGHT)
          self.location.solar_depression = "astronomical"
          self._check_event(utc_point_in_time, "dusk", PHASE_ASTRONOMICAL_TWILIGHT)
@@ -61,7 +71,7 @@ index 9529a9c0cada..f3137ced65f7 100644
          self.location.solar_depression = "civil"
  
          # if the event was solar midday or midnight, phase will now
-@@ -185,7 +184,7 @@ def update_events(self, utc_point_in_time):
+@@ -188,7 +188,7 @@ class Sun(Entity):
          # even in the day at the poles, so we can't rely on it.
          # Need to calculate phase if next is noon or midnight
          if self.phase is None:
@@ -70,7 +80,7 @@ index 9529a9c0cada..f3137ced65f7 100644
              if elevation >= 10:
                  self.phase = PHASE_DAY
              elif elevation >= 0:
-@@ -213,9 +212,11 @@ def update_events(self, utc_point_in_time):
+@@ -218,9 +218,11 @@ class Sun(Entity):
      @callback
      def update_sun_position(self, utc_point_in_time):
          """Calculate the position of the sun."""
@@ -85,7 +95,7 @@ index 9529a9c0cada..f3137ced65f7 100644
  
          _LOGGER.debug(
 diff --git a/homeassistant/helpers/sun.py b/homeassistant/helpers/sun.py
-index 818010c34105..c361cdbae3f2 100644
+index 818010c341..f1f7ee1f19 100644
 --- a/homeassistant/helpers/sun.py
 +++ b/homeassistant/helpers/sun.py
 @@ -1,6 +1,6 @@
@@ -93,16 +103,16 @@ index 818010c34105..c361cdbae3f2 100644
  import datetime
 -from typing import TYPE_CHECKING, Optional, Union
 +from typing import TYPE_CHECKING, Optional, Tuple, Union
-
+ 
  from homeassistant.const import SUN_EVENT_SUNRISE, SUN_EVENT_SUNSET
  from homeassistant.core import callback
-@@ -14,28 +14,33 @@
-
+@@ -14,28 +14,32 @@ if TYPE_CHECKING:
+ 
  DATA_LOCATION_CACHE = "astral_location_cache"
-
+ 
 +ELEVATION_AGNOSTIC_EVENTS = ("noon", "midnight")
 +
-
+ 
  @callback
  @bind_hass
 -def get_astral_location(hass: HomeAssistantType) -> "astral.Location":
@@ -110,11 +120,11 @@ index 818010c34105..c361cdbae3f2 100644
 +    hass: HomeAssistantType,
 +) -> Tuple["astral.location.Location", "astral.Elevation"]:
      """Get an astral location for the current Home Assistant configuration."""
-
++    from astral import LocationInfo # pylint: disable=import-outside-toplevel
++    from astral.location import Location # pylint: disable=import-outside-toplevel
+ 
 -    from astral import Location  # pylint: disable=import-outside-toplevel
-+    from astral import LocationInfo  # pylint: disable=import-outside-toplevel
-+    from astral.location import Location  # pylint: disable=import-outside-toplevel
-
+-
 +    timezone = str(hass.config.time_zone)
      latitude = hass.config.latitude
      longitude = hass.config.longitude
@@ -122,21 +132,21 @@ index 818010c34105..c361cdbae3f2 100644
      elevation = hass.config.elevation
 -    info = ("", "", latitude, longitude, timezone, elevation)
 +    info = ("", "", timezone, latitude, longitude)
-
+ 
      # Cache astral locations so they aren't recreated with the same args
      if DATA_LOCATION_CACHE not in hass.data:
          hass.data[DATA_LOCATION_CACHE] = {}
-
+ 
      if info not in hass.data[DATA_LOCATION_CACHE]:
 -        hass.data[DATA_LOCATION_CACHE][info] = Location(info)
 +        hass.data[DATA_LOCATION_CACHE][info] = Location(LocationInfo(*info))
-
+ 
 -    return hass.data[DATA_LOCATION_CACHE][info]
 +    return hass.data[DATA_LOCATION_CACHE][info], elevation
-
-
+ 
+ 
  @callback
-@@ -47,26 +52,31 @@ def get_astral_event_next(
+@@ -47,26 +51,31 @@ def get_astral_event_next(
      offset: Optional[datetime.timedelta] = None,
  ) -> datetime.datetime:
      """Calculate the next specified solar event."""
@@ -146,8 +156,8 @@ index 818010c34105..c361cdbae3f2 100644
 +    return get_location_astral_event_next(
 +        location, elevation, event, utc_point_in_time, offset
 +    )
-
-
+ 
+ 
  @callback
  def get_location_astral_event_next(
 -    location: "astral.Location",
@@ -162,10 +172,10 @@ index 818010c34105..c361cdbae3f2 100644
 -
      if offset is None:
          offset = datetime.timedelta()
-
+ 
      if utc_point_in_time is None:
          utc_point_in_time = dt_util.utcnow()
-
+ 
 +    kwargs = {"local": False}
 +    if event not in ELEVATION_AGNOSTIC_EVENTS:
 +        kwargs["observer_elevation"] = elevation
@@ -173,7 +183,7 @@ index 818010c34105..c361cdbae3f2 100644
      mod = -1
      while True:
          try:
-@@ -74,13 +84,13 @@ def get_location_astral_event_next(
+@@ -74,13 +83,13 @@ def get_location_astral_event_next(
                  getattr(location, event)(
                      dt_util.as_local(utc_point_in_time).date()
                      + datetime.timedelta(days=mod),
@@ -188,8 +198,8 @@ index 818010c34105..c361cdbae3f2 100644
 +        except ValueError:
              pass
          mod += 1
-
-@@ -93,9 +103,7 @@ def get_astral_event_date(
+ 
+@@ -93,9 +102,7 @@ def get_astral_event_date(
      date: Union[datetime.date, datetime.datetime, None] = None,
  ) -> Optional[datetime.datetime]:
      """Calculate the astral event time for the specified date."""
@@ -197,13 +207,13 @@ index 818010c34105..c361cdbae3f2 100644
 -
 -    location = get_astral_location(hass)
 +    location, elevation = get_astral_location(hass)
-
+ 
      if date is None:
          date = dt_util.now().date()
-@@ -103,9 +111,13 @@ def get_astral_event_date(
+@@ -103,9 +110,13 @@ def get_astral_event_date(
      if isinstance(date, datetime.datetime):
          date = dt_util.as_local(date).date()
-
+ 
 +    kwargs = {"local": False}
 +    if event not in ELEVATION_AGNOSTIC_EVENTS:
 +        kwargs["observer_elevation"] = elevation
@@ -215,71 +225,43 @@ index 818010c34105..c361cdbae3f2 100644
 +    except ValueError:
          # Event never occurs for specified date.
          return None
-
+ 
 diff --git a/homeassistant/package_constraints.txt b/homeassistant/package_constraints.txt
-index ad8abf3e2c44..0c8a57af3c50 100644
+index 58d3e3be88..2ec7bd09d6 100644
 --- a/homeassistant/package_constraints.txt
 +++ b/homeassistant/package_constraints.txt
 @@ -2,7 +2,7 @@ PyJWT==1.7.1
  PyNaCl==1.3.0
- aiohttp==3.6.1
+ aiohttp==3.6.2
  aiohttp_cors==0.7.0
 -astral==1.10.1
 +astral==2.2
  async_timeout==3.0.1
  attrs==19.3.0
  bcrypt==3.1.7
-diff --git a/requirements_all.txt b/requirements_all.txt
-index c24edaf5dc7f..90a16f75aafc 100644
---- a/requirements_all.txt
-+++ b/requirements_all.txt
-@@ -1,6 +1,6 @@
- # Home Assistant core
- aiohttp==3.6.1
+diff --git a/requirements.txt b/requirements.txt
+index 702e4eaf19..f58f7b9d76 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -2,7 +2,7 @@
+ 
+ # Home Assistant Core
+ aiohttp==3.6.2
 -astral==1.10.1
 +astral==2.2
  async_timeout==3.0.1
  attrs==19.3.0
  bcrypt==3.1.7
 diff --git a/setup.py b/setup.py
-index 0564b7f4773e..3059dfffbed5 100755
+index 81f8727ed6..5c75d1e9b6 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -33,7 +33,7 @@
+@@ -33,7 +33,7 @@ PACKAGES = find_packages(exclude=["tests", "tests.*"])
  
  REQUIRES = [
-     "aiohttp==3.6.1",
+     "aiohttp==3.6.2",
 -    "astral==1.10.1",
-+    "astral==2.1",
++    "astral==2.2",
      "async_timeout==3.0.1",
      "attrs==19.3.0",
      "bcrypt==3.1.7",
-
-From 729500eda8da8c9ff5acf950faa21a35a3dc3233 Mon Sep 17 00:00:00 2001
-From: Maxime Gauduin <alucryd@archlinux.org>
-Date: Fri, 28 Feb 2020 09:51:35 +0100
-Subject: [PATCH 2/2] update the moon component
-
----
- homeassistant/components/moon/sensor.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/homeassistant/components/moon/sensor.py b/homeassistant/components/moon/sensor.py
-index 3a7dd9e20844..77aa6be4333d 100644
---- a/homeassistant/components/moon/sensor.py
-+++ b/homeassistant/components/moon/sensor.py
-@@ -1,7 +1,7 @@
- """Support for tracking the moon phases."""
- import logging
- 
--from astral import Astral
-+from astral import moon
- import voluptuous as vol
- 
- from homeassistant.components.sensor import PLATFORM_SCHEMA
-@@ -86,4 +86,4 @@ def icon(self):
-     async def async_update(self):
-         """Get the time and updates the states."""
-         today = dt_util.as_local(dt_util.utcnow()).date()
--        self._state = Astral().moon_phase(today)
-+        self._state = moon.phase(today)

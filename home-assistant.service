@@ -6,9 +6,23 @@ After=network.target
 Restart=on-failure
 User=hass
 Group=hass
+DynamicUser=true
+LogsDirectory=hass
+StateDirectory=hass
 
-ExecStart=/usr/bin/hass --config /var/lib/hass/ --log-rotate-days 1
+ExecStart=/usr/bin/hass \
+  --config /var/lib/hass/ \
+  --log-file /var/log/hass/home-assistant.log \
+  --log-rotate-days 1 \
+  --runner
 RestartForceExitStatus=100
+
+AmbientCapabilities=
+CapabilityBoundingSet=
+LockPersonality=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
 
 [Install]
 WantedBy=multi-user.target

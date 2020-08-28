@@ -6,7 +6,7 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=0.112.2
+pkgver=0.114.4
 pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
@@ -34,6 +34,7 @@ depends=(
   python-voluptuous
   python-voluptuous-serialize
   python-yaml
+  python-yarl
 )
 makedepends=(
   git
@@ -44,19 +45,15 @@ optdepends=(
   'openzwave: Z-Wave integration'
   'python-lxml: Meteo France integration'
 )
-_tag=b76d7edf749d2ffbc6f75dd6ced6d1fad42ff122
+_tag=2e4cd5f3435d14cb8564bed2141313e997c0d423
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
-  home-assistant.sysusers
-  home-assistant.tmpfiles
   home-assistant-astral2.2.patch
 )
-sha256sums=('SKIP'
-            '2a87a3b529a1eeddfae0c02c415bed13586b002b9580226bdc749a27bbe83af5'
-            '319c7790d3cdb076bf527b1d478edbc99e00b22fbf4a884b395e46460114ee41'
-            'f9e43edb276e0fbbbc2273b836ef1da0ac43347b5c3e4c63774e7f7ecdf25660'
-            '1b9d2498db8dba3837cfa4263f7171be0371becf6ed15cb757febedd8c4de451')
+b2sums=('SKIP'
+        '0df7bbfdac09e37294ac27567e677855c72d13be3aefbd23e0a8f101cf2148302affbe9b6b586b893f77fc990f665d7b95f4916583680c06abd8f74b5cdf3da9'
+        '9feb1f480b553689d1a3d5e51770a25df168f3b3e97db3f25bd7c55c66762271a4b86fe5628c41af58bd19cb51b56dc7019c3256584dbf00a30bc9747f926711')
 
 pkgver() {
   cd home-assistant
@@ -85,8 +82,6 @@ package() {
   python setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1 --skip-build
 
   install -Dm 644 ../home-assistant.service -t "${pkgdir}"/usr/lib/systemd/system/
-  install -Dm 644 ../home-assistant.sysusers "${pkgdir}"/usr/lib/sysusers.d/home-assistant.conf
-  install -Dm 644 ../home-assistant.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/home-assistant.conf
 }
 
 # vim: ts=2 sw=2 et:
