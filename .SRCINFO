@@ -1,0 +1,19 @@
+pkgbase = libxcrypt-git
+	pkgdesc = Library for one-way hashing of passwords
+	pkgver = 4.4.17.r1.gb475497
+	pkgrel = 1
+	url = https://github.com/besser82/libxcrypt/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = glibc
+	provides = libxcrypt
+	provides = libcrypt.so
+	conflicts = libxcrypt
+	options = staticlibs
+	source = git+https://github.com/besser82/libxcrypt.git
+	sha256sums = SKIP
+
+pkgname = libxcrypt-git
+
