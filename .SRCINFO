@@ -15,9 +15,8 @@ pkgbase = puddletag-git
 	optdepends = chromaprint: AcoustID support
 	optdepends = quodlibet: QuodLibet library support
 	provides = puddletag
-	provides = puddletag-qt5-git
 	conflicts = puddletag
-	conflicts = puddletag-qt5-git
+	replaces = puddletag-qt5-git
 	source = puddletag-git::git+https://github.com/puddletag/puddletag
 	sha256sums = SKIP
 

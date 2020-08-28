@@ -16,10 +16,9 @@ depends=('python-mutagen'
 makedepends=('git')
 optdepends=('chromaprint: AcoustID support' 
 	    'quodlibet: QuodLibet library support')
-provides=('puddletag'
-	  'puddletag-qt5-git')
-conflicts=('puddletag'
-	   'puddletag-qt5-git')
+provides=('puddletag')
+conflicts=('puddletag')
+replaces=('puddletag-qt5-git')
 source=("${pkgname}::git+https://github.com/puddletag/puddletag")
 sha256sums=('SKIP')
 
