@@ -15,7 +15,7 @@ source=('git+https://github.com/aboul3la/Sublist3r')
 md5sums=('SKIP')
 
 pkgver() {
-  mv ./Sublist3r-git ./sublist3r-git
+  mv ./Sublist3r ./sublist3r-git
   cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
