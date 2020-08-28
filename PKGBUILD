@@ -2,7 +2,7 @@
 
 pkgname=winctl
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Window layout scripting utility for X11 (like devilspie2) which uses relative positions (percentages)"
 arch=("i686" "x86_64" "armv7h")
 url="https://github.com/oliver-anhuth/winctl"
