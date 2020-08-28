@@ -4,7 +4,7 @@
 
 _pkgbasename=libx11-threadsafe
 pkgname=lib32-$_pkgbasename
-pkgver=1.6.11
+pkgver=1.6.12
 pkgrel=1
 pkgdesc="X11 client-side library (32-bit) - threadsafe patches by Jacek Caban"
 arch=(x86_64)
@@ -19,7 +19,7 @@ license=('custom:XFREE86')
 source=(${url}/releases/individual/lib/libX11-${pkgver}.tar.bz2{,.sig}
         0001-Fix-poll_for_response-race-condition.patch
         threadsafe.patch)
-sha512sums=('2cb4e215c1e3ccb327e02586844f8c426068536a0f472a39f12191feace607f61a6a08586f03758248199678c2f6897a984b0f1222bc0d68fd2e02702f4ce0bf'
+sha512sums=('79df7d61d9009b0dd3b65f67a62189aa0a43799c01026b3d2d534092596a0b67f246af5e398a89eb1ccc61a27335f81be8262b8a39768a76f62d862cd7415a47'
             'SKIP'
             '8e45cf24ee3eaa735d79cfe768b87917be86ada8ae8688f44e1d914c52ac39be9815986432893d73b5c931ac2dd9a849d47bf2b2063b440f57a67c7d9ca5cc1f'
             '625e747ddbbd6d84d9198199ecb9d93aad4e39c2b20b618bb2cc283c4c5aa3dd83bc80d45b002b612ffff2c70bf8d7cf1d07152097221b0c144a6cc06e0f5d63')
