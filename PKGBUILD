@@ -8,12 +8,12 @@ pkgname=(
   kata-runtime-bin
   kata-proxy-bin
   kata-shim-bin
-  kata-containers-image
-  kata-linux-container
+  kata-containers-image-bin
+  kata-linux-container-bin
 )
 pkgver="1.11.2"
 _pkgver=${pkgver/\~/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight virtual machines for containers (binary version)"
 arch=(x86_64)
 url="https://katacontainers.io"
@@ -85,7 +85,9 @@ package_kata-shim-bin() {
   install -D -m 0755 {${srcdir}${_bin_pkg_root}/libexec,${pkgdir}/usr/lib}/kata-containers/kata-shim
 }
 
-package_kata-containers-image(){
+package_kata-containers-image-bin(){
+  conflicts=('kata-containers-image')
+  provides=('kata-containers-image')
   install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
     ${srcdir}${_bin_pkg_root}/share/kata-containers/kata-containers-image_clearlinux_${_pkgver}_agent_*.img \
     ${srcdir}${_bin_pkg_root}/share/kata-containers/kata-containers-initrd_alpine_${_pkgver}_agent_*.initrd
@@ -94,7 +96,9 @@ package_kata-containers-image(){
   ln -s kata-containers-initrd_alpine_${_pkgver}_agent_*.initrd kata-containers-initrd.img
 }
 
-package_kata-linux-container(){
+package_kata-linux-container-bin(){
+  conflicts=('kata-linux-container')
+  provides=('kata-linux-container')
   install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
     ${srcdir}${_bin_pkg_root}/share/kata-containers/vmlinux-* \
     ${srcdir}${_bin_pkg_root}/share/kata-containers/vmlinuz-*
