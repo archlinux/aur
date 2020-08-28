@@ -2,7 +2,7 @@
 # Maintainer: Jack R <rubacha.jack03@gmail.com>
 pkgname=sublist3r-git
 pkgver=r138.729d649
-pkgrel=2
+pkgrel=3
 pkgdesc="A python tool designed to enumerate subdomains of websites using OSINT."
 arch=('any')
 url="https://github.com/aboul3la/Sublist3r"
