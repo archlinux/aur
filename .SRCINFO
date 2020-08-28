@@ -1,0 +1,24 @@
+pkgbase = haskell-graphite
+	pkgdesc = Graphs and networks library
+	pkgver = 0.10.0.1
+	pkgrel = 1
+	url = https://github.com/alx741/graphite#readme
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	makedepends = haskell-quickcheck
+	makedepends = haskell-hspec
+	depends = ghc-libs
+	depends = haskell-quickcheck
+	depends = haskell-cassava
+	depends = haskell-graphviz
+	depends = haskell-hashable
+	depends = haskell-random
+	depends = haskell-semigroups
+	depends = haskell-unordered-containers
+	depends = haskell-vector
+	source = https://hackage.haskell.org/packages/archive/graphite/0.10.0.1/graphite-0.10.0.1.tar.gz
+	sha256sums = 7a8366a9113c5071f5c4863a6bf10462c4274281f5523fc80f2e5539de6d0aab
+
+pkgname = haskell-graphite
+
