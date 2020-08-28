@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-accelerated-ccemux
 pkgver=2.4.1
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="CCEmuX plugin wrapper for CraftOS-PC, providing the ccemux API for compatibility with CCEmuX-enhanced programs."
 arch=('x86_64' 'i386' 'armv7l')
@@ -33,7 +33,7 @@ prepare() {
 build() {
 	cd "craftos2-$pkgver-luajit"
 	./configure --prefix=/usr
-    make -C craftos2-luajit
+    CFLAGS=-fPIC make -C craftos2-luajit
 	make linux-plugin
 }
 
