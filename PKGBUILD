@@ -7,7 +7,7 @@ pkgver="20.1.25.42"
 pkgrel="1"
 pkgdesc="Batch renaming extension for Caja"
 arch=("any")
-url="https://tari.in/www/software/caja-rename"
+url="https://tari.in/www/software/caja-rename/"
 license=("GPL3")
 depends=("caja" "python-caja" "python" "python-gobject" "gobject-introspection" "gtk3")
 makedepends=("breezy" "python-setuptools" "python-polib")
@@ -16,7 +16,7 @@ source=("bzr+lp:${_pkgname/\-/}")
 md5sums=("SKIP")
 options=("!emptydirs")
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname/\-/}")
 
 pkgver()
 {
