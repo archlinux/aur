@@ -9,6 +9,8 @@ url="https://github.com/aboul3la/Sublist3r"
 license=('GPL2')
 depends=('python-requests' 'python-argparse' 'python-dnspython')
 makedepends=('git')
+conflicts=('sublist3r')
+provides=('sublist3r')
 source=('git+https://github.com/aboul3la/Sublist3r')
 md5sums=('SKIP')
 
