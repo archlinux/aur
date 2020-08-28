@@ -1,7 +1,7 @@
 # Maintainer: Luca Stefani <luca.stefani.ge1@gmail.com>
 
 pkgbase=linux-llvm
-pkgver=5.8.3.arch1
+pkgver=5.8.5.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
