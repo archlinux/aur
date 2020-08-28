@@ -1,7 +1,7 @@
 pkgbase = league-fonts
 	pkgdesc = A package depending on all the fonts from The League of Moveable Type
 	pkgver = 0
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://www.theleagueofmoveabletype.com
 	arch = any
@@ -9,11 +9,11 @@ pkgbase = league-fonts
 
 pkgname = league-fonts
 	depends = league-spartan-font
+	depends = raleway-font
 	depends = otf-chunk
 	depends = otf-fanwood
 	depends = otf-junction
 	depends = otf-league-gothic
-	depends = otf-raleway
 	depends = ttf-blackout
 	depends = ttf-goudy-bookletter-1911
 	depends = ttf-knewave
@@ -28,22 +28,23 @@ pkgname = league-fonts
 
 pkgname = league-fonts-variable
 	depends = league-spartan-font-variable
+	depends = raleway-font-variable
 
 pkgname = otf-league-fonts
 	depends = otf-league-spartan
+	depends = otf-raleway
 	depends = otf-chunk
 	depends = otf-fanwood
 	depends = otf-junction
 	depends = otf-league-gothic
-	depends = otf-raleway
 
 pkgname = ttf-league-fonts
 	depends = ttf-league-spartan
+	depends = ttf-raleway
 	depends = ttf-chunk
 	depends = ttf-fanwood
 	depends = ttf-junction
 	depends = ttf-league-gothic
-	depends = ttf-raleway
 	depends = ttf-blackout
 	depends = ttf-goudy-bookletter-1911
 	depends = ttf-knewave

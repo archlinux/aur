@@ -5,7 +5,7 @@
 pkgbase=league-fonts
 pkgname=($pkgbase $pkgbase-variable otf-$pkgbase ttf-$pkgbase)
 pkgver=0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='A package depending on all the fonts from The League of Moveable Type'
 arch=('any')
@@ -27,10 +27,10 @@ _ttf=('blackout'
 _otf=('chunk'
       'fanwood'
       'junction'
-      'league-gothic'
-      'raleway')
+      'league-gothic')
 # Some also have VF variants
-_var=('league-spartan')
+_var=('league-spartan'
+      'raleway')
 
 package_league-fonts() {
     depends=("${_var[@]/%/-font}" "${_otf[@]/#/otf-}" "${_ttf[@]/#/ttf-}")
