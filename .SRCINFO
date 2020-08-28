@@ -1,7 +1,7 @@
 pkgbase = quikey
 	pkgdesc = A keyboard macro tool.
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/bostrt/quikey
 	arch = any
 	license = MIT
@@ -15,8 +15,8 @@ pkgbase = quikey
 	depends = python-terminaltables
 	depends = python-xdg
 	depends = python-humanize
-	source = https://github.com/bostrt/quikey/archive/0.1.1.tar.gz
-	md5sums = 8dc7d0541e7a8099e62cb126ef31e76c
+	source = https://github.com/bostrt/quikey/archive/0.1.2.tar.gz
+	md5sums = b6251708ba1c63a767653d137ca6edea
 
 pkgname = quikey
 
