@@ -15,12 +15,12 @@ source=('git+https://github.com/aboul3la/Sublist3r')
 md5sums=('SKIP')
 
 pkgver() {
-  mv ./Sublist3r ./sublist3r-git
-  cd "$pkgname"
+  cd "Sublist3r"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
+    mv ./Sublist3r ./sublist3r-git
     cd "$pkgname"
     python setup.py build
 }
