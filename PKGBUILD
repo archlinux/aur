@@ -1,8 +1,8 @@
 # Maintainer: Nek.12 <vaizin.nikita@gmail.com>
 pkgname='notion-enhancer'
-pkgver=0.8.0
-pkgrel=3
-pkgdesc="An enhancer / customiser for the Notion productivity software"
+pkgver=0.8.3
+pkgrel=1
+pkgdesc="An enhancer/customiser for the all-in-one productivity workspace notion.so"
 arch=('any')
 url="https://github.com/dragonwocky/notion-enhancer"
 license=(MIT)
@@ -12,14 +12,14 @@ depends=('notion-app>=1:2.0.7-3.2'
          'asar>=3.0.3-1')
 makedepends=('npm' 'jq')
 provides=()
-conflicts=("${pkgname%-git}")
+conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install=$pkgname
 source=("https://registry.npmjs.org/notion-enhancer/-/$pkgname-$pkgver.tgz")
 noextract=("${pkgname}-${pkgver}.tgz" )
-md5sums=('303e9c63cbb4981f3d290578afa6f3e7')
+md5sums=('a8b9cb8b7ab7d43bf31d6eedca8f9e9e')
 package() {
     npm install -g --user root --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
 

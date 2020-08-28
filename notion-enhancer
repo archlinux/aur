@@ -1,0 +1,14 @@
+post_upgrade() {
+    if [[ "$(notion-enhancer check)" == "notion-enhancer has not been applied." ]]; then
+        echo "W: Notion-enhancer is not applied, skipping"
+    else
+        echo "Reapplying notion-enhancer"
+        notion-enhancer apply -y
+    fi
+}
+
+## arg 1:  the old package version
+pre_remove() {
+    echo "Disabling notion-enhancer..."
+	notion-enhancer remove -y
+}

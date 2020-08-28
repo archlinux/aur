@@ -1,8 +1,9 @@
 pkgbase = notion-enhancer
-	pkgdesc = An enhancer / customiser for the Notion productivity software
-	pkgver = 0.8.0
-	pkgrel = 2
+	pkgdesc = An enhancer/customiser for the all-in-one productivity workspace notion.so
+	pkgver = 0.8.3
+	pkgrel = 1
 	url = https://github.com/dragonwocky/notion-enhancer
+	install = notion-enhancer
 	arch = any
 	license = MIT
 	makedepends = npm
@@ -10,10 +11,9 @@ pkgbase = notion-enhancer
 	depends = notion-app>=1:2.0.7-3.2
 	depends = nodejs>=14.8.0-1
 	depends = asar>=3.0.3-1
-	conflicts = notion-enhancer
-	noextract = notion-enhancer-0.8.0.tgz
-	source = https://registry.npmjs.org/notion-enhancer/-/notion-enhancer-0.8.0.tgz
-	md5sums = SKIP
+	noextract = notion-enhancer-0.8.3.tgz
+	source = https://registry.npmjs.org/notion-enhancer/-/notion-enhancer-0.8.3.tgz
+	md5sums = a8b9cb8b7ab7d43bf31d6eedca8f9e9e
 
 pkgname = notion-enhancer
 
