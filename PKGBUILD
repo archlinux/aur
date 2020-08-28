@@ -3,7 +3,7 @@
 
 _pkgname=pulumi
 pkgname=pulumi-bin
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Modern Infrastructure as Code"
 arch=('x86_64')
