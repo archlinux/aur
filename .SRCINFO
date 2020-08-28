@@ -24,7 +24,7 @@ pkgbase = mingw-w64-gtk2
 	source = gtk2-fix-out-of-source-build.patch
 	sha256sums = b6c8a93ddda5eabe3bfee1eb39636c9a03d2a56c7b62828b359bf197943c582e
 	sha256sums = a3d347337b0aaa2b170b836c20070f758698949d0511b9a92528ab4926bdcfe6
-	sha256sums = e88bb004767c95cd567f225995891f054218e2c806844a3e5c12b70ac3ea231e
+	sha256sums = b4b02233a57eb96fb728aac1e63b1e962cf06892c6a09e174779ec072b035c98
 
 pkgname = mingw-w64-gtk2
 
