@@ -1,0 +1,17 @@
+pkgbase = passgo
+	pkgdesc = Simple golang password manager.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/ejcx/passgo
+	arch = x86_64
+	arch = i686
+	license = MIT
+	checkdepends = go
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = https://github.com/ejcx/passgo/archive/v2.1.0.tar.gz
+	sha256sums = 6de3b0cfce92f68dc1e6090841cba822cad7673625effc50bee83ad1df75ff73
+
+pkgname = passgo
+
