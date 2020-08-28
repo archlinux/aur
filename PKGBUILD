@@ -5,7 +5,7 @@
 
 pkgbase=mp-5
 pkgname=(mp-5-gtk mp-5-nc mp-5-qt5)
-pkgver=5.41
+pkgver=5.42
 pkgrel=1
 arch=('x86_64')
 url="https://triptico.com/software/mp.html"
@@ -13,8 +13,9 @@ license=('Unlicense')
 #'mp_doccer' 'perl-grutatxt'
 makedepends=('gtk3' 'ncurses' 'qt5-base')
 options=(!makeflags)
-source=("https://triptico.com/download/mp/mp-$pkgver.tar.gz")
-md5sums=('f088e46e156a88adf3cccf752805348e')
+#source=("https://triptico.com/download/mp/mp-$pkgver.tar.gz")
+source=("https://triptico.com/download/mp-5.tar.gz")
+md5sums=('ca4dbe8401524445cb47abc1e8d9da5b')
 
 prepare() {
   # Patch hard-coded install paths
