@@ -1,7 +1,7 @@
 # Maintainer: Matt Harrison <matt@harrison.us.com>
 
 pkgname=statping
-pkgver=0.90.43
+pkgver=0.90.44
 pkgrel=1
 pkgdesc='An easy to use Status Page for your websites and applications.'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=("GPL3")
 depends=(glibc)
 makedepends=(go-pie go.rice yarn python2)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('1967fbd37350980a380d132179dfcac7d79219eeb4a5847766696537e35b9e6c')
+sha256sums=('e3b7c7cdfc6ee63d5cc138f369a018dc12fc8f2ff38639d6c0c7bec4f83381c2')
 _commit_version=676ae77fad9d618ec1918f217a70e27b67b236e4
 
 build() {
