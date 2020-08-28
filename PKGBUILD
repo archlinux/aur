@@ -19,7 +19,7 @@ _id=405
 
 pkgname=cnijfilter-${_name}
 pkgver=3.80
-pkgrel=4
+pkgrel=5
 _pkgver=3.80-1
 pkgdesc="Canon IJ Printer Driver (for ${_name} series)"
 url="https://sg.canon/en/support/0100469302"
