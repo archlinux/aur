@@ -1,7 +1,7 @@
 pkgbase = qtcreator-markview-plugin-git
 	pkgdesc = Qt Creator markup plugin (latest development version)
 	pkgver = r77.4833637
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OneMoreGres/qtc-markview
 	arch = x86_64
 	groups = qt

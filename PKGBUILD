@@ -3,7 +3,7 @@
 _pkgname=qtc-markview
 pkgname=qtcreator-markview-plugin-git
 pkgver=r77.4833637
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt Creator markup plugin (latest development version)"
 groups=('qt' 'qt5')
 arch=('x86_64')
