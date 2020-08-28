@@ -1,0 +1,16 @@
+pkgbase = sshto-git
+	pkgdesc = TUI to manage your ssh connections
+	pkgver = r127.ef4b8dc
+	pkgrel = 1
+	url = https://github.com/vaniacer/sshto
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = dialog
+	depends = openssh
+	provides = sshto
+	source = git+https://github.com/vaniacer/sshto.git
+	sha256sums = SKIP
+
+pkgname = sshto-git
+
