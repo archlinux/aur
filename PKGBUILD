@@ -6,8 +6,8 @@ _pkgname=widelands
 pkgname="${_pkgname}-git"
 epoch=0
 _pkgver=latest
-pkgver=20+r24473_20200312_510e0dd
-pkgrel=1
+pkgver=21+r24821_20200828_7f72ddf
+pkgrel=2
 pkgdesc="An elaborate realtime multiplayer strategy game with emphasis on economy and transport - development version. In the spirit of BlueByte's 'Siedler II/ Settlers 2'."
 url="http://widelands.org/"
 arch=('i686' 'x86_64')
@@ -26,6 +26,7 @@ depends=(
 makedepends=(
   'boost'
   'cmake'     # For configuring the build
+  'coreutils' # For `nproc`
   'doxygen'   # For documentation (?)
   'git'       # For getting the source
   'graphviz'  # For documentation (?)
@@ -186,7 +187,7 @@ build() {
     ..
 
   msg2 'Running `make` ...'
-  make
+  make -j "$(nproc)"
   # msg2 'Running `make lang` ...'
   # make lang ## Seems not to be needed; seems to be done already with the general `make`-call.
 }
