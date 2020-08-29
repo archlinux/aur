@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=webtorrent-desktop
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Streaming torrent client."
 arch=('any')
@@ -14,7 +14,7 @@ options=(!strip)
 source=("https://github.com/webtorrent/${pkgname}/archive/v${pkgver}.tar.gz"
         "webtorrent-desktop"
         "traysupport.patch")
-sha256sums=('6be06d9da38d93b9297f4ec3269abd69e8d17521f3121b738a4aaebe0ddbfb2b'
+sha256sums=('75338a3def65ca43db2c8c1e6043370dcb1a6a8e2809ffa70c5b90d21b350531'
             'c1a416dbaefa5da60d236af561d60b7ed86def1c3ee05b7090bc5586da72fb17'
             'dbeff65a109489ce8ce4e89d0b4ad3bc1768d03707bc1a0845db852049296deb')
 
