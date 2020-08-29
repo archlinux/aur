@@ -1,0 +1,17 @@
+pkgbase = annepro2-tools-git
+	pkgdesc = Alternative firmware update tool for the Anne Pro 2 keyboard
+	pkgver = r19.d10d476
+	pkgrel = 1
+	url = https://github.com/OpenAnnePro/AnnePro2-Tools
+	arch = x86_64
+	license = GPL2
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = annepro2-tools
+	conflicts = annepro2-tools
+	source = git+https://github.com/OpenAnnePro/AnnePro2-Tools.git
+	md5sums = SKIP
+
+pkgname = annepro2-tools-git
+
