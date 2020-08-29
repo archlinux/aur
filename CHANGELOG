@@ -1,3 +1,8 @@
+Version 6.6
+29 August 2020
+    - fix #34: quote mailbox if necessary
+    - fix #36: use setuptools, suggest pip to install and uninstall
+
 Version 6.5
 28 August 2020
     - fix #23: port getmail-gmail-xoauth-tokens
