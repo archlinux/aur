@@ -6,4 +6,4 @@ Exec=airshipper
 Categories=Game
 Keywords=veloren
 Icon=veloren.png
-Terminal=true
+Terminal=false
