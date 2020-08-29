@@ -20,7 +20,7 @@ check() {
 	#meson test -C build
 
 	cd "$pkgname-v$pkgver"
-	cargo test
+	cargo test --release
 }
 
 package() {
