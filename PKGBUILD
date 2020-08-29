@@ -1,8 +1,8 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=linux-wifi-hotspot
-pkgver=2.0.0+4+g61ac43a
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Create virtual wifi hotspot using same wifi card which is connected to an AP + many features (a GUI tool)"
 arch=('x86_64')
 url="https://github.com/lakinduakash/linux-wifi-hotspot"
@@ -19,22 +19,16 @@ optdepends=('haveged: For random MAC generation'
 provides=('wihotspot')
 conflicts=('wihotspot' 'create_ap')
 install="$pkgname.install"
-_commit=61ac43ab50b8a751d94d4ac78c2d9448fdb97a66
-source=("git+https://github.com/lakinduakash/linux-wifi-hotspot#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('36b9b9d02231f884ab6bec9fa46d8522185717067e68b32a5789d96063cc83d1')
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}-${pkgver}"
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   install -Dm644 LICENSE -t \
