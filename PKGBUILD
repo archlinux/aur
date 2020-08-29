@@ -13,7 +13,7 @@ conflicts=('rustscan')
 depends=("nmap")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('5890e1f44be2b619182a560d7010d91f802cb2cf71e206c9bbeb2a2435213246')
+sha256sums=('050fb291563bcd4e3578e9d26459b044c152bde6622abf4294b55f9341b43342')
 
 build() {
   cd ${_pkgname}-${pkgver}
