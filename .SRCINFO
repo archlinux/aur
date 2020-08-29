@@ -1,13 +1,13 @@
 pkgbase = minetest-mineclone2
 	pkgdesc = Minecraft clone game for Minetest
-	pkgver = 0.67.1
+	pkgver = 0.67.2
 	pkgrel = 1
 	url = https://git.minetest.land/Wuzzy/MineClone2
 	arch = any
 	license = GPL3
 	depends = minetest-common
-	source = mineclone2-0.67.1.tar.gz::https://git.minetest.land/Wuzzy/MineClone2/archive/0.67.1.tar.gz
-	sha256sums = fee68755eab6c2c771d254f2c48e67b391cf359fb9cbda4481190f075bc97210
+	source = mineclone2-0.67.2.tar.gz::https://git.minetest.land/Wuzzy/MineClone2/archive/0.67.2.tar.gz
+	sha256sums = 2434e75dfc9f2da5e10b16491af4dc0de1562394ccf30bce347b16a23fbf2587
 
 pkgname = minetest-mineclone2
 
