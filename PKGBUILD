@@ -1,17 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=video-trimmer
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Trim videos quickly"
 arch=('x86_64')
 url="https://gitlab.gnome.org/YaLTeR/video-trimmer"
 license=('GPL3')
-depends=('gtk3' 'gst-plugins-base-libs' 'ffmpeg')
-makedepends=('meson' 'rust')
-checkdepends=('appstream-glib')
-optdepends=('gst-plugins-bad: Possibly needed for some file formats')
+depends=('gtk3' 'gst-plugins-good' 'ffmpeg')
+makedepends=('meson' 'cargo')
+checkdepends=('appstream')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('b94dd3c3ed745e6dcabbe90e2033464b06b491f60cfd7bdf5788403e23610598')
+sha256sums=('199dacfb6ea94b039800dec5527e5843f41549988404d96b721f48dd941efd9a')
 
 build() {
 	arch-meson "$pkgname-v$pkgver" build
@@ -20,6 +19,9 @@ build() {
 
 check() {
 	meson test -C build
+
+	cd "$pkgname-v$pkgver"
+	cargo test --release
 }
 
 package() {

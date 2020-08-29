@@ -1,19 +1,18 @@
 pkgbase = video-trimmer
 	pkgdesc = Trim videos quickly
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://gitlab.gnome.org/YaLTeR/video-trimmer
 	arch = x86_64
 	license = GPL3
-	checkdepends = appstream-glib
+	checkdepends = appstream
 	makedepends = meson
-	makedepends = rust
+	makedepends = cargo
 	depends = gtk3
-	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
 	depends = ffmpeg
-	optdepends = gst-plugins-bad: Possibly needed for some file formats
-	source = https://gitlab.gnome.org/YaLTeR/video-trimmer/-/archive/v0.2.0/video-trimmer-v0.2.0.tar.gz
-	sha256sums = b94dd3c3ed745e6dcabbe90e2033464b06b491f60cfd7bdf5788403e23610598
+	source = https://gitlab.gnome.org/YaLTeR/video-trimmer/-/archive/v0.3.0/video-trimmer-v0.3.0.tar.gz
+	sha256sums = 199dacfb6ea94b039800dec5527e5843f41549988404d96b721f48dd941efd9a
 
 pkgname = video-trimmer
 
