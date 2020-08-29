@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-thaw
 _name=${pkgname#python-}
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Generates report showing where dependencies affect your project"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
         "https://github.com/kateapault/pip-thaw/raw/v$pkgver/LICENSE.txt")
-sha256sums=('c11be3b60f0f4f12b932af006e73a52e2f9bff6206a17e4075cafd718fb22cb1'
+sha256sums=('08784d4d4b3eed538090b9b094a45d63c7d5908bd88369d918be90b1bf2f9460'
             '5268e3d47d3de16127c98aea02116723155a0a52eb6fe50b9d9e7a1bb76d7e47')
 
 build() {
@@ -22,7 +22,7 @@ build() {
 
 check() {
 	cd "$_name-$pkgver"
-	pytest
+	pytest tests/test_thaw.py
 }
 
 package() {
