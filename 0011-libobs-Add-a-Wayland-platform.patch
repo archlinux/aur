@@ -1,4 +1,4 @@
-From 3223d221945109bf6c78085a04c66816749a3168 Mon Sep 17 00:00:00 2001
+From f2c169236834251a78e8185b78fdec628762535f Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Fri, 6 Mar 2020 18:53:42 -0300
 Subject: [PATCH 11/20] libobs: Add a Wayland platform
@@ -37,7 +37,7 @@ index b56c2bba..9ab530ce 100644
  		add_definitions(-DUSE_XDG)
  	endif()
 diff --git a/UI/CMakeLists.txt b/UI/CMakeLists.txt
-index a660f326..171efa2b 100644
+index a660f326..56195d7d 100644
 --- a/UI/CMakeLists.txt
 +++ b/UI/CMakeLists.txt
 @@ -403,6 +403,11 @@ if (APPLE)
@@ -45,7 +45,7 @@ index a660f326..171efa2b 100644
  endif()
  
 +if (ENABLE_WAYLAND)
-+	find_package(Qt5Gui)
++	find_package(Qt5Gui REQUIRED)
 +	include_directories(${Qt5Gui_PRIVATE_INCLUDE_DIRS})
 +endif()
 +

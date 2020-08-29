@@ -1,4 +1,4 @@
-From f4dc111b8acbdd2be0bb077f1ac8d703d92d497c Mon Sep 17 00:00:00 2001
+From 1367a881c16592a486229ac024df2cf08fb43b7a Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Mon, 9 Mar 2020 13:19:31 -0300
 Subject: [PATCH 02/20] libobs-opengl: Rename gl-x11.c to gl-x11-glx.c

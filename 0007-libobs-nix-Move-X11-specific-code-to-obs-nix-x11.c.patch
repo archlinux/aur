@@ -1,4 +1,4 @@
-From 77e85e17d58c13d655d3d81bb197c5a5d1f1453f Mon Sep 17 00:00:00 2001
+From 7301a59e6b593bc6d016d3de74e80c1b1361b508 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Fri, 6 Mar 2020 17:24:33 -0300
 Subject: [PATCH 07/20] libobs/nix: Move X11-specific code to obs-nix-x11.c

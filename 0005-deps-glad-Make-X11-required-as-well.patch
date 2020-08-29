@@ -1,4 +1,4 @@
-From e7f7eecfc23bd9903b7522aefbc82cce0284b889 Mon Sep 17 00:00:00 2001
+From ce73c0d635a4cff3ab254235c48e8ebe0b371cef Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Sat, 11 Apr 2020 23:49:05 -0300
 Subject: [PATCH 05/20] deps/glad: Make X11 required as well

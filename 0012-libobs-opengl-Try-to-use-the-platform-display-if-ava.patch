@@ -1,4 +1,4 @@
-From 321d06f9a2754dacbdac119a971d137cb2ececf2 Mon Sep 17 00:00:00 2001
+From ff3dbf578c696659433bc30c039c4e2e5d10765a Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Sat, 11 Apr 2020 23:32:16 -0300
 Subject: [PATCH 12/20] libobs-opengl: Try to use the platform display if

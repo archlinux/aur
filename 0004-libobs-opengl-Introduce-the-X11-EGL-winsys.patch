@@ -1,4 +1,4 @@
-From 47d63a561f82114ae31dca741ca2fdad27a7c519 Mon Sep 17 00:00:00 2001
+From 12ef68d9914bd4aec60ef9bdf77f67099534a208 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Mon, 9 Mar 2020 17:35:49 -0300
 Subject: [PATCH 04/20] libobs-opengl: Introduce the X11/EGL winsys

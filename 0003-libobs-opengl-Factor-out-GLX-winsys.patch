@@ -1,4 +1,4 @@
-From c6f9827b8c07adb4c95811f2545ba546fac0c132 Mon Sep 17 00:00:00 2001
+From 9394af80060680154a3c00e8ea23cced0d06179d Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Mon, 9 Mar 2020 16:46:37 -0300
 Subject: [PATCH 03/20] libobs-opengl: Factor out GLX winsys

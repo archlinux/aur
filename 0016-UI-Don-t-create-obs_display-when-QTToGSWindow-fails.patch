@@ -1,4 +1,4 @@
-From 2e5a62066f4c54880c1879f44a703f5e302e79c0 Mon Sep 17 00:00:00 2001
+From 107533c8298418360acbbbf7b51aa9ea1ffc30a0 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Wed, 19 Aug 2020 10:11:08 -0300
 Subject: [PATCH 16/20] UI: Don't create obs_display when QTToGSWindow fails

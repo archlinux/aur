@@ -1,4 +1,4 @@
-From 2debb5ceb1bcc44f74c2b72f2af7ef02e3755e69 Mon Sep 17 00:00:00 2001
+From 484ff6702e4c230a4769cdb7289c013de9b12b58 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Thu, 20 Aug 2020 11:57:19 -0300
 Subject: [PATCH 19/20] UI: Make OBSQTDisplay::CreateDisplay() public and allow

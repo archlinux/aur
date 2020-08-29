@@ -1,4 +1,4 @@
-From d61735d0dc74fc1a50564fe72cb26a07c4d49e56 Mon Sep 17 00:00:00 2001
+From ffe8b9083f11be627dbfabaf5034d1976d03551a Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Mon, 9 Mar 2020 21:23:37 -0300
 Subject: [PATCH 14/20] UI: Retrieve Wayland surface from QWindow

@@ -1,4 +1,4 @@
-From 5dd4d22ec8c35ffd18499027573a42a57343eee6 Mon Sep 17 00:00:00 2001
+From 6e1eef3b6dd72ca2e7ab212e0eb69685347787ea Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Fri, 6 Mar 2020 17:50:41 -0300
 Subject: [PATCH 08/20] libobs: Introduce the concept of a Unix platform

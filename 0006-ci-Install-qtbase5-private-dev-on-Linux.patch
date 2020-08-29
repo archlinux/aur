@@ -1,4 +1,4 @@
-From 9a85c7fcaf67bf606e3f57507c532e1239e52d57 Mon Sep 17 00:00:00 2001
+From 74515e17f35d9afb75a9ea7ec024e36782b168f6 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Fri, 6 Mar 2020 16:22:01 -0300
 Subject: [PATCH 06/20] ci: Install qtbase5-private-dev on Linux

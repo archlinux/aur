@@ -1,4 +1,4 @@
-From fb03e532004fec99d7d63ce765133665504aae70 Mon Sep 17 00:00:00 2001
+From bd07471e8298f4b71c69d6a25ded5293141fd4fc Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Wed, 19 Aug 2020 13:08:01 -0300
 Subject: [PATCH 17/20] UI: Rename callback to match signal name
