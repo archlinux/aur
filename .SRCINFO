@@ -1,15 +1,18 @@
 pkgbase = python-transmissionrpc
 	pkgdesc = Module to communicate with Transmission BT client via JSON-RPC
-	pkgver = 0.11
+	pkgver = 3.2.1
 	pkgrel = 1
-	url = https://bitbucket.org/blueluna/transmissionrpc/wiki/Home
+	url = https://github.com/Trim21/transmission-rpc
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	depends = python-six
-	source = https://bitbucket.org/blueluna/transmissionrpc/get/release-0.11.tar.gz
-	md5sums = 2ec4dc465435cc970c20f1e10524439b
+	depends = python-requests
+	depends = python-typing_extensions
+	depends = python-yarl
+	provides = transmission_rpc
+	source = https://files.pythonhosted.org/packages/source/t/transmission-rpc/transmission-rpc-3.2.1.tar.gz
+	sha256sums = 04512c856eddcee4f360b61e7e87fe042fd7c73585115095532b880e396cf0d4
 
 pkgname = python-transmissionrpc
 

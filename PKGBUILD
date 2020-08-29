@@ -1,21 +1,30 @@
-# Maintainer: Bogdan Szczurek <thebodzio@gmail.com>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Bogdan Szczurek <thebodzio@gmail.com>
 
-pkgname=python-transmissionrpc
-pkgver=0.11
+_pkgname='transmission-rpc'
+pkgname="python-${_pkgname/-/}"
+pkgver=3.2.1
 pkgrel=1
-pkgdesc="Module to communicate with Transmission BT client via JSON-RPC"
-arch=(any)
-url="https://bitbucket.org/blueluna/transmissionrpc/wiki/Home"
+pkgdesc='Module to communicate with Transmission BT client via JSON-RPC'
+arch=('any')
+url='https://github.com/Trim21/transmission-rpc'
 license=('MIT')
-depends=('python' 'python-six')
+depends=('python' 'python-requests' 'python-typing_extensions' 'python-yarl')
 makedepends=('python-setuptools')
-source=(https://bitbucket.org/blueluna/${pkgname:7}/get/release-${pkgver}.tar.gz)
+provides=("${_pkgname/-/_}")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('04512c856eddcee4f360b61e7e87fe042fd7c73585115095532b880e396cf0d4')
 
-package() {
-	cd "$srcdir/blueluna-${pkgname:7}-eb2a32720f8a"
-	python setup.py install --root="$pkgdir/" --optimize=1
-
-	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+build() {
+  cd "${_pkgname}-${pkgver}"
+  python setup.py build
 }
 
-md5sums=('2ec4dc465435cc970c20f1e10524439b')
+package() {
+  cd "${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
+}
+
+# vim: ts=2 sw=2 et:
