@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=i3-workspace-brightness
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Utility to auto-adjust the brightness of i3wm workspaces"
 arch=('x86_64')
