@@ -1,0 +1,15 @@
+pkgbase = desknamer-git
+	pkgdesc = automatically rename bspwm desktops based on applications inside
+	pkgver = r41.c81f631
+	pkgrel = 1
+	url = https://gitlab.com/jallbrit/desknamer
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bspwm
+	provides = desknamer
+	source = desknamer::git+https://gitlab.com/jallbrit/desknamer.git
+	md5sums = SKIP
+
+pkgname = desknamer-git
+
