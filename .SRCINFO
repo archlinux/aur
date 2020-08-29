@@ -1,5 +1,5 @@
 pkgbase = vim-forest-night-git
-	pkgver = v0.1.1.r40.gf4e0c92
+	pkgver = v0.1.2.r0.g02b6cc5
 	pkgrel = 1
 	url = https://github.com/sainnhe/forest-night
 	arch = any
