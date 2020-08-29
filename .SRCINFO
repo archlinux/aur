@@ -1,33 +1,33 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
-	pkgver = 5.8.4.arch1
+	pkgver = 5.8.5.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.8.4-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.8.5-arch1
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = https://archive.archlinux.org/packages/.all/linux-5.8.4.arch1-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-headers-5.8.4.arch1-1-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-docs-5.8.4.arch1-1-x86_64.pkg.tar.zst
-	sha256sums = 7a656e04fa2ef858b0e8c8c328c2ae0b056887ab87a62bcfed0bf0a512b8db9e
-	sha256sums = 01e51a9be30b883c5a9e116dc5231c15e06d777cea8df154697fe49efef00f16
-	sha256sums = a16feb82bfcc0a95062bee2535f36dc051d4ec0c5b384de74d8098894c38fec9
+	source = https://mirrors.neusoft.edu.cn/archlinux/core/os/x86_64/linux-5.8.5.arch1-1-x86_64.pkg.tar.zst
+	source = https://mirrors.neusoft.edu.cn/archlinux/core/os/x86_64/linux-headers-5.8.5.arch1-1-x86_64.pkg.tar.zst
+	source = https://mirrors.neusoft.edu.cn/archlinux/core/os/x86_64/linux-docs-5.8.5.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = 225ee0babd6d1ea39992a8f38900038ea30d84eecad226f96df308a37c2d020a
+	sha256sums = 542c1ad94e0b9fd26a888d4115dbc7f9192b6051658f322d798f5a8f5873414e
+	sha256sums = b96e0738926ead1cbea1a6125f7671899b12ef8dfb16fcadfa979e72e2a55851
 
 pkgname = linux-versioned-bin
-	pkgdesc = Dummy package depending on linux5.8.4.arch1-1-bin
-	depends = linux5.8.4.arch1-1-bin
+	pkgdesc = Dummy package depending on linux5.8.5.arch1-1-bin
+	depends = linux5.8.5.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.8.4.arch1-1-headers-bin
-	depends = linux5.8.4.arch1-1-headers-bin
+	pkgdesc = Dummy package depending on linux5.8.5.arch1-1-headers-bin
+	depends = linux5.8.5.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.8.4.arch1-1-docs-bin
-	depends = linux5.8.4.arch1-1-docs-bin
+	pkgdesc = Dummy package depending on linux5.8.5.arch1-1-docs-bin
+	depends = linux5.8.5.arch1-1-docs-bin
 
-pkgname = linux5.8.4.arch1-1-bin
-	pkgdesc = The Linux kernel and modules, version 5.8.4-arch1-1
+pkgname = linux5.8.5.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 5.8.5-arch1-1
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -39,11 +39,11 @@ pkgname = linux5.8.4.arch1-1-bin
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux5.8.4.arch1-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.8.4-arch1-1
+pkgname = linux5.8.5.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.8.5-arch1-1
 	conflicts = linux-headers
 
-pkgname = linux5.8.4.arch1-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.8.4-arch1-1
+pkgname = linux5.8.5.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.8.5-arch1-1
 	conflicts = linux-docs
 
