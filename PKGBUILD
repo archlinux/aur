@@ -51,8 +51,8 @@ build() {
 
 package() {
 	cd "$_pkgname"
-  mkdir -p ${pkgdir}/usr/share/BespokeSynth
-  install ${srcdir}/Builds/LinuxMakefile/build/BespokeSynth ${pkgdir}/usr/share/BespokeSynth
+  mkdir -p ${pkgdir}/usr/bin
+  install ${srcdir}/Builds/LinuxMakefile/build/BespokeSynth ${pkgdir}/usr/bin/BespokeSynth
   mkdir -p ${pkgdir}/usr/share/icons/hicolor/512x512/apps
   install ${srcdir}/Builds/LinuxMakefile/build/BespokeSynth/bespoke_icon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps
 
