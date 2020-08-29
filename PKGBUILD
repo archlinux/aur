@@ -27,6 +27,7 @@ pkgver() {
 }
 
 prepare() {
+  pwd
 	cd "$_pkgname"
   sed -i -e 's/usb-1.0/usb-1.0;python3.8/'  BespokeSynth.jucer
   sed -i -e 's/python-config/python3-config/'  BespokeSynth.jucer
@@ -55,6 +56,7 @@ package() {
   install ${srcdir}/Builds/LinuxMakefile/build/BespokeSynth ${pkgdir}/usr/bin/BespokeSynth
   mkdir -p ${pkgdir}/usr/share/icons/hicolor/512x512/apps
   install ${srcdir}/Builds/LinuxMakefile/build/BespokeSynth/bespoke_icon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps
-
+  mkdir -p /usr/share/applications/
+  install ${srcdir}/../BespokeSynth.desktop  ${pkgdir}/usr/share/applications/BespokeSynth.desktop
 
 }
