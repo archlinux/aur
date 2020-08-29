@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-beta-ffmpeg-codecs
-pkgver=85.0.4183.48
+pkgver=85.0.4183.76
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-beta"
 arch=('x86_64')
@@ -10,25 +10,23 @@ url="https://ffmpeg.org/"
 license=('LGPL2.1')
 depends=('glibc')
 makedepends=(
-  'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python2'
-  'xdg-utils' 'gn' 'python2-xcb-proto'
+  'gtk3' 'libexif' 'libxss' 'ninja' 'nss' 'pciutils' 'python2' 'python'
+  'xdg-utils' 'gn'
 )
 options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('d2886f6acc6a5afcd03deac7ad82ca6f99f527672a2e0cafaadc467edc98306584e26796c1a9a097ce2880bbee68d05982df12a1c31c34d52b1c1506f4fbd7fa')
+sha512sums=('23afec9d42855e4ddc8429d5521f7a917e194fe3fe41cffc974a99b93dc7c2a8d63e5ab5886928d9d486d02b9b73997d561b72d2d3ed4e426a5aad7206f07f37')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
 
-  # Use Python 2
-  find -name '*.py' | xargs sed -e 's|env python|&2|g' -e 's|bin/python|&2|g' -i || true
+  # Force script incompatible with Python 3 to use /usr/bin/python2
+  sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
 
-  # force some 'older' binaries in the path
-  [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
-  mkdir "$srcdir/path"
-  ln -s /usr/bin/python2 "$srcdir/path/python"
+  # Make xcbgen available to ui/gfx/x/gen_xproto.py running under Python 2
+  ln -s /usr/lib/python3.*/site-packages/xcbgen "$srcdir/"
 
 }
 
@@ -37,7 +35,10 @@ build() {
 
   python2 tools/clang/scripts/update.py
 
-  export PATH="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin:$srcdir/path:$PATH"
+  export PATH="${srcdir}/chromium-${pkgver}/third_party/llvm-build/Release+Asserts/bin:$PATH"
+
+  # ui/gfx/x/gen_xproto.py needs xcbgen
+  export PYTHONPATH=$srcdir
 
   export CC="clang"
   export CXX="clang++"
