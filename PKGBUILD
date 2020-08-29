@@ -2,26 +2,27 @@
 
 gitname=htop
 pkgname=${gitname}-git
-pkgver=1079.17bad17
+pkgver=3.0.0.4.g2d14269
 pkgrel=1
+epoch=1
 pkgdesc="Interactive text-mode process viewer"
-url="https://github.com/SoapGentoo/${gitname}"
+url="https://htop.dev"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('ncurses')
+depends=(ncurses libnl)
 makedepends=('git' 'python')
 optdepends=('lsof: list open files for running process'
             'strace: attach to running process')
 provides=('htop')
 conflicts=('htop')
 options=('!emptydirs')
-source=("git+${url}.git#branch=fix-gcc10")
+source=("git+https://github.com/htop-dev/htop.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	 cd "${srcdir}/${gitname}"
-	 local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-	 printf "%s" "${ver//-/.}"
+    cd "${srcdir}/${gitname}"
+    local ver="$(git describe --tags)"
+    printf "%s" "${ver//-/.}"
 }
 
 prepare() {
