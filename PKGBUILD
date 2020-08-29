@@ -5,7 +5,7 @@ _appname='nextcloud'
 pkgname="${_appname}-stable"
 provides=("$_appname")
 conflicts=("$_appname")
-pkgver=18.0.7
+pkgver=18.0.8
 pkgrel=1
 pkgdesc="A cloud server to store your files centrally on a hardware controlled by you"
 arch=('any')
@@ -29,7 +29,7 @@ validpgpkeys=('28806A878AE423A28372792ED75899B9A724937A')
 source=("https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.bz2"{,.asc}
         'apache.example.conf'
         'nextcloud-stable.hook')
-sha256sums=('4b2cc7475d925faf9ce6c655d290cbbee8c02a40aaf0628d3d41b7ccd8416a5e'
+sha256sums=('2f21b0833797fe91e0a88cb8fa7cf67c10bb11635b1dc1e540cad4c1f09fa62c'
             'SKIP'
             '30a8ad62b0dc9523ca7f0387b1f0483d196c1e011ec7e3a5b98e7d33c721d4bf'
             '26373084dc42906814ee46e0c4ebceeeae512caf46eb7cde58b5dd972b7691b1')
