@@ -10,7 +10,7 @@ license=('MIT')
 depends=('man' 'arch-wiki-docs' 'fzf' 'ripgrep' 'awk' 'xdg-utils' 'w3m')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('cb2668cb2141044936911939f313cca0abafb18707788c4cadc7d3b039e48449')
-validpgpkeys=('DC9CC1294EAB98FA685FCD3520DF9FC9E4DF2430')
+# validpgpkeys=('DC9CC1294EAB98FA685FCD3520DF9FC9E4DF2430')
 
 package() {
 
