@@ -1,0 +1,15 @@
+pkgbase = uberswitch-git
+	pkgdesc = A header-only, unobtrusive, almighty alternative to the C++ switch statement that looks just like the original.
+	pkgver = r39.1a192a5
+	pkgrel = 1
+	url = https://github.com/falemagn/uberswitch
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	provides = uberswitch
+	conflicts = uberswitch
+	source = uberswitch-git::git+https://github.com/falemagn/uberswitch.git
+	sha256sums = SKIP
+
+pkgname = uberswitch-git
+
