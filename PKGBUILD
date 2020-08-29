@@ -1,7 +1,7 @@
 # Maintainer: David Thurstenson <thurstylark@gmail.com>
 pkgname=mmdvmhost-git
 pkgver=r2193.f71c8ce
-pkgrel=1
+pkgrel=2
 pkgdesc="The host program for the MMDVM"
 arch=('x86_64' 'i686')
 url="https://github.com/g4klx/MMDVMHost"
@@ -13,6 +13,7 @@ conflicts=("${pkgname%-git}")
 install=mmdvmhost.install
 source=('mmdvmhost::git+https://github.com/g4klx/MMDVMHost.git')
 md5sums=('SKIP')
+backup=('etc/MMDVM.ini')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -31,4 +32,5 @@ package() {
 
 	install -Dm 755 MMDVMHost "${pkgdir}/usr/bin/MMDVMHost"
 	install -Dm 755 RemoteCommand "${pkgdir}/usr/bin/RemoteCommand"
+	install -Dm 600 MMDVM.ini "${pkgdir}/etc/MMDVM.ini"
 }

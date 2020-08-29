@@ -1,7 +1,7 @@
 pkgbase = mmdvmhost-git
 	pkgdesc = The host program for the MMDVM
 	pkgver = r2193.f71c8ce
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/g4klx/MMDVMHost
 	install = mmdvmhost.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = mmdvmhost-git
 	makedepends = git
 	provides = mmdvmhost
 	conflicts = mmdvmhost
+	backup = etc/MMDVM.ini
 	source = mmdvmhost::git+https://github.com/g4klx/MMDVMHost.git
 	md5sums = SKIP
 
