@@ -3,7 +3,7 @@
 # Contributor: Tao Meng ("mtunique") <oatgnem [at] gmail.com>
 
 pkgname=apache-flink
-_appver=1.10.1
+_appver=1.10.2
 _scalaver=2.12
 pkgver=${_appver}_${_scalaver}
 pkgrel=1
@@ -18,11 +18,11 @@ optdepends=('python2: Python2 support for python API'
 makedepends=('jq' 'curl')
 install=apache-flink.install
 _download_portal="https://www.apache.org/dyn/closer.lua/flink/flink-${_appver}/flink-${_appver}-bin-scala_${_scalaver}.tgz"
-_closest_mirror=$(curl "${_download_portal}?asjson=1" | jq '(.preferred + .path_info)' | tr -d '"",' )
+_closest_mirror=$(curl "${_download_portal}?asjson=1" | jq '(.preferred + .path_info)' | tr -d '"",')
 source=("${pkgname}-${pkgver}.tgz::$_closest_mirror"
         'apache-flink-jobmanager.service'
         'apache-flink-taskmanager@.service')
-sha256sums=('cd3159a6d288349768787a1b57968e108e28e7d31c06d44c6ed241c102f56deb'
+sha256sums=('145365e298d9600abc6df3737a580c8fb1bc805a3c0a17395cbdfe502510a5bc'
             'SKIP'
             'SKIP')
 backup=("etc/${pkgname}/flink-conf.yaml"
@@ -38,7 +38,10 @@ PKGEXT=${PKGEXT:-".pkg.tar.xz"}
 
 package() {
   cd "${srcdir}/flink-${_appver}"
-  install -d "${pkgdir}/usr/bin" "${pkgdir}/opt" "${pkgdir}/var/log/apache-flink" "${pkgdir}/run/apache-flink"
+  install -d "${pkgdir}/usr/bin" \
+             "${pkgdir}/opt" \
+             "${pkgdir}/var/log/apache-flink" \
+             "${pkgdir}/run/apache-flink"
   cp -r "${srcdir}/flink-${_appver}" "${pkgdir}/opt/apache-flink/"
   cd "${pkgdir}/usr/bin"
   binpath='/opt/apache-flink/bin/flink'
