@@ -1,10 +1,10 @@
-# Maintainer: Walter Casanova  wcasanova [at] disroot [dot] com
+# Maintainer: Walter Casanova  wcasanova [at] disroot [dot] org
 # htop fork https://github.com/hishamhm/htop/issues/992
 # https://github.com/htop-dev/htop/blob/master/ChangeLog#L3-L7
 
 _pkgname=htop
 pkgname=${_pkgname}-dev-git
-pkgver=3.0.0rc2.r0.g9e57b5c
+pkgver=3.0.0.r4.g2d14269
 pkgrel=1
 pkgdesc="htop - an interactive process viewer"
 url="https://github.com/htop-dev/${_pkgname}"
@@ -41,11 +41,6 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
   make
-}
-
-check() {
-  cd "${srcdir}/${_pkgname}"
-  make -k check
 }
 
 package() {
