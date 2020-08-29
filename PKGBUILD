@@ -2,7 +2,7 @@
 
 _gitname=applet-window-buttons
 pkgname=plasma5-applets-window-buttons-git
-pkgver=0.2.r3.gb345bdc
+pkgver=0.8.1.r0.g1668c69
 pkgrel=1
 pkgdesc="Plasma 5 applet in order to show window buttons in your panels"
 arch=(x86_64)
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${_gitname}
-  git describe --long | sed 's/^[v-]//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags $(git rev-list --tags --max-count=1) | sed 's/^[v-]//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
