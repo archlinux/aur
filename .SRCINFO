@@ -1,6 +1,6 @@
 pkgbase = coopgammad
 	pkgdesc = Cooperative gamma server
-	pkgver = 1.3
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/maandree/coopgammad
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = coopgammad
 	makedepends = libgamma
 	makedepends = libclut
 	depends = libgamma
-	source = coopgammad-1.3.tar.gz::https://github.com/maandree/coopgammad/archive/1.3.tar.gz
-	sha256sums = fd61cb16130a87f0c07443914a3964884749e7ae360e6ac7ef2713eb5163655c
+	source = coopgammad-1.3.1.tar.gz::https://github.com/maandree/coopgammad/archive/1.3.1.tar.gz
+	sha256sums = ef66cba3d20df0a021124536927220c7d8e741fb4b75b3951bedaca82e3001c8
 
 pkgname = coopgammad
 
