@@ -15,11 +15,11 @@ provides=('bespokesynth' 'bespokesynth-bin')
 conflicts=('bespokesynth' 'bespokesynth-bin')
 replaces=()
 noextract=()
-source=(${_pkgname}::git+https://github.com/awwbees/BespokeSynth)
+source=(BespokeSynth::git+https://github.com/awwbees/BespokeSynth)
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "BespokeSynth"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -27,8 +27,7 @@ pkgver() {
 }
 
 prepare() {
-  pwd
-	cd "$_pkgname"
+  cd "BespokeSynth"
   sed -i -e 's/usb-1.0/usb-1.0;python3.8/'  BespokeSynth.jucer
   sed -i -e 's/python-config/python3-config/'  BespokeSynth.jucer
   sed -i -e 's/JUCE_PLUGINHOST_VST="1"/JUCE_PLUGINHOST_VST="1" JUCE_WEB_BROWSER="0"/'  BespokeSynth.jucer
@@ -44,14 +43,14 @@ prepare() {
 }
 
 build() {
-	cd "$_pkgname"
+  cd "BespokeSynth"
 	# ./configure --prefix=/usr
   cd Builds/LinuxMakefile
   CONFIG=Release make
 }
 
 package() {
-	cd "$_pkgname"
+  cd "BespokeSynth"
   mkdir -p ${pkgdir}/usr/bin
   install ${srcdir}/BespokeSynth/Builds/LinuxMakefile/build/BespokeSynth ${pkgdir}/usr/bin/BespokeSynth
   mkdir -p ${pkgdir}/usr/share/icons/hicolor/512x512/apps
