@@ -1,23 +1,26 @@
 pkgbase = pyfunceble-dev
 	pkgdesc = The tool to check the availability or syntax of domain, IP or URL.
 	pkgver = 3.2.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pyfunceble.github.io
 	arch = any
 	license = Apache 2.0
 	depends = domain2idna
+	depends = python-alembic
 	depends = python-box
 	depends = python-colorama
 	depends = python-cryptography
 	depends = python-distribute
 	depends = python-dnspython
 	depends = python-dotenv
+	depends = python-inflection
 	depends = python-msgpack
 	depends = python-pyaml
 	depends = python-pymysql
 	depends = python-requests
 	depends = python-ruamel-yaml
 	depends = python-setuptools
+	depends = python-sqlalchemy
 	depends = python-toml
 	depends = python3
 	provides = pyfunceble=3.2.12
