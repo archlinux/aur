@@ -1,8 +1,9 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Maintainer: Daniel Pierce <moofed@gmail.com>
+# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Maxime Morel <maxime@mmorel.eu>
 
 pkgname=opentrack
-pkgver=2.3.11
+pkgver=2.3.12
 pkgrel=1
 pkgdesc="Head tracking software"
 arch=('x86_64')
@@ -11,7 +12,7 @@ license=('GPL3')
 depends=('qt5-base' 'opencv')
 makedepends=('cmake' 'xplane-sdk-devel' 'wine' 'ninja')
 source=("https://github.com/opentrack/opentrack/archive/opentrack-$pkgver.tar.gz" "opentrack.desktop")
-sha256sums=('a226fb8e017078cb7ad523437348d2509b11810e81d0c74335ff3ca34d39c6e7'
+sha256sums=('c56db8a07b2381a2eb777dab66c6fbba7cae4c7a66be730ad7a73367fb49006e'
             '96b4a633d40f399b927d159353cfaa679d2148156a3f04b5ea23b8d4b8e4bd3f')
 
 build() {
