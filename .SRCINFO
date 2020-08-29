@@ -1,0 +1,14 @@
+pkgbase = matrix-appservice-irc-runit
+	pkgdesc = runit service scripts for matrix-appservice-irc
+	pkgver = 20200829
+	pkgrel = 1
+	url = https://artixlinux.org
+	arch = any
+	license = BSD
+	depends = matrix-appservice-irc
+	conflicts = systemd-sysvcompat
+	source = matrix-appservice-irc.run
+	sha256sums = 1410698fde5f761bdbfa0c976ab1b424e692491c0c1d7d0ccf3f1bcda2af2502
+
+pkgname = matrix-appservice-irc-runit
+

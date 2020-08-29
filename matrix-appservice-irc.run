@@ -1,0 +1,12 @@
+#!/bin/sh
+
+pkgname=matrix-appservice-irc
+cfgfile=/etc/$pkgname/config.yaml
+regfile=/etc/$pkgname/registration.yaml
+
+[ ! -f "$regfile" ] &&
+  node /usr/lib/node_modules/$pkgname/app.js \
+    --config "$cfgfile" --file "$regfile" --generate-registration --url 'http://localhost:6789' \
+    --localpart irc_bot
+
+exec node /usr/lib/node_modules/$pkgname/app.js --config "$cfgfile" --file "$regfile"
