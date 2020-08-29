@@ -11,7 +11,7 @@ pkgver() {
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }
-pkgver=6.00.r365.3046769
+pkgver=6.00.r393.86448a3
 pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'

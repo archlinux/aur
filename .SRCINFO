@@ -1,6 +1,6 @@
 pkgbase = getmail6-git
 	pkgdesc = POP3 mail retriever with reliable Maildir and command delivery; Python 3 port
-	pkgver = 6.00.r365.3046769
+	pkgver = 6.00.r393.86448a3
 	pkgrel = 1
 	url = http://getmail6.org
 	changelog = CHANGELOG
@@ -8,7 +8,7 @@ pkgbase = getmail6-git
 	license = GPL2
 	makedepends = git
 	depends = python-chardet
-	provides = getmail=6.00.r365.3046769
+	provides = getmail=6.00.r393.86448a3
 	provides = getmail6
 	conflicts = getmail
 	source = git+https://github.com/getmail6/getmail6.git
