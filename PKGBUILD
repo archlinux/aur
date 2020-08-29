@@ -2,7 +2,7 @@
 
 pkgname=wikiman
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline search engine for ArchWiki and manual pages combined"
 arch=('any')
 url="https://github.com/filiparag/wikiman"
