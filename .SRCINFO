@@ -1,0 +1,18 @@
+pkgbase = haskell-llvm-hs-pure
+	pkgdesc = Pure Haskell LLVM functionality (no FFI)
+	pkgver = 9.0.0
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/llvm-hs-pure
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-attoparsec
+	depends = haskell-fail
+	depends = haskell-transformers-base
+	depends = haskell-unordered-containers
+	source = https://hackage.haskell.org/packages/archive/llvm-hs-pure/9.0.0/llvm-hs-pure-9.0.0.tar.gz
+	sha512sums = 0b573a6ac591fea5ae4f9259e1f1ece5f01b5f962641c41d7b30042326a93fc624906d7dcd7689cf72171437b5575697d26d0cd0f51e239b8383ec15b3bad4b7
+
+pkgname = haskell-llvm-hs-pure
+
