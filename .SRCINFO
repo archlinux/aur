@@ -1,15 +1,13 @@
 pkgbase = eclipse-markdown
 	pkgdesc = Markdown editor plugin for Eclipse - outline, folding, formatting, HTML export & preview
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = http://www.winterwell.com/software/markdown-editor.php
 	arch = any
 	license = GPL2
-	depends = eclipse
-	source = http://dl.bintray.com/enide/Markdown/1.1.0/plugins/winterwell.markdown_1.1.0.201402240523.jar
-	source = http://dl.bintray.com/enide/Markdown/1.1.0/features/markdown.editor.feature_1.1.0.201402240523.jar
-	md5sums = 9882437e6360d25fc097218a8264a988
-	md5sums = 478b7d11c9d22d10d814e1067593dc2d
+	depends = eclipse-platform
+	source = https://github.com/winterstein/Eclipse-Markdown-Editor-Plugin/releases/download/1.2.0/markdown.editor.site-1.2.0-201501260515.zip
+	md5sums = 36fd61ad6cdff8236fa9a9a95ce2f4d6
 
 pkgname = eclipse-markdown
 
