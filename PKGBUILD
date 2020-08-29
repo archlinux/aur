@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 pkgname='ocaml-migrate-parsetree'
 pkgver='1.7.3'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Convert OCaml parsetrees between different major versions - 1.7.x version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$pkgname"
