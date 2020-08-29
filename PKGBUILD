@@ -2,7 +2,7 @@
 
 _pkgname=thrust
 pkgname=thrust-git
-pkgver=1.9.10.40.gd9d7b510
+pkgver=1.9.10.r60.g52a8bda4
 pkgrel=1
 pkgdesc='A C++ parallel programming library which resembles the C++ Standard Library'
 arch=('any')
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --always | sed -e 's|-|.|g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
