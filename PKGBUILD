@@ -6,7 +6,7 @@
 
 pkgname=(pulseaudio-airplay libpulse-airplay pulseaudio-airplay-{zeroconf,lirc,jack,bluetooth,equalizer})
 pkgdesc="A featureful, general-purpose sound server"
-pkgver=13.99.1+98+g317fd09b7
+pkgver=13.99.1+104+gcc93eb360
 pkgrel=1
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
@@ -15,7 +15,7 @@ makedepends=(libasyncns libcap attr libxtst libsm libsndfile rtkit libsoxr
              speexdsp tdb systemd dbus avahi bluez bluez-libs jack2 sbc
              lirc openssl fftw orc gtk3 webrtc-audio-processing check git meson
              xmltoman)
-_commit=317fd09b72e3c33ecdbffaecc00fd6ff0c1a7e74  # tags/v13.0^0
+_commit=cc93eb360afeafb9bc8ac72c0511894aaa647769  # tags/v13.99.1
 source=("git+https://gitlab.freedesktop.org/mr-tao/pulseaudio.git#commit=$_commit"
         0001-meson-Define-TUNNEL_SINK-for-module-tunnel-sink.patch)
 sha256sums=('SKIP'
@@ -60,7 +60,7 @@ _pick() {
 }
 
 package_pulseaudio-airplay() {
-  provides=(pulseaudio)
+  provides=('pulseaudio=13.99.1')
   conflicts=(pulseaudio)
   depends=("libpulse-airplay=$pkgver-$pkgrel" rtkit libltdl speexdsp tdb orc libsoxr
            webrtc-audio-processing)
@@ -134,7 +134,7 @@ package_pulseaudio-airplay() {
 }
 
 package_libpulse-airplay() {
-  provides=(libpulse)
+  provides=('libpulse=13.99.1')
   conflicts=(libpulse)
   pkgdesc="$pkgdesc (client library)"
   depends=(dbus libasyncns libcap libxtst libsm libsndfile systemd)
@@ -146,7 +146,7 @@ package_libpulse-airplay() {
 }
 
 package_pulseaudio-airplay-zeroconf(){
-  provides=(pulseaudio-zeroconf)
+  provides=('pulseaudio-zeroconf=13.99.1')
   conflicts=(pulseaudio-zeroconf)
   pkgdesc="Zeroconf support for PulseAudio"
   depends=("pulseaudio-airplay=$pkgver-$pkgrel" avahi openssl)
@@ -155,7 +155,7 @@ package_pulseaudio-airplay-zeroconf(){
 }
 
 package_pulseaudio-airplay-lirc(){
-  provides=(pulseaudio-lirc)
+  provides=('pulseaudio-lirc=13.99.1')
   conflicts=(pulseaudio-lirc)
   pkgdesc="IR (lirc) support for PulseAudio"
   depends=("pulseaudio-airplay=$pkgver-$pkgrel" lirc)
@@ -164,7 +164,7 @@ package_pulseaudio-airplay-lirc(){
 }
 
 package_pulseaudio-airplay-jack(){
-  provides=(pulseaudio-jack)
+  provides=('pulseaudio-jack=13.99.1')
   conflicts=(pulseaudio-jack)
   pkgdesc="Jack support for PulseAudio"
   depends=("pulseaudio-airplay=$pkgver-$pkgrel" jack)
@@ -173,7 +173,7 @@ package_pulseaudio-airplay-jack(){
 }
 
 package_pulseaudio-airplay-bluetooth(){
-  provides=(pulseaudio-bluetooth)
+  provides=('pulseaudio-bluetooth=13.99.1')
   conflicts=(pulseaudio-bluetooth)
   pkgdesc="Bluetooth support for PulseAudio"
   depends=("pulseaudio-airplay=$pkgver-$pkgrel" bluez bluez-libs sbc)
@@ -182,7 +182,7 @@ package_pulseaudio-airplay-bluetooth(){
 }
 
 package_pulseaudio-airplay-equalizer(){
-  provides=(pulseaudio-equalizer)
+  provides=('pulseaudio-equalizer=13.99.1')
   conflicts=(pulseaudio-equalizer)
   pkgdesc="Equalizer for PulseAudio"
   depends=("pulseaudio-airplay=$pkgver-$pkgrel" python-{pyqt5,dbus,sip} fftw)
