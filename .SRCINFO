@@ -1,0 +1,17 @@
+pkgbase = trove_downloader
+	pkgdesc = Command line downloader for Humble Bundle Trove
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = https://gitlab.com/silver_rust/trove_downloader
+	install = trove_downloader.install
+	arch = x86_64
+	license = custom:Blue Oak Model License
+	makedepends = rust
+	depends = gcc-libs
+	provides = trove_downloader
+	conflicts = trove_downloader
+	source = https://gitlab.com/silver_rust/trove_downloader/-/archive/v2.1.5/trove_downloader-2.1.5.tar.gz
+	sha256sums = dc88d897ea0ffa2c3d08c49b3fe1cda2ee350e42a6e723d1c086b6790695663b
+
+pkgname = trove_downloader
+
