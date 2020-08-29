@@ -17,8 +17,7 @@ license=('GPL2')
 groups=('selinux')
 makedepends=('git' 'python' 'checkpolicy>=2.8' 'semodule-utils')
 depends=('policycoreutils>=2.8')
-optdepends=('linux-hardened: Linux kernel with SELinux support'
-            'linux-selinux: Linux kernel with SELinux support')
+optdepends=('linux-hardened: Linux kernel with SELinux support')
 install="${pkgname}.install"
 _commit=5e065c84fdf33bdba83675058a74d7e4c00c543a
 source=("git+https://github.com/archlinuxhardened/${_reponame}#commit=${_commit}"
