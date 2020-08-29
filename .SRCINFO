@@ -1,13 +1,13 @@
 pkgbase = raleway-font
-	pkgdesc = An elegant sans-serif font family, originally in a single thin weight, now 9 weights
-	pkgver = 4.100
-	pkgrel = 3
+	pkgdesc = An elegant sans-serif font family, now 9 weights and italic style
+	pkgver = 4.101
+	pkgrel = 1
 	url = https://www.theleagueofmoveabletype.com/raleway
 	arch = any
 	groups = lmt-fonts
 	license = OFL
-	source = https://github.com/theleagueof/raleway/releases/download/4.100/Raleway-4.100.tar.xz
-	sha256sums = c233fbe5d9577b449ff745b8baa95b006ea1fdada1280d5aa6ba08aa2c13f37a
+	source = https://github.com/theleagueof/raleway/releases/download/4.101/Raleway-4.101.tar.xz
+	sha256sums = 523070d32418b4223e79f4629bf28b935723906d156d2e6af016e6a34fe6d3eb
 
 pkgname = otf-raleway
 	provides = raleway-font

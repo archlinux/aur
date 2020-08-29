@@ -6,15 +6,15 @@ _name=raleway
 _fname=Raleway
 pkgbase=$_name-font
 pkgname=(otf-$_name ttf-$_name ttf-$_name-variable)
-pkgver=4.100
-pkgrel=3
-pkgdesc='An elegant sans-serif font family, originally in a single thin weight, now 9 weights'
+pkgver=4.101
+pkgrel=1
+pkgdesc='An elegant sans-serif font family, now 9 weights and italic style'
 arch=('any')
 url="https://www.theleagueofmoveabletype.com/$_name"
 license=('OFL')
 groups=('lmt-fonts')
 source=("https://github.com/theleagueof/$_name/releases/download/$pkgver/$_fname-$pkgver.tar.xz")
-sha256sums=('c233fbe5d9577b449ff745b8baa95b006ea1fdada1280d5aa6ba08aa2c13f37a')
+sha256sums=('523070d32418b4223e79f4629bf28b935723906d156d2e6af016e6a34fe6d3eb')
 
 package_otf-raleway() {
     provides=("$pkgbase" "otf-impallari-raleway-family")
@@ -22,7 +22,7 @@ package_otf-raleway() {
     replaces=("otf-impallari-raleway-family")
     cd "$_fname-$pkgver"
     install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" static/OTF/*.otf
-    # install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ofl{,-faq}.markdown
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.md
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
 
@@ -32,7 +32,7 @@ package_ttf-raleway() {
     replaces=("ttf-impallari-raleway-family")
     cd "$_fname-$pkgver"
     install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" static/TTF/*.ttf
-    # install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ofl{,-faq}.markdown
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.md
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
 
@@ -40,6 +40,6 @@ package_ttf-raleway-variable() {
     provides=("$pkgbase-variable")
     cd "$_fname-$pkgver"
     install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" variable/TTF/*.ttf
-    # install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ofl{,-faq}.markdown
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.md
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
