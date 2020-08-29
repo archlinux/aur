@@ -15,7 +15,7 @@ provides=('bespokesynth' 'bespokesynth-bin')
 conflicts=('bespokesynth' 'bespokesynth-bin')
 replaces=()
 noextract=()
-source=($_pkgname::git+https://github.com/awwbees/BespokeSynth)
+source=(BespokeSynth::git+https://github.com/awwbees/BespokeSynth)
 md5sums=('SKIP')
 
 pkgver() {
