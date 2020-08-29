@@ -1,5 +1,6 @@
-# Maintainer: Tetsumi <tetsumi@vmail.me>
-# Maintainer: Bart Verhoeven <bartverhoeven@live.com>
+# Maintainer: Frank Seifferth <frankseifferth@posteo.net>
+# Contributor: Tetsumi <tetsumi@vmail.me>
+# Contributor: Bart Verhoeven <bartverhoeven@live.com>
 
 pkgname=mercury
 pkgver=20.06
