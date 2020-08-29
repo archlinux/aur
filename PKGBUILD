@@ -2,7 +2,7 @@
 
 _pkgname=plotbitrate
 pkgname=$_pkgname-git
-pkgver=0.r13.f93131f
+pkgver=0.r59.fd9b5b7
 pkgrel=1
 pkgdesc="a script for plotting the bitrate of an audio or video stream over time"
 arch=('any')
@@ -23,6 +23,8 @@ pkgver() {
 package() {
   cd "$_pkgname"
   install -Dm755 "$_pkgname.py" "$pkgdir/usr/bin/$_pkgname"
+  mkdir -p "$pkgdir/usr/lib/python3.8/site-packages/"
+  mv frame "$pkgdir/usr/lib/python$(python3 -V | awk -F. -v OFS=. '{print $1, $2}' | awk '{print $2}')/site-packages/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
