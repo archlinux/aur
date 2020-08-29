@@ -1,7 +1,8 @@
 # Maintainer: Michael Riegert <michael at eowyn net>
+# Contributor: Deepjyoti <deep.barman30@gmail.com>
 pkgname=ytmdl-git
 _pkgname=ytmdl
-pkgver=r305.1fbf82a
+pkgver=2020.07.26.r26.gde1fa38
 pkgrel=1
 pkgdesc="Download songs from YouTube with metadata from sources like Itunes and Gaana"
 arch=("any")
@@ -24,6 +25,7 @@ depends=(
 		"python-wheel"
 		"python-youtube-search-git"
 		"python-unidecode"
+		"python-pydes"
 		)
 makedepends=("git" "python-setuptools")
 optdepends=("tensorflow: Trim Support")
