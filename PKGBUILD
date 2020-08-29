@@ -3,7 +3,7 @@
 _projectname='bin_prot'
 pkgname="ocaml-$_projectname"
 pkgver='0.14.0'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc='A binary protocol generator'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
