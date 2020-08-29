@@ -7,11 +7,11 @@ _pkgname="${pkgname%-git}"
 pkgver() {
   cd "$_pkgname"
   printf '%s.r%s.%s' \
-    "$(grep ^Version PKG-INFO | sed 's/.\+: \?//')" \
+    "$(git describe --tags | sed 's/^v\(.\+\)/\1/')" \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }
-pkgver=6.00.r393.86448a3
+pkgver=6.6.r393.86448a3
 pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
