@@ -1,6 +1,6 @@
 # Maintainer : David Beley <dbeley@protonmail.com>
 pkgname=youtube_extract-git
-pkgver=1.3.0
+pkgver=1.3.5
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -12,6 +12,8 @@ depends=(
         'python'
         'python-setuptools'
         'youtube-dl'
+        'python-pandas'
+        'python-openpyxl'
         )
 source=("git+https://github.com/dbeley/${pkgname%-git}")
 md5sums=("SKIP")
