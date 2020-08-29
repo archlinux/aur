@@ -1,7 +1,7 @@
 # Maintainer: Xavier Cho <mysticfallband@gmail.com>
 
 pkgname=upbge-git
-pkgver=101932.d7b695c5250
+pkgver=102995.5b3c332b398
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ md5sums=(
 	'SKIP' 
 	'SKIP' 
 	'SKIP' 
-	'1f0b37cb559e2b03d725677b19b80ba8'
+	'1cd3132ec4e15df823d336529f5d1d6f'
 	'17fb962ec1fd7e539bfa5c5a4af8a675' 
 	'37ce92c740691f858156511e22b40143')
 
