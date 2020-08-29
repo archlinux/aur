@@ -2,14 +2,14 @@
 
 pkgname=wikiman
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline search engine for ArchWiki and manual pages combined"
 arch=('any')
 url="https://github.com/filiparag/wikiman"
 license=('MIT')
 depends=('man' 'arch-wiki-docs' 'fzf' 'ripgrep' 'awk' 'xdg-utils' 'w3m')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('cb2668cb2141044936911939f313cca0abafb18707788c4cadc7d3b039e48449')
+sha256sums=('b729aea52c8e5e943e7e817359af2fc887ea6817c5f8a10a705f498fbe94a194')
 # validpgpkeys=('DC9CC1294EAB98FA685FCD3520DF9FC9E4DF2430')
 
 package() {
@@ -20,6 +20,6 @@ package() {
 
   install -Dm 644 "${pkgname}.1.man" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
   install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE'
-  # install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
+  install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
 
 }
