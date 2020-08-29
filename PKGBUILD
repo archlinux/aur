@@ -1,11 +1,11 @@
 # Maintainer: Thaodan <theodorstormgrade@gmail.com>
 # Contributor: Weng Xuetian <wengxt@gmail.com>
-# Maintainer (bin-version): Marc Mettke <marc@itmettke.de>
+# Contributor: Marc Mettke <marc@itmettke.de>
 
 pkgname=firefox-kde-opensuse-bin
-pkgver=79.0
+pkgver=80.0
 _pkgrel=1
-pkgrel=2
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -37,7 +37,7 @@ validpgpkeys=(
         BBFE2FD421597395E4FC8C8DF6C85FEE79D661A4 # Björn "Thaodan" Bidar <theodorstormgrade@gmail.com>
 )
 
-sha256sums=('4c332eea30a7ad0cc18891156e215f54b677bcbcdb9c4a564631958ff096c17c'
+sha256sums=('9354b14cd81012f13dd9347081c4810c64a6be1795b7af9bfef86c8d92829f9f'
             'SKIP')
 
 package() {
