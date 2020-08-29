@@ -1,0 +1,27 @@
+post_install() {
+    echo "################################################################################
+These are instructions on how to retrieve the API key required for Trove Downloader to work.
+
+Install the cookies.txt add-on for Firefox
+(https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/)
+or Chrome
+(https://chrome.google.com/webstore/detail/cookiestxt/njabckikapfpffapmjgojcnbfjonfjfg).
+
+Login to [http://www.humblebundle.com](http://www.humblebundle.com) on an account with an
+active Humble Monthly subscription.
+
+On Firefox, click the cookies.txt add-on in the toolbar and save the cookies.txt file.
+On Chrome, click the cookies.txt add-on and a window should pop up with all the current cookies.
+Press CTRL+A to highlight all of them, then CTRL+C to copy them. Paste them into a text editing
+program such as Wordpad, MS Word, or Mousepad. (It is not recommended to use Notepad for this step
+as it handles line breaks differently).
+
+With the cookies.txt open, press CTRL+F to search the document for ``_simpleauth_sess``.
+The portion after ``_simpleauth_sess`` in <> brackets is the API key required for Trove Downloader to work.
+
+################################################################################"
+}
+
+post_upgrade() {
+    post_install
+}
