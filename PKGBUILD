@@ -1,6 +1,6 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
-pkgname=docker-rootless
-pkgver=19.03.11
+pkgname=docker-rootless-bin
+pkgver=19.03.12
 pkgrel=1
 pkgdesc="Run the Docker daemon as a non-root user (Rootless mode)"
 arch=('x86_64')
@@ -8,6 +8,7 @@ url="https://docs.docker.com/engine/security/rootless/"
 license=('Apache')
 depends=('docker')
 provides=('docker-rootless')
+conflicts=('docker-rootless')
 install=docker-rootless.install
 source=(
 	"https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-$pkgver.tgz"
@@ -15,13 +16,13 @@ source=(
 )
 
 md5sums=(
-	"6be4fdae6e2bd2d4c627fd162226667a"
-	"c5158588c36fc80cf85835258f8cd345"
+	"90add09c07b8c2291b93e3fd6c3da0ed"
+	"04425cca4e95bf534c41697aeabfcad4"
 )
 
 sha256sums=(
-	"b21ee1469f5b4b3e2a20af5c0f90d7a95c9130b462fbef3808359f2f6767803f"
-	"eefe4eaa55184c396f929a2436a22af97130c6e7f8791a79582902dea7c4cd9b"
+	"7b66da2c8ba6c0b04bfb054327f229ac82aa98c827b747693822f45ffd01e5de"
+	"edf633c42d27e039d5acbb1ead685d6acd66b06786a8552e1bbe5f789dc2c315"
 )
 
 package() {

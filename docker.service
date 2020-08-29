@@ -4,7 +4,7 @@ Documentation=https://docs.docker.com
 
 [Service]
 Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-Environment=DOCKERD_FLAGS="--experimental --storage-driver=vfs"
+Environment=DOCKERD_FLAGS="--experimental"
 ExecStart=/usr/bin/dockerd-rootless.sh $DOCKERD_FLAGS
 ExecReload=/bin/kill -s HUP $MAINPID
 TimeoutSec=0

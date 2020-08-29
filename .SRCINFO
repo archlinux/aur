@@ -1,6 +1,6 @@
-pkgbase = docker-rootless
+pkgbase = docker-rootless-bin
 	pkgdesc = Run the Docker daemon as a non-root user (Rootless mode)
-	pkgver = 19.03.11
+	pkgver = 19.03.12
 	pkgrel = 1
 	url = https://docs.docker.com/engine/security/rootless/
 	install = docker-rootless.install
@@ -8,12 +8,13 @@ pkgbase = docker-rootless
 	license = Apache
 	depends = docker
 	provides = docker-rootless
-	source = https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-19.03.11.tgz
+	conflicts = docker-rootless
+	source = https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-19.03.12.tgz
 	source = docker.service
-	md5sums = 6be4fdae6e2bd2d4c627fd162226667a
-	md5sums = c5158588c36fc80cf85835258f8cd345
-	sha256sums = b21ee1469f5b4b3e2a20af5c0f90d7a95c9130b462fbef3808359f2f6767803f
-	sha256sums = eefe4eaa55184c396f929a2436a22af97130c6e7f8791a79582902dea7c4cd9b
+	md5sums = 90add09c07b8c2291b93e3fd6c3da0ed
+	md5sums = 04425cca4e95bf534c41697aeabfcad4
+	sha256sums = 7b66da2c8ba6c0b04bfb054327f229ac82aa98c827b747693822f45ffd01e5de
+	sha256sums = edf633c42d27e039d5acbb1ead685d6acd66b06786a8552e1bbe5f789dc2c315
 
-pkgname = docker-rootless
+pkgname = docker-rootless-bin
 
