@@ -1,13 +1,13 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
+# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=cmdipc
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="System V and POSIX IPC from the command line"
 arch=(any)
 url="https://github.com/maandree/cmdipc"
 license=('GPL3' 'custom:GFDL1.3')
-depends=(python3 python-posix_ipc python-sysv-ipc argparser-python)
+depends=(python3 python-posix_ipc python-sysv_ipc argparser-python)
 makedepends=(make sed zip texinfo)
 install=cmdipc.install
 source=($url/archive/$pkgver.tar.gz)
