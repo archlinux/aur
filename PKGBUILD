@@ -1,6 +1,6 @@
 # Maintainer: Andrea Corsini <andrea dot corsini at outlook dot com>
 pkgname=devour-git
-pkgver=v10.r29.9435066
+pkgver=v11.0.r4.0fe8d05
 pkgrel=1
 pkgdesc="Window Manager agnostic swallowing feature for terminal emulators"
 arch=('x86_64')
@@ -18,12 +18,17 @@ pkgver() {
 	printf "%s" "$(git describe --tag | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
+prepare() {
+        cd "$srcdir/${pkgname%-git}"
+        patch < devour-shellalias-10.0.diff
+}
+
 build() {
-	cd "$srcdir/${pkgname%-git}"
-	make PREFIX=/usr
+        cd "$srcdir/${pkgname%-git}"
+        make all
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" PREFIX=/usr install
+        cd "$srcdir/${pkgname%-git}"
+        make BIN_DIR="$pkgdir/usr/local/bin" install
 }
