@@ -1,7 +1,7 @@
 # Maintainer: Ganymede < ganymede _AT_ analogon _DOT_ eu>
 
 pkgname=perl-file-libmagic
-pkgver=1.22
+pkgver=1.23
 pkgrel=1
 pkgdesc="Determine MIME types of data or files using libmagic"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('perl' 'file')
 makedepends=('perl-config-autoconf' 'perl-test-fatal')
 options=('!emptydirs')
 source=(https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/File-LibMagic-$pkgver.tar.gz)
-sha256sums=('93639bd076849e93a020fea1507f0a2b3467b8792eb5c306f2aacbbfb4d080d6')
+sha256sums=('52e6b1dc7cb2d87a4cdf439ba145e0b9e8cf28cc26a48a3cf9977c83463967ee')
 
 build() {
   cd "$srcdir/File-LibMagic-$pkgver"
