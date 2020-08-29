@@ -1,6 +1,6 @@
 # Maintainer: Jojii <jojii@gmx.net>
 pkgname=rbuild-cli-git
-pkgver=1.3.r14.c8bb8f1
+pkgver=r28.7a1b5d4
 pkgrel=1
 epoch=
 pkgdesc="The official cli client for the remote build system"
@@ -22,7 +22,10 @@ md5sums=("SKIP")
 
 pkgver() {
     cd "$srcdir/RemoteBuildClient"
-    printf "1.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    ( set -o pipefail
+        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 prepare() {
