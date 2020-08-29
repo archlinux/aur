@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=cerberus
-pkgver=1451859933
+pkgver=1598672167
 pkgrel=1
 pkgdesc="A compile-time configurable minimal login program that uses libpassphrase"
 url="https://github.com/GNU-Pony/cerberus"
@@ -11,7 +11,7 @@ depends=(glibc 'libpassphrase>=1400850322' linux)
 makedepends=(make coreutils gcc texinfo) # pam
 install=cerberus.install
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=(adcd6bf8a7200bba968968910fdff13949c3fb103610e156b8d332c80f2f46ad)
+sha256sums=(bb547c467a5735d048aa815e5466df4c8d6910b8f7b710fa18c77a86df0bb98c)
 
 # The dependency on `linux` can be removed if both `OWN_VCS` and `OWN_VCSA` is removed.
 # The dependency on `pam` can removed if `auth` is change to not be `pam`.
