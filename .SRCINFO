@@ -1,7 +1,7 @@
 pkgbase = eruption-roccat-vulcan-git
 	pkgdesc = Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards
-	pkgver = 0.1.13
-	pkgrel = 1
+	pkgver = 0.1.14
+	pkgrel = 0
 	url = https://github.com/X3n0m0rph59/eruption-roccat-vulcan
 	install = eruption.install
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = eruption-roccat-vulcan-git
 	backup = etc/eruption/eruption.conf
 	backup = usr/share/eruption/scripts/lib/themes/*
 	backup = usr/share/eruption/scripts/lib/macros/*
-	source = git+https://github.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=9d24f34c52af0fc56d112fafcadd32dd44fe0df4
+	source = git+https://github.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=e53abdb261e4f4e0dacc7e3b6308a893754ce5f3
 	sha512sums = SKIP
 
 pkgname = eruption-roccat-vulcan-git
