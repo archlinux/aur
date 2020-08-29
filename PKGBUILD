@@ -9,7 +9,7 @@ url="https://github.com/filiparag/wikiman"
 license=('MIT')
 depends=('man' 'arch-wiki-docs' 'fzf' 'ripgrep' 'awk' 'xdg-utils' 'w3m')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('fb08b6d6434c3d3d48a0a22e4687a399950a43798c50fe6676345fcb5b8d2d62')
+sha256sums=('57972128f344f88e8507c16973dd7ccc72a94db7309e29b57fcd2ccb6a46b8e0')
 # validpgpkeys=('DC9CC1294EAB98FA685FCD3520DF9FC9E4DF2430')
 
 package() {
