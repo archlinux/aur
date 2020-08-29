@@ -4,9 +4,9 @@
 # Maintainer : Marcos Heredia <chelqo@gmail.com>
 
 pkgname=yacas
-pkgver=1.8.0
+pkgver=1.9.1
 _docver=1.8.0
-pkgrel=2
+pkgrel=1
 pkgdesc='Yet another computer algebra system'
 url='http://www.yacas.org/'
 screenshot='https://dl.dropbox.com/s/dy9evnpl13kdo21/yacas-console.png'
@@ -32,7 +32,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/grzegorzmazur/yacas/arc
         "yacas.desktop"
         "yacas-docs.desktop"
         )
-md5sums=('f8c06e6c7ab8b5e9e7e48ee85c68646b'  # yacas source
+md5sums=('f908d52c6095d45bd69bc3e517dbee08'  # yacas source
          'becd320686b3b9aa2e6c39477f37ff06'  # Epub manual
          'eb776002fabe21623716ed2642f6d365'  # yacas.desktop
          '04d2a47c02fba5d88f337a404e02929c'  # yacas-docs.desktop
