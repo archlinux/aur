@@ -1,0 +1,6 @@
+port: 8888
+foreground: false
+debug: false
+noreg: true
+cors: true
+db: /var/lib/standardfile/standardfile.db

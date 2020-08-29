@@ -1,0 +1,16 @@
+[Unit]
+Description=Standard File Server daemon
+After=network.target
+Wants=network.target
+
+[Service]
+User=standardfile
+Group=standardfile
+Type=forking
+WorkingDirectory=/var/lib/standardfile
+ExecStart=/usr/bin/standardfile -c /etc/standardfile.yaml
+PIDFile=/var/lib/standardfile/pid
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target
