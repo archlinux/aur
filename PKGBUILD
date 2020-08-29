@@ -1,12 +1,12 @@
 # Maintainer: relrel <relrelbachar@gmail.com>
 pkgname=android-completion
-pkgver=20200828.86f1921
+pkgver=20200829.f60d4f9
 pkgrel=1
 pkgdesc="Bash completion for adb and fastboot"
 arch=('any')
 url="https://android.googlesource.com/platform/system/core/"
 license=('Apache')
-depends=(android-sdk-platform-tools bash bash-completion)
+depends=(adb bash-completion)
 conflicts=(android-bash-completion)
 _commit=${pkgver#*.}
 source=("adb.bash.b64::https://android.googlesource.com/platform/system/core/+/$_commit/adb/adb.bash?format=TEXT"
