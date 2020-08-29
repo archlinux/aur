@@ -1,0 +1,15 @@
+pkgbase = libeddsa-git
+	pkgdesc = cryptographic library for ed25519 and x25519
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/phlay/libeddsa
+	arch = i686
+	arch = x86_64
+	license = public-domain
+	makedepends = cmake
+	provides = libeddsa
+	source = git+https://github.com/phlay/libeddsa.git
+	md5sums = SKIP
+
+pkgname = libeddsa-git
+
