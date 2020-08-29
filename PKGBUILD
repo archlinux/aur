@@ -1,6 +1,6 @@
 # Maintainer: Art Dev <artdevjs at gmail dot com>
 pkgname=gitui-bin
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Blazing fast terminal-ui for git written in Rust'
 arch=('i686' 'x86_64')
@@ -17,4 +17,4 @@ package() {
   tar -I zstd -xvf $srcdir/gitui-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst -C $pkgdir --exclude=".*"
 }
 
-sha256sums=('2cb124204bc8a4b6d1af6c79d66caf934061953f984cac0eb5bbe5abc91cea63')
+sha256sums=('2d2a1b2b46fb00c657cf43dc24a2c5049d706109e5813d7f0ad3d882527b699c')
