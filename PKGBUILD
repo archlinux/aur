@@ -1,7 +1,7 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 _pkgname=bespokesynth
 pkgname="$_pkgname"-git
-pkgdesc="Software modular synth, VST host input, transport/Ableton Push, and Python scripting"
+pkgdesc="Software modular synth, VST host input, transport/Ableton Push (unstable)"
 pkgver=r259.042693b
 pkgrel=1
 arch=(x86_64)
