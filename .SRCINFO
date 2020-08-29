@@ -1,6 +1,6 @@
 pkgbase = wikiman
 	pkgdesc = Offline search engine for ArchWiki and manual pages combined
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/filiparag/wikiman
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = wikiman
 	depends = ripgrep
 	depends = awk
 	depends = xdg-utils
-	source = wikiman-2.0.tar.gz::https://github.com/filiparag/wikiman/archive/2.0.tar.gz
-	sha256sums = aa42612314d13e21f73f5a3e390c28e7804d50f62e660792f0f91d23a518688f
+	source = wikiman-2.1.tar.gz::https://github.com/filiparag/wikiman/archive/2.1.tar.gz
+	sha256sums = e4e47389dd89a6138e1a18bf2fb6d6506217c8c2a0a628d14c378162033cdd06
 
 pkgname = wikiman
 
