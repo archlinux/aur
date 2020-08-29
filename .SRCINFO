@@ -1,14 +1,14 @@
 pkgbase = butler
 	pkgdesc = Command-line itch.io helper
-	pkgver = 15.19.0
+	pkgver = 15.20.0
 	pkgrel = 1
 	url = https://github.com/itchio/butler
 	arch = x86_64
 	license = MIT
 	source = butler.sh
-	source = https://broth.itch.ovh/butler/linux-amd64/15.19.0/archive/default
+	source = https://broth.itch.ovh/butler/linux-amd64/15.20.0/archive/default
 	sha256sums = 139d933a14939a6822cee27294aac9730d45d81dc7257d5dcd8a5f46913492a1
-	sha256sums = 9f000f975c178c96a2121eca5a55bca3535369634f1a33866e2dc5a02fcb3764
+	sha256sums = bfd0a954b016d92cdae34d6267e130d5c20a724592378e098d222277d0e03a5c
 
 pkgname = butler
 
