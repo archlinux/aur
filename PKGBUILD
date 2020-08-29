@@ -3,18 +3,18 @@
 #_name=rst2pdf
 
 pkgname=rst2pdf
-pkgver=0.97
+pkgver=0.98
 pkgrel=1
 pkgdesc="Convert reStructured Text to PDF via ReportLab."
 url="https://rst2pdf.org"
 depends=(
-  'python'
+  'python>=3.6'
   'python-docutils'
+  'python-importlib-metadata'
   'python-jinja'
-  'python-pdfrw'
+  'python-packaging'
   'python-pygments'
   'python-reportlab'
-  'python-six'
   'python-smartypants'
 )
 makedepends=('python-setuptools')
@@ -38,8 +38,13 @@ source=(
 sha256sums=(
   #'SKIP'
   #'343a2a75b2fe8cdf174c170a547a43b294129e68e24be8c18a6b9d1494c9f0b1'
-  '93ae68585c72b89fc8b6b2b4ef0128ea2cd7a73cf0f41a3fa52f60fcc85c3c1d'
+  '22fb02032b3c2eed834b47f974755457a65958554543fd577680458f2e24816b'
 )
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i "s/use_scm_version=True/version='${pkgver}'/g" setup.py
+}
 
 build() {
   #cd "${srcdir}/${pkgname}"
