@@ -1,14 +1,17 @@
 pkgbase = kata-containers-git
 	pkgdesc = Lightweight virtual machines for containers (Git version)
-	pkgver = 1.11.0~alpha1~runtime.r52.6e398f7c
+	pkgver = 1.12.0~alpha0~runtime.r72.a1d993fa
 	pkgrel = 1
 	url = https://katacontainers.io/
 	arch = x86_64
 	license = Apache
 	makedepends = go
+	makedepends = yq2-bin
+	makedepends = bc
 	source = agent::git+https://github.com/kata-containers/agent
 	source = ksm-throttler::git+https://github.com/kata-containers/ksm-throttler
 	source = osbuilder::git+https://github.com/kata-containers/osbuilder
+	source = packaging::git+https://github.com/kata-containers/packaging
 	source = proxy::git+https://github.com/kata-containers/proxy
 	source = runtime::git+https://github.com/kata-containers/runtime
 	source = shim::git+https://github.com/kata-containers/shim
@@ -18,14 +21,15 @@ pkgbase = kata-containers-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = kata-agent-git
+	provides = kata-agent
+	conflicts = kata-agent
 
 pkgname = kata-ksm-throttler-git
 	provides = kata-ksm-throttler
 	conflicts = kata-ksm-throttler
-
-pkgname = kata-proxy-git
-	provides = kata-proxy
-	conflicts = kata-proxy
 
 pkgname = kata-runtime-git
 	install = kata-runtime.install
@@ -40,11 +44,11 @@ pkgname = kata-runtime-git
 	provides = kata-runtime
 	conflicts = kata-runtime
 
+pkgname = kata-proxy-git
+	provides = kata-proxy
+	conflicts = kata-proxy
+
 pkgname = kata-shim-git
 	provides = kata-shim
 	conflicts = kata-shim
-
-pkgname = kata-agent-git
-	provides = kata-agent
-	conflicts = kata-agent
 

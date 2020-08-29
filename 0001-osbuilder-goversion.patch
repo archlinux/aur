@@ -1,0 +1,13 @@
+diff --git a/rootfs-builder/rootfs.sh b/rootfs-builder/rootfs.sh
+index f9f9ff4..9836a2b 100755
+--- a/rootfs-builder/rootfs.sh
++++ b/rootfs-builder/rootfs.sh
+@@ -345,7 +345,7 @@ build_rootfs_distro()
+ 
+ 	if [ -z "${USE_DOCKER}" ] && [ -z "${USE_PODMAN}" ]; then
+ 		#Generate an error if the local Go version is too old
+-		foundVersion=$(go version | sed -E "s/^.+([0-9]+\.[0-9]+\.[0-9]+).*$/\1/g")
++		foundVersion=$(go version | sed -E "s/^.+([0-9]+\.[0-9]+(\.[0-9]+)?).*$/\1/g")
+ 
+ 		compare_versions "${GO_VERSION}" "${foundVersion}" || \
+ 			die "Your Go version ${foundVersion} is older than the minimum expected Go version ${GO_VERSION}"
