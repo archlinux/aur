@@ -14,8 +14,7 @@ license=('GPL2')
 groups=('selinux')
 makedepends=('git' 'python' 'checkpolicy>=2.8' 'semodule-utils')
 depends=('policycoreutils>=2.8')
-optdepends=('linux-hardened: Linux kernel with SELinux support'
-            'linux-selinux: Linux kernel with SELinux support')
+optdepends=('linux-hardened: Linux kernel with SELinux support')
 install="${pkgname}.install"
 # refpolicy 2.20180701 moved the repository to SELinuxProject Github organization
 # When updating, if makepkg reports "refpolicy is not a clone of https://github.com/SELinuxProject/refpolicy",

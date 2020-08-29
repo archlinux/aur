@@ -13,7 +13,6 @@ pkgbase = selinux-refpolicy-git
 	makedepends = semodule-utils
 	depends = policycoreutils>=2.8
 	optdepends = linux-hardened: Linux kernel with SELinux support
-	optdepends = linux-selinux: Linux kernel with SELinux support
 	source = git+https://github.com/SELinuxProject/refpolicy
 	source = config
 	sha256sums = SKIP
