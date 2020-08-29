@@ -14,8 +14,7 @@ arch=('any')
 url="https://github.com/SELinuxProject/refpolicy/wiki"
 license=('GPL')
 groups=('selinux' 'selinux-policies')
-optdepends=('linux-hardened: Linux kernel with SELinux support'
-            'linux-selinux: Linux kernel with SELinux support')
+optdepends=('linux-hardened: Linux kernel with SELinux support')
 makedepends=('python' 'checkpolicy>=2.8' 'policycoreutils>=2.8'
              'libsepol>=2.8' 'libsemanage>=2.8')
 source=("https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_2_${pkgver}/${_origname}-2.${pkgver}.tar.bz2")
