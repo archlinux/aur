@@ -30,7 +30,7 @@ build() {
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DUSE_SYSTEM_TAGLIB=1 \
+    -DUSE_SYSTEM_TAGLIB=1
   make
 
 #    -DWITH_TESTS=1
