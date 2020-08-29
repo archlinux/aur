@@ -1,0 +1,37 @@
+post_install() {
+  echo "Your config files are at /etc/matrix-appservice-irc .
+
+Set up external sasl authentication for the irc server you will be connecting to. Here's how to do
+it on freenode: https://freenode.net/kb/answer/certfp
+
+Edit /etc/matrix-appservice-irc/config.yaml :
+  - saslType to EXTERNAL
+  - sasl to true
+  - ssl to true
+  - key and cert to the ones you set up in the previous step
+
+It's recommended to install matrix-appservice-irc-runit if you use runit which will
+install a service that automatically initializes the bridge and starts it.
+
+If you can't use the runit package, here's how to set up the bridge yourself:
+
+Run this once to generate your registration file
+
+  sudo node /usr/lib/node_modules/matrix-appservice-irc/app.js \\
+    --config /etc/matrix-appservice-irc/config.yaml \\
+    --file /etc/matrix-appservice-irc/registration.yaml \\
+    --generate-registration --url 'http://localhost:9999' \\
+    --localpart irc_bot
+
+Edit your homeserver config and add the registration.yaml, for synapse it would be:
+
+  app_service_config_files:
+      - /etc/matrix-appservice-irc/registration.yaml
+
+Now you can start the bridge:
+
+  sudo node /usr/lib/node_modules/matrix-appservice-irc/app.js \\
+    --config /etc/matrix-appservice-irc/config.yaml \\
+    --file /etc/matrix-appservice-irc/registration.yaml
+"
+}

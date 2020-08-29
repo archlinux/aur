@@ -1,0 +1,24 @@
+pkgbase = matrix-appservice-irc-externalsasl-git
+	pkgdesc = Node.js IRC bridge for Matrix, patched with external SASL authentication
+	pkgver = r3223.8a631622
+	pkgrel = 1
+	url = https://github.com/Francesco149/matrix-appservice-irc/tree/external-sasl
+	install = matrix-appservice-irc-externalsasl-git.install
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = npm
+	makedepends = python
+	depends = nodejs
+	optdepends = python-urllib3: for grant-ops-in-room.py, migrate-users.py, remove-idle-users.py and remove-user.py
+	optdepends = python-requests: for grant-ops-in-room.py, migrate-users.py, remove-idle-users.py and remove-user.py
+	optdepends = python-yaml: for grant-ops-in-room.py, migrate-users.py and remove-user.py
+	provides = matrix-appservice-irc
+	conflicts = matrix-appservice-irc
+	backup = etc/matrix-appservice-irc/config.yaml
+	backup = etc/matrix-appservice-irc/provisioning.rules.yaml
+	source = git+https://github.com/Francesco149/matrix-appservice-irc.git#branch=external-sasl
+	sha256sums = SKIP
+
+pkgname = matrix-appservice-irc-externalsasl-git
+
