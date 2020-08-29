@@ -2,7 +2,7 @@
 
 pkgname=webtorrent-desktop-bin
 _pkgname=webtorrent-desktop
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Streaming torrent client."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("https://github.com/webtorrent/${_pkgname}/releases/download/v${pkgver}/
         "https://github.com/webtorrent/${_pkgname}/raw/v${pkgver}/static/linux/share/applications/${_pkgname}.desktop"
         "48x48.png::https://github.com/webtorrent/${_pkgname}/raw/v${pkgver}/static/linux/share/icons/hicolor/48x48/apps/${_pkgname}.png"
         "256x256.png::https://github.com/webtorrent/${_pkgname}/raw/v${pkgver}/static/linux/share/icons/hicolor/256x256/apps/${_pkgname}.png")
-sha256sums=('48888d47dad4c403977ff611bca2dbcf1354707aa908a9774f7432ffab0f19e0'
+sha256sums=('da12c02574aede9285a15f9d8849cdf26526fbe522f817f62ad20766303978fb'
             '8a99900eb1207d3ae278c943b95bd31a35ef8ad2fdcf3e1e664337dc176e26ec'
             'e41e7e31e3116a7c665419d79ee7242520d0305454b26edc6a792da81337c903'
             'd30ffbff61753c42239868f2d10feb89d24c6a5fc42fe5e117a5b373f7ee57b5')
