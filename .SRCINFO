@@ -1,0 +1,13 @@
+pkgbase = gfold
+	pkgdesc = CLI tool to help keep track of Git repositories
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/nickgerace/gfold
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = gfold-0.3.0.tar.gz::https://github.com/nickgerace/gfold/archive/0.3.0.tar.gz
+	sha512sums = SKIP
+
+pkgname = gfold
+
