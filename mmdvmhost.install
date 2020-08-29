@@ -1,0 +1,18 @@
+post_install() {
+	echo "Adding mmdvm system user and group..."
+	groupadd \
+		--force \
+		--system \
+		mmdvm
+
+	useradd \
+		--system \
+		--user-group \
+		--groups uucp \
+		--shell /bin/nologin \
+		mmdvm
+	# NOTE: upstream instructions call for the mmdvm 
+	#  user to be added to the dialout group, but 
+	#  in Arch, the functionality of that group is 
+	#  assigned to the uucp group instead.
+}
