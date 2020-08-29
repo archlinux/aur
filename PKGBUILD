@@ -3,8 +3,8 @@
 pkgname=mn32-git
 pkgdesc='Configuration tool for Mionix Naos 3200'
 url='https://gitlab.com/ant-sa/mn32'
-pkgver=r9.de6e250
-pkgrel=1
+pkgver=r94.d5b872e
+pkgrel=2
 arch=('x86_64')
 license=('Unlicense')
 depends=('libusb' 'qt5-base')
@@ -12,9 +12,9 @@ makedepends=('git' 'qt5-base' 'gcc')
 
 source=('MN32.desktop' '99-mn32.rules' 'mn32-git::git+https://gitlab.com/ant-sa/mn32.git')
 
-sha512sums=( '2d7e974385d3098853b9dfd07e006c65d491a9e96f44cffcf809fb17debfc0a03ac51ebc5de7103e4fbca01444001f27198da5a172be373bbbd9bf81b6ffc38a'
-             '3d6e5011ef1367bfed99a54f85d9939935996477a3a009c9cd307c51d54e063e079de52b2eee3575d85c93295274c89cdb96544782b68ca289c7ec5b251708b8'
-             'SKIP')
+sha512sums=('2d7e974385d3098853b9dfd07e006c65d491a9e96f44cffcf809fb17debfc0a03ac51ebc5de7103e4fbca01444001f27198da5a172be373bbbd9bf81b6ffc38a'
+            '551d9735496abd273f29eb562f8c526e96d72b8cd863fac63918aa929435d0e615085ddf164f381ea3ca458865fd291e0c42cdc822ab578c36aeec75f424090d'
+            'SKIP')
 
 pkgver() {
   cd "$pkgname"
