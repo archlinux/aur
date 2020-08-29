@@ -15,6 +15,7 @@ pkgbase = panda-statusbar-git
 	makedepends = libdbusmenu-qt5
 	makedepends = libxdamage
 	makedepends = libxtst
+	makedepends = solid
 	depends = kwindowsystem
 	depends = qt5-x11extras
 	depends = qt5-svg
