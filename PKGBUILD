@@ -1,15 +1,15 @@
 # Maintainer Filip Parag <aur@filiparag.com>
 
 pkgname=wikiman
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc="Offline search engine for ArchWiki and manual pages combined"
 arch=('any')
 url="https://github.com/filiparag/wikiman"
 license=('MIT')
 depends=('man' 'arch-wiki-docs' 'fzf' 'ripgrep' 'awk' 'xdg-utils' 'w3m')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('57972128f344f88e8507c16973dd7ccc72a94db7309e29b57fcd2ccb6a46b8e0')
+sha256sums=('4d0cede9086d2abf4a6eba4bfaef2397f464763fb6855ecce43443c045f57841')
 # validpgpkeys=('DC9CC1294EAB98FA685FCD3520DF9FC9E4DF2430')
 
 package() {
