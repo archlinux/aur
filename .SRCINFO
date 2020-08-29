@@ -1,16 +1,20 @@
 pkgbase = closure-compiler
 	pkgdesc = A JavaScript checker and optimizer
 	pkgver = 20200719
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.google.com/closure/compiler/
 	arch = any
 	license = Apache
 	depends = java-runtime
 	noextract = closure-compiler-v20200719.jar
-	source = https://repo.maven.apache.org/maven2/com/google/javascript/closure-compiler/v20200719/closure-compiler-v20200719.jar
 	source = closure-compiler
-	sha512sums = 12abfa0522cfad62427e990dd3de4de5b31412d67e6ddae35f36de8ba010fa78308b9f62cdbf262b47b3520b8138b0147e778de17abcdd55e4d55344f3f37584
+	source = https://repo.maven.apache.org/maven2/com/google/javascript/closure-compiler/v20200719/closure-compiler-v20200719.jar
+	source = https://raw.githubusercontent.com/google/closure-compiler/v20200719/README.md
+	source = https://raw.githubusercontent.com/google/closure-compiler/v20200719/COPYING
 	sha512sums = 209f7dfca8a3512580f7726edb02e9834dd35b6fd013fffed55c1f1b45555c3445c5251585c2da2dc4c8ca4ba36478a2f737e3e66d786748d7d5d91865705762
+	sha512sums = 12abfa0522cfad62427e990dd3de4de5b31412d67e6ddae35f36de8ba010fa78308b9f62cdbf262b47b3520b8138b0147e778de17abcdd55e4d55344f3f37584
+	sha512sums = aeecfc4b004e641de5824a4400e00fa81f41bb1fc748f6c42f8e0d6ef4cfa584c2c81bbacb56786a69a25f0f939c3c1db539bc94d861f825e718438f20967071
+	sha512sums = 98f6b79b778f7b0a15415bd750c3a8a097d650511cb4ec8115188e115c47053fe700f578895c097051c9bc3dfb6197c2b13a15de203273e1a3218884f86e90e8
 
 pkgname = closure-compiler
 
