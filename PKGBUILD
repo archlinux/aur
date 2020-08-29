@@ -5,7 +5,7 @@
 # Contributor: nokangaroo <nokangaroo@aon.at>
 
 pkgname=golly
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 pkgdesc="A simulator for Conway's Game of Life and other cellular automata"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('perl: for Perl scripting support'
             'python2: for Python scripting support')
 source=("https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}-src.tar.gz"
         "golly.desktop")
-md5sums=('02fe03092a3e4d4ec3d2ac759b71d726'
+md5sums=('635be7639c29e62ec5edf263ffe24d2b'
          'bf54bb7268dcba539162ee106d2a5063')
 
 build() {
