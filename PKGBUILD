@@ -6,7 +6,7 @@
 _projectname='lwt'
 pkgname="ocaml-$_projectname"
 pkgver='5.3.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='A library for cooperative threads in OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocsigen/lwt"
