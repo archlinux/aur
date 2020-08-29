@@ -1,14 +1,13 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
-maintaner="Milkii Brewster <milkii on Freenode IRC>"
 _pkgname=bespokesynth
 pkgname="$_pkgname"-git
 pkgdesc="Software modular synth, VST host input, transport/Ableton Push, and Python scripting"
-pkgver=r255.5763dd9
+pkgver=r259.042693b
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/awwbees/BespokeSynth"
 license=(GPL3)
-depends=('jack' 'curl' 'mesa' 'xorg-xrandr' 'python')
+depends=('jack' 'curl' 'mesa' 'xorg-xrandr' 'python' 'libxext' 'ladspa')
 makedepends=('gcc' 'libx11' 'libxinerama' 'freetype2' )
 checkdepends=()
 optdepends=()
@@ -29,8 +28,11 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
+  sed -i -e 's/usb-1.0/usb-1.0;python3.8/'  BespokeSynth.jucer
+  sed -i -e 's/python-config/python3-config/'  BespokeSynth.jucer
   sed -i -e 's/JUCE_PLUGINHOST_VST="1"/JUCE_PLUGINHOST_VST="1" JUCE_WEB_BROWSER="0"/'  BespokeSynth.jucer
 
+  ### Launch a virtual framebuffer X server ###
   export DISPLAY=":98"
   Xvfb $DISPLAY >& Xvfb.log &
   trap "kill $! || true" EXIT
@@ -49,5 +51,10 @@ build() {
 
 package() {
 	cd "$_pkgname"
-	make DESTDIR="$pkgdir/" install
+  mkdir -p ${pkgdir}/usr/share/BespokeSynth
+  install ${srcdir}/Builds/LinuxMakefile/build/BespokeSynth ${pkgdir}/usr/share/BespokeSynth
+  mkdir -p ${pkgdir}/usr/share/icons/hicolor/512x512/apps
+  install ${srcdir}/Builds/LinuxMakefile/build/BespokeSynth/bespoke_icon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps
+
+
 }
