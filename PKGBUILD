@@ -6,7 +6,7 @@ pkgbase="${_variant}-${_colorscheme}-git"
 pkgname=("${_variant}-${_colorscheme}-git"
          "${_variant}-airline-${_colorscheme}-git"
          "${_variant}-lightline-${_colorscheme}-git")
-pkgver=v0.1.1.r40.gf4e0c92
+pkgver=v0.1.2.r0.g02b6cc5
 pkgrel=1
 arch=('any')
 url="https://github.com/sainnhe/${_colorscheme}"
@@ -26,7 +26,10 @@ package_neovim-forest-night-git() {
     provides=("${_variant}-${_colorscheme}")
     conflicts=("${_variant}-${_colorscheme}")
     cd "${srcdir}/${_colorscheme}"
-    find colors -type f -exec \
+    nvim -es --cmd ":helptags doc" --cmd ":q"
+    find doc colors -type f -exec \
+        install -Dm 644 '{}' "${pkgdir}/usr/local/share/nvim/site/pack/${_colorscheme}/start/${_colorscheme}/{}" \;
+    find autoload/*.vim -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/usr/share/nvim/runtime/{}" \;
     install -Dm 644 "${srcdir}/${_colorscheme}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
