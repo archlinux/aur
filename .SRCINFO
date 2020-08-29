@@ -1,0 +1,18 @@
+pkgbase = haskell-llvm-hs
+	pkgdesc = General purpose LLVM bindings
+	pkgver = 9.0.1
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/llvm-hs
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-attoparsec
+	depends = haskell-llvm-hs-pure
+	depends = haskell-transformers-base
+	depends = haskell-unordered-containers
+	source = https://hackage.haskell.org/packages/archive/llvm-hs/9.0.1/llvm-hs-9.0.1.tar.gz
+	sha512sums = 950e3677521d8398e02b03c043f4ccaa74bcd9e3594010e7167f0c68199adc78f5e1dea9dc62e7fa300c10daf96fe5fc68b20257af185d47e2f16fa0fe62dd1d
+
+pkgname = haskell-llvm-hs
+
