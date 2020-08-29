@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pika-backup
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Simple backups based on borg"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('borg' 'gtk3')
 makedepends=('cargo' 'meson')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('4f98d22a8132f6d63ae36eba3158ebaf6a24aa0862858c54cb02f6dbcafe5637')
+sha256sums=('7f515c2ca174e0e61430c877da9f8f5fb45ccf7d7116cbbf24a1c678fd0863f1')
 
 build() {
 	arch-meson "$pkgname-v$pkgver" build
