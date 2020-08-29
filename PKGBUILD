@@ -8,7 +8,7 @@
 pkgname=wine-lol-glibc
 pkgdesc='GNU C Library patched for wine-lol'
 pkgver=2.32
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
@@ -122,4 +122,7 @@ package() {
   rm -r "$pkgdir/usr/share"
   rm -r "$pkgdir/etc"
   rmdir "$pkgdir/usr" # should be empty now
+
+  # Provided by lib32-libxcrypt;
+  rm -f "$pkgdir"/opt/wine-lol/lib32/libcrypt.{a,so}
 }
