@@ -1,0 +1,14 @@
+pkgbase = rdnstun-git
+	pkgdesc = ICMP Path Faker
+	pkgver = r6.dc660ef
+	pkgrel = 1
+	url = https://github.com/yangfl/rdnstun
+	arch = x86_64
+	license = WTFPL2
+	provides = rdnstun
+	conflicts = rdnstun
+	source = rdnstun::git+https://github.com/yangfl/rdnstun.git#branch=master
+	md5sums = SKIP
+
+pkgname = rdnstun-git
+
