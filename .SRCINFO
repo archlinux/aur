@@ -20,7 +20,7 @@ pkgbase = bespokesynth-git
 	provides = bespokesynth-bin
 	conflicts = bespokesynth
 	conflicts = bespokesynth-bin
-	source = BespokeSynth::git+https://github.com/awwbees/BespokeSynth
+	source = bespokesynth::git+https://github.com/awwbees/BespokeSynth
 	md5sums = SKIP
 
 pkgname = bespokesynth-git

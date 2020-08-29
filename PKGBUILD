@@ -15,7 +15,7 @@ provides=('bespokesynth' 'bespokesynth-bin')
 conflicts=('bespokesynth' 'bespokesynth-bin')
 replaces=()
 noextract=()
-source=(BespokeSynth::git+https://github.com/awwbees/BespokeSynth)
+source=(${_pkgname}::git+https://github.com/awwbees/BespokeSynth)
 md5sums=('SKIP')
 
 pkgver() {
@@ -53,9 +53,9 @@ build() {
 package() {
 	cd "$_pkgname"
   mkdir -p ${pkgdir}/usr/bin
-  install ${srcdir}/Builds/LinuxMakefile/build/BespokeSynth ${pkgdir}/usr/bin/BespokeSynth
+  install ${srcdir}/BespokeSynth/Builds/LinuxMakefile/build/BespokeSynth ${pkgdir}/usr/bin/BespokeSynth
   mkdir -p ${pkgdir}/usr/share/icons/hicolor/512x512/apps
-  install ${srcdir}/Builds/LinuxMakefile/build/BespokeSynth/bespoke_icon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps
+  install ${srcdir}/BespokeSynth/Builds/LinuxMakefile/build/BespokeSynth/bespoke_icon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps
   mkdir -p /usr/share/applications/
   install ${srcdir}/../BespokeSynth.desktop  ${pkgdir}/usr/share/applications/BespokeSynth.desktop
 
