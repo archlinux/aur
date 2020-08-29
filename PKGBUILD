@@ -2,7 +2,7 @@
 
 _pkgname=plotbitrate
 pkgname=$_pkgname-git
-pkgver=0.r59.fd9b5b7
+pkgver=1.0.7.1.r0.gfd9b5b7
 pkgrel=1
 pkgdesc="a script for plotting the bitrate of an audio or video stream over time"
 arch=('any')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {

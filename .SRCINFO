@@ -1,6 +1,6 @@
 pkgbase = plotbitrate-git
 	pkgdesc = a script for plotting the bitrate of an audio or video stream over time
-	pkgver = 0.r59.fd9b5b7
+	pkgver = 1.0.7.1.r0.gfd9b5b7
 	pkgrel = 1
 	url = https://github.com/zeroepoch/plotbitrate
 	arch = any
