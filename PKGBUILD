@@ -3,14 +3,14 @@
 
 pkgname=tgif
 pkgver=4.2.5
-pkgrel=8
+pkgrel=9
 pkgdesc="Vector-based drawing tool (for technical, not artistic, stuff)"
 arch=('i686' 'x86_64')
 url="http://bourbon.usc.edu/tgif/"
 license=('custom:QPL')
 depends=('libxt' 'zlib' 'desktop-file-utils')
 makedepends=('imake')
-source=(ftp://bourbon.usc.edu/pub/tgif/tgif-QPL-$pkgver.tar.gz)
+source=(tgif-QPL-$pkgver.tar.gz::http://sourceforge.net/projects/tgif/files/tgif/4.2.5/tgif-QPL-4.2.5.tar.gz/download)
 md5sums=('a622240ce2377f15b6d8261e4c49b8f6')
 install=tgif.install
 
