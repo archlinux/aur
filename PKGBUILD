@@ -15,19 +15,12 @@
 puredata=${puredata:-pd}
 pkgpref=$(echo "$puredata" | sed -e 's/-//g')
 
-# Branch to build, faustgen2 by default. Our repo is a fork of the upstream at
-# https://github.com/CICM/pd-faustgen. The present version has a lot of
-# additional functionality and is *not* backward-compatible. Thus the external
-# is named differently so that you can run both the original CICM faustgen~
-# and faustgen2~ at the same time.
-branch=${branch:-faustgen2}
-
 # Source and destination package names.
 src_pkgname=pd-faustgen
 dest_pkgname=$pkgpref-faustgen2
 
 pkgname=$dest_pkgname-git
-pkgver=2.0.0rc4.r0.gc1fdfb4
+pkgver=2.0.0rc4.r1.g61e30e1
 pkgrel=1
 pkgdesc="The FAUST compiler embedded in a Pd external - git version"
 arch=("i686" "x86_64")
@@ -37,7 +30,7 @@ depends=("$puredata" 'llvm-libs')
 makedepends=('cmake' 'faust' 'llvm')
 provides=("$dest_pkgname")
 conflicts=("$dest_pkgname")
-source=("git+https://github.com/agraef/$src_pkgname.git#branch=$branch")
+source=("git+https://github.com/agraef/$src_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {

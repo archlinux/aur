@@ -1,6 +1,6 @@
 pkgbase = pd-faustgen2-git
 	pkgdesc = The FAUST compiler embedded in a Pd external - git version
-	pkgver = 2.0.0rc4.r0.gc1fdfb4
+	pkgver = 2.0.0rc4.r1.g61e30e1
 	pkgrel = 1
 	url = https://github.com/agraef/pd-faustgen
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = pd-faustgen2-git
 	depends = llvm-libs
 	provides = pd-faustgen2
 	conflicts = pd-faustgen2
-	source = git+https://github.com/agraef/pd-faustgen.git#branch=faustgen2
+	source = git+https://github.com/agraef/pd-faustgen.git
 	md5sums = SKIP
 
 pkgname = pd-faustgen2-git
