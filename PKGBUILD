@@ -1,7 +1,7 @@
 # Maintainer: Anatoly Rugalev <anatoly.rugalev gmail com>
 
 pkgname=kube-commander
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Browse your kubernetes clusters in a casual way"
 url="https://github.com/AnatolyRugalev/kube-commander"
@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('kubectl')
 
 source=("https://github.com/AnatolyRugalev/kube-commander/releases/download/${pkgver}/kube-commander_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('107edfa88144cf95aafad39777d8f062f1f70b1904d9bcd4dbb696461d77f90f')
+sha256sums=('c2d74fd0832704226abfa8a435838b40d2eeb8d3bf993f2d54eb37d7d24c7f11')
 package() {
   cd "$srcdir"
   install -d "$pkgdir/usr/bin"
