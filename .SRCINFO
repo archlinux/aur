@@ -1,6 +1,6 @@
 pkgbase = rbuild-cli-git
 	pkgdesc = The official cli client for the remote build system
-	pkgver = r28.7a1b5d4
+	pkgver = v1.0.0
 	pkgrel = 1
 	url = https://github.com/JojiiOfficial/RemoteBuildClient
 	arch = i686
