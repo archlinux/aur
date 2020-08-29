@@ -1,7 +1,7 @@
 pkgbase = rbdl
-	pkgdesc = RBDL - Rigid Body Dynamics Library. Mercurial version.
+	pkgdesc = RBDL - Rigid Body Dynamics Library
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://rbdl.bitbucket.org
 	arch = x86_64
 	license = ZLIB

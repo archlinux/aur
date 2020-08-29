@@ -2,9 +2,9 @@
 
 pkgname=rbdl
 _pkgname=rbdl-orb
-pkgrel=1
+pkgrel=2
 pkgver=3.0.0
-pkgdesc="RBDL - Rigid Body Dynamics Library. Mercurial version."
+pkgdesc="RBDL - Rigid Body Dynamics Library"
 url="http://rbdl.bitbucket.org"
 arch=('x86_64')
 license=('ZLIB')
