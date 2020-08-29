@@ -2,7 +2,7 @@
 
 pkgname=man-pages-pl-git
 _gitname=manpages-l10n
-pkgver=r11171.91d03549a
+pkgver=r11311.4bf91cf81
 pkgrel=1
 pkgdesc="Polish man pages (Git version)"
 arch=('any')
