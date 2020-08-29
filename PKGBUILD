@@ -1,8 +1,8 @@
 # Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
 
 pkgname=rime-putonghua
-pkgver=0.0.0.20200825
-_commit=efeee372309af32755908ea89f7f1c2e5a794638
+pkgver=0.0.0.20200829
+_commit=4991b3489683533ca500469cb3996387ac76a8a7
 pkgrel=1
 pkgdesc="rime 有声调普通话拼音方案"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=('rime-lua-cloud'
 			)
 makedepends=('librime' 'rime-prelude')
 source=("https://github.com/ayaka14732/rime-putonghua/archive/$_commit/rime-putonghua-$_commit.tar.gz")
-sha512sums=('8a994adc31f8631a325cb61858c7c9bf68cd46626578a0825db64038f9badb7175f970441917fce8a21c08b4e5c5ffe8daf024bc8f27ba3153719f7bce3744ee')
+sha512sums=('c6120e3e830765318ad8357a2ef3847053d5001ab43b1b51ef3230099428da0a38159d29b2163785450e56c7d55188576805a65408f68c596118a0609b6eaa02')
 
 prepare() {
   cd $pkgname-$_commit
