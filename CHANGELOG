@@ -1,5 +1,11 @@
+Version 6.5
+28 August 2020
+    - fix #23: port getmail-gmail-xoauth-tokens
+    - fix #24: TypeError: 'gaierror' object is not subscriptable
+    - documentation fixes
+
 Version 6.4
-TODO
+24 August 2020
     - fix #20: mboxrd can't concat str to bytes
     - fix #21: version numbering from 6.0x to 6.x
 
