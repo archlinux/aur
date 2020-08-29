@@ -1,0 +1,14 @@
+pkgbase = rust_ledger-bin
+	pkgdesc = CLI accounting tool
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ebcrowder/rust_ledger
+	arch = x86_64
+	license = GPL-3.0
+	provides = rust_ledger
+	options = strip
+	source = https://github.com/ebcrowder/rust_ledger/releases/download/v0.4.0/rust_ledger-0.4.0-x86_64.tar.gz
+	sha256sums = d7c137e88ea806f8e4ace3c9f75e1101a114701f880ba52a77c539259903d913
+
+pkgname = rust_ledger-bin
+
