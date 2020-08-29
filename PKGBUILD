@@ -1,7 +1,7 @@
 # Maintainer : <michael dot kogan at gmx dot net>
 
 pkgname='perl-filter-signatures'
-pkgver='0.15'
+pkgver='0.16'
 pkgrel='1'
 pkgdesc="Filter::signatures - very simplistic signatures for Perl < 5.20"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=()
 optdepends=()
 url='https://metacpan.org/pod/Filter::signatures'
 source=("https://cpan.metacpan.org/authors/id/C/CO/CORION/Filter-signatures-$pkgver.tar.gz")
-md5sums=('97d59b3749ac1f4bafdcd0dce8ab7765')
+md5sums=('05c859106d6f2809e2c13be742226173')
 _distdir="Filter-signatures-$pkgver"
 
 build() {
