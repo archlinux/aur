@@ -7,7 +7,7 @@ pkgname='ros-melodic-pcl-ros'
 pkgver='1.7.1'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-rosconsole
@@ -56,9 +56,11 @@ depends=(${ros_depends[@]}
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="perception_pcl-${pkgver}/pcl_ros"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/perception_pcl/archive/${pkgver}.tar.gz")
-sha256sums=('8974c9da95a88b050a95ae56615ca384afec5f47f2fab7fb92a490c1907239b6')
+_dir="perception_pcl-1d1e1a05d97cdbf93e67c153f1100fc14c26e31c/pcl_ros"
+#Patched with commit tarball
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/perception_pcl/archive/1d1e1a0.tar.gz"
+)
+sha256sums=('ff55d31fa88d2e7087f1457996250696ce4011eacc06684ac5e07609e0fa0324')
 
 build() {
   # Use ROS environment variables

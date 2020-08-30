@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-pcl-ros
 	pkgdesc = ROS - PCL (Point Cloud Library) ROS interface stack.
 	pkgver = 1.7.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/perception_pcl
 	arch = i686
 	arch = x86_64
@@ -45,8 +45,8 @@ pkgbase = ros-melodic-pcl-ros
 	depends = ros-melodic-tf
 	depends = eigen
 	depends = pcl
-	source = ros-melodic-pcl-ros-1.7.1.tar.gz::https://github.com/ros-perception/perception_pcl/archive/1.7.1.tar.gz
-	sha256sums = 8974c9da95a88b050a95ae56615ca384afec5f47f2fab7fb92a490c1907239b6
+	source = ros-melodic-pcl-ros-1.7.1.tar.gz::https://github.com/ros-perception/perception_pcl/archive/1d1e1a0.tar.gz
+	sha256sums = ff55d31fa88d2e7087f1457996250696ce4011eacc06684ac5e07609e0fa0324
 
 pkgname = ros-melodic-pcl-ros
 
