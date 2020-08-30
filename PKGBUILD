@@ -3,12 +3,12 @@
 
 pkgname=pcloud-drive
 pkgver=1.8.6
-pkgrel=5
+pkgrel=6
 pkgdesc='pCloud drive. Electron edition.'
 arch=('x86_64')
 url='https://www.pcloud.com/'
 license=('custom')
-depends=('fuse3')
+depends=('fuse2')
 replaces=('pcloud-git' 'pcloud')
 _api_code='XZM0dakZjHLyhvrBu0BXRSmnTXNHbSbiodj7'
 _api_response="$(curl -s "https://api.pcloud.com/getpublinkdownload?code=${_api_code}")"
