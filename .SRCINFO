@@ -1,0 +1,13 @@
+pkgbase = fantasygroundsinstaller
+	pkgdesc = Web installer for Fantasy Grounds Unity
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.fantasygrounds.com
+	arch = x86_64
+	license = Proprietary
+	options = !strip
+	source = FGUWebInstall.deb::https://www.fantasygrounds.com/filelibrary/FGUWebInstall.deb
+	sha256sums = 550d15b342a6196c62b72789b42021ac5b42502e70bd2c523341a54f62b97bf5
+
+pkgname = fantasygroundsinstaller
+
