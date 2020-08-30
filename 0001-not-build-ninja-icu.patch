@@ -1,17 +1,43 @@
-From 996d99a5bfe207759ccbdb67c28ae63718c908f6 Mon Sep 17 00:00:00 2001
+From fb9cbe559ac41226adda4d9c4aa8c454ea0455f2 Mon Sep 17 00:00:00 2001
 From: soloturn <soloturn@gmail.com>
-Date: Thu, 2 Jul 2020 04:15:26 +0200
-Subject: [PATCH] not build ninja, icu
+Date: Sat, 1 Aug 2020 16:21:07 +0200
+Subject: [PATCH] arch aur pachtes
 
 ---
- utils/build-presets.ini | 3 ---
- 1 file changed, 3 deletions(-)
+ CMakeLists.txt          | 1 +
+ docs/CMakeLists.txt     | 1 -
+ utils/build-presets.ini | 6 +++---
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a84adb0ca46..43d8b885648 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -914,6 +914,7 @@ if(NOT CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+   endif()
+ endif()
+ 
++find_package(Python2 COMPONENTS Interpreter)
+ find_package(Python3 COMPONENTS Interpreter REQUIRED)
+ 
+ #
+diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
+index c748bd36eba..eef2c349848 100644
+--- a/docs/CMakeLists.txt
++++ b/docs/CMakeLists.txt
+@@ -10,7 +10,6 @@ SET(SWIFT_SPHINX_PAPER_SIZE "letter"
+   CACHE STRING "Paper size for generated documentation")
+ 
+ SET(SPHINX_ARGS
+-  -W
+   -D latex_elements.papersize=${SWIFT_SPHINX_PAPER_SIZE}
+   -d ${CMAKE_BINARY_DIR}/doctrees)
+ 
 diff --git a/utils/build-presets.ini b/utils/build-presets.ini
-index 23c50fd2ef2..ecd82cfa89d 100644
+index b1fe751b1ac..3d67f7223aa 100644
 --- a/utils/build-presets.ini
 +++ b/utils/build-presets.ini
-@@ -794,16 +794,17 @@ mixin-preset=
+@@ -779,16 +779,17 @@ mixin-preset=
      mixin_lightweight_assertions,no-stdlib-asserts
      mixin_linux_install_components_with_clang
  
@@ -31,7 +57,7 @@ index 23c50fd2ef2..ecd82cfa89d 100644
  install-llvm
  install-swift
  install-lldb
-@@ -811,7 +812,6 @@ install-llbuild
+@@ -796,7 +797,6 @@ install-llbuild
  install-swiftpm
  install-swift-driver
  install-xctest
@@ -41,5 +67,4 @@ index 23c50fd2ef2..ecd82cfa89d 100644
  install-sourcekit-lsp
 -- 
 2.28.0
-
 
