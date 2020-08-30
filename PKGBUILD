@@ -10,7 +10,7 @@ pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/v[^0-9]*//;s/-/.r/;s/-g/./'
 }
-pkgver=2.4.6.r0.f7bbca4
+pkgver=3.0.1.r0.5488e63
 pkgrel=1
 
 pkgdesc='Web application fuzzer - python3 build of the dev branch'
@@ -24,14 +24,9 @@ depends=('python-pycurl' 'python-future' 'python-chardet')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-source=("git+$url.git" 'setup.patch')
-sha256sums=('SKIP' '252de9391983d0f0ecbc22d68435df4789f78ff36af16c22d69bf70463ef97d0')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
-
-prepare() {
-  cd "${pkgname%-git}"
-  patch -Np1 -i ../setup.patch
-}
 
 build() {
   cd "${pkgname%-git}"
