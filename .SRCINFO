@@ -1,0 +1,18 @@
+pkgbase = hapview
+	pkgdesc = Haplotype Viewer
+	pkgver = 20200830
+	pkgrel = 1
+	url = http://www.cibiv.at/~greg/haploviewer
+	arch = any
+	license = GPL3
+	depends = java-runtime
+	depends = sh
+	source = http://www.cibiv.at/~greg/HapView.zip
+	source = hapview
+	source = hapview.desktop
+	md5sums = 17b3cf6913c426202314d508446a9d51
+	md5sums = 5534e7605583ef7fcf13c8b720e37dfc
+	md5sums = 89b680a23922429a2e31f75c4e1427b3
+
+pkgname = hapview
+

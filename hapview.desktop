@@ -1,0 +1,11 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.0
+Name=Haplotype Viewer
+Comment=GUI application for viewing and exporting publication quality haplotype genealogies
+
+Exec=hapview
+Terminal=false
+Categories=Science
+
