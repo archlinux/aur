@@ -1,6 +1,6 @@
 pkgbase = openmsx
 	pkgdesc = The MSX emulator that aims for perfection.
-	pkgver = 0.15.0
+	pkgver = 16.0
 	pkgrel = 1
 	url = http://openmsx.org/
 	install = openmsx.install
@@ -14,15 +14,15 @@ pkgbase = openmsx
 	depends = tcl
 	depends = libpng
 	depends = zlib
-	optdepends = python2
+	optdepends = python
 	optdepends = jack-audio-connection-kit
 	optdepends = glew
 	optdepends = libgl
 	optdepends = catalyst-utils
 	optdepends = nvidia-utils
 	optdepends = nvidia-304xx-utils
-	source = https://github.com/openMSX/openMSX/releases/download/RELEASE_0_15_0/openmsx-0.15.0.tar.gz
-	md5sums = 99100aeb48c0f91ac6e1dcbaf00f4657
+	source = https://github.com/openMSX/openMSX/releases/download/RELEASE_16_0/openmsx-16.0.tar.gz
+	md5sums = ea3a70870242e2a836a7a350c16b18ec
 
 pkgname = openmsx
 
