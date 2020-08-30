@@ -1,13 +1,21 @@
 pkgbase = dns-proxy-git
 	pkgdesc = A transparent DNS-over-SOCKS proxy for use with transparent SOCKS proxies.
-	pkgver = 20180701
+	pkgver = r56.5785038
 	pkgrel = 1
 	url = https://github.com/cookiengineer/dns-proxy
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL
 	makedepends = git
 	provides = dns-proxy
 	provides = dns-proxy.service
+	backup = etc/dns-proxy/dns-proxy.conf
+	backup = etc/dns-proxy/resolv.conf
+	source = git+https://github.com/cookiengineer/dns-proxy.git
+	sha256sums = SKIP
 
 pkgname = dns-proxy-git
 
