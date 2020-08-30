@@ -1,8 +1,9 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=pcrio-git
-pkgver=r38.793bb07
+pkgver=2.r46.8839373
 pkgrel=1
+_apiver=2
 pkgdesc='C library for editing resource strings in pe/coff files.'
 arch=('i686' 'x86_64')
 url='https://github.com/sandsmark/pcrio'
@@ -16,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd pcrio
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "${_apiver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
