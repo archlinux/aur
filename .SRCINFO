@@ -1,0 +1,19 @@
+pkgbase = ffmpeg-normalize-git
+	pkgdesc = Audio normalization for Python/FFmpeg
+	pkgver = 1.20.1.r2.gbc0fbb3
+	pkgrel = 1
+	url = https://github.com/slhck/ffmpeg-normalize
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = ffmpeg
+	depends = python-colorama
+	depends = python-tqdm
+	provides = ffmpeg-normalize
+	conflicts = ffmpeg-normalize
+	source = ffmpeg-normalize-git::git+https://github.com/slhck/ffmpeg-normalize.git
+	sha512sums = SKIP
+
+pkgname = ffmpeg-normalize-git
+
