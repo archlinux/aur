@@ -1,14 +1,15 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=genieutils-git
-pkgver=9.r603.9dd1ab9
+pkgver=10.r654.2fbb27d
 pkgrel=1
-_apiver=9
+_apiver=10
+_pcrioapi=2
 pkgdesc='A library to read/write certain data and resource files of genie engine games'
 arch=('x86_64' 'i686')
 url='https://github.com/sandsmark/genieutils'
 license=('LGPL3')
-depends=('gcc-libs' 'pcrio-git' 'zlib')
+depends=("pcrio-git>=${_pcrioapi}" 'boost-libs')
 makedepends=('git' 'zstr-git')
 conflicts=(genieutils)
 provides=(genieutils)
