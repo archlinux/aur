@@ -1,8 +1,8 @@
 pkgbase = inlets
 	pkgdesc = Expose your local endpoints to the Internet
-	pkgver = 2.1.0
-	pkgrel = 2
-	url = https://github.com/alexellis/inlets
+	pkgver = 2.7.4
+	pkgrel = 1
+	url = https://github.com/inlets/inlets
 	arch = any
 	license = MIT
 	makedepends = go
@@ -10,10 +10,10 @@ pkgbase = inlets
 	options = !strip
 	source = inlets-server.service
 	source = inlets-client.service
-	source = https://github.com/alexellis/inlets/archive/2.1.0.tar.gz
+	source = https://github.com/inlets/inlets/archive/2.7.4.tar.gz
 	sha256sums = 79bad343a925292d0a5cc5164bff28fe95d9512a5dded04568af61d71e1e0a79
 	sha256sums = f7f85bb083b8839a89f715f882bf0e0f556cf183aa7ed653a1c87c5822762163
-	sha256sums = 8424ba7c94716e6d5ad18e4960bd23632c4353b2a1fefc51129a4c6dec353153
+	sha256sums = 55cab0f01b19f653637f4230bdb0ff15e4618a59651f37cad6bc69ff79460e7c
 
 pkgname = inlets
 
