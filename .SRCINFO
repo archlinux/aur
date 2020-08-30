@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-catkin
 	pkgdesc = ROS - Low-level build system macros and infrastructure for ROS.
-	pkgver = 0.7.26
+	pkgver = 0.7.28
 	pkgrel = 1
 	epoch = 1
 	url = https://www.wiki.ros.org/catkin
@@ -17,8 +17,8 @@ pkgbase = ros-melodic-catkin
 	depends = gmock
 	depends = python
 	depends = ros-build-tools-py3
-	source = ros-melodic-catkin-0.7.26.tar.gz::https://github.com/ros/catkin/archive/0.7.26.tar.gz
-	sha256sums = f145196af907c328762626dc587764085d3284b4e55917a14e017c4c1c26313e
+	source = ros-melodic-catkin-0.7.28.tar.gz::https://github.com/ros/catkin/archive/0.7.28.tar.gz
+	sha256sums = 8a314634e547a72aa970aaecfc1fd1964ae6ef2e9146c00f3e6da96227be49bf
 
 pkgname = ros-melodic-catkin
 
