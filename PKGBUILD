@@ -5,11 +5,12 @@ url='https://wiki.ros.org/four_wheel_steering_controller'
 pkgname='ros-melodic-four-wheel-steering-controller'
 pkgver='0.16.1'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
   ros-melodic-controller-interface
+  ros-melodic-controller-manager
   ros-melodic-nav-msgs
   ros-melodic-four-wheel-steering-msgs
   ros-melodic-realtime-tools
@@ -19,6 +20,7 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-melodic-controller-interface
+  ros-melodic-controller-manager
   ros-melodic-nav-msgs
   ros-melodic-four-wheel-steering-msgs
   ros-melodic-realtime-tools
