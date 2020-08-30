@@ -1,18 +1,19 @@
-# Maintainer: 
+# Maintainer: Luís Ferreira <org dot aurorafoss at luis, backwards>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Stefan Tatschner <stefan@sevenbyte.org>
 # Contributor: Tobias Hunger <tobias DOT hunger AT gmail DOT com>
 
-pkgname=discourse
-pkgver=2.5.0
+pkgname='discourse'
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="A simple, flat forum, where replies flow down the page in a line"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.discourse.org/"
 license=('GPL')
 depends=('ruby>=2.0' 'ruby-bundler' 'gmp' 'libxml2' 'libxslt' 'openssl'
          'krb5' 'libgcrypt' 'libgpg-error' 'postgresql-libs' 'xz' 'zlib')
-makedepends=('uglify-js')
+makedepends=('uglify-js' 'git' 'ruby-bundler' 'ruby-rake')
+checkdepends=('ruby-rspec')
 optdepends=('apache: a webserver to deploy discourse'
             'nginx: another webserver to deploy discourse (example configs have to be fixed!)'
             'postgresql: database server'
@@ -64,8 +65,7 @@ _systemddir="/usr/lib/systemd/system"
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-    # Install the appropriate version of bundler
-    gem install bundler -v '1.17.3'
+
     # Patch source files to include a static revision string and remove git repo.
     # Including the git repository triples the package size.
     _revision=$(git rev-parse HEAD)
@@ -86,17 +86,28 @@ prepare() {
 
     msg2 "Patching discourse_defaults.conf to serve assets..."
     sed -i "s|serve_static_assets = false|serve_static_assets = true|g" "config/discourse_defaults.conf"
+
+    # sed -r 's|~>|>=|g' -i Gemfile # we dont do version pinning
+    # sed 's|git ls-files -- bin/\*|find bin -type f|' -i Gemfile
+    # sed 's|git ls-files -- {test,spec,features}/*|echo|' -i Gemfile
+    # sed 's|git ls-files|find -type f|' -i Gemfile
 }
 
 build() {
     cd "${srcdir}/${pkgname}"
 
-    cpus=$(nproc)
+    cpus="$(nproc)"
     msg2 "Starting bundler with ${cpus} jobs..."
     msg2 "Gems will be installed into vendor/bundle."
     bundle config build.nokogiri --use-system-libraries
-    bundle install --jobs ${cpus} --no-cache --no-prune --deployment --without development test
+    bundle install -j"$(nproc)" --no-cache --no-prune --deployment --without development test
 }
+
+# check() {
+#   cd "${srcdir}/${pkgname}"
+
+#   rspec
+# }
 
 package() {
     cd "${srcdir}/${pkgname}"
@@ -130,6 +141,7 @@ package() {
     msg2 "Installing license, documentation and example files..."
     mv "README.md" "CONTRIBUTING.md" "COPYRIGHT.txt" "${pkgdir}/usr/share/doc/${pkgname}"
     cp ${srcdir}/*.conf.example "${pkgdir}/usr/share/doc/${pkgname}"
+
     install -D "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 
     msg2 "Installing systemd service files..."
