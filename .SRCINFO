@@ -1,12 +1,13 @@
 pkgbase = stratagus
 	pkgdesc = A free cross-platform real-time strategy gaming engine
 	pkgver = 2.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wargus/stratagus
 	changelog = stratagus.changelog
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = cmake
 	makedepends = glu
 	depends = libgl

@@ -1,13 +1,13 @@
 # Maintainer: Angelo Theodorou <encelo at users dot sourceforge dot net>
 pkgname=stratagus
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A free cross-platform real-time strategy gaming engine"
 arch=('i686' 'x86_64')
 url="https://github.com/Wargus/stratagus"
 license=('GPL')
 depends=('libgl' 'sdl' 'libpng' 'libmng' 'libtheora' 'libmikmod' 'sqlite' 'tolua++')
-makedepends=('cmake' 'glu')
+makedepends=('git' 'cmake' 'glu')
 changelog=stratagus.changelog
 source=("stratagus::git://github.com/Wargus/stratagus.git#tag=v2.4.3")
 md5sums=('SKIP')

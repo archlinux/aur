@@ -1,3 +1,8 @@
+2020-08-30 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Added git to the makedepends array
+
 2020-05-11 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
