@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-todotxt-git
 _pkgname="${pkgname%-*}"
 _pkgdir=todo-txt
-pkgver=v30.r9.g6ec0377
+pkgver=30.r10.gd3980f5
 pkgrel=1
 pkgdesc="Todo.txt GUI for gnome-shell. Git version"
 arch=('any')
@@ -23,7 +23,7 @@ prepare() {
 
 pkgver() {
   cd "${_pkgdir}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
