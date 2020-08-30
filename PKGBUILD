@@ -6,12 +6,13 @@ pkgname=('faiss-git' 'python-faiss-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
-pkgver=v1.6.0.r5.ge325c50
+pkgver=v1.6.1.r87.gc97f890
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
 sha256sums=('SKIP')
-depends=('blas' 'lapack')
-makedepends=('git' 'python' 'python-numpy' 'swig' 'python-setuptools')
+depends=('blas' 'lapack' 'openmp')
+makedepends=('git' 'python' 'python-numpy' 'swig' 'python-setuptools' 'cmake')
+optdepends=('intel-mkl')
 
 pkgver() {
   cd "${_pkgname}"
@@ -21,22 +22,31 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
+  mkdir -p build
+  cd build
+  _CMAKE_FLAGS=""
+  cmake .. \
+    -DFAISS_ENABLE_GPU=OFF \
+    -DFAISS_ENABLE_PYTHON=ON \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  ./configure --prefix=/usr --with-python=python --without-cuda
+  cd "${srcdir}/${_pkgname}/build"
   make
-  make -C python
+  cd faiss/python
+  python setup.py build
 }
 
 package_faiss-git() {
   pkgdesc='A library for efficient similarity search and clustering of dense vectors.'
   provides=('faiss')
   conflicts=('faiss')
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}/build"
   make DESTDIR="$pkgdir" install
+  cd ..
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
@@ -46,7 +56,8 @@ package_python-faiss-git() {
   conflicts=('python-faiss')
   depends=('python' 'python-numpy')
 
-  cd "${srcdir}/${_pkgname}/python"
+  cd "${srcdir}/${_pkgname}/build/faiss/python"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd ../../..
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
