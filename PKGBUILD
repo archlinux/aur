@@ -1,4 +1,5 @@
-# Maintainer: Marcin Mielniczuk <marmistrz dot dev at zoho dot eu>
+# Maintainer: Lily Anatia Wilson <hotaru at thinkindifferent dot net>
+# Contributor: Marcin Mielniczuk <marmistrz dot dev at zoho dot eu>
 
 pkgname=wasi-sdk-bin
 _pkgname=wasi-sdk
