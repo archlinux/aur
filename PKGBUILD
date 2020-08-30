@@ -1,13 +1,12 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _opamname='charInfo_width'
-_projectname="${_opamname,,}"
-pkgname="ocaml-$_projectname"
+pkgname="ocaml-${_opamname,,}"
 pkgver='1.1.0'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='Determine column width for a character'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/kandu/$_projectname"
+url="https://github.com/kandu/$_opamname"
 license=('MIT')
 depends=('ocaml>=4.02.3' 'ocaml-camomile>=1.0.0' 'ocaml-result')
 makedepends=('dune')
@@ -20,7 +19,7 @@ source=(
 sha256sums=('21b2ed7a7bfb92da47c01edb4126c0f2dedda37c9c07c8e17ab58abe38838172'
             '861f4f38563857ccf124b890b03182a1711c685b8e55c07e4e2565add10c885a')
 
-_sourcedirectory="$_projectname-$pkgver"
+_sourcedirectory="$_opamname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
