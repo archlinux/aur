@@ -1,7 +1,7 @@
 # Maintainer: Victor <victor@xirion.net>
 pkgname=buildkit-git
 _pkgname=buildkit
-pkgver=0.5.1.r0.g646fc0af
+pkgver=r2571.898d7207
 pkgrel=1
 pkgdesc='BuildKit is a toolkit for converting source code to build artifacts in an efficient, expressive and repeatable manner.'
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_pkgname"
   # cutting off 'v' prefix that presents in the git tag
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
