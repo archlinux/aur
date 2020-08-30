@@ -3,7 +3,7 @@
 _projectname='mmap'
 pkgname="ocaml-$_projectname"
 pkgver='1.1.0'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Provides a Mmap.map_file function for mapping files in memory'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mirage/$_projectname"
