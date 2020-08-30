@@ -16,30 +16,30 @@ puredata=${puredata:-pd}
 pkgpref=$(echo "$puredata" | sed -e 's/-//g')
 
 # Source and destination package names.
-src_pkgname=pd-faustgen
-dest_pkgname=$pkgpref-faustgen2
+srcname=pd-faustgen
+dstname=$pkgpref-faustgen2
 
-pkgname=$dest_pkgname-git
-pkgver=2.0.0rc4.r1.g61e30e1
+pkgname=$dstname-git
+pkgver=2.0.0.r1.gc62c028
 pkgrel=1
 pkgdesc="The FAUST compiler embedded in a Pd external - git version"
 arch=("i686" "x86_64")
 license=('MIT')
-url="https://github.com/agraef/$src_pkgname"
+url="https://github.com/agraef/$srcname"
 depends=("$puredata" 'llvm-libs')
 makedepends=('cmake' 'faust' 'llvm')
-provides=("$dest_pkgname")
-conflicts=("$dest_pkgname")
-source=("git+https://github.com/agraef/$src_pkgname.git")
+provides=("$dstname")
+conflicts=("$dstname")
+source=("git+https://github.com/agraef/$srcname.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$src_pkgname"
+    cd "$srcname"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-rc/rc/g;s/-/./g'
 }
 
 prepare() {
-     cd "$src_pkgname"
+     cd "$srcname"
      # We don't have to initialize the faust submodules, as we're building
      # against an installed libfaust. This makes checking out the submodules
      # much quicker.
@@ -51,7 +51,7 @@ prepare() {
 pdlibdir=$(cd /usr/lib/$puredata && pwd -P)
 
 build() {
-     cd "$src_pkgname"
+     cd "$srcname"
      rm -rf build
      mkdir build && cd build
      cmake .. -DCMAKE_INSTALL_PREFIX="$pdlibdir" -DINSTALL_DIR="extra/faustgen2~" -DINSTALLED_FAUST=ON
@@ -59,6 +59,6 @@ build() {
 }
 
 package() {
-     cd "$src_pkgname/build"
+     cd "$srcname/build"
      make install DESTDIR="$pkgdir"
 }
