@@ -1,0 +1,17 @@
+pkgbase = roundcubemail-plugin-carddav
+	pkgdesc = CardDAV plugin for RoundCube Webmailer
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/blind-coder/rcmcarddav
+	arch = any
+	license = GPL2
+	makedepends = composer
+	depends = roundcubemail
+	conflicts = roundcube-rcmcarddav
+	conflicts = roundcube-rcmcarddav-git
+	backup = etc/webapps/roundcubemail/plugins/carddav/config.inc.php
+	source = https://github.com/blind-coder/rcmcarddav/releases/download/v4.0.0-alpha1/carddav-v4.0.0-alpha1.tgz
+	md5sums = 525688b0e165821bc1843ac5be7628c6
+
+pkgname = roundcubemail-plugin-carddav
+
