@@ -4,10 +4,11 @@ url='https://wiki.ros.org/kalman_filter'
 pkgname='ros-melodic-kalman-filter'
 pkgver='0.2.6'
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
+  ros-melodic-roslint
   ros-melodic-rospy)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
