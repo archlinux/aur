@@ -4,7 +4,7 @@ pkgver=10.0.4
 pkgrel=1
 pkgdesc="A modified version of yay with additional features, improvements and small bug fixes"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
-url="https://git.jojii.de/jojii/yayim"
+url="https://gitea.jojii.de/jojii/yayim"
 license=('GPL')
 depends=(
   'libalpm.so>=12'
@@ -16,8 +16,8 @@ makedepends=(
 )
 provides=("yay")
 conflicts=("yay")
-source=("${pkgname}-${pkgver}.tar.gz::https://git.jojii.de/jojii/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('2c1a39cb71479cead26c7aa467569988a11d68ce07cef564f8b5c1644b1f84d1')
+source=("${pkgname}-${pkgver}.tar.gz::https://gitea.jojii.de/jojii/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('caa335ceaa02a20514532731ef177f59868ca3f1f20e75b8b44526ffe9a18946')
 
 build() {
   export GOPATH="$srcdir"/gopath
@@ -26,12 +26,12 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
 
-  cd "$srcdir/$pkgname-v$pkgver"
+  cd "$srcdir/$pkgname"
   LDFLAGS="-extldflags \"${LDFLAGS}\"" \
     make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX="/usr" build
 }
 
 package() {
-  cd "$srcdir/$pkgname-v$pkgver"
+  cd "$srcdir/$pkgname"
   make VERSION=$pkgver DESTDIR="$pkgdir" PREFIX="/usr" install
 }
