@@ -1,5 +1,5 @@
 # Maintainer: otaj <jasek.ota@gmail.com>
-# If you want to set only one GPU target compute capability, set _GPU_TARGET, otherwise leave it commented out and it will build default targets (52, 60, 61, 70 and 75). You can also set multiple targets separated by semicolon
+# If you want to set only one GPU target compute capability, set _GPU_TARGET, otherwise leave it commented out and it will build default targets (52, 60, 61, 70 and 75). You can also set multiple targets separated by a space
 
 #_GPU_TARGET="75"
 _pkgname=faiss
