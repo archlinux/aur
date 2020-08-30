@@ -8,13 +8,13 @@
 # also not building tools since you most likely have MAME installed as well
 
 pkgname=hbmame
-pkgver=0.221
+pkgver=0.224
 pkgrel=1
 pkgdesc="A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support."
 url="https://mamedev.org/"
 license=(GPL2)
 arch=(x86_64)
-depends=(sdl2_ttf qt5-base lua libutf8proc pugixml portmidi portaudio flac)
+depends=(sdl2_ttf qt5-base lua53 libutf8proc pugixml portmidi portaudio flac)
 makedepends=(nasm python asio rapidjson glm libxinerama)
 conflicts=(sdlmame)
 replaces=(sdlmame)
@@ -34,6 +34,13 @@ prepare() {
 build() {
 
   cd hbmame-tag${pkgver:2}
+  export CFLAGS+=" -I/usr/include/lua5.3/"
+  export CXXFLAGS+=" -I/usr/include/lua5.3/"
+
+# Hack to force linking to lua5.3
+  mkdir lib
+  ln -s /usr/lib/liblua5.3.so lib/liblua.so
+  export LDFLAGS+=" -L${PWD}/lib"  
 
   # Build HBMAME
   make \
