@@ -1,15 +1,17 @@
 pkgname=mingw-w64-sdl2_gfx
-pkgver=1.0.0
-pkgrel=2
-pkgdesc="SDL Graphic Primitives (Version 2) (mingw-w64)"
+pkgver=1.0.4
+pkgrel=1
+pkgdesc="SDL graphics drawing primitives and other support functions (Version 2)mingw-w64)"
 arch=(any)
-url="http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx"
-license=("zlib")
+url="http://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/"
+license=(zlib)
 depends=(mingw-w64-sdl2)
 makedepends=(mingw-w64-configure)
 options=(staticlibs !strip !buildflags)
-source=("http://www.ferzkopp.net/Software/SDL2_gfx/SDL2_gfx-${pkgver}.tar.gz")
-md5sums=('f008cc117cb901aec6bf5c2f0b11f7ea')
+source=("https://www.ferzkopp.net/Software/SDL2_gfx/SDL2_gfx-${pkgver}.tar.gz")
+sha512sums=('81a100d3c8c3a7c6bd37a23f1290ff10685f8e62fbecd83b0086aae4edc721483e2153cd4219fbd9168f115eea0ea6b25f9be375faf5761f0babdfb1b52fe482')
+
+_architectures="i686-w64-mingw64 x86_64-w64-mingw64"
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -28,7 +30,6 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/SDL2_gfx-${pkgver}/build-${_arch}"
     make DESTDIR="$pkgdir" install
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
