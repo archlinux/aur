@@ -1,12 +1,18 @@
 pkgbase = bin2iso
 	pkgdesc = Converts RAW format (.bin/.cue) files to ISO/WAV format
 	pkgver = 1.9b
-	pkgrel = 5
-	url = http://users.eastlink.ca/~doiron/bin2iso/
+	pkgrel = 6
+	url = http://xpt.sourceforge.net/techdocs/media/video/dvdvcd/dv09-NonIsoCDFormats/ar01s10.html
 	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL
 	depends = glibc
-	source = http://users.eastlink.ca/~doiron/bin2iso/linux/bin2iso19b_linux.c
+	source = http://slackware.uk/sbosrcarch/by-name/system/bin2iso/bin2iso19b_linux.c
 	sha256sums = 1e8a6ae79e91325acd50f3a0e506edf4d8cb57b72d1dcfd8b276a04aff82e43d
 
 pkgname = bin2iso
