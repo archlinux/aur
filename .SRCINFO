@@ -1,6 +1,6 @@
 pkgbase = passgen-git
 	pkgdesc = A simple cli tool that generates passwords of a user defined length. Can currently create Random String, Secure Token String , and UUID4 Secure Unique String ID passwords
-	pkgver = v1.02.r0.gd4a5e45
+	pkgver = V1.02.g6bf9091
 	pkgrel = 1
 	url = https://github.com/Can221-ParOS/passgen-git.git
 	arch = x86_64
