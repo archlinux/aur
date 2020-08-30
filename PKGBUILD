@@ -2,7 +2,7 @@
 
 pkgname=python-kornia-git
 _name=kornia
-pkgver=v0.4.0.r14.g25531b6
+pkgver=0.4.0.r15.g6434c36
 pkgrel=1
 arch=(any)
 url='https://github.com/kornia/kornia'
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_name}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 check() {
