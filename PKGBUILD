@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2164
 
 pkgname=joinmarket-qt-git
-pkgver=0.6.1.r91.ga050a89
+pkgver=0.7.0.r3.gc90432e
 pkgrel=1
 pkgdesc="Coinjoin software, includes a QT wallet and requires Bitcoin Core as backend"
 arch=('any')
