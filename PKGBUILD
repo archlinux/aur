@@ -1,7 +1,7 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname="netctl-tray"
-pkgver=0.2.1
-pkgrel=3
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="A lightweight netctl tray app with notifications"
 arch=('x86_64')
 url="https://github.com/PonasKovas/netctl-tray"
@@ -12,14 +12,14 @@ depends=('qt5-base'
      	 'polkit')
 conflicts=("netctl-tray-auto")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/${pkgver}.tar.gz")
-md5sums=('9d191cd2ab8359603786fc32b5b45d87')
+md5sums=('d6fb801d64b3e75c0b49d65cac673e89')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
   rustup toolchain install nightly
   rustup update
   RUSTUP_TOOLCHAIN=nightly \
-    cargo +nightly build --release
+    RUSTFLAGS="-Ctarget-cpu=native" cargo +nightly build --release
 }
 
 package() {
@@ -29,4 +29,5 @@ package() {
   install -Dm644 assets/* "${pkgdir}/usr/share/netctl-tray/"
   install -dm0750 "${pkgdir}/usr/share/polkit-1/rules.d/"
   install -Dm0644 scripts/netctl-tray.rules "${pkgdir}/usr/share/polkit-1/rules.d/netctltray.rules"
+  sudo setcap cap_net_raw=ep "${pkgdir}/usr/bin/netctl-tray"
 }
