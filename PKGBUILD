@@ -17,7 +17,7 @@ optdepends=('dbus:          To control picom via D-Bus'
             'python:        For picom-convgen.py')
 provides=('compton' 'compton-git' 'picom' 'picom-git')
 conflicts=('compton' 'compton-git' 'picom' 'picom-git')
-replaces=('compton-git' 'picom-git')
+#replaces=('compton-git' 'picom-git')
 options=('!strip')
 source=(git+"https://github.com/ibhagwan/${_gitname}.git")
 md5sums=("SKIP")
