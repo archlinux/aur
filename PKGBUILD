@@ -1,13 +1,13 @@
 # Maintainer: Bence Hornák <bence.hornak@gmail.com>
 
 pkgname=theia-electron
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 arch=('any')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
 license=('EPL2')
-depends=('nodejs>=10.11.0' 'nodejs<13' 'nss' 'gtk3' 'libxss' 'libxkbfile')
+depends=('nodejs>=12.14.1' 'nodejs<13' 'nss' 'gtk3' 'libxss' 'libxkbfile')
 makedepends=('yarn' 'make' 'gcc' 'pkgconf' 'python2' 'node-gyp')
 optdepends=('git: git support')
 options=(!strip) #to speed up build
@@ -21,7 +21,7 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE"
 )
 md5sums=('5a26cc7b1b461bec8533266dbe64c87e'
-         '4afa80c7dbb0391e94b1bdefd28636ee'
+         '6db9b981f8543c90db7666449c258631'
          '54b30057095cf131ec7296b0d0bd2046'
          'b316dead79fa33f45c8d689a1c940dab'
          '1dde0e422484895d3509f4ee9bb8d980'
