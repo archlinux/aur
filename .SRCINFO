@@ -1,15 +1,13 @@
 pkgbase = ttf-impallari-libre-baskerville
-	pkgdesc = Libre Baskerville is webfont optimized for web body text, from Pablo Impallari
+	pkgdesc = font optimized for web body text by Pablo Impallari
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/impallari/Libre-Baskerville
 	arch = any
 	groups = impallari-fonts
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = Libre-Baskerville-master.zip::https://codeload.github.com/impallari/Libre-Baskerville/zip/master
-	md5sums = 051941308b8f7446ee8a2fe877e76d60
+	license = OFL
+	source = ttf-impallari-libre-baskerville-1.0-2.zip::https://github.com/impallari/Libre-Baskerville/archive/9e9e2a6be500dc261dbeaba040b76cadc2e4522f.zip
+	sha256sums = 5cd04f22242c48f0bd2449334e22b69fe5cc9b508ff0007c103432263912b38e
 
 pkgname = ttf-impallari-libre-baskerville
 
