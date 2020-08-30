@@ -138,7 +138,6 @@ find ./ -maxdepth 1 -type f -exec strip -s {} 2>/dev/null \;
 echo "done."
 
 printf "\nRepack evelauncher-$version.tar.gz..."
-touch ./*
 cd ../
 tar czf evesetup/evelauncher-$version.tar.gz evelauncher/
 echo "done."

@@ -14,7 +14,7 @@ bootstrap_install() {
     done
     if [ -f "./dxvk-$dvver.tar.gz" ] ;then
 	install -d "$libdir/dxvk/"
-	echo "dxvk-$dvver" >"$libdir/dxvk/version"
+	echo "$dvver" >"$libdir/dxvk/version"
 	chmod 0644 "$libdir/dxvk/version"
 	tar xf ./dxvk-$dvver.tar.gz -C $libdir/dxvk/ --no-same-owner \
 	    --strip-components=1 dxvk-$dvver/x32 dxvk-$dvver/x64
@@ -113,7 +113,6 @@ build_lib() {
     find ./ -maxdepth 1 -type f -exec strip -s {} 2>/dev/null \;
     echo "done."
     printf "\nRepack evelauncher-$elver.tar.gz..."
-    touch ./*
     cd ../
     rm evelauncher-$elver.tar.gz
     tar czf evelauncher-$elver.tar.gz evelauncher/

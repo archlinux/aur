@@ -1,11 +1,11 @@
 #Maintainer: Jernuh Zakalwe <jzakalwe1st@gmail.com>
 pkgname=evesetup
 pkgver=1747682
-pkgrel=5
+pkgrel=6
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
-license=('zlib/png')
+license=('zlib')
 
 depends=('icu'
          'openssl'
@@ -99,7 +99,7 @@ package() {
         cp ${srcdir}/evelauncher.kwinrule ${pkgdir}/opt/${pkgname}/doc
         cp -r ${srcdir}/dxvk-1.7.1/x32 ${pkgdir}/opt/${pkgname}/lib/dxvk/
         cp -r ${srcdir}/dxvk-1.7.1/x64 ${pkgdir}/opt/${pkgname}/lib/dxvk/
-        echo "dxvk-1.7.1" >${pkgdir}/opt/${pkgname}/lib/dxvk/version
+        echo "1.7.1" >${pkgdir}/opt/${pkgname}/lib/dxvk/version
         cp -r ${srcdir}/icons ${pkgdir}/usr/share/
         rm -rf ${srcdir}/evelauncher/resources/ ${srcdir}/evelauncher/plugins/
         rm -f ${srcdir}/evelauncher/*[Qq]t* ${srcdir}/evelauncher/libcrypto*
@@ -128,7 +128,7 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '29b6f2cda542c8f3f3845fb3e1ff3e9ac2a645d389c1618bdac5fa69947a2b4b'
             '7c658874857586e70d5b727895905c884cf6aa7b1d172f3811ab62bec52d98c4'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
-            '307563dc60b291b9dc5146bd92521ee9e13bad0bd54852661cd89c5445f63352'
+            '3502adff0365f59e8149240982d73b721b045ff5dfccf8d07fad7655b86dbd88'
             'a8e604e6481b9a386269b6252852ee57812fc932f44f767982c4dbac168bb03b'
             '9079fd9ed7967479b7a78643d43537c04f9275303cd713651d2481bf4c658653'
             '546aaf5669dc3d3f1b2fff1b9a493d8ba31c19940a04fa4b9eb080e7301df4bd'
@@ -140,9 +140,9 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '528fc6627e8893db5d7092194e9f3320067f2f1f4593a206aee8a5207956e563'
             'd4610df883778f91e0ea5feba84720dfe814af0b9960677e3861809d70de24b2'
             'cda0f7cf511a527645a8a8f4d041888db34d03372a9a45bdecc2eb19133301b0'
-            '18d624c454b452c4d39013c689f8f122774354657a320118601f11df942c15d8'
-            'f9b0f0fbf5ce9aab2ca23f35055fad25a4b6759351b9a0b2754e592b733a42c5'
-            'd44fe163efaba5df1d27d831690e31a5b1da1619cf202cc9e296527373cecb44'
+            '1f07f0fac8dbdc1e6d4983e633dc53084b46146a590708122671e8008d349d9f'
+            '68e1ace4ae7b790c44e0ec9bd90445acc2b3c607076473c1aa2b746209c8fbf1'
+            '7fc6a38efa040fb76aecc4cc4d003110a5a32847a7e82907beff34b5046b2d91'
             '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
             '762db1df07dfcf526fe634b4b589a08e8affefb2f79f02cff2624c70e0820422'
             '980d68abd6f4a662b69efd19145112e88f349044fa1ed5cb6d0a840a92cb42e4'
