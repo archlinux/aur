@@ -1,0 +1,15 @@
+pkgbase = paup-cli
+	pkgdesc = Phylogenetic Analysis Using PAUP
+	pkgver = 4.0a168
+	pkgrel = 1
+	url = http://phylosolutions.com/paup-test/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = python2
+	depends = gcc-fortran
+	source = http://phylosolutions.com/paup-test/paup4a168_ubuntu64.gz
+	md5sums = a4a4f378cd5f8656664956180649d589
+
+pkgname = paup-cli
+
