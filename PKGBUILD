@@ -4,9 +4,9 @@ pkgdesc="ROS - Contains scripts used by the rosboost-cfg tool for determining cf
 url='https://wiki.ros.org/rosboost_cfg'
 
 pkgname='ros-melodic-rosboost-cfg'
-pkgver='1.14.8'
+pkgver='1.14.9'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -26,9 +26,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros-${pkgver}/rosboost_cfg"
+_dir="ros-${pkgver}/tools/rosboost_cfg"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros/archive/${pkgver}.tar.gz")
-sha256sums=('998c79df7d7ce015eee28fb768b28b68cc37a98b4a4b8daef16a1280cccb5bee')
+sha256sums=('5a129ce35c906f93117f62688a4d24aee1976b7d3f2fdf3dc4f6f305d170fb02')
 
 build() {
 	# Use ROS environment variables.
