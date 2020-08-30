@@ -2,15 +2,15 @@
 _name=umps
 _ver=3
 pkgname=$_name$_ver-git
-pkgver=3.0.1.r0.g8beeeaa
+pkgver=3.0.1.r2.gd6b9980
 pkgrel=1
 pkgdesc="Virtual machine simulator based around the MIPS R2/3000 microprocessor."
 arch=('x86_64')
 url="https://github.com/virtualsquare/umps3"
 license=('GPL3')
-depends=('qt5-base' 'libelf' 'boost' 'libsigc++' "cross-mipsel-linux-gnu-gcc")
-makedepends=('git' 'cmake')
-conflicts=("umps3")
+makedepends=('git' 'cmake' 'qt5-base' 'libelf' 'boost' 'libsigc++' 'cross-mipsel-linux-gnu-gcc')
+optdepends=('cross-mipsel-linux-gnu-gcc: compile programs for µMPS')
+conflicts=('umps3')
 source=("$pkgname::git+${url}.git")
 sha256sums=('SKIP')
 
