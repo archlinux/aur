@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 29b73d8..f8899a0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -22,7 +22,6 @@ option(FAISS_ENABLE_GPU "Enable support for GPU indexes." ON)
+ option(FAISS_ENABLE_PYTHON "Build Python extension." ON)
+ 
+ if(FAISS_ENABLE_GPU)
+-  set(CMAKE_CUDA_HOST_COMPILER ${CMAKE_CXX_COMPILER})
+   enable_language(CUDA)
+ endif()
+ 

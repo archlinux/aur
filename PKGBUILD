@@ -1,5 +1,5 @@
 # Maintainer: otaj <jasek.ota@gmail.com>
-# If you want to set only one GPU target compute capability, set _GPU_TARGET, otherwise leave it commented out and it will build default targets (35, 52, 60 and 61). You can also set multiple targets separated by space (bash array)
+# If you want to set only one GPU target compute capability, set _GPU_TARGET, otherwise leave it commented out and it will build default targets (35, 52, 60 and 61). You can also set multiple targets separated by semicolon
 
 #_GPU_TARGET="75"
 _pkgname=faiss
@@ -8,12 +8,15 @@ pkgname=('faiss-cuda-git' 'python-faiss-cuda-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
-pkgver=v1.6.1.r16.gb9914eb
+pkgver=v1.6.1.r87.gc97f890
 pkgrel=1
-source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
-sha256sums=('SKIP')
+source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git
+    'compiler.patch')
+sha256sums=('SKIP'
+            '3739947d39ebffb2775607f135743cd30489aa12f41c14e3aec42fbe79822fd3')
 depends=('blas' 'lapack' 'cuda')
-makedepends=('git' 'python' 'python-numpy' 'swig' 'python-setuptools')
+makedepends=('git' 'python' 'python-numpy' 'swig' 'python-setuptools' 'openmp' 'gcc9')
+optdepends=('intel-mkl')
 
 
 pkgver() {
@@ -24,33 +27,30 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  rm -f gpu/impl/{PQScanMultiPassNoPrecomputed.cu,gpu/impl/PQCodeDistances.cu}
-  _CONF_FLAGS='--prefix=/usr --with-cuda=/opt/cuda'
+  patch -p1 < ../compiler.patch
+  mkdir -p build
+  cd build
+  _CMAKE_FLAGS="-DFAISS_ENABLE_GPU=ON -DFAISS_ENABLE_PYTHON=ON -DCUDAToolkit_ROOT=/opt/cuda -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "
   if ! [ -z "$_GPU_TARGET" ]
   then
-    _CONF_FLAGS=$_CONF_FLAGS" --with-cuda-arch=\""
-    for _ARCH in ${_GPU_TARGET[@]} ; do
-      _CONF_FLAGS=$_CONF_FLAGS"-gencode=arch=compute_${_ARCH},code=sm_${_ARCH} "
-    done
-    _CONF_FLAGS=$_CONF_FLAGS'"'
+    $_CMAKE_FLAGS=$_CMAKE_FLAGS"-DCMAKE_CUDA_ARCHITECTURES=\""$_GPU_TARGET"\""
   fi
-  sh -c "./configure $_CONF_FLAGS --with-python=python"
-
+  cmake $_CMAKE_FLAGS ..
 }
 
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  make			# build faiss
-  make -C python	# build python package
+  cd "${srcdir}/${_pkgname}/build"
+  make
 }
 
 package_faiss-cuda-git() {
   pkgdesc='A library for efficient similarity search and clustering of dense vectors, CUDA version.'
   provides=('faiss')
   conflicts=('faiss')
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}/build"
   make DESTDIR="$pkgdir" install
+  cd ..
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
@@ -60,7 +60,8 @@ package_python-faiss-cuda-git() {
   conflicts=('python-faiss')
   depends=('python' 'python-numpy')
 
-  cd "${srcdir}/${_pkgname}/python"
+  cd "${srcdir}/${_pkgname}/build/faiss/python"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd ../../..
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
