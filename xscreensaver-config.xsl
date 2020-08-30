@@ -10,18 +10,21 @@ Encoding=UTF-8
 Name=<xsl:value-of select="@_label" />
 Comment=<xsl:value-of select="normalize-space(_description)" />
 <xsl:if test="count(command/@name) != 0">
-TryExec=<xsl:value-of select="normalize-space(command/@name)" />
-Exec=<xsl:value-of select="normalize-space(command/@name)" /><xsl:text> </xsl:text><xsl:value-of select="normalize-space(command/@arg)" />
+<xsl:variable name="executable" select="concat('/usr/lib/xscreensaver/', normalize-space(command/@name))" />
+TryExec=<xsl:value-of select="$executable" />
+Exec=<xsl:value-of select="concat($executable, ' ', normalize-space(command/@arg))" />
 </xsl:if>
 <xsl:if test="count(command/@name) = 0">
-TryExec=<xsl:value-of select="normalize-space(@name)" />
-Exec=<xsl:value-of select="normalize-space(@name)" /><xsl:text> </xsl:text><xsl:value-of select="normalize-space(command/@arg)" />
+<xsl:variable name="executable" select="concat('/usr/lib/xscreensaver/', normalize-space(@name))" />
+TryExec=<xsl:value-of select="$executable" />
+Exec=<xsl:value-of select="concat($executable, ' ', normalize-space(command/@arg))" />
 </xsl:if>
 StartupNotify=false
 Terminal=false
 Type=Application
 Categories=Screensaver;
 OnlyShowIn=MATE;GNOME;XFCE;
+Hidden=true
 </xsl:template>
 
 </xsl:stylesheet>
