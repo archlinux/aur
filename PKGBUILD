@@ -1,6 +1,6 @@
 # Maintainer: Everett B. <everettbutts@hotmail.com>
 pkgname=passgen-git
-pkgver=v1.02.r0.gd4a5e45
+pkgver=g6bf9091
 pkgrel=1
 pkgdesc='A simple cli tool that generates passwords of a user defined length. Can currently create Random String, Secure Token String , and UUID4 Secure Unique String ID passwords'
 url="https://github.com/Can221-ParOS/passgen-git.git"
@@ -13,7 +13,7 @@ md5sums=("SKIP")
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | grep -o g.......
 }
 
 package() {
