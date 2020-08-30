@@ -1,0 +1,26 @@
+pkgbase = lms-git
+	pkgdesc = Lightweight Music Server. Access your self-hosted music using a web interface
+	pkgver = v3.18.0.r0.gf77804a
+	pkgrel = 1
+	url = https://github.com/epoupon/lms
+	arch = x86_64
+	arch = armv7h
+	license = GPL3
+	makedepends = boost
+	makedepends = cmake
+	makedepends = graphicsmagick
+	makedepends = pstreams
+	depends = ffmpeg
+	depends = libconfig
+	depends = libtaginfo
+	depends = wt
+	backup = etc/lms.conf
+	source = lms-git::git+https://github.com/epoupon/lms.git
+	source = lms.sysusers
+	source = lms.service
+	md5sums = SKIP
+	md5sums = 938534cc0cd64a4990dd3f413ea0f4bb
+	md5sums = 7cdb8d3326ed75ce31ce7d4c20fa12c1
+
+pkgname = lms-git
+
