@@ -8,7 +8,9 @@ pkgbase = notp-bin
 	conflicts = notp
 	conflicts = notp-git
 	source = notp::https://github.com/kondanta/notp/releases/download/v2.1.0/notp_linux
+	source = notp-2.1.0-LICENSE::https://github.com/kondanta/notp/raw/v2.1.0/LICENSE
 	sha512sums = 89d717d71233dcc418e36af66929a3c38ae78195d2656d8f77732fd7bf3062fff1f0592868a1473fde2168f181e896e98f2afc8c277bcfeeeb01b923e3c73b7d
+	sha512sums = 57f4d16bb970bbff5d94b0cc62729948ce2fdb929df6023ed1e9192209da36b0f4c309b5d42cf93edbbe18c49fe35ab91ea6d59e47f3813cfa59009e61539861
 
 pkgname = notp-bin
 
