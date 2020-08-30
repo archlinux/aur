@@ -11,9 +11,9 @@ depends=('python-pyqt5'
          'python-humanfriendly'
          'fio')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/d9/43/389ec5e83d05d7f243396a7d74fa15f7258422e5cfc60148d67c08b829c3/crazydiskmark-${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/5b/67/3e72f18f58b4cfe8b9facbf1445c0bfe82b901b435763b45842a3f602f8c/crazydiskmark-${pkgver}.tar.gz"
         'LICENSE::https://github.com/fredcox/crazydiskmark/raw/master/LICENSE')
-sha256sums=('513dea198732e0f2736ba7f947ec2b34407d7a8db58fc38609f3a4eebf4c757d'
+sha256sums=('2c92804b6f5d4ff2e7c14772a168ca5099f97d5d5aadc00e229e29157b771dab'
             '6ad1a8e638684d561aa06d48bf6adc181f5893beb513460d9a664a1da43bd101')
 
 build() {
