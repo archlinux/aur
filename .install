@@ -1,0 +1,3 @@
+post_install() {
+	sudo setcap cap_net_raw=ep usr/bin/netctl-tray
+}
