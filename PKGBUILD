@@ -5,8 +5,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=2020.07.2.1
-pkgrel=2
+pkgver=2020.08
+pkgrel=1
 pkgdesc="Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch."
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -22,11 +22,11 @@ optdepends=('libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
-_archivename=2020.07.2.1-1-current # patch releases don't follow the same format so we can't use $pkgver
+_archivename=2020.08-current # patch releases don't follow the same format so we can't use $pkgver
 source=(Waterfox-$_archivename.tar.gz::https://github.com/MrAlex94/Waterfox/archive/$_archivename.tar.gz
         $pkgname.desktop
 	bug1654465.diff)
-sha256sums=('a43c42cd1169a3182bc9305bbdc4c0b41db00c7b8fa132153b9051f49b069609'
+sha256sums=('45e407c01fb9a378ba3f174d2218a3e71cbda312e80a6f1fdc8ea00552b4a69f'
             '3c8a3e73ffcb4670ca25fc7087b9c5d93ebbef2f3be8a33cf81ae424c3f27fa3'
             '4d181c76060845048092724b2fc6f0c2aa76db543c9ba3490f313651de6bb97d')
 #_disable_pgo=y # uncomment this to disable building the profiled browser and using PGO

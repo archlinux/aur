@@ -1,7 +1,7 @@
 pkgbase = waterfox
 	pkgdesc = Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch.
-	pkgver = 2020.07.2.1
-	pkgrel = 2
+	pkgver = 2020.08
+	pkgrel = 1
 	url = https://www.waterfox.net/
 	arch = x86_64
 	license = MPL
@@ -45,10 +45,10 @@ pkgbase = waterfox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = Waterfox-2020.07.2.1-1-current.tar.gz::https://github.com/MrAlex94/Waterfox/archive/2020.07.2.1-1-current.tar.gz
+	source = Waterfox-2020.08-current.tar.gz::https://github.com/MrAlex94/Waterfox/archive/2020.08-current.tar.gz
 	source = waterfox.desktop
 	source = bug1654465.diff
-	sha256sums = a43c42cd1169a3182bc9305bbdc4c0b41db00c7b8fa132153b9051f49b069609
+	sha256sums = 45e407c01fb9a378ba3f174d2218a3e71cbda312e80a6f1fdc8ea00552b4a69f
 	sha256sums = 3c8a3e73ffcb4670ca25fc7087b9c5d93ebbef2f3be8a33cf81ae424c3f27fa3
 	sha256sums = 4d181c76060845048092724b2fc6f0c2aa76db543c9ba3490f313651de6bb97d
 
