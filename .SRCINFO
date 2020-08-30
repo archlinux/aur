@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop
 	pkgdesc = Open source and enterprise-ready professional software for the R community
-	pkgver = 1.3.1056
+	pkgver = 1.3.1073
 	pkgrel = 1
 	url = http://www.rstudio.com/
 	arch = i686
@@ -33,9 +33,9 @@ pkgbase = rstudio-desktop
 	conflicts = rstudio-desktop-preview-bin
 	noextract = core-dictionaries.zip
 	noextract = gin-.zip
-	source = rstudio-1.3.1056.tar.gz::https://github.com/rstudio/rstudio/tarball/v1.3.1056
+	source = rstudio-1.3.1073.tar.gz::https://github.com/rstudio/rstudio/tarball/v1.3.1073
 	source = https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip
-	sha256sums = 9bfc698833f42a32cd8d67831c2b35ebc14c1666487be13748729523644518b9
+	sha256sums = 4c458a1f86c4d4084d5d719a13f2a4a12851de60ed654565280d8c78f5a5b318
 	sha256sums = 4341a9630efb9dcf7f215c324136407f3b3d6003e1c96f2e5e1f9f14d5787494
 
 pkgname = rstudio-desktop
