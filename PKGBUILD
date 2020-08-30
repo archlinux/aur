@@ -1,7 +1,7 @@
-# Maintainer: Svend Christian Svendsen <svendcsvendsen@gmail.com>
+# Maintainer: Svend Christian Svendsen <svendcs@svendcs.com>
 
 pkgname=judoassistant
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Judo Tournament Software Suite"
 url="https://judoassistant.com"
@@ -10,7 +10,7 @@ makedepends=('boost' 'meson' 'ninja')
 arch=('i686' 'x86_64')
 license=("MIT")
 source=("https://github.com/judoassistant/judoassistant/releases/download/v$pkgver-alpha/judoassistant-$pkgver.tar.xz")
-sha1sums=("b358354cf9f280082072c4f13e717db230ab44ab")
+sha1sums=("c79da6b4ecb260ce4c2c94d462a1625676e9940c")
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
