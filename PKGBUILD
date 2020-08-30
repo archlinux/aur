@@ -2,7 +2,7 @@
 # Maintainer: Harry Stanton <h@harry.city>
 pkgname=lyrebird
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and powerful voice changer for Linux, written in GTK 3"
 arch=('any')
 url="https://github.com/chxrlt/lyrebird"
@@ -12,7 +12,7 @@ conflicts=('lyrebird')
 provides=('lyrebird')
 
 source=("${url}/archive/v${pkgver}.tar.gz" "${pkgname}.desktop")
-sha256sums=('479f225907dc3cffa4d31d40a892bb3363a6a03e22b78288dfed5c77db67ed1f' '720e247b83802fceef0100f722b2d48b81eb288739872278474b285d850c6e9c')
+sha256sums=('5a9de231bf2f75c83af29349bc1c52d366c489be0b69c3cb0ddcbfffcf75de34' '720e247b83802fceef0100f722b2d48b81eb288739872278474b285d850c6e9c')
 
 package() {
     BIN_PATH="${pkgdir}/usr/bin"
