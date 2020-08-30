@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-todotxt
 	pkgdesc = Todo.txt GUI for gnome-shell
-	pkgver = v30
+	pkgver = 30
 	pkgrel = 1
 	url = https://gitlab.com/bartl/todo-txt-gnome-shell-extension
 	arch = any
