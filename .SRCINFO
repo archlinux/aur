@@ -1,6 +1,6 @@
 pkgbase = dbeaver-ce-latest-deb
 	pkgdesc = DBeaver Community Edition, Universal Database Manager and SQL Client
-	pkgver = 7.1.4
+	pkgver = 7.1.5
 	pkgrel = 1
 	url = https://dbeaver.io
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = dbeaver-ce-latest-deb
 	conflicts = dbeaver
 	conflicts = dbeaver-ee
 	source = https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
-	sha256sums = aedda29b12cba34d80c4c4536aca25d5c72b4b411b6b1af5cd7d52ff60988b45
+	sha256sums = aa6b3d8549b3dd5ed3b981aad5e89cb8584a2849ff0095836d7cdb4de805fa9a
 
 pkgname = dbeaver-ce-latest-deb
 
