@@ -2,7 +2,7 @@
 
 pkgname=artix-dark-theme-git
 _realname=artix-dark-theme
-pkgver=20200130
+pkgver=20200130.r9.711a66d-1
 pkgrel=1
 pkgdesc="Dark Artix theme - GTK2/3, QT5, Plasma splash "
 arch=('any')
