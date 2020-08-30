@@ -1,4 +1,6 @@
-# Maintainer: Jonas Gierer <jgierer12@gmail.com>
+# Maintainers:
+# Jonas Gierer <jonas@gierer.xyz>
+# Ujjwal Sharma <ryzokuken@disroot.org>
 pkgname=mdloader-bin
 _binname=mdloader
 pkgver=1.0.4
