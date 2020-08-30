@@ -1,6 +1,6 @@
 pkgbase = zsh-autocomplete-git
 	pkgdesc = IDE-style type-ahead completion for Zsh
-	pkgver = r102.5c0313e
+	pkgver = r129.93d93c6
 	pkgrel = 1
 	url = https://github.com/marlonrichert/zsh-autocomplete
 	arch = any

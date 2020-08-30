@@ -2,7 +2,7 @@
 
 pkgname=zsh-autocomplete-git
 _pkgname=zsh-autocomplete
-pkgver=r102.5c0313e
+pkgver=r129.93d93c6
 pkgrel=1
 pkgdesc='IDE-style type-ahead completion for Zsh'
 arch=('any')
@@ -24,9 +24,8 @@ package() {
     _plugindir=${pkgdir}/usr/share/zsh/plugins
     _licdir=${pkgdir}/usr/share/licenses/${_pkgname}
 
-    install -dm0755 ${_plugindir}/${_pkgname}
-    cp -r ${_srcdir}/zsh-autocomplete.plugin.zsh ${_plugindir}/${_pkgname}
-    cp -r ${_srcdir}/zsh-autocomplete.zsh ${_plugindir}/${_pkgname}
+    install -dm0755 ${_plugindir}
+    cp -r ${_srcdir} ${_plugindir}
 
     install -dm755 ${_licdir}
     install -m0644 ${_srcdir}/LICENSE ${_licdir}
