@@ -3,12 +3,14 @@
 # shellcheck disable=SC2034,SC2164
 
 pkgname=python-jmbase-git
-pkgver=0.6.1.r91.ga050a89
+pkgver=0.7.0.r3.gc90432e
 pkgrel=1
 pkgdesc="Base JoinMarket library including commands defining client-server (daemon) messaging protocol"
 url="https://github.com/JoinMarket-Org/joinmarket-clientserver/tree/master/jmbase"
-depends=( 'python-future' 'python-twisted' 'python-service-identity' 'python-chromalog' )
+# See dependencies listed here: https://github.com/JoinMarket-Org/joinmarket-clientserver/blob/master/jmbase/setup.py
+depends=( 'python-twisted' 'python-service-identity' 'python-chromalog' )
 makedepends=('git' 'python-setuptools')
+checkdepends=('python-chromalog')
 arch=('any')
 license=('GPL3')
 source=("${pkgname}::git+https://github.com/JoinMarket-Org/joinmarket-clientserver.git")
