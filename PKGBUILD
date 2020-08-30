@@ -1,4 +1,5 @@
-# Maintainer: Thomas Gatzweiler <thomas.gatzweiler@gmail.com>
+# Maintainer: GI Jack <GI_Jack@hackermail.com>
+# Contributor: Thomas Gatzweiler <thomas.gatzweiler@gmail.com>
 
 pkgname=flmsg
 pkgver=4.0.16
