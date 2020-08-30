@@ -4,7 +4,7 @@ pkgdesc="ROS - Combined Robot HW class."
 url='http://wiki.ros.org/combined_robot_hw'
 
 pkgname='ros-melodic-combined-robot-hw'
-pkgver='0.18.1'
+pkgver='0.18.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -25,7 +25,7 @@ depends=(${ros_depends[@]}
 
 _dir="ros_control-release-release-melodic-combined_robot_hw"
 source=("${pkgname}-${pkgver}-.tar.gz"::"https://github.com/ros-gbp/ros_control-release/archive/release/melodic/combined_robot_hw/${pkgver}.tar.gz")
-sha256sums=('775c10c9a50135cdffaeddafcf595fedbdd2c6d06bde278aabc66ac9127c1ba0')
+sha256sums=('72b7b493a0bad6a4e6d8560b8a6a54ee6fab71796d61a46765abf43cf358ef31')
 
 build() {
     # Use ROS environment variables
