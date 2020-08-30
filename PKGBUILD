@@ -11,7 +11,7 @@ license=('MIT')
 pkgver=v1.6.1.r87.gc97f890
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git
-    'compiler.patch')
+        'compiler.patch')
 sha256sums=('SKIP'
             '3739947d39ebffb2775607f135743cd30489aa12f41c14e3aec42fbe79822fd3')
 depends=('blas' 'lapack' 'cuda')
@@ -42,6 +42,8 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}/build"
   make
+  cd faiss/python
+  python setup.py build
 }
 
 package_faiss-cuda-git() {
