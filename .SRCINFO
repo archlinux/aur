@@ -1,5 +1,5 @@
 pkgbase = faiss-cuda-git
-	pkgver = v1.6.1.r87.gc97f890
+	pkgver = 1.6.1.r87.gc97f890
 	pkgrel = 1
 	url = https://github.com/facebookresearch/faiss
 	arch = i686

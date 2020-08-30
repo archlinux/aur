@@ -8,7 +8,7 @@ pkgname=('faiss-cuda-git' 'python-faiss-cuda-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
-pkgver=v1.6.1.r87.gc97f890
+pkgver=1.6.1.r87.gc97f890
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git
         'compiler.patch')
@@ -21,7 +21,7 @@ optdepends=('intel-mkl')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
