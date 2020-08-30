@@ -1,6 +1,6 @@
-pkgbase = panda-files-git
+pkgbase = panda-files
 	pkgdesc = file manager for PandaOS
-	pkgver = 1.1
+	pkgver = 0.0.0.WTF
 	pkgrel = 1
 	url = https://github.com/pandaos/panda-files
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = panda-files-git
 	depends = libexif
 	depends = menu-cache
 	depends = qt5-base
-	source = panda-files-git-b3b039fa20efb59a19c4508dfe4eeca4ec488796.tar.gz::https://github.com/pandaos/panda-files/archive/b3b039fa20efb59a19c4508dfe4eeca4ec488796.tar.gz
-	sha512sums = afaa0eeaaf6033d8c77c84160d71c9325de5d90db8476d4db68a7eee1ab5dd487ea617d21406ddb1376886eee0f48f8b55adadd4ec97a0af267edb8c3bf9fa3b
+	source = panda-files-e53c9791b40d31fd339d4220cccd7283e3e3f8e6.tar.gz::https://github.com/pandaos/panda-files/archive/e53c9791b40d31fd339d4220cccd7283e3e3f8e6.tar.gz
+	sha512sums = 004e6485535e7f69a4d8d6010e347d78fdd66c1803d35bba93a5ccb63a68b2f03d9b2003e8c494e4a5471dc031e866b9ef989eb82b7bf37bd2871cfa800e9046
 
-pkgname = panda-files-git
+pkgname = panda-files
 
