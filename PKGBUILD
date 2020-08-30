@@ -55,6 +55,6 @@ package() {
   install ${srcdir}/BespokeSynth/Builds/LinuxMakefile/build/BespokeSynth ${pkgdir}/usr/bin/BespokeSynth
   mkdir -p ${pkgdir}/usr/share/icons/hicolor/512x512/apps
   install ${srcdir}/BespokeSynth/bespoke_icon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps
-  mkdir -p /usr/share/applications/
+  mkdir -p ${pkgdir}/usr/share/applications/
   install ${srcdir}/../BespokeSynth.desktop  ${pkgdir}/usr/share/applications/BespokeSynth.desktop
 }
