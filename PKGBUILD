@@ -15,7 +15,7 @@ depends=('python-configobj'
          'qt5-svg')
 optdepends=('chromaprint: AcoustID support'
             'quodlibet: QuodLibet library support')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/keithgg/puddletag/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/puddletag/puddletag/archive/${pkgver}.tar.gz")
 sha256sums=('cd280ff0ea5c6b9837d8e90d15a3fc762d369dd71c0a54ea33889ea33de32c59')
 
 build() {

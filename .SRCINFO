@@ -13,7 +13,7 @@ pkgbase = puddletag
 	depends = qt5-svg
 	optdepends = chromaprint: AcoustID support
 	optdepends = quodlibet: QuodLibet library support
-	source = puddletag-2.0.1.tar.gz::https://github.com/keithgg/puddletag/archive/2.0.1.tar.gz
+	source = puddletag-2.0.1.tar.gz::https://github.com/puddletag/puddletag/archive/2.0.1.tar.gz
 	sha256sums = cd280ff0ea5c6b9837d8e90d15a3fc762d369dd71c0a54ea33889ea33de32c59
 
 pkgname = puddletag
