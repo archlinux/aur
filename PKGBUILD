@@ -1,11 +1,11 @@
 # Maintainer: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=libvlc-qt-git
-pkgver=346.893f101
+pkgver=498.9b2f561
 pkgrel=1
 pkgdesc="A free library used to connect Qt and libvlc libraries"
 arch=('i686' 'x86_64')
-url="http://projects.tano.si/en/library"
+url="https://github.com/vlc-qt/vlc-qt"
 license=('GPL3')
 depends=('vlc' 'qt5-declarative')
 makedepends=('cmake>=2.8')
