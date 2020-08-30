@@ -1,6 +1,6 @@
 pkgbase = java-design-patterns-git
 	pkgdesc = Design patterns implemented in Java
-	pkgver = 1.20.0.r0.26d6d96f
+	pkgver = 1.23.0.r0.687648af
 	pkgrel = 1
 	url = http://java-design-patterns.com/
 	install = java-design-patterns.install

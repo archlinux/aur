@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=java-design-patterns-git
-pkgver=1.20.0.r0.26d6d96f
+pkgver=1.23.0.r0.687648af
 pkgrel=1
 pkgdesc="Design patterns implemented in Java"
 arch=("any")
