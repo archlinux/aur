@@ -1,0 +1,22 @@
+pkgbase = artix-dark-theme
+	pkgdesc = Dark Artix theme - GTK2/3, QT5, Plasma splash
+	pkgver = 20200130
+	pkgrel = 1
+	url = https://gitea.artixlinux.org/nous/artix-dark-theme
+	arch = any
+	license = GPL
+	makedepends = git
+	optdepends = gtk2
+	optdepends = gtk3
+	optdepends = qt5
+	optdepends = plasma
+	optdepends = gtk-engines
+	optdepends = xcursor-premium
+	optdepends = qt5ct
+	optdepends = openbox
+	optdepends = gtk-engine-murrine
+	source = git+https://gitea.artixlinux.org/nous/artix-dark-theme.git
+	sha256sums = SKIP
+
+pkgname = artix-dark-theme
+
