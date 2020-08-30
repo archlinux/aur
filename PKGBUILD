@@ -5,10 +5,11 @@ url='https://wiki.ros.org/amcl'
 pkgname='ros-melodic-amcl'
 pkgver='1.16.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=5
 license=('LGPL')
 
 ros_makedepends=(ros-melodic-catkin
+  ros-melodic-diagnostic-updater
   ros-melodic-dynamic-reconfigure
   ros-melodic-geometry-msgs
   ros-melodic-message-filters
