@@ -1,6 +1,6 @@
 pkgname=digestif
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 arch=(any)
 license=(MIT)
 url="https://github.com/astoff/$pkgname"
@@ -18,8 +18,9 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
+	local luaver=$(lua -e 'print(_VERSION)' | cut -d' ' -f2)
 	luarocks install --tree="$pkgdir/usr/" --deps-mode=none "$pkgname-$pkgver-1.rockspec"
-	sed -i "s|'.*?/bin/$pkgname'|'/usr/lib/luarocks/rocks-5.3/digestif/$pkgdir-1/$pkgname'|" "$pkgdir/usr/bin/digestif"
+	sed -i "s|'.*?/bin/$pkgname'|'/usr/lib/luarocks/rocks-$luaver/digestif/$pkgdir-1/$pkgname'|" "$pkgdir/usr/bin/digestif"
 	# remove luarocks-created root manifest
-	rm "$pkgdir/usr/lib/luarocks/rocks-5.3/manifest"
+	rm "$pkgdir/usr/lib/luarocks/rocks-$luaver/manifest"
 }
