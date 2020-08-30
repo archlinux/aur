@@ -4,11 +4,11 @@
 # Contributor: Travis Nickles <nickles.travis@gmail.com>
 
 pkgname=antimicrox
-pkgver=3.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Graphical program used to map keyboard buttons and mouse controls to a gamepad"
 arch=("i686" "x86_64")
-url="https://github.com/juliagoda/${pkgname/x}X"
+url="https://github.com/AntiMicroX/${pkgname/x}X"
 license=("GPL3")
 depends=("desktop-file-utils" "hicolor-icon-theme" "libxtst" "qt5-base" "qt5-x11extras" "sdl2")
 makedepends=("cmake" "extra-cmake-modules" "gettext" "itstool" "qt5-tools")
@@ -16,7 +16,7 @@ provides=("${pkgname/x}")
 conflicts=("${pkgname/x}")
 replaces=("${pkgname/x}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/juliagoda/${pkgname/x/X}/archive/${pkgver}.tar.gz")
-sha256sums=("3bd85435dabb33c8a3220a5fc16cf172c0a1e4ffad4c39ac40191c307997943a")
+sha256sums=("543c93822d6d1124817a0496649927694772c74127f0b7154d3f892086626fb1")
 
 build() {
   cd "${srcdir}/${pkgname/x/X}-${pkgver}"
