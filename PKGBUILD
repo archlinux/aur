@@ -1,31 +1,26 @@
-# Maintainer: gspu <bssbk2455[at]gmail[dot]com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: gspu <bssbk2455[at]gmail[dot]com>
 
 pkgname=bitkeeper
-pkgver=7.3.2
+pkgver=7.3.3
 pkgrel=1
 pkgdesc="a fast, enterprise-ready, distributed SCM"
-arch=("i686" "x86_64")
-license=("Apache 2.0")
-depends=("libxft")
+arch=(i686 x86_64)
 url="http://www.bitkeeper.org"
+license=(Apache)
+depends=(libxft libtomcrypt)
+makedepends=(gperf)
+_commit=5695c0d0ecd062f13542c3cb04dd872466774fbf
+source=("${pkgname}-${pkgver}-${_commit}.tar.gz::https://github.com/bitkeeper-scm/bitkeeper/archive/${_commit}.tar.gz")
+sha256sums=('297f54b41222c27e4990dce1e51b4fb45971fb8ff88973a52c3808f5b5b2464c')
 
-source_i686=("https://github.com/bitkeeper-scm/bitkeeper/releases/download/bk-${pkgver}/bk-${pkgver}-x86-glibc219-linux.bin")
-source_x86_64=("https://github.com/bitkeeper-scm/bitkeeper/releases/download/bk-${pkgver}/bk-${pkgver}-x86_64-glibc219-linux.bin")
-
-sha256sums_i686=('f327b28a5ffe34988a2c4f738d33f8ebe86e29043167dfdec096657ce4e19981')
-sha256sums_x86_64=('7fe084cec862d297254793399a537344b054fd8efeb174d9cc6269f85c24b745')
+build () {
+  cd "${srcdir}/${pkgname}-${_commit}"
+  make
+}
 
 package() {
-  _arch=${CARCH}
-  if [ "${_arch}" == "i686" ]; then
-    _arch=x86
-  fi
-
-  chmod +x ${srcdir}/bk-${pkgver}-${_arch}-glibc219-linux.bin
-  ${srcdir}/bk-${pkgver}-${_arch}-glibc219-linux.bin ${pkgdir}/opt/bitkeeper
-
-  mkdir -p $pkgdir/usr/bin
-  ln -s /opt/bitkeeper/bk ${pkgdir}/usr/bin
-
-  chmod go-w -R ${pkgdir}/*
+  cd "${srcdir}/${pkgname}-${_commit}"
+  make DESTDIR="${pkgdir}" install
 }
+
