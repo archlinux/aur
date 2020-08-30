@@ -4,14 +4,12 @@
 pkgname=getmail6-git
 _pkgname="${pkgname%-git}"
 
+epoch=1
 pkgver() {
   cd "$_pkgname"
-  printf '%s.r%s.%s' \
-    "$(git describe --tags | sed 's/^v\(.\+\)/\1/')" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+  git describe --tags | sed 's/^v//;s/-/.r/;s/-g/./'
 }
-pkgver=6.6.r393.86448a3
+pkgver=6.6.r2.7a48905
 pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
