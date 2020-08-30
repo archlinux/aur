@@ -11,7 +11,7 @@ license=('GPL')
 groups=('w1hkj')
 depends=('fldigi')
 source=(http://downloads.sourceforge.net/project/fldigi/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('1f2cd3c8a754b71cb32544f0386aaedf')
+sha256sums=('64b2c13d4053571b471fc2a840dfb0175a6135fd154811a1c1ebb806e19be1a7')
 
 build() {
     cd $pkgname-$pkgver
