@@ -3,8 +3,8 @@
 _name=gaphor
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
-pkgver=1.2.0.r679.g18405eba
-pkgrel=2
+pkgver=2.0.1.r1.g20c1abd5
+pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('x86_64' 'i686')
 url="https://github.com/gaphor/${_name}"
