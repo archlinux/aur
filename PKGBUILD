@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=crazydiskmark
-pkgver=0.2.20
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Linux disk benchmark tool like CrystalDiskMark'
 arch=('any')
