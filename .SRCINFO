@@ -1,6 +1,6 @@
 pkgbase = kiibohd-configurator-git
 	pkgdesc = Client Side Configuration & Flashing Software for Kiibohd compatible keyboards
-	pkgver = r273.857b99b
+	pkgver = r286.2e12869
 	pkgrel = 1
 	url = https://github.com/kiibohd/configurator
 	arch = x86_64
