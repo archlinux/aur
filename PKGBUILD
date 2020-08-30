@@ -4,7 +4,7 @@ url='https://wiki.ros.org/angles'
 pkgname='ros-melodic-angles'
 pkgver='1.9.13'
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
@@ -24,7 +24,7 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="angles-${pkgver}"
+_dir="angles-${pkgver}/angles"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/angles/archive/${pkgver}.tar.gz")
 sha256sums=('0e2982e9e4759614702f18f5c25cb7a0a88d382f4a4fab845ca1587305db2fd6')
 
