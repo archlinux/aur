@@ -1,7 +1,7 @@
 # Maintainer: Andrey Zhidenkov <pensnarik@gmail.com>
 
 pkgname=consolas-font
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Consolas font"
 arch=(any)
