@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-python-orocos-kdl
 	pkgdesc = ROS - This package contains the python bindings PyKDL for the Kinematics and Dynamics Library (KDL), distributed by the Orocos Project.
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/python_orocos_kdl
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = LGPL
 	makedepends = cmake
 	makedepends = ros-build-tools
