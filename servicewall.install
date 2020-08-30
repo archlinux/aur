@@ -2,7 +2,6 @@
 post_install() {
     braise status | grep -q "enabled" || (
         echo "To enable ServiceWall, run a\n\t# braise enable";
-        echo "You might also want to systemctl enable ulog.socket";
     )
     echo "If you installed python-argcomplete, you should run\n\t# activate-global-python-argcomplete"
 }
