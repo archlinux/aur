@@ -14,8 +14,8 @@ source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git
         'compiler.patch')
 sha256sums=('SKIP'
             '3739947d39ebffb2775607f135743cd30489aa12f41c14e3aec42fbe79822fd3')
-depends=('blas' 'lapack' 'cuda')
-makedepends=('git' 'python' 'python-numpy' 'swig' 'python-setuptools' 'openmp' 'gcc9')
+depends=('blas' 'lapack' 'cuda' 'openmp')
+makedepends=('git' 'python' 'python-numpy' 'swig' 'python-setuptools' 'gcc9')
 optdepends=('intel-mkl')
 
 
