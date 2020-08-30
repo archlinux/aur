@@ -1,15 +1,15 @@
 pkgbase = openid4java
 	pkgdesc = OpenID 2.0 Java Libraries
-	pkgver = 0.9.8.741
-	pkgrel = 2
-	url = http://code.google.com/p/openid4java/
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jbufu/openid4java
 	arch = i686
 	arch = x86_64
 	license = Apache 2
-	makedepends = apache-ant
+	makedepends = ant
 	depends = java-runtime
-	source = http://openid4java.googlecode.com/files/openid4java-0.9.8.741.tar.gz
-	sha1sums = e418c816c60a1e6b8646cc76e15da2107553e5bc
+	source = https://github.com/jbufu/openid4java/releases/download/openid4java-1.0.0/openid4java-1.0.0.tar.gz
+	sha1sums = 50b8419f1024e97d294d569622ccf848350c7b4b
 
 pkgname = openid4java
 

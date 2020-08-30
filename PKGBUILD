@@ -2,16 +2,16 @@
 # Contributor: Christopher Heien <chris.h.heien@gmail.com>
 
 pkgname=openid4java
-pkgver=0.9.8.741
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="OpenID 2.0 Java Libraries"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/openid4java/"
+url="https://github.com/jbufu/openid4java"
 license=('Apache 2')
 depends=('java-runtime')
-makedepends=( 'apache-ant' )
-source=( http://openid4java.googlecode.com/files/$pkgname-$pkgver.tar.gz )
-sha1sums=('e418c816c60a1e6b8646cc76e15da2107553e5bc')
+makedepends=( 'ant' )
+source=( https://github.com/jbufu/$pkgname/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz )
+sha1sums=('50b8419f1024e97d294d569622ccf848350c7b4b')
 
 package() {
   cd "$srcdir"/$pkgname-$pkgver
