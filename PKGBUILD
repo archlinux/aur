@@ -1,41 +1,36 @@
 # Maintainer: Nico <desoxhd@gmail.com>
+# Maintainer: Harry Stanton <h@harry.city>
 pkgname=lyrebird
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Simple and powerful voice changer for Linux, written in GTK 3."
+pkgdesc="Simple and powerful voice changer for Linux, written in GTK 3"
 arch=('any')
 url="https://github.com/chxrlt/lyrebird"
 license=('MIT')
-depends=('python>=3.8' 'python-toml' 'gtk3' 'python-gobject' 'sox' 'libsoxr' 'pulseaudio')
+depends=('python>=3.7' 'python-toml' 'gtk3' 'python-gobject' 'sox' 'libsoxr' 'pulseaudio')
 conflicts=('lyrebird')
 provides=('lyrebird')
 
-source=("$url/archive/v${pkgver}.tar.gz" "lyrebird.desktop" "config.toml")
-sha256sums=('6f3df1bfa90cbfd6f260997f9fdcc95b5b4812a3606f11c8bf57cdd6f3d50dd1' '912d5fbd57a0a1ea2a0f17bd41f9ddf687722c9c9ab88f51d3f33d3894417ca7' 'efe34e18fec84afca1bc64eaad4984125a35dfd55d1e8b604ede9186c6fda7e3')
+source=("${url}/archive/v${pkgver}.tar.gz" "${pkgname}.desktop")
+sha256sums=('479f225907dc3cffa4d31d40a892bb3363a6a03e22b78288dfed5c77db67ed1f' '720e247b83802fceef0100f722b2d48b81eb288739872278474b285d850c6e9c')
 
 package() {
-    BIN_PATH="$pkgdir/usr/lib/python3.8/site-packages/$pkgname"
-    CONFIG_PATH="$pkgdir/etc/$pkgname"
+    BIN_PATH="${pkgdir}/usr/bin"
+    SHARE_PATH="${pkgdir}/usr/share/${pkgname}"
+    DESKTOP_PATH="${pkgdir}/usr/share/applications"
 
-    # create dirs
-    mkdir -p "$CONFIG_PATH"
-    mkdir -p "$BIN_PATH"
-    
-    cd "$srcdir/$pkgname-$pkgver"
-    
-    # install config stuff
-    install -Dm 644 "$srcdir/config.toml" "$CONFIG_PATH/config.toml"
-    install -Dm 644 "presets.toml" "$CONFIG_PATH/presets.toml"
-    
-    # install python package
-    cp -rf lyrebird "$BIN_PATH"
-    install -Dm 755 "app.py" "$BIN_PATH"
-    install -Dm 644 "icon.png" "$BIN_PATH/icon.png"
-    
-    # workaround (why is this path hardcoded in mainwindow.py?)
-    install -Dm 644 "icon.png" "$pkgdir/usr/local/bin/$pkgname/icon.png"
-    
-    # setup desktop entry
-    install -Dm 644 "icon.png" "$pkgdir/usr/share/pixmaps/lyrebird.png"
-    install -Dm 644 "$srcdir/lyrebird.desktop" "$pkgdir/usr/share/applications/lyrebird.desktop"
+    mkdir -p "${BIN_PATH}"
+    mkdir -p "${SHARE_PATH}"
+    mkdir -p "${DESKTOP_PATH}"
+
+    install -Dm 644 "${pkgname}.desktop" "${DESKTOP_PATH}"
+
+    cd "${srcdir}/${pkgname}-${pkgver}"
+
+    install -Dm 755 "${pkgname}" "${BIN_PATH}/${pkgname}"
+
+    cp -rf "app" "${SHARE_PATH}"
+
+    install -Dm 644 "app.py" "${SHARE_PATH}"
+    install -Dm 644 "icon.png" "${SHARE_PATH}"
 }
