@@ -1,13 +1,13 @@
 pkgbase = replit-desktop-bin
 	pkgdesc = Un-official electron desktop app for https://repl.it
-	pkgver = 1.1.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/repl-it-discord/repl-it-electron
 	arch = x86_64
 	license = Apache 2.0
 	makedepends = gendesk
-	makedepends = wget
-	source_x86_64 = repl.it-linux-x64.zip::https://github.com/repl-it-discord/repl-it-electron/releases/download/1.1.0/repl.it-linux-x64.zip
+	conflicts = replit-desktop
+	source_x86_64 = repl.it_2.1.0_amd64.deb::https://github.com/repl-it-discord/repl-it-electron/releases/download/2.1.0/repl.it_2.1.0_amd64.deb
 	md5sums_x86_64 = SKIP
 
 pkgname = replit-desktop-bin
