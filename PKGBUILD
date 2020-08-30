@@ -4,13 +4,13 @@
 pkgname=python-clyther
 pkgver=0.4.0_beta
 _mypkgver=${pkgver/_/-}
-pkgrel=2
+pkgrel=3
 pkgdesc="A python language extension intended to make writing OpenCL code easy"
 arch=('i686' 'x86_64')
-url="http://srossross.github.com/Clyther/"
+url="https://srossross.github.io/Clyther/"
 license=('Apache')
 depends=('python-numpy' 'python')
-makedepends=('python2-distribute')
+makedepends=('python-setuptools')
 source=( https://github.com/srossross/Clyther/archive/$_mypkgver.tar.gz ) 
 md5sums=('79ffc1dcd8c30e89691bdb9912507f2f')
 

@@ -1,12 +1,12 @@
 pkgbase = python-clyther
 	pkgdesc = A python language extension intended to make writing OpenCL code easy
 	pkgver = 0.4.0_beta
-	pkgrel = 2
-	url = http://srossross.github.com/Clyther/
+	pkgrel = 3
+	url = https://srossross.github.io/Clyther/
 	arch = i686
 	arch = x86_64
 	license = Apache
-	makedepends = python2-distribute
+	makedepends = python-setuptools
 	depends = python-numpy
 	depends = python
 	source = https://github.com/srossross/Clyther/archive/0.4.0-beta.tar.gz
