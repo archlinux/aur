@@ -15,7 +15,7 @@ provides=("natural-wallpaper-collection-git=$pkgver")
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed '/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | grep -o g.......
 }
 
 package() {
