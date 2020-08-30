@@ -1,7 +1,7 @@
 # Maintainter: Everett B. everettbutts@hotmail.com 
 pkgname=arch-matrix-grub-theme-git
 _gitname="arch-matrix"
-pkgver=V1.0.3.gc50d5a3
+pkgver=V1.0.3
 pkgrel=1
 pkgdesc="Arch Matrix Grub theme."
 arch=('any')
@@ -18,7 +18,7 @@ provides=("arch-matrix-grub-theme-git=$pkgver")
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | grep -o g.......
+  git describe --tag
 }
 
 package() {
