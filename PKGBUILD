@@ -1,9 +1,9 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: xantares
 
-_pkgname=pytablewriter
-pkgname=python-${_pkgname}
-pkgver=0.57.0
+_pkgname='pytablewriter'
+pkgname="python-${_pkgname}"
+pkgver=0.58.0
 pkgrel=1
 pkgdesc='Python library to write a table in various formats'
 arch=('any')
@@ -20,7 +20,7 @@ depends=('python'
 makedepends=('python-setuptools')
 provides=("${_pkgname}")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('6c5896fe71a06bdbb65a4dbf2888a84e2e2294a226b514e22610430cc1af5361')
+sha256sums=('d232491e32fc84f28a6217fcd225d2ed82ae59d576d39724c98fdb7c7147b9ec')
 
 build() {
   cd "${_pkgname}-${pkgver}"
