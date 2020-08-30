@@ -9,6 +9,7 @@ pkgbase = roundcubemail-plugin-carddav
 	depends = roundcubemail
 	conflicts = roundcube-rcmcarddav
 	conflicts = roundcube-rcmcarddav-git
+	conflicts = roundcubemail-plugin-carddav-git
 	backup = etc/webapps/roundcubemail/plugins/carddav/config.inc.php
 	source = https://github.com/blind-coder/rcmcarddav/releases/download/v4.0.0-alpha1/carddav-v4.0.0-alpha1.tgz
 	md5sums = 525688b0e165821bc1843ac5be7628c6
