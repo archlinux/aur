@@ -1,6 +1,6 @@
 pkgbase = artix-dark-theme-git
 	pkgdesc = Dark Artix theme - GTK2/3, QT5, Plasma splash
-	pkgver = 20200130
+	pkgver = 20200130.r9.711a66d
 	pkgrel = 1
 	url = https://gitea.artixlinux.org/nous/artix-dark-theme
 	arch = any
