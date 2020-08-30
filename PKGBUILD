@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rostopic'
 pkgname='ros-melodic-rostopic'
 pkgver='1.14.9'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -30,7 +30,7 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="ros_comm-${pkgver}/test/test_rostopic"
+_dir="ros_comm-${pkgver}/tools/rostopic"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
 sha256sums=('3b3c8d24a49a5c54dada11173323fe97f18a49d34bbaa746f29736e12fec954b')
 
