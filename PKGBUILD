@@ -1,7 +1,7 @@
 # Maintainer: otaj <jasek.ota@gmail.com>
 # If you want to set only one GPU target compute capability, set _GPU_TARGET, otherwise leave it commented out and it will build default targets (35, 52, 60 and 61). You can also set multiple targets separated by semicolon
 
-#_GPU_TARGET="75"
+_GPU_TARGET="75"
 _pkgname=faiss
 pkgbase=faiss-cuda-git
 pkgname=('faiss-cuda-git' 'python-faiss-cuda-git')
@@ -33,7 +33,7 @@ prepare() {
   _CMAKE_FLAGS="-DFAISS_ENABLE_GPU=ON -DFAISS_ENABLE_PYTHON=ON -DCUDAToolkit_ROOT=/opt/cuda -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "
   if ! [ -z "$_GPU_TARGET" ]
   then
-    $_CMAKE_FLAGS=$_CMAKE_FLAGS"-DCMAKE_CUDA_ARCHITECTURES=\""$_GPU_TARGET"\""
+    _CMAKE_FLAGS=$_CMAKE_FLAGS"-DCMAKE_CUDA_ARCHITECTURES=\""$_GPU_TARGET"\""
   fi
   cmake $_CMAKE_FLAGS ..
 }
