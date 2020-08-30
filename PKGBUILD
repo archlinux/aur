@@ -1,7 +1,7 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=unfuckify-git
-pkgver=r33.8148439
+pkgver=r43.0606142
 pkgrel=1
 pkgdesc='Makes c++ code using `auto` readable, i. e. unfucks it'
 arch=('i686' 'x86_64')

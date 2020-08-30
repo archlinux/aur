@@ -1,6 +1,6 @@
 pkgbase = unfuckify-git
 	pkgdesc = Makes c++ code using `auto` readable, i. e. unfucks it
-	pkgver = r33.8148439
+	pkgver = r43.0606142
 	pkgrel = 1
 	url = https://github.com/sandsmark/unfuckify
 	arch = i686
