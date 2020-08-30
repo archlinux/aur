@@ -1,7 +1,7 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=growlight
-pkgver=1.2.8
+pkgver=1.2.9
 pkgrel=1
 pkgdesc="Disk manipulation and system preparation tool"
 url="https://nick-black.com/dankwiki/index.php/Growlight"
@@ -9,7 +9,7 @@ license=('GPL3')
 arch=('x86_64')
 # ncurses and readline are found without our help. Don't explicitly list them.
 # The same goes for device-mapper.
-depends=('cryptsetup' 'libatasmart' 'libpciaccess' 'pciutils' 'notcurses>=1.6.1')
+depends=('cryptsetup' 'libatasmart' 'libpciaccess' 'pciutils' 'notcurses>=1.6.20')
 makedepends=('cunit' 'docbook-xsl' 'cmake' 'libxslt')
 optdepends=('jfsutils: JFS manipulation' 'xfsprogs: XFS manipulation'
             'mdadm: Linux MDRAID manipulation'
@@ -43,4 +43,4 @@ package() {
   make install DESTDIR="$pkgdir"
 }
 
-sha256sums=('007b112f468ff3c9db7cdbf97d991874bf100770861375808393f5cb83b210a7')
+sha256sums=('d3a817a0119d30e6efaf655fc662d64cb5d19903d8cd814618e53206b5e3b581')
