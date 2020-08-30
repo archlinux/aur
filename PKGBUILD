@@ -7,6 +7,8 @@ arch=('x86_64' 'i686')
 url='https://www.songtronix.com/'
 license=('GPL3')
 depends=('libxcb' 'gcc-libs')
+optdepends=('vulkan-icd-loader: GUI support'
+            'vulkan-driver: GUI support')
 provides=()
 conflicts=("$pkgname-git")
 source=(
