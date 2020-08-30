@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=sunloginclient
-pkgver=10.0.2.24779
+pkgver=10.1.1.28779
 pkgrel=6
 pkgdesc="Sunlogin Remote Control is a software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64")
@@ -15,11 +15,11 @@ depends=("libappindicator-gtk3"
          'libvoikko'
          'xorg-xhost')
 license=('custom')
-source=("http://download.oray.com/sunlogin/linux/SunloginClient-${pkgver}_amd64.deb"
+source=("http://dl-cdn.oray.com/sunlogin/linux/SunloginClient-${pkgver}_amd64.deb"
         'LICENSE::https://service.oray.com/question/1820.html'
         'sunlogin-client-xhost.desktop')
 install='.INSTALL'
-sha256sums=('da2a61d106c2cecce271c89cd182b162bce34018539e1ba431580c5bbe120252'
+sha256sums=('a1510f23889a73befed4106e7472d9090fc45d143e92dfcc11c5a1afd607eddf'
             'SKIP'
             '15abf7f89fe7d54112e083914740108a73b6b2cd9d942d49de4c7ccb66c3e30f')
 
@@ -38,6 +38,7 @@ package() {
   # 修改文件权限(需要写入权限执行)
   chmod 666 "${pkgdir}/opt/sunlogin/res/skin/"*.skin
   chmod 666 $pkgdir/opt/sunlogin/res/font/wqy-zenhei.ttc
+  chmod -R 755 $pkgdir/usr/
 
   # 修改路径
   sed -i 's#/usr/local/#/opt/#g' "${pkgdir}/opt/sunlogin/etc/watch.sh"
