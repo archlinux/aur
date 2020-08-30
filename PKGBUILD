@@ -2,8 +2,8 @@
 _name=umps
 _ver=3
 pkgname=$_name$_ver
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="Virtual machine simulator based around the MIPS R2/3000 microprocessor."
 arch=('x86_64')
 url="https://github.com/virtualsquare/umps3"
