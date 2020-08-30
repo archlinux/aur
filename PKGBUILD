@@ -6,10 +6,11 @@ url='https://wiki.ros.org/laser_filters'
 pkgname='ros-melodic-laser-filters'
 pkgver='1.8.11'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
+	ros-melodic-dynamic-reconfigure
 	ros-melodic-filters
 	ros-melodic-laser-geometry
 	ros-melodic-angles
@@ -29,6 +30,7 @@ makedepends=(
 )
 
 ros_depends=(
+	ros-melodic-dynamic-reconfigure
 	ros-melodic-filters
 	ros-melodic-laser-geometry
 	ros-melodic-angles
