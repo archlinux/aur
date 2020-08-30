@@ -1,14 +1,15 @@
 pkgbase = flmsg
 	pkgdesc = Forms management editor for Amateur Radio standard message formats
-	pkgver = 4.0.10
+	pkgver = 4.0.16
 	pkgrel = 1
 	url = http://www.w1hkj.com/
 	arch = i686
 	arch = x86_64
+	groups = w1hkj
 	license = GPL
 	depends = fldigi
-	source = http://www.w1hkj.com/files/flmsg/flmsg-4.0.10.tar.gz
-	sha1sums = 679cf86779f48cb50ce1d0bdc45ba82726db80b4
+	source = http://www.w1hkj.com/files/flmsg/flmsg-4.0.16.tar.gz
+	sha256sums = db9d30a98d0b9620020afa45307f5bc4f929c17de42c9f98416e34cdc1b946ec
 
 pkgname = flmsg
 
