@@ -16,7 +16,6 @@ pkgbase = linux-g14
 	source = config
 	source = sphinx-workaround.patch
 	source = sys-kernel_arch-sources-g14_files_0001-nonupstream-navi10-vfio-reset.patch
-	source = sys-kernel_arch-sources-g14_files_0002-asus-wmi-dmiids.patch
 	source = sys-kernel_arch-sources-g14_files_0003-i8042-dmiids.patch
 	source = sys-kernel_arch-sources-g14_files_0004-hid-asus-n-key.patch
 	source = sys-kernel_arch-sources-g14_files_0005-drm-amd-display-use-correct-scale-for-actual_brightness.patch

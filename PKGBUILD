@@ -2,7 +2,7 @@
 
 pkgbase=linux-g14
 pkgver=5.8.5.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
@@ -20,7 +20,6 @@ source=(
 	config         # the main kernel config file
 	sphinx-workaround.patch
 	"sys-kernel_arch-sources-g14_files_0001-nonupstream-navi10-vfio-reset.patch"
-	"sys-kernel_arch-sources-g14_files_0002-asus-wmi-dmiids.patch"
 	"sys-kernel_arch-sources-g14_files_0003-i8042-dmiids.patch"
 	"sys-kernel_arch-sources-g14_files_0004-hid-asus-n-key.patch"
 	"sys-kernel_arch-sources-g14_files_0005-drm-amd-display-use-correct-scale-for-actual_brightness.patch"
