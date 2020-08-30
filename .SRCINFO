@@ -1,14 +1,14 @@
 pkgbase = firefox-extension-foxyproxy
 	pkgdesc = FoxyProxy is an advanced proxy management tool that completely replaces Firefox's limited proxying capabilities.
-	pkgver = 7.4.3
+	pkgver = 7.5.1
 	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/
 	arch = any
 	license = GPL
 	depends = firefox>=57
 	noextract = foxyproxy_standard-${pkgver}${_plugin_ext}.xpi
-	source = https://addons.mozilla.org/firefox/downloads/file/3476518/foxyproxy_standard-7.4.3-an+fx.xpi
-	sha256sums = a8372bf0bda1afd27fd1300fdea49991c3bd25fd6a72225a680ba9d102c767a7
+	source = https://addons.mozilla.org/firefox/downloads/file/3616824/foxyproxy_standard-7.5.1-an+fx.xpi
+	sha256sums = 42109bc250e20aafd841183d09c7336008ab49574b5e8aa9206991bb306c3a65
 
 pkgname = firefox-extension-foxyproxy
 
