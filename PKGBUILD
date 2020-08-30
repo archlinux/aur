@@ -1,10 +1,11 @@
 # Maintainer: Knut Ahlers <knut at ahlers dot me>
 # Contributor: Chase Geigle <sky.strife@gmail.com>
+# Contributor: Cobalt Space <cobaltspace at protonmail dot com>
 
 pkgname=obs-v4l2sink
 pkgver=0.1.0
 obsver=25.0.8
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="v4l2 output for obs-studio"
 arch=(x86_64)
@@ -14,7 +15,7 @@ groups=()
 depends=('obs-studio')
 makedepends=('cmake' 'obs-studio')
 checkdepends=()
-optdepends=()
+optdepends=('v4l2loopback-dkms: virtual video device')
 provides=()
 conflicts=()
 replaces=()
