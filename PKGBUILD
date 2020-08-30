@@ -36,14 +36,10 @@ source=(
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests'
     'llvm-project::git+https://github.com/apple/llvm-project#branch=apple/master'
 #    'llvm-project::git+https://github.com/apple/llvm-project#commit=e80a6b097761253'
-    '0001-not-build-ninja-icu.patch'
-    '0003-swift-python2-as-fallback-only.patch'
-    '0005-duplicate-term-module.patch'
+    '0001-arch-aur-pachtes.patch'
 )
 noextract=()
 md5sums=(
-    'SKIP'
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
