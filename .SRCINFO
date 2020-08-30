@@ -1,0 +1,14 @@
+pkgbase = silver-git
+	pkgdesc = A cross-shell customizable powerline-like prompt with icons
+	pkgver = 1.1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+
+pkgname = silver-git
+
