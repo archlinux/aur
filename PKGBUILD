@@ -4,9 +4,9 @@ pkgbase='offlinemsmtp'
 pkgname=('offlinemsmtp')
 _module='offlinemsmtp'
 pkgver='0.3.6'
-pkgrel=1
+pkgrel=2
 pkgdesc='Use msmtp offline by queuing email until you have an internet connection.'
-url='https://gitlab.com/sumner/offlinemsmtp'
+url='https://git.sr.ht/~sumner/offlinemsmtp'
 depends=(
     'python'
     'python-watchdog'
@@ -17,7 +17,7 @@ license=('GPL3')
 arch=('any')
 source=(
     'https://files.pythonhosted.org/packages/source/o/offlinemsmtp/offlinemsmtp-0.3.6.tar.gz'
-    'https://gitlab.com/sumner/offlinemsmtp/raw/master/systemd/offlinemsmtp.service'
+    'https://git.sr.ht/~sumner/offlinemsmtp/blob/v0.3.6/systemd/offlinemsmtp.service'
 )
 noextract=(
     'offlinemsmtp.service'

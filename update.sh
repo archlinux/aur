@@ -3,13 +3,13 @@
 AUR_NAME=offlinemsmtp
 PROJ_NAME=offlinemsmtp
 DESCRIPTION="Use msmtp offline by queuing email until you have an internet connection."
-URL=https://gitlab.com/sumner/offlinemsmtp
+URL=https://git.sr.ht/~sumner/offlinemsmtp
 DEPENDS=(python-watchdog python-gobject)
 LICENSE='GPL3'
 ADDITIONAL="replaces=('python-offlinemsmtp')"
 SOURCES=(
     https://files.pythonhosted.org/packages/source/${PROJ_NAME:0:1}/${PROJ_NAME}/${PROJ_NAME}-$1.tar.gz
-    https://gitlab.com/sumner/offlinemsmtp/raw/master/systemd/offlinemsmtp.service
+    https://git.sr.ht/~sumner/offlinemsmtp/blob/v$1/systemd/offlinemsmtp.service
 )
 NOEXTRACT=(offlinemsmtp.service)
 
