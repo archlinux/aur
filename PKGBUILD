@@ -2,9 +2,9 @@
 
 pkgname=wasi-sdk-bin
 _pkgname=wasi-sdk
-pkgver=10.0
-_pkgver_major=10
-pkgrel=2
+pkgver=11.0
+_pkgver_major=11
+pkgrel=1
 pkgdesc="WASI-enabled WebAssembly C/C++ toolchain"
 arch=('x86_64')
 url="https://github.com/WebAssembly/wasi-sdk"
@@ -15,8 +15,8 @@ source=(
     "https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-${_pkgver_major}/wasi-sysroot-${pkgver}.tar.gz"
     "https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-${_pkgver_major}/libclang_rt.builtins-wasm32-wasi-${pkgver}.tar.gz"
 )
-sha512sums=('768074d7dcc769d03ed35aef73bb5c5c01272fddc4943e03a7d7e933da28104b119b0c9af7f14c59f3786ee37d0b385e6239f558d86d1be1cef9b8871b19c22e'
-            '5501477a6fb5ab5c98f40dff76a3f8da1e3ad62881e456ef2665410248f2d4c2c45f3722ca3706efef2b219e6c17ecb4aa3221d84d44017f17388320db525692')
+sha512sums=('8f84fd904e178853042cec85d90ea85c66c27fece42101a00b110d2af0ef398c7ae6ffca6abf7fe5579d1397b532fa7e67c7d38cbb27c441ca7692b54444294a'
+            '9b5a20fbfc1f470cb76af1c02774b63e09473570381d14c72f6d173be5b8950e85a7f719a56b66d86c24a01136faaea1496a9147629542c1c789ed7079ee9559')
 
 package() {
     _clang_version=$(clang --version | grep version | cut -d" " -f3)
