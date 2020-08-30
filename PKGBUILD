@@ -1,6 +1,6 @@
 # Maintainer: Everett B. everettbutts@hotmail.com
 pkgname=natural-wallpaper-collection-git
-pkgver=V1.0.2
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A collection of backgrounds/wallpapers. Themed around natural colors and subject matter."
 arch=('any')
@@ -15,7 +15,7 @@ provides=("natural-wallpaper-collection-git=$pkgver")
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | grep -o g.......
+  git describe --tag
 }
 
 package() {
