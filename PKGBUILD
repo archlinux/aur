@@ -4,7 +4,7 @@
 
 pkgname=picard
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Official MusicBrainz tagger'
 url='https://picard.musicbrainz.org/'
 license=('GPL')
