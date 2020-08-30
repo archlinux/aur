@@ -1,20 +1,5 @@
 pkgbase = natural-wallpaper-collection-git
 	pkgdesc = A collection of backgrounds/wallpapers. Themed around natural colors and subject matter.
-	pkgver = 20200703.1
-	pkgrel = 1
-	url = https://github.com/Can221-ParOS/natural-wallpaper-collection-git.git
-	arch = any
-	license = GPL3
-	makedepends = git
-	provides = natural-wallpaper-collection-git=20200703.1
-	conflicts = natural-wallpaper-collection-git
-	source = git+https://github.com/Can221-ParOS/natural-wallpaper-collection-git.git
-	sha512sums = SKIP
-
-pkgname = natural-wallpaper-collection-git
-
-pkgbase = natural-wallpaper-collection-git
-	pkgdesc = A collection of backgrounds/wallpapers. Themed around natural colors and subject matter.
 	pkgver = V1.0.2
 	pkgrel = 1
 	url = https://github.com/Can221-ParOS/natural-wallpaper-collection-git.git
