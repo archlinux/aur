@@ -1,20 +1,17 @@
 # Contributor: Tom < reztho at archlinux dot us >
 pkgname=openmsx-catapult
-pkgver=0.15.0
+pkgver=16.0
 pkgrel=1
 pkgdesc="Front-end for openMSX: the MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org"
 license=('GPL')
 depends=('libxml2' 'wxgtk' 'zlib' 'libjpeg' 'libpng' 'libtiff' "openmsx=${pkgver}")
-makedepends=('python2')
+makedepends=('python')
 source=("https://github.com/openMSX/wxcatapult/archive/RELEASE_${pkgver//./_}.tar.gz")
 
 build() {
   cd "wxcatapult-RELEASE_${pkgver//./_}"
-
-  # Catapult requires python2
-  sed -i 's@=python@=python2@' build/main.mk
 
   # Changing some default configurations...
   sed -i 's@SYMLINK_FOR_BINARY:=true@SYMLINK_FOR_BINARY:=false@' build/custom.mk
@@ -42,4 +39,4 @@ package() {
   "${pkgdir}/usr/share/applications/openMSX-Catapult.desktop"
 }
 
-md5sums=('636938c4e882196f3896e7c6598b74ae')
+md5sums=('9e32547853d980b6b4c862458e0759a6')
