@@ -1,3 +1,10 @@
+2020-08-30 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Updated to client 1.9.5 build 8
+	Updated data to 1.9.5 build 7
+	Added pkgconf to the makedepends array
+
 2020-01-15 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :

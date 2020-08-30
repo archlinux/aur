@@ -5,19 +5,19 @@
 # Maintainer: Angelo Theodorou <encelo@users.sourceforge.net>
 
 pkgname=eternallands
-pkgver=1.9.5.6
+pkgver=1.9.5.8
 pkgrel=1
 pkgdesc="A free 3D MMORPG game with thousands of on-line players"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.eternal-lands.com/"
 depends=('sdl2_net' 'sdl2_image' 'openal' 'cal3d' 'libvorbis' 'glu')
-makedepends=('gzip' 'git' 'unzip')
+makedepends=('gzip' 'git' 'unzip' 'pkgconf')
 optdepends=('zenity: to use the launch script' 'kdialog: to use the launch script')
 options=('!emptydirs')
 changelog=eternallands.changelog
-source=('https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.4/el_195_p4_data_files.zip')
-md5sums=('468dca610695271f0356e91c6e2f9f08')
+source=('https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.7/el_195_p7_data_files.zip')
+md5sums=('c58b6f374d0f9ce3f0aa0fe4eab348d5')
 
 build()
 {
