@@ -1,7 +1,7 @@
 pkgbase = htmlcxx
 	pkgdesc = A simple non-validating CSS1 and HTML parser for C++.
 	pkgver = 0.87
-	pkgrel = 1
+	pkgrel = 2
 	url = http://htmlcxx.sourceforge.net/
 	arch = i686
 	arch = x86_64
