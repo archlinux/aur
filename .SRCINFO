@@ -1,15 +1,15 @@
 pkgbase = nodejs-budo
 	pkgdesc = a browserify server for rapid prototyping
-	pkgver = 11.6.2
+	pkgver = 11.6.4
 	pkgrel = 1
 	url = https://github.com/mattdesl/budo
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = budo-11.6.2.tgz
-	source = https://registry.npmjs.org/budo/-/budo-11.6.2.tgz
-	sha1sums = 0f26fc3db54fe4ab9561a0387bf34ae2a617c7e6
+	noextract = budo-11.6.4.tgz
+	source = https://registry.npmjs.org/budo/-/budo-11.6.4.tgz
+	sha1sums = 5f71c3b097d639ef98d516293f81fe676b090706
 
 pkgname = nodejs-budo
 
