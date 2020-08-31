@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rosbridge_library'
 pkgname='ros-melodic-rosbridge-library'
 pkgver='0.11.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -61,6 +61,7 @@ build() {
 	cmake ${srcdir}/${_dir} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
+                -DCATKIN_ENABLE_TESTING=0 \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
