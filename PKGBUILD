@@ -1,4 +1,4 @@
-# Maintainer: Christian Ponte <chrponte AT gmail DOT com>
+# Maintainer: Christian Ponte <chponte AT pm DOT me>
 
 ##########################################################################
 
@@ -24,7 +24,7 @@
 # SOFTWARE.
 
 pkgname=intel-advisor-standalone
-pkgver=2020.u1
+pkgver=2020.u2
 pkgrel=1
 pkgdesc="The standalone version of Intel Advisor"
 arch=('x86_64')
@@ -34,13 +34,13 @@ depends=('glibc' 'attr')
 makedepends=('git' 'gettext')
 conflicts=('intel-advisor')
 source=(
-    "http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/16555/advisor_2020_update1.tar.gz"
+    "http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/16786/advisor_2020_update2.tar.gz"
     "intel-advisor.png"
     "intel-advisor.desktop"
     "license.txt"
 )
 sha256sums=(
-    'c2605f433cf11e55ec1db1310f27018bae53c15ad71d7246e46ef33f34a5637d'
+    '96ed9a2a9cdda0ab64a535b321feb7ae6e62efefc9d93868bb1476c85973e132'
     'fda3789f672fbb71402a26d5b06fe9845c433f17f17ad08d04470713b9043078'
     'f2822853a9809c05663794291ee204c4f0867a140c511fc5fd9c8173ab12fa39'
     'e13bba8c55cf874988dbb541d8a72f53dd0942fca48f49bfbe9d82174bb73808'
