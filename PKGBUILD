@@ -1,7 +1,7 @@
 # Maintainer: gbr <gbr@protonmail.com>
 
 pkgname=sfz
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A simple static file serving command-line tool written in Rust'
 arch=('x86_64')
@@ -9,8 +9,8 @@ url=https://github.com/weihanglo/sfz
 license=('MIT' 'APACHE')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('0fa6988620c5e7b761dd3c3344575c05f5810a9085816eee80ddd725198d14541517e20aaebc3248227c62c0c6f5f2aec2a014cabe93f21d31982d84f917fecc')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('7f15c97cca56b53ea9c8bd6f6aa456b037eadf1886fce42023fa1c5b5400808e9b47dab1fd53e82e3beed1d7b06da2359d6b70f972d05d0d3384d5160f927aca')
 
 build() {
   cd "$pkgname-$pkgver"
