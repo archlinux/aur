@@ -1,6 +1,6 @@
 pkgbase = instantmenu
 	pkgdesc = menu for instantOS
-	pkgver = fece5ac
+	pkgver = 202007232016
 	pkgrel = 1
 	url = https://github.com/instantos/instantmenu
 	arch = any

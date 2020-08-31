@@ -8,7 +8,7 @@ fi
 
 _pkgname=instantmenu
 pkgname=$_pkgname
-pkgver=fece5ac
+pkgver=202007232016
 pkgrel=1
 pkgdesc="menu for instantOS"
 url="https://github.com/instantos/instantmenu"
