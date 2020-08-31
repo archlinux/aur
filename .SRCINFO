@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosbridge-server
 	pkgdesc = ROS - A WebSocket interface to rosbridge.
 	pkgver = 0.11.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/rosbridge_server
 	arch = any
 	license = BSD
