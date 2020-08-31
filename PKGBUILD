@@ -5,7 +5,7 @@
 
 pkgname=c-ares-cmake
 _pkgname=c-ares
-pkgver=1.15.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc='C library that performs DNS requests and name resolves asynchronously (with cmake build files)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('glibc')
 makedepends=('cmake')
 source=("https://c-ares.haxx.se/download/$_pkgname-$pkgver.tar.gz"
         'LICENSE')
-sha512sums=('a1de6c5e7e1a6a13c926aae690e83d5caa51e7313d63da1cf2af6bc757c41d585aad5466bc3ba7b7f7793cb1748fa589f40972b196728851c8b059cfc8c3be50'
+sha512sums=('4ac2a5d5c6da74eb1d6155c4eadc7127ab1b53a8d13caec41bd6172db5417a79f3ab022e77ba37d8b13da6893d7ced5fd8baf5cc3950a4154b4de8743ad31471'
             '55e8607392c5f82ed85e3580fa632dfdc2dcd0b1a5e918dc61d00532c15c11ecb709f6007b65805c1fbe8fcd21ee794c9e4a9638c97ac1f4960b2654010a4d0a')
 provides=('c-ares')
 conflicts=('c-ares')
