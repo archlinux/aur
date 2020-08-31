@@ -1,7 +1,7 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur
 pkgver=42.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An AUR helper with asp support"
 arch=(any)
 url="https://github.com/lxgr-linux/buildaur"
@@ -18,7 +18,7 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/buildaur"
 	install -dm755 "${pkgdir}/usr/lib/python3.8"
 	install -m644 blacklist "${pkgdir}/usr/share/buildaur"
-	install -Dm0755 progressbar_buildaur "${pkgdir}/usr/lib/python3.8"
+	install -Dm0755 progressbar_buildaur.py "${pkgdir}/usr/lib/python3.8"
 	install -dm755 "${pkgdir}/etc/buildaur"
 	install -dm755 "${pkgdir}/etc/buildaur/prehooks"
 	install -dm755 "${pkgdir}/etc/buildaur/posthooks"
