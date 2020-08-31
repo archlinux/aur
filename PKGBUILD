@@ -2,7 +2,7 @@
 # Contributor: Hekuran https://github.com/narukeh
 
 pkgname=sm64ex-nightly-git
-pkgver=r563.417d59e7
+pkgver=r573.dd0e86db
 pkgrel=1
 pkgdesc='Nightly branch of sm64ex with 60fps patch. PKGBUILD based on sm64pc-git.'
 arch=('any')
@@ -23,24 +23,19 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$_gitname"
-    cp "../../baserom.${_region}.z64" . || {
-        printf "%$(stty size | awk '{print $2}')s\n" | sed "s/ /░/g"
-        printf "\\n%s\\n%s\\n\\n" \
-            "NO ROM FOUND! Copy your sm64 ROM to \"$(realpath ../../)\" and rename it to \"baserom.${_region}.z64\"." \
-            "The default ROM region is US. You have to edit the PKGBUILD if you would like to use a JP or EU version."
-        printf "%$(stty size | awk '{print $2}')s\n" | sed "s/ /░/g"
-    }
-
-    # Makes sure your path hasn't been changed since then:
-    cd "$srcdir/$_gitname"
-
-    # Patches the 60fps to the game (comment to disable):
-    patch -p1 < "./enhancements/60fps_ex.patch"
+	cd "$srcdir/$_gitname"
+	cp "../../baserom.${_region}.z64" . || {
+		printf "%$(stty size | awk '{print $2}')s\n" | sed "s/ /░/g"
+		printf "\\n%s\\n%s\\n\\n" \
+			"NO ROM FOUND! Copy your sm64 ROM to \"$(realpath ../../)\" and rename it to \"baserom.${_region}.z64\"." \
+			"The default ROM region is US. You have to edit the PKGBUILD if you would like to use a JP or EU version."
+		printf "%$(stty size | awk '{print $2}')s\n" | sed "s/ /░/g"
+	}
 }
 
 build() {
 	cd "$srcdir/$_gitname"
+	patch -p1 < "./enhancements/60fps_ex.patch"
 	make VERSION=$_region BETTERCAMERA=1 ${MAKEFLAGS:--j$(nproc)}
 }
 
