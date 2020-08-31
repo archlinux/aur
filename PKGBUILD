@@ -2,7 +2,7 @@
 
 pkgname=hid-asus-rog-dkms-git
 _pkgname=hid-asus-rog
-pkgver=0.2.0.r3.ge62d1ff
+pkgver=0.4.4.r0.gd14d2fb
 pkgrel=1
 pkgdesc="Kernel module to patch hid-asus to support more ROG laptops"
 arch=('x86_64')
