@@ -103,5 +103,5 @@ optdepends=('libva-vdpau-driver-shadow-nvidia: Patch for recent Nvidia GPU' 'nou
 provides=(shadow-beta)
 source=("$(file)::https://update.shadow.tech/launcher/${basename}/linux/ubuntu_18.04/ShadowBeta.AppImage")
 # sha512sums=("$(sha512sum))
-sha512sums=('SKIP')
+sha512sums=('buUtZ+d1Jwi5rGIlclCCpLVCLGpQpHLCnymwkX3hirPdxVd4z/O27fEHzPGxvFGMw/K5qHwSnKXT6b7DslNhMQ==')
 install=$pkgname.install
