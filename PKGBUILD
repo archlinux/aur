@@ -13,7 +13,7 @@ provides=(lib32-atk)
 conflicts=(lib32-atk)
 depends=(lib32-glib2 atk)
 makedepends=(gobject-introspection git meson)
-source=("git+https://git.gnome.org/browse/atk")
+source=("git+https://gitlab.gnome.org/GNOME/atk.git")
 sha512sums=('SKIP')
 
 pkgver() {
