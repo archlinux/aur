@@ -1,4 +1,5 @@
 # Maintainer: Pedro H Lara Campos <root@pedrohlc.com>
+# Contributor: bartus <szczepaniak.bartek+github@gmail.com>
 # Contributor: Mark Wagie <mark.wagie@tutanota.com>
 # Contributor: Alad Wenter <alad@mailbox.org>
 # Contributor: Ben Morgan <neembi@gmail.com>
@@ -17,22 +18,14 @@ md5sums=('SKIP')
 provides=('repoctl')
 conflicts=('repoctl' 'repoctl-git')
 
-pkgver=0.20.r11.g1102d3c
+pkgver=0.21.r0.g92ed55f
 pkgrel=1
 pkgver() {
-  cd "${_pkgname}"
-  git describe --tags --long | sed 's/^v//; s/-/.r/; s/-/./g'
-}
-
-prepare() {
-  dest="$srcdir/src/github.com/cassava"
-  mkdir -p "$dest"
-	ln -rTsf "$srcdir/${_pkgname}" "$dest/repoctl"
+  git -C "$srcdir/${_pkgname}" describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  src="$srcdir/src/github.com/cassava/repoctl"
-  cd "$src/cmd/repoctl"
+  cd "${srcdir}/${_pkgname}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   export GOPATH="$srcdir"
@@ -44,12 +37,18 @@ package() {
 
   # Install repoctl program
   install -d "$pkgdir/usr/bin"
-  install -m755 cmd/repoctl/repoctl "$pkgdir/usr/bin/"
+  install -m755 repoctl "$pkgdir/usr/bin/"
 
   # Install other documentation
   install -d "$pkgdir/usr/share/doc/repoctl"
   install -m644 README.md NEWS.md "$pkgdir/usr/share/doc/repoctl/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/repoctl/LICENSE"
+
+  # Generate completion files (spf13/cobra)
+  install -d "$pkgdir"/usr/share/{{bash-completion,fish}/completions,zsh/site-functions}
+  ./repoctl completion bash > "$pkgdir/usr/share/bash-completion/completions/repoctl"
+  ./repoctl completion zsh > "$pkgdir/usr/share/zsh/site-functions/_repoctl"
+  ./repoctl completion fish > "$pkgdir/usr/share/fish/completions/repoctl.fish"
 }
 
 # vim: set ts=2 sw=2:

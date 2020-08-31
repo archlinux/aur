@@ -1,6 +1,6 @@
 pkgbase = repoctl-devel-git
 	pkgdesc = A supplement to repo-add and repo-remove which simplifies managing local repositories (devel branch from git)
-	pkgver = 0.20.r11.g1102d3c
+	pkgver = 0.21.r0.g92ed55f
 	pkgrel = 1
 	url = https://github.com/cassava/repoctl
 	arch = i686
