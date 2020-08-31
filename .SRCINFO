@@ -1,0 +1,13 @@
+pkgbase = ebookinfo
+	pkgdesc = Library and utility for extracting meta-data from certain e-book files
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/kevinboone/ebookinfo
+	arch = x86_64
+	license = GPL3
+	depends = pcre
+	source = ebookinfo-0.0.1.tar.gz::https://github.com/kevinboone/ebookinfo/archive/v0.0.1.tar.gz
+	sha256sums = 9483677519460f4f5766f2b5cd772578bdecfb9dc8c99cdb91084bf1325e33c0
+
+pkgname = ebookinfo
+
