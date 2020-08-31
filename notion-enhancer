@@ -5,9 +5,9 @@ post_install() {
 
 post_upgrade() {
     if [[ "$(notion-enhancer check)" == *" not "* ]]; then
-        echo "W: Notion-enhancer is not applied, skipping"
+        echo "Notion-enhancer is not applied, skipping"
     else
-        echo "I: Reapplying notion-enhancer"
+        echo "Reapplying notion-enhancer"
         notion-enhancer apply -y
     fi
 }
