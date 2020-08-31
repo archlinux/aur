@@ -1,6 +1,6 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 pkgname=dngconverter
-pkgver=12.2
+pkgver=12.4
 pkgrel=1
 pkgdesc='Adobe DNG Converter'
 arch=('x86_64')
@@ -8,12 +8,13 @@ url='http://www.adobe.com/go/dng_converter_win/'
 license=('custom: commercial')
 depends=('wine')
 makedepends=('wine')
+options=('!strip')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("http://download.adobe.com/pub/adobe/dng/win/DNGConverter_${pkgver/./_}.exe"
         'dngconverter'
         '_dngconverter')
-sha1sums=('d9118e4f8e2aecd1f385ff4bdd690545c61dddb6'
+sha1sums=('c391e59f04c9855dd79ddd72e354aec3c9785319'
           'SKIP'
           'SKIP')
 
