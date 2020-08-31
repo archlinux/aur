@@ -1,8 +1,8 @@
 # Maintainer: kikadf <kikadf.01@gmail.com>
 
 pkgname=clipgrab-kde
-pkgver=3.8.13
-_patchver=3.8.7
+pkgver=3.8.14
+_patchver=3.8.14
 pkgrel=1
 pkgdesc='A video downloader and converter for YouTube, Veoh, DailyMotion, MyVideo, ...'
 arch=(x86_64)
@@ -15,14 +15,14 @@ conflicts=('clipgrab')
 provides=('clipgrab')
 source=(https://download.clipgrab.org/clipgrab-${pkgver}.tar.gz
         clipgrab.desktop
-        https://gitlab.com/kikadf/clipgrab-qt5/raw/master/clipgrab-${_patchver}-kde.patch)
-sha256sums=('050f0983c5b7464cc6580beeb511133e928c311a485d9d65073e903a8682ca67'
+        https://gitlab.com/kikadf/clipgrab-qt5/raw/master/clipgrab-${_patchver}-close2tray.patch)
+sha256sums=('cebf6b940133536abf8b0fa1f5913a614eadd0221e6003ad6d7752de253e63a4'
             '840910097d8c129ea12c395c4a33f562591e878e521c98fde8a7b3f9403aa23f'
-            '4ff806da653541afa481029432343ee2c20b51857cea69bd59d422fcea58ef4d')
+            '54a3323588aa53bf90a42e219a9f9e686d6d61e24d29f89b0af6de3c1ab1e050')
 
 prepare() {
   cd clipgrab-${pkgver}
-  patch -p1 -i ../clipgrab-${_patchver}-kde.patch
+  patch -p1 -i ../clipgrab-${_patchver}-close2tray.patch
   lrelease clipgrab.pro
   lupdate clipgrab.pro
 }
