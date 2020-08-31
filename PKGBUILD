@@ -3,7 +3,7 @@
 
 pkgname=htmlcxx
 pkgver=0.87
-pkgrel=1
+pkgrel=3
 pkgdesc="A simple non-validating CSS1 and HTML parser for C++."
 arch=('i686' 'x86_64')
 url="http://htmlcxx.sourceforge.net/"
