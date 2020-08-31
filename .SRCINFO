@@ -1,7 +1,7 @@
 pkgbase = shortwave
 	pkgdesc = Find and listen to internet radio stations.
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://gitlab.gnome.org/World/Shortwave
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = shortwave
 	makedepends = gst-plugins-base-libs
 	makedepends = libdazzle
 	makedepends = meson
-	makedepends = rust
+	makedepends = rustup
 	depends = gst-plugins-bad
 	depends = libhandy
 	depends = libsoup
