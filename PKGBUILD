@@ -6,7 +6,7 @@ url='https://wiki.ros.org/easy_markers'
 pkgname='ros-melodic-easy-markers'
 pkgver='0.2.6'
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf
@@ -54,6 +54,7 @@ build() {
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+        -DCATKIN_ENABLE_TESTING=0 \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
