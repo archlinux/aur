@@ -1,0 +1,19 @@
+pkgbase = lib32-atk-git
+	pkgdesc = The interface definitions of accessibility infrastructure (32-bit)
+	pkgver = 2.36.0
+	pkgrel = 1
+	url = https://git.gnome.org/browse/atk
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	depends = lib32-glib2
+	depends = atk
+	provides = lib32-atk
+	conflicts = lib32-atk
+	source = git+https://git.gnome.org/browse/atk
+	sha512sums = SKIP
+
+pkgname = lib32-atk-git
+
