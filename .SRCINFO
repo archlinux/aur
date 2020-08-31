@@ -1,0 +1,16 @@
+pkgbase = coursier-native
+	pkgdesc = Pure Scala Artifact Fetching (native-image edition)
+	pkgver = 2.0.0_RC6_24
+	pkgrel = 1
+	url = http://get-coursier.io
+	arch = x86_64
+	license = Apache
+	depends = gcc-libs
+	depends = zlib
+	provides = coursier
+	conflicts = coursier
+	source = coursier-2.0.0_RC6_24::https://github.com/coursier/coursier/releases/download/v2.0.0-RC6-24/cs-x86_64-pc-linux
+	sha256sums = c598326e21b57c1dcaaefa797dbbfe47724922cd7649e86a43c8acab3743aeb0
+
+pkgname = coursier-native
+
