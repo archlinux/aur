@@ -1,6 +1,6 @@
 pkgbase = instantutils
 	pkgdesc = core utilities for instantOS
-	pkgver = 202007161244
+	pkgver = 202008051814
 	pkgrel = 1
 	url = https://github.com/instantOS/instantos
 	arch = any
