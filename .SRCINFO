@@ -1,8 +1,8 @@
 pkgbase = perl-moosex-methodattributes
 	pkgdesc = code attribute introspection
-	pkgver = 0.31
-	pkgrel = 3
-	url = http://search.cpan.org/dist/MooseX-MethodAttributes
+	pkgver = 0.32
+	pkgrel = 1
+	url = https://metacpan.org/release/MooseX-MethodAttributes
 	arch = any
 	license = PerlArtistic
 	license = GPL
@@ -13,8 +13,8 @@ pkgbase = perl-moosex-methodattributes
 	depends = perl-moosex-types
 	depends = perl-namespace-clean>=0.10
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-MethodAttributes-0.31.tar.gz
-	md5sums = fa9202b179c438844c3bea2ca7ecfe9d
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-MethodAttributes-0.32.tar.gz
+	md5sums = f18009f821e62b3fd9c2605820a0e61b
 
 pkgname = perl-moosex-methodattributes
 

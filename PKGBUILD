@@ -1,17 +1,17 @@
 # Contributor: Ordoban <dirk.langer@vvovgonik.de>
 
 pkgname='perl-moosex-methodattributes'
-pkgver='0.31'
-pkgrel='3'
+pkgver='0.32'
+pkgrel='1'
 pkgdesc="code attribute introspection"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-moose>=0.98' 'perl-moosex-types' 'perl-namespace-clean>=0.10')
 makedepends=('perl-namespace-autoclean' 'perl-test-exception' 'perl-test-checkdeps')
-url='http://search.cpan.org/dist/MooseX-MethodAttributes'
-source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-MethodAttributes-$pkgver.tar.gz")
-md5sums=('fa9202b179c438844c3bea2ca7ecfe9d')
+url='https://metacpan.org/release/MooseX-MethodAttributes'
+source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-MethodAttributes-$pkgver.tar.gz")
+md5sums=('f18009f821e62b3fd9c2605820a0e61b')
 
 build() {
     export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
