@@ -1,7 +1,0 @@
-#!/bin/bash -e
-
-if [ $1 == 'remove' ]; then
-    rm /usr/lib/firmware/renesas_usb_fw.mem
-fi
-
-mkinitcpio -P

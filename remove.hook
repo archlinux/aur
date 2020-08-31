@@ -7,4 +7,4 @@ Target = upd72020x-fw
 Description = Updating linux initcpios...
 Depends = mkinitcpio
 When = PreTransaction
-Exec = /usr/share/libalpm/scripts/upd72020x-fw remove
+Exec = /bin/sh -c "rm -f /usr/lib/firmware/renesas_usb_fw.mem && mkinitcpio -P"
