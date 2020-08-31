@@ -59,10 +59,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.7.9.arch1.r918141.2c71b506e567
+pkgver=v5.8.5.arch1.r935505.7e04f345cc3a
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.7.17.arch1
+_srcver_tag=v5.8.5.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -85,7 +85,7 @@ _repo_url="https://github.com/koverstreet/$_reponame"
 
 _reponame_gcc_patch="kernel_gcc_patch"
 _repo_url_gcc_patch="https://github.com/graysky2/$_reponame_gcc_patch"
-_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+.patch"
+_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
@@ -94,7 +94,6 @@ source=(
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
     sphinx-workaround.patch
-    b4e7e8c02782234ce9409719dd781e9b320970ec.patch::https://git.archlinux.org/linux.git/patch/?id=b4e7e8c02782234ce9409719dd781e9b320970ec
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -102,9 +101,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '70a57001d1485eee3feadef435bc4df02b82ff68917f983249c63eaa1e6d6562cac1c9682c4d7d3c73720ac66bf60d97282449448625898e557893435063b421'
-            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
-            '92618543dc4505ff9b8c1cf86b1b1583f009a2324492dfa7cc0969da1c1144539a73a5bc7f492f87d9343e592a01683b3a1f56b0c558ae74a307180ff2eca7da')
+            'ca22ee773b8801cccedb6cf4fca63d19c94d226cfa4d4452d7b650a6c1521dc189248dab3a4c24d1595b99e137241b02ae0435d4a9920ffde20c07643a223f11'
+            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -118,18 +116,16 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    #msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
-    #git remote add arch_stable "https://git.archlinux.org/linux.git" || true
-    #git fetch arch_stable "${_srcver_tag%.*}-${_srcver_tag##*.}"
-    #git merge --no-edit --no-commit FETCH_HEAD
-    
-    # msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
-    git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
-    git fetch upstream_stable ${_srcver_tag//.arch*/}
+    msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
+    git remote add arch_stable "https://git.archlinux.org/linux.git" || true
+    git fetch arch_stable "${_srcver_tag%.*}-${_srcver_tag##*.}"
     git merge --no-edit --no-commit FETCH_HEAD
     
-    msg2 "Patching with ZEN: Add sysctl and CONFIG to disallow unprivileged CLONE_NEWUSER..."
-    patch -Np1 -i "$srcdir/b4e7e8c02782234ce9409719dd781e9b320970ec.patch"
+    #msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
+    #git remote add upstream_stable "https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git" || true
+    #git fetch upstream_stable ${_srcver_tag//.arch*/}
+    #git merge --no-edit --no-commit FETCH_HEAD
+    
 
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching with Graysky's additional gcc CPU optimizatons..."
