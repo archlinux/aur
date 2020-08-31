@@ -1,6 +1,6 @@
 # Maintainer: ebcrowder <ebcrowder@gmail.com>
 pkgname=rust_ledger-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="CLI accounting tool"
 url="https://github.com/ebcrowder/rust_ledger"
