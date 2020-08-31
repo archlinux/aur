@@ -1,6 +1,6 @@
 # Maintainer: Akritas Akritidis <akritasak@gmail.com>
 pkgname=mls
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="maanoo's ls"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('git' 'gperf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MaanooAk/mls/archive/v$pkgver.tar.gz")
-sha1sums=('c914bea272638f582de58104810a4ca95fe3a605')
+sha1sums=('5eb778a12fe41d71b01555aec4c936e1f2b8f84d')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -20,8 +20,7 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 
-	mkdir -p "$pkgdir/usr/share/man/man1"
 	make INSTALL_PATH="$pkgdir/usr" install
 
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }

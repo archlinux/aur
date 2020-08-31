@@ -1,14 +1,14 @@
 pkgbase = mls
 	pkgdesc = maanoo's ls
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://github.com/MaanooAk/mls
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = gperf
-	source = mls-1.0.tar.gz::https://github.com/MaanooAk/mls/archive/v1.0.tar.gz
-	sha1sums = c914bea272638f582de58104810a4ca95fe3a605
+	source = mls-1.1.tar.gz::https://github.com/MaanooAk/mls/archive/v1.1.tar.gz
+	sha1sums = 5eb778a12fe41d71b01555aec4c936e1f2b8f84d
 
 pkgname = mls
 
