@@ -1,5 +1,5 @@
 pkgbase = gitlab-glab-bin
-	pkgdesc = A custom GitLab CLI tool written in Go
+	pkgdesc = An open source GitLab CLI tool written in Go
 	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/profclems/glab
