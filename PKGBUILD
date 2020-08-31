@@ -5,7 +5,7 @@
 _pkgname="Shortwave"
 pkgname="shortwave"
 pkgver="1.1.1"
-pkgrel="3"
+pkgrel="4"
 epoch="1"
 pkgdesc="Find and listen to internet radio stations."
 arch=('any')
@@ -16,6 +16,12 @@ makedepends=('cargo' 'git' 'gobject-introspection' 'gst-plugins-base-libs' 'libd
 options=('!emptydirs')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('b391b4d10658e9ba180442ca2d769173a278f19beb498c7251a6b4a62b7c678b')
+
+prepare() {
+    rustup install 1.45.2
+    rustup default 1.45.2
+    echo "Rust version used during this build: `rustc \-V`"
+}
 
 build() {
     cd "${_pkgname}-${pkgver}"
