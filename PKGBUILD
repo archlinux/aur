@@ -6,30 +6,22 @@
 _pkgname=servicewall
 pkgname=servicewall-git
 pkgdesc="The firewall that remembers the different networks you connect to."
-pkgver=0.4.2.r51.ddc3b47
+pkgver=0.4.4.r10.ddc3b47
 pkgrel=1
 arch=("any")
 url="https://github.com/lafleurdeboum/servicewall"
 #url="https://pypi.python.org/pypi/servicewall"
 license=("GPL3")
 depends=(
-        "python"
-        "python-argparse"
-        "python-arpreq"
-        "python-iptables"
-        "python-systemd"
-        "ulogd"
-        )
-optdepends=(
-        "python-argcomplete"
-        "networkd-dispatcher"
-        "networkmanager"
-        )
-makedepends=(
-        "python-distribute"
-        "python-setuptools"
-        "git"
-        )
+    "python"
+    "python-iptables"
+    "python-argparse"
+    "python-arpreq"
+    "python-systemd"
+    "ulogd"
+)
+optdepends=("python-argcomplete" "networkd-dispatcher" "networkmanager")
+makedepends=("python-distribute" "python-setuptools" "git")
 install=servicewall.install
 backup=(
     "etc/servicewall/realms.json"
