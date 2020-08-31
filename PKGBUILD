@@ -22,7 +22,7 @@ install=
 changelog=
 source=("git+$_url" "${_pkgname}.desktop")
 noextract=()
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 prepare() {
     cd "music-vue"
