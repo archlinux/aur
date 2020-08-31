@@ -1,0 +1,18 @@
+pkgbase = llvm-rc-bin
+	pkgdesc = Collection of modular and reusable compiler and toolchain -PreRelease
+	pkgver = 11.0.0
+	pkgrel = 2
+	url = https://prereleases.llvm.org11.0.0
+	install = llvm-rc-bin.install
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	depends = gcc-libs
+	depends = zlib
+	depends = ncurses5-compat-libs
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0-rc2/clang+llvm-11.0.0-rc2-x86_64-linux-sles12.4.tar.xz
+	source = llvm.sh
+	sha256sums = 5d1a54fbca4e3c9865094c8c4602d5761adc49a1f4c58d2a481cbe502ea35f74
+	sha256sums = 4514139cb511ced2c5495988cc248d95552045888c1cb26bbedc7654fa2e7b91
+
+pkgname = llvm-rc-bin
+
