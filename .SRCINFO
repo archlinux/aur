@@ -1,7 +1,7 @@
 pkgbase = otf-manjari
 	pkgdesc = Malayalam unicode font with rounded terminals suitable for body text.
 	pkgver = 1.910
-	pkgrel = 1
+	pkgrel = 2
 	url = https://releases.smc.org.in/fonts/manjari/
 	arch = any
 	license = OFL

@@ -3,7 +3,7 @@
 
 pkgname=otf-manjari
 pkgver=1.910
-pkgrel=1
+pkgrel=2
 pkgdesc="Malayalam unicode font with rounded terminals suitable for body text."
 arch=(any)
 license=("OFL")
@@ -20,4 +20,5 @@ sha256sums=('2d0b8bd1d2df01cfa0db8dde27ad0b050f112fbd9d4a453fa6f0f378b833a3e1'
 package() {
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
   install -Dm644 -t "$pkgdir/usr/share/fonts/manjari" *.otf
+  install -Dm644 -t "$pkgdir/etc/fonts/conf.d" *.conf
 }
