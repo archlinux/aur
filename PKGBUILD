@@ -3,7 +3,7 @@
 # Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
 
 _npmname=thumbsup
-_npmver=2.13.0
+_npmver=2.14.0
 pkgname=nodejs-thumbsup # All lowercase
 pkgver=${_npmver//-/}
 pkgrel=1
@@ -13,10 +13,10 @@ url="https://github.com/thumbsup/thumbsup#readme"
 license=()
 depends=('nodejs' 'npm' 'perl-image-exiftool' 'graphicsmagick')
 optdepends=('ffmpeg: for video support')
-makedepends=('git' 'python' 'python2')
+makedepends=('git')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('61235908493458e4c1c7ce622bec242c038123b85995a3c51f2dde580b5d29e0')
+sha256sums=('2a82213a851b049539a819b39c3177cd252e2f2f2741bd31e36910b7566c781a')
 
 package() {
   cd $srcdir
