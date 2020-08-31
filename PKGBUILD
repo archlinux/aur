@@ -10,7 +10,7 @@
 
 pkgname=openssh-selinux
 pkgver=8.3p1
-pkgrel=3
+pkgrel=4
 pkgdesc='Premier connectivity tool for remote login with the SSH protocol, with SELinux support'
 url='https://www.openssh.com/portable.html'
 license=('custom:BSD')

@@ -1,7 +1,7 @@
 pkgbase = openssh-selinux
 	pkgdesc = Premier connectivity tool for remote login with the SSH protocol, with SELinux support
 	pkgver = 8.3p1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.openssh.com/portable.html
 	install = install
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = openssh-selinux
 	optdepends = xorg-xauth: X11 forwarding
 	optdepends = x11-ssh-askpass: input passphrase in X
 	optdepends = libfido2: FIDO/U2F support
-	provides = openssh=8.3p1-3
-	provides = selinux-openssh=8.3p1-3
+	provides = openssh=8.3p1-4
+	provides = selinux-openssh=8.3p1-4
 	conflicts = openssh
 	conflicts = selinux-openssh
 	backup = etc/ssh/ssh_config
