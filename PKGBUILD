@@ -5,16 +5,14 @@
 pkgname=nvchecker-git
 epoch=1
 pkgver=2.0b0.r68
-pkgrel=1
+pkgrel=2
 pkgdesc="a tool for checking if a new version of some software has been released."
 arch=('any')
 url="https://github.com/lilydjwg/nvchecker"
 license=('MIT')
 depends=('python' 'python-setuptools' 'python-structlog' 'python-tornado' 'python-pycurl' 'python-toml' 'python-appdirs')
 makedepends=('git')
-optdepends=('pyalpm: for "sort_version_key = vercmp" config'
-            'git'
-            'mercurial')
+optdepends=('pyalpm: for "sort_version_key = vercmp" config')
 conflicts=('nvchecker')
 provides=("nvchecker=$pkgver")
 source=('git://github.com/lilydjwg/nvchecker.git')
