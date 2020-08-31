@@ -3,7 +3,7 @@
 
 pkgbase=nvidia-450xx-dkms
 pkgname=nvidia-450xx-dkms
-pkgver=450.57
+pkgver=450.66
 pkgrel=1
 pkgdesc="NVIDIA driver sources for Linux, 450xx"
 arch=('x86_64')
@@ -17,9 +17,9 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=(
         "http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
        )
-sha512sums=(
-            '2c57f4752239a028f04a7bdc62e363600b67c8d83b5bfeb2649b41d2f5776c56780a46ced93ee9c22f22a0d820372d2ab0bfdde5044131eafe7f5f2df489fa81'           
-           )
+md5sums=(
+	'f2fc84773487a2f4c405788afc1b85c5'
+	)
 
 prepare() {
     sh "${_pkg}.run" --extract-only
