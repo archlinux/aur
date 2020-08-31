@@ -12,7 +12,7 @@ pkgbase = crazydiskmark
 	depends = python-humanfriendly
 	depends = python-desktop-file
 	depends = fio
-	source = crazydiskmark-0.3.1.tar.gz::https://files.pythonhosted.org/packages/5b/67/3e72f18f58b4cfe8b9facbf1445c0bfe82b901b435763b45842a3f602f8c/crazydiskmark-0.3.1.tar.gz
+	source = crazydiskmark-0.3.1.tar.gz::https://files.pythonhosted.org/packages/f4/4b/1de97b0b35745f541e95509b15d518d51e82c04dabbb1a781b5d8c114212/crazydiskmark-0.3.1.tar.gz
 	sha256sums = 7c9f32162e4afd569bfb39c20ba1cf0e4c0d4686c67c6cb2683630d80de9be60
 
 pkgname = crazydiskmark

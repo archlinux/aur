@@ -1,4 +1,6 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Fred Lins <fredcox at gmail dot com>
+# install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 pkgname=crazydiskmark
 pkgver=0.3.1
 pkgrel=1
@@ -20,7 +22,6 @@ build() {
   python setup.py build
 }
 package() {
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
