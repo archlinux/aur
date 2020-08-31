@@ -8,14 +8,14 @@
 
 ### MERGE REQUESTS SELECTION
 
-# Merge Requests List: ('429' '493' '579' '983' '798' '1003' '1267' '1360' '1359' '1369')
-_merge_requests_to_use=('1003' '1267' '1360' '1359' '1369') # safe pick
+# Merge Requests List: ('429' '493' '579' '983' '798' '1003' '1267' '1360' '1359')
+_merge_requests_to_use=('1003' '1267' '1360' '1359') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.36.4+10+gef3dac706
-pkgrel=2
+pkgver=3.36.5+10+g84512cb1f
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -30,9 +30,8 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=ef3dac70648196de8e291708eaa1cf68dc2eec28 # tags/3.36.4^10
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        "fix_clutter_actor_set_allocation_spam.patch")
+_commit=84512cb1f36633d32418720e3608d01c6122ee26 # tags/3.36.5^10
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP'
             '9b2a5c4ab0e8c5e9a54fddc7461a85455055b175af9a7c89b0e16f30a939fa42')
 
@@ -170,12 +169,6 @@ prepare() {
   # Comment:
   pick_mr "1359"
 
-  # Title: Fix wine copy & paste
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1369
-  # Type: 3
-  # Status: 2
-  # Comment:
-  pick_mr "1369"
 }
 
 build() {
