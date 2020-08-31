@@ -1,0 +1,19 @@
+pkgbase = tkrzw-git
+	pkgdesc = DBM with various algorithms for key-value storage
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://dbmx.net/tkrzw/
+	arch = x86_64
+	license = APACHE
+	checkdepends = gmock
+	checkdepends = gtest
+	makedepends = git
+	depends = gcc-libs
+	provides = tkrzw
+	provides = libtkrzw.so
+	conflicts = tkrzw
+	source = git+https://github.com/estraier/tkrzw.git
+	md5sums = SKIP
+
+pkgname = tkrzw-git
+
