@@ -9,8 +9,8 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgbase=calibre-git
-pkgname=(calibre-common-git calibre-git calibre-python3-git)
-pkgver=4.19.0.r33.gc6b4140231
+pkgname=calibre-git
+pkgver=4.23.0.r477.g079cbff565
 pkgrel=1
 _dictionaries_commit="libreoffice-6.4.0.0.beta1"
 pkgdesc="Ebook management application"
@@ -19,23 +19,24 @@ url="https://calibre-ebook.com/"
 license=('GPL3')
 _py_deps=('apsw' 'beautifulsoup4' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dnspython'
           'feedparser' 'html2text' 'html5-parser' 'lxml' 'markdown' 'mechanize' 'msgpack'
-          'netifaces' 'unrardll' 'pillow' 'psutil' 'pygments' 'pyqt5' 'pyqtwebengine' 'regex')
-_py2_deps=("${_py_deps[@]}" 'ipaddress')
-_py3_deps=("${_py_deps[@]}" 'zeroconf')
+          'netifaces' 'unrardll' 'pillow' 'psutil' 'pychm' 'pygments' 'pyqt5'
+          'pyqtwebengine' 'regex' 'zeroconf')
 depends=('chmlib' 'hunspell' 'hyphen' 'icu' 'jxrlib' 'libmtp' 'libusbx'
-         'libwmf' 'mathjax' 'mtdev' 'optipng' 'podofo' 'qt5-svg' 'udisks2')
-makedepends=('git' "${_py2_deps[@]/#/python2-}" "${_py3_deps[@]/#/python-}" 'qt5-x11extras'
-             'sip' 'xdg-utils' 'rapydscript-ng' 'python2-sphinx')
+         'libwmf' 'mathjax' 'mtdev' 'optipng' 'podofo'
+         "${_py_deps[@]/#/python-}" 'qt5-svg' 'udisks2')
+makedepends=('git' 'qt5-x11extras' 'sip' 'xdg-utils' 'rapydscript-ng' 'python-sphinx')
 checkdepends=('xorg-server-xvfb')
+optdepends=('poppler: required for converting pdf to html')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'calibre-common' 'calibre-python3')
+replaces=('calibre-common-git' 'calibre-python3-git')
 source=("git+https://github.com/kovidgoyal/${pkgbase%-git}.git?signed"
         "git+https://github.com/kovidgoyal/${pkgbase%-git}-translations.git?signed"
         "dictionaries-${_dictionaries_commit}.tar.gz::https://github.com/LibreOffice/dictionaries/archive/${_dictionaries_commit}.tar.gz"
-        "calibre-alternatives.sh"
         "user-agent-data.json")
 sha256sums=('SKIP'
             'SKIP'
             'ccfdb3ba622d59c99b305abfdc824a8e2f96f1930fe6f4e7f183297bc80ad3e8'
-            '20dc4ff196423a7c7c8f644cb83fcfe07b4b5a64ba4addeb0750f94cd7aa9e8e'
             'd17a1fff7bf441db8d1ec826afd8661352869ec4e5edd2a17f917ef2fbf01043')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
@@ -48,7 +49,7 @@ pkgver() {
 prepare(){
     cd "${srcdir}/${pkgbase%-git}"
 
-    python2 setup.py git_version
+    python setup.py git_version
 
     # Link translations to build dir
     ln -sfT ../calibre-translations translations
@@ -58,13 +59,6 @@ prepare(){
     sed -e "/import config_dir/,/os.rmdir(config_dir)/d" \
         -e "s/^Name=calibre/Name=Calibre/g" \
         -i  src/calibre/linux.py
-
-    # cherry-picked bits of python2-backports.functools_lru_cache
-    # needed for frozen builds + beautifulsoup4
-    # see https://github.com/kovidgoyal/calibre/commit/b177f0a1096b4fdabd8772dd9edc66662a69e683#commitcomment-33169700
-    rm -r src/backports
-    # biplist is only used on macOS + python2
-    rm -r src/biplist/
 }
 
 build() {
@@ -75,22 +69,20 @@ build() {
     # *needed* subcommmand.
     # LANG='en_US.UTF-8' python2 setup.py bootstrap
 
-    LANG='en_US.UTF-8' python2 setup.py build
-    LANG='en_US.UTF-8' python2 setup.py iso639
-    LANG='en_US.UTF-8' python2 setup.py iso3166
-    LANG='en_US.UTF-8' python2 setup.py translations
-    LANG='en_US.UTF-8' python2 setup.py gui
-    LANG='en_US.UTF-8' python2 setup.py resources \
+    LANG='en_US.UTF-8' python setup.py build
+    LANG='en_US.UTF-8' python setup.py iso639
+    LANG='en_US.UTF-8' python setup.py iso3166
+    LANG='en_US.UTF-8' python setup.py translations
+    LANG='en_US.UTF-8' python setup.py gui
+    LANG='en_US.UTF-8' python setup.py resources \
         --path-to-mathjax /usr/share/mathjax --system-mathjax \
         --path-to-hyphenation "${srcdir}"/dictionaries-${_dictionaries_commit}
-    LANG='en_US.UTF-8' python2 setup.py man_pages
-
-    LANG='en_US.UTF-8' CALIBRE_PY3_PORT=1 python3 setup.py build
+    LANG='en_US.UTF-8' python setup.py man_pages
 
     # This tries to download new user-agent data, so pre-seed a
     # recently-generated copy to allow offline builds.
     cp ../user-agent-data.json resources/
-    LANG='en_US.UTF-8' python2 setup.py recent_uas || true
+    LANG='en_US.UTF-8' python setup.py recent_uas || true
 }
 
 check() {
@@ -100,97 +92,26 @@ check() {
     # ERROR: test_websocket_perf (calibre.srv.tests.web_sockets.WebSocketTest)
     # one or two tests are a bit flaky, but the python3 build seems to succeed more often
     LANG='en_US.UTF-8' xvfb-run env CALIBRE_PY3_PORT=1 python3 setup.py test
-    LANG='en_US.UTF-8' xvfb-run python2 setup.py test
 }
 
-package_calibre-common-git() {
-    pkgdesc+=" (common files)"
-    optdepends=('poppler: required for converting pdf to html')
-    provides=("${pkgname%-git}")
-    conflicts=("${pkgname%-git}" "calibre<${pkgver}")
-    install=calibre-common-git.install
+package() {
     cd "${srcdir}/${pkgbase%-git}"
 
     # If this directory don't exist, zsh completion won't install.
     install -d "${pkgdir}/usr/share/zsh/site-functions"
 
-    LANG='en_US.UTF-8' python2 setup.py install --staging-root="${pkgdir}/usr" \
+    LANG='en_US.UTF-8' python setup.py install \
+        --staging-root="${pkgdir}/usr" \
         --prefix=/usr
-
-    for bin in "${pkgdir}"/usr/bin/*; do
-        ln -sfT "/usr/lib/calibre/bin/${bin##*/}" "${bin}"
-    done
-
-    install -Dm755 "${srcdir}"/calibre-alternatives.sh "${pkgdir}"/usr/bin/calibre-alternatives
 
     cp -a man-pages/ "${pkgdir}/usr/share/man"
 
     # not needed at runtime
     rm -r "${pkgdir}"/usr/share/calibre/rapydscript/
 
-    #cleanup overlapping files
-    rm -r "${pkgdir}"/usr/lib/python2.7
-    rm -r "${pkgdir}"/usr/lib/calibre/calibre/plugins/
-    find "${pkgdir}" -type f -name '*.py[co]' -delete
-}
-
-package_calibre-git() {
-    pkgdesc+=" (python2 build)"
-    depends=('calibre-common-git' "${_py2_deps[@]/#/python2-}")
-    optdepends+=('ipython2: to use calibre-debug')
-    provides=("${pkgname%-git}")
-    conflicts=("${pkgname%-git}")
-    install=calibre-git.install
-
-    cd "${srcdir}/${pkgbase%-git}"
-
-    LANG='en_US.UTF-8' python2 setup.py install \
-        --staging-root="${pkgdir}/usr" \
-        --prefix=/usr \
-        --no-postinstall \
-        --bindir=/usr/lib/calibre/bin-py2 \
-        --staging-bindir="${pkgdir}/usr/lib/calibre/bin-py2" \
-        --staging-sharedir="${srcdir}"/temp
-
-    # Compiling bytecode FS#33392
-    # This is kind of ugly but removes traces of the build root.
-    while read -rd '' _file; do
-        _destdir="$(dirname "${_file#${pkgdir}}")"
-        python2 -m compileall -d "${_destdir}" "${_file}"
-        python2 -O -m compileall -d "${_destdir}" "${_file}"
-    done < <(find "${pkgdir}"/usr/lib/ -name '*.py' -print0)
-
-    find "${pkgdir}"/usr/lib/calibre -name '*.py' -delete
-    rm -r "${pkgdir}"/usr/lib/calibre/calibre/plugins/3/
-}
-
-package_calibre-python3-git() {
-    pkgdesc+=" (experimental python3 port)"
-    depends=('calibre-common-git' "${_py3_deps[@]/#/python-}")
-    optdepends+=('ipython: to use calibre-debug')
-    provides=("${pkgname%-git}")
-    conflicts=("${pkgname%-git}")
-    install=calibre-git.install
-
-    cd "${srcdir}/${pkgbase%-git}"
-
-    LANG='en_US.UTF-8' CALIBRE_PY3_PORT=1 python3 setup.py install \
-        --staging-root="${pkgdir}/usr" \
-        --prefix=/usr \
-        --no-postinstall \
-        --bindir=/usr/lib/calibre/bin-py3 \
-        --staging-bindir="${pkgdir}/usr/lib/calibre/bin-py3" \
-        --staging-sharedir="${srcdir}"/temp
-
-    # Compiling bytecode FS#33392
-    # This is kind of ugly but removes traces of the build root.
     while read -rd '' _file; do
         _destdir="$(dirname "${_file#${pkgdir}}")"
         python3 -m compileall -d "${_destdir}" "${_file}"
         python3 -O -m compileall -d "${_destdir}" "${_file}"
     done < <(find "${pkgdir}"/usr/lib/ -name '*.py' -print0)
-
-    # cleanup overlapping files
-    find "${pkgdir}"/usr/lib/calibre -name '*.py' -delete
-    rm "${pkgdir}"/usr/lib/calibre/calibre/plugins/*.so
 }
