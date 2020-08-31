@@ -1,6 +1,6 @@
 pkgbase = keeper-commander
 	pkgdesc = CLI, SDK and interactive shell for Keeper® Password Manager.
-	pkgver = 4.33
+	pkgver = 4.37
 	pkgrel = 1
 	url = https://github.com/Keeper-Security/Commander
 	arch = any
@@ -8,15 +8,15 @@ pkgbase = keeper-commander
 	depends = python
 	depends = python-colorama
 	depends = python-pycryptodomex
-	depends = python-libkeepass
 	depends = python-requests
 	depends = python-tabulate
 	depends = python-prompt_toolkit
 	depends = python-asciitree
+	depends = python-pytest
 	depends = python-protobuf
 	depends = python-pyperclip
-	source = keeper-commander-4.33.tar.gz::https://github.com/Keeper-Security/Commander/archive/4.33.tar.gz
-	sha512sums = 387266267cfc448830a71a44cb4b38f7ff207e3e7aaea02618611e951f9c5f16e9153371021ae25b13ef328efb21b5dd7964b867d7d6515f0c2aa79bef7bc686
+	source = keeper-commander-4.37.tar.gz::https://github.com/Keeper-Security/Commander/archive/v4.37.tar.gz
+	sha512sums = 79e55edec11840fe48e505935d2c69df00b352ced956e22cd219c0bc2d44ab53cc5e8eb0c14b59e2eacf29280e520059c650e6135cdc7c7d605f6411c52a9a9b
 
 pkgname = keeper-commander
 
