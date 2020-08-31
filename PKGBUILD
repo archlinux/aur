@@ -8,7 +8,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs
          python-buildbot-www python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
-pkgver=2.8.3
+pkgver=2.8.4
 _bb_contrib_commit=ada3c8f30ca7e1b6bb260e2e5971053fbd254333
 pkgrel=1
 arch=(any)
@@ -29,7 +29,7 @@ source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbo
         "reproducible-html.diff"
         "sqlalchemy-1.13.18.diff"
         "ignore-setuptools-warning.diff")
-sha256sums=('a8ccc3e3e6b5fa2117c827229767e57d470346a836dc713df957b3df71c3f59e'
+sha256sums=('b8c1d807d89dc220422843d7043831ee35ca03dfd7fd4da5a4f73899dffa1849'
             'SKIP'
             'SKIP'
             'b921d29994eff3af134ca1b37acf291a6a95f5da35a2a4f885557adcca22f864'
