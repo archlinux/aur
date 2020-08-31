@@ -1,14 +1,14 @@
 pkgbase = nodejs-glslify
 	pkgdesc = A node.js-style module system for GLSL!
-	pkgver = 7.0.0
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://github.com/stackgl/glslify
 	arch = any
 	depends = nodejs
 	depends = npm
-	noextract = glslify-7.0.0.tgz
-	source = http://registry.npmjs.org/glslify/-/glslify-7.0.0.tgz
-	sha256sums = 62760a462eaa37f7bb31009d5fc32a32610b4a719135c256534d850938996236
+	noextract = glslify-7.1.0.tgz
+	source = http://registry.npmjs.org/glslify/-/glslify-7.1.0.tgz
+	sha256sums = 183d01a1a390143f51f42495bb189864d54a89429c6ec0e4f427a75b8b609cde
 
 pkgname = nodejs-glslify
 
