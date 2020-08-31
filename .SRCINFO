@@ -1,7 +1,8 @@
 pkgbase = firewalld-git
 	pkgdesc = Firewall daemon with D-Bus interface
-	pkgver = 0.6.999
-	pkgrel = 1
+	pkgver = r3151.956db5ec
+	pkgrel = 4
+	epoch = 1
 	url = https://firewalld.org/
 	arch = any
 	license = GPL2

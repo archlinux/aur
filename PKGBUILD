@@ -5,8 +5,9 @@
 
 _pkgname=firewalld
 pkgname=firewalld-git
-pkgver=0.6.999
-pkgrel=1
+epoch=1
+pkgver=r3151.956db5ec
+pkgrel=4
 pkgdesc='Firewall daemon with D-Bus interface'
 arch=(any)
 url='https://firewalld.org/'
@@ -58,6 +59,11 @@ source=(
 sha256sums=('SKIP'
             'cf7d655230c43acf10a0f97dffdbcba136729967c8b9a25a930871d54a589834')
 
+pkgver() {
+  cd firewalld
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 prepare() {
   cd firewalld
 
@@ -87,6 +93,8 @@ package() {
   make DESTDIR="${pkgdir}" install
   #mv "${pkgdir}"/usr/share/dbus-1
   install -Dm 644 shell-completion/zsh/_firewalld -t "${pkgdir}"/usr/share/zsh/site-functions/
+  python -m compileall -d /usr/lib "$pkgdir/usr/lib"
+  python -O -m compileall -d /usr/lib "$pkgdir/usr/lib"
 }
 
 # vim: ts=2 sw=2 et:
