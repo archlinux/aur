@@ -1,4 +1,5 @@
-# Maintainer: Jake <aur@ja-ke.tech>
+# Maintainer: Andrew Whatson <whatson@gmail.com>
+# Contributor: Jake <aur@ja-ke.tech>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 # Contributor: Hans Janssen <hans@janserv.xs4all.nl>
@@ -9,11 +10,11 @@ _pkgver=${pkgver%.*}
 pkgrel=1
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
 arch=('x86_64')
+url="http://home.flightgear.org/"
+license=('GPL')
 depends=('glu' 'glut' 'freealut' 'plib' 'openscenegraph')
 makedepends=('boost' 'cmake' 'mesa')
-license=("GPL")
-url="http://www.flightgear.org/"
-options=('makeflags' 'staticlibs')
+options=('staticlibs')
 source=("https://downloads.sourceforge.net/project/flightgear/release-${_pkgver}/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('66da2c4f68058f6854206f2dd9c03c9223851ade24a50216e88b4e50598c13d1')
 
