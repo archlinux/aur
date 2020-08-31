@@ -1,39 +1,40 @@
-# Maintainer: polterge|st
-# Contributor: Lubosz Sarnecki <lubosz@gmail.com>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=atk-git
-pkgver=2.16.0.8.g5dbc330.5dbc330
+pkgver=2.36.0
 pkgrel=1
-pkgdesc="A library providing a set of interfaces for accessibility. Git version."
-arch=("i686" "x86_64")
-url="http://www.gnome.org"
-license=('LGPL')
-depends=('glib2')
-makedepends=('gobject-introspection' 'gnome-common-git')
-options=('!libtool')
-provides=('atk')
-conflicts=('atk')
-_gitname="atk"
-source=('git://git.gnome.org/atk')
-md5sums=('SKIP')
+pkgdesc="Interface definitions of accessibility infrastructure"
+url="https://gitlab.gnome.org/GNOME/atk"
+arch=(x86_64)
+license=(LGPL)
+depends=(glib2)
+makedepends=(gobject-introspection git meson)
+provides=(atk libatk-1.0.so)
+conflicts=(atk)
+source=("git+https://gitlab.gnome.org/GNOME/atk.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd $_gitname
-	echo $(git describe --always | sed 's/ATK_//g' | sed 's/_/./g' | sed 's/-/./g').$(git log --pretty=format:'%h' -n 1)
+  cd atk
+  git describe --tags | sed 's/^ATK_//;s/_/./g;s/-/+/g'
+}
+
+prepare() {
+  cd atk
 }
 
 build() {
-	cd $_gitname
-
-  sed -i -e '/AC_PATH_XTRA/d' configure.ac
-  # autoreconf --force --install
-
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc \
-    --disable-schemas-compile
-  make
+  arch-meson atk build -D docs=false
+  ninja -C build
 }
+
+#check() {
+#  meson test -C build --print-errorlogs
+#}
 
 package() {
-	cd $_gitname
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" meson install -C build
 }
+
