@@ -86,12 +86,33 @@ index 5fb2f09..fc40b2a 100644
     SWAP,
     PROCESS,
     PROCESS_SHADOW,
+diff --git a/Makefile.am b/Makefile.am
+index d455b4d..2f6dd75 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -49,6 +49,7 @@ linux_platform_headers = \
+ 	linux/LinuxProcessList.h \
+ 	linux/LinuxCRT.h \
+ 	linux/Battery.h \
++	TemperatureMeter.h \
+ 	linux/PressureStallMeter.h \
+ 	zfs/ZfsArcMeter.h \
+ 	zfs/ZfsCompressedArcMeter.h \
+@@ -59,7 +60,7 @@ all_platform_headers += $(linux_platform_headers)
+ if HTOP_LINUX
+ AM_LDFLAGS += -rdynamic
+ myhtopplatsources = linux/Platform.c linux/IOPriorityPanel.c linux/IOPriority.c \
+-linux/LinuxProcess.c linux/LinuxProcessList.c linux/LinuxCRT.c linux/Battery.c \
++linux/LinuxProcess.c linux/LinuxProcessList.c linux/LinuxCRT.c linux/Battery.c TemperatureMeter.c \
+ linux/PressureStallMeter.c \
+ zfs/ZfsArcMeter.c zfs/ZfsCompressedArcMeter.c zfs/ZfsArcStats.c
+ 
 diff --git a/TemperatureMeter.c b/TemperatureMeter.c
 new file mode 100644
-index 0000000..9ee9185
+index 0000000..872b92c
 --- /dev/null
 +++ b/TemperatureMeter.c
-@@ -0,0 +1,100 @@
+@@ -0,0 +1,85 @@
 +/*
 +htop - TemperatureMeter.c
 +(C) 2013 Ralf Stemmer
@@ -202,27 +223,6 @@ index 0000000..b86ddd8
 +extern MeterClass TemperatureMeter_class;
 +
 +#endif
-diff --git a/Makefile.am b/Makefile.am
-index d455b4d..2f6dd75 100644
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -49,6 +49,7 @@ linux_platform_headers = \
- 	linux/LinuxProcessList.h \
- 	linux/LinuxCRT.h \
- 	linux/Battery.h \
-+	TemperatureMeter.h \
- 	linux/PressureStallMeter.h \
- 	zfs/ZfsArcMeter.h \
- 	zfs/ZfsCompressedArcMeter.h \
-@@ -59,7 +60,7 @@ all_platform_headers += $(linux_platform_headers)
- if HTOP_LINUX
- AM_LDFLAGS += -rdynamic
- myhtopplatsources = linux/Platform.c linux/IOPriorityPanel.c linux/IOPriority.c \
--linux/LinuxProcess.c linux/LinuxProcessList.c linux/LinuxCRT.c linux/Battery.c \
-+linux/LinuxProcess.c linux/LinuxProcessList.c linux/LinuxCRT.c linux/Battery.c TemperatureMeter.c \
- linux/PressureStallMeter.c \
- zfs/ZfsArcMeter.c zfs/ZfsCompressedArcMeter.c zfs/ZfsArcStats.c
-
 diff --git a/linux/Platform.c b/linux/Platform.c
 index 0f59fed..49038b2 100644
 --- a/linux/Platform.c
@@ -232,7 +232,7 @@ index 0f59fed..49038b2 100644
  #include "zfs/ZfsCompressedArcMeter.h"
  #include "LinuxProcess.h"
 +#include "TemperatureMeter.h"
-
+ 
  #include <math.h>
  #include <assert.h>
 @@ -119,6 +120,7 @@ MeterClass* Platform_meterTypes[] = {
