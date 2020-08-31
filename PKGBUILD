@@ -2,7 +2,7 @@
 
 pkgbase=kubernetes
 pkgname=(kubelet kubeadm)
-pkgver=1.18.6
+pkgver=1.19.0
 pkgrel=1
 arch=('x86_64')
 url="http://kubernetes.io/"
@@ -15,7 +15,7 @@ source=("kubernetes-$pkgver.tar.gz::https://dl.k8s.io/v$pkgver/kubernetes-src.ta
 	"10-kubeadm.conf"
 	"50-kubeadm.conf")
 license=("Apache")
-sha512sums=('460551dcde2288a7f3b90ad0720cf479cd38d64e386fedf66d580c4cd547a0e1835437437bdfb8b28c6dd707164abf0ddf4ea761d9f110945b80800f71b953b0'
+sha512sums=('47d253e6eb1f6da730f4f3885e205e6bfde88ffe66d92915465108c9eaf8e3c5d1ef515f8bf804a726db057433ecd25008ecdef624ee68ad9c103d1c7a615aad'
             'bd8bfcb4de9866e1e61beb37d8caae5f553fb406744c62bee226033dde746c11b47a536b1557664fe7cacb0c702234e08561e7460426e25667fe7e1e9b913adc'
             'b9ca0db34fea67dfd0654e65d3898a72997b1360c1e802cab5adc4288199c1a08423f90751757af4a7f1ff5932bfd81d3e215ce9b9d3f4efa1c04a202228adc8'
             'b97703490fb00caf3eb7f670632a897209da344ce3b869f262c855ffe2dae8c11c1b25d5642019d0733c6ac975f451794e49ce27fca3d02611bf1de5f5fa56d6'
