@@ -15,7 +15,7 @@ _merge_requests_to_use=('1003' '1267' '1360' '1359') # safe pick
 
 pkgname=mutter-performance
 pkgver=3.36.5+10+g84512cb1f
-pkgrel=2
+pkgrel=3
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -31,8 +31,10 @@ replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
 _commit=84512cb1f36633d32418720e3608d01c6122ee26 # tags/3.36.5^10
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+	"fix_clutter_actor_set_allocation_spam.patch")
+sha256sums=('SKIP'
+            '9b2a5c4ab0e8c5e9a54fddc7461a85455055b175af9a7c89b0e16f30a939fa42')
 
 pkgver() {
   cd $pkgname
