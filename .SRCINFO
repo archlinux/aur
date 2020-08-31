@@ -1,0 +1,26 @@
+pkgbase = firefox-esr68-bin
+	pkgdesc = Standalone web browser from mozilla.org - Extended Support Release - Version 68
+	pkgver = 68.12.0
+	pkgrel = 1
+	url = http://www.mozilla.org/en-US/firefox/organizations/
+	install = firefox-esr68.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = gtk2
+	depends = gtk3
+	depends = libxt
+	depends = dbus-glib
+	depends = nss
+	provides = firefox=68
+	source = https://ftp.mozilla.org/pub/firefox/releases/68.12.0esr/linux-x86_64/en-US/firefox-68.12.0esr.tar.bz2
+	source = firefox-esr68.desktop
+	source = firefox-esr68-safe.desktop
+	sha512sums = d71d18a430c3deda64533d7330974c90355bd25fda774b4267dabeb5ce54d6a9056f236abfbe99eb66ed0290eda5e45a6772110e7d283593fd66e950fc8f2277
+	sha512sums = 1566a237a5ff457d26107ee8fd02687434b55b4083e677a59ddc560bc67517270de09b180d916f5a8e38bd05525b54b9917775580db0263bc4f534805577da94
+	sha512sums = 74108af04676ecb31cf4c9c92db28ce7431b5bcea661999d078dfce1368aa7acc5f058c72e33ef7ca0537ed23ce80772d8d8adc431fca86fcd876f8d8ba2704d
+
+pkgname = firefox-esr68-bin
+
