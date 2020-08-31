@@ -1,0 +1,18 @@
+pkgbase = arch-hs-git
+	pkgdesc = Generating PKGBUILD for hackage packages.
+	pkgver = r17.2ea4a7b
+	pkgrel = 1
+	url = https://github.com/berberman/arch-hs
+	arch = x86_64
+	license = MIT
+	makedepends = stack
+	makedepends = git
+	depends = zlib
+	depends = gmp
+	provides = arch-hs
+	conflicts = arch-hs
+	source = arch-hs::git+https://github.com/berberman/arch-hs.git
+	md5sums = SKIP
+
+pkgname = arch-hs-git
+
