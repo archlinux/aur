@@ -3,15 +3,15 @@
 
 _pkgname=dateutils
 pkgname=python-$_pkgname
-pkgver=0.6.8
-pkgrel=2
+pkgver=0.6.10
+pkgrel=1
 pkgdesc="Utilities for working with datetime objects."
 arch=('any')
 url="https://github.com/plytophogy/python-dateutils"
 license=('Unlicense')
 depends=('python-dateutil' 'python-argparse' 'python-pytz')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('15e564d9cd34e4260cf96625a3249c938c3aada2e5eaddf8218dd3fbc8dbdba4')
+sha256sums=('860b3e40261085f56928f1454ee4d221856b56aa421c69a7df12067596ec0b26')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
