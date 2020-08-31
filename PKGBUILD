@@ -2,7 +2,7 @@
 
 _pkgname=platypush
 pkgname=${_pkgname}-git
-pkgver=0.13.4.r0.3c3ee09d
+pkgver=0.13.4.r0.dc1b5496
 pkgrel=1
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('python-paho-mqtt: MQTT integrations support'
 conflicts=('platypush')
 options=(!strip)
 source=("${_pkgname}.tar.gz::https://github.com/BlackLight/${_pkgname}/archive/master.tar.gz")
-sha512sums=('35a0b57f1c540ac495b1ccba5c164aab4125979acc559b3b722e8f7e9abe0240ba8dba99dde1c2d72acbcd009e9ec11e1c80451cec792d060f327fce27a36805')
+sha512sums=('f5dad1465c06c00bd46116861127441ee02c40baf6d9ebc256b331b981acf65b0078b5b45c76a5db269d520809930c84be58e5ded37bec562b55238e620f68bf')
 
 package() {
     cd "${srcdir}/${_pkgname}-master"
