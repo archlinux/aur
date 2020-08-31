@@ -6,10 +6,10 @@ pkgbase = cecilia-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = python
-	depends = python-pyo>=1.0.1
+	depends = python>=3.6.0
+	depends = python-pyo
 	depends = python-numpy>=1.18
-	depends = python-wxpython>=4.0.7
+	depends = python-wxpython
 	provides = cecilia
 	conflicts = cecilia
 	source = cecilia-git::git+https://github.com/belangeo/cecilia5
