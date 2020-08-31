@@ -2,7 +2,7 @@
 
 pkgname=python-dnspython-git
 _pkgname=dnspython
-pkgver=v2.0.0rc2.r28.a7e71aa
+pkgver=v2.0.0.r195.674cdfc
 pkgrel=1
 pkgdesc="A DNS toolkit for Python"
 arch=('any')
@@ -12,6 +12,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 makedepends=(
     'python-setuptools'
+    'python-pytest'
     # 'cython'  # uncomment dep & build option for cython optimization speedup
 )
 checkdepends=('python-idna' 'python-cryptography' 'python-trio')

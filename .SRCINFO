@@ -1,6 +1,6 @@
 pkgbase = python-dnspython-git
 	pkgdesc = A DNS toolkit for Python
-	pkgver = v2.0.0rc2.r28.a7e71aa
+	pkgver = v2.0.0.r195.674cdfc
 	pkgrel = 1
 	url = http://www.dnspython.org
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = python-dnspython-git
 	checkdepends = python-cryptography
 	checkdepends = python-trio
 	makedepends = python-setuptools
+	makedepends = python-pytest
 	depends = python
 	optdepends = python-idna: support for update IDNA 2008
 	optdepends = python-cryptography: DNSSEC support
