@@ -1,20 +1,15 @@
 pkgbase = otf-manjari
 	pkgdesc = Malayalam unicode font with rounded terminals suitable for body text.
-	pkgver = 1.810
+	pkgver = 1.910
 	pkgrel = 1
-	url = http://smc.org.in/fonts/
-	install = otf-malayalam-fonts.install
+	url = https://releases.smc.org.in/fonts/manjari/
 	arch = any
-	license = OFL1.1
-	depends = fontconfig
-	conflicts = ttf-malayalam-font-manjari
-	source = https://smc.org.in/downloads/fonts/manjari/Manjari-Regular.otf
-	source = https://smc.org.in/downloads/fonts/manjari/Manjari-Thin.otf
-	source = https://smc.org.in/downloads/fonts/manjari/Manjari-Bold.otf
+	license = OFL
+	source = https://releases.smc.org.in/fonts/manjari//Version1.910/manjari-Version1.910.zip
+	source = https://gitlab.com/smc/fonts/manjari/-/raw/master/LICENSE.txt
 	source = 67-smc-manjari.conf
-	sha256sums = ddac452bfd3b54c0872b3715d63ac5f450432150e36e0f407521b84d1503a8ca
-	sha256sums = 3f2e8661bb161ab003b98c7b89b57d3935463c73bc8ace005228e22bed0ec011
-	sha256sums = 046d68563149702edc2f3a97d8dc927589c88a63e404b4836ac9ad208aea3f41
+	sha256sums = 2d0b8bd1d2df01cfa0db8dde27ad0b050f112fbd9d4a453fa6f0f378b833a3e1
+	sha256sums = 3ff5ecb5ffbfe008bcc1e2861f2124aabd5571ad1ae9badc245a4e383727ccd2
 	sha256sums = 9db802bf36c46debd96e9d63a152d8baf0a788e88e8675991ea2802706545780
 
 pkgname = otf-manjari
