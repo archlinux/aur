@@ -4,7 +4,7 @@ pkgrel=4
 arch=('i686' 'x86_64')
 license=('GPL')
 pkgdesc='Synchronizing OpenPGP Key Server'
-makedepends=('ocaml<4.06' 'db<5.4' 'camlp4<4.06')
+makedepends=('ocaml<4.06' 'db' 'camlp4<4.06')
 url='https://bitbucket.org/skskeyserver/sks-keyserver/'
 install='sks.install'
 backup=('etc/sks/sksconf'
@@ -14,7 +14,7 @@ backup=('etc/sks/sksconf'
         'etc/sks/membership'
         'etc/sks/procmail')
 source=(
-  https://bitbucket.org/skskeyserver/sks-keyserver/downloads/${pkgname}-${pkgver}.tgz{,.asc}
+  https://github.com/SKS-Keyserver/sks-keyserver/releases/download/${pkgver}/${pkgname}-${pkgver}.tgz{,.asc}
   '500_debian_fhs.patch'
   'sks-db.service'
   'sks-recon.service'
