@@ -1,6 +1,6 @@
 pkgbase = sm64ex-nightly-git
 	pkgdesc = Nightly branch of sm64ex with 60fps patch. PKGBUILD based on sm64pc-git.
-	pkgver = r563.417d59e7
+	pkgver = r573.dd0e86db
 	pkgrel = 1
 	url = https://github.com/sm64pc/sm64ex
 	arch = any
