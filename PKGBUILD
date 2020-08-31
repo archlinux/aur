@@ -1,4 +1,5 @@
 # Maintainer: Pedro H Lara Campos <root@pedrohlc.com>
+# Contributor: Ben Morgan (@cassava)
 # Contributor: bartus <szczepaniak.bartek+github@gmail.com>
 # Contributor: Mark Wagie <mark.wagie@tutanota.com>
 # Contributor: Alad Wenter <alad@mailbox.org>
@@ -12,7 +13,6 @@ url="https://github.com/cassava/repoctl"
 license=('MIT')
 depends=('pacman')
 makedepends=('go-pie' 'git')
-options=()
 source=("${_pkgname}::git+https://github.com/cassava/repoctl.git#branch=devel")
 md5sums=('SKIP')
 provides=('repoctl')
@@ -27,7 +27,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
   export GOPATH="$srcdir"
   go build
 }
