@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Music
+Exec=/opt/Music/music %U
+Terminal=false
+Type=Application
+Icon=music
+StartupWMClass=Music
+Comment=A syncable music player to download and listen to music
+Categories=Utility;
+
