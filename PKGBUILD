@@ -2,7 +2,7 @@
 # vim: set ts=2 sw=2:
 pkgname=repoctl
 pkgver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="An AUR helper that also simplifies managing local Pacman repositories"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/cassava/repoctl"
@@ -14,10 +14,18 @@ source=(https://github.com/cassava/repoctl/releases/download/v${pkgver}/repoctl-
 md5sums=('99e172a3734a0269435710adaf449f3e')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-  # Build repoctl binary
-  go build -o repoctl
+  # Respect system build options
+  export GOPATH="${srcdir}/gopath"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=vendor -modcacherw"
+
+  # Build the binary
+  go build -v -o "${pkgname}"
 
   # Generate the completion files
   ./repoctl completion zsh > completion.zsh
@@ -25,8 +33,13 @@ build() {
   ./repoctl completion fish > completion.fish
 }
 
+check() {
+  cd "$pkgname-$pkgver"
+  go test ./...
+}
+
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   # Install repoctl program
   install -Dm755 repoctl "${pkgdir}/usr/bin/repoctl"
@@ -41,3 +54,4 @@ package() {
   install -Dm644 completion.bash "${pkgdir}/usr/share/bash-completion/completions/repoctl"
   install -Dm644 completion.fish "${pkgdir}/usr/share/fish/vendor_completions.d/repoctl.fish"
 }
+
