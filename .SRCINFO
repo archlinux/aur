@@ -1,0 +1,15 @@
+pkgbase = python-einsteinpy_geodesics-doc
+	pkgdesc = Documentation for EinsteinPy Geodesics
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://docs.geodesics.einsteinpy.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python-einsteinpy_geodesics=0.1.0
+	makedepends = python-sphinx
+	source = https://github.com/einsteinpy/einsteinpy-geodesics/archive/v0.1.0.tar.gz
+	md5sums = 5c43ab1cd6ebeef77cf156bd098abe03
+
+pkgname = python-einsteinpy_geodesics-doc
+
