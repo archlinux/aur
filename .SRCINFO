@@ -13,6 +13,7 @@ pkgbase = music-git
 	source = git+https://github.com/lutetium-vanadium/music-vue.git
 	source = music.desktop
 	md5sums = SKIP
+	md5sums = 896d84073985bbbfdcf67ce5110bd933
 
 pkgname = music-git
 
