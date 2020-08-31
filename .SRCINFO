@@ -1,11 +1,11 @@
 pkgbase = consolas-font
 	pkgdesc = Consolas font
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	install = consolas-font.install
 	arch = any
 	depends = fontconfig
-	depends = xorg-font-utils
+	depends = xorg-font-util
 	source = https://github.com/pensnarik/consolas-font/raw/master/consolas-fonts-tts.tar.bz2
 	md5sums = 728dfa03f8d86ef82a31d145b42a32c7
 

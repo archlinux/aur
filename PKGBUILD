@@ -2,7 +2,7 @@
 
 pkgname=consolas-font
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Consolas font"
 arch=(any)
 depends=(fontconfig xorg-font-util)
