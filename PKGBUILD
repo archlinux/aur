@@ -6,7 +6,7 @@
 _pkgname=servicewall
 pkgname=servicewall-git
 pkgdesc="The firewall that remembers the different networks you connect to."
-pkgver=0.4.3.r5.791d5c4
+pkgver=0.4.4.r1.ccec359
 pkgrel=1
 arch=("any")
 url="https://github.com/lafleurdeboum/servicewall"
@@ -25,7 +25,6 @@ makedepends=("python-distribute" "python-setuptools" "git")
 install=servicewall.install
 backup=(
     "etc/servicewall/realms.json"
-    "etc/servicewall/config.json"
 )
 
 # Sources for git repos :
