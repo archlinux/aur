@@ -1,0 +1,16 @@
+pkgbase = gitlab-glab-git
+	pkgdesc = An open source GitLab CLI tool written in Go
+	pkgver = v1.10.0.r20.ge626fce
+	pkgrel = 1
+	url = https://github.com/profclems/glab
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = gitlab-glab
+	conflicts = gitlab-glab
+	source = git+https://github.com/profclems/glab.git
+	md5sums = SKIP
+
+pkgname = gitlab-glab-git
+
