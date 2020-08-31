@@ -1,0 +1,16 @@
+pkgbase = diskonaut-git
+	pkgdesc = Terminal disk space navigator
+	pkgver = 0.9.0.r1.ged3e92e
+	pkgrel = 1
+	url = https://github.com/imsnif/diskonaut
+	arch = x86_64
+	license = MIT
+	checkdepends = cargo
+	makedepends = cargo
+	makedepends = git
+	provides = diskonaut
+	source = git+https://github.com/imsnif/diskonaut.git
+	sha256sums = SKIP
+
+pkgname = diskonaut-git
+
