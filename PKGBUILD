@@ -4,7 +4,7 @@
 # Contributor: midgard <arch dot midgard "at symbol" janmaes "youknowwhat" com>
 
 pkgname=libdart
-pkgver=6.9.3
+pkgver=6.9.4
 pkgrel=1
 pkgdesc="Dynamic Animation and Robotics Toolkit"
 arch=('i686' 'x86_64')
@@ -25,41 +25,27 @@ optdepends=('bullet: Bullet collision detection support'
             'libxi: GLUT GUI support'
             'libxmu: GLUT GUI support')
 makedepends=('cmake')
-_name=dart
-source=(https://github.com/dartsim/${_name}/archive/v${pkgver}.tar.gz)
-sha256sums=('a4f1e7494b7a8d565f43de94f5a790fd6839e396edb4f96850073afb37f245d7')
+provides=('dartsim')
+_pkgname=dart
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dartsim/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('aefa13b9cb1c968373faa976288f29fde4d94110125ab14b4707c2e0c7280443')
 
 _buildtype="Release"
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
-
-    msg "Starting CMake (build type: ${_buildtype})"
-
-    # Create a build directory
-    mkdir -p "${srcdir}/${_name}-${pkgver}/build"
-    cd "${srcdir}/${_name}-${pkgver}/build"
+    mkdir -p "${srcdir}/${_pkgname}-${pkgver}/build"
+    cd "${srcdir}/${_pkgname}-${pkgver}/build"
 
     cmake .. \
         -DCMAKE_BUILD_TYPE="${_buildtype}" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_INSTALL_LIBDIR="lib" \
 
-    msg "Building the project"
     make
 }
 
-#check() {
-#	cd "${srcdir}/${_name}-${pkgver}/build"
-#	msg "Compiling unit tests"
-#	make tests
-#	msg "Running unit tests"
-#	make test
-#}
-
 package() {
-    cd "${srcdir}/${_name}-${pkgver}/build"
+    cd "${srcdir}/${_pkgname}-${pkgver}/build"
 
-    msg "Installing files"
     make DESTDIR="${pkgdir}/" install
 }
