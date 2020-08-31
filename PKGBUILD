@@ -2,14 +2,14 @@
 
 _pkgname=poweralertd
 pkgname=${_pkgname}-git
-pkgver=r25.38401ca
-pkgrel=1
+pkgver=r26.5d346a8
+pkgrel=2
 pkgdesc="Power alert notifications daemon"
 arch=('i686' 'x86_64')
 url='https://kl.wtf/projects/poweralertd'
 license=('GPL3')
 makedepends=('git' 'meson' 'scdoc')
-depends=('systemd-libs')
+depends=('systemd-libs' 'upower')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://git.sr.ht/~kennylevinsen/$_pkgname")
@@ -31,4 +31,3 @@ package() {
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
   install -m 0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/
 }
-
