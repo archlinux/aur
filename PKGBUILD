@@ -2,17 +2,17 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=crusta
-_pkgname=CrustaBrowser
+_pkgname=Crusta
 pkgver=1.4.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Blazingly fast full feature web browser with unique features"
 arch=('x86_64')
 url="https://github.com/Crusta/CrustaBrowser"
 license=('GPL3')
 depends=('qt5-speech' 'qt5-svg' 'qt5-webengine')
 makedepends=('qt5-charts')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgname//c/C/}/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('5181bc8f3677fa31ebf312744577f679e385ad60e88069eed6f45fe774e1f548')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgname//c/C/}Browser/${_pkgname}Browser/archive/$pkgver.tar.gz")
+sha256sums=('9ceb3682724226843386d70fa157ab917a2bb17db7da045f524f09f7dc7caf69')
 
 prepare() {
   cd $_pkgname-$pkgver
