@@ -1,6 +1,6 @@
 pkgbase = vkquake2
 	pkgdesc = id Software's Quake 2 v3.21 with Vulkan support
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/kondrak/vkQuake2
 	install = vkquake2.install
@@ -13,10 +13,10 @@ pkgbase = vkquake2
 	depends = libxxf86vm
 	depends = xdg-utils
 	depends = vulkan-icd-loader
-	source = https://github.com/kondrak/vkQuake2/archive/1.5.2.tar.gz
+	source = https://github.com/kondrak/vkQuake2/archive/1.5.3.tar.gz
 	source = quake2.png
 	source = vkquake2.desktop
-	sha256sums = 63ddab5d284ed2d0ec59b5116e6613b5765959a48a51f6a36041e705219b3192
+	sha256sums = c21ec1962121dc8abc01ecb74fe454081018e45abe2c250a204ed1b6bf186455
 	sha256sums = f7ca0b94414770903248c193a28e4c3e0d25faf31aab53e86001395f5526e4f6
 	sha256sums = 6c7a493f782e8bf4e9b79f0654054207f4d11c36f4cea217dd2295a1297ff27b
 
