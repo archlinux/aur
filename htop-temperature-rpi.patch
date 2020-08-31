@@ -1,8 +1,8 @@
 diff --git a/CRT.c b/CRT.c
-index ca9a10d..c4f1e50 100644
+index 869573e..e6b8a75 100644
 --- a/CRT.c
 +++ b/CRT.c
-@@ -88,6 +88,9 @@ typedef enum ColorElements_ {
+@@ -101,6 +101,9 @@ typedef enum ColorElements_ {
     UPTIME,
     BATTERY,
     TASKS_RUNNING,
@@ -12,7 +12,7 @@ index ca9a10d..c4f1e50 100644
     SWAP,
     PROCESS,
     PROCESS_SHADOW,
-@@ -192,6 +195,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -240,6 +243,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
        [METER_VALUE] = A_BOLD | ColorPair(Cyan,Black),
        [LED_COLOR] = ColorPair(Green,Black),
        [TASKS_RUNNING] = A_BOLD | ColorPair(Green,Black),
@@ -22,7 +22,7 @@ index ca9a10d..c4f1e50 100644
        [PROCESS] = A_NORMAL,
        [PROCESS_SHADOW] = A_BOLD | ColorPairGrayBlack,
        [PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Black),
-@@ -251,6 +257,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -308,6 +314,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
        [METER_VALUE] = A_BOLD,
        [LED_COLOR] = A_NORMAL,
        [TASKS_RUNNING] = A_BOLD,
@@ -32,7 +32,7 @@ index ca9a10d..c4f1e50 100644
        [PROCESS] = A_NORMAL,
        [PROCESS_SHADOW] = A_DIM,
        [PROCESS_TAG] = A_BOLD,
-@@ -310,6 +319,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -376,6 +385,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
        [METER_VALUE] = ColorPair(Black,White),
        [LED_COLOR] = ColorPair(Green,White),
        [TASKS_RUNNING] = ColorPair(Green,White),
@@ -42,7 +42,7 @@ index ca9a10d..c4f1e50 100644
        [PROCESS] = ColorPair(Black,White),
        [PROCESS_SHADOW] = A_BOLD | ColorPair(Black,White),
        [PROCESS_TAG] = ColorPair(White,Blue),
-@@ -369,6 +381,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -444,6 +456,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
        [METER_VALUE] = ColorPair(Black,Black),
        [LED_COLOR] = ColorPair(Green,Black),
        [TASKS_RUNNING] = ColorPair(Green,Black),
@@ -52,7 +52,7 @@ index ca9a10d..c4f1e50 100644
        [PROCESS] = ColorPair(Black,Black),
        [PROCESS_SHADOW] = A_BOLD | ColorPairGrayBlack,
        [PROCESS_TAG] = ColorPair(White,Blue),
-@@ -428,6 +443,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -512,6 +527,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
        [METER_VALUE] = A_BOLD | ColorPair(Cyan,Blue),
        [LED_COLOR] = ColorPair(Green,Blue),
        [TASKS_RUNNING] = A_BOLD | ColorPair(Green,Blue),
@@ -62,7 +62,7 @@ index ca9a10d..c4f1e50 100644
        [PROCESS] = ColorPair(White,Blue),
        [PROCESS_SHADOW] = A_BOLD | ColorPair(Black,Blue),
        [PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Blue),
-@@ -487,6 +505,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -580,6 +598,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
        [METER_VALUE] = ColorPair(Green,Black),
        [LED_COLOR] = ColorPair(Green,Black),
        [TASKS_RUNNING] = A_BOLD | ColorPair(Green,Black),
@@ -73,10 +73,10 @@ index ca9a10d..c4f1e50 100644
        [PROCESS_SHADOW] = A_BOLD | ColorPairGrayBlack,
        [PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Black),
 diff --git a/CRT.h b/CRT.h
-index 933fe06..29ea885 100644
+index 5fb2f09..fc40b2a 100644
 --- a/CRT.h
 +++ b/CRT.h
-@@ -76,6 +76,9 @@ typedef enum ColorElements_ {
+@@ -89,6 +89,9 @@ typedef enum ColorElements_ {
     UPTIME,
     BATTERY,
     TASKS_RUNNING,
@@ -86,34 +86,12 @@ index 933fe06..29ea885 100644
     SWAP,
     PROCESS,
     PROCESS_SHADOW,
-diff --git a/Makefile.am b/Makefile.am
-index 7d19600..faeb318 100644
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -48,14 +48,15 @@ linux_platform_headers = \
- 	linux/LinuxProcess.h \
- 	linux/LinuxProcessList.h \
- 	linux/LinuxCRT.h \
--	linux/Battery.h
-+	linux/Battery.h \
-+	TemperatureMeter.h
- 
- all_platform_headers += $(linux_platform_headers)
- 
- if HTOP_LINUX
- AM_CFLAGS += -rdynamic
- myhtopplatsources = linux/Platform.c linux/IOPriorityPanel.c linux/IOPriority.c \
--linux/LinuxProcess.c linux/LinuxProcessList.c linux/LinuxCRT.c linux/Battery.c
-+linux/LinuxProcess.c linux/LinuxProcessList.c linux/LinuxCRT.c linux/Battery.c TemperatureMeter.c
- 
- myhtopplatheaders = $(linux_platform_headers)
- endif
 diff --git a/TemperatureMeter.c b/TemperatureMeter.c
 new file mode 100644
-index 0000000..872b92c
+index 0000000..9ee9185
 --- /dev/null
 +++ b/TemperatureMeter.c
-@@ -0,0 +1,85 @@
+@@ -0,0 +1,100 @@
 +/*
 +htop - TemperatureMeter.c
 +(C) 2013 Ralf Stemmer
@@ -224,19 +202,40 @@ index 0000000..b86ddd8
 +extern MeterClass TemperatureMeter_class;
 +
 +#endif
+diff --git a/Makefile.am b/Makefile.am
+index d455b4d..2f6dd75 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -49,6 +49,7 @@ linux_platform_headers = \
+ 	linux/LinuxProcessList.h \
+ 	linux/LinuxCRT.h \
+ 	linux/Battery.h \
++	TemperatureMeter.h \
+ 	linux/PressureStallMeter.h \
+ 	zfs/ZfsArcMeter.h \
+ 	zfs/ZfsCompressedArcMeter.h \
+@@ -59,7 +60,7 @@ all_platform_headers += $(linux_platform_headers)
+ if HTOP_LINUX
+ AM_LDFLAGS += -rdynamic
+ myhtopplatsources = linux/Platform.c linux/IOPriorityPanel.c linux/IOPriority.c \
+-linux/LinuxProcess.c linux/LinuxProcessList.c linux/LinuxCRT.c linux/Battery.c \
++linux/LinuxProcess.c linux/LinuxProcessList.c linux/LinuxCRT.c linux/Battery.c TemperatureMeter.c \
+ linux/PressureStallMeter.c \
+ zfs/ZfsArcMeter.c zfs/ZfsCompressedArcMeter.c zfs/ZfsArcStats.c
+
 diff --git a/linux/Platform.c b/linux/Platform.c
-index ab90ca7..c52ed3e 100644
+index 0f59fed..49038b2 100644
 --- a/linux/Platform.c
 +++ b/linux/Platform.c
-@@ -22,6 +22,7 @@ in the source distribution for its full text.
- #include "ClockMeter.h"
- #include "HostnameMeter.h"
+@@ -25,6 +25,7 @@ in the source distribution for its full text.
+ #include "zfs/ZfsArcMeter.h"
+ #include "zfs/ZfsCompressedArcMeter.h"
  #include "LinuxProcess.h"
 +#include "TemperatureMeter.h"
- 
+
  #include <math.h>
  #include <assert.h>
-@@ -116,6 +117,7 @@ MeterClass* Platform_meterTypes[] = {
+@@ -119,6 +120,7 @@ MeterClass* Platform_meterTypes[] = {
     &MemoryMeter_class,
     &SwapMeter_class,
     &TasksMeter_class,
