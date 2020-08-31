@@ -1,6 +1,6 @@
 pkgbase = xrandr-watch-git
 	pkgdesc = xrandr event watcher
-	pkgver = r9.655b260
+	pkgver = r12.b6940ea
 	pkgrel = 1
 	url = https://github.com/pastleo/xrandr-watcher
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: PastLeo <chgu82837@gmail.com>
 pkgname=xrandr-watch-git
-pkgver=r9.655b260
+pkgver=r12.b6940ea
 pkgrel=1
 pkgdesc="xrandr event watcher"
 arch=('x86_64')
