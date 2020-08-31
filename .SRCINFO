@@ -7,8 +7,8 @@ pkgbase = rust_ledger-bin
 	license = GPL-3.0
 	provides = rust_ledger
 	options = strip
-	source = https://github.com/ebcrowder/rust_ledger/releases/download/v0.4.0/rust_ledger-0.4.0-x86_64.tar.gz
-	sha256sums = d7c137e88ea806f8e4ace3c9f75e1101a114701f880ba52a77c539259903d913
+	source = https://github.com/ebcrowder/rust_ledger/releases/download/v0.4.0/rust_ledger-v0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 6ad63dac12d587e8333ec2624aca364db835037c6c42304058dfa0bde5f76503
 
 pkgname = rust_ledger-bin
 
