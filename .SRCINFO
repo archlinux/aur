@@ -19,7 +19,7 @@ pkgbase = servicewall-git
 	optdepends = networkd-dispatcher
 	optdepends = networkmanager
 	backup = etc/servicewall/realms.json
-	source = servicewall::git://localhost/#branch=master
+	source = servicewall::git+https://github.com/lafleurdeboum/servicewall.git
 	md5sums = SKIP
 
 pkgname = servicewall-git
