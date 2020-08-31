@@ -1,0 +1,15 @@
+pkgbase = sg-sprite
+	pkgdesc = Sprite/character (.lay files) decoder for MAGES. engine (Steins;Gate 0, Chaos;Child, Steins;Gate Steam Edition, etc)
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/AbsurdlySuspicious/sg-sprite
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	source = 0.3.1.tar.gz::https://github.com/AbsurdlySuspicious/sg-sprite/archive/0.3.1.tar.gz
+	sha256sums = db26a2a9464c73fad4bab412241ba43784e9ba4044c1ef287cccca5449d26543
+
+pkgname = sg-sprite
+
