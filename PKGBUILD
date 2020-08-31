@@ -6,7 +6,7 @@ url='https://github.com/ros-controls/ros_controllers/wiki'
 pkgname='ros-melodic-joint-trajectory-controller'
 pkgver='0.17.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -73,6 +73,7 @@ build() {
   cmake ${srcdir}/${_dir} \
           -DCMAKE_BUILD_TYPE=Release \
           -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+          -DCATKIN_ENABLE_TESTING=0 \
           -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
           -DPYTHON_EXECUTABLE=/usr/bin/python3 \
           -DSETUPTOOLS_DEB_LAYOUT=OFF
