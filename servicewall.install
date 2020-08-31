@@ -1,21 +1,24 @@
-## arg 1:  the new package version
+## $1:  the new package version
 post_install() {
     braise status | grep -q "enabled" || (
-        echo "To enable ServiceWall, issue a\n\t# braise enable"
+        echo -e "To enable ServiceWall, run a\n\t# systemctl enable servicewall";
     )
+    echo -e "If you installed python-argcomplete, you should run\n\t# activate-global-python-argcomplete"
 }
 
-## arg 1:  the new package version
-## arg 2:  the old package version
+## $1:  the new package version
+## $2:  the old package version
 post_upgrade() {
-    braise status | grep -q "enabled" && (
+    # If ServiceWall is not disabled :
+    braise status | grep -q "disabled" || (
         echo "reloading ServiceWall";
-        braise reload
+        braise reload;
     )
 }
 
 ## arg 1:  the old package version
 pre_remove() {
     echo "disabling ServiceWall";
-    braise disable
+    braise disable;
 }
+

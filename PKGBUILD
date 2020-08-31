@@ -31,7 +31,9 @@ makedepends=(
         "git"
         )
 install=servicewall.install
-backup=("etc/servicewall/realms.json" "etc/servicewall/config.json")
+backup=(
+    "etc/servicewall/realms.json"
+)
 
 # Sources for git repos :
 source=("${pkgname%-git}::git+https://github.com/lafleurdeboum/${_pkgname}.git")
@@ -61,3 +63,4 @@ package() {
   cd "${srcdir}/${pkgname%-git}"
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }
+
