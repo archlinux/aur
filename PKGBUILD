@@ -2,14 +2,14 @@
 pkgbase=python-einsteinpy-git
 _gitname=einsteinpy
 pkgname=("python-${_gitname}-git" "python-${_gitname}-doc-git")
-pkgver=0.1.0.r622.g56cd2fa
+pkgver=0.1.0.r635.gd81f2da
 pkgrel=1
 pkgdesc="Python package for General Relativity"
 arch=('i686' 'x86_64')
-url="https://einsteinpy.org/"
+url="https://einsteinpy.org"
 license=('MIT')
 makedepends=('git' 'python-setuptools' 'python-nbsphinx' 'pandoc' 'graphviz')
-checkdepends=('python-pytest' 'python-matplotlib' 'python-sympy' 'python-plotly' 'python-astropy' 'python-numba')
+checkdepends=('python-pytest' 'python-matplotlib' 'python-sympy' 'python-plotly' 'python-astropy' 'python-numba' 'python-einsteinpy_geodesics')
 source=("git+https://github.com/einsteinpy/einsteinpy")
 md5sums=('SKIP')
 
@@ -44,7 +44,7 @@ package_python-einsteinpy-git() {
     cd ${srcdir}/${_gitname}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" COPYING
-    install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -D -m644 README.rst *.ipynb -t "${pkgdir}/usr/share/doc/${pkgname}"
     python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
 }
 
