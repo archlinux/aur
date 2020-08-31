@@ -17,9 +17,9 @@ url="https://www.mozilla.org/firefox/"
 depends=(gtk3 mozilla-common libxt mime-types dbus-glib
          ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
          libvpx libjpeg zlib icu libevent libpipewire02)
-makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
+makedepends=(unzip zip diffutils python-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen nasm libpipewire02 lld)
+             python nodejs python-psutil cbindgen nasm libpipewire02 lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'xdg-desktop-portal: Required for screen sharing'
