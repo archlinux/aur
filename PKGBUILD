@@ -1,15 +1,15 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='cecilia'
 _reponame="${pkgname}5"
-pkgver='5.4.0'
-pkgrel='3'
+pkgver='5.4.1'
+pkgrel='1'
 pkgdesc='Audio signal processing environment aimed at sound designers'
 arch=('any')
 url="http://ajaxsoundstudio.com/software/$pkgname"
 license=('GPL3')
-depends=('python' 'python-pyo>=1.0.1' 'python-numpy>=1.18' 'python-wxpython>=4.0.7')
+depends=('python>=3.6.0' 'python-pyo' 'python-numpy>=1.18' 'python-wxpython')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/belangeo/$_reponame/archive/$pkgver.tar.gz")
-sha256sums=('00c43539da73af982b136ab5ea6809ac9bb74188b05eb40d13428d13fe2ebef0')
+sha256sums=('66063803e3f4935febabd975eca77b4dea17329ded939d72ab5bd5a53205b4fd')
 
 package() {
 	cd "$srcdir/$_reponame-$pkgver/"
