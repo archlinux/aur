@@ -1,6 +1,6 @@
 pkgbase = tada-runner-generator
 	pkgdesc = tada-runer-generator
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	arch = i686
 	arch = x86_64

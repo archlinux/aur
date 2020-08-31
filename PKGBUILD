@@ -2,7 +2,7 @@
 
 pkgname=tada-runner-generator
 _pkgname=tada-runner-generator
-pkgver=${PKGVER:-0.0.2}
+pkgver=${PKGVER:-0.0.3}
 pkgrel=${PKGREL:-1}
 pkgdesc="tada-runer-generator"
 arch=('i686' 'x86_64')
