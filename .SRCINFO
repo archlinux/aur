@@ -1,6 +1,6 @@
 pkgbase = atlantic-dkms
 	pkgdesc = aquantia multigigabit nic driver - "development preview"
-	pkgver = 2.3.1
+	pkgver = 2.4.7
 	pkgrel = 1
 	url = https://github.com/Aquantia/AQtion
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = atlantic-dkms
 	makedepends = linux-headers
 	depends = dkms
 	conflicts = atlantic
-	source = https://github.com/Aquantia/AQtion/archive/3c2a2a3abe3df6cb0c985a49cea9a359a83e3f75.tar.gz
-	md5sums = 2a916d439a8171878d5cc85a1810d160
+	source = https://github.com/Aquantia/AQtion/archive/37bd5ccd73ad4baff488c1d728eb8a819a7eef1f.tar.gz
+	md5sums = e3ffde60633b0da60f58ec543da77acf
 
 pkgname = atlantic-dkms
 

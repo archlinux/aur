@@ -1,6 +1,6 @@
 _pkgbase=atlantic
 pkgname="${_pkgbase}-dkms"
-pkgver=2.3.1
+pkgver=2.4.7
 pkgrel=1
 pkgdesc="aquantia multigigabit nic driver - \"development preview\""
 url="https://github.com/Aquantia/AQtion"
@@ -9,9 +9,9 @@ license=('GPLv2')
 depends=('dkms')
 makedepends=('linux-headers')
 conflicts=("${_pkgbase}")
-commit="3c2a2a3abe3df6cb0c985a49cea9a359a83e3f75"
+commit="37bd5ccd73ad4baff488c1d728eb8a819a7eef1f"
 source=("https://github.com/Aquantia/AQtion/archive/$commit.tar.gz")
-md5sums=('2a916d439a8171878d5cc85a1810d160')
+md5sums=('e3ffde60633b0da60f58ec543da77acf')
 
 build() {
   cd "${srcdir}/AQtion-${commit}"
