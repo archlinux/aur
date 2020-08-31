@@ -4,31 +4,30 @@
 # his PKGBUILD that served as a base for this one
 
 pkgname=python-foolbox-git
+_name=foolbox
 pkgdesc="Toolbox to create adversarial examples that fool neural networks in PyTorch, TensorFlow, Keras,"
-pkgver=v2.0.0b0.r8.g4ffc9fc
+pkgver=3.1.1.r0.gef30f7f
 pkgrel=1
 arch=(any)
 url='https://github.com/bethgelab/foolbox'
 license=(MIT)
 provides=('python-foolbox')
 conflicts=('python-foolbox')
-optdepends=('python-pytorch: PyTorch functionality' 'python-tensorflow: TensorFlow functionality' 'python-keras: Keras functionality')
-depends=('python-numpy' 'python-scipy' 'python-gitpython' 'python-requests')
+depends=('python-numpy' 'python-scipy' 'python-gitpython' 'python-requests' 'python-eagerpy')
 makedepends=(
   'python-setuptools' 'git'
 )
 options=(!emptydirs)
-source=("git+https://github.com/bethgelab/foolbox.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd foolbox
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $_name
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
 package() {
-  cd "${srcdir}/foolbox"
+  cd "${srcdir}/$_name"
   python setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
