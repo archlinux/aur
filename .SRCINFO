@@ -1,0 +1,15 @@
+pkgbase = tapi-git
+	pkgdesc = Apple TAPI library
+	pkgver = r38.86f43cdb6
+	pkgrel = 1
+	url = https://github.com/tpoechtrager/apple-libtapi
+	arch = any
+	license = LLVM
+	makedepends = git
+	makedepends = python
+	makedepends = cmake
+	source = tapi-git::git+https://github.com/tpoechtrager/apple-libtapi.git
+	sha512sums = SKIP
+
+pkgname = tapi-git
+
