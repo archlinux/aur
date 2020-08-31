@@ -1,0 +1,15 @@
+[Unit]
+Description=A simple Java blogging program 
+After=network.target network-online.target
+
+[Service]
+User=nobody
+Group=nobody
+EnvironmentFile=/etc/hydrolog/hydrolog.conf
+ExecStart=/usr/bin/java -Djava.library.path=/usr/share/java/hydrolog/ -jar /usr/share/java/hydrolog/hydrolog.jar
+KillMode=mixed
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

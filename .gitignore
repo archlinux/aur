@@ -1,0 +1,7 @@
+*.zip
+LICENSE.txt
+*.zst
+src/
+pkg/
+hydrolog/
+hydrolog-git/

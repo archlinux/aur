@@ -1,0 +1,19 @@
+pkgbase = hydrolog-git
+	pkgdesc = A simple Java blogging program
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Segfault-Org/Hydrolog
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = java-runtime=8
+	backup = etc/hydrolog/
+	source = hydrolog-git::git+https://github.com/Segfault-Org/Hydrolog.git
+	source = hydrolog.conf
+	source = hydrolog.service
+	md5sums = SKIP
+	md5sums = c237ae4f0ad23fe37a5d7a41b7885eb6
+	md5sums = d0f7e82bb475bab616988b94a327fdd0
+
+pkgname = hydrolog-git
+
