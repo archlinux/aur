@@ -1,0 +1,23 @@
+pkgbase = dialect-git
+	pkgdesc = A translation app for GTK environments based on Google Translate
+	pkgver = r108.7c83f26
+	pkgrel = 1
+	url = https://github.com/gi-lom/dialect
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = git
+	depends = gtk3
+	depends = python-gobject
+	depends = python-googletrans
+	depends = python-gtts
+	depends = python-pydub
+	provides = dialect
+	conflicts = dialect
+	conflicts = gnabel
+	replaces = gnabel-git
+	source = git+https://github.com/gi-lom/dialect.git
+	sha256sums = SKIP
+
+pkgname = dialect-git
+
