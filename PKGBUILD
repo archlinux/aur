@@ -1,34 +1,36 @@
 # Maintainer: Tony Finn <aur@tonyfinn.com>
 
 pkgname=preserve-git
-pkgver=0.2.0.r9.g43f09e2
+pkgver=0.2.2.r0.g467867c
 pkgrel=1
 pkgdesc="Efficiency oriented media player/jellyfin frontend"
 arch=(any)
 url="https://gitlab.com/tonyfinn/preserve"
 license=(GPL)
 makedepends=(git jq npm)
+optdepends=(
+    'caddy2: systemd unit',
+    'nginx: web server config provided',
+)
 source=(git+https://gitlab.com/tonyfinn/preserve.git)
 sha256sums=('SKIP')
 
 prepare() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/preserve"
     make node_modules
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/preserve"
     make dist
 }
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/preserve"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    install -d "${pkgdir}/usr/share/webapps/preserve"
-
-    cp -r dist/* "${pkgdir}/usr/share/webapps/preserve"
+    cd "$srcdir/preserve"
+    make install DESTDIR=${pkgdir} prefix=/usr
 }

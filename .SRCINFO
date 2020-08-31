@@ -1,6 +1,6 @@
 pkgbase = preserve-git
 	pkgdesc = Efficiency oriented media player/jellyfin frontend
-	pkgver = 0.2.0.r9.g43f09e2
+	pkgver = 0.2.2.r0.g467867c
 	pkgrel = 1
 	url = https://gitlab.com/tonyfinn/preserve
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = preserve-git
 	makedepends = git
 	makedepends = jq
 	makedepends = npm
+	optdepends = caddy2: systemd unit,
+	optdepends = nginx: web server config provided,
 	source = git+https://gitlab.com/tonyfinn/preserve.git
 	sha256sums = SKIP
 
