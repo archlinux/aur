@@ -17,7 +17,7 @@ makedepends=('apache-orc' 'boost' 'cmake' 'flatbuffers' 'python-numpy')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz"
   "cmake.patch")
 sha256sums=('dac59f4d42416224419c020ed2e8f8371e85c1d9ff4368ed5b5c026ee28d3fd4'
-            '8dcc91a9187faa885771e1cef207136d90b3b5ad645ab39d7016a0e50f9c90dd')
+            'd29fec6754e4eb29d2409e1a3fcddc64c674a108d43efd048286399f1035106e')
 
 prepare(){
   cd "$srcdir"

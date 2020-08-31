@@ -1,6 +1,6 @@
-diff -urN arrow-apache-arrow-1.0.0-orig/cpp/cmake_modules/ThirdpartyToolchain.cmake arrow-apache-arrow-1.0.0/cpp/cmake_modules/ThirdpartyToolchain.cmake
---- arrow-apache-arrow-1.0.0-orig/cpp/cmake_modules/ThirdpartyToolchain.cmake	2020-08-04 23:11:30.376315780 -0400
-+++ arrow-apache-arrow-1.0.0/cpp/cmake_modules/ThirdpartyToolchain.cmake	2020-08-04 23:12:37.803601116 -0400
+diff -urN arrow-apache-arrow-1.0.1-orig/cpp/cmake_modules/ThirdpartyToolchain.cmake arrow-apache-arrow-1.0.1/cpp/cmake_modules/ThirdpartyToolchain.cmake
+--- arrow-apache-arrow-1.0.1-orig/cpp/cmake_modules/ThirdpartyToolchain.cmake	2020-08-04 23:11:30.376315780 -0400
++++ arrow-apache-arrow-1.0.1/cpp/cmake_modules/ThirdpartyToolchain.cmake	2020-08-04 23:12:37.803601116 -0400
 @@ -2468,7 +2468,7 @@
      endif()
    endif()
