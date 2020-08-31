@@ -4,7 +4,7 @@
 pkgname=jexiftoolgui
 PkgName=jExifToolGUI
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="${PkgName} is a java/Swing graphical frontend for the excellent command-line ExifTool application by Phil Harvey"
 arch=('any')
 url="https://github.com/hvdwolf/${PkgName}"
@@ -14,6 +14,11 @@ makedepends=('gradle')
 source=("${pkgname}.git::git+https://github.com/hvdwolf/${PkgName}.git"
         ${pkgname})
 md5sums=(SKIP '97b47e506cb0f82facf24c43a07a3c03')
+
+prepare() {
+cd ${srcdir}/${pkgname}.git
+pkgver=`cat version.txt`
+}
 
 build() {
 cd ${srcdir}/${pkgname}.git
