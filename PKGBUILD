@@ -1,7 +1,7 @@
 # Maintainer: morpheusthewhite <zffromGerace@hotmail.it>
 
 pkgname=spicetify-themes-git
-pkgver=r7.658997f
+pkgver=r424.17d0670
 pkgrel=1
 pkgdesc="A community-driven collection of themes for spicetify"
 arch=('any')
@@ -21,8 +21,11 @@ noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+    ( set -o pipefail
+      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 package() {
