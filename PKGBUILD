@@ -2,7 +2,7 @@
 # Contributor: Arto Puranen <purcher@gmail.com>
 
 pkgname=arno-iptables-firewall
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A secure stateful firewall for both single and multi-homed machine"
 arch=('any')
@@ -35,7 +35,7 @@ backup=(etc/${pkgname}/firewall.conf
         etc/${pkgname}/plugins/transparent-proxy.conf)
 source=($pkgname-$pkgver.tar.gz::https://github.com/arno-iptables-firewall/aif/archive/${pkgver}.tar.gz
         $pkgname.patch)
-sha256sums=('e2c4fb88a25f0cae8308a3b2bb922b5e2f52f24d8309b24e15a527a6b326e703'
+sha256sums=('78b9888c07cd1b62118dff06b2fdf81ae3af9820ad9699f4537c016fd277736c'
             'fbac95bced8565b00f5ff7b403579b1aaf7d386deb61c0f4a9acf50408a8200d')
 
 prepare() {
