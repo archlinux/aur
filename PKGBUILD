@@ -15,14 +15,14 @@ sha256sums=('874969b9198867652364c3149f214f39bdfe0efed67d279c6b77b37765661e54')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	make BEES_VERSION="v${pkgver}"
-	make scripts BEES_VERSION="v${pkgver}"
+	make BEES_VERSION="${pkgver}-${pkgrel}"
+	make scripts BEES_VERSION="${pkgver}-${pkgrel}"
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	make install DESTDIR="${pkgdir}" BEES_VERSION="v${pkgver}"
+	make install DESTDIR="${pkgdir}" BEES_VERSION="${pkgver}-${pkgrel}"
 
 	if grep "$pkgname" "${pkgdir}/usr/bin/beesd"; then
 		exit 1
