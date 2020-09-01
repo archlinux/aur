@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=GURPS Character Sheet
-Exec=/usr/bin/gcs %F
-Icon=gcs
-MimeType=application/x-gurps-advantage;application/x-gurps-equipment;application/x-gurps-character;application/x-gurps-template;application/x-gurps-skill;application/x-gurps-spell;
-Categories=Game;RolePlaying;Utility;
-Keywords=Roleplaying;
