@@ -1,0 +1,16 @@
+pkgbase = reactionary-kde-git
+	pkgdesc = ReactOS-like theme for KDE Plasma
+	pkgver = r98.30bce99
+	pkgrel = 1
+	url = https://github.com/phobi4n/Reactionary
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/phobi4n/Reactionary.git
+	sha256sums = SKIP
+
+pkgname = reactionary-kde-git
+	optdepends = memphis98-icon-theme: Matching icon theme
+	provides = reactionary-kde
+
