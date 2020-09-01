@@ -2,19 +2,20 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=avs-device-sdk
-pkgver=1.19.1
+pkgver=1.20.1
 pkgrel=1
 pkgdesc="SDK for commercial device makers to integrate Alexa directly into connected products"
 arch=(x86_64 i686)
 url="https://github.com/alexa/avs-device-sdk"
 license=('Apache')
 makedepends=('cmake')
-depends=('portaudio' 'gstreamer' 'gst-plugins-base-libs' 'snowboy' 'cblas')
+depends=('portaudio' 'gstreamer' 'gst-plugins-base-libs' 'snowboy' 'cblas' 'rapidjson')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alexa/avs-device-sdk/archive/v${pkgver}.tar.gz")
-sha512sums=('96edaa1b78a582b9b9253e27f5f12c6be8415874ea8edb9e54f14e4e115eaff9bde5b99c2002a54fb1c26bb31dae9e89e9ad4642e743c7460f6628cec6c1f94e')
+sha512sums=('1b1cde229918802b110d2bd6fc12552acb5ddb0a41a9792a9bcd7f469b88be103606d1ae30eaaa61f694b33eafb7c75ede2c2b35e394261b80a474f03191f0d1')
 
 prepare() {
 	sed -i 's/blas/cblas/' "${srcdir}/avs-device-sdk-${pkgver}/KWD/KittAi/src/CMakeLists.txt"
+	sed -i '/^add_subdirectory("rapidjson")/d' "${srcdir}/avs-device-sdk-${pkgver}/ThirdParty/CMakeLists.txt"
 }
 
 build() {
