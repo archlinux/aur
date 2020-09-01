@@ -4,7 +4,9 @@
 # shellcheck disable=SC2191 # preserve current _CMAKE_FLAGS initialization.
 
 # Configuration.
-_fragment=${FRAGMENT:-#branch=blender-v2.81-release}
+_blenver="2.81"
+_branch="blender-v${_blenver}-release"
+_fragment=${FRAGMENT:-#branch=${_branch}}
 [[ -v CUDA_ARCH ]] && _cuda_capability=${CUDA_ARCH}
 
 #some extra, unofficially supported stuff goes here:
@@ -21,7 +23,8 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 pkgname=blender-2.81-git
 pkgver=2.81.r91465.gf1aa4d18d49
 pkgrel=1
-pkgdesc="Maintenance version of Blender 2.81-release branch"
+pkgdesc="Maintenance version of ${_branch} branch"
+changelog=blender.changelog
 arch=('i686' 'x86_64')
 url="https://blender.org/"
 depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg2'
@@ -29,8 +32,8 @@ depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg2'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 depends+=('openimagedenoise')
 makedepends+=('git' 'cmake' 'boost' 'mesa' 'llvm')
-provides=("blender=${pkgver%%.r*}")
-conflicts=("blender=${pkgver%%.r*}")
+provides=("blender=${_blenver}")
+conflicts=("blender=${_blenver}")
 license=('GPL')
 # NOTE: the source array has to be kept in sync with .gitmodules
 # the submodules has to be stored in path ending with git to match
@@ -45,6 +48,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         SelectCudaComputeArch.patch
         embree.patch #add missing embree link.
         'cuda11.patch'
+        'cpp14.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/171c4fb238a2a65291540ac5406187bc69f3a6bc'
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -53,7 +57,8 @@ sha256sums=('SKIP'
             'SKIP'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
             '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4'
-            '0316d92f180f2fa428a206074bd5adfd30968f9ae5d308efea05e42741dd53fd')
+            '0316d92f180f2fa428a206074bd5adfd30968f9ae5d308efea05e42741dd53fd'
+            '44fad9ac2320d20d21b7aef46f70c05d55697ecde1446513f0a5842014a9d99c')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -70,8 +75,12 @@ prepare() {
   if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
     git -C "$srcdir/blender" apply -v "${srcdir}"/SelectCudaComputeArch.patch
   fi
+  if [[ -v _suffix ]]; then
+    git -C "$srcdir/blender" apply -v <(sed "s/@@_suffix@@/${_suffix}/g" "${srcdir}/addon_path.patch")
+  fi
   ((DISABLE_EMBREE)) || git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
   git -C "$srcdir/blender" apply -v "$srcdir/cuda11.patch"
+  git -C "$srcdir/blender" apply -v "$srcdir/cpp14.patch"
 }
 
 build() {
@@ -109,7 +118,7 @@ build() {
 }
 
 package() {
-  _suffix=${pkgver%%.r*}
+  local _suffix=${_blenver}${_suffix:+_$_suffix}
   export DESTDIR="$pkgdir"
   if ((DISABLE_NINJA)); then make -C "$srcdir/build" install; else ninja -C "$srcdir/build" install; fi
 

@@ -1,8 +1,9 @@
 pkgbase = blender-2.81-git
-	pkgdesc = Maintenance version of Blender 2.81-release branch
+	pkgdesc = Maintenance version of blender-v2.81-release branch
 	pkgver = 2.81.r91465.gf1aa4d18d49
 	pkgrel = 1
 	url = https://blender.org/
+	changelog = blender.changelog
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -43,6 +44,7 @@ pkgbase = blender-2.81-git
 	source = SelectCudaComputeArch.patch
 	source = embree.patch
 	source = cuda11.patch
+	source = cpp14.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/171c4fb238a2a65291540ac5406187bc69f3a6bc
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -51,6 +53,7 @@ pkgbase = blender-2.81-git
 	sha256sums = 66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c
 	sha256sums = 42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4
 	sha256sums = 0316d92f180f2fa428a206074bd5adfd30968f9ae5d308efea05e42741dd53fd
+	sha256sums = 44fad9ac2320d20d21b7aef46f70c05d55697ecde1446513f0a5842014a9d99c
 
 pkgname = blender-2.81-git
 
