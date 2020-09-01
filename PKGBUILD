@@ -1,6 +1,6 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=gitqlient
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A Git client originally forked from QGit that has continued its own path"
 arch=(x86_64)
@@ -24,12 +24,7 @@ prepare() {
     # Install into /usr/bin instead of /opt/GitQlient/bin
     echo 'target.path = /usr/bin' >> GitQlient.pro
 
-    qmake
-    sed -Eie 's/-Werror//g' Makefile
-
-    # Fix missing include
-    cd src/history
-    patch --forward --unified --input "${srcdir}/include.patch"
+    qmake GitQlient.pro
 }
 
 build() {
