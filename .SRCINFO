@@ -1,0 +1,14 @@
+pkgbase = python-canvasapi
+	pkgdesc = API wrapper for Instructures Canvas
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ucfopen/canvasapi
+	arch = any
+	license = MIT
+	makedepends = pandoc
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/canvasapi/canvasapi-2.0.0.tar.gz
+	sha256sums = d2af62c3f643cbf25024ea094212c9b2374c68c9e03932154079613483fc38c2
+
+pkgname = python-canvasapi
+
