@@ -1,13 +1,10 @@
 pkgbase = ttf-sans-bullshit-sans
 	pkgdesc = The font that replaces every buzzword by a Comic Sans-styled censorship bar.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.sansbullshitsans.com/
-	install = ttf.install
 	arch = any
 	license = APACHE
-	depends = fontconfig
-	depends = xorg-font-utils
 	source = https://pixelambacht.nl/downloads/SansBullshitSans.ttf
 	md5sums = 1b1644f29e2f9981d1d67b561bb47348
 
