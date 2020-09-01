@@ -1,0 +1,15 @@
+pkgbase = chicago95-sddm-theme-git
+	pkgdesc = SDDM theme and KDE splash screen from Chicago95 theme set
+	pkgver = r435.ee42290
+	pkgrel = 1
+	url = https://github.com/grassmunk/Chicago95
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/grassmunk/Chicago95.git
+	sha256sums = SKIP
+
+pkgname = chicago95-sddm-theme-git
+	provides = chicago95-sddm-theme-git
+
