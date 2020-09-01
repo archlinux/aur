@@ -1,0 +1,5 @@
+{
+  "cores_dir": "/usr/share/ludo/cores",
+  "assets_dir": "/usr/share/ludo/assets",
+  "database_dir": "/usr/share/ludo/database"
+}

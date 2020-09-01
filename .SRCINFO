@@ -1,0 +1,22 @@
+pkgbase = ludo-bin
+	pkgdesc = Ludo is a minimalist frontend for emulators
+	pkgver = 0.11.2
+	pkgrel = 1
+	url = https://github.com/libretro/ludo
+	arch = x86_64
+	arch = armv7h
+	license = GPL3
+	depends = glfw
+	depends = openal
+	depends = mesa
+	source = ludo.json
+	source = ludo.desktop
+	sha256sums = 89e860320694d3bec02942bb81af01a8553d5f49c4c50a2cbf377d6252b481a5
+	sha256sums = 139eedd5dd868717b46032cd9773bc63b692237c37e6da4450357a3f56a18042
+	source_x86_64 = ludo-bin-0.11.2.tar.gz::https://github.com/libretro/ludo/releases/download/v0.11.2/Ludo-Linux-x86_64-0.11.2.tar.gz
+	sha256sums_x86_64 = a287010e35d774c58bbbd435c9a7113bdb4b3463528a9e721ce1a79e62ff4335
+	source_armv7h = ludo-bin-0.11.2.tar.gz::https://github.com/libretro/ludo/releases/download/v0.11.2/Ludo-Linux-arm-0.11.2.tar.gz
+	sha256sums_armv7h = 974749909fe036ad8a74f61b6011469f5715de979cc362d8db045c43539e1ed6
+
+pkgname = ludo-bin
+
