@@ -7,8 +7,8 @@
 _region=us
 _pkgname=sm64ex
 pkgname=$_pkgname-redrawn-git
-pkgver=r504.58
-pkgrel=3
+pkgver=r507.58
+pkgrel=1
 pkgdesc='Super Mario 64 PC port (sm64ex fork) with the redrawn texture pack and HD Mario'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/sm64pc/sm64ex'
