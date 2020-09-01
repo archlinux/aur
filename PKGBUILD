@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/hyperspy/hyperspy_gui_traitsui"
 license=('GPLv3')
 
-depends=('python-hyperspy' 'python-traitsui' 'hyperspy-link-traits')
+depends=('python-hyperspy' 'python-traitsui' 'python-link-traits')
 
 #optdepends=()
 
