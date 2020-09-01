@@ -1,0 +1,21 @@
+pkgbase = budgie-applications-menu-git
+	pkgdesc = ElementaryOS (Pantheon) applications-menu fork for budgie-panel. Standalone from package budgie-extras.
+	pkgver = 2.5.0.r304.gbb9e384
+	pkgrel = 1
+	url = https://github.com/UbuntuBudgie/applications-menu
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = budgie-desktop
+	provides = budgie-applications-menu
+	conflicts = budgie-applications-menu
+	conflicts = budgie-extras
+	source = budgie-extras::git+https://github.com/UbuntuBudgie/budgie-extras
+	sha256sums = SKIP
+
+pkgname = budgie-applications-menu-git
+
