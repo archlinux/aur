@@ -8,7 +8,7 @@
 
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
-pkgver=1.25.1dev
+pkgver=1.26.2
 pkgrel=1
 pkgdesc="NM modified package to use exclusively iwd backend getting rid of wpa_supplicant dependency"
 url="https://wiki.gnome.org/Projects/NetworkManager"
@@ -20,7 +20,7 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc "ppp=$_ppp
              libnewt libndp libteam vala perl-yaml python-gobject git vala jansson bluez-libs
              glib2-docs iwd dnsmasq openresolv libpsl audit meson)
 checkdepends=(libx11 python-dbus)
-_commit=c6e51f61ddc03c562eb9ba9b73e714833f5e74c9  # tags/1.25.1
+_commit=c3c6c426dfca621fa71dceacbba2789b9f8ce144  # tags/1.26.2^0
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit")
 sha256sums=('SKIP')
 
