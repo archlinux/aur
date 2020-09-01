@@ -1,10 +1,10 @@
-# Maintainer : Original Maintainer <mdeguzis@gmail.com>
 # Maintainer : Zachary Freed <theconfuzzleddude@gmail.com>
+# Contributor : Michael DeGuzis <mdeguzis@gmail.com>
 
 pkgname=ftequake
 _svndir=trunk
 pkgver=r5529
-pkgrel=2
+pkgrel=1
 pkgdesc="FTE QuakeWorld. Engine for Quake 1,2,3 and Hexen 2"
 arch=('i686' 'x86_64')
 url="http://fte.triptohell.info"

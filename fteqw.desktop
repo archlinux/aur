@@ -6,4 +6,3 @@ Icon=/usr/share/pixmaps/fteqw.png
 Terminal=false
 Type=Application
 Categories=Game;
-MimeType=x-scheme-handler/steam;
