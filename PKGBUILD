@@ -3,7 +3,7 @@
 pkgname=hyperspy
 pkgver=1.6.0
 pkgrel=1
-pkgdesc="Hyperspectral data analysis"
+pkgdesc="Replaced by python-hyperspy (Hyperspectral data analysis)."
 arch=('any')
 url="http://hyperspy.org"
 license=('GPL3')

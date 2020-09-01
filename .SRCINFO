@@ -1,5 +1,5 @@
 pkgbase = hyperspy
-	pkgdesc = Hyperspectral data analysis
+	pkgdesc = Replaced by python-hyperspy (Hyperspectral data analysis).
 	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://hyperspy.org
