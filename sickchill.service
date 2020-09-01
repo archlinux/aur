@@ -8,8 +8,8 @@ User=sickchill
 Group=sickchill
 
 Type=simple
-#ExecStart=/usr/bin/env python2 ...
-ExecStart=/usr/bin/python2 /opt/sickchill/app/SickBeard.py --quiet --nolaunch --datadir=/opt/sickchill/data
+Environment=PYTHONPATH=/opt/sickchill/app/lib3
+ExecStart=/opt/sickchill/app/SickChill.py --quiet --nolaunch --datadir=/opt/sickchill/data
 
 [Install]
 WantedBy=multi-user.target

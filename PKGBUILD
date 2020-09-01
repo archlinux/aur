@@ -1,14 +1,14 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=sickchill-git
-pkgver=2020.07.18.1.r0.gc67114a85
+pkgver=2020.07.09.1.r266.g319d20e55
 pkgrel=1
 pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
 url="https://github.com/SickChill/SickChill"
 license=('GPL3')
-depends=('nodejs' 'python2')
-makedepends=('git')
+depends=('nodejs' 'python')
+makedepends=('git' 'python-pygithub')
 #            'deluge: supported torrent client'
 #            'qbittorrent: supported torrent client'
 #            'rtorrent: supported torrent client'
@@ -19,12 +19,13 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 options=('!strip')
 install=$pkgname.install
-source=("$pkgname::git+$url.git"
+#source=("$pkgname::git+$url.git"
+source=("$pkgname::git+$url.git#branch=develop"
         'sickchill.service'
         'sickchill.sysusers'
         'sickchill.tmpfile')
 md5sums=('SKIP'
-         '5f5c96bdeb4eb5665af2bcebf0ceca53'
+         'fe1030d29e883682a9c3117867edd9d8'
          '97fb191af2e326d5aba2cf58270b4feb'
          '515f13e391105a716ef6763ba8533fc7')
 
@@ -35,12 +36,12 @@ pkgver() {
 
 #build() {
 #  cd $pkgname
-#  python2 setup.py --quiet build
+#  python setup.py --quiet build
 #}
 
 #check() {
 #  cd $pkgname
-#  python2 setup.py test
+#  python setup.py test
 #}
 
 package() {
@@ -52,7 +53,7 @@ package() {
 
   # The install type is "source": .git folder is not included
   #cd $pkgname
-  #python2 setup.py install --prefix=/opt/sickchill/app --install-lib=/opt/sickchill/app --root="$pkgdir" --optimize=1
+  #python setup.py install --prefix=/opt/sickchill/app --install-lib=/opt/sickchill/app --root="$pkgdir" --optimize=1
   cp -a $pkgname/* "$pkgdir/opt/sickchill/app/"
 
   warning "If the upgrade fails with \"error: failed to commit transaction (conflicting files)\", then uninstall first"

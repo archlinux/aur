@@ -1,24 +1,25 @@
 pkgbase = sickchill-git
 	pkgdesc = Automatic video library manager for TV shows
-	pkgver = 2020.01.17.1.r0.g760c6ca2a
+	pkgver = 2020.07.09.1.r266.g319d20e55
 	pkgrel = 1
 	url = https://github.com/SickChill/SickChill
 	install = sickchill-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = python-pygithub
 	depends = nodejs
-	depends = python2
+	depends = python
 	optdepends = unrar: for RAR archives
 	provides = sickchill
 	conflicts = sickchill
 	options = !strip
-	source = sickchill-git::git+https://github.com/SickChill/SickChill.git
+	source = sickchill-git::git+https://github.com/SickChill/SickChill.git#branch=develop
 	source = sickchill.service
 	source = sickchill.sysusers
 	source = sickchill.tmpfile
 	md5sums = SKIP
-	md5sums = 5f5c96bdeb4eb5665af2bcebf0ceca53
+	md5sums = fe1030d29e883682a9c3117867edd9d8
 	md5sums = 97fb191af2e326d5aba2cf58270b4feb
 	md5sums = 515f13e391105a716ef6763ba8533fc7
 
