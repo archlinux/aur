@@ -30,7 +30,7 @@ package() {
 		mv -v "${pkgdir}/usr/sbin/beesd" "${pkgdir}/usr/bin/beesd"
 	fi
 
-	if grep "$pkgname" "${pkgdir}/usr/bin/beesd"; then
+	if egrep "${srcdir}|${pkgdir}" "${pkgdir}/usr/bin/beesd"; then
 		exit 1
 	fi
 
