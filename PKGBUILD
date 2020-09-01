@@ -2,7 +2,7 @@
 
 _pkgname=freifunk-meet-desktop
 pkgname=${_pkgname}-bin
-pkgver=2.0.25
+pkgver=2.0.26
 pkgrel=1
 pkgdesc="Freifunk Meet desktop application powered by Electron"
 arch=('x86_64')
@@ -17,7 +17,7 @@ backup=()
 options=(!strip)
 source=("ffmuc-meet-${arch[0]}-${pkgver}.AppImage::https://github.com/freifunkMUC/jitsi-meet-electron/releases/download/v${pkgver}/ffmuc-meet-${arch[0]}.AppImage"
         "${_pkgname}.desktop")
-sha256sums=('17db78bb5c7d204003fd2757e72434debc29506df4da20346a75d6c24d8538ee'
+sha256sums=('5a2bb3d2b48298bf49403ea37623a06e1e8d215091356769a573408de337460a'
             'd180773e67b25db81c6279ca34d0c2dad0b8d0172554723105ad54f4c939d573')
 
 
