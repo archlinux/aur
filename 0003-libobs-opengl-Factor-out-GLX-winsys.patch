@@ -1,7 +1,7 @@
-From 9394af80060680154a3c00e8ea23cced0d06179d Mon Sep 17 00:00:00 2001
+From e1eb076e87330b4cc197ae9f88cb1ede215dea71 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Mon, 9 Mar 2020 16:46:37 -0300
-Subject: [PATCH 03/20] libobs-opengl: Factor out GLX winsys
+Subject: [PATCH 03/24] libobs-opengl: Factor out GLX winsys
 
 Move the GLX-related code to gl-x11-glx, and introduce gl-nix as
 a winsys-agnostic abstraction layer. gl-nix serves as the runtime

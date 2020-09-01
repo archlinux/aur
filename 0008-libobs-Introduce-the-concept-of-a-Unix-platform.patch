@@ -1,7 +1,7 @@
-From 6e1eef3b6dd72ca2e7ab212e0eb69685347787ea Mon Sep 17 00:00:00 2001
+From 53d14fdc3ddcd1e5232e9eb3dbd6cb993893b4b1 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Fri, 6 Mar 2020 17:50:41 -0300
-Subject: [PATCH 08/20] libobs: Introduce the concept of a Unix platform
+Subject: [PATCH 08/24] libobs: Introduce the concept of a Unix platform
 
 This is a Unix-specific code. The only available platforms
 at this point are the X11/GLX and X11/EGL platforms.

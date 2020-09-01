@@ -1,7 +1,7 @@
-From 107533c8298418360acbbbf7b51aa9ea1ffc30a0 Mon Sep 17 00:00:00 2001
+From 7b989da443d84cca425c3669f072e413825bc657 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Wed, 19 Aug 2020 10:11:08 -0300
-Subject: [PATCH 16/20] UI: Don't create obs_display when QTToGSWindow fails
+Subject: [PATCH 16/24] UI: Don't create obs_display when QTToGSWindow fails
 
 Right after showing the OBSQTDisplay widget, it may happen that a
 wl_surface is not yet created and attached to the window. When this

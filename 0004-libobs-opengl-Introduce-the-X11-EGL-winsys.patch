@@ -1,7 +1,7 @@
-From 12ef68d9914bd4aec60ef9bdf77f67099534a208 Mon Sep 17 00:00:00 2001
+From 1219e3656bd1cd07dccb454684e3e535c9de732d Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Mon, 9 Mar 2020 17:35:49 -0300
-Subject: [PATCH 04/20] libobs-opengl: Introduce the X11/EGL winsys
+Subject: [PATCH 04/24] libobs-opengl: Introduce the X11/EGL winsys
 
 Introduce the EGL/X11 winsys, and use it when the OBS_USE_EGL environment
 variable is defined. This variable is only temporary, for future commits

@@ -1,7 +1,7 @@
-From 484ff6702e4c230a4769cdb7289c013de9b12b58 Mon Sep 17 00:00:00 2001
+From e6406c1fb4fcd81383dd11847d0a21908a030877 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Thu, 20 Aug 2020 11:57:19 -0300
-Subject: [PATCH 19/20] UI: Make OBSQTDisplay::CreateDisplay() public and allow
+Subject: [PATCH 19/24] UI: Make OBSQTDisplay::CreateDisplay() public and allow
  forcing creation
 
 This will be used by a new event filter, added only when running as a Wayland

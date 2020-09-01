@@ -1,16 +1,16 @@
-From b6d1651ad733f0b59c442ceb29c3e936554df5b5 Mon Sep 17 00:00:00 2001
+From c5e9210a3b0d5a19cfc1b74ea400f049d4983992 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Mon, 9 Mar 2020 21:09:11 -0300
-Subject: [PATCH 13/20] libobs-opengl: Introduce an EGL/Wayland renderer
+Subject: [PATCH 13/24] libobs-opengl: Introduce an EGL/Wayland renderer
 
 Introduce a new Wayland/EGL renderer.
 ---
  libobs-opengl/CMakeLists.txt   |  23 +++
  libobs-opengl/gl-nix.c         |   7 +-
  libobs-opengl/gl-nix.h         |   1 +
- libobs-opengl/gl-wayland-egl.c | 339 +++++++++++++++++++++++++++++++++
+ libobs-opengl/gl-wayland-egl.c | 342 +++++++++++++++++++++++++++++++++
  libobs-opengl/gl-wayland-egl.h |  22 +++
- 5 files changed, 391 insertions(+), 1 deletion(-)
+ 5 files changed, 394 insertions(+), 1 deletion(-)
  create mode 100644 libobs-opengl/gl-wayland-egl.c
  create mode 100644 libobs-opengl/gl-wayland-egl.h
 
@@ -87,10 +87,10 @@ index f5532719..741154da 100644
  #include "gl-subsystem.h"
 diff --git a/libobs-opengl/gl-wayland-egl.c b/libobs-opengl/gl-wayland-egl.c
 new file mode 100644
-index 00000000..28e8b1c0
+index 00000000..aad6993e
 --- /dev/null
 +++ b/libobs-opengl/gl-wayland-egl.c
-@@ -0,0 +1,339 @@
+@@ -0,0 +1,342 @@
 +/******************************************************************************
 +    Copyright (C) 2019 by Jason Francis <cycl0ps@tuta.io>
 +
@@ -404,6 +404,9 @@ index 00000000..28e8b1c0
 +{
 +	struct gl_platform *plat = device->plat;
 +	struct gl_windowinfo *wi = device->cur_swap->wi;
++	if (eglSwapInterval(plat->display, 0) == EGL_FALSE) {
++		blog(LOG_ERROR, "eglSwapInterval failed");
++	}
 +	if (eglSwapBuffers(plat->display, wi->egl_surface) == EGL_FALSE) {
 +		blog(LOG_ERROR, "eglSwapBuffers failed");
 +	}

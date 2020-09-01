@@ -1,7 +1,7 @@
-From db7ed40e1e0c566d4c6bed53c283327c9d55ce4c Mon Sep 17 00:00:00 2001
+From af18bb55d32a6794cd6ce2dd5f16d9a8e6bc700e Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Thu, 20 Aug 2020 11:58:45 -0300
-Subject: [PATCH 20/20] UI: Check for Expose and PlatformSurface events to
+Subject: [PATCH 20/24] UI: Check for Expose and PlatformSurface events to
  create display
 
 This is a workaround for QWaylandWindow never becoming exposed, or

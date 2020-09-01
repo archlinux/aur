@@ -1,7 +1,7 @@
-From 64ab8a3f8e7bc6826dcf2a378e32e4dabb7eadba Mon Sep 17 00:00:00 2001
+From 334bad8172f854d14e3079f03349d16a4ce2df73 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Tue, 18 Aug 2020 19:38:29 -0300
-Subject: [PATCH 15/20] UI: Destroy display when becoming invisible
+Subject: [PATCH 15/24] UI: Destroy display when becoming invisible
 
 When a window is made invisible, then visible again, the
 obs_display is reused. Turns out, QT destroys the wl_surface

@@ -1,7 +1,7 @@
-From 56c897b64464170cdcf6ad0cdd6de7a3b9addff1 Mon Sep 17 00:00:00 2001
+From 7f6041c7cb282d5354ad4afc545341f1437d1b46 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Wed, 8 Apr 2020 23:58:43 -0300
-Subject: [PATCH 10/20] linux-capture: Fail to load when running on EGL
+Subject: [PATCH 10/24] linux-capture: Fail to load when running on EGL
 
 Right now, linux-capture hard-depends on GLX. Disable it when
 running under EGL.

@@ -1,7 +1,7 @@
-From 74515e17f35d9afb75a9ea7ec024e36782b168f6 Mon Sep 17 00:00:00 2001
+From 4056740eb1ba8de4eb0b4ec6621c48e3ca5fb314 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Fri, 6 Mar 2020 16:22:01 -0300
-Subject: [PATCH 06/20] ci: Install qtbase5-private-dev on Linux
+Subject: [PATCH 06/24] ci: Install qtbase5-private-dev on Linux
 
 List this dependency both under CI/install-dependencies-linux.sh, and
 .github/workflows/main.yml.

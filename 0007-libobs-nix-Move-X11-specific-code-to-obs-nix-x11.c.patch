@@ -1,7 +1,7 @@
-From 7301a59e6b593bc6d016d3de74e80c1b1361b508 Mon Sep 17 00:00:00 2001
+From 7aa2fd8902ede3ad5eabe3e0152d9688d12cf9bb Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Fri, 6 Mar 2020 17:24:33 -0300
-Subject: [PATCH 07/20] libobs/nix: Move X11-specific code to obs-nix-x11.c
+Subject: [PATCH 07/24] libobs/nix: Move X11-specific code to obs-nix-x11.c
 
 Currently, obs-nix.c is highly tied to the X11 display
 server. It includes X11 headers directly, and make use
