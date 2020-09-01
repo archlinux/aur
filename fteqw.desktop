@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=FTE Quake (Vulkan)
-Comment=FTE Quake OpenGL using the Vulkan API
-Exec=/usr/bin/fteqw-vk
+Name=FTE Quake
+Comment=FTE Quake
+Exec=/usr/bin/fteqw
 Icon=/usr/share/pixmaps/fteqw.png
 Terminal=false
 Type=Application
