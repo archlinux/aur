@@ -2,13 +2,14 @@
 
 pkgname=pyright
 pkgver=1.1.65
-pkgrel=1
+pkgrel=2
 pkgdesc="Type checker for the Python language"
 arch=('any')
 url="https://github.com/microsoft/pyright"
 license=('MIT')
 depends=('nodejs>=12')
 makedepends=('npm')
+provides=('pyright' 'pyright-langserver')
 source=(
   "${url}/archive/${pkgver}.tar.gz"
 )
@@ -36,7 +37,9 @@ package() {
 
   cp -r dist "${pkgdir}/usr/lib/node_modules/${pkgname}/dist"
   install -Dm755 index.js "${pkgdir}/usr/lib/node_modules/${pkgname}/index.js"
+  install -Dm755 langserver.index.js "${pkgdir}/usr/lib/node_modules/${pkgname}/langserver.index.js"
   ln -s "/usr/lib/node_modules/${pkgname}/index.js" "${pkgdir}/usr/bin/pyright"
+  ln -s "/usr/lib/node_modules/${pkgname}/langserver.index.js" "${pkgdir}/usr/bin/pyright-langserver"
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 CONTRIBUTING.md "${pkgdir}/usr/share/doc/${pkgname}/CONTRIBUTING.md"
