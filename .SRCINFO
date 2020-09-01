@@ -1,6 +1,6 @@
 pkgbase = harmony-kde-git
 	pkgdesc = Harmony-dark kde is a light clean theme for KDE Plasma desktop
-	pkgver = r13.afc6bfb
+	pkgver = r14.71d288a
 	pkgrel = 1
 	url = https://github.com/yeyushengfan258/Harmony-kde
 	arch = any
@@ -11,5 +11,7 @@ pkgbase = harmony-kde-git
 	sha256sums = SKIP
 
 pkgname = harmony-kde-git
+	optdepends = mcmuse-icon-theme: Matching icon theme
+	optdepends = mcmuse-circle: matching icon theme
 	provides = harmony-kde
 

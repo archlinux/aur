@@ -1,7 +1,6 @@
-pkgbase=harmony-kde-git
-pkgname=(harmony-kde-git)
+pkgname=harmony-kde-git
 _pkgname=Harmony-kde
-pkgver=r13.afc6bfb
+pkgver=r14.71d288a
 pkgrel=1
 pkgdesc="Harmony-dark kde is a light clean theme for KDE Plasma desktop"
 arch=(any)
@@ -13,13 +12,14 @@ sha256sums=('SKIP')
 makedepends=('git')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package_harmony-kde-git() {
     provides=('harmony-kde')
-    optdepends=('mcmuse-icon-theme-git: Matching window decoration')
+    optdepends=('mcmuse-icon-theme: Matching icon theme'
+                'mcmuse-circle: matching icon theme')
 
     cd $_pkgname
 
