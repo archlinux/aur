@@ -1,10 +1,9 @@
 pkgbase = usermin
 	pkgdesc = A web-based user account administration interface
 	pkgver = 1.803
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.webmin.com/usermin.html
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = custom:webmin
 	depends = perl
 	depends = perl-net-ssleay

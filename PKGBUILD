@@ -2,9 +2,9 @@
 
 pkgname=usermin
 pkgver=1.803
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-based user account administration interface"
-arch=(i686 x86_64)
+arch=(any)
 license=('custom:webmin')
 url="http://www.webmin.com/usermin.html"
 depends=('perl' 'perl-net-ssleay' 'perl-authen-pam' 'perl-encode-detect' 'openssl')
