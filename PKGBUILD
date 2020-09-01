@@ -1,28 +1,37 @@
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 pkgname=ludo
-pkgver=0.11.0
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Ludo is a minimalist frontend for emulators"
 arch=('x86_64' 'armv7h')
 url="https://github.com/libretro/ludo"
 license=('GPL3')
+makedepends=(
+  'go'
+  'git'
+  'wget'
+)
 depends=(
   'glfw'
   'openal'
   'mesa'
 )
 source=(
+  "git+https://github.com/libretro/ludo"
   "ludo.json"
   "ludo.desktop"
 )
-source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/libretro/ludo/releases/download/v${pkgver}/Ludo-Linux-x86_64-${pkgver}.tar.gz")
-source_armv7h=("${pkgname}-${pkgver}.tar.gz::https://github.com/libretro/ludo/releases/download/v${pkgver}/Ludo-Linux-arm-${pkgver}.tar.gz")
 sha256sums=(
+  'SKIP'
   '89e860320694d3bec02942bb81af01a8553d5f49c4c50a2cbf377d6252b481a5'
   '139eedd5dd868717b46032cd9773bc63b692237c37e6da4450357a3f56a18042'
 )
-sha256sums_x86_64=('8aecff98ae007589454df7c0b7e35ec268fd3126b5ff2fe59d27068fb02d4685')
-sha256sums_armv7h=('97b30a0425fc396e1bfa81d6770e50cd6279243fd797a50dcaffe12a24cc28f5')
+
+prepare() {
+  cd "${srcdir}/ludo"
+  git checkout v${pkgver}
+  git submodule update --init --recursive
+}
 
 package() {
   _ARCH=""
@@ -36,7 +45,9 @@ package() {
   install -Dm644 "ludo.json" "$pkgdir/etc/ludo.json"
   install -Dm644 "ludo.desktop" "$pkgdir/usr/share/applications/ludo.desktop"
 
-  cd "$srcdir/Ludo-Linux-$_ARCH-$pkgver"
+  cd "${srcdir}/ludo"
+
+  ARCH="${_ARCH}" OS="Linux" make tar
 
   install -Dm755 "ludo" "$pkgdir/usr/bin/ludo"
   install -Dm755 "assets/icon.svg" "$pkgdir/usr/share/pixmaps/ludo.svg"
@@ -45,4 +56,6 @@ package() {
   cp -R "cores/" "$pkgdir/usr/share/ludo/cores"
   cp -R "database/" "$pkgdir/usr/share/ludo/database"
   chmod -R 0755 "$pkgdir/usr/share/ludo"
+
+  make clean
 }
