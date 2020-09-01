@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openimageio
-pkgver=2.1.18.1
+pkgver=2.2.6.1
 pkgrel=1
 pkgdesc="A library for reading and writing images."
 url="http://www.openimageio.org/"
@@ -22,13 +22,14 @@ depends=(
 	"mingw-w64-opencolorio"
 	"mingw-w64-opencv"
 	"mingw-w64-ffmpeg"
+	"mingw-w64-hdf5"
 )
 builddepends=("mingw-w64-cmake" "git")
 arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
 sha256sums=(
-	"e2cf54f5b28e18fc88e76e1703f2e39bf144c88378334527e4a1246974659a85"
+	"adc245c9b2fa2bce1dd2decbdd1d03974e1e9818219d267d1da3dd1bd91216df"
 	"87e13ccaf0359ad86713721448f14073d9e4b8904fb1353b259c351482c326a7"
 )
 source=(
@@ -41,6 +42,9 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
 	cd "oiio-Release-${pkgver}"
 	patch -uNp1 < "../mingw-compile-fix.patch"
+	rm -f src/cmake/modules/FindOpenCV.cmake
+	sed -i -r 's/set \(REQUIED_DEPS/set \(REQUIRED_DEPS/' "src/cmake/externalpackages.cmake"
+	sed -i -r 's/target_link_libraries \(OpenImageIO PRIVATE \$\{PUGIXML_LIBRARIES\}\)/target_link_libraries \(OpenImageIO PRIVATE pugixml\)/' "src/libOpenImageIO/CMakeLists.txt"
 }
 
 build() {
@@ -49,7 +53,8 @@ build() {
 		-DUSE_EXTERNAL_PUGIXML=ON -DBUILD_TESTING=OFF -DCMAKE_CXX_STANDARD=20 -DINSTALL_DOCS=OFF 
 		-DOIIO_BUILD_TESTS=OFF -DOIIO_BUILD_TOOLS=OFF -DUSE_PYTHON=OFF -DUSE_QT=OFF -DUSE_CCACHE=OFF 
 		-DUSE_SIMD=sse4.2 -DEMBEDPLUGINS=ON -DSTOP_ON_WARNING=OFF -DOPTIONAL_DEPS=""
-		-DREQUIRED_DEPS="JPEGTurbo;PNG;TBB;GIF;Webp;Libsquish;Freetype;OpenColorIO;OpenCV;FFmpeg" )
+		-DUSE_EMBEDDED_LIBSQUISH=OFF
+		-DREQUIRED_DEPS="JPEGTurbo;PNG;TBB;GIF;Webp;Libsquish;Freetype;OpenColorIO;OpenCV;FFmpeg;HDF5" )
 		
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "oiio-Release-${pkgver}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=FALSE
