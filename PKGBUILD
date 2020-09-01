@@ -12,14 +12,14 @@ pkgname=${_pkgbase}-sharp
 _bzrtag=12.10.0
 _bzrrev=296
 pkgver=${_bzrtag}.r${_bzrrev}
-pkgrel=2
-pkgdesc='Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray'
+pkgrel=3
+pkgdesc='Allow applications to extend a menu in Unity, KDE or Systray (Mono GTK+ 2 bindings)'
 url='https://launchpad.net/libappindicator'
-arch=('x86_64')
-depends=('libappindicator-gtk2' 'gtk-sharp-2')
+arch=('any')
+depends=('mono' "libappindicator-gtk2=${pkgver}" 'gtk-sharp-2' 'glib2')
 license=('LGPL2.1' 'LGPL3')
-makedepends=('bzr' 'dbus-glib' 'gnome-common' 'gobject-introspection' 'gtk-doc' 'libdbusmenu-gtk2' 'libindicator-gtk2' 'perl-xml-libxml' 'pygtk' 'vala' 'python-dulwich')
-options=('!emptydirs')
+makedepends=('bzr' 'libdbusmenu-gtk2' 'libindicator-gtk2' 'gnome-common' 'dbus-glib' 'perl-xml-libxml' 'gtk-doc')
+options=('!strip')
 source=(bzr+lp:libappindicator#revision=$_bzrrev
         no-host.patch)
 sha512sums=('SKIP'
@@ -43,18 +43,6 @@ build() {
   export CFLAGS="${CFLAGS} -Wno-deprecated-declarations"
   export CSC='/usr/bin/mcs'
 
-  msg2 'Building gtk3...'
-  (cd ${_pkgbase}
-    ./configure --prefix=/usr \
-      --sysconfdir=/etc \
-      --localstatedir=/var \
-      --with-gtk=3 \
-      --disable-{gtk-doc-html,mono-test,static,tests}
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-    make -j1
-  )
-
-  msg2 'Building gtk2...'
   (cd ${_pkgbase}-gtk2
     ./configure --prefix=/usr \
       --sysconfdir=/etc \

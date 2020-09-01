@@ -1,25 +1,23 @@
 pkgbase = libappindicator-sharp
-	pkgdesc = Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray
+	pkgdesc = Allow applications to extend a menu in Unity, KDE or Systray (Mono GTK+ 2 bindings)
 	pkgver = 12.10.0.r296
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/libappindicator
-	arch = x86_64
+	arch = any
 	license = LGPL2.1
 	license = LGPL3
 	makedepends = bzr
-	makedepends = dbus-glib
-	makedepends = gnome-common
-	makedepends = gobject-introspection
-	makedepends = gtk-doc
 	makedepends = libdbusmenu-gtk2
 	makedepends = libindicator-gtk2
+	makedepends = gnome-common
+	makedepends = dbus-glib
 	makedepends = perl-xml-libxml
-	makedepends = pygtk
-	makedepends = vala
-	makedepends = python-dulwich
-	depends = libappindicator-gtk2
+	makedepends = gtk-doc
+	depends = mono
+	depends = libappindicator-gtk2=12.10.0.r296
 	depends = gtk-sharp-2
-	options = !emptydirs
+	depends = glib2
+	options = !strip
 	source = bzr+lp:libappindicator#revision=296
 	source = no-host.patch
 	validpgpkeys = 6FC05581A37D71FCECE165DB5BE41E162CD6358E
