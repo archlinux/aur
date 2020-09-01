@@ -2,7 +2,7 @@
 
 pkgname=kdepim-runtime-etesync-git
 _pkgname=kdepim-runtime-etesync
-pkgver=v20.04.1.r189.gbed707724
+pkgver=v20.04.1.r205.g166ef579c
 pkgrel=1
 pkgdesc='Extends the functionality of kdepim (with etesync modules)'
 arch=(x86_64)
@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
-    git am ../0001-XXX-Ease-version-requirements.patch
+    git apply ../0001-XXX-Ease-version-requirements.patch
 }
 
 build() {
