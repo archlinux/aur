@@ -1,6 +1,6 @@
 pkgbase = python-sentry_sdk
 	pkgdesc = The new Python SDK for Sentry.io
-	pkgver = 0.17.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = https://sentry.io/for/python
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = python-sentry_sdk
 	optdepends = python-pyspark: adds support for the Python API for Apache Spark
 	optdepends = python-pure_eval: for richer stacktraces & additional variables
 	optdepends = python-executing: for richer stacktraces & better function names
-	source = https://pypi.org/packages/source/s/sentry-sdk/sentry-sdk-0.17.1.tar.gz
-	sha256sums = 2c770e7bf72d6419bb82b3bb950f3789fc24bd6a0ba191369607a96289acd63b
+	source = https://pypi.org/packages/source/s/sentry-sdk/sentry-sdk-0.17.2.tar.gz
+	sha256sums = bbfe5633aee4dacb53d79d303ab6bfacf1749fb717750c112fb1658e5accce0d
 
 pkgname = python-sentry_sdk
 
