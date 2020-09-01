@@ -1,0 +1,15 @@
+pkgbase = gr-hrpt
+	pkgdesc = HRPT Blocks from gr-noaa and others ported to GNU Radio 3.8+
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.altillimity.com/altillimity/gr-hrpt
+	arch = x86_64
+	license = GPL3
+	makedepends = boost
+	depends = gnuradio
+	depends = liborcus
+	source = https://gitlab.altillimity.com/altillimity/gr-hrpt/-/archive/master/gr-hrpt-master.tar.gz
+	sha256sums = c1e730d3717c73037b8ceee3fce10320cc06d0da8225a16591caa543bd9abf6f
+
+pkgname = gr-hrpt
+
