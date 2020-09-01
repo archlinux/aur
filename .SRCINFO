@@ -1,18 +1,15 @@
 pkgbase = python-pathvalidate
-	pkgdesc = A Python library to sanitize/validate a string such as filenames/file-paths/etc
-	pkgver = 2.2.0
+	pkgdesc = Sanitize/validate strings in filenames/file-paths/etc
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/thombashi/pathvalidate
 	arch = any
 	license = MIT
-	checkdepends = python-allpairspy
-	checkdepends = python-faker
-	checkdepends = python-click
-	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/thombashi/pathvalidate/archive/v2.2.0.tar.gz
-	sha256sums = 42d087e9aacff04770760888fec254d2ccf10fb542edc26d83c29791305ae485
+	provides = pathvalidate
+	source = https://files.pythonhosted.org/packages/source/p/pathvalidate/pathvalidate-2.3.0.tar.gz
+	sha256sums = 32d30dbacb711c16bb188b12ce7e9a46b41785f50a12f64500f747480a4b6ee3
 
 pkgname = python-pathvalidate
 
