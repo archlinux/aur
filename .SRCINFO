@@ -1,13 +1,15 @@
 pkgbase = repoctl-git
-	pkgdesc = A supplement to repo-add and repo-remove which simplifies managing local repositories
-	pkgver = 0.16.r39.g717a4e1
+	pkgdesc = An AUR helper that also simplifies managing local Pacman repositories (development version)
+	pkgver = 0.21.r0.g92ed55f
 	pkgrel = 1
 	url = https://github.com/cassava/repoctl
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = go
+	makedepends = xz
 	makedepends = git
 	depends = pacman
 	provides = repoctl
