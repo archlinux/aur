@@ -1,7 +1,6 @@
-pkgbase=flat-remix-kde-git
-pkgname=(flat-remix-kde-git)
+pkgname=flat-remix-kde-git
 _pkgname=flat-remix-kde
-pkgver=r31.56df739
+pkgver=r32.18ac464
 pkgrel=1
 pkgdesc="Flat Remix KDE themes"
 arch=(any)
@@ -13,8 +12,8 @@ sha256sums=('SKIP')
 makedepends=('git')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package_flat-remix-kde-git() {

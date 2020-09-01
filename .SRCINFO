@@ -1,6 +1,6 @@
 pkgbase = flat-remix-kde-git
 	pkgdesc = Flat Remix KDE themes
-	pkgver = r31.56df739
+	pkgver = r32.18ac464
 	pkgrel = 1
 	url = https://github.com/daniruiz/flat-remix-kde
 	arch = any
