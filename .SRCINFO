@@ -1,0 +1,16 @@
+pkgbase = instantpacman
+	pkgdesc = simple pacman GUI for instantOS
+	pkgver = 202008061239
+	pkgrel = 1
+	url = https://github.com/instantOS/instantpacman
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = instantmenu
+	provides = instantpacman
+	conflicts = instantpacman
+	source = instantpacman::git+https://github.com/instantOS/instantpacman.git
+	sha256sums = SKIP
+
+pkgname = instantpacman
+
