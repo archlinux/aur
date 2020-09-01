@@ -5,7 +5,7 @@ url='https://wiki.ros.org/robot_localization'
 pkgname='ros-melodic-robot-localization'
 pkgver='2.6.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf2-ros
@@ -17,6 +17,7 @@ ros_makedepends=(ros-melodic-tf2-ros
   ros-melodic-diagnostic-msgs
   ros-melodic-message-filters
   ros-melodic-message-generation
+  ros-melodic-nodelet
   ros-melodic-sensor-msgs
   ros-melodic-cmake-modules
   ros-melodic-catkin
@@ -28,7 +29,8 @@ ros_makedepends=(ros-melodic-tf2-ros
 makedepends=('ros-build-tools'
   ${ros_makedepends[@]}
   eigen
-  cmake)
+  cmake
+  yaml-cpp)
 
 ros_depends=(ros-melodic-tf2-ros
   ros-melodic-geographic-msgs
@@ -37,6 +39,7 @@ ros_depends=(ros-melodic-tf2-ros
   ros-melodic-geometry-msgs
   ros-melodic-std-msgs
   ros-melodic-message-runtime
+  ros-melodic-nodelet
   ros-melodic-diagnostic-msgs
   ros-melodic-message-filters
   ros-melodic-sensor-msgs
@@ -46,7 +49,8 @@ ros_depends=(ros-melodic-tf2-ros
   ros-melodic-tf2
   ros-melodic-eigen-conversions)
 depends=(${ros_depends[@]}
-  eigen)
+  eigen
+  yaml-cpp)
 
 _dir="robot_localization-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cra-ros-pkg/robot_localization/archive/${pkgver}.tar.gz")
