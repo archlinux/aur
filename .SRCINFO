@@ -8,6 +8,7 @@ pkgbase = vue-cli
 	makedepends = npm
 	depends = nodejs
 	conflicts = nodejs-vue-cli
+	conflicts = vue
 	noextract = vue-cli-4.5.4.tar.gz
 	source = vue-cli-4.5.4.tar.gz::https://registry.npmjs.org/@vue/cli/-/cli-4.5.4.tgz
 	sha1sums = 5c9ceb736a871813afe45278c32ce0e210f9eb24

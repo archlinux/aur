@@ -16,7 +16,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 optdepends=()
-conflicts=('nodejs-vue-cli')
+conflicts=('nodejs-vue-cli' 'vue')
 source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$_npmid/-/$_npmname-$pkgver.tgz")
 noextract=("${source[@]%%::*}")
 # Get SHASUM:  curl -s "https://registry.npmjs.org/@vue/cli" | jq '.versions."4.5.1".dist.shasum'
