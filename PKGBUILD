@@ -2,7 +2,7 @@
 
 pkgname=xchat-se
 pkgver=1.2.21
-pkgrel=3
+pkgrel=4
 pkgdesc="An xchat fork with a few different features"
 arch=('x86_64')
 #license=('unknown')
@@ -26,11 +26,16 @@ optdepends=('enchant: for spell checking support'
             'python2: for python plugin')
 
 package() {
-  cd "${srcdir}"
+  cd "${pkgdir}"
 
-  tar -xJf data.tar.xz -C "${pkgdir}"
+  bsdtar xf "${srcdir}/data.tar.xz"
+
+  # Move pkgconfig to proper location
+  mv "usr/lib/x86_64-linux-gnu/pkgconfig" "usr/lib/pkgconfig"
+  # We leave the xchat/plugins folder where it is
+  # because the path is hard-coded in the xchat binary
 
   # Remove extra keywords line from desktop file
-  sed -i '0,/^Keywords=.\+/! {/^Keywords=.\+/d}' "${pkgdir}/usr/share/applications/xchat.desktop"
-
+  # We probably don't need this any more but I'm gonna leave it here anyway ~MK
+  sed -i '0,/^Keywords=.\+/! {/^Keywords=.\+/d}' "usr/share/applications/xchat.desktop"
 }

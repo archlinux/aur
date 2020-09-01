@@ -1,7 +1,7 @@
 pkgbase = xchat-se
 	pkgdesc = An xchat fork with a few different features
 	pkgver = 1.2.21
-	pkgrel = 3
+	pkgrel = 4
 	url = https://xchat.servx.ru/
 	arch = x86_64
 	depends = gtk2
