@@ -2,7 +2,7 @@
 
 pkgname=dotbare
 pkgdesc="Manage your dotfiles interactively with fzf"
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 arch=("any")
 url="https://github.com/kazhala/dotbare"
@@ -16,7 +16,7 @@ optdepends=(
     'git-delta: Fancy git diff preview'
     'diff-so-fancy: Fancy git diff preview')
 source=("https://github.com/kazhala/dotbare/archive/v${pkgver}.tar.gz" "${pkgname}")
-md5sums=('d5d44dd0511102c16b70941618410a2f'
+md5sums=('d330aa1fe4b072e2ab6d8762d4d3be7f'
          'f6c62c573ace6e97e1948944cf6454cd')
 
 package() {
