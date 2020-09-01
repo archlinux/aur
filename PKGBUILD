@@ -34,7 +34,7 @@ prepare() {
 build() {
     cd "music-vue"
 
-    yarn build
+    yarn build -l dir
 }
 
 package() {
@@ -43,8 +43,9 @@ package() {
     install -d "${pkgdir}/usr/share/applications"
     install -d "${pkgdir}/usr/share/icons"
 
-    pacman -U "release/Music-${pkgver}.pacman"
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -Dm644 "icons/icon.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+
+    cp -r "release/linux-unpacked/"* "${pkgdir}/opt/${_pkgname}" -R
 }
