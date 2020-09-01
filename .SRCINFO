@@ -1,12 +1,12 @@
 pkgbase = rancher-cli-bin
 	pkgdesc = The Rancher Command Line Interface (CLI) is a unified tool to manage your Rancher server.
-	pkgver = 2.4.5
+	pkgver = 2.4.6
 	pkgrel = 1
 	url = https://github.com/rancher/cli
 	arch = x86_64
 	license = APACHE
-	source = https://github.com/rancher/cli/releases/download/v2.4.5/rancher-linux-amd64-v2.4.5.tar.xz
-	sha256sums = fb6d3ac4f31b0adc402a579210cd8b53cf61b18d67a61ee6cf735453028ca437
+	source = https://github.com/rancher/cli/releases/download/v2.4.6/rancher-linux-amd64-v2.4.6.tar.xz
+	sha256sums = d8fc168fb4c3bda693a4ea50a81e8bfd57caad0b412ab01742f5068ec82fe80e
 
 pkgname = rancher-cli-bin
 
