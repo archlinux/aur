@@ -1,13 +1,10 @@
 pkgbase = rime-jyutgaan
 	pkgdesc = Jyutgaan input for rime
 	pkgver = 0.0.0.20200811
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/redchenjs/rime-jyutgaan
 	arch = any
 	license = CCPL:cc-by
-	makedepends = librime
-	makedepends = rime-prelude
-	makedepends = rime-essay
 	depends = rime-cantonese
 	depends = rime-luna-pinyin
 	source = https://github.com/redchenjs/rime-jyutgaan/archive/d05a6a5eed5e02b16f29ef2de83efd74adf91430/rime-jyutgaan-d05a6a5eed5e02b16f29ef2de83efd74adf91430.tar.gz
