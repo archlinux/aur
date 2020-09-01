@@ -3,7 +3,7 @@
 pkgname=music-git
 _pkgname=music
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A syncable music player to download and listen to music"
 arch=('x86_64')
 url="https://github.com/Lutetium-Vanadium/Music-Vue"

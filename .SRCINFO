@@ -1,7 +1,7 @@
 pkgbase = music-git
 	pkgdesc = A syncable music player to download and listen to music
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lutetium-Vanadium/Music-Vue
 	arch = x86_64
 	license = GPL
