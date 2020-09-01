@@ -7,7 +7,7 @@ pkgdesc='Audio signal processing environment aimed at sound designers'
 arch=('any')
 url="http://ajaxsoundstudio.com/software/$pkgname"
 license=('GPL3')
-depends=('python>=3.6.0' 'python-pyo' 'python-numpy>=1.18' 'python-wxpython')
+depends=('python>=3.6.0' 'python-pyo>=1.0.3' 'python-numpy>=1.18' 'python-wxpython')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/belangeo/$_reponame/archive/$pkgver.tar.gz")
 sha256sums=('66063803e3f4935febabd975eca77b4dea17329ded939d72ab5bd5a53205b4fd')
 

@@ -6,7 +6,7 @@ pkgbase = cecilia
 	arch = any
 	license = GPL3
 	depends = python>=3.6.0
-	depends = python-pyo
+	depends = python-pyo>=1.0.3
 	depends = python-numpy>=1.18
 	depends = python-wxpython
 	source = cecilia-5.4.1-1.tar.gz::https://github.com/belangeo/cecilia5/archive/5.4.1.tar.gz
