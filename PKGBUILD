@@ -11,6 +11,21 @@ arch=('any')
 url='https://github.com/metakirby5/codi.vim'
 license=('MIT')
 depends=('vim')
+optdepends=(
+	'python: Python support',
+	'nodejs: JavaScript support',
+	'coffeescript: CoffeeScript support',
+	'ghc: Haskell support',
+	'ruby: Ruby support',
+	'ocaml: OCaml support',
+	'r: R support',
+	'clojure: Clojure support',
+	'php: PHP support',
+	'lua: Lua support',
+	'julia: Julia support',
+	'elixir: Elixir support',
+	'typescript: TypeScript support',
+)
 source=("git+https://github.com/metakirby5/$_pkgname")
 sha256sums=('SKIP')
 
