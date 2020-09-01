@@ -7,7 +7,7 @@ _srcname=linux-5.8
 _major=5.8
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=3
+_minor=5
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -36,14 +36,14 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('69db6692db126fe277a7c06d7930c87094743ca1f9fd91172b613985d824a98bfffe746f62c0abf2bb75fcc23b470396ccba396cc4664ad66fac355e0d37ee76'
+b2sums=('47d41b2d5a1c064f16bf49ad614b5cc7b4ab5668aaae113a6a63baed44ac85d751f5c812ab5e768cdd3f34a548cb5ad3261c4eef89294524fe439326bb732bd8'
         'SKIP'
-        '9d2913bbaf4afabd8f654abd0a2a3c62df043a613cbc2518944f5889d1a760ab6401e76d0b67b0cc9fbe05c8a0e280fe9b2ebf125f50ff5962f097956642fd8e'
+        '751cded511b08dd541cd6ae2365602068138641d4a6ade4205936dd1ec1de5a01441a2822afde25fd83004896e8ae02a70af37482dc4b09fa9fc52ca8bd05a8c'
         'SKIP'
-        '43284b02f435b4c2d7a77c1015bc934095dbef80630218fc9a6903fd7e6d8662073cd89948d9c290cd290dbd3368b308e4187f81045fd7bc6620efebe0723001'
+        'e01272bdeeca4c642be9af8c6796c5a2ac88188a378ce2dacc1bfb794287ac7a063de7ae9a0e8bd262dc667f2c4047685efa971185c0c8bf9eea565cc031a882'
         'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
-        'a9828cf991aaac1c926ecbdaf4c5ea6daa91c5d1d0bc3f339a6b5d99a17898be609fc64fba728b6c1431e2645cf600ec44b9f799560c3103bcec855d0ad55495'
-        '86d81cb04e8706336f796824bf8e47da6bc962ae680ac07f77728a4fb5bb4ee008060cd84b6aeedb073afee4b9c97b47bf4513ddb50c951af3cbf122995aa487')
+        '81cdb769c2e829e71ada51fdd97ff2a5ce129d2a556f8de69687e7dbab7705ca0725e6c01676c5aa38408caa9f50a6c864556ca5cc3eefb7ed2592d066aa1486'
+        '3d8d7849bee869adced3696c1bf4cb05ac3918ab73a9a28249a2869a370ece25564051b1e60af788b827f35c6021b548d8d577acaf1d39058db457a2c3e3b95b')
 
 
 export KBUILD_BUILD_HOST=archlinux

@@ -1,4 +1,4 @@
-From a7bb76b9ccdee2a1af7825b16cc0839a17ad7a5b Mon Sep 17 00:00:00 2001
+From 4e456a10768c64b2d2129b67caf21a7b79a1945b Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
 Date: Wed, 15 Jul 2020 22:42:07 +0200
 Subject: [PATCH 2/3] virt: vbox: Add support for the new
