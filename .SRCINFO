@@ -1,0 +1,22 @@
+pkgbase = ros-melodic-joint-state-publisher-gui
+	pkgdesc = ROS - This package contains a GUI tool for setting and publishing joint state values for a given URDF.
+	pkgver = 1.12.15
+	pkgrel = 1
+	url = h
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-joint-state-publisher
+	depends = ros-melodic-rospy
+	depends = ros-melodic-python-qt-binding
+	source = ros-melodic-joint-state-publisher-gui-1.12.15.tar.gz::https://github.com/ros-gbp/joint_state_publisher-release/archive/release/melodic/joint_state_publisher_gui/1.12.15.tar.gz
+	sha256sums = 6a73f48ab5d5d0a07635fb1e14b3f4ee64b06d76c937d09e17e571f20196cb33
+
+pkgname = ros-melodic-joint-state-publisher-gui
+
