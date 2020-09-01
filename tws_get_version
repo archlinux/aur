@@ -18,18 +18,17 @@ TDIR="$(mktemp -d -t twsdir.XXXX)" || exit 1
 trap "rm -rf ${TDIR}" exit
 cd "${TDIR}" || exit 1
 
-rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts
+rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/tws
 chmod +x ${ARG1}
 ${ARG1} -q &> /dev/null
-
-MAJORVER=`find $HOME/Jts -maxdepth 1 -type d -regex '.*/[0-9]*' -printf '%f'`
 
 TWS_HOME="${TDIR}/twshome"
 mkdir "${TWS_HOME}" || exit 1
 LOG="${TWS_HOME}/launcher.log"
 
-TWS_CP=`find ${HOME}/Jts/${MAJORVER}/jars -type f -name \*.jar -printf '%p:'`
-/usr/lib/jvm/java-8-openjdk/bin/java -cp "${TWS_CP}" jclient.LoginFrame "${TWS_HOME}" &
+TWS_CP=`find ${HOME}/tws/jars -type f -name \*.jar -printf '%p:'`
+
+/usr/sbin/xvfb-run -a -n 101 -s "-screen 0 7680x4320x24" /usr/lib/jvm/java-8-openjdk/bin/java -cp "${TWS_CP}" jclient.LoginFrame "${TWS_HOME}" &
 disown
 TWS_PID="$!"
 
@@ -43,7 +42,7 @@ done
 VERSION_LINE="$(timeout --preserve-status "${TWS_TIMEOUT}" grep -m1 --line-buffered " - Build" "${LOG}")"
 kill -9 "${TWS_PID}" &>/dev/null
 
-rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts
+rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/tws
 
 if test "${VERSION_LINE}" == ""; then
 	echo "could not grep version string" 1>&2
