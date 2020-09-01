@@ -1,11 +1,11 @@
 pkgbase = xchat-se
 	pkgdesc = An xchat fork with a few different features
 	pkgver = 1.2.21
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xchat.servx.ru/
 	arch = x86_64
 	depends = gtk2
-	depends = openssl
+	depends = openssl-1.0
 	depends = dbus-glib
 	depends = libnotify
 	optdepends = enchant: for spell checking support

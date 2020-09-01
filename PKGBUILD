@@ -2,7 +2,7 @@
 
 pkgname=xchat-se
 pkgver=1.2.21
-pkgrel=2
+pkgrel=3
 pkgdesc="An xchat fork with a few different features"
 arch=('x86_64')
 #license=('unknown')
@@ -17,7 +17,7 @@ md5sums=('16ef377b9e708a89968edf80f35c52ea'
          '8de528b549f6fffa56fb492162faed63')
 
 depends=('gtk2'
-         'openssl'
+         'openssl-1.0'
          'dbus-glib'
          'libnotify')
 optdepends=('enchant: for spell checking support'
