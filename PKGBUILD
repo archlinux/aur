@@ -2,7 +2,7 @@
 #Maintainer: William Leven <boogrocha@sidus.io>
 
 pkgname=boogrocha
-pkgver=r51.7f48f84
+pkgver=r74.11495d3
 pkgrel=1
 pkgdesc="A lightweight, easy to use application for managing your group room bookings at Chalmers University of Technology"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=(bgc)
 url="https://github.com/sidusio/boogrocha"
 license=("GPL3")
 makedepends=(git go)
-source=($pkgname::git+$url.git)
+source=($pkgname::git+$url.git#tag=1.0.2)
 sha256sums=('SKIP')
 
 pkgver() {
