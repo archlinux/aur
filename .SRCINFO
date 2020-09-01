@@ -1,0 +1,13 @@
+pkgbase = vim-codi-git
+	pkgdesc = The interactive scratchpad for hackers.
+	pkgver = r288.08e26f4
+	pkgrel = 1
+	url = https://github.com/metakirby5/codi.vim
+	arch = any
+	license = MIT
+	depends = vim
+	source = git+https://github.com/metakirby5/codi.vim
+	sha256sums = SKIP
+
+pkgname = vim-codi-git
+
