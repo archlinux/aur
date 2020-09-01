@@ -27,7 +27,7 @@ build() {
 package() {
 	install -Dm644 50-wally.rules "$pkgdir"/etc/udev/rules.d/50-wally.rules
 	install -Dm755 $srcdir/wally-$pkgver-linux/build/wally "$pkgdir"/usr/bin/wally-bin
-     echo "/usr/bin/wally-bin" > "$pkgdir"/usr/bin/wally
+     printf "#! /bin/bash \n /usr/bin/wally-bin\n" > "$pkgdir"/usr/bin/wally
      chmod uag+x "$pkgdir"/usr/bin/wally
      chmod -R uag+rw $srcdir
 }
