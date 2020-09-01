@@ -7,7 +7,7 @@ pkgbase = mod_auth_gssapi
 	arch = x86_64
 	license = custom
 	makedepends = gss-ntlmssp
-	depends = apache
+	depends = apache>=2.4
 	depends = krb5
 	optdepends = gss-ntlmssp: for NTLMSSP support
 	source = git+https://github.com/gssapi/mod_auth_gssapi.git#commit=75ac8df55b23e1907cd534d2716937579d6af027

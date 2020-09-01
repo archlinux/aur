@@ -6,7 +6,7 @@ pkgdesc="Kerberos authentication module for the Apache HTTP Server"
 arch=(i686 x86_64)
 url="https://github.com/gssapi/mod_auth_gssapi"
 license=(custom)
-depends=(apache krb5)
+depends=('apache>=2.4' krb5)
 optdepends=('gss-ntlmssp: for NTLMSSP support')
 makedepends=(gss-ntlmssp)
 _commit=75ac8df55b23e1907cd534d2716937579d6af027
