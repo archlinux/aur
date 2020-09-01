@@ -1,11 +1,10 @@
-# Maintainer: Chris Mullins <christopher.r.mullins gmail>
+# Maintainer: Naoya Yamashita <conao3/at/gmail.com>
+# Contributor: Chris Mullins <christopher.r.mullins gmail>
 
-_pkgname=bashcaster
-pkgname=${_pkgname}-git
-pkgver=r7.5c2e454
+pkgname=bashcaster
+pkgver=0.1
 pkgrel=1
-pkgdesc="Bashcaster is a simple script that uses ffmpeg to record screencasts to videos or GIFs. It can record the whole screen or a window. It can optionally optimize GIFs with gifsicle.
-"
+pkgdesc="Simple script that uses ffmpeg to record screencasts to videos or GIFs."
 arch=("any")
 
 url="https://github.com/alphapapa/bashcaster"
@@ -13,22 +12,14 @@ license=("GPL3")
 
 depends=("ffmpeg" "xorg-xprop" "xorg-xwininfo" "yad")
 optdepends=("gifsicle")
-makedepends=("git")
-conflicts=("${_pkgname}")
 
-source=(
-    "${_pkgname}::git+https://github.com/alphapapa/${_pkgname}.git"
-)
-sha512sums=(
-    "SKIP"
-)
-pkgver() {
-  cd "${_pkgname}"
-  printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+conflicts=("${pkgname}-git")
+
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=("e277c8773505f90f1462422cdf8c87340e5e4fafeaf7853761cbff891d0847724699b21a5d599aaccfed445d0d2435e398256e3b685a98955399cb3fa855342d")
 
 package() {
-    cd "${_pkgname}"
+    cd "${pkgname}-${pkgver}"
 
     install -m755 -D "bashcaster.sh" "$pkgdir/usr/bin/bashcaster"
     install -m644 -D "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
