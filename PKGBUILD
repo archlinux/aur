@@ -25,9 +25,7 @@ optdepends=('python-scikit-learn: learning'
 
 makedepends=('python-setuptools' )
 
-provides=('python-hyperspy')
 replaces=('hyperspy')
-conflicts=('python-hyperspy')
 
 source=(https://github.com/hyperspy/hyperspy/archive/v$pkgver.zip)
 sha256sums=('942294a6a6f76ccb55c510ca07293ef93b3fe4eedd37b840b9c88366624b2026')
