@@ -1,0 +1,15 @@
+pkgbase = memphis98-icon-theme-git
+	pkgdesc = Icon pack for KDE Plasma and LXQt based on famous Windows 98/2000 icons
+	pkgver = r32.2d0c5fe
+	pkgrel = 1
+	url = https://github.com/Stanton731/Memphis98
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/Stanton731/Memphis98
+	sha256sums = SKIP
+
+pkgname = memphis98-icon-theme-git
+	provides = memphis98-icon-theme
+
