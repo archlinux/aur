@@ -4,7 +4,7 @@ url='https://wiki.ros.org/fake_localization'
 pkgname='ros-melodic-fake-localization'
 pkgver='1.16.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -34,15 +34,8 @@ depends=(
 )
 
 _dir="navigation-${pkgver}/fake_localization"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz"
-        "boost-signal.patch")
-sha256sums=('88e3b4433de9645e1132db15b01f436a75a28ebc15cd5b70660b158dd6ba42dd'
-            'dade99251e09e5743adee6d5e0cfc4efc1c444341713894db0f9c21f4bb0d5d2')
-
-prepare() {
-    cd "${srcdir}/${_dir}"
-    patch -uN CMakeLists.txt ../../../boost-signal.patch || return 1
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
+sha256sums=('88e3b4433de9645e1132db15b01f436a75a28ebc15cd5b70660b158dd6ba42dd')
 
 build() {
 	# Use ROS environment variables.
