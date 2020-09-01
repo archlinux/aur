@@ -23,7 +23,7 @@ changelog=
 source=("git+$_url" "${_pkgname}.desktop")
 noextract=()
 md5sums=('SKIP'
-         '896d84073985bbbfdcf67ce5110bd933')
+         '6cb912bed64be522369371fee7087411')
 
 prepare() {
     cd "music-vue"

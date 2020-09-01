@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Music
-Exec=/opt/Music/music %U
+Exec=/opt/music/music %U
 Terminal=false
 Type=Application
 Icon=music
