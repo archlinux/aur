@@ -6,20 +6,22 @@
     pkgname='ros-melodic-libg2o'
     pkgver='2018.3.25'
     arch=('any')
-    pkgrel=1
+    pkgrel=2
     license=('BSD')
 
     ros_makedepends=()
     makedepends=('cmake' 'ros-build-tools'
     ${ros_makedepends[@]}
-    eigen3
+    eigen
+    glu
   boost
   mesa
   suitesparse)
 
     ros_depends=(ros-melodic-catkin)
     depends=(${ros_depends[@]}
-    eigen3
+    eigen
+    glu
   boost
   mesa
   suitesparse)
@@ -27,7 +29,7 @@
     # Tarball version (faster download)
     _dir="libg2o-release-release-melodic-libg2o"
     source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-gbp/libg2o-release/archive/release/melodic/libg2o/${pkgver}.tar.gz")
-    sha256sums=('c49b69b1843dc0c287720c1eb14380069612abe5f338c5f979a7099f6dde6db3')
+sha256sums=('c49b69b1843dc0c287720c1eb14380069612abe5f338c5f979a7099f6dde6db3')
 
     build() {
         # Use ROS environment variables
