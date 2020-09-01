@@ -1,0 +1,18 @@
+pkgbase = gog-hypnospace-outlaw
+	pkgdesc = Solve crimes on the 90s internet
+	pkgver = 2.25e
+	pkgrel = 1
+	url = http://www.hypnospace.net/
+	arch = x86_64
+	groups = games
+	groups = gog
+	license = custom
+	source = gog-hypnospace-outlaw
+	source = gog-hypnospace-outlaw.desktop
+	source = file://hypnospace_outlaw_2_25e_linux64_40816.sh
+	sha256sums = 9fcb50a4e213fe1a209221ab9ac99392b8be805cfe5966ea17d8e5e6f640c8e7
+	sha256sums = 395fb7e8199cbe728a6bae36cb608f4273921a1100f07f85a0147034fe3118b3
+	sha256sums = 615a68ab2f5a35f1f52c4d132366ba3ae2ca05bf829c148cc7a9bf41489e8f46
+
+pkgname = gog-hypnospace-outlaw
+

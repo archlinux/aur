@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Hypnospace Outlaw
+Comment=Solve crimes on the 90s internet
+Exec=gog-hypnospace-outlaw
+Icon=gog-hypnospace-outlaw
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;AudioVideo;
+Encoding=UTF-8
