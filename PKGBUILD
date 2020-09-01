@@ -1,7 +1,7 @@
 # Maintainer: Felix Golatofski <contact@xdfr.de>
 
 pkgname=freifunk-meet-desktop
-pkgver=2.0.25
+pkgver=2.0.26
 pkgrel=1
 pkgdesc="Freifunk Meet desktop application"
 arch=('x86_64')
@@ -19,7 +19,7 @@ backup=()
 options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/freifunkMUC/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'freifunk-meet-desktop.desktop')
-sha256sums=('0f91dc9f2fbef3d18be25a1bc47853156bef92abcb206a109f6ad8a1d31f9883'
+sha256sums=('ff610da326fff8fe7bbf8e41af00e1bc63586d0439590c147803f106e8bb4db4'
             '855d3b8031bfbb14d4bb02aaa9f2fe40ae77e0cc6eac4f1b918562f85b6c50f7')
 
 prepare() {
