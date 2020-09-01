@@ -1,6 +1,6 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 pkgname=carapace
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='multi-shell multi-command argument completer'
 arch=('x86_64')
