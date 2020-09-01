@@ -1,5 +1,4 @@
-pkgbase=akava-konsole-git
-pkgname=(akava-konsole-git)
+pkgname=akava-konsole-git
 _pkgname=Akava-Konsole
 pkgver=r3.56824cc
 pkgrel=1
@@ -13,8 +12,8 @@ sha256sums=('SKIP')
 makedepends=('git')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package_akava-konsole-git() {
