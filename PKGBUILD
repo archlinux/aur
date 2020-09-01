@@ -2,7 +2,7 @@
 
 pkgname=racon-git
 pkgver=1.4.13.r23.g9119181
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultrafast consensus module for raw de novo genome assembly"
 arch=('i686' 'x86_64')
 url="https://github.com/lbcb-sci/racon"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "racon"
 
-  git submodule update --init --recursive --jobs 10
+  git submodule update --init --recursive
 }
 
 pkgver() {
