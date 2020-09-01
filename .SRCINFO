@@ -1,0 +1,14 @@
+pkgbase = libupnp1.14
+	pkgdesc = A separate installation of libupnp 1.14 branch
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://pupnp.sourceforge.net/
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	provides = libupnp=1.14.0
+	source = https://downloads.sourceforge.net/sourceforge/pupnp/libupnp-1.14.0.tar.bz2
+	sha256sums = ecb23d4291968c8a7bdd4eb16fc2250dbacc16b354345a13342d67f571d35ceb
+
+pkgname = libupnp1.14
+
