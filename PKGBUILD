@@ -1,6 +1,6 @@
 pkgname=ntfs3-dkms
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NTFS3 is fully functional NTFS Read-Write driver by Paragon Software. Current version works with NTFS (including v3.1), normal/compressed/sparse files and supports journal replaying."
 arch=('any')
 url='https://www.paragon-software.com/'
