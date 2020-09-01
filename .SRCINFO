@@ -1,0 +1,16 @@
+pkgbase = mcmuse-circle-git
+	pkgdesc = A colorful design icon theme for linux desktops
+	pkgver = 28.7f63f468
+	pkgrel = 1
+	url = https://github.com/yeyushengfan258/McMuse-circle
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gtk-update-icon-cache
+	options = !strip
+	source = git+https://github.com/yeyushengfan258/McMuse-circle
+	sha256sums = SKIP
+
+pkgname = mcmuse-circle-git
+	provides = mcmuse-circle
+
