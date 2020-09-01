@@ -1,6 +1,6 @@
 pkgname=we10x-icon-theme-git
 _pkgname=We10X-icon-theme
-pkgver=28.7f63f468
+pkgver=r35.3391e42
 pkgrel=1
 pkgdesc="A colorful design icon theme for linux desktops"
 arch=('any')
