@@ -5,12 +5,10 @@ pkgver=1.2.21
 pkgrel=4
 pkgdesc="An xchat fork with a few different features"
 arch=('x86_64')
-#license=('unknown')
-url="https://xchat.servx.ru/"
+url="https://xchat.servx.org/"
 options=('!strip')
 provides=("xchat")
 conflicts=('xchat')
-# https://xchat.servx.ru/linux
 source=('https://xchat.servx.org/linux/x86_64/linuxmint/stable/18/xchat-se_1.2.21-1_amd64.deb'
         'xchat-se.install')
 md5sums=('16ef377b9e708a89968edf80f35c52ea'
