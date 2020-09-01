@@ -1,7 +1,7 @@
 pkgbase = owncloud
 	pkgdesc = Securely access and share data from everywhere and any device
-	pkgver = 10.4.1
-	pkgrel = 4
+	pkgver = 10.5.0
+	pkgrel = 1
 	url = https://owncloud.org/
 	arch = any
 	license = GPL
@@ -20,18 +20,18 @@ pkgbase = owncloud
 	replaces = owncloud-app-gallery
 	options = !strip
 	backup = etc/webapps/owncloud/apache.example.conf
-	source = https://download.owncloud.org/community/owncloud-10.4.1.tar.bz2
-	source = https://download.owncloud.org/community/owncloud-10.4.1.tar.bz2.asc
+	source = https://download.owncloud.org/community/owncloud-10.5.0.tar.bz2
+	source = https://download.owncloud.org/community/owncloud-10.5.0.tar.bz2.asc
 	source = apache.example.conf
 	source = owncloud.hook
 	validpgpkeys = E3036906AD9F30807351FAC32D5D5E97F6978A26
 	validpgpkeys = DDA2C105C4B73A6649AD2BBD47AE7F72479BC94B
-	sha256sums = 63f32048225c6bc4534c6757e8beee65fc845a35126899e85d787a3ba4073d48
+	sha256sums = 35232c0564cdb2140134563f339c6404bfb3d6133c54152cfaf207ce31aa1df1
 	sha256sums = SKIP
 	sha256sums = e19149bbe2fef90d2d669ca8912104f6cf3c435a6c19610b00c844230190f0fb
 	sha256sums = fae2a021055a7bcf2ceece645e15a921aecefab088583a3f8c4d7d969578a36e
 
 pkgname = owncloud
-	depends = php<7.4.0
+	depends = php
 	depends = php-gd
 

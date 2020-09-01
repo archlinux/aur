@@ -5,8 +5,8 @@
 # Based on owncloud-git PKGBUILD by Alexander Ovsyannikov
 
 pkgname=owncloud
-pkgver=10.4.1
-pkgrel=4
+pkgver=10.5.0
+pkgrel=1
 pkgdesc="Securely access and share data from everywhere and any device"
 arch=('any')
 url="https://owncloud.org/"
@@ -33,13 +33,13 @@ source=("https://download.owncloud.org/community/owncloud-${pkgver}.tar.bz2"{,.a
         'apache.example.conf'
 	'owncloud.hook'
 )
-sha256sums=('63f32048225c6bc4534c6757e8beee65fc845a35126899e85d787a3ba4073d48'
+sha256sums=('35232c0564cdb2140134563f339c6404bfb3d6133c54152cfaf207ce31aa1df1'
             'SKIP'
             'e19149bbe2fef90d2d669ca8912104f6cf3c435a6c19610b00c844230190f0fb'
             'fae2a021055a7bcf2ceece645e15a921aecefab088583a3f8c4d7d969578a36e')
 
 package() {
-    depends=('php<7.4.0' 'php-gd')
+    depends=('php' 'php-gd')
 
     # install project
     install -d "$pkgdir"/usr/share/webapps/
