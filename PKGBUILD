@@ -11,8 +11,8 @@ url='https://github.com/ptomato/jasmine-gjs'
 license=('MIT')
 depends=('gjs')
 makedepends=('git' 'meson')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("jasmine")
+conflicts=("jasmine-gjs")
 source=("$pkgname::git+https://github.com/ptomato/jasmine-gjs.git")
 sha256sums=('SKIP')
 
