@@ -64,9 +64,7 @@ md5sums=(
 #options=(!strip)
 
 prepare () {
-    ( cd swift && patch -p1 -i "$srcdir/0001-not-build-ninja-icu.patch" )
-    ( cd swift && patch -p1 -i "$srcdir/0003-swift-python2-as-fallback-only.patch" )
-    ( cd swift && patch -p1 -i "$srcdir/0005-duplicate-term-module.patch" )
+    ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
 }
 
 pkgver() {
