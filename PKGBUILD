@@ -1,5 +1,4 @@
-pkgbase=vimix-kde-git
-pkgname=(vimix-kde-git)
+pkgname=vimix-theme-kde-git
 _pkgname=vimix-kde
 pkgver=r35.8ecc8db
 pkgrel=1
@@ -13,16 +12,19 @@ sha256sums=('SKIP')
 makedepends=('git')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package_vimix-kde-git() {
+shopt -s extglob
+
+package_vimix-theme-kde-git() {
     provides=('vimix-kde')
     conflicts=('kvantum-theme-vimix-git')
     optdepends=('vimix-cursors: Matching cursor theme'
                 'vimix-gtk-themes: Matching GTK theme'
-                'vimix-icon-theme: Matching icon theme')
+                'vimix-icon-theme: Matching icon theme'
+                'grub2-theme-vimix-git: Matching grub theme')
 
     cd $_pkgname
 
@@ -32,7 +34,7 @@ package_vimix-kde-git() {
     mkdir -p "${pkgdir}/usr/share/plasma/desktoptheme"
     mkdir -p "${pkgdir}/usr/share/sddm"
 
-    cp -r plasma/desktoptheme/{Vimix,Vimix-Amethyst,Vimix-Beryl-Blur,Vimix-Beryl,Vimix-Blur,Vimix-Doder-Blur,Vimix-Doder,Vimix-Ruby,Vimix-Ruby-Blur} "${pkgdir}/usr/share/plasma/desktoptheme"
+    cp -r plasma/desktoptheme/!(icons) "${pkgdir}/usr/share/plasma/desktoptheme"
     cp -r aurorae/* "${pkgdir}/usr/share/aurorae/themes"
     cp -r color-schemes "${pkgdir}/usr/share"
     cp -r plasma/look-and-feel "${pkgdir}/usr/share/plasma"
