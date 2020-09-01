@@ -1,5 +1,5 @@
 pkgbase = hyperspy-link-traits
-	pkgdesc = A fork to traitlets' link and dlink to link traits in addition to traitlets.
+	pkgdesc = Replaced by python-link-traits! (A fork to traitlets' link and dlink to link traits in addition to traitlets.)
 	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/hyperspy/link_traits
