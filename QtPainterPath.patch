@@ -1,0 +1,20 @@
+--- a/src/qt/trafficgraphwidget.cpp	2020-08-31 22:44:52.871926632 -0400
++++ b/src/qt/trafficgraphwidget.cpp	2020-08-31 22:44:57.071990322 -0400
+@@ -8,6 +8,7 @@
+ 
+ #include <QColor>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QTimer>
+ 
+ #include <cmath>
+--- a/src/qt/transactiongraphwidget.cpp 22:42:15.162827802 -0400
++++ b/src/qt/transactiongraphwidget.cpp	2020-08-31 22:42:24.322971462 -0400
+@@ -8,6 +8,7 @@
+ 
+ #include <QColor>
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ #include <cmath>
+ 

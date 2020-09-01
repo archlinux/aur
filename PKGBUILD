@@ -2,7 +2,7 @@
 # Contributor: redfish <redfish at galactica.pw>
 
 pkgname=bitcoin-unlimited
-pkgver=1.8.0.0
+pkgver=1.9.0.0
 _pkgbase=BitcoinUnlimited-BCHunlimited${pkgver}
 pkgrel=1
 pkgdesc='Bitcoin Unlimited Cash (BCH) versions of Bitcoind, bitcoin-cli, 
@@ -16,13 +16,16 @@ makedepends=('boost' 'qt5-tools')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-unlimited-git' 'bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 source=("https://github.com/BitcoinUnlimited/BitcoinUnlimited/archive/BCHunlimited${pkgver}.tar.gz"
-	include-stack.patch)
+	include-stack.patch
+	QtPainterPath.patch)
 install=$pkgname.install
 
 prepare() {
   cd "$srcdir/$_pkgbase"
   # fix compilation error
   patch -p1 < ../include-stack.patch
+  # PR 2251
+  patch -p1 < ../QtPainterPath.patch
 }
 
 build() {
@@ -52,5 +55,6 @@ package() {
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
-sha256sums=('c18b390348097c27772a9b1857d4646597b178c6c4cc6945c5ee6130ac075b55'
-            '21b21e4f9c541d8412b5125e3d53e943b4794b5247f34f50bb84eaa1757cf9e0')
+sha256sums=('e05a13abf5554479ea6e02f9355d9a636bd3c73e50db4db99ced35ea9550af9a'
+            '21b21e4f9c541d8412b5125e3d53e943b4794b5247f34f50bb84eaa1757cf9e0'
+            '4f0a85b972a3b6a986b4c9a17da7b1fdf7c7c22f38588057c191d90db84ed3a8')

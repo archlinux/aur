@@ -1,6 +1,6 @@
 pkgbase = bitcoin-unlimited
 	pkgdesc = Bitcoin Unlimited Cash (BCH) versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, w/GUI and wallet
-	pkgver = 1.8.0.0
+	pkgver = 1.9.0.0
 	pkgrel = 1
 	url = http://www.bitcoinunlimited.info
 	install = bitcoin-unlimited.install
@@ -28,10 +28,12 @@ pkgbase = bitcoin-unlimited
 	conflicts = bitcoin-cli
 	conflicts = bitcoin-qt
 	conflicts = bitcoin-tx
-	source = https://github.com/BitcoinUnlimited/BitcoinUnlimited/archive/BCHunlimited1.8.0.0.tar.gz
+	source = https://github.com/BitcoinUnlimited/BitcoinUnlimited/archive/BCHunlimited1.9.0.0.tar.gz
 	source = include-stack.patch
-	sha256sums = c18b390348097c27772a9b1857d4646597b178c6c4cc6945c5ee6130ac075b55
+	source = QtPainterPath.patch
+	sha256sums = e05a13abf5554479ea6e02f9355d9a636bd3c73e50db4db99ced35ea9550af9a
 	sha256sums = 21b21e4f9c541d8412b5125e3d53e943b4794b5247f34f50bb84eaa1757cf9e0
+	sha256sums = 4f0a85b972a3b6a986b4c9a17da7b1fdf7c7c22f38588057c191d90db84ed3a8
 
 pkgname = bitcoin-unlimited
 
