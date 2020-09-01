@@ -1,6 +1,6 @@
 pkgbase = we10x-icon-theme-git
 	pkgdesc = A colorful design icon theme for linux desktops
-	pkgver = 28.7f63f468
+	pkgver = r35.3391e42
 	pkgrel = 1
 	url = https://github.com/yeyushengfan258/We10X-icon-theme
 	arch = any
