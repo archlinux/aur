@@ -2,7 +2,7 @@
 # vim: set ts=2 sw=2:
 pkgname=repoctl
 pkgver=0.21
-pkgrel=2
+pkgrel=3
 pkgdesc="An AUR helper that also simplifies managing local Pacman repositories"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/cassava/repoctl"
@@ -31,11 +31,6 @@ build() {
   ./repoctl completion zsh > completion.zsh
   ./repoctl completion bash > completion.bash
   ./repoctl completion fish > completion.fish
-}
-
-check() {
-  cd "$pkgname-$pkgver"
-  go test ./...
 }
 
 package() {
