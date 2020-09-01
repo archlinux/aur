@@ -1,7 +1,7 @@
 pkgbase = racon
 	pkgdesc = Ultrafast consensus module for raw de novo genome assembly
 	pkgver = 1.4.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lbcb-sci/racon
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,6 @@ pkgbase = racon
 	makedepends = git
 	makedepends = cmake
 	depends = gcc-libs
-	provides = racon
-	conflicts = racon
 	source = git+https://github.com/lbcb-sci/racon.git#tag=1.4.13
 	sha256sums = SKIP
 
