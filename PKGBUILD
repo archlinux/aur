@@ -3,7 +3,7 @@
 
 pkgname='papirus-folders'
 pkgver=1.8.0
-pkgrel=3
+pkgrel=1
 pkgdesc='Change Papirus icon theme folder colors'
 arch=('x86_64')
 url='https://github.com/PapirusDevelopmentTeam/papirus-folders'
