@@ -2,7 +2,7 @@
 # Maintainer: Mado <madoushi@tutanota.com>
 
 pkgname=etterna
-pkgver=0.69.1
+pkgver=0.70.3
 pkgrel=1
 pkgdesc="A advanced cross-platform rhythm game focused on keyboard play"
 arch=('i686' 'x86_64')
@@ -19,17 +19,21 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/etternagame/${pkgname}/archive/v${pkgver}.tar.gz"
     "${pkgname}.desktop"
 )
-sha256sums=(
-    "b5c9363498f3abc923e403cc096a7b9504dbead3b0eeb40c32f56068b72c59b9"
-    "7b497e7d3d74c2f3ebf1634fe0b576603099c372f7787a21646976d76e0e0995"
+sha256sums=('SKIP'
+            '7b497e7d3d74c2f3ebf1634fe0b576603099c372f7787a21646976d76e0e0995'
 )
+
+prepare() {
+    cd "$srcdir/${pkgname}-${pkgver}"
+    sed -i CMakeLists.txt -e 's/\(set(OPENSSL_USE_STATIC_LIBS\) ON/\1 OFF/'
+}
+
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}" || exit 2
-  
-  mkdir -p build
-  cd build
-  cmake -G 'Unix Makefiles' ..
-  make
+    cd "${srcdir}/${pkgname}-${pkgver}" || exit 2
+    mkdir -p build
+    cd build
+    cmake -G 'Unix Makefiles' ..
+    make
 }
 
 package() {
@@ -47,8 +51,9 @@ package() {
         "NoteSkins/" \
         "Scripts/" \
         "Songs/" \
-        "Themes/" 
-        
+        "Themes/" \
+        "portable.ini"
+    
     install -Dm644 "CMake/CPack/Windows/Install.ico" "$pkgdir/opt/${pkgname}/icon.ico" 
 
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -64,7 +69,4 @@ package() {
         "Scripts/" \
         "Songs/" \
         "Themes/"
-    
-    touch portable.ini
-
 }

@@ -1,7 +1,7 @@
 function post_upgrade {
     test -d ~/.stepmania-5.0/Save && cp -ar ~/.stepmania-5.0/Save/ /opt/etterna/
+#rm -rf /opt/etterna/Cache
 }
-
 function post_remove {
     echo "Etterna has been uninstalled - all data in /opt/etterna is gone forever!"
 }
