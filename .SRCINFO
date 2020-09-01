@@ -1,0 +1,24 @@
+pkgbase = nanopolish
+	pkgdesc = Provide signal-level analysis of Oxford Nanopore sequencing data
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = https://github.com/jts/nanopolish
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = eigen
+	makedepends = wget
+	depends = glibc
+	depends = hdf5
+	depends = htslib
+	depends = zlib
+	source = git+https://github.com/jts/nanopolish.git#tag=v0.13.2
+	source = 0001-Fix-include-path-for-system-installed-eigen-library.patch::https://github.com/jts/nanopolish/commit/d8ba7166c44fff433458d2ec7b0f4f01578455be.patch
+	source = 0002-Allow-users-to-supply-htslib-include-path-from-comma.patch::https://github.com/jts/nanopolish/commit/90401e399fbd818f699fbba73a304337737d506e.patch
+	sha256sums = SKIP
+	sha256sums = 8863f56ef51672a4c6c50aeaea2e0e1b866a06bf4d4ca14006680f698e795a26
+	sha256sums = 99fc545490b0be901e3116274692172c9f3e3cb3984fc808b61febc9622cfde1
+
+pkgname = nanopolish
+
