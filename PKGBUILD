@@ -5,7 +5,7 @@
 # Contributor: Alessandro Pazzaglia <jackdroido at gmail dot com>
 pkgname=pyinstaller
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bundles a Python application and all its dependencies into a single package"
 arch=('i686' 'x86_64')
 url="https://github.com/pyinstaller/pyinstaller"
@@ -16,11 +16,13 @@ makedepends=('python-setuptools')
 #              'python-psutil' 'python-lxml') #'python-flake8-diff'
 optdepends=('python-pycrypto: bytecode encryption support'
             'upx: executable compression support')
-source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz" #{,.asc})
-        "https://keys.openpgp.org/vks/v1/by-fingerprint/B943509D633E80DD27FC4EED634A8DFFD3F631DF")
+source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
+##        "https://keys.openpgp.org/vks/v1/by-fingerprint/B943509D633E80DD27FC4EED634A8DFFD3F631DF"
+        )
 sha256sums=('970beb07115761d5e4ec317c1351b712fd90ae7f23994db914c633281f99bab0'
-            'cafd68eb7cdafa4717e7bf577e7edf2da5175669bc53258a5cff99846889dfe5')
-validpgpkeys=('B943509D633E80DD27FC4EED634A8DFFD3F631DF')
+#            'cafd68eb7cdafa4717e7bf577e7edf2da5175669bc53258a5cff99846889dfe5'
+            )
+#validpgpkeys=('B943509D633E80DD27FC4EED634A8DFFD3F631DF')
 
 build() {
 	cd "$pkgname-$pkgver"
