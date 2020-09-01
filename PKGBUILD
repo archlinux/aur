@@ -4,16 +4,17 @@
 
 _pkgname=htop
 pkgname=${_pkgname}-dev-git
-pkgver=3.0.0.r4.g2d14269
+pkgver=3.0.0.r31.gf5b3e8d
 pkgrel=1
-pkgdesc="htop - an interactive process viewer"
+pkgdesc="htop - an interactive process viewer, full-featured"
 url="https://github.com/htop-dev/${_pkgname}"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('ncurses')
+depends=('ncurses' 'libnl' 'libncursesw.so' )
 makedepends=('git' 'python')
 optdepends=('lsof: list open files for running process'
-            'strace: attach to running process')
+            'strace: attach to running process'
+            'hwloc: Portable Hardware Locality')
 provides=('htop')
 conflicts=('htop' 'htop-git')
 options=('!emptydirs')
@@ -31,11 +32,17 @@ prepare() {
   ./configure \
       --prefix=/usr \
       --sysconfdir=/etc \
-      --enable-cgroup \
-      --enable-delayacct \
+      --enable-werror \
       --enable-openvz \
+      --enable-cgroup \
+      --enable-vserver \
+      --enable-ancient-vserver \
+      --enable-taskstats \
       --enable-unicode \
-      --enable-vserver
+      --enable-linux-affinity \
+      --enable-hwloc \
+      --enable-setuid \
+      --enable-delayacct
 }
 
 build() {
