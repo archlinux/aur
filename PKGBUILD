@@ -4,9 +4,9 @@
 
 pkgname=webmin
 pkgver=1.955
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-based administration interface for Unix systems"
-arch=(x86_64)
+arch=(any)
 license=('custom:webmin')
 url="http://www.webmin.com/"
 depends=('perl' 'perl-net-ssleay' 'perl-authen-pam' 'perl-encode-detect' 'openssl')
