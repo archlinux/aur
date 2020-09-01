@@ -1,7 +1,7 @@
 # Maintainer: paperbenni <paperbenni@gmail.com>
 pkgname=instantassist
 _pkgname=instantassist
-pkgver=202007231645
+pkgver=202008180055
 pkgrel=1
 pkgdesc="a bunch of shortcuts for instantOS"
 url="https://github.com/instantos/instantassist"
