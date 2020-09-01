@@ -1,13 +1,10 @@
 pkgbase = rime-zijinmaa
 	pkgdesc = Zijinmaa input for rime
 	pkgver = 0.0.0.20200813
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/redchenjs/rime-zijinmaa
 	arch = any
 	license = CCPL:cc-by
-	makedepends = librime
-	makedepends = rime-prelude
-	makedepends = rime-essay
 	depends = rime-cantonese
 	depends = rime-luna-pinyin
 	source = https://github.com/redchenjs/rime-zijinmaa/archive/1768938f1bd05fa89fc600003dd933343673e405/rime-zijinmaa-1768938f1bd05fa89fc600003dd933343673e405.tar.gz
