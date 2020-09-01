@@ -1,5 +1,4 @@
-pkgbase=akava-colors-git
-pkgname=(akava-colors-git)
+pkgname=akava-colors-git
 _pkgname=Akava-Colors
 pkgver=r10.9a49c6f
 pkgrel=1
@@ -13,8 +12,8 @@ sha256sums=('SKIP')
 makedepends=('git')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package_akava-colors-git() {
