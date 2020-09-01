@@ -6,7 +6,7 @@ url='https://wiki.ros.org/stage'
 pkgname='ros-melodic-stage'
 pkgver='4.3.0'
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('GPL')
 
 ros_makedepends=()
@@ -14,6 +14,7 @@ makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   fltk
   libjpeg-turbo
+  glu
   gtk2
   libtool
   mesa
@@ -23,6 +24,7 @@ ros_depends=(ros-melodic-catkin)
 depends=(${ros_depends[@]}
   libjpeg-turbo
   mesa
+  glu
   fltk
   gtk2)
 
