@@ -1,6 +1,6 @@
 pkgbase = gitstatus-git
 	pkgdesc = Git status for Bash and Zsh prompt
-	pkgver = r1313.89e9ebf
+	pkgver = r1321.3f874d9
 	pkgrel = 1
 	url = https://github.com/romkatv/gitstatus
 	install = gitstatus.install
