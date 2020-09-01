@@ -2,12 +2,12 @@
 
 pkgname=htslib-git
 pkgver=1.10.2.r134.ge9447f86
-pkgrel=1
+pkgrel=2
 pkgdesc="C library for high-throughput sequencing data formats"
 arch=('i686' 'x86_64')
 url="https://github.com/samtools/htslib"
 license=('custom')
-depends=('glibc' 'bzip2' 'curl')
+depends=('glibc' 'bzip2' 'curl' 'openssl' 'xz')
 makedepends=('git')
 provides=('htslib')
 conflicts=('htslib')
@@ -29,7 +29,9 @@ build() {
   ./configure \
     --prefix="/usr" \
     --enable-plugins \
-    --with-plugin-dir="/usr/lib/htslib/plugins"
+    --with-plugin-dir="/usr/lib/htslib/plugins" \
+    --enable-gcs \
+    --enable-s3
   make
 }
 
