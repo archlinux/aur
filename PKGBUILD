@@ -15,13 +15,13 @@ url="http://love2d.org/"
 license=('zlib')
 depends=('desktop-file-utils' 'devil' 'freetype2' 'hicolor-icon-theme' 'libmodplug' 'libvorbis' 'luajit' 'mpg123' 'openal' 'physfs' 'sdl' 'shared-mime-info' 'libgl')
 install=$pkgname.install
-source=("https://bitbucket.org/rude/love/downloads/love-${pkgver}-linux-src.tar.gz"
-        "https://bitbucket.org/rude/love/raw/$pkgver/license.txt"
-        "https://bitbucket.org/rude/love/raw/$pkgver/platform/unix/app.svg"
-        "https://bitbucket.org/rude/love/raw/$pkgver/platform/unix/game.svg"
+source=("https://github.com/love2d/love/releases/download/0.7.2/love-0.7.2-linux-src.tar.gz"
+        "https://raw.githubusercontent.com/love2d/love/0.7.2/license.txt"
+        "https://raw.githubusercontent.com/love2d/love/0.7.2/platform/unix/app.svg"
+        "https://raw.githubusercontent.com/love2d/love/0.7.2/platform/unix/game.svg"
         "love.desktop"
         "love07.patch"
-        "https://bitbucket.org/rude/love/raw/$pkgver/platform/unix/love.xml")
+        "https://raw.githubusercontent.com/love2d/love/0.7.2/platform/unix/love.xml")
 sha256sums=('a57adcb0cbdc390a9bd8e2fe477bc175799b9ffd3486e01f859a36bf27f7f268'
             'c4cb43c06ab89c84349704a62849e9e66bf0c245e8a4df4f9068204124de1845'
             'b8116c4cc8d7b80adba579b582b9570d8178f93d3d9e35977d621e03500b8a7f'
