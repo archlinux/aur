@@ -14,7 +14,9 @@ pkgbase = portfolio
 	depends = java-runtime>=8
 	depends = webkit2gtk
 	source = https://github.com/buchen/portfolio/archive/0.48.0.tar.gz
+	source = https://github.com/buchen/portfolio/commit/7aedac92d7e27a4cdc4659bd84eef7b5a0de019d.patch
 	sha1sums = d24d037fae92b0f1e15c70993b87ebfb670b5807
+	sha1sums = de4b22f3b32b39811f0eedba0e4d94b2dc5a62ed
 
 pkgname = portfolio
 
