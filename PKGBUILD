@@ -3,17 +3,17 @@
 
 _gemname=nn-core
 pkgname=ruby-$_gemname
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Wraps the nanomsg networking library using Ruby FFI (foreign function interface).'
 arch=(any)
 url='http://github.com/chuckremes/nn-core'
 license=()
-depends=(ruby ruby-ffi)
+depends=(ruby ruby-ffi ruby-rake)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('ed2011e555ce0bc3544be7a2322b1e6c61a836b6')
+sha1sums=('e1f9920af837ae424555d86adf88db3bd9399c8f')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
