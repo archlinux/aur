@@ -1,15 +1,15 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=msgpack-erlang
-pkgver=0.3.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="MessagePack (de)serializer implementation for Erlang"
 arch=('any')
 url="https://github.com/msgpack/msgpack-erlang/"
 source=("https://github.com/msgpack/$pkgname/archive/$pkgver.tar.gz")
 license=('Apache')
-makedepends=('rebar' 'git' 'erlang-nox')
-md5sums=('01a1518095861b132d63878bea7a4ca8')
+makedepends=('rebar3' 'git' 'erlang-nox')
+md5sums=('94f1ab3b0a3daf442817de6fdf730102')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -20,5 +20,5 @@ package(){
   _destdir="$pkgdir"/usr/lib/erlang/lib/riakc
   mkdir -p "$_destdir"
   cd "$srcdir/$pkgname-$pkgver"
-  cp -R ebin src test include "$_destdir"
+  cp -R src test "$_destdir"
 }
