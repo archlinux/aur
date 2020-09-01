@@ -1,8 +1,8 @@
 pkgbase = gss-ntlmssp
 	pkgdesc = A GSSAPI Mechanism that implements NTLMSSP
-	pkgver = 0.8.0.r3.g2251a72
+	pkgver = 0.9.0
 	pkgrel = 1
-	url = https://pagure.io/gssntlmssp
+	url = https://github.com/gssapi/gss-ntlmssp
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -13,7 +13,7 @@ pkgbase = gss-ntlmssp
 	depends = libunistring
 	depends = libwbclient
 	depends = openssl
-	source = git+https://pagure.io/gssntlmssp.git#commit=2251a7224f488ac20604b6a12ccfe30d99170ef2
+	source = git+https://github.com/gssapi/gss-ntlmssp#commit=c22160db77b2e0cd931b0213feb3744348cfdace
 	sha256sums = SKIP
 
 pkgname = gss-ntlmssp
