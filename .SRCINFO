@@ -10,6 +10,7 @@ pkgbase = arrow
 	makedepends = boost
 	makedepends = cmake
 	makedepends = flatbuffers
+	makedepends = gmock
 	makedepends = python-numpy
 	depends = boost-libs
 	depends = brotli

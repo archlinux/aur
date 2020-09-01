@@ -13,7 +13,7 @@ checkdepends=('git')
 optdepends=()
 provides=('parquet-cpp')
 conflicts=('parquet-cpp')
-makedepends=('apache-orc' 'boost' 'cmake' 'flatbuffers' 'python-numpy')
+makedepends=('apache-orc' 'boost' 'cmake' 'flatbuffers' 'gmock' 'python-numpy')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz"
   "cmake.patch")
 sha256sums=('dac59f4d42416224419c020ed2e8f8371e85c1d9ff4368ed5b5c026ee28d3fd4'
@@ -50,8 +50,7 @@ build(){
                                       -DARROW_GFLAGS_USE_SHARED=ON \
                                       -DARROW_USE_GLOG=ON \
                                       -DARROW_WITH_ZSTD=ON \
-                                      -DARROW_WITH_BROTLI=ON \
-                                      -DGTest_SOURCE=BUNDLED
+                                      -DARROW_WITH_BROTLI=ON
   make
 }
 
