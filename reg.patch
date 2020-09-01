@@ -1,0 +1,11 @@
+diff --color -ruN reg_tmp/user.reg reg_tmp_fixed/user.reg
+--- reg_tmp/user.reg	2020-09-01 11:44:36.513202681 +0800
++++ reg_tmp_fixed/user.reg	2020-09-01 11:45:49.973202202 +0800
+@@ -1748,6 +1748,7 @@
+ "SimHei"=str(7):"Source Han Sans SC Regular\0Noto Sans CJK SC Regular\0WenQuanYi Micro Hei\0"
+ "SimKai"=str(7):"Source Han Sans SC Regular\0Noto Sans CJK SC Regular\0WenQuanYi Micro Hei\0"
+ "SimSun"=str(7):"Source Han Sans SC Regular\0Noto Sans CJK SC Regular\0WenQuanYi Micro Hei\0"
++"STXihei"=str(7):"Source Han Sans SC Regular\0Noto Sans CJK SC Regular\0WenQuanYi Micro Hei\0"
+ "\x4eff\x5b8b"=str(7):"Source Han Sans SC Regular\0Noto Sans CJK SC Regular\0WenQuanYi Micro Hei\0"
+ "\x4eff\x5b8b_GB2312"=str(7):"Source Han Sans SC Regular\0Noto Sans CJK SC Regular\0WenQuanYi Micro Hei\0"
+ "\x5b8b\x4f53"=str(7):"Source Han Sans SC Regular\0Noto Sans CJK SC Regular\0WenQuanYi Micro Hei\0"

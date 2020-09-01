@@ -15,7 +15,9 @@ pkgbase = com.qq.tim.dcs
 	optdepends = ttf-ms-fonts: Microsoft Core fonts
 	optdepends = noto-fonts-cjk: Google Noto CJK fonts
 	source = http://dcstore.shenmo.tech/store/chat/com.qq.tim.dcs/com.qq.tim.dcs_3.1.0.21789_i386.deb
+	source = reg.patch
 	sha512sums = 84de5249869940898324977c7312f1ad61567748fb4a6b5a513da64b1308fbad98bcb6af7a87a9c39a9284d97b96a9f3901abcb9d296b0ef778df051792ccdfe
+	sha512sums = 8d5f49ec2867e91fac30a2af417520a0d9502fa29195136b2fd03d734d23b1db33a704363be1311a7457ed2988f1389495016548d57cd4643a7abda582292032
 
 pkgname = com.qq.tim.dcs
 
