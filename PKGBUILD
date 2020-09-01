@@ -1,18 +1,17 @@
-# Maintainer: Gabriele Musco <emaildigabry@gmail.com>
-# Upstream URL: https://gitlab.com/gabmus/hydrapaper
+# Maintainer: Gabriele Musco <gabmus@disroot.org>
+# Upstream URL: https://gitlab.gnome.org/gabmus/hydrapaper
 
 pkgname=hydrapaper-git
-pkgver=1.12.r0.g75282bc
+pkgver=2.0.r0.g878fdf8
 pkgrel=1
-pkgdesc='Wallpaper manager with multimonitor support for GNOME'
+pkgdesc='Wallpaper manager with multimonitor support'
 arch=('any')
-url='https://gitlab.com/gabmus/hydrapaper'
+url='https://gitlab.gnome.org/gabmus/hydrapaper'
 license=('GPL3')
 depends=(
   'gtk3'
   'python'
   'python-pillow'
-  'libwnck3'
   'libhandy1>=0.83'
   'gobject-introspection'
   'python-gobject'
@@ -20,7 +19,7 @@ depends=(
 makedepends=('git' 'meson')
 provides=('hydrapaper')
 conflicts=('hydrapaper')
-source=("hydrapaper::git+https://gitlab.com/gabmus/hydrapaper")
+source=("hydrapaper::git+https://gitlab.gnome.org/gabmus/hydrapaper")
 sha256sums=('SKIP')
 
 pkgver() {
