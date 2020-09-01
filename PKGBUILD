@@ -8,8 +8,7 @@ pkgdesc="MacOS big sur like theme for KDE Plasma"
 arch=('any')
 url="https://github.com/vinceliuice/${_gitname}"
 license=('GPL3')
-depends=('plasma-desktop')
-optdepends=('kvantum-qt5: for included kvantum theme' 'sddm: for included sddm theme' 'whitesur-icon-theme-git: matching icon theme' 'whitesur-cursor-theme-git: matching cursor theme' 'whitesur-gtk-theme-git: matching gtk theme' 'latte-dock: for included latte theme') 
+optdepends=('plasma-desktop: for included plasma theme' 'kvantum-qt5: for included kvantum theme' 'sddm: for included sddm theme' 'whitesur-icon-theme-git: matching icon theme' 'whitesur-cursor-theme-git: matching cursor theme' 'whitesur-gtk-theme-git: matching gtk theme' 'latte-dock: for included latte theme') 
 makedepends=('git')
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -50,6 +49,6 @@ package() {
    # latte
    mkdir -p "$HOME/.config/latte"
    cp -r "${srcdir}/${_gitname}/latte-dock"/* "$HOME/.config/latte"
-   echo "The package installed a latte-dock theme which is not deleted on removal. (Located in $HOME/.config/latte)"
+   warning "The package installed a latte-dock theme which is not deleted on removal. (Located in $HOME/.config/latte)"
 
 } 
