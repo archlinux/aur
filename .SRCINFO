@@ -1,0 +1,13 @@
+pkgbase = ccleste
+	pkgdesc = Celeste Classic C source port for 3DS and PC.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/lemon-sherbet/ccleste
+	arch = x86_64
+	license = unknown
+	depends = sdl_mixer
+	source = ccleste-1.2.tar.gz::https://github.com/lemon-sherbet/ccleste/archive/v1.2.tar.gz
+	sha256sums = 6cd4d4d42a4250b7e6222be1367eeecf58cdd63fa0bda62eb48e393bdc532eab
+
+pkgname = ccleste
+
