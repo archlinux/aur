@@ -2,7 +2,7 @@
 
 pkgname=gitstatus
 # Whenever pkgver is updated, _libgit2ver below must also be updated.
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Git status for Bash and Zsh prompt'
 arch=('any')
@@ -16,15 +16,12 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/romkatv/gitstatus/archive/v${pkgver}.tar.gz"
   "libgit2-${_libgit2ver}.tar.gz::https://github.com/romkatv/libgit2/archive/${_libgit2ver}.tar.gz")
 sha512sums=(
-  '2f88d7fec27292bd2bdd07856cb39262fad31f5fa85572b944bab28db960f478ab86ea7944e96bbf68e31a385b1804b5282c03665ee7335389e313756c2bc4ca'
+  '49ccd3553d9468541221eb3f1c9510cc7441d44ad5a553130680fb3795ea5ef00d61ff8b693286a29d95c44e630099243a1b1b9919595cb46a716e0d819d1733'
   '11fd09ce20191392947d171e9212a33a998c1f2c4bcb8ab7440a0dc88653ff1324a1529984a607d545ab8863738f4eb946134c46f44bd1c200c6d98c02657292')
 makedepends=('git' 'cmake' 'zsh')
 install='gitstatus.install'
 
 build() {
-  # Upstream packaging instructions:
-  # https://github.com/romkatv/gitstatus/blob/master/README.md#compiling-for-distribution
-  #
   # Put libgit2-${_libgit2ver}.tar.gz where build expects it.
   ln -sf "$srcdir/libgit2-${_libgit2ver}.tar.gz" "$srcdir/gitstatus-${pkgver}/deps/"
   cd "$srcdir/gitstatus-${pkgver}"
