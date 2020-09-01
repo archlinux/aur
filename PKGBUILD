@@ -11,7 +11,7 @@
 
 pkgname=megasync-nopdfium
 pkgver=4.3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)"
 arch=('i686' 'x86_64')
 provides=(megasync)
@@ -24,9 +24,11 @@ makedepends=('qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
 _extname="_Linux"
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
         "meganz-sdk::git+https://github.com/meganz/sdk.git"
+        "glibc_232.patch::https://github.com/meganz/MEGAsync/pull/477.diff"
         )
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '5b7553fdf68d6350b7e255553285e002dc643f04e8aae9d891d0f9802f6cf27a')
 
 prepare() {
     cd "MEGAsync"
@@ -37,6 +39,7 @@ prepare() {
     cd "src/MEGASync"
     sed -i '/DEFINES += REQUIRE_HAVE_PDFIUM/d' MEGASync.pro
     sed -i '/CONFIG += USE_PDFIUM/d' MEGASync.pro
+    git apply -v "$srcdir"/glibc_232.patch
 }
 
 build() {
