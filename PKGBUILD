@@ -15,9 +15,7 @@ depends=('python-hyperspy' 'python-traitsui' 'python-link-traits')
 
 makedepends=('python-setuptools')
 
-provides=('python-hyperspy-gui-traitsui')
 replaces=('hyperspy-gui-traitsui')
-conflicts=('python-hyperspy-gui-traitsui')
 
 #source=(https://github.com/hyperspy/hyperspy_gui_traitsui/archive/v$pkgver.zip)
 source=(https://github.com/hyperspy/hyperspy_gui_traitsui/archive/master.zip)
