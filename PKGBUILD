@@ -13,7 +13,7 @@ md5sums=('95e037365bf695405274620fe8edab5e')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  premake4 gmake
+  premake5 gmake
   make
 }
 
