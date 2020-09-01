@@ -1,7 +1,7 @@
 # Contributor: Jonas Lähnemann <jonas at pdi-berlin dot de>
 # Maintainer: Jonas Lähnemann <jonas at pdi-berlin dot de>
 pkgname=python-hyperspy-gui-traitsui
-pkginst=python-hyperspy_gui_traitsui
+pkginst=hyperspy_gui_traitsui
 pkgver=1.3.0
 pkgrel=1
 pkgdesc="traitsui GUI elements for HyperSpy" 
@@ -16,6 +16,8 @@ depends=('python-hyperspy' 'python-traitsui' 'python-link-traits')
 makedepends=('python-setuptools')
 
 replaces=('hyperspy-gui-traitsui')
+conflicts=('hyperspy-gui-traitsui')
+provides=('hyperspy-gui-traitsui')
 
 #source=(https://github.com/hyperspy/hyperspy_gui_traitsui/archive/v$pkgver.zip)
 source=(https://github.com/hyperspy/hyperspy_gui_traitsui/archive/master.zip)
