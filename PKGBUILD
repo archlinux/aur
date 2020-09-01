@@ -2,7 +2,7 @@
 
 pkgname=zsa-wally
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Wally: Flash your ZSA Keyboard the EZ way."
 arch=('i686' 'x86_64')
 url="https://github.com/zsa/wally"
@@ -26,6 +26,8 @@ build() {
 
 package() {
 	install -Dm644 50-wally.rules "$pkgdir"/etc/udev/rules.d/50-wally.rules
-	install -Dm755 $srcdir/wally-$pkgver-linux/build/wally "$pkgdir"/usr/bin/wally
+	install -Dm755 $srcdir/wally-$pkgver-linux/build/wally "$pkgdir"/usr/bin/wally-bin
+     echo "/usr/bin/wally-bin" > "$pkgdir"/usr/bin/wally
+     chmod uag+x "$pkgdir"/usr/bin/wally
      chmod -R uag+rw $srcdir
 }
