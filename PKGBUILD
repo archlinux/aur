@@ -16,7 +16,8 @@ depends=('python-traits')
 makedepends=('python-setuptools')
 
 replaces=('hyperspy-link-traits')
-
+conflicts=('hyperspy-link-traits')
+provides=('hyperspy-link-traits')
 
 source=(https://github.com/hyperspy/link_traits/archive/v$pkgver.zip)
 sha256sums=('0d2b24e548813a453cf8b1e8411b241893d864ded43566aab726de855be32aec')
