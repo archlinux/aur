@@ -1,4 +1,4 @@
-pkgbase = mingw-w64-python38-bin
+pkgbase = mingw-w64-python39-bin
 	pkgdesc = Next generation of the python high-level scripting language (native MSVC version) (mingw-w64)
 	pkgver = 3.9.0
 	pkgrel = 1
@@ -23,5 +23,5 @@ pkgbase = mingw-w64-python38-bin
 	sha256sums = ef62b8e524c892168171c52db2a7bfaa9e48bc0b1f5179128c9eca368e1f8d21
 	sha256sums = 86e768f17994ce586d646b4ace95f819943dfe6a0fb1afa40de4188e975d5db8
 
-pkgname = mingw-w64-python38-bin
+pkgname = mingw-w64-python39-bin
 

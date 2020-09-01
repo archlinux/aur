@@ -1,4 +1,4 @@
-pkgname=mingw-w64-python38-bin
+pkgname=mingw-w64-python39-bin
 pkgver=3.9.0
 _pybasever=39
 pkgrel=1
