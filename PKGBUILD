@@ -4,9 +4,9 @@
 # Based on python2-pyo by amiguet
 
 pkgname=python-pyo
-pkgver=1.0.1
-pkgrel=2
-pkgdesc="Python DSP module"
+pkgver=1.0.3
+pkgrel=1
+pkgdesc='Python DSP module'
 arch=('x86_64')
 url="http://ajaxsoundstudio.com/software/pyo/"
 license=('GPL')
@@ -16,7 +16,7 @@ optdepends=('wxpython: wxWidgets GUI')
 provides=("pyo=$pkgver" "python-pyo=$pkgver")
 conflicts=('pyo')
 source=("https://codeload.github.com/belangeo/pyo/tar.gz/$pkgver")
-sha512sums=('701e9461bebdfc6a117c65fb4198015389f7e2cfb50f3d53423add307541bd732bf80f416f2bc36f20311eebf1ea8d75e0b0784f6ff206f7b6ab70c3f6081c4a')
+sha512sums=('2c6dccb53c0bf895c4177d441d72e75b8df60f0004753a380f54c461c80d0e6c07ba117adcbf5e6e5faddd7b155b7e92ff1a26c8a7a0ab36c1d81324a4f0da99')
 
 build() {
   cd "$srcdir"/pyo-"$pkgver"
