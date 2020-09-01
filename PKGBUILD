@@ -24,7 +24,15 @@ package() {
 
 	make install DESTDIR="${pkgdir}" BEES_VERSION="${pkgver}-${pkgrel}"
 
+	mkdir -p "${pkgdir}/usr/bin/"
+
+	if [ -f "${pkgdir}/usr/sbin/beesd" ]; then
+		mv -v "${pkgdir}/usr/sbin/beesd" "${pkgdir}/usr/bin/beesd"
+	fi
+
 	if grep "$pkgname" "${pkgdir}/usr/bin/beesd"; then
 		exit 1
 	fi
+
+	find ${pkgdir} -empty -delete -print
 }
