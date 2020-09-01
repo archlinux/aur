@@ -15,9 +15,7 @@ depends=('python-hyperspy' 'python-ipywidgets' 'python-link-traits')
 
 makedepends=('python-setuptools')
 
-provides=('python-hyperspy-gui-ipywidgets')
 replaces=('hyperspy-gui-ipywidgets')
-conflicts=('python-hyperspy-gui-ipywidgets')
 
 #source=(https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/v$pkgver.zi>
 source=(https://github.com/hyperspy/hyperspy_gui_ipywidgets/archive/master.zip)
