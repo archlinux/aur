@@ -15,9 +15,7 @@ depends=('python-traits')
 
 makedepends=('python-setuptools')
 
-provides=('python-link-traits')
 replaces=('hyperspy-link-traits')
-conflicts=('python-link-traits')
 
 
 source=(https://github.com/hyperspy/link_traits/archive/v$pkgver.zip)
