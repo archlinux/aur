@@ -1,0 +1,17 @@
+pkgbase = python-link-traits
+	pkgdesc = A fork to traitlets' link and dlink to link traits in addition to traitlets.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/hyperspy/link_traits
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-setuptools
+	depends = python-traits
+	provides = python-link-traits
+	conflicts = python-link-traits
+	replaces = hyperspy-link-traits
+	source = https://github.com/hyperspy/link_traits/archive/v1.0.3.zip
+	sha256sums = 0d2b24e548813a453cf8b1e8411b241893d864ded43566aab726de855be32aec
+
+pkgname = python-link-traits
+
