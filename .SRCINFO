@@ -1,15 +1,15 @@
 pkgbase = linpack
-	pkgver = 2019.6.005
+	pkgver = 2020.2.001
 	pkgrel = 1
 	url = http://software.intel.com/en-us/articles/intel-math-kernel-library-linpack-download
 	arch = x86_64
 	license = custom
-	source = https://software.intel.com/sites/default/files/managed/cc/19/l_mklb_p_2019.6.005.tgz
+	source = https://software.intel.com/content/dam/develop/external/us/en/documents/l_mklb_p_2020.2.001.tgz
 	source = linpack.conf
 	source = linpack_runme_xeon64
-	sha256sums = 9ebbd4f4898cdc5e8ee1425c5c955169cd3aa6f8742db37dd4d0d23fc7650a30
-	sha256sums = d7e31c8c7e2648c8fa3c4838d98dfc39b8fadf0f74bdaa4ca52cd38277ec8254
-	sha256sums = 369736f6074ab579a1df38ba09be4784547833be020f13d1b60374f64ca5d5f6
+	b2sums = b26e7220bf1c02b3f58ba9f67733cded00f98cb084bc56d783654de17e6b50bbe71369be6566110606303b8d0f59ff7f2940f8e8d35e4eb0aa9aff00901496b4
+	b2sums = cb9e676aab60304f56c1ab099a0a46e0bb2af9beee93b95adbf2661c475c8e5a1ee35c6726f646b98c5cdacbdb1870488526bc0f19de59699c6a550bb2de06b6
+	b2sums = 1ab0b9fde310496400bfa924c2e1a9206f341102117a64b3b086732394cbc33498708322ffbdf45b117898ed35a34b5107127cfedd9eec0eeb1a3f84d7aeaf63
 
 pkgname = linpack
 	pkgdesc = Benchmark based on linear algebra excellent app for stress testing.
