@@ -2,8 +2,8 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
 pkgname=lib32-libnsl
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='Public client interface library for NIS(YP) and NIS+'
 arch=(x86_64)
 url=https://github.com/thkukuk/libnsl
@@ -13,7 +13,8 @@ depends=(
   libnsl
 )
 makedepends=(git)
-source=(git+https://github.com/thkukuk/libnsl.git#tag=113d92f29bcb778fcaa9c2a18e48bce53729ea54)
+_tag=fbad7b36acaa89a54023930af70805649f962999
+source=(git+https://github.com/thkukuk/libnsl.git#tag=${_tag})
 sha256sums=(SKIP)
 
 pkgver() {
@@ -25,10 +26,7 @@ pkgver() {
 prepare() {
   cd libnsl
 
-  git cherry-pick -n a40f7c511765e2e0c4d710d45b7d8363c18c70f8
-  sed 's/0.19/0.20/g' -i po/Makefile.in.in
-
-  ./autogen.sh
+  autoreconf -fiv
 }
 
 build() {
