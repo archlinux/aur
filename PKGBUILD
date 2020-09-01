@@ -3,7 +3,7 @@
 
 _name=asteval
 pkgname=python-asteval
-pkgver=0.9.18
+pkgver=0.9.19
 pkgrel=1
 pkgdesc="Safe, minimalistic evaluator of python expression using ast module"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python-numpy')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('5d64e18b8a72c2c7ae8f9b70d1f80b68bbcaa98c1c0d7047c35489d03209bc86')
+sha256sums=('445f3a59df692c0c0ff2868c0bbf9b293884db4a9f9a13c73555485ba75ed08b')
 
 build(){
   cd "${srcdir}/${_name}-${pkgver}"

@@ -1,14 +1,14 @@
 pkgbase = python-asteval
 	pkgdesc = Safe, minimalistic evaluator of python expression using ast module
-	pkgver = 0.9.18
+	pkgver = 0.9.19
 	pkgrel = 1
 	url = https://github.com/newville/asteval
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/a/asteval/asteval-0.9.18.tar.gz
-	sha256sums = 5d64e18b8a72c2c7ae8f9b70d1f80b68bbcaa98c1c0d7047c35489d03209bc86
+	source = https://files.pythonhosted.org/packages/source/a/asteval/asteval-0.9.19.tar.gz
+	sha256sums = 445f3a59df692c0c0ff2868c0bbf9b293884db4a9f9a13c73555485ba75ed08b
 
 pkgname = python-asteval
 
