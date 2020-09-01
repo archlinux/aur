@@ -1,7 +1,7 @@
 # Maintainer: Jorai Rijsdijk <aur@jrijsdijk.com>
 
 pkgname=mcrl2
-pkgver=201908.0
+pkgver=202006.0
 pkgrel=1
 pkgdesc="A formal specification language with an associated toolset."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('cmake' 'gcc')
 url=http://www.mcrl2.org
 license=('custom')
 source=("http://mcrl2.org/download/release/$pkgname-$pkgver.tar.gz")
-sha256sums=('5f3b48392a1ab283617dd279e5ba45f5b29ca7f30c94c86bf8f1b9d2047d9dc4')
+sha256sums=('f4975dfd4bc18071249b0f1c50bd6255a1a43a95280529d82852a8307ff6f998')
 install=mcrl2.install
 
 build() {
