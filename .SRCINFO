@@ -1,0 +1,18 @@
+pkgbase = libfev-git
+	pkgdesc = A library for events and fibers
+	pkgver = r6.45958a6
+	pkgrel = 1
+	url = https://github.com/patrykstefanski/libfev
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	provides = libfev
+	conflicts = libfev
+	source = libfev-git::git+https://github.com/patrykstefanski/libfev.git
+	sha256sums = SKIP
+
+pkgname = libfev-git
+
