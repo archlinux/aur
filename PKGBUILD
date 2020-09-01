@@ -1,5 +1,4 @@
-pkgbase=kvantum-theme-akava-git
-pkgname=(kvantum-theme-akava-git)
+pkgname=kvantum-theme-akava-git
 _pkgname=Akava-Kv
 pkgver=r14.0c22434
 pkgrel=1
@@ -13,8 +12,8 @@ sha256sums=('SKIP')
 makedepends=('git')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package_kvantum-theme-akava-git() {
