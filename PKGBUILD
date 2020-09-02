@@ -1,35 +1,25 @@
-# Maintainer: Yngve Inntjore Levinsen <yngveTODlevinsenTAcernTODch>
+# Maintainer: Yngve Levinsen <yngve.levinsen@ess.eu>
 
 pkgname=madx-git
-pkgver=r6890.94ef9535
+pkgver=5.06.00.r9.gf3764bce
 pkgrel=1
 pkgdesc="Accelerator Optics simulation code, git master version"
 url="http://cern.ch/mad"
 license=("custom")
 depends=('gcc-libs' 'libx11')
-conflicts=('madx-dev')
+conflicts=('madx-dev' 'nmap')
 provides=('madx')
 makedepends=('git' 'cmake')
 arch=('i686' 'x86_64')
-
-_gitroot=https://github.com/MethodicalAcceleratorDesign/MAD-X.git
 _gitname=MAD-X
-
+source=("https://github.com/MethodicalAcceleratorDesign/${_gitname}.git")
+sha256sums=('SKIP')
 pkgver() {
     cd $_gitname
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+    #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  if [ -d $_gitname ]
-  then
-    cd $_gitname
-    git pull
-  else
-     git clone $_gitroot $_gitname
-     cd $_gitname
-  fi
-}
 build() {
     cd $srcdir/
     [ -d "build" ] && rm -rf build
