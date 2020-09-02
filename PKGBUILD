@@ -7,7 +7,7 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=80.0
+pkgver=80.0.1
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
@@ -29,7 +29,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop
         unity-menubar.patch)
-sha256sums=('380d9853e0712442ba2d4acd85c0e09c19ad36561a3ea8932705ad6b8a91146a'
+sha256sums=('596b085e32a2d683ba960e161ea65c6271f90f576d4bf956e0d48e83af992c21'
             'SKIP'
             '3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75'
             '34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c'
