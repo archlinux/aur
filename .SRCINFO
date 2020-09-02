@@ -2,21 +2,18 @@ pkgbase = multilockscreen
 	pkgdesc = A simple lock script for i3lock-color
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/TheCynicalTeam/multilockscreen
 	install = multilockscreen.install
 	arch = any
-	license = GNU General Public License v3.0
+	license = MIT
 	depends = i3lock-color
 	depends = imagemagick
 	depends = xorg-xrandr
 	depends = xorg-xdpyinfo
 	depends = bc
-	optdepends = feh: Allows setting wallpaper
+	depends = feh
 	conflicts = multilockscreen-git
-	conflicts = betterlockscreen
-	conflicts = betterlockscreen-git
-	source = git+https://github.com/TheCynicalTeam/multilockscreen.git
-	md5sums = SKIP
+	source = https://github.com/jeffmhubbard/multilockscreen/archive/v1.0.0.tar.gz
+	md5sums = f07e0246737c48a2cf373b9f5393dc3b
 
 pkgname = multilockscreen
 
