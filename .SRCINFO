@@ -1,19 +1,16 @@
 pkgbase = maltego
-	pkgdesc = Maltego information gathering software by Paterva
-	pkgver = 4.2.11.13104
+	pkgdesc = Information gathering software by Paterva
+	pkgver = 4.2.12.13389
 	pkgrel = 1
-	url = https://maltego-downloads.s3.us-east-2.amazonaws.com/linux
+	url = https://www.maltego.com
 	install = maltego.install
+	changelog = changelog
 	arch = i686
 	arch = x86_64
-	license = Commercial
-	depends = java-runtime=8
-	source_i686 = https://maltego-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v4.2.11.13104.deb
-	md5sums_i686 = ce45a73d7745b97fc86de33b5f74e68f
-	sha256sums_i686 = 1b73b0e77add946dde39c726898be7b217afeec9f6b7b014bf28f8971a7cf3ab
-	source_x86_64 = https://maltego-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v4.2.11.13104.deb
-	md5sums_x86_64 = ce45a73d7745b97fc86de33b5f74e68f
-	sha256sums_x86_64 = 1b73b0e77add946dde39c726898be7b217afeec9f6b7b014bf28f8971a7cf3ab
+	license = custom
+	depends = java-runtime
+	source = https://maltego-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v4.2.12.13389.deb
+	sha256sums = 1a0d7ff2ca7d9d370521d047ff9fafbffe12f0d3ce5bd57264d64a2f719855ef
 
 pkgname = maltego
 

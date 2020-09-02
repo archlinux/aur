@@ -1,0 +1,5 @@
+maltego (4.2.12) whatever; urgency=medium
+
+  * Package created with FPM.
+
+ -- Maltego <support@maltego.com>  Thu, 13 Aug 2020 01:33:55 -0700
