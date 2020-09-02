@@ -4,10 +4,10 @@ pkgdesc="ROS - The diagnostic_analysis package can convert a log of diagnostics 
 url='https://www.wiki.ros.org/diagnostics_analysis'
 
 pkgname='ros-melodic-diagnostic-analysis'
-pkgver='1.9.3'
+pkgver='1.9.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -36,7 +36,7 @@ depends=(
 
 _dir="diagnostics-${pkgver}/diagnostic_analysis"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/diagnostics/archive/${pkgver}.tar.gz")
-sha256sums=('3b2d3bb7bb333b8685fa084e086c00a044803dac41ff58351161440931d23550')
+sha256sums=('b337b1fa42c3a30e362406a26a8cac282614e643a5d7b7fcc04ed2bf2785c7bb')
 
 build() {
 	# Use ROS environment variables.
