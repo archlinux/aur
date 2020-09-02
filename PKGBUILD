@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.7
-_minor=18
-_clr=980
+_minor=19
+_clr=981
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,11 +16,11 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33660
+_clear_version=33670
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=033f3fd9001e4376a662c3e7eff78666afee93b1faa799531e76e3a17ffa4520
+_config_hash=82f94f75bccef73cabc347f9405aa10a71760d6ecad118544d4d74917a318b39
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -124,3 +124,6 @@ b2sums=('8e494f15d33ab821ab0424295e410d01facad44b31d8f566847f73b189cea142e9804c9
 b2sums=('02fb305dd54f52e5e54163b89b1d4528c993c62ecddcf639d20dd59fe1293b9f205ce78d4991dc89521529ef40eb75ff1239397cd983bf13fbd6089809a84fcc'
         '00bbf1f3dc897e80a8a25a99f3dfb57c8711072f051b4b64affe1eeb2018a2d375ffd40e8cd1be9014e1a48a629045193346643b20966f641885d2e0e8a5b604'
         '24069cbe1938152d97e58694516e2fbb7562e093c5dd93bd30f29455eb56fd1cf9759cc69b0e61a09e7502ac14a1c3c3f348bc6e654104d80a4397d24dcf6faf')
+b2sums=('78ef228426a0fec67511d1f6c69806e25a4781ded4e497d2f37262dd626dc547638f8e5742845d01ea57e5e125da1b01774a4f39604d9178c82d1542991868c5'
+        '9fefd3ac5b09846826c88ac6370f45be25e0c328c7388c3de9898d0e6c5352d077541b3288e03768de08ba9200e04e6f1469478bc7e9396a56b47ff823490634'
+        '8470b34c22b1d66f9381335972a4e89feb4873d373675b16332feae7611f81e92cd54e525537213fd900e95538ece3138d3704b7a863c5b7e84f88351d4a985d')
