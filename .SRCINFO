@@ -1,6 +1,6 @@
 pkgbase = proxmox-backup-client
 	pkgdesc = Client for Proxmox Backup Server
-	pkgver = 0.8.9
+	pkgver = 0.8.14
 	pkgrel = 1
 	url = https://www.proxmox.com
 	arch = x86_64
