@@ -8,7 +8,7 @@ url="https://github.com/hamer/$pkgname"
 license=('GPL3')
 depends=('libusb>=1.0')
 makedepends=('git')
-source=("$pkgname-$pkgver::git+${url}.git?signed#commit=78eef095b3968124bbf1f58ebd54a7d52403f805"
+source=("git+${url}.git?signed#commit=78eef095b3968124bbf1f58ebd54a7d52403f805"
         'Makefile-CFLAGS_LDFLAGS.patch'
         'strix-claw.service-binary_path.patch')
 sha256sums=('SKIP'
@@ -17,24 +17,24 @@ sha256sums=('SKIP'
 validpgpkeys=('3E67039304CF466151CA444FC1D9BACAFA1A39DC')
 
 pkgver() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
     for patch_file in "$srcdir"/*.patch; do
         patch --forward -i "$patch_file"
     done
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
     make
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
     install -D -t "$pkgdir/usr/lib" strix-claw
     install -D -m 644 -t "$pkgdir/usr/lib/systemd/system" strix-claw.service
 }
