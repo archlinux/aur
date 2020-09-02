@@ -1,14 +1,13 @@
 pkgbase = growlight
 	pkgdesc = Disk manipulation and system preparation tool
 	pkgver = 1.2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nick-black.com/dankwiki/index.php/Growlight
 	arch = x86_64
 	license = GPL3
 	makedepends = cunit
-	makedepends = docbook-xsl
 	makedepends = cmake
-	makedepends = libxslt
+	makedepends = pandoc
 	depends = cryptsetup
 	depends = libatasmart
 	depends = libpciaccess
