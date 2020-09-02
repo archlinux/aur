@@ -1,6 +1,6 @@
 # Maintainer: scpketer <scpketer@krampus.pro>
 pkgname=recaf
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A modern Java bytecode editor"
 arch=("any")
