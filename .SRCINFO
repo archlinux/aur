@@ -4,7 +4,6 @@ pkgbase = maltego
 	pkgrel = 1
 	url = https://www.maltego.com
 	install = maltego.install
-	changelog = changelog
 	arch = i686
 	arch = x86_64
 	license = custom

@@ -15,7 +15,6 @@ license=('custom')
 depends=('java-runtime')
 
 install="$pkgname.install"
-changelog=changelog
 source=("https://$pkgname-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v$pkgver.deb")
 sha256sums=('1a0d7ff2ca7d9d370521d047ff9fafbffe12f0d3ce5bd57264d64a2f719855ef')
 
