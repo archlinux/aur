@@ -1,13 +1,13 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=mve-git
-pkgver=r1278.8c24dc2
+pkgver=r1297.b9117b3
 pkgrel=1
 pkgdesc="Image-based geometry reconstruction pipeline, structure-from-motion, (shading-aware) multi-view-stereo, surface-reconstruction, texturing,"
 arch=('i686' 'x86_64')
 url="http://www.gcc.tu-darmstadt.de/home/proj/mve/"
 license=('BSD' 'GPL')
 groups=()
-depends=('libjpeg' 'libtiff' 'libpng' 'libgl' 'qt5-base' 'intel-tbb')
+depends=('libjpeg' 'libtiff' 'libpng' 'libgl' 'qt5-base' 'intel-tbb' 'eigen')
 makedepends=('git' 'go-md2man' 'cmake' 'gtest' )
 provides=()
 options=()
@@ -16,12 +16,14 @@ source=("${pkgname}::git+https://github.com/simonfuhrmann/mve.git"
         "git+https://github.com/nmoehrle/mvs-texturing.git"
         "git+https://github.com/flanggut/smvs.git"
         'gtest.patch'
+        "eigen.patch::https://github.com/nmoehrle/mvs-texturing/pull/153.diff"
        )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '06b18787da3a61874fbe9bffd9b90090abe8339e6e91221c7b009c3fb90c655e')
+            '06b18787da3a61874fbe9bffd9b90090abe8339e6e91221c7b009c3fb90c655e'
+            'ef9700addddd58d5abea5f07d7e56ce073fc7cce0c0a33affd5093dd1d12875f')
 _binar="apps/sfmrecon/sfmrecon
 apps/meshconvert/meshconvert
 apps/meshalign/meshalign
@@ -39,6 +41,8 @@ prepare() {
   cd ${srcdir}/${pkgname}
   git apply -v ${srcdir}/gtest.patch
   sed -i '/CXXFLAGS*/s/$/ -msse4.2/' libs/sfm/Makefile
+  cd ${srcdir}/mvs-texturing
+  git apply -v ${srcdir}/eigen.patch
 }
 
 pkgver() {
