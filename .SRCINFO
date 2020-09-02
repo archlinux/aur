@@ -11,7 +11,7 @@ pkgbase = multilockscreen-git
 	depends = xorg-xrandr
 	depends = xorg-xdpyinfo
 	depends = bc
-	optdepends = feh: Allows setting wallpaper
+	depends = feh
 	conflicts = multilockscreen
 	source = multilockscreen::git+https://github.com/jeffmhubbard/multilockscreen.git#branch=multi-monitor
 	md5sums = SKIP
