@@ -5,7 +5,7 @@
 
 _pkgname=john
 pkgname=john-git
-pkgver=1.9.0.Jumbo.1.r187.g873852a08
+pkgver=1.9.0.Jumbo.1.r268.g51f7f3dcd
 pkgrel=1
 pkgdesc="fast password cracker (using the git repository of the jumbo patch)"
 arch=('i686' 'x86_64')
@@ -98,8 +98,8 @@ package() {
   install -Dm 644 run/*.conf -t "${pkgdir}/usr/share/john"
 
   # opencl
-  install -Dm 644 run/opencl/*.cl -t "${pkgdir}/usr/share/john/opencl"
-
+  install -Dm 644 run/opencl/* -t "${pkgdir}/usr/share/john/opencl"
+  
   # docs
   install -d "${pkgdir}/usr/share/doc/john"
   cp -r doc/* "${pkgdir}/usr/share/doc/john"
