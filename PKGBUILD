@@ -13,8 +13,8 @@ pkgname=(
   'xorg-server-common-hidpi-git'
   'xorg-server-devel-hidpi-git')
 _pkgbase='xserver'
-pkgver=1.20.0.r680.g5188603ff
-pkgrel=2
+pkgver=1.20.0.r719.g727df0a74
+pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -32,7 +32,7 @@ source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
 sha256sums=('SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
-            '0c9ebc4ffb637a62834f7293c3a0c95e9056dc78d66d5358f6e3af639d1fb978')
+            '70b81cd399fe2d9915f4358667d6655a63d6b174e914b98e9bf5e8b188f607a6')
 
 pkgver() {
   cd "${_pkgbase}"
