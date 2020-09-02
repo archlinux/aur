@@ -3,14 +3,14 @@
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
 
 pkgname=xfce-theme-greybird-git
-pkgver=3.22.11+4
+pkgver=3.22.11+7
 pkgrel=1
 pkgdesc="Desktop theme suite from Xubuntu, with support for Xfce, Metacity and Unity"
 arch=('any')
 url="https://github.com/shimmerproject/Greybird"
 license=('CCPL:by-sa-3.0' 'GPL')
 depends=('gtk-engine-murrine')
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'sassc')
 optdepends=('elementary-xfce-icons: Matching icon set; use the dark icon theme'
             'shimmer-wallpapers: Contains the Greybird wallpaper, among others'
             'lightdm-gtk-greeter: Required for the LightDM GTK theme'

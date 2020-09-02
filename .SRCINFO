@@ -1,6 +1,6 @@
 pkgbase = xfce-theme-greybird-git
 	pkgdesc = Desktop theme suite from Xubuntu, with support for Xfce, Metacity and Unity
-	pkgver = 3.22.11+4
+	pkgver = 3.22.11+7
 	pkgrel = 1
 	url = https://github.com/shimmerproject/Greybird
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = xfce-theme-greybird-git
 	license = GPL
 	makedepends = git
 	makedepends = meson
+	makedepends = sassc
 	depends = gtk-engine-murrine
 	optdepends = elementary-xfce-icons: Matching icon set; use the dark icon theme
 	optdepends = shimmer-wallpapers: Contains the Greybird wallpaper, among others
