@@ -1,7 +1,7 @@
 pkgbase = nanopolish
 	pkgdesc = Provide signal-level analysis of Oxford Nanopore sequencing data
 	pkgver = 0.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jts/nanopolish
 	arch = i686
 	arch = x86_64
