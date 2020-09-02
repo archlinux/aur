@@ -1,7 +1,7 @@
 # Maintainer: vscncls <lucaslou4@protonmail.com>
 
 pkgname=quich
-pkgver=2.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Small, fast and useful calculator for your terminal with multiple functions and options."
 url="https://github.com/Usbac/quich"
@@ -12,7 +12,7 @@ makedepends=()
 provides=("$pkgname")
 conflicts=()
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('96e685d10be2d9e6f74b2d1710773607')
+md5sums=('1528086998d28739ed3e573d08c23d3c')
 
 build() {
     cd $pkgname-$pkgver

@@ -1,13 +1,13 @@
 pkgbase = quich
 	pkgdesc = Small, fast and useful calculator for your terminal with multiple functions and options.
-	pkgver = 2.4
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/Usbac/quich
 	arch = x86_64
 	license = MIT
 	provides = quich
-	source = https://github.com/Usbac/quich/archive/v2.4.tar.gz
-	md5sums = 96e685d10be2d9e6f74b2d1710773607
+	source = https://github.com/Usbac/quich/archive/v3.0.0.tar.gz
+	md5sums = 1528086998d28739ed3e573d08c23d3c
 
 pkgname = quich
 
