@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Gruvbox theme for Tilix"
 arch=("any")
 url="https://github.com/MichaelThessel/tilix-gruvbox"
-license=("GPL")
+license=("MIT")
 depends=("tilix>=1.5")
 makedepends=("git")
 source=("${pkgname}::git+https://github.com/MichaelThessel/tilix-gruvbox.git")
