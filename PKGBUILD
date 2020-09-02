@@ -2,8 +2,8 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=sharedaccess
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="C++17 library to make sharing a resource with multiple threads easier."
 url="https://gitlab.com/patlefort/sharedaccess"
 license=("GPL3")
@@ -11,7 +11,7 @@ depends=()
 builddepends=("cmake")
 arch=("any")
 optdepends=("boost: provide upgradeable locks")
-sha256sums=("2194639cd12b9e5eeccf3de0887f257f268c7bde57caddd05a4cc8d45937aa83")
+sha256sums=("bc9efb51b712d989c06021f45e01468dbf5ba2b449af2a634353142425868295")
 _repo="sharedaccess"
 source=("https://gitlab.com/patlefort/${_repo}/-/archive/v${pkgver}/${_repo}-v${pkgver}.tar.gz")
 
