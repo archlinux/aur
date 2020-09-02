@@ -1,7 +1,7 @@
 # Maintainer: Feng Yu <abcfy2@163.com>
 
 pkgname=postgresql-10-edb
-pkgver=10.13
+pkgver=10.14
 pkgrel=1
 pkgdesc="Enterprise-Proven Postgres edition by enterprisedb.com (EDB postgres). This package will only install server and command line tools, without pgAdmin and stackbuilder."
 arch=("x86_64")
