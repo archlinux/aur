@@ -1,0 +1,15 @@
+pkgbase = xunlei-bin
+	pkgdesc = Xun lei download, 迅雷
+	pkgver = 1.0.0.1
+	pkgrel = 1
+	url = https://www.xunlei.com/
+	arch = x86_64
+	arch = arm64
+	license = unknown
+	source_x86_64 = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.xunlei.download/com.xunlei.download_1.0.0.1_amd64.deb
+	sha512sums_x86_64 = e4957652d04188d960a04f969e1d31642ca9b421892de0b69c0623726ff3e9bc0095fff5f4037ad2e23d80becc2e91e6bc9dae5a4ba3121526ac6a8a8dc094c5
+	source_arm64 = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.xunlei.download/com.xunlei.download_1.0.0.1_arm64.deb
+	sha512sums_arm64 = 4e3ef94451c9fdbb1b8c6127108f5598c144801edca8f8347832c40a02858f11c9b04ebfe351ed72052f86016925f9d230cc2f002cc96d5c8b0062e9e7ce9314
+
+pkgname = xunlei-bin
+
