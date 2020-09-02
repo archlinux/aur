@@ -1,11 +1,11 @@
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Yunhui Fu <yhfudev@gmail.com>
 # Contributor: Tri Le <trile7@gmail.com>
 
 pkgname=mjpg-streamer-git
 epoch=1
-pkgver=r346.501f636
-pkgrel=2
+pkgver=r355.85f89a8
+pkgrel=1
 pkgdesc="Stream mjpeg frames from a webcam via http"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/jacksonliam/mjpg-streamer"
@@ -16,6 +16,10 @@ conflicts=(mjpg-streamer)
 makedepends=(git cmake protobuf-c zeromq sdl libgphoto2 v4l-utils python-numpy)
 source=("git+https://github.com/jacksonliam/mjpg-streamer.git")
 sha256sums=(SKIP)
+
+export LDFLAGS="-Wl,-O1,--sort-common,--no-as-needed,-z,relro,-z,now"
+
+export CFLAGS="-fcommon"
 
 pkgver() {
   cd "${pkgname/-git/}"
@@ -29,7 +33,7 @@ prepare() {
 
 build() {
   cd "${pkgname/-git/}/mjpg-streamer-experimental/_build"
-  cmake .. \
+  cmake .. -Wno-dev \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPLUGIN_INPUT_OPENCV=OFF \
     -DENABLE_HTTP_MANAGEMENT=ON \
