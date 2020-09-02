@@ -2,5 +2,5 @@ build
 *.aes
 src
 pkg
-*.tar.xz
-*.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.zst
