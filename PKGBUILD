@@ -9,8 +9,8 @@ url="https://arrow.apache.org"
 license=('Apache')
 depends=('arrow')
 checkdepends=('git' 'python-brotli' 'python-hypothesis' 'python-pytest' 'python-pytest-lazy-fixture')
-optdepends=()
-makedepends=('cmake' 'cython')
+optdepends=('python-fsspec')
+makedepends=('cmake' 'cython' 'python-setuptools')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz"
   "tensorflow-abi.patch")
 sha256sums=('dac59f4d42416224419c020ed2e8f8371e85c1d9ff4368ed5b5c026ee28d3fd4'
