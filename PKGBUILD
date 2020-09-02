@@ -10,7 +10,7 @@ depends=('python-llvmlite>=0.33.0' 'python-llvmlite<=0.35' 'python-numpy>=1.15')
 makedepends=('cython')
 optdepends=('python-scipy>=1.0.0')
 source=(numba-$pkgver.tar.gz::"https://github.com/numba/numba/archive/$pkgver.tar.gz")
-sha256sums=('c0a678aca72ec581316ed8627720774ba1e1d24ef99aff7da063ae6712ba0980')
+sha256sums=('249f3b9cc3ceff0f18e328cf6c132b5eaed92c3c1c840d1fbd0823f4dbf7a126')
 
 build() {
   cd "$srcdir/numba-$pkgver"
