@@ -15,21 +15,12 @@ optdepends=('openmw: create initial engine configuration files')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
-<<<<<<< HEAD
-source=("$pkgname.tar.gz"::'https://github.com/TES3MP/openmw-tes3mp/releases/download/0.7.0-alpha/tes3mp-GNU+Linux-x86_64-release-$pkgver-alpha-abc4090a0f-01d297f5c6.tar.gz'
-        'https://raw.githubusercontent.com/TES3MP/openmw-tes3mp/master/files/tes3mp/tes3mp_logo.png'
-        'tes3mp-browser.desktop')
-sha256sums=('c6a7a98fb8fe87f8d049a1f40b6474d4e92b7cc6d5119ac4b66e667c4e8b1820'
-          '861e5e8cc7ddec2dbfb842d68cdd45e7cc564079b9cb37ad113ff140bf424fd9'
-          'ddccf2f35e41c2cbb35816f3bbfc53a9dd5809cd2830e8e324f45550852f6408')
-=======
 source=("$pkgname.tar.gz"::"https://github.com/TES3MP/openmw-tes3mp/releases/download/0.7.0-alpha/tes3mp-GNU+Linux-x86_64-release-0.7.0-alpha-abc4090a0f-01d297f5c6.tar.gz"
         "https://raw.githubusercontent.com/TES3MP/openmw-tes3mp/$pkgver/files/tes3mp/tes3mp_logo.png"
         "tes3mp-browser.desktop")
 sha256sums=("c6a7a98fb8fe87f8d049a1f40b6474d4e92b7cc6d5119ac4b66e667c4e8b1820"
           "861e5e8cc7ddec2dbfb842d68cdd45e7cc564079b9cb37ad113ff140bf424fd9"
           "ddccf2f35e41c2cbb35816f3bbfc53a9dd5809cd2830e8e324f45550852f6408")
->>>>>>> c3cea102f472dfa6d4ff8808231ff7f5e83e25c7
 
 prepare() {
   cd "$srcdir/TES3MP"
