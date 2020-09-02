@@ -5,11 +5,11 @@
 pkgbase=transmission-noxunlei
 pkgname=(transmission-noxunlei-cli transmission-noxunlei-gtk transmission-noxunlei-qt)
 pkgver=3.00
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
 license=(MIT)
-makedepends=(gtk3 intltool curl qt5-base libevent systemd qt5-tools)
+makedepends=(gtk3 intltool curl qt5-base libevent systemd qt5-tools libappindicator-gtk3)
 source=(https://github.com/transmission/transmission-releases/raw/master/transmission-${pkgver}.tar.xz
         ban-xunlei.patch
         transmission-noxunlei-cli.sysusers
@@ -68,7 +68,7 @@ package_transmission-noxunlei-cli() {
 
 package_transmission-noxunlei-gtk() {
   pkgdesc='Fast, easy, and free BitTorrent client (GTK+ GUI), patched to ban Xunlei (a well-known leecher client)'
-  depends=(curl libevent gtk3 desktop-file-utils hicolor-icon-theme)
+  depends=(curl libevent gtk3 desktop-file-utils hicolor-icon-theme libappindicator-gtk3)
   optdepends=('libnotify: Desktop notification support'
               'transmission-cli: daemon and web support')
   provides=(transmission-gtk)
