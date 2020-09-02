@@ -1,6 +1,6 @@
 pkgbase = pacoloco-git
 	pkgdesc = Pacman caching proxy server
-	pkgver = r18
+	pkgver = r27.6ac0efc
 	pkgrel = 1
 	url = https://github.com/anatol/pacoloco
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = pacoloco-git
 	sha1sums = SKIP
 
 pkgname = pacoloco-git
-

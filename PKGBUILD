@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=pacoloco-git
-pkgver=r18
+pkgver=r27.6ac0efc
 pkgrel=1
 pkgdesc='Pacman caching proxy server'
 arch=(x86_64 armv7h)
@@ -15,8 +15,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd pacoloco
-  # repo does not have any git tags yet
-  echo r$(git rev-list --count master)
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
