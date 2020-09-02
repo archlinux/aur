@@ -1,0 +1,7 @@
+build
+.vscode
+*.png
+*.pkg.tar.xz
+*.pkg.tar.zst
+src
+pkg
