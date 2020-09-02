@@ -9,7 +9,7 @@
 # Maintainer: Yann Büchau <nobodyinperson@posteo.de>
 pkgname=camp2ascii-git
 pkgver=r16.0f9d0a3
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert Campbell Scientific TOB3 files to other formats"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nobodyinperson/camp2ascii"
