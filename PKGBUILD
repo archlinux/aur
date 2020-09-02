@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=webapp-manager-git
-pkgver=1.0.3.r32.b7423b8
+pkgver=1.0.3.r33.6124beb
 pkgrel=1
 pkgdesc="Run websites as if they were apps."
 arch=('x86_64')
 url="https://github.com/linuxmint/webapp-manager"
 license=('GPL')
 depends=('python-gobject' 'python-configobj' 'python-setproctitle'
-         'python-tldextract' 'python-beautifulsoup4' 'xapp' 'dconf')
+         'python-tldextract' 'python-beautifulsoup4' 'xapps' 'dconf')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -29,8 +29,6 @@ prepare() {
 	# Fix browser names
 	sed -i 's/brave-browser/brave/g' \
 		"usr/lib/${pkgname%-git}/${pkgname%-git}.py"
-	sed -i 's/chromium-browser/chromium/g' \
-		usr/lib/"${pkgname%-git}"/{common.py,"${pkgname%-git}.py"}
 	sed -i 's/epiphany-browser/epiphany/g' \
 		"usr/lib/${pkgname%-git}/${pkgname%-git}.py"
 

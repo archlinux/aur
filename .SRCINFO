@@ -1,6 +1,6 @@
 pkgbase = webapp-manager-git
 	pkgdesc = Run websites as if they were apps.
-	pkgver = 1.0.3.r32.b7423b8
+	pkgver = 1.0.3.r33.6124beb
 	pkgrel = 1
 	url = https://github.com/linuxmint/webapp-manager
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = webapp-manager-git
 	depends = python-setproctitle
 	depends = python-tldextract
 	depends = python-beautifulsoup4
-	depends = xapp
+	depends = xapps
 	depends = dconf
 	provides = webapp-manager
 	conflicts = webapp-manager
