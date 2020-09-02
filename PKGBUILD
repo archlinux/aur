@@ -2,7 +2,7 @@
 
 pkgname=('anbox-git' 'anbox-modules-dkms-git')
 _pkgname=anbox
-pkgver=r1096.ea2b7a3
+pkgver=r1240.c1e7550
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -11,6 +11,8 @@ license=('GPL3')
 makedepends=('cmake' 'git' 'glm' 'lxc' 'sdl2_image' 'protobuf' 'boost' 'properties-cpp' 'gtest' 'python2')
 source=("git+https://github.com/anbox/anbox.git"
 	"git+https://github.com/anbox/anbox-modules.git"
+	"git+https://github.com/google/cpu_features.git"
+	"git+https://github.com/Kistler-Group/sdbus-cpp.git"
 	'anbox-container-manager.service'
 	'anbox-session-manager.service'
 	'99-anbox.rules'
@@ -19,6 +21,8 @@ source=("git+https://github.com/anbox/anbox.git"
 	'anbox-bridge.network'
 	'anbox-bridge.netdev')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             '5be94b63dc30d141f15ca7d1be6e3e81f26ef33f844614975537562f5d08236c'
             '1f22dbb5a3ca6925bbf62899cd0f0bbaa0b77c879adcdd12ff9d43adfa61b1d8'
@@ -42,6 +46,11 @@ prepare() {
   # Don't build tests
   truncate -s 0 cmake/FindGMock.cmake
   truncate -s 0 tests/CMakeLists.txt
+
+  git submodule init
+  git config submodule.external/cpu_features.url $srcdir/cpu_features
+  git config submodule.external/sdbus-cpp.url $srcdir/sdbus-cpp
+  git submodule update
 }
 
 build() {
