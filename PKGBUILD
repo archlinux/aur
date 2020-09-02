@@ -34,7 +34,11 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-    make
+    if test "$CARCH" = "aarch64";then
+        make ARCH=
+    else
+        make
+    fi
 }
 
 package() {
