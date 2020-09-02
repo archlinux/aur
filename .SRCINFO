@@ -8,7 +8,9 @@ pkgbase = iotop-c
 	makedepends = git
 	makedepends = pkgconf
 	depends = ncurses
+	provides = iotop
 	conflicts = iotop
+	conflicts = iotop-git
 	source = git+https://github.com/Tomas-M/iotop.git#tag=v1.10
 	sha256sums = SKIP
 
