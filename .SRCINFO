@@ -1,6 +1,6 @@
 pkgbase = crazydiskmark
 	pkgdesc = Linux disk benchmark tool like CrystalDiskMark
-	pkgver = 0.3.2
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/fredcox/crazydiskmark
 	arch = any
