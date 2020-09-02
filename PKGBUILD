@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=little-brother
-pkgver=0.2.1
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Parental Control Application implemented in Python 3 to monitor and limit kids' play time on Linux hosts"
 arch=('any')
@@ -27,7 +27,7 @@ depends=('python-alembic'
          'zenity')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marcus67/little_brother/archive/${pkgver}.tar.gz")
-sha256sums=('277e3d33fac94a6319f7b11d9647dddfb5914146c7a567326234c5c427bb40e2')
+sha256sums=('3aa495ef20e611f319f59c6a792c56f63e4da4b02f5b30db64b35093e650f260')
 
 prepare() {
   cd "little_brother-${pkgver}"
