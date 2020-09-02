@@ -33,6 +33,7 @@ sha256sums=('SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
             '70b81cd399fe2d9915f4358667d6655a63d6b174e914b98e9bf5e8b188f607a6')
+options=(debug !strip)
 
 pkgver() {
   cd "${_pkgbase}"
@@ -60,6 +61,7 @@ prepare() {
 
   arch-meson ${_pkgbase} build \
     $mesonFlags \
+    --buildtype=debugoptimized \
     -D os_vendor="Arch Linux" \
     -D ipv6=true \
     -D xvfb=true \
