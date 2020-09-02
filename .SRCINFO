@@ -1,7 +1,7 @@
 pkgbase = nushell-bin
 	pkgdesc = A new type of shell
-	pkgver = 0.18.1
-	pkgrel = 1
+	pkgver = 0.19.0
+	pkgrel = 0
 	url = http://nushell.sh
 	install = nushell-bin.install
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = nushell-bin
 	depends = libgit2
 	optdepends = libx11: for binaryview plugin
 	conflicts = nushell
-	source = nushell-bin-0.18.1.tar.gz::https://github.com/nushell/nushell/releases/download/0.18.1/nu_0_18_1_linux.tar.gz
-	source = https://raw.githubusercontent.com/nushell/nushell/0.18.1/LICENSE
-	sha256sums = 9021a65f168f8cab1099fb22410b58ec892f465e103330bb5f07d6a8f8a01a8c
+	source = nushell-bin-0.19.0.tar.gz::https://github.com/nushell/nushell/releases/download/0.19.0/nu_0_19_0_linux.tar.gz
+	source = https://raw.githubusercontent.com/nushell/nushell/0.19.0/LICENSE
+	sha256sums = 81d9d2c45aaa2f7b4be6744a9a59c61fac941f172c757b47a51160ef52d78592
 	sha256sums = 57fdb6634a2372af0978dd178f8e157f227d96f3ca27ae9c73f1320f6c0c41d4
 
 pkgname = nushell-bin
