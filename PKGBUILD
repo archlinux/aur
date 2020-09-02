@@ -7,9 +7,8 @@
 
 pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
-pkgver=1.35.1
-pkgrel=3
-_betaver=2
+pkgver=1.35.1beta3
+pkgrel=1
 pkgdesc="Signal Private Messenger for Linux"
 license=('GPL3')
 replaces=('signal-desktop-beta-bin')
@@ -18,7 +17,7 @@ url="https://signal.org"
 depends=('libvips')
 makedepends=('yarn' 'git' 'nodejs' 'npm' 'python' 'python2')
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver}-beta.${_betaver}.tar.gz"
+  "${pkgname}-${pkgver//beta*}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver//beta*}-beta.${pkgver##*beta}.tar.gz"
   "${pkgname}.desktop"
   "openssl-linking.patch"
   "expire-from-source-date-epoch.patch"
@@ -26,14 +25,14 @@ source=(
   # See https://github.com/atom/node-spellchecker/issues/127
   "https://github.com/atom/node-spellchecker/archive/613ff91dd2d9a5ee0e86be8a3682beecc4e94887.tar.gz"
 )
-sha512sums=('47384fd899daad140c4743f2d0f29ca17112a715e52064922257179a559470b35ff7e3814f678bbb50b441ff610bffe2924fb5d1d7cd56dc37d89f55433bdaca'
+sha512sums=('131bcfc1c50007e8789cc5c2ade0755c2e7a1913f7ffd00a02f6dbccd3b5d60e9dbf095a66145dc95c0d7e3c66f4fa4e29993a8641eacab7d964cf479425b40a'
             'b92c877f6673b3eaae94ca5623ab92f0e5676d439aaf7dc7424ce74f5a5786d30886e0b1013f0ef68a4ced53cdd16a2f78df8f1e41c039d61a980edf678f3e70'
             '6b846fdf70dae6c4657de523ec133d2f08325740863660b86e75d032bb07a4b97834ba0eeea4c77000c2c20b11739b8e8deaf06584f9279638e640c4b7633dd5'
             '6673066172d6c367961f3e2d762dd483e51a9f733d52e27d0569b333ad397375fd41d61b8a414b8c9e8dbba560a6c710678b3d105f8d285cb94d70561368d5a2'
             '42f57802fa91dafb6dbfb5a3f613c4c07df65e97f8da84c9a54292c97a4d170f8455461aac8f6f7819d1ffbea4bf6c28488f8950056ba988776d060be3f107dd')
 
 prepare() {
-  cd "${_pkgname}-${pkgver}-beta.${_betaver}"
+  cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
 
   # Fix SpellChecker build with imminent Node 13
   # See https://github.com/atom/node-spellchecker/issues/127
@@ -60,7 +59,7 @@ prepare() {
 }
 
 build() {
-  cd "${_pkgname}-${pkgver}-beta.${_betaver}"
+  cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
 
   # Gruntfile expects Git commit information which we don't have in a tarball download
   # See https://github.com/signalapp/Signal-Desktop/issues/2376
@@ -69,7 +68,7 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}-beta.${_betaver}"
+  cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
 
   install -d "${pkgdir}/usr/"{lib,bin}
   cp -a release/linux-unpacked "${pkgdir}/usr/lib/${pkgname}"
