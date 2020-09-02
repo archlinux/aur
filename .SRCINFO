@@ -7,8 +7,7 @@ pkgbase = lbt
 	license = GPL3
 	depends = jq
 	depends = curl
-	optdepends = lbry-app-bin>=0.47.1: Full LBRY application
-	optdepends = lbrynet: Standalone LBRY daemon
+	depends = lbrynet
 	source = https://gitlab.com/gardenappl/lbt/-/archive/v1.0/lbt-v1.0.tar.gz
 	b2sums = 0a86ec1f5c33b0f59729161b7fb0830255a14a1f7cd9bf4be3783f3a4cdbf4a93feec2ea26b7afa877d77514db3a0f8f385c1e3370c3dac259f96c480adc40b3
 
