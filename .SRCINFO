@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-audio-common
 	pkgdesc = ROS - Common code for working with audio in ROS.
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://wiki.ros.org/audio_common
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-audio-common
 	depends = ros-melodic-audio-capture
 	depends = ros-melodic-audio-play
 	depends = ros-melodic-audio-common-msgs
-	source = ros-melodic-audio-common-0.3.6.tar.gz::https://github.com/ros-drivers/audio_common/archive/0.3.6.tar.gz
-	sha256sums = f70381cc4be7b359e9dd7fdf39a397d6fb7be8046d891a8e7be4656fb96f5950
+	source = ros-melodic-audio-common-0.3.7.tar.gz::https://github.com/ros-drivers/audio_common/archive/0.3.7.tar.gz
+	sha256sums = 842736eaddf227e67631782a909d6ae2483e2167d011ede4a8888d8fd23fbbf0
 
 pkgname = ros-melodic-audio-common
 
