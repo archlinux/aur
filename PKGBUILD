@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster (fryfrog@gmail.com)
 
 pkgname=unifi-video
-pkgver=3.10.12
+pkgver=3.10.13
 pkgrel=1
 pkgdesc="Centralized management system for Ubiquiti UniFi surveillance cameras."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.deb::https://dl.ubnt.com/firmwares/ufv/v${pkgver}/
         'unifi-video.tmpfiles'
         'unifi-video.patch')
 
-sha256sums=('9d3c0129ca0a24f948d05f54d0ba2f13dc7084ba69603e11a42febe87fa60f6d'
+sha256sums=('5838c616b0f83601563cd371a0c64eb0ccdaee6fc6b3237a95b94ac59c224745'
             '9df948b046347c25e7c83e4837284ef63d9f8d3f28daa20a6c36e203e3ebfdb3'
             '90fb2f826a70d3b7815cd6a2253c2af6754c17504be28ef92ee223bd02093730'
             '1ba38968cd5822b336bcffde0a150ea8c2358471abbcbde641de1ad9555bbff1'
