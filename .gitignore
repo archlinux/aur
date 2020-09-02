@@ -1,0 +1,6 @@
+build
+*.png
+*.tar.xz
+*.tar.zst
+src
+pkg
