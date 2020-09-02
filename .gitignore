@@ -1,0 +1,6 @@
+/src/
+/pkg/
+
+*.pkg.tar*
+musl-*.tar.gz
+musl-*.tar.gz.asc

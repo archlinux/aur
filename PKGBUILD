@@ -1,44 +1,49 @@
-# Maintainer: Riley Trautman <asonix.dev@gmail.com>
+# Maintainer: Allen Wild <allenwild93@gmail.com>
+# Contributor: Riley Trautman <asonix.dev@gmail.com>
 
-_pkgname=musl
-_target=aarch64-linux-gnu
 pkgname=aarch64-linux-musl
-pkgver=1.1.17
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Lightweight implementation of C standard library'
 arch=('i686' 'x86_64')
-url='http://www.musl-libc.org/'
+url='https://musl.libc.org'
 license=('MIT')
 options=('staticlibs' '!buildflags' '!strip')
 makedepends=('aarch64-linux-gnu-binutils' 'aarch64-linux-gnu-gcc')
 validpgpkeys=('836489290BB6B70F99FFDA0556BCDB593020450F')
-source=(https://www.musl-libc.org/releases/musl-$pkgver.tar.gz{,.asc})
-sha256sums=('c8aa51c747a600704bed169340bf3e03742ceee027ea0051dd4b6cc3c5f51464'
+source=(https://musl.libc.org/releases/musl-1.2.1.tar.gz{,.asc})
+sha256sums=('68af6e18539f646f9c41a3a2bb25be4a5cfa5a8f65f0bb647fd2bbfdf877e84b'
             'SKIP')
+
+_target=aarch64-linux-gnu
 _sysroot=/usr/$_target/lib/musl
 
 build() {
-  cd $_pkgname-$pkgver
-  ./configure --prefix=$_sysroot --sysroot=$_sysroot \
-    --bindir=/usr/bin --target=$_target \
-    --enable-wrapper=all
+  cd musl-$pkgver
+  ./configure --prefix=$_sysroot \
+              --exec-prefix=/usr \
+              --target=$_target \
+              --enable-wrapper=all
   make
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd musl-$pkgver
   make DESTDIR="$pkgdir" install
 
-  install -dm755 "$pkgdir$_sysroot"
-  mv "$pkgdir"/lib/ld-musl*.so* "$pkgdir$_sysroot"/lib
+  # configure syslibdir with /lib for PT_INTERP compat, but install to /usr/lib
+  mv "$pkgdir"/lib/ld-musl*.so* "$pkgdir$_sysroot"/lib/
   rmdir "$pkgdir"/lib
 
   pushd "$pkgdir"/usr/bin
+  local _bin
   for _bin in *; do
-    mv "$_bin" $_target-$_bin
+    mv "$_bin" "${_target%-gnu}-$_bin"
   done
   popd
 
   install -Dm0644 README "$pkgdir"/usr/share/doc/$pkgname/README
   install -Dm0644 COPYRIGHT "$pkgdir"/usr/share/licenses/$pkgname/COPYRIGHT
 }
+
+# vim: et ts=2 sts=2 sw=2
