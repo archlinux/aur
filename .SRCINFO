@@ -1,7 +1,7 @@
 pkgbase = shadow-beta
 	pkgdesc = Shadow Bêta application
 	pkgver = 5.0.703
-	pkgrel = 1
+	pkgrel = 2
 	url = http://shadow.tech
 	install = shadow-beta.install
 	arch = x86_64
@@ -35,8 +35,8 @@ pkgbase = shadow-beta
 	optdepends = nouveau-fw: Driver for old Nvidia GPU
 	optdepends = libva-intel-driver: Driver for Intel GPU
 	provides = shadow-beta
-	source = shadow-beta-5.0.703-1.AppImage::https://update.shadow.tech/launcher/preprod/linux/ubuntu_18.04/ShadowBeta.AppImage
-	sha512sums = buUtZ+d1Jwi5rGIlclCCpLVCLGpQpHLCnymwkX3hirPdxVd4z/O27fEHzPGxvFGMw/K5qHwSnKXT6b7DslNhMQ==
+	source = shadow-beta-5.0.703-2.AppImage::https://update.shadow.tech/launcher/preprod/linux/ubuntu_18.04/ShadowBeta.AppImage
+	sha512sums = SKIP
 
 pkgname = shadow-beta
 
