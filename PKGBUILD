@@ -4,9 +4,9 @@ pkgdesc="ROS - The State Machine Compiler (SMC) from https://smc.sourceforge.net
 url='https://smc.sourceforge.net/'
 
 pkgname='ros-melodic-smclib'
-pkgver='1.8.3'
+pkgver='1.8.5'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('Mozilla Public License Version 1.1')
 
 ros_makedepends=(
@@ -28,7 +28,7 @@ depends=(
 
 _dir="bond_core-${pkgver}/smclib"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/bond_core/archive/${pkgver}.tar.gz")
-sha256sums=('9f2bd791abc0356f47235db7e2b042479e6a091cf2cd969d0918a8e0c76b632d')
+sha256sums=('b70f0fe5b4979fe2e7390bff9671b2581eefa91f4ac41f4af01eb1f2bef0e1f4')
 
 build() {
 	# Use ROS environment variables.
