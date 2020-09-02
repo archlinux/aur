@@ -7,7 +7,7 @@ index 41b98d4..16a07a8 100644
  Comment=GUI for openfortivpn
  Icon=/usr/share/pixmaps/openfortigui.png
 -Exec=/usr/bin/openfortigui
-+Exec=/usr/bin/sudo /usr/bin/openfortigui
++Exec=openfortigui
  Terminal=false
  Categories=Network;Application;
 diff --git a/openfortigui/sudo/openfortigui b/openfortigui/sudo/openfortigui
