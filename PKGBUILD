@@ -3,9 +3,9 @@
 
 pkgname=brave-dev-bin
 pkgver=1.14.72
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default (dev binary release).'
-chrome_version=86.0.4229.0
+chrome_version=86.0.4240.22
 arch=('x86_64')
 url='https://brave.com/download-dev'
 license=('custom')
@@ -27,7 +27,7 @@ sha512sums=('464d89d2e785087b1eeaf02dfb306c094e5012599d74e741650e2fecb8f8077f006
             'daa7a78c2efd8a3c4e0c262cace76e915a31991bb6438f5dd9bee6bf6a6309a28ee76ddc054609a792d18ed561e2824b377df9db0eb56bbb391c469cb8a86f6c'
             'b71da6c9d587294a015fdb417e3483bcad768be9c82224051980621963ddc314a235208dab1c4d3e71a8894972d1cf2f86f598d4b9953d8a9e85406066d75caa'
             '5caba107bd958a4387b35f144d695c4f63e9c1bb874c906a1d141efba403d2e2c4b30d756630afc2567089fdbfef7abadba6fa5becf63cffa6dce16bfd50cd47'
-            'b97916505a0eecd5781f687090a6bb1896e7119f91406a29b551bc4ed0692b39767a5f6550c4c24a6ac52df3de5ef5e4eb05a6c01a09a8b86d609279ed7e9423')
+            'd85ef3a4824d839c5ecf0bfb060fe747f741b6fbe9b36662ccd8594d86d3f99d34e434de0296253d1a7c69b009fd6bab311a0082548ffd411e6e606f5a765f59')
 noextract=("$pkgname-$pkgver.zip")
 
 prepare() {
