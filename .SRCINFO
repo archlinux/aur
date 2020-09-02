@@ -15,7 +15,7 @@ pkgbase = linux-zen-g14
 	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.8.5-zen1
 	source = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen&id=02818454376a48ddf301243c0c50cecb59bc2d03
 	source = i8042.patch
-	source = asus-n-key-keyboard.patch::https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/-/raw/master/kernel_patches/5.8/5.8.2/0001-HID-asus-add-support-for-ASUS-N-Key-keyboard-v5.8.patch
+	source = asus-n-key-keyboard.patch::https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/-/raw/master/kernel_patches/5.8/5.8.5/0001-HID-asus-add-support-for-ASUS-N-Key-keyboard-v5.8.patch
 	source = amdgpu-backlight.patch::https://lore.kernel.org/lkml/20200804201313.6464-1-amonakov@ispras.ru/raw
 	source = https://github.com/dolohow/uksm/raw/master/v5.x/uksm-5.8.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
