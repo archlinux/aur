@@ -1,4 +1,5 @@
-# Maintainer: Whyme Lyu <callme5long@gmail.com>
+# Maintainer: Yoan Blanc <yoan@dosimple.ch>
+# Contributor: Whyme Lyu <callme5long@gmail.com>
 # Contributor: Carlo De Pieri <depieri.carlo@gmail.com>
 # Contributor: Tobias Kunze <r@rixx.de>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
@@ -8,8 +9,8 @@
 # Contributor: Jason Chu <jason@archlinux.org>
 
 pkgname=python37
-pkgver=3.7.8
-pkgrel=2
+pkgver=3.7.9
+pkgrel=1
 _pybasever=${pkgver%.*}
 _pymajver=3
 pkgdesc="Major release 3.7 of the Python high-level programming language"
@@ -25,11 +26,14 @@ optdepends=('sqlite'
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"{,.asc}
         dont-make-libpython-readonly.patch
         0002-smaller-pgo-test-suite.patch
+        0003-enable-building-with-libmpdec.patch
         )
-sha512sums=('d2ba299e3cf8ed0f8fed9317f42bcd8d9af7e0e6175939b4be1be289c1658418bed17899e2608d762ffb15575021956cf6bf2054d7863c04b3bd7642f5b8c7ea'
+sha512sums=('e4217b25529b5336e43b63d17f3758a8177a58184564cf02bd92a312f58dba9e096485c9e3cb3544f966e847ea15b3ab30ed065d28a6ca52a6d7e0faddf7d9f9'
             'SKIP'
             '2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4'
-            '10db463924402b6f1d9631424397495e8be0419bc7f9ca6cd7325216433b2dfe512b6f6669626ff05a8e05a6013613660abee59fcb86e5483558b014687bfaa1')
+            '10db463924402b6f1d9631424397495e8be0419bc7f9ca6cd7325216433b2dfe512b6f6669626ff05a8e05a6013613660abee59fcb86e5483558b014687bfaa1'
+            '991540591e2e024d02f2a6f85a98b43ee0e270d223c66572f2d700b32d89c8afa4faa61d45d41998e108c7b1633da20f7f43b37b2d846364431ebdab921dff17'
+             )
 validpgpkeys=('0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D')  # Ned Deily (Python release signing key) <nad@python.org>
 
 prepare() {
@@ -40,6 +44,9 @@ prepare() {
 
   # Backport https://bugs.python.org/issue36044 to 3.7
   patch -p1 -i ../0002-smaller-pgo-test-suite.patch
+
+  # Backport https://bugs.python.org/issue41302 to 3.7
+  patch -p1 -i ../0003-enable-building-with-libmpdec.patch
 
   # FS#23997
   sed -i -e "s|^#.* /usr/local/bin/python|#!/usr/bin/python|" Lib/cgi.py

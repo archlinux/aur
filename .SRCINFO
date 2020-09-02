@@ -1,7 +1,7 @@
 pkgbase = python37
 	pkgdesc = Major release 3.7 of the Python high-level programming language
-	pkgver = 3.7.8
-	pkgrel = 2
+	pkgver = 3.7.9
+	pkgrel = 1
 	url = https://www.python.org/
 	arch = x86_64
 	license = custom
@@ -24,15 +24,17 @@ pkgbase = python37
 	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma
 	optdepends = tk: for tkinter
-	source = https://www.python.org/ftp/python/3.7.8/Python-3.7.8.tar.xz
-	source = https://www.python.org/ftp/python/3.7.8/Python-3.7.8.tar.xz.asc
+	source = https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tar.xz
+	source = https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tar.xz.asc
 	source = dont-make-libpython-readonly.patch
 	source = 0002-smaller-pgo-test-suite.patch
+	source = 0003-enable-building-with-libmpdec.patch
 	validpgpkeys = 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
-	sha512sums = d2ba299e3cf8ed0f8fed9317f42bcd8d9af7e0e6175939b4be1be289c1658418bed17899e2608d762ffb15575021956cf6bf2054d7863c04b3bd7642f5b8c7ea
+	sha512sums = e4217b25529b5336e43b63d17f3758a8177a58184564cf02bd92a312f58dba9e096485c9e3cb3544f966e847ea15b3ab30ed065d28a6ca52a6d7e0faddf7d9f9
 	sha512sums = SKIP
 	sha512sums = 2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4
 	sha512sums = 10db463924402b6f1d9631424397495e8be0419bc7f9ca6cd7325216433b2dfe512b6f6669626ff05a8e05a6013613660abee59fcb86e5483558b014687bfaa1
+	sha512sums = 991540591e2e024d02f2a6f85a98b43ee0e270d223c66572f2d700b32d89c8afa4faa61d45d41998e108c7b1633da20f7f43b37b2d846364431ebdab921dff17
 
 pkgname = python37
 
