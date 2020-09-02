@@ -11,8 +11,11 @@ pkgbase = iotop-c
 	provides = iotop
 	conflicts = iotop
 	conflicts = iotop-git
-	source = git+https://github.com/Tomas-M/iotop.git#tag=v1.10
-	sha256sums = SKIP
+	source = iotop-1.10.tar.gz::https://github.com/Tomas-M/iotop/archive/v1.10.tar.gz
+	source = https://github.com/Tomas-M/iotop/releases/download/v1.10/iotop-1.10.tar.gz.asc
+	validpgpkeys = BA60BC20F37E59444D6D25001365720913D2F22D
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = iotop-c
 
