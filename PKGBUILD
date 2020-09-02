@@ -4,7 +4,7 @@ pkgdesc="ROS - Python ROS message and service generators."
 url='https://wiki.ros.org/genpy'
 
 pkgname='ros-melodic-genpy'
-pkgver='0.6.9'
+pkgver='0.6.14'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -31,7 +31,7 @@ depends=(
 
 _dir="genpy-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/genpy/archive/${pkgver}.tar.gz")
-sha256sums=('4ed64d07063299b4da876345cf591620628a730cfff027f8b0c8f3ee9bb695ec')
+sha256sums=('523d20068171ce7e5b4c453eba7976aafa819e6b5af806ffdf6bc1d7a1dfc2a8')
 
 build() {
 	# Use ROS environment variables.
