@@ -17,12 +17,14 @@ options=("!emptydirs")
 build()
 {
     cd ${pkgname}-${pkgver}
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib -Denable_tests=OFF
+    mkdir build
+    cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib -Denable_tests=OFF
     make
 }
 
 package()
 {
-    cd ${pkgname}-${pkgver}
+    cd ${pkgname}-${pkgver}/build
     make DESTDIR="${pkgdir}" install
 }
