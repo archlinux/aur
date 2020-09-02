@@ -1,9 +1,10 @@
 pkgbase = fanctl-git
-	pkgver = 0.3.1.r12.63ec4df
-	pkgrel = 2
+	pkgdesc = fanctl is a replacement for fancontrol from lm_sensors meant to have a more fine-grained control interface in its config file
+	pkgver = 0.4.1.r0.05737f6
+	pkgrel = 1
 	url = https://gitlab.com/mcoffin/fanctl
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = git
 	makedepends = cargo
 	provides = fanctl

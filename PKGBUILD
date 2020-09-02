@@ -1,11 +1,11 @@
 # Maintainer: Matt Coffin <mcoffin13@gmail.com>
 pkgname=fanctl-git
-pkgver=0.3.1.r12.63ec4df
-pkgrel=2
-pkgdesc=""
+pkgver=0.4.1.r0.05737f6
+pkgrel=1
+pkgdesc="fanctl is a replacement for fancontrol from lm_sensors meant to have a more fine-grained control interface in its config file"
 arch=('x86_64')
 url="https://gitlab.com/mcoffin/fanctl"
-license=('GPL')
+license=('GPL3')
 groups=()
 depends=()
 makedepends=('git' 'cargo') # 'bzr', 'git', 'mercurial' or 'subversion'
