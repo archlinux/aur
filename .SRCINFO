@@ -13,7 +13,7 @@ pkgbase = python-gcsfs
 	depends = python-google-auth-oauthlib
 	depends = python-requests
 	depends = python-decorator
-	source = https://github.com/dask/gcsfs/archive/0.7.0.tar.gz
+	source = python-gcsfs-0.7.0.tar.gz::https://github.com/dask/gcsfs/archive/0.7.0.tar.gz
 	sha256sums = d716fd97f2af8e736118fddcb8eaa6ac9a7709ab25be68a1944efed4af39e366
 
 pkgname = python-gcsfs

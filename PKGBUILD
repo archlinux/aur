@@ -13,7 +13,7 @@ makedepends=()
 optdepends=()
 license=('BSD')
 arch=('any')
-source=("https://github.com/dask/gcsfs/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dask/gcsfs/archive/$pkgver.tar.gz")
 sha256sums=('d716fd97f2af8e736118fddcb8eaa6ac9a7709ab25be68a1944efed4af39e366')
 
 check() {
