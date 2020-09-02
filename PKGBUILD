@@ -1,7 +1,7 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 _pkgname=siphashc
 pkgname=python-siphashc
-pkgver=1.3
+pkgver=2.1
 pkgrel=1
 pkgdesc="python c-module for siphash"
 url="https://github.com/WeblateOrg/siphashc"
@@ -11,7 +11,7 @@ license=('ISC')
 arch=('any')
 source=("https://github.com/WeblateOrg/${_pkgname}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('d27feb98d42a8a10fe91d05936d56df52f592a6c0817276dab3562bfbdd249ae')
+sha256sums=('e6a9da952d684a52cb797dff7a96639bad2bdb779e4856158aa294618d505fbe')
 
 check() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
