@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=hippoplayer
-pkgver=0.1.9
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="A modern music player for your oldsk00l needs"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("${pkgname}")
 depends=('alsa-lib' 'qt5-base')
 makedepends=('git' 'tundra2' 'rustup' 'qt5-base' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/emoon/HippoPlayer/archive/${pkgver}.tar.gz")
-sha256sums=('98449c90d6585430fc2d590aeb4b7cb476789ef94f856a305cbfd0113dfe2bda')
+sha256sums=('2a3472beee597d4a1f82562b63c176bff004672c482fb55db2a87d85cd6fcd6a')
 
 prepare() {
   cd "HippoPlayer-${pkgver}"
@@ -27,7 +27,7 @@ build() {
   export QT5_LIB=/usr/lib
   rustup install stable
   rustup default stable
-  tundra2 -D linux-gcc-debug
+  tundra2 -D linux-gcc-release
 }
 
 package() {
@@ -37,10 +37,10 @@ package() {
   ./hippo_player" > hippoplayer.sh
   install -Dm755 hippoplayer.sh "${pkgdir}/usr/bin/hippoplayer"
   install -Dm644 data/hippo.png "${pkgdir}/usr/share/pixmaps/hippoplayer.png"
-  install -Dm755 t2-output/linux-gcc-debug-default/hippo_player -t "${pkgdir}/usr/share/hippoplayer/"
-  install -Dm755 t2-output/linux-gcc-debug-default/uade-* -t "${pkgdir}/usr/share/hippoplayer/"
-  install -Dm644 t2-output/linux-gcc-debug-default/libopenmpt.cfg -t "${pkgdir}/usr/share/hippoplayer/"
-  install -Dm755 t2-output/linux-gcc-debug-default/*.so -t "${pkgdir}/usr/share/hippoplayer/"
+  install -Dm755 t2-output/linux-gcc-release-default/hippo_player -t "${pkgdir}/usr/share/hippoplayer/"
+  install -Dm755 t2-output/linux-gcc-release-default/uade-* -t "${pkgdir}/usr/share/hippoplayer/"
+  install -Dm644 t2-output/linux-gcc-release-default/libopenmpt.cfg -t "${pkgdir}/usr/share/hippoplayer/"
+  install -Dm755 t2-output/linux-gcc-release-default/*.so -t "${pkgdir}/usr/share/hippoplayer/"
   chmod 757 "${pkgdir}/usr/share/hippoplayer/"
   install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
   cp -R data/ "${pkgdir}/usr/share/hippoplayer/"

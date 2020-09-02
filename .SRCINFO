@@ -1,6 +1,6 @@
 pkgbase = hippoplayer
 	pkgdesc = A modern music player for your oldsk00l needs
-	pkgver = 0.1.9
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/emoon/HippoPlayer
 	install = hippoplayer.install
@@ -15,8 +15,8 @@ pkgbase = hippoplayer
 	depends = alsa-lib
 	depends = qt5-base
 	provides = hippoplayer
-	source = hippoplayer-0.1.9.tar.gz::https://github.com/emoon/HippoPlayer/archive/0.1.9.tar.gz
-	sha256sums = 98449c90d6585430fc2d590aeb4b7cb476789ef94f856a305cbfd0113dfe2bda
+	source = hippoplayer-0.1.12.tar.gz::https://github.com/emoon/HippoPlayer/archive/0.1.12.tar.gz
+	sha256sums = 2a3472beee597d4a1f82562b63c176bff004672c482fb55db2a87d85cd6fcd6a
 
 pkgname = hippoplayer
 
