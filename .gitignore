@@ -1,0 +1,4 @@
+*.tar.?z
+pkg/
+src/
+camp2ascii/

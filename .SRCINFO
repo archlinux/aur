@@ -1,0 +1,16 @@
+pkgbase = camp2ascii-git
+	pkgdesc = Convert Campbell Scientific TOB3 files to other formats
+	pkgver = r16.0f9d0a3
+	pkgrel = 1
+	url = https://github.com/nobodyinperson/camp2ascii
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	provides = camp2ascii
+	conflicts = camp2ascii
+	source = git+https://github.com/nobodyinperson/camp2ascii
+	md5sums = SKIP
+
+pkgname = camp2ascii-git
+
