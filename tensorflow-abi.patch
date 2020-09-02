@@ -1,6 +1,6 @@
-diff -urN arrow-apache-arrow-1.0.0-orig/python/CMakeLists.txt arrow-apache-arrow-1.0.0/python/CMakeLists.txt
---- arrow-apache-arrow-1.0.0-orig/python/CMakeLists.txt	2020-08-04 23:27:00.302126339 -0400
-+++ arrow-apache-arrow-1.0.0/python/CMakeLists.txt	2020-08-04 23:27:20.882397924 -0400
+diff -urN arrow-apache-arrow-1.0.1-orig/python/CMakeLists.txt arrow-apache-arrow-1.0.1/python/CMakeLists.txt
+--- arrow-apache-arrow-1.0.1-orig/python/CMakeLists.txt	2020-08-04 23:27:00.302126339 -0400
++++ arrow-apache-arrow-1.0.1/python/CMakeLists.txt	2020-08-04 23:27:20.882397924 -0400
 @@ -187,10 +187,10 @@
  # where to put generated binaries
  set(EXECUTABLE_OUTPUT_PATH "${BUILD_OUTPUT_ROOT_DIRECTORY}")
