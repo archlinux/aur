@@ -1,3 +1,5 @@
+.idea/
+.vscode/
 gruvbox-tilix*
-pkg
-src
+pkg/
+src/
