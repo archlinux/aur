@@ -4,11 +4,12 @@
 
 pkgname=lbry-app-bin
 pkgver=0.47.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')
 url='https://lbry.com/'
 license=('MIT')
+provides=('lbry' 'lbrynet')
 # dpkg -I $pkg.deb | grep Depends
 # gconf deprecated: https://github.com/electron/electron/issues/2727
 # gnome-keyring still required: https://github.com/lbryio/lbry-desktop/issues/386
