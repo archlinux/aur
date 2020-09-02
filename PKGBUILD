@@ -4,10 +4,10 @@ pkgdesc="ROS - diagnostic_updater contains tools for easily updating diagnostics
 url='https://www.wiki.ros.org/diagnostic_updater'
 
 pkgname='ros-melodic-diagnostic-updater'
-pkgver='1.9.3'
+pkgver='1.9.5'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -36,7 +36,7 @@ depends=(
 
 _dir="diagnostics-${pkgver}/diagnostic_updater"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/diagnostics/archive/${pkgver}.tar.gz")
-sha256sums=('3b2d3bb7bb333b8685fa084e086c00a044803dac41ff58351161440931d23550')
+sha256sums=('b337b1fa42c3a30e362406a26a8cac282614e643a5d7b7fcc04ed2bf2785c7bb')
 
 build() {
 	# Use ROS environment variables.
