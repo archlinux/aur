@@ -3,7 +3,7 @@
 
 pkgname=gsas2-svn
 _pkgname=gsas2
-pkgver=4556
+pkgver=4557
 pkgrel=1
 pkgdesc="General Structure Analysis System II - refinement for powder diffraction patterns"
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ url="https://subversion.xray.aps.anl.gov/trac/pyGSAS"
 license=(unknown)
 depends=(python python-scipy python-matplotlib python-opengl python-numpy python-pillow python-h5py python-wxpython python-numpy)
 [ "${CARCH}" = "x86_64" ] && depends=("${depends[@]}")
-makedepends=(subversion scons gcc9-fortran)
+makedepends=(subversion scons gcc-fortran)
 
 source=("${_pkgname}::svn+https://subversion.xray.aps.anl.gov/pyGSAS/trunk"
 	"GSASII.desktop"
@@ -30,7 +30,7 @@ pkgver() {
 build() 
 {
 	cd ${srcdir}/${_pkgname}/fsource
-	sed -i 's/gfortran/gfortran-9/g' SConstruct
+	sed -i 's/fno-range-check/fno-range-check -fallow-argument-mismatch/g' SConstruct
 	scons
 }
 
