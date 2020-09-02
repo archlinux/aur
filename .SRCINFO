@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-diagnostic-aggregator
 	pkgdesc = ROS - diagnostic_aggregator.
-	pkgver = 1.9.3
-	pkgrel = 3
+	pkgver = 1.9.5
+	pkgrel = 1
 	url = https://www.wiki.ros.org/diagnostic_aggregator
 	arch = i686
 	arch = x86_64
@@ -27,8 +27,8 @@ pkgbase = ros-melodic-diagnostic-aggregator
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-rospy
 	depends = ros-melodic-pluginlib
-	source = ros-melodic-diagnostic-aggregator-1.9.3.tar.gz::https://github.com/ros/diagnostics/archive/1.9.3.tar.gz
-	sha256sums = 3b2d3bb7bb333b8685fa084e086c00a044803dac41ff58351161440931d23550
+	source = ros-melodic-diagnostic-aggregator-1.9.5.tar.gz::https://github.com/ros/diagnostics/archive/1.9.5.tar.gz
+	sha256sums = b337b1fa42c3a30e362406a26a8cac282614e643a5d7b7fcc04ed2bf2785c7bb
 
 pkgname = ros-melodic-diagnostic-aggregator
 
