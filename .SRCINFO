@@ -1,13 +1,13 @@
 pkgbase = ttc-iosevka-curly
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 3.4.6
+	pkgver = 3.4.7
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v3.4.6/ttc-iosevka-curly-3.4.6.zip
-	source = ttc-iosevka-curly-3.4.6-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v3.4.6/LICENSE.md
-	sha256sums = e8c9117d38e9a3277ddba2becd2a2c8845f81a9eafefbf8c9dd1fed706248acd
+	source = https://github.com/be5invis/Iosevka/releases/download/v3.4.7/ttc-iosevka-curly-3.4.7.zip
+	source = ttc-iosevka-curly-3.4.7-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v3.4.7/LICENSE.md
+	sha256sums = c68f010eaa2b84ce67f120d198af8e65e161ce8644664f9f54bdfba6e237c4e4
 	sha256sums = e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9
 
 pkgname = ttc-iosevka-curly
