@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=8.7.32
+pkgver=8.7.59
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -15,7 +15,7 @@ url="https://v8.dev"
 license=('BSD')
 depends=('icu')
 optional=('rlwrap')
-makedepends=('clang' 'clang-tools-extra' 'lld' 'llvm' 'python2' 'python3' 'git' 'wget')
+makedepends=('python2' 'python3' 'git')
 conflicts=('v8' 'v8-3.14' 'v8-3.15' 'v8-3.20' 'v8-static-gyp' 'v8-static-gyp-5.4')
 provides=('v8')
 source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
@@ -55,8 +55,8 @@ prepare() {
   fi
 
   msg2 "Syncing, this can take a while..."
-  $srcdir/depot_tools/gclient sync -D --force --reset
-  $srcdir/depot_tools/gclient sync --revision ${pkgver}
+  gclient sync -D --force --reset
+  gclient sync --revision ${pkgver}
 
   msg2 "Using system libraries for ICU"
   $srcdir/v8/build/linux/unbundle/replace_gn_files.py --system-libraries icu
@@ -74,6 +74,7 @@ prepare() {
     --args='clang_base_path="/usr/"
     is_clang=false
     is_asan=false
+    use_gold=false
     clang_use_chrome_plugins=false
     is_component_build=true
     is_debug=false
