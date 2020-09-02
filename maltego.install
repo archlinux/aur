@@ -1,7 +1,7 @@
 post_install() {
   echo ""
   echo "[+] run '/usr/bin/maltego' to run the application (if nothing works, check 'java' is in your \$PATH)"
-  echo ">>> documentation resides @ 'https://www.paterva.com/web7/docs.php'"
+  echo ">>> documentation resides @ 'https://docs.maltego.com/support/home'"
   echo ""
   echo ">>> this application isn't functional until you obtain a Maltego Community Edition activation code and account"
   echo ">>> REGISTER a FREE ACCOUNT for Maltego Community Editon @ 'https://www.paterva.com/web7/community/community.php'"
