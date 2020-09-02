@@ -4,9 +4,9 @@ pkgdesc="ROS - The actionlib stack provides a standardized interface for interfa
 url='https://wiki.ros.org/actionlib'
 
 pkgname='ros-melodic-actionlib'
-pkgver='1.12.0'
+pkgver='1.12.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -45,7 +45,7 @@ depends=(
 
 _dir="actionlib-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/actionlib/archive/${pkgver}.tar.gz")
-sha256sums=('25d45b841215af975e0773b0c0c5f977e02c5090eb7d4dc6588c7a6c36d8ac76')
+sha256sums=('b98852a6cdd6947200a1d985d4041c0d9c28fe0d789284edc561f85486a792d0')
 
 build() {
 	# Use ROS environment variables.
