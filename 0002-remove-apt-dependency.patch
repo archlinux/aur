@@ -29,15 +29,15 @@ diff --git a/src/api2/node.rs b/src/api2/node.rs
 index b80a6618..65d950a9 100644
 --- a/src/api2/node.rs
 +++ b/src/api2/node.rs
-@@ -34,7 +34,6 @@ pub(crate) mod rrd;
+@@ -31,7 +31,6 @@ pub(crate) mod rrd;
+ 
+ pub(crate) mod rrd;
+ 
+-mod apt;
+ mod journal;
  mod services;
  mod status;
- mod subscription;
--mod apt;
- mod syslog;
- pub mod tasks;
- mod time;
-@@ -283,7 +282,6 @@ fn upgrade_to_websocket(
+@@ -302,7 +302,6 @@ fn upgrade_to_websocket(
  }
  
  pub const SUBDIRS: SubdirMap = &[
@@ -62,7 +62,7 @@ index 37bf48d4..00000000
 -use crate::server::WorkerTask;
 -
 -use crate::config::acl::{PRIV_SYS_AUDIT, PRIV_SYS_MODIFY};
--use crate::api2::types::{APTUpdateInfo, NODE_SCHEMA, UPID_SCHEMA};
+-use crate::api2::types::{APTUpdateInfo, NODE_SCHEMA, Userid, UPID_SCHEMA};
 -
 -const_regex! {
 -    VERSION_EPOCH_REGEX = r"^\d+:";
@@ -286,11 +286,11 @@ index 37bf48d4..00000000
 -    rpcenv: &mut dyn RpcEnvironment,
 -) -> Result<String, Error> {
 -
--    let username = rpcenv.get_user().unwrap();
+-    let userid: Userid = rpcenv.get_user().unwrap().parse()?;
 -    let to_stdout = if rpcenv.env_type() == RpcEnvironmentType::CLI { true } else { false };
 -    let quiet = quiet.unwrap_or(API_METHOD_APT_UPDATE_DATABASE_PARAM_DEFAULT_QUIET);
 -
--    let upid_str = WorkerTask::new_thread("aptupdate", None, &username.clone(), to_stdout, move |worker| {
+-    let upid_str = WorkerTask::new_thread("aptupdate", None, userid, to_stdout, move |worker| {
 -        if !quiet { worker.log("starting apt-get update") }
 -
 -        // TODO: set proxy /etc/apt/apt.conf.d/76pbsproxy like PVE
