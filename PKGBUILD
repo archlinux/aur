@@ -3,7 +3,7 @@
 
 pkgname=brave-dev-bin
 pkgver=1.14.72
-pkgrel=2
+pkgrel=4
 pkgdesc='Web browser that blocks ads and trackers by default (dev binary release).'
 chrome_version=86.0.4240.22
 arch=('x86_64')
@@ -32,7 +32,7 @@ noextract=("$pkgname-$pkgver.zip")
 
 prepare() {
   mkdir -p brave
-  ar xv google-chrome-unstable_86.0.4229.0-1_amd64.deb data.tar.xz
+  ar xv google-chrome-unstable_${chrome_version}-1_amd64.deb data.tar.xz
   xz -fd data.tar.xz
   tar xvf data.tar "./opt/google/chrome-unstable/libEGL.so" "./opt/google/chrome-unstable/libGLESv2.so"
   cat $pkgname-$pkgver.zip | bsdtar -xf- -C brave
