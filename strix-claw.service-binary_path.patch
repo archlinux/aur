@@ -1,0 +1,13 @@
+diff --git strix-claw.service strix-claw.service
+index 9be22b8461..69d4d8608a 100644
+--- strix-claw.service
++++ strix-claw.service
+@@ -3,7 +3,7 @@ Description=Strix Claw hang-prevention daemon
+ 
+ [Service]
+ User=root
+-ExecStart=/usr/local/bin/strix-claw
++ExecStart=/usr/lib/strix-claw
+ Restart=always
+ RestartSec=5
+ 

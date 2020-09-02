@@ -1,0 +1,22 @@
+diff --git Makefile Makefile
+index df30c4410d..0f3a878ff8 100644
+--- Makefile
++++ Makefile
+@@ -1,7 +1,7 @@
+ PROG=strix-claw
+ 
+ CC=gcc
+-CFLAGS=-std=gnu99 -W -Wall -Werror -lusb-1.0
++CFLAGS+=-std=gnu99 -W -Wall -Werror -lusb-1.0
+ 
+ SOURCES := $(wildcard *.c)
+ OBJS := $(patsubst %.c, %.o,$(SOURCES))
+@@ -14,7 +14,7 @@ clean:
+ 	-rm -f $(PROG) $(OBJS) $(DEPS)
+ 
+ $(PROG): $(OBJS) $(DEPS)
+-	$(CC) $(OBJS) $(CFLAGS) -o $@
++	$(CC) $(OBJS) $(CFLAGS) -o $@ $(LDFLAGS)
+ 
+ %.dep: %.c Makefile
+ 	$(CC) $(CFLAGS) -MMD -MP -MF $@ -c $<
