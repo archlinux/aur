@@ -1,4 +1,5 @@
 # Maintainer: Jonathan Mast <jon@jonmast.com>
+# Contributor: Hoàng Văn Khải <hvksmr1996@gmail.com>
 # Based on nushell package, but uses prebuilt binary
 
 pkgname=nushell-bin
