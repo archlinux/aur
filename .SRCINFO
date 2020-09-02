@@ -1,8 +1,9 @@
 pkgbase = blender-2.82-git
 	pkgdesc = Maintenance version of Blenders blender-v2.82-release branch
-	pkgver = 2.82.r92824.g375c7dc4caf
+	pkgver = 2.82.r92825.g53b66eced01
 	pkgrel = 1
 	url = https://blender.org/
+	changelog = blender.changelog
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -44,6 +45,8 @@ pkgbase = blender-2.82-git
 	source = usd_python.patch
 	source = addon_path.patch
 	source = embree.patch
+	source = cuda11.patch
+	source = cpp14.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/171c4fb238a2a65291540ac5406187bc69f3a6bc
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -53,6 +56,8 @@ pkgbase = blender-2.82-git
 	sha256sums = 893b127c9e0ea1a67905434f729b45a993c58a7ea954f9f89480ad1cc0578849
 	sha256sums = 350063cd4f234565bd928a356b4e5f65cf37fc1377904a08bf60f7010c88740b
 	sha256sums = 42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4
+	sha256sums = 0316d92f180f2fa428a206074bd5adfd30968f9ae5d308efea05e42741dd53fd
+	sha256sums = 44fad9ac2320d20d21b7aef46f70c05d55697ecde1446513f0a5842014a9d99c
 
 pkgname = blender-2.82-git
 

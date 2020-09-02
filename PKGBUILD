@@ -23,12 +23,13 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 }
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
 #shellcheck disable=SC2015
-((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
+((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix=7.0'); }
 
 pkgname=blender-${_blenver}-git
-pkgver=2.82.r92824.g375c7dc4caf
+pkgver=2.82.r92825.g53b66eced01
 pkgrel=1
 pkgdesc="Maintenance version of Blenders ${_branch} branch"
+changelog=blender.changelog
 arch=('i686' 'x86_64')
 url="https://blender.org/"
 depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg2'
@@ -53,6 +54,8 @@ source=("git://git.blender.org/blender.git${_fragment}"
         usd_python.patch #add missing python headers when building against python enabled usd.
         addon_path.patch
         embree.patch #add missing embree link.
+        'cuda11.patch'
+        'cpp14.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/171c4fb238a2a65291540ac5406187bc69f3a6bc'
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -62,7 +65,9 @@ sha256sums=('SKIP'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
             '893b127c9e0ea1a67905434f729b45a993c58a7ea954f9f89480ad1cc0578849'
             '350063cd4f234565bd928a356b4e5f65cf37fc1377904a08bf60f7010c88740b'
-            '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4')
+            '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4'
+            '0316d92f180f2fa428a206074bd5adfd30968f9ae5d308efea05e42741dd53fd'
+            '44fad9ac2320d20d21b7aef46f70c05d55697ecde1446513f0a5842014a9d99c')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -84,6 +89,8 @@ prepare() {
   fi
   ((DISABLE_USD)) || git -C "$srcdir/blender" apply -v "${srcdir}"/usd_python.patch
   ((DISABLE_EMBREE)) || git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
+  git -C "$srcdir/blender" apply -v "$srcdir/cuda11.patch"
+  git -C "$srcdir/blender" apply -v "$srcdir/cpp14.patch"
 }
 
 build() {
@@ -91,7 +98,7 @@ build() {
   msg "python version detected: ${_pyver}"
 
   # determine whether we can precompile CUDA kernels
-  _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
+  _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
   if [ "$_CUDA_PKG" != "" ] && ! ((DISABLE_CUDA)) ; then
     _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
                   -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
@@ -121,36 +128,37 @@ build() {
 }
 
 package() {
+  local _suffix=${_blenver}${_suffix:+_$_suffix}
   export DESTDIR="$pkgdir"
   if ((DISABLE_NINJA)); then make -C "$srcdir/build" install; else ninja -C "$srcdir/build" install; fi
 
-    msg "add -${_blenver} suffix to desktop shortcut"
-    sed -i "s/=blender/=blender-${_blenver}/g" "${pkgdir}/usr/share/applications/blender.desktop"
-    sed -i "s/=Blender/=Blender-${_blenver}/g" "${pkgdir}/usr/share/applications/blender.desktop"
-    mv "${pkgdir}/usr/share/applications/blender.desktop" "${pkgdir}/usr/share/applications/blender-${_blenver}.desktop"
+    msg "add -${_suffix} suffix to desktop shortcut"
+    sed -i "s/=blender/=blender-${_suffix}/g" "${pkgdir}/usr/share/applications/blender.desktop"
+    sed -i "s/=Blender/=Blender-${_suffix}/g" "${pkgdir}/usr/share/applications/blender.desktop"
+    mv "${pkgdir}/usr/share/applications/blender.desktop" "${pkgdir}/usr/share/applications/blender-${_suffix}.desktop"
 
-    msg "add -${_blenver} suffix to binaries"
-    mv "${pkgdir}/usr/bin/blender" "${pkgdir}/usr/bin/blender-${_blenver}"
-    mv "${pkgdir}/usr/bin/blender-thumbnailer.py" "${pkgdir}/usr/bin/blender-${_blenver}-thumbnailer.py"
+    msg "add -${_suffix} suffix to binaries"
+    mv "${pkgdir}/usr/bin/blender" "${pkgdir}/usr/bin/blender-${_suffix}"
+    mv "${pkgdir}/usr/bin/blender-thumbnailer.py" "${pkgdir}/usr/bin/blender-${_suffix}-thumbnailer.py"
 
-    msg "mv doc/blender to doc/blender-${_blenver}"
-    mv "${pkgdir}/usr/share/doc/blender" "${pkgdir}/usr/share/doc/blender-${_blenver}"
+    msg "mv doc/blender to doc/blender-${_suffix}"
+    mv "${pkgdir}/usr/share/doc/blender" "${pkgdir}/usr/share/doc/blender-${_suffix}"
 
-    msg "add -${_blenver} suffix to man page"
-    mv "${pkgdir}/usr/share/man/man1/blender.1" "${pkgdir}/usr/share/man/man1/blender-${_blenver}.1"
+    msg "add -${_suffix} suffix to man page"
+    mv "${pkgdir}/usr/share/man/man1/blender.1" "${pkgdir}/usr/share/man/man1/blender-${_suffix}.1"
 
-    msg "add -${_blenver} suffix to all icons"
+    msg "add -${_suffix} suffix to all icons"
     while read -r icon
     do
       # ${filename##/*.} extra extenssion from path
       # ${filename%.*} extract filename form path
       # look at bash "manipulatin string"
-      mv "$icon" "${icon%.*}-${_blenver}.${icon##/*.}"
+      mv "$icon" "${icon%.*}-${_suffix}.${icon##/*.}"
     done < <(find "${pkgdir}/usr/share/icons" -type f)
 
-  if [[ -e "$pkgdir/usr/share/blender/${_blenver}${_suffix:+_$_suffix}/scripts/addons/cycles/lib/" ]] ; then
+  if [[ -e "$pkgdir/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/" ]] ; then
     # make sure the cuda kernels are not stripped
-    chmod 444 "$pkgdir"/usr/share/blender/${_blenver}${_suffix:+_$_suffix}/scripts/addons/cycles/lib/*
+    chmod 444 "$pkgdir"/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/*
   fi
 }
 # vim:set sw=2 ts=2 et:
