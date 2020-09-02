@@ -4,7 +4,7 @@ pkgver=r6.78eef095b3
 pkgrel=1
 pkgdesc="Daemon that prevents freezes of Asus Strix Claw mice"
 arch=('x86_64')
-url='https://github.com/hamer/strix-claw'
+url="https://github.com/hamer/$pkgname"
 license=('GPL3')
 depends=('libusb>=1.0')
 makedepends=('git')
