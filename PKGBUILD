@@ -4,9 +4,9 @@ pkgname=lms-git
 pkgver=v3.18.0.r0.gf77804a
 pkgrel=1
 pkgdesc="Lightweight Music Server. Access your self-hosted music using a web interface"
-arch=("x86_64" "armv7h")
 url="https://github.com/epoupon/lms"
 license=("GPL3")
+arch=("x86_64" "armv7h")
 depends=("ffmpeg"
         "libconfig"
         "libtaginfo"
@@ -23,6 +23,7 @@ md5sums=("SKIP"
         "938534cc0cd64a4990dd3f413ea0f4bb"
         "7cdb8d3326ed75ce31ce7d4c20fa12c1")
 backup=("etc/lms.conf")
+install="lms.install"
 
 pkgver(){
  cd "$srcdir/$pkgname"
@@ -38,13 +39,12 @@ build(){
  make 
 }
 
-package() {
+package(){
  cd "$pkgname/build"
  make DESTDIR="$pkgdir" install
- install -Dm644 "$pkgdir/usr/share/lms/lms.conf" "$pkgdir/etc/lms.conf"
- sed -i "s|/var/lms|/var/lib/lms|g" "$pkgdir/etc/lms.conf"
- install -Dm644 "$srcdir/lms.service" "$pkgdir/usr/lib/systemd/system/lms.service"
- install -Dm644 "$srcdir/lms.sysusers" "$pkgdir/usr/lib/sysusers.d/lms.conf"
  install -d "$pkgdir/var/lib/lms"
- chown lms: "$pkgdir/var/lib/lms"
+ install -D -m 644 "$pkgdir/usr/share/lms/lms.conf" "$pkgdir/etc/lms.conf"
+ install -D -m 644 "$srcdir/lms.service" "$pkgdir/usr/lib/systemd/system/lms.service"
+ install -D -m 644 "$srcdir/lms.sysusers" "$pkgdir/usr/lib/sysusers.d/lms.conf"
+ sed -i "s|/var/lms|/var/lib/lms|g" "$pkgdir/etc/lms.conf"
 }
