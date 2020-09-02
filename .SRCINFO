@@ -8,8 +8,9 @@ pkgbase = mstream-git
 	license = GPL3
 	makedepends = npm
 	depends = nodejs
-	conflicts = nodejs-mstream
+	provides = mstream
 	conflicts = mstream
+	conflicts = nodejs-mstream
 	backup = etc/mstream.json
 	source = git+https://github.com/d10n/mStream.git#branch=d10n-master
 	source = mstream.json
