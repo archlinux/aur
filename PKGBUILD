@@ -1,3 +1,4 @@
+# Contributor: Rumen Jekov <rvjekov@gmail.com>
 # Maintainer: Rumen Jekov <rvjekov@gmail.com>
 # Maintainer: Boian Bonev <bbonev@ipacct.com>
 
@@ -11,23 +12,10 @@ license=('GPL2')
 depends=('ncurses')
 makedepends=('git' 'pkgconf')
 conflicts=('iotop')
-source=()
-md5sums=()
-
-_gitroot=https://github.com/Tomas-M/iotop.git
-_gitname=iotop
-
-prepare() {
-	cd "${srcdir}"
-	if [ -d "${srcdir}"/$_gitname ] ; then
-		cd $_gitname && git pull origin
-	else
-		git clone $_gitroot
-	fi
-	sed -i 's|/sbin/|/bin/|g' ${srcdir}/$_gitname/Makefile
-}
+source=("git+${url}.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 package() {
-	cd "${srcdir}/$_gitname"
-	make DESTDIR="$pkgdir/" V=1 install
+	cd "${srcdir}/iotop"
+	make DESTDIR="${pkgdir}" V=1 install
 }
