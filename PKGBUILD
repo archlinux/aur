@@ -1,13 +1,14 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="roundcubemail-plugin-carddav-git"
-pkgver=v4.0.0.alpha1.r60.ge3dbd51
+pkgver=v4.0.0.alpha1.r61.g8965d48
 pkgrel=1
 pkgdesc="CardDAV plugin for RoundCube Webmailer"
-arch=("any")
-conflicts=("roundcube-rcmcarddav" "roundcube-rcmcarddav-git" "roundcubemail-plugin-carddav")
 url="https://github.com/blind-coder/rcmcarddav"
 license=("GPL2")
+arch=("any")
+provides=("roundcubemail-plugin-carddav")
+conflicts=("roundcube-rcmcarddav" "roundcube-rcmcarddav-git" "roundcubemail-plugin-carddav")
 depends=("roundcubemail")
 makedepends=("composer")
 source=("$pkgname::git+$url.git")
@@ -22,13 +23,9 @@ pkgver(){
 package() {
  cd "$srcdir/$pkgname"
  composer install --no-interaction --no-dev
-
- install -d "$pkgdir/usr/share/licenses/$pkgname"
- install -D "LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
-
  install -d "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav"
  cp -r * "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav"
-
- install -Dm644 "config.inc.php.dist" "$pkgdir/etc/webapps/roundcubemail/plugins/carddav/config.inc.php"
+ install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+ install -D -o root -g http -m 640 "config.inc.php.dist" "$pkgdir/etc/webapps/roundcubemail/plugins/carddav/config.inc.php"
  ln -s "/etc/webapps/roundcubemail/plugins/carddav/config.inc.php" "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav/config.inc.php"
 }
