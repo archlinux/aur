@@ -1,7 +1,7 @@
 # Maintainer: x1b6e6 <ftdabcde@gmail.com>
 
 pkgname=aes
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="encryption utility with very simple interface"
 arch=('any')
@@ -16,8 +16,8 @@ source=(
 )
 
 sha1sums=(
-	"4c656edb9888276841ab1849084b5beeb7221f7a"
-	"6ab800f3769b1fcc393be977ba6eb32e750045cf"
+	"bbd6a785cd0c62baf7de7e6dcb9cd970678515fe"
+	"10c4f9d10e133a1c2c13b91108e472c2e0da3287"
 )
 
 build(){

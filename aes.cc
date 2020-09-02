@@ -27,11 +27,13 @@ Usage:
 	aes [options]
 
 Options:
-    -d, --decrypt                  decrypt data
-    -p, --password=PASSWORD        use password [default: prompt]
-    -k, --key=KEY                  use key instead password [default: ]
-    -l, --last=LAST                size of last block [default: 0]
-    -b, --bits=BITS                use aes with specified bits [default: 256]
+    -h, --help                     Pring this message
+    -v, --version                  Print version and exit
+    -d, --decrypt                  Decrypt data
+    -p, --password=PASSWORD        Use password [default: prompt]
+    -k, --key=KEY                  Use key instead password [default: ]
+    -l, --last=LAST                Size of last block [default: 0]
+    -b, --bits=BITS                Use aes with specified bits [default: 256]
 )");
 }
 
