@@ -13,3 +13,13 @@ post_install() {
             Consult upstream documentation for complete install instructions. 
 	EOF
 }
+
+
+post_upgrade() {
+    echo "You should upgrade your database and static files:"
+    echo "$ (cd /var/lib/weblate && sudo -u weblate weblate migrate --noinput)"
+    echo "$ (cd /var/lib/weblate && sudo -u weblate weblate collectstatic --noinput)"
+    echo "$ (cd /var/lib/weblate && sudo -u weblate weblate compress) # optional, if compression is enabled"
+    echo "Then restart weblate services"
+    echo "# systemctl restart weblate celery-weblate"
+}
