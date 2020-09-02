@@ -1,6 +1,6 @@
 build
 *.png
-*.tar.xz
-*.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.zst
 src
 pkg
