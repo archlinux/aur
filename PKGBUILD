@@ -2,7 +2,7 @@
 # Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=vice-svn
-pkgver=r38471
+pkgver=r38476
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator (Commodore 64/C64). - Development version"
 arch=('i686' 'x86_64')
@@ -28,7 +28,6 @@ build() {
     --prefix=/usr \
     --libdir=/usr/lib \
     --enable-external-ffmpeg \
-    --enable-desktop-files \
     --enable-x64 
     make
 }
@@ -36,6 +35,6 @@ build() {
 package() {
 	cd "${pkgname}/vice"
 	make install DESTDIR="${pkgdir}/"
-	mkdir $pkgdir/usr/share/applications/
-	mv $pkgdir/usr/share/vice/common/*.desktop $pkgdir/usr/share/applications/
+	#mkdir $pkgdir/usr/share/applications/
+	#mv $pkgdir/usr/share/vice/common/*.desktop $pkgdir/usr/share/applications/
 }
