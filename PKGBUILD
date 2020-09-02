@@ -4,9 +4,9 @@ pkgdesc="ROS - Command to print aggregated diagnostic contents to the command li
 url='https://github.com/ros/diagnostics'
 
 pkgname='ros-melodic-rosdiagnostic'
-pkgver='1.9.3'
+pkgver='1.9.5'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -30,7 +30,7 @@ depends=(
 
 _dir="diagnostics-${pkgver}/rosdiagnostic"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/diagnostics/archive/${pkgver}.tar.gz")
-sha256sums=('3b2d3bb7bb333b8685fa084e086c00a044803dac41ff58351161440931d23550')
+sha256sums=('b337b1fa42c3a30e362406a26a8cac282614e643a5d7b7fcc04ed2bf2785c7bb')
 
 build() {
 	# Use ROS environment variables.
