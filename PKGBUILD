@@ -1,6 +1,6 @@
 # Maintainer: Lara <aur@lara.uber.space>
 pkgname=trebleshot
-_sourcename="TrebleShot-Desktop"
+_sourcename=desktop
 pkgver=0.1.0_alpha2
 pkgrel=1
 pkgdesc="A multi-platform file-sharing tool"
@@ -10,8 +10,8 @@ license=('GPL2')
 depends=('qt5-base' 'kdnssd')
 makedepends=('cmake')
 optdepends=('qt5-wayland: Wayland support')
-source=("https://github.com/genonbeta/$_sourcename/archive/${pkgver/_/-}.tar.gz")
-sha1sums=('ad98267e0129279531222bf28a5a61c03db8afa1')
+source=("https://github.com/trebleshot/$_sourcename/archive/${pkgver/_/-}.tar.gz")
+sha1sums=('43cae6cd1afa764ffc8e0bdef677973a09395d20')
 
 prepare() {
 	mkdir -p build
