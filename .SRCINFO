@@ -2,7 +2,7 @@ pkgbase = pam_abl-git
 	pkgdesc = Automated blacklisting on repeated failed authentication attempts
 	pkgver = r88.19eaf6d
 	pkgrel = 1
-	url = https://github.com/deksai/pam_abl
+	url = https://github.com/fauno/pam_abl
 	install = pam_abl.install
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = pam_abl-git
 	optdepends = kyotocabinet: faster database
 	provides = pam_abl
 	conflicts = pam_abl
-	source = git+https://github.com/deksai/pam_abl
+	source = git+https://github.com/fauno/pam_abl
 	sha512sums = SKIP
 
 pkgname = pam_abl-git
