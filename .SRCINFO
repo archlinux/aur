@@ -1,6 +1,6 @@
 pkgbase = blanket
 	pkgdesc = Improve focus and increase your productivity by listening to different sounds.
-	pkgver = 0.1.0+11+g208c67a
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/rafaelmardojai/blanket
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = blanket
 	depends = gtk3
 	depends = gst-python
 	depends = python-gobject
-	depends = libhandy
-	source = git+https://github.com/rafaelmardojai/blanket.git#commit=208c67a5687a471b74978f63943f83ffb61600b0
-	sha256sums = SKIP
+	depends = libhandy1
+	source = blanket-0.2.0.tar.gz::https://github.com/rafaelmardojai/blanket/archive/0.2.0.tar.gz
+	sha256sums = 74469e0f1fefff877414f09e43a94f272afe0913134afd95ba1052647db3728c
 
 pkgname = blanket
 
