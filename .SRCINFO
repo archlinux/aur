@@ -1,6 +1,6 @@
 pkgbase = libreoffice-extension-grammalecte-fr
 	pkgdesc = French grammar checker extension for LibreOffice.
-	pkgver = 1.12.0
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = https://grammalecte.net/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = libreoffice-extension-grammalecte-fr
 	depends = libreoffice
 	provides = libreoffice-extension-dictionaries-fr
 	conflicts = libreoffice-extension-languagetool
-	source = https://grammalecte.net/grammalecte/oxt/Grammalecte-fr-v1.12.0.oxt
-	sha512sums = 2025dcfd286fdc16c42c3b12af658c7bc84d3d6ea72385bc86588d0981f335ce659f70e4833a16ee4f4a8e9bb2ee6e05968b529b0ce3f16e9125bf5202bedc67
+	source = https://grammalecte.net/grammalecte/oxt/Grammalecte-fr-v1.12.2.oxt
+	sha512sums = dc4d7b314912304a21b33b097f9a7eec83618c02aa61aafc3b2f82c76ff3714fea106c8fab046c203192e67112f06ab46eaa6b007f9f10c9098d5ecf0e8016cf
 
 pkgname = libreoffice-extension-grammalecte-fr
 
