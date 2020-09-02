@@ -18,4 +18,5 @@ sha256sums=('4d19e1d4d11e4a9db6f9a939ad0845b804caa617c42d43cfafefeb9f6be557a2')
 package() {
   cd "${srcdir}/omgifol-${pkgver}"
   python ./setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
