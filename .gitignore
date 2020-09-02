@@ -1,0 +1,6 @@
+build
+*.aes
+src
+pkg
+*.tar.xz
+*.tar.zst

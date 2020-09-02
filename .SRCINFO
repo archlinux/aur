@@ -1,0 +1,19 @@
+pkgbase = aes
+	pkgdesc = encryption utility with very simple interface
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/x1b6e6/aes.git
+	arch = any
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	depends = libgcrypt
+	depends = docopt
+	source = CMakeLists.txt
+	source = aes.cc
+	sha1sums = 4c656edb9888276841ab1849084b5beeb7221f7a
+	sha1sums = 6ab800f3769b1fcc393be977ba6eb32e750045cf
+
+pkgname = aes
+
