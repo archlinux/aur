@@ -1,7 +1,7 @@
 pkgbase = mdcat-bin
 	pkgdesc = Sophisticated Markdown rendering for the terminal
-	pkgver = 0.21.0
-	pkgrel = 2
+	pkgver = 0.21.1
+	pkgrel = 1
 	url = https://github.com/lunaryorn/mdcat
 	changelog = CHANGELOG.md
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = mdcat-bin
 	optdepends = librsvg: render svg images in kitty
 	provides = mdcat
 	conflicts = mdcat
-	source = https://github.com/lunaryorn/mdcat/releases/download/mdcat-0.21.0/mdcat-0.21.0-x86_64-unknown-linux-musl.tar.gz
-	b2sums = dd684b0c05eaecf28a3915789b855c9df8cfe7ad55f187dceb5713e78be766275672281aa3f2d7180e3ebd0c726ca69ccb6b05c0a97f7803ca027dc6d9bfec7f
+	source = https://github.com/lunaryorn/mdcat/releases/download/mdcat-0.21.1/mdcat-0.21.1-x86_64-unknown-linux-musl.tar.gz
+	b2sums = 9558c55d310aeb2247c50d79da898ba711eb1147d50e0a53e18815efdaa89c19f5a41033349015800e45d9fec6fc42fb5a8e280f42e17a25fe844a934f7bfcf1
 
 pkgname = mdcat-bin
 
