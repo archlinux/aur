@@ -25,4 +25,5 @@ pkgver() {
 package() {
   cd "${srcdir}/omgifol"
   python ./setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
