@@ -20,7 +20,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 #shellcheck disable=SC2015
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix=7.0'); }
 
-pkgname=blender-2.81-git
+pkgname=blender-${_blenver}-git
 pkgver=2.81.r91465.gf1aa4d18d49
 pkgrel=1
 pkgdesc="Maintenance version of ${_branch} branch"
