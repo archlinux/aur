@@ -3,7 +3,7 @@
 
 pkgname=getmail6
 
-pkgver=6.6
+pkgver=6.7
 pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'
@@ -19,7 +19,7 @@ depends=('python-chardet')
 
 changelog=CHANGELOG
 source=("$pkgname-$pkgver.tgz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('0d50722f23d8079c11c3faa295ac03ae91d771fad290bb656c7f1c18da475491774f840c8420c56bef2afa92e8a398db01d5adb6f27df5ea87db7999fbcd5e26')
+b2sums=('dc2b58328e33236e366282538bae754af6a50784674084c75370a048c13b12846120930c6eeca24969c937d2ed542a032a7fbfb1638f541990661a1a7003b7e3')
 
 
 build() {
