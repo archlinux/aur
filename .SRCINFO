@@ -6,7 +6,9 @@ pkgbase = lbrynet-bin
 	arch = x86_64
 	license = MIT
 	provides = lbrynet
+	conflicts = lbrynet
 	conflicts = lbry-app-bin>=0.47.1
+	conflicts = lbry-app-bin<0.47.2-2
 	source = https://github.com/lbryio/lbry-sdk/releases/download/v0.81.0/lbrynet-linux.zip
 	source = lbrynet-LICENSE::https://raw.githubusercontent.com/lbryio/lbry-sdk/master/LICENSE
 	b2sums = bc14b11c09b0502490b5a4d17bcdb597b5603541f402458a30ca7df3e594c60e871fb855ce583421b22cc468124bb281c20803e9784f0b0e0ad6fccbbf358d47

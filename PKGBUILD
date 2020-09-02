@@ -7,7 +7,7 @@ pkgdesc='Implementation of the LBRY Network protocols, without the desktop app'
 arch=('x86_64')
 url='https://lbry.tech/'
 license=('MIT')
-conflicts=('lbry-app-bin>=0.47.1')
+conflicts=('lbrynet' 'lbry-app-bin>=0.47.1' 'lbry-app-bin<0.47.2-2')
 provides=('lbrynet')
 source=("https://github.com/lbryio/lbry-sdk/releases/download/v$pkgver/lbrynet-linux.zip"
         'lbrynet-LICENSE::https://raw.githubusercontent.com/lbryio/lbry-sdk/master/LICENSE')
