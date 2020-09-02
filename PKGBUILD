@@ -1,5 +1,5 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
-# Contributor: 
+# Contributor: Schala
 
 _pkgname='invader-zim'
 pkgname="ttf-${_pkgname%-*}"
@@ -7,7 +7,7 @@ pkgver=20010314
 pkgrel=1
 pkgdesc='The official Invader Zim font direct from Nickelodeon'
 arch=('any')
-url='https://www.dafont.com/rally-symbols.font'
+url='https://www.dafont.com/invader-zim.font'
 license=('unknown')
 provides=("ttf-${_pkgname}")
 source=("${pkgname}-${pkgver}.zip::https://dl.dafont.com/dl/?f=${_pkgname/-/_}"
