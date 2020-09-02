@@ -3,8 +3,8 @@
 
 pkgname=brave-nightly-bin
 pkgver=1.15.29
-pkgrel=1
-chrome_version=86.0.4229.0
+pkgrel=2
+chrome_version=86.0.4240.22
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
 arch=('x86_64')
 url='https://brave.com/download-nightly'
@@ -26,7 +26,7 @@ sha512sums=('5b85705f6cba27f66cc690b2b3111066d0ce0779c1f56a93e8ae4d6e8109c6fac78
             'e4f153529ad3dff82a7b08eba34857b3b81070a68f458a811a09695419cb513b82e6a3f0323cf3abedee126aff306ba23f703014bdfbd180f64373b84984e652'
             '86cf37b0dc8b37390da9341200af511721c8d2d81ccd45f565322271654058cf47680ae263cf5339feddd42d16bfce7f0aa824f2a45a7c446ed81fe6f749bb92'
             'd5ce90529c2b75357518ebde10e28e9d6f36efe21b705d7e48be07b1f320d739ef211c1bcc353aeefab3f27b7ba78793ebb74a204ac6c8efae855001b80de72a'
-            'b97916505a0eecd5781f687090a6bb1896e7119f91406a29b551bc4ed0692b39767a5f6550c4c24a6ac52df3de5ef5e4eb05a6c01a09a8b86d609279ed7e9423')
+            'd85ef3a4824d839c5ecf0bfb060fe747f741b6fbe9b36662ccd8594d86d3f99d34e434de0296253d1a7c69b009fd6bab311a0082548ffd411e6e606f5a765f59')
 noextract=("$pkgname-$pkgver.zip")
 
 prepare() {

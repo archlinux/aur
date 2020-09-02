@@ -1,7 +1,7 @@
 pkgbase = brave-nightly-bin
 	pkgdesc = Web browser that blocks ads and trackers by default (nightly binary release).
 	pkgver = 1.15.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://brave.com/download-nightly
 	arch = x86_64
 	license = custom
@@ -24,13 +24,13 @@ pkgbase = brave-nightly-bin
 	source = brave-nightly-bin.sh
 	source = brave-nightly-bin.desktop
 	source = braveAbout.png
-	source = https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_86.0.4229.0-1_amd64.deb
+	source = https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_86.0.4240.22-1_amd64.deb
 	sha512sums = 5b85705f6cba27f66cc690b2b3111066d0ce0779c1f56a93e8ae4d6e8109c6fac78b850a4b90d137ba7ae4e921e3cc4f19a6a3d8341c9777659c9ad02657579a
 	sha512sums = b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f
 	sha512sums = e4f153529ad3dff82a7b08eba34857b3b81070a68f458a811a09695419cb513b82e6a3f0323cf3abedee126aff306ba23f703014bdfbd180f64373b84984e652
 	sha512sums = 86cf37b0dc8b37390da9341200af511721c8d2d81ccd45f565322271654058cf47680ae263cf5339feddd42d16bfce7f0aa824f2a45a7c446ed81fe6f749bb92
 	sha512sums = d5ce90529c2b75357518ebde10e28e9d6f36efe21b705d7e48be07b1f320d739ef211c1bcc353aeefab3f27b7ba78793ebb74a204ac6c8efae855001b80de72a
-	sha512sums = b97916505a0eecd5781f687090a6bb1896e7119f91406a29b551bc4ed0692b39767a5f6550c4c24a6ac52df3de5ef5e4eb05a6c01a09a8b86d609279ed7e9423
+	sha512sums = d85ef3a4824d839c5ecf0bfb060fe747f741b6fbe9b36662ccd8594d86d3f99d34e434de0296253d1a7c69b009fd6bab311a0082548ffd411e6e606f5a765f59
 
 pkgname = brave-nightly-bin
 
