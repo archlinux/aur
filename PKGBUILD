@@ -2,7 +2,7 @@
 pkgname=trebleshot
 _sourcename=desktop
 pkgver=0.1.0_alpha2
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform file-sharing tool"
 arch=(x86_64)
 url="https://github.com/genonbeta/$_sourcename"
