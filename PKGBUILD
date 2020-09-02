@@ -29,7 +29,7 @@ fi
 _reponame=brave-browser
 pkgname=brave
 pkgver=1.13.82
-pkgrel=1
+pkgrel=2
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
@@ -140,7 +140,7 @@ prepare() {
     patch -Np0 -i "${srcdir}"/chromium-skia-harmony.patch
 
     # Patch from rpmfusion: chromium-freeworld
-    patch -Np1 -i "${srcdir}"/chromium-fix-vaapi-on-intel.patch || true
+    patch -Np1 -i "${srcdir}"/chromium-fix-vaapi-on-intel.patch
 
     # https://crbug.com/1095962
     patch -Np1 -i "${srcdir}"/media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch
@@ -263,7 +263,7 @@ build() {
 }
 
 package() {
-    install -d -m0755 "${pkgdir}/usr/lib/${pkgname}/"
+    install -d -m0755 "${pkgdir}/usr/lib/${pkgname}/"{,swiftshader}
 
     # Copy necessary release files
     cd "${_reponame}/src/out/Release"
@@ -275,8 +275,14 @@ package() {
         chrome_*.pak \
         resources.pak \
         v8_context_snapshot.bin \
+        libGLESv2.so \
+        libEGL.so \
         "${pkgdir}/usr/lib/brave/"
-        # In v1.3.115 sync is disabled, so natives_blob.bin is not available. Remember to put it back when sync is working again
+
+    cp -a --reflink=auto \
+        swiftshader/libGLESv2.so \
+        swiftshader/libEGL.so \
+        "${pkgdir}/usr/lib/brave/swiftshader/"
 
     if [ "$COMPONENT" != "4" ] || [[ -z ${_system_libs[icu]+set} ]]; then
         cp -a --reflink=auto \
