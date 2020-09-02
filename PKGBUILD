@@ -2,7 +2,7 @@
 
 pkgname=nanopolish-git
 pkgver=0.13.2.r3.g059c7aa
-pkgrel=1
+pkgrel=2
 pkgdesc="Provide signal-level analysis of Oxford Nanopore sequencing data"
 arch=('i686' 'x86_64')
 url="https://github.com/jts/nanopolish"
@@ -49,7 +49,14 @@ build() {
 check() {
   cd "nanopolish"
 
-  #make test
+  make \
+    EIGEN=noinstall \
+    HDF5=noinstall \
+    HTS=noinstall \
+    EIGEN_INCLUDE="-I/usr/include/eigen3" \
+    H5_INCLUDE="-I/usr/include" \
+    HTS_INCLUDE="-I/usr/include/htslib" \
+    test
 }
 
 package() {
