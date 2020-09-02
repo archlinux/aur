@@ -27,7 +27,7 @@ source=(
 sha256sums=('SKIP'
             '181330a9cf4517abbbe29b93165bc859ad8ca14a43582f4e1d69aae2b5ecc2c9'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '02bd388f03fcdda5ed12e84f4f58f7239a05574755573026f8f1bfc6ce52a46e')
+            '598d8639cd9a78695b025342b21e9e1de55b3d5093d037987e70024c8767b3ef')
 
 pkgver() {
   cd "${_srcname}"
