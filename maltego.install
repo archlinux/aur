@@ -1,15 +1,13 @@
 post_install() {
-  echo ""
-  echo "[+] run '/usr/bin/maltego' to run the application (if nothing works, check 'java' is in your \$PATH)"
-  echo ">>> documentation resides @ 'https://docs.maltego.com/support/home'"
-  echo ""
-  echo ">>> this application isn't functional until you obtain a Maltego Community Edition activation code and account"
-  echo ">>> REGISTER a FREE ACCOUNT for Maltego Community Editon @ 'https://www.paterva.com/web7/community/community.php'"
-  echo ""
-  echo ">>> this has been tested to work with jre8-openjdk and jre14-openjdk (Paterva recommends Oracle jre11)"
-  echo ""
-}
+  cat <<-EOT
 
-post_upgrade() {
-  post_install "$@"
+	[+] Run '/usr/bin/maltego' to run the application (if nothing works, check 'java' is in your \$PATH)."
+	>>> Documentation resides at 'https://docs.maltego.com/support/home/'.
+
+	>>> This application isn't functional until you obtain a Maltego Community Edition activation code and account.
+	>>> Register a FREE account for Maltego Community Editon: 'https://www.paterva.com/web7/community/community.php'.
+
+	>>> This has been tested to work with jre8-openjdk and jre14-openjdk - Paterva recommends Oracle jre11 though.
+
+	EOT
 }
