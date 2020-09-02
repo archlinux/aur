@@ -1,7 +1,7 @@
 # Owner: Daniel Mason (idanoo) <daniel@m2.nz>
 pkgbase=element-desktop-git
-_vers=v1.7.4
-pkgver=v1.7.4.r0.g8aa46ba7
+_vers=v1.7.5
+pkgver=v1.7.5.r0.ga89661de
 pkgrel=1
 pkgname=(element-web-git element-desktop-git)
 pkgdesc="A glossy Matrix collaboration client for the desktop."
