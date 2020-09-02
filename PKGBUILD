@@ -21,7 +21,7 @@ prepare() {
 build() {
 	cd "$pkgname"/build
 	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
-	make -j 4
+	make
 }
 
 package() {
