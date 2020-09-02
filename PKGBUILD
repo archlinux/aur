@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 provides=('python-omgifol')
 conflicts=('python-omgifol')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 
 source=("git+https://github.com/devinacker/omgifol.git")
 
