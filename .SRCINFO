@@ -1,0 +1,16 @@
+pkgbase = python-omgifol-git
+	pkgdesc = A Python library for manipulating Doom WAD files
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/devinacker/omgifol
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-omgifol
+	conflicts = python-omgifol
+	source = git+https://github.com/devinacker/omgifol.git
+	sha256sums = SKIP
+
+pkgname = python-omgifol-git
+
