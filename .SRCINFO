@@ -1,17 +1,17 @@
 pkgbase = yeecli
-	pkgdesc = Yeelight CLI tool
-	pkgver = r49.6e391b5
+	pkgdesc = Command-line utility for controlling the YeeLight RGB LED lightbulb
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.com/stavros/yeecli
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
-	makedepends = git
 	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-ifaddr
 	depends = python-yeelight
-	provides = yeecli
-	source = git+https://gitlab.com/stavros/yeecli.git
-	md5sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/y/yeecli/yeecli-0.2.0.tar.gz
+	sha256sums = 2a534273ac7997f7e3991d22153e8d17efc87d2e9ee99e6bb4acb8097206d585
 
 pkgname = yeecli
 

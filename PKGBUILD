@@ -1,31 +1,28 @@
-# Maintainer: tsipizic 
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: tsipizic
 
-pkgname="yeecli"
-pkgver=r49.6e391b5
+pkgname='yeecli'
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Yeelight CLI tool"
-arch=("i686" "x86_64")
-url="https://gitlab.com/stavros/yeecli"
-license=("BSD")
-depends=("python-yeelight" "python-click")
-makedepends=("git" "python-setuptools")
-provides=("yeecli")
-source=("git+https://gitlab.com/stavros/yeecli.git")
-md5sums=("SKIP")
-
-pkgver() {
-    cd "$srcdir/$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" \
-        "$(git rev-parse --short HEAD)"
-}
+pkgdesc='Command-line utility for controlling the YeeLight RGB LED lightbulb'
+arch=('any')
+url='https://gitlab.com/stavros/yeecli'
+license=('BSD')
+depends=('python' 'python-click' 'python-ifaddr' 'python-yeelight')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('2a534273ac7997f7e3991d22153e8d17efc87d2e9ee99e6bb4acb8097206d585')
 
 build() {
-    cd "$srcdir/$pkgname"
-    python setup.py build
+  cd "${pkgname}-${pkgver}"
+  python setup.py build
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    python setup.py install --root="$pkgdir" --optimize=1
+  cd "${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.rst'
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE'
 }
 
+# vim: ts=2 sw=2 et:
