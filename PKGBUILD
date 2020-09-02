@@ -21,8 +21,6 @@ sha256sums=('1a0d7ff2ca7d9d370521d047ff9fafbffe12f0d3ce5bd57264d64a2f719855ef')
 
 package() {
   bsdtar xf data.tar.gz -C "$pkgdir"
-  # Packagers left DS_Store files, so we have to remove
-  rm -rf "$pkgdir"/{,usr/{,share/{,maltego/}}}.DS_Store
 }
 
 
