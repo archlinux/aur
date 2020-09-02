@@ -1,3 +1,9 @@
+Version 6.7
+Todo
+    - use $XDG_CONFIG_HOME if defined
+    - fix pip install (doc/man below site-packages)
+    - fix #34: quote only for select
+
 Version 6.6
 29 August 2020
     - fix #34: quote mailbox if necessary
