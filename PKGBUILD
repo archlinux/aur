@@ -1,8 +1,8 @@
 # Maintainer: Ingo Fabbri <der_ulmen@yahoo.de>
 
 pkgname=grobi
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.6.0
+pkgrel=0
 pkgdesc="Automatically configure monitors/outputs for Xorg via RANDR"
 arch=("i686" "x86_64")
 license=('BSD 2-Clause "Simplified"')
@@ -12,7 +12,7 @@ provides=('grobi')
 conflicts=("grobi-git")
 depends=("glibc")
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('f61281e09f349b09448be3aaf25de4aa8e11a9735514c579345ed49a59c1ee29e0e4dc17fccd09e63e34e08499e28bdacf996ff78247f6e186c6a1351fe825da')
+sha512sums=('875fa2781c1060a0eea434900c2de3bcb882e0c6dd50ff6d4548014632913a3ac4117e10222ff92bc3095d377d863774f2cb09ebc007dcedac3f04c1b0f39482')
 
 package() {
   cd "${pkgname}-${pkgver}"
