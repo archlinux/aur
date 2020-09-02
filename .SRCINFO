@@ -1,0 +1,17 @@
+pkgbase = verible-git
+	pkgdesc = SystemVerilog parser, style-linter, and formatter
+	pkgver = 0.0.r558.7fbda6835f
+	pkgrel = 1
+	url = https://github.com/google/verible
+	arch = x86_64
+	license = Apache
+	makedepends = bazel
+	makedepends = git
+	depends = bash
+	provides = verible
+	conflicts = verible
+	source = git+https://github.com/google/verible.git
+	sha512sums = SKIP
+
+pkgname = verible-git
+
