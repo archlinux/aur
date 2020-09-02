@@ -1,0 +1,35 @@
+pkgbase = v4l-utils-rockchip
+	pkgdesc = Userspace tools and conversion library for Video 4 Linux with rockchip support
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://github.com/JeffyCN/meta-rockchip/tree/release-1.1.0_20191030/recipes-multimedia/v4l2apps/v4l-utils
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = LGPL
+	makedepends = qt5-base
+	makedepends = alsa-lib
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	depends = sysfsutils
+	depends = libjpeg-turbo
+	optdepends = qt5-base: for qv4l2
+	optdepends = alsa-lib: for qv4l2
+	provides = libv4l=1.20.0
+	provides = v4l-utils
+	conflicts = libv4l
+	conflicts = v4l-utils
+	replaces = libv4l
+	backup = etc/rc_maps.cfg
+	source = https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.20.0.tar.bz2
+	source = https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.20.0.tar.bz2.asc
+	source = https://raw.githubusercontent.com/JeffyCN/meta-rockchip/release-1.1.0_20191030/recipes-multimedia/v4l2apps/v4l-utils/0001-libv4l2-Support-mmap-to-libv4l-plugin.patch
+	source = https://raw.githubusercontent.com/JeffyCN/meta-rockchip/release-1.1.0_20191030/recipes-multimedia/v4l2apps/v4l-utils/0002-libv4l-mplane-Filter-out-multiplane-formats.patch
+	validpgpkeys = 05D0169C26E41593418129DF199A64FADFB500FF
+	sha256sums = 956118713f7ccb405c55c7088a6a2490c32d54300dd9a30d8d5008c28d3726f7
+	sha256sums = SKIP
+	sha256sums = 9b56d4219eae95a6597cd63b9fac72ca7b2c122bf210772df467333d9d0bdd56
+	sha256sums = 2e4e51f2e6dfc0d20e2aa14742ef2a3096949fd39460eccb9b07846385fd701a
+
+pkgname = v4l-utils-rockchip
+
