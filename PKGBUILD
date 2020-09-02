@@ -4,9 +4,9 @@ pkgdesc="ROS - C++ implementation of bond, a mechanism for checking when another
 url='https://www.wiki.ros.org/bondcpp'
 
 pkgname='ros-melodic-bondcpp'
-pkgver='1.8.3'
+pkgver='1.8.5'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -43,7 +43,7 @@ optdepends=(
 
 _dir="bond_core-${pkgver}/bondcpp"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/bond_core/archive/${pkgver}.tar.gz")
-sha256sums=('9f2bd791abc0356f47235db7e2b042479e6a091cf2cd969d0918a8e0c76b632d')
+sha256sums=('b70f0fe5b4979fe2e7390bff9671b2581eefa91f4ac41f4af01eb1f2bef0e1f4')
 
 build() {
 	# Use ROS environment variables.
