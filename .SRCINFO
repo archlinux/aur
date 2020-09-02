@@ -1,0 +1,15 @@
+pkgbase = fido2luks
+	pkgdesc = Decrypt your LUKS partition using a FIDO2 compatible authenticator
+	pkgver = 0.2.12
+	pkgrel = 1
+	url = https://github.com/shimunn/fido2luks
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MPL-2.0
+	makedepends = rust
+	makedepends = cargo
+
+pkgname = fido2luks
+
