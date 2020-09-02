@@ -14,23 +14,25 @@ sha256sums=('bf35d267a28dcace4109c3256f2cd7cb0ca3b8d461d2fbf848db3f65b809befd')
 
 _gopackagepath=github.com/direnv/direnv
 
-prepare() {
-  [[ -f /etc/profile.d/go.sh ]] && source /etc/profile.d/go.sh
-  export GOPATH="$srcdir/go"
-
-  mkdir -p "$GOPATH/src/$(dirname "$_gopackagepath")"
-  mv "$srcdir/$pkgname-$pkgver" "$GOPATH/src/$_gopackagepath"
+build() {
+  cd "$pkgname-$pkgver"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
+  go build -o $pkgname
 }
 
-build() {
-  export GOPATH="$srcdir/go"
-  cd "$GOPATH/src/$_gopackagepath"
-  make
+check() {
+  cd "$pkgname-$pkgver"
+  go test -v
+  bash ./test/direnv-test.bash
+  ./test/stdlib.bash
 }
 
 package() {
-  export GOPATH="$srcdir/go"
-  cd "$GOPATH/src/$_gopackagepath"
+  cd "$pkgname-$pkgver"
   make install DESTDIR="$pkgdir/usr"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
