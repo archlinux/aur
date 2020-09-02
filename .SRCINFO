@@ -1,0 +1,21 @@
+pkgbase = xgifwallpaper
+	pkgdesc = Use an animated GIF as wallpaper on X11 systems
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/calculon102/xgifwallpaper
+	arch = x86_64
+	license = GPL-3.0 License
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	depends = libx11
+	depends = libxau
+	depends = libxcb
+	depends = libxdmcp
+	depends = libxinerama
+	depends = libxext
+	source = git+https://github.com/calculon102/xgifwallpaper#commit=fec3a7c34d7bc86db82332cd345b992931af508a
+	sha256sums = SKIP
+
+pkgname = xgifwallpaper
+
