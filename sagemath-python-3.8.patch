@@ -12,7 +12,7 @@ index 822da88..cc84cac 100644
                  pass
  
 diff --git a/src/sage/categories/coxeter_groups.py b/src/sage/categories/coxeter_groups.py
-index 9dbbc7b..4e33967 100644
+index eec89a3..2039ad4 100644
 --- a/src/sage/categories/coxeter_groups.py
 +++ b/src/sage/categories/coxeter_groups.py
 @@ -279,8 +279,8 @@ class CoxeterGroups(Category_singleton):
@@ -302,10 +302,10 @@ index 162a539..65dc086 100644
          return [self.an_element(), self.moebius(), self.zeta()]
  
 diff --git a/src/sage/combinat/posets/posets.py b/src/sage/combinat/posets/posets.py
-index 50213ba..6da798a 100644
+index fd2a182..bc7e62b 100644
 --- a/src/sage/combinat/posets/posets.py
 +++ b/src/sage/combinat/posets/posets.py
-@@ -8145,10 +8145,14 @@ class FinitePoset(UniqueRepresentation, Parent):
+@@ -8180,10 +8180,14 @@ class FinitePoset(UniqueRepresentation, Parent):
  
              sage: P = posets.AntichainPoset(3)
              sage: Pc = P.cuts()
@@ -587,10 +587,10 @@ index cd1706e..c66a75d 100644
              {'cputime': ..., 'walltime': ...}
          """
 diff --git a/src/sage/dynamics/arithmetic_dynamics/generic_ds.py b/src/sage/dynamics/arithmetic_dynamics/generic_ds.py
-index 10cd80b..2a7b712 100644
+index 0825e41..c772b3f 100644
 --- a/src/sage/dynamics/arithmetic_dynamics/generic_ds.py
 +++ b/src/sage/dynamics/arithmetic_dynamics/generic_ds.py
-@@ -472,16 +472,16 @@ class DynamicalSystem(SchemeMorphism_polynomial,
+@@ -476,16 +476,16 @@ class DynamicalSystem(SchemeMorphism_polynomial,
              [(0 : 1), (1 : 0), (1 : 1)]
              sage: N.<a> = f.field_of_definition_periodic(3); N
              Number Field in a with defining polynomial x^6 + x^5 + x^4 + x^3 + x^2 + x + 1
@@ -1001,10 +1001,10 @@ index 43b2f21..be20596 100644
          return hash(self._coeffs) ^ hash(self._const)
  
 diff --git a/src/sage/geometry/polyhedron/combinatorial_polyhedron/base.pyx b/src/sage/geometry/polyhedron/combinatorial_polyhedron/base.pyx
-index 3a3d6e7..dd98b89 100644
+index 24aea47..fbd84fb 100644
 --- a/src/sage/geometry/polyhedron/combinatorial_polyhedron/base.pyx
 +++ b/src/sage/geometry/polyhedron/combinatorial_polyhedron/base.pyx
-@@ -1492,10 +1492,10 @@ cdef class CombinatorialPolyhedron(SageObject):
+@@ -1502,10 +1502,10 @@ cdef class CombinatorialPolyhedron(SageObject):
               A vertex at (0, 1, -1),
               A vertex at (0, 1, 1),
               A vertex at (1, 0, 0))
@@ -1019,10 +1019,10 @@ index 3a3d6e7..dd98b89 100644
  
          If ``names`` is ``True`` (the default) but the combinatorial polyhedron
 diff --git a/src/sage/geometry/polyhedron/library.py b/src/sage/geometry/polyhedron/library.py
-index 015ea8a..f9d2cea 100644
+index b0d2a1e..40cbd79 100644
 --- a/src/sage/geometry/polyhedron/library.py
 +++ b/src/sage/geometry/polyhedron/library.py
-@@ -2636,13 +2636,23 @@ class Polytopes():
+@@ -2637,13 +2637,23 @@ class Polytopes():
          an exact embedded NumberField::
  
              sage: perm_a2_reg = polytopes.generalized_permutahedron(['A',2],regular=True)
@@ -1051,7 +1051,7 @@ index 015ea8a..f9d2cea 100644
              sage: perm_a2_reg.is_inscribed()
              True
              sage: perm_a3_reg = polytopes.generalized_permutahedron(['A',3],regular=True)  # long time
-@@ -2652,22 +2662,22 @@ class Polytopes():
+@@ -2653,22 +2663,22 @@ class Polytopes():
          The same is possible with vertices in ``RDF``::
  
              sage: perm_a2_inexact = polytopes.generalized_permutahedron(['A',2],exact=False)
@@ -1139,10 +1139,10 @@ index bb39263..c53a9bf 100644
              ((8,),)
          """
 diff --git a/src/sage/graphs/generic_graph.py b/src/sage/graphs/generic_graph.py
-index 3fbc28d..ce6b284 100644
+index d24eb3d..8d97487 100644
 --- a/src/sage/graphs/generic_graph.py
 +++ b/src/sage/graphs/generic_graph.py
-@@ -5208,25 +5208,25 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5223,25 +5223,25 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g = graphs.PathGraph(10)
              sage: g.layout(layout='planar', save_pos=True, test=True)
@@ -1181,7 +1181,7 @@ index 3fbc28d..ce6b284 100644
              sage: g = graphs.CompleteGraph(5)
              sage: g.layout(layout='planar', save_pos=True, test=True, set_embedding=True)
              Traceback (most recent call last):
-@@ -5845,17 +5845,17 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5860,17 +5860,17 @@ class GenericGraph(GenericGraph_pyx):
              sage: T = graphs.TetrahedralGraph()
              sage: T.faces({0: [1, 3, 2], 1: [0, 2, 3], 2: [0, 3, 1], 3: [0, 1, 2]})
              [[(0, 1), (1, 2), (2, 0)],
@@ -1205,7 +1205,7 @@ index 3fbc28d..ce6b284 100644
  
          With no embedding provided (non-planar graph)::
  
-@@ -5901,7 +5901,9 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5916,7 +5916,9 @@ class GenericGraph(GenericGraph_pyx):
  
          # Storage for face paths
          faces = []
@@ -1216,7 +1216,7 @@ index 3fbc28d..ce6b284 100644
  
          # Trace faces
          while edgeset:
-@@ -5911,7 +5913,9 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5926,7 +5928,9 @@ class GenericGraph(GenericGraph_pyx):
              e = (v, next_node)
              if e == path[0]:
                  faces.append(path)
@@ -1228,10 +1228,10 @@ index 3fbc28d..ce6b284 100644
                  path.append(e)
                  edgeset.discard(e)
 diff --git a/src/sage/graphs/graph.py b/src/sage/graphs/graph.py
-index 38de41d..eb98e50 100644
+index 596c0a38..243e75b 100644
 --- a/src/sage/graphs/graph.py
 +++ b/src/sage/graphs/graph.py
-@@ -7336,9 +7336,11 @@ class Graph(GenericGraph):
+@@ -7390,9 +7390,11 @@ class Graph(GenericGraph):
              sage: d = F.cliques_containing_vertex()
              sage: all(F.degree(u) == len(cliques) for u,cliques in d.items())
              True
@@ -1246,7 +1246,7 @@ index 38de41d..eb98e50 100644
          """
          import networkx
          return networkx.cliques_containing_node(self.networkx_graph(), vertices, cliques)
-@@ -7710,8 +7712,11 @@ class Graph(GenericGraph):
+@@ -7764,8 +7766,11 @@ class Graph(GenericGraph):
  
          Vertices may be arbitrary --- check that :trac:`24898` is fixed::
  
@@ -1474,7 +1474,7 @@ index d4cf54e..ace308a 100644
              ....: finally:
              ....:     pass
 diff --git a/src/sage/interfaces/sagespawn.pyx b/src/sage/interfaces/sagespawn.pyx
-index 8da000f..5a8cd4b 100644
+index 8644b08..9041238 100644
 --- a/src/sage/interfaces/sagespawn.pyx
 +++ b/src/sage/interfaces/sagespawn.pyx
 @@ -94,7 +94,7 @@ class SageSpawn(spawn):
@@ -1486,7 +1486,7 @@ index 8da000f..5a8cd4b 100644
              sage: s  # indirect doctest
              stupid process finished running .../true
          """
-@@ -186,7 +186,7 @@ class SagePtyProcess(PtyProcess):
+@@ -188,7 +188,7 @@ class SagePtyProcess(PtyProcess):
              sage: s = SageSpawn("sleep 1000")
              sage: s.close()
              sage: while s.isalive():  # long time (5 seconds)
@@ -1495,7 +1495,7 @@ index 8da000f..5a8cd4b 100644
          """
          if not self.closed:
              if self.quit_string is not None:
-@@ -231,7 +231,7 @@ class SagePtyProcess(PtyProcess):
+@@ -233,7 +233,7 @@ class SagePtyProcess(PtyProcess):
              ....:     try:
              ....:         os.kill(s.pid, 0)
              ....:     except OSError:
@@ -1573,7 +1573,7 @@ index 63fa92b..ca1eb9d 100644
      ::
  
 diff --git a/src/sage/misc/sageinspect.py b/src/sage/misc/sageinspect.py
-index 8e73143..7af4e4d 100644
+index d328237..5a11820 100644
 --- a/src/sage/misc/sageinspect.py
 +++ b/src/sage/misc/sageinspect.py
 @@ -427,8 +427,9 @@ class SageArgSpecVisitor(ast.NodeVisitor):
@@ -2049,10 +2049,10 @@ index aa0b2f2..7a61861 100644
          """
          return self
 diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal.py b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-index 560bda7..0c5a93d 100644
+index 1a7db4d..f025b3a 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_ideal.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-@@ -4163,11 +4163,11 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+@@ -4162,11 +4162,11 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
              sage: I = P * ( x*y*z + z^5, 2*x^2 + y^3 + z^7, 3*z^5 +y ^5 )
              sage: J = Ideal(I.groebner_basis())
              sage: f = sum(P.random_element(terms=2)*f for f in I.gens())
@@ -2462,7 +2462,7 @@ index b243290..3a352c1 100644
          try:
              return hash(self._cache[:13])
 diff --git a/src/sage/structure/sequence.py b/src/sage/structure/sequence.py
-index 13b8e5d..71d1185 100644
+index 238b655..375bbda 100644
 --- a/src/sage/structure/sequence.py
 +++ b/src/sage/structure/sequence.py
 @@ -173,9 +173,8 @@ def Sequence(x, universe=None, check=True, immutable=False, cr=False, cr_str=Non
@@ -2517,21 +2517,22 @@ index 13b8e5d..71d1185 100644
  
          """
 diff --git a/src/sage_setup/docbuild/utils.py b/src/sage_setup/docbuild/utils.py
-index 272f7e2..d523573 100644
+index 9fce8e4..056392a 100644
 --- a/src/sage_setup/docbuild/utils.py
 +++ b/src/sage_setup/docbuild/utils.py
-@@ -112,16 +112,21 @@ def build_many(target, args, processes=None):
+@@ -112,16 +112,22 @@ def build_many(target, args, processes=None):
          ...
          WorkerDiedException: worker for 4 died with non-zero exit code -9
      """
 -    from multiprocessing import Process, Queue, cpu_count
 +    import multiprocessing
++    from multiprocessing import Process, Queue, cpu_count, set_start_method
 +    # With OS X, Python 3.8 defaults to use 'spawn' instead of 'fork'
 +    # in multiprocessing, and Sage docbuilding doesn't work with
 +    # 'spawn'. See trac #27754.
 +    if os.uname().sysname == 'Darwin':
-+        multiprocessing.set_start_method('fork', force=True)
-     from six.moves.queue import Empty
++        set_start_method('fork', force=True)
+     from queue import Empty
  
      if processes is None:
 -        processes = cpu_count()
@@ -2545,7 +2546,7 @@ index 272f7e2..d523573 100644
  
      ### Utility functions ###
      def run_worker(target, queue, idx, task):
-@@ -222,7 +227,7 @@ def build_many(target, args, processes=None):
+@@ -222,7 +228,7 @@ def build_many(target, args, processes=None):
                  except StopIteration:
                      pass
                  else:
