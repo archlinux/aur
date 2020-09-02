@@ -4,10 +4,10 @@ pkgdesc="ROS - Controller for a differential drive mobile base."
 url='https://github.com/ros-controls/ros_controllers/wiki'
 
 pkgname='ros-melodic-diff-drive-controller'
-pkgver='0.16.1'
+pkgver='0.17.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -44,7 +44,7 @@ depends=(
 
 _dir="ros_controllers-${pkgver}/diff_drive_controller"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
-sha256sums=('cf43c389f2c29e9597d46a5ff7ce33af48278dbb697209887249dd3a7682257a')
+sha256sums=('d1b46651956d19a36eedc628c2761526ec4769390e596bd76688abc45f59ace8')
 
 build() {
 	# Use ROS environment variables.
