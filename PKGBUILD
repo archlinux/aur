@@ -1,51 +1,41 @@
-# Maintainer: tvoor <ftdabcde@gmail.com>
+# Contributor: tvoor <ftdabcde@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=png_sec
 pkgver=0.1.1.8
-pkgrel=2
-epoch=
+pkgrel=3
 pkgdesc="tool to encrypt text and hide it in .png file"
-arch=('any')
-url=""
+arch=('x86_64')
+url="https://github.com/DOGINFOG/png_sec"
 license=('GPL')
-groups=()
 depends=('libgcrypt' 'libpng')
 makedepends=('cmake' 'make' 'git')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=('png_sec-git')
-backup=()
-options=()
-install=
-changelog=
-source=(
-	"$pkgname::git+https://github.com/DOGINFOG/png_sec.git#tag=v$pkgver"
-	"git+https://github.com/DOGINFOG/cmake_scripts.git"
-)
-noextract=()
+provides=('png_sec-git')
+conflicts=('png_sec-git')
+source=("$pkgname::git+$url.git#tag=v$pkgver"
+	"git+https://github.com/DOGINFOG/cmake_scripts.git")
 md5sums=('SKIP' 'SKIP')
-validpgpkeys=('C5C2DEE155D3872B8BA531226EEC3334E3C22821')
 
 prepare() {
-	cd "$pkgname"
-	git submodule init
-	git config submodule.cmake.url $srcdir/cmake_scripts
-	git submodule update
-	cmake -Bbuild
+  cd "$pkgname"
+  git submodule init
+  git config submodule.cmake.url "$srcdir"/cmake_scripts
+  git submodule update
+  chmod u+x "$srcdir"/$pkgname/cmake/sha256parse.sh
 }
 
 build() {
-	cd "$pkgname"
-	make -Cbuild
+  cd "$pkgname"
+  cmake -Bbuild
+  make -Cbuild
 }
 
 check() {
-	cd "$pkgname"
-	make -Cbuild test
+  cd "$pkgname"
+  make -Cbuild test
 }
 
 package() {
-	cd "$pkgname"
-	make -Cbuild DESTDIR=$pkgdir install
+  cd "$pkgname"
+  make -Cbuild DESTDIR="$pkgdir" install
 }
