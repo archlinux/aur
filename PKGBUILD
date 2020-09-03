@@ -3,9 +3,10 @@
 # Contributor: pavanjadhaw <pavanjadhaw96@gmail.com>
 pkgname=multilockscreen
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple lock script for i3lock-color"
 arch=('any')
+url="https://github.com/jeffmhubbard/multilockscreen"
 license=('MIT')
 depends=('i3lock-color' 'imagemagick' 'xorg-xrandr' 'xorg-xdpyinfo' 'bc' 'feh')
 conflicts=('multilockscreen-git')
@@ -25,4 +26,5 @@ package() {
 	fi
 	mkdir -p "$pkgdir/usr/share/doc/$pkgname/examples"
 	cp "$_srcdir/examples/config" "$pkgdir/usr/share/doc/$pkgname/examples/config"
+	install -Dm644 "$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
