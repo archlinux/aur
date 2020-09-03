@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=86.0.4238.0
+pkgver=87.0.4252.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -305,6 +305,7 @@ _keeplibs=(
            'third_party/unrar'
            'third_party/usrsctp'
            'third_party/vulkan'
+           'third_party/wayland'
            'third_party/web-animations-js'
            'third_party/webdriver'
            'third_party/webrtc'
@@ -344,7 +345,6 @@ _keeplibs+=(
 if [ "${_use_wayland}" = "1" ]; then
   _keeplibs+=(
               'third_party/minigbm'
-              'third_party/wayland'
              )
 fi
 
@@ -356,7 +356,6 @@ _flags=(
         'is_official_build=false'
         'is_component_build=true'
         'enable_widevine=true'
-        'enable_js_type=true'
         'enable_hangout_services_extension=true'
         "ffmpeg_branding=\"ChromeOS\""
         'proprietary_codecs=true'
