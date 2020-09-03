@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=2.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -22,18 +22,15 @@ makedepends=('git' 'go')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        "git+https://github.com/mitchellh/vagrant-installers.git#commit=7b7fb86")
+        "git+https://github.com/mitchellh/vagrant-installers.git#commit=d299bd3")
 md5sums=('b6f4fba99d5f82c654e6409bc3eeda3a'
          'SKIP')
 
 build() {
   cd $pkgname-$pkgver
-
-  INSTALLERS_DIR="$srcdir"/vagrant-installers/substrate/modules
-
   gem build $pkgname.gemspec
 
-  cd "$INSTALLERS_DIR"/vagrant_substrate/files/launcher
+  cd "$srcdir"/vagrant-installers/substrate/launcher
   go get github.com/mitchellh/osext
 
   go build \
@@ -46,21 +43,22 @@ build() {
 package() {
   cd $pkgname-$pkgver
 
-  INSTALLERS_DIR="$srcdir"/vagrant-installers/substrate/modules
+  INSTALLERS_DIR="$srcdir"/vagrant-installers/substrate
   EMBEDDED_DIR="$pkgdir"/opt/vagrant/embedded
 
   install -d "$pkgdir"/usr/{bin,share/bash-completion/completions}
+  install -d "$EMBEDDED_DIR"/rgloader
+  install -Dm644 "$INSTALLERS_DIR"/common/gemrc "$EMBEDDED_DIR"/etc/gemrc
+  install -Dm644 "$INSTALLERS_DIR"/{common,linux}/rgloader/* \
+    "$EMBEDDED_DIR"/rgloader/
 
-  install -Dm644 "$INSTALLERS_DIR"/vagrant_substrate/templates/gemrc.erb \
-    "$EMBEDDED_DIR"/etc/gemrc
+  echo "{ \"vagrant_version\": \"$pkgver\" }" > "$EMBEDDED_DIR"/manifest.json
 
-  cp -r "$INSTALLERS_DIR"/rubyencoder/files/rgloader "$EMBEDDED_DIR"
-
-  GEM_PATH="$EMBEDDED_DIR"/gems GEM_HOME="$GEM_PATH" \
+  GEM_PATH="$EMBEDDED_DIR"/gems/$pkgver GEM_HOME="$GEM_PATH" \
   GEMRC="$EMBEDDED_DIR"/etc/gemrc \
     gem install $pkgname-$pkgver.gem --no-document
 
-  install -Dm755 "$INSTALLERS_DIR"/vagrant_substrate/files/launcher/vagrant \
+  install -Dm755 "$INSTALLERS_DIR"/launcher/vagrant \
     "$pkgdir"/opt/$pkgname/bin/$pkgname
 
   ln -s /opt/$pkgname/bin/$pkgname "$pkgdir"/usr/bin/$pkgname
