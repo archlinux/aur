@@ -5,6 +5,7 @@ pkgbase = odamex
 	url = http://odamex.net/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = cmake
 	depends = sdl2_mixer
