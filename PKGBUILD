@@ -1,13 +1,13 @@
 # Maintainer: Roman Vishnevsky <aka [dot] x0x01 [at] gmail [dot] com>
 
 pkgname=torrserver-bin
-pkgver=1.1.76
+pkgver=1.1.77
 pkgrel=1
 pkgdesc="Torrent to http. Streams media torrent files as media streams without fully downloading"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/YouROK/TorrServer"
 license=("GPL3")
-provides=("torrserver=1.1.76")
+provides=("torrserver=1.1.77")
 conflicts=("torrserver")
 depends=("glibc")
 install=torrserver.install
