@@ -3,7 +3,7 @@
 
 pkgname=brave-nightly-bin
 pkgver=1.15.32
-pkgrel=2
+pkgrel=4
 chrome_version=86.0.4240.22
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
 arch=('x86_64')
@@ -11,7 +11,9 @@ url='https://brave.com/download-nightly'
 license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libgnome-keyring' 'ttf-font')
 optdepends=('cups: Printer support'
-            'pepper-flash: Adobe Flash support')
+            'pepper-flash: Adobe Flash support'
+    	    'mesa: Hardware accelerated rendering'
+	        'libglvnd: Support multiple different OpenGL drivers at any given time')
 provides=("${pkgname}" 'brave-nightly-browser')
 conflicts=("${pkgname}" 'brave-bin')
 source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-v${pkgver}-linux-x64.zip"

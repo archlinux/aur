@@ -1,7 +1,7 @@
 pkgbase = brave-nightly-bin
 	pkgdesc = Web browser that blocks ads and trackers by default (nightly binary release).
 	pkgver = 1.15.32
-	pkgrel = 2
+	pkgrel = 4
 	url = https://brave.com/download-nightly
 	arch = x86_64
 	license = custom
@@ -13,6 +13,8 @@ pkgbase = brave-nightly-bin
 	depends = ttf-font
 	optdepends = cups: Printer support
 	optdepends = pepper-flash: Adobe Flash support
+	optdepends = mesa: Hardware accelerated rendering
+	optdepends = libglvnd: Support multiple different OpenGL drivers at any given time
 	provides = brave-nightly-bin
 	provides = brave-nightly-browser
 	conflicts = brave-nightly-bin
