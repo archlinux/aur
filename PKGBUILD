@@ -7,19 +7,19 @@
 # Contributor: Auguste Pop < auguste [at] gmail [dot] com >
 
 pkgname=stockfish
-pkgver=11
-pkgrel=3
+pkgver=12
+pkgrel=1
 epoch=1
 pkgdesc="A strong chess engine written by Tord Romstad, Marco Costalba, Joona Kiiski"
 arch=('x86_64' 'i686' 'armv7h')
 url="https://stockfishchess.org/"
 license=('GPL3')
 depends=('glibc')
-source=("https://stockfishchess.org/files/$pkgname-$pkgver-linux.zip")
-sha512sums=('f1505814d143e319a748ff7a0abe58ca37481aefdfaaab762b3efeff216294201e085b015b614e44369c7a55de1bbf6e18a0183230c02bdd2fd4945719aeca3d')
+source=("$pkgname-$pkgver.zip::https://github.com/official-stockfish/Stockfish/archive/sf_$pkgver.zip")
+sha512sums=('7746b43d979ff935d5e2def24e25af19ed67d1caeadfc684f91aac3cde5f81964dc4b4afeccf7bd8ea1c5fd973b7902b3b2f98d644a3c9e1ab8d5aa7b3051efb')
 
 build() {
-  cd "$pkgname-$pkgver-linux/src"
+  cd "Stockfish-sf_${pkgver}/src"
 
   if [[ "$CARCH" == "armv7h" ]]; then
     _arch=armv7
@@ -37,7 +37,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver-linux/src"
+  cd "Stockfish-sf_${pkgver}/src"
   make PREFIX="$pkgdir/usr" install
 }
 
