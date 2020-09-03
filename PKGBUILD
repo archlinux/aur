@@ -2,8 +2,8 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 # Contributor: DuckSoft <realducksoft@gmail.com>
 pkgname=qv2ray-dev-git
-pkgver=2.6.2.5819.r2333.311f7ee2
-pkgrel=1
+pkgver=2.6.3.5899.r2494.0ab039cc
+pkgrel=2
 pkgdesc="Cross-platform V2ray Client written in Qt (Development Release)"
 arch=('x86_64')
 url='https://github.com/Qv2ray/Qv2ray'
@@ -19,13 +19,9 @@ source=(
     'Qv2ray::git+https://github.com/Qv2ray/Qv2ray#branch=dev'
     'QNodeEditor::git+https://github.com/Qv2ray/QNodeEditor'
     'SingleApplication::git+https://github.com/itay-grudev/SingleApplication'
-    'x2struct::git+https://github.com/xyz347/x2struct'
-    'cpp-httplib::git+https://github.com/yhirose/cpp-httplib'
 )
 
 sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -37,11 +33,6 @@ pkgver() {
 prepare() {
     cd "${srcdir}/Qv2ray"
     git submodule init
-    submodules=('QNodeEditor' 'SingleApplication' 'x2struct' 'cpp-httplib')
-    for module in ${submodules[@]}; do
-        git config submodule."3rdparty/$module".url "${srcdir}/$module"
-    done
-    
     git config submodule."libs/libqvb".active false
     git config submodule."3rdparty/zxing-cpp".active true
     git submodule update
@@ -57,8 +48,8 @@ build() {
         -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
         -DQV2RAY_ZXING_PROVIDER="module" \
         -DQV2RAY_TRANSLATION_PATH="/usr/share/qv2ray/lang" \
-        -DQV2RAY_DEFAULT_VASSETS_PATH="/usr/lib/v2ray" \
-        -DQV2RAY_DEFAULT_VCORE_PATH="/usr/lib/v2ray/v2ray" \
+        -DQV2RAY_DEFAULT_VASSETS_PATH="/usr/share/v2ray" \
+        -DQV2RAY_DEFAULT_VCORE_PATH="/usr/bin/v2ray" \
         -DQV2RAY_DISABLE_AUTO_UPDATE=on \
         -DCMAKE_BUILD_TYPE=Release \
         -GNinja
