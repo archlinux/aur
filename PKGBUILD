@@ -1,0 +1,24 @@
+# Maintainer: tonikelope <tonikelope@gmail.com>
+pkgname=coronapoker
+pkgver=4.29
+pkgrel=1
+pkgdesc="Yet another cross-platform Texas hold 'em game written in Java during COVID-19 pandemic"
+arch=('x86_64')
+url="https://tonikelope.github.io/coronapoker/"
+license=('GPL3')
+
+source=("https://github.com/tonikelope/coronapoker/releases/download/v${pkgver}/CoronaPokerLINUX_${pkgver}_portable.zip")
+
+package() {
+	mkdir -p "${pkgdir}/opt/${pkgname}/"
+	chmod 0777 "${pkgdir}/opt/${pkgname}/"
+    cp -RT "${srcdir}/CoronaPokerLINUX/" "${pkgdir}/opt/${pkgname}"
+    chmod +x "${pkgdir}/opt/${pkgname}/CoronaPoker.run"
+    chmod 0777 "${pkgdir}/opt/${pkgname}/jar/"
+    install -Dm644 "${srcdir}/CoronaPokerLINUX/${pkgname}.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/CoronaPokerLINUX/${pkgname}.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
+    mkdir -p "${pkgdir}/usr/bin/"
+    ln -s "/opt/${pkgname}/CoronaPoker.run" "$pkgdir/usr/bin/coronapoker"
+}
+
+md5sums=('f29ca068e4bb607e1bb61c0765f847de')
