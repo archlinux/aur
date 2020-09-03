@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=qrcp
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Transfer files over Wi-Fi from your computer to a mobile device by scanning a QR code without leaving the terminal"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -10,17 +10,24 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('2d39ba661aad9c60b816bc06f53ef4f3d8747e11d5fc27c104d3687d1e77204c')
+sha256sums=('a2f4433bcfca001a310bce2adcaca19c82c44d1d3727d74ab9a5420cf0b01830')
 
 build() {
     cd $pkgname-$pkgver
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+
     go build \
         -trimpath \
         -buildmode=pie \
         -mod=readonly \
         -modcacherw \
-        -ldflags "-extldflags $LDFLAGS" \
-        -o $pkgname
+        -ldflags "-linkmode=external
+            -X \"github.com/claudiodangelis/qrcp/version.version=$pkgver\"
+            -X \"github.com/claudiodangelis/qrcp/version.date=$(date -d@"$SOURCE_DATE_EPOCH" +%Y-%m-%dT%H:%M:%SZ)\"" \
+	    -o $pkgname
 }
 
 package() {
