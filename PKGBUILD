@@ -1,7 +1,7 @@
 # Maintainer: EHfive <eh5@sokka.cn>
 
 pkgname=libldac-git
-pkgver=2.0.2.3.r0.gfbffba4
+pkgver=2.0.2.3.r2.g8add977
 pkgrel=1
 pkgdesc="AOSP libldac dispatcher "
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
