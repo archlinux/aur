@@ -1,11 +1,12 @@
 pkgbase = multilockscreen-git
 	pkgdesc = A simple lock script for i3lock-color
-	pkgver = r129.974e8c4
+	pkgver = r150.1740f94
 	pkgrel = 1
 	url = https://github.com/jeffmhubbard/multilockscreen
 	install = multilockscreen.install
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = i3lock-color
 	depends = imagemagick
 	depends = xorg-xrandr
