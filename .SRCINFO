@@ -1,14 +1,14 @@
 pkgbase = kube-commander
 	pkgdesc = Browse your kubernetes clusters in a casual way
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/AnatolyRugalev/kube-commander
 	arch = x86_64
 	license = MIT
 	depends = kubectl
-	source = https://github.com/AnatolyRugalev/kube-commander/releases/download/0.5.2/kubecom_0.5.2_Linux_x86_64.tar.gz
+	source = https://github.com/AnatolyRugalev/kube-commander/releases/download/0.5.3/kubecom_0.5.3_Linux_x86_64.tar.gz
 	source = kube-commander
-	sha256sums = 4cd38b582e772844ef3f9c54e70875378eee6303a33356df80a16181e8bf576a
+	sha256sums = 9b33ae5b5c2b57da1b2f9951ad86686f834397b0fcfc2e47c1acb6da6a0c9d65
 	sha256sums = a51f5f19cce7700895f32ab96e6cf167e184e0f7e7ebe5b228c5e9283672d459
 
 pkgname = kube-commander
