@@ -1,0 +1,22 @@
+pkgbase = flucoma-cli-git
+	pkgdesc = Fluid Corpus Manipulation Command line interface
+	pkgver = r106.5b49c0a
+	pkgrel = 1
+	url = https://github.com/flucoma/flucoma-cli
+	arch = x86_64
+	license = BSD
+	makedepends = cmake>=3.11
+	makedepends = git
+	makedepends = gcc
+	makedepends = gcc-libs
+	optdepends = python3: For documentation
+	optdepends = python-jinja: For documentation
+	optdepends = python-yaml: For documentation
+	optdepends = python-docutils: For documentation
+	provides = flucoma-cli-git
+	conflicts = flucoma-cli
+	source = flucoma-cli-git::git://github.com/flucoma/flucoma-cli.git
+	md5sums = SKIP
+
+pkgname = flucoma-cli-git
+
