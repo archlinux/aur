@@ -2,7 +2,7 @@
 
 pkgname=etesync-git
 _pkgname=etesync
-pkgver=0.1.0.r75.917fff5
+pkgver=0.1.0.r76.168e1ad
 pkgrel=1
 pkgdesc="EteSync C library"
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/etesync/etesync-rs"
 license=('LGPL')
 depends=('openssl')
 makedepends=('cargo' 'git')
-source=("${_pkgname}::git+https://github.com/etesync/etesync-rs.git")
+source=("${_pkgname}::git+https://github.com/etesync/etesync-rs.git#branch=legacy")
 sha512sums=('SKIP')
 provides=(etesync)
 conflicts=(etesync)
