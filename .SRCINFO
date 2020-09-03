@@ -1,0 +1,11 @@
+pkgbase = owo
+	pkgdesc = cli owoifier
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	source = git://github.com/kittenmilk/owo.git
+	md5sums = SKIP
+
+pkgname = owo
+
