@@ -1,41 +1,42 @@
 pkgbase = linux-lqx
-	pkgdesc = Liquorix Kernel
-	pkgver = 5.8.6_1
-	pkgrel = 1
-	url = http://liquorix.net/
+	pkgdesc = Linux Liquorix
+	pkgver = 5.8.6.lqx1
+	pkgrel = 2
+	url = https://liquorix.net/
 	arch = x86_64
 	license = GPL2
-	makedepends = kmod
-	makedepends = inetutils
 	makedepends = bc
+	makedepends = kmod
 	makedepends = libelf
-	makedepends = cpio
 	makedepends = zstd
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.8.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.8.tar.sign
 	source = https://github.com/damentz/liquorix-package/archive/5.8-2.tar.gz
+	source = sphinx-workaround.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = 45a53ecf351096ef6e98242cca4228b8da9b9139ecc6963695791ea6fb7a9484a4e1c19dcca7ce7cbfdfa49de0451b70973bb078f12bdae9cbaddbc3f8092556
 	sha512sums = SKIP
 	sha512sums = 9ae8858b462720a4e95debcfa860b4445ec2cd9395e24f7a9503ba31ba55043d36f5e5238866fe0197195a7de491e1dd9f9f9032ab9145230874205250659d15
+	sha512sums = 98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be
 
 pkgname = linux-lqx
-	pkgdesc = The Liquorix Kernel kernel and modules
+	pkgdesc = The Linux Liquorix kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = sof-firmware: firmware images needed for Sound Open Firmware capable devices
-	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
 
 pkgname = linux-lqx-headers
-	pkgdesc = Headers and scripts for building modules for the Liquorix Kernel kernel
+	pkgdesc = Headers and scripts for building modules for the $pkgdesc kernel
 	depends = linux-lqx
 
 pkgname = linux-lqx-docs
-	pkgdesc = Kernel hacker's manual for the Liquorix Kernel kernel
+	pkgdesc = Documentation for the Linux Liquorix kernel
 	depends = linux-lqx
 

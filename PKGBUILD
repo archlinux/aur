@@ -1,7 +1,7 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com> PGP-Key: BDB26C5A
 # Contributor: shivik <> PGP-Key: 761E423C
 # Contributor: Michael Duell <mail@akurei.me> PGP-Key: 6EE23EBE
-# A special thanks to Steven Barrett for very important sugestions 
+# A special thanks to Steven Barrett for very important suggestions
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -58,27 +58,40 @@ _lqxpatchname=liquorix-package
 _lqxpatchrel=2
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
-pkgver=5.8.6_1
-pkgrel=1
-pkgdesc='Liquorix Kernel'
-arch=('x86_64')
-url="http://liquorix.net/"
-license=('GPL2')
-options=('!strip')
-makedepends=('kmod' 'inetutils' 'bc' 'libelf' 'cpio' 'zstd')
-
+pkgver=5.8.6.lqx1
+pkgrel=2
+pkgdesc='Linux Liquorix'
+url='https://liquorix.net/'
+arch=(x86_64)
+license=(GPL2)
+makedepends=(bc kmod libelf zstd)
 if [ -n "$_htmldocs_enable" ]; then
-    makedepends+=('python-sphinx' 'python-sphinx_rtd_theme'
-             'graphviz' 'imagemagick')
+    makedepends+=(xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick)
 fi
+options=('!strip')
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
-        "https://github.com/damentz/${_lqxpatchname}/archive/${_major}-${_lqxpatchrel}.tar.gz")
+        "https://github.com/damentz/${_lqxpatchname}/archive/${_major}-${_lqxpatchrel}.tar.gz"
+        'sphinx-workaround.patch')
+validpgpkeys=(
+    'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
+    '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
+)
+sha512sums=('45a53ecf351096ef6e98242cca4228b8da9b9139ecc6963695791ea6fb7a9484a4e1c19dcca7ce7cbfdfa49de0451b70973bb078f12bdae9cbaddbc3f8092556'
+            'SKIP'
+            '9ae8858b462720a4e95debcfa860b4445ec2cd9395e24f7a9503ba31ba55043d36f5e5238866fe0197195a7de491e1dd9f9f9032ab9145230874205250659d15'
+            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be')
+
+
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+
+pkgver() {
+  printf ${_major}.${_minor}.${_patchrel}
+}
 
 prepare() {
     cd $_srcname
@@ -92,11 +105,11 @@ prepare() {
         local _patchrx='^zen/v\d+\.\d+\.\d+-lqx\d+.patch$'
         local _patchfolder="${srcdir}/${_lqxpatchver}/linux-liquorix/debian/patches"
         local _patchpath="$(grep -P "$_patchrx" "$_patchfolder/series")"
-        msg2 "Patching sources with ${_patchpath#*/}"
+        echo "Patching sources with ${_patchpath#*/}"
         patch -Np1 -i "$_patchfolder/$_patchpath"
 
     ### Setting version
-        msg2 "Setting version..."
+        echo "Setting version..."
         scripts/setlocalversion --save-scmversion
         echo "-$pkgrel" > localversion.10-pkgrel
         echo "${pkgbase#linux}" > localversion.20-pkgname
@@ -107,24 +120,24 @@ prepare() {
             src="${src%%::*}"
             src="${src##*/}"
             [[ $src = *.patch ]] || continue
-        msg2 "Applying patch $src..."
+        echo "Applying patch $src..."
         patch -Np1 < "../$src"
         done
 
     ### Setting config
-        msg2 "Setting config..."
+        echo "Setting config..."
         cat ${srcdir}/${_lqxpatchver}/linux-liquorix/debian/config/kernelarch-x86/config-arch-64 >./.config
         make olddefconfig
 
     ### Prepared version
         make -s kernelrelease > version
-        msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+        echo "Prepared $pkgbase version $(<version)"
 
     ### Optionally use running kernel's config
 	# code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
 	if [ -n "$_use_current" ]; then
 		if [[ -s /proc/config.gz ]]; then
-			msg2 "Extracting config from /proc/config.gz..."
+			echo "Extracting config from /proc/config.gz..."
 			# modprobe configs
 			zcat /proc/config.gz > ./.config
 		else
@@ -137,14 +150,14 @@ prepare() {
 
     ### Disable MUQSS
         if [ -n "$_muqss_disable" ]; then
-        msg2 "Disabling MUQSS..."
+        echo "Disabling MUQSS..."
         sed -i -e s'/^CONFIG_SCHED_MUQSS=y/# CONFIG_SCHED_MUQSS is not set/' ./.config	
         fi
 
     ### Optionally disable NUMA for 64-bit kernels only
         # (x86 kernels do not support NUMA)
         if [ -n "$_NUMAdisable" ]; then
-            msg2 "Disabling NUMA from kernel config..."
+            echo "Disabling NUMA from kernel config..."
             sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
                 -i -e '/CONFIG_AMD_NUMA=y/d' \
                 -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
@@ -161,10 +174,10 @@ prepare() {
         # See https://aur.archlinux.org/packages/modprobed-db
         if [ -n "$_localmodcfg" ]; then
             if [ -f $HOME/.config/modprobed.db ]; then
-            msg2 "Running Steven Rostedt's make localmodconfig now"
+            echo "Running Steven Rostedt's make localmodconfig now"
             make LSMOD=$HOME/.config/modprobed.db localmodconfig
         else
-            msg2 "No modprobed.db data found"
+            echo "No modprobed.db data found"
             exit
             fi
         fi
@@ -188,27 +201,25 @@ prepare() {
 build() {
   cd $_srcname
 
-  local params=(bzImage modules)
+  make all
   if [ -n "$_htmldocs_enable" ]; then
-    params+=(htmldocs)
+    make htmldocs
   fi
-
-  make ${params[*]}
 }
 
 _package() {
     pkgdesc="The $pkgdesc kernel and modules"
-    depends=('coreutils' 'kmod' 'initramfs')
+    depends=(coreutils kmod initramfs)
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
-                'sof-firmware: firmware images needed for Sound Open Firmware capable devices'
-                'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+                'sof-firmware: firmware images needed for Sound Open Firmware capable devices')
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
   cd $_srcname
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
-  msg2 "Installing boot image..."
+  echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
@@ -216,24 +227,21 @@ _package() {
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-  msg2 "Installing modules..."
+  echo "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
-    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+    pkgdesc='Headers and scripts for building modules for the $pkgdesc kernel'
     depends=('linux-lqx')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  msg2 "Installing build files..."
+  echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
     localversion.* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
@@ -246,7 +254,7 @@ _package-headers() {
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
 
-  msg2 "Installing headers..."
+  echo "Installing headers..."
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
   install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
@@ -262,10 +270,10 @@ _package-headers() {
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-  msg2 "Installing KConfig files..."
+  echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  msg2 "Removing unneeded architectures..."
+  echo "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
     [[ $arch = */x86/ ]] && continue
@@ -273,16 +281,16 @@ _package-headers() {
     rm -r "$arch"
   done
 
-  msg2 "Removing documentation..."
+  echo "Removing documentation..."
   rm -r "$builddir/Documentation"
 
-  msg2 "Removing broken symlinks..."
+  echo "Removing broken symlinks..."
   find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  msg2 "Removing loose objects..."
+  echo "Removing loose objects..."
   find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  msg2 "Stripping build tools..."
+  echo "Stripping build tools..."
   local file
   while read -rd '' file; do
     case "$(file -bi "$file")" in
@@ -297,45 +305,29 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  msg2 "Adding symlink..."
+  echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
-    pkgdesc="Kernel hacker's manual for the $pkgdesc kernel"
+    pkgdesc="Documentation for the $pkgdesc kernel"
     depends=('linux-lqx')
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  msg2 "Installing documentation..."
-  mkdir -p "$builddir"
-  cp -t "$builddir" -a Documentation
+  echo "Installing documentation..."
+  local src dst
+  while read -rd '' src; do
+    dst="${src#Documentation/}"
+    dst="$builddir/Documentation/${dst#output/}"
+    install -Dm644 "$src" "$dst"
+  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
 
-  if [ -n "$_htmldocs_enable" ]; then
-    msg2 "Removing unneeded files..."
-    rm -rv "$builddir"/Documentation/{,output/}.[^.]*
-
-    msg2 "Moving HTML docs..."
-    local src dst
-    while read -rd '' src; do
-        dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-        mkdir -p "${dst%/*}"
-        mv "$src" "$dst"
-        rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-    done < <(find "$builddir/Documentation/output" -type f -print0)
-  fi
-
-  msg2 "Adding symlink..."
+  echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
@@ -345,12 +337,3 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-
-sha512sums=('45a53ecf351096ef6e98242cca4228b8da9b9139ecc6963695791ea6fb7a9484a4e1c19dcca7ce7cbfdfa49de0451b70973bb078f12bdae9cbaddbc3f8092556'
-            'SKIP'
-            '9ae8858b462720a4e95debcfa860b4445ec2cd9395e24f7a9503ba31ba55043d36f5e5238866fe0197195a7de491e1dd9f9f9032ab9145230874205250659d15')
-
-validpgpkeys=(
-    'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
-    '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
-)
