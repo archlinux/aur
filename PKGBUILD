@@ -2,11 +2,11 @@
 pkgname=python-validity-git
 _pkgdirname=python-validity
 pkgver=0.9.r23.g64438d6
-pkgrel=1
+pkgrel=2
 pkgdesc="Validity fingerprint sensor driver"
 arch=(any)
 license=(MIT)
-depends=(python python-pyusb python-cryptography python-dbus python-gobject 
+depends=(python python-pyusb python-cryptography python-dbus python-gobject python-yaml
   innoextract open-fprintd fprintd-clients)
 makedepends=(git python-setuptools)
 conflicts=(python-validity)
