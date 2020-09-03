@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034
 
 pkgname=raven-qt
-pkgver=4.2.1
+pkgver=4.3.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://ravencoin.org/"
