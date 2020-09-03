@@ -1,6 +1,6 @@
 # Maintainer:  <philipp.classen@posteo.de>
 pkgname=verifpal
-pkgver=0.14.1
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Cryptographic protocol analysis for students and engineers."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=(glibc)
 makedepends=('go')
 source=("https://source.symbolic.software/verifpal/verifpal/-/archive/v${pkgver}/verifpal-v${pkgver}.tar.bz2")
-sha256sums=('c25862af0d562efc6e49f28dda6e442eac328ef8e0d3f12748ac06eb952ea0df')
+sha256sums=('406f57dc3ae8c354b3a46b1aa1fbe9ae6eea2146f1ab407859e88500961f56e8')
 
 prepare() {
   cd "$srcdir/${pkgname}-v${pkgver}"
