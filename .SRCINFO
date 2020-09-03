@@ -10,6 +10,7 @@ pkgbase = python-pyarrow
 	checkdepends = python-hypothesis
 	checkdepends = python-pytest
 	checkdepends = python-pytest-lazy-fixture
+	checkdepends = python-pytz
 	makedepends = cmake
 	makedepends = cython
 	makedepends = python-setuptools
