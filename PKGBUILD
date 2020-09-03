@@ -10,7 +10,7 @@ source=(
     "barrier-git::git+https://github.com/debauchee/barrier.git"
 )
 sha256sums=('SKIP')
-arch=(x86_64)
+arch=(any)
 depends=(
     # Barrier core dependencies:
     curl
