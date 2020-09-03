@@ -20,10 +20,10 @@ pkgver() {
 
 build() {
     cd $srcdir/$pkgname
-    python2 setup.py build
+    python setup.py build
 }
 
 package() {
     cd $srcdir/$pkgname
-    python2 setup.py install --root="$pkgdir"
+    python setup.py install --root="$pkgdir"
 }
