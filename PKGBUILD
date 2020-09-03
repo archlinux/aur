@@ -6,7 +6,7 @@
 pkgname=lollypop-stable-git
 pkgver=1.3.6.r119.g1f0532f2
 pkgrel=1
-pkgdesc='Music player for GNOME (dev branch)'
+pkgdesc='Music player for GNOME (stable branch)'
 arch=(any)
 url=https://gitlab.gnome.org/gnumdk/lollypop
 license=(GPL)
