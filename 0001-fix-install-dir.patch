@@ -1,0 +1,13 @@
+diff --git a/RobWork/cmake/RobWorkMacros.cmake b/RobWork/cmake/RobWorkMacros.cmake
+index de842afbf..b29fddee1 100644
+--- a/RobWork/cmake/RobWorkMacros.cmake
++++ b/RobWork/cmake/RobWorkMacros.cmake
+@@ -398,6 +398,8 @@ macro(RW_SET_INSTALL_DIRS PROJECT_NAME PREFIX)
+         set(PYTHON_INSTALL_DIR "${LIB_INSTALL_DIR}/RobWork/Python")
+     endif()
+ 
++    set(PYTHON_INSTALL_DIR "$ENV{pkgdir}${PYTHON_INSTALL_DIR}")
++ 
+     if(WIN32)
+         set(
+             ${PREFIX}_INSTALL_DIR
