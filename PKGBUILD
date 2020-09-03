@@ -2,13 +2,13 @@
 
 pkgname=evolution-etesync-git
 _pkgname=evolution-etesync
-pkgver=r55.833f264
+pkgver=r102.659c7c8
 pkgrel=1
 pkgdesc="EteSync (end-to-end encrypted sync) plugin for Evolution"
 arch=(x86_64)
 url="https://gitlab.gnome.org/nourmat/evolution-etesync/"
 license=('LGPL')
-depends=(libgee json-glib evolution-data-server evolution etesync)
+depends=(libgee json-glib evolution-data-server evolution etesync-git)
 makedepends=(cmake meson ninja vala git)
 makedepends=('intltool')
 source=("${_pkgname}::git+https://gitlab.gnome.org/nourmat/evolution-etesync.git")
