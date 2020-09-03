@@ -24,7 +24,8 @@ makedepends=(
   gtk-doc
   intltool
 )
-source=(git+https://gitlab.freedesktop.org/polkit/polkit/#tag=${pkgver})
+_tag=585f4f2715639394e36319d4918389d26e250e7b
+source=(git+https://gitlab.freedesktop.org/polkit/polkit/#tag=${_tag})
 sha256sums=(SKIP)
 
 prepare() {
