@@ -4,19 +4,19 @@ pkgname=pmemd
 pkgver=20
 _toolsver=20
 _gccver=9.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="PMEMD module of AMBER software package"
 url="http://ambermd.org/"
 license=(custom)
 arch=(x86_64)
 depends=(ambertools)
-makedepends=('cmake>=3.8.1' make gcc9 flex bison patch tcsh imake openmpi-gcc9 'cuda>=7.5')
+makedepends=('cmake>=3.8.1' make gcc9 flex bison patch tcsh imake openmpi-gcc9 'cuda>=10.1')
 optdepends=('openmpi-gcc9: MPI support'
             'cuda: GPU acceleration support'
             'plumed: metadynamics support'
             'plumed-mpi: metadynamics support with MPI'
             'vmd: visualize trajectories')
-options=(staticlibs !buildflags)
+options=(!buildflags)
 
 # Due to licensing issues you must register and download AmberTools package from AmberMD url and put it in directory with PKGBUILD.
 # Moreover, you MUST purchase Amber package from AmberMD group and also place it in directory with PKGBUILD.
@@ -53,7 +53,8 @@ build() {
       -DINSTALL_TESTS=FALSE \
       -DDOWNLOAD_MINICONDA=FALSE \
       -DFORCE_DISABLE_LIBS="plumed" \
-      -DFORCE_INTERNAL_LIBS="arpack;xblas;netcdf;netcdf-fortran;pnetcdf;fftw;boost;mpi4py" \
+      -DFORCE_INTERNAL_LIBS="arpack;xblas;netcdf;netcdf-fortran;pnetcdf;mpi4py;fftw" \
+      -DFORCE_EXTERNAL_LIBS="boost" \
       -Wno-dev \
       2>&1 | tee cmake.log
 
