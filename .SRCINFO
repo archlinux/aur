@@ -1,7 +1,7 @@
 pkgbase = ambertools
 	pkgdesc = Biomolecular simulation package (tools only)
 	pkgver = 20
-	pkgrel = 4
+	pkgrel = 5
 	url = http://ambermd.org/
 	arch = x86_64
 	license = GPL
@@ -15,7 +15,8 @@ pkgbase = ambertools
 	makedepends = tcsh
 	makedepends = imake
 	makedepends = openmpi-gcc9
-	makedepends = cuda>=7.5
+	makedepends = cuda>=10.1
+	depends = boost
 	depends = zlib
 	depends = bzip2
 	depends = gcc9-libs
@@ -38,7 +39,6 @@ pkgbase = ambertools
 	optdepends = plumed-mpi: metadynamics support with MPI
 	optdepends = vmd: visualize trajectories
 	optdepends = env-modules-tcl: modulefile support
-	options = staticlibs
 	options = !buildflags
 	source = local://AmberTools20.tar.bz2
 	source = amber.sh

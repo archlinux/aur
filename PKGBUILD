@@ -4,20 +4,20 @@ pkgname=ambertools
 pkgver=20
 _releasever=20
 _gccver=9.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Biomolecular simulation package (tools only)"
 url="http://ambermd.org/"
 license=(GPL LGPL)
 arch=(x86_64)
-depends=(zlib bzip2 gcc9-libs gcc9-fortran tk libx11 libxext blas lapack python python-numpy python-scipy python-matplotlib python-setuptools perl perl-chemistry-mol)
-makedepends=('cmake>=3.8.1' make gcc9 flex bison patch tcsh imake openmpi-gcc9 'cuda>=7.5')
+depends=(boost zlib bzip2 gcc9-libs gcc9-fortran tk libx11 libxext blas lapack python python-numpy python-scipy python-matplotlib python-setuptools perl perl-chemistry-mol)
+makedepends=('cmake>=3.8.1' make gcc9 flex bison patch tcsh imake openmpi-gcc9 'cuda>=10.1')
 optdepends=('openmpi-gcc9: MPI support'
             'cuda: GPU acceleration support'
             'plumed: metadynamics support'
             'plumed-mpi: metadynamics support with MPI'
             'vmd: visualize trajectories'
             'env-modules-tcl: modulefile support')
-options=(staticlibs !buildflags)
+options=(!buildflags)
 
 # Due to licensing issues you must register and download the package from the AmberMD url and put it in the PKGBUILD folder!
 source=("local://AmberTools${pkgver}.tar.bz2"
@@ -55,7 +55,8 @@ build() {
       -DINSTALL_TESTS=FALSE \
       -DDOWNLOAD_MINICONDA=FALSE \
       -DFORCE_DISABLE_LIBS="plumed" \
-      -DFORCE_INTERNAL_LIBS="arpack;xblas;netcdf;netcdf-fortran;pnetcdf;fftw;boost;mpi4py" \
+      -DFORCE_INTERNAL_LIBS="arpack;xblas;netcdf;netcdf-fortran;pnetcdf;mpi4py;fftw" \
+      -DFORCE_EXTERNAL_LIBS="boost" \
       -Wno-dev \
       2>&1 | tee cmake.log
 
