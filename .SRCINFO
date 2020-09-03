@@ -1,6 +1,6 @@
 pkgbase = steamtinkerlaunch
 	pkgdesc = Wrapper script for Steam custom launch options
-	pkgver = 1.4.3
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
@@ -24,8 +24,8 @@ pkgbase = steamtinkerlaunch
 	optdepends = boxtron: for optional Boxtron support
 	optdepends = scummvm: for optional ScummVM support via Roberta
 	optdepends = wine: for optional Vortex Mod Manager support
-	source = steamtinkerlaunch-1.4.3.tar.gz::https://github.com/frostworx/steamtinkerlaunch/archive/v1.4.3.tar.gz
-	sha256sums = 193fe5c7fae9d0fcb1ad0049ba19afc566f240cf5318597aee7e1b2cb027d8eb
+	source = steamtinkerlaunch-1.6.0.tar.gz::https://github.com/frostworx/steamtinkerlaunch/archive/v1.6.0.tar.gz
+	sha256sums = baea4965f01b515501233db163d7c6f6bf37e84b45ba8daa4e66cfef5ce882b8
 
 pkgname = steamtinkerlaunch
 
