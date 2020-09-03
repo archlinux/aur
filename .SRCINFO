@@ -1,7 +1,7 @@
 pkgbase = gmt6
 	pkgdesc = Generic Mapping Tools: Tools for manipulating and plotting geographic and Cartesian data
-	pkgver = 6.1.0
-	pkgrel = 2
+	pkgver = 6.1.1
+	pkgrel = 1
 	url = https://www.generic-mapping-tools.org
 	install = gmt.install
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = gmt6
 	optdepends = gmt-dcw: digital chart of the world polygon map
 	conflicts = gmt4
 	conflicts = gmt
-	source = https://github.com/GenericMappingTools/gmt/releases/download/6.1.0/gmt-6.1.0-src.tar.xz
-	sha512sums = 6cc0d606bc6fe1d08e47e613ae595d07512280d162a0ea4c2a62d0fd4859be25c1ae5c8237c5968e0c2a19103b94f4493b20e8adfd2ef1069b64380fe91ee4d9
+	source = https://github.com/GenericMappingTools/gmt/releases/download/6.1.1/gmt-6.1.1-src.tar.xz
+	sha512sums = 14f9e7cfe0774217d7b6c593b58b054cba6324d8a9c96fd264cdafcbb9a6ec52f1e45917aeb6a166b692112a95e1459043771c11ad4e4a27dd301faa4b2122b8
 
 pkgname = gmt6
 
