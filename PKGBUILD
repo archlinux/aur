@@ -1,10 +1,10 @@
-# Maintainer: Mees Luten <mees.luten@gmail.com>
+# Maintainer: Mees Luten <mees [dot] luten [at] gmail [dot] com>
 
 pkgname=gr-hrpt
 pkgver=0.1
 pkgrel=2
 pkgdesc="HRPT Blocks from gr-noaa and others ported to GNU Radio 3.8+"
-arch=(x86_64)
+arch=('x86_64')
 url="https://gitlab.altillimity.com/altillimity/gr-hrpt"
 license=('GPL3')
 depends=(gnuradio liborcus)
