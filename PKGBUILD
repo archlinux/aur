@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=webapp-manager-git
 pkgver=1.0.3.r33.6124beb
-pkgrel=1
+pkgrel=2
 pkgdesc="Run websites as if they were apps."
 arch=('x86_64')
 url="https://github.com/linuxmint/webapp-manager"
@@ -9,6 +9,7 @@ license=('GPL')
 depends=('python-gobject' 'python-configobj' 'python-setproctitle'
          'python-tldextract' 'python-beautifulsoup4' 'xapps' 'dconf')
 makedepends=('git')
+optdepends=('brave' 'chromium' 'google-chrome' 'ephiphany' 'vivaldi')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/linuxmint/webapp-manager.git')
