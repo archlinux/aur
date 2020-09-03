@@ -3,7 +3,7 @@
 
 _gitname=i3lock-color
 pkgname="$_gitname-git"
-pkgver=r639.4038f9d
+pkgver=r736.b2c1024
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM with color configuration support"
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ conflicts=('i3lock')
 makedepends=('git')
 source=("git+https://github.com/Raymo111/$_gitname.git")
 md5sums=('SKIP')
+backup=('etc/pam.d/i3lock')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
