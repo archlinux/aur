@@ -1,7 +1,7 @@
 pkgbase = hyrule-conquest
-	pkgdesc = Hyrule Conquest. Mod for 0ad created by Undying Nephalim.
-	pkgver = 0.7
-	pkgrel = 1
+	pkgdesc = Hyrule Conquest. Mod for 0ad created by Chasen Lindsey (aka Undying Nephalim).
+	pkgver = 0.8
+	pkgrel = 2
 	url = https://www.moddb.com/mods/hyrule-conquest
 	arch = x86_64
 	license = unknown

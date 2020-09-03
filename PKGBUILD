@@ -1,9 +1,9 @@
 # Maintainer: Ryan Jeffrey <ryan@ryanmj.xyz>
 # aka Mallock
 pkgname=hyrule-conquest
-pkgver=0.7
-pkgrel=1
-pkgdesc="Hyrule Conquest. Mod for 0ad created by Undying Nephalim."
+pkgver=0.8
+pkgrel=2
+pkgdesc="Hyrule Conquest. Mod for 0ad created by Chasen Lindsey (aka Undying Nephalim)."
 arch=(x86_64)
 url="https://www.moddb.com/mods/hyrule-conquest"
 license=('unknown')
