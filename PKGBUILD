@@ -1,26 +1,24 @@
 # Maintainer: x1b6e6 <ftdabcde@gmail.com>
 
 pkgname=pnghide
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="hide plain text in png file inside pixels (unvisible changes)."
 url="https://github.com/x1b6e6/pnghide.git"
 license=("MIT")
 arch=('any')
-depends=("libpng")
+depends=("libpng" "docopt")
 makedepends=("gcc" "make" "cmake" "png++")
 optdepends=("aes: for encryping data")
 
 source=(
 	"CMakeLists.txt"
 	"pnghide.cc"
-	"pngunhide.cc"
 )
 
 sha1sums=(
-	"df4bfd0e138882f188a9f9d4e133981e32587d69"
-	"a18af45c59756345b0c0e7292115bedd283aee63"
-	"5f45b2b4397d57601051908e6d5f4e33534585c2"
+	"4768699600d6dd28b5517fa0d16ee116eb94d9fa"
+	"ce56ac86e895d5372d2b2202cfd94250254cc5a6"
 )
 
 build(){
