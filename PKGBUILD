@@ -2,7 +2,7 @@
 
 pkgname=bcftools-git
 pkgver=1.10.2.r123.gdc26549
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for variant calling and manipulating VCFs and BCFs"
 arch=('i686' 'x86_64')
 url="https://samtools.github.io/bcftools/"
@@ -28,7 +28,7 @@ build() {
   autoreconf -fi
   ./configure \
     --prefix="/usr" \
-    --with-bcf-plugin-dir=/usr/lib/bcftools \
+    --with-bcf-plugin-dir="/usr/lib/bcftools" \
     --enable-libgsl
   make
 }

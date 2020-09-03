@@ -1,7 +1,7 @@
 pkgbase = bcftools-git
 	pkgdesc = Tools for variant calling and manipulating VCFs and BCFs
 	pkgver = 1.10.2.r123.gdc26549
-	pkgrel = 1
+	pkgrel = 2
 	url = https://samtools.github.io/bcftools/
 	arch = i686
 	arch = x86_64
