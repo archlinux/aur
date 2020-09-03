@@ -2,7 +2,7 @@
 
 dir="$(dirname "$0")"
 
-find "$dir" -maxdepth 1 \
+find "$dir" -maxdepth 1 -mindepth 1 \
     -not -name "$dir" -not -name '.git' \
     -not -name 'PKGBUILD' -not -name '.SRCINFO' \
     -not -name 'clean.sh' \
