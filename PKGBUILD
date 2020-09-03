@@ -22,7 +22,7 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  cd "${pkgname}"
-  ls
+  mkdir -p "${pkgname}".desktop "$pkgdir/usr/share/applications/"
+  install -Dm644 "${pkgname}"/"${pkgname}".desktop "$pkgdir/usr/share/applications/"
 }
 # vim:set ts=2 sw=2 et:
