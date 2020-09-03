@@ -1,7 +1,7 @@
 pkgbase = gemcert-git
 	pkgdesc = A simple tool for creating self-signed certs for use in Geminispace.
 	pkgver = r15.fc14deb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tildegit.org/solderpunk/gemcert
 	arch = i686
 	arch = pentium4
@@ -13,6 +13,8 @@ pkgbase = gemcert-git
 	license = BSD
 	makedepends = go
 	makedepends = git
+	provides = gemcert
+	conflicts = gemcert
 	source = gemcert::git+https://tildegit.org/solderpunk/gemcert.git
 	sha256sums = SKIP
 
