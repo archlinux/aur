@@ -10,9 +10,7 @@ url='https://github.com/fredcox/crazydiskmark'
 license=('MIT')
 depends=('python-pyqt5'
          'python-coloredlogs'
-         'python-distro'
          'python-humanfriendly'
-         'python-desktop-file'
          'fio')
 makedepends=('python-setuptools')
 source=("crazydiskmark-0.4.2.tar.gz::https://files.pythonhosted.org/packages/4f/53/c9cebcbc89962a1f65020e76dc844f5dc22a7e23f7c4dba9b27c9fefbb45/crazydiskmark-0.4.2.tar.gz")
@@ -24,5 +22,7 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "${pkgname}"
+  ls
 }
 # vim:set ts=2 sw=2 et:
