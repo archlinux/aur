@@ -1,0 +1,20 @@
+pkgbase = cecdaemon-git
+	pkgdesc = CEC Daemon for linux media centers
+	pkgver = 1.0.0.r2.gd99aea3
+	pkgrel = 1
+	url = https://github.com/simons-public/cecdaemon
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = libcec
+	depends = python-cec-git
+	depends = python-uinput
+	provides = cecdaemon
+	conflicts = cecdaemon
+	source = cecdaemon-git::git+https://github.com/simons-public/cecdaemon.git
+	md5sums = SKIP
+
+pkgname = cecdaemon-git
+
