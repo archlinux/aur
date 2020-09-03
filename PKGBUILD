@@ -1,8 +1,8 @@
 pkgname=haskell-pandoc-citeproc-bin
 _pkgname=pandoc-citeproc
 pkgver=0.17.0.1
-_pandoc_ver=2.10
-pkgrel=1
+_pandoc_ver=2.10.1
+pkgrel=2
 pkgdesc="Supports using pandoc with citeproc - executable only"
 url="https://hackage.haskell.org/package/${_pkgname}"
 license=("BSD")
@@ -16,7 +16,7 @@ source=(
     "pandoc-${_pandoc_ver}.tar.gz::https://github.com/jgm/pandoc/releases/download/${_pandoc_ver}/pandoc-${_pandoc_ver}-linux-amd64.tar.gz"
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/jgm/${_pkgname}/archive/${pkgver}.tar.gz"
 )
-sha256sums=('adc2f0355f3225cd9ea131e81c5c36c40ff92e2221920d45287f099d336f9cc6'
+sha256sums=('a3ab481ad53f5568d7ec5263fbdd3478fb320d13b5d61a92fb5cee410186bd86'
             '13b2fcbfe490521682b7aba1c92c826c89784cea587765057b568fce97b0177d')
 
 package() {
