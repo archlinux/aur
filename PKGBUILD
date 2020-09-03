@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=flipper-bin
-pkgver=0.53.0
+pkgver=0.55.0
 pkgrel=1
 pkgdesc='A desktop debugging platform for mobile developers'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=('gendesk' 'unzip')
 noextract=("${pkgname}-${pkgver}.zip")
 source=("${pkgname}-${pkgver}.zip::https://github.com/facebook/flipper/releases/download/v${pkgver}/Flipper-linux.zip"
         'LICENSE::https://raw.githubusercontent.com/facebook/flipper/master/LICENSE')
-sha256sums=('676070f1abea1efeba342b4691a25927b18ac668b9c785d43113958042490c12'
+sha256sums=('026886a136f29d99b602bc312b0836fc7d20400d7805cf610ad7b5d36480b1c6'
             '52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85')
 
 package() {

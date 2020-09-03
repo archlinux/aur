@@ -1,6 +1,6 @@
 pkgbase = flipper-bin
 	pkgdesc = A desktop debugging platform for mobile developers
-	pkgver = 0.53.0
+	pkgver = 0.55.0
 	pkgrel = 1
 	url = https://fbflipper.com
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = flipper-bin
 	optdepends = watchman: An inotify-based file watching and job triggering command line utility
 	optdepends = android-sdk: Android debugging support
 	provides = flipper
-	noextract = flipper-bin-0.53.0.zip
-	source = flipper-bin-0.53.0.zip::https://github.com/facebook/flipper/releases/download/v0.53.0/Flipper-linux.zip
+	noextract = flipper-bin-0.55.0.zip
+	source = flipper-bin-0.55.0.zip::https://github.com/facebook/flipper/releases/download/v0.55.0/Flipper-linux.zip
 	source = LICENSE::https://raw.githubusercontent.com/facebook/flipper/master/LICENSE
-	sha256sums = 676070f1abea1efeba342b4691a25927b18ac668b9c785d43113958042490c12
+	sha256sums = 026886a136f29d99b602bc312b0836fc7d20400d7805cf610ad7b5d36480b1c6
 	sha256sums = 52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85
 
 pkgname = flipper-bin
