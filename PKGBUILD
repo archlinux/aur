@@ -1,15 +1,15 @@
-# Maintainer: Grego Dadone <GregoD at archlinux.org>
+# Maintainer: sanon <sawanon at protonmail.com> 
 # Contributor: Andrea Scarpino <andrea at archlinux.org>
 
 pkgname=amor
 pkgver=15.08.3
-pkgrel=2
+pkgrel=3
 pkgdesc='On-Screen Creature'
 url='https://projects.kde.org/projects/kde/kdetoys/amor'
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL')
 groups=('kde-applications')
-depends=('kdebase-runtime')
+depends=('kxmlgui' 'kwindowsystem' 'kconfig' 'ki18n' 'kcoreaddons' 'kdbusaddons' 'kdoctools' 'qt5-x11extras')
 makedepends=('cmake' 'automoc4')
 install=${pkgname}.install
 source=(git+https://github.com/KDE/amor.git)
