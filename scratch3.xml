@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
 	<mime-type type="application/x-scratch3-project">
-		<comment>Scratch 3.0 Project File</comment>
+		<comment>Scratch 3 Project</comment>
 		<icon name="x-scratch3-project"/>
 		<glob-deleteall/>
 		<glob pattern="*.sb3"/>
