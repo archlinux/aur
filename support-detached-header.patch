@@ -1,0 +1,64 @@
+diff --git a/hooks-encrypt b/hooks-encrypt-dh
+index 882d5fb..5343fc1 100644
+--- a/hooks-encrypt
++++ b/hooks-encrypt-dh
+@@ -33,6 +33,40 @@ EOF
+         [ ! -f ${ckeyfile} ] && echo "Keyfile could not be opened. Reverting to passphrase."
+     fi
+ 
++    # Get detached header file if specified
++    cheaderfile="/crypto_header"
++    if [ -n "$cryptheader" ]; then
++        IFS=: read chdev charg1 charg2 <<EOF
++$cryptheader
++EOF
++
++        if [ "$chdev" = "rootfs" ]; then
++            cheaderfile=$charg1
++        elif resolved=$(resolve_device "${chdev}" ${rootdelay}); then
++            case ${charg1} in
++                *[!0-9]*)
++                    # Use a file on the device
++                    # charg1 is not numeric: charg1=filesystem, charg2=path
++                    mkdir /cheader
++                    mount -r -t "$charg1" "$resolved" /cheader
++                    dd if="/cheader/$charg2" of="$cheaderfile" >/dev/null 2>&1
++                    umount /cheader
++                    ;;
++                *)
++                    # Read raw data from the block device
++                    # charg1 is numeric: charg1=offset, charg2=length
++                    dd if="$resolved" of="$cheaderfile" bs=1 skip="$charg1" count="$charg2" >/dev/null 2>&1
++                    ;;
++            esac
++        fi
++
++        if [ -f ${cheaderfile} ]; then
++            cryptargs="${cryptargs} --header ${cheaderfile}"
++        else
++            echo "Detached header could not be opened. Ignoring."
++        fi
++    fi
++
+     if [ -n "${cryptdevice}" ]; then
+         DEPRECATED_CRYPT=0
+         IFS=: read cryptdev cryptname cryptoptions <<EOF
+@@ -67,7 +101,7 @@ EOF
+     done
+ 
+     if resolved=$(resolve_device "${cryptdev}" ${rootdelay}); then
+-        if cryptsetup isLuks ${resolved} >/dev/null 2>&1; then
++        if (cryptsetup isLuks ${resolved} >/dev/null 2>&1 || cryptsetup isLuks ${cheaderfile} >/dev/null 2>&1); then
+             [ ${DEPRECATED_CRYPT} -eq 1 ] && warn_deprecated
+             dopassphrase=1
+             # If keyfile exists, try to use that
+@@ -138,7 +172,8 @@ EOF
+             err "Failed to open encryption mapping: The device ${cryptdev} is not a LUKS volume and the crypto= paramater was not specified."
+         fi
+     fi
+-    rm -f ${ckeyfile}
++
++    rm -f ${ckeyfile} ${cheaderfile}
+ }
+ 
+ # vim: set ft=sh ts=4 sw=4 et:
