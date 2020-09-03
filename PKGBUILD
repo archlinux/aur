@@ -6,58 +6,35 @@
 
 pkgname=electrum-dash
 _pkgname=Dash-Electrum
-pkgver=3.3.8.6
-pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet, fork for DASH"
-arch=('any')
-depends=(
-    'python-pyaes'
-    'python-ecdsa'
-    'python-pbkdf2'
-    'python-requests'
-    'python-qrcode'
-    'python-protobuf'
-    'python-dnspython'
-    'python-jsonrpclib-pelix'
-    'python-trezor'
-    'python-btchip'
-    'python-x11_hash'
-    'python-pyqt4'
-    # 'python2-pysocks'
-    # 'python2-pycryptodomex'
-)
-makedepends=(
-    'python-pyqt4'
-    # 'gettext'
-    # 'python2-setuptools'
-    # 'desktop-file-utils'
-)
-optdepends=(
-    'python-matplotlib: plot transaction history in graphical mode'
-    'zbar: QR code reading support'
-)
+pkgver=3.3.8.7
+pkgrel=1
 url="https://electrum-dash.org"
-license=(MIT)
+arch=('any')
+license=('MIT')
+
+depends=('python-pyaes' 'python-ecdsa' 'python-pbkdf2' 'python-requests' 'python-qrcode'
+         'python-protobuf' 'python-dnspython' 'python-jsonrpclib-pelix' 'python-pysocks'
+         'python-pyqt5' 'python-pycryptodomex' 'python-websocket-client' 'python-certifi'
+         'python-aiorpcx' 'python-aiohttp' 'python-aiohttp-socks' 'python-x11_hash' 'python-bls')
+optdepends=('python-btchip: BTChip hardware wallet support'
+            'python-hidapi: Digital Bitbox hardware wallet support'
+            'python-matplotlib: plot transaction history in graphical mode'
+            'zbar: QR code reading support'
+            'python-rpyc: send commands to Electrum Python console from an external script'
+            'python-qdarkstyle: optional dark theme in graphical mode'
+            'python-pycryptodomex: use PyCryptodome AES implementation instead of pyaes')
+makedepends=('python-setuptools')
+
 source=("https://github.com/akhavr/electrum-dash/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('71d0387a208bc45eeec08a7c779993ff841562613b11f6107f79e540dc1f7282')
-
-prepare() {
-  cd ${_pkgname}-${pkgver}
-
-  find . -type f -exec sed -i 's#/usr/bin/python$#/usr/bin/python3#g' {} +
-  find . -type f -exec sed -i 's#/usr/bin/env python$#/usr/bin/env python3#g' {} +
-}
+sha256sums=('b5c2ad070864041b194da9dbbb0d112fa2296d2386abafd2672546d68e9d13d0')
 
 build() {
-  cd ${_pkgname}-${pkgver}
-
-  pyrcc5 icons.qrc -o gui/qt/icons_rc.py
-  python3 setup.py build
+	cd ${_pkgname}-${pkgver}
+	python setup.py build
 }
 
 package() {
-  ls -lah
-  cd ${_pkgname}-${pkgver}
-
-  python3 setup.py install --root="${pkgdir}" --optimize=1
+	cd ${pkgname}-${pkgver}
+	python setup.py install --root="${pkgdir}" --optimize=1
 }
