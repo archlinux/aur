@@ -24,13 +24,12 @@ sha1sums=(
 build(){
 	cd $srcdir
 	cmake -Bbuild -G "Unix Makefiles"
-	cmake --build build --target all -- -j2
+	cmake --build build --target all
 }
 
 package() {
 	cd "$srcdir"
 	install -Dm755 "$srcdir/build/pnghide" "$pkgdir/usr/bin/pnghide"
-	install -Dm755 "$srcdir/build/pngunhide" "$pkgdir/usr/bin/pngunhide"
 }
 
 # vim: set ts=4 sw=4 :
