@@ -1,6 +1,6 @@
 pkgbase = cecdaemon-git
 	pkgdesc = CEC Daemon for linux media centers
-	pkgver = 1.0.0.r2.gd99aea3
+	pkgver = 1.0.0.r4.g0de2f51
 	pkgrel = 1
 	url = https://github.com/simons-public/cecdaemon
 	arch = any
@@ -13,7 +13,9 @@ pkgbase = cecdaemon-git
 	depends = python-uinput
 	provides = cecdaemon
 	conflicts = cecdaemon
-	source = cecdaemon-git::git+https://github.com/simons-public/cecdaemon.git
+	backup = etc/cecdaemon.conf
+	backup = etc/systemd/system/multi-user.target.wants/cecdaemon.service
+	source = cecdaemon-git::git+https://github.com/Janhouse/cecdaemon.git
 	md5sums = SKIP
 
 pkgname = cecdaemon-git
