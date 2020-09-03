@@ -2,8 +2,8 @@
 
 pkgname=libldac-git
 pkgver=2.0.2.3.r2.g8add977
-pkgrel=1
-pkgdesc="AOSP libldac dispatcher "
+pkgrel=2
+pkgdesc="LDAC encoder and LDAC Adaptive Bit Rate(ABR) libraries"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/ldacBT"
 license=('Apache 2.0')
@@ -13,7 +13,7 @@ optdepends=()
 provides=("libldac" "ldacBT" "libldacBT_enc.so" "libldacBT_abr.so")
 conflicts=("libldac")
 source=("git+https://github.com/EHfive/ldacBT.git"
-        "git+https://gitlab.com/eh5/libldac.git")
+        "git+https://android.googlesource.com/platform/external/libldac")
 
 md5sums=('SKIP' 'SKIP')
 
