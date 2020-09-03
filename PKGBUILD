@@ -4,7 +4,7 @@
 # Contributor: Andriy Kovtun <kovtunos@yandex.ru>
 # Contributor: sausageandeggs <sausageandeggs@archlinux.us>
 pkgname=x-tile
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="Allows you to select a number of windows and tile them in different ways"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('gtk3' 'python-gobject')
 optdepends=('libappindicator-gtk3: Tray icon support')
 source=("http://www.giuspen.com/software/$pkgname-$pkgver.tar.xz")
-sha256sums=('ae3a07653a680becd459f12ad1be87bb7c8745232697f2a1bc6f02b522457c3a')
+sha256sums=('e930c7ee9c96c712f65784335c2f78edad72546e5eec7d8074e36407867610da')
 
 build() {
 	cd "$pkgname-$pkgver"

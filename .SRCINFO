@@ -1,6 +1,6 @@
 pkgbase = x-tile
 	pkgdesc = Allows you to select a number of windows and tile them in different ways
-	pkgver = 3.1
+	pkgver = 3.2
 	pkgrel = 1
 	url = https://www.giuspen.com/x-tile
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = x-tile
 	depends = gtk3
 	depends = python-gobject
 	optdepends = libappindicator-gtk3: Tray icon support
-	source = http://www.giuspen.com/software/x-tile-3.1.tar.xz
-	sha256sums = ae3a07653a680becd459f12ad1be87bb7c8745232697f2a1bc6f02b522457c3a
+	source = http://www.giuspen.com/software/x-tile-3.2.tar.xz
+	sha256sums = e930c7ee9c96c712f65784335c2f78edad72546e5eec7d8074e36407867610da
 
 pkgname = x-tile
 
