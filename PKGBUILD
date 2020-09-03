@@ -7,7 +7,7 @@
 
 pkgname=mock
 pkgver=2.5
-_rpmrel=1
+_rpmrel=2
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
 pkgdesc="A simple chroot build environment manager for building RPMs"
@@ -32,7 +32,7 @@ source=("$url/archive/$_pkgtag.tar.gz"
         "archlinux-defaults.cfg"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('b6fee20f790ade56c89fa2723e7289f0'
+md5sums=('d27a902b90a3a9c53093bace1706e3a0'
          'f64f312dfdca58dc510504041dcc9675'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
