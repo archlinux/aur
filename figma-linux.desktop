@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=figma-linux
 Comment=Unofficial desktop application for linux
-Exec="/opt/figma-linux/figma-linux" %U
+Exec=/opt/figma-linux/figma-linux %U
 Terminal=false
 Type=Application
 Icon=figma-linux
