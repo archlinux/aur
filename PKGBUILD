@@ -2,8 +2,8 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v5.4.61
-pkgver=5.4.v.61
+gitver=v5.4.62
+pkgver=5.4.v.62
 pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '759b0f1858bc14e82a4547b6adf8711e707aed34d776e5e105d07e584a387281'
+            'fd62a3d73bad7ff24ffe28b253c26bfbcff30325d8577c9bcb54ac3751bad14b'
             #.preset file
             '0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87'
             #linux install file
@@ -62,9 +62,12 @@ prepare() {
   done <<< $(ls ../*.patch)
 
   # get kernel version
+  msg2 "Preparing kernel"
   yes "" | make prepare
 
   # load configuration
+  msg2 "Preparing config"
+
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
