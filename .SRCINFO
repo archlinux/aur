@@ -1,6 +1,6 @@
 pkgbase = crazydiskmark
 	pkgdesc = Linux disk benchmark tool like CrystalDiskMark
-	pkgver = 0.4.3
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/fredcox/crazydiskmark
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = crazydiskmark
 	depends = python-coloredlogs
 	depends = python-humanfriendly
 	depends = fio
-	source = crazydiskmark-0.4.3.tar.gz::https://files.pythonhosted.org/packages/d4/84/9a1c492cf0c3fd09602ed238a0b62e5b8c02727e2791e1ebd02f68176a4b/crazydiskmark-0.4.3.tar.gz
-	sha256sums = d8cedbba4983d63494484377b4497ccd817c78c03b17d1a2433f1c850e7353fe
+	source = crazydiskmark-0.4.7.tar.gz::https://files.pythonhosted.org/packages/a7/e5/1314a38df35c13559dda60a15115134e10205689f0549212652106c350cf/crazydiskmark-0.4.7.tar.gz
+	sha256sums = 691e3702d37cdcf3204baa89e2d8bff78b8cd0a4a727104dd5cbb203aea9a67a
 
 pkgname = crazydiskmark
 
