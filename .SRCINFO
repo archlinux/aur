@@ -1,6 +1,6 @@
 pkgbase = etesync-git
 	pkgdesc = EteSync C library
-	pkgver = 0.1.0.r75.917fff5
+	pkgver = 0.1.0.r76.168e1ad
 	pkgrel = 1
 	url = https://github.com/etesync/etesync-rs
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = etesync-git
 	depends = openssl
 	provides = etesync
 	conflicts = etesync
-	source = etesync::git+https://github.com/etesync/etesync-rs.git
+	source = etesync::git+https://github.com/etesync/etesync-rs.git#branch=legacy
 	sha512sums = SKIP
 
 pkgname = etesync-git
