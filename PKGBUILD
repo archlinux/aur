@@ -1,7 +1,7 @@
 # Maintainer: x1b6e6 <ftdabcde@gmail.com>
 
 pkgname=pnghide
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="hide plain text in png file inside pixels (unvisible changes)."
 url="https://github.com/x1b6e6/pnghide.git"
@@ -17,8 +17,8 @@ source=(
 )
 
 sha1sums=(
-	"4768699600d6dd28b5517fa0d16ee116eb94d9fa"
-	"c899004cb281bc714dbae5d9dafc50aa4f01eb2c"
+	"e17604fafe5a99a5921e8b76cf1d86f8b1a54fa8"
+	"b6cc8f102b1f9b433c99e3e279482e04bc7d3f9a"
 )
 
 build(){

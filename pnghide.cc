@@ -78,8 +78,8 @@ void proccess_hide(png::image<TPixel>& image,
 
 	try {
 		while (std::cin.good()) {
-			char buf;
-			std::cin.read(&buf, 1);
+			uint8_t buf;
+			std::cin.read((char*)&buf, 1);
 			if (std::cin.gcount() == 0)
 				break;
 			++writed;
@@ -137,8 +137,8 @@ void proccess_unhide(const png::image<TPixel>& image,
 			tmp |= (pixel.blue & 1) << 0;
 
 			if (tmp_size > 8) {
-				char out_char = (tmp >> (tmp_size - 8)) & 0xff;
-				std::cout.write(&out_char, 1);
+				uint8_t out_char = (tmp >> (tmp_size - 8)) & 0xff;
+				std::cout.write((const char*)&out_char, 1);
 				if (limit != -1) {
 					++readed;
 					if (readed >= limit)
