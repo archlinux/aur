@@ -12,10 +12,8 @@ pkgbase = pnghide
 	depends = libpng
 	depends = docopt
 	optdepends = aes: for encryping data
-	source = CMakeLists.txt
-	source = pnghide.cc
-	sha1sums = 70a9c20cace23c5b7153a7347e1288ebbbcdc80d
-	sha1sums = ca18949b8ac36c196f466a052025601d670c22c1
+	source = git+https://github.com/x1b6e6/pnghide.git
+	sha1sums = SKIP
 
 pkgname = pnghide
 

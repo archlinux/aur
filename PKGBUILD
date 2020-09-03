@@ -11,25 +11,19 @@ depends=("libpng" "docopt")
 makedepends=("gcc" "make" "cmake" "png++")
 optdepends=("aes: for encryping data")
 
-source=(
-	"CMakeLists.txt"
-	"pnghide.cc"
-)
+source=("git+${url}")
 
-sha1sums=(
-	"70a9c20cace23c5b7153a7347e1288ebbbcdc80d"
-	"ca18949b8ac36c196f466a052025601d670c22c1"
-)
+sha1sums=("SKIP")
 
 build(){
-	cd $srcdir
+	cd $srcdir/pnghide
 	cmake -Bbuild -G "Unix Makefiles"
 	cmake --build build --target all
 }
 
 package() {
 	cd "$srcdir"
-	install -Dm755 "$srcdir/build/pnghide" "$pkgdir/usr/bin/pnghide"
+	install -Dm755 "$srcdir/pnghide/build/pnghide" "$pkgdir/usr/bin/pnghide"
 }
 
 # vim: set ts=4 sw=4 :
