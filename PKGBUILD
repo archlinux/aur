@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r73780.34075a97da
+pkgver=r74164.16011f4e55
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -32,9 +32,10 @@ prepare() {
   git config submodule.ThirdParty/IceT/vtkicet.git "$srcdir"/icet
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
-  sed -i "s|Windows.h|windows.h|g" ThirdParty/catalyst/vtkcatalyst/catalyst/thirdparty/conduit/conduit/conduit_node.cpp
   cd VTK
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7038.patch | patch -p1
+  cd ../ThirdParty/catalyst/vtkcatalyst/catalyst
+  curl -L https://gitlab.kitware.com/paraview/catalyst/-/merge_requests/7.patch | patch -p1
 }
 
 build() {

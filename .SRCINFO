@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-paraview-git
 	pkgdesc = Parallel Visualization Application using VTK (mingw-w64)
-	pkgver = r73780.34075a97da
+	pkgver = r74164.16011f4e55
 	pkgrel = 1
 	url = http://www.paraview.org
 	arch = any
