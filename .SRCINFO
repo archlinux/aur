@@ -1,18 +1,18 @@
-pkgbase = cine-encoder
+pkgbase = cine_encoder
 	pkgdesc = Cine Encoder 2020SE
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/CineEncoder/cine-encoder.git
 	arch = x86_64
 	license = GPL
-	depends = mkvtoolnix-cli
-	depends = ffmpeg
-	depends = mediainfo
-	depends = python>=3.8.3
+	depends = mkvtoolnix-cli>=49.0
+	depends = ffmpeg>=4.3
+	depends = mediainfo>=20.03
+	depends = python>=3.6
 	depends = python-pyqt5
 	depends = python-pymediainfo
-	source = https://github.com/CineEncoder/cine-encoder/archive/2.2.tar.gz
+	source = https://github.com/CineEncoder/cine-encoder/archive/2.3.tar.gz
 	md5sums = SKIP
 
-pkgname = cine-encoder
+pkgname = cine_encoder
 
