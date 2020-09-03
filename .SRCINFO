@@ -1,7 +1,7 @@
 pkgbase = amor
 	pkgdesc = On-Screen Creature
 	pkgver = 15.08.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://projects.kde.org/projects/kde/kdetoys/amor
 	install = amor.install
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = amor
 	license = LGPL
 	license = FDL
 	makedepends = cmake
+	makedepends = extra-cmake-modules
 	makedepends = automoc4
 	depends = kxmlgui
 	depends = kwindowsystem
