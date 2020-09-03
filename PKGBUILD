@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-cadquery-git
-pkgver=2.0.1.r55.gc7b7e95
+pkgver=2.0.1.r60.g2d721d0
 pkgrel=1
 pkgdesc="A parametric CAD scripting framework based on PythonOCC built from git"
 arch=('any')
@@ -34,5 +34,8 @@ build() {
 package() {
   cd cadquery
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  _i_dir="${pkgdir}/$(python -c 'import sys; print(sys.path[-1])')"
+  rm -rf "${_i_dir}/test"
+
 }
 
