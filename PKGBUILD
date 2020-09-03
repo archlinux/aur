@@ -1,13 +1,13 @@
 # Maintainer: Sean Greenslade <aur AT seangreenslade DOT com>
 pkgname=vim-openscad
-pkgver=r14.2ac407d
-pkgrel=2
+pkgver=r16.81db508
+pkgrel=1
 pkgdesc="Vim syntax highlighting for OpenSCAD files"
 arch=('any')
 url=""
 license=('Public Domain')
 groups=()
-depends=('vim') 
+depends=()
 makedepends=(git)
 provides=()
 conflicts=()
