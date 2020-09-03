@@ -1,0 +1,5 @@
+post_install() {
+    echo "Configure your openssl"
+    echo "Look at /etc/ssl/openssl-gost.conf.example"
+    echo "You can test module speed with $ (openssl speed -evp gost89)"
+} 
