@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/nsz32/docklike-plugin'
 license=('GPL3')
 depends=('xfce4-panel>=4.4' 'libwnck3' 'libxfce4ui' 'gtk3' 'cairo' 'glib2')
-makedepends=('git' 'xfce4-dev-tools')
+makedepends=('git' 'xfce4-dev-tools' 'intltool')
 
 source=(git://github.com/nsz32/docklike-plugin)
 sha512sums=('SKIP')
@@ -30,9 +30,5 @@ build() {
 
 package() {
 	cd "${srcdir}/docklike-plugin"
-	mkdir -p "${pkgdir}/usr/lib/xfce4/panel/plugins"
-	mkdir -p "${pkgdir}/usr/share/xfce4/panel/plugins"
-
-	cp -f src/.libs/libdocklike.so   "${pkgdir}/usr/lib/xfce4/panel/plugins/"
-	cp -f docklike.desktop "${pkgdir}/usr/share/xfce4/panel/plugins/"
+	make DESTDIR="${pkgdir}" install
 }

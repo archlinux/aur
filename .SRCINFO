@@ -8,6 +8,7 @@ pkgbase = xfce4-docklike-plugin-git
 	license = GPL3
 	makedepends = git
 	makedepends = xfce4-dev-tools
+	makedepends = intltool
 	depends = xfce4-panel>=4.4
 	depends = libwnck3
 	depends = libxfce4ui
