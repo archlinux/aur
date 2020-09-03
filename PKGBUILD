@@ -3,7 +3,7 @@
 # Contributor: DuckSoft <realducksoft@gmail.com>
 pkgname=qv2ray-dev-git
 pkgver=2.6.3.5899.r2494.0ab039cc
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform V2ray Client written in Qt (Development Release)"
 arch=('x86_64')
 url='https://github.com/Qv2ray/Qv2ray'
@@ -19,9 +19,13 @@ source=(
     'Qv2ray::git+https://github.com/Qv2ray/Qv2ray#branch=dev'
     'QNodeEditor::git+https://github.com/Qv2ray/QNodeEditor'
     'SingleApplication::git+https://github.com/itay-grudev/SingleApplication'
+    'x2struct::git+https://github.com/xyz347/x2struct'
+    'cpp-httplib::git+https://github.com/yhirose/cpp-httplib'
 )
 
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -33,6 +37,11 @@ pkgver() {
 prepare() {
     cd "${srcdir}/Qv2ray"
     git submodule init
+    submodules=('QNodeEditor' 'SingleApplication' 'x2struct' 'cpp-httplib')
+    for module in ${submodules[@]}; do
+        git config submodule."3rdparty/$module".url "${srcdir}/$module"
+    done
+    
     git config submodule."libs/libqvb".active false
     git config submodule."3rdparty/zxing-cpp".active true
     git submodule update
