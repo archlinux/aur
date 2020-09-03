@@ -14,7 +14,7 @@ source=("debian-pkg.tar.gz::https://nextcloud.sdu.dk/index.php/s/C9amCp9f2e5jNw7
 sha256sums=('f1f6f91c5a7a56f9b62ab6d6952436127c481441ff2810424030db7a6da9ae8c' )
 
 build() {
-	cd ${srcdir}/debian-pkg
+	cd ${srcdir}
 
 	cmake -B${srcdir}/build \
 		-DCMAKE_BUILD_TYPE=Release \
