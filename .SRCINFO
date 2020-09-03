@@ -1,6 +1,6 @@
 pkgbase = kdepim-runtime-etesync-git
 	pkgdesc = Extends the functionality of kdepim (with etesync modules)
-	pkgver = v20.04.1.r189.gbed707724
+	pkgver = v20.04.1.r205.g166ef579c
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = kdepim-runtime-etesync-git
 	depends = libakonadi
 	depends = qca
 	depends = qt5-networkauth
-	depends = etesync
+	depends = etesync-git
 	provides = kdepim-runtime
 	conflicts = kdepim-runtime
 	source = kdepim-runtime-etesync::git+https://invent.kde.org/sjolly/kdepim-runtime.git#branch=etesyncResource
