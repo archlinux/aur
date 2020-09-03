@@ -30,8 +30,7 @@ if [ ! -e "$HOME/.tws_scripts/tws-latest-standalone-linux-x64.sh" ] ; then
   exit 2
 fi
 
-VER="`tws_get_version ${HOME}/.tws_scripts/tws-latest-standalone-linux-x64.sh`"
-if [ "$?" -eq 1 ]; then echo "tws_get_version failed"; exit 2; fi
+VER="$(readlink $HOME/.tws_scripts/tws-latest-standalone-linux-x64.sh | sed 's/.*-//g' | sed 's/.sh//g')"
 
 grep -q "pkgver=${VER}" $SCRIPT_HOME/PKGBUILD
 if [ "$?" -eq 0 ]; then
