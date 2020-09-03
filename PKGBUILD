@@ -1,7 +1,7 @@
 _pkgbase=serve
 pkgname=nodejs-$_pkgbase
 pkgdesc='Quick HTTP server'
-pkgver=11.3.0
+pkgver=11.3.2
 pkgrel=1
 arch=('any')
 url='https://github.com/zeit/serve'
@@ -19,4 +19,4 @@ package() {
   find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
 }
 
-sha512sums=('014d20e74435cb9115157e7a6e5d185f93ad563517d4def7eff1ed8fdddd4062ae1e2b8bbd5078e4f0fc32e6abef45ba2a9765cfc68d25fa14a93c80abd104fc')
+sha512sums=('c8a5907c8df16e3fdfed7d654c183dd5f5c13f416a8c9e13122fa29444b9cb31f488a2693792e335bd58cc87d083d46a9f8102512d9239fdbe2a67a9a20a1ae7')
