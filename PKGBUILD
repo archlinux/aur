@@ -3,7 +3,7 @@
 
 pkgname=brave-dev-bin
 pkgver=1.14.74
-pkgrel=6
+pkgrel=8
 pkgdesc='Web browser that blocks ads and trackers by default (dev binary release).'
 chrome_version=86.0.4240.22
 arch=('x86_64')
@@ -12,7 +12,9 @@ license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support'
-	    'libgnome-keyring: gnome keyring support')
+	    'libgnome-keyring: gnome keyring support'
+	    'mesa: Hardware accelerated rendering'
+	    'libglvnd: Support multiple different OpenGL drivers at any given time')
 provides=("${pkgname}" 'brave-dev-browser')
 conflicts=("${pkgname}" 'brave-bin')
 source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-v${pkgver}-linux-x64.zip"
