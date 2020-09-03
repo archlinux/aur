@@ -1,0 +1,14 @@
+pkgbase = rofi-proxy
+	pkgdesc = plugin that allows you to manage rofi state with an external application
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ReanGD/rofi-proxy
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = rofi
+	source = rofi-proxy-1.0.tar.gz::https://github.com/ReanGD/rofi-proxy/archive/v1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = rofi-proxy
+
