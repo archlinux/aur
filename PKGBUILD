@@ -2,7 +2,7 @@
 # Contributor: Maxim Andersson <thesilentboatman@gmail.com>
 pkgname=tealdeer
 _binname=tldr
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A fast tldr client in Rust."
 arch=('any')
@@ -11,9 +11,9 @@ license=('MIT' 'Apache')
 depends=('openssl')
 makedepends=('rust' 'cargo')
 provides=('tldr')
-conflicts=('tldr' 'nodejs-tldr' 'nodejs-tldr-git' 'tldr-cpp-client' 'tldr-git' 'tldr-python-client')
+conflicts=('tldr' 'nodejs-tldr' 'nodejs-tldr-git' 'tldr-cpp-client' 'tldr-git' 'tldr-python-client' 'tldr++')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dbrgn/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d384176263c1377b241f4e41f8efd564052e506af00e014240f3874419e187e0')
+sha256sums=('a9a08203956ba07a36c8bdebab0613db449a108566dd8ea7735e8948add4df9a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
