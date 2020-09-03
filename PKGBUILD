@@ -3,7 +3,7 @@
 
 pkgname=brave-nightly-bin
 pkgver=1.15.32
-pkgrel=1
+pkgrel=2
 chrome_version=86.0.4240.22
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
 arch=('x86_64')
@@ -18,22 +18,17 @@ source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/d
         'MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt'
         "$pkgname.sh"
         "$pkgname.desktop"
-        "braveAbout.png"
-        "https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_${chrome_version}-1_amd64.deb")
+        "braveAbout.png")
 options=(!strip)
 sha512sums=('2585a9bb080a9160264bac5cf5783c22c811dcaf332b568e1bd04ca366529586835680a4293cb4c087eb95bf4c58417923b737fbebd46b8bde22ac01c8769a72'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f'
-            'e4f153529ad3dff82a7b08eba34857b3b81070a68f458a811a09695419cb513b82e6a3f0323cf3abedee126aff306ba23f703014bdfbd180f64373b84984e652'
+            '853c1715320615f7cfe39f07af07572c09265d32a3cde97309cffe0be6520f2aa405602fa51e3f497724ecaf96c68985e2babb593748e5d405f2b309bf1bcf33'
             '86cf37b0dc8b37390da9341200af511721c8d2d81ccd45f565322271654058cf47680ae263cf5339feddd42d16bfce7f0aa824f2a45a7c446ed81fe6f749bb92'
-            'd5ce90529c2b75357518ebde10e28e9d6f36efe21b705d7e48be07b1f320d739ef211c1bcc353aeefab3f27b7ba78793ebb74a204ac6c8efae855001b80de72a'
-            'd85ef3a4824d839c5ecf0bfb060fe747f741b6fbe9b36662ccd8594d86d3f99d34e434de0296253d1a7c69b009fd6bab311a0082548ffd411e6e606f5a765f59')
+            'd5ce90529c2b75357518ebde10e28e9d6f36efe21b705d7e48be07b1f320d739ef211c1bcc353aeefab3f27b7ba78793ebb74a204ac6c8efae855001b80de72a')
 noextract=("$pkgname-$pkgver.zip")
 
 prepare() {
   mkdir -p brave
-  ar x google-chrome-unstable_${chrome_version}-1_amd64.deb data.tar.xz
-  xz -fqd data.tar.xz
-  tar xf data.tar "./opt/google/chrome-unstable/libEGL.so" "./opt/google/chrome-unstable/libGLESv2.so"
   cat $pkgname-$pkgver.zip | bsdtar -xf- -C brave
   chmod +x brave/brave
 }
@@ -48,7 +43,4 @@ package() {
     install -Dm0644 -t "$pkgdir/usr/share/applications" "$pkgname.desktop"
     install -Dm0644 "braveAbout.png" "$pkgdir/usr/share/pixmaps/brave-nightly.png"
     install -Dm0664 -t "$pkgdir/usr/share/licenses/$pkgname" "MPL2"
-    
-    install -Dm0755 "./opt/google/chrome-unstable/libEGL.so" "$pkgdir/usr/lib/brave-nightly-bin/libEGL.so"
-    install -Dm0755 "./opt/google/chrome-unstable/libGLESv2.so" "$pkgdir/usr/lib/brave-nightly-bin/libGLESv2.so"
 }
