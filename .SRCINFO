@@ -1,5 +1,5 @@
 pkgbase = mongodb-compass-beta
-	pkgdesc = The official GUI for MongoDB - beta version
+	pkgdesc = The official GUI for MongoDB$compass_desc
 	pkgver = 1.22.0.beta.2
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
