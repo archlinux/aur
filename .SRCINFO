@@ -1,7 +1,7 @@
 pkgbase = linux-lqx
 	pkgdesc = Linux Liquorix
 	pkgver = 5.8.6.lqx1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://liquorix.net/
 	arch = x86_64
 	license = GPL2
@@ -33,7 +33,7 @@ pkgname = linux-lqx
 	provides = WIREGUARD-MODULE
 
 pkgname = linux-lqx-headers
-	pkgdesc = Headers and scripts for building modules for the $pkgdesc kernel
+	pkgdesc = Headers and scripts for building modules for the Linux Liquorix kernel
 	depends = linux-lqx
 
 pkgname = linux-lqx-docs

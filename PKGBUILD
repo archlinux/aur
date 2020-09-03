@@ -59,7 +59,7 @@ _lqxpatchrel=2
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.8.6.lqx1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -235,7 +235,7 @@ _package() {
 }
 
 _package-headers() {
-    pkgdesc='Headers and scripts for building modules for the $pkgdesc kernel'
+    pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
     depends=('linux-lqx')
 
   cd $_srcname
