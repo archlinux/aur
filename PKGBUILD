@@ -2,7 +2,7 @@
 pkgname=tealdeer-git
 _name=tealdeer
 _binname=tldr
-pkgver=r213.3a5c0ce
+pkgver=r251.5a9cde7
 pkgrel=1
 pkgdesc="A fast tldr client in Rust."
 arch=('any')
