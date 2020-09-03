@@ -1,0 +1,14 @@
+pkgbase = bother
+	pkgdesc = Produce heightmaps using real-world elevation data (primarily for use in OpenTTD).
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/bunburya/bother
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/2e/09/6acd600a5f8cfb5c2539e0ad617b9502f91cb5381cc0ab1fb226873ab0a2/Bother-0.1.tar.gz
+	md5sums = 9e45f1ad50c251c542c9d8048177c36e
+
+pkgname = bother
+
