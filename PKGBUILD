@@ -28,6 +28,8 @@ depends=(
 )
 makedepends=(
     cmake
+    gmock
+    gtest
 
     # Barrier GUI dependencies:
     qt5-base
@@ -55,6 +57,7 @@ build() {
         -D CMAKE_INSTALL_PREFIX:STRING=/usr \
         -D BARRIER_REVISION:STRING=00000000 \
         -D BARRIER_VERSION_STAGE:STRING=RELEASE \
+        -D BARRIER_USE_EXTERNAL_GTEST:bool=true \
         ..
     make
 }
