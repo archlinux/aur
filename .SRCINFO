@@ -1,6 +1,6 @@
 pkgbase = fido2luks
 	pkgdesc = Decrypt your LUKS partition using a FIDO2 compatible authenticator
-	pkgver = 0.2.12
+	pkgver = 0.2.13
 	pkgrel = 1
 	url = https://github.com/shimunn/fido2luks
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = fido2luks
 	makedepends = cryptsetup
 	makedepends = clang
 	depends = cryptsetup
-	source = fido2luks-0.2.12.tar.gz::https://github.com/shimunn/fido2luks/archive/0.2.12.tar.gz
-	sha256sums = 3c4baa642d0fb705a2a4c52de4d4483531e920a483904d59ba517d9bbb8dcf17
+	source = fido2luks-0.2.12.tar.gz::https://github.com/shimunn/fido2luks/archive/0.2.13.tar.gz
+	sha256sums = 07ead0bdb99f22b0d75ff3375be954c7e034fc18322d87cece2ac0468498e34d
 
 pkgname = fido2luks
 
