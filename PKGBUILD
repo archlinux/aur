@@ -5,22 +5,25 @@
 _pkgname="Shortwave"
 pkgname="shortwave"
 pkgver="1.1.1"
-pkgrel="4"
+pkgrel="5"
 epoch="1"
 pkgdesc="Find and listen to internet radio stations."
 arch=('any')
 url="https://gitlab.gnome.org/World/${_pkgname}"
 license=('GPL3')
 depends=('gst-plugins-bad' 'libhandy' 'libsoup' 'gtk3')
-makedepends=('cargo' 'git' 'gobject-introspection' 'gst-plugins-base-libs' 'libdazzle' 'meson' 'rustup')
+makedepends=('cargo' 'git' 'gobject-introspection' 'gst-plugins-base-libs' 'libdazzle' 'meson' 'rust')
 options=('!emptydirs')
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('b391b4d10658e9ba180442ca2d769173a278f19beb498c7251a6b4a62b7c678b')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+        "handy.patch"
+)
+sha256sums=('b391b4d10658e9ba180442ca2d769173a278f19beb498c7251a6b4a62b7c678b'
+            '01bbac29d6aacf6bedbfc49632db24f05c7df9e52aecd2143a42e41df9f097d9'
+)
 
 prepare() {
-    rustup install 1.45.2
-    rustup default 1.45.2
-    echo "Rust version used during this build: `rustc \-V`"
+    cd "${_pkgname}-${pkgver}"
+    patch -Np1 -i ../handy.patch
 }
 
 build() {
