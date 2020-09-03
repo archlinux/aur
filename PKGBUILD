@@ -1,7 +1,7 @@
 # Maintainer:  Florian Lindner <florian.lindner@xgm.de>
 
 pkgname=hotspot
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('cmake>=3.1.0' 'extra-cmake-modules')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("https://github.com/KDAB/hotspot/releases/download/v${pkgver}/hotspot-v${pkgver}.tar.gz")
-sha1sums=('52a946fa5e6661e607a03b8faf32abe5b201c62c')
+sha1sums=('3fe86a97291a6c9cefc2d0a16e9b5379aa1a831c')
 
 build() {
     cd "${pkgname}-v${pkgver}"
