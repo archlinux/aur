@@ -1,0 +1,14 @@
+pkgbase = brother-dcp-b7520dw
+	pkgdesc = LPR and CUPS driver for the Brother DCP-B7520DW printer
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadhowto.aspx?c=eu_ot&lang=en&prod=dcpb7520dw_eu&os=127&dlid=dlf103651_000&flang=4&type3=10282
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf103651/dcpb7520dwpdrv-4.0.0-1.i386.rpm
+	md5sums = 63a8bae56d8c92f10e8573e82030b628
+
+pkgname = brother-dcp-b7520dw
+
