@@ -35,7 +35,7 @@ package() {
   cd cadquery
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   _i_dir="${pkgdir}/$(python -c 'import sys; print(sys.path[-1])')"
-  rm -rf "${_i_dir}/test"
+  rm -rf "${_i_dir}/tests"
 
 }
 
