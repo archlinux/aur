@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-daily-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary version from RStudio official repository)
-	pkgver = 1.4.760
+	pkgver = 1.4.776
 	pkgrel = 1
 	url = http://www.rstudio.org/
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = rstudio-desktop-daily-bin
 	depends = openssl-1.0
 	optdepends = pandoc: markdown support
 	optdepends = pandoc-citeproc: markdown support
-	provides = rstudio-desktop-daily=1.4.760
+	provides = rstudio-desktop-daily=1.4.776
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git
 	conflicts = rstudio-desktop-bin
 	options = !strip
-	source_x86_64 = https://s3.amazonaws.com/rstudio-ide-build/desktop/xenial/amd64/rstudio-1.4.760-amd64.deb
-	sha256sums_x86_64 = f18a582f11be8f366a8f0a1f5756931983cd4f8d29f21ae304c425eff825954e
+	source_x86_64 = https://s3.amazonaws.com/rstudio-ide-build/desktop/xenial/amd64/rstudio-1.4.776-amd64.deb
+	sha256sums_x86_64 = 68d910a89ca13ddf43d8231e4882d650cc86216612175f284317f10c0b10ee00
 
 pkgname = rstudio-desktop-daily-bin
 
