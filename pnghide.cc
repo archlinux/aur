@@ -80,9 +80,9 @@ void proccess_hide(png::image<TPixel>& image,
 		while (std::cin.good()) {
 			char buf;
 			std::cin.read(&buf, 1);
-			++writed;
 			if (std::cin.gcount() == 0)
 				break;
+			++writed;
 			tmp <<= 8;
 			tmp |= buf;
 			tmp_size += 8;
