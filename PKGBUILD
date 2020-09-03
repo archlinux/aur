@@ -1,6 +1,6 @@
 pkgname=robwork
 pkgver=1.1.11
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of C++ libraries for simulation and control of robot systems"
 arch=('x86_64')
 url='http://www.robwork.org'
@@ -14,7 +14,7 @@ source=("debian-pkg.tar.gz::https://nextcloud.sdu.dk/index.php/s/C9amCp9f2e5jNw7
 sha256sums=('f1f6f91c5a7a56f9b62ab6d6952436127c481441ff2810424030db7a6da9ae8c' )
 
 build() {
-	cd ${srcdir}
+	cd ${srcdir}/RobWork-debian-pkg
 
 	cmake -B${srcdir}/build \
 		-DCMAKE_BUILD_TYPE=Release \
