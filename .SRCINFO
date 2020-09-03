@@ -1,0 +1,21 @@
+pkgbase = bcftools-git
+	pkgdesc = Tools for variant calling and manipulating VCFs and BCFs
+	pkgver = 1.10.2.r123.gdc26549
+	pkgrel = 1
+	url = https://samtools.github.io/bcftools/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = glibc
+	depends = gsl
+	depends = htslib
+	depends = zlib
+	optdepends = python
+	provides = bcftools
+	conflicts = bcftools
+	source = git+https://github.com/samtools/bcftools.git
+	sha256sums = SKIP
+
+pkgname = bcftools-git
+
