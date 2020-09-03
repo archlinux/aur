@@ -1,0 +1,4 @@
+post_install() {
+	printf '\e[1mInstalling spec file for current python installation.\e[1m\n'
+	python -m gnuplot_kernel install
+}
