@@ -3,17 +3,18 @@
 
 pkgname=openssl-gost
 pkgver=r614.0c4da90
-pkgrel=1
+pkgrel=2
 pkgdesc='A reference implementation of the Russian GOST crypto algorithms for OpenSSL'
 url='https://github.com/gost-engine/engine/'
 license=('Apache License 2.0')
 arch=('x86_64')
 depends=('openssl')
 makedepends=('cmake' 'git')
-source=("${pkgname}::git+https://github.com/gost-engine/engine.git" "openssl-gost.conf.example" "openssl-gost.install")
+source=("${pkgname}::git+https://github.com/gost-engine/engine.git" "openssl-gost.cnf" "openssl-gost.install")
+install='openssl-gost.install'
 sha256sums=('SKIP'
             '672bb57aed5e2016f72befb483a94bbda406f3b748f1db23347bb8dd54b62835'
-            '149eb78f46bc83ead3a0162221e7ef32a115a58b474b22191d58179bb7789bc6')
+            'c408d571c72ae6f299c69f3d5d6c17f44384c8fce0b2dbe2a0b4e12f6575a13b')
 
 pkgver() {
   cd ${pkgname}
@@ -31,7 +32,7 @@ build() {
   cmake --build . --config Release
 }
 package() {
-  install -Dm644 openssl-gost.conf.example "$pkgdir/etc/ssl/openssl-gost.conf.example"
+  install -Dm644 openssl-gost.cnf "$pkgdir/etc/ssl/openssl-gost.cnf"
   install -Dm644 ${srcdir}/${pkgname}/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   cd ${srcdir}/${pkgname}/build/bin
   install -Dm755 gost.so.1.1 "$pkgdir/usr/lib/engines-1.1/gost.so.1.1"
