@@ -10,25 +10,19 @@ license=("MIT")
 depends=("libgcrypt" "docopt")
 makedepends=("gcc" "make" "cmake")
 
-source=(
-	"CMakeLists.txt"
-	"aes.cc"
-)
+source=("git+${url}")
 
-sha1sums=(
-	"a14bc448b2c43536dffc1e6d63ea257dd6fa33ea"
-	"d0734f8497ecc33ba3e406c873eb33b71d8dce8b"
-)
+sha1sums=("SKIP")
 
 build(){
-	cd $srcdir
+	cd $srcdir/aes
 	cmake -Bbuild -G "Unix Makefiles"
 	cmake --build build --target all
 }
 
 package() {
 	cd "$srcdir"
-	install -Dm755 "$srcdir/build/aes" "$pkgdir/usr/bin/aes"
+	install -Dm755 "$srcdir/aes/build/aes" "$pkgdir/usr/bin/aes"
 }
 
 # vim: set ts=4 sw=4 :

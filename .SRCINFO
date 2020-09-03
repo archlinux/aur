@@ -10,10 +10,8 @@ pkgbase = aes
 	makedepends = cmake
 	depends = libgcrypt
 	depends = docopt
-	source = CMakeLists.txt
-	source = aes.cc
-	sha1sums = a14bc448b2c43536dffc1e6d63ea257dd6fa33ea
-	sha1sums = d0734f8497ecc33ba3e406c873eb33b71d8dce8b
+	source = git+https://github.com/x1b6e6/aes.git
+	sha1sums = SKIP
 
 pkgname = aes
 
