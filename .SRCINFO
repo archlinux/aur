@@ -1,6 +1,6 @@
 pkgbase = kirc-git
 	pkgdesc = KISS for IRC, an IRC client written in POSIX C99
-	pkgver = 0.0.6.r0.6a019c7
+	pkgver = 0.0.6.r1.13cd7d3
 	pkgrel = 1
 	url = https://github.com/mcpcpc/kirc
 	arch = any

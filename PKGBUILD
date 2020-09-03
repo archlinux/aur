@@ -1,7 +1,7 @@
 # Maintainer: Kian Kasad <kian at kasad.com>
 
 pkgname=kirc-git
-pkgver=0.0.6.r0.6a019c7
+pkgver=0.0.6.r1.13cd7d3
 pkgrel=1
 pkgdesc="KISS for IRC, an IRC client written in POSIX C99"
 arch=(any)
@@ -31,4 +31,5 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir" install
+	install -D -m 0644 -T LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
