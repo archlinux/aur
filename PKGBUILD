@@ -1,7 +1,7 @@
 # Maintainer: Bryce Kabat <brycekabat@onyxazryn.com>
 pkgname="trilium-bin"
 pkgver=0.43.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A hierarchical note taking application built on modern technologies."
 depends=('libxss' 'nss' 'gtk3')
 arch=('x86_64')
@@ -28,10 +28,10 @@ Name=Trilium
 GenericName=Note Taking Application
 Comment=A hierarchical note taking application built on modern technologies.
 Exec=trilium %f
-Icon=/opt/trilium/icon.png
+Icon=/opt/$pkgname/icon.png
 Terminal=false
 Type=Application
 Categories=Office
-StartupWMClass=trilium notes" > "$pkgdir/usr/share/applications/trilium.desktop"
+StartupWMClass=trilium notes" > "$pkgdir/usr/share/applications/trilium-notes.desktop"
 	chmod -R 0755 "$pkgdir"
 }
