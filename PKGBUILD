@@ -8,11 +8,10 @@ arch=('i686' 'x86_64')
 url="http://tim.qq.com/"
 license=('unknown')
 groups=()
-depends=('deepin-wine5' 'p7zip' 'xdg-utils' 'hicolor-icon-theme')
+depends=('deepin-wine5' 'p7zip' 'xdg-utils' 'hicolor-icon-theme' 'noto-fonts-cjk')
 makedepends=('tar')
 checkdepends=()
-optdepends=('ttf-ms-fonts: Microsoft Core fonts'
-			'noto-fonts-cjk: Google Noto CJK fonts')
+optdepends=('ttf-ms-fonts: Microsoft Core fonts')
 provides=()
 #conflicts=('deepin-wine-tim')
 replaces=()
@@ -23,7 +22,7 @@ changelog=
 source=("http://dcstore.shenmo.tech/store/chat/${pkgname}/${pkgname}_${pkgver}_i386.deb"
     "reg.patch")
 sha512sums=('84de5249869940898324977c7312f1ad61567748fb4a6b5a513da64b1308fbad98bcb6af7a87a9c39a9284d97b96a9f3901abcb9d296b0ef778df051792ccdfe'
-    '8d5f49ec2867e91fac30a2af417520a0d9502fa29195136b2fd03d734d23b1db33a704363be1311a7457ed2988f1389495016548d57cd4643a7abda582292032')
+    '5730066dc9bf3689e3db1c08ba83b516efc0bcc7fe6ff47198b43dd352718a6942d01190da87fe010816bf1e9e0e453a09fd15314e4004c309e7f52725b32528')
 validpgpkeys=()
 
 build() {
@@ -40,10 +39,10 @@ build() {
 
 
 package() {
-  cd ${pkgdir}
-  tar xpvf ${srcdir}/data.tar.xz --xattrs-include='*' --numeric-owner
-  install -m644 "${srcdir}/files.7z" "${pkgdir}/opt/apps/com.qq.tim.dcs/files"
-  msg "Preparing icons ..."
-  install -d usr/share
-  mv opt/apps/${pkgname}/entries/* usr/share
+	cd ${pkgdir}
+	tar xpvf ${srcdir}/data.tar.xz --xattrs-include='*' --numeric-owner
+    install -m644 "${srcdir}/files.7z" "${pkgdir}/opt/apps/com.qq.tim.dcs/files"
+    msg "Preparing icons ..."
+	install -d usr/share
+	mv opt/apps/${pkgname}/entries/* usr/share
 }
