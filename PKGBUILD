@@ -2,13 +2,13 @@
 # Contributor: Martin Wagner <martin.wagner.dev@gmail.com>
 
 pkgname=mpdevil-git
-pkgver=v0.8.5.r19.gadd6234
+pkgver=v0.9.0.r0.g6b5526a
 pkgrel=1
 pkgdesc="A small MPD client written in python (git version)"
 arch=('any')
-license=('GPL3')
+license=('GPL-3')
 url="https://github.com/SoongNoonien/mpdevil"
-depends=('python-mpd2' 'gtk3' 'libnotify' 'python-gobject' 'python-requests' 'python-beautifulsoup4' 'python-dbus' 'python-setuptools')
+depends=('python-mpd2' 'gtk3' 'libnotify' 'python-gobject' 'python-requests' 'python-beautifulsoup4' 'python-dbus')
 makedepends=('git' 'python-distutils-extra')
 provides=('mpdevil')
 conflicts=('mpdevil')
