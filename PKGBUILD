@@ -3,12 +3,13 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=5.9.99
+pkgver=6.0.99
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
-arch=(i686 x86_64)
+arch=(x86_64)
 url=https://users.notam02.no/~kjetism/radium
 license=(GPL2)
+groups=(pro-audio)
 depends=(
   desktop-file-utils
   fftw
@@ -20,12 +21,14 @@ depends=(
   liblrdf
   libmpc
   libsndfile
-  python
-  qt5-webkit
+  python2
   qt5-svg
+  qt5-webkit
   qt5-x11extras
+  shared-mime-info
   speex
   ttf-bitstream-vera
+  ttf-croscore
   ttf-lato
 )
 makedepends=(
@@ -42,25 +45,27 @@ makedepends=(
   steinberg-vst36
 )
 optdepends=(
-  'calf-ladspa: Default chorus plugin'
-  'ladspa-plugins: Package group for default radium plugins included in binary releases'
+  'new-session-manager: for session management'
+  'calf-ladspa: default chorus plugin used in new file templates'
+  'ladspa-plugins: package group for plugins normally included in binary releases'
+  'vst-plugins: more plugins'
 )
 options=(!strip)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz"
-       add-vstsdk-location-var.patch
-       fix-packages-compile.patch)
-sha256sums=('a6140ed5287c01e8c502e56802d19cae7c1e5a30f610d3eeef005c893c26b9fc'
-            '46b2a16f9faf0b01a3e66bf5ca589be95dcdfb9fe887a339269be1b74e8ba3f3'
-            '3afbb5f4f7757056dc5f84b01a4787e5d8824214eb9b2d81908574e2fe5ed77d')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz" add-vstsdk-location-var.patch)
+sha256sums=('200e38de95d40505df9639e7925654f87c4fa12639aa36837114be1df060040e'
+            '2466b88e345c48be43a835ee0001aac55189ce74b4181d3c4275e459089e7ccc')
 
 prepare() {
   cd radium-$pkgver
 
-  patch -p1 < "$srcdir/add-vstsdk-location-var.patch" # Reverted PR 1247
-  patch -p1 < "$srcdir/fix-packages-compile.patch" # PRs 1275-1276
+  # Add VST2SDK env var so we can use VST2 headers from steinberg-vst36 in AUR
+  patch -p1 < "$srcdir/add-vstsdk-location-var.patch"
 
-  # Edit new file template and demo songs to be compatible with chorus plugin from calf-ladspa
+  # This tweak edits new file template and demo songs to be compatible with chorus plugin from calf-ladspa package
+  # !! NOTE TO LMMS USERS !!
+  # !! Comment next line out if you have LMMS installed as it already comes with their own version of Calf plugins !!
   for file in bin/sounds/*.rad; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
+  # See comment on calf-ladspa AUR page then on how to let Radium load Calf from LMMS package
 }
 
 build() {
