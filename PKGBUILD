@@ -1,14 +1,14 @@
 pkgname=robwork
 pkgver=1.1.11
-pkgrel=4
+pkgrel=5
 pkgdesc="A collection of C++ libraries for simulation and control of robot systems"
 arch=('x86_64')
 url='http://www.robwork.org'
 license=('APACHE')
-depends=('boost' 'eigen' 'flann' 'vtk' 'qhull' 'qt5-base' 'assimp' 'fcl-git' 'libccd' 'python'
-	'minizip' 'zlib')
-makedepends=('cmake' 'boost' 'eigen' 'flann' 'vtk' 'qhull' 'qt5-base' 'assimp' 'fcl-git' 'libccd' 'python'
-	'minizip' 'zlib')
+depends=('xerces-c' 'boost' 'eigen' 'flann' 'vtk' 'qhull' 'qt5-base' 'assimp' 'fcl-git'
+	'libccd' 'python' 'minizip' 'zlib')
+makedepends=('cmake' 'boost' 'eigen' 'flann' 'vtk' 'qhull' 'qt5-base' 'assimp' 'fcl-git'
+	'libccd' 'python' 'minizip' 'zlib' 'xerces-c')
 optdepends=('lua')
 source=("debian-pkg.tar.gz::https://nextcloud.sdu.dk/index.php/s/C9amCp9f2e5jNw7/download")
 
