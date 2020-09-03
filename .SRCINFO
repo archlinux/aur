@@ -1,7 +1,7 @@
 pkgbase = vifm-colors-git
 	pkgdesc = Various colorschemes for vifm file explorer
 	pkgver = r71.39b5337
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vifm/vifm-colors
 	arch = any
 	license = GPL
