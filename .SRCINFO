@@ -1,7 +1,7 @@
 pkgbase = vrwm-git
 	pkgdesc = A virtual reality window manager for X11. Supports "unlimited" virtual monitors.
 	pkgver = r29.e0ffb9e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.dec05eba.com/vrwm
 	arch = x86_64
 	license = GPL3
@@ -13,6 +13,7 @@ pkgbase = vrwm-git
 	depends = openvr
 	depends = libx11
 	depends = libxcomposite
+	depends = libxfixes
 	provides = vrwm
 	conflicts = vrwm
 	source = git+https://git.dec05eba.com/vrwm
