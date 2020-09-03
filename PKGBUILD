@@ -4,7 +4,7 @@
 _gitname=i3lock-color
 pkgname="$_gitname-git"
 pkgver=r736.b2c1024
-pkgrel=1
+pkgrel=2
 pkgdesc="An improved screenlocker based upon XCB and PAM with color configuration support"
 arch=('i686' 'x86_64')
 url="https://github.com/Raymo111/i3lock-color"
@@ -28,8 +28,6 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_gitname}"
-    # https://bugs.archlinux.org/task/31544
-    sed -i -e 's:login:system-auth:' pam/i3lock
     git tag -f "aur-$(git rev-parse --short HEAD)"
     autoreconf -fi
     ./configure --prefix="/usr" --sysconfdir="/etc"

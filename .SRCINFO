@@ -1,7 +1,7 @@
 pkgbase = i3lock-color-git
 	pkgdesc = An improved screenlocker based upon XCB and PAM with color configuration support
 	pkgver = r736.b2c1024
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Raymo111/i3lock-color
 	arch = i686
 	arch = x86_64
