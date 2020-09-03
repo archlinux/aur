@@ -1,5 +1,5 @@
 post_install() {
     echo -e "\033[1;32mConfigure your openssl: look at /etc/ssl/openssl-gost.cnf\033[0m"
-    echo -e "\033[1;32mOr make it easy: $ (cd /etc/ssl; echo "$(cat openssl-gost.cnf openssl.cnf)" > openssl.cnf)\033[0m"
+    echo -e "\033[1;32mOr make it easy: $ (cd /etc/ssl; echo \"\$(cat openssl-gost.cnf openssl.cnf)\" > openssl.cnf)\033[0m"
     echo -e "\033[1;32mYou can test module speed with $ (openssl speed -evp gost89)\033[0m"
 } 

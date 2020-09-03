@@ -3,7 +3,7 @@
 
 pkgname=openssl-gost
 pkgver=r614.0c4da90
-pkgrel=2
+pkgrel=3
 pkgdesc='A reference implementation of the Russian GOST crypto algorithms for OpenSSL'
 url='https://github.com/gost-engine/engine/'
 license=('Apache License 2.0')
@@ -14,7 +14,7 @@ source=("${pkgname}::git+https://github.com/gost-engine/engine.git" "openssl-gos
 install='openssl-gost.install'
 sha256sums=('SKIP'
             '672bb57aed5e2016f72befb483a94bbda406f3b748f1db23347bb8dd54b62835'
-            'c408d571c72ae6f299c69f3d5d6c17f44384c8fce0b2dbe2a0b4e12f6575a13b')
+            '0a6111f2e1a28002ddb365b1241569b874f8f96b0ec49af033bb66240b4bf16e')
 
 pkgver() {
   cd ${pkgname}

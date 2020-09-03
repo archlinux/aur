@@ -1,7 +1,7 @@
 pkgbase = openssl-gost
 	pkgdesc = A reference implementation of the Russian GOST crypto algorithms for OpenSSL
 	pkgver = r614.0c4da90
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gost-engine/engine/
 	install = openssl-gost.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = openssl-gost
 	source = openssl-gost.install
 	sha256sums = SKIP
 	sha256sums = 672bb57aed5e2016f72befb483a94bbda406f3b748f1db23347bb8dd54b62835
-	sha256sums = c408d571c72ae6f299c69f3d5d6c17f44384c8fce0b2dbe2a0b4e12f6575a13b
+	sha256sums = 0a6111f2e1a28002ddb365b1241569b874f8f96b0ec49af033bb66240b4bf16e
 
 pkgname = openssl-gost
 
