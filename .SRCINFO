@@ -28,6 +28,5 @@ pkgbase = torrserver-bin
 	sha256sums_armv7h = 0f2e58a2d39b50ac6c55402a9ad29de3e7d900825d0a0c29d4d79ff41f89c4a1
 	source_aarch64 = torrserver::https://github.com/YouROK/TorrServer/releases/download/1.1.77/TorrServer-linux-arm64
 	sha256sums_aarch64 = 0f2e58a2d39b50ac6c55402a9ad29de3e7d900825d0a0c29d4d79ff41f89c4a1
-
 pkgname = torrserver-bin
 
