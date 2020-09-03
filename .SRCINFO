@@ -1,17 +1,16 @@
 pkgbase = sysglance
 	pkgdesc = Linux utility for generating a report for the host system.
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/Utappia/sysglance
 	arch = any
 	license = GPL3
-	depends = systemd
 	depends = pciutils
 	depends = usbutils
 	depends = util-linux
 	depends = curl
-	source = sysglance-1.1.tar.gz::https://github.com/Utappia/sysglance/archive/v1.1.tar.gz
-	md5sums = SKIP
+	source = sysglance-1.2.tar.gz::https://github.com/Utappia/sysglance/archive/v1.2.tar.gz
+	md5sums = 63255d0ff3cfd4781a578af31f5cdfca
 
 pkgname = sysglance
 
