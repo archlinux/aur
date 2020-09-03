@@ -29,7 +29,8 @@
       "pwd",
       "scp"
     ],
-    "keyboard_interactive_auth_hook": ""
+    "keyboard_interactive_auth_hook": "",
+    "password_authentication": true
   },
   "ftpd": {
     "bind_port": 0,
@@ -59,6 +60,11 @@
       "exposed_headers": [],
       "allow_credentials": false,
       "max_age": 0
+    },
+    "cache": {
+      "enabled": true,
+      "expiration_time": 0,
+      "max_size": 50
     }
   },
   "data_provider": {
