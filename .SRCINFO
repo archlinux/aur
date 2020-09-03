@@ -1,6 +1,6 @@
 pkgbase = aes
 	pkgdesc = encryption utility with very simple interface
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/x1b6e6/aes.git
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = aes
 	depends = docopt
 	source = CMakeLists.txt
 	source = aes.cc
-	sha1sums = bbd6a785cd0c62baf7de7e6dcb9cd970678515fe
-	sha1sums = 10c4f9d10e133a1c2c13b91108e472c2e0da3287
+	sha1sums = a14bc448b2c43536dffc1e6d63ea257dd6fa33ea
+	sha1sums = d0734f8497ecc33ba3e406c873eb33b71d8dce8b
 
 pkgname = aes
 

@@ -5,6 +5,7 @@
 #include <termios.h>
 #include <unistd.h>
 #include <cstring>
+#include <fstream>
 #include <iostream>
 #include <memory>
 #include <stdexcept>
@@ -15,12 +16,10 @@
 #endif
 
 auto get_version() {
-	/* TODO */
 	return "aes v" PROJECT_VERSION;
 }
 
 auto get_usage() {
-	/* TODO */
 	return get_version() + std::string(R"(
 
 Usage:
@@ -30,6 +29,8 @@ Options:
     -h, --help                     Pring this message
     -v, --version                  Print version and exit
     -d, --decrypt                  Decrypt data
+    -i, --input=FILE               Set input file [default: /dev/stdin]
+    -o, --output=FILE              Set output file [default: /dev/stdout]
     -p, --password=PASSWORD        Use password [default: prompt]
     -k, --key=KEY                  Use key instead password [default: ]
     -l, --last=LAST                Size of last block [default: 0]
@@ -66,6 +67,8 @@ int main(int argc, const char** argv) {
 	auto key = args.at("--key").asString();
 	auto bits = args.at("--bits").asLong();
 	auto last = args.at("--last").asLong();
+	auto input = args.at("--input").asString();
+	auto output = args.at("--output").asString();
 	try {
 		if (password != "prompt" && key != "") {
 			throw std::invalid_argument(
@@ -92,6 +95,18 @@ int main(int argc, const char** argv) {
 		return 1;
 	}
 
+	std::ifstream fin;
+	std::ofstream fout;
+
+	if (input != "/dev/stdin") {
+		fin.open(input);
+		std::cin.rdbuf(fin.rdbuf());
+	}
+	if (output != "/dev/stdout") {
+		fout.open(output);
+		std::cout.rdbuf(fout.rdbuf());
+	}
+
 	size_t key_size = bits >> 2;
 	std::unique_ptr<char[]> key_arr(new char[key_size]);
 
@@ -109,14 +124,19 @@ int main(int argc, const char** argv) {
 
 		gcry_md_close(md_handle);
 	} else {
-		for (size_t i = 0; i < key_size; ++i) {
-			char buf[3]{0, 0, 0};
+		try {
+			for (size_t i = 0; i < key_size; ++i) {
+				char buf[3]{0, 0, 0};
 
-			buf[0] = key[(i << 1) + 0];
-			buf[1] = key[(i << 1) + 1];
-			buf[2] = 0;
+				buf[0] = key[(i << 1) + 0];
+				buf[1] = key[(i << 1) + 1];
+				buf[2] = 0;
 
-			key_arr[i] = std::strtol(buf, nullptr, 16);
+				key_arr[i] = std::strtol(buf, nullptr, 16);
+			}
+		} catch (const std::invalid_argument& e) {
+			std::cerr << "Error parsing key: " << e.what() << '\n';
+			return 1;
 		}
 	}
 
@@ -162,3 +182,5 @@ int main(int argc, const char** argv) {
 
 	return 0;
 }
+
+// vim: set ts=4 sw=4 :
