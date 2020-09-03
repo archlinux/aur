@@ -2,7 +2,7 @@
 # Contributor: Jon Wiersma <archaur@jonw.org>
 
 pkgname=ib-tws
-pkgver=979.5b
+pkgver=980.4i
 pkgrel=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
@@ -28,21 +28,21 @@ md5sums=('c93bcc44678aef8b9d0ec6faecb27927'
          'b1cbe7273f3d0f2f0b6a09e65606b600'
          '238637fb4ab6ae734bade474709bafb1'
          'ffa9fcfb623850e5c9e796040bdbd052'
-         '77acf2bf38505492eef8b15cdc140549')
+         'dd166326666deeab3cb37d65ebeaf115')
 
 build() {
   cd ${srcdir}
   chmod +x tws-latest-standalone-linux-x64.sh
   # Assumes no other Install4J packages are in use by user; if so, makepkg from dedicated user account
   majorVer=$(echo "$pkgver" | sed "s/\([0-9]\+\)\..*/\1/")
-  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer} $HOME/Desktop/Trader\ Workstation*.desktop $HOME/.local/share/applications/Trader\ Workstation*.desktop
+  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/tws $HOME/Desktop/Trader\ Workstation*.desktop $HOME/.local/share/applications/Trader\ Workstation*.desktop
   ./tws-latest-standalone-linux-x64.sh -q
 
   BUNDLED_JRE_VER=$(ls -1 ${HOME}/.i4j_jres)
   mv ${HOME}/.i4j_jres/${BUNDLED_JRE_VER} ${HOME}/.i4j_jres/jre
   mv ${HOME}/.i4j_jres/jre ${srcdir}/jre
-  mv ${HOME}/Jts/${majorVer}/jars/*.jar ${srcdir}
-  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer} $HOME/Desktop/Trader\ Workstation*.desktop $HOME/.local/share/applications/Trader\ Workstation*.desktop $HOME/.local/share/applications/install4j_*.desktop
+  mv ${HOME}/tws/jars/*.jar ${srcdir}
+  rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/tws $HOME/Desktop/Trader\ Workstation*.desktop $HOME/.local/share/applications/Trader\ Workstation*.desktop $HOME/.local/share/applications/install4j_*.desktop
   cd ${srcdir}
 
   # Thanks to http://finance.groups.yahoo.com/group/TWSAPI/files/RPM%20spec%20file/
