@@ -4,6 +4,7 @@ pkgbase = aerc
 	pkgrel = 3
 	url = https://git.sr.ht/~sircmpwn/aerc
 	arch = x86_64
+	arch = i686
 	license = MIT
 	makedepends = go
 	makedepends = git
