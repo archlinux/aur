@@ -5,11 +5,11 @@
 
 pkgname=xulrunner
 pkgver=41.0.2
-pkgrel=16
+pkgrel=17
 pkgdesc="Mozilla Runtime Environment"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
-depends=('gtk2' 'mozilla-common' 'nss>3.18' 'libxt' 'hunspell' 'startup-notification' 'mime-types' 'dbus-glib' 'libpulse' 'libevent' 'libvpx' 'icu' 'python2')
+depends=('gtk2' 'mozilla-common' 'nss>3.18' 'libxt' 'hunspell' 'startup-notification' 'mime-types' 'dbus-glib' 'libpulse' 'libevent' 'libvpx' 'icu' 'python2' 'libpng-apng' 'alsa-lib')
 makedepends=('gcc6' 'zip' 'unzip' 'pkg-config' 'diffutils' 'yasm' 'mesa' 'gconf' 'autoconf2.13' 'gst-plugins-base-libs')
 url="http://wiki.mozilla.org/XUL:Xul_Runner"
 source=(https://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/$pkgver/source/xulrunner-$pkgver.source.tar.xz
@@ -22,7 +22,9 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/$pkgver/sourc
         mozilla-pkgconfig.patch
         shared-libs.patch
         sed43.patch
-        gcc6.diff)
+        gcc6.diff
+        sysctl.patch
+        gettid.patch)
 options=('!emptydirs' '!makeflags' 'staticlibs')
 replaces=('xulrunner-oss')
 sha256sums=('f7abb2e2989779305ab1f80d30caf9fc55d96c7e66d1394e2cc9639442e2b864'
@@ -35,8 +37,9 @@ sha256sums=('f7abb2e2989779305ab1f80d30caf9fc55d96c7e66d1394e2cc9639442e2b864'
             '1aa9ebe67542a2b8c28905d070829ada5b29438c6a7961f2b0cdd6b92d8b9f5c'
             '59d9fc421bc10a5515b73e159f44a72365bf7b7e8b3fc8a8c46043ef40bd3a40'
             'e9b7199b57fa07e440d37db0cc3cf52aa1c1fd7d5e8b31db14e511d77b5ce327'
-            '0992d5dce883de760ff0445448466f096d0baa75fe5fd1e60bfd3cc13cb4d098')
-
+            '0992d5dce883de760ff0445448466f096d0baa75fe5fd1e60bfd3cc13cb4d098'
+            '8b921488faff947baf26ebba6db09d9d6db396b0d528aa543a4da20330c1d8fd'
+            'fc1b55fda12dd1d02cea54d530a594855d45fe0be93bc06f4c804618b0700b2b')
 prepare() {
   cd "$srcdir/mozilla-release"
   cp "$srcdir/mozconfig" .mozconfig
@@ -57,6 +60,10 @@ prepare() {
 
   # Fix for Bug 1329798 "Use of major & minor macros without including sys/sysmacros.h"
   patch -Np1 -i ../0001-Bug-1329798-Include-sys-sysmacros.h-for-major-minor-on-Linux.patch
+
+  # Fix for removing sys/sysctl.h and declaration of gettid
+  patch -Np1 -i ../sysctl.patch
+  patch -Np1 -i ../gettid.patch
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=847568
   patch -Np1 -i ../LFS_graphite2_harfbuzz.patch

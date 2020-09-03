@@ -1,0 +1,17 @@
+--- src/tools/profiler/platform-linux-lul.h    2015-10-15 04:41:22.000000000 +0700
++++ work/tools/profiler/platform-linux-lul.h   2020-09-03 22:46:43.264756553 +0700
+@@ -21,10 +21,10 @@
+ #if defined(__GLIBC__)
+ #include <unistd.h>
+ #include <sys/syscall.h>
+-static inline pid_t gettid()
+-{
+-  return (pid_t) syscall(SYS_gettid);
+-}
++// static inline pid_t gettid()
++// {
++//   return (pid_t) syscall(SYS_gettid);
++// }
+ #endif
+ 
+ // A singleton instance of the library.

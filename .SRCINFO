@@ -1,7 +1,7 @@
 pkgbase = xulrunner
 	pkgdesc = Mozilla Runtime Environment
 	pkgver = 41.0.2
-	pkgrel = 16
+	pkgrel = 17
 	url = http://wiki.mozilla.org/XUL:Xul_Runner
 	arch = x86_64
 	license = MPL
@@ -30,6 +30,8 @@ pkgbase = xulrunner
 	depends = libvpx
 	depends = icu
 	depends = python2
+	depends = libpng-apng
+	depends = alsa-lib
 	replaces = xulrunner-oss
 	options = !emptydirs
 	options = !makeflags
@@ -45,6 +47,8 @@ pkgbase = xulrunner
 	source = shared-libs.patch
 	source = sed43.patch
 	source = gcc6.diff
+	source = sysctl.patch
+	source = gettid.patch
 	sha256sums = f7abb2e2989779305ab1f80d30caf9fc55d96c7e66d1394e2cc9639442e2b864
 	sha256sums = 8ab57ae3ba4660a721cdb210babee02488b670d9af9fdecf5da3b832d77e342b
 	sha256sums = 3aea9a83bf304da5525f34a911712cf42f8ded1c8b6becf0a2cf8a4b4f7facd6
@@ -56,6 +60,8 @@ pkgbase = xulrunner
 	sha256sums = 59d9fc421bc10a5515b73e159f44a72365bf7b7e8b3fc8a8c46043ef40bd3a40
 	sha256sums = e9b7199b57fa07e440d37db0cc3cf52aa1c1fd7d5e8b31db14e511d77b5ce327
 	sha256sums = 0992d5dce883de760ff0445448466f096d0baa75fe5fd1e60bfd3cc13cb4d098
+	sha256sums = 8b921488faff947baf26ebba6db09d9d6db396b0d528aa543a4da20330c1d8fd
+	sha256sums = fc1b55fda12dd1d02cea54d530a594855d45fe0be93bc06f4c804618b0700b2b
 
 pkgname = xulrunner
 

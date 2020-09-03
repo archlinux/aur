@@ -1,0 +1,15 @@
+--- org/memory/mozjemalloc/jemalloc.c  2015-10-15 04:41:05.000000000 +0700
++++ work/memory/mozjemalloc/jemalloc.c 2020-09-03 22:47:42.138024901 +0700
+@@ -325,9 +325,9 @@
+ #endif
+ #include <sys/time.h>
+ #include <sys/types.h>
+-#if !defined(MOZ_MEMORY_SOLARIS) && !defined(MOZ_MEMORY_ANDROID)
+-#include <sys/sysctl.h>
+-#endif
++// #if !defined(MOZ_MEMORY_SOLARIS) && !defined(MOZ_MEMORY_ANDROID)
++// #include <sys/sysctl.h>
++// #endif
+ #include <sys/uio.h>
+ #ifndef MOZ_MEMORY
+ #include <sys/ktrace.h> /* Must come after several other sys/ includes. */
