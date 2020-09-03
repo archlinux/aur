@@ -1,7 +1,7 @@
 pkgbase = webapp-manager-git
 	pkgdesc = Run websites as if they were apps.
-	pkgver = 1.0.3.r33.6124beb
-	pkgrel = 2
+	pkgver = 1.0.3.r53.31d233e
+	pkgrel = 1
 	url = https://github.com/linuxmint/webapp-manager
 	arch = x86_64
 	license = GPL

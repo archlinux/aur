@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=webapp-manager-git
-pkgver=1.0.3.r33.6124beb
-pkgrel=2
+pkgver=1.0.3.r53.31d233e
+pkgrel=1
 pkgdesc="Run websites as if they were apps."
 arch=('x86_64')
 url="https://github.com/linuxmint/webapp-manager"
@@ -24,14 +24,11 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
-	# Fix binary shebang
-	sed -i 's/#\/bin\/sh/#!\/bin\/sh/g' "usr/bin/${pkgname%-git}"
-
 	# Fix browser names
 	sed -i 's/brave-browser/brave/g' \
-		"usr/lib/${pkgname%-git}/${pkgname%-git}.py"
+		"usr/lib/${pkgname%-git}/common.py"
 	sed -i 's/epiphany-browser/epiphany/g' \
-		"usr/lib/${pkgname%-git}/${pkgname%-git}.py"
+		"usr/lib/${pkgname%-git}/common.py"
 
 	# Fix license path
 	sed -i 's/common-licenses/licenses\/common/g' \
@@ -45,5 +42,9 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	cp -r usr "$pkgdir"
+	cp -r etc usr "$pkgdir"
+
+	# Fix launching Chrome & Vivaldi
+	ln -s /usr/bin/google-chrome-stable "$pkgdir/usr/bin/google-chrome"
+	ln -s /usr/bin/vivaldi-stable "$pkgdir/usr/bin/vivaldi"
 }
