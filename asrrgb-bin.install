@@ -1,0 +1,6 @@
+post_install() {
+  echo "
+To run this program without root, add the device to the udev rules:
+    ln -s /usr/share/asrrgb/60-asrrgb.rules /etc/udev/rules.d/60-asrrgb.rules
+"
+}
