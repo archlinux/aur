@@ -1,0 +1,28 @@
+--- pandoc-include-code.cabal.bak	2020-09-03 12:02:34.542584727 +0200
++++ pandoc-include-code.cabal	2020-09-03 12:02:23.252166789 +0200
+@@ -36,14 +36,14 @@
+                    , filepath
+                    , text                 >= 1.2      && < 2
+                    , mtl                  >= 2.2      && < 3
+-                   , pandoc-types         >= 1.20     && <= 1.20
++                   , pandoc-types         >= 1.20
+ 
+ 
+ executable pandoc-include-code
+     hs-source-dirs:  filter
+     main-is:         Main.hs
+     build-depends:   base                 >= 4        && < 5
+-                   , pandoc-types         >= 1.20     && <= 1.20
++                   , pandoc-types         >= 1.20
+                    , pandoc-include-code
+ 
+ test-suite filter-tests
+@@ -53,7 +53,7 @@
+                    , Paths_pandoc_include_code
+     main-is:         Driver.hs
+     build-depends:   base                 >= 4        && < 5
+-                   , pandoc-types         >= 1.20     && <= 1.20
++                   , pandoc-types         >= 1.20
+                    , pandoc-include-code
+                    , tasty
+                    , tasty-hunit
