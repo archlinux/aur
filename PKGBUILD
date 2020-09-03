@@ -19,6 +19,7 @@ source_arm=("torrserver::https://github.com/YouROK/TorrServer/releases/download/
 source_armv6h=("torrserver::https://github.com/YouROK/TorrServer/releases/download/$pkgver/TorrServer-linux-arm6")
 source_armv7h=("torrserver::https://github.com/YouROK/TorrServer/releases/download/$pkgver/TorrServer-linux-arm7")
 source_aarch64=("torrserver::https://github.com/YouROK/TorrServer/releases/download/$pkgver/TorrServer-linux-arm64")
+
 sha256sums=('a14635581190abae4bc7c555d609521e3cb46489cb72685aeb23daf6e4ed066b')
 sha256sums_x86_64=('0f2e58a2d39b50ac6c55402a9ad29de3e7d900825d0a0c29d4d79ff41f89c4a1')
 sha256sums_i686=('0f2e58a2d39b50ac6c55402a9ad29de3e7d900825d0a0c29d4d79ff41f89c4a1')
