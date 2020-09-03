@@ -1,6 +1,7 @@
 pkgbase = ttf-open-sauce-sans
+	pkgdesc = Compact typeface optimized for small text on screen and print
 	pkgver = 1.474
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marcologous/Open-Sauce-Sans
 	arch = any
 	license = custom:OFL

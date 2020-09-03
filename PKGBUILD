@@ -1,8 +1,8 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=ttf-open-sauce-sans
-pkgdesc=''
+pkgdesc='Compact typeface optimized for small text on screen and print'
 pkgver=1.474
-pkgrel=1
+pkgrel=2
 license=(custom:OFL)
 arch=(any)
 url=https://github.com/marcologous/Open-Sauce-Sans
