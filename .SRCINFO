@@ -10,6 +10,11 @@ pkgbase = fido2luks
 	license = MPL-2.0
 	makedepends = rust
 	makedepends = cargo
+	makedepends = cryptsetup
+	makedepends = clang
+	depends = cryptsetup
+	source = fido2luks-0.2.12.tar.gz::https://github.com/shimunn/fido2luks/archive/0.2.12.tar.gz
+	sha256sums = 3c4baa642d0fb705a2a4c52de4d4483531e920a483904d59ba517d9bbb8dcf17
 
 pkgname = fido2luks
 
