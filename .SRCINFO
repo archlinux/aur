@@ -1,7 +1,7 @@
 pkgbase = libldac
-	pkgdesc = AOSP libldac dispatcher
+	pkgdesc = LDAC encoder and LDAC Adaptive Bit Rate(ABR) libraries
 	pkgver = 2.0.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/EHfive/ldacBT
 	arch = i686
 	arch = x86_64
