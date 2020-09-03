@@ -1,6 +1,6 @@
 pkgbase = xorg-server-hidpi-git
 	pkgver = 1.20.0.r719.g727df0a74
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/xorg/xserver.git
 	arch = x86_64
 	groups = xorg
@@ -45,7 +45,7 @@ pkgbase = xorg-server-hidpi-git
 	sha256sums = SKIP
 	sha256sums = ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9
 	sha256sums = 2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776
-	sha256sums = 70b81cd399fe2d9915f4358667d6655a63d6b174e914b98e9bf5e8b188f607a6
+	sha256sums = acf385d0ef8533adabaf32d68914643e4d5a617e5d66eeed67395581ad64517a
 
 pkgname = xorg-server-hidpi-git
 	pkgdesc = Xorg X server (git version)

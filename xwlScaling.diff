@@ -25,7 +25,7 @@ index c41080f20..3ef741c3e 100644
      'xwayland-glx.h',
      'xwayland-pixmap.c',
 diff --git a/hw/xwayland/xwayland-cursor.c b/hw/xwayland/xwayland-cursor.c
-index 91728f1c1..47abac644 100644
+index 91728f1c1..f7090c5cf 100644
 --- a/hw/xwayland/xwayland-cursor.c
 +++ b/hw/xwayland/xwayland-cursor.c
 @@ -138,6 +138,7 @@ static const struct wl_callback_listener frame_listener = {
@@ -36,7 +36,7 @@ index 91728f1c1..47abac644 100644
      struct xwl_cursor *xwl_cursor = &xwl_seat->cursor;
      PixmapPtr pixmap;
      CursorPtr cursor;
-@@ -174,8 +175,8 @@ xwl_seat_set_cursor(struct xwl_seat *xwl_seat)
+@@ -174,10 +175,11 @@ xwl_seat_set_cursor(struct xwl_seat *xwl_seat)
      wl_pointer_set_cursor(xwl_seat->wl_pointer,
                            xwl_seat->pointer_enter_serial,
                            xwl_cursor->surface,
@@ -46,8 +46,11 @@ index 91728f1c1..47abac644 100644
 +                          xwl_scale_to(xwl_screen, xwl_seat->x_cursor->bits->yhot));
      wl_surface_attach(xwl_cursor->surface,
                        xwl_shm_pixmap_get_wl_buffer(pixmap), 0, 0);
++    wl_surface_set_buffer_scale(xwl_cursor->surface, xwl_screen->global_output_scale);
      xwl_surface_damage(xwl_seat->xwl_screen, xwl_cursor->surface, 0, 0,
-@@ -192,6 +193,7 @@ void
+                        xwl_seat->x_cursor->bits->width,
+                        xwl_seat->x_cursor->bits->height);
+@@ -192,6 +194,7 @@ void
  xwl_tablet_tool_set_cursor(struct xwl_tablet_tool *xwl_tablet_tool)
  {
      struct xwl_seat *xwl_seat = xwl_tablet_tool->seat;
@@ -55,7 +58,7 @@ index 91728f1c1..47abac644 100644
      struct xwl_cursor *xwl_cursor = &xwl_tablet_tool->cursor;
      PixmapPtr pixmap;
      CursorPtr cursor;
-@@ -226,8 +228,8 @@ xwl_tablet_tool_set_cursor(struct xwl_tablet_tool *xwl_tablet_tool)
+@@ -226,10 +229,11 @@ xwl_tablet_tool_set_cursor(struct xwl_tablet_tool *xwl_tablet_tool)
      zwp_tablet_tool_v2_set_cursor(xwl_tablet_tool->tool,
                                    xwl_tablet_tool->proximity_in_serial,
                                    xwl_cursor->surface,
@@ -65,7 +68,10 @@ index 91728f1c1..47abac644 100644
 +                                  xwl_scale_to(xwl_screen, xwl_seat->x_cursor->bits->yhot));
      wl_surface_attach(xwl_cursor->surface,
                        xwl_shm_pixmap_get_wl_buffer(pixmap), 0, 0);
++    wl_surface_set_buffer_scale(xwl_cursor->surface, xwl_screen->global_output_scale);
      xwl_surface_damage(xwl_seat->xwl_screen, xwl_cursor->surface, 0, 0,
+                        xwl_seat->x_cursor->bits->width,
+                        xwl_seat->x_cursor->bits->height);
 diff --git a/hw/xwayland/xwayland-ext.c b/hw/xwayland/xwayland-ext.c
 new file mode 100644
 index 000000000..1668dda57
@@ -502,6 +508,18 @@ index 02b983108..ec089757f 100644
  void xwl_screen_init_xdg_output(struct xwl_screen *xwl_screen);
  
  #endif /* XWAYLAND_OUTPUT_H */
+diff --git a/hw/xwayland/xwayland-present.c b/hw/xwayland/xwayland-present.c
+index a4ecdada4..d63a14786 100644
+--- a/hw/xwayland/xwayland-present.c
++++ b/hw/xwayland/xwayland-present.c
+@@ -459,6 +459,7 @@ xwl_present_flip(WindowPtr present_window,
+ 
+     /* We can flip directly to the main surface (full screen window without clips) */
+     wl_surface_attach(xwl_window->surface, buffer, 0, 0);
++    wl_surface_set_buffer_scale(xwl_window->surface, xwl_window->xwl_screen->global_output_scale);
+ 
+     if (!xwl_window->frame_callback)
+         xwl_window_create_frame_callback(xwl_window);
 diff --git a/hw/xwayland/xwayland-screen.c b/hw/xwayland/xwayland-screen.c
 index 92643c0ed..2115b3ba2 100644
 --- a/hw/xwayland/xwayland-screen.c
@@ -584,7 +602,7 @@ index 8d0b12705..85e0a4fd7 100644
  
  #endif /* XWAYLAND_SCREEN_H */
 diff --git a/hw/xwayland/xwayland-window.c b/hw/xwayland/xwayland-window.c
-index 23d2b3086..f9a7712f4 100644
+index 23d2b3086..9dbf9d0a5 100644
 --- a/hw/xwayland/xwayland-window.c
 +++ b/hw/xwayland/xwayland-window.c
 @@ -470,7 +470,8 @@ ensure_surface_for_window(WindowPtr window)
@@ -597,14 +615,14 @@ index 23d2b3086..f9a7712f4 100644
          wl_surface_set_opaque_region(xwl_window->surface, region);
          wl_region_destroy(region);
      }
-@@ -811,6 +812,7 @@ xwl_window_post_damage(struct xwl_window *xwl_window)
-         xwl_glamor_post_damage(xwl_window, pixmap, region);
+@@ -812,6 +813,7 @@ xwl_window_post_damage(struct xwl_window *xwl_window)
  #endif
  
-+    wl_surface_set_buffer_scale(xwl_window->surface, xwl_screen->global_output_scale);
      wl_surface_attach(xwl_window->surface, buffer, 0, 0);
++    wl_surface_set_buffer_scale(xwl_window->surface, xwl_screen->global_output_scale);
  
      /* Arbitrary limit to try to avoid flooding the Wayland
+      * connection. If we flood it too much anyway, this could
 diff --git a/hw/xwayland/xwayland.c b/hw/xwayland/xwayland.c
 index 380c9c849..c595c4df4 100644
 --- a/hw/xwayland/xwayland.c
