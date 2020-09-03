@@ -1,9 +1,10 @@
 pkgbase = doomretro
 	pkgdesc = The classic, refined DOOM source port
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://doomretro.com
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = cmake
 	depends = sdl2_image

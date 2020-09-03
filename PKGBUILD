@@ -3,9 +3,9 @@
 
 pkgname=doomretro
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The classic, refined DOOM source port'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='http://doomretro.com'
 license=('GPL3')
 depends=('sdl2_image' 'sdl2_mixer')
