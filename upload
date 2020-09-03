@@ -17,6 +17,7 @@ $SCRIPT_HOME/update
 if [ "$?" -eq 1 ]; then
   echo "Updating Git"
   cd $SCRIPT_HOME
-  git commit -a -m "Commit from upload script due to new version"
+  ver="$(grep pkgver= PKGBUILD | sed 's/.*=//g')"
+  git commit -a -m "Update to $ver"
   git push
 fi
