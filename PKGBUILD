@@ -32,6 +32,7 @@ prepare() {
   git config submodule.ThirdParty/IceT/vtkicet.git "$srcdir"/icet
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
+  sed -i "s|Windows.h|windows.h|g" ThirdParty/catalyst/vtkcatalyst/catalyst/thirdparty/conduit/conduit/conduit_node.cpp
   cd VTK
   curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7038.patch | patch -p1
 }
