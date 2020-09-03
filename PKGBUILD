@@ -9,7 +9,7 @@ license=('GPL')
 depends=('python-gobject' 'python-configobj' 'python-setproctitle'
          'python-tldextract' 'python-beautifulsoup4' 'xapps' 'dconf')
 makedepends=('git')
-optdepends=('brave' 'chromium' 'google-chrome' 'ephiphany' 'vivaldi')
+optdepends=('brave' 'chromium' 'google-chrome' 'epiphany' 'vivaldi')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/linuxmint/webapp-manager.git')
