@@ -1,0 +1,35 @@
+diff --git a/make.sh b/make.sh
+index c9bfebc..3e76e8d 100755
+--- a/make.sh
++++ b/make.sh
+@@ -3,7 +3,7 @@
+ # Copyright (C) 2018 Gerhard Großmann
+ 
+ # Set the name of your cursor theme
+-themetitle='My Cursor Theme'
++: ${themetitle:='My Cursor Theme'}
+ 
+ 
+ # For the folder name: Replace forbidden charakters with “-”
+diff --git a/render-pngs.py b/render-pngs.py
+index 0e19b8c..f99f7b6 100755
+--- a/render-pngs.py
++++ b/render-pngs.py
+@@ -65,14 +65,14 @@ class SVGRect:
+ 		dbg("New SVGRect: (%s)" % name)
+ 
+ 	def renderFromSVG(self, svgFName, sliceFName):
+-		rc = os.system('inkscape --without-gui --export-id="%s" --export-filename="pngs/24/%s" --export-type=png "%s"' % (self.name, sliceFName, svgFName))
++		rc = os.system('inkscape --export-id="%s" --export-filename="pngs/24/%s" --export-type=png "%s"' % (self.name, sliceFName, svgFName))
+ 		if rc > 0:
+ 			fatalError('ABORTING: Inkscape failed to render the slice.')
+ 
+ # Not only render 24x4 PNGs, but also 32x32 and 48x48
+ 
+-		rc = os.system('inkscape --export-type=png -w 32 -h 32 --without-gui --export-id="%s" --export-filename="pngs/32/%s" "%s"' % (self.name, sliceFName, svgFName))
+-		rc = os.system('inkscape --export-type=png -w 48 -h 48 --without-gui --export-id="%s" --export-filename="pngs/48/%s" "%s"' % (self.name, sliceFName, svgFName))
++		rc = os.system('inkscape --export-type=png -w 32 -h 32 --export-id="%s" --export-filename="pngs/32/%s" "%s"' % (self.name, sliceFName, svgFName))
++		rc = os.system('inkscape --export-type=png -w 48 -h 48 --export-id="%s" --export-filename="pngs/48/%s" "%s"' % (self.name, sliceFName, svgFName))
+ 
+ class SVGHandler(handler.ContentHandler):
+ 	"""Base class for SVG parsers"""
