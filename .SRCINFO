@@ -1,6 +1,6 @@
 pkgbase = pnghide
 	pkgdesc = hide plain text in png file inside pixels (unvisible changes).
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/x1b6e6/pnghide.git
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = pnghide
 	optdepends = aes: for encryping data
 	source = CMakeLists.txt
 	source = pnghide.cc
-	sha1sums = e17604fafe5a99a5921e8b76cf1d86f8b1a54fa8
-	sha1sums = b6cc8f102b1f9b433c99e3e279482e04bc7d3f9a
+	sha1sums = 70a9c20cace23c5b7153a7347e1288ebbbcdc80d
+	sha1sums = ca18949b8ac36c196f466a052025601d670c22c1
 
 pkgname = pnghide
 

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(pnghide VERSION 0.2.2 LANGUAGES CXX)
+project(pnghide VERSION 0.2.3 LANGUAGES CXX)
 
 find_package(PNG REQUIRED)
 

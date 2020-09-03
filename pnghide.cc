@@ -70,7 +70,7 @@ void proccess_hide(png::image<TPixel>& image,
 				if (row == height) {
 					tmp_size = 0;
 					throw std::runtime_error(
-						"data size is bigger then image can store");
+						"data size is bigger then image can store\n");
 				}
 			}
 		}
