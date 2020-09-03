@@ -1,6 +1,6 @@
 pkgbase = kochmorse
 	pkgdesc = A easy to use Morse Code (Ham Radio) trainer using the Koch-method.
-	pkgver = 3.4.0
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://github.com/hmatuschek/kochmorse
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = kochmorse
 	provides = kochmorse
 	conflicts = kochmorse-py
 	conflicts = kochmorse-git
-	source = https://github.com/hmatuschek/kochmorse/archive/v3.4.0.tar.gz
-	md5sums = f9db3fea93146bfbfe8bcf8e18557b0b
-	sha256sums = 5ef4fb42e04a420493dd0977d63d8902e7192481fee0cbdd57857bd1b196c61b
+	source = https://github.com/hmatuschek/kochmorse/archive/v3.5.0.tar.gz
+	md5sums = e85c1b284a36d44702ab2a8b01d53eec
+	sha256sums = 4824970196434a227c341078fb99eb7063ba211692426f55f8c4c3e98c759623
 
 pkgname = kochmorse
 

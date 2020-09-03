@@ -5,7 +5,7 @@
 
 pkgname=kochmorse
 _author=hmatuschek
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="A easy to use Morse Code (Ham Radio) trainer using the Koch-method."
 arch=('i686' 'x86_64')
@@ -41,5 +41,5 @@ package() {
 	make DESTDIR="$pkgdir/" install
 }
 
-md5sums=('f9db3fea93146bfbfe8bcf8e18557b0b')
-sha256sums=('5ef4fb42e04a420493dd0977d63d8902e7192481fee0cbdd57857bd1b196c61b')
+md5sums=('e85c1b284a36d44702ab2a8b01d53eec')
+sha256sums=('4824970196434a227c341078fb99eb7063ba211692426f55f8c4c3e98c759623')
