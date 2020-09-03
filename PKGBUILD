@@ -2,30 +2,24 @@
 # Contributor: Martin Wagner <martin.wagner.dev@gmail.com>
 
 pkgname=mpdevil
-pkgver=0.8.5
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A small MPD client written in python"
 arch=('any')
-license=('GPL3')
+license=('GPL-3')
 url="https://github.com/SoongNoonien/mpdevil"
 depends=('python-mpd2' 'gtk3' 'libnotify' 'python-gobject' 'python-requests' 'python-beautifulsoup4' 'python-dbus')
-makedepends=('intltool')
+makedepends=('python-distutils-extra')
 source=("https://github.com/SoongNoonien/mpdevil/archive/v${pkgver}.tar.gz")
-sha256sums=('bb0933c52001ec2876c01decb9f0cfaa1567fd311f9f0b1cd641c6c9b39e395a')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  NOCONFIGURE=1 ./autogen.sh
-}
+sha256sums=('17442842643f58ff6bd01e21fd5e2ac590882a8c7cb76630dae1655a9c2b2b5c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr 
-  make
+  python setup.py build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  python setup.py install --prefix=$pkgdir/usr
 }
 
