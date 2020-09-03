@@ -1,6 +1,6 @@
 pkgname=robwork
 pkgver=1.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of C++ libraries for simulation and control of robot systems"
 arch=('x86_64')
 url='http://www.robwork.org'
