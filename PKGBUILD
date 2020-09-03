@@ -1,7 +1,7 @@
 # Maintainer: crian <crian84 at gmail dot com>
 
 pkgname=auto-cpufreq-git
-pkgver=r136.4c2670c
+pkgver=1.2.3.r138.566fd4a
 pkgrel=1
 pkgdesc='Automatic CPU speed & power optimizer'
 arch=('any')
@@ -18,7 +18,8 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    local srcversion="$(grep "version: '" snap/snapcraft.yaml | cut -d "'" -f 2)"
+    printf "%s.r%s.%s" $srcversion "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
