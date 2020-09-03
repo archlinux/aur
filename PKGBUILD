@@ -2,8 +2,8 @@
 
 pkgname=vifm-colors-git
 _pkgname=vifm-colors
-pkgver=r51.d9b39e8
-pkgrel=2
+pkgver=r71.39b5337
+pkgrel=1
 pkgdesc="Various colorschemes for vifm file explorer"
 url="https://github.com/vifm/vifm-colors"
 makedepends=('git')
@@ -20,13 +20,12 @@ pkgver() {
 
 package() {
   cd ${srcdir}/${pkgname}
-  theme=('darkdesert' 'desert' 'dracula' 'g80' 'lucius' 'matrix' 'mc-like')
-  theme=(${theme[@]} 'molokai' 'near-default' 'ph' 'semidarkdesert')
-  theme=(${theme[@]} 'snowwhite' 'solarized-dark' 'zenburn' 'zenburn_1')
-  for i in "${theme[@]}"
+  for i in *.vifm
   do
-    install -Dm644 "$i.vifm" "$pkgdir/usr/share/vifm/colors/$i.vifm"
+    install -Dm644 "$i" "$pkgdir/usr/share/vifm/colors/$i"
   done
+  install -Dm644 README.md "$pkgdir/usr/share/doc/vifm-colors-git/README.md"
+  install -Dm644 ChangeLog "$pkgdir/usr/share/doc/vifm-colors-git/ChangeLog"
 }
 
 # vim:set ts=2 sw=2 et:
