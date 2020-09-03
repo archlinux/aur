@@ -2,7 +2,7 @@
 
 pkgname=childsplay-git
 _pkgname=childsplay
-pkgver=r19.b61e8ed
+pkgver=r37.eb87e1f
 pkgrel=1
 pkgdesc="A suite of educational games for young children (git)"
 url="http://www.childsplay.mobi"
@@ -33,8 +33,8 @@ prepare() {
 
 package() {
   cd "$srcdir/${pkgname}"
-  mkdir -p "$pkgdir/usr/local/games/" 
-  cp -R . "$pkgdir/usr/local/games/$_pkgname"
+  mkdir -p "$pkgdir/usr/share/games/" 
+  cp -R . "$pkgdir/usr/share/games/$_pkgname"
 
 
   install -D -m755 "$srcdir/childsplay.sh" "$pkgdir/usr/bin/childsplay"
@@ -45,4 +45,4 @@ package() {
 }
 md5sums=('SKIP'
          '3aa3a801911797bf61a10e4cb7fd5e5a'
-         '877612c362a8d282a689f63cb19a8083')
+         'c67ce8dfcc9daebb22a7a0198126a521')

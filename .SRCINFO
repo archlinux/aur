@@ -1,6 +1,6 @@
 pkgbase = childsplay-git
 	pkgdesc = A suite of educational games for young children (git)
-	pkgver = r19.b61e8ed
+	pkgver = r37.eb87e1f
 	pkgrel = 1
 	url = http://www.childsplay.mobi
 	install = childsplay.install
@@ -18,7 +18,7 @@ pkgbase = childsplay-git
 	source = childsplay.sh
 	md5sums = SKIP
 	md5sums = 3aa3a801911797bf61a10e4cb7fd5e5a
-	md5sums = 877612c362a8d282a689f63cb19a8083
+	md5sums = c67ce8dfcc9daebb22a7a0198126a521
 
 pkgname = childsplay-git
 
