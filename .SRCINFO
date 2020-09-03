@@ -6,6 +6,7 @@ pkgbase = bruteforce-luks-git
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0
+	makedepends = git
 	source = git+https://github.com/glv2/bruteforce-luks
 	md5sums = SKIP
 
