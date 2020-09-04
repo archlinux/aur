@@ -4,10 +4,10 @@ pkgdesc="ROS - Extract geometry value of a vehicle from urdf."
 url='https://wiki.ros.org/urdf_geometry_parser'
 
 pkgname='ros-melodic-urdf-geometry-parser'
-pkgver='0.0.3'
+pkgver='0.1.0'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf2
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="urdf_geometry_parser-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/urdf_geometry_parser/archive/${pkgver}.tar.gz")
-sha256sums=('2515e9b176fd97b9190c77f5e4ef791a12b8ac4f44156f5db49dedd5fb64c007')
+sha256sums=('d881e89f5a74848769a7842251936257b798907598c5cc19f888dfd5a974d25f')
 
 build() {
   # Use ROS environment variables
@@ -49,6 +49,7 @@ build() {
   cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+        -DCATKIN_ENABLE_TESTING=0 \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
