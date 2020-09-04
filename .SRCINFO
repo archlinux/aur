@@ -1,9 +1,10 @@
 pkgbase = xcursor-cz-viator
 	pkgver = 20200713
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/charakterziffer/cursor-toolbox
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = inkscape
 	makedepends = xorg-xcursorgen
 	makedepends = python2

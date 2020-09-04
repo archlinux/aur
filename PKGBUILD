@@ -3,12 +3,12 @@ pkgdesc=''
 pkgbase=xcursor-cz-viator
 pkgname=(xcursor-cz-viator-{hourglass,ring,rotor,windmill}-{white,black})
 pkgver=20200713
-pkgrel=1
+pkgrel=2
 _commit=fb8f37fa75fbae9df22a8976432214a46b77ce1e
 license=(GPL3)
 url=https://github.com/charakterziffer/cursor-toolbox
 arch=(any)
-makedepends=(inkscape xorg-xcursorgen python2 patch)
+makedepends=(git inkscape xorg-xcursorgen python2 patch)
 depends=()
 source=("${pkgbase}-${pkgver}::git+${url}#commit=${_commit}" build.patch)
 sha512sums=('SKIP'
