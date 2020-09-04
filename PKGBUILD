@@ -4,10 +4,10 @@ pkgdesc="ROS - Stereo and single image rectification and disparity processing."
 url='https://github.com/ros-perception/image_pipeline'
 
 pkgname='ros-melodic-stereo-image-proc'
-pkgver='1.12.23'
+pkgver='1.15.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -45,9 +45,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="image_pipeline-${pkgver}/stereo_image_proc"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/${pkgver}.tar.gz")
-sha256sums=('0b024f155f79f16982b31951ad0b1bde5440159b0ba6b1128ecbe2e867a2e357')
+_dir="image_pipeline-melodic-${pkgver}/stereo_image_proc"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/melodic-${pkgver}.tar.gz")
+sha256sums=('453ab2347197614806c92bc8c6fd8c8cf9c04cfab4ad6b4ac47063a24835ce5b')
 
 build() {
 	# Use ROS environment variables.
