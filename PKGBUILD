@@ -29,4 +29,6 @@ package() {
   cd ${_pkgname}
   python setup.py install --root="${pkgdir}" --optimize=1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mkdir -p "${pkgdir}/usr/share/man/man1"
+  install -Dm644 man/*.1 "${pkgdir}/usr/share/man/man1/"
 }
