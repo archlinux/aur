@@ -15,7 +15,7 @@ options=('!emptydirs')
 source=("https://github.com/htop-dev/htop/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'htop-temperature-rpi.patch')
 sha256sums=('8465164bc085f5f1813e1d3f6c4b9b56bf4c95cc12226a5367e65794949b01ca'
-            '42842d7cc73106e325dfa3335f34ad13818fd0b59e91f01d1377d26611369969')
+            'a8e2c2bf3f96c8d75d1e309c8056553b53c8dd23b5d1585cf63ff6166a91f4f6')
 
 prepare() {
   cd "$_pkgname-$pkgver"
