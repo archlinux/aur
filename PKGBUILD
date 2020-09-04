@@ -2,9 +2,9 @@ pkgdesc="ROS - rqt_image_view provides a GUI plugin for displaying images using 
 url='https://wiki.ros.org/rqt_image_view'
 
 pkgname='ros-melodic-rqt-image-view'
-pkgver='0.4.14'
+pkgver='0.4.16'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -40,7 +40,7 @@ depends=(
 _dir="rqt_image_view-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_image_view/archive/${pkgver}.tar.gz"
         "include_QSet.patch")
-sha256sums=('d7bdb1fba8ca72032e40b2a0fc4d8b97b06c51f0da51ad801c63e3f57fc0aa03'
+sha256sums=('8fc609aefd0faf9d2b7df62add6e11310f43e5f5499ba203e2e81899ac2b8d30'
             'c6a8079a952d8ee9560d190e27f124f53c0e78b4d80ec46bbe06ae36f1de85b7')
 
 prepare() {
