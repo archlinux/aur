@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-python2 /usr/local/games/childsplay/childsplay.py "$@"
+python2 /usr/share/games/childsplay/childsplay.py "$@"
