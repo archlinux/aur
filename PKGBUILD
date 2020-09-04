@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.7.10
+pkgver=5.8.6
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -33,7 +33,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_bmqversion=5.7-r3
+_bmqversion=5.8-r1
 _bmq_patch="prjc_v${_bmqversion}.patch"
 _gcc_more_v='20200615'
 source=(
@@ -42,26 +42,22 @@ source=(
   "0000-sphinx-workaround.patch"
   "${_bmq_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=c701fa45808d40c6ce027c31c3e318bb678cb5b3"
-  "0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch::https://git.archlinux.org/linux.git/patch/?id=18693ce191f146cea8dd6299f40e3db3a9367e82"
-  "0003-iwlwifi-Make-some-Killer-Wireless-AC-1550-cards-work.patch::https://git.archlinux.org/linux.git/patch/?id=3639fafc8d7ebd9bdb0365c54fdb57745c47f264"
-  "0004-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch::https://git.archlinux.org/linux.git/patch/?id=d14a96d0a5e05d99c5fe083c49d33197c215dbe1"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://git.archlinux.org/linux.git/patch/?id=41d300468ac614cb370c243c09b23682f2ad4142"
+  "0002-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch::https://git.archlinux.org/linux.git/patch/?id=ac6a55c0c5bb36e306b2e627f59b7179a7879994"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('4725430c65b7573b7d26c402dd9ffdad18529a302ce2e342c849e7800f193d44'
+sha256sums=('8ca500ed7b2ed68f004560ea4c6b02c902f8fe1d62ace7a29a5e38a0909a0ba0'
             'SKIP'
             '07bdb86bb34876ba99406b2174dac860b962a721dc9858d08e15e2608eeb96a7'
             '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
-            'b2a2ae866fc3f1093f67e69ba59738827e336b8f800fb0487599127f7f3ef881'
+            '1656a20d3bab28c72e004778f77e880bba8d02eba8d18a81558cdc9d6733b1f1'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
-            'a46b42c5b7fc895a9e3951b11c8bc63b548f045f989be6b844e3b18b12901460'
-            '009cce2906e71168b7c5546858f15673bc56a16970d8d2613dcccd5ff84433bd'
-            'eb0be541a372ac917c9dced49131228734a9048f599a9113b13b9ece70ac2dc7'
-            'd3a4c90f485238a284ee9e301a7c8a400468dae5357c43412d842dcd4077c93a')
+            'b70695d34e92700d10cb284ce047b72fe002ce4c75f815b648bf8445bff9af2a'
+            '4866edc4422e34144c86e973a539a237615c1e0e8f77cbb15513a61289b843bc')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -103,7 +99,7 @@ prepare() {
 
   # https://github.com/graysky2/kernel_gcc_patch
   echo "Applying enable_additional_cpu_optimizations-${_gcc_more_v}..."
-  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+.patch"
+  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.8+.patch"
 
   make oldconfig
 
