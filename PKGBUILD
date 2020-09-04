@@ -1,43 +1,33 @@
-# Maintainer: Emil Renner Berthing <aur@esmil.dk>
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: Emil Renner Berthing <aur@esmil.dk>
 
 _target=riscv64-unknown-elf
 pkgname=$_target-picolibc
-pkgver=1.0.55
+pkgver=1.4.6
 pkgrel=1
 pkgdesc='Fork of newlib with stdio bits from avrlibc'
+conflicts=("$_target-newlib")
 arch=('i686' 'x86_64')
-url='https://github.com/keith-packard/picolibc'
+url='https://github.com/picolibc/picolibc'
 license=('BSD')
-depends=("$_target-gcc")
-makedepends=('git' 'meson')
-source=('git+https://github.com/keith-packard/picolibc.git')
-sha1sums=('SKIP')
-options=(!strip)
-
-pkgver() {
-  cd "$srcdir/picolibc"
-  local ver="$(git describe --tags)"
-  ver="${ver%-*}"
-  ver="${ver#v}"
-  echo "${ver/-/.}"
-}
+makedepends=("$_target-gcc" 'meson')
+source=("picolibc-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('00764d0c0a2e8685fd9c91685ee8c404ef935975eaa07a55b15243558d390a00')
+options=(!strip !buildflags)
 
 build() {
-  mkdir build
-  cd build
+  meson \
+    --prefix="/usr/$_target" \
+    --buildtype=plain \
+    --cross-file "picolibc-$pkgver/cross-${_target}.txt" \
+    "picolibc-$pkgver" build
 
-  meson ../picolibc \
-    -Dincludedir=picolibc/$_target/include \
-    -Dlibdir=picolibc/$_target/lib \
-    --cross-file ../picolibc/cross-${_target}.txt
-
-  ninja
+  meson compile -C build
 }
 
 package() {
-  cd build
-
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" meson install -C build
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/picolibc-$pkgver/COPYING."{GPL2,NEWLIB,picolibc}
 }
 
 # vim: set ts=2 sw=2 et:
