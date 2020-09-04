@@ -59,12 +59,12 @@ _lqxpatchrel=2
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.8.6.lqx1
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
 license=(GPL2)
-makedepends=(bc kmod libelf zstd)
+makedepends=(bc kmod libelf)
 if [ -n "$_htmldocs_enable" ]; then
     makedepends+=(xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick)
 fi
