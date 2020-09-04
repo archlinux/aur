@@ -1,6 +1,6 @@
 # Maintainer: Adrian Wheeldon <arandomowl at gmail dot com>
 pkgname=workcraft
-pkgver=3.1.7
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="A framework for interpreted graph models including petri nets and STGs"
 arch=('i686' 'x86_64')
@@ -12,13 +12,17 @@ optdepends=(
   'stack: Concepts support')
 provides=('workcraft')
 conflicts=('workcraft')
-source=(http://www.workcraft.org/_media/download/workcraft-v${pkgver}-linux.tar.gz workcraft_start.sh)
+source=(http://www.workcraft.org/_media/download/workcraft-v${pkgver}-linux.tar.gz)
+prepare() {
+  cd "$srcdir"/"$pkgname"
+  sed -i 's|^cd "\$(dirname "\$0")"$|cd \$(dirname "\$(readlink -f \$0)")|' workcraft
+}
 package() {
-  cd $srcdir
+  cd "$srcdir"/"$pkgname"
   mkdir -p "$pkgdir"/usr/bin
   mkdir -p "$pkgdir"/opt/workcraft
-  cp -RP workcraft/* "$pkgdir"/opt/workcraft/
-  cp workcraft_start.sh "$pkgdir"/usr/bin/workcraft
-  chmod 755 "$pkgdir/usr/bin/workcraft"
+  cp -RP ./* "$pkgdir"/opt/workcraft/
+  chmod 755 "$pkgdir"/opt/workcraft/workcraft
+  ln -s /opt/workcraft/workcraft "$pkgdir"/usr/bin/workcraft
 }
-md5sums=('b3326c927ac84e4f8e886840d6c86fd4' 'f32ee62da46bd5fa04ff8ed02f7f218f')
+md5sums=('94576e2781dd01bf43d8edad91025d86')
