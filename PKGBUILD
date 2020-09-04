@@ -1,7 +1,7 @@
 # Maintainer: Fabio Rämi <fabio at dynamix-tontechnik dot ch>
 pkgname=pinball-unofficial
 _realname=pinball
-pkgver=0.3.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="The Emilia Pinball Project unofficial version with 2 new tables"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ provides=('pinball=0.3.1')
 conflicts=('pinball')
 options=('!makeflags' 'libtool')
 source=("https://github.com/sergiomb2/${_realname}/archive/${pkgver}.tar.gz")
-sha512sums=('697ab9a66bb559c54cb43f926e1aadb36fe74cdccf69bb5e248aeeecdf48fc8ccee67655ef44fb43f5c1819946faf68e6754012b782a2a189394d0b2275a7545')
+sha512sums=('a0f3d0fe765c51715db25a1d874a4d55f4213cdad780730f1b870bd840749cba146dbd6744c95b0c28551d32b7cf95ab82dfabb682b196a4192ac0ccf4bf7385')
 
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"
