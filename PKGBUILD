@@ -4,10 +4,10 @@ pkgdesc="ROS - turtlesim is a tool made for teaching ROS and ROS packages."
 url='https://www.wiki.ros.org/turtlesim'
 
 pkgname='ros-melodic-turtlesim'
-pkgver='0.9.1'
+pkgver='0.9.3'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -49,7 +49,7 @@ depends=(
 
 _dir="ros_tutorials-${pkgver}/turtlesim"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_tutorials/archive/${pkgver}.tar.gz")
-sha256sums=('b39929a2ac912326fc114256e755fff5d0f0e5e5e7c99640d013eb7f916b85f4')
+sha256sums=('eb43cb3d99bc84f5dd364801887af129dddc8f45e6055d7ed7ce7955925e0e6c')
 
 build() {
 	# Use ROS environment variables.
