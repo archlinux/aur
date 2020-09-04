@@ -2,12 +2,13 @@
 
 pkgname=jalgo
 pkgver=20120214
-pkgrel=6
+pkgrel=7
 pkgdesc="Algorithm visualization tool written in Java developed at TU Dresden"
 arch=('any')
 url="http://j-algo.binaervarianz.de/"
 license=('GPL')
 depends=('java-runtime>=6')
+optdepends=('jalgo-doc: documentation')
 source=("https://downloads.sourceforge.net/project/j-algo/j-algo/$pkgver/j-Algo-linux-complete-$pkgver.tar.gz")
 md5sums=('dc3bfcfc1b2b55a3cba63ac90a1cc69e')
 sha256sums=('23779874f423bf54e591f9be156c985569bfb7e6136336bd33b4de422fc1dbd3')
