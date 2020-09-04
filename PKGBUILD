@@ -3,9 +3,9 @@
 pkgname=python-slixmpp
 _pkgbase=slixmpp
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An XMPP library written for Python 3.7 (SleekXMPP asyncio fork)"
-arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://dev.louiz.org/projects/slixmpp"
 license=('MIT')
 depends=('python' 'python-aiodns' 'libidn' 'python-pyasn1' 'python-pyasn1-modules' 'python-aiohttp')
