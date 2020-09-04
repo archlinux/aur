@@ -1,14 +1,14 @@
 pkgname=python-pgmpy
-pkgver=0.1.6
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="A library for Probabilistic Graphical Models"
 arch=(any)
-url="https://github.com/pgmpy/pgmpyy"
+url="https://github.com/pgmpy/pgmpy"
 license=('MIT')
 makedepends=('python-setuptools')
 depends=('python-networkx' 'python-pandas' 'python-scipy' 'python-pyparsing' 'python-wrapt')
 source=("https://pypi.io/packages/source/p/pgmpy/pgmpy-$pkgver.tar.gz")
-sha256sums=('d7c7dd11aface5496a4462a4ff8d3c5b813b255986c89a6f5422ec001e5f5294')
+sha256sums=('1a0081ad3282099e5343ad3455efe099fbe1d77598bc2f27cdcd848b0c2fe5d8')
 
 build() {
   cd pgmpy-$pkgver
