@@ -3,9 +3,9 @@ pkgdesc="ROS - The robot_localization package provides nonlinear state estimatio
 url='https://wiki.ros.org/robot_localization'
 
 pkgname='ros-melodic-robot-localization'
-pkgver='2.6.6'
+pkgver='2.6.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf2-ros
@@ -54,7 +54,7 @@ depends=(${ros_depends[@]}
 
 _dir="robot_localization-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/cra-ros-pkg/robot_localization/archive/${pkgver}.tar.gz")
-sha256sums=('8e261ea937f91fe1cfb5c2f71c153ffb6e6c8cd2c944a88a461900897dada93b')
+sha256sums=('696487ac10c3d42f257bec7739010d1924ccea52da102b609e616f7d587a14d5')
 
 build() {
   # Use ROS environment variables

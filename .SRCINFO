@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-robot-localization
 	pkgdesc = ROS - The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors.
-	pkgver = 2.6.6
-	pkgrel = 4
+	pkgver = 2.6.7
+	pkgrel = 1
 	url = https://wiki.ros.org/robot_localization
 	arch = i686
 	arch = x86_64
@@ -30,6 +30,7 @@ pkgbase = ros-melodic-robot-localization
 	makedepends = ros-melodic-eigen-conversions
 	makedepends = eigen
 	makedepends = cmake
+	makedepends = yaml-cpp
 	depends = ros-melodic-tf2-ros
 	depends = ros-melodic-geographic-msgs
 	depends = ros-melodic-diagnostic-updater
@@ -47,8 +48,9 @@ pkgbase = ros-melodic-robot-localization
 	depends = ros-melodic-tf2
 	depends = ros-melodic-eigen-conversions
 	depends = eigen
-	source = ros-melodic-robot-localization-2.6.6.tar.gz::https://github.com/cra-ros-pkg/robot_localization/archive/2.6.6.tar.gz
-	sha256sums = 8e261ea937f91fe1cfb5c2f71c153ffb6e6c8cd2c944a88a461900897dada93b
+	depends = yaml-cpp
+	source = ros-melodic-robot-localization-2.6.7.tar.gz::https://github.com/cra-ros-pkg/robot_localization/archive/2.6.7.tar.gz
+	sha256sums = 696487ac10c3d42f257bec7739010d1924ccea52da102b609e616f7d587a14d5
 
 pkgname = ros-melodic-robot-localization
 
