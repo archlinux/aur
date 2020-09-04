@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-global-planner
 	pkgdesc = ROS - A path planner library and node.
-	pkgver = 1.16.6
-	pkgrel = 2
+	pkgver = 1.16.7
+	pkgrel = 1
 	url = https://wiki.ros.org/global_planner
 	arch = i686
 	arch = x86_64
@@ -24,8 +24,8 @@ pkgbase = ros-melodic-global-planner
 	depends = ros-melodic-pluginlib
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-tf2-ros
-	source = ros-melodic-global-planner-1.16.6.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.6.tar.gz
-	sha256sums = 88e3b4433de9645e1132db15b01f436a75a28ebc15cd5b70660b158dd6ba42dd
+	source = ros-melodic-global-planner-1.16.7.tar.gz::https://github.com/ros-planning/navigation/archive/1.16.7.tar.gz
+	sha256sums = 3a4ee70949a07d4f5f84deddb2ee8a4314bc143d10fb2054b90683c7f92a2f33
 
 pkgname = ros-melodic-global-planner
 
