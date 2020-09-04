@@ -1,7 +1,4 @@
-# $Id: PKGBUILD 139136 2011-09-30 09:07:52Z eric $
-# Contributer : Tobias Powalowski <tpowa@archlinux.org>
-# Contributer : Wesley Merkel <ooesili@gmail.com>
-# Maintainer : Sapphira Armageddos <shadowkyogre.public+aur@gmail.com>
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='hp-mfp-10x-17x'
 _pkgcodename='uld'
