@@ -1,5 +1,5 @@
 pkgbase = pamac-aur-tuna
-	pkgdesc = A Gtk3 frontend for libalpm
+	pkgdesc = fork from pamac-aur and replace aur.archlinux.org by aur.tuna.tsinghua.edu.cn
 	pkgver = 9.5.8
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac

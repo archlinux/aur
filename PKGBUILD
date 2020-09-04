@@ -12,7 +12,7 @@ _pkgfixver=$pkgver
 _commit='f5b40f147cca157a5529e744a079d57093712672'
 sha256sums=('5877a27f9040954133ed4e932af52bdc775ba03f65a81a89dc7e2f8583c2af97')
 
-pkgdesc="A Gtk3 frontend for libalpm"
+pkgdesc="fork from pamac-aur and replace aur.archlinux.org by aur.tuna.tsinghua.edu.cn"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
