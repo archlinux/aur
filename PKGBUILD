@@ -1,7 +1,7 @@
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
 _pkgname=git-pw
-_tag=1.6.0
+_tag=2.0.0
 pkgname=${_pkgname}
 pkgver=${_tag}
 pkgrel=1
