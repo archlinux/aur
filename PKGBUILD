@@ -2,14 +2,14 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 pkgname=connect
 pkgver=1.105
-pkgrel=1
+pkgrel=2
 pkgdesc="makes socket connection using SOCKS4/5 and HTTP tunnel."
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/gotoh/connect"
 license=('GPL')
 depends=(glibc)
-source=(https://bitbucket.org/gotoh/${pkgname}/get/${pkgver}.tar.gz)
-sha256sums=('e7c98d31787f93b51c62ee05e0b558cfb577cda8198834a6d5b4d32528bf63ee')
+source=(https://github.com/gotoh/ssh-connect/archive/${pkgver}.tar.gz)
+sha256sums=('96c50fefe7ecf015cf64ba6cec9e421ffd3b18fef809f59961ef9229df528f3e')
 _hgversion='gotoh-connect-e122d9bd28e1'
 
 build() {
