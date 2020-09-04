@@ -1,7 +1,7 @@
 pkgbase = childsplay
 	pkgdesc = A suite of educational games for young children
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.childsplay.mobi
 	install = childsplay.install
 	arch = i686
@@ -11,7 +11,6 @@ pkgbase = childsplay
 	depends = pygtk
 	depends = python2-sqlalchemy
 	depends = python2-numpy
-	optdepends = childsplay-alphabet-sounds
 	conflicts = childsplay-git
 	source = http://download.savannah.gnu.org/releases/childsplay/childsplay-3.3.tgz
 	source = childsplay.desktop

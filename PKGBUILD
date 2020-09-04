@@ -5,13 +5,12 @@
 
 pkgname=childsplay
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of educational games for young children"
 arch=('i686' 'x86_64')
 url="http://www.childsplay.mobi"
 license=('GPL')
 depends=('python2-pygame' 'pygtk' 'python2-sqlalchemy' 'python2-numpy')
-optdepends=('childsplay-alphabet-sounds')
 install=childsplay.install
 conflicts=(childsplay-git)
 source=(http://download.savannah.gnu.org/releases/childsplay/$pkgname-$pkgver.tgz
