@@ -11,6 +11,7 @@ pkgbase = cine_encoder
 	depends = python>=3.6
 	depends = python-pyqt5
 	depends = python-pymediainfo
+	provides = cine-encoder
 	source = https://github.com/CineEncoder/cine-encoder/archive/2.3.tar.gz
 	md5sums = SKIP
 
