@@ -1,0 +1,14 @@
+pkgbase = remmy
+	pkgdesc = Convert remind(1) entries to iCalendar .ics format
+	pkgver = 0.20191227
+	pkgrel = 1
+	url = https://github.com/smartmic/remmy
+	arch = any
+	makedepends = git
+	depends = perl-uuid-tiny
+	depends = perl-datetime
+	source = remmy-0.20191227::git+https://github.com/smartmic/remmy#commit=c42d400ed933da625b5ea25be06ef51c2b22d59f
+	sha512sums = SKIP
+
+pkgname = remmy
+
