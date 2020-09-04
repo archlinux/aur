@@ -3,7 +3,7 @@
 _reponame=Mamba
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-git"
-pkgver=1.3.r6.g7c0aafa
+pkgver=1.3.r38.g1fbb167
 pkgrel=1
 pkgdesc="A virtual MIDI keyboard and file player/recorder for JACK (git version)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ groups=('pro-audio')
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" "${_pkgname//-/.}")
 conflicts=("${_pkgname}" "${_pkgname//-/.}")
 source=("${_pkgname}::git+https://github.com/brummer10/${_reponame}.git"
-        'xputty::git+https://github.com/brummer10/Xputty.git')
+        'libxputty::git+https://github.com/brummer10/libxputty.git')
 md5sums=('SKIP'
          'SKIP')
 
@@ -35,7 +35,7 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
 
   git submodule init
-  git config submodule.Xputty.url "${srcdir}/xputty"
+  git config submodule.libxputty.url "${srcdir}/libxputty"
   git submodule update
 
   sed -i '/update-desktop-database/d' src/Makefile

@@ -2,7 +2,7 @@
 pkg/
 src/
 mamba/
-xputty/
+libxputty/
 mamba-git-*.tar.xz
 mamba-git-*.tar.zst
 mamba-git-*.src.tar.gz
