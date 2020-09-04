@@ -1,5 +1,4 @@
 # Maintainer: Robert Tari <robert at tari dot in>
-# Contributor: Valentin Huélamo <vhuelamo at gmail dot com>
 
 pkgname="ayatana-indicator-power"
 pkgver="2.1.0"
@@ -18,12 +17,14 @@ options=("!emptydirs")
 build()
 {
     cd ${pkgname}-${pkgver}
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib -Denable_tests=OFF
+    mkdir build
+    cd build
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=lib -Denable_tests=OFF
     make
 }
 
 package()
 {
-    cd ${pkgname}-${pkgver}
+    cd ${pkgname}-${pkgver}/build
     make DESTDIR="${pkgdir}" install
 }
