@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=8.7.59
+pkgver=8.7.72
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -61,8 +61,8 @@ prepare() {
   msg2 "Using system libraries for ICU"
   $srcdir/v8/build/linux/unbundle/replace_gn_files.py --system-libraries icu
 
-  msg2 "patch compiler options"
-  patch -p2 < ../unknown_option.diff
+  # msg2 "patch compiler options"
+  # patch -p2 < ../unknown_option.diff
 
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8.pc"
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8_libbase.pc"
