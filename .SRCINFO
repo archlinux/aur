@@ -1,7 +1,7 @@
 pkgbase = nwchem
 	pkgdesc = Ab initio computational chemistry software package
 	pkgver = 7.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nwchemgit.github.io
 	install = nwchem.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = nwchem
 	makedepends = gcc-fortran
 	depends = python
 	depends = scalapack
+	depends = libxcrypt
 	source = nwchem-7.0.0.tar.gz::https://github.com/nwchemgit/nwchem/archive/v7.0.0-release.tar.gz
 	source = config.sh
 	source = nwchemrc
