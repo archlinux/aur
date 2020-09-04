@@ -2,7 +2,7 @@
 # Previous Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=lib32-spirv-tools
-pkgver=2020.3
+pkgver=2020.4
 pkgrel=1
 pkgdesc="API and commands for processing SPIR-V modules"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
