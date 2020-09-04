@@ -2,12 +2,13 @@ pkgdesc="ROS - Single image rectification and color processing."
 url='https://wiki.ros.org/image_proc'
 
 pkgname='ros-melodic-image-proc'
-pkgver='1.14.0'
+pkgver='1.15.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
+	ros-melodic-camera-calibration-parsers
 	ros-melodic-image-geometry
 	ros-melodic-nodelet
 	ros-melodic-dynamic-reconfigure
@@ -27,6 +28,7 @@ makedepends=(
 )
 
 ros_depends=(
+	ros-melodic-camera-calibration-parsers
 	ros-melodic-image-geometry
 	ros-melodic-nodelet
 	ros-melodic-dynamic-reconfigure
@@ -44,7 +46,7 @@ depends=(
 
 _dir="image_pipeline-${pkgver}/image_proc"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/${pkgver}.tar.gz")
-sha256sums=('dcf1336d43c0c03165b76c9419fb7b5a275d0b091e1890b28daf37a02c1326b3')
+sha256sums=('d13a78ccdbd1b3a89c0d7b14a69cc097a3ce4a6a85edbc89831781a4a024fff8')
 
 build() {
 	# Use ROS environment variables.
