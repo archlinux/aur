@@ -1,0 +1,47 @@
+pkgbase = pamac-aur-tuna
+	pkgdesc = A Gtk3 frontend for libalpm
+	pkgver = 9.5.8
+	pkgrel = 1
+	url = https://gitlab.manjaro.org/applications/pamac
+	install = pamac.install
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = gettext
+	makedepends = itstool
+	makedepends = vala>=0.45
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gobject-introspection
+	makedepends = xorgproto
+	depends = glib2>=2.42
+	depends = json-glib
+	depends = libsoup
+	depends = dbus-glib
+	depends = polkit
+	depends = vte3>=0.38
+	depends = gtk3>=3.22
+	depends = libnotify
+	depends = desktop-file-utils
+	depends = pacman>=5.2
+	depends = gnutls>=3.4
+	depends = git
+	depends = appstream-glib
+	depends = archlinux-appstream-data
+	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
+	optdepends = lxsession: needed for authentification in Xfce, LXDE etc.
+	optdepends = pamac-tray-appindicator: tray icon for KDE
+	provides = pamac=9.5.8-1
+	conflicts = pamac
+	conflicts = pamac-aur
+	options = !emptydirs
+	backup = etc/pamac.conf
+	source = pamac-9.5.8-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/f5b40f147cca157a5529e744a079d57093712672/pamac-f5b40f147cca157a5529e744a079d57093712672.tar.gz
+	sha256sums = 5877a27f9040954133ed4e932af52bdc775ba03f65a81a89dc7e2f8583c2af97
+
+pkgname = pamac-aur-tuna
+

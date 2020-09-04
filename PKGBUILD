@@ -1,0 +1,69 @@
+# Contributor: kpromise <ijustyce@163.com>
+# Maintainer: kpromise <ijustyce@163.com>
+# https://gitlab.manjaro.org/packages/extra/pamac
+ENABLE_FLATPAK=0
+ENABLE_SNAPD=0
+
+pkgname=pamac-aur-tuna
+pkgver=9.5.8
+pkgrel=1
+_pkgfixver=$pkgver
+
+_commit='f5b40f147cca157a5529e744a079d57093712672'
+sha256sums=('5877a27f9040954133ed4e932af52bdc775ba03f65a81a89dc7e2f8583c2af97')
+
+pkgdesc="A Gtk3 frontend for libalpm"
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://gitlab.manjaro.org/applications/pamac"
+license=('GPL3')
+depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3>=0.38' 'gtk3>=3.22'
+         'libnotify' 'desktop-file-utils' 'pacman>=5.2' 'gnutls>=3.4' 'git'
+         'appstream-glib' 'archlinux-appstream-data')
+
+optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
+              'lxsession: needed for authentification in Xfce, LXDE etc.'
+              'pamac-tray-appindicator: tray icon for KDE')
+makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspection' 'xorgproto')
+backup=('etc/pamac.conf')
+conflicts=('pamac' 'pamac-aur')
+provides=("pamac=$pkgver-$pkgrel")
+options=(!emptydirs)
+install=pamac.install
+source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/pamac-$_commit.tar.gz")
+define_meson=''
+if [ "${ENABLE_FLATPAK}" = 1 ]; then
+  depends+=('flatpak')
+  define_meson+=' -Denable-flatpak=true'
+fi
+
+if [ "${ENABLE_SNAPD}" = 1 ]; then
+  depends+=('snapd' 'snapd-glib')
+  define_meson+=' -Denable-snap=true'
+fi
+
+prepare() {
+  cd "$srcdir/pamac-$_commit"
+  # adjust version string
+  sed -i -e "s|\"$_pkgfixver\"|\"$pkgver-$pkgrel\"|g" src/version.vala
+  sed -i 's/aur.archlinux.org/aur.tuna.tsinghua.edu.cn/g' src/aur.vala
+  sed -i 's/aur.archlinux.org/aur.tuna.tsinghua.edu.cn/g' src/database.vala
+  sed -i 's/aur.archlinux.org/aur.tuna.tsinghua.edu.cn/g' src/manager_window.vala
+}
+
+build() {
+  cd "$srcdir/pamac-$_commit"
+  mkdir -p builddir
+  cd builddir
+  meson --buildtype=release \
+        --prefix=/usr \
+        --sysconfdir=/etc $define_meson
+  # build
+  ninja
+}
+
+package() {
+  cd "$srcdir/pamac-$_commit/builddir"
+
+  DESTDIR="$pkgdir" ninja install
+}
+# vim:set ts=2 sw=2 et:
