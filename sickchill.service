@@ -8,8 +8,7 @@ User=sickchill
 Group=sickchill
 
 Type=simple
-Environment=PYTHONPATH=/opt/sickchill/app/lib3
-ExecStart=/opt/sickchill/app/SickChill.py --quiet --nolaunch --datadir=/opt/sickchill/data
+ExecStart=/opt/sickchill/app/bin/SickChill.py --quiet --nolaunch --datadir=/opt/sickchill/data
 
 [Install]
 WantedBy=multi-user.target
