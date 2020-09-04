@@ -9,6 +9,7 @@ url="https://github.com/x1b6e6/aes"
 license=("MIT")
 depends=("libgcrypt" "docopt")
 makedepends=("gcc" "make" "cmake")
+conflicts=("aes")
 
 source=("${pkgname%-git}::git+${url}")
 

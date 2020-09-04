@@ -10,6 +10,7 @@ pkgbase = aes-git
 	makedepends = cmake
 	depends = libgcrypt
 	depends = docopt
+	conflicts = aes
 	source = aes::git+https://github.com/x1b6e6/aes
 	sha1sums = SKIP
 
