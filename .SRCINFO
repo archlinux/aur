@@ -6,6 +6,7 @@ pkgbase = git-pw-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = git
 	depends = python-requests
 	depends = python-click
 	depends = python-pbr
