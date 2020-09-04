@@ -11,7 +11,6 @@ pkgbase = namd
 	depends = gcc9-libs
 	depends = fftw
 	depends = tcl
-	options = staticlibs
 	options = !buildflags
 	source = http://charm.cs.illinois.edu/distrib/charm-6.10.2.tar.gz
 	source = local://NAMD_2.14_Source.tar.gz
