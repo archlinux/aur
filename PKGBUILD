@@ -4,10 +4,10 @@ pkgdesc="ROS - This package contains a set of conversion functions to convert co
 url='https://wiki.ros.org/tf_conversions'
 
 pkgname='ros-melodic-tf-conversions'
-pkgver='1.12.0'
+pkgver='1.12.1'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -40,7 +40,7 @@ depends=(
 
 _dir="geometry-${pkgver}/tf_conversions"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry/archive/${pkgver}.tar.gz")
-sha256sums=('61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4')
+sha256sums=('6eacc9bb8e22d55263b1ab06f5c764a33c230084a0520a7d14ddcb6ed5d33f04')
 
 build() {
 	# Use ROS environment variables.
