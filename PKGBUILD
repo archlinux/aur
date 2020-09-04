@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=wordpress-theme-geist
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Personal blogging theme for WordPress. Port of Casper 2.0 theme for Ghost"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('wordpress')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/christophery/geist/archive/${pkgver}.tar.gz")
-sha512sums=('760c1c1add2c6523cbc59fee7f442981c7ebbd04da0116cf43b867e0ec2fbf2a7bc347d61b5d22a301e0e04eec9f0ff489d8263710a7f093af72ebc3c51b0b46')
+sha512sums=('c00cadf6f6cff3833929d020acd0aa99dccb642332eaaad9aaac53cc0c5331be3172aa4b184d7efad6547f290f3292b62629db89afe062f9c5bf25fde17b09e3')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/wordpress/wp-content/themes"
