@@ -13,8 +13,8 @@ depends=('python-pyqt5'
          'python-humanfriendly'
          'fio')
 makedepends=('python-setuptools')
-source=("crazydiskmark-0.5.9.tar.gz::https://files.pythonhosted.org/packages/8f/47/94f080fea79bc144452b56b20ed55979cce61c7d0d24422fbb1501e4403e/crazydiskmark-0.5.9.tar.gz")
-sha256sums=(a110571fd8e377529da9b38dbfeabe91cb34459ae0eaf1ff1eeb601fc4df4c97)
+source=("crazydiskmark-0.5.9.tar.gz::https://files.pythonhosted.org/packages/93/01/8a1cdf30a232568015c735051f6a8b7da8e7c93e0fee49dac991e925367d/crazydiskmark-0.5.9.tar.gz")
+sha256sums=(584d35ba2cb2ef12850fb5a43404dd58851eb6a095fc1773695455c87c1825d9)
 build() {
   cd "${pkgname}-${pkgver}"
   python setup.py build
