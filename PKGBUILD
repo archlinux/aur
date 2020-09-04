@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_bag provides a GUI plugin for displaying and replaying ROS ba
 url='https://wiki.ros.org/rqt_bag'
 
 pkgname='ros-melodic-rqt-bag-plugins'
-pkgver='0.4.12'
+pkgver='0.4.14'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -41,7 +41,7 @@ depends=(
 
 _dir="rqt_bag-${pkgver}/rqt_bag_plugins"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_bag/archive/${pkgver}.tar.gz")
-sha256sums=('99038e0053546f7a4eaff1ff0df3f206494eca254324325cfc315aad5507443a')
+sha256sums=('cd849ff567dade0e476627d00c7f873a67a3e1bc3c424a4ac5326f89b942a433')
 
 build() {
 	# Use ROS environment variables.
