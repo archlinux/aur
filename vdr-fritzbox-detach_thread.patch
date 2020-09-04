@@ -1,0 +1,35 @@
+Index: vdr-plugin-fritzbox-1.5.3+git20200520-8-b56735f/libfritz++/Listener.cpp
+===================================================================
+--- vdr-plugin-fritzbox-1.5.3+git20200520-8-b56735f.orig/libfritz++/Listener.cpp	2020-08-31 12:35:17.529471966 +0200
++++ vdr-plugin-fritzbox-1.5.3+git20200520-8-b56735f/libfritz++/Listener.cpp	2020-08-31 12:35:17.525472037 +0200
+@@ -41,13 +41,17 @@
+ {
+ 	this->event = event;
+ 	thread = new std::thread(&Listener::run, this);
++	threadNativeHandle = thread->native_handle();
++	thread->detach();
+ }
+ 
+ Listener::~Listener()
+ {
+ 	if (thread) {
+ 		cancelThread();
+-		thread->join();
++		int r = pthread_cancel(threadNativeHandle);
++		if (r != 0)
++		    ERR(std::string{"could not cancel thread: "} + strerror(r));
+ 		delete thread;
+ 	}
+ }
+Index: vdr-plugin-fritzbox-1.5.3+git20200520-8-b56735f/libfritz++/Listener.h
+===================================================================
+--- vdr-plugin-fritzbox-1.5.3+git20200520-8-b56735f.orig/libfritz++/Listener.h	2020-08-31 12:35:17.529471966 +0200
++++ vdr-plugin-fritzbox-1.5.3+git20200520-8-b56735f/libfritz++/Listener.h	2020-08-31 12:35:17.525472037 +0200
+@@ -59,6 +59,7 @@
+ 	EventHandler *event;
+ 	std::vector<int> activeConnections;
+ 	std::thread *thread;
++	pthread_t threadNativeHandle;
+ 	network::TcpClient *tcpClientPtr = nullptr;
+ 	Listener(EventHandler *event);
+ 	void handleNewCall(bool outgoing, int connId, std::string remoteNumber, std::string localParty, std::string medium);
