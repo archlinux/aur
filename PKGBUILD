@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=RcppArmadillo
-_cranver=0.9.900.2.0
+_cranver=0.9.900.3.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL2 GPL3)
 depends=('r>=3.3.0' 'r-rcpp>=0.11.0')
 optdepends=(r-tinytest r-pkgkitten r-reticulate r-slam)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('b266872bc27d33b02eb833b23052297e')
+sha256sums=('180c5a87cfbc9408299803468784b2284f078bf71d733e999fe16eb799a91275')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
