@@ -4,9 +4,9 @@ pkgdesc="ROS - Parser for Semantic Robot Description Format (SRDF)."
 url='https://wiki.ros.org/srdfdom'
 
 pkgname='ros-melodic-srdfdom'
-pkgver='0.5.1'
+pkgver='0.5.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=5
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-urdfdom-py
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 
 _dir="srdfdom-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/srdfdom/archive/${pkgver}.tar.gz")
-sha256sums=('98d585667906da2485dfad67af3ee5df4caab9a5cd9faf5e794c06357a87a9cf')
+sha256sums=('05cc6eda2a1ca4c0344eb9b97cddc69c19934ed35b9c55fc4b59eb07e80bff66')
 
 build() {
   # Use ROS environment variables
