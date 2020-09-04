@@ -6,6 +6,7 @@ post_install() {
     # enable classic snap support
   if [ -f /usr/bin/snap ]; then
     ln -s /var/lib/snapd/snap /snap
+    systemctl is-active snapd.socket >/dev/null || systemctl enable snapd.socket
   fi
   # enable systemd timers
   ln -sf /usr/lib/systemd/system/pamac-cleancache.timer /etc/systemd/system/multi-user.target.wants
