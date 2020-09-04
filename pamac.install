@@ -26,8 +26,7 @@ post_upgrade() {
   # enable classic snap support
   if [ -f /usr/bin/snap ]; then
     ln -s /var/lib/snapd/snap /snap
-    msg "Attempting to enable snapd.socket service..."
-  systemctl is-active snapd.socket >/dev/null || systemctl enable snapd.socket
+    systemctl is-active snapd.socket >/dev/null || systemctl enable snapd.socket
   fi
 
 }
