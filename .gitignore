@@ -1,6 +1,7 @@
 build
 .vscode
 *.aes
+*.zip
 src
 pkg
 *.pkg.tar.xz
