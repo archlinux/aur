@@ -6,7 +6,7 @@ arch=(any)
 url="https://github.com/pgmpy/pgmpy"
 license=('MIT')
 makedepends=('python-setuptools')
-depends=('python-networkx' 'python-pandas' 'python-scipy' 'python-pyparsing' 'python-wrapt')
+depends=('python-networkx' 'python-pandas' 'python-scikit-learn' 'python-pyparsing' 'python-statsmodels' 'python-tqdm' 'python-pyparsing' 'python-pytorch')
 source=("https://pypi.io/packages/source/p/pgmpy/pgmpy-$pkgver.tar.gz")
 sha256sums=('1a0081ad3282099e5343ad3455efe099fbe1d77598bc2f27cdcd848b0c2fe5d8')
 

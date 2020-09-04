@@ -8,9 +8,12 @@ pkgbase = python-pgmpy
 	makedepends = python-setuptools
 	depends = python-networkx
 	depends = python-pandas
-	depends = python-scipy
+	depends = python-scikit-learn
 	depends = python-pyparsing
-	depends = python-wrapt
+	depends = python-statsmodels
+	depends = python-tqdm
+	depends = python-pyparsing
+	depends = python-pytorch
 	source = https://pypi.io/packages/source/p/pgmpy/pgmpy-0.1.11.tar.gz
 	sha256sums = 1a0081ad3282099e5343ad3455efe099fbe1d77598bc2f27cdcd848b0c2fe5d8
 
