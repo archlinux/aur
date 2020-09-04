@@ -4,13 +4,14 @@ pkgdesc="ROS - ROS interface to the 3Dconnexion SpaceNavigator 6DOF joystick."
 url='https://www.wiki.ros.org/spacenav_node'
 
 pkgname='ros-melodic-spacenav-node'
-pkgver='1.13.0'
+pkgver='1.14.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
   ros-melodic-roscpp
+  ros-melodic-roslint
   ros-melodic-geometry-msgs
   ros-melodic-sensor-msgs)
 makedepends=('cmake' 'ros-build-tools'
@@ -35,7 +36,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="joystick_drivers-${pkgver}/spacenav_node"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/joystick_drivers/archive/${pkgver}.tar.gz")
-sha256sums=('bfe0633623f4dc917524198aaea10b1c4603881e736dafb7b652f1af60922ad7')
+sha256sums=('ee69c4c39f8e863088f44a2a68b3d8e494d03ac3025d2594a55ece57563f11de')
 
 build() {
   # Use ROS environment variables
