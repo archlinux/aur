@@ -1,15 +1,15 @@
 pkgbase = zfs-utils-git
 	pkgdesc = Userspace utilities for the Zettabyte File System.
-	pkgver = 0.8.0.r709.g5a42ef04f
+	pkgver = 2.0.0rc1.r38.gcd80273909
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://zfsonlinux.org/
 	arch = i686
 	arch = x86_64
 	license = CDDL
 	makedepends = git
 	optdepends = python: for arcstat/arc_summary/dbufstat
-	provides = zfs-utils=0.8.0.r709.g5a42ef04f
+	provides = zfs-utils=2.0.0rc1.r38.gcd80273909
 	conflicts = zfs-utils
 	source = git+https://github.com/zfsonlinux/zfs.git
 	source = zfs.initcpio.install

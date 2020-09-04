@@ -4,9 +4,9 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=zfs-utils-git
-pkgver=0.8.0.r709.g5a42ef04f
+pkgver=2.0.0rc1.r38.gcd80273909
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Userspace utilities for the Zettabyte File System."
 arch=("i686" "x86_64")
 url="https://zfsonlinux.org/"
@@ -28,8 +28,7 @@ b2sums=('SKIP'
 pkgver() {
     cd "${srcdir}"/zfs
 
-    git describe --long | sed 's/^zfs-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-
+    git describe --long | sed 's/^zfs-//;s/-rc/rc/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
