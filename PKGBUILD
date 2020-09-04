@@ -15,11 +15,8 @@ depends=(
   gnome-menus
   gtk3
   json-glib
-  libgee
-  libgranite.so
-  libsoup
-  libswitchboard-2.0.so
-  libwingpanel-2.0.so
+  lib{gee,granite.so,soup,handy1}
+  lib{switchboard,wingpanel}-2.0.so
   zeitgeist
 )
 makedepends=(
