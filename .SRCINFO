@@ -1,0 +1,16 @@
+pkgbase = perl-tcl-tk
+	pkgdesc = Extension module for Perl giving access to Tk via the Tcl extension
+	pkgver = 1.29
+	pkgrel = 1
+	url = https://metacpan.org/release/Tcl-Tk
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-tcl>=1.11
+	depends = perl>=5.006
+	source = http://search.cpan.org/CPAN/authors/id/V/VK/VKON/Tcl-Tk-1.29.tar.gz
+	md5sums = 2e0f38d620f0bfb5af8ecd5582c58ee9
+	sha512sums = 1ca5d2d050cec98e93378aa92ac7f7bf4ae2510c81fbb531e6c34885a44d4216556304cb58198517bb3712031f9b528e8532a5735f7e374e1ae82f909dcd3410
+
+pkgname = perl-tcl-tk
+
