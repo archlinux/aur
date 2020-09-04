@@ -4,9 +4,9 @@ pkgdesc="ROS - The wiimote package allows ROS nodes to communicate with a Ninten
 url='https://www.wiki.ros.org/wiimote'
 
 pkgname='ros-melodic-wiimote'
-pkgver='1.13.0'
+pkgver='1.14.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('GPL')
 
 ros_makedepends=(ros-melodic-genmsg
@@ -45,7 +45,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="joystick_drivers-${pkgver}/wiimote"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/joystick_drivers/archive/${pkgver}.tar.gz")
-sha256sums=('bfe0633623f4dc917524198aaea10b1c4603881e736dafb7b652f1af60922ad7')
+sha256sums=('ee69c4c39f8e863088f44a2a68b3d8e494d03ac3025d2594a55ece57563f11de')
 
 build() {
   # Use ROS environment variables
