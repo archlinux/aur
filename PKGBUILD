@@ -9,7 +9,7 @@ pkgdesc="Dmenu/Rofi frontend for Keepass databases."
 arch=('any')
 url="https://github.com/firecat53/keepmenu"
 license=('GPLv3')
-depends=('python' 'python-pykeepass' 'python-pyuserinput-git')
+depends=('python' 'python-pykeepass' 'python-pynput')
 makedepends=('git')
 optdepends=('dmenu: either dmenu or rofi is required'
             'rofi: either dmenu or rofi is required'
