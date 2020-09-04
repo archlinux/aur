@@ -1,0 +1,22 @@
+pkgbase = mpvqc-gtk-git
+	pkgdesc = mpvQC is a libmpv based application for the creation of quality control reports of video files. (GTK version)
+	pkgver = v0.9.0.g224c0ba
+	pkgrel = 1
+	url = https://github.com/mpvqc/mpvQC-gtk
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = meson
+	depends = mpv
+	depends = python
+	depends = python-opengl
+	depends = python-gobject
+	provides = mpvqc-gtk
+	provides = mpvqc
+	conflicts = mpvqc-gtk
+	conflicts = mpvqc
+	source = mpvqc-gtk::git+https://github.com/mpvqc/mpvQC-gtk.git
+	sha256sums = SKIP
+
+pkgname = mpvqc-gtk-git
+
