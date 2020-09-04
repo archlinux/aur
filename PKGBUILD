@@ -2,7 +2,7 @@
 
 pkgname=haskell-language-server-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Integration point for ghcide and haskell-ide-engine. One IDE to rule them all."
 arch=('x86_64')
 url="https://github.com/haskell/${pkgname%-bin}"
@@ -19,7 +19,7 @@ sha256sums=(
   '87ecf8ecc7e116aa0b4562462ec361a6b68f8f17b937f4754b01b24c19a2c135'
   'f544db5d83ca8c91d4ef6f9d024a087570e781c552816442b8b0ff2a00eeba51'
   'd37b953824ed79c1d591f3a1df6c7416ee29093be8010e3301da66a4d1d1bf91'
-  'd5f8142f88dd1203b6eabeb741bfbe34e8286d5fdb7f3db85d0f4e56235429ba')
+  '551b2147cc8f46d7a6a537daba3aa81095d1b81f66e601cb3d8e46c44cabd008')
 _prefix="${pkgname%-bin}-Linux"
 _ghc_versions=('8.6.4' '8.6.5' '8.8.2' '8.8.3' '8.8.4' '8.10.1' '8.10.2')
 
