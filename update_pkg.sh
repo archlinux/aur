@@ -2,7 +2,7 @@
 
 echo 'Searching for updates...'
 REPO='http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/'
-PACKAGE=$(wget -qO- $REPO | perl -ne '/(?<=href=")(chromium-codecs-ffmpeg-extra_(\d+\.\d+\.\d+\.\d+)-(\d+ubuntu\d+)\.(\d+\.\d+(\.\d+)?)_arm64\.deb)(?=")/ and print "$1#$2#$3#$4\n";' | sort --version-sort | tail -n 1)
+PACKAGE=$(wget -qO- $REPO | perl -ne '/(?<=href=")(chromium-codecs-ffmpeg-extra_(\d+\.\d+\.\d+\.\d+)-(\d+ubuntu\d+)\.(18\.04(\.\d+)?)_arm64\.deb)(?=")/ and print "$1#$2#$3#$4\n";' | sort --version-sort | tail -n 1)
 
 deb=$(echo $PACKAGE | cut -d# -f1)
 ver1=$(echo $PACKAGE | cut -d# -f2)
