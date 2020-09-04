@@ -7,7 +7,7 @@ arch=("x86_64")
 url="https://github.com/calculon102/xgifwallpaper"
 license=("GPL-3.0")
 depends=("gcc-libs" "glibc" "libx11" "libxau" "libxcb" "libxdmcp" "libxinerama" "libxext")
-makedepends=("git" "rust")
+makedepends=("gcc" "git" "rust")
 source=(git+${url}#commit=b50aa30aea696cbe8c79a6578f9ef2bac77b7f64)
 sha256sums=('SKIP')
 
