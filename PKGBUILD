@@ -1,6 +1,6 @@
 # Maintainer: Louis Cornell <lpcornel@gmail.com>
 pkgname=archsimian-git
-pkgver=r477.766a9b5
+pkgver=r492.7fc9ebd
 pkgrel=1
 pkgdesc="Advanced playlist creator that uses your MediaMonkey library data"
 arch=('x86_64')
