@@ -38,8 +38,8 @@ sha256sums=('f7abb2e2989779305ab1f80d30caf9fc55d96c7e66d1394e2cc9639442e2b864'
             '59d9fc421bc10a5515b73e159f44a72365bf7b7e8b3fc8a8c46043ef40bd3a40'
             'e9b7199b57fa07e440d37db0cc3cf52aa1c1fd7d5e8b31db14e511d77b5ce327'
             '0992d5dce883de760ff0445448466f096d0baa75fe5fd1e60bfd3cc13cb4d098'
-            '8b921488faff947baf26ebba6db09d9d6db396b0d528aa543a4da20330c1d8fd'
-            'fc1b55fda12dd1d02cea54d530a594855d45fe0be93bc06f4c804618b0700b2b')
+            'ef0571447499fbf64e5c4723760c73f86b9e10b80df33e6a2979b6b02e3ae68e'
+            'b5d5f8a94ff490fe3e9d26f339e2a40d2e4c349d03e9d38f08ae16eddc7f45fe')
 prepare() {
   cd "$srcdir/mozilla-release"
   cp "$srcdir/mozconfig" .mozconfig
