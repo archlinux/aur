@@ -3,16 +3,16 @@
 pkgname=namd
 pkgver=2.14
 _charmver=6.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scalable molecular dynamic engine"
 url="http://www.ks.uiuc.edu/Research/namd/"
 license=(custom)
 arch=(x86_64)
-depends=(gcc9 gcc9-libs)
-makedepends=(make patch fftw-static tcl85-static)
+depends=(gcc9 gcc9-libs fftw tcl)
+makedepends=(make patch)
 md5sums=('7a827066e0d7f2a37f748ca9f165ea80'
          '3dee29385fed05eb8f3d2d38dd799383'
-         'b60e4b2ed31ee80140858dfea8abb44d')
+         'e9d2d7f92283ee479f08f4f9c4c85709')
 options=(staticlibs !buildflags)
 
 # You MUST download the package from the NAMD url and put it in the PKGBUILD folder!

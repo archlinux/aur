@@ -49,10 +49,11 @@
  
  #TCLDIR=/Projects/namd2/tcl/tcl8.5.9-linux-x86_64
 -TCLDIR=/Projects/namd2/tcl/tcl8.5.9-linux-x86_64-threaded
-+TCLDIR=/opt/tcl85-static
++TCLDIR=/usr
  TCLINCL=-I$(TCLDIR)/include
  #TCLLIB=-L$(TCLDIR)/lib -ltcl8.5 -ldl
- TCLLIB=-L$(TCLDIR)/lib -ltcl8.5 -ldl -lpthread
+-TCLLIB=-L$(TCLDIR)/lib -ltcl8.5 -ldl -lpthread
++TCLLIB=-L$(TCLDIR)/lib -ltcl8.6 -ldl -lpthread
  TCLFLAGS=-DNAMD_TCL
  TCL=$(TCLINCL) $(TCLFLAGS)
 --- arch/Linux-x86_64.fftw3	2020-08-05 20:51:20.000000000 +0300
@@ -60,7 +61,7 @@
 @@ -1,7 +1,7 @@
  
 -FFTDIR=$(HOME)/fftw3
-+FFTDIR=/opt/fftw-static
++FFTDIR=/usr
  FFTINCL=-I$(FFTDIR)/include
  FFTLIB=-L$(FFTDIR)/lib -lfftw3f
  FFTFLAGS=-DNAMD_FFTW -DNAMD_FFTW_3
