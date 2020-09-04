@@ -89,10 +89,6 @@ export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-pkgver() {
-  printf ${_major}.${_minor}.${_patchrel}
-}
-
 prepare() {
     cd $_srcname
 
