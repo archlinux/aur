@@ -1,7 +1,7 @@
 # Maintainer: tonikelope <tonikelope@gmail.com>
 pkgname=coronapoker
-pkgver=4.29
-pkgrel=2
+pkgver=4.30
+pkgrel=1
 pkgdesc="Yet another cross-platform Texas hold 'em game written in Java during COVID-19 pandemic"
 arch=('x86_64')
 url="https://tonikelope.github.io/coronapoker/"
@@ -21,4 +21,4 @@ package() {
 	ln -s "/opt/${pkgname}/CoronaPoker.run" "$pkgdir/usr/local/bin/coronapoker"
 }
 
-md5sums=('f29ca068e4bb607e1bb61c0765f847de')
+md5sums=('0a2843c0bf18a2eb2e26369faeaada8f')
