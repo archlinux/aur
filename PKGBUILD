@@ -4,13 +4,14 @@ pkgdesc="ROS - ROS driver for a generic Linux joystick."
 url='https://www.wiki.ros.org/joy'
 
 pkgname='ros-melodic-joy'
-pkgver='1.13.0'
+pkgver='1.14.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-diagnostic-updater
   ros-melodic-roscpp
+  ros-melodic-roslint
   ros-melodic-sensor-msgs
   ros-melodic-catkin)
 makedepends=('cmake' 'ros-build-tools'
@@ -33,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="joystick_drivers-${pkgver}/joy"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/joystick_drivers/archive/${pkgver}.tar.gz")
-sha256sums=('bfe0633623f4dc917524198aaea10b1c4603881e736dafb7b652f1af60922ad7')
+sha256sums=('ee69c4c39f8e863088f44a2a68b3d8e494d03ac3025d2594a55ece57563f11de')
 
 build() {
   # Use ROS environment variables
