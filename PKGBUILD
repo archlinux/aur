@@ -5,9 +5,9 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=digikam
-_pkgver=7.0.0
+_pkgver=7.1.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=2
+pkgrel=1
 pkgdesc="An advanced digital photo management application"
 arch=(x86_64)
 license=(GPL)
@@ -21,7 +21,7 @@ optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional ima
             "digikam-plugin-gmic: G'MIC plugin"
             'perl: for digitaglinktree')
 source=("https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$_pkgver.tar.xz"{,.sig})
-sha256sums=('dc0718e30031e692d7f05367b44e797fed61f12d27063641b6a5cf4d8b26e911'
+sha256sums=('b103c8463adf04939583199e13f8e83015d8a4a9ad79ebfd502d2a50b5a5abbe'
             'SKIP')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
 
