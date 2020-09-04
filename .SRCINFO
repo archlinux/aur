@@ -1,6 +1,6 @@
 pkgbase = htop-temperature
 	pkgdesc = Interactive process viewer with added support for CPU temperature
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://htop.dev/
 	arch = i686
@@ -15,12 +15,10 @@ pkgbase = htop-temperature
 	optdepends = lsof: show files opened by a process
 	optdepends = strace: attach to a running process
 	options = !emptydirs
-	source = https://github.com/htop-dev/htop/archive/3.0.0/htop-3.0.0.tar.gz
-	source = 0001-Increae-the-size-of-sysfs-power-supply-path-buffers.patch
+	source = https://github.com/htop-dev/htop/archive/3.0.1/htop-3.0.1.tar.gz
 	source = htop-temperature.patch
-	sha256sums = 1c0661f0ae5f4e2874da250b60cd515e4ac4c041583221adfe95f10e18d1a4e6
-	sha256sums = e31d8ab3fc41048b9dce0016cbb8facb6d0e62cf4a91c295b99f268cf120f1fc
-	sha256sums = 9c2c536acfadf5be341fbf26422428e7b3b68a7516cf95008c0a85a8c388fe2f
+	sha256sums = 8465164bc085f5f1813e1d3f6c4b9b56bf4c95cc12226a5367e65794949b01ca
+	sha256sums = 3905f4a9043277718131e713003b1ff149079f8ec55d2bcfd7289ab228419147
 
 pkgname = htop-temperature
 
