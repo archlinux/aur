@@ -1,6 +1,6 @@
 pkgbase = aes-git
 	pkgdesc = encryption utility with very simple interface
-	pkgver = r10.e9fe58a
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/x1b6e6/aes
 	arch = any
