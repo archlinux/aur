@@ -3,7 +3,7 @@ post_install() {
   if [ -f /usr/bin/flatpak ]; then
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   fi   
-     # enable classic snap support
+    # enable classic snap support
   if [ -f /usr/bin/snap ]; then
     ln -s /var/lib/snapd/snap /snap
   fi
@@ -22,11 +22,14 @@ post_upgrade() {
    # enable flatpak repo
   if [ -f /usr/bin/flatpak ]; then
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  fi   
-   # enable classic snap support
+  fi  
+  # enable classic snap support
   if [ -f /usr/bin/snap ]; then
     ln -s /var/lib/snapd/snap /snap
+    msg "Attempting to enable snapd.socket service..."
+  systemctl is-active snapd.socket >/dev/null || systemctl enable snapd.socket
   fi
+
 }
 
 post_remove() {
