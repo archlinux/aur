@@ -1,6 +1,6 @@
 pkgbase = olc-git
 	pkgdesc = Open Lighting Console
-	pkgver = 0.3.alpha
+	pkgver = 0.3.1.alpha
 	pkgrel = 1
 	url = https://github.com/mikacousin/olc
 	arch = any
