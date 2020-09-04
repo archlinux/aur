@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosbag
 	pkgdesc = ROS - This is a set of tools for recording from and playing back to ROS topics.
-	pkgver = 1.14.6
-	pkgrel = 2
+	pkgver = 1.14.9
+	pkgrel = 1
 	url = https://wiki.ros.org/rosbag
 	arch = i686
 	arch = x86_64
@@ -36,8 +36,8 @@ pkgbase = ros-melodic-rosbag
 	depends = boost
 	depends = python-gnupg
 	depends = python-crypto
-	source = ros-melodic-rosbag-1.14.6.tar.gz::https://github.com/ros/ros_comm/archive/1.14.6.tar.gz
-	sha256sums = 30228310727ed3a027a5a0a745df8f451f3a5db08897b452769e2fe7dee9173e
+	source = ros-melodic-rosbag-1.14.9.tar.gz::https://github.com/ros/ros_comm/archive/1.14.9.tar.gz
+	sha256sums = 3b3c8d24a49a5c54dada11173323fe97f18a49d34bbaa746f29736e12fec954b
 
 pkgname = ros-melodic-rosbag
 
