@@ -4,10 +4,10 @@ pkgdesc="ROS - Tutorials showing how to call into rviz internals from python scr
 url='https://wiki.ros.org/rviz_python_tutorial'
 
 pkgname='ros-melodic-rviz-python-tutorial'
-pkgver='0.10.3'
+pkgver='0.10.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -31,7 +31,7 @@ depends=(
 
 _dir="visualization_tutorials-${pkgver}/rviz_python_tutorial"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/visualization_tutorials/archive/${pkgver}.tar.gz")
-sha256sums=('a3162d933fea0dd58b99e46fb71ea5d8596ef6e46eaf3a906e4bf20e9ca1bb1c')
+sha256sums=('96e5edf79ef3847d9948d7e8193864ae258d1eaa1c2a5a7924d1426921102cae')
 
 build() {
 	# Use ROS environment variables.
