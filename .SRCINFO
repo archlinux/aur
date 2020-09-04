@@ -1,0 +1,14 @@
+pkgbase = python-password-strength
+	pkgdesc = Python 2.7/3.X password strength and validation
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/kolypto/py-password-strength
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = py-password-strength-0.0.3.tar.gz::https://github.com/kolypto/py-password-strength/archive/v0.0.3.tar.gz
+	sha512sums = cc6a667b3ef66f59f05744cf424340c4b46dd91f49b47bdf3fd3903aba52161f357462aa1b8e92474e0d1dedeecd5360ef990c29a70df43e89d1b402e169a537
+
+pkgname = python-password-strength
+
