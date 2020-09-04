@@ -3,9 +3,9 @@ pkgdesc="ROS - voxel_grid provides an implementation of an efficient 3D voxel gr
 url='https://wiki.ros.org/voxel_grid'
 
 pkgname='ros-melodic-voxel-grid'
-pkgver='1.16.2'
+pkgver='1.16.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp
@@ -25,7 +25,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-${pkgver}/voxel_grid"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
-sha256sums=('d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205')
+sha256sums=('3a4ee70949a07d4f5f84deddb2ee8a4314bc143d10fb2054b90683c7f92a2f33')
 
 build() {
   # Use ROS environment variables
