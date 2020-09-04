@@ -3,14 +3,14 @@
 pkgbase=pipewire-dropin
 pkgname=("pipewire-pulse-dropin" "pipewire-jack-dropin")
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Use pipewire as drop-in replacement for PulseAudio/JACK"
 license=("LGPL2.1")
 arch=(any)
 
 package_pipewire-pulse-dropin() {
     pkgdesc="Use pipewire as drop-in replacement for PulseAudio"
-    provides=("libpulse" "pulseaudio")
+    provides=(libpulse{,-simple,-mainloop-glib}.so=0-999)
     depends=("pipewire-pulse")
 
     install -dm755 "$pkgdir/usr/lib"
@@ -22,7 +22,7 @@ package_pipewire-pulse-dropin() {
 
 package_pipewire-jack-dropin() {
     pkgdesc="Use pipewire as drop-in replacement for JACK"
-    provides=("jack2")
+    provides=(libjack{,net,server}.so=0-999)
     depends=("pipewire-jack")
     install -dm755 "$pkgdir/usr/lib"
     for lib in libjack libjacknet libjackserver; do
