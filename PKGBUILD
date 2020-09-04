@@ -1,9 +1,9 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 # Contributor: Giulio Guzzinati <guzzinati.giulio at gmail>
 pkgname=imagej
-pkgver=1.53c
+pkgver=1.53d
 _pkgver=153
-_jar=ij-1.53c.jar
+_jar=ij-1.53d.jar
 pkgrel=1
 epoch=2
 pkgdesc="Image manipulation software for scientists"
@@ -20,7 +20,7 @@ source=("http://wsr.imagej.net/distros/cross-platform/ij$_pkgver.zip"
         "microscope.xpm")
 noextract=("ij$_pkgver.zip")
 sha256sums=('0e1d66011ad713bc89a48f3121f544ad4d35aa0895010a84fe8ea3716de43ec4'
-            '2a65592127dc7fe587bbc1ab772251ef7b8859851bb0359c7ee21bdb47d16d56'
+            'f11e176b0100f7a2daab2d90eae2f78a656c1d07399e3db5a6a6ea720026be3e'
             'c223a3b2437501edd92176f87bbea75d994104e1545eea6c120ef8c774c7114e'
             '799188b0b2cf1dc684dc2f029dbd31a4b44b691b51fd5e42027a994452bc038e'
             'fd1479568b116a276ca1f645589a8e37ccaf767736c6cc0dcec9672225a82572')
@@ -28,7 +28,7 @@ sha256sums=('0e1d66011ad713bc89a48f3121f544ad4d35aa0895010a84fe8ea3716de43ec4'
 package() {
     cd "$pkgdir"
     unzip -d "$pkgdir" "$srcdir/ij$_pkgver.zip"
-    rm -rf ImageJ/ImageJ.exe ImageJ/ImageJ.app ImageJ/run 
+    rm -rf ImageJ/ImageJ.exe ImageJ/ImageJ.app ImageJ/run
 
     mkdir -p "$pkgdir"/usr/share
     mv ImageJ "$pkgdir"/usr/share/imagej
