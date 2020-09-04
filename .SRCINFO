@@ -1,6 +1,6 @@
 pkgbase = ntpsec-git
 	pkgdesc = Security-hardened Network Time Protocol implementation (Git HEAD)
-	pkgver = 1.1.9.r61.68f462470
+	pkgver = 1.1.9.r68.70918b5a3
 	pkgrel = 1
 	url = https://www.ntpsec.org/
 	arch = i686
