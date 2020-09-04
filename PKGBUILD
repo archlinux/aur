@@ -4,7 +4,7 @@ _name="balena"
 _module="${_name}-sdk"
 _fullname="${_module}-python"
 pkgname=("python-${_name}")
-pkgver=10.0.0
+pkgver=10.1.1
 pkgrel="1"
 pkgdesc="Balena SDK for Python"
 arch=("any")
@@ -22,7 +22,7 @@ depends=("python-pyjwt>=1.5.0"
 )
 provides=("python-${_name}")
 source=("https://github.com/balena-io/${_fullname}/archive/v${pkgver}.tar.gz")
-sha256sums=('ae2659a72d9226c59fd0ba852d1c5a813306696f30aa99c2f99005d80be53bef')
+sha256sums=('2d44e19b4c66444ea1bae39e6702c2214889c8a01d0350b827ca75556fbf95e0')
 
 build() {
     cd "${srcdir}/${_fullname}-${pkgver}"
