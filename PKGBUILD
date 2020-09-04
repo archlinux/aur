@@ -2,14 +2,14 @@
 
 pkgname=mingw-w64-robinmap
 pkgver=0.6.3
-pkgrel=1
-pkgdesc="A C++ implementation of a fast hash map and hash set using robin hood hashing."
+pkgrel=2
+pkgdesc="A C++ implementation of a fast hash map and hash set using robin hood hashing (mingw-w64)"
 url="https://github.com/Tessil/robin-map"
 license=("MIT")
 depends=(
 	"mingw-w64-crt"
 )
-builddepends=("mingw-w64-cmake")
+makedepends=("mingw-w64-cmake")
 arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
@@ -23,10 +23,8 @@ source=(
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
-	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG -fpermissive" )
-		
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "robin-map-${pkgver}" -B "build-${_arch}" "${_flags[@]}"
+		${_arch}-cmake -S "robin-map-${pkgver}" -B "build-${_arch}"
 		make -C "build-${_arch}"
 	done
 }
