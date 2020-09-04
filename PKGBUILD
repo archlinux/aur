@@ -3,7 +3,7 @@
 pkgname=mingw-w64-opencolorio
 pkgver=1.1.1
 pkgrel=1
-pkgdesc="OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production with an emphasis on visual effects and computer animation."
+pkgdesc="OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production with an emphasis on visual effects and computer animation (mingw-w64)"
 arch=(any)
 url="https://opencolorio.org/"
 license=("BSD-3-Clause")
