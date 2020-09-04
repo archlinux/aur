@@ -15,18 +15,16 @@ optdepends=('kicad-symbols' 'kicad-packages3d' 'kicad-footprints' 'kicad-templat
 conflicts=('kicad' 'kicad-git' 'kicad-scripting-git' 'kicad-bzr')
 provides=('kicad')
 makedepends=('clang')
-_github_project='kicad-source-mirror'
-source=("https://gitlab.com/kicad/code/-/archive/${_pkgver}/kicad-${_pkgver}.tar.gz")
-md5sums=('6ed24719829ed8e9f6dabb3c5b97f48a')
-
+source=("https://gitlab.com/kicad/code/kicad/-/archive/${_pkgver}/kicad-${_pkgver}.tar.gz")
+md5sums=('3fadd95d0aeb0cb85a7d0f69cf3724dd')
 
 prepare() {
-  cd "${srcdir}/${_github_project}-${_pkgver}"
+  cd "${srcdir}/kicad-${_pkgver}"
   #curl https://github.com/KiCad/kicad-source-mirror/commit/5685174808f5ca973e916a10f9f93660ee4dc4f2.patch | patch -p1
 }
 
 build() {
-  cd "${srcdir}/${_github_project}-${_pkgver}"
+  cd "${srcdir}/kicad-${_pkgver}"
   mkdir -p build
   cd build
   cmake .. -DCMAKE_BUILD_TYPE=Release \
@@ -45,7 +43,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_github_project}-${_pkgver}"
+  cd "${srcdir}/kicad-${_pkgver}"
   cd build
   make DESTDIR="${pkgdir}" install
 }
