@@ -1,5 +1,5 @@
 # Maintainer: Leeo97one <contact.leeo97one@gmail.com>
-# Based on jdk8-openjdk 8.u242-1
+# Based on jdk8-openjdk 8.u252-1
 
 pkgname=('jre8-adoptopenjdk-headless' 'jre8-adoptopenjdk' 'jdk8-adoptopenjdk')
 pkgbase=java8-adoptopenjdk
