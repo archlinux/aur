@@ -1,8 +1,8 @@
 # Maintainer: Cerebrux <mail@cerebrux.net>
 pkgname=sysglance
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
-pkgdesc="Linux utility for generating a report for the host system."
+pkgdesc="Utility for collecting information about the hardware and the operating system by generating a simple report."
 arch=( 'any' )
 url="https://github.com/Utappia/sysglance"
 license=('GPL3')
@@ -15,4 +15,4 @@ package() {
 	install -Dm755 sysglance.sh "$pkgdir/usr/bin/sysglance"
 }
 
-md5sums=('63255d0ff3cfd4781a578af31f5cdfca')
+md5sums=('cb412975f674763fdf2d8dcdc0d84049')
