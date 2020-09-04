@@ -1,7 +1,7 @@
 # Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
 _pkgname=drop-down-terminal
 pkgname=gnome-shell-extension-$_pkgname
-pkgver=24p1
+pkgver=24.patch1
 pkgrel=1
 pkgdesc="Drop Down Terminal extension for the Gnome Shell"
 arch=('any')
