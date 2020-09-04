@@ -2,8 +2,8 @@
 
 pkgname=libsafec
 _pkgname=safeclib
-pkgver=08112019
-_gitver=gad76c7
+pkgver=02092020
+_gitver=6d921f4
 pkgrel=1
 _pkgver="${pkgver}.0-${_gitver}"
 pkgdesc='Implementtion of C11 Annex K + ISO TR24731 Bounds Checking Interface'
@@ -15,7 +15,7 @@ makedepends=('clang' 'git')
 license=('MIT')
 # https://github.com/rurban/safeclib/archive/v17102019.tar.gz
 source=("${_url}/archive/v${pkgver}.tar.gz")
-sha256sums=('aa8ec42bf5c4218c021d47c93e587130a6531f3de7f4cb48eb02a565f97bc07e')
+sha256sums=('ee13cb914be5e7da7c363c839f905fc8b2a3c43c341c21f627a2094e05107362')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -41,14 +41,6 @@ package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   install -Dm0644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-
-  # temp fix
-  [ -f "${pkgdir}/usr/share/man/man3/towlower.3" ] && \
-    mv "${pkgdir}/usr/share/man/man3/towlower.3" "${pkgdir}/usr/share/man/man3/towlower_s.3"
-  [ -f "${pkgdir}/usr/share/man/man3/towupper.3" ] && \
-    mv "${pkgdir}/usr/share/man/man3/towupper.3" "${pkgdir}/usr/share/man/man3/towupper_s.3"
-  [ -f "${pkgdir}/usr/share/man/man3/wcsstr.3" ] && \
-    mv "${pkgdir}/usr/share/man/man3/wcsstr.3" "${pkgdir}/usr/share/man/man3/wcsstr_s.3"
 }
 
 # vim:set ts=2 sw=2 et:
