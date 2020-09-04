@@ -1,15 +1,11 @@
 pkgbase = dot
-	pkgdesc = Dot.
-	pkgver = 0.1
+	pkgver = 0.0
 	pkgrel = 1
-	url = https://github.com/Ventto/dot.git
+	url = https://github.com/dothq/browser
 	arch = any
-	license = MIT
-	depends = git
+	license = MPLv2
 	provides = dot
-	conflicts = dot
-	source = https://github.com/Ventto/lux/archive/v0.1.tar.gz
-	sha256sums = SKIP
+	md5sums = none
 
 pkgname = dot
 

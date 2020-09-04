@@ -1,22 +1,17 @@
-# Maintainer: Thomas "Ventto" Venriès <thomas.venries@gmail.com>
-
+# Maintainer: spikecodes <19519553+spikecodes@users.noreply.github.com>
 pkgname=dot
-pkgver=0.1
+pkgver=0.0
 pkgrel=1
-pkgdesc='Dot.'
-arch=('any')
-url="https://github.com/Ventto/${pkgname}.git"
-license=('MIT')
-depends=('git')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-source=("https://github.com/Ventto/lux/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
-
-build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-}
+pkgdesc=""
+arch=(any)
+url="https://github.com/dothq/browser"
+license=('MPLv2')
+depends=()
+provides=(dot)
+source=()
+noextract=()
+md5sums=()
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+	echo "Dot browser in progress..."
 }
