@@ -1,0 +1,10 @@
+--- a/dummydevice.c
++++ b/dummydevice.c
+@@ -52,6 +52,7 @@
+     cDummyDevice() : cDevice() {}
+     virtual ~cDummyDevice() {}
+ 
++    virtual cString DeviceName(void) const { return "dummydevice"; }
+     virtual bool HasDecoder(void) const { return true; }
+ 
+     virtual bool SetPlayMode(ePlayMode PlayMode) {return true;}
