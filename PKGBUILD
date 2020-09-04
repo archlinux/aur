@@ -8,7 +8,7 @@ pkgname=lxd
 _pkgname=lxd
 _lxd=github.com/lxc/lxd
 pkgver=4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://linuxcontainers.org/lxd"
@@ -53,7 +53,7 @@ build() {
 
   mkdir -p bin
 	go build -v -tags "netgo" -o bin/ ./lxd-p2c/...
-	go build -v -tags "agent" -o bin/ ./lxd-agent/...
+	CGO_LDFLAGS="$CGO_LDFLAGS -static" go build -v -tags "agent" -o bin/ ./lxd-agent/...
   for tool in fuidshift lxc lxc-to-lxd lxd lxd-benchmark; do
     go build -v -tags "libsqlite3" -o bin/ ./$tool/...
   done
