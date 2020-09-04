@@ -109,10 +109,10 @@ index d455b4d..2f6dd75 100644
  
 diff --git a/TemperatureMeter.c b/TemperatureMeter.c
 new file mode 100644
-index 0000000..d28169d
+index 0000000..18b198d
 --- /dev/null
 +++ b/TemperatureMeter.c
-@@ -0,0 +1,102 @@
+@@ -0,0 +1,87 @@
 +/*
 +htop - TemperatureMeter.c
 +(C) 2013 Ralf Stemmer
