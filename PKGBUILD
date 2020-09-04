@@ -6,7 +6,7 @@ url='https://wiki.ros.org/gazebo_msgs'
 pkgname='ros-melodic-gazebo-msgs'
 pkgver='2.8.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-std-msgs
@@ -28,10 +28,8 @@ ros_depends=(ros-melodic-std-msgs
 depends=(${ros_depends[@]})
 
 _dir="gazebo_ros_pkgs-${pkgver}/gazebo_msgs"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz"
-        "spawn_model.patch")
-sha256sums=('8f0baed480228c8eae5caad41212e5cf19c15a640cb4c67ce8777492989cab18'
-            'a8a83abda169cca6a7709dc618f0b74a270f55ce274ac0108eec5df09f3bb3e8')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz")
+sha256sums=('8f0baed480228c8eae5caad41212e5cf19c15a640cb4c67ce8777492989cab18')
 
 build() {
   # Use ROS environment variables
@@ -53,10 +51,6 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
-
-  # Patch a file after compilation
-  cd "${srcdir}/build/devel/lib/python3.8/site-packages/gazebo_msgs/srv/"
-  patch -uN _SpawnModel.py ${srcdir}/spawn_model.patch || return 1
 }
 
 package() {
