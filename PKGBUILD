@@ -2,7 +2,7 @@
 # Maintainer: Jack Johannesen <jack AT insertdomain DOT name>
 
 pkgname="freshfetch-git"
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A fresh take on Neofetch"
 arch=('any')
