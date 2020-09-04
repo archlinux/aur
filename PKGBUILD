@@ -2,18 +2,19 @@
 #
 # Contributor: jpatufet <jpatufet86@gmail.com>
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
-
-pkgname=hunspell-ca
-pkgver=3.0.4
-pkgrel=1
+#
+pkgname="hunspell-ca"
+pkgver="3.0.6"
+pkgrel="1"
 pkgdesc="Catalan hunspell dictionaries. Includes Valencian ca_ES-valencia"
-arch=(any)
+arch=('any')
 url="http://www.softcatala.org/corrector"
+_url="https://github.com/Softcatala/catalan-dict-tools"
 license=('GPL2' 'LGPL2')
 makedepends=('hunspell')
 optdepends=('hunspell:	the spell checking libraries and apps')
-source=("https://github.com/Softcatala/catalan-dict-tools/releases/download/v${pkgver}/ca.${pkgver}-all.zip")
-sha256sums=('0321e732ea856e6b2a5315cd02626811d245c5337495c300d82224c7a2475d79')
+source=("${pkgname}.${pkgver}-all.zip::${_url}/releases/download/v${pkgver}/ca.${pkgver}-all.zip")
+sha256sums=('0f6b8932188c0cff31a04e3e980f6eea7986e795ae5c328a7f3d9c41fe99b7c7')
 
 package(){
 
