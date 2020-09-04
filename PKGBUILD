@@ -3,17 +3,15 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=2.1.0.dev1.r3024.0526c8b4
+pkgver=2.1.0.dev1.r3310.88eb9976
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
 url="https://nicotine-plus.github.io/nicotine-plus"
 license=('GPL3')
-depends=('gtk3' 'gobject-introspection' 'libnotify' 'python-dbus'
-         'python-gobject' 'python-pytaglib' 'xdg-utils')
+depends=('python-pytaglib' 'python-gobject' 'gtk3' 'libnotify')
 makedepends=('git' 'python-setuptools')
-optdepends=('miniupnpc: UPnP support'
-            'python-miniupnpc: Python bindings for miniupnpc'
+optdepends=('python-miniupnpc: UPnP support'
             'python-feedparser: for Reddit plugin'
             'gspell: for spell checking in chat'
             'nuspell: for spell checking in chat'
