@@ -3,9 +3,9 @@ pkgdesc="ROS - This package provides an implementation of a 2D costmap."
 url='https://wiki.ros.org/costmap_2d'
 
 pkgname='ros-melodic-costmap-2d'
-pkgver='1.16.6'
+pkgver='1.16.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=5
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -48,7 +48,7 @@ depends=(
 
 _dir="navigation-${pkgver}/costmap_2d"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
-sha256sums=('88e3b4433de9645e1132db15b01f436a75a28ebc15cd5b70660b158dd6ba42dd')
+sha256sums=('3a4ee70949a07d4f5f84deddb2ee8a4314bc143d10fb2054b90683c7f92a2f33')
 
 build() {
   # Use ROS environment variables
