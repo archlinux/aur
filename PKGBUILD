@@ -10,6 +10,7 @@ url='https://github.com/getpatchwork/git-pw'
 license=('MIT')
 arch=('any')
 depends=(
+  'git'
   'python-requests'
   'python-click'
   'python-pbr'
