@@ -1,0 +1,14 @@
+[Unit]
+Description=GeyserMC - A bridge between Minecraft: Bedrock Edition and Minecraft: Java Edition.
+ConditionPathExists=/etc/geysermc/config.yml
+Requires=network.target local-fs.target
+After=remote-fs.target zfs.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/share/geysermc
+ExecStart=/usr/bin/java -Xms1024M -jar Geyser.jar
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

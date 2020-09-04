@@ -1,0 +1,28 @@
+# Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
+
+pkgname=geysermc-bin
+pkgver=1.1.0.5b76a85
+pkgrel=1
+pkgdesc="Geyser is a bridge between Minecraft: Bedrock Edition and Minecraft: Java Edition, closing the gap from those wanting to play true cross-platform."
+arch=('any')
+url="https://github.com/GeyserMC/Geyser"
+license=('MIT')
+backup=('etc/geysermc/config.yml')
+depends=('java-runtime=8')
+source=("https://ci.nukkitx.com/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/standalone/target/Geyser.jar" "geysermc.service")
+md5sums=('SKIP'
+         '7043a1445d39f7ee753c9c1513472890')
+
+pkgver () {
+  cd "${srcdir}"
+  echo "$(cat git.properties | grep version | cut -d= -f2).$(cat git.properties | grep id.abbrev | cut -d= -f2)"
+}
+
+package () {
+  mkdir -p "${pkgdir}/usr/share/geysermc"
+  mkdir -p "${pkgdir}/etc/geysermc"
+  install -Dm644 "${srcdir}/Geyser.jar" "${pkgdir}/usr/share/geysermc/Geyser.jar"
+  install -Dm644 "${srcdir}/config.yml" "${pkgdir}/etc/geysermc/config.yml"
+  install -Dm644 "${srcdir}/geysermc.service" "${pkgdir}/usr/lib/systemd/system/geysermc.service"
+  ln -s "/etc/geysermc/config.yml" "${pkgdir}/usr/share/geysermc/config.yml"
+}
