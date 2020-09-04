@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e17cdd6f6..5e39bbe99 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -76,8 +76,6 @@ else()
+ 		)
+ 
+ 		set(BUILD_STR "Debug")
+-	elseif(NOT ${CMAKE_BUILD_TYPE} STREQUAL "Release")
+-		message(FATAL_ERROR "Unsupported build type! Please choose either \"Debug\" or \"Release\".")
+ 	endif()
+ endif()
+ 

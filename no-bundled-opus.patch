@@ -1,0 +1,16 @@
+diff --git a/src/mumble/CMakeLists.txt b/src/mumble/CMakeLists.txt
+index 3aef73c69..87c3166ee 100644
+--- a/src/mumble/CMakeLists.txt
++++ b/src/mumble/CMakeLists.txt
+@@ -510,9 +510,8 @@ if(bundled-opus)
+ 		install(TARGETS opus LIBRARY DESTINATION lib)
+ 	endif()
+ else()
+-	find_pkg(Opus CONFIG REQUIRED)
+-	add_dependencies(mumble PRIVATE Opus::opus)
+-	target_include_directories(mumble PRIVATE ${Opus_INCLUDE_DIRS})
++	find_pkg(opus CONFIG REQUIRED)
++	target_include_directories(mumble PRIVATE ${opus_INCLUDE_DIRS})
+ endif()
+ 
+ if(bundled-celt)

@@ -7,27 +7,31 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.3.0.rc2.r461.g54eb261ca
+pkgver=1.3.0.rc2.r838.gf01920308
 pkgrel=1
 epoch=1
-arch=('i686' 'x86_64')
 pkgdesc='A voice chat application similar to TeamSpeak (git version)'
-url='https://www.mumble.info/'
+arch=('i686' 'x86_64')
+url='https://www.mumble.info'
 license=('BSD')
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libspeechd' 'libx11' 'libxi'
          'lsb-release' 'openssl' 'opus' 'qt5-base' 'qt5-svg' 'speex' 'xdg-utils')
 makedepends=('alsa-lib' 'avahi' 'boost' 'jack' 'libpulse' 'libsndfile' 'mesa'
-             'protobuf' 'python' 'qt5-tools' 'git')
-optdepends=('speech-dispatcher: Text-to-speech support'
-            'espeak-ng: Text-to-speech support')
-conflicts=("$_pkgname")
+             'protobuf' 'python' 'qt5-tools' 'speech-dispatcher' 'cmake' 'git')
+optdepends=('speech-dispatcher: Text-to-Speech support'
+            'espeak-ng: Text-to-Speech support')
 provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=('git://github.com/mumble-voip/mumble.git'
         'git://github.com/mumble-voip/mumble-theme.git'
         'git://github.com/mumble-voip/celt-0.7.0.git'
         'git://github.com/mumble-voip/opus.git'
-        'git://github.com/mumble-voip/speex.git')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+        'git://github.com/mumble-voip/speex.git'
+        'build-type-release.patch'
+        'no-bundled-opus.patch')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+            '086374239b072df0034eed92d74917ab9af8db96fb0fcb01c36c111d6a134fe4'
+            'bd2d9fea616a88fe4425bdf3396a0d9e0dfb735a7c06bcacd0858250ea96a2b0')
 
 pkgver() {
   cd "$_pkgname"
@@ -39,47 +43,49 @@ prepare() {
 
   git submodule init
   git config submodule.3rdparty/celt-0.7.0-src.url "$srcdir/celt"
-  git config submodule.3rdparty/opus-src.url "$srcdir/opus"
-  git config submodule.3rdparty/speex-src.url "$srcdir/speex"
+  git config submodule.3rdparty/opus.url "$srcdir/opus"
+  git config submodule.3rdparty/speex.url "$srcdir/speex"
   git config submodule.themes/Mumble.url "$srcdir/mumble-theme"
   git submodule update
+
+  # Workarounds to fix cmake build
+  patch -Np1 -i "$srcdir/build-type-release.patch"
+  patch -Np1 -i "$srcdir/no-bundled-opus.patch"
 }
 
 build() {
-  cd "$_pkgname"
-  qmake-qt5 main.pro \
-    CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie \
-             no-server no-embed-qt-translations no-update packaged" \
-    DEFINES+="PLUGIN_PATH=/usr/lib/$_pkgname" \
-    INCLUDEPATH+="/usr/include/speech-dispatcher"
-  make release
+  CXXFLAGS+=" -DPLUGIN_PATH=/usr/lib/$_pkgname"
+  cmake \
+    -B "$_pkgname/build" \
+    -S "$_pkgname" \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DBUILD_TESTING:BOOL='OFF' \
+    -Dclient:BOOL='ON' \
+    -Dserver:BOOL='OFF' \
+    -Dbundled-celt:BOOL='ON' \
+    -Dbundled-opus:BOOL='OFF' \
+    -Dbundled-speex:BOOL='OFF' \
+    -Dupdate:BOOL='OFF' \
+    -Wno-dev
+  make -C "$_pkgname/build"
 }
 
 package() {
   depends+=('libasound.so' 'libdns_sd.so' 'libjack.so' 'libprotobuf.so'
             'libpulse.so' 'libsndfile.so')
   cd "$_pkgname"
-  # mumble has no install target: https://github.com/mumble-voip/mumble/issues/1029
-  # binaries and scripts
-  install -vDm 755 release/mumble -t "$pkgdir/usr/bin"
-  install -vDm 755 scripts/mumble-overlay -t "$pkgdir/usr/bin/"
-  # (vendored) libs
-  install -vdm 755 "$pkgdir/usr/lib/$_pkgname/"
-  local _lib
-  for _lib in release/*.so*; do
-    if [ -L "$_lib" ]; then
-      cp -vP "$_lib" "$pkgdir/usr/lib/$_pkgname/"
-    else
-      install -vDm 755 "$_lib" -t "$pkgdir/usr/lib/$_pkgname/"
-    fi
-  done
-  install -vDm 755 release/plugins/*.so -t "$pkgdir/usr/lib/$_pkgname/"
-  # XDG desktop integration
-  install -vDm 644 scripts/mumble.desktop -t "$pkgdir/usr/share/applications"
-  # man page
-  install -vDm 644 "man/${_pkgname}"*.1 -t "$pkgdir/usr/share/man/man1/"
-  # XDG desktop icons
-  install -vDm 644 icons/mumble.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-  # license
+  make -C build DESTDIR="$pkgdir" install
+
+  # Fix location of libraries
+  install -d "$pkgdir/usr/lib/$_pkgname"
+  mv "$pkgdir/usr/lib/"libcelt* "$pkgdir/usr/lib/$_pkgname/"
+  mv "$pkgdir/usr/lib/plugins/"*.so "$pkgdir/usr/lib/$_pkgname/"
+  rmdir "$pkgdir/usr/lib/plugins"
+
+  # Man page
+  install -vDm 644 "man/$_pkgname".1 -t "$pkgdir/usr/share/man/man1/"
+
+  # License
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
