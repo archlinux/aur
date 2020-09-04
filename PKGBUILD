@@ -16,7 +16,7 @@ conflicts=('kicad' 'kicad-git' 'kicad-scripting-git' 'kicad-bzr')
 provides=('kicad')
 makedepends=('clang')
 _github_project='kicad-source-mirror'
-source=("https://github.com/KiCad/${_github_project}/archive/${_pkgver}.tar.gz")
+source=("https://gitlab.com/kicad/code/-/archive/${_pkgver}/kicad-${_pkgver}.tar.gz")
 md5sums=('6ed24719829ed8e9f6dabb3c5b97f48a')
 
 
