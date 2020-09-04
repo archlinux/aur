@@ -43,6 +43,9 @@ prepare() {
         sed -e "s/@SURGE_BUILD_ARCH@/${CARCH}/g" \
             -e "s/@SURGE_FULL_VERSION@/${pkgver}/g" \
             -i src/common/version.cpp.in
+        sed -e 's/if(\${GIT_BRANCH} /if("\${GIT_BRANCH}" /g' \
+            -e 's/ FIND \${GIT_BRANCH} / FIND "\${GIT_BRANCH}" /g' \
+            -i cmake/versiontools.cmake
 }
 
 build() {
