@@ -1,8 +1,8 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=pyright
-pkgver=1.1.65
-pkgrel=2
+pkgver=1.1.66
+pkgrel=1
 pkgdesc="Type checker for the Python language"
 arch=('any')
 url="https://github.com/microsoft/pyright"
@@ -14,7 +14,7 @@ source=(
   "${url}/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-  'efecc4fdb7f4b9b2c75c087b146528302746bede51ef7ce6eabb80c1d875a29c'
+  '31d235499eb081289c9eeba851169b94030d2d428508b22a51572b4f7d70eadf'
 )
 
 prepare() {
@@ -23,7 +23,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  npm run install:all
+  npm install
+  cd "${srcdir}/${pkgname}-${pkgver}/packages/pyright/"
   npm run build
 }
 
@@ -33,13 +34,15 @@ package() {
   install -d "${pkgdir}/usr/share/doc/${pkgname}"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}/packages/pyright/"
 
   cp -r dist "${pkgdir}/usr/lib/node_modules/${pkgname}/dist"
   install -Dm755 index.js "${pkgdir}/usr/lib/node_modules/${pkgname}/index.js"
   install -Dm755 langserver.index.js "${pkgdir}/usr/lib/node_modules/${pkgname}/langserver.index.js"
   ln -s "/usr/lib/node_modules/${pkgname}/index.js" "${pkgdir}/usr/bin/pyright"
   ln -s "/usr/lib/node_modules/${pkgname}/langserver.index.js" "${pkgdir}/usr/bin/pyright-langserver"
+
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 CONTRIBUTING.md "${pkgdir}/usr/share/doc/${pkgname}/CONTRIBUTING.md"
