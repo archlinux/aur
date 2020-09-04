@@ -3,7 +3,7 @@
 pkgname=mingw-w64-pystring
 pkgver=1.1.3
 pkgrel=2
-pkgdesc="Pystring is a collection of C++ functions which match the interface and behavior of python's string class methods using std::string."
+pkgdesc="Pystring is a collection of C++ functions which match the interface and behavior of python's string class methods using std::string (mingw-w64)"
 arch=(any)
 url="https://github.com/imageworks/pystring"
 license=("custom")
