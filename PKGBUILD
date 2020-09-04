@@ -3,6 +3,7 @@
 pkgname=hidapi-git
 pkgver=0.9.0.r57.g24a822c
 pkgrel=1
+epoch=1
 pkgdesc='Simple library for communicating with USB and Bluetooth HID devices'
 arch=(x86_64)
 url='https://github.com/libusb/hidapi'
