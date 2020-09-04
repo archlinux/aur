@@ -36,8 +36,6 @@ build() {
 		-gcflags "-trimpath $GOPATH/src" \
 		./...
 
-	ls -l
-
   mv "$srcdir/go/bin/server-go" "$srcdir/go/bin/photobackup-server-go"
 }
 
