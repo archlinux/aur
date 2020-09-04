@@ -3,8 +3,8 @@
 pkgname=tealdeer-bin
 _pkgname=tealdeer
 _binname=tldr
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="A fast tldr client in Rust. Static binaries from GitHub."
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/dbrgn/tealdeer/"
@@ -41,14 +41,14 @@ source_armv7h=(
 sha256sums=(
   'd867f58919431a1097237c5a8118cf4dcb01aadf960f61eddd432bf63050971d'
   '5fdf3346a03157f9a43f42e5d475611cce6b3685badf1084db2587f2ce425931'
-  '0bdbd3940fba926c8b40c02fb62a2a60e2a3169d44b17398a6c905dad58d6b6d'
+  '56cad3fdd615c040ded73de1e75342156e903a501806b487b526dce1980ae284'
   'e1a85727599c145ad026ff8b41c49c55b9bc98e859569535814a70980e6ba709'
 )
-sha256sums_x86_64=('c8c48e80b5569808064cdfebbc416c8f5001d9a6f470b04bb03832fb2378cf9c' 'SKIP')
-sha256sums_i686=('1667481f7e50e5b04a4f69bd75a32559e1ae9de9c40ab2edd39dfc849aff9ca5' 'SKIP')
-sha256sums_arm=('d8d95c3f14bed103835824ca64b072fcfa49a30e5ed3d69fe69bdaa6fdd4a125' 'SKIP')
-sha256sums_armv6h=('6834708bb2518b1af03e8d95a679693ddb683a73ad65ce28b6b60e800d492266' 'SKIP')
-sha256sums_armv7h=('30d11cf14de3030eace035dea79f1690bf95cf64669db189e189f75ef6da8caa' 'SKIP')
+sha256sums_x86_64=('36ef9b50071cdeb892cb14f3fecf6beb707fca2b50d10ec5a8cdd31b2c0118f7' 'SKIP')
+sha256sums_i686=('98a672d03b546cf7ef1a93ed2e5fff356dfaa71048b8167eb6f75a093b3e47be' 'SKIP')
+sha256sums_arm=('7a95eb72fe35ee88b06908041260592f341154460614147d86f201ea528a0651' 'SKIP')
+sha256sums_armv6h=('e9506692d4d68ec427d06b873ec0f9eeec18c64bef9cac7bbe829e2a5f0530c4' 'SKIP')
+sha256sums_armv7h=('2cde727edf5197675ff14ec44dee8de9a6fad42086cc9578d5b35b8b08b4cd61' 'SKIP')
 
 package() {
   # Install binary
