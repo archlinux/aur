@@ -1,0 +1,20 @@
+--- a/filter.c
++++ b/filter.c
+@@ -1283,7 +1283,7 @@
+       SI::Loop::Iterator it2;
+       SI::FrequencyListDescriptor *fld = (SI::FrequencyListDescriptor *)ts.transportStreamDescriptors.getNext(it2, SI::FrequencyListDescriptorTag);
+       int NumFrequencies = fld ? fld->frequencies.getCount() + 1 : 1;
+-      int Frequencies[NumFrequencies] = {0};
++      std::vector<int> Frequencies(NumFrequencies, 0);
+       if (fld) {
+          int ct = fld->getCodingType();
+          if (ct > 0) {
+@@ -1366,7 +1366,7 @@
+                  Frequencies[0] = BCD2INT(sd->getFrequency()) / 10;
+                  static int Modulations[] = { QPSK, QAM_16, QAM_32, QAM_64, QAM_128, QAM_256, QAM_AUTO };
+ #if VDRVERSNUM < 20305
+-                 int Modulation = Modulations[min(sd->getModulation(), 6)];
++                 int Modulation = Modulations[std::min(sd->getModulation(), 6)];
+ #else
+                  int Modulation = Modulations[std::min(sd->getModulation(), 6)];
+ #endif

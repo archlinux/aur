@@ -1,0 +1,63 @@
+--- a/Makefile
++++ b/Makefile
+@@ -22,11 +22,11 @@
+ 
+ ### The directory environment:
+ 
+-VDRDIR = ../../..
+-LIBDIR = ../../lib
+-PKGCFG = $(if $(VDRDIR),$(shell pkg-config --variable=$(1) $(VDRDIR)/vdr.pc),$(shell pkg-config --variable=$(1) vdr || pkg-config --variable=$(1) ../../../vdr.pc))
+-LIBDIR = $(DESTDIR)$(call PKGCFG,libdir)
+-LOCDIR = $(DESTDIR)$(call PKGCFG,locdir)
++#VDRDIR = ../../..
++#LIBDIR = ../../lib
++PKGCFG = $(if $(VDRDIR),$(shell pkg-config --variable=$(1) $(VDRDIR)/vdr.pc),$(shell PKG_CONFIG_PATH="$$PKG_CONFIG_PATH:../../.." pkg-config --variable=$(1) vdr))
++LIBDIR = $(call PKGCFG,libdir)
++LOCDIR = $(call PKGCFG,locdir)
+ #
+ 
+ TMPDIR ?= /tmp
+@@ -115,7 +115,7 @@
+ 
+ I18Npo    = $(wildcard $(PODIR)/*.po)
+ I18Nmo    = $(addsuffix .mo, $(foreach file, $(I18Npo), $(basename $(file))))
+-I18Nmsgs  = $(addprefix $(LOCDIR)/, $(addsuffix /LC_MESSAGES/vdr-$(PLUGIN).mo, $(notdir $(foreach file, $(I18Npo), $(basename $(file))))))
++I18Nmsgs  = $(addprefix $(DESTDIR)$(LOCDIR)/, $(addsuffix /LC_MESSAGES/vdr-$(PLUGIN).mo, $(notdir $(foreach file, $(I18Npo), $(basename $(file))))))
+ I18Npot   = $(PODIR)/$(PLUGIN).pot
+ 
+ %.mo: %.po
+@@ -131,7 +131,7 @@
+ 	$(Q)msgmerge -U --no-wrap --no-location --backup=none -q -N $@ $<
+ 	@touch $@
+ 
+-$(I18Nmsgs): $(LOCDIR)/%/LC_MESSAGES/vdr-$(PLUGIN).mo: $(PODIR)/%.mo
++$(I18Nmsgs): $(DESTDIR)$(LOCDIR)/%/LC_MESSAGES/vdr-$(PLUGIN).mo: $(PODIR)/%.mo
+ 	install -D -m644 $< $@
+ 
+ ### Targets:
+@@ -144,14 +144,15 @@
+ .PHONY: i18n-dist
+ i18n-dist: $(I18Nmsgs)
+ 
+-all: libvdr-$(PLUGIN).so i18n
++all: $(SOFILE) i18n
+ 
+ $(SOFILE): $(OBJS)
+ 	@echo LD $@
+-	$(Q)$(CXX) $(CXXFLAGS) -shared $(OBJS) $(LDFLAGS) $(LIBS) -o $@
++	$(Q)$(CXX) $(CXXFLAGS) -shared $(OBJS) $(LIBS) $(LDFLAGS) -o $@
+ 
+ install-lib: $(SOFILE)
+-	install -D $^ $(LIBDIR)/$^.$(APIVERSION)
++	@echo IN $(DESTDIR)$(LIBDIR)/$^.$(APIVERSION)
++	$(Q)install -D $^ $(DESTDIR)$(LIBDIR)/$^.$(APIVERSION)
+ 
+ install: install-lib install-i18n
+ 
+@@ -168,4 +169,4 @@
+ 	@-rm -f $(OBJS) $(DEPFILE) *.so *.tgz core* *~
+ 
+ target-for-compatibility-with-vanilla-vdr:
+-	$(LIBDIR)/$@.$(APIVERSION)
+\ No newline at end of file
++	$(LIBDIR)/$@.$(APIVERSION)
