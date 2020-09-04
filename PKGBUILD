@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_gui provides the main to start an instance of the ROS integra
 url='https://wiki.ros.org/rqt_gui'
 
 pkgname='ros-melodic-rqt-gui'
-pkgver='0.5.1'
+pkgver='0.5.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -32,7 +32,7 @@ depends=(
 
 _dir="rqt-${pkgver}/rqt_gui"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt/archive/${pkgver}.tar.gz")
-sha256sums=('8b6da1e559fd692c0cec924d857812e47e2febb34699de1b35f2f5da26ac36f7')
+sha256sums=('9913fb6da15f0ccb9d995f8ea3be935d36bd255379c8ae19c0005207883299eb')
 
 build() {
 	# Use ROS environment variables.
