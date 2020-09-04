@@ -4,9 +4,9 @@ pkgdesc="ROS - tf is a package that lets the user keep track of multiple coordin
 url='https://github.com/ros/geometry'
 
 pkgname='ros-melodic-tf'
-pkgver='1.12.0'
+pkgver='1.12.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -47,15 +47,8 @@ depends=(
 )
 
 _dir="geometry-${pkgver}/tf"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry/archive/${pkgver}.tar.gz"
-        CMakeLists-signal.patch)
-sha256sums=('61a278bdd50e00ea442055d9f70eaf82b5a36916739edca188fa1b71a59507b4'
-            'ab139685eaa571c7e1b3ef527bb9ef367ba05ab7f859602a5d6ed59359459e2d')
-
-prepare() {
-  cd "${srcdir}/${_dir}"
-  patch -uN CMakeLists.txt ../../CMakeLists-signal.patch || return 1
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/geometry/archive/${pkgver}.tar.gz")
+sha256sums=('6eacc9bb8e22d55263b1ab06f5c764a33c230084a0520a7d14ddcb6ed5d33f04')
 
 build() {
 	# Use ROS environment variables.
