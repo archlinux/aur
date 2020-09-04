@@ -1,6 +1,6 @@
 pkgbase = dolphin-git
 	pkgdesc = KDE File Manager (Git)
-	pkgver = 20.08.0.r18.g257eeebf4
+	pkgver = 20.08.0.r35.ga1d5d75be
 	pkgrel = 1
 	url = https://kde.org/applications/en/system/org.kde.dolphin
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = dolphin-git
 	depends = kcmutils
 	depends = kparts
 	depends = kinit
+	depends = kactivities
 	provides = dolphin
 	conflicts = dolphin
 	source = git+https://invent.kde.org/system/dolphin.git
