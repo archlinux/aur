@@ -2,8 +2,8 @@
 
 date=$(date)
 
-cp ~/PycharmProjects/crazydiskmark/crazydiskmark-aur/PKGBUILD .
-cp ~/PycharmProjects/crazydiskmark/crazydiskmark-aur/.SRCINFO .
+cp ~/PycharmProjects/crazydiskmark/aur/PKGBUILD .
+cp ~/PycharmProjects/crazydiskmark/aur/.SRCINFO .
 
 git add PKGBUILD .SRCINFO update.sh
 
