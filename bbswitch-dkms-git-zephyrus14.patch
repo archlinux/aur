@@ -1,6 +1,5 @@
-diff --unified --recursive --text src.orig/bbswitch/bbswitch.c src/bbswitch/bbswitch.c
---- src.orig/bbswitch/bbswitch.c	2020-08-11 17:50:30.348599901 +0000
-+++ src/bbswitch/bbswitch.c	2020-08-12 12:35:48.309972312 +0000
+--- a/bbswitch.c	2020-09-04 21:07:14.085307177 +0200
++++ b/bbswitch.c	2020-09-04 21:07:36.584532874 +0200
 @@ -28,6 +28,7 @@
   */
  #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
@@ -53,14 +52,16 @@ diff --unified --recursive --text src.orig/bbswitch/bbswitch.c src/bbswitch/bbsw
  static int bbswitch_optimus_dsm(void) {
      if (dsm_type == DSM_TYPE_OPTIMUS) {
          char args[] = {1, 0, 0, 3};
-@@ -200,86 +221,61 @@
+@@ -199,114 +220,130 @@
+     return 0;
  }
  
- static int bbswitch_acpi_off(void) {
+-static int bbswitch_acpi_off(void) {
 -    if (dsm_type == DSM_TYPE_NVIDIA) {
 -        char args[] = {2, 0, 0, 0};
 -        u32 result = 0;
-+	struct acpi_buffer buffer = { ACPI_ALLOCATE_BUFFER, NULL };
++static void get_dis_dev(void){
++    struct pci_dev *pdev = NULL;
  
 -        if (acpi_call_dsm(dis_handle, acpi_nvidia_dsm_muid, 0x102, 0x3, args,
 -            &result)) {
@@ -68,7 +69,14 @@ diff --unified --recursive --text src.orig/bbswitch/bbswitch.c src/bbswitch/bbsw
 -            return 1;
 -        }
 -        pr_debug("Result of _DSM call for OFF: %08X\n", result);
--    }
++    if ((pdev = pci_get_device(vendor, device, pdev)) != NULL) {
++        dis_dev = pdev;
+     }
++}
++
++static int bbswitch_acpi_off(void) {
++	struct acpi_buffer buffer = { ACPI_ALLOCATE_BUFFER, NULL };
++
 +    acpi_status err = (acpi_status) 0x0;
 +    acpi_handle hnd;
 +    err = acpi_get_handle(NULL, (acpi_string) "\\_SB.PCI0.GPP0.PG00", &hnd);
@@ -112,19 +120,30 @@ diff --unified --recursive --text src.orig/bbswitch/bbswitch.c src/bbswitch/bbsw
 -    // if one of the bits is not enabled (the card is enabled), the inverted
 -    // result will be non-zero and hence logical not will make it 0 ("false")
 -    return !~cfg_word;
-+    // MAYBE: use the SGST power ACPI call here instead? (returns 0x0 if powered off)
-+    struct pci_dev *pdev = NULL;
++    struct acpi_buffer buffer = { ACPI_ALLOCATE_BUFFER, NULL };
 +
-+    while ((pdev = pci_get_device(vendor, device, pdev)) != NULL) {
-+        dis_dev = pdev;
-+        return 0;
++    acpi_status err = (acpi_status) 0x0000;
++    acpi_handle hnd;
++
++    acpi_get_handle(NULL, (acpi_string) "\\_SB.PCI0.GPP0.PEGP", &hnd);
++    err = acpi_evaluate_object(hnd,"SGST", NULL, &buffer);
++    int gpustatus = ((union acpi_object *)buffer.pointer)->integer.value > 0 ? 0 : 1;
++    if(gpustatus == 0){
++        get_dis_dev();
++        if(dis_dev == NULL){
++            // Card is still powering on.
++            gpustatus = -1;
++        }
 +    }
-+    return 1;
++
++    kfree(buffer.pointer);
++
++    return gpustatus;
  }
  
  static void bbswitch_off(void) {
 -    if (is_card_disabled())
-+    if (is_card_disabled()){
++    if (is_card_disabled() == 1){
 +        pr_info("discrete graphics already disabled");
          return;
 -
@@ -173,7 +192,10 @@ diff --unified --recursive --text src.orig/bbswitch/bbswitch.c src/bbswitch/bbsw
  }
  
  static void bbswitch_on(void) {
-@@ -289,22 +285,38 @@
+-    if (!is_card_disabled())
++    if (is_card_disabled() < 1)
+         return;
+ 
      pr_info("enabling discrete graphics\n");
  
      if (bbswitch_acpi_on())
@@ -187,9 +209,10 @@ diff --unified --recursive --text src.orig/bbswitch/bbswitch.c src/bbswitch/bbsw
 +        pr_warn("The discrete card could not be enabled by an _ON call\n");
 +    
 +    int i = 0;
-+    while(is_card_disabled()){
-+        i++;
++    while(dis_dev == NULL){
 +        msleep(500);
++        i++;
++        get_dis_dev();
 +        if(i > 4){
 +            break;
 +        }
@@ -200,37 +223,48 @@ diff --unified --recursive --text src.orig/bbswitch/bbswitch.c src/bbswitch/bbsw
  static void dis_dev_get(void) {
 -    if (dis_dev->bus && dis_dev->bus->self)
 -        pm_runtime_get_sync(&dis_dev->bus->self->dev);
-+    if(dis_dev == NULL || is_card_disabled()){
-+        struct pci_dev *pdev = NULL;
-+        while ((pdev = pci_get_device(vendor, device, pdev)) != NULL){
-+            dis_dev = pdev;
-+            if (dis_dev->bus && dis_dev->bus->self)
-+                pm_runtime_get_sync(&dis_dev->bus->self->dev);
-+            break;
++    if(is_card_disabled() < 1){
++        int i = 0;
++        while(dis_dev == NULL){
++            msleep(500);
++            i++;
++            get_dis_dev();
++            if(i > 4){
++                if(dis_dev != NULL){
++                    break;
++                }
++                else{
++                    return;
++                }
++            }
 +        }
-+    }else{
 +        if (dis_dev->bus && dis_dev->bus->self)
 +            pm_runtime_get_sync(&dis_dev->bus->self->dev);
 +    }
  }
  
  static void dis_dev_put(void) {
-+    if(dis_dev == NULL || is_card_disabled()){
-+        return;
+-    if (dis_dev->bus && dis_dev->bus->self)
+-        pm_runtime_put_sync(&dis_dev->bus->self->dev);
++    if(is_card_disabled() == 0){
++        if (dis_dev->bus && dis_dev->bus->self)
++            pm_runtime_put_sync(&dis_dev->bus->self->dev);
 +    }
-     if (dis_dev->bus && dis_dev->bus->self)
-         pm_runtime_put_sync(&dis_dev->bus->self->dev);
  }
-@@ -335,7 +347,7 @@
+ 
+ static ssize_t bbswitch_proc_write(struct file *fp, const char __user *buff,
+@@ -335,8 +372,8 @@
  static int bbswitch_proc_show(struct seq_file *seqfp, void *p) {
      // show the card state. Example output: 0000:01:00:00 ON
      dis_dev_get();
 -    seq_printf(seqfp, "%s %s\n", dev_name(&dis_dev->dev),
+-             is_card_disabled() ? "OFF" : "ON");
 +    seq_printf(seqfp, "%s %s\n", dis_dev_name,
-              is_card_disabled() ? "OFF" : "ON");
++             is_card_disabled() > 0 ? "OFF" : "ON");
      dis_dev_put();
      return 0;
-@@ -349,20 +361,24 @@
+ }
+@@ -349,20 +386,24 @@
      switch (event_type) {
      case PM_HIBERNATION_PREPARE:
      case PM_SUSPEND_PREPARE:
@@ -255,7 +289,7 @@ diff --unified --recursive --text src.orig/bbswitch/bbswitch.c src/bbswitch/bbsw
              dis_dev_get();
              bbswitch_off();
              dis_dev_put();
-@@ -415,13 +431,8 @@
+@@ -415,13 +456,8 @@
              pci_class != PCI_CLASS_DISPLAY_3D)
              continue;
  
@@ -270,7 +304,7 @@ diff --unified --recursive --text src.orig/bbswitch/bbswitch.c src/bbswitch/bbsw
          if (!handle) {
              pr_warn("cannot find ACPI handle for VGA device %s\n",
                  dev_name(&pdev->dev));
-@@ -435,10 +446,19 @@
+@@ -435,10 +471,19 @@
              pr_info("Found integrated VGA device %s: %s\n",
                  dev_name(&pdev->dev), (char *)buf.pointer);
          } else {
@@ -294,7 +328,7 @@ diff --unified --recursive --text src.orig/bbswitch/bbswitch.c src/bbswitch/bbsw
          }
          kfree(buf.pointer);
      }
-@@ -463,6 +483,7 @@
+@@ -463,6 +508,7 @@
              dsm_type = DSM_TYPE_NVIDIA;
              pr_info("detected a nVidia _DSM function on the"
                  " integrated video card\n");
@@ -302,8 +336,12 @@ diff --unified --recursive --text src.orig/bbswitch/bbswitch.c src/bbswitch/bbsw
          } else {
              pr_err("No suitable _DSM call found.\n");
              return -ENODEV;
-@@ -480,16 +501,17 @@
-     if (!is_card_disabled()) {
+@@ -477,19 +523,20 @@
+ 
+     dis_dev_get();
+ 
+-    if (!is_card_disabled()) {
++    if (is_card_disabled() < 1) {
          /* We think the card is enabled, so ensure the kernel does as well */
          if (pci_enable_device(dis_dev))
 -            pr_warn("failed to enable %s\n", dev_name(&dis_dev->dev));
@@ -320,16 +358,16 @@ diff --unified --recursive --text src.orig/bbswitch/bbswitch.c src/bbswitch/bbsw
  
      pr_info("Succesfully loaded. Discrete card %s is %s\n",
 -        dev_name(&dis_dev->dev), is_card_disabled() ? "off" : "on");
-+        dis_dev_name, is_card_disabled() ? "off" : "on");
++        dis_dev_name, is_card_disabled() > 0 ? "off" : "on");
  
      dis_dev_put();
  
-@@ -509,7 +531,7 @@
+@@ -509,7 +556,7 @@
          bbswitch_off();
  
      pr_info("Unloaded. Discrete card %s is %s\n",
 -        dev_name(&dis_dev->dev), is_card_disabled() ? "off" : "on");
-+        dis_dev_name, is_card_disabled() ? "off" : "on");
++        dis_dev_name, is_card_disabled() > 0 ? "off" : "on");
  
      dis_dev_put();
-
+ 

@@ -7,7 +7,7 @@
 pkgname=bbswitch-g14-dkms-git
 _pkgname='bbswitch'
 pkgver=0.8.r5.gddbd243
-pkgrel=1
+pkgrel=2
 pkgdesc="kernel module allowing to switch dedicated graphics card on the Zephyrus G14 and other similar laptops"
 arch=('i686' 'x86_64')
 url="https://github.com/Bumblebee-Project/bbswitch"
@@ -21,7 +21,7 @@ _gitbranch='develop'
 source=("${_gitroot}#branch=${_gitbranch}"
 	"bbswitch-dkms-git-zephyrus14.patch")
 sha256sums=("SKIP"
-	    "c26e9a63e28575cee6518a7e8b21e6886f70b96e9ca922d9b46cfc5b2247a6fe")
+	    "5d9cc08ee9e1f614d9c25548c073809f6a1f8a2daf73c6a8ae16d70b91b26e92")
 
 
 pkgver() {
@@ -38,7 +38,7 @@ prepare() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  patch -p1 bbswitch.c ${srcdir}/bbswitch-dkms-git-zephyrus14.patch
+  patch -p2 bbswitch.c ${srcdir}/bbswitch-dkms-git-zephyrus14.patch
   install -dm755 "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
   install -Dm644 Makefile bbswitch.c dkms/dkms.conf "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
 
