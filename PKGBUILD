@@ -2,9 +2,9 @@ pkgdesc="ROS - A ROS node that simply forwards odometry information."
 url='https://wiki.ros.org/fake_localization'
 
 pkgname='ros-melodic-fake-localization'
-pkgver='1.16.6'
+pkgver='1.16.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -35,7 +35,7 @@ depends=(
 
 _dir="navigation-${pkgver}/fake_localization"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
-sha256sums=('88e3b4433de9645e1132db15b01f436a75a28ebc15cd5b70660b158dd6ba42dd')
+sha256sums=('3a4ee70949a07d4f5f84deddb2ee8a4314bc143d10fb2054b90683c7f92a2f33')
 
 build() {
 	# Use ROS environment variables.
