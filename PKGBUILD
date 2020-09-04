@@ -4,11 +4,11 @@ name=uvsquares
 _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
 
 pkgname=blender-plugin-${name}-git
-pkgver=r63.db80da3
-pkgrel=4
+pkgver=r132.f6b9a98
+pkgrel=1
 pkgdesc="Blender addon for reshaping UV selection into grid."
 arch=('any')
-url="https://cgcookiemarkets.com/blender/all-products/uv-squares/"
+url="https://www.blendermarket.com/products/uv-squares"
 license=('GPL')
 depends=('blender')
 makedepends=('git')

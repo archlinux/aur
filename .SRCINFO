@@ -1,8 +1,8 @@
 pkgbase = blender-plugin-uvsquares-git
 	pkgdesc = Blender addon for reshaping UV selection into grid.
-	pkgver = r63.db80da3
-	pkgrel = 4
-	url = https://cgcookiemarkets.com/blender/all-products/uv-squares/
+	pkgver = r132.f6b9a98
+	pkgrel = 1
+	url = https://www.blendermarket.com/products/uv-squares
 	arch = any
 	license = GPL
 	makedepends = git
