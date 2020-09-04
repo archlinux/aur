@@ -2,7 +2,7 @@ pkgdesc="ROS - This stack provides Python bindings for Qt."
 url='https://wiki.ros.org/python_qt_binding'
 
 pkgname='ros-melodic-python-qt-binding'
-pkgver='0.4.1'
+pkgver='0.4.3'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -31,7 +31,7 @@ depends=(
 _dir="python_qt_binding-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/python_qt_binding/archive/${pkgver}.tar.gz"
         "sip_path.patch")
-sha256sums=('1a153e400bb7def3751fffaba379c8689af60553950351eb6ec358e191725fc1'
+sha256sums=('e76de1c4a05c59094ccbb37a7bb0e252a6e33e5cc0fed83b41ccf84bc47c39c6'
             'd60d8edfc7dec99700fd66076d6fd01963a26e7623562c1ef289abc041e8d2ef')
 
 prepare() {
