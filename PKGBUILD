@@ -2,7 +2,7 @@
 pkgname=assh-git
 _pkgname=assh
 pkgver=2.10.0.r0.g1ff23bee
-pkgrel=1
+pkgrel=2
 pkgdesc='make your ssh client smarter https://manfred.life/assh'
 arch=('any')
 url='https://github.com/moul/assh.git'
@@ -21,9 +21,13 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
+    version=$(git describe --tags --always)
+    vcs_ref=$(git rev-parse --short HEAD)
     GOPATH=${srcdir} \
         GO111MODULE=on \
-        go build -modcacherw -o assh
+        go build \
+        --ldflags "-X moul.io/assh/v2/pkg/version.Version=$version -X moul.io/assh/v2/pkg/version.VcsRef=$vcs_ref" \
+        -modcacherw -o assh
 }
 
 package() {
