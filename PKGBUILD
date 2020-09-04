@@ -1,5 +1,5 @@
 # Maintainer: Helg1980 <depositmail@rambler.ru>
-pkgname=cine_encoder
+pkgname=cine-encoder
 _name=${pkgname#python-}
 pkgver=2.3
 pkgrel=1
@@ -8,7 +8,6 @@ arch=(x86_64)
 url="https://github.com/CineEncoder/cine-encoder.git"
 license=('GPL')
 depends=('mkvtoolnix-cli>=49.0' 'ffmpeg>=4.3' 'mediainfo>=20.03' 'python>=3.6' 'python-pyqt5' 'python-pymediainfo')
-provides=('cine-encoder')
 source=("https://github.com/CineEncoder/cine-encoder/archive/2.3.tar.gz")
 md5sums=('SKIP')
 
