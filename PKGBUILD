@@ -1,15 +1,15 @@
 # Maintainer: luosoy <249799588@qq.com>
 pkgname=com.qq.weixin.deepin
-_pkgver=2.6.8.65deepin0-1
-pkgver=2.6.8.65
-pkgrel=0
+_pkgver=2.9.5.41deepin2
+pkgver=2.9.5.41
+pkgrel=2
 epoch=
 pkgdesc="Deepin Wine WeChat 2.6.8.65"
 arch=('i686' 'x86_64')
 url="http://pc.weixin.qq.com/"
 license=('Proprietary')
 groups=()
-depends=('deepin-wine')
+depends=('deepin-wine5')
 makedepends=('tar')
 checkdepends=()
 optdepends=('noto-fonts-cjk' 'deepin-wine-apps-kde-fix')
