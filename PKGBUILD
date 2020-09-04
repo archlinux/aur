@@ -4,9 +4,9 @@ pkgdesc="ROS - Tools for directing, throttling, selecting, and otherwise messing
 url='https://wiki.ros.org/topic_tools'
 
 pkgname='ros-melodic-topic-tools'
-pkgver='1.14.3'
+pkgver='1.14.9'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -43,7 +43,7 @@ depends=(
 
 _dir="ros_comm-${pkgver}/tools/topic_tools"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('3e49bef96b8a0f9684e5c4f1736d171e9c8842a3979d5d3c6442b53698e8167f')
+sha256sums=('3b3c8d24a49a5c54dada11173323fe97f18a49d34bbaa746f29736e12fec954b')
 
 build() {
 	# Use ROS environment variables.
