@@ -4,10 +4,10 @@ pkgdesc="ROS -  Contains a node publish an image stream from single image file o
 url='https://wiki.ros.org/image_publisher'
 
 pkgname='ros-melodic-image-publisher'
-pkgver='1.14.0'
+pkgver='1.15.0'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -41,9 +41,9 @@ depends=(
 	${ros_depends[@]}
 )
 
-_dir="image_pipeline-${pkgver}/image_publisher"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/${pkgver}.tar.gz")
-sha256sums=('dcf1336d43c0c03165b76c9419fb7b5a275d0b091e1890b28daf37a02c1326b3')
+_dir="image_pipeline-melodic-${pkgver}/image_publisher"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-perception/image_pipeline/archive/melodic-${pkgver}.tar.gz")
+sha256sums=('453ab2347197614806c92bc8c6fd8c8cf9c04cfab4ad6b4ac47063a24835ce5b')
 
 build() {
 	# Use ROS environment variables.
