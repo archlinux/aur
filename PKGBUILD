@@ -3,9 +3,9 @@ pkgdesc="ROS - The move_base package provides an implementation of an action (se
 url='https://wiki.ros.org/move_base'
 
 pkgname='ros-melodic-move-base'
-pkgver='1.16.6'
+pkgver='1.16.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-nav-core
@@ -62,7 +62,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation-${pkgver}/move_base"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
-sha256sums=('88e3b4433de9645e1132db15b01f436a75a28ebc15cd5b70660b158dd6ba42dd')
+sha256sums=('3a4ee70949a07d4f5f84deddb2ee8a4314bc143d10fb2054b90683c7f92a2f33')
 
 build() {
   # Use ROS environment variables
