@@ -8,10 +8,10 @@ pkgbase = hyrule-conquest
 	makedepends = xz
 	makedepends = curl
 	depends = 0ad
-	noextract = hyrule.tar.xz?dl=0
+	noextract = hyrule0.8.tar.xz?dl=0
 	options = !strip
-	source = https://www.dropbox.com/s/c3pzx72sarj0hog/hyrule.tar.xz?dl=0
-	md5sums = 23c5e3402ff13433409a1d149b54b83c
+	source = https://www.dropbox.com/s/c3pzx72sarj0hog/hyrule0.8.tar.xz?dl=0
+	md5sums = 02513578a96276fc9394a7a756c2d282
 
 pkgname = hyrule-conquest
 
