@@ -1,7 +1,7 @@
 # Maintainer: Ulrich Schreiner <ulrich.schreiner@gmail.com>
 
 pkgname=cloudctl-bin
-pkgver=0.7.17
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A command line tool for FI-TS k8s services'
 url='https://github.com/fi-ts/cloudctl'
@@ -9,7 +9,7 @@ license=('MIT')
 arch=('x86_64')
 provides=('cloudctl')
 source=("https://github.com/fi-ts/cloudctl/releases/download/v$pkgver/cloudctl-linux-amd64")
-md5sums=('fa744bf85c01ccb29d73783dfb863a62')
+md5sums=('6ed2b1b910027f0b9448dde2fdc2ddd7')
 
 package() {
     install -Dm 755 "$srcdir/cloudctl-linux-amd64" "$pkgdir/usr/bin/cloudctl"
