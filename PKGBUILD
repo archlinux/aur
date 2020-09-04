@@ -1,7 +1,7 @@
 # Maintainer : Ashcon Mohseninia <ashcon50@gmail.com>
 
 pkgname="razer-laptop-control-dkms-git"
-pkgver=1.5
+pkgver=1.3.0.r0.g93782d8
 pkgrel=1
 pkgdesc="Kernel module and daemon for razer laptop's for RGB, fan and power control"
 arch=('i686' 'x86_64')
@@ -14,9 +14,9 @@ md5sums=("SKIP")
 conflicts=("openrazer-meta" "openrazer-driver-dkms" "openrazer-meta-git" "openrazer-daemon-git")
 install=driver.install
 
-prepare() {
-    cd $reponame
-    echo "$pwd"
+pkgver() {
+  cd "razer-laptop-control"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
