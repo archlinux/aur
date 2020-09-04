@@ -1,7 +1,7 @@
 pkgbase = zsa-wally
 	pkgdesc = Wally: Flash your ZSA Keyboard the EZ way.
 	pkgver = 2.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/zsa/wally
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = zsa-wally
 	depends = gtk3
 	depends = webkit2gtk
 	depends = libusb
+     depends = npm
 	provides = wally
 	source = https://github.com/zsa/wally/releases/download/2.0.0-linux/wally
 	source = 50-wally.rules
