@@ -1,10 +1,11 @@
 pkgbase = mingw-w64-fmt
-	pkgdesc = {fmt} is an open-source formatting library for C++. It can be used as a safe and fast alternative to (s)printf and iostreams.
+	pkgdesc = {fmt} is an open-source formatting library for C++. It can be used as a safe and fast alternative to (s)printf and iostreams. (mingw-w64)
 	pkgver = 7.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fmt.dev/
 	arch = any
 	license = MIT
+	makedepends = mingw-w64-cmake
 	depends = mingw-w64-crt
 	options = !strip
 	options = !buildflags
