@@ -1,7 +1,7 @@
 pkgbase = blinky
 	pkgdesc = AUR-helper with minimal hassle
 	pkgver = 0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cherti/blinky
 	arch = any
 	license = GPLv3
