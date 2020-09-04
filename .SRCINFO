@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-robinmap
+	pkgdesc = A C++ implementation of a fast hash map and hash set using robin hood hashing.
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/Tessil/robin-map
+	arch = any
+	license = MIT
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/Tessil/robin-map/archive/v0.6.3.tar.gz
+	sha256sums = e6654c8c2598f63eb0b1d52ff8bdf39cfcc91d81dd5d05274a6dca91241cd72f
+
+pkgname = mingw-w64-robinmap
+
