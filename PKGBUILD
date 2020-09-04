@@ -3,9 +3,9 @@
 pkgname=tealdeer
 _binname=tldr
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast tldr client in Rust."
-arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/dbrgn/tealdeer"
 license=('MIT' 'Apache')
 depends=('openssl')
