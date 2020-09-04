@@ -4,11 +4,11 @@ pkgbase='python-b4'
 pkgname=('python-b4')
 _module='b4'
 pkgver='0.5.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to work with public-inbox and patch archives"
 url="https://git.kernel.org/pub/scm/utils/b4/b4.git"
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-docutils')
 license=('GPL2')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
@@ -23,4 +23,8 @@ package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+
+    rst2man man/b4.5.rst b4.5
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" COPYING
+    install -Dm644 -t "${pkgdir}/usr/share/man/man5/" b4.5
 }
