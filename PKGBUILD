@@ -22,7 +22,7 @@ depends=('c-ares'
          'libnotify'
          'libappindicator-gtk3')
 provides=(scratux)
-source=("${pkgname}-${pkgver}.pacman::https://github.com/scratux/scratux/releases/tag/1.4.1/scratux-1.4.1.pacman")
+source=("${pkgname}-${pkgver}.pacman::https://github.com/scratux/scratux/releases/download/1.4.1/scratux-1.4.1.pacman")
 md5sums=(e341ad8bf3134a652b03143719782371)
 
 package() {
