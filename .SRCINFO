@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rospack
 	pkgdesc = ROS - ROS Package Tool.
-	pkgver = 2.5.5
-	pkgrel = 2
+	pkgver = 2.5.6
+	pkgrel = 1
 	url = https://wiki.ros.org/rospack
 	arch = i686
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = ros-melodic-rospack
 	depends = pkg-config
 	depends = boost
 	depends = python
-	source = ros-melodic-rospack-2.5.5.tar.gz::https://github.com/ros/rospack/archive/2.5.5.tar.gz
-	sha256sums = 26578f8eadd71dd473a8e38f1d495d74c6a3cb7baba8ddb8f944d5bd9ad25c68
+	source = ros-melodic-rospack-2.5.6.tar.gz::https://github.com/ros/rospack/archive/2.5.6.tar.gz
+	sha256sums = 1161da45bf0e0dea824f01926b07b59307e8eb24158e03e510afee6f7d264f86
 
 pkgname = ros-melodic-rospack
 
