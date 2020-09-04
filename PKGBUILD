@@ -2,7 +2,7 @@
 
 _pkgname=git-pw
 pkgname=${_pkgname}-git
-pkgver=1.5.1.r2.g0e4a1fd
+pkgver=2.0.0.r0.g613df41
 pkgrel=1
 pkgdesc="A tool for integrating Git with Patchwork, the web-based patch tracking system"
 url='https://github.com/getpatchwork/git-pw'
