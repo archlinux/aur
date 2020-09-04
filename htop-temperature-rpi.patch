@@ -1,8 +1,8 @@
 diff --git a/CRT.c b/CRT.c
-index 869573e..e6b8a75 100644
+index 0d83bf4..6574b38 100644
 --- a/CRT.c
 +++ b/CRT.c
-@@ -101,6 +101,9 @@ typedef enum ColorElements_ {
+@@ -88,6 +88,9 @@ typedef enum ColorElements_ {
     UPTIME,
     BATTERY,
     TASKS_RUNNING,
@@ -12,7 +12,7 @@ index 869573e..e6b8a75 100644
     SWAP,
     PROCESS,
     PROCESS_SHADOW,
-@@ -240,6 +243,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -204,6 +207,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
        [METER_VALUE] = A_BOLD | ColorPair(Cyan,Black),
        [LED_COLOR] = ColorPair(Green,Black),
        [TASKS_RUNNING] = A_BOLD | ColorPair(Green,Black),
@@ -22,7 +22,7 @@ index 869573e..e6b8a75 100644
        [PROCESS] = A_NORMAL,
        [PROCESS_SHADOW] = A_BOLD | ColorPairGrayBlack,
        [PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Black),
-@@ -308,6 +314,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -273,6 +279,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
        [METER_VALUE] = A_BOLD,
        [LED_COLOR] = A_NORMAL,
        [TASKS_RUNNING] = A_BOLD,
@@ -32,7 +32,7 @@ index 869573e..e6b8a75 100644
        [PROCESS] = A_NORMAL,
        [PROCESS_SHADOW] = A_DIM,
        [PROCESS_TAG] = A_BOLD,
-@@ -376,6 +385,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -342,6 +351,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
        [METER_VALUE] = ColorPair(Black,White),
        [LED_COLOR] = ColorPair(Green,White),
        [TASKS_RUNNING] = ColorPair(Green,White),
@@ -42,7 +42,7 @@ index 869573e..e6b8a75 100644
        [PROCESS] = ColorPair(Black,White),
        [PROCESS_SHADOW] = A_BOLD | ColorPair(Black,White),
        [PROCESS_TAG] = ColorPair(White,Blue),
-@@ -444,6 +456,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -411,6 +423,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
        [METER_VALUE] = ColorPair(Black,Black),
        [LED_COLOR] = ColorPair(Green,Black),
        [TASKS_RUNNING] = ColorPair(Green,Black),
@@ -52,7 +52,7 @@ index 869573e..e6b8a75 100644
        [PROCESS] = ColorPair(Black,Black),
        [PROCESS_SHADOW] = A_BOLD | ColorPairGrayBlack,
        [PROCESS_TAG] = ColorPair(White,Blue),
-@@ -512,6 +527,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -480,6 +495,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
        [METER_VALUE] = A_BOLD | ColorPair(Cyan,Blue),
        [LED_COLOR] = ColorPair(Green,Blue),
        [TASKS_RUNNING] = A_BOLD | ColorPair(Green,Blue),
@@ -62,7 +62,7 @@ index 869573e..e6b8a75 100644
        [PROCESS] = ColorPair(White,Blue),
        [PROCESS_SHADOW] = A_BOLD | ColorPair(Black,Blue),
        [PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Blue),
-@@ -580,6 +598,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
+@@ -549,6 +567,9 @@ int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT] = {
        [METER_VALUE] = ColorPair(Green,Black),
        [LED_COLOR] = ColorPair(Green,Black),
        [TASKS_RUNNING] = A_BOLD | ColorPair(Green,Black),
@@ -73,10 +73,10 @@ index 869573e..e6b8a75 100644
        [PROCESS_SHADOW] = A_BOLD | ColorPairGrayBlack,
        [PROCESS_TAG] = A_BOLD | ColorPair(Yellow,Black),
 diff --git a/CRT.h b/CRT.h
-index 5fb2f09..fc40b2a 100644
+index 7d5c8ad..9ef7660 100644
 --- a/CRT.h
 +++ b/CRT.h
-@@ -89,6 +89,9 @@ typedef enum ColorElements_ {
+@@ -76,6 +76,9 @@ typedef enum ColorElements_ {
     UPTIME,
     BATTERY,
     TASKS_RUNNING,
@@ -109,10 +109,10 @@ index d455b4d..2f6dd75 100644
  
 diff --git a/TemperatureMeter.c b/TemperatureMeter.c
 new file mode 100644
-index 0000000..872b92c
+index 0000000..d28169d
 --- /dev/null
 +++ b/TemperatureMeter.c
-@@ -0,0 +1,85 @@
+@@ -0,0 +1,102 @@
 +/*
 +htop - TemperatureMeter.c
 +(C) 2013 Ralf Stemmer
@@ -149,16 +149,18 @@ index 0000000..872b92c
 +}
 +
 +static void TemperatureMeter_display(Object* cast, RichString* out) {
++   (void) cast;
 +   FILE *p;
 +   p = popen("/usr/bin/cat /sys/class/thermal/thermal_zone0/temp", "r");
-+   if(p == NULL) return 1;
++   if(p == NULL) return;
 +
 +   int textColor   = CRT_colors[METER_TEXT];
 +   int coolColor   = CRT_colors[TEMPERATURE_COOL];
 +   int mediumColor = CRT_colors[TEMPERATURE_MEDIUM];
 +   int hotColor    = CRT_colors[TEMPERATURE_HOT];
 +
-+   size_t read, len;
++   int read;
++   size_t len;
 +   char *line = NULL;
 +   int  temperature;
 +   while ((read = getline(&line, &len, p)) != -1) {
