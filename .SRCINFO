@@ -2,7 +2,7 @@ pkgbase = pnghide
 	pkgdesc = hide plain text in png file inside pixels (unvisible changes).
 	pkgver = 0.2.3
 	pkgrel = 1
-	url = https://github.com/x1b6e6/pnghide.git
+	url = https://github.com/x1b6e6/pnghide
 	arch = any
 	license = MIT
 	makedepends = gcc
@@ -12,8 +12,8 @@ pkgbase = pnghide
 	depends = libpng
 	depends = docopt
 	optdepends = aes: for encryping data
-	source = git+https://github.com/x1b6e6/pnghide.git
-	sha1sums = SKIP
+	source = pnghide-0.2.3.zip::https://github.com/x1b6e6/pnghide/archive/0.2.3.zip
+	sha1sums = 2edefa7cbc0422d7b024d06c17d552a748cc7773
 
 pkgname = pnghide
 
