@@ -1,10 +1,8 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 
 pkgname=lc0
-pkgver=0.26.1
+pkgver=0.26.2
 pkgrel=1
-_run="run1"
-_nnid=42850
 pkgdesc="UCI-compliant chess engine designed to play chess via neural network, \
 		       specifically those of the LeelaChessZero project."
 arch=('x86_64')
@@ -17,16 +15,17 @@ makedepends=('meson' 'eigen' 'opencl-headers')
 checkdepends=('gtest')
 optdepends=("cudnn: Neural network library for use with nvidia GPUs")
 
+_weights="weights_sergio-v_256x20-T40-1541.pb.gz"
 install=lc0.install
 source=("$pkgname"
 	"$pkgname-$pkgver.tar.gz::https://github.com/LeelaChessZero/$pkgname/archive/v$pkgver.tar.gz"
 	"lczero-common-master.tar.gz::https://github.com/LeelaChessZero/lczero-common/archive/master.tar.gz"
-	"weights_${_run}_${_nnid}.pb.gz::http://data.lczero.org/files/networks/00af53b081e80147172e6f281c01daf5ca19ada173321438914c730370aa4267")
+	"$_weights::https://www.comp.nus.edu.sg/~sergio-v/t40/256x20/256x20-t40-1541.pb.gz")
 md5sums=('8ef8809da2c627dd2472859b157bb408'
-         '89cb56d60740c622db63f4daeef4b70f'
+         '4d2b78aa66b3f99d4cf8e8de0e9e6d6c'
          'e8eda64758da58c6a82126b9dc7c69ff'
-         'e7c9e1abec8d859ffdbc89e18340c254')
-noextract=('weights_${_run}_${_nnid}.pb.gz')
+         'SKIP')
+noextract=('$_weights')
 
 prepare() {
   cp -PRu "$srcdir/lczero-common-master/proto" "$srcdir/$pkgname-$pkgver/libs/lczero-common/"
@@ -56,5 +55,5 @@ check() {
 package() {
   install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm755 "$srcdir/$pkgname-$pkgver/build/release/$pkgname" "$pkgdir/usr/lib/$pkgname/$pkgname"
-  install -Dm644 "$srcdir/weights_${_run}_${_nnid}.pb.gz" "$pkgdir/usr/lib/$pkgname/weights_${_run}_${_nnid}.pb.gz"
+  install -Dm644 "$srcdir/${_weights}" "$pkgdir/usr/lib/$pkgname/${_weights}"
 }
