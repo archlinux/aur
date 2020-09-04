@@ -1,6 +1,6 @@
 # Maintainer: Thomas Mashos <thomas at mashos dot com>
 pkgname=fantasygroundsinstaller
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Web installer for Fantasy Grounds Unity"
 arch=('x86_64')
@@ -10,7 +10,7 @@ groups=()
 depends=()
 options=(!strip)
 source=("FGUWebInstall.deb::https://www.fantasygrounds.com/filelibrary/FGUWebInstall.deb")
-sha256sums=('550d15b342a6196c62b72789b42021ac5b42502e70bd2c523341a54f62b97bf5')
+sha256sums=('cc33fe09c3005bd78e69d3eae73c833b756789fae8787cdeb78e91543c773337')
 
 prepare() {
   tar -xf ${srcdir}/data.tar.xz
