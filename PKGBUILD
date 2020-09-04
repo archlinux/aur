@@ -3,8 +3,8 @@
 
 pkgbase=gridcoinresearch
 pkgname=(gridcoinresearch-qt gridcoinresearchd)
-pkgver=4.0.6.0
-pkgrel=2
+pkgver=5.0.0.0
+pkgrel=1
 pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network"
 makedepends=('boost' 'qt5-charts' 'qt5-tools' 'qrencode' 'db')
 
@@ -14,16 +14,15 @@ license=('custom:gridcoin')
 
 _sourcename="Gridcoin-Research-$pkgver"
 
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/$pkgver.tar.gz"
-        "trafficgraphwidget.cpp.patch")
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/$pkgver.tar.gz")
 
-sha256sums=('b2908f907227cae735a42dd5aadad26d6999077e6997ee42d9cb0e50738bec43'
-        "5077dd9c08cadb7bc1cb99598618d6b762c4dda9efb9795153533186794d07c9")
+sha256sums=('f46b2207d4524d705a89e039c95a52b7beed69a7b15e17b93bad19e957863018')
 
-prepare() {
-    cd "$srcdir/$_sourcename"
-    patch --strip=1 --input="../trafficgraphwidget.cpp.patch"
-}
+# leaving in case needed for future patches
+#prepare() {
+#    cd "$srcdir/$_sourcename"
+#    patch --strip=1 --input="../trafficgraphwidget.cpp.patch"
+#}
 
 build() {
   cd "$srcdir/$_sourcename"
