@@ -20,14 +20,16 @@ source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/arc
 	$_pkgname-gravity.service
 	$_pkgname-gravity.timer
 	mimic_setupVars.conf.sh
+	mimic_basic-install.sh
 	piholeDebug.sh)
 
 md5sums=('53c2e69e58b5494dfc251aca1148fee2'
-         '9bd88fe14800983bd67d9a3083885eed'
+         '2ff82b0be473adbe347e7469f0a9caa2'
          '16cb5e4da1341fd971d6094ce2d44029'
          '047f13d4ac97877f724f87b002aaee63'
          'd42a864f88299998f8233c0bc0dd093d'
          '7821b6dfe380955073701e5acd1587a2'
+         'c9a5fa5fe9b794b0630cb53fb343f598'
          '6139cbc8cf38a7bb2a32f9e855eaf7d9')
 
 prepare() {
@@ -55,6 +57,7 @@ package() {
 
   install -Dm755 piholeDebug.sh "$pkgdir"/opt/pihole/piholeDebug.sh
   install -Dm755 mimic_setupVars.conf.sh "$pkgdir"/opt/pihole/mimic_setupVars.conf.sh
+  install -Dm755 mimic_basic-install.sh "$pkgdir"/opt/pihole/basic-install.sh
 
   cp -dpr --no-preserve=ownership $_pkgname-$pkgver/advanced/Scripts/database_migration "$pkgdir"/opt/pihole/
 
