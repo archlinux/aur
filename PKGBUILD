@@ -1,28 +1,30 @@
-# Maintainter: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
 # Contributor: Scott Tincman <sctincman at gmail dot com>
 
 pkgname=nwchem
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ab initio computational chemistry software package"
 arch=('x86_64')
-url="http://www.nwchem-sw.org/index.php/Main_Page"
+url="https://nwchemgit.github.io"
 license=('ECL')
 depends=('python' 'scalapack')
 makedepends=('gcc-fortran')
 optdepends=()
 install=nwchem.install
-source=("https://github.com/nwchemgit/nwchem/archive/v$pkgver-release.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nwchemgit/nwchem/archive/v$pkgver-release.tar.gz"
         "config.sh"
         "nwchemrc")
 sha256sums=('dc03194513a6d2deecde6e80135b68419dca35483c9ecb45e35c5a028e27b15f'
-            'ae97d6dbdc2c11802b8699564ad433c4b8aef67263bbd8f4d64a549debd3b1da'
+            '2e67032fd6175df26b9cfe543cea96befe90f6315846b6e92e231fdaf461f667'
             'd63fdfc44a8f44419748e029d031c91716635ac4f062cd835014cde04677b90f')
 
 prepare(){
+  cd "$srcdir/$pkgname-$pkgver-release/src"
+  
   # Fix CUDA
   sed -i 's/$(CUDA_FLAGS)/$(CUDA_FLAGS) --compiler-options -fPIC/g' \
-  "$srcdir/$pkgname-$pkgver-release/src/config/makefile.h"
+  config/makefile.h
 }
 
 build() {
@@ -33,6 +35,17 @@ build() {
   make 64_to_32
   make
   ../contrib/getmem.nwchem
+  cd util
+  make version
+  make
+  cd ..
+  make link
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver-release/QA"
+  _corenumber=$( grep -c ^processor /proc/cpuinfo )
+  bash doqmtests.mpi 4 fast
 }
 
 package() {

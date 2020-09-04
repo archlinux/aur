@@ -1,6 +1,6 @@
-#===================================================#
-#                   GA Settings                     #
-#===================================================#
+#=======================================================================#
+#                              GA Settings                              #
+#=======================================================================#
 
 export CC=gcc
 export CXX=g++
@@ -8,11 +8,12 @@ export FC=gfortran
 export F77=gfortran
 
 export USE_MPI=yes
-
 export MPI_LOC=/usr
 export MPI_LIB=$MPI_LOC/lib/openmpi
 export MPI_INCLUDE=$MPI_LOC/include
 export LIBMPI="-lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi"
+
+export ARMCI_NETWORK=MPI-PR
 
 export USE_64TO32=y
 
@@ -27,14 +28,15 @@ export SCALAPACK="-lscalapack"
 export LAPACK_SIZE=4
 export LAPACK_LIB="-llapack"
 
-#===================================================#
-#                 NWChem Settings                   #
-#===================================================#
+#=======================================================================#
+#                            NWChem Settings                            #
+#=======================================================================#
 
 export NWCHEM_TARGET=LINUX64
 export NWCHEM_MODULES="all nwxc python"
 export NWCHEM_TOP=$(pwd)
 
+export USE_PYTHONCONFIG=y
 export PYTHONHOME=/usr
 export PYTHONVERSION=3.8
 export PYTHONLIBTYPE=so
@@ -48,9 +50,9 @@ export CCSDTLR=y
 export IPCCSD=y
 export EACCSD=y
 
-#===================================================#
-#                  CUDA Settings                    #
-#===================================================#
+#=======================================================================#
+#                             CUDA Settings                             #
+#=======================================================================#
 
 #export TCE_CUDA=y
 #export CUDA_HOME=/opt/cuda
