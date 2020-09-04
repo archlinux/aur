@@ -5,7 +5,7 @@ conflicts=("mingw-w64-xalan-c")
 provides=("mingw-w64-xalan-c")
 pkgver=r2.d8240ca
 pkgrel=1
-pkgdesc="The Apache Xalan-C++ Project provides a library and a command line program to transform XML documents using a stylesheet that conforms to XSLT 1.0 standards."
+pkgdesc="The Apache Xalan-C++ Project provides a library and a command line program to transform XML documents using a stylesheet that conforms to XSLT 1.0 standards. (mingw-w64)"
 arch=(any)
 url="https://xalan.apache.org/"
 license=("APACHE")
@@ -35,10 +35,12 @@ prepare() {
 }
 
 build() {
+	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG" -Ddoxygen=OFF )
+	
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "xalan-c" -B "build-${_arch}" -DCMAKE_BUILD_TYPE=Release -Ddoxygen=OFF -DBUILD_SHARED_LIBS=FALSE
+		${_arch}-cmake -S "xalan-c" -B "build-${_arch}" "${_flags[@]}" -DBUILD_SHARED_LIBS=FALSE
 		make -C "build-${_arch}-static"
-		${_arch}-cmake -S "xalan-c" -B "build-${_arch}" -DCMAKE_BUILD_TYPE=Release -Ddoxygen=OFF
+		${_arch}-cmake -S "xalan-c" -B "build-${_arch}" "${_flags[@]}"
 		make -C "build-${_arch}"
 	done
 }
