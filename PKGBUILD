@@ -4,9 +4,9 @@ pkgdesc="ROS - rospy is a pure Python client library for ROS."
 url='https://wiki.ros.org/rospy'
 
 pkgname='ros-melodic-rospy'
-pkgver='1.14.5'
+pkgver='1.14.9'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -37,7 +37,7 @@ depends=(
 
 _dir="ros_comm-${pkgver}/clients/rospy"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('49849315ca55247c656a5a50cd5caa5f33f7d212766ff09b62eae48f1dc6c3e7')
+sha256sums=('3b3c8d24a49a5c54dada11173323fe97f18a49d34bbaa746f29736e12fec954b')
 
 build() {
 	# Use ROS environment variables.
