@@ -2,7 +2,7 @@
 
 _pkgname=platypush
 pkgname=${_pkgname}-git
-pkgver=0.13.5.r0.dc254d64
+pkgver=0.13.5.r0.d6f653d8
 pkgrel=1
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
