@@ -4,9 +4,10 @@
 pkgbase=gridcoinresearch
 pkgname=(gridcoinresearch-qt gridcoinresearchd)
 pkgver=5.0.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network"
-makedepends=('boost' 'qt5-charts' 'qt5-tools' 'qrencode' 'db' 'leveldb' 'libzip')
+makedepends=('boost' 'qt5-charts' 'qt5-tools' 'qrencode')
+depends=('db' 'libzip')
 
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://gridcoin.us"
@@ -35,7 +36,7 @@ build() {
 
 package_gridcoinresearch-qt() {
   pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network (Qt GUI)"
-  depends=('boost-libs' 'db' 'miniupnpc' 'qrencode' 'qt5-base' 'qt5-charts')
+  depends=('boost-libs' 'miniupnpc' 'qrencode' 'qt5-base' 'qt5-charts')
   optdepends=('boinc: to earn Gridcoin rewards by doing computational research')
 
   cd "$srcdir/$_sourcename"
@@ -48,7 +49,7 @@ package_gridcoinresearch-qt() {
 
 package_gridcoinresearchd() {
   pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network (Daemon/CLI)"
-  depends=('boost-libs' 'db' 'miniupnpc')
+  depends=('boost-libs' 'miniupnpc')
   optdepends=('boinc: to earn Gridcoin rewards by doing computational research')
   replaces=('gridcoinresearch-daemon')
   conflicts=('gridcoinresearch-daemon')
