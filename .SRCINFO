@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-geometric-shapes
 	pkgdesc = ROS - This package contains generic definitions of geometric shapes and bodies.
-	pkgver = 0.6.2
-	pkgrel = 4
+	pkgver = 0.6.3
+	pkgrel = 1
 	url = http://wiki.ros.org/geometric_shapes
 	arch = i686
 	arch = x86_64
@@ -35,8 +35,8 @@ pkgbase = ros-melodic-geometric-shapes
 	depends = eigen
 	depends = console-bridge
 	depends = qhull
-	source = ros-melodic-geometric-shapes-0.6.2.tar.gz::https://github.com/ros-planning/geometric_shapes/archive/0.6.2.tar.gz
-	sha256sums = 80c7a45ffecb5665e4e7ffae3d150102a3bdd72d1bb9a441ce40a5b180c020dd
+	source = ros-melodic-geometric-shapes-0.6.3.tar.gz::https://github.com/ros-planning/geometric_shapes/archive/0.6.3.tar.gz
+	sha256sums = c7b247cf73a314f673e200642d6ffc7d079e91af1ddd4a1e82e1d8a355596b2c
 
 pkgname = ros-melodic-geometric-shapes
 
