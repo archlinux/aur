@@ -3,9 +3,9 @@ pkgdesc="ROS - Messages, services and actions used by MoveIt."
 url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-msgs'
-pkgver='0.10.0'
+pkgver='0.10.1'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-actionlib-msgs
@@ -41,7 +41,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="moveit_msgs-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('68885eafd4e6fbf9fee33e4cfd85b75ecd7465a29fffc52b3b75a3c1931da6f4')
+sha256sums=('81c68bd8c12c38a42abbfb622eb7f64613abcf3ff7dc83f9127eadf428cf4aa5')
 
 build() {
   # Use ROS environment variables
