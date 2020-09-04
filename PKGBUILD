@@ -2,7 +2,7 @@
 pkgname=dot
 pkgver=0.0
 pkgrel=1
-pkgdesc=""
+pkgdesc="Dot Browser is a work in progress."
 arch=(any)
 url="https://github.com/dothq/browser"
 license=('MPLv2')
