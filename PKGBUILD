@@ -2,8 +2,8 @@
 
 pkgname=mingw-w64-openimageio
 pkgver=2.2.6.1
-pkgrel=1
-pkgdesc="A library for reading and writing images."
+pkgrel=2
+pkgdesc="A library for reading and writing images (mingw-w64)"
 url="http://www.openimageio.org/"
 license=("BSD-3-Clause")
 depends=(
@@ -23,8 +23,9 @@ depends=(
 	"mingw-w64-opencv"
 	"mingw-w64-ffmpeg"
 	"mingw-w64-hdf5"
+	"mingw-w64-robinmap"
 )
-builddepends=("mingw-w64-cmake" "git")
+makedepends=("mingw-w64-cmake")
 arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
@@ -49,7 +50,7 @@ prepare() {
 
 build() {
 	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG -fpermissive"
-		-DBUILD_DOCS=OFF -DBUILD_MISSING_FMT=OFF -DBUILD_MISSING_ROBINMAP=ON -DBUILD_ROBINMAP_FORCE=ON 
+		-DBUILD_DOCS=OFF -DBUILD_MISSING_FMT=OFF -DBUILD_MISSING_ROBINMAP=OFF
 		-DUSE_EXTERNAL_PUGIXML=ON -DBUILD_TESTING=OFF -DCMAKE_CXX_STANDARD=20 -DINSTALL_DOCS=OFF 
 		-DOIIO_BUILD_TESTS=OFF -DOIIO_BUILD_TOOLS=OFF -DUSE_PYTHON=OFF -DUSE_QT=OFF -DUSE_CCACHE=OFF 
 		-DUSE_SIMD=sse4.2 -DEMBEDPLUGINS=ON -DSTOP_ON_WARNING=OFF -DOPTIONAL_DEPS=""
