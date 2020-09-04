@@ -6,7 +6,7 @@
 
 _pkgname=gnupg
 pkgname=gnupg-scdaemon-shared-access
-pkgver=2.2.22
+pkgver=2.2.23
 pkgrel=1
 pkgdesc='This package adds shared-access option that uses PCSC_SHARE_SHARED for pcsc_connect in scdaemon when using pcsc backend for smartcard access'
 url='https://www.gnupg.org/'
@@ -28,7 +28,7 @@ source=("https://gnupg.org/ftp/gcrypt/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"
         'avoid-beta-warning.patch'
         'do-not-rebuild-defsincdate.patch'
         "scdaemon_shared-access.patch")
-sha256sums=('7c1370565e1910b9d8c4e0fb57b9de34aa062ec7bb91abad5803d791f38d855b'
+sha256sums=('10b55e49d78b3e49f1edb58d7541ecbdad92ddaeeb885b6f486ed23d1cd1da5c'
             'SKIP'
             '02d375f0045f56f7dd82bacdb5ce559afd52ded8b75f6b2673c39ec666e81abc'
             '22fdf9490fad477f225e731c417867d9e7571ac654944e8be63a1fbaccd5c62d'
