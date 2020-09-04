@@ -15,6 +15,9 @@ prepare() {
     cd "${srcdir}"
     bsdtar -xf data.tar.xz 
     find . -name '*.desktop' -exec sed -i 's/Name=Safe Multisig/Name=Gnosis Safe Multisig/g' "{}" \;
+    find . -name '*.desktop' -exec sed -i 's|/opt/Safe Multisig/safe-react|/usr/bin/gnosis-safe-multisig|g' "{}" \;
+    mkdir -p "${srcdir}/usr/share/icons/hicolor/256x256/apps/"
+    mv "${srcdir}/usr/share/icons/hicolor/0x0/apps/safe-react.png" "${srcdir}/usr/share/icons/hicolor/256x256/apps/safe-react.png"
 }
 package() {
     install -d "${pkgdir}/usr/bin"
@@ -22,7 +25,6 @@ package() {
 
     cp -r "${srcdir}/opt/Safe Multisig" "${pkgdir}/opt/${pkgname}"
     cp -r "${srcdir}/usr/share/" "${pkgdir}/usr/share/"
-    mv "${pkgdir}/usr/share/applications/safe-react.desktop" "${pkgdir}/usr/share/applications/gnosis-safe-multisig.desktop"
     # install -m644 "${srcdir}/${_pkgname}-url-handler.desktop" "${pkgdir}/usr/share/applications/${_pkgname}-url-handler.desktop"
     ln -s /opt/${pkgname}/safe-react "${pkgdir}"/usr/bin/gnosis-safe-multisig
 }
