@@ -1,0 +1,16 @@
+[Unit]
+Description=LANraragi Service
+After=syslog.target network.target redis.service
+
+[Service]
+User=lanraragi
+Group=lanraragi
+WorkingDirectory=/usr/lib/lanraragi
+ExecStart=/usr/bin/perl /usr/lib/lanraragi/script/launcher.pl -f /usr/lib/lanraragi/script/lanraragi
+Type=simple
+TimeoutStopSec=20
+SyslogIdentifier=lanraragi
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target
