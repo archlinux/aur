@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=libxls
-pkgver=1.5.3
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Read binary Excel files from C/C++'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('autoconf-archive')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/libxls/libxls/archive/v${pkgver}.tar.gz")
-sha512sums=('084048ca724646e18c660770ed29432267ece3e9ab1f1fb783e976f90ab8a990388fd843dcf5fde6b262e534115f67ece9deb8274d2f9c55d595adcc04167c0a')
+sha512sums=('5db0aab8aa63d3d41272f0070758af9326b0602cbace095c82a438826d520aa10be99ffa5c150d6fcfa715c8b8fbf1f7fa523220322cd7219257126f7df5f01d')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
