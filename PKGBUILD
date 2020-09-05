@@ -4,10 +4,10 @@ pkgver=0.3.3
 pkgrel=1
 pkgdesc="Make an RSS feed from YouTube subscriptions"
 arch=(any)
-url='http://ikn.org.uk/Scripts#ytsubs'
+url='http://ikn.org.uk/tool/scripts#ytsubs'
 license=(GPL3)
 depends=("python>=3.2")
-source=(http://ikn.org.uk/files/scripts/$pkgname)
+source=(http://ikn.org.uk/download/tool/$pkgname)
 sha1sums=('07d02c095f11a0656ccc0cfcdc8359579512b044')
 
 package () {
