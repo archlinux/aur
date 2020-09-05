@@ -2,7 +2,7 @@
 _pkgname=linux_media
 _gitname=media_build
 pkgname="tbs-$_pkgname-git"
-pkgver=r1325.17b4bfa_5.8.1_arch1_1
+pkgver=r1330.e88c9da_5.8.6_arch1_1
 _updatedmodules="$(uname -r)/updates"
 pkgrel=1
 pkgdesc="TBS linux open source drivers"
@@ -18,12 +18,6 @@ prepare() {
 
     git clone https://github.com/tbsdtv/$_gitname.git
     git clone --depth=1 https://github.com/tbsdtv/$_pkgname.git -b latest "$srcdir/media"
-
-   cat >> "$srcdir/media_build/v4l/config-mycompat.h" << 'EOF'
-#undef NEED_PRANDOM_U32_MAX
-#undef NEED_PRANDOM_U32
-#undef NEED_NEXT_PSEUDO_RANDOM32
-EOF
 
 }
 
