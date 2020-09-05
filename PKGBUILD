@@ -3,7 +3,7 @@
 
 pkgname=genie-systemd
 _pkgname=genie
-pkgver=1.27
+pkgver=1.28
 pkgrel=1
 pkgdesc="A quick way into a systemd \"bottle\" for WSL"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('genie-systemd')
 provides=('genie-systemd')
 source=("${url}/archive/${pkgver}.tar.gz"
         'LICENSE')
-sha256sums=('662b363c08605821b8eb5970598df0df55cf1bf3f20673b953bd52a60880c09c'
+sha256sums=('688253faad5e3c40c9277dac00a481f48bc5ed62cf2bc82c2c1234d92604ea96'
             '88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd')
 
 prepare() {
