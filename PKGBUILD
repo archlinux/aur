@@ -1,6 +1,6 @@
 # Maintainer: Leon Kowarschick <thereal.elkowar at gmail dot com>
 pkgname=pipr-git
-pkgver=r114.8e50889
+pkgver=r122.dc827d8
 pkgrel=1
 conflicts=('pipr-bin')
 makedepends=('rust' 'cargo' 'git')
