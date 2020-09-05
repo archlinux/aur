@@ -34,7 +34,7 @@
  
  KBUILD_VERBOSE ?=
  KERN_VER ?= $(shell uname -r)
-@@ -146,4 +146,4 @@ load: unload
+@@ -167,4 +167,4 @@ load: unload
  		fi; \
  	done
  
