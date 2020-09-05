@@ -1,0 +1,22 @@
+pkgbase = buho-git
+	pkgdesc = Task and Note Keeper
+	pkgver = v1.1.1.r17.gd50e906
+	pkgrel = 1
+	url = https://invent.kde.org/maui/buho
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = ki18n
+	depends = qt5-webview
+	depends = mauikit-git
+	depends = kio
+	depends = syntax-highlighting
+	depends = attica
+	provides = buho
+	conflicts = buho
+	source = git+https://invent.kde.org/maui/buho.git
+	sha256sums = SKIP
+
+pkgname = buho-git
+
