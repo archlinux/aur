@@ -38,7 +38,7 @@ package() {
 	local _vendor_lc="$(grep '^VENDOR=' "${srcdir}/${_pkgcodename}/noarch/oem.conf" 2>/dev/null | \
 		sed 's/VENDOR=\(.*\)/\1/' | tr A-Z a-z)"
 
-	# Following the original /opt/hp/printer/.files ...
+	# Follow the original /opt/hp/printer/.files ...
 
 	install -dm755 "${pkgdir}/opt"
 	install -dm755 "${pkgdir}/opt/hp/printer/share/ppd/cms"
@@ -46,29 +46,11 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/cups/model"
 	install -dm755 "${pkgdir}/usr/share/ppd"
 
-	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/share/ppd/HP_Color_Laser_MFP_17x_Series.ppd" \
-		"${pkgdir}/opt/hp/printer/share/ppd/HP_Color_Laser_MFP_17x_Series.ppd"
+	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/share/ppd/"*.ppd \
+		"${pkgdir}/opt/hp/printer/share/ppd/"
 
-	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/share/ppd/HP_Laser_10x_Series.ppd" \
-		"${pkgdir}/opt/hp/printer/share/ppd/HP_Laser_10x_Series.ppd"
-
-	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/share/ppd/HP_Color_Laser_15x_Series.ppd" \
-		"${pkgdir}/opt/hp/printer/share/ppd/HP_Color_Laser_15x_Series.ppd"
-
-	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/share/ppd/HP_Laser_MFP_13x_Series.ppd" \
-		"${pkgdir}/opt/hp/printer/share/ppd/HP_Laser_MFP_13x_Series.ppd"
-
-	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/share/ppd/cms/17xsc.cts" \
-		"${pkgdir}/opt/hp/printer/share/ppd/cms/17xsc.cts"
-
-	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/share/ppd/cms/15xsc.cts" \
-		"${pkgdir}/opt/hp/printer/share/ppd/cms/15xsc.cts"
-
-	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/share/ppd/cms/13xsc.cts" \
-		"${pkgdir}/opt/hp/printer/share/ppd/cms/13xsc.cts"
-
-	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/share/ppd/cms/10xsc.cts" \
-		"${pkgdir}/opt/hp/printer/share/ppd/cms/10xsc.cts"
+	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/share/ppd/cms/"*.cts \
+		"${pkgdir}/opt/hp/printer/share/ppd/cms/"
 
 	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/.version-printer-script" \
 		"${pkgdir}/opt/hp/printer/.version"
@@ -78,7 +60,7 @@ package() {
 	ln -s '/opt/hp/printer' "${pkgdir}/opt/hp/printer/.usedby/hp"
 
 
-	# Following the original /opt/hp/scanner/.files ...
+	# Follow the original /opt/hp/scanner/.files ...
 
 	install -dm755 "${pkgdir}/etc/sane.d"
 	install -dm755 "${pkgdir}/etc/udev/rules.d"
@@ -107,8 +89,8 @@ package() {
 	#ln -s '/opt/hp/scanner' "${pkgdir}/opt/smfp-common/scanner/.usedby/hp"
 
 
-	# Following the original /opt/smfp-common/security/.files ...
-	# Following the original /opt/smfp-common/legacy_compat/.files ...
+	# Follow the original /opt/smfp-common/security/.files ...
+	# Follow the original /opt/smfp-common/legacy_compat/.files ...
 
 	install -dm755 "${pkgdir}/opt/smfp-common/security/.usedby"
 	install -dm755 "${pkgdir}/opt/smfp-common/legacy_compat/.usedby"
@@ -120,7 +102,7 @@ package() {
 	ln -s '/opt/smfp-common/security' "${pkgdir}/opt/smfp-common/legacy_compat/.usedby/security"
 
 
-	# Following the original /opt/smfp-common/printer/.files ...
+	# Follow the original /opt/smfp-common/printer/.files ...
 
 	install -dm755 "${pkgdir}/opt/smfp-common/printer/bin"
 	install -dm755 "${pkgdir}/opt/smfp-common/printer/lib"
@@ -163,7 +145,7 @@ package() {
 	ln -s '/opt/smfp-common/printer' "${pkgdir}/opt/smfp-common/security/.usedby/printer"
 
 
-	# Following the original /opt/smfp-common/scanner/.files ...
+	# Follow the original /opt/smfp-common/scanner/.files ...
 
 	install -dm755 "${pkgdir}/opt/smfp-common/printer/lib"
 	install -dm755 "${pkgdir}/opt/smfp-common/printer/share"
@@ -192,8 +174,8 @@ package() {
 	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/.version-scanner" \
 		"${pkgdir}/opt/smfp-common/scanner/.version"
 
-	ln -s "/usr/lib/sane/libsane-smfp.so.1.0.1" "${pkgdir}/usr/lib/sane/libsane-smfp.so.1"
-	ln -s "/usr/lib/sane/libsane-smfp.so.1.0.1" "${pkgdir}/usr/lib/sane/libsane-smfp.so"
+	ln -s '/usr/lib/sane/libsane-smfp.so.1.0.1' "${pkgdir}/usr/lib/sane/libsane-smfp.so.1"
+	ln -s '/usr/lib/sane/libsane-smfp.so.1.0.1' "${pkgdir}/usr/lib/sane/libsane-smfp.so"
 	ln -s '/opt/hp/scanner' "${pkgdir}/opt/smfp-common/scanner/.usedby/hp"
 	ln -s '/opt/smfp-common/scanner' "${pkgdir}/opt/smfp-common/legacy_compat/.usedby/scanner"
 	ln -s '/opt/smfp-common/scanner' "${pkgdir}/opt/smfp-common/security/.usedby/scanner"
@@ -202,7 +184,7 @@ package() {
 	# license
 
 	install -D -dm644 "${pkgdir}/usr/share/licenses/${pkgname}"
-	cp "${srcdir}/${_pkgcodename}/noarch/license/"* "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/license/"* "${pkgdir}/usr/share/licenses/${pkgname}/"
 
 
 	# other files
