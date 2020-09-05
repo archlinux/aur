@@ -9,9 +9,9 @@ optdepends=('bubblewrap: run commands in isolation. STRONGLY RECOMMENDED!')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="A commandline-utility to interactively build complex shell pipelines"
 license=('MIT')
-source=('pipr::https://gitlab.com/Elkowar/pipr/uploads/00023095ec8fc86d2af15be0ad07c51b/pipr'
-        'pipr-git::git+https://gitlab.com/Elkowar/pipr.git')
-url="https://gitlab.com/Elkowar/pipr"
+source=('pipr::https://github.com/elkowar/pipr/releases/download/v0.0.12/pipr'
+        'pipr-git::git+https://github.com/Elkowar/pipr.git')
+url="https://github.com/Elkowar/pipr"
 md5sums=('SKIP'
          'SKIP')
 
