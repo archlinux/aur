@@ -1,7 +1,7 @@
 pkgbase = hp-mfp-10x-17x
 	pkgdesc = Multi-function peripherals (MFPs) drivers for Hewlett-Packard Laser 10x Series, Laser MFP 13x Series, Color Laser 15x Series, Color Laser MFP 17x Series
 	pkgver = 1.00.39.12_00.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.hp.com/
 	install = hp-mfp-10x-17x.install
 	arch = i686

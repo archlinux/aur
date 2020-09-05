@@ -3,7 +3,7 @@
 pkgname='hp-mfp-10x-17x'
 _pkgcodename='uld'
 pkgver='1.00.39.12_00.15'
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-function peripherals (MFPs) drivers for Hewlett-Packard Laser 10x Series, Laser MFP 13x Series, Color Laser 15x Series, Color Laser MFP 17x Series'
 arch=('i686' 'x86_64')
 url='https://support.hp.com/'
@@ -42,7 +42,6 @@ package() {
 
 	install -dm755 "${pkgdir}/opt"
 	install -dm755 "${pkgdir}/opt/hp/printer/share/ppd/cms"
-	install -dm755 "${pkgdir}/opt/hp/printer/.usedby"
 	install -dm755 "${pkgdir}/usr/share/cups/model"
 	install -dm755 "${pkgdir}/usr/share/ppd"
 
@@ -57,7 +56,6 @@ package() {
 
 	ln -s '/opt/hp/printer/share/ppd' "${pkgdir}/usr/share/cups/model/uld-hp"
 	ln -s '/opt/hp/printer/share/ppd' "${pkgdir}/usr/share/ppd/uld-hp"
-	ln -s '/opt/hp/printer' "${pkgdir}/opt/hp/printer/.usedby/hp"
 
 
 	# Follow the original /opt/hp/scanner/.files ...
@@ -65,8 +63,6 @@ package() {
 	install -dm755 "${pkgdir}/etc/sane.d"
 	install -dm755 "${pkgdir}/etc/udev/rules.d"
 	install -dm755 "${pkgdir}/usr/share/hal/fdi/policy/10osvendor"
-	install -dm755 "${pkgdir}/opt/hp/scanner/.usedby"
-	install -dm755 "${pkgdir}/opt/smfp-common/scanner/.usedby"
 
 	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/oem.conf" \
 		"${pkgdir}/opt/hp/scanner/share/oem.conf"
@@ -85,20 +81,19 @@ package() {
 		"${pkgdir}/usr/share/hal/fdi/policy/10osvendor/01_smfp_${_vendor_lc}.fdi" \
 		"${srcdir}/${_pkgcodename}/noarch/oem.conf"
 
-	ln -s '/opt/hp/scanner' "${pkgdir}/opt/hp/scanner/.usedby/hp"
-	#ln -s '/opt/hp/scanner' "${pkgdir}/opt/smfp-common/scanner/.usedby/hp"
+
+	# Follow the original /opt/smfp-common/legacy_compat/.files ...
+
+	install -dm755 "${pkgdir}/opt/smfp-common/legacy_compat/.usedby"
+	echo '0.1' > "${pkgdir}/opt/smfp-common/legacy_compat/.version"
 
 
 	# Follow the original /opt/smfp-common/security/.files ...
-	# Follow the original /opt/smfp-common/legacy_compat/.files ...
 
 	install -dm755 "${pkgdir}/opt/smfp-common/security/.usedby"
-	install -dm755 "${pkgdir}/opt/smfp-common/legacy_compat/.usedby"
 
 	touch "${pkgdir}/opt/smfp-common/security/.firewall"
 	echo '0.1' > "${pkgdir}/opt/smfp-common/security/.version"
-	echo '0.1' > "${pkgdir}/opt/smfp-common/legacy_compat/.version"
-
 	ln -s '/opt/smfp-common/security' "${pkgdir}/opt/smfp-common/legacy_compat/.usedby/security"
 
 
@@ -113,14 +108,14 @@ package() {
 	install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/libscmssc.so" \
 		"${pkgdir}/opt/smfp-common/printer/lib/libscmssc.so"
 
-	#install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/smfpnetdiscovery" \
-	#	"${pkgdir}/opt/smfp-common/printer/bin/smfpnetdiscovery"
+	install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/smfpnetdiscovery" \
+		"${pkgdir}/opt/smfp-common/printer/bin/smfpnetdiscovery"
 
 	#install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/pstospl" \
-	#	"${pkgdir}/opt/smfp-common/printer/bin/pstospl"
+		#"${pkgdir}/opt/smfp-common/printer/bin/pstospl"
 
 	#install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/pstosplc" \
-	#	"${pkgdir}/opt/smfp-common/printer/bin/pstosplc"
+		#"${pkgdir}/opt/smfp-common/printer/bin/pstosplc"
 
 	install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/rastertospl" \
 		"${pkgdir}/opt/smfp-common/printer/bin/rastertospl"
@@ -129,12 +124,12 @@ package() {
 		"${pkgdir}/opt/smfp-common/printer/bin/pstosecps"
 
 	#install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/rastertosplc" \
-	#	"${pkgdir}/opt/smfp-common/printer/bin/rastertosplc"
+		#"${pkgdir}/opt/smfp-common/printer/bin/rastertosplc"
 
 	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/.version-printer" \
 		"${pkgdir}/opt/smfp-common/printer/.version"
 
-	ln -s '/opt/smfp-common/printer/lib/smfpnetdiscovery' "${pkgdir}/usr/lib/cups/backend/smfpnetdiscovery"
+	ln -s '/opt/smfp-common/printer/bin/smfpnetdiscovery' "${pkgdir}/usr/lib/cups/backend/smfpnetdiscovery"
 	#ln -s '/opt/smfp-common/printer/bin/pstospl' "${pkgdir}/usr/lib/cups/filter/pstospl"
 	#ln -s '/opt/smfp-common/printer/bin/pstosplc' "${pkgdir}/usr/lib/cups/filter/pstosplc"
 	ln -s '/opt/smfp-common/printer/bin/rastertospl' "${pkgdir}/usr/lib/cups/filter/rastertospl"
@@ -147,17 +142,14 @@ package() {
 
 	# Follow the original /opt/smfp-common/scanner/.files ...
 
-	install -dm755 "${pkgdir}/opt/smfp-common/printer/lib"
-	install -dm755 "${pkgdir}/opt/smfp-common/printer/share"
+	install -dm755 "${pkgdir}/opt/smfp-common/scanner/lib"
 	install -dm755 "${pkgdir}/opt/smfp-common/scanner/.usedby"
 	install -dm755 "${pkgdir}/opt/smfp-common/scanner/share/locale/zh_CN"
 	install -dm755 "${pkgdir}/usr/share/locale/zh_CN/LC_MESSAGES"
+	install -dm755 "${pkgdir}/usr/lib/sane"
 
 	install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/libsane-smfp.so.1.0.1" \
-		"${pkgdir}/opt/smfp-common/printer/lib/libsane-smfp.so.1.0.1"
-
-	install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/libsane-smfp.so.1.0.1" \
-		"${pkgdir}/usr/lib/sane/libsane-smfp.so.1.0.1"
+		"${pkgdir}/opt/smfp-common/scanner/lib/libsane-smfp.so.1.0.1"
 
 	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/share/locale/zh_CN/LC_MESSAGES/sane-smfp.mo" \
 		"${pkgdir}/opt/smfp-common/scanner/share/locale/zh_CN/sane-smfp.mo"
@@ -174,8 +166,9 @@ package() {
 	install -Dm755 "${srcdir}/${_pkgcodename}/noarch/.version-scanner" \
 		"${pkgdir}/opt/smfp-common/scanner/.version"
 
-	ln -s '/usr/lib/sane/libsane-smfp.so.1.0.1' "${pkgdir}/usr/lib/sane/libsane-smfp.so.1"
-	ln -s '/usr/lib/sane/libsane-smfp.so.1.0.1' "${pkgdir}/usr/lib/sane/libsane-smfp.so"
+	ln -s '/opt/smfp-common/scanner/lib/libsane-smfp.so.1.0.1' "${pkgdir}/usr/lib/sane/libsane-smfp.so.1.0.1"
+	ln -s '/opt/smfp-common/scanner/lib/libsane-smfp.so.1.0.1' "${pkgdir}/usr/lib/sane/libsane-smfp.so.1"
+	ln -s '/opt/smfp-common/scanner/lib/libsane-smfp.so.1.0.1' "${pkgdir}/usr/lib/sane/libsane-smfp.so"
 	ln -s '/opt/hp/scanner' "${pkgdir}/opt/smfp-common/scanner/.usedby/hp"
 	ln -s '/opt/smfp-common/scanner' "${pkgdir}/opt/smfp-common/legacy_compat/.usedby/scanner"
 	ln -s '/opt/smfp-common/scanner' "${pkgdir}/opt/smfp-common/security/.usedby/scanner"
