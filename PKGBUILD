@@ -1,20 +1,17 @@
 # Maintainer: Douglas Iuri Medeiros Cabral <diurimc at gmail dot com>
 pkgname=forticlient-vpn
 pkgver=6.4.0.0851
-pkgrel=5
-pkgdesc="Official FortiClient VPN"
+pkgrel=6
+pkgdesc="Build throught the official package of FortiClient VPN"
 arch=("x86_64")
 url="https://forticlient.com/"
 license=('custom:fortinet')
 provides=('fortivpn' 'FortiClient')
-install=${pkgname}.install
 source=("https://filestore.fortinet.com/forticlient/downloads/FortiClientFullVPNInstaller_${pkgver}.deb")
 sha256sums=('d229a2f3f13378244058b5b678d25976ba85e5d4c1b247ed2c3c242f6604ed2b')
 
 
 package() {
-
-	msg2 "Extracting the data.tar.xz..."
 
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
 
@@ -24,6 +21,10 @@ package() {
 
 	# Install license
     	install -Dm 644 "${pkgdir}/usr/share/doc/forticlient/copyright" "${pkgdir}/usr/share/licenses/fortinet/LICENSE"
+	
+	# Symlink fortivpn binary which is located in /opt
+	ln -s '/opt/forticlient/fortivpn' "${pkgdir}/usr/bin/fortivpn"
+	ln -s 'opt/forticlient/gui/FortiClient-linux-x64/FortiClient' "${pkgdir}/usr/bin/FortiClient"
 
 }
 
