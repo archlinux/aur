@@ -29,14 +29,14 @@ backup=('etc/mpd.conf')
 install=mpd.install
 
 prepare() {
-	cd "${srcdir}/mpd-${pkgver}"
+	cd "mpd-${pkgver}"
 
-	rm -r build
-	install -d build
+	rm -rf build-my
 }
 
 build() {
-	cd "${srcdir}/mpd-${pkgver}/build"
+	cd "mpd-${pkgver}"
+
 	_opts=('-Ddocumentation=true'
 	       '-Dchromaprint=disabled' # appears not to be used for anything
 	       '-Dsidplay=disabled' # unclear why but disabled in the past
@@ -71,20 +71,20 @@ build() {
 	       '-Dopenal=disabled'
 	       '-Dyajl=disabled'
 	)
-	arch-meson --auto-features auto .. ${_opts[@]}
-	ninja
+	arch-meson --auto-features auto build-my ${_opts[@]}
+	ninja -C build-my
 }
 
 package() {
-	cd "${srcdir}/mpd-${pkgver}/build"
+	cd "mpd-${pkgver}"
 	
-	DESTDIR="${pkgdir}" ninja install
-	install -Dm644 ../doc/mpdconf.example "${pkgdir}"/usr/share/doc/mpd/mpdconf.example
-	install -Dm644 ../doc/mpd.conf.5 "${pkgdir}"/usr/share/man/man5/mpd.conf.5
-	install -Dm644 ../doc/mpd.1 "${pkgdir}"/usr/share/man/man1/mpd.1
+	DESTDIR="${pkgdir}" ninja -C build-my install
+	install -Dm644 doc/mpdconf.example "${pkgdir}"/usr/share/doc/mpd/mpdconf.example
+	install -Dm644 doc/mpd.conf.5 "${pkgdir}"/usr/share/man/man5/mpd.conf.5
+	install -Dm644 doc/mpd.1 "${pkgdir}"/usr/share/man/man1/mpd.1
 
-	install -Dm644 "${srcdir}"/mpd.conf "${pkgdir}"/etc/mpd.conf
-	install -Dm644 "${srcdir}"/mpd.tmpfile "${pkgdir}"/usr/lib/tmpfiles.d/mpd.conf
+	install -Dm644 ../mpd.conf "${pkgdir}"/etc/mpd.conf
+	install -Dm644 ../mpd.tmpfile "${pkgdir}"/usr/lib/tmpfiles.d/mpd.conf
 	install -d -g 45 -o 45 "${pkgdir}"/var/lib/mpd{,/playlists}
 
 	# Now service file installs only when libsystemd package was found
