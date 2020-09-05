@@ -3,7 +3,7 @@
 _gitname=cascadia-code
 pkgbase=cascadia-code-git
 pkgname=("otf-${pkgbase}" "ttf-${pkgbase}")
-pkgver=2007.01.r8.g4433d3de
+pkgver=2008.25.r1.gc6492c66
 pkgrel=1
 pkgdesc="A new monospaced font that includes programming ligatures"
 url="https://github.com/microsoft/${_gitname}"
