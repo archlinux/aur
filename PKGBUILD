@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-openimageio
 pkgver=2.2.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for reading and writing images (mingw-w64)"
 url="http://www.openimageio.org/"
 license=("BSD-3-Clause")
@@ -24,6 +24,7 @@ depends=(
 	"mingw-w64-ffmpeg"
 	"mingw-w64-hdf5"
 	"mingw-w64-robinmap"
+	"mingw-w64-libraw"
 )
 makedepends=("mingw-w64-cmake")
 arch=("any")
@@ -55,7 +56,7 @@ build() {
 		-DOIIO_BUILD_TESTS=OFF -DOIIO_BUILD_TOOLS=OFF -DUSE_PYTHON=OFF -DUSE_QT=OFF -DUSE_CCACHE=OFF 
 		-DUSE_SIMD=sse4.2 -DEMBEDPLUGINS=ON -DSTOP_ON_WARNING=OFF -DOPTIONAL_DEPS=""
 		-DUSE_EMBEDDED_LIBSQUISH=OFF
-		-DREQUIRED_DEPS="JPEGTurbo;PNG;TBB;GIF;Webp;Libsquish;Freetype;OpenColorIO;OpenCV;FFmpeg;HDF5" )
+		-DREQUIRED_DEPS="JPEGTurbo;PNG;TBB;GIF;Webp;Libsquish;Freetype;OpenColorIO;OpenCV;FFmpeg;HDF5;LibRaw" )
 		
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "oiio-Release-${pkgver}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=FALSE
