@@ -9,7 +9,7 @@ pkgname=('virtualbox-bin' 'virtualbox-bin-guest-iso' 'virtualbox-bin-sdk')
 pkgver=6.1.14
 _build=140239
 _rev=83509
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
@@ -118,7 +118,8 @@ package_virtualbox-bin() {
     install -D -m644 virtualbox.sysusers "${pkgdir}/usr/lib/sysusers.d/virtualbox.conf"
     
     # man page for rdesktop-vrdp
-    install -D -m644 "${pkgname}-${pkgver}/rdesktop-${_rdeskver}-vrdp/doc/rdesktop.1" -t "${pkgdir}/usr/share/man/man1"
+    install -D -m644 "${pkgname}-${pkgver}/rdesktop-${_rdeskver}-vrdp/doc/rdesktop.1" \
+        "${pkgdir}/usr/share/man/man1/rdesktop-vrdp.1"
     
     # symlinks
     local _dir
