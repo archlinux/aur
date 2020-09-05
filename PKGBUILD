@@ -1,13 +1,13 @@
 # Maintainer: shimunn <shimun@shimun.net>
 pkgname=fido2luks
-pkgver=0.2.13
+pkgver=0.2.14
 pkgrel=1
 makedepends=('rust' 'cargo' 'cryptsetup' 'clang')
 depends=('cryptsetup')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Decrypt your LUKS partition using a FIDO2 compatible authenticator"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/shimunn/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=("07ead0bdb99f22b0d75ff3375be954c7e034fc18322d87cece2ac0468498e34d")
+sha256sums=("68cb3f3a10bc89b786c63d4e8cbe652a4f57a79a4aa201f64dbec4ce8c65c9c6")
 url="https://github.com/shimunn/fido2luks"
 license=('MPL-2.0')
 
