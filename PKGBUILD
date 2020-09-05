@@ -1,7 +1,6 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='hp-mfp-10x-17x'
-_pkgcodename='uld'
 pkgver='1.00.39.12_00.15'
 pkgrel=2
 pkgdesc='Multi-function peripherals (MFPs) drivers for Hewlett-Packard Laser 10x Series, Laser MFP 13x Series, Color Laser 15x Series, Color Laser MFP 17x Series'
@@ -18,6 +17,7 @@ md5sums=('b20c5f5273f8d18077fe553919c7e3e9'
 sha1sums=('51ed2e1265659cedf47fa5e7b9f8693a3d8cabaa'
           '8dc4e15836ee71c2b67e3ca54929b0380af6ae46')
 
+_pkgcodename='uld'
 _udev_rule_number=48
 
 case "${CARCH}" in
@@ -37,6 +37,7 @@ package() {
 	# Taken from uld/noarch/package_utils -> specify_vendor()
 	local _vendor_lc="$(grep '^VENDOR=' "${srcdir}/${_pkgcodename}/noarch/oem.conf" 2>/dev/null | \
 		sed 's/VENDOR=\(.*\)/\1/' | tr A-Z a-z)"
+
 
 	# Follow the original /opt/hp/printer/.files ...
 
