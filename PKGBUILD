@@ -15,7 +15,7 @@ makedepends_x86_64=('gcc-multilib' 'lib32-glibc' 'mercurial')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" 'inferno' 'inferno-hg')
 options=('!strip')
-source=("${_pkgname}::git+https://git.sunshinegardens.org/~xj9/${_pkgname}"
+source=("${_pkgname}::git+https://git.sunshinegardens.org/~xj9/tomo"
         'make-install-root.sh')
 sha1sums=('SKIP'
           'SKIP')
