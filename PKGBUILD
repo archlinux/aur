@@ -7,7 +7,7 @@ arch=( 'any' )
 url="https://github.com/CerebruxCode/Shelldio"
 license=('GPL3')
 depends=( 'mpv' )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CerebruxCode/Shelldio/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CerebruxCode/shelldio/archive/v${pkgver}.tar.gz")
 
 package() {
 	cd "$pkgname-$pkgver"
@@ -15,4 +15,3 @@ package() {
 	install -Dm755 shelldio.sh "$pkgdir/usr/bin/shelldio"
 }
 
-md5sums=('727a54600ad9d11bc037f9c33e374ed4')
