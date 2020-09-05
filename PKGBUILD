@@ -2,7 +2,7 @@
 
 pkgname=lean-community
 pkgver=3.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lean Theorem Prover, maintained by the Lean community'
 arch=('x86_64' 'i386')
 url="https://github.com/leanprover-community/lean"
@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver::https://github.com/leanprover-community/lean/archive/
 sha256sums=(b99ad667a95418d680f378feb6c457d44f2327a933ee819e8315580528a758fe)
 
 build() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   mkdir build
   cd build
   cmake ../src -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -G Ninja
@@ -21,6 +21,6 @@ build() {
 }
 
 package() {
-  cd "$pkgname"/build
+  cd "$pkgname-$pkgver"/build
   DESTDIR="$pkgdir" ninja install
 }
