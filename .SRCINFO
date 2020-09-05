@@ -1,0 +1,17 @@
+pkgbase = multiwfn
+	pkgdesc = A program for realizing electronic wavefunction analysis
+	pkgver = 3.7
+	pkgrel = 1
+	url = http://sobereva.com/multiwfn
+	arch = x86_64
+	license = custom
+	makedepends = intel-fortran-compiler
+	makedepends = intel-mkl-static
+	depends = openmotif
+	depends = libglvnd
+	conflicts = multiwfn-bin
+	source = http://sobereva.com/multiwfn/misc/Multiwfn_3.7_src_Linux.zip
+	sha256sums = 9805e4fa845b6efb8540533af0d0dc212e17bb579706a5ad6639b25a01d85f58
+
+pkgname = multiwfn
+
