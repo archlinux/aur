@@ -1,6 +1,6 @@
 pkgname=(python-napalm)
 _pkgname=napalm
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Network Automation and Programmability Abstraction Layer with Multivendor support"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python' 'python-cffi' 'python-paramiko' 'python-future' 'python-textfs
 makedepends=('python-setuptools')
 checkdepends=('python-tox')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('a2d159e91a2d1355fc1eed323a189981999f99776d15c628a8b6aba822fb855a')
+sha256sums=('d711f273e12478db35982a36e7128cf63caae90ec4fef2c9a12a92b21998d59a')
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver"
