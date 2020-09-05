@@ -2,12 +2,12 @@
 
 pkgname=openbazaar
 pkgver=2.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(i686 x86_64)
 url="https://github.com/OpenBazaar/openbazaar-desktop"
 license=('MIT')
-depends=('electron7')
+depends=('electron6-bin')
 makedepends=('npm')
 source=("https://github.com/OpenBazaar/openbazaar-desktop/archive/v$pkgver.tar.gz"
     "$pkgname.js"
@@ -54,5 +54,6 @@ package() {
 }
 
 md5sums=('b05520316946fc82626135fd33affcb6'
-         'b893d2174c2c52b0d7fc0023999aa42e'
+         '9cbd95a65cb9d7a81cb39ec02127ac8d'
          '2e7c7804b970baa7f9274dae47618a52')
+
