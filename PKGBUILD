@@ -2,36 +2,39 @@
 
 pkgname=rts_bpp-dkms-git
 _pkgname=rts_bpp
-pkgver=10
+pkgver=11
 pkgrel=1
 pkgdesc="A kernel module for Realtek Card Reader RTL8402/8411/8411B Device"
 arch=('any')
-url="https://github.com/M0Rf30/rts_bpp"
+url="https://github.com/PythonNut/rts_bpp"
 license=('GPL')
 depends=('dkms')
 makedepends=('git')
 options=(!strip)
-source=(git+https://github.com/M0Rf30/rts_bpp.git
-	'dkms.conf'
+source=(git+https://github.com/PythonNut/rts_bpp
+    'dkms.conf'
 "81-udisks-udisks2-${_pkgname}.rules")
 
 pkgver() {
-	cd ${_pkgname}
-	echo $(git rev-list --count master)
+    cd ${_pkgname}
+    echo $(git rev-list --count master)
 }
 
 prepare() {
-	sed -i "2cPACKAGE_VERSION=$pkgver" dkms.conf
+    sed -i "2cPACKAGE_VERSION=$pkgver" dkms.conf
 }
 
 package() {
-	install -dm755 "${pkgdir}/usr/lib/udev/rules.d/"
-	install -D -m644 ${srcdir}/81-udisks-udisks2-${_pkgname}.rules "${pkgdir}/usr/lib/udev/rules.d/"
-	install -dm755 "${pkgdir}/usr/src/${_pkgname}-${pkgver}/"
-	cp -a ${srcdir}/${_pkgname}/*  ${pkgdir}/usr/src/${_pkgname}-${pkgver}
-	sed "s/#MODULE_VERSION#/${pkgver}/" "${srcdir}/dkms.conf" > "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
+    install -dm755 "${pkgdir}/usr/lib/udev/rules.d/"
+    install -D -m644 ${srcdir}/81-udisks-udisks2-${_pkgname}.rules \
+    "${pkgdir}/usr/lib/udev/rules.d/"
+    install -dm755 "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
+    cp -a "${srcdir}/${_pkgname}"/* \
+    "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
+    sed "s/#MODULE_VERSION#/${pkgver}/" "${srcdir}/dkms.conf" \
+    > "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
 }
 
 md5sums=('SKIP'
-         '80017b249a931439a5c7ee3e99fb518a'
-         '2cb27673c68f68b10199fc6ec9c05a24')
+    '80017b249a931439a5c7ee3e99fb518a'
+'2cb27673c68f68b10199fc6ec9c05a24')
