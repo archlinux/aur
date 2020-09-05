@@ -5,7 +5,7 @@
 
 pkgname=janus-gateway
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, general purpose, WebRTC server"
 arch=('x86_64' 'i686')
 url='https://janus.conf.meetecho.com'
@@ -70,7 +70,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/meetecho/janus-gateway/arch
         'janus.conf')
 sha256sums=('9064479e59bf799dbe815a770d6ae629185294b5ee41dea1b36c62c20d940b4f'
             'cf2b6c8fdcd60ccfa179c4cd207a23ee7edfee90588c2c3847aa6cda418bed7f'
-            'aa2480ba28a049ac3571159583736216e1a5db145c0df672d4ff0a2fc7d9789f')
+            'bd6d7615e722adb64816fae3c5323f6aeb1b9561c39f1652568ed494ffdaa191')
 
 build() {
     cd "$pkgname-$pkgver"
