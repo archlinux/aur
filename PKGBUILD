@@ -3,12 +3,12 @@ pkgname=photobackup-server-go-git
 pkgver=r255.7621f5f
 pkgrel=1
 pkgdesc="The Go PhotoBackup server implementation "
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/PhotoBackup/server-go"
 license=('BSD 3-Clause License')
 depends=()
 makedepends=(
-  'go'
+  'go' 'git'
 )
 source=('git+https://github.com/PhotoBackup/server-go.git')
 sha256sums=('SKIP')
