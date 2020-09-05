@@ -4,11 +4,11 @@ pkgver=0.2
 pkgrel=1
 pkgdesc="Tool for deleting old cached package files for pacman"
 arch=(any)
-url=http://ikn.org.uk/pacman-expire-cache
+url=http://ikn.org.uk/tool/pacman-expire-cache
 license=(BSD)
 makedepends=()
 depends=()
-source=(http://ikn.org.uk/files/desktop/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(http://ikn.org.uk/download/tool/$pkgname/$pkgname-$pkgver.tar.gz)
 md5sums=('c8fc4c6e0c95d39dfe5a0cffbbc43dfb')
 
 package () {
