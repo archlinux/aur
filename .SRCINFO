@@ -1,0 +1,24 @@
+pkgbase = pix-maui-git
+	pkgdesc = Image gallery application
+	pkgver = v1.1.1.r34.ge2ceb78
+	pkgrel = 1
+	url = https://invent.kde.org/maui/pix
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = ki18n
+	depends = qt5-location
+	depends = mauikit-git
+	depends = kio
+	depends = syntax-highlighting
+	depends = attica
+	depends = exiv2
+	depends = kquickimageeditor
+	provides = pix-maui
+	conflicts = pix-maui
+	source = git+https://invent.kde.org/maui/pix.git
+	sha256sums = SKIP
+
+pkgname = pix-maui-git
+
