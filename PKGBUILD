@@ -5,7 +5,7 @@
 
 pkgname=gstreamer0.10-fluendo
 pkgver=0.10.85
-pkgrel=2
+pkgrel=3
 pkgdesc="GStreamer 0.10 fluendo mpegdemux plugin"
 provides=("gstreamer0.10-fluendo-mpegdemux")
 arch=('i686' 'x86_64')
@@ -14,7 +14,8 @@ depends=('gstreamer0.10-base')
 makedepends=('pkgconfig')
 url="http://www.fluendo.com/products.php?product=plugins"
 groups=('gstreamer0.10-plugins')
-source=("http://core.fluendo.com/gstreamer/src/gst-fluendo-mpegdemux/gst-fluendo-mpegdemux-${pkgver}.tar.bz2")
+# source=("http://core.fluendo.com/gstreamer/src/gst-fluendo-mpegdemux/gst-fluendo-mpegdemux-${pkgver}.tar.bz2")
+source=("http://sources.openembedded.org/gst-fluendo-mpegdemux-${pkgver}.tar.bz2")
 
 build() {
 
