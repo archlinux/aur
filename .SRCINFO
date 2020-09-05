@@ -1,6 +1,6 @@
 pkgbase = swayimg
 	pkgdesc = Image viewer for Sway/Wayland
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/artemsen/swayimg
 	arch = x86_64
@@ -13,8 +13,10 @@ pkgbase = swayimg
 	depends = json-c
 	optdepends = libjpeg: JPEG images support
 	optdepends = giflib: GIF images support
-	source = swayimg-1.0.tar.gz::https://github.com/artemsen/swayimg/archive/v1.0.tar.gz
-	md5sums = 308063c564fdc97dad40c6b5ea227d88
+	optdepends = librsvg-2.0: SVG images support
+	optdepends = libwebp: WebP images support
+	source = swayimg-1.1.tar.gz::https://github.com/artemsen/swayimg/archive/v1.1.tar.gz
+	md5sums = f30c1b2a4991178daeb9aee886ee212e
 
 pkgname = swayimg
 
