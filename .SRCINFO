@@ -1,6 +1,6 @@
 pkgbase = gfs2-utils
 	pkgdesc = Utilities for managing the global file system (GFS2)
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://sourceware.org/cluster/gfs/
 	arch = i686
@@ -9,16 +9,10 @@ pkgbase = gfs2-utils
 	license = LGPL
 	makedepends = util-linux
 	makedepends = check
-	depends = libutil-linux
-	depends = ncurses
-	depends = zlib
 	depends = python
-	depends = sh
 	options = staticlibs
-	source = https://releases.pagure.org/gfs2-utils/gfs2-utils-3.2.0.tar.bz2
-	source = fix-linking.patch
-	sha512sums = 16b2522b8fb6d928176d4823e382c3198ebe068260a090a3592095675dcacea0ccf878e9e994ac832995b9628311562ed6425123acd39a4ef81f8a6503fae46a
-	sha512sums = 3f182644b0e3f7bc9e593aecd9136339e964875a3af461229e35148bfe766d798eeda80a2c332f15e49a9c4b85bf86ee0d42fae45295a8c85f79f7a077953fc6
+	source = https://releases.pagure.org/gfs2-utils/gfs2-utils-3.3.0.tar.bz2
+	sha512sums = 62992ae948681370f4608d1d5c68067f5b31890c2a5ce57ee15ff0a77503b5e305734f5adb1979a427e274060b1fd53a602b557d08d826f6462f3a0b82fcf598
 
 pkgname = gfs2-utils
 
