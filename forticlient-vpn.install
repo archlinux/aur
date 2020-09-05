@@ -1,13 +1,15 @@
-post_install () {
+post_install() {
 
-       # Symlink fortivpn binary which is located in /opt
-       ln -sf /opt/forticlient/fortivpn /usr/bin/fortivpn
+	# Symlink fortivpn binary which is located in /opt
+	ln -sf /opt/forticlient/fortivpn /usr/bin/fortivpn
+	ln -sf opt/forticlient/gui/FortiClient-linux-x64/FortiClient /usr/bin/FortiClient
 
 }
 
-post_remove () {
+post_remove() {
 
-       # Remove symlink to fortivpn binary
-       rm /usr/bin/fortivpn
+	# Remove symlink to fortivpn binary
+	rm /usr/bin/fortivpn
+	rm /usr/bin/FortiClient
 
 }
