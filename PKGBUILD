@@ -1,7 +1,7 @@
 # Maintainer: Yann Orieult <yo.managements@gmail.com>
 
 pkgname=flauncher
-pkgver='1.4.0'
+pkgver='1.4.1'
 pkgrel='1'
 pkgdesc='Universal CLI file launcher'
 arch=('any')
@@ -10,9 +10,9 @@ license=('MIT')
 depends=('python>=3')
 makedepends=('python' 'python-setuptools')
 
-source=("https://files.pythonhosted.org/packages/source/f/flauncher/flauncher-1.4.0.tar.gz")
-sha256sums=('13caf5e8483b94746d1c40878c5bc4a81f569915f29547ad9ab186656509351c')
-#source#=("file:///$MHOME/dev/python/man/flauncher/dist/flauncher-1.4.0.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/f/flauncher/flauncher-1.4.1.tar.gz")
+sha256sums=('201e2cdefec77c277e30c847c9a1e28e9ccf5968d739daf7b619777228134b82')
+#source#=("file:///$MHOME/dev/python/man/flauncher/dist/flauncher-1.4.1.tar.gz")
 #sha256sums#=("SKIP")
 
 build() {
