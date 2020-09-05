@@ -1,6 +1,6 @@
 # Maintainer: ebcrowder <ebcrowder@gmail.com>
 pkgname=rust_ledger-bin
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="CLI accounting tool"
 url="https://github.com/ebcrowder/rust_ledger"
@@ -8,7 +8,7 @@ license=("GPL-3.0")
 arch=("x86_64")
 provides=("rust_ledger")
 source=("https://github.com/ebcrowder/rust_ledger/releases/download/v$pkgver/rust_ledger-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=("6ad63dac12d587e8333ec2624aca364db835037c6c42304058dfa0bde5f76503")
+sha256sums=("61b425dd808ccb4e9514a4f16025f9e0d57e2f54d483ba4c717e57e1b8d10260")
 
 package() {
     tar xzf rust_ledger-v$pkgver-x86_64-unknown-linux-gnu.tar.gz
