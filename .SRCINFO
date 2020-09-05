@@ -1,6 +1,6 @@
 pkgbase = python-napalm
 	pkgdesc = Network Automation and Programmability Abstraction Layer with Multivendor support
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/napalm-automation/napalm
 	arch = any
@@ -20,8 +20,8 @@ pkgbase = python-napalm
 	depends = python-scp
 	depends = python-lxml
 	depends = python-ciscoconfparse
-	source = https://github.com/napalm-automation/napalm/archive/3.0.0.tar.gz
-	sha256sums = dbc1a187b9b38cd0840a53b4281728852d22b35f59ec6e81e4c97001cb705a0e
+	source = https://github.com/napalm-automation/napalm/archive/3.0.1.tar.gz
+	sha256sums = a2d159e91a2d1355fc1eed323a189981999f99776d15c628a8b6aba822fb855a
 
 pkgname = python-napalm
 
