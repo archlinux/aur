@@ -4,7 +4,7 @@
 # Contributor: soloturn@gmail.com
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.08.18.a.r47.gfc34e4cf542
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.08.30.a.r52.g3f31b49f163
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -80,6 +80,18 @@ build() {
     find "$srcdir/llvm-project/clang-tools-extra" -type f -print0 | xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
     # Release build
     #LDFLAGS='-ldl -lpthread' python utils/build-script -b -p --foundation --xctest -R
+
+    # By default in /etc/makepkg.conf this is "-D_FORTIFY_SOURCE=2"
+    # Which will break `compiler-rt`
+    unset CPPFLAGS
+    unset CFLAGS
+    unset CXXFLAGS
+    unset LDFLAGS
+
+    export SWIFT_SOURCE_ROOT="$srcdir"
+    export PATH="$PATH:/usr/bin/core_perl"
+    utils/build-script -R "${_common_build_params[@]}"
+
     LDFLAGS='-ldl -lpthread' python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="/opt/swift" installable_package="$srcdir/swift.tar.gz"
 }
 
