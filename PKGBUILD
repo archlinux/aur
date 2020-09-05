@@ -66,7 +66,7 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-anbox
-pkgver=5.8.5
+pkgver=5.8.6
 _major=5.8
 _branch=5.x
 xanmod=1
@@ -101,7 +101,7 @@ done
 
 sha256sums=('e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5'
             'SKIP'
-            '2e1237c1a0e14dc4da1d46df595538ede40045eb46060226aa075f1e77337bf2'
+            '88af7b1e73f8e8d4d7e04da7f41564dbd4431a7f888efa7d12b64df19550141d'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991')
 
@@ -118,7 +118,7 @@ prepare() {
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux}" > localversion.20-pkgname
+  echo "${pkgbase#linux-xanmod-anbox}" > localversion.20-pkgname
 
   # Archlinux patches
   local src
