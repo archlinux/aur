@@ -1,6 +1,6 @@
 pkgname=python-netmiko
 _pkgname=netmiko
-pkgver=3.2.0
+pkgver=3.3.0
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc="Multi-vendor library to simplify Paramiko SSH connections to network devices"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-paramiko' 'python-scp' 'python-pyserial' 'python-textfsm')
 makedepends=('python-setuptools')
 source=("${url}/archive/${_pkgver}.tar.gz")
-sha256sums=('2464029a2c649846e1e6bb8d73631aca396aadfdbd91677c6501b4876706cf34')
+sha256sums=('2ff7c88b00ed50259f210af6d7bf3bbc5d4f486c2173051f6933fb444dfec961')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
