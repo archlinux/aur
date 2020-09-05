@@ -1,6 +1,6 @@
 pkgbase = cpufetch-git
-	pkgdesc = Prints a fancy summary of the CPU with some advanced information
-	pkgver = 0.33
+	pkgdesc = Simplistic yet fancy CPU architecture fetching tool
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/Dr-Noob/cpufetch
 	arch = x86_64
