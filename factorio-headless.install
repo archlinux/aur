@@ -1,7 +1,11 @@
+_restore_perms() {
+    chown factorio:games /etc/factorio/*
+}
+
 post_install() {
     systemd-sysusers factorio.conf
     [[ -d /var/lib/factorio ]] || install -dm 770 -o factorio -g games /var/lib/factorio
-    chown factorio:games /etc/factorio/*
+    _restore_perms
 }
 
 post_upgrade() {
@@ -10,4 +14,5 @@ post_upgrade() {
         post_install $1
         chmod 600 /etc/factorio/server-settings.json
     }
+    _restore_perms
 }
