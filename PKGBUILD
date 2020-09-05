@@ -1,5 +1,5 @@
 pkgname=replay-sorcery
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='An open-source, instant-replay screen recorder for Linux'
 arch=(i686 x86_64)
@@ -11,8 +11,12 @@ source=("${pkgname}"::git+"${url}".git#tag="${pkgver}"
         git+https://github.com/libjpeg-turbo/libjpeg-turbo.git
         git+https://github.com/ianlancetaylor/libbacktrace.git
         git+https://code.videolan.org/videolan/x264.git
-        git+https://github.com/lieff/minimp4.git)
+        git+https://github.com/lieff/minimp4.git
+        git+https://github.com/pseregiet/sdl2-audio-monitor.git
+        git+https://github.com/mstorsjo/fdk-aac.git)
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -25,6 +29,8 @@ prepare() {
    git config submodule."dep/libbacktrace".url ../libbacktrace
    git config submodule."dep/x264".url ../x264
    git config submodule."dep/minimp4".url ../minimp4
+   git config submodule."dep/sdl2".url ../sdl2-audio-monitor
+   git config submodule."dep/fdk-aac".url ../fdk-aac
    git submodule update
 }
 
