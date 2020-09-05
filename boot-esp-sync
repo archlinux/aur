@@ -1,0 +1,30 @@
+#! /bin/bash
+# Script for systemd boot-esp-sync
+
+if ! [ $(whoami) == "root" ]; then {
+		printf "You cannot perform this operation unless you are root.\n"
+		exit 1
+	}
+fi
+
+if ! [ -s "/etc/machine-id" ]; then {
+		printf "/etc/machine-id not valid\n"
+		exit 1
+	}
+fi
+
+ESP="/efi"
+MACHINE_ID="$(/usr/bin/cat /etc/machine-id)"
+BOOTFILES_SRC="/boot/"
+BOOTFILES_DEST="${ESP}/${MACHINE_ID}"
+
+if ! [ -d "${BOOTFILES_DEST}" ]; then {
+	printf "${BOOTFILES_DEST} not found\n"
+	printf "   Your system is not configured to use this service, because it's missing \n" 
+	printf "   either the ESP mount to /efi or the setup of systemd-boot (bootctl).\n"
+	printf "   Check https://wiki.archlinux.org/index.php/Systemd-boot for more info\n"
+	exit 1
+	}
+fi
+
+/usr/bin/rsync --verbose --recursive --times --delete "${BOOTFILES_SRC}" "${BOOTFILES_DEST}"

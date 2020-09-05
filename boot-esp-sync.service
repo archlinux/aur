@@ -1,0 +1,5 @@
+[Unit]
+Description=keep ESP in sync with /boot
+
+[Service]
+ExecStart=/usr/bin/boot-esp-sync
