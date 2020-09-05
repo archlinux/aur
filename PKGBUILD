@@ -2,7 +2,7 @@
 pkgname=forticlient-vpn
 pkgver=6.4.0.0851
 pkgrel=6
-pkgdesc="Build throught the official package of FortiClient VPN"
+pkgdesc="Build through the official package of FortiClient VPN"
 arch=("x86_64")
 url="https://forticlient.com/"
 license=('custom:fortinet')
@@ -23,8 +23,8 @@ package() {
     	install -Dm 644 "${pkgdir}/usr/share/doc/forticlient/copyright" "${pkgdir}/usr/share/licenses/fortinet/LICENSE"
 	
 	# Symlink fortivpn binary which is located in /opt
-	ln -s '/opt/forticlient/fortivpn' "${pkgdir}/usr/bin/fortivpn"
-	ln -s 'opt/forticlient/gui/FortiClient-linux-x64/FortiClient' "${pkgdir}/usr/bin/FortiClient"
+	ln -sf '/opt/forticlient/fortivpn' "${pkgdir}/usr/bin/fortivpn"
+	ln -sf 'opt/forticlient/gui/FortiClient-linux-x64/FortiClient' "${pkgdir}/usr/bin/FortiClient"
 
 }
 
