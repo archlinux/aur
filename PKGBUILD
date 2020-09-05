@@ -4,10 +4,10 @@ pkgver=0.2.2
 pkgrel=1
 pkgdesc="Simple battery status notifier"
 arch=(any)
-url='http://ikn.org.uk/pwrnotify'
+url='http://ikn.org.uk/tool/pwrnotify'
 license=(GPL3)
 depends=(libnotify)
-source=(http://ikn.org.uk/files/desktop/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(http://ikn.org.uk/download/tool/$pkgname/$pkgname-$pkgver.tar.gz)
 md5sums=('03a2ce5fd11d8c8fcfcf225850d05f09')
 
 build () {
