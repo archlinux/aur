@@ -3,3 +3,4 @@ src/
 *.zip
 *.tar.xz
 *.tar.gz
+*.tar.zst
