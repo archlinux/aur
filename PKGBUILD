@@ -1,9 +1,9 @@
 # Maintainer: Platon Pronko < platon7pronko at gmail dot com >
 
 pkgname="cryptopro-csp-k1"
-pkgver=5.0.11455
+pkgver=5.0.11823
 # pkgver is not allowed to contain forward slashes
-_pkgver_patch="5"
+_pkgver_patch="6"
 _pkgver="$pkgver-$_pkgver_patch"
 pkgrel=0
 pkgdesc='CryptoPro CSP 5.0'
@@ -35,8 +35,8 @@ source=(
     'cades_linux_amd64.tar.gz'
 )
 md5sums=(
-    'b87bbe581d2431c71b8ec79f4bf7303b'
-    'e0fa664ce9fba1b38e8a6c2b3e0c419c'
+    '9bfd01ef7279ef20ce3e2df0ff4e8fb5'
+    '11ec1def2383ba5644066ab73163785f'
 )
 install=cryptopro-csp-k1.install
 options=(!strip)
@@ -50,11 +50,11 @@ package() {
     bsdtar -xf "lsb-cprocsp-ca-certs-${_pkgver}.noarch.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-rdr-gui-gtk-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-rdr-pcsc-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
-    bsdtar -xf "cprocsp-rdr-jacarta-64-5.0.0.1148-4.x86_64.rpm" -C "$pkgdir"
+    bsdtar -xf "cprocsp-rdr-jacarta-64-5.0.0.1170-4.x86_64.rpm" -C "$pkgdir"
 
     cd "$srcdir/cades_linux_amd64"
-    bsdtar -xf "cprocsp-pki-2.0.0-amd64-cades.rpm" -C "$pkgdir"
-    bsdtar -xf "cprocsp-pki-2.0.0-amd64-plugin.rpm" -C "$pkgdir"
+    bsdtar -xf "cprocsp-pki-cades-64-2.0.14071-1.amd64.rpm" -C "$pkgdir"
+    bsdtar -xf "cprocsp-pki-plugin-64-2.0.14071-1.amd64.rpm" -C "$pkgdir"
 
     rm -r "$pkgdir/etc/init.d/"
     mv "$pkgdir/tmp/" "$pkgdir/opt/cprocsp/tmp/"
