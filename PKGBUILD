@@ -2,13 +2,13 @@
 
 pkgname=cinema-git
 pkgver=r11.ac81a73
-pkgrel=2
+pkgrel=3
 pkgdesc="Video player and video collection manager"
 arch=('x86_64')
 url="https://invent.kde.org/maui/cinema"
 license=('GPL3')
-depends=('kio' 'mauikit-git' 'attica' 'ki18n' 'qt5-tools')
-makedepends=('git' 'extra-cmake-modules')
+depends=('kio' 'mauikit-git' 'attica' 'ki18n')
+makedepends=('git' 'extra-cmake-modules' 'qt5-tools')
 provides=('cinema')
 conflicts=('cinema')
 source=("git+$url.git" 'org.kde.cinema.desktop')
