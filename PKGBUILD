@@ -3,7 +3,7 @@
 pkgname=tealdeer
 _binname=tldr
 pkgver=1.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast tldr client in Rust."
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/dbrgn/tealdeer"
@@ -17,7 +17,7 @@ sha256sums=('eaf42fe17be751985cbf46c170ef623fcbd36028c88c2e70823492a9335a4a8e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cargo build --release
+  env CARGO_INCREMENTAL=0 CARGO_TARGET_DIR=target cargo build --release
 }
 
 package() {
