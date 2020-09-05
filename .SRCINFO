@@ -1,7 +1,7 @@
 pkgbase = crispy-doom
 	pkgdesc = Vanilla-compatible enhanced Doom engine
-	pkgver = 5.9.0
-	pkgrel = 2
+	pkgver = 5.9.1
+	pkgrel = 1
 	url = http://fabiangreffrath.github.io/crispy-doom
 	install = crispy-doom.install
 	arch = i686
@@ -16,10 +16,10 @@ pkgbase = crispy-doom
 	optdepends = freedm: Free deathmatch game
 	optdepends = freedoom1: Free Ultimate Doom-compatible game
 	optdepends = freedoom2: Free Doom II-compatible game
-	source = https://github.com/fabiangreffrath/crispy-doom/archive/crispy-doom-5.9.0.tar.gz
-	source = 0001-consider-Sigil-s-mixed-case-file-names.patch
-	b2sums = a97bb7d9bda0c4e984054a0051cadfcaba7c758829bec9e615801bbf91dc1c8063decfedf5b76056cd2fb05e8fcf4113f19c10d72604399b715011d994af3e8b
-	b2sums = 0b4fa985b47924e770f8f750c8f4835c374fb689c86ef2324578835d9a8659cc32390029af73e9ac494e383750fbfaa23ceae1e81f6f87fc9f75739083cca3d6
+	source = https://github.com/fabiangreffrath/crispy-doom/archive/crispy-doom-5.9.1.tar.gz
+	source = 0001-Only-load-Sigil-when-gameversion-is-Ultimate-Doom-66.patch
+	b2sums = 2bf862d8134689afba101abeed5cf1e1695378f235718941bf9fc2717bc93dd848173bb758e8bf0bc4a8ab1bfa75533c2ae838210326451f7c4285b0acb2e08b
+	b2sums = e6566c793fc561c0beb350e0ce075580b7374b2f18764ff61b960e7410c1f4b79300bbf37050891c1fe38e98ec706d2bc696a8e0700b55cf13eb8517901339c9
 
 pkgname = crispy-doom
 
