@@ -24,7 +24,7 @@ sha512sums=('af733f1a7f84d0b7c540bf793dcd7706d1894fb3ee96d322583e640ad486eaffd8b
 [[ "$CARCH" == "i686" ]] && sha512sums[0]='38bd4fcf422831be0a2fbb1ee853da2db52300c25aa5cde6e901af9f159d2c1cc4a410678e64e42cb30f7cc48c89b9a54d7d184f25800ea7ee84fa8f6cc734b9'
 
 if [[ -n "$FIREFOX_ESR_BIN_PREFER_OLDER" ]]; then
-    pkgver=68.11.0
+    pkgver=68.12.0
     provides=('firefox=68')
     sha512sums[0]='d71d18a430c3deda64533d7330974c90355bd25fda774b4267dabeb5ce54d6a9056f236abfbe99eb66ed0290eda5e45a6772110e7d283593fd66e950fc8f2277'
     [[ "$CARCH" == "i686" ]] && sha512sums[0]='8b1e66019dd18a665c4fc6219747ed2e2f0f2070cffefdebe32b41118e60f235bdcbdb72ad5ecf58314c114bae8bdbe55399d7cfb9ad2493c47d0da2cfbe61b7'
