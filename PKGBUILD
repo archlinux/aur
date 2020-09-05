@@ -1,6 +1,6 @@
 pkgname='alacritty-ligatures-git'
 _pkgname="alacritty"
-pkgver=6.2.r1661.0146076
+pkgver=0.6
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/alacritty/alacritty"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
-  printf "6.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "0.6.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build(){
