@@ -1,9 +1,7 @@
-# Maintainer: Michael Borders <michael.a.borders@gmail.com>
-
 pkgname=(python-napalm)
 _pkgname=napalm
-pkgver=2.5.0
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Network Automation and Programmability Abstraction Layer with Multivendor support"
 arch=('any')
 url="https://github.com/napalm-automation/napalm"
@@ -12,7 +10,7 @@ depends=('python' 'python-cffi' 'python-paramiko' 'python-future' 'python-textfs
 makedepends=('python-setuptools')
 checkdepends=('python-tox')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c30254303f0d908f64902d89ea73673a922d3a27f94c2af674264a1b5a230249')
+sha256sums=('dbc1a187b9b38cd0840a53b4281728852d22b35f59ec6e81e4c97001cb705a0e')
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver"
