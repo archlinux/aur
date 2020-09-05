@@ -7,7 +7,7 @@
 
 pkgbase='archiso-git'
 pkgname=('archiso-git' 'mkinitcpio-archiso-git')
-pkgver=46.r0.g945f383
+pkgver=47.1.r1.g45a5d22
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install iso images'
 arch=('any')
@@ -25,7 +25,7 @@ pkgver() {
 
 package_archiso-git() {
   depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'libisoburn'
-  'squashfs-tools')
+  'mtools' 'squashfs-tools')
   optdepends=('edk2-ovmf: for emulating UEFI with run_archiso'
               'qemu: for run_archiso')
   conflicts=("${pkgname%-git}")
