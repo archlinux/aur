@@ -15,4 +15,4 @@ package() {
 	install -Dm755 shelldio.sh "$pkgdir/usr/bin/shelldio"
 }
 
-md5sums=('727a54600ad9d11bc037f9c33e374ed4')
+md5sums=('399d95206aab44ab46fbe2e4338d027b')
