@@ -1,0 +1,18 @@
+pkgbase = kquickimageeditor-git
+	pkgdesc = Image editing components
+	pkgver = r19.78923f4
+	pkgrel = 1
+	url = https://invent.kde.org/libraries/kquickimageeditor
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	depends = qt5-declarative
+	provides = kquickimageeditor
+	conflicts = kquickimageeditor
+	source = git+https://invent.kde.org/libraries/kquickimageeditor.git
+	sha256sums = SKIP
+
+pkgname = kquickimageeditor-git
+
