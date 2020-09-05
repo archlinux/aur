@@ -1,6 +1,6 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=ttk-themes
-pkgver=2.4.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="A group of themes for the ttk extenstions for Tkinter gathered together by RedFantom and created by various authors."
 url="https://github.com/RedFantom/ttkthemes"
@@ -13,12 +13,12 @@ conflicts=()
 replaces=()
 backup=()
 install=
-source=("https://github.com/RedFantom/ttkthemes/archive/2.4.0.tar.gz")
+source=("https://github.com/RedFantom/ttkthemes/archive/v3.1.1.tar.gz")
 
-md5sums=('0f4bda9e624fded1c17f3e7f8a4bac63')
+md5sums=('f3cfe6f1f7f529105624ff5cf5de0b95')
 
 build() {
-  tar xzf ${pkgver}.tar.gz
+  tar xzf v${pkgver}.tar.gz
   }
 
 package() {
