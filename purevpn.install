@@ -1,0 +1,213 @@
+post_install() {
+	#
+	# Copyright (c) 2018 PureVPN. All rights reserved.
+	#
+
+	PURE_DIR=/usr/lib/purevpn
+
+	function install_init() {
+	    cp -f $PURE_DIR/purevpn.init /etc/init.d/purevpn
+	    chmod +x /etc/init.d/purevpn
+	    /etc/init.d/purevpn restart > /dev/null 2>&1 || true
+	}
+
+	function install_update_rcd() {
+	    /usr/bin/update-rc.d purevpn defaults || true
+	}
+
+	function install_systemd() {
+	    cp -f $PURE_DIR/purevpn.service /usr/lib/systemd/system/purevpn.service
+	    /usr/bin/systemctl enable purevpn > /dev/null 2>&1 || true
+	    /usr/bin/systemctl restart purevpn > /dev/null 2>&1 || true
+	}
+
+	printf "building configuration..\n"
+	chmod 775 /usr/bin/purevpn
+	chmod +x /usr/bin/purevpn-agent
+	chmod +x /usr/bin/purevpn-openvpn
+	chmod +x /usr/bin/purevpnd
+	chmod +x /etc/purevpn/pure-resolv-conf
+	sleep 1
+
+	# Checking ifconfig file
+	cmd=`which ifconfig`
+	cmr=`which route`
+
+	if [ "x" = "x$cmd" ]; then
+	    cp /etc/purevpn/ifconfig /usr/bin/ifconfig
+	    rm -f /etc/purevpn/ifconfig
+	    printf "installing net-tools \n"
+
+	else
+	    rm -f /etc/purevpn/ifconfig
+	    printf "validating net-tools \n"
+	fi
+
+	if [ "x" = "x$cmr" ]; then
+	    cp /etc/purevpn/route /usr/bin/route
+	    rm -f /etc/purevpn/route
+	    printf ".."
+
+	else
+	    rm -f /etc/purevpn/route
+	    printf ".."
+	fi
+
+	#if [ -f "/etc/debian_version" ]; then
+	#    # Debian/Ubuntu logic
+	#    which systemctl &>/dev/null
+	#    if [ $? -eq 0 ]; then
+	#	install_systemd
+	#    else
+	#	# Assuming sysv
+	#	install_init
+	#	install_update_rcd
+	#    fi
+	#elif [ -f "/etc/os-release" ]; then
+	#    source /etc/os-release
+	#    if [ $ID = "arch" ]; then
+	#    # Arch Linux
+	#    install_systemd
+	#    fi
+	#else
+	#    printf "Error: pure-007. Distribution not verified \nContact PureVPN customer support for details. \n"
+	#    exit 1
+	#fi
+
+	#printf "Package Installed.\n"
+	
+	echo "The PureVPN daemon must be running for PureVPN to connect."
+	echo "Execute 'sudo systemctl enable --now purevpn' in a terminal."
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	#
+	# Copyright (c) 2018 PureVPN. All rights reserved.
+	#
+
+	home=$HOME
+	USER_DIR="$home/.purevpn"
+	ROOT_DIR="/root/.purevpn"
+	CONF_DIR="/etc/purevpn"
+	LIB_DIR="/usr/lib/purevpn"
+
+	# Disconnect vpn before removing files
+	/usr/bin/purevpn --status | grep Connected > /dev/null 2>&1
+	if [ $? -eq 0 ]; then
+	    /usr/bin/purevpn --disconnect > /dev/null 2>&1 || true
+	    printf "Disconnecting VPN"
+	    echo -e "\n"
+	    sleep 1
+	fi
+
+	# Stop daemon
+	which /usr/bin/systemctl > /dev/null 2>&1
+	if [ $? -eq 0 ]; then
+		/bin/systemctl stop purevpn > /dev/null 2>&1 || true
+	        /usr/bin/systemctl disable purevpn > /dev/null 2>&1 || true
+	        printf "stopping purevpn service.."
+	        echo -e " "
+	else
+		if [ -x /etc/init.d/purevpn ]; then
+			/etc/init.d/purevpn stop > /dev/null 2>&1 || true
+		fi
+	fi
+	sleep 1
+
+
+	# Removing certificates and configurations
+	if [ -d "$CONF_DIR" ]; then
+	    rm -rf $CONF_DIR
+	    printf "searching previous configurations"
+	    echo -e " "
+	fi
+
+	if [ -d "$LIB_DIR" ]; then
+	    rm -rf $LIB_DIR
+	fi
+
+	if [ -d "$ROOT_DIR" ]; then
+	    rm -rf $ROOT_DIR
+	fi
+
+	if [ -d "$USER_DIR" ]; then
+	    rm -rf $USER_DIR
+	fi
+
+
+	# Removing run file
+	if [ -f /usr/bin/purevpn ]; then
+	    rm -f /usr/bin/purevpn
+	fi
+
+	# Removing agent file
+	if [ -f /usr/bin/purevpn-agent ]; then
+	    rm -f /usr/bin/purevpn-agent
+	    printf " .."
+	fi
+
+	# Removing openvpn file
+	if [ -f /usr/bin/purevpn-openvpn ]; then
+	    rm -f /usr/bin/purevpn-openvpn
+	    printf " .."
+	fi
+
+	# Removing daemon file
+	if [ -f /usr/bin/purevpnd ]; then
+	    rm -f /usr/bin/purevpnd
+	    printf ".."
+	    echo -e " "
+	fi
+
+	# Removing init file
+	if [ -f /etc/init.d/purevpn ]; then
+	    rm -f /etc/init.d/purevpn
+	    printf "deleting previous purevpn configurations and services "
+	    echo -e " "
+	fi
+
+	# Removing service file
+	if [ -f /usr/lib/systemd/system/purevpn.service ]; then
+	    rm -f /usr/lib/systemd/system/purevpn.service > /dev/null 2>&1 || true
+	    /usr/bin/systemctl daemon-reload > /dev/null 2>&1 || true
+	    printf "deleting previous purevpn configurations and services "
+	    echo -e " "
+	fi
+
+	# Removing log file
+	if [ -f /var/log/purevpn.log ]; then
+	    rm -f /var/log/purevpn.log
+	    printf "Cleaning Done. "
+	    echo -e " "
+
+	fi
+
+
+
+}
+
+post_remove() {
+	#
+	# Copyright (c) 2018 PureVPN. All rights reserved.
+	#
+
+	# Complete uninstall when purge
+	if [ "$1" = "purge" ]; then
+	    rm -f /usr/bin/purevpn || true
+	    rm -f /usr/bin/purevpn-agent || true
+	    rm -f /usr/bin/purevpn-openvpn || true
+	    rm -f /usr/bin/purevpnd || true
+	    rm -f /var/log/purevpn.log || true
+	    rm -f /etc/init.d/purevpn || true
+
+	    rm -rf /usr/lib/purevpn || true
+	    rm -rf /usr/share/doc/purevpn || true
+
+	    rm -rf /etc/purevpn || true
+	fi
+
+}

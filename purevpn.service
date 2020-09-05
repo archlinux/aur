@@ -1,0 +1,17 @@
+[Unit]
+Description=PureVPN CLI Daemon 
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=root
+Environment=PATH=/bin:/usr/bin
+ExecStart=/usr/bin/purevpnd
+KillMode=process
+KillSignal=SIGTERM
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
