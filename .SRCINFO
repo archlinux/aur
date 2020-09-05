@@ -1,7 +1,7 @@
 pkgbase = connect
 	pkgdesc = makes socket connection using SOCKS4/5 and HTTP tunnel.
 	pkgver = 1.105
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gotoh/ssh-connect
 	arch = i686
 	arch = x86_64
