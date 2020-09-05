@@ -5,7 +5,7 @@ pkgbase = ydict
 	url = https://github.com/DreamSaddle/youdao-dict
 	arch = x86_64
 	license = GPL3
-	source = https://github.com/DreamSaddle/youdao-dict/releases/download/0.3.0/YDict-0.3.0.tar.gz
+	source = https://files.cnblogs.com/files/dream-saddle/YDict-0.3.0.tar.gz
 	md5sums = SKIP
 
 pkgname = ydict

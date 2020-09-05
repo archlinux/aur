@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("https://github.com/DreamSaddle/youdao-dict/releases/download/$pkgver/YDict-$pkgver.tar.gz")
+source=("https://files.cnblogs.com/files/dream-saddle/YDict-$pkgver.tar.gz")
 noextract=()
 md5sums=('SKIP')
 
