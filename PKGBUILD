@@ -1,40 +1,46 @@
-# Contributor: Daniel Nagy <danielnagy at gmx de>
-# Contributor: Sascha Pfau
+# Contributor: Aetf <aetf at unlimitedcodeworks dot xyz>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-_realname=CuteMarkEd
+_gitname=CuteMarkEd-NG
 pkgname=cutemarked
-pkgver=0.11.3
+pkgver=20200625.r910
 pkgrel=1
-pkgdesc="Qt Markdown editor with live HTML preview, math expressions and code syntax highlighting"
-url="https://github.com/cloose/CuteMarkEd"
-arch=(x86_64)
-license=(GPL)
-depends=(discount hicolor-icon-theme hunspell qt5-webkit)
-makedepends=(qt5-tools)
-optdepends=('mathjax2: formula support')
-source=(https://github.com/cloose/CuteMarkEd/archive/v$pkgver/$_realname-$pkgver.tar.gz
-        cutemarked-0.11.3-fix-build-against-qt-5.11.0.patch
-        cutemarked.appdata.xml)
-sha256sums=('78a41808c2f0452375810abdff76eeaaee012f8d1368a2b8772ec6b4d2ceeec8'
-            'b9f6505f12c72b7f46b68c48452e3bc85d905c1640e5db04b341d4c57860d25c'
-            '3bfe02706a664a03da411138301d39a613f8e9770120b69a43e5e96f3ec85fa0')
+pkgdesc="Qt Markdown Editor"
+url="https://github.com/Waqar144/${_gitname}"
+arch=('i686' 'x86_64')
+license=('GPL2')
+depends=('qt5-webengine')
+makedepends=('git' 'qt5-tools')
+source=("git+$url.git#commit=28c6ea8"
+	"git+https://github.com/hunspell/hunspell.git"
+	"git+https://github.com/mity/md4c"
+	"https://github.com/pbek/qmarkdowntextedit"
+       )
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+
+pkgver() {
+  cd $_gitname
+   printf "%s.r%s" $(git log -1 --format="%cd" --date=short | tr -d '-') $(git rev-list --count HEAD)
+}
 
 prepare() {
-  cd $_realname-$pkgver
-  patch -Np1 -i ../cutemarked-0.11.3-fix-build-against-qt-5.11.0.patch
-  sed -i 's|http[s]\?://cdn.mathjax.org/mathjax/latest/MathJax.js|file:///usr/share/mathjax2/MathJax.js|' \
-    app-static/template/htmltemplate.cpp app/template_presentation.html
-  sed -i '/syntax.html/a <file>syntax_hu_HU.html</file>' app/resources.qrc
-  sed -i 's/syntax_hu/syntax_hu_HU/' app/translations/cutemarked_hu_HU.ts
+  cd $_gitname
+  git submodule init
+  for __submodule in hunspell md4c qmarkdowntextedit
+  do git config submodule.${__submodule}.url "$srcdir"/${_gitname}/3rdparty/${__submodule}
+  done
+  git submodule update
 }
 
 build() {
-  cd $_realname-$pkgver
-  qmake
+  cd $_gitname
+  [[ -d build ]] || mkdir build
+  cd build
+  qmake ..
   make
 }
+
 package() {
-  cd $_realname-$pkgver
+  cd $_gitname/build
   make INSTALL_ROOT="$pkgdir" install
-  install -Dm644 ../$pkgname.appdata.xml "$pkgdir/usr/share/metainfo/$pkgname.appdata.xml"
 }
