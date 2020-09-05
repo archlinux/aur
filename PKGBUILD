@@ -2,6 +2,7 @@ pkgname=activitywatch
 pkgver=0.9.2
 pkgrel=1
 url="https://activitywatch.net/"
+pkgdesc="automatically tracks how you spend time on your devices"
 license=("MPL2")
 arch=('x86_64')
 depends=(
