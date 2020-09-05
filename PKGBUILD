@@ -1,8 +1,8 @@
 # Maintainer: Anatoly Rugalev <anatoly.rugalev gmail com>
 
 pkgname=kube-commander
-pkgver=${TAG}
-pkgrel=${TAG_RELEASE}
+pkgver=0.5.5-rc.2
+pkgrel=1
 pkgdesc="kubecom is terminal UI for easy interaction with Kubernetes"
 url="https://github.com/AnatolyRugalev/kube-commander"
 license=('MIT')
