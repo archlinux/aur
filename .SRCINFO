@@ -1,8 +1,8 @@
 pkgbase = nota-git
 	pkgdesc = Multi-platform text editor
 	pkgver = v1.1.1.r17.gd50e906
-	pkgrel = 1
-	url = https://vvave.kde.org/
+	pkgrel = 2
+	url = https://invent.kde.org/maui/nota
 	arch = x86_64
 	license = GPL3
 	makedepends = git

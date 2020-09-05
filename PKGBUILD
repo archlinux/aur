@@ -2,16 +2,16 @@
 
 pkgname=nota-git
 pkgver=v1.1.1.r17.gd50e906
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-platform text editor"
 arch=(x86_64)
-url="https://vvave.kde.org/"
+url="https://invent.kde.org/maui/nota"
 license=('GPL3')
 depends=('ki18n' 'knotifications' 'qt5-svg' 'kio' 'mauikit-git' 'kirigami2' 'syntax-highlighting')
 makedepends=('git' 'extra-cmake-modules')
 provides=('nota')
 conflicts=('nota')
-source=("git+https://invent.kde.org/maui/nota.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
