@@ -1,7 +1,7 @@
 pkgbase = create_ap
 	pkgdesc = A shell script to create a NATed/Bridged Software Access Point
-	pkgver = 0.4.2
-	pkgrel = 1
+	pkgver = 0.4.6
+	pkgrel = 3
 	url = https://github.com/oblique/create_ap
 	arch = any
 	license = BSD
@@ -13,10 +13,14 @@ pkgbase = create_ap
 	depends = iptables
 	depends = util-linux
 	depends = procps-ng
+	depends = which
 	optdepends = haveged: boost low entropy
 	backup = etc/create_ap.conf
-	source = https://github.com/oblique/create_ap/archive/v0.4.2.tar.gz
-	sha512sums = 4c252ad17f07a36cee82bb1b6b49d4f7024b32d52e80b4e95d77b70803575005e37ee086c161d12070722de1a250fcb76cca6165792302869fd27b69ceca93b3
+	source = create_ap-0.4.6.tar.gz::https://github.com/oblique/create_ap/archive/v0.4.6.tar.gz
+	source = create_ap-0.4.6.tar.gz.sig::https://github.com/oblique/create_ap/releases/download/v0.4.6/create_ap-0.4.6.tar.gz.sig
+	validpgpkeys = B45B5508C1D79EAE40CA6C8A3532E98C712BFD5C
+	sha512sums = 38100296a87eb8f5a29b7e3eff618cd2518859b5a3e24a08058b3839149b159a81a3f12976d1217d5798708bbc5e44dfaceab2f4e636339cdf8a5c0f5c06bd2d
+	sha512sums = SKIP
 
 pkgname = create_ap
 

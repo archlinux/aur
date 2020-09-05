@@ -1,20 +1,23 @@
-# Maintainer: NicoHood <aur {at} nicohood {dot} de>
+# Maintainer: NicoHood <archlinux {cat} nicohood {dog} de>
+# PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
 # Contributor: Xiaoxiao Pu <i@xiaoxiao.im>
 
 pkgname=create_ap
-pkgver=0.4.2
-pkgrel=1
+pkgver=0.4.6
+pkgrel=3
 pkgdesc="A shell script to create a NATed/Bridged Software Access Point"
 arch=('any')
 url="https://github.com/oblique/create_ap"
 license=('BSD')
 depends=('bash' 'hostapd' 'iproute2' 'iw' 'dnsmasq'
-         'iptables' 'util-linux' 'procps-ng')
+         'iptables' 'util-linux' 'procps-ng' 'which')
 optdepends=('haveged: boost low entropy')
-makedepends=('')
 backup=('etc/create_ap.conf')
-source=("https://github.com/oblique/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('4c252ad17f07a36cee82bb1b6b49d4f7024b32d52e80b4e95d77b70803575005e37ee086c161d12070722de1a250fcb76cca6165792302869fd27b69ceca93b3')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oblique/${pkgname}/archive/v${pkgver}.tar.gz"
+"${pkgname}-${pkgver}.tar.gz.sig::https://github.com/oblique/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.sig")
+sha512sums=('38100296a87eb8f5a29b7e3eff618cd2518859b5a3e24a08058b3839149b159a81a3f12976d1217d5798708bbc5e44dfaceab2f4e636339cdf8a5c0f5c06bd2d'
+            'SKIP')
+validpgpkeys=('B45B5508C1D79EAE40CA6C8A3532E98C712BFD5C')
 
 package() {
     make -C "${pkgname}-${pkgver}" DESTDIR="${pkgdir}" install
