@@ -7,7 +7,7 @@ pkgdesc="A web app for managing users on Jellyfin"
 arch=("x86_64")
 url="https://github.com/hrfee/jfa-go"
 license=('MIT')
-makedepends=('go>=1.14' 'python>=3.6.0-1' 'nodejs' 'npm')
+makedepends=('go>=1.14' 'python>=3.6.0-1' 'nodejs' 'npm' 'git')
 checkdepends=()
 optdepends=()
 provides=("jfa-go")
