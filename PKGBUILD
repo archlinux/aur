@@ -1,6 +1,6 @@
 pkgname=python-junos-eznc
 _pkgname=py-junos-eznc
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Python library for Junos automation"
 arch=('any')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('python' 'python-lxml' 'python-ncclient' 'python-paramiko' 'python-scp' 'python-jinja' 'python-pyaml' 'python-netaddr' 'python-six' 'python-pyserial' 'python-yamlordereddictloader' 'python-pyparsing' 'python-transitions')
 makedepends=('python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('064fd107afdcd2f765cf37736b091617cd345a85e1aea063c571eeadbad9978c')
+sha256sums=('b15c46bcc04cfd9278d2ef23e1ee5e73673abd9b613beb7d86bb4f40309f2e6a')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
