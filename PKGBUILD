@@ -4,10 +4,10 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="Restart Tvheadend unless it's recording"
 arch=(any)
-url=http://ikn.org.uk/tvheadend-safe-restart
+url=http://ikn.org.uk/tool/tvheadend-safe-restart
 license=(BSD)
 depends=(jshon)
-source=("http://ikn.org.uk/files/tools/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("http://ikn.org.uk/download/tool/$pkgname/$pkgname-$pkgver.tar.gz")
 sha1sums=('d6d28c44026de7d74ec2ec425b1e2a73dd087856')
 
 package () {
