@@ -1,12 +1,13 @@
 pkgbase = forticlient-vpn
 	pkgdesc = Official FortiClient VPN
 	pkgver = 6.4.0.0851
-	pkgrel = 4
+	pkgrel = 5
 	url = https://forticlient.com/
 	install = forticlient-vpn.install
 	arch = x86_64
 	license = custom:fortinet
 	provides = fortivpn
+	provides = FortiClient
 	source = https://filestore.fortinet.com/forticlient/downloads/FortiClientFullVPNInstaller_6.4.0.0851.deb
 	sha256sums = d229a2f3f13378244058b5b678d25976ba85e5d4c1b247ed2c3c242f6604ed2b
 
