@@ -2,7 +2,7 @@
 
 _target=i686-elf
 pkgname=$_target-gcc
-pkgver=9.2.0
+pkgver=10.2.0
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for i686-elf target'
 arch=(i686 x86_64)
@@ -13,11 +13,11 @@ options=(!emptydirs)
 source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "libiberty-ignore-cflags.patch"
         "https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz.sig")
-sha256sums=('ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206'
+sha256sums=('b8dd4368bb9c7f0b98188317ee0254dd8cc99d1e3a18d0ff146c855fe16c1d8c'
             '8b2aea00e98f7c311b1d0fb14e4b435a03c65fde32bc992c924edb6fa7b83c9c'
             'SKIP')
 _basedir=gcc-$pkgver
-validpgpkeys=("33C235A34C46AA3FFB293709A328C3A2C3C45C06")
+validpgpkeys=("13975A70E63C361C73AE69EF6EEB81F8981C74C7")
 prepare() {
   cd $_basedir
  
