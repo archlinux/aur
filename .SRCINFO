@@ -1,0 +1,16 @@
+pkgbase = meshcentral
+	pkgdesc = dmenu adapter for bitwarden-cli
+	pkgver = 0.5.13
+	pkgrel = 1
+	url = https://github.com/Ylianst/MeshCentral
+	arch = x86_64
+	license = Apache
+	makedepends = npm
+	depends = nodejs
+	noextract = meshcentral-0.5.13.tar.gz
+	backup = etc/meshcentral/config.json
+	source = meshcentral-0.5.13.tar.gz::https://github.com/Ylianst/MeshCentral/archive/MeshCentral_v0.5.13.tar.gz
+	sha512sums = e116241065834a25e56d8ced726ce978c50c876c56a916c8b0ecd211217cf4465c3b29d9d0e803af7dfe921d404fa190e2ea9a04714aba224aa8bc10286398fd
+
+pkgname = meshcentral
+
