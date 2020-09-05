@@ -112,17 +112,17 @@ package() {
 	install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/smfpnetdiscovery" \
 		"${pkgdir}/opt/smfp-common/printer/bin/smfpnetdiscovery"
 
-	#install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/pstospl" \
-		#"${pkgdir}/opt/smfp-common/printer/bin/pstospl"
-
-	#install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/pstosplc" \
-		#"${pkgdir}/opt/smfp-common/printer/bin/pstosplc"
-
 	install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/rastertospl" \
 		"${pkgdir}/opt/smfp-common/printer/bin/rastertospl"
 
 	install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/pstosecps" \
 		"${pkgdir}/opt/smfp-common/printer/bin/pstosecps"
+
+	#install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/pstospl" \
+		#"${pkgdir}/opt/smfp-common/printer/bin/pstospl"
+
+	#install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/pstosplc" \
+		#"${pkgdir}/opt/smfp-common/printer/bin/pstosplc"
 
 	#install -Dm755 "${srcdir}/${_pkgcodename}/${_platform}/rastertosplc" \
 		#"${pkgdir}/opt/smfp-common/printer/bin/rastertosplc"
@@ -131,10 +131,10 @@ package() {
 		"${pkgdir}/opt/smfp-common/printer/.version"
 
 	ln -s '/opt/smfp-common/printer/bin/smfpnetdiscovery' "${pkgdir}/usr/lib/cups/backend/smfpnetdiscovery"
-	#ln -s '/opt/smfp-common/printer/bin/pstospl' "${pkgdir}/usr/lib/cups/filter/pstospl"
-	#ln -s '/opt/smfp-common/printer/bin/pstosplc' "${pkgdir}/usr/lib/cups/filter/pstosplc"
 	ln -s '/opt/smfp-common/printer/bin/rastertospl' "${pkgdir}/usr/lib/cups/filter/rastertospl"
 	ln -s '/opt/smfp-common/printer/bin/pstosecps' "${pkgdir}/usr/lib/cups/filter/pstosecps"
+	#ln -s '/opt/smfp-common/printer/bin/pstospl' "${pkgdir}/usr/lib/cups/filter/pstospl"
+	#ln -s '/opt/smfp-common/printer/bin/pstosplc' "${pkgdir}/usr/lib/cups/filter/pstosplc"
 	#ln -s '/opt/smfp-common/printer/bin/rastertosplc' "${pkgdir}/usr/lib/cups/filter/rastertosplc"
 	ln -s '/opt/hp/printer' "${pkgdir}/opt/smfp-common/printer/.usedby/hp"
 	ln -s '/opt/smfp-common/printer' "${pkgdir}/opt/smfp-common/legacy_compat/.usedby/printer"
