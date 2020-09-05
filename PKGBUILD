@@ -1,6 +1,6 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
-pkgver=0.48.0
+pkgver=0.48.1
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
@@ -14,10 +14,8 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "i686" ]   && _platform="x86"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
-source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz"
-        "https://github.com/buchen/portfolio/commit/7aedac92d7e27a4cdc4659bd84eef7b5a0de019d.patch")
-sha1sums=('d24d037fae92b0f1e15c70993b87ebfb670b5807'
-          'de4b22f3b32b39811f0eedba0e4d94b2dc5a62ed')
+source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
+sha1sums=('08ec6178eace364d8d5991a5c926aa4d62708ebe')
 
 prepare() {
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
@@ -36,8 +34,6 @@ build() {
     #export JAVA_HOME=/usr/lib/jvm/default-runtime
     export JAVA_HOME=$(archlinux-java-run --min 8 --max 13 --java-home)
     cd $pkgname-$pkgver
-
-    patch -p1 < "${srcdir}"/7aedac92d7e27a4cdc4659bd84eef7b5a0de019d.patch
 
     cd portfolio-app
     mvn clean install -Dgenerate-target-platform=true -Dtycho.disableP2Mirrors -Dmaven.repo.local=$srcdir/.mvn
