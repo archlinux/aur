@@ -6,7 +6,7 @@ pkgbase = shelldio
 	arch = any
 	license = GPL3
 	depends = mpv
-	source = shelldio-1.1.tar.gz::https://github.com/CerebruxCode/Shelldio/archive/v1.1.tar.gz
+	source = shelldio-1.1.tar.gz::https://github.com/CerebruxCode/shelldio/archive/v1.1.tar.gz
 	md5sums = 727a54600ad9d11bc037f9c33e374ed4
 
 pkgname = shelldio
