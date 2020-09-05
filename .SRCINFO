@@ -1,6 +1,6 @@
 pkgbase = python-ciscoconfparse
 	pkgdesc = Parse, Audit, Query, Build, and Modify Cisco IOS-style configurations
-	pkgver = 1.5.18
+	pkgver = 1.5.19
 	pkgrel = 1
 	url = http://www.pennington.net/py/ciscoconfparse/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-ciscoconfparse
 	depends = python-colorama
 	depends = python-passlib
 	depends = python-dnspython
-	source = https://pypi.io/packages/source/c/ciscoconfparse/ciscoconfparse-1.5.18.tar.gz
-	sha256sums = b95fcc3c23e8c138f826ca3e33ef8ad55c5c911712d63dd34e93a43b52542a36
+	source = https://pypi.io/packages/source/c/ciscoconfparse/ciscoconfparse-1.5.19.tar.gz
+	sha256sums = 6aa1644224234a09f12224ffa616847bce02e6c2c15d2dd53857a07556d4ae20
 
 pkgname = python-ciscoconfparse
 
