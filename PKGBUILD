@@ -5,7 +5,7 @@
 pkgname=pwsafe
 pkgver=20181220
 _commit=1dbcfd01a502d1579a80c208662add64b4090818
-pkgrel=1
+pkgrel=2
 pkgdesc="A commandline program for managing encrypted password databases"
 arch=('x86_64')
 url="https://github.com/nsd20463/pwsafe"
@@ -37,5 +37,5 @@ package() {
   cd "$srcdir"/${pkgname}
   make DESTDIR="$pkgdir" install
   # Make pwsafe suid root so it can seed rng as a user
-  chmod +s "$pkgdir"/usr/bin/pwsafe
+  #chmod +s "$pkgdir"/usr/bin/pwsafe
 }
