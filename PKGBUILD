@@ -1,6 +1,6 @@
 # Maintainer: Robin Krahl <robin.krahl@ireas.org>
 pkgname=nitrocli
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Command-line interface for Nitrokey devices"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('libnitrokey>=3.5' 'gnupg')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz"::https://github.com/d-e-s-o/nitrocli/archive/v${pkgver}.tar.gz)
-sha512sums=('5d0999fb363e746758a2047b311025c5d7b0a57f0b4da255e276a61824333098585bce4e7d5f602a2cfce60eda0cc2ce5de2d6410b6eb817653e3ef5232f7d43')
+sha512sums=('c12113729d92f0a8cff1a45cec07b01c6e47caa034aee789e169a0d20567ca0e365c9eba7e901d93ba9a839dc24c8d603551fd245461eb3ea5e5ed96fd74acb7')
 
 prepare() {
 	cd "$pkgname-$pkgver"
