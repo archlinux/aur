@@ -1,0 +1,20 @@
+pkgbase = tomo-el-fuego-git
+	pkgdesc = An experimental solarpunk operating system. (Git)
+	pkgver = r1007.0c13bb7b
+	pkgrel = 1
+	url = https://git.sunshinegardens.org/~xj9/tomo
+	install = tomo-el-fuego.install
+	arch = any
+	license = GPL2
+	provides = tomo-el-fuego
+	conflicts = tomo-el-fuego
+	conflicts = inferno
+	conflicts = inferno-hg
+	options = !strip
+	source = tomo-el-fuego::git+https://git.sunshinegardens.org/~xj9/tomo-el-fuego
+	source = make-install-root.sh
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = tomo-el-fuego-git
+

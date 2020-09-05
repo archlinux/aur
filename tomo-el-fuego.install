@@ -1,0 +1,19 @@
+post_install() {
+  groupadd tomo
+  IROOT=/usr/local/tomo
+  find $IROOT -path $IROOT/Linux -prune -o -exec chgrp tomo {} +
+  cat << 'END'
+  Permissions for a user to modify the files are needed.
+  This can be done adding a user to the group inferno with:
+  # usermod -a -G tomo $USER
+  For how to procceed you can read the doc/install.ms manual.
+  On the host system this can be done as:
+  # nroff -ms /usr/local/tomo/doc/install.ms | less
+  After invoking tomo-el-fuego (an emu wrapper) this can be dones as:
+  ; man -f /doc/install.ms | p
+END
+}
+
+post_remove() {
+  groupdel inferno
+}
