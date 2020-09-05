@@ -1,7 +1,7 @@
 pkgbase = kube-commander
 	pkgdesc = kubecom is terminal UI for easy interaction with Kubernetes
 	pkgver = 0.5.5rc.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/AnatolyRugalev/kube-commander
 	arch = x86_64
 	license = MIT
