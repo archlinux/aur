@@ -1,36 +1,38 @@
 pkgname=ntfs3-dkms
-pkgver=3.0.0
-pkgrel=2
-pkgdesc="NTFS3 is fully functional NTFS Read-Write driver by Paragon Software. Current version works with NTFS (including v3.1), normal/compressed/sparse files and supports journal replaying."
+pkgver=4.0.0
+pkgrel=1
+pkgdesc="NTFS read-write driver GPL implementation by Paragon Software. Current version works with NTFS (including v3.1), normal/compressed/sparse files and supports journal replaying."
 arch=('any')
 url='https://www.paragon-software.com/'
 license=('GPL2')
 depends=('dkms')
 options=('!strip')
-source=('2.patch::https://lore.kernel.org/lkml/20200828143938.102889-2-almaz.alexandrovich@paragon-software.com/raw'
-        '3.patch::https://lore.kernel.org/lkml/20200828143938.102889-3-almaz.alexandrovich@paragon-software.com/raw'
-        '4.patch::https://lore.kernel.org/lkml/20200828143938.102889-4-almaz.alexandrovich@paragon-software.com/raw'
-        '5.patch::https://lore.kernel.org/lkml/20200828143938.102889-5-almaz.alexandrovich@paragon-software.com/raw'
-        '6.patch::https://lore.kernel.org/lkml/20200828143938.102889-6-almaz.alexandrovich@paragon-software.com/raw'
-        '7.patch::https://lore.kernel.org/lkml/20200828143938.102889-7-almaz.alexandrovich@paragon-software.com/raw'
-        '8.patch::https://lore.kernel.org/lkml/20200828143938.102889-8-almaz.alexandrovich@paragon-software.com/raw'
-        '9.patch::https://lore.kernel.org/lkml/20200828143938.102889-9-almaz.alexandrovich@paragon-software.com/raw'
+source=('1.patch::https://lore.kernel.org/patchwork/patch/1300757/raw'
+        '2.patch::https://lore.kernel.org/patchwork/patch/1300720/raw'
+        '3.patch::https://lore.kernel.org/patchwork/patch/1300738/raw'
+        '4.patch::https://lore.kernel.org/patchwork/patch/1300721/raw'
+        '5.patch::https://lore.kernel.org/patchwork/patch/1300758/raw'
+        '6.patch::https://lore.kernel.org/patchwork/patch/1300718/raw'
+        '7.patch::https://lore.kernel.org/patchwork/patch/1300735/raw'
+        '8.patch::https://lore.kernel.org/patchwork/patch/1300724/raw'
         Makefile.patch
         dkms.conf)
-sha512sums=('85466ed29b1b7a61a6eb2afe99514c4a88ee08428f790a012c0993854a38746874b6d8c1becd60a36230e39b0cd322c0c6781e5f2e68bf78ace4355fc8f43324'
-            '075827dcecdb1c1870ed300162fd4ced8fdd51ed726a803cb882815c24754a11b61464ac46000c6c185e0b76a822f399c10b634f0be3fd52ecadb98da235d5e9'
-            'bf58feb40a191009063d8544c6161d726ce07b58313c020766652dd341219e74ede58ec578db7a274307948639da566cd66edccf4a2f5a2a7a4ccbb72320d260'
-            '212fda70da6e64926b76260a0e352d41417430ea52ce1d1d0de577c3fbc8ddb7791061b33b835bd86fe346c25398f27814392adc0ecf0081cb9ee403a23a604c'
-            '9ee3e220f0071c0f485f585d9eb5cb23b3f816b8d5fd85790c58f70017a2f87d711d0fa941d451c1b1e81559aef5d0158d3da128db1fe65dd44795b2aa5b5ed9'
-            'b14dfb6b55098d2868e8fe7f9247224e34568899e8dccad72b85e20312e13e4f846dfa689f0cce517cb9e0aabb13b7a45cdc786bcf1c5eb8c1d5f2731d34b32e'
-            'e7a5e6b0a8101463996543ab1eb050dc62a6543827abb57c1fa1609f4ab91cbe5963f9ac261c280261576845c266d161b353e8094b3d349bdbb008f58324920d'
-            '363c8768b3040c68a6ad4a60b3df5b459d17060fe5f173b322b35577ce74ae1d3c2e67c45809bc6969421c1e24c83b89ff7c165f986144fe0e54b8d4caba2a90'
+sha512sums=('ff1a772810752293b8e35a9ab0b5c798ecf45ae7d170d0b3a7578e802daf21ee540d0f19dc6d66e85a3e0b910b0eea11aa37ab727ae00f3bf7d092cc39b2fc7b'
+            'b1fedc67c9bdb6edcda44be0c9c197dd6a038fa4594f6b00d5f9ae4b228649902e930771a7a37db38cb4a3b59b68b75b65400d1988be68c55c3d4f9b25025ce4'
+            '4ddd14f99231704cbd9d386a3f6b4131930fc66b5752ed2c4aa042c5e051f1ca6beaddf6bf3194387588ee3ec228e030b2846cdafab201bc8985e2850ea003e1'
+            '01e92e4f188de09b21a174f0a1355b3810abf0a911da436a7244e2ee1eecfcfcff46ba00a7827b55a37e1efc2d7401acfb5eeb83ac4e60f971d2369e74c54ba2'
+            '73f144aab665acb3278e7902b25f83da0ab3a417f9a301321dae9a16e36ce098f0d02c2cc9d89bf779ec59bed006bdc2e8358193debef84eacb19700ef3cac84'
+            '9c7f11d4cd755c91f4581a3ac45c22295b790d9a642ccbc44579ea4d4b4de2d82dfb8932967c3c1a0ec8f0e8a497acc327a0cc49c5b6f2ce9da208e97809cd74'
+            'd6a782cbe179937f1d0f910788557876b72c40beb51367ab1fb3177def37dfadf3e3b697818f45b51f4b9d71a8f61d599026ea7aa15c58b6b687ab0e9c217bb7'
+            'a168442e6407e3db5b6648bbf6af8a76133cff27ca603d9fc55492e7c1b1c613af49a29a9b5f7e469f786d4510f44d8fd342be6ccf3e52db7658056dcf996730'
             'ab49381b37714bc61b17c5a4d857aac776a674574e8dbd46738eab438eef984b7762430cac05860038d8a875d5538347a1e1176acfd2169d9b5a640a9ef04d7c'
             '5f4087b05eb831fe277f1894240a8d72824daa821317e873f77574fc25d97b273ac3ddd8075d58b96c5e4e441de630817d68a3fa33d6176e26743cdb17ec664f')
+
 
 prepare() {
   mkdir -p ${pkgname}-${pkgver}
   cd ${pkgname}-${pkgver}
+  patch -p3 -N -f -i ../1.patch
   patch -p3 -N -f -i ../2.patch
   patch -p3 -N -f -i ../3.patch
   patch -p3 -N -f -i ../4.patch
@@ -38,7 +40,6 @@ prepare() {
   patch -p3 -N -f -i ../6.patch
   patch -p3 -N -f -i ../7.patch
   patch -p3 -N -f -i ../8.patch
-  patch -p3 -N -f -i ../9.patch
   patch -p1 -N -i ../Makefile.patch
 }
 
