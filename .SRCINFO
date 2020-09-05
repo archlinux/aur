@@ -2,7 +2,7 @@ pkgbase = gcedit
 	pkgdesc = GameCube disk image editor
 	pkgver = 0.4.2
 	pkgrel = 1
-	url = http://ikn.org.uk/GCEdit
+	url = http://ikn.org.uk/app/gcedit
 	arch = any
 	license = GPL3
 	depends = python>=3.2
