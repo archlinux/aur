@@ -1,7 +1,7 @@
 # Maintainer: Erez Raviv (erezraviv@gmail.com)
 # Maintainer: Ashley Roll (ash@digitalnemesis.com)
 pkgname=chirp-daily
-pkgver=20200807
+pkgver=20200902
 pkgrel=1
 pkgdesc="Latest build for GUI tool for programming ham radios"
 arch=('any')
@@ -13,7 +13,7 @@ options=(!emptydirs)
 conflicts=(chirp)
 provides=(chirp)
 install=
-sha1sums=(f263bb2d8050ff4ecacbf713adfc50e240b1b9a7)
+sha1sums=(55831901d43ef43d07d40ec7c06479ed8519ca0b)
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 source=("https://trac.chirp.danplanet.com/chirp_daily/daily-$pkgver/chirp-daily-$pkgver.tar.gz")
 
