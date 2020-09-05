@@ -1,11 +1,11 @@
-# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Maintainer: bakerty <tylerjbaker29@gmail.com>
 # Contributor: Kevin Piche <kevin@archlinux.org>
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 # Contributor:  Federico Cinelli <cinelli@aur.archlinux.org>
 
 pkgname=gtkpod
 pkgver=2.1.5
-pkgrel=5
+pkgrel=6
 pkgdesc="A platform independent GUI for Apple's iPod using GTK3"
 arch=('x86_64')
 url='https://sourceforge.net/projects/gtkpod/'
@@ -17,12 +17,16 @@ optdepends=('libmp4v2: MP4/h264 support'
 	    'libvorbis: OGG support'
             'id3v2: mp3 conversion support'
             'faad2: m4a conversion support')
-source=("http://downloads.sourceforge.net/gtkpod/$pkgname-$pkgver.tar.gz")
-sha256sums=('a57dc8ae9138e0cb4cee98691e7a95001130c9ea7823e6a75cc72503facd3a76')
+source=("http://downloads.sourceforge.net/gtkpod/$pkgname-$pkgver.tar.gz"
+	"$pkgname-$pkgver-$pkgrel.patch")
+sha256sums=('a57dc8ae9138e0cb4cee98691e7a95001130c9ea7823e6a75cc72503facd3a76'
+	'e9126a00933dd2bb28ddb378ab27c1d55b6a8c333a39657a85290b4d1fb4b39c')
 
 prepare() {
   cd "$pkgname-$pkgver"
   sed -i 's#python#python2#' scripts/sync-palm-jppy.py
+  patch --strip=1 < "../$pkgname-$pkgver-$pkgrel.patch"
+
 }
 
 build() {
