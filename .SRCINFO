@@ -1,0 +1,24 @@
+pkgbase = library-git
+	pkgdesc = Document viewer and collection manager
+	pkgver = r23.d18e375
+	pkgrel = 1
+	url = https://invent.kde.org/maui/shelf
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = kio
+	depends = mauikit-git
+	depends = ki18n
+	depends = poppler-qt5
+	provides = library
+	provides = shelf
+	conflicts = library
+	conflicts = shelf
+	source = git+https://invent.kde.org/maui/shelf.git
+	source = org.kde.library.desktop
+	sha256sums = SKIP
+	sha256sums = 83fcaeba8bdffd1e616e2fd105da872b4d32a6f6f48d698156116b566faeab46
+
+pkgname = library-git
+
