@@ -1,6 +1,6 @@
 pkgbase = platypush-git
 	pkgdesc = Universal multi-platform command executor and automation manager
-	pkgver = 0.13.5.r0.13642cc4
+	pkgver = 0.13.5.r0.ac02becb
 	pkgrel = 1
 	url = https://github.com/BlackLight/platypush
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = platypush-git
 	conflicts = platypush
 	options = !strip
 	source = platypush.tar.gz::https://github.com/BlackLight/platypush/archive/master.tar.gz
-	sha512sums = 053b5d791cf6d5a3e174aae4b9e9e8a20ef0ddd8f34174d96bece2ab058a3c618c146bd0ec72e46d302cfe6359e041e2a6934e57804051ad287639bb67aafc79
+	sha512sums = f17d25adbc9f7b3d98affb09eed4c8d8de9ae9ac9815c3102ad8a6e97d5661b2257e785c0e734f85c6565bb28dc345e0df4ed9b3b715df00186055a197e75579
 
 pkgname = platypush-git
 
