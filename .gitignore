@@ -2,14 +2,11 @@
 pkg/
 src/
 *.sig
-*.gz
-*.bz2
-*.xz
-*.lzo
-*.xz4
 *.tgz
 *.tbz
 *.txz
 *.tar
+*.tar.*
 *.jar
 *.zip
+*.rej
