@@ -1,7 +1,7 @@
 pkgbase = cinema-git
 	pkgdesc = Video player and video collection manager
 	pkgver = r11.ac81a73
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/maui/cinema
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,7 @@ pkgbase = cinema-git
 	depends = mauikit-git
 	depends = attica
 	depends = ki18n
+	depends = qt5-tools
 	provides = cinema
 	conflicts = cinema
 	source = git+https://invent.kde.org/maui/cinema.git
