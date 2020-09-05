@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com > 
 
 pkgname=buho-git
-pkgver=v1.1.1.r17.gd50e906
+pkgver=v1.1.1.r12.g2e51dd7
 pkgrel=1
 pkgdesc="Task and Note Keeper"
 arch=('x86_64')
