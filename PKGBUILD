@@ -6,7 +6,7 @@ pkgdesc="LANraragi build package"
 arch=('any')
 url="https://github.com/Difegue/LANraragi"
 license=('MIT')
-depends=('make' 'gnupg' 'pkgconf' 'cpanminus' 'redis' 'libarchive' 'imagemagick' 'libwebp' 'openssl' 'zlib' 'npm')
+depends=('perl' 'make' 'gnupg' 'pkgconf' 'cpanminus' 'redis' 'libarchive' 'imagemagick' 'libwebp' 'openssl' 'zlib' 'npm')
 optdepends=("ghostscript: PDF Support")
 source=("https://github.com/Difegue/LANraragi/archive/${pkgver}.tar.gz"
         "lanraragi.service" "lanraragi.sysusers" "lanraragi.tmpfiles")

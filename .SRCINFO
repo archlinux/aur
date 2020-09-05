@@ -5,6 +5,7 @@ pkgbase = lanraragi
 	url = https://github.com/Difegue/LANraragi
 	arch = any
 	license = MIT
+	depends = perl
 	depends = make
 	depends = gnupg
 	depends = pkgconf
