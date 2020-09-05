@@ -1,4 +1,5 @@
 # Maintainer: Alexey D. <lq07829icatm@rambler.ru>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
@@ -8,13 +9,19 @@
 pkgname=mpd-light
 pkgver=0.21.25
 _majorver=0.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, smbclient and zziplib support.'
 url='https://www.musicpd.org/'
-license=('GPL')
+license=('GPL2')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('audiofile' 'libmad' 'curl' 'faad2' 'sqlite' 'libmms' 'libid3tag' 'libmpdclient'
-         'icu' 'libupnp' 'libvorbis' 'libnfs' 'libsamplerate' 'libsoxr' 'libgme')
+depends=('alsa-lib' 'flac' 'libogg' 'audiofile' 'libmad' 'curl' 'faad2' 'sqlite'
+         'libmms' 'libid3tag' 'libmpdclient' 'icu' 'libupnp' 'libvorbis'
+         'libnfs' 'libsamplerate' 'libsoxr' 'libgme')
+# So files
+#depends+=('libFLAC.so' 'libasound.so' 'libaudiofile.so' 'libcurl.so'
+#          'libfaad.so' 'libicui18n.so' 'libicuuc.so' 'libid3tag.so'
+#          'libmpdclient.so' 'libogg.so' 'libsamplerate.so'
+#          'libvorbis.so')
 makedepends=('boost' 'meson' 'python-sphinx')
 provides=("mpd=$pkgver")
 conflicts=('mpd')
