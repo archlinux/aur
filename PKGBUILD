@@ -1,8 +1,6 @@
-# Maintainer: Michael Borders <dev@michaelborders.net>
-
 pkgname=python-netmiko
 _pkgname=netmiko
-pkgver=3.1.0
+pkgver=3.1.1
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc="Multi-vendor library to simplify Paramiko SSH connections to network devices"
@@ -13,7 +11,7 @@ depends=('python' 'python-paramiko' 'python-scp' 'python-pyserial' 'python-textf
 makedepends=('python-setuptools')
 checkdepends=('python-tox')
 source=("${url}/archive/${_pkgver}.tar.gz")
-sha256sums=('4e2957642608ca29ac86078d938d77094864847a58faf99bae24ae01e231111d')
+sha256sums=('0b2e01cce1f5e7dd1f75a3dcdf415922e3d578233d423a9d8f8a8f6a87fe1167')
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver"
