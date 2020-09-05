@@ -1,6 +1,6 @@
 pkgbase = python-junos-eznc
 	pkgdesc = Python library for Junos automation
-	pkgver = 2.4.1
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/Juniper/py-junos-eznc
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = python-junos-eznc
 	depends = python-yamlordereddictloader
 	depends = python-pyparsing
 	depends = python-transitions
-	source = https://github.com/Juniper/py-junos-eznc/archive/2.4.1.tar.gz
-	sha256sums = 843020e14d53c68dbbc331bcbcc1ed5c8248a1258f5475ddc6bfadbb5152224b
+	source = https://github.com/Juniper/py-junos-eznc/archive/2.5.0.tar.gz
+	sha256sums = 064fd107afdcd2f765cf37736b091617cd345a85e1aea063c571eeadbad9978c
 
 pkgname = python-junos-eznc
 
