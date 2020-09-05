@@ -1,6 +1,6 @@
 pkgbase = seatools-ssd-gui
 	pkgdesc = Graphical dashboard and diagnostic tools optimized for Seagate Solid State Drives (SSD).
-	pkgver = 4.1.81
+	pkgver = 4.1.88
 	pkgrel = 1
 	url = https://www.seagate.com/support/downloads/seatools/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = seatools-ssd-gui
 	source = seatools-ssd-gui-hidpi.desktop
 	source = seatools-ssd-gui-hidpi
 	source = org.archlinux.pkexec.seatools-ssd-gui.policy
-	md5sums = 3873967b56ef74a83d35bc4f1a71cfad
+	md5sums = a7186dbba0003f25760a0840558f5df1
 	md5sums = d92ae37baa475b2d7b8cddd0e862f85a
 	md5sums = 090c762796dccd4db8103e2f62a5210e
 	md5sums = a336e165fc8d9fc6a04bcff50de3f0b7

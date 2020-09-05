@@ -2,7 +2,7 @@
 
 _original_name=SeaToolsSSD
 pkgname=seatools-ssd-gui
-pkgver=4.1.81
+pkgver=4.1.88
 pkgrel=1
 pkgdesc="Graphical dashboard and diagnostic tools optimized for Seagate Solid State Drives (SSD)."
 arch=(x86_64)
@@ -23,7 +23,7 @@ source=(https://www.seagate.com/files/old-support-files/seatools/${_original_nam
         $pkgname-hidpi
         org.archlinux.pkexec.$pkgname.policy)
 
-md5sums=('3873967b56ef74a83d35bc4f1a71cfad'
+md5sums=('a7186dbba0003f25760a0840558f5df1'
          'd92ae37baa475b2d7b8cddd0e862f85a'
          '090c762796dccd4db8103e2f62a5210e'
          'a336e165fc8d9fc6a04bcff50de3f0b7'
@@ -48,7 +48,7 @@ build() {
 
 package() {
   msg2 "The package installs HiDPI launcher by default."
-  msg2 "To install non-HiDPI version please comment/ucomment "
+  msg2 "To install non-HiDPI version please comment/uncomment "
   msg2 "appropriate lines in PKGBUILD's package() block following by comments."
   msg2 ""
   msg2 "Continuing build in 5 seconds..."; sleep 5
