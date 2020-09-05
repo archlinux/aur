@@ -5,11 +5,11 @@ pkgver=1.2.0
 pkgrel=1
 pkgdesc="Python 3 library for parsing Tvheadend epgdb files"
 arch=(any)
-url=http://ikn.org.uk/pyepgdb
+url=http://ikn.org.uk/lib/pyepgdb
 license=(BSD)
 makedepends=(python-setuptools)
 depends=("python>=3.4")
-source=(http://ikn.org.uk/files/library/$_pkgname/$_pkgname-$pkgver.tar.gz)
+source=(http://ikn.org.uk/download/lib/$_pkgname/$_pkgname-$pkgver.tar.gz)
 sha1sums=('5af5163eeadc1bd87ab6903a0529693644de8471')
 
 build () {
