@@ -1,6 +1,7 @@
 [Unit]
 Description=LANraragi Service
 After=syslog.target network.target redis.service
+Requires=redis.service
 
 [Service]
 User=lanraragi
