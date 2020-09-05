@@ -7,7 +7,7 @@ arch=("x86_64")
 url="https://forticlient.com/"
 license=('custom:fortinet')
 provides=('fortivpn' 'FortiClient')
-install='${pkgname}.install'
+install=${pkgname}.install
 source=("https://filestore.fortinet.com/forticlient/downloads/FortiClientFullVPNInstaller_${pkgver}.deb")
 sha256sums=('d229a2f3f13378244058b5b678d25976ba85e5d4c1b247ed2c3c242f6604ed2b')
 
