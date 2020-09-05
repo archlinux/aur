@@ -1,17 +1,17 @@
-# Maintainer: Stoian Minaev
- 
+# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com > 
+
 pkgname=nota-git
-pkgver=r166.7d70269
+pkgver=v1.1.1.r17.gd50e906
 pkgrel=1
-pkgdesc="Simple Text Editor for KDE"
+pkgdesc="Multi-platform text editor"
 arch=(x86_64)
 url="https://vvave.kde.org/"
-license=(GPL3)
-depends=(ki18n knotifications qt5-quickcontrols2 qt5-svg kio mauikit-git kirigami2)
-makedepends=(git cmake extra-cmake-modules syntax-highlighting appstream)
-provides=(nota)
-conflicts=(nota)
-source=("git+https://invent.kde.org/kde/nota.git")
+license=('GPL3')
+depends=('ki18n' 'knotifications' 'qt5-svg' 'kio' 'mauikit-git' 'kirigami2' 'syntax-highlighting')
+makedepends=('git' 'extra-cmake-modules')
+provides=('nota')
+conflicts=('nota')
+source=("git+https://invent.kde.org/maui/nota.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,16 +24,21 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  install -d build
+  mkdir build
 }
 
 build() {
   cd "${pkgname%-git}/build"
-  cmake .. 
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib
   make
 }
  
 package() {
   cd "${pkgname%-git}/build"
+  install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+  install -Dm644 ../src/assets/nota.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/maui-nota.svg"
   make DESTDIR="$pkgdir" install
 }
