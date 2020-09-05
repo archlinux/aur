@@ -10,7 +10,7 @@ makedepends=('meson' 'ninja' 'wayland-protocols')
 depends=('wayland' 'cairo' 'json-c')
 optdepends=('libjpeg: JPEG images support'
             'giflib: GIF images support'
-            'librsvg-2.0: SVG images support'
+            'librsvg: SVG images support'
             'libwebp: WebP images support')
 url='https://github.com/artemsen/swayimg'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
