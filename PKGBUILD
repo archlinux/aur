@@ -4,40 +4,29 @@
 # Contributor: khomutsky <bogdan@khomutsky.com>
 # Contributor: M0Rf30
 
-pkgname=virtualbox-bin
+pkgbase=virtualbox-bin
+pkgname=('virtualbox-bin' 'virtualbox-bin-guest-iso' 'virtualbox-bin-sdk')
 pkgver=6.1.12
 _build=139181
 _rev=83509
-pkgrel=1
-pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
+pkgrel=2
+pkgdesc='Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
 license=('GPL2')
-depends=('device-mapper' 'dkms' 'fontconfig' 'gcc' 'hicolor-icon-theme' 'libgl'
-         'libidl2' 'libxcursor' 'libxinerama' 'libxmu' 'python' 'sdl')
-makedepends=('linux-headers')
-optdepends=('virtualbox-ext-oracle: for Oracle extensions'
-            'java-runtime: for webservice sdk java bindings'
-            'linux-headers: build the module for Arch kernel'
-            'linux-lts-headers: build the module for LTS Arch kernel')
-provides=("virtualbox=${pkgver}" 'virtualbox-sdk' 'VIRTUALBOX-HOST-MODULES'
-          'virtualbox-host-dkms' 'virtualbox-guest-iso')
-conflicts=('virtualbox' 'virtualbox-sdk' 'virtualbox-host-dkms' 'virtualbox-host-modules-arch')
-replaces=('virtualbox_bin' 'virtualbox-sun')
-backup=('etc/vbox/vbox.cfg' 'etc/conf.d/vboxweb')
-options=('!strip' '!emptydirs')
-install="${pkgname}.install"
+makedepends=('python')
+_rdeskver=1.8.4
 source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-${_build}-Linux_amd64.run"
         "https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBoxSDK-${pkgver}-${_build}.zip"
         "VBoxAuth-r${_rev}.h"::"https://www.virtualbox.org/svn/vbox/trunk/include/VBox/VBoxAuth.h?p=${_rev}"
         "VBoxAuthPAM-r${_rev}.c"::"https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/pam/VBoxAuthPAM.c?p=${_rev}"
         "VBoxAuthSimple-r${_rev}.cpp"::"https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/simple/VBoxAuthSimple.cpp?p=${_rev}"
-        'VBoxFixUSB'
-        '10-vboxdrv.rules'
-        'vboxweb.rc'
-        'vboxweb.conf'
-        'do_dkms'
         'dkms.conf'
+        'vboxreload'
+        '60-vboxdrv.rules'
+        'vboxweb.service'
+        'virtualbox.sysusers'
+        'LICENSE.sdk'
         '013-Makefile.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
 sha256sums=('0a99475b1eac8c9e343305ecad4a6b14d5db5cc2869be7b0803fbccc52dec675'
@@ -45,172 +34,162 @@ sha256sums=('0a99475b1eac8c9e343305ecad4a6b14d5db5cc2869be7b0803fbccc52dec675'
             '61eab70173ec0c4959ec3b8bf9fa19cfac49bb223a0bb041fe12aa14742db15a'
             'f54c38e2d112e0221daa1ddd563a260d18d7d510c485a7d27c317d379e06ff79'
             '2ef58e7f24ed9114dbf29dfa77372b5e15962a2244315ffbfb592cdc10920ad8'
-            '0aebe22abab402ea6b6573af637a99d8056a904920a52d84fb97729219219c23'
-            '69417a9e8855cab8e4878886abe138f559fd17ae487d4cd19c8a24974a8bbec2'
-            '656905de981ffa24f6f921c920538854a235225053f44baedacc07b46ca0cf56'
-            '12dbba3b59991f2b68cddeeeda20236aeff63e11b7e2d1b08d9d6a82225f6651'
-            'cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a'
             '63f1e9eabedec2170bd0589aaa2bf5025ff8f8ec1764cc4823cbe446e9ce1388'
-            '268e794de9d66a2751006b2ca3810fc6a05da4af2ffa8b58c56c94b292f1f424')
+            '4001b5927348fe669a541e80526d4f9ea91b883805f102f7d571edbb482a9b9d'
+            '9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e'
+            'e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f'
+            '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
+            '09335d7d1075df02d29cec13119538134efdf43ea73a93b0f89d0d7d4b6625a1'
+            '8ec385a28455734a7ee6fc42083a977edf39b3ae22468b486842ab72904b287b')
 
 prepare() {
-    mkdir -p "${pkgname}-${pkgver}/VirtualBox-extracted"
+    local _extractdir="${pkgname}-${pkgver}/VirtualBox-extracted"
     
-    # extract the main source file
-    yes 2>/dev/null | sh "VirtualBox-${pkgver}-${_build}-Linux_amd64.run" \
-                          --target "${pkgname}-${pkgver}" --nox11 --noexec &> /dev/null
-    tar -jxf "${pkgname}-${pkgver}/VirtualBox.tar.bz2" -C "${pkgname}-${pkgver}/VirtualBox-extracted"
-    
-    # extract sdk
+    # extract files
+    mkdir -p "$_extractdir"
+    sh "VirtualBox-${pkgver}-${_build}-Linux_amd64.run" --noexec --nox11 --target "${pkgname}-${pkgver}"
+    bsdtar -xf "${pkgname}-${pkgver}/VirtualBox.tar.bz2" -C "$_extractdir"
     bsdtar -xf "VirtualBoxSDK-${pkgver}-${_build}.zip" -C "${pkgname}-${pkgver}"
+    bsdtar -xf "${_extractdir}/rdesktop-vrdp.tar.gz" -C "${pkgname}-${pkgver}" --include='*.1'
+    
+    # dkms configuration
+    install -D -m644 dkms.conf -t "${_extractdir}/src/vboxhost"
+    sed -i "s/^\(PACKAGE_VERSION\)=.*/\1=${pkgver}/" "${_extractdir}/src/vboxhost/dkms.conf"
     
     # fix dkms build
-    patch -d "${pkgname}-${pkgver}/VirtualBox-extracted" -Np1 -i "${srcdir}/013-Makefile.patch"
+    patch -d "$_extractdir" -Np1 -i "${srcdir}/013-Makefile.patch"
 }
 
 build() {
-    local _installdir='opt/VirtualBox'
-    
     cd "${pkgname}-${pkgver}/sdk/installer"
-    VBOX_INSTALL_PATH="/${_installdir}" python vboxapisetup.py build
+    VBOX_INSTALL_PATH='/opt/VirtualBox' python vboxapisetup.py build
 }
 
-package() {
+package_virtualbox-bin() {
+    depends=('device-mapper' 'dkms' 'fontconfig' 'hicolor-icon-theme' 'libgl'
+             'libidl2' 'libxcursor' 'libxinerama' 'libxmu' 'python' 'sdl')
+    optdepends=('virtualbox-bin-guest-iso: for guest additions CD image'
+                'virtualbox-bin-sdk: for the software developer kit'
+                'virtualbox-ext-oracle: for Oracle extensions pack')
+    provides=("virtualbox=${pkgver}" 'virtualbox-host-dkms' 'VIRTUALBOX-HOST-MODULES')
+    conflicts=('virtualbox' 'virtualbox-host-dkms' 'virtualbox-host-modules-arch')
+    replaces=('virtualbox_bin' 'virtualbox-sun')
+    backup=('etc/vbox/vbox.cfg')
+    options=('!strip' '!emptydirs')
+    
     local _installdir='opt/VirtualBox'
     
     # install bundled files
-    printf '%s\n' '  -> Installing bundled files...'
-    install -d "${pkgdir}/opt"
+    mkdir -p "${pkgdir}/opt"
     cp -pr "${pkgname}-${pkgver}/VirtualBox-extracted" "${pkgdir}/${_installdir}"
     
-    # hardened build: mark binaries suid root, and make sure the
-    # directory is only writable by the user
-    printf '%s\n' '  -> Fixing permissions...'
-    cd "${pkgdir}/${_installdir}"
-    chmod 4755 VirtualBoxVM VBox{Headless,Net{AdpCtl,DHCP,NAT},SDL,VolInfo}
+    # mark binaries suid root, and make sure the directory is only writable by the user
+    chmod 4755 "${pkgdir}/${_installdir}"/{VirtualBoxVM,VBox{Headless,Net{AdpCtl,DHCP,NAT},SDL,VolInfo}}
     chmod go-w "${pkgdir}/${_installdir}"
     
-    # install SDK
-    printf '%s\n' '  -> Installing SDK...'
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    pushd 'sdk/installer' >/dev/null
-    VBOX_INSTALL_PATH="/${_installdir}" python vboxapisetup.py install --root "$pkgdir" --skip-build --optimize='1'
-    popd >/dev/null
-    rm -r "${pkgdir}/${_installdir}/sdk"
-    mkdir -p "${pkgdir}/${_installdir}/sdk"
-    cp -a sdk/bindings "${pkgdir}/${_installdir}/sdk"
-    cp -a sdk/docs     "${pkgdir}/${_installdir}"
-    install -D -m644 "${srcdir}/VBoxAuth-r${_rev}.h"         "${pkgdir}/${_installdir}/sdk/bindings/auth/include/VBoxAuth.h"
-    install -D -m644 "${srcdir}/VBoxAuthPAM-r${_rev}.c"      "${pkgdir}/${_installdir}/sdk/bindings/auth/VBoxAuthPAM.cpp"
-    install -D -m644 "${srcdir}/VBoxAuthSimple-r${_rev}.cpp" "${pkgdir}/${_installdir}/sdk/bindings/auth/VBoxAuthSimple.cpp"
+    # remove guest iso, rdesktop-vrdp packed sources and bundled sdk files
+    rm -r "${pkgdir}/${_installdir}"/{additions/VBoxGuestAdditions.iso,rdesktop-vrdp.tar.gz,sdk}
     
-    # install udev rules
-    printf '%s\n' '  -> Installing udev rules...'
-    cd "${pkgdir}/${_installdir}"
-    install -D -m0644 "${srcdir}/10-vboxdrv.rules" "${pkgdir}/usr/lib/udev/rules.d/10-vboxdrv.rules"
+    # module sources
+    mkdir -p "${pkgdir}/usr/src"
+    mv "${pkgdir}/${_installdir}/src/vboxhost" "${pkgdir}/usr/src/vboxhost-${pkgver}_non_OSE"
+    
+    # module reloading shortcut (with a symlink with default helper)
+    install -D -m755 vboxreload -t "${pkgdir}/usr/bin"
+    ln -s vboxreload "${pkgdir}/usr/bin/rcvboxdrv"
+    
+    # udev rules
     ## we need to copy and not symlink VBoxCreateUSBNode.sh in /usr/lib/udev to avoid udevd
     ## to look /opt when /opt is not mounted. This can be done until VBoxCreateUSBNode.sh doesn't
     ## need more stuff from /opt
-    cp -a VBoxCreateUSBNode.sh "${pkgdir}/usr/lib/udev/"
+    install -D -m644 60-vboxdrv.rules -t "${pkgdir}/usr/lib/udev/rules.d"
+    install -D -m755 "${pkgdir}/${_installdir}/VBoxCreateUSBNode.sh" -t "${pkgdir}/usr/lib/udev"
+    install -D -m755 "${pkgdir}/${_installdir}/VBoxCreateUSBNode.sh" -t "${pkgdir}/usr/share/virtualbox"
     
-    printf '%s\n' '  -> Installing scripts...'
+    # configuration file
+    printf '%s\n' "INSTALL_DIR=/${_installdir}" | install -D -m644 /dev/stdin "${pkgdir}/etc/vbox/vbox.cfg"
     
-    # install VBoxFixUSB script
-    install -D -m0755 "${srcdir}/VBoxFixUSB" VBoxFixUSB
+    # modules-load.d configuration
+    printf 'vboxdrv\nvboxnetadp\nvboxnetflt\n' | 
+        install -D -m644 /dev/stdin "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
     
-    # install vboxweb initscript
-    install -D -m0755 "${srcdir}/vboxweb.rc"   "${pkgdir}/etc/rc.d/vboxweb"
-    install -D -m0644 "${srcdir}/vboxweb.conf" "${pkgdir}/etc/conf.d/vboxweb"
+    # systemd
+    install -D -m644 vboxweb.service -t "${pkgdir}/usr/lib/systemd/system"
+    install -D -m644 virtualbox.sysusers "${pkgdir}/usr/lib/sysusers.d/virtualbox.conf"
     
-    printf '%s\n' '  -> Creating needed symlinks...'
+    # man page for rdesktop-vrdp
+    install -D -m644 "${pkgname}-${pkgver}/rdesktop-${_rdeskver}-vrdp/doc/rdesktop.1" -t "${pkgdir}/usr/share/man/man1"
     
-    # symlinks for working around unsupported $ORIGIN/.. in VBoxC.so
-    local _lib
-    for _lib in VBox{RT,XPCOM}.so
-    do
-        ln -s "../${_lib}" "components/${_lib}"
-    done
-    
-    # symlink the launchers
-    local _bin
-    install -d -m0755 "${pkgdir}/usr/bin"
-    for _bin in VirtualBox{,VM} VBox{Headless,Manage,SDL,SVC,Tunctl,NetAdpCtl,FixUSB}
-    do
-        ln -s "../../${_installdir}/${_bin}" "${pkgdir}/usr/bin/${_bin}"
-        ln -s "../../${_installdir}/${_bin}" "${pkgdir}/usr/bin/${_bin,,}"
-    done
-    ln -s "../../${_installdir}/rdesktop-vrdp" "${pkgdir}/usr/bin/rdesktop-vrdp"
-    
-    # symlink the desktop icon and .desktop files
-    install -d -m0755 "${pkgdir}/usr/"{share/applications,share/pixmaps}
-    ln -s "../../../${_installdir}/VBox.png"                     "${pkgdir}/usr/share/pixmaps/VBox.png"
-    ln -s "../../../${_installdir}/icons/128x128/virtualbox.png" "${pkgdir}/usr/share/pixmaps/virtualbox.png"
-    ln -s "../../../${_installdir}/virtualbox.desktop"           "${pkgdir}/usr/share/applications/virtualbox.desktop"
-    
-    # symlink mime info
-    install -d -m0755 "${pkgdir}/usr/share/mime/packages"
-    ln -s "../../../../${_installdir}/virtualbox.xml" "${pkgdir}/usr/share/mime/packages/virtualbox.xml"
-    
-    # symlink doc
-    install -d -m0755 "${pkgdir}/usr/share/doc/${pkgname}"
-    ln -s "../../../../${_installdir}/VirtualBox.chm" "${pkgdir}/usr/share/doc/${pkgname}/virtualbox.chm"
-    
-    # symlink icons
+    # symlinks
     local _dir
-    local _icon
-    pushd icons >/dev/null
-    for _dir in *
+    local _file
+    mkdir -p "${pkgdir}/usr/share"/{applications,{doc,licenses}/"$pkgname",mime/packages,pixmaps}
+    for _file in vboxwebsrv VirtualBox{,VM} VBox{Manage,SDL,VRDP,Headless,Autostart,BalloonCtrl,BugReport,DTrace}
     do
-        cd "$_dir"
-        install -d -m0755 "${pkgdir}/usr/share/icons/hicolor/${_dir}/"{apps,mimetypes}
-        for _icon in *
-        do
-            if [ "$_icon" = 'virtualbox.png' ] 
-            then
-                ln -s "../../../../../../${_installdir}/icons/${_dir}/${_icon}" "${pkgdir}/usr/share/icons/hicolor/${_dir}/apps/${_icon}"
-            else
-                ln -s "../../../../../../${_installdir}/icons/${_dir}/${_icon}" "${pkgdir}/usr/share/icons/hicolor/${_dir}/mimetypes/${_icon}"
-            fi
-        done
-        cd - >/dev/null
+        ln -s "../../${_installdir}/VBox.sh" "${pkgdir}/usr/bin/${_file}"
+        [ "$_file" != 'vboxwebsrv' ] && ln -s "../../${_installdir}/VBox.sh" "${pkgdir}/usr/bin/${_file,,}"
     done
-    popd >/dev/null
-    
-    # with the relase of VirtualBox 5.1.0, Oracle dropped DKMS support from their package
-    # we will restore DKMS with the use of these config files
-    printf '%s\n' '  -> Installing DKMS support...'
-    install -D -m0755 "${srcdir}/do_dkms" -t "${pkgdir}/${_installdir}/src/vboxhost"
-    ## update module version
-    cd "$srcdir"
-    cp -a dkms.conf "${pkgname}-${pkgver}"
-    sed -i "s/^\(PACKAGE_VERSION\)=/\1=${pkgver}/" "${pkgname}-${pkgver}/dkms.conf"
-    install -D -m0644 "${pkgname}-${pkgver}/dkms.conf" -t "${pkgdir}/${_installdir}/src/vboxhost"
+    ln -s "../../${_installdir}/VBoxTunctl" "${pkgdir}/usr/bin/VBoxTunctl"
+    ln -s "../../${_installdir}/rdesktop-vrdp" "${pkgdir}/usr/bin/rdesktop-vrdp"
+    ln -s "../../../${_installdir}/VBoxSysInfo.sh" "${pkgdir}/usr/share/virtualbox/VBoxSysInfo.sh"
+    ln -s "../../../usr/src/vboxhost-${pkgver}_non_OSE" "${pkgdir}/${_installdir}/src/vboxhost"
+    ln -s "../../../${_installdir}/VBox.png" "${pkgdir}/usr/share/pixmaps/VBox.png"
+    ln -s "../../../${_installdir}/virtualbox.desktop" "${pkgdir}/usr/share/applications/virtualbox.desktop"
+    ln -s "../../../../${_installdir}/virtualbox.xml" "${pkgdir}/usr/share/mime/packages/virtualbox.xml"
+    ln -s "../../../../${_installdir}/UserManual.pdf" "${pkgdir}/usr/share/doc/${pkgname}/UserManual.pdf"
+    ln -s "../../../../${_installdir}/VirtualBox.chm" "${pkgdir}/usr/share/doc/${pkgname}/VirtualBox.chm"
+    ln -s "../../../../${_installdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    ## hicolor icons
+    while read -r -d '' _file
+    do
+        if printf '%s' "$_file" | grep -Eq '/virtualbox\.(png|svg)$'
+        then
+            _dir="${_file%/*}/apps"
+        else
+            _dir="${_file%/*}/mimetypes"
+        fi
+        mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_dir}"
+        ln -s "../../../../../../${_installdir}/icons/${_dir%/*}/${_file##*/}" \
+            "${pkgdir}/usr/share/icons/hicolor/${_dir}/${_file##*/}"
+    done < <(find "${pkgdir}/${_installdir}/icons" -type f -print0 | sed -z "s|${pkgdir}/${_installdir}/icons/||")
+    ## workaround for unsupported $ORIGIN/.. in VBoxC.so
+    for _file in VBox{RT,XPCOM}.so
+    do
+        ln -s "../${_file}" "${pkgdir}/${_installdir}/components/${_file}"
+    done
+}
 
-    # module sources in /usr/src
-    printf '%s\n' '  -> Installing module sources...'
-    install -d -m0755 "${pkgdir}/usr/src"
-    mv "${pkgdir}/${_installdir}/src/vboxhost" "${pkgdir}/usr/src/vboxhost-${pkgver}_non_OSE"
+package_virtualbox-bin-guest-iso() {
+    pkgdesc='VirtualBox guest additions ISO image for use with virtualbox-bin package'
+    arch=('any')
+    provides=('virtualbox-guest-iso')
     
-    # write the configuration file
-    printf '%s\n' '  -> Writing the configuration file...'
-    install -D -m0644 /dev/null "${pkgdir}/etc/vbox/vbox.cfg"
-    cat > "${pkgdir}/etc/vbox/vbox.cfg" << __EOF__
-# VirtualBox installation directory
-INSTALL_DIR='/${_installdir}'
+    install -t "${pkgdir}/opt/VirtualBox/additions" \
+        -D -m644 "${pkgbase}-${pkgver}/VirtualBox-extracted/additions/VBoxGuestAdditions.iso"
+}
 
-# VirtualBox version
-INSTALL_VER='${pkgver}'
-INSTALL_REV='${_build}'
-__EOF__
+package_virtualbox-bin-sdk() {
+    pkgdesc='VirtualBox software developer kit for use with virtualbox-bin package'
+    arch=('any')
+    license=('LGPL2.1' 'GPL2' 'BSD' 'custom')
+    depends=('python')
+    optdepends=('java-runtime: for webservice java bindings')
+    provides=('virtualbox-sdk')
+    conflicts=('virtualbox-sdk')
     
-    # write modules-load.d configuration to ensure that modules are loaded at boot
-    printf '%s\n' "  -> Writing 'modules-load.d' configuration..."
-    install -D -m644 /dev/null "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
-    cat > "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf" << __EOF__
-# Load virtualbox kernel modules at boot
-# This file was installed by the ${pkgname} AUR package
-vboxdrv
-vboxnetadp
-vboxnetflt
-__EOF__
+    local _dir
+    local _installdir='opt/VirtualBox'
+    
+    mkdir -p "${pkgdir}/${_installdir}/sdk"
+    while read -r -d '' _dir
+    do
+        cp -pr "$_dir" "${pkgdir}/${_installdir}/sdk"
+    done < <(find "${pkgbase}-${pkgver}/sdk" -mindepth 1 -maxdepth 1 -type d ! -name 'installer' -print0)
+    install -D -m644 "VBoxAuth-r${_rev}.h"    "${pkgdir}/${_installdir}/sdk/bindings/auth/include/VBoxAuth.h"
+    install -D -m644 "VBoxAuthPAM-r${_rev}.c" "${pkgdir}/${_installdir}/sdk/bindings/auth/VBoxAuthPAM.cpp"
+    install -D -m644 "VBoxAuthSimple-r${_rev}.cpp" "${pkgdir}/${_installdir}/sdk/bindings/auth/VBoxAuthSimple.cpp"
+    install -D -m644 LICENSE.sdk "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    
+    cd "${pkgbase}-${pkgver}/sdk/installer"
+    VBOX_INSTALL_PATH="/${_installdir}" python vboxapisetup.py install --root "$pkgdir" --skip-build --optimize='1'
 }

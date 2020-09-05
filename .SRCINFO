@@ -1,16 +1,41 @@
 pkgbase = virtualbox-bin
-	pkgdesc = Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)
+	pkgdesc = Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)
 	pkgver = 6.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.virtualbox.org/
-	install = virtualbox-bin.install
 	arch = x86_64
 	license = GPL2
-	makedepends = linux-headers
+	makedepends = python
+	noextract = VirtualBoxSDK-6.1.12-139181.zip
+	source = http://download.virtualbox.org/virtualbox/6.1.12/VirtualBox-6.1.12-139181-Linux_amd64.run
+	source = https://download.virtualbox.org/virtualbox/6.1.12/VirtualBoxSDK-6.1.12-139181.zip
+	source = VBoxAuth-r83509.h::https://www.virtualbox.org/svn/vbox/trunk/include/VBox/VBoxAuth.h?p=83509
+	source = VBoxAuthPAM-r83509.c::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/pam/VBoxAuthPAM.c?p=83509
+	source = VBoxAuthSimple-r83509.cpp::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/simple/VBoxAuthSimple.cpp?p=83509
+	source = dkms.conf
+	source = vboxreload
+	source = 60-vboxdrv.rules
+	source = vboxweb.service
+	source = virtualbox.sysusers
+	source = LICENSE.sdk
+	source = 013-Makefile.patch
+	sha256sums = 0a99475b1eac8c9e343305ecad4a6b14d5db5cc2869be7b0803fbccc52dec675
+	sha256sums = 7c2bca541d380236c504205497a6eb2a7fb33051b5f7ebfcbd1dcf8b68f0f22f
+	sha256sums = 61eab70173ec0c4959ec3b8bf9fa19cfac49bb223a0bb041fe12aa14742db15a
+	sha256sums = f54c38e2d112e0221daa1ddd563a260d18d7d510c485a7d27c317d379e06ff79
+	sha256sums = 2ef58e7f24ed9114dbf29dfa77372b5e15962a2244315ffbfb592cdc10920ad8
+	sha256sums = 63f1e9eabedec2170bd0589aaa2bf5025ff8f8ec1764cc4823cbe446e9ce1388
+	sha256sums = 4001b5927348fe669a541e80526d4f9ea91b883805f102f7d571edbb482a9b9d
+	sha256sums = 9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e
+	sha256sums = e6e875ef186578b53106d7f6af48e426cdaf1b4e86834f01696b8ef1c685787f
+	sha256sums = 2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c
+	sha256sums = 09335d7d1075df02d29cec13119538134efdf43ea73a93b0f89d0d7d4b6625a1
+	sha256sums = 8ec385a28455734a7ee6fc42083a977edf39b3ae22468b486842ab72904b287b
+
+pkgname = virtualbox-bin
 	depends = device-mapper
 	depends = dkms
 	depends = fontconfig
-	depends = gcc
 	depends = hicolor-icon-theme
 	depends = libgl
 	depends = libidl2
@@ -19,50 +44,35 @@ pkgbase = virtualbox-bin
 	depends = libxmu
 	depends = python
 	depends = sdl
-	optdepends = virtualbox-ext-oracle: for Oracle extensions
-	optdepends = java-runtime: for webservice sdk java bindings
-	optdepends = linux-headers: build the module for Arch kernel
-	optdepends = linux-lts-headers: build the module for LTS Arch kernel
+	optdepends = virtualbox-bin-guest-iso: for guest additions CD image
+	optdepends = virtualbox-bin-sdk: for the software developer kit
+	optdepends = virtualbox-ext-oracle: for Oracle extensions pack
 	provides = virtualbox=6.1.12
-	provides = virtualbox-sdk
-	provides = VIRTUALBOX-HOST-MODULES
 	provides = virtualbox-host-dkms
-	provides = virtualbox-guest-iso
+	provides = VIRTUALBOX-HOST-MODULES
 	conflicts = virtualbox
-	conflicts = virtualbox-sdk
 	conflicts = virtualbox-host-dkms
 	conflicts = virtualbox-host-modules-arch
 	replaces = virtualbox_bin
 	replaces = virtualbox-sun
-	noextract = VirtualBoxSDK-6.1.12-139181.zip
 	options = !strip
 	options = !emptydirs
 	backup = etc/vbox/vbox.cfg
-	backup = etc/conf.d/vboxweb
-	source = http://download.virtualbox.org/virtualbox/6.1.12/VirtualBox-6.1.12-139181-Linux_amd64.run
-	source = https://download.virtualbox.org/virtualbox/6.1.12/VirtualBoxSDK-6.1.12-139181.zip
-	source = VBoxAuth-r83509.h::https://www.virtualbox.org/svn/vbox/trunk/include/VBox/VBoxAuth.h?p=83509
-	source = VBoxAuthPAM-r83509.c::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/pam/VBoxAuthPAM.c?p=83509
-	source = VBoxAuthSimple-r83509.cpp::https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/simple/VBoxAuthSimple.cpp?p=83509
-	source = VBoxFixUSB
-	source = 10-vboxdrv.rules
-	source = vboxweb.rc
-	source = vboxweb.conf
-	source = do_dkms
-	source = dkms.conf
-	source = 013-Makefile.patch
-	sha256sums = 0a99475b1eac8c9e343305ecad4a6b14d5db5cc2869be7b0803fbccc52dec675
-	sha256sums = 7c2bca541d380236c504205497a6eb2a7fb33051b5f7ebfcbd1dcf8b68f0f22f
-	sha256sums = 61eab70173ec0c4959ec3b8bf9fa19cfac49bb223a0bb041fe12aa14742db15a
-	sha256sums = f54c38e2d112e0221daa1ddd563a260d18d7d510c485a7d27c317d379e06ff79
-	sha256sums = 2ef58e7f24ed9114dbf29dfa77372b5e15962a2244315ffbfb592cdc10920ad8
-	sha256sums = 0aebe22abab402ea6b6573af637a99d8056a904920a52d84fb97729219219c23
-	sha256sums = 69417a9e8855cab8e4878886abe138f559fd17ae487d4cd19c8a24974a8bbec2
-	sha256sums = 656905de981ffa24f6f921c920538854a235225053f44baedacc07b46ca0cf56
-	sha256sums = 12dbba3b59991f2b68cddeeeda20236aeff63e11b7e2d1b08d9d6a82225f6651
-	sha256sums = cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a
-	sha256sums = 63f1e9eabedec2170bd0589aaa2bf5025ff8f8ec1764cc4823cbe446e9ce1388
-	sha256sums = 268e794de9d66a2751006b2ca3810fc6a05da4af2ffa8b58c56c94b292f1f424
 
-pkgname = virtualbox-bin
+pkgname = virtualbox-bin-guest-iso
+	pkgdesc = VirtualBox guest additions ISO image for use with virtualbox-bin package
+	arch = any
+	provides = virtualbox-guest-iso
+
+pkgname = virtualbox-bin-sdk
+	pkgdesc = VirtualBox software developer kit for use with virtualbox-bin package
+	arch = any
+	license = LGPL2.1
+	license = GPL2
+	license = BSD
+	license = custom
+	depends = python
+	optdepends = java-runtime: for webservice java bindings
+	provides = virtualbox-sdk
+	conflicts = virtualbox-sdk
 

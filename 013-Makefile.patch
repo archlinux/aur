@@ -1,5 +1,3 @@
-diff --git a/src/vboxhost/Makefile b/src/vboxhost/Makefile
-index 18466b48..7c7de4e5 100644
 --- a/src/vboxhost/Makefile
 +++ b/src/vboxhost/Makefile
 @@ -23,25 +23,25 @@
