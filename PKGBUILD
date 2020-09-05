@@ -1,7 +1,7 @@
 # Maintainer: Ashely Roll <ash at digitalnemesis dot com>
 
 pkgname=sierrawireless-swicwe-zip
-pkgver=1.22
+pkgver=1.25
 pkgrel=1
 pkgdesc="Sierra Wireless swicwe firmware packaging tool for WP/AR Legato devices"
 arch=('x86_64')
