@@ -1,7 +1,7 @@
 pkgbase = htop-temperature
 	pkgdesc = Interactive process viewer with added support for CPU temperature
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://htop.dev/
 	arch = i686
 	arch = x86_64
