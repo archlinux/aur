@@ -1,23 +1,23 @@
 pkgbase = nvidia-beta
 	pkgdesc = NVIDIA drivers for Arch's official 'linux' package (beta version)
-	pkgver = 450.57
-	pkgrel = 2
+	pkgver = 450.66
+	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	makedepends = linux-headers
 	makedepends = dkms
-	provides = nvidia=450.57
-	provides = nvidia-beta=450.57
+	provides = nvidia=450.66
+	provides = nvidia-beta=450.66
 	conflicts = nvidia
 	options = !strip
-	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/450.57/NVIDIA-Linux-x86_64-450.57-no-compat32.run
+	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/450.66/NVIDIA-Linux-x86_64-450.66-no-compat32.run
 	source = 110-nvidia-change-dkms-conf.patch
-	sha256sums = 8a65da18761a2e6547d681b0d87201a46d822e71a318c89a849767a95fbd1e07
-	sha256sums = 3f0940fa30468d237cda6cab354b4c40c7baacad5bd5aaf31706740f855e35ce
+	sha256sums = 82712c36bc55509c871dd0736a8e91ab7922d8b6c15d08d4e7e86a0bef90083f
+	sha256sums = 03faca3cdb0bb8eaf0ba4281104d20a67d2fd3908fbbcd786888acbbc316716b
 
 pkgname = nvidia-beta
 	depends = linux
-	depends = nvidia-utils-beta>=450.57
+	depends = nvidia-utils-beta>=450.66
 	depends = libglvnd
 
