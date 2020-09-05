@@ -3,7 +3,7 @@
 _pkgname=htop
 pkgname=htop-temperature-rpi
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Interactive process viewer with added support for CPU temperature. Version for gathering Raspberry Pi CPU temperature from thermal_zone0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url='https://htop.dev/'
@@ -15,7 +15,7 @@ options=('!emptydirs')
 source=("https://github.com/htop-dev/htop/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'htop-temperature-rpi.patch')
 sha256sums=('8465164bc085f5f1813e1d3f6c4b9b56bf4c95cc12226a5367e65794949b01ca'
-            'aabf604ab3cf1094df1f7d5e375f2d796b8f631e169b48cd3fac63f8b2ae2a4d')
+            '0dab0800730e8d57d4b0d202a36075cf4fee36cb799d2c802bd1b2815a227373')
 
 prepare() {
   cd "$_pkgname-$pkgver"
