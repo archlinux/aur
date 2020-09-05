@@ -15,8 +15,8 @@ source=("$_pkgname::git+https://github.com/zenixls2/alacritty.git#branch=ligatur
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${_pkgname}"
-  printf "0.6.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd $_pkgname/alacritty
+	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build(){
