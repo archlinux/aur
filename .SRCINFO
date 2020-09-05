@@ -1,6 +1,6 @@
 pkgbase = gettext-git
 	pkgdesc = GNU internationalization library
-	pkgver = 0.21.r4.g3564f5f88
+	pkgver = 0.21.r12.ge645b7d56
 	pkgrel = 1
 	url = https://www.gnu.org/software/gettext/
 	arch = i686
@@ -20,6 +20,8 @@ pkgbase = gettext-git
 	provides = gettext
 	conflicts = gettext
 	source = git+https://git.savannah.gnu.org/git/gettext.git
+	source = git+https://git.savannah.gnu.org/git/gnulib.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = gettext-git

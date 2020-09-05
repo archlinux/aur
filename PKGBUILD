@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gettext-git
-pkgver=0.21.r4.g3564f5f88
+pkgver=0.21.r12.ge645b7d56
 pkgrel=1
 pkgdesc="GNU internationalization library"
 arch=('i686' 'x86_64')
@@ -11,14 +11,18 @@ depends=('glibc' 'glib2' 'gperf' 'libunistring' 'ncurses')
 makedepends=('git' 'fpc' 'grep' 'help2man' 'wget' 'xz')
 provides=('gettext')
 conflicts=('gettext')
-source=("git+https://git.savannah.gnu.org/git/gettext.git")
-sha256sums=('SKIP')
+source=("git+https://git.savannah.gnu.org/git/gettext.git"
+        "git+https://git.savannah.gnu.org/git/gnulib.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 
 prepare() {
   cd "gettext"
 
-  git submodule update --init --recursive
+  git submodule init
+  git config submodule.gnulib.url "../gnulib"
+  git submodule update
 }
 
 pkgver() {
