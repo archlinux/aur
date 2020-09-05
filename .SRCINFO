@@ -1,6 +1,6 @@
 pkgbase = any-json
-	pkgdesc = convert (almost) anything to JSON
-	pkgver = 2.2.0
+	pkgdesc = Convert (almost) anything to JSON
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/laktak/any-json
 	arch = any

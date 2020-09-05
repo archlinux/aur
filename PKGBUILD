@@ -1,9 +1,9 @@
 # Maintainer: Josh Klar <j@iv597.com>
 
 pkgname=any-json
-pkgver=2.2.0
+pkgver=3.1.0
 pkgrel=1
-pkgdesc='convert (almost) anything to JSON'
+pkgdesc='Convert (almost) anything to JSON'
 arch=(any)
 url='https://github.com/laktak/any-json'
 license=('MIT')
