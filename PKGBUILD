@@ -4,7 +4,7 @@
 # Contributor: soloturn@gmail.com
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.08.30.a.r52.g3f31b49f163
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.08.31.a.r802.gc6a266ef62d
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -90,7 +90,7 @@ build() {
 
     export SWIFT_SOURCE_ROOT="$srcdir"
     export PATH="$PATH:/usr/bin/core_perl"
-    utils/build-script -R "${_common_build_params[@]}"
+    #utils/build-script -R "${_common_build_params[@]}"
 
     LDFLAGS='-ldl -lpthread' python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="/opt/swift" installable_package="$srcdir/swift.tar.gz"
 }
