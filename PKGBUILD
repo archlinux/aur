@@ -1,28 +1,52 @@
 # Maintainer: Carlos Galindo <carlos.s.galindo (at) gmail.com>
+_npmname=meshcentral
+_npmver=0.6.28
 pkgname=meshcentral
-pkgver=0.5.13
+pkgver=0.6.28
 pkgrel=1
-pkgdesc="dmenu adapter for bitwarden-cli"
-arch=('x86_64')
-url="https://github.com/Ylianst/MeshCentral"
-license=('Apache')
+pkgdesc="Web based remote computer management and file server"
+arch=(any)
+url="http://meshcommander.com"
+license=(Apache)
 depends=('nodejs')
 makedepends=('npm')
-backup=('etc/meshcentral/config.json')
-noextract=("$pkgname-$pkgver.tar.gz")
-source=("$pkgname-$pkgver.tar.gz::${url}/archive/MeshCentral_v$pkgver.tar.gz")
-sha512sums=('e116241065834a25e56d8ced726ce978c50c876c56a916c8b0ecd211217cf4465c3b29d9d0e803af7dfe921d404fa190e2ea9a04714aba224aa8bc10286398fd')
+backup=('etc/meshcentral/config.json' 'var/lib/meshcentral')
+source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz"
+        "$_npmname.service"
+        "$_npmname.sysusers"
+        "$_npmname.tmpfiles")
+noextract=($_npmname-$_npmver.tgz)
+sha1sums=(a38335776d2c96959fbc952c946e11c762bf78bb SKIP SKIP SKIP)
 
 package() {
-    npm install -g --user root --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
+  cd $srcdir
+  local _npmdir="$pkgdir/usr/lib/node_modules/"
+  mkdir -p $_npmdir
+  cd $_npmdir
+  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
 
-    # Some folders may have 777 permissions. See github.com/npm/npm issue 9359
-    find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+  # Non-deterministic race in npm gives 777 permissions to random directories.
+  # See https://github.com/npm/npm/issues/9359 for details.
+  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 
-    chown -R root:root "${pkgdir}"
+  # npm gives ownership of ALL FILES to build user
+  # https://bugs.archlinux.org/task/63396
+  chown -R root:root "${pkgdir}"
 
-    # delete references to src and pkg dirs
-    find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+  # Remove references to package and source directories
+  find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+
+  # Our additional files
+  install -D "${srcdir}/$_npmname.service" -t "${pkgdir}/usr/lib/systemd/system"
+  install -D "${srcdir}/$_npmname.sysusers" "${pkgdir}/usr/lib/sysusers.d/$_npmname.conf"
+  install -D "${srcdir}/$_npmname.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/$_npmname.conf"
+
+  # Default configuration
+  install -D "${pkgdir}/usr/lib/node_modules/$_npmname/sample-config-advanced.json" "${pkgdir}/etc/$_npmname/config.json"
+
+  # Data directories
+  install -d ${pkgdir}/var/lib/${_npmname}/data
+  install -d ${pkgdir}/var/lib/${_npmname}/files
 }
 
-# vim:set ts=4 sw=4 et:
+# vim:set ts=2 sw=2 et:

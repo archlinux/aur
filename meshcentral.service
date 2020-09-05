@@ -1,0 +1,16 @@
+[Unit]
+Description=Web based remote computer management and file server
+
+[Service]
+Type=simple
+LimitNOFILE=1000000
+ExecStart=/usr/bin/node /usr/lib/node_modules/meshcentral
+WorkingDirectory=/var/lib/meshcentral
+Environment=NODE_ENV=production
+User=meshcentral
+Group=meshcentral
+RestartSec=10
+AmbientCapabilities=cap_net_bind_service
+
+[Install]
+WantedBy=multi-user.target

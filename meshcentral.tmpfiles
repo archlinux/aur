@@ -1,0 +1,6 @@
+Z /var/lib/meshcentral                  0750 meshcentral meshcentral
+z /etc/meshcentral                      0755 -           -
+Z /etc/meshcentral                      -    meshcentral meshcentral
+L /var/lib/meshcentral/data/config.json -    -           -           - /etc/meshcentral/config.json
+L /usr/lib/meshcentral-data             -    -           -           - /var/lib/meshcentral/data
+L /usr/lib/meshcentral-files            -    -           -           - /var/lib/meshcentral/files
