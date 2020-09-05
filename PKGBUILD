@@ -16,7 +16,7 @@ options=('!emptydirs')
 source=("https://github.com/htop-dev/htop/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'htop-temperature.patch')
 sha256sums=('8465164bc085f5f1813e1d3f6c4b9b56bf4c95cc12226a5367e65794949b01ca'
-            '3905f4a9043277718131e713003b1ff149079f8ec55d2bcfd7289ab228419147')
+            '6e8e63b1f31b62ba6da78955fce239ab748fc9f3020d5b3da3c385184008cb31')
 
 prepare() {
   cd "$_pkgname-$pkgver"
