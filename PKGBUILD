@@ -1,40 +1,46 @@
-# Maintainer: Florian Pritz <bluewind@xinu.at>
+# Maintainer: David Runge <dvzrv@archlinux.org>
+# Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 # Contributor: dorphell <dorphell@archlinux.org>
 
-_pkgbasename=libao
-pkgname=lib32-$_pkgbasename
+_name=libao
+pkgname=lib32-libao
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform audio output library and plugins (32-bit)"
 url="https://www.xiph.org/ao/"
 arch=('x86_64')
-license=('GPL')
-depends=($_pkgbasename 'lib32-glibc' 'lib32-alsa-lib' 'lib32-libpulse')
-makedepends=('gcc-multilib' 'git')
-#source=("https://downloads.xiph.org/releases/ao/${pkgname}-${pkgver}.tar.gz"
-source=("git+https://git.xiph.org/libao.git#commit=3f4b02f046550aca54d7f11a5d9c56ac421f0b66")
-sha256sums=('SKIP')
+license=('GPL2')
+depends=("libao=${pkgver}" 'lib32-gcc-libs' 'lib32-glibc' 'lib32-libpulse')
+makedepends=('gcc-multilib' 'lib32-alsa-lib')
+provides=('libao.so')
+source=("https://gitlab.xiph.org/xiph/${_name}/-/archive/${pkgver}/${_name}-${pkgver}.tar.gz")
+sha512sums=('d2736d25b60862e7d7469611ce31b1df40a4366ab160e2ff1b46919ae91692d1596c8468e4f016303b306fc3ac1bddc7b727f535a362f403c3fe7c6532e9045a')
+b2sums=('e5b5d87c4357ee113769732cb6a7e0afa28b2bc4923be8dacd1fa39ac5fb96d8a5e19bc45137ffc8ec63eef0382130ab9b311aad3a66be4566e0cb9761417b23')
+
+prepare() {
+  mv -v "${_name}-${pkgver}" "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
+  autoreconf -vfi
+}
 
 build() {
-  #cd $_pkgbasename-$pkgver
-  cd $_pkgbasename
+  cd "${pkgname}-${pkgver}"
 
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  ./autogen.sh
-  ./configure --prefix=/usr --libdir=/usr/lib32
+  ./configure --prefix=/usr \
+              --libdir=/usr/lib32
   make
 }
 
 package() {
-  #cd $_pkgbasename-$pkgver
-  cd $_pkgbasename
-
+  depends+=('libasound.so')
+  cd "${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir/" install
-  rm -rf "$pkgdir"/usr/{include,share,bin,sbin}
+  rm -rf "$pkgdir"/usr/{include,share,bin}
 }
 # vim:set ts=2 sw=2 et:
