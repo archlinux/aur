@@ -1,6 +1,6 @@
 # Maintainer: loooph <loooph@gmx.de>
 pkgname=obs-shaderfilter-git
-pkgver=v1.2.r15.g33872bc
+pkgver=v1.2.r16.g4345a10
 pkgrel=1
 pkgdesc="enables custom shaders for OBS sources"
 arch=('x86_64')
