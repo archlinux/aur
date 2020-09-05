@@ -1,7 +1,7 @@
 # Maintainer: Thor77 <thor77 at thor77 dot org>
 
 pkgname=inlets
-pkgver=2.7.4
+pkgver=2.7.6
 pkgrel=1
 pkgdesc='Expose your local endpoints to the Internet'
 arch=('any')
@@ -13,7 +13,7 @@ options=('!strip')
 source=('inlets-server.service' 'inlets-client.service' "https://github.com/inlets/inlets/archive/${pkgver}.tar.gz")
 sha256sums=('79bad343a925292d0a5cc5164bff28fe95d9512a5dded04568af61d71e1e0a79'
             'f7f85bb083b8839a89f715f882bf0e0f556cf183aa7ed653a1c87c5822762163'
-            '55cab0f01b19f653637f4230bdb0ff15e4618a59651f37cad6bc69ff79460e7c')
+            '4b9e6d2bec4748ef12c2434d3bac9bed50ef7e60d3a1dcfc56cf524a060a1089')
 
 build() {
   cd "$pkgname-$pkgver"
