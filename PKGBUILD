@@ -4,7 +4,7 @@ pkgver=1.8.5
 pkgrel=2
 pkgdesc="Tool to monitor ZetaBoards forums for new posts"
 arch=(any)
-url=http://ikn.org.uk/ZetaBoards%20topic%20fetcher
+url=https://sourceforge.net/projects/zb-fetcher/
 license=(GPL3)
 depends=("python2>=2.6" "pygtk>=2.6" python2-pycurl)
 makedepends=(po4a)
