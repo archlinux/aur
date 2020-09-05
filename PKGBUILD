@@ -2,7 +2,7 @@
 # Contributor: Benjamin Chretien <chretien dot b +aur at gmail dot com>
 
 pkgname=casadi
-pkgver=3.5.4
+pkgver=3.5.5
 pkgrel=1
 pkgdesc="Symbolic framework for automatic differentiation and numeric optimization"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('python' 'gcc-fortran' 'lapack' 'tinyxml' 'swig' 'sundials' 'ipython'
          'python-numpy' 'python-scipy' 'python-matplotlib' 'coin-or-ipopt')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/casadi/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('06a5455d1084979ea6e6770aea90c54e5f22988d7c51aaaa62e5a6ead8792ed1')
+sha256sums=('3b26e73ceb48cd9d713e3727e4038afa0e93471f014f8aaccdd77da382e2249a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
