@@ -6,4 +6,4 @@ Exec=portmapper
 Icon=application-x-java-archive
 Terminal=false
 Type=Application
-Categories=Internet;Utilities
+Categories=Network;Utility
