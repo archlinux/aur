@@ -24,7 +24,6 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
   mkdir -p build
   cd build
-  _CMAKE_FLAGS=""
   cmake .. \
     -DFAISS_ENABLE_GPU=OFF \
     -DFAISS_ENABLE_PYTHON=ON \
