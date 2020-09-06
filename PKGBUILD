@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=startdde-git
-pkgver=5.5.0.8.r1.g3e984a3
+pkgver=5.5.0.20.r1.gb5786b3
 pkgrel=1
 pkgdesc="starter of deepin desktop environment"
 arch=('x86_64')
@@ -18,19 +18,24 @@ replaces=('deepin-wm-switcher' 'startdde')
 provides=('startdde')
 conflicts=('startdde')
 groups=('deepin-git')
-source=("git://github.com/linuxdeepin/startdde")
+source=("$pkgname::git://github.com/linuxdeepin/startdde")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd startdde
+    cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   export GOPATH="$srcdir/build:/usr/share/gocode"
-  go get github.com/cryptix/wav golang.org/x/xerrors
+  go get -v github.com/cryptix/wav
+  go get -v golang.org/x/xerrors
+  go get -v github.com/fsnotify/fsnotify
+  go get -v github.com/godbus/dbus
+  go get -v github.com/godbus/dbus/introspect
+  go get -v github.com/godbus/dbus/prop
 
-  sed -i 's/sbin/bin/' startdde/Makefile
+  sed -i 's/sbin/bin/' $pkgname/Makefile
 }
 
 build() {
@@ -40,12 +45,12 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  cd startdde
+  cd $pkgname
   make
 }
 
 package() {
-  cd startdde
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 
   # Fix env file permission

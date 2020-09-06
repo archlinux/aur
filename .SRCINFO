@@ -1,6 +1,6 @@
 pkgbase = startdde-git
 	pkgdesc = starter of deepin desktop environment
-	pkgver = 5.5.0.8.r1.g3e984a3
+	pkgver = 5.5.0.20.r1.gb5786b3
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/startdde
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = startdde-git
 	conflicts = startdde
 	replaces = deepin-wm-switcher
 	replaces = startdde
-	source = git://github.com/linuxdeepin/startdde
+	source = startdde-git::git://github.com/linuxdeepin/startdde
 	sha512sums = SKIP
 
 pkgname = startdde-git
