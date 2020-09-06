@@ -5,7 +5,7 @@
 # Contributor: tobias <tobias@archlinux.org>
 
 pkgname=libxfce4util-git
-pkgver=4.15.2.r2.g2fe428a
+pkgver=4.16pre1.r2.g8266864
 pkgrel=1
 pkgdesc="Basic utility non-GUI functions for Xfce"
 arch=(i686 x86_64)
@@ -22,7 +22,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname/
-    git describe | sed 's/^libxfce4util-//;s/-/.r/;s/-/./g'
+    git describe | sed 's/^xfce-//;s/-/.r/;s/-/./g'
 }
 
 build() {
