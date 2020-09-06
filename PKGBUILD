@@ -2,7 +2,7 @@
 
 _pkgname=avogadrolibs
 pkgname="${_pkgname}-git"
-pkgver=1.93.0.r1846.cdfdf9bd
+pkgver=1.93.0.r1889.e169315d
 pkgrel=1
 pkgdesc="Avogadro 2: libraries"
 url="http://openchemistry.org/projects/avogadro2"
@@ -14,8 +14,10 @@ depends=("libarchive" "glew" "hdf5" "vtk" "libmsym" "spglib" "libmmtf" "qt5-webv
 makedepends=("git" "cmake" "eigen" "gtest" "gdal" "openmpi" "msgpack-c")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("git://github.com/OpenChemistry/${_pkgname}.git")
-sha256sums=("SKIP")
+source=("git://github.com/OpenChemistry/${_pkgname}.git"
+        "hdf5_110.patch")
+sha256sums=("SKIP"
+            "9af8f4b74367debe1ebe4e6bac4434d901958fdcf2375462e9c932d826603266")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -26,6 +28,9 @@ pkgver() {
 }
 
 prepare() {
+  cd "${srcdir}/${_pkgname}"
+  patch -p1 -i "${srcdir}"/hdf5_110.patch
+
   mkdir -p "${srcdir}"/build
 }
 

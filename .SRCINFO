@@ -1,6 +1,6 @@
 pkgbase = avogadrolibs-git
 	pkgdesc = Avogadro 2: libraries
-	pkgver = 1.93.0.r1846.cdfdf9bd
+	pkgver = 1.93.0.r1889.e169315d
 	pkgrel = 1
 	url = http://openchemistry.org/projects/avogadro2
 	arch = x86_64
@@ -27,7 +27,9 @@ pkgbase = avogadrolibs-git
 	provides = avogadrolibs
 	conflicts = avogadrolibs
 	source = git://github.com/OpenChemistry/avogadrolibs.git
+	source = hdf5_110.patch
 	sha256sums = SKIP
+	sha256sums = 9af8f4b74367debe1ebe4e6bac4434d901958fdcf2375462e9c932d826603266
 
 pkgname = avogadrolibs-git
 
