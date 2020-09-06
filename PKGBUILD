@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-polkit-agent-git
-pkgver=5.2.0.7.r1.g9d192f2
+pkgver=5.3.0.1.r0.g573edf1
 pkgrel=1
 pkgdesc='Deepin Polkit Agent'
 arch=('x86_64')
@@ -13,27 +13,27 @@ conflicts=('deepin-polkit-agent')
 replaces=('deepin-polkit-agent')
 provides=('deepin-polkit-agent')
 groups=('deepin-git')
-source=('git://github.com/linuxdeepin/dde-polkit-agent')
+source=("$pkgname::git://github.com/linuxdeepin/dde-polkit-agent")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd dde-polkit-agent
+    cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd dde-polkit-agent
+  cd $pkgname
   # https://github.com/linuxdeepin/developer-center/issues/1721
   sed -i 's/bool is_deepin = true/bool is_deepin = false/' policykitlistener.cpp
 }
 
 build() {
-  cd dde-polkit-agent
+  cd $pkgname
   qmake-qt5 PREFIX=/usr
-  make
+  make -j$(nproc)
 }
 
 package() {
-  cd dde-polkit-agent
+  cd $pkgname
   make INSTALL_ROOT="$pkgdir" install
 }
