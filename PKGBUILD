@@ -22,6 +22,7 @@ _basekernel=5.8
 _basever=58
 _aufs=20200622
 pkgver=5.8.6
+xanmod=1
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
