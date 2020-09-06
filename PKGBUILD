@@ -6,15 +6,14 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-git
-pkgver=6.7.0.r31.gc01c686e88
+pkgver=6.7.0.r60.gfc7d53edf4
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
 license=('LGPL' 'GPL3')
-depends=('libpciaccess' 'yajl' 'fuse2' 'gnutls' 'parted' 'libssh' 'libxml2' 'numactl' 'polkit' 'netcf')
-makedepends=('libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'ceph-libs' 'glusterfs'
-             'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-headless' 'git' 'meson' 'ninja')
+depends=('libpciaccess' 'yajl' 'fuse2' 'gnutls' 'parted' 'libssh' 'numactl' 'polkit' 'netcf' 'libvirt' 'glusterfs' 'ceph-libs' 'libiscsi')
+makedepends=('libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-headless' 'git' 'meson' 'ninja')
 checkdepends=('ebtables')
 optdepends=('libvirt-storage-gluster: Gluster storage backend'
             'libvirt-storage-iscsi-direct: iSCSI-direct storage backend'
