@@ -1,0 +1,13 @@
+pkgbase = arc-dark-osx-openbox-theme-git
+	pkgdesc = Arc-Dark based theme inspired by OSX for Openbox
+	pkgver = 2.3b5d1f2
+	pkgrel = 1
+	url = https://github.com/Dr-Noob/Arc-Dark-OSX
+	arch = any
+	license = unknown
+	depends = openbox
+	source = git+https://github.com/Dr-Noob/Arc-Dark-OSX.git
+	md5sums = SKIP
+
+pkgname = arc-dark-osx-openbox-theme-git
+
