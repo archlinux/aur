@@ -2,12 +2,11 @@
 
 pkgname='form-extractor'
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Extract form tags from html'
 arch=('any')
 url='https://www.timedicer.co.uk/programs/help/form-extractor.sh.php'
 license=('APACHE')
-depends=('ghostscript' 'imagemagick')
 source=("${pkgname}-${pkgver}::https://www.timedicer.co.uk/programs/${pkgname}.sh")
 sha256sums=('SKIP')
 

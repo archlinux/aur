@@ -1,12 +1,10 @@
 pkgbase = form-extractor
 	pkgdesc = Extract form tags from html
 	pkgver = 2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.timedicer.co.uk/programs/help/form-extractor.sh.php
 	arch = any
 	license = APACHE
-	depends = ghostscript
-	depends = imagemagick
 	source = form-extractor-2.8::https://www.timedicer.co.uk/programs/form-extractor.sh
 	sha256sums = SKIP
 
