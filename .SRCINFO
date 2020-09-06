@@ -6,6 +6,7 @@ pkgbase = sickchill-git
 	install = sickchill-git.install
 	arch = any
 	license = GPL3
+	makedepends = python-virtualenv
 	optdepends = libmediainfo: determine the resolution of MKV and AVI files with no resolution in the filename
 	optdepends = unrar: for RAR archives
 	provides = sickchill

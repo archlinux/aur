@@ -10,6 +10,7 @@ pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
 url="https://sickchill.github.io"
 license=('GPL3')
+makedepends=('python-virtualenv')
 optdepends=('libmediainfo: determine the resolution of MKV and AVI files with no resolution in the filename'
             'unrar: for RAR archives')
 provides=(${pkgname%-git})
@@ -29,7 +30,8 @@ pkgver() {
 }
 
 build() {
-  python -m venv build
+  #python -m venv build
+  virtualenv build
   build/bin/pip install --quiet --quiet --isolated --no-warn-script-location --root=build --prefix=. sickchill
 
   sed -i '1s|.*|#!/opt/sickchill/app/bin/python|' build/bin/SickChill.py
