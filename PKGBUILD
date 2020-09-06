@@ -1,35 +1,31 @@
-# Maintainer: Adhityaa Chandrasekar <c.adhityaa@gmail.com>
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: Adhityaa Chandrasekar <c.adhityaa@gmail.com>
+
 pkgname=python-unidiff
-pkgver=0.5.3
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Simple Python library to parse and interact with unified diff data."
 arch=('any')
 url="https://github.com/matiasb/python-unidiff"
 license=('MIT')
-depends=(
-            'python'
-            'python-setuptools'
-        )
-makedepends=(
-                'python-setuptools'
-            )
-source=("https://pypi.io/packages/source/u/unidiff/unidiff-$pkgver.tar.gz")
-sha256sums=('79b4be3e5479dfc6d77747d23ec98200559ca6a842fad1f92c2a7eb56b99195b')
-
-prepare() {
-    cd "$srcdir/unidiff-$pkgver"
-}
+depends=('python')
+makedepends=('python-setuptools')
+checkdepends=('python-pytest')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('00bd92c4988a2daba239222e579284da48983f81b929fad4249949d6a5496723')
 
 build() {
-	cd "$srcdir/unidiff-$pkgver"
-    python3 setup.py build
+	cd "$srcdir/$pkgname-$pkgver"
+	python setup.py build
 }
 
 check() {
-	cd "$srcdir/unidiff-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
+	pytest
 }
 
 package() {
-	cd "$srcdir/unidiff-$pkgver"
-    python3 setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
+	cd "$srcdir/$pkgname-$pkgver"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
