@@ -1,6 +1,6 @@
 pkgbase = etebase
 	pkgdesc = Etebase C library
-	pkgver = 0.1.0.r12.daea1e1
+	pkgver = 0.1.1.r2.gdaea1e1
 	pkgrel = 1
 	url = https://github.com/etesync/libetebase
 	arch = x86_64

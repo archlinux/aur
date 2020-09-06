@@ -2,7 +2,7 @@
 
 pkgname=etebase
 _pkgname=${pkgname}
-pkgver=0.1.0.r12.daea1e1
+pkgver=0.1.1.r2.gdaea1e1
 pkgrel=1
 pkgdesc="Etebase C library"
 arch=(x86_64)
@@ -15,7 +15,8 @@ sha512sums=('SKIP')
 
 pkgver() {
    cd "$_pkgname"
-   printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+   # cutting off 'v' prefix that presents in the git tag
+   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
