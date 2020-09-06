@@ -1,36 +1,35 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=td-agent
-pkgver=3.7.1
+pkgver=4.0.1
 pkgrel=1
-_pkgrel=0
+_pkgrel=1
 pkgdesc='Open-Source Log Collector'
 arch=('x86_64')
 url='https://www.fluentd.org/'
 license=('MIT')
 options=('!strip')
-source=(https://packages.treasuredata.com/3/ubuntu/bionic/pool/contrib/t/td-agent/${pkgname}_${pkgver}-${_pkgrel}_amd64.deb)
+source=(https://packages.treasuredata.com/4/ubuntu/bionic/pool/contrib/t/td-agent/${pkgname}_${pkgver}-${_pkgrel}_amd64.deb)
 install=td-agent.install
+backup=('etc/td-agent/td-agent.conf')
 
 package() {
   cd "$srcdir"
 
-  tar xf data.tar.gz -C "$pkgdir/"
+  tar xf data.tar.xz -C "$pkgdir/"
 
   find "$pkgdir" -type d -exec chmod 755 {} +
 
-  mkdir -p "$pkgdir/usr"
-  cp -a "$pkgdir/opt/td-agent/usr/sbin" "$pkgdir/usr/bin"
+  mv "$pkgdir/usr/sbin"/* "$pkgdir/usr/bin/"
+  rmdir "$pkgdir/usr/sbin"
 
-  mkdir -p "$pkgdir/etc/logrotate.d"
-  cp "$pkgdir/opt/td-agent/etc/td-agent/logrotate.d/td-agent.logrotate" "$pkgdir/etc/logrotate.d/td-agent"
+  mv "$pkgdir/lib/systemd" "$pkgdir/usr/lib/systemd"
+  rmdir "$pkgdir/lib"
 
-  mkdir -p "$pkgdir/etc/td-agent"
-  cp "$pkgdir/opt/td-agent/etc/td-agent/td-agent.conf" "$pkgdir/etc/td-agent/td-agent.conf"
+  sed -i -e 's#/var/run/td-agent#/run/td-agent#g' "$pkgdir/usr/lib/tmpfiles.d/td-agent.conf" "$pkgdir/usr/lib/systemd/system/td-agent.service"
 
-  mkdir -p "$pkgdir/usr/lib/systemd/system"
-  cp "$pkgdir/opt/td-agent/etc/systemd/td-agent.service" "$pkgdir/usr/lib/systemd/system/td-agent.service"
+  rm -r "$pkgdir/usr/share/lintian"
 }
 
 # vim: set ft=sh:
 
-sha512sums=('af5539a594ae5171030c4900239df43d264198370eaa6999c2002291b7d5e94e6d4647f7e6ef42deddf464d82a05cc7990118a0154f262e8dc8f09a8492e76c3')
+sha512sums=('651d48177f73855e5b77f117c39dc75b0019650895747a6dbbe002a797571b991a79dc091efd88519c0d72eacd26b9ac9d932652bdbf2ac8ad754257527a04f5')
