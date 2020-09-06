@@ -1,0 +1,17 @@
+pkgbase = youtube-tool
+	pkgdesc = CLI tool to extract comments, subtitles or livechat content from a youtube video
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/nlitsme/youtube_tool
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = yttool
+	source = https://files.pythonhosted.org/packages/source/y/youtube_tool/youtube_tool-1.0.5.tar.gz
+	source = youtube_tool-1.0.5-LICENSE::https://github.com/nlitsme/youtube_tool/raw/master/LICENSE
+	sha256sums = ae8490dfdc41260cc9e1c53356a61954d10b34651150245730ff244eb584f9eb
+	sha256sums = SKIP
+
+pkgname = youtube-tool
+
