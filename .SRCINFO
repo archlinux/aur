@@ -1,0 +1,15 @@
+pkgbase = po2lmo-git
+	pkgdesc = Openwrt po2lmo
+	pkgver = r1.750179b
+	pkgrel = 1
+	url = https://github.com/openwrt-dev/po2lmo.git
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = po2lmo
+	conflicts = po2lmo
+	source = po2lmo-git::git+https://github.com/openwrt-dev/po2lmo.git
+	md5sums = SKIP
+
+pkgname = po2lmo-git
+
