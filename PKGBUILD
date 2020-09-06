@@ -14,9 +14,12 @@ makedepends=('gendesk')
 source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/rejuce/LikeTaskManager/releases/download/v${pkgver}/LikeTaskManager-x86_64.AppImage")
 sha256sums=('1353bf9a40bc817f65696d0d94fa9735c83a66e8f9cc0451d04e023239c55838')
 
-package() {
+prepare() {
   chmod 755 ./${pkgname%-bin}-${pkgver}.AppImage
   ./${pkgname%-bin}-${pkgver}.AppImage --appimage-extract
+}
+
+package() {
   gendesk -f -n --pkgname "${pkgname%-bin}" \
           --pkgdesc "$pkgdesc" \
           --name "Like Task Manager" \
