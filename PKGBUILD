@@ -4,7 +4,7 @@
 pkgname=jexiftoolgui
 PkgName=jExifToolGUI
 pkgver=1.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="${PkgName} is a java/Swing graphical frontend for the excellent command-line ExifTool application by Phil Harvey"
 arch=('any')
 url="https://github.com/hvdwolf/${PkgName}"
@@ -38,5 +38,7 @@ cd ${srcdir}/${pkgname}.git/packaging/debian/
 install -D -m644 -t ${pkgdir}/usr/share/icons/hicolor/48x48/apps/   ${pkgname}-48x48.png 
 install -D -m644 -t ${pkgdir}/usr/share/icons/hicolor/256x256/apps/ ${pkgname}-256x256.png
 install -D -m644 -t ${pkgdir}/usr/share/icons/hicolor/32x32/apps/   ${pkgname}-32x32.png 
+
+sed -i 's/share\/jexiftoolgui\//share\/icons\/hicolor\/48x48\/apps\//g' ${pkgname}.desktop
 install -D -m644 -t ${pkgdir}/usr/share/applications/               ${pkgname}.desktop
 }
