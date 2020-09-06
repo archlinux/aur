@@ -1,0 +1,16 @@
+pkgbase = duckclient
+	pkgdesc = Standalone version of the MUCK/MUSH/MUX/MOO client for chrome.
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = www.duckclient.com
+	arch = x86_64
+	license = custom
+	source = http://duckclient.com/downloads/DuckClient-5.6.0-linux-x64.zip
+	source = duckclient
+	source = duckclient.desktop
+	md5sums = 42ffa40a5330e0d223a3a7ed19c3d74a
+	md5sums = eaaa57848431e81987b34baccc678d10
+	md5sums = 28f409026d5b12f0f947e1b690642156
+
+pkgname = duckclient
+

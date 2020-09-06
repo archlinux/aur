@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=duckclient
+Comment=MU* Client
+Path=/opt/duckclient
+Exec=duckclient
+Icon=duckclient
+Terminal=false
+Categories=Games;
