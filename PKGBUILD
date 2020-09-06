@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-qt5integration-git
-pkgver=5.1.0.3.r18.g8a8e950
+pkgver=5.1.0.5.r1.g5314f8a
 pkgrel=1
 pkgdesc='Qt platform theme integration plugins for DDE'
 arch=('x86_64')
@@ -13,21 +13,21 @@ conflicts=('deepin-qt5integration')
 replaces=('deepin-qt5integration')
 provides=('deepin-qt5integration')
 groups=('deepin-git')
-source=("git://github.com/linuxdeepin/qt5integration")
+source=("$pkgname::git://github.com/linuxdeepin/qt5integration")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd qt5integration
+    cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd qt5integration
+  cd $pkgname
   qmake-qt5 PREFIX=/usr
-  make
+  make -j$(nproc)
 }
 
 package() {
-  cd qt5integration
+  cd $pkgname
   make INSTALL_ROOT="$pkgdir" install
 }
