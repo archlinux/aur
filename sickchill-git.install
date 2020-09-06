@@ -11,6 +11,7 @@ post_upgrade() {
 }
 
 pre_remove() {
+  echo "==> Stopping sickchill.service..."
   systemctl stop sickchill.service
 }
 
