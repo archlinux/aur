@@ -23,6 +23,7 @@ package() {
     	install -Dm 644 "${pkgdir}/usr/share/doc/forticlient/copyright" "${pkgdir}/usr/share/licenses/fortinet/LICENSE"
 	
 	# Symlink fortivpn binary which is located in /opt
+	mkdir -p ${pkgdir}/usr/bin
 	ln -sf '/opt/forticlient/fortivpn' "${pkgdir}/usr/bin/fortivpn"
 	ln -sf 'opt/forticlient/gui/FortiClient-linux-x64/FortiClient' "${pkgdir}/usr/bin/FortiClient"
 
