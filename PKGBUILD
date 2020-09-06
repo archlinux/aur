@@ -36,7 +36,7 @@ makedepends=('bc'
     'xmlto')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+        #"https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         # xanmod patch
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         # gcc optimizations
@@ -76,7 +76,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0012-bootsplash.patch'
         '0013-bootsplash.gitpatch')
 sha256sums=('e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5'
-            'b4ab9987a715753e64f0aa264dac91c3d7ca0651bfdd8fa5d19c8990f3b08abc'
+            #'b4ab9987a715753e64f0aa264dac91c3d7ca0651bfdd8fa5d19c8990f3b08abc'
             'SKIP'
             'SKIP'
             '0ecba3688f213c56b443145c5ffcf3ddfbe9cb0ee4c1fc4bd1351266224ad997'
@@ -113,8 +113,8 @@ prepare() {
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
   
   # add upstream patch
-  msg "add upstream patch"
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #msg "add upstream patch"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
   
   # Apply Xanmod patch
   patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
