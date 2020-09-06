@@ -1,7 +1,7 @@
 #Maintainer: Satiricon <david.satiricon@gmail.com>
 pkgname=lanraragi
 pkgver=v.0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="LANraragi build package"
 arch=('any')
 url="https://github.com/Difegue/LANraragi"
@@ -32,4 +32,5 @@ package() {
   install -D -m 644 "${srcdir}/lanraragi.service" "${pkgdir}/usr/lib/systemd/system/lanraragi.service"
   install -D -m 644 "${srcdir}/lanraragi.sysusers" "${pkgdir}/usr/lib/sysusers.d/lanraragi.conf"
   install -D -m 644 "${srcdir}/lanraragi.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/lanraragi.conf"
+  install -D -m 644 "${srcdir}/LANraragi-${pkgver}/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
