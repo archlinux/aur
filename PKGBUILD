@@ -1,6 +1,6 @@
 # Maintainer: Antonín Dach <dach@protonmail.com>
 pkgname=wayst-git
-pkgver=r143.9d15772
+pkgver=r146.18a038b
 pkgrel=1
 pkgdesc='Simple terminal emulator for Wayland and X11 with OpenGL rendering and minimal dependencies.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('git')
 provides=('wayst')
 conflicts=('wayst')
 install=
-source=('git+https://github.com/91861/wayst.git')
+source=('git+https://github.com/91861/wayst.git#branch=master')
 md5sums=('SKIP')
 
 pkgver() {
