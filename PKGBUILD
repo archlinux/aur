@@ -18,6 +18,9 @@ source=(git+https://github.com/Luis-L-B/youtube-dl-front.git
 md5sums=('SKIP')
 
 package() {
-  npm install --root="$pkgdir"
-}
+  cd $srcdir/youtube-dl-front/server
+  npm install 
+  }
+
+
 
