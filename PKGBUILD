@@ -5,11 +5,9 @@ pkgrel=1
 pkgdesc='An implementation of Wave Function Collapse in C++'
 arch=('any')
 url='https://github.com/math-fehr/fast-wfc'
-license=('unknow')
-depends=()
+license=('MIT')
 makedepends=('gcc' 'make' 'cmake')
 provides=('fast-wfc')
-conflicts=()
 source=("git+https://github.com/math-fehr/fast-wfc")
 sha512sums=('SKIP')
 
