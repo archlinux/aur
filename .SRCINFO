@@ -1,0 +1,16 @@
+pkgbase = fast-wfc-git
+	pkgdesc = An implementation of Wave Function Collapse in C++
+	pkgver = r90.854230a
+	pkgrel = 1
+	url = https://github.com/math-fehr/fast-wfc
+	arch = any
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	provides = fast-wfc
+	source = git+https://github.com/math-fehr/fast-wfc
+	sha512sums = SKIP
+
+pkgname = fast-wfc-git
+
