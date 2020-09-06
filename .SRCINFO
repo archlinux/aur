@@ -1,6 +1,6 @@
 pkgbase = golang-deepin-lib-git
 	pkgdesc = A library containing many useful go routines for things such as glib, gettext, archive, graphic,etc.
-	pkgver = 5.5.0.1.r4.g67f7719
+	pkgver = 5.5.0.6.r1.gf3021d1
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/go-lib
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = golang-deepin-lib-git
 	provides = golang-deepin-lib
 	conflicts = golang-deepin-lib
 	replaces = golang-deepin-lib
-	source = git://github.com/linuxdeepin/go-lib/
+	source = golang-deepin-lib-git::git://github.com/linuxdeepin/go-lib/
 	sha512sums = SKIP
 
 pkgname = golang-deepin-lib-git

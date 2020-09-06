@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=golang-deepin-lib-git
-pkgver=5.5.0.1.r4.g67f7719
+pkgver=5.5.0.6.r1.gf3021d1
 pkgrel=1
 pkgdesc='A library containing many useful go routines for things such as glib, gettext, archive, graphic,etc.'
 arch=('any')
@@ -16,23 +16,27 @@ replaces=('golang-deepin-lib')
 conflicts=('golang-deepin-lib')
 provides=('golang-deepin-lib')
 groups=('deepin-git')
-source=("git://github.com/linuxdeepin/go-lib/")
+source=("$pkgname::git://github.com/linuxdeepin/go-lib/")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd go-lib
+    cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd go-lib
+  cd $pkgname
   sed -i 's/int connect_timeout;/extern int connect_timeout;/' pulse/dde-pulse.h
+  go get -v github.com/fsnotify/fsnotify
+  go get -v github.com/godbus/dbus
+  go get -v github.com/godbus/dbus/introspect
+  go get -v github.com/godbus/dbus/prop
 }
 
 check() {
   export GOPATH="$srcdir/build:/usr/share/gocode"
   mkdir -p "$srcdir"/build/src/pkg.deepin.io
-  cp -a "$srcdir"/go-lib "$srcdir"/build/src/pkg.deepin.io/lib
+  cp -a "$srcdir/$pkgname" "$srcdir"/build/src/pkg.deepin.io/lib
   cd "$srcdir"/build/src/pkg.deepin.io/lib
   # TODO: make packages for them
   go get github.com/cryptix/wav github.com/smartystreets/goconvey/convey github.com/mozillazg/go-pinyin gopkg.in/yaml.v3
@@ -40,12 +44,16 @@ check() {
   # passwd: test needs to access /etc/passwd
   # group & timer & log & dbus: build failed
   # shell: TestEncode failed
+  go get -v github.com/fsnotify/fsnotify
+  go get -v github.com/godbus/dbus
+  go get -v github.com/godbus/dbus/introspect
+  go get -v github.com/godbus/dbus/prop
   go test -v $(go list ./... | grep -v -e lib/pulse -e lib/users/passwd -e lib/users/group -e lib/timer -e lib/log -e lib/dbus -e lib/shell)
 }
 
 package() {
   mkdir -p "$pkgdir"/usr/share/gocode/src/pkg.deepin.io
-  cp -a "$srcdir"/go-lib "$pkgdir"/usr/share/gocode/src/pkg.deepin.io/lib
+  cp -a "$srcdir/$pkgname" "$pkgdir"/usr/share/gocode/src/pkg.deepin.io/lib
 
   rm -r "$pkgdir"/usr/share/gocode/src/pkg.deepin.io/lib/debian
 }
