@@ -4,7 +4,7 @@ pkgdesc="ROS - Launch a PID control node."
 url='https://wiki.ros.org/pid'
 
 pkgname='ros-melodic-pid'
-pkgver='0.0.24'
+pkgver='0.0.27'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=3
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="pid-release-release-melodic-pid-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/AndyZe/pid-release/archive/release/melodic/pid/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('4baac5e9ab0d98621a2820dcb7b76af518507666b7fc23ba7e117a8194366894')
+sha256sums=('6066703ba3197ee904f55d7e6b1fc054e1901b5ad4d826753061715945a57d62')
 
 build() {
   # Use ROS environment variables

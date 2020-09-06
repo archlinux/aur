@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-pid
 	pkgdesc = ROS - Launch a PID control node.
-	pkgver = 0.0.24
+	pkgver = 0.0.27
 	pkgrel = 3
 	url = https://wiki.ros.org/pid
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = ros-melodic-pid
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-dynamic-reconfigure
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-pid-0.0.24-0.tar.gz::https://github.com/AndyZe/pid-release/archive/release/melodic/pid/0.0.24-0.tar.gz
-	sha256sums = 4baac5e9ab0d98621a2820dcb7b76af518507666b7fc23ba7e117a8194366894
+	source = ros-melodic-pid-0.0.27-0.tar.gz::https://github.com/AndyZe/pid-release/archive/release/melodic/pid/0.0.27-0.tar.gz
+	sha256sums = 6066703ba3197ee904f55d7e6b1fc054e1901b5ad4d826753061715945a57d62
 
 pkgname = ros-melodic-pid
 
