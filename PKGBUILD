@@ -28,7 +28,7 @@ makedepends=(
     'libarchive'
 )
 # Direct links to sources download:
-# https://www.cryptopro.ru/sites/default/files/private/csp/50/11455/linux-amd64.tgz
+# https://www.cryptopro.ru/sites/default/files/private/csp/50/11823/linux-amd64.tgz
 # https://www.cryptopro.ru/sites/default/files/products/cades/current_release_2_0/cades_linux_amd64.tar.gz
 source=(
     'linux-amd64.tgz'

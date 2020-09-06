@@ -240,7 +240,7 @@ post_install() {
 
     bash /opt/cprocsp/tmp/PLIST-csp/Linux/update_all_plists.sh >/dev/null 2>&1
 
-    # cprocsp-pki-2.0.0-amd64-cades
+    # cprocsp-pki-cades-64
     /opt/cprocsp/bin/amd64/ocsputil license -s 0A202-U0030-00ECW-RRLMF-UU2WK
     /opt/cprocsp/bin/amd64/tsputil license -s TA200-G0030-00ECW-RRLNE-BTDVV
 
@@ -253,7 +253,7 @@ post_install() {
     cpconfig -ini '\config\policy\OIDs' -add string '5' 'libpkivalidator.so BasicConstraintsImpl'
     cpconfig -ini '\config\OID\EncodingType 1\CertDllVerifyRevocation\DEFAULT' -add string 'DLL' 'librevprov.so'
 
-    # cprocsp-pki-2.0.0-amd64-plugin
+    # cprocsp-pki-plugin-64
     cpconfig -ini '\config\apppath' -add string libnpcades.so /opt/cprocsp/lib/amd64/libnpcades.so.2
 
     [ -d /usr/lib/mozilla/plugins ] && cp -rvf /opt/cprocsp/lib/amd64/libnpcades.so.2.0.0 /usr/lib/mozilla/plugins/libnpcades.so
