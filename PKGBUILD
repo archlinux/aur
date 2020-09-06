@@ -1,6 +1,6 @@
 # Maintainer: Cerebrux <mail@cerebrux.net>
 pkgname=shelldio
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="KISS Shell Radio for your terminal"
 arch=( 'any' )
@@ -11,8 +11,9 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CerebruxCode/shelldio/a
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp -r .shelldio "/home/$USER/.shelldio"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm755 shelldio.sh "$pkgdir/usr/bin/shelldio"
 }
-
-md5sums=('399d95206aab44ab46fbe2e4338d027b')
+md5sums=('2ac7019ba3829106378611a631860eb6')
