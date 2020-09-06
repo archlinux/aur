@@ -1,0 +1,16 @@
+pkgbase = bluetooth-headset-battery-level-git
+	pkgdesc = This is a python script to fetch the battery charge level of some Bluetooth headsets.
+	pkgver = r55.d03681d
+	pkgrel = 1
+	url = https://github.com/TheWeirdDev/Bluetooth_Headset_Battery_Level
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python-pybluez
+	provides = bluetooth-headset-battery-level
+	conflicts = bluetooth-headset-battery-level
+	source = bluetooth-headset-battery-level::git+https://github.com/TheWeirdDev/Bluetooth_Headset_Battery_Level
+	sha512sums = SKIP
+
+pkgname = bluetooth-headset-battery-level-git
+
