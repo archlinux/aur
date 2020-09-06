@@ -11,11 +11,11 @@ makedepends=('cmake' 'glib2' 'libdbusmenu-glib' 'libxkbcommon' 'java-environment
 _pkgbase=vala-panel-appmenu
 pkgname=vala-panel-appmenu-jayatana-git
 _path=subprojects/jayatana
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="AppMenu module for Java Applications. Contains Bugs!"
 provides=(jayatana)
-depends=('glib2' 'libdbusmenu-glib' 'libxkbcommon' 'java-environment>=7' 'java-environment<=9')
+depends=('glib2' 'libdbusmenu-glib' 'libxkbcommon' 'java-environment>=11')
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
 license=('MIT')
