@@ -14,7 +14,7 @@ pkgbase = deepin-gettext-tools-git
 	provides = deepin-gettext-tools
 	conflicts = deepin-gettext-tools
 	replaces = deepin-gettext-tools
-	source = git://github.com/linuxdeepin/deepin-gettext-tools/
+	source = deepin-gettext-tools-git::git://github.com/linuxdeepin/deepin-gettext-tools/
 	sha512sums = SKIP
 
 pkgname = deepin-gettext-tools-git
