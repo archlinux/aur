@@ -1,7 +1,7 @@
 # Maintainer: OriginCode <self@origincode.me>
 
 pkgbase=linux-froidzen
-pkgver=5.8.6.zen1
+pkgver=5.8.7.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with Patches'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -30,7 +30,7 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '025892c2822a52606ea9d04972fc2a2d76d799af1655c2c170fdc2301697ae8d'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '25788fac99aa9711ad61a9614ebe99ad9217619f2ebdc43a295f251972a2dab2'
+            'acf96c21e7836ac80b7f6d9427c25784e0187fc0206d5e51d4b5defc68b8ba58'
             '0389c65d8357f8b22f65aceaf9ceda5a3c76e60ca34f713ff9a09ec379f51dc7')
 
 export KBUILD_BUILD_HOST=archlinux
