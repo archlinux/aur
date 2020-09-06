@@ -16,7 +16,7 @@ pkgname=()
 
 pkgver=2.3.0
 _pkgver=2.3.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -33,7 +33,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archi
         fix_hipcc_path.patch::https://github.com/tensorflow/tensorflow/commit/9d2b338025dc61828ccf8196bb042ab9c586c7b3.patch
         fix_gpu_atomic_redef.patch::https://github.com/tensorflow/tensorflow/commit/c054f40f66fa625f51085a20c48554c61d05c5fd.patch
         fix_ldexp_float.patch::https://github.com/tensorflow/tensorflow/commit/655ce09f679a90ecd561538227c703b42d0fc5fa.patch
-        fix_occupancy_block.patch)
+        fix_occupancy_block.patch
+        rocm-3.7.patch::https://github.com/tensorflow/tensorflow/pull/42689.patch)
 
 sha512sums=('86aa087ea84dac1ecc1023b23a378100d41cc6778ccd20404a4b955fc67cef11b3dc08abcc5b88020124d221e6fb172b33bd5206e9c9db6bc8fbeed399917eac'
             'df2e0373e2f63b8766f31933f7db57f6a7559b8f03af1db51644fba87731451a7cd3895529a3192e5394612fcb42f245b794b1c9ca3c05881ca03a547c8c9acc'
@@ -42,7 +43,8 @@ sha512sums=('86aa087ea84dac1ecc1023b23a378100d41cc6778ccd20404a4b955fc67cef11b3d
             '136d91db88658dd0eab1543f8dec1cd20dca86afc6970606a722e7d01a645d64c42564d590fc1ecb04c204ae0b0fa8f78cf9998e9bcf367f4cc795fa59677591'
             '75972acf0ec53b28aa6c93de77a385acaf675c0d0ae93b6545f67414e9895cbd1074a5d65b211390846b736df271a567b49ec4c992883ad83c060f708bbe0d20'
             '42fc09bc15412f3b9a82f36485735faed0dcc2f47d72c5bfc451bc09a2aad472db59edb387455fb6594b1606de3a7789917e1fb31280c7044898097ec37db3d5'
-            '88c04ed7a766193687d7079102332e3c63d6f0accbda777836abe5e03e9ebb83fd1aeaa9e4adca70310ce18bf3c6c3907f1f8a11c13e67e3ef79497b91bbf126')
+            '88c04ed7a766193687d7079102332e3c63d6f0accbda777836abe5e03e9ebb83fd1aeaa9e4adca70310ce18bf3c6c3907f1f8a11c13e67e3ef79497b91bbf126'
+            'SKIP')
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
@@ -86,6 +88,9 @@ prepare() {
   # Fix missing hipOccupancyMaxPotentialBlockSize method
   # https://github.com/tensorflow/tensorflow/commit/22def20bae7be6d5b790b360abed5919385b16c2
   patch -Np1 -d tensorflow-${_pkgver} -i "$srcdir"/fix_occupancy_block.patch
+
+  # Update codebase for ROCm 3.7
+  patch -Np1 -d tensorflow-${_pkgver} -i "$srcdir"/rocm-3.7.patch
 
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-rocm
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-rocm
