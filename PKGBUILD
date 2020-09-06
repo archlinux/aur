@@ -6,16 +6,17 @@ _opts=(
 	-DCMAKE_INSTALL_LIBEXECDIR=lib
 )
 
-makedepends=('cmake' 'gtk3' 'gtk2' 'git')
+makedepends=('meson' 'gtk3' 'gtk2' 'git')
 
 _pkgbase=vala-panel-appmenu
 pkgname=appmenu-gtk-module-git
 _path=subprojects/appmenu-gtk-module
-pkgver=0.6.94
-pkgrel=2
+pkgver=0.7.3.2
+pkgrel=1
 pkgdesc="Gtk module for exporting menus"
 depends=('gtk3' 'gtk2')
 provides=(unity-gtk-module)
+conflicts=(appmenu-gtk-module)
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
 license=('LGPL3')
@@ -34,15 +35,12 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgbase}/${_path}"
-  cmake ./ "${_opts[@]}"
-  make
+  meson build "${srcdir}/${_pkgbase}/${_path}" --prefix=/usr --libexecdir=lib
+  meson compile -C build
 }
 
 package()
 {
-  cd "${srcdir}/${_pkgbase}/${_path}"
-  make DESTDIR="${pkgdir}" install
-  install -dm755 "${pkgdir}/etc/X11/xinit/xinitrc.d/"
-  install -m755  "${srcdir}/80appmenu-gtk-module" "${pkgdir}/etc/X11/xinit/xinitrc.d/"
+  DESTDIR="$pkgdir" meson install -C build --no-rebuild
+  install -Dm755 80appmenu-gtk-module -t "$pkgdir"/etc/X11/xinit/xinitrc.d/
 }
