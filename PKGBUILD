@@ -3,24 +3,20 @@
 # Maintainer: Vesa Kaihlavirta <vegai@iki.fi>
 
 pkgname=pwsafe
-pkgver=20181220
-_commit=1dbcfd01a502d1579a80c208662add64b4090818
-pkgrel=2
+pkgver=20200906
+_commit=cc9e08da251a91915470f60c38da1efec57e5854
+pkgrel=1
 pkgdesc="A commandline program for managing encrypted password databases"
 arch=('x86_64')
 url="https://github.com/nsd20463/pwsafe"
 license=('GPL')
 depends=('openssl' 'libxmu')
 makedepends=('git')
-source=("git://github.com/nsd20463/pwsafe.git#commit=${_commit}"
-	pwsafe-XChangeProperty.patch)
-md5sums=('SKIP'
-         'cff6aee2e43f5fbe82e8cd7ccfefb099')
+source=("git://github.com/nsd20463/pwsafe.git#commit=${_commit}")
+md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir"/${pkgname}
-  # Patch from fedora, fixes FS#28339
-  patch -Np0 -i ../pwsafe-XChangeProperty.patch
 }
 
 build() {
@@ -37,5 +33,5 @@ package() {
   cd "$srcdir"/${pkgname}
   make DESTDIR="$pkgdir" install
   # Make pwsafe suid root so it can seed rng as a user
-  #chmod +s "$pkgdir"/usr/bin/pwsafe
+  chmod +s "$pkgdir"/usr/bin/pwsafe
 }
