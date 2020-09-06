@@ -9,8 +9,7 @@ arch=(x86_64)
 url="https://gitlab.gnome.org/nourmat/evolution-etesync/"
 license=('LGPL')
 depends=(libgee json-glib evolution-data-server evolution etesync-git)
-makedepends=(cmake meson ninja vala git)
-makedepends=('intltool')
+makedepends=(cmake meson ninja vala git intltool)
 source=("${_pkgname}::git+https://gitlab.gnome.org/nourmat/evolution-etesync.git")
 sha512sums=('SKIP')
 
