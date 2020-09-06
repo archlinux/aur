@@ -4,9 +4,9 @@ mapping (SLAM)."
 url='https://wiki.ros.org/hls_lfcd_lds_driver'
 
 pkgname='ros-melodic-hls-lfcd-lds-driver'
-pkgver='1.1.0'
+pkgver='1.1.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -32,7 +32,7 @@ depends=(
 
 _dir="hls_lfcd_lds_driver-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ROBOTIS-GIT/hls_lfcd_lds_driver/archive/${pkgver}.tar.gz")
-sha256sums=('02ccf80d649756cab7f92113680f9fa1fa88d599882ded5322eaa999ca21e2ae')
+sha256sums=('6050e3253be5ae8fb8b146eeeee47e9c84cd5c1eb33e2a8ab4351e304bbe5f0c')
 
 build() {
 	# Use ROS environment variables.
