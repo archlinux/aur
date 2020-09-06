@@ -1,0 +1,30 @@
+pkgbase = johnnydep-git
+	pkgdesc = Display dependency tree of Python distribution
+	pkgver = 1.5.r0.ga4982b8
+	pkgrel = 1
+	url = https://github.com/wimglenn/johnnydep
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-anytree
+	depends = python-cachetools
+	depends = python-colorama
+	depends = python-distlib
+	depends = python-oyaml
+	depends = python-packaging
+	depends = python-pkginfo
+	depends = python-pip
+	depends = python-setuptools
+	depends = python-structlog
+	depends = python-tabulate
+	depends = python-toml
+	depends = python-wheel
+	depends = python-wimpy
+	provides = johnnydep
+	source = johnnydep::git+https://github.com/wimglenn/johnnydep.git
+	sha256sums = SKIP
+
+pkgname = johnnydep-git
+
