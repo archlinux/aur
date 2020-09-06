@@ -8,7 +8,6 @@ url="https://github.com/deepjyoti30/QuickWall"
 license=('MIT')
 depends=(
 		"python>=3.6"
-		"nitrogen>=1.6.1"
 		"python-pywal"
 		"downloader-cli"
 		"python-requests"
@@ -16,7 +15,7 @@ depends=(
 		"python-dbus"
 		)
 makedepends=("git" "python-setuptools")
-optdepends=()
+optdepends=("nitrogen>=1.6.1")
 provides=()
 conflicts=()
 replaces=()
