@@ -1,12 +1,11 @@
---- mutter3221/cogl/cogl/driver/gl/gl/cogl-driver-gl.c	2016-10-17 20:43:31.283749432 +0200
-+++ mutter3221b/cogl/cogl/driver/gl/gl/cogl-driver-gl.c	2016-10-17 20:47:44.000000000 +0200
-@@ -416,9 +416,13 @@
-                                       &ctx->glsl_minor);
-     }
+diff --git a/cogl/cogl/driver/gl/gl/cogl-driver-gl.c b/cogl/cogl/driver/gl/gl/cogl-driver-gl.c
+index bb780cec5..a16891bf7 100644
+--- a/cogl/cogl/driver/gl/gl/cogl-driver-gl.c
++++ b/cogl/cogl/driver/gl/gl/cogl-driver-gl.c
+@@ -430,6 +430,17 @@ _cogl_driver_update_features (CoglContext *ctx,
+                                   &ctx->glsl_major,
+                                   &ctx->glsl_minor);
  
--  if (COGL_CHECK_GL_VERSION (ctx->glsl_major, ctx->glsl_minor, 1, 2))
--    /* We want to use version 120 if it is available so that the
--     * gl_PointCoord can be used. */
 +  if (COGL_CHECK_GL_VERSION (ctx->glsl_major, ctx->glsl_minor, 1, 5))
 +    ctx->glsl_version_to_use = 150;
 +  else if (COGL_CHECK_GL_VERSION (ctx->glsl_major, ctx->glsl_minor, 1, 4))
@@ -14,6 +13,10 @@
 +  else if (COGL_CHECK_GL_VERSION (ctx->glsl_major, ctx->glsl_minor, 1, 3))
 +    ctx->glsl_version_to_use = 130;
 +  else if (COGL_CHECK_GL_VERSION (ctx->glsl_major, ctx->glsl_minor, 1, 2))
-     ctx->glsl_version_to_use = 120;
-   else
-     ctx->glsl_version_to_use = 110;
++    ctx->glsl_version_to_use = 120;
++  else
++    ctx->glsl_version_to_use = 110;
++
+   COGL_FLAGS_SET (ctx->features,
+                   COGL_FEATURE_ID_UNSIGNED_INT_INDICES, TRUE);
+ 

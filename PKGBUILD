@@ -5,7 +5,7 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.32.2
+pkgver=3.36.5
 pkgrel=1
 pkgdesc="A window manager for GNOME with patches for catalyst compatibility"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -32,22 +32,20 @@ makedepends=('gobject-introspection'
   'egl-wayland'
   'meson'
   'xorg-server'
+  'sysprof'
 )
 checkdepends=('xorg-server-xvfb')
 conflicts=('mutter' "gnome-shell>1:${pkgver:0:6}+999")
-provides=("mutter=${pkgver}")
+provides=("mutter=${pkgver}" 'libmutter-6.so')
 groups=('gnome')
-_commit=189f71f5d1e70dd16796418d568d3e3e4cad49e0  # tags/3.32.2^0
+install=mutter.install
+_commit=7d061a06dec02278bef1054e502cae8837c39f2f  # tags/3.36.5^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
-        216.patch
         "catalyst-workaround-v2.patch"
         "catalyst mutter cogl.patch")
 sha256sums=('SKIP'
-            '842162bf8cec5d69fdb80c85fd152ddd3db6a9179d11d6f81d486f79814838c0'
-            'ed4f3cf738a3cffdf8a6e1a352bf24d74078c3b26fb9262c5746e0d95b9df756'
             '2564846288ea55262d681d38f7e43609c63e94990df1cb0a6b99e16e2c073d14'
-            '55079a9daddedc22d9fe4dcfe2e87607345dfafb370f8e7fb6a98c0acae3348a')
+            '7cb958b4fe5faf9edd4114b2682958635717755897f0d5f55d45d0bd8d7c2b77')
 
 pkgver() {
   cd "$_realname"
@@ -56,12 +54,6 @@ pkgver() {
 
 prepare() {
   cd "$_realname"
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1534089
-  patch -Np1 -i ../0001-wayland-output-Report-unscaled-size-even-in-logical-.patch
-
-  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/216
-  git apply -3 ../216.patch
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=741581
   echo "Skipping call to output_set_presentation_xrandr to fix issue with catalyst"
@@ -73,11 +65,14 @@ prepare() {
 }
 
 build() {
+  CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
+  LDFLAGS+=" -Wl,-Bsymbolic-functions"
   arch-meson $_realname build \
     -D egl_device=true \
     -D wayland_eglstream=true \
+    -D xwayland_initfd=disabled \
     -D installed_tests=false
-  ninja -C build
+  meson compile -C build
 }
 
 check() (
@@ -85,7 +80,10 @@ check() (
   glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
   export XDG_RUNTIME_DIR GSETTINGS_SCHEMA_DIR
 
-  dbus-run-session xvfb-run -s '+iglx -noreset' meson test -C build --print-errorlogs
+  # Stacking test flaky
+  dbus-run-session xvfb-run \
+    -s '-screen 0 1920x1080x24 -nolisten local +iglx -noreset' \
+    meson test -C build --print-errorlogs || :
 )
 
 package() {
