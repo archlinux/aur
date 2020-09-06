@@ -74,10 +74,10 @@ diff --git a/dialogs/dfmtaskwidget.cpp b/dialogs/dfmtaskwidget.cpp
 index 94069ee8..464c2095 100644
 --- a/dialogs/dfmtaskwidget.cpp
 +++ b/dialogs/dfmtaskwidget.cpp
-@@ -29,6 +29,7 @@
- #include <DIconButton>
+@@ -30,6 +30,7 @@
  #include <DGuiApplicationHelper>
  #include <QTimer>
+ #include <QException>
 +#include <QPainterPath>
  
  #include "app/define.h"
