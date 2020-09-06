@@ -7,8 +7,8 @@
 
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
-pkgver=5.10.3
-pkgrel=2
+pkgver=5.10.5
+pkgrel=1
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
 url='https://opennebula.org/'
@@ -29,7 +29,8 @@ depends=('ruby'
          'python'
          'mariadb'
          'libmariadbclient'
-         'zeromq')
+         'zeromq'
+         'augeas')
 makedepends=('xmlrpc-c'
              'pkgconfig'
              'scons'
@@ -106,7 +107,7 @@ source=("https://github.com/OpenNebula/one/archive/release-${pkgver}.tar.gz"
         'install.sh.patch'
         'fix_kvm_emulator.patch'
         'opennebula.install')
-md5sums=('63a0c34c039f06ba99fbf98f6a8045b4' # package
+md5sums=('d2ade6b4decfd977a4c51f888dcf3d92' # package
          '69c4374554ae689c44b0ef8c0a31b911' # opennebula.service
          '74bc0a908441063a44cb134449564db1' # opennebula-scheduler.service
          'f207636bd04a621f20b14a37c6ad49b7' # opennebula-sunstone.service
@@ -147,7 +148,7 @@ build() {
   ###########################################################################
 
   # This builds the vanilla OpenNebula package. Tweak this line as desired.
-  scons -j2 new_xmlrpc=yes mysql=yes sqlite=yes sunstone=yes parsers=yes
+  scons -j2 new_xmlrpc=yes mysql=yes sqlite=yes sunstone=yes systemd=yes
 }
 
 package() {

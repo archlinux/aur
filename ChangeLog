@@ -1,3 +1,9 @@
+2020-09-06 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
+
+  * 5.10.5-1:
+  New upstream release (5.10.5)
+  As OpenNebula shifted to a new model with the community release no longer containing the code to upgrade between versions I can't provide a 5.12 update without breaking existing installations. For non comercial use you can get a migration package here https://opennebula.io/get-migration/
+
 2019-12-15 Sledge Sulaweyo <sledge.sulaweyo#gmail.com>
 
   * 5.10.1-1:
