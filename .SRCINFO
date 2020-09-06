@@ -1,0 +1,23 @@
+pkgbase = minigalaxy-git
+	pkgdesc = A simple GOG client for Linux, git version
+	pkgver = 0.9.4.r66.gf7552ce
+	pkgrel = 1
+	url = https://github.com/sharkwouter/minigalaxy
+	arch = any
+	license = GPL-3
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-gobject
+	depends = gtk3
+	depends = webkit2gtk
+	optdepends = scummvm
+	optdepends = dosbox
+	optdepends = wine
+	source = git://github.com/sharkwouter/minigalaxy.git
+	md5sums = SKIP
+
+pkgname = minigalaxy-git
+
