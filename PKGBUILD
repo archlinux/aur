@@ -4,9 +4,9 @@ pkgname=emage-bin
 pkgver=1.1.0
 pkgrel=1
 pkgdesc="A cross-platform tool for lossless image compression"
+url='https://emage.js.org'
 arch=('x86_64')
 provides=("${pkgname%-bin}")
-url='https://emage.js.org'
 license=('MIT')
 depends=('gconf'
          'libxss'
