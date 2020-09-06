@@ -1,6 +1,6 @@
 pkgbase = riotkit-do
 	pkgdesc = Task executor - balance between Makefile and Gradle. Written in Python. Powerful tool for every DevOps. Automates production tasks as well as local development tasks
-	pkgver = 1.1
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://github.com/riotkit-org/riotkit-do
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = riotkit-do
 	depends = python-jinja
 	depends = python-dotenv
 	depends = python-tabulate
-	source = riotkit-do-1.1.tar.gz::https://github.com/riotkit-org/riotkit-do/archive/v1.1.tar.gz
-	sha256sums = 67f9061f168fa4a8d878633e11f9d44b590fce887bc0a6922e88894ac6a73fb2
+	source = riotkit-do-2.1.5.tar.gz::https://github.com/riotkit-org/riotkit-do/archive/v2.1.5.tar.gz
+	sha256sums = 94f051b39a173b87ffbbd4da9544df6ff05bd45e65c194cbe7c77f9e4ece128d
 
 pkgname = riotkit-do
 
