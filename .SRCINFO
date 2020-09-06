@@ -1,0 +1,16 @@
+pkgbase = memflow-qemu-procfs-git
+	pkgdesc = Qemu Procfs connector plugin for the memflow physical memory introspection framework
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/memflow/memflow-qemu-procfs
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	source = git+https://github.com/memflow/memflow-qemu-procfs
+	sha256sums = SKIP
+
+pkgname = memflow-qemu-procfs-git
+
