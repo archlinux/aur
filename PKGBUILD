@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-desktop-schemas-git
-pkgver=5.8.0.4.r1.g9e69b8b
+pkgver=5.8.0.5.r16.g060e4c9
 pkgrel=1
 pkgdesc='GSettings deepin desktop-wide schemas'
 arch=('any')
@@ -13,19 +13,19 @@ conflicts=('deepin-artwork-themes' 'deepin-desktop-schemas')
 replaces=('deepin-artwork-themes' 'deepin-desktop-schemas')
 provides=('deepin-desktop-schemas')
 groups=('deepin-git')
-source=('git://github.com/linuxdeepin/deepin-desktop-schemas'
+source=("$pkgname::git://github.com/linuxdeepin/deepin-desktop-schemas"
         https://github.com/linuxdeepin/deepin-desktop-schemas/commit/bf0c4e43f6b6d508ddd346c2d1e865dae9ae947d.patch)
 sha512sums=('SKIP'
             'be13e501baf0517da19618011219b53d633a4186840b20b24d134e5d667c4ab1b6b716c09c78faf802b32ecf3f6f6e5e2f84744a5919b28645f002739d07ea82')
 
 pkgver() {
-    cd deepin-desktop-schemas
+    cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   export GOPATH="$srcdir/build:/usr/share/gocode"
-  cd deepin-desktop-schemas
+  cd $pkgname
   # disable swap-sched
   patch -Rp1 -i ../bf0c4e43f6b6d508ddd346c2d1e865dae9ae947d.patch
   # fix default background url
@@ -39,16 +39,16 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  cd deepin-desktop-schemas
+  cd $pkgname
   make ARCH=x86
 }
 
 check() {
-  cd deepin-desktop-schemas
+  cd $pkgname
   make test
 }
 
 package() {
-  cd deepin-desktop-schemas
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 }
