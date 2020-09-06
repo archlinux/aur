@@ -5,7 +5,7 @@ pkgver=5.0.11823
 # pkgver is not allowed to contain forward slashes
 _pkgver_patch="6"
 _pkgver="$pkgver-$_pkgver_patch"
-pkgrel=0
+pkgrel=1
 pkgdesc='CryptoPro CSP 5.0'
 arch=('x86_64')
 url='https://cryptopro.ru/products/cryptopro-csp'
@@ -27,12 +27,9 @@ depends=(
 makedepends=(
     'libarchive'
 )
-# Direct links to sources download:
-# https://www.cryptopro.ru/sites/default/files/private/csp/50/11823/linux-amd64.tgz
-# https://www.cryptopro.ru/sites/default/files/products/cades/current_release_2_0/cades_linux_amd64.tar.gz
 source=(
-    'linux-amd64.tgz'
-    'cades_linux_amd64.tar.gz'
+    'linux-amd64.tgz' # download from https://www.cryptopro.ru/sites/default/files/private/csp/50/11823/linux-amd64.tgz
+    'https://www.cryptopro.ru/sites/default/files/products/cades/current_release_2_0/cades_linux_amd64.tar.gz'
 )
 md5sums=(
     '9bfd01ef7279ef20ce3e2df0ff4e8fb5'
