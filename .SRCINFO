@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-diagnostic-common-diagnostics
 	pkgdesc = ROS - diagnostic_common_diagnostics.
-	pkgver = 1.9.5
+	pkgver = 1.9.7
 	pkgrel = 1
 	url = https://wiki.ros.org/diagnostic_common_diagnostics
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = ros-melodic-diagnostic-common-diagnostics
 	depends = ros-melodic-diagnostic-updater
 	depends = python-psutil
 	depends = hddtemp
-	source = ros-melodic-diagnostic-common-diagnostics-1.9.5.tar.gz::https://github.com/ros/diagnostics/archive/1.9.5.tar.gz
-	sha256sums = b337b1fa42c3a30e362406a26a8cac282614e643a5d7b7fcc04ed2bf2785c7bb
+	source = ros-melodic-diagnostic-common-diagnostics-1.9.7.tar.gz::https://github.com/ros/diagnostics/archive/1.9.7.tar.gz
+	sha256sums = ca97cc9391fda16b48834c0bc5f745c67e59bd2cfc9b73f22a93406c4226c52a
 
 pkgname = ros-melodic-diagnostic-common-diagnostics
 
