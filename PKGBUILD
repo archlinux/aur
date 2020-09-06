@@ -108,9 +108,6 @@ sha256sums=('e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5'
             '035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef')
 prepare() {
   cd "${srcdir}/linux-${_basekernel}"
-
-  # Apply Xanmod patch
-  patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
   
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
@@ -118,7 +115,10 @@ prepare() {
   # add upstream patch
   msg "add upstream patch"
   patch -p1 -i "${srcdir}/patch-${pkgver}"
-
+  
+  # Apply Xanmod patch
+  patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
+  
   local src
   for src in "${source[@]}"; do
       src="${src%%::*}"
