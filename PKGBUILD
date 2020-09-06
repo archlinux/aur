@@ -37,7 +37,6 @@ makedepends=('bc'
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
-        "git+https://gitlab.manjaro.org/packages/core/linux58.git"
         # xanmod patch
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         # gcc optimizations
