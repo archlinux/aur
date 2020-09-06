@@ -11,12 +11,16 @@ post_install() {
     cpconfig -ini '\config\apppath' -add string mount_flash.sh /opt/cprocsp/sbin/amd64/mount_flash.sh
     cpconfig -ini '\config\KeyDevices\FLASH' -add string DLL librdrfat12.so
     cpconfig -ini '\config\KeyDevices\FLASH' -add string Script mount_flash.sh
-    cpconfig -hardware reader -add FLASH -name FLASH
-    cpconfig -hardware rndm -add CPSD -name 'КПИМ' -level 3 > /dev/null
+    cpconfig -ini '\config\KeyDevices\FLASH' -add long Group 1
+    cpconfig -ini '\config\KeyDevices\FLASH\PNP FLASH\Default' -add string Name 'All FLASH readers'
+    cpconfig -ini '\config\KeyDevices\FLASH\PNP FLASH\Default\Name' -delparam
+    #TODO: пока cpconfig не умеет регистрировать считыватель, если он групповой. команда снизу не работает, хотя должна.
+    #cpconfig -hardware reader -add  FLASH -name FLASH
+    cpconfig -hardware rndm -add CPSD -name 'CPSD RNG' -level 3 > /dev/null
     cpconfig -ini '\config\Random\CPSD\Default' -add string '/db1/kis_1' /var/opt/cprocsp/dsrf/db1/kis_1
     cpconfig -ini '\config\Random\CPSD\Default' -add string '/db2/kis_1' /var/opt/cprocsp/dsrf/db2/kis_1
     cpconfig -license -view > /dev/null 2> /dev/null
-    test $? = 0 || cpconfig -license -set 4040E-G0037-EK8R3-C6K4U-HCXQG
+    test $? = 0 || cpconfig -license -set 5050U-C0037-EKP59-NAXWV-WMCWE
 
     # lsb-cprocsp-kc1-64
     cpconfig -ini '\config\apppath' -add string librdrrndmbio_tui.so /opt/cprocsp/lib/amd64/librdrrndmbio_tui.so
@@ -45,6 +49,11 @@ post_install() {
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 Strong Cryptographic Service Provider' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 Strong Cryptographic Service Provider' -add string 'Function Table Name' CPCSP_GetFunctionTable
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro GOST R 34.10-2012 Strong Cryptographic Service Provider' -add long Type 81
+    cpconfig -defprov -setdef -provtype 1 -provname 'Crypto-Pro RSA Cryptographic Service Provider'
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro RSA Cryptographic Service Provider' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro RSA Cryptographic Service Provider' -add string 'Function Table Name' CPCSP_GetFunctionTable
+    cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro RSA Cryptographic Service Provider' -add long Type 1
+    cpconfig -ini '\config\parameters\Crypto-Pro RSA Cryptographic Service Provider' -add long KeyTimeValidityControlMode 128
     cpconfig -defprov -setdef -provtype 16 -provname 'Crypto-Pro ECDSA and AES CSP'
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro ECDSA and AES CSP' -add string 'Image Path' /opt/cprocsp/lib/amd64/libcsp.so
     cpconfig -ini '\cryptography\Defaults\Provider\Crypto-Pro ECDSA and AES CSP' -add string 'Function Table Name' CPCSP_GetFunctionTable
@@ -58,28 +67,48 @@ post_install() {
     cpconfig -ini '\cryptography\Defaults\Provider Types\Type 075' -add string 'TypeName' "GOST R 34.10-2001 Signature with Diffie-Hellman Key Exchange"
     cpconfig -ini '\cryptography\Defaults\Provider Types\Type 080' -add string 'TypeName' "GOST R 34.10-2012 (256) Signature with Diffie-Hellman Key Exchange"
     cpconfig -ini '\cryptography\Defaults\Provider Types\Type 081' -add string 'TypeName' "GOST R 34.10-2012 (512) Signature with Diffie-Hellman Key Exchange"
+    cpconfig -ini '\cryptography\Defaults\Provider Types\Type 001' -add string 'TypeName' "RSA Full (Signature and Key Exchange)"
     cpconfig -ini '\cryptography\Defaults\Provider Types\Type 016' -add string 'TypeName' "ECDSA Full and AES"
     cpconfig -ini '\cryptography\Defaults\Provider Types\Type 024' -add string 'TypeName' "RSA Full and AES"
 
     # lsb-cprocsp-capilite-64
+    cpconfig -ini '\config\apppath' -add string libssp.so /opt/cprocsp/lib/amd64/libssp.so
     cpconfig -ini '\config\apppath' -add string libcapi20.so /opt/cprocsp/lib/amd64/libcapi20.so
     # create several local machine stores if they don't exist
     /opt/cprocsp/bin/amd64/certmgr -list -crl -store mMy > /dev/null 2>&1
     /opt/cprocsp/bin/amd64/certmgr -list -crl -store mCryptoProTrustedStore > /dev/null 2>&1
-    # update all stores to Windows-compatible format. we don't want to silence
-    # stderr because user should be notified about errors
-    find '/var/opt/cprocsp/users/' -name '*.sto' -type f \
-         -exec /opt/cprocsp/bin/amd64/certmgr -updatestore -crl -file {} \; > /dev/null
-    find '/var/opt/cprocsp/users/' -name '*.sto' -type f \
-         -exec /opt/cprocsp/bin/amd64/certmgr -updatestore -cert -file {} \; > /dev/null
+    /opt/cprocsp/bin/amd64/csptest -keyset -verifycontext > /dev/null 2>&1
+    if test $? -eq 0; then
+        # create several local machine stores if they don't exist
+        /opt/cprocsp/bin/amd64/certmgr -list -crl -store mMy > /dev/null 2>&1
+        /opt/cprocsp/bin/amd64/certmgr -list -crl -store mCryptoProTrustedStore > /dev/null 2>&1
+
+        # update all stores to Windows-compatible format. we don't want to silence
+        # stderr because user should be notified about errors
+        find '/var/opt/cprocsp/users/' -name '*.sto' -type f \
+            -exec /opt/cprocsp/bin/amd64/certmgr -updatestore -crl -file {} \; > /dev/null
+        find '/var/opt/cprocsp/users/' -name '*.sto' -type f \
+            -exec /opt/cprocsp/bin/amd64/certmgr -updatestore -cert -file {} \; > /dev/null
+    else
+        printf "Warning: functioning provider is required.\n"
+        printf "Will not configure/upgrade certificate stores.\n"
+        printf "Setup CryptoPro CSP and reinstall.\n"
+    fi
 
     # lsb-cprocsp-ca-certs
-    ls -d /var/opt/cprocsp/tmpcerts/root/* \
-        | xargs -n 1 /opt/cprocsp/bin/amd64/certmgr -install -store mroot -file 1>/dev/null \
-        || printf "Failed to install root certificates!\n"
-    ls -d /var/opt/cprocsp/tmpcerts/ca/* \
-        | xargs -n 1 /opt/cprocsp/bin/amd64/certmgr -install -store mca -file 1>/dev/null \
-        || printf "Failed to install intermediate certificates!\n"
+    /opt/cprocsp/bin/amd64/csptest -keyset -verifycontext > /dev/null 2>&1
+    if test $? -eq 0; then
+        ls -d /var/opt/cprocsp/tmpcerts/root/* \
+            | xargs -n 1 /opt/cprocsp/bin/amd64/certmgr -install -store mroot -file 1>/dev/null \
+            || printf "Failed to install root certificates!\n"
+        ls -d /var/opt/cprocsp/tmpcerts/ca/* \
+            | xargs -n 1 /opt/cprocsp/bin/amd64/certmgr -install -store mca -file 1>/dev/null \
+            || printf "Failed to install intermediate certificates!\n"
+    else
+        printf "Warning: functioning provider is required.\n"
+        printf "Will not configure/upgrade certificate stores.\n"
+        printf "Setup CryptoPro CSP and reinstall.\n"
+    fi
 
     # cprocsp-rdr-gui-gtk-64
     cpconfig -ini '\config\apppath' -add string librdrrndmbio_gui_fgtk.so /opt/cprocsp/lib/amd64/librdrrndmbio_gui_fgtk.so
@@ -91,6 +120,38 @@ post_install() {
     # cprocsp-rdr-pcsc-64
     cpconfig -ini '\config\parameters' -add long dynamic_readers 1
     cpconfig -ini '\config\parameters' -add long dynamic_rdr_refresh_ms 1500
+
+    if test -z '#' ; then
+        cpconfig -ini '\config\apppath' -add string libpcsclite.so /System/Library/Frameworks/PCSC.framework/PCSC
+    else
+        check_libpcsclite_compatibility() {
+            command -v file > /dev/null 2>&1 || return 0
+            is64arch=0
+            is64arch=1
+            is64lib=0
+            if test -z '' ; then
+                file -L "${libpcsclite}" | grep '64-bit' > /dev/null 2>&1
+            else
+                file "${libpcsclite}" | grep '64-bit' > /dev/null 2>&1
+            fi
+            test "$?" -eq 0 && is64lib=1
+            test "${is64arch}" -eq "${is64lib}" && return 0
+            return 1
+        }
+        search_dirs=`echo /lib* /usr/lib* /usr/local/lib* /opt/CPcvpn-*/lib* /opt/sfw/lib* | xargs -n1 | grep -v '*' | xargs`
+        ld_cmd="ldconfig -p ; find ${search_dirs} -name \*libpcsclite\*"
+        #ld_cmd='ldconfig -r'
+        #ld_cmd="find ${search_dirs} -name \*libpcsclite\*"
+        libpcsclite_checked='manually_set_path_to_libpcsclite.so'
+        for libpcsclite in `eval "${ld_cmd}" | grep '/libpcsclite.*so' | awk '{print $NF}' | xargs` ; do
+            if check_libpcsclite_compatibility ; then
+                libpcsclite_checked="${libpcsclite}"
+                break
+            fi
+        done
+        cpconfig -ini '\config\apppath' -add string libpcsclite.so "${libpcsclite_checked}"
+    fi
+
     cpconfig -ini '\config\apppath' -add string libpcsclite.so libpcsclite.so.1
     cpconfig -ini '\config\apppath' -add string librdrpcsc.so /opt/cprocsp/lib/amd64/librdrpcsc.so
     cpconfig -ini '\config\apppath' -add string librdrric.so /opt/cprocsp/lib/amd64/librdrric.so
@@ -127,17 +188,17 @@ post_install() {
     cpconfig -hardware media -configure oscar2 -connect KChannel -add long size_5 36
     cpconfig -hardware media -configure oscar2 -connect KChannel -add long size_6 62
 
-    cpconfig -hardware media -add TRUST -name 'Magistra' > /dev/null
+    cpconfig -hardware media -add TRUST -name 'Foros (Magistra)' > /dev/null
     cpconfig -hardware media -configure TRUST -add hex atr 3b9e00008031c0654d4700000072f7418107
     cpconfig -hardware media -configure TRUST -add hex mask ffff0000ffffffffffff300000ffffffffff
     cpconfig -hardware media -configure TRUST -add string folders "A\\B\\C\\D\\E\\F\\G\\H"
 
-    cpconfig -hardware media -add TRUSTS -name 'Magistra SocCard' > /dev/null
+    cpconfig -hardware media -add TRUSTS -name 'Foros SocCard' > /dev/null
     cpconfig -hardware media -configure TRUSTS -add hex atr 3b9a00008031c0610072f7418107
     cpconfig -hardware media -configure TRUSTS -add hex mask ffff0000ffffffff30ffffffffff
     cpconfig -hardware media -configure TRUSTS -add string folders "A\\B\\C\\D"
 
-    cpconfig -hardware media -add TRUSTD -name 'Magistra Debug' > /dev/null
+    cpconfig -hardware media -add TRUSTD -name 'Foros Debug' > /dev/null
     cpconfig -hardware media -configure TRUSTD -add hex atr 3b9800008031c072f7418107
     cpconfig -hardware media -configure TRUSTD -add hex mask ffff0000ffffffffffffffff
     cpconfig -hardware media -configure TRUSTD -add string folders "A\\B\\C\\D\\E\\F\\G\\H"
@@ -186,7 +247,7 @@ post_install() {
                         ccid_reg.sh -add $pList 0x23a0 0x0008 "BIFIT ANGARA - CP"
                         ccid_reg.sh -add $pList 0x1fc9 0x7479 "ISBC ESMART reader - CP"
                         ccid_reg.sh -add $pList 0x2ce4 0x7479 "ESMART Token - CP"
-                        ccid_reg.sh -add $pList 0x04d8 0x003f "zis-group PRIVATE Security System Key"
+                        ccid_reg.sh -add $pList 0x04d8 0x003f "zis-group PRIVATE Security System Key - CP"
                     done
                 fi
             fi
