@@ -36,10 +36,11 @@ makedepends=('bc'
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
-        #xanmod patch
+        "git+https://gitlab.manjaro.org/packages/core/linux58.git"
+        # xanmod patch
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
-        #
-        "https://aur.archlinux.org/cgit/aur.git/tree/choose-gcc-optimization.sh?h=linux-xanmod"
+        # gcc optimizations
+        choose-gcc-optimization.sh
         # the main kernel config files
         'config' 'config.aufs' 'config.anbox'
         # ARCH Patches
@@ -78,6 +79,7 @@ sha256sums=('e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5'
             'b4ab9987a715753e64f0aa264dac91c3d7ca0651bfdd8fa5d19c8990f3b08abc'
             'SKIP'
             'SKIP'
+            '88af7b1e73f8e8d4d7e04da7f41564dbd4431a7f888efa7d12b64df19550141d'
             '0ecba3688f213c56b443145c5ffcf3ddfbe9cb0ee4c1fc4bd1351266224ad997'
             'b44d81446d8b53d5637287c30ae3eb64cae0078c3fbc45fcf1081dd6699818b5'
             'c079a87a7de0001f5f2b7a42a822c262e31f19f2c547613885f273822c9d4dcc'
@@ -107,6 +109,9 @@ sha256sums=('e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5'
             '035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef')
 prepare() {
   cd "${srcdir}/linux-${_basekernel}"
+
+  # Apply Xanmod patch
+  patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
   
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
@@ -149,7 +154,7 @@ prepare() {
   #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
+  make oldconfig # using old config from previous kernel version
   # ... or manually edit .config
 
   msg "rewrite configuration"
@@ -164,7 +169,7 @@ build() {
 }
 
 package_linux-manjaro-xanmod() {
-  pkgdesc="The Linux kernel and modules with Xanmod patches"
+  pkgdesc="The Linux kernel and modules with Xanmod and Manjaro patches"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=27')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=("linux=${pkgver}" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
