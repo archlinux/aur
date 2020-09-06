@@ -1,87 +1,68 @@
-# Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - This package provides implementations of the Trajectory Rollout and Dynamic Window approaches to local robot navigation on a plane."
 url='https://wiki.ros.org/base_local_planner'
 
-pkgname='ros-melodic-base-local-planner'
-pkgver='1.16.6'
+pkgname='ros-noetic-base-local-planner'
+pkgver='1.17.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=15
+pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-melodic-angles
-  ros-melodic-angles
-  ros-melodic-catkin
-  ros-melodic-cmake-modules
-  ros-melodic-costmap-2d
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-geometry-msgs
-  ros-melodic-message-generation
-  ros-melodic-nav-core
-  ros-melodic-nav-msgs
-  ros-melodic-pluginlib
-  ros-melodic-rosconsole
-  ros-melodic-roscpp
-  ros-melodic-rospy
-  ros-melodic-sensor-msgs
-  ros-melodic-std-msgs
-  ros-melodic-tf2
-  ros-melodic-tf2-geometry-msgs
-  ros-melodic-tf2-ros
-  ros-melodic-visualization-msgs
-  ros-melodic-voxel-grid)
-makedepends=('cmake' 'ros-build-tools' 'eigen'
-  ${ros_makedepends[@]})
+ros_makedepends=(
+    ros-noetic-catkin
+    ros-noetic-cmake-modules
+    ros-noetic-message-generation
+    ros-noetic-tf2-geometry-msgs
+)
 
-ros_depends=(ros-melodic-angles
-  ros-melodic-angles
-  ros-melodic-catkin
-  ros-melodic-costmap-2d
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-geometry-msgs
-  ros-melodic-message-generation
-  ros-melodic-nav-core
-  ros-melodic-nav-msgs
-  ros-melodic-pluginlib
-  ros-melodic-rosconsole
-  ros-melodic-roscpp
-  ros-melodic-rospy
-  ros-melodic-sensor-msgs
-  ros-melodic-std-msgs
-  ros-melodic-tf2
-  ros-melodic-tf2-ros
-  ros-melodic-visualization-msgs
-  ros-melodic-voxel-grid)
-depends=(${ros_depends[@]} 'eigen')
+makedepends=(
+    cmake
+    ros-build-tools
+    ${ros_makedepends[@]}
+)
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/base_local_planner/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
+ros_depends=(
+    ros-noetic-angles
+    ros-noetic-costmap-2d
+    ros-noetic-dynamic-reconfigure
+    ros-noetic-geometry-msgs
+    ros-noetic-nav-core
+    ros-noetic-nav-msgs
+    ros-noetic-pluginlib
+    ros-noetic-sensor-msgs
+    ros-noetic-std-msgs
+    ros-noetic-rosconsole
+    ros-noetic-roscpp
+    ros-noetic-rospy
+    ros-noetic-tf2
+    ros-noetic-tf2-ros
+    ros-noetic-visualization-msgs
+    ros-noetic-voxel-grid
+    ros-noetic-message-runtime
+)
 
-# Tarball version (faster download)
+depends=(
+    ${ros_depends[@]}
+    eigen
+)
+
 _dir="navigation-${pkgver}/base_local_planner"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
-sha256sums=('88e3b4433de9645e1132db15b01f436a75a28ebc15cd5b70660b158dd6ba42dd')
+sha256sums=('50e1fb4a0beb190202e9730180464b76b3a481cae2665e0f1944eb908929148e')
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
