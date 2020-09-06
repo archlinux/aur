@@ -4,7 +4,7 @@ pkgdesc="ROS - diagnostics."
 url='https://www.wiki.ros.org/diagnostics'
 
 pkgname='ros-melodic-diagnostics'
-pkgver='1.9.5'
+pkgver='1.9.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(
 
 _dir="diagnostics-${pkgver}/diagnostics"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/diagnostics/archive/${pkgver}.tar.gz")
-sha256sums=('b337b1fa42c3a30e362406a26a8cac282614e643a5d7b7fcc04ed2bf2785c7bb')
+sha256sums=('ca97cc9391fda16b48834c0bc5f745c67e59bd2cfc9b73f22a93406c4226c52a')
 
 build() {
 	# Use ROS environment variables.
