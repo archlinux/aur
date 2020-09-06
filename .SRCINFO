@@ -1,0 +1,20 @@
+pkgbase = python-swspotify
+	pkgdesc = Cross-platform library to get the currently playing song and artist from Spotify w/o using the API or the internet. Very fast.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/SwagLyrics/SwSpotify
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-mock
+	makedepends = python-setuptools
+	depends = python
+	depends = python-flask
+	depends = python-flask-cors
+	depends = python-requests
+	depends = python-dbus
+	source = SwSpotify-1.2.1.tar.gz::https://github.com/SwagLyrics/SwSpotify/archive/v1.2.1.tar.gz
+	sha256sums = 67b1565ff704068e3b809c4cd584f1bad8082106b1dd5ffb59208c0fb5d45b38
+
+pkgname = python-swspotify
+
