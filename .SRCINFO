@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-wu-ros-tools
 	pkgdesc = ROS - A collection of tools for making a variety of generic ROS-related tasks easier.
-	pkgver = 0.2.4
-	pkgrel = 3
+	pkgver = 0.2.6
+	pkgrel = 1
 	url = https://wiki.ros.org/wu_ros_tools
 	arch = any
 	license = BSD
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-wu-ros-tools
 	depends = ros-melodic-kalman-filter
 	depends = ros-melodic-joy-listener
 	depends = ros-melodic-rosbaglive
-	source = ros-melodic-wu-ros-tools-0.2.4.tar.gz::https://github.com/DLu/wu_ros_tools/archive/0.2.4.tar.gz
-	sha256sums = fd0bb39a69302dae5ccfd565277209719a4199644fc8265a2ae7ccedd92c004a
+	source = ros-melodic-wu-ros-tools-0.2.6.tar.gz::https://github.com/DLu/wu_ros_tools/archive/0.2.6.tar.gz
+	sha256sums = 27323d7584aed0782d4b64ca4f1955b237ff3b41736d075d29a9c825a8f55366
 
 pkgname = ros-melodic-wu-ros-tools
 
