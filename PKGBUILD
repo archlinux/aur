@@ -3,7 +3,7 @@
 
 pkgname=k3sup-bin
 _pkgname=k3sup
-pkgver=0.9.3
+pkgver=0.9.6
 pkgrel=1
 epoch=1
 pkgdesc='k3sup is a light-weight utility to get from zero to KUBECONFIG with k3s on any local or remote VM.'
@@ -24,7 +24,7 @@ provides=('k3sup')
 _OWNER=alexellis
 _suffix=""
 source=("$pkgname-$pkgver::https://github.com/${_OWNER}/${_pkgname}/releases/download/${pkgver}/${provides}${_suffix}")
-sha256sums=('a5a6b42bb930502d1574e9a02a02d6ac54a189328266b56db1aeb8eb85b3860e')
+sha256sums=('c17627209cb2217952e49a9b4d16b9ddfb7c82e61b06b79591c52a18ea1f08d6')
 
 package() {  
   #mkdir -p "${pkgdir}/opt"
