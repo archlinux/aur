@@ -2,8 +2,7 @@
 # Contributor: Dingyuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-launcher-git
-_pkgname=deepin-launcher
-pkgver=5.3.0.3.r0.ge217d9b
+pkgver=5.3.0.9.r14.gbd41d76a
 pkgrel=1
 pkgdesc='Deepin desktop-environment - Launcher module'
 arch=('x86_64')
@@ -15,21 +14,21 @@ conflicts=('deepin-launcher')
 replaces=('deepin-launcher')
 provides=('deepin-launcher')
 groups=('deepin-git')
-source=("git://github.com/linuxdeepin/dde-launcher.git")
+source=("$pkgname::git://github.com/linuxdeepin/dde-launcher.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd dde-launcher
+    cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd dde-launcher
+  cd $pkgname
   cmake . -GNinja -DCMAKE_INSTALL_PREFIX=/usr -DWITHOUT_UNINSTALL_APP=
   ninja
 }
 
 package() {
-  cd dde-launcher
+  cd $pkgname
   DESTDIR="$pkgdir" ninja install
 }
