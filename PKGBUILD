@@ -2,7 +2,7 @@
 
 pkgname=ymuse
 pkgver=0.13
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy, functional, and snappy client for Music Player Daemon"
 arch=(x86_64)
 url="https://yktoo.com/en/software/ymuse/"
@@ -22,7 +22,7 @@ sha512sums=(
 build() {
 	cd "${pkgname}-${pkgver}"
 	go generate
-	go build -ldflags "-X main.version=${pkgver} -X main.date=$(date --iso-8601=seconds)"
+	go build -ldflags "-s -w -X main.version=${pkgver} -X main.date=$(date --iso-8601=seconds)"
 }
 
 package() {
