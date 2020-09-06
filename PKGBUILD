@@ -1,7 +1,7 @@
 # Maintainer: Douglas Iuri Medeiros Cabral <diurimc at gmail dot com>
 pkgname=forticlient-vpn
 pkgver=6.4.0.0851
-pkgrel=6
+pkgrel=7
 pkgdesc="Build through the official package of FortiClient VPN"
 arch=("x86_64")
 url="https://forticlient.com/"
