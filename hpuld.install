@@ -1,0 +1,22 @@
+pkgname='hpuld'
+
+post_install() {
+
+	# These drivers are not free software...
+
+	local _FULL_LOCALE_="$(locale | grep LANG | cut -d= -f2 | cut -d. -f1 | sed s/_/\-/)"
+	local _SHORT_LOCALE_="$(locale | grep LANG | cut -d= -f2 | cut -d_ -f1)"
+	local _LICENSE_PATH_="/usr/share/licenses/${pkgname}"
+
+	echo
+
+	if [ -f "${_LICENSE_PATH_}/eula-${_FULL_LOCALE_}.txt" ]; then
+		cat "${_LICENSE_PATH_}/eula-${_FULL_LOCALE_}.txt"
+	elif [ -f "${_LICENSE_PATH_}/eula-${_SHORT_LOCALE_}.txt" ]; then
+		cat "${_LICENSE_PATH_}/eula-${_SHORT_LOCALE_}.txt"
+	else
+		cat "${_LICENSE_PATH_}/eula.txt"
+	fi
+
+}
+
