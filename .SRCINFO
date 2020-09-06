@@ -1,15 +1,16 @@
 pkgbase = r-misc3d
 	pkgdesc = Miscellaneous 3D Plots
-	pkgver = 0.8.4
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=misc3d
 	arch = any
+	license = GPL2
 	license = GPL3
 	depends = r
 	optdepends = r-rgl
 	optdepends = r-tkrplot
-	source = http://cran.r-project.org/src/contrib/misc3d_0.8-4.tar.gz
-	md5sums = aefa27e67a243c21a1046868540343fe
+	source = https://cran.r-project.org/src/contrib/misc3d_0.9-0.tar.gz
+	sha256sums = a1e9291d625bd1312bae5b0e26d48b9362f66a8a0fabbf48891ba1d2432e4e82
 
 pkgname = r-misc3d
 
