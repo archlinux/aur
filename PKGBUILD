@@ -16,10 +16,6 @@ optdepends=('intel-tbb: Use Intel TBB to accelerate computations (add this to th
 source=("https://github.com/borglab/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=('1e5c09da035c6b3d8cce3e23aeab6865')
 
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-}
-
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p build
