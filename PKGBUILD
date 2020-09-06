@@ -14,7 +14,7 @@ depends=('python'
          'python-tabulate'
          'python-prompt_toolkit'
          'python-asciitree'
-		 'python-pytest'
+         'python-pytest'
          'python-protobuf'
          'python-pyperclip'
          )
