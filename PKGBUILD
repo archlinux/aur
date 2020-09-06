@@ -2,7 +2,7 @@
 # Maintainer: Fred Lins <fredcox at gmail dot com>
 # install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 pkgname=crazydiskmark
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc='Linux disk benchmark tool like CrystalDiskMark'
 arch=('any')
@@ -13,8 +13,8 @@ depends=('python-pyqt5'
          'python-humanfriendly'
          'fio')
 makedepends=('python-setuptools')
-source=("crazydiskmark-0.6.4.tar.gz::https://files.pythonhosted.org/packages/bc/49/7cab1dd055e6d74b1f551fcd99a3bc8cdb535eeae6a445d676bb4a166a93/crazydiskmark-0.6.4.tar.gz")
-sha256sums=(2fd747d9cafa4c1360b14bae6072f311aba7c1406a38d0c9c474dd49fcc50fff)
+source=("crazydiskmark-0.6.5.tar.gz::https://files.pythonhosted.org/packages/d2/e7/20b965ecb2b0e29c69f08106c8258d86324f7332ef8b1a2efb2ba7e52ffd/crazydiskmark-0.6.5.tar.gz")
+sha256sums=(ac81e3b1e7848ca3caff27bb3d0b7c2f22537332fb9216a4bfadd3d46a06e5cb)
 build() {
   cd "${pkgname}-${pkgver}"
   python setup.py build
