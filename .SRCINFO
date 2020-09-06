@@ -1,7 +1,7 @@
 pkgbase = opennebula
 	pkgdesc = Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)
 	pkgver = 5.10.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opennebula.org/
 	install = opennebula.install
 	changelog = ChangeLog
@@ -19,6 +19,7 @@ pkgbase = opennebula
 	makedepends = bower
 	depends = ruby
 	depends = ruby-bundler
+	depends = ruby-builder
 	depends = xmlrpc-c
 	depends = openssl
 	depends = sqlite3

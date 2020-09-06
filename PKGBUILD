@@ -8,13 +8,14 @@
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
 pkgver=5.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
 url='https://opennebula.org/'
 license=('Apache')
 depends=('ruby'
          'ruby-bundler'
+         'ruby-builder'
          'xmlrpc-c'
          'openssl'
          'sqlite3'
