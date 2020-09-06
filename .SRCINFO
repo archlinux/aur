@@ -6,6 +6,7 @@ pkgbase = gfold-git
 	arch = x86_64
 	license = Apache
 	makedepends = cargo
+	makedepends = git
 	conflicts = gfold
 	source = git+https://github.com/nickgerace/gfold
 	sha512sums = SKIP
