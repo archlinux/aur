@@ -1,0 +1,13 @@
+diff --git a/security/apparmor/lib.c b/security/apparmor/lib.c
+index 30c246a9d4409f7ef90d5e67f2ec94e6d08c766d..ec24f864ef25c6acabd21d7c52b418128b0c5310 100644
+--- a/security/apparmor/lib.c
++++ b/security/apparmor/lib.c
+@@ -334,7 +334,7 @@ void aa_compute_perms(struct aa_dfa *dfa, unsigned int state,
+ 	/* for v5 perm mapping in the policydb, the other set is used
+ 	 * to extend the general perm set
+ 	 */
+-	perms->allow |= map_other(dfa_other_allow(dfa, state));
++	perms->allow |= map_other(dfa_other_allow(dfa, state)) | AA_MAY_LOCK;
+ 	perms->audit |= map_other(dfa_other_audit(dfa, state));
+ 	perms->quiet |= map_other(dfa_other_quiet(dfa, state));
+ //	perms->xindex = dfa_user_xindex(dfa, state);

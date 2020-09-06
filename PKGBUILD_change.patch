@@ -1,0 +1,92 @@
+--- /home/android7890/linux58/PKGBUILD	2020-08-31 18:33:00.387121863 +0400
++++ /home/android7890/linux-manjaro-xanmod/PKGBUILD	2020-09-06 16:21:03.055259757 +0400
+@@ -1,3 +1,9 @@
++# Contributor: Andrey Alekseev <andrey.android7890@gmail.com>
++# used original PKGBUILD from Manjaro linux: https://gitlab.manjaro.org/packages/core/linux58
++# https://aur.archlinux.org/packages/linux-xanmod/
++# see "PKGBUILD_change.patch" for details
++
++
+ # Maintainer: Philip Müller <philm[at]manjaro[dot]org>
+ # Maintainer: Bernhard Landauer <bernhard[at]manjaro[dot]org>
+ # Maintainer: Helmut Stult <helmut[at]manjaro[dot]org>
+@@ -9,17 +15,17 @@
+ # Cloud Server
+ _server=cpx51
+ 
+-pkgbase=linux58
+-pkgname=('linux58' 'linux58-headers')
+-_kernelname=-MANJARO
++pkgbase=linux-manjaro-xanmod
++pkgname=("${pkgbase}" "${pkgbase}-headers")
++_kernelname=-MANJARO-Xanmod
+ _basekernel=5.8
+ _basever=58
+ _aufs=20200622
+-pkgver=5.8.5
+-pkgrel=2
++pkgver=5.8.6
++pkgrel=1
+ arch=('x86_64')
+ url="http://www.kernel.org/"
+-license=('GPL2')
++license=('custom')
+ makedepends=('bc'
+     'docbook-xsl'
+     'elfutils'
+@@ -30,6 +36,10 @@
+ options=('!strip')
+ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.xz"
+         "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
++        #xanmod patch
++        "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
++        #
++        "https://aur.archlinux.org/cgit/aur.git/tree/choose-gcc-optimization.sh?h=linux-xanmod"
+         # the main kernel config files
+         'config' 'config.aufs' 'config.anbox'
+         # ARCH Patches
+@@ -65,7 +75,9 @@
+         '0012-bootsplash.patch'
+         '0013-bootsplash.gitpatch')
+ sha256sums=('e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5'
+-            '69855667f003f3f6f9899dba5f3f9e05ab967bd8a7384f18033bdbece443ebb0'
++            'b4ab9987a715753e64f0aa264dac91c3d7ca0651bfdd8fa5d19c8990f3b08abc'
++            'SKIP'
++            'SKIP'
+             '0ecba3688f213c56b443145c5ffcf3ddfbe9cb0ee4c1fc4bd1351266224ad997'
+             'b44d81446d8b53d5637287c30ae3eb64cae0078c3fbc45fcf1081dd6699818b5'
+             'c079a87a7de0001f5f2b7a42a822c262e31f19f2c547613885f273822c9d4dcc'
+@@ -95,7 +107,10 @@
+             '035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef')
+ prepare() {
+   cd "${srcdir}/linux-${_basekernel}"
+-
++  
++  # Let's user choose microarchitecture optimization in GCC
++  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
++  
+   # add upstream patch
+   msg "add upstream patch"
+   patch -p1 -i "${srcdir}/patch-${pkgver}"
+@@ -148,8 +163,8 @@
+   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+ }
+ 
+-package_linux58() {
+-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
++package_linux-manjaro-xanmod() {
++  pkgdesc="The Linux kernel and modules with Xanmod patches"
+   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=27')
+   optdepends=('crda: to set the correct wireless channels of your country')
+   provides=("linux=${pkgver}" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+@@ -193,8 +208,8 @@
+   install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
+ }
+ 
+-package_linux58-headers() {
+-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
++package_linux-manjaro-xanmod-headers() {
++  pkgdesc="Header files and scripts for building modules for ${pkgbase} kernel"
+   provides=("linux-headers=$pkgver")
+ 
+   cd "${srcdir}/linux-${_basekernel}"
