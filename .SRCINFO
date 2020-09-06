@@ -1,0 +1,15 @@
+pkgbase = python-wimpy
+	pkgdesc = Anti-copy-pasta
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/wimglenn/wimpy
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = wimpy
+	source = python-wimpy-0.6.tar.gz::https://github.com/wimglenn/wimpy/archive/v0.6.tar.gz
+	sha256sums = 014d21a31980eab48b92c4210e9fdba643b79f7081c64ea9bc97f2be9db9bd58
+
+pkgname = python-wimpy
+
