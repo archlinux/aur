@@ -15,6 +15,20 @@
 # Cloud Server
 _server=cpx51
 
+##
+## The following variables can be customized at build time. Use env or export to change at your wish
+##
+##   Example: env _microarchitecture=25 use_numa=n use_tracers=n use_pds=n makepkg -sc
+##
+## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
+## Valid numbers between: 0 to 42
+## Default is: 0 => generic
+## Good option if your package is for one machine: 42 => native
+if [ -z ${_microarchitecture+x} ]; then
+  _microarchitecture=0
+fi
+
+
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _kernelname=-MANJARO-Xanmod
@@ -48,7 +62,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         # MANJARO Patches
         '0001-i2c-nuvoton-nc677x-hwmon-driver.patch'
         '0001-iomap-iomap_bmap-should-accept-unwritten-maps.patch'
-        '0001-futex.patch'
+        #'0001-futex.patch'
         '0001-apparmor-patch-to-provide-compatibility-with-v2-net-rules.patch'
         '0002-apparmor-af_unix-mediation.patch'
         '0003-apparmor-fix-use-after-free-in-sk_peer_label.patch'
@@ -85,7 +99,7 @@ sha256sums=('e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5'
             '986f8d802f37b72a54256f0ab84da83cb229388d58c0b6750f7c770818a18421'
             '7823d7488f42bc4ed7dfae6d1014dbde679d8b862c9a3697a39ba0dae5918978'
             '95745075edd597caa92b369cfbcd11a04c9e3c88c0c987c70114924e1e01df5c'
-            '78dde51123a21ec5efe9c420b309d03263001dafd8684f71c167f02e3f504f9e'
+            #'78dde51123a21ec5efe9c420b309d03263001dafd8684f71c167f02e3f504f9e'
             '98202b8ad70d02d86603294bae967874fa7b18704b5c7b867568b0fd33a08921'
             '5cbbf3db9ea3205e9b89fe3049bea6dd626181db0cb0dc461e4cf5a400c68dd6'
             'c7dbec875d0c1d6782c037a1dcefff2e5bdb5fc9dffac1beea07dd8c1bdef1d7'
@@ -153,7 +167,7 @@ prepare() {
   #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
-  make oldconfig # using old config from previous kernel version
+  #make oldconfig # using old config from previous kernel version
   # ... or manually edit .config
 
   msg "rewrite configuration"
