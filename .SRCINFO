@@ -1,0 +1,18 @@
+pkgbase = youtube-dl-front-git
+	pkgdesc = Youtube-dl-front is a frontend for youtube-dl. With the easy interface you can download and view videos in seconds.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://https://github.com/Luis-L-B/youtube-dl-front
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = youtube-dl
+	provides = youtube-dl-front
+	conflicts = youtube-dl-front
+	source = git+https://github.com/Luis-L-B/youtube-dl-front.git
+	md5sums = SKIP
+
+pkgname = youtube-dl-front-git
+
