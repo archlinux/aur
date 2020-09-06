@@ -1,7 +1,7 @@
 # Maintainer: Mikel Pintado <mikelaitornube2010@gmail.com>
 
 pkgname=nuclear-player-bin
-pkgver=0.6.3
+pkgver=0.6.5
 repurl=https://github.com/nukeop/nuclear
 commidfull=$(git ls-remote $repurl.git -tags v$pkgver)
 commid=${commidfull:0:6}
@@ -17,7 +17,7 @@ source=(
     nuclear.desktop
 )
 md5sums=(
-    'a23596c18678728f9116de5558ab6647'
+    '3f7b74c899319236923f56227ebf5815'
     '02328fb5995b2e92b3ee11dca5c6b262'    
 )
 
