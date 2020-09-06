@@ -2,7 +2,7 @@
 pkgname=standardnotes-desktop
 _pkgname=desktop
 pkgver=3.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64')
 url="https://standardnotes.org/"
@@ -13,9 +13,11 @@ makedepends=('npm' 'node-gyp' 'git' 'jq')
 source=("git://github.com/standardnotes/desktop.git"
         "git://github.com/sn-extensions/extensions-manager.git"
         "git://github.com/sn-extensions/batch-manager.git"
+        'standard-notes-web.patch'
         'standardnotes-desktop.desktop'
         'standardnotes-desktop.js')
 sha256sums=('SKIP' 'SKIP' 'SKIP'
+            '9bf25bd847b9c7fe64f975020b5b890c05e21ae2ab5ad6b9cc50be1d88466197'
             '11e0f47494b09b95710399427f849d5693e97e39e7346469ac82da61138b7ca6'
             '2d90137b689cc38d6c68b17fad2336503846152a0061a91ac2073ea0873a6fc5')
 
@@ -30,7 +32,9 @@ prepare() {
 
 build() {
   cd $srcdir/$_pkgname/
-  npm install
+  git apply ../standard-notes-web.patch
+  # use temporary npm cache - https://wiki.archlinux.org/index.php/Node.js_package_guidelines
+  npm install --cache "${srcdir}/npm-cache"
   npm run bundle
   ./node_modules/.bin/electron-builder --linux --x64 --dir $dist
 }
