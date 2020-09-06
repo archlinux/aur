@@ -9,7 +9,6 @@ pkgbase = rescached-git
 	license = custom:BSD
 	makedepends = git
 	makedepends = go>=1.13
-	makedepends = asciidoctor
 	depends = bash
 	provides = rescached
 	backup = etc/rescached/rescached.cfg
