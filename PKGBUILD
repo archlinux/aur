@@ -12,5 +12,5 @@ source=("https://github.com/marcelroed/kattis-rs/releases/download/v$pkgver/katt
 sha256sums=("cee8df163d421164d4c2b4462bd13fe59df1f658069ccd2a4ff4b623e0678c0c")
 
 package() {
-    install -Dm755 kattis-rs -t "$pkgdir/usr/bin/kattis"
+    install -Dm755 kattis-rs -T "$pkgdir/usr/bin/kattis"
 }
