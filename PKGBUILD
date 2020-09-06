@@ -5,7 +5,7 @@ pkgver=2.0.3
 pkgrel=1
 pkgdesc="Clojure Text Editor, for editing clojure code and markdown. Written entirely in Clojure with inspiration from Emacs and Vim"
 arch=('any')
-url='https://github.com/dundalek/liquid'
+url='https://github.com/mogenslund/liquid'
 license=('EPL')
 depends=('java-runtime>=8' 'bash')
 source=("${pkgname}-${pkgver}.jar::https://github.com/mogenslund/liquid/releases/download/v${pkgver}/liquid-${pkgver}-standalone.jar")

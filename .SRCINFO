@@ -2,7 +2,7 @@ pkgbase = liquid
 	pkgdesc = Clojure Text Editor, for editing clojure code and markdown. Written entirely in Clojure with inspiration from Emacs and Vim
 	pkgver = 2.0.3
 	pkgrel = 1
-	url = https://github.com/dundalek/liquid
+	url = https://github.com/mogenslund/liquid
 	arch = any
 	license = EPL
 	depends = java-runtime>=8
