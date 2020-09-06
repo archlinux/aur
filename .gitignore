@@ -2,4 +2,4 @@ pkg/
 src/
 atlassian-jira-*.tar.gz
 atlassian-jira-*.tar.xz
-
+atlassian-jira-*.tar.zst
