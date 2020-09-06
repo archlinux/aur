@@ -1,6 +1,6 @@
 pkgbase = deepin-daemon-git
 	pkgdesc = Daemon handling the DDE session settings
-	pkgver = 5.11.0.19.r27.g34e54761
+	pkgver = 5.11.0.47.r1.gf4c781cb
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-daemon
 	install = deepin-daemon-git.install
@@ -47,11 +47,11 @@ pkgbase = deepin-daemon-git
 	provides = deepin-daemon
 	conflicts = deepin-daemon
 	replaces = deepin-daemon
-	source = git://github.com/linuxdeepin/dde-daemon
-	source = dde-daemon_5.9.4.2.diff
+	source = deepin-daemon-git::git://github.com/linuxdeepin/dde-daemon
+	source = dde-daemon.patch
 	source = deepin-daemon.sysusers
 	sha512sums = SKIP
-	sha512sums = 188bb74fc4deddd2d9cbc210ec487b45664178524294d9a98e47cd4c8a70e369fd3441697bc50b696a975cfbbbfa16666d1798b1ae25469abee50eb84e4bef27
+	sha512sums = SKIP
 	sha512sums = 808c02d4fec4cbbb01119bbb10499090199e738b7dd72c28a57dde098eef6132723f3434c151f79e21d9f788c7f7bae8046573ac93ba917afe0e803fbffa6d5a
 
 pkgname = deepin-daemon-git

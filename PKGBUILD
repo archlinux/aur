@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-daemon-git
-pkgver=5.11.0.19.r27.g34e54761
+pkgver=5.11.0.47.r1.gf4c781cb
 pkgrel=1
 pkgdesc='Daemon handling the DDE session settings'
 arch=('x86_64')
@@ -24,31 +24,34 @@ replaces=('deepin-daemon')
 provides=('deepin-daemon')
 groups=('deepin-git')
 install="$pkgname.install"
-source=("git://github.com/linuxdeepin/dde-daemon"
-        dde-daemon_5.9.4.2.diff
+source=("$pkgname::git://github.com/linuxdeepin/dde-daemon"
+        dde-daemon.patch
         'deepin-daemon.sysusers')
 sha512sums=('SKIP'
-            '188bb74fc4deddd2d9cbc210ec487b45664178524294d9a98e47cd4c8a70e369fd3441697bc50b696a975cfbbbfa16666d1798b1ae25469abee50eb84e4bef27'
+            'SKIP'
             '808c02d4fec4cbbb01119bbb10499090199e738b7dd72c28a57dde098eef6132723f3434c151f79e21d9f788c7f7bae8046573ac93ba917afe0e803fbffa6d5a')
 
 pkgver() {
-    cd dde-daemon
+    cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd dde-daemon
-  patch -p1 -i ../dde-daemon_5.9.4.2.diff
+  cd $pkgname
+  mkdir build
+  patch -p1 -i ../dde-daemon.patch
 
   export GOPATH="$srcdir/build:/usr/share/gocode"
 
   # golang-deepin-lib's dependency, remove when go packaging resumes
-  go get github.com/cryptix/wav
+  go get -v github.com/cryptix/wav
 
-  go get github.com/axgle/mahonia github.com/msteinert/pam github.com/gosexy/gettext github.com/rickb777/date \
+  go get -v github.com/axgle/mahonia github.com/msteinert/pam github.com/gosexy/gettext github.com/rickb777/date \
          github.com/jinzhu/gorm github.com/kelvins/sunrisesunset github.com/mozillazg/go-pinyin github.com/teambition/rrule-go \
-         golang.org/x/xerrors github.com/mattn/go-sqlite3
-
+         golang.org/x/xerrors github.com/mattn/go-sqlite3 github.com/fsnotify/fsnotify
+  go get -v github.com/godbus/dbus
+  go get -v github.com/godbus/dbus/introspect
+  go get -v github.com/godbus/dbus/prop
   sed -i 's#/usr/share/backgrounds/default_background.jpg#/usr/share/backgrounds/deepin/desktop.jpg#' accounts/user.go
 }
 
@@ -59,13 +62,13 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  cd dde-daemon
+  cd $pkgname
   make -C network/nm_generator gen-nm-code
   make
 }
 
 package() {
-  cd dde-daemon
+  cd $pkgname
   make DESTDIR="$pkgdir" PAM_MODULE_DIR=usr/lib/security install
 
   mv "$pkgdir"{,/usr}/lib/systemd
