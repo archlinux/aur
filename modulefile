@@ -5,7 +5,7 @@
 
 set MODULE   "amduprof"
 set BASE_DIR "/opt"
-set VERSION  "3.2.228"
+set VERSION  "3.3.462"
 set MDL_ROOT "${BASE_DIR}/${MODULE}"
 set MDL_TEXT "AMD uProf performance analysis tool"
 

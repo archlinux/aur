@@ -2,8 +2,8 @@
 # Manual download of 'AMDuProf_Linux_x64_${pkgver}.tar.bz2' required from upstream
 
 pkgname=amduprof
-pkgver=3.2.228
-pkgrel=3
+pkgver=3.3.462
+pkgrel=1
 pkgdesc="AMD uProf performance analysis tool."
 arch=('x86_64')
 license=('custom')
@@ -13,7 +13,7 @@ source=("local://AMDuProf_Linux_x64_${pkgver}.tar.bz2"
 options=('staticlibs' '!strip' 'libtool')
 depends=('env-modules')
 install=amduprof.install
-md5sums=("5b7927f1b583fc56f9d021d8116496af"
+md5sums=("d3463cce390acbd9174dea8b2ae2b8c1"
 		"SKIP")
 
 if [ -z ${MODULESHOME} ]; then
