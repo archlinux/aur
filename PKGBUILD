@@ -1,36 +1,22 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-quaternionic
-pkgver=0.1.10
-pkgrel=2
+pkgver=0.1.13
+pkgrel=1
 pkgdesc="Interpret NumPy arrays as quaternionic arrays with Numba acceleration"
 url="https://quaternionic.readthedocs.io"
 arch=('any')
 license=('MIT')
 depends=('python-numba' 'python-numpy' 'python-scipy')
-makedepends=('python-dephell')
+makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-cov')
 
 source=(
-  "quaternionic-$pkgver.tar.gz::https://github.com/moble/quaternionic/archive/v$pkgver.tar.gz"
+  "https://files.pythonhosted.org/packages/source/q/quaternionic/quaternionic-$pkgver.tar.gz"
 )
 sha256sums=(
-  'dbc0125a94458e6f2a62b00a79ce61f495f798aaebb44e17c0eba5988cee4080'
+  '373911ed8a95b3f9e8f27d18ad6023431535f1daeed65cdea1ca192da7e3e1e9'
 )
-
-prepare() {
-	cd "quaternionic-$pkgver"
-
-	# The release is tagged as 0.1.10 on PyPI and GitHub but the version number
-	# in pyproject.toml says 0.1.9.
-	sed -i -e 's/^version = "0.1.9"$/version = "0.1.10"/' pyproject.toml
-
-	# The archive from GitHub doesn't include a setup.py (the project uses
-	# python-poetry for development). The source on PyPI does have a setup.py
-	# but does not include the tests. Until they can be included, we'll use the
-	# GitHub archive and generare our own setup.py.
-	dephell deps convert --from pyproject.toml --to setup.py
-}
 
 build() {
 	cd "quaternionic-$pkgver"
@@ -43,7 +29,7 @@ check() {
 	# The library uses importlib_metadata to load its version info, so we need
 	# the metadata available before we can run the tests.
 	python setup.py egg_info -e build/lib
-	PYTHONPATH=$PWD/build/lib python -m pytest
+	PYTHONPATH=$PWD/build/lib python -m pytest --no-cov
 
 	# This metadata is not properly versioned (neither project nor Python
 	# version). Remove it and let the install command create the final version.
