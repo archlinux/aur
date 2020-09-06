@@ -1,22 +1,22 @@
 pkgname=mingw-w64-lua
-pkgver=5.3.5
+pkgver=5.4.0
 pkgrel=1
-pkgdesc="A powerful light-weight programming language designed for extending applications. (mingw-w64)" 
+pkgdesc="A powerful light-weight programming language designed for extending applications. (mingw-w64)"
 arch=('any')
-url="http://www.lua.org/" 
+url="http://www.lua.org/"
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc')
 license=('MIT')
 source=("$url/ftp/lua-$pkgver.tar.gz")
 options=(!strip !buildflags staticlibs)
-sha256sums=('0c2eed3f960446e1a3e4b9a1ca2f3ff893b6ce41942cf54d5dd59ab4b3b058ac')
+sha256sums=('eac0836eb7219e421a96b7ee3692b93f0629e4cdb0c788432e3d10ce9ed47e28')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "$srcdir"/lua-$pkgver
   # build import lib
-  sed -i 's|$(AR) $@ $(BASE_O)|$(CC) -shared -Wl,--out-implib,liblua53.dll.a -o $@ $(BASE_O) $(LIBS)|g' src/Makefile
+  sed -i 's|$(AR) $@ $(BASE_O)|$(CC) -shared -Wl,--out-implib,liblua54.dll.a -o $@ $(BASE_O) $(LIBS)|g' src/Makefile
 }
 
 build () {
@@ -24,8 +24,8 @@ build () {
     rm -rf "$srcdir"/build-${_arch}
     cp -r "$srcdir"/lua-$pkgver "$srcdir"/build-${_arch} && pushd "$srcdir"/build-${_arch}
     make generic \
-      ALL=lua53.dll \
-      LUA_A="lua53.dll" \
+      ALL=lua54.dll \
+      LUA_A="lua54.dll" \
       LUA_T="lua.exe" \
       CC=${_arch}-gcc \
       RANLIB="ls" \
@@ -38,7 +38,7 @@ build () {
 package () {
   for _arch in ${_architectures}; do
     cd "$srcdir"/build-${_arch}
-    make install INSTALL_TOP="${pkgdir}"/usr/${_arch} TO_BIN="lua53.dll" TO_LIB="liblua53.dll.a"
+    make install INSTALL_TOP="${pkgdir}"/usr/${_arch} TO_BIN="lua54.dll" TO_LIB="liblua54.dll.a"
     rm -r "${pkgdir}"/usr/${_arch}/{share,man,lib/lua}
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
