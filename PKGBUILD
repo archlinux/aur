@@ -84,13 +84,6 @@ build() {
     # By default in /etc/makepkg.conf this is "-D_FORTIFY_SOURCE=2"
     # Which will break `compiler-rt`
     unset CPPFLAGS
-    unset CFLAGS
-    unset CXXFLAGS
-    unset LDFLAGS
-
-    export SWIFT_SOURCE_ROOT="$srcdir"
-    export PATH="$PATH:/usr/bin/core_perl"
-    #utils/build-script -R "${_common_build_params[@]}"
 
     LDFLAGS='-ldl -lpthread' python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="/opt/swift" installable_package="$srcdir/swift.tar.gz"
 }
