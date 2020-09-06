@@ -1,7 +1,7 @@
 # Maintainer: Marcel H Rød <marcelroed@gmail.com>
 pkgname=kattis
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Competitive programming checker for open.kattis.com"
 url="https://github.com/marcelroed/"
 license=("MIT")
