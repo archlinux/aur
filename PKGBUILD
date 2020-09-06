@@ -8,7 +8,7 @@ url='https://github.com/themefox/themefox-manager'
 license=('MIT')
 sha256sums=('SKIP')
 makedepends=('rust' 'cargo' 'git')
-source=('themefox-manager-git::git+https://github.com/themefox/themefox-manager')
+source=('themefox-manager-git::git+https://github.com/alx365/themefox-manager')
 
 pkgver() {
  cd "$pkgname"

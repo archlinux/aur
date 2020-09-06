@@ -8,7 +8,7 @@ pkgbase = themefox-manager-git
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
-	source = themefox-manager-git::git+https://github.com/themefox/themefox-manager
+	source = themefox-manager-git::git+https://github.com/alx365/themefox-manager
 	sha256sums = SKIP
 
 pkgname = themefox-manager-git
