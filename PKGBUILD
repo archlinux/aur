@@ -1,63 +1,68 @@
-# Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
 pkgdesc="ROS - amcl is a probabilistic localization system for a robot moving in 2D."
 url='https://wiki.ros.org/amcl'
 
-pkgname='ros-melodic-amcl'
-pkgver='1.16.6'
+pkgname='ros-noetic-amcl'
+pkgver='1.17.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=4
+pkgrel=1
 license=('LGPL')
 
-ros_makedepends=(ros-melodic-catkin
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-geometry-msgs
-  ros-melodic-message-filters
-  ros-melodic-nav-msgs
-  ros-melodic-rosbag
-  ros-melodic-roscpp
-  ros-melodic-std-srvs
-  ros-melodic-tf2
-  ros-melodic-tf2-geometry-msgs
-  ros-melodic-tf2-msgs
-  ros-melodic-tf2-ros
-  ros-melodic-sensor-msgs)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]})
+ros_makedepends=(
+    ros-noetic-catkin
+    ros-noetic-dynamic-reconfigure
+    ros-noetic-geometry-msgs
+    ros-noetic-message-filters
+    ros-noetic-nav-msgs
+    ros-noetic-rosbag
+    ros-noetic-roscpp
+    ros-noetic-std-srvs
+    ros-noetic-tf2
+    ros-noetic-tf2-geometry-msgs
+    ros-noetic-tf2-msgs
+    ros-noetic-tf2-ros
+    ros-noetic-sensor-msgs
+)
 
-ros_depends=(ros-melodic-dynamic-reconfigure
-  ros-melodic-geometry-msgs
-  ros-melodic-nav-msgs
-  ros-melodic-rosbag
-  ros-melodic-roscpp
-  ros-melodic-std-srvs
-  ros-melodic-tf2
-  ros-melodic-tf2-msgs
-  ros-melodic-tf2-ros)
-depends=(${ros_depends[@]})
+makedepends=(
+    cmake
+    ros-build-tools
+    ${ros_makedepends[@]}
+)
 
-# Tarball version (faster download)
+ros_depends=(
+    ros-noetic-dynamic-reconfigure
+    ros-noetic-geometry-msgs
+    ros-noetic-nav-msgs
+    ros-noetic-rosbag
+    ros-noetic-roscpp
+    ros-noetic-std-srvs
+    ros-noetic-tf2
+    ros-noetic-tf2-msgs
+    ros-noetic-tf2-ros
+)
+
+depends=(
+    ${ros_depends[@]}
+)
+
 _dir="navigation-${pkgver}/amcl"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
-sha256sums=('88e3b4433de9645e1132db15b01f436a75a28ebc15cd5b70660b158dd6ba42dd')
+sha256sums=('50e1fb4a0beb190202e9730180464b76b3a481cae2665e0f1944eb908929148e')
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
-  [ -f /opt/ros/melodic/setup.bash ] && source /opt/ros/melodic/setup.bash
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
   cd ${srcdir}/build
 
-  # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
-
   # Build project
   cmake ${srcdir}/${_dir} \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
-        -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
