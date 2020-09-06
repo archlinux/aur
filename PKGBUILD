@@ -1,7 +1,7 @@
 # Maintainer: Haruyuki lxz <lxz@ilxz.me>
 
 pkgname=dtkcore-git
-pkgver=5.2.2.3.r0.g3241d4d
+pkgver=5.2.2.5.r0.gca1e23d
 pkgrel=1
 pkgdesc='DTK core modules'
 arch=('x86_64')
@@ -13,21 +13,21 @@ conflicts=('dtkcore')
 replaces=('dtkcore')
 provides=('dtkcore')
 groups=('deepin-git')
-source=("git://github.com/linuxdeepin/dtkcore.git")
+source=("$pkgname::git://github.com/linuxdeepin/dtkcore.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd dtkcore
+    cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd dtkcore
+  cd $pkgname
   qmake-qt5 PREFIX=/usr DTK_VERSION=$pkgver LIB_INSTALL_DIR=/usr/lib
-  make
+  make -j$(nproc)
 }
 
 package() {
-  cd dtkcore
+  cd $pkgname
   make INSTALL_ROOT="$pkgdir" install
 }
