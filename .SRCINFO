@@ -1,6 +1,6 @@
 pkgbase = yfktest
 	pkgdesc = Ham Radio Contesting Logger
-	pkgver = r671
+	pkgver = r385.a4cabae
 	pkgrel = 1
 	url = http://fkurz.net/ham/yfktest.html
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = yfktest
 	optdepends = winkeydaemon: usb cw xmit
 	optdepends = bigcty: contest version country files
 	optdepends = mplayer: voice keyer
-	source = yfktest::svn://svn.fkurz.net/yfktest/trunk
+	source = yfktest::git+https://git.fkurz.net/yfktest/yfktest.git
 	source = yfktest.desktop
 	source = yfktest.png
 	source = yfktest.1

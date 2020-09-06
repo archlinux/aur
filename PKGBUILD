@@ -3,7 +3,7 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=yfktest
-pkgver=r671
+pkgver=r385.a4cabae
 pkgrel=1
 pkgdesc="Ham Radio Contesting Logger"
 arch=('any')
@@ -16,7 +16,8 @@ optdepends=('hamlib: rig interfacing'
 	    'winkeydaemon: usb cw xmit'
 	    'bigcty: contest version country files'
 	    'mplayer: voice keyer')
-source=("$pkgname::svn://svn.fkurz.net/yfktest/trunk"
+source=("$pkgname::git+https://git.fkurz.net/yfktest/yfktest.git"
+#("$pkgname::svn://svn.fkurz.net/yfktest/trunk"
 		$pkgname.desktop
 		$pkgname.png
 		$pkgname.1)
@@ -24,8 +25,11 @@ source=("$pkgname::svn://svn.fkurz.net/yfktest/trunk"
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	printf "r%s" "$(svnversion | tr -d 'A-z')"
+	printf "r%s.%s" "$(git rev-list --count HEAD)"\
+		 "$(git rev-parse --short HEAD)"
+#	printf "r%s" "$(svnversion | tr -d 'A-z')"
 }
+
 
 package() {
 	cd "$srcdir/$pkgname"
