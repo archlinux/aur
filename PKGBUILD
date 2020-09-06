@@ -1,7 +1,7 @@
 # Maintainer: OriginCode <self@origincode.me>
 
 pkgbase=linux-zencjk
-pkgver=5.8.6.zen1
+pkgver=5.8.7.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with CJK Patch'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -29,7 +29,7 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '025892c2822a52606ea9d04972fc2a2d76d799af1655c2c170fdc2301697ae8d'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '25788fac99aa9711ad61a9614ebe99ad9217619f2ebdc43a295f251972a2dab2')
+            'acf96c21e7836ac80b7f6d9427c25784e0187fc0206d5e51d4b5defc68b8ba58')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
