@@ -1,9 +1,9 @@
-# Maintainer: Justin Coffman <jcoffman@cluon.io>
+# Maintainer: Justin Coffman <jcoffman@cyveris.com>
 # Contributor: Matthew Longley <randomticktock@gmail.com>
 
 pkgname=tinyfugue
 pkgver=5.0b8
-pkgrel=6
+pkgrel=7
 arch=('i686' 'x86_64')
 pkgdesc="a flexible, screen-oriented MUD client, for use with any type of MUD"
 url="http://tinyfugue.sourceforge.net/"
@@ -19,7 +19,7 @@ conflicts=(
     'tinyfugue-git'
     'tinyfugue-patched'
 )
-source=("git+https://github.com/cluonbeam/tinyfugue.git#tag=v$pkgver-$pkgrel")
+source=("git+https://github.com/cyveris/tinyfugue.git#tag=v$pkgver-$pkgrel")
 sha256sums=('SKIP')
 
 # build function

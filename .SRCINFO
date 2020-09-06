@@ -1,7 +1,7 @@
 pkgbase = tinyfugue
 	pkgdesc = a flexible, screen-oriented MUD client, for use with any type of MUD
 	pkgver = 5.0b8
-	pkgrel = 6
+	pkgrel = 7
 	url = http://tinyfugue.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tinyfugue
 	depends = openssl
 	conflicts = tinyfugue-git
 	conflicts = tinyfugue-patched
-	source = git+https://github.com/cluonbeam/tinyfugue.git#tag=v5.0b8-6
+	source = git+https://github.com/cyveris/tinyfugue.git#tag=v5.0b8-7
 	sha256sums = SKIP
 
 pkgname = tinyfugue
