@@ -2,7 +2,7 @@
 
 pkgname=deepin-control-center-git
 _pkgname=deepin-control-center
-pkgver=5.3.0.6.r7.g50dea5a88
+pkgver=5.3.0.21.r16.gc6372b396
 pkgrel=1
 pkgdesc='New control center for linux deepin'
 arch=('x86_64')
@@ -24,22 +24,21 @@ conflicts=('deepin-control-center')
 replaces=('deepin-control-center')
 provides=('deepin-control-center')
 groups=('deepin-git')
-source=("git://github.com/linuxdeepin/dde-control-center/"
+source=("$pkgname::git://github.com/linuxdeepin/dde-control-center/"
         $_pkgname-systeminfo-deepin-icon.patch)
 sha512sums=('SKIP'
             '74fd63391e923ca37f4559f30da967ba7f33d4426b60d58d1ece8cd9a154578e8184b1a376a8d7ff3ef81ffce530915f79d0845a2612ae4e06522b96855ab3dd')
 
 pkgver() {
-    cd dde-control-center
+    cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  rm dde-control-center/src/frame/window/icons/icons/dcc_nav_systeminfo_{42,84}px.svg
-  patch -d dde-control-center -Np1 < $_pkgname-systeminfo-deepin-icon.patch
-  mkdir -p build
+  rm $pkgname/src/frame/window/icons/icons/dcc_nav_systeminfo_{42,84}px.svg
+  patch -d $pkgname -Np1 < $_pkgname-systeminfo-deepin-icon.patch
 
-  cd dde-control-center
+  cd $pkgname
   sed -i '/#include <QPainter>/a #include <QPainterPath>' src/frame/widgets/basiclistdelegate.cpp src/frame/window/modules/update/updatehistorybutton.cpp \
                                                           src/frame/window/modules/commoninfo/commonbackgrounditem.cpp src/frame/modules/accounts/useroptionitem.cpp \
                                                           src/frame/window/modules/sync/pages/avatarwidget.cpp src/frame/window/modules/accounts/avataritemdelegate.cpp \
@@ -55,13 +54,14 @@ prepare() {
 }
 
 build() {
-  cd build
+  mkdir -p $pkgname/build
+  cd $pkgname/build
   cmake -GNinja -DDISABLE_SYS_UPDATE=YES -DDISABLE_RECOVERY=YES -DDISABLE_ACTIVATOR=YES -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    ../dde-control-center
+    ../
   ninja
 }
 
 package() {
-  cd build
+  cd $pkgname/build
   DESTDIR="$pkgdir" ninja install
 }

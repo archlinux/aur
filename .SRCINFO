@@ -1,6 +1,6 @@
 pkgbase = deepin-control-center-git
 	pkgdesc = New control center for linux deepin
-	pkgver = 5.3.0.6.r7.g50dea5a88
+	pkgver = 5.3.0.21.r16.gc6372b396
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-control-center
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = deepin-control-center-git
 	provides = deepin-control-center
 	conflicts = deepin-control-center
 	replaces = deepin-control-center
-	source = git://github.com/linuxdeepin/dde-control-center/
+	source = deepin-control-center-git::git://github.com/linuxdeepin/dde-control-center/
 	source = deepin-control-center-systeminfo-deepin-icon.patch
 	sha512sums = SKIP
 	sha512sums = 74fd63391e923ca37f4559f30da967ba7f33d4426b60d58d1ece8cd9a154578e8184b1a376a8d7ff3ef81ffce530915f79d0845a2612ae4e06522b96855ab3dd
