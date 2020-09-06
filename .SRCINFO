@@ -1,0 +1,17 @@
+pkgbase = swaglyrics
+	pkgdesc = Get lyrics of currently playing Spotify song so you don't sing along with the wrong ones and embarrass yourself later. Very fast.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/SwagLyrics/SwagLyrics-For-Spotify
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-swspotify
+	depends = python-beautifulsoup4
+	depends = python-colorama
+	depends = python-unidecode
+	source = SwagLyrics-For-Spotify-1.2.2.tar.gz::https://github.com/SwagLyrics/SwagLyrics-For-Spotify/archive/v1.2.2.tar.gz
+	sha256sums = be57ac34b2f7ad2c100a29eef5f65cab38d3219fa86933fde57be064bbc2a027
+
+pkgname = swaglyrics
+
