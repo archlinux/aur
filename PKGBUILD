@@ -2,7 +2,7 @@
 # Contributor: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-qt-dbus-factory-git
-pkgver=5.3.0.1.r0.g23a7936
+pkgver=5.3.0.12.r1.gf5c5431
 pkgrel=1
 pkgdesc='A repository stores auto-generated Qt5 dbus code (libdframeworkdbus)'
 arch=('x86_64')
@@ -14,21 +14,21 @@ conflicts=('deepin-qt-dbus-factory')
 replaces=('deepin-qt-dbus-factory')
 provides=('deepin-qt-dbus-factory')
 groups=('deepin-git')
-source=("git://github.com/linuxdeepin/dde-qt-dbus-factory.git")
+source=("$pkgname::git://github.com/linuxdeepin/dde-qt-dbus-factory.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd dde-qt-dbus-factory
+    cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd dde-qt-dbus-factory
+  cd $pkgname
   qmake-qt5 PREFIX=/usr
-  make
+  make -j$(nproc)
 }
 
 package() {
-  cd dde-qt-dbus-factory
+  cd $pkgname
   make INSTALL_ROOT="$pkgdir" install
 }
