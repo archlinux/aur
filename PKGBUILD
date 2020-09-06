@@ -1,11 +1,11 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=netron-bin
-pkgver=4.4.7
+pkgver=4.4.9
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models"
 arch=('x86_64')
-url='https://lutzroeder.github.io/netron'
+url='https://www.lutzroeder.com/ai'
 license=('MIT')
 provides=('netron')
 makedepends=('gendesk')
@@ -13,7 +13,7 @@ options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/lutzroeder/netron/releases/download/v${pkgver}/Netron-${pkgver}.AppImage"
         'LICENSE::https://github.com/lutzroeder/netron/raw/main/LICENSE')
-sha256sums=('957f65d46120982b8ab013d7a303d28daaca5f999edbf6e744502de3aae1582d'
+sha256sums=('89c4e105906432cb00c4baba9e80b11bea138b781e9d8fd2e2becb15a02d02dd'
             '535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88')
 
 package() {
