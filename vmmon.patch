@@ -855,7 +855,14 @@
  #endif /* __PGTBL_H__ */
 --- a/vmmon/linux/driver.c
 +++ b/vmmon/linux/driver.c
-@@ -108,7 +108,11 @@
+@@ -101,14 +101,16 @@
+  */
+ int LinuxDriver_Ioctl(struct inode *inode, struct file *filp,
+                       u_int iocmd, unsigned long ioarg);
+-#if defined(HAVE_UNLOCKED_IOCTL) || defined(HAVE_COMPAT_IOCTL)
+ static long LinuxDriver_UnlockedIoctl(struct file *filp,
+                            u_int iocmd, unsigned long ioarg);
+-#endif
  
  static int LinuxDriver_Close(struct inode *inode, struct file *filp);
  static unsigned int LinuxDriverPoll(struct file *file, poll_table *wait);
@@ -877,7 +884,69 @@
  
  static struct vm_operations_struct vmuser_mops = {
  #ifdef VMW_NOPAGE_2624
-@@ -244,7 +259,7 @@ LinuxDriverEstimateTSCkHz(void)
+@@ -166,61 +168,15 @@
+    return 1291;
+ }
+ 
+-#ifndef HAVE_COMPAT_IOCTL
+-static int
+-LinuxDriver_Ioctl32_Handler(unsigned int fd,
+-                            unsigned int iocmd,
+-                            unsigned long ioarg,
+-                            struct file *filp)
+-{
+-   int ret = -ENOTTY;
+-
+-   if (filp && filp->f_op && filp->f_op->ioctl == LinuxDriver_Ioctl) {
+-      ret = LinuxDriver_Ioctl(filp->f_dentry->d_inode, filp, iocmd, ioarg);
+-   }
+-
+-   return ret;
+-}
+-#endif /* !HAVE_COMPAT_IOCTL */
+-
+ static int
+ register_ioctl32_handlers(void)
+ {
+-#ifndef HAVE_COMPAT_IOCTL
+-   {
+-      int i;
+-
+-      for (i = IOCTL_VMX86_FIRST; i < IOCTL_VMX86_LAST; i++) {
+-         int retval = register_ioctl32_conversion(i,
+-                                                  LinuxDriver_Ioctl32_Handler);
+-
+-         if (retval) {
+-            Warning("Fail to register ioctl32 conversion for cmd %d\n", i);
+-
+-            return retval;
+-         }
+-      }
+-   }
+-#endif /* !HAVE_COMPAT_IOCTL */
+    return 0;
+ }
+ 
+ static void
+ unregister_ioctl32_handlers(void)
+ {
+-#ifndef HAVE_COMPAT_IOCTL
+-   {
+-      int i;
+-
+-      for (i = IOCTL_VMX86_FIRST; i < IOCTL_VMX86_LAST; i++) {
+-         int retval = unregister_ioctl32_conversion(i);
+-
+-         if (retval) {
+-            Warning("Fail to unregister ioctl32 conversion for cmd %d\n", i);
+-         }
+-      }
+-   }
+-#endif /* !HAVE_COMPAT_IOCTL */
+ }
+ 
+ 
+@@ -244,7 +203,7 @@ LinuxDriverEstimateTSCkHz(void)
   */
  
  static void
@@ -886,7 +955,7 @@
  {
     Vmx86_GetkHzEstimate(&linuxState.startTime);
  }
-@@ -287,9 +302,13 @@ init_module(void)
+@@ -287,9 +245,13 @@ init_module(void)
      */
  
     init_waitqueue_head(&linuxState.pollQueue);
@@ -901,6 +970,21 @@
  
     linuxState.fastClockThread = NULL;
     linuxState.fastClockFile = NULL;
+@@ -310,14 +270,8 @@
+    memset(&vmuser_fops, 0, sizeof vmuser_fops);
+    vmuser_fops.owner = THIS_MODULE;
+    vmuser_fops.poll = LinuxDriverPoll;
+-#ifdef HAVE_UNLOCKED_IOCTL
+    vmuser_fops.unlocked_ioctl = LinuxDriver_UnlockedIoctl;
+-#else
+-   vmuser_fops.ioctl = LinuxDriver_Ioctl;
+-#endif
+-#ifdef HAVE_COMPAT_IOCTL
+    vmuser_fops.compat_ioctl = LinuxDriver_UnlockedIoctl;
+-#endif
+    vmuser_fops.open = LinuxDriver_Open;
+    vmuser_fops.release = LinuxDriver_Close;
+    vmuser_fops.mmap = LinuxDriverMmap;
 @@ -365,9 +363,13 @@ init_module(void)
      */
  
@@ -1029,8 +1113,35 @@
           break;
        }
  
+@@ -2052,7 +2014,6 @@
+ }
+ 
+ 
+-#if defined(HAVE_UNLOCKED_IOCTL) || defined(HAVE_COMPAT_IOCTL)
+ /*
+  *-----------------------------------------------------------------------------
+  *
+@@ -2075,7 +2036,6 @@
+ {
+    return LinuxDriver_Ioctl(NULL, filp, iocmd, ioarg);
+ }
+-#endif
+ 
+ 
+ /*
 --- a/vmmon/linux/hostif.c
 +++ b/vmmon/linux/hostif.c
+@@ -44,10 +44,6 @@
+ 
+ #include <linux/smp.h>
+ 
+-#ifndef HAVE_UNLOCKED_IOCTL
+-#include <linux/smp_lock.h>
+-#endif
+-
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 25)
+ #   include <asm/asm.h>
+ #endif
 @@ -77,19 +77,22 @@
  #include <linux/capability.h>
  #include <linux/kthread.h>
@@ -1471,6 +1582,28 @@
  
  /*
   *----------------------------------------------------------------------
+@@ -3160,21 +3328,9 @@
+               u_int iocmd,
+               unsigned long ioarg)
+ {
+-#ifdef HAVE_UNLOCKED_IOCTL
+    if (filp->f_op->unlocked_ioctl) {
+       return filp->f_op->unlocked_ioctl(filp, iocmd, ioarg);
+    }
+-#else
+-   if (filp->f_op->ioctl) {
+-      long err;
+-
+-      lock_kernel();
+-      err = filp->f_op->ioctl(filp->f_dentry->d_inode, filp, iocmd, ioarg);
+-      unlock_kernel();
+-
+-      return err;
+-   }
+-#endif
+    return -ENOIOCTLCMD;
+ }
+ #endif //VMON_USE_HIGH_RES_TIMERS
 @@ -3464,7 +3477,6 @@ HostIF_SetFastClockRate(unsigned int rate) // IN: Frequency in Hz.
        }
     } else {
@@ -1527,7 +1660,7 @@ diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
 index 3a48505..ec6856a 100644
 --- a/vmmon-only/linux/hostif.c
 +++ b/vmmon-only/linux/hostif.c
-@@ -72,6 +72,7 @@
+@@ -68,6 +68,7 @@
  #endif
  
  #include <asm/io.h>
@@ -1535,7 +1668,7 @@ index 3a48505..ec6856a 100644
  #include <asm/uaccess.h>
  #include <linux/mc146818rtc.h>
  #include <linux/capability.h>
-@@ -699,7 +700,24 @@ HostIF_FastClockUnlock(int callerID) // IN
+@@ -695,7 +696,24 @@ HostIF_FastClockUnlock(int callerID) // IN
  static void *
  MapCrossPage(struct page *p)  // IN:
  {
@@ -1578,7 +1711,7 @@ diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
 index ec6856a..4a7afb1 100644
 --- a/vmmon-only/linux/hostif.c
 +++ b/vmmon-only/linux/hostif.c
-@@ -2588,7 +2588,11 @@ HostIF_SemaphoreWait(VMDriver *vm,   // IN:
+@@ -2584,7 +2584,11 @@ HostIF_SemaphoreWait(VMDriver *vm,   // IN:
      * reading no bytes (EAGAIN - non blocking fd) or sizeof(uint64).
      */
  
@@ -1590,7 +1723,7 @@ index ec6856a..4a7afb1 100644
  
     if (res == sizeof value) {
        res = MX_WAITNORMAL;
-@@ -2701,7 +2705,11 @@ HostIF_SemaphoreSignal(uint64 *args)  // IN:
+@@ -2697,7 +2701,11 @@ HostIF_SemaphoreSignal(uint64 *args)  // IN:
      * it be present.
      */
  
@@ -1602,3 +1735,61 @@ index ec6856a..4a7afb1 100644
  
     if (res == sizeof value) {
        res = MX_WAITNORMAL;
+From 1c4c297ddd28f430037efc972b77639f8bdc3ff1 Mon Sep 17 00:00:00 2001
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Sat, 8 Aug 2020 22:53:50 +0200
+Subject: [PATCH] vmmon: handle change of vmstat slab counters to bytes
+
+Mainline commit d42f3245c7e2 ("mm: memcg: convert vmstat slab counters to
+bytes") in kernel 5.9-rc1 changed vmstat accounting of slab to byte
+counters. Unfortunately there doesn't seem to be any obvious way to check
+for this change except version check.
+---
+ vmmon-only/linux/hostif.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
+index 9b179a8..107e11f 100644
+--- a/vmmon-only/linux/hostif.c
++++ b/vmmon-only/linux/hostif.c
+@@ -1654,8 +1654,11 @@ HostIF_EstimateLockedPageLimit(const VMDriver* vm,                // IN
+ #else
+    lockedPages += global_page_state(NR_PAGETABLE);
+ #endif
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 9, 0)
++   /* NR_SLAB_* converted to byte counters in 5.9 */
++   lockedPages += global_node_page_state_pages(NR_SLAB_UNRECLAIMABLE_B);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 13, 0)
+    /* NR_SLAB_* moved from zone to node in 4.13. */
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 13, 0)
+    lockedPages += global_node_page_state(NR_SLAB_UNRECLAIMABLE);
+ #else
+    lockedPages += global_page_state(NR_SLAB_UNRECLAIMABLE);
+From 505c6b8967d2b14223e8ba482acffe020a93782f Mon Sep 17 00:00:00 2001
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Thu, 20 Aug 2020 10:39:56 +0200
+Subject: [PATCH] vmmon: include <asm/irq_vectors.h> explicitly
+
+After mainline commit 13c01139b171 ("x86/headers: Remove APIC headers from
+<asm/smp.h>") in 5.9-rc1, APIC headers are no longer included via
+<asm/smp.h> so that linux/hostif.c will use incorrect fallback definitions
+of SPURIOUS_APIC_VECTOR, POSTED_INTR_VECTOR and ERROR_APIC_VECTOR even if
+built against kernel where these are defined.
+
+Include <asm/irq_vectors.h> in linux/hostif.c explicitly to avoid that.
+---
+ vmmon-only/linux/hostif.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
+index 107e11f..a42a034 100644
+--- a/vmmon-only/linux/hostif.c
++++ b/vmmon-only/linux/hostif.c
+@@ -71,6 +71,7 @@
+ #include <asm/tlbflush.h>
+ #include <asm/uaccess.h>
+ #include <linux/mc146818rtc.h>
++#include <asm/irq_vectors.h>
+ #include <linux/capability.h>
+ #include <linux/kthread.h>
+ #include <linux/wait.h>
