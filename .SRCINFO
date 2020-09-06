@@ -1,6 +1,6 @@
 pkgbase = oversteer
 	pkgdesc = Graphical application to configure Logitech Wheels.
-	pkgver = 0.4.1
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/berarma/oversteer
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = oversteer
 	depends = gettext
 	depends = appstream-glib
 	depends = desktop-file-utils
-	source = oversteer-0.4.1.tar.gz::https://github.com/berarma/oversteer/archive/0.4.1.tar.gz
-	sha256sums = 489d0eff421e0456a8d2ec2f0b504ca75cd2622bb62d0d61f121ae388810e4d0
+	source = oversteer-0.5.3.tar.gz::https://github.com/berarma/oversteer/archive/0.5.3.tar.gz
+	sha256sums = 5f80f933e8d1a0655c5e05c12c84f9bd8aec86b2ac1b0a537d908da5ebe74dea
 
 pkgname = oversteer
 
