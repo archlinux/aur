@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-rqt-controller-manager
 	pkgdesc = ROS - Graphical frontend for interacting with the controller manager.
-	pkgver = 0.18.1
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://github.com/ros-controls/ros_control/wiki
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = ros-melodic-rqt-controller-manager
 	depends = ros-melodic-rqt-gui-py
 	depends = ros-melodic-rospy
 	depends = ros-melodic-controller-manager-msgs
-	source = ros-melodic-rqt-controller-manager-0.18.1.tar.gz::https://github.com/ros-controls/ros_control/archive/0.18.1.tar.gz
-	sha256sums = 4181f0bcfdc9ba53a9a22b1f258f9cb0549ece735c71600f4393a7a86ff8f820
+	source = ros-melodic-rqt-controller-manager-0.18.2.tar.gz::https://github.com/ros-controls/ros_control/archive/0.18.2.tar.gz
+	sha256sums = 3fcc5b4648c8395755e8c8d136d774ebed427243fe8082214993ac76eabf6a8f
 
 pkgname = ros-melodic-rqt-controller-manager
 

@@ -4,7 +4,7 @@ pkgdesc="ROS - Graphical frontend for interacting with the controller manager."
 url='https://github.com/ros-controls/ros_control/wiki'
 
 pkgname='ros-melodic-rqt-controller-manager'
-pkgver='0.18.1'
+pkgver='0.18.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -24,7 +24,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_control-${pkgver}/rqt_controller_manager"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_control/archive/${pkgver}.tar.gz")
-sha256sums=('4181f0bcfdc9ba53a9a22b1f258f9cb0549ece735c71600f4393a7a86ff8f820')
+sha256sums=('3fcc5b4648c8395755e8c8d136d774ebed427243fe8082214993ac76eabf6a8f')
 
 build() {
     # Use ROS environment variables
