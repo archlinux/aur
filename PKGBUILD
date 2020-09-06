@@ -11,9 +11,9 @@ arch=('x86_64')
 url="http://nuclear.gumblert.tech/"
 install=nuclear-player-bin.install
 license=('GPL3')
-depends=('gconf' 'libnotify' 'libappindicator-gtk3' 'libxtst' 'nss')
+depends=('libnotify' 'libappindicator-gtk3' 'libxtst' 'nss')
 source=(
-    https://github.com/nukeop/nuclear/releases/download/v${pkgver}/nuclear-${commid}.deb
+    https://github.com/nukeop/nuclear/releases/download/v${pkgver}/nuclear-${pkgver}.deb
     nuclear.desktop
 )
 md5sums=(
