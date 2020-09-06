@@ -1,7 +1,7 @@
 pkgbase = lanraragi
 	pkgdesc = LANraragi build package
 	pkgver = v.0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Difegue/LANraragi
 	arch = any
 	license = MIT
