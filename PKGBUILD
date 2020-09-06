@@ -2,9 +2,9 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-bin
-pkgver=20.0430a
+pkgver=20.0905a
 gamefilesver=18.0328
-pkgrel=4
+pkgrel=1
 pkgdesc="Rewrite of Re-Volt, popular R/C car racing game from 1999."
 url='https://rvgl.re-volt.io'
 arch=('x86_64')
@@ -37,15 +37,10 @@ package() {
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 
     # User folders
+    install -dm777 "$pkgdir/opt/rvgl/cache"
     install -dm777 "$pkgdir/opt/rvgl/profiles"
     install -dm777 "$pkgdir/opt/rvgl/replays"
-
-    for class in rookie amateur advanced semi-pro pro superpro; do
-      install -dm777 "$pkgdir/opt/rvgl/times/normal/$class"
-      install -dm777 "$pkgdir/opt/rvgl/times/mirror/$class"
-      install -dm777 "$pkgdir/opt/rvgl/times/reverse/$class"
-      install -dm777 "$pkgdir/opt/rvgl/times/reversemirror/$class"
-    done
+    install -dm777 "$pkgdir/opt/rvgl/times"
 
     # Platform binaries
     cd "$srcdir/rvgl_platform/linux"
@@ -54,6 +49,7 @@ package() {
     # Icons
     cd "$srcdir/rvgl_platform/linux/icons"
     find * -type f -exec install -Dm644 {} "$pkgdir/usr/share/icons/hicolor/{}" \;
+    find "256x256/apps/rvgl.png" -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/icons/{}" \;
 
     # Launcher
     cd "$srcdir"
