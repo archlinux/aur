@@ -13,8 +13,8 @@ license=('GPL3')
 makedepends=('python-virtualenv')
 optdepends=('libmediainfo: determine the resolution of MKV and AVI files with no resolution in the filename'
             'unrar: for RAR archives')
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 options=('!strip')
 install=$pkgname.install
 source=('sickchill.service'
@@ -45,7 +45,5 @@ package() {
   install -dm755 "$pkgdir/opt/sickchill/data"
 
   cp -a build "$pkgdir/opt/sickchill/app"
-
-  warning "If the upgrade fails with \"error: failed to commit transaction (conflicting files)\", then uninstall first"
 }
 
