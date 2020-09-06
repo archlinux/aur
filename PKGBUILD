@@ -1,18 +1,12 @@
 # Maintainer: rilian-la-te <ria.freelander@gmail.com>
 
-_opts=(
-	-DCMAKE_INSTALL_PREFIX=/usr
-	-DCMAKE_INSTALL_LIBDIR=lib
-	-DCMAKE_INSTALL_LIBEXECDIR=lib
-)
-
-makedepends=('cmake' 'glib2' 'git')
+makedepends=('meson' 'glib2' 'git')
 
 _pkgbase=vala-panel-appmenu
 pkgname=vala-panel-appmenu-registrar-git
 _path=subprojects/registrar
-pkgver=0.6.94
-pkgrel=2
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="Small utility to hold DBusMenu menus"
 provides=(vala-panel-appmenu-registrar)
 depends=('glib2')
@@ -32,13 +26,11 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${_pkgbase}/${_path}"
-  cmake ./ "${_opts[@]}"
-  make
+  meson build "${srcdir}/${_pkgbase}/${_path}" --prefix=/usr --libexecdir=lib
+  meson compile -C build
 }
 
 package()
 {
-  cd "${srcdir}/${_pkgbase}/${_path}"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" meson install -C build --no-rebuild
 }
