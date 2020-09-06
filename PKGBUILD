@@ -4,7 +4,7 @@ pkgdesc="ROS - Basic diagnostic_aggregator tests are in the."
 url='https://wiki.ros.org/test_diagnostic_aggregator'
 
 pkgname='ros-melodic-test-diagnostic-aggregator'
-pkgver='1.9.5'
+pkgver='1.9.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -39,7 +39,7 @@ depends=(
 
 _dir="diagnostics-${pkgver}/test_diagnostic_aggregator"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/diagnostics/archive/${pkgver}.tar.gz")
-sha256sums=('b337b1fa42c3a30e362406a26a8cac282614e643a5d7b7fcc04ed2bf2785c7bb')
+sha256sums=('ca97cc9391fda16b48834c0bc5f745c67e59bd2cfc9b73f22a93406c4226c52a')
 
 build() {
 	# Use ROS environment variables.
