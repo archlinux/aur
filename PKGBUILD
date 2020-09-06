@@ -8,12 +8,14 @@ pkgname=('faiss-cuda-git' 'python-faiss-cuda-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
-pkgver=1.6.1.r87.gc97f890
+pkgver=1.6.1.r90.g9873376
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git
-        'compiler.patch')
+        'compiler.patch'
+	'tests.patch')
 sha256sums=('SKIP'
-            '3739947d39ebffb2775607f135743cd30489aa12f41c14e3aec42fbe79822fd3')
+            '3739947d39ebffb2775607f135743cd30489aa12f41c14e3aec42fbe79822fd3'
+            '0e90164da283d87b2ad176449b1ba441b7ce0c6343aa4dbb8d268483bf805ccd')
 depends=('blas' 'lapack' 'cuda' 'openmp')
 makedepends=('git' 'python' 'python-numpy' 'swig' 'python-setuptools' 'gcc9')
 optdepends=('intel-mkl')
@@ -27,18 +29,34 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  patch -p1 < ../compiler.patch
+  patch -p1 < ../compiler.patch # see https://github.com/facebookresearch/faiss/issues/1392
+  patch -p1 < ../tests.patch # see https://github.com/facebookresearch/faiss/issues/1394
   mkdir -p build
   cd build
-  _CMAKE_FLAGS="-DFAISS_ENABLE_GPU=ON -DFAISS_ENABLE_PYTHON=ON -DCUDAToolkit_ROOT=/opt/cuda -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "
+  _CMAKE_FLAGS="\
+    -DFAISS_ENABLE_GPU=ON \
+    -DFAISS_ENABLE_PYTHON=ON \
+    -DCUDAToolkit_ROOT=/opt/cuda \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_TESTING=ON \
+    -DCMAKE_INSTALL_PREFIX=/usr "
   if ! [ -z "$_GPU_TARGET" ]
   then
     _CMAKE_FLAGS=$_CMAKE_FLAGS"-DCMAKE_CUDA_ARCHITECTURES=\""$_GPU_TARGET"\""
   else
     _CMAKE_FLAGS=$_CMAKE_FLAGS"-DCMAKE_CUDA_ARCHITECTURES=\"\"52 60 61 70 75\"\""
   fi
+  echo $_CMAKE_FLAGS
   cmake $_CMAKE_FLAGS ..
 }
+
+check() {
+  cd "${srcdir}/${_pkgname}/build"
+  make test
+  cd "${srcdir}/${_pkgname}/tests"
+  PYTHONPATH=../build/faiss/python:$PYTHONPATH pytest
+}
+
 
 
 build() {
