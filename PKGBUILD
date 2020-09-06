@@ -3,7 +3,7 @@
 
 pkgname=arkade-bin
 _pkgname=arkade
-pkgver=0.5.1
+pkgver=0.6.10
 pkgrel=1
 epoch=1
 pkgdesc='Your one-stop CLI for Kubernetes. provides a simple CLI with strongly-typed flags to install charts and apps to your cluster in one command.'
@@ -47,3 +47,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+sha256sums=('cc0043a163aa6125c439c00e8cae6c8aea017c349fecfa5f790cba5a46edc478')
