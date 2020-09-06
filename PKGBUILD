@@ -6,7 +6,7 @@ pkgname=('faiss-git' 'python-faiss-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
-pkgver=1.6.1.r87.gc97f890
+pkgver=1.6.1.r90.g9873376
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
 sha256sums=('SKIP')
@@ -29,9 +29,14 @@ prepare() {
     -DFAISS_ENABLE_GPU=OFF \
     -DFAISS_ENABLE_PYTHON=ON \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=ON
 }
 
+check() {
+  cd "${srcdir}/${_pkgname}/build"
+  make test
+}
 
 build() {
   cd "${srcdir}/${_pkgname}/build"
