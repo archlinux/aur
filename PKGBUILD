@@ -2,7 +2,7 @@
 
 pkgname=python-bidict
 _name=${pkgname#python-}
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='Bidirectional map implementation and related functionality to work with one-to-one mappings in Python 3'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MPLv2')
 makedepends=('python-setuptools')
 depends=('python')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('c1b1ce1c0f1e3457489672bc3a4db375a06f61ae7797a9eedf71ea788cea3870')
+sha256sums=('935bf93eda866d4f85fd796405e4e1e9b20274ce56c3ed65b7ce879935f757ad')
 
 build() {
 	cd "bidict-${pkgver}"
