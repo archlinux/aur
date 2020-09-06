@@ -2,7 +2,7 @@
 
 pkgname=upcmd
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultimate Provisioner: the modern configuration management, build and automation tool"
 arch=('x86_64')
 url='https://github.com/upcmd/up'
@@ -10,7 +10,7 @@ license=('MPL2')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/upcmd/up/archive/${pkgver}.tar.gz")
-sha256sums=('20698d2cacfdccedc44f8aa4029e87fee136b503faf76aac224bb0cc453a185a')
+sha256sums=('SKIP')
 
 prepare() {
   cd "up-${pkgver}"

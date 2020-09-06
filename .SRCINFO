@@ -1,14 +1,14 @@
 pkgbase = upcmd
 	pkgdesc = Ultimate Provisioner: the modern configuration management, build and automation tool
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/upcmd/up
 	arch = x86_64
 	license = MPL2
 	makedepends = go
 	depends = glibc
 	source = upcmd-latest.tar.gz::https://github.com/upcmd/up/archive/latest.tar.gz
-	sha256sums = 20698d2cacfdccedc44f8aa4029e87fee136b503faf76aac224bb0cc453a185a
+	sha256sums = SKIP
 
 pkgname = upcmd
 
