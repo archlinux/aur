@@ -1,7 +1,7 @@
 # Maintainer: DingYuan <justforlxz@gmail.com>
 
 pkgname=golang-github-linuxdeepin-go-dbus-factory-git
-pkgver=1.7.0.6.r13.g922bd1e
+pkgver=1.8.0.18.r0.gd11c653
 pkgrel=1
 pkgdesc='GO DBus factory for DDE'
 arch=('any')
@@ -13,18 +13,22 @@ provides=('golang-github-linuxdeepin-go-dbus-factory')
 conflicts=('golang-github-linuxdeepin-go-dbus-factory')
 replaces=('golang-github-linuxdeepin-go-dbus-factory')
 groups=('deepin-git')
-source=('git://github.com/linuxdeepin/go-dbus-factory')
+source=("$pkgname::git://github.com/linuxdeepin/go-dbus-factory")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd go-dbus-factory
+    cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   export GOPATH="$srcdir/build:/usr/share/gocode"
   mkdir -p "$srcdir"/build/src/github.com/linuxdeepin
-  cp -a "$srcdir"/go-dbus-factory "$srcdir"/build/src/github.com/linuxdeepin/go-dbus-factory
+  cp -a "$srcdir/$pkgname" "$srcdir"/build/src/github.com/linuxdeepin/go-dbus-factory
+  go get -v github.com/fsnotify/fsnotify
+  go get -v github.com/godbus/dbus
+  go get -v github.com/godbus/dbus/introspect
+  go get -v github.com/godbus/dbus/prop
 }
 
 build() {
