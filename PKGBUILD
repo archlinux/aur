@@ -34,4 +34,7 @@ package() {
   install -D -m 644 "${srcdir}/lanraragi.sysusers" "${pkgdir}/usr/lib/sysusers.d/lanraragi.conf"
   install -D -m 644 "${srcdir}/lanraragi.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/lanraragi.conf"
   install -D -m 644 "${srcdir}/LANraragi-${pkgver}/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  grep -rnwl . -e ${srcdir} | xargs -I % sed -i 's,'"$srcdir"',\.,g' %
+
 }
