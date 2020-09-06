@@ -1,4 +1,4 @@
-pkgbase = clout-init-extra
+pkgbase = cloud-init-extra
 	pkgdesc = Extra configs and templates for cloud-init
 	pkgver = 1.1
 	pkgrel = 1
@@ -10,10 +10,4 @@ pkgbase = clout-init-extra
 	sha256sums = 2f6040e4e8e0e16a5097375ae4beaa816d48f7422f4bb12eadd125952bbff189
 
 pkgname = cloud-init-extra
-
-pkgname = cloud-init-runonce
-	pkgdesc = Dummy Package that runs an initialization script for cloud-init
-	install = runonce.install
-	depends = cloud-init
-	depends = cloud-init-extra
 

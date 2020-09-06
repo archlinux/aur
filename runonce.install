@@ -1,9 +1,0 @@
-post_install() {
-  # run the initalization script
-  #
-  bash /usr/share/clout-init-extra/init.sh
-}
-
-post_upgrade(){
-  echo "Init only runs for fresh installs. Perform the changes manually for upgraded images"
-}
