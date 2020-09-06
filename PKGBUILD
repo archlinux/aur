@@ -5,7 +5,7 @@ pkgver=5.0.11823
 # pkgver is not allowed to contain forward slashes
 _pkgver_patch="6"
 _pkgver="$pkgver-$_pkgver_patch"
-pkgrel=1
+pkgrel=2
 pkgdesc='CryptoPro CSP 5.0'
 arch=('x86_64')
 url='https://cryptopro.ru/products/cryptopro-csp'
