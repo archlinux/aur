@@ -1,16 +1,16 @@
-# Maintainer:
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=markmywords
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal Markdown editor"
-arch=(x86_64)
+arch=('x86_64')
 url="https://github.com/voldyman/MarkMyWords"
-license=(MIT)
-depends=(discount gtksourceview3 webkit2gtk)
-makedepends=(cmake vala)
-source=(https://github.com/voldyman/MarkMyWords/archive/v$pkgver/MarkMyWords-$pkgver.tar.gz
+license=(custom:MIT)
+depends=('discount' 'gtksourceview3' 'webkit2gtk')
+makedepends=('cmake' 'vala')
+source=("$url/archive/v$pkgver/MarkMyWords-$pkgver.tar.gz"
         discount.patch
         appdata.patch)
 sha256sums=('d7c0c09ef9dce842721a3e957336b77bd1ac157ef5866c56cc81ddc759fba4f0'
