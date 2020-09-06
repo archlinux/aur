@@ -1,0 +1,16 @@
+pkgbase = themefox-manager-git
+	pkgdesc = A manager for firefox CSS aka userchrome files
+	pkgver = 0.9.11
+	pkgrel = 1
+	url = https://github.com/themefox/themefox-manager
+	arch = any
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = themefox-manager-git::git+https://github.com/themefox/themefox-manager
+	sha256sums = SKIP
+
+pkgname = themefox-manager-git
+
+
