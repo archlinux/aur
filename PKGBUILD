@@ -1,8 +1,8 @@
 # Maintainer: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
 _pkgname=desktop
-pkgver=3.4.1
-pkgrel=2
+pkgver=3.4.2
+pkgrel=1
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64')
 url="https://standardnotes.org/"
@@ -31,13 +31,27 @@ prepare() {
 build() {
   cd $srcdir/$_pkgname/
   npm install
-  npm run build
+  npm run bundle
+  ./node_modules/.bin/electron-builder --linux --x64 --dir $dist
 }
 
 
 package() {
+
+  function remove_srcdir_ref {
+    local tmppackage="$(mktemp)"
+    jq '.|=with_entries(select(.key|test("_.+")|not))' "$1" > "$tmppackage"
+    mv "$tmppackage" "$1"
+    chmod 644 "$1"
+  }
+
   mkdir -p $pkgdir/opt/$pkgname
   cp -r $srcdir/$_pkgname/app $pkgdir/opt/$pkgname/
+
+  # Remove $srcdir references - https://wiki.archlinux.org/index.php/Node.js_package_guidelines
+  for i in $(find "$pkgdir" -name package.json); do
+    remove_srcdir_ref $i
+  done
 
   install -D -m644 $pkgname.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -D -m644 $srcdir/$_pkgname/build/icon/Icon-512x512.png "${pkgdir}/usr/share/icons/standard-notes.png"
