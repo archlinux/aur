@@ -10,7 +10,7 @@ license=('custom:BSD')
 depends=('bash')
 provides=('rescached')
 
-makedepends=('git' 'go>=1.13' 'asciidoctor')
+makedepends=('git' 'go>=1.13')
 source=(
 	"$pkgname::git+https://github.com/shuLhan/rescached-go.git"
 )
