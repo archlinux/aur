@@ -1,7 +1,7 @@
 # Maintainer: x1b6e6 <ftdabcde@gmail.com>
 
 pkgname=aes-git
-pkgver=0.2.0
+pkgver=0.2.0.r2.gd311ffd
 pkgrel=1
 pkgdesc="encryption utility with very simple interface"
 arch=('any')
