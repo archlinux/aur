@@ -2,7 +2,7 @@ pkgbase = mozplugger
 	pkgdesc = A Mozilla & Firefox multimedia plugin.
 	pkgver = 2.1.6
 	pkgrel = 1
-	url = http://mozplugger.mozdev.org
+	url = https://web.archive.org/web/20190413003821/http://mozplugger.mozdev.org/
 	install = mozplugger.install
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mozplugger
 	depends = m4
 	depends = libx11
 	backup = etc/mozpluggerrc
-	source = http://mozplugger.mozdev.org/files/mozplugger-2.1.6.tar.gz
+	source = https://web.archive.org/web/20190413003821/http://mozplugger.mozdev.org//files/mozplugger-2.1.6.tar.gz
 	sha256sums = 294cf06ad37b8d89e57ee9c4dc9e7549fd1b0dcec9769171d65dad36099e5fef
 
 pkgname = mozplugger
