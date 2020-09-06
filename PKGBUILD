@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=dtkgui-git
-pkgver=5.2.2.1.r1.gb227464
+pkgver=5.2.2.4.r0.g6d92f7e
 pkgrel=1
 pkgdesc='Deepin Toolkit, gui module for DDE look and feel'
 arch=('x86_64')
@@ -13,21 +13,21 @@ conflicts=('dtkgui')
 replaces=('dtkgui')
 provides=('dtkgui')
 groups=('deepin-git')
-source=('git://github.com/linuxdeepin/dtkgui')
+source=("$pkgname::git://github.com/linuxdeepin/dtkgui")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd dtkgui
+    cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd dtkgui
+  cd $pkgname
   qmake-qt5 PREFIX=/usr DTK_VERSION=$pkgver LIB_INSTALL_DIR=/usr/lib
-  make
+  make -j$(nproc)
 }
 
 package() {
-  cd dtkgui
+  cd $pkgname
   make INSTALL_ROOT="$pkgdir" install
 }
