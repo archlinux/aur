@@ -16,7 +16,9 @@ pkgbase = faiss-git
 	depends = openmp
 	optdepends = intel-mkl
 	source = faiss::git+https://github.com/facebookresearch/faiss.git
+	source = tests.patch
 	sha256sums = SKIP
+	sha256sums = 0e90164da283d87b2ad176449b1ba441b7ce0c6343aa4dbb8d268483bf805ccd
 
 pkgname = faiss-git
 	pkgdesc = A library for efficient similarity search and clustering of dense vectors.

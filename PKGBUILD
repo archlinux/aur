@@ -8,8 +8,10 @@ url="https://github.com/facebookresearch/faiss"
 license=('MIT')
 pkgver=1.6.1.r90.g9873376
 pkgrel=1
-source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
-sha256sums=('SKIP')
+source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git
+	'tests.patch')
+sha256sums=('SKIP'
+            '0e90164da283d87b2ad176449b1ba441b7ce0c6343aa4dbb8d268483bf805ccd')
 depends=('blas' 'lapack' 'openmp')
 makedepends=('git' 'python' 'python-numpy' 'swig' 'python-setuptools' 'cmake')
 optdepends=('intel-mkl')
@@ -22,6 +24,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
+  patch -p1 < ../tests.patch # see https://github.com/facebookresearch/faiss/issues/1394
   mkdir -p build
   cd build
   cmake .. \
@@ -35,6 +38,8 @@ prepare() {
 check() {
   cd "${srcdir}/${_pkgname}/build"
   make test
+  cd "${srcdir}/${_pkgname}/tests"
+  PYTHONPATH=../build/faiss/python:$PYTHONPATH pytest
 }
 
 build() {
