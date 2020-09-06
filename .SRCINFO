@@ -1,7 +1,7 @@
 pkgbase = dtkwidget-git
 	pkgdesc = Deepin graphical user interface library
-	pkgver = 5.2.2.3.r3.g4750dbfe
-	pkgrel = 2
+	pkgver = 5.2.2.10.r2.gc4932fb3
+	pkgrel = 1
 	url = https://github.com/linuxdeepin/dtkwidget
 	arch = x86_64
 	groups = deepin-git
@@ -19,7 +19,7 @@ pkgbase = dtkwidget-git
 	provides = dtkwidget
 	conflicts = dtkwidget
 	replaces = dtkwidget
-	source = git://github.com/linuxdeepin/dtkwidget.git
+	source = dtkwidget-git::git://github.com/linuxdeepin/dtkwidget.git
 	sha512sums = SKIP
 
 pkgname = dtkwidget-git
