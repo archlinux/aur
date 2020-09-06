@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=scrapestorm
-pkgver=3.5.1
+pkgver=3.5.3
 pkgrel=1
 pkgdesc="AI-Powered visual website scraper, which can be used to extract data from almost any websites without writing any code"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://scrapestorm2.azureedge.net/update/en/nature/ScrapeStorm-${pkgver}.AppImage"
         'LICENSE')
-sha256sums=('57e49f253ee0e66eee40501822f50ffe9578f7a2c8688ff73349799c10548dd9'
+sha256sums=('abb7350d0337b25629e2ec3ba48bb3436b45e4d7f72da00685c26ea0d650f888'
             'SKIP')
 
 package() {
