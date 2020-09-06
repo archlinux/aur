@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=pkger
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Embed static files in Go binaries"
 arch=("x86_64" "i686")
@@ -12,17 +12,16 @@ conflicts=('pkger')
 depends=("glibc")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2a4593803004027257b1360022ae51d44a726b8881df92d315b353748c61d654')
+sha256sums=('da775b5ec5675f0db75cf295ff07a4a034ba15eb5cc02d278a5767f387fb8273')
 
 build() {
   cd ${pkgname}-${pkgver}/cmd/${pkgname}
-  go build \
-    -trimpath \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-extldflags \"${LDFLAGS}\"" \
-    .
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build .
 }
 
 package() {
