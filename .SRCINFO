@@ -1,0 +1,27 @@
+pkgbase = qimgv-light
+	pkgdesc = Qt5 image viewer (without any optional features)
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/easymodo/qimgv
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = qt5-tools
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-imageformats
+	depends = qt5-svg
+	optdepends = kimageformats: support for more image formats
+	optdepends = qt5-apng-plugin: animated png support
+	optdepends = qtraw: raw images support
+	provides = qimgv
+	conflicts = qimgv
+	source = git+https://github.com/easymodo/qimgv.git#tag=v0.9.1
+	sha256sums = SKIP
+
+pkgname = qimgv-light
+
