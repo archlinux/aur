@@ -1,4 +1,4 @@
-pkgbase = ros-melodic-rtabmap
+pkgbase = ros-noetic-rtabmap
 	pkgdesc = ROS - RTAB-Maps standalone library.
 	pkgver = 0.20.0
 	pkgrel = 1
@@ -7,23 +7,23 @@ pkgbase = ros-melodic-rtabmap
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-octomap
-	makedepends = ros-melodic-qt-gui-cpp
-	makedepends = ros-melodic-cv-bridge
+	makedepends = ros-noetic-octomap
+	makedepends = ros-noetic-qt-gui-cpp
+	makedepends = ros-noetic-cv-bridge
 	makedepends = sqlite
 	makedepends = vtk
 	makedepends = zlib
 	makedepends = proj
 	makedepends = pcl
-	depends = ros-melodic-octomap
-	depends = ros-melodic-qt-gui-cpp
-	depends = ros-melodic-cv-bridge
+	depends = ros-noetic-octomap
+	depends = ros-noetic-qt-gui-cpp
+	depends = ros-noetic-cv-bridge
 	depends = sqlite
 	depends = vtk
 	depends = zlib
 	depends = pcl
-	source = ros-melodic-rtabmap-0.20.0-1.tar.gz::https://github.com/introlab/rtabmap-release/archive/release/melodic/rtabmap/0.20.0-1.tar.gz
+	source = ros-noetic-rtabmap-0.20.0-1.tar.gz::https://github.com/introlab/rtabmap-release/archive/release/noetic/rtabmap/0.20.0-1.tar.gz
 	sha256sums = c640fb6039912f68dc405143b6ef79e472b10575d498e3da04ac977891593d4a
 
-pkgname = ros-melodic-rtabmap
+pkgname = ros-noetic-rtabmap
 
