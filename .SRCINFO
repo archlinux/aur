@@ -1,6 +1,6 @@
 pkgbase = libpdfium-nojs
 	pkgdesc = Open-source PDF rendering engine.
-	pkgver = 4103.r0.daabea6ba6
+	pkgver = 4183.r0.6069b8345e
 	pkgrel = 1
 	url = https://pdfium.googlesource.com/pdfium/
 	arch = x86_64

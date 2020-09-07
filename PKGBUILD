@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn@gmail.com>
 
 pkgname=libpdfium-nojs
-pkgver=4103.r0.daabea6ba6
+pkgver=4183.r0.6069b8345e
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -87,6 +87,7 @@ build() {
       'pdf_is_standalone = true'
       'use_system_libopenjpeg2 = true'
       'is_component_build = true'
+      'use_gold = false' 
   )
   
   gn gen out/Release --script-executable=/usr/bin/python2 --args="${_flags[*]}"
