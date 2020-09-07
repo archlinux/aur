@@ -1,7 +1,7 @@
 # Maintainer: Jozef Riha <jose1711 at gmail dot com>
 
 pkgname=hedgewars-hg
-pkgver=r15550+.0b16baefefd1+
+pkgver=r15738+.027a56b3895e+
 pkgrel=1
 pkgdesc="Free Worms-like turn based strategy game (development version - mercurial)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-base' 'sdl2' 'sdl2_mixer' 'sdl2_image' 'sdl2_net' 'sdl2_ttf' 'lua5
          'physfs' 'ghc-libs' 'haskell-entropy' 'haskell-sha' 'haskell-random' 'haskell-regex-tdfa'
          'haskell-sandi' 'haskell-hslogger' 'haskell-network2.8' 'haskell-utf8-string' 'haskell-vector')
 makedepends=('fpc' 'cmake' 'qt5-tools' 'ghc' 'haskell-bytestring-show'
-             'haskell-zlib' 'haskell-base-prelude' 'imagemagick' 'mesa')
+             'haskell-zlib' 'haskell-base-prelude' 'imagemagick' 'mesa' 'mercurial')
 source=("${pkgname}"::'hg+https://hg.hedgewars.org/hedgewars' \
 	hedgewars.desktop \
         hedgewars.png)
@@ -28,6 +28,10 @@ pkgver() {
 prepare() {
   cd ${srcdir}/${pkgname}
   sed -i 's|set(ghc_flags|set(ghc_flags -dynamic -package network-2.8.0.1 -hide-package network-bsd|' gameServer/CMakeLists.txt
+  sed -i '/#include <QSizePolicy>/a #include <QPainterPath>' QTfrontend/ui/page/pagegamestats.cpp
+
+   # https://bugs.freepascal.org/view.php?id=37286
+  sed -i 's/procedure ShiftWorld(Dir: LongInt); inline;/procedure ShiftWorld(Dir: LongInt);/' hedgewars/uWorld.pas
 }
 
 build() {

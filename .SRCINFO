@@ -1,6 +1,6 @@
 pkgbase = hedgewars-hg
 	pkgdesc = Free Worms-like turn based strategy game (development version - mercurial)
-	pkgver = r15550+.0b16baefefd1+
+	pkgver = r15738+.027a56b3895e+
 	pkgrel = 1
 	url = http://hedgewars.org
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = hedgewars-hg
 	makedepends = haskell-base-prelude
 	makedepends = imagemagick
 	makedepends = mesa
+	makedepends = mercurial
 	depends = qt5-base
 	depends = sdl2
 	depends = sdl2_mixer
