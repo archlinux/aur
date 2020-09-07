@@ -1,0 +1,20 @@
+pkgbase = rrr
+	pkgdesc = ReadRouteRecord
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://www.github.com/atlesn/rrr
+	arch = i686
+	arch = arm64
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python3
+	depends = perl
+	depends = mariadb-clients
+	optdepends = systemd: systemd daemon support
+	provides = rrr
+	source = git+https://github.com/atlesn/rrr.git#branch=archlinux
+	md5sums = SKIP
+
+pkgname = rrr
+
