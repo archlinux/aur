@@ -1,0 +1,39 @@
+post_install() {
+  getent passwd jamulus &>/dev/null || {
+  echo "Creating jamulus user.."
+  useradd --system --no-create-home -g nobody -s /bin/false jamulus &>/dev/null
+  }
+  cat <<HERE
+Configure server variables:
+ sudo systemctl edit jamulus.service
+ paste the following text and adjust according to your needs
+
+# central_server => https://github.com/corrados/jamulus/wiki/Central-Servers
+# country ID => https://doc.qt.io/qt-5/qlocale.html#Country-enum
+[Service]
+Environment=central_server="name_of_the_server"
+Environment=server_info="yourServerName;yourCity;[country ID]"
+
+ systemctl daemon-reload
+
+To start the service:
+ sudo systemctl start jamulus
+
+To enable the service at boot:
+ sudo systemctl enable jamulus
+
+HERE
+}
+
+post_upgrade() {
+  /bin/true
+}
+
+pre_remove() {
+  /bin/true
+}
+
+op=$1
+shift
+
+$op "$@"
