@@ -121,18 +121,22 @@
  
    # load configuration
    # Configure the kernel. Replace the line below with one of your choice.
-@@ -148,8 +181,8 @@
+@@ -148,10 +181,11 @@
    make ${MAKEFLAGS} LOCALVERSION= bzImage modules
  }
  
 -package_linux58() {
 -  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
 +package_linux-manjaro-xanmod() {
-+  pkgdesc="The Linux kernel and modules with Xanmod and Manjaro patches"
++  pkgdesc="The Linux kernel and modules with Xanmod and Manjaro patches (Bootsplash support)"
    depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=27')
-   optdepends=('crda: to set the correct wireless channels of your country')
+-  optdepends=('crda: to set the correct wireless channels of your country')
++  optdepends=('crda: to set the correct wireless channels of your country'
++              'bootsplash-systemd: to enable bootsplash')
    provides=("linux=${pkgver}" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-@@ -193,8 +226,8 @@
+ 
+   cd "${srcdir}/linux-${_basekernel}"
+@@ -193,8 +227,8 @@
    install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
  }
  

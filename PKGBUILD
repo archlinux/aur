@@ -182,9 +182,10 @@ build() {
 }
 
 package_linux-manjaro-xanmod() {
-  pkgdesc="The Linux kernel and modules with Xanmod and Manjaro patches"
+  pkgdesc="The Linux kernel and modules with Xanmod and Manjaro patches (Bootsplash support)"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=27')
-  optdepends=('crda: to set the correct wireless channels of your country')
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'bootsplash-systemd: to enable bootsplash')
   provides=("linux=${pkgver}" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
   cd "${srcdir}/linux-${_basekernel}"
