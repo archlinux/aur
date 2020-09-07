@@ -7,6 +7,7 @@ pkgdesc="中古漢語拼音輸入方案(廣韻音系)"
 arch=('x86_64')
 url='https://github.com/rime/rime-middle-chinese'
 license=(LGPL)
+conflicts=('rime-middle-chinese-git')
 depends=('rime-luna-pinyin')
 makedepends=('librime' 'rime-prelude' 'rime-essay')
 source=("https://github.com/rime/rime-middle-chinese/archive/$_commit/rime-middle-chinese-$_commit.tar.gz")
