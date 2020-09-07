@@ -1,16 +1,18 @@
 pkgbase = ssacli
-	pkgdesc = HP Command Line Smart Storage Administrator
-	pkgver = 4.15_6.0
+	pkgver = 4.17.6.0
 	pkgrel = 1
-	url = https://downloads.linux.hpe.com/SDR/downloads/mcp
+	url = https://support.hpe.com/hpsc/swd/public/detail?swItemId=MTX_9697c6899a664d02b9c3436674
 	arch = x86_64
 	groups = hpproliant
-	license = CUSTOM
-	depends = bash
+	license = custom:HPE End User License Agreement – Enterprise Version
+	license = custom:PROLIANT ESSENTIALS SOFTWARE
+	depends = sh
 	replaces = hpacucli
 	replaces = hpssacli
-	source = https://downloads.linux.hpe.com/SDR/repo/mcp/centos/7/x86_64/current/ssacli-4.15-6.0.x86_64.rpm
-	sha256sums = 80632df2bf157cd95dc935e3d5d582aec397399d3336a541defd302d5a8b2b3b
+	source = https://downloads.hpe.com/pub/softlib2/software1/pubsw-linux/p1857046646/v174193/ssacli-4.17-6.0.x86_64.rpm
+	source = https://downloads.linux.hpe.com/SDR/downloads/mcp/EULA.txt
+	sha256sums = 844403b362a51ddc2d21d88cad0a5c17e2e488bab60acf49c45fabba10a10e87
+	sha256sums = eafd42b725d5fabea0070c67b2a0dd7bc0f4035a6dae57c3edcf665e60abd96e
 
 pkgname = ssacli
 
