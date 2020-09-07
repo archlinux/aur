@@ -1,0 +1,17 @@
+pkgbase = nora
+	pkgdesc = Freezes the screen for another program
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Jokler/nora
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	makedepends = python
+	depends = libxcb
+	source = nora-0.1.0.tar.gz::https://github.com/Jokler/nora/archive/v0.1.0.tar.gz
+	sha256sums = e9a52252225dd79c61ac9d2edcb22a5f982bc61f6f069db668e071b2b995e7b4
+
+pkgname = nora
+
