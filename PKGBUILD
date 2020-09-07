@@ -1,6 +1,6 @@
 # Maintainer: ZjeuhPiung <sophgn@outlook.com>
 pkgname=rime-middle-chinese
-pkgver=0.0.0.20200628
+pkgver=0.0.0.20200728
 _commit=8b1c4e42ec7e7c10d1b7b5d026c042acd42805b2
 pkgrel=1
 pkgdesc="中古漢語拼音輸入方案(廣韻音系)"

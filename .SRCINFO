@@ -1,6 +1,6 @@
 pkgbase = rime-middle-chinese
 	pkgdesc = 中古漢語拼音輸入方案(廣韻音系)
-	pkgver = 0.0.0.20200628
+	pkgver = 0.0.0.20200728
 	pkgrel = 1
 	url = https://github.com/rime/rime-middle-chinese
 	arch = x86_64
