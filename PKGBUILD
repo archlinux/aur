@@ -27,13 +27,13 @@ backup=("etc/mstream.json")
 install="mstream.install"
 
 pkgver(){
- cd "$srcdir/mStream"
+ cd "mStream"
  git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 package(){
  # archiving the folder because `npm install` doesn't move the files to $pkgdir
- tar czf "mStream.tar.gz" -C "$srcdir/mStream" .
+ tar czf "mStream.tar.gz" -C "mStream" .
  npm install -g --user root --prefix "$pkgdir/usr" "mStream.tar.gz"
 
  install -d "$pkgdir/var/cache/mstream"
