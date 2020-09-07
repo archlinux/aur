@@ -1,4 +1,5 @@
 # Maintainer: Sven Lechner <sven[dot]lechner[at]rwth-aachen[dot]de>
+# Maintainer: Oleg Shparber <trollixx+aur@gmail.com>
 
 pkgname="act-git"
 _pkgname="act"
@@ -10,6 +11,7 @@ url='https://github.com/nektos/act'
 license=('MIT')
 provides=('act')
 conflicts=('act')
+depends=('docker')
 makedepends=('go' 'git')
 source=("act::git+https://github.com/nektos/act.git")
 sha256sums=('SKIP')
