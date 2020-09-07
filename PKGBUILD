@@ -22,7 +22,15 @@ pkgver() {
 }
 
 build() {
+    # https://wiki.archlinux.org/index.php/Go_package_guidelines
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
     export GOPATH="$srcdir"/gopath
+
     cd "$srcdir/$_pkgname"
     make build
 }
