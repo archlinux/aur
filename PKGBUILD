@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname=monica-git
-pkgver=v2.19.0.r16.g003a6740f
+pkgver=v2.19.0.r30.g51901e762
 pkgrel=1
 pkgdesc="Personal CRM. Remember everything about your friends, family and business relationships"
 url="https://www.monicahq.com/"
@@ -19,12 +19,12 @@ md5sums=("SKIP")
 backup=("etc/webapps/monica/config.env")
 
 pkgver(){
- cd "$srcdir/monica"
+ cd "monica"
  git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 package(){
- cd "$srcdir/monica"
+ cd "monica"
  composer install --no-interaction --no-suggest --no-dev --ignore-platform-reqs
 
  install -d "$pkgdir/usr/share/webapps/monica"  
