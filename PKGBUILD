@@ -2,10 +2,10 @@
 
 pkgname=latex2e-help-texinfo-fr  
 pkgver=2020_09
-pkgrel=1
+pkgrel=2
 pkgdesc="Inofficial LaTeX2e Reference Manual in info format - french"
 url="https://ctan.org/pkg/latex2e-help-texinfo-fr"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('custom')
 source=("http://mirrors.ctan.org/info/$pkgname.zip")
 sha256sums=('960f94e8b1668abfd6716d6fb32989b8d4dcd1467b3ff6dbb5c2b48660383c62')
