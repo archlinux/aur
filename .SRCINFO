@@ -1,9 +1,10 @@
 pkgbase = library-git
 	pkgdesc = Document viewer and collection manager
 	pkgver = r23.d18e375
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/maui/shelf
 	arch = x86_64
+	groups = maui-apps
 	license = GPL3
 	makedepends = git
 	makedepends = extra-cmake-modules

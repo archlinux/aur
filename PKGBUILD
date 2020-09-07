@@ -2,9 +2,10 @@
 
 pkgname=library-git
 pkgver=r23.d18e375
-pkgrel=1
+pkgrel=2
 pkgdesc="Document viewer and  collection manager"
 arch=('x86_64')
+groups=('maui-apps')
 url="https://invent.kde.org/maui/shelf"
 license=('GPL3')
 depends=('kio' 'mauikit-git' 'ki18n' 'poppler-qt5')
