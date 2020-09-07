@@ -30,5 +30,5 @@ package() {
 	LANG=en_US.UTF-8 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
 	# Move sbin/wifite to bin/wifite
-	mv "$pkgdir/sbin" "$pkgdir/bin"
+	mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
 }
