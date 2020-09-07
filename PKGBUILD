@@ -4,7 +4,7 @@
 pkgname=jilu-git
 pkgver=0.4.0.r2.gc334c5d
 pkgrel=1
-pkgdesc="Generate a change log based on the state of your Git repository"
+pkgdesc="Generate a change log based on the state of your Git repository (git)"
 arch=('x86_64')
 url="https://github.com/rustic-games/jilu"
 license=('Apache')
