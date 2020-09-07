@@ -1,9 +1,10 @@
 pkgbase = nota-git
 	pkgdesc = Multi-platform text editor
 	pkgver = v1.1.1.r17.gd50e906
-	pkgrel = 2
+	pkgrel = 3
 	url = https://invent.kde.org/maui/nota
 	arch = x86_64
+	groups = maui-apps
 	license = GPL3
 	makedepends = git
 	makedepends = extra-cmake-modules

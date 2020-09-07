@@ -2,9 +2,10 @@
 
 pkgname=nota-git
 pkgver=v1.1.1.r17.gd50e906
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-platform text editor"
 arch=(x86_64)
+groups=('maui-apps')
 url="https://invent.kde.org/maui/nota"
 license=('GPL3')
 depends=('ki18n' 'knotifications' 'qt5-svg' 'kio' 'mauikit-git' 'kirigami2' 'syntax-highlighting')
