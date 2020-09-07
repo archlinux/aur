@@ -1,0 +1,22 @@
+# defaults file
+grub_default="/etc/default/grub"
+
+post_install() {
+	# replace the line GRUB_THEME with our theme
+	sed -i '/\GRUB_THEME\=/c\GRUB_THEME="/usr/share/grub/themes/endeavouros-galleon/theme.txt"' ${grub_default}
+
+	# comment the GRUB_BACKGROUND= line in /etc/default/grub
+	sed /GRUB_BACKGROUND\=/s/^/#/ ${grub_default} > /dev/null
+
+	# rebuild grub config
+	grub-mkconfig -o /boot/grub/grub.cfg
+}
+
+post_remove() {
+
+	# comment the GRUB_THEME= line in /etc/default/grub
+	sed /GRUB_THEME\=/s/^/#/ ${grub_default} > /dev/null
+
+	# rebuild grub config
+	grub-mkconfig -o /boot/grub/grub.cfg
+}
