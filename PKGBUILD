@@ -3,7 +3,6 @@
 pkgname=('bootsplash-theme-manjaro-glitch')
 pkgver=1.0
 pkgrel=1
-url="https://github.com/tchavei/bootsplash-manjaro-glitch"
 arch=('x86_64')
 pkgdesc="Simple Manjaro Bootsplash with cool glitch effect"
 license=('GPL')
