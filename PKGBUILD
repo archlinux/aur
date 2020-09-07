@@ -10,7 +10,7 @@
 
 _gitname=rofi
 pkgname=rofi-lbonn-wayland-git
-pkgver=1.3.1.r1315.g498fd2fc
+pkgver=1.3.1.r1349.gf0139710
 pkgrel=1
 pkgdesc='A window switcher, application launcher and dmenu replacement (Wayland fork)'
 arch=(x86_64)
@@ -21,7 +21,7 @@ makedepends=(check git meson wayland-protocols)
 optdepends=('i3-wm: use as a window switcher')
 provides=(rofi)
 conflicts=(rofi)
-source=("${_gitname}::git+${url}.git")
+source=("${_gitname}::git+${url}.git#branch=wayland")
 sha256sums=('SKIP')
 
 pkgver() {
