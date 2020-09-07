@@ -1,13 +1,13 @@
 pkgbase = latex2e-help-texinfo-fr
 	pkgdesc = Inofficial LaTeX2e Reference Manual in info format - french
-	pkgver = 2017_08
-	pkgrel = 2
+	pkgver = 2020_09
+	pkgrel = 1
 	url = https://ctan.org/pkg/latex2e-help-texinfo-fr
 	arch = i686
 	arch = x86_64
 	license = custom
 	source = http://mirrors.ctan.org/info/latex2e-help-texinfo-fr.zip
-	md5sums = d5bba6db01ce3e19476ce6271aa27d95
+	sha256sums = 960f94e8b1668abfd6716d6fb32989b8d4dcd1467b3ff6dbb5c2b48660383c62
 
 pkgname = latex2e-help-texinfo-fr
 
