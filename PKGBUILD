@@ -1,10 +1,10 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
-# NOTE This PIP package behaves like a VCS package: to update, reinstall the package.
+# NOTE This "PIP install" package is like a VCS package: it has a pkgver() function and to update do a reinstall.
 #      That is the only reason why this package ends on -git.
 
 pkgname=sickchill-git
-pkgver=0.0.56.r0
+pkgver=2020.9.6.post7.r0
 pkgrel=1
 pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
