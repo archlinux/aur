@@ -1,0 +1,16 @@
+pkgbase = ruby-samovar
+	pkgdesc = Samovar is a flexible option parser excellent support for sub-commands and help documentation.
+	pkgver = 2.1.4
+	pkgrel = 1
+	url = https://github.com/ioquatix/samovar
+	arch = any
+	license = MIT
+	depends = ruby-console>=1.0
+	depends = ruby-mapping>=1.0
+	noextract = samovar-2.1.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/samovar-2.1.4.gem
+	sha256sums = 5d12e10a8afea505f903f6641d53a16b184dc997d563f24e4a87978f37348172
+
+pkgname = ruby-samovar
+
