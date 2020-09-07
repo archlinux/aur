@@ -1,7 +1,7 @@
 pkgbase = tarsnystemd
 	pkgdesc = SystemD and tarsnap, finally together.
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/somini/tarsnystemd
 	arch = any
 	license = GPL3
