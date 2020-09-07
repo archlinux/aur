@@ -2,7 +2,7 @@
 
 pkgname=etebase
 _pkgname=${pkgname}
-pkgver=0.1.1.r2.gdaea1e1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Etebase C library"
 arch=(x86_64)
@@ -10,14 +10,8 @@ url="https://github.com/etesync/libetebase"
 license=('LGPL')
 depends=('openssl')
 makedepends=('cargo' 'git')
-source=("${_pkgname}::git+https://github.com/etesync/libetebase.git")
+source=("${_pkgname}::git+https://github.com/etesync/libetebase.git?tag=v$pkgver")
 sha512sums=('SKIP')
-
-pkgver() {
-   cd "$_pkgname"
-   # cutting off 'v' prefix that presents in the git tag
-   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 build() {
   cd "${_pkgname}"
