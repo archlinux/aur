@@ -16,10 +16,10 @@ source=('bootsplash-packer'
 	'bootsplash-manjaro-glitch.initcpio_install'
 	'logo.tar.xz')
 
-sha256sums=('51559d3ccfb448b03fa6439faf5869dbd0c2fbda1b5d5bf5d4ba70e60937472a'
-            '92e7ef05c0bf03f53e5ac081631c3a2852af9342ca84c2347f88113c02412408'
-            'cb12145581e1d82db89cde1f79429933fc682baa2b34c26b7f1c9e670ceac588'
-            '1bcc3ce7a25b52c925de7a40e807ef6aa7a43c1180c003f11c39a95d12f80886')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 build() {
   cd "$srcdir"
