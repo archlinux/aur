@@ -1,0 +1,3 @@
+*.tar.tgz
+src/
+pkg/
