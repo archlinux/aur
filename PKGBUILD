@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
-pkgname=lms-git
-pkgver=v3.18.0.r0.gf77804a
+pkgname="lms-git"
+pkgver=v3.19.2.r0.g8ecf41e
 pkgrel=1
 pkgdesc="Lightweight Music Server. Access your self-hosted music using a web interface"
 url="https://github.com/epoupon/lms"
@@ -41,12 +41,13 @@ build(){
 }
 
 package(){
- cd "$pkgname/build"
- make DESTDIR="$pkgdir" install
  install -d "$pkgdir/var/lib/lms"
- install -D -m 644 "$pkgdir/usr/share/lms/lms.conf" "$pkgdir/etc/lms.conf"
  install -D -m 644 "lms.service" "$pkgdir/usr/lib/systemd/system/lms.service"
  install -D -m 644 "lms.sysusers" "$pkgdir/usr/lib/sysusers.d/lms.conf"
  install -D -m 644 "lms.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/lms.conf"
+ 
+ cd "$pkgname/build"
+ make DESTDIR="$pkgdir" install
+ install -D -m 644 "$pkgdir/usr/share/lms/lms.conf" "$pkgdir/etc/lms.conf"
  sed -i "s|/var/lms|/var/lib/lms|g" "$pkgdir/etc/lms.conf"
 }
