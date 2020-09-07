@@ -65,7 +65,6 @@ package() {
   # Install the launchers.
 
   install -Dm655 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-  install -m655 "the-simpsons-hit-and-run.sh" "$pkgdir/usr/bin/the-simpsons-hit-and-run"
 
   # Install the MIME types.
 
@@ -76,16 +75,12 @@ package() {
   for SIZE in 16 22 32 48 64 256; do
     install -Dm644 "$pkgname-$SIZE.png" \
       "$pkgdir/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/$pkgname.png"
-    install -Dm644 "the-simpsons-hit-and-run-$SIZE.png" \
-      "$pkgdir/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/the-simpsons-hit-and-run.png"
   done
 
   # Install the desktop entries.
 
   install -Dm644 "com.donutteam.$pkgname.desktop" \
     "$pkgdir/usr/share/applications/com.donutteam.$pkgname.desktop"
-  install -m644 "the-simpsons-hit-and-run.desktop" \
-    "$pkgdir/usr/share/applications/the-simpsons-hit-and-run.desktop"
 
   # Install the helper script.
 
