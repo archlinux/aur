@@ -11,7 +11,7 @@ url=https://github.com/masmu/pulseaudio-dlna
 license=('GPL3')
 depends=('python-chardet' 'python-dbus' 'python-docopt' 'python-gobject'
          'python-lxml' 'python-netifaces' 'python-notify2' 'python-psutil'
-         'python-pychromecast' 'python-pyroute2' 'python-requests'
+         'python-pychromecast<7' 'python-pyroute2' 'python-requests'
          'python-setproctitle' 'python-setuptools')
 optdepends=('faac: AAC transcoding support'
             'ffmpeg: multiple formats support'
