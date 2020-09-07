@@ -28,4 +28,7 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	LANG=en_US.UTF-8 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+	# Move sbin/wifite to bin/wifite
+	mv "$pkgdir/sbin" "$pkgdir/bin"
 }
