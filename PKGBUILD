@@ -6,7 +6,7 @@ pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pyt
 _pkgname="pytorch"
 pkgver=1.6.0
 _pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -63,7 +63,7 @@ prepare() {
 
   # Check tools/setup_helpers/cmake.py, setup.py and CMakeLists.txt for a list of flags that can be set via env vars.
   export USE_MKLDNN=ON
-  # export BUILD_CUSTOM_PROTOBUF=OFF
+  export BUILD_CUSTOM_PROTOBUF=OFF
   # export BUILD_SHARED_LIBS=OFF
   export USE_FFMPEG=ON
   export USE_GFLAGS=ON
@@ -71,6 +71,7 @@ prepare() {
   export BUILD_BINARY=ON
   export USE_OPENCV=ON
   export USE_SYSTEM_NCCL=ON
+  # export USE_SYSTEM_LIBS=ON
   export NCCL_VERSION=$(pkg-config nccl --modversion)
   export NCCL_VER_CODE=$(sed -n 's/^#define NCCL_VERSION_CODE\s*\(.*\).*/\1/p' /usr/include/nccl.h)
   export CUDAHOSTCXX=g++-9
