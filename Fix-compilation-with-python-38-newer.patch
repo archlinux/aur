@@ -1,0 +1,24 @@
+From a8720e5606ae0e9a44958024c51c4f0d6232befc Mon Sep 17 00:00:00 2001
+From: Sergey Poznyakoff <gray@gnu.org>
+Date: Mon, 07 Sep 2020 20:37:26 +0000
+Subject: Fix compilation with python >=3.8
+
+* modules/python/module.ac: Try python-config --libs --embed first.
+---
+diff --git a/modules/python/module.ac b/modules/python/module.ac
+index 35993b8..418caef 100644
+--- a/modules/python/module.ac
++++ b/modules/python/module.ac
+@@ -32,7 +32,9 @@ if test "$status_python" = yes; then
+   AC_ARG_VAR([PYTHON_CONFIG], [The name of python-config binary])
+   AC_PATH_PROG([PYTHON_CONFIG], python-config)
+   if test -n "$PYTHON_CONFIG"; then
+-    AC_SUBST(PYTHON_LIBS,`$PYTHON_CONFIG --libs`)
++    AC_SUBST(PYTHON_LIBS)
++    PYTHON_LIBS=`$PYTHON_CONFIG --libs --embed 2>/dev/null` || \
++         PYTHON_LIBS=`$PYTHON_CONFIG --libs`
+     AC_SUBST(PYTHON_INCLUDES,`$PYTHON_CONFIG --includes`)
+     $PYTHON <<EOT
+ import sys
+--
+cgit v0.9.0.3
