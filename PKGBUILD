@@ -2,7 +2,7 @@
 pkgname="rrr"
 pkgver=1.12
 pkgrel=1
-pkgdesc="RRR (Read Route Record) is a general purpose acquirement, transmission and processing daemon supporting HTTP, MQTT, TCP, UDP and other I/O devices. RRR has a variety of different modules which can be chained together to retrieve, transmit, modify and save messages."
+pkgdesc="Read Route Record is a messaging daemon supporting HTTP, MQTT, TCP, UDP +++"
 arch=('i686' 'arm64' 'x86_64')
 url="https://www.github.com/atlesn/rrr"
 license=('GPL')
