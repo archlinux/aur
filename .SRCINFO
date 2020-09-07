@@ -1,6 +1,6 @@
 pkgbase = pamac-aur
 	pkgdesc = A Gtk3 frontend for libalpm
-	pkgver = 9.5.8
+	pkgver = 9.5.9
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	install = pamac.install
@@ -35,12 +35,12 @@ pkgbase = pamac-aur
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
 	optdepends = lxsession: needed for authentification in Xfce, LXDE etc.
 	optdepends = pamac-tray-appindicator: tray icon for KDE
-	provides = pamac=9.5.8-1
+	provides = pamac=9.5.9-1
 	conflicts = pamac
 	options = !emptydirs
 	backup = etc/pamac.conf
-	source = pamac-9.5.8-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/f5b40f147cca157a5529e744a079d57093712672/pamac-f5b40f147cca157a5529e744a079d57093712672.tar.gz
-	sha256sums = 5877a27f9040954133ed4e932af52bdc775ba03f65a81a89dc7e2f8583c2af97
+	source = pamac-9.5.9-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/f76ac697b46d26968a05b9525d9cbac33e98d698/pamac-f76ac697b46d26968a05b9525d9cbac33e98d698.tar.gz
+	sha256sums = 0e16fcc30f25c1de59d13b5be05dc1ba46a17c1abcc62ba5b0506571a41702ed
 
 pkgname = pamac-aur
 
