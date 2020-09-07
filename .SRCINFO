@@ -1,9 +1,10 @@
 pkgbase = cinema-git
 	pkgdesc = Video player and video collection manager
 	pkgver = r11.ac81a73
-	pkgrel = 3
+	pkgrel = 4
 	url = https://invent.kde.org/maui/cinema
 	arch = x86_64
+	groups = maui-apps
 	license = GPL3
 	makedepends = git
 	makedepends = extra-cmake-modules
