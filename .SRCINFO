@@ -1,14 +1,14 @@
 pkgbase = sway-launcher-desktop
 	pkgdesc = TUI Application launcher with Desktop Entry support.
-	pkgver = 1.2.1
-	pkgrel = 2
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://github.com/Biont/sway-launcher-desktop
 	arch = any
 	license = GPL
 	depends = fzf
 	optdepends = ttf-nerd-fonts-symbols: for launcher icon symbols
-	source = sway-launcher-desktop-1.2.1.tar.gz::https://github.com/Biont/sway-launcher-desktop/archive/v.1.2.1.tar.gz
-	md5sums = 32c44646e6acf0ab8c7769d48bb5f74e
+	source = sway-launcher-desktop-1.3.0.tar.gz::https://github.com/Biont/sway-launcher-desktop/archive/v1.3.0.tar.gz
+	md5sums = 930461a40a881e105ade648a1caf7871
 
 pkgname = sway-launcher-desktop
 
