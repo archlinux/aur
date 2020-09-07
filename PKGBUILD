@@ -1,14 +1,13 @@
 #Maintainer: Satiricon <david.satiricon@gmail.com>
 pkgname=lanraragi
 pkgver=v.0.7.2
-pkgrel=2
+pkgrel=1
 pkgdesc="LANraragi build package"
-arch=('any')
+arch=(any)
 url="https://github.com/Difegue/LANraragi"
-license=('MIT')
-depends=('perl' 'gnupg' 'cpanminus' 'redis' 'libarchive' 'imagemagick' 'libwebp' 'openssl' 'zlib')
-makedepends=('npm' 'make' 'pkgconf')
-optdepends=("ghostscript: PDF Support")
+license=("MIT")
+depends=(libarchive ghostscript perl gnupg cpanminus redis imagemagick libwebp openssl zlib)
+makedepends=(npm pkgconf)
 source=("https://github.com/Difegue/LANraragi/archive/${pkgver}.tar.gz"
         "lanraragi.service" "lanraragi.sysusers" "lanraragi.tmpfiles")
 sha512sums=(
