@@ -17,5 +17,5 @@ pkgbase = bootsplash-theme-manjaro-glitch
 	sha256sums = 1bcc3ce7a25b52c925de7a40e807ef6aa7a43c1180c003f11c39a95d12f80886
 
 pkgname = bootsplash-theme-manjaro-glitch
-	pkgdesc = Bootsplash Theme 'Manjaro glitch'
+	pkgdesc = Simple Manjaro Bootsplash with cool glitch effect
 

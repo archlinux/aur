@@ -28,7 +28,7 @@ build() {
 }
 
 package_bootsplash-theme-manjaro-glitch() {
-  pkgdesc="Bootsplash Theme 'Manjaro glitch'"
+  pkgdesc="Simple Manjaro Bootsplash with cool glitch effect"
   cd "$srcdir"
 
   install -Dm644 "$srcdir/bootsplash-manjaro-glitch" "$pkgdir/usr/lib/firmware/bootsplash-themes/manjaro-glitch/bootsplash"
