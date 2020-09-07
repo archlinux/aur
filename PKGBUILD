@@ -14,12 +14,12 @@ source=("https://pypi.python.org/packages/source/b/bjoern/bjoern-$pkgver.tar.gz"
 md5sums=("9589b4a03f7acf80e0200cf1e5a3b324")
 
 build(){
- cd "$srcdir/bjoern-$pkgver"
+ cd "bjoern-$pkgver"
  python2 setup.py build
 }
 
 package(){
- cd "$srcdir/bjoern-$pkgver"
+ cd "bjoern-$pkgver"
  python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
  install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
