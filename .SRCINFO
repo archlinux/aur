@@ -5,6 +5,7 @@ pkgbase = wesnoth-1.12
 	url = https://www.wesnoth.org
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = boost
 	makedepends = scons
