@@ -2,14 +2,14 @@
 # Maintainer: Lestofante <lestofante88@gmail.com>
 pkgname=s-tui-git
 pkgver=v0.8.3.r115.g37ca30c
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal UI stress test and monitoring tool "
 arch=('any')
 url="https://github.com/amanusk/s-tui"
 license=('GPLv2')
 groups=()
-depends=('stress' 'python' 'python-urwid' 'python-psutil')
-makedepends=('git' 'python-setuptools')
+depends=('stress' 'python' 'python-urwid' 'python-psutil' 'python-setuptools')
+makedepends=('git')
 options=(!emptydirs)
 install=
 source=("$pkgname"::"git+$url")
