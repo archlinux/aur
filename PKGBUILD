@@ -3,8 +3,8 @@
 
 pkgname=mapivi
 pkgver=097
-pkgrel=1
-pkgdesc="A photo management tool with focus on JPEG pictures. Mapivi supports adding, editing and searching of IPTC/IIM, EXIF data and JPEG comments. The pictures are managed in place (in your folder structure)."
+pkgrel=2
+pkgdesc="A photo management tool with focus on JPEG pictures"
 depends=('jpegpixi' 'jhead' 'imagemagick' 'libjpeg' 'perl-image-info' 'perl-image-metadata-jpeg' 'tk-matchentry' 'tk-resizebutton' 'tk-splash' 'perl-tk' 'perl-exiftool')
 arch=('i686' 'x86_64')
 license=('GPL')

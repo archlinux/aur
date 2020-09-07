@@ -1,7 +1,7 @@
 pkgbase = mapivi
-	pkgdesc = A photo management tool with focus on JPEG pictures. Mapivi supports adding, editing and searching of IPTC/IIM, EXIF data and JPEG comments. The pictures are managed in place (in your folder structure).
+	pkgdesc = A photo management tool with focus on JPEG pictures
 	pkgver = 097
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mapivi.sourceforge.net/mapivi.shtml
 	arch = i686
 	arch = x86_64
