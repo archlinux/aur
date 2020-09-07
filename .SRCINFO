@@ -1,0 +1,25 @@
+pkgbase = wifite2
+	pkgdesc = Rewrite of the popular wireless network auditor, "wifite"
+	pkgver = 2.2.5
+	pkgrel = 1
+	url = https://github.com/derv82/wifite2
+	arch = x86_64
+	arch = i686
+	license = GPL
+	depends = python
+	depends = wireless_tools
+	depends = net-tools
+	depends = aircrack-ng
+	optdepends = wireshark-cli: For detecting WPS networks and inspecting handshake capture files
+	optdepends = reaver: For WPS Pixie-Dust & brute-force attacks
+	optdepends = bully: For WPS Pixie-Dust & brute-force attacks
+	optdepends = cowpatty: For detecting handshake captures
+	optdepends = pyrit: For detecting handshake captures
+	optdepends = hashcat: For cracking PMKID hashes
+	provides = wifite
+	conflicts = wifite
+	source = wifite2-2.2.5.src.tar.gz::https://github.com/derv82/wifite2/archive/2.2.5.tar.gz
+	sha256sums = 3ca7c04502dd153047b71f9ffb24b2e91687a1b597b70d2c2790faebddf1b04b
+
+pkgname = wifite2
+
