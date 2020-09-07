@@ -1,6 +1,6 @@
 pkgbase = cine-encoder
 	pkgdesc = Cine Encoder 2020SE
-	pkgver = 2.3
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/CineEncoder/cine-encoder.git
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cine-encoder
 	depends = python>=3.6
 	depends = python-pyqt5
 	depends = python-pymediainfo
-	source = https://github.com/CineEncoder/cine-encoder/archive/2.3.tar.gz
+	source = https://github.com/CineEncoder/cine-encoder/archive/2.3.1.tar.gz
 	md5sums = SKIP
 
 pkgname = cine-encoder
