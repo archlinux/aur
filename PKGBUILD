@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/cheat/cheat"
@@ -14,10 +14,11 @@ optdepends=('bash-completion: for bash completions'
 conflicts=("python-$pkgname" "$pkgname-bash-git")
 replaces=("python-$pkgname")
 backup=("etc/$pkgname/conf.yml")
+_commit='92db692c0fd6348793ee0641cb63d08977be90fd'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'conf.yml'
-        'git+https://github.com/cheat/cheatsheets.git'
-        "https://raw.githubusercontent.com/$pkgname/cheatsheets/master/.github/LICENSE.txt")
+        "git+https://github.com/cheat/cheatsheets.git#commit=$_commit"
+        "https://github.com/cheat/cheat/raw/$pkgver/LICENSE.txt")
 sha256sums=('b392c3a77eda61f4b1f0991cb30c6202f74472713293e73f645fb697665ca72c'
             'a0aa691a318219d048107b835fe0e8cddfa734618fc5ccbb800b5bb463e00ea5'
             'SKIP'
@@ -34,8 +35,11 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
-	make
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go build -v "./cmd/$pkgname"
+
+	# Generate man page
+	pandoc -s -t man "doc/$pkgname.1.md" -o "doc/$pkgname.1"
 
 	# Clean mod cache for makepkg -C
 	go clean -modcache
@@ -43,7 +47,7 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm755 "dist/$pkgname" -t "$pkgdir/usr/bin"
+	install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
 	install -Dm755 "scripts/$pkgname.bash" \
 		"$pkgdir/usr/share/bash-completion/completions/$pkgname"
 	install -Dm755 "scripts/$pkgname.fish" -t "$pkgdir/usr/share/fish/completions"
