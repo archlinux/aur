@@ -1,9 +1,10 @@
 pkgbase = buho-git
 	pkgdesc = Task and Note Keeper
 	pkgver = v1.1.1.r12.g2e51dd7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/maui/buho
 	arch = x86_64
+	groups = maui-apps
 	license = GPL3
 	makedepends = git
 	makedepends = extra-cmake-modules

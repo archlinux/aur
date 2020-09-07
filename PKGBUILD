@@ -2,9 +2,10 @@
 
 pkgname=buho-git
 pkgver=v1.1.1.r12.g2e51dd7
-pkgrel=1
+pkgrel=2
 pkgdesc="Task and Note Keeper"
 arch=('x86_64')
+groups=('maui-apps')
 url="https://invent.kde.org/maui/buho"
 license=('GPL3')
 depends=('ki18n' 'qt5-webview' 'mauikit-git' 'kio' 'syntax-highlighting' 'attica')
