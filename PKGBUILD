@@ -1,13 +1,8 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Atle Solbakken <atle@goliathdns.no>
 pkgname="rrr"
 pkgver=1.12
 pkgrel=1
-pkgdesc="ReadRouteRecord"
+pkgdesc="RRR (Read Route Record) is a general purpose acquirement, transmission and processing daemon supporting HTTP, MQTT, TCP, UDP and other I/O devices. RRR has a variety of different modules which can be chained together to retrieve, transmit, modify and save messages."
 arch=('i686' 'arm64' 'x86_64')
 url="https://www.github.com/atlesn/rrr"
 license=('GPL')
