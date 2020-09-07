@@ -1,0 +1,13 @@
+pkgbase = git-hours
+	pkgdesc = Count the time spent on code via git
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/ceigh/git-hours
+	arch = x86_64
+	license = GPL3
+	depends = libgit2
+	source = https://github.com/ceigh/git-hours/archive/1.1.4.tar.gz
+	md5sums = 439faf492de3cc4a17b801779492db5d
+
+pkgname = git-hours
+
