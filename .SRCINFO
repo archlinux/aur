@@ -1,7 +1,7 @@
 pkgbase = mapivi
 	pkgdesc = A photo management tool with focus on JPEG pictures
 	pkgver = 097
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mapivi.sourceforge.net/mapivi.shtml
 	arch = i686
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = mapivi
 	source = 09_qw_parentheses.diff
 	md5sums = f1432cbb0033c1a1a324651dbc0700b2
 	md5sums = 85f09ddc913d654ea92fa987838bcc63
-	md5sums = 5e34164357ee0351d68fd4ca048d99ac
+	md5sums = b8ccad09affd07f2b5a0d4f5d0db6d2a
 	md5sums = 15d8e83af7ccfa852774a48d2fb1ba75
 	md5sums = 59e1b327f32eea54e28463295f67496b
 	md5sums = 001918d8da9a54446df603e2c2804592

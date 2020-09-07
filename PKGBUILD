@@ -3,7 +3,7 @@
 
 pkgname=mapivi
 pkgver=097
-pkgrel=2
+pkgrel=3
 pkgdesc="A photo management tool with focus on JPEG pictures"
 depends=('jpegpixi' 'jhead' 'imagemagick' 'libjpeg' 'perl-image-info' 'perl-image-metadata-jpeg' 'tk-matchentry' 'tk-resizebutton' 'tk-splash' 'perl-tk' 'perl-exiftool')
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ source=(http://downloads.sourceforge.net/$pkgname/$pkgname$pkgver.tar.gz mapivi 
 url="http://mapivi.sourceforge.net/mapivi.shtml"
 md5sums=('f1432cbb0033c1a1a324651dbc0700b2'
          '85f09ddc913d654ea92fa987838bcc63'
-         '5e34164357ee0351d68fd4ca048d99ac'
+         'b8ccad09affd07f2b5a0d4f5d0db6d2a'
          '15d8e83af7ccfa852774a48d2fb1ba75'
          '59e1b327f32eea54e28463295f67496b'
          '001918d8da9a54446df603e2c2804592'
