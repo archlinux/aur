@@ -19,7 +19,7 @@ source=("https://github.com/shlinkio/shlink/releases/download/v$pkgver/${pkgname
 md5sums=("1d7e43ef5822f42e29db314b0c95df54")
 
 package(){
- cd "$srcdir/${pkgname}_${pkgver}_dist"
+ cd "${pkgname}_${pkgver}_dist"
  install -d "$pkgdir/usr/share/webapps/$pkgname"
  cp -r * "$pkgdir/usr/share/webapps/$pkgname"
  install -d "data" "$pkgdir/usr/share/webapps/$pkgname/data"
