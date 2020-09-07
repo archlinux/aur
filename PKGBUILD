@@ -1,6 +1,6 @@
 # Maintainer: Cerebrux <mail@cerebrux.net>
 pkgname=sysglance
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Utility for collecting information about the hardware and the operating system by generating a simple report."
 arch=( 'any' )
@@ -15,4 +15,4 @@ package() {
 	install -Dm755 sysglance.sh "$pkgdir/usr/bin/sysglance"
 }
 
-md5sums=('cb412975f674763fdf2d8dcdc0d84049')
+md5sums=('6e167e21b19b6a46568087ef3268f46a')
