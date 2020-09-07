@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=verco
-pkgver=5.4.3
+pkgver=5.5.1
 pkgrel=1
 pkgdesc='A simple Git/Hg tui client focused on keyboard shortcuts.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('git: support for git repositories'
 conflicts=('verco-git')
 makedepends=('cargo')
 source=("$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5c649e42690805b4e4a5147e852ff05cc893b03bd37d8bc7917a5733032b383d')
+sha256sums=('d60c57d59282a93e174c271946fffb23a799f1586dda2aa03cecf15c06dc11cb')
 
 build() {
   cd "$pkgname-$pkgver"
