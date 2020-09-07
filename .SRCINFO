@@ -1,7 +1,7 @@
 pkgbase = kotatogram-desktop
 	pkgdesc = Kotatogram – experimental Telegram Desktop fork
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kotatogram.github.io
 	arch = x86_64
 	license = GPL3
@@ -28,7 +28,11 @@ pkgbase = kotatogram-desktop
 	conflicts = kotatogram-desktop-bin
 	conflicts = kotatogram-desktop-dynamic-bin
 	source = https://github.com/kotatogram/kotatogram-desktop/releases/download/k1.3.4/kotatogram-desktop-1.3.4-full.tar.gz
+	source = telegram-desktop-qt5.15.patch
+	source = 0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch
 	sha512sums = f0255e1bcbf1703c684e3c71392156002456a988f4128107e0181b4f4b9956073c29c27ff19d8416b19b3d836da999b39a421bd9755683013eec71ff51104f38
+	sha512sums = 6bbe0583103d575a1413141799985c7c7b590d8a9856c727320ce322679a3d38343a144c314eee54fa9776c8f3a084627a333e6860d1b8cb8f496b1702070ac0
+	sha512sums = b4c4a552f7a3546529a226334ca1f87e96bc9a94e440b62bdf6bd85a48cda35c57282923ec139af1d190e77046ac0dc1662c6b2126ef4c5b4222c194a2635806
 
 pkgname = kotatogram-desktop
 
