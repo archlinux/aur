@@ -1,0 +1,18 @@
+pkgbase = paley
+	pkgdesc = A simple color picker for Wayland.
+	pkgver = 0.0.0
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/hiukky/paley
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = yarn
+	depends = grim
+	depends = slurp
+	depends = electron
+	source = https://github.com/hiukky/paley/archive/develop.zip
+	md5sums = SKIP
+
+pkgname = paley
+
