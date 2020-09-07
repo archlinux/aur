@@ -1,7 +1,7 @@
 pkgname=ssacli
 pkgver=4.17.6.0
-pkgrel=1
-pkgdesk="The HPE Smart Storage Administrator CLI is a commandline-based disk configuration program that helps you configure, manage, diagnose, and monitor HPE ProLiant Smart Array Controllers"
+pkgrel=2
+pkgdesc="The HPE Smart Storage Administrator CLI is a commandline-based disk configuration program that helps you configure, manage, diagnose, and monitor HPE ProLiant Smart Array Controllers"
 arch=('x86_64')
 url="https://support.hpe.com/hpsc/swd/public/detail?swItemId=MTX_9697c6899a664d02b9c3436674"
 replaces=(hpacucli hpssacli)
@@ -26,14 +26,16 @@ package() {
 	cp -r "${srcdir}/usr/sbin" "${pkgdir}/usr/bin"
 	cp -r "${srcdir}/usr/man" "${pkgdir}/usr/share/man"
 
-	#striping the binaries
+	#changing permission to the binaries to strip
 	chmod 755 "${pkgdir}/opt/smartstorageadmin/ssacli/bin/ssacli"
 	chmod 755 "${pkgdir}/opt/smartstorageadmin/ssacli/bin/ssascripting"
-	chmod 755 "${pkgdir}/usr/bin/ssacli"
-	chmod 755 "${pkgdir}/usr/bin/ssascripting"
 
-	#striping the binaries
+	#stripping the binaries
 	strip --strip-unneeded "${pkgdir}/opt/smartstorageadmin/ssacli/bin/rmstr" 
 	strip --strip-unneeded "${pkgdir}/opt/smartstorageadmin/ssacli/bin/ssacli" 
 	strip --strip-unneeded "${pkgdir}/opt/smartstorageadmin/ssacli/bin/ssascripting" 
+
+	#changing permission to the binaries after stripping
+	chmod 500 "${pkgdir}/opt/smartstorageadmin/ssacli/bin/ssacli"
+	chmod 500 "${pkgdir}/opt/smartstorageadmin/ssacli/bin/ssascripting"
 }

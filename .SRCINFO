@@ -1,6 +1,7 @@
 pkgbase = ssacli
+	pkgdesc = The HPE Smart Storage Administrator CLI is a commandline-based disk configuration program that helps you configure, manage, diagnose, and monitor HPE ProLiant Smart Array Controllers
 	pkgver = 4.17.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.hpe.com/hpsc/swd/public/detail?swItemId=MTX_9697c6899a664d02b9c3436674
 	arch = x86_64
 	groups = hpproliant
