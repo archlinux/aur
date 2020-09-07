@@ -6,7 +6,7 @@ pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pyt
 _pkgname="pytorch"
 pkgver=1.6.0
 _pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -19,12 +19,14 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         fix_include_system.patch
         use-system-libuv.patch
         use-system-libuv2.patch
-        nccl_version.patch)
+        nccl_version.patch
+        disable_non_x86_64.patch)
 sha256sums=('SKIP'
             '147bdaeac8ec46ea46382e6146878bd8f8d51e05d5bd6f930dfd8e2b520859b9'
             '6f3b7a87172011de810bf1ab581245b4463ef86e5cd09bec63aeffa372e26646'
             '7b65c3b209fc39f92ba58a58be6d3da40799f1922910b1171ccd9209eda1f9eb'
-            '1a276bd827a0c76dab908cbc6605fa4c9fc2cc2b9431b6578a41133ae27dba2b')
+            '1a276bd827a0c76dab908cbc6605fa4c9fc2cc2b9431b6578a41133ae27dba2b'
+            'd3ef8491718ed7e814fe63e81df2f49862fffbea891d2babbcb464796a1bd680')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -84,6 +86,8 @@ build() {
   export USE_CUDA=0
   export USE_CUDNN=0
   cd "${srcdir}/${_pkgname}-${pkgver}"
+  echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
+  patch -Np1 -i "${srcdir}/disable_non_x86_64.patch"
   python setup.py build
 
 
@@ -99,6 +103,8 @@ build() {
   export USE_CUDA=1
   export USE_CUDNN=1
   cd "${srcdir}/${_pkgname}-${pkgver}-cuda"
+  patch -Np1 -i "${srcdir}/disable_non_x86_64.patch"
+  echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
   python setup.py build
 
 
