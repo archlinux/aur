@@ -2,13 +2,14 @@
 # Contributor: tioguda <guda.flavio@gmail.com>
 pkgname=slimbookbattery
 pkgver=3.97beta
-pkgrel=2
+pkgrel=3
 pkgdesc="A battery optimization application for portable devices"
 arch=('x86_64')
-url="http://slimbook.es"
+url="https://slimbook.es"
 license=('CC BY-NC-ND 3.0')
-depends=('python-gobject' 'python-cairo' 'python-pillow' 'python-dbus' 'libappindicator-gtk3'
-         'gobject-introspection' 'libnotify' 'tlp-rdw' 'cron' 'dmidecode' 'xorg-xdpyinfo')
+depends=('python-gobject' 'python-cairo' 'python-pillow' 'python-dbus'
+         'libappindicator-gtk3' 'libnotify' 'tlp-rdw' 'cron' 'dmidecode'
+         'xorg-xdpyinfo')
 optdepends=('nvidia-prime: for hybrid graphics switching'
             'gnome-shell-extension-appindicator: for tray icon on GNOME')
 install="$pkgname.install"
@@ -19,9 +20,11 @@ package() {
     tar xf data.tar.xz -C "$pkgdir"
 
     install -d "$pkgdir/usr/lib/systemd/system"
-    mv "$pkgdir/etc/systemd/system/suspend-sedation.service" "$pkgdir/usr/lib/systemd/system"
+    mv "$pkgdir/etc/systemd/system/suspend-sedation.service" \
+    	"$pkgdir/usr/lib/systemd/system"
     rm -rf "$pkgdir/etc/systemd"
 
     install -dm644 "$pkgdir/usr/share/licenses/$pkgname"
-    mv "$pkgdir/usr/share/doc/$pkgname/copyright" "$pkgdir/usr/share/licenses/$pkgname/copyright"
+    mv "$pkgdir/usr/share/doc/$pkgname/copyright" \
+    	"$pkgdir/usr/share/licenses/$pkgname/copyright"
 }
