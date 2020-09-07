@@ -1,5 +1,9 @@
 # Maintainer: otaj <jasek.ota@gmail.com>
-# If you want to set only one GPU target compute capability, set _GPU_TARGET, otherwise leave it commented out and it will build default targets (52, 60, 61, 70 and 75). You can also set multiple targets separated by a space
+# If you want to set only one GPU target compute capability, set _GPU_TARGET,
+# otherwise leave it commented out and it will build default targets (52, 60, 61, 70 and 75).
+# You can also set multiple targets separated by a space
+# If you want the python package to work with MKL, you need to have python-numpy-mkl installed!
+# See https://github.com/facebookresearch/faiss/issues/1393
 
 #_GPU_TARGET="75"
 _pkgname=faiss
@@ -53,8 +57,8 @@ prepare() {
 check() {
   cd "${srcdir}/${_pkgname}/build"
   make test
-  cd "${srcdir}/${_pkgname}/tests"
-  PYTHONPATH=../build/faiss/python:$PYTHONPATH pytest
+  cd "${srcdir}/${_pkgname}"
+  PYTHONPATH=build/faiss/python:$PYTHONPATH pytest
 }
 
 
