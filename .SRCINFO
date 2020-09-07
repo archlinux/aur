@@ -1,0 +1,26 @@
+pkgbase = dwm-kelly-git
+	pkgdesc = A moderately patched and customized build of dwm.
+	pkgver = 6.2.r.
+	pkgrel = 1
+	url = https://github.com/kcrunnels1515/dwm-kelly.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = make
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = ttf-hack
+	depends = ttf-joypixels
+	depends = freetype2
+	depends = dmenu
+	depends = alacritty
+	depends = rofi
+	depends = nerd-fonts-mononoki
+	provides = dwm
+	conflicts = dwm
+	source = git+https://github.com/kcrunnels1515/dwm-kelly.git
+	md5sums = SKIP
+
+pkgname = dwm-kelly-git
+
