@@ -3,19 +3,16 @@
 _pkgbase=vala-panel-extras
 pkgbase=vala-panel-extras-git
 pkgname=('vala-panel-extras-battery-git' 'vala-panel-extras-volume-git' 'vala-panel-extras-xkb-git' 'vala-panel-extras-gtop-git' 'vala-panel-extras-weather-git' 'vala-panel-extras-common-git' 'vala-panel-extras-xkb-flags-git')
-_cmakename=cmake-vala
-pkgver=0.1.8
-pkgrel=3
+pkgver=0.1.9
+pkgrel=1
 pkgdesc="Simple StatusNotifierItems for Indicator plugins"
 url="https://gitlab.com/vala-panel-project/vala-panel-extras"
 arch=('i686' 'x86_64')
 license=('GPL3')
 replaces=('vala-panel-extras-meta-git')
-makedepends=('cmake' 'vala' 'gtk3>=3.12.0' 'libxkbcommon-x11>=0.5.0' 'libxcb>=1.10' 'alsa-lib>=1.0.26' 'libcanberra' 'libgweather>=3.12.0' 'libx11' 'libgtop')
-source=("git+https://gitlab.com/vala-panel-project/${_pkgbase}.git"
-        "git+https://gitlab.com/vala-panel-project/${_cmakename}.git")
-sha256sums=('SKIP'
-            'SKIP')
+makedepends=('meson' 'vala' 'gtk3>=3.12.0' 'libxkbcommon-x11>=0.5.0' 'libxcb>=1.10' 'alsa-lib>=1.0.26' 'libcanberra' 'libgweather>=3.12.0' 'libx11' 'libgtop')
+source=("git+https://gitlab.com/vala-panel-project/${_pkgbase}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgbase}"
@@ -25,15 +22,9 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd "${srcdir}/${_cmakename}"
-  cp -r . "${srcdir}/${_pkgbase}/cmake"
-}
-
 build() {
-  cd "${srcdir}/${_pkgbase}"
-  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_WEATHER=ON -DENABLE_ALSA=ON -DENABLE_XKB=ON -DENABLE_BATTERY=ON -DGSETTINGS_COMPILE=OFF
-  make
+  meson build "${srcdir}/${_pkgbase}" --prefix=/usr -Dauto_features=enabled
+  meson compile -C build
 }
 
 package_vala-panel-extras-volume-git() {
@@ -46,10 +37,13 @@ package_vala-panel-extras-volume-git() {
             'indicator-application: for showing in Indicator Environment, like Pantheon or Unity'
             'plasma-desktop: for showing in KDE Frameworks'
             'kdebase-plasma: for showing in KDE4')
-  
-  cd "${srcdir}/${_pkgbase}"
-  make -C "applets/volume" DESTDIR="${pkgdir}" install
-  install -D -m644 data/gschemas/org.valapanel.volume.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/org.valapanel.volume.gschema.xml"
+            
+  DESTDIR="${pkgdir}" meson install -C build
+  rm -fr "$pkgdir/usr/share/vala-panel-extras/"
+  rm -fr "$pkgdir/usr/share/locale/"
+  rm -rf $pkgdir/usr/bin/vala-panel-extras-{xkb,gtop,weather,battery}
+  rm -rf $pkgdir/usr/share/applications/org.valapanel.{xkb,gtop,weather,battery}.desktop
+  rm -rf $pkgdir/usr/share/glib-2.0/schemas/org.valapanel.{xkb,gtop,weather,battery}.gschema.xml
 }
 package_vala-panel-extras-xkb-git() {
   pkgdesc="Simple keyboard layout indicator/switcher"
@@ -63,10 +57,12 @@ package_vala-panel-extras-xkb-git() {
             'kdebase-plasma: for showing in KDE4'
             'vala-panel-extras-xkb-flags: builtin flags')
 
-  cd "${srcdir}/${_pkgbase}"
-  make -C "applets/xkb" DESTDIR="${pkgdir}" install
-  install -D -m644 data/gschemas/org.valapanel.xkb.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/org.valapanel.xkb.gschema.xml"
+  DESTDIR="${pkgdir}" meson install -C build
   rm -fr "$pkgdir/usr/share/vala-panel-extras/"
+  rm -fr "$pkgdir/usr/share/locale/"
+  rm -rf $pkgdir/usr/bin/vala-panel-extras-{volume,gtop,weather,battery}
+  rm -rf $pkgdir/usr/share/applications/org.valapanel.{volume,gtop,weather,battery}.desktop
+  rm -rf $pkgdir/usr/share/glib-2.0/schemas/org.valapanel.{volume,gtop,weather,battery}.gschema.xml
 }
 package_vala-panel-extras-gtop-git() {
   pkgdesc="Simple network speed indicator"
@@ -79,9 +75,12 @@ package_vala-panel-extras-gtop-git() {
             'plasma-desktop: for showing in KDE Frameworks'
             'kdebase-plasma: for showing in KDE4')
 
-  cd "${srcdir}/${_pkgbase}"
-  make -C "applets/gtop" DESTDIR="${pkgdir}" install
-  install -D -m644 data/gschemas/org.valapanel.gtop.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/org.valapanel.gtop.gschema.xml"
+  DESTDIR="${pkgdir}" meson install -C build
+  rm -fr "$pkgdir/usr/share/vala-panel-extras/"
+  rm -fr "$pkgdir/usr/share/locale/"
+  rm -rf $pkgdir/usr/bin/vala-panel-extras-{xkb,volume,weather,battery}
+  rm -rf $pkgdir/usr/share/applications/org.valapanel.{xkb,volume,weather,battery}.desktop
+  rm -rf $pkgdir/usr/share/glib-2.0/schemas/org.valapanel.{xkb,volume,weather,battery}.gschema.xml
 }
 package_vala-panel-extras-weather-git() {
   pkgdesc="Simple weather indicator"
@@ -94,19 +93,24 @@ package_vala-panel-extras-weather-git() {
             'plasma-desktop: for showing in KDE Frameworks'
             'kdebase-plasma: for showing in KDE4')
   
-  cd "${srcdir}/${_pkgbase}"
-  make -C "applets/weather" DESTDIR="${pkgdir}" install
-  install -D -m644 data/gschemas/org.valapanel.weather.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/org.valapanel.weather.gschema.xml"
+  DESTDIR="${pkgdir}" meson install -C build
+  rm -fr "$pkgdir/usr/share/vala-panel-extras/"
+  rm -fr "$pkgdir/usr/share/locale/"
+  rm -rf $pkgdir/usr/bin/vala-panel-extras-{xkb,gtop,volume,battery}
+  rm -rf $pkgdir/usr/share/applications/org.valapanel.{xkb,gtop,volume,battery}.desktop
+  rm -rf $pkgdir/usr/share/glib-2.0/schemas/org.valapanel.{xkb,gtop,volume,battery}.gschema.xml
 }
 package_vala-panel-extras-xkb-flags-git() {
   arch=('any')
   pkgdesc="Flags for XKB plugin"
   optdepends=('vala-panel-extras-xkb-git')
   
-  cd "${srcdir}/${_pkgbase}"
-  make -C "applets/xkb" DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" meson install -C build
+  rm -fr "$pkgdir/usr/share/locale/"
+  rm -fr "$pkgdir/usr/share/applications/"
+  rm -fr "$pkgdir/usr/share/glib-2.0/"
   rm -fr "$pkgdir/usr/bin/"
-  rm -fr "$pkgdir/usr/share/applications"
+  rm -fr "$pkgdir/usr/share/vala-panel-extras/doc"
 }
 package_vala-panel-extras-battery-git() {
   pkgdesc="Simple battery indicator"
@@ -119,9 +123,12 @@ package_vala-panel-extras-battery-git() {
             'plasma-desktop: for showing in KDE Frameworks'
             'kdebase-plasma: for showing in KDE4')
   
-  cd "${srcdir}/${_pkgbase}"
-  make -C "applets/batt" DESTDIR="${pkgdir}" install
-  install -D -m644 data/gschemas/org.valapanel.battery.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/org.valapanel.battery.gschema.xml"
+  DESTDIR="${pkgdir}" meson install -C build
+  rm -fr "$pkgdir/usr/share/vala-panel-extras/"
+  rm -fr "$pkgdir/usr/share/locale/"
+  rm -rf $pkgdir/usr/bin/vala-panel-extras-{xkb,gtop,weather,volume}
+  rm -rf $pkgdir/usr/share/applications/org.valapanel.{xkb,gtop,weather,volume}.desktop
+  rm -rf $pkgdir/usr/share/glib-2.0/schemas/org.valapanel.{xkb,gtop,weather,volume}.gschema.xml
 }
 
 package_vala-panel-extras-common-git() {
@@ -129,6 +136,9 @@ package_vala-panel-extras-common-git() {
   pkgdesc="Common files for vala-panel-extras"
   replaces=('vala-panel-extras-translations-git')
   
-  cd "${srcdir}/${_pkgbase}"
-  make -C "po" DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" meson install -C build
+  rm -fr "$pkgdir/usr/share/vala-panel-extras/xkb"
+  rm -fr "$pkgdir/usr/share/applications/"
+  rm -fr "$pkgdir/usr/share/glib-2.0/"
+  rm -fr "$pkgdir/usr/bin/"
 }
