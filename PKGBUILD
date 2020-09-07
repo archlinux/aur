@@ -60,7 +60,7 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/$pkgname/mods/" Mods/*.lmlm
 
   # Stage 2: Install the mod launcher Linux launcher files.
-  cd "lml-linux-launcher"
+  cd lml-linux-launcher-master-* || exit 1
 
   # Install the launchers.
 
