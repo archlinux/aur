@@ -1,0 +1,14 @@
+pkgbase = ruby-mapping
+	pkgdesc = Map model objects based on their class to a given output model.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/ioquatix/mapping
+	arch = any
+	license = MIT
+	noextract = mapping-1.1.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/mapping-1.1.1.gem
+	sha256sums = c677c3a343960feafbfac8434300d1ad88817b7d6e969aead45ba8807f2af2b9
+
+pkgname = ruby-mapping
+
