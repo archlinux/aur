@@ -1,7 +1,7 @@
-# Maintainer: Dmitry Barker Medvedev <dimon@bitel.ru>
+# Maintainer: Dmitry darkbarker Medvedev <dimon@bitel.ru>
 pkgname=bgbillingrunner
-pkgver=1907121757
-pkgrel=3
+pkgver=2007151522
+pkgrel=1
 pkgdesc='Client runner for billing system BGBilling 8.0+'
 arch=('i686' 'x86_64')
 url='http://bgbilling.ru'
@@ -49,10 +49,10 @@ package() {
 	msg2 "rename launch scripts (runner.sh -> bgbillingrunner.sh)"
 	rename runner.sh bgbillingrunner.sh $pkgdir/opt/${_dstdirname}/runner.sh
 
-	msg2 "chmod"
+	msg2 "chmod package files"
 	chmod +x $pkgdir/opt/${_dstdirname}/*.sh
 
-	msg2 "patch JAVA_HOME in launch script"
+	msg2 "patch/remove JAVA_HOME in launch script"
 	sed -i "s|\${JAVA_HOME}\/bin\/java|java|" $pkgdir/opt/${_dstdirname}/bgbillingrunner.sh
 	sed -i '5d' $pkgdir/opt/${_dstdirname}/bgbillingrunner.sh
 	sed -i '5d' $pkgdir/opt/${_dstdirname}/bgbillingrunner.sh
@@ -67,7 +67,7 @@ package() {
 	_patch_var_file bgbillingrunner.desktop
 	_patch_var_file bgbillingrunner.sh
 
-	msg2 "copy file"
+	msg2 "copy package files"
 	mkdir -p $pkgdir/usr/share/{applications,pixmaps}
 	install    -m644 $srcdir/bgbillingrunner.png $pkgdir/usr/share/pixmaps/
 	install    -m644 $srcdir/bgbillingrunner.desktop $pkgdir/usr/share/applications/
