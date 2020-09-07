@@ -1,4 +1,4 @@
-# Maintainer: Dmitry Barker Medvedev <dimon@bitel.ru>
+# Maintainer: Dmitry darkbarker Medvedev <dimon@bitel.ru>
 pkgname=bgbillingclient60
 pkgver=6.0.1398
 pkgrel=1
