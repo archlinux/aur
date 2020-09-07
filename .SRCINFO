@@ -1,6 +1,6 @@
 pkgbase = cninja
 	pkgdesc = Opinionated CMake config manager
-	pkgver = 3.5.3
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://github.com/jcelerier/cninja
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = cninja
 	depends = lld
 	depends = ninja
 	depends = libc++
-	provides = cninja=3.5.3
-	source = https://github.com/jcelerier/cninja/releases/download/v3.5.3/cninja-v3.5.3-src.tar.gz
-	sha512sums = 915495dcd0abfda9adc7c7b69bb195929a9e26e5052314f9d14596924dac5c62487b488a5926fc59b5e2bf44ea033acbb2c49adb88f5e5ed180f2b6398936f8d
+	provides = cninja=3.6.1
+	source = https://github.com/jcelerier/cninja/releases/download/v3.6.1/cninja-v3.6.1-src.tar.gz
+	sha512sums = 4a64ac1b7ebc6f16f2c92d9c197b0c3a5d2135662af0da513a61b4a05e5a6014dc777d7c9a081aa1252cfb40723bdc717face298316a2ad8d11fb943a7d893c6
 
 pkgname = cninja
 
