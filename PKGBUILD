@@ -15,7 +15,7 @@ md5sums=("525688b0e165821bc1843ac5be7628c6")
 backup=("etc/webapps/roundcubemail/plugins/carddav/config.inc.php")
 
 package() {
- cd "$srcdir/carddav"
+ cd "carddav"
  composer install --no-interaction --no-dev
  install -d "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav"
  cp -r * "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav"
