@@ -3,8 +3,8 @@
 pkgname=kotatogram-desktop-dynamic-bin
 _pkgname=kotatogram-desktop
 pkgver=1.3.4
-pkgrel=1
-_pkgrel=1
+pkgrel=2
+_pkgrel=2
 pkgdesc="Kotatogram – experimental Telegram Desktop fork - Precompiled package"
 arch=(x86_64)
 url="https://kotatogram.github.io"
@@ -29,9 +29,9 @@ optdepends=(
 )
 conflicts=('kotatogram-desktop' 'kotatogram-desktop-bin')
 provides=('kotatogram-desktop')
-source=("https://github.com/ilya-fedin/kotatogramAUR/releases/download/k${pkgver}-${_pkgrel}/${_pkgname}-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz")
-sha512sums=('aee7ba0bf4b3a30cf6cc5058a7fc4f531e2812594d7eb910e51cda83bb6d66f3cee73cf46de0b98cbf5528c77f0271a890d50d7ebfa725850db6b82f01f66b4a')
+source=("https://github.com/ilya-fedin/kotatogramAUR/releases/download/k${pkgver}-${_pkgrel}/${_pkgname}-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst")
+sha512sums=('44aa7059b0fcb7bd56983b8c451a597ba8e2d44f74b17695f2245bd63d1c1087fdb647fb87847943e85853220ee1c9d04d09e40c91d8b17ea4f26846edd64ab1')
 
 package() {
-	tar -xaf "$srcdir/${_pkgname}-${pkgver}-${_pkgrel}-x86_64.pkg.tar.xz" -C "$pkgdir" --exclude=".*"
+	tar -xaf "$srcdir/${_pkgname}-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst" -C "$pkgdir" --exclude=".*"
 }
