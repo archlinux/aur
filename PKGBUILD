@@ -2,12 +2,12 @@
 # Contributor: ELmoussaoui Bilal <bil dot elmoussaoui at gmail.com>
 pkgname=nautilus-folder-icons
 pkgver=3.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Nautilus extension that makes changing folders icons easy!'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/bilelmoussaoui/nautilus-folder-icons"
-depends=('gobject-introspection' 'gtk3' 'python-nautilus')
+depends=('gtk3' 'python-nautilus')
 makedepends=('gnome-common' 'meson')
 conflicts=('nautilus-ext-git' 'nautilus-compare')
             # See https://github.com/bilelmoussaoui/nautilus-folder-icons/issues/34
