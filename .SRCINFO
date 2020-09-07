@@ -1,6 +1,6 @@
 pkgbase = r-inline
 	pkgdesc = Functions to Inline C, C++, Fortran Function Calls from R
-	pkgver = 0.3.15
+	pkgver = 0.3.16
 	pkgrel = 1
 	url = https://cran.r-project.org/package=inline
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = r-inline
 	license = LGPL3
 	depends = r>=2.4.0
 	optdepends = r-rcpp
-	source = https://cran.r-project.org/src/contrib/inline_0.3.15.tar.gz
-	md5sums = 8f0de494120ecd628fa7a2e6d4af98cb
+	source = https://cran.r-project.org/src/contrib/inline_0.3.16.tar.gz
+	sha256sums = d216a46d65e2b7f5dae2eb06ff44bee16262f1d29605e3267456191b39143575
 
 pkgname = r-inline
 
