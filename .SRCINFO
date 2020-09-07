@@ -1,12 +1,13 @@
 pkgbase = kwin-effect-shapecorners-git
 	pkgdesc = KWin effect to round the corners of windows.
 	pkgver = r14.4f545f9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/shapecorners
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
 	depends = kwin
 	depends = kconfig
 	depends = kconfigwidgets

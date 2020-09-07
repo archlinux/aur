@@ -3,7 +3,7 @@
 _gitname=shapecorners
 pkgname=kwin-effect-shapecorners-git
 pkgver=r14.4f545f9
-pkgrel=2
+pkgrel=3
 pkgdesc="KWin effect to round the corners of windows."
 arch=('x86_64')
 url="https://sourceforge.net/projects/shapecorners"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('kwin' 'kconfig' 'kconfigwidgets' 'kcoreaddons' 'kcrash' 'kglobalaccel' 'ki18n'
          'kio' 'kservice' 'kinit' 'knotifications' 'kwidgetsaddons' 'kwindowsystem'
          'kguiaddons' 'qt5-x11extras')
-makedepends=('git' 'extra-cmake-modules')
+makedepends=('git' 'extra-cmake-modules' 'qt5-tools')
 source=("${_gitname}::git+https://git.code.sf.net/p/shapecorners/code")
 sha512sum=('SKIP')
 
