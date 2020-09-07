@@ -2,9 +2,10 @@
 
 pkgname=station-git
 pkgver=v1.1.1.r7.gfc3a700
-pkgrel=1
+pkgrel=2
 pkgdesc="Convergent terminal emulator"
 arch=('x86_64')
+groups=('maui-apps')
 url="https://invent.kde.org/maui/station"
 license=('GPL3')
 depends=('kio' 'mauikit-git' 'ki18n')
