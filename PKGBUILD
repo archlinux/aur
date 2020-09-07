@@ -2,7 +2,7 @@
 
 pkgname=mstream-git
 pkgver=v4.7.0.r20.gb52fdde
-pkgrel=1
+pkgrel=2
 pkgdesc="Music player server with a web-based interface"
 url="https://mstream.io"
 license=("GPL3")
@@ -16,11 +16,13 @@ makedepends=("npm")
 source=("git+https://github.com/d10n/mStream.git#branch=d10n-master"
         "mstream.json"
         "mstream.service"
-        "mstream.sysusers")
+        "mstream.sysusers"
+        "mstream.tmpfiles")
 md5sums=("SKIP"
         "f590018cf4626a0e1a2bfb9b30531c44"
         "f4fb1b503cedd059c4c3e311b7f8a206"
-        "542a37c003900d7e68fc0820fc0634e2")
+        "a2c873e2862c0cc5a13e3db4c05e61bb"
+        "3d6bd19d0e8aa007f2f342d1d5a74083")
 backup=("etc/mstream.json")
 install="mstream.install"
 
@@ -30,7 +32,7 @@ pkgver(){
 }
 
 package(){
- # archiving the folder otherwise `npm install` doesn't move files to $pkgdir
+ # archiving the folder because `npm install` doesn't move the files to $pkgdir
  tar czf "mStream.tar.gz" -C "$srcdir/mStream" .
  npm install -g --user root --prefix "$pkgdir/usr" "mStream.tar.gz"
 
@@ -45,6 +47,7 @@ package(){
  install -D -m 640 "mstream.json" "$pkgdir/etc/mstream.json"
  install -D -m 644 "mstream.service" "$pkgdir/usr/lib/systemd/system/mstream.service"
  install -D -m 644 "mstream.sysusers" "$pkgdir/usr/lib/sysusers.d/mstream.conf"
+ install -D -m 644 "mstream.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/mstream.conf"
 
  rm -r "$pkgdir/usr/lib/node_modules/mstream/.git" \
   "$pkgdir/usr/lib/node_modules/mstream/image-cache/" \

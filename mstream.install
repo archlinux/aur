@@ -1,9 +1,5 @@
 post_install(){
- chown root:mstream "/etc/mstream.json"
- chown -R mstream:mstream "/var/cache/mstream" "/var/lib/mstream" "/var/log/mstream"
- echo "A new \"mstream\" user has been created.
-
-To bind to localhost only, edit \"/usr/lib/node_modules/mstream/mstream.js\"
+echo "To bind to localhost only, edit \"/usr/lib/node_modules/mstream/mstream.js\"
 and replace
             server.listen(program.port, () => {
 with

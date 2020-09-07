@@ -1,1 +1,1 @@
-u mstream - "mStream user" /var/lib/lms 
+u mstream - "mStream daemon user" /var/lib/mstream
