@@ -1,7 +1,7 @@
 # Maintainer: c0re100 <corehusky@gmail.com> - https://husky.dev
 
 pkgname=qbittorrent-enhanced-nox-git
-pkgver=4.2.5.13.r1.gbf3f782b2
+pkgver=4.2.5.15.r1.gb9703d162
 pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (Enhanced Edition)"
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -30,7 +30,7 @@ build() {
   # tell qmake not to break makepkg's debug/!strip options
   export QBT_ADD_CONFIG='nostrip'
 
-  ./configure --prefix=/usr --disable-gui
+  ./configure --prefix=/usr --disable-gui CXXFLAGS="-std=c++14"
   make
 }
 
