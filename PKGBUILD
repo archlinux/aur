@@ -19,7 +19,7 @@ md5sums_armv6h=("8751bbbb60e70925773f3075b7122776")
 md5sums_aarch64=("2b874076bd22158b9199b664041db2bd")
 
 package() {
- install -D -m 755 "$srcdir/horcrux" "$pkgdir/usr/bin/horcrux"
+ install -D -m 755 "horcrux" "$pkgdir/usr/bin/horcrux"
  install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
