@@ -6,7 +6,8 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 
 pkgname=libvirt-git
-pkgver=6.7.0.r60.gfc7d53edf4
+_pkgname=libvirt
+pkgver=6.7.0.r78.gf5b486daea
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
@@ -131,7 +132,7 @@ build() {
   #sed -i 's|libsystemd-daemon|libsystemd|g' configure
   mkdir build && cd build
    
-  meson --prefix=/usr --sysconfdir=/etc -Dsystem=true
+  meson --prefix=/usr --libexec=/usr/lib/$_pkgname --sysconfdir=/etc 
   ninja
 }
 
