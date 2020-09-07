@@ -8,8 +8,8 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
-pkgver=2.45.3.1
-pkgrel=2
+pkgver=2.46.1
+pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -18,7 +18,7 @@ conflicts=('snap-confine')
 options=('!strip' 'emptydirs')
 install=snapd.install
 source=("$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz")
-sha256sums=('7013c93f3329987074fd846d5e86ac3ae0c4b6135143eb11b3fee794b9a2ea91')
+sha256sums=('5af7345e1bda14d0a74f745ac5b469a3a601c22b1b65c06d7269cd07a5e664b0')
 
 _gourl=github.com/snapcore/snapd
 
@@ -61,8 +61,8 @@ build() {
   # because argument expansion with quoting in bash is hard, and -ldflags=-extldflags='-foo'
   # is not exactly the same as -ldflags "-extldflags '-foo'" use the array trick
   # to pass exactly what we want
-  flags=(-buildmode=pie -ldflags "-s -extldflags '$LDFLAGS'")
-  staticflags=(-buildmode=pie -ldflags "-s -linkmode external -extldflags '$LDFLAGS -static'")
+  flags=(-buildmode=pie -ldflags "-s -extldflags '$LDFLAGS'" -trimpath)
+  staticflags=(-buildmode=pie -ldflags "-s -linkmode external -extldflags '$LDFLAGS -static'" -trimpath)
   # Build/install snap and snapd
   go build "${flags[@]}" -o "$srcdir/go/bin/snap" "${_gourl}/cmd/snap"
   go build "${flags[@]}" -o "$srcdir/go/bin/snapd" "${_gourl}/cmd/snapd"
@@ -182,6 +182,7 @@ package() {
   # Remove snappy core specific units
   rm -fv "$pkgdir/usr/lib/systemd/system/snapd.system-shutdown.service"
   rm -fv "$pkgdir/usr/lib/systemd/system/snapd.autoimport.service"
+  rm -fv "$pkgdir/usr/lib/systemd/system/snapd.recovery-chooser-trigger.service"
   rm -fv "$pkgdir"/usr/lib/systemd/system/snapd.snap-repair.*
   rm -fv "$pkgdir"/usr/lib/systemd/system/snapd.core-fixup.*
   # and scripts
