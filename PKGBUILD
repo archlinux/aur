@@ -1,9 +1,9 @@
-# Contributor: Shaber
 # Maintainer: Dan Johansen <strit@manjaro.org>
+# Contributor: Shaber
 
 pkgname=corehunt
-pkgver=3.0.1
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="A file finder utility from the CoreApps family."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/cubocore/$pkgname"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'libcprime>=2.7.1')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('d23adde0afb8955ac291496996ebb5d9')
+md5sums=('a9440f818fe4ae24b353e11b4c0ce1e4')
 
 prepare() {
   mkdir -p build
