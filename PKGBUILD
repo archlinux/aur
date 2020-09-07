@@ -1,8 +1,8 @@
 # Maintainer: ZjeuhPiung <sophgn@outlook.com>
 pkgname=rime-middle-chinese-git
-pkgver=0.1
+pkgver=r6.542245e
 pkgrel=1
-pkgdesc="中古漢語（切韻音系）全拼及三拼"
+pkgdesc="中古漢語拼音輸入方案(切韻音系)"
 arch=('x86_64')
 url='https://github.com/biopolyhedron/rime-middle-chinese'
 source=("$pkgname::git+$url")
@@ -10,6 +10,11 @@ license=(custom)
 depends=('rime-luna-pinyin')
 makedepends=('librime' 'rime-prelude' 'rime-essay')
 sha512sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
     cd $pkgname
