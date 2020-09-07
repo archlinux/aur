@@ -1,0 +1,13 @@
+pkgbase = jilu
+	pkgdesc = Generate a change log based on the state of your Git repository
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/rustic-games/jilu
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	source = jilu-0.4.0.tar.gz::https://github.com/rustic-games/jilu/archive/v0.4.0.tar.gz
+	sha512sums = SKIP
+
+pkgname = jilu
+
