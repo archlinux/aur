@@ -1,0 +1,7 @@
+material-design-icons/
+
+pkg/
+src/
+
+*.tar
+*.tar.*
