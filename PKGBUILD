@@ -12,7 +12,7 @@ makedepends=('go')
 optdepends=('zenity: graphical prompt'
             'kdialog: graphical prompt')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1d6d3b55d05341f879d0942ea9df66d60d703d40862ffcfa6e80a606d5cf3878')
+sha256sums=('467509b4db3da0db1360e3f22c233f7c8bb321f576ebcb69166041da5de45100')
 
 build() {
   cd "$pkgname-$pkgver"
