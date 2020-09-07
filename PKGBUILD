@@ -3,7 +3,7 @@
 
 pkgname=ft2-clone
 pkgver=1.33
-pkgrel=1
+pkgrel=2
 pkgdesc="portable Fasttracker II clone written in C"
 arch=('x86_64')
 url="https://16-bits.org/ft2.php"
