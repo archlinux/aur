@@ -3,8 +3,8 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 # Contributor: Quan Guo <guotsuan@gmail.com>
 pkgname=cheat-git
-pkgver=4.0.2.r0.gad7ad64
-pkgrel=3
+pkgver=4.1.0.r0.g82e1c27
+pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/cheat/cheat"
@@ -40,8 +40,11 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
-	make
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go build -v "./cmd/${pkgname%-git}"
+
+	# Generate man page
+	pandoc -s -t man "doc/${pkgname%-git}.1.md" -o "doc/${pkgname%-git}.1"
 
 	# Clean mod cache for makepkg -C
 	go clean -modcache
@@ -49,7 +52,7 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -Dm755 "dist/${pkgname%-git}" -t "$pkgdir/usr/bin"
+	install -Dm755 "${pkgname%-git}" -t "$pkgdir/usr/bin"
 	install -Dm755 "scripts/${pkgname%-git}.bash" \
 		"$pkgdir/usr/share/bash-completion/completions/${pkgname%-git}"
 	install -Dm755 "scripts/${pkgname%-git}.fish" -t \
