@@ -1,0 +1,16 @@
+pkgbase = ruby-bake
+	pkgdesc = A replacement for rake with a simpler syntax.
+	pkgver = 0.14.2
+	pkgrel = 1
+	url = https://github.com/ioquatix/bake
+	arch = any
+	license = MIT
+	depends = ruby-samovar>=2.1
+	provides = bake
+	noextract = bake-0.14.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/bake-0.14.2.gem
+	sha256sums = 49c68f05177b6b0bdc8c4d61888a73a4c9f3635a80b618b9429f1caab0e1a415
+
+pkgname = ruby-bake
+
