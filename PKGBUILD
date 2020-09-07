@@ -7,6 +7,7 @@ arch=('x86_64')
 url='https://github.com/biopolyhedron/rime-middle-chinese'
 source=("$pkgname::git+$url")
 license=(custom)
+conflicts=('rime-middle-chinese')
 depends=('rime-luna-pinyin')
 makedepends=('librime' 'rime-prelude' 'rime-essay')
 sha512sums=('SKIP')

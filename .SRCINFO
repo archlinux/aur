@@ -9,6 +9,7 @@ pkgbase = rime-middle-chinese-git
 	makedepends = rime-prelude
 	makedepends = rime-essay
 	depends = rime-luna-pinyin
+	conflicts = rime-middle-chinese
 	source = rime-middle-chinese-git::git+https://github.com/biopolyhedron/rime-middle-chinese
 	sha512sums = SKIP
 
