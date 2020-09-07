@@ -1,4 +1,6 @@
 # Maintainer: otaj <jasek.ota@gmail.com>
+# If you want the python package to work with MKL, you need to have python-numpy-mkl installed!
+# See https://github.com/facebookresearch/faiss/issues/1393
 
 _pkgname=faiss
 pkgbase=faiss-git
