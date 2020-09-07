@@ -1,13 +1,13 @@
 pkgbase = dots
 	pkgdesc = A simple tool for managing dotfiles with VCS
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
-	url = https://github.com/jacobkoziej/dotfile-manager
+	url = https://git.jacobkoziej.xyz/dotfile-manager/
 	arch = any
 	license = GPL3
 	depends = bash
 	optdepends = git: for versioning
-	source = git+https://github.com/jacobkoziej/dotfile-manager.git#tag=v0.1.1?signed
+	source = git+https://git.jacobkoziej.xyz/dotfile-manager/#tag=v0.1.2?signed
 	validpgpkeys = 1BF98D10E0D00B41572358364C133A84E6469228
 	sha256sums = SKIP
 
