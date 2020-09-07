@@ -11,7 +11,7 @@
 # tectonic repository.
 
 pkgname=tectonic
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=0
 arch=('x86_64')
 pkgdesc='Modernized, complete, self-contained TeX/LaTeX engine, powered by XeTeX and TeXLive'
@@ -24,12 +24,12 @@ sha512sums=('837f38346d6b2c07d960d087f7eda1a0ca57735e18a71f956010c59bf9a45628ce4
 
 build() {
 	cd $pkgname-$pkgver
-	cargo build --release
+	cargo build --release --target-dir "./target"
 }
 
 check() {
 	cd $pkgname-$pkgver
-	cargo test --release
+	cargo test --release --target-dir "./target"
 }
 
 package() {
