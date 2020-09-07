@@ -2,7 +2,7 @@
 
 pkgname=luaj
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A flavour of Lua. A reworking and rewriting of the Lua runtime to create a new language."
 arch=(x86_64)
@@ -33,7 +33,6 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	make
 }
 
 check() {
@@ -43,5 +42,6 @@ check() {
 
 package() {
 	cd "$pkgname"
+	mkdir -p "$pkgdir/usr/bin"
 	make PREFIX="$pkgdir/usr/bin" install
 }

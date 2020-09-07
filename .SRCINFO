@@ -1,7 +1,7 @@
 pkgbase = luaj
 	pkgdesc = A flavour of Lua. A reworking and rewriting of the Lua runtime to create a new language.
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~shakna/luaj
 	arch = x86_64
 	groups = devel
