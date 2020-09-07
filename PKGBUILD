@@ -2,7 +2,7 @@
 
 pkgname=mapivi-svn
 pkgver=r428
-pkgrel=1
+pkgrel=2
 pkgdesc="A photo management tool with focus on JPEG pictures (dev version)"
 depends=('jpegpixi' 'jhead' 'imagemagick' 'libjpeg' 'perl-image-info' 'perl-image-metadata-jpeg' 'tk-matchentry' 'tk-resizebutton' 'tk-splash' 'perl-tk' 'perl-exiftool')
 arch=('i686' 'x86_64')
@@ -37,5 +37,5 @@ package() {
 }
 md5sums=('SKIP'
          '838400c143467bd6767ddb68a204f484'
-         'd66228d2fac50bc16c48f3eed54a36ba'
+         '709b5c5ad79ad78918afb17214ed0044'
          '15d8e83af7ccfa852774a48d2fb1ba75')
