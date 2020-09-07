@@ -1,8 +1,8 @@
-# Contributor: Shaber
 # Maintainer: Dan Johansen <strit@manjaro.org>
+# Contributor: Shaber
 
 pkgname=coreimage
-pkgver=3.0.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="An image viewer from the CoreApps family."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'libcprime>=2.7.1')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('40a8048687a4aeb7fe6515eaec4049cd')
+md5sums=('a4a8a5ca700233f42168dbd379c67b8a')
 
 prepare() {
   mkdir -p build
