@@ -1,14 +1,14 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 pkgname=noti
-pkgver=3.4.0
-pkgrel=3
+pkgver=3.5.0
+pkgrel=1
 pkgdesc='Monitor a process and trigger a notification'
 arch=('x86_64')
 url='https://github.com/variadico/noti'
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/variadico/noti/archive/$pkgver.tar.gz")
-sha256sums=('8fcf494084ea6eacac2e55dfcaf978452e1af0139205cd23fce71bfb20dd17fe')
+sha256sums=('04183106921e3a6aa7c107c6dff6fa13273436e8a26d139e49f34c5d1eea348c')
 
 build() {
   cd "$pkgname-$pkgver"
