@@ -16,12 +16,12 @@ md5sums=("SKIP")
 backup=("etc/webapps/roundcubemail/plugins/carddav/config.inc.php")
 
 pkgver(){
- cd "$srcdir/$pkgname"
+ cd "$pkgname"
  git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 package() {
- cd "$srcdir/$pkgname"
+ cd "$pkgname"
  composer install --no-interaction --no-dev
  install -d "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav"
  cp -r * "$pkgdir/usr/share/webapps/roundcubemail/plugins/carddav"
