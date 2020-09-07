@@ -18,15 +18,16 @@ makedepends=(
         "pstreams")
 source=("$pkgname::git+$url.git"
         "lms.sysusers"
-        "lms.service")
+        "lms.service"
+        "lms.tmpfiles")
 md5sums=("SKIP"
         "938534cc0cd64a4990dd3f413ea0f4bb"
-        "7cdb8d3326ed75ce31ce7d4c20fa12c1")
+        "7cdb8d3326ed75ce31ce7d4c20fa12c1"
+        "54f669182ba59508d71729f40ead6b93")
 backup=("etc/lms.conf")
-install="lms.install"
 
 pkgver(){
- cd "$srcdir/$pkgname"
+ cd "$pkgname"
  git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
@@ -44,7 +45,8 @@ package(){
  make DESTDIR="$pkgdir" install
  install -d "$pkgdir/var/lib/lms"
  install -D -m 644 "$pkgdir/usr/share/lms/lms.conf" "$pkgdir/etc/lms.conf"
- install -D -m 644 "$srcdir/lms.service" "$pkgdir/usr/lib/systemd/system/lms.service"
- install -D -m 644 "$srcdir/lms.sysusers" "$pkgdir/usr/lib/sysusers.d/lms.conf"
+ install -D -m 644 "lms.service" "$pkgdir/usr/lib/systemd/system/lms.service"
+ install -D -m 644 "lms.sysusers" "$pkgdir/usr/lib/sysusers.d/lms.conf"
+ install -D -m 644 "lms.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/lms.conf"
  sed -i "s|/var/lms|/var/lib/lms|g" "$pkgdir/etc/lms.conf"
 }

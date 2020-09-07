@@ -1,4 +1,0 @@
-post_install(){
- chown lms: "/var/lib/lms"
- chmod 750 "/var/lib/lms"
-}

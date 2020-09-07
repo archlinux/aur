@@ -1,0 +1,2 @@
+f /etc/lms.conf 0640 root lms
+d /var/lib/lms 0750 lms lms

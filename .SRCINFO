@@ -3,7 +3,6 @@ pkgbase = lms-git
 	pkgver = v3.18.0.r0.gf77804a
 	pkgrel = 1
 	url = https://github.com/epoupon/lms
-	install = lms.install
 	arch = x86_64
 	arch = armv7h
 	license = GPL3
@@ -19,9 +18,11 @@ pkgbase = lms-git
 	source = lms-git::git+https://github.com/epoupon/lms.git
 	source = lms.sysusers
 	source = lms.service
+	source = lms.tmpfiles
 	md5sums = SKIP
 	md5sums = 938534cc0cd64a4990dd3f413ea0f4bb
 	md5sums = 7cdb8d3326ed75ce31ce7d4c20fa12c1
+	md5sums = 54f669182ba59508d71729f40ead6b93
 
 pkgname = lms-git
 
