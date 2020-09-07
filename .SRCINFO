@@ -1,0 +1,24 @@
+pkgbase = coin-or-couenne
+	pkgdesc = Convex Over and Under Envelopes for Nonlinear Estimation
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://github.com/coin-or/Couenne/
+	arch = x86_64
+	groups = coin-or
+	license = EPL
+	depends = coin-or-cbc
+	depends = coin-or-cgl
+	depends = coin-or-clp
+	depends = coin-or-coinutils
+	depends = coin-or-ipopt
+	depends = coin-or-osi
+	depends = coin-or-bonmin
+	depends = coin-or-asl
+	depends = coin-or-coinmumps
+	depends = metis
+	depends = lapack
+	source = Couenne-0.5.8.tar.gz::https://github.com/coin-or/Couenne/archive/releases/0.5.8.tar.gz
+	sha256sums = 73b36e7475910f576ca25f8323553b9d5201fcb2656cef0a2c72e69dc0681051
+
+pkgname = coin-or-couenne
+
