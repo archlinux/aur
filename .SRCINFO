@@ -1,0 +1,16 @@
+pkgbase = torrodle-git
+	pkgdesc = A mighty all-in-one magnet scraper & streamer
+	pkgver = 1.0.4.r21.g770574b
+	pkgrel = 1
+	url = https://github.com/tnychn/torrodle
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = MIT
+	makedepends = git
+	makedepends = go>=1.12
+	source = torrodle::git+https://github.com/tnychn/torrodle.git
+	sha256sums = SKIP
+
+pkgname = torrodle-git
+
