@@ -1,0 +1,14 @@
+pkgbase = ruby-console
+	pkgdesc = Beautiful logging for Ruby.
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/ioquatix/console
+	arch = any
+	license = MIT
+	noextract = console-1.9.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/console-1.9.0.gem
+	sha256sums = c4aedecb413edd0b96936c3efb00ebc8b6fb9323bde6c85f431f385c572277e5
+
+pkgname = ruby-console
+
