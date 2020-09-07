@@ -8,7 +8,7 @@ url="https://github.com/ec-/Quake3e"
 license=('GPL')
 arch=('x86_64')
 makedepends=('git' 'libxxf86dga')
-source=('Quake3e::git://github.com/ec-/Quake3e.git'
+source=('git+http://github.com/ec-/Quake3e.git'
 'quake3e.desktop'
 'quake3e.png')
 sha256sums=('SKIP'
@@ -21,7 +21,7 @@ build() {
     make
     }
 
-package(){
+package() {
     install -D -m 755 $srcdir/Quake3e/build/release-linux-x86_64/quake3e.x64 $pkgdir/opt/quake3e/quake3e.x64
     install -D -m 755 $srcdir/Quake3e/build/release-linux-x86_64/quake3e.ded.x64 $pkgdir/opt/quake3e/quake3e.ded.x64
     install -D -m 644 $srcdir/Quake3e/build/release-linux-x86_64/quake3e_opengl_x86_64.so $pkgdir/opt/quake3e/quake3e_opengl_x86_64.so
