@@ -1,6 +1,6 @@
 pkgbase = gimp-plugin-akkana-git
 	pkgdesc = A collection of GIMP scripts and plug-ins by Akkana Peck.
-	pkgver = 1
+	pkgver = r73.6ac8a1a
 	pkgrel = 1
 	url = https://github.com/akkana/gimp-plugins
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = gimp-plugin-akkana-git
 	optdepends = glabels: crating labels and business cards
 	provides = gimp-plugin-akkana
 	conflicts = gimp-plugin-akkana
-	source = git://github.com/akkana/gimp-plugins.git
+	source = git+https://github.com/akkana/gimp-plugins
 	md5sums = SKIP
 
 pkgname = gimp-plugin-akkana-git
