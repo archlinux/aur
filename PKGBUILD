@@ -23,7 +23,7 @@ package(){
  install -D -m 644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
  install -D -m 644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
  
- cd "$srcdir/$pkgname-$pkgver"
+ cd "$pkgname-$pkgver"
  sed -e "s|local/bin|bin|g" -e "s|/usr/local/etc|/etc|g" -i "system/dkimpy-milter.service"
  awk '/UserID/ {sub(/dkimpy-milter/,"dkimpy-milter:dkimpy-milter")}1' "etc/dkimpy-milter.conf" > "etc/dkimpy-milter.conf.tmp"
  mv "etc/dkimpy-milter.conf.tmp" "etc/dkimpy-milter.conf"
