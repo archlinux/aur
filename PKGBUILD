@@ -6,54 +6,44 @@ _disable_vala=0
 _disable_budgie=0
 
 _opts=(
-	-DCMAKE_INSTALL_PREFIX=/usr
-	-DCMAKE_INSTALL_LIBDIR=lib
-	-DCMAKE_INSTALL_LIBEXECDIR=lib
-    -DENABLE_APPMENU_GTK_MODULE=OFF
-    -DENABLE_REGISTRAR=OFF
-    -DENABLE_JAYATANA=OFF
+	--prefix=/usr
+	--libdir=lib
+	--libexecdir=lib
+	-Dauto_features=disabled
 )
 
 pkgname=(
 'vala-panel-appmenu-common-git'
 )
 
-makedepends=('cmake' 'vala' 'gtk3' 'libwnck3' 'bamf>=0.5.0' 'git')
+makedepends=('meson' 'vala' 'gtk3' 'libwnck3' 'bamf>=0.5.0' 'git')
 
 if (("${_disable_mate}" == 0));then
-	_opts+=(-DENABLE_MATE=ON)
+	_opts+=(-Dmate=enabled)
 	pkgname+=('vala-panel-appmenu-mate-git')
 	makedepends+=('mate-panel')
 #	msg "Mate applet enabled"
-else
-	_opts+=(-DENABLE_MATE=OFF)
 fi
 
 if (("${_disable_xfce}" == 0));then
-	_opts+=(-DENABLE_XFCE=ON)
+	_opts+=(-Dxfce=enabled)
 	pkgname+=('vala-panel-appmenu-xfce-git')
 	makedepends+=('xfce4-panel>=4.11.2' 'xfconf')
 #	msg "Xfce applet enabled"
-else
-	_opts+=(-DENABLE_XFCE=OFF)
 fi
 
 if (("${_disable_vala}" == 0));then
-	_opts+=(-DENABLE_VALAPANEL=ON)
+	_opts+=(-Dvalapanel=enabled)
 	pkgname+=('vala-panel-appmenu-valapanel-git')
-	makedepends+=('vala-panel>=0.3.75')
+	makedepends+=('vala-panel>=0.4.50')
 #	msg "Vala Panel applet enabled"
-else
-	_opts+=(-DENABLE_VALAPANEL=OFF)
 fi
 
 if (("${_disable_budgie}" == 0));then
-	_opts+=(-DENABLE_BUDGIE=ON)
+	_opts+=(-Dbudgie=enabled)
 	pkgname+=('vala-panel-appmenu-budgie-git')
 	makedepends+=('budgie-desktop')
 #	msg "Budgie applet enabled"
-else
-	_opts+=(-DENABLE_BUDGIE=OFF)
 fi
 
 
@@ -61,18 +51,15 @@ fi
 
 _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
-_cmakename=cmake-vala
-pkgver=0.7.3
-pkgrel=2
+pkgver=0.7.4
+pkgrel=1
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
 license=('LGPL3')
 
-source=("git+https://gitlab.com/vala-panel-project/${_pkgbase}.git"
-        "git+https://gitlab.com/vala-panel-project/${_cmakename}.git")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+https://gitlab.com/vala-panel-project/${_pkgbase}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgbase}"
@@ -82,15 +69,10 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd "${srcdir}/${_cmakename}"
-  cp -r . "${srcdir}/${_pkgbase}/cmake"
-}
 
 build() {
-  cd "${srcdir}/${_pkgbase}"
-  cmake ./ "${_opts[@]}"
-  make
+  meson "${_opts[@]}" build "${srcdir}/${_pkgbase}"
+  meson compile -C build
 }
 
 package_vala-panel-appmenu-xfce-git() {
@@ -102,17 +84,9 @@ package_vala-panel-appmenu-xfce-git() {
 			'jayatana: for Java applications support'
             'appmenu-qt: for qt4 menus'
             'appmenu-qt5: for qt5 menus')
-  cd "${srcdir}/${_pkgbase}"
-  make -C "applets" DESTDIR="${pkgdir}" install
-  make -C "lib" DESTDIR="${pkgdir}" install
-  make -C "data" DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/usr/lib/vala-panel"
-  rm -rf "${pkgdir}/usr/lib/mate-panel"
-  rm -rf "${pkgdir}/usr/share/vala-panel"
-  rm -rf "${pkgdir}/usr/share/mate-panel"
-  rm -rf "${pkgdir}/usr/share/dbus-1"
-  rm -rf "${pkgdir}/usr/lib/budgie-desktop"
-  rm -rf "${pkgdir}/usr/share/glib-2.0"
+  DESTDIR="${pkgdir}" meson install -C build
+  rm -rf ${pkgdir}/usr/share/{vala-panel,glib-2.0,locale,mate-panel,vala-panel-appmenu}
+  rm -rf ${pkgdir}/usr/lib/{mate-panel,vala-panel,budgie-desktop}
 }
 
 package_vala-panel-appmenu-valapanel-git() {
@@ -124,16 +98,10 @@ package_vala-panel-appmenu-valapanel-git() {
 			'jayatana: for Java applications support'
             'appmenu-qt: for qt4 menus'
             'appmenu-qt5: for qt5 menus')
-  cd "${srcdir}/${_pkgbase}"
-  make -C "applets" DESTDIR="${pkgdir}" install
-  make -C "lib" DESTDIR="${pkgdir}" install
-  make -C "data" DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/usr/lib/xfce4"
-  rm -rf "${pkgdir}/usr/share/mate-panel"
-  rm -rf "${pkgdir}/usr/share/xfce4"
-  rm -rf "${pkgdir}/usr/lib/mate-panel"
-  rm -rf "${pkgdir}/usr/lib/budgie-desktop"
-  rm -rf "${pkgdir}/usr/share/glib-2.0"
+  
+  DESTDIR="${pkgdir}" meson install -C build
+  rm -rf ${pkgdir}/usr/share/{xfce4,glib-2.0,locale,mate-panel,vala-panel-appmenu}
+  rm -rf ${pkgdir}/usr/lib/{mate-panel,xfce4,budgie-desktop}
 }
 
 package_vala-panel-appmenu-mate-git() {
@@ -145,16 +113,9 @@ package_vala-panel-appmenu-mate-git() {
 			'jayatana: for Java applications support'
             'appmenu-qt: for qt4 menus'
             'appmenu-qt5: for qt5 menus')
-  cd "${srcdir}/${_pkgbase}"
-  make -C "applets" DESTDIR="${pkgdir}" install
-  make -C "lib" DESTDIR="${pkgdir}" install
-  make -C "data" DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/usr/lib/vala-panel"
-  rm -rf "${pkgdir}/usr/lib/xfce4"
-  rm -rf "${pkgdir}/usr/share/xfce4"
-  rm -rf "${pkgdir}/usr/share/vala-panel"
-  rm -rf "${pkgdir}/usr/lib/budgie-desktop"
-  rm -rf "${pkgdir}/usr/share/glib-2.0"
+  DESTDIR="${pkgdir}" meson install -C build
+  rm -rf ${pkgdir}/usr/share/{vala-panel,glib-2.0,locale,xfce4,vala-panel-appmenu}
+  rm -rf ${pkgdir}/usr/lib/{xfce4,vala-panel,budgie-desktop}
 }
 
 package_vala-panel-appmenu-budgie-git() {
@@ -166,14 +127,9 @@ package_vala-panel-appmenu-budgie-git() {
 			'jayatana: for Java applications support'
             'appmenu-qt: for qt4 menus'
             'appmenu-qt5: for qt5 menus')
-  cd "${srcdir}/${_pkgbase}"
-  make -C "applets" DESTDIR="${pkgdir}" install
-  make -C "lib" DESTDIR="${pkgdir}" install
-  make -C "data" DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/usr/lib/xfce4"
-  rm -rf "${pkgdir}/usr/share"
-  rm -rf "${pkgdir}/usr/lib/vala-panel"
-  rm -rf "${pkgdir}/usr/lib/mate-panel"
+  DESTDIR="${pkgdir}" meson install -C build
+  rm -rf "${pkgdir}/usr/share/"
+  rm -rf ${pkgdir}/usr/lib/{mate-panel,vala-panel,xfce4}
 }
 
 package_vala-panel-appmenu-common-git() {
@@ -184,12 +140,7 @@ package_vala-panel-appmenu-common-git() {
               'vala-panel-appmenu-mate-git'
               'vala-panel-appmenu-budgie-git')
   arch=('any')
-  cd "${srcdir}/${_pkgbase}"
-  make -C "po" DESTDIR="${pkgdir}" install
-  make -C "data" DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}/usr/lib"
-  rm -rf "${pkgdir}/usr/share/dbus-1"
-  rm -rf "${pkgdir}/usr/share/mate-panel"
-  rm -rf "${pkgdir}/usr/share/vala-panel"
-  rm -rf "${pkgdir}/usr/share/xfce4"
+  DESTDIR="${pkgdir}" meson install -C build
+  rm -rf ${pkgdir}/usr/share/{vala-panel,xfce4,mate-panel}
+  rm -rf ${pkgdir}/usr/lib
 }

@@ -1,12 +1,12 @@
 pkgbase = vala-panel-appmenu-xfce-git
 	pkgdesc = AppMenu (Global Menu) plugin
-	pkgver = 0.7.3
-	pkgrel = 2
+	pkgver = 0.7.4
+	pkgrel = 1
 	url = https://gitlab.com/vala-panel-project/vala-panel-appmenu
 	arch = i686
 	arch = x86_64
 	license = LGPL3
-	makedepends = cmake
+	makedepends = meson
 	makedepends = vala
 	makedepends = gtk3
 	makedepends = libwnck3
@@ -15,11 +15,9 @@ pkgbase = vala-panel-appmenu-xfce-git
 	makedepends = mate-panel
 	makedepends = xfce4-panel>=4.11.2
 	makedepends = xfconf
-	makedepends = vala-panel>=0.3.75
+	makedepends = vala-panel>=0.4.50
 	makedepends = budgie-desktop
 	source = git+https://gitlab.com/vala-panel-project/vala-panel-appmenu.git
-	source = git+https://gitlab.com/vala-panel-project/cmake-vala.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = vala-panel-appmenu-common-git
