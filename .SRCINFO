@@ -1,0 +1,14 @@
+pkgbase = jilu-bin
+	pkgdesc = Generate a change log based on the state of your Git repository
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/rustic-games/jilu
+	arch = x86_64
+	license = Apache
+	conflicts = jilu
+	conflicts = jilu-git
+	source = https://github.com/rustic-games/jilu/releases/download/v0.4.0/jilu_0.4.0_Linux_x86_64.tar.gz
+	sha256sums = 0baad3bd569293a34a7ae41c8cbf8d4138ecc9790efe8f883a062d49a2322a43
+
+pkgname = jilu-bin
+
