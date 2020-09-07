@@ -160,7 +160,7 @@ prepare() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   msg "get kernel version"
-  make prepare
+  make olddefconfig
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
