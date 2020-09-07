@@ -1,8 +1,8 @@
-# Contributor: Shaber
 # Maintainer: Dan Johansen <strit@manjaro.org>
+# Contributor: Shaber
 
 pkgname=libcprime
-pkgver=3.0.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A library for bookmarking, saving recent activites, managing settings of CoreApps."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-connectivity' 'libnotify')
 groups=('coreapps')
 source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('cec6fe4bb143395e6d3bd6d83f955c97')
+md5sums=('2124981a6cfafb9eb5ba147625e7fbda')
 
 prepare() {
   mkdir -p build
