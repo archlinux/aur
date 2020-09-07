@@ -10,7 +10,7 @@ pkgbase = aws-vault
 	optdepends = zenity: graphical prompt
 	optdepends = kdialog: graphical prompt
 	source = aws-vault-6.0.0.tar.gz::https://github.com/99designs/aws-vault/archive/v6.0.0.tar.gz
-	sha256sums = 1d6d3b55d05341f879d0942ea9df66d60d703d40862ffcfa6e80a606d5cf3878
+	sha256sums = 467509b4db3da0db1360e3f22c233f7c8bb321f576ebcb69166041da5de45100
 
 pkgname = aws-vault
 
