@@ -1,12 +1,12 @@
 pkgbase = abcmidi
 	pkgdesc = A set of tools for converting ABC files to MIDI files and vice versa, as well as other small utilities
-	pkgver = 20200607
+	pkgver = 20200809
 	pkgrel = 1
 	url = https://ifdo.ca/~seymour/runabc/top.html
 	arch = x86_64
 	license = GPL
-	source = https://ifdo.ca/~seymour/runabc/abcMIDI-2020.06.07.zip
-	sha256sums = 33f36c450d106b5a4ee1e9f975ea0c65615004d68c950011c391d15002974814
+	source = https://ifdo.ca/~seymour/runabc/abcMIDI-2020.08.09.zip
+	sha256sums = 8509c6e6909d193028d38a3a0a9a301e26bdee32ef3dacde0fa1dca9c3a54b65
 
 pkgname = abcmidi
 
