@@ -10,7 +10,7 @@ license=('custom')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'subversion')
 options=('staticlibs' '!buildflags' '!strip')
-source=("sys::svn+svn://svn.code.sf.net/p/mingw-w64/code/experimental/getrusage" unmaintained_fields.patch)
+source=("sys::svn+https://svn.code.sf.net/p/mingw-w64/code/experimental/getrusage" unmaintained_fields.patch)
 md5sums=('SKIP' SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -25,9 +25,9 @@ build() {
   cd "${srcdir}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-gcc -I.. -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4 -c ../sys/getrusage.c -o getrusage.o
-    ${_arch}-gcc -shared -o libgetrusage.dll getrusage.o -Wl,--out-implib,libgetrusage.dll.a
-    ${_arch}-ar cru libgetrusage.a getrusage.o
+    ${_arch}-gcc -I.. -D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4 -c ../sys/getrusage.c -o getrusage.o
+    ${_arch}-gcc -shared -o libgetrusage.dll getrusage.o -Wl,--out-implib,libgetrusage.dll.a -Wl,-O1,--sort-common,--as-needed -fstack-protector
+    ${_arch}-ar cr libgetrusage.a getrusage.o
     ${_arch}-ranlib libgetrusage.a
     popd
   done
