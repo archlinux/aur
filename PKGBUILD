@@ -3,7 +3,7 @@
 
 pkgname="act-git"
 _pkgname="act"
-pkgver=0.2.5
+pkgver=0.2.14.r0.g7d443c6
 pkgrel=1
 pkgdesc='Run your GitHub Actions locally'
 arch=('x86_64')
@@ -15,6 +15,11 @@ depends=('docker')
 makedepends=('go' 'git')
 source=("act::git+https://github.com/nektos/act.git")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/$_pkgname"
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
     export GOPATH="$srcdir"/gopath
