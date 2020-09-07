@@ -16,8 +16,13 @@ optdepends=('cups: for printing support')
 replaces=('mmex')
 provides=('moneymanagerex')
 conflicts=('moneymanagerex')
-source=(git+https://github.com/moneymanagerex/moneymanagerex.git#tag=v$pkgver)
+source=(git+https://github.com/moneymanagerex/moneymanagerex.git)
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%-git}"
+  git describe --abbrev=0 | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+}
 
 prepare() {
   cd "${pkgname%-git}"
