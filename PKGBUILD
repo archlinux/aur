@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=jsonlite
-_cranver=1.7.0
+_cranver=1.7.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,10 +13,9 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=(r)
-makedepends=(gcc)
-optdepends=(r-httr r-curl r-plyr r-testthat r-knitr r-rmarkdown r-r.rsp r-sf r-sp)
+optdepends=(r-httr r-curl r-plyr r-testthat r-knitr r-rmarkdown r-r.rsp r-sf)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('0953651356dab9697915b01fb8008925')
+sha256sums=('2a10a8a0bc3aa904d00209f5a658d22f307b26be8a43917a1ac3f9cabcbdcff3')
 
 build() {
   cd "${srcdir}"
