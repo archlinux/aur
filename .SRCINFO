@@ -1,0 +1,30 @@
+pkgbase = mapivi-svn
+	pkgdesc = A photo management tool with focus on JPEG pictures (dev version)
+	pkgver = r428
+	pkgrel = 1
+	url = http://mapivi.sourceforge.net/mapivi.shtml
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = jpegpixi
+	depends = jhead
+	depends = imagemagick
+	depends = libjpeg
+	depends = perl-image-info
+	depends = perl-image-metadata-jpeg
+	depends = tk-matchentry
+	depends = tk-resizebutton
+	depends = tk-splash
+	depends = perl-tk
+	depends = perl-exiftool
+	source = mapivi-svn::svn+https://svn.code.sf.net/p/mapivi/code
+	source = mapivi
+	source = mapivi-svn.desktop
+	source = mapivi.png
+	md5sums = SKIP
+	md5sums = 838400c143467bd6767ddb68a204f484
+	md5sums = d66228d2fac50bc16c48f3eed54a36ba
+	md5sums = 15d8e83af7ccfa852774a48d2fb1ba75
+
+pkgname = mapivi-svn
+
