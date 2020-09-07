@@ -1,9 +1,10 @@
 pkgbase = pix-maui-git
 	pkgdesc = Image gallery application
 	pkgver = v1.1.1.r34.ge2ceb78
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/maui/pix
 	arch = x86_64
+	groups = maui-apps
 	license = GPL3
 	makedepends = git
 	makedepends = extra-cmake-modules

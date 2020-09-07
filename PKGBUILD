@@ -2,9 +2,10 @@
 
 pkgname=pix-maui-git
 pkgver=v1.1.1.r34.ge2ceb78
-pkgrel=1
+pkgrel=2
 pkgdesc="Image gallery application"
 arch=('x86_64')
+groups=('maui-apps')
 url="https://invent.kde.org/maui/pix"
 license=('GPL3')
 depends=('ki18n' 'qt5-location' 'mauikit-git' 'kio' 'syntax-highlighting' 'attica' 'exiv2' 'kquickimageeditor')
