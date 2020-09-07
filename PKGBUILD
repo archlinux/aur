@@ -3,10 +3,10 @@
 _gemname=console
 pkgname=ruby-$_gemname
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Beautiful logging for Ruby.'
 arch=(any)
-url='https://github.com/ioquatix/console'
+url='https://github.com/socketry/console'
 license=(MIT)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
