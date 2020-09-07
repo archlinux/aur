@@ -1,7 +1,7 @@
 # Maintainer: Braindamage
 pkgname=multimidicast
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="multimidicast sends and receives MIDI from Alsa sequencers over your network, It is designed to interoperate with QmidiNet, TouchDAW, and ipMIDI."
 arch=('x86_64' 'armv7l' 'aarch64')
 url="https://llg.cubic.org/tools/multimidicast/"
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('alsa-lib')
 groups=('pro-audio')
 source=("https://llg.cubic.org/tools/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('5aff3b4ade85b02c0becd6e8dd74b689e3d7246e0237be572fceec169b3d68c6')
+sha256sums=('3660cf412f9189bd6ba36d0fae10d81d7ee402f86610d94f292a6d96303cbe1e')
 
 prepare() {
   cd "$pkgname-$pkgver"
