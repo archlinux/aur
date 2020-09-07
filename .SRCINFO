@@ -1,0 +1,19 @@
+pkgbase = quake3e
+	pkgdesc = Improved Quake III Arena Engine
+	pkgver = 2020.08.08.r43.g521c2fbf
+	pkgrel = 1
+	url = https://github.com/ec-/Quake3e
+	install = quake3e.install
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = libxxf86dga
+	source = Quake3e::git://github.com/ec-/Quake3e.git
+	source = quake3e.desktop
+	source = quake3e.png
+	sha256sums = SKIP
+	sha256sums = 18d569ec6896338ffde7d00996f2e63d8df88d16d9a9ccb8bd9a14c76b4a8aa2
+	sha256sums = 9bb20ad9e3f569dcc0d0b522c03bfb2021096b08f073b79704b86feaa67e82f8
+
+pkgname = quake3e
+
