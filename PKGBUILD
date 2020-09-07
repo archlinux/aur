@@ -2,7 +2,7 @@
 
 pkgname="gr-framework"
 pkgver="0.52.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A universal framework for cross-platform visualization applications."
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
 url="https://gr-framework.org"
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("bzip2" "cairo" "fontconfig" "freetype2" "ghostscript" "glfw-x11" \
          "libjpeg-turbo" "libpng" "libtiff" "libx11" "libxft" "libxt" "pixman" \
          "qhull" "qt5-base" "zlib")
-makedepends=("cmake")
+makedepends=("cmake" "emscripten")
 optdepends=("ffmpeg: video support")
 source=("https://github.com/sciapp/gr/archive/v${pkgver}.tar.gz")
 sha256sums=("8c9149377bfd3fe61b05cda34b980f894f1a723d7c74c4ace5da2e31d3630870")
@@ -27,10 +27,8 @@ build() {
           -DGR_USE_BUNDLED_LIBRARIES=OFF \
           -S . \
           -B build && \
-    cmake --build build
-    if command -v >/dev/null 2>&1; then
-        emmake make -C js || return
-    fi
+    cmake --build build && \
+    /usr/lib/emscripten/emmake make -C js
 }
 
 package() {
