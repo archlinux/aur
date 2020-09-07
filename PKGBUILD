@@ -1,18 +1,20 @@
 # Maintainer: Arti Zirk <arti.zirk@gmail.com>
 # Contributor: Timmy Yao <timmy.yao+aur@gmail.com>
-pkgname=authy
-pkgver=1.8.2
-pkgrel=2
+pkgname=authy-desktop-win32-bin
+pkgver=1.8.3
+pkgrel=1
 pkgdesc="Two-Factor Authentication from your PC. Converted from Windows electron version"
 arch=("x86_64")
+provides=('authy')
+conflicts=('authy')
 url="https://authy.com/"
-license=('ISC')
+license=('unknown')
 depends=('electron')
 makedepends=('npm' 'p7zip' 'asar')
 source=("https://s3.amazonaws.com/authy-electron-repository-production/authy/stable/${pkgver}/win32/x64/Authy%20Desktop%20Setup%20${pkgver}.exe"
         "authy.desktop")
-md5sums=('3dbddeede651bd8f323b54f1b31bf8a9'
-         'bb9f4ecd1eac83d21c9696582b1ce98e')
+md5sums=('630362cf725391d1fc86c9a4d06f0161'
+         'cc79603cae19a93f67bc2da8120501e9')
 
 build() {
 	cd "$srcdir"
@@ -28,7 +30,7 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
-	install -Dm644  -t "${pkgdir}"/usr/lib/"${pkgname}" \
+	install -Dm644  -t "${pkgdir}"/usr/lib/authy \
 		lib/net45/resources/app.asar \
 		app.asar/img/logos/icon128.png
 	install -Dm644 "$srcdir"/authy.desktop -t "$pkgdir"/usr/share/applications
