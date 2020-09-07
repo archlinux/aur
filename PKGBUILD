@@ -2,14 +2,14 @@
 
 pkgname=asp
 pkgver=6
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Linux build source file management tool"
 arch=(any)
 url="https://github.com/falconindy/asp"
 license=(MIT)
 depends=(awk bash jq git libarchive)
 makedepends=(asciidoc)
-source=("git+https://github.com/falconindy/asp?signed#tag=v$pkgver")
+source=("git+https://github.com/falconindy/asp.git#tag=v$pkgver?signed")
 validpgpkeys=('487EACC08557AD082088DABA1EB2638FF56C0C53')  # Dave Reisner
 md5sums=('SKIP')
 
