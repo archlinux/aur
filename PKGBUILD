@@ -1,6 +1,6 @@
 # Maintainer: Artjom Löbsack <me@ceigh.com>
 pkgname=git-hours
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 epoch=
 pkgdesc="Count the time spent on code via git"
