@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Quake3e
+GenericName=Quake III Arena
+Comment=Improved Quake III Arena Engine
+Exec=/usr/bin/quake3e
+Icon=/usr/share/pixmaps/quake3e.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game;

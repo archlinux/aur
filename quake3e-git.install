@@ -1,0 +1,15 @@
+post_install() {
+    echo "
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>>> The improved Quake III Arena engine has been installed
+
+>>> To play you have to copy the baseq3 folder from your
+>>> Q3A CD-ROM to /opt/quake3e/
+
+>>> Set the correct permissions afterwards like so:
+# chown -R root:root /opt/quake3e/baseq3
+# find /opt/quake3e/baseq3 -type d -execdir chmod 755 {} +
+# find /opt/quake3e/baseq3 -type f -execdir chmod 644 {} +
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"
+    }
