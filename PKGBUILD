@@ -4,7 +4,7 @@
 pkgname="act-git"
 _pkgname="act"
 pkgver=0.2.14.r0.g7d443c6
-pkgrel=1
+pkgrel=2
 pkgdesc='Run your GitHub Actions locally'
 arch=('x86_64')
 url='https://github.com/nektos/act'
@@ -32,7 +32,7 @@ build() {
     export GOPATH="$srcdir"/gopath
 
     cd "$srcdir/$_pkgname"
-    make build
+    go build -ldflags "-X main.version=$pkgver" -o dist/local/act main.go
 }
 
 package() {
