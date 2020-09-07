@@ -14,8 +14,8 @@ replaces=('endeavouros-nix')
 md5sums=('4d178d06a8e7a17db4ba1855967307e1')
 
 package() {
-    cd $srcdir/$pkgname-$pkgver
-    install -d -m755 $pkgdir/usr/share/grub/themes/$pkgname
-    cp -R $pkgname $pkgdir/usr/share/grub/themes/
+    cd $srcdir/endeavouros-galleon-$pkgver
+    install -d -m755 $pkgdir/usr/share/grub/themes/endeavouros-galleon
+    cp -R endeavouros-galleon $pkgdir/usr/share/grub/themes/
 }
 
