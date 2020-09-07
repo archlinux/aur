@@ -2,25 +2,22 @@
 
 _pkgname=vala-panel
 pkgname=${_pkgname}-git
-_cmakename=cmake-vala
-pkgver=0.4.86
+pkgver=0.4.92
 pkgrel=1
 pkgdesc="Gtk3 panel for compositing window managers"
 url="https://gitlab.com/vala-panel-project/vala-panel"
 arch=('i686' 'x86_64')
 license=('LGPL3')
 depends=('gtk3' 'libwnck3')
-makedepends=('cmake' 'vala')
+makedepends=('meson' 'vala')
 provides=("vala-panel=${pkgver}")
 optdepends=('vala-panel-appmenu-valapanel: Global Menu'
 			'vala-panel-sntray: SNI System tray'
 			'vala-panel-applets-xembed: Old system tray'
 			'vala-panel-applets-icontasks: Budgie tasklist'
 			'vala-panel-genmon: GenMon applet')
-source=("git+https://gitlab.com/vala-panel-project/${_pkgname}.git"
-        "git+https://gitlab.com/vala-panel-project/${_cmakename}.git")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+https://gitlab.com/vala-panel-project/${_pkgname}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -30,20 +27,13 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd "${srcdir}/${_cmakename}"
-  cp -r . "${srcdir}/${_pkgname}/cmake"
-}
-
 build() {
-  cd "${srcdir}/${_pkgname}"
-  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DENABLE_WNCK=ON
-  make
+  meson build "${srcdir}/${_pkgname}" --prefix=/usr --libdir=lib --libexecdir=lib -Dwnck=enabled
+  meson compile -C build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" meson install -C build
 }
 
 
