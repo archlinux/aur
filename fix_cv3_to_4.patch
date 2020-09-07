@@ -1,0 +1,109 @@
+diff --git a/kinect2_calibration/CMakeLists.txt b/kinect2_calibration/CMakeLists.txt
+index 0ef4dcc..bd0fa4a 100644
+--- a/kinect2_calibration/CMakeLists.txt
++++ b/kinect2_calibration/CMakeLists.txt
+@@ -88,11 +88,10 @@ target_link_libraries(kinect2_calibration
+ # )
+ 
+ ## Mark executables and/or libraries for installation
+-# install(TARGETS kinect2_bridge kinect2_bridge_node
+-#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+-#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+-#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+-# )
++install(TARGETS kinect2_calibration kinect2_calibration
++  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
++
++)
+ 
+ ## Mark cpp header files for installation
+ # install(DIRECTORY include/${PROJECT_NAME}/
+diff --git a/kinect2_calibration/src/kinect2_calibration.cpp b/kinect2_calibration/src/kinect2_calibration.cpp
+index 73d7957..8e35314 100644
+--- a/kinect2_calibration/src/kinect2_calibration.cpp
++++ b/kinect2_calibration/src/kinect2_calibration.cpp
+@@ -110,7 +110,7 @@ public:
+       circleFlags = cv::CALIB_CB_ASYMMETRIC_GRID + cv::CALIB_CB_CLUSTERING;
+     }
+ 
+-    params.push_back(CV_IMWRITE_PNG_COMPRESSION);
++    params.push_back(cv::IMWRITE_PNG_COMPRESSION);
+     params.push_back(9);
+ 
+     board.resize(boardDims.width * boardDims.height);
+@@ -347,14 +347,14 @@ private:
+ 
+         if(mode == COLOR || mode == SYNC)
+         {
+-          cv::cvtColor(color, colorDisp, CV_GRAY2BGR);
++          cv::cvtColor(color, colorDisp, cv::COLOR_GRAY2BGR);
+           cv::drawChessboardCorners(colorDisp, boardDims, pointsColor, foundColor);
+           //cv::resize(colorDisp, colorDisp, cv::Size(), 0.5, 0.5);
+           //cv::flip(colorDisp, colorDisp, 1);
+         }
+         if(mode == IR || mode == SYNC)
+         {
+-          cv::cvtColor(irGrey, irDisp, CV_GRAY2BGR);
++          cv::cvtColor(irGrey, irDisp, cv::COLOR_GRAY2BGR);
+           cv::drawChessboardCorners(irDisp, boardDims, pointsIr, foundIr);
+           //cv::resize(irDisp, irDisp, cv::Size(), 0.5, 0.5);
+           //cv::flip(irDisp, irDisp, 1);
+@@ -746,6 +746,10 @@ private:
+ #elif CV_MAJOR_VERSION == 3
+     error = cv::stereoCalibrate(pointsBoard, pointsIr, pointsColor, cameraMatrixIr, distortionIr, cameraMatrixColor, distortionColor, sizeColor,
+                                 rotation, translation, essential, fundamental, cv::CALIB_FIX_INTRINSIC, termCriteria);
++    
++#elif CV_MAJOR_VERSION == 4
++    error = cv::stereoCalibrate(pointsBoard, pointsIr, pointsColor, cameraMatrixIr, distortionIr, cameraMatrixColor, distortionColor, sizeColor,
++                                rotation, translation, essential, fundamental, cv::CALIB_FIX_INTRINSIC, termCriteria);
+ #endif
+     OUT_INFO("re-projection error: " << error << std::endl);
+ 
+@@ -997,7 +1001,7 @@ public:
+   }
+ 
+ private:
+-  void compareDists(const std::vector<double> &imageDists, const std::vector<double> &depthDists) const
++void compareDists(const std::vector<double> &imageDists, const std::vector<double> &depthDists) const
+   {
+     if(imageDists.size() != depthDists.size())
+     {
+@@ -1043,6 +1047,8 @@ private:
+ 
+   void computePointDists(const cv::Mat &normal, const double distance, const cv::Mat &region, const cv::Rect &roi, std::vector<double> &depthDists, std::vector<double> &imageDists)
+   {
++      
++    OUT_INFO( "rows:" << region.rows<<std::endl);
+     for(int r = 0; r < region.rows; ++r)
+     {
+       const uint16_t *itD = region.ptr<uint16_t>(r);
+@@ -1051,6 +1057,7 @@ private:
+       for(int c = 0; c < region.cols; ++c, ++itD, ++p.x)
+       {
+         const double dDist = *itD / 1000.0;
++        OUT_INFO( "dDist:" << dDist<<std::endl);
+ 
+         if(dDist < 0.1)
+         {
+@@ -1059,6 +1066,7 @@ private:
+ 
+         const double iDist = computeDistance(p, normal, distance);
+         const double diff = iDist - dDist;
++        OUT_INFO( "std::abs(diff) :" << std::abs(diff) <<std::endl);
+ 
+         if(std::abs(diff) > 0.08)
+         {
+@@ -1088,11 +1096,12 @@ private:
+   void getPlane(const size_t index, cv::Mat &normal, double &distance) const
+   {
+     cv::Mat rvec, rotation, translation;
+-    //cv::solvePnP(board, points[index], cameraMatrix, distortion, rvec, translation, false, cv::EPNP);
+ #if CV_MAJOR_VERSION == 2
+     cv::solvePnPRansac(board, points[index], cameraMatrix, distortion, rvec, translation, false, 300, 0.05, board.size(), cv::noArray(), cv::ITERATIVE);
+ #elif CV_MAJOR_VERSION == 3
+     cv::solvePnPRansac(board, points[index], cameraMatrix, distortion, rvec, translation, false, 300, 0.05, 0.99, cv::noArray(), cv::SOLVEPNP_ITERATIVE);
++#elif CV_MAJOR_VERSION == 4
++    cv::solvePnPRansac(board, points[index], cameraMatrix, distortion, rvec, translation, false, 300, 0.05, 0.99, cv::noArray(), cv::SOLVEPNP_ITERATIVE);
+ #endif
+     cv::Rodrigues(rvec, rotation);
+ 
