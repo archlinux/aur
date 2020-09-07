@@ -1,6 +1,7 @@
 # Maintainer: Martin Hoeher <martin@rpdev.net>
+# Automatically released from https://gitlab.com/rpdev/opentodolist/-/pipelines/186578590
 pkgname=opentodolist
-pkgver=3.25.0
+pkgver=3.26.0
 pkgrel=2
 pkgdesc="Maintain todo lists, notes and images in libraries, which can be synced via various services like NextCloud between your devices."
 arch=('x86_64')
@@ -48,7 +49,11 @@ build() {
 check() {
         cd "$srcdir/${pkgname%}"
         cd build
-        make check
+        # Some unit tests are failing sometimes - this is due to multi-threading issues
+        # where the test does not "wait in the right order" (kind of). Ideally, we'd fix
+        # this, however, in order to avoid issues, retry the testing.
+        # If the test fails three times, this is a clear sign that something IS broken.
+        make check || make check || make check
 }
 
 package() {

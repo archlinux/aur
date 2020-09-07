@@ -15,7 +15,7 @@ pkgbase = opentodolist
 	depends = noto-fonts
 	provides = opentodolist
 	conflicts = opentodolist
-	source = opentodolist::git+https://gitlab.com/rpdev/opentodolist.git#commit=3.25.0
+	source = opentodolist::git+https://gitlab.com/rpdev/opentodolist.git#commit=ab0c2f7304bf57fd4e6e226e4c42381964ce6dd1
 	md5sums = SKIP
 
 pkgname = opentodolist
