@@ -10,7 +10,7 @@ arch=(x86_64)
 pkgdesc="Phonon GStreamer backend for Qt4"
 depends=(gst-plugins-base phonon-qt4)
 provides=(phonon-qt4-backend)
-url='https://phonon.kde.org/'
+url=https://phonon.kde.org://community.kde.org/Phonon''
 license=(LGPL)
 optdepends=('pulseaudio: PulseAudio support' 'gst-plugins-good: PulseAudio support and good codecs' 'gst-plugins-bad: additional codecs'
 	'gst-plugins-ugly: additional codecs' 'gst-libav: libav codec')
