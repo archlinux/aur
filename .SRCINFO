@@ -1,18 +1,16 @@
 pkgbase = walt-client
 	pkgdesc = WalT control tool
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
 	url = https://walt-project.liglab.fr
 	arch = any
 	license = BSD
 	depends = walt-common
-	depends = python2-commonmark
-	depends = python2-pygments
-	source = https://files.pythonhosted.org/packages/source/w/walt-client/walt-client-4.tar.gz
-	source = drop_bash_completion.patch
+	depends = python-commonmark
+	depends = python-pygments
+	source = https://files.pythonhosted.org/packages/source/w/walt-client/walt-client-5.tar.gz
 	source = LICENSE
-	sha256sums = 42f122680702ca5a7679ff204effa48f4cea2a2663722829453e3998565399cb
-	sha256sums = eb8d702bff8e5b26327ae3021a295aa273109eb0f953be51c8fe0be62768bc87
+	sha256sums = 6eb4e8aeb67b580b2a630222ec651035965ed0b700c24d654520195e6b15417c
 	sha256sums = 49e4de7e7679bb97dd8bf5363c87da852ef1e00d8a1263d2fe4855d7b47fd401
 
 pkgname = walt-client
