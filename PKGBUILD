@@ -4,7 +4,7 @@ pkgname=quickcut-git
 _pkgname=${pkgname%-git}
 _gitname=QuickCut
 pkgver=v1.3.0.r7.gd6eb81a
-pkgrel=4
+pkgrel=1
 pkgdesc="Your most handy video processing software."
 arch=('x86_64' 'i686')
 url="https://github.com/HaujetZhao/QuickCut"
@@ -24,43 +24,25 @@ depends=('ffmpeg'
          'python-tencentcloud-sdk-python'
          'python-alibabacloud-nls-python-sdk'
          'python-auditok'
-         'python-pymediainfo')
+         'python-pymediainfo'
+         'you-get'
+         'youtube-dl')
 makedepends=('git' 'icoutils')
 provides=('quickcut' 'quickcut-bin')
 conflicts=('quickcut' 'quickcut-bin')
-source=("git+https://github.com/HaujetZhao/QuickCut"
-        "${_pkgname}.sh")
-sha256sums=('SKIP'
-            '65e15d5675c1faa54c1d1ae38649a39a2fbb97aed688d8b0db295856ab2e66ae')
-
+source=("git+https://github.com/HaujetZhao/QuickCut")
+sha256sums=('SKIP')
 package() {
   cd $_gitname
 
-  # Shebang &   # ugly hack
-  sed -i '1i #!/usr/bin/python' QuickCut.py
-  sed -i 's|icon.icns|/usr/lib/quickcut/icon.icns|g' QuickCut.py
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
-  # install
-  install -Dm755 QuickCut.py ${pkgdir}/usr/lib/${_pkgname}/QuickCut.py
-  install -Dm644  icon.icns ${pkgdir}/usr/lib/${_pkgname}/icon.icns
-  install -dm755 ${pkgdir}/usr/bin
-  install -dm755 ${pkgdir}/usr/share/pixmaps
-  install -dm755 ${pkgdir}/usr/share/applications
-  
-  # sh
-  install -Dm755 ${srcdir}/${_pkgname}.sh ${pkgdir}/usr/bin/${_pkgname}
-
-  # icon
-  icotool -x icon.ico
+ # icon
+  icotool -x QuickCut/QuickCut/icon.ico
   install -Dm644 icon_*_32x32x32.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
 
-  # other
-  mv languages ${pkgdir}/usr/lib/${_pkgname}/
-
-  # themes
-  cp style.css ${pkgdir}/usr/lib/${_pkgname}/
-
   # desktop entry
+  install -dm755  ${pkgdir}/usr/share/applications/
   cat > ${pkgdir}/usr/share/applications/${_pkgname}.desktop << EOF
 [Desktop Entry]
 Type=Application
