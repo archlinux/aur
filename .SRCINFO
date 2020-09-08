@@ -1,0 +1,17 @@
+pkgbase = pyuscope
+	pkgdesc = py-gstreamer microscope software for panorama captures using LinuxCNC
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/JohnDMcMaster/pyuscope
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = gst-python
+	depends = python-gobject
+	depends = python-pyqt5
+	source = pyuscope-2.1.0.tar.gz::https://github.com/JohnDMcMaster/pyuscope/archive/v2.1.0.tar.gz
+	sha512sums = 25a73df1c21366a0d336e46f91ec6dc6c61f97c65d80c2597ee0d6a8d03d34814df16de8b364f5a080265be14893598200e756a8a84dd5517159707433dd118c
+
+pkgname = pyuscope
+
