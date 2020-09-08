@@ -1,6 +1,6 @@
 pkgbase = libhandy-glade-catalog-disabled-git
 	pkgdesc = Library full of GTK+ widgets for mobile phones
-	pkgver = 0.80.0.r14.g2bfaeb2
+	pkgver = 0.91.0.r1.ge3fb740
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libhandy
 	arch = i686
@@ -14,8 +14,11 @@ pkgbase = libhandy-glade-catalog-disabled-git
 	makedepends = meson
 	makedepends = vala
 	depends = gtk3
-	provides = libhandy
-	conflicts = libhandy
+	provides = libhandy=1
+	provides = libhandy-1.so
+	provides = libhandy1
+	conflicts = libhandy>=0.80.0
+	conflicts = libhandy1
 	conflicts = libhandy-git
 	source = git+https://gitlab.gnome.org/GNOME/libhandy.git
 	md5sums = SKIP
