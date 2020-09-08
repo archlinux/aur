@@ -1,16 +1,17 @@
 pkgbase = python-savepagenow
 	pkgdesc = Wrapper for archive.org Save Page Now capturing service
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://github.com/pastpages/savepagenow/
+	url = https://github.com/pastpages/savepagenow
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python
 	depends = python-click
 	depends = python-requests
 	provides = savepagenow
-	source = savepagenow-1.0.1.tar.gz::https://github.com/pastpages/savepagenow//archive/v1.0.1.tar.gz
-	sha256sums = 125037683da5b9429dfbe826d89eed0cb325ee8c326fb6abd707600cc8a1242e
+	source = https://files.pythonhosted.org/packages/source/s/savepagenow/savepagenow-1.1.0.tar.gz
+	sha256sums = 002892ffb15e5ffad8c1ec09989667bb44f42a2b59415bf021c46833a76b2d60
 
 pkgname = python-savepagenow
 
