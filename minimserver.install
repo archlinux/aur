@@ -17,10 +17,10 @@ To stop minimserver
 (you can use also the desktop file at /opt/minimserver/icons/MinimServer.desktop)
 
 To start minimserver, you could also start the service unit file:
-  # systemctl start minimserver@<user>
+  # systemctl --user start minimserver
 
 To enable minimserver at boot:
-  # systemctl enable minimserver@<user>
+  # systemctl --user enable minimserver
   
 To complete the configuration once the service has been started, point
 your web browser to:

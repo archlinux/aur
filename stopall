@@ -1,0 +1,37 @@
+#!/bin/sh
+
+echo "Checking for running instances of MinimServer..."
+while :
+do
+    PID="$(ps -ef | grep mserver\\.jar | awk '{ print $2 }')"
+    if [ "$PID" = "" ]; then
+        break
+    fi
+    if [ "$PID" != "$KILLPID" ]; then
+        echo "Stopping MinimServer process $PID"
+        kill_time=0
+        max_kill_time=10
+        force=""
+        KILLPID=$PID
+        kill $KILLPID || break
+    else
+        if [ $kill_time -eq $max_kill_time ]; then
+            if [ -z "$force" ]; then
+                echo "Forcibly stopping MinimServer process $PID"
+                max_kill_time=15
+                force="-9"
+                kill $force $KILLPID || break
+            else
+                echo "Unable to stop MinimServer process $PID" 1>&2
+                exit 1
+            fi
+        fi
+    fi
+    kill_time=$(($kill_time+1))
+    sleep 1
+done
+if [ -z "$KILLPID" ]; then
+    echo "No MinimServer instances are running"
+fi
+
+exit 0
