@@ -4,11 +4,11 @@
 
 _pkgname=talkatu
 pkgname=$_pkgname-hg
-pkgver=r392.9c929229e8f9
+pkgver=r397.c479d9b87420
 pkgrel=1
 pkgdesc="Gtk+ widgets for chat software"
 arch=('i686' 'x86_64')
-url="https://bitbucket.org/pidgin/talkatu"
+url="https://keep.imfreedom.org/talkatu/talkatu"
 license=('GPL2')
 depends=('gtk3>=3.10.0' 'glade>=2.0' 'gumbo-parser>=0.10' 'gspell>=1.2' 'cmark')
 makedepends=('mercurial' 'meson' 'vala' 'help2man' 'gtk-doc' 'gobject-introspection')
