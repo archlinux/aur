@@ -1,6 +1,6 @@
 pkgbase = deepin-file-manager-git
 	pkgdesc = Deepin File Manager
-	pkgver = 5.2.0.9.r38.g5602a7942
+	pkgver = 5.2.0.37.r0.ga6fde9dd4
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-file-manager
 	arch = x86_64

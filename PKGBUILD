@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-file-manager-git
-pkgver=5.2.0.9.r38.g5602a7942
+pkgver=5.2.0.37.r0.ga6fde9dd4
 pkgrel=1
 pkgdesc='Deepin File Manager'
 arch=('x86_64')
@@ -40,7 +40,7 @@ prepare() {
 
 build() {
   cd $pkgname
-  qmake-qt5 PREFIX=/usr
+  qmake-qt5 PREFIX=/usr filemanager.pro
   make -j$(nproc)
 }
 
