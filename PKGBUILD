@@ -2,7 +2,7 @@
 # Maintainer: Kevin Del Castillo <quebin31@gmail.com>
 
 pkgname=dracut-hook
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Install/remove hooks for dracut"
 url=https://dracut.wiki.kernel.org/index.php/Main_Page
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=('5110714a574eb14e1bace89a6526fc07d98a82969c1b4cb95c46aa183a750ab8'
             '25409770cdf9607eb05addcbc0f89f45a91385c25b8a307425d4b3f4b7c2a9ef'
-            '439c5caa6e4487faa7238869fe08ceedbd9297208f1fe5286cb816364533a4ea'
+            '492d51df1234b75a32e7dff63c86ee104a7d844a408070e1c4da5dc8ab53be6f'
             '054dac9f1d55029a922ff05c3064e54d25790c7a18d2b598edc58ef3d295cba1')
 
 package() {

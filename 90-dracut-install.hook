@@ -4,6 +4,7 @@ Operation = Install
 Operation = Upgrade
 Target = usr/lib/modules/*/pkgbase
 Target = usr/lib/dracut/*
+Target = usr/lib/systemd/systemd
 
 [Action]
 Description = Updating linux initcpios...
