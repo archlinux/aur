@@ -1,17 +1,17 @@
 # Maintainer: Patrik Bachan <patrikbachan at gmail dot com>
 pkgname=serialplot-hg
 _pkgname=serialplot
-pkgver=811.5c9db4e54bbd
+pkgver=824.9eab71b17958
 pkgrel=1
 pkgdesc="Small and simple software for plotting data from serial port in realtime"
 arch=('i686' 'x86_64')
-url="https://bitbucket.org/hyOzd/serialplot"
+url="https://hg.sr.ht/~hyozd/serialplot/"
 license=('GPL3')
 depends=('qwt' 'qt5-base' 'qt5-serialport' 'hicolor-icon-theme')
 makedepends=('mercurial' 'cmake')
 provides=('serialplot')
 conflicts=('serialplot')
-source=('hg+https://bitbucket.org/hyOzd/serialplot')
+source=('hg+https://hg.sr.ht/~hyozd/serialplot')
 sha256sums=('SKIP')
 
 pkgver() {
