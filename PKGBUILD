@@ -1,8 +1,8 @@
 # Maintainer: Nathan Monfils <nathan.monfils@hotmail.fr>
 
 pkgname=pypy2-revdb
-pkgver=7.1.0
-pkgrel=2
+pkgver=7.3.1
+pkgrel=1
 pkgdesc="PyPy2 compiled with revdb"
 arch=(any)
 url="https://pypy.org"
@@ -11,8 +11,8 @@ depends=(python2-cffi)
 makedepends=(pypy python2-cffi python2-setuptools)
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}::https://bitbucket.org/pypy/pypy/downloads/pypy2.7-v${pkgver}-src.tar.bz2")
-md5sums=('d412f762092fc200c94dcad477f8571f')
+source=("${pkgname}-${pkgver}.tar.bz2::https://downloads.python.org/pypy/pypy2.7-v${pkgver}-src.tar.bz2")
+md5sums=('7608bd58940ffc5403632c2c786d83bb')
 
 build() {
     cd "$srcdir/pypy2.7-v${pkgver}-src/pypy/goal"
@@ -22,7 +22,15 @@ build() {
 package() {
     cd "$srcdir/pypy2.7-v${pkgver}-src/"
 
-    python2 pypy/tool/release/package.py --rename_pypy_c pypy2-revdb --targetdir "$srcdir"
+    # For some reason pypy expect pypy-c and libpypy-c.so in the same directory...?
+    t=$(mktemp -d)
+    ln -s /usr/bin/pypy $t/pypy
+    ln -s /usr/lib/libpypy-c.so $t/libpypy-c.so
+
+    python2 pypy/tool/release/package.py --rename_pypy_c pypy2-revdb --override_pypy_c $t/pypy --targetdir "$srcdir"
+
+    rm $t/*
+    rm -r $t
 
     cd "$srcdir"
     tar xf "pypy-nightly.tar.bz2"
