@@ -1,7 +1,7 @@
 pkgbase = gzdoom
 	pkgdesc = Advanced Doom source port with OpenGL support
 	pkgver = 4.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zdoom.org/
 	arch = i686
 	arch = x86_64

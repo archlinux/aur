@@ -3,7 +3,7 @@
 
 pkgname=gzdoom
 pkgver=4.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
@@ -61,10 +61,10 @@ build() {
 package() {
     cd gzdoom
     install build/gzdoom -t "$pkgdir"/usr/bin -D
-    install build/gzdoom.pk3 -t "$pkgdir"/usr/lib/gzdoom -D -m 644
+    install build/{game_support,gzdoom}.pk3 -t "$pkgdir"/usr/lib/gzdoom -D -m 644
     desktop-file-install "$srcdir"/gzdoom.desktop --dir="$pkgdir"/usr/share/applications
     install docs/{console,rh-log,skins}.* -t "$pkgdir"/usr/share/doc/gzdoom -D -m 644
-    install build/{brightmaps,lights,game_support}.pk3 -t "$pkgdir"/usr/share/gzdoom -D -m 644
+    install build/{brightmaps,lights}.pk3 -t "$pkgdir"/usr/share/gzdoom -D -m 644
     install build/soundfonts/gzdoom.sf2 -t "$pkgdir"/usr/share/gzdoom/soundfonts -D -m 644
     install build/fm_banks/* -t "$pkgdir"/usr/share/gzdoom/fm_banks -D -m 644
     install src/posix/zdoom.xpm "$pkgdir"/usr/share/icons/hicolor/256x256/apps/gzdoom.xpm -D -m 644
