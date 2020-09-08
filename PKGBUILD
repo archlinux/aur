@@ -3,7 +3,7 @@
 pkgname=dockbarx
 _pkgver=1.0beta
 pkgver=1.0beta+r820+4a5b382
-pkgrel=1
+pkgrel=2
 pkgdesc="TaskBar with groupping and group manipulation"
 arch=('i688' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/M7S/dockbarx"
@@ -18,13 +18,20 @@ optdepends=('mate-panel: mate applet'
             'gconf: export settings from older versions of dockbarx'
             'python-lxml: import settings script')
 _commit='4a5b382f03402e58cbbaaeb2ee3be4fbbb795aba'
-source=("${pkgname}::git+https://github.com/M7S/dockbarx.git#commit=${_commit}")
-sha256sums=('SKIP')
+source=("${pkgname}::git+https://github.com/M7S/dockbarx.git#commit=${_commit}"
+        'xuzhen_fixes.patch::https://github.com/M7S/dockbarx/pull/142.patch')
+sha256sums=('SKIP'
+            'SKIP')
 install="${pkgname}.install"
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
   printf "%s+r%s+%s" "${_pkgver}" "$( git rev-list --count HEAD )" "$( git rev-parse --short HEAD )"
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  patch -Np1 -i ../xuzhen_fixes.patch
 }
 
 package() {

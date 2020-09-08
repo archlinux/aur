@@ -1,7 +1,7 @@
 pkgbase = dockbarx
 	pkgdesc = TaskBar with groupping and group manipulation
 	pkgver = 1.0beta+r820+4a5b382
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/M7S/dockbarx
 	install = dockbarx.install
 	arch = i688
@@ -26,6 +26,8 @@ pkgbase = dockbarx
 	optdepends = gconf: export settings from older versions of dockbarx
 	optdepends = python-lxml: import settings script
 	source = dockbarx::git+https://github.com/M7S/dockbarx.git#commit=4a5b382f03402e58cbbaaeb2ee3be4fbbb795aba
+	source = xuzhen_fixes.patch::https://github.com/M7S/dockbarx/pull/142.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = dockbarx
