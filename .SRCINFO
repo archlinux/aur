@@ -1,7 +1,7 @@
 pkgbase = wp2latex
 	pkgdesc = Converts WordPerfect document formats to LaTeX
 	pkgver = 3.91
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.penguin.cz/~fojtik/wp2latex/wp2latex.htm
 	arch = i686
 	arch = x86_64
