@@ -4,15 +4,15 @@
 
 pkgname=dbeaver-ee
 # beta
-pkgver=7.1.0
+pkgver=7.2.0
 # release
 #pkgver=7.0.0
 pkgrel=1
 pkgdesc="A universal database tool for developers and database administrators. Enterprise Edition includes NoSQL database support"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://dbeaver.com/"
-license=("GPL")
-depends=('java-runtime>=1.6' 'gtk2' 'gtk-update-icon-cache')
+license=("Commercial")
+depends=('java-runtime>=1.8' 'gtk3' 'gtk-update-icon-cache')
 install=dbeaver-ee.install
 
 source=(dbeaver-ee.desktop dbeaver-ee.install)
@@ -24,7 +24,7 @@ source_x86_64=(https://dbeaver.com/files/ea/dbeaver-ee-${pkgver}-linux.gtk.x86_6
 #source_x86_64=(http://dbeaver.com/files/${pkgver}/dbeaver-ee-${pkgver}-linux.gtk.x86_64.tar.gz)
 sha256sums=('453912912ae8377b16ef74a3e7d93ea588792ee8f7054a573e9fe9b93cd9265f'
             '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
-sha256sums_x86_64=('9155b171e100595ecb51cd4f00c9016add114b751144c82e58030bb508e16106')
+sha256sums_x86_64=('45223de8cf1eedd9343a2db03eaa6c83b5789e532468ad4e954ad647db42008d')
 
 noextract=("dbeaver-ee-${pkgver}-linux.gtk.x86.tar.gz"
            "dbeaver-ee-${pkgver}-linux.gtk.x86_64.tar.gz")
