@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-git
-pkgver=3.1.0.20598.bbd9f4864
+pkgver=3.1.0.20601.ac3278bd8
 pkgrel=1
 epoch=1
 pkgdesc="Fully-featured word processor from official gnome gitlab mirror"
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('wv' 'goffice' 'redland' 'libical' 'loudmouth' 'enchant' 'libwpg'
 	 'libwmf' 'aiksaurus' 'libots' 'libchamplain' 'psiconv' 'libwps'
 	 'telepathy-glib')
-makedepends=('git' 'asio' 'boost' 'gobject-introspection' 'python2' 'libwpd')
+makedepends=('git' 'asio' 'boost' 'gobject-introspection' 'python2' 'libwpd' 'autoconf-archive')
 provides=('abiword' 'abiword-plugins')
 conflicts=('abiword' 'abiword-plugins')
 source=("git+https://gitlab.gnome.org/World/AbiWord.git"
@@ -45,20 +45,20 @@ prepare() {
 build() {
   cd AbiWord
   export CXXFLAGS+=" -O3"
-  ./autogen.sh --prefix=/usr \
-	       --enable-shared \
-	       --disable-static \
-	       --enable-clipart \
-	       --enable-templates \
-	       --enable-plugins="hrtext google bmp xslfo command pdf \
-                          passepartout eml wordperfect psion aiksaurus s5 \
-                          sdw opml garble latex epub wikipedia gimp \
-                          opendocument paint mswrite wmf mif freetranslation \
-                          ots wpg kword gdict collab iscii goffice pdb \
-                          openwriter t602 presentation mathview \
-                          openxml wml mht applix loadbindings urldict \
-                          clarisworks docbook hancom babelfish" \
-	       --enable-introspection 
+  LANG=C LC_CTYPE=C ./autogen.sh --prefix=/usr \
+      --enable-shared \
+      --disable-static \
+      --enable-clipart \
+      --enable-templates \
+      --enable-plugins="hrtext google bmp xslfo command pdf \
+                        passepartout eml wordperfect psion aiksaurus s5 \
+                        sdw opml garble latex epub wikipedia gimp \
+                        opendocument paint mswrite wmf mif freetranslation \
+                        ots wpg kword gdict collab iscii goffice pdb \
+                        openwriter t602 presentation mathview \
+                        openxml wml mht applix loadbindings urldict \
+                        clarisworks docbook hancom babelfish" \
+      --enable-introspection 
   make
 }
 
