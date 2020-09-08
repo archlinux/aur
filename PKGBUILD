@@ -2,7 +2,7 @@
 
 pkgname=luaj
 pkgver=0.13.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A flavour of Lua. A reworking and rewriting of the Lua runtime to create a new language."
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://git.sr.ht/~shakna/luaj"
 license=('custom:3-clause BSD')
 groups=('devel')
 depends=('lua53')
-makedepends=()
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=()
