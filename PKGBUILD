@@ -2,7 +2,7 @@
 
 pkgname="gr-framework-git"
 pkgver="0.52.0.r9.g6841daf0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="A universal framework for cross-platform visualization applications."
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
 url="https://gr-framework.org"
@@ -36,7 +36,5 @@ build() {
 package() {
     cd "${srcdir}/${pkgname%-*}" || return
     DESTDIR="${pkgdir}" cmake --install build && \
-    if [[ -f "js/gr.js" ]]; then
-        cp "js/gr.js" "${pkgdir}/usr/gr/lib/" || return
-    fi
+    cp "js/gr.js" "${pkgdir}/usr/gr/lib/"
 }
