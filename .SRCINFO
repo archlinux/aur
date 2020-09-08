@@ -1,0 +1,14 @@
+pkgbase = justdo
+	pkgdesc = Simple pomodoro timer for your terminal... no deep sheeeaaat
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/CerebruxCode/justdo
+	arch = any
+	license = GPL3
+	depends = libnotify
+	depends = libpulse
+	source = justdo-1.0.1.tar.gz::https://github.com/CerebruxCode/justdo/archive/v1.0.1.tar.gz
+	md5sums = d55eed771a0c94397a88bd3130365f00
+
+pkgname = justdo
+
