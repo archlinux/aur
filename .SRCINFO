@@ -1,7 +1,7 @@
 pkgbase = distccd-alarm
 	pkgdesc = Official toolchain for Arch ARM builds via distcc on x86_64 volunteers
 	pkgver = 10.2.0.20200823
-	pkgrel = 1
+	pkgrel = 2
 	url = https://archlinuxarm.org/wiki/Distcc_Cross-Compiling
 	arch = x86_64
 	license = GPL
@@ -20,7 +20,6 @@ pkgbase = distccd-alarm
 	source = config.in
 	source = service.in
 	source = readme.in
-	source = sysusers.conf
 	md5sums = 87150475eb6e533f1a84ba3fc9a73e37
 	md5sums = 9e1c82ac8badc286f40d7d22e475e1b2
 	md5sums = 7015421efcdac437de27769a421a10a2
@@ -28,7 +27,6 @@ pkgbase = distccd-alarm
 	md5sums = 89694ceb3a0fb07413ffef810173ee55
 	md5sums = 26741c886597e3fd8d8fc0a61aa8a49a
 	md5sums = da6ee5bb971d28b85e49d456a3889349
-	md5sums = cc2464a203444bb9287849d6773e544c
 
 pkgname = distccd-alarm-armv5
 
