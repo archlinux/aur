@@ -4,6 +4,7 @@ pkgver=0.1
 pkgrel=1
 pkgdesc="simple application for working with the xfce4 desktop themes."
 arch=('any')
+url="https://gitlab.com/linux-stuffs/xfce4-theme-switcher"
 pkgdesc="Utility for fast switch betwen Xfce4 themes."
 license=('GPL3')
 groups=('xfce4-goodies' 'xfce4-goodies-devel')
