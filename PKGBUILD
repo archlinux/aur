@@ -4,7 +4,7 @@ pkgname=quickcut-git
 _pkgname=${pkgname%-git}
 _gitname=QuickCut
 pkgver=v1.6.9.r1.g3db7bef
-pkgrel=1
+pkgrel=2
 pkgdesc="Your most handy video processing software."
 arch=('x86_64' 'i686')
 url="https://github.com/HaujetZhao/QuickCut"
@@ -38,13 +38,19 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+  cd $_gitname
+
+  python setup.py build
+}
+
 package() {
   cd $_gitname
 
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
  # icon
-  icotool -x QuickCut/QuickCut/icon.ico
+  icotool -x QuickCut/icon.ico
   install -Dm644 icon_*_32x32x32.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
 
   # desktop entry
