@@ -1,14 +1,15 @@
 # Maintainer: Ian Denhardt <ian@zenhack.net>
-pkgname=pacsync-hg
+pkgname=pacsync-git
 pkgver=8
-pkgrel=4
+pkgrel=1
 pkgdesc="A pacman frontend which manages packages based on a holistic view of the system"
 arch=('any')
-url="https://bitbucket.org/isd/pacsync"
+url="https://gitlab.com/isd/pacsync"
 license=('custom')
 # TODO: should pin the exact version here -- but not really a huge rush, since
 # this isn't actively developed...
 source=('https://gitlab.com/isd/pacsync/-/archive/master/pacsync-master.tar.gz')
+replaces=('pacsync-hg')
 
 build() {
   :
