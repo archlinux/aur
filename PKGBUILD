@@ -4,7 +4,7 @@
 # Contributor: fnord0 <fnord0 AT riseup DOT net>
 
 pkgname=zaproxy-weekly
-pkgver=2020_08_26
+pkgver=2020_09_08
 pkgrel=1
 pkgdesc='Integrated penetration testing tool for finding vulnerabilities in web applications, weekly Pre-release'
 conflicts=('zaproxy')
@@ -13,7 +13,7 @@ arch=('any')
 license=('Apache')
 depends=('java-runtime' 'ttf-font')
 source=(ZAP_WEEKLY_D-${pkgver//_/-}.zip::https://github.com/zaproxy/zaproxy/releases/download/w${pkgver//_/-}/ZAP_WEEKLY_D-${pkgver//_/-}.zip)
-sha256sums=('aee5e0183a9010ff95773fe810441dd6a467aa0449e8d04e97c4f5526f2ef2e1')
+sha256sums=('e1e7764a3bfa08ebc26faf7a050242a986c2d069541955885940640e9dbe9f38')
 
 prepare() {
   cd ZAP_D-${pkgver//_/-}
