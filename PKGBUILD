@@ -8,10 +8,10 @@ pkgname=less-osc8-git
 
 pkgver() { git -C "${pkgname%-osc8-git}" describe --tags | sed 's/^v//;s/-/.r/;s/-g/./'; }
 pkgver=564.r4.9ea92b9
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A terminal based program for viewing text files, patched with OSC 8 hyperlink support'
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url=http://www.greenwoodsoftware.com
 license=('GPL3'
          'custom:Less License')

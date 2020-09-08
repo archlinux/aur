@@ -1,9 +1,10 @@
 pkgbase = less-osc8-git
 	pkgdesc = A terminal based program for viewing text files, patched with OSC 8 hyperlink support
 	pkgver = 564.r4.9ea92b9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.greenwoodsoftware.com
 	changelog = NEWS
+	arch = i686
 	arch = x86_64
 	license = GPL3
 	license = custom:Less License
