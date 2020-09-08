@@ -1,4 +1,4 @@
-# Contributor: ordoban <dirk.langer@vvovgonik.de>
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-cpanel-json-xs'
