@@ -2,8 +2,8 @@
 # Based on official Arch Linux PKGBUILD
 
 pkgname=libwacom-surface
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 pkgdesc="Patched libwacom for Microsoft Surface devices"
 arch=('x86_64')
 url="https://github.com/linux-surface/libwacom"
@@ -29,19 +29,19 @@ source=(
     '0012-data-Add-Microsoft-Surface-Go.patch'
     "https://github.com/linuxwacom/libwacom/releases/download/libwacom-${pkgver}/libwacom-${pkgver}.tar.bz2"{,.sig}
 )
-sha256sums=('140de2c9ed7350248f20137942f46c48c84468b1e82169cea3c56c211199c461'
-            'a41bab123588c5c67c8a05e01338b13f13c59f29695084cd9b6ce8e585e82a3a'
-            '73d4cfd588a568775fe2a6d859a7223c48b6c17e8ccde7e3691b7ab30f9fefe6'
-            'ca2f7a787ac80abcf9cb022ee87c2923ab6636e9fad181b9d6c28d153c046ea3'
-            'b49f60e700d1cce47d59145ad86df4a50a57b1ea577d4958c18252a40fd3c2d9'
-            '1b58b993a57669bba910794df7949c77af281813c56edb7eee9205744003fd26'
-            '5041c7c8b216d223f5e33773fcd430d36ca4ca67b9ee9c7ace6bfb077c20e9b9'
-            '4478ba5fdfb032e5841f29d16ad01711a6ad3d426bccf22f2c0901621987f999'
-            '5a039a3633523297f1aa34f01bbe43272999201659a3f11f14d343e0d634f438'
-            '8a7470b8a4bf4d8fbd29fa6f191bafc3bb34f76aee4c696b9308bb8b63f91ea8'
-            '937ecf67fa4e47dafd5a5ca7bb84de8db185c990ff50988966af51e7f9274ffe'
-            'cc670a133023308d62f24d9e853673db9644337ebad4e8ed5be55785e2c0f6e2'
-            '07839c542940776c402168c7b73c04b346ba7557eb3f25a23a49893aff86ab08'
+sha256sums=('c8809fe2b66f14347b6adfe2375088f678bd4381a186407dc210ee5561fb2e54'
+            '4954a859dc0ea049aacca09b960de75384fcb93d55b2eac6880ae4467ed2a62e'
+            '3b8707b6158b6f362326bcf63ec30bd9d78d30115a6ad5861730296b7b8346e0'
+            'c531a7c2f4bb9b77825d10db9f7afc362db180af5cdd14b9c6c6aaee0983e175'
+            'b968c7c44047c4d46e3e813d927987ee95f8f574bfc8b2ad2957355cc4921964'
+            '37cc1991df66c0d446f83ce40faf489999a1ebf429f7c765391422d808c5428f'
+            '0c8252fc1ac89d12bb2ff796efa63a7f19191a2b8c4860435dc7bacdd279ccf8'
+            'dd79ead5a21871c02b9ad9cea2c976c77fabc418389a3f07212a7ee46a464f98'
+            'b5ec92ab67ddc06d81a51c731ec331935fef45cba0f8cec589cc9394f1037b34'
+            'ccb0c301697404b1b703468fc9c03327e9e8b646855e9050f82b18e7316ef2f3'
+            '9cd9f04dd3e194e24a32f699fe2fe07c3c4c943032eb1e9c9fa278f49540fe0b'
+            'cc12eedb8e38d9b05f93da32aa9acf2280b7b560381569cba55ea4f98b9c5ddb'
+            '6b349fb73c8edcf0288d17c49049648214924846b6a58914c2ed3477ff36d47b'
             'SKIP')
 
 prepare() {

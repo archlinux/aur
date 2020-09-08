@@ -1,4 +1,4 @@
-From 910d868d837aa1989695cdbcbf07f47fae3086d3 Mon Sep 17 00:00:00 2001
+From eb1fde4cbd67dd58e8a5bc262f3e3444516d9bfe Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Tue, 18 Aug 2020 20:19:38 +0200
 Subject: [PATCH 07/12] data: Add Microsoft Surface Book
