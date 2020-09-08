@@ -1,18 +1,18 @@
 pkgname=gnome-initial-setup-git
 _pkgname=gnome-initial-setup
-pkgver=3.34.0+17+g87dea7a
+pkgver=3.37.92+1+g9feb869
 pkgrel=1
 pkgdesc="Simple, easy, and safe way to prepare a new system"
 arch=('x86_64')
 url="https://www.gnome.org/"
 license=('GPL')
 depends=('nm-connection-editor' 'accountsservice' 'cheese' 'gnome-desktop' 'libgweather' 'gnome-online-accounts' 'libgdm' 'libpwquality' 'libibus' 'libgnomekbd' 'libpackagekit-glib' 'geoclue')
-makedepends=('meson')
+makedepends=('git' 'meson')
 optdepends=('gdm: GDM Initial Setup mode' 'gnome-getting-started-docs: GNOME Welcome Tour')
 provides=('gnome-initial-setup')
 conflicts=('gnome-initial-setup')
 source=("git+https://gitlab.gnome.org/GNOME/gnome-initial-setup")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
