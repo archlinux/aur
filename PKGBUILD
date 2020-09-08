@@ -1,6 +1,6 @@
 # Contributor: naelstrof <naelstrof@gmail.com>
 pkgname=mingw-w64-libvorbis
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="Vorbis codec library (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ depends=('mingw-w64-libogg' 'mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=(!strip !buildflags staticlibs)
 source=(http://downloads.xiph.org/releases/vorbis/libvorbis-${pkgver}.tar.gz)
-sha256sums=('6ed40e0241089a42c48604dc00e362beee00036af2d8b3f46338031c9e0351cb')
+sha256sums=('0e982409a9c3fc82ee06e08205b1355e5c6aa4c36bca58146ef399621b0ce5ab')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
