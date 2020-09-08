@@ -4,6 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
+User=http
+Group=http
 EnvironmentFile=/etc/default/spiderfoot
 ExecStart=/usr/bin/spiderfoot -l ${addr}:${port}
 

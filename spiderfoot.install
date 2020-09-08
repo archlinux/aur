@@ -1,0 +1,7 @@
+post_install() {
+  chown http:http -R /usr/share/spiderfoot
+}
+
+post_upgrade() {
+  post_install
+}
