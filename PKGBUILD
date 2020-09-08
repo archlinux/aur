@@ -1,8 +1,8 @@
 # Maintainer: reujab <reujab@gmail.com>
 _pkgname=silver
 pkgname=$_pkgname-git
-pkgver=v1.1.0.r49.g105d298
-pkgrel=2
+pkgver=v1.1.0
+pkgrel=3
 makedepends=('rust' 'cargo' 'git')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="A cross-shell customizable powerline-like prompt with icons"

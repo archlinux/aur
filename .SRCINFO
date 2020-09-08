@@ -1,7 +1,7 @@
 pkgbase = silver-git
 	pkgdesc = A cross-shell customizable powerline-like prompt with icons
-	pkgver = v1.1.0.r49.g105d298
-	pkgrel = 2
+	pkgver = v1.1.0
+	pkgrel = 3
 	arch = i686
 	arch = x86_64
 	arch = armv6h
