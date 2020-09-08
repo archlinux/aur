@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=izpack-git
-pkgver=5.1.3.r59.ga5e9e8054
+pkgver=5.1.3.r60.g34385612d
 pkgrel=1
 pkgdesc='Tool for packaging applications on the Java platform as cross-platform installers (git version)'
 arch=('any')
@@ -34,16 +34,14 @@ build() {
 }
 
 check() {
-    mvn -f izpack \
-        -Dproject.build.outputTimestamp="$SOURCE_DATE_EPOCH" \
-        test
+    mvn -f izpack test
 }
 
 package() {
     # install
     local _ver
-    _ver="$(find izpack/izpack-dist/target -type f -name 'izpack-dist-*.jar' -print0 |
-        sort -z | head -zn1 | sed -z 's/\.jar$//;s/.*izpack-dist-//')"
+    _ver="$(find izpack/izpack-dist/target -type f -name 'izpack-dist-*.jar' |
+        sort | head -n1 | sed 's/\.jar$//;s/.*izpack-dist-//')"
     rm -rf "${pkgdir}/opt/izpack"
     printf '%s\n' '0' '1' '1' '1' "${pkgdir}/opt/izpack" \
                   'O' '1' 'Y' '1' 'N' 'N' 'Y' "${pkgdir}/opt/izpack/auto-install.xml" |
@@ -71,8 +69,8 @@ package() {
     local _res
     while read -r -d '' _file
     do
-        _res="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*_//')"
-        _dest="$(printf '%s' "$_file" | sed ";s/_${_res}//;s/_/-/")"
+        _res="$(sed 's/\.png$//;s/^.*_//' <<< "$_file")"
+        _dest="$(sed ";s/_${_res}//;s/_/-/" <<< "$_file")"
         mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/mimetypes"
         ln -s "../../../../../../opt/izpack/icons/${_file}" \
             "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/mimetypes/${_dest}"
