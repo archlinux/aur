@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-accelerated
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++, using the LuaJIT engine"
 arch=('x86_64' 'i386' 'armv7l')
@@ -13,7 +13,7 @@ makedepends=()
 optdepends=('libharu: PDF output support' 'png++: PNG screenshot support' 'ncurses: CLI mode support')
 checkdepends=()
 provides=()
-conflicts=()
+conflicts=('craftos-pc-accelerated-ccemux<2.4.2')
 replaces=()
 backup=()
 options=()
