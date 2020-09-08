@@ -1,7 +1,7 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=flexo-git
 pkgrel=1
-pkgver=0.1.0.r61.gf75e159
+pkgver=1.0.6.r4.g95d4407
 pkgdesc="A central pacman cache"
 # TODO we haven't tested yet if this package can be built on ARM architectures.
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -16,13 +16,11 @@ source=('git+https://github.com/nroi/flexo.git'
         'sysuser.conf'
         'flexo.install'
         'flexo.service'
-        'flexo.toml'
 )
 sha256sums=('SKIP'
             'b6a618c66d3ffb9ad119b0497d2181cdd382ec870cc768606debed40716c1f4e'
             '662e8c6c4d024ec035c2c02d9298a8cb6062cfb30d02bfaecf17a9d3d9b35167'
             '0ba13ff1d92b51433635e1fbf5f1017e3e06b3e408be663acb1fbf65f344a3ad'
-            'b1ec4badc2088ed46230dad406d44130089ff00a1e98ff5d178d6f9e1eb0a98d'
 )
 
 build() {
@@ -41,6 +39,6 @@ package() {
   install -Dm644 "${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${srcdir}/flexo.service" "${pkgdir}/usr/lib/systemd/system/flexo.service"
   install -Dm644 "${srcdir}/sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/flexo.conf"
-  install -Dm644 "${srcdir}/flexo.toml" "$pkgdir/etc/flexo/flexo.toml"
+  install -Dm644 "${pkgname%-git}/${pkgname%-git}/conf/flexo.toml" "$pkgdir/etc/flexo/flexo.toml"
   install -Dm755 "${pkgname%-git}/${pkgname%-git}/target/release/flexo" "$pkgdir/usr/bin/flexo"
 }
