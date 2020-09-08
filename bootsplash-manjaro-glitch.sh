@@ -45,7 +45,8 @@ convert -alpha remove \
 	--picture \
 	--pic_width $THROBBER_WIDTH \
 	--pic_height $THROBBER_HEIGHT \
-	--pic_position 0 \
+	--pic_position 0x05 \
+	--pic_position_offset 200 \
 	--pic_anim_type 1 \
 	--pic_anim_loop 0 \
 	--blob throbber00.rgb \
