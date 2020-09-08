@@ -1,15 +1,16 @@
+# Maintainer: Jan-Henrik Bruhn <aur@jhbruhn.de>
 # Maintainer: Max Stabel <max dot stabel03 at gmail dot com>
 
 pkgname=ltspice
-pkgver=17_20190621
-pkgrel=3
+pkgver=17.0.0.11
+pkgrel=1
 pkgdesc="SPICE simulator, schematic capture and waveform viewer of electronic circuits."
 arch=('x86_64')
 url="http://www.linear.com/designtools/software/"
 license=('custom')
 depends=('wine')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/M4a1x/$pkgname#branch=${pkgver//_/-}"
+source=("$pkgname::git+https://github.com/jhbruhn/$pkgname#branch=${pkgver//_/-}"
         "$pkgname.sh"
         "$pkgname-help.sh")
 sha256sums=('SKIP'
