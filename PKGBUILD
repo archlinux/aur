@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -29,10 +29,11 @@ optdepends=(
     'scummvm: for optional ScummVM support via Roberta'
     'wine: for optional Vortex Mod Manager support'
     'gameconqueror: for optional cheating'
+    'xorg-xprop: for optional window toggle and side-by-side VR'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7a13892e092c67211f033fcefea8a1ef2feb30c29570455e857a88674f252d6e')
+sha256sums=('542c2a3834304a9e4cbd866d3ebde4157cbfccaf656eb4e61fbd036ba300c635')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
