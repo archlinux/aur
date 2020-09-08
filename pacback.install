@@ -1,0 +1,23 @@
+# Maintainer: Attila Greguss <floyd0122[at]gmail[dot]com>
+# Co-Maintainer/Author: Justin Timperio <justintimperio[at]gmail[dot]com>
+
+post_install() {
+    # Installs Snapshot Hook
+    pacback -ih
+}
+
+post_upgrade() {
+    # Run Alpha Upgrade
+    /tmp/alpha-upgrade.sh
+    rm -f /tmp/alpha-upgrade.sh
+}
+
+pre_remove() {
+    # Removes Snapshot Hook
+    pacback -rh
+}
+
+post_remove() {
+    # Removes Cached User Data
+    rm -Rf /var/lib/pacback
+}

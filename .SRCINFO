@@ -1,16 +1,20 @@
 pkgbase = pacback-git
-	pkgdesc = Advanced Rollback Version Control for Arch Linux - Alpha
-	pkgver = r88.660fec2
-	pkgrel = 1
+	pkgdesc = Advanced Version Control for Arch Linux
+	pkgver = r104.c496aee
+	pkgrel = 0
 	url = https://github.com/JustinTimperio/pacback
-	arch = any
+	install = pacback.install
+	arch = x86_64
 	license = MIT
-	depends = python-tqdm
+	makedepends = zstd
+	depends = python
+	depends = python-rich
+	depends = python-requests
 	depends = arch-install-scripts
-	depends = curl
-	optdepends = pigz: Multithreaded de/compression of restore points
+	optdepends = pigz: Multithreaded de/compression of custom user files
 	provides = pacback
 	conflicts = pacback
+	backup = etc/pacback.conf
 	source = git+https://github.com/JustinTimperio/pacback.git
 	sha256sums = SKIP
 
