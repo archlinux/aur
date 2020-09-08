@@ -11,7 +11,7 @@ license=('Apache')
 provides=('pufferpanel')
 conflicts=('pufferpanel')
 optdepends=('nginx: TLS support'
-			'postgres: Dedicated database'
+			'postgresql: Dedicated database'
 			'docker: Container support'
                         'sqlite: Database support')
 depends=()
