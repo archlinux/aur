@@ -2,15 +2,15 @@
 
 pkgname=kalk-git
 pkgver=V0.1.r16.g620af81
-pkgrel=1
+pkgrel=2
 pkgdesc="Kalk is a powerful cross-platfrom calculator application built with the Kirigami framework"
 arch=('x86_64')
 url="https://invent.kde.org/plasma-mobile/kalk"
 license=('GPL3')
 depends=('ki18n' 'kconfig' 'kcoreaddons' 'knotifications' 'kirigami2' 'kunitconversion' 'kdbusaddons' 'plasma-framework')
 makedepends=('git' 'qt5-tools' 'extra-cmake-modules')
-provides=('kweather')
-conflicts=('kweather')
+provides=('kalk')
+conflicts=('kalk')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
