@@ -1,6 +1,6 @@
 pkgbase = mame-tools
 	pkgdesc = Tools for MAME / MESS: Castool, CHDman (Compressed Hunks of Data - CHD manager), floptool, jedutil, ldresample, romcmp ...
-	pkgver = 0.222
+	pkgver = 0.224
 	pkgrel = 2
 	url = http://mamedev.org
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mame-tools
 	depends = sdl2>=2.0.8
 	depends = zlib>=1.1.4
 	optdepends = mame
-	source = http://security.ubuntu.com/ubuntu/pool/universe/m/mame/mame-tools_0.222+dfsg.1-2_amd64.deb
+	source = http://security.ubuntu.com/ubuntu/pool/universe/m/mame/mame-tools_0.224+dfsg.1-2_amd64.deb
 	md5sums = SKIP
 
 pkgname = mame-tools
