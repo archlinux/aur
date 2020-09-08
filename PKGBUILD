@@ -2,17 +2,17 @@
 # Maintainer: bionade24
 # Contributor: bionade24
 pkgname=libirimager-bin
-pkgver=7.1.1
+pkgver=8.5.1
 pkgrel=1
 pkgdesc="Development library for Optris PI imagers."
 arch=('x86_64')
 url="http://www.evocortex.org/irimagerdirect-sdk/"
 license=('BSD')
-depends=('cmake>=2.6' 'gcc>=4.6' 'systemd-libs>=1.0')
+depends=('cmake>=2.6' 'gcc>=5' 'systemd-libs>=1.0')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("http://ftp.evocortex.com/libirimager-${pkgver}-amd64.deb")
-sha512sums_x86_64=('f89700d0aa3ffab42bb762a26c5d2f894cb48a62bd047c9db24cf879bf03c4980a4cd0a050bc559d61fab34ace39ed17d205f58cbec016f3c357f5b3634cce42')
+sha512sums_x86_64=('7466dcd89f22f70bbe940bb42caaa9bbc2f73954c86463750a5a3756f8fe5dbdd45c5e42589c7c6f3f1709e6a498d6eafbcfd8528d71088d68fb85a024478011')
 
 package(){
 
