@@ -1,6 +1,6 @@
 pkgbase = meshlab
 	pkgdesc = System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)
-	pkgver = 2020.07
+	pkgver = 2020.09
 	pkgrel = 1
 	url = https://www.meshlab.net
 	arch = i686
