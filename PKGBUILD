@@ -3,7 +3,7 @@
 pkgname=quickcut-git
 _pkgname=${pkgname%-git}
 _gitname=QuickCut
-pkgver=v1.3.0.r7.gd6eb81a
+pkgver=v1.6.9.r1.g3db7bef
 pkgrel=1
 pkgdesc="Your most handy video processing software."
 arch=('x86_64' 'i686')
@@ -32,6 +32,12 @@ provides=('quickcut' 'quickcut-bin')
 conflicts=('quickcut' 'quickcut-bin')
 source=("git+https://github.com/HaujetZhao/QuickCut")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd $_gitname
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
   cd $_gitname
 
