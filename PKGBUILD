@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=4.4.r98491.g3a37aa597f
+pkgver=4.4.r99044.gd1f3d721df
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -77,7 +77,7 @@ conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '010-ffmpeg-fix-vmaf-model-path.patch')
 sha256sums=('SKIP'
-            'b6fcef2f4cbb1daa47d17245702fbd67ab3289b6b16f090ab99b9c2669453a02')
+            '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50')
 
 prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
