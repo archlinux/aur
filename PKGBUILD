@@ -4,29 +4,27 @@
 # Contributor: Paolo Herms
 
 pkgname=why3
-pkgver=1.3.1
-_pkgvercode=38291 # Update when bumping release
-pkgrel=3
+pkgver=1.3.2
+_pkgvercode=38366 # Update when bumping release
+pkgrel=1
 pkgdesc='A platform for deductive program verification'
 arch=('x86_64')
 options=('!makeflags')
 url='http://why3.lri.fr/'
 license=('LGPL')
-depends=('gtksourceview2' 'dune' 'ocaml-findlib' 'ocaml' 'ocaml-menhir' 'rubber' 'gtksourceview2' 'lablgtk2' 'ocaml-ocamlgraph' 'ocaml-num' 'ocaml-zarith' 'ocaml-zip' 'coq' 'isabelle')
+depends=('gtksourceview2' 'ocaml' 'ocaml-menhir' 'rubber' 'lablgtk2' 'ocaml-ocamlgraph' 'ocaml-num' 'ocaml-zarith' 'ocaml-zip' 'coq' 'isabelle')
 source=("https://gforge.inria.fr/frs/download.php/file/${_pkgvercode}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7b0d5e8f67aa3e964b44fe943cc7ea538a9ebef823713eda1b52fc0f0ccbec9b')
+sha256sums=('8753ee9b75c69def9acdaecb4e99fb458715fee1e89c7a7e5be7af777b14a525')
 
 build() {
   cd "${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr --disable-pvs-libs
   make
-  make byte opt
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
-  make DESTDIR="${pkgdir}" install-lib
 }
