@@ -1,14 +1,14 @@
 # Maintainer: snafu
 pkgname=env-modules
 pkgver=4.5.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/modules/"
 license=('GPL2')
 groups=()
-depends=('tcl>=7.4')
+depends=('tcl>=7.4' 'procps')
 makedepends=()
 checkdepends=('dejagnu')
 optdepends=()
