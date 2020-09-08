@@ -1,7 +1,7 @@
 # Maintainer:  Alexej Magura <amagura28@gmail.com>
 pkgname=libzlog
 _realname=zlog
-pkgver=1.2.14
+pkgver=1.2.15
 pkgrel=1
 pkgdesc="a reliable pure C logging library"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('LGPL')
 depends=(glibc)
 makedepends=(lyx hevea)
 source=("https://github.com/HardySimpson/$_realname/archive/$pkgver.tar.gz")
-md5sums=('fd277b54669848bceecd4fd6251109b4')
+md5sums=('155f841543f947bf21112ae4328e7152')
 
 build()
 {
