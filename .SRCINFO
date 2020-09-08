@@ -1,0 +1,15 @@
+pkgbase = nginx-mod-mime-magic
+	pkgdesc = Set Content-Type mime-type automatically from the magic bytes of some file! (Similar to file(1))
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/FadedCoder/nginx-mime-magic-module
+	arch = x86_64
+	license = BSD
+	makedepends = nginx-src
+	depends = nginx
+	depends = file
+	source = nginx-mime-magic-module-0.1.0.tar.gz::https://github.com/FadedCoder/nginx-mime-magic-module/archive/v0.1.0.tar.gz
+	sha256sums = 9e7e865a99c2a99af720ec3269128a11f74b6fae0cdcdda396522ec5c06108ff
+
+pkgname = nginx-mod-mime-magic
+
