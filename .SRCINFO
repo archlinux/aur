@@ -5,11 +5,13 @@ pkgbase = ruby-certified
 	url = http://github.com/stevegraham/certified
 	arch = any
 	license = MIT
-	depends = ruby>=1.8.7
+	depends = ruby
 	noextract = certified-1.0.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/certified-1.0.0.gem
+	source = https://raw.githubusercontent.com/stevegraham/certified/master/LICENSE
 	sha256sums = aa4cdf0e90e7ee96f6e0ce3daae39eaa8f0486124e0d92daf64d2105aeb9069c
+	sha256sums = cb9124a6b92829d36efa414520772710cb598096851cdc8b5b77f0da0b19f27a
 
 pkgname = ruby-certified
 
