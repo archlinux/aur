@@ -1,6 +1,6 @@
 # Maintainer: Cerebrux <mail@cerebrux.net>
 pkgname=justdo
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Simple pomodoro timer for your terminal... no deep sheeeaaat"
 arch=('any')
@@ -16,4 +16,5 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 justdo.sh "$pkgdir/usr/bin/justdo"
 }
-md5sums=('d55eed771a0c94397a88bd3130365f00')
+
+md5sums=('71e2407679493afcd12959631397b73e')
