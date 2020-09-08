@@ -1,0 +1,23 @@
+diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+index b7347bc6a24d..5ad877fd49d8 100644
+--- a/drivers/pci/quirks.c
++++ b/drivers/pci/quirks.c
+@@ -5017,6 +5017,17 @@ int pci_dev_specific_disable_acs_redir(struct pci_dev *dev)
+        return -ENOTTY;
+ }
+ 
++/*
++ * Ryzen 3rd-gen CPU-provided USB and audio advertise FLR, but invoking it hangs.
++ * NOTE: Not true for chipset-provided USB which has the same ID.
++ */
++static void quirk_amd_no_flr(struct pci_dev *dev)
++{
++       dev->dev_flags |= PCI_DEV_FLAGS_NO_FLR_RESET;
++}
++DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_AMD, 0x149c, quirk_amd_no_flr);
++DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_AMD, 0x1487, quirk_amd_no_flr);
++
+ /*
+  * The PCI capabilities list for Intel DH895xCC VFs (device ID 0x0443) with
+  * QuickAssist Technology (QAT) is prematurely terminated in hardware.  The
+
