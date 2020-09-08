@@ -1,7 +1,7 @@
 pkgbase = ruby-certified
 	pkgdesc = Ensure net/https verifies SSL certificates and provides certificate bundle
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/stevegraham/certified
 	arch = any
 	license = MIT
