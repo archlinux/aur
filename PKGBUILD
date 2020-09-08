@@ -19,8 +19,8 @@ license=('GPL3'
 makedepends=('git')
 depends=('ncurses' 'pcre')
 
-provides=("${pkgname%-osc8-git}")
-conflicts=("${pkgname%-osc8-git}")
+provides=("${pkgname%-osc8-git}" "${pkgname%-git}")
+conflicts=("${pkgname%-osc8-git}" "${pkgname%-git}")
 
 changelog=NEWS
 source=("git+https://github.com/gwsw/${pkgname/-osc8-/.}"
