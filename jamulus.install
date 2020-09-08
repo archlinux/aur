@@ -25,12 +25,8 @@ To enable the service at boot:
 HERE
 }
 
-post_upgrade() {
-  /bin/true
-}
-
-pre_remove() {
-  /bin/true
+post_remove() {
+  echo "Consider removing jamulus user from the system"
 }
 
 op=$1
