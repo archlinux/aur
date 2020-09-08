@@ -1,0 +1,7 @@
+post_install() {
+  echo ">>> You can not use a DVB stick for both DVB and SDR.  There is a driver conflict.  /etc/modprobe.d/rtlsdr.conf blacklists the DVB drivers."
+}
+
+post_upgrade() {
+  post_install
+}

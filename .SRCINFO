@@ -1,0 +1,22 @@
+pkgbase = rtl-sdr-librtlsdr-git
+	pkgdesc = Fork of driver for Realtek RTL2832U, allowing general purpose software defined radio (SDR).
+	pkgver = r627.3551e61
+	pkgrel = 1
+	url = https://github.com/librtlsdr/librtlsdr
+	install = librtlsdr.install
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = libusb>=1.0
+	provides = rtl-sdr
+	conflicts = rtl-sdr
+	conflicts = rtl-sdr-git
+	options = staticlibs
+	source = git+https://github.com/librtlsdr/librtlsdr
+	md5sums = SKIP
+
+pkgname = rtl-sdr-librtlsdr-git
+
