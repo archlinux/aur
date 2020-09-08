@@ -1,7 +1,7 @@
 pkgbase = python-oss2
 	pkgdesc = Aliyun OSS SDK for Python.
 	pkgver = 2.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aliyun/aliyun-oss-python-sdk/
 	arch = any
 	license = MIT
