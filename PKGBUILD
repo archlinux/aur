@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-mlflow
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='An open source platform for the machine learning lifecycle'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('python-scikit-learn' 'python-boto3' 'python-mleap'
     'python-azureml-core' 'python-mlflow-dbstore' 'python-aliyunstoreplugin')
 makedepends=('python' 'python-setuptools' 'npm')
 source=("$pkgname-$pkgver::https://github.com/mlflow/mlflow/archive/v$pkgver.tar.gz")
-sha256sums=('7c95c82d3b20665ab440cafbdb6bc5ac44d124440a56f40571ab3a60e2cb945a')
+sha256sums=('716b6103068f1b3bd36ddc62d595f1f6d51c5fd3e0e72d0f2a75bc8a2b4af324')
 
 _pkgname=mlflow
 

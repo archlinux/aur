@@ -1,6 +1,6 @@
 pkgbase = python-mlflow
 	pkgdesc = An open source platform for the machine learning lifecycle
-	pkgver = 1.9.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://mlflow.org
 	arch = x86_64
@@ -39,8 +39,8 @@ pkgbase = python-mlflow
 	optdepends = python-azureml-core
 	optdepends = python-mlflow-dbstore
 	optdepends = python-aliyunstoreplugin
-	source = python-mlflow-1.9.1::https://github.com/mlflow/mlflow/archive/v1.9.1.tar.gz
-	sha256sums = 7c95c82d3b20665ab440cafbdb6bc5ac44d124440a56f40571ab3a60e2cb945a
+	source = python-mlflow-1.10.0::https://github.com/mlflow/mlflow/archive/v1.10.0.tar.gz
+	sha256sums = 716b6103068f1b3bd36ddc62d595f1f6d51c5fd3e0e72d0f2a75bc8a2b4af324
 
 pkgname = python-mlflow
 
