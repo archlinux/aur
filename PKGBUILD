@@ -3,7 +3,7 @@
 pkgname=pufferpanel-bin
 _pkgname=pufferpanel
 pkgver=2.0.0_alpha.3
-pkgrel=1
+pkgrel=2
 pkgdesc="PufferPanel: A web-base game management system (binary version)."
 arch=('x86_64')
 url="https://github.com/PufferPanel/PufferPanel"
@@ -29,6 +29,6 @@ package() {
   cp -R "${srcdir}/www/" "${pkgdir}/var/"
   cp -R "${srcdir}/email/" "${pkgdir}/etc/${pkg}/"
   install -D "${srcdir}/pufferpanel.service" "${pkgdir}/etc/systemd/system/pufferpanel.service" 
-  install -D -m 644 "${srcdir}/pufferpanel.sysusers" "${pkgdir}/usr/lib/sysusers.d/pufferpanel.conf"
-  install -D -m 644 "${srcdir}/pufferpanel.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/pufferpanel.conf"
+  install -D -m 644 "${srcdir}/../pufferpanel.sysusers" "${pkgdir}/usr/lib/sysusers.d/pufferpanel.conf"
+  install -D -m 644 "${srcdir}/../pufferpanel.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/pufferpanel.conf"
 }
