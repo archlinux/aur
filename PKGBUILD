@@ -1,6 +1,6 @@
 pkgbase=watchdog-ddns
 pkgname=("${pkgbase}-server" "${pkgbase}-client")
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='开箱即用的可常驻 Dynamic DNS 客户端，现已支持 DNSPod 阿里云 Cloudflare，支持网卡 IP'
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('go')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/yzy613/${pkgbase}/archive/v${pkgver}.tar.gz"
         "${pkgname[0]}.service"
         "${pkgname[1]}.service")
-sha256sums=('a1c60bbbbfb8f08cbe588258c074558ee892623149f4cb75d3b6f6d1b775bfc0'
+sha256sums=('d65d3dc0da38f448f1df49e3ba6453f77ec60f254d18f5c8c339c4ca4362698e'
             'e5d1cd8822d45ed8586ca23f8f893fda6636171c9109341e05816355089237bc'
             '245e4aa6bb204ca0cecef5d3e22643935d187dca068bb23562f604f3277ae5ed')
 
