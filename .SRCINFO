@@ -1,13 +1,13 @@
 pkgbase = ltspice
 	pkgdesc = SPICE simulator, schematic capture and waveform viewer of electronic circuits.
-	pkgver = 17_20190621
-	pkgrel = 3
+	pkgver = 17.0.0.11
+	pkgrel = 1
 	url = http://www.linear.com/designtools/software/
 	arch = x86_64
 	license = custom
 	makedepends = git
 	depends = wine
-	source = ltspice::git+https://github.com/M4a1x/ltspice#branch=17-20190621
+	source = ltspice::git+https://github.com/jhbruhn/ltspice#branch=17.0.0.11
 	source = ltspice.sh
 	source = ltspice-help.sh
 	sha256sums = SKIP
