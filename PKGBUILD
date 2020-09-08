@@ -4,7 +4,7 @@
 #      That is the only reason why this package ends on -git.
 
 pkgname=sickchill-git
-pkgver=2020.9.6.post7.r0
+pkgver=2020.9.7.post4.r0
 pkgrel=1
 pkgdesc="Automatic video library manager for TV shows"
 arch=('any')
@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
   #python -m venv build
-  virtualenv build
+  virtualenv --quiet build
   build/bin/pip install --quiet --quiet --isolated --no-warn-script-location --root=build --prefix=. sickchill
 
   sed -i '1s|.*|#!/opt/sickchill/app/bin/python|' build/bin/SickChill.py

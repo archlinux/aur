@@ -1,13 +1,15 @@
 post_install() {
   systemd-sysusers sickchill.conf
   systemd-tmpfiles --create sickchill.conf
-  chown -R sickchill:sickchill /opt/sickchill
+
+  chown -R sickchill:sickchill /opt/sickchill/app
+  chown sickchill:sickchill /opt/sickchill/data
 
   echo "==> Start and enable sickchill.service. Then visit http://localhost:8081/"
 }
 
 post_upgrade() {
-  post_install $1
+  post_install "$1"
 }
 
 pre_remove() {
