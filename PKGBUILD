@@ -1,38 +1,28 @@
-# Maintainer: Thomas Jost <schnouki@schnouki.net>
+# Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: Thomas Jost <schnouki@schnouki.net>
 # Contributor: Jakub Klinkovský <j.l.k@gmx.com>
-pkgname=('python-scandir' 'python2-scandir')
-pkgdesc="A better directory iterator that returns all file info OS provides"
-pkgver=1.1
-pkgrel=1
+
+pkgname=python-scandir
+pkgdesc="A better directory iterator and faster os.walk()"
+pkgver=1.10.0
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/benhoyt/scandir"
 license=('BSD')
-makedepends=('git')
+depends=('python')
+makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/s/scandir/scandir-${pkgver}.tar.gz")
-md5sums=('6b6b777bcc119429e8f86bfe54be2635')
-sha256sums=('3a3be7a7ef07f59731a084832f231032fd87df6200e6a703695ac1832b190d28')
+md5sums=('f8378f4d9f95a6a78e97ab01aa900c1d')
+sha256sums=('4d4631f6062e658e9007ab3149a9b914f3548cb38bfb021c64f39a025ce578ae')
 
 build() {
   cd "scandir-$pkgver"
-
-  msg2 "Building for Python 3"
   python setup.py build
-  msg2 "Building for Python 2"
-  python2 setup.py build
 }
 
-package_python-scandir() {
-  depends=('python')
-
+package() {
   cd "scandir-$pkgver"
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize 1
-}
-
-package_python2-scandir() {
-  depends=('python2')
-
-  cd "scandir-$pkgver"
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize 1
 }
 
 # vim:set ts=2 sw=2 et:
