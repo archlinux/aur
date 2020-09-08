@@ -1,11 +1,12 @@
 pkgbase = gnome-backgrounds-git
 	pkgdesc = Background images and data for GNOME
-	pkgver = 3.30.0+19+g8d77ab7
+	pkgver = 3.37.92+3+gae42bef
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-backgrounds
 	arch = any
 	groups = gnome
 	license = GPL
+	makedepends = git
 	makedepends = glib2
 	makedepends = meson
 	provides = gnome-backgrounds
