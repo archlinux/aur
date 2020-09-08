@@ -1,9 +1,9 @@
 post_install() {
 
-mkdir -p /home/$USER/.minimserver/data
-touch /home/$USER/.minimserver/data/minimserver.config
-echo ".autoUpdate = false" >> /home/$USER/.minimserver/data/minimserver.config
-chown -R $USER:users /home/$USER/.minimserver
+mkdir -p /home/your_user/.minimserver/data
+touch /home/your_user/.minimserver/data/minimserver.config
+echo ".autoUpdate = false" >> /home/your_user/.minimserver/data/minimserver.config
+chown -R your_user:users /home/your_user/.minimserver
 
   echo "
 ========================================================================
@@ -31,12 +31,12 @@ Full documentation is available at:
 
 *** IMPORTANT ***
 
-Before starting minimserver for the first time please check if the directory /home/$USER/.minimserver/data exists.
+Before starting minimserver for the first time please check if the directory /home/your_user/.minimserver/data exists.
 If not, in a user terminal type the following commands:
 
-mkdir -p /home/$USER/.minimserver/data
-touch /home/$USER/.minimserver/data/minimserver.config
-echo ".autoUpdate = false" >> /home/$USER/.minimserver/data/minimserver.config
+mkdir -p /home/your_user/.minimserver/data
+touch /home/your_user/.minimserver/data/minimserver.config
+echo ".autoUpdate = false" >> /home/your_user/.minimserver/data/minimserver.config
 
 ========================================================================
 "
@@ -46,12 +46,12 @@ post_upgrade() {
   echo "
 ========================================================================
 
-Before starting minimserver for the first time please check if the directory /home/$USER/.minimserver/data exists.
+Before starting minimserver for the first time please check if the directory /home/your_user/.minimserver/data exists.
 If not, in a user terminal type the following commands:
 
-mkdir -p /home/$USER/.minimserver/data
-touch /home/$USER/.minimserver/data/minimserver.config
-echo ".autoUpdate = false" >> /home/$USER/.minimserver/data/minimserver.config
+mkdir -p /home/your_user/.minimserver/data
+touch /home/your_user/.minimserver/data/minimserver.config
+echo ".autoUpdate = false" >> /home/your_user/.minimserver/data/minimserver.config
 
 Full documentation is available at:
   http://www.minimserver.com/
