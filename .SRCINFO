@@ -1,0 +1,17 @@
+pkgbase = nginx-mainline-src
+	pkgdesc = Source code of nginx-mainline 1.19.2, useful for building modules
+	pkgver = 1.19.2
+	pkgrel = 1
+	url = https://nginx.org
+	arch = x86_64
+	license = custom
+	makedepends = nginx
+	makedepends = grep
+	source = https://nginx.org/download/nginx-1.19.2.tar.gz
+	source = https://nginx.org/download/nginx-1.19.2.tar.gz.asc
+	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
+	md5sums = 3dc55f6451ed6f819f1c796f4e5e9617
+	md5sums = SKIP
+
+pkgname = nginx-mainline-src
+
