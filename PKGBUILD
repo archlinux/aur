@@ -6,7 +6,7 @@
 pkgname=distcc-git
 _pkgname=distcc
 pkgver=v3.3.3.r33.g10addba
-pkgrel=1
+pkgrel=2
 pkgdesc='Distributed C, C++ and Objective-C compiler, git version'
 arch=('x86_64')
 url='http://distcc.org'
@@ -16,12 +16,12 @@ makedepends=(git gtk2 setconf)
 optdepends=('gtk2: for distccmon-gnome')
 conflicts=(distcc)
 provides=(distcc)
-backup=('etc/conf.d/distccd'
-        'etc/distcc/hosts')
-source=("git://github.com/distcc/distcc.git"
-        'distccd.conf.d'
-        'distccd.service'
-        'sysusers.conf')
+backup=(etc/conf.d/distccd
+        etc/distcc/hosts)
+source=(git://github.com/distcc/distcc.git
+        distccd.conf.d
+        distccd.service
+        sysusers.conf)
 b2sums=('SKIP'
         'c48a6daea2cae5e5865c488e612c819e6f9bf4a1b205e2cd264b795de3450d40b0fe05264fbd8a3fe861f03e38d91e7e791ad67e22da5b5d0b43bcb380b8b4c9'
         '9b6ffc02e9360fd92f7595e96ef2d69b5f6d72acf343009375fa081f86b26f51960b139c4f6e0e3c8befa37eba4894d61351bbfab6386389c262db0cc01a8b8e'
@@ -34,6 +34,7 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
+  export CFLAGS+=' -fcommon'
   ./autogen.sh
   setconf gnome/distccmon-gnome.desktop Name 'DistCC Monitor'
   sed -i 's/ install-gnome-data//g' Makefile.in

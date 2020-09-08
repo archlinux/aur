@@ -1,7 +1,7 @@
 pkgbase = distcc-git
 	pkgdesc = Distributed C, C++ and Objective-C compiler, git version
 	pkgver = v3.3.3.r33.g10addba
-	pkgrel = 1
+	pkgrel = 2
 	url = http://distcc.org
 	arch = x86_64
 	license = GPL
