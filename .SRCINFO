@@ -1,0 +1,17 @@
+pkgbase = python-fabric
+	pkgdesc = Simple, Pythonic remote execution and deployment
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://www.fabfile.org/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-paramiko
+	depends = python-invoke
+	depends = python-cryptography
+	source = https://files.pythonhosted.org/packages/source/f/fabric/fabric-2.5.0.tar.gz
+	sha256sums = 24842d7d51556adcabd885ac3cf5e1df73fc622a1708bf3667bf5927576cdfa6
+
+pkgname = python-fabric
+
