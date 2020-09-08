@@ -1,7 +1,7 @@
 pkgbase = python-snimpy
 	pkgdesc = Interactive SNMP tool
 	pkgver = 0.8.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vincentbernat/snimpy
 	arch = x86_64
 	license = ISC
