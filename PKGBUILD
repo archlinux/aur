@@ -28,11 +28,11 @@ pkgver() {
 
 build() {
   cd $pkgname
-  make
+  make PREFIX=/usr
 }
 
 package() {
   cd $pkgname
-  make DESTDIR="$pkgdir" install
+  make PREFIX=/usr DESTDIR="$pkgdir" install
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
