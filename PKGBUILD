@@ -2,7 +2,7 @@
 
 pkgname=izpack
 pkgver=5.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for packaging applications on the Java platform as cross-platform installers'
 arch=('any')
 url='http://izpack.org/'
@@ -30,9 +30,7 @@ build() {
 }
 
 check() {
-    mvn -f "${pkgname}-${pkgname}-${pkgver}" \
-        -Dproject.build.outputTimestamp="$SOURCE_DATE_EPOCH" \
-        test
+    mvn -f "${pkgname}-${pkgname}-${pkgver}" test
 }
 
 package() {
@@ -65,8 +63,8 @@ package() {
     local _res
     while read -r -d '' _file
     do
-        _res="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*_//')"
-        _dest="$(printf '%s' "$_file" | sed ";s/_${_res}//;s/_/-/")"
+        _res="$(sed 's/\.png$//;s/^.*_//' <<< "$_file")"
+        _dest="$(sed ";s/_${_res}//;s/_/-/" <<< "$_file")"
         mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/mimetypes"
         ln -s "../../../../../../opt/izpack/icons/${_file}" \
             "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/mimetypes/${_dest}"

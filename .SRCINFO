@@ -1,7 +1,7 @@
 pkgbase = izpack
 	pkgdesc = Tool for packaging applications on the Java platform as cross-platform installers
 	pkgver = 5.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://izpack.org/
 	arch = any
 	license = Apache
