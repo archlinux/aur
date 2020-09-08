@@ -1,22 +1,20 @@
-diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/mooedit.py
---- pida.orig/pida/editors/mooedit/mooedit.py	2012-03-10 02:57:31.000000000 -0800
-+++ pida/pida/editors/mooedit/mooedit.py	2012-03-10 02:58:19.000000000 -0800
-@@ -15,28 +15,7 @@
+diff -ru pida-0.6.2.orig/pida/editors/mooedit/mooedit.py pida-0.6.2/pida/editors/mooedit/mooedit.py
+--- pida-0.6.2.orig/pida/editors/mooedit/mooedit.py	2020-09-08 16:35:48.000000000 +0100
++++ pida-0.6.2/pida/editors/mooedit/mooedit.py	2020-09-08 16:46:08.000000000 +0100
+@@ -15,26 +15,7 @@
  import re
  from gtk import gdk
  
--
 -# UGLY UGLY workarround as suggested by muntyan_
 -# this will be changed someday when therue will be a correct 
 -# api for this.
--
--from pida.core.environment import home, workspace_name
+-from pida.core.environment import pida_home, workspace_name
 -
 -SYS_DATA = os.environ.get("XDG_DATA_DIRS", 
 -                          "/usr/share:/usr/local/share")
 -
 -MOO_DATA_DIRS=os.pathsep.join((
--                str(home()/'moo'),
+-                os.path.join(pida_home, 'moo'),
 -                os.path.join(os.path.dirname(__file__), "shared"),
 -                os.pathsep.join([os.path.join(x, "moo") 
 -                                for x in SYS_DATA.split(os.pathsep)]),
@@ -31,15 +29,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
  
  def _load_pix(fn):
      #XXX: not zip save
-@@ -68,7 +47,6 @@
- from pida.services.buffer import view as buffer_view
- 
- 
--
- # locale
- from pida.core.locale import Locale
- locale = Locale('mooedit')
-@@ -147,7 +125,7 @@
+@@ -139,7 +120,7 @@
      icon_name = 'package_utilities'
      
      def create_ui(self):
@@ -48,7 +38,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          prefs.emit('init')
          prefs.show()
          vbox = gtk.VBox()
-@@ -255,15 +233,16 @@
+@@ -247,15 +228,16 @@
  
      def set_editor(self, editor):
          self.editor = editor
@@ -69,7 +59,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          for lm in self.line_markers:
              lm.update(lm._moo_marker.get_line()+1)
          return True
-@@ -282,7 +261,7 @@
+@@ -274,7 +256,7 @@
              # should be deleted
              if marker in self.line_markers and hasattr(marker, '_moo_marker'):
                  marker._moo_marker.props.visible = False
@@ -78,7 +68,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
                  self.line_markers.remove(marker)
                  return 
  
-@@ -293,14 +272,14 @@
+@@ -285,14 +267,14 @@
              lm.props.visible = True
              marker._moo_marker = lm
  
@@ -95,7 +85,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
                  min(max(0, int(marker.line)-1),buf.get_line_count()))
  
  
-@@ -440,7 +419,6 @@
+@@ -432,7 +414,6 @@
          # ne need to disconnect the accelerator as our text widget are 
          # handeling the shortcuts
          act.disconnect_accelerator()
@@ -103,7 +93,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
  
          act = self.create_action(
              'mooedit_complete_toggle',
-@@ -452,7 +430,6 @@
+@@ -444,7 +425,6 @@
              '<Control>space',
          )
          act.disconnect_accelerator()
@@ -111,7 +101,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
  
          act = self.create_action(
              'mooedit_completer_next',
-@@ -464,7 +441,6 @@
+@@ -456,7 +436,6 @@
              'Down',
          )
          act.disconnect_accelerator()
@@ -119,7 +109,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
  
          act = self.create_action(
              'mooedit_completer_prev',
-@@ -476,7 +452,6 @@
+@@ -468,7 +447,6 @@
              'Up',
          )
          act.disconnect_accelerator()
@@ -127,7 +117,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
  
          act = self.create_action(
              'mooedit_completer_accept',
-@@ -488,7 +463,6 @@
+@@ -480,7 +458,6 @@
              'Tab',
          )
          act.disconnect_accelerator()
@@ -135,7 +125,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
  
      def on_completer_change(self, *args):
          self.svc._update_keyvals()
-@@ -499,35 +473,35 @@
+@@ -491,35 +468,35 @@
  
      def on_save_as(self, action):
          # open in current filebrowser path
@@ -181,7 +171,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          nl = self.svc.get_current_line()
          if cl != nl:
              self.svc.boss.get_service('buffer').emit('document-goto', 
-@@ -537,10 +511,10 @@
+@@ -529,10 +506,10 @@
          self.svc.boss.editor.goto_last_edit()
  
      def on_comment(self, action):
@@ -194,7 +184,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
  
  class PidaMooInput(object):
      """
-@@ -551,13 +525,14 @@
+@@ -543,13 +520,14 @@
          self.svc = svc
          self.editor = editor
          self.document = document
@@ -210,7 +200,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          self.model = SuggestionsList()
          self.completer.set_model(self.model)
          
-@@ -571,26 +546,26 @@
+@@ -563,26 +541,26 @@
          self.completer_end = None
          self.show_auto = False
          self._task = None
@@ -244,7 +234,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
  
  
      #def on_
-@@ -694,15 +669,15 @@
+@@ -686,15 +664,15 @@
          self.completer_end = buf.create_mark('completer_end', 
                          buf.get_iter_at_offset(cpos))
  
@@ -264,7 +254,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          rpos = (pos[0]+abspos[0], pos[1]+abspos[1])
          #self.completer_window.show_all()
          #self.completer_window.move(rpos[0],rpos[1])
-@@ -712,7 +687,7 @@
+@@ -704,7 +682,7 @@
          #self.completer_window.window.set_focus_on_map(False)
          #self.completer_window.window.set_skip_taskbar_hint(True)
          #self.completer_window.window.set_skip_pager_hint(True)
@@ -273,7 +263,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          #if not self.completer_added:
              #self.editor.add_child_in_window(self.completer, 
              #                           gtk.TEXT_WINDOW_TOP, 
-@@ -765,13 +740,13 @@
+@@ -757,13 +735,13 @@
          return buf.get_text(i1, i2)
  
      def _delete_typed(self):
@@ -289,7 +279,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          i1 = buf.get_iter_at_mark(self.completer_pos)
          buf.insert(i1, text)
          buf.move_mark(self.completer_start, i1)
-@@ -784,7 +759,7 @@
+@@ -776,7 +754,7 @@
          self._replace_typed(self._get_typed() + char)
  
      def _replace_typed(self, text):
@@ -298,7 +288,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          i1 = buf.get_iter_at_mark(self.completer_pos)
          i2 = buf.get_iter_at_mark(self.completer_start)
          buf.delete(i1, i2)
-@@ -793,13 +768,13 @@
+@@ -785,13 +763,13 @@
          buf.move_mark(self.completer_start, i1)
  
      def _get_suggested(self):
@@ -314,7 +304,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          if not self.completer_start or not self.completer_end:
              return
          i1 = buf.get_iter_at_mark(self.completer_start)
-@@ -807,7 +782,7 @@
+@@ -799,7 +777,7 @@
          buf.delete(i1, i2)
  
      def d(self):
@@ -323,7 +313,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          if self.completer_start:
              print "cur", buf.props.cursor_position
              print "pos", buf.get_iter_at_mark(self.completer_pos).get_offset()
-@@ -816,7 +791,7 @@
+@@ -808,7 +786,7 @@
  
  
      def _replace_suggested(self, text, mark=True):
@@ -332,7 +322,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          i1 = buf.get_iter_at_mark(self.completer_start)
          i2 = buf.get_iter_at_mark(self.completer_end)
          buf.delete(i1, i2)
-@@ -895,8 +870,8 @@
+@@ -887,8 +865,8 @@
          # if we are in show_auto mode, the completion window
          # is delayed until we have the first visible item.
          if not self.completer_visible and self.show_auto and \
@@ -343,7 +333,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
              if len(self.completer.model):
                  self.completer_window.show()
  
-@@ -963,7 +938,7 @@
+@@ -955,7 +933,7 @@
          # and the code later should be a extra function
          # but doesn't work as this super function returns True
          # and stops the processing of connect_after functions
@@ -352,7 +342,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          #print modified, repr(event.string)
          #self.d()
          #if self.completer_start:
-@@ -1056,8 +1031,7 @@
+@@ -1048,8 +1026,7 @@
  class MooeditEventsConfig(EventsConfig):
  
      def subscribe_all_foreign(self):
@@ -362,7 +352,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          self.subscribe_foreign('buffer', 'document-typchanged',
              self.doctype_changed)
  
-@@ -1066,8 +1040,7 @@
+@@ -1058,8 +1035,7 @@
  
      def doctype_changed(self, document):
          if document.doctype and getattr(document, 'editor', None):
@@ -372,7 +362,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
  
  # Service class
  class Mooedit(EditorService):
-@@ -1081,27 +1054,17 @@
+@@ -1073,27 +1049,17 @@
      events_config = MooeditEventsConfig
      
      def pre_start(self):
@@ -405,7 +395,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
              self._documents = {}
              self._current = None
              self._main = MooeditMain(self)
-@@ -1125,6 +1088,8 @@
+@@ -1117,6 +1083,8 @@
              return False
  
      def start(self):
@@ -414,7 +404,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          # we only disable the buttons if no document is loaded
          # session may already have loaded docs
          if not len(self._documents):
-@@ -1132,10 +1097,12 @@
+@@ -1124,10 +1092,12 @@
          self.get_action('mooedit_last_edit').set_sensitive(False)
          self._update_keyvals()
          self.boss.get_service('editor').emit('started')
@@ -429,7 +419,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
  
          return True
  
-@@ -1147,7 +1114,8 @@
+@@ -1139,7 +1109,8 @@
                  view.update_marker(marker)
  
      def save_moo_state(self):
@@ -439,7 +429,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
  
      def show_preferences(self, visible):
          if visible:
-@@ -1194,15 +1162,15 @@
+@@ -1186,15 +1157,15 @@
  
      def _update_keyvals(self):
          self.key_toggle = gtk.accelerator_parse(
@@ -460,7 +450,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
  
      def open(self, document):
          """Open a document"""
-@@ -1253,32 +1221,25 @@
+@@ -1245,32 +1216,25 @@
  
      def save(self):
          """Save the current document"""
@@ -497,7 +487,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
  
      def undo(self):
          self._current.editor.undo()
-@@ -1294,7 +1255,7 @@
+@@ -1286,7 +1250,7 @@
  
      def goto_line(self, line):
          """Goto a line"""
@@ -506,7 +496,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          self.boss.get_service('buffer').emit('document-goto', 
                                          document=self._current.document, line=line-1)
  
-@@ -1311,7 +1272,7 @@
+@@ -1303,7 +1267,7 @@
  
      def grab_focus(self):
          if self._current is not None:
@@ -515,7 +505,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
  
      def _changed_page(self, notebook, page, page_num):
          self._current = self._embed.get_nth_page(page_num)
-@@ -1321,39 +1282,19 @@
+@@ -1313,39 +1277,19 @@
          """
          Reloads a document from disc
          """
@@ -559,7 +549,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
              editor.props.enable_bookmarks = False
              #FIXME: this should be implemented but needs some code and a pref
              #editor.props.enable_folding = True
-@@ -1379,7 +1320,7 @@
+@@ -1371,7 +1315,7 @@
  
      def _buffer_status_changed(self, buffer, view):
          status = view.editor.get_status()
@@ -568,7 +558,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
              if not self._current.editor.can_redo():
                  self.get_action('redo').set_sensitive(False)
              if not view._star:
-@@ -1392,11 +1333,11 @@
+@@ -1384,11 +1328,11 @@
                  self.get_action('undo').set_sensitive(True)
                  self.get_action('save').set_sensitive(True)
  
@@ -583,7 +573,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
              if not view._exclam:
                  s = view.editor._label._markup
                  if view._star:
-@@ -1426,8 +1367,8 @@
+@@ -1418,8 +1362,8 @@
          view.editor._label.set_markup(ns)
          view.editor._label._markup(ns)
  
@@ -594,7 +584,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          ns = self._get_document_title(view.document)
          view.editor._label.set_markup(ns)
          view.editor._label._markup = ns
-@@ -1584,7 +1525,7 @@
+@@ -1580,7 +1524,7 @@
          buf.place_cursor(itr)
          if scroll:
              itr = buf.get_iter_at_offset(position)
@@ -603,7 +593,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
  
      def do_doc_destroy(self, *args):
          if self._docwin:
-@@ -1592,18 +1533,18 @@
+@@ -1588,18 +1532,18 @@
              self._docwin = None
  
      def on_doc_destroy(self, *args):
@@ -627,7 +617,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
          rpos = (pos[0]+abspos[0], pos[1]+abspos[1])
          dm = self.boss.get_service('language').get_documentator(
              self._current.document)
-@@ -1625,7 +1566,7 @@
+@@ -1621,7 +1565,7 @@
                               quick=True)
              return
          pd.connect("destroy-event", self.on_doc_destroy)
@@ -636,7 +626,7 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
              'cursor-moved', self.do_doc_destroy)
          pd.move(rpos[0], rpos[1] + rec.height)
          self._docwin = pd
-@@ -1654,5 +1595,10 @@
+@@ -1650,6 +1594,11 @@
  
  
  
@@ -645,11 +635,13 @@ diff -ru pida.orig/pida/editors/mooedit/mooedit.py pida/pida/editors/mooedit/moo
 +
 +
 +
- # vim:set shiftwidth=4 tabstop=4 expandtab textwidth=79:
+ # Required Service attribute for service loading
+ Service = Mooedit
  
-diff -ru pida.orig/pida/ui/paneds.py pida/pida/ui/paneds.py
---- pida.orig/pida/ui/paneds.py	2012-03-10 02:57:31.000000000 -0800
-+++ pida/pida/ui/paneds.py	2012-03-10 02:58:34.000000000 -0800
+Only in pida-0.6.2/pida/editors/mooedit: mooedit.py.orig
+diff -ru pida-0.6.2.orig/pida/ui/paneds.py pida-0.6.2/pida/ui/paneds.py
+--- pida-0.6.2.orig/pida/ui/paneds.py	2020-09-08 16:35:48.000000000 +0100
++++ pida-0.6.2/pida/ui/paneds.py	2020-09-08 16:46:08.000000000 +0100
 @@ -9,7 +9,7 @@
  # Don't import moo twice from different locations when the full editor is
  # being used.
