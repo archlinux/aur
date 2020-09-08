@@ -2,7 +2,7 @@
 
 _pkgname=pomotroid
 pkgname="${_pkgname}-bin"
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Simple and visually-pleasing Pomodoro timer"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source_x86_64=(
   "${_pkgname}.desktop"
   "${_pkgname}.png"
 )
-md5sums_x86_64=('d2e8a05e7d454e85cfaed0b0b9e64906'
+md5sums_x86_64=('aeef5bfe6909db84366ccbdb44c76750'
                 '98368ac76439a0812a58d0a586b28ed1'
                 '4276e15ba2505a034a80a272e9c9f0ed'
                 '81ad82d2a70c058cb80a6ee7679c5f66')
