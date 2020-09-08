@@ -1,7 +1,7 @@
 # Maintainer: skydrome -at- protonmail
 
 pkgname=scrcpy-git
-pkgver=1.12.1.r10.g7bb9163
+pkgver=1.16.r4.g0be766e
 _pkgver=${pkgver%.r*}
 pkgrel=1
 pkgdesc='Display and control your Android device (development version)'
