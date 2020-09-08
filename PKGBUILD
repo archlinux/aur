@@ -2,7 +2,7 @@
 
 pkgname=bspwm-rounded-corners-git
 pkgver=0.9.10.r12.g98e9642
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiling window manager based on binary space partitioning with rounded corners"
 url="https://github.com/phuhl/bspwm-rounded"
 arch=('x86_64')
