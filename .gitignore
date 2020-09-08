@@ -3,3 +3,4 @@ src/
 
 *.zip
 *.pkg.tar.xz
+*.AppImage
