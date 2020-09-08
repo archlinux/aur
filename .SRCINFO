@@ -5,15 +5,18 @@ pkgbase = retux-bin
 	url = https://retux-game.github.io/
 	arch = x86_64
 	license = GPL3
-	depends = python
-	depends = python-pygame
+	depends = sdl
+	depends = sdl_image
+	depends = sdl_mixer
 	provides = retux
 	conflicts = retux
 	noextract = retux-1.4-linux-x86_64.tar.gz
 	source = https://github.com/retux-game/retux/releases/download/v1.4/retux-1.4-linux-x86_64.tar.gz
 	source = retux.desktop
+	source = retux.sh
 	md5sums = 0dac718ccc5750ff9107b5b04e43f4bc
-	md5sums = 93ea709ea729e680b0ee7577b74df76a
+	md5sums = 4ea890841ed39987403ca2180813c4bb
+	md5sums = f9476ed7be634401040daaf9711b96f5
 
 pkgname = retux-bin
 

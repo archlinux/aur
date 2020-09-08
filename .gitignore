@@ -2,3 +2,5 @@
 !.gitignore
 !PKGBUILD
 !retux.desktop
+!.SRCINFO
+!retux.sh
