@@ -1,14 +1,14 @@
 pkgbase = walt-common
 	pkgdesc = WalT common python modules
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
 	url = https://walt-project.liglab.fr
 	arch = any
 	license = BSD
-	depends = python2-plumbum
-	source = https://files.pythonhosted.org/packages/source/w/walt-common/walt-common-4.tar.gz
+	depends = python-plumbum
+	source = https://files.pythonhosted.org/packages/source/w/walt-common/walt-common-5.tar.gz
 	source = LICENSE
-	sha256sums = 3a415b2845cb142148a551b3f65c30a9b49a6a58c4ae2c11c3d853d174ac3d54
+	sha256sums = 90057f04079ad0339621c95e75e9e7204646820e5eb3eafa5b7894d9fb3b7d6b
 	sha256sums = 49e4de7e7679bb97dd8bf5363c87da852ef1e00d8a1263d2fe4855d7b47fd401
 
 pkgname = walt-common
