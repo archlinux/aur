@@ -1,13 +1,14 @@
 # Maintainer: VanLaser <gabi_laser at yahoo dot com>
 
 pkgname=c2ffi-git
-pkgver=r182.a2d1f66
+pkgver=r183.7371b79
 pkgrel=1
 pkgdesc="Clang-based FFI wrapper generator"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/rpav/c2ffi"
 license=('GPL2')
 depends=('clang'
+         'llvm'
          'libffi'
          'libedit'
          'zlib'
