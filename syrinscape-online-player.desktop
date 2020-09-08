@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.4.8-p2
+Type=Application
+Name=Syrinscape Online Player
+Exec="/opt/Syrinscape\sOnline\sPlayer/Syrinscape\sOnline\sPlayer"
+Path=/opt/Syrinscape\sOnline\sPlayer/
+Icon=/opt/Syrinscape\sOnline\sPlayer/Syrinscape\sOnline\sPlayer_Data/Resources/UnityPlayer.png
+Terminal=false
+MimeType=x-scheme-handler/syrinscape-online;
