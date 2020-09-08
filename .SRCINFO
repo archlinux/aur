@@ -1,14 +1,14 @@
 pkgbase = walt-virtual
 	pkgdesc = WalT components related to virtualization
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
 	url = https://walt-project.liglab.fr
 	arch = any
 	license = BSD
 	depends = walt-common
-	source = https://files.pythonhosted.org/packages/source/w/walt-virtual/walt-virtual-4.tar.gz
+	source = https://files.pythonhosted.org/packages/source/w/walt-virtual/walt-virtual-5.tar.gz
 	source = LICENSE
-	sha256sums = 5b7dc1642865d3244f3792f5bb2abe0c1881c97662612f3d12f644fe93da2f5d
+	sha256sums = 39d226a5312d20754864931b73bac92b2df709316ac0cafceb8cff89108ee1d3
 	sha256sums = 49e4de7e7679bb97dd8bf5363c87da852ef1e00d8a1263d2fe4855d7b47fd401
 
 pkgname = walt-virtual
