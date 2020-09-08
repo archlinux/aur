@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=6.0.99
+pkgver=6.2.91
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
@@ -52,7 +52,7 @@ optdepends=(
 )
 options=(!strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz" add-vstsdk-location-var.patch)
-sha256sums=('200e38de95d40505df9639e7925654f87c4fa12639aa36837114be1df060040e'
+sha256sums=('a4ad3119b3e96204ed60d34111476bbf2f210b156a0776df1c331a894430d35f'
             '2466b88e345c48be43a835ee0001aac55189ce74b4181d3c4275e459089e7ccc')
 
 prepare() {
@@ -85,7 +85,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   echo '#!/usr/bin/env bash' > "$pkgdir/usr/bin/radium"
   echo QT_QPA_PLATFORM_PLUGIN_PATH="$($(RADIUM_QT_VERSION=5 ./find_moc_and_uic_paths.sh qmake) -query QT_INSTALL_PLUGINS)" \
-    /opt/radium/radium >> "$pkgdir/usr/bin/radium"
+    /opt/radium/radium '"$@"' >> "$pkgdir/usr/bin/radium"
   chmod +x "$pkgdir/usr/bin/radium"
 
   # Icons, .desktop and mimetype files
