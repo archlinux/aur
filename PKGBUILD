@@ -1,13 +1,13 @@
 pkgname=gnome-boxes-git
 _pkgname=gnome-boxes
-pkgver=3.35.90+130+g492e4a9a
+pkgver=3.37.90+45+g1593f6fd
 pkgrel=1
 pkgdesc="Simple GNOME application to access remote or virtual systems"
 arch=('x86_64')
 url="https://wiki.gnome.org/Apps/Boxes"
 license=('LGPL')
 depends=('cdrtools' 'gtk-vnc' 'libarchive' 'libgudev' 'libosinfo' 'libsecret'
-         'libvirt-glib' 'mtools' 'qemu' 'spice-gtk' 'tracker' 'webkit2gtk' 'freerdp' 'libhandy')
+         'libvirt-glib' 'mtools' 'qemu' 'spice-gtk' 'tracker' 'webkit2gtk' 'freerdp' 'libhandy' 'gtksourceview4')
 makedepends=('git' 'gobject-introspection' 'yelp-tools' 'meson' 'spice-protocol' 'vala')
 provides=('gnome-boxes')
 conflicts=('gnome-boxes')
