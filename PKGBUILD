@@ -10,7 +10,7 @@ source=("https://github.com/turbocat2001/kos32-sdk-linux/releases/download/${pkg
 md5sums=('SKIP')
 options=('!strip')
 
-package() {  
+package() {
      cd $pkgdir
      tar -xf $srcdir/data.tar.xz
 }

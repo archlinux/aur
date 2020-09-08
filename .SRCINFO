@@ -1,5 +1,5 @@
 pkgbase = kos32-sdk-bin
-	pkgdesc = SDK for Kolibri OS + Toolchain by Serge.
+	pkgdesc = SDK for Kolibri OS + Toolchain by Serge(compiled version).
 	pkgver = 0.3
 	pkgrel = 1
 	arch = x86_64
