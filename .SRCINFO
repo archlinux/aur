@@ -1,7 +1,7 @@
 pkgbase = open-plc-utils
 	pkgdesc = Qualcomm Atheros Open Powerline Toolkit for HomePlug AV
 	pkgver = r510.g32408520
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qca/open-plc-utils
 	arch = i686
 	arch = x86_64

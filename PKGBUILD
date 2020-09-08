@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=open-plc-utils
 pkgver=r510.g32408520
-pkgrel=1
+pkgrel=2
 pkgdesc="Qualcomm Atheros Open Powerline Toolkit for HomePlug AV"
 arch=(i686 x86_64)
 url=https://github.com/qca/open-plc-utils
@@ -17,7 +17,7 @@ pkgver() {
 
 build() {
 	cd $pkgname
-	make
+	make EXTRA_CFLAGS="-fcommon"
 }
 
 package() {
