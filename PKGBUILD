@@ -19,7 +19,7 @@ optdepends=("networkmanager: Location detection via available WiFi networks" "sp
 makedepends=("gzip")
 provides=("firefox=${pkgver}")
 conflicts=("firefox" "firefox-kde-opensuse" "firefox-kde-opensuse-bin")
-source_x86_64=('https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-"${_pkgver}".x86_64.rpm')
+source_x86_64=(https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-${_pkgver}.x86_64.rpm)
 sha512sums_x86_64=('4e0b533fa68347425c0ba5a820edb6c496946beb20c0dd4f07188f69ef8d4df31b7cbc2083e6ce70f4415eac65f6fe0fc6e2c36a764ff65dd93f5fb355306871')
 
 
