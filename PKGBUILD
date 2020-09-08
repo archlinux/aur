@@ -1,14 +1,14 @@
 # Maintainer    zan <zan@420blaze.it>
 
 pkgname=obs-hevc-vaapi-git
-pkgver=25.0.7.r530.g0c41bef84
+pkgver=26.0.0.rc1.r63.g0ba9b201a
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With VAAPI HEVC support."
 arch=(i686 x86_64)
 url="https://github.com/obsproject/obs-studio"
 license=(GPL2)
 depends=(ffmpeg jansson libxinerama qt5-x11extras mbedtls)
-makedepends=(cmake git x264 jack vlc swig cef-minimal)
+makedepends=(cmake git x264 jack vlc swig cef-minimal-3770)
 optdepends=("libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
             "jack: JACK Support"
@@ -42,6 +42,7 @@ prepare() {
 build() {
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_BROWSER=ON \
+        -DCEF_ROOT_DIR="/opt/cef" \
         -B build -S $pkgname
   cmake --build build
 }
