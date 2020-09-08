@@ -1,15 +1,15 @@
-# Maintainer: Pierre Chapuis <catwell@archlinux.us>
+# Maintainer: Pierre Chapuis <arch@catwell.info>
 
 pkgname=("python-airtable-wrapper")
-pkgver=0.12.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Python Airtable Client Wrapper"
 arch=("any")
 url="https://airtable-python-wrapper.readthedocs.io"
 license=("MIT")
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/2b/98/fa25c99473c3bf8f2cb2298d16cb1695ca08074ddc04973c836372d00251/airtable-python-wrapper-0.12.0.tar.gz")
-sha256sums=("f147cdef108787c297a24c8fd2a1a339eda982f8cf0c46e0973571420e74028b")
+source=("https://files.pythonhosted.org/packages/f7/02/4e3c3acafcab39f0cf713e3a2894796441280844d3d70f12afdc9ec95aa0/airtable-python-wrapper-0.15.0.tar.gz")
+sha256sums=("897d7603932fbfcd1009d59c1f183c61bba14a27b7c255a6aeb12e8c22b42c35")
 
 build() {
     cd "$srcdir"
