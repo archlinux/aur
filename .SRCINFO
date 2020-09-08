@@ -1,15 +1,17 @@
-pkgbase = python2-regex-hg
+pkgbase = python2-regex-git
 	pkgdesc = Alternative regular expression module, to replace re.
-	pkgver = 170.72f05ba8c50a
+	pkgver = 353.fe9fb05
 	pkgrel = 1
 	url = https://bitbucket.org/mrabarnett/mrab-regex
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = mercurial
-	depends = python2
-	source = hg+https://bitbucket.org/mrabarnett/mrab-regex/mrab-regex-hg
+	makedepends = git
+	depends = python
+	provides = python2-regex
+	conflicts = python2-regex
+	source = git+https://bitbucket.org/mrabarnett/mrab-regex
 	md5sums = SKIP
 
-pkgname = python2-regex-hg
+pkgname = python2-regex-git
 

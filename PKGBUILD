@@ -1,58 +1,32 @@
 # Contributor: Spyros Stathopoulos <foucault.online@gmail.com>
-pkgname=python2-regex-hg
-pkgver=170.72f05ba8c50a
+pkgname=python2-regex-git
+pkgver=353.fe9fb05
 pkgrel=1
 pkgdesc="Alternative regular expression module, to replace re."
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/mrabarnett/mrab-regex"
 license=('custom')
-depends=('python2')
-makedepends=('mercurial')
-_hgname='mrab-regex-hg'
-source=("hg+https://bitbucket.org/mrabarnett/mrab-regex/$_hgname")
+depends=('python')
+makedepends=('git')
+_gitname='mrab-regex'
+source=("git+https://bitbucket.org/mrabarnett/$_gitname")
 md5sums=(SKIP)
+provides=(python2-regex)
+conflicts=(python2-regex)
 
-_dist=Python2
-_regex=regex_2
 
 pkgver() {
-  cd ${_hgname}
-  echo $(hg identify -n).$(hg identify -i)
+  cd ${_gitname}
+  echo "$(git rev-list --count HEAD)"."$(git rev-parse --short HEAD)"
 }
 
 build() {
-  #cd "$srcdir"
-  #if [ -d ${_hgname} ] ; then
-  #  cd ${_hgname}
-  #  hg pull -u
-  #  cd "$srcdir"
-  #else
-  #  hg clone ${_hgroot}/${_hgname}
-  #fi
-
-  #cp -rT ${_hgname} ${_hgname}-build
-  #cd ${_hgname}-build/PyPI
-  cd ${srcdir}/${_hgname}/PyPI
-
-  if [ ! -d ${_dist} ] ; then
-    mkdir ${_dist}
-  fi
-
-  if [ ! -d ${_dist}/../docs ] ; then
-    mkdir ${_dist}/../docs
-  fi
-
-  cp ../docs/Features.rst ${_dist}/../docs
-  cp ../${_regex}/regex/* ${_dist}
-  cp ../${_regex}/Python/* ${_dist}
-
+  cd ${_gitname}
   python2 setup.py build
 }
 
 package() {
-
-  cd "${srcdir}/${_hgname}/PyPI"
-  python2 setup.py install --prefix=/usr --root="${pkgdir}"
-
+  cd ${_gitname}
+  python2 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+  sed -n '1,/^$/p' regex_2/regex.py | install -Dm644 /dev/stdin "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
-
