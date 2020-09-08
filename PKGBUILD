@@ -2,7 +2,7 @@
 
 pkgname=kube-commander
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="kubecom is terminal UI for easy interaction with Kubernetes"
 url="https://github.com/AnatolyRugalev/kube-commander"
 license=('MIT')
