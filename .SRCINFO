@@ -1,11 +1,12 @@
 pkgbase = gnome-packagekit-git
 	pkgdesc = Collection of graphical tools for PackageKit to be used in the GNOME desktop
-	pkgver = 3.32.0+5+gfcd32a84
+	pkgver = 3.32.0+11+gd09f72c4
 	pkgrel = 1
 	url = http://www.packagekit.org/
 	install = gnome-packagekit.install
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = intltool
 	makedepends = itstool
 	makedepends = docbook-xsl
@@ -17,7 +18,7 @@ pkgbase = gnome-packagekit-git
 	provides = gnome-packagekit
 	conflicts = gnome-packagekit
 	source = git+https://gitlab.gnome.org/GNOME/gnome-packagekit
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = gnome-packagekit-git
 
