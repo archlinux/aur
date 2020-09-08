@@ -1,42 +1,32 @@
-# Maintainer: Whezzel <whezzel at gmail dot com>
+# Maintainer: Radim Sückr <kontakt at radimsuckr dot cz>
+# Contributor: Whezzel <whezzel at gmail dot com>
 # Contributor: Karel Louwagie <karel at louwagie dot net>
 # Contributor: Samuel Walladge <samuel at swalladge dot id dot au>
 # Contributor: Yurii Kolesnykov <root at yurikoles dot com>
 
 pkgname=toggldesktop-bin
 _pkgname=toggldesktop
-pkgver=7.5.247
-pkgrel=5
-pkgdesc="Time Tracking Software."
+pkgver=7.5.260
+pkgrel=1
+pkgdesc='Toggl time tracking software'
 arch=('x86_64')
 provides=('toggldesktop')
-conflicts=('toggldesktop')
-
-depends=('libxss'
-	 'openssl'
-	 'qt5-base'
-	 'qt5-declarative'
-	 'qt5-location'
-	 'qt5-sensors'
-	 'qt5-svg'
-	 'qt5-webchannel'
-	 'qt5-webengine'
-	 'qt5-webkit'
-	 'qt5-x11extras')
-url='https://toggl.com/'
-source=("toggldesktop.deb::https://github.com/toggl-open-source/toggldesktop/releases/download/v${pkgver}/toggldesktop_${pkgver}_amd64.deb"
-	'toggldesktop.bin'
-	'toggldesktop.desktop')
-
-sha512sums=('7a92ca74c76e1cd8d346939253ba2ce842b1496ad5554e066f600e7454986305c0d9a97e64996a7b5d70724c4cb009ee5d70cc889ecdb9db9009f382249837cb'
-            'f14c5734925424cd1f415094733233f28d26f893513d6a059a1b4f254b058b3113e2ee5d0aa7ab1b88ecad10e7f6bb171fd1eaf94529f0c0feb43a4565d389b6'
-            'b75b3aef72bb978b721dbc0376556247fbbeffd34aef42bb9304116b3d9bfa7dccff57eed35fb43f76285102c4abf663ebd6ff4bc2c02bc6f674069943b1600f')
-prepare() {
-  tar -xf data.tar.xz
-}
+conflicts=(
+	'toggldesktop'
+)
+url='https://github.com/toggl-open-source/toggldesktop'
+source=('toggldesktop.tar.gz::https://github.com/toggl-open-source/toggldesktop/releases/download/v7.5.260/toggldesktop_linux_7.5.260_x86_64.tar.gz')
+sha512sums=('81000b70fb886482615971d9ed18c8bb37798d0bedc9cc638d505e0bcc43c13b08540dc89c15824ea582a19b0cb0fcd7243a7bdcb2db6249b97065c8716700cc')
 
 package() {
-  cp -a "$srcdir/usr" "$pkgdir"
-  install -D -m 0755 toggldesktop.bin "$pkgdir/usr/bin/toggldesktop"
-  install -D -m 0755 toggldesktop.desktop "$pkgdir/usr/share/applications/com.toggl.TogglDesktop.desktop"
+	# Path taken from TogglDesktop.sh
+	_libdst="${pkgdir}/usr/lib/toggldesktop"
+	mkdir -p ${_libdst}
+
+	cp -r "${srcdir}/bin" "${_libdst}/bin"
+	install -D -m 0755 "${srcdir}/TogglDesktop.sh" "${pkgdir}/usr/bin/TogglDesktop.sh"
+
+	cp -r "${srcdir}/lib" "${_libdst}/lib"
+
+	cp -r "${srcdir}/share" "${pkgdir}/usr/share"
 }

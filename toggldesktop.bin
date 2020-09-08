@@ -1,2 +1,0 @@
-#!/bin/sh
-LD_LIBRARY_PATH=/usr/lib/toggldesktop /usr/bin/TogglDesktop.sh "$@"
