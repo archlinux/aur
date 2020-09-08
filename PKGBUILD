@@ -2,9 +2,9 @@
 pkgdesc='Command line tool for processing HTML'
 pkgname=pup
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 url=https://github.com/ericchiang/pup
-makedepends=(go-pie)
+makedepends=(go-pie git patch)
 license=(custom:MIT)
 depends=(glibc)
 arch=(x86_64)
@@ -13,7 +13,7 @@ sha256sums=(SKIP)
 
 prepare () {
 	cd "${pkgname}-${pkgver}"
-	git cherry-pick 681d7bb639334bf485476f5872c5bdab10931f9a
+	git show 681d7bb639334bf485476f5872c5bdab10931f9a | patch -p1
 }
 
 build () {
