@@ -4,7 +4,7 @@
 
 _pkgname=frameworkintegration
 pkgname=$_pkgname-git
-pkgver=r525.a17c1af
+pkgver=r534.722b80a
 pkgrel=1
 pkgdesc='Framework providing components to allow applications to integrate with a KDE Workspace'
 arch=('i686' 'x86_64')
@@ -40,5 +40,4 @@ build() {
 package() {
   cd $srcdir/$_pkgname/build
   make DESTDIR="$pkgdir" install
-  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
