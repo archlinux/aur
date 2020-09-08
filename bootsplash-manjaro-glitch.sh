@@ -6,22 +6,20 @@
 # This needs ImageMagick for the 'convert' and 'identify' tools.
 #
 
-#LOGO=logo.png
-#LOGO_WIDTH=$(identify $LOGO | cut -d " " -f 3 | cut -d x -f 1)
-#LOGO_HEIGHT=$(identify $LOGO | cut -d " " -f 3 | cut -d x -f 2)
+LOGO=logo.png
+LOGO_WIDTH=$(identify $LOGO | cut -d " " -f 3 | cut -d x -f 1)
+LOGO_HEIGHT=$(identify $LOGO | cut -d " " -f 3 | cut -d x -f 2)
 
 THROBBER=logo.gif
-#THROBBER_WIDTH=$(identify $THROBBER | head -1 | cut -d " " -f 3 | \
+THROBBER_WIDTH=$(identify $THROBBER | head -1 | cut -d " " -f 3 | \
 #						cut -d x -f 1)
-#THROBBER_HEIGHT=$(identify $THROBBER | head -1 | cut -d " " -f 3 | \
+THROBBER_HEIGHT=$(identify $THROBBER | head -1 | cut -d " " -f 3 | \
 #						 cut -d x -f 2)
-THROBBER_WIDTH=200
-THROBBER_HEIGHT=200
 
-#convert -alpha remove \
-#	-background "#000000" \
-#	$LOGO \
-#	logo.rgb
+convert -alpha remove \
+	-background "#000000" \
+	$LOGO \
+	logo.rgb
 
 convert -alpha remove \
 	-background "#000000" \
@@ -39,6 +37,11 @@ convert -alpha remove \
 	--bg_green 0x00 \
 	--bg_blue 0x00 \
 	--frame_ms 50 \
+    --picture \
+	--pic_width $LOGO_WIDTH \
+	--pic_height $LOGO_HEIGHT \
+	--pic_position 0 \
+	--blob logo.rgb \
 	--picture \
 	--pic_width $THROBBER_WIDTH \
 	--pic_height $THROBBER_HEIGHT \
