@@ -13,8 +13,8 @@ depends=("python>=3.7"
          "python-certifi"
          "python-tqdm"
          "python-coloredlogs")
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('6a1a0c0ba5d4fdbd520d6ad36b02b454')
+source=("https://github.com/sammko/$pkgname/archive/v$pkgver.tar.gz")
+md5sums=('2078fb49e7bbc535969d10f20df63334')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
