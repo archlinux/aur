@@ -1,6 +1,6 @@
 # Maintainer: amtoaer <amtoaer@outlook.com>
 pkgname=niutrans-cli
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="niutrans command line interface."
 arch=('x86_64')
