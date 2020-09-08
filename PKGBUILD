@@ -1,12 +1,12 @@
 # Maintainer: snafu
-pkgname=(env-modules-tcl)
-pkgver=4.4.1
+pkgname=env-modules-tcl
+pkgver=4.5.3
 pkgrel=1
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/modules/"
-license=('GPLv2')
+license=('GPL2')
 groups=()
 depends=('tcl>=7.4')
 makedepends=()
@@ -21,7 +21,7 @@ changelog=
 source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz")
 noextract=()
 validpgpkeys=()
-md5sums=('5fd7664b4ad4c45e90bbd4d0835fb7e8')
+md5sums=('ba9c8262d0b4581dbe5a6cf90b1e3db7')
 
 # Install locations:
 install_prefix=/usr
@@ -78,4 +78,3 @@ package() {
   ln -s ./perl.pm ${pkgdir}${config_path}/${moduledir}/init/perl
   ln -s ./python.py ${pkgdir}${config_path}/${moduledir}/init/python
 }
-
