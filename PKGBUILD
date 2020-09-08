@@ -1,10 +1,10 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 
 pkgname=intiface-desktop
-pkgver=16.0.0
+pkgver=17.0.0
 pkgrel=1
 pkgdesc="Open-source, cross-platform application that acts as a hub for sex hardware access"
-depends=('electron4')
+depends=('electron')
 makedepends=('npm' 'yarn' 'git' 'trash-cli' 'typescript')
 arch=('i686' 'x86_64')
 url="https://intiface.com/desktop/"
@@ -12,8 +12,8 @@ license=('BSD')
 source=("https://github.com/intiface/intiface-desktop/archive/v${pkgver}.tar.gz"
         'intiface-desktop.sh'
         'intiface-desktop.desktop')
-sha256sums=('68b5d5b30c681ddc607de083b78663a3d76265b3ede3b34a9e47a0ce2a7bff7c'
-            '605b843e41440eafbbf33a98ecae17db0033976532f8c6606e4f167ab618b4e2'
+sha256sums=('d04484cb96eb285b13428804e27577bd930d7427628e6bdcb64ef3aee3c0287b'
+            '2f7d3350631fda4da8f03938eb06b0b6d3ed571c9975906b7863298f75e4c73f'
             'ece9fd45978dae583a9c572f3e64f8234350d5e53f9c1ae2da503c53b3ecff64')
 
 build() {
@@ -22,8 +22,16 @@ build() {
   #sed -i 's/trash /rm -rf /g' packages/core/package.json
 
   export npm_config_cache="$srcdir/npm_cache"
-  yarn install
-  yarn build:all
+
+  cd packages/protocols
+  yarn
+  yarn build
+  cd ../core
+  yarn
+  yarn build
+  cd ../intiface
+  yarn
+  yarn electron:build
 }
 
 package() {

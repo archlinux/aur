@@ -1,6 +1,6 @@
 pkgbase = intiface-desktop
 	pkgdesc = Open-source, cross-platform application that acts as a hub for sex hardware access
-	pkgver = 16.0.0
+	pkgver = 17.0.0
 	pkgrel = 1
 	url = https://intiface.com/desktop/
 	arch = i686
@@ -11,12 +11,12 @@ pkgbase = intiface-desktop
 	makedepends = git
 	makedepends = trash-cli
 	makedepends = typescript
-	depends = electron4
-	source = https://github.com/intiface/intiface-desktop/archive/v16.0.0.tar.gz
+	depends = electron
+	source = https://github.com/intiface/intiface-desktop/archive/v17.0.0.tar.gz
 	source = intiface-desktop.sh
 	source = intiface-desktop.desktop
-	sha256sums = 68b5d5b30c681ddc607de083b78663a3d76265b3ede3b34a9e47a0ce2a7bff7c
-	sha256sums = 605b843e41440eafbbf33a98ecae17db0033976532f8c6606e4f167ab618b4e2
+	sha256sums = d04484cb96eb285b13428804e27577bd930d7427628e6bdcb64ef3aee3c0287b
+	sha256sums = 2f7d3350631fda4da8f03938eb06b0b6d3ed571c9975906b7863298f75e4c73f
 	sha256sums = ece9fd45978dae583a9c572f3e64f8234350d5e53f9c1ae2da503c53b3ecff64
 
 pkgname = intiface-desktop
