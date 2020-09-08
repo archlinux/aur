@@ -1,0 +1,18 @@
+pkgbase = iboview
+	pkgdesc = IboView is a program for analyzing molecular electronic structure, based on Intrinsic Atomic Orbitals (IAOs).
+	pkgver = 20150427
+	pkgrel = 1
+	url = http://www.iboview.org/bin/
+	arch = x86_64
+	license = MIT
+	depends = qt5-base
+	depends = openblas
+	depends = boost
+	provides = iboview
+	options = !strip
+	options = !emptydirs
+	source = ibo-view-20150427.tar.bz2::http://www.iboview.org/bin//ibo-view.20150427.tar.bz2
+	md5sums = 37f0aff8e1c0bc5f23a4b80b5df54f8d
+
+pkgname = iboview
+
