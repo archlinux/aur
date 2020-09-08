@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.4.8-p2
+Type=Application
+Name=Syrinscape Sci-Fi Player
+Exec="/opt/Syrinscape\sSci-Fi\sPlayer/Syrinscape\sSci-Fi\sPlayer"
+Path=/opt/Syrinscape\sSci-Fi\sPlayer/
+Icon=/opt/Syrinscape\sSci-Fi\sPlayer/Syrinscape\sSci-Fi\sPlayer_Data/Resources/UnityPlayer.png
+Terminal=false
+MimeType=x-scheme-handler/syrinscape-scifi;
