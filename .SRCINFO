@@ -1,7 +1,7 @@
 pkgbase = morinustrad
 	pkgdesc = Software for traditional astrology in wxPython
 	pkgver = 6.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://sites.google.com/site/tradmorinus/morinus
 	install = morinustrad.install
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = morinustrad
 	source = addicon.patch
 	source = morinus-portrait-bw.png
 	source = morinustrad.desktop
-	md5sums = 0c910c8dea994a1967251bca1e704712
+	md5sums = 8f50740e488d14305f29e4dae5dd3b46
 	md5sums = 3ddfbe09219d79fd0c9bf5b1cf07a95f
 	md5sums = 572e4f8dfe4b91e37973915f63ee6098
 	md5sums = 9fc85211a841fa3a5a9c57891c28e429

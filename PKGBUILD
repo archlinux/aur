@@ -2,7 +2,7 @@
 
 pkgname=morinustrad
 pkgver=6.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Software for traditional astrology in wxPython"
 url="https://sites.google.com/site/tradmorinus/morinus"
 license=("GPL3")
@@ -17,7 +17,7 @@ source=("https://sites.google.com/site/tradmorinus/morinus/Morinus.zip"
         'morinus-portrait-bw.png'
         'morinustrad.desktop'
         )
-md5sums=('0c910c8dea994a1967251bca1e704712'
+md5sums=('8f50740e488d14305f29e4dae5dd3b46'
          '3ddfbe09219d79fd0c9bf5b1cf07a95f'
          '572e4f8dfe4b91e37973915f63ee6098'
          '9fc85211a841fa3a5a9c57891c28e429'
@@ -25,7 +25,7 @@ md5sums=('0c910c8dea994a1967251bca1e704712'
          'd88ce0420453dda75aa4c6404b4c604f'
          '08f8c2045e5318b2d824d29cd18b053f')
 
-build() {
+package() {
   cd $srcdir/Morinus/SWEP/src/
   python2 setup.py build
   cp build/lib.linux-$CARCH-2.7/sweastrology.so $srcdir/Morinus/
