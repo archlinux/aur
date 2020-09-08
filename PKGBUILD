@@ -1,7 +1,5 @@
-# Contributor: Balló György <ballogyor+arch at gmail dot com>
-
 pkgname=video-downloader
-pkgver=0.3.1
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="GTK application to download videos from websites like YouTube and many others (based on youtube-dl)"
 arch=(any)
@@ -9,9 +7,9 @@ url="https://github.com/Unrud/video-downloader"
 license=('GPL3')
 depends=(gtk3 python-gobject youtube-dl)
 makedepends=(git meson)
-_commit=ccbbf489cab31ecc606d1aaaf759bd2c349c4b02  # tags/0.3.1
+_commit=34092f6bb8bdd06b2bda8d27a6f979e864b6d3d9  # tags/0.5.5
 source=("git+https://github.com/Unrud/video-downloader#commit=$_commit")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd $pkgname
