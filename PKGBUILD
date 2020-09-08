@@ -1,10 +1,10 @@
 # Maintainer: d.woffinden
 pkgname=z3-git
-pkgver=4.5.0.r1325.g05c4ea82
+pkgver=4.8.8.r706.g1c7d27bdf
 pkgrel=1
-pkgdesc="Z3 is a high-performance theorem prover being developed at Microsoft Research"
+pkgdesc='Z3 is a theorem prover from Microsoft Research'
 arch=('i686' 'x86_64')
-url="https://github.com/Z3Prover/z3"
+url='https://github.com/Z3Prover/z3'
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'python')
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/z3-//;s/-/.r/;s/-/./'
+  git describe --long --tags --match 'z3-*.*.*' | sed 's/z3-//;s/-/.r/;s/-/./'
 }
 
 build() {

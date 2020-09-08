@@ -1,6 +1,6 @@
 pkgbase = z3-git
-	pkgdesc = Z3 is a high-performance theorem prover being developed at Microsoft Research
-	pkgver = 4.5.0.r1325.g05c4ea82
+	pkgdesc = Z3 is a theorem prover from Microsoft Research
+	pkgver = 4.8.8.r706.g1c7d27bdf
 	pkgrel = 1
 	url = https://github.com/Z3Prover/z3
 	arch = i686
