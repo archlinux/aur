@@ -2,14 +2,14 @@
 # Contributor: rafaqzsu <rafaqzsu [at] gmail (dot) com>
 
 pkgname=cropgui-git
-pkgver=0.3.r6.ga6e9388
+pkgver=0.5.r5.g150facd
 pkgrel=1
 epoch=1
 pkgdesc='A GTK GUI for lossless JPEG cropping (and rotating)'
 arch=('any')
 url="https://emergent.unpythonic.net/01248401946"
 license=('GPL')
-depends=('python2-pillow' 'libjpeg-turbo' 'pygtk' 'imagemagick' 'perl-image-exiftool')
+depends=('python-pillow' 'libjpeg-turbo' 'pygtk' 'imagemagick' 'perl-image-exiftool')
 makedepends=('git')
 provides=('cropgui')
 conflicts=('cropgui')
@@ -23,5 +23,5 @@ pkgver() {
 
 package() {
   cd "$pkgname"
-  ./install.sh -f gtk -t $pkgdir -p /usr -P python2
+  ./install.sh -f gtk -t $pkgdir -p /usr -P python
 }
