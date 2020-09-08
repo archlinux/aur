@@ -8,7 +8,7 @@ pkgbase = libmicrodns-git
 	makedepends = git
 	depends = glibc
 	provides = libmicrodns.so
-	provides = libmicrodns
+	provides = libmicrodns=0.2.0
 	conflicts = libmicrodns
 	source = git+https://github.com/videolabs/libmicrodns.git
 	sha512sums = SKIP
