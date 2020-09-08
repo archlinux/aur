@@ -1,10 +1,10 @@
 pkgname='alacritty-ligatures-git'
 _pkgname="alacritty"
-pkgver=0.6.0.1661.g0146076
+pkgver=0.6.0.1663.g693de26
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/alacritty/alacritty"
-pkgdesc="A cross-platform, GPU-accelerated terminal emulator. (GIT VERSION)"
+pkgdesc="A cross-platform, GPU-accelerated terminal emulator, supports ligatures. (GIT VERSION)"
 license=('Apache')
 depends=('freetype2' 'fontconfig' 'libxi' 'libxcursor' 'libxrandr')
 makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 'gdb' 'libxcb' 'git')
