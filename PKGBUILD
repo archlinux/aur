@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=fup
-pkgrel=2
+pkgrel=3
 pkgver=1.0.0
 pkgdesc="Command line client for gofu"
 url="https://git.roshless.me/~roshless/fup"
@@ -17,8 +17,6 @@ build() {
 
 package() {
     cd $pkgname-$pkgver
-
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
     make PREFIX="/usr" DESTDIR="$pkgdir" install
 }
 

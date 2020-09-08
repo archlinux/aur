@@ -1,7 +1,7 @@
 pkgbase = fup
 	pkgdesc = Command line client for gofu
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.roshless.me/~roshless/fup
 	arch = any
 	license = GPL
