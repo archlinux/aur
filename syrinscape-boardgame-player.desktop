@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.4.8-p2
+Type=Application
+Name=Syrinscape Board Game Player
+Exec="/opt/Syrinscape\sBoard\sGame\sPlayer/Syrinscape\sBoard\sGame\sPlayer"
+Path=/opt/Syrinscape\sBoard\sGame\sPlayer/
+Icon=/opt/Syrinscape\sBoard\sGame\sPlayer/Syrinscape\sBoard\sGame\sPlayer_Data/Resources/UnityPlayer.png
+Terminal=false
+MimeType=x-scheme-handler/syrinscape-boardgame;

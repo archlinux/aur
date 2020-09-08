@@ -1,0 +1,15 @@
+pkgbase = syrinscape-boardgame-player
+	pkgdesc = Soundscape creator and sound design app for boardgame games
+	pkgver = 1.4.8_p2
+	pkgrel = 2
+	url = https://www.syrinscape.com
+	arch = x86_64
+	license = Proprietary
+	options = !strip
+	source = syrinscape-1.4.8-p2-linux-boardgame.tar.gz::https://www.syrinscape.com/get-download/syrinscape-1.4.8-p2-linux-scifi.tar.gz?type=linux&version=1.4.8-p2
+	source = local://syrinscape-boardgame-player.desktop
+	sha256sums = bc2a2fce38064683ec89876849c992149a913724201f1e09d531fc1f01114385
+	sha256sums = SKIP
+
+pkgname = syrinscape-boardgame-player
+
