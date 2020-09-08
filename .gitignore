@@ -1,6 +1,4 @@
 !PKGBUILD
 !.SRCINFO
-
-deno*
-src*
-pkg*
+!.gitignore
+*

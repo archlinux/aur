@@ -1,14 +1,12 @@
 pkgbase = deno-bin
 	pkgdesc = A secure JavaScript and TypeScript runtime.
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://deno.land/
 	arch = x86_64
 	license = MIT
-	makedepends = binutils
-	makedepends = unzip
 	provides = deno
-	source_x86_64 = deno-1.3.3.zip::https://github.com/denoland/deno/releases/download/v1.3.3/deno-x86_64-unknown-linux-gnu.zip
+	source_x86_64 = deno_x86_64.zip::https://github.com/denoland/deno/releases/download/v1.3.3/deno-x86_64-unknown-linux-gnu.zip
 	sha256sums_x86_64 = 6e2caa40f95d2372e08c75c37fb1b92a9b710a72e9eb95ce47b34965aa453ff0
 
 pkgname = deno-bin
