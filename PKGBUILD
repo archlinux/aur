@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=wart-git
-pkgver=4134.789671d7
-pkgrel=1
+pkgver=4134.r789671d7
+pkgrel=2
 pkgdesc="A small, readable lisp with thorough unit tests and extensible functions/macros."
 arch=('i686' 'x86_64')
 url="https://github.com/akkartik/wart"
@@ -11,9 +11,9 @@ depends=('gcc-libs' 'bash')
 makedepends=('git')
 provides=('wart')
 conflicts=('wart')
-source=('git://github.com/akkartik/wart.git' 'wart.sh')
-md5sums=('SKIP'
-         '4be136701bd4c80ff98b907e70d9131b')
+source=("git+$url.git#branch=main" 'wart.sh')
+sha256sums=('SKIP'
+            'f1e09fbfc74b3e8775e9afc53f3101c378be846f89f365bf5c66d8a3611740f3')
 optdepends=('which: for using rlwrap'
   'rlwrap: for better REPL editing'
   'zsh: for using zsh')
@@ -21,8 +21,8 @@ options=('!strip' '!makeflags')
 _gitname="wart"
 
 pkgver() {
- cd $_gitname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd $_gitname
+  printf %s.r%s $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {

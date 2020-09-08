@@ -1,7 +1,7 @@
 pkgbase = wart-git
 	pkgdesc = A small, readable lisp with thorough unit tests and extensible functions/macros.
-	pkgver = 4134.789671d7
-	pkgrel = 1
+	pkgver = 4134.r789671d7
+	pkgrel = 2
 	url = https://github.com/akkartik/wart
 	arch = i686
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = wart-git
 	conflicts = wart
 	options = !strip
 	options = !makeflags
-	source = git://github.com/akkartik/wart.git
+	source = git+https://github.com/akkartik/wart.git#branch=main
 	source = wart.sh
-	md5sums = SKIP
-	md5sums = 4be136701bd4c80ff98b907e70d9131b
+	sha256sums = SKIP
+	sha256sums = f1e09fbfc74b3e8775e9afc53f3101c378be846f89f365bf5c66d8a3611740f3
 
 pkgname = wart-git
 
