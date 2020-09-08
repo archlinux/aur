@@ -12,9 +12,9 @@ LOGO_HEIGHT=$(identify $LOGO | cut -d " " -f 3 | cut -d x -f 2)
 
 THROBBER=logo.gif
 THROBBER_WIDTH=$(identify $THROBBER | head -1 | cut -d " " -f 3 | \
-#						cut -d x -f 1)
+						cut -d x -f 1)
 THROBBER_HEIGHT=$(identify $THROBBER | head -1 | cut -d " " -f 3 | \
-#						 cut -d x -f 2)
+						 cut -d x -f 2)
 
 convert -alpha remove \
 	-background "#000000" \
