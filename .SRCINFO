@@ -1,6 +1,6 @@
 pkgbase = virtualbox-svn
-	pkgver = 85357
-	pkgrel = 1
+	pkgver = 86044
+	pkgrel = 2
 	url = http://virtualbox.org
 	arch = x86_64
 	license = GPL
@@ -66,7 +66,6 @@ pkgbase = virtualbox-svn
 	source = 016-VBoxServiceAutoMount-Change-Linux-mount-code-to-use-.patch
 	source = 017-fix-narrowing-conversion.patch
 	source = 018-xclient.patch
-	source = 020-gsoap.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = c24e71d845e06f153fa263af0384fc8c
@@ -90,7 +89,6 @@ pkgbase = virtualbox-svn
 	md5sums = 82db7666c0034c5388995bd062dc35e1
 	md5sums = 7be927b4626f8b3df77d4d2e8c8c25a0
 	md5sums = 62a5ae2264adf5de908fcfcb906c2648
-	md5sums = 57884d1997df56d1082d5f979891e8c9
 
 pkgname = virtualbox-svn
 	pkgdesc = Powerful x86 virtualization for enterprise as well as home use
