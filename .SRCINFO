@@ -1,7 +1,7 @@
 pkgbase = ttea
 	pkgdesc = Command line tea manager
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.roshless.me/~roshless/ttea
 	arch = any
 	license = GPL

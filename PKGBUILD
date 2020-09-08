@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=ttea
-pkgrel=2
+pkgrel=3
 pkgver=1.2.1
 pkgdesc="Command line tea manager"
 url="https://git.roshless.me/~roshless/ttea"
@@ -17,8 +17,6 @@ build() {
 
 package() {
     cd $pkgname-$pkgver
-
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
     make PREFIX="/usr" DESTDIR="$pkgdir" install
 }
 
