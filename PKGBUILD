@@ -2,7 +2,7 @@
 
 pkgname=nnrss
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Web/API RSS aggregator'
 url='https://git.roshless.me/~roshless/nnrss'
 arch=('any')
@@ -27,10 +27,9 @@ package() {
   install -Dm644 $pkgname.service -t "$pkgdir/usr/lib/systemd/system/"
   install -Dm644 $pkgname.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -Dm644 $pkgname.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-  install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$pkgname-$pkgver/dist/config.ini" "$pkgdir/var/lib/$pkgname/config.ini"
 
   cd $pkgname-$pkgver
+  install -Dm644 "dist/config.ini" "$pkgdir/var/lib/$pkgname/config.ini"
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
 

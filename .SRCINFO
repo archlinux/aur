@@ -1,7 +1,7 @@
 pkgbase = nnrss
 	pkgdesc = Web/API RSS aggregator
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.roshless.me/~roshless/nnrss
 	arch = any
 	license = AGPL
