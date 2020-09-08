@@ -4,7 +4,7 @@
 
 _pkgname=kactivities
 pkgname=$_pkgname-git
-pkgver=v5.71.0.r1.g699fbc5
+pkgver=v5.74.0.rc1.r0.g2455463
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Core components for the KDE's Activities"
@@ -40,5 +40,4 @@ build() {
 package() {
   cd $srcdir/$_pkgname/build
   make DESTDIR="$pkgdir" install
-  install -Dm644 ../COPYING.LIB "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
