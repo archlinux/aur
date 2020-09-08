@@ -16,6 +16,11 @@ sha256sums=('SKIP'
 '9bb20ad9e3f569dcc0d0b522c03bfb2021096b08f073b79704b86feaa67e82f8')
 install=$pkgname.install
 
+pkgver() {
+    cd $srcdir/Quake3e
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    }
+
 build() {
     cd $srcdir/Quake3e
     make
@@ -31,9 +36,4 @@ package() {
     ln -s /opt/quake3e/quake3e.ded.x64 $pkgdir/usr/bin/quake3e.ded
     install -D -m 644 quake3e.desktop $pkgdir/usr/share/applications/quake3e.desktop
     install -D -m 644 quake3e.png $pkgdir/usr/share/pixmaps/quake3e.png
-    }
-
-pkgver() {
-    cd $srcdir/Quake3e
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
     }
