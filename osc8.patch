@@ -1,0 +1,309 @@
+commit 4e545ac (origin/54-support-osc-hyperlinks)
+Author: Dan Davison <dandavison7@gmail.com>
+Date:   Wed Jul 22 18:18:43 2020 -0400
+
+    Apply OSC 8 hyperlinks patch
+    
+    Patch from https://bug779734.bugzilla-attachments.gnome.org/attachment.cgi?id=349890
+    
+    Ref https://github.com/gwsw/less/issues/54
+
+diff --git a/charset.c b/charset.c
+index 1b74b2b..75f688c 100644
+--- a/charset.c
++++ b/charset.c
+@@ -426,6 +426,7 @@ control_char(c)
+ 	LWCHAR c;
+ {
+ 	c &= 0377;
++	if (c == 7) return FALSE;  /* FIXME hack for OSC 8, should be shown as ^G if outside of this escape sequence */
+ 	return (chardef[c] & IS_CONTROL_CHAR);
+ }
+ 
+diff --git a/cvt.c b/cvt.c
+index 3271cc9..1354752 100644
+--- a/cvt.c
++++ b/cvt.c
+@@ -78,13 +78,32 @@ cvt_text(odst, osrc, chpos, lenp, ops)
+ 				dst--;
+ 			} while (dst > odst && utf_mode &&
+ 				!IS_ASCII_OCTET(*dst) && !IS_UTF8_LEAD(*dst));
+-		} else if ((ops & CVT_ANSI) && IS_CSI_START(ch))
++		} else if ((ops & CVT_ANSI) && ch == ESC)
+ 		{
+-			/* Skip to end of ANSI escape sequence. */
+-			src++;  /* skip the CSI start char */
+-			while (src < src_end)
+-				if (!is_ansi_middle(*src++))
+-					break;
++            if (src[0] == ']' && src[1] == '8' && src[2] == ';')
++            {
++                /* Skip to the end of a hyperlink. */
++                src += 3;
++                while (src < src_end)
++                {
++                    if (src[0] == BEL)
++                    {
++                        src++;
++                        break;
++                    } else if (src[0] == ESC && src[1] == '\\')
++                    {
++                        src += 2;
++                        break;
++                    }
++                    src++;
++                }
++            } else
++            {
++                /* Skip to end of ANSI escape sequence. */
++                while (src < src_end)
++                    if (!is_ansi_middle(*src++))
++                        break;
++            }
+ 		} else
+ 		{
+ 			/* Just copy the char to the destination buffer. */
+diff --git a/less.h b/less.h
+index 1cbc1c0..10f57e7 100644
+--- a/less.h
++++ b/less.h
+@@ -456,7 +456,10 @@ struct wchar_range_table
+ 
+ #define	ESC		CONTROL('[')
+ #define	ESCS		"\33"
++#define	BEL		CONTROL('g')
+ #define	CSI		((unsigned char)'\233')
++#define ST      ((unsigned char)'\234')
++#define OSC     ((unsigned char)'\235')
+ #define	CHAR_END_COMMAND 0x40000000
+ 
+ #if _OSK_MWC32
+diff --git a/line.c b/line.c
+index e46aa39..cd6a6e0 100644
+--- a/line.c
++++ b/line.c
+@@ -288,18 +288,30 @@ pshift(shift)
+ 	while (shifted <= shift && from < curr)
+ 	{
+ 		c = linebuf[from];
+-		if (ctldisp == OPT_ONPLUS && IS_CSI_START(c))
++        /* FIXME: accept C1 CSI and C1 OSC as well! */
++        if (ctldisp == OPT_ONPLUS && c == ESC)
+ 		{
+ 			/* Keep cumulative effect.  */
+ 			linebuf[to] = c;
+ 			attr[to++] = attr[from++];
+-			while (from < curr && linebuf[from])
+-			{
+-				linebuf[to] = linebuf[from];
+-				attr[to++] = attr[from];
+-				if (!is_ansi_middle(linebuf[from++]))
+-					break;
+-			} 
++            if (linebuf[from] == ']' && linebuf[from+1] == '8' && linebuf[from+2] == ';') {
++                while (from < curr && linebuf[from])
++                {
++                    linebuf[to] = linebuf[from];
++                    attr[to++] = attr[from++];
++                    /* FIXME: accept C1 ST */
++                    if (linebuf[from-1] == BEL || (linebuf[from-1] == '\\' && linebuf[from-2] == ESC))
++                        break;
++                }
++            } else {
++                while (from < curr && linebuf[from])
++                {
++                    linebuf[to] = linebuf[from];
++                    attr[to++] = attr[from];
++                    if (!is_ansi_middle(linebuf[from++]))
++                        break;
++                }
++            }
+ 			continue;
+ 		}
+ 
+@@ -530,23 +542,141 @@ backc(VOID_PARAM)
+ 
+ /*
+  * Are we currently within a recognized ANSI escape sequence?
++ *
++ * FIXME This code is a nightmare!
++ * Displaying a line potentially takes O(n^2) time as this function is called
++ * for each character.
++ * Why do we walk backwards at all, rather having a state machine that knows
++ * the current state???
++ * Not to mention the if-else hell...
+  */
+ 	static int
+ in_ansi_esc_seq(VOID_PARAM)
+ {
+-	char *p;
++    char *p, *save;
++    LWCHAR ch, ch2;
+ 
+ 	/*
+-	 * Search backwards for either an ESC (which means we ARE in a seq);
++     * Search backwards for either a CSI (which means we ARE in a seq);
+ 	 * or an end char (which means we're NOT in a seq).
+ 	 */
++
++    /* Potential lone ESC */
++    p = &linebuf[curr];
++    if (p > linebuf)
++    {
++        ch = step_char(&p, -1, linebuf);
++        if (ch == ESC)
++            return (1);
++    }
++
++    /* Search for ESC [ or a terminator character */
+ 	for (p = &linebuf[curr];  p > linebuf; )
+ 	{
+-		LWCHAR ch = step_char(&p, -1, linebuf);
+-		if (IS_CSI_START(ch))
++        ch = step_char(&p, -1, linebuf);
++        save = p;
++        if (ch == ESC)
+ 			return (1);
++        if (ch == CSI)
++            return (1);
++        else if (ch == '[' && p > linebuf)
++        {
++            ch2 = step_char(&p, -1, linebuf);
++            if (ch2 == ESC)
++                return (1);
++        }
+ 		if (!is_ansi_middle(ch))
+ 			return (0);
++        p = save;
++    }
++    return (0);
++}
++
++
++
++/*
++ * Are we currently within a hyperlink escape sequence?
++ * (Not to be confused with the the visible anchor text of the hyperlink.)
++ *
++ * FIXME This code is a nightmare!
++ * Displaying a line potentially takes O(n^2) time as this function is called
++* for each character.
++ * Why do we walk backwards at all, rather having a state machine that knows
++ * the current state???
++ * Not to mention the if-else hell...
++ */
++	static int
++in_hyperlink_esc_seq()
++{
++	char *p, *save;
++	LWCHAR ch, ch2, ch3, ch4;
++
++	/*
++	 * Search backwards for either an OSC 8 ; (which means we ARE in a hyperlink);
++	 * or a BEL or ST (which means we're NOT in a seq).
++	 */
++
++	/* Potential prefix (ESC, ESC [ or ESC [ 8 but no semicolon yet) */
++	p = &linebuf[curr];
++	if (p > linebuf)
++	{
++		ch = step_char(&p, -1, linebuf);
++		if (ch == ESC)
++			return (1);
++		else if (ch == OSC)
++			return (1);
++		else if (ch == ']' && p > linebuf)
++		{
++			ch2 = step_char(&p, -1, linebuf);
++			if (ch2 == ESC)
++				return (1);
++		}
++		else if (ch == '8' && p > linebuf)
++		{
++			ch2 = step_char(&p, -1, linebuf);
++			if (ch2 == OSC)
++				return (1);
++			else if (ch2 == ']' && p > linebuf)
++			{
++				ch3 = step_char(&p, -1, linebuf);
++				if (ch3 == ESC)
++					return (1);
++			}
++		}
++	}
++
++	/* ESC [ 8 ; or a terminator */
++	for (p = &linebuf[curr];  p > linebuf; )
++	{
++		ch = step_char(&p, -1, linebuf);
++		save = p;
++		if (ch == BEL)
++			return (0);
++		else if (ch == ST)
++			return (0);
++		else if (ch == '\\' && p > linebuf)
++		{
++			ch2 = step_char(&p, -1, linebuf);
++			if (ch2 == ESC)
++				return (0);
++		}
++		else if (ch == ';' && p > linebuf)
++		{
++			ch2 = step_char(&p, -1, linebuf);
++			if (ch2 == '8' && p > linebuf)
++			{
++				ch3 = step_char(&p, -1, linebuf);
++				if (ch3 == OSC)
++					return (1);
++				else if (ch3 == ']' && p > linebuf)
++				{
++					ch4 = step_char(&p, -1, linebuf);
++					if (ch4 == ESC)
++						return (1);
++				}
++			}
++		}
++		p = save;
+ 	}
+ 	return (0);
+ }
+@@ -637,7 +767,12 @@ store_char(ch, a, rep, pos)
+ 	}
+ #endif
+ 
+-	if (ctldisp == OPT_ONPLUS && in_ansi_esc_seq())
++	if (ctldisp == OPT_ONPLUS && in_hyperlink_esc_seq())
++	{
++		a = AT_ANSI;
++		w = 0;
++	}
++	else if (ctldisp == OPT_ONPLUS && in_ansi_esc_seq())
+ 	{
+ 		if (!is_ansi_end(ch) && !is_ansi_middle(ch)) {
+ 			/* Remove whole unrecognized sequence.  */
+@@ -1008,7 +1143,7 @@ do_append(ch, rep, pos)
+ 		{
+ 			STORE_PRCHAR((char) ch, pos);
+ 		}
+-	} else if (utf_mode && ctldisp != OPT_ON && is_ubin_char(ch))
++	} else if (utf_mode && ctldisp != OPT_ON && is_ubin_char(ch) && ch != 7 /* FIXME hack for OSC 8 */)
+ 	{
+ 		char *s;
+ 
+@@ -1056,6 +1191,16 @@ add_attr_normal(VOID_PARAM)
+ 		return;
+ 	for ( ;  *p != '\0';  p++)
+ 		add_linebuf(*p, AT_ANSI, 0);
++	if (ctldisp == OPT_ONPLUS)
++	{
++		/* Turn off hyperlink at end of line. */
++		char *p = "\033]8;;\007";
++		for ( ;  *p != '\0';  p++)
++		{
++			linebuf[curr] = *p;
++ 			attr[curr++] = AT_ANSI;
++ 		}
++ 	}
+ }
+ 
+ /*

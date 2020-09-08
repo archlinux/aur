@@ -1,0 +1,21 @@
+pkgbase = less-osc8-git
+	pkgdesc = A terminal based program for viewing text files, patched with OSC 8 hyperlink support
+	pkgver = 564.r4.9ea92b9
+	pkgrel = 1
+	url = http://www.greenwoodsoftware.com
+	changelog = NEWS
+	arch = x86_64
+	license = GPL3
+	license = custom:Less License
+	makedepends = git
+	depends = ncurses
+	depends = pcre
+	provides = less
+	conflicts = less
+	source = git+https://github.com/gwsw/less.git
+	source = osc8.patch
+	sha256sums = SKIP
+	sha256sums = acbc974f0e203e68413c21a4c55c76452d192e8e4626fc626c504735baef1fd6
+
+pkgname = less-osc8-git
+
