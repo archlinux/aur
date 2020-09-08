@@ -1,6 +1,6 @@
 # Maintainer: alzeih <alzeih@users.noreply.github.com>
 pkgname=mod_auth_openidc
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="An authentication/authorization module for the Apache 2.x HTTP server that functions as an OpenID Connect Relying Party, authenticating users against an OpenID Connect Provider."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('curl' 'cjose' 'pcre')
 makedepends=('apache' 'jansson')
 source=("https://github.com/zmartzone/mod_auth_openidc/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha512sums=('c4fa4f99f2005cab230f4b8a3dd70cc99c281fc4ff679472f0c1a5920372b53ce2b5e34a8f87e14fc92055d3b9c75dd58f77f539f69571a1af0db10bdc6ea1ab')
+sha512sums=('880d7b99ba48fee0539ea2bb3719966a448749e4f564f94a22d169f03b5193f7d06e77879232031217fb16d144eeef6d22b16a1ea0bd8ab5a1c18eb3080fe689')
 
 build() {
         cd "$pkgname-$pkgver"
