@@ -1,4 +1,5 @@
 # Maintainer:  Alexej Magura <amagura28@gmail.com>
+# Maintainer:  ruantu <mtwget@gmail.com>
 pkgname=libzlog
 _realname=zlog
 pkgver=1.2.15
