@@ -1,6 +1,6 @@
 pkgbase = libhugetlbfs
 	pkgdesc = A library which provides easy access to huge pages of memory
-	pkgver = 2.22
+	pkgver = 2.23
 	pkgrel = 1
 	url = https://github.com/libhugetlbfs/libhugetlbfs
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = libhugetlbfs
 	license = LGPL2.1
 	checkdepends = python
 	depends = perl
-	source = https://github.com/libhugetlbfs/libhugetlbfs/releases/download/2.22/libhugetlbfs-2.22.tar.gz
-	sha256sums = 94dca9ea2c527cd77bf28904094fe4708865a85122d416bfccc8f4b73b9a6785
+	source = https://github.com/libhugetlbfs/libhugetlbfs/releases/download/2.23/libhugetlbfs-2.23.tar.gz
+	sha256sums = b70672f1e807c61b7eb3adf41c1903b42917951f2e7f8aef6821841700c04479
 
 pkgname = libhugetlbfs
 
