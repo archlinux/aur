@@ -1,4 +1,4 @@
-# Maintainer: Claire Raud <hi@cliare.zone>
+# Maintainer: Claire Raud <meadow.hacker@gmail.com>
 
 pkgbase=linux-x570-vfio-openrgb
 pkgver=5.7.12.arch1
