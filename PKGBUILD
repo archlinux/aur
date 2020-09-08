@@ -1,7 +1,7 @@
 # Maintainer: Marc Paradise <marc.paradise@gmail.com>
 
 pkgname=chef-workstation
-pkgver=20.8.125
+pkgver=20.9.136
 pkgrel=1
 pkgdesc="Chef Workstation gives you everything you need to get started with Chef. Start scanning and configuring your environments today with InSpec and chef-run."
 arch=('x86_64')
@@ -9,8 +9,8 @@ url="https://downloads.chef.io/chef-workstation/"
 license=('Apache')
 depends=()
 conflicts=(chef-dk chef chef-solo chef-client)
-source=('https://packages.chef.io/files/stable/chef-workstation/20.8.125/ubuntu/18.04/chef-workstation_20.8.125-1_amd64.deb')
-sha256sums=('d0b883556a3ddbe4c534158895ecf9a8c2aa928e8984dda1d2616be9469f9d23')
+source=('https://packages.chef.io/files/stable/chef-workstation/20.9.136/ubuntu/18.04/chef-workstation_20.9.136-1_amd64.deb')
+sha256sums=('3c9e0334bbf776362afc2cbc13688d8bd27d0e473cd70fe745e3d7146ffff9c9')
 
 package() {
   cd "$srcdir"
