@@ -7,7 +7,7 @@ pkgbase = niutrans-cli
 	license = MIT
 	depends = jre
 	source = https://github.com/amtoaer/NiuTrans-Cli/releases/download/v1.4/NiuTrans-Cli-1.4.jar
-	md5sums = 5b193254014a04271bffd57889c4fecd
+	md5sums = b5757f87697fb7a58f7fe46cff8773fd
 
 pkgname = niutrans-cli
 

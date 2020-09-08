@@ -10,7 +10,7 @@ license=('MIT')
 
 source=("https://github.com/amtoaer/NiuTrans-Cli/releases/download/v$pkgver/NiuTrans-Cli-$pkgver.jar")
 
-md5sums=('5b193254014a04271bffd57889c4fecd')
+md5sums=('b5757f87697fb7a58f7fe46cff8773fd')
 
 package(){
 	echo '#!/usr/bin/java -jar' > niu
