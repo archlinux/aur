@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 95035 2013-08-04 09:44:24Z svenstaro $
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Jiachen YANG <farseerfc@gmail.com>
+# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 #_hgrev=63547
 
 pkgname=pypy-stm-hg
-#pkgver=2.1beta1
-#_pkgver=2.1-beta1
+#pkgver=2.5.1
+#_pkgver=2.5.1
 #[[ -n $_hgrev ]] && pkgver=2.0beta2.$_hgrev
 pkgrel=3
 pkgver=r77701.905ab5c077a5
@@ -24,7 +24,7 @@ optdepends=('openssl: openssl module'
             'bzip2: bz2 module'
             'tk: tk module')
 license=('custom:MIT')
-source=("hg+https://bitbucket.org/pypy/pypy#branch=stmgc-c7")
+source=("hg+https://foss.heptapod.net/pypy/pypy#branch=stmgc-c7")
 md5sums=('SKIP')
 
 pkgver() {

@@ -22,7 +22,7 @@ pkgbase = pypy-stm-hg
 	provides = pypy-stm
 	conflicts = pypy-stm
 	options = !buildflags
-	source = hg+https://bitbucket.org/pypy/pypy#branch=stmgc-c7
+	source = hg+https://foss.heptapod.net/pypy/pypy#branch=stmgc-c7
 	md5sums = SKIP
 
 pkgname = pypy-stm-hg
