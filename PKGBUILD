@@ -2,7 +2,7 @@
 pkgname=gomuks-midek-git
 _name=gomuks
 pkgdesc='A terminal based Matrix client written in Go. Upload and pantalaimon support'
-pkgver=r560.235d8f2
+pkgver=r563.6932ebe
 pkgrel=1
 url='https://github.com/Midek/gomuks'
 license=(GPL3)
@@ -14,14 +14,14 @@ conflicts=("${provides[@]}")
 source=("git://github.com/Midek/${_name}.git")
 sha512sums=(SKIP)
 
-pkgver () {
-	cd "${srcdir}/${_name}"
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
-}
 prepare() {
 	cd "${srcdir}/${_name}"
 	# all the good stuff is in the revert_attachments branch
 	git checkout revert_attachments
+}
+pkgver () {
+	cd "${srcdir}/${_name}"
+	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
 }
 
 build () {
