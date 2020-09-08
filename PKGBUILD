@@ -2,7 +2,7 @@
 
 pkgbase=duckdb-git
 pkgname=('duckdb-git' 'python-duckdb-git')
-pkgver=v0.2.0.r377.g78f745252
+pkgver=v0.2.1.r52.gd40fc014c
 pkgrel=1
 pkgdesc="Embeddable SQL OLAP Database Management System"
 arch=('x86_64')
@@ -52,7 +52,7 @@ package_duckdb-git() {
   DESTDIR="${pkgdir}" cmake --install "${srcdir}/build"
 
   # Command line and tools do not have a install() decl yet
-  for bin in duckdb tools/rest/duckdb_dbgen tools/rest/duckdb_rest_server; do
+  for bin in duckdb tools/rest/duckdb_rest_server; do
       install -D -m755 "${srcdir}/build/$bin" \
         "${pkgdir}/usr/bin/$(basename $bin)"
   done
