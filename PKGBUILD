@@ -1,6 +1,6 @@
 pkgname=wscat
-pkgver=4.0.0
-pkgrel=1
+pkgver=4.0.1
+pkgrel=0
 pkgdesc="Netcat-like utility for WebSockets"
 url="https://github.com/websockets/wscat"
 arch=("x86_64" "i686")

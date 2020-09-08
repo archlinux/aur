@@ -1,7 +1,7 @@
 pkgbase = wscat
 	pkgdesc = Netcat-like utility for WebSockets
-	pkgver = 4.0.0
-	pkgrel = 1
+	pkgver = 4.0.1
+	pkgrel = 0
 	url = https://github.com/websockets/wscat
 	arch = x86_64
 	arch = i686
