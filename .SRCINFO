@@ -1,7 +1,7 @@
 pkgbase = torbrowser-launcher-git
 	pkgdesc = Securely and easily download, verify, install and launch Tor Browser
-	pkgver = 0.3.2.r24.fc2073d
-	pkgrel = 3
+	pkgver = 0.3.2.r32.275a2b8
+	pkgrel = 1
 	url = https://github.com/micahflee/torbrowser-launcher
 	arch = any
 	license = MIT
@@ -20,8 +20,10 @@ pkgbase = torbrowser-launcher-git
 	conflicts = torbrowser-launcher
 	source = git+https://github.com/micahflee/torbrowser-launcher.git#branch=develop
 	source = 444.patch
+	source = https://github.com/archlinux/svntogit-community/blob/packages/torbrowser-launcher/trunk/tor-browser-developers.pub
 	sha256sums = SKIP
 	sha256sums = c94ecaab83ae49943d02772583dcd89e9d6ee1448d56ca8fcb621eeafbc3315b
+	sha256sums = 1d06596847ef46a54005cd5cc9c5246bd134cb3d42d27ac045105b6aaa9f3475
 
 pkgname = torbrowser-launcher-git
 
