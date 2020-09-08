@@ -12,6 +12,7 @@ pkgbase = picomc
 	depends = python-certifi
 	depends = python-tqdm
 	depends = python-coloredlogs
+	depends = java-runtime
 	source = https://github.com/sammko/picomc/archive/v0.4.1.tar.gz
 	md5sums = 2078fb49e7bbc535969d10f20df63334
 

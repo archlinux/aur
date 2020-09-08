@@ -12,7 +12,8 @@ depends=("python>=3.7"
          "python-urllib3"
          "python-certifi"
          "python-tqdm"
-         "python-coloredlogs")
+         "python-coloredlogs"
+         "java-runtime")
 source=("https://github.com/sammko/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('2078fb49e7bbc535969d10f20df63334')
 
