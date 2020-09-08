@@ -1,0 +1,16 @@
+pkgbase = rockchip-alsa-config
+	pkgdesc = ALSA configs for rockchip.
+	pkgver = 20200827
+	pkgrel = 1
+	url = https://github.com/rockchip-linux/alsa-config
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = LGPL
+	makedepends = meson
+	depends = alsa-utils
+	source = git+https://github.com/rockchip-linux/alsa-config#commit=16078cdc78d9d4961a60c60c527a1a14972fa30d
+	sha256sums = SKIP
+
+pkgname = rockchip-alsa-config
+
