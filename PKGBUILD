@@ -6,8 +6,8 @@ pkgdesc="LANraragi build package"
 arch=(any)
 url="https://github.com/Difegue/LANraragi"
 license=("MIT")
-depends=(libarchive ghostscript perl gnupg cpanminus redis imagemagick libwebp openssl zlib)
-makedepends=(npm pkgconf)
+depends=(libarchive ghostscript perl gnupg redis imagemagick libwebp openssl zlib)
+makedepends=(cpanminus npm perl-config-autoconf pkgconf)
 source=("https://github.com/Difegue/LANraragi/archive/${pkgver}.tar.gz"
         "lanraragi.service" "lanraragi.sysusers" "lanraragi.tmpfiles")
 sha512sums=(
@@ -19,6 +19,7 @@ sha512sums=(
 
 
 build() {
+  PATH=/usr/bin/vendor_perl:$PATH
   cd LANraragi-${pkgver}
   npm run lanraragi-installer install-full
 }
