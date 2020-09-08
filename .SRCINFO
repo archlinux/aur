@@ -1,0 +1,13 @@
+pkgbase = vim-haskell-git
+	pkgdesc = Syntax Highlighting and Indentation for Haskell and Cabal.
+	pkgver = r449.b1ac468
+	pkgrel = 1
+	url = https://github.com/neovimhaskell/haskell-vim
+	arch = any
+	license = BSD
+	depends = vim
+	source = git+https://github.com/neovimhaskell/haskell-vim
+	sha256sums = SKIP
+
+pkgname = vim-haskell-git
+
