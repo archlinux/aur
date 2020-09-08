@@ -4,7 +4,7 @@
 
 pkgname=miniflux
 pkgver=2.0.23
-pkgrel=2
+pkgrel=3
 pkgdesc='Minimalist Feed Reader'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://miniflux.app'
@@ -55,6 +55,7 @@ package() {
   install -Dm644 "${srcdir}/miniflux.conf" "${pkgdir}/etc/miniflux.conf"
   install -Dm644 "${srcdir}/miniflux.service" "${pkgdir}/usr/lib/systemd/system/miniflux.service"
   install -Dm644 "${srcdir}/miniflux.sysusers" "${pkgdir}/usr/lib/sysusers.d/miniflux.conf"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/miniflux.1" "${pkgdir}/usr/share/man/man1/miniflux.1"
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}/miniflux-linux-${_target}" "${pkgdir}/usr/bin/miniflux"
 }
 
