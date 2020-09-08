@@ -2,7 +2,7 @@
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 # Contributor: marauder <abhinav.kssk@gmail.com>
 pkgname=ignition-msgs
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Standard set of message definitions, used by Ignition Transport, and other applications."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('ignition-cmake>=2' 'ruby-ronn' 'doxygen' 'tinyxml2')
 optdepends=()
 conflicts=()
 source=("${pkgname}-${pkgver}::https://github.com/ignitionrobotics/ign-msgs/archive/${pkgname}5_${pkgver}.tar.gz")
-sha256sums=('04eac50ac551e0ed9566943c0c4348a89b3b5bf7b60346df09c982d7a559cc28')
+sha256sums=('1e11986cdf9549f1b4e2a6da1b978525ff2f60539a451b24db5b81ca2c0893df')
 
 _dir="ign-msgs-${pkgname}5_${pkgver}"
 
