@@ -1,12 +1,13 @@
 pkgname=nyx-git
 _pkgname=nyx
-pkgver=2.1.0+8+g6999660
+pkgver=2.1.0+19+g58771d5
 pkgrel=1
 pkgdesc='Command-line status monitor for tor'
 url='https://nyx.torproject.org/'
 arch=('any')
 license=('GPL3')
 depends=('python' 'python-setuptools' 'python-stem' 'net-tools' 'procps-ng' 'lsof')
+makedepends=('git')
 optdepends=('tor: tor-server to talk to')
 provides=('nyx')
 conflicts=('nyx')
