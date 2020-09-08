@@ -178,6 +178,7 @@ build() {
     --with-x \
     --with-gstreamer \
     --with-xattr \
+    --without-mingw \
     --libdir=/opt/wine-lol/lib32
 
   make depend LDRPATH_INSTALL="-Wl,$_RPATH,$_LINKER" # Use wine-lib-glibc for -install
