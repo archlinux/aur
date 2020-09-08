@@ -2,7 +2,7 @@ pkgbase = usd
 	pkgdesc = 3D VFX pipeline interchange file format.
 	pkgver = 20.05
 	pkgrel = 1
-	url = https://www.openusd.org
+	url = https://graphics.pixar.com/usd/docs/index.html
 	arch = x86_64
 	license = Apache
 	makedepends = python2-jinja
@@ -24,8 +24,8 @@ pkgbase = usd
 	source = boost_python2.patch
 	source = blender.patch
 	sha256sums = SKIP
-	sha256sums = dec16bd0270c9d682f34c555e38812ea010bee88907a02d6ce60f3f319b21425
-	sha256sums = a4b92e59eb6330109f65d1b168ad0c4b1292c5317f579dcbf0594df22ffbc587
+	sha256sums = 2f595ce72b9fb33e6da7db97b02be11fe6262e31b83b0e59232ee8713afed97e
+	sha256sums = 95a4934ae8154e1650a024b09ed3237ba7d9411ada089a4b6337cbba9312705a
 
 pkgname = usd
 
