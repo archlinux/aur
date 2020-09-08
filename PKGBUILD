@@ -1,48 +1,32 @@
 # Contributor: Spyros Stathopoulos <foucault.online@gmail.com>
-pkgname=python-regex-hg
-pkgver=182.7dd7e9a48804
+pkgname=python-regex-git
+pkgver=353.fe9fb05
 pkgrel=1
 pkgdesc="Alternative regular expression module, to replace re."
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/mrabarnett/mrab-regex"
 license=('custom')
 depends=('python')
-makedepends=('mercurial')
-_hgname='mrab-regex'
-source=("hg+https://bitbucket.org/mrabarnett/$_hgname")
+makedepends=('git')
+_gitname='mrab-regex'
+source=("git+https://bitbucket.org/mrabarnett/$_gitname")
 md5sums=(SKIP)
 provides=(python-regex)
 conflicts=(python-regex)
 
-_dist=Python3
-_regex=regex_3
 
 pkgver() {
-  cd ${_hgname}
-  echo $(hg identify -n).$(hg identify -i)
+  cd ${_gitname}
+  echo "$(git rev-list --count HEAD)"."$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${_hgname}/PyPI"
-
-  if [ ! -d ${_dist} ] ; then
-    mkdir ${_dist}
-  fi
-
-  if [ ! -d ${_dist}/../docs ] ; then
-    mkdir ${_dist}/../docs
-  fi
-
-  cp ../docs/Features.rst ${_dist}/../docs
-  cp ../${_regex}/regex/* ${_dist}
-  cp ../${_regex}/Python/* ${_dist}
-  #cp ../${_regex}/UnicodeProperties.txt ${_dist}
-
+  cd ${_gitname}
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/${_hgname}/PyPI"
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  cd ${_gitname}
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+  sed -n '1,/^$/p' regex_3/regex.py | install -Dm644 /dev/stdin "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
-
