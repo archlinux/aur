@@ -1,7 +1,7 @@
 # Maintainer: Andy Kluger <AndyKluger@gmail.com>
 # Contributor: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-custom-git
-pkgver=r1912.a1501ba6
+pkgver=r1970.13517c54
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '39d6f31d31bd6ce2cb55c117ad636b0cdb688c5f3d461d69dded50cc644f5bfe'
+  '9ebb80bc4a23e05064c73c90fd5644b05d0741af9733f980d52f954bcf7f7259'
 )
 
 pkgver() {
