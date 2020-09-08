@@ -1,7 +1,7 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium-bin
-pkgver=6.0.99
+pkgver=6.2.91
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker. (Demo Version)'
 arch=(x86_64)
@@ -27,7 +27,7 @@ optdepends=(
 )
 options=(!strip)
 source=("https://users.notam02.no/~kjetism/radium/demos/linux/radium_64bit_linux-$pkgver-demo.tar.xz")
-sha256sums=('6be5b40cbceddde25f648ff75abd98248b90694bfbd6f50c8dc937a0f36de6d7')
+sha256sums=('c726bd1310724f03c9ee4b67cdea0b4b4d076ac8e2cd17c02e2f0fc5d1e3b5c8')
 
 package() {
   # Copy radium files to a self-contained /opt prefix
@@ -47,7 +47,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   echo '#!/usr/bin/env bash' > "$pkgdir/usr/bin/radium"
   echo LD_LIBRARY_PATH='"/opt/radium/lib:$LD_LIBRARY_PATH"' QT_QPA_PLATFORM_PLUGIN_PATH=/opt/radium/bin/qt5_plugins \
-    /opt/radium/bin/radium >> "$pkgdir/usr/bin/radium"
+    /opt/radium/bin/radium '"$@"' >> "$pkgdir/usr/bin/radium"
   chmod +x "$pkgdir/usr/bin/radium"
 
   # Icons, .desktop and mimetype files
