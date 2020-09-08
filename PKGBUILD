@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=gofu
-pkgrel=3
+pkgrel=4
 pkgver=1.1.2
 pkgdesc='Simple file share service in go'
 url='https://git.roshless.me/~roshless/gofu'
@@ -32,11 +32,9 @@ package() {
   install -Dm644 $pkgname.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -Dm644 $pkgname.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
-
   cd $pkgname-$pkgver
   install -Dm755 $pkgname -t "$pkgdir/usr/bin/"
   install -D "dist/config.ini" "$pkgdir/var/lib/$pkgname/config.ini"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 md5sums=('3402cb0ee0eb25900192f6130a6fcc3d'
