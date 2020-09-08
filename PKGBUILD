@@ -1,11 +1,11 @@
 # Maintainer: Skydrome <skydrome at protonmail dot com>
 
 pkgname=zulu-embedded-jdk11
-pkgver=11.0.8
+pkgver=13.0.4
 pkgrel=1
 pkgdesc='Zulu Embedded is a certified build of OpenJDK for Armv8/v7/v6 devices.'
 arch=('armv6h' 'armv7h' 'armv8h' 'i686' 'x86_64')
-url='https://www.azul.com/products/zulu-embedded'
+url='https://www.azul.com/downloads/zulu-community'
 license=('custom')
 install=jdk.install
 options=(!strip)
@@ -18,8 +18,9 @@ depends=('java-runtime-common>=3' 'java-environment-common>=3'
 
 case "$CARCH" in
     armv?h) _arch='aarch32hf'
-        _build=11.41.75
-        sha256sums=('8eb08c86be935794143a35bc01115e5b7cd56896631e463aa09197966dc81d32')
+        _build=13.33.38
+        sha256sums=('9b8bfb5b60bd93a1c724834a805c2e81897bb58b54c89ce0f45712940444e720')
+        source=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-c2-linux_${_arch}.tar.gz")
         ;;
     aarch64) _arch='aarch64'
         _build=13.33.38
