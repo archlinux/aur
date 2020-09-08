@@ -1,7 +1,7 @@
 # Maintainer: CorvetteCole <aur@corvettecole.com>
 
 pkgname=plata-theme-osd-match
-pkgver=0.9.7.1
+pkgver=0.9.8
 pkgrel=1
 pkgdesc='A Gtk+ theme based on Material Design Refresh (modified so the volume OSD matches the set accent color)'
 arch=('any')

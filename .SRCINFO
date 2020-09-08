@@ -1,6 +1,6 @@
 pkgbase = plata-theme-osd-match
 	pkgdesc = A Gtk+ theme based on Material Design Refresh (modified so the volume OSD matches the set accent color)
-	pkgver = 0.9.7.1
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://gitlab.com/CorvetteCole/plata-theme
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = plata-theme-osd-match
 	optdepends = marco: Mate support, a package rebuilt is required
 	provides = plata-theme
 	conflicts = plata-theme
-	source = git+https://gitlab.com/CorvetteCole/plata-theme.git#tag=0.9.7.1
+	source = git+https://gitlab.com/CorvetteCole/plata-theme.git#tag=0.9.8
 	sha256sums = SKIP
 
 pkgname = plata-theme-osd-match
