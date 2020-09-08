@@ -1,0 +1,15 @@
+pkgbase = syrinscape-fantasy-player
+	pkgdesc = Soundscape creator and sound design app for fantasy games
+	pkgver = 1.4.8_p2
+	pkgrel = 2
+	url = https://www.syrinscape.com
+	arch = x86_64
+	license = Proprietary
+	options = !strip
+	source = syrinscape-1.4.8-p2-linux-fantasy.tar.gz::https://www.syrinscape.com/get-download/syrinscape-1.4.8-p2-linux-scifi.tar.gz?type=linux&version=1.4.8-p2
+	source = local://syrinscape-fantasy-player.desktop
+	sha256sums = 616bd944ab595ee677f0897730cdffe6a735fc2371d8015be9427cedf57e6c8c
+	sha256sums = SKIP
+
+pkgname = syrinscape-fantasy-player
+

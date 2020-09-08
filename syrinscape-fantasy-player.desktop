@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.4.8-p2
+Type=Application
+Name=Syrinscape Fantasy Player
+Exec="/opt/Syrinscape\sFantasy\sPlayer/Syrinscape"
+Path=/opt/Syrinscape\sFantasy\sPlayer/
+Icon=/opt/Syrinscape\sFantasy\sPlayer/Syrinscape_Data/Resources/UnityPlayer.png
+Terminal=false
+MimeType=x-scheme-handler/syrinscape-fantasy;
