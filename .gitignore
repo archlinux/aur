@@ -1,0 +1,6 @@
+*.pkg.tar
+*.src.tar.gz
+pkg/
+src/
+scrcpy-server*
+scrcpy/
