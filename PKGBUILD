@@ -1,7 +1,7 @@
 pkgname=ipmiview
 pkgver=2.17.0
 _pkghash=200505
-pkgrel=2
+pkgrel=3
 pkgdesc="Supermicro IPMI tool"
 makedepends=('tar')
 depends=("glibc" "java-runtime=8")
@@ -10,12 +10,12 @@ license=('custom:"Super Micro Computer"')
 url="http://www.supermicro.com/products/nfo/ipmi.cfm"
 
 backup=(
-    'account.properties'
-    'email.properties'
-    'iKVM.properties'
-    'IPMIView.properties'
-    'stunnel.properties'
-    'timeout.properties'
+    "opt/${pkgname}/account.properties"
+    "opt/${pkgname}/email.properties"
+    "opt/${pkgname}/iKVM.properties"
+    "opt/${pkgname}/IPMIView.properties"
+    "opt/${pkgname}/stunnel.properties"
+    "opt/${pkgname}/timeout.properties"
     )
 
 source=(
