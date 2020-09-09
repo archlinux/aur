@@ -3,14 +3,14 @@ pkgname=(otf-commissioner ttf-commissioner ttf-commissioner-variable)
 _reponame=Commissioner
 pkgbase=commissioner-font
 pkgver=1.000
-_commit=c043f33482d151f57fbb9eb2c729146139dc5c18
-pkgrel=4
+_commit=d76954316c5802e590e42acad3eebc8df84c49d8
+pkgrel=5
 pkgdesc='Sans typeface by Kostas Bartsokas'
 arch=(any)
 url="https://github.com/kosbarts/$_reponame"
 license=(OFL)
 source=("$url/archive/$_commit/$pkgbase-$pkgver-$pkgrel.zip")
-sha512sums=('f9961c5c042d3f261f28101a7cfcfcef9bd759d0bd46860a4201b411943840f5f2ec1feda951d81709c78576a5bdc79572c75dde1f267f8af10f7d0633937736')
+sha512sums=('182fa3aadf086c37187511f3acb4d59610884dd53d8ff8bf0eb6c473b3e5570dc15b3fa288db14288714b2efdcee9549c20331252950a295b321d7a21cfeb9c6')
 
 package_otf-commissioner() {
 	pkgdesc+=' (54 static cuts)'
