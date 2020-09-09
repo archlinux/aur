@@ -4,13 +4,20 @@ pkgbase = whatsapp-for-linux
 	pkgrel = 1
 	url = https://github.com/eneshecan/whatsapp-for-linux
 	arch = x86_64
+	arch = aarch64
 	license = GPL
-	makedepends = cmake
+	makedepends = git
 	depends = gtkmm3
 	depends = webkit2gtk
+	depends = nuspell
+	depends = hspell
+	depends = libvoikko
+	depends = aspell
+	depends = gst-plugins-base
 	provides = whatsapp-for-linux
-	source = whatsapp-for-linux-1.0.8.tar.gz::https://github.com/eneshecan/whatsapp-for-linux/archive/v1.0.8.tar.gz
-	sha1sums = 3f12c2909b1d60cc1c247e29f9f4b834c18c7494
+	conflicts = whatsapp-for-linux
+	source = git+https://github.com/eneshecan/whatsapp-for-linux
+	sha256sums = SKIP
 
 pkgname = whatsapp-for-linux
 
