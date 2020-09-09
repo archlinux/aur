@@ -1,14 +1,14 @@
 pkgbase = vim-table-mode
 	pkgdesc = VIM Table Mode for instant table creation.
-	pkgver = 4.6.7
+	pkgver = 4.7.3
 	pkgrel = 1
 	url = https://github.com/dhruvasagar/vim-table-mode
 	arch = any
 	groups = vim-plugins
 	license = vim-license
 	depends = vim
-	source = vim-table-mode-4.6.7.tar.gz::https://github.com/dhruvasagar/vim-table-mode/archive/v4.6.7.tar.gz
-	sha512sums = bc0f1970a61751dc9df5c2fcfdf17008e700722234a33f2a35726279b90b4e8cf71beeb7b11e93a6c02ec9f57958dd9e33837c69cc2475c767bd279560700d81
+	source = vim-table-mode-4.7.3.tar.gz::https://github.com/dhruvasagar/vim-table-mode/archive/v4.7.3.tar.gz
+	sha512sums = d7a477272dcd6fcc21b6f9bacacf6f896132367873280377ad7381a39241adf8209765781de210701ee4e6df9af8f5e9edf7d186be2a605f4cd1ac4119665790
 
 pkgname = vim-table-mode
 

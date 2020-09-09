@@ -1,6 +1,6 @@
 # Maintainer: Vlad Petrov ejiek@mail.ru
 pkgname=vim-table-mode
-pkgver=4.6.7
+pkgver=4.7.3
 pkgrel=1
 pkgdesc='VIM Table Mode for instant table creation.'
 arch=('any')
@@ -9,7 +9,7 @@ license=('vim-license')
 depends=('vim')
 groups=('vim-plugins')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dhruvasagar/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('bc0f1970a61751dc9df5c2fcfdf17008e700722234a33f2a35726279b90b4e8cf71beeb7b11e93a6c02ec9f57958dd9e33837c69cc2475c767bd279560700d81')
+sha512sums=('d7a477272dcd6fcc21b6f9bacacf6f896132367873280377ad7381a39241adf8209765781de210701ee4e6df9af8f5e9edf7d186be2a605f4cd1ac4119665790')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
