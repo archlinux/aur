@@ -1,11 +1,11 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r266.0767a9f
+pkgver=r275.19eab9e
 pkgrel=1
 pkgdesc="Linux guest tools for the Crostini containers on ChromeOS"
 arch=('any')
 license=('custom')
-depends=('openssh' 'xdg-utils' 'xkeyboard-config' 'pulseaudio' 'xxd' 'packagekit' 'dbus' 'xorg-xdpyinfo' 'mailcap')
+depends=('openssh' 'xdg-utils' 'xkeyboard-config' 'pulseaudio' 'xxd' 'packagekit' 'dbus' 'xorg-xdpyinfo' 'xorg-xrdb' 'xorg-xsetroot' 'mailcap')
 install=cros-container-guest-tools.install
 url="https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools"
 source=("git+${url}"
@@ -86,6 +86,8 @@ package() {
 
 	install -m644 -D ${srcdir}/${_pkgname}/cros-notificationd/org.freedesktop.Notifications.service \
 		${pkgdir}/usr/share/dbus-1/services/org.freedesktop.Notifications.service
+	install -m644 -D ${srcdir}/${_pkgname}/cros-notificationd/cros-notificationd.service \
+		${pkgdir}/usr/lib/systemd/user/cros-notificationd.service
 
 	### cros-pulse-config
 
