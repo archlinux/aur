@@ -5,7 +5,7 @@
 # Contributor : Cassfalg <ch(dot)assfalg(at)gmx(dot)de>
 
 pkgname=teamdrive
-pkgver=4.6.11.2639
+pkgver=4.6.11.2662
 pkgrel=1
 pkgdesc="Keeps data synchronised between various computers automatically."
 arch=('x86_64')
@@ -19,7 +19,7 @@ dir=$(echo $pkgver|cut -d. -f1,2,4)
 source_x86_64=("https://download.teamdrive.net/${dir}/TMDR/linux-x86_64/teamdrive-${pkgver%.*}_amd64.deb")
 
 sha256sums=('8cd967dbe70c0ca845c3a3075cac9ad2f7342d63a5e32d81eaa9c2bc20a59699')
-sha256sums_x86_64=('c879ddd0f8caecd7fc2507b1bb607d1b3e63744fe270ae9d92b9bcb88bdbb235')
+sha256sums_x86_64=('90c35d3d3ba2e4baa2a4a5443c48a2a9385f33a1232a84cf47d9c25fcf770c6a')
 
 options=(!strip)
 
