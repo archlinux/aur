@@ -1,7 +1,7 @@
-# Maintainer: Vidar Magnusson <vprint at vidarmagnusson dot com>
+# Maintainer: Vidar Magnusson <printit at vidarmagnusson dot com>
 
 pkgname=printit
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Utility for printing at Chalmers University"
 arch=("any")
