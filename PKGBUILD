@@ -11,7 +11,7 @@ url='https://pandoc.org'
 license=('GPL')
 depends=('pandoc')
 source=('pandoc-completion.hook')
-sha256sums=('6f6ca34a91dbf61c74dd1c4ac335ac0c654009536391ee005dd3fea0370afee0')
+sha256sums=('85b6319bf02d1c60a99cfe8ceba1e887d5ede3cc6774082abd8c67230b3f4c57')
 
 package() {
     completion="$pkgdir/etc/bash_completion.d"
