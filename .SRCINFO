@@ -7,7 +7,7 @@ pkgbase = jilu
 	license = Apache
 	makedepends = cargo
 	source = jilu-0.4.0.tar.gz::https://github.com/rustic-games/jilu/archive/v0.4.0.tar.gz
-	sha512sums = SKIP
+	sha512sums = 5487b640bfb98a17c3e223fe23093fa6e3173db92647ccd85033c71917ce14c965eaad1f8314561d1c35257382e350fa34aa5faab923431d5945081ca857da07
 
 pkgname = jilu
 
