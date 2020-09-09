@@ -1,14 +1,14 @@
 pkgbase = emacs-parseedn
 	pkgdesc = Clojure/EDN parser for elisp
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/clojure-emacs/parseedn
 	arch = any
 	license = GPL3
 	depends = emacs-a
 	depends = emacs-parseclj
-	source = emacs-parseedn-0.1.0.tar.gz::https://github.com/clojure-emacs/parseedn/archive/v0.1.0.tar.gz
-	sha256sums = 36bf499ef5668d6932aa56619263cb3421deb8588fff43fa602fca0a0b77c38a
+	source = emacs-parseedn-0.2.0.tar.gz::https://github.com/clojure-emacs/parseedn/archive/v0.2.0.tar.gz
+	sha256sums = 3d8ef419ddb4d488064ea2238deba4a9de689b2a8873d50fe5588683db11bb53
 
 pkgname = emacs-parseedn
 

@@ -3,8 +3,8 @@
 
 _pkgsrcname=parseedn
 _pkgmaintainer=clojure-emacs
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Clojure/EDN parser for elisp"
 pkgname=emacs-parseedn
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs-a' 'emacs-parseclj')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/v${pkgver}.tar.gz")
-sha256sums=('36bf499ef5668d6932aa56619263cb3421deb8588fff43fa602fca0a0b77c38a')
+sha256sums=('3d8ef419ddb4d488064ea2238deba4a9de689b2a8873d50fe5588683db11bb53')
 
 build() {
   cd ${_pkgsrcname}-${pkgver}
