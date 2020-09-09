@@ -3,10 +3,10 @@
 # Contributor: Valentin Hăloiu <vially.ichb@gmail.com>
 
 pkgname=electron-ozone
-pkgver=9.2.3
+pkgver=9.3.0
 provides=('electron')
 conflicts=('electron')
-_commit=0c2cb59b6283fe8d6bb4b14f8a832e2166aeaa0c
+_commit=fb03807cd21915ddc3aa2521ba4f5ba14597bd7e
 _chromiumver=83.0.4103.122
 pkgrel=1
 pkgdesc='Electron compiled with wayland support via Ozone'
@@ -15,7 +15,7 @@ url='https://electronjs.org/'
 license=('MIT' 'custom')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libnghttp2'
          'libxslt' 'libxss' 'minizip' 'nss' 'snappy')
-makedepends=('git' 'gn' 'gperf' 'harfbuzz-icu' 'java-runtime-headless'
+makedepends=('git' 'gn<0.1809' 'gperf' 'harfbuzz-icu' 'java-runtime-headless'
              'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja' 'npm' 'pciutils' 'yarn'
              'python2' 'wget' 'yasm' 'python2-setuptools' 'libpipewire02' 'nodejs'
              'openh264')
