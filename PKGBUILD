@@ -2,7 +2,7 @@
 
 pkgname=twad-git
 _pkgname=twad
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Terminal wad launcher'
 arch=('any')
@@ -19,6 +19,7 @@ pgkver() {
 
 build() {
   cd "${srcdir}"/${_pkgname}
+  git checkout v0.9.0
   go build \
     -trimpath \
     -ldflags "-extldflags $LDFLAGS" \
