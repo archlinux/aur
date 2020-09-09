@@ -1,0 +1,16 @@
+pkgbase = kos32-dev
+	pkgdesc = SPHINX C-- Compiler . C-- is a programming language occupying an intermediate position between Assembler and C.
+	pkgver = 0.240
+	pkgrel = 1
+	url = http://c--sphinx.narod.ru/
+	arch = any
+	license = GPLv3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	conflicts = cmm-git
+	source = https://github.com/XVilka/cminusminus/archive/v0.240.tar.gz
+	md5sums = SKIP
+
+pkgname = cmm
+
