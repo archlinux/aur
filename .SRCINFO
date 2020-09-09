@@ -1,13 +1,13 @@
 pkgbase = tortoisehg-hg
 	pkgdesc = Mercurial GUI front end
-	pkgver = 5.1.19182
+	pkgver = 5.5.1.19453
 	pkgrel = 1
-	url = https://bitbucket.org/tortoisehg/thg
+	url = https://foss.heptapod.net/mercurial/tortoisehg/thg
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = python
-	depends = mercurial-hg
+	depends = mercurial
 	depends = python-pyqt5
 	depends = python-qscintilla-qt5
 	depends = python-iniparse
@@ -15,7 +15,7 @@ pkgbase = tortoisehg-hg
 	optdepends = python-nautilus: Python binding for Nautilus components
 	provides = tortoisehg
 	conflicts = tortoisehg
-	source = hg+https://bitbucket.org/tortoisehg/thg#branch=stable
+	source = hg+https://foss.heptapod.net/mercurial/tortoisehg/thg#branch=stable
 	source = config.py
 	md5sums = SKIP
 	md5sums = 2e04ba5fdcb361cd68e9ef7ed4c987a5

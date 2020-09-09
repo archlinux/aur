@@ -9,18 +9,18 @@
 
 _pkgname=thg
 pkgname=tortoisehg-hg
-pkgver=5.1.19182
+pkgver=5.5.1.19453
 pkgrel=1
 pkgdesc="Mercurial GUI front end"
 arch=('i686' 'x86_64')
-url="https://bitbucket.org/tortoisehg/thg"
+url="https://foss.heptapod.net/mercurial/tortoisehg/thg"
 license=('GPL2')
-depends=('python' 'mercurial-hg' 'python-pyqt5' 'python-qscintilla-qt5' 'python-iniparse')
+depends=('python' 'mercurial' 'python-pyqt5' 'python-qscintilla-qt5' 'python-iniparse')
 optdepends=('python-pygments: syntax highlighting'
             'python-nautilus: Python binding for Nautilus components')
 provides=('tortoisehg')
 conflicts=('tortoisehg')
-source=("hg+https://bitbucket.org/tortoisehg/${_pkgname}#branch=stable"
+source=("hg+https://foss.heptapod.net/mercurial/tortoisehg/${_pkgname}#branch=stable"
         'config.py')
 md5sums=('SKIP'
          '2e04ba5fdcb361cd68e9ef7ed4c987a5')
