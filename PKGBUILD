@@ -1,41 +1,32 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer zan <zan@420blaze.it>
+# Contributor Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdewebkit-git
+_name=${pkgname%-git}
 pkgver=r45.8f9e1ed
-pkgrel=3
+pkgrel=1
 pkgdesc='KDE Webkit'
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/kdewebkit'
-license=('LGPL')
-depends=('qt5-webkit' 'kparts-git')
-makedepends=('extra-cmake-modules-git' 'git' 'python')
-groups=('kf5')
-conflicts=('kdewebkit')
-provides=('kdewebkit')
-source=('git://anongit.kde.org/kdewebkit.git')
+license=(LGPL)
+depends=(qt5-webkit kparts-git)
+makedepends=(extra-cmake-modules-git git python)
+groups=(kf5)
+conflicts=(kdewebkit)
+provides=(kdewebkit)
+source=("https://invent.kde.org/frameworks/$_name.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd kdewebkit
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  cd $_name
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-  cmake ../kdewebkit \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTING=OFF
-  make
+  cmake -B build -S $_name
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
