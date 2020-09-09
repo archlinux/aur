@@ -5,6 +5,7 @@
 # Contributor: Miroslaw Szot <mss@czlug.icis.pcz.pl>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
+pkgbase=nginx
 pkgname=nginx-mainline-src
 pkgver=1.19.2
 pkgrel=1
