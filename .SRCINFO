@@ -1,7 +1,7 @@
 pkgbase = dvm-bin
 	pkgdesc = Deno Version Manager - Easy way to manage multiple active deno versions
 	pkgver = 1.1.10
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/justjavac/dvm
 	arch = x86_64
 	license = MIT

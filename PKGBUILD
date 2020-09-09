@@ -2,7 +2,7 @@
 
 pkgname='dvm-bin'
 pkgver='1.1.10'
-pkgrel='0'
+pkgrel='1'
 pkgdesc='Deno Version Manager - Easy way to manage multiple active deno versions'
 provides=('dvm')
 conflicts=('dvm')
