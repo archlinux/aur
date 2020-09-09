@@ -16,7 +16,7 @@ source=(git://github.com/OpenMW/osg.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${gitname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
