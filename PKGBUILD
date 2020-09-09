@@ -2,6 +2,7 @@
 # Maintainer: CrankySupertoon <crankysupertoon@gmail.com>
 
 pkgname='mcedit-unified'
+_pkgname='mcedit'
 reponame='MCEdit-Unified'
 pkgver='1.5.6.0'
 pkgrel=1
@@ -10,18 +11,22 @@ arch=('any')
 url='https://github.com/mcedit/mcedit'
 license=('BSD')
 
-makedepends=('cython2')
+makedepends=('cython2' 'gendesk')
 depends=('python2' 'python2-opengl' 'python2-numpy' 'python2-pygame'
          'python2-yaml' 'python2-pillow' 'python2-ftputil' 'python2-xlib' 'xclip')
 optdepends=('python2-leveldb_mcpe: for MCPE support')
 conflicts=('mcedit-git' 'pymclevel-git')
 
-source=(MCEdit MCEdit.desktop
+source=(MCEdit
 	directories.patch
-	https://github.com/Khroki/${reponame}/archive/${pkgver}.tar.gz
+	https://github.com/Podshot/${reponame}/archive/${pkgver}.tar.gz
 	)
 
 prepare() {
+    	# Generate .desktop
+    	gendesk -f --pkgname "MCEdit" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n
+
+        #Fix Hardcoded Directories
 	cd ${srcdir}/${reponame}-${pkgver}
 	grep -rlZ python2\.7 * | while IFS= read -r -d '' filename; do sed -i '1 s/python2\.7/python\.7/' "$filename"; done
 	grep -rlZ python * | while IFS= read -r -d '' filename; do sed -i '1 s/python/python2/' "$filename"; done
@@ -42,27 +47,28 @@ package() {
 	cd ${srcdir}/${reponame}-${pkgver}
 	python2 setup.py install --prefix=/usr --root="$pkgdir/"
 	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "${pkgdir}/usr/lib/mcedit"
-	mkdir -p "${pkgdir}/usr/share/mcedit"
+	mkdir -p "${pkgdir}/usr/lib/${_pkgname}"
+	mkdir -p "${pkgdir}/usr/share/${_pkgname}"
 	mkdir -p "${pkgdir}/usr/share/applications"
 	mkdir -p "${pkgdir}/usr/share/pixmaps"
+	
 	# Pys
-	cp *.py "${pkgdir}/usr/lib/mcedit"
-	cp *.pyc "${pkgdir}/usr/lib/mcedit"
+	cp *.py "${pkgdir}/usr/lib/${_pkgname}"
+	cp *.pyc "${pkgdir}/usr/lib/${_pkgname}"
 	for i in albow editortools pymclevel utilities panels viewports leveldb_mcpe; do
-		cp -R $i "${pkgdir}/usr/lib/mcedit/$i"
+		cp -R $i "${pkgdir}/usr/lib/${_pkgname}/$i"
 	done
 
 	# Images and stuff
 	rm -f splash
 	touch splash
-	cp *.png "${pkgdir}/usr/share/mcedit"
+	cp *.png "${pkgdir}/usr/share/${_pkgname}"
 	for i in stock-schematics toolicons stock-filters stock-brushes lang\
 	item-textures Items splashes splash bo3.def RELEASE-VERSION.json\
 	LR5_mzu.fot; do
-		cp -R $i "${pkgdir}/usr/share/mcedit/$i"
+		cp -R $i "${pkgdir}/usr/share/${_pkgname}/$i"
 	done
-	ln -s "/usr/share/mcedit/favicon.png" "${pkgdir}/usr/share/pixmaps/MCEdit.png"
+	ln -s "/usr/share/${_pkgname}/favicon.png" "${pkgdir}/usr/share/pixmaps/MCEdit.png"
 	
 	# Launcher
 	install -D -m755 "${srcdir}/MCEdit" "${pkgdir}/usr/bin/"
@@ -70,6 +76,5 @@ package() {
 }
 
 md5sums=('b08f609c8923067b13a9bd462999a6f4'
-         '53fe3c41d58fd1f6429f90ba0b1831ac'
          '0c6d503c3a87cfb347564efd5b1b0fd5'
          '8589c54a51b69e83ca6f36dd3db3be5f')
