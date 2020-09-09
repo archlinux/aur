@@ -1,9 +1,9 @@
 pkgname=python-pyctr
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to interact with Nintendo 3DS files"
 arch=($CARCH)
-license=(MIT)
+license=('MIT')
 url='https://github.com/ihaveamac/pyctr'
 depends=('python' 'python-pycryptodomex')
 makedepends=('python-setuptools')
@@ -20,4 +20,6 @@ build() {
 package() {
 	cd pyctr-${pkgver}
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

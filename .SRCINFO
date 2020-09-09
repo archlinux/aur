@@ -1,7 +1,7 @@
 pkgbase = python-pyctr
 	pkgdesc = Python library to interact with Nintendo 3DS files
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ihaveamac/pyctr
 	arch = x86_64
 	license = MIT
