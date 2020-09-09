@@ -301,6 +301,128 @@ post_install() {
 
     bash /opt/cprocsp/tmp/PLIST-csp/Linux/update_all_plists.sh >/dev/null 2>&1
 
+    # cprocsp-rdr-rutoken-64
+    cpconfig -ini '\config\apppath' -add string librdrrutoken.so /opt/cprocsp/lib/amd64/librdrrutoken.so
+
+    cpconfig -ini '\config\KeyCarriers\RutokenECP' -add string DLL librdrrutoken.so
+    cpconfig -hardware media -add RutokenECP -name 'Rutoken ECP' > /dev/null
+    cpconfig -hardware media -configure RutokenECP -add hex atr 3b8b015275746f6b656e20445320c1
+    cpconfig -hardware media -configure RutokenECP -add hex mask ffffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure RutokenECP -add string folders "0A00\\0B00\\0C00\\0D00\\0E00\\0F00\\1000\\1100\\1200\\1300\\1400\\1500\\1600\\1700\\1800"
+    cpconfig -hardware media -configure RutokenECP -add long size_1 60
+    cpconfig -hardware media -configure RutokenECP -add long size_2 70
+    cpconfig -hardware media -configure RutokenECP -add long size_3 8
+    cpconfig -hardware media -configure RutokenECP -add long size_4 60
+    cpconfig -hardware media -configure RutokenECP -add long size_5 70
+    cpconfig -hardware media -configure RutokenECP -add long size_6 300
+    cpconfig -hardware media -configure RutokenECP -add long size_7 8
+
+    cpconfig -ini '\config\KeyCarriers\RutokenFkcOld' -add string DLL librdrrutoken.so
+    cpconfig -hardware media -add RutokenFkcOld -name 'CryptoPro Rutoken' > /dev/null
+    cpconfig -hardware media -configure RutokenFkcOld -add hex atr 3b8b015275746f6b656e20454350a0
+    cpconfig -hardware media -configure RutokenFkcOld -add hex mask ffffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure RutokenFkcOld -add string folders "0A00\\0B00\\0C00\\0D00\\0E00\\0F00\\1000\\1100\\1200\\1300\\1400\\1500\\1600\\1700\\1800"
+    cpconfig -hardware media -configure RutokenFkcOld -add long size_1 60
+    cpconfig -hardware media -configure RutokenFkcOld -add long size_2 70
+    cpconfig -hardware media -configure RutokenFkcOld -add long size_3 8
+    cpconfig -hardware media -configure RutokenFkcOld -add long size_4 60
+    cpconfig -hardware media -configure RutokenFkcOld -add long size_5 70
+    cpconfig -hardware media -configure RutokenFkcOld -add long size_6 300
+    cpconfig -hardware media -configure RutokenFkcOld -add long size_7 8
+
+    cpconfig -ini '\config\KeyCarriers\RutokenECPSC' -add string DLL librdrrutoken.so
+    cpconfig -hardware media -add RutokenECPSC -name 'Rutoken ECP SC' > /dev/null
+    cpconfig -hardware media -configure RutokenECPSC -add hex atr 3b9c96005275746f6b656e4543507363
+    cpconfig -hardware media -configure RutokenECPSC -add hex mask ffffffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure RutokenECPSC -add string folders "0A00\\0B00\\0C00\\0D00\\0E00\\0F00\\1000\\1100\\1200\\1300\\1400\\1500\\1600\\1700\\1800"
+    cpconfig -hardware media -configure RutokenECPSC -add long size_1 60
+    cpconfig -hardware media -configure RutokenECPSC -add long size_2 70
+    cpconfig -hardware media -configure RutokenECPSC -add long size_3 8
+    cpconfig -hardware media -configure RutokenECPSC -add long size_4 60
+    cpconfig -hardware media -configure RutokenECPSC -add long size_5 70
+    cpconfig -hardware media -configure RutokenECPSC -add long size_6 300
+    cpconfig -hardware media -configure RutokenECPSC -add long size_7 8
+
+    cpconfig -ini '\config\KeyCarriers\RutokenLiteSC2' -add string DLL librdrrutoken.so
+    cpconfig -hardware media -add RutokenLiteSC2 -name 'Rutoken Lite SC' > /dev/null
+    cpconfig -hardware media -configure RutokenLiteSC2 -add hex atr 3b9e96005275746f6b656e4c697465534332
+    cpconfig -hardware media -configure RutokenLiteSC2 -add hex mask ffffffffffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure RutokenLiteSC2 -add string folders "0A00\\0B00\\0C00\\0D00\\0E00\\0F00\\1000\\1100\\1200\\1300\\1400\\1500\\1600\\1700\\1800"
+    cpconfig -hardware media -configure RutokenLiteSC2 -add long size_1 60
+    cpconfig -hardware media -configure RutokenLiteSC2 -add long size_2 70
+    cpconfig -hardware media -configure RutokenLiteSC2 -add long size_3 8
+    cpconfig -hardware media -configure RutokenLiteSC2 -add long size_4 60
+    cpconfig -hardware media -configure RutokenLiteSC2 -add long size_5 70
+    cpconfig -hardware media -configure RutokenLiteSC2 -add long size_6 300
+    cpconfig -hardware media -configure RutokenLiteSC2 -add long size_7 8
+
+    cpconfig -ini '\config\KeyCarriers\RutokenLite' -add string DLL librdrrutoken.so
+    cpconfig -hardware media -add RutokenLite -name 'Rutoken lite' > /dev/null
+    cpconfig -hardware media -configure RutokenLite -add hex atr 3b8b015275746f6b656e6c697465c2
+    cpconfig -hardware media -configure RutokenLite -add hex mask ffffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure RutokenLite -add string folders "0A00\\0B00\\0C00\\0D00\\0E00\\0F00\\1000\\1100\\1200\\1300\\1400\\1500\\1600\\1700\\1800"
+    cpconfig -hardware media -configure RutokenLite -add long size_1 60
+    cpconfig -hardware media -configure RutokenLite -add long size_2 70
+    cpconfig -hardware media -configure RutokenLite -add long size_3 8
+    cpconfig -hardware media -configure RutokenLite -add long size_4 60
+    cpconfig -hardware media -configure RutokenLite -add long size_5 70
+    cpconfig -hardware media -configure RutokenLite -add long size_6 300
+    cpconfig -hardware media -configure RutokenLite -add long size_7 8
+
+    cpconfig -ini '\config\KeyCarriers\Rutoken' -add string DLL librdrrutoken.so
+    cpconfig -hardware media -add Rutoken -name 'Rutoken S' > /dev/null
+    cpconfig -hardware media -configure Rutoken -add hex atr 3b6f00ff00567275546f6b6e73302000009000
+    cpconfig -hardware media -configure Rutoken -add hex mask ffffffffffffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure Rutoken -add string folders "0A00\\0B00\\0C00\\0D00\\0E00\\0F00\\1000"
+    cpconfig -hardware media -configure Rutoken -add long size_1 60
+    cpconfig -hardware media -configure Rutoken -add long size_2 70
+    cpconfig -hardware media -configure Rutoken -add long size_3 8
+    cpconfig -hardware media -configure Rutoken -add long size_4 60
+    cpconfig -hardware media -configure Rutoken -add long size_5 70
+    cpconfig -hardware media -configure Rutoken -add long size_6 300
+    cpconfig -hardware media -configure Rutoken -add long size_7 8
+
+    cpconfig -ini '\config\KeyCarriers\RutokenPinpad' -add string DLL librdrrutoken.so
+    cpconfig -hardware media -add RutokenPinpad -name 'Rutoken PinPad' > /dev/null
+    cpconfig -hardware media -configure RutokenPinpad -add hex atr 3B8B01527450494E5061642020329C
+    cpconfig -hardware media -configure RutokenPinpad -add hex mask ffffffffffffffffffffffffffffff
+    cpconfig -hardware media -configure RutokenPinpad -add string folders "0A00\\0B00\\0C00\\0D00\\0E00\\0F00\\1000\\1100\\1200\\1300\\1400\\1500\\1600\\1700\\1800"
+
+    #cpconfig -hardware reader -add "Aktiv Rutoken ECP 00 00" -name 'Rutoken ECP 0'
+    #cpconfig -hardware reader -add "Aktiv Rutoken ECP 01 00" -name 'Rutoken ECP 1'
+    #cpconfig -hardware reader -add "Aktiv Rutoken lite 00 00" -name 'Rutoken lite 0'
+    #cpconfig -hardware reader -add "Aktiv Rutoken lite 01 00" -name 'Rutoken lite 1'
+    #cpconfig -hardware reader -add "Aktiv Co. Rutoken S 00 00" -name 'Rutoken S 0'
+    #cpconfig -hardware reader -add "Aktiv Co. Rutoken S 01 00" -name 'Rutoken S 1'
+    #cpconfig -hardware reader -add "Aktiv Rutoken Magistra 00 00" -name 'Rutoken Magistra 0'
+    #cpconfig -hardware reader -add "Aktiv Rutoken Magistra 01 00" -name 'Rutoken Magistra 1'
+
+    cpconfig -ini '\config\KeyCarriers\RutokenECPM' -add string DLL librdrrutoken.so
+    cpconfig -hardware media -add RutokenECPM -name 'Rutoken ECP 2151' > /dev/null
+    cpconfig -hardware media -configure RutokenECPM -add hex atr 3B18967275746F6B656E6D
+    cpconfig -hardware media -configure RutokenECPM -add hex mask ffffffffffffffffffffff
+    cpconfig -hardware media -configure RutokenECPM -add string folders "0A00\\0B00\\0C00\\0D00\\0E00\\0F00\\1000\\1100\\1200\\1300\\1400\\1500\\1600\\1700\\1800"
+    cpconfig -hardware media -configure RutokenECPM -add long size_1 60
+    cpconfig -hardware media -configure RutokenECPM -add long size_2 70
+    cpconfig -hardware media -configure RutokenECPM -add long size_3 3072
+    cpconfig -hardware media -configure RutokenECPM -add long size_4 60
+    cpconfig -hardware media -configure RutokenECPM -add long size_5 70
+    cpconfig -hardware media -configure RutokenECPM -add long size_6 300
+    cpconfig -hardware media -configure RutokenECPM -add long size_7 8
+
+    cpconfig -ini '\config\KeyCarriers\RutokenECPMSC' -add string DLL librdrrutoken.so
+    cpconfig -hardware media -add RutokenECPMSC -name 'Rutoken ECP 2151 SC' > /dev/null
+    cpconfig -hardware media -configure RutokenECPMSC -add hex atr 3B1A967275746F6B656E6D7363
+    cpconfig -hardware media -configure RutokenECPMSC -add hex mask ffffffffffffffffffffffffff
+    cpconfig -hardware media -configure RutokenECPMSC -add string folders "0A00\\0B00\\0C00\\0D00\\0E00\\0F00\\1000\\1100\\1200\\1300\\1400\\1500\\1600\\1700\\1800"
+    cpconfig -hardware media -configure RutokenECPMSC -add long size_1 60
+    cpconfig -hardware media -configure RutokenECPMSC -add long size_2 70
+    cpconfig -hardware media -configure RutokenECPMSC -add long size_3 3072
+    cpconfig -hardware media -configure RutokenECPMSC -add long size_4 60
+    cpconfig -hardware media -configure RutokenECPMSC -add long size_5 70
+    cpconfig -hardware media -configure RutokenECPMSC -add long size_6 300
+    cpconfig -hardware media -configure RutokenECPMSC -add long size_7 8
+
     # cprocsp-pki-cades-64
     /opt/cprocsp/bin/amd64/ocsputil license -s 0A202-U0030-00ECW-RRLMF-UU2WK
     /opt/cprocsp/bin/amd64/tsputil license -s TA200-G0030-00ECW-RRLNE-BTDVV

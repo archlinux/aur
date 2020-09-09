@@ -48,6 +48,8 @@ package() {
     bsdtar -xf "cprocsp-rdr-gui-gtk-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-rdr-pcsc-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-rdr-jacarta-64-5.0.0.1170-4.x86_64.rpm" -C "$pkgdir"
+    bsdtar -xf "cprocsp-rdr-rutoken-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
+    bsdtar -xf "cprocsp-cptools-gtk-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
 
     cd "$srcdir/cades_linux_amd64"
     bsdtar -xf "cprocsp-pki-cades-64-2.0.14071-1.amd64.rpm" -C "$pkgdir"
