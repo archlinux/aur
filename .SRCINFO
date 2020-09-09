@@ -1,0 +1,12 @@
+pkgbase = ttf-paragon
+	pkgdesc = Sans-serif font
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.dafont.com/paragon.font
+	arch = any
+	license = unknown
+	source = paragon.zip::https://dl.dafont.com/dl/?f=paragon
+	md5sums = 957fc12c1579d8bd4eaa6c6e32684fc3
+
+pkgname = ttf-paragon
+
