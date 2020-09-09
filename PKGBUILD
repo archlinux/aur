@@ -1,14 +1,14 @@
 # Maintainer: berberman <hatsue@typed.icu>
 
 pkgname=arch-hs-git
-pkgver=r17.2ea4a7b
-pkgrel=1
+pkgver=r35.8920302
+pkgrel=2
 pkgdesc="Generating PKGBUILD for hackage packages."
 arch=('x86_64')
 url="https://github.com/berberman/arch-hs"
 license=('MIT')
-depends=('zlib' 'gmp')
-makedepends=('stack' 'git')
+depends=('ghc-libs' 'haskell-aeson' 'haskell-req' 'haskell-hackage-db' 'haskell-megaparsec' 'haskell-algebraic-graphs' 'haskell-conduit' 'haskell-tar-conduit' 'haskell-conduit-extra' 'haskell-split' 'haskell-neat-interpolation' 'haskell-microlens' 'haskell-microlens-th' 'haskell-polysemy' 'haskell-colourista' 'haskell-optparse-applicative')
+makedepends=('ghc' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}") 
 source=(${pkgname%-git}::git+https://github.com/berberman/arch-hs.git)
@@ -21,12 +21,25 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
-    stack build
+  cd "$srcdir/${pkgname%-git}"
+  runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
+    --prefix=/usr --docdir=/usr/share/doc/$pkgname \
+    --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
+    --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
+    --ghc-option='-pie'
+
+  runhaskell Setup build
+  runhaskell Setup register --gen-script
+  runhaskell Setup unregister --gen-script
+  sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
+  sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
-    install -D -m 644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-    stack --local-bin-path "$pkgdir/usr/bin/" install
+  cd "$srcdir/${pkgname%-git}"
+  install -D -m744 register.sh "$pkgdir"/usr/share/haskell/register/$pkgname.sh
+  install -D -m744 unregister.sh "$pkgdir"/usr/share/haskell/unregister/$pkgname.sh
+  runhaskell Setup copy --destdir="$pkgdir"
+  install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 } 
