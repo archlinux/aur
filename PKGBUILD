@@ -1,8 +1,8 @@
 # Maintainer: berberman <hatsue@typed.icu>
 
 pkgname=arch-hs-git
-pkgver=r35.8920302
-pkgrel=2
+pkgver=r42.d451d34
+pkgrel=1
 pkgdesc="Generating PKGBUILD for hackage packages."
 arch=('x86_64')
 url="https://github.com/berberman/arch-hs"
@@ -33,6 +33,10 @@ build() {
   runhaskell Setup unregister --gen-script
   sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
   sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
+  
+  LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs/arch-hs --bash-completion-script "/usr/bin/arch-hs" > bash
+  LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs/arch-hs --zsh-completion-script  "/usr/bin/arch-hs" > zsh
+  LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs/arch-hs --fish-completion-script "/usr/bin/arch-hs" > fish
 }
 
 package() {
@@ -42,4 +46,8 @@ package() {
   runhaskell Setup copy --destdir="$pkgdir"
   install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
+  
+  install -D -m644 bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -D -m644 zsh  "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+  install -D -m644 bash "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
 } 
