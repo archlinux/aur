@@ -3,10 +3,10 @@ pkgname=iboview
 _realname=ibo-view
 pkgver="20150427"
 pkgrel=1
-pkgdesc="IboView is a program for analyzing molecular electronic structure, based on Intrinsic Atomic Orbitals (IAOs)."
+pkgdesc="A program for analyzing molecular electronic structure, based on Intrinsic Atomic Orbitals (IAOs)."
 arch=('x86_64')
 url="http://www.iboview.org/bin/"
-license=('MIT')
+license=('GPL')
 depends=('qt5-base' 'openblas' 'boost')
 provides=('iboview')
 options=('!strip' '!emptydirs')
@@ -18,7 +18,7 @@ build() {
   cd "${_realname}.$pkgver"
   make distclean
   qmake main.pro
-  make -j ${nproc}
+  make
 }
 
 package() {
