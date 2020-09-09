@@ -21,6 +21,7 @@ build() {
 }
 
 check() {
+  cd $pkgname
   cargo test --release --target-dir=target
 }
 
