@@ -4,7 +4,7 @@
 _gemname=travis
 pkgname=ruby-$_gemname
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI and Ruby client library for Travis CI'
 arch=(any)
 url='https://github.com/travis-ci/travis.rb'
@@ -20,5 +20,6 @@ package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  find "$pkgdir" -name '*.gemspec' -type f -exec sed -i 's/\(launchy.*\), "< 2.5.0"/\1/' '{}' \;
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
