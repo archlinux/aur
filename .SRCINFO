@@ -1,14 +1,21 @@
 pkgbase = sane-fmt-bin
 	pkgdesc = Opinionated code formatter for TypeScript and JavaScript
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 0
 	url = https://github.com/sane-fmt/sane-fmt
 	arch = x86_64
 	license = MIT
+	provides = sane-fmt
 	conflicts = sane-fmt
-	source = sane-fmt-939e73821dd0083f7593484fe970b0909a5ad962::https://github.com/sane-fmt/sane-fmt/releases/download/0.5.0/sane-fmt-x86_64-unknown-linux-gnu
+	source = sane-fmt-c6bed37675583566654f484a4ac5c23831eb135c::https://github.com/sane-fmt/sane-fmt/releases/download/0.5.1/sane-fmt-x86_64-unknown-linux-gnu
+	source = completion.0.5.1.bash::https://github.com/sane-fmt/sane-fmt/releases/download/completion.bash
+	source = completion.0.5.1.elv::https://github.com/sane-fmt/sane-fmt/releases/download/completion.elv
+	source = completion.0.5.1.fish::https://github.com/sane-fmt/sane-fmt/releases/download/completion.fish
 	source = https://raw.githubusercontent.com/sane-fmt/sane-fmt/master/LICENSE.md
-	sha1sums = 939e73821dd0083f7593484fe970b0909a5ad962
+	sha1sums = c6bed37675583566654f484a4ac5c23831eb135c
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = sane-fmt-bin
