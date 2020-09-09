@@ -12,7 +12,6 @@
 +	"Noto Sans CJK JP:size=14",
 +	"Noto Sans CJK KR:size=14",
 +	"Noto Color Emoji:size=14"
-+	// "sans-serif:size=14"
  };
  static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
  static const char *colors[SchemeLast][2] = {
