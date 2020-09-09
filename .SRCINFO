@@ -1,6 +1,6 @@
 pkgbase = pyspread
 	pkgdesc = Python based non-traditional spreadsheet application
-	pkgver = 1.99.2
+	pkgver = 1.99.4
 	pkgrel = 1
 	url = https://pyspread.gitlab.io/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = pyspread
 	optdepends = python-pyenchant
 	optdepends = python-pip
 	options = !emptydirs
-	source = https://gitlab.com/pyspread/pyspread/-/archive/v1.99.2/pyspread-v1.99.2.tar.gz
-	sha512sums = 9261cf96f19d92a5743c09854236ccec5e1b103e22b78143ddee8fce0d25f793b86e7cc3775f13c5a43cf8dd4e3f434461677b6da5311fb439067d63ce6ac968
+	source = https://gitlab.com/pyspread/pyspread/-/archive/v1.99.4/pyspread-v1.99.4.tar.gz
+	sha512sums = 3189c9c664a112f0b1ccc96982d8f990c66cab16f1dff9abb5d951fe611de177f8ccbfabcb67c838b4b75548dfc9bc90d91429fcb4a1c340c06dbca5e5db8f83
 
 pkgname = pyspread
 
