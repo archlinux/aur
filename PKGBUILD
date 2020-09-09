@@ -15,12 +15,12 @@
 #   - deJaVu and GhostScript font directories are the default ones
 #   - Windows font directory is set according to a Wiki example
 
-_commit='6779a16b3d3cff3d3b78244c3ff98a3dfe3bb9b6'
+_commit='84a16a9da0ccee98032874201202545a23ca53b2'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.0.10.28
+pkgver=7.0.10.29
 pkgrel=1
 arch=('x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all features)"
@@ -40,20 +40,15 @@ makedepends=(
         'brunsli'
 )
 source=("git+https://github.com/ImageMagick/ImageMagick.git#commit=${_commit}"
-        'arch-fonts.diff'
-        'imagemagick-inkscape-1.0.patch')
+        'arch-fonts.diff')
 sha256sums=('SKIP'
-            'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73'
-            'dd856b0d7b5b98535d2bc61dfa995f4162677486c1eac14b384668a28a60af30')
+            'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 
 prepare() {
     mkdir -p ImageMagick/docpkg/usr/share
     
     # fix up typemaps to match Arch Linux packages, where possible
     patch -d ImageMagick -Np1 -i "${srcdir}/arch-fonts.diff"
-    
-    # use correct parameter for inkscape 1.0
-    patch -d ImageMagick -Np1 -i "${srcdir}/imagemagick-inkscape-1.0.patch"
     
     # fix for 'sh: gitversion.sh: command not found' during autoreconf
     sed -i 's|(gitversion|(./gitversion|' ImageMagick/configure.ac
