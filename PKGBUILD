@@ -14,7 +14,7 @@ makedepends=(extra-cmake-modules-git git python)
 groups=(kf5)
 conflicts=(kdewebkit)
 provides=(kdewebkit)
-source=("https://invent.kde.org/frameworks/$_name.git")
+source=("git+https://invent.kde.org/frameworks/$_name.git")
 md5sums=('SKIP')
 
 pkgver() {
