@@ -1,11 +1,11 @@
 # Maintainer: Vidar Magnusson <vprint at vidarmagnusson dot com>
 
 pkgname=printit
-pkgver=0.0.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Utility for printing at Chalmers University"
 arch=("any")
-url="https://github.com/viddem/vprint"
+url="https://github.com/viddem/$pkgname"
 makedepends=("git")
 depends=("python>=3" "python-requests" "python-setuptools" "python-pip")
 source=("$pkgname-$pkgver::git+$url.git")
