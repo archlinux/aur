@@ -1,0 +1,17 @@
+pkgbase = ymuse-git
+	pkgdesc = Easy, functional, and snappy client for Music Player Daemon
+	pkgver = v0.15.r1.g67b00df
+	pkgrel = 1
+	url = https://yktoo.com/en/software/ymuse/
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = gtk3
+	optdepends = mpd
+	source = git+https://github.com/yktoo/ymuse.git
+	source = ymuse.desktop
+	sha512sums = SKIP
+	sha512sums = dbf124b2be06036faecb0a5af76b6b44bfdfcd7461c69807a6fcfb3008131072412387e888d9c6777ef9549aa2ae1fafb296d904a9b525dff4b09cc36400a6ff
+
+pkgname = ymuse-git
+

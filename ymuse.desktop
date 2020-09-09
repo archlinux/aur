@@ -1,0 +1,15 @@
+[Desktop Entry]
+Categories=AudioVideo;
+Comment=Music Player Daemon client application for GTK.
+Comment[nl]=Music Player Daemon cliënt applicatie voor GTK.
+Comment[ru]=Приложение-клиент для Music Player Daemon и библиотеки GTK.
+Exec=ymuse
+Hidden=False
+Icon=ymuse
+Name=Ymuse
+GenericName=MPD client
+GenericName[nl]=MPD-cliënt
+GenericName[ru]=MPD-клиент
+Terminal=false
+Type=Application
+Keywords=sound;audio;MPD;GTK;Gnome;
