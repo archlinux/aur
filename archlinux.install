@@ -1,0 +1,11 @@
+post_install() {
+	printf "\n    This is just a metapkg. You can remove it.\n"
+	printf "    Systemd-homed support was added to Arch pambase\n"
+	printf "    Please make sure that there are no .pacnew files in /etc/pam.d\n"
+	printf "    BEFORE YOU REBOOT/SHUT DOWN!\n"
+	printf "    you can check with: pacdiff -o | grep \"/etc/pam.d\"\n\n"
+}
+
+post_upgrade() {
+	post_install
+}
