@@ -1,0 +1,10 @@
+
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = pandoc
+
+[Action]
+Description = Updating pandoc bash completion
+When = PostTransaction
+Exec = /bin/sh -c "pandoc --bash-completion > /etc/bash_completion.d/pandoc-completion.bash"

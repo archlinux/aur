@@ -1,0 +1,13 @@
+pkgbase = pandoc-completion
+	pkgdesc = Bash completion for pandoc.
+	pkgver = 2.10.1
+	pkgrel = 1
+	url = https://pandoc.org
+	arch = x86_64
+	license = GPL
+	depends = pandoc
+	source = pandoc-completion.hook
+	sha256sums = 6f6ca34a91dbf61c74dd1c4ac335ac0c654009536391ee005dd3fea0370afee0
+
+pkgname = pandoc-completion
+
