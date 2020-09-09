@@ -15,5 +15,5 @@ md5sums=('SKIP')
 
 package() {
     cd "${pkgname%-git}"
-    python3 setup.py install --optimize="1" --root="$pkgdir"
+    python3 setup.py --optimize="1" --root="$pkgdir"
 }
