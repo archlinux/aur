@@ -4,7 +4,7 @@ pkgname=descartes-breeze
 pkgver=1.2
 pkgrel=1
 pkgdesc="A smooth semi-full-flat theme based on KDE-Next with many improvements"
-url=("http://kde-look.org/content/show.php/Descartes+Breeze?content=165578")
+url=("https://store.kde.org/p/1005469")
 arch=('any')
 license=('GPL')
 depends=('kdebase-workspace')
