@@ -60,7 +60,7 @@ _pick() {
 }
 
 package_pulseaudio-airplay() {
-  provides=('pulseaudio=13.99.1')
+  provides=(pulseaudio)
   conflicts=(pulseaudio)
   depends=("libpulse-airplay=$pkgver-$pkgrel" rtkit libltdl speexdsp tdb orc libsoxr
            webrtc-audio-processing)
@@ -134,11 +134,10 @@ package_pulseaudio-airplay() {
 }
 
 package_libpulse-airplay() {
-  provides=('libpulse=13.99.1')
   conflicts=(libpulse)
   pkgdesc="$pkgdesc (client library)"
   depends=(dbus libasyncns libcap libxtst libsm libsndfile systemd)
-  provides=(libpulse{,-simple,-mainloop-glib}.so)
+  provides=(libpulse libpulse{,-simple,-mainloop-glib}.so)
   license=(LGPL)
   backup=(etc/pulse/client.conf)
 
@@ -146,7 +145,7 @@ package_libpulse-airplay() {
 }
 
 package_pulseaudio-airplay-zeroconf(){
-  provides=('pulseaudio-zeroconf=13.99.1')
+  provides=(pulseaudio-zeroconf)
   conflicts=(pulseaudio-zeroconf)
   pkgdesc="Zeroconf support for PulseAudio"
   depends=("pulseaudio-airplay=$pkgver-$pkgrel" avahi openssl)
@@ -155,7 +154,7 @@ package_pulseaudio-airplay-zeroconf(){
 }
 
 package_pulseaudio-airplay-lirc(){
-  provides=('pulseaudio-lirc=13.99.1')
+  provides=(pulseaudio-lirc)
   conflicts=(pulseaudio-lirc)
   pkgdesc="IR (lirc) support for PulseAudio"
   depends=("pulseaudio-airplay=$pkgver-$pkgrel" lirc)
@@ -164,7 +163,7 @@ package_pulseaudio-airplay-lirc(){
 }
 
 package_pulseaudio-airplay-jack(){
-  provides=('pulseaudio-jack=13.99.1')
+  provides=(pulseaudio-jack)
   conflicts=(pulseaudio-jack)
   pkgdesc="Jack support for PulseAudio"
   depends=("pulseaudio-airplay=$pkgver-$pkgrel" jack)
@@ -173,7 +172,7 @@ package_pulseaudio-airplay-jack(){
 }
 
 package_pulseaudio-airplay-bluetooth(){
-  provides=('pulseaudio-bluetooth=13.99.1')
+  provides=(pulseaudio-bluetooth)
   conflicts=(pulseaudio-bluetooth)
   pkgdesc="Bluetooth support for PulseAudio"
   depends=("pulseaudio-airplay=$pkgver-$pkgrel" bluez bluez-libs sbc)
@@ -182,7 +181,7 @@ package_pulseaudio-airplay-bluetooth(){
 }
 
 package_pulseaudio-airplay-equalizer(){
-  provides=('pulseaudio-equalizer=13.99.1')
+  provides=(pulseaudio-equalizer)
   conflicts=(pulseaudio-equalizer)
   pkgdesc="Equalizer for PulseAudio"
   depends=("pulseaudio-airplay=$pkgver-$pkgrel" python-{pyqt5,dbus,sip} fftw)

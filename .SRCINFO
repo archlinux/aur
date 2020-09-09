@@ -48,7 +48,7 @@ pkgname = pulseaudio-airplay
 	depends = libsoxr
 	depends = webrtc-audio-processing
 	optdepends = pulseaudio-alsa: ALSA configuration (recommended)
-	provides = pulseaudio=13.99.1
+	provides = pulseaudio
 	conflicts = pulseaudio
 	replaces = pulseaudio-xen<=9.0
 	replaces = pulseaudio-gconf<=11.1
@@ -66,6 +66,7 @@ pkgname = libpulse-airplay
 	depends = libsm
 	depends = libsndfile
 	depends = systemd
+	provides = libpulse
 	provides = libpulse.so
 	provides = libpulse-simple.so
 	provides = libpulse-mainloop-glib.so
@@ -77,21 +78,21 @@ pkgname = pulseaudio-airplay-zeroconf
 	depends = pulseaudio-airplay=13.99.1+104+gcc93eb360-1
 	depends = avahi
 	depends = openssl
-	provides = pulseaudio-zeroconf=13.99.1
+	provides = pulseaudio-zeroconf
 	conflicts = pulseaudio-zeroconf
 
 pkgname = pulseaudio-airplay-lirc
 	pkgdesc = IR (lirc) support for PulseAudio
 	depends = pulseaudio-airplay=13.99.1+104+gcc93eb360-1
 	depends = lirc
-	provides = pulseaudio-lirc=13.99.1
+	provides = pulseaudio-lirc
 	conflicts = pulseaudio-lirc
 
 pkgname = pulseaudio-airplay-jack
 	pkgdesc = Jack support for PulseAudio
 	depends = pulseaudio-airplay=13.99.1+104+gcc93eb360-1
 	depends = jack
-	provides = pulseaudio-jack=13.99.1
+	provides = pulseaudio-jack
 	conflicts = pulseaudio-jack
 
 pkgname = pulseaudio-airplay-bluetooth
@@ -100,7 +101,7 @@ pkgname = pulseaudio-airplay-bluetooth
 	depends = bluez
 	depends = bluez-libs
 	depends = sbc
-	provides = pulseaudio-bluetooth=13.99.1
+	provides = pulseaudio-bluetooth
 	conflicts = pulseaudio-bluetooth
 
 pkgname = pulseaudio-airplay-equalizer
@@ -110,6 +111,6 @@ pkgname = pulseaudio-airplay-equalizer
 	depends = python-dbus
 	depends = python-sip
 	depends = fftw
-	provides = pulseaudio-equalizer=13.99.1
+	provides = pulseaudio-equalizer
 	conflicts = pulseaudio-equalizer
 
