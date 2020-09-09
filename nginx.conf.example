@@ -4,10 +4,28 @@ server {
         root    /usr/share/webapps/dolibarr/htdocs;
         index   index.php;
 
-        location ~ \.php$ {
-                try_files      $uri =404;
+        location ~ [^/]\.php(/|$) {
+                fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+                if (!-f $document_root$fastcgi_script_name) {
+                        return 404;
+                }
+
+                # Mitigate https://httpoxy.org/ vulnerabilities
+                fastcgi_param HTTP_PROXY "";
+
                 fastcgi_pass   unix:/run/php-fpm/php-fpm.sock;
                 fastcgi_index  index.php;
                 include        fastcgi.conf;
+                fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+
+                # Dolibarr Rest API path support
+                fastcgi_param  PATH_INFO       $fastcgi_path_info;
+                fastcgi_param  PATH_TRANSLATED $document_root$fastcgi_script_name;
+                fastcgi_read_timeout 300;
+        }
+
+        # Pretty REST API URL
+        location ~ ^/api/(?!(index\.php))(.*) {
+                try_files $uri /api/index.php/$2?$query_string;
         }
 }

@@ -1,7 +1,7 @@
 # Maintainer: Charles Brunet <charles AT cbrunet DOT net>
 # Contributor: Okki <okki666@free.fr>
 pkgname=dolibarr
-pkgver=11.0.4
+pkgver=12.0.2
 pkgrel=1
 pkgdesc="ERP/CRM for small and medium companies"
 arch=('any')
@@ -11,14 +11,17 @@ depends=('php')
 optdepends=('mariadb-clients: MariaDB backend')
 optdepends=('postgresql: postgresql backend')
 optdepends=('php-gd: To display graphs')
+optdepends=('php-intl: Languages support')
+optdepends=('php-xsl: xlsx export')
+optdepends=('php-tcpdf: pdf export')
 options=('!strip' 'emptydirs')
 backup=("etc/webapps/$pkgname/conf.php")
 install=dolibarr.install
 source=("http://downloads.sourceforge.net/project/$pkgname/Dolibarr%20ERP-CRM/$pkgver/$pkgname-$pkgver.tgz"
         nginx.conf.example
         apache.conf.example)
-md5sums=('5fb320b940fa17f68e8597708940c80c'
-         '7ba6f2def8caabbd8321d91067c01b16'
+md5sums=('cb5f396eca583c532e4f4df668075f55'
+         '4b36b8318edad5fe10fd9ef5ade92ed3'
          'd468572a7aa663d958c302b3e15147f1')
 
 prepare() {
