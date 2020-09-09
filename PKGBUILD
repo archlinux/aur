@@ -2,7 +2,7 @@
 
 pkgname=supercollider-git
 _name="supercollider"
-pkgver=3.11.0.r371.g504ce0537b
+pkgver=3.11.1.r395.gcd3b936457
 pkgrel=1
 pkgdesc="Environment and programming language for real time audio synthesis and algorithmic composition"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -10,8 +10,8 @@ url="https://supercollider.github.io/"
 license=('GPL3')
 depends=('gcc-libs' 'glibc'  'libx11' 'qt5-base' 'qt5-svg' 'qt5-webengine'
 'qt5-websockets')
-makedepends=('alsa-lib' 'avahi' 'boost' 'cmake' 'emacs' 'fftw' 'git' 'jack'
-'libsndfile' 'abletonlink' 'qt5-tools' 'readline' 'systemd-libs' 'yaml-cpp')
+makedepends=('abletonlink' 'alsa-lib' 'avahi' 'boost' 'cmake' 'emacs' 'fftw'
+'git' 'jack' 'libsndfile' 'qt5-tools' 'readline' 'systemd-libs' 'yaml-cpp')
 checkdepends=('xorg-server-xvfb')
 optdepends=('emacs: emacs interface'
             'gedit: gedit interface'
@@ -86,6 +86,8 @@ build() {
                  -DSC_IDE=OFF"
     ;;
     *)
+    export CFLAGS+=" -DNDEBUG"
+    export CXXFLAGS+=" -DNDEBUG"
     cmake -DCMAKE_INSTALL_PREFIX='/usr' \
           -DCMAKE_BUILD_TYPE='None' \
           -DFORTIFY=ON \
@@ -104,7 +106,7 @@ build() {
 
 check() {
   cd "${_name}"
-  xvfb-run make test VERBOSE=1 ARGS="-V" -C build || warning "Known failing tests: https://github.com/supercollider/supercollider/issues/3555"
+  xvfb-run make test ARGS="-VV -d -j1" -C build
 }
 
 
