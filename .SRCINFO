@@ -2,14 +2,14 @@ pkgbase = kurcoder-git
 	pkgdesc = Toolkit for encoding, decoding, checksums, hex conversions & IP calculations
 	pkgver = 0.0.1
 	pkgrel = 1
-	url = https://github.com/0xkurome/kurcoder.git
+	url = https://github.com/0xkurome/kurcoder
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python3
 	depends = python-pip
-	source = git+https://github.com/0xkurome/kurcoder.git
+	source = git+https://github.com/0xkurome/kurcoder
 	md5sums = SKIP
 
 pkgname = kurcoder-git
