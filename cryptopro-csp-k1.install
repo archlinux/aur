@@ -462,4 +462,6 @@ post_install() {
         fi
     done
 
+    echo Enable pcscd daemon for smart card support (for example etoken or rutoken):
+    echo systemctl enable --now pcscd
 }
