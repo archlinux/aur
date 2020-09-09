@@ -1,6 +1,6 @@
 # PKGBUILD created by using cargo-aur
 pkgname='auswahl-git'
-pkgver=0.1.1.7.g913e6f3
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A tool to create dmenu or rofi menus using a simple declaration syntax.'
 arch=('any')
@@ -27,6 +27,6 @@ check() {
 package() {
   cd $pkgname
   install -Dm 755 target/release/auswahl -t "${pkgdir}/usr/bin"
-  # install -Dm 755 $pkgname/LICENSE "${pkgdir}/usr/share/licenses/auswahl"
+  install -Dm 755 $pkgname/LICENSE "${pkgdir}/usr/share/licenses/auswahl"
 }
 
