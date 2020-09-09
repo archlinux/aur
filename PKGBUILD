@@ -12,7 +12,7 @@ depends=('libxml2' 'libusb' 'zlib' 'qt5-base')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("$pkgname::git://github.com/soarqin/${_pkgname}.git")
+source=("$pkgname::git+https://github.com/soarqin/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
