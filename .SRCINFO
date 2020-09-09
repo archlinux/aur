@@ -10,10 +10,10 @@ pkgbase = ipmiview
 	depends = java-runtime=8
 	backup = account.properties
 	backup = email.properties
-	backup = IPMIView.properties
-	backup = timeout.properties
 	backup = iKVM.properties
+	backup = IPMIView.properties
 	backup = stunnel.properties
+	backup = timeout.properties
 	source = https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_2.17.0_build.200505_bundleJRE_Linux_x64.tar.gz
 	source = ipmiview.desktop
 	sha512sums = 17ed72e802fb0a55c140f98262575385ede2d490484fe926bb7ff19f34e5a376f2d21025e99318d2001b042487729dc8b07b38cca4bf62df6e04d7df0d1d3091
