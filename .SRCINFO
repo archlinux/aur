@@ -1,6 +1,6 @@
 pkgbase = wtftw-git
-	pkgdesc = Window Tiling For The Win. A tiling window manager written in Rust
-	pkgver = 1.2.r57.gebf5f9f
+	pkgdesc = Window Tiling For The Win. A tiling window manager written in Rust (git)
+	pkgver = r347.14f3d1e
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Kintaro/wtftw
@@ -10,12 +10,11 @@ pkgbase = wtftw-git
 	license = custom
 	makedepends = cargo
 	makedepends = git
-	depends = rust
 	depends = xorg-xmessage
-	provides = wtftw
+	depends = libxinerama
 	conflicts = wtftw
-	source = git+https://github.com/Kintaro/wtftw.git
-	source = LICENSE
+	source = git+https://github.com/Kintaro/wtftw
+	source = wtftw-r347.14f3d1e-LICENSE::https://github.com/Kintaro/wtftw/raw/master/LICENSE
 	sha256sums = SKIP
 	sha256sums = d2fff178c328ba155cf3eddcdf7533c9aca0b415a4f748a251ea1c32656700a1
 
