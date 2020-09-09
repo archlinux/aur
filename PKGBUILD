@@ -1,4 +1,5 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Contributor: Vlad M. <vlad@archlinux.net>
 # https://github.com/orhun/pkgbuilds
 
 pkgname=wtftw
