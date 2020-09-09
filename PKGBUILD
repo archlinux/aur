@@ -3,7 +3,7 @@
 
 pkgname=arkade-bin
 _pkgname=arkade
-pkgver=0.6.10
+pkgver=0.6.11
 pkgrel=1
 epoch=1
 pkgdesc='Your one-stop CLI for Kubernetes. provides a simple CLI with strongly-typed flags to install charts and apps to your cluster in one command.'
@@ -25,7 +25,7 @@ provides=('arkade')
 _OWNER=alexellis
 
 case "${CARCH}" in
-  x86_64)    _CARCH=''        && sha256sums=('a73bdf6ce6eaffd78823f3f785fa95104bf793fe65dfb249c5db5059d6dc17d0');;
+  x86_64)    _CARCH=''        && sha256sums=('8f02dbd735f7e0a7e70931315446fd159366fb5caaa654866721e1718cf6619e');;
   aarch64)   _CARCH='-arm64'  && sha256sums=('SKIP');;
   arm*)      _CARCH='-armhf'  && sha256sums=('SKIP');;
 esac
@@ -47,4 +47,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('cc0043a163aa6125c439c00e8cae6c8aea017c349fecfa5f790cba5a46edc478')
