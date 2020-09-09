@@ -1,14 +1,14 @@
 pkgbase = ruby-net-ldap
 	pkgdesc = Pure Ruby LDAP library
-	pkgver = 0.16.2
+	pkgver = 0.16.3
 	pkgrel = 1
 	url = https://rubygems.org/gems/net-ldap
 	arch = any
 	license = GPL
 	depends = ruby
-	noextract = net-ldap-0.16.2.gem
-	source = https://rubygems.org/downloads/net-ldap-0.16.2.gem
-	sha256sums = af9f05383fedd4eb081a644de21377462d86c78bfd583a61313865277784eeef
+	noextract = net-ldap-0.16.3.gem
+	source = https://rubygems.org/downloads/net-ldap-0.16.3.gem
+	sha256sums = db464d2f8236e5f8546c07abb51b08e0a62b77136b1c7f91fa0ec5fe2336908e
 
 pkgname = ruby-net-ldap
 
