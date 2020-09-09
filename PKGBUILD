@@ -36,6 +36,7 @@ prepare() {
 }
 
 build() {
+	export GOPATH=$srcdir/go
 
 	cd $GOPATH/src/github.com/pritunl/$_pkgname
 	go install \
@@ -46,6 +47,8 @@ build() {
 }
 
 package() {
+	export GOPATH=$srcdir/go
+
 	cd "$srcdir/$_pkgname"
 	install -Dm755 $GOPATH/bin/${_pkgname} $pkgdir/usr/bin/${_pkgname}
 }
