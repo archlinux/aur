@@ -28,4 +28,3 @@ depends=(
 	'coretime'
 	'coreuniverse')
 optdepends=('coretoppings: additional features and plugins')
-
