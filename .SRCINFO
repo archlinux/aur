@@ -9,7 +9,7 @@ pkgbase = kermit
 	depends = gtk3>=3.18.9
 	depends = vte3>=0.42.5
 	source = kermit-3.0.tar.gz::https://github.com/orhun/kermit/archive/3.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = b6f629a45ceee1b081d4cbfd28c525e687e621ddbbd3313c0ad8230f768a9c37
 
 pkgname = kermit
 

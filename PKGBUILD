@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtk3>=3.18.9' 'vte3>=0.42.5')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/orhun/kermit/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b6f629a45ceee1b081d4cbfd28c525e687e621ddbbd3313c0ad8230f768a9c37')
 
 build() {
   cd $pkgname-$pkgver
