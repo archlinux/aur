@@ -1,6 +1,6 @@
 pkgbase = lbry-sync-ytdl
 	pkgdesc = Sync content to LBRY using youtube-dl
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://gitlab.com/gardenappl/lbry-sync-ytdl
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = lbry-sync-ytdl
 	depends = curl
 	depends = lbrynet
 	depends = youtube-dl
-	source = https://gitlab.com/gardenappl/lbry-sync-ytdl/-/archive/v1.1.1/lbry-sync-ytdl-v1.1.1.tar.gz
-	b2sums = f0b288721b2f2603a2e22d06dc8eb4534bdbed28b5a99466e086fffdc1b1840996ee35af7e2332e0667e2d75958e2047cd6686e0c060598c361a82b73d6f61b2
+	source = https://gitlab.com/gardenappl/lbry-sync-ytdl/-/archive/v1.1.2/lbry-sync-ytdl-v1.1.2.tar.gz
+	b2sums = 84b9b60676630a9dbff752d5dd00c6300993855ba8f97697e8549ec36427a27d883953ac08a613b4b6b4bff1979f6d87902627dde91e0f7437e52ab6a8a20a7c
 
 pkgname = lbry-sync-ytdl
 
