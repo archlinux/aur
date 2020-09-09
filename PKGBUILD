@@ -25,7 +25,7 @@
 
 pkgname=intel-vtune-profiler-standalone
 pkgver=2020.u2
-pkgrel=1
+pkgrel=2
 pkgdesc="The standalone version of Intel VTune Profiler"
 arch=('x86_64')
 url="https://software.intel.com/content/www/us/en/develop/tools/vtune-profiler.html"
@@ -43,7 +43,7 @@ source=(
 sha256sums=(
     '4d924a27a2e06ce5c79f40a2ad34a1b49ef164b6b6b241434887fcb39b0e2f3e'
     '457e2d0afcf238b335abd0bc582fc6b132cb9697567649f7fede6fb2de756575'
-    '7ec3336a7bc9b6a81de2f6f8ce94f06881eca0fcaa4609c593aaab0d769bb167'
+    'ac1d13715910633c13e5d50ab4ab84524fabf128663c52b92c975c80956d3fc6'
     'e13bba8c55cf874988dbb541d8a72f53dd0942fca48f49bfbe9d82174bb73808'
 )
 
