@@ -1,54 +1,47 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gitin
-pkgver=0.2.3
-_lg2ver=0.27.8
-pkgrel=3
+pkgver=0.2.3+10+gbada3e8
+pkgrel=1
 pkgdesc="Commit/branch/workdir explorer for git"
 arch=('x86_64')
 url="https://github.com/isacikgoz/gitin"
 license=('BSD')
-depends=("libgit2=1:$_lg2ver" "libgit2-glib=$_lg2ver")
+depends=('libssh2')
 makedepends=('go' 'git' 'cmake')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/isacikgoz/$pkgname/archive/v$pkgver.tar.gz"
-        "libgit2-$_lg2ver.tar.gz::https://github.com/libgit2/libgit2/archive/v$_lg2ver.tar.gz")
-sha256sums=('65bc6f56ef9c8527763ef72d4a334238dbcb60ce2962c319af169236f136b39e'
-            '8313873d49dc01e8b880ec334d7430ae67496a89aaa8c6e7bbd3affb47a00c76')
+#source=("$pkgname-$pkgname.tar.gz::https://github.com/isacikgoz/$pkgname/archive/v$pkgver.tar.gz")
+_commit='bada3e83dd9de92df68e5f05ebd8e4b5ada35830'
+source=("git+https://github.com/isacikgoz/gitin.git#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/$pkgname"
+	git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
 	export GOPATH="$srcdir/gopath"
 	go clean -modcache
 
-	mkdir -p "$GOPATH/src"
-	ln -s "$srcdir/libgit2-$_lg2ver" "$GOPATH/src/libgit2-$_lg2ver"
-	ln -s "$srcdir/$pkgname-$pkgver" "$GOPATH/src/$pkgname-$pkgver"
-
-	cd "$GOPATH/src/libgit2-$_lg2ver"
-	git submodule update --init
+	if [ -d "$srcdir/git2go" ]; then
+		rm -rf "$srcdir/git2go"
+	fi
 }
 
 build() {
-	cd "$GOPATH/src/libgit2-$_lg2ver"
-	cmake -B build -S . \
-		-DTHREADSAFE=ON \
-		-DBUILD_CLAR=OFF \
-		-Wno-dev
-	make -C build
-
-	cd "$GOPATH/src/$pkgname-$pkgver"
-	go build \
-		-trimpath \
-		-buildmode=pie \
-		-mod=readonly \
-		-modcacherw \
-		-ldflags "-extldflags \"${LDFLAGS}\"" \
-		-v -o "$pkgname"
+	cd "$srcdir/$pkgname"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	make
 
 	# Clean mod cache for makepkg -C
 	go clean -modcache
 }
 
 package() {
-	cd "$GOPATH/src/$pkgname-$pkgver"
+	cd "$srcdir/$pkgname"
 	install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
