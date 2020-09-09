@@ -10,7 +10,8 @@ pkgdesc="Python based non-traditional spreadsheet application"
 arch=('any')
 url="https://pyspread.gitlab.io/"
 license=('GPL3')
-depends=('python-numpy>=1.1.0'
+depends=('python-setuptools'
+        'python-numpy>=1.1.0'
         'python-pyqt5'
         'qt5-svg')
 optdepends=('python-matplotlib'

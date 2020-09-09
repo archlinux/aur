@@ -5,6 +5,7 @@ pkgbase = pyspread
 	url = https://pyspread.gitlab.io/
 	arch = any
 	license = GPL3
+	depends = python-setuptools
 	depends = python-numpy>=1.1.0
 	depends = python-pyqt5
 	depends = qt5-svg
