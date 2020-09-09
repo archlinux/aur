@@ -2,15 +2,15 @@
 pkgname='citra-nightly'
 provides=('citra' 'citra-qt' 'citra-room')
 conflicts=('citra-git' 'citra-canary-git' 'citra-canary-bin' 'citra-nightly-bin' 'citra-nightly-git')
-pkgver=1601
-pkgrel=2
+pkgver=1602
+pkgrel=1
 pkgdesc="Citra emulator 'nightly' branch binaries for Arch Linux"
 arch=('any')
 url="https://github.com/linux-gamers/arch-citra-nightly"
 license=('GNU General Public License v2.0')
 depends=('sdl2' 'qt5-base' 'qt5-multimedia' 'qt5-tools' 'libxkbcommon-x11' 'libfdk-aac' 'libzip' 'ffmpeg')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('62e64091ef437fbc60fd36724379657865fbaa667c15fc3e69296ffbeac429a80a4e93774fe88d5b4420d19356cb2cc1494552e0dd8c5cade1cb442c983d720a')
+sha512sums=('d8f16888e6faffb09733ac17f281a7c63fc2fd27864858d0f0ff21420036e3ed2e15a7d69357094b195c5337be9c1ac5389f0e036b08d6c877a586db21c17c16')
 
 package() {
   cd "${srcdir}/arch-${pkgname}-${pkgver}"
