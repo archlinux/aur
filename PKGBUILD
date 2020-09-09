@@ -9,6 +9,7 @@ url="https://git.carajo.no/bubbles/tree/README.md"
 license=('GPL')
 depends=('libx11' 'libxft')
 optdepends=('libxinerama' 'libxfixes')
+makedepends=('git')
 provides=("${pkgname%-*}")
 source=('git+https://git.carajo.no/bubbles')
 md5sums=('SKIP')
@@ -26,5 +27,5 @@ build() {
 
 package() {
   cd ${pkgname%-*}
-  make DESTDIR="$pkgdir" PREFIX="/usr" install
+  DESTDIR="$pkgdir" PREFIX="/usr" make install
 }
