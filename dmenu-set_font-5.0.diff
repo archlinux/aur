@@ -1,6 +1,6 @@
 --- a/config.def.h	2020-09-10 01:50:18.656682943 +0800
 +++ b/config.def.h	2020-09-10 02:01:47.980020616 +0800
-@@ -4,7 +4,14 @@
+@@ -4,7 +4,13 @@
  static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
  /* -fn option overrides fonts[0]; default X11 font or font set */
  static const char *fonts[] = {
