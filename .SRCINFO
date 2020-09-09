@@ -1,12 +1,11 @@
 pkgbase = libpeas-git
-	pkgdesc = A GObject-based plugins engine
-	pkgver = 1.25.3.r11.g552fee4
+	pkgdesc = A GObject plugins library
+	pkgver = 1.26.0+5+g53a4f19
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/Libpeas
-	install = libpeas.install
-	arch = i686
 	arch = x86_64
 	license = GPL2
+	checkdepends = xorg-server-xvfb
 	makedepends = gtk-doc
 	makedepends = python-gobject
 	makedepends = glade
@@ -17,11 +16,12 @@ pkgbase = libpeas-git
 	depends = gtk3
 	depends = gobject-introspection-runtime
 	optdepends = python-gobject: Python loader
-	provides = libpeas=1.14.1
+	provides = libpeas
+	provides = libpeas-1.0.so
+	provides = libpeas-gtk-1.0.so
 	conflicts = libpeas
-	options = !libtool
 	source = git+https://gitlab.gnome.org/GNOME/libpeas.git
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = libpeas-git
 

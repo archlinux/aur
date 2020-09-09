@@ -1,42 +1,39 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
-# Contributor: Yosef Or Boczko <yoseforb@gnome.org>
-
+pkgname=libpeas-git
 _pkgname=libpeas
-pkgname=$_pkgname-git
-pkgver=1.25.3.r11.g552fee4
+pkgver=1.26.0+5+g53a4f19
 pkgrel=1
-_realver=1.14.1
-pkgdesc="A GObject-based plugins engine"
-arch=(i686 x86_64)
+pkgdesc="A GObject plugins library"
+arch=(x86_64)
 url="https://wiki.gnome.org/Projects/Libpeas"
 license=(GPL2)
 depends=(gtk3 gobject-introspection-runtime)
 makedepends=(gtk-doc python-gobject glade gobject-introspection git meson vala)
+checkdepends=(xorg-server-xvfb)
 optdepends=('python-gobject: Python loader')
-options=('!libtool')
-install=$_pkgname.install
-provides=("${_pkgname}=${_realver}")
-conflicts=("${_pkgname}")
-replace=("${_pkgname}")
-source=('git+https://gitlab.gnome.org/GNOME/libpeas.git')
-sha256sums=('SKIP')
+provides=(libpeas libpeas{,-gtk}-1.0.so)
+conflicts=(libpeas)
+source=("git+https://gitlab.gnome.org/GNOME/libpeas.git")
+sha512sums=('SKIP')
+
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --always | sed -E 's/^libpeas.//;s/_/./g;s/([^-]*-g)/r\1/;s|-|.|g'
+  cd $_pkgname
+  git describe --tags | sed 's/^libpeas-//;s/-/+/g'
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  
-  mkdir -p build
-  cd build
+  arch-meson $_pkgname build -D vapi=true -D gtk_doc=true
+  ninja -C build
+}
 
-  meson -D vapi=true -D gtk_doc=true
-  ninja
+check() {
+  dbus-run-session xvfb-run \
+    -s '-screen 0 1920x1080x24 -nolisten local' \
+    meson test -C build --print-errorlogs
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
   DESTDIR="$pkgdir" meson install -C build
 }
+
+# vim:set ts=2 sw=2 et:
