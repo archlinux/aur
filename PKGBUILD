@@ -5,13 +5,14 @@ pkgname='maestral'
 provides=('maestral')
 conflicts=('maestral-git')
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A light-weight and open-source CLI Dropbox client.'
 arch=('x86_64')
 url="https://github.com/SamSchott/${pkgname}"
 license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz" "maestral@.service")
 makedepends=('python-setuptools')
+changelog=CHANGELOG.md
 depends=(
     'python>=3.8'
     'python-atomicwrites'
