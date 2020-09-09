@@ -1,3 +1,6 @@
 *.tar.*
 src/
 pkg/
+
+# Git checkout:
+pacsync

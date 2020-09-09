@@ -1,13 +1,14 @@
 pkgbase = pacsync-git
 	pkgdesc = A pacman frontend which manages packages based on a holistic view of the system
-	pkgver = 8
+	pkgver = 9
 	pkgrel = 1
 	url = https://gitlab.com/isd/pacsync
 	arch = any
 	license = custom
+	makedepends = git
 	replaces = pacsync-hg
-	source = https://gitlab.com/isd/pacsync/-/archive/master/pacsync-master.tar.gz
-	sha256sums = 3cca7885a3579900fd7c69620c84f856eb40f25645642b43afa8d4bfbb0286e5
+	source = git+https://gitlab.com/isd/pacsync
+	sha256sums = SKIP
 
 pkgname = pacsync-git
 
