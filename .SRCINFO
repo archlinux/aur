@@ -1,0 +1,16 @@
+pkgbase = auswahl-git
+	pkgdesc = A tool to create dmenu or rofi menus using a simple declaration syntax.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/elkowar/Auswahl
+	arch = any
+	license = Unlicense
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = auswahl-git::git+https://github.com/elkowar/Auswahl
+	sha256sums = SKIP
+
+pkgname = auswahl-git
+
+
