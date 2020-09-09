@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=xfun
-_cranver=0.16
+_cranver=0.17
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,9 +10,9 @@ arch=(i686 x86_64)
 url='https://cran.r-project.org/package=xfun'
 license=(MIT)
 depends=(r)
-optdepends=(r-testit r-rstudioapi r-tinytex r-mime r-markdown r-knitr r-htmltools r-remotes r-rmarkdown)
+optdepends=(r-testit r-rstudioapi r-tinytex r-mime r-markdown r-knitr r-htmltools r-remotes r-pak r-rmarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('b0797de70e240e632e75a7e9f1c6cef7')
+sha256sums=('b27aa14454e90facce43c255a5e04be35bc5b417ea2a1d2f0d6bfc9c43c4a5fd')
 
 build(){
     cd "${srcdir}"
