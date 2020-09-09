@@ -14,5 +14,5 @@ md5sums=('SKIP')
 
 
 package() {
-    cd "${pkgname%}"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
