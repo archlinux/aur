@@ -1,0 +1,30 @@
+diff --git i/gtkdoc/highlight.py w/gtkdoc/highlight.py
+index ba1c601..226aa12 100644
+--- i/gtkdoc/highlight.py
++++ w/gtkdoc/highlight.py
+@@ -46,6 +46,9 @@ def highlight_code(code, lang='c'):
+ 
+ 
+ def append_style_defs(css_file_name):
+-    os.chmod(css_file_name, 0o644)
++    try:
++        os.chmod(css_file_name, 0o644)
++    except OSError:
++        pass
+     with open(css_file_name, 'at', newline='\n', encoding='utf-8') as css:
+         css.write(HTML_FORMATTER.get_style_defs())
+diff --git i/gtkdoc/scan.py w/gtkdoc/scan.py
+index d04d4d4..2103d02 100644
+--- i/gtkdoc/scan.py
++++ w/gtkdoc/scan.py
+@@ -961,8 +961,8 @@ def ScanHeaderContent(input_lines, decl_list, get_types, options):
+                 logging.info('struct/union level : %d', level)
+ 
+     # here we want in_declaration=='', otherwise we have a partial declaration
+-    if in_declaration != '':
+-        raise RuntimeError('partial declaration (%s) : %s ' % (in_declaration, decl))
++    #if in_declaration != '':
++    #    raise RuntimeError('partial declaration (%s) : %s ' % (in_declaration, decl))
+ 
+     # print remaining forward declarations
+     for symbol in sorted(forward_decls.keys()):

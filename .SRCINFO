@@ -1,0 +1,32 @@
+pkgbase = gtk-doc-git
+	pkgdesc = Documentation tool for public library API
+	pkgver = 1.32+52+gb209222
+	pkgrel = 1
+	url = https://www.gtk.org/gtk-doc/
+	arch = any
+	license = GPL
+	license = FDL
+	checkdepends = bc
+	checkdepends = gtk3
+	checkdepends = python-six
+	checkdepends = python-parameterized
+	makedepends = dblatex
+	makedepends = git
+	makedepends = yelp-tools
+	makedepends = meson
+	depends = docbook-xsl
+	depends = docbook-xml
+	depends = glib2-docs
+	depends = python-lxml
+	depends = python-pygments
+	depends = python-anytree
+	optdepends = dblatex: PDF support
+	provides = gtk-doc=1.32+52+gb209222
+	conflicts = gtk-doc
+	source = git+https://gitlab.gnome.org/GNOME/gtk-doc.git
+	source = fix.diff
+	sha512sums = SKIP
+	sha512sums = 6d5dd328f784986c1bc46e8bdd800226c5e7eaec2b2b921e0b930435cbe42d73283dd1f87272e1c1cfec9e24e21b7d551f5609d20e4838ba4d3eba1bb1479d43
+
+pkgname = gtk-doc-git
+
