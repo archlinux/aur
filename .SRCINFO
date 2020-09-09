@@ -1,6 +1,6 @@
 pkgbase = ksubdomain
 	pkgdesc = 无状态子域名爆破工具
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/knownsec/ksubdomain
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = ksubdomain
 	license = MIT
 	makedepends = go
 	depends = libpcap
-	source = ksubdomain-0.4.tar.gz::https://github.com/knownsec/ksubdomain/archive/v0.4.tar.gz
-	sha256sums = 4993dc41e7324f74515d1336413390fa66d1e6b45c73f8b29a275bbd01edcbd7
+	source = ksubdomain-0.5.tar.gz::https://github.com/knownsec/ksubdomain/archive/v0.5.tar.gz
+	sha256sums = 55d6a3892ed99c2ae99d827b6b92c10341babec29620170f38d37aeac03f79ad
 
 pkgname = ksubdomain
 
