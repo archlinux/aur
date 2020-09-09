@@ -1,11 +1,9 @@
 pkgbase = gobject-introspection-git
-	pkgdesc = Introspection system for GObject-based libraries (Git)
-	pkgver = 1.64.0+47+ge7c17469
-	pkgrel = 2
-	epoch = 1
+	pkgdesc = Introspection system for GObject-based libraries
+	pkgver = 1.64.0+75+g8b0a7f4c
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GObjectIntrospection
 	arch = x86_64
-	arch = i686
 	license = LGPL
 	license = GPL
 	makedepends = cairo
@@ -13,18 +11,14 @@ pkgbase = gobject-introspection-git
 	makedepends = gtk-doc
 	makedepends = python-sphinx
 	makedepends = meson
+	makedepends = glib2
 	depends = python-mako
 	depends = python-markdown
-	provides = gobject-introspection=1.64.0+47+ge7c17469
-	provides = gobject-introspection-runtime=1.64.0+47+ge7c17469
+	provides = gobject-introspection=1.64.0+75+g8b0a7f4c
 	conflicts = gobject-introspection
-	conflicts = gobject-introspection-svn
-	conflicts = gobject-introspection-runtime
-	replaces = gobject-introspection-svn
-	replaces = gobject-introspection
 	options = !emptydirs
 	source = git+https://gitlab.gnome.org/GNOME/gobject-introspection.git
-	source = git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=2.64.1
+	source = git+https://gitlab.gnome.org/GNOME/glib.git
 	validpgpkeys = 923B7025EE03C1C59F42684CF0942E894B2EAFA0
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -32,12 +26,12 @@ pkgbase = gobject-introspection-git
 pkgname = gobject-introspection-git
 	depends = python-mako
 	depends = python-markdown
-	depends = gobject-introspection-runtime-git=1.64.0+47+ge7c17469-2
+	depends = gobject-introspection-runtime
 
 pkgname = gobject-introspection-runtime-git
-	pkgdesc = Introspection system for GObject-based libraries (Git) (runtime library)
+	pkgdesc = Introspection system for GObject-based libraries (runtime library)
 	depends = glib2
-	provides = gobject-introspection=1.64.0+47+ge7c17469
-	provides = gobject-introspection-runtime=1.64.0+47+ge7c17469
+	provides = gobject-introspection-runtime=1.64.0+75+g8b0a7f4c
 	provides = libgirepository-1.0.so
+	conflicts = gobject-introspection-runtime
 
