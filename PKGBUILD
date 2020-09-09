@@ -1,7 +1,7 @@
 # Maintainer: Alexander Menzhinsky <amenzhinsky@gmail.com>
 pkgname=protoc-gen-go-grpc
 pkgver=1.32.0
-pkgrel=0
+pkgrel=1
 pkgdesc="gRPC bindings generator for Go language"
 arch=("any")
 url="https://github.com/grpc/grpc-go"
