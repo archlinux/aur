@@ -1,8 +1,8 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Aaron Blair <aaron@aaronpb.me>
 
-pkgname=subfinder
-pkgver=2.4.3
+pkgname='subfinder'
+pkgver=2.4.4
 pkgrel=1
 pkgdesc='Subdomain discovery tool'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('go')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6314065e39ae4e80ec2aaac21fa0bcbb4283ee624cd8051ebdc61fee8d0df650')
+sha256sums=('26f11c278e72c63932b3f3cfedb7f9240032ef39185e8bc6fe262946fd986040')
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
