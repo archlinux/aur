@@ -1,10 +1,16 @@
 pkgbase = archuseriso
 	pkgdesc = Profiles for building Arch Linux Live ISO images. Featuring persistence, encryption.
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/laurent85v/archuseriso
 	arch = any
 	license = GPL3
+	depends = arch-install-scripts
+	depends = bash
+	depends = dosfstools
+	depends = e2fsprogs
+	depends = libisoburn
+	depends = squashfs-tools
 	depends = syslinux
 	optdepends = devtools: ZFS building option
 	optdepends = pacman-contrib: ZFS building option

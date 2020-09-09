@@ -2,12 +2,12 @@
 
 pkgname=archuseriso
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Profiles for building Arch Linux Live ISO images. Featuring persistence, encryption."
 arch=('any')
 url="https://github.com/laurent85v/archuseriso"
 license=('GPL3')
-depends=('syslinux')
+depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'libisoburn' 'squashfs-tools' 'syslinux')
 optdepends=('devtools: ZFS building option'
             'pacman-contrib: ZFS building option')
 conflicts=('archuseriso')
