@@ -1,7 +1,7 @@
 # Maintainer: Gerome Matilla <gerome.matilla07@gmail.com | gmail>
 
 pkgname=lightdm-webkit2-theme-glorious
-pkgver=2
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="a sleek, modern and glorified lightdm webkit2 theme"
 arch=('any')
@@ -16,8 +16,7 @@ md5sums=('SKIP')
 package() {
 	cd "$pkgdir"
 	mkdir -p usr/share/lightdm-webkit/themes/
-	rm -Rf usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-glorious
+	rm -rf usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-glorious
 	cd usr/share/lightdm-webkit/themes/
 	cp --recursive "$srcdir/lightdm-webkit2-theme-glorious-$pkgver" "glorious"
 }
-
