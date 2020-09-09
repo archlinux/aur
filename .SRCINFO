@@ -1,0 +1,33 @@
+pkgbase = dwm-oakszyjrnrdy
+	pkgdesc = A dynamic window manager for X built by oakszyjrnrdy
+	pkgver = 6.2
+	pkgrel = 1
+	url = http://dwm.suckless.org
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	depends = alacritty
+	depends = dmenu
+	provides = dwm
+	conflicts = dwm
+	options = zipman
+	source = https://dl.suckless.org/dwm/dwm-6.2.tar.gz
+	source = dwm.desktop
+	source = dwm-config-6.2.diff
+	source = dwm-autostart-6.2.diff
+	source = https://dwm.suckless.org/patches/hide_vacant_tags/dwm-hide_vacant_tags-6.2.diff
+	source = https://dwm.suckless.org/patches/alpha/dwm-fixborders-6.2.diff
+	source = https://dwm.suckless.org/patches/noborder/dwm-noborder-6.2.diff
+	sha256sums = 97902e2e007aaeaa3c6e3bed1f81785b817b7413947f1db1d3b62b8da4cd110e
+	sha256sums = bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81
+	sha256sums = 6724ead226c14eb546952550001eb9dcf069627804b72a6a9bfc22a76af00fd3
+	sha256sums = c978561abde2df339ef6bab73a1eaf9ad097db1038e46f6de0247b1aea35a5a2
+	sha256sums = 716d43cda73744abbe12c1ecd20fd55769c2a36730a57d0a12c09c06854b7fa8
+	sha256sums = 0343dccd71cb8a3f4a18637ea51f4764a51cda5d712092a103bac5cba7dfc7ad
+	sha256sums = 9bbf5f963e5a2d23ae4b8731f0c179a8615de5715a2dbf683fbe02115e24efe0
+
+pkgname = dwm-oakszyjrnrdy
+

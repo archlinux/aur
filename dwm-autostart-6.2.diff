@@ -1,0 +1,39 @@
+commit 5918623c5bd7fda155bf9dc3d33890c4ae1722d0
+Author: Simon Bremer <simon.bremer@tum.de>
+Date:   Thu Dec 22 17:31:07 2016 +0100
+
+    Applied and fixed autostart patch for previous version;
+
+diff --git a/dwm.c b/dwm.c
+index d27cb67..066ed71 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -194,6 +194,7 @@ static void resizeclient(Client *c, int x, int y, int w, int h);
+ static void resizemouse(const Arg *arg);
+ static void restack(Monitor *m);
+ static void run(void);
++static void runAutostart(void);
+ static void scan(void);
+ static int sendevent(Client *c, Atom proto);
+ static void sendmon(Client *c, Monitor *m);
+@@ -1386,6 +1387,12 @@ run(void)
+ }
+ 
+ void
++runAutostart(void) {
++	system("[ -x ~/.config/dwm/autostart_blocking.sh ] && ~/.config/dwm/autostart_blocking.sh");
++	system("[ -x ~/.config/dwm/autostart.sh ] && ~/.config/dwm/autostart.sh &");
++}
++
++void
+ scan(void)
+ {
+ 	unsigned int i, num;
+@@ -2145,6 +2152,7 @@ main(int argc, char *argv[])
+ 	checkotherwm();
+ 	setup();
+ 	scan();
++	runAutostart();
+ 	run();
+ 	cleanup();
+ 	XCloseDisplay(dpy);
