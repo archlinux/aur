@@ -10,7 +10,7 @@ url="https://github.com/AdaShoelace/hadlock"
 license=('MIT')
 depends=('dbus' 'libxinerama')
 makedepends=('git' 'cargo')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-bin")
+conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 source=("git+$url")
 sha512sums=('SKIP')
 

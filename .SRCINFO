@@ -9,8 +9,8 @@ pkgbase = hadlock-git
 	makedepends = cargo
 	depends = dbus
 	depends = libxinerama
-	conflicts = hadlock-git
-	conflicts = hadlock-git-bin
+	conflicts = hadlock
+	conflicts = hadlock-bin
 	source = git+https://github.com/AdaShoelace/hadlock
 	sha512sums = SKIP
 
