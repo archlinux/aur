@@ -1,7 +1,7 @@
 # Maintainer: Aloxaf <aloxafx@gmail.com>
 
 pkgname=semgrep-bin
-pkgver=0.17.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Fast and syntax-aware semantic code pattern search for many languages: like grep but for code"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=('bash' 'zlib' 'bzip2' 'ncurses5-compat-libs' 'openssl-1.0')
 provides=('semgrep')
 options=('!strip')
 source=("https://github.com/returntocorp/semgrep/releases/download/v${pkgver}/semgrep-v${pkgver}-ubuntu-16.04.tgz")
-sha256sums=('73c03afeb6061927942a449185bbf7d24314de32e97d935b99b06e27bf3901a1')
+sha256sums=('4c4d7c7145b76a4bea115adda1d696705b98540fb97d0c8050d9d8fbf6ac8d68')
 # https://github.com/returntocorp/semgrep/releases/download/v${pkgver}/semgrep-v${pkgver}-ubuntu-16.04.tgz.sha256
 
 package() {
