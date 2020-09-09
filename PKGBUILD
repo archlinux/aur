@@ -1,11 +1,14 @@
+# Maintainer: Luis Marques <luigoalma at gmail dot com>
+
 pkgname=python-haccrypto
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Nintendo Switch XTSN crypto for Python"
 arch=($CARCH)
 license=(MIT)
 url='https://github.com/luigoalma/haccrypto'
 depends=('python')
+optdepends=('openssl: for faster crypto operations')
 makedepends=('python-setuptools')
 source=("haccrypto-${pkgver}.tar.gz::https://github.com/luigoalma/haccrypto/archive/v${pkgver}.tar.gz")
 sha256sums=('bdac0bb995743dbbeede9c63277ee09b2419183f14897883267515b2e822fc26')
@@ -19,5 +22,7 @@ build() {
 package() {
 	cd haccrypto-${pkgver}
 	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+
+	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
 
