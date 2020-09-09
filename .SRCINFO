@@ -5,10 +5,15 @@ pkgbase = dvm-bin
 	url = https://github.com/justjavac/dvm
 	arch = x86_64
 	license = MIT
+	depends = bash
 	provides = dvm
 	conflicts = dvm
 	source = 1.1.10.zip::https://github.com/justjavac/dvm/releases/download/v1.1.10/dvm-x86_64-unknown-linux-gnu.zip
 	source = https://raw.githubusercontent.com/justjavac/dvm/v1.1.10/LICENSE
+	source = dvm.bash
+	source = dvm-install-instruction.bash
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 
