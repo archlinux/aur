@@ -4,6 +4,7 @@ pkgbase = wtftw
 	pkgrel = 1
 	url = https://github.com/orhun/wtftw
 	install = wtftw.install
+	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = cargo
