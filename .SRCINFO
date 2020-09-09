@@ -1,0 +1,24 @@
+pkgbase = intel-vtune-profiler-standalone
+	pkgdesc = The standalone version of Intel VTune Profiler
+	pkgver = 2020.u2
+	pkgrel = 1
+	url = https://software.intel.com/content/www/us/en/develop/tools/vtune-profiler.html
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = gettext
+	depends = glibc
+	depends = attr
+	conflicts = intel-vtune-profiler
+	options = !strip
+	source = http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/16783/vtune_profiler_2020_update2.tar.gz
+	source = intel-vtune-profiler.png
+	source = intel-vtune-profiler.desktop
+	source = license.txt
+	sha256sums = 4d924a27a2e06ce5c79f40a2ad34a1b49ef164b6b6b241434887fcb39b0e2f3e
+	sha256sums = 457e2d0afcf238b335abd0bc582fc6b132cb9697567649f7fede6fb2de756575
+	sha256sums = 7ec3336a7bc9b6a81de2f6f8ce94f06881eca0fcaa4609c593aaab0d769bb167
+	sha256sums = e13bba8c55cf874988dbb541d8a72f53dd0942fca48f49bfbe9d82174bb73808
+
+pkgname = intel-vtune-profiler-standalone
+

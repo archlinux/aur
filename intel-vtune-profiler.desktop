@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Intel VTune Profiler
+Exec=/bin/bash -c "source /opt/intel/vtune_profiler/vtune-vars.sh; vtune-gui"
+Icon=intel-vtune-profiler
+Terminal=false
