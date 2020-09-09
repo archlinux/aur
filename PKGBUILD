@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-dev-ozone
-pkgver=86.0.4221.3
+pkgver=87.0.4252.0
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (dev channel)"
@@ -29,14 +29,14 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-skia-harmony.patch)
-sha256sums=('44960b027c2ab2613b52e09b58c2f0119099acb3f1e30084d7b8fd11c571395a'
+sha256sums=('5ea43fa7c79061f8fa5ce9f9f1e1776f1e639dad8fdfdd613af00f136dd3b4d3'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  # [ffmpeg]=ffmpeg # broken with recent ffmpeg git
+  [ffmpeg]=ffmpeg # broken with recent ffmpeg git
   [flac]=flac
   [fontconfig]=fontconfig
   [freetype]=freetype2
@@ -44,8 +44,8 @@ declare -gA _system_libs=(
   [icu]=icu
   [libdrm]=
   [libjpeg]=libjpeg
-  #[libpng]=libpng    # https://crbug.com/752403#c10
-  [libvpx]=libvpx
+  # [libpng]=libpng    # https://crbug.com/752403#c10
+  # [libvpx]=libvpx
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
@@ -138,13 +138,13 @@ build() {
     'use_sysroot=false'
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
-    'use_ozone=true'
+    'ozone_platform="wayland"'
     'ozone_platform_wayland=true'
     'ozone_platform_x11=true'
-    'ozone_auto_platforms=false'
-    'use_glib=true'
+    'ozone_platform_gbm=false'
+    'ozone_platform_headless=true'
     'use_system_libwayland=true'
-    'use_vaapi=false'
+    'use_vaapi=true'
     'enable_nacl=false'
     "google_api_key=\"${_google_api_key}\""
     "google_default_client_id=\"${_google_default_client_id}\""
