@@ -2,7 +2,7 @@
 # Contributer: Jamie Nguyen <jamie at tomoyolinux dot co dot uk>
 
 pkgname=bashmount
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 
 pkgdesc="A menu-driven bash script for the management of removable media with udisks."
@@ -36,4 +36,4 @@ package()
     install -m644 NEWS "${pkgdir}/usr/share/doc/bashmount/NEWS"
 }
 
-sha256sums=('cd50e30578d22f02d33fa43e319706fd1d6913544b3f7c4219a68958061da44d')
+sha256sums=('4fa5be39b10c3ce24f3f21ff6605ce0499ab9b24baf1b5762be36b9003eab169')
