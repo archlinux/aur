@@ -2,7 +2,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-purchasing
-_qtver=5.15.0
+_qtver=5.15.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('2127f180c4889055d88e2b402b62be80a5a213a0e48d2056cc9a01d9913b3a16')
+sha256sums=('be88908243a16fc0a1b22d656b7b651690b757329ea9fd2236998004fbd57f75')
 
 prepare() {
   mkdir -p build
