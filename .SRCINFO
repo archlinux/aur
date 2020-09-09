@@ -1,0 +1,15 @@
+pkgbase = hadlock
+	pkgdesc = X window manager
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/AdaShoelace/hadlock
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = dbus
+	depends = libxinerama
+	source = hadlock-1.1.6.tar.gz::https://github.com/AdaShoelace/hadlock/archive/v1.1.6.tar.gz
+	sha512sums = ed7efb50410f75398b4ecf963e19ca115ba267501d4759f5754ee561c2da59610c8818f1575ab603f1a9c1112cc921d08f0115c4e02b6488b13a3cb5598f4ac1
+
+pkgname = hadlock
+
