@@ -1,0 +1,14 @@
+pkgbase = python-yubico-client
+	pkgdesc = Python library for validating Yubico Yubikey One Time Passwords (OTPs) based on the validation protocol version 2.0.
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://github.com/Kami/python-yubico-client/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-requests
+	source = https://github.com/Kami/python-yubico-client//archive/v1.13.0.tar.gz
+	md5sums = e9fab9971201eaef0f8bbf7bcc4badae
+
+pkgname = python-yubico-client
+
