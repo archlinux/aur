@@ -1,7 +1,7 @@
 pkgbase = pacback-git
 	pkgdesc = Advanced Version Control for Arch Linux
 	pkgver = r104.c496aee
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/JustinTimperio/pacback
 	install = pacback.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pacback-git
 	depends = python
 	depends = python-rich
 	depends = python-requests
-	depends = arch-install-scripts
+	depends = pacman-contrib
 	optdepends = pigz: Multithreaded de/compression of custom user files
 	provides = pacback
 	conflicts = pacback

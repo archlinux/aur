@@ -3,7 +3,7 @@
  
 pkgname=pacback-git
 pkgver=r104.c496aee
-pkgrel=0
+pkgrel=1
 pkgdesc='Advanced Version Control for Arch Linux'
 arch=('x86_64')
 url='https://github.com/JustinTimperio/pacback'
@@ -13,7 +13,7 @@ conflicts=('pacback')
 # avoid overwriting modified config files
 install='pacback.install'
 backup=('etc/pacback.conf')
-depends=('python' 'python-rich' 'python-requests' 'arch-install-scripts')
+depends=('python' 'python-rich' 'python-requests' 'pacman-contrib')
 makedepends=('zstd')
 optdepends=('pigz: Multithreaded de/compression of custom user files')
 source=('git+https://github.com/JustinTimperio/pacback.git')
