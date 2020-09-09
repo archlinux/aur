@@ -6,7 +6,7 @@
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
 pkgname=pytrainer
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='tool to log your sport activities.'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=('garmintools: "Garmin via garmintools" plugin'
             'zenity: garmintools and gpsbabel plugins')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         ${pkgname}.sh)
-md5sums=('4f72a99412a40be7e40f5b84c8744472'
+md5sums=('75e07caa70cf0bb609c26894061b77aa'
          'd29f67beb31028cf1ecdb85e71d31516')
 
 
