@@ -1,6 +1,6 @@
 # MaintainerContribut: Michael Fitzmayer <mail@michael-fitzmayer.de>
 pkgname=openscenegraph-openmw-git
-pkgver=20170820
+pkgver=20200909
 pkgrel=1
 _gitname=osg
 pkgdesc="OpenSceneGraph with performance enhancements for OpenMW - git mirror"
@@ -16,7 +16,8 @@ source=(git://github.com/OpenMW/osg.git)
 md5sums=('SKIP')
 
 pkgver() {
-  echo "$(date +"%Y%m%d")"
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
