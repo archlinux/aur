@@ -1,7 +1,7 @@
 pkgbase = matterhorn
 	pkgdesc = A terminal-based chat client for MatterMost
-	pkgver = 50200.8.0
-	pkgrel = 3
+	pkgver = 50200.10.1
+	pkgrel = 1
 	url = https://github.com/matterhorn-chat/matterhorn
 	arch = x86_64
 	license = BSD
@@ -9,8 +9,8 @@ pkgbase = matterhorn
 	makedepends = ghc
 	depends = gmp
 	depends = zlib
-	source = https://github.com/matterhorn-chat/matterhorn/archive/50200.8.0.tar.gz
-	sha1sums = 9c8790ad5ec28fd843b8fb3ead001d6036d987ee
+	source = https://github.com/matterhorn-chat/matterhorn/archive/50200.10.1.tar.gz
+	sha1sums = 36a4089d41183aa97e6c164eba61b058c5371d1b
 
 pkgname = matterhorn
 
