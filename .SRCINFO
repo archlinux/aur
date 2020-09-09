@@ -1,0 +1,19 @@
+pkgbase = finalhe-git
+	pkgdesc = A tool to push h-encore exploit for PS VITA/PS TV automatically
+	pkgver = 1.92.r7.g624b8eb
+	pkgrel = 1
+	url = https://github.com/soarqin/finalhe
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libxml2
+	depends = libusb
+	depends = zlib
+	depends = qt5-base
+	provides = finalhe
+	conflicts = finalhe
+	source = finalhe-git::git://github.com/soarqin/finalhe.git
+	md5sums = SKIP
+
+pkgname = finalhe-git
+
