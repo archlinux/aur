@@ -5,7 +5,7 @@
 pkgname=python-scandir
 pkgdesc="A better directory iterator and faster os.walk()"
 pkgver=1.10.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://github.com/benhoyt/scandir"
 license=('BSD')
@@ -23,6 +23,8 @@ build() {
 package() {
   cd "scandir-$pkgver"
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize 1
+  install -D -m644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+
 }
 
 # vim:set ts=2 sw=2 et:
