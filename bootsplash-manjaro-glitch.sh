@@ -37,16 +37,11 @@ convert -alpha remove \
 	--bg_green 0x00 \
 	--bg_blue 0x00 \
 	--frame_ms 50 \
-    --picture \
-	--pic_width $LOGO_WIDTH \
-	--pic_height $LOGO_HEIGHT \
-	--pic_position 0 \
 	--blob logo.rgb \
 	--picture \
 	--pic_width $THROBBER_WIDTH \
 	--pic_height $THROBBER_HEIGHT \
-	--pic_position 0x05 \
-	--pic_position_offset 200 \
+	--pic_position 0x10 \
 	--pic_anim_type 1 \
 	--pic_anim_loop 0 \
 	--blob throbber00.rgb \
