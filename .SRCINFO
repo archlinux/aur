@@ -1,0 +1,14 @@
+pkgbase = svls
+	pkgdesc = SystemVerilog language server
+	pkgver = 0.1.17
+	pkgrel = 1
+	url = https://github.com/dalance/svls
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = svls-0.1.17.tar.gz::https://github.com/dalance/svls/archive/v0.1.17.tar.gz
+	sha256sums = 193ffaea30c82f45f00ad335f41417615de0678dfed09588a803430a4e456e7a
+
+pkgname = svls
+
