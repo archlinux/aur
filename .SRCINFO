@@ -1,0 +1,15 @@
+pkgbase = plasmasur-dark-kde-theme-git
+	pkgdesc = PlasmaSur-dark-kde kde is a materia Design theme for KDE Plasma desktop.
+	pkgver = r4.eb60128
+	pkgrel = 1
+	url = https://github.com/yeyushengfan258/PlasmaSur-dark-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	optdepends = plasma-desktop: for included plasma theme
+	optdepends = kvantum-qt5: for included kvantum theme
+	source = git+https://github.com/yeyushengfan258/PlasmaSur-dark-kde.git
+	sha256sums = SKIP
+
+pkgname = plasmasur-dark-kde-theme-git
+
