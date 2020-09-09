@@ -1,11 +1,10 @@
-# Maintainer: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
+# Maintainer: Jonathon Fernyhough <jonathon+at m2x.dev>
 # Contributor: Yarema aka Knedlyk <yupadmin@gmail.com>
 # Contributor: zoe <chp321 [at] gmail [dot] com>
 
 pkgname=radiotray
 pkgver=0.7.3
 pkgrel=14
-_commit=1717a0e8c143
 pkgdesc="An online radio streaming player that runs on a Linux system tray."
 arch=(any)
 url="https://radiotray.wordpress.com/"
@@ -16,14 +15,14 @@ optdepends=('gst-plugins-bad: extra codec support'
             'gst-plugins-ugly: extra codec support'
             'gst-libav: nonfree media decoding'
             'libappindicator-gtk3: indicator applet support')
-source=("${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/carlmig/radio-tray/get/${pkgname}-${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://sourceforge.net/projects/radiotray/files/releases/${pkgname}-${pkgver}.tar.gz/download/"
         "encoding.patch"
         "02_compatibility_glib-2.41.patch"
         "03_upstream_repo.patch"
         "04_gtk3_issues.patch"
         "reduce-logging.patch")
 
-sha256sums=('464c555b8d9278e918d3718f81a1c0cfa7d9a54018d1a2f6b04b33dc40ea825c'
+sha256sums=('709cbabbd03627270f60cd56084803d6f03fe0e14fbfc15b6325b4c5bd9faf2d'
             'a73badc0ddbf726d3f554e328b8836883bf816751cd0dc2034795a03466cd2df'
             'b6d1d7fe74be1ec2ecad653262111f509d6fd60b8e666eb5e15d7bcb21e7a58b'
             '04748958923e3c2cac8944700a0786d066ab17d8284155adf316adab78dd0c55'
@@ -31,22 +30,22 @@ sha256sums=('464c555b8d9278e918d3718f81a1c0cfa7d9a54018d1a2f6b04b33dc40ea825c'
             '231ec3fb848069cf909f704e0e129fd649a9f8955178fe5407c7457d94ab0663')
 
 prepare() {
-    cd "${srcdir}/carlmig-radio-tray-${_commit}"
-    patch -p1 < "${srcdir}/encoding.patch"
-    patch -p1 < "${srcdir}/02_compatibility_glib-2.41.patch"
-    patch -p1 < "${srcdir}/03_upstream_repo.patch"
-    patch -p1 < "${srcdir}/04_gtk3_issues.patch"
-    patch -p1 < "${srcdir}/reduce-logging.patch"
+    cd $pkgname-$pkgver
+    patch -Np1 < "${srcdir}/encoding.patch"
+    patch -Np1 < "${srcdir}/02_compatibility_glib-2.41.patch"
+    patch -Np1 < "${srcdir}/03_upstream_repo.patch"
+    patch -Np1 < "${srcdir}/04_gtk3_issues.patch"
+    patch -Np1 < "${srcdir}/reduce-logging.patch"
 }
 
 build() {
-    cd "${srcdir}/carlmig-radio-tray-${_commit}"
+    cd $pkgname-$pkgver
     python2 setup.py bdist
 }
 
 package() {
-    cd "${srcdir}/carlmig-radio-tray-${_commit}"
-    tar xf "dist/${pkgname}-${pkgver}.linux-${CARCH}.tar.gz" -C "${pkgdir}"
+    cd $pkgname-$pkgver
+    bsdtar pxf "dist/${pkgname}-${pkgver}.linux-${CARCH}.tar.gz" -C "${pkgdir}"
     chown -R root: "${pkgdir}"
 }
 
