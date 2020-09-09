@@ -1,6 +1,6 @@
 pkgbase = python-pycpa-git
 	pkgdesc = Pragmatic Python implementation of Compositional Performance Analysis (aka the SymTA/S approach provided by Symtavision) used for research in worst-case timing analysis.
-	pkgver = 20200908
+	pkgver = 20200909
 	pkgrel = 1
 	url = https://bitbucket.org/pycpa/pycpa/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-pycpa-git
 	depends = python-setuptools
 	depends = python-nose
 	depends = python-tornado
-	provides = pycpa
+	provides = python-pycpa
 	replaces = python-pycpa-hg
 	source = git+https://bitbucket.org/pycpa/pycpa
 	md5sums = SKIP

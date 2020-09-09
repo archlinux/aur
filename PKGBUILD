@@ -2,14 +2,14 @@
 
 _pkgname=python-pycpa
 pkgname=$_pkgname-git
-pkgver=20200908
+pkgver=20200909
 pkgrel=1
 pkgdesc="Pragmatic Python implementation of Compositional Performance Analysis (aka the SymTA/S approach provided by Symtavision) used for research in worst-case timing analysis."
 arch=('any')
 makedepends=('git')
 replaces=('python-pycpa-hg')
 depends=('python' 'python-matplotlib' 'python-pygraphviz' 'simpy' 'python-setuptools' 'python-nose' 'python-tornado')
-provides=('pycpa')
+provides=('python-pycpa')
 url="https://bitbucket.org/pycpa/pycpa/"
 license=('MIT')
 
@@ -24,4 +24,6 @@ build() {
 package() {
   cd ${srcdir}/pycpa
   python setup.py install --root="${pkgdir}"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
