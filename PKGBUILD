@@ -4,7 +4,7 @@
 # by automation in the wezterm repo.
 
 pkgname=wezterm-bin
-_tag=20200718-095447-d2315640
+_tag=20200909-002054-4c9af461
 pkgver=$(echo $_tag | tr - .)
 pkgrel=2
 pkgdesc='A GPU-accelerated cross-platform terminal emulator and multiplexer implemented in Rust'
@@ -30,7 +30,7 @@ source=(
   'LICENSE::https://github.com/wez/wezterm/raw/master/LICENSE.md'
 )
 sha256sums=(
-  'a529c9ed18801bde73aa9c8871bcd213c0c72bbffcc382f988249dcb58fca648'
+  'c0adf1c0355940674e52dc93d99618be46ecf1a30a056e6b20360880fe6ec049'
   '191c46fcf52061382b1c51a70311eb9081381cc158e5899f3739473a9432185b'
 )
 
@@ -54,5 +54,5 @@ package() {
   install -Dm644 squashfs-root/usr/share/applications/org.wezfurlong.wezterm.desktop \
                  "${pkgdir}/usr/share/applications/org.wezfurlong.wezterm.desktop"
   install -dm755 ${pkgdir}/usr/share/wezterm/colors
-  install -Dm644 -t ${pkgdir}/usr/share/wezterm/colors/* squashfs-root/usr/share/wezterm/colors/*
+  install -Dm644 -t ${pkgdir}/usr/share/wezterm/colors/ squashfs-root/usr/share/wezterm/colors/*
 }
