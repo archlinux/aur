@@ -1,49 +1,48 @@
-From 65f12ef918d35ab8ae5eee84e4a1eea8300081da Mon Sep 17 00:00:00 2001
+From 5846c5fffd392e1158e228d05e64c0613fef4d49 Mon Sep 17 00:00:00 2001
 From: Luke D Jones <luke@ljones.dev>
-Date: Thu, 30 Jul 2020 16:51:06 +1200
-Subject: [PATCH] HID: asus: add support for ASUS N-Key keyboard
+Date: Sun, 6 Sep 2020 19:30:02 +1200
+Subject: [PATCH V6] HID: ASUS: Add support for ASUS N-Key keyboard
 
-Enable missing functionality of the keyboard found in many ASUS
-Zephyrus laptops: Fn key combos and hotkeys, keyboard backlight
+The ASUS N-Key keyboard uses the productId of 0x1866 and is used in
+almost all modern ASUS gaming laptops with slight changes to the
+firmware. This patch enables: Fn+key hotkeys, keyboard backlight
 brightness control, and notify asus-wmi to toggle "fan-mode".
-Two input event codes are added for keyboard LED mode switching
-prev/next.
 
 The keyboard has many of the same key outputs as the existing G752
 keyboard including a few extras, and varies a little between laptop
-models.
+models. The key-sets have been split and sub-grouped so that there
+will not be conflict between key event codes used.
 
-Additionally the keyboard requires the LED interface to be
+An existing key event used across some keyboards for "Mic Toggle"
+has been changed to emit "F20" as this is what all the main
+desktop environments are using.
+
+Additionally this keyboard requires the LED interface to be
 intitialised before such things as keyboard backlight control work.
 
 Misc changes in scope: update some hardcoded comparisons to use an
-available define, change "Mic Toggle" to use a keycode that works.
+available define.
 
 Signed-off-by: Luke D Jones <luke@ljones.dev>
 ---
- drivers/hid/hid-asus.c                     | 166 ++++++++++++++++++---
+ drivers/hid/hid-asus.c                     | 188 ++++++++++++++++++---
  drivers/hid/hid-ids.h                      |   1 +
  include/linux/platform_data/x86/asus-wmi.h |   2 +
- include/uapi/linux/input-event-codes.h     |   7 +
- 4 files changed, 153 insertions(+), 23 deletions(-)
+ 3 files changed, 166 insertions(+), 25 deletions(-)
 
 diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
-index c183caf89d49..90ed6f46e7fc 100644
+index c183caf89d49..541c92a7f108 100644
 --- a/drivers/hid/hid-asus.c
 +++ b/drivers/hid/hid-asus.c
-@@ -26,10 +26,12 @@
+@@ -26,6 +26,8 @@
  #include <linux/dmi.h>
  #include <linux/hid.h>
  #include <linux/module.h>
++
 +#include <linux/acpi.h>
  #include <linux/platform_data/x86/asus-wmi.h>
  #include <linux/input/mt.h>
  #include <linux/usb.h> /* For to_usb_interface for T100 touchpad intf check */
- #include <linux/power_supply.h>
-+#include <../drivers/platform/x86/asus-wmi.h>
- 
- #include "hid-ids.h"
- 
 @@ -48,6 +50,8 @@ MODULE_DESCRIPTION("Asus HID Keyboard and TouchPad");
  #define INPUT_REPORT_ID 0x5d
  #define FEATURE_KBD_REPORT_ID 0x5a
@@ -67,7 +66,7 @@ index c183caf89d49..90ed6f46e7fc 100644
  
 +/*
 + * This enables triggering events in asus-wmi
-+*/
++ */
 +static int asus_wmi_send_event(struct asus_drvdata *drvdat, u8 code)
 +{
 +	int err;
@@ -96,39 +95,64 @@ index c183caf89d49..90ed6f46e7fc 100644
  	    (usage->hid & HID_USAGE) != 0x00 &&
  	    (usage->hid & HID_USAGE) != 0xff && !usage->type) {
  		hid_warn(hdev, "Unmapped Asus vendor usagepage code 0x%02x\n",
-@@ -332,6 +360,20 @@ static int asus_raw_event(struct hid_device *hdev,
+@@ -321,6 +349,7 @@ static int asus_event(struct hid_device *hdev, struct hid_field *field,
+ static int asus_raw_event(struct hid_device *hdev,
+ 		struct hid_report *report, u8 *data, int size)
+ {
++	int ret;
+ 	struct asus_drvdata *drvdata = hid_get_drvdata(hdev);
+ 
+ 	if (drvdata->battery && data[0] == BATTERY_REPORT_ID)
+@@ -332,6 +361,35 @@ static int asus_raw_event(struct hid_device *hdev,
  	if (drvdata->quirks & QUIRK_MEDION_E1239T)
  		return asus_e1239t_event(drvdata, data, size);
  
 +	if (drvdata->quirks & QUIRK_ROG_NKEY_KEYBOARD) {
 +		/*
 +		 * Skip these report ID, the device emits a continuous stream associated
-+		 * with the AURA mode it is in
++		 * with the AURA mode it is in which looks like an 'echo'
 +		*/
 +		if (report->id == FEATURE_KBD_LED_REPORT_ID1 ||
 +				report->id == FEATURE_KBD_LED_REPORT_ID2) {
 +			return -1;
-+		/* Fn+F5 "fan" symbol, trigger WMI event to toggle next mode */
-+		} else if (report->id == FEATURE_KBD_REPORT_ID && data[1] == 0xae) {
-+			return asus_wmi_send_event(drvdata, 0xae);
++		/* Additional report filtering */
++		} else if (report->id == FEATURE_KBD_REPORT_ID) {
++			/* Fn+F5 "fan" symbol, trigger WMI event to toggle next mode */
++			if (data[1] == 0xae) {
++				ret = asus_wmi_send_event(drvdata, 0xae);
++				if (ret < 0) {
++					hid_warn(hdev, "Asus failed to trigger fan control event");
++				}
++				return -1;
++			/*
++			 * G14 and G15 send these codes on some keypresses with no
++			 * discernable reason for doing so. We'll filter them out to avoid
++			 * unmapped warning messages later
++			*/
++			} else if (data[1] == 0xea || data[1] == 0xec || data[1] == 0x02 ||
++					data[1] == 0x8a || data[1] == 0x9e) {
++				return -1;
++			}
 +		}
 +	}
 +
  	return 0;
  }
  
-@@ -344,7 +386,9 @@ static int asus_kbd_set_report(struct hid_device *hdev, u8 *buf, size_t buf_size
+@@ -344,7 +402,11 @@ static int asus_kbd_set_report(struct hid_device *hdev, u8 *buf, size_t buf_size
  	if (!dmabuf)
  		return -ENOMEM;
  
 -	ret = hid_hw_raw_request(hdev, FEATURE_KBD_REPORT_ID, dmabuf,
-+	// The report ID should be set from the incoming buffer due to LED and key
-+	// interfaces having different pages
++	/* 
++	 * The report ID should be set from the incoming buffer due to LED and key
++	 * interfaces having different pages
++	*/
 +	ret = hid_hw_raw_request(hdev, buf[0], dmabuf,
  				 buf_size, HID_FEATURE_REPORT,
  				 HID_REQ_SET_REPORT);
  	kfree(dmabuf);
-@@ -397,6 +441,44 @@ static int asus_kbd_get_functions(struct hid_device *hdev,
+@@ -397,6 +459,44 @@ static int asus_kbd_get_functions(struct hid_device *hdev,
  	return ret;
  }
  
@@ -173,7 +197,7 @@ index c183caf89d49..90ed6f46e7fc 100644
  static void asus_kbd_backlight_set(struct led_classdev *led_cdev,
  				   enum led_brightness brightness)
  {
-@@ -460,19 +542,28 @@ static int asus_kbd_register_leds(struct hid_device *hdev)
+@@ -460,19 +560,28 @@ static int asus_kbd_register_leds(struct hid_device *hdev)
  	unsigned char kbd_func;
  	int ret;
  
@@ -213,7 +237,7 @@ index c183caf89d49..90ed6f46e7fc 100644
  
  	drvdata->kbd_backlight = devm_kzalloc(&hdev->dev,
  					      sizeof(struct asus_kbd_leds),
-@@ -751,14 +842,14 @@ static int asus_input_mapping(struct hid_device *hdev,
+@@ -751,14 +860,14 @@ static int asus_input_mapping(struct hid_device *hdev,
  	     usage->hid == (HID_UP_GENDEVCTRLS | 0x0026)))
  		return -1;
  
@@ -231,25 +255,29 @@ index c183caf89d49..90ed6f46e7fc 100644
  		case 0x82: asus_map_key_clear(KEY_CAMERA);		break;
  		case 0x88: asus_map_key_clear(KEY_RFKILL);			break;
  		case 0xb5: asus_map_key_clear(KEY_CALC);			break;
-@@ -771,16 +862,42 @@ static int asus_input_mapping(struct hid_device *hdev,
+@@ -771,16 +880,42 @@ static int asus_input_mapping(struct hid_device *hdev,
  		/* ROG key */
  		case 0x38: asus_map_key_clear(KEY_PROG1);		break;
  
 -		/* Fn+C ASUS Splendid */
 -		case 0xba: asus_map_key_clear(KEY_PROG2);		break;
-+		default:
+-
+-		/* Fn+Space Power4Gear Hybrid */
+-		case 0x5c: asus_map_key_clear(KEY_PROG3);		break;
+-
+-		/* Fn+F5 "fan" symbol on FX503VD */
+-		case 0x99: asus_map_key_clear(KEY_PROG4);		break;
+-
++		/* The keyboard ID's in this section don't share key events */
+ 		default:
 +			if (drvdata->quirks & QUIRK_G752_KEYBOARD) {
 +				switch (usage->hid & HID_USAGE) {
 +				/* Fn+C ASUS Splendid */
 +				case 0xba: asus_map_key_clear(KEY_PROG2);		break;
- 
--		/* Fn+Space Power4Gear Hybrid */
--		case 0x5c: asus_map_key_clear(KEY_PROG3);		break;
++
 +				/* Fn+Space Power4Gear Hybrid */
 +				case 0x5c: asus_map_key_clear(KEY_PROG3);		break;
- 
--		/* Fn+F5 "fan" symbol on FX503VD */
--		case 0x99: asus_map_key_clear(KEY_PROG4);		break;
++
 +				/* Fn+F5 "fan" symbol on FX503VD */
 +				case 0x99: asus_map_key_clear(KEY_PROG4);		break;
 +
@@ -258,30 +286,28 @@ index c183caf89d49..90ed6f46e7fc 100644
 +				}
 +				break;
 +			}
-+
 +			/* device 0x1866, N-KEY Device specific */
-+			if (drvdata->quirks & QUIRK_ROG_NKEY_KEYBOARD) {
++			else if (drvdata->quirks & QUIRK_ROG_NKEY_KEYBOARD) {
 +				switch (usage->hid & HID_USAGE) {
 +				/* Fn+Ret "Calc" symbol on device 0x1866, N-KEY Device */
 +				case 0x92: asus_map_key_clear(KEY_CALC);		break;
 +
 +				/* Fn+Left Aura mode previous */
-+				case 0xb2: asus_map_key_clear(KEY_KBDILLUM_MODE_PREV);	break;
++				case 0xb2: asus_map_key_clear(KEY_PROG2);	break;
 +
 +				/* Fn+Right Aura mode next */
-+				case 0xb3: asus_map_key_clear(KEY_KBDILLUM_MODE_NEXT);	break;
++				case 0xb3: asus_map_key_clear(KEY_PROG3);	break;
 +
 +				default:
 +					return -1;
 +				}
 +				break;
 +			}
- 
--		default:
++
  			/* ASUS lazily declares 256 usages, ignore the rest,
  			 * as some make the keyboard appear as a pointer device. */
  			return -1;
-@@ -1126,6 +1243,9 @@ static const struct hid_device_id asus_devices[] = {
+@@ -1126,6 +1261,9 @@ static const struct hid_device_id asus_devices[] = {
  	{ HID_USB_DEVICE(USB_VENDOR_ID_ASUSTEK,
  		USB_DEVICE_ID_ASUSTEK_FX503VD_KEYBOARD),
  	  QUIRK_USE_KBD_BACKLIGHT },
@@ -292,7 +318,7 @@ index c183caf89d49..90ed6f46e7fc 100644
  		USB_DEVICE_ID_ASUSTEK_T100TA_KEYBOARD),
  	  QUIRK_T100_KEYBOARD | QUIRK_NO_CONSUMER_USAGES },
 diff --git a/drivers/hid/hid-ids.h b/drivers/hid/hid-ids.h
-index 6f370e020feb..c9f930ddcfd7 100644
+index 74fc1df6e3c2..ce5ca078b232 100644
 --- a/drivers/hid/hid-ids.h
 +++ b/drivers/hid/hid-ids.h
 @@ -190,6 +190,7 @@
@@ -316,24 +342,6 @@ index 897b8332a39f..05253cfe786c 100644
  #define ASUS_WMI_UNSUPPORTED_METHOD	0xFFFFFFFE
  
  /* Wireless */
-diff --git a/include/uapi/linux/input-event-codes.h b/include/uapi/linux/input-event-codes.h
-index 0c2e27d28e0a..ca59f7d7a25e 100644
---- a/include/uapi/linux/input-event-codes.h
-+++ b/include/uapi/linux/input-event-codes.h
-@@ -772,6 +772,13 @@
- #define BTN_TRIGGER_HAPPY39		0x2e6
- #define BTN_TRIGGER_HAPPY40		0x2e7
- 
-+/*
-+ * Some keyboards have function keys associated with
-+ * changing the keyboard backlight modes, e.g, RGB patterns
-+ */
-+#define KEY_KBDILLUM_MODE_PREV	0x2ea
-+#define KEY_KBDILLUM_MODE_NEXT	0x2eb
-+
- /* We avoid low common keys in module aliases so they don't get huge. */
- #define KEY_MIN_INTERESTING	KEY_MUTE
- #define KEY_MAX			0x2ff
 -- 
 2.26.2
 

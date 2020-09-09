@@ -1,0 +1,26 @@
+--- a/drivers/platform/x86/asus-nb-wmi.c
++++ b/drivers/platform/x86/asus-nb-wmi.c
+@@ -493,6 +493,24 @@
+ 		},
+ 		.driver_data = &quirk_asus_ga502i,
+ 	},
++	{
++		.callback = dmi_matched,
++		.ident = "ASUSTeK COMPUTER INC. GA502DU",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++			DMI_MATCH(DMI_PRODUCT_NAME, "GA502DU"),
++		},
++		.driver_data = &quirk_asus_ga502i,
++	},
++	{
++		.callback = dmi_matched,
++		.ident = "ASUSTeK COMPUTER INC. GU502DU",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++			DMI_MATCH(DMI_PRODUCT_NAME, "GU502DU"),
++		},
++		.driver_data = &quirk_asus_ga502i,
++	},
+ 	{},
+ };

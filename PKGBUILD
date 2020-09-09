@@ -1,8 +1,8 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.8.5.arch1
-pkgrel=2
+pkgver=5.8.7.arch1
+pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
@@ -20,9 +20,10 @@ source=(
 	config         # the main kernel config file
 	sphinx-workaround.patch
 	"sys-kernel_arch-sources-g14_files_0001-nonupstream-navi10-vfio-reset.patch"
+	"sys-kernel_arch-sources-g14_files_0002-asus-nb-wmi-add-support-for-GU502DU.patch"
 	"sys-kernel_arch-sources-g14_files_0003-i8042-dmiids.patch"
 	"sys-kernel_arch-sources-g14_files_0004-hid-asus-n-key.patch"
-	"sys-kernel_arch-sources-g14_files_0005-drm-amd-display-use-correct-scale-for-actual_brightness.patch"
+	"sys-kernel_arch-sources-g14_files_0006-ALSA-hda-fixup-headset-for-ASUS-GX502-laptop.patch"
 	"sys-kernel_arch-sources-g14_files_6002-amdgpu-dm-kernel-5.8.patch"
 	"sys-kernel_arch-sources-g14_files_6003-vboxdrv-glp.patch"
 )
@@ -36,10 +37,10 @@ sha256sums=('SKIP'
             '457d5c9717048cd5334ba3d14dfb37699ac1d2c6dc2fd1df93adb487d6921f2f'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '02c59a722f5d1912ba9ee4c2b5e84b079c13badc225040b834a18a42345a7a61'
-            'fba0a46a4869378e75145f46d8d62bc259782115e59e6c24cc92088c22c9c2d5'
+            'edf23d81eb39f38e106c6ce172600cc06d7d155a4ef578c3c94344a45a8a7858'
             'a7b045dc36aea9b3203a4910da3f3314121672e940d7bd8a8cf0126d913e0fe3'
-            'fdea6ab1672ea4758359e9c6e743aba56f33224c5d759852817a01af5974fd4b'
-            '1179d773dc7c80a03650f571f95f027d1f9638bce631b9be52c4af4db7503101'
+            '68bf0dcc390ed14d97f48ebd1095d2587ac2eb2671445125fbcaaf7a6aa01733'
+            'ac09472e9bcd5604666590b798b9194d446f79fa718ea67889173498676e99c3'
             '7063af2e6588575ee4fd20d2339850221595acd3da5d8912e6298aea57186887'
             'e92f713d50425be96f118a7a3b9f62787453341a27ff10ac5ba394de060ccef7')
 
