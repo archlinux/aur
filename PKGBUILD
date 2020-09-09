@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-quicktimeline
-_qtver=5.15.0
+_qtver=5.15.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('qt5-declarative')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('16ffeb733ba15815121fca5705ed5220ce0a0eb2ec0431ad0d55da9426a03c00')
+sha256sums=('15665d489a6a29ff406a5fe2b4ac14ab102fb6e43864e115432be065da073cca')
 
 prepare() {
   mkdir -p build
