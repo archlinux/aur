@@ -3,7 +3,7 @@
 pkgname='arrow'
 _pkgname='arrow-apache-arrow'
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
 url="https://arrow.apache.org"
@@ -20,14 +20,13 @@ sha256sums=('dac59f4d42416224419c020ed2e8f8371e85c1d9ff4368ed5b5c026ee28d3fd4'
             'd29fec6754e4eb29d2409e1a3fcddc64c674a108d43efd048286399f1035106e')
 
 prepare(){
-  cd "$srcdir"
-  patch -p0 < cmake.patch
+  cd "$_pkgname-$pkgver"
+  patch -p1 -i ../cmake.patch
 }
 
 build(){
-  cd "$srcdir"
   mkdir -p build
-  cd "$srcdir/build"
+  cd build
   ARROW_BUILD_TOOLCHAIN=/usr ORC_HOME=/usr DOUBLE_CONVERSION_HOME=/usr cmake \
     ../$_pkgname-$pkgver/cpp -DARROW_DEPENDENCY_SOURCE=SYSTEM \
                                       -DARROW_PYTHON=ON \
@@ -55,7 +54,7 @@ build(){
 }
 
 package(){
-  cd "$srcdir/build"
+  cd build
   make DESTDIR="${pkgdir}" install
   find "${pkgdir}/usr/lib/" -name "*testing*" -delete
 }
