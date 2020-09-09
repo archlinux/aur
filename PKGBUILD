@@ -1,4 +1,4 @@
-# Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
+# Maintainer: Vlad Petrov ejiek@mail.ru
 pkgname=vim-table-mode
 pkgver=4.6.7
 pkgrel=1
