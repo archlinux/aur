@@ -1,4 +1,4 @@
-pkgbase = kos32-dev
+pkgbase = cmm
 	pkgdesc = SPHINX C-- Compiler . C-- is a programming language occupying an intermediate position between Assembler and C.
 	pkgver = 0.240
 	pkgrel = 1
