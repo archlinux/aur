@@ -29,4 +29,3 @@ package() {
   install -Dm 755 target/release/auswahl -t "${pkgdir}/usr/bin"
   install -Dm 755 $pkgname/LICENSE "${pkgdir}/usr/share/licenses/auswahl"
 }
-
