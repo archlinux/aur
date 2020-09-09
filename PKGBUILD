@@ -1,12 +1,12 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 # Contributor: Pritunl <contact@pritunl.com>
 
-pkgname=pritunl-web-git
 _pkgname=pritunl-web
+pkgname=${_pkgname}-git
 pkgver=135.9f6f48b
 pkgrel=1
 pkgdesc="Pritunl external web server"
-arch=("any")
+arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=("custom")
 url="https://github.com/pritunl/${_pkgname}"
 depends=(go)
@@ -23,7 +23,6 @@ pkgver() {
 
 prepare() {
 	export GOPATH=$srcdir/go
-	export https_proxy=127.0.0.1:8123
 
 	mkdir -p $GOPATH/src/github.com/pritunl
 	ln -rTsf $_pkgname $GOPATH/src/github.com/pritunl/$_pkgname
