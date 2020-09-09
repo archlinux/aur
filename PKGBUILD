@@ -1,7 +1,7 @@
 pkgname=ipmiview
 pkgver=2.17.0
 _pkghash=200505
-pkgrel=1
+pkgrel=2
 pkgdesc="Supermicro IPMI tool"
 makedepends=('tar')
 depends=("glibc" "java-runtime=8")
@@ -12,7 +12,10 @@ url="http://www.supermicro.com/products/nfo/ipmi.cfm"
 backup=('account.properties'
         'email.properties'
         'IPMIView.properties'
-        'timeout.properties')
+        'timeout.properties'
+        'iKVM.properties'
+        'stunnel.properties'
+)
 
 source=("https://www.supermicro.com/wftp/utility/IPMIView/Linux/IPMIView_${pkgver}_build.${_pkghash}_bundleJRE_Linux_x64.tar.gz"
         'ipmiview.desktop')
@@ -33,13 +36,22 @@ package() {
   cp -rf . ${pkgdir}/opt/${pkgname}
 
   touch ${pkgdir}/opt/${pkgname}/timeout.properties
-  touch ${pkgdir}/opt/${pkgname}/account.properties
-  touch ${pkgdir}/opt/${pkgname}/email.properties
-  touch ${pkgdir}/opt/${pkgname}/IPMIView.properties
   chmod a+rw ${pkgdir}/opt/${pkgname}/timeout.properties
+
+  touch ${pkgdir}/opt/${pkgname}/account.properties
   chmod a+rw ${pkgdir}/opt/${pkgname}/account.properties
+
+  touch ${pkgdir}/opt/${pkgname}/email.properties
   chmod a+rw ${pkgdir}/opt/${pkgname}/email.properties
+
+  touch ${pkgdir}/opt/${pkgname}/IPMIView.properties
   chmod a+rw ${pkgdir}/opt/${pkgname}/IPMIView.properties
+
+  touch ${pkgdir}/opt/${pkgname}/iKVM.properties
+  chmod a+rw ${pkgdir}/opt/${pkgname}/iKVM.properties
+
+  touch ${pkgdir}/opt/${pkgname}/stunnel.properties
+  chmod a+rw ${pkgdir}/opt/${pkgname}/stunnel.properties
 
   ln -s /opt/${pkgname}/IPMIView20 ${pkgdir}/usr/bin/${pkgname}
   install -m 0644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
