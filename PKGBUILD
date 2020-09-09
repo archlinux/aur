@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=callr
-_cranver=3.4.3
+_cranver=3.4.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(r 'r-processx>=3.4.0' r-r6)
 optdepends=(r-cliapp r-covr r-crayon r-fansi r-pingr r-ps r-rprojroot r-spelling r-testthat r-tibble r-withr)
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('9b0e11e01a4ec19f066ac6ab7905cfef')
+sha256sums=('8298603241075f05728affe579b057f2f39bb578688f041d0161a0cd5d25ecc1')
 
 build() {
   cd "${srcdir}"
