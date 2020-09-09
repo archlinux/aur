@@ -1,4 +1,6 @@
 # Maintainer: arjan5 <aur@anymore.nl>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
@@ -6,7 +8,7 @@
 
 pkgname=gnupg-large-secmem
 _pkgname=gnupg
-pkgver=2.2.21
+pkgver=2.2.23
 pkgrel=1
 pkgdesc='Complete and free implementation of the OpenPGP standard - with extra large secure memory for many parallel decryption actions'
 url='https://www.gnupg.org/'
@@ -15,7 +17,8 @@ arch=('x86_64')
 checkdepends=('openssh')
 makedepends=('libldap' 'libusb-compat' 'pcsclite')
 depends=('npth' 'libgpg-error' 'libgcrypt' 'libksba' 'libassuan'
-         'pinentry' 'bzip2' 'readline' 'gnutls' 'sqlite')
+         'pinentry' 'bzip2' 'readline' 'libreadline.so' 'gnutls'
+         'sqlite' 'zlib' 'glibc')
 optdepends=('libldap: gpg2keys_ldap'
             'libusb-compat: scdaemon'
             'pcsclite: scdaemon')
@@ -28,7 +31,7 @@ source=("https://gnupg.org/ftp/gcrypt/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2"
         'drop-import-clean.patch'
         'avoid-beta-warning.patch'
         'do-not-rebuild-defsincdate.patch')
-sha256sums=('61e83278fb5fa7336658a8b73ab26f379d41275bb1c7c6e694dd9f9a6e8e76ec'
+sha256sums=('10b55e49d78b3e49f1edb58d7541ecbdad92ddaeeb885b6f486ed23d1cd1da5c'
             'SKIP'
             '63108d8fcbcfddf7ba6eee699ade0f79f98558c8ba1f07d86c7a55dce603355d'
             '02d375f0045f56f7dd82bacdb5ce559afd52ded8b75f6b2673c39ec666e81abc'
@@ -81,8 +84,7 @@ package() {
 	ln -s gpg "${pkgdir}"/usr/bin/gpg2
 	ln -s gpgv "${pkgdir}"/usr/bin/gpgv2
 
-	cd doc/examples/systemd-user
-	for i in *.*; do
-		install -Dm644 "$i" "${pkgdir}/usr/lib/systemd/user/$i"
-	done
+	install -Dm 644 doc/examples/systemd-user/*.* -t "${pkgdir}/usr/lib/systemd/user"
 }
+
+# vim: ts=2 sw=2 noet:

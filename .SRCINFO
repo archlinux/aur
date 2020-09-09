@@ -1,6 +1,6 @@
 pkgbase = gnupg-large-secmem
 	pkgdesc = Complete and free implementation of the OpenPGP standard - with extra large secure memory for many parallel decryption actions
-	pkgver = 2.2.21
+	pkgver = 2.2.23
 	pkgrel = 1
 	url = https://www.gnupg.org/
 	install = install
@@ -18,22 +18,25 @@ pkgbase = gnupg-large-secmem
 	depends = pinentry
 	depends = bzip2
 	depends = readline
+	depends = libreadline.so
 	depends = gnutls
 	depends = sqlite
+	depends = zlib
+	depends = glibc
 	optdepends = libldap: gpg2keys_ldap
 	optdepends = libusb-compat: scdaemon
 	optdepends = pcsclite: scdaemon
 	provides = dirmngr
-	provides = gnupg2=2.2.21
-	provides = gnupg=2.2.21
+	provides = gnupg2=2.2.23
+	provides = gnupg=2.2.23
 	conflicts = dirmngr
 	conflicts = gnupg2
 	conflicts = gnupg
 	replaces = dirmngr
 	replaces = gnupg2
 	replaces = gnupg
-	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.21.tar.bz2
-	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.21.tar.bz2.sig
+	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.23.tar.bz2
+	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.2.23.tar.bz2.sig
 	source = gnupg_large_secmem.patch
 	source = drop-import-clean.patch
 	source = avoid-beta-warning.patch
@@ -42,7 +45,7 @@ pkgbase = gnupg-large-secmem
 	validpgpkeys = 46CC730865BB5C78EBABADCF04376F3EE0856959
 	validpgpkeys = 031EC2536E580D8EA286A9F22071B08A33BD3F06
 	validpgpkeys = 5B80C5754298F0CB55D8ED6ABCEF7E294B092E28
-	sha256sums = 61e83278fb5fa7336658a8b73ab26f379d41275bb1c7c6e694dd9f9a6e8e76ec
+	sha256sums = 10b55e49d78b3e49f1edb58d7541ecbdad92ddaeeb885b6f486ed23d1cd1da5c
 	sha256sums = SKIP
 	sha256sums = 63108d8fcbcfddf7ba6eee699ade0f79f98558c8ba1f07d86c7a55dce603355d
 	sha256sums = 02d375f0045f56f7dd82bacdb5ce559afd52ded8b75f6b2673c39ec666e81abc
