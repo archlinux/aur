@@ -1,0 +1,30 @@
+pkgbase = coreapps-meta
+	pkgdesc = CoreApps application family meta package
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitlab.com/cubocore
+	arch = any
+	license = GPL3
+	depends = coreaction
+	depends = corearchiver
+	depends = corefm
+	depends = coregarage
+	depends = corehunt
+	depends = coreimage
+	depends = coreinfo
+	depends = corekeyboard
+	depends = corepad
+	depends = corepaint
+	depends = corepdf
+	depends = corepins
+	depends = corerenamer
+	depends = coreshot
+	depends = corestats
+	depends = corestuff
+	depends = coreterminal
+	depends = coretime
+	depends = coreuniverse
+	optdepends = coretoppings: additional features and plugins
+
+pkgname = coreapps-meta
+
