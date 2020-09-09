@@ -1,0 +1,18 @@
+--- a/config.def.h	2020-09-10 01:50:18.656682943 +0800
++++ b/config.def.h	2020-09-10 02:01:47.980020616 +0800
+@@ -4,7 +4,14 @@
+ static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
+ /* -fn option overrides fonts[0]; default X11 font or font set */
+ static const char *fonts[] = {
+-	"monospace:size=10"
++	"monospace:size=14",
++	"Noto Sans CJK SC:size=14",
++	"Noto Sans CJK TC:size=14",
++	"Noto Sans CJK HK:size=14",
++	"Noto Sans CJK JP:size=14",
++	"Noto Sans CJK KR:size=14",
++	"Noto Color Emoji:size=14"
++	// "sans-serif:size=14"
+ };
+ static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
+ static const char *colors[SchemeLast][2] = {
