@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-bin
-	pkgver = 3.1.8.sdk401
+	pkgver = 3.1.8.sdk402
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -52,10 +52,10 @@ pkgname = dotnet-sdk-bin
 	depends = dotnet-runtime-bin
 	depends = glibc
 	provides = dotnet-sdk-bin
-	provides = dotnet-sdk=3.1.8.sdk401
+	provides = dotnet-sdk=3.1.8.sdk402
 	provides = dotnet-sdk-3.1
 	conflicts = dotnet-sdk-bin
-	conflicts = dotnet-sdk=3.1.8.sdk401
+	conflicts = dotnet-sdk=3.1.8.sdk402
 	conflicts = dotnet-sdk-3.1
 
 pkgname = dotnet-targeting-pack-bin

@@ -10,7 +10,7 @@ pkgname=(
   'dotnet-targeting-pack-bin'
   'aspnet-targeting-pack-bin'
   )
-pkgver=3.1.8.sdk401
+pkgver=3.1.8.sdk402
 _runtimever=3.1.8
 _sdkver=3.1.402
 pkgrel=1
