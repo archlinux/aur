@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=torbrowser-launcher-git
 pkgver=0.3.2.r32.275a2b8
-pkgrel=1
+pkgrel=2
 pkgdesc="Securely and easily download, verify, install and launch Tor Browser"
 arch=('any')
 url="https://github.com/micahflee/torbrowser-launcher"
@@ -15,10 +15,10 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/micahflee/torbrowser-launcher.git#branch=develop'
         '444.patch'
-        "https://github.com/archlinux/svntogit-community/blob/packages/torbrowser-launcher/trunk/tor-browser-developers.pub")
+        "tor-browser-developers.pub::https://sources.archlinux.org/other/community/torbrowser-launcher/tor-browser-developers-2020-12-19.asc")
 sha256sums=('SKIP'
             'c94ecaab83ae49943d02772583dcd89e9d6ee1448d56ca8fcb621eeafbc3315b'
-            '1d06596847ef46a54005cd5cc9c5246bd134cb3d42d27ac045105b6aaa9f3475')
+            '1845e038fc7b0b1f861d9ddb29118d40c03596ec6efff82025dd47e74eb865b9')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
