@@ -12,7 +12,7 @@ pkgbase = finalhe-git
 	depends = qt5-base
 	provides = finalhe
 	conflicts = finalhe
-	source = finalhe-git::git://github.com/soarqin/finalhe.git
+	source = finalhe-git::git+https://github.com/soarqin/finalhe.git
 	md5sums = SKIP
 
 pkgname = finalhe-git

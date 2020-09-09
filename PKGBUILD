@@ -3,7 +3,7 @@
 _pkgname='finalhe'
 pkgname=${_pkgname}-git
 pkgver=1.92.r7.g624b8eb
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to push h-encore exploit for PS VITA/PS TV automatically"
 arch=('x86_64')
 url="https://github.com/soarqin/${_pkgname}"
@@ -12,7 +12,7 @@ depends=('libxml2' 'libusb' 'zlib' 'qt5-base')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("$pkgname::git://github.com/soarqin/${_pkgname}.git")
+source=("$pkgname::git+https://github.com/soarqin/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
