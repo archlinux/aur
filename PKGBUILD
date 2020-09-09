@@ -1,7 +1,7 @@
 # Maintainer: Connor Behan <connor.behan@gmail.com>
 # Contributor: Rémy Oudompheng <oudomphe@clipper.ens.fr>
 pkgname=singular-factory
-pkgver=4.1.1
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="Computer Algebra System for polynomial computations: factory and libfac"
 arch=('i686' 'x86_64')
@@ -32,4 +32,4 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-md5sums=('f2bed6e0e0f88a8cfb6a7225b26931c6')
+md5sums=('853486a62816caa1e3cb29deeb79c9d6')
