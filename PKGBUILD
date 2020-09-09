@@ -1,6 +1,6 @@
 # Maintainer: Alexander Menzhinsky <amenzhinsky@gmail.com>
 pkgname=protoc-gen-go-grpc
-pkgver=1.31.0
+pkgver=1.32.0
 pkgrel=0
 pkgdesc="gRPC bindings generator for Go language"
 arch=("any")
@@ -19,4 +19,4 @@ package() {
 	install -Dm755 "grpc-go-${pkgver}/cmd/protoc-gen-go-grpc/protoc-gen-go-grpc" "${pkgdir}/usr/bin/protoc-gen-go-grpc"
 }
 
-sha256sums=('9975bd09c992a6fa355da69925aba25957b87b9643bbe62792e928b6355fd805')
+sha256sums=('47a991a1d561738839e74803e350a276b4b753ae4af329091cb35ad2a117dcb2')
