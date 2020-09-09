@@ -1,6 +1,6 @@
 pkgbase = plasma-runners-translator
 	pkgdesc = Translates words and sentences into any language
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/naraesk/krunner-translator
 	arch = i686
@@ -14,8 +14,8 @@ pkgbase = plasma-runners-translator
 	depends = krunner
 	conflicts = kdeplasma-addons-runners-translator
 	replaces = plasma5-runners-translator
-	source = plasma-runners-translator-1.2.0.tar.gz::https://github.com/naraesk/krunner-translator/archive/v1.2.0.tar.gz
-	sha256sums = 08c69565828212ed9bdd1226bb60cf654f9c8577f9be5c7695c575a1c0edc902
+	source = plasma-runners-translator-1.2.1.tar.gz::https://github.com/naraesk/krunner-translator/archive/v1.2.1.tar.gz
+	sha256sums = ce4cde885c0bd0b1542dc5b17246a337b6657db0e976d77afb7e1858fc9867f8
 
 pkgname = plasma-runners-translator
 
