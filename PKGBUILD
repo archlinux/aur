@@ -1,7 +1,7 @@
 # Maintainer: Michael Hansen <zrax0111 gmail com>
 
 pkgname=kf5-doc-qch
-pkgver=2016.03.22
+pkgver=2020.09.09
 pkgrel=1
 conflicts=('frameworks5-doc-qch')
 replaces=('frameworks5-doc-qch')
