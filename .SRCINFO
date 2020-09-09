@@ -1,4 +1,4 @@
-pkgbase = mcedit
+pkgbase = mcedit-unified
 	pkgdesc = Minecraft world editor
 	pkgver = 1.5.6.0
 	pkgrel = 1
@@ -27,5 +27,5 @@ pkgbase = mcedit
 	md5sums = 0c6d503c3a87cfb347564efd5b1b0fd5
 	md5sums = 8589c54a51b69e83ca6f36dd3db3be5f
 
-pkgname = mcedit
+pkgname = mcedit-unified
 

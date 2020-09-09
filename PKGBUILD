@@ -1,6 +1,7 @@
 # Maintainer: Kozec <kozec at kozec dot com>
+# Maintainer: CrankySupertoon <crankysupertoon@gmail.com>
 
-pkgname='mcedit'
+pkgname='mcedit-unified'
 reponame='MCEdit-Unified'
 pkgver='1.5.6.0'
 pkgrel=1
