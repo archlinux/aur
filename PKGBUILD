@@ -1,0 +1,28 @@
+# Maintainer: Hans Ole Hatzel <hhatzel	ät gmail.com>
+
+pkgname=sfst
+_srcname=SFST
+pkgver='1.4.7e'
+pkgrel=1
+pkgdesc='Toolbox for the implementation of morphological analyzers and other tools.'
+arch=('i686' 'x86_64')
+url="https://www.cis.uni-muenchen.de/~schmid/tools/SFST/"
+license=('GPL2')
+depends=()
+makedepends=('bison' 'flex' 'ncurses' 'm4')
+source=('https://www.cis.uni-muenchen.de/~schmid/tools/SFST/data/SFST-1.4.7e.tar.gz')
+sha256sums=('9e1bda84db1575ffb3bea56f3d49898661ad663280c5b813467cd17a7d6b76ac')
+
+
+build() {
+  cd ${_srcname}/src
+
+  make
+}
+
+package() {
+  cd ${_srcname}/src
+
+  make DESTDIR="$pkgdir/usr/" install
+  make DESTDIR="$pkgdir/usr/share/man/man1/" maninstall
+}
