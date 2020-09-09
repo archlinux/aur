@@ -1,7 +1,7 @@
 # Maintainer: kpcyrd <git@rxv.cc>
 
 pkgname=cargo-bloat
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Find out what takes most of the space in your executable"
 url="https://github.com/RazrFalcon/cargo-bloat"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/RazrFalcon/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('cea6dd7730ecf7af9f4d997e702ba4e575edcfc3fcece48025bd1a7aacb04a58')
+sha256sums=('02caaa14ca68daf35d51e4f883db50126910242b04ce752884334278334cfe7b')
 
 build() {
   cd "${pkgname}-${pkgver}"
