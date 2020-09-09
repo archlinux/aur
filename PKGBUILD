@@ -1,12 +1,12 @@
 # Maintainer: Josh VanderLinden <arch@cloudlery.com>
 pkgbase='ttf-go-git'
 pkgname=('ttf-go-mono-git' 'ttf-go-sans-git')
-pkgver=r192.b7f8df6
+pkgver=r309.972c09e
 pkgrel=1
 arch=('any')
 url="https://go.googlesource.com/image"
 license=('BSD')
-depends=('fontconfig')
+depends=('fontconfig' 'xorg-mkfontscale')
 makedepends=('git')
 install=ttf-go.install
 source=(repo::git+${url})

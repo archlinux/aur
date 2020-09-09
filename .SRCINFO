@@ -1,5 +1,5 @@
 pkgbase = ttf-go-git
-	pkgver = r192.b7f8df6
+	pkgver = r309.972c09e
 	pkgrel = 1
 	url = https://go.googlesource.com/image
 	install = ttf-go.install
@@ -7,6 +7,7 @@ pkgbase = ttf-go-git
 	license = BSD
 	makedepends = git
 	depends = fontconfig
+	depends = xorg-mkfontscale
 	source = repo::git+https://go.googlesource.com/image
 	md5sums = SKIP
 
