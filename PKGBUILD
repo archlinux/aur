@@ -6,10 +6,11 @@
 pkgname='cnrdrvcups-lb'
 
 # The download link changes with every version, try to keep changes in one place
-_pkgver='5.10';  _dl='8/0100007658/13'
+# current link : https://gdlp01.c-wss.com/gds/8/0100007658/18/linux-UFRII-drv-v520-uken-05.tar.gz
+_pkgver='5.20';  _dl='8/0100007658/18';_suffix='05'
 
 pkgver="${_pkgver}"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
@@ -25,9 +26,9 @@ optdepends=('libjpeg6-turbo: improves printing results for color imageRUNNER/i-S
 conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
 options=('!emptydirs' '!strip' '!libtool')
 
-source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-08.tar.gz")
-md5sums=('c80793681b666766cedf864a3fd20dd7')
-sha512sums=('dbc8b8e600ec29e73afa4ba8a760fd643d58ee2017f6c3c35e63c7f2186cf0cb675adb0ea344b0bd04d0b4fa7f13763b5ce97e8264790356134e6ded3069bf54')
+source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-${_suffix}.tar.gz")
+md5sums=('affe334ad4bff34d8bf21b59a03e5b19')
+sha512sums=('31652894e8ad07e81ae044c5172ced73569a1b78f06f48bcafcd9cabcb19406f0645bfdf741cf3a60746859e671c443d14e5c0c04bffd540ac10406df7266b45')
 
 
 # Canon provides the sourcecode in a tarball within the dowload and we need to extract the code manually
@@ -104,7 +105,6 @@ prepare() {
         -e 's:ln -sf :ln -s :g' \
         > 'make.install.Arch'
 
-
 }
 
 _setvars() {
@@ -128,9 +128,11 @@ _setvars() {
         b_include_dir="${srcdir}/${_srcdir}/include"
         _libsarch='libs64'
   )
-# -fcommon is needed to compile with gcc10 , see https://gcc.gnu.org/gcc-10/porting_to.html
+
+# -fcommon is needed to compile succesfully with gcc10 , see https://gcc.gnu.org/gcc-10/porting_to.html
 # -O2 -pipe -fno-plt are taken from makepkg.conf default for archlinux
 # _libsarch is architecture dependent
+
 }
 
 build() {
@@ -151,7 +153,11 @@ package() {
     RPM_BUILD_ROOT="${pkgdir}" \
     sh 'make.install.Arch'
 
-    # licensing information is spread over multiple files and folders
+    # licensing information is spread over multiple files and folders and has changed between versions
+    # while they could be done in a loop iterating through dirs/files,
+    # I feel that would obscure what happens and make troubleshooting harder
+    # so each file gets its own install command
+    
     pushd "${_common_dir}"
     install -Dpm644 "README" "${pkgdir}/usr/share/licenses/${pkgname}/${_common_dir}/README"
     
@@ -184,7 +190,7 @@ package() {
     
     # documentation
     pushd "$srcdir/linux-UFRII-drv-v${_pkgver//\./}-uken/Documents"
-    install -Dpm644 "README-ufr2-5.1xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.1xUK.html"
+    install -Dpm644 "README-ufr2-5.2xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.2xUK.html"
     install -Dpm644 "UsersGuide-ufr2-UK.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-UK.html"
     install -Dpm644 "LICENSE-EN.txt" "${pkgdir}/usr/share/licenses/${pkgname}/Documents/LICENSE-EN.txt"
     popd
