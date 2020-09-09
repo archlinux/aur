@@ -2,7 +2,7 @@
 
 _pkgname=python2-pycpa
 pkgname=$_pkgname-git
-pkgver=20200908
+pkgver=20200909
 pkgrel=1
 pkgdesc="Pragmatic Python implementation of Compositional Performance Analysis (aka the SymTA/S approach provided by Symtavision) used for research in worst-case timing analysis."
 arch=('any')
@@ -24,4 +24,6 @@ build() {
 package() {
   cd ${srcdir}/pycpa
   python2 setup.py install --root="${pkgdir}"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
