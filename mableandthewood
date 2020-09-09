@@ -1,0 +1,3 @@
+#!/bin/sh
+cd "/opt/mableandthewood"
+exec "./Mable_PC" "$@"

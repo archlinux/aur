@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Mable & The Wood
+GenericName=Mable & The Wood
+Comment=Mable & The Wood
+Icon=mableandthewood
+Exec="Mable_PC" ""
+Categories=Game;
+Path=/opt/mableandthewood

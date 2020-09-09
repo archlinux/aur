@@ -1,0 +1,26 @@
+pkgbase = mableandthewood-gog
+	pkgdesc = Mable & The Wood (GOG version)
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://mableandthewood.com
+	arch = x86_64
+	license = custom:commercial
+	depends = openssl-1.0
+	depends = libcurl-gnutls
+	depends = glu
+	depends = libxxf86vm
+	depends = libxrandr
+	depends = libglvnd
+	depends = libx11
+	depends = libxext
+	provides = mableandthewood
+	conflicts = mableandthewood
+	source = mableandthewood.desktop
+	source = mableandthewood
+	source = file://mable_the_wood_1_7_37606.sh
+	b2sums = c9974b0fd1b47ef7ff5c327260592cc3a993cd230a1fef5347c822dad185e084bf845140f40e994cebf445dab9616f7744f89a41ea8a5a80a2a96a4c026c4730
+	b2sums = 6d67c0e4e2c1c0ef4dd27c02b8650301923df7e48536cf82d9cd9467e514a63f311e1b9ff0d1251eac3f2c18dfec3ce6970c28987689c60ca0948e9298d1ab79
+	b2sums = a0dc419c07d6a9cf909799550a656e8824a04288733f2450c2f56be5005b2d1c7579c30f246653fa8106e4a5a713c4c6e81b96d192a93be521841abf594c2fdc
+
+pkgname = mableandthewood-gog
+
