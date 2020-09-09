@@ -1,7 +1,7 @@
 pkgbase = cheat
 	pkgdesc = Allows you to create and view interactive cheatsheets on the command-line
 	pkgver = 4.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cheat/cheat
 	arch = i686
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = cheat
 	backup = etc/cheat/conf.yml
 	source = cheat-4.1.0.tar.gz::https://github.com/cheat/cheat/archive/4.1.0.tar.gz
 	source = conf.yml
-	source = git+https://github.com/cheat/cheatsheets.git#commit=92db692c0fd6348793ee0641cb63d08977be90fd
+	source = git+https://github.com/cheat/cheatsheets.git
 	source = https://github.com/cheat/cheat/raw/4.1.0/LICENSE.txt
 	sha256sums = b392c3a77eda61f4b1f0991cb30c6202f74472713293e73f645fb697665ca72c
 	sha256sums = a0aa691a318219d048107b835fe0e8cddfa734618fc5ccbb800b5bb463e00ea5
 	sha256sums = SKIP
-	sha256sums = a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499
+	sha256sums = 5eaa85b8023f915629de53c3604015ab5b23bed404afa9e551ab44e0bc46dde3
 
 pkgname = cheat
 

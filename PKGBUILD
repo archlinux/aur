@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/cheat/cheat"
@@ -17,12 +17,12 @@ backup=("etc/$pkgname/conf.yml")
 _commit='92db692c0fd6348793ee0641cb63d08977be90fd'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'conf.yml'
-        "git+https://github.com/cheat/cheatsheets.git#commit=$_commit"
+        'git+https://github.com/cheat/cheatsheets.git'
         "https://github.com/cheat/cheat/raw/$pkgver/LICENSE.txt")
 sha256sums=('b392c3a77eda61f4b1f0991cb30c6202f74472713293e73f645fb697665ca72c'
             'a0aa691a318219d048107b835fe0e8cddfa734618fc5ccbb800b5bb463e00ea5'
             'SKIP'
-            'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
+            '5eaa85b8023f915629de53c3604015ab5b23bed404afa9e551ab44e0bc46dde3')
 
 prepare() {
 	export GOPATH="$srcdir/gopath"
