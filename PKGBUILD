@@ -3,7 +3,7 @@
 _pkgname='colorpicker'
 pkgname="${_pkgname}-ym1234-git"
 pkgver=r16.b48e036
-pkgrel=2
+pkgrel=3
 pkgdesc='A small tool for X11 that writes the color value on your screen at the cursor position to stdout, in RGB'
 arch=('i686' 'x86_64')
 url="https://github.com/ym1234/${_pkgname}"
