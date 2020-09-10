@@ -3,7 +3,7 @@
 _pkgname='colorpicker'
 pkgname="${_pkgname}-ym1234-git"
 pkgver=r16.b48e036
-pkgrel=1
+pkgrel=2
 pkgdesc='A small tool for X11 that writes the color value on your screen at the cursor position to stdout, in RGB'
 arch=('i686' 'x86_64')
 url="https://github.com/ym1234/${_pkgname}"
@@ -26,7 +26,5 @@ build() {
 }
 
 package() {
-  cd "$_pkgname"
-  mkdir -m755 -p ${pkgdir}/usr/bin
-  install -m777 "$_pkgname" ${pkgdir}/usr/bin/
+  install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}/${_pkgname}"
 }
