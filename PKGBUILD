@@ -1,7 +1,7 @@
 # Maintainer: Rafael Cruz <rafaelcruz at outlook dot com>
 
 pkgname=fightcade2
-pkgver=2.0.77
+pkgver=2.0.80
 pkgrel=6
 pkgdesc='The best way to play your favorite retro games with or against any other player in the world.'
 url='https://www.fightcade.com/'
