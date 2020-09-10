@@ -1,11 +1,9 @@
 [Desktop Entry]
-Encoding=UTF-8
-Value=1.0
+Version=1.0
 Type=Application
 Name=Beneath A Steel Sky
-GenericName=Beneath A Steel Sky
-Comment=Beneath A Steel Sky
 Icon=beneath-a-steel-sky
-Exec="scummvm -c config.ini" ""
+Comment=All man's social problems are coming to a boil. Under the claustrophobic lid of a steel sky.
+Exec=/usr/bin/beneath-a-steel-sky
+Terminal=true
 Categories=Game;
-Path=/usr/share/beneath-a-steel-sky/

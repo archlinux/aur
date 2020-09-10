@@ -1,7 +1,7 @@
 pkgbase = gog-beneath-a-steel-sky
 	pkgdesc = All man's social problems are coming to a boil. Under the claustrophobic lid of a steel sky.
 	pkgver = 0.0372
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.gog.com/game/beneath_a_steel_sky
 	arch = any
@@ -9,10 +9,8 @@ pkgbase = gog-beneath-a-steel-sky
 	depends = scummvm
 	source = local://beneath_a_steel_sky_en_gog_2_20150.sh
 	source = beneath-a-steel-sky
-	source = beneath-a-steel-sky.desktop
 	sha256sums = d30476a34bb4bd99c68d130780c9e2db9727c157b8123f13447ed755724efdc5
 	sha256sums = 606428aa493cf3162c54db7b79c6deb9c0825aee398cf24255c5b09002262dc2
-	sha256sums = d64316b378591d366abc4b28ab8caf7f892e0d11f59b07c4c6e7c0801486c413
 
 pkgname = gog-beneath-a-steel-sky
 
