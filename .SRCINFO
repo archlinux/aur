@@ -1,7 +1,7 @@
 pkgbase = lib32-86box-nightly-bin
 	pkgdesc = x86 full-system emulator running via Wine
 	pkgver = 3.0.git
-	pkgrel = 0
+	pkgrel = 1
 	url = http://86box.net
 	arch = x86_64
 	license = GPL2
@@ -14,7 +14,7 @@ pkgbase = lib32-86box-nightly-bin
 	source = 86box.sh
 	source = https://ci.86box.net/job/86Box/lastSuccessfulBuild/artifact/*zip*/archive.zip
 	md5sums = 91806130ae51196094ec77f2a7b4ce3e
-	md5sums = de15a6b671ebd6add47119b3268ae75b
+	md5sums = 2f6edbb5b672676a59bc689aaab0e043
 	md5sums = 98e90dc4e6562bb4060f463bc42ebd6e
 
 pkgname = lib32-86box-nightly-bin
