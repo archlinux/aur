@@ -1,27 +1,25 @@
 pkgbase = lib32-eudev
 	pkgdesc = The userspace dev tools (udev) forked by Gentoo (32-bit)
-	pkgver = 3.2
-	pkgrel = 2
-	url = http://dev.gentoo.org/~blueness/eudev
+	pkgver = 3.2.9
+	pkgrel = 1
+	url = https://wiki.gentoo.org/wiki/Project:Eudev
 	arch = x86_64
-	license = GPL
+	license = GPL-2
 	makedepends = gcc-multilib
-	makedepends = lib32-util-linux
 	makedepends = gobject-introspection
 	makedepends = gperf
 	makedepends = python2
 	makedepends = gtk-doc
-	makedepends = lib32-kmod
 	depends = lib32-glib2
 	depends = lib32-glibc
-	depends = eudev-systemdcompat
-	provides = lib32-udev=232
-	provides = lib32-systemd=232
-	conflicts = lib32-systemd
+	depends = lib32-util-linux
+	provides = lib32-udev
+	conflicts = lib32-udev
+	replaces = lib32-udev
 	options = !makeflags
 	options = !libtool
-	source = http://dev.gentoo.org/~blueness/eudev/eudev-3.2.tar.gz
-	sha256sums = d84a5f7942393a009afc6af0bf31e98841147a0521b91ffbed161dccac303c25
+	source = eudev-3.2.9.tar.gz::https://github.com/gentoo/eudev/archive/v3.2.9.tar.gz
+	sha512sums = SKIP
 
 pkgname = lib32-eudev
 
