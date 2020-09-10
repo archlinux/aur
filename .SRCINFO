@@ -1,6 +1,6 @@
 pkgbase = citra-nightly
 	pkgdesc = Citra emulator 'nightly' branch binaries for Arch Linux
-	pkgver = 1617
+	pkgver = 1618
 	pkgrel = 1
 	url = https://github.com/linux-gamers/arch-citra-nightly
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = citra-nightly
 	conflicts = citra-canary-bin
 	conflicts = citra-nightly-bin
 	conflicts = citra-nightly-git
-	source = https://github.com/linux-gamers/arch-citra-nightly/archive/1617.tar.gz
-	sha512sums = 6350042cc630924de5bc4bdd4c861b4361593e4aed37b4662e5fb35a3e6a2390c043f313685b758fe1cc41c6be9d348f69b9edb624999260875a80ca58f52fe8
+	source = https://github.com/linux-gamers/arch-citra-nightly/archive/1618.tar.gz
+	sha512sums = 84482b1bf80af09e62dda465aeb7e0bcacfec92dabe267e4b52225ae64dbdf68cf84cf25eeef7be7bd75aa6508b43ad9179a2c07f06ab32369c00d6f05e96ac8
 
 pkgname = citra-nightly
 
