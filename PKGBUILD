@@ -3,7 +3,7 @@
 pkgname=llvm90
 pkgdesc="LLVM compiler toolchain, version 9.0.1"
 pkgver=9.0.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
@@ -29,7 +29,7 @@ build() {
     -DLLVM_ENABLE_DOXYGEN=OFF \
     -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
     -DLLVM_BINUTILS_INCDIR=/usr/include
-  make -j1 -Wno-dev
+  make -j1 -Wno-dev all ocaml_doc
 }
 
 package() {
@@ -39,5 +39,5 @@ package() {
   install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   mkdir -p "$pkgdir/etc/ld.so.conf.d/"
-  echo "/opt/llvm/lib" > "$pkgdir/etc/ld.so.conf.d/70-llvm90.conf"
+  echo "/opt/llvm90/lib" > "$pkgdir/etc/ld.so.conf.d/70-llvm90.conf"
 }
