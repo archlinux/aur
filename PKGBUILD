@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Lefranc <guillaume@signal18.io>
 pkgname=nextdns
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='NextDNS DNS-over-HTTPS client'
 arch=('x86_64')
@@ -21,5 +21,5 @@ package() {
   install -Dm644 "$srcdir/nextdns.service" "$pkgdir/usr/lib/systemd/system/nextdns.service"
 }
 
-sha256sums=('4b508f7e39232f31cc94195aa7072a791c7a8f6306b7da63816ed4187b20af0c'
+sha256sums=('cbff1e4b2e353b096b165f0514ab282229fcebe3450d3b3533c10a2a6cfed7cc'
             'e15d83ec460562c8a81052f37c0e78e18842e95270895524b9853f7aca285eba')
