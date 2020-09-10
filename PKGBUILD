@@ -17,16 +17,14 @@ source_x86_64=(
 md5sums_x86_64=('SKIP' 'SKIP')
 
 prepare() {
-    # extract binary
-    #tar -xzvf MCreator.tar.gz
-
     # make desktop
-    cd "${srcdir}"
-    gendesk -f --pkgname "MCreator" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n
+    rm -rf "${srcdir}/${_pkgname}${_pkgver}/jdk"
+    gendesk -f --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n
 }
 
 package() {
     # Remove Bundled Java
+    cd "${srcdir}/${_pkgname}"
     rm -rf "${srcdir}/${_pkgname}/jdk"
     # install the main files.
     cd ${srcdir}/${_pkgname}${_pkgver}
