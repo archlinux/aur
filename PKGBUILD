@@ -1,6 +1,6 @@
 _pkgname=frida
 pkgname=python-$_pkgname
-pkgver=12.11.12
+pkgver=12.11.14
 pkgrel=1
 pkgdesc="Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 3 version from PyPi"
 arch=('i686' 'x86_64') # setup.py downloads pre-built binary components, so it doesn't work on ARM (yet).
@@ -9,7 +9,7 @@ license=('custom:wxWindows Library License, Version 3.1')
 depends=('python' 'python-pygments>=2.0.2' 'python-colorama>=0.2.7')
 source=("https://files.pythonhosted.org/packages/source/f/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "COPYING")
-sha256sums=('617f24aa3789902903369b5da0c42c921a8d65d38c75c8d91761034477222057'
+sha256sums=('50bdf161a54028129accb8d93d588e307ed9ac7f435fdab9a097434d50af1604'
             '5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2')
 conflicts=("python2-${_pkgname}")
 
