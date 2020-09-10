@@ -1,8 +1,8 @@
 # Maintainer: Sébastien Luttringer
 
 pkgname=agetpkg-git
-pkgver=2.r0.g56f5023
-pkgrel=6
+pkgver=4.r0.g673e371
+pkgrel=1
 pkgdesc='Archlinux Archive Get Package (Git version)'
 arch=('any')
 url='https://github.com/seblu/agetpkg'
