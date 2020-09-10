@@ -2,8 +2,8 @@
 # Contributor: Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 
 pkgname="python-pystray"
-pkgver=0.16.0
-pkgrel=2
+pkgver=0.17.1
+pkgrel=1
 arch=(any)
 license=('GPL3')
 pkgdesc="Allows to create a system tray icon"
@@ -11,7 +11,7 @@ url="https://github.com/moses-palmer/pystray"
 depends=('python-six' 'python-pillow' 'python-xlib>=0.17' 'libappindicator-gtk3')
 makedepends=('python>=3.4' 'python-setuptools' 'python-pip' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/moses-palmer/pystray/archive/v${pkgver}.tar.gz")
-sha512sums=('1571a91851cb9ff85cc7497162db687d3cef3ff6c863d1f8ede4ca1275de1f0a1dcf09a313a744f39f5666765c507c0dccf5f75320e5c7bd6dd4074ef2e5b83a')
+sha512sums=('ca56fe3ea0588fcd1d3829e18344b856e9031d4531bafa66349056f858fb94a112579b9114d7fa9406dc9f9424ae298bee9825cba1af7014a173c63d0590c8e1')
 
 build() {
   cd "pystray-$pkgver"
