@@ -1,7 +1,7 @@
 # Maintainer: DustVoice <info@dustvoice.de>
 
 pkgname=st-dustvoice-git
-pkgver=0.8.4.3.r0.g4822798
+pkgver=0.8.4.4
 pkgrel=1
 pkgdesc="DustVoice's custom, heavily patched st (suckless.org) version"
 
