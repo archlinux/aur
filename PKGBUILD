@@ -4,8 +4,8 @@
 # Contributor: Philipp Robbel <robbel@gmail.com>
 
 pkgname=fswebcam
-pkgver=20140113
-pkgrel=2
+pkgver=20200725
+pkgrel=1
 pkgdesc='Neat and simple webcam app'
 arch=('i686' 'x86_64')
 url="https://www.sanslogic.co.uk/fswebcam/"
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('gd')
 backup=("etc/${pkgname}.conf")
 source=("${url}/files/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3ee389f72a7737700d22e0c954720b1e3bbadc8a0daad6426c25489ba9dc3199')
+sha256sums=('319a6926507cb52da5043a5ceaea6cc5b949d3acaa5f39fe074327ae58d65fb5')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
