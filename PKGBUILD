@@ -1,40 +1,55 @@
-# Maintainer: ptrv <mail@petervasil.net>
+# Maintainer: David Runge <dvzrv@archlinux.org>
+# Contributor: ptrv <mail@petervasil.net>
 
+_name=sc3-plugins
 pkgname=sc3-plugins-git
-_name="sc3-plugins"
-pkgver=3.7.1.r25.g41a4923
+pkgver=3.11.0.r2.g03b233b
 pkgrel=1
-pkgdesc="Plugins for SuperCollider (Git version)"
-url="http://supercollider.sourceforge.net/"
+pkgdesc="Extension plugins for the SuperCollider3 audio synthesis server."
 arch=('i686' 'x86_64')
-license=('GPL')
-depends=('supercollider')
-conflicts=('supercollider-with-extras-git')
-provides=('supercollider-with-extras-git')
-
-source=("${_name}::git+https://github.com/supercollider/sc3-plugins")
-md5sums=('SKIP')
+url="https://github.com/supercollider/sc3-plugins"
+license=('GPL2')
+depends=('gcc-libs' 'glibc' 'supercollider')
+makedepends=('cmake' 'fftw' 'git' 'stk')
+conflicts=('sc3-plugins')
+provides=('sc3-plugins')
+source=("${_name}::git+https://github.com/supercollider/sc3-plugins"
+        "git+https://github.com/timblechmann/nova-simd.git"
+        "git+https://github.com/thestk/stk.git")
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd "$_name"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/Version.//g'
 }
 
+prepare() {
+  cd "$_name"
+  git submodule init
+  git config submodule.external_libraries/nova-simd.url "${srcdir}/nova-simd"
+  git config submodule.external_libraries/stk.url "${srcdir}/stk"
+  git submodule update
+}
+
 build() {
-  cd $srcdir/$_name
-  git submodule update --init --recursive .
-
-  [ -d bld ] || mkdir bld && cd bld
-
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DSC_PATH=/usr/include/SuperCollider \
+  cd "$_name"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DSC_PATH=/usr/include/SuperCollider/ \
+        -DSYSTEM_STK=ON \
         -DSUPERNOVA=1\
-        -DAY=1
-  make
+        -W no-dev \
+        -B build \
+        -S .
+  make VERBOSE=1 -C build
 }
 
 package() {
-  cd "$srcdir/$_name/bld"
-  make DESTDIR="$pkgdir/" install
+  depends+=('libfftw3f.so' 'libstk-4.6.1.so')
+  cd "$_name"
+  make DESTDIR="$pkgdir/" install -C build
+  install -vDm 644 {{DEVELOPING,README}.md,TODO} \
+    -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
