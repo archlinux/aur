@@ -3,7 +3,7 @@
 pkgname=python-flake8-annotations
 _pkgname="${pkgname#python-}"
 _name="${_pkgname/-/_}"
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A flake8 extension that checks type annotations"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools' 'python-dephell')
 checkdepends=() # TODO
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('b81a0c0409094452f03270e54982cb8bad1a3de02088126df5947e7fbbc863b1c8ae91c7173b274485e829dec93526dc5da3b82c7d2b19841bb999ad3f5e9322')
+b2sums=('4dad2d15ccd2ee79947c216ce9a5058700af41580192b8445753494d4c106e4d578a27c6f02cd0caa64e3d4dad5f667cb7e457dd149548ac8f3667b6afbf5d91')
 
 prepare() {
   cd "$_pkgname-$pkgver"
