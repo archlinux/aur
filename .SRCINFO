@@ -6,9 +6,9 @@ pkgbase = mcreator
 	arch = x86_64
 	license = ARR
 	makedepends = gendesk
-	makedepends = dos2unix
-	makedepends = whet
 	source_x86_64 = MCreator.tar.gz::https://mcreator.net/repository/2020-4/MCreator%202020.4%20Linux%2064bit.tar.gz
+	source_x86_64 = mcreatorlaunch.sh
+	md5sums_x86_64 = SKIP
 	md5sums_x86_64 = SKIP
 
 pkgname = mcreator
