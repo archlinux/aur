@@ -35,6 +35,7 @@ post_upgrade() {
 	systemctl daemon-reload
 	if systemctl is-active piavpn >/dev/null; then
 		systemctl restart piavpn
+		echo ":: Don't forget to reconnect to your vpn if needed"
 	fi
 }
 
