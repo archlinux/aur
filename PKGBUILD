@@ -3,14 +3,14 @@
 
 pkgname=corestats
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A system resource viewer from the CoreApps family."
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/cubocore/$pkgname"
+url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL3')
 depends=('qt5-base' 'libcprime>=2.7.1' 'libcsys>=2.7.1' 'lm_sensors')
 groups=('coreapps')
-source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 md5sums=('6914ac1713c73ba5d52c7d7632664457')
 
 prepare() {
