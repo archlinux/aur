@@ -1,0 +1,13 @@
+pkgbase = guile-config
+	pkgdesc = Configuration management library for GNU Guile
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://gitlab.com/a-sassmannshausen/guile-config
+	arch = x86_64
+	license = GPL3
+	depends = guile
+	source = https://gitlab.com/a-sassmannshausen/guile-config/-/archive/0.4.2/guile-config-0.4.2.tar.gz
+	sha256sums = 1daf04b52cfc587e73deb5722b46c12afece015caf3712c44ab7d9630a8f3b4a
+
+pkgname = guile-config
+
