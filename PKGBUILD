@@ -17,7 +17,6 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir"
-  bsdtar -xf logo.tar.xz
   sh ./bootsplash-manjaro-glitch.sh
 }
 
