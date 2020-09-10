@@ -3,15 +3,15 @@
 pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
-pkgver='0.1.14'
+pkgver='0.1.15'
 pkgrel='0'
 epoch=
 arch=('i686' 'x86_64')
 url='https://github.com/X3n0m0rph59/eruption-roccat-vulcan'
 license=('GPL3+')
 groups=()
-depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus' 'libpulse' 'luajit')
-makedepends=('git' 'rust')
+depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus' 'libpulse' 'luajit' 'lua51-socket')
+makedepends=('git' 'rust' 'xorg-server-devel' 'libxrandr')
 checkdepends=()
 optdepends=()
 provides=('eruption-roccat-vulcan')
@@ -21,7 +21,7 @@ backup=(etc/eruption/eruption.conf usr/share/eruption/scripts/lib/themes/* usr/s
 options=()
 install='eruption.install'
 changelog=
-source=('git+https://github.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=e53abdb261e4f4e0dacc7e3b6308a893754ce5f3')
+source=('git+https://github.com/X3n0m0rph59/eruption-roccat-vulcan.git#commit=513c30d589584e8d42835b2e3ddcf332fb2ec23f')
 noextract=()
 sha512sums=('SKIP')
 
@@ -65,6 +65,7 @@ package() {
 
     install -m 755 "target/release/eruption" "$pkgdir/usr/bin/"
     install -m 755 "target/release/eruptionctl" "$pkgdir/usr/bin/"
+    install -m 755 "target/release/eruption-netfx" "$pkgdir/usr/bin/"
 
     install -m 755 "support/systemd/eruption-suspend.sh" "$pkgdir/usr/lib/systemd/system-sleep/eruption"
 
@@ -80,6 +81,7 @@ package() {
     install -m 644 "support/man/eruption.8" "$pkgdir/usr/share/man/man8/"
     install -m 644 "support/man/eruption.conf.5" "$pkgdir/usr/share/man/man5/"
     install -m 644 "support/man/eruptionctl.1" "$pkgdir/usr/share/man/man1/"
+    install -m 644 "support/man/eruption-netfx.1" "$pkgdir/usr/share/man/man1/"
 
     install -m 644 "eruption/src/scripts/macros.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/macros.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
@@ -131,6 +133,8 @@ package() {
     install -m 644 "eruption/src/scripts/impact.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/multigradient.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/multigradient.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "eruption/src/scripts/netfx.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "eruption/src/scripts/netfx.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/osn.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/osn.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/perlin.lua" "$pkgdir/usr/share/eruption/scripts/"
@@ -198,6 +202,7 @@ package() {
     install -m 644 "support/profiles/heatmap.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/heatmap-errors.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/matrix.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/netfx.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/batique.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/checkerboard.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile1.profile" "$pkgdir/var/lib/eruption/profiles/"
