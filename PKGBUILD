@@ -5,14 +5,14 @@
 
 pkgname=gtk3-theme-numix-solarized
 _pkgname=gtk-theme-numix-solarized
-pkgver=20180913
+pkgver=20200910
 pkgrel=1
 pkgdesc="Solarized versions of GTK3 theme, compatible with GTK 3.20"
 arch=('any')
 url="https://github.com/Ferdi265/numix-solarized-gtk-theme"
 license=('GPL3')
 source=("https://github.com/Ferdi265/numix-solarized-gtk-theme/releases/download/$pkgver/NumixSolarized-$pkgver.tar.gz")
-sha256sums=('5cf43ce96ed4b60329498edc3ec1ef86aa8858b2c026a679bf17c183b2deb373')
+sha256sums=('eac9abd269008056235d08b1422a7979e0df58a9aa61bf7ea970107eb0357312')
 
 package() {
 	find NumixSolarized/ -type d -regex \
