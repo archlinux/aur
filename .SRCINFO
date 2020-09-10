@@ -1,0 +1,22 @@
+pkgbase = foo2zjs-minimal-nightly
+	pkgdesc = foo2zjs printer drivers with the bare minimum compilation options to ensure package stability.
+	pkgver = 20200610
+	pkgrel = 1
+	url = http://foo2zjs.rkkda.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = foomatic-db-engine
+	makedepends = foomatic-db
+	makedepends = curl
+	makedepends = bc
+	depends = cups
+	depends = ghostscript
+	provides = foo2zjs-nightly
+	conflicts = foo2zjs-nightly
+	source = http://foo2zjs.rkkda.com/foo2zjs.tar.gz
+	md5sums = SKIP
+
+pkgname = foo2zjs-minimal-nightly
+
