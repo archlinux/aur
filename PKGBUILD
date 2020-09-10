@@ -11,17 +11,9 @@ optdepends=('bootsplash-systemd: for bootsplash functionality')
 builddepends=('imagemagick')
 options=('!libtool' '!emptydirs')
 
-source=('bootsplash-packer'
-	'bootsplash-manjaro-glitch.sh'
-	'bootsplash-manjaro-glitch.initcpio_install'
-	'logo.png'
-	'logo.tar.xz::https://github.com/ANDRoid7890/bootsplash-theme-manjaro-glitch/blob/master/logo.tar.xz')
+source=('git+https://github.com/ANDRoid7890/bootsplash-theme-manjaro-glitch.git')
 
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('SKIP')
 
 build() {
   cd "$srcdir"

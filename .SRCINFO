@@ -7,15 +7,7 @@ pkgbase = bootsplash-theme-manjaro-glitch
 	optdepends = bootsplash-systemd: for bootsplash functionality
 	options = !libtool
 	options = !emptydirs
-	source = bootsplash-packer
-	source = bootsplash-manjaro-glitch.sh
-	source = bootsplash-manjaro-glitch.initcpio_install
-	source = logo.png
-	source = logo.tar.xz::https://github.com/ANDRoid7890/bootsplash-theme-manjaro-glitch/blob/master/logo.tar.xz
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = git+https://github.com/ANDRoid7890/bootsplash-theme-manjaro-glitch.git
 	sha256sums = SKIP
 
 pkgname = bootsplash-theme-manjaro-glitch
