@@ -1,7 +1,7 @@
 pkgbase = piavpn-bin
 pkgdesc = Private Internet Access client
 pkgver = 2.4_05574
-pkgrel = 1
+pkgrel = 2
 url = https://privateinternetaccess.com/
 install = piavpn-bin.install
 arch = x86_64
@@ -10,6 +10,7 @@ makedepends = libcap
 depends = net-tools
 depends = libxkbcommon-x11
 depends = libnl
+depends = libxcb
 depends = xcb-util-wm
 depends = xcb-util-image
 depends = xcb-util-keysyms
