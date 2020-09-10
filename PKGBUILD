@@ -1,13 +1,13 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma-runners-translator
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Translates words and sentences into any language"
 arch=('i686' 'x86_64')
 url="https://github.com/naraesk/krunner-translator"
 license=('GPL3')
 groups=()
-depends=('krunner')
+depends=('krunner' 'translate-shell')
 makedepends=('cmake' 'extra-cmake-modules' 'ki18n' 'qt5-base' 'qt5-tools')
 optdepends=()
 provides=()
@@ -17,9 +17,9 @@ backup=()
 options=()
 install=''
 changelog=''
-source=("$pkgname-$pkgver.tar.gz::https://github.com/naraesk/krunner-translator/archive/v1.2.1.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/naraesk/krunner-translator/archive/v1.3.0.tar.gz")
 noextract=()
-sha256sums=('ce4cde885c0bd0b1542dc5b17246a337b6657db0e976d77afb7e1858fc9867f8')
+sha256sums=('aabf55f336ec9effcd0e18b5aaa11abaa23f72e4b7b75d7002c61ab9859a68cb')
 
 prepare() {
   cd krunner-translator-${pkgver}
