@@ -4,17 +4,17 @@ _svnname='pk2-la'
 
 pkgname=pk2-la-svn
 pkgver=16 
-pkgrel=4
+pkgrel=5
 pkgdesc="Program to use the Microchip PICkit 2 has as a logic analyzer and I/O probe"
 arch=('any')
 url="http://sourceforge.net/projects/pk2-la/"
 license=('GPL2')
-depends=('python2' 'python2-pyusb' 'pygtk')
+depends=('python2' 'python2-pyusb-git' 'pygtk')
 provides=('pk2-la')
 conflicts=('pk2-la')
 makedepends=('subversion')
 
-source=("$_svnname::svn+http://svn.code.sf.net/p/$_svnname/code")
+source=("$_svnname::svn+https://svn.code.sf.net/p/$_svnname/code")
 md5sums=('SKIP')
 
 
