@@ -1,13 +1,13 @@
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="amulet-map-editor-bin"
-pkgver="0.6.10.0"
+pkgver="0.7.0.1"
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A new Minecraft world editor and converter that supports all versions since Java 1.12 and Bedrock 1.7."
 url="https://www.amulet-editor.com/"
 license=('MIT')
 makedepends=('gendesk' 'dos2unix' 'wget')
-
+depends=('libpng')
 source_x86_64=(
     "Amulet-v${pkgver}-linux.zip::https://github.com/Amulet-Team/Amulet-Map-Editor/releases/download/v${pkgver}/Amulet-v${pkgver}-linux.zip"
 )
@@ -37,7 +37,7 @@ package() {
 
     # install the icon
     install -d -m755 "${pkgdir}/usr/share/icons"
-    cp -Rr "${srcdir}/Amulet/amulet_map_editor/img/icon128.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
+    cp -Rr "${srcdir}/Amulet/amulet_map_editor/api/image/logo/icon128.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
     
     # fix file permissions - all files as 644 - directories as 755
     find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
