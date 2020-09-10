@@ -3,8 +3,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lfe-git
-pkgver=r974.ea62f92
-pkgrel=2
+pkgver=r1018.d9d3f15
+pkgrel=1
+epoch=1
 pkgdesc="Lisp Flavoured Erlang"
 url='http://lfe.io/'
 arch=('x86_64')
