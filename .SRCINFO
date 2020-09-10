@@ -1,0 +1,21 @@
+pkgbase = lib32-libsystemd.so
+	pkgdesc = systemd client libraries without udev; systemd compatibility package
+	pkgver = 246.4
+	pkgrel = 1
+	url = http://www.freedesktop.org/wiki/Software/systemd
+	arch = x86_64
+	license = GPL2
+	depends = lib32-glibc
+	depends = lib32-libcap
+	depends = lib32-libgcrypt
+	depends = lib32-xz
+	depends = lib32-eudev
+	provides = lib32-systemd
+	provides = lib32-systemd.so
+	conflicts = lib32-systemd
+	conflicts = eudev-systemdcompat
+	source = http://mirror.chaoticum.net/arch/multilib/os/x86_64/lib32-systemd-246.4-1-x86_64.pkg.tar.xz
+	sha256sums = SKIP
+
+pkgname = lib32-libsystemd.so
+
