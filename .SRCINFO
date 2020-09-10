@@ -1,6 +1,6 @@
 pkgbase = libayatana-indicator
 	pkgdesc = Ayatana Indicators (Shared Library)
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/libayatana-indicator
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = libayatana-indicator
 	conflicts = libayatana-indicator-gtk3
 	replaces = libayatana-indicator-gtk3
 	options = !emptydirs
-	source = https://github.com/AyatanaIndicators/libayatana-indicator/archive/0.8.1.tar.gz
-	md5sums = d9967818c2b126d7a8bfb2169972960e
+	source = https://github.com/AyatanaIndicators/libayatana-indicator/archive/0.8.2.tar.gz
+	md5sums = cc5fafcc8d5ff362ba217b45807bd18c
 
 pkgname = libayatana-indicator
 
