@@ -9,11 +9,13 @@ url="https://github.com/0xkurome/kurcoder"
 license=('MIT')
 depends=('python3' 'python-pip')
 makedepends=('git' 'python-setuptools')
+conflicts=(kurcoder)
 source=("git+$url")
 md5sums=('SKIP')
 
 
 package() {
   cd "kurcoder"
+  python3 -m pip install ipcalc
   make DESTDIR="$pkgdir/" install
 }
