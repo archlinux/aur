@@ -44,7 +44,7 @@ build() {
 
 package() {
 	install -Dm755 "$srcdir/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-	install -Dm755 "$srcdir/btrfs-progs/btrfs" "$pkgdir/usr/lib/btrfs-$_pkgname"
+	install -Dm755 "$srcdir/btrfs-progs/btrfs" "$pkgdir/usr/lib/$_pkgname-btrfs"
 }
 
 # vim: noet:sw=8:ts=8
