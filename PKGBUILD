@@ -2,12 +2,12 @@
 
 pkgname=scrapestorm
 pkgver=3.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-Powered visual website scraper, which can be used to extract data from almost any websites without writing any code"
 arch=('x86_64')
 url='https://www.scrapestorm.com'
 license=("custom:${pkgname}")
-depends=('pango-legacy' 'bash')
+depends=('pango-legacy' 'bash' 'gconf')
 makedepends=('gendesk')
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
@@ -33,7 +33,7 @@ package() {
   cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname}"
   find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} +
   echo "#!/usr/bin/env bash
-  LD_LIBRARY_PATH=/opt/pango-legacy/usr/lib /usr/share/${pkgname}/${pkgname}.AppImage" > scrapestorm
+  LD_LIBRARY_PATH=/opt/pango-legacy/usr/lib /opt/scrapestorm/app/ScrapeStorm" > scrapestorm
   install -Dm755 scrapestorm -t "${pkgdir}/usr/bin"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

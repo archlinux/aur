@@ -1,13 +1,14 @@
 pkgbase = scrapestorm
 	pkgdesc = AI-Powered visual website scraper, which can be used to extract data from almost any websites without writing any code
 	pkgver = 3.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.scrapestorm.com
 	arch = x86_64
 	license = custom:scrapestorm
 	makedepends = gendesk
 	depends = pango-legacy
 	depends = bash
+	depends = gconf
 	noextract = scrapestorm-3.5.3.AppImage
 	options = !strip
 	source = scrapestorm-3.5.3.AppImage::https://scrapestorm2.azureedge.net/update/en/nature/ScrapeStorm-3.5.3.AppImage
