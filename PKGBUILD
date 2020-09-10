@@ -3,10 +3,10 @@
 
 pkgname=coretoppings
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Additional features,plugins etc for CuboCore Application Suite."
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/cubocore/$pkgname"
+url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL3')
 depends=('qt5-base' 'qt5-location' 'qt5-x11extras' 'qt5-connectivity' 'libpulse' 'libxcomposite' 'libcprime')
 optdepends=('ffmpeg: For media'
@@ -26,7 +26,7 @@ optdepends=('ffmpeg: For media'
 			'libnotify: Qwikaccess - Notifications'
 			'xdg-utils: Lockscreen')
 groups=('coreapps')
-source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 md5sums=('e21ef9235b35954964ef947d3de525b5')
 
 prepare() {
