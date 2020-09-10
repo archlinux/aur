@@ -35,7 +35,7 @@ package() {
 	files=( LICENSE $_name.plugin $_name.py README.md )
 	for file in "${files[@]}"
 	do
-		install -Dm644 $file "${pkgdir}/usr/lib/rhythmbox/plugins/${ name}/$file"
+		install -Dm644 $file "${pkgdir}/usr/lib/rhythmbox/plugins/${_name}/$file"
 	done
 }
 
