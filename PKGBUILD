@@ -2,7 +2,7 @@
 pkgname=emulationstation
 _gitname=EmulationStation
 pkgver=2.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/RetroPie/EmulationStation"
@@ -51,4 +51,6 @@ build() {
 
 package() {
     make -C "${_gitname}-${pkgver}/build" DESTDIR="${pkgdir}" install
+    mv ${pkgdir}/usr/share/EmulationStation/resources/resources/* ${pkgdir}/usr/share/EmulationStation/resources/
+    rmdir ${pkgdir}/usr/share/EmulationStation/resources/resources
 }

@@ -1,7 +1,7 @@
 pkgbase = emulationstation
 	pkgdesc = Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes.
 	pkgver = 2.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RetroPie/EmulationStation
 	install = emulationstation.install
 	arch = i686
