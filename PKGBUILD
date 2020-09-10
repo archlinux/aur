@@ -2,7 +2,7 @@
 
 pkgname=gtk-theme-numix-solarized-git
 pkgver=20200910.e4374bd
-pkgrel=1
+pkgrel=2
 pkgdesc="Solarized versions of Numix GTK2 and GTK3 theme, compatible with GTK 3.20"
 arch=('any')
 url="https://github.com/Ferdi265/numix-solarized-gtk-theme"
@@ -25,6 +25,6 @@ package() {
 	themes=( *.colors )
 
 	for theme in ${themes[@]/.colors/}; do
-		make THEME="$theme" DESTDIR="$pkgdir" install
+		make -j1 THEME="$theme" DESTDIR="$pkgdir" install
 	done
 }
