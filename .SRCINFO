@@ -3,6 +3,7 @@ pkgbase = python-pystray
 	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/moses-palmer/pystray
+	changelog = python-pystray.changelog
 	arch = any
 	license = GPL3
 	makedepends = python>=3.4
