@@ -16,7 +16,7 @@ md5sums_x86_64=('SKIP')
 
 prepare() {
     # Generate .desktop
-    gendesk -f --pkgname "Amulet Map Editor" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" --terminal "true" -n
+    gendesk -f --pkgname "Amulet Map Editor" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" --terminal "true" -n -f
     cd ${srcdir}
     mv Amulet\ Map\ Editor.desktop ${pkgname}.desktop
 
