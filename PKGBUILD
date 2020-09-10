@@ -22,7 +22,7 @@ prepare() {
     git reset --hard ${commitsha}
     
     # generate .desktop
-    gendesk -f --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n
+    gendesk -f --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
     mv "GDLauncher.desktop" "${pkgname}.desktop"
 
     # put yarn in testing mode
