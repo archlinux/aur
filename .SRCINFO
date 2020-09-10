@@ -1,11 +1,12 @@
 pkgbase = gtklp
-	pkgdesc = a graphical frontend for cups, the linux printing system
+	pkgdesc = A graphical frontend for cups, the linux printing system
 	pkgver = 1.3.4
-	pkgrel = 1
-	url = http://gtklp.sirtobi.com/
+	pkgrel = 2
+	url = http://gtklp.sirtobi.com
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = gcc9
 	depends = cups
 	depends = gtk2
 	source = gtklp-1.3.4.src.tar.gz::https://sourceforge.net/projects/gtklp/files/gtklp/1.3.4/gtklp-1.3.4.src.tar.gz/download
