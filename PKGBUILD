@@ -2,14 +2,14 @@
 
 pkgname=rider
 pkgver='2020.2.2'
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A cross-platform C# IDE by JetBrains.'
 arch=('any')
 options=('!strip' 'staticlibs')
 url='https://www.jetbrains.com/rider/'
 license=('Commercial')
-optdepends=('mono: .NET runtime' 'msbuild-15-bin: build .NET Core projects')
+optdepends=('mono: .NET runtime' 'msbuild: build .NET Core projects')
 provides=('rider')
 conflicts=('rider')
 
