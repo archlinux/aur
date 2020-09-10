@@ -2,7 +2,7 @@
 pkgname=goverlay-bin
 _pkgver=0_3_8
 pkgver=${_pkgver//_/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
@@ -11,7 +11,8 @@ depends=('gtk2')
 optdepends=('mangohud: Configure MangoHUD'
             'vkbasalt: Configure vkBasalt'
             'mesa-demos: OpenGL preview'
-            'vulkan-tools: Vulkan preview')
+            'vulkan-tools: Vulkan preview'
+            'git: Clone reshade repository')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("$url/releases/download/$pkgver/${pkgname%-bin}_${_pkgver}.tar.xz"
