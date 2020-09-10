@@ -1,0 +1,16 @@
+pkgbase = rhythmbox-plugin-open-containing-folder
+	pkgdesc = Adds an option to open the folder containing the selected track(s) to the right click context menu of rhythmbox music player
+	pkgver = 41
+	pkgrel = 1
+	url = https://github.com/donaghhorgan/rhythmbox-plugins-open-containing-folder
+	arch = any
+	license = GPL3
+	depends = rhythmbox
+	depends = xdg-utils
+	provides = rhythmbox-plugin-open-containing-folder
+	conflicts = rhythmbox-plugin-open-containing-folder
+	source = :git+https://github.com/donaghhorgan/rhythmbox-plugins-open-containing-folder.git
+	sha256sums = SKIP
+
+pkgname = rhythmbox-plugin-open-containing-folder
+
