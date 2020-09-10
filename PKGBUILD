@@ -2,7 +2,7 @@
 
 pkgname=banana9
 pkgver=9.0.5
-pkgrel=1
+pkgrel=2
 provides=('banana9')
 conflicts=('banana9')
 pkgdesc='Banana Accounting 9 Software'
@@ -26,8 +26,8 @@ package() {
   rm "${srcdir}/${pkgname}.tgz"
   bsdtar cf - --cd "${srcdir}" . | bsdtar xf - --cd "${pkgdir}/${_install_dir}"
 
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${full_name}.desktop"
-  sed -i "s-@exepath@-${_install_dir}/start_${pkgname}.sh-g" "${pkgdir}/usr/share/applications/${full_name}.desktop"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  sed -i "s-@exepath@-${_install_dir}/start_${pkgname}.sh-g" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   install -D /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<END
 #!/usr/bin/env sh
