@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r193.6f11b42
+pkgver=r195.d04b762
 pkgrel=1
 pkgdesc='A native client for web media. Works with youtube, 4chan and several manga sites.'
 arch=('x86_64')
