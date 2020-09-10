@@ -16,4 +16,5 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm755 shelldio.sh "$pkgdir/usr/bin/shelldio"
 }
-md5sums=('4a161cd52f939129b2877463da2743cf')
+
+md5sums=('430223fd21dede9cc337fc7e086f0764')
