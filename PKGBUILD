@@ -7,7 +7,6 @@ arch=('any')
 url='https://spacemacs.org'
 depends=('emacs')
 conflicts=('spacemacs')
-provides=('emacs')
 makedepends=('git')
 md5sums=('SKIP')
 license=('GPL3')
