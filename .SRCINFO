@@ -1,14 +1,16 @@
 pkgbase = python-spacy-de_core_news_sm
 	pkgdesc = German multi-task CNN trained on the TIGER and WikiNER corpora. Assigns context-specific token vectors, POS tags, dependency parses and named entities.
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spacy.io/models/de#de_core_news_sm
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-spacy
 	source = https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-2.3.0/de_core_news_sm-2.3.0.tar.gz
+	source = https://raw.githubusercontent.com/explosion/spaCy/master/LICENSE
 	sha256sums = 87fe081677c54615b8f5b3e701b8279c929dc9b5ed2aed1545e2494b5cae8b01
+	sha256sums = 2946c76df2417fe4e29c693e4d877f8516630740f0ede219edf1b0d06c61d536
 
 pkgname = python-spacy-de_core_news_sm
 
