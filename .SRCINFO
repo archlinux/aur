@@ -1,7 +1,7 @@
 pkgbase = cascadia-code-git
 	pkgdesc = A new monospaced font that includes programming ligatures
 	pkgver = 2008.25.r1.gc6492c66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/cascadia-code
 	arch = any
 	license = custom:OFL

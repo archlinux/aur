@@ -4,7 +4,7 @@ _gitname=cascadia-code
 pkgbase=cascadia-code-git
 pkgname=("otf-${pkgbase}" "ttf-${pkgbase}")
 pkgver=2008.25.r1.gc6492c66
-pkgrel=1
+pkgrel=2
 pkgdesc="A new monospaced font that includes programming ligatures"
 url="https://github.com/microsoft/${_gitname}"
 arch=('any')
@@ -26,12 +26,12 @@ build() {
     python -m venv .venv
     source .venv/bin/activate
     pip install -r requirements.txt
-    python build.py
+    python build.py -S
 }
 
 package_otf-cascadia-code-git() {
     cd "${_gitname}"
-    install -Dm644 build/*.otf -t "$pkgdir"/usr/share/fonts/OTF
+    install -Dm644 build/static/*.otf -t "$pkgdir"/usr/share/fonts/OTF
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
