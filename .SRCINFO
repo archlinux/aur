@@ -1,15 +1,15 @@
 pkgbase = corepins
 	pkgdesc = A bookmarking app from the CoreApps family.
 	pkgver = 4.0.0
-	pkgrel = 1
-	url = https://gitlab.com/cubocore/corepins
+	pkgrel = 2
+	url = https://gitlab.com/cubocore/coreapps/corepins
 	arch = x86_64
 	arch = aarch64
 	groups = coreapps
 	license = GPL3
 	depends = qt5-base
 	depends = libcprime>=2.7.1
-	source = https://gitlab.com/cubocore/corepins/-/archive/v4.0.0/corepins-v4.0.0.tar.gz
+	source = https://gitlab.com/cubocore/coreapps/corepins/-/archive/v4.0.0/corepins-v4.0.0.tar.gz
 	md5sums = 7643978b744777803c06205d7e5e53af
 
 pkgname = corepins
