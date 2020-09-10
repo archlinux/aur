@@ -1,7 +1,7 @@
 # Maintainer: Akritas Akritidis <akritasak@gmail.com>
 pkgname=execfs
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="The superior FUSE filesystem for exec on file open"
 arch=('any')
 url="http://github.com/MaanooAk/execfs"
@@ -10,7 +10,7 @@ depends=('python' 'python-fusepy')
 makedepends=('git' 'python-setuptools')
 provides=(execfs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MaanooAk/execfs/archive/v$pkgver.tar.gz")
-sha1sums=('c9b215902e4135a7cfc3a7e82835ad5fdce9ff75')
+sha1sums=('e8fb41c72cbd667fc4eaabaae374994dac7d8054')
 
 build() {
 	cd "$pkgname-$pkgver"
