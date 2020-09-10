@@ -20,7 +20,7 @@ sha256sums=(e3d782436c8b1d8d414190e6b048a507961b7d5763e4172938a4d903f3ad0637 f75
 
 build() {
 	cd "$srcdir"
-	sed -i 's/watchdog-opendev.sh/watchdog-opendev-pinger/' watchdog-opendev.sh
+	sed -i 's/watchdog-opendev.sh/watchdog-opendev-prober/' watchdog-opendev.sh
 	sed -i 's~/hive/opt/opendev/watchdog-opendev~/usr/bin/watchdog-opendev~' watchdog-opendev.sh
 }
 
