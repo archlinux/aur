@@ -1,0 +1,24 @@
+pkgbase = dduper-git
+	pkgdesc = Block-level out-of-band BTRFS dedupe tool
+	pkgver = 0.01.r39.g3b65aec
+	pkgrel = 1
+	url = https://github.com/Lakshmipathi/dduper
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libutil-linux
+	depends = lzo
+	depends = zlib
+	depends = zstd
+	depends = libgcrypt
+	depends = python-numpy
+	depends = python-ptable
+	source = dduper::git+https://github.com/Lakshmipathi/dduper.git
+	source = btrfs-progs::git://git.kernel.org/pub/scm/linux/kernel/git/kdave/btrfs-progs.git
+	source = 0001-Change-the-path-to-patched-btrfs.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = e00b2c85b3905155ebbedfe0b985e390915ee0576136137937687e008a2de352
+
+pkgname = dduper-git
+

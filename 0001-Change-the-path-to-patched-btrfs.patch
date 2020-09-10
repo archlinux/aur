@@ -1,0 +1,29 @@
+From 97f08a7b8f31833ffa9e170a6603bab8a4e3f0bf Mon Sep 17 00:00:00 2001
+From: nightuser <nightuser.android@gmail.com>
+Date: Thu, 10 Sep 2020 14:25:20 +0300
+Subject: [PATCH] Change the path to patched btrfs
+
+---
+ dduper | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/dduper b/dduper
+index 6a72d3f..ed16cfb 100755
+--- a/dduper
++++ b/dduper
+@@ -194,9 +194,10 @@ def auto_adjust_chunk_sz(src_file_sz, analyze):
+ def btrfs_dump_csum(filename):
+     global device_name
+ 
+-    btrfs_bin = "/usr/sbin/btrfs.static"
++    btrfs_bin = "/usr/lib/dduper-btrfs"
+     if os.path.exists(btrfs_bin) is False:
+-        btrfs_bin = "btrfs"
++        print("dduper's patched btrfs is not found")
++        sys.exit(-1)
+ 
+     out = subprocess.Popen(
+         [btrfs_bin, 'inspect-internal', 'dump-csum', filename, device_name],
+-- 
+2.28.0
+
