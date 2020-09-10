@@ -4,8 +4,8 @@
 
 pkgname=heroku-cli
 pkgver=7.42.13
-_builddir=cli-${pkgver}
-pkgrel=3
+pkgrel=4
+_builddir=cli-$pkgver-$pkgrel
 pkgdesc="a tool for creating and managing Heroku apps from the command line"
 arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
@@ -14,9 +14,9 @@ depends=('nodejs')
 # makedepends=('npm')
 optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
-source=("https://storage.googleapis.com/arch-package-files/heroku-v$pkgver-linux-x64.tar.xz")
-sha256sums=('168c5d676a402944fe47e5943d6790db3f205bb9592d551c2364a6faf17a7fbe')
-sha512sums=('7ec8b8acf89eea10e080cf52c3caaf444ebbb157944e3a69147446a4810b82a66025bec8105feee7530623f7e28dbc4a40c7d416ee84fee5ab4f86297935f1df')
+source=("https://storage.googleapis.com/arch-package-files/heroku-cli-v$pkgver-$pkgrel.tar.xz")
+sha256sums=('a81a43dd1dfcee006c5d6dd996a16c84365f6b45f1da77508862883bd672d98c')
+sha512sums=('2d9390bee6826dc2f371098a43d5a014ec369ea12f5efa042d60150b19a82bc5a2b76a2914502d26acc277487424833e887702eb15bac56a94fda26a8f30fb20')
 options=('!strip')
 provides=('heroku' 'heroku-cli')
 
