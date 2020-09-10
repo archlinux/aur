@@ -10,6 +10,7 @@ makedepends=("electron" "gendesk")
 source_x86_64=("icon.png::https://www.gstatic.com/images/branding/product/2x/meet_64dp.png"
 	       "https://github.com/arjun-g/google-meet-desktop/archive/v1.2.0.tar.gz")
 md5sums_x86_64=('SKIP' 'SKIP')
+conflicts=('google-meet-nativefier')
 
 build() {
   cd "${srcdir}/google-meet-desktop-${pkgver}"
