@@ -1,13 +1,12 @@
 # Maintainer: tuximail <admin@tuximail.de>
 pkgname=spacemacs
 pkgver=0.200.13
-pkgrel=2
+pkgrel=3
 pkgdesc="A community-driven Emacs distribution - The best editor is neither Emacs nor Vim, it's Emacs *and* Vim!"
 arch=('any')
 url='https://spacemacs.org'
 depends=('emacs')
 conflicts=('spacemacs-dev')
-provides=('emacs')
 makedepends=('git')
 md5sums=('SKIP')
 license=('GPL3')
