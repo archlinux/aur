@@ -2,7 +2,7 @@
 
 pkgname=python-pyzm-git
 _name=pyzm
-pkgver=r34.2b46698
+pkgver=0.1.26.r93.caf8f97
 pkgrel=1
 pkgdesc="ZoneMinder Python API and Logger"
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_name"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(awk -F\" 'NR==1{print $2}' pyzm/__init__.py)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {

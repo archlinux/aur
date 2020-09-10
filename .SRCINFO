@@ -1,6 +1,6 @@
 pkgbase = python-pyzm-git
 	pkgdesc = ZoneMinder Python API and Logger
-	pkgver = r34.2b46698
+	pkgver = 0.1.26.r93.caf8f97
 	pkgrel = 1
 	url = https://github.com/pliablepixels/pyzm
 	arch = any
