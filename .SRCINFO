@@ -1,12 +1,12 @@
 pkgbase = beersmith
 	pkgdesc = Complete software suite for brewers
-	pkgver = 3.0.9
+	pkgver = 3.1.8
 	pkgrel = 1
 	url = https://beersmith.com
 	arch = x86_64
 	license = commercial
-	source_x86_64 = https://s3.amazonaws.com/beersmith-3/BeerSmith-3.0.9_amd64.deb
-	sha256sums_x86_64 = ca22f487889beecaa22de6decfd263a76cf7cf92290a6bb4a55b455ba5ae21ea
+	source_x86_64 = https://beersmith3-1.s3.amazonaws.com/BeerSmith-3.1.8_amd64.deb
+	sha256sums_x86_64 = 7a6896123e8f43e4ded99f6d6f702daf1c2bc0fd73b01508dd02615e87827f5e
 
 pkgname = beersmith
 	depends = cairo
