@@ -1,8 +1,8 @@
 # Maintainer: Syaoran Code <syaorancode@gmail.com>
 
 pkgname=srfetch
-pkgver=7.0.0
-pkgrel=6
+pkgver=7.0.1
+pkgrel=1
 pkgdesc="This is modified neofetch script, only for me."
 arch=('any')
 url="https://gitlab.com/justanoobcoder/srfetch.git"
