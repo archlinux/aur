@@ -2,7 +2,7 @@
 
 pkgname=cobib
 pkgver=2.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Console Bibliography"
 arch=('any')
 license=('MIT')
@@ -20,4 +20,5 @@ package() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
   make install_extras
   python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
