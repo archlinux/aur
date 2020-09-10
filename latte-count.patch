@@ -82,7 +82,7 @@ index 63d227fd35..040a5cf1f9 100644
      """
      def __init__(self):
 -        Executable.__init__(self, "count", executable="count",
-+        Executable.__init__(self, "latte-count", executable="count",
++        Executable.__init__(self, "latte-count", executable="latte-count",
                              spkg="latte_int",
                              url=LATTE_URL)
  
