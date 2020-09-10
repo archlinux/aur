@@ -1,7 +1,7 @@
 # Maintainer: Your Name <kyli0x@protonmail.ch>
 
 pkgname=kurcoder-git
-pkgver=0.0.1.r33.g37067db
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="Toolkit for encoding, decoding, checksums, hex conversions & IP calculations"
 arch=('any')
