@@ -1,0 +1,18 @@
+pkgbase = colorpicker-ym1234-git
+	pkgdesc = A small tool for X11 that writes the color value on your screen at the cursor position to stdout, in RGB
+	pkgver = r16.b48e036
+	pkgrel = 1
+	url = https://github.com/ym1234/colorpicker
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = git
+	depends = libx11
+	provides = colorpicker
+	conflicts = colorpicker
+	source = git+https://github.com/ym1234/colorpicker
+	md5sums = SKIP
+
+pkgname = colorpicker-ym1234-git
+

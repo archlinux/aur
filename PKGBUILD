@@ -1,0 +1,32 @@
+# Maintainer: Cullen Ross <cullenrss@gmail.com>
+
+_pkgname='colorpicker'
+pkgname="${_pkgname}-ym1234-git"
+pkgver=r16.b48e036
+pkgrel=1
+pkgdesc='A small tool for X11 that writes the color value on your screen at the cursor position to stdout, in RGB'
+arch=('i686' 'x86_64')
+url="https://github.com/ym1234/${_pkgname}"
+license=('MIT')
+depends=('libx11')
+makedepends=('make' 'git')
+provides=('colorpicker')
+conflicts=('colorpicker')
+source=('git+https://github.com/ym1234/colorpicker')
+md5sums=(SKIP)
+
+pkgver() {
+    cd "${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$_pkgname"
+  make
+}
+
+package() {
+  cd "$_pkgname"
+  mkdir -m755 -p ${pkgdir}/usr/bin
+  install -m777 "$_pkgname" ${pkgdir}/usr/bin/
+}
