@@ -2,7 +2,7 @@
 
 pkgname=mableandthewood-gog
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Mable & The Wood (GOG version)'
 arch=(x86_64)
 url=https://mableandthewood.com
@@ -19,7 +19,7 @@ package() {
     install -Dm755 -t "$pkgdir/opt/${pkgname%-gog}" data/noarch/game/Mable_PC
     install -Dm644 -t "$pkgdir/opt/${pkgname%-gog}/assets" data/noarch/game/assets/{game.unx,options.ini}
 
-    install -Dm755 -t "$pkgdir/usr/bin/" "${pkgname%-gog}.sh"
+    install -Dm755 -t "$pkgdir/usr/bin/" "${pkgname%-gog}"
 
     install -Dm644 -t "$pkgdir/usr/share/applications" "${pkgname%-gog}.desktop"
     install -Dm644 data/noarch/support/icon.png "$pkgdir/usr/share/pixmaps/${pkgname%-gog}.png"
