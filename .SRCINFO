@@ -1,0 +1,14 @@
+pkgbase = google-meet-nativefier
+	pkgdesc = GoToMeeting desktop built with nativefier (electron)
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	makedepends = nodejs-nativefier
+	makedepends = gendesk
+	conflicts = google-meet-desktop
+	source_x86_64 = icon.png::https://www.gstatic.com/images/branding/product/2x/meet_64dp.png
+	md5sums_x86_64 = SKIP
+
+pkgname = google-meet-nativefier
+
