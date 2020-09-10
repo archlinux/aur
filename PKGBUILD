@@ -2,8 +2,8 @@
 # Maintainer: Sébastien Luttringer
 
 pkgname=agetpkg
-pkgver=3
-pkgrel=3
+pkgver=4
+pkgrel=1
 pkgdesc='Arch Linux Archive Get Package'
 arch=('any')
 url='https://git.seblu.net/archlinux/agetpkg'
