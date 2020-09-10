@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-session
 	pkgdesc = Ayatana Indicator showing session management, status and user switching
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = ayatana-indicator-session
 	optdepends = yelp
 	optdepends = firefox
 	options = !emptydirs
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-session/archive/0.8.0.tar.gz
-	md5sums = c85aee8084b4893a3ca45d8aa821f89b
+	source = https://github.com/AyatanaIndicators/ayatana-indicator-session/archive/0.8.1.tar.gz
+	md5sums = 12d7b641dcbc045119773b45e19a9c0d
 
 pkgname = ayatana-indicator-session
 
