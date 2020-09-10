@@ -1,6 +1,6 @@
 pkgbase = azote-git
 	pkgdesc = Wallpaper & color manager for Sway, i3 and other WMs (development version)
-	pkgver = 1.7.11.r5.g73fbeed
+	pkgver = 1.7.12.r15.ga7599ce
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/azote
 	arch = x86_64
@@ -19,6 +19,8 @@ pkgbase = azote-git
 	optdepends = imagemagick: for screen color picker on X11 and Sway
 	optdepends = libappindicator-gtk3: for tray status icon
 	optdepends = python-pyaml: for alacritty.yml toolbox
+	optdepends = swaybg: for wlroots-based compositors other than sway
+	optdepends = wlr-randr-git: for wlroots-based compositors other than sway
 	provides = azote
 	conflicts = azote
 	source = git+https://github.com/nwg-piotr/azote.git
