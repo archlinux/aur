@@ -24,7 +24,7 @@ source=(MCEdit
 
 prepare() {
     	# Generate .desktop
-    	gendesk -f --pkgname "MCEdit" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
+    	gendesk --pkgname "MCEdit" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
 
         #Fix Hardcoded Directories
 	cd ${srcdir}/${reponame}-${pkgver}
