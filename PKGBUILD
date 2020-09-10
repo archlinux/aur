@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=ex-impression-icon-theme-git
-pkgver=r8.077dfbf
+pkgver=r46.899ff7b8
 pkgrel=1
 pkgdesc='This icon theme got inspired on Mac OS icons and mimics those for the Linux OS'
 arch=('any')
@@ -21,14 +21,13 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  rm *.md
-  rm LICENSE
-  rm -rf "theme extras"
-  rm -rf .git
+  rm */LICENSE *.md
+  rm */*.md
 }
 
 package() {
+	cd "${pkgname%-git}"
   install -dm755 "${pkgdir}/usr/share/icons/"
-  cp -drf --no-preserve='ownership' . "${pkgdir}/usr/share/icons/"
+  cp -drf --no-preserve='ownership' EX-* "${pkgdir}/usr/share/icons/"
 }
 # vim:set ts=2 sw=2 et:
