@@ -30,7 +30,17 @@ prepare(){
   git submodule update --init --recursive
 
   cd "${srcdir}/${_pkgname}/${_builddir}"
-  meson setup ../../../build/ --prefix=/usr --buildtype=release --optimization=2 --strip -Dopenal=true -Dc_args=-minline-all-stringops #-Dwifi=true #wifi wants libagg??
+
+  meson setup ../../../build/ \
+        --prefix=/usr \
+        --buildtype=release \
+        --optimization=2 \
+        --strip \
+        -Dc_args='-minline-all-stringops -D_FORTIFY_SOURCE=2' \
+        -Db_pie=true \
+        -Dopenal=true
+        #-Dwifi=true #wifi wants libagg??
+
   meson configure ../../../build/
 }
 
