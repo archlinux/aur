@@ -2,7 +2,7 @@
 
 pkgorg='gepetto'
 pkgname=('example-robot-data' 'example-robot-data-docs')
-pkgver=3.4.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Set of robot URDFs for benchmarking and developed examples. "
 arch=('any')
