@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Beneath A Steel Sky
+GenericName=Beneath A Steel Sky
+Comment=Beneath A Steel Sky
+Icon=beneath-a-steel-sky
+Exec="scummvm -c config.ini" ""
+Categories=Game;
+Path=/usr/share/beneath-a-steel-sky/

@@ -1,68 +1,36 @@
-# Maintainer : Dan McCurry <dan.mccurry at linux dot com>
-# Contributor : André Fettouhi <a.fettouhi@gmail.com>
+# Maintainer: katt <magunasu.b97@gmail.com>
+# Contributor: Dan McCurry <dan.mccurry at linux dot com>
+# Contributor: André Fettouhi <a.fettouhi@gmail.com>
 
 pkgname=gog-beneath-a-steel-sky
-# Trim gog- prefix from launcher
-_appname=$(echo ${pkgname} | sed -e 's/gog-//')
-pkgver=2.1.0.4
-pkgrel=2
-pkgdesc="All man's social problems are coming to a boil. Under the claustrophobic lid of a steel sky. "
-arch=('any')
-url="http://www.gog.com/game/beneath_a_steel_sky"
-license=("custom:EULA")
-groups=("games")
-source=("local://gog_beneath_a_steel_sky_${pkgver}.sh"
-	"local://${_appname}")
-noextract=("gog_beneath_a_steel_sky_${pkgver}.sh")
-sha256sums=('1cd6c487b1f2f151874183aabb49026cb652faf33c1b326ea0edb1878eabadfb'
-            'e02ba961a2fe793a4c09f68e32a72fdd58750acc32e688adf63e1c6f075f42a4')
-depends=('libmpeg2' 'zlib' 'libjpeg-turbo' 'scummvm' 'unionfs-fuse')
-optdepends=('gendesk')
-PKGEXT=.pkg.tar
+pkgver=0.0372
+epoch=1
+pkgrel=1
+pkgdesc='All man'\''s social problems are coming to a boil. Under the claustrophobic lid of a steel sky.'
+arch=(any)
+url=https://www.gog.com/game/beneath_a_steel_sky
+license=(custom:commercial)
+depends=(scummvm)
+source=(local://beneath_a_steel_sky_en_gog_2_20150.sh
+		"${pkgname#gog-}"
+		"${pkgname#gog-}.desktop")
+sha256sums=('d30476a34bb4bd99c68d130780c9e2db9727c157b8123f13447ed755724efdc5'
+            '606428aa493cf3162c54db7b79c6deb9c0825aee398cf24255c5b09002262dc2'
+            'd64316b378591d366abc4b28ab8caf7f892e0d11f59b07c4c6e7c0801486c413')
 
 prepare() {
-	cd ${srcdir}
-	
-	# Create menu icons
-	if which gendesk &>/dev/null; then
-		gendesk -f -n --pkgname "${_appname}" \
-			--pkgdesc "${pkgdesc}" \
-			--name='Beneath a Steel Sky' \
-			--exec="/usr/bin/${_appname}" \
-			--categories "Application;Game;"
-	else
-		warning "gendesk not found!"
-		warning "Menu icons not generated."
-	fi
-
-	# extract mojo installer and suppress header warning for unzip
-	unzip -o "$(echo ${pkgname} | sed -e 's/-/_/g')_${pkgver}.sh" \
-		"data/noarch/*" -x "*scummvm/*" "*start.sh*" \
-		"*installer_readme.txt*" "*gog_com.shlib*" \
-		"*xdg-utils/*" "*gameinfo*" || if [ $? -eq 1 ]; then
-		msg "Data extraction successful.";
-		fi
-
-	# Edit config file for appropriate paths
-	sed -i "s/\(.*=\)\(data\)/\1~\/.gog\/${_appname}\/game\/\2/" data/noarch/beneath.ini
+	sed -i data/noarch/beneath.ini \
+		-e "s|^path.*|path=/usr/share/${pkgname#gog-}|g" \
+		-e "/^savepath.*/d"
 }
 
 package() {
-	mkdir -p "${pkgdir}/opt/gog/${_appname}"
-	mkdir -p "${pkgdir}/usr/share/pixmaps"
-	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-	
-	cd ${srcdir}
-	cp -r ./data/noarch/* "${pkgdir}"/opt/gog/${_appname}
-  	install -Dm644 "./${_appname}.desktop" \
-		"${pkgdir}/usr/share/applications/${_appname}.desktop"
+	install -Dm644 -t "${pkgdir}/usr/share/${pkgname#gog-}" data/noarch/data/{SKY.CFG,sky.cpt,sky.dnr,sky.dsk}
+	install -m644 data/noarch/beneath.ini "${pkgdir}/usr/share/${pkgname#gog-}/config.ini"
+	install -Dm755 -t "${pkgdir}/usr/bin" "${pkgname#gog-}"
 
-	cd ${srcdir}/data/noarch
-	ln -s "/opt/gog/${_appname}/support/icon.png" \
-		"${pkgdir}/usr/share/pixmaps/${_appname}.png"
-	ln -s "/opt/gog/${_appname}/docs/End User License Agreement.txt" \
-		"${pkgdir}/usr/share/licenses/${pkgname}/EULA"
-  	
-	install -Dm755 "${srcdir}/${_appname}" \
-		"${pkgdir}/usr/bin/${_appname}"
+	install -Dm644 -t "$pkgdir/usr/share/applications" "${pkgname#gog-}.desktop"
+	install -Dm644 data/noarch/support/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname#gog-}" 
+	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname#gog-}" data/noarch/docs/{manual.pdf,walkthrough.pdf} data/noarch/data/readme.txt
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "data/noarch/docs/End User License Agreement.txt"
 }
