@@ -2,7 +2,7 @@
 
 pkgname=openra-ca-git
 _pkgname=${pkgname/-git}
-pkgver=588.git.0731756
+pkgver=589.git.6b2eba3
 pkgrel=1
 pkgdesc="A mod of OpenRA that combines units from the official Red Alert and Tiberian Dawn mods"
 arch=('any')
