@@ -1,0 +1,13 @@
+diff --git a/src/cmake/Config.cmake.in b/src/cmake/Config.cmake.in
+index c578a1b3..2d0281b6 100644
+--- a/src/cmake/Config.cmake.in
++++ b/src/cmake/Config.cmake.in
+@@ -6,6 +6,8 @@ include(CMakeFindDependencyMacro)
+ # e.g. if switching to Boost::Boost instead of using ${Boost_LIBRARY_DIRS} the add:
+ # find_dependency(Boost @Boost_VERSION@)
+ 
++find_dependency(OpenCV)
++
+ set_and_check (@PROJECT_NAME@_INCLUDE_DIR "@CMAKE_INSTALL_FULL_INCLUDEDIR@")
+ set_and_check (@PROJECT_NAME@_INCLUDES    "@CMAKE_INSTALL_FULL_INCLUDEDIR@")
+ set_and_check (@PROJECT_NAME@_LIB_DIR     "@CMAKE_INSTALL_FULL_LIBDIR@")
