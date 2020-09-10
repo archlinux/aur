@@ -31,6 +31,7 @@ package() {
 	# we don't need these scripts
 	rm $pkgdir/opt/piavpn/bin/install-wireguard.sh
 	rm $pkgdir/opt/piavpn/bin/pia-uninstall.sh
+	rm $pkgdir/opt/piavpn/bin/build-libk5crypto.sh
 
 	mkdir $pkgdir/opt/piavpn/var
 
