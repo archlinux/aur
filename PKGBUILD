@@ -1,10 +1,9 @@
-# Maintainer: Mikael Blomstrand <mbloms ÅT kth DÖT se>
+# Maintainer: Light Ning <lightning1141@gmail.com>
 
 pkgname=svgbob
 _pkgver=0.5.0-alpha.6
 pkgver=$(echo $_pkgver | sed -e "s/\-/\./")
 pkgrel=1
-epoch=1
 pkgdesc='Convert your ascii diagram scribbles into happy little SVG'
 arch=('i686' 'x86_64')
 url="https://github.com/ivanceras/svgbob"
