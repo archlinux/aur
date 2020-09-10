@@ -1,7 +1,7 @@
 pkgbase = fcitx5-configtool-git
 	pkgdesc = Config tools for Fcitx5, nightly build from git
-	pkgver = r310.7cc587d
-	pkgrel = 1
+	pkgver = r332.734741d
+	pkgrel = 4
 	url = https://github.com/fcitx/fcitx5-configtool
 	arch = i686
 	arch = x86_64
@@ -16,26 +16,18 @@ pkgbase = fcitx5-configtool-git
 	depends = kirigami2
 	depends = kpackage
 	provides = fcitx5-configtool
+	provides = fcitx5-config-qt
+	provides = kbd-layout-viewer5
 	conflicts = fcitx5-configtool
+	conflicts = fcitx5-config-qt
+	conflicts = kbd-layout-viewer5
+	replaces = kcm-fcitx5-git
+	replaces = kbd-layout-viewer5-git<=r332.734741d-2
+	replaces = fcitx5-config-qt-git<=r332.734741d-2
 	source = git+https://github.com/fcitx/fcitx5-configtool.git
 	sha512sums = SKIP
 
 pkgname = fcitx5-configtool-git
 	provides = fcitx5-configtool
 	conflicts = fcitx5-configtool
-	replaces = kcm-fcitx5-git
-
-pkgname = fcitx5-config-qt-git
-	pkgdesc = Qt5 Config Module for Fcitx5
-	depends = fcitx5-qt5-git
-	depends = kitemviews
-	depends = kwidgetsaddons
-	provides = fcitx5-config-qt
-	conflicts = fcitx5-config-qt
-
-pkgname = kbd-layout-viewer5-git
-	pkgdesc = Keyboard layout viewer from Fcitx5
-	depends = fcitx5-qt5-git
-	provides = kbd-layout-viewer5
-	conflicts = kbd-layout-viewer5
 
