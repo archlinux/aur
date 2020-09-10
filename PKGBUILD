@@ -3,7 +3,7 @@
 _pkgname='desknamer'
 pkgname="${_pkgname}-git"
 pkgver=r41.c81f631
-pkgrel=1
+pkgrel=2
 pkgdesc='automatically rename bspwm desktops based on applications inside'
 arch=('any')
 url="https://gitlab.com/jallbrit/${_pkgname}"
