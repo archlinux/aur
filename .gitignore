@@ -1,0 +1,9 @@
+# makepkg build directories
+/pkg/
+/src/
+
+# built packages
+/*.pkg.tar.*
+
+# git repository
+/fanctl/
