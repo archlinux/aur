@@ -3,14 +3,14 @@
 
 pkgname=coreaction
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A side bar for showing widgets from the CoreApps family."
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/cubocore/$pkgname"
+url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL3')
 depends=('qt5-base' 'qt5-svg' 'libcprime>=2.7.1' 'libcsys>=2.7.1')
 groups=('coreapps')
-source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 md5sums=('470126166b0a55a7961d3d984b5856d6')
 
 prepare() {
