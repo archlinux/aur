@@ -1,7 +1,7 @@
 pkgbase = terminal_markdown_viewer
 	pkgdesc = styled terminal markdown viewer
 	pkgver = 1.7.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/axiros/terminal_markdown_viewer
 	arch = any
 	license = BSD
@@ -11,6 +11,7 @@ pkgbase = terminal_markdown_viewer
 	depends = python-markdown
 	depends = python-pygments
 	depends = python-yaml
+	depends = python-tabulate
 	source = https://github.com/axiros/terminal_markdown_viewer/archive/80f333ba51dc2f1dfa854e203d3374a112aecbd3.tar.gz
 	sha512sums = bbd05e709f33bbe43841128e8aee5c723bde802cf6d933f15c206ebddeedf720b06fcb711b8c11029fef15f01e089c39e226beea67a07098c1bc13daf9abf462
 

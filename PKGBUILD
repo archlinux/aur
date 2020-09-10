@@ -5,12 +5,12 @@ commitsha="80f333ba51dc2f1dfa854e203d3374a112aecbd3"
 
 pkgname=terminal_markdown_viewer
 pkgver=1.7.4
-pkgrel=2
+pkgrel=3
 pkgdesc="styled terminal markdown viewer"
 url="https://github.com/axiros/terminal_markdown_viewer"
 arch=('any')
 license=('BSD')
-depends=(python3 python-docopt python-markdown python-pygments python-yaml)
+depends=(python3 python-docopt python-markdown python-pygments python-yaml python-tabulate)
 makedepends=(python-setuptools)
 source=(
 #  "https://github.com/axiros/terminal_markdown_viewer/archive/$pkgver.tar.gz"
