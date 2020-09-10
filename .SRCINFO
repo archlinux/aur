@@ -1,7 +1,7 @@
 pkgbase = uva-tool-git
 	pkgdesc = Command Line Based UVa OJ Submitting and uHunting Tool
 	pkgver = r48.ac7e52e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arafat-hasan/uva-tool
 	arch = x86_64
 	license = MIT

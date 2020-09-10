@@ -2,7 +2,7 @@
 
 pkgname=uva-tool-git
 pkgver=r48.ac7e52e
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Command Line Based UVa OJ Submitting and uHunting Tool"
 arch=('x86_64')
@@ -17,6 +17,13 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
+
+prepare() {
+	cd "$srcdir/$pkgname"
+
+	# Update onlinejudge link
+	sed -i "s/uva\.//g" src/${pkgname%-git}.cpp
+}
 
 pkgver() {
 	cd "$srcdir/$pkgname"
