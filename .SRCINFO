@@ -1,7 +1,7 @@
 pkgbase = dduper-git
 	pkgdesc = Block-level out-of-band BTRFS dedupe tool
 	pkgver = 0.01.r39.g3b65aec
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lakshmipathi/dduper
 	arch = x86_64
 	license = GPL2

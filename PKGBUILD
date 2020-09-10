@@ -3,7 +3,7 @@
 pkgname=dduper-git
 _pkgname=${pkgname%'-git'}
 pkgver=0.01.r39.g3b65aec
-pkgrel=1
+pkgrel=2
 pkgdesc='Block-level out-of-band BTRFS dedupe tool'
 url="https://github.com/Lakshmipathi/dduper"
 license=(GPL2)
@@ -44,7 +44,7 @@ build() {
 
 package() {
 	install -Dm755 "$srcdir/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-	install -Dm755 "$srcdir/btrfs-progs/btrfs" "$pkgdir/usr/lib/btrfs-$_pkgname"
+	install -Dm755 "$srcdir/btrfs-progs/btrfs" "$pkgdir/usr/lib/$_pkgname-btrfs"
 }
 
 # vim: noet:sw=8:ts=8
