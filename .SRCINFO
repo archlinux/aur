@@ -1,7 +1,7 @@
 pkgbase = python37
 	pkgdesc = Major release 3.7 of the Python high-level programming language
 	pkgver = 3.7.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.python.org/
 	arch = x86_64
 	license = custom
@@ -20,6 +20,7 @@ pkgbase = python37
 	depends = libffi
 	depends = zlib
 	depends = libnsl
+	depends = libxcrypt
 	optdepends = sqlite
 	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma

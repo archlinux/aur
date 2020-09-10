@@ -10,14 +10,14 @@
 
 pkgname=python37
 pkgver=3.7.9
-pkgrel=1
+pkgrel=2
 _pybasever=${pkgver%.*}
 _pymajver=3
 pkgdesc="Major release 3.7 of the Python high-level programming language"
 arch=('x86_64')
 license=('custom')
 url="https://www.python.org/"
-depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib' 'libnsl')
+depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib' 'libnsl' 'libxcrypt')
 makedepends=('tk' 'sqlite' 'valgrind' 'bluez-libs' 'mpdecimal' 'llvm' 'gdb' 'xorg-server-xvfb')
 optdepends=('sqlite'
             'mpdecimal: for decimal'
@@ -78,7 +78,7 @@ build() {
               --with-system-ffi \
               --with-system-libmpdec \
               --enable-loadable-sqlite-extensions \
-              --with-ensurepip
+              --without-ensurepip
 
   # Obtain next free server number for xvfb-run; this even works in a chroot environment.
   export servernum=99
