@@ -10,7 +10,7 @@ if [ ! -d "$HOME"/.86box ] ; then
   ln -s /usr/share/86box/libfluidsynth.dll "$HOME"/.86box/libfluidsynth.dll || exit 1
 fi
 
-if [ ! -f "$HOME"/.cemu/wine/drive_c/windows/syswow64/vcruntime140.dll ]; then
+if [ ! -f "$HOME"/.86box/wine/drive_c/windows/syswow64/vcruntime140.dll ]; then
   if [ -n "`whereis zenity|grep bin`" ]; then
     zenity --info  --title '86Box' --text 'Installing wine dependencies.\n\nThe process may take a few minutes'
   fi

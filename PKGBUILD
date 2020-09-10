@@ -2,7 +2,7 @@
 
 pkgname=lib32-86box-nightly-bin
 pkgver=3.0.git
-pkgrel=0
+pkgrel=1
 pkgdesc="x86 full-system emulator running via Wine"
 arch=('x86_64')
 url="http://86box.net"
@@ -46,5 +46,5 @@ post_install() {
 }
 
 md5sums=('91806130ae51196094ec77f2a7b4ce3e'
-'de15a6b671ebd6add47119b3268ae75b'
+'2f6edbb5b672676a59bc689aaab0e043 '
 '98e90dc4e6562bb4060f463bc42ebd6e')
