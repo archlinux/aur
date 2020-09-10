@@ -1,13 +1,13 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=gnome-obfuscate-git
-pkgver=0.0.2.r13.g9238e6b
+pkgver=0.0.2.r18.g8976c22
 pkgrel=1
 pkgdesc="Censor private information"
-arch=(x86_64)
+arch=('x86_64')
 url="https://gitlab.gnome.org/World/obfuscate"
-license=('MIT')
-depends=('gtk3' 'appstream-glib')
-makedepends=('git' 'meson' 'rust')
+license=('GPL3')
+depends=('gtk3')
+makedepends=('git' 'meson' 'rust' 'appstream-glib')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=("git+${url}.git")
@@ -21,6 +21,10 @@ pkgver() {
 build() {
   arch-meson obfuscate build
   meson compile -C build
+}
+
+check() {
+  meson test -C build
 }
 
 package() {
