@@ -1,15 +1,15 @@
 pkgbase = corehunt
 	pkgdesc = A file finder utility from the CoreApps family.
 	pkgver = 4.0.0
-	pkgrel = 1
-	url = https://gitlab.com/cubocore/corehunt
+	pkgrel = 2
+	url = https://gitlab.com/cubocore/coreapps/corehunt
 	arch = x86_64
 	arch = aarch64
 	groups = coreapps
 	license = GPL3
 	depends = qt5-base
 	depends = libcprime>=2.7.1
-	source = https://gitlab.com/cubocore/corehunt/-/archive/v4.0.0/corehunt-v4.0.0.tar.gz
+	source = https://gitlab.com/cubocore/coreapps/corehunt/-/archive/v4.0.0/corehunt-v4.0.0.tar.gz
 	md5sums = a9440f818fe4ae24b353e11b4c0ce1e4
 
 pkgname = corehunt
