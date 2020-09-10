@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-openexr
 pkgver=2.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An high dynamic-range image file format library (mingw-w64)"
 url="http://www.openexr.com/"
 arch=(any)
@@ -20,16 +20,13 @@ build() {
 		-DINSTALL_OPENEXR_DOCS=OFF -DINSTALL_OPENEXR_EXAMPLES=OFF -DOPENEXR_BUILD_UTILS=OFF -DPYILMBASE_ENABLE=OFF )
 	
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "openexr-${pkgver}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_SHARED_LIBS=FALSE
-		make -C "build-${_arch}-static"
-		${_arch}-cmake -S "openexr-${pkgver}" -B "build-${_arch}" "${_flags[@]}"
+		${_arch}-cmake -S "openexr-${pkgver}" -B "build-${_arch}" "${_flags[@]}" -DOPENEXR_BUILD_BOTH_STATIC_SHARED=ON
 		make -C "build-${_arch}"
 	done
 }
 
 package() {
   for _arch in ${_architectures}; do
-		make DESTDIR="${pkgdir}" -C "build-${_arch}-static" install
     make DESTDIR="${pkgdir}" -C "build-${_arch}" install
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a

@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-openexr
 	pkgdesc = An high dynamic-range image file format library (mingw-w64)
 	pkgver = 2.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.openexr.com/
 	arch = any
 	license = BSD
