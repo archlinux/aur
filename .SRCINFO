@@ -1,0 +1,18 @@
+pkgbase = vvenc-git
+	pkgdesc = Fraunhofer Versatile Video Encoder (VVenC)
+	pkgver = r1.2ed056b
+	pkgrel = 1
+	url = https://github.com/fraunhoferhhi/vvenc
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake>=3.12
+	makedepends = gcc>=7
+	depends = gcc-libs
+	provides = vvenc
+	conflicts = vvenc
+	source = git+https://github.com/fraunhoferhhi/vvenc.git
+	sha256sums = SKIP
+
+pkgname = vvenc-git
+
