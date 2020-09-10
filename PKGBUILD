@@ -3,14 +3,14 @@
 
 pkgname=corekeyboard
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A virtual keyboard for X11 from the CoreApps family."
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/cubocore/$pkgname"
+url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL3')
 depends=('qt5-base' 'libcprime>=2.7.1' 'qt5-x11extras' 'libxtst' 'libx11')
 groups=('coreapps')
-source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 md5sums=('977d5d424089258f043675b5f8ab088e')
 
 prepare() {
