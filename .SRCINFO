@@ -1,0 +1,13 @@
+pkgbase = go-to-meeting-nativefier
+	pkgdesc = GoToMeeting desktop built with nativefier (electron)
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	makedepends = nodejs-nativefier
+	makedepends = gendesk
+	source_x86_64 = icon.png::https://raw.githubusercontent.com/CrankySupertoon/Go-To-Meeting-Linux/master/logo.png
+	md5sums_x86_64 = SKIP
+
+pkgname = go-to-meeting-nativefier
+
