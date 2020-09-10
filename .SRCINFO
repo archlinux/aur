@@ -1,0 +1,25 @@
+pkgbase = blueproximity-py3-git
+	pkgdesc = A proximity detector for your mobile phone via bluetooth. (Python3 version)
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://github.com/tiktaalik-dev/blueproximity
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python
+	depends = bluez-utils-compat
+	depends = pygtk
+	depends = python-configobj
+	depends = python-pybluez
+	depends = python-xapp
+	depends = xapps
+	depends = librsvg
+	optdepends = gnome-screensaver
+	optdepends = xscreensaver
+	conflicts = blueproximity
+	options = emptydirs
+	source = https://github.com/tiktaalik-dev/blueproximity/archive/v1.3.3.tar.gz
+	md5sums = 223bccc87ea03298b3310d211c842574
+
+pkgname = blueproximity-py3-git
+
