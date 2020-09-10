@@ -2,7 +2,7 @@
 pkgname=piavpn-bin
 pkgver=2.4_05574
 _pkgver=${pkgver/_/-}
-pkgrel=2
+pkgrel=3
 pkgdesc="Private Internet Access client"
 arch=(x86_64)
 url="https://privateinternetaccess.com/"

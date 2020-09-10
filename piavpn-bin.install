@@ -28,11 +28,15 @@ post_remove() {
 	sed -i '/.*piavpnrt$/d' /etc/iproute2/rt_tables
 	sed -i '/.*piavpnOnlyrt$/d' /etc/iproute2/rt_tables
 	sed -i '/.*piavpnWgrt$/d' /etc/iproute2/rt_tables
+	sed -i '/.*piavpnFwdrt$/d' /etc/iproute2/rt_tables
 	groupdel piavpn
 	groupdel piahnsd
 }
 
 post_upgrade() {
+	if ! grep -q piavpnFwdrt /etc/iproute2/rt_tables; then
+		addRoutingTable piavpnFwdrt
+	fi
 	systemctl daemon-reload
 	if systemctl is-active piavpn >/dev/null; then
 		systemctl restart piavpn
