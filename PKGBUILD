@@ -26,7 +26,7 @@ prepare() {
     # extract appimage (didn't know this was possible)
     "${srcdir}/GDLauncher-linux-setup.AppImage" --appimage-extract
     cd "${srcdir}"
-    gendesk -f --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n
+    gendesk --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
     mv "GDLauncher.desktop" "${pkgname}.desktop"
 }
 
