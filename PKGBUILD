@@ -19,7 +19,7 @@ build() {
 
 prepare() {
     # Generate .desktop
-    gendesk -f --pkgname "Google Meets" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n
+    gendesk -f --pkgname "Google Meets" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
     mv "Google Meets.desktop" "${pkgname}.desktop"
 }
 
