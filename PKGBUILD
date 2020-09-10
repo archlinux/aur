@@ -1,8 +1,8 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname=funkwhale
-pkgver=0.21
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 pkgdesc="A self-hosted, modern free and open-source music server, heavily inspired by Grooveshark."
 arch=(any)
 url="https://funkwhale.audio/"
@@ -14,7 +14,7 @@ optdepends=('apache: to use the Apache web server'
 depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
         'ipython'
         'mod_xsendfile'
-        'python-django>=3.0.5'
+        'python-django'
         'python-django-environ'
         'python-pillow'
         'python-django-allauth'
@@ -39,7 +39,7 @@ depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
         'python-raven'
         'python-magic-git'
         'python-django-channels'
-        'python-django-channels-redis'
+        'python-django-channels-redis>=3'
         'uvicorn'
         'gunicorn'
         'python-cryptography'
@@ -52,7 +52,6 @@ depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
         'python-pydub'
         'python-pyld'
         'python-aiohttp'
-        'python-autobahn'
         'python-django-oauth-toolkit'
         'python-django-storages'
         'python-boto3'
@@ -62,7 +61,8 @@ depends=('ffmpeg' 'libjpeg' 'postgresql' 'python'
         'python-service-identity'
         'python-markdown'
         'python-bleach'
-        'python-feedparser'
+        'python-feedparser-dev>=6'
+        'python-watchdog'
 )
 makedepends=(git)
 _source_api="https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/${pkgver}/download?job="
@@ -78,8 +78,8 @@ source=("${pkgname}-${pkgver}-api.zip::${_source_api}build_api"
         "env-template"
         "funkwhale.service"
 )
-sha256sums=('0ffb4c97a2f5bc0adbda070f5300e5af76dfda81489dfa03be3e9a78cd4139b3'
-            'd412b9bf0bb57d48332c6a6ab2f14c6d8e4dc792421ed4077f65550c58ecd754'
+sha256sums=('d8a91f57aebd218c30c2bc08a4c665fe25a7906ae95b07c07f5296e19f3d5844'
+            'f062d7485325a78f08afaf2c641d8616e983d82d11dfc1e656cbc09a113c4202'
             '2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2'
             'f56a2e8947809db4325a6c65141f6eb87e7428cc0e5a57032fc7ce050bf396fa'
             'a964a7802252d20a3319e2131c27ec307ad4f454921c2db31971c080150d7c9b'
