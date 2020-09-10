@@ -1,6 +1,6 @@
 pkgbase = kurcoder-git
 	pkgdesc = Toolkit for encoding, decoding, checksums, hex conversions & IP calculations
-	pkgver = 0.0.1.r33.g37067db
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/0xkurome/kurcoder
 	arch = any

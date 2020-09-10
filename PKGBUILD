@@ -1,4 +1,4 @@
-# Maintainer: Your Name <kyli0x@protonmail.ch>
+# Maintainer: Kyli0x <kyli0x@protonmail.ch>
 
 pkgname=kurcoder-git
 pkgver=0.0.1
