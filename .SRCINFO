@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-sound
 	pkgdesc = Ayatana system sound indicator
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators
 	arch = i686
@@ -35,8 +35,8 @@ pkgbase = ayatana-indicator-sound
 	optdepends = pavucontrol
 	optdepends = mate-media
 	options = !emptydirs
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-sound/archive/0.8.0.tar.gz
-	md5sums = 862f0a57eefa7d805b7f997da9d44eb9
+	source = https://github.com/AyatanaIndicators/ayatana-indicator-sound/archive/0.8.1.tar.gz
+	md5sums = 7f1e9f9acf4cedcffc4db4f175a483d9
 
 pkgname = ayatana-indicator-sound
 
