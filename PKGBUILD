@@ -7,7 +7,7 @@ pkgdesc="A monospace bitmap font, primarily aimed at programmers (TTF Format)"
 arch=('any')
 url="https://sites.google.com/site/rickard234/filecabinet"
 license=('custom')
-depends=('xorg-font-utils' 'fontconfig')
+depends=('fontconfig')
 source=("DinaTTF.rar::https://sites.google.com/site/rickard234/filecabinet/DinaTTF.zip?attredirects=0&d=1")
 md5sums=('7e9d1d8b1de309d54743ac53eaea2eef')
 
