@@ -1,7 +1,7 @@
 # Maintainer: Alexander Lyon <arlyon@me.com>
 pkgname=instantly
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Download instagram photos instantly"
 url="https://github.com/arlyon/instantly"
 license=("MIT")
@@ -29,5 +29,6 @@ package() {
     usrdir="$pkgdir/usr"
     mkdir -p $usrdir
     install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm 755 "license" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
 
