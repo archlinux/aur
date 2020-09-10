@@ -2,7 +2,7 @@ _pkgname='desmume'
 pkgname="$_pkgname-git"
 _pkgver='0.9.11'
 _lastrelease='ccbf85ed42e4350af415d56b1465e83614c85ef8'
-pkgver=0.9.11.r1384.316103d2
+pkgver=0.9.11.r1419.2ac787a85
 pkgrel=1
 pkgdesc="Nintendo DS emulator"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ url="https://desmume.org/"
 license=('GPL2')
 provides=('desmume')
 conflicts=('desmume')
-depends=('gtk2' 'soundtouch' 'zlib' 'zziplib' 'libpcap' 'glib2' 'glu' 'openal' 'sdl' 'libpng' 'libgl')
-makedepends=('autoconf' 'automake' 'pkg-config' 'git' 'gtk2' 'zlib' 'intltool' 'glu' 'sdl' 'zziplib' 'soundtouch' 'libpcap' 'glib2' 'sdl' 'desktop-file-utils' 'openal' 'libpng' 'libgl')
+depends=('glib2' 'sdl' 'zlib' 'libgl' 'openal' 'gtk3' 'libpcap' 'libpng')
+makedepends=('meson' 'pkg-config' 'intltool' 'desktop-file-utils' 'git' 'glib2' 'sdl' 'zlib' 'libgl' 'openal' 'gtk3' 'libpcap' 'libpng')
 source=("$_pkgname::git+https://github.com/TASVideos/desmume.git")
 sha512sums=('SKIP')
 
@@ -22,7 +22,6 @@ _builddir="$_pkgname/src/frontend/posix"
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   echo "$_pkgver.r$(git rev-list --count $_lastrelease..HEAD).$(git rev-parse --short HEAD)"
-
 }
 
 prepare(){
@@ -31,26 +30,22 @@ prepare(){
   git submodule update --init --recursive
 
   cd "${srcdir}/${_pkgname}/${_builddir}"
-  ./autogen.sh
-
-
-  CFLAGS="-O2 -minline-all-stringops" \
-  CXXFLAGS=$CFLAGS \
-  ./configure \
-    --prefix=/usr \
-    --enable-openal \
-    --enable-wifi #\
-#    --enable-hud  #requires https://aur.archlinux.org/packages/agg/
+  meson setup ../../../build/ --prefix=/usr --buildtype=release --optimization=2 --strip -Dopenal=true -Dc_args=-minline-all-stringops #-Dwifi=true #wifi wants libagg??
+  meson configure ../../../build/
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}/${_builddir}"
-
-  make
+  cd "${srcdir}/${_pkgname}/${_pkgname}/build"
+  ninja -C ./
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}/${_builddir}"
+  cd "${srcdir}/${_pkgname}/${_pkgname}/build"
+  DESTDIR="${pkgdir}" meson install
 
-  make DESTDIR="${pkgdir}" install
+  #copy man pages
+  cd "${srcdir}/${_pkgname}/${_builddir}"
+  mkdir -p ${pkgdir}/usr/share/man/man1/
+  install -D gtk/doc/desmume.1 ${pkgdir}/usr/share/man/man1/
+  install -D cli/doc/desmume-cli.1 ${pkgdir}/usr/share/man/man1/
 }
