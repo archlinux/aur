@@ -1,12 +1,14 @@
 pkgbase = niutrans-cli
 	pkgdesc = niutrans command line interface.
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amtoaer/Niutrans-Cli
 	arch = x86_64
 	license = MIT
 	depends = jre
-	source = https://github.com/amtoaer/NiuTrans-Cli/releases/download/v1.5/NiuTrans-Cli-1.5.jar
+	source = LICENSE::https://raw.githubusercontent.com/amtoaer/NiuTrans-Cli/v1.5/LICENSE
+	source = NiuTrans-Cli-1.5.jar::https://github.com/amtoaer/NiuTrans-Cli/releases/download/v1.5/NiuTrans-Cli-1.5.jar
+	md5sums = 31fad0aacc583d621612630ce8f5a26c
 	md5sums = edad4b99c24ea407939ae14a0a222812
 
 pkgname = niutrans-cli
