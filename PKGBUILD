@@ -63,7 +63,7 @@ build() {
   # below, and edit the start command in the file wesnothd-1.12.service.
 
   cd wesnoth-1.12-git
-  scons jobs=4 \
+  scons jobs=$(nproc) \
       prefix=/usr \
       version_suffix=-1.12 \
       docdir=share/doc/wesnoth-1.12 \
