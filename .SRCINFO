@@ -1,0 +1,36 @@
+pkgbase = mingw-w64-qt6-base-git
+	pkgdesc = A cross-platform application and UI framework (mingw-w64)
+	pkgver = 5.15.0.r5319.g287d2d7753
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-postgresql
+	makedepends = mingw-w64-mariadb-connector-c
+	makedepends = mingw-w64-vulkan-headers
+	makedepends = qt6-base
+	makedepends = git
+	depends = mingw-w64-crt
+	depends = mingw-w64-zlib
+	depends = mingw-w64-libjpeg-turbo
+	depends = mingw-w64-sqlite
+	depends = mingw-w64-libpng
+	depends = mingw-w64-openssl
+	depends = mingw-w64-dbus
+	depends = mingw-w64-harfbuzz
+	depends = mingw-w64-pcre2
+	depends = mingw-w64-md4c
+	provides = mingw-w64-qt6-base
+	conflicts = mingw-w64-qt6-base
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://code.qt.io/qt/qtbase.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = mingw-w64-qt6-base-git
+
