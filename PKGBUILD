@@ -29,7 +29,7 @@ prepare() {
 	# Prevent duplicate .desktop from getting created
 	sed -i 's/CreateShortcutFile(desktopFile, mimeTypes);//' UI/Config/FileAssociationHelper.cs
 
-	gendesk --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec "/usr/bin/mesen-s" -n
+	gendesk --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec "/usr/bin/mesen-s" -n -f
 
 	# Invoke using mono in a wrapper, since wine (if installed) would open it otherwise
 	cat > "${pkgname}" <<-EOT
