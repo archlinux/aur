@@ -1,29 +1,51 @@
 # Maintainer: Nazar Vinnichuk <nazar.vinnichuk at tutanota dot com>
 pkgname=pacwall-git
 _pkgname=${pkgname%-git}
-pkgver=1.4.1
+pkgver=2.0rc1
 pkgrel=1
-pkgdesc="A dependency graph of installed packages wallpaper creator."
+pkgdesc="A live wallpaper that shows the dependency graph and status of installed packages."
 url="http://github.com/Kharacternyk/${_pkgname}"
 arch=('any')
 license=('GPL3')
-depends=('graphviz' 'pacman-contrib')
-optdepends=('feh: wallpaper setting using feh'
-            'hsetroot: wallpaper setting using hsetroot'
-            'imagemagick: DE integration'
-            'xorg-xdpyinfo: DE integration')
+depends=('graphviz' 'fakeroot' 'libconfig')
 makedepends=('git')
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/Kharacternyk/${_pkgname}.git#branch=master")
+source=("$_pkgname::git+https://github.com/Kharacternyk/$_pkgname.git#branch=master")
 sha256sums=(SKIP)
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
+    cd "$srcdir/$_pkgname"
     local _version="$(git describe --tags --match 'v*' | sed 's/-/.r/' | sed 's/-/./')"
     printf "${_version#v}"
 }
 
+build() {
+    cd "$srcdir/$_pkgname/src"
+    make build
+}
+
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}/pacwall.sh" "${pkgdir}/usr/bin/pacwall"
-    install -Dm644 "${srcdir}/${_pkgname}/README.rst" "${pkgdir}/usr/share/doc/${_pkgname}/README.rst"
+    cd "$srcdir/$_pkgname"
+    install -Dm755 src/pacwall "$pkgdir/usr/bin/pacwall"
+
+    install -Dm644 /dev/null "$pkgdir/var/lib/pacwall/systemd/trigger"
+    install -Dm644 pacman/90-pacwall.hook "$pkgdir/usr/share/libalpm/hooks/90-pacwall.hook"
+    install -Dm644 README.rst "$pkgdir/usr/share/doc/pacwall/README.rst"
+
+    cd scripts/
+    for _FILE in *; do
+        install -Dm755 "$_FILE" "$pkgdir/usr/lib/pacwall/$_FILE"
+    done
+    cd ../examples/hook
+    for _FILE in *; do
+        install -Dm644 "$_FILE" "$pkgdir/usr/share/pacwall/examples/hook/$_FILE"
+    done
+    cd ../attributes
+    for _FILE in *; do
+        install -Dm644 "$_FILE" "$pkgdir/usr/share/pacwall/examples/attributes/$_FILE"
+    done
+    cd ../../systemd
+    for _FILE in *; do
+        install -Dm644 "$_FILE" "$pkgdir/usr/lib/systemd/user/$_FILE"
+    done
 }

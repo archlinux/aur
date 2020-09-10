@@ -1,17 +1,14 @@
 pkgbase = pacwall-git
-	pkgdesc = A dependency graph of installed packages wallpaper creator.
-	pkgver = 1.4.1
+	pkgdesc = A live wallpaper that shows the dependency graph and status of installed packages.
+	pkgver = 2.0rc1
 	pkgrel = 1
 	url = http://github.com/Kharacternyk/pacwall
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = graphviz
-	depends = pacman-contrib
-	optdepends = feh: wallpaper setting using feh
-	optdepends = hsetroot: wallpaper setting using hsetroot
-	optdepends = imagemagick: DE integration
-	optdepends = xorg-xdpyinfo: DE integration
+	depends = fakeroot
+	depends = libconfig
 	conflicts = pacwall
 	source = pacwall::git+https://github.com/Kharacternyk/pacwall.git#branch=master
 	sha256sums = SKIP
