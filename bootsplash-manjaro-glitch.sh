@@ -36,14 +36,14 @@ convert -alpha remove \
 	--bg_red 0x00 \
 	--bg_green 0x00 \
 	--bg_blue 0x00 \
-	--frame_ms 50 \
+	--frame_ms 240 \
 	--blob logo.rgb \
 	--picture \
 	--pic_width $THROBBER_WIDTH \
 	--pic_height $THROBBER_HEIGHT \
-	--pic_position 0x10 \
+	--pic_position 0x05 \
 	--pic_anim_type 1 \
-	--pic_anim_loop 0 \
+	--pic_anim_loop 6 \
 	--blob throbber00.rgb \
 	--blob throbber01.rgb \
 	--blob throbber02.rgb \
