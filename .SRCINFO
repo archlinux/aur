@@ -24,7 +24,7 @@ pkgbase = vidify
 	optdepends = python-mpv: support for the mpv player
 	optdepends = vidify-audiosync: audio synchronization extension
 	source = https://github.com/vidify/vidify/archive/v2.2.6.tar.gz
-	md5sums = 04d9cd32f37b64a097a2652b4dbfa3cc
+	md5sums = a86ae3e17f17281bf1ab8b981c2de39c
 
 pkgname = vidify
 

@@ -14,7 +14,7 @@ optdepends=("python-mpv: support for the mpv player"
             "vidify-audiosync: audio synchronization extension")
 makedepends=("python-setuptools")
 source=("https://github.com/vidify/vidify/archive/v$pkgver.tar.gz")
-md5sums=('b84fee792829874ec9e52c28685259d1')
+md5sums=('a86ae3e17f17281bf1ab8b981c2de39c')
 
 build() {
     cd "$pkgname-$pkgver"
