@@ -1,14 +1,16 @@
 pkgbase = python-spacy-de_core_news_lg
 	pkgdesc = German multi-task CNN trained on the TIGER and WikiNER corpora. Assigns word vectors, POS tags, dependency parses and named entities. Word vectors trained using FastText CBOW on Wikipedia and OSCAR (Common Crawl).
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spacy.io/models/de#de_core_news_lg
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-spacy
 	source = https://github.com/explosion/spacy-models/releases/download/de_core_news_lg-2.3.0/de_core_news_lg-2.3.0.tar.gz
+	source = https://raw.githubusercontent.com/explosion/spaCy/master/LICENSE
 	sha256sums = cd3c565cfb6dd3df535b109077466685986059b18387259cc1fa7cf2db833d66
+	sha256sums = 2946c76df2417fe4e29c693e4d877f8516630740f0ede219edf1b0d06c61d536
 
 pkgname = python-spacy-de_core_news_lg
 
