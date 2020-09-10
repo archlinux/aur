@@ -20,7 +20,7 @@ md5sums_x86_64=('SKIP')
 
 prepare() {
     # Generate .desktop
-    gendesk -f --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n
+    gendesk --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
     mv "GDLauncher.desktop" "${pkgname}.desktop"
     
     # Download icon
