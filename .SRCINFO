@@ -1,13 +1,12 @@
 pkgbase = spacemacs-dev
 	pkgdesc = A community-driven Emacs distribution - Development version
 	pkgver = 0.300.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://spacemacs.org
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = emacs
-	provides = emacs
 	conflicts = spacemacs
 	source = spacemacs-dev::git+https://github.com/syl20bnr/spacemacs#branch=develop
 	md5sums = SKIP

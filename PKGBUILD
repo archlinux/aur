@@ -1,7 +1,7 @@
 # Maintainer: tuximail <admin@tuximail.de>
 pkgname=spacemacs-dev
 pkgver=0.300.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A community-driven Emacs distribution - Development version"
 arch=('any')
 url='https://spacemacs.org'
