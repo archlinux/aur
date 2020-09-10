@@ -19,7 +19,7 @@ build() {
 
 prepare() {
     # Generate .desktop
-    gendesk -f --pkgname "GoToMeeting" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n
+    gendesk -f --pkgname "GoToMeeting" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
 }
 
 package() {
