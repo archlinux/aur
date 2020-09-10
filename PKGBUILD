@@ -1,9 +1,9 @@
 # Maintainer: Daniel Plank <tyrolyean@escpe.net>
 pkgname=trx
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Realtime audio over IP"
-arch=(x86_64 i686)
+arch=("x86_64" "i686" "aarch64" "amv7l")
 url="http://www.pogo.org.uk/~mark/trx/"
 license=('GPL')
 depends=('opus' 'alsa-lib' 'ortp' 'bctoolbox')

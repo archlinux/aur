@@ -1,10 +1,12 @@
 pkgbase = trx
 	pkgdesc = Realtime audio over IP
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pogo.org.uk/~mark/trx/
 	arch = x86_64
 	arch = i686
+	arch = aarch64
+	arch = amv7l
 	license = GPL
 	depends = opus
 	depends = alsa-lib
