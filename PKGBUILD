@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-power"
-pkgver="2.1.0"
+pkgver="2.1.1"
 pkgrel="1"
 pkgdesc="Ayatana Indicator showing power state"
 arch=("i686" "x86_64" "pentium4")
@@ -11,7 +11,7 @@ depends=("libayatana-indicator" "upower" "systemd" "libnotify" "dconf")
 makedepends=("cmake" "cmake-extras" "libnotify" "glib2" "python")
 optdepends=("zenity")
 source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("33aa62fb24766532206eb0d9775174da")
+md5sums=("c11754a834f5461eaba3135fd2df0156")
 options=("!emptydirs")
 
 build()
