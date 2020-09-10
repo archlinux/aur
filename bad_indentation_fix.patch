@@ -1,0 +1,13 @@
+diff --git a/wifite/tools/hashcat.py b/wifite/tools/hashcat.py
+index 967c308..7723937 100755
+--- a/wifite/tools/hashcat.py
++++ b/wifite/tools/hashcat.py
+@@ -50,7 +50,7 @@ class Hashcat(Dependency):
+                 key = stdout.split(':', 5)[-1].strip()
+                 break
+ 
+-            if os.path.exists(hccapx_file) and hccapx_autoremove is True:
++        if os.path.exists(hccapx_file) and hccapx_autoremove is True:
+             os.remove(hccapx_file)
+ 
+         return key
