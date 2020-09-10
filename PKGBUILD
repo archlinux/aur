@@ -2,17 +2,17 @@
 pkgname=kink-hg
 _pkgname=kink
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kink is a prototype-based functional language on the JVM. The goal of the language is easy and elastic programming with handful number of simple mechanisms."
 arch=('x86_64')
-url="http://doc.kink-lang.org/kink/manual/index.html"
+url="http://doc.kink-lang.org/"
 license=('MIT')
 groups=('language')
-depends=('jre8-openjdk')
-makedepends=('apache-ant' 'mercurial')
+depends=('jre11-openjdk')
+makedepends=('mercurial')
 install=
 changelog=
-source=("hg+https://bitbucket.org/kink/kink")
+source=("hg+https://hg.osdn.net/view/kink/kink")
 md5sums=(SKIP)
 
 prepare() {
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
 	cd "$_pkgname"
-	ant all
+	./gradlew installDist
 }
 
 check() {
@@ -30,11 +30,7 @@ check() {
 
 package() {
 	cd "$_pkgname"
-	install -Dm755 bin/kink $pkgdir/usr/bin/kink
-	install -Dm644 lib/kink/kink.jar $pkgdir/usr/share/kink/lib/kink/kink.jar
-	install -Dm644 lib/kink/third/always/asm-5.0.3.jar $pkgdir/usr/share/kink/lib/kink/third/always/asm-5.0.3.jar
-	install -Dm644 lib/kink/third/always/asm-commons-5.0.3.jar $pkgdir/usr/share/kink/lib/kink/third/always/asm-commons-5.0.3.jar
-	install -Dm644 lib/kink/third/always/slf4j-api-1.7.7.jar $pkgdir/usr/share/kink/lib/kink/third/always/slf4j-api-1.7.7.jar
-	install -Dm644 lib/kink/third/notverbose/slf4j-nop-1.7.7.jar $pkgdir/usr/share/kink/lib/kink/third/notverbose/slf4j-nop-1.7.7.jar
-	install -Dm644 lib/kink/third/verbose/slf4j-simple-1.7.7.jar $pkgdir/usr/share/kink/lib/kink/third/verbose/slf4j-simple-1.7.7.jar
+	install -Dm755 build/install/kink/bin/kink $pkgdir/usr/bin/kink
+	install -Dm644 build/install/kink/lib/kink-0.0.1-SNAPSHOT.jar $pkgdir/usr/share/kink/lib/kink/kink-0.0.1-SNAPSHOT.jar
+	install -Dm644 build/install/kink/lib/slf4j-api-1.8.0-beta2.jar $pkgdir/usr/share/kink/lib/kink/slf4j-api-1.8.0-beta2.jar
 }
