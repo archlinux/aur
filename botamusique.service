@@ -1,0 +1,15 @@
+[Unit]
+Description=Botamusique mumble bot
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/botamusique
+Restart=always
+Type=simple
+RestartSec=15s
+WorkingDirectory=/opt/botamusique/botamusique
+User=botamusique
+Group=botamusique
+
+[Install]
+WantedBy=multi-user.target
