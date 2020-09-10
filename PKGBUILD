@@ -3,8 +3,8 @@
 
 pkgname=discord_arch_electron
 _pkgname=discord
-pkgver=0.0.11
-pkgrel=3
+pkgver=0.0.12
+pkgrel=1
 pkgdesc="Discord (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
 provides=('discord')
@@ -17,7 +17,7 @@ optdepends=('libpulse: Pulseaudio support'
 source=("https://dl.discordapp.net/apps/linux/$pkgver/$_pkgname-$pkgver.tar.gz"
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
-sha512sums=('aac728bd514b2d3467bf21291fc96192cc3024b41471cd220e6fd74792a4131a1448cd2e0f5092e476b472be8d12c4deebcc46d2b0908e21b1626215ec7c4d5f'
+sha512sums=('cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
              SKIP
              SKIP)
 
