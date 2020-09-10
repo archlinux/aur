@@ -4,6 +4,8 @@
 # MCreator Launcher for Unix Like systems
 # ---------------------------------------
 #
+# join directory
+cd /opt/mcreator
 
 # set the classpath
 export CLASSPATH='./lib/mcreator.jar:./lib/*'

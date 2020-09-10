@@ -2,13 +2,13 @@ pkgname="mcreator"
 _pkgname="MCreator"
 pkgver="2020.4"
 _pkgver="20204"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="MCreator is a software used to make Minecraft mods and data packs using intuitive easy-to-learn interface or with an integrated code editor. It is used worldwide by Minecraft players, aspiring mod developers, for education and by STEM workshops."
 url="https://mcreator.net"
 license=('ARR')
 makedepends=('gendesk')
-
+depends=('jdk8-openjdk')
 source_x86_64=(
 	"MCreator.tar.gz::https://mcreator.net/repository/2020-4/MCreator%202020.4%20Linux%2064bit.tar.gz"
 	"mcreatorlaunch.sh"
