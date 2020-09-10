@@ -1,0 +1,16 @@
+pkgbase = voadi-git
+	pkgdesc = Vegan on a Desert Island: 2D adventure game about being a vegan on a desert island (git version)
+	pkgver = 0.3.r423.gec6fefd
+	pkgrel = 1
+	url = https://voadi.com
+	arch = any
+	license = GPL3
+	license = custom
+	depends = solarus>=1.6.0
+	source = voadi-git::git+https://gitlab.com/voadi/voadi.git
+	source = voadi-git-launcher
+	b2sums = SKIP
+	b2sums = b66cf678a4ec653e30daec021319a267abd9f1e8a4cd86adf2e5d88c87c135a264951a3ccd831ff9b84712281c0dbc827a086a1432b928baf9885b2c2c20ebad
+
+pkgname = voadi-git
+
