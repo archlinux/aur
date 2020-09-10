@@ -2,7 +2,7 @@
 pkgname=piavpn-bin
 pkgver=2.4_05574
 _pkgver=${pkgver/_/-}
-pkgrel=3
+pkgrel=4
 pkgdesc="Private Internet Access client"
 arch=(x86_64)
 url="https://privateinternetaccess.com/"
@@ -18,7 +18,7 @@ options=(!strip)
 sha256sums=('9c56579011301e92098062c4af060066023b4c9de8cbf1f8b605a3c8e65f5be9')
 
 prepare() {
-	/bin/sh pia-linux-${_pkgver}.run --noexec --target "${srcdir}/$pkgname-${_pkgver}"
+	env -i /bin/sh pia-linux-${_pkgver}.run --noexec --target "${srcdir}/$pkgname-${_pkgver}"
 }
 
 package() {
