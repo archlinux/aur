@@ -1,0 +1,11 @@
+[Unit]
+Description=Watchdog Opendev Heartbeat Service
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/bin/bash /usr/bin/watchdog-opendev-ping-loop.sh
+
+[Install]
+WantedBy=multi-user.target

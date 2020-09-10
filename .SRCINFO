@@ -1,7 +1,7 @@
 pkgbase = watchdog-opendev
-	pkgdesc = Terminal configuration utility for OpenDev's Watchdogs from HiveOS.
+	pkgdesc = Terminal configuration utility for OpenDev's Watchdogs from HiveOS. Includes example heartbeat service.
 	pkgver = 0.5.66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/minershive/hiveos-linux/tree/master/hive/opt/opendev
 	arch = any
 	license = unknown

@@ -6,8 +6,8 @@ _pkgname=watchdog-opendev
 _hash=da495e5bcca247c48669a10fe83143faab84c31a
 pkgname=$_pkgname
 pkgver=0.5.66
-pkgrel=1
-pkgdesc="Terminal configuration utility for OpenDev's Watchdogs from HiveOS."
+pkgrel=2
+pkgdesc="Terminal configuration utility for OpenDev's Watchdogs from HiveOS. Includes example heartbeat service."
 arch=(any)
 url="https://github.com/minershive/hiveos-linux/tree/master/hive/opt/opendev"
 license=('unknown')
@@ -26,7 +26,9 @@ build() {
 
 package() {
   cd "$srcdir"
-  install -Dm 755 ${_pkgname}.sh "$pkgdir/usr/bin/${_pkgname}-pinger"
+  install -Dm 755 ${_pkgname}.sh "$pkgdir/usr/bin/${_pkgname}-prober"
   install -Dm 755 ${_pkgname} "$pkgdir/usr/bin/${_pkgname}"
-#  echo "To run opendev watchdog pinger, use watchdog-opendev-pinger."
+  install -Dm 755 ../${_pkgname}-ping-loop.sh "$pkgdir/usr/bin/${_pkgname}-ping-loop.sh"
+  install -Dm 644 ../${_pkgname}-heartbeat.service
+    "$pkgdir/usr/lib/systemd/system/watchdog-opendev-heartbeat.service"
 }
