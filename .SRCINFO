@@ -1,0 +1,14 @@
+pkgbase = instantly
+	pkgdesc = Download instagram photos instantly
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/arlyon/instantly
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/arlyon/instantly#tag=v0.1.0
+	md5sums = SKIP
+
+pkgname = instantly
+
