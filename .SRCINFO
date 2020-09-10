@@ -1,6 +1,6 @@
 pkgbase = platformio
 	pkgdesc = A cross-platform code builder and library manager
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://github.com/platformio/platformio-core/
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = platformio
 	optdepends = python-click-completion: for shell completions
 	optdepends = python-shellingham: for shell completions
 	conflicts = platformio-git
-	source = https://github.com/platformio/platformio-core/archive/v5.0.0.tar.gz
-	sha256sums = a444d74b652118d20888e00058c9601f8e72302cbac1f33e2c6d948378e9d776
+	source = https://github.com/platformio/platformio-core/archive/v5.0.1.tar.gz
+	sha256sums = 0c1224f1d593c6fbccdf73de2ce02a412521a3095965c7eee19b2a4d6dc83c89
 
 pkgname = platformio
 
