@@ -19,7 +19,7 @@ md5sums_x86_64=('SKIP' 'SKIP')
 prepare() {
     # make desktop
     rm -rf "${srcdir}/${_pkgname}${_pkgver}/jdk"
-    gendesk -f --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n
+    gendesk -f --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
 }
 
 package() {
