@@ -1,7 +1,7 @@
 # Maintainer: Claire Raud <meadow.hacker@gmail.com>
 
 pkgbase=linux-x570-vfio-openrgb
-pkgver=5.8.5.arch1
+pkgver=5.8.7.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -28,7 +28,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '584fe151f260d504007b25ef8cf2fecc46f01ba72ad113d100a1f27e3612993e'
+            '12ce0d20c0830e9084c89f2a2f1a5ddf4517176e5cb865903ccaa38510f271b3'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '37f306146b1bdf9233c544e87d0e392a8152aab679d0e4145d14f425c0438e23'
             'e7d724ac15daf428aa1e6a03737e5c1d040892d55fda8a66897fcac9323f285c')
