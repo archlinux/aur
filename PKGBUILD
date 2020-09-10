@@ -1,7 +1,7 @@
 # Maintainer: Kyli0x <kyli0x@protonmail.ch>
 
 pkgname=kurcoder-git
-pkgver=0.0.1
+pkgver=0.0.1.r36.g2572458
 pkgrel=1
 pkgdesc="Toolkit for encoding, decoding, checksums, hex conversions & IP calculations"
 arch=('any')
@@ -16,7 +16,6 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "kurcoder"
-    local ver="$(svnversion)"
     git describe --long  --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
