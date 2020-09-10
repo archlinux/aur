@@ -15,8 +15,9 @@ md5sums=('SKIP')
 
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "kurcoder"
+    local ver="$(svnversion)"
+    printf "r%s" "${ver//[[:alpha:]]}"
 }
 
 build(){
@@ -26,5 +27,5 @@ build(){
 package() {
   cd "kurcoder"
   make DESTDIR="$pkgdir/" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/kurcoder-git/LICENSE"
 }
