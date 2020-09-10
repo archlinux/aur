@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=3.0.git
+Type=Application
+Name=86Box
+Comment=x86 PC emulator
+Exec=/usr/bin/86box.sh
+Encoding=UTF-8
+Categories=Game;
+Terminal=false
+StartupNotify=true
+StartupWMClass=86Box.exe
