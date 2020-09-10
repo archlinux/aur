@@ -1,5 +1,6 @@
-# Maintainer: Chris Cromer <chris@cromer.cl>
-# Maintainer: artoo <artoo@manjaro.org>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Chris Cromer <chris@cromer.cl>
+# Contributor: artoo <artoo@manjaro.org>
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 
