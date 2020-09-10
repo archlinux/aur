@@ -1,6 +1,6 @@
 pkgbase = bear
 	pkgdesc = tool to generate compilation database for clang tooling
-	pkgver = 2.4.3
+	pkgver = 2.4.4
 	pkgrel = 1
 	url = https://github.com/rizsotto/Bear
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = bear
 	provides = bear
 	conflicts = bear
 	options = !ccache
-	source = Bear-2.4.3.tar.gz::https://github.com/rizsotto/Bear/archive/2.4.3.tar.gz
-	md5sums = f671ab3ee5fee4ee72b0021fe8e1842c
+	source = Bear-2.4.4.tar.gz::https://github.com/rizsotto/Bear/archive/2.4.4.tar.gz
+	sha256sums = 5e95c9fe24714bcb98b858f0f0437aff76ad96b1d998940c0684c3a9d3920e82
 
 pkgname = bear
 
