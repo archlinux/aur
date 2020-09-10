@@ -1,11 +1,11 @@
 # Maintainer: Vidar Magnusson <printit at vidarmagnusson dot com>
 
 pkgname=printit-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Utility for printing at Chalmers University"
 arch=("any")
-url="https://github.com/viddem/printit.git"
+url="https://github.com/viddem/printit"
 makedepends=("git")
 depends=("python>=3" "python-requests" "python-setuptools" "python-pip")
 source=("$pkgname-$pkgver::git+$url.git")
