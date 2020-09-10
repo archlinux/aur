@@ -2,8 +2,8 @@
 
 _pkgname=mmdetection
 pkgname=python-mmdetection
-pkgver=2.3.0
-pkgrel=6
+pkgver=2.4.0
+pkgrel=2
 pkgdesc='OpenMMLab Detection Toolbox and Benchmark'
 arch=('any')
 url='https://github.com/open-mmlab/mmdetection'
@@ -25,17 +25,14 @@ optdepends=(
   python-imagecorruptions
   python-lvis-openmm
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/open-mmlab/mmdetection/archive/v${pkgver}.tar.gz"
-"0001-fix-ClassBalancedDataset.patch::https://github.com/open-mmlab/mmdetection/pull/3577.patch")
-sha512sums=('80a865d65f42e886e6a358702dc49d9df39f700069047d287e70647e81dbcf2b9d1fd27b2b01087b738b96a25c2251618dd8f4d59b7a428c621f6fbff79c6e02'
-            '1bf79e840d7d38c781163699559fa47d9881e6615f316c8a188244fce1660a22d2255bc07956aacb929d1b0abaff3d2c1a636dfcabedf4de06a43eedd216fe2a')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/open-mmlab/mmdetection/archive/v${pkgver}.tar.gz")
+sha512sums=('22cfb7d806a92f4a9522cccf084748c0a96f85935c630c003779f32b0bd1b57ac52d8e540c4c8e98dedbfd1ced43c7081b10c8ed1a6618c1ea274570c2879552')
 
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-  patch -p1 -i ../0001-fix-ClassBalancedDataset.patch
-  # relax mmcv version requirement
-  sed -i '23,26d' "mmdet/__init__.py"
+  # uncomment this line to relax mmcv version requirement
+  #sed -i '23,26d' "mmdet/__init__.py"
 }
 
 build() {
