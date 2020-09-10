@@ -1,6 +1,6 @@
 pkgbase = goverlay-git
 	pkgdesc = A GUI to help manage Vulkan/OpenGL overlays
-	pkgver = 0.3.7.r0.g739f588
+	pkgver = 0.3.8.r2.gc34443f
 	pkgrel = 1
 	url = https://github.com/benjamimgois/goverlay
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = goverlay-git
 	optdepends = vkbasalt: Configure vkBasalt
 	optdepends = mesa-demos: OpenGL preview
 	optdepends = vulkan-tools: Vulkan preview
+	optdepends = git: Clone reshade repository
 	provides = goverlay
 	conflicts = goverlay
 	source = git+https://github.com/benjamimgois/goverlay.git

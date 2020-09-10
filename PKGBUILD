@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=goverlay-git
-pkgver=0.3.7.r0.g739f588
+pkgver=0.3.8.r2.gc34443f
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -12,7 +12,8 @@ checkdepends=('appstream')
 optdepends=('mangohud: Configure MangoHUD'
             'vkbasalt: Configure vkBasalt'
             'mesa-demos: OpenGL preview'
-            'vulkan-tools: Vulkan preview')
+            'vulkan-tools: Vulkan preview'
+            'git: Clone reshade repository')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/benjamimgois/goverlay.git')
