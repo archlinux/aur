@@ -9,6 +9,7 @@ pkgbase = kurcoder-git
 	makedepends = python-setuptools
 	depends = python3
 	depends = python-pip
+	conflicts = kurcoder
 	source = git+https://github.com/0xkurome/kurcoder
 	md5sums = SKIP
 
