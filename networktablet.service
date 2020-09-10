@@ -1,0 +1,8 @@
+[Unit]
+Description=Multimedia Service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/networktablet
+Restart=on-failure
+WantedBy=default.target
