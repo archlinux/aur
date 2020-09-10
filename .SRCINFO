@@ -1,7 +1,7 @@
 pkgbase = yuzu-mainline-bin
 	pkgdesc = Yuzu emulator 'mainline' branch binaries for Arch Linux
 	pkgver = 0.373
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linux-gamers/arch-yuzu-mainline
 	arch = any
 	license = GNU General Public License v2.0
@@ -11,6 +11,7 @@ pkgbase = yuzu-mainline-bin
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-tools
+	depends = qt5-webengine
 	depends = libxkbcommon-x11
 	depends = libfdk-aac
 	depends = fmt
