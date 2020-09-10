@@ -1,0 +1,13 @@
+pkgbase = lib32-systemd-dummy
+	pkgdesc = system and service manager (32-bit version)
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.github.com/systemd/systemd
+	arch = any
+	license = GPL2
+	license = LGPL2.1
+	provides = lib32-systemd
+	conflicts = lib32-systemd
+
+pkgname = lib32-systemd-dummy
+
