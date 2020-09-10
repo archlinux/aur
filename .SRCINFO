@@ -1,15 +1,15 @@
 pkgbase = coreuniverse
 	pkgdesc = Shows information about apps from the CoreApps family.
 	pkgver = 4.0.0
-	pkgrel = 1
-	url = https://gitlab.com/cubocore/coreuniverse
+	pkgrel = 2
+	url = https://gitlab.com/cubocore/coreapps/coreuniverse
 	arch = x86_64
 	arch = aarch64
 	groups = coreapps
 	license = GPL3
 	depends = qt5-base
 	depends = libcprime>=2.7.1
-	source = https://gitlab.com/cubocore/coreuniverse/-/archive/v4.0.0/coreuniverse-v4.0.0.tar.gz
+	source = https://gitlab.com/cubocore/coreapps/coreuniverse/-/archive/v4.0.0/coreuniverse-v4.0.0.tar.gz
 	md5sums = 770d2279a444e5a1792091d30775ee2f
 
 pkgname = coreuniverse

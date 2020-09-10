@@ -3,14 +3,14 @@
 
 pkgname=coreuniverse
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Shows information about apps from the CoreApps family."
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/cubocore/$pkgname"
+url="https://gitlab.com/cubocore/coreapps/$pkgname"
 license=('GPL3')
 depends=('qt5-base' 'libcprime>=2.7.1')
 groups=('coreapps')
-source=("https://gitlab.com/cubocore/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+source=("https://gitlab.com/cubocore/coreapps/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 md5sums=('770d2279a444e5a1792091d30775ee2f')
 
 prepare() {
