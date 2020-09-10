@@ -1,8 +1,8 @@
 pkgbase = coreinfo
 	pkgdesc = A file information tool from the CoreApps family.
 	pkgver = 4.0.0
-	pkgrel = 1
-	url = https://gitlab.com/cubocore/coreinfo
+	pkgrel = 2
+	url = https://gitlab.com/cubocore/coreapps/coreinfo
 	arch = x86_64
 	arch = aarch64
 	groups = coreapps
@@ -11,7 +11,7 @@ pkgbase = coreinfo
 	depends = libcprime>=2.7.1
 	depends = libmediainfo
 	depends = zlib
-	source = https://gitlab.com/cubocore/coreinfo/-/archive/v4.0.0/coreinfo-v4.0.0.tar.gz
+	source = https://gitlab.com/cubocore/coreapps/coreinfo/-/archive/v4.0.0/coreinfo-v4.0.0.tar.gz
 	md5sums = ad677f5f4d93ffb5f78044eb19ded639
 
 pkgname = coreinfo
