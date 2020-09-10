@@ -15,7 +15,7 @@ source=('bootsplash-packer'
 	'bootsplash-manjaro-glitch.sh'
 	'bootsplash-manjaro-glitch.initcpio_install'
 	'logo.png'
-	'logo.tar.xz')
+	'logo.tar.xz::https://github.com/ANDRoid7890/bootsplash-theme-manjaro-glitch/blob/master/logo.tar.xz')
 
 sha256sums=('SKIP'
             'SKIP'
