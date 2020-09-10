@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=skribilo-git
-pkgver=0.9.4.r7.g60f1a4c
+pkgver=0.9.4.r13.g47fd87d
 pkgrel=2
 epoch=1
 pkgdesc="The Ultimate Document Programming Framework from git"
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://www.nongnu.org/skribilo/"
 license=('GPL')
 depends=('bash')
-makedepends=('git' 'guile-git' 'guile3.0-reader' 'ploticus')
+makedepends=('git' 'guile-git' 'guile3.0-reader' 'guile-reader' 'ploticus')
 provides=('skribilo')
 conflicts=('skribilo')
 source=("git://git.sv.gnu.org/skribilo.git" makevars.diff Makefile.in.in)
