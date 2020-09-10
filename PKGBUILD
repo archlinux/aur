@@ -23,7 +23,7 @@ sha512sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$((git get-version -a -v || git describe --long) | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$((git get-version -a -v 2>/dev/null || git describe --long) | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
