@@ -14,12 +14,17 @@ source=("git+$url")
 md5sums=('SKIP')
 
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build(){
     python3 -m pip install ipcalc
 }
 
-
 package() {
   cd "kurcoder"
   make DESTDIR="$pkgdir/" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
