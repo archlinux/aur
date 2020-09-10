@@ -1,6 +1,6 @@
 pkgbase = system76-power-openrc
 	pkgdesc = System76 Power Management - with OpenRC init
-	pkgver = 1.1.6
+	pkgver = 1.1.11
 	pkgrel = 3
 	url = https://github.com/pop-os/system76-power
 	install = system76-power.install
@@ -12,10 +12,10 @@ pkgbase = system76-power-openrc
 	depends = system76-dkms
 	provides = system76-power
 	conflicts = system76-power
-	source = https://github.com/pop-os/system76-power/archive/1.1.6.tar.gz
+	source = https://github.com/pop-os/system76-power/archive/1.1.11.tar.gz
 	source = use-mkinitcpio.patch
 	source = system76-power
-	sha256sums = 3b05850fe1f0af36cf8699bd7d13eea141b89d6fa386cb3997d79932daea82f6
+	sha256sums = 9452292b6681871898ac556c333a7ececf662c1a6545fbab837c10de0527a02d
 	sha256sums = 6d59cb091858b65a0ad6682dda29ec1d970066f67a7b50430960989f6c428891
 	sha256sums = 1fd7f5dfa29d9bb28807963bf188ecbf5e67288bdf142de41b570149629ea2c9
 
