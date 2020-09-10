@@ -14,8 +14,12 @@ source=("git+$url")
 md5sums=('SKIP')
 
 
+build(){
+    python3 -m pip install ipcalc
+}
+
+
 package() {
   cd "kurcoder"
-  python3 -m pip install ipcalc
   make DESTDIR="$pkgdir/" install
 }
