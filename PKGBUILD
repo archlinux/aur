@@ -14,7 +14,7 @@ license=(GPL)
 makedepends=(libasyncns libcap attr libxtst libsm libsndfile rtkit libsoxr
              speexdsp tdb systemd dbus avahi bluez bluez-libs jack2 sbc
              lirc openssl fftw orc gtk3 webrtc-audio-processing check git meson
-             xmltoman)
+             xmltoman gst-plugins-base-libs)
 _commit=cc93eb360afeafb9bc8ac72c0511894aaa647769  # tags/v13.99.1
 source=("git+https://gitlab.freedesktop.org/mr-tao/pulseaudio.git#commit=$_commit"
         0001-meson-Define-TUNNEL_SINK-for-module-tunnel-sink.patch)
