@@ -7,7 +7,7 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libjpeg-turbo' 'mingw-w64-sqlite'
          'mingw-w64-libpng' 'mingw-w64-openssl' 'mingw-w64-dbus' 'mingw-w64-harfbuzz'
-         'mingw-w64-pcre2' 'mingw-w64-md4c')
+         'mingw-w64-pcre2' 'mingw-w64-zstd')
 makedepends=('mingw-w64-cmake' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c'
              'mingw-w64-vulkan-headers' 'qt6-base' 'git')
 options=('!buildflags' '!strip' 'staticlibs')
@@ -27,7 +27,12 @@ build() {
   cd qtbase
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DCMAKE_BUILD_TYPE=Release -DQT_HOST_PATH=/usr \
+    PKG_CONFIG="/usr/bin/${_arch}-pkg-config" \
+    ${_arch}-cmake \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DQT_HOST_PATH=/usr \
+      -DFEATURE_pkg_config=ON \
+      -DFEATURE_system_harfbuzz=ON \
       -DINSTALL_BINDIR=lib/qt6/bin \
       -DINSTALL_DOCDIR=share/doc/qt6 \
       -DINSTALL_ARCHDATADIR=lib/qt6 \
