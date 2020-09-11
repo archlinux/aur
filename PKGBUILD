@@ -7,30 +7,20 @@ url="https://gitlab.freedesktop.org/pwithnall/malcontent"
 license=(LGPL2.1)
 arch=(x86_64)
 depends=('accountsservice' 'dbus' 'flatpak' 'glib2' 'gtk3' 'polkit')
-makedepends=('git' 'meson' 'gobject-introspection' 'gtk-doc')
+makedepends=('git' 'meson' 'gobject-introspection' 'gtk-doc' 'libglib-testing' 'yelp-tools')
 provides=(libmalcontent{,-ui}-${pkgver%%.*}.so 'malcontent')
 conflicts=('malcontent')
-source=("git+https://gitlab.freedesktop.org/pwithnall/malcontent.git"
-        "git+https://gitlab.gnome.org/pwithnall/libglib-testing.git")
-sha512sums=('SKIP'
-            'SKIP')
+source=("git+https://gitlab.freedesktop.org/pwithnall/malcontent.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   git describe --tags | sed 's/-/+/g'
 }
 
-prepare() {
-  cd $_pkgname
-
-  git submodule init
-  git submodule set-url subprojects/libglib-testing "$srcdir/libglib-testing"
-  git submodule update
-}
-
 build() {
   arch-meson $_pkgname build
-  ninja -C build
+  meson compile -C build
 }
 
 check() {

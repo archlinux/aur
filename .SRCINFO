@@ -9,6 +9,8 @@ pkgbase = malcontent-git
 	makedepends = meson
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
+	makedepends = libglib-testing
+	makedepends = yelp-tools
 	depends = accountsservice
 	depends = dbus
 	depends = flatpak
@@ -20,8 +22,6 @@ pkgbase = malcontent-git
 	provides = malcontent
 	conflicts = malcontent
 	source = git+https://gitlab.freedesktop.org/pwithnall/malcontent.git
-	source = git+https://gitlab.gnome.org/pwithnall/libglib-testing.git
-	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = malcontent-git
