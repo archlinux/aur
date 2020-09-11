@@ -3,7 +3,7 @@
 
 pkgname=libudev0-shim-nosystemd
 pkgver=1
-pkgrel=1
+pkgrel=4
 pkgdesc='libudev.so.0 compatibility library for systems with newer udev versions'
 url='https://github.com/archlinux/libudev0-shim'
 arch=('i686' 'x86_64')
