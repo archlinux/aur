@@ -2,8 +2,8 @@
 # Co-Maintainer/Author: Justin Timperio <justintimperio[at]gmail[dot]com>
  
 pkgname=pacback-git
-pkgver=r104.c496aee
-pkgrel=1
+pkgver=r107.f57f610
+pkgrel=0
 pkgdesc='Advanced Version Control for Arch Linux'
 arch=('x86_64')
 url='https://github.com/JustinTimperio/pacback'
