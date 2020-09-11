@@ -1,7 +1,7 @@
 pkgbase = scrnsvr
 	pkgdesc = Yet Another X Screensaver/locker
-	pkgver = 0.4
-	pkgrel = 8
+	pkgver = 1
+	pkgrel = 9
 	url = https://github.com/koraynilay/scrnsvr
 	arch = x86_64
 	license = WTFPL
@@ -14,7 +14,7 @@ pkgbase = scrnsvr
 	optdepends = dunst: dunstify for notifications
 	optdepends = libnotify: for notifications
 	conflicts = scrnsvr-bin
-	source = scrnsvr-0.4::git+https://github.com/koraynilay/scrnsvr
+	source = scrnsvr-1::git+https://github.com/koraynilay/scrnsvr
 	md5sums = SKIP
 
 pkgname = scrnsvr
