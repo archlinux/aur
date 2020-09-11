@@ -2,7 +2,7 @@
 pkgname='python-aiohttp_rpc'
 _pkgname='aiohttp-rpc'
 pkgver='0.6.3'
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for integrating JSON-RPC 2.0 protocol with python-aiohttp"
 arch=('x86_64')
 url="https://github.com/expert-m/aiohttp-rpc"
@@ -20,4 +20,6 @@ build() {
 package() {
 	cd "$_pkgname-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	cd ../../
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
