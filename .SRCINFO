@@ -15,7 +15,6 @@ pkgbase = pulseaudio-nosystemd-git
 	makedepends = libsoxr
 	makedepends = speexdsp
 	makedepends = tdb
-	makedepends = systemd
 	makedepends = dbus
 	makedepends = avahi
 	makedepends = bluez
