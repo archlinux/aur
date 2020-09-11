@@ -1,21 +1,21 @@
 pkgbase = ttf-source-sans-pro-ibx
 	pkgdesc = A set of OpenType fonts designed for user interfaces
-	pkgver = 3.006
+	pkgver = 3.028
 	pkgrel = 1
 	url = http://www.adobe.com/
 	arch = any
 	groups = infinality-bundle-fonts-extra
-	license = custom:OFL
+	license = OFL
 	depends = fontconfig
 	conflicts = adobe-source-sans-pro-fonts
 	conflicts = otf-source-sans-pro
 	conflicts = ttf-source-sans-pro
 	conflicts = t1-source-sans-pro-ibx
 	conflicts = otf-source-sans-pro-ibx
-	source = https://github.com/adobe-fonts/source-sans-pro/archive/3.006R/3.006R.tar.gz
+	source = https://github.com/adobe-fonts/source-sans-pro/archive/3.028R/3.028R.tar.gz
 	source = 45-source-sans-pro.conf
 	source = 90-tt-source-sans-pro.conf
-	sha1sums = b3a98136de180cda6e28a0b298dae88c1b888b47
+	sha1sums = 24aa51d795e635922b390982dfca0dd6e7bb4c08
 	sha1sums = f692d46268b32bc62cb5a4dc515f9a427daf3d8c
 	sha1sums = 94f54a3f68ee1706db1d0a017b59b5c620fe45cd
 

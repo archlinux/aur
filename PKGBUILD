@@ -3,19 +3,19 @@
 # Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-source-sans-pro-ibx
-pkgver=3.006
+pkgver=3.028
 pkgrel=1
 depends=('fontconfig')
 pkgdesc="A set of OpenType fonts designed for user interfaces"
 url="http://www.adobe.com/"
 arch=('any')
-license=('custom:OFL')
+license=('OFL')
 conflicts=('adobe-source-sans-pro-fonts' 'otf-source-sans-pro' 'ttf-source-sans-pro' 't1-source-sans-pro-ibx' 'otf-source-sans-pro-ibx')
 groups=('infinality-bundle-fonts-extra')
 source=(https://github.com/adobe-fonts/source-sans-pro/archive/"$pkgver"R/"$pkgver"R.tar.gz
         45-source-sans-pro.conf
         90-tt-source-sans-pro.conf)
-sha1sums=('b3a98136de180cda6e28a0b298dae88c1b888b47'
+sha1sums=('24aa51d795e635922b390982dfca0dd6e7bb4c08'
           'f692d46268b32bc62cb5a4dc515f9a427daf3d8c'
           '94f54a3f68ee1706db1d0a017b59b5c620fe45cd')
 
