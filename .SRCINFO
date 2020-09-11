@@ -1,27 +1,30 @@
 pkgbase = hplip-minimal
-	pkgdesc = The HP printer drivers, and not much else
-	pkgver = 3.20.3
+	pkgdesc = HPLIP lite build (print and scan drivers only)
+	pkgver = 3.20.6
 	pkgrel = 1
-	url = https://hplipopensource.com
-	arch = i686
+	url = https://developers.hp.com/hp-linux-imaging-and-printing/
 	arch = x86_64
-	arch = armv6h
 	license = GPL2
 	license = custom
-	makedepends = cups
-	makedepends = libusb
-	depends = python-dbus
-	depends = python-distro
-	depends = ghostscript>=8.64-6
-	depends = libidn
+	depends = foomatic-db-engine
+	depends = libusb
+	depends = ghostscript
 	depends = libjpeg-turbo
-	optdepends = cups: for printing support
-	optdepends = libusb: for advanced usb support
+	provides = hplip
 	conflicts = hplip
 	options = !docs
-	source = https://downloads.sourceforge.net/hplip/hplip-3.20.3.tar.gz
-	md5sums = f3b981187aa7cceda13783092c05efe8
-	sha256sums = 41097ec52af5cce51ec7b0200d9f9ec82649b58ae7105259e82130e9cf63066a
+	backup = etc/hp/hplip.conf
+	backup = etc/sane.d/dll.d/hpaio
+	source = https://downloads.sourceforge.net/hplip/hplip-3.20.6.tar.gz
+	source = 0025-Remove-all-ImageProcessor-functionality-which-is-clo.patch
+	source = hplip-revert-plugins.patch
+	validpgpkeys = 4ABA2F66DBD5A95894910E0673D770CDA59047B9
+	md5sums = 89a596bac1a3e7df88be67b16a601a98
+	md5sums = a9c230a3a6ca8f336d5a12b099ae834f
+	md5sums = c199d694f544ac16088b4f8fd663b333
+	sha256sums = c64b2d334348010a9911f4feb075b2aa669047e7adb86c72d4a6ee7d392a7c20
+	sha256sums = 5b7c19487f6e4def978b58aa8686249f234d4f64e1fb2444c602ea16716477dd
+	sha256sums = 327180688a945fde59d1e0b399877c92657f4e674cc6c21a2e5fd5b6460e922a
 
 pkgname = hplip-minimal
 
