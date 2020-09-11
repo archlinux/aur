@@ -1,18 +1,18 @@
-From 693ee2043822c0d3b724932bc17216032682c293 Mon Sep 17 00:00:00 2001
+From 4f8f8c2d12a03cddc3ade2ceba13525e086d929d Mon Sep 17 00:00:00 2001
 From: Sefa Eyeoglu <contact@scrumplex.net>
-Date: Thu, 21 May 2020 20:12:37 +0200
+Date: Fri, 11 Sep 2020 23:48:34 +0200
 Subject: [PATCH] packaging/archlinux: use system libliftoff and wlroots
 
 ---
- meson.build | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+ meson.build | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index 7d2fd7d..fd5544a 100644
+index d4fadab..23de301 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -44,9 +44,8 @@ math           = cc.find_library('m')
- thread_dep = dependency('threads')
+@@ -45,9 +45,8 @@ thread_dep = dependency('threads')
+ cap_dep = cc.find_library('cap')
  sdl_dep = dependency('SDL2')
  
 -wlroots_proj = subproject('wlroots', default_options:
@@ -23,27 +23,28 @@ index 7d2fd7d..fd5544a 100644
  
  shadercompiler = find_program('glslangValidator')
  
-@@ -60,9 +59,6 @@ spirv_shader = custom_target('shader_target',
+@@ -61,10 +60,6 @@ spirv_shader = custom_target('shader_target',
    install : false,
  )
  
 -liftoff_proj = subproject('libliftoff', default_options:
 -  ['default_library=static'])
 -libftoff_dep = liftoff_proj.get_variable('liftoff')
- 
+-
  executable(
      'gamescope',
-@@ -76,8 +72,8 @@ executable(
+     'src/steamcompmgr.cpp',
+@@ -77,8 +72,8 @@ executable(
      dependencies : [
          dep_x11, dep_xdamage, dep_xcomposite, dep_xrender, dep_xext,
          dep_xxf86vm, pixman_dep, drm_dep, wayland_server, wayland_protos,
 -        libinput, xkbcommon, math, thread_dep, sdl_dep, wlroots_static_dep,
--        vulkan_dep, libftoff_dep, dep_xtst
+-        vulkan_dep, libftoff_dep, dep_xtst, cap_dep
 +        libinput, xkbcommon, math, thread_dep, sdl_dep, wlroots,
-+        vulkan_dep, liftoff, dep_xtst
++        vulkan_dep, liftoff, dep_xtst, cap_dep
      ],
      install: true,
  )
 -- 
-2.26.2
+2.28.0
 

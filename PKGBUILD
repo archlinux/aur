@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.6.3.r3.g4524ac3
+pkgver=3.6.9.r21.g5644232
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -15,7 +15,7 @@ conflicts=($_pkgname "steamcompmgr")
 source=("git+https://github.com/Plagman/gamescope.git"
         "use-system-libs.patch")
 sha512sums=('SKIP'
-            '2459cca2891c2de061a35dbb8896ac16c51e86e338d042e7a40f8742b59325d412232b653c6a36347af528cde8226e250f315a5b6c98d0b76ac5001099c7a245')
+            'a36d6bef5ea19a0754ab82df5bc2c5f64c23321fde7be33073953dad76eb8c0af64ae1b5723f4e778a403c6bf75d4df27a524899de3b412d2bacd1cd4052e86a')
 
 
 pkgver() {
