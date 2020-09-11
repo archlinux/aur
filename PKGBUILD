@@ -2,8 +2,8 @@
 # Contributor: Giusy Margarita <kurmikon at libero dot it>
 
 pkgname=korla-icon-theme
-pkgver=1.2.9
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)"
 arch=("any")
 url="https://github.com/bikass/korla"
@@ -15,7 +15,7 @@ optdepends=(
     "gnome-icon-theme: fallback Gnome icon theme for Gnome Desktop")
 install="$pkgname.install"
 source=("https://github.com/bikass/korla/archive/v$pkgver.tar.gz")
-md5sums=("6e3d054458db67f73ec7742a8ccd7509")
+sha256sums=("0c575c0a97d8d7072191f695744d219497a3692fb0fa28137d557acbc9439f8d")
 
 _iconpath=usr/share/icons
 _iconcache=icon-theme.cache
