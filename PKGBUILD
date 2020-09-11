@@ -2,7 +2,7 @@
 
 pkgname='slap-cli-bin'
 pkgver='1.2.0'
-pkgrel='0'
+pkgrel='1'
 pkgdesc='Painless shell argument parsing and dependency check'
 arch=('x86_64')
 url='https://github.com/agnipau/slap'
