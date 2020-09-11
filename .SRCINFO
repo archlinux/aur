@@ -1,7 +1,7 @@
 pkgbase = baresip
 	pkgdesc = portable and modular SIP User-Agent with audio and video support
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.creytiv.com/baresip.html
 	arch = i686
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = baresip
 	makedepends = v4l-utils
 	depends = rem
 	depends = openssl
+	depends = re
 	optdepends = alsa-lib: (alsa module)
 	optdepends = cairo: (cairo, rst modules)
 	optdepends = ffmpeg: (avcodec, avformat, h265 modules)

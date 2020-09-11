@@ -3,13 +3,14 @@
 
 pkgname=baresip
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="portable and modular SIP User-Agent with audio and video support"
 arch=('i686' 'x86_64' 'armv6h')
 url="http://www.creytiv.com/baresip.html"
 license=('BSD')
 depends=('rem'
-         'openssl')
+         'openssl'
+         're')
 optdepends=('alsa-lib: (alsa module)'
             'cairo: (cairo, rst modules)'
             'ffmpeg: (avcodec, avformat, h265 modules)'
