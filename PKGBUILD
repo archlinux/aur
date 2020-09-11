@@ -19,8 +19,8 @@ sha512sums=(SKIP SKIP SKIP SKIP)
 
 package() {
 	cd "$srcdir"
-	install -Dm644 ibus@.service "$pkgdir"/"$(pkg-config systemd --variable=systemduserunitdir)"/ibus@.service
-	install -Dm644 ibus-config@.service "$pkgdir"/"$(pkg-config systemd --variable=systemduserunitdir)"/ibus-config@.service
-	install -Dm755 enable-ibus-daemon "$pkgdir"/usr/bin/enable-ibus-daemon
-	install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/ibus-deamon/LICENSE.md
+	install -Dm644 ibus@.service "$pkgdir/$(pkg-config systemd --variable=systemduserunitdir)/ibus@.service"
+	install -Dm644 ibus-config@.service "$pkgdir/$(pkg-config systemd --variable=systemduserunitdir)/ibus-config@.service"
+	install -Dm755 enable-ibus-daemon "$pkgdir/usr/bin/enable-ibus-daemon"
+	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/ibus-deamon/LICENSE.md"
 }
