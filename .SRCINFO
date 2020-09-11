@@ -1,0 +1,15 @@
+pkgbase = strip-ansi
+	pkgdesc = Strip ANSI escape sequences from text
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/KSXGitHub/strip-ansi-cli
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = strip-ansi-0.0.0.tar.gz::https://github.com/KSXGitHub/strip-ansi-cli/archive/0.0.0.tar.gz
+	source = https://raw.githubusercontent.com/KSXGitHub/strip-ansi-cli/master/LICENSE.md
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = strip-ansi
+
