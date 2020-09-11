@@ -1,13 +1,14 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=gnome-tour-git
-pkgver=3.37.1.r44.gfc8565f
+pkgver=3.37.1.r117.g0d76878
 pkgrel=1
 pkgdesc="A guided tour and greeter for GNOME"
 arch=(x86_64)
 url="https://gitlab.gnome.org/GNOME/${pkgname%-git}"
 license=('GPL')
 depends=('libhandy1')
-makedepends=('appstream-glib' 'rust' 'meson' 'git')
+makedepends=('rust' 'meson' 'git')
+checkdepends=('appstream-glib')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=("git+$url")
