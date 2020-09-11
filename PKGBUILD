@@ -1,13 +1,12 @@
 # Maintainer: Hikari Takahashi <nomenclatura@tuta.io>
-# Previous Maintainers:
-# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
+# Previous Maintainers: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: Thaodan <theodorstormgrade@gmail.com>
 # Contributor: Weng Xuetian <wengxt@gmail.com>
 # Contributor: Marc Mettke <marc@itmettke.de>
 
 pkgname=firefox-kde-opensuse-rpm
-pkgver="80.0.862.4"
-_pkgver="80.0-862.4"
+pkgver="80.0.862.7"
+_pkgver="80.0-862.7"
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE - Binary from OBS"
 epoch=2  # Because of update 76.0.1-833.1
