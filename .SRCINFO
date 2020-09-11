@@ -1,7 +1,7 @@
 pkgbase = syncthing-bin
 	pkgdesc = Open Source Continuous Replication / Cluster Synchronization Thing: binary.
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://syncthing.net/
 	install = syncthing.install
 	arch = any
