@@ -1,7 +1,6 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-_pkgbasename=libpulse
 pkgname=lib32-$_pkgbasename-git
 pkgdesc="A featureful, general-purpose sound server (32-bit client libraries)"
 pkgver=13.99.1+98+g460d0c0b7
@@ -10,7 +9,7 @@ arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(LGPL)
 depends=(lib32-{dbus,libasyncns,libcap,libxtst,libsm,libsndfile}
-         $_pkgbasename)
+         libpulse)
 makedepends=(lib32-{speexdsp,glib2,gtk3} git meson)
 optdepends=('lib32-alsa-plugins: ALSA support')
 provides=("lib32-pulseaudio=$pkgver" lib32-libpulse)
