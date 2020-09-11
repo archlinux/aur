@@ -1,7 +1,7 @@
 pkgbase = inkscape-generate-palette
 	pkgdesc = Inkscape extension to generate color palettes
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/olibia/inkscape-generate-palette
 	arch = any
 	license = GPL
