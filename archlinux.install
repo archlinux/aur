@@ -1,0 +1,13 @@
+post_install() {
+	printf "\nYou need to reboot your system now"
+	printf "\nThanks for using my pkg 😊\n\n"
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	printf "\nYou need to reboot your system now"
+	printf "\n🖐️🖐️ bye bye 😞\n\n"
+}
