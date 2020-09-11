@@ -32,7 +32,7 @@ build() {
     -D udevrulesdir=/usr/lib/udev/rules.d \
     -D gcov=false \
     -D tests=false \
-    -D systemd=false
+    -D systemd=disabled
   meson compile -C build
 }
 
