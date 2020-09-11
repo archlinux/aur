@@ -12,7 +12,7 @@ pkgbase = libudev0-shim-nosystemd
 	provides = libudev0-shim
 	conflicts = libudev0
 	conflicts = libudev0-shim
-	source = libudev0-shim-nosystemd.tar.gz::https://github.com/archlinux/libudev0-shim/archive/v1.tar.gz
+	source = libudev0-shim.tar.gz::https://github.com/archlinux/libudev0-shim/archive/v1.tar.gz
 	sha512sums = 794810b20be6391cb6af53c2c49705f8bd884dd6eb5d1fd5b659481a01490205cc60e0f1904c020fb0e59e984583762ba6775f977a78b95a40ba82eb93965387
 
 pkgname = libudev0-shim-nosystemd
