@@ -1,7 +1,7 @@
 pkgbase = python-slpp-git
 	pkgdesc = Simple lua-python data structures parser
 	pkgver = r46.b947496
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SirAnthony/slpp
 	arch = x86_64
 	license = MIT

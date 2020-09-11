@@ -1,7 +1,7 @@
 # Maintainer: Kevin Andriessens <kevin@kelaun.be>
 pkgname=python-slpp-git
 pkgver=r46.b947496
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple lua-python data structures parser"
 arch=('x86_64')
 url="https://github.com/SirAnthony/slpp"
@@ -24,4 +24,5 @@ build() {
 package() {
 	cd "${srcdir}/slpp"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
