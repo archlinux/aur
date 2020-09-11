@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-bin
 	pkgver = 3.1.8.sdk402
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -58,12 +58,20 @@ pkgname = dotnet-sdk-bin
 	conflicts = dotnet-sdk=3.1.8.sdk402
 	conflicts = dotnet-sdk-3.1
 
+pkgname = netstandard-targeting-pack-bin
+	pkgdesc = The .NET Standard targeting pack (binary)
+	provides = netstandard-targeting-pack-2.1
+	provides = netstandard-targeting-pack-bin
+	conflicts = netstandard-targeting-pack-2.1
+	conflicts = netstandard-targeting-pack-bin
+
 pkgname = dotnet-targeting-pack-bin
 	pkgdesc = The .NET Core targeting pack (binary)
-	depends = netstandard-targeting-pack
+	depends = netstandard-targeting-pack-2.1
 	provides = dotnet-targeting-pack=3.1.8
 	provides = dotnet-targeting-pack-3.1
 	conflicts = dotnet-targeting-pack=3.1.8
+	conflicts = dotnet-targeting-pack-3.1
 
 pkgname = aspnet-targeting-pack-bin
 	pkgdesc = The ASP.NET Core targeting pack (binary)
@@ -71,4 +79,5 @@ pkgname = aspnet-targeting-pack-bin
 	provides = aspnet-targeting-pack=3.1.8
 	provides = aspnet-targeting-pack-3.1
 	conflicts = aspnet-targeting-pack=3.1.8
+	conflicts = aspnet-targeting-pack-3.1
 

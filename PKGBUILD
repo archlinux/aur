@@ -6,14 +6,14 @@ pkgname=(
   'aspnet-runtime-bin'
   'dotnet-runtime-bin'
   'dotnet-sdk-bin'
-  # netstandard-targeting-pack-bin
+  'netstandard-targeting-pack-bin'
   'dotnet-targeting-pack-bin'
   'aspnet-targeting-pack-bin'
-  )
+ )
 pkgver=3.1.8.sdk402
 _runtimever=3.1.8
 _sdkver=3.1.402
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -78,34 +78,38 @@ package_dotnet-sdk-bin() {
   ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-bin
 }
 
-# package_netstandard-targeting-pack-bin() {
-#   pkgdesc='The .NET Standard targeting pack (binary)'
-#   provides=(netstandard-targeting-pack-2.1)
-#   conflicts=(netstandard-targeting-pack-2.1)
+package_netstandard-targeting-pack-bin() {
+  pkgdesc='The .NET Standard targeting pack (binary)'
+  provides=('netstandard-targeting-pack-2.1' 'netstandard-targeting-pack-bin')
+  conflicts=('netstandard-targeting-pack-2.1' 'netstandard-targeting-pack-bin')
 
-#   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
-#   cp -dr --no-preserve='ownership' packs/NETStandard.Library.Ref "${pkgdir}"/usr/share/dotnet/packs/
-#   ln -s dotnet-host "${pkgdir}"/usr/share/licenses/netstandard-targeting-pack
-# }
+  install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
+  cp -dr --no-preserve='ownership' packs/NETStandard.Library.Ref "${pkgdir}"/usr/share/dotnet/packs/
+  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/netstandard-targeting-pack
+}
 
 package_dotnet-targeting-pack-bin() {
   pkgdesc='The .NET Core targeting pack (binary)'
-  depends=(netstandard-targeting-pack)
+  depends=(netstandard-targeting-pack-2.1)
   provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-3.1)
-  conflicts=(dotnet-targeting-pack=${_runtimever})
+  conflicts=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-3.1)
+
+  if [ $CARCH = 'x86_64' ]; then msarch=x64;
+  elif [ $CARCH = 'armv7h' ]; then msarch=arm;
+  elif [ $CARCH = 'aarch64' ]; then msarch=arm64; fi
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
-  cp -dr --no-preserve='ownership' packs/Microsoft.NETCore.App.{Host.linux-x64,Ref} "${pkgdir}"/usr/share/dotnet/packs/
-  ln -s dotnet-host "${pkgdir}"/usr/share/licenses/dotnet-targeting-pack-bin
+  cp -dr --no-preserve='ownership' packs/Microsoft.NETCore.App.{Host.linux-${msarch},Ref} "${pkgdir}"/usr/share/dotnet/packs/
+  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/dotnet-targeting-pack-bin
 }
 
 package_aspnet-targeting-pack-bin() {
   pkgdesc='The ASP.NET Core targeting pack (binary)'
   depends=(dotnet-targeting-pack-bin)
   provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-3.1)
-  conflicts=(aspnet-targeting-pack=${_runtimever})
+  conflicts=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-3.1)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
   cp -dr --no-preserve='ownership' packs/Microsoft.AspNetCore.App.Ref "${pkgdir}"/usr/share/dotnet/packs/
-  ln -s dotnet-host "${pkgdir}"/usr/share/licenses/aspnet-targeting-pack-bin
+  ln -s dotnet-host-bin "${pkgdir}"/usr/share/licenses/aspnet-targeting-pack-bin
 }
