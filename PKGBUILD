@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=blanket
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Improve focus and increase your productivity by listening to different sounds."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gtk3' 'gst-python' 'python-gobject' 'libhandy1')
 makedepends=('meson')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('74469e0f1fefff877414f09e43a94f272afe0913134afd95ba1052647db3728c')
+sha256sums=('a5449227fd2e7de0711fc787a10ad93b8248b2e9fa1a6981b3a278e51d5aa51b')
 
 build() {
 	arch-meson "$pkgname-$pkgver" build
