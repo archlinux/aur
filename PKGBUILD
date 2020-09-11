@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cod
 pkgver=0.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A completion daemon for bash/zsh"
 arch=('any')
 url="https://github.com/dim-an/cod"
@@ -21,13 +21,12 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	go build \
-		-trimpath \
-		-buildmode=pie \
-		-mod=readonly \
-		-modcacherw \
-		-ldflags "-extldflags \"${LDFLAGS}\"" \
-		-o "$pkgname" .
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go build -v -o "${pkgname%-git}" .
 
 	# Clean now to ensure makepkg --clean works
 	go clean -modcache
