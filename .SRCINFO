@@ -1,0 +1,18 @@
+pkgbase = abfetch
+	pkgdesc = A Simple hardware info fetching program
+	pkgver = r6.60147a0
+	pkgrel = 1
+	url = https://github.com/abhinav3967/abfetch.git
+	arch = any
+	license = GPL3
+	makedepends = sudo
+	makedepends = git
+	depends = bash
+	provides = abfetch
+	conflicts = abfetch
+	backup = etc/abfetch
+	source = git+https://github.com/abhinav3967/abfetch.git
+	md5sums = SKIP
+
+pkgname = abfetch
+
