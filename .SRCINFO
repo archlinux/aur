@@ -2,6 +2,7 @@ pkgbase = xfce4-theme-switcher
 	pkgdesc = Utility for fast switch betwen Xfce4 themes.
 	pkgver = 0.1
 	pkgrel = 1
+	url = https://gitlab.com/linux-stuffs/xfce4-theme-switcher
 	arch = any
 	groups = xfce4-goodies
 	groups = xfce4-goodies-devel
