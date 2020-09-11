@@ -2,3 +2,4 @@
 *.tar*
 updater.sh
 latest_release
+latest_version
