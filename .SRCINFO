@@ -1,6 +1,6 @@
 pkgbase = jasmine-gjs
 	pkgdesc = Run Jasmine specs for GJS code
-	pkgver = 2.3.4
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/ptomato/jasmine-gjs
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = jasmine-gjs
 	depends = gjs
 	provides = jasmine
 	conflicts = jasmine-gjs-git
-	source = https://github.com/ptomato/jasmine-gjs/releases/download/2.3.4/jasmine-gjs-2.3.4.tar.xz
-	sha256sums = 2cc928e8ab86aba877abda783e88060b4eee4e45db8d649575a11553fc87a876
+	source = https://github.com/ptomato/jasmine-gjs/archive/2.5.2.tar.gz
+	sha256sums = a689d54e4d9a989ab87ff11a7340685393abd05efb5d67a9f44ca67abd18f18b
 
 pkgname = jasmine-gjs
 

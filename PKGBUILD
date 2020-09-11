@@ -2,7 +2,7 @@
 
 # Maintainer: Bart Libert <bart dot libert at gmail dot com>
 pkgname=jasmine-gjs
-pkgver=2.3.4
+pkgver=2.5.2
 pkgrel=1
 pkgdesc='Run Jasmine specs for GJS code'
 arch=('any')
@@ -12,8 +12,8 @@ depends=('gjs')
 makedepends=('git' 'meson')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("https://github.com/ptomato/jasmine-gjs/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('2cc928e8ab86aba877abda783e88060b4eee4e45db8d649575a11553fc87a876')
+source=("https://github.com/ptomato/jasmine-gjs/archive/$pkgver.tar.gz")
+sha256sums=('a689d54e4d9a989ab87ff11a7340685393abd05efb5d67a9f44ca67abd18f18b')
 conflicts=('jasmine-gjs-git')
 provides=('jasmine')
 
