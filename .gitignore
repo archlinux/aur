@@ -1,5 +1,8 @@
-src/
-pkg/
-depot_tools/
-gyp/
-v8-*pkg.tar.xz
+*
+!.gitignore
+
+!PKGBUILD
+!.SRCINFO
+
+!d8
+!v8.pc

@@ -1,3 +1,4 @@
 #!/bin/sh
 
+command -v rlwrap &> /dev/null && exec rlwrap /usr/lib/v8/d8 "$@"
 exec /usr/lib/v8/d8 "$@"
