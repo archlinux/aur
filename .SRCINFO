@@ -32,7 +32,7 @@ pkgbase = firefox-kde-opensuse-rpm
 	conflicts = firefox-kde-opensuse
 	conflicts = firefox-kde-opensuse-bin
 	source_x86_64 = https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-80.0-862.7.x86_64.rpm
-	sha512sums_x86_64 = 4e0b533fa68347425c0ba5a820edb6c496946beb20c0dd4f07188f69ef8d4df31b7cbc2083e6ce70f4415eac65f6fe0fc6e2c36a764ff65dd93f5fb355306871
+	sha512sums_x86_64 = c06e9beffcc759d66c4c206f2be308927879ad73324386bcd79b62a896d9fe00c4fefadfce9c2ce40ccc9b7b06c8f5c25f7283c33d88f4777c8106852d1d2a23
 
 pkgname = firefox-kde-opensuse-rpm
 
