@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=xtables-geoip-db
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GeoIP Database for xtables"
 arch=('any')
 license=('BSD' 'GPL')
@@ -38,7 +38,7 @@ package() {
     install -d -m 755 "${pkgdir}"/usr/share/xt_geoip
     if [[ -z "${_maxmind_key}" ]]; then
         cd "${srcdir}"
-        perl "${srcdir}"/xt_geoip_build -D "${pkgdir}"/usr/share/xt_geoip -i dbip-country-lite-${_geoip_date}.csv
+        perl "${srcdir}"/xt_geoip_build -D "${pkgdir}"/usr/share/xt_geoip -i "dbip-country-lite-${_geoip_date}.csv"
     else
         cd "${srcdir}"/GeoLite2-Country-CSV_*
         perl "${srcdir}"/mmcsv_geoip_build -D "${pkgdir}"/usr/share/xt_geoip
