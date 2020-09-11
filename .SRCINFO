@@ -1,6 +1,6 @@
 pkgbase = peazip-gtk2-portable
 	pkgdesc = Natively compiled 64-bit GTK2 archiver utility, portable version with no dependencies
-	pkgver = 7.3.2
+	pkgver = 7.4.1
 	pkgrel = 1
 	url = http://www.peazip.org/peazip-linux-64.html
 	install = peazip.install
@@ -13,8 +13,8 @@ pkgbase = peazip-gtk2-portable
 	conflicts = peazip-gtk2
 	conflicts = peazip-qt
 	options = !strip
-	source = https://github.com/giorgiotani/PeaZip/releases/download/7.3.2/peazip_portable-7.3.2.LINUX.x86_64.GTK2.tar.gz
-	sha256sums = 1334af2d448c4b7294bb328650810f652b20004bfa57a0d60fe5378b96469319
+	source = https://github.com/giorgiotani/PeaZip/releases/download/7.4.1/peazip_portable-7.4.1.LINUX.x86_64.GTK2.tar.gz
+	sha256sums = 50e1858206c106bcf43cf93bb9880cb3cb7968ffd0ac429d07799bf9305aef44
 
 pkgname = peazip-gtk2-portable
 
