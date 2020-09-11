@@ -1,4 +1,4 @@
-pkgbase = lib32-libeudev
+pkgbase = lib32-eudev
 	pkgdesc = The userspace dev tools (udev) forked by Gentoo (32-bit)
 	pkgver = 3.2.9
 	pkgrel = 1
@@ -15,7 +15,6 @@ pkgbase = lib32-libeudev
 	depends = lib32-glibc
 	provides = lib32-udev=243
 	provides = libudev.so
-	provides = lib32-eudev
 	provides = lib32-libeudev
 	conflicts = lib32-libeudev
 	conflicts = lib32-eudev-git
@@ -24,5 +23,5 @@ pkgbase = lib32-libeudev
 	source = https://dev.gentoo.org/~blueness/eudev/eudev-3.2.9.tar.gz
 	sha512sums = SKIP
 
-pkgname = lib32-libeudev
+pkgname = lib32-eudev
 

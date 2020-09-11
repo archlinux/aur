@@ -2,7 +2,7 @@
 # Contributor    : Eric Vidal <eric@obarun.org>
 # Contributor    : Jean-Michel T.Dydak <jean-michel@obarun.org>
 
-pkgname=lib32-libeudev
+pkgname=lib32-eudev
 pkgver=3.2.9
 pkgrel=1
 udevver=243
@@ -26,7 +26,7 @@ makedepends=(
     'lib32-kmod')
 
 provides=(
-    "lib32-udev=${udevver}" 'libudev.so' 'lib32-eudev' 'lib32-libeudev')
+    "lib32-udev=${udevver}" 'libudev.so' 'lib32-libeudev')
 
 conflicts=(
     'lib32-libeudev'
