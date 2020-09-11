@@ -1,16 +1,18 @@
 # Maintainer: Kevin Del Castillo <quebin31@gmail.com>
 
 _pkgname=neovim
+_pkgver=0.5.0
+_pkgdate=20200911
 pkgname=neovim-nightly
-epoch=1
-pkgver=0.5.0+20200911
+epoch=2
+pkgver="${_pkgver}+${_pkgdate}"
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Builds'
 arch=('x86_64')
 url='https://neovim.io'
 license=('custom:neovim')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("${_pkgname}=${_pkgver}")
+conflicts=("${_pkgname}")
 optdepends=('python2-neovim: for Python 2 plugin support, see :help python'
             'python-neovim: for Python 3 plugin support, see :help python'
             'xclip: for clipboard support, see :help clipboard'
