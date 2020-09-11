@@ -3,10 +3,10 @@
 pkgname=nginx-mainline-mod-brotli
 epoch=1
 pkgver=1.0.0rc
-pkgrel=2
+pkgrel=3
 
 _modname="ngx_${pkgname#nginx-mainline-mod-}"
-_nginxver=1.19.1
+_nginxver=1.19.2
 
 pkgdesc="Brotli compression filter module for mainline nginx"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('a004776c64ed3c5c7bc9b6116ba99efab3265e6b81d49a57ca4471ff90655492'
+sha256sums=('7c1f7bb13e79433ee930c597d272a64bc6e30c356a48524f38fd34fa88d62473'
             'SKIP'
             'c85cdcfd76703c95aa4204ee4c2e619aa5b075cac18f428202f65552104add3b')
 
