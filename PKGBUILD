@@ -1,9 +1,9 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh
-pkgver=0.9.6
-pkgrel=2
-pkgdesc="Graphical interface for managing your applications ( AppImage, Flatpak, Snap, Arch/AUR, Web )"
+pkgver=0.9.7
+pkgrel=1
+pkgdesc="Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web)"
 arch=('any')
 url="https://github.com/vinifmor/bauh"
 license=('zlib/libpng')
@@ -31,11 +31,12 @@ optdepends=('flatpak: required for Flatpak support'
             'patch: may be required to compile some AUR packages'
             'pkgconf: may be required to compile some AUR packages'            
             'ccache: can improve AUR packages compilation speed' 
-            'aria2: faster AppImages and AUR source downloads'
-            'breeze: for KDE Plasma main theme be available')
+            'aria2: multi-threaded downloading support'
+            'breeze: KDE Plasma main theme'
+            'axel: multi-threaded downloading support')
 makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('cb1820b8a41dccec746d91d71b7f524c2e3caf6b30b0cd9666598b8ad49302654d9ce9bd1a0a2a9612afebc27ef78a2a94ac10e4e6c183742effe4feeabaa7b2')
+sha512sums=('25429395a6c377a3e7d0bfebc970f60e93b25ad6a57e2e9e872373ad6e483d0a4c265a8804a68f9b55a4be002e2ede41676bcfc7ac30ce3d933aba60becb639e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
