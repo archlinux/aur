@@ -1,0 +1,18 @@
+pkgbase = power-profiles-daemon-git
+	pkgdesc = Makes power profiles handling available over D-Bus
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/hadess/power-profiles-daemon
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = libgudev
+	depends = systemd
+	provides = power-profiles-daemon
+	conflicts = power-profiles-daemon
+	source = git+https://gitlab.freedesktop.org/hadess/power-profiles-daemon.git
+	sha512sums = SKIP
+
+pkgname = power-profiles-daemon-git
+
