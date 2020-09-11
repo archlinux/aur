@@ -1,7 +1,7 @@
 # Maintainer:  Tony Fettes <tonyfettes@tonyfettes.tk>
 
 pkgname=tunasync-bin
-pkgver=0.6.3
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Mirror job management tool developed by TUNA"
 arch=('x86_64')
