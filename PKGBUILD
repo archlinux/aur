@@ -19,7 +19,7 @@ makedepends=("gzip")
 provides=("firefox=${pkgver}")
 conflicts=("firefox" "firefox-kde-opensuse" "firefox-kde-opensuse-bin")
 source_x86_64=(https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-${_pkgver}.x86_64.rpm)
-sha512sums_x86_64=('c06e9beffcc759d66c4c206f2be308927879ad73324386bcd79b62a896d9fe00c4fefadfce9c2ce40ccc9b7b06c8f5c25f7283c33d88f4777c8106852d1d2a23')
+sha512sums_x86_64=('a9021ba54e4b1067ec1a2fed86d0b84de00bb59a4a93dbd6ed262a4521281978588f48d98a07aee0fb73fd666df8174030e1188562867f74bbde26d24749fdf3')
 
 
 prepare() {
