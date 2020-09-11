@@ -1,12 +1,12 @@
 # Maintainer: Yngve Levinsen <yngve.levinsen@ess.eu>
 
 pkgname=madx-git
-pkgver=5.06.00.r9.gf3764bce
+pkgver=5.06.01.r0.gf3764bce
 pkgrel=1
 pkgdesc="Accelerator Optics simulation code, git master version"
 url="http://cern.ch/mad"
 license=("custom")
-depends=('gcc-libs' 'libx11')
+depends=('gcc-libs' 'libx11' 'lapack')
 conflicts=('madx-dev' 'nmap')
 provides=('madx')
 makedepends=('git' 'cmake')
@@ -14,6 +14,7 @@ arch=('i686' 'x86_64')
 _gitname=MAD-X
 source=("https://github.com/MethodicalAcceleratorDesign/${_gitname}.git")
 sha256sums=('SKIP')
+
 pkgver() {
     cd $_gitname
     git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
