@@ -1,0 +1,22 @@
+pkgbase = strip-ansi-bin
+	pkgdesc = Strip ANSI escape sequences from text
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/KSXGitHub/strip-ansi-cli
+	arch = x86_64
+	license = MIT
+	provides = strip-ansi
+	conflicts = strip-ansi
+	source = strip-ansi-3e5a69f2e3c47cc15c713bb695987b5ed47a57f5::https://github.com/KSXGitHub/strip-ansi-cli/releases/download/0.0.0/strip-ansi-x86_64-unknown-linux-gnu
+	source = completion.0.0.0.bash::https://github.com/KSXGitHub/strip-ansi-cli/releases/download/0.0.0/completion.bash
+	source = completion.0.0.0.fish::https://github.com/KSXGitHub/strip-ansi-cli/releases/download/0.0.0/completion.fish
+	source = completion.0.0.0.zsh::https://github.com/KSXGitHub/strip-ansi-cli/releases/download/0.0.0/completion.zsh
+	source = https://raw.githubusercontent.com/KSXGitHub/strip-ansi-cli/master/LICENSE.md
+	sha1sums = 3e5a69f2e3c47cc15c713bb695987b5ed47a57f5
+	sha1sums = 1e22b678650f0660e6dc0b502990fc13bd0272d3
+	sha1sums = 80483a30bc463ddc73a04f46b160a0ea228f002a
+	sha1sums = 13364a8a9ba3dd2e35b8c143665fb76936dfcf0a
+	sha1sums = SKIP
+
+pkgname = strip-ansi-bin
+
