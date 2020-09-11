@@ -80,9 +80,6 @@ package() {
   mv "$pkgdir/usr/lib/plugins/"*.so "$pkgdir/usr/lib/$_pkgname/"
   rmdir "$pkgdir/usr/lib/plugins"
 
-  # Man page
-  install -vDm 644 "man/$_pkgname".1 -t "$pkgdir/usr/share/man/man1/"
-
   # License
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
