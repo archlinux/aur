@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Vegan on a Desert Island
+Comment=Adventure game about being a vegan stranded on a desert island
+Path=/usr/bin
+Exec=voadi
+Icon=voadi
+Terminal=false
+Categories=Game;
