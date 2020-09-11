@@ -3,21 +3,19 @@
 # Contributor: bohoomil <@zoho.com>
 
 pkgname=ttf-iosevka-ibx
-pkgver=3.0.0
-_rc=rc.1
+pkgver=3.5.0
 pkgrel=1
-depends=('fontconfig')
 pkgdesc="A programmer's typeface"
 url="https://github.com/be5invis/Iosevka"
 arch=('any')
 groups=('infinality-bundle-fonts-extra')
-license=('custom:OFL')
-source=(https://github.com/be5invis/Iosevka/releases/download/v"$pkgver"-"$_rc"/01-iosevka-"$pkgver"-"$_rc".zip
+license=('OFL')
+source=("$url/releases/download/v$pkgver/pkg-iosevka-$pkgver.zip"
         45-iosevka.conf
         90-tt-iosevka.conf)
-sha1sums=('ad5d9c090a7ef2ec77343eca7d171ba5356c5895'
-          '56b9b68799d3945428c5d30958b03898c878eb18'
-          '83159b5d820db037c81d10eb75e61f927f4f6fe1')
+sha256sums=('c2c56c2600490571d796ba4f655bb116a8334420bee65991c7d59d83cbccd4ff'
+            '6e6526bdb8c5128e27edcb554f6d7663ca18eeb3f9e076ea938a51d883115ffe'
+            'afa1120b3ca7885158ac6ab59f5d22b9ceb7147f46880cd3f76a2560959ded3b')
 
 package(){
   install -m755 -d "$pkgdir"/usr/share/fonts/"$pkgname"
