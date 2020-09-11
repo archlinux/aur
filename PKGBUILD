@@ -1,13 +1,12 @@
 # Maintainer: Fabian Bornschein <plusfabi(At)gmail(Dot)com>
 pkgname=game-devices-udev
 pkgver=0.7.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Udev rules for controllers"
 url='https://gitlab.com/fabis_cafe/game-devices-udev'
 arch=('any')
 license=('MIT')
-depends=('udev' 'lsb-release')
-makedepends=('lsb-release')
+depends=('udev')
 install=$(/usr/bin/tail -n 1 /usr/lib/os-release | /usr/bin/cut -d= -f2).install
 source=("https://gitlab.com/fabis_cafe/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.zip"
 		"uinput.conf")

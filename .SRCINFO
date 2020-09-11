@@ -1,14 +1,12 @@
 pkgbase = game-devices-udev
 	pkgdesc = Udev rules for controllers
 	pkgver = 0.7.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/fabis_cafe/game-devices-udev
 	install = archlinux.install
 	arch = any
 	license = MIT
-	makedepends = lsb-release
 	depends = udev
-	depends = lsb-release
 	source = https://gitlab.com/fabis_cafe/game-devices-udev/-/archive/0.7.9/game-devices-udev-0.7.9.zip
 	source = uinput.conf
 	sha512sums = ec48291810c9e219708aa03507ca70b34b0e378f9fda678e086cc964b3bffd1234c1105ee704ca645840adfb7b7553c494000756500641a6c1b58d35fbf1f898
