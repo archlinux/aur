@@ -1,0 +1,21 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 8b88aeb..ec27458 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -23,14 +23,14 @@ validpgpkeys=("B46B326273E4A1D21AAA3F6F529AC10050BD24EF")
+ sha512sums=("3e21de68c80633c87c1680880a8b7c7ff3278cd605a03a343e1b4cac093288770332e4b7d14da532223322afc55d8602a4d955475df3c70f873f3801e56a244e" "7539c6053c1f43fe6c50a3683d79d4a02fa68dcc1288ea00d16d2fa7ad90c422f45d71fe98fca57c7bb63f4933efb21f5ae80225c3ec1548128357c1ffdd732d")
+ 
+ build() {
+-  cd "${srcdir}/${pkgname}-${pkgver}"
++  cd "${srcdir}/${pkgname}-${pkgver}/src"
+ 
+   # Create man page
+   scdoc < wtwitch.1.scd > wtwitch.1
+ }
+ 
+ package() {
+-  cd "${srcdir}/${pkgname}-${pkgver}"
++  cd "${srcdir}/${pkgname}-${pkgver}/src"
+ 
+   # wtwitch "binary"
+   install -D -m755 wtwitch "${pkgdir}/usr/bin/${pkgname}"
