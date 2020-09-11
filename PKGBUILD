@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-cache_purge
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.19.1
+_nginxver=1.19.2
 
 pkgdesc='Nginx mainline module with ability to purge content from FastCGI, proxy, SCGI and uWSGI caches'
 arch=('i686' 'x86_64')
