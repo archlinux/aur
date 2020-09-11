@@ -3,7 +3,7 @@
 # Maintainer: Bart Libert <bart dot libert at gmail dot com>
 # Contributor: Tad Fisher <tadfisher at gmail dot com>
 pkgname=jasmine-gjs-git
-pkgver=2.3.4.r4.g12330e2
+pkgver=2.5.2.r1.ge95d3d4
 pkgrel=1
 pkgdesc='Run Jasmine specs for GJS code'
 arch=('any')
