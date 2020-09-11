@@ -1,7 +1,7 @@
 # Maintainer: Kevin Andriessens <kevin@kelaun.be>
 pkgname='instawow'
 pkgver='1.14.1'
-pkgrel=3
+pkgrel=4
 pkgdesc="Package manager for World of Warcraft"
 arch=('x86_64')
 url="https://github.com/layday/instawow"
@@ -20,7 +20,7 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
-	pytest
+	python -m pytest
 }
 
 package() {
