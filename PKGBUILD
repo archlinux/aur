@@ -4,13 +4,13 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.3.2.r71.g1e8fb0f
+pkgver=v0.3.2.r103.gb9b2bff
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/InfinityGhost/OpenTabletDriver"
 license=('GPL')
-depends=('dotnet-runtime-3.1' 'dotnet-host>=5.0' 'gtk3' 'libevdev')
+depends=('dotnet-runtime-5.0' 'dotnet-host>=5.0' 'gtk3' 'libevdev')
 optdepends=('libxrandr: x11 display querying support' 'libx11')
 makedepends=('git' 'dotnet-sdk-5.0')
 provides=("opentabletdriver")
@@ -46,7 +46,7 @@ build() {
 
     dotnet publish        OpenTabletDriver.Daemon   \
         --configuration   Release                   \
-        --framework       netcoreapp3.1             \
+        --framework       net50                     \
         --runtime         linux-x64                 \
         --self-contained  false                     \
         --output          "./$_pkgname/out"         \
@@ -55,7 +55,7 @@ build() {
 
     dotnet publish        OpenTabletDriver.Console  \
         --configuration   Release                   \
-        --framework       netcoreapp3.1             \
+        --framework       net50                     \
         --runtime         linux-x64                 \
         --self-contained  false                     \
         --output          "./$_pkgname/out"         \
@@ -65,7 +65,7 @@ build() {
 
     dotnet publish        OpenTabletDriver.UX.Gtk   \
         --configuration   Release                   \
-        --framework       netcoreapp3.1             \
+        --framework       net50                     \
         --runtime         linux-x64                 \
         --self-contained  false                     \
         --output          "./$_pkgname/out"         \
@@ -76,7 +76,7 @@ build() {
     cd "$srcdir/$_pkgname-udev"
     dotnet build          OpenTabletDriver.udev     \
         --configuration   Release                   \
-        --framework       netcoreapp3.1             \
+        --framework       netcoreapp3.1            \
         --runtime         linux-x64                 \
         --output          "./$_pkgname.udev/out"    \
         /p:SuppressNETCoreSdkPreviewMessage=true
