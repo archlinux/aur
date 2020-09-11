@@ -1,6 +1,6 @@
 pkgname=malcontent-git
 _pkgname=malcontent
-pkgver=0.7.0
+pkgver=0.9.0+5+gbbe53b5
 pkgrel=1
 pkgdesc="Parental control support for applications"
 url="https://gitlab.freedesktop.org/pwithnall/malcontent"
