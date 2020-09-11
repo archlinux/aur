@@ -2,14 +2,14 @@
 
 pkgname=mazespheres-bin
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A horror-themed minimalistic maze game'
 
 url='https://varden.info/product.php?sid=27'
 arch=('x86_64')
 license=('custom')
 
-depends=()
+depends=('gcc-libs' 'glib2' 'gtk2' 'pango' 'cairo' 'freetype2' 'fontconfig')
 optdepends=()
 conflicts=()
 source=("Mazespheres-Linux-v1.1.tar.xz::https://varden.info/download.php?sid=27"
