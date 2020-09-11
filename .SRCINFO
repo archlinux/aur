@@ -1,7 +1,7 @@
 pkgbase = instawow
 	pkgdesc = Package manager for World of Warcraft
 	pkgver = 1.14.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/layday/instawow
 	arch = x86_64
 	license = GPL3
