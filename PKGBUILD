@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(GPL)
 makedepends=(libasyncns libcap attr libxtst libsm libsndfile rtkit libsoxr
-             speexdsp tdb dbus avahi bluez bluez-libs jack2 sbc
+             speexdsp tdb dbus avahi bluez bluez-libs jack sbc
              lirc openssl fftw orc gtk3 webrtc-audio-processing check git meson
              xmltoman gst-plugins-base-libs)
 source=("git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git")
