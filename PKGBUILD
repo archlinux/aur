@@ -29,7 +29,7 @@ validpgpkeys=()
 
 
 build() {
-	cd "$pkgname-master"
+	cd "$_pkgbase-master"
 	make
 }
 
