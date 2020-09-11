@@ -18,7 +18,7 @@ makedepends=(depot-tools-git python python2)
 conflicts=(v8-3.14 v8-3.14-bin v8-6.7-static v8-6.8 v8-r v8-static-gyp v8-static-gyp-5.4)
 source=("v8.pc" "d8")
 sha512sums=('67e248d18fb31b3804289b7b43dc256227bac0166936b9a8b8781cd29b398cb83bf0bd345a3f8b903fff27438e3a356588a855b26214ab5e36ba541f1f56dbbf'
-            'bb815f27ab15ba2a56f183d1a74e355dbade6acfe310318934c6ac54e5ad1d47f576d87ea04f9e42e1f5f2d0739a61e51a6817fe2b0c1112a4b54b9e7e396c24')
+            '5aa6fea4a6d2f84bdba2032dcc00a79e3169c49066cc055a5106f858834db38dec3257f7a435aa518eb57eb4dfe4a3e092e2486c522362d49a61dfd92fba5717')
 
 OUTDIR=out/Default/
 
@@ -47,7 +47,7 @@ prepare() {
 	gn gen $OUTDIR --script-executable=python2 --fail-on-unused-args --args="is_component_build=true use_sysroot=false use_custom_libcxx=false"
 
 	# Create missing directories
-	mkdir -p $OUTDIR/gen/shim_headers/icui18n_shim/third_party/icu/source/i18n/unicode/
+	mkdir -p $OUTDIR/gen/shim_headers/icui18n_shim/third_party/icu/source/i18n/unicode/ \
 	         $OUTDIR/gen/shim_headers/icuuc_shim/third_party/icu/source/common/unicode/
 }
 
