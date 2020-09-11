@@ -1,6 +1,6 @@
 pkgbase = vscodium-bin
 	pkgdesc = Binary releases of VS Code without MS branding/telemetry/licensing.
-	pkgver = 1.48.2
+	pkgver = 1.49.0
 	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium
 	arch = x86_64
@@ -23,15 +23,15 @@ pkgbase = vscodium-bin
 	provides = code
 	conflicts = code
 	conflicts = vscode
-	noextract = vscodium-bin-1.48.2-1-unknown.tar.gz
+	noextract = vscodium-bin-1.49.0-1-unknown.tar.gz
 	source = vscodium-bin.desktop
 	sha256sums = 5504e93bd55f2bc068c29e4fa962c1eddc6e08edb39c3255319dd5ad998a1b86
-	source_x86_64 = vscodium-bin-1.48.2-1-x64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.48.2/VSCodium-linux-x64-1.48.2.tar.gz
-	sha256sums_x86_64 = bd5d8f798a2b5ab32cac4f5d22e965e90200785d65e9b32a10b49c11a96fd99d
-	source_aarch64 = vscodium-bin-1.48.2-1-arm64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.48.2/VSCodium-linux-arm64-1.48.2.tar.gz
-	sha256sums_aarch64 = f328c9534a6ad61fb0e72ef264739d8efa7af6c6c63470d484e079ae22db1f87
-	source_armv7h = vscodium-bin-1.48.2-1-arm.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.48.2/VSCodium-linux-arm-1.48.2.tar.gz
-	sha256sums_armv7h = da05339713eb4b8aac2164817e23231c3791df50f4e5ba0c4e95e7a3d4472cde
+	source_x86_64 = vscodium-bin-1.49.0-1-x64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.49.0/VSCodium-linux-x64-1.49.0.tar.gz
+	sha256sums_x86_64 = 855f6f841edee01aa2f02966a0fdbbd54a57c43b61d09eeb94ed279a5ed51269
+	source_aarch64 = vscodium-bin-1.49.0-1-arm64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.49.0/VSCodium-linux-arm64-1.49.0.tar.gz
+	sha256sums_aarch64 = 525842130f4c98643947c8770f9399ffe6a9b04e38bda6f66853bde48f5f8c5b
+	source_armv7h = vscodium-bin-1.49.0-1-arm.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.49.0/VSCodium-linux-arm-1.49.0.tar.gz
+	sha256sums_armv7h = 440a1f062e91106208739668aa385ce30beffa765dd899a432f84488ddc571bb
 
 pkgname = vscodium-bin
 
