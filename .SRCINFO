@@ -1,6 +1,6 @@
 pkgbase = mumble-git
 	pkgdesc = Open source, low-latency, high quality voice chat (git version)
-	pkgver = 1.3.0.rc2.r838.gf01920308
+	pkgver = 1.3.0.rc2.r867.g032135cb9
 	pkgrel = 1
 	epoch = 1
 	url = https://www.mumble.info
@@ -43,14 +43,12 @@ pkgbase = mumble-git
 	source = git://github.com/mumble-voip/opus.git
 	source = git://github.com/mumble-voip/speex.git
 	source = build-type-release.patch
-	source = no-bundled-opus.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 086374239b072df0034eed92d74917ab9af8db96fb0fcb01c36c111d6a134fe4
-	sha256sums = bd2d9fea616a88fe4425bdf3396a0d9e0dfb735a7c06bcacd0858250ea96a2b0
 
 pkgname = mumble-git
 	depends = gcc-libs

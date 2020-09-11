@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.3.0.rc2.r838.gf01920308
+pkgver=1.3.0.rc2.r867.g032135cb9
 pkgrel=1
 epoch=1
 pkgdesc='Open source, low-latency, high quality voice chat (git version)'
@@ -27,11 +27,9 @@ source=('git://github.com/mumble-voip/mumble.git'
         'git://github.com/mumble-voip/celt-0.7.0.git'
         'git://github.com/mumble-voip/opus.git'
         'git://github.com/mumble-voip/speex.git'
-        'build-type-release.patch'
-        'no-bundled-opus.patch')
+        'build-type-release.patch')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-            '086374239b072df0034eed92d74917ab9af8db96fb0fcb01c36c111d6a134fe4'
-            'bd2d9fea616a88fe4425bdf3396a0d9e0dfb735a7c06bcacd0858250ea96a2b0')
+            '086374239b072df0034eed92d74917ab9af8db96fb0fcb01c36c111d6a134fe4')
 
 pkgver() {
   cd "$_pkgname"
@@ -48,9 +46,8 @@ prepare() {
   git config submodule.themes/Mumble.url "$srcdir/mumble-theme"
   git submodule update
 
-  # Workarounds to fix cmake build
+  # https://github.com/mumble-voip/mumble/issues/4470
   patch -Np1 -i "$srcdir/build-type-release.patch"
-  patch -Np1 -i "$srcdir/no-bundled-opus.patch"
 }
 
 build() {
@@ -77,6 +74,7 @@ package() {
   make -C build DESTDIR="$pkgdir" install
 
   # Fix location of libraries
+  # https://github.com/mumble-voip/mumble/issues/4477
   install -d "$pkgdir/usr/lib/$_pkgname"
   mv "$pkgdir/usr/lib/"libcelt* "$pkgdir/usr/lib/$_pkgname/"
   mv "$pkgdir/usr/lib/plugins/"*.so "$pkgdir/usr/lib/$_pkgname/"
