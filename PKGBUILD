@@ -20,7 +20,7 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
-	PYTHONPATH="$PWD/build/lib" pytest --ignore tests/test_json_rpc_api.py
+	PYTHONPATH="$PWD/build/lib" pytest --ignore tests/test_json_rpc_api.py --ignore tests/test_cli_output.py
 }
 
 package() {
