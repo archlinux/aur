@@ -6,16 +6,21 @@ pkgbase = phddns-bin
 	install = .INSTALL
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = custom
 	depends = wget
 	provides = phddns
+	provides = phtunnel
 	conflicts = phddns
+	conflicts = phtunnel
 	source = LICENSE::https://service.oray.com/question/1820.html
 	sha256sums = SKIP
 	source_x86_64 = http://dl-cdn.oray.com/hsk/linux/phddns-5.0.0-amd64.deb
 	sha256sums_x86_64 = f27b86a13684212b9e852a6ac20256d9fadf7ca3a402d4f4c5d70530dffd1c1c
 	source_i686 = http://dl-cdn.oray.com/hsk/linux/phddns-5.0.0-i386.deb
 	sha256sums_i686 = 882aaca32b86d1beb3d0daf3f3bce35ff1eb7500729a3cec48ee3427fb2e8b7b
+	source_aarch64 = https://dl-cdn.oray.com/hsk/linux/phtunnel_5_0_rapi_aarch64.deb
+	sha256sums_aarch64 = 3e7dd863442a2c62fedc343c6b0b9fd4c24c7f987a2d3392209ced3a4aba0db8
 
 pkgname = phddns-bin
 
