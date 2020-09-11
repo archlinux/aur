@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.3.0.rc2.r867.g032135cb9
+pkgver=1.3.0.rc2.r886.g557bf8d3f
 pkgrel=1
 epoch=1
 pkgdesc='Open source, low-latency, high quality voice chat (git version)'
@@ -72,14 +72,5 @@ package() {
             'libpulse.so' 'libsndfile.so')
   cd "$_pkgname"
   make -C build DESTDIR="$pkgdir" install
-
-  # Fix location of libraries
-  # https://github.com/mumble-voip/mumble/issues/4477
-  install -d "$pkgdir/usr/lib/$_pkgname"
-  mv "$pkgdir/usr/lib/"libcelt* "$pkgdir/usr/lib/$_pkgname/"
-  mv "$pkgdir/usr/lib/plugins/"*.so "$pkgdir/usr/lib/$_pkgname/"
-  rmdir "$pkgdir/usr/lib/plugins"
-
-  # License
-  install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
