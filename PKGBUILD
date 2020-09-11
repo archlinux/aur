@@ -60,7 +60,6 @@ build() {
     -S "$_pkgname" \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DBUILD_TESTING:BOOL='OFF' \
     -Dclient:BOOL='ON' \
     -Dserver:BOOL='OFF' \
     -Dbundled-celt:BOOL='ON' \
