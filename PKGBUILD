@@ -2,12 +2,12 @@
 
 pkgname=whatsapp-for-linux
 pkgver=1.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="An unofficial WhatsApp linux client desktop application."
 url="https://github.com/eneshecan/whatsapp-for-linux"
 arch=(x86_64 aarch64)
 license=(GPL)
-depends=(gtkmm3 webkit2gtk nuspell hspell libvoikko aspell gst-plugins-base gst-plugins-good gst-libav)
+depends=(gtkmm3 webkit2gtk nuspell hspell libvoikko aspell gst-plugins-base gst-plugins-good gst-plugins-bad gst-libav)
 makedepends=(cmake)
 provides=(whatsapp-for-linux)
 conflicts=(whatsapp-for-linux)
