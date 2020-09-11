@@ -5,7 +5,7 @@ pkgname=( 'aspnet-runtime-3.0' 'dotnet-runtime-3.0' 'dotnet-sdk-3.0' 'dotnet-tar
 pkgver=3.0.3.sdk103
 _runtimever=3.0.3
 _sdkver=3.0.103
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -53,12 +53,16 @@ package_dotnet-sdk-3.0() {
 
 package_dotnet-targeting-pack-3.0() {
   pkgdesc='The .NET Core targeting pack (binary) - End-of-life'
-  depends=(netstandard-targeting-pack)
+  depends=(netstandard-targeting-pack-2.1)
   provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-3.0)
   conflicts=(dotnet-targeting-pack=${_runtimever})
 
+  if [ $CARCH = 'x86_64' ]; then msarch=x64;
+  elif [ $CARCH = 'armv7h' ]; then msarch=arm;
+  elif [ $CARCH = 'aarch64' ]; then msarch=arm64; fi
+
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
-  cp -dr --no-preserve='ownership' packs/Microsoft.NETCore.App.{Host.linux-x64,Ref} "${pkgdir}"/usr/share/dotnet/packs/
+  cp -dr --no-preserve='ownership' packs/Microsoft.NETCore.App.{Host.linux-${msarch},Ref} "${pkgdir}"/usr/share/dotnet/packs/
   ln -s dotnet-host "${pkgdir}"/usr/share/licenses/dotnet-targeting-pack-3.0
 }
 
