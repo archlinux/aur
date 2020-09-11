@@ -4,7 +4,7 @@
 
 pkgname=python-raspberry-gpio
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for GPIO access on a Raspberry Pi"
 url="http://sourceforge.net/projects/raspberry-gpio-python"
 license=(MIT)
@@ -17,5 +17,5 @@ sha1sums=(427089f39f13954c09d09a6a08a9249173fb8a17)
 
 package() {
 	cd "$srcdir/RPi.GPIO-$pkgver"
-	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+	env CFLAGS="-fcommon" python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 }
