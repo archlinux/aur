@@ -1,7 +1,7 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgname=lib32-$_pkgbasename-git
+pkgname=lib32-libpulse-nosystemd-git
 pkgdesc="A featureful, general-purpose sound server (32-bit client libraries)"
 pkgver=13.99.1+98+g460d0c0b7
 pkgrel=1
