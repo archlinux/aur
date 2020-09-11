@@ -1,5 +1,5 @@
 pkgbase = luasql
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://keplerproject.github.io/luasql
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = luasql
 	makedepends = libmariadbclient
 	makedepends = postgresql-libs
 	makedepends = sqlite
-	source = lua-sql-mysql-2.5.0.tar.gz::https://github.com/keplerproject/luasql/archive/2.5.0.tar.gz
-	sha256sums = 666482b6ed1d4ca4317db2345c46dc0fc54a39c8cfd14e34f1a83595864b0ae4
+	source = lua-sql-mysql-2.6.0.tar.gz::https://github.com/keplerproject/luasql/archive/2.6.0.tar.gz
+	sha256sums = 8ec445c58fa6148be759080c08f37baea5c3fa84f766197db9bf9c8edb6f8e60
 
 pkgname = lua-sql-mysql
 	pkgdesc = MySQL module for Lua

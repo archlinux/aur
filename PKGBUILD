@@ -5,14 +5,14 @@
 
 pkgbase=luasql
 pkgname=('lua-sql-mysql' 'lua-sql-postgres' 'lua-sql-sqlite')
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 arch=('x86_64')
 url='https://keplerproject.github.io/luasql'
 license=('MIT')
 makedepends=('lua' 'libmariadbclient' 'postgresql-libs' 'sqlite')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/keplerproject/luasql/archive/$pkgver.tar.gz")
-sha256sums=('666482b6ed1d4ca4317db2345c46dc0fc54a39c8cfd14e34f1a83595864b0ae4')
+sha256sums=('8ec445c58fa6148be759080c08f37baea5c3fa84f766197db9bf9c8edb6f8e60')
 
 prepare() {
   cd $pkgbase-$pkgver
