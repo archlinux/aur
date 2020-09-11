@@ -15,8 +15,7 @@ pkgbase = ahoviewer-git
 	optdepends = gst-plugins-base
 	optdepends = gst-plugins-bad
 	optdepends = gst-plugins-good
-	optdepends = gst-plugins-vpx
-	optdepends = gst-plugins-libav
+	optdepends = gst-libav
 	optdepends = libpeas>=1.22.0
 	optdepends = libsecret
 	optdepends = libunrar

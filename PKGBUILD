@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://github.com/ahodesuka/ahoviewer"
 license=('MIT')
 depends=('gtkmm3>=3.22.0' 'libconfig>=1.4')
-optdepends=('gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-vpx' 'gst-plugins-libav' 'libpeas>=1.22.0' 'libsecret' 'libunrar' 'libzip' )
+optdepends=('gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'gst-libav' 'libpeas>=1.22.0' 'libsecret' 'libunrar' 'libzip' )
 makedepends=('git' 'meson' 'ninja')
 provides=('ahoviewer')
 source=("git://github.com/ahodesuka/ahoviewer")
