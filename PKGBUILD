@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-auth_pam
 pkgver=1.5.1
-pkgrel=38
+pkgrel=39
 
 _modname=ngx_http_auth_pam_module
-_nginxver=1.19.1
+_nginxver=1.19.2
 
 pkgdesc='Nginx mainline module to use PAM for simple http authentication'
 arch=('i686' 'x86_64')
