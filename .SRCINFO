@@ -1,15 +1,12 @@
 pkgbase = ttf-openwebicons
 	pkgdesc = Set of icons to show the support for the Open Web
-	pkgver = 1.2.0
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = http://pfefferle.github.io/openwebicons/
-	install = install
 	arch = any
 	license = custom
-	source = ttf-openwebicons-1.2.0::https://github.com/pfefferle/openwebicons/archive/1.2.0.tar.gz
-	source = install
-	sha256sums = 0e77e2e511d0642a99396287a7c9ebda3f95f798cc7e0f3ddcf6f1e78b676c8c
-	sha256sums = a794e8e9f8f8227e6b70ba42b96efe81651856b9e1b335c3094318844af06b45
+	source = ttf-openwebicons-1.6.2.tar.gz::https://github.com/pfefferle/openwebicons/archive/1.6.2.tar.gz
+	sha256sums = b4ae53a86478e0dafb3960bc94f438aa5e8203752eabeff0ad46a7d8adeaa667
 
 pkgname = ttf-openwebicons
 

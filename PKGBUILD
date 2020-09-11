@@ -1,15 +1,13 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=ttf-openwebicons
-pkgver=1.2.0
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Set of icons to show the support for the Open Web'
 url='http://pfefferle.github.io/openwebicons/'
 license=('custom')
 arch=('any')
-source=(${pkgname}-${pkgver}::"https://github.com/pfefferle/openwebicons/archive/${pkgver}.tar.gz"
-        'install')
-install=install
+source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/pfefferle/openwebicons/archive/${pkgver}.tar.gz")
 
 package() {
         cd "${srcdir}/openwebicons-${pkgver}"
@@ -18,5 +16,4 @@ package() {
 
         install -Dm644 License.txt "${pkgdir}/usr/share/licenses/${pkgname}/License.txt"
 }
-sha256sums=('0e77e2e511d0642a99396287a7c9ebda3f95f798cc7e0f3ddcf6f1e78b676c8c'
-            'a794e8e9f8f8227e6b70ba42b96efe81651856b9e1b335c3094318844af06b45')
+sha256sums=('b4ae53a86478e0dafb3960bc94f438aa5e8203752eabeff0ad46a7d8adeaa667')
