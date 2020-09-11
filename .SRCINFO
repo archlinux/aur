@@ -1,0 +1,21 @@
+pkgbase = pgagroal
+	pkgdesc = pgagroal is a high-performance protocol-native connection pool for PostgreSQL
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/agroal/pgagroal
+	install = pgagroal.install
+	arch = x86_64
+	license = BSD
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = make
+	makedepends = python-docutils
+	depends = libev
+	depends = openssl
+	backup = etc/pgagroal/pgagroal.conf
+	backup = etc/pgagroal/pgagroal_hba.conf
+	source = https://github.com/agroal/pgagroal/releases/download/0.8.2/pgagroal-0.8.2.tar.gz
+	md5sums = d79e400ad83cc47e846cc7f1181551e8
+
+pkgname = pgagroal
+

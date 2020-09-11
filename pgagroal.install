@@ -1,0 +1,29 @@
+# Description: post-install script for pgagroal
+# Contributor: Marc Rechté <mrechte@gmail.com>
+
+
+# arg 1: new package version
+post_install() {
+    # create pgagroal user
+    if [ -z "`grep '^pgagroal:' /etc/passwd`" ]; then
+        useradd -m -s /bin/bash pgagroal
+    fi
+
+    # ownership to pgagroal facilitates configuration
+    chown -R pgagroal: /etc/pgagroal
+    # may contain sensitive data
+    chmod 0750 /etc/pgagroal
+}
+
+
+# arg 1: new package version
+# arg 2: old package version
+post_upgrade() {
+    post_install $1
+}
+
+
+# arg 1: old package version
+pre_remove() {
+    userdel pgagroal
+}
