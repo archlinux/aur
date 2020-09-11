@@ -1,6 +1,6 @@
 pkgbase = mailscanner
 	pkgdesc = Mail filter for spam, viruses, phishing, and other malicious content
-	pkgver = 5.1.2_2
+	pkgver = 5.3.3_1
 	pkgrel = 1
 	url = https://mailscanner.info/
 	arch = x86_64
@@ -38,8 +38,25 @@ pkgbase = mailscanner
 	optdepends = perl-module-build
 	optdepends = perl-test-manifest
 	optdepends = clamav
-	source = https://s3.amazonaws.com/msv5/release/MailScanner-5.1.2-2.nix.tar.gz
-	sha256sums = 1a45fdcc1914bfd25be249de49f63ac08599e0898881f16eae0f9ac8d389e4cf
+	backup = etc/MailScanner/MailScanner.conf
+	backup = etc/MailScanner/archives.filename.rules.conf
+	backup = etc/MailScanner/archives.filetype.rules.conf
+	backup = etc/MailScanner/country.domains.conf
+	backup = etc/MailScanner/defaults
+	backup = etc/MailScanner/filename.rules.conf
+	backup = etc/MailScanner/filetype.rules.conf
+	backup = etc/MailScanner/phishing.bad.sites.conf
+	backup = etc/MailScanner/phishing.safe.sites.conf
+	backup = etc/MailScanner/spam.lists.conf
+	backup = etc/MailScanner/spamassassin.conf
+	backup = etc/MailScanner/virus.scanners.conf
+	backup = etc/MailScanner/mcp/mcp.spamassassin.conf
+	backup = etc/MailScanner/rules/bounce.rules
+	backup = etc/MailScanner/rules/external.message.rules
+	backup = etc/MailScanner/rules/max.message.size.rules
+	backup = etc/MailScanner/rules/spam.whitelist.rules
+	source = https://github.com/MailScanner/v5/releases/download/5.3.3-1/MailScanner-5.3.3-1.nix.tar.gz
+	sha256sums = 6d2fd0015bc5b6292f7ba2ab6b31bfa5540373624072d585d25382b1a975db4d
 
 pkgname = mailscanner
 

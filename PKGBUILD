@@ -1,7 +1,8 @@
-# Maintainer: arjan5 <aur@anymore.nl>
+# Maintainer: drcrimzon <drcrimzon@cmstactical.net>
+# Contributor: arjan5 <aur@anymore.nl>
 
 pkgname=mailscanner
-pkgver=5.1.2_2
+pkgver=5.3.3_1
 pkgrel=1
 pkgdesc="Mail filter for spam, viruses, phishing, and other malicious content"
 arch=("x86_64" "i686")
@@ -43,8 +44,25 @@ optdepends=(
   perl-test-manifest
   clamav
 )
-source=(https://s3.amazonaws.com/msv5/release/MailScanner-${pkgver//_/-}.nix.tar.gz)
-sha256sums=('1a45fdcc1914bfd25be249de49f63ac08599e0898881f16eae0f9ac8d389e4cf')
+backup=('etc/MailScanner/MailScanner.conf'
+  'etc/MailScanner/archives.filename.rules.conf'
+  'etc/MailScanner/archives.filetype.rules.conf'
+  'etc/MailScanner/country.domains.conf'
+  'etc/MailScanner/defaults'
+  'etc/MailScanner/filename.rules.conf'
+  'etc/MailScanner/filetype.rules.conf'
+  'etc/MailScanner/phishing.bad.sites.conf'
+  'etc/MailScanner/phishing.safe.sites.conf'
+  'etc/MailScanner/spam.lists.conf'
+  'etc/MailScanner/spamassassin.conf'
+  'etc/MailScanner/virus.scanners.conf'
+  'etc/MailScanner/mcp/mcp.spamassassin.conf'
+  'etc/MailScanner/rules/bounce.rules'
+  'etc/MailScanner/rules/external.message.rules'
+  'etc/MailScanner/rules/max.message.size.rules'
+  'etc/MailScanner/rules/spam.whitelist.rules')
+source=(https://github.com/MailScanner/v5/releases/download/${pkgver//_/-}/MailScanner-${pkgver//_/-}.nix.tar.gz)
+sha256sums=('6d2fd0015bc5b6292f7ba2ab6b31bfa5540373624072d585d25382b1a975db4d')
 _srcname=MailScanner-${pkgver//_[0-9]*/}
 
 prepare() {
