@@ -1,0 +1,16 @@
+pkgbase = plane-theme-git
+	pkgdesc = A modern icon theme for gnome linux versions.
+	pkgver = r179.a11a397
+	pkgrel = 1
+	url = https://github.com/wfpaisa/plane-icon-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gulp
+	makedepends = npm
+	depends = gnome-shell
+	source = plane-theme-git::git+https://github.com/vantu5z/plane-theme
+	sha256sums = SKIP
+
+pkgname = plane-theme-git
+
