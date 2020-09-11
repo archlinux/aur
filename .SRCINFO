@@ -6,7 +6,7 @@ pkgbase = coronapoker
 	arch = x86_64
 	license = GPL3
 	source = https://github.com/tonikelope/coronapoker/releases/download/v4.42/CoronaPokerLINUX_4.42_portable.zip
-	md5sums = f0a3dc49cde7c00e70232d94a6afb700
+	md5sums = 14f67c8455324c45570fe1c19064990a
 
 pkgname = coronapoker
 
