@@ -1,9 +1,8 @@
 pkgbase = coreboot-utils-git
 	pkgdesc = Tools and utilities to work with coreboot firmware
-	pkgver = 4.11.r760.gc2ce370f30b
+	pkgver = 4.12.r2683.g8e1ea525d1e
 	pkgrel = 1
 	url = https://www.coreboot.org/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -23,7 +22,13 @@ pkgbase = coreboot-utils-git
 	source = git+https://review.coreboot.org/intel-microcode
 	source = git+https://review.coreboot.org/ffs
 	source = git+https://review.coreboot.org/amd_blobs
+	source = git+https://review.coreboot.org/cmocka
+	source = git+https://review.coreboot.org/qc_blobs
+	source = git+https://review.coreboot.org/9esec-security-tooling
 	source = autoport-tool-paths.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -40,4 +45,3 @@ pkgbase = coreboot-utils-git
 	sha256sums = 5136f8ae6c690501b483243a33b91dc978971cf23bcf48c27bdca845db53bdb1
 
 pkgname = coreboot-utils-git
-

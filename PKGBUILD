@@ -2,31 +2,37 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=coreboot-utils-git
-pkgver=4.11.r760.gc2ce370f30b
+pkgver=4.12.r2683.g8e1ea525d1e
 pkgrel=1
 pkgdesc='Tools and utilities to work with coreboot firmware'
 url='https://www.coreboot.org/'
 license=(GPL)
-arch=(i686 x86_64)
+arch=(x86_64)
 depends=(pciutils)
 optdepends=("python: me_cleaner support")
 makedepends=(git)
 source=(git+https://review.coreboot.org/coreboot
-	    git+https://review.coreboot.org/blobs
-	    git+https://review.coreboot.org/nvidia-cbootimage
-	    git+https://review.coreboot.org/vboot
-	    git+https://review.coreboot.org/arm-trusted-firmware
-	    git+https://review.coreboot.org/chrome-ec
-	    git+https://review.coreboot.org/libhwbase
-	    git+https://review.coreboot.org/libgfxinit
-	    git+https://review.coreboot.org/fsp
-	    git+https://review.coreboot.org/opensbi
-	    git+https://review.coreboot.org/intel-microcode
-	    git+https://review.coreboot.org/ffs
-	    git+https://review.coreboot.org/amd_blobs
+        git+https://review.coreboot.org/blobs
+        git+https://review.coreboot.org/nvidia-cbootimage
+        git+https://review.coreboot.org/vboot
+        git+https://review.coreboot.org/arm-trusted-firmware
+        git+https://review.coreboot.org/chrome-ec
+        git+https://review.coreboot.org/libhwbase
+        git+https://review.coreboot.org/libgfxinit
+        git+https://review.coreboot.org/fsp
+        git+https://review.coreboot.org/opensbi
+        git+https://review.coreboot.org/intel-microcode
+        git+https://review.coreboot.org/ffs
+        git+https://review.coreboot.org/amd_blobs
+        git+https://review.coreboot.org/cmocka
+        git+https://review.coreboot.org/qc_blobs
+        git+https://review.coreboot.org/9esec-security-tooling
         # vboot provides vb2_api.h needed by cbfstool
         autoport-tool-paths.patch)
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -44,7 +50,7 @@ sha256sums=('SKIP'
 BUILD_AUTOPORT=y
 
 if [ "$BUILD_AUTOPORT" == y ]; then
-	makedepends=("${makedepends[@]}" go)
+  makedepends=("${makedepends[@]}" go)
 fi
 
 pkgver() {
@@ -54,10 +60,6 @@ pkgver() {
 
 prepare() {
   cd coreboot
-
-  # for some reason 'git submodule ...' fails with 'No url found for submodule path 'coreboot' in .gitmodules'
-  # here is workaround that seems fixes the issue
-  git rm -rf coreboot || true
 
   git config -f .gitmodules 'submodule.3rdparty/blobs.url' "$srcdir/blobs"
   git config -f .gitmodules 'submodule.util/nvidia-cbootimage.url' "$srcdir/nvidia-cbootimage"
@@ -71,6 +73,9 @@ prepare() {
   git config -f .gitmodules 'submodule.intel-microcode.url' "$srcdir/intel-microcode"
   git config -f .gitmodules 'submodule.3rdparty/ffs.url' "$srcdir/ffs"
   git config -f .gitmodules 'submodule.3rdparty/amd_blobs.url' "$srcdir/amd_blobs"
+  git config -f .gitmodules 'submodule.3rdparty/cmocka.url' "$srcdir/cmocka"
+  git config -f .gitmodules 'submodule.3rdparty/qc_blobs.url' "$srcdir/qc_blobs"
+  git config -f .gitmodules 'submodule.3rdparty/intel-sec-tools.url' "$srcdir/9esec-security-tooling"
 
   git submodule update --init
 
@@ -90,8 +95,8 @@ build() {
   make -C ectool
   make -C intelvbttool
   if [ "$BUILD_AUTOPORT" == y ]; then
-	  cd autoport
-	  go build
+    cd autoport
+    go build
   fi
 }
 
@@ -101,7 +106,7 @@ package() {
   install -m755 -t "$pkgdir/usr/bin" cbfstool/{cbfstool,rmodtool} ifdtool/ifdtool nvramtool/nvramtool inteltool/inteltool superiotool/superiotool cbmem/cbmem ectool/ectool intelmetool/intelmetool intelvbttool/intelvbttool
   install -m755 "me_cleaner/me_cleaner.py" "$pkgdir/usr/bin/me_cleaner"
   if [ "$BUILD_AUTOPORT" == y ]; then
-	  install -m755 -t "$pkgdir/usr/bin" autoport/autoport
+    install -m755 -t "$pkgdir/usr/bin" autoport/autoport
   fi
   install -m644 -t "$pkgdir"/usr/share/man/man8 inteltool/inteltool.8
 
