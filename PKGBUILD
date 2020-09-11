@@ -73,7 +73,7 @@ PROFILING=        # Enable gprof profiling support.
 
 ################################################################################
 pkgname="emacs-pgtk-native-comp-git"
-pkgver=28.0.50.143467
+pkgver=28.0.50.143840
 pkgrel=1
 pkgdesc="GNU Emacs. Unofficial pgtk-nativecomp branch."
 arch=('x86_64' )
@@ -279,7 +279,7 @@ fi
   if [[ $FAST_BOOT == "YES" ]]; then
     make NATIVE_FAST_BOOT=1
   else
-    make
+    make NATIVE_FULL_AOT=1
   fi
 
   # You may need to run this if 'loaddefs.el' files become corrupt.
