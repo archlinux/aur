@@ -1,4 +1,4 @@
-pkgbase = authy-snap
+pkgbase = authy
 	pkgdesc = Two factor authentication desktop application
 	pkgver = 1.8.3
 	pkgrel = 1
@@ -12,8 +12,10 @@ pkgbase = authy-snap
 	depends = libdbusmenu-glib
 	optdepends = libappindicator-gtk3: tray icon support
 	provides = authy
+	conflicts = authy-snap
+	replaces = authy-snap
 	source = https://api.snapcraft.io/api/v1/snaps/download/H8ZpNgIoPyvmkgxOWw5MSzsXK1wRZiHn_5.snap
 	sha256sums = f6be2a19b96a23c626f15f6baa1b51674b84d4f4215495ac6a8155327c9ddbf9
 
-pkgname = authy-snap
+pkgname = authy
 

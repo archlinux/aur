@@ -1,12 +1,14 @@
 # Maintainer: Tonkku <contact@tonkku.me>
 
-pkgname=authy-snap
+pkgname=authy
 pkgver=1.8.3
 pkgrel=1
 pkgdesc="Two factor authentication desktop application"
 arch=('x86_64')
 url='https://authy.com/'
 provides=('authy')
+conflicts=('authy-snap')
+replaces=('authy-snap')
 license=('unknown')
 depends=('nss' 'gtk3' 'libxss' 'libdbusmenu-glib')
 optdepends=('libappindicator-gtk3: tray icon support')
