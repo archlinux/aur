@@ -1,7 +1,7 @@
 pkgbase = yuzu-mainline-bin
 	pkgdesc = Yuzu emulator 'mainline' branch binaries for Arch Linux
-	pkgver = 0.373
-	pkgrel = 2
+	pkgver = 0.374
+	pkgrel = 1
 	url = https://github.com/linux-gamers/arch-yuzu-mainline
 	arch = any
 	license = GNU General Public License v2.0
@@ -22,8 +22,8 @@ pkgbase = yuzu-mainline-bin
 	conflicts = yuzu-git
 	conflicts = yuzu-canary-git
 	conflicts = yuzu-mainline-git
-	source = https://github.com/linux-gamers/arch-yuzu-mainline/archive/0-373.tar.gz
-	sha512sums = bfffc0acc5dd48a5b00700b67049142e1ba26f8ecba3f74014c48e8477fa350e2d160a4854b3cd229f6ff3b81e96165baffcdd021a7ae30d241599309a6ecca9
+	source = https://github.com/linux-gamers/arch-yuzu-mainline/archive/0-374.tar.gz
+	sha512sums = 0f4e75025ca4c2e922b1db06734dd938e95f5374413c6a2a645f5d2daf797bca39ffa4d7372a76e498f76b9fbb893f15ab866473e44514a773ce450099b02d26
 
 pkgname = yuzu-mainline-bin
 
