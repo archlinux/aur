@@ -1,0 +1,113 @@
+pkgbase = pulseaudio-nosystemd-git
+	pkgdesc = A featureful, general-purpose sound server
+	pkgver = 13.99.1+98+g460d0c0b7
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/PulseAudio/
+	arch = x86_64
+	license = GPL
+	makedepends = libasyncns
+	makedepends = libcap
+	makedepends = attr
+	makedepends = libxtst
+	makedepends = libsm
+	makedepends = libsndfile
+	makedepends = rtkit
+	makedepends = libsoxr
+	makedepends = speexdsp
+	makedepends = tdb
+	makedepends = systemd
+	makedepends = dbus
+	makedepends = avahi
+	makedepends = bluez
+	makedepends = bluez-libs
+	makedepends = jack2
+	makedepends = sbc
+	makedepends = lirc
+	makedepends = openssl
+	makedepends = fftw
+	makedepends = orc
+	makedepends = gtk3
+	makedepends = webrtc-audio-processing
+	makedepends = check
+	makedepends = git
+	makedepends = meson
+	makedepends = xmltoman
+	makedepends = gst-plugins-base-libs
+	source = git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git
+	sha256sums = SKIP
+
+pkgname = pulseaudio-nosystemd-git
+	depends = libpulse=13.99.1+98+g460d0c0b7-1
+	depends = rtkit
+	depends = libltdl
+	depends = speexdsp
+	depends = tdb
+	depends = orc
+	depends = libsoxr
+	depends = webrtc-audio-processing
+	depends = gst-plugins-base-libs
+	optdepends = pulseaudio-alsa: ALSA configuration (recommended)
+	provides = pulseaudio
+	conflicts = pulseaudio
+	replaces = pulseaudio-xen<=9.0
+	replaces = pulseaudio-gconf<=11.1
+	backup = etc/pulse/daemon.conf
+	backup = etc/pulse/default.pa
+	backup = etc/pulse/system.pa
+
+pkgname = libpulse-nosystemd-git
+	pkgdesc = A featureful, general-purpose sound server (client library)
+	license = LGPL
+	depends = dbus
+	depends = libasyncns
+	depends = libcap
+	depends = libxtst
+	depends = libsm
+	depends = libsndfile
+	provides = libpulse.so
+	provides = libpulse-simple.so
+	provides = libpulse-mainloop-glib.so
+	provides = libpulse
+	conflicts = libpulse
+	backup = etc/pulse/client.conf
+
+pkgname = pulseaudio-zeroconf-nosystemd-git
+	pkgdesc = Zeroconf support for PulseAudio
+	depends = pulseaudio=13.99.1+98+g460d0c0b7-1
+	depends = avahi
+	depends = openssl
+	provides = pulseaudio-zeroconf
+	conflicts = pulseaudio-zeroconf
+
+pkgname = pulseaudio-lirc-nosystemd-git
+	pkgdesc = IR (lirc) support for PulseAudio
+	depends = pulseaudio=13.99.1+98+g460d0c0b7-1
+	depends = lirc
+	provides = pulseaudio-lirc
+	conflicts = pulseaudio-lirc
+
+pkgname = pulseaudio-jack-nosystemd-git
+	pkgdesc = Jack support for PulseAudio
+	depends = pulseaudio=13.99.1+98+g460d0c0b7-1
+	depends = jack
+	provides = pulseaudio-jack
+	conflicts = pulseaudio-jack
+
+pkgname = pulseaudio-bluetooth-nosystemd-git
+	pkgdesc = Bluetooth support for PulseAudio
+	depends = pulseaudio=13.99.1+98+g460d0c0b7-1
+	depends = bluez
+	depends = bluez-libs
+	depends = sbc
+	provides = pulseaudio-bluetooth
+	conflicts = pulseaudio-bluetooth
+
+pkgname = pulseaudio-equalizer-nosystemd-git
+	pkgdesc = Equalizer for PulseAudio
+	depends = pulseaudio=13.99.1+98+g460d0c0b7-1
+	depends = python-pyqt5
+	depends = python-dbus
+	depends = fftw
+	provides = pulseaudio-equalizer
+	conflicts = pulseaudio-equalizer
+
