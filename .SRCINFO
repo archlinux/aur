@@ -1,5 +1,5 @@
 pkgbase = zelda-xd2
-	pkgdesc = Free and opensource, amateur Zelda game with humoristic characters.
+	pkgdesc = The Legend of Zelda XD2: Mercuris Chess - parodic fangame
 	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://www.solarus-games.org/
