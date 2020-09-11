@@ -1,4 +1,4 @@
-From 28ea53016d36fb723e426075ac249b3b7f9939cb Mon Sep 17 00:00:00 2001
+From a1a569557133a2908e00c89ff74cbf204a65050e Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:37:38 +0100
 Subject: [PATCH 2/3] Setting default Qt5 backend to Cairo
@@ -8,7 +8,7 @@ Subject: [PATCH 2/3] Setting default Qt5 backend to Cairo
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/qt5/src/poppler-private.cc b/qt5/src/poppler-private.cc
-index 827a6345..760973f7 100644
+index 5b30f19c..197f778b 100644
 --- a/qt5/src/poppler-private.cc
 +++ b/qt5/src/poppler-private.cc
 @@ -242,7 +242,7 @@ DocumentData::~DocumentData()
