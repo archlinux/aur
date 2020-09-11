@@ -25,7 +25,7 @@ validpgpkeys=(
 
 sha256sums=('7c1f7bb13e79433ee930c597d272a64bc6e30c356a48524f38fd34fa88d62473'
             'SKIP'
-            '0a66dcadd32432460fab180be9f2efe24e911e3798917b2787ee710e02901eb4')
+            'dcd2260cde399711ebe8e9e574ba3ac760e751de3c8568ab5620246f2d151795')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
