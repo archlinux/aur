@@ -1,31 +1,39 @@
-# Maintainer: Jan Keith Darunday <jkcdarunday@uplb.edu.ph>
+# Maintainer: Jan Keith Darunday <jkcdarunday@gmail.com>
 
 pkgname=ahoviewer-git
-pkgver=git
+_pkgname=ahoviewer
+pkgver=1.6.5.127.g518c20c
 pkgrel=1
 pkgdesc="A GTK2 image viewer, manga reader, and booru browser."
 arch=('i686' 'x86_64')
 url="http://github.com/ahodesuka/ahoviewer"
 license=('MIT')
-depends=('curl>=7.16.0' 'gtkmm>=2.20.0' 'glibmm>=2.36.0' 'libxml2' 'libconfig>=1.5')
-optdepends=('gstreamer' 'gst-plugins-bad' 'gst-plugins-good' 'libsecret' 'libunrar' 'libzip')
-makedepends=('git')
+depends=('gtkmm3>=3.22.0' 'libconfig>=1.4')
+optdepends=('gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-vpx' 'gst-plugins-libav' 'libpeas>=1.22.0' 'libsecret' 'libunrar' 'libzip' )
+makedepends=('git' 'meson' 'ninja')
+provides=('ahoviewer')
 source=("git://github.com/ahodesuka/ahoviewer")
 md5sums=('SKIP')
 
 pkgver() {
-  cd 'ahoviewer'
+  cd $_pkgname
   git describe | sed 's/-/./g'
 }
 
+prepare() {
+  cd $srcdir/$_pkgname
+  meson build --prefix=/usr -Dbuildtype=release
+}
+
 build() {
-  cd 'ahoviewer'
-  ./bootstrap --prefix=/usr
-  make
+  cd $srcdir/$_pkgname/build
+  ninja
 }
 
 package() {
-  make -C ahoviewer PREFIX=/usr DESTDIR="$pkgdir" install
+  cd $srcdir/$_pkgname/build
+  DESTDIR="$pkgdir" ninja install
+  install -Dm644 $srcdir/ahoviewer/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim: ft=sh syn=sh et
