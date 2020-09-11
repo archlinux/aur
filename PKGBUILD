@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=sunloginclient
-pkgver=10.1.1.28779
+pkgver=10.1.1.38139
 pkgrel=1
 pkgdesc="Sunlogin Remote Control is a software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64")
@@ -19,8 +19,8 @@ source=("http://dl-cdn.oray.com/sunlogin/linux/SunloginClient-${pkgver}_amd64.de
         'LICENSE::https://service.oray.com/question/1820.html'
         'sunlogin-client-xhost.desktop')
 install='.INSTALL'
-sha256sums=('a1510f23889a73befed4106e7472d9090fc45d143e92dfcc11c5a1afd607eddf'
-            'SKIP'
+sha256sums=('0467fa18f99d01d38f311c5b36b0f53f8ad36f5a6f1426ee552143b9de42939c'
+            '92e7d2f15a704ede109a930711d1a70ef8e090f281179a669d8e60c40a736d04'
             '15abf7f89fe7d54112e083914740108a73b6b2cd9d942d49de4c7ccb66c3e30f')
 
 package() {
