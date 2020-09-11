@@ -4,7 +4,7 @@ pkgname=tetrio-desktop
 pkgver=1.0.0
 # sometimes, they release without bumping the version
 _release=2
-pkgrel=7
+pkgrel=8
 pkgdesc='TETR.IO desktop client'
 arch=('x86_64')
 license=('unknown' 'APACHE' 'MIT')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver-$_release.tar.gz::https://tetr.io/about/desktop/builds
         tetrio.desktop
         tetrio-desktop.png)
 sha256sums=('cb23feff26a37e5a51036c59d97af97ae72323f7023faec64e8d90afa86802ef'
-            '0ad0118764c582e0ea9983856a450ce9ea2a77307224a54e4c3e0363216d0970'
+            '01c2a44867113cf7161251a9228224579401fdecb2ceb99c659664038763aeaa'
             'e7b9d7639b4b51e43836a08dab3fcf8055b12dfb87f18d60ded93963146743f0')
 noextract=("$pkgname-$pkgver-$_release.tar.gz")
 
