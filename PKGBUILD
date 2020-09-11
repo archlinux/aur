@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-naxsi
-pkgver=0.56
-pkgrel=23
+pkgver=1.1
+pkgrel=1
 
 _modname=naxsi
 _nginxver=1.19.2
