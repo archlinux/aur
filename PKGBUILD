@@ -2,14 +2,14 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=tootle-git
-pkgver=0.2.r94.ge0a7a43
+pkgver=v1.0.alpha1.r0.g10c9396
 pkgrel=1
 pkgdesc='GTK+ 3 client for Mastodon (git)'
 arch=(i686 x86_64)
 url=https://github.com/bleakgrey/tootle
 license=(GPL3)
-depends=(granite)
-makedepends=(git meson ninja vala gobject-introspection)
+depends=(granite libhandy1)
+makedepends=(git meson ninja vala gobject-introspection )
 provides=(tootle)
 conflicts=(tootle)
 source=(git+$url)

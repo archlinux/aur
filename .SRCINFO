@@ -1,6 +1,6 @@
 pkgbase = tootle-git
 	pkgdesc = GTK+ 3 client for Mastodon (git)
-	pkgver = 0.2.r94.ge0a7a43
+	pkgver = v1.0.alpha1.r0.g10c9396
 	pkgrel = 1
 	url = https://github.com/bleakgrey/tootle
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = tootle-git
 	makedepends = vala
 	makedepends = gobject-introspection
 	depends = granite
+	depends = libhandy1
 	provides = tootle
 	conflicts = tootle
 	source = git+https://github.com/bleakgrey/tootle
