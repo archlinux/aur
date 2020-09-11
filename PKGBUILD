@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Dmitrij D. Czarkoff <czarkoff at gmail dot com>
 
 pkgname=baresip
-pkgver=0.6.6
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="portable and modular SIP User-Agent with audio and video support"
 arch=('i686' 'x86_64' 'armv6h')
@@ -31,8 +31,8 @@ optdepends=('alsa-lib: (alsa module)'
 makedepends=(${optdepends[@]/%:*/})
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/alfredh/baresip/archive/v${pkgver}.tar.gz"
         "baresip-flags.patch")
-sha256sums=('e20d744f88e9f5d01aec34ae62c471e3aad143d5f428ad451f111e57eae374c6'
-            '8344c52dd4b1efe5ed05c42456d1366074b76159a999a525ea6b914ace32ebba')
+sha256sums=('7b008c0a5b4fccfa0a4003f86dc4aaafeaabbdd259ece4757898e9cb5f04fdcf'
+            '60b43559bfc00a23f023b80dbc8c7a0600f607e45bc8ba8ef6a786e583cc5d08')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

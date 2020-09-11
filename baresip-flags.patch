@@ -18,12 +18,12 @@
  		-L$(LIBRE_SO) -lre $(LIBS) -o $@
  
  
-@@ -227,7 +227,7 @@
+@@ -236,7 +236,7 @@
  
- $(TEST_BIN):	$(STATICLIB) $(TEST_OBJS)
+ $(TEST_BIN):	$(STATICLIB) $(TEST_OBJS) $(TEST_MODULES)
  	@echo "  LD      $@"
--	$(HIDE)$(LD) $(LFLAGS) $(TEST_OBJS) \
-+	$(HIDE)$(LD) $(LDFLAGS) $(LFLAGS) $(TEST_OBJS) \
+-	$(HIDE)$(LD) $(LFLAGS) $(APP_LFLAGS) $(TEST_OBJS) \
++	$(HIDE)$(LD) $(LDFLAGS) $(LFLAGS) $(APP_LFLAGS) $(TEST_OBJS) \
  		-L$(LIBRE_SO) -L. \
  		-l$(PROJECT) -lre $(LIBS) $(TEST_LIBS) -o $@
  
