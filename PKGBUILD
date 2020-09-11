@@ -1,8 +1,8 @@
 # Maintainer:  jyantis <yantis@yantis.net>
 
 pkgname=python2-sh-git
-pkgver=1.11.r708.7a4e296
-pkgrel=2
+pkgver=1.14.0.r1207.4b90c93
+pkgrel=1
 pkgdesc='A full-fledged subprocess interface for Python 2 that allows you to call any program as if it were a function'
 arch=('any')
 url='https://github.com/amoffat/sh'
@@ -54,7 +54,7 @@ package() {
   install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Install Documentation
-  install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -D -m644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
 }
 
 # vim:set ts=2 sw=2 et:
