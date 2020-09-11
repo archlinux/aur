@@ -1,0 +1,16 @@
+pkgbase = rockchip-video-driver
+	pkgdesc = The VA-API library for the Rock-Chips.
+	pkgver = 0.14.2
+	pkgrel = 1
+	url = https://github.com/hizukiayaka/rockchip-video-driver
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL2
+	makedepends = cmake
+	depends = libva
+	source = https://github.com/hizukiayaka/rockchip-video-driver/archive/v0.14.2.tar.gz
+	sha256sums = 0a9b20c0e0092cfde1a96fc33abfdc0554942a728d6e4a549009cdfef7c36bd6
+
+pkgname = rockchip-video-driver
+
