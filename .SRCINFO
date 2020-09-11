@@ -1,5 +1,5 @@
 pkgbase = zsxd
-	pkgdesc = Zelda: Mystery of Solarus XD: parodic fangame
+	pkgdesc = The Legend of Zelda XD: Mystery of Solarus - Parodic fangame
 	pkgver = 1.12.2
 	pkgrel = 3
 	url = http://www.zelda-solarus.com/
@@ -8,6 +8,7 @@ pkgbase = zsxd
 	license = GPL3
 	license = custom
 	makedepends = cmake
+	makedepends = zip
 	depends = solarus>=1.6.0
 	source = https://gitlab.com/solarus-games/zsxd/-/archive/v1.12.2/zsxd-v1.12.2.tar.gz
 	b2sums = 1cba628a427cae10e0b08498690b95ef5a60f62531b1b4c7635ccbd561201ff54511b5c32e8e5e3251625e08276466ef2faa81f62eb2b67669cc001b00b7f215
