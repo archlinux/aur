@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=The Legend of Zelda XD2: Mercuris Chess
+Comment=Second April fools game from the Solarus Team
+Path=/usr/bin
+Exec=zelda_xd2_mercuris_chess
+Icon=zelda-xd2
+Terminal=false
+Categories=Game;
