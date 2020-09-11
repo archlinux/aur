@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Vegan on a Desert Island (Git version)
+Comment=Adventure game about being a vegan stranded on a desert island (Git version)
+Path=/usr/bin
+Exec=voadi-git
+Icon=voadi-git
+Terminal=false
+Categories=Game;
