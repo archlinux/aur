@@ -4,7 +4,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=webkit2gtk-unstable
-pkgver=2.29.92
+pkgver=2.30.0
 pkgrel=1
 pkgdesc="GTK Web content engine library"
 arch=(x86_64)
@@ -19,7 +19,7 @@ optdepends=('geoclue: Geolocation support'
             'gst-plugins-good: media decoding'
             'gst-libav: nonfree media decoding')
 source=(https://webkitgtk.org/releases/webkitgtk-${pkgver}.tar.xz{,.asc})
-sha256sums=('560c13375d02ff33309ca2f284bf27466f5f77d0d53840285aec4b0b5d52f0d4'
+sha256sums=('caf3dbf2d2383072614e34281f2fffb6331faf92f4ecf215f6f6a5a57f755d11'
             'SKIP')
 validpgpkeys=('D7FCF61CF9A2DEAB31D81BD3F3D322D0EC4582C3'
               '5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
