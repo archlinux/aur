@@ -1,16 +1,16 @@
 pkgbase = pika-backup
 	pkgdesc = Simple backups based on borg
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/pika-backup
 	arch = x86_64
 	license = GPL
-	makedepends = cargo
 	makedepends = meson
+	makedepends = rust
 	depends = borg
 	depends = gtk3
-	source = https://gitlab.gnome.org/World/pika-backup/-/archive/v0.1.1/pika-backup-v0.1.1.tar.gz
-	sha256sums = 7f515c2ca174e0e61430c877da9f8f5fb45ccf7d7116cbbf24a1c678fd0863f1
+	source = https://gitlab.gnome.org/World/pika-backup/-/archive/v0.1.2/pika-backup-v0.1.2.tar.gz
+	sha256sums = 225f4eaa0ce78ee635191e874529c0a53abbee8014d71916604d192f4000abe3
 
 pkgname = pika-backup
 
