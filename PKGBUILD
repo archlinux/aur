@@ -1,14 +1,14 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-_setmiscver=0.31
-_ndkver=0.3.0
+_setmiscver=0.32
+_ndkver=0.3.1
 
 pkgname=nginx-mainline-mod-ndk-set-misc
 pkgver=$_setmiscver+$_ndkver
-pkgrel=41
+pkgrel=2
 
 _modname=set-misc
-_nginxver=1.19.1
+_nginxver=1.19.2
 
 pkgdesc="Various set_xxx directives added to nginx's rewrite + ngx_devel_kit (module for mainline nginx)"
 arch=('i686' 'x86_64')
@@ -30,8 +30,8 @@ validpgpkeys=(
 
 sha256sums=('a004776c64ed3c5c7bc9b6116ba99efab3265e6b81d49a57ca4471ff90655492'
             'SKIP'
-            '97946a68937b50ab8637e1a90a13198fe376d801dc3e7447052e43c28e9ee7de'
-            '88e05a99a8a7419066f5ae75966fb1efc409bad4522d14986da074554ae61619')
+            'f1ad2459c4ee6a61771aa84f77871f4bfe42943a4aa4c30c62ba3f981f52c201'
+            '0e971105e210d272a497567fa2e2c256f4e39b845a5ba80d373e26ba1abfbd85')
 
 build() {
 	cd "$srcdir"/nginx-$_nginxver
