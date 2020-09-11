@@ -1,6 +1,6 @@
 pkgbase = steamtinkerlaunch
 	pkgdesc = Wrapper script for Steam custom launch options
-	pkgver = 1.6.5
+	pkgver = 1.6.6
 	pkgrel = 1
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
@@ -26,8 +26,8 @@ pkgbase = steamtinkerlaunch
 	optdepends = wine: for optional Vortex Mod Manager support
 	optdepends = gameconqueror: for optional cheating
 	optdepends = xorg-xprop: for optional window toggle and side-by-side VR
-	source = steamtinkerlaunch-1.6.5.tar.gz::https://github.com/frostworx/steamtinkerlaunch/archive/v1.6.5.tar.gz
-	sha256sums = 09029ee80aa8f88964b3995c11229441fcedc050bae0a369951b635f7cab28b3
+	source = steamtinkerlaunch-1.6.6.tar.gz::https://github.com/frostworx/steamtinkerlaunch/archive/v1.6.6.tar.gz
+	sha256sums = 7dd1678159c23568223cf2a35c393a3c5d98cb3a0887c740e52c65ec46d4bfe4
 
 pkgname = steamtinkerlaunch
 
