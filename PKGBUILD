@@ -1,8 +1,8 @@
 # Maintainer: Cullen Ross <cullenrss@gmail.com>
 
 pkgname=cobib
-pkgver=2.2.2
-pkgrel=3
+pkgver=2.3.2
+pkgrel=1
 pkgdesc="Console Bibliography"
 arch=('any')
 license=('MIT')
