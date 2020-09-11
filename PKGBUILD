@@ -7,13 +7,14 @@
 # Download website:
 # https://developer.nvidia.com/tensorrt/
 
+_tensorrt_tag=20.08
 _cudaver=11.0
 _cudnnver=8.0
 _graphsurgeonver=0.4.5
 _uffver=0.6.9
 _ubuntuver=18.04
 _protobuf_branch=3.8.x
-_protobuf_ver=3.12.3
+_protobuf_ver=3.12.4
 _cub_branch=1.8.0
 _onnx_tensorrt_branch=7.1
 _onnx_branch=rel-1.6.0
@@ -21,16 +22,16 @@ _onnx_ver=1.7.0
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'tensorrt-doc')
-pkgver=7.1.3.4
-pkgrel=2
+pkgver=7.2.0.14
+pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference using NVIDIA hardware'
 arch=('x86_64')
 url='https://github.com/NVIDIA/TensorRT/'
 license=('custom' 'Apache')
-makedepends=('git' 'cmake' 'poppler' 'pybind11' 'python' 'python-pip'
+makedepends=('git' 'cmake' 'poppler' 'pybind11' 'python' 'python-pip' 'zlib'
              'cuda' 'cudnn')
 source=("local://TensorRT-${pkgver}.Ubuntu-${_ubuntuver}.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_cudnnver}.tar.gz"
-        "git+https://github.com/NVIDIA/TensorRT.git#tag=${pkgver%.*}"
+        "git+https://github.com/NVIDIA/TensorRT.git#tag=${_tensorrt_tag}"
         'protobuf-protocolbuffers'::"git+https://github.com/protocolbuffers/protobuf#branch=${_protobuf_branch}"
         "git+https://github.com/NVlabs/cub#branch=${_cub_branch}"
         "git+https://github.com/onnx/onnx-tensorrt#branch=${_onnx_tensorrt_branch}"
@@ -41,7 +42,7 @@ source=("local://TensorRT-${pkgver}.Ubuntu-${_ubuntuver}.${CARCH}-gnu.cuda-${_cu
         '010-tensorrt-use-local-protobuf-sources.patch'
         '020-tensorrt-fix-cub-deprecation-huge-warnings.patch')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('f13c6e2f82fda1ed3becac6230ec2048764fe8d302b20a29ae3b1e280c7aac69'
+sha256sums=('5681d6f7d4a6d6b9ef7239caa5a0508748e6f6cade77cb4d48f89e133295ab60'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -49,7 +50,7 @@ sha256sums=('f13c6e2f82fda1ed3becac6230ec2048764fe8d302b20a29ae3b1e280c7aac69'
             'SKIP'
             'SKIP'
             'SKIP'
-            '4ef97ec6a8e0570d22ad8c57c99d2055a61ea2643b8e1a0998d2c844916c4968'
+            'ccfbaaba52f67e0e6536a05f3df3f6618620d255513cfca3a07f5935b624e26b'
             'ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac'
             'bfc2230de7d1afa97febd2bc74c0cca019d86c303008533c347c18c20dea5cd7')
 
@@ -62,6 +63,7 @@ prepare() {
     git -C TensorRT submodule update
     
     # fix error: the type <type> of ‘constexpr’ variable ‘getMatrixOp’ is not literal
+    git -C TensorRT/parsers/onnx config --local advice.detachedHead false
     git -C TensorRT/parsers/onnx checkout "release/${_onnx_tensorrt_branch}"
     
     # onnx-tensorrt git submodule
@@ -70,6 +72,7 @@ prepare() {
     git -C TensorRT/parsers/onnx submodule update
     
     # https://github.com/onnx/onnx/issues/2481
+    git -C TensorRT/parsers/onnx/third_party/onnx config --local advice.detachedHead false
     git -C TensorRT/parsers/onnx/third_party/onnx checkout "v${_onnx_ver}"
     
     # onnx git submodules
@@ -101,13 +104,17 @@ build() {
         -DCUDNN_VERSION="$_cudnnver" \
         -Wno-dev
     make -C build
+    
+    cd TensorRT/tools/onnx-graphsurgeon
+    python setup.py build
 }
 
 package_tensorrt() {
     depends=('cuda' 'cudnn')
-    optdepends=('python-numpy: for graphsurgeon and uff python modules'
-                'python-tensorflow-cuda: for graphsurgeon and uff python modules'
-                'python-protobuf: for uff python module')
+    optdepends=('python-numpy: for graphsurgeon, onnx_graphsurgeon and uff python modules'
+                'python-onnx: for onnx_graphsurgeon python module'
+                'python-protobuf: for uff python module and convert-to-uff tool'
+                'python-tensorflow-cuda: for graphsurgeon and uff python modules and convert-to-uff tool')
     
     mkdir -p "${pkgdir}/usr/lib"
     install -D -m755 "TensorRT-${pkgver}/bin"/* -t "${pkgdir}/usr/bin"
@@ -124,12 +131,14 @@ package_tensorrt() {
         "TensorRT-${pkgver}/uff/uff-${_uffver}-py2.py3-none-any.whl"
     python -O -m compileall "${pkgdir}/usr/lib/python${_pyver}/site-packages"/{graphsurgeon,uff}
     
-    install -D -m644 "TensorRT-${pkgver}/doc/pdf/TensorRT-SLA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 "TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
+    cd TensorRT/tools/onnx-graphsurgeon
+    python setup.py install --root="$pkgdir" --skip-build --optimize='1'
+    
+    install -D -m644 "${srcdir}/TensorRT-${pkgver}/doc/pdf/TensorRT-SLA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "${srcdir}/TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
 }
 
-package_tensorrt-doc()
-{
+package_tensorrt-doc() {
     pkgdesc+=' (documentation)'
     arch=('any')
     license=('custom')
