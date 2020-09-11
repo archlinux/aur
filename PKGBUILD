@@ -7,7 +7,7 @@ pkgdesc="Input device management and event handling library"
 url="https://www.freedesktop.org/wiki/Software/libinput/"
 arch=(x86_64)
 license=(custom:X11)
-provides=('libinput')
+provides=('libinput=1.16.1')
 conflicts=('libinput')
 depends=('mtdev' 'systemd' 'libevdev' 'libwacom')
 # upstream doesn't recommend building docs
@@ -15,7 +15,7 @@ makedepends=('gtk3' 'meson') # 'doxygen' 'graphviz' 'python-sphinx' 'python-reco
 optdepends=('gtk3: libinput debug-gui'
             'python-pyudev: libinput measure'
             'python-libevdev: libinput measure')
-source=("git://github.com/louiecaulfield/libinput")
+source=("git://github.com/louiecaulfield/libinput#tag=1.16.1-3fd")
 md5sums=('SKIP')
 
 build() {

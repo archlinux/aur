@@ -14,9 +14,9 @@ pkgbase = libinput-three-finger-drag
 	optdepends = gtk3: libinput debug-gui
 	optdepends = python-pyudev: libinput measure
 	optdepends = python-libevdev: libinput measure
-	provides = libinput
+	provides = libinput=1.16.1
 	conflicts = libinput
-	source = git://github.com/louiecaulfield/libinput
+	source = git://github.com/louiecaulfield/libinput#tag=1.16.1-3fd
 	md5sums = SKIP
 
 pkgname = libinput-three-finger-drag
