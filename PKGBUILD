@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cod-git
-pkgver=0.0.0.r7.g3023d03
+pkgver=0.0.0.r8.gae68da0
 pkgrel=1
 pkgdesc="A completion daemon for bash/zsh"
 arch=('any')
@@ -28,13 +28,12 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	go build \
-		-trimpath \
-		-buildmode=pie \
-		-mod=readonly \
-		-modcacherw \
-		-ldflags "-extldflags \"${LDFLAGS}\"" \
-		-o "${pkgname%-git}" .
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go build -v -o "${pkgname%-git}" .
 
 	# Clean now to ensure makepkg --clean works
 	go clean -modcache
