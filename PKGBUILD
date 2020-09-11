@@ -4,7 +4,7 @@
 # Contributor: Travis Nickles <nickles.travis@gmail.com>
 
 pkgname=antimicrox
-pkgver=3.0.1
+pkgver=3.1
 pkgrel=1
 pkgdesc="Graphical program used to map keyboard buttons and mouse controls to a gamepad"
 arch=("i686" "x86_64")
@@ -15,11 +15,11 @@ makedepends=("cmake" "extra-cmake-modules" "gettext" "itstool" "qt5-tools")
 provides=("${pkgname/x}")
 conflicts=("${pkgname/x}")
 replaces=("${pkgname/x}")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/juliagoda/${pkgname/x/X}/archive/${pkgver}.tar.gz")
-sha256sums=("543c93822d6d1124817a0496649927694772c74127f0b7154d3f892086626fb1")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AntiMicroX/${pkgname/x/X}/archive/${pkgver}.tar.gz")
+sha256sums=("261600ef4b7d7c48f5be6d4b61a897a4cdd579bb590f57d51181c4a9b651543d")
 
 build() {
-  cd "${srcdir}/${pkgname/x/X}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname/x/X}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
 
