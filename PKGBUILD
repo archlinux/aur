@@ -2,18 +2,18 @@
 # Maintainer: amesgen <amesgen AT amesgen DOT de>
 
 pkgname='dhall-json-bin'
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Dhall to JSON compiler and a Dhall to YAML compiler"
 arch=('x86_64')
 url='https://github.com/dhall-lang/dhall-haskell'
 license=('BSD')
 
-_dhall_ver=1.34.0
+_dhall_ver=1.35.0
 
 source=("dhall-json-$_dhall_ver-$pkgver.tar.bz2::https://github.com/dhall-lang/dhall-haskell/releases/download/$_dhall_ver/dhall-json-$pkgver-x86_64-linux.tar.bz2"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/dhall-lang/dhall-haskell/$_dhall_ver/dhall-json/LICENSE")
-sha256sums=('37a7df3c0f1073cf58c0b28c13454f113a5a9af63913b9faf2a8928aa9d88293'
+sha256sums=('85b0611708286cfb25c3a33a9fed18158cadc68844b2aa0698b06934d26c3ba8'
             '91f68ca8606e7ae993148187e397e20431aa6d870ac9fcc70330a0479468eef9')
 
 package() {
