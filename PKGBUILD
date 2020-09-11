@@ -9,7 +9,7 @@ license=('MIT')
 url="https://gitlab.com/mrossinek/cobib"
 depends=('python' 'python-bibtexparser' 'python-beautifulsoup4' 'python-ruamel-yaml' 'python-pylatexenc' 'python-requests')
 source=("https://gitlab.com/mrossinek/cobib/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('8714d6bf572e185be9b90b7cd98da11882ebdcba0724f6894b6cec9d5def79df4348e08b2a8ae81e5a2ad0a5be87020adbdb0b43d67f23c5eb076581fe76515e')
+sha512sums=('d95fe6d0b49429768e2691d8bfa39badcfc150567beb521bf8748c1efc4f74dd891d2009cda77f0f8184799c34a6c95040e1751a8ad041def6a5b2ece820e610')
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
