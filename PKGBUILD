@@ -1,7 +1,7 @@
 pkgname=notify-osd-syaoran
 _realname=notify-osd
 pkgver=0.9.34
-pkgrel=3
+pkgrel=1
 _realver=${pkgver}+16.04.20160415
 pkgdesc="daemon that displays passive pop-up notifications, with leolik patch added"
 arch=(x86_64)
@@ -17,14 +17,14 @@ source=("git+$url")
 md5sums=('SKIP')
 
 build() {
-    cd "$srcdir/$_realname-$_realver"
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
-              --disable-schemas-compile
+    cd "$pkgname"
+	sh ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
+              --disable-static --disable-schemas-compile
   	make
  }
 
 package() {
-	cd "$srcdir/$_realname-$_realver"
+	cd "$pkgname"
 	make DESTDIR="$pkgdir/" install
-	install -D -m644 ${srcdir}/notify-osd ${pkgdir}/etc/skel/.notify-osd
+#	install -D -m644 ${srcdir}/notify-osd ${pkgdir}/etc/skel/.notify-osd
  }
