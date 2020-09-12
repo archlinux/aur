@@ -2,7 +2,7 @@
 
 pkgname=miopen-opencl
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD's Machine Intelligence Library (OpenCL backend)"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/MIOpen"
@@ -20,6 +20,7 @@ build() {
 
   cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         -DMIOPEN_BACKEND=OpenCL \
+        -DMIOPEN_HIP_COMPILER=/opt/rocm/llvm/bin/clang++ \
         -DHALF_INCLUDE_DIR=/usr/include/half \
         -DBoost_NO_BOOST_CMAKE=ON \
         "$srcdir/MIOpen-rocm-$pkgver"
