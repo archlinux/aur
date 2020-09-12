@@ -1,0 +1,13 @@
+pkgbase = ficy
+	pkgdesc = An icecast/shoutcast stream grabber suite
+	pkgver = 1.0.21
+	pkgrel = 1
+	url = https://gitlab.com/wavexx/fIcy
+	arch = any
+	license = LGPL2.1
+	makedepends = make
+	source = https://gitlab.com/wavexx/fIcy/-/archive/v1.0.21/fIcy-v1.0.21.zip
+	sha256sums = acace2440e6373845cb1c4e88ac84df029f435539daddf0cbfbdbe1526817436
+
+pkgname = ficy
+
