@@ -12,21 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Maintainer: Aleksey Filippov <sarum9in@gmail.com>
+# Maintainer: David Wu <xdavidwuph@gmail.com>
+# Contributor: Aleksey Filippov <sarum9in@gmail.com>
 _pkgname=wheezy.template
 pkgname=python-wheezy
-pkgver=0.1.167
+pkgver=0.1.195
 pkgrel=1
 pkgdesc="A lightweight template library"
 arch=('any')
 url="https://pypi.python.org/pypi/wheezy.template"
 license=('MIT')
 depends=('python')
+makedepends=('python-setuptools')
 conflicts=(
     'python2-wheezy'  # /usr/bin/wheezy.template
 )
-source=("https://pypi.python.org/packages/b1/67/7f0a14a4cc9bd949b8d22383c26fec83a00e7bd428e15c697f998e3e37ba/wheezy.template-${pkgver}.tar.gz")
-sha256sums=('a2ee933452f0352fb8587d79bf6fc66dbf3a14779ef7d17b9fa75e80c0003f19')
+source=("https://files.pythonhosted.org/packages/ee/f8/10736275c1df7299cacb5e10cce15a5db29b4b9f29c91fa7f8f463ed3e76/wheezy.template-0.1.195.tar.gz")
+sha256sums=('f98aa41e3d1e0c6cef935605cbbf03fb95c3652fd30294d7561dac8c8a87edf2')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -36,5 +38,4 @@ build() {
 package() {
   cd "$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
-  chmod +rwX -R "$pkgdir"  # by default installs with 700
 }
