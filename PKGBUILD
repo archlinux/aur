@@ -10,7 +10,7 @@ _completion_checksums=(1e22b678650f0660e6dc0b502990fc13bd0272d3 80483a30bc463ddc
 # This PKGBUILD is not a full PKGBUILD
 # pkgname, pkgver, source, and sha1sums are to be generated
 pkgdesc='Strip ANSI escape sequences from text'
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(MIT)
 url='https://github.com/KSXGitHub/strip-ansi-cli'
