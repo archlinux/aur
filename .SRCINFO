@@ -1,5 +1,5 @@
 pkgbase = sxiv-bachoseven-git
-	pkgdesc = Simple (or small or suckless) X Image Viewer
+	pkgdesc = Personal build of the Simple X Image Viewer
 	pkgver = 2020.09.12
 	pkgrel = 1
 	url = https://github.com/BachoSeven/sxiv
