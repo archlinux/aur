@@ -1,8 +1,9 @@
 pkgbase = scrnsvr
 	pkgdesc = Yet Another X Screensaver/locker
 	pkgver = 1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/koraynilay/scrnsvr
+	install = scrnsvr.install
 	arch = x86_64
 	license = WTFPL
 	makedepends = git
