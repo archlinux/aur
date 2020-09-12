@@ -1,0 +1,27 @@
+pkgbase = python-vmaf
+	pkgdesc = Perceptual video quality assessment algorithm based on multi-method fusion (python implementation)
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/netflix/vmaf/
+	arch = x86_64
+	license = BSD
+	checkdepends = libsvm
+	checkdepends = vmaf
+	makedepends = python-setuptools
+	depends = cython
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-pandas
+	depends = python-scikit-learn
+	depends = python-h5py
+	depends = python-dill
+	depends = python-scikit-image
+	depends = python-sureal
+	depends = python-pywavelets
+	source = https://github.com/Netflix/vmaf/archive/v1.5.3/vmaf-1.5.3.tar.gz
+	sha256sums = 440652ae417d88be083ffd9fa5967662172601e31c458a9743f6008d7150c900
+
+pkgname = python-vmaf
+
