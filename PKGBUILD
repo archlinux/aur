@@ -1,6 +1,6 @@
 # Maintainer: project-repo <archlinux-aur@project-repo.co>
 pkgname=cagebreak
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Tiling wayland compositor based on cage inspired by ratpoison'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('wl-clipboard: clipboard support'
 options=('!buildflags' '!strip')
 conflicts=('cagebreak-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/project-repo/cagebreak/releases/download/$pkgver/release_$pkgver.tar.gz")
-sha512sums=('cbd10a9d5b3c72f2ab1cbd10e5b96b490ba3c97596e344d342c515ebfbeb655815ab1b61de9b123db11cb3f60ca29b01859b9182dca81be1cee13dad300f91f7')
+sha512sums=('c81dbf03f7421bd5fff597b197e1ae6344257e7e34f948a5f9931381853be8d1606fcc9230b686d849e5b1b07d8e1615e598256908d7750ffa048f05609e665e')
 build() {
 	cd "$pkgname"
 	meson build --buildtype=release -Dxwayland=true
