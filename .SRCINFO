@@ -1,7 +1,7 @@
 pkgbase = sftpgo-bin
 	pkgdesc = Fully featured and highly configurable SFTP server
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/drakkan/sftpgo
 	arch = x86_64
 	license = GPL3

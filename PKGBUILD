@@ -3,7 +3,7 @@
 pkgname=sftpgo-bin
 _pkgname=sftpgo
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Fully featured and highly configurable SFTP server'
 arch=('x86_64')
 url="https://github.com/drakkan/${_pkgname}"
@@ -34,7 +34,7 @@ package() {
   install -Dm 644 init/${_pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
   install -Dm 644 "$srcdir/sftpgo.json" -t "${pkgdir}/etc/${_pkgname}"
   install -d "${pkgdir}/var/lib/${_pkgname}"
-  install -Dm 644 sqlite/sftpgo.db -t "${pkgdir}/var/lib/${_pkgname}"
+  install -Dm 600 sqlite/sftpgo.db -t "${pkgdir}/var/lib/${_pkgname}"
   install -d "${pkgdir}/usr/share/${_pkgname}"
   cp -r templates "${pkgdir}/usr/share/${_pkgname}/"
   cp -r static "${pkgdir}/usr/share/${_pkgname}/"
