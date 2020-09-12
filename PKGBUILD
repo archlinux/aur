@@ -4,7 +4,7 @@
 pkgbase=lib32-pipewire
 pkgname=(lib32-pipewire lib32-pipewire-jack lib32-pipewire-pulse)
 pkgver=0.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Server and user space API to deal with multimedia pipelines (32-bit client libraries)"
 url="https://pipewire.org"
 license=(LGPL2.1)
@@ -67,7 +67,10 @@ package_lib32-pipewire() {
   DESTDIR="$srcdir/install" meson install -C build
 
   _pick $srcdir/install/usr/lib32/libpipewire-$_ver.so*
+  _pick $srcdir/install/usr/lib32/alsa-lib/*
+  _pick $srcdir/install/usr/lib32/gstreamer-1.0/*
   _pick $srcdir/install/usr/lib32/pipewire-0.3/libpipewire-module-*.so
+  _pick $srcdir/install/usr/lib32/pkgconfig/*
   _pick $srcdir/install/usr/lib32/spa-0.2/*
 }
 
