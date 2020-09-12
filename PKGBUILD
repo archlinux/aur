@@ -1,5 +1,5 @@
 pkgname=mingw-w64-qt6-base-git
-pkgver=5.15.0.r5319.g287d2d7753
+pkgver=5.15.0.r5369.g605d2163f1
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
@@ -28,7 +28,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     PKG_CONFIG="/usr/bin/${_arch}-pkg-config" \
-    ${_arch}-cmake \
+    ${_arch}-cmake -LAH \
       -DCMAKE_BUILD_TYPE=Release \
       -DQT_HOST_PATH=/usr \
       -DFEATURE_pkg_config=ON \
