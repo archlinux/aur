@@ -4,7 +4,7 @@
 pkgname=xscreensaver-backends
 _srcname=xscreensaver
 pkgver=5.44
-pkgrel=1
+pkgrel=2
 pkgdesc="Screensavers from XScreenSaver for common frontends"
 arch=('i686' 'x86_64')
 url="http://www.jwz.org/xscreensaver/"
