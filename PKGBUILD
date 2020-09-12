@@ -1,9 +1,9 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=backdrop-randomizer
-pkgver=2.32
+pkgver=2.33
 pkgrel=1
-pkgdesc="Companion for xfdesktop which randomly cycles through wallpapers without repeating them until all have been displayed once."
+pkgdesc="Randomly cycles through wallpapers without repeating them until all have been displayed once"
 arch=(any)
 url='https://github.com/graysky2/backdrop-randomizer'
 license=(MIT)
