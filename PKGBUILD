@@ -7,8 +7,8 @@ pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the offici
 arch=('x86_64')
 url="https://pokemon-revolution-online.net"
 license=('custom')
-depends=('gcc-libs' 'desktop-file-utils')
-makedepends=('unzip' 'xdg-utils')
+depends=('desktop-file-utils')
+makedepends=('xdg-utils')
 optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 conflicts=('pokemon-revolution-online')
 install=$(/usr/bin/tail -n 1 /usr/lib/os-release | /usr/bin/cut -d= -f2).install
