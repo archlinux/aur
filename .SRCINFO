@@ -17,6 +17,7 @@ pkgbase = notify-osd-syaoran
 	provides = notification-daemon
 	provides = notify-osd
 	conflicts = notify-osd
+	source = git+https://gitlab.com/justanoobcoder/notify-osd-syaoran.git
 	md5sums = SKIP
 
 pkgname = notify-osd-syaoran

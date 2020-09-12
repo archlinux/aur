@@ -13,7 +13,7 @@ makedepends=('pkgconfig' 'libnotify' 'gnome-common' 'git')
 provides=('notification-daemon' 'notify-osd')
 conflicts=('notify-osd')
 # install=$pkgname.install
-# source=(${url}/+files/${_realname}_${_realver}-0ubuntu1-leolik~ppa2.tar.gz notify-osd)
+source=("git+$url")
 md5sums=('SKIP')
 
 build() {
