@@ -9,7 +9,8 @@ pkgdesc="Python wrapper around the nrfjprog dynamic link library (DLL)"
 arch=('any')
 url="https://github.com/NordicSemiconductor/pynrfjprog"
 license=('custom')
-depends=('python-future')
+depends=('python-future'
+         'nrf5x-command-line-tools')
 makedepends=('python-setuptools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
