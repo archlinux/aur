@@ -1,6 +1,6 @@
 pkgbase = python-radon
 	pkgdesc = A tool that computes various metrics for Python source code
-	pkgver = 4.2.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://radon.readthedocs.org/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-radon
 	depends = python-future
 	depends = python-mando
 	depends = python-colorama
-	source = https://files.pythonhosted.org/packages/source/r/radon/radon-4.2.0.tar.gz
-	sha256sums = b73f6f469c15c9616e0f7ce12080a9ecdee9f2335bdbb5ccea1f2bae26e8d20d
+	source = https://files.pythonhosted.org/packages/source/r/radon/radon-4.3.1.tar.gz
+	sha256sums = 63a7876101a64d5418fa9acebff11f9bb48367ac79f22bf3b73c7bf430a8abc0
 
 pkgname = python-radon
 
