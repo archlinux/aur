@@ -1,47 +1,35 @@
-From 983be1fa0e0780c816147d994e97846c8a2f6db9 Mon Sep 17 00:00:00 2001
-From: Eli Schwartz <eschwartz@archlinux.org>
-Date: Mon, 27 Apr 2020 21:51:57 -0400
-Subject: [PATCH] Suppress dependency versions which are known to be too
- pessimistic
-
-These all work just fine in reported use and should not be pinned; we
-package versions in Arch which are "too new".
-
 diff --git a/pyproject.toml b/pyproject.toml
-index 7a38469..5e28513 100644
+index e2296a3c..59923b0a 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -27,15 +27,15 @@ cleo = "^0.7.6"
- clikit = "^0.4.2"
+@@ -30,12 +30,12 @@ clikit = "^0.6.2"
+ crashtest = { version = "^0.3.0", python = "^3.6" }
  requests = "^2.18"
  cachy = "^0.3.0"
 -requests-toolbelt = "^0.8.0"
 +requests-toolbelt = "*"
- jsonschema = "^3.1"
--pyrsistent = "^0.14.2"
-+pyrsistent = "*"
- pyparsing = "^2.2"
  cachecontrol = { version = "^0.12.4", extras = ["filecache"] }
  pkginfo = "^1.4"
  html5lib = "^1.0"
  shellingham = "^1.1"
--tomlkit = "^0.5.11"
+-tomlkit = ">=0.7.0,<1.0.0"
 +tomlkit = "*"
  pexpect = "^4.7.0"
- 
- # The typing module is not in the stdlib in Python 2.7 and 3.4
-@@ -49,19 +49,13 @@ glob2 = { version = "^0.6", python = "~2.7 || ~3.4" }
- virtualenv = { version = "^16.7.9", python = "~2.7" }
+ packaging = "^20.4"
+ virtualenv = { version = "^20.0.26" }
+@@ -51,20 +51,13 @@ futures = { version = "^3.3.0", python = "~2.7" }
+ glob2 = { version = "^0.6", python = "~2.7" }
  # functools32 is needed for Python 2.7
  functools32 = { version = "^3.2.3", python = "~2.7" }
 -keyring = [
--    { version = "^18.0.1", python = "~2.7 || ~3.4" },
--    { version = "^20.0.1", python = "^3.5" }
+-    { version = "^18.0.1", python = "~2.7" },
+-    { version = "^20.0.1", python = "~3.5" },
+-    { version = "^21.2.0", python = "^3.6" }
 -]
 +keyring = "*"
- # Use subprocess32 for Python 2.7 and 3.4
- subprocess32 = { version = "^3.5", python = "~2.7 || ~3.4" }
- importlib-metadata = {version = "~1.1.3", python = "<3.8"}
+ # Use subprocess32 for Python 2.7
+ subprocess32 = { version = "^3.5", python = "~2.7" }
+ importlib-metadata = {version = "^1.6.0", python = "<3.8"}
  
  [tool.poetry.dev-dependencies]
 -pytest = [
@@ -50,5 +38,5 @@ index 7a38469..5e28513 100644
 -]
 +pytest = "*"
  pytest-cov = "^2.5"
- mkdocs = { version = "^1.0", python = "~2.7.9 || ^3.4" }
- pymdown-extensions = "^6.0"
+ pytest-mock = "^1.9"
+ pre-commit = { version = "^2.6", python = "^3.6.1" }
