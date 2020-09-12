@@ -1,4 +1,5 @@
-# Maintainer: JustKidding <jk@vin.ovh>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: JustKidding <jk@vin.ovh>
 # Contributor: Yurii Kolesnykov <root@yurikoles.com>
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
