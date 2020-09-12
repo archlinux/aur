@@ -4,7 +4,7 @@ pkgdesc="ROS - The actionlib stack provides a standardized interface for interfa
 url='https://wiki.ros.org/actionlib'
 
 pkgname='ros-noetic-actionlib'
-pkgver='1.13.0'
+pkgver='1.13.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -45,7 +45,7 @@ depends=(
 
 _dir="actionlib-${pkgver}/actionlib"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/actionlib/archive/${pkgver}.tar.gz")
-sha256sums=('11ce636f21ec2a96ed861644744bf100cd03a8b74546965544fa0b6d7a9856f5')
+sha256sums=('b741755881e30b9aea6bcdd9831e3f0932a8bbba02fa59e5c0e5970280024055')
 
 build() {
 	# Use ROS environment variables.
