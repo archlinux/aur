@@ -3,7 +3,7 @@
 
 pkgname='chaotic-keyring'
 pkgver='20200912'
-pkgrel=1
+pkgrel=2
 pkgdesc='Chaotic-AUR PGP keyring'
 arch=('any')
 url='https://lonewolf.pedrohlc.com/chaotic-aur'
@@ -19,4 +19,4 @@ package() {
   make PREFIX=/usr "DESTDIR=$pkgdir" install
 }
 
-sha512sums=('828472fec1dd8a75703af864087180702cb91c4aee3124b844a5a6fbd690c9a9250143792ca5479b5cd6da87cdcf2b216de72431029a78be0ee1c21d7932d7de')
+sha512sums=('1ac37dff6605850cbacc40864c3d0a4052a4f1d1f873961e1be94dd3bd8c3cc477d20272eda88ef93e7c1e8bb8513aac4a5a30bcf99317e3c6f34df82799ad6e')
