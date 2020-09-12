@@ -1,29 +1,23 @@
 pkgbase = komorebi
-	pkgdesc = Parallax backgrounds manager
-	pkgver = 2.1
-	pkgrel = 2
+	pkgdesc = A beautiful and customizable wallpaper manager for Linux
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/Komorebi-Fork/komorebi
+	install = komorebi.install
 	arch = x86_64
-	arch = i686
-	license = GPL
+	license = GPL3
 	makedepends = git
-	makedepends = cmake
+	makedepends = meson
 	makedepends = vala
-	makedepends = gendesk
-	depends = desktop-file-utils
-	depends = glib2>=2.38
-	depends = gtk3>=3.14
-	depends = hicolor-icon-theme
-	depends = libgtop
 	depends = libgee
-	depends = libwnck
-	depends = clutter
 	depends = clutter-gtk
 	depends = clutter-gst
 	depends = webkit2gtk
-	provides = komorebi
-	source = https://github.com/Komorebi-Fork/komorebi/archive/v2.1.tar.gz
-	md5sums = 2fd707711373f77c45ea4583a40e56aa
+	optdepends = gst-libav: full video wallpaper support
+	optdepends = gstreamer-vaapi: hardware-accelerated video decoding through VAAPI
+	optdepends = gst-plugins-bad: hardware-accelerated video decoding through VDPAU
+	source = komorebi-2.2.0.tar.gz::https://github.com/Komorebi-Fork/komorebi/archive/v2.2.0.tar.gz
+	sha256sums = c542680877e58423d2bb7a32f8221dda0445cee34180beba33e42da87280a38b
 
 pkgname = komorebi
 

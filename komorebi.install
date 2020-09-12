@@ -1,0 +1,3 @@
+post_remove() {
+	echo "To also remove any custom configs and wallpapers, remove the ~/.config/komorebi folder."
+}
