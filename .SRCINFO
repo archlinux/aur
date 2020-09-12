@@ -1,6 +1,6 @@
 pkgbase = hangups
 	pkgdesc = The first third-party instant messaging client for Google Hangouts
-	pkgver = 0.4.10
+	pkgver = 0.4.11
 	pkgrel = 1
 	url = https://github.com/tdryer/hangups
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = hangups
 	depends = python-requests
 	depends = python-setuptools
 	depends = python-urwid
-	source = https://files.pythonhosted.org/packages/source/h/hangups/hangups-0.4.10.tar.gz
-	sha256sums = 450edf33b9daf7cfb38bc8d310990becea3f791894068cb2e55780c566fa8973
+	source = https://files.pythonhosted.org/packages/source/h/hangups/hangups-0.4.11.tar.gz
+	sha256sums = db530cd7352c3fef4513bce38f07d19b79180b3aefed71afd9f369bab7cab498
 
 pkgname = hangups
 
