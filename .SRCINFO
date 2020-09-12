@@ -1,0 +1,23 @@
+pkgbase = notify-osd-syaoran
+	pkgdesc = daemon that displays passive pop-up notifications, with leolik patch added
+	pkgver = 0.9.34
+	pkgrel = 1
+	url = https://gitlab.com/justanoobcoder/notify-osd-syaoran.git
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = libnotify
+	makedepends = gnome-common
+	makedepends = git
+	depends = libwnck3
+	depends = libnotify>=0.7.0
+	depends = dbus-glib>=0.76
+	depends = dconf
+	depends = gsettings-desktop-schemas
+	provides = notification-daemon
+	provides = notify-osd
+	conflicts = notify-osd
+	md5sums = SKIP
+
+pkgname = notify-osd-syaoran
+
