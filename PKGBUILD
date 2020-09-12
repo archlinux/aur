@@ -1,5 +1,5 @@
 pkgname=mingw-w64-qt6-base-git
-pkgver=5.15.0.r5378.ga7b85e5993
+pkgver=5.15.0.r5379.g1abea5f5f1
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
@@ -29,6 +29,8 @@ prepare () {
   echo "set_property(TARGET dbus-1 PROPERTY IMPORTED_IMPLIB \${DBus1_LIBRARY})" >> cmake/FindWrapDBus1.cmake
   # mariadb-connector-c: missing pkgconfig ?
   sed -i "s|MySQL::MySQL|MySQL::MySQL ssl crypto z ws2_32 shlwapi|g" src/plugins/sqldrivers/mysql/CMakeLists.txt
+  # restore default import suffix
+  sed -i 's|PROPERTY IMPORT_SUFFIX ".a"|PROPERTY IMPORT_SUFFIX ".dll.a"|g' cmake/QtTargetHelpers.cmake
 }
 
 build() {
