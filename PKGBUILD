@@ -24,6 +24,6 @@ package() {
 	install -Dm0755 bin/scrnsvr "$pkgdir/usr/bin/$pkgname"
 	install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/scrnsvr/LICENSE"
 	install -Dm0644 RETURN_CODES.txt "$pkgdir/usr/share/scrnsvr/RETURN_CODES.txt"
-	install -Dm0644 scrnsvr.ini.example "$pkgdir/usr/lib/systemd/user/scrnsvr.ini.example"
+	install -Dm0644 scrnsvr.ini.example "$pkgdir/usr/share/scrnsvr/scrnsvr.ini.example"
 	install -Dm0644 scrnsvr.service "$pkgdir/usr/lib/systemd/user/scrnsvr.service"
 }
