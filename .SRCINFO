@@ -10,6 +10,7 @@ pkgbase = vapoursynth-plugin-havsfunc-git
 	depends = vapoursynth-plugin-adjust-git
 	depends = vapoursynth-plugin-awarpsharp2-git
 	depends = vapoursynth-plugin-bilateral-git
+	depends = vapoursynth-plugin-cas-git
 	depends = vapoursynth-plugin-ctmf-git
 	depends = vapoursynth-plugin-dctfilter-git
 	depends = vapoursynth-plugin-deblock-git
