@@ -1,7 +1,7 @@
 # Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
 
 pkgname=minisat-git
-pkgver=2.2.0.r68.g37dc6c6
+pkgver=2.2.1.r3.gf7d16b9
 pkgrel=1
 pkgdesc='A minimalistic and high-performance SAT solver (git version)'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://minisat.se/"
 license=('MIT')
 conflicts=('minisat')
 makedepends=('git')
-source=($pkgname::git+https://github.com/niklasso/minisat)
+source=($pkgname::git+https://github.com/msoos/minisat)
 sha256sums=('SKIP')
 
 pkgver() {
