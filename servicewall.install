@@ -4,6 +4,7 @@ post_install() {
         echo -e "To enable ServiceWall, run a\n\t# systemctl enable servicewall";
     )
     echo -e "If you installed python-argcomplete, you should run\n\t# activate-global-python-argcomplete"
+    echo "You should set XTABLES_LIBDIR inside /etc/environment to relevant dir."
 }
 
 ## $1:  the new package version
@@ -14,6 +15,7 @@ post_upgrade() {
         echo "reloading ServiceWall";
         braise reload;
     )
+    echo "You should set XTABLES_LIBDIR inside /etc/environment to relevant dir."
 }
 
 ## arg 1:  the old package version
