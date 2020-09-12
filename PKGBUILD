@@ -1,7 +1,7 @@
 # Maintainer: gmes78 <gmes.078 at gmail dot com>
 
 pkgname=python-blake3
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Python bindings for the BLAKE3 cryptographic hash function"
 arch=(x86_64 i686 aarch64 armv7h)
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-pip' 'rust')
 
 source=("blake3-py-${pkgver}.tar.gz"::"https://github.com/oconnor663/blake3-py/archive/${pkgver}.tar.gz")
-sha512sums=('a88d2d79d59b0c79098ec3970067c3cbcdab5cff9c85759a26357b84df80db38dd7169bd900df32ad3a4f9e154886c15c38de680ceccd9ce444d4d721f149e24')
+sha512sums=('e0847d49e1da383a89bda8e5daa2813de0837071c09a45199837b00911c17a1ed4623f0d969511fafb93d3a5aafb875779212ffd4cc30f47f1ab3fe234c3dfdd')
 
 package() {
     cd "blake3-py-${pkgver}"
