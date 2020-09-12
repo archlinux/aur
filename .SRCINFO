@@ -10,7 +10,7 @@ pkgbase = graphtage
 	depends = python-colorama
 	depends = python-intervaltree
 	depends = python-json5>=0.9.5
-	depends = python-pyaml
+	depends = python-yaml
 	depends = python-scipy>=1.4.0
 	depends = python-tqdm
 	depends = python-typing_extensions>=3.6.5
