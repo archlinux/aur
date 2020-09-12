@@ -1,0 +1,19 @@
+pkgbase = python-etebase
+	pkgdesc = Etebase Python library
+	pkgver = 0.20.1
+	pkgrel = 1
+	url = https://github.com/etesync/etebase-py
+	arch = x86_64
+	license = LGPL
+	makedepends = cargo
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-setuptools-rust
+	depends = openssl
+	source = python-etebase::git+https://github.com/etesync/etebase-py.git?tag=v0.20.1
+	source = 0001-Dynamically-link-against-libssl.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = python-etebase
+

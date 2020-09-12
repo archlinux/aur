@@ -1,0 +1,22 @@
+From 6194da623ef0099d0bb8cb821c3a535e188e89e5 Mon Sep 17 00:00:00 2001
+From: Tom Hacohen <tom@stosb.com>
+Date: Sat, 12 Sep 2020 10:03:53 +0300
+Subject: [PATCH] Dynamically link against libssl.
+
+---
+ Cargo.toml | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 29ea7f4..fd317a5 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -19,5 +19,4 @@ log = "^0.4.6"
+ 
+ [dependencies]
+ cpython = { version = "0.3", features = ["extension-module"] }
+-openssl = { version = "0.10.30", features = ["vendored"] }
+ etebase = { git = "https://github.com/etesync/etesync-rs", rev = "6b6e5179602d49d0e601d196686731ef4674e126" }
+-- 
+2.28.0
+
