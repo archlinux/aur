@@ -5,7 +5,7 @@ _minor_version=1
 
 pkgname=idp-ide
 pkgver=${_major_version}.${_minor_version}
-pkgrel=4
+pkgrel=5
 pkgdesc="IDP Knowledge Base System editor"
 arch=('i686' 'x86_64')
 url="https://dtai.cs.kuleuven.be/software/idp/try"
@@ -32,9 +32,9 @@ package() {
   cp -dR ./* "${targetDir}/"
   sed -r -i -e 's,/usr/bin/idp,/usr/local/bin/idp,g' "${targetDir}/webID-${_major_version}.${_minor_version}/webID.cfg"
 
-  # create executable (with fix for log files)
+  # create executable
   mkdir -p "${pkgdir}/usr/bin"
-  echo "sh -c '/usr/share/idp-ide/webID-${_major_version}.${_minor_version}/webID'" >"${pkgdir}/usr/bin/idp-ide"
+  echo "sh -c 'cd /usr/share/idp-ide/webID-${_major_version}.${_minor_version} && /usr/share/idp-ide/webID-${_major_version}.${_minor_version}/webID'" >"${pkgdir}/usr/bin/idp-ide"
   chmod +x "${pkgdir}/usr/bin/idp-ide"
 
 
