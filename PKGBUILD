@@ -1,5 +1,5 @@
 pkgname=ntfs3-dkms
-pkgver=4.0.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="NTFS read-write driver GPL implementation by Paragon Software. Current version works with NTFS (including v3.1), normal/compressed/sparse files and supports journal replaying."
 arch=('any')
@@ -7,24 +7,24 @@ url='https://www.paragon-software.com/'
 license=('GPL2')
 depends=('dkms')
 options=('!strip')
-source=('1.patch::https://lore.kernel.org/patchwork/patch/1300757/raw'
-        '2.patch::https://lore.kernel.org/patchwork/patch/1300720/raw'
-        '3.patch::https://lore.kernel.org/patchwork/patch/1300738/raw'
-        '4.patch::https://lore.kernel.org/patchwork/patch/1300721/raw'
-        '5.patch::https://lore.kernel.org/patchwork/patch/1300758/raw'
-        '6.patch::https://lore.kernel.org/patchwork/patch/1300718/raw'
-        '7.patch::https://lore.kernel.org/patchwork/patch/1300735/raw'
-        '8.patch::https://lore.kernel.org/patchwork/patch/1300724/raw'
+source=('1.patch::https://lore.kernel.org/patchwork/patch/1304367/raw'
+        '2.patch::https://lore.kernel.org/patchwork/patch/1304404/raw'
+        '3.patch::https://lore.kernel.org/patchwork/patch/1304395/raw'
+        '4.patch::https://lore.kernel.org/patchwork/patch/1304394/raw'
+        '5.patch::https://lore.kernel.org/patchwork/patch/1304393/raw'
+        '6.patch::https://lore.kernel.org/patchwork/patch/1304432/raw'
+        '7.patch::https://lore.kernel.org/patchwork/patch/1304384/raw'
+        '8.patch::https://lore.kernel.org/patchwork/patch/1304417/raw'
         Makefile.patch
         dkms.conf)
-sha512sums=('ff1a772810752293b8e35a9ab0b5c798ecf45ae7d170d0b3a7578e802daf21ee540d0f19dc6d66e85a3e0b910b0eea11aa37ab727ae00f3bf7d092cc39b2fc7b'
-            'b1fedc67c9bdb6edcda44be0c9c197dd6a038fa4594f6b00d5f9ae4b228649902e930771a7a37db38cb4a3b59b68b75b65400d1988be68c55c3d4f9b25025ce4'
-            '4ddd14f99231704cbd9d386a3f6b4131930fc66b5752ed2c4aa042c5e051f1ca6beaddf6bf3194387588ee3ec228e030b2846cdafab201bc8985e2850ea003e1'
-            '01e92e4f188de09b21a174f0a1355b3810abf0a911da436a7244e2ee1eecfcfcff46ba00a7827b55a37e1efc2d7401acfb5eeb83ac4e60f971d2369e74c54ba2'
-            '73f144aab665acb3278e7902b25f83da0ab3a417f9a301321dae9a16e36ce098f0d02c2cc9d89bf779ec59bed006bdc2e8358193debef84eacb19700ef3cac84'
+sha512sums=('501a8ec4dc303abf2da3bc1a147e8b3f69fb69be3c1487b0b98bf4ce18683741682b97f5441bdd12848b399fa915b3a302c6153add36c8b694980867fb837567'
+            '107fb5459290b65a908af5f45ad226dd6402bd1c86564ce82df5d8964431f41edb72d2652dd5dca62b2c6f7eae26f56d28514bb706056ddd3d154120a8853bbe'
+            '8a671abc6ede02385710e00996587967b9d1d677b167a936f0cae48bb8b5799075a25954396f6c991e7f126554ccc8f969dd1131beac11c4fd86d7374911f75e'
+            '668ce8a830b64af03bd464fb1191f7a32cffdd406e4135bfc1a195acd5737bf2d3c34fa96f279bea23608d4388f1dff3509fc25871f57967ea488951b0bdb872'
+            'a02d7eafc9433664e0796e2d707dfcff946e5c0b805364c8b22f89a1d06d706ddb3eb7e037388257cc95510aab346412707a750479f4a9c7b13a8d8aa43999da'
             '9c7f11d4cd755c91f4581a3ac45c22295b790d9a642ccbc44579ea4d4b4de2d82dfb8932967c3c1a0ec8f0e8a497acc327a0cc49c5b6f2ce9da208e97809cd74'
-            'd6a782cbe179937f1d0f910788557876b72c40beb51367ab1fb3177def37dfadf3e3b697818f45b51f4b9d71a8f61d599026ea7aa15c58b6b687ab0e9c217bb7'
-            'a168442e6407e3db5b6648bbf6af8a76133cff27ca603d9fc55492e7c1b1c613af49a29a9b5f7e469f786d4510f44d8fd342be6ccf3e52db7658056dcf996730'
+            '9e20c2659348b83aa1677fe57a7dd8f85efedffcad65183d19120cfbd17ac814f95721fbaa26a3ba19fb6530465002b68e8a301d1ec7f33d2e37934e95e380aa'
+            'c1133e8ccaa32b3d4ef5834054b6dd2e529c3b15e5a97ae71c79f311ff89e3ac73f49f542744ff3d464cd9e3a1a707569da5e7e2e3e742d881b6a3b176f938b6'
             'ab49381b37714bc61b17c5a4d857aac776a674574e8dbd46738eab438eef984b7762430cac05860038d8a875d5538347a1e1176acfd2169d9b5a640a9ef04d7c'
             '5f4087b05eb831fe277f1894240a8d72824daa821317e873f77574fc25d97b273ac3ddd8075d58b96c5e4e441de630817d68a3fa33d6176e26743cdb17ec664f')
 
