@@ -15,6 +15,7 @@ depends=("libappindicator-gtk3"
          'libvoikko'
          'xorg-xhost')
 license=('custom')
+provides=('sunlogin')
 source=("http://dl-cdn.oray.com/sunlogin/linux/SunloginClient-${pkgver}_amd64.deb"
         'LICENSE::https://service.oray.com/question/1820.html'
         'sunlogin-client-xhost.desktop')

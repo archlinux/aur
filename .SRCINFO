@@ -14,6 +14,7 @@ pkgbase = sunloginclient
 	depends = hunspell
 	depends = libvoikko
 	depends = xorg-xhost
+	provides = sunlogin
 	source = http://dl-cdn.oray.com/sunlogin/linux/SunloginClient-10.1.1.38139_amd64.deb
 	source = LICENSE::https://service.oray.com/question/1820.html
 	source = sunlogin-client-xhost.desktop
