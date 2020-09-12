@@ -5,8 +5,8 @@ pkgname=love-git
 pkgver=20200816.9f62bafe
 pkgrel=1
 pkgdesc="An open-source 2D game engine which uses the versatile Lua scripting language to create dynamic gaming experiences."
-arch=(i686 x86_64)
-url="http://love2d.org/"
+arch=(i686 x86_64 armv6h armv7h)
+url="https://love2d.org/"
 license=('ZLIB')
 depends=(
 	'luajit' 'physfs' 'freetype2' 'mpg123' 'openal' 'libvorbis' 'libmodplug'
