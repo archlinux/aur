@@ -7,7 +7,7 @@ epoch=
 pkgdesc="Simple .INI file parser in C, good for embedded systems"
 arch=('x86_64')
 url="https://github.com/benhoyt/inih"
-license=('GPL3')
+license=('BSD')
 groups=()
 depends=('gcc-libs')
 makedepends=('meson')
@@ -29,4 +29,7 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
+
+	cd "$srcdir/${pkgname#lib}-$pkgver"
+	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
 }
