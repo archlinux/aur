@@ -1,18 +1,17 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=python-sureal
-pkgver=0.4.2
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Subjective quality scores recovery from noisy measurements'
 arch=('any')
 url='https://github.com/Netflix/sureal/'
 license=('Apache')
 depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-pandas')
-makedepends=('python-setuptools')
-checkdepends=('python-mock' 'python-pytest-cov' 'python-pytest')
-BUILDENV=('!check') # test hangs after completion
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Netflix/sureal/archive/v${pkgver}.tar.gz")
-sha256sums=('3dd7aaf4752f99798f5a842cd6eef5f2984edd8512a748a3f5d3f1a49cbf8055')
+makedepends=('python-setuptools' 'python-pip' 'python-wheel')
+checkdepends=('python-pytest')
+source=("https://github.com/Netflix/sureal/archive/v${pkgver}/sureal-${pkgver}.tar.gz")
+sha256sums=('6c024cd1afaf7adc0495d762c9de6e9d9c0a2de5a3f41191a642d9cd99bdb256')
 
 build() {
     cd "sureal-${pkgver}"
