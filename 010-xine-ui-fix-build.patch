@@ -1,0 +1,18 @@
+--- a/src/xitk/lirc.c
++++ b/src/xitk/lirc.c
+@@ -33,6 +33,7 @@
+ #include <fcntl.h>
+ 
+ #ifdef HAVE_LIRC
++#include <fcntl.h>
+ #include <lirc/lirc_client.h>
+ #endif
+ 
+@@ -41,6 +42,7 @@
+ #include "panel.h"
+ #include "actions.h"
+ #include "event.h"
++#include "playlist.h"
+ 
+ #ifdef DEBUG
+ #define LIRC_VERBOSE 1

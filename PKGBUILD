@@ -1,27 +1,29 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=xine-ui-hg
-pkgver=0.99.10.r3349.44f5b990a7ad
+pkgver=0.99.12.r400.ff6bdf276e71
 pkgrel=1
 pkgdesc='A free video player for Unix (mercurial version)'
 arch=('x86_64')
-url='https://www.xine-project.org/'
+url='http://xine.sourceforge.net/'
 license=('GPL')
-depends=('xine-lib' 'curl' 'libxft' 'libxxf86vm' 'lirc' 'xdg-utils' 'libxss')
+depends=('xine-lib' 'curl' 'libxft' 'libxxf86vm' 'lirc' 'xdg-utils')
 makedepends=('mercurial')
 provides=('xine-ui')
 conflicts=('xine-ui')
-source=('hg+http://hg.code.sf.net/p/xine/xine-ui')
-sha256sums=('SKIP')
+source=('hg+http://hg.code.sf.net/p/xine/xine-ui'
+        '010-xine-ui-fix-build.patch')
+sha256sums=('SKIP'
+            '1028f927ec87fb46088c0fc93a96d0eca182c452f90fa2bda9a7abec209da88d')
+
+prepare() {
+    patch -d xine-ui -Np1 -i "${srcdir}/010-xine-ui-fix-build.patch"
+}
 
 pkgver() {
-    cd xine-ui
-    
-    local _version
-    _version="$(hg log --rev='branch(default) and tag()' --template='{tags}\n' |
-                              grep '^[0-9]*\(\.[0-9]*\(\.[0-9]*\(\.[0-9]*\)\?\)\?\)\?$'  |
-                              sort -Vr | head -n1)"
-    printf '%s.r%s.%s' "$_version" "$(hg identify -n)" "$(hg identify -i)"
+    printf '%s.r%s.%s' "$(hg -R xine-ui log -r. --template '{latesttag}')" \
+                       "$(hg -R xine-ui log -r. --template '{latesttagdistance}')" \
+                       "$(hg -R xine-ui log -r. --template '{node|short}')"
 }
 
 build() {
@@ -37,6 +39,5 @@ build() {
 }
 
 package() {
-    cd xine-ui
-    make DESTDIR="$pkgdir" desktopdir='/usr/share/applications' install
+    make -C xine-ui DESTDIR="$pkgdir" desktopdir='/usr/share/applications' install
 }
