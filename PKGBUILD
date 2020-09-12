@@ -2,13 +2,13 @@
 # Maintainer: Zhaofeng Li <hello@zhaofeng.li>
 
 pkgname=zotero-arm-bin
-pkgver=5.0.88
+pkgver=5.0.89
 pkgrel=2
 pkgdesc="Zotero Standalone is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources (ARM Binaries)"
 arch=('aarch64' 'armv7h')
 url="http://www.zotero.org/download"
 license=('GPL3')
-depends=('dbus-glib' 'gtk3' 'nss' 'libxt')
+depends=('dbus-glib' 'gtk3' 'nss' 'libxt' 'startup-notification')
 provides=("zotero=${pkgver}")
 conflicts=('zotero')
 optdepends=(
@@ -27,7 +27,7 @@ source_armv7h=(
   "firefox.deb::http://launchpadlibrarian.net/373609086/firefox_60.0.2+build1-0ubuntu0.18.04.1_armhf.deb"
 )
 sha256sums=('2e700ebe97d332a894be80d232b037b0117d84b38c5fa99dffc727cb10918228'
-            'c248bb3b5165f4b03c7e38673aa928f1f29796a8d8ba1b335699803c559529a7')
+            '74e1dbe47a3804bccfccdfd1f3d3fb92912c4f0bd30a776676c2a5eeacc5e4a2')
 sha256sums_aarch64=('cad6ea6f971431ece476bda7499b30293dc6b533c1c35a41d1c90f46a0393729')
 sha256sums_armv7h=('cad6ea6f971431ece476bda7499b30293dc6b533c1c35a41d1c90f46a0393729')
 
