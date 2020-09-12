@@ -9,7 +9,6 @@ pkgbase = maddy
 	makedepends = git
 	makedepends = scdoc
 	depends = glibc
-	optdepends = bash: For rspamd-hook script
 	backup = etc/maddy/maddy.conf
 	source = maddy-0.4.0.tar.zst::https://foxcpp.dev/maddy-builds/0.4.0/maddy-0.4.0-src.tar.zst
 	source = maddy-0.4.0.tar.zst.sig::https://foxcpp.dev/maddy-builds/0.4.0/maddy-0.4.0-src.tar.zst.sig

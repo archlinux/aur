@@ -10,9 +10,7 @@ url='https://github.com/foxcpp/maddy'
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git' 'scdoc')
-optdepends=(
-    "bash: For rspamd-hook script"
-)
+optdepends=()
 source=(
     "${pkgname}-${pkgver}.tar.zst::https://foxcpp.dev/maddy-builds/${pkgver}/maddy-${pkgver}-src.tar.zst"
     "${pkgname}-${pkgver}.tar.zst.sig::https://foxcpp.dev/maddy-builds/${pkgver}/maddy-${pkgver}-src.tar.zst.sig"
