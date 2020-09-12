@@ -5,7 +5,7 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt-bin
-pkgver=7.3.2
+pkgver=7.4.1
 pkgrel=1
 pkgdesc="File and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility
 "
@@ -34,7 +34,7 @@ conflicts=('peazip'
            'peazip-qt'
            'peazip-qt-opensuse-latest')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/giorgiotani/PeaZip/releases/download/${pkgver}/peazip_portable-${pkgver}.LINUX.Qt.tar.gz")
-sha256sums=('3b45fefbe0f645ea2934c2af7f370432b94d57e7b7024bb1fa6aa9554c324811')
+sha256sums=('14eb0651309050b592f904e8be71a0178e2e6d1079852b941af1bbf5d836cefb')
 
 package() {
   install -d "${pkgdir}/opt" "${pkgdir}/usr/bin"
