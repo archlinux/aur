@@ -1,4 +1,5 @@
 # Maintainer: David Wu <xdavidwuph@gmail.com>
+# Contributors: Christopher Pence <chris@pencels.net>
 
 pkgname=xscreensaver-backends
 _srcname=xscreensaver
