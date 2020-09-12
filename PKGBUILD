@@ -9,11 +9,11 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgbase=util-linux-selinux
-pkgname=(util-linux-selinux libutil-linux-selinux)
+pkgname=(util-linux-selinux util-linux-libs-selinux)
 _pkgmajor=2.36
 pkgver=${_pkgmajor}
-pkgrel=3
-pkgdesc="SELinux aware miscellaneous system utilities for Linux"
+pkgrel=4
+pkgdesc='SELinux aware miscellaneous system utilities for Linux'
 url='https://github.com/karelzak/util-linux'
 arch=('x86_64')
 groups=('selinux')
@@ -81,7 +81,7 @@ package_util-linux-selinux() {
             "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
   depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux'
            'systemd-libs-selinux' 'libsystemd.so' 'libudev.so'
-           'libcap-ng' 'libxcrypt' 'libcrypt.so' 'libutil-linux-selinux'
+           'libcap-ng' 'libxcrypt' 'libcrypt.so' 'util-linux-libs-selinux'
            'libmagic.so' 'libncursesw.so' 'libreadline.so')
   optdepends=('python: python bindings to libmount'
               'words: default dictionary for look')
@@ -101,13 +101,13 @@ package_util-linux-selinux() {
   chmod 4755 "$pkgdir"/usr/bin/{newgrp,ch{sh,fn}}
 
   # install PAM files for login-utils
-  install -Dm644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chfn"
-  install -m644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chsh"
-  install -m644 "$srcdir/pam-login" "$pkgdir/etc/pam.d/login"
-  install -m644 "$srcdir/pam-runuser" "$pkgdir/etc/pam.d/runuser"
-  install -m644 "$srcdir/pam-runuser" "$pkgdir/etc/pam.d/runuser-l"
-  install -m644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su"
-  install -m644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su-l"
+  install -Dm0644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chfn"
+  install -m0644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chsh"
+  install -m0644 "$srcdir/pam-login" "$pkgdir/etc/pam.d/login"
+  install -m0644 "$srcdir/pam-runuser" "$pkgdir/etc/pam.d/runuser"
+  install -m0644 "$srcdir/pam-runuser" "$pkgdir/etc/pam.d/runuser-l"
+  install -m0644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su"
+  install -m0644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su-l"
 
   # TODO(dreisner): offer this upstream?
   sed -i '/ListenStream/ aRuntimeDirectory=uuidd' "$pkgdir/usr/lib/systemd/system/uuidd.socket"
@@ -118,28 +118,30 @@ package_util-linux-selinux() {
   mv usr/sbin/* usr/bin
   rmdir usr/sbin
 
-  ### runtime libs are shipped as part of libutil-linux
+  ### runtime libs are shipped as part of util-linux-libs
   rm "$pkgdir"/usr/lib/lib*.{a,so}*
 
   ### install systemd-sysusers
-  install -Dm644 "$srcdir/util-linux.sysusers" \
+  install -Dm0644 "$srcdir/util-linux.sysusers" \
     "$pkgdir/usr/lib/sysusers.d/util-linux.conf"
 
-  install -Dm644 "$srcdir/60-rfkill.rules" \
+  install -Dm0644 "$srcdir/60-rfkill.rules" \
     "$pkgdir/usr/lib/udev/rules.d/60-rfkill.rules"
 
-  install -Dm644 "$srcdir/rfkill-unblock_.service" \
+  install -Dm0644 "$srcdir/rfkill-unblock_.service" \
     "$pkgdir/usr/lib/systemd/system/rfkill-unblock@.service"
-  install -Dm644 "$srcdir/rfkill-block_.service" \
+  install -Dm0644 "$srcdir/rfkill-block_.service" \
     "$pkgdir/usr/lib/systemd/system/rfkill-block@.service"
 }
 
-package_libutil-linux-selinux() {
+package_util-linux-libs-selinux() {
   pkgdesc="util-linux-selinux runtime libraries"
-  provides=('libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so'
-            "${pkgname/-selinux}=${pkgver}-${pkgrel}")
+  provides=('libutil-linux' 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so'
+            "${pkgname/-selinux}=${pkgver}-${pkgrel}"
+            'libutil-linux-selinux')
   depends=('libselinux')
-  conflicts=("${pkgname/-selinux}")
+  conflicts=("${pkgname/-selinux}" 'libutil-linux-selinux')
+  replaces=('libutil-linux-selinux')
 
   make -C "${pkgbase/-selinux}-$pkgver" DESTDIR="$pkgdir" install-usrlib_execLTLIBRARIES
 }
