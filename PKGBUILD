@@ -1,7 +1,7 @@
 # Maintainer: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname="thrive-launcher-bin"
 pkgver="1.2.4"
-pkgrel="1"
+pkgrel="2"
 arch=("x86_64")
 pkgdesc="Manages downloading Thrive releases."
 url="https://github.com/Revolutionary-Games/Thrive-Launcher#readme"
