@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_tag=2.1-314-g313feee8
-_version=2.1+314+g313feee8
+_tag=2.1-339-g28eeb785
+_version=2.1+339+g28eeb785
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}2
@@ -23,6 +23,7 @@ backup=(
   "etc/${_pkgbase}/log4j2.xml"
   "etc/${_pkgbase}/logging.properties"
   "etc/${_pkgbase}/sip-communicator.properties"
+  "etc/${_pkgbase}/jvb.conf"
 )
 source=(
         "https://download.jitsi.org/unstable/${_debname}_${_tag}-1_all.deb"
@@ -53,21 +54,23 @@ package() {
 
         chown -R root:root "${DESTDIR}"
 
-        install -dm750 "${CONFDIR}"
-        install -Dm640 -t "${CONFDIR}" etc/jitsi/videobridge/*
+        install -dm700 "${CONFDIR}"
+        install -Dm600 -t "${CONFDIR}" etc/jitsi/videobridge/*
         sed -i 's@/var/log/jitsi@/var/log/'${_pkgbase}'@' "${CONFDIR}/log4j2.xml"
 
         install -Dm644 "etc/sysctl.d/20-jvb-udp-buffers.conf" "${pkgdir}/etc/sysctl.d/${_pkgbase}.conf"
 
         cd "$srcdir"
-        install -Dm640 -t "${CONFDIR}" "config" "sip-communicator.properties"
+        unzip "$srcdir/${_pkgbase}/usr/share/jitsi-videobridge/jitsi-videobridge.jar" reference.conf
+        mv reference.conf jvb.conf
+        install -Dm600 -t "${CONFDIR}" "config" "sip-communicator.properties" "jvb.conf"
         install -Dm644 "service" "${pkgdir}/usr/lib/systemd/system/${_pkgbase}.service"
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('0d0b354ad1f4ebd01799ad7a0dec10d9e9d3a26c0f0a5800f8327c9cd46ae418'
-            'b4d10b1d85d9a4dc37645d8d13dcaafe073c888c5947d371c36d3d5c855d28b4'
+sha256sums=('d887475ba20f764c6f98cb676c0656c1aa09fbeff9034fc3d06fc5b95c6068f1'
+            'c9d3e6968592206c86818f5a0f8208cd25387c779c4edc629e36a6ec5acd303c'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
-            'd3e66c0c5e37eec4ca4d12c8e10bb937b8b9216c943aba76457b782f0e836993'
+            '6c64d8ae8a38fc6674c3d068cbfce7f82458d71403a40b0aa25768b1f4f1e10f'
             '998cbc64def56ab98080ff7150dd0913a5e10325cd2b038cf3db14baf8cb19fc'
-            '2ae824bb4e47ae4c6264ef67169b73b705586a198b6b38469af41fa0b624cb3e')
+            '5d168a9155a46b72cd26b921b185be20f5c2e1d27ee098feaad5a941dd554d43')
