@@ -1,17 +1,16 @@
 pkgbase = ostree-releng-scripts
 	pkgdesc = Various scripts for operating on an OSTree repository
 	pkgver = 2016.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ostreedev/ostree-releng-scripts
 	arch = any
-	license = BSD,
+	license = BSD
 	license = LGPL2.1
-	makedepends = git-evtag
 	depends = python2-gobject
 	depends = rsync
 	depends = ostree
-	source = ostree-releng-scripts::git+https://github.com/ostreedev/ostree-releng-scripts#tag=v2016.1
-	sha512sums = SKIP
+	source = ostree-releng-scripts-2016.1.tar.gz::https://github.com/ostreedev/ostree-releng-scripts/archive/v2016.1.tar.gz
+	sha512sums = 65f85bf12ae5c53c90a8612acaa846e7e10557ad69985879bb69d4daa1096e207b7b4ef6fe79cf919498f9166cdf83ba2869e2538d339b50ba184b88b5067054
 
 pkgname = ostree-releng-scripts
 
