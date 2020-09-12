@@ -1,8 +1,8 @@
 # Maintainer: Hezekiah Michael <spiritomb at protonmail dot com>
 
 _plugin_name=keepassxc-browser
-_plugin_version=1.6.6
-_plugin_id=3607887
+_plugin_version=1.7.0
+_plugin_id=3636180
 _plugin_ext="-fx"
 pkgdesc="Official browser plugin for the KeePassXC password manager."
 license=('GPL')
@@ -23,4 +23,5 @@ package() {
   _extension_dest="${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}"
   install -Dm644 keepassxc_browser-${pkgver}${_plugin_ext}.xpi "${_extension_dest}.xpi"
 }
-sha256sums=('3930790042e467c3c48a81ce84cfc4e3a1687c198b63358118fa220ed2838c80')
+
+sha256sums=('28a2f9a2caad9840bbc4d5b683f153d532b4d06ed2712b5467d89c6bc92140dc')
