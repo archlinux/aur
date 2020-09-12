@@ -2,7 +2,7 @@
 
 pkgname=graphtage
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphtage is a commandline utility and underlying library for semantically comparing and merging tree-like structures, such as JSON, XML, HTML, YAML, and CSS files."
 arch=('any')
 url=https://github.com/trailofbits/graphtage
