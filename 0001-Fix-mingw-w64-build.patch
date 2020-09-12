@@ -1,33 +1,33 @@
-From 98b5163c5e3e24feef7753a4082cc17e4a973eec Mon Sep 17 00:00:00 2001
+From 6481c6309400befa8a32c8d1de812df09e18f4ae Mon Sep 17 00:00:00 2001
 From: Tilmann Meyer <allescrafterx@gmail.com>
 Date: Fri, 17 Apr 2020 02:12:23 +0200
-Subject: [PATCH] Fix mingw-w64 build
+Subject: [PATCH 1/2] Fix mingw-w64 build
 
 ---
- CMakeLists.txt                 | 30 +++++++++++++----------
+ CMakeLists.txt                 | 30 +++++++++++++-----------
  cmake/install.cmake            |  4 ++--
  cmake/symlink.cmake            |  2 +-
  include/ma_global.h            |  4 ++--
  include/mysql.h                |  6 +----
  include/mysql/client_plugin.h  |  2 +-
- libmariadb/CMakeLists.txt      | 44 ++++++++++++++++++----------------
+ libmariadb/CMakeLists.txt      | 42 ++++++++++++++++++----------------
  libmariadb/mariadb_lib.c       |  2 +-
  plugins/auth/CMakeLists.txt    |  2 +-
  plugins/auth/caching_sha2_pw.c |  2 +-
  plugins/auth/ed25519.c         |  2 +-
  plugins/auth/sha256_pw.c       |  4 ++--
  plugins/io/CMakeLists.txt      |  2 +-
- 13 files changed, 54 insertions(+), 52 deletions(-)
+ 13 files changed, 53 insertions(+), 51 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 528c1700..5330f04e 100644
+index 568e4f5..09b91c2 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -2,6 +2,8 @@
  
  # This is the LGPL libmariadb project.
  
-+add_definitions(-D_WIN32_WINNT=0x0601) 
++add_definitions(-D_WIN32_WINNT=0x0601)
 +
  CMAKE_MINIMUM_REQUIRED(VERSION 2.8 FATAL_ERROR)
  INCLUDE(CheckFunctionExists)
@@ -49,7 +49,7 @@ index 528c1700..5330f04e 100644
 +ADD_OPTION(WITH_SIGNCODE "digitally sign files" OFF)
 +ADD_OPTION(WITH_RTC "enables run time checks for debug builds" OFF)
  ADD_OPTION(WITH_UNIT_TESTS "build test suite" ON)
- ADD_OPTION(WITH_DYNCOL "Enables support of dynamic coluumns" ON)
+ ADD_OPTION(WITH_DYNCOL "Enables support of dynamic columns" ON)
  ADD_OPTION(WITH_EXTERNAL_ZLIB "Enables use of external zlib" OFF)
 @@ -238,13 +236,19 @@ IF(UNIX)
      ${LIBSOCKET} ${LIBDL} ${LIBM} ${LIBPTHREAD})
@@ -77,7 +77,7 @@ index 528c1700..5330f04e 100644
  IF(CMAKE_HAVE_PTHREAD_H)
    SET(CMAKE_REQUIRED_INCLUDES pthread.h)
 diff --git a/cmake/install.cmake b/cmake/install.cmake
-index 945259b8..40945d10 100644
+index 4a82dd9..e280afb 100644
 --- a/cmake/install.cmake
 +++ b/cmake/install.cmake
 @@ -61,12 +61,12 @@ ENDIF()
@@ -96,7 +96,7 @@ index 945259b8..40945d10 100644
  ENDIF()
  SET(LIBMARIADB_STATIC_DEFAULT "mariadbclient")
 diff --git a/cmake/symlink.cmake b/cmake/symlink.cmake
-index 117c1647..4e4ad036 100644
+index 117c164..4e4ad03 100644
 --- a/cmake/symlink.cmake
 +++ b/cmake/symlink.cmake
 @@ -7,7 +7,7 @@
@@ -109,7 +109,7 @@ index 117c1647..4e4ad036 100644
    ADD_CUSTOM_COMMAND(
      OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${symlink_name}
 diff --git a/include/ma_global.h b/include/ma_global.h
-index d1fec397..065bed2c 100644
+index ee74ffa..ac26add 100644
 --- a/include/ma_global.h
 +++ b/include/ma_global.h
 @@ -33,7 +33,7 @@
@@ -117,7 +117,7 @@ index d1fec397..065bed2c 100644
  #endif
  #endif
 -#define STDCALL __stdcall 
-+#define STDCALL 
++#define STDCALL
  #endif
  
  #include <ma_config.h>
@@ -131,7 +131,7 @@ index d1fec397..065bed2c 100644
  #define USE_MY_STAT_STRUCT	/* For my_lib */
  #ifdef _MSC_VER
 diff --git a/include/mysql.h b/include/mysql.h
-index dcaf316d..29b0dcb6 100644
+index 17aab5e..49ac097 100644
 --- a/include/mysql.h
 +++ b/include/mysql.h
 @@ -39,11 +39,7 @@ extern "C" {
@@ -146,7 +146,7 @@ index dcaf316d..29b0dcb6 100644
  
  #ifndef my_socket_defined
  #define my_socket_defined
-@@ -444,7 +440,7 @@ struct st_mysql_client_plugin
+@@ -466,7 +462,7 @@ struct st_mysql_client_plugin
    MYSQL_CLIENT_PLUGIN_HEADER
  };
  
@@ -156,7 +156,7 @@ index dcaf316d..29b0dcb6 100644
                    int argc, ...);
  struct st_mysql_client_plugin * STDCALL
 diff --git a/include/mysql/client_plugin.h b/include/mysql/client_plugin.h
-index ac29afd6..21487871 100644
+index ac29afd..2148787 100644
 --- a/include/mysql/client_plugin.h
 +++ b/include/mysql/client_plugin.h
 @@ -180,7 +180,7 @@ typedef struct st_mysql_client_plugin_REMOTEIO
@@ -169,10 +169,10 @@ index ac29afd6..21487871 100644
                    int argc, ...);
  
 diff --git a/libmariadb/CMakeLists.txt b/libmariadb/CMakeLists.txt
-index 27e036cb..87ad35b6 100644
+index f406b37..0620391 100644
 --- a/libmariadb/CMakeLists.txt
 +++ b/libmariadb/CMakeLists.txt
-@@ -382,7 +382,7 @@ IF(CMAKE_GENERATOR MATCHES Xcode)
+@@ -384,7 +384,7 @@ IF(CMAKE_GENERATOR MATCHES Xcode)
  ENDIF()
  
  IF(WIN32)
@@ -181,7 +181,7 @@ index 27e036cb..87ad35b6 100644
                     "FILE_TYPE:VFT_DLL"
                     "SOURCE_FILE:libmariadb/libmariadb.c"
                     "ORIGINAL_FILE_NAME:libmariadb.dll"
-@@ -393,17 +393,17 @@ ADD_LIBRARY(mariadbclient STATIC  ${MARIADB_OBJECTS} ${EMPTY_FILE})
+@@ -395,17 +395,17 @@ ADD_LIBRARY(mariadbclient STATIC  ${MARIADB_OBJECTS} ${EMPTY_FILE})
  TARGET_LINK_LIBRARIES(mariadbclient ${SYSTEM_LIBS})
  
  IF(UNIX)
@@ -191,27 +191,27 @@ index 27e036cb..87ad35b6 100644
 +  SET_TARGET_PROPERTIES(mariadb PROPERTIES COMPILE_FLAGS "${CMAKE_SHARED_LIBRARY_C_FLAGS}")
  ELSE()
 -  ADD_LIBRARY(libmariadb SHARED ${libmariadb_RC} mariadbclient.def)
--  TARGET_LINK_LIBRARIES(libmariadb  mariadbclient)
+-  TARGET_LINK_LIBRARIES(libmariadb LINK_PRIVATE mariadbclient)
 -  SET_TARGET_PROPERTIES(libmariadb PROPERTIES LINKER_LANGUAGE C)
 +  ADD_LIBRARY(mariadb SHARED ${mariadb_RC} mariadbclient.def)
-+  TARGET_LINK_LIBRARIES(mariadb  mariadbclient)
++  TARGET_LINK_LIBRARIES(mariadb LINK_PRIVATE mariadbclient)
 +  SET_TARGET_PROPERTIES(mariadb PROPERTIES LINKER_LANGUAGE C)
  ENDIF()
  
--TARGET_LINK_LIBRARIES(libmariadb ${SYSTEM_LIBS})
-+TARGET_LINK_LIBRARIES(mariadb ${SYSTEM_LIBS})
+-TARGET_LINK_LIBRARIES(libmariadb LINK_PRIVATE ${SYSTEM_LIBS})
++TARGET_LINK_LIBRARIES(mariadb LINK_PRIVATE ${SYSTEM_LIBS})
  
 -SIGN_TARGET(libmariadb)
 +SIGN_TARGET(mariadb)
  
  IF(CMAKE_SIZEOF_VOID_P EQUAL 8 AND MSVC)
    SET_TARGET_PROPERTIES(mariadbclient PROPERTIES STATIC_LIBRARY_FLAGS "/machine:x64")
-@@ -412,15 +412,13 @@ ENDIF()
- IF(CMAKE_SYSTEM_NAME MATCHES "Linux" OR
+@@ -415,15 +415,13 @@ IF(CMAKE_SYSTEM_NAME MATCHES "Linux" OR
+    CMAKE_SYSTEM_NAME MATCHES "kFreeBSD" OR
     CMAKE_SYSTEM_NAME MATCHES "GNU")
    IF (NOT WITH_ASAN AND NOT WITH_TSAN AND NOT WITH_UBSAN AND NOT WITH_MSAN)
--    TARGET_LINK_LIBRARIES (libmariadb "-Wl,--no-undefined")
-+    TARGET_LINK_LIBRARIES (mariadb "-Wl,--no-undefined")
+-    TARGET_LINK_LIBRARIES (libmariadb LINK_PRIVATE "-Wl,--no-undefined")
++    TARGET_LINK_LIBRARIES (mariadb LINK_PRIVATE "-Wl,--no-undefined")
    ENDIF()
 -  SET_TARGET_PROPERTIES(libmariadb PROPERTIES LINK_FLAGS "${CC_BINARY_DIR}/libmariadb/mariadbclient.def")
 +  SET_TARGET_PROPERTIES(mariadb PROPERTIES LINK_FLAGS "${CC_BINARY_DIR}/libmariadb/mariadbclient.def")
@@ -225,7 +225,7 @@ index 27e036cb..87ad35b6 100644
  
  #
  # Installation
-@@ -432,14 +430,14 @@ INCLUDE(${CC_SOURCE_DIR}/cmake/symlink.cmake)
+@@ -435,14 +433,14 @@ INCLUDE(${CC_SOURCE_DIR}/cmake/symlink.cmake)
  # use mariadb client library we provide libmysql symlinks
  
  IF(WITH_MYSQLCOMPAT)
@@ -243,7 +243,7 @@ index 27e036cb..87ad35b6 100644
   ${CPACK_PACKAGE_VERSION_MAJOR}
   SOVERSION ${CPACK_PACKAGE_VERSION_MAJOR})
  
-@@ -449,15 +447,19 @@ ENDIF()
+@@ -452,15 +450,19 @@ ENDIF()
  
  INSTALL(TARGETS mariadbclient
            COMPONENT Development
@@ -260,8 +260,7 @@ index 27e036cb..87ad35b6 100644
 +          ARCHIVE DESTINATION "${INSTALL_LIBDIR}")
  
  
--IF(WIN32)
-+IF(WIN32 AND NOT MINGW)
+ IF(MSVC)
     # On Windows, install PDB
 -   INSTALL(FILES $<TARGET_PDB_FILE:libmariadb> DESTINATION "${INSTALL_LIBDIR}"
 +   INSTALL(FILES $<TARGET_PDB_FILE:mariadb> DESTINATION "${INSTALL_LIBDIR}"
@@ -269,10 +268,10 @@ index 27e036cb..87ad35b6 100644
             COMPONENT Development)
  ENDIF()
 diff --git a/libmariadb/mariadb_lib.c b/libmariadb/mariadb_lib.c
-index 1063f14e..60ddb902 100644
+index 8c2a99b..efec140 100644
 --- a/libmariadb/mariadb_lib.c
 +++ b/libmariadb/mariadb_lib.c
-@@ -70,7 +70,7 @@
+@@ -74,7 +74,7 @@
  #endif
  #include <mysql/client_plugin.h>
  #ifdef _WIN32
@@ -282,7 +281,7 @@ index 1063f14e..60ddb902 100644
  #endif
  
 diff --git a/plugins/auth/CMakeLists.txt b/plugins/auth/CMakeLists.txt
-index ca419503..2fe53a0c 100644
+index 49b31c8..2737be8 100644
 --- a/plugins/auth/CMakeLists.txt
 +++ b/plugins/auth/CMakeLists.txt
 @@ -4,7 +4,7 @@ INCLUDE_DIRECTORIES(${AUTH_DIR})
@@ -292,10 +291,10 @@ index ca419503..2fe53a0c 100644
 -IF(WIN32)
 +IF(WIN32 AND NOT MINGW)
    SET(CRYPT_SOURCE ${CC_SOURCE_DIR}/libmariadb/secure/win_crypt.c)
-   SET(CRYPT_LIBS crypt32)
+   SET(CRYPT_LIBS crypt32 bcrypt)
  ELSEIF(WITH_SSL STREQUAL "OPENSSL")
 diff --git a/plugins/auth/caching_sha2_pw.c b/plugins/auth/caching_sha2_pw.c
-index b42f0d70..f9b4c164 100644
+index d4dc0fc..047ff02 100644
 --- a/plugins/auth/caching_sha2_pw.c
 +++ b/plugins/auth/caching_sha2_pw.c
 @@ -20,7 +20,7 @@
@@ -308,7 +307,7 @@ index b42f0d70..f9b4c164 100644
  #undef HAVE_OPENSSL
  #undef HAVE_GNUTLS
 diff --git a/plugins/auth/ed25519.c b/plugins/auth/ed25519.c
-index afa27ac3..989245f7 100644
+index 3b33205..fd3eab0 100644
 --- a/plugins/auth/ed25519.c
 +++ b/plugins/auth/ed25519.c
 @@ -20,7 +20,7 @@
@@ -321,7 +320,7 @@ index afa27ac3..989245f7 100644
  #undef HAVE_OPENSSL
  #undef HAVE_GNUTLS
 diff --git a/plugins/auth/sha256_pw.c b/plugins/auth/sha256_pw.c
-index ccca5a8f..2f3660ea 100644
+index 3e22fb5..da5450c 100644
 --- a/plugins/auth/sha256_pw.c
 +++ b/plugins/auth/sha256_pw.c
 @@ -20,7 +20,7 @@
@@ -333,7 +332,7 @@ index ccca5a8f..2f3660ea 100644
  #undef HAVE_GNUTLS
  #undef HAVE_OPENSSL
  #define HAVE_WINCRYPT
-@@ -44,7 +44,7 @@
+@@ -42,7 +42,7 @@
  #include <dlfcn.h>
  #endif
  
@@ -343,7 +342,7 @@ index ccca5a8f..2f3660ea 100644
  #elif defined(HAVE_OPENSSL)
  #include <openssl/rsa.h>
 diff --git a/plugins/io/CMakeLists.txt b/plugins/io/CMakeLists.txt
-index 8c304c99..e2e9c5a1 100644
+index 8c304c9..e2e9c5a 100644
 --- a/plugins/io/CMakeLists.txt
 +++ b/plugins/io/CMakeLists.txt
 @@ -10,6 +10,6 @@ IF (WITH_CURL)
@@ -354,3 +353,6 @@ index 8c304c99..e2e9c5a1 100644
 +                  LIBRARIES ${CURL_LIBRARIES} ws2_32)
    ENDIF()
  ENDIF()
+-- 
+2.28.0
+

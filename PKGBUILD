@@ -7,7 +7,7 @@
 # All patches are managed at https://github.com/Martchus/mariadb-connector-c
 
 pkgname=mingw-w64-mariadb-connector-c
-pkgver=3.1.7
+pkgver=3.1.9
 pkgrel=1
 pkgdesc='MariaDB Connector/C is used to connect applications developed in C/C++ to MariaDB and MySQL databases (mingw-w64)'
 arch=('any')
@@ -22,11 +22,11 @@ options=('!strip' '!buildflags' 'staticlibs')
 source=(
   "http://archive.mariadb.org/connector-c-$pkgver/mariadb-connector-c-$pkgver-src.tar.gz"
   '0001-Fix-mingw-w64-build.patch'
+  '0002-Enable-pkg-config-for-mingw-w64-build.patch'
 )
-sha1sums=(
-  '5d88983a1ace1885fc22f5bfb1ee28a23187e412'
-  'a426c9d60a88035400311291a59dea63625c82e9'
-)
+sha256sums=('108d99bf2add434dcb3bd9526ba1d89a2b9a943b62dcd9d0a41fcbef8ffbf2c7'
+            'd97e7c6ca57ee9b81d67a37e63733d1a4f77067fcf3facd2cd36c9fb08627d53'
+            '7ccbafee1f63c510234038ed21448a40b9cf6c2361359502a8ce67122883e2e7')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
