@@ -121,7 +121,7 @@ package_xorg-server-common-minimal-git() {
 package_xorg-server-minimal-git() {
   _pkgname='xorg-server'
   pkgdesc="Xorg X server (git version)"
-  depends=(libepoxy libxfont2 pixman xorg-server-common-git libunwind
+  depends=(libepoxy libxfont2 pixman xorg-server-common-minimal-git libunwind
            dbus libgl xf86-input-libinput nettle
            libpciaccess libdrm libxshmfence) # FS#52949
 
@@ -153,7 +153,7 @@ package_xorg-server-xephyr-minimal-git() {
   provides=('xorg-server-xephyr')
   conflicts=('xorg-server-xephyr')
   pkgdesc="A nested X server that runs as an X application (git version)"
-  depends=(libxfont2 libgl libepoxy libunwind systemd-libs libxv pixman xorg-server-common-git
+  depends=(libxfont2 libgl libepoxy libunwind libxv pixman xorg-server-common-minimal-git
            xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
            nettle libtirpc)
 
@@ -169,7 +169,7 @@ package_xorg-server-xvfb-minimal-git() {
   provides=('xorg-server-xvfb')
   conflicts=('xorg-server-xvfb')
   pkgdesc="Virtual framebuffer X server (git version)"
-  depends=(libxfont2 libunwind pixman xorg-server-common-git xorg-xauth libgl nettle)
+  depends=(libxfont2 libunwind pixman xorg-server-common-minimal-git xorg-xauth libgl nettle)
 
   _install fakeinstall/usr/bin/Xvfb
   _install fakeinstall/usr/share/man/man1/Xvfb.1
@@ -186,7 +186,7 @@ package_xorg-server-xnest-minimal-git() {
   provides=('xorg-server-xnest')
   conflicts=('xorg-server-xnest')
   pkgdesc="A nested X server that runs as an X application (git version)"
-  depends=(libxfont2 libxext pixman xorg-server-common-git nettle libtirpc)
+  depends=(libxfont2 libxext pixman xorg-server-common-minimal-git nettle libtirpc)
 
   _install fakeinstall/usr/bin/Xnest
   _install fakeinstall/usr/share/man/man1/Xnest.1
@@ -200,7 +200,7 @@ package_xorg-server-xnest-minimal-git() {
 #  provides=('xorg-server-xwayland')
 #  conflicts=('xorg-server-xwayland')
 #  pkgdesc="run X clients under wayland (git version)"
-#  depends=(libxfont2 libepoxy libunwind systemd-libs libgl pixman xorg-server-common-git
+#  depends=(libxfont2 libepoxy libunwind systemd-libs libgl pixman xorg-server-common-minimal-git
 #           nettle libtirpc)
 
 #  _install fakeinstall/usr/bin/Xwayland
