@@ -4,22 +4,22 @@ and interact with params."
 url='https://wiki.ros.org/rosbridge_library'
 
 pkgname='ros-noetic-rosbridge-library'
-pkgver='0.11.3'
+pkgver='0.11.10'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
-	ros-noetic-catkin
+    ros-noetic-catkin
     ros-noetic-std-msgs
     ros-noetic-geometry-msgs
     ros-noetic-message-generation
 )
 
 makedepends=(
-	'cmake'
-	'ros-build-tools'
-	${ros_makedepends[@]}
+    cmake
+    ros-build-tools
+    ${ros_makedepends[@]}
     python-pillow
     python-bson
 )
@@ -36,34 +36,34 @@ ros_depends=(
 )
 
 depends=(
-	${ros_depends[@]}
+    ${ros_depends[@]}
     python-pillow
     python-bson
 )
 
 _dir="rosbridge_suite-${pkgver}/rosbridge_library"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/RobotWebTools/rosbridge_suite/archive/${pkgver}.tar.gz")
-sha256sums=('5020616a6589f81fde0dfcd2835bbf4c43ff57bc39b76aefd5ed8f0916af87a5')
+sha256sums=('1f30c8df21cb1dc2d0a35141b6c1666a281ff3c41574b2d459c7f38812599264')
 
 build() {
-	# Use ROS environment variables.
-	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
+    # Use ROS environment variables.
+    source /usr/share/ros-build-tools/clear-ros-env.sh
+    [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
-	# Create the build directory.
-	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-	cd ${srcdir}/build
+    # Create the build directory.
+    [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
+    cd ${srcdir}/build
 
-	# Build the project.
-	cmake ${srcdir}/${_dir} \
-		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
-	make
+    # Build the project.
+    cmake ${srcdir}/${_dir} \
+        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
+        -DSETUPTOOLS_DEB_LAYOUT=OFF
+    make
 }
 
 package() {
-	cd "${srcdir}/build"
-	make DESTDIR="${pkgdir}/" install
+    cd "${srcdir}/build"
+    make DESTDIR="${pkgdir}/" install
 }
