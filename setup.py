@@ -17,6 +17,6 @@ setup(
     author=__author__,
     license=__license__,
     long_description=open('README.md').read(),
-    packages=['udemy', 'udemy._colorized'],
+    packages=['udemy', 'udemy.colorized'],
     scripts=['build/_scripts/udemy-dl'],
 )
