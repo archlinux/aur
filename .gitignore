@@ -2,3 +2,7 @@
 *#*
 *.log
 *.tmp
+*xz
+*gz
+*tar
+*bz2
