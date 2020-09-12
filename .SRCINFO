@@ -1,7 +1,7 @@
 pkgbase = electron-cash
 	pkgdesc = Lightweight Bitcoin Cash wallet
 	pkgver = 4.1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.electroncash.org/
 	arch = any
 	license = MIT
