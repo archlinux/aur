@@ -2,13 +2,13 @@
 
 pkgname=brother-hll2350dw
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Brother HL-L2350DW CUPS driver"
 arch=('i686' 'x86_64')
 url="http://www.brother.com"
 license=('custom')
 arch=('i686' 'x86_64')
-depends=('cups')
+depends=('cups' 'ghostscript')
 depends_x86_64=('lib32-glibc')
 
 source=("http://download.brother.com/welcome/dlf103565/hll2350dwpdrv-4.0.0-1.i386.rpm")
