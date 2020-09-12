@@ -3,16 +3,13 @@ pkgbase = komorebi-bin
 	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/Komorebi-Fork/komorebi
-	install = komorebi-bin.install
 	arch = x86_64
 	license = GPL
 	depends = desktop-file-utils
 	depends = glib2>=2.38
 	depends = gtk3>=3.14
 	depends = hicolor-icon-theme
-	depends = libgtop
 	depends = libgee
-	depends = libwnck
 	depends = clutter
 	depends = clutter-gtk
 	depends = clutter-gst
