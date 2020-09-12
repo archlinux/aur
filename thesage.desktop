@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=TheSage English Dictionary and Thesaurus
+Comment=A twenty-first century lexical reference system
+GenericName=Dictionary and Thesaurus
+Exec=thesage
+TryExec=thesage
+Terminal=false
+Type=Application
+Categories=Education;Office;Utility;Dictionary;
