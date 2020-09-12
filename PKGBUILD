@@ -11,6 +11,7 @@ license=('BSD')
 ros_makedepends=(ros-melodic-message-filters
   ros-melodic-moveit-core
   ros-melodic-moveit-msgs
+  ros-melodic-moveit-ros-occupancy-map-monitor
   ros-melodic-tf
   ros-melodic-cv-bridge
   ros-melodic-urdf
@@ -33,6 +34,7 @@ makedepends=('cmake' 'ros-build-tools'
 ros_depends=(ros-melodic-message-filters
   ros-melodic-moveit-core
   ros-melodic-moveit-msgs
+  ros-melodic-moveit-ros-occupancy-map-monitor
   ros-melodic-tf
   ros-melodic-cv-bridge
   ros-melodic-urdf
