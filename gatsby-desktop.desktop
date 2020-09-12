@@ -6,4 +6,5 @@ Exec=gatsby-desktop %U
 Icon=gatsby-desktop
 Type=Application
 StartupNotify=true
+StartupWMClass=GatsbyDesktop
 Categories=Development;WebDevelopment;
