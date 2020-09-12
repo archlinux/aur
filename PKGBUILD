@@ -13,7 +13,7 @@ source=("$pkgname::git+https://gitlab.com/zeldaforce/zelda-alttd.git"
         "$pkgname.desktop"
         "$pkgname.png")
 b2sums=('SKIP'
-        '3a46c6f5b6c14a2e767116a16eb7b33c62944a844946f737fc51688056554d5b98796b1fabfa355b66f49bb44c946d37be703fd96e2f7f192223cf2e63584c7a'
+        '835e6b8db95c6466f21efe733959461b9481d20eb10a970262f0438cc54eabb6deea53011560322f0baf7fe129c1c977076be10f75d86d02988bb0d8bc2df256'
         'b23c6aa20af637e4ae09519f8b770f19ea8f1f774615c8a141b521d1ce859f738c43cf56cc3a0c799a736cdb310415ac576e9afe8b21c95451c8b818226e2442')
 
 pkgver() {
