@@ -27,6 +27,8 @@ prepare () {
   cd qtbase
   # fix pending in dbus
   echo "set_property(TARGET dbus-1 PROPERTY IMPORTED_IMPLIB \${DBus1_LIBRARY})" >> cmake/FindWrapDBus1.cmake
+  # mariadb-connector-c: missing pkgconfig ?
+  sed -i "s|MySQL::MySQL|MySQL::MySQL ssl crypto z ws2_32 shlwapi|g" src/plugins/sqldrivers/mysql/CMakeLists.txt
 }
 
 build() {
