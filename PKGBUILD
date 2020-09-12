@@ -4,7 +4,7 @@
 # Contributor: soloturn@gmail.com
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.08.31.a.r802.gc6a266ef62d
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.08.31.a.r959.g400accb8ea1
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -85,7 +85,8 @@ build() {
     # Which will break `compiler-rt`
     unset CPPFLAGS
 
-    LDFLAGS='-ldl -lpthread' python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="/opt/swift" installable_package="$srcdir/swift.tar.gz"
+    LDFLAGS='-ldl -lpthread' python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="/opt/swift" installable_package="$srcdir/swift.tar.gz" || true
+    find . -name clang++
 }
 
 package() {
