@@ -1,7 +1,7 @@
 # Maintainer: Fred Lins <fredcox at gmail dot com>
 # install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 pkgname=gonhang
-pkgver=0.0.9
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='GonhaNG is a System Monitor for several important hardware variables.'
 arch=('any')
@@ -15,8 +15,8 @@ depends=('python-pyqt5'
          'hddtemp'
          'python-requests')
 makedepends=('python-setuptools')
-source=("gonhang-0.0.9.tar.gz::https://files.pythonhosted.org/packages/55/66/6cae70069f1a75ed03c904b3c919763dbb9a0b2ca3548ef5db8b6bb695c8/gonhang-0.0.9.tar.gz")
-sha256sums=(62a74812a1b2202f2b30697ed8ff17dd0eab7a99e7b1524389be72061cc6f116)
+source=("gonhang-0.1.0.tar.gz::https://files.pythonhosted.org/packages/23/6f/1311595cfb9b9def77a50384f2ca5bba2228e0b5875cfb26aca7cda78c79/gonhang-0.1.0.tar.gz")
+sha256sums=(9782a16c2969047c7e002fcf9876e40dfa262bc458008f45f507c6abfb227042)
 build() {
   cd "${pkgname}-${pkgver}"
   python setup.py build
@@ -28,7 +28,7 @@ package() {
   install -Dm644 "${pkgname}"/"${pkgname}".desktop "$pkgdir/usr/share/applications/"
 
   mkdir -p "$pkgdir/usr/share/icons/hicolor/48x48/apps/"
-  install -Dm644 "${pkgname}"/images/icon.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/"
+  install -Dm644 "${pkgname}"/images/gonhang_icon.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/"
 
 
 }
