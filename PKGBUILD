@@ -1,5 +1,5 @@
 pkgname=mingw-w64-qt6-base-git
-pkgver=5.15.0.r5369.g605d2163f1
+pkgver=5.15.0.r5378.ga7b85e5993
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
@@ -21,6 +21,12 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 pkgver() {
   cd qtbase
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare () {
+  cd qtbase
+  # fix pending in dbus
+  echo "set_property(TARGET dbus-1 PROPERTY IMPORTED_IMPLIB \${DBus1_LIBRARY})" >> cmake/FindWrapDBus1.cmake
 }
 
 build() {
