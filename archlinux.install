@@ -1,17 +1,14 @@
 post_install() {
-    printf "\n\n\n\t                        GAME NOTES\n"
+    printf "\n\t                        GAME NOTES\n"
     printf "\t                   ´*~##############~*\`\n"
     printf "\t##########################################################\n"
     printf "\t#                                                        #\n"
     printf "\t# You need to create an account at                       #\n"
     printf "\t# https://www.pokemon-revolution-online.net/Register.php #\n"
     printf "\t#                                                        #\n"
-    printf "\t##########################################################\n\n\n"
+    printf "\t##########################################################\n"
 }
 
 post_upgrade() {
-    printf  "\nThanks for using my pkg :)\n\n"
+    printf  "\nThanks for still using my pkg :)\n\n"
 }
-
-
-
