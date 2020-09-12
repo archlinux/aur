@@ -1,0 +1,21 @@
+pkgbase = elf-dissector-git
+	pkgdesc = Static analysis tool for ELF libraries and executables
+	pkgver = r762.42931ca
+	pkgrel = 1
+	url = https://invent.kde.org/sdk/elf-dissector
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kitemmodels
+	depends = harfbuzz
+	depends = hicolor-icon-theme
+	depends = libdwarf
+	depends = qt5-base
+	optdepends = capstone: disassembler
+	optdepends = gnuplot: performance plot
+	source = git+https://github.com/KDE/elf-dissector.git
+	sha256sums = SKIP
+
+pkgname = elf-dissector-git
+
