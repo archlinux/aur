@@ -1,0 +1,15 @@
+pkgbase = gatsby-desktop
+	pkgdesc = Official proof-of-concept desktop app for managing your Gatsby sites.
+	pkgver = 0.0.1_alpha.8
+	pkgrel = 1
+	url = https://github.com/gatsbyjs/desktop
+	arch = x86_64
+	license = GPL3
+	depends = yarn
+	source = gatsby-desktop::git+https://github.com/gatsbyjs/desktop.git#tag=v0.0.1-alpha.8
+	source = gatsby-desktop.desktop
+	md5sums = SKIP
+	md5sums = a5da680ac6f78ce764c8c8c5b77d9de0
+
+pkgname = gatsby-desktop
+
