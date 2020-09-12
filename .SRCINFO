@@ -1,7 +1,7 @@
 pkgbase = strip-ansi
 	pkgdesc = Strip ANSI escape sequences from text
 	pkgver = 0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KSXGitHub/strip-ansi-cli
 	arch = x86_64
 	license = MIT
