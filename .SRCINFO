@@ -1,0 +1,16 @@
+pkgbase = libinih
+	pkgdesc = Simple .INI file parser in C, good for embedded systems
+	pkgver = r51
+	pkgrel = 1
+	url = https://github.com/benhoyt/inih
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	depends = gcc-libs
+	provides = libinih.so.0
+	provides = libINIReader.so.0
+	source = libinih-r51.tar.gz::https://github.com/benhoyt/inih/archive/r51.tar.gz
+	sha256sums = 132361da6d3172760a40319722b50244aee1b7ce7077a0dd8805881e6a8ea4aa
+
+pkgname = libinih
+

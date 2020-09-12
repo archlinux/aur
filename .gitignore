@@ -1,0 +1,15 @@
+# create by https://github.com/iamcco/coc-gitignore (Sat Sep 12 2020 11:27:37 GMT-0500 (hora estándar de Perú))
+# ArchLinuxPackages.gitignore:
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
