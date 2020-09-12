@@ -23,7 +23,7 @@ build() {
 package() {
   cd "$srcdir/strip-ansi-cli-$pkgver"
   install -Dm755 target/release/strip-ansi "$pkgdir/usr/bin/strip-ansi"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/"$pkgname"/LICENSE.md"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/"$pkgname"/LICENSE.md"
   install -Dm644 exports/completion.bash "$pkgdir/usr/share/bash-completion/completions/strip-ansi"
   install -Dm644 exports/completion.fish "$pkgdir/usr/share/fish/completions/strip-ansi.fish"
   install -Dm644 exports/completion.zsh "$pkgdir/usr/share/zsh/site-functions/_strip-ansi"
