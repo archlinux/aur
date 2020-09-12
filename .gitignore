@@ -1,4 +1,4 @@
- src/
+src/
 pkg/
 poetry-core/
 *.pkg.tar*
