@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname=sqlitebiter
-pkgver=0.34.0
+pkgname='sqlitebiter'
+pkgver=0.34.1
 pkgrel=2
 pkgdesc='Convert CSV, Excel, HTML, JSON, Jupyter Notebook, LDJSON, LTSV, Markdown, SSV, TSV, Google-Sheets to SQLite database file'
 arch=('any')
@@ -24,7 +24,7 @@ depends=('jupyter-nbformat'
         'python-typepy')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e368036cfdda09970c15bdc0bc220b9e5206182ebd41539a1da85fad69513ab7')
+sha256sums=('56e340e6a945815eaa6fcf83c630d17d37e4d41b17394c19fd2db8e5f7da5977')
 
 build() {
   cd "${pkgname}-${pkgver}"

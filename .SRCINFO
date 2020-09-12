@@ -1,6 +1,6 @@
 pkgbase = sqlitebiter
 	pkgdesc = Convert CSV, Excel, HTML, JSON, Jupyter Notebook, LDJSON, LTSV, Markdown, SSV, TSV, Google-Sheets to SQLite database file
-	pkgver = 0.34.0
+	pkgver = 0.34.1
 	pkgrel = 2
 	url = https://github.com/thombashi/sqlitebiter
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = sqlitebiter
 	depends = python-simplesqlite
 	depends = python-tcolorpy
 	depends = python-typepy
-	source = https://files.pythonhosted.org/packages/source/s/sqlitebiter/sqlitebiter-0.34.0.tar.gz
-	sha256sums = e368036cfdda09970c15bdc0bc220b9e5206182ebd41539a1da85fad69513ab7
+	source = https://files.pythonhosted.org/packages/source/s/sqlitebiter/sqlitebiter-0.34.1.tar.gz
+	sha256sums = 56e340e6a945815eaa6fcf83c630d17d37e4d41b17394c19fd2db8e5f7da5977
 
 pkgname = sqlitebiter
 
