@@ -8,7 +8,6 @@ pkgbase = libinput-git
 	makedepends = gtk3
 	makedepends = meson
 	depends = mtdev
-	depends = systemd
 	depends = libevdev
 	depends = libwacom
 	optdepends = gtk3: libinput debug-gui
