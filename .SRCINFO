@@ -1,6 +1,6 @@
 pkgbase = tootle-git
 	pkgdesc = GTK+ 3 client for Mastodon (git)
-	pkgver = v1.0.alpha1.r0.g10c9396
+	pkgver = 1.0.alpha1.r2.g308f55a
 	pkgrel = 1
 	url = https://github.com/bleakgrey/tootle
 	arch = i686
