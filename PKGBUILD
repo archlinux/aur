@@ -7,7 +7,7 @@
 
 pkgname=packettracer
 pkgver=7.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cisco PacketTracer 7.3.1 installation package"
 arch=( 'x86_64' )
 depends=('openssl-1.0' 'dbus' 'icu' 'glib2' 'libxml2' 'libjpeg-turbo' 'nss')

@@ -1,7 +1,7 @@
 pkgbase = packettracer
 	pkgdesc = Cisco PacketTracer 7.3.1 installation package
 	pkgver = 7.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.netacad.com/courses/packet-tracer
 	install = packettracer.install
 	arch = x86_64
