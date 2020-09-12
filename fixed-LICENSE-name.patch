@@ -1,0 +1,12 @@
+diff --color --unified --recursive --text pynrfjprog/setup.py pynrfjprog.new/setup.py
+--- pynrfjprog/setup.py	2020-09-12 18:57:53.552096093 +0800
++++ pynrfjprog.new/setup.py	2020-09-12 19:02:45.676366517 +0800
+@@ -24,7 +24,7 @@
+ 
+     author='Nordic Semiconductor ASA',
+ 
+-    license=open('LICENSE.txt').read(),
++    license=open('LICENSE').read(),
+ 
+     classifiers=[
+ 
