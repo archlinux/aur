@@ -1,0 +1,20 @@
+pkgbase = sxiv-bachoseven-git
+	pkgdesc = Simple (or small or suckless) X Image Viewer
+	pkgver = 2020.09.12
+	pkgrel = 1
+	url = https://github.com/BachoSeven/sxiv
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = imlib2
+	depends = libexif
+	depends = libxft
+	depends = hicolor-icon-theme
+	provides = sxiv
+	conflicts = sxiv
+	source = sxiv::git+https://github.com/BachoSeven/sxiv.git
+	sha256sums = SKIP
+
+pkgname = sxiv-bachoseven-git
+
