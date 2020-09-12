@@ -2,7 +2,7 @@
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 
 pkgname=onlyoffice-bin
-pkgver=5.6.0
+pkgver=5.6.4
 pkgrel=1
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
@@ -21,7 +21,7 @@ _srcfile='onlyoffice-desktopeditors_amd64.deb'
 _srcurl="https://github.com/ONLYOFFICE/DesktopEditors/releases/download/ONLYOFFICE-DesktopEditors-${pkgver}/${_srcfile}"
 source=("onlyoffice-desktopeditors-${pkgver}_amd64.deb"::"$_srcurl")
 noextract=("onlyoffice-desktopeditors-${pkgver}_amd64.deb")
-sha256sums=('320b4a35094d8fa6324ae8a29b3a4c5556c532004643c535c565c5ddfb77591e')
+sha256sums=('1e9d1ed44ca4b66b7a4c3c28419bc93ef79711787d91d137df3c8e6c09e587a2')
 
 prepare() {
     mkdir -p "onlyoffice-${pkgver}"
@@ -37,7 +37,7 @@ package() {
     local _res
     while read -r -d '' _file
     do
-        _res="$(printf '%s' "$_file" | sed 's/\.png$//;s/^.*-//')"
+        _res="$(sed 's/\.png$//;s/^.*-//' <<< "$_file")"
         mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps"
         ln -s "../../../../../../opt/onlyoffice/desktopeditors/asc-de-${_res}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/onlyoffice-desktopeditors.png"
