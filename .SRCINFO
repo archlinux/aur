@@ -1,6 +1,6 @@
 pkgbase = proot-git
 	pkgdesc = chroot, mount --bind, and binfmt_misc without privilege/setup
-	pkgver = r1008.cffb379
+	pkgver = r1199.0a9bbd6
 	pkgrel = 1
 	url = http://proot.me
 	arch = i686
