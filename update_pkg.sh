@@ -16,10 +16,6 @@ _ubudist=$(grep "_ubudist=" PKGBUILD | cut -d "=" -f 2-)
 echo "Current version:   $pkgver-$_ubuver-$_ubudist"
 echo "Available version: $ver1-$ver2-$ver3"
 
-if [[ "$pkgver" == "$ver1" ]]; then
-	echo "Nothing to do."
-	exit 0
-fi
 
 echo "Updating PKGBUILD..."
 sed -i "s|^pkgver=.*$|pkgver=${ver1}|" PKGBUILD
