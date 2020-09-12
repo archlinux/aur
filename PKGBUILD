@@ -1,7 +1,7 @@
 # Maintainer: max.bra <max dot bra at alice dot it>
 
 pkgname=booktab
-pkgver=4.10
+pkgver=4.11
 pkgrel=1
 pkgdesc="MyZanichelli - La piattaforma che ti permette di consultare tutti i tuoi libri scolastici in versione multimediale e interattiva."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=("pcre" "fontconfig" "libxrandr" "libxdamage" "libcups" "nss" "libpng12"
 _debname=BooktabSetup.deb
 
 source=(https://booktab.it/setup-z/$pkgver/${_debname})
-md5sums=('276b29f129f60cec12840238ec69b2b0')
+md5sums=('6e6d38b0899a8db9c999ad54fd12ab92')
 
 noextract=(${_debname})
 
@@ -22,7 +22,7 @@ prepare() {
   cd "$srcdir"
   msg2 "Decompressing Debian package..."
   ar xv "${_debname}" > /dev/null
-  tar -xf data.tar.gz > /dev/null
+  tar -xf data.tar.xz > /dev/null
 }
 
 package() {
