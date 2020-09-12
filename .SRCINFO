@@ -1,0 +1,32 @@
+pkgbase = python-poetry-core-git
+	pkgdesc = Python dependency management and packaging made easy (core package)
+	pkgver = 1.0.0a9.r29.gb647193
+	pkgrel = 1
+	url = https://python-poetry.org/
+	arch = any
+	license = MIT
+	checkdepends = git
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	checkdepends = python-httpretty
+	makedepends = python-dephell
+	depends = python-cachecontrol
+	depends = python-cachy
+	depends = python-cleo
+	depends = python-html5lib
+	depends = python-jsonschema
+	depends = python-lockfile
+	depends = python-pkginfo
+	depends = python-pyparsing
+	depends = python-pyrsistent
+	depends = python-requests
+	depends = python-requests-toolbelt
+	depends = python-shellingham
+	depends = python-tomlkit
+	depends = python-keyring
+	depends = python-pexpect
+	source = poetry-core::git+https://github.com/python-poetry/poetry-core.git
+	sha256sums = SKIP
+
+pkgname = python-poetry-core-git
+
