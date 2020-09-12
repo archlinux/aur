@@ -1,6 +1,6 @@
 pkgbase = pacback-git
 	pkgdesc = Advanced Version Control for Arch Linux
-	pkgver = r109.3014899
+	pkgver = r114.f79572b
 	pkgrel = 0
 	url = https://github.com/JustinTimperio/pacback
 	install = pacback.install

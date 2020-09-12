@@ -4,12 +4,21 @@
 post_install() {
     # Installs Snapshot Hook
     pacback -ih
+    # Make Base Dirs
+    mkdir -p /var/lib/pacback
+    mkdir -p /var/lib/pacback/restore-points
+    mkdir -p /var/lib/pacback/snapshots
+
 }
 
 post_upgrade() {
     # Run Alpha Upgrade
     /tmp/alpha-upgrade.sh
     rm -f /tmp/alpha-upgrade.sh
+    # Fix For Broken Package Versions
+    mkdir -p /var/lib/pacback
+    mkdir -p /var/lib/pacback/restore-points
+    mkdir -p /var/lib/pacback/snapshots
 }
 
 pre_remove() {
