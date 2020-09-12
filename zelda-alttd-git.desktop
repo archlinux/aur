@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=The Legend of Zelda: A Lddink to the Dream (Git version)
+Name=The Legend of Zelda: A Link to the Dream (Git version)
 Comment=Remake of The Legend of Zelda: Link's Awakening (Git version)
 Path=/usr/bin
 Exec=zelda-alttd-git

@@ -3,7 +3,7 @@
 pkgname=zelda-alttd-git
 pkgver=r3950.4e3c25a2
 pkgrel=1
-pkgdesc='Children of Solarus - 100% free remake of The Legend of Zelda: Mystery of Solarus DX (Git version)'
+pkgdesc="The Legend of Zelda: A Link to the Dream - Remake of The Legend of Zelda: Link's Awakening (Git version)"
 arch=('any')
 url='https://www.solarus-games.org/fr/games/the-legend-of-zelda-a-link-to-the-dream'
 license=('custom')
