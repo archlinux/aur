@@ -13,7 +13,7 @@ pkgbase = polyfile
 	depends = python-kaitaistruct>=0.7
 	depends = python-networkx
 	depends = python-pillow>=5.0.0
-	depends = python-pyaml>=3.13
+	depends = python-yaml>=3.13
 	source = https://github.com/trailofbits/polyfile/archive/v0.1.6.tar.gz
 	sha256sums = 51eccc0c9149501fa597863667c145d34f1d28225614cef60aa1cecab28ed653
 
