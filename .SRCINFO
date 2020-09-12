@@ -1,6 +1,6 @@
 pkgbase = sidequest-bin
 	pkgdesc = Easily sideload apps onto your standalone android VR headset
-	pkgver = 0.10.11
+	pkgver = 0.10.14
 	pkgrel = 2
 	url = https://github.com/the-expanse/SideQuest
 	arch = x86_64
@@ -8,10 +8,11 @@ pkgbase = sidequest-bin
 	depends = gtk3
 	depends = libxss
 	depends = nss
+	provides = sidequest
 	conflicts = sidequest
-	source = https://github.com/the-expanse/SideQuest/releases/download/v0.10.11/SideQuest-0.10.11.tar.xz
+	source = https://github.com/SideQuestVR/SideQuest/releases/download/v0.10.14/SideQuest-0.10.14.tar.xz
 	source = SideQuest.desktop
-	md5sums = ef447b5b9fbd0f518a3719c0e6b0af74
+	md5sums = 728299a711b43ca869c82f6781ea9127
 	md5sums = 03297d2f1551ee6c9b11ac450bfdc55f
 
 pkgname = sidequest-bin
