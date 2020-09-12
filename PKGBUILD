@@ -1,8 +1,8 @@
-# Maintainer: Celogeek <private-4zokpdq6@mrhyde.xyz>
+# Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 _pkgbase=rethinkdb
 pkgname=python-$_pkgbase
-pkgver=2.4.6
-pkgrel=2
+pkgver=2.4.7
+pkgrel=1
 pkgdesc="Python driver for rethinkdb"
 arch=('any')
 url="https://github.com/rethinkdb/rethinkdb-python"
@@ -15,3 +15,4 @@ source=()
 package() {
   pip install $_pkgbase==$pkgver --isolated --root "$pkgdir" --ignore-installed --no-deps --no-warn-script-location
 }
+
