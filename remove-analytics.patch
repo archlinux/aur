@@ -1,6 +1,6 @@
-diff -ura a/browser/lib/newNote.js b/browser/lib/newNote.js
---- a/browser/lib/newNote.js	2020-02-24 10:11:36.000000000 +0100
-+++ b/browser/lib/newNote.js	2020-02-29 08:53:49.233387076 +0100
+diff --color -ura a/browser/lib/newNote.js b/browser/lib/newNote.js
+--- a/browser/lib/newNote.js	2020-09-04 16:47:01.000000000 +0200
++++ b/browser/lib/newNote.js	2020-09-12 09:52:20.544253351 +0200
 @@ -1,6 +1,5 @@
  import dataApi from 'browser/main/lib/dataApi'
  import ee from 'browser/main/lib/eventEmitter'
@@ -26,10 +26,10 @@ diff -ura a/browser/lib/newNote.js b/browser/lib/newNote.js
  
    let tags = []
    if (
-diff -ura a/browser/main/Detail/MarkdownNoteDetail.js b/browser/main/Detail/MarkdownNoteDetail.js
---- a/browser/main/Detail/MarkdownNoteDetail.js	2020-02-24 10:11:36.000000000 +0100
-+++ b/browser/main/Detail/MarkdownNoteDetail.js	2020-02-29 08:54:42.533063730 +0100
-@@ -14,7 +14,6 @@
+diff --color -ura a/browser/main/Detail/MarkdownNoteDetail.js b/browser/main/Detail/MarkdownNoteDetail.js
+--- a/browser/main/Detail/MarkdownNoteDetail.js	2020-09-04 16:47:01.000000000 +0200
++++ b/browser/main/Detail/MarkdownNoteDetail.js	2020-09-12 09:53:15.814946778 +0200
+@@ -15,7 +15,6 @@
  import StatusBar from '../StatusBar'
  import _ from 'lodash'
  import { findNoteTitle } from 'browser/lib/findNoteTitle'
@@ -37,7 +37,7 @@ diff -ura a/browser/main/Detail/MarkdownNoteDetail.js b/browser/main/Detail/Mark
  import ConfigManager from 'browser/main/lib/ConfigManager'
  import TrashButton from './TrashButton'
  import FullscreenButton from './FullscreenButton'
-@@ -161,7 +160,6 @@
+@@ -166,7 +165,6 @@
          type: 'UPDATE_NOTE',
          note: note
        })
@@ -45,7 +45,7 @@ diff -ura a/browser/main/Detail/MarkdownNoteDetail.js b/browser/main/Detail/Mark
      })
    }
  
-@@ -205,8 +203,6 @@
+@@ -210,8 +208,6 @@
  
    handleStarButtonClick(e) {
      const { note } = this.state
@@ -54,9 +54,9 @@ diff -ura a/browser/main/Detail/MarkdownNoteDetail.js b/browser/main/Detail/Mark
  
      note.isStarred = !note.isStarred
  
-diff -ura a/browser/main/Detail/SnippetNoteDetail.js b/browser/main/Detail/SnippetNoteDetail.js
---- a/browser/main/Detail/SnippetNoteDetail.js	2020-02-24 10:11:36.000000000 +0100
-+++ b/browser/main/Detail/SnippetNoteDetail.js	2020-02-29 08:56:45.052205264 +0100
+diff --color -ura a/browser/main/Detail/SnippetNoteDetail.js b/browser/main/Detail/SnippetNoteDetail.js
+--- a/browser/main/Detail/SnippetNoteDetail.js	2020-09-04 16:47:01.000000000 +0200
++++ b/browser/main/Detail/SnippetNoteDetail.js	2020-09-12 09:54:03.845549553 +0200
 @@ -17,7 +17,6 @@
  import ConfigManager from 'browser/main/lib/ConfigManager'
  import _ from 'lodash'
@@ -103,9 +103,9 @@ diff -ura a/browser/main/Detail/SnippetNoteDetail.js b/browser/main/Detail/Snipp
      }
    }
  
-diff -ura a/browser/main/Detail/TagSelect.js b/browser/main/Detail/TagSelect.js
---- a/browser/main/Detail/TagSelect.js	2020-02-24 10:11:36.000000000 +0100
-+++ b/browser/main/Detail/TagSelect.js	2020-02-29 08:56:59.032099365 +0100
+diff --color -ura a/browser/main/Detail/TagSelect.js b/browser/main/Detail/TagSelect.js
+--- a/browser/main/Detail/TagSelect.js	2020-09-04 16:47:01.000000000 +0200
++++ b/browser/main/Detail/TagSelect.js	2020-09-12 09:54:23.255793194 +0200
 @@ -4,7 +4,6 @@
  import CSSModules from 'browser/lib/CSSModules'
  import styles from './TagSelect.styl'
@@ -114,7 +114,7 @@ diff -ura a/browser/main/Detail/TagSelect.js b/browser/main/Detail/TagSelect.js
  import i18n from 'browser/lib/i18n'
  import ee from 'browser/main/lib/eventEmitter'
  import Autosuggest from 'react-autosuggest'
-@@ -33,8 +32,6 @@
+@@ -34,8 +33,6 @@
    }
  
    addNewTag(newTag) {
@@ -123,9 +123,9 @@ diff -ura a/browser/main/Detail/TagSelect.js b/browser/main/Detail/TagSelect.js
      newTag = newTag.trim().replace(/ +/g, '_')
      if (newTag.charAt(0) === '#') {
        newTag.substring(1)
-diff -ura a/browser/main/Main.js b/browser/main/Main.js
---- a/browser/main/Main.js	2020-02-24 10:11:36.000000000 +0100
-+++ b/browser/main/Main.js	2020-02-29 08:54:04.653297346 +0100
+diff --color -ura a/browser/main/Main.js b/browser/main/Main.js
+--- a/browser/main/Main.js	2020-09-04 16:47:01.000000000 +0200
++++ b/browser/main/Main.js	2020-09-12 09:52:38.484478405 +0200
 @@ -10,7 +10,6 @@
  import dataApi from 'browser/main/lib/dataApi'
  import _ from 'lodash'
@@ -145,9 +145,9 @@ diff -ura a/browser/main/Main.js b/browser/main/Main.js
      const { config } = props
  
      this.state = {
-diff -ura a/browser/main/modals/CreateFolderModal.js b/browser/main/modals/CreateFolderModal.js
---- a/browser/main/modals/CreateFolderModal.js	2020-02-24 10:11:36.000000000 +0100
-+++ b/browser/main/modals/CreateFolderModal.js	2020-02-29 08:57:14.241982649 +0100
+diff --color -ura a/browser/main/modals/CreateFolderModal.js b/browser/main/modals/CreateFolderModal.js
+--- a/browser/main/modals/CreateFolderModal.js	2020-09-04 16:47:01.000000000 +0200
++++ b/browser/main/modals/CreateFolderModal.js	2020-09-12 09:54:41.586023299 +0200
 @@ -6,7 +6,6 @@
  import { store } from 'browser/main/store'
  import consts from 'browser/lib/consts'
@@ -164,9 +164,9 @@ diff -ura a/browser/main/modals/CreateFolderModal.js b/browser/main/modals/Creat
      if (this.state.name.trim().length > 0) {
        const { storage } = this.props
        const input = {
-diff -ura a/browser/main/modals/PreferencesModal/InfoTab.js b/browser/main/modals/PreferencesModal/InfoTab.js
---- a/browser/main/modals/PreferencesModal/InfoTab.js	2020-02-24 10:11:36.000000000 +0100
-+++ b/browser/main/modals/PreferencesModal/InfoTab.js	2020-02-29 08:58:41.331288275 +0100
+diff --color -ura a/browser/main/modals/PreferencesModal/InfoTab.js b/browser/main/modals/PreferencesModal/InfoTab.js
+--- a/browser/main/modals/PreferencesModal/InfoTab.js	2020-09-04 16:47:01.000000000 +0200
++++ b/browser/main/modals/PreferencesModal/InfoTab.js	2020-09-12 09:57:44.078315155 +0200
 @@ -3,7 +3,6 @@
  import styles from './InfoTab.styl'
  import ConfigManager from 'browser/main/lib/ConfigManager'
@@ -175,7 +175,7 @@ diff -ura a/browser/main/modals/PreferencesModal/InfoTab.js b/browser/main/modal
  import _ from 'lodash'
  import i18n from 'browser/lib/i18n'
  
-@@ -25,42 +24,6 @@
+@@ -28,12 +27,6 @@
      e.preventDefault()
    }
  
@@ -185,6 +185,13 @@ diff -ura a/browser/main/modals/PreferencesModal/InfoTab.js b/browser/main/modal
 -    this.setState({ config: newConfig })
 -  }
 -
+   handleSubscriptionFormSubmit(e) {
+     e.preventDefault()
+     this.setState({
+@@ -76,36 +69,6 @@
+     })
+   }
+ 
 -  handleSaveButtonClick(e) {
 -    const newConfig = {
 -      amaEnabled: this.state.config.amaEnabled
@@ -218,7 +225,7 @@ diff -ura a/browser/main/modals/PreferencesModal/InfoTab.js b/browser/main/modal
    toggleAutoUpdate() {
      const newConfig = {
        autoUpdateEnabled: !this.state.config.autoUpdateEnabled
-@@ -70,11 +33,6 @@
+@@ -115,11 +78,6 @@
      ConfigManager.set(newConfig)
    }
  
@@ -230,7 +237,7 @@ diff -ura a/browser/main/modals/PreferencesModal/InfoTab.js b/browser/main/modal
    render() {
      return (
        <div styleName='root'>
-@@ -191,41 +149,6 @@
+@@ -268,41 +226,6 @@
          </div>
  
          <hr styleName='separate-line' />
@@ -272,9 +279,9 @@ diff -ura a/browser/main/modals/PreferencesModal/InfoTab.js b/browser/main/modal
        </div>
      )
    }
-diff -ura a/browser/main/NoteList/index.js b/browser/main/NoteList/index.js
---- a/browser/main/NoteList/index.js	2020-02-24 10:11:36.000000000 +0100
-+++ b/browser/main/NoteList/index.js	2020-02-29 08:59:00.201132829 +0100
+diff --color -ura a/browser/main/NoteList/index.js b/browser/main/NoteList/index.js
+--- a/browser/main/NoteList/index.js	2020-09-04 16:47:01.000000000 +0200
++++ b/browser/main/NoteList/index.js	2020-09-12 09:58:32.588924649 +0200
 @@ -16,7 +16,6 @@
  import path from 'path'
  import { push, replace } from 'connected-react-router'
@@ -283,7 +290,7 @@ diff -ura a/browser/main/NoteList/index.js b/browser/main/NoteList/index.js
  import Markdown from '../../lib/markdown'
  import i18n from 'browser/lib/i18n'
  import { confirmDeleteNote } from 'browser/lib/confirmDeleteNote'
-@@ -807,7 +806,6 @@
+@@ -876,7 +875,6 @@
                note: newNote
              })
            })
@@ -291,7 +298,7 @@ diff -ura a/browser/main/NoteList/index.js b/browser/main/NoteList/index.js
          })
          .then(() => ee.emit('list:next'))
          .catch(err => {
-@@ -827,8 +825,6 @@
+@@ -896,8 +894,6 @@
      const eventName =
        firstNote.type === 'MARKDOWN_NOTE' ? 'ADD_MARKDOWN' : 'ADD_SNIPPET'
  
@@ -300,9 +307,9 @@ diff -ura a/browser/main/NoteList/index.js b/browser/main/NoteList/index.js
      dataApi
        .createNote(storage.key, {
          type: firstNote.type,
-diff -ura a/package.json b/package.json
---- a/package.json	2020-02-24 10:11:36.000000000 +0100
-+++ b/package.json	2020-02-29 08:55:37.772693835 +0100
+diff --color -ura a/package.json b/package.json
+--- a/package.json	2020-09-04 16:47:01.000000000 +0200
++++ b/package.json	2020-09-12 09:51:30.223622230 +0200
 @@ -56,8 +56,6 @@
      "@rokt33r/markdown-it-math": "^4.0.1",
      "@rokt33r/season": "^5.3.0",
@@ -312,10 +319,10 @@ diff -ura a/package.json b/package.json
      "chart.js": "^2.7.2",
      "codemirror": "^5.40.2",
      "codemirror-mode-elixir": "^1.1.1",
-diff -ura a/yarn.lock b/yarn.lock
---- a/yarn.lock	2020-02-24 10:11:36.000000000 +0100
-+++ b/yarn.lock	2020-02-29 08:55:43.822651477 +0100
-@@ -632,26 +632,6 @@
+diff --color -ura a/yarn.lock b/yarn.lock
+--- a/yarn.lock	2020-09-04 16:47:01.000000000 +0200
++++ b/yarn.lock	2020-09-12 09:52:01.884019291 +0200
+@@ -632,34 +632,6 @@
      unique-temp-dir "^1.0.0"
      update-notifier "^2.3.0"
  
@@ -339,108 +346,14 @@ diff -ura a/yarn.lock b/yarn.lock
 -    uuid "3.1.0"
 -    xml2js "0.4.17"
 -
- aws-sign2@~0.7.0:
-   version "0.7.0"
-   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
-@@ -1481,7 +1461,7 @@
-   version "1.0.0"
-   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.0.0.tgz#4cb8832d23612589b0406e9e2956c17f06fdf531"
- 
--buffer@4.9.1, buffer@^4.9.0:
-+buffer@^4.9.0:
-   version "4.9.1"
-   resolved "https://registry.yarnpkg.com/buffer/-/buffer-4.9.1.tgz#6d1bb601b07a4efced97094132093027c95bc298"
-   dependencies:
-@@ -3518,7 +3498,7 @@
-   version "3.1.0"
-   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.0.tgz#090b4d6cdbd645ed10bf750d4b5407942d7ba163"
- 
--events@1.1.1, events@^1.0.0:
-+events@^1.0.0:
-   version "1.1.1"
-   resolved "https://registry.yarnpkg.com/events/-/events-1.1.1.tgz#9ebdb7635ad099c70dcc4c2a1f5004288e8bd924"
- 
-@@ -4700,10 +4680,6 @@
-   dependencies:
-     harmony-reflect "^1.4.6"
- 
--ieee754@1.1.8:
--  version "1.1.8"
--  resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
+-aws-sign2@~0.7.0:
+-  version "0.7.0"
+-  resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
 -
- ieee754@^1.1.4:
-   version "1.1.11"
-   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.11.tgz#c16384ffe00f5b7835824e67b6f2bd44a5229455"
-@@ -5560,10 +5536,6 @@
-     import-local "^1.0.0"
-     jest-cli "^22.4.4"
- 
--jmespath@0.15.0:
--  version "0.15.0"
--  resolved "https://registry.yarnpkg.com/jmespath/-/jmespath-0.15.0.tgz#a3f222a9aae9f966f5d27c796510e28091764217"
+-aws4@^1.6.0:
+-  version "1.7.0"
+-  resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.7.0.tgz#d4d0e9b9dbfca77bf08eeb0a8a471550fe39e289"
 -
- js-base64@^2.1.9:
-   version "2.4.5"
-   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.5.tgz#e293cd3c7c82f070d700fc7a1ca0a2e69f101f92"
-@@ -8609,11 +8581,7 @@
-   version "0.5.8"
-   resolved "https://registry.yarnpkg.com/sax/-/sax-0.5.8.tgz#d472db228eb331c2506b0e8c15524adb939d12c1"
- 
--sax@1.2.1:
--  version "1.2.1"
--  resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.1.tgz#7b8e656190b228e81a66aea748480d828cd2d37a"
--
--sax@>=0.6.0, sax@^1.2.1, sax@^1.2.4, sax@~1.2.1:
-+sax@^1.2.1, sax@^1.2.4, sax@~1.2.1:
-   version "1.2.4"
-   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
- 
-@@ -9821,13 +9789,6 @@
-     querystringify "^2.0.0"
-     requires-port "^1.0.0"
- 
--url@0.10.3:
--  version "0.10.3"
--  resolved "https://registry.yarnpkg.com/url/-/url-0.10.3.tgz#021e4d9c7705f21bbf37d03ceb58767402774c64"
--  dependencies:
--    punycode "1.3.2"
--    querystring "0.2.0"
--
- url@^0.11.0:
-   version "0.11.0"
-   resolved "https://registry.yarnpkg.com/url/-/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1"
-@@ -9879,10 +9840,6 @@
-   version "1.0.1"
-   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
- 
--uuid@3.1.0:
--  version "3.1.0"
--  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
--
- uuid@^3.0.1, uuid@^3.1.0, uuid@^3.2.1:
-   version "3.2.1"
-   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
-@@ -10196,23 +10153,10 @@
-   version "3.0.0"
-   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
- 
--xml2js@0.4.17:
--  version "0.4.17"
--  resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.17.tgz#17be93eaae3f3b779359c795b419705a8817e868"
--  dependencies:
--    sax ">=0.6.0"
--    xmlbuilder "^4.1.0"
--
- xmlbuilder@8.2.2:
-   version "8.2.2"
-   resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-8.2.2.tgz#69248673410b4ba42e1a6136551d2922335aa773"
- 
--xmlbuilder@^4.1.0:
--  version "4.2.1"
--  resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-4.2.1.tgz#aa58a3041a066f90eaa16c2f5389ff19f3f461a5"
--  dependencies:
--    lodash "^4.0.0"
--
- xmldom@0.1.x:
-   version "0.1.27"
-   resolved "https://registry.yarnpkg.com/xmldom/-/xmldom-0.1.27.tgz#d501f97b3bdb403af8ef9ecc20573187aadac0e9"
+ babel-code-frame@^6.16.0, babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
+   version "6.26.0"
+   resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.26.0.tgz#63fd43f7dc1e3bb7ce35947db8fe369a3f58c74b"
