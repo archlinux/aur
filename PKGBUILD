@@ -1,7 +1,7 @@
 pkgname=notify-osd-syaoran
 _realname=notify-osd
 pkgver=0.9.34
-pkgrel=1
+pkgrel=2
 _realver=${pkgver}+16.04.20160415
 pkgdesc="daemon that displays passive pop-up notifications, with leolik patch added"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=('libwnck3' 'libnotify>=0.7.0' 'dbus-glib>=0.76' 'dconf' 'gsettings-desk
 makedepends=('pkgconfig' 'libnotify' 'gnome-common' 'git')
 provides=('notification-daemon' 'notify-osd')
 conflicts=('notify-osd')
-# install=$pkgname.install
+#install=$pkgname.install
 source=("git+$url")
 md5sums=('SKIP')
 
