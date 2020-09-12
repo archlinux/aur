@@ -24,7 +24,7 @@ sha1sums=(
 
 package() {
   install -Dm755 "strip-ansi-$_checksum" "$pkgdir/usr/bin/strip-ansi"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/$pkgname/LICENSE.md"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/"$pkgname"/LICENSE.md"
   install -Dm644 "completion.$pkgver.bash" "$pkgdir/usr/share/bash-completion/completions/strip-ansi"
   install -Dm644 "completion.$pkgver.fish" "$pkgdir/usr/share/fish/completions/strip-ansi.fish"
   install -Dm644 "completion.$pkgver.zsh" "$pkgdir/usr/share/zsh/site-functions/_strip-ansi"
