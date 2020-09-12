@@ -12,36 +12,34 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Maintainer: Lisa White <lisa.rsfp+dev@gmail.com>
+# Maintainer: David Wu <xdavidwuph@gmail.com>
+# Contributor: Lisa White <lisa.rsfp+dev@gmail.com>
 # Contributor: Aleksey Filippov <sarum9in@gmail.com>
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 pkgname=hotdoc
-pkgver=0.9.3
-pkgrel=3
-epoch=
-pkgdesc="HotDoc: the tastiest API documentation system"
-arch=('any')
-url="https://github.com/hotdoc/hotdoc"
-license=('LGPL2')
-groups=()
+pkgver=0.12.2
+pkgrel=1
+pkgdesc='The tastiest API documentation system'
+arch=('x86_64') # parsers are built into native libraries
+url='https://github.com/hotdoc/hotdoc'
+license=('LGPL2.1')
 depends=(
-    'libxml2'
     'json-glib'
     'clang'
     'llvm'
     'python'
-    'python-cchardet'
-    'python-dbus-deviation'
-    'python-decorator'
-    'python-lxml'
-    'python-networkx-1.11'
-    'python-pkgconfig-1.1.0'
-    'python-schema'
-    'python-sqlalchemy'
-    'python-toposort'
-    'python-wheezy'
     'python-yaml'
+    'python-lxml'
+    'python-schema'
+    'python-appdirs'
+    'python-wheezy-0.1.167'
+    'python-toposort'
+    'python-xdg'
+    'python-dbus-deviation'
+    'python-pkgconfig-1.1.0'
+    'python-cchardet'
+    'python-networkx-1.11'
 )
 makedepends=(
     'cmake'
@@ -50,24 +48,9 @@ makedepends=(
     'npm'
     'python-setuptools'
 )
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+# upstream tarball does not contain submodules or their revision info
 source=("git+https://github.com/${pkgname}/${pkgname}.git#tag=${pkgver}")
-noextract=()
 sha256sums=('SKIP')
-validpgpkeys=()
-
-prepare() {
-  cd "$pkgname"
-  sed -r 's|print (".*\])|print (\1)|' -i hotdoc/hotdoc_dep_printer.py
-}
 
 build() {
   cd "$pkgname"
