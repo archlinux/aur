@@ -1,7 +1,7 @@
 pkgbase = quickcut-git
 	pkgdesc = Your most handy video processing software.
-	pkgver = v1.6.9.r1.g3db7bef
-	pkgrel = 3
+	pkgver = v1.6.10.r0.gfffcd79
+	pkgrel = 1
 	url = https://github.com/HaujetZhao/QuickCut
 	arch = x86_64
 	arch = i686

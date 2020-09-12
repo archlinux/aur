@@ -3,8 +3,8 @@
 pkgname=quickcut-git
 _pkgname=${pkgname%-git}
 _gitname=QuickCut
-pkgver=v1.6.9.r1.g3db7bef
-pkgrel=3 
+pkgver=v1.6.10.r0.gfffcd79
+pkgrel=1
 pkgdesc="Your most handy video processing software."
 arch=('x86_64' 'i686')
 url="https://github.com/HaujetZhao/QuickCut"
@@ -58,7 +58,7 @@ package() {
   chmod 777 ${pkgdir}/usr/lib/python3.8/site-packages/QuickCut/
  
   # icon
-  icotool -x QuickCut/icon.ico
+  icotool -x QuickCut/misc/icon.ico
   install -Dm644 icon_*_32x32x32.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
 
   # desktop entry
