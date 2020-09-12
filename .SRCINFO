@@ -1,0 +1,21 @@
+pkgbase = shadowsocks-v2ray-plugin-bin
+	pkgdesc = Yet another SIP003 plugin for shadowsocks, based on v2ray
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://github.com/teddysun/v2ray-plugin
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	depends = glibc
+	provides = shadowsocks-v2ray-plugin
+	conflicts = shadowsocks-v2ray-plugin
+	source_x86_64 = https://github.com/teddysun/v2ray-plugin/releases/download/v1.4.3/v2ray-plugin-linux-amd64-v1.4.3.tar.gz
+	sha1sums_x86_64 = b7c09c7d1d8c6dbb0c47265d40197faac0b64c2f
+	source_aarch64 = https://github.com/teddysun/v2ray-plugin/releases/download/v1.4.3/v2ray-plugin-linux-arm64-v1.4.3.tar.gz
+	sha1sums_aarch64 = e223fbf0532b7f3a726ee9d4d53d4654092f170d
+	source_armv7h = https://github.com/teddysun/v2ray-plugin/releases/download/v1.4.3/v2ray-plugin-linux-arm-v1.4.3.tar.gz
+	sha1sums_armv7h = 540f3d1751d23db5a2c4de87e8becfb7e7b50cab
+
+pkgname = shadowsocks-v2ray-plugin-bin
+
