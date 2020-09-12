@@ -2,7 +2,7 @@
 
 pkgname=python-adafruit-circuitpython-busdevice
 _pypi_pkgname=adafruit-circuitpython-busdevice
-pkgver=4.3.1
+pkgver=5.0.1
 pkgrel=0
 pkgdesc="CircuitPython bus device classes to manage bus sharing"
 arch=('armv6h' 'armv7h')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 depends=('python' 'python-adafruit-blinka')
 optdepends=('python-raspberry-gpio')
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('7eafaaad3bbcd6b31102632fc5c289dc1e208ee34301d0e44210e95664552657')
+sha256sums=('8d686bcfe1311ed39470e06121cea41c9c5675d958d52c861f612761d9674d88')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
