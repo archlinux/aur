@@ -3,7 +3,7 @@
  
 pkgname=pacback
 pkgver=2.0.3
-pkgrel=0
+pkgrel=1
 pkgdesc='Advanced Version Control for Arch Linux'
 arch=('x86_64')
 url='https://github.com/JustinTimperio/pacback'
@@ -17,7 +17,7 @@ depends=('python' 'python-rich' 'python-requests' 'pacman-contrib')
 makedepends=('zstd')
 optdepends=('pigz: Multithreaded de/compression of custom user files')
 source=('https://github.com/JustinTimperio/pacback/releases/download/v2.0.3/pacback-2.0.3-SOURCE.tar.zst')
-sha512sums=('57dd5591a4ca276e107cd1050b7514e5cfc258fcb3c671f027426660f1f0276e605666779e5fdc7091fc9121f37765d49a3163c47cdd276fd71a2a733a09da78')
+sha512sums=('bbf0eb2a1f0fc5d75ea18936a1482a3ad720fd2ee80e3188a693aacde785d3ac905da567dc695e93af115de68f1f3be86b454e7ca0e56f7da3aebb40547c3046')
  
 
 package() {
