@@ -1,11 +1,11 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=xine-lib-hg
-pkgver=1.2.10.r14730.91312aae00d0
+pkgver=1.2.10.r211.79af5718c10d
 pkgrel=1
 pkgdesc='A multimedia playback engine (mercurial version)'
 arch=('x86_64')
-url='https://www.xine-project.org/'
+url='http://xine.sourceforge.net/'
 license=('GPL' 'LGPL')
 depends=('libxvmc' 'ffmpeg' 'libxinerama' 'libnsl' 'libssh2')
 makedepends=('mercurial'
@@ -36,33 +36,16 @@ conflicts=('xine-lib')
 source=('hg+http://hg.code.sf.net/p/xine/xine-lib-1.2'
         '010-xine-lib-hg-gcc10-fix.patch')
 sha256sums=('SKIP'
-            'b5a42d16d83058e6e13adc384bf12d546f3f7072ece48b234ef415ec192a4457')
+            '357daf6042d592556b4b23d400d622be4e165dc7d3bce8ce2ab638abf357f2e6')
 
 prepare() {
     patch -d xine-lib-1.2 -Np1 -i"${srcdir}/010-xine-lib-hg-gcc10-fix.patch"
 }
 
 pkgver() {
-    local _number
-    local _revision
-    local _hash
-    local _version
-    local _version_major
-    local _version_minor
-    local _version_sub
-    local _version_patch
-    _version_major="$(grep '^XINE_VERSION_MAJOR=' xine-lib-1.2/version.sh | sed 's/.*=//')"
-    _version_minor="$(grep '^XINE_VERSION_MINOR=' xine-lib-1.2/version.sh | sed 's/.*=//')"
-    _version_sub="$(  grep '^XINE_VERSION_SUB='   xine-lib-1.2/version.sh | sed 's/.*=//')"
-    _version_patch="$(grep '^XINE_VERSION_PATCH=' xine-lib-1.2/version.sh | sed 's/.*=//')"
-    _version="$_version_major"
-    for _number in "$_version_minor" "$_version_sub" "$_version_patch"
-    do
-        [ -n "$_number" ] && _version+=".${_number}"
-    done
-    _revision="$(hg -R xine-lib-1.2 identify -n)"
-    _hash="$(hg -R xine-lib-1.2 identify -i)"
-    printf '%s.r%s.%s' "$_version" "${_revision%+}" "${_hash%+}"
+    printf '%s.r%s.%s' "$(hg -R xine-lib-1.2 log -r. --template '{latesttag}')" \
+                       "$(hg -R xine-lib-1.2 log -r. --template '{latesttagdistance}')" \
+                       "$(hg -R xine-lib-1.2 log -r. --template '{node|short}')"
 }
 
 build() {
