@@ -2,7 +2,7 @@
 
 pkgname=libinput-three-finger-drag
 pkgver=1.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Input device management and event handling library"
 url="https://www.freedesktop.org/wiki/Software/libinput/"
 arch=(x86_64)
@@ -11,11 +11,11 @@ provides=('libinput=1.16.1')
 conflicts=('libinput')
 depends=('mtdev' 'systemd' 'libevdev' 'libwacom')
 # upstream doesn't recommend building docs
-makedepends=('gtk3' 'meson') # 'doxygen' 'graphviz' 'python-sphinx' 'python-recommonmark'
+makedepends=('gtk3' 'meson' 'git') # 'doxygen' 'graphviz' 'python-sphinx' 'python-recommonmark'
 optdepends=('gtk3: libinput debug-gui'
             'python-pyudev: libinput measure'
             'python-libevdev: libinput measure')
-source=("git://github.com/louiecaulfield/libinput#tag=1.16.1-3fd")
+source=("libinput::git+https://github.com/louiecaulfield/libinput#tag=1.16.1-3fd")
 md5sums=('SKIP')
 
 build() {

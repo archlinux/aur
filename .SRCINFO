@@ -1,12 +1,13 @@
 pkgbase = libinput-three-finger-drag
 	pkgdesc = Input device management and event handling library
 	pkgver = 1.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/libinput/
 	arch = x86_64
 	license = custom:X11
 	makedepends = gtk3
 	makedepends = meson
+	makedepends = git
 	depends = mtdev
 	depends = systemd
 	depends = libevdev
@@ -16,7 +17,7 @@ pkgbase = libinput-three-finger-drag
 	optdepends = python-libevdev: libinput measure
 	provides = libinput=1.16.1
 	conflicts = libinput
-	source = git://github.com/louiecaulfield/libinput#tag=1.16.1-3fd
+	source = libinput::git+https://github.com/louiecaulfield/libinput#tag=1.16.1-3fd
 	md5sums = SKIP
 
 pkgname = libinput-three-finger-drag
