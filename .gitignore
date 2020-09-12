@@ -1,0 +1,8 @@
+src
+pkg
+*.tar
+*.tar.xz
+*.tar.gz
+*.log
+ahoviewer
+
