@@ -1,6 +1,6 @@
 pkgbase = python-single-version
 	pkgdesc = Small utility to define version string for Poetry-style Python project
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/hongquan/single-version
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-single-version
 	makedepends = python-setuptools
 	depends = python-first
 	depends = python-importlib-metadata
-	source = https://pypi.org/packages/source/s/single-version/single-version-1.2.2.tar.gz
-	sha256sums = d8e98c3a363af7f4843d62693eef22bcfda923414cfca1ee1c6b8d55c840d3c2
+	source = https://pypi.org/packages/source/s/single-version/single-version-1.3.0.tar.gz
+	sha256sums = cbcd08a3348a45cd98501fb5dc3af8c96306514f05492e47f11d8d3ebe828c1f
 
 pkgname = python-single-version
 
