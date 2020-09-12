@@ -1,7 +1,7 @@
 # Maintainer: Stanislaw Grams <sjg@fmdx.pl>
 
 pkgname=meteodata-git
-pkgver=20200829
+pkgver=20200912
 pkgrel=1
 pkgdesc="A C++ parser that provides real-time meteo data from pogodynka.pl/IMGW"
 arch=('x86_64')

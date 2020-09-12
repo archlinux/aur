@@ -1,6 +1,6 @@
 pkgbase = meteodata-git
 	pkgdesc = A C++ parser that provides real-time meteo data from pogodynka.pl/IMGW
-	pkgver = 20200829
+	pkgver = 20200912
 	pkgrel = 1
 	url = https://github.com/sgrams/meteodata
 	arch = x86_64
