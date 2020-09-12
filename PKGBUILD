@@ -6,7 +6,7 @@ pkgver=r2.0.gd0df8c2
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
-url='https://forum.doom9.org/showthread.php?t=172172'
+url='https://github.com/HomeOfVapourSynthEvolution/VapourSynth-CAS'
 license=('MIT')
 depends=('vapoursynth')
 makedepends=('git'
