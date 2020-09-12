@@ -35,10 +35,10 @@ build() {
 }
 
 package() {
-  install -Dm 755 "$pkgname-launcher" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
   cd "$pkgname"
   make DESTDIR="$pkgdir/" install
+  install -Dm 755 "../$pkgname-launcher" "$pkgdir/usr/bin/$pkgname"
 }
