@@ -11,7 +11,7 @@ license=('GPL')
 depends=('archlinux-keyring')
 optdepends=('pkgstats: install to submit package usage statistics')
 install="chaotic-keyring.install"
-source=("keyring.tar.gz::https://github.com/chaotic-aur/keyring/archive/$pkgver-$pkgrel.tar.gz")
+source=("keyring-$pkgver-$pkgrel.tar.gz::https://github.com/chaotic-aur/keyring/archive/$pkgver-$pkgrel.tar.gz")
 
 package() {
   cd "$srcdir/keyring-$pkgver-$pkgrel"
