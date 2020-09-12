@@ -5,22 +5,26 @@
 
 pkgname=bigloo-devel
 pkgver=4.3i
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="Fast scheme compiler"
 arch=('x86_64')
 url="https://www-sop.inria.fr/mimosa/fp/Bigloo/"
 license=('GPL' 'LGPL')
-depends=('gmp' 'openssl' 'libunistring' 'libnsl' 'gc' 'libuv' 'libpulse' 'mpg123')
+depends=('gmp' 'openssl' 'libunistring' 'libnsl' 'gc' 'libuv' 'libpulse' 'mpg123' 'avahi' 'sqlite')
 makedepends=('java-environment' 'emacs' 'zip' 'sqlite' 'alsa-lib' 'flac' 'avahi' 'chrpath')
 optdepends=('java-environment' 'emacs' 'zip' 'sqlite' 'alsa-lib' 'flac' 'avahi')
 options=('!makeflags' 'staticlibs')
 conflicts=('bigloo')
 provides=("bigloo=$pkgver")
 source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}-unstable.tar.gz bigloo-emacs.patch)
-sha256sums=('8bbaad3cd47ab97e7d4aebcdb3e8b8bef872deb73255ca8f428f1238a04882b1'
+sha256sums=('4deb9c39008ab809f4633fd4604930c3eb1e7a2337e823d5371ab8984b3ee9fc'
             '80356c27b58a302775f75e848a89ab2d588796a548f4ce7a20df048e215deab0')
 elisp_dir=/usr/share/emacs/site-lisp/bigloo
+
+prepare() {
+  patch -p0 -d "${srcdir}/${pkgname%-devel}-unstable" -i "${srcdir}/bigloo-emacs.patch"
+}
 
 build() {
   cd ${pkgname%-devel}-unstable
@@ -34,6 +38,7 @@ build() {
     --customgc=no \
     --customgmp=no \
     --customlibuv=no \
+    --customunistring=no \
     --jvm=no \
     --native-default-backend \
     --enable-avahi \
@@ -41,12 +46,8 @@ build() {
     --enable-sqlite \
     --enable-ssl \
     --disable-gstreamer
-
-  make build compile-bee
-}
-
-prepare() {
-  patch -p0 -d "${srcdir}/${pkgname%-devel}-unstable" -i "${srcdir}/bigloo-emacs.patch"
+  sed -i 's|EXTRALIBS+=-l||' Makefile.config
+  EXTRALIBS="-ldl -lresolv -lunistring -lpcre -lgmp -lm -lc" make build compile-bee
 }
 
 check() {
@@ -71,5 +72,4 @@ package() {
       -e "s|^\(BIGLOO=.*\)\.sh|\1|" \
       -e "s|^\(BGL.*=.*\)\.sh|\1|" \
       -i  ${pkgdir}/usr/lib/bigloo/$pkgver/Makefile.config
-
 }
