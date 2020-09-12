@@ -1,7 +1,7 @@
 pkgbase = notify-osd-syaoran
 	pkgdesc = daemon that displays passive pop-up notifications, with leolik patch added
 	pkgver = 0.9.34
-	pkgrel = 2
+	pkgrel = 1
 	url = https://gitlab.com/justanoobcoder/notify-osd-syaoran.git
 	arch = x86_64
 	license = GPL
