@@ -3,12 +3,12 @@
 
 pkgname="freshfetch-git"
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fresh take on Neofetch"
 arch=('any')
 url="https://github.com/K4rakara/freshfetch"
 license=('MIT')
-depends=('libcpuid' 'luajit')
+depends=('libcpuid' 'libxcb' 'luajit')
 makedepends=('cargo' 'git')
 provides=('freshfetch')
 # I'll eventually make an AUR package called `freshfetch` that conflicts with
@@ -19,20 +19,13 @@ md5sums=('SKIP')
 
 build() {
   cd "$srcdir/freshfetch/";
-  cargo build --release -vv;
+  cargo build \
+    --release \
+	--locked \
+	-vv;
 }
 
 package() {
-  # Create the required directories.
-  mkdir -p "$pkgdir/usr/bin/";
-  cp \
-  	"$srcdir/freshfetch/target/release/freshfetch" \
-	"$pkgdir/usr/bin/freshfetch";
-  chown \
-  	root \
-	"$pkgdir/usr/bin/freshfetch";
-  chmod \
-    755 \
-	"$pkgdir/usr/bin/freshfetch";
+  install -Dm 755 "$srcdir/${pkgname//-git}/target/release/${pkgname//-git}" -t "$pkgdir/usr/bin";
 }
 
