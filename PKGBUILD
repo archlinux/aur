@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20200903.r0.g7a6956579ce6
+pkgver=20200911.r0.gd5b2251d63b5
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -63,7 +63,6 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver
 
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
         "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        'sphinx-workaround.patch'
          # the main kernel config files
         'config')
 
@@ -314,5 +313,4 @@ done
 
 sha512sums=('SKIP'
             '6be8788bfa09f67273682cba1c4566cd1dc48b162c193a482d6565148779c80b6fb2fbe73d2d417dd9e53ca7a69d4ac2012fc98a48a8a0fcd5ac05161e7539c5'
-            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             'fc9c8e06d20fa99baa1e066ca04fdc715635e10c24d1f1551b9a191a0e8eaf775293200483a9213268b6710820570bbbd757db33213713a3ff9e594ad5962943')
