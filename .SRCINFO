@@ -1,7 +1,7 @@
 pkgbase = autoadb-git
 	pkgdesc = Allows executing a command whenever a new device is connected to adb
 	pkgver = r4.7f84029
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rom1v/autoadb
 	arch = any
 	license = Apache

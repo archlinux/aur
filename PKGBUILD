@@ -3,7 +3,7 @@
 _pkgname='autoadb'
 pkgname="${_pkgname}-git"
 pkgver=r4.7f84029
-pkgrel=1
+pkgrel=2
 arch=('any')
 depends=('android-tools')
 license=('Apache')
@@ -23,6 +23,7 @@ pkgver() {
 build() {
   cd $srcdir/${_pkgname}
   curl http://www.apache.org/licenses/LICENSE-2.0 > LICENSE
+  sed -i '190s/.*/   Copyright (C) 2017 Genymobile\n   Copyright (C) 2019 Romain Vimont/' LICENSE
   cargo build --release
 }
 
