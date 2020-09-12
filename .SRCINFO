@@ -9,9 +9,11 @@ pkgbase = zelda-alttd-git
 	makedepends = zip
 	depends = solarus>=1.6.0
 	source = zelda-alttd-git::git+https://gitlab.com/zeldaforce/zelda-alttd.git
+	source = zelda-alttd-git-launcher
 	source = zelda-alttd-git.desktop
 	source = zelda-alttd-git.png
 	b2sums = SKIP
+	b2sums = 4d0c654af0434212724915a72cd5e4439c89f95f4fb331c669388b5e65676afd31168f8fe6e99ac04b769d6be05db9e22e61d81af30145d5808fc58d0caeb8fc
 	b2sums = 835e6b8db95c6466f21efe733959461b9481d20eb10a970262f0438cc54eabb6deea53011560322f0baf7fe129c1c977076be10f75d86d02988bb0d8bc2df256
 	b2sums = b23c6aa20af637e4ae09519f8b770f19ea8f1f774615c8a141b521d1ce859f738c43cf56cc3a0c799a736cdb310415ac576e9afe8b21c95451c8b818226e2442
 

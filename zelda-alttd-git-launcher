@@ -1,0 +1,2 @@
+#!/bin/sh
+solarus-run /usr/share/solarus/zelda-alttd-git $*
