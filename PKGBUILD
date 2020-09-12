@@ -2,7 +2,7 @@
 
 pkgname=sidequest-git
 _pkgname=SideQuest
-pkgver=v0.8.7.67.g57b97b7
+pkgver=v0.10.14.10.gd3ef55b
 pkgrel=1
 pkgdesc="A tool to help simplify getting content onto Oculus Quest, Go, and other VR headsets."
 arch=('any')
@@ -10,8 +10,10 @@ url="https://sidequestvr.com/"
 license=('MIT')
 depends=(electron4)
 makedepends=(yarn)
+provides=(sidequest)
+conflicts=(sidequest)
 options=(!strip)
-source=("git+https://github.com/the-expanse/SideQuest"
+source=("git+https://github.com/SideQuestVR/SideQuest"
         "sidequest"
         "openUrl-fix.patch"
         "SideQuest.desktop")
