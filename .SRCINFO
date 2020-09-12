@@ -1,0 +1,20 @@
+pkgbase = cos-git
+	pkgdesc = Children of Solarus - 100% free remake of The Legend of Zelda: Mystery of Solarus DX (Git version)
+	pkgver = r2051.c2dc1ad3
+	pkgrel = 1
+	url = https://solarus-games.org/en/games/children-of-solarus
+	arch = any
+	license = GPL3
+	license = custom
+	makedepends = cmake
+	makedepends = zip
+	depends = solarus>=1.6.0
+	source = cos-git::git+https://gitlab.com/solarus-games/children-of-solarus.git
+	source = cos-git.png
+	source = cos-git.desktop
+	b2sums = SKIP
+	b2sums = 246f69fd275711cceb42e1d6cadbb47c82f75d6b0cff4ac4d17554f53a118a4adc6d72887960e5f2397a6734b09b9676f9dac27e0cc4203911d0c192720b3371
+	b2sums = 9c950ca2d10077c94fb5aa080d2f3d6fb46869c33a16ac443197647e5cf2b9318e58be04310538647e2ed9fdbee09758dca9b3e018f34da442501bf1cdc685af
+
+pkgname = cos-git
+

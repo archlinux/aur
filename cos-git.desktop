@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Children of Solarus (Git version)
+Comment=100% free remake of The Legend of Zelda: Mystery of Solarus DX
+Path=/usr/bin
+Exec=cos-git
+Icon=cos-git
+Terminal=false
+Categories=Game;
