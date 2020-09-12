@@ -1,38 +1,35 @@
-# Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: Denis Kasak <dkasak|AT|termina.org.uk>
+
 pkgname=vimpc-git
-pkgver=0.09.0.r100.gd828693
+pkgver=0.09.1.r115.gc518610
 pkgrel=1
-pkgdesc="Client for mpd with vi-like key bindings"
-arch=('i686' 'x86_64')
+pkgdesc="Vi/vim inspired client for Music Player Daemon (MPD)"
+arch=('x86_64')
 url="https://github.com/boysetsfrog/vimpc"
 license=('GPL3')
-groups=()
-depends=('libmpdclient'
-         'pcre'
-         'ncurses'
-         'taglib')
-provides=('vimpc')
-conflicts=('vimpc')
-makedepends=('git'
-             'autoconf'
-             'automake'
-             'boost')
-source=("$pkgname"'::git+https://github.com/boysetsfrog/vimpc')
+#makedepends=('git')
+makedepends=('boost' 'git')
+depends=('libmpdclient' 'ncurses' 'pcre' 'taglib')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $pkgname
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/$pkgname"
-    ./autogen.sh
-    ./configure --prefix=/usr
-    make
+  cd $pkgname
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-    make DESTDIR="$pkgdir/" install
+  cd $pkgname
+  make DESTDIR="$pkgdir/" install
 }
+
