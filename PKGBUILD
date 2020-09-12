@@ -2,7 +2,7 @@
 
 pkgname=polyfile
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility to identify and map the semantic structure of files, including polyglots, chimeras, and schizophrenic files."
 arch=('any')
 url=https://github.com/trailofbits/polyfile

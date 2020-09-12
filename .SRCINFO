@@ -1,7 +1,7 @@
 pkgbase = polyfile
 	pkgdesc = A utility to identify and map the semantic structure of files, including polyglots, chimeras, and schizophrenic files.
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trailofbits/polyfile
 	arch = any
 	license = LGPLv3
