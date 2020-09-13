@@ -1,6 +1,6 @@
 pkgbase = notify-osd-git
 	pkgdesc = Customizable Canonical's on-screen-display notification (notify-osd) daemon.
-	pkgver = 0.9.34.r22.771c7f3
+	pkgver = 0.9.34.r26.6e1e156
 	pkgrel = 1
 	url = https://gitlab.com/justanoobcoder/notify-osd.git
 	arch = x86_64

@@ -1,6 +1,6 @@
 pkgname=notify-osd-git
 _srcdir=notify-osd
-pkgver=0.9.34.r22.771c7f3
+pkgver=0.9.34.r26.6e1e156
 pkgrel=1
 pkgdesc="Customizable Canonical's on-screen-display notification (notify-osd) daemon."
 arch=(x86_64)
