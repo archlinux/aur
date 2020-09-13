@@ -3,10 +3,10 @@
 
 # This is the git PKGBUILD for servicewall
 
-_pkgname=servicewall
 pkgname=servicewall-git
+_pkgname=${pkgname%-git}
 pkgdesc="The firewall that remembers the different networks you connect to."
-pkgver=0.4.5.r1.fc8e47d
+pkgver=0.4.5.r3.cb42cef
 pkgrel=1
 arch=("any")
 url="https://github.com/lafleurdeboum/servicewall"
@@ -20,6 +20,8 @@ depends=(
     "python-systemd"
     "ulogd"
 )
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 optdepends=("python-argcomplete" "networkd-dispatcher" "networkmanager")
 makedepends=("python-distribute" "python-setuptools" "git")
 install=servicewall.install
@@ -28,7 +30,7 @@ backup=(
 )
 
 # Sources for git repos :
-source=("${pkgname%-git}::git+https://github.com/lafleurdeboum/${_pkgname}.git")
+source=("${_pkgname}::git+https://github.com/lafleurdeboum/${_pkgname}.git")
 
 # Sources for non-git repos :
 #options=(!emptydirs)
@@ -39,7 +41,7 @@ md5sums=("SKIP")
 
 pkgver() {
   #cd "${srcdir}/${_pkgname}-${pkgver}"
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/${_pkgname}"
   # git, no tags available
   #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   # Git, tags available
@@ -47,12 +49,12 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/${_pkgname}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/${_pkgname}"
   python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 }
 
