@@ -104,7 +104,7 @@ package() {
 	install -Dm644 "${srcdir}/org.freedesktop.xampp-manager.policy" "${pkgdir}/usr/share/polkit-1/actions/org.freedesktop.xampp-manager.policy"
 
 	# Remove unused folders
-	rm -rf	"${pkgdir}/xampp_core_files/"\
+	rm -rf	"${pkgdir}/xampp_core_files/" \
 		"${pkgdir}/xampp_developer_files/" \
 		"${pkgdir}/native_mysql_adapter/" \
 		"${pkgdir}/native_apache_adapter/" \
