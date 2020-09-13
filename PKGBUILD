@@ -37,7 +37,7 @@ package() {
   install -D "dist/config.ini" "$pkgdir/var/lib/$pkgname/config.ini"
 }
 
-md5sums=('3402cb0ee0eb25900192f6130a6fcc3d'
+md5sums=('b226e3fdf410460d14a672cd7b4f52d0'
          'b85e2bf437eb4528a319f797c18c2fc3'
          'b7e1a3c7f09bed0d04e918d7a0a87be7'
          '279dcf052b7ac8b83a8781b36071c47e')
