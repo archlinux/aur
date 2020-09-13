@@ -1,0 +1,29 @@
+From b9604145623a990bb08eb460309e838684a692b1 Mon Sep 17 00:00:00 2001
+From: Jose Santiago <jsantiago@haivision.com>
+Date: Thu, 3 Nov 2016 14:36:10 -0500
+Subject: [PATCH 2/3] Fix build with ANGLE
+
+---
+ src/plugins/common/evr/evrd3dpresentengine.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/plugins/common/evr/evrd3dpresentengine.cpp b/src/plugins/common/evr/evrd3dpresentengine.cpp
+index d8e2da6d..41ef4d96 100644
+--- a/src/plugins/common/evr/evrd3dpresentengine.cpp
++++ b/src/plugins/common/evr/evrd3dpresentengine.cpp
+@@ -50,9 +50,9 @@
+ #include <QOffscreenSurface>
+ 
+ #ifdef MAYBE_ANGLE
+-# include <qguiapplication.h>
+-# include <qpa/qplatformnativeinterface.h>
+-# include <qopenglfunctions.h>
++# include <QtGui/qguiapplication.h>
++# include <QtGui/qpa/qplatformnativeinterface.h>
++# include <QtGui/qopenglfunctions.h>
+ # include <EGL/eglext.h>
+ #endif
+ 
+-- 
+2.28.0
+
