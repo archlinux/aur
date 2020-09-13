@@ -3,7 +3,7 @@
 # Contributor: smlb <smlb at riseup dot net>
 
 pkgname=dockd
-pkgver=1.21
+pkgver=1.3
 pkgrel=1
 pkgdesc="Lenovo ThinkPad Dock Management Daemon"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ url="https://github.com/libthinkpad/dockd"
 license=('BSD')
 depends=('libthinkpad' 'libxrandr')
 makedepends=('cmake')
-source=("https://libthinkpad.github.io/ftp/dockd/$pkgname-$pkgver.tar.gz")
-md5sums=('67093aa2889fd140a6460ab7897087ac')
+source=("https://github.com/libthinkpad/dockd/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+md5sums=('38f09d34554154781c91d6f71d4e9812')
 
 prepare() {
     mkdir -p "$srcdir/$pkgname-$pkgver/etc"
