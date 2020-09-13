@@ -11,7 +11,6 @@ groups=('xfce4-goodies')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 depends=('xfce4-theme-switcher' 'xfce4-whiskermenu-plugin' 'gtk-engine-murrine')
-optdepends=('plank' 'conky-manager')
 options=('!strip')
 
 source=('https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-windows-server-2003-theme/distrib/xts-windows-server-2003-theme-0.1-1.tar.gz')
