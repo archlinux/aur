@@ -5,7 +5,7 @@
 
 pkgname=ubuntu-themes
 _ubuntu_rel=0ubuntu1
-pkgver=19.04
+pkgver=20.10
 pkgrel=1
 pkgdesc="Ubuntu monochrome icon theme, Ambiance and Radiance themes, and Ubuntu artwork"
 arch=(any)
@@ -17,9 +17,9 @@ depends=(humanity-icon-theme adwaita-icon-theme hicolor-icon-theme
 makedepends=(python2 imagemagick icon-naming-utils)
 provides=(light-themes ubuntu-mono)
 conflicts=(light-themes ubuntu-mono)
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.orig.tar.gz")
+source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/ubuntu-themes/"$pkgver"-"$_ubuntu_rel"/"$pkgname"_"$pkgver".orig.tar.gz")
 
-sha512sums=('95b41c5d3a47fba9c4b5368b4e80d8924e09844783c66ca697ce0ff5d71f2b0fd4f56a9041dc142267e0eaf75fd5a8b47c0abae049fc3434b5e29f3f363d83e8')
+sha512sums=('0118f7c2404856216ff2df0246ea2fa98d0d5b25973abc3df13a998f7a41f2eeb32ca08281ba41399a91fa16ab046e3b3292f504503958983a6488c1e3001ac4')
 
 build() {
    # Python 2 fix
