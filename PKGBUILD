@@ -4,7 +4,7 @@
 
 pkgname=jitsi-meet-desktop
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://jitsi.org/jitsi-meet/"
@@ -30,6 +30,11 @@ prepare() {
   cd jitsi-meet-electron-${pkgver}/
 
   sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron/version)'"#' -i package.json
+
+  # workaround to keep it working with electron 10 until addressed upstream
+  # see https://github.com/electron/electron/blob/master/docs/breaking-changes.md#default-changed-enableremotemodule-defaults-to-false
+  sed 's#webPreferences: {#webPreferences: {\n            enableRemoteModule: true,#' -i main.js
+  export npm_config_cache="${srcdir}/npm_cache"
   npm install
 }
 

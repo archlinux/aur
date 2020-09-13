@@ -1,7 +1,7 @@
 pkgbase = jitsi-meet-desktop
 	pkgdesc = Jitsi Meet desktop application
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	arch = x86_64
 	arch = aarch64
