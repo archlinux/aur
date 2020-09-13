@@ -33,3 +33,6 @@ VBOX_GUI_WITH_SHARED_LIBRARY = 1
 
 # do not build additions
 VBOX_WITH_ADDITIONS :=
+
+# disable experimental cloud infrastructure integration
+VBOX_WITH_CLOUD_NET :=
