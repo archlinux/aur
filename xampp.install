@@ -1,52 +1,86 @@
 # Make sure to synchronize the UUID declared here with the one declared in the PKGBUILD
-_mysql_uuid=992
+_MYSQL_UUID=992
+
+# Like `backup` in `PKGBUILD`, but supports folders – no leading and trailing slashes here
+_BACKUP=('opt/lampp/etc' 'opt/lampp/htdocs' 'opt/lampp/var')
 
 post_install() {
 
 	if ! id -u mysql &> /dev/null; then
-
 		echo "Creating user 'mysql'..."
-		groupadd mysql -g "${_mysql_uuid}"
-		useradd -u "${_mysql_uuid}" -r -g mysql -s /bin/false mysql
+		groupadd mysql -g "${_MYSQL_UUID}"
+		useradd -u "${_MYSQL_UUID}" -r -g mysql -s /bin/false mysql
 		mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-
 	fi
 
-	echo "XAMPP is now installed below the /opt/lampp directory"
-	echo "To start, stop or restart XAMPP simply call the command:"
-	echo "     lampp {start, stop, restart} or xampp {start, stop, restart}"
-	echo "Then you can check that everything really works, Just enter the following URL at your web browser:"
-	echo "     http://localhost"
+	chown -R mysql:mysql '/opt/lampp/var/mysql/'
+
+	echo
+	echo 'XAMPP is now installed below the /opt/lampp directory.'
+	echo
+	echo 'To start, stop or restart XAMPP simply call the command'
+	echo
+	echo '     xampp {start, stop, restart}'
+	echo
+	echo 'Alternatively you can use the `xampp` systemd service.'
+	echo
+	echo 'Then to check that everything really works just enter the following URL in your'
+	echo 'web browser:'
+	echo
+	echo '     http://localhost'
+	echo
+	echo 'Have fun!'
+	echo
 
 }
 
 pre_upgrade() {
 
-	/opt/lampp/lampp stop >/dev/null 2>&1
-	cp -r /opt/lampp/ /opt/lampp_backup
-	echo "Your /opt/lampp/ folder were backed up to /opt/lampp/htdocs_backup"
+	echo -n "Stopping lampp services..."
+	local _STDERR="$(/opt/lampp/lampp stop >/dev/null 2>&1)" && echo ' OK' || (echo ' FAILED'; echo "${_STDERR}")
+
+	local _COIN
+	for _COIN in "${_BACKUP[@]}"; do
+		! test -d "/${_COIN}" || mv "/${_COIN}" "/${_COIN}-backup"
+	done
 
 }
 
 post_upgrade() {
 
-	echo "REMEMBER: Your /opt/lampp folder were backed up to /opt/lampp_backup"
-	echo "Restore manually the needed configuration files."
+	local _COIN
+	for _COIN in "${_BACKUP[@]}"; do
+		if test -d "/${_COIN}-backup"; then
+			rm -rf "/${_COIN}.pacnew"
+			mv "/${_COIN}" "/${_COIN}.pacnew"
+			mv "/${_COIN}-backup" "/${_COIN}"
+		fi
+	done
 
 }
 
+pre_remove() {
+
+	local _DATESTAMP="$(date '+%Y-%m-%d-%H.%M.%S')"
+	echo -n "Stopping lampp services..."
+	local _STDERR
+	_STDERR="$(/opt/lampp/lampp stop >/dev/null 2>&1)" && echo ' OK' || (echo ' FAILED'; test "x${_STDERR}" != 'x' && echo "${_STDERR}")
+	install -dm755 '/opt/htdocs-backups'
+	cp -ra '/opt/lampp/htdocs' "/opt/htdocs-backups/${_DATESTAMP}" || echo 'ERROR: Could not create a backup of /opt/lampp/htdocs.' 1>&2
+
+}
 
 pre_remove() {
 
-	echo "Stopping lampp services..."
-	/opt/lampp/lampp stop >/dev/null 2>&1
-	cp -r /opt/lampp/htdocs /opt/lampp/htdocs_backup
-	echo "Your htdocs folder were backed up to /opt/lampp/htdocs_backup"
+	local _COIN
+	for _COIN in "${_BACKUP[@]}"; do
+		rm -rf "/${_COIN}.pacnew"
+	done
 
 }
 
 post_remove() {
 
-	rm -rf /opt/lampp/{etc,var}
+	echo "REMEMBER: Your htdocs folder were backed up to /opt/htdocs-backups"
 
 }

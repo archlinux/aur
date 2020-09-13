@@ -1,5 +1,5 @@
 [Unit]
-Description=Lampp service (XAMPP)
+Description=XAMPP service (XAMPP Apache + MariaDB + PHP + Perl)
 
 [Service]
 Type=oneshot
