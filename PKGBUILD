@@ -73,11 +73,11 @@ package() {
 	find "${pkgdir}/opt/lampp/" -type f \
 		-exec sed -i 's/\@\@BITNAMI_XAMPP_ROOT\@\@/\/opt\/lampp/gI;s/\@\@BITROCK_INSTALLDIR\@\@/\/opt\/lampp/gI' {} \;
 
-	# For using mariadb
+	# For using mariadb from the official packages (currently unused option)
 	#find "${pkgdir}/opt/lampp/mysql/scripts" -type f -exec sed -i 's/\/opt\/lampp\/var\/mysql\/$HOSTNAME.pid/\/var\/lib\/mysql\/$HOSTNAME.pid/gI' {} \;
 	#find "${pkgdir}/opt/lampp/" -type f -exec sed -i 's/\/opt\/lampp\/var\/mysql\/mysql.sock/\/run\/mysqld\/mysqld.sock/gI' {} \;
 
-	# start from xampp manager
+	# For running mysql from the official packages (currently unused option)
 	#find "${pkgdir}/opt/lampp/mysql/scripts" -type f -exec sed -i 's/\/opt\/lampp\/lampp\ startmysql/systemctl\ start\ mysqld/gI' {} \;
 
 	# Licenses
@@ -112,7 +112,8 @@ package() {
 		"${pkgdir}/manager/" \
 		"${pkgdir}/common_native_adapter/"
 
-	# Update backup list for the next time (currently unused method - requires `readarray backup < "./backup.lst"`)
+	# Update backup list for the next time – currently unused method (we use
+	# `xampp.install` for this) - requires `readarray backup < "./backup.lst"`)
 	#(cd "${pkgdir}" && find -L 'opt/lampp/etc' -type f && find -L 'opt/lampp/var' -type f && find -L 'opt/lampp/htdocs' -type f) > "$(readlink 'backup.lst')"
 
 }
