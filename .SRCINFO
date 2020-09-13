@@ -1,6 +1,6 @@
 pkgbase = textext
 	pkgdesc = An inkscape extension which lets you add LaTeX equations to your drawings
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/textext/textext
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = textext
 	depends = python-lxml
 	depends = python-gobject
 	optdepends = imagemagick
-	source = textext-1.0.0.tar.gz::https://github.com/textext/textext/releases/download/1.0.0/TexText-Linux-1.0.0.tar.gz
-	sha256sums = 046410f42d80166ebf35041136ae5e6bb1fa184c742e5424b25d0d2e8949b795
+	source = textext-1.1.0.tar.gz::https://github.com/textext/textext/releases/download/1.1.0/TexText-Linux-1.1.0.tar.gz
+	sha256sums = 1baa6cacb27f50b1316290e45021a8302795154d8b95a5903de320792e351fea
 
 pkgname = textext
 
