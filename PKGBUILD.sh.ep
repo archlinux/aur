@@ -1,0 +1,1 @@
+%= include "$default_package_name/mingw-w64/PKGBUILD";
