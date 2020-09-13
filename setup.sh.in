@@ -3,155 +3,155 @@
 set -e
 
 bootstrap_install() {
-    install -dv "$destdir"
-    install -dv "$bindir"
-    install -dv "$libdir"
-    install -dv "$docdir"
-    install -d "$prefix/bin/"
-    install -d "$prefix/share/applications/"
-    for eta in ./eve-transl${qtver}-??.tar.gz ;do
-	install -m 0644 "$eta" "$libdir"
-    done
-    if [ -f "./dxvk-$dvver.tar.gz" ] ;then
-	install -d "$libdir/dxvk/"
-	echo "$dvver" >"$libdir/dxvk/version"
-	chmod 0644 "$libdir/dxvk/version"
-	tar xf ./dxvk-$dvver.tar.gz -C $libdir/dxvk/ --no-same-owner \
-	    --strip-components=1 dxvk-$dvver/x32 dxvk-$dvver/x64
-    fi
-    install -m 0644 "./evesetup.shlib" "$libdir"
-    install -m 0644 "./evelauncher-${elver}.tar.gz" "$libdir"
-    install -m 0644 "./evelauncher.kwinrule" "$docdir"
-    install -m 0644 "./evelauncher.lua" "$docdir"
-    sed -i s,./eve-transl,$libdir/eve-transl, ./evelauncher.sh
-    sed -i s,SETUPDIR=\"\",SETUPDIR=\"$destdir\", ./evelauncher.sh
-    for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
-	cmd=eve$cmd
-	if [ -f "./$cmd" ] ;then
-	    sed -i s,./evesetup.shlib,$libdir/evesetup.shlib, ./$cmd
-	    install "./$cmd" "$bindir/"
-	else
-	    if [ "$cmd" = "everestore" ] ;then
-		ln -s evebackup "$bindir/$cmd"
-	    else
-		ln -s evewine "$bindir/$cmd"
-	    fi
+	install -dv "$destdir"
+	install -dv "$bindir"
+	install -dv "$libdir"
+	install -dv "$docdir"
+	install -d "$prefix/bin/"
+	install -d "$prefix/share/applications/"
+	for eta in ./eve-transl${qtver}-??.tar.gz ;do
+		install -m 0644 "$eta" "$libdir"
+	done
+	if [ -f "./dxvk-$dvver.tar.gz" ] ;then
+		install -d "$libdir/dxvk/"
+		echo "$dvver" >"$libdir/dxvk/version"
+		chmod 0644 "$libdir/dxvk/version"
+		tar xf ./dxvk-$dvver.tar.gz -C $libdir/dxvk/ --no-same-owner \
+			--strip-components=1 dxvk-$dvver/x32 dxvk-$dvver/x64
 	fi
-	[ "$bindir" != "$prefix/bin" ] && ln -s "$bindir/$cmd" "$prefix/bin/$cmd"
-	if [ ! "$cmd" = "evewine" ] ;then
-	    oexec=$(grep Exec= ./${cmd%.*}.desktop)
-	    sed -i s,$oexec,Exec=$prefix/bin/$cmd, ./${cmd%.*}.desktop
-	    install -m 0644 "./${cmd%.*}.desktop" "$prefix/share/applications/"
+	install -m 0644 "./evesetup.shlib" "$libdir"
+	install -m 0644 "./evelauncher-${elver}.tar.gz" "$libdir"
+	install -m 0644 "./evelauncher.kwinrule" "$docdir"
+	install -m 0644 "./evelauncher.lua" "$docdir"
+	sed -i s,./eve-transl,$libdir/eve-transl, ./evelauncher.sh
+	sed -i s,SETUPDIR=\"\",SETUPDIR=\"$destdir\", ./evelauncher.sh
+	for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
+		cmd=eve$cmd
+		if [ -f "./$cmd" ] ;then
+			sed -i s,./evesetup.shlib,$libdir/evesetup.shlib, ./$cmd
+			install "./$cmd" "$bindir/"
+		else
+			if [ "$cmd" = "everestore" ] ;then
+				ln -s evebackup "$bindir/$cmd"
+			else
+				ln -s evewine "$bindir/$cmd"
+			fi
+		fi
+		[ "$bindir" != "$prefix/bin" ] && ln -s "$bindir/$cmd" "$prefix/bin/$cmd"
+		if [ ! "$cmd" = "evewine" ] ;then
+			oexec=$(grep Exec= ./${cmd%.*}.desktop)
+			sed -i s,$oexec,Exec=$prefix/bin/$cmd, ./${cmd%.*}.desktop
+			install -m 0644 "./${cmd%.*}.desktop" "$prefix/share/applications/"
+		fi
+	done
+	for icons in $(find . -type f -name '*.png') ;do
+		install -D -m 0644 "$icons" "$prefix/share/${icons#*/}"
+	done
+	if [ -x $(which gtk-update-icon-cache) ] ;then
+		if [ -f "${prefix}/share/icons/hicolor/icon-theme.cache" ] ;then
+			gtk-update-icon-cache -t -f "${prefix}/share/icons/hicolor" 2>/dev/null
+			chmod 0644 "${prefix}/share/icons/hicolor/icon-theme.cache"
+		fi
 	fi
-    done
-    for icons in $(find . -type f -name '*.png') ;do
-	install -D -m 0644 "$icons" "$prefix/share/${icons#*/}"
-    done
-    if [ -x $(which gtk-update-icon-cache) ] ;then
-	if [ -f "${prefix}/share/icons/hicolor/icon-theme.cache" ] ;then
-	    gtk-update-icon-cache -t -f "${prefix}/share/icons/hicolor" 2>/dev/null
-	    chmod 0644 "${prefix}/share/icons/hicolor/icon-theme.cache"
-	fi
-    fi
 }
 
 bootstrap_remove() {
-    for icons in $(find . -type f -name '*.png') ;do
-	rm -f "$prefix/share/${icons#*/}"
-    done
-    for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
-	cmd=eve$cmd
-	rm -fv "$prefix/bin/$cmd"
-	if [ ! "$cmd" = "evewine" ] ;then
-	    rm -f "$prefix/share/applications/${cmd%.*}.desktop"
-	fi
-    done
-    printf "\nRemove $destdir...\n"
-    rm -rf "$destdir"
+	for icons in $(find . -type f -name '*.png') ;do
+		rm -f "$prefix/share/${icons#*/}"
+	done
+	for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
+		cmd=eve$cmd
+		rm -fv "$prefix/bin/$cmd"
+		if [ ! "$cmd" = "evewine" ] ;then
+			rm -f "$prefix/share/applications/${cmd%.*}.desktop"
+		fi
+	done
+	printf "\nRemove $destdir...\n"
+	rm -rf "$destdir"
 }
 
 build_lib() {
-    if [ ! -r "./evelauncher-$elver.tar.gz" ] ;then
-	printf "\nDownload evelauncher-$elver.tar.gz...\n\n"
-	curl -L -O https://binaries.eveonline.com/evelauncher-$elver.tar.gz
-    fi
-    rcsum="$(sha256sum ./evelauncher-$elver.tar.gz| cut -d' ' -f1)"
-    if [ "$rcsum" != "$elcsum" ] ;then
-	printf "\n\nError: Checksum evelauncher-$elver.tar.gz mismatch!"
-	printf "\nLeaving.\n\n"
-	exit 0
-    fi
-    printf "\n\nExtract evelauncher-$elver.tar.gz..."
-    tar xf evelauncher-$elver.tar.gz
-    echo "done."
-    printf "\nClean up evelauncher directory..."
-    cd evelauncher/
-    rm -f ./*.a ./*.la ./*.pem ./*.prl ./libxcb*
-    chmod 0755 ./*
-    chmod 0644 ./*.qm ./*.conf ./errorpage/*
-    echo "done."
-    printf "\nReplace identical files with symbolic links..."
-    ln -sf evelauncher.sh LogLite.sh
-    ln -sf libicudata.so.55.1 libicudata.so
-    ln -sf libicudata.so.55.1 libicudata.so.55
-    ln -sf libicui18n.so.55.1 libicui18n.so
-    ln -sf libicui18n.so.55.1 libicui18n.so.55
-    ln -sf libicuuc.so.55.1 libicuuc.so
-    ln -sf libicuuc.so.55.1 libicuuc.so.55
-    ln -sf libgpr.so.6.0.0 libgpr.so
-    ln -sf libgpr.so.6.0.0 libgpr.so.6
-    ln -sf libgrpc++.so.1.12.0 libgrpc++.so
-    ln -sf libgrpc++.so.1.12.0 libgrpc++.so.1
-    ln -sf libgrpc++.so.1.12.0 libgrpc++.so.6
-    ln -sf libgrpc.so.6.0.0 libgrpc.so
-    ln -sf libgrpc.so.6.0.0 libgrpc.so.6
-    ln -sf libpng12.so.0.54.0 libpng12.so.0
-    ln -sf libprotobuf.so.16.0.0 libprotobuf.so
-    ln -sf libprotobuf.so.16.0.0 libprotobuf.so.16
-    echo "done."
-    printf "\nRemove unneeded symbols from files..."
-    find ./ -maxdepth 1 -type f -exec strip -s {} 2>/dev/null \;
-    echo "done."
-    printf "\nRepack evelauncher-$elver.tar.gz..."
-    cd ../
-    rm evelauncher-$elver.tar.gz
-    tar czf evelauncher-$elver.tar.gz evelauncher/
-    rm -rf evelauncher/
-    echo "done."
+	if [ ! -r "./evelauncher-$elver.tar.gz" ] ;then
+		printf "\nDownload evelauncher-$elver.tar.gz...\n\n"
+		curl -L -O https://binaries.eveonline.com/evelauncher-$elver.tar.gz
+	fi
+	rcsum="$(sha256sum ./evelauncher-$elver.tar.gz| cut -d' ' -f1)"
+	if [ "$rcsum" != "$elcsum" ] ;then
+		printf "\n\nError: Checksum evelauncher-$elver.tar.gz mismatch!"
+		printf "\nLeaving.\n\n"
+		exit 0
+	fi
+	printf "\n\nExtract evelauncher-$elver.tar.gz..."
+	tar xf evelauncher-$elver.tar.gz
+	echo "done."
+	printf "\nClean up evelauncher directory..."
+	cd evelauncher/
+	rm -f ./*.a ./*.la ./*.pem ./*.prl ./libxcb*
+	chmod 0755 ./*
+	chmod 0644 ./*.qm ./*.conf ./errorpage/*
+	echo "done."
+	printf "\nReplace identical files with symbolic links..."
+	ln -sf evelauncher.sh LogLite.sh
+	ln -sf libicudata.so.55.1 libicudata.so
+	ln -sf libicudata.so.55.1 libicudata.so.55
+	ln -sf libicui18n.so.55.1 libicui18n.so
+	ln -sf libicui18n.so.55.1 libicui18n.so.55
+	ln -sf libicuuc.so.55.1 libicuuc.so
+	ln -sf libicuuc.so.55.1 libicuuc.so.55
+	ln -sf libgpr.so.6.0.0 libgpr.so
+	ln -sf libgpr.so.6.0.0 libgpr.so.6
+	ln -sf libgrpc++.so.1.12.0 libgrpc++.so
+	ln -sf libgrpc++.so.1.12.0 libgrpc++.so.1
+	ln -sf libgrpc++.so.1.12.0 libgrpc++.so.6
+	ln -sf libgrpc.so.6.0.0 libgrpc.so
+	ln -sf libgrpc.so.6.0.0 libgrpc.so.6
+	ln -sf libpng12.so.0.54.0 libpng12.so.0
+	ln -sf libprotobuf.so.16.0.0 libprotobuf.so
+	ln -sf libprotobuf.so.16.0.0 libprotobuf.so.16
+	echo "done."
+	printf "\nRemove unneeded symbols from files..."
+	find ./ -maxdepth 1 -type f -exec strip -s {} 2>/dev/null \;
+	echo "done."
+	printf "\nRepack evelauncher-$elver.tar.gz..."
+	cd ../
+	rm evelauncher-$elver.tar.gz
+	tar czf evelauncher-$elver.tar.gz evelauncher/
+	rm -rf evelauncher/
+	echo "done."
 }
 
 get_dxvk() {
-    if [ ! -r "./dxvk-$dvver.tar.gz" ] ;then
-	printf "\nDownload dxvk-$dvver.tar.gz...\n\n"
-	curl -L -O https://github.com/doitsujin/dxvk/releases/download/v$dvver/dxvk-$dvver.tar.gz
-    fi
-    rcsum="$(sha256sum ./dxvk-$dvver.tar.gz| cut -d' ' -f1)"
-    if [ "$rcsum" != "$dvcsum" ] ;then
-	printf "\n\nWarning: Checksum dxvk-$dvver.tar.gz mismatch, ignored.\n"
-	rm ./dxvk-$dvver.tar.gz 2>/dev/null || true
-    fi
+	if [ ! -r "./dxvk-$dvver.tar.gz" ] ;then
+		printf "\nDownload dxvk-$dvver.tar.gz...\n\n"
+		curl -L -O https://github.com/doitsujin/dxvk/releases/download/v$dvver/dxvk-$dvver.tar.gz
+	fi
+	rcsum="$(sha256sum ./dxvk-$dvver.tar.gz| cut -d' ' -f1)"
+	if [ "$rcsum" != "$dvcsum" ] ;then
+		printf "\n\nWarning: Checksum dxvk-$dvver.tar.gz mismatch, ignored.\n"
+		rm ./dxvk-$dvver.tar.gz 2>/dev/null || true
+	fi
 }
 
 check_req() {
-    if [ ! -r "$(find /usr/lib -type f -name 'libxcb-xinerama*' 2>/dev/null)" ] ;then
-	req="${req}libxcb-xinerama\n"
-    fi
-    if [ ! -x "$(which 7z 2>/dev/null)" ] ;then
-	req="${req}7z\n"
-    fi
-    if [ ! -x "$(which curl 2>/dev/null)" ] ;then
-	req="${req}curl\n"
-    fi
-    if [ ! -x "$(which wine 2>/dev/null)" ] ;then
-	req="${req}wine\n"
-    fi
-    if [ "x$req" != "x" ] ;then
-	printf "\nError: Following requirements are missing:\n"
-	printf "\n$req\n"
-	printf "\nPlease install these requirements with your Package Manager.\n"
-	printf "\nLeaving.\n\n"
-	exit 0
-    fi
+	if [ ! -r "$(find /usr/lib -type f -name 'libxcb-xinerama*' 2>/dev/null)" ] ;then
+		req="${req}libxcb-xinerama\n"
+	fi
+	if [ ! -x "$(which 7z 2>/dev/null)" ] ;then
+		req="${req}7z\n"
+	fi
+	if [ ! -x "$(which curl 2>/dev/null)" ] ;then
+		req="${req}curl\n"
+	fi
+	if [ ! -x "$(which wine 2>/dev/null)" ] ;then
+		req="${req}wine\n"
+	fi
+	if [ "x$req" != "x" ] ;then
+		printf "\nError: Following requirements are missing:\n"
+		printf "\n$req\n"
+		printf "\nPlease install these requirements with your Package Manager.\n"
+		printf "\nLeaving.\n\n"
+		exit 0
+	fi
 }
 
 prefix="/usr"
@@ -168,35 +168,35 @@ rcsum=""
 key=""
 
 if [ $(id -u) -ne 0 ] ;then
-    printf "\nEVE Online Launcher Setup need root permissions."
-    printf "\nLeaving.\n\n"
-    exit 0
+	printf "\nEVE Online Launcher Setup need root permissions."
+	printf "\nLeaving.\n\n"
+	exit 0
 fi
 
 if [ -d "$destdir" ] ;then
-    printf "\n"
-    read -p 'Remove EVE Online Launcher Setup? (Y/n) ' key
-    if [ "x$(echo $key | tr [:upper:] [:lower:])" != "xn" ] ;then
-	printf "\nRemoving...\n\n"
-	bootstrap_remove
-    fi
-else
-    printf "\n"
-    read -p 'Install EVE Online Launcher Setup? (Y/n) ' key
-    if [ "x$(echo $key | tr [:upper:] [:lower:])" != "xn" ] ;then
-	printf "\nInstalling...\n"
-	check_req
-	build_lib
-	get_dxvk
 	printf "\n"
-	bootstrap_install
-	printf "\nYou can now start EVE Online Launcher and his Tools:\n\n"
-	for cmd in *.desktop ;do
-	    oexec=$(grep Exec= $cmd | cut -d= -f2); oexec=${oexec##*/}
-	    [ ! "$oexec" = "evelauncher.sh" ] && \
-	    printf " $oexec\t- $(grep Comment= $cmd | cut -d= -f2)\n"
-	done
-	printf "\n evelauncher.sh\t- EVE Online Launcher\n"
-    fi
+	read -p 'Remove EVE Online Launcher Setup? (Y/n) ' key
+	if [ "x$(echo $key | tr [:upper:] [:lower:])" != "xn" ] ;then
+		printf "\nRemoving...\n\n"
+		bootstrap_remove
+	fi
+else
+	printf "\n"
+	read -p 'Install EVE Online Launcher Setup? (Y/n) ' key
+	if [ "x$(echo $key | tr [:upper:] [:lower:])" != "xn" ] ;then
+		printf "\nInstalling...\n"
+		check_req
+		build_lib
+		get_dxvk
+		printf "\n"
+		bootstrap_install
+		printf "\nYou can now start EVE Online Launcher and his Tools:\n\n"
+		for cmd in *.desktop ;do
+			oexec=$(grep Exec= $cmd | cut -d= -f2); oexec=${oexec##*/}
+			[ ! "$oexec" = "evelauncher.sh" ] && \
+			printf " $oexec\t- $(grep Comment= $cmd | cut -d= -f2)\n"
+		done
+		printf "\n evelauncher.sh\t- EVE Online Launcher\n"
+	fi
 fi
 printf "\nDone.\n\n"

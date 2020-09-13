@@ -26,54 +26,54 @@ pelcs=$(expr $pshal + $pofsl)
 
 plc=1
 while read pline ;do
-    if [ $plc -eq $pdvcs ] ;then
-	dvcsum=${pline#*\'}
-	dvcsum=${dvcsum%%\'*}
-    fi
-    if [ $plc -eq $pelcs ] ;then
-	elcsum=${pline#*\'}
-	elcsum=${elcsum%%\'*}
-    fi
-    plc=$(expr $plc + 1)
+	if [ $plc -eq $pdvcs ] ;then
+		dvcsum=${pline#*\'}
+		dvcsum=${dvcsum%%\'*}
+	fi
+	if [ $plc -eq $pelcs ] ;then
+		elcsum=${pline#*\'}
+		elcsum=${elcsum%%\'*}
+	fi
+	plc=$(expr $plc + 1)
 done < PKGBUILD
 
 if [ ! -x "$(which curl 2>/dev/null)" ] ;then
-    printf "\nError: Curl not found. Curl are needed for downloading makeself build tool."
-    printf "\n\tPlease install curl with your Package Manager.\n"
-    printf "\nLeaving.\n\n"
-    exit 0
+	printf "\nError: Curl not found. Curl are needed for downloading makeself build tool."
+	printf "\n\tPlease install curl with your Package Manager.\n"
+	printf "\nLeaving.\n\n"
+	exit 0
 fi
 
 if [ ! -f "./makeself-2.4.0.run" ] ;then
-    printf "\nGet makeself...\n\n"
-    curl -L -O https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run
+	printf "\nGet makeself...\n\n"
+	curl -L -O https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run
 fi
 rcsum="$(sha256sum ./makeself-2.4.0.run | cut -d' ' -f1)"
 if [ "$rcsum" != "$mscsum" ] ;then
-    printf "\n\nError: Checksum makeself-2.4.0.run mismatch!"
-    printf "\nLeaving.\n\n"
-    exit 0
+	printf "\n\nError: Checksum makeself-2.4.0.run mismatch!"
+	printf "\nLeaving.\n\n"
+	exit 0
 fi
 
 if [ ! -r "./evelauncher-$version.tar.gz" ] ;then
-    printf "\nGet evelauncher-$version.tar.gz...\n\n"
-    curl -L -O https://binaries.eveonline.com/evelauncher-$version.tar.gz
+	printf "\nGet evelauncher-$version.tar.gz...\n\n"
+	curl -L -O https://binaries.eveonline.com/evelauncher-$version.tar.gz
 fi
 rcsum="$(sha256sum ./evelauncher-$version.tar.gz| cut -d' ' -f1)"
 if [ "$rcsum" != "$elcsum" ] ;then
-    printf "\n\nError: Checksum evelauncher-$version.tar.gz mismatch!"
-    printf "\nLeaving.\n\n"
-    exit 0
+	printf "\n\nError: Checksum evelauncher-$version.tar.gz mismatch!"
+	printf "\nLeaving.\n\n"
+	exit 0
 fi
 
 if [ ! -r "./dxvk-$dvver.tar.gz" ] ;then
-    printf "\nDownload dxvk-$dvver.tar.gz...\n\n"
-    curl -L -O https://github.com/doitsujin/dxvk/releases/download/v$dvver/dxvk-$dvver.tar.gz
+	printf "\nDownload dxvk-$dvver.tar.gz...\n\n"
+	curl -L -O https://github.com/doitsujin/dxvk/releases/download/v$dvver/dxvk-$dvver.tar.gz
 fi
 rcsum="$(sha256sum ./dxvk-$dvver.tar.gz| cut -d' ' -f1)"
 if [ "$rcsum" != "$dvcsum" ] ;then
-    printf "\n\nWarning: Checksum dxvk-$dvver.tar.gz mismatch, ignored.\n"
-    rm -f ./dxvk-$dvver.tar.gz
+	printf "\n\nWarning: Checksum dxvk-$dvver.tar.gz mismatch, ignored.\n"
+	rm -f ./dxvk-$dvver.tar.gz
 fi
 
 printf "\nCreate clean build environment..."
@@ -91,9 +91,9 @@ echo "done."
 printf "\nCopy needed files from AUR source..."
 for eia in ../eve-icons*.tar.gz ;do tar xf $eia -C evesetup/ ;done
 for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
-    cmd=eve$cmd
-    if [ -f ../$cmd ] ;then cp ../$cmd evesetup/ ;fi
-    if [ ! "$cmd" = "evewine" ] ;then cp ../${cmd%.*}.desktop evesetup/ ;fi
+	cmd=eve$cmd
+	if [ -f ../$cmd ] ;then cp ../$cmd evesetup/ ;fi
+	if [ ! "$cmd" = "evewine" ] ;then cp ../${cmd%.*}.desktop evesetup/ ;fi
 done
 cp ../evesetup.shlib evesetup/
 cp ../evelauncher.kwinrule evesetup/
@@ -144,7 +144,7 @@ echo "done."
 
 printf "\nBuild self-extractable archive evesetup-lite-${version}-$release-$arch.run\n\n"
 ./makeself.sh --tar-quietly evesetup/ ../evesetup-lite-${version}-$release-$arch.run \
-    "EVE Online Launcher Setup (Lite) ${version}-$release" ./setup.sh
+	"EVE Online Launcher Setup (Lite) ${version}-$release" ./setup.sh
 cd ..
 printf "\nClean up build environment..."
 rm -rf src/

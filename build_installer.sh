@@ -26,33 +26,33 @@ pelcs=$(expr $pshal + $pofsl)
 
 plc=1
 while read pline ;do
-    if [ $plc -eq $pdvcs ] ;then
-	dvcsum=${pline#*\'}
-	dvcsum=${dvcsum%%\'*}
-    fi
-    if [ $plc -eq $pelcs ] ;then
-	elcsum=${pline#*\'}
-	elcsum=${elcsum%%\'*}
-    fi
-    plc=$(expr $plc + 1)
+	if [ $plc -eq $pdvcs ] ;then
+		dvcsum=${pline#*\'}
+		dvcsum=${dvcsum%%\'*}
+	fi
+	if [ $plc -eq $pelcs ] ;then
+		elcsum=${pline#*\'}
+		elcsum=${elcsum%%\'*}
+	fi
+	plc=$(expr $plc + 1)
 done < PKGBUILD
 
 if [ ! -x "$(which curl 2>/dev/null)" ] ;then
-    printf "\nError: Curl not found. Curl are needed for downloading makeself build tool."
-    printf "\n\tPlease install curl with your Package Manager.\n"
-    printf "\nLeaving.\n\n"
-    exit 0
+	printf "\nError: Curl not found. Curl are needed for downloading makeself build tool."
+	printf "\n\tPlease install curl with your Package Manager.\n"
+	printf "\nLeaving.\n\n"
+	exit 0
 fi
 
 if [ ! -f "./makeself-2.4.0.run" ] ;then
-    printf "\nGet makeself...\n\n"
-    curl -L -O https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run
+	printf "\nGet makeself...\n\n"
+	curl -L -O https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run
 fi
 rcsum="$(sha256sum ./makeself-2.4.0.run | cut -d' ' -f1)"
 if [ "$rcsum" != "$mscsum" ] ;then
-    printf "\n\nError: Checksum makeself-2.4.0.run mismatch!"
-    printf "\nLeaving.\n\n"
-    exit 0
+	printf "\n\nError: Checksum makeself-2.4.0.run mismatch!"
+	printf "\nLeaving.\n\n"
+	exit 0
 fi
 
 printf "\nCreate clean build environment..."
@@ -71,9 +71,9 @@ printf "\nCopy needed files from AUR source..."
 for eia in ../eve-icons*.tar.gz ;do tar xf $eia -C evesetup/ ;done
 for eta in ../eve-transl5.12-??.tar.gz ;do cp $eta evesetup/ ;done
 for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
-    cmd=eve$cmd
-    if [ -f ../$cmd ] ;then cp ../$cmd evesetup/ ;fi
-    if [ ! "$cmd" = "evewine" ] ;then cp ../${cmd%.*}.desktop evesetup/ ;fi
+	cmd=eve$cmd
+	if [ -f ../$cmd ] ;then cp ../$cmd evesetup/ ;fi
+	if [ ! "$cmd" = "evewine" ] ;then cp ../${cmd%.*}.desktop evesetup/ ;fi
 done
 cp ../evesetup.shlib evesetup/
 cp ../evelauncher.kwinrule evesetup/
@@ -89,32 +89,32 @@ chmod a+x evesetup/setup.sh
 echo "done."
 
 if [ -f "../evelauncher-$version.tar.gz" ] ;then
-    printf "\nFound EVE Launcher archive..."
-    rcsum="$(sha256sum ../evelauncher-$version.tar.gz | cut -d' ' -f1)"
-    if [ "$rcsum" = "$elcsum" ] ;then
-	cp ../evelauncher-$version.tar.gz evesetup/ && \
-	echo "added."
-    else
-	echo "skipped, checksum mismatch."
-    fi
+	printf "\nFound EVE Launcher archive..."
+	rcsum="$(sha256sum ../evelauncher-$version.tar.gz | cut -d' ' -f1)"
+	if [ "$rcsum" = "$elcsum" ] ;then
+		cp ../evelauncher-$version.tar.gz evesetup/ && \
+		echo "added."
+	else
+		echo "skipped, checksum mismatch."
+	fi
 else
-    printf "\nEVE Launcher archive not found, will be downloaded during the setup process.\n"
+	printf "\nEVE Launcher archive not found, will be downloaded during the setup process.\n"
 fi
 if [ -f "../dxvk-$dvver.tar.gz" ] ;then
-    printf "\nFound DXVK archive..."
-    rcsum="$(sha256sum ../dxvk-$dvver.tar.gz | cut -d' ' -f1)"
-    if [ "$rcsum" = "$dvcsum" ] ;then
-	cp ../dxvk-$dvver.tar.gz evesetup/ && \
-	echo "added."
-    else
-	echo "skipped, checksum mismatch."
-    fi
+	printf "\nFound DXVK archive..."
+	rcsum="$(sha256sum ../dxvk-$dvver.tar.gz | cut -d' ' -f1)"
+	if [ "$rcsum" = "$dvcsum" ] ;then
+		cp ../dxvk-$dvver.tar.gz evesetup/ && \
+		echo "added."
+	else
+		echo "skipped, checksum mismatch."
+	fi
 else
-    printf "\nDXVK archive not found, will be downloaded during the setup process.\n"
+	printf "\nDXVK archive not found, will be downloaded during the setup process.\n"
 fi
 printf "\nBuild self-extractable archive evesetup-$version-$release-$arch.run\n\n"
 ./makeself.sh --tar-quietly evesetup/ ../evesetup-$version-$release-$arch.run \
-    "EVE Online Launcher Setup $version-$release" ./setup.sh
+	"EVE Online Launcher Setup $version-$release" ./setup.sh
 cd ..
 printf "\nClean up build environment..."
 rm -rf src/

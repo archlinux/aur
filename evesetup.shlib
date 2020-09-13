@@ -8,125 +8,127 @@ check_elv() {
 	ELBIN=$(getdate $LAUNCHER/evelauncher)
 	ELARC=$(getdate $SETUPDIR/lib/evelauncher-$ELVER.tar.?z)
 	if [ "$ELBIN" -lt "$ELARC" ] ;then
-	    if [ -d "$LAUNCHER" ] ;then
-		rm -rf $LAUNCHER
-		desktop_msg "Update EVE Launcher binaries"
-	    fi
-	    tar xmf $SETUPDIR/lib/evelauncher-$ELVER.tar.?z -C $EVEDIR
-	    mv $EVEDIR/evelauncher $LAUNCHER
-	    if [ -f "$HOME/.config/devilspie2/evelauncher.lua" ] ;then
-		sed -i 2\ s,[0-9].*\",$ELVER\", $HOME/.config/devilspie2/evelauncher.lua
-	    fi
-	    for ELCACHE in $HOME/.cache $HOME/.local/share ;do
-		if [ -d "$ELCACHE/CCP/EVE/QtWebEngine" ] ;then
-		    rm -rf $ELCACHE/CCP/EVE/QtWebEngine
+		if [ -d "$LAUNCHER" ] ;then
+			rm -rf $LAUNCHER
+			desktop_msg "Update EVE Launcher binaries"
 		fi
-	    done
+		tar xmf $SETUPDIR/lib/evelauncher-$ELVER.tar.?z -C $EVEDIR
+		mv $EVEDIR/evelauncher $LAUNCHER
+		if [ -f "$HOME/.config/devilspie2/evelauncher.lua" ] ;then
+			sed -i 2\ s,[0-9].*\",$ELVER\", $HOME/.config/devilspie2/evelauncher.lua
+		fi
+		for ELCACHE in $HOME/.cache $HOME/.local/share ;do
+			if [ -d "$ELCACHE/CCP/EVE/QtWebEngine" ] ;then
+				rm -rf $ELCACHE/CCP/EVE/QtWebEngine
+			fi
+		done
 	fi
 }
 
 check_env() {
-    if [ -r "$EVECONF" ] ;then SHAREDIR=$(getval SharedCacheFolder) ;fi
-    if [ ! -d "$SHAREDIR" ] ;then SHAREDIR="" ;fi
-    if [ "x$SHAREDIR" != "x$EVEDIR/SharedCache/" ] ;then
-	desktop_msg "Please wait, prepare environment in $EVEDIR"
-	mkdir -p $CONFDIR
-	echo "[General]" >$EVECONF
-	echo "SharedCacheFolder=$EVEDIR/SharedCache/" >>$EVECONF
-	echo "UseCustomWine=true" >>$EVECONF
-	echo "CustomWinePath=$WINEPATH/wine" >>$EVECONF
-	mkdir -p $EVEDIR/SharedCache
-	if [ -d "$SHAREDIR/ResFiles/" ] ;then
-	    mv $SHAREDIR/ResFiles/ $EVEDIR/SharedCache/
-	    mv $SHAREDIR/*.txt $EVEDIR/SharedCache/
-	    rm -rf $SHAREDIR
+	if [ -r "$EVECONF" ] ;then SHAREDIR=$(getval SharedCacheFolder) ;fi
+	if [ ! -d "$SHAREDIR" ] ;then SHAREDIR="" ;fi
+	if [ "x$SHAREDIR" != "x$EVEDIR/SharedCache/" ] ;then
+		desktop_msg "Please wait, prepare environment in $EVEDIR"
+		mkdir -p $CONFDIR
+		cat >$EVECONF <<EOF
+[General]
+SharedCacheFolder=$EVEDIR/SharedCache/
+UseCustomWine=true
+CustomWinePath=$WINEPATH/wine
+EOF
+		mkdir -p $EVEDIR/SharedCache
+		if [ -d "$SHAREDIR/ResFiles/" ] ;then
+			mv $SHAREDIR/ResFiles/ $EVEDIR/SharedCache/
+			mv $SHAREDIR/*.txt $EVEDIR/SharedCache/
+			rm -rf $SHAREDIR
+		fi
 	fi
-    fi
 }
 
 check_steam() {
-    if [ ! -r "$LAUNCHER/steam_appid.txt" -a -x "$(which steam)" ] ;then
-	echo "8500" >$LAUNCHER/steam_appid.txt
-    fi
+	if [ ! -r "$LAUNCHER/steam_appid.txt" -a -x "$(which steam)" ] ;then
+		echo "8500" >$LAUNCHER/steam_appid.txt
+	fi
 }
 
 check_wine() {
-    CUSTOMWP=$(getval CustomWinePath)
-    SHAREDIR=$(getval SharedCacheFolder)
-    UCW=$(getval UseCustomWine)
-    DXVKLIBDIR=$SETUPDIR/lib/dxvk
-    DXVKFILELIST="d3d10core d3d11 d3d9 dxgi"
-    WINEPREFIX=${SHAREDIR}wineenv
-    WINSYSDIR=$WINEPREFIX/drive_c/windows/system32
-    W32SYSDIR=${WINSYSDIR%/*}/syswow64
-    if [ "$UCW" = "true" ] ;then
-	WINEPATH=${CUSTOMWP%/*}
-	if [ -d "${SHAREDIR}wine" ] ;then rm -rf ${SHAREDIR}wine ;fi
-    else
-	CUSTOMWP=${SHAREDIR}wine
-	WINEPATH=${SHAREDIR}wine/bin
-    fi
-    if [ -x "$WINEPATH/wine64" ] ;then
-	WINE=$WINEPATH/wine64
-    else
-	WINE=$WINEPATH/wine
-    fi
-    if [ ! -x "$WINE" ] ;then
-	desktop_msg "ERROR: \"$CUSTOMWP\" not found!"
-	exit 1
-    fi
-    INSTWINE=$(tr -dc [:digit:] 2>/dev/null < $WINEPREFIX/.update-timestamp || printf 0)
-    WINEINFP=$(readlink -f $CUSTOMWP)
-    WINECONF=$(find ${WINEINFP%bin*}share/wine* -name 'wine.inf')
-    WINEDATE=$(getdate $WINECONF)
-    if [ "$WINEDATE" != "$INSTWINE" ] ;then
-	desktop_msg "Prepare wine environment for EVE"
-	env WINEPREFIX=$WINEPREFIX \
-	    WINEDEBUG=-all \
-	    WINEDLLOVERRIDES="mscoree,mshtml=d" \
-	    $WINE wineboot
-	env WINEPREFIX=$WINEPREFIX \
-	    $WINE reg add \
-	    'HKCU\Software\Wine\FileOpenAssociations' \
-	    /v Enable /d N /f >/dev/null
-    fi
-    if [ -d "$DXVKLIBDIR" ] ;then
-	DXVKARC=$(getdate $DXVKLIBDIR/x64/d3d11.dll)
-	INSTDX=$(getdate $WINSYSDIR/d3d11.dll)
-	if [ "$INSTDX" != "$DXVKARC" ] ;then
-	    for DXVKFILE in $DXVKFILELIST ;do
-		cp --preserve=timestamps $DXVKLIBDIR/x64/$DXVKFILE.dll $WINSYSDIR/$DXVKFILE.dll
-		if [ -d "$W32SYSDIR" ] ;then
-		    cp --preserve=timestamps $DXVKLIBDIR/x32/$DXVKFILE.dll $W32SYSDIR/$DXVKFILE.dll
-		fi
-		env WINEPREFIX=$WINEPREFIX \
-		    $WINE reg add \
-		    'HKCU\Software\Wine\DllOverrides' \
-		    /v $DXVKFILE /d native /f >/dev/null
-	    done
+	CUSTOMWP=$(getval CustomWinePath)
+	SHAREDIR=$(getval SharedCacheFolder)
+	UCW=$(getval UseCustomWine)
+	DXVKLIBDIR=$SETUPDIR/lib/dxvk
+	DXVKFILELIST="d3d10core d3d11 d3d9 dxgi"
+	WINEPREFIX=${SHAREDIR}wineenv
+	WINSYSDIR=$WINEPREFIX/drive_c/windows/system32
+	W32SYSDIR=${WINSYSDIR%/*}/syswow64
+	if [ "$UCW" = "true" ] ;then
+		WINEPATH=${CUSTOMWP%/*}
+		if [ -d "${SHAREDIR}wine" ] ;then rm -rf ${SHAREDIR}wine ;fi
+	else
+		CUSTOMWP=${SHAREDIR}wine
+		WINEPATH=${SHAREDIR}wine/bin
 	fi
-    fi
-    if [ "$(grep -csw winemenubuilder $WINEPREFIX/system.reg)" != "0" ] ;then
-	env WINEPREFIX=$WINEPREFIX \
-	    $WINE reg delete \
-	    'HKLM\Software\Microsoft\Windows\CurrentVersion\RunServices' \
-	    /v winemenubuilder /f >/dev/null
-    fi
+	if [ -x "$WINEPATH/wine64" ] ;then
+		WINE=$WINEPATH/wine64
+	else
+		WINE=$WINEPATH/wine
+	fi
+	if [ ! -x "$WINE" ] ;then
+		desktop_msg "ERROR: \"$CUSTOMWP\" not found!"
+		exit 1
+	fi
+	INSTWINE=$(tr -dc [:digit:] 2>/dev/null < $WINEPREFIX/.update-timestamp || printf 0)
+	WINEINFP=$(readlink -f $CUSTOMWP)
+	WINECONF=$(find ${WINEINFP%bin*}share/wine* -name 'wine.inf')
+	WINEDATE=$(getdate $WINECONF)
+	if [ "$WINEDATE" != "$INSTWINE" ] ;then
+		desktop_msg "Prepare wine environment for EVE"
+		env WINEPREFIX=$WINEPREFIX \
+			WINEDEBUG=-all \
+			WINEDLLOVERRIDES="mscoree,mshtml=d" \
+			$WINE wineboot
+		env WINEPREFIX=$WINEPREFIX \
+			$WINE reg add \
+			'HKCU\Software\Wine\FileOpenAssociations' \
+			/v Enable /d N /f >/dev/null
+	fi
+	if [ -d "$DXVKLIBDIR" ] ;then
+		DXVKARC=$(getdate $DXVKLIBDIR/x64/d3d11.dll)
+		INSTDX=$(getdate $WINSYSDIR/d3d11.dll)
+		if [ "$INSTDX" != "$DXVKARC" ] ;then
+			for DXVKFILE in $DXVKFILELIST ;do
+				cp --preserve=timestamps $DXVKLIBDIR/x64/$DXVKFILE.dll $WINSYSDIR/$DXVKFILE.dll
+				if [ -d "$W32SYSDIR" ] ;then
+					cp --preserve=timestamps $DXVKLIBDIR/x32/$DXVKFILE.dll $W32SYSDIR/$DXVKFILE.dll
+				fi
+				env WINEPREFIX=$WINEPREFIX \
+					$WINE reg add \
+					'HKCU\Software\Wine\DllOverrides' \
+					/v $DXVKFILE /d native /f >/dev/null
+			done
+		fi
+	fi
+	if [ "$(grep -csw winemenubuilder $WINEPREFIX/system.reg)" != "0" ] ;then
+		env WINEPREFIX=$WINEPREFIX \
+			$WINE reg delete \
+			'HKLM\Software\Microsoft\Windows\CurrentVersion\RunServices' \
+			/v winemenubuilder /f >/dev/null
+	fi
 }
 
 desktop_msg() {
-    if [ -x "$(which notify-send)" ] ;then notify-send -i eve $(basename $0) "$@" ;fi
-    printf "$(basename $0): $@\n"
+	if [ -x "$(which notify-send)" ] ;then notify-send -i eve $(basename $0) "$@" ;fi
+	printf "$(basename $0): $@\n"
 }
 
 getdate() {
-    printf $(ls -l --time-style=+%s $1 | cut -d' ' -f6) || printf 0
+	printf $(ls -l --time-style=+%s $1 | cut -d' ' -f6) || printf 0
 }
 
 getval() {
-    if [ ! -r "$EVECONF" ] ;then
-	desktop_msg "ERROR: EVE Configuration not found!"
-	exit 1
-    fi
-    printf $(grep "$1" $EVECONF | cut -d= -f2)
+	if [ ! -r "$EVECONF" ] ;then
+		desktop_msg "ERROR: EVE Configuration not found!"
+		exit 1
+	fi
+	printf $(grep "$1" $EVECONF | cut -d= -f2)
 }

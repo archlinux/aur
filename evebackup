@@ -6,38 +6,38 @@ set -e
 
 backup_settings() {
 for SERVER in tranquility singularity duality thunderdome ;do
-    CLPROFILE="$(ls -d *_$SERVER 2>/dev/null || true)"
-    [ "x$CLPROFILE" = "x" ] && continue
-    if [ -f "$BACKUPDIR/$SERVER-settings_current.7z" ] ;then
-	mv "$BACKUPDIR/$SERVER-settings_current.7z" "$BACKUPDIR/$SERVER-settings.7z"
-	SERVERLIST="$SERVERLIST $SERVER"
-	MSGSTR="Settings for$SERVERLIST in $BACKUPDIR stored."
-    else
-	MSGSTR="Preparing backup for $SERVER, please run $CMDSTR again."
-	desktop_msg "$MSGSTR"
-    fi
-    cd "$CLPROFILE"
-    7z u -t7z -xr!Browser "$BACKUPDIR/$SERVER-settings.7z" \
-	-u- -u!"$BACKUPDIR/$SERVER-settings_current.7z" "settings_*" >/dev/null
-    cd ..
+	CLPROFILE="$(ls -d *_$SERVER 2>/dev/null || true)"
+	[ "x$CLPROFILE" = "x" ] && continue
+	if [ -f "$BACKUPDIR/$SERVER-settings_current.7z" ] ;then
+		mv "$BACKUPDIR/$SERVER-settings_current.7z" "$BACKUPDIR/$SERVER-settings.7z"
+		SERVERLIST="$SERVERLIST $SERVER"
+		MSGSTR="Settings for$SERVERLIST in $BACKUPDIR stored."
+	else
+		MSGSTR="Preparing backup for $SERVER, please run $CMDSTR again."
+		desktop_msg "$MSGSTR"
+	fi
+	cd "$CLPROFILE"
+	7z u -t7z -xr!Browser "$BACKUPDIR/$SERVER-settings.7z" \
+		-u- -u!"$BACKUPDIR/$SERVER-settings_current.7z" "settings_*" >/dev/null
+	cd ..
 done
 }
 
 restore_settings() {
 for SERVER in thunderdome duality singularity tranquility ;do
-    if [ ! -f "$BACKUPDIR/$SERVER-settings.7z" ] ;then
-	MSGSTR="No settings in $BACKUPDIR found."
-	continue 2
-    fi
-    case $SERVER in
-	tranquility) SERVER_SHORT=tq ;;
-	singularity) SERVER_SHORT=sisi ;;
-	*)	     SERVER_SHORT=$SERVER ;;
-    esac
-    [ -d c_"$SERVER_SHORT"_"$SERVER" ] || mkdir c_"$SERVER_SHORT"_"$SERVER"
-    7z x "$BACKUPDIR/$SERVER-settings.7z" -oc_"$SERVER_SHORT"_"$SERVER" -y >/dev/null
-    SERVERLIST="$SERVERLIST $SERVER"
-    MSGSTR="Settings for$SERVERLIST from $BACKUPDIR restored."
+	if [ ! -f "$BACKUPDIR/$SERVER-settings.7z" ] ;then
+		MSGSTR="No settings in $BACKUPDIR found."
+		continue 2
+	fi
+	case $SERVER in
+		tranquility)		SERVER_SHORT=tq ;;
+		singularity)		SERVER_SHORT=sisi ;;
+		*)			SERVER_SHORT=$SERVER ;;
+	esac
+	[ -d c_"$SERVER_SHORT"_"$SERVER" ] || mkdir c_"$SERVER_SHORT"_"$SERVER"
+	7z x "$BACKUPDIR/$SERVER-settings.7z" -oc_"$SERVER_SHORT"_"$SERVER" -y >/dev/null
+	SERVERLIST="$SERVERLIST $SERVER"
+	MSGSTR="Settings for$SERVERLIST from $BACKUPDIR restored."
 done
 }
 
@@ -51,9 +51,9 @@ CMDSTR=$(basename $0)
 cd "$SETTINGSDIR"
 
 case $CMDSTR in
-    evebackup)  backup_settings ;;
-    everestore) restore_settings ;;
-    *)		exit 1 ;;
+	evebackup)		backup_settings ;;
+	everestore)		restore_settings ;;
+	*)			exit 1 ;;
 esac
 
 desktop_msg "$MSGSTR"
