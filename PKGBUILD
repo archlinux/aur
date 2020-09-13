@@ -1,7 +1,7 @@
 # Contributor: Andrey Mikhaylenko <neithere at gmail dot com>
 # Contributor: Eugene Dvoretsky <radioxoma at gmail dot com>
 pkgname=python-gpxpy
-pkgver=1.4.0
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Python GPX (GPS eXchange format) parser"
 arch=(any)
