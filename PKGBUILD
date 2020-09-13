@@ -10,9 +10,9 @@ url='https://github.com/Talinx/jp2a'
 provides=('jp2a')
 conflicts=('jp2a')
 license=('GPL')
-depends=('curl' 'libjpeg')
-source=('git+https://github.com/Talinx/jp2a#branch=develop')
+depends=('curl' 'libjpeg' 'libpng')
 makedepends=('git')
+source=('git+https://github.com/Talinx/jp2a#branch=develop')
 sha256sums=(SKIP)
 
 pkgver() {
