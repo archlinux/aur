@@ -1,15 +1,15 @@
 pkgbase = kube-commander
 	pkgdesc = kubecom is terminal UI for easy interaction with Kubernetes
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/AnatolyRugalev/kube-commander
 	arch = x86_64
 	license = MIT
 	depends = kubectl
-	source = kubecom_0.7.3::https://github.com/AnatolyRugalev/kube-commander/releases/download/0.7.3/kubecom_0.7.3_linux_amd64
+	source = kubecom_0.7.4::https://github.com/AnatolyRugalev/kube-commander/releases/download/0.7.4/kubecom_0.7.4_linux_amd64
 	source = kube-commander
 	source = kubectl-ui
-	sha256sums = 8933e65dbb0062b63e6acce55ae80b0c59647dce957211a081af9771cd33cb04
+	sha256sums = af21f62aad2ff1337b2acaa0fbc346f37042ccb64ebd39e2c1e6768c6b48be0c
 	sha256sums = SKIP
 	sha256sums = SKIP
 
