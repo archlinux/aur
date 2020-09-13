@@ -5,6 +5,7 @@ pkgbase = gatsby-desktop
 	url = https://github.com/gatsbyjs/desktop
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = yarn
 	source = gatsby-desktop::git+https://github.com/gatsbyjs/desktop.git#tag=v0.0.1-alpha.8
 	source = gatsby-desktop.desktop
