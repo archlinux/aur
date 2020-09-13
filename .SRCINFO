@@ -1,4 +1,4 @@
-pkgbase = bootsplash-theme-manjaro-glitch-git
+pkgbase = bootsplash-theme-manjaro-glitch
 	pkgdesc = Simple Manjaro Bootsplash with cool glitch effect
 	pkgver = 1.0.r0.g320c1af
 	pkgrel = 2
