@@ -1,7 +1,7 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Shadow Of The Wyrm is a single player, traditional roguelike by Julian Day."
 arch=('x86_64')
@@ -37,7 +37,7 @@ package() {
   chmod +x ${srcdir}/shadow-of-the-wyrm/sotw.sh
   install -D -m644 ${srcdir}/shadow-of-the-wyrm/LICENSE "${pkgdir}/usr/share/licenses/shadow-of-the-wyrm/LICENSE"
   install -d -m777 ${srcdir}/shadow-of-the-wyrm "${pkgdir}/usr/share/shadow-of-the-wyrm"
-  install -D ${srcdir}/shadow-of-the-wyrm/ShadowOfTheWyrm "${pkgdir}/usr/share/shadow-of-the-wyrm/ShadowOfTheWyrm"
+  install -D ${srcdir}/shadow-of-the-wyrm/bin/Release/ShadowOfTheWyrm "${pkgdir}/usr/share/shadow-of-the-wyrm/ShadowOfTheWyrm"
   install -D ${srcdir}/shadow-of-the-wyrm/shadowofthewyrmtext_blank.ini "${pkgdir}/usr/share/shadow-of-the-wyrm/shadowofthewyrmtext_blank.ini"
   install -D ${srcdir}/shadow-of-the-wyrm/shadowofthewyrmtext_en.ini "${pkgdir}/usr/share/shadow-of-the-wyrm/shadowofthewyrmtext_en.ini"
   install -D ${srcdir}/shadow-of-the-wyrm/swyrm.ini "${pkgdir}/usr/share/shadow-of-the-wyrm/swyrm.ini"
