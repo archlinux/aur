@@ -1,0 +1,21 @@
+pkgbase = cobib-git
+	pkgdesc = Console Bibliography
+	pkgver = r257.9440104
+	pkgrel = 1
+	url = https://gitlab.com/mrossinek/cobib
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-bibtexparser
+	depends = python-beautifulsoup4
+	depends = python-ruamel-yaml
+	depends = python-pylatexenc
+	depends = python-requests
+	provides = cobib
+	conflicts = cobib
+	source = cobib::git+https://gitlab.com/mrossinek/cobib.git
+	sha256sums = SKIP
+
+pkgname = cobib-git
+
