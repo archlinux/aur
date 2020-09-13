@@ -27,4 +27,5 @@ build() {
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
