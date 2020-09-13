@@ -1,0 +1,13 @@
+pkgbase = tifig-bin
+	pkgdesc = Converts iOS 11 HEIC images to practical formats - Static binary
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/monostream/tifig
+	arch = x86_64
+	license = Apache License 2.0
+	conflicts = tifig-git
+	source = tifig-bin-0.2.2.tar.gz::https://github.com/monostream/tifig/releases/download/0.2.2/tifig-static-0.2.2.tar.gz
+	md5sums = 364b11d73e75f9374c30f6f8bf413517
+
+pkgname = tifig-bin
+
