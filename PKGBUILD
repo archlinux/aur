@@ -1,21 +1,31 @@
 # Maintainer: marcospb19 <marcospb19@hotmail.com>
 
-pkgname=sublime-text-3-imfix
+pkgname=sublime-text-3
 pkgver=3.3211
-pkgrel=2
-pkgdesc="Sophisticated text editor for code, html and prose - Stable build with support for CJK"
+pkgrel=1
+pkgdesc="Sophisticated text editor for code, html and prose - stable build"
 arch=('x86_64')
 url='https://www.sublimetext.com/3'
 license=('custom')
 depends=('libpng' 'gtk2')
-conflicts=('sublime-text' 'sublime-text-dev' 'sublime-text-nightly' 'sublime-text-dev-imfix' 'sublime-text-dev-imfix2')
-provides=('sublime-text' 'sublime-text-dev' 'sublime-text-nightly' 'sublime-text-dev-imfix' 'sublime-text-dev-imfix2')
+
+replaces=('sublime-text-3-imfix')
+
+conflicts=('sublime-text-4-dev'
+           'sublime-text-3-imfix'
+           'sublime-text-imfix'
+           'sublime-text-nightly'
+           'sublime-text-dev'
+           'sublime-text2')
+
+provides=('sublime-text' 'sublime')
+
 source=(
     "https://download.sublimetext.com/sublime_text_3_build_${pkgver:2}_x64.tar.bz2"
     'LICENSE'
 )
 sha256sums=('0b3c8ca5e6df376c3c24a4b9ac2e3b391333f73b229bc6e87d0b4a5f636d74ee'
-            '8e4c48469bf3f35d0c0904e770c4e307d4965a8931e839c01c5765498a19cf01')
+            '339dbd1b6ae3e699809afcdd6c690299e6fa0d385aa2ef658a52d336a3f8107f')
 
 package() {
     cd "${srcdir}"
