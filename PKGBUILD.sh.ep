@@ -12,10 +12,10 @@ _additional_qmake_args+='-- -no-feature-geoservices_mapbox -no-feature-geoservic
 
 % end
 \
-pkgver=5.15.0
+pkgver=5.15.1
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
-depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-declarative')
+depends=(<%== qt5deps qw(base declarative) %>)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')

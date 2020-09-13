@@ -4,14 +4,11 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
-# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# This file is created from PKGBUILD.sh.ep contained by the mentioned repository.
 # Do not edit it manually! See README.md in the repository's root directory
 # for more information.
 
 # All patches are managed at https://github.com/Martchus/qtlocation
-
-# Includes dynamic and static versions; if only one version is requried, just
-# set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
 
 # Skip building mapbox and mapboxgl; that decreases the compile time significantly and
 # likely not a lot of people actually using it; if you need it, just remove the corresponding
@@ -20,7 +17,7 @@ _additional_qmake_args+='-- -no-feature-geoservices_mapbox -no-feature-geoservic
 
 _qt_module=qtlocation
 pkgname=mingw-w64-qt5-location
-pkgver=5.15.0
+pkgver=5.15.1
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
@@ -33,17 +30,12 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Ensure-static-3rdparty-libs-are-linked-correctly.patch')
-sha256sums=('c68b0778a521e5522641c41b1778999dd408ebfda1e0de166a83743268be5f3f'
-            '986e6bf33dfb3e85fa7b46cdcb954899e4c66345dcb18008c5cf748660c797b3')
+sha256sums=('093af763a70d126c4b9f6a22ebf8218fe95dc0151e40666b2389fdf55c9f1a2c'
+            '0f20c005812f031cfb70ac83f370a894819847c6e4447b2229bc50c1708dd2d0')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
-[[ $NO_STATIC_LIBS ]] || \
-  makedepends+=('mingw-w64-qt5-base-static') \
-  optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
-  _configurations+=('CONFIG+=no_smart_library_merge CONFIG+=static')
-[[ $NO_SHARED_LIBS ]] || \
-  _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
+_configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
