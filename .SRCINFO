@@ -1,0 +1,17 @@
+pkgbase = sidfactory2
+	pkgver = 20200911
+	pkgrel = 1
+	url = https://github.com/Chordian/sidfactory2
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = make
+	makedepends = gcc
+	depends = sdl2
+	conflicts = sidfactory2-unstable
+	source = sidfactory2-20200911.tar.gz::https://github.com/Chordian/sidfactory2/archive/release-20200911.tar.gz
+	md5sums = dbba94f8e31f43618354033596470374
+
+pkgname = sidfactory2
+
