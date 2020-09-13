@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
-pkgname=monica-git
-pkgver=v2.19.0.r30.g51901e762
+pkgname="monica-git"
+pkgver=v2.19.1.r0.g6d809fda1
 pkgrel=1
 pkgdesc="Personal CRM. Remember everything about your friends, family and business relationships"
 url="https://www.monicahq.com/"
