@@ -2,7 +2,7 @@
 
 pkgname=gatsby-desktop
 pkgver=0.0.1_alpha.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Official proof-of-concept desktop app for managing your Gatsby sites."
 arch=("x86_64")
 url="https://github.com/gatsbyjs/desktop"
@@ -24,7 +24,7 @@ source=("${pkgname}::git+${_pkgrepo}.git#tag=v${_pkgver}"
         'gatsby-desktop.desktop')
 noextract=()
 md5sums=('SKIP'
-         'a5da680ac6f78ce764c8c8c5b77d9de0')
+         '85c4385a42b3a79b2a98a3a53b826105')
 validpgpkeys=()
 
 build() {
