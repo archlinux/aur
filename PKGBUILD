@@ -2,21 +2,18 @@
 
 pkgname=lightdm-webkit2-theme-glorious
 pkgver=2.0.3
-pkgrel=1
-pkgdesc="a sleek, modern and glorified lightdm webkit2 theme"
+pkgrel=2
+pkgdesc="A sleek, modern and glorified LightDM webkit2 theme"
 arch=('any')
-url="https://github.com/manilarome/lightdm-webkit2-theme-glorious"
+url="https://github.com/manilarome/$pkgname"
 license=('GPL3')
-depends=('lightdm' 'lightdm-webkit2-greeter>=2.2.5-2')
-install=
-changelog=
-source=("https://github.com/manilarome/the-glorious-lightdm-webkit2-theme/archive/v$pkgver.tar.gz")
-md5sums=('SKIP')
+depends=('lightdm-webkit2-greeter')
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('a36d945120d664e793e9f3e3cdd84db84bb2b1824349c1a71aaba83a39a57050c4e1bfa0ecf2b24fc4602dabe8a3c36e118c3ca805c5daa5f9355ec500579a10')
 
 package() {
-	cd "$pkgdir"
-	mkdir -p usr/share/lightdm-webkit/themes/
-	rm -rf usr/share/lightdm-webkit/themes/lightdm-webkit2-theme-glorious
-	cd usr/share/lightdm-webkit/themes/
-	cp --recursive "$srcdir/lightdm-webkit2-theme-glorious-$pkgver" "glorious"
+	install -dm 755 "$pkgdir"/usr/share/lightdm-webkit/themes/glorious
+	cp -r --no-preserve=ownership * "$pkgdir"/usr/share/lightdm-webkit/themes/glorious/
+
+	install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
