@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # Usage:
-#	./install_from_template.sh OEM_FILE TEMPLATE_FILE OUTPUT_FILE
+#	./fulfill_template.sh OEM_FILE TEMPLATE_FILE OUTPUT_FILE
 #
 
 _OEMFILE_="${1}"
