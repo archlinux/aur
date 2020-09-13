@@ -8,7 +8,6 @@ arch=(i686 x86_64)
 url='http://www.tightvnc.com'
 license=('GPL2 + trilead-ssh2')
 depends=('java-environment')
-conflicts=('')
 source=("tvnjviewer-${pkgver}-bin-gnugpl.zip::https://www.tightvnc.com/download/${pkgver}/tvnjviewer-${pkgver}-bin-gnugpl.zip"
         "tightvnc-jviewer"
         "tightvnc-jviewer-nossh")
