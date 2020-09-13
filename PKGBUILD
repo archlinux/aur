@@ -15,12 +15,12 @@ source=('git+https://github.com/ANDRoid7890/bootsplash-theme-manjaro-glitch.git'
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "bootsplash-theme-manjaro-glitch"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 } 
 
 build() {
-  cd "$srcdir"/"$pkgname"
+  cd "$srcdir"/"bootsplash-theme-manjaro-glitch"
   sh ./bootsplash-manjaro-glitch.sh
 }
 
@@ -28,6 +28,6 @@ package() {
   pkgdesc="Simple Manjaro Bootsplash with cool glitch effect"
   cd "$srcdir"
 
-  install -Dm644 "$srcdir/$pkgname/bootsplash-manjaro-glitch" "$pkgdir/usr/lib/firmware/bootsplash-themes/manjaro-glitch/bootsplash"
-  install -Dm644 "$srcdir/$pkgname/bootsplash-manjaro-glitch.initcpio_install" "$pkgdir/usr/lib/initcpio/install/bootsplash-manjaro-glitch"
+  install -Dm644 "$srcdir/bootsplash-theme-manjaro-glitch/bootsplash-manjaro-glitch" "$pkgdir/usr/lib/firmware/bootsplash-themes/manjaro-glitch/bootsplash"
+  install -Dm644 "$srcdir/bootsplash-theme-manjaro-glitch/bootsplash-manjaro-glitch.initcpio_install" "$pkgdir/usr/lib/initcpio/install/bootsplash-manjaro-glitch"
 }
