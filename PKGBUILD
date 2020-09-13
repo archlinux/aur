@@ -2,7 +2,7 @@
 
 pkgname=gatsby-desktop
 pkgver=0.0.1_alpha.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Official proof-of-concept desktop app for managing your Gatsby sites."
 arch=("x86_64")
 url="https://github.com/gatsbyjs/desktop"
