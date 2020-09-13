@@ -6,7 +6,7 @@
 
 pkgname=nnn-icons
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The fastest terminal file manager ever written. (with icon support)"
 arch=('x86_64')
 depends=('bash' 'icons-in-terminal')
@@ -25,11 +25,8 @@ url="https://github.com/jarun/nnn"
 license=('BSD')
 provides=(nnn)
 conflicts=(nnn)
-source=("nnn-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        "nnn-${pkgver}.tar.gz.sig::${url}/releases/download/v${pkgver}/nnn-${pkgver}.tar.gz.sig")
-sha256sums=('7803ae6e974aeb4008507d9d1afbcca8d084a435f36ff636b459ca50414930a1'
-            'SKIP')
-validpgpkeys=('BBAD0B2F3093A7C3377A8F6BA75979F35C080412')
+source=("nnn-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('7803ae6e974aeb4008507d9d1afbcca8d084a435f36ff636b459ca50414930a1')
 
 prepare() {
     sed -i 's/install: all/install:/' "nnn-${pkgver}/Makefile"
