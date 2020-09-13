@@ -10,8 +10,7 @@ groups=('xfce4-goodies')
 
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=('xfce4-theme-switcher' 'xfce4-whiskermenu-plugin' 'arc-gtk-theme' 'gtk-engines' 'plank' 'conky')
-optdepends=('conky-manager')
+depends=('xfce4-theme-switcher' 'xfce4-whiskermenu-plugin' 'arc-gtk-theme' 'gtk-engines' 'plank')
 options=('!strip')
 
 source=('https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-arcolinux-theme/distrib/xts-arcolinux-theme-0.1-1.tar.gz')
