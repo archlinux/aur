@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=gofu
-pkgrel=1
+pkgrel=2
 pkgver=1.1.3
 pkgdesc='Simple file share service in go'
 url='https://git.roshless.me/~roshless/gofu'
