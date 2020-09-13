@@ -7,6 +7,7 @@ pkgdesc="A modern style for qt applications"
 url="https://github.com/Luwx/Lightly"
 arch=('any')
 license=('GPL')
+conflicts=('lightly-git')
 makedepends=(cmake extra-cmake-modules kdecoration qt5-declarative qt5-x11extras)
 source=(
     "${pkgname}-${pkgver}::https://github.com/Luwx/Lightly/archive/v${pkgver}-alpha.tar.gz"
