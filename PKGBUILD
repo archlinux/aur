@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 
 pkgname=intiface-desktop
-pkgver=17.0.0
+pkgver=18.0.0
 pkgrel=1
 pkgdesc="Open-source, cross-platform application that acts as a hub for sex hardware access"
 depends=('electron')
@@ -12,7 +12,7 @@ license=('BSD')
 source=("https://github.com/intiface/intiface-desktop/archive/v${pkgver}.tar.gz"
         'intiface-desktop.sh'
         'intiface-desktop.desktop')
-sha256sums=('d04484cb96eb285b13428804e27577bd930d7427628e6bdcb64ef3aee3c0287b'
+sha256sums=('7469b2053b7d1225246109b0098d6c442d98d6a812dc333e7eb4169ce8927c4c'
             '2f7d3350631fda4da8f03938eb06b0b6d3ed571c9975906b7863298f75e4c73f'
             'ece9fd45978dae583a9c572f3e64f8234350d5e53f9c1ae2da503c53b3ecff64')
 
