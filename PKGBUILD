@@ -3,16 +3,13 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
-# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# This file is created from PKGBUILD.sh.ep contained by the mentioned repository.
 # Do not edit it manually! See README.md in the repository's root directory
 # for more information.
 
-# Includes dynamic and static versions; if only one version is requried, just
-# set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
-
 _qt_module=qtremoteobjects
 pkgname=mingw-w64-qt5-remoteobjects
-pkgver=5.15.0
+pkgver=5.15.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Inter-process communication (IPC) module developed for Qt (mingw-w64)"
@@ -25,16 +22,11 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('86fcfdce77f13c7babdec4dc1d0c4b7b6b02e40120a4250dc59e911c53c08abf')
+sha256sums=('71b58fdac717645fa6f8b6ecb79b86841c540838877d100fabe2381175c4154e')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
-[[ $NO_STATIC_LIBS ]] || \
-  makedepends+=('mingw-w64-qt5-base-static') \
-  optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
-  _configurations+=('CONFIG+=no_smart_library_merge CONFIG+=static')
-[[ $NO_SHARED_LIBS ]] || \
-  _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
+_configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
