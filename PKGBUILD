@@ -1,7 +1,7 @@
 # Maintainer: koraynilay <koray.fra@gmail.com>
 pkgname=scrnsvr-bin
 pkgver=1
-pkgrel=11
+pkgrel=12
 pkgdesc="Yet Another X Screensaver/locker. Precompiled version."
 arch=('x86_64')
 url="https://github.com/koraynilay/scrnsvr"
@@ -20,5 +20,5 @@ package() {
 	install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/scrnsvr/LICENSE"
 	install -Dm0644 RETURN_CODES.txt "$pkgdir/usr/share/scrnsvr/RETURN_CODES.txt"
 	install -Dm0644 scrnsvr.ini.example "$pkgdir/usr/share/scrnsvr/scrnsvr.ini.example"
-	install -Dm0644 scrnsvr.service "$pkgdir/usr/lib/systemd/user/scrnsvr.service"
+	#install -Dm0644 scrnsvr.service "$pkgdir/usr/lib/systemd/user/scrnsvr.service"
 }
