@@ -1,6 +1,6 @@
 pkgbase = salvador
 	pkgdesc = A simple bash script that will help you manage your AUR packages
-	pkgver = 0.1.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://gitlab.com/dpeukert/salvador
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = salvador
 	depends = git
 	depends = pacman-contrib
 	depends = perl
-	source = salvador-0.1.2-1.tar.gz::https://gitlab.com/dpeukert/salvador/-/archive/0.1.2/salvador-0.1.2.tar.gz
-	sha256sums = 083920ea64d730d12d8d663f5bdf7ab9d6b47958a14a2dea62326670316278ba
+	source = salvador-1.0.0-1.tar.gz::https://gitlab.com/dpeukert/salvador/-/archive/1.0.0/salvador-1.0.0.tar.gz
+	sha256sums = 1b95daee5c17d7da87e1be4f31879a4d7f47f4452ce8a69601292f4d20d8c35c
 
 pkgname = salvador
