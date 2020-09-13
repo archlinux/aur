@@ -1,6 +1,6 @@
 pkgbase = art-rawconverter-git
 	pkgdesc = Rawconverter ART including blackfoxx-Theme built from latest sources
-	pkgver = 1.5_23_gbd18eefcc
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://bitbucket.org/agriggio/art/wiki/Home
 	arch = i686
@@ -24,6 +24,7 @@ pkgbase = art-rawconverter-git
 	depends = libiptcdata
 	depends = desktop-file-utils
 	conflicts = art-rawconverter
+	options = !strip
 	source = art-rawconverter-git_src::git+https://bitbucket.org/agriggio/art.git#branch=master
 	source = bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip
 	sha256sums = SKIP
