@@ -1,4 +1,5 @@
-# Maintainer: smlb <smlb at riseup dot net>
+# Maintainer: Martin Dünkelmann <nc-duenkekl3 at netcologne.de>
+# Contributor: smlb <smlb at riseup dot net>
 
 pkgname=libthinkpad-git
 pkgver=2.3.r11.g0a7a74d
@@ -26,7 +27,7 @@ pkgver() {
 
 build () {
     cd "$srcdir/$_gitname"
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DLIB=lib
     make 
 }
 
