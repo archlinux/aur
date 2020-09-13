@@ -14,7 +14,7 @@ md5sums=('3bae5f39ecb1c2c477efcfd98481200f')
 
 package() {
   tar -xzvf ${_pkgname}-${pkgver}.tar.gz
-  cd "$pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   python setup.py install --root="$pkgdir"
 }
