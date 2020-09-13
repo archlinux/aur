@@ -3,8 +3,8 @@
 
 pkgbase=linux-bcachefs-steph-git
 _basever=5.8
-_arch_pkgver=${_basever}.5.arch1
-pkgver=5.8.5.arch1.bcachefs.r295.g7e04f345cc3a
+_arch_pkgver=${_basever}.8.arch1
+pkgver=5.8.8.arch1.bcachefs.r296.gfb2821e72648
 pkgrel=1
 pkgdesc='Linux with bcachefs'
 _srctag=v${_arch_pkgver%.*}-${_arch_pkgver##*.}
@@ -31,7 +31,7 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             'SKIP'
-            '45e70495b711886d6eaee616ac67803e5faaeefa1598b55fb4920600bbc7b4cb'
+            '181330a9cf4517abbbe29b93165bc859ad8ca14a43582f4e1d69aae2b5ecc2c9'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
 export KBUILD_BUILD_HOST=archlinux
