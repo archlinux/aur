@@ -2,11 +2,11 @@
 
 pkgname=zettlr
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
-license=('GPL' 'custom')
+license=('GPL' 'custom') # Noted that the icon and name is copyrighted
 depends=(electron ttf-webhostinghub-glyphs otf-crimson-text)
 makedepends=(yarn git gulp)
 optdepends=('pandoc: For exporting to various format'
@@ -43,20 +43,14 @@ build() {
     cd "${srcdir}/Zettlr/source"
     yarn install --pure-lockfile --cache-folder "${srcdir}/cache"
 
-    # Aggressively remove binary and addins in node_modules
+    # Aggressively remove binary and useless files in node_modules
     find . -type d -name "fonts" -exec rm -rfv {} +
-    find . -name "\.bin" -exec rm -rfv {} +
-    find . -name "\.gitignore" -exec rm -rfv {} +
-    find . -name "\.eslintrc*" -exec rm -rfv {} +
-    find . -name "\.npmignore" -exec rm -rfv {} +
-    find . -name "\.yarn*" -exec rm -rfv {} +
-    find . -name "\.travis.yml" -exec rm -rfv {} +
-    find . -name "\.tonic_example.js" -exec rm -rfv {} +
-    find . -name "\.prettierrc.js" -exec rm -rfv {} +
-    find . -name "\.coveralls.yml" -exec rm -rfv {} +
-    find . -name "\.jscs.json" -exec rm -rfv {} +
-    find . -name "\.babelrc.js" -exec rm -rfv {} +
-    find . -name "\.vscode" -exec rm -rfv {} +
+    find . -iname "CHANGELOG*" -exec rm -rfv {} +
+    find . -iname "README*" -exec rm -rfv {} +
+    find . -iname "*.md" -exec rm -rfv {} +
+    find . -iname "*test*" -exec rm -rfv {} +
+    find . -iname "license*" -exec rm -rfv {} +
+    find . -iname ".*" -exec rm -rfv {} + || true
     find . -name "yarn.lock" -exec rm -rfv {} +
 }
 
