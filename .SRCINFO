@@ -1,5 +1,5 @@
 pkgbase = gdm-prime
-	pkgver = 3.36.2
+	pkgver = 3.36.3
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GDM
 	arch = x86_64
@@ -15,15 +15,17 @@ pkgbase = gdm-prime
 	depends = xorg-xrdb
 	depends = xorg-server
 	depends = xorg-xhost
-	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=02c42c1ca84bc28928618b773c12f2cea67ed71e
+	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=24a4c0afe337a7a381397c87a39e3a666c0ae6cc
 	source = 0001-Xsession-Don-t-start-ssh-agent-by-default.patch
 	source = 0002-pam-arch-Don-t-check-greeter-account-for-expiry.patch
 	source = 0003-pam-arch-Restrict-greeter-service-to-the-gdm-user.patch
-	source = 0004-nvidia-prime.patch
+	source = 0004-pam-arch-Update-to-match-pambase-20200721.1-2.patch
+	source = 0005-nvidia-prime.patch
 	sha256sums = SKIP
-	sha256sums = 098ffb1cdc0232f014e5fe5fb8d268b752afc54d6ee661664036879acd075b22
-	sha256sums = 2e2b12d4609004a010245de51a8c017b164e84f249cd19706d020cb599d2d7e7
-	sha256sums = 3fa02eb7bbbe1586eae4ae98221a284251ca2869dc731c80b753e7effc443379
+	sha256sums = b9ead66d2b6207335f0bd982a835647536998e7c7c6b5248838e5d53132ca21a
+	sha256sums = d89a3a852c9656a61a3d418817c883f7a607a0e65aa0eaf9904738c0299f006d
+	sha256sums = c18dc79bdd3207c66b6f66a41a51dd069442d2e9053055147c2f90e39f0c4a7d
+	sha256sums = c4d04a019a7f7db57c6909d76f3c8f3dbaf7be86c81d38c6672f1c730bd5b72d
 	sha256sums = f2ac60c8e4d62805dc2f441a8754f1c15e12c64ec0dbb1031dbd91dd47df52d9
 
 pkgname = gdm-prime

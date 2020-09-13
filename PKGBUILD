@@ -4,7 +4,7 @@
 
 pkgbase=gdm-prime
 pkgname=(gdm-prime libgdm-prime)
-pkgver=3.36.2
+pkgver=3.36.3
 pkgrel=1
 url="https://wiki.gnome.org/Projects/GDM"
 arch=(x86_64)
@@ -12,16 +12,18 @@ license=(GPL)
 depends=(gnome-shell gnome-session upower xorg-xrdb xorg-server xorg-xhost)
 makedepends=(yelp-tools gobject-introspection git docbook-xsl)
 checkdepends=(check)
-_commit=02c42c1ca84bc28928618b773c12f2cea67ed71e  # tags/3.36.2^0
+_commit=24a4c0afe337a7a381397c87a39e3a666c0ae6cc  # tags/3.36.3^0
 source=("git+https://gitlab.gnome.org/GNOME/gdm.git#commit=$_commit"
         0001-Xsession-Don-t-start-ssh-agent-by-default.patch
         0002-pam-arch-Don-t-check-greeter-account-for-expiry.patch
         0003-pam-arch-Restrict-greeter-service-to-the-gdm-user.patch
-        0004-nvidia-prime.patch)
+	0004-pam-arch-Update-to-match-pambase-20200721.1-2.patch
+        0005-nvidia-prime.patch)
 sha256sums=('SKIP'
-            '098ffb1cdc0232f014e5fe5fb8d268b752afc54d6ee661664036879acd075b22'
-            '2e2b12d4609004a010245de51a8c017b164e84f249cd19706d020cb599d2d7e7'
-            '3fa02eb7bbbe1586eae4ae98221a284251ca2869dc731c80b753e7effc443379'
+            'b9ead66d2b6207335f0bd982a835647536998e7c7c6b5248838e5d53132ca21a'
+            'd89a3a852c9656a61a3d418817c883f7a607a0e65aa0eaf9904738c0299f006d'
+            'c18dc79bdd3207c66b6f66a41a51dd069442d2e9053055147c2f90e39f0c4a7d'
+            'c4d04a019a7f7db57c6909d76f3c8f3dbaf7be86c81d38c6672f1c730bd5b72d'
             'f2ac60c8e4d62805dc2f441a8754f1c15e12c64ec0dbb1031dbd91dd47df52d9')
 
 prepare() {
@@ -33,7 +35,10 @@ prepare() {
   patch -Np1 -i ../0002-pam-arch-Don-t-check-greeter-account-for-expiry.patch
   patch -Np1 -i ../0003-pam-arch-Restrict-greeter-service-to-the-gdm-user.patch
 
-  patch -Np1 -i ../0004-nvidia-prime.patch
+  # https://bugs.archlinux.org/task/67485
+  patch -Np1 -i ../0004-pam-arch-Update-to-match-pambase-20200721.1-2.patch
+
+  patch -Np1 -i ../0005-nvidia-prime.patch
 
   NOCONFIGURE=1 ./autogen.sh
 }
