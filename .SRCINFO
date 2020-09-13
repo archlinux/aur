@@ -21,7 +21,7 @@ pkgbase = xfce4-theme-switcher
 	conflicts = xfce4-theme-switcher
 	options = !strip
 	options = !emptydirs
-	source = https://gitlab.com/linux-stuffs/xfce4-theme-switcher/raw/master/distrib/xfce4-theme-switcher-0.1-1.tar.gz
+	source = https://gitlab.com/linux-stuffs/xfce4-theme-switcher/raw/master/distrib/xfce4-theme-switcher-0.1-2.tar.gz
 	sha256sums = SKIP
 
 pkgname = xfce4-theme-switcher

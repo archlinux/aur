@@ -14,7 +14,7 @@ conflicts=("${pkgname}")
 depends=('bash' 'xfce4-whiskermenu-plugin' 'coreutils' 'grep' 'sed' 'python3' 'conky' 'plank' 'xfce4-panel' 'gtk3')
 options=('!strip' '!emptydirs')
 
-source=('https://gitlab.com/linux-stuffs/xfce4-theme-switcher/raw/master/distrib/xfce4-theme-switcher-0.1-1.tar.gz')
+source=('https://gitlab.com/linux-stuffs/xfce4-theme-switcher/raw/master/distrib/xfce4-theme-switcher-0.1-2.tar.gz')
 sha256sums=('SKIP')
 
 package() {
