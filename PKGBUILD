@@ -1,7 +1,7 @@
 # Maintainer: Hugo Parente Lima <hugo.pl@gmail.com>
 
 pkgname=tijolo
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Lightweight, keyboard-oriented IDE for the masses"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("gc" "libevent" "pcre" "gtksourceview4" "nerd-fonts-jetbrains-mono" "libgit2")
 makedepends=("make" "git" "crystal>=0.35.1" "shards>=0.11.0")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hugopl/tijolo/archive/v${pkgver}.tar.gz")
-sha256sums=('06e7f71cba0e406ff58e0b333e70c43482f9a6b40f6a765a8d7f94f7c279798d')
+sha256sums=('5f0ff5319001e35e13ce223bf9df305430e1d28d61d18aa374823943b9b0b6e0')
 
 build() {
   cd "$srcdir/tijolo-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = tijolo
 	pkgdesc = Lightweight, keyboard-oriented IDE for the masses
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/hugopl/tijolo
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = tijolo
 	depends = nerd-fonts-jetbrains-mono
 	depends = libgit2
 	conflicts = tijolo-git
-	source = tijolo-0.1.1.tar.gz::https://github.com/hugopl/tijolo/archive/v0.1.1.tar.gz
-	sha256sums = 06e7f71cba0e406ff58e0b333e70c43482f9a6b40f6a765a8d7f94f7c279798d
+	source = tijolo-0.2.0.tar.gz::https://github.com/hugopl/tijolo/archive/v0.2.0.tar.gz
+	sha256sums = 5f0ff5319001e35e13ce223bf9df305430e1d28d61d18aa374823943b9b0b6e0
 
 pkgname = tijolo
 
