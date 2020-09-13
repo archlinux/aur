@@ -1,4 +1,5 @@
-# Maintainer: smlb <smlb at riseup dot net>
+# Maintainer: Martin Dünkelmann <nc-duenkekl3 at netcologne.de>
+# Contributor: smlb <smlb at riseup dot net>
 
 pkgname=dockd-git
 pkgver=1.20.r7.g6e69e13
@@ -10,6 +11,8 @@ license=('BSD')
 depends=('libthinkpad-git' 'libxrandr')
 makedepends=('cmake' 'git' 'pkg-config')
 options=('!strip')
+conflicts=("dockd")
+provides=("dockd")
 source=("git://github.com/libthinkpad/dockd")
 md5sums=('SKIP')
 
