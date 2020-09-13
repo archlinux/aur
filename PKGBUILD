@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf "%s.r%s.%s" "$(grep AC_INIT configure.ac | awk -F', ' '{print $2}')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.%s" "$(grep AC_INIT configure.in | awk -F', ' '{print $2}')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 # prepare() {
