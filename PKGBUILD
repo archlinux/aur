@@ -1,7 +1,7 @@
 # Maintainer: Arley Henostroza < arllk at gmail dot com >
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
-_svt_hevc_ver='1.5.0'
+_svt_hevc_ver='ead6fdf7c9ff84511b42fc1658c1654b84d83e4b'
 _svt_vp9_ver='0.2.2'
 
 pkgname=ffmpeg-intel-full-git
@@ -24,8 +24,8 @@ depends=(
         'x264'  'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2'
         'lilv' 'xz' 'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
         'libxv' 'libx11'  'libxext' 'zlib' 'libomxil-bellagio' 'libdrm' 'vmaf'
-        'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc' 'srt'
-        'glslang' 'librabbitmq-c' 'vulkan-icd-loader' 'svt-av1' 'svt-vp9'
+        'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc' 'srt' 'tensorflow'
+        'glslang-git' 'librabbitmq-c' 'vulkan-icd-loader' 'svt-av1' 'svt-vp9'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
         'libopenmpt-svn' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
@@ -43,23 +43,24 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '010-ffmpeg-fix-vmaf-model-path.patch'
-	'020-ffmpeg-add-svt-hevc.patch'
-	"030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
+	"020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
+	"030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
 	"040-ffmpeg-add-svt-vp9-${_svt_vp9_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/v${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         'LICENSE')
 
 sha256sums=('SKIP'
-	    'b6fcef2f4cbb1daa47d17245702fbd67ab3289b6b16f090ab99b9c2669453a02'
-            'fecb280e4ebb4ad8a3ec0385f6f32fcf90656fea989a6182abcc4104f266bde4'
-            '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
+	    '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
+            '87292cf51f47e4408b0b7b0ee8387d18cf7ea7d352832d5d97c413456eb34b38'
+            '05ec4d3323dc80ef6c1d4d6d50d339accd51d22b12a735b7a6605f10feb09cec'
             'b74be6d805672210e226e7c0b403f88b0ee8a53c732c9bdc873c4b44aeb75c96'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
     rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
+    sed -i 's/general.texi/general_contents.texi/g' "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-${_svt_hevc_ver}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-${_svt_vp9_ver}.patch"
 }
 
@@ -80,6 +81,7 @@ build() {
     
     ./configure \
         --prefix='/usr' \
+	--extra-cflags='-I/usr/include/tensorflow' \
         \
         --disable-rpath \
         --enable-gpl \
@@ -152,7 +154,7 @@ build() {
         --enable-libssh \
         --enable-libsvthevc \
 	--enable-libsvtav1 \
-        --disable-libtensorflow \
+        --enable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
         --disable-libtls \
