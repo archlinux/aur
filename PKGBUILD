@@ -11,28 +11,28 @@ arch=('x86_64')
 # dynamic library. Should the .so be shipped in the future, promote qrcodegen
 # from a makedepends to a true depends, and use that dynamic library.
 depends=('ncurses' 'ffmpeg' 'libunistring')
-makedepends=('cmake' 'pandoc' 'python-pypandoc' 'python-cffi' 'python-setuptools' 'doctest' 'qrcodegen')
+makedepends=('cmake' 'pandoc' 'python-pypandoc' 'python-cffi' 'python-setuptools' 'doctest' 'qrcodegen' 'ninja')
 source=("https://github.com/dankamongmen/notcurses/archive/v${pkgver}.tar.gz")
 
 prepare() {
   mkdir -p "${pkgname}-${pkgver}/build"
   cd "${pkgname}-${pkgver}/build"
-  cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=RelWithDebInfo
+  cmake .. -GNinja -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=RelWithDebInfo
 }
 
 build() {
   cd "${pkgname}-${pkgver}/build"
-  make
+  ninja
 }
 
 check() {
   cd "${pkgname}-${pkgver}/build"
-  make test
+  ninja test
 }
 
 package() {
   cd "${pkgname}-${pkgver}/build"
-  make install DESTDIR="$pkgdir"
+  ninja install DESTDIR="$pkgdir"
   cd ../python
   env CFLAGS="-I$pkgdir/usr/include -L../build" python setup.py install --root="$pkgdir" --optimize=1
 }

@@ -12,6 +12,7 @@ pkgbase = notcurses
 	makedepends = python-setuptools
 	makedepends = doctest
 	makedepends = qrcodegen
+	makedepends = ninja
 	depends = ncurses
 	depends = ffmpeg
 	depends = libunistring
