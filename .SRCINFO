@@ -1,18 +1,18 @@
 pkgbase = virtualbox-ext-oracle-manjaro
-	pkgdesc = Oracle VM VirtualBox Extension Pack
-	pkgver = 6.1.12
-	pkgrel = 2
+	pkgdesc = Oracle VM VirtualBox Extension Pack for Manjaro
+	pkgver = 6.1.14
+	pkgrel = 1
 	url = https://www.virtualbox.org/
 	install = virtualbox-ext-oracle-manjaro.install
 	arch = any
 	license = custom:PUEL
-	conflicts = virtualbox-ext-oracle
-	noextract = Oracle_VM_VirtualBox_Extension_Pack-6.1.12.vbox-extpack
-	options = !strip
-	source = https://download.virtualbox.org/virtualbox/6.1.12/Oracle_VM_VirtualBox_Extension_Pack-6.1.12.vbox-extpack
-	sha256sums = 8c43fc6ab19fc83ed3c73c6e62f7f02886503cc800d27198e8bee89586b18eda
-
-pkgname = virtualbox-ext-oracle-manjaro
 	depends = virtualbox
 	optdepends = rdesktop: client to connect vm via RDP
+	conflicts = virtualbox-ext-oracle
+	noextract = Oracle_VM_VirtualBox_Extension_Pack-6.1.14.vbox-extpack
+	options = !strip
+	source = https://download.virtualbox.org/virtualbox/6.1.14/Oracle_VM_VirtualBox_Extension_Pack-6.1.14.vbox-extpack
+	sha256sums = b224e796e886b19bce69f0aaedf6ca82bad0ca29c61fb0ed86166efb84356942
+
+pkgname = virtualbox-ext-oracle-manjaro
 

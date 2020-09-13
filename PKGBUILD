@@ -2,18 +2,20 @@
 # Contributor: Sébastien Luttringer
 
 pkgname=virtualbox-ext-oracle-manjaro
-pkgver=6.1.12
-pkgrel=2
-pkgdesc='Oracle VM VirtualBox Extension Pack'
+pkgver=6.1.14
+pkgrel=1
+pkgdesc='Oracle VM VirtualBox Extension Pack for Manjaro'
 arch=('any')
 url='https://www.virtualbox.org/'
 license=('custom:PUEL')
+depends=('virtualbox')
+optdepends=('rdesktop: client to connect vm via RDP')
 options=('!strip')
 conflicts=(virtualbox-ext-oracle)
 install=virtualbox-ext-oracle-manjaro.install
 source=("https://download.virtualbox.org/virtualbox/$pkgver/Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack")
 noextract=("Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack")
-sha256sums=('8c43fc6ab19fc83ed3c73c6e62f7f02886503cc800d27198e8bee89586b18eda')
+sha256sums=('b224e796e886b19bce69f0aaedf6ca82bad0ca29c61fb0ed86166efb84356942')
 
 prepare() {
   # shrink uneeded cpuarch
@@ -24,8 +26,6 @@ prepare() {
 }
 
 package() {
-  depends=('virtualbox')
-  optdepends=('rdesktop: client to connect vm via RDP')
   install -Dm 644 shrunk.vbox-extpack \
     "$pkgdir/usr/share/virtualbox/extensions/Oracle_VM_VirtualBox_Extension_Pack-$pkgver.vbox-extpack"
   install -Dm 644 shrunk/ExtPack-license.txt \
