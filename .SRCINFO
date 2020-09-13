@@ -1,7 +1,7 @@
 pkgbase = gatsby-desktop
 	pkgdesc = Official proof-of-concept desktop app for managing your Gatsby sites.
 	pkgver = 0.0.1_alpha.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gatsbyjs/desktop
 	arch = x86_64
 	license = GPL3
