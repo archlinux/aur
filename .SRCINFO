@@ -5,8 +5,8 @@ pkgbase = pkgtop-git
 	url = https://github.com/orhun/pkgtop
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = go
-	depends = git
 	source = git+https://github.com/orhun/pkgtop
 	sha256sums = SKIP
 

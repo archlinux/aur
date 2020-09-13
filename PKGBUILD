@@ -8,8 +8,7 @@ pkgrel=1
 arch=('x86_64')
 url="https://github.com/orhun/pkgtop"
 license=('GPL3')
-depends=('git')
-makedepends=('go')
+makedepends=('git' 'go')
 source=("git+$url")
 sha256sums=('SKIP')
 
@@ -30,5 +29,6 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname%-git}/src"
-  install -Dm755 "${pkgname%-git}" "$pkgdir/usr/local/bin/${pkgname%-git}"
+  install -Dm 755 "${pkgname%-git}" -t "$pkgdir/usr/bin"
+  install -Dm 644 "../README.md" -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
