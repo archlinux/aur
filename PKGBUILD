@@ -1,8 +1,8 @@
 # Maintainer: la Fleur <lafleur at boum dot org>
 
-pkgname=vim-gtk-recent
-_pkgname=${pkgname}-git
-pkgver=r1
+pkgname=vim-gtk-recent-git
+_pkgname=${pkgname%-git}
+pkgver=r3.9311fad
 pkgrel=1
 pkgdesc="logs files opened in vim into GObject recent files"
 arch=('i686' 'x86_64')
@@ -13,22 +13,19 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 groups=('vim-plugins')
 #source=("$pkgname"::'https://gitlab.gnome.org/lafleur/vim-gtk-recent.git')
-source=('git://gitlab.gnome.org/lafleur/vim-gtk-recent.git')
+source=("${_pkgname}::git+https://gitlab.gnome.org/lafleur/${_pkgname}")
 md5sums=('SKIP')
 
-#pkgver() {
-#  cd "$srcdir/$pkgname"
-#  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#}
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
   local _installpath="${pkgdir}/usr/share/vim/vimfiles"
   install -d "${_installpath}/plugin"
 
-  cd "$srcdir"
+  cd "${srcdir}/${_pkgname}"
   install -D -m644 "gtk-recent.vim" "${_installpath}/plugin/"
-
-  #cd "$pkgname"
-  #cp -r -t "${_installpath}" indent syntax syntax_checkers UltiSnips
 }
 
