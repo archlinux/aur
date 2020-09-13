@@ -6,7 +6,7 @@ pkgdesc="Rawconverter ART including blackfoxx-Theme built from latest sources"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/agriggio/art/wiki/Home"
 license=('GPL3')
-depends=('gperftools' 'lensfun' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils') 
+depends=('lensfun' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils') 
 makedepends=('pkgconf' 'make' 'cmake' 'git' 'gcc' 'hicolor-icon-theme' 'fakeroot')
 conflicts=('art-rawconverter')
 source=("${pkgname}_src::git+https://bitbucket.org/agriggio/art.git#branch=master" "bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip")
@@ -28,9 +28,6 @@ build() {
     -DCACHE_NAME_SUFFIX="-git" \
     -DCMAKE_BUILD_TYPE=Debug \
     -DPROC_TARGET_NUMBER=2 
-#   -DWITH_LTO="ON" 
-#    -DENABLE_TCMALLOC="ON" \
-#    -DTCMALLOC_LIB_DIR=/usr/lib
 
   NPROC=$(getconf _NPROCESSORS_ONLN)
   make -j${NPROC} 
