@@ -1,0 +1,29 @@
+pkgbase = libreelec-git
+	pkgdesc = Build LibreELEC for any device and architecture
+	pkgver = r34501.c782141e95
+	pkgrel = 1
+	url = https://wiki.libreelec.tv/compile
+	arch = x86_64
+	license = None
+	makedepends = git
+	depends = gperf
+	depends = patchutils
+	depends = unzip
+	depends = lzop
+	depends = xorg-mkfontscale
+	depends = xorg-bdftopcf
+	depends = java-runtime
+	depends = zip
+	depends = wget
+	depends = bc
+	depends = libxslt
+	depends = python3
+	depends = libxml-perl
+	depends = perl-parse-yapp
+	depends = perl-json
+	depends = rpcsvc-proto
+	source = git://github.com/LibreELEC/LibreELEC.tv.git
+	sha256sums = SKIP
+
+pkgname = libreelec-git
+
