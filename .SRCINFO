@@ -1,0 +1,13 @@
+pkgbase = python-pyogg
+	pkgdesc = Flac, ogg, and opus python library
+	pkgver = 0.6.14a1
+	pkgrel = 1
+	url = https://github.com/Zuzu-Typ/PyOgg
+	arch = any
+	license = unlicense
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/P/PyOgg/PyOgg-0.6.14a1.tar.gz
+	sha512sums = a8176efed1088c09991b764eb594b67c75b15b1af6031657ae6083dd77370678c2af488441bef20a6a0103409813c8f503830d77759c7179d93a3f3c5861de3f
+
+pkgname = python-pyogg
+
