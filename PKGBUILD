@@ -9,11 +9,15 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
+# This file is created from PKGBUILD.sh.ep contained by the mentioned repository.
+# Do not edit it manually! See README.md in the repository's root directory
+# for more information.
+
 # All patches are managed at https://github.com/Martchus/qtbase
 
 _qt_module=qtbase
 pkgname=mingw-w64-qt5-base-static
-pkgver=5.15.0
+pkgver=5.15.1
 pkgrel=1
 pkgdesc='A cross-platform application and UI framework, native OpenGL backend (mingw-w64)'
 arch=('any')
@@ -63,38 +67,38 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/subm
         '0029-Hardcode-linker-flags-for-platform-plugins.patch'
         '0030-Fix-linking-against-static-plugins-with-qmake.patch'
         '0031-Prevent-Cannot-find-feature-windows_vulkan_sdk.patch')
-sha256sums=('9e7af10aece15fa9500369efde69cb220eee8ec3a6818afe01ce1e7d484824c5'
-            '03fbaa97d7e867db4f73c36045010c915d69e14d8de82fba886db6dbb5f2c19a'
-            '25a28f49c2403fd7352736e29bcd25b7fcfb761b469515f773e782f2bdee7535'
-            'd0d83f1ef804f0012bea97f1f2c838d650a50556ec1635d5adbf6c8c155abd7e'
-            '288ee263514ac6bab04245f3f3403511225a4d135a8db290777f68a91072b9ca'
-            '1a25dc976dcd763edb2ca9431083b88b3f4d075104dfbc4aa84ab3ce6e009896'
-            '0e81316237392605a09fba67c4fc8d0c596f1b2306b4a5de56e2fc857ef270eb'
-            '1371046f24787eb1b7cb7779d5b5f792dd0e96c01fb83abea53dc1d7a3671409'
-            'be86f463255a0a146d80ff6d12d3faf9abca6eb65a8a2ce1cba1e9a27d24aad4'
-            '6fd65bf739e9c27e837e73bcb5c203d1d6692e551b05f285f9205fa3818652ec'
-            '42c7c59dd5b0d30659c72ff6405a931bdc286278cac4d197da67f565e4b42ba7'
-            'a146c63f13af1ab095ce0d7709e61a96a595c74715f98d6370ad4a42e2361466'
-            '68ca7b583d40b8eaf6f3f022256f26e041a5e845c435c17a1462d2a825901f62'
-            '9ea635d6aed7d9af8eae17282dcf4e40b9259d03a7afd3af3d9f62e85abda65d'
-            '11112caf945e199bca20d1adad09990e348d078fd99567be037fd02ef5081174'
-            '39e3fec01c9e823c16219b289babdc8c5af597cfe5496b681f4acc960de2dadb'
-            '1b1bed9052a0f7666bbfd99d0a2e21e146e5b24d1967b80367ab0df55c3f3474'
-            '896360b605d5b47db2c8459c620a1c07a5951efa702734c58dfb773396dc328b'
-            'd339e29673f2ec6f3ae7c4b6f64188b0686946b0ad5a99c6721fa99dc123bb70'
-            '0ac665c9c982be0b35d249bec3e38b8d95c8539a9e68379216994e01f32daaff'
-            '8aceb87b3ec8a77bec3f0826dd81325447acdeff4e7179d464f1d1440f867e9e'
-            'fc65b1578af0e6f7883b1f7769d6b333f48bf2d9aa4c2c6423db24237079473f'
-            '8c13620f2b35e3b9abc772cef2bf28d1873e3a230c49f19eed1fd305903825c7'
-            '227fd12bda01bd023c5f353b3b3c42bc8b14dbd3fd0fc7e78b0ee5fe16017b26'
-            'a63e76c896c2fafef4f457b95d547631d86845d2bb6d414a64d0ffa391dd21ef'
-            'a80a47c4d40e61431cf0357ab14d1634eadec9add509c995e7ff4ee417bd2065'
-            '563169bc4886659f026ab35f92175828265385fbfebce44b23565f7de35a1420'
-            'a90671b2188cd76e9d950793d4d41cf2ec54d8f4d3adbc1d966efafc313d2b3a'
-            '25a6eabbd5ae5b2f3b86ec36b0d6a298cc9f3df5dd3190abcbd24f54d662da9c'
-            'd69836ba35570985c271ce84a4c6833f33436696e8e25ecb23e27f3e498aa696'
-            '3b5ea2572e65c52ff988a97e988f7f4a36a20973c63afb047db6d8a2b67a2dc5'
-            'c8181d71a5209983e4659c1bb11957fb0199e0c7e66808e5cb877e5876c704be')
+sha256sums=('33960404d579675b7210de103ed06a72613bfc4305443e278e2d32a3eb1f3d8c'
+            'fec4ca039859f9cc9685b34a7bd2da9e0fe24b5b1f85d7cd12665631fa797b44'
+            'a0ea35e6eef4fed06360efa05e11b898f6033d893e1f1657a240cc03e43f076e'
+            'cda13b2856fafe92b1369d6f2d01bd4d9bbdb0ec96c25e91e48ba25267c74c6c'
+            'e13cd18ad781512862b5d288a53ebd09dc0e8bcc6fd3c4e833d0c593f28edd3a'
+            '273af9db2954c1d62e29d2a8328bbfa918bae617456aff6645df4bfb72796e0d'
+            '84a801d904fe308a56a9112af9aa73656eacf36ed7684449363281bfe4108543'
+            '190795aa778ae4e7bd8a74ce56504c697435129b73d2f0418511a4a230f68bc5'
+            '3fff6151dcf76bed12864dba51e4d04d39f8b3969c502a71ed547b527b310d7a'
+            '56240f509157a04ba1f1a23b0e058c2212d66e34aca68a688c15f5d8804bf174'
+            '02ca3a112f3e35749c141ed9c7e87a1fd0e82aa852541024b85f40a99d24d9fc'
+            '3b4dcce669d359953603257e621e6ebc30fb88f0f1c48b35ec443c574f2b05e8'
+            'ba302124391aea5438e82195dd276edd8942f04cff7c6b85a9f0a5279749566b'
+            '68b5f9e0535c8d030161e67a0e8ee8bec2a80a9c8f69c09a4ad25fe98eb9dfd2'
+            'ab46b53eb6272185a05d11820317db421be6e4440166967911e7d59d4f0a03d4'
+            'c11a14a02e48e39e8212097915aed2347825a33022d367f322e34f3aaaf33f90'
+            '6d7c8fd7a162174355dd12399bd8f47f470557751dc117271c02e2e7b385d424'
+            '3c28f5658e0f960091c1991586167ee06bcecd8d843123fbf37ab78a1f5f30f0'
+            'f9545474bd73be049dbf84fc2ff455e924e6fb29bb807809c384bf56a0227ad6'
+            '2998069e3a427c940f496d75df4cea05acb10d3e82c333a5c957e37f0543a0e8'
+            'a301ddcd46b9b2fb58d592af88ac6acf81b2dbd328fb8c4c3ef49abffe343267'
+            '3d1257390ff151365d7fa29cde5f9c118310fe727243fb6f50ad30ab117c3384'
+            '19534087d5fc4b434859d68476ebd0647fdc04bf78f24943b7ab88cccf09b08a'
+            '5a57c66303d4a898dd5cccd9c639f367b50b508256fdf9c00ba5179bb00d701c'
+            '84b9e41b7320834a73edf1d192e511801feb51cd2de60ecc28e46982cd572df4'
+            '85bba2428090518dca878ca117299b065913f125c00cede57b31d37a02d0b787'
+            'f0429a442805c2e0181e8b3b7814259586fdcba000bf324c0e367858c351f6b1'
+            'c8479468cfb4a70fe65a1317f3fbacd40dcdc7a8bafc88648160509ee8b216e8'
+            'a2eb9e683b12efe7fbb365749bdd5373e0fbf6438fe5342effab93f3a262d808'
+            '4c097460c443ec0ca47a41ea1ad6fdaa08e394b7a883d54da69bf9557ccbea31'
+            'e1f2b8bfe9f3cdacceb6d9b73573ad39ea73ac0fce74448c7df0262b34b703bb'
+            '553c15e8cf230c3d3f3fa4c4a7a5a46d18027a4d6c7493f3eab56ca97bd906d9')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 

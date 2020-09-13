@@ -1,4 +1,4 @@
-From 10d0bde7bad521e00055177d7165df33b641f539 Mon Sep 17 00:00:00 2001
+From 323393dab8e135dbfbba3e82b164765ac1c82a56 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
 Subject: [PATCH 18/31] Merge shared and static library trees
@@ -17,10 +17,10 @@ Change-Id: I1de08df42d83d411aae519691cd3cde1fd6f3d1d
  7 files changed, 74 insertions(+), 11 deletions(-)
 
 diff --git a/configure.pri b/configure.pri
-index e775bf046e..8b968ba297 100644
+index 3dedffcace..89938dfc32 100644
 --- a/configure.pri
 +++ b/configure.pri
-@@ -652,7 +652,12 @@ defineTest(qtConfOutput_machineTuple) {
+@@ -654,7 +654,12 @@ defineTest(qtConfOutput_machineTuple) {
  
  defineTest(qtConfOutput_commitOptions) {
      # qdevice.pri needs to be written early, because the compile tests require it.
@@ -34,7 +34,7 @@ index e775bf046e..8b968ba297 100644
  }
  
  # type (empty or 'host'), option name, default value
-@@ -1391,3 +1396,12 @@ defineTest(createConfigStatus) {
+@@ -1393,3 +1398,12 @@ defineTest(createConfigStatus) {
  
  QMAKE_POST_CONFIGURE += \
      "createConfigStatus()"
@@ -89,10 +89,10 @@ index c15559e174..dd09ac749d 100644
  unset(DEVICE_PRI)
  
 diff --git a/mkspecs/features/qt.prf b/mkspecs/features/qt.prf
-index 99b7fe6562..f996e53d2c 100644
+index 69d1954306..2bc7b1dedd 100644
 --- a/mkspecs/features/qt.prf
 +++ b/mkspecs/features/qt.prf
-@@ -232,6 +232,23 @@ for(ever) {
+@@ -235,6 +235,23 @@ for(ever) {
              !isEmpty(MODULE_WINRT_CAPABILITIES_DEVICE): \
                  WINRT_MANIFEST.capabilities_device_default += $$MODULE_WINRT_CAPABILITIES_DEVICE
          }
@@ -204,5 +204,5 @@ index c0ce0972ef..5a2deaf31d 100644
  mkspecs.files -= $$PWD/mkspecs/modules $$PWD/mkspecs/modules-inst
  INSTALLS += mkspecs
 -- 
-2.26.2
+2.28.0
 

@@ -1,4 +1,4 @@
-From dd50dd544fbf94606c08fa57b0393df24282c28b Mon Sep 17 00:00:00 2001
+From 006235cdee71011db441e0ea5265cb9c93937f6c Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:01:14 +0200
 Subject: [PATCH 06/31] Prevent debug library names in pkg-config files
@@ -29,5 +29,5 @@ index e94084381c..8e4d11484f 100644
      QString subdir = project->first("QMAKE_PKGCONFIG_DESTDIR").toQString();
      if(!subdir.isEmpty()) {
 -- 
-2.26.2
+2.28.0
 
