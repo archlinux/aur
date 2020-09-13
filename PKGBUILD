@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/orhun/kermit"
 license=('GPL3')
 depends=('gtk3>=3.18.9' 'vte3>=0.42.5')
-makedepends=('cmake')
+makedepends=('git' 'cmake')
 conflicts=("${pkgname%-git}")
 source=('git://github.com/orhun/kermit.git')
 sha256sums=('SKIP')
@@ -29,4 +29,5 @@ build() {
 package() {
   cd "${pkgname%-git}/build"
   make DESTDIR="$pkgdir" install
+  install -Dm 644 "../README.md" -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }

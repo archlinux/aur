@@ -5,6 +5,7 @@ pkgbase = kermit-git
 	url = https://github.com/orhun/kermit
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = cmake
 	depends = gtk3>=3.18.9
 	depends = vte3>=0.42.5
