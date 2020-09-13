@@ -2,7 +2,7 @@
 
 pkgname=notcurses
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Blingful TUI/character graphics library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
 license=('Apache')
@@ -32,7 +32,7 @@ check() {
 
 package() {
   cd "${pkgname}-${pkgver}/build"
-  ninja install DESTDIR="$pkgdir"
+  DESTDIR="$pkgdir" ninja install
   cd ../python
   env CFLAGS="-I$pkgdir/usr/include -L../build" python setup.py install --root="$pkgdir" --optimize=1
 }
