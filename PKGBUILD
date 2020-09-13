@@ -3,18 +3,15 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
-# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# This file is created from PKGBUILD.sh.ep contained by the mentioned repository.
 # Do not edit it manually! See README.md in the repository's root directory
 # for more information.
 
 # All patches are managed at https://github.com/Martchus/qtwebglplugin
 
-# Includes dynamic and static versions; if only one version is requried, just
-# set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
-
 _qt_module=qtwebglplugin
 pkgname=mingw-w64-qt5-webglplugin
-pkgver=5.15.0
+pkgver=5.15.1
 pkgrel=1
 arch=('any')
 pkgdesc="QPA plugin for running an application via a browser using streamed WebGL commands (mingw-w64)"
@@ -27,17 +24,12 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Hardcode-linker-flags-for-platform-plugin.patch')
-sha256sums=('f7b81f25ddf7b3a0046daa7224bc1e18c8b754b00b1a33775f30f827a5cdca15'
-            '4a6e18d8269a3716e7d31b02e520925022fab51956a033fd6ad5abda5df4a351')
+sha256sums=('63c76f384252090694a8a2a8a18441d4fc4502d688cc4ac798a0d27b2221733c'
+            'c6af011c8517f0874b5b5593b1248061e863add2009ed66a31c84783acf1a360')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
-[[ $NO_STATIC_LIBS ]] || \
-  makedepends+=('mingw-w64-qt5-base-static') \
-  optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
-  _configurations+=('CONFIG+=no_smart_library_merge CONFIG+=static')
-[[ $NO_SHARED_LIBS ]] || \
-  _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
+_configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
