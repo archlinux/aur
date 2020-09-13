@@ -1,4 +1,4 @@
-From 901bf854204cb2f9a4df9b9771183971f3c2f609 Mon Sep 17 00:00:00 2001
+From b29f98de79aed3c1905423ba6b1ebbb86eca29bb Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 23 May 2020 15:43:20 +0200
 Subject: [PATCH 3/3] Workaround "multiple definition" errors with
@@ -26,5 +26,5 @@ index 27bb3abb..0cce6f20 100644
  
  include(common/common.pri)
 -- 
-2.26.2
+2.28.0
 

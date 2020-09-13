@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-multimedia
 	pkgdesc = Classes for audio, video, radio and camera functionality (mingw-w64)
-	pkgver = 5.15.0
+	pkgver = 5.15.1
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -11,21 +11,19 @@ pkgbase = mingw-w64-qt5-multimedia
 	license = custom
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-pkg-config
-	makedepends = mingw-w64-qt5-base-static
 	depends = mingw-w64-qt5-base
 	depends = mingw-w64-qt5-declarative
-	optdepends = mingw-w64-qt5-base-static: use of static libraries
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.15/5.15.0/submodules/qtmultimedia-everywhere-src-5.15.0.tar.xz
+	source = https://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qtmultimedia-everywhere-src-5.15.1.tar.xz
 	source = 0001-Recorder-includes-to-prevent-conflict-with-vsnprintf.patch
 	source = 0002-Fix-build-with-ANGLE.patch
 	source = 0003-Workaround-multiple-definition-errors-with-amstrmid-.patch
-	sha256sums = 0708d867697f392dd3600c5c1c88f5c61b772a5250a4d059dca67b844af0fbd7
-	sha256sums = 805b5885d64ad1fa545683a30e82c44d6302903565c2b865d2f6dfe4e1cea5a3
-	sha256sums = dcaf467022057ea8020f758d483031df825c36497023cdab2b1ea31833e0a421
-	sha256sums = 6d627ffda55528876f92052528ab19f327486efafbb0c5a792191d216ade36ba
+	sha256sums = ed6e75bec9c98559c0fbc91ff746185b1e1845139b2c7a5a843e1e8880697d99
+	sha256sums = 98d1157f57558204355b94b2f1fba7cbd9bd9bb561a5d66a0a48ffaab2894569
+	sha256sums = 8e189a64fd15bf2267cb58f3d3c23d0d2ad9eb8c5f07723546d5a6620c5915c3
+	sha256sums = 63860dba39d8c30dad59c0d9b4fc17e4da6e1e212e41520dbb8912e034974a40
 
 pkgname = mingw-w64-qt5-multimedia
 

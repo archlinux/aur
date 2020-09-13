@@ -4,18 +4,15 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
-# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# This file is created from PKGBUILD.sh.ep contained by the mentioned repository.
 # Do not edit it manually! See README.md in the repository's root directory
 # for more information.
 
 # All patches are managed at https://github.com/Martchus/qtmultimedia
 
-# Includes dynamic and static versions; if only one version is requried, just
-# set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
-
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia
-pkgver=5.15.0
+pkgver=5.15.1
 pkgrel=1
 arch=('any')
 pkgdesc='Classes for audio, video, radio and camera functionality (mingw-w64)'
@@ -30,19 +27,14 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/subm
         '0001-Recorder-includes-to-prevent-conflict-with-vsnprintf.patch'
         '0002-Fix-build-with-ANGLE.patch'
         '0003-Workaround-multiple-definition-errors-with-amstrmid-.patch')
-sha256sums=('0708d867697f392dd3600c5c1c88f5c61b772a5250a4d059dca67b844af0fbd7'
-            '805b5885d64ad1fa545683a30e82c44d6302903565c2b865d2f6dfe4e1cea5a3'
-            'dcaf467022057ea8020f758d483031df825c36497023cdab2b1ea31833e0a421'
-            '6d627ffda55528876f92052528ab19f327486efafbb0c5a792191d216ade36ba')
+sha256sums=('ed6e75bec9c98559c0fbc91ff746185b1e1845139b2c7a5a843e1e8880697d99'
+            '98d1157f57558204355b94b2f1fba7cbd9bd9bb561a5d66a0a48ffaab2894569'
+            '8e189a64fd15bf2267cb58f3d3c23d0d2ad9eb8c5f07723546d5a6620c5915c3'
+            '63860dba39d8c30dad59c0d9b4fc17e4da6e1e212e41520dbb8912e034974a40')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
-[[ $NO_STATIC_LIBS ]] || \
-  makedepends+=('mingw-w64-qt5-base-static') \
-  optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
-  _configurations+=('CONFIG+=no_smart_library_merge CONFIG+=static')
-[[ $NO_SHARED_LIBS ]] || \
-  _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
+_configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
