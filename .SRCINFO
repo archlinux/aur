@@ -1,7 +1,7 @@
 pkgbase = xts-windows10-theme
 	pkgdesc = Windows 10 themes for xfce4-theme switcher.
 	pkgver = 0.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gitlab.com/linux-stuffs/xts-themes
 	arch = any
 	groups = xfce4-goodies
@@ -9,12 +9,10 @@ pkgbase = xts-windows10-theme
 	depends = xfce4-theme-switcher
 	depends = xfce4-whiskermenu-plugin
 	depends = gtk-engine-murrine
-	optdepends = plank
-	optdepends = conky-manager
 	provides = xts-windows10-theme
 	conflicts = xts-windows10-theme
 	options = !strip
-	source = https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-windows10-theme/distrib/xts-windows10-theme-0.1-0.tar.gz
+	source = https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-windows10-theme/distrib/xts-windows10-theme-0.1-1.tar.gz
 	sha256sums = SKIP
 
 pkgname = xts-windows10-theme
