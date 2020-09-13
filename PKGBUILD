@@ -4,16 +4,13 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
-# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# This file is created from PKGBUILD.sh.ep contained by the mentioned repository.
 # Do not edit it manually! See README.md in the repository's root directory
 # for more information.
 
-# Includes dynamic and static versions; if only one version is requried, just
-# set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
-
 _qt_module=qtxmlpatterns
 pkgname=mingw-w64-qt5-xmlpatterns
-pkgver=5.15.0
+pkgver=5.15.1
 pkgrel=1
 arch=('any')
 pkgdesc="Support for XPath, XQuery, XSLT and XML schema validation (mingw-w64)"
@@ -25,16 +22,11 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('2752cf2aa25ebfda89c3736457e27b3d0c7c7ed290dcfd52c209f9f905998507')
+sha256sums=('6859d440ce662f3679ce483ebb5a552b619a32517cb1a52a38f967b377857745')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
-[[ $NO_STATIC_LIBS ]] || \
-  makedepends+=('mingw-w64-qt5-base-static') \
-  optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
-  _configurations+=('CONFIG+=no_smart_library_merge CONFIG+=static')
-[[ $NO_SHARED_LIBS ]] || \
-  _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
+_configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
