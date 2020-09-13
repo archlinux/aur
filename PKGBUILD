@@ -1,17 +1,17 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=pyScss
-pkgname=python-${_pkgname,,}
-pkgver=1.3.4
+pkgname=python-pyscss
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="A SCSS compiler for Python"
 arch=("any")
 license=("GPL")
-url="https://pypi.python.org/pypi/pyScss"
+url="https://github.com/Kronuz/pyScss"
 depends=("python")
 makedepends=("python-setuptools")
 source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=("d0323110ecc7d3ead6b99cfec31301306928130e4d0a9eb13226bf390aba8c0e")
+sha256sums=("f1df571569021a23941a538eb154405dde80bed35dc1ea7c5f3e18e0144746bf")
 
 
 build() {
