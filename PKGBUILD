@@ -1,3 +1,4 @@
+# Maintainer: Marcus Andersson <marcus@tojoma-se>
 # Maintainer: Morten Linderud <foxboron@archlinux.org>
 # Contributor: Moritz Maxeiner <moritz@ucworks.org>
 # Contributor: Stefan-Husmann@t-online.de
