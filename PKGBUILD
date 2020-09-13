@@ -3,6 +3,7 @@ _pkgname=herbe
 pkgname=$_pkgname-git
 pkgver=1
 pkgrel=1
+pkgdesc="Daemon-less notifications without D-Bus. Minimal and lightweight."
 arch=(any)
 license=('MIT')
 makedepends=('git')
