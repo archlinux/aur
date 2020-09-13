@@ -5,6 +5,7 @@ pkgbase = zps-git
 	url = https://github.com/orhun/zps
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = cmake
 	conflicts = zps
 	conflicts = zps-bin

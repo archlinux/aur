@@ -8,7 +8,7 @@ pkgrel=1
 arch=('any')
 url="https://github.com/orhun/zps"
 license=('GPL3')
-makedepends=('cmake')
+makedepends=('git' 'cmake')
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 source=('git://github.com/orhun/zps.git')
 sha256sums=('SKIP')
@@ -28,4 +28,5 @@ build() {
 package() {
   cd "${pkgname%-git}/build"
   make DESTDIR="$pkgdir" install
+  install -Dm 644 "../README.md" -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
