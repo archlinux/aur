@@ -43,6 +43,11 @@ prepare() {
 #  ensure build directory is correct
   perl -0777 -i -pe 's/ifndef BUILDDIR\n\s(.+\n)endif\n/$1/' MFM/config/Makecommon.mk
 
+#  remove some backslashes in StdElementsHeaders.inc
+  perl -0777 -i -pe "s{ELEMENT_HEADER_INCLUDES\)' >}{ELEMENT_HEADER_INCLUDES)' | sed 's/\\\\\\\\\//' >}" MFM/src/elements/Makefile  
+#  include element headers
+  perl -0700 -i -pe 's{(DateTimeStamp.h"\n)}{$1#include "StdElementsHeaders.inc"\n}' MFM/src/drivers/mfmc/include/main.h
+
 #  ensure path is correct in ulam.tmpl (note that latter ENV{PATH} uses bash expansion)
 #  this is effectively a workaround for perlsec, so proceed with caution
   perl -0777 -i -pe 's/(delete.+\n)/$1\$ENV{PATH} = "$ENV{PATH}";\n/' ULAM/src/drivers/ulam/ulam.tmpl
@@ -53,6 +58,7 @@ prepare() {
 #  don't raise error for unnecessary parenthesis
   perl -0777 -i -pe 's/(-Wno-error=unused-but-set-variable)/$1 -Wno-error=parentheses/g' ULAM/bin/ulam
   perl -0777 -i -pe 's/(-Wno-error=unused-but-set-variable)/$1 -Wno-error=parentheses/g' ULAM/src/drivers/ulam/ulam.tmpl
+
 }
 
 build() {
