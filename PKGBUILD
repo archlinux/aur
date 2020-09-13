@@ -1,6 +1,6 @@
 # Maintainer: Alessandro Menti <alessandro.menti@alessandromenti.it>
 pkgname=aws-azure-login
-pkgver=2.1.0
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="Use Microsoft Azure AD SAML Single Sign-On to log into AWS"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk3' 'nodejs' 'nss' 'libxss')
 makedepends=('jq' 'npm' 'typescript')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sportradar/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('0f1a31fd28880f69396f1061aa3823c1a0b7cf5573dda70afdda5041005ac03f')
+sha256sums=('9e7739330fe2fcfcbb5ec2a0b1ad27c0a6e0b35b3a2848fc9ab7e2e71c379d04')
 
 package() {
     mkdir -p "${srcdir}/npm-cache"
