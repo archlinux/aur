@@ -7,7 +7,7 @@ ENABLE_APPINDICATOR=1
 ENABLE_GNOME=0
 
 pkgname=pamac-all
-pkgver=9.5.9
+pkgver=9.5.10
 pkgrel=1
 _pkgfixver=$pkgver
 
@@ -30,7 +30,7 @@ source=(
         "pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz"
 #        "https://gitlab.manjaro.org/applications/pamac/-/commit/83ac80d7.patch"
        ) 
-sha256sums=('a5e1081cf20c1f59df0e6ca7fdabad94245708c0331d711ca2f8234118764445')
+sha256sums=('b5220735cd9ef56521b2a134699d133165ee70f1fec10df6b897ee582b51d8ea')
 define_meson=''
 if [ "${ENABLE_FLATPAK}" = 1 ]; then
   depends+=('flatpak')
