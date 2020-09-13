@@ -5,13 +5,13 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
-# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# This file is created from PKGBUILD.sh.ep contained by the mentioned repository.
 # Do not edit it manually! See README.md in the repository's root directory
 # for more information.
 
 _qt_module=qttranslations
 pkgname=mingw-w64-qt5-translations
-pkgver=5.15.0
+pkgver=5.15.1
 pkgrel=1
 arch=('any')
 pkgdesc="A cross-platform application and UI framework (translations, mingw-w64)"
@@ -23,12 +23,11 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('45c43268d9df50784d4d8ca345fce9288a1055fd074ac0ef508097f7aeba22fe')
+sha256sums=('46e0c0e3a511fbcc803a4146204062e47f6ed43b34d98a3c27372a03b8746bd8')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
-[[ $NO_SHARED_LIBS ]] || \
-  _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
+_configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 build() {
   cd "${srcdir}/${_pkgfqn}"

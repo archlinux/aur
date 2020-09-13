@@ -5,10 +5,10 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 % end
 \
-pkgver=5.15.0
+pkgver=5.15.1
 pkgrel=1
 arch=('any')
 pkgdesc="A cross-platform application and UI framework (translations, mingw-w64)"
-depends=('mingw-w64-qt5-base')
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-qt5-tools')
+depends=(<%== qt5deps qw(base) %>)
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' <%== qt5deps qw(tools) %>)
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
