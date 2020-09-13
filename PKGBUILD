@@ -2,8 +2,8 @@
 
 pkgname=python-iotbot-git
 _gitname=python--iotbot
-pkgver=r98.4d15662
-pkgrel=2
+pkgver=r163.eb90283
+pkgrel=1
 pkgdesc="IOTBOT/IOTQQ SDK with Python."
 arch=('any')
 url="https://github.com/xiyaowong/${_gitname}"
@@ -12,7 +12,8 @@ depends=('python-socketio'
          'python-websocket-client'
          'python-requests'
          'python-prettytable'
-         'python-loguru')
+         'python-loguru'
+         'python-schedule')
 makedepends=('git')
 conflicts=('python-iotbot')
 provides=('python-iotbot')

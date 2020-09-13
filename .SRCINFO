@@ -1,7 +1,7 @@
 pkgbase = python-iotbot-git
 	pkgdesc = IOTBOT/IOTQQ SDK with Python.
-	pkgver = r98.4d15662
-	pkgrel = 2
+	pkgver = r163.eb90283
+	pkgrel = 1
 	url = https://github.com/xiyaowong/python--iotbot
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python-iotbot-git
 	depends = python-requests
 	depends = python-prettytable
 	depends = python-loguru
+	depends = python-schedule
 	provides = python-iotbot
 	conflicts = python-iotbot
 	source = git://github.com/XiyaoWong/python--iotbot.git
