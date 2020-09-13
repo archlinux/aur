@@ -6,7 +6,7 @@ pkgbase = textext
 	arch = any
 	license = custom:BSD
 	makedepends = python
-	depends = inkscape=1.0
+	depends = inkscape>=1.0
 	depends = texlive-core
 	depends = python
 	depends = pdf2svg
