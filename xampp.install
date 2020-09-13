@@ -1,13 +1,13 @@
 # Make sure to synchronize the UUID declared here with the one declared in the PKGBUILD
 _MYSQL_UUID=992
 
-# Like `backup` in `PKGBUILD`, but supports folders – no leading and trailing slashes here
+# Like `backup` in `PKGBUILD`, but supports folders – no leading and trailing slashes here!
 _BACKUP=('opt/lampp/etc' 'opt/lampp/htdocs' 'opt/lampp/var')
 
 post_install() {
 
 	if ! id -u mysql &> /dev/null; then
-		echo "Creating user 'mysql'..."
+		echo 'Creating `mysql` user...'
 		groupadd mysql -g "${_MYSQL_UUID}"
 		useradd -u "${_MYSQL_UUID}" -r -g mysql -s /bin/false mysql
 		mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
@@ -36,8 +36,9 @@ post_install() {
 
 pre_upgrade() {
 
-	echo -n "Stopping lampp services..."
-	local _STDERR="$(/opt/lampp/lampp stop >/dev/null 2>&1)" && echo ' OK' || (echo ' FAILED'; echo "${_STDERR}")
+	echo -n 'Stopping lampp services...'
+	local _STDERR
+	_STDERR="$(/opt/lampp/lampp stop >/dev/null 2>&1)" && echo ' OK' || (echo ' FAILED'; test "x${_STDERR}" != 'x' && echo "${_STDERR}")
 
 	local _COIN
 	for _COIN in "${_BACKUP[@]}"; do
@@ -62,25 +63,25 @@ post_upgrade() {
 pre_remove() {
 
 	local _DATESTAMP="$(date '+%Y-%m-%d-%H.%M.%S')"
-	echo -n "Stopping lampp services..."
+	echo -n 'Stopping lampp services...'
+
 	local _STDERR
 	_STDERR="$(/opt/lampp/lampp stop >/dev/null 2>&1)" && echo ' OK' || (echo ' FAILED'; test "x${_STDERR}" != 'x' && echo "${_STDERR}")
-	install -dm755 '/opt/htdocs-backups'
-	cp -ra '/opt/lampp/htdocs' "/opt/htdocs-backups/${_DATESTAMP}" || echo 'ERROR: Could not create a backup of /opt/lampp/htdocs.' 1>&2
-
-}
-
-pre_remove() {
 
 	local _COIN
 	for _COIN in "${_BACKUP[@]}"; do
 		rm -rf "/${_COIN}.pacnew"
 	done
 
+	install -dm755 '/opt/htdocs-backups'
+	cp -ra '/opt/lampp/htdocs' "/opt/htdocs-backups/${_DATESTAMP}" || echo 'ERROR: Could not create a backup of /opt/lampp/htdocs.' 1>&2
+
 }
 
 post_remove() {
 
-	echo "REMEMBER: Your htdocs folder were backed up to /opt/htdocs-backups"
+	echo
+	echo 'REMEMBER: Your `htdocs` folder was backed up to `/opt/htdocs-backups`.'
+	echo
 
 }
