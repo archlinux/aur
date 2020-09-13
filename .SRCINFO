@@ -6,6 +6,7 @@ pkgbase = voadi-git
 	arch = any
 	license = GPL3
 	license = custom
+	makedepends = git
 	depends = solarus>=1.6.0
 	source = voadi-git::git+https://gitlab.com/voadi/voadi.git
 	source = voadi-git-launcher

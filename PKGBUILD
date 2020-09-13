@@ -8,6 +8,7 @@ arch=('any')
 url='https://voadi.com'
 license=('GPL3' 'custom')
 depends=('solarus>=1.6.0')
+makedepends=('git')
 source=("voadi-git::git+https://gitlab.com/voadi/voadi.git"
         "$pkgname-launcher"
         "$pkgname.desktop"
