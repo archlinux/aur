@@ -1,7 +1,8 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 
 pkgname=pokemon-revolution-online-bin
-pkgver=0.98.5.20200912.megav2
+__DATA_VER=0.3.1
+pkgver=0.98.5.20200913_${__DATA_VER}.megav2
 pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
@@ -12,13 +13,11 @@ makedepends=('xdg-utils')
 optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 conflicts=('pokemon-revolution-online')
 install=$(/usr/bin/tail -n 1 /usr/lib/os-release | /usr/bin/cut -d= -f2).install
-__DATA_VER=0.2
 source=("https://gitlab.com/fabis_cafe/pokemon-revolution-online-data/-/archive/${__DATA_VER}/pokemon-revolution-online-data-${__DATA_VER}.zip"
 	"PROClient_linux.7z::https://ddl.pokemonrevolution.net/PROClient_linux.7z"
 )
-sha256sums=('1bf2b078c4f226bd8716e1b6c680e9545dc6491e0de067ecf5105553aa90ba46'
+sha256sums=('ab38844feddb7b3df18ad7149272b908c63ecc5c654005188cfaf9db5b05b3c4'
             '9b127ad358bf3f0fbe72271cb31b465a01d422a09f5715adaa7755e2adfd85a3')
-
 
 package() {
 	#PROCLIENT PART
@@ -50,12 +49,12 @@ package() {
 	#MOVE ICON
 	## The original icon is proprietary with a license that don't allows changes to the overall content.
 	## Don't use the original icon for the '.desktop entry because of this.
-	/usr/bin/install -D -m644 "${srcdir}/pokemon-revolution-online-data-${__DATA_VER}/proclient.svg" \
-		"${pkgdir}/usr/share/pixmaps/proclient.svg"
+	/usr/bin/install -D -m644 "${srcdir}/pokemon-revolution-online-data-${__DATA_VER}/net.pokemonrevolution.svg" \
+		"${pkgdir}/usr/share/pixmaps/net.pokemonrevolution.svg"
 	
 	# DESKTOP FILE
-	/usr/bin/install -D -m644 "${srcdir}/pokemon-revolution-online-data-${__DATA_VER}/net.pokemon-revolution-online.desktop" \
-		"${pkgdir}/usr/share/applications/net.pokemon-revolution-online.desktop"
+	/usr/bin/install -D -m644 "${srcdir}/pokemon-revolution-online-data-${__DATA_VER}/net.pokemonrevolution.desktop" \
+		"${pkgdir}/usr/share/applications/net.pokemonrevolution.desktop"
 
 	# START SCRIPT
 	/usr/bin/install -D -m755 "${srcdir}/pokemon-revolution-online-data-${__DATA_VER}/PROClient" \
