@@ -1,3 +1,4 @@
+# Maintainer: Jakob Schöttl <jschoett gmail com>
 # Maintainer: phi <phi at qgr dot se>
 # Contributor: smlb <smlb at riseup dot net>
 
@@ -13,18 +14,16 @@ makedepends=('cmake')
 source=("https://libthinkpad.github.io/ftp/dockd/$pkgname-$pkgver.tar.gz")
 md5sums=('67093aa2889fd140a6460ab7897087ac')
 
-prepare () {
+prepare() {
     mkdir -p "$srcdir/$pkgname-$pkgver/etc"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}" || exit 1 
     cmake . -DCMAKE_INSTALL_PREFIX=/usr
-    make 
+    make
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}" || exit 1 
     install -Dm755 -d etc "$pkgdir/etc/$pkgname"
     make DESTDIR=$pkgdir install
 }
