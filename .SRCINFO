@@ -1,7 +1,7 @@
 pkgbase = notify-osd-syaoran
 	pkgdesc = Customizable Canonical's on-screen-display notification (notify-osd) daemon.
 	pkgver = .r12.5675f26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/justanoobcoder/notify-osd-syaoran.git
 	arch = x86_64
 	license = GPL
