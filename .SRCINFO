@@ -1,0 +1,12 @@
+pkgbase = unibuild-git
+	pkgdesc = The universal build script system.
+	pkgver = rolling
+	pkgrel = 1
+	url = https://gitlab.com/sulinos/devel/unibuild
+	arch = any
+	license = BSD
+	source = git+https://gitlab.com/sulinos/devel/unibuild.git
+	md5sums = SKIP
+
+pkgname = unibuild-git
+
