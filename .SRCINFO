@@ -12,7 +12,6 @@ pkgbase = xts-dark-theme
 	depends = gtk-engines
 	depends = plank
 	depends = conky
-	optdepends = conky-manager
 	provides = xts-dark-theme
 	conflicts = xts-dark-theme
 	options = !strip
