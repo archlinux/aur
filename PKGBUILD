@@ -12,10 +12,8 @@ depends=('vim' 'python-gobject')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 groups=('vim-plugins')
-source=("$pkgname"::'git://github.com/lafleurdeboum/vim-gtk-recent.git')
+source=("$pkgname"::'git://gitlab.gnome.org/lafleur/vim-gtk-recent.git')
 md5sums=('SKIP')
-#source=("gtk-recent.vim")
-#sha256sums=("0bfd12821e362731d2175b92c87a5f55cc122d82bec8e534efa183f380aa2009")
 
 pkgver() {
   cd "$srcdir/$pkgname"
