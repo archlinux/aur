@@ -1,6 +1,6 @@
 pkgbase = utools
 	pkgdesc = uTools Utilities
-	pkgver = 1.2.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://u.tools/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = utools
 	depends = gtk3
 	depends = nss
 	depends = libxss
-	source = https://resource.u-tools.cn/currentversion/utools_1.2.0_amd64.deb
-	sha512sums = 4a1c37d91996bc8d3bcbb02ef0c584c474bdb5527212aa740d0e9b6638c5423d70d5422dbeb3cd451509fbbb7658c446f596a4481dedfa2709f9eff205d6d77d
+	source = https://resource.u-tools.cn/currentversion/utools_1.3.1_amd64.deb
+	sha512sums = 03e42d4c59eb7b3273498b4d4c8f8dbdf66d0c77cabfb958040859949b5ea502c8bd62d437b0ede7fbd414b6f23c0846406fb4a7090360538dd1a746b12a74fa
 
 pkgname = utools
 
