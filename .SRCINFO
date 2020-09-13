@@ -1,6 +1,6 @@
 pkgbase = ubuntu-themes
 	pkgdesc = Ubuntu monochrome icon theme, Ambiance and Radiance themes, and Ubuntu artwork
-	pkgver = 19.04
+	pkgver = 20.10
 	pkgrel = 1
 	url = https://launchpad.net/ubuntu-themes
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = ubuntu-themes
 	provides = ubuntu-mono
 	conflicts = light-themes
 	conflicts = ubuntu-mono
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-themes_19.04.orig.tar.gz
-	sha512sums = 95b41c5d3a47fba9c4b5368b4e80d8924e09844783c66ca697ce0ff5d71f2b0fd4f56a9041dc142267e0eaf75fd5a8b47c0abae049fc3434b5e29f3f363d83e8
+	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/ubuntu-themes/20.10-0ubuntu1/ubuntu-themes_20.10.orig.tar.gz
+	sha512sums = 0118f7c2404856216ff2df0246ea2fa98d0d5b25973abc3df13a998f7a41f2eeb32ca08281ba41399a91fa16ab046e3b3292f504503958983a6488c1e3001ac4
 
 pkgname = ubuntu-themes
 
