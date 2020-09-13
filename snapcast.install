@@ -7,6 +7,10 @@ post_install() {
   echo "   This is controlled by systclt fs.protected_fifos."
   echo "   A possible workaround is to disable the sysctl feature by running:"
   echo "     # sysctl fs.protected_fifos=0"
+  echo ":: Snapcast now has a built-in snapweb control client which is enabled"
+  echo "   by default on a new setup.  This functionality enables a webserver"
+  echo "   on port 1780.  This can be controlled by the doc_root variable in"
+  echo "   /etc/snapserver.conf."
 }
 
 post_upgrade() {
@@ -16,7 +20,11 @@ post_upgrade() {
   echo "   This is controlled by systclt fs.protected_fifos."
   echo "   A possible workaround is to disable the sysctl feature by running:"
   echo "     # sysctl fs.protected_fifos=0"
-  
+  echo ":: Snapcast now has a built-in snapweb control client which is enabled"
+  echo "   by default on a new setup.  This functionality enables a webserver"
+  echo "   on port 1780.  This can be controlled by the doc_root variable in" 
+  echo "   /etc/snapserver.conf."
+
   # return if old package version greater 10.4...
   (( $(vercmp $2 '0.15.0') > 0 )) && return
   

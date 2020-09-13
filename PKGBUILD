@@ -1,8 +1,8 @@
 # Maintainer: Bart De Vries <devriesb at gmail dot com>
 
 pkgname=snapcast
-pkgver=0.20.0
-pkgrel=2
+pkgver=0.21.0
+pkgrel=1
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/badaix/snapcast"
@@ -15,10 +15,10 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/badaix/snapcast/archive
         "snapcast.sysusers"
         "snapcast.tmpfiles"
         "snapcast.install")
-sha256sums=('c7ce1094fa1231c66479bfd37a18f564805f632aaa42de99b52cb0f9f52a2c46'
+sha256sums=('8ddfa4eaa904984ecd3ec55e66b1539aa3d489ec99f03ee88857bb9ee3444c18'
             '9fe6e9e07adb77f555a617b772e6d01e098e1dfaad1e8075e03a7d7ba76141de'
             '1c58fef5d3e2de64c1df52138f0f3c841773e7881b9cbc76f23312deeebc11b5'
-            '132ec97e9b1d179f45269cc5cc4d6850384b4796ffef7d7560cf8440447a11c6')
+            '98cfdc3221270e3243f7dd0ca32f8c4b271258f32fc04fdb52a286f0986d7350')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -30,6 +30,13 @@ package() {
     install -Dm755 server/snapserver "${pkgdir}/usr/bin/snapserver"
     install -Dm644 server/snapserver.1 "${pkgdir}/usr/share/man/man1/snapserver.1"
     install -Dm644 server/etc/snapserver.conf "${pkgdir}/etc/snapserver.conf"
+    # install snapweb
+    for file in server/etc/snapweb/*\.*; 
+        do install -Dm 644 ${file} -t "${pkgdir}/usr/share/snapserver/snapweb/"; 
+    done
+    for file in server/etc/snapweb/3rd-party/*\.*;
+        do install -Dm 644 ${file} -t "${pkgdir}/usr/share/snapserver/snapweb/3rd-party/";
+    done
 
     install -Dm755 client/snapclient "${pkgdir}/usr/bin/snapclient"
     install -Dm644 client/snapclient.1 "${pkgdir}/usr/share/man/man1/snapclient.1"
