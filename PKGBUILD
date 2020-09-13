@@ -2,13 +2,13 @@
 
 pkgname=vrwm-git
 pkgver=r29.e0ffb9e
-pkgrel=2
+pkgrel=3
 pkgdesc='A virtual reality window manager for X11. Supports "unlimited" virtual monitors.'
 arch=('x86_64')
 url="https://git.dec05eba.com/vrwm"
 license=('GPL3')
 makedepends=('git' 'sibs')
-depends=('glm' 'glew' 'sdl2' 'openvr' 'libx11' 'libxcomposite' 'libxfixes')
+depends=('glm' 'glew' 'sdl2' 'openvr' 'libx11' 'libxcomposite' 'libxfixes' 'libxi')
 provides=('vrwm')
 conflicts=('vrwm')
 source=("git+https://git.dec05eba.com/vrwm")
