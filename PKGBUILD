@@ -5,7 +5,7 @@
 
 pkgname=dunst-git
 _pkgname=dunst
-pkgver=1.3.0.r11.g8144a95
+pkgver=1.5.0.r7.ge59d203
 pkgrel=1
 pkgdesc="Lightweight and customizable notification daemon"
 arch=('i686' 'x86_64' 'armv7h')
