@@ -1,7 +1,7 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 # Contributor: Alex Forencich <alex@alexforencich.com>
 pkgname=(python-pyusb-git python2-pyusb-git)
-pkgver=1.0.2.r59.g4ea402d
+pkgver=1.1.0.r1.g14b25b930e75
 pkgrel=1
 pkgdesc="USB access for Python"
 arch=('any')
