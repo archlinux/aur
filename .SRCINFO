@@ -1,0 +1,18 @@
+pkgbase = chm2pdf-python3
+	pkgdesc = A script that converts CHM files into PDF files.
+	pkgver = 0.9.2
+	pkgrel = 6
+	url = https://github.com/Zaryob/chm2pdf
+	arch = any
+	license = GPL2
+	depends = python
+	depends = python-pychm
+	depends = chmlib
+	depends = htmldoc
+	depends = python-sgmllib
+	optdepends = python-beautifulsoup4: makes HTML files of CHM standards compliant
+	source = https://github.com/Zaryob/chm2pdf/releases/download/0.9.2/chm2pdf-0.9.2.tar.gz
+	md5sums = 3bae5f39ecb1c2c477efcfd98481200f
+
+pkgname = chm2pdf-python3
+
