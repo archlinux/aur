@@ -1,4 +1,5 @@
 pkgname=notify-osd-git
+_srcdir=notify-osd
 pkgver=0.9.34.r20.e46f243
 pkgrel=1
 pkgdesc="Customizable Canonical's on-screen-display notification (notify-osd) daemon."
@@ -13,23 +14,23 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_srcdir"
     printf "%s.r%s.%s" "$(grep AC_INIT configure.in | awk -F', ' '{print $2}')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$pkgname"
+	cd "$_srcdir"
 	NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-    cd "$pkgname"
+    cd "$_srcdir"
 	./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
 		--disable-static --disable-schemas-compile
   	make
 }
 
 package() {
-    cd "$pkgname"
+    cd "$_srcdir"
 	make DESTDIR="$pkgdir/" install
 }
