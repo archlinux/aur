@@ -1,5 +1,7 @@
 [Unit]
 Description=keep ESP in sync with /boot
+Requires=efi.mount
+After=efi.mount
 
 [Path]
 PathChanged=/boot

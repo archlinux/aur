@@ -27,4 +27,6 @@ if ! [ -d "${BOOTFILES_DEST}" ]; then {
 	}
 fi
 
-/usr/bin/rsync --verbose --recursive --times --delete "${BOOTFILES_SRC}" "${BOOTFILES_DEST}"
+/usr/bin/rsync --verbose --verbose --modify-window=1 --times --recursive --delete "${BOOTFILES_SRC}" "${BOOTFILES_DEST}"
+
+exit 0
