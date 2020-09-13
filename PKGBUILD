@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gitin
-pkgver=0.2.3+10+gbada3e8
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Commit/branch/workdir explorer for git"
 arch=('x86_64')
@@ -8,15 +8,8 @@ url="https://github.com/isacikgoz/gitin"
 license=('BSD')
 depends=('libssh2')
 makedepends=('go' 'git' 'cmake')
-#source=("$pkgname-$pkgname.tar.gz::https://github.com/isacikgoz/$pkgname/archive/v$pkgver.tar.gz")
-_commit='bada3e83dd9de92df68e5f05ebd8e4b5ada35830'
-source=("git+https://github.com/isacikgoz/gitin.git#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-	cd "$srcdir/$pkgname"
-	git describe --tags | sed 's/^v//;s/-/+/g'
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/isacikgoz/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('01c831230f9c5952ed43755d0503e6fcee7c1e91613f06cff28606d03115d727')
 
 prepare() {
 	export GOPATH="$srcdir/gopath"
@@ -28,7 +21,7 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$pkgname"
+	cd "$pkgname-$pkgver"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -41,7 +34,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname"
+	cd "$pkgname-$pkgver"
 	install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
