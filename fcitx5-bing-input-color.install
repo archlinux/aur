@@ -1,0 +1,20 @@
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+post_install() {
+  	# Echo
+  	note "======"
+  	note "Please visit the Github project repository for the configuration method of this theme."
+    note "Github project repository:"
+    note "https://github.com/skykeyjoker/Fcitx5-Bing-Input-Color"
+    echo ""
+    note "请访问Github项目仓库获得该主题配置方法。"
+    note "Github项目仓库:"
+    note "https://github.com/skykeyjoker/Fcitx5-Bing-Input-Color"
+    note "======"
+}
