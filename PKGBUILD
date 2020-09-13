@@ -3,7 +3,7 @@
 
 pkgname=steam-native-runtime
 pkgver=1.0.0.62
-pkgrel=1
+pkgrel=2
 pkgdesc='Native replacement for the Steam runtime using system libraries'
 arch=('x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
@@ -45,6 +45,7 @@ prepare() {
   cp /usr/share/applications/steam.desktop steam-native.desktop
   sed -r 's|(Name=Steam) \(Runtime\)|\1 (Native)|' -i steam-native.desktop
   sed -r 's|(/usr/bin/steam)-runtime|\1-native|' -i steam-native.desktop
+  sed '/^Icon=.*/i StartupWMClass=Steam' -i steam-native.desktop
 }
 
 package() {
