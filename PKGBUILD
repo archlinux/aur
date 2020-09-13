@@ -1,4 +1,5 @@
 # Maintainer: Christopher Snowhill <kode54 at gmail dot com>
+# Contributor: hexchain <i at hexchain dot org>
 
 pkgbase=lib32-pipewire-dropin
 pkgname=("lib32-pipewire-pulse-dropin" "lib32-pipewire-jack-dropin")
