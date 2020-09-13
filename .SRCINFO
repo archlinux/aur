@@ -1,15 +1,15 @@
 pkgbase = perl-fcgi-procmanager
 	pkgdesc = Functions for managing FastCGI applications
-	pkgver = 0.24
-	pkgrel = 2
-	url = http://search.cpan.org/~gbjk/FCGI-ProcManager
+	pkgver = 0.28
+	pkgrel = 1
+	url = https://metacpan.org/pod/FCGI::ProcManager
 	arch = any
-	license = GPL
 	license = PerlArtistic
+	license = GPL
 	depends = perl>=5.5.0
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/FCGI-ProcManager-0.24.tar.gz
-	md5sums = 0aa184b1e5339e0ad92f4c1439406304
+	source = https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/FCGI-ProcManager-0.28.tar.gz
+	md5sums = 26b2000544015bf7c40a4b3caa7fbba3
 
 pkgname = perl-fcgi-procmanager
 

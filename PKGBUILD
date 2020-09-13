@@ -3,16 +3,16 @@
 
 pkgname='perl-fcgi-procmanager'
 _cpanname='FCGI-ProcManager'
-pkgver='0.24'
-pkgrel='2'
+pkgver='0.28'
+pkgrel='1'
 pkgdesc='Functions for managing FastCGI applications'
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.5.0')
-url="http://search.cpan.org/~gbjk/$_cpanname"
-source=("http://search.cpan.org/CPAN/authors/id/B/BO/BOBTFISH/$_cpanname-$pkgver.tar.gz")
-md5sums=('0aa184b1e5339e0ad92f4c1439406304')
+url="https://metacpan.org/pod/FCGI::ProcManager"
+source=("https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/$_cpanname-$pkgver.tar.gz")
+md5sums=('26b2000544015bf7c40a4b3caa7fbba3')
 
 
 # Function to change to the working directory and set
