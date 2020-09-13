@@ -17,10 +17,10 @@ pkgver() {
     printf "%s.r%s.%s" "$(grep AC_INIT configure.in | awk -F', ' '{print $2}')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd "$pkgname"
-  	NOCONFIGURE=1 ./autogen.sh
-}
+# prepare() {
+#     cd "$pkgname"
+#       NOCONFIGURE=1 ./autogen.sh
+# }
 
 build() {
     cd "$pkgname"
