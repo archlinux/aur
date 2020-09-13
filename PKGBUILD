@@ -1,7 +1,7 @@
 pkgname=notify-osd-git
 _srcdir=notify-osd
 pkgver=0.9.34.r20.e46f243
-pkgrel=1
+pkgrel=2
 pkgdesc="Customizable Canonical's on-screen-display notification (notify-osd) daemon."
 arch=(x86_64)
 url="https://gitlab.com/justanoobcoder/notify-osd.git"
