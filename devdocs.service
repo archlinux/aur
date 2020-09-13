@@ -1,9 +1,9 @@
 [Unit]
-Description=DevDocs
+Description=DevDocs GJS
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/devdocs-server
+ExecStart=/usr/bin/devdocsgjs-server
 ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]

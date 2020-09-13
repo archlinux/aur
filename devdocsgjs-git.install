@@ -1,0 +1,12 @@
+post_install() {
+	echo "Running gir:generate_all ..."
+	devdocsgjs-cli gir:generate_all
+	echo "Finished running gir:generate_all"
+}
+
+pre_remove() {
+	rm -rf /opt/devdocsgjs-git/tmp
+	rm -rf /opt/devdocsgjs-git/public/docs
+	rm -rf /opt/devdocsgjs-git/lib/docs/scrapers/gnome/generated
+	rm -rf /opt/devdocsgjs-git/docs
+}

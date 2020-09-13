@@ -1,3 +1,3 @@
-#!/bin/bash
-cd /opt/devdocs-git && bundle exec thor "$@"
+#!/usr/bin/env -iS bash --login
+cd /opt/devdocsgjs-git && bundle exec thor "$@"
 

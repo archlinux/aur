@@ -1,8 +1,9 @@
-pkgbase = devdocs-git
-	pkgdesc = API Documentation Browser
-	pkgver = r1033.ddf87bb
-	pkgrel = 2
-	url = http://devdocs.io
+pkgbase = devdocsgjs-git
+	pkgdesc = API Documentation Browser (with GJS/GIR support)
+	pkgver = r2928.ac8ae363
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/devdocsgjs
+	install = devdocsgjs-git.install
 	arch = any
 	license = MPL
 	makedepends = git
@@ -12,14 +13,16 @@ pkgbase = devdocs-git
 	depends = nodejs
 	depends = coffee-script
 	provides = devdocs-git
-	source = devdocs-git::git+https://github.com/Thibaut/devdocs
+	source = devdocsgjs-git::git+https://gitlab.gnome.org/GNOME/devdocsgjs.git#branch=gnome
 	source = devdocs-server.sh
 	source = devdocs-cli.sh
 	source = devdocs.service
+	source = 0001-Don-t-require-pry-by-default.patch
 	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = 6f2d514aa412c9b4d0165d35aaa48544
+	md5sums = d4a2ceec03f265cc60f3091b30eced5c
+	md5sums = 2ef3b5bc9519e6929355d49063c1132c
+	md5sums = ef9bece544b2f2e713e54479257d4c82
 
-pkgname = devdocs-git
+pkgname = devdocsgjs-git
 
