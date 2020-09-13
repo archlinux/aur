@@ -1,7 +1,7 @@
 pkgbase = subtube-git
 	pkgdesc = youtube viewer made of mpv/youtube-dl and sxiv
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nagy135/subtube
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = subtube-git
 	depends = xob
 	optdepends = dunst: notification daemon
 	provides = subtube
-	source = subtube::git://github.com/nagy135/subtube.git
+	source = subtube-git::git://github.com/nagy135/subtube.git
 	md5sums = SKIP
 
 pkgname = subtube-git
