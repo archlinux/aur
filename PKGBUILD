@@ -4,7 +4,7 @@
 # Contributor: soloturn@gmail.com
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.08.31.a.r959.g400accb8ea1
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.09.11.a.r71.ge6f7b9dc8e8
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
     'swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation'
     'swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch'
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests'
-    'llvm-project::git+https://github.com/apple/llvm-project#branch=apple/master'
+    'llvm-project::git+https://github.com/apple/llvm-project#branch=swift/master'
 #    'llvm-project::git+https://github.com/apple/llvm-project#commit=e80a6b097761253'
     '0001-arch-aur-pachtes.patch'
 )
