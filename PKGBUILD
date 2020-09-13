@@ -4,7 +4,7 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
-# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# This file is created from PKGBUILD.sh.ep contained by the mentioned repository.
 # Do not edit it manually! See README.md in the repository's root directory
 # for more information.
 
@@ -15,7 +15,7 @@
 
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
-pkgver=5.15.0
+pkgver=5.15.1
 pkgrel=1
 arch=('any')
 pkgdesc="ActiveX integration framework (mingw-w64)"
@@ -29,9 +29,9 @@ _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Don-t-require-windows.h-when-using-native-Linux-gcc.patch'
         '0002-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch')
-sha256sums=('1b455eacfb9ef49912d7a79040ea409a6ab88dfa192d313e6b5e02a79d741b51'
-            '55b747ac6ac85e4634118be0b66c2c5d540958c2701ae9820f5a86d950e76363'
-            '500a7376ec3e2013f72751a73bd8024388dae3a12b05b8cc5ec1ef5283c35ecb')
+sha256sums=('4f8bbd320349d89ae7867de4bc752cf984f96c6def2b951564dcd5e4f53529c1'
+            'b76fbe967e7f8af79fd2e4a1d64144edbfcd3ab5e7b70a19410215f93ccc16c1'
+            '486e1b7856e8b516abe93828edf83ede4f7e557e23ba1f2071034e984569c343')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
