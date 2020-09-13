@@ -12,7 +12,6 @@ pkgbase = art-rawconverter
 	makedepends = gcc
 	makedepends = hicolor-icon-theme
 	makedepends = fakeroot
-	depends = gperftools
 	depends = lensfun
 	depends = exiv2
 	depends = fftw
