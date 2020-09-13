@@ -5,6 +5,7 @@ pkgbase = python-pynrfjprog-git
 	url = https://github.com/NordicSemiconductor/pynrfjprog
 	arch = any
 	license = custom
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python-future
 	depends = nrf5x-command-line-tools

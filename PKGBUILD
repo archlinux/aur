@@ -11,7 +11,8 @@ url="https://github.com/NordicSemiconductor/pynrfjprog"
 license=('custom')
 depends=('python-future'
          'nrf5x-command-line-tools')
-makedepends=('python-setuptools')
+makedepends=('git'
+             'python-setuptools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/NordicSemiconductor/pynrfjprog"
