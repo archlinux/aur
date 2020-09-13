@@ -1,0 +1,18 @@
+pkgbase = vim-gtk-recent
+	pkgdesc = logs files opened in vim into GObject recent files
+	pkgver = r1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/lafleurdeboum/vim-gtk-recent
+	arch = i686
+	arch = x86_64
+	groups = vim-plugins
+	license = GPLv3
+	depends = vim
+	depends = python-gobject
+	provides = vim-gtk-recent-git
+	conflicts = vim-gtk-recent-git
+	source = vim-gtk-recent::git://github.com/lafleurdeboum/vim-gtk-recent.git
+	md5sums = SKIP
+
+pkgname = vim-gtk-recent
+
