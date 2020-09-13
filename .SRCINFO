@@ -1,0 +1,15 @@
+pkgbase = lib32-pipewire-dropin
+	pkgdesc = Use pipewire as drop-in replacement for PulseAudio/JACK (32-bit version)
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = LGPL2.1
+
+pkgname = lib32-pipewire-pulse-dropin
+	pkgdesc = Use pipewire as drop-in replacement for PulseAudio (32-bit version)
+	depends = lib32-pipewire-pulse
+
+pkgname = lib32-pipewire-jack-dropin
+	pkgdesc = Use pipewire as drop-in replacement for JACK
+	depends = lib32-pipewire-jack
+
