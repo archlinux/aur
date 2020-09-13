@@ -1,7 +1,7 @@
 # Maintainer: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 
 pkgname=cpputest
-pkgver=3.8
+pkgver=4.0
 pkgrel=1
 pkgdesc="unit testing and mocking framework for C/C++"
 url="http://cpputest.org"
@@ -10,7 +10,7 @@ license=('BSD')
 provides=('cpputest')
 options=('staticlibs' '!strip')
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('e8fdbbb5dd37d32d65919f240f984905')
+sha256sums=('21c692105db15299b5529af81a11a7ad80397f92c122bd7bf1e4a4b0e85654f7')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
