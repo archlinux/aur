@@ -2,7 +2,7 @@
 
 pkgname=vim-gtk-recent-git
 _pkgname=${pkgname%-git}
-pkgver=r3.9311fad
+pkgver=r6.14086b5
 pkgrel=1
 pkgdesc="logs files opened in vim into GObject recent files"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 groups=('vim-plugins')
 #source=("$pkgname"::'https://gitlab.gnome.org/lafleur/vim-gtk-recent.git')
-source=("${_pkgname}::git+https://gitlab.gnome.org/lafleur/${_pkgname}")
+source=("${_pkgname}::git+https://gitlab.gnome.org/lafleur/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
