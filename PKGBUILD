@@ -2,15 +2,14 @@
 
 pkgname=unlock-pacman
 pkgver=0.2.1
-pkgrel=0
+pkgrel=1
 pkgdesc="A sd-service to remove the pacman lock on shutdown"
 arch=('x86_64')
-url="https://gitlab.com/Fabish/unlock-pacman"
+url="https://gitlab.com/fabis_cafe/unlock-pacman"
 license=('Apache')
 depends=('systemd' 'pacman')
-makedepends=('')
-install="${pkgname}.install"
-source=("https://gitlab.com/Fabish/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.zip")
+install="$(/usr/bin/tail -n 1 /usr/lib/os-release | /usr/bin/cut -d= -f2).install"
+source=("https://gitlab.com/fabis_cafe/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.zip")
 sha512sums=('c09b556936568a34718025df11b3cde2f373d13be0af6f4e5b5e1e8fb6f6a3208ba2e4ebb6a9c3c71bd54df9dcd95d7398a0d5d3b03d31e4ad2d6d494f9d0f66')
 
 
