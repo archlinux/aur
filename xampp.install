@@ -72,7 +72,9 @@ pre_remove() {
 	done
 
 	install -dm755 '/opt/htdocs-backups'
-	cp -ra '/opt/lampp/htdocs' "/opt/htdocs-backups/${_DATESTAMP}" || echo 'ERROR: Could not create a backup of /opt/lampp/htdocs.' 1>&2
+	mv '/opt/lampp/htdocs' "/opt/htdocs-backups/${_DATESTAMP}" || echo 'ERROR: Could not create a backup of /opt/lampp/htdocs.' 1>&2
+
+	rm -rf '/opt/lampp/var' '/opt/lampp/temp' '/opt/lampp/etc' '/opt/lampp/phpmyadmin/tmp'
 
 }
 
