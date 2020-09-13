@@ -1,7 +1,7 @@
 pkgbase = python-pynrfjprog-git
 	pkgdesc = Python wrapper around the nrfjprog dynamic link library (DLL)
 	pkgver = r29.aed16b9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NordicSemiconductor/pynrfjprog
 	arch = any
 	license = custom
