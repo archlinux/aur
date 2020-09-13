@@ -1,0 +1,34 @@
+pkgbase = tracker-git
+	pkgdesc = Desktop-neutral user information store, search tool and indexer
+	pkgver = 2.99.5+6+g305218ee1
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/Tracker
+	arch = x86_64
+	license = GPL
+	checkdepends = python-gobject
+	checkdepends = python-dbus
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = git
+	makedepends = gtk-doc
+	makedepends = bash-completion
+	makedepends = meson
+	depends = sqlite
+	depends = icu
+	depends = glib2
+	depends = libffi
+	depends = util-linux
+	depends = libstemmer
+	depends = libseccomp
+	depends = libsoup
+	depends = json-glib
+	depends = upower
+	depends = libnm
+	provides = tracker
+	provides = libtracker-sparql-3.0.so
+	conflicts = tracker
+	source = git+https://gitlab.gnome.org/GNOME/tracker.git
+	sha512sums = SKIP
+
+pkgname = tracker-git
+
