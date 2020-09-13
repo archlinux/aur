@@ -1,0 +1,23 @@
+pkgbase = notify-osd-git
+	pkgdesc = Customizable Canonical's on-screen-display notification (notify-osd) daemon.
+	pkgver = 0.9.34.r20.e46f243
+	pkgrel = 1
+	url = https://gitlab.com/justanoobcoder/notify-osd.git
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconfig
+	makedepends = libnotify
+	makedepends = gnome-common
+	makedepends = git
+	depends = libwnck3
+	depends = libnotify>=0.7.0
+	depends = dbus-glib>=0.76
+	depends = dconf
+	depends = gsettings-desktop-schemas
+	provides = notification-daemon
+	conflicts = notify-osd
+	source = git+https://gitlab.com/justanoobcoder/notify-osd.git
+	md5sums = SKIP
+
+pkgname = notify-osd-git
+
