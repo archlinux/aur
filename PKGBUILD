@@ -5,8 +5,8 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=80.0
-pkgrel=2
+pkgver=80.0.1
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
@@ -36,13 +36,13 @@ source_aarch64=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/
                 arm.patch
                 https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
 
-sha256sums_x86_64=('380d9853e0712442ba2d4acd85c0e09c19ad36561a3ea8932705ad6b8a91146a'
+sha256sums_x86_64=('596b085e32a2d683ba960e161ea65c6271f90f576d4bf956e0d48e83af992c21'
                    '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                    'SKIP'
                    'SKIP'
                    '2bef819c55935f6c72a7aa28273ecddfce0888429a32465feb6c34a16ff1ed9c'
                    'd191e65a0ce3eeba0a3171c143fc93e3ded6c29eb751b90d58a7d3bf1983aca6')
-sha256sums_aarch64=('380d9853e0712442ba2d4acd85c0e09c19ad36561a3ea8932705ad6b8a91146a'
+sha256sums_aarch64=('596b085e32a2d683ba960e161ea65c6271f90f576d4bf956e0d48e83af992c21'
                     '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
                     'SKIP'
                     'SKIP'
