@@ -8,7 +8,7 @@ arch=('any')
 url='https://www.solarus-games.org/fr/games/the-legend-of-zelda-a-link-to-the-dream'
 license=('custom')
 depends=('solarus>=1.6.0')
-makedepends=('cmake' 'zip')
+makedepends=('cmake' 'git' 'zip')
 source=("$pkgname::git+https://gitlab.com/zeldaforce/zelda-alttd.git"
         "$pkgname-launcher"
         "$pkgname.desktop"

@@ -6,6 +6,7 @@ pkgbase = zelda-alttd-git
 	arch = any
 	license = custom
 	makedepends = cmake
+	makedepends = git
 	makedepends = zip
 	depends = solarus>=1.6.0
 	source = zelda-alttd-git::git+https://gitlab.com/zeldaforce/zelda-alttd.git
