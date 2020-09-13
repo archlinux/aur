@@ -35,6 +35,10 @@ fi
 if wget --no-verbose -U x -N -P "${TDIR}" "${URL_MIRROR}/${FILE_MIRROR}" ;then
     if test "${FILE_MIRROR}" -nt "${FILE_CUR}" ; then
 	DST="$(get_perm_file_name "${FILE_MIRROR}")"
+        if [[ $DST == *"unknown"* ]]; then
+            echo "Error obtaining version from $FILE_MIRROR"
+            exit 2
+        fi
         mv "${FILE_MIRROR}" "${DOWNLOAD_DIR}/${DST}"
 	ln -sf "${DST}" "${FILE_CUR}"
 	echo "TWS $(echo "${DST}" |sed 's/.*-\(.*\)\..*/\1/g') fetched" 1>&2
