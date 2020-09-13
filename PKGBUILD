@@ -1,14 +1,14 @@
 # Maintainer: Syaoran Code <syaorancode@gmail.com>
 
 pkgname=srfetch
-pkgver=7.0.1
-pkgrel=2
+pkgver=7.1.0.r23.2d4ac20
+pkgrel=1
 pkgdesc="This is modified neofetch script, only for me."
 arch=('any')
 url="https://gitlab.com/justanoobcoder/srfetch.git"
 license=('MIT')
 depends=('bash')
-makedepends=('make')
+makedepends=('make' 'git')
 backup=('etc/srfetch/config.conf')
 optdepends=(
   'catimg: Display Images'
@@ -31,7 +31,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf "%s" "$pkgver"
+    printf "%s.r%s.%s" "$(grep version srfetch | head -1 | cut -d '=' -f 2)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

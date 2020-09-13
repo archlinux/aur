@@ -1,11 +1,12 @@
 pkgbase = srfetch
 	pkgdesc = This is modified neofetch script, only for me.
-	pkgver = 7.0.1
-	pkgrel = 2
+	pkgver = 7.1.0.r23.2d4ac20
+	pkgrel = 1
 	url = https://gitlab.com/justanoobcoder/srfetch.git
 	arch = any
 	license = MIT
 	makedepends = make
+	makedepends = git
 	depends = bash
 	optdepends = catimg: Display Images
 	optdepends = chafa: Image to text support
