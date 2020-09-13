@@ -2,7 +2,7 @@
 # Contributor: Morten Linderud <foxboron@archlinux.org>
 pkgname='jp2a-git'
 _gitname='jp2a'
-pkgver=v1.0.9.r7.gbc1c12e
+pkgver=v1.0.9.r17.g772c188
 pkgrel=1
 pkgdesc='A small utility for converting JPG images to ASCII'
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,6 +12,7 @@ conflicts=('jp2a')
 license=('GPL')
 depends=('curl' 'libjpeg')
 source=('git+https://github.com/Talinx/jp2a#branch=develop')
+makedepends=('git')
 sha256sums=(SKIP)
 
 pkgver() {
