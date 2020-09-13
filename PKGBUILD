@@ -1,6 +1,6 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++"
@@ -20,14 +20,14 @@ options=()
 install=
 changelog=
 source=("craftos2.tar.gz::https://github.com/MCJack123/craftos2/archive/v${pkgver}.tar.gz"
-        "craftos2-lua.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.4.2.tar.gz")
+        "craftos2-lua.tar.gz::https://github.com/MCJack123/craftos2-lua/archive/v2.4.3.tar.gz")
 noextract=()
-sha256sums=('bde71dc99e559a2a523a433131b21545ed4c76f772c8fb9b7600328b8b677af4'
-            'b1140bf1f9480e7518669acecd100d84544bd16d5d627c1e7cf98bb6861d4853')
+sha256sums=('cc389c872aa249346239a6d00cf23b60b1496915162d7dc47d87f76df2eace7d'
+            'dc5edbef68a22a9d710195b3f52da5d4093fb2b9c1e4d25692d80f0de9a84258')
 validpgpkeys=()
 
 prepare() {
-    cp -R "craftos2-lua-2.4.2"/* "craftos2-$pkgver/craftos2-lua/"
+    cp -R "craftos2-lua-2.4.3"/* "craftos2-$pkgver/craftos2-lua/"
     cd "craftos2-$pkgver"
     mkdir icons
     unzip resources/linux-icons.zip -d icons
