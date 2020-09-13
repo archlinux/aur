@@ -23,4 +23,5 @@ build() {
 package() {
   cd "$pkgname-$pkgver/build"
   make DESTDIR="$pkgdir" install
+  install -Dm 644 "../README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 }
