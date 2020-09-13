@@ -2,7 +2,7 @@
 
 _pkgname=straw-viewer
 pkgname=straw-viewer-git
-pkgver=0.0.8.r0.g094ee93
+pkgver=0.0.9.r0.gb5f51a0
 pkgrel=1
 pkgdesc="Application for searching and streaming videos from YouTube, using the API of invidio.us (fork of youtube-viewer)."
 arch=('any')
