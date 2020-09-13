@@ -11,6 +11,8 @@ StateDirectory=jitsi-videobridge-nightly
 StateDirectoryMode=0750
 LogsDirectory=jitsi-videobridge-nightly
 LogsDirectoryMode=0750
+ConfigurationDirectory=jitsi-videobridge-nightly
+ConfigurationDirectoryMode=0700
 
 Restart=on-failure
 RestartSec=2
