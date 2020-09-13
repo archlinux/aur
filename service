@@ -11,6 +11,9 @@ StateDirectory=jicofo-nightly
 StateDirectoryMode=0750
 LogsDirectory=jicofo-nightly
 LogsDirectoryMode=0750
+ConfigurationDirectory=jicofo-nightly
+ConfigurationDirectoryMode=0700
+
 Restart=on-failure
 SuccessExitStatus=143
 

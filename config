@@ -29,4 +29,6 @@ JAVA_SYS_PROPS="\
  -Dnet.java.sip.communicator.SC_HOME_DIR_NAME=jicofo-nightly\
  -Dnet.java.sip.communicator.SC_LOG_DIR_LOCATION=/var/log/jicofo-nightly\
  -Djava.util.logging.config.file=/etc/jicofo-nightly/logging.properties\
+ -Dconfig.file=/etc/jicofo-nightly/jicofo.conf\
+ -Djava.util.prefs.userRoot=/var/lib/jicofo-nightly\
 "
