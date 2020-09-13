@@ -1,11 +1,9 @@
-# Make sure to synchronize the UUID declared here with the one declared in the PKGBUILD
-_MYSQL_UUID=992
-
 # Like `backup` in `PKGBUILD`, but supports folders – no leading and trailing slashes here!
 _BACKUP=('opt/lampp/etc' 'opt/lampp/htdocs' 'opt/lampp/var')
 
 post_install() {
 
+	local _MYSQL_UUID=992
 	if ! id -u mysql &> /dev/null; then
 		echo 'Creating `mysql` user...'
 		groupadd mysql -g "${_MYSQL_UUID}"
