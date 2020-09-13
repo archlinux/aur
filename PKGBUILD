@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf "%s.r%s.%s" "$(grep AC_INIT configure.in | awk -F', ' '{print $2}')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.%s" "$(grep AC_INIT configure.ac | awk -F', ' '{print $2}')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 # prepare() {
@@ -23,13 +23,13 @@ pkgver() {
 # }
 
 build() {
-    cd "src/$pkgname"
+    cd "$pkgname"
 	./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
 		--disable-static --disable-schemas-compile
   	make
 }
 
 package() {
-    cd "src/$pkgname"
+    cd "$pkgname"
 	make DESTDIR="$pkgdir/" install
 }
