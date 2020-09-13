@@ -11,7 +11,7 @@ pkgbase = vim-gtk-recent
 	depends = python-gobject
 	provides = vim-gtk-recent-git
 	conflicts = vim-gtk-recent-git
-	source = vim-gtk-recent::git://github.com/lafleurdeboum/vim-gtk-recent.git
+	source = vim-gtk-recent::git://gitlab.gnome.org/lafleur/vim-gtk-recent.git
 	md5sums = SKIP
 
 pkgname = vim-gtk-recent
