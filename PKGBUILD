@@ -3,13 +3,12 @@ arch=('x86_64')
 license=('MIT')
 pkgdesc="A secure JavaScript and TypeScript runtime."
 pkgname=deno-bin
-_pkgname=deno
-pkgrel=2
-pkgver=1.3.3
+pkgrel=1
+pkgver=1.4.0
 provides=('deno')
-sha256sums_x86_64=('6e2caa40f95d2372e08c75c37fb1b92a9b710a72e9eb95ce47b34965aa453ff0')
+sha256sums_x86_64=('bb53b392fd79bf58d6e99ef8abc3852bd19ecb5732a20b82d00f0bcf8f2b2b60')
 source_x86_64=("deno_x86_64.zip::https://github.com/denoland/deno/releases/download/v${pkgver}/deno-x86_64-unknown-linux-gnu.zip")
-url='http://deno.land/'
+url='https://deno.land/'
 
 package() {
   install -D -m755 deno "$pkgdir/usr/bin/deno"
