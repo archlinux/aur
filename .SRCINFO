@@ -1,6 +1,6 @@
 pkgbase = nwg-launchers
 	pkgdesc = GTK+ launchers for sway, i3 and some other WMs
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-launchers
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = nwg-launchers
 	depends = gtk3
 	depends = gtkmm3
 	depends = nlohmann-json
-	source = https://github.com/nwg-piotr/nwg-launchers/archive/v0.3.2.tar.gz
-	md5sums = 1ad9c7a62b506f3fb0a44a89b0aeb74f
+	source = https://github.com/nwg-piotr/nwg-launchers/archive/v0.3.3.tar.gz
+	md5sums = dd1011c29e89d5ea2e5c3e158eeee327
 
 pkgname = nwg-launchers
 
