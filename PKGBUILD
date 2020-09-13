@@ -1,7 +1,7 @@
 pkgname=notify-osd-git
 _srcdir=notify-osd
-pkgver=0.9.34.r20.e46f243
-pkgrel=2
+pkgver=0.9.34.r22.771c7f3
+pkgrel=1
 pkgdesc="Customizable Canonical's on-screen-display notification (notify-osd) daemon."
 arch=(x86_64)
 url="https://gitlab.com/justanoobcoder/notify-osd.git"
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$_srcdir"
-    printf "%s.r%s.%s" "$(grep AC_INIT configure.in | awk -F', ' '{print $2}')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.%s" "$(grep AC_INIT configure.ac | awk -F', ' '{print $2}')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
