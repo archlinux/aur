@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-declarative
 	pkgdesc = Classes for QML and JavaScript languages (mingw-w64)
-	pkgver = 5.15.0
+	pkgver = 5.15.1
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -14,18 +14,16 @@ pkgbase = mingw-w64-qt5-declarative
 	makedepends = mingw-w64-vulkan-headers
 	makedepends = mingw-w64-pkg-config
 	makedepends = python
-	makedepends = mingw-w64-qt5-base-static
 	depends = mingw-w64-qt5-base
-	optdepends = mingw-w64-qt5-base-static: use of static libraries
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.15/5.15.0/submodules/qtdeclarative-everywhere-src-5.15.0.tar.xz
+	source = https://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qtdeclarative-everywhere-src-5.15.1.tar.xz
 	source = 0001-Ensure-static-plugins-are-exported.patch
 	source = 0002-Prevent-exporting-QML-parser-symbols-on-static-build.patch
-	sha256sums = 9c3c93fb7d340b2f7d738d12408c047318c78973cb45bfc5ff6b3a57e1fef699
-	sha256sums = 4af477df8c06dfd9fd5a8a34ec5b79e175e87187a040d7081bd5eaa809c7d81d
-	sha256sums = f3463ab91e8b6b12b4dd210ae012203ef83f90a2ce59a2f324daf0a98ed3f0b5
+	sha256sums = 7e30f0ccba61f9d71720b91d7f7523c23677f23cd96065cb71df1b0df329d768
+	sha256sums = accdeab4cb49857442f680a6013a648108ec4f00078e492475794aa6cc98257e
+	sha256sums = 7ff5093753aa819c6039de796e6ebffa235b51f57403e827b31a90e8c2ffbf60
 
 pkgname = mingw-w64-qt5-declarative
 
