@@ -42,11 +42,10 @@ package() {
 	cd "${srcdir}"
 
 	msg 'Extracting package...'
-
 	install -dm755 "${pkgdir}/opt/lampp"    
         ./bitrock-unpacker.tcl "${srcdir}/xampp-linux-x64-${pkgver}-0-installer.run" "${pkgdir}"
 
-	msg 'Copying executables and launcher...'
+	msg 'Ordering the package tree...'
 	rsync -avz --remove-source-files "${pkgdir}/xampp_core_files/xampp_core_folder"/. "${pkgdir}/opt/lampp"
 	rsync -avz --remove-source-files "${pkgdir}/xampp_developer_files/xampp_developer_folder"/. "${pkgdir}/opt/lampp"
 	rsync -avz --remove-source-files "${pkgdir}/native_apache_adapter/apache_xampp_linux"/. "${pkgdir}/opt/lampp"
@@ -69,7 +68,6 @@ package() {
 
 	# Set root location in all files
 	msg 'Setting root location globally (it might take a few minutes)...'
-
 	find "${pkgdir}/opt/lampp/" -type f \
 		-exec sed -i 's/\@\@BITNAMI_XAMPP_ROOT\@\@/\/opt\/lampp/gI;s/\@\@BITROCK_INSTALLDIR\@\@/\/opt\/lampp/gI' {} \;
 
@@ -79,6 +77,8 @@ package() {
 
 	# For running mysql from the official packages (currently unused option)
 	#find "${pkgdir}/opt/lampp/mysql/scripts" -type f -exec sed -i 's/\/opt\/lampp\/lampp\ startmysql/systemctl\ start\ mysqld/gI' {} \;
+
+	msg 'Copying executables and launcher...'
 
 	# Licenses
 	install -dm755 "${pkgdir}/usr/share/licenses/xampp"
