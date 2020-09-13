@@ -1,6 +1,6 @@
 pkgname='vocage-git'
 _pkgname="vocage"
-pkgver=1.0
+pkgver=1.0.0.42.g86f9c6f
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/proycon/vocage"
