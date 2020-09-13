@@ -1,7 +1,7 @@
 # Maintainer: Yujeonja <hardboiled65@gmail.com>
 pkgname=httproto
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="HTTP protocol library."
 arch=('x86_64')

@@ -1,7 +1,7 @@
 pkgbase = httproto
 	pkgdesc = HTTP protocol library.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hardboiled65/httproto
 	arch = x86_64
 	license = MIT
