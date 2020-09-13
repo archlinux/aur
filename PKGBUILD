@@ -11,7 +11,7 @@ url="https://www.pdflib.com"
 arch=('i686' 'x86_64')
 depends=('glibc')
 provides=('pdflib')
-source=(https://ponce.cc/slackware/sources/repo/${_pkgnamecaps}-${pkgver}.tar.gz LICENSE.pdf)
+source=(http://ponce.cc/slackware/sources/repo/${_pkgnamecaps}-${pkgver}.tar.gz LICENSE.pdf)
 license=(custom:pdflib-lite)
 
 build() {
