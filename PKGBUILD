@@ -2,26 +2,22 @@
 # Contributor: peace4all <markspost at rocketmail dot com>
 
 pkgname=unified-remote-server
-pkgver=3.6.0.745
-pkgrel=5
+pkgver=3.8.0.2451
+pkgrel=1
 pkgdesc="Unified Remote Server"
 arch=('x86_64')
 url="http://www.unifiedremote.com/"
-depends=('libxext' 'libx11' 'bluez-libs')
-optdepends=('bluez' 'bluez-utils')
+depends=('glibc' 'gcc-libs')
 license=('freeware')
 install=$pkgname.install
 source=("https://www.unifiedremote.com/download/linux-x64-deb" "urserver.service")
-sha256sums=('SKIP' 'SKIP' )
+sha256sums=('SKIP' '2a2a6118aa028a4ca38638845d1b8d408d57332f3b88c02ff00d5c7f5321428a' )
 
 package() {
 	cd ${srcdir}
 
 	# decompress data
-	tar zxf data.tar.gz
-
-	# fix and revert desktop file to old behaviour
-	sed -i -e '9,24d;26d' $(find . -name 'urserver.desktop')
+	tar xvf data.tar.xz
 
 	# install folders
 	mkdir -p ${pkgdir}/{opt,usr}
