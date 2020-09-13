@@ -2,26 +2,23 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=god-git
-pkgdesc="Utility for simplifying the Git usage"
+pkgdesc="Utility for simplifying the Git usage (git)"
 pkgver=1.9.r0.g1faa5de
 pkgrel=1
 arch=('any')
 url="https://github.com/orhun/god"
 license=('GPL3')
-depends=('git')
-makedepends=('go')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=('git://github.com/orhun/god.git#branch=master')
+makedepends=('git' 'go')
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   go get -d ./...
   go build \
     -gcflags "all=-trimpath=$PWD" \
@@ -31,6 +28,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
-  install -Dm755 "${pkgname%-git}" "$pkgdir/usr/local/bin/${pkgname%-git}"
+  cd "${pkgname%-git}"
+  install -Dm 755 "${pkgname%-git}" -t "$pkgdir/usr/bin"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
