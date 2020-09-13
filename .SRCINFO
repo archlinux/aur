@@ -1,0 +1,16 @@
+pkgbase = python-agnpy
+	pkgdesc = Modelling Active Galactic Nuclei radiative processes with python.
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://agnpy.readthedocs.io/
+	arch = x86_64
+	license = BSD
+	depends = python
+	depends = python-numpy
+	depends = python-astropy
+	depends = python-matplotlib
+	source = https://github.com/cosimoNigro/agnpy/archive/v0.0.7.tar.gz
+	md5sums = 6b6561a49e69e47ac1b942d666642cca
+
+pkgname = python-agnpy
+
