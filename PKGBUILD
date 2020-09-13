@@ -2,7 +2,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=vulkan-intel-git
-pkgver=18.1.0_devel.100894.fcf267ba08
+pkgver=20.3.0_devel
 pkgrel=1
 pkgdesc="Intel's Vulkan mesa driver"
 arch=(x86_64)
@@ -11,8 +11,8 @@ license=('custom')
 depends=('vulkan-icd-loader' 'libgcrypt' 'wayland' 'libxcb' 'libpthread-stubs')
 provides=(vulkan-intel)
 conflicts=(vulkan-intel vulkan-i965 vulkan-i965-git)
-makedepends=('libdrm' 'dri2proto' 'glproto' 'libxxf86vm' 'libxdamage' 'expat>=2.0.1' 'libxmu'
-             'talloc' 'wayland' 'pkgconfig' 'imake' 'xorg-server-devel' 'python2-mako' 'python' 'git')
+makedepends=('xorgproto' 'libdrm' 'libxxf86vm' 'libxdamage' 'expat>=2.0.1' 'libxmu'
+             'talloc' 'wayland' 'pkgconfig' 'imake' 'xorg-server-devel' 'python' 'git')
 source=('anvil::git://anongit.freedesktop.org/mesa/mesa'
         LICENSE)
 sha256sums=('SKIP'
@@ -32,31 +32,22 @@ prepare() {
 build() {
   cd "${srcdir}/anvil"
 
- ./autogen.sh --prefix=/usr \
-    --sysconfdir=/etc \
-    --with-sha1=libgcrypt \
-    --with-dri-drivers=i965 \
-    --with-egl-platforms=x11,drm,wayland \
-    --with-gallium-drivers= \
-    --with-vulkan-drivers=intel \
-    --with-vulkan-icddir="$srcdir/fakeinstall/usr/share/vulkan/icd.d"
-
-  make
-
+  meson setup builddir
+  ninja -C builddir
   # fake installation
   mkdir -p "$srcdir"/fakeinstall
-  make DESTDIR="${srcdir}"/fakeinstall install
+  DESTDIR="${srcdir}"/fakeinstall  ninja -C builddir install
 }
 
 package() {
   cd "${srcdir}/anvil"
 
   install -m755 -d "${pkgdir}"/usr/share/vulkan
-  mv -v "${srcdir}"/fakeinstall/usr/share/vulkan/icd.d "${pkgdir}"/usr/share/vulkan/
+  mv -v "${srcdir}"/fakeinstall/usr/local/share/vulkan/icd.d "${pkgdir}"/usr/share/vulkan/
 
   install -m755 -d "${pkgdir}"/usr/{include/vulkan,lib}
-  mv -v "${srcdir}"/fakeinstall/usr/lib/libvulkan_intel.so "${pkgdir}"/usr/lib/
-  mv -v "${srcdir}"/fakeinstall/usr/include/vulkan/vulkan_intel.h "${pkgdir}"/usr/include/vulkan
+  mv -v "${srcdir}"/fakeinstall/usr/local/lib/libvulkan_intel.so "${pkgdir}"/usr/lib/
+  mv -v "${srcdir}"/fakeinstall/usr/local/include/vulkan/vulkan_intel.h "${pkgdir}"/usr/include/vulkan
 
   install -m755 -d "${pkgdir}"/usr/share/licenses/"${pkgname}"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}"/usr/share/licenses/"${pkgname}"/
