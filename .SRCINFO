@@ -1,0 +1,51 @@
+pkgbase = lib32-pipewire-git
+	pkgdesc = Server and user space API to deal with multimedia pipelines. (GIT version)(32-bit client libraries)
+	pkgver = 0.3.11.6.gf6bc9113
+	pkgrel = 1
+	url = https://pipewire.org
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	makedepends = valgrind
+	makedepends = lib32-jack2
+	makedepends = lib32-libpulse
+	makedepends = lib32-alsa-lib
+	makedepends = lib32-sbc
+	makedepends = rtkit
+	makedepends = lib32-vulkan-icd-loader
+	makedepends = lib32-dbus
+	makedepends = lib32-libsndfile
+	makedepends = lib32-bluez-libs
+	makedepends = vulkan-headers
+	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
+	sha256sums = SKIP
+
+pkgname = lib32-pipewire-git
+	depends = lib32-sbc
+	depends = rtkit
+	depends = lib32-vulkan-icd-loader
+	depends = lib32-bluez-libs
+	depends = lib32-dbus
+	depends = lib32-libsndfile
+	optdepends = pipewire-docs: Documentation
+	optdepends = lib32-pipewire-jack: JACK support
+	optdepends = lib32-pipewire-pulse: PulseAudio support
+	provides = lib32-pipewire
+	conflicts = lib32-pipewire
+
+pkgname = lib32-pipewire-jack-git
+	pkgdesc = Server and user space API to deal with multimedia pipelines. (JACK support)(GIT Version)(32-bit version)
+	depends = lib32-pipewire
+	depends = lib32-jack2
+	provides = lib32-pipewire-jack
+	conflicts = lib32-pipewire-jack
+
+pkgname = lib32-pipewire-pulse-git
+	pkgdesc = Server and user space API to deal with multimedia pipelines. (Pulse support)(GIT version)(32-bit version)
+	depends = lib32-pipewire
+	depends = lib32-libpulse
+	depends = lib32-glib2
+	provides = lib32-pipewire-pulse
+	conflicts = lib32-pipewire-pulse
+
