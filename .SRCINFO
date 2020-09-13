@@ -1,7 +1,7 @@
 pkgbase = xts-macos-theme
 	pkgdesc = macOS themes for xfce4-theme switcher.
 	pkgver = 0.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://gitlab.com/linux-stuffs/xts-themes
 	arch = any
 	groups = xfce4-goodies
@@ -15,7 +15,7 @@ pkgbase = xts-macos-theme
 	provides = xts-macos-theme
 	conflicts = xts-macos-theme
 	options = !strip
-	source = https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-macos-theme/distrib/xts-macos-theme-0.1-0.tar.gz
+	source = https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-macos-theme/distrib/xts-macos-theme-0.1-1.tar.gz
 	sha256sums = SKIP
 
 pkgname = xts-macos-theme

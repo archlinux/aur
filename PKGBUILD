@@ -1,7 +1,7 @@
 # Maintainer: Pavel Sibal <entexsoft@gmail.com>
 pkgname=xts-macos-theme
 pkgver=0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="macOS themes for xfce4-theme switcher."
 arch=('any')
 url="https://gitlab.com/linux-stuffs/xts-themes"
@@ -14,7 +14,7 @@ depends=('xfce4-theme-switcher' 'xfce4-whiskermenu-plugin' 'gtk-engine-murrine' 
 optdepends=('conky-manager')
 options=('!strip')
 
-source=('https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-macos-theme/distrib/xts-macos-theme-0.1-0.tar.gz')
+source=('https://gitlab.com/linux-stuffs/xts-themes/raw/master/xts-macos-theme/distrib/xts-macos-theme-0.1-1.tar.gz')
 sha256sums=('SKIP')
 
 package() {
