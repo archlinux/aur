@@ -5,9 +5,8 @@ pkgbase = bootsplash-theme-manjaro-glitch
 	url = https://github.com/ANDRoid7890/bootsplash-theme-manjaro-glitch
 	arch = x86_64
 	license = GPL
+	makedepends = imagemagick
 	optdepends = bootsplash-systemd: for bootsplash functionality
-	options = !libtool
-	options = !emptydirs
 	source = git+https://github.com/ANDRoid7890/bootsplash-theme-manjaro-glitch.git
 	sha256sums = SKIP
 
