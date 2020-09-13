@@ -7,7 +7,7 @@ arch=(x86_64)
 url="https://gitlab.com/justanoobcoder/notify-osd.git"
 license=('GPL')
 depends=('libwnck3' 'libnotify>=0.7.0' 'dbus-glib>=0.76' 'dconf' 'gsettings-desktop-schemas')
-makedepends=('pkgconfig' 'libnotify' 'gnome-common' 'git')
+makedepends=('pkgconf' 'libnotify' 'gnome-common' 'git')
 provides=('notification-daemon')
 conflicts=('notify-osd')
 source=("git+$url")
