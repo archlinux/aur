@@ -8,7 +8,7 @@ arch=('any')
 url='https://solarus-games.org/en/games/children-of-solarus'
 license=('GPL3' 'custom')
 depends=('solarus>=1.6.0')
-makedepends=('cmake' 'zip')
+makedepends=('cmake' 'git' 'zip')
 source=("$pkgname::git+https://gitlab.com/solarus-games/children-of-solarus.git"
         "$pkgname.png"
         "$pkgname.desktop")

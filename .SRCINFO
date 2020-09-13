@@ -7,6 +7,7 @@ pkgbase = cos-git
 	license = GPL3
 	license = custom
 	makedepends = cmake
+	makedepends = git
 	makedepends = zip
 	depends = solarus>=1.6.0
 	source = cos-git::git+https://gitlab.com/solarus-games/children-of-solarus.git
