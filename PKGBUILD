@@ -1,7 +1,7 @@
 # Maintainer: Thomas Wood <grand.edgemaster@gmail.com>
 pkgname=ttf-twemoji-color
-pkgver=12.0.1
-pkgrel=2
+pkgver=13.0.1
+pkgrel=1
 pkgdesc="A color and B&W emoji SVG-in-OpenType font by Twitter with support for ZWJ, skin tone modifiers and country flags."
 arch=('any')
 url="https://github.com/eosrei/twemoji-color-font"
@@ -34,4 +34,4 @@ package() {
   install -Dm644 fontconfig/56-twemoji-color.conf "$pkgdir"/etc/fonts/conf.avail/56-$pkgname.conf
 }
 
-sha256sums=('7886d78ecc992f87e17c9cf111d1e41100b0c5a5203c44c595faccb0ce14becd')
+sha256sums=('7655b0989d12e6138f40274e6343c29d2f9bc85c48251d504418eca1cc62c2d6')
