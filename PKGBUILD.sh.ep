@@ -5,10 +5,10 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 % end
 \
-pkgver=5.15.0
+pkgver=5.15.1
 pkgrel=1
 arch=('any')
 pkgdesc="Graphical effects for use with Qt Quick 2 (mingw-w64)"
-depends=('mingw-w64-qt5-declarative')
+depends=(<%== qt5deps qw(declarative) %>)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
