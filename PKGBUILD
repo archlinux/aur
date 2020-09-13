@@ -1,6 +1,6 @@
 pkgname=notify-osd-syaoran
 pkgver=.r12.5675f26
-pkgrel=1
+pkgrel=2
 pkgdesc="Customizable Canonical's on-screen-display notification (notify-osd) daemon."
 arch=(x86_64)
 url="https://gitlab.com/justanoobcoder/notify-osd-syaoran.git"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-	./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
+	sh ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
 		--disable-static --disable-schemas-compile
   	make
 }
