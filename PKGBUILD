@@ -42,5 +42,6 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
+	install -D -m 644 "$srcdir/$pkgname-$pkgver"/LICENSE "${pkgdir}"/usr/share/licenses/httproto/LICENSE
 }
 md5sums=('4231bb1ce7a35a67149a9adf1793f212')
