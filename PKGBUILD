@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/tkrajina/gpxpy/archive/v${pkgver}.tar.gz")
-sha256sums=('654ae1a5c0e0ad179fc5f96ec8c91fe03642881de3df6d85a7a8877c212a0210')
+sha256sums=('f68bfb3d8d3e8d012c485f22bcacc8abf9ad0a0d5e951ab1c2eaf7308d9e8caa')
 
 check() {
 	cd "${srcdir}/gpxpy-${pkgver}"
