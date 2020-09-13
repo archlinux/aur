@@ -1,7 +1,7 @@
 pkgbase = buildaur
 	pkgdesc = An AUR helper with asp support
 	pkgver = 42.0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lxgr-linux/buildaur
 	arch = any
 	license = GPL3
@@ -15,7 +15,7 @@ pkgbase = buildaur
 	backup = etc/buildaur/buildaur.conf
 	backup = usr/share/buildaur/blacklist
 	source = buildaur.tar.gz::https://github.com/lxgr-linux/buildaur/archive/42.0.5.5.tar.gz
-	md5sums = 40de279308caf1d9d3a3093b9e6f32c2
+	md5sums = 5ba633f2f56d5b4e3cc421531c082998
 
 pkgname = buildaur
 
