@@ -4,11 +4,11 @@
 # Contributor: ant32 <antreimer@gmail.com>
 % end
 \
-pkgver=5.15.0
+pkgver=5.15.1
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=(<%== include 'fragments/mingw-w64-qt5-non_any_archs' %>)
 pkgdesc="C++ and QML APIs for easy inclusion of 3D graphics (mingw-w64)"
-depends=('mingw-w64-qt5-declarative')
+depends=(<%== qt5deps qw(declarative) %>)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 \
