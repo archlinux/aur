@@ -1,0 +1,23 @@
+pkgbase = mingw-w64-qt5-quickcontrols-static
+	pkgdesc = Reusable Qt Quick based UI controls to create classic desktop-style user interfaces (mingw-w64)
+	pkgver = 5.15.1
+	pkgrel = 1
+	url = https://www.qt.io/
+	arch = any
+	groups = mingw-w64-qt5
+	license = GPL3
+	license = LGPL
+	license = FDL
+	license = custom
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-pkg-config
+	depends = mingw-w64-qt5-declarative-static
+	depends = mingw-w64-qt5-quickcontrols
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://download.qt.io/official_releases/qt/5.15/5.15.1/submodules/qtquickcontrols-everywhere-src-5.15.1.tar.xz
+	sha256sums = 0172f88779305aae57f3842538e91361ae9bc5ca2275ee5ce9d455309f0f2c7e
+
+pkgname = mingw-w64-qt5-quickcontrols-static
+
