@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/share/insomnia-designer/designer
+/usr/share/insomnia-designer/insomnia-designer

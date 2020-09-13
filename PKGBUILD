@@ -1,29 +1,24 @@
 # Maintainer: vscncls <lucaslou4 at protonmail dot com>
 
 pkgname=insomnia-designer
-pkgver=2020.1.3
+pkgver=2020.4.0
 pkgrel=1
 pkgdesc="The Collaborative API Design Tool for designing and managing OpenAPI specs."
 url="https://github.com/Kong/insomnia"
 arch=('x86_64')
 license=('MIT')
-depends=()
-makedepends=()
 provides=($pkgname)
 source=(
     "${url}/releases/download/designer@${pkgver}/Insomnia.Designer-${pkgver}.tar.gz"
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-md5sums=('1353cfddc1213827651448feca58e7cf'
+md5sums=('1d1c5fd2ecbc3bef9e6b42c6fbffde9b'
          '26e57edbdf39489ce81a28aa9d6733d0'
-         'badb48d1177ad567c1708b7674fa0e8e')
+         'de6d951fac16307b6c59f685ba1704ac')
 
 package() {
         BUILD_DIR="Insomnia.Designer-${pkgver}"
-
-        # Temporary fix. Since the 1.1.3 release is the same as 1.1.2 on linux, they also didn't bother to change the name of the folder
-        mv "Insomnia.Designer-2020.1.2" $BUILD_DIR
 
         mkdir "${pkgdir}/usr/share/" -p
         \cp -r "${BUILD_DIR}" "${pkgdir}/usr/share/${pkgname}"
