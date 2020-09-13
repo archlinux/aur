@@ -2,6 +2,7 @@ pkgbase = cool
 	pkgdesc = A little script that plays a random MOD file from modarchive.org
 	pkgver = 0.1
 	pkgrel = 1
+	url = https://gist.githubusercontent.com/orhun/eda9701e357b625c2bada19563872715
 	arch = i686
 	arch = x86_64
 	arch = armv6h
