@@ -1,7 +1,7 @@
 # Maintainer: Andrey Alekseev <andrey.android7890@gmail.com>
 
 pkgname=('bootsplash-theme-manjaro-glitch-git')
-pkgver=v1.0.r0.g320c1af
+pkgver=1.0.r0.g320c1af
 pkgrel=2
 arch=('x86_64')
 pkgdesc="Simple Manjaro Bootsplash with cool glitch effect"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "bootsplash-theme-manjaro-glitch"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 } 
 
 build() {

@@ -1,6 +1,6 @@
-pkgbase = bootsplash-theme-manjaro-glitch
+pkgbase = bootsplash-theme-manjaro-glitch-git
 	pkgdesc = Simple Manjaro Bootsplash with cool glitch effect
-	pkgver = v1.0.r0.g320c1af
+	pkgver = 1.0.r0.g320c1af
 	pkgrel = 2
 	url = https://github.com/ANDRoid7890/bootsplash-theme-manjaro-glitch
 	arch = x86_64
