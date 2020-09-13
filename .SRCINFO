@@ -16,10 +16,10 @@ pkgbase = hpuld
 	source = fulfill_template.sh
 	md5sums = b20c5f5273f8d18077fe553919c7e3e9
 	md5sums = 5355df6678e547b4de1d9f7a4b660f10
-	md5sums = b84b3eb12e61cfc874be619babf6eb11
+	md5sums = acc7e82b7052e8e16afecfef5de719f9
 	sha1sums = 51ed2e1265659cedf47fa5e7b9f8693a3d8cabaa
 	sha1sums = 030fe724635ad9d32cc5bc787b78f3a201707d26
-	sha1sums = 8dc4e15836ee71c2b67e3ca54929b0380af6ae46
+	sha1sums = da9dbfcfa471f0eefc3d23a9b4e912d7a0430b5d
 
 pkgname = hpuld
 

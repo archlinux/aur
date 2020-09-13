@@ -3,9 +3,9 @@
 # Usage: ./install_from_template.sh TEMPLATE_FILE OUTPUT_FILE OEM_FILE
 #
 
-_TEMPLATE_="${1}"
-_OUTPUT_="${2}"
-_OEMFILE_="${3}"
+_OEMFILE_="${1}"
+_TEMPLATE_="${2}"
+_OUTPUT_="${3}"
 
 [ -z "${_TEMPLATE_}" -o -z "${_OUTPUT_}" -o -z "${_OEMFILE_}" ] && return 1
 
@@ -46,13 +46,13 @@ tab() {
 
 # Callback variables
 
-VID="$(_get_oem_field "VID")"
-PIDS="$(_get_oem_field "PIDS")"
+VID="$(_get_oem_field 'VID')"
+PIDS="$(_get_oem_field 'PIDS')"
 
 
 # Other variables
 
-_TMP_FILE_="$(mktemp -t tmp_file.XXXX)"
+_TMP_FILE_="$(mktemp -t 'tmp_file.XXXX')"
 
 
 # Script body

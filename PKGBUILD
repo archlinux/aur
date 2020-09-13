@@ -15,10 +15,10 @@ source=("https://ftp.hp.com/pub/softlib/software13/printers/MFP170/uld-hp_V${pkg
 install="${pkgname}.install"
 md5sums=('b20c5f5273f8d18077fe553919c7e3e9'
          '5355df6678e547b4de1d9f7a4b660f10'
-         'b84b3eb12e61cfc874be619babf6eb11')
+         'acc7e82b7052e8e16afecfef5de719f9')
 sha1sums=('51ed2e1265659cedf47fa5e7b9f8693a3d8cabaa'
           '030fe724635ad9d32cc5bc787b78f3a201707d26'
-          '8dc4e15836ee71c2b67e3ca54929b0380af6ae46')
+          'da9dbfcfa471f0eefc3d23a9b4e912d7a0430b5d')
 
 # Extract only the most recent version of the `uld` package...
 noextract=("uld-hp.tar.gz")
@@ -64,14 +64,14 @@ package() {
 	install -Dm644 "${srcdir}/${_pkgcodename}/noarch/share/ppd/"*.ppd \
 		"${pkgdir}/opt/hp/printer/share/ppd/"
 
-	# Integrate the .ppd files from the alternative `uld` package
+	# Integrate the .ppd files with the alternative `uld` package
 	install -Dm644 "${srcdir}/uld-alt/${_pkgcodename}/noarch/share/ppd/"*.ppd \
 		"${pkgdir}/opt/hp/printer/share/ppd/"
 
 	install -Dm644 "${srcdir}/${_pkgcodename}/noarch/share/ppd/cms/"*.cts \
 		"${pkgdir}/opt/hp/printer/share/ppd/cms/"
 
-	# Integrate the .cts files from the alternative `uld` package
+	# Integrate the .cts files with the alternative `uld` package
 	install -Dm644 "${srcdir}/uld-alt/${_pkgcodename}/noarch/share/ppd/cms/"*.cts \
 		"${pkgdir}/opt/hp/printer/share/ppd/cms/"
 
@@ -100,13 +100,13 @@ package() {
 	install -Dm644 "${srcdir}/${_pkgcodename}/noarch/etc/smfp.conf" \
 		"${pkgdir}/etc/sane.d/smfp-hp.conf"
 
-	./fulfill_template.sh "${srcdir}/${_pkgcodename}/noarch/etc/smfp.rules.in" \
-		"${pkgdir}/etc/udev/rules.d/${_udev_rule_number}-smfp_${_vendor_lc}.rules" \
-		"${srcdir}/${_pkgcodename}/noarch/oem.conf"
+	./fulfill_template.sh "${srcdir}/${_pkgcodename}/noarch/oem.conf" \
+		"${srcdir}/${_pkgcodename}/noarch/etc/smfp.rules.in" \
+		"${pkgdir}/etc/udev/rules.d/${_udev_rule_number}-smfp_${_vendor_lc}.rules"
 
-	./fulfill_template.sh "${srcdir}/${_pkgcodename}/noarch/etc/smfp.fdi.in" \
-		"${pkgdir}/usr/share/hal/fdi/policy/10osvendor/01_smfp_${_vendor_lc}.fdi" \
-		"${srcdir}/${_pkgcodename}/noarch/oem.conf"
+	./fulfill_template.sh "${srcdir}/${_pkgcodename}/noarch/oem.conf" \
+		"${srcdir}/${_pkgcodename}/noarch/etc/smfp.fdi.in" \
+		"${pkgdir}/usr/share/hal/fdi/policy/10osvendor/01_smfp_${_vendor_lc}.fdi"
 
 
 	# Follow the original `/opt/smfp-common/legacy_compat/.files`...
