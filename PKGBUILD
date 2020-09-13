@@ -15,10 +15,10 @@ source=("https://ftp.hp.com/pub/softlib/software13/printers/MFP170/uld-hp_V${pkg
 install="${pkgname}.install"
 md5sums=('b20c5f5273f8d18077fe553919c7e3e9'
          '5355df6678e547b4de1d9f7a4b660f10'
-         'acc7e82b7052e8e16afecfef5de719f9')
+         'd07d87d2078446940b8ddb15515c4b0c')
 sha1sums=('51ed2e1265659cedf47fa5e7b9f8693a3d8cabaa'
           '030fe724635ad9d32cc5bc787b78f3a201707d26'
-          'da9dbfcfa471f0eefc3d23a9b4e912d7a0430b5d')
+          'ed8322e1cd306d1540776209a3be99b36193885e')
 
 # Extract only the most recent version of the `uld` package...
 noextract=("uld-hp.tar.gz")
