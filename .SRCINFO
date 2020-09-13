@@ -1,0 +1,17 @@
+pkgbase = lightly-qt
+	pkgdesc = A modern style for qt applications
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/Luwx/Lightly
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = kdecoration
+	makedepends = qt5-declarative
+	makedepends = qt5-x11extras
+	source = lightly-qt-0.3::https://github.com/Luwx/Lightly/archive/v0.3-alpha.tar.gz
+	sha256sums = 9568a15f1983d82afa9480cdc8f1a64374348f2e154b48ee312a63249d5fb966
+
+pkgname = lightly-qt
+
