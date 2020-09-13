@@ -1,30 +1,35 @@
 pkgname=notify-osd-syaoran
-_realname=notify-osd
-pkgver=0.9.34
+pkgver=.r12.5675f26
 pkgrel=1
-_realver=${pkgver}+16.04.20160415
-pkgdesc="daemon that displays passive pop-up notifications, with leolik patch added"
+pkgdesc="Customizable Canonical's on-screen-display notification (notify-osd) daemon."
 arch=(x86_64)
 url="https://gitlab.com/justanoobcoder/notify-osd-syaoran.git"
 license=('GPL')
-#groups=()
 depends=('libwnck3' 'libnotify>=0.7.0' 'dbus-glib>=0.76' 'dconf' 'gsettings-desktop-schemas')
 makedepends=('pkgconfig' 'libnotify' 'gnome-common' 'git')
-provides=('notification-daemon' 'notify-osd')
+provides=('notification-daemon')
 conflicts=('notify-osd')
-#install=$pkgname.install
 source=("git+$url")
 md5sums=('SKIP')
 
+pkgver() {
+    cd "$pkgname"
+    printf "%s.r%s.%s" "$(grep AC_INIT configure.in | awk -F', ' '{print $2}')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$pkgname"
+  	NOCONFIGURE=1 ./autogen.sh
+}
+
 build() {
     cd "$pkgname"
-	sh ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
-              --disable-static --disable-schemas-compile
+	./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
+		--disable-static --disable-schemas-compile
   	make
- }
+}
 
 package() {
-	cd "$pkgname"
+    cd "$pkgname"
 	make DESTDIR="$pkgdir/" install
-#	install -D -m644 ${srcdir}/notify-osd ${pkgdir}/etc/skel/.notify-osd
- }
+}
