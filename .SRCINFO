@@ -1,13 +1,11 @@
 pkgbase = lib32-gamemode
 	pkgdesc = A daemon/lib combo that allows games to request a set of optimisations be temporarily applied to the host OS
 	pkgver = 1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FeralInteractive/gamemode
 	arch = x86_64
 	license = BSD 3-Clause License (Revised)
 	makedepends = meson
-	makedepends = ninja
-	makedepends = pkg-config
 	makedepends = lib32-systemd
 	depends = gamemode
 	depends = lib32-glibc
