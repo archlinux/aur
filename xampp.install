@@ -15,14 +15,14 @@ post_install() {
 	echo
 	echo 'To start, stop or restart XAMPP simply call the command'
 	echo
-	echo '     xampp {start, stop, restart}'
+	echo '    xampp {start, stop, restart}'
 	echo
 	echo 'Alternatively you can use the `xampp` systemd service.'
 	echo
 	echo 'Then to check that everything really works just enter the following URL in your'
 	echo 'web browser:'
 	echo
-	echo '     http://localhost'
+	echo '    http://localhost'
 	echo
 	echo 'Have fun!'
 	echo
@@ -82,6 +82,12 @@ post_remove() {
 
 	echo
 	echo 'REMEMBER: Your `htdocs` folder was backed up to `/opt/htdocs-backups`.'
+	echo
+	echo 'If you don'\''t need it, launch'
+	echo
+	echo '    sudo rm -rf /opt/htdocs-backups'
+	echo
+	echo 'to erase all backups.'
 	echo
 
 }

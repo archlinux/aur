@@ -46,7 +46,7 @@ package() {
 
 	msg 'Recreating package tree...'
 	install -dm755 "${pkgdir}/opt/lampp"
-	rsync -avzq --remove-source-files \
+	rsync -azq --remove-source-files \
 		"${srcdir}/${pkgname}-linux-x64-${pkgver}/xampp_core_files/xampp_core_folder"/. \
 		"${srcdir}/${pkgname}-linux-x64-${pkgver}/xampp_developer_files/xampp_developer_folder"/. \
 		"${srcdir}/${pkgname}-linux-x64-${pkgver}/native_apache_adapter/apache_xampp_linux"/. \
@@ -87,7 +87,7 @@ package() {
 
 	# Licenses
 	install -dm755 "${pkgdir}/usr/share/licenses/xampp"
-	rsync -avzq "${pkgdir}/opt/lampp/licenses"/. "${pkgdir}/usr/share/licenses/xampp"
+	rsync -azq "${pkgdir}/opt/lampp/licenses"/. "${pkgdir}/usr/share/licenses/xampp"
 
 	# Executables
 	install -dm755 "${pkgdir}/usr/bin"
