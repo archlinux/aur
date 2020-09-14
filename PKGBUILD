@@ -2,9 +2,9 @@
 # Contributor: Martin Wagner <martin.wagner.dev@gmail.com>
 
 pkgname=mpdevil-git
-pkgver=v0.9.0.r0.g6b5526a
+pkgver=v0.9.1.r0.g79ce749
 pkgrel=1
-pkgdesc="A small MPD client written in python (git version)"
+pkgdesc="A simple music browser for MPD (git version)"
 arch=('any')
 license=('GPL-3')
 url="https://github.com/SoongNoonien/mpdevil"
