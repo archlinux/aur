@@ -2,12 +2,11 @@
 
 pkgname=ttf-lacartoonerie
 pkgver=2007.04.23
-pkgrel=3
+pkgrel=4
 pkgdesc="Fancy cartoon style font created by laCartoonerie.com."
 arch=('any')
 url="http://www.lacartoonerie.com/"
 license=('Free for personal use')
-depends=('fontconfig' 'xorg-font-utils')
 source=("$pkgname-$pkgver.zip::http://img.dafont.com/dl/?f=lacartoonerie")
 
 package() {
