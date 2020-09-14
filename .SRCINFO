@@ -1,20 +1,8 @@
 pkgbase = hp-mfp-10x-17x
-	pkgdesc = Multi-function peripherals (MFPs) drivers for Hewlett-Packard Laser 10x Series, Laser MFP 13x Series, Color Laser 15x Series, Color Laser MFP 17x Series
-	pkgver = 1.00.39.12_00.15
-	pkgrel = 2
-	url = https://support.hp.com/
-	install = hp-mfp-10x-17x.install
-	arch = i686
-	arch = x86_64
-	license = custom
-	depends = sane
-	optdepends = hal: hardware abstraction layer
-	source = https://ftp.hp.com/pub/softlib/software13/printers/MFP170/uld-hp_V1.00.39.12_00.15.tar.gz
-	source = fulfill_template.sh
-	md5sums = b20c5f5273f8d18077fe553919c7e3e9
-	md5sums = b84b3eb12e61cfc874be619babf6eb11
-	sha1sums = 51ed2e1265659cedf47fa5e7b9f8693a3d8cabaa
-	sha1sums = 8dc4e15836ee71c2b67e3ca54929b0380af6ae46
+	pkgdesc = This package is currently deprecated! Install `hpuld` instead
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
 
 pkgname = hp-mfp-10x-17x
 
