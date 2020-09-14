@@ -19,8 +19,8 @@ post_install() {
 	echo
 	echo 'Alternatively you can use the `xampp` systemd service.'
 	echo
-	echo 'Then to check that everything really works just enter the following URL in your'
-	echo 'web browser:'
+	echo 'To check that everything really works just enter the following URL in your web'
+	echo 'browser:'
 	echo
 	echo '    http://localhost'
 	echo
@@ -38,7 +38,7 @@ pre_upgrade() {
 	_STDERR="$(/opt/lampp/lampp stop >/dev/null 2>&1)" && echo ' OK' || (echo ' FAILED'; test "x${_STDERR}" != 'x' && echo "${_STDERR}")
 
 	for _COIN in "${_BACKUP[@]}"; do
-		! test -d "/${_COIN}" || (rm -rf "/${_COIN}-backup" && mv "/${_COIN}" "/${_COIN}-backup")
+		! test -d "/${_COIN}" || (rm -rf "/${_COIN}.keep" && mv "/${_COIN}" "/${_COIN}.keep")
 	done
 
 }
@@ -48,10 +48,10 @@ post_upgrade() {
 	local _COIN
 
 	for _COIN in "${_BACKUP[@]}"; do
-		if test -d "/${_COIN}-backup"; then
+		if test -d "/${_COIN}.keep"; then
 			rm -rf "/${_COIN}.pacnew"
 			mv "/${_COIN}" "/${_COIN}.pacnew"
-			mv "/${_COIN}-backup" "/${_COIN}"
+			mv "/${_COIN}.keep" "/${_COIN}"
 		fi
 	done
 
@@ -79,6 +79,17 @@ pre_remove() {
 }
 
 post_remove() {
+
+	if id -u mysql &> /dev/null; then
+		echo
+		echo 'A `mysql` user is still present in the system. It is possible that other'
+		echo 'programs require its presence. If you are certain that no program requires it,'
+		echo 'launch'
+		echo
+		echo '    sudo userdel mysql'
+		echo
+		echo 'to delete the `mysql` user and group from the system.'
+	fi
 
 	echo
 	echo 'REMEMBER: Your `htdocs` folder was backed up to `/opt/htdocs-backups`.'

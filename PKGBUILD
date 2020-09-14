@@ -10,7 +10,7 @@ pkgname='xampp'
 pkgver='7.4.10'
 pkgrel=1
 pkgdesc='A stand-alone LAMPP distribution'
-url="http://www.apachefriends.org/"
+url='http://www.apachefriends.org/'
 license=('GPL')
 arch=('x86_64')
 depends=('net-tools')
@@ -24,7 +24,7 @@ source=('bitrock-unpacker.tcl'
 	'xampp-manager.desktop'
 	'xampp-manager.png'
 	'xampp-manager-polkit')
-source_x86_64=("https://www.apachefriends.org/xampp-files/${pkgver}/${pkgname}-linux-x64-${pkgver}-0-installer.run")
+source_x86_64=("https://www.apachefriends.org/${pkgname}-files/${pkgver}/${pkgname}-linux-x64-${pkgver}-0-installer.run")
 options=(!strip)
 install='xampp.install'
 sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
@@ -64,7 +64,7 @@ package() {
 
 	# phpMyAdmin MySQL settings
 	msg 'Configuring phpMyAdmin settings for MySQL...'
-	find "${pkgdir}/opt/lampp/phpmyadmin" -type f -exec sed -i 's/localhost/localhost:3306/gI' {} \;
+	find "${pkgdir}/opt/lampp/phpmyadmin" -type f -exec sed -i 's/localhost/localhost:3306/gI' '{}' \;
 
 	# Links
 	install -dm755 "${pkgdir}/opt/lampp/share/lampp"
@@ -74,14 +74,14 @@ package() {
 	# Set root location in all files
 	msg 'Setting root location globally (it might take a few minutes)...'
 	find "${pkgdir}/opt/lampp/" -type f \
-		-exec sed -i 's/\@\@BITNAMI_XAMPP_ROOT\@\@/\/opt\/lampp/gI;s/\@\@BITROCK_INSTALLDIR\@\@/\/opt\/lampp/gI' {} \;
+		-exec sed -i 's/\@\@BITNAMI_XAMPP_ROOT\@\@/\/opt\/lampp/gI;s/\@\@BITROCK_INSTALLDIR\@\@/\/opt\/lampp/gI' '{}' \;
 
 	# For using MariaDB from the official packages (currently unused option)
-	#find "${pkgdir}/opt/lampp/mysql/scripts" -type f -exec sed -i 's/\/opt\/lampp\/var\/mysql\/$HOSTNAME.pid/\/var\/lib\/mysql\/$HOSTNAME.pid/gI' {} \;
-	#find "${pkgdir}/opt/lampp/" -type f -exec sed -i 's/\/opt\/lampp\/var\/mysql\/mysql.sock/\/run\/mysqld\/mysqld.sock/gI' {} \;
+	#find "${pkgdir}/opt/lampp/mysql/scripts" -type f -exec sed -i 's/\/opt\/lampp\/var\/mysql\/$HOSTNAME.pid/\/var\/lib\/mysql\/$HOSTNAME.pid/gI' '{}' \;
+	#find "${pkgdir}/opt/lampp/" -type f -exec sed -i 's/\/opt\/lampp\/var\/mysql\/mysql.sock/\/run\/mysqld\/mysqld.sock/gI' '{}' \;
 
 	# For running MySQL from the official packages (currently unused option)
-	#find "${pkgdir}/opt/lampp/mysql/scripts" -type f -exec sed -i 's/\/opt\/lampp\/lampp\ startmysql/systemctl\ start\ mysqld/gI' {} \;
+	#find "${pkgdir}/opt/lampp/mysql/scripts" -type f -exec sed -i 's/\/opt\/lampp\/lampp\ startmysql/systemctl\ start\ mysqld/gI' '{}' \;
 
 	msg 'Copying executables and launcher...'
 
