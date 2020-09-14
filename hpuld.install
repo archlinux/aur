@@ -1,12 +1,10 @@
-pkgname='hpuld'
-
 post_install() {
 
 	# These drivers are not free software...
 
 	local _FULL_LOCALE_="$(locale | grep LANG | cut -d= -f2 | cut -d. -f1 | sed s/_/\-/)"
 	local _SHORT_LOCALE_="$(locale | grep LANG | cut -d= -f2 | cut -d_ -f1)"
-	local _LICENSE_PATH_="/usr/share/licenses/${pkgname}"
+	local _LICENSE_PATH_='/usr/share/licenses/hpuld'
 
 	echo
 
