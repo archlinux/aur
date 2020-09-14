@@ -1,17 +1,21 @@
 pkgbase = mangonel-git
 	pkgdesc = Simple but fast application launcher.
-	pkgver = 2012.12.12
+	pkgver = r266.d2f8899
 	pkgrel = 1
-	epoch = 1
-	url = http://www.tarmack.eu/mangonel.html
+	url = https://invent.kde.org/utilities/mangonel
 	arch = i686
 	arch = x86_64
-	license = Apache 2.0
+	license = GPL
+	makedepends = extra-cmake-modules
 	makedepends = git
-	makedepends = automoc4
+	depends = kglobalaccel
+	depends = knotifications
+	depends = kcoreaddons
+	depends = kunitconversion
+	depends = ki18n
 	provides = mangonel
 	conflicts = mangonel
-	source = git://github.com/tarmack/Mangonel.git
+	source = git+https://invent.kde.org/utilities/mangonel.git
 	md5sums = SKIP
 
 pkgname = mangonel-git

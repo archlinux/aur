@@ -1,35 +1,43 @@
 # Contributor: birdflesh <antkoul at gmail dot com>
 # Maintainer: SanskritFritz (gmail)
+# Maintainer: martin sandsmark <martin.sandsmark@kde.org>
 
 pkgname=mangonel-git
-_gitname="Mangonel"
-pkgver=2012.12.12
+pkgver=r266.d2f8899
 pkgrel=1
-epoch=1
 pkgdesc="Simple but fast application launcher."
 arch=('i686' 'x86_64')
-url=http://www.tarmack.eu/mangonel.html
-license=('Apache 2.0')
-depends=()
-makedepends=('git' 'automoc4')
+url='https://invent.kde.org/utilities/mangonel'
+license=('GPL')
+depends=('kglobalaccel' 'knotifications' 'kcoreaddons' 'kunitconversion' 'ki18n')
+makedepends=('extra-cmake-modules' 'git')
 provides=('mangonel')
 conflicts=('mangonel')
-source=("git://github.com/tarmack/Mangonel.git")
+source=("git+https://invent.kde.org/utilities/mangonel.git")
 md5sums=('SKIP')
 
 pkgver() {
-        cd "$_gitname"
-        git log -1 --format="%cd" --date=short | sed 's|-|.|g'
+	cd mangonel
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	mkdir -p build
 }
 
 build() {
-	cd "$srcdir/$_gitname"
-	cmake . -DQT_QMAKE_EXECUTABLE=qmake-qt4 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+	cd build
+	cmake ../mangonel \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DKDE_INSTALL_LIBDIR=lib \
+		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 	make
 }
 
 package() {
-	cd "$srcdir/$_gitname"
+	cd build
 	make DESTDIR="$pkgdir" install
 }
 
+# vim: set noexpandtab filetype=sh:
