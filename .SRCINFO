@@ -1,6 +1,6 @@
 pkgbase = hpmyroom
 	pkgdesc = HPE MyRoom a collaborative conferencing meetings software
-	pkgver = 12.0.0.0220
+	pkgver = 12.1.1.0242
 	pkgrel = 1
 	url = https://www.myroom.hpe.com
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = hpmyroom
 	depends = libgl
 	depends = libglvnd
 	depends = libpulse>=0.99.1
-	depends = libutil-linux>=2.16
+	depends = util-linux-libs
 	depends = libvdpau
 	depends = libx11
 	depends = libxcb>=1.8
@@ -28,8 +28,8 @@ pkgbase = hpmyroom
 	depends = libxtst
 	depends = systemd-libs>=183
 	depends = zlib>=1.2.3.4
-	source = https://www.myroom.hpe.com/downloadfiles/hpmyroom_12.0.0.0220_amd64.deb
-	sha256sums = 145581b2fdb39dcd18269da4cb3b655b9792b734cc9b9a8c057b97b6a3afb47c
+	source = https://www.myroom.hpe.com/downloadfiles/hpmyroom_12.1.1.0242_amd64.deb
+	sha256sums = c3fdcf56a3aa3a43b1eca3ab113786ed2e10426ff7d29eae447a8a61b99484e4
 
 pkgname = hpmyroom
 
