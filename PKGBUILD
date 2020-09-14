@@ -1,6 +1,6 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=xtrkcad-hg
-pkgver=r1940
+pkgver=r2159
 pkgrel=1
 pkgdesc="CAD program for designing model railroad layouts."
 url="http://www.xtrkcad.org/"
@@ -26,7 +26,8 @@ build() {
       -DCMAKE_INSTALL_PREFIX="/usr" \
       -DCMAKE_EXE_LINKER_FLAGS="-lm" \
       -DCMAKE_BUILD_TYPE="Release" \
-      -DXTRKCAD_USE_GETTEXT="ON"
+      -DXTRKCAD_USE_GETTEXT="ON" \
+      -DCMAKE_EXE_LINKER_FLAGS="-lm -Wl,--allow-multiple-definition"
   make
 }
 
