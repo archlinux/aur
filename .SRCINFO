@@ -1,7 +1,7 @@
 pkgbase = quickmedia-git
 	pkgdesc = A native client for web media. Works with youtube, 4chan and several manga sites.
 	pkgver = r210.f270df6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.dec05eba.com/QuickMedia
 	arch = x86_64
 	license = GPL3
@@ -16,6 +16,7 @@ pkgbase = quickmedia-git
 	depends = mpv
 	depends = youtube-dl
 	depends = libglvnd
+	depends = libxrandr
 	optdepends = libnotify: For showing notifications
 	optdepends = automedia: For automatically downloading new chapters of tracked manga
 	provides = QuickMedia

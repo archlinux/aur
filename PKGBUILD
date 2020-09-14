@@ -2,13 +2,13 @@
 
 pkgname=quickmedia-git
 pkgver=r210.f270df6
-pkgrel=1
+pkgrel=2
 pkgdesc='A native client for web media. Works with youtube, 4chan and several manga sites.'
 arch=('x86_64')
 url="https://git.dec05eba.com/QuickMedia"
 license=('GPL3')
 makedepends=('git' 'sibs')
-depends=('sfml' 'libx11' 'jsoncpp' 'cppcodec' 'tidy' 'curl' 'mpv' 'youtube-dl' 'libglvnd')
+depends=('sfml' 'libx11' 'jsoncpp' 'cppcodec' 'tidy' 'curl' 'mpv' 'youtube-dl' 'libglvnd' 'libxrandr')
 optdepends=(
     'libnotify: For showing notifications'
     'automedia: For automatically downloading new chapters of tracked manga'
