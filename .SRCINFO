@@ -1,0 +1,11 @@
+pkgbase = kernel-chktaint
+	pkgdesc = Check kernel for tainted modules
+	pkgver = 5.8.9
+	pkgrel = 1
+	arch = any
+	license = GPL
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.8.9.tar.xz
+	sha256sums = 99d8bc1b82f17d7d79f9af4a94af4c0e3772159e9e6e278761bde8569f93e15f
+
+pkgname = kernel-chktaint
+
