@@ -2,7 +2,7 @@
 # Contributor: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgname=rpi-eeprom-beta
-pkgver=2020.07.16
+pkgver=2020.09.03
 _pkghash=138a1
 pkgrel=2
 pkgdesc='Raspberry Pi4 boot EEPROM updater'
@@ -22,7 +22,7 @@ conflicts=('rpi-eeprom')
 backup=('etc/default/rpi-eeprom-update')
 source=("rpi-eeprom-${pkgver}-${_pkghash}.tar.gz::https://github.com/raspberrypi/rpi-eeprom/archive/v${pkgver}-${_pkghash}.tar.gz"
         'rpi-eeprom-update.patch')
-sha256sums=('9f16a2a8725e78d9e799a2aef2620820a43db8201fe55c83e6566d69cdadae19'
+sha256sums=('fd97eb9ba530f83750cbd4ac9382518e28ae8009e42d8e7a835929c65edc2a8f'
             'd716ef30c4a486019a4778579305a84c0f31593d5840850aefa9742dc6f9760f')
 options=(!strip)
 
