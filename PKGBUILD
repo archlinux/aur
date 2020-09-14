@@ -2,14 +2,16 @@
 
 pkgname=pineappl
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PineAPPL is not an extension of APPLgrid'
 arch=('any')
 url="https://n3pdf.github.io/pineappl/"
 license=('GPL3')
+makedepends=("python-setuptools")
 depends=("cargo-c"
          "rust"
          "python-pkgconfig"
+         "lhapdf"
          )
 optdepends=()
 provides=("pineappl")
@@ -33,6 +35,7 @@ package() {
 	cd "$pkgname-$pkgver"/pineappl_capi
     cargo cinstall --release --prefix=${pkgdir}/usr
     cd ..
+    echo "CARGO INSTALL"
     # Now install the command-line program
     cargo install --path pineappl_cli --root=${pkgdir}/usr
     # And the python wrapper
