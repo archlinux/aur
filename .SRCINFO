@@ -1,0 +1,22 @@
+pkgbase = zotero-xpdf
+	pkgdesc = A modified version of Xpdf used by Zotero
+	pkgver = 4.02
+	pkgrel = 1
+	url = https://github.com/zotero/cross-xpdf
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = libpaper
+	depends = fontconfig
+	depends = zlib
+	depends = libpng
+	source = zotero-xpdf::git+https://github.com/zotero/cross-xpdf.git#commit=b71fe1f7213e261882703b0aee97c48591430c18
+	source = https://xpdfreader-dl.s3.amazonaws.com/xpdf-4.02.tar.gz
+	md5sums = SKIP
+	md5sums = 22e0d7940e62c538ccdd75f75dca0acf
+
+pkgname = zotero-xpdf
+
