@@ -2,7 +2,7 @@
 # URL: https://github.com/michaelbeaumont/aur-packages
 
 pkgname=sops
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc='Editor of encrypted files that supports YAML, JSON and BINARY formats'
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('MPL2')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('fee1c27f14f9f45b5955627e301aafcc38973c9458b25f99ef241bdd0a3b082c')
+sha256sums=('bb6611eb70580ff74a258aa8b9713fdcb9a28de5a20ee716fe6b516608a60237')
 
 build() {
   cd "${pkgname}-${pkgver}"
