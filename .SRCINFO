@@ -1,6 +1,6 @@
 pkgbase = cobib
 	pkgdesc = Console Bibliography
-	pkgver = 2.3.3
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://gitlab.com/mrossinek/cobib
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = cobib
 	depends = python-requests
 	provides = cobib
 	conflicts = cobib
-	source = https://gitlab.com/mrossinek/cobib/-/archive/v2.3.3/cobib-v2.3.3.tar.gz
-	sha512sums = 1deaceb5317b7f1c89ca4eb5ba6a3c844959c457ea082c3f4cebac2104423327d435d5126f7e1699291d9d80330e9f960e8cde87a0754dc67d261531724876d4
+	source = https://gitlab.com/mrossinek/cobib/-/archive/v2.3.4/cobib-v2.3.4.tar.gz
+	sha512sums = 528863147acb722b4b63a0ad2296fae8cc29f9ce63c91d037964c5ca2bbec57b541782599d80dfea58f4fb5f49d7e39c53e4ad346622d25764cfe26632b2f861
 
 pkgname = cobib
 
