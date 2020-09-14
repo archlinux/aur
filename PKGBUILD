@@ -1,12 +1,12 @@
 # Maintainer: Oscar Shrimpton <oscar.shrimpton.personal@gmail.com>
 pkgname=autopsy
 pkgver=4.16.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Digital forensics platform and graphical interface to The Sleuth Kit® and other digital forensic tools'
 arch=(x86_64)
 url='http://www.sleuthkit.org/autopsy/'
 license=('Apache-2.0')
-_skver=4.9.0
+_skver=4.10.0
 depends=(java-runtime=8 testdisk sleuthkit 'sleuthkit-java=4.10.0' java8-openjfx)
 makedepends=()
 optdepends=('opencv: media files (64-bit)'
