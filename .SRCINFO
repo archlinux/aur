@@ -1,0 +1,12 @@
+pkgbase = totp
+	pkgdesc = A tiny command line utility to generate OTP tokens
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/angt/totp
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	source = git+https://github.com/angt/totp#tag=v0.1
+	md5sums = SKIP
+
+pkgname = totp
