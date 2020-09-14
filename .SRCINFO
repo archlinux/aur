@@ -17,6 +17,10 @@ pkgbase = manim-git
 	optdepends = texlive-latexextra: latex support
 	optdepends = texlive-bibtexextra: latex support
 	optdepends = tllocalmgr-git: latex support
+	conflicts = manim
+	conflicts = python-manimlib
+	replaces = manim
+	replaces = python-manimlib
 	source = manim::git://github.com/3b1b/manim.git
 	md5sums = SKIP
 
