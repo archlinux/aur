@@ -1,13 +1,15 @@
 pkgbase = srb2kart-data
 	pkgdesc = Data files for Sonic Robo Blast 2 Kart
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://mb.srb2.org/showthread.php?t=43708
 	arch = any
 	license = custom
+	makedepends = p7zip
 	optdepends = srb2kart: "Sonic Robo Blast 2 Kart" game
-	source = https://github.com/STJr/Kart-Public/releases/download/v1.2/srb2kart-v12-Installer.exe
-	sha256sums = 57284de43a2889c0a60ce8fee77df22095fcd31beef6130cbeed1ead0bebbfec
+	noextract = srb2kart-v${pkgver//./}-Installer.exe
+	source = https://github.com/STJr/Kart-Public/releases/download/v1.3/srb2kart-v13-Installer.exe
+	sha256sums = 95422bc16c58c50cdde8a5860e2d4238c1581f6c831a0e22fe40582b6cc8c2fd
 
 pkgname = srb2kart-data
 
