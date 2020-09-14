@@ -21,7 +21,7 @@ optdepends=('texlive-bin: latex support'
             'tllocalmgr-git: latex support')
 conflicts=('manim' 'python-manimlib')
 replaces=('manim' 'python-manimlib')
-source=('manim::git://github.com/3b1b/manim.git')
+source=('manim::git+https//github.com/3b1b/manim.git')
 md5sums=('SKIP')
 
 pkgver() {
