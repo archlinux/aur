@@ -1,4 +1,5 @@
 # Maintainer: Kevin Andriessens <kevin@kelaun.be>
+# Contributor: layday <layday@protonmail.com>
 pkgname='instawow'
 pkgver='1.14.1'
 pkgrel=6
