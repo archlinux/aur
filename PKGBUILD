@@ -3,7 +3,7 @@
 
 set -u
 pkgbase="linux-lts414"
-pkgver="4.14.196"
+pkgver="4.14.198"
 _srcname="linux-${pkgver%.*}"
 pkgrel='1'
 arch=('x86_64')
@@ -36,7 +36,7 @@ validpgpkeys=(
 )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 md5sums=('bacdb9ffdcd922aa069a5e1520160e24'
-         '8bdc35ada2af6a36f303c1b220815791'
+         '5588d727ddbbb4bc9bf994e1f72cc24a'
          'fb91c98c2a4accbe3f606085fbec5568'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          'a85bfae59eb537b973c388ffadb281ff'
@@ -45,7 +45,7 @@ md5sums=('bacdb9ffdcd922aa069a5e1520160e24'
          '95204750f94a5f6d2d19e021736265d5'
          'f7d76cdef5cf4ac6a49115fc4f1f35d5')
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
-            'e96d4ec638583223254ddfa5b439a5caa304ee54b3b0d6f626d9437c5a0e3665'
+            '167352cc4b8fa11efe94d54599d4009e29da2d5f9673dfccdfd77f30b116b6e7'
             'c5501b3f9d33681f99eccb79740e9192b477bbf798a9a1f80b1f72c6bb006dcd'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
