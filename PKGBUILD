@@ -7,7 +7,6 @@ arch=(any)
 url="https://github.com/alexander-akhmetov/python-telegram"
 license=('MIT')
 depends=('python3')
-makedepends=()
 conflicts=('python-telegram-bot')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alexander-akhmetov/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('ebf3e34648e21da96e6470474e0fd7eb')
