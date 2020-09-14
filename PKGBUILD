@@ -2,8 +2,8 @@
 
 pkgname=mympd
 _pkgname=myMPD
-pkgver=6.5.0
-pkgrel=2
+pkgver=6.6.2
+pkgrel=1
 pkgdesc="A standalone and lightweight MPD web client."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/jcorporation/myMPD"
