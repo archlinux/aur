@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 provides=('python2-catkin-lint')
 conflicts=('python-catkin_lint' 'python2-catkin-lint')
 source=("https://github.com/fkie/catkin_lint/archive/${pkgver}.tar.gz")
-sha256sums=('c9cf4908bf0a9822153d44058ebf1c7359305335ad09ebdc6632818dd9632c7e')
+sha256sums=('2e52f2f7577f43f0663e9813ec6eacbb0893ee0c8d8f8671adffc32f1d2b346c')
 
 _module='catkin_lint'
 
