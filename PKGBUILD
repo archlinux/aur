@@ -1,5 +1,5 @@
 pkgname=mingw-w64-qt6-base-git
-pkgver=5.15.0.r5379.g1abea5f5f1
+pkgver=5.15.0.r5420.g6718dea390
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
@@ -43,13 +43,6 @@ build() {
       -DQT_HOST_PATH=/usr \
       -DFEATURE_pkg_config=ON \
       -DFEATURE_system_harfbuzz=ON \
-      -DINSTALL_BINDIR=lib/qt6/bin \
-      -DINSTALL_DOCDIR=share/doc/qt6 \
-      -DINSTALL_ARCHDATADIR=lib/qt6 \
-      -DINSTALL_DATADIR=share/qt6 \
-      -DINSTALL_INCLUDEDIR=include/qt6 \
-      -DINSTALL_MKSPECSDIR=lib/qt6/mkspecs \
-      -DINSTALL_EXAMPLESDIR=share/doc/qt6/examples \
       ..
     make
     popd
@@ -60,7 +53,6 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir/qtbase/build-${_arch}"
     make install DESTDIR="$pkgdir"
-    rm "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
