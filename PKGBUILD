@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-pyrsistent
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="Persistent/Functional/Immutable data structures"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-hypothesis')
 source=("https://pypi.io/packages/source/p/pyrsistent/pyrsistent-$pkgver.tar.gz"
         LICENCE.mit)
-sha512sums=('e67e59880db755b3e71a9d1a48009b4e22e42bc43093628f2f1e8181438826b8af6d561836f20380f85eee59d405fb27410a36052bd0f400faab1e12f48d8e2d'
+sha512sums=('58b78457481b188b65bfbe29da1318128795732b8c98ff89b1bdec1741d821807ae120000ae79115b2c4881f328dd8853e7ae48b0406e0e7fc69fca3c41fcd6f'
             '036bd5cc2a62b004576ecc50a84dc7d187d8108f52cb886f7e32bed324327af2dc132100e1c8f1dd2ce35b774f74898020f04a315e5137319deda18a449e791a')
 
 prepare() {
