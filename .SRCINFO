@@ -1,0 +1,16 @@
+pkgbase = arp-scan-git
+	pkgdesc = The ARP Scanner
+	pkgver = r304.af905ce
+	pkgrel = 1
+	url = https://github.com/royhills/arp-scan
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libpcap
+	optdepends = perl: scripting support
+	source = git+https://github.com/royhills/arp-scan
+	sha256sums = SKIP
+
+pkgname = arp-scan-git
+
