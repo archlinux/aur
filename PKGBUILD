@@ -33,9 +33,7 @@ package(){
   mkdir -p "$pkgdir/usr/bin"
   cd "$srcdir/build/"
   install -D -m755 ./devault* "$pkgdir/usr/bin/"
-#  install -D -m755 ./DeVault-Core "$pkgdir/usr/bin/"
   cd "$srcdir/${_pkgname}"
-#  sed -i 's/devault-qt/DeVault-Core/g' contrib/debian/devault-qt.desktop
   install -D -m644 \
    contrib/debian/devault-qt.desktop \
    "${pkgdir}/usr/share/applications/DeVault-Core.desktop"
