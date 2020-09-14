@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttc-iosevka-curly
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://typeof.net/Iosevka/'
 license=('OFL')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/ttc-iosevka-curly-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
-sha256sums=('bf6114aa3edd8513e45404aaab4850299e0abc4d72d97cd776aadd168be2d78c'
+sha256sums=('4b2319c4b0d94dba46da4fa18eaaf41988d80e21cb8be160d96838e7b8f51085'
             'e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9')
 
 package() {
