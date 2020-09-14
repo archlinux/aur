@@ -1,14 +1,14 @@
 pkgbase = passwall-server-git
 	pkgdesc = Core backend infrastructure of the PassWall platform (git)
-	pkgver = 1.1.2.r5.g11d7778
+	pkgver = 1.1.2.r8.ga5bd93b
 	pkgrel = 1
 	url = https://github.com/passwall/passwall-server
 	arch = x86_64
 	license = AGPL3
+	makedepends = git
 	makedepends = go
-	depends = git
-	conflicts = passwall-server-git
-	conflicts = passwall-server-git-git
+	conflicts = passwall-server
+	conflicts = passwall-server-bin
 	source = git+https://github.com/passwall/passwall-server
 	sha256sums = SKIP
 

@@ -3,14 +3,13 @@
 
 pkgname=passwall-server-git
 pkgdesc="Core backend infrastructure of the PassWall platform (git)"
-pkgver=1.1.2.r5.g11d7778
+pkgver=1.1.2.r8.ga5bd93b
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/passwall/passwall-server"
 license=('AGPL3')
-depends=('git')
-makedepends=('go')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+makedepends=('git' 'go')
+conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 source=("git+$url")
 sha256sums=('SKIP')
 
@@ -32,4 +31,5 @@ build() {
 package() {
   cd "$srcdir/${pkgname%-git}/cmd/${pkgname%-git}"
   install -Dm 755 "${pkgname%-git}" "$pkgdir/usr/local/bin/${pkgname%-git}"
+  install -Dm 644 "../../README.md" -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
