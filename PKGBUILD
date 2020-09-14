@@ -3,15 +3,15 @@
 
 pkgname=unified-remote-server
 pkgver=3.8.0.2451
-pkgrel=1
+pkgrel=2
 pkgdesc="Unified Remote Server"
 arch=('x86_64')
 url="http://www.unifiedremote.com/"
 depends=('glibc' 'gcc-libs')
 license=('freeware')
 install=$pkgname.install
-source=("https://www.unifiedremote.com/download/linux-x64-deb" "urserver.service")
-sha256sums=('SKIP' '2a2a6118aa028a4ca38638845d1b8d408d57332f3b88c02ff00d5c7f5321428a' )
+source=("https://www.unifiedremote.com/static/builds/server/linux-x64/2451/urserver-3.8.0.2451.deb" "urserver.service")
+sha256sums=('628cf4f89f8551aaca790ab59f1d7787d14191b5c318615534b7208c546e3ae2' '2a2a6118aa028a4ca38638845d1b8d408d57332f3b88c02ff00d5c7f5321428a' )
 
 package() {
 	cd ${srcdir}
