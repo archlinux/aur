@@ -9,6 +9,7 @@ url="https://n3pdf.github.io/pineappl/"
 license=('GPL3')
 depends=("cargo-c"
          "rust"
+         "python-pkgconfig"
          )
 optdepends=()
 provides=("pineappl")
@@ -33,7 +34,7 @@ package() {
     cargo cinstall --release --prefix=${pkgdir}/usr
     cd ..
     # Now install the command-line program
-    cargo install --path pineappl_cli
+    cargo install --path pineappl_cli --root=${pkgdir}/usr
     # And the python wrapper
     cd wrappers/python
     python setup.py install --root="${pkgdir}" --optimize=2 --skip-build
