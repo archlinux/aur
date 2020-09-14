@@ -1,0 +1,18 @@
+pkgbase = fclones-git
+	pkgdesc = Efficient Duplicate File Finder
+	pkgver = v0.8.0
+	pkgrel = 1
+	url = https://github.com/pkolaczk/fclones
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = fclones
+	conflicts = fclones
+	source = git+https://github.com/pkolaczk/fclones
+	md5sums = SKIP
+
+pkgname = fclones-git
+
