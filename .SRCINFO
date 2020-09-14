@@ -1,6 +1,6 @@
 pkgbase = python-aiologger
 	pkgdesc = Asynchronous logging for python and asyncio
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/b2wdigital/aiologger
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = python-aiologger
 	makedepends = python-setuptools
 	depends = python
 	optdepends = python-aiofiles
-	source = python-aiologger-0.5.0::https://github.com/b2wdigital/aiologger/archive/0.5.0.tar.gz
-	sha256sums = 1f45179b36e8e9bd82223046520e827f65c93c0f541c3ca85d6ee6279d54496a
+	source = python-aiologger-0.5.1::https://github.com/b2wdigital/aiologger/archive/0.5.1.tar.gz
+	sha256sums = c1cea0e9a9b553918d19d939ce1fd4fb6c596faa14a6593c13efc31d099d33bc
 
 pkgname = python-aiologger
 
