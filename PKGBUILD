@@ -7,12 +7,12 @@
 pkgname=fprintd-libfprint2
 _pkgname=fprintd
 pkgver=1.90.1+91+g4e47222
-pkgrel=1
+pkgrel=2
 pkgdesc="D-Bus service to access fingerprint readers"
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/fprint/fprintd"
 license=(GPL)
-depends=(dbus dbus-glib glib2 'libfprint>=1.90.1' libfprint-2.so=2 libsystemd 'polkit>=0.91')
+depends=(dbus dbus-glib glib2 'libfprint>=1.90.1' libsystemd 'polkit>=0.91')
 optdepends=('pam: to use the fprintd pam plugin')
 provides=(fprintd)
 conflicts=(fprintd)
