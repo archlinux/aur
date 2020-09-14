@@ -10,23 +10,24 @@ arch=('x86_64')
 url="https://github.com/passwall/passwall-desktop"
 license=('unknown')
 depends=('git')
-makedepends=('yarn')
-source=("git+$url")
-sha256sums=('SKIP')
+makedepends=('yarn' 'npm')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('0af5a51e336cf10c07f2d8d351c92d4c435dabbfb698ea49fbf7186e959af397')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname-$pkgver"
   yarn && yarn run build
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname-$pkgver"
 
   # Install resources and binary
   install -dm 755 "$pkgdir/usr/share/$pkgname"
   cp -r build/linux-unpacked/* "$pkgdir/usr/share/$pkgname"
   install -dm 755 "$pkgdir/usr/local/bin"
   ln -s "/usr/share/$pkgname/$_pkgname" "$pkgdir/usr/local/bin/$_pkgname"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 
   # Install pixmaps and fonts
   install -dm 755 "$pkgdir/usr/share/pixmaps"

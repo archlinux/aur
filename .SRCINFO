@@ -6,9 +6,10 @@ pkgbase = passwall-desktop
 	arch = x86_64
 	license = unknown
 	makedepends = yarn
+	makedepends = npm
 	depends = git
-	source = git+https://github.com/passwall/passwall-desktop
-	sha256sums = SKIP
+	source = passwall-desktop-0.1.3.tar.gz::https://github.com/passwall/passwall-desktop/archive/v0.1.3.tar.gz
+	sha256sums = 0af5a51e336cf10c07f2d8d351c92d4c435dabbfb698ea49fbf7186e959af397
 
 pkgname = passwall-desktop
 
