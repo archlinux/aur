@@ -9,6 +9,7 @@ license=('MIT')
 depends=('python3')
 makedepends=()
 source=("https://github.com/alexander-akhmetov/$pkgname/archive/$pkgver.tar.gz")
+conflicts=('python-telegram-bot')
 md5sums=('ebf3e34648e21da96e6470474e0fd7eb')
 
 build() {
