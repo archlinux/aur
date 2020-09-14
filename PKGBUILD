@@ -2,7 +2,7 @@
 # Maintainer: peippo <christoph.fink@gmail.com>
 pkgname=postgis-git
 pkgver=3.1.0alpha1.r7.gabc6fd77a
-pkgrel=3
+pkgrel=4
 
 pkgdesc="Postgres GIS extensions (from git)"
 url="https://postgis.net/"
@@ -10,7 +10,7 @@ license=('GPL')
 
 arch=('i686' 'x86_64')
 depends=('postgresql' 'gdal' 'geos' 'json-c' 'libxml2' 'libxslt')
-makedepends=('git' 'llvm')
+makedepends=('clang' 'git' 'llvm')
 
 conflicts=('postgis')
 provides=('postgis')

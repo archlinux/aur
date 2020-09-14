@@ -1,11 +1,12 @@
 pkgbase = postgis-git
 	pkgdesc = Postgres GIS extensions (from git)
 	pkgver = 3.1.0alpha1.r7.gabc6fd77a
-	pkgrel = 3
+	pkgrel = 4
 	url = https://postgis.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = clang
 	makedepends = git
 	makedepends = llvm
 	depends = postgresql
