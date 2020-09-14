@@ -1,7 +1,7 @@
 # Maintainer: Pest <ppest@protonmail.com> caus o chngs I tmp use cmake
 _pkgname=devault
 pkgname="${_pkgname}core-git"
-pkgver=r16858.3203770a4
+pkgver=r17054.5756dc49e
 pkgrel=1
 pkgdesc="QT Desktop wallet for the dvt blockchain"
 arch=('x86_64')
@@ -33,9 +33,7 @@ package(){
   mkdir -p "$pkgdir/usr/bin"
   cd "$srcdir/build/"
   install -D -m755 ./devault* "$pkgdir/usr/bin/"
-  install -D -m755 ./DeVault-Core "$pkgdir/usr/bin/"
   cd "$srcdir/${_pkgname}"
-  sed -i 's/devault-qt/DeVault-Core/g' contrib/debian/devault-qt.desktop
   install -D -m644 \
    contrib/debian/devault-qt.desktop \
    "${pkgdir}/usr/share/applications/DeVault-Core.desktop"
