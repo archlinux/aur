@@ -6,21 +6,16 @@
 #Contributor: onny <onny@project-insanity.org>
 
 pkgname=wfuzz
-pkgver=2.4.5
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="Utility to bruteforce web applications to find their not linked resources"
 url="https://github.com/xmendez/wfuzz"
 arch=('any')
 license=('GPL')
-depends=('python-pycurl' 'python-pyparsing' 'python-future')
+depends=('python-pycurl' 'python-pyparsing' 'python-future' 'python-chardet' 'python-six')
 makedepends=('python-setuptools' 'python-sphinx')
 source=("https://github.com/xmendez/wfuzz/archive/v$pkgver.tar.gz")
-sha256sums=('7d900083b21e12352ad021bf7ea2f1925af9555ad242f83ed9b77b1cf4a25d62')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i "23 c   'pycurl<7.43.1'," setup.py
-}
+sha256sums=('55ac415c66db05f1f0504e35426caa52b0322c6a87c7c529a84a9c8d061426fd')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/docs"
@@ -29,16 +24,16 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
-  install -Dt "$pkgdir/usr/share/man/man1" docs/_build/man/*.1
-  install -Dt "$pkgdir/usr/share/doc/${pkgname}" -m644 README.md
-  cp -prt "$pkgdir/usr/share/doc/${pkgname}" docs/_build/html
+    install -Dt "$pkgdir/usr/share/man/man1" docs/_build/man/*.1
+    install -Dt "$pkgdir/usr/share/doc/${pkgname}" -m644 README.md
+    cp -prt "$pkgdir/usr/share/doc/${pkgname}" docs/_build/html
 
-  install -dm755 "$pkgdir/usr/share/${pkgname}/wordlists"
-  cp -prt "$pkgdir/usr/share/${pkgname}/wordlists" wordlist/*
+    install -dm755 "$pkgdir/usr/share/${pkgname}/wordlists"
+    cp -prt "$pkgdir/usr/share/${pkgname}/wordlists" wordlist/*
 
-  install -Dm644 *_bash_completion "$pkgdir/etc/bash_completion.d/${pkgname}"
+    install -Dm644 *_bash_completion "$pkgdir/etc/bash_completion.d/${pkgname}"
 
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 }
