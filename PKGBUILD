@@ -7,14 +7,14 @@
 ### MERGE REQUESTS SELECTION
 
 # available MR: ('536' '786' '923')
-_merge_requests_to_use=() # safe pick
+_merge_requests_to_use=('536') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.36.5+2+g6b20eb8ee
+pkgver=3.36.6
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -32,7 +32,7 @@ groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
 install=$pkgname.install
-_commit=6b20eb8eea73eb814f142922a5fbadf827b466ee # tags/3.36.5^2
+_commit=682d4588bc6b2c1826013f98c52cc0b5afccea29  # tags/3.36.6^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
 	"1126.diff")
@@ -117,8 +117,7 @@ prepare() {
     if [ "536" = "$mr" ]; then
       echo "Downloading then Merging 536..."
       curl -O "https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/536.diff"
-      patch -Np1 -i 536.diff || true
-      patch -Np1 -i ../../536-2.diff # dirty fix
+      patch -Np1 -i 536.diff
       break
     fi
   done
