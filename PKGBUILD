@@ -8,6 +8,7 @@ pkgdesc="Dhall to JSON compiler and a Dhall to YAML compiler"
 arch=('x86_64')
 url='https://github.com/dhall-lang/dhall-haskell'
 license=('BSD')
+conflicts=('dhall-json')
 
 _dhall_ver=1.35.0
 
