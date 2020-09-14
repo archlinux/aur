@@ -4,8 +4,8 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-pdf-mupdf
-pkgver=0.3.5
-pkgrel=3
+pkgver=0.3.6
+pkgrel=1
 
 pkgdesc="PDF support for Zathura (MuPDF backend) (Supports PDF, ePub, and OpenXPS)"
 url="https://pwmt.org/projects/zathura-pdf-mupdf/"
@@ -19,7 +19,7 @@ makedepends=('libmupdf' 'meson' 'ninja' 'git')
 
 source=(zathura-pdf-mupdf-$pkgver.tar.gz::https://github.com/pwmt/zathura-pdf-mupdf/archive/$pkgver.tar.gz)
 
-sha1sums=('c6131613568885ffdfceb45c4d629aebf4ed60be')
+sha1sums=('ece4731ee5744433b47d403e03eea89e67906c4f')
 
 build() {
   cd zathura-pdf-mupdf-$pkgver
