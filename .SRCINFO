@@ -1,6 +1,6 @@
 pkgbase = workspaces
 	pkgdesc = Configure and quickly launch all you need to work on a project
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/DevAlien/workspaces
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = workspaces
 	makedepends = meson
 	makedepends = vala
 	depends = granite
-	source = workspaces-3.0.0.tar.gz::https://github.com/DevAlien/workspaces/archive/3.0.0.tar.gz
-	sha256sums = 7cb9f5ab61e09301486c6b0acedf63593e23d7d507b893e26904238bff7ed270
+	source = workspaces-3.1.0.tar.gz::https://github.com/DevAlien/workspaces/archive/3.1.0.tar.gz
+	sha256sums = 296b3cc0f4740a220b5d6b4273e99e8fffde65ba4e6c840a3954ad355ba6c003
 
 pkgname = workspaces
 
