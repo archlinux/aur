@@ -1,9 +1,10 @@
 # Maintainer: Cullen Ross <cullenrss@gmail.com>
+# Maintainer: Max Rossmannek <max.rossmannek@uzh.ch>
 
 _pkgname='cobib'
 pkgname="${_pkgname}-git"
 pkgver=r257.9440104
-pkgrel=2
+pkgrel=3
 arch=('any')
 depends=('python' 'python-bibtexparser' 'python-beautifulsoup4' 'python-ruamel-yaml' 'python-pylatexenc' 'python-requests')
 license=('MIT')
@@ -27,7 +28,7 @@ build() {
 
 package() {
   cd $srcdir/${_pkgname}
-  make install_extras
+  make DESTDIR="${pkgdir}" install_extras
   python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
