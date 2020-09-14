@@ -83,7 +83,7 @@ post_remove() {
 	echo
 	echo 'REMEMBER: Your `htdocs` folder was backed up to `/opt/htdocs-backups`.'
 	echo
-	echo 'If you don'\''t need it, launch'
+	echo 'If you don'\''t need them, launch'
 	echo
 	echo '    sudo rm -rf /opt/htdocs-backups'
 	echo
