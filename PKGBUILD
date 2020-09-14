@@ -1,7 +1,7 @@
 # Maintainer: Nazar Vinnichuk <nazar.vinnichuk at tutanota dot com>
 pkgname=pacwall-git
 _pkgname=${pkgname%-git}
-pkgver=2.0rc1
+pkgver=2.0rc2
 pkgrel=1
 pkgdesc="A live wallpaper that shows the dependency graph and status of installed packages."
 url="http://github.com/Kharacternyk/${_pkgname}"
@@ -29,7 +29,7 @@ package() {
     install -Dm755 src/pacwall "$pkgdir/usr/bin/pacwall"
 
     install -Dm644 /dev/null "$pkgdir/var/lib/pacwall/systemd/trigger"
-    install -Dm644 pacman/90-pacwall.hook "$pkgdir/usr/share/libalpm/hooks/90-pacwall.hook"
+    install -Dm644 pacman/10-pacwall.hook "$pkgdir/usr/share/libalpm/hooks/10-pacwall.hook"
     install -Dm644 README.rst "$pkgdir/usr/share/doc/pacwall/README.rst"
 
     cd scripts/
