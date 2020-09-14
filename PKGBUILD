@@ -3,7 +3,7 @@
 
 pkgname=gurobi
 pkgver=9.0.3
-pkgrel=0
+pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
 url="https://www.gurobi.com/products/gurobi-optimizer"
@@ -20,9 +20,9 @@ source=(
   "gurobi.sh"
   "gurobi_setup.m"
 )
-sha256sums=('ba6db703ab0c4a815a0f46b314d86dd1bb28ba13b41d4b2f4ec5844171bcce47'
-            '30d535f7100627195dbe8d1c9a5ce603ed645b93eb8869984eb8a15e8db6d1c8'
-            'fd328dc00b276258e7828b301c93574f9aa8e6f143caf5428a648851a6ecf93c')
+md5sums=('832040cce622ba7f267e26645fcd200d'
+         '1f34712dbc8df686d987b6bf129811fd'
+         'e0b5a5d7bf4ba8b7b38beea44affabdf')
 
 prepare() {
   cd "$srcdir/${pkgname}${pkgver//./}/linux64/"
