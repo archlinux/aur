@@ -1,6 +1,6 @@
 pkgbase = anycable-go
 	pkgdesc = AnyCable WebSocket Server written in Go
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = http://anycable.io
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = anycable-go
 	license = MIT
 	makedepends = go
 	makedepends = rsync
-	source = https://github.com/anycable/anycable-go/archive/v1.0.1.tar.gz
-	sha256sums = 49de18d6a3cb8c15553e3dda345ecc51ab1ce2b6868f5b200f5d876a505da627
+	source = https://github.com/anycable/anycable-go/archive/v1.0.2.tar.gz
+	sha256sums = bf2304768b1ca032d4413c567bfb7e445650c491b0d8471fb4cc78d4746287ef
 
 pkgname = anycable-go
 
