@@ -13,7 +13,7 @@ makedepends=('cmake' 'gcc' 'git')
 md5sums=('SKIP')
 
 source=(
-    "git+https://github.com/ethereum/evmone.git#tag=v$pkgver"
+	"git+https://github.com/ethereum/evmone.git#tag=v$pkgver"
 )
 
 build ()
