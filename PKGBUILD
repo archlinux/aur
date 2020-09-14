@@ -1,8 +1,8 @@
 # Maintainer: muttleyxd <mateusz [at] szychowski.it>
-_gittag=master-5b56bb49
+_gittag=master-22538c65
 pkgname=clang-format-static-bin
-pkgver=3.5b56bb49
-pkgrel=4
+pkgver=4.22538c5
+pkgrel=1
 pkgdesc="clang-format x86_64 static binaries (3.9, 4, 5, 6, 7, 8, 9, 10)"
 arch=('x86_64')
 url="https://github.com/muttleyxd/clang-format-static-binaries"
@@ -22,14 +22,14 @@ source=("archlinux-clang-format"
         "https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/LICENSE.TXT.clang-8-and-lower"
         "https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/LICENSE.TXT.clang-9-and-higher")
 sha256sums=('cba2926c0b1983332ef1db7921714f3f6f5f8acb46532319ef566919f141cfa8'
-            '0127f653a16191aa1cc41f4ea79d7014141ecfcda1c85091bdccb750703d5dda'
-            '86a0582ff8ea3b1f471df98d93093fd4b5e717f9188d67bd09c4cee3a4412a53'
-            'da2c9fa70fb1e9a4fafa74b20291f0772578378e8d2a4ca6fbf5e88c63ebde2a'
-            'b5a00c0d16d49955e223240df0215474aeeef7ce15f4e2c1cab77f34fa71821e'
-            '3c9dadba9929af5bdd21c0db743ea0a600cd59ab089b48aab4a435ff601e05dc'
-            'f0ed013b4a5b404c45ab89c0c434e84a824b8ba0880c28cce11ebc79cd974cfb'
-            'bcea4e9aa5088db7778e1d5ece6fd14c75648dfbd725568524942d46ed18da54'
-            'e4268dfe6aae8c160791af86eed0cd04e737b5dc0a47c71291f3a9a28e4fd574'
+            '74aa2f6b1656d902e1036c54b75c0faed8d8f41f73cb7290524fc19c1389c9d6'
+            '2324e49614ed84859771692dfeff305cf22135cd3144056246b776d813898e78'
+            '7f2d43c263e62e2c52162c3e274d607349b9492ade8e16e338f19f5f1f74ea55'
+            '00a5da6cb1a2d011cb353cf8157a6d14e0a7a113996a86e32fa83141a583c27e'
+            'eaef02e7e2505a186ac4e1a6066a41c129351c532a25a80f6f47c4b5eb80dca1'
+            '892e43c8efbc0f2587655c9c8d450979a3864630bbc4871cc44ed8e4b0e80d68'
+            '35c9250ccbce1c1d39f2917faef45003e06391be8d631006bcf3f9e2aa59fd6d'
+            '974b20a021fe1a9758b525eace834325ad50aa828f842dbbc620a516ae33fb9e'
             '2050acfe8b8d5ae1ef971b6ab419cd9f46e3f2d779a09966105622b3112600d9'
             'ebcd9bbf783a73d05c53ba4d586b8d5813dcdf3bbec50265860ccc885e606f47')
 
