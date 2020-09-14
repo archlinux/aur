@@ -1,0 +1,25 @@
+pkgbase = udptunnel-lennox
+	pkgdesc = Tunnel UDP packets over a TCP connection.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://web.archive.org/web/20200308053857/http://www.cs.columbia.edu/~lennox/udptunnel/
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = x86_64
+	license = BSD
+	makedepends = gcc
+	provides = udptunnel
+	conflicts = udptunnel
+	source = https://web.archive.org/web/20200308053857/http://www.cs.columbia.edu/~lennox/udptunnel/udptunnel-1.1.tar.gz
+	source = 01-multicast.diff
+	source = 02-strlen-prototype.diff
+	source = udptunnel.1
+	sha256sums = a3ceeadc80d5a43a4a93dc068189ccf7a59b9f3bd6d79e0aaa54d75ae1605f26
+	sha256sums = e69f8bf85e5650bea7552e5e4f208556913f157deb830c1d97fe9657fb312ab5
+	sha256sums = 2a6aefd5f0fe1c44bd5cb2a2fb20de4170ef80a4a440119d2f5bf0e5960c3bb8
+	sha256sums = 1bd6dac75ddb2df646761ef493e26db4ef76ad0dc3381f04d0b6cffeeafaa5cb
+
+pkgname = udptunnel-lennox
+

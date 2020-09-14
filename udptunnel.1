@@ -1,0 +1,48 @@
+.TH "UDPTunnel" "1" "1.1" "Jonathan Lennox" "net"
+.SH "NAME"
+.LP
+udptunnel \- Tunnel UDP packets over a TCP connection
+.SH "SYNTAX"
+.LP
+udptunnel \-s TCP\-port [\-r] [\-v] UDP\-addr/UDP\-port[/ttl]
+.br
+udptunnel \-c TCP\-addr[/TCP\-port] [\-r] [\-v] UDP\-addr/UDP\-port[/ttl]
+.SH "DESCRIPTION"
+.LP
+UDPTunnel is a small program which can tunnel UDP packets bi\-directionally over a TCP connection. Its primary purpose (and original motivation) is to allow multi\-media conferences to traverse a firewall which allows only outgoing TCP connections.
+.SH "USAGE"
+UDPTunnel can be run in two modes: a client mode and a server mode. The client mode initiates the TCP connection before relaying UDP; the server waits for an incoming connection before doing so. After the TCP connection is established, the behavior of the two modes is identical. If you are using UDPTunnel to traverse a firewall as discussed above, the client would be run inside the firewall, and the server would be run outside it.
+.SH "OPTIONS"
+.IP "\fB\-s\fR TCP\-port"
+.I "\fBServer mode:\fR
+If udptunnel is invoked with the \-s option, it runs in server mode: the server will wait for an incoming connection on the specified TCP port, and then relay UDP to and from it."
+.IP "\fB\-c\fR TCP\-addr[/TCP\-port]"
+.I "\fBClient mode:\fR If udptunnel is invoked with the \-c option, it runs in client mode: it will open a TCP connection to the specified TCP host and port, and then relay UDP on it. The TCP port may be omitted in this case; it will default to the same port number as the UDP port."
+.IP "\fB\-r\fR"
+.I "\fBRTP mode:\fR In order to facilitate tunneling both RTP and RTCP traffic for a multi\-media conference, this sets up relays on two consecutive TCP and UDP ports. All specified port numbers in this case must be even. Note that both the client and the server must use the \-r flag for this to work; the server will not begin relaying packets until both its connections have been established."
+.IP "\fB\-v\fR"
+.I "\fBVerbose output:\fR This flag turns on verbose debugging output about UDPTunnel's actions. It may be given multiple times. With a single \-v, information about connection establishment is printed on UDPTunnel's standard error stream; with a second one, per\-packet information is also shown. Note that this latter case can produce a prodigious amount of information. If this flag is not given, UDPTunnel will remain silent unless an error occurs."
+.LP
+One of the two options \-c and \-s must be given; if not, it is an error.
+.LP
+In all cases, the UDP address and port to tunnel is given after all options. UDPTunnel will listen to this adddress for packets, and will send received packets on this address. The address may be a multicast address; in this case, a multicast TTL should be specified, and tunneled packets will be sent with this TTL. All addresses, TCP and UDP, may be specified either as an IPv4 dotted\-quad address (e.g. 224.2.0.1) or as a host name (e.g. conrail.cs.columbia.edu). Port numbers must be in the range of 1 to 65535; TTLs must be in the range 0 to 255.
+.SH "PACKET FORMAT"
+The packets are sent on TCP using the obvious, simple format: a sixteen\-bit length field, in network byte order, precedes each data packet. This format was proposed in early drafts of RTP for RTP\-over\-TCP, but was dropped from the final specification.
+.SH "KNOWN BUGS/ISSUES"
+UDPTunnel does not check incoming UDP packets to verify that they are indeed coming from the address which the user specified; it binds to INADDR_ANY, and accepts any UDP packet arriving on the specified port. This could potentially allow denial\-of\-service or spoofing attacks. If two or more \-v options are given, per\-packet identification will be printed of each packet's source address as it is received, allowing such a situation to be diagnosed.
+
+For multicast, UDPTunnel turns off packet loopback, as it has no way to distinguish its own packets it sent out from packets genuinely arriving on the multicast group. This means that if you are tunneling traffic from or to a multicast group, both ends of UDPTunnel must be run on different hosts than any member of the group. (In general, the only way to distinguish looped packets from packets genuinely received from other applications on the local host is with application\-layer labeling, as RTP does.)
+
+UDPTunnel is designed to tunnel RTP\-style traffic, in which applications send and receive UDP packets to and from the same port (or pair of ports). It does not support request/response\-style traffic, in which a client request is sent from a transient port X to a well\-known port Y, and the server's response is returned from port Y to port X.
+
+UDPTunnel deliberately ignores "Connection Refused" errors on the UDP port, clearing the socket error state, so that a tunnel may be set up before conferencing tools are started on both ends. This may mean that a mis\-typed UDP address or port is not recognized, as no error is printed. If two or more \-v options are given, a diagnostic will be printed whenever the error state is cleared from the socket.
+
+Once one endpoint of a tunnel is taken down, closing the socket, the other one exits as well; to re\-establish the tunnel, UDPTunnel must be restarted on both sides.
+
+IP version 6 is not supported.
+.SH "AUTHORS"
+.LP
+UDPTunnel was written by Jonathan Lennox <lennox@cs.columbia.edu>. It incorporates code written by Henning Schulzrinne <hgs@cs.columbia.edu>.
+.LP
+This manual page was written by Thomas Scheffczyk <thomas.scheffczyk@verwaltung.uni\-mainz.de>,
+for the Debian GNU/Linux system (but may be used by others).
