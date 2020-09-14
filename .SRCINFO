@@ -1,0 +1,28 @@
+pkgbase = base-devel-selinux
+	pkgdesc = Meta package that substitutes base-devel group with SELinux support
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/tqre/selinux/tree/base-selinux
+	arch = any
+	groups = selinux
+	license = GPL
+	depends = base-selinux
+	depends = autoconf
+	depends = automake
+	depends = binutils
+	depends = bison
+	depends = fakeroot
+	depends = flex
+	depends = gcc
+	depends = groff
+	depends = libtool
+	depends = m4
+	depends = make
+	depends = patch
+	depends = pkgconf
+	depends = sudo-selinux
+	depends = texinfo
+	depends = which
+
+pkgname = base-devel-selinux
+
