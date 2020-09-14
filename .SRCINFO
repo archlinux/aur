@@ -1,0 +1,16 @@
+pkgbase = tmpmail-git
+	pkgdesc = A temporary email right from your terminal
+	pkgver = 2.g177dcc3
+	pkgrel = 1
+	url = https://github.com/sdushantha/tmpmail
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = w3m
+	depends = curl
+	depends = jq
+	source = tmpmail::git+https://github.com/sdushantha/tmpmail.git
+	md5sums = SKIP
+
+pkgname = tmpmail-git
+
