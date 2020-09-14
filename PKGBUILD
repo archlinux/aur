@@ -5,13 +5,13 @@
 
 _pkgname=gnuplot
 pkgname=$_pkgname-nogui
-pkgver=5.2.7
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="Plotting package which outputs to X11, files and others. Without wxgtk/qt."
 arch=("x86_64")
 url="http://www.gnuplot.info"
 license=("custom")
-depends=("cairo" "libjpeg" "lua" "gd" "gnutls" 'pango' "readline")
+depends=('cairo' 'libcerf' 'libjpeg' 'lua' 'gd' 'gnutls' 'pango' 'readline')
 makedepends=('emacs')
 optdepends=('texlive-core')
 provides=("gnuplot")
@@ -19,7 +19,7 @@ conflicts=("gnuplot" "gnuplot-nox")
 replaces=("gnuplot-notk")
 source=("http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz"
 	"lua53_compat.patch")
-sha256sums=('97fe503ff3b2e356fe2ae32203fc7fd2cf9cef1f46b60fe46dc501a228b9f4ed'
+sha256sums=('eb4082f03a399fd1e9e2b380cf7a4f785e77023d8dcc7e17570c1b5570a49c47'
             'bfd8a61abbf4491c74225cb9fd252619d4fc29751838bcb4c0639ffe05a00695')
 
 prepare() {
