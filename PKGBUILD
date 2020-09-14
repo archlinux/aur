@@ -21,9 +21,9 @@ build() {
 }
 
 package() {
-    cd $pkgname-$pkgver
-    
-    # install files
-    install -Dm644 bin/echowo "${pkgdir}/usr/bin/echowo"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd $pkgname-$pkgver
+  
+  # install files
+  install -Dm644 bin/echowo "${pkgdir}/usr/bin/echowo"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
