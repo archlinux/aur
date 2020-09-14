@@ -11,10 +11,8 @@ depends=('polkit')
 makedepends=('meson')
 checkdepends=('appstream')
 optdepends=('systemd')
-source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
-)
-sha256sums=('4fec5a0900e8f559b37cf1711ca7dcea7e1cebfe1237ce314001f65c1e346a5d'
-)
+source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('4fec5a0900e8f559b37cf1711ca7dcea7e1cebfe1237ce314001f65c1e346a5d')
 
 build() {
   meson "$pkgname-$pkgver" build \
