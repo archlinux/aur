@@ -1,4 +1,4 @@
-# Maintainer: Pest <ppest@protonmail.com> caus o chngs I tmp use cmake
+# Maintainer: Pest <pest@devault.cc>
 _pkgname=devault
 pkgname="${_pkgname}core-git"
 pkgver=r17054.5756dc49e
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
     cmake \
-	-B build -S devault" \
+	-B build -S devault \
         -DCMAKE_BUILD_TYPE='None' \
 	-DBUILD_CTESTS=0 \
         -Wno-dev
