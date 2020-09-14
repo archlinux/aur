@@ -12,7 +12,7 @@ pkgbase = basex
 	source = http://files.basex.org/releases/9.4.2/BaseX942.zip
 	source = basex.sh
 	source = BaseX.desktop
-	sha1sums = 9f69d51535f218a1024ed689a007692fdf12b4a3
+	sha1sums = 8149efe550ed078fb3a28b2c3bc377f7a85169da
 	sha1sums = b82c43d2f247d65b93b2f073543b8ceee038bfd1
 	sha1sums = 1f2e10e989258cc41e8d516efa80801038142358
 

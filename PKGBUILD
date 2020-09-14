@@ -14,7 +14,7 @@ depends=('java-runtime' 'bash')
 source=("http://files.basex.org/releases/${pkgver}/BaseX${pkgver//./}.zip" 
         "basex.sh" 
         "BaseX.desktop")
-sha1sums=('9f69d51535f218a1024ed689a007692fdf12b4a3'
+sha1sums=('8149efe550ed078fb3a28b2c3bc377f7a85169da'
           'b82c43d2f247d65b93b2f073543b8ceee038bfd1'
           '1f2e10e989258cc41e8d516efa80801038142358')
 
