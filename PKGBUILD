@@ -49,20 +49,19 @@ build() {
 	local RUSTC_VERSION=$(rustc --version)
 	local PRODUCT_VERSION=$(node -p "require('./gui/package.json').version" | \
 		sed -Ee 's/\.0//g')
+	source env.sh
 
 	echo "Building Mullvad VPN $PRODUCT_VERSION..."
 
 	# Compile wireguard-go
 	cd "$srcdir/mullvadvpn-app/wireguard/libwg"
 	mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
-	go build \
-		-trimpath \
-		-buildmode=pie \
-		-mod=readonly \
-		-modcacherw \
-		-ldflags "-extldflags \"${LDFLAGS}\"" \
-		-v -o "../../build/lib/$arch-unknown-linux-gnu"/libwg.a \
-		-buildmode c-archive
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go build -v -o "../../build/lib/$arch-unknown-linux-gnu"/libwg.a -buildmode c-archive
 
 	# Clean mod cache for makepkg -C
 	go clean -modcache
@@ -72,7 +71,7 @@ build() {
 	./version-metadata.sh inject $PRODUCT_VERSION
 
 	echo "Removing old Rust build artifacts"
-	cargo clean --locked
+	cargo clean
 
 	echo "Building Rust code in release mode using $RUSTC_VERSION..."
 
@@ -122,8 +121,8 @@ package() {
 	cd "$srcdir/mullvadvpn-app"
 
 	# Install main files
-	install -dm755 "$pkgdir/opt/Mullvad VPN"
-	cp -a dist/linux-unpacked/* "$pkgdir/opt/Mullvad VPN"
+	install -d "$pkgdir/opt/Mullvad VPN"
+	cp -r dist/linux-unpacked/* "$pkgdir/opt/Mullvad VPN"
 
 	# Install daemon service
 	install -Dm644 dist/linux-unpacked/resources/mullvad-daemon.service -t \
