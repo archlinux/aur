@@ -1,6 +1,6 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wpewebkit
-pkgver=2.28.4
+pkgver=2.30.0
 pkgrel=1
 pkgdesc='Web content engine library optimized for embedded devices'
 arch=(x86_64 i686 aarch64 armv7l armv7h)
@@ -9,14 +9,14 @@ license=(custom)
 groups=(wpe)
 depends=(cairo libxslt gst-plugins-base-libs libepoxy libsoup libwebp
          harfbuzz-icu woff2 openjpeg2 libseccomp bubblewrap xdg-dbus-proxy
-		 geoclue at-spi2-atk 'libwpe>=1.4.0')
+		 geoclue at-spi2-atk 'libwpe>=1.6.0')
 makedepends=(gperf ruby cmake python ninja gtk-doc)
 source=("${url}/releases/${pkgname}-${pkgver}.tar.xz"
         "${url}/releases/${pkgname}-${pkgver}.tar.xz.asc")
 validpgpkeys=('5AA3BC334FD7E3369E7C77B291C559DBE4C9123B')
-md5sums=(6ab041f6ebdb2e053981de5980c864e7 SKIP)
-sha1sums=(b31739a86a269eac4ddd5e537cdf954224672450 SKIP)
-sha256sums=(785d83b99cd45cedb7c4f1f697db773a5a81eb0a42aeeafa3c623053f6fde87a SKIP)
+md5sums=(b91b85b645061189765a9455a0539df1 SKIP)
+sha1sums=(243f2759f6fd06fdaefa84cbfa80e49559fbd14b SKIP)
+sha256sums=(d1a99383ac3344195d09b4a4256c15dc5269c8585b3d836f43a057e60bb6f460 SKIP)
 
 build () {
 	cmake -H"${pkgname}-${pkgver}" -Bbuild \
