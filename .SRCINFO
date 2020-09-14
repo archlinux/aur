@@ -6,12 +6,11 @@ pkgbase = tijolo-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = crystal>=0.35.0
-	makedepends = shards>=0.10.0
+	makedepends = crystal>=0.35.1
+	makedepends = shards>=0.11.0
 	depends = gc
 	depends = libevent
 	depends = pcre
-	depends = libyaml>=0.2.0
 	depends = gtksourceview4
 	depends = nerd-fonts-jetbrains-mono
 	depends = libgit2

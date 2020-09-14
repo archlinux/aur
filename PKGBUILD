@@ -30,5 +30,5 @@ check() {
 
 package() {
   cd "$srcdir/tijolo-git"
-  make install DESTDIR="${pkgdir}/usr"
+  make install DESTDIR="${pkgdir}"
 }
