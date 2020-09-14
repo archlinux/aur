@@ -2,7 +2,7 @@
 # Maintainer: Kamil Śliwak <cameel2+aur/at/gmail/com>
 
 pkgname=evmone
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Fast Ethereum Virtual Machine implementation"
 arch=('any')
