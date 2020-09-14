@@ -1,6 +1,6 @@
 pkgbase = jasmine-gjs-git
 	pkgdesc = Run Jasmine specs for GJS code
-	pkgver = 2.5.2.r1.ge95d3d4
+	pkgver = 2.6.4.r0.g286b772
 	pkgrel = 1
 	url = https://github.com/ptomato/jasmine-gjs
 	arch = any
