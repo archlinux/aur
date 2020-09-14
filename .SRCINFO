@@ -1,7 +1,7 @@
 pkgbase = tijolo
 	pkgdesc = Lightweight, keyboard-oriented IDE for the masses
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hugopl/tijolo
 	arch = x86_64
 	license = MIT

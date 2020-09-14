@@ -2,7 +2,7 @@
 
 pkgname=tijolo
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, keyboard-oriented IDE for the masses"
 arch=("x86_64")
 conflicts=("tijolo-git")
@@ -25,5 +25,5 @@ check() {
 
 package() {
   cd "$srcdir/tijolo-$pkgver"
-  make install DESTDIR="${pkgdir}/usr"
+  make install DESTDIR="${pkgdir}"
 }
