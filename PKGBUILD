@@ -9,6 +9,8 @@ arch=('x86_64')
 _repo='dhall-lang/dhall-haskell'
 url="https://github.com/$_repo"
 license=('BSD')
+provides=('dhall')
+conflicts=('dhall')
 source=("dhall-$pkgver.tar.bz2::$url/releases/download/$pkgver/dhall-$pkgver-x86_64-linux.tar.bz2"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/$_repo/$pkgver/dhall/LICENSE"
         "dhall.1-$pkgver::https://raw.githubusercontent.com/$_repo/$pkgver/dhall/man/dhall.1")
