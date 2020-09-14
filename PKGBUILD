@@ -3,7 +3,7 @@
 _pkgname='cobib'
 pkgname="${_pkgname}-git"
 pkgver=r257.9440104
-pkgrel=1
+pkgrel=2
 arch=('any')
 depends=('python' 'python-bibtexparser' 'python-beautifulsoup4' 'python-ruamel-yaml' 'python-pylatexenc' 'python-requests')
 license=('MIT')
@@ -22,7 +22,6 @@ pkgver() {
 
 build() {
   cd $srcdir/${_pkgname}
-  curl http://www.apache.org/licenses/LICENSE-2.0 > LICENSE
   python3 setup.py build
 }
 
