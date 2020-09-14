@@ -4,7 +4,7 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}"
-pkgver=2.5.3
+pkgver=2.5.4
 _pkgver="${pkgver}-linux1"
 gitname="release-${_pkgver}"
 pkgrel=1
