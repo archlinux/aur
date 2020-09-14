@@ -1,0 +1,15 @@
+pkgbase = pineappl
+	pkgdesc = PineAPPL is not an extension of APPLgrid
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://n3pdf.github.io/pineappl/
+	arch = any
+	license = GPL3
+	depends = cargo-c
+	depends = rust
+	provides = pineappl
+	source = https://github.com/N3PDF/pineappl/archive/v0.3.0.tar.gz
+	md5sums = ca5d7a4b39ed49a5d62c015d9fe75591
+
+pkgname = pineappl
+
