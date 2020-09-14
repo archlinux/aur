@@ -1,17 +1,18 @@
 # Maintainer: Cullen Ross <cullenrss@gmail.com>
+# Co-Maintainer: Max Rossmannek <max.rossmannek@uzh.ch>
 
 pkgname=cobib
-pkgver=2.3.2
-pkgrel=2
+pkgver=2.3.3
+pkgrel=1
 pkgdesc="Console Bibliography"
 arch=('any')
 license=('MIT')
 provides=('cobib')
 conflicts=('cobib')
-url="https://gitlab.com/mrossinek/${_pkgname}"
+url="https://gitlab.com/mrossinek/${pkgname}"
 depends=('python' 'python-bibtexparser' 'python-beautifulsoup4' 'python-ruamel-yaml' 'python-pylatexenc' 'python-requests')
 source=("https://gitlab.com/mrossinek/cobib/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('d95fe6d0b49429768e2691d8bfa39badcfc150567beb521bf8748c1efc4f74dd891d2009cda77f0f8184799c34a6c95040e1751a8ad041def6a5b2ece820e610')
+sha512sums=('1deaceb5317b7f1c89ca4eb5ba6a3c844959c457ea082c3f4cebac2104423327d435d5126f7e1699291d9d80330e9f960e8cde87a0754dc67d261531724876d4')
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
