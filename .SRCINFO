@@ -1,6 +1,6 @@
 pkgbase = noaftodo-git
 	pkgdesc = An ncurses TODO manager that No-One-Asked-For.
-	pkgver = 1.4.4r318.e37927f
+	pkgver = 1.4.4r320.5ae9438
 	pkgrel = 1
 	url = https://github.com/gregthemadmonk/noaftodo.git
 	changelog = CHANGELOG
@@ -8,6 +8,7 @@ pkgbase = noaftodo-git
 	arch = i686
 	license = GPL3
 	makedepends = git
+	makedepends = cmake
 	makedepends = make
 	makedepends = sed
 	depends = ncurses
