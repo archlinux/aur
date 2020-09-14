@@ -5,6 +5,7 @@ pkgbase = gamemode
 	url = https://github.com/FeralInteractive/gamemode
 	arch = x86_64
 	license = BSD 3-Clause License (Revised)
+	checkdepends = appstream
 	makedepends = meson
 	depends = polkit
 	optdepends = systemd

@@ -9,6 +9,7 @@ url="https://github.com/FeralInteractive/gamemode"
 license=('BSD 3-Clause License (Revised)')
 depends=('polkit')
 makedepends=('meson')
+checkdepends=('appstream')
 optdepends=('systemd')
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"
 )
@@ -21,11 +22,15 @@ build() {
     --libexecdir lib/gamemode \
     -Dwith-pam-group=gamemode \
     -Dwith-systemd-user-unit-dir=/usr/lib/systemd/user
-  ninja -C build
+  meson compile -C build
+}
+
+check() {
+	meson test -C build
 }
 
 package() {
-  DESTDIR=$pkgdir ninja -C build install
+  DESTDIR=$pkgdir meson install -C build
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" \
     ${pkgname}-${pkgver}/LICENSE.txt
   install -m644 -Dt "${pkgdir}/usr/share/doc/${pkgname}/example" \
