@@ -32,9 +32,9 @@ pkgver(){
 build() {
     cd git-team
     if [[ "$GOPATH" == "" ]]; then
-        GOPATH="$HOME/go" make
+        GOPATH="$HOME/go" make --jobs=1
     else
-        make
+        make --jobs=1
     fi
 }
 
