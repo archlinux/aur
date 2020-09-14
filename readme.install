@@ -2,4 +2,8 @@ post_remove() {
   echo "==> Optionally remove /var/lib/kodi/"
 }
 
+post_install() {
+  echo "==> Optionally create /etc/conf.d/kodi-standalone if you need to pass"
+  echo "==> any environment variables to the service"
+}
 # vim:set ts=2 sw=2 et:
