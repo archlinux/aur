@@ -2,7 +2,7 @@
 
 pkgname=cling
 pkgver=0.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Interactive C++ interpreter, built on the top of LLVM and Clang libraries"
 arch=("i686" "x86_64")
 url="https://root.cern.ch/cling"
@@ -69,4 +69,11 @@ package() {
 
     install -Dm644 "$srcdir/llvm/tools/cling/LICENSE.TXT" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # omit man page for clang's scan-build
+    rm -f "$pkgdir/opt/cling/share/man/man1/scan-build.1"
+
+    # remove empty directories
+    rmdir -p --ignore-fail-on-non-empty "$pkgdir/opt/cling/share/man/man1"
+    rmdir -p --ignore-fail-on-non-empty "$pkgdir/opt/cling/include/cling/cint"
 }
