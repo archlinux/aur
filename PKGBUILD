@@ -9,7 +9,7 @@ url="https://github.com/ANDRoid7890/bootsplash-theme-manjaro-glitch"
 license=('GPL')
 depends=()
 optdepends=('bootsplash-systemd: for bootsplash functionality')
-makedepends=('imagemagick')
+makedepends=('imagemagick' 'git')
 source=('git+https://github.com/ANDRoid7890/bootsplash-theme-manjaro-glitch.git')
 sha256sums=('SKIP')
 
