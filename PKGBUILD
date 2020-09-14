@@ -2,16 +2,16 @@
 # Contributor: Martin Wagner <martin.wagner.dev@gmail.com>
 
 pkgname=mpdevil
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
-pkgdesc="A small MPD client written in python"
+pkgdesc="A simple music browser for MPD"
 arch=('any')
 license=('GPL-3')
 url="https://github.com/SoongNoonien/mpdevil"
 depends=('python-mpd2' 'gtk3' 'libnotify' 'python-gobject' 'python-requests' 'python-beautifulsoup4' 'python-dbus')
 makedepends=('python-distutils-extra')
 source=("https://github.com/SoongNoonien/mpdevil/archive/v${pkgver}.tar.gz")
-sha256sums=('17442842643f58ff6bd01e21fd5e2ac590882a8c7cb76630dae1655a9c2b2b5c')
+sha256sums=('b37f30e5538ae53457816b895db42a07bfa7f2c8c5758703a21f1ea05d271a67')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
