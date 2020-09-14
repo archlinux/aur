@@ -1,0 +1,17 @@
+pkgbase = kubectl-cert-manager
+	pkgdesc = Automatically provision and manage TLS certificates in Kubernetes
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/jetstack/cert-manager
+	arch = x86_64
+	arch = aarch64
+	groups = kubectl-plugins
+	license = Apache
+	makedepends = git
+	makedepends = go
+	depends = kubectl
+	source = https://github.com/jetstack/cert-manager/archive/v1.0.1/kubectl-cert-manager-1.0.1.tar.gz
+	sha256sums = 38498c1b1de931ad47ebd713438e11260d21c1ccde44ee8f69da2dcae21af038
+
+pkgname = kubectl-cert-manager
+
