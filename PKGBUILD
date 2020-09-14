@@ -1,5 +1,5 @@
 pkgname="git-toolbelt"
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A suite of useful Git commands that aid with scripting or every day command line usage"
 arch=(any)
@@ -9,7 +9,7 @@ source=(
     "git-toolbelt-$pkgver.zip::https://github.com/nvie/git-toolbelt/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-    "8f9218c3f182462085292a4947253da5459617a0d8cf36f9038905d341e722a2"
+    "0fe8551fe5f9c05aaa566aba6f94667240cb0f6221a3c8d0d8cccff31244b1a8"
 )
 
 package() {
