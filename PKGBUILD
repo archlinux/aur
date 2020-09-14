@@ -24,7 +24,7 @@ build ()
 	mkdir build -p
 	cd build
 	cmake .. -DEVMONE_TESTING=OFF -DCMAKE_INSTALL_PREFIX=/usr
-	make -j
+	make
 }
 
 package ()
