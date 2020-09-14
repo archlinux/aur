@@ -1,8 +1,8 @@
 # Maintainer: Szentesi Botond
 pkgname=powercord-git
 _pkgname=powercord
-pkgver=r1178.41cb7ce
-pkgrel=5
+pkgver=r1208.76108c4
+pkgrel=1
 pkgdesc="A lightweight discord client mod focused on simplicity and performance."
 arch=("any")
 url="https://github.com/powercord-org/$_pkgname"
