@@ -1,12 +1,13 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Maintainer: Charlie Wolf <charlie@wolf.is>
 
 _gemname=foreman
 pkgname=ruby-${_gemname}
-pkgver=0.84.0
+pkgver=0.87.2
 pkgrel=1
 pkgdesc="Process manager for Procfile based applications"
 arch=('any')
-depends=('ruby' 'ruby-thor')
+depends=('ruby')
 url="https://rubygems.org/gems/${_gemname}"
 noextract=($_gemname-$pkgver.gem)
 license=('MIT')
@@ -14,7 +15,7 @@ source=(
 	"https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
 )
 sha256sums=(
-	'806b1e86a9359d2e60d528e48ec05a965110514b4d414e7f5f27b07a691ab81a'
+	'2727bc6e2100bf80b76e391aefe8c30a9d172b4a8acf56f072f94ffeedeeef6b'
 )
 
 package() {
