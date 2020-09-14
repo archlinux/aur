@@ -1,5 +1,5 @@
-# Maintainer: Cullen Ross <cullenrss@gmail.com>
 # Maintainer: Max Rossmannek <max.rossmannek@uzh.ch>
+# Contributor: Cullen Ross <cullenrss@gmail.com>
 
 pkgname=cobib
 pkgver=2.3.4
