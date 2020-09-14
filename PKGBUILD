@@ -3,7 +3,7 @@
 
 pkgname=zotero-arm-bin
 pkgver=5.0.89
-pkgrel=2
+pkgrel=3
 pkgdesc="Zotero Standalone is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources (ARM Binaries)"
 arch=('aarch64' 'armv7h')
 url="http://www.zotero.org/download"
@@ -12,6 +12,8 @@ depends=('dbus-glib' 'gtk3' 'nss' 'libxt' 'startup-notification')
 provides=("zotero=${pkgver}")
 conflicts=('zotero')
 optdepends=(
+  'zotero-xpdf: PDF indexing'
+  'poppler-data: PDF indexing'
 )
 
 install='zotero.install'
@@ -55,6 +57,11 @@ package() {
   # Remove poppler binaries
   rm -r "${pkgdir}/usr/lib/zotero/"{pdftotext,pdfinfo,poppler-data}
 
+  # Link binaries from zotero-xpdf (optional)
+  ln -s /usr/lib/zotero-xpdf/pdfinfo "${pkgdir}/usr/lib/zotero/pdfinfo"
+  ln -s /usr/lib/zotero-xpdf/pdftotext "${pkgdir}/usr/lib/zotero/pdftotext"
+  ln -s /usr/share/poppler "${pkgdir}/usr/lib/zotero/poppler-data"
+
   # Replace Firefox binaries
   #
   # I know you might want to vomit right now, but the official packaging
@@ -74,3 +81,5 @@ package() {
   install -Dm755 firefox/firefox "${pkgdir}/usr/lib/zotero/zotero-bin"
   install -Dm644 firefox/dependentlibs.list "${pkgdir}/usr/lib/zotero/dependentlibs.list"
 }
+
+# vim: et ts=2 sw=2:
