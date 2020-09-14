@@ -1,7 +1,7 @@
 pkgbase = natapp
 	pkgdesc = 内网穿透,基于ngrok的国内高速内网映射工具
 	pkgver = 2_3_9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://natapp.cn
 	arch = x86_64
 	arch = aarch64

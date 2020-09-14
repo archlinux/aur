@@ -2,7 +2,7 @@
 
 pkgname=natapp
 pkgver=2_3_9
-pkgrel=4
+pkgrel=5
 pkgdesc="内网穿透,基于ngrok的国内高速内网映射工具"
 arch=("x86_64" "aarch64" "armv7h")
 url="https://natapp.cn"
