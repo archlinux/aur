@@ -1,14 +1,23 @@
 pkgbase = bsequencer-git
-	pkgdesc = Multi channel MIDI step sequencer LV2 plugin.
-	pkgver = r82.c4dd235
+	pkgdesc = Multi channel MIDI step sequencer LV2 plugin (git version)
+	pkgver = 1.8.0.r0.g8f96f92
 	pkgrel = 1
 	url = https://github.com/sjaehn/BSEQuencer
 	arch = x86_64
-	license = GPL
-	depends = xorg-server
+	groups = lv2-plugins
+	groups = pro-audio
+	license = GPL3
+	checkdepends = lv2lint
+	makedepends = git
+	makedepends = lv2
 	depends = cairo
-	depends = lv2
-	source = git+https://github.com/sjaehn/BSEQuencer
+	depends = gcc-libs
+	depends = glibc
+	depends = libx11
+	provides = bsequencer
+	provides = bsequencer=1.8.0
+	conflicts = bsequencer
+	source = bsequencer::git+https://github.com/sjaehn/BSEQuencer
 	md5sums = SKIP
 
 pkgname = bsequencer-git

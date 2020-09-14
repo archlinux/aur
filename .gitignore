@@ -1,0 +1,5 @@
+bsequencer/
+bsequencer-git-*.pkg.tar.xz
+bsequencer-git-*.pkg.tar.zst
+pkg/
+src/
