@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
     cmake \
-	-B build -S "${_pkgname}" \
+	-B build -S devault" \
         -DCMAKE_BUILD_TYPE='None' \
 	-DBUILD_CTESTS=0 \
         -Wno-dev
