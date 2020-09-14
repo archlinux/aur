@@ -9,7 +9,7 @@
 pkgname='xampp'
 pkgver='7.4.10'
 pkgrel=1
-pkgdesc="A free and open source cross-platform web server package (LAMP Stack), consisting mainly of the Apache HTTP Server, MySQL database, and interpreters for scripts written in the PHP and Perl programming languages"
+pkgdesc='A stand-alone LAMPP distribution'
 url="http://www.apachefriends.org/"
 license=('GPL')
 arch=('x86_64')
@@ -42,23 +42,28 @@ package() {
 	cd "${srcdir}"
 
 	msg 'Extracting package...'
-	install -dm755 "${pkgdir}/opt/lampp"    
-        ./bitrock-unpacker.tcl "${srcdir}/xampp-linux-x64-${pkgver}-0-installer.run" "${pkgdir}"
+        ./bitrock-unpacker.tcl "${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run" "${srcdir}/${pkgname}-linux-x64-${pkgver}"
 
-	msg 'Ordering the package tree...'
-	rsync -avz --remove-source-files "${pkgdir}/xampp_core_files/xampp_core_folder"/. "${pkgdir}/opt/lampp"
-	rsync -avz --remove-source-files "${pkgdir}/xampp_developer_files/xampp_developer_folder"/. "${pkgdir}/opt/lampp"
-	rsync -avz --remove-source-files "${pkgdir}/native_apache_adapter/apache_xampp_linux"/. "${pkgdir}/opt/lampp"
-	rsync -avz --remove-source-files "${pkgdir}/native_proftpd_adapter/proftpd_xampp_linux"/. "${pkgdir}/opt/lampp"
-	rsync -avz --remove-source-files "${pkgdir}/native_mysql_adapter/mysql_xampp_linux"/. "${pkgdir}/opt/lampp"
-	rsync -avz --remove-source-files "${pkgdir}/manager/binary"/. "${pkgdir}/opt/lampp"
-	rsync -avz --remove-source-files "${pkgdir}/common_native_adapter/common"/. "${pkgdir}/opt/lampp"
+	msg 'Recreating package tree...'
+	install -dm755 "${pkgdir}/opt/lampp"
+	rsync -avzq --remove-source-files \
+		"${srcdir}/${pkgname}-linux-x64-${pkgver}/xampp_core_files/xampp_core_folder"/. \
+		"${srcdir}/${pkgname}-linux-x64-${pkgver}/xampp_developer_files/xampp_developer_folder"/. \
+		"${srcdir}/${pkgname}-linux-x64-${pkgver}/native_apache_adapter/apache_xampp_linux"/. \
+		"${srcdir}/${pkgname}-linux-x64-${pkgver}/native_proftpd_adapter/proftpd_xampp_linux"/. \
+		"${srcdir}/${pkgname}-linux-x64-${pkgver}/native_mysql_adapter/mysql_xampp_linux"/. \
+		"${srcdir}/${pkgname}-linux-x64-${pkgver}/manager/binary"/. \
+		"${srcdir}/${pkgname}-linux-x64-${pkgver}/common_native_adapter/common"/. \
+		"${pkgdir}/opt/lampp"
 
-	# Access to phpmyadmin
+	rm -rf "${srcdir}/${pkgname}-linux-x64-${pkgver}"
+
+	# Access to phpMyAdmin
 	install -dm777 "${pkgdir}/opt/lampp/phpmyadmin/tmp"
 	chmod 777 "${pkgdir}/opt/lampp/temp"
 
-	# phpadmin mysql settings
+	# phpMyAdmin MySQL settings
+	msg 'Configuring phpMyAdmin settings for MySQL...'
 	find "${pkgdir}/opt/lampp/phpmyadmin" -type f -exec sed -i 's/localhost/localhost:3306/gI' {} \;
 
 	# Links
@@ -71,18 +76,18 @@ package() {
 	find "${pkgdir}/opt/lampp/" -type f \
 		-exec sed -i 's/\@\@BITNAMI_XAMPP_ROOT\@\@/\/opt\/lampp/gI;s/\@\@BITROCK_INSTALLDIR\@\@/\/opt\/lampp/gI' {} \;
 
-	# For using mariadb from the official packages (currently unused option)
+	# For using MariaDB from the official packages (currently unused option)
 	#find "${pkgdir}/opt/lampp/mysql/scripts" -type f -exec sed -i 's/\/opt\/lampp\/var\/mysql\/$HOSTNAME.pid/\/var\/lib\/mysql\/$HOSTNAME.pid/gI' {} \;
 	#find "${pkgdir}/opt/lampp/" -type f -exec sed -i 's/\/opt\/lampp\/var\/mysql\/mysql.sock/\/run\/mysqld\/mysqld.sock/gI' {} \;
 
-	# For running mysql from the official packages (currently unused option)
+	# For running MySQL from the official packages (currently unused option)
 	#find "${pkgdir}/opt/lampp/mysql/scripts" -type f -exec sed -i 's/\/opt\/lampp\/lampp\ startmysql/systemctl\ start\ mysqld/gI' {} \;
 
 	msg 'Copying executables and launcher...'
 
 	# Licenses
 	install -dm755 "${pkgdir}/usr/share/licenses/xampp"
-	rsync -avz "${pkgdir}/opt/lampp/licenses"/. "${pkgdir}/usr/share/licenses/xampp"
+	rsync -avzq "${pkgdir}/opt/lampp/licenses"/. "${pkgdir}/usr/share/licenses/xampp"
 
 	# Executables
 	install -dm755 "${pkgdir}/usr/bin"
@@ -102,15 +107,6 @@ package() {
 
 	# Install policy file for desktop launcher
 	install -Dm644 "${srcdir}/org.freedesktop.xampp-manager.policy" "${pkgdir}/usr/share/polkit-1/actions/org.freedesktop.xampp-manager.policy"
-
-	# Remove unused folders
-	rm -rf	"${pkgdir}/xampp_core_files/" \
-		"${pkgdir}/xampp_developer_files/" \
-		"${pkgdir}/native_mysql_adapter/" \
-		"${pkgdir}/native_apache_adapter/" \
-		"${pkgdir}/native_proftpd_adapter/" \
-		"${pkgdir}/manager/" \
-		"${pkgdir}/common_native_adapter/"
 
 	# Update backup list for the next time – currently unused method (we use
 	# `xampp.install` for this) - requires `readarray backup < "./backup.lst"`)

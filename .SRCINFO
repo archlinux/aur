@@ -1,5 +1,5 @@
 pkgbase = xampp
-	pkgdesc = A free and open source cross-platform web server package (LAMP Stack), consisting mainly of the Apache HTTP Server, MySQL database, and interpreters for scripts written in the PHP and Perl programming languages
+	pkgdesc = A stand-alone LAMPP distribution
 	pkgver = 7.4.10
 	pkgrel = 1
 	url = http://www.apachefriends.org/
