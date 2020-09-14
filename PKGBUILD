@@ -13,13 +13,13 @@ makedepends=('cmake' 'gcc' 'git')
 md5sums=('SKIP')
 
 source=(
-	"git+https://github.com/ethereum/evmone.git#tag=v$pkgver"
+	"git+https://github.com/ethereum/evmone.git#tag=v${pkgver}"
 )
 
 build ()
 {
-	echo $PWD
-	cd $pkgname
+	echo "${PWD}"
+	cd "${pkgname}"
 	git submodule update --init
 	mkdir build -p
 	cd build
@@ -29,6 +29,6 @@ build ()
 
 package ()
 {
-	cd $pkgname/build
-	make DESTDIR=$pkgdir prefix=/usr install
+	cd "${pkgname}/build"
+	make DESTDIR="${pkgdir}" prefix=/usr install
 }
