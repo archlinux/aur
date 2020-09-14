@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.64.5
+pkgver=2.66.0
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
@@ -12,7 +12,7 @@ arch=(x86_64)
 provides=(glib2=$pkgver libgio-2.0.so libglib-2.0.so libgmodule-2.0.so
            libgobject-2.0.so libgthread-2.0.so)
 conflicts=('glib2')
-depends=(pcre libffi libutil-linux zlib tumbler libmount.so)
+depends=(pcre libffi util-linux-libs zlib tumbler libmount.so)
 makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux
              meson dbus)
 checkdepends=(desktop-file-utils)
@@ -20,7 +20,7 @@ optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-repor
             'libelf: gresource inspection tool')
 options=('!docs')
 license=(LGPL2.1)
-_commit=2560f61370a143e6a056b99d1e918a58f40e3710  # tags/2.64.5^0
+_commit=c2c12e42920d6e06c23c87398996827e53c1fc72  # tags/2.66.0^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         noisy-glib-compile-schemas.diff
         glib-compile-schemas.hook
@@ -51,8 +51,7 @@ build() {
   CFLAGS+=" -DG_DISABLE_CAST_CHECKS"
   arch-meson glib build \
     -D selinux=disabled \
-    -D man=true \
-    -D gtk_doc=true
+    -D man=true
   meson compile -C build
 }
 
@@ -70,7 +69,4 @@ package() {
     "$pkgdir/usr/share/glib-2.0/codegen"
   python -O -m compileall -d /usr/share/glib-2.0/codegen \
     "$pkgdir/usr/share/glib-2.0/codegen"
-
-  # rm docs
-  rm -r "$pkgdir/usr/share/gtk-doc"
 }
