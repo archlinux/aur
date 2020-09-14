@@ -16,7 +16,7 @@ optdepends=(
 provides=('QuickMedia')
 conflicts=('QuickMedia')
 source=("quickmedia.tar.gz::https://dec05eba.com/snapshot/QuickMedia.tar.gz")
-sha512sums=('c1a9df3949d834ffceb5ca91c9e4c773c59bd6b8e7e35e63afea0f856629aaca3423f5801cf9ed4c0fd1fc12ca36eddf73c4343a05ee5ff94af94e4b8501de06')
+sha512sums=('820440d018e39636931cb231240cd83731e36fc82dab7e69814b83540e54295cbaa0b6e6a7b87539ca2e64a92897b41732c69c0e51cbe623533c3ab6ddbb808d')
 
 build() {
   cd "$srcdir"
