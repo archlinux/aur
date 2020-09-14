@@ -1,6 +1,6 @@
 pkgbase = virt-manager-git
 	pkgdesc = Console user interface for managing virtual machines
-	pkgver = 1.5.0.r223.g3bc7ff24
+	pkgver = 2.2.1.r702.ga8aec2da
 	pkgrel = 1
 	url = http://virt-manager.org/
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = virt-manager-git
 	makedepends = git
 	makedepends = intltool
 	makedepends = python-cairo
+	makedepends = python-docutils
 	depends = python-gobject
 	depends = libvirt-glib
 	depends = libvirt-python
@@ -22,7 +23,7 @@ pkgname = virt-install-git
 
 pkgname = virt-manager-git
 	pkgdesc = Desktop user interface for managing virtual machines
-	depends = virt-install-git=1.5.0.r223.g3bc7ff24
+	depends = virt-install-git=2.2.1.r702.ga8aec2da
 	depends = vte3
 	depends = gtk-vnc
 	depends = spice-gtk3
