@@ -5,7 +5,7 @@
 
 pkgname=gtk3-patched-filechooser-icon-view
 pkgver=3.24.23
-pkgrel=1
+pkgrel=1.1
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
@@ -57,10 +57,10 @@ build() {
 package() {
   DESTDIR="$pkgdir" meson install -C build
 
-  install -Dt "$pkgdir/usre/share/gtk-3.0/settings.ini" -m644 settings.ini
-  install -Dt "$pkgdir/usr/share/libalpm/hooks/gtk-query-immodules-3.0.hook" -m644 gtk-query-immodules-3.0.hook
+  install -Dt "$pkgdir/usr/share/gtk-3.0" -m644 settings.ini
+  install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 gtk-query-immodules-3.0.hook
 
-  # split these out to avoid file conflicts with gtk-update-icon-cache
+  # avoid file conflict with gtk-update-icon-cache
   rm "$pkgdir/usr/bin/gtk-update-icon-cache"
 }
 
