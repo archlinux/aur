@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7f4730e..ea0f03c 100755
+index 7f4730e..7e77fc6 100755
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1,12 +1,10 @@
+@@ -1,24 +1,17 @@
  cmake_minimum_required(VERSION 2.4)
  project(MasterPatch)
  
@@ -13,11 +13,21 @@ index 7f4730e..ea0f03c 100755
  include_directories(${CMAKE_CURRENT_BINARY_DIR})
  
 -qt4_wrap_ui(UI_FILES
-+qt5_wrap_ui(UI_FILES
- 	main.ui
- )
+-	main.ui
+-)
+-
+-qt_wrap_cpp(WRAPS QT_FILES
+-	main.h
+-)
++set(CMAKE_AUTOUIC ON)
++set(CMAKE_AUTOMOC ON)
  
-@@ -21,4 +19,4 @@ add_executable(patch WIN32
+ add_executable(patch WIN32
+-	${UI_FILES}
+-	${QT_FILES}
++	main.ui
++	main.h
+ 	main.cpp
  	patcher.cpp
  )
  
