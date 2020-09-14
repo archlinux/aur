@@ -1,6 +1,6 @@
 pkgbase = arch-hs-git
 	pkgdesc = Generating PKGBUILD for hackage packages.
-	pkgver = r42.d451d34
+	pkgver = r53.a45e464
 	pkgrel = 1
 	url = https://github.com/berberman/arch-hs
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: berberman <hatsue@typed.icu>
 
 pkgname=arch-hs-git
-pkgver=r42.d451d34
+pkgver=r53.a45e464
 pkgrel=1
 pkgdesc="Generating PKGBUILD for hackage packages."
 arch=('x86_64')
@@ -37,6 +37,10 @@ build() {
   LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs/arch-hs --bash-completion-script "/usr/bin/arch-hs" > bash
   LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs/arch-hs --zsh-completion-script  "/usr/bin/arch-hs" > zsh
   LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs/arch-hs --fish-completion-script "/usr/bin/arch-hs" > fish
+
+  LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs-diff/arch-hs-diff --bash-completion-script "/usr/bin/arch-hs-diff" > bash-diff
+  LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs-diff/arch-hs-diff --zsh-completion-script  "/usr/bin/arch-hs-diff" > zsh-diff
+  LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs-diff/arch-hs-diff --fish-completion-script "/usr/bin/arch-hs-diff" > fish-diff
 }
 
 package() {
@@ -50,4 +54,8 @@ package() {
   install -D -m644 bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
   install -D -m644 zsh  "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
   install -D -m644 bash "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+  
+  install -D -m644 bash-diff "$pkgdir/usr/share/bash-completion/completions/arch-hs-diff-git"
+  install -D -m644 zsh-diff  "$pkgdir/usr/share/zsh/site-functions/_arch-hs-diff-git"
+  install -D -m644 bash-diff "$pkgdir/usr/share/fish/vendor_completions.d/arch-hs-diff-git.fish"
 } 
