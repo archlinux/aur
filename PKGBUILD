@@ -2,7 +2,7 @@
 
 pkgname=controlloid-server-git
 pkgver=r23.1137a81
-pkgrel=2
+pkgrel=3
 pkgdesc="The server for the Android app Controlloid."
 arch=('x86_64' 'i686' 'armv6' 'armv7' 'aarch64')
 url="https://github.com/experiment322/controlloid-server"
@@ -24,7 +24,7 @@ md5sums=('SKIP'
         '32f432c01af51b24a5382a5a0718dc61'
         '75a9fb6c38015c6da123e7633a216ec5'
         '76b1380215f173064b7c89553394c372'
-        '68ceff54b22691e3e8ed18dc4c9062e9')
+        '56f0cd8f1d8bec160e35bbbdb43ae543')
 
 pkgver() {
 	cd "$srcdir/controlloid-server"

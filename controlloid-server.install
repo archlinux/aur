@@ -1,5 +1,6 @@
 post_install() {
-    echo "Don't forget to add yourself to the 'controlloid' group!"
+    echo "Adding your user to the 'controlloid' group..."
+    usermod -aG controlloid $USER
 }
 
 post_remove() {

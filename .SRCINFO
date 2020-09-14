@@ -1,7 +1,7 @@
 pkgbase = controlloid-server-git
 	pkgdesc = The server for the Android app Controlloid.
 	pkgver = r23.1137a81
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/experiment322/controlloid-server
 	install = controlloid-server.install
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = controlloid-server-git
 	md5sums = 32f432c01af51b24a5382a5a0718dc61
 	md5sums = 75a9fb6c38015c6da123e7633a216ec5
 	md5sums = 76b1380215f173064b7c89553394c372
-	md5sums = 68ceff54b22691e3e8ed18dc4c9062e9
+	md5sums = 56f0cd8f1d8bec160e35bbbdb43ae543
 
 pkgname = controlloid-server-git
 
