@@ -1,0 +1,26 @@
+From 5be3051984743292ad8ea151b001e99bcd74f694 Mon Sep 17 00:00:00 2001
+From: Joan Bruguera <joanbrugueram@gmail.com>
+Date: Mon, 14 Sep 2020 11:07:40 +0200
+Subject: [PATCH] Fix build due to use of deprecated _sys_siglist.
+
+Breaking commit in glibc appears to be https://sourceware.org/git/?p=glibc.git;a=commit;h=b1ccfc061feee9ce616444ded8e1cd5acf9fa97f
+---
+ src/core/taskexecutionexception.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/core/taskexecutionexception.cpp b/src/core/taskexecutionexception.cpp
+index 92a7450..103d22b 100644
+--- a/src/core/taskexecutionexception.cpp
++++ b/src/core/taskexecutionexception.cpp
+@@ -27,7 +27,7 @@ const char* TaskExecutionException::what ( ) const throw ()
+ 
+    const char* sig_desc;
+    if (signal_info.si_signo >= 0 && signal_info.si_signo < NSIG && (sig_desc =
+-         _sys_siglist[signal_info.si_signo]) != NULL) {
++         strsignal(signal_info.si_signo)) != NULL) {
+ 
+       s += sig_desc;
+       switch (signal_info.si_signo) {
+-- 
+2.28.0
+
