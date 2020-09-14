@@ -3,7 +3,7 @@
 pkgname=llvm-amdgpu-git
 pkgdesc='Radeon Open Compute - LLVM toolchain (llvm, clang, lld)'
 pkgver=latest
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/RadeonOpenCompute/llvm-project'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -30,7 +30,7 @@ build() {
           -DLLVM_TARGETS_TO_BUILD='AMDGPU;X86' \
           -DOCAMLFIND=NO \
           "$pkgname/llvm"
-    MAKEFLAGS="$MAKEFLAGS -j$THREADS" make
+    make
 }
 
 package() {

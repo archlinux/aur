@@ -1,7 +1,7 @@
 pkgbase = llvm-amdgpu-git
 	pkgdesc = Radeon Open Compute - LLVM toolchain (llvm, clang, lld)
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RadeonOpenCompute/llvm-project
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
