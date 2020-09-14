@@ -10,7 +10,7 @@ depends=('scrcpy'  'python-pynput' 'python-qtpy' 'python-psutil'
          'python-cairosvg' 'python-click' 'python-colorama' 'libxinerama')
 makedepends=('git' 'python-setuptools')
 optdepends=('python-pyqt5: Qt5 Python bindings'
-            'python-pyside2: PySide Qt5 Python bindings'
+            'pyside2: PySide Qt5 Python bindings'
             'usbaudio: AOA audio, deprecated since Android 8.0')
 source=("git+https://github.com/srevinsaju/guiscrcpy.git#tag=v$pkgver")
 sha256sums=('SKIP')
