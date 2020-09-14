@@ -1,0 +1,15 @@
+pkgbase = avnet-bdf-git
+	pkgdesc = Avnet Board Definition Files
+	pkgver = r21.30b6904
+	pkgrel = 1
+	url = https://github.com/Avnet/bdf
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	optdepends = vivado: to actually use these files
+	source = git+https://github.com/Avnet/bdf.git
+	md5sums = SKIP
+
+pkgname = avnet-bdf-git
+
