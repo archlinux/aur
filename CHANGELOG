@@ -1,3 +1,8 @@
+2020-09-14 GregTheMadMonk <yagreg7@gmail.com>
+	* 1.4.4 (slight return)
+	- Mirgate to cmake, eliminating all mistakes in the Makefile
+	- Fix building on clang
+
 2020-08-15 GregTheMadMonk <yagreg7@gmail.com>
 	* 1.4.4
 	- Add custom status fields:

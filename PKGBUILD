@@ -1,6 +1,6 @@
 # Maintainer: Gregory Dushkin (GregTheMadMonk) <yagreg7@gmail.com>
 pkgname=noaftodo-git
-pkgver=1.4.4r308.e208da7
+pkgver=1.4.4r318.e37927f
 pkgrel=1
 pkgdesc="An ncurses TODO manager that No-One-Asked-For."
 arch=(x86_64 i686)
@@ -20,11 +20,12 @@ pkgver() {
 }
 
 build() {
-	cd noaftodo
-	V_SUFFIX="AURr$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" make
+	mkdir noaftodo/build
+	cd noaftodo/build
+	PKGNAME="$pkgname" PKGROOT="$pkgdir" V_SUFFIX="AURr$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" cmake .. && make
 }
 
 package() {
-	cd noaftodo
-	PKGNAME="$pkgname" PKGROOT="$pkgdir" make install
+	cd noaftodo/build
+	make install
 }
