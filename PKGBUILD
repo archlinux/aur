@@ -1,43 +1,34 @@
-# Maintainer: Dimitrios Vogiatzis <me@dimtree.net>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Timothée Ravier <tim@siosm.fr>
 
 pkgname=networkmanager-qt-git
-pkgver=r678.cf2d3da
+pkgver=v5.74.0.r1.g7ab48a2
 pkgrel=1
-pkgdesc='Qt-only wrapper for NetworkManager DBus API'
-arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/extragear/libs/libnm-qt'
-license=('LGPL')
-depends=('qt5-base' 'networkmanager')
-makedepends=('extra-cmake-modules-git' 'git')
+pkgdesc='Qt wrapper for NetworkManager API'
+arch=(x86_64)
+url='https://community.kde.org/Frameworks'
+license=(LGPL)
+depends=(networkmanager qt5-base)
+makedepends=(extra-cmake-modules doxygen qt5-tools qt5-doc git)
 conflicts=('libnm-qt5' 'networkmanager-qt' 'libnm-qt-git')
 provides=('libnm-qt5' 'networkmanager-qt')
 replaces=('libnm-qt-git')
-source=("git://anongit.kde.org/networkmanager-qt.git")
+source=("git+https://invent.kde.org/frameworks/networkmanager-qt")
 sha256sums=('SKIP')
 
 pkgver() {
   cd networkmanager-qt
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  mkdir -p build
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd build
-  cmake ../networkmanager-qt \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
-  make
+  cmake -B build -S networkmanager-qt \
+    -DBUILD_TESTING=OFF \
+    -DBUILD_QCH=ON
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
