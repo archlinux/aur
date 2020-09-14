@@ -17,6 +17,7 @@ optdepends=('texlive-bin: latex support'
             'texlive-core: latex support'
             'texlive-latexextra: latex support'
             'texlive-bibtexextra: latex support'
+            # AUR package
             'tllocalmgr-git: latex support')
 source=('manim::git://github.com/3b1b/manim.git')
 md5sums=('SKIP')
