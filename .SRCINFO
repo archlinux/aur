@@ -1,12 +1,13 @@
 pkgbase = dialect-git
 	pkgdesc = A translation app for GTK environments based on Google Translate
-	pkgver = r108.7c83f26
+	pkgver = r110.d6eca76
 	pkgrel = 1
 	url = https://github.com/gi-lom/dialect
 	arch = any
 	license = GPL3
 	makedepends = meson
 	makedepends = git
+	makedepends = gobject-introspection
 	depends = gtk3
 	depends = python-gobject
 	depends = python-googletrans
