@@ -16,5 +16,5 @@ sha512sums=('dd755c3ca428dbaae0f047cc71e2bbf0f42980ed382431f1dda978be24d2434a73b
 
 package() {
     cd $pkgname-$_commit
-    install -Dm644 *.yaml -t "$pkgdir/usr/share/rime-data/"
+    install -Dm644 zijinmaa.schema.yaml -t "$pkgdir/usr/share/rime-data/"
 }
