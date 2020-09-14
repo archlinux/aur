@@ -4,14 +4,13 @@
 pkgname=passwall-desktop-git
 _pkgname=passwall
 pkgdesc="Desktop client of the PassWall platform (git)"
-pkgver=0.1.3.r67.gca5397b
+pkgver=0.1.3.r70.g481a826
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/passwall/passwall-desktop"
 license=('unknown')
 conflicts=("${pkgname%-git}")
-depends=('git')
-makedepends=('yarn')
+makedepends=('git' 'yarn' 'npm')
 source=("git+$url")
 sha256sums=('SKIP')
 
@@ -33,6 +32,7 @@ package() {
   cp -r build/linux-unpacked/* "$pkgdir/usr/share/${pkgname%-git}"
   install -dm 755 "$pkgdir/usr/local/bin"
   ln -s "/usr/share/${pkgname%-git}/$_pkgname" "$pkgdir/usr/local/bin/$_pkgname"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 
   # Install pixmaps and fonts
   install -dm 755 "$pkgdir/usr/share/pixmaps"
