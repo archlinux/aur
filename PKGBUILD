@@ -1,4 +1,6 @@
 # Maintainer: Marenz <aur@supradigital.org>
+# Maintainer: Kamil Śliwak <cameel2+aur/at/gmail/com>
+
 pkgname=evmone
 pkgver=0.4.0
 pkgrel=1
