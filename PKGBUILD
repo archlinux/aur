@@ -9,7 +9,7 @@ url="https://github.com/ANDRoid7890/bootsplash-theme-manjaro-space-green"
 license=('GPL')
 depends=()
 optdepends=('bootsplash-systemd: for bootsplash functionality')
-makedepends=('imagemagick')
+makedepends=('imagemagick' 'git')
 source=('git+https://github.com/ANDRoid7890/bootsplash-theme-manjaro-space-green.git')
 sha256sums=('SKIP')
 
