@@ -8,14 +8,14 @@
 
 ### MERGE REQUESTS SELECTION
 
-# Merge Requests List: ('429' '493' '579' '983' '798' '1003' '1267' '1360' '1359')
-_merge_requests_to_use=('1003' '1267' '1360' '1359') # safe pick
+# Merge Requests List: ('429' '493' '579' '983' '798' '1267' '1360' '1359')
+_merge_requests_to_use=('1267' '1360' '1359') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.36.5+10+g84512cb1f
-pkgrel=3
+pkgver=3.36.6
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -30,7 +30,7 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=84512cb1f36633d32418720e3608d01c6122ee26 # tags/3.36.5^10
+_commit=7d1e9e77a914d71b902ba2dd8c2f51a16000b908  # tags/3.36.6^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 	"fix_clutter_actor_set_allocation_spam.patch")
 sha256sums=('SKIP'
@@ -141,13 +141,6 @@ prepare() {
   # Status: 4
   # Comment:
   pick_mr '798'
-
-  # Title: background: Limit mipmap levels to avoid loss of visible detail
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1003
-  # Type: 3
-  # Status: 4
-  # Comment:
-  pick_mr '1003'
 
   # Title: clutter/stage: Use an own flag to prevent relayout reentry in the stage
   # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1266
