@@ -43,6 +43,7 @@ package() {
 	tar xpvf ${srcdir}/data.tar.xz --xattrs-include='*' --numeric-owner
     install -m644 "${srcdir}/files.7z" "${pkgdir}/opt/apps/com.qq.tim.dcs/files"
     msg "Preparing icons ..."
+    sed -i 's/TIM.exe/tim.exe/' opt/apps/${pkgname}/entries/applications/com.qq.tim.dcs.desktop
 	install -d usr/share
 	mv opt/apps/${pkgname}/entries/* usr/share
 }

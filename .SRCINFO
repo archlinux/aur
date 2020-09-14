@@ -13,6 +13,7 @@ pkgbase = com.qq.tim.dcs
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	depends = noto-fonts-cjk
+	depends = deepin-wine-helper
 	optdepends = ttf-ms-fonts: Microsoft Core fonts
 	source = http://dcstore.shenmo.tech/store/chat/com.qq.tim.dcs/com.qq.tim.dcs_3.1.0.21789_i386.deb
 	source = reg.patch
