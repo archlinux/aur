@@ -1,14 +1,14 @@
 # Maintainer: Lerentis <lerentis@burntbunch.org>
 pkgname=index-fm-git
-pkgver=r327.295eb66
+pkgver=v1.1.1.r26.g1101ebb
 pkgrel=1
 pkgdesc="Index is a file manager that works on desktops, Android and Plasma Mobile"
 arch=('any')
-url="https://invent.kde.org/kde/index-fm"
+url="https://invent.kde.org/maui/index-fm"
 license=('GPL3')
 depends=('git' 'mauikit-git' 'qmltermwidget')
 makedepends=('cmake' 'extra-cmake-modules')
-source=("git+https://invent.kde.org/kde/index-fm.git")
+source=("git+https://invent.kde.org/maui/index-fm.git")
 md5sums=('SKIP')
 
 pkgver() {
