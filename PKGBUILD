@@ -1,6 +1,6 @@
 # Maintainer: Adam Harvey <aharvey@sourcegraph.com>
 pkgname=comby
-pkgver=0.18.3
+pkgver=0.18.4
 pkgrel=1
 epoch=
 pkgdesc="A tool for structural code search and replace that supports ~every language"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/comby-tools/$pkgname/archive/$pkgver.tar.gz")
 noextract=()
-sha512sums=('7940d2435ec529d3b568c5ded0d746c3494e30f887bdb3ef953a543facb8a9aa9f67cbbdc1f653bce82e6a48db9b52efb64011d7f487cd6b280be86c639f6e41')
+sha512sums=('7045373f9ed480afa60065dcf7247d578277151febf70f0d4877ee9418855fb5a673476c31297f85636d855fec7c17f81bf9a8f6044a7e191123f857b7226ef1')
 validpgpkeys=()
 
 build() {
