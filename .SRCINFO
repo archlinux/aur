@@ -5,13 +5,12 @@ pkgbase = alsa-control
 	url = https://github.com/sezanzeb/alsa-control/
 	arch = any
 	license = GPL3
-	makedepends = git
 	makedepends = python-distutils-extra
 	depends = python-gobject
 	depends = python-pyalsaaudio
 	provides = alsa-control
 	conflicts = alsa-control
-	source = git+https://github.com/sezanzeb/alsa-control.git
+	source = https://github.com/sezanzeb/alsa-control/archive/0.1.0.tar.gz
 	md5sums = SKIP
 
 pkgname = alsa-control
