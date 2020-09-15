@@ -14,7 +14,7 @@ pkgbase = madx-git
 	provides = madx
 	conflicts = madx-dev
 	conflicts = nmap
-	source = https://github.com/MethodicalAcceleratorDesign/MAD-X.git
+	source = git+https://github.com/MethodicalAcceleratorDesign/MAD-X.git
 	sha256sums = SKIP
 
 pkgname = madx-git
