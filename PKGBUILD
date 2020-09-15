@@ -4,7 +4,7 @@
 # Contributor: soloturn@gmail.com
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.09.11.a.r71.ge6f7b9dc8e8
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.09.11.a.r74.gc56ae1e3364
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -37,9 +37,11 @@ source=(
     'llvm-project::git+https://github.com/apple/llvm-project#branch=swift/master'
 #    'llvm-project::git+https://github.com/apple/llvm-project#commit=e80a6b097761253'
     '0001-arch-aur-pachtes.patch'
+    '0002-llbuild-ninja-test-binary-links-against-ncurses.patch'
 )
 noextract=()
 md5sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -65,6 +67,7 @@ md5sums=(
 
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
+    ( cd llbuild && patch -p1 -i "$srcdir/0002-llbuild-ninja-test-binary-links-against-ncurses.patch" )
 }
 
 pkgver() {
