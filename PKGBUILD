@@ -31,10 +31,12 @@ build() {
     opam init -n
     eval $(opam env)
 
-    # Ensure we have a switch using the system OCaml.
-    if ! opam switch list | grep -q comby-aur; then
-        opam switch create comby-aur ocaml-system
-    fi
+    # Ensure we have a switch using the system OCaml. Due to
+    # https://github.com/ocaml/opam/issues/3708, the easiest way forward is to
+    # remove and recreate it to handle version drift in the underlying Arch
+    # packages.
+    opam switch remove comby-aur -y || true
+    opam switch create comby-aur ocaml-system
 
     # Enable the right OCaml switch.
     eval $(opam env --switch=comby-aur --set-switch)
@@ -43,7 +45,6 @@ build() {
     # but many do not, and some rely on forks of upstream packages. To minimise
     # drift from upstream, let's just build everything.
     opam update
-    opam upgrade -y
     opam install . --deps-only -y
 
     # Actually build comby.
