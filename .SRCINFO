@@ -1,7 +1,7 @@
 pkgbase = apidb-core
 	pkgdesc = API Generator for Database acces.
 	pkgver = 5.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/azaeldevel/apidb
 	arch = x86_64
 	license = GPL
@@ -10,14 +10,13 @@ pkgbase = apidb-core
 	depends = boost
 	depends = bison
 	depends = flex
-	depends = gtkmm
 	depends = libtar
 	depends = imagemagick
 	depends = cmake
 	depends = cunit
 	conflicts = apidb
-	source = https://github.com/azaeldevel/apidb/archive/5.0.0-alpha10.zip
-	md5sums = 4d4df06f7f589165cc2c4b1074438e7b
+	source = https://github.com/azaeldevel/apidb/archive/5.0.0-alpha15.tar.gz
+	md5sums = 82fa360272be05a2ddb7d026e909cd78
 
 pkgname = apidb-core
 
