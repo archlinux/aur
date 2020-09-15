@@ -2,7 +2,7 @@
 
 pkgname=torrserver-bin
 pkgver=1.1.77
-pkgrel=2
+pkgrel=3
 pkgdesc="Torrent to http. Streams media torrent files as media streams without fully downloading"
 arch=('x86_64' 'arm' 'armv5' 'armv6' 'armv7' 'aarch64' 'i686')
 url="https://github.com/YouROK/TorrServer"
@@ -30,9 +30,9 @@ elif [ "$CARCH" = 'aarch64' ]; then
 elif [ "$CARCH" = 'armv5' ]; then
   _CARCH=arm
 elif [ "$CARCH" = 'armv6' ]; then
-  _CARCH=armv6h
+  _CARCH=arm6
 elif [ "$CARCH" = 'armv7' ]; then
-  _CARCH=armv7h
+  _CARCH=arm7
 fi
 
 package() {
