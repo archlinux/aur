@@ -17,7 +17,7 @@ depends=(
   'xcb-util-keysyms'
   'xcb-util-wm'
 )
-makedepends=('rust' 'cargo' 'cmake' 'git' 'pkgconf', 'python')
+makedepends=('rust' 'cargo' 'cmake' 'git' 'pkgconf' 'python')
 source=("git+https://github.com/wez/wezterm.git")
 sha256sums=('SKIP')
 conflicts=('wezterm-bin' 'wezterm-nightly-bin')
