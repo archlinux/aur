@@ -13,6 +13,7 @@ depends=(
 	'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'pugixml' 'qt5-base'
 	'sfml' 'zlib'
 )
+makedepends=('wget')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!strip')
 
