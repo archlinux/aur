@@ -6,25 +6,20 @@ arch=('any')
 url="https://github.com/sezanzeb/alsa-control/"
 license=('GPL3')
 depends=('python-gobject' 'python-pyalsaaudio')
-makedepends=('git' 'python-distutils-extra')
+makedepends=('python-distutils-extra')
 provides=('alsa-control')
 conflicts=('alsa-control')
-source=("git+https://github.com/sezanzeb/alsa-control.git")
+source=("https://github.com/sezanzeb/alsa-control/archive/${pkgver}.tar.gz")
 md5sums=('SKIP')
 _gitname="alsa-control"
 
-pkgver() {
-	cd "$srcdir"/"$_gitname"
-	git describe --tags | sed 's/-/+/g'
-}
-
 build() {
-	cd "$srcdir"/"$_gitname"
+	cd "${srcdir}/${_gitname}-${pkgver}"
 	python3 setup.py build
 }
 
 package() {
-	cd "$srcdir"/"$_gitname"
+	cd "${srcdir}/${_gitname}-${pkgver}"
 	python3 setup.py install --root=$pkgdir
 }
 
