@@ -1,7 +1,7 @@
 pkgbase = secret
 	pkgdesc = A tiny secret store to keep your little secrets
 	pkgver = 0.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/angt/secret
 	arch = x86_64
 	license = BSD
