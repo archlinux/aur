@@ -3,7 +3,7 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
-pkgver=6.2.6
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="A modern streamlined music player"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 
 depends=('python-pillow'
          'python-pylast'
-         'python-hsaudiotag3k'
+         'python-hsaudiotag3k' # AUR
          'python-pysdl2' # AUR
          'python-stagger' # AUR
          'python-send2trash'
@@ -25,29 +25,35 @@ depends=('python-pillow'
          'python-beautifulsoup4'
          'python-requests'
          'python-dbus'
-         'alsa-plugins'
          'ffmpeg'
          'flac'
+         'gst-plugins-good'
          'gst-plugins-bad'
-         'gst-plugins-ugly'
          'noto-fonts-extra'
          'noto-fonts-cjk'
          'sdl2_image'
-         'xdg-utils')
+         'xdg-utils'
+         'mpg123'
+         'libpulse'
+         'opusfile'
+         'libvorbis'
+         )
          
 optdepends=('p7zip: 7z archive extraction support'
             'unrar: RAR archive extraction support'
             'python-plexapi: Plex streaming'
             'python-pypresence: Discord status support'
             'python-tekore: Spotify playback control'
-            'picard: Tag editing')
+            'picard: Recommended tag editor'
+            'gst-plugins-ugly: For GStreamer WMA support')
             
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v$pkgver.tar.gz")
-sha256sums=('2447624933e7e03c9bea22dcd4f3ffd48a716f3fc5fec4b7e8a4422ec8f9bc6b')
+sha256sums=('98338c5958fa97773627addee74ec8ea5404c426b3cd35c1dfe978fc1b6408b8')
 
 build() {
     cd "$_gitname-$pkgver"
     python compile-translations.py
+    bash compile-phazor.sh
 }
 
 package() {
@@ -57,7 +63,7 @@ package() {
     ln -s "/opt/$pkgname/tauon.py" "$pkgdir/usr/bin/$_pkgname"
  
     install -Dm644 input.txt -t "$pkgdir/opt/$pkgname"
-    cp -r  assets templates theme t_modules "$pkgdir/opt/$pkgname"
+    cp -r  assets templates theme t_modules lib "$pkgdir/opt/$pkgname"
  
     for t in de fr_FR ja_JP nb_NO pt_BR pt_PT sv zh_CN; do
         install -Dm644 locale/${t}/LC_MESSAGES/*.mo -t "$pkgdir/usr/share/locale/${t}/LC_MESSAGES"
