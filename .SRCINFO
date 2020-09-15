@@ -1,0 +1,13 @@
+pkgbase = corny-jokes-git
+	pkgdesc = Get ready for some painful insults...
+	pkgver = r50.49d5e2d
+	pkgrel = 1
+	url = https://github.com/kz6fittycent/corny-jokes
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	source = git://github.com/kz6fittycent/corny-jokes.git
+	sha256sums = SKIP
+
+pkgname = corny-jokes-git
+
