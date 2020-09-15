@@ -1,7 +1,7 @@
 # Maintainer: Azael Reyes <azael.devel@gmail.com>
 
 
-pkgname=apidb-maria
+pkgname=apidb-mariadb
 pkgver=5.0.0
 pkgrel=2
 pkgdesc="API Generator for Database acces."

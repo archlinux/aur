@@ -1,4 +1,4 @@
-pkgbase = apidb-maria
+pkgbase = apidb-mariadb
 	pkgdesc = API Generator for Database acces.
 	pkgver = 5.0.0
 	pkgrel = 2
@@ -19,5 +19,5 @@ pkgbase = apidb-maria
 	source = https://github.com/azaeldevel/apidb/archive/5.0.0-alpha10.zip
 	md5sums = 4d4df06f7f589165cc2c4b1074438e7b
 
-pkgname = apidb-maria
+pkgname = apidb-mariadb
 
