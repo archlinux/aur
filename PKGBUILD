@@ -4,39 +4,34 @@
 
 pkgbase=upp
 pkgname=(upp theide umk)
-yearver=2019.2
-pkgver=13664
+yearver=2020.1
+pkgver=14429
 pkgrel=1
 pkgdesc="Radical and innovative multiplatform C++ framework (known as U++)"
 arch=('any')
 url="http://www.ultimatepp.org"
 license=('BSD')
-groups=()
 depends=('gtk2' 'libnotify' 'libpng' 'gcc-libs' 'libxft' 'desktop-file-utils')
-makedepends=()
 optdepends=('libnotify: Enables compiling gtk-styled apps' 'sox: Enables playing notification sounds')
-replaces=()
-backup=()
 options=(!makeflags emptydirs !strip)
-source=("http://downloads.sourceforge.net/project/upp/upp/$yearver/upp-x11-src-$pkgver.tar.gz"
+source=("http://downloads.sourceforge.net/project/upp/upp/$yearver/upp-posix-$pkgver.tar.xz"
         'GCC.bm'
         'license.txt'
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/theide.1'
         'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/umk.1'
-        'https://raw.githubusercontent.com/ultimatepp/mirror/master/uppbox/lpbuild2/mkfile')
-noextract=()
-sha256sums=('3a5b73db0b61ea5bcf9bf8b37ede3bf2b994079e793ec71d087d0b95bf472d41'
-            '5c0955ef99bc08d4c79b96a470bc17eb2ae3bed5f0d66d86eff7fb726629ae79'
-            '880ad22b3a7cef8adc2750553e5b7b785ec926168f50e01bacddcae52c07e71a'
-            'cdb98e08996a809c9a323f83768edde6a22a6aad73d9ed6a193f70ac78a8b123'
-            'ce881f93471bcb65a7cc4cb4d539579fda67c783b810289ab45a02113146f645'
-            '45be7a52fb5db25c09b3851c708f2d21022240667e3d2cf39b4f614c9ad01078')
+        'mkfile')
+md5sums=('f03ecdc9983bbf2278ba0e3c601fdc73'
+         'a1b57c2231b6b0fa8070941fa4accf72'
+         'b214709f096e4f50d61f50988359241e'
+         'e60222794f4421da5917192df7045e42'
+         '574815e7f273e2653ea46b07395244be'
+         'aeb1606e522d256cbb9430c2beec0ef8')
 
 # uncomment this to true to build theide with simpler GUI (with no GTK dependecies)
 #USE_NOGTK=false
 
 build() {
-  cd "$srcdir/upp-x11-src-$pkgver"
+  cd "$srcdir/upp"
 
   FLAGS="GCC GUI MT STACKTRACE"
   USE_NOGTK="${USE_NOGTK:-false}"
@@ -75,9 +70,9 @@ package_theide(){
   install -D "$srcdir/theide.1" "$pkgdir/usr/share/man/man1/theide.1"
 #  install -D "$srcdir/umk.1" "$pkgdir/usr/share/man/man1/umk.1"
   # desktop entry
-  install -D "$srcdir/upp-x11-src-$pkgver/uppsrc/ide/theide.desktop" "$pkgdir/usr/share/applications/theide.desktop"
+  install -D "$srcdir/upp/uppsrc/ide/theide.desktop" "$pkgdir/usr/share/applications/theide.desktop"
   # icon
-  install -D "$srcdir/upp-x11-src-$pkgver/uppsrc/ide/theide-48.png" "$pkgdir/usr/share/pixmaps/theide.png"
+  install -D "$srcdir/upp/uppsrc/ide/theide-48.png" "$pkgdir/usr/share/pixmaps/theide.png"
   # fix permissions
   find "$pkgdir/usr/" -print0 | xargs -0 chown root:root
   find "$pkgdir/usr/" -type f -print0 | xargs -0 chmod 644
@@ -114,7 +109,7 @@ package_upp() {
   #copy source files
   mkdir -p "$pkgdir/usr/share/upp"
   msg2 "Moving the source codes..."
-  cp -r "$srcdir/upp-x11-src-$pkgver/"{bazaar,examples,reference,tutorial,uppsrc} "$pkgdir/usr/share/upp/"
+  cp -r "$srcdir/upp/"{bazaar,examples,reference,tutorial,uppsrc} "$pkgdir/usr/share/upp/"
   echo "#define IDE_VERSION \"$pkgver-Arch\"" > "$pkgdir/usr/share/upp/uppsrc/ide/version.h"
   msg2 "Copying additional files..."
   #license
