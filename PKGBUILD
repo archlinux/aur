@@ -3,12 +3,12 @@
 
 pkgname=cava
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Console-based Audio Visualizer for Alsa'
 arch=('any')
 url='https://github.com/karlstav/cava'
 license=('MIT')
-depends=('fftw' 'alsa-lib' 'ncurses' 'iniparser')
+depends=('fftw' 'alsa-lib' 'ncurses' 'iniparser' 'portaudio')
 optdepends=('sndio' 'pulseaudio')
 makedepends=('autoconf' 'automake')
 source=("https://github.com/karlstav/cava/archive/${pkgver}.tar.gz")
