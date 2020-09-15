@@ -1,5 +1,5 @@
 pkgname=wlsunset-git
-pkgver=efa5b63e
+pkgver=r16.ef117f0
 pkgrel=1
 pkgdesc="Day/night gamma adjustments for Wayland"
 arch=('x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
         cd "$pkgname"
-	git rev-parse HEAD | cut -b1-8
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
