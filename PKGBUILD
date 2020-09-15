@@ -25,5 +25,5 @@ package() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}/"
   install -d $pkgdir/usr/share/fonts/TTF/
   install -m644 fonts/file-icons.ttf "$pkgdir/usr/share/fonts/TTF/${_pkgdestdirname}.ttf"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname"
 }
