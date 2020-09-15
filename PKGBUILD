@@ -1,4 +1,6 @@
-# Maintainer: sballert <sballert@posteo.de>
+# Maintainer: Alexis Janon <kardyne+aur@gmail.com>
+# Contributor: JR Boyens
+# Contributor: sballert <sballert@posteo.de>
 # Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
 
 _pkgsrcname=atom
