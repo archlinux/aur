@@ -6,15 +6,16 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=2.5
-_rpmrel=2
+pkgver=2.6
+_rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
 pkgdesc="A simple chroot build environment manager for building RPMs"
 url="https://github.com/rpm-software-management/$pkgname"
 arch=('any')
 license=('GPL2')
-depends=('mock-core-configs>=32.4' 'python' 'python-distro' 'python-jinja' 'python-pyroute2')
+depends=('mock-core-configs>=32.4' 'python' 'python-distro' 'python-jinja'
+         'python-pyroute2' 'python-requests')
 ((_with_usermode)) && depends+=('usermode')
 optdepends=('createrepo_c: for mockchain command'
             'dnf-plugins-core: to create RPMs for Fedora >= 24 and for Mageia'
@@ -32,7 +33,7 @@ source=("$url/archive/$_pkgtag.tar.gz"
         "archlinux-defaults.cfg"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-md5sums=('d27a902b90a3a9c53093bace1706e3a0'
+md5sums=('955760e3a74e39f8a791fa9b5e04d7ec'
          'f64f312dfdca58dc510504041dcc9675'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8')
