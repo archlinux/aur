@@ -12,7 +12,7 @@ provides=('madx')
 makedepends=('git' 'cmake')
 arch=('i686' 'x86_64')
 _gitname=MAD-X
-source=("https://github.com/MethodicalAcceleratorDesign/${_gitname}.git")
+source=("git+https://github.com/MethodicalAcceleratorDesign/${_gitname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
