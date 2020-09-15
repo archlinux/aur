@@ -1,3 +1,0 @@
-nwVersion=$(wget -q -O- http://www.yadifa.eu/download | grep 'releases.*tar.gz' | head -n1 | sed -e 's,.*yadifa-\([0-9\.\-]*\)\.tar\.gz.*,\1,')
-update_pkgver=${nwVersion%-*}
-update__buildnr=${nwVersion#*-}
