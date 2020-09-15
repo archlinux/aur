@@ -3,20 +3,20 @@
 
 _pkgname=htop
 pkgname=htop-temperature
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.0.2
+pkgrel=1
 pkgdesc='Interactive process viewer with added support for CPU temperature'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url='https://htop.dev/'
 license=('GPL')
-depends=('ncurses' 'libncursesw.so' 'libnl')
+depends=('ncurses' 'libncursesw.so' 'libnl' 'lm_sensors')
 optdepends=('lsof: show files opened by a process'
             'strace: attach to a running process')
 options=('!emptydirs')
 source=("https://github.com/htop-dev/htop/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'htop-temperature.patch')
-sha256sums=('8465164bc085f5f1813e1d3f6c4b9b56bf4c95cc12226a5367e65794949b01ca'
-            '6e8e63b1f31b62ba6da78955fce239ab748fc9f3020d5b3da3c385184008cb31')
+sha256sums=('b4744a3bea279f2a3725ed8e5e35ffd9cb10d66673bf07c8fe21feb3c4661305'
+            '1d6e3e4fde8dc3d8f5e093b64c0eb8544f80cc2e0291d6558bdba158359d9f06')
 
 prepare() {
   cd "$_pkgname-$pkgver"
