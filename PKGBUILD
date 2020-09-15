@@ -27,8 +27,9 @@ pkgver() {
 }
 
 package() {
-  mkdir ~/.manim
+  mkdir -p ~/.manim
   cp -r "${_srcdir}/${_pkgname}/requirements.txt ~/.manim
+  
 	cd "${_pkgname}"
 	
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
