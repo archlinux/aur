@@ -7,7 +7,7 @@ pkgname=('wxbase-light'
          'wxcommon-light'
          )
 pkgver=3.0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -85,7 +85,8 @@ build() {
 
 package_wxbase-light() {
   pkgdesc="wxWidgets Base (GNOME/GStreamer free!)"
-  depends=('bash'
+  depends=('wxcommon-light'
+           'bash'
            'expat'
            'zlib'
            )
