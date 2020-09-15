@@ -1,0 +1,14 @@
+pkgbase = python-alabaster
+	pkgdesc = A configurable sidebar-enabled Sphinx theme.
+	pkgver = 0.7.12
+	pkgrel = 1
+	url = https://alabaster.readthedocs.io/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = python-alabaster-0.7.12.tar.gz::https://github.com/bitprophet/alabaster/archive/0.7.12.tar.gz
+	sha256sums = 2f413c2a7e16f6b18d38f86a236b89e50e5f6ca79094ff948e5e58828f95c430
+
+pkgname = python-alabaster
+
