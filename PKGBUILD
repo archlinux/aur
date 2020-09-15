@@ -1,7 +1,7 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 pkgname="openbangla-keyboard-git"
-pkgver=1.5.1.r77.ga289143
-pkgrel=2
+pkgver=1.5.1.r94.g08f7e4b
+pkgrel=1
 pkgdesc="An OpenSource, Unicode compliant Bengali Input Method"
 arch=('x86_64')
 url="https://openbangla.github.io"
@@ -17,7 +17,8 @@ source=(
     "${pkgname%*-git}::git+https://github.com/OpenBangla/OpenBangla-Keyboard"
     "git+https://github.com/OpenBangla/riti"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 pkgver()
 {
     cd "$srcdir/${pkgname%*-git}"
