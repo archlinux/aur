@@ -1,7 +1,7 @@
 pkgbase = octetos-core
 	pkgdesc = C/C++ library to mainly provide Semantic Versioned inplmetation
-	pkgver = 2.3.3
-	pkgrel = 2
+	pkgver = 2.5.0
+	pkgrel = 1
 	url = https://github.com/azaeldevel/octetos-core.git
 	arch = x86_64
 	license = GPL
@@ -10,8 +10,8 @@ pkgbase = octetos-core
 	depends = libconfig
 	depends = perl-xml-parser
 	depends = intltool
-	source = https://github.com/azaeldevel/octetos-core/archive/2.3.3-beta.tar.gz
-	md5sums = 123c69ecf4ab034be8dced45fa9c3af1
+	source = https://github.com/azaeldevel/octetos-core/archive/2.5.0-alpha.tar.gz
+	md5sums = c85028bac2a68bc415a0210a33fa3d3e
 
 pkgname = octetos-core
 
