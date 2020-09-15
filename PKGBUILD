@@ -48,7 +48,7 @@ optdepends=('p7zip: 7z archive extraction support'
             'gst-plugins-ugly: For GStreamer WMA support')
             
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v$pkgver.tar.gz")
-sha256sums=('98338c5958fa97773627addee74ec8ea5404c426b3cd35c1dfe978fc1b6408b8')
+sha256sums=('f32db4d75d364e43f91db4cbb0ad3824191fdf1ec952284ee2bece52428bfa5f')
 
 build() {
     cd "$_gitname-$pkgver"
