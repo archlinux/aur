@@ -1,7 +1,7 @@
 # Maintainer: Rafael Cruz <rafaelcruz at outlook dot com>
 
 pkgname=fightcade2
-pkgver=2.0.82.3
+pkgver=2.0.82.4
 pkgrel=1
 pkgdesc='The best way to play your favorite retro games with or against any other player in the world.'
 url='https://www.fightcade.com/'
@@ -10,7 +10,7 @@ license=('custom')
 depends=(rsync wine lib32-mpg123)
 makedepends=(gendesk)
 source=(https://web.fightcade.com/download/Fightcade-linux-latest.tar.gz)
-md5sums=('8095aa51ca267973f0ace064cc7520ed')
+md5sums=('SKIP')
 _romsPkgname="$pkgname-roms"
 
 createShellFiles() {
