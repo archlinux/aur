@@ -8,7 +8,7 @@
 
 pkgname='xampp'
 pkgver='7.4.10'
-pkgrel=1
+pkgrel=2
 pkgdesc='A stand-alone LAMPP distribution'
 url='http://www.apachefriends.org/'
 license=('GPL')
@@ -70,9 +70,9 @@ package() {
 	install -dm777 "${pkgdir}/opt/lampp/phpmyadmin/tmp"
 	chmod 777 "${pkgdir}/opt/lampp/temp"
 
-	# phpMyAdmin MySQL settings
-	msg 'Configuring phpMyAdmin settings for MySQL...'
-	find "${pkgdir}/opt/lampp/phpmyadmin" -type f -exec sed -i 's/localhost/localhost:3306/gI' '{}' \;
+	# phpMyAdmin MySQL settings (currently unused option)
+	#msg 'Configuring phpMyAdmin settings for MySQL...'
+	#find "${pkgdir}/opt/lampp/phpmyadmin" -type f -exec sed -i 's/localhost/localhost:3306/gI' '{}' \;
 
 	# Links
 	install -dm755 "${pkgdir}/opt/lampp/share/lampp"
