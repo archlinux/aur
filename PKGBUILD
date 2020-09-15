@@ -10,7 +10,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-patched-with-scrolling
 pkgver=9.22
-pkgrel=11
+pkgrel=12
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing and scrolling in pages'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -30,7 +30,8 @@ source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
         'clear.patch'
         'secondaryWheel.patch'
         'enable-wide-glyphs.patch'
-        '24-bit-color.patch')
+        '24-bit-color.patch'
+        'fix-perl-segfault.patch')
 sha1sums=('e575b869782fbfed955f84f48b204ec888d91ba1'
           'b5a4507f85ebb7bac589db2e07d9bc40106720d9'
           '62c4ffecfce6967def394dd4d418b68652372ea2'
@@ -42,7 +43,8 @@ sha1sums=('e575b869782fbfed955f84f48b204ec888d91ba1'
           'fc77f75bd2d51baa4abef81983dab044d7f498ce'
           'e50503f786deb6d6c2b6b8bcf486bf509c14af71'
           'd9f3b52b273d13fbd4089a7869ab2e70bf190bc9'
-          '9f5db305863b17175e72f9e2d4a78d0d7f25fd34')
+          '9f5db305863b17175e72f9e2d4a78d0d7f25fd34'
+          '949900e5acff1fa0682900c282ff9d1cdfd292b8')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -55,6 +57,7 @@ prepare() {
   patch -p1 -i ../clear.patch
   patch -p1 -i ../secondaryWheel.patch
   patch -p1 -i ../enable-wide-glyphs.patch
+  patch -p1 -i ../fix-perl-segfault.patch
 }
 
 build() {
