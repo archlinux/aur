@@ -1,5 +1,5 @@
-#!/bin/bash
-if [ $(which pkexec) ]; then
+#!/bin/sh
+if which pkexec &> /dev/null; then
 	pkexec "/opt/lampp/manager-linux-x64.run" "$@"
 else
 	/opt/lampp/manager-linux-x64.run "$@"

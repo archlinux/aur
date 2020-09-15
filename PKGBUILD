@@ -14,7 +14,8 @@ url='http://www.apachefriends.org/'
 license=('GPL')
 arch=('x86_64')
 depends=('net-tools')
-optdepends=('polkit: to run XAMPP Manager from menu')
+optdepends=('polkit: for launching XAMPP Manager and Control Panel from menu'
+            'pygtk: for using XAMPP Control Panel')
 makedepends=('sdx' 'tclkit' 'rsync')
 source=('bitrock-unpacker.tcl'
 	'xampp.service'
@@ -30,19 +31,26 @@ install='xampp.install'
 sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
             '78854cb427117c69117a8f20685acbe898a02bc3af1409950117986ff1b45f1f'
             '4092631d86ec1c3a155bfec76ea2c8433426a13f12a7a5866f843a099f1ca418'
-            '35499d6ccf6f4429432b6a484ae21c6813a9d89ccb4b59463018f8b84477cb64'
+            'aadc86347958f83165afdcf3b65e08c9b9ead4fa1356bb9fa328dbb4c17a78cf'
             '731daee35514cce22b8d6b37224bfec08302d219a59b1b30acc3c6b1a799634a'
             '595de672753af57c4abf1b4549530bba02b004bd45dfa82054d58ea3a174a4e6'
             '3df1d2fa8a8dbba21944045503b94315e5b7bc38b968ca5a816a57b83c6fd77a'
-            '210beb9372baf79f01b783db6d93a0f9a07289af64dd72d9e09baecd0799a76b')
+            'e0bfd1590ac26dc6986b5c8d2d03f9899ddd742fe2e978c95f7ed5b58c629688')
 sha256sums_x86_64=('dc216c55f99b04a9e1a458c7c881127fdbf30963710a32f6d5228a09c3cde722')
 
-package() {
+prepare() {
 
 	cd "${srcdir}"
 
 	msg 'Extracting package...'
-        ./bitrock-unpacker.tcl "${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run" "${srcdir}/${pkgname}-linux-x64-${pkgver}"
+        "${srcdir}/bitrock-unpacker.tcl" "${srcdir}/${pkgname}-linux-x64-${pkgver}-0-installer.run" \
+		"${srcdir}/${pkgname}-linux-x64-${pkgver}"
+
+}
+
+package() {
+
+	cd "${srcdir}"
 
 	msg 'Recreating package tree...'
 	install -dm755 "${pkgdir}/opt/lampp"
@@ -58,7 +66,7 @@ package() {
 
 	rm -rf "${srcdir}/${pkgname}-linux-x64-${pkgver}"
 
-	# Access to phpMyAdmin
+	# Temp folders
 	install -dm777 "${pkgdir}/opt/lampp/phpmyadmin/tmp"
 	chmod 777 "${pkgdir}/opt/lampp/temp"
 
@@ -91,10 +99,9 @@ package() {
 
 	# Executables
 	install -dm755 "${pkgdir}/usr/bin"
-	ln -sf '/opt/lampp/lampp' "${pkgdir}/usr/bin/xampp"
-	#ln -sf '/opt/lampp/lampp' "${pkgdir}/usr/bin/lampp"
 	install -Dm755 "${srcdir}/xampp-manager-polkit" "${pkgdir}/usr/bin/xampp-manager_polkit"
 	install -Dm755 "${srcdir}/xampp-control-panel" "${pkgdir}/usr/bin/xampp-control-panel"
+	ln -sf '/opt/lampp/lampp' "${pkgdir}/usr/bin/xampp"
 
 	# Systemd service
 	install -dm755 "${pkgdir}/etc/systemd/system"
@@ -108,8 +115,8 @@ package() {
 	# Install policy file for desktop launcher
 	install -Dm644 "${srcdir}/org.freedesktop.xampp-manager.policy" "${pkgdir}/usr/share/polkit-1/actions/org.freedesktop.xampp-manager.policy"
 
-	# Update backup list for the next time – currently unused method (we use
-	# `xampp.install` for this) - requires `readarray backup < "./backup.lst"`)
+	# Update backup list for the next time – currently unused method (we use the
+	# install script for this) - requires `readarray backup < "./backup.lst"`)
 	#(cd "${pkgdir}" && find -L 'opt/lampp/etc' -type f && find -L 'opt/lampp/var' -type f && find -L 'opt/lampp/htdocs' -type f) > "$(readlink 'backup.lst')"
 
 }
