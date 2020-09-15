@@ -1,16 +1,16 @@
 # Contributor: Stefano Tortarolo <stefano@inventati.org>
 # Contributor: Anton Leontiev <scileont /at/ gmail.com>
 pkgname=findimagedupes
-pkgver=2.19
+pkgver=2.19.1
 pkgrel=1
 pkgdesc='Tool to find visually similar or duplicate images'
 arch=('any')
-url="http://www.jhnc.org/findimagedupes/"
+url='http://www.jhnc.org/findimagedupes/'
 license=('GPL3')
 depends=('perl-file-mimeinfo' 'perl-inline-c' 'graphicsmagick')
 makedepends=('perl' 'sed')
 source=(http://www.jhnc.org/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('24886738644e77cb20d78f56f7178ef8')
+md5sums=('86be2910f2b5af31b5015e8db2d51a4a')
 options=('zipman')
 
 build() {
