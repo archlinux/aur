@@ -1,13 +1,14 @@
 pkgbase = alsa-control
 	pkgdesc = Easy to use ALSA default soundcard and volume configurator using Dmix and Softvol
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sezanzeb/alsa-control/
 	arch = any
 	license = GPL3
 	makedepends = python-distutils-extra
 	depends = python-gobject
 	depends = python-pyalsaaudio
+	depends = python-numpy
 	provides = alsa-control
 	conflicts = alsa-control
 	source = https://github.com/sezanzeb/alsa-control/archive/0.1.0.tar.gz

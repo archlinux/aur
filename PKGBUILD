@@ -1,11 +1,11 @@
 pkgname=alsa-control
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy to use ALSA default soundcard and volume configurator using Dmix and Softvol"
 arch=('any')
 url="https://github.com/sezanzeb/alsa-control/"
 license=('GPL3')
-depends=('python-gobject' 'python-pyalsaaudio')
+depends=('python-gobject' 'python-pyalsaaudio' 'python-numpy')
 makedepends=('python-distutils-extra')
 provides=('alsa-control')
 conflicts=('alsa-control')
