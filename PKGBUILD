@@ -1,6 +1,6 @@
 # Maintainer: ichundes <derago@gmail.com>
 pkgname='pyrescene-git'
-pkgver=0.7.r33.g8aa6a8c
+pkgver=0.7.r31.g78e9c0c
 pkgrel=1
 pkgdesc='pyReScene is a port of ReScene .NET to the Python programming language.'
 url='https://github.com/EchterAgo/pyrescene'
@@ -11,7 +11,7 @@ optdepends=('chromaprint')
 makedepends=('git')
 provides=("pyrescene")
 conflicts=("pyrescene")
-source=('pyrescene-git::git+https://github.com/EchterAgo/pyrescene.git#branch=local' 'git+https://github.com/dryes/rarlinux.git')
+source=('pyrescene-git::git+https://github.com/EchterAgo/pyrescene.git' 'git+https://github.com/dryes/rarlinux.git')
 md5sums=('SKIP'
          'SKIP')
 
