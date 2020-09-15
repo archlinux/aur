@@ -27,13 +27,11 @@ pkgver() {
 }
 
 package() {
-  mkdir -p ~/.manim
-  cp -r "${_srcdir}/${_pkgname}/requirements.txt ~/.manim
-  
 	cd "${_pkgname}"
-	
+  mkdir -p ~/.manim/requirements
+  cp "${srcdir}/${_pkgname}"/requirements.txt ~/.manim/requirements	
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  python3 -m pip install -r ~/.manim/requirements.txt
+  python3 -m pip install -r requirements.txt
   python ./setup.py install --root="${pkgdir}" --optimize=1
 }
