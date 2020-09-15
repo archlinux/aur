@@ -11,7 +11,7 @@ url="https://www.syslog-ng.com/products/open-source-log-management/"
 license=('GPL2' 'LGPL2.1')
 depends=('systemd-libs' 'awk' 'glib2' 'ivykis' 'openssl' 'pcre' 'json-c' 'curl' 'libnet')
 makedepends=('git' 'autoconf-archive' 'libxslt' 'docbook-xsl' 'json-c' 'curl' 'libdbi' 'libesmtp'
-             'hiredis' 'librabbitmq-c' 'riemann-c-client' 'geoip' 'libmaxminddb' 'mongo-c-driver'
+             'hiredis' 'librabbitmq-c' 'riemann-c-client' 'libmaxminddb' 'mongo-c-driver'
              'net-snmp' 'librdkafka' 'python')
 checkdepends=('criterion' 'python-nose' 'python-ply')
 optdepends=('logrotate: for rotating log files'
@@ -22,7 +22,6 @@ optdepends=('logrotate: for rotating log files'
             'hiredis: for the Redis plugin'
             'librabbitmq-c: for the AMQP plugin'
             'riemann-c-client: for the Riemann plugin'
-            'geoip: for the GeoIP plugin'
             'libmaxminddb: for the GeoIP2 plugin'
             'mongo-c-driver: for the MongoDB plugin'
             'net-snmp: for the SNMP plugin'
