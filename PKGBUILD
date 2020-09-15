@@ -49,6 +49,8 @@ package() {
 
 	cd "${srcdir}"
 
+	chmod +x "${srcdir}/fulfill_template.sh"
+
 	# Taken from uld/noarch/package_utils -> specify_vendor()
 	local _vendor_lc="$(grep '^VENDOR=' "${srcdir}/${_pkgcodename}/noarch/oem.conf" 2>/dev/null | \
 		sed 's/VENDOR=\(.*\)/\1/' | tr A-Z a-z)"
@@ -100,11 +102,11 @@ package() {
 	install -Dm644 "${srcdir}/${_pkgcodename}/noarch/etc/smfp.conf" \
 		"${pkgdir}/etc/sane.d/smfp-hp.conf"
 
-	./fulfill_template.sh "${srcdir}/${_pkgcodename}/noarch/oem.conf" \
+	"${srcdir}/fulfill_template.sh" "${srcdir}/${_pkgcodename}/noarch/oem.conf" \
 		"${srcdir}/${_pkgcodename}/noarch/etc/smfp.rules.in" \
 		"${pkgdir}/etc/udev/rules.d/${_udev_rule_number}-smfp_${_vendor_lc}.rules"
 
-	./fulfill_template.sh "${srcdir}/${_pkgcodename}/noarch/oem.conf" \
+	"${srcdir}/fulfill_template.sh" "${srcdir}/${_pkgcodename}/noarch/oem.conf" \
 		"${srcdir}/${_pkgcodename}/noarch/etc/smfp.fdi.in" \
 		"${pkgdir}/usr/share/hal/fdi/policy/10osvendor/01_smfp_${_vendor_lc}.fdi"
 
