@@ -1,7 +1,7 @@
 # Maintainer: a821 <a821 - mail - de>
 
 pkgname=python-numpy-groupies
-pkgver=0.9.11
+pkgver=0.9.13
 pkgrel=1
 pkgdesc='Optimised tools for group-indexing operations for python numpy'
 arch=("any")
@@ -14,7 +14,7 @@ optdepends=(
     'python-pandas: for pandas backend'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8824b1ae385daa8d2da125845f7cdc484e31e747bc5f7888cebfea08fe34f78f')
+sha256sums=('5f3c2d62dcf83fb24f842440c2db78327eaf7d5459f6c864c582d03047066828')
 
 build() {
     cd "${pkgname/python-}-${pkgver}"
