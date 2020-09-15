@@ -5,6 +5,7 @@ pkgbase = slippi-online-appimage
 	url = https://slippi.gg/
 	arch = x86_64
 	license = GPL2
+	makedepends = wget
 	depends = alsa-lib
 	depends = bluez-libs
 	depends = enet
