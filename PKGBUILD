@@ -2,7 +2,7 @@
 
 _name=gtranslator
 pkgname=$_name-git
-pkgver=3.36.0.r5043.e98e23a6
+pkgver=3.38.0.r5120.e3f489f1
 pkgrel=1
 pkgdesc='Translation Editor, an enhanced gettext po file editor for the GNOME'
 arch=('x86_64')
@@ -23,9 +23,13 @@ pkgver() {
 
 build() {
   arch-meson $_name build -Dgtk_doc=true
-  ninja -C build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="$pkgdir" meson install -C build
 }
