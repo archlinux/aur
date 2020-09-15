@@ -1,7 +1,7 @@
 pkgbase = gitahead
 	pkgdesc = Understand your Git history!
 	pkgver = 2.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gitahead.com/
 	arch = x86_64
 	license = MIT
@@ -16,11 +16,9 @@ pkgbase = gitahead
 	source = git+https://github.com/gitahead/gitahead#tag=v2.6.3
 	source = gitahead.desktop
 	source = gitahead.patch
-	source = fix-qt-theme.patch
 	sha256sums = SKIP
 	sha256sums = 254b4e970a942c6ac94df177e54a6169fe7e5f5c5d0d92b6f0c0f03b7b7b2fb0
 	sha256sums = 096e8f3700d7d74884e81eae3282fa1b4fad1cfa7a179ff03f1a7d89867538a0
-	sha256sums = 569d9a08059907e002b6b0f1c0b5aa898a0a2bd616e93a6eb20dd617320b987a
 
 pkgname = gitahead
 
