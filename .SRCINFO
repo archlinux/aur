@@ -1,0 +1,22 @@
+pkgbase = kontrast-git
+	pkgdesc = Tool to check contrast for colors that allows verifying that your colors are correctly accessible
+	pkgver = v1.0.1.r47.g8c2b1e0
+	pkgrel = 1
+	url = https://invent.kde.org/accessibility/kontrast
+	arch = x86_64
+	groups = kde-applications
+	groups = kde-accessibility
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kcoreaddons
+	depends = ki18n
+	depends = kirigami2
+	depends = hicolor-icon-theme
+	provides = kontrast
+	conflicts = kontrast
+	source = git+https://invent.kde.org/accessibility/kontrast.git
+	sha256sums = SKIP
+
+pkgname = kontrast-git
+
