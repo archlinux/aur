@@ -3,7 +3,7 @@
 
 pkgname=syslog-ng-git
 _pkgname=syslog-ng
-pkgver=3.25.1.r414.gb77db1817
+pkgver=3.29.1.r66.g088fc40ef
 pkgrel=1
 pkgdesc="Enhanced system logging daemon"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL2' 'LGPL2.1')
 depends=('systemd-libs' 'awk' 'glib2' 'ivykis' 'openssl' 'pcre' 'json-c' 'curl' 'libnet')
 makedepends=('git' 'autoconf-archive' 'libxslt' 'docbook-xsl' 'json-c' 'curl' 'libdbi' 'libesmtp'
              'hiredis' 'librabbitmq-c' 'riemann-c-client' 'libmaxminddb' 'mongo-c-driver'
-             'net-snmp' 'librdkafka' 'python')
+             'net-snmp' 'librdkafka' 'python' 'systemd')
 checkdepends=('criterion' 'python-nose' 'python-ply')
 optdepends=('logrotate: for rotating log files'
             'json-c: for the JSON plugin'
