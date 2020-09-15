@@ -17,6 +17,8 @@ sha512sums=('5bd2b59fbb323016d215023ce77793ae66766e8e8192b44bf0707ee444658022e16
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
+	export CFLAGS+=" -fcommon "
+
 	./configure \
 		--prefix=/usr \
 		--libexecdir=/usr/lib/pcc
