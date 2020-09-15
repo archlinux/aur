@@ -1,20 +1,24 @@
-# Maintainer: John Turner <jturner.usa+au@gmail.com>
+# Maintainer: John Turner <jturner.usa+aur@gmail.com>
 
 pkgname=ezzram
-depends=("python-psutil")
+pkgdesc='Systemd compatible script for setting up zram swap devices'
+url='https://github.com/Jturnerusa/ezzram'
+license=('TBA')
+depends=("python-psutil" "python")
 provides=("$pkgname")
 conflicts=("$pkgname")
 pkgver=first_release
-pkgrel=3
+pkgrel=4
 arch=("x86_64")
 
-source=("https://github.com/Jturnerusa/ezzram/releases/download/first_release/ezzram.tar.zst")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 
-sha256sums=("20bfd3d20af570c0822249eeaa3ed2c1793bd9095c441f0b2dd2202c6f2cab86")
+sha256sums=("a9efd9ac8e5df8e3dd6075973f34987207eefb5d9c389d6083ca044964943cd9")
 
 package()
 {
-	install -Dm755 "$srcdir/$pkgname.py" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-	install -Dm644 "$srcdir/$pkgname.conf" "$pkgdir/etc/$pkgname.conf"
+	cd "${pkgname}-${pkgver}"
+	install -Dm755 "$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+	install -Dm644 "$pkgname.conf" "$pkgdir/etc/$pkgname.conf"
 }

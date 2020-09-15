@@ -1,13 +1,16 @@
 pkgbase = ezzram
 	pkgdesc = Systemd compatible script for setting up zram swap devices
 	pkgver = first_release
-	pkgrel = 3
-	url = https://www.github.com/Jturnerusa/ezzram
+	pkgrel = 4
+	url = https://github.com/Jturnerusa/ezzram
 	arch = x86_64
-	license = None
+	license = TBA
 	depends = python-psutil
+	depends = python
 	provides = ezzram
 	conflicts = ezzram
-	source = https://github.com/Jturnerusa/ezzram/releases/download/first_release/ezzram.tar.zst
-	sha256sums = 20bfd3d20af570c0822249eeaa3ed2c1793bd9095c441f0b2dd2202c6f2cab86
+	source = ezzram-first_release.tar.gz::https://github.com/Jturnerusa/ezzram/archive/first_release.tar.gz
+	sha256sums = a9efd9ac8e5df8e3dd6075973f34987207eefb5d9c389d6083ca044964943cd9
+
 pkgname = ezzram
+
