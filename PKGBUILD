@@ -1,7 +1,7 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 _gemname=pony
 pkgname=ruby-$_gemname
-pkgver=1.11
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="Send email in one command: Pony.mail(:to => 'someone@example.com', :body => 'hello')"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(ruby ruby-mail)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('cb5c549c52a056943e51970b0742d312a208ec43')
+sha1sums=('d2beca94911719aad91b027c25c4c48a8f2fb423')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

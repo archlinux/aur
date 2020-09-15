@@ -1,16 +1,16 @@
 pkgbase = ruby-pony
 	pkgdesc = Send email in one command: Pony.mail(:to => 'someone@example.com', :body => 'hello')
-	pkgver = 1.11
+	pkgver = 1.13.1
 	pkgrel = 1
 	url = http://github.com/benprew/pony
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-mail
-	noextract = pony-1.11.gem
+	noextract = pony-1.13.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/pony-1.11.gem
-	sha1sums = cb5c549c52a056943e51970b0742d312a208ec43
+	source = https://rubygems.org/downloads/pony-1.13.1.gem
+	sha1sums = d2beca94911719aad91b027c25c4c48a8f2fb423
 
 pkgname = ruby-pony
 
