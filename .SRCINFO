@@ -9,6 +9,7 @@ pkgbase = hpmvs-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = eigen
+	makedepends = ninja
 	depends = libjpeg
 	depends = google-glog
 	depends = gflags

@@ -9,7 +9,7 @@ url="https://github.com/alexlocher/hpmvs"
 license=('GPL')
 groups=()
 depends=('libjpeg' 'google-glog' 'gflags')
-makedepends=('git' 'cmake' 'eigen')
+makedepends=('git' 'cmake' 'eigen' 'ninja')
 provides=()
 options=()
 source=("${pkgname}::git+https://github.com/alexlocher/hpmvs.git"
@@ -19,24 +19,18 @@ md5sums=('SKIP'
          'f5a13b2ac11fda01a29e90f93893b94d')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${srcdir}/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd ${srcdir}/${pkgname}
-
-  mkdir -p build
-  cd build
-  cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ../
-  make
+  cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -S ${pkgname} -B build -G Ninja
+# shellcheck disable=SC2086 # allow expanding MAKEFLAGS
+  ninja -C build ${MAKEFLAGS:--j1}
 }
 
-
 package() {
-  cd ${srcdir}/${pkgname}/build
-  make DESTDIR=${pkgdir} install
-
+  DESTDIR="${pkgdir}" ninja -C build install
   # install introduction paper in doc
   msg "install introduction paper in doc folder"
   install -Dm644 Locher_Progressive_Prioritized_Multi-View_CVPR_2016_paper.pdf -t "${pkgdir}"/usr/share/doc/${pkgname}
