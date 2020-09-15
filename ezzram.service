@@ -1,7 +1,0 @@
-[Service]
-RemainAfterExit=yes
-ExecStart=/usr/bin/ezzram start
-ExecStop=/usr/bin/ezzram stop
-
-[Install]
-WantedBy=multi-user.target
