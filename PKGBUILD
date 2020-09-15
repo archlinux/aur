@@ -12,7 +12,6 @@ pkgname=ttf-${_pkgdestdirname}
 arch=(any)
 url="https://atom.io/packages/file-icons"
 license=('MIT')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 makedepends=('woff2-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
 md5sums=('407bbec38267f626aecb20d02259c7de')
