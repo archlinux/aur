@@ -46,11 +46,11 @@ pre_upgrade() {
 post_upgrade() {
 
 	local _COIN
-	local HAVE_PACNEW=no
+	local _HAVE_PACNEW=no
 
 	for _COIN in "${_BACKUP[@]}"; do
 		if test -d "/${_COIN}.keep"; then
-			HAVE_PACNEW=yes
+			_HAVE_PACNEW=yes
 			rm -rf "/${_COIN}.pacnew"
 			mv "/${_COIN}" "/${_COIN}.pacnew"
 			mv "/${_COIN}.keep" "/${_COIN}"
@@ -58,7 +58,7 @@ post_upgrade() {
 		fi
 	done
 
-	if test "x${HAVE_PACNEW}" = 'xyes'; then
+	if test "x${_HAVE_PACNEW}" = 'xyes'; then
 		echo
 		echo 'One or more files have been saved as .pacnew files to preserve a current'
 		echo 'version. To discard these files launch:'
