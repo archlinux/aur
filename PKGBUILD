@@ -12,6 +12,8 @@ license=('GPL')
 depends=('ncurses' 'libncursesw.so' 'libnl' 'lm_sensors')
 optdepends=('lsof: show files opened by a process'
             'strace: attach to a running process')
+provides=('htop')
+conflicts=('htop')
 options=('!emptydirs')
 source=("https://github.com/htop-dev/htop/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'htop-temperature.patch')
