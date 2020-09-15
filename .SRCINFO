@@ -1,6 +1,6 @@
 pkgbase = cie-middleware
 	pkgdesc = Middleware della CIE (Carta di Identità Elettronica) per Linux
-	pkgver = 1.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://developers.italia.it/it/cie
 	install = cie-middleware.install
@@ -11,9 +11,9 @@ pkgbase = cie-middleware
 	depends = openssl
 	depends = java-runtime
 	depends = pcsclite
-	source = https://github.com/italia/cie-middleware-linux/releases/download/1.0/cie-middleware_1.0.tar.gz
+	source = https://github.com/italia/cie-middleware-linux/releases/download/1.2.1/cie-middleware-1.2.1.tar.gz
 	source = LICENSE
-	sha256sums = 83619b11cae8c1c2711d55693f6b1a6615622b113504038aeb1070fc4cab8b65
+	sha256sums = f9cfae323a1a065d86dd00ceba539570f3d1cd7ae095c1cf0e9eda4b31d945c9
 	sha256sums = bf2723ca68a1f406557a3174f9195dbdc6171cbf8f7ad83f56546ac592a9ea8e
 
 pkgname = cie-middleware
