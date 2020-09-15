@@ -2,7 +2,7 @@
 
 pkgname=cherrytree-git
 _pkgname=$(echo -e "${pkgname/-git/}")
-pkgver=0.99.9.r145.gdfed1e53
+pkgver=0.99.11.r169.g63ae50a1
 pkgrel=1
 pkgdesc="Hierarchical note-taking application, git version"
 arch=('x86_64')
@@ -22,8 +22,8 @@ sha256sums=('SKIP')
 pkgver() {
   local _pkgver
   cd "${_pkgname}"
-  _pkgver=$(grep 'CT_VERSION "' CMakeLists.txt | \
-	sed 's/.*"\(.*\)"[^"]*$/\1/')
+  _pkgver=$(grep cherrytree debian/changelog | sed 's/.*(\(.*\)).*$/\1/g' | \
+	sed 's/\-.*$//g')
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | \
 	sed "s/.*r/$_pkgver\.r/"
 }
