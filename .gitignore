@@ -1,5 +1,9 @@
 /pkg/
 /src/
 
-/*.pkg.tar.xz
-/*.zip
+#### built package
+/*.pkg.tar*
+
+#### downloaded binary
+/scalafmt-*.musl
+
