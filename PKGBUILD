@@ -1,14 +1,14 @@
 # Maintainer: Adrien Gallouët <adrien@gallouet.fr>
 pkgname=secret
 pkgver=0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A tiny secret store to keep your little secrets"
 arch=('x86_64')
 url="https://github.com/angt/secret"
 license=('BSD')
 depends=()
 makedepends=('git')
-source=("git+$url#tag=v${pkgver}")
+source=("git+$url#tag=v$pkgver")
 md5sums=('SKIP')
 
 prepare() {
@@ -16,7 +16,13 @@ prepare() {
   git submodule update --init --recursive
 }
 
+build() {
+  cd "$srcdir/$pkgname"
+  make
+}
+
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir" prefix=/usr install
+  install -D -m0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
