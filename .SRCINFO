@@ -1,0 +1,37 @@
+pkgbase = open-de
+	pkgdesc = Open Desktop Environment
+	pkgver = 1.1.0
+	pkgrel = 1
+	arch = x86_64
+	makedepends = autorandr
+	depends = openbox
+	depends = obconf
+	depends = tint2
+	depends = rofi
+	depends = dunst
+	depends = vim
+	depends = rxvt-unicode
+	depends = imagemagick
+	depends = slop
+	depends = ffmpeg
+	depends = hsetroot
+	depends = xclip
+	depends = xsel
+	depends = xsettingsd
+	depends = xorg-xbacklight
+	depends = python-pyxdg
+	depends = firefox
+	depends = networkmanager
+	depends = network-manager-applet
+	optdepends = neofetch
+	optdepends = code
+	optdepends = libreoffice-still
+	optdepends = bluez
+	optdepends = blueman
+	provides = open-de
+	noextract = dotfiles.tar.gz
+	source = dotfiles.tar.gz::https://github.com/cydrickn/dotfiles/archive/v1.1.0.tar.gz
+	md5sums = d8c133352ca225ae7c90340b83ecf83b
+
+pkgname = open-de
+
