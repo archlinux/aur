@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-quaternionic
-pkgver=0.1.13
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="Interpret NumPy arrays as quaternionic arrays with Numba acceleration"
 url="https://quaternionic.readthedocs.io"
@@ -15,7 +15,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/q/quaternionic/quaternionic-$pkgver.tar.gz"
 )
 sha256sums=(
-  '373911ed8a95b3f9e8f27d18ad6023431535f1daeed65cdea1ca192da7e3e1e9'
+  '4cc8a318818b5fdd9982307b9178b872e414036f7102c2824be8204cf28ab449'
 )
 
 build() {
