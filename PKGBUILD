@@ -8,13 +8,13 @@
 #######################
 
 pkgname=rstudio-desktop-daily-bin
-pkgver=1.4.781
-pkgrel=2
+pkgver=1.4.818
+pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
-depends=('r' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr' 'openssl-1.0')
+depends=('r' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr' 'openssl-1.0' 'postgresql-libs')
 #makedepends=('patchelf')
 optdepends=('pandoc: markdown support'
             'pandoc-citeproc: markdown support')
@@ -22,8 +22,7 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop-daily=${pkgver}")
 options=(!strip)
 
-
-sha256sums_x86_64=('e430fb9c68d9d3ef9c3138e5bb5856cfa4af5e8c5050694cb2ecf095e3d8e7a7')
+sha256sums_x86_64=('132e07f1264cbd0a38a799451b69f2e7903627cae1fa0c7249860fec4f1e160a')
 source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/xenial/amd64/rstudio-${pkgver}-amd64.deb")
 
 package() {
