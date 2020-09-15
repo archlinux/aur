@@ -1,4 +1,0 @@
-post_install() {
-    systemd-sysusers sheepit-client.conf
-    [[ -d /var/cache/sheepit-client ]] || install -dm 755 -o sheepit-client -g sheepit-client /var/cache/sheepit-client
-}

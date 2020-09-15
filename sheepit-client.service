@@ -5,7 +5,13 @@ After=network.target
 
 [Service]
 User=sheepit-client
-ExecStart=/usr/bin/sheepit-client -config /etc/conf.d/sheepit-client -ui text
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateDevices=true
+RestrictNamespaces=true
+CacheDirectory=sheepit-client/
+ExecStart=/usr/bin/sheepit-client
 RestartSec=60
 Restart=on-failure
 
