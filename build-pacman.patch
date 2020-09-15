@@ -1,0 +1,37 @@
+diff --git a/package.json b/package.json
+index d587088..764bcad 100644
+--- a/package.json
++++ b/package.json
+@@ -93,7 +93,7 @@
+     },
+     "linux": {
+       "icon": "static/icons",
+-      "target": "deb",
++      "target": "pacman",
+       "category": "Education"
+     },
+     "deb": {
+@@ -106,6 +106,14 @@
+         "libnss3",
+         "python3-codegrade-fs"
+       ]
++    },
++    "pacman": {
++      "depends": [
++        "gtk3",
++        "nss",
++        "libxss",
++        "libnotify"
++      ]
+     }
+   },
+   "dependencies": {
+@@ -141,7 +149,7 @@
+     "css-loader": "^0.28.11",
+     "del": "^3.0.0",
+     "devtron": "^1.4.0",
+-    "electron": "^2.0.4",
++    "electron": "^3.0.0",
+     "electron-builder": "^20.19.2",
+     "electron-debug": "^1.5.0",
+     "electron-devtools-installer": "^2.2.4",

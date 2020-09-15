@@ -1,7 +1,7 @@
 pkgbase = codegrade-fs-electron
 	pkgdesc = Electron frontend for the CodeGrade filesystem
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codegrade.com
 	install = codegrade-fs-electron.install
 	arch = x86_64
@@ -10,23 +10,14 @@ pkgbase = codegrade-fs-electron
 	makedepends = npm
 	makedepends = python
 	depends = python-codegrade-fs
-	depends = c-ares
-	depends = ffmpeg
 	depends = gtk3
-	depends = http-parser
-	depends = libevent
-	depends = libvpx
-	depends = libxslt
 	depends = libxss
-	depends = minizip
 	depends = nss
-	depends = re2
-	depends = snappy
 	depends = libnotify
-	depends = libappindicator-gtk2
-	depends = libappindicator-gtk3
 	source = codegrade-fs-electron-1.1.2::git+https://github.com/CodeGra-de/CodeGra.fs.git#commit=50d99b53fe6043382ed514377394f73d6335191f
+	source = build-pacman.patch
 	sha256sums = SKIP
+	sha256sums = efcb4ecdd9e849434c42374ae5c6376a7c72a79794b51209fc8148a842c7384e
 
 pkgname = codegrade-fs-electron
 
