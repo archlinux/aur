@@ -17,10 +17,7 @@ optdepends=('texlive-bin: latex support'
             'texlive-core: latex support'
             'texlive-latexextra: latex support'
             'texlive-bibtexextra: latex support'
-            # AUR package
             'tllocalmgr-git: latex support')
-conflicts=('manim' 'python-manimlib')
-replaces=('manim' 'python-manimlib')
 source=('manim::git+https://github.com/3b1b/manim.git')
 md5sums=('SKIP')
 
@@ -34,7 +31,7 @@ package() {
 	
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm644 requirements.txt "${pkgdir}/usr/share/doc/${_pkgname}/requirements.txt"
-  python3 -m pip install -r ${pkgdir}/usr/share/doc/${_pkgname}/requirements.txt
+  install -Dm644 requirements.txt "${pkgdir}/usr/share/requirements/${_pkgname}/requirements.txt"
+  python3 -m pip install -r requirements.txt
   python ./setup.py install --root="${pkgdir}" --optimize=1
 }
