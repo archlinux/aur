@@ -1,23 +1,28 @@
 pkgbase = python-osmnx
-	pkgdesc = Python framework for osm street network visualization
-	pkgver = 0.9
+	pkgdesc = Retrieve, model, analyze, and visualize OpenStreetMap street networks and other spatial data
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/gboeing/osmnx
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python-requests>=2.21
-	depends = python-numpy>=1.15
-	depends = python-pandas>=0.23
-	depends = python-geopandas>=0.4
-	depends = python-networkx>=2.2
-	depends = python-matplotlib>=2.2
-	depends = python-shapely>=1.6
-	depends = python-descartes>=1.1
-	depends = python-geopy>=1.14
-	depends = python-rtree>=0.8.3
-	source = https://github.com/gboeing/osmnx/archive/v0.9.tar.gz
-	sha256sums = 0653e839e84f557ee6bff29e50e17e704aa7c35f800c7b58f8c84317205049dc
+	depends = python
+	depends = python-descartes
+	depends = python-folium
+	depends = python-geopandas
+	depends = python-matplotlib
+	depends = python-networkx
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-pyproj
+	depends = python-requests
+	depends = python-rtree
+	depends = python-scikit-learn
+	depends = python-scipy
+	depends = python-shapely
+	provides = osmnx
+	source = https://files.pythonhosted.org/packages/source/o/osmnx/osmnx-0.16.0.tar.gz
+	sha256sums = 394a777cdf4314fdd63735184b4de3f53515e9ba79cc7d1252ca49d870808858
 
 pkgname = python-osmnx
 
