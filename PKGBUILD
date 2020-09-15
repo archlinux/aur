@@ -4,7 +4,7 @@ pkgname=ezzram
 depends=("python-psutil")
 provides=("$pkgname")
 conflicts=("$pkgname")
-pkgver=1
+pkgver=first_release
 pkgrel=1
 arch=("x86_64")
 
