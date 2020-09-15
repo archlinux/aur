@@ -1,0 +1,14 @@
+pkgbase = rovclock
+	pkgdesc = ATI Radeon overclocking utility
+	pkgver = 0.6e
+	pkgrel = 1
+	url = http://www.hasw.net/linux/
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = GPL2
+	source = http://www.hasw.net/linux/rovclock-0.6e.tar.bz2
+	sha1sums = bc6aa6f0b083d3d2b9e8db0caf09800b29dfd6b5
+
+pkgname = rovclock
+
