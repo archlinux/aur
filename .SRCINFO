@@ -1,7 +1,7 @@
 pkgbase = filebot
 	pkgdesc = The ultimate TV and Movie Renamer
 	pkgver = 4.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.filebot.net/
 	install = filebot.install
 	arch = i686
@@ -16,7 +16,6 @@ pkgbase = filebot
 	depends = chromaprint
 	optdepends = libzen: Required by libmediainfo
 	optdepends = libmediainfo: Read media info such as video codec, resolution or duration
-	optdepends = java-p7zip-binding: Extract archives
 	optdepends = gvfs: Drag-n-Drop from GVFS remote filesystems
 	provides = filebot
 	conflicts = filebot47

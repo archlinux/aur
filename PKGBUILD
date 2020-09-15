@@ -8,7 +8,7 @@
 
 pkgname=filebot
 pkgver=4.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://www.filebot.net/"
@@ -38,7 +38,6 @@ md5sums=('07dc606ca9a5132bb39bf1bb55088605'
 
 optdepends=('libzen: Required by libmediainfo'
 	    'libmediainfo: Read media info such as video codec, resolution or duration'
-	    'java-p7zip-binding: Extract archives'
 	    'gvfs: Drag-n-Drop from GVFS remote filesystems')
 
 prepare() {

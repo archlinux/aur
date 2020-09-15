@@ -3,6 +3,8 @@ echo -e "\e[1;33m==>\e[0m if you use OpenJDK as Java VM you \e[1;31mmust\e[0m al
 echo -e "\e[1;33m==>\e[0m \e[1;36mhttps://wiki.archlinux.org/index.php/Java#OpenJFX\e[0m"
 echo ""
 echo -e "\e[1;33m==>\e[0m \e[1;31mfilebot --license license.file\e[0m will activate your license.file"
+
+filebot -script fn:properties --def net.filebot.archive.extractor=ShellExecutables
 }
 
 post_upgrade() {
