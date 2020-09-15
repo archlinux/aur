@@ -1,7 +1,7 @@
 pkgbase = kontrast
-	pkgdesc = Color contrast checker
+	pkgdesc = Tool to check contrast for colors that allows verifying that your colors are correctly accessible
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/applications/en/kontrast
 	arch = x86_64
 	groups = kde-applications
