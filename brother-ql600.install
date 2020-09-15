@@ -1,0 +1,8 @@
+post_install() {
+  post_upgrade;
+}
+
+post_upgrade() {
+  echo "Restart CUPS to load the new files"
+  echo "You can then register your printer, e.g. using the web interface"
+}

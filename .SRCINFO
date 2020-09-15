@@ -1,0 +1,14 @@
+pkgbase = brother-ql600
+        pkgdesc = LPR and CUPS driver for Brother QL-600 label printer
+        pkgver = 3.1.5r0
+        pkgrel = 1
+        url = https://support.brother.com
+        install = brother-ql600.install
+        arch = i686
+        arch = x86_64
+        license = custom
+        depends = cups
+        source = https://download.brother.com/welcome/dlfp100719/ql600pdrv-3.1.5-0.i386.rpm
+        sha256sums = 970b8a30773356825213138a7b4aaf6fa7b107e729ebbff1a36f0dac66fe8b89
+
+pkgname = brother-ql600
