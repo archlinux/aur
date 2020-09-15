@@ -1,14 +1,14 @@
 pkgbase = python-arpy
 	pkgdesc = Library for accessing 'ar' files
-	pkgver = 1.1.1
-	pkgrel = 3
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://pypi.org/pypi/arpy
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.org/packages/source/a/arpy/arpy-1.1.1.tar.gz
-	sha256sums = 3ec36309d2234648ef8dcd2118fe7d81c30195087e0353473546583f3434e776
+	source = https://pypi.org/packages/source/a/arpy/arpy-2.1.0.tar.gz
+	sha256sums = 332d0fb6e96d497ad8746c61e586206f8718c217e39cf98fe50ec23d3f36d755
 
 pkgname = python-arpy
 

@@ -2,8 +2,8 @@
 
 _name=arpy
 pkgname="python-$_name"
-pkgver=1.1.1
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Library for accessing 'ar' files"
 arch=(any)
 url="https://pypi.org/pypi/$_name"
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('3ec36309d2234648ef8dcd2118fe7d81c30195087e0353473546583f3434e776')
+sha256sums=('332d0fb6e96d497ad8746c61e586206f8718c217e39cf98fe50ec23d3f36d755')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
