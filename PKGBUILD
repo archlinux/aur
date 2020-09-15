@@ -2,7 +2,7 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-files-git
-pkgver=r6554.35b7661f
+pkgver=r7225.f100853d3
 pkgrel=1
 pkgdesc='The Pantheon File Browser'
 arch=(x86_64)
@@ -10,6 +10,7 @@ url=https://github.com/elementary/files
 license=(GPL3)
 groups=(pantheon-unstable)
 depends=(
+  libhandy1
   atk
   cairo
   gdk-pixbuf2
@@ -19,12 +20,12 @@ depends=(
   libgee
   libgit2-glib
   granite-git
-  desktop-file-utils
   libnotify
   pango
   sqlite
   zeitgeist
   libcloudproviders
+  plank
 )
 makedepends=(
   git
@@ -50,8 +51,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson pantheon-files build \
-    -D with-unity=false
+  arch-meson pantheon-files build 
   ninja -C build
 }
 
