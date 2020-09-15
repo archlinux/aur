@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname='tetgen'
-pkgver='1.5.1'
+pkgver='1.6.0'
 pkgrel=1
 pkgdesc='A Quality Tetrahedral Mesh Generator and a 3D Delaunay Triangulator'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('AGPL3')
 #   http://wias-berlin.de/software/tetgen/download2.jsp
 # Place the downloaded archive in $SRCDEST of your /etc/makepkg.conf
 source=("local://${pkgname}${pkgver}.tar.gz")
-sha256sums=('e46a4434a3e7c00044c8f4f167e18b6f4a85be7d22838c8f948ce8cc8c01b850')
+sha256sums=('87b5e61ebd3a471fc4f2cdd7124c2b11dd6639f4feb1f941a5d2f5110d05ce39')
 options=('staticlibs')
 
 build() {
