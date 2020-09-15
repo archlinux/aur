@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=inkscape-generate-palette
-pkgver=3.0
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 pkgdesc="Inkscape extension to generate color palettes"
 arch=("any")
 url="https://github.com/olibia/inkscape-generate-palette"
@@ -9,7 +9,7 @@ license=("GPL")
 depends=("inkscape" "python2-lxml")
 conflicts=("$pkgname" "$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=("65d4c400b1b98b0bc925fb3ec2ece6a2")
+md5sums=("a2ef63a38399d82233c935031b33d7a1")
 
 package() {
   install -Dm644 "$srcdir/$pkgname-$pkgver/generate_palette.inx" "$pkgdir/usr/share/inkscape/extensions/generate_palette.inx"
