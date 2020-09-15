@@ -8,7 +8,7 @@ pkgname=ncsa-mosaic-git
 epoch=1
 pkgver=2.7b6.r25.af942b9
 _pkgver=2.7b6
-pkgrel=2
+pkgrel=3
 pkgdesc="One of the first graphical web browsers"
 url="https://github.com/yotann/ncsa-mosaic"
 license=('custom')
@@ -19,12 +19,18 @@ makedepends=('git')
 provides=("${pkgname%-git}" 'mosaic')
 conflicts=("${pkgname%-git}" 'mosaic')
 options=(!makeflags)
-source=('git+https://github.com/yotann/ncsa-mosaic.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/yotann/ncsa-mosaic.git' fcommon.patch)
+sha256sums=('SKIP'
+            'a228a1cd0f0a30362b198c53fb2d54264e9aff9932544dd6ace7fb0607bfbc29')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+	patch -p1 <"$srcdir"/fcommon.patch
 }
 
 build() {
