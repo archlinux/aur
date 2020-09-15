@@ -1,13 +1,13 @@
 pkgbase = octetos-db-maria
 	pkgdesc = C++ library for Database Acces.
-	pkgver = 1.3.2
+	pkgver = 1.3.10
 	pkgrel = 1
 	url = https://github.com/azaeldevel/octetos-db
 	arch = x86_64
 	license = GPL
 	depends = octetos-db
-	source = https://github.com/azaeldevel/octetos-db/archive/1.3.2-alpha.tar.gz
-	md5sums = e5471c2458e615cb4c92858469d0b588
+	source = https://github.com/azaeldevel/octetos-db/archive/1.3.10-alpha.tar.gz
+	md5sums = c93eaa5d397ec88e7deb83b25fd375f5
 
 pkgname = octetos-db-maria
 
