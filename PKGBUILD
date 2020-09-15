@@ -2,7 +2,7 @@
 # Contributor: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
 
 pkgname=scaleway-cli
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Scaleway CLI is a tool to help you pilot your Scaleway infrastructure directly from your terminal."
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://scaleway.com"
 license=('Apache')
 makedepends=('go' 'git')
 source=("https://github.com/scaleway/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('3f219c83e3766eb253791ac74c6bf92f8b2234e147cf5d268254cf5cc6ab7d03')
+sha256sums=('31348c29afa84a88f272492f4173a7c13a2fa7595eaddfcfb0a5eb843efb5e16')
 
 build() {
   cd "$pkgname-$pkgver"
