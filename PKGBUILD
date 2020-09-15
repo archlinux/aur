@@ -2,7 +2,7 @@
 # Contributer: Manuel <manuel.bua@gmail.com>
 
 pkgname=komorebi
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A beautiful and customizable wallpaper manager for Linux "
 url="https://github.com/Komorebi-Fork/komorebi"
@@ -14,7 +14,7 @@ makedepends=("git" "meson" "vala")
 install=komorebi.install
 license=("GPL3")
 arch=("x86_64")
-sha256sums=("c542680877e58423d2bb7a32f8221dda0445cee34180beba33e42da87280a38b")
+sha256sums=("4074751825cf031cca63c647372494446dab2492e8311ff439785527b3518c5b")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Komorebi-Fork/${pkgname}/archive/v${pkgver}.tar.gz")
 
 build() {
