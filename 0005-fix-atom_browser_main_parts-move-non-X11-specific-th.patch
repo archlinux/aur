@@ -1,7 +1,7 @@
-From 2e2a32758eda2eb966f4b7852695d072377105c5 Mon Sep 17 00:00:00 2001
+From 56d9190508d5adab3b762b0f0bba591125cd913b Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Mon, 25 Nov 2019 12:22:45 +1100
-Subject: [PATCH 5/8] fix(atom_browser_main_parts): move non X11 specific
+Subject: [PATCH 5/9] fix(atom_browser_main_parts): move non X11 specific
  things out of ifdefs
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 5/8] fix(atom_browser_main_parts): move non X11 specific
  1 file changed, 21 insertions(+), 17 deletions(-)
 
 diff --git a/shell/browser/electron_browser_main_parts.cc b/shell/browser/electron_browser_main_parts.cc
-index 2e7df14b3..ce4945155 100644
+index 06f30ebc0..48d497d3f 100644
 --- a/shell/browser/electron_browser_main_parts.cc
 +++ b/shell/browser/electron_browser_main_parts.cc
 @@ -10,6 +10,13 @@

@@ -1,7 +1,7 @@
-From e36a2dbdc40b3e6abe97a077462680bbb5e8ba5e Mon Sep 17 00:00:00 2001
+From 4afec20c261865fb0cac9e88a2094f6291a1389b Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Mon, 25 Nov 2019 10:18:23 +1100
-Subject: [PATCH 2/8] fix: don't include global_menu_bar_x11 sources in ozone
+Subject: [PATCH 2/9] fix: don't include global_menu_bar_x11 sources in ozone
  builds
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 2/8] fix: don't include global_menu_bar_x11 sources in ozone
  1 file changed, 11 insertions(+), 4 deletions(-)
 
 diff --git a/filenames.gni b/filenames.gni
-index 7b1e3fbe4..95b857ebd 100644
+index f5f4c54b9..55306b1e1 100644
 --- a/filenames.gni
 +++ b/filenames.gni
 @@ -1,3 +1,5 @@

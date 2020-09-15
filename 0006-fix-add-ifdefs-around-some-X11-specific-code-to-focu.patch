@@ -1,7 +1,7 @@
-From 4b5b4136ad79d53371fd398f20f3fda027fb7167 Mon Sep 17 00:00:00 2001
+From 4a796110b4e46957cdbeefa5771f5eb039b64196 Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Mon, 25 Nov 2019 13:46:20 +1100
-Subject: [PATCH 6/8] fix: add ifdefs around some X11 specific code to focus
+Subject: [PATCH 6/9] fix: add ifdefs around some X11 specific code to focus
  dialogs
 
 ---

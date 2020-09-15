@@ -1,7 +1,7 @@
-From 1247fdba5c60035024d74264661f8c610107d113 Mon Sep 17 00:00:00 2001
+From 43798092b1d2a17e8d6acd0199efdd5f4cb60a48 Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Sat, 8 Aug 2020 12:00:35 +1000
-Subject: [PATCH 8/8] fix: change some X11 specific ifdefs to linux
+Subject: [PATCH 8/9] fix: change some X11 specific ifdefs to linux
 
 ---
  shell/browser/common_web_contents_delegate.h  |  2 +-
@@ -13,7 +13,7 @@ Subject: [PATCH 8/8] fix: change some X11 specific ifdefs to linux
  6 files changed, 22 insertions(+), 13 deletions(-)
 
 diff --git a/shell/browser/common_web_contents_delegate.h b/shell/browser/common_web_contents_delegate.h
-index 456e86274..15eaf6723 100644
+index a7c4a8c0c..d923c3680 100644
 --- a/shell/browser/common_web_contents_delegate.h
 +++ b/shell/browser/common_web_contents_delegate.h
 @@ -131,7 +131,7 @@ class CommonWebContentsDelegate : public content::WebContentsDelegate,
@@ -48,7 +48,7 @@ index 45c785684..ca17e42c0 100644
      std::string* name,
      std::string* class_name) {
 diff --git a/shell/browser/native_window_views.cc b/shell/browser/native_window_views.cc
-index 0483fba3d..9f843d345 100644
+index 677370a2d..9e78191ab 100644
 --- a/shell/browser/native_window_views.cc
 +++ b/shell/browser/native_window_views.cc
 @@ -46,11 +46,13 @@
@@ -142,7 +142,7 @@ index 0483fba3d..9f843d345 100644
    if (unity::IsRunning()) {
      unity::SetProgressFraction(progress);
    }
-@@ -1199,7 +1208,7 @@ content::DesktopMediaID NativeWindowViews::GetDesktopMediaID() const {
+@@ -1200,7 +1209,7 @@ content::DesktopMediaID NativeWindowViews::GetDesktopMediaID() const {
  #if defined(OS_WIN)
    window_handle =
        reinterpret_cast<content::DesktopMediaID::Id>(accelerated_widget);
@@ -151,7 +151,7 @@ index 0483fba3d..9f843d345 100644
    window_handle = accelerated_widget;
  #endif
    aura::WindowTreeHost* const host =
-@@ -1302,7 +1311,7 @@ void NativeWindowViews::SetIcon(HICON window_icon, HICON app_icon) {
+@@ -1303,7 +1312,7 @@ void NativeWindowViews::SetIcon(HICON window_icon, HICON app_icon) {
    SendMessage(hwnd, WM_SETICON, ICON_BIG,
                reinterpret_cast<LPARAM>(app_icon_.get()));
  }
@@ -161,10 +161,10 @@ index 0483fba3d..9f843d345 100644
    auto* tree_host = views::DesktopWindowTreeHostLinux::GetHostForWidget(
        GetAcceleratedWidget());
 diff --git a/shell/browser/native_window_views.h b/shell/browser/native_window_views.h
-index d4eab6dfa..fb7434c90 100644
+index ea7d38c0f..5ef943a29 100644
 --- a/shell/browser/native_window_views.h
 +++ b/shell/browser/native_window_views.h
-@@ -153,7 +153,7 @@ class NativeWindowViews : public NativeWindow,
+@@ -154,7 +154,7 @@ class NativeWindowViews : public NativeWindow,
                      LPARAM l_param,
                      LRESULT* result);
    void SetIcon(HICON small_icon, HICON app_icon);

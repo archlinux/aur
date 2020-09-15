@@ -1,7 +1,7 @@
-From f2c9c70a8c3bedad7f2f3986f46ae46f77571339 Mon Sep 17 00:00:00 2001
+From c88738e5d77cb7698a0b06ec5b0ec170004ed61c Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Mon, 25 Nov 2019 10:54:34 +1100
-Subject: [PATCH 3/8] fix: fix ifdefs and add NOTIMPLEMENTEDs to make
+Subject: [PATCH 3/9] fix: fix ifdefs and add NOTIMPLEMENTEDs to make
  native_window_views compile on linux ozone builds
 
 ---
@@ -23,7 +23,7 @@ index c6029854e..2378acc0e 100644
  #include "ui/gtk/gtk_util.h"
  #endif
 diff --git a/shell/browser/native_window_views.cc b/shell/browser/native_window_views.cc
-index e9605a376..0483fba3d 100644
+index 81b09b6b2..677370a2d 100644
 --- a/shell/browser/native_window_views.cc
 +++ b/shell/browser/native_window_views.cc
 @@ -43,13 +43,15 @@
@@ -104,7 +104,7 @@ index e9605a376..0483fba3d 100644
  }
  
  void NativeWindowViews::SetAlwaysOnTop(ui::ZOrderLevel z_order,
-@@ -1369,9 +1387,14 @@ bool NativeWindowViews::CanMaximize() const {
+@@ -1370,9 +1388,14 @@ bool NativeWindowViews::CanMaximize() const {
  bool NativeWindowViews::CanMinimize() const {
  #if defined(OS_WIN)
    return minimizable_;

@@ -3,7 +3,7 @@
 # Contributor: Valentin Hăloiu <vially.ichb@gmail.com>
 
 pkgname=electron-ozone
-pkgver=9.3.0
+pkgver=9.3.1
 provides=('electron')
 conflicts=('electron')
 _commit=fb03807cd21915ddc3aa2521ba4f5ba14597bd7e
@@ -38,6 +38,7 @@ source=('git+https://github.com/electron/electron.git'
         '0006-fix-add-ifdefs-around-some-X11-specific-code-to-focu.patch'
         '0007-stop-initializing-gtk_ui_delegate_-on-ozone.patch'
         '0008-fix-change-some-X11-specific-ifdefs-to-linux.patch'
+        '0009-Remove-unnecessary-ozone-ifdefs-in-native-window-vie.patch'
        )
 sha256sums=('SKIP'
             'SKIP'
@@ -46,14 +47,15 @@ sha256sums=('SKIP'
             'c7eadac877179e586d0cce7f898aa1462b4c207733e68ecc17de9754b691713a'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             'e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2'
-            '0e744bf0557965c28d7ceeaa27767fe54275768bf9583803c071418cac6cf798'
-            'b0f98f8afecd0e88359806468e886b97b56734dc2cd91f6362a7de27ab3f81f0'
-            'f03791cf994b2fac54114dde5c5dbf26bab08347f24af2dd8c3b0513f226c3e7'
-            'f2a28a15e4dcbef271023868fcc7474f881f585a16758c98e89bca1f27f52d88'
-            '8e08d899c04988984838a684388c5ad1495ffe50775e42aa731148c7147b6843'
-            '5c6e8499d307b439342f5ec2169758643b229b38e5595e4bbdc000340f3d7236'
-            'f777112349a0a5c4311d9355a7ec80befd0047c54ba9a722a25e5f54efca2770'
-            'bb316ef62d9a02d36933fa036ba1bb61b38478951b1c8163ffc337b3cc9ad7fe')
+            '3a9b265ebc978d6b5b165c0c0098e6e26db7ce41ae33daca01e5201bd151e72e'
+            '28e87512ae5f3be5ce5312e6aedd26bffa2d26b3bca89f9e568d6b044ad16753'
+            '7e78b61a71609a041f2a45f4c20bd9f89fb4ccb6c48b2abb61faf474fcdd10e0'
+            '0e1e1c1980ac6c8de7918b74ec3949fe54addbf89f12d4b4ecfd537549b572b4'
+            'f554de4c173ec3fb0d128fe72a3677ecbecfb74eea07b8a0fb0057b7e44e540c'
+            'd5dc4b7f050640daa015dd28b0aaba8b86681c3bb35288579c7bc10bb24f13c3'
+            '03d57fe77c7f4ad5f86e6f9e276b6e973b48df194e2bb56d7e24257924e16ec7'
+            'd95a64cef0371910c19447549d53fa7155dcb17b6daa8a15a6964d34694bf5c8'
+            'bf0e01722870f54e773ea674b7eec03c0cc3740b361d45654d4888004b410884')
 
 _system_libs=('ffmpeg'
               'flac'
@@ -112,6 +114,7 @@ prepare() {
   patch -Np1 -i ../../0006-fix-add-ifdefs-around-some-X11-specific-code-to-focu.patch
   patch -Np1 -i ../../0007-stop-initializing-gtk_ui_delegate_-on-ozone.patch
   patch -Np1 -i ../../0008-fix-change-some-X11-specific-ifdefs-to-linux.patch
+  patch -Np1 -i ../../0009-Remove-unnecessary-ozone-ifdefs-in-native-window-vie.patch
   cd ../../
 
   sed -e "s/'am'/'apply'/" -i src/electron/script/lib/git.py

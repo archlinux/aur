@@ -1,7 +1,7 @@
-From 624d15a032ba7835833c0df14095ffb4d60b1407 Mon Sep 17 00:00:00 2001
+From 3cc138d5296ef6f1f5f6fba8b5ca806ecba416a6 Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Mon, 25 Nov 2019 10:58:21 +1100
-Subject: [PATCH 4/8] fix: remove various x11 sources from filenames.gni in
+Subject: [PATCH 4/9] fix: remove various x11 sources from filenames.gni in
  ozone builds
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 4/8] fix: remove various x11 sources from filenames.gni in
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/filenames.gni b/filenames.gni
-index 95b857ebd..839864e20 100644
+index 55306b1e1..c4ef51829 100644
 --- a/filenames.gni
 +++ b/filenames.gni
 @@ -406,12 +406,6 @@ filenames = {

@@ -1,7 +1,7 @@
-From 8e9c5db5501512822ecf77cd90b60d4ac08fbf4a Mon Sep 17 00:00:00 2001
+From cbe7b6b0ad3504d50082ae12ea181399e12b8438 Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Mon, 25 Nov 2019 10:14:30 +1100
-Subject: [PATCH 1/8] fix: use ozone version of global_shortcut_listener when
+Subject: [PATCH 1/9] fix: use ozone version of global_shortcut_listener when
  use_ozone is set
 
 ---
