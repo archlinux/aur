@@ -1,0 +1,13 @@
+pkgbase = whatami-git
+	pkgdesc = Get ready for some painful insults...
+	pkgver = r16.160ac54
+	pkgrel = 1
+	url = https://github.com/kz6fittycent/whatami
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	source = git://github.com/kz6fittycent/whatami.git
+	sha256sums = SKIP
+
+pkgname = whatami-git
+
