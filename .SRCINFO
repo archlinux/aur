@@ -13,9 +13,9 @@ pkgbase = hpmvs-git
 	depends = google-glog
 	depends = gflags
 	source = hpmvs-git::git+https://github.com/alexlocher/hpmvs.git
-	source = http://www.vision.ee.ethz.ch/~alocher/pdf/locher_cvpr16_progressive_prioritized_mvs.pdf
+	source = https://openaccess.thecvf.com/content_cvpr_2016/papers/Locher_Progressive_Prioritized_Multi-View_CVPR_2016_paper.pdf
 	md5sums = SKIP
-	md5sums = d2bb5ce95c7ec1e02bc50922c18ac884
+	md5sums = f5a13b2ac11fda01a29e90f93893b94d
 
 pkgname = hpmvs-git
 

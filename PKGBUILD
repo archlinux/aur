@@ -13,10 +13,10 @@ makedepends=('git' 'cmake' 'eigen')
 provides=()
 options=()
 source=("${pkgname}::git+https://github.com/alexlocher/hpmvs.git"
-        "http://www.vision.ee.ethz.ch/~alocher/pdf/locher_cvpr16_progressive_prioritized_mvs.pdf"
+        "https://openaccess.thecvf.com/content_cvpr_2016/papers/Locher_Progressive_Prioritized_Multi-View_CVPR_2016_paper.pdf"
         )
 md5sums=('SKIP'
-         'd2bb5ce95c7ec1e02bc50922c18ac884')
+         'f5a13b2ac11fda01a29e90f93893b94d')
 
 pkgver() {
   cd "$pkgname"
@@ -39,8 +39,7 @@ package() {
 
   # install introduction paper in doc
   msg "install introduction paper in doc folder"
-  install -d -m755 ${pkgdir}/usr/share/doc/${pkgname}
-  install -m644 ${srcdir}/locher_cvpr16_progressive_prioritized_mvs.pdf ${pkgdir}/usr/share/doc/${pkgname}
+  install -Dm644 Locher_Progressive_Prioritized_Multi-View_CVPR_2016_paper.pdf -t "${pkgdir}"/usr/share/doc/${pkgname}
 }
 
 # vim:set ts=2 sw=2 et:
