@@ -2,7 +2,7 @@
 # Contributor: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 
 pkgname=terragrunt
-pkgver=0.24.2
+pkgver=0.24.3
 pkgrel=1
 pkgdesc="A thin wrapper for Terraform that provides extra tools for working with multiple Terraform modules"
 url="https://github.com/gruntwork-io/terragrunt"
@@ -14,7 +14,7 @@ makedepends=(
 depends=('glibc' 'terraform')
 license=('MIT')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha256sums=('769a0f6d9fb2446c02587b50a0b85be618e077f938cc74adf0500ddb4861285b')
+sha256sums=('1d58c0a8cb19246022bf363c500541ae5c7f17bb2a520b116eb620cee207370f')
 
 build() {
   cd ${pkgname}-${pkgver}
