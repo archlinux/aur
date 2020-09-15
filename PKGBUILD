@@ -2,12 +2,12 @@
 
 pkgname=kontrast
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://kde.org/applications/en/kontrast'
 pkgdesc="Color contrast checker"
 license=(GPL)
-groups=(kde-applications kde-graphics)
+groups=(kde-applications kde-accessibility)
 depends=(kcoreaddons ki18n kirigami2 hicolor-icon-theme)
 makedepends=(extra-cmake-modules)
 optdepends=()
