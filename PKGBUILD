@@ -12,7 +12,7 @@ pkgname=ttf-${_pkgdestdirname}
 arch=(any)
 url="https://atom.io/packages/file-icons"
 license=('MIT')
-makedepends=('woff2-git')
+makedepends=('woff2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
 md5sums=('407bbec38267f626aecb20d02259c7de')
 
