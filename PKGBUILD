@@ -1,6 +1,6 @@
 # Maintainer: somini <dev@somini.xyz>
 pkgname=xdg-autostart
-pkgver=1.3.0
+pkgver=1.3.1
 _pkgver="v$pkgver"
 pkgrel=1
 pkgdesc="Autostart programs according to the XDG specification"
@@ -11,7 +11,7 @@ makedepends=('vala' 'meson')
 provides=('xdg-autostart')
 conflicts=('xdg-autostart-hg')
 source=("$pkgname-$_pkgver.tar.gz::https://gitlab.com/somini/xdg-autostart/-/archive/$_pkgver/xdg-autostart-$_pkgver.tar.gz")
-sha256sums=('aab3d37c9774d40508e86aca69d44517ad238b05a0a9f69597734d5f74fb3a9e')
+sha256sums=('ea054cdba0b8fcaee36658f1199a9ba7ba97328d38276d99f9c3c5b086a6cf53')
 
 build() {
 	cd "$srcdir/$pkgname-$_pkgver"

@@ -1,6 +1,6 @@
 pkgbase = xdg-autostart
 	pkgdesc = Autostart programs according to the XDG specification
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://gitlab.com/somini/xdg-autostart
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = xdg-autostart
 	makedepends = meson
 	provides = xdg-autostart
 	conflicts = xdg-autostart-hg
-	source = xdg-autostart-v1.3.0.tar.gz::https://gitlab.com/somini/xdg-autostart/-/archive/v1.3.0/xdg-autostart-v1.3.0.tar.gz
+	source = xdg-autostart-v1.3.1.tar.gz::https://gitlab.com/somini/xdg-autostart/-/archive/v1.3.1/xdg-autostart-v1.3.1.tar.gz
 	sha256sums = aab3d37c9774d40508e86aca69d44517ad238b05a0a9f69597734d5f74fb3a9e
 
 pkgname = xdg-autostart
