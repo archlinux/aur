@@ -2,7 +2,7 @@
 # Contributor: plague-doctor
 
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgname="pcloudcc"
 pkgdesc="A simple linux console client for pCloud cloud storage."
 arch=('x86_64')
