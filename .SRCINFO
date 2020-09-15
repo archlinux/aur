@@ -1,7 +1,7 @@
 pkgbase = glorytun
-	pkgdesc = A small, simple and secure VPN
+	pkgdesc = Multipath UDP tunnel
 	pkgver = 0.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/angt/glorytun
 	arch = x86_64
 	license = BSD
