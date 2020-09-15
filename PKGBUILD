@@ -34,7 +34,7 @@ package() {
 	
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm644 requirements.txt "${srcdir}/${_pkgname}/requirements.txt"
+  install -Dm644 requirements.txt "${pkgdir}/usr/share/requirements/${_pkgname}/requirements.txt"
   python3 -m pip install -r ${srcdir}/${_pkgname}/requirements.txt
   python ./setup.py install --root="${pkgdir}" --optimize=1
 }
