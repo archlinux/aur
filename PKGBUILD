@@ -5,12 +5,12 @@ depends=("python-psutil")
 provides=("$pkgname")
 conflicts=("$pkgname")
 pkgver=first_release
-pkgrel=2
+pkgrel=3
 arch=("x86_64")
 
-source=("https://github.com/Jturnerusa/ezzram.git")
+source=("https://github.com/Jturnerusa/ezzram/releases/download/first_release/ezzram.tar.zst")
 
-sha256sums=("SKIP")
+sha256sums=("20bfd3d20af570c0822249eeaa3ed2c1793bd9095c441f0b2dd2202c6f2cab86")
 
 package()
 {
