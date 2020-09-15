@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-ue-eap
 	pkgdesc = Early access version of the upcoming version of Intellij Idea IDE (ultimate version)
-	pkgver = 2020.2.202.7319.45
+	pkgver = 2020.2.202.7319.50
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = intellij-idea-ue-eap
 	depends = libxtst
 	depends = libdbusmenu-glib
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIU-202.7319.45.tar.gz
-	sha256sums = a1dfb79ddf78bbdba78497304549b603c516e2bbc9e96224f5871f784caafc38
+	source = https://download.jetbrains.com/idea/ideaIU-2020.2.2.tar.gz
+	sha256sums = b4b1f02f5cb6b94c1f514a8ad09d6605b70b36f265d2f0d062f3f84a03928212
 
 pkgname = intellij-idea-ue-eap
 
