@@ -2,7 +2,7 @@
 
 pkgname=fightcade2
 pkgver=2.0.82
-pkgrel=7
+pkgrel=1
 pkgdesc='The best way to play your favorite retro games with or against any other player in the world.'
 url='https://www.fightcade.com/'
 arch=('any')
