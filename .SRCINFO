@@ -1,0 +1,26 @@
+pkgbase = brick-bin
+	pkgdesc = An open source Bitrix24 messenger client
+	pkgver = 0.2.10.34
+	pkgrel = 1
+	url = https://github.com/buglloc/brick
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = desktop-file-utils
+	depends = gconf
+	depends = libxtst
+	depends = libxss
+	depends = xdg-utils
+	depends = gtk2
+	depends = libnotify
+	depends = nss
+	optdepends = libappindicator-gtk2: modern system indicator support for KDE5, Cinnamon, Unity, etc
+	provides = brick
+	conflicts = brick
+	conflicts = brick-git
+	conflicts = mesa-demos
+	source_x86_64 = http://ppa.launchpad.net/buglloc/brick/ubuntu/pool/main/b/brick/brick_0.2.10.34-0ubuntu1~xenialppa0_amd64.deb
+	sha256sums_x86_64 = 8185c7536deccdf29743b42db6aa8d45436c80de783edc96b7fa203e9d4858de
+
+pkgname = brick-bin
+
