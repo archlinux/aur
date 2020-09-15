@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 # Contributor: Mark Wagie <yochanan dot marqos at gmail dot com>
 # Contributor: Konstantin Mochalov <incredible dot angst at gmail dot com>
 # Contributor: FredBezies <fredbezies at gmail dot com>
