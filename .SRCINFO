@@ -1,6 +1,6 @@
 pkgbase = esphome-flasher
 	pkgdesc = Simple GUI tool to flash ESPs over USB
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/esphome/esphome-flasher
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = esphome-flasher
 	depends = python-wxpython
 	provides = esphomeflasher
 	conflicts = esphomeflasher
-	source = esphome-flasher-1.2.0.tar.gz::https://github.com/esphome/esphome-flasher/archive/v1.2.0.tar.gz
-	md5sums = 3ee2bb5b50d7b26d1300491aa3524bf5
+	source = esphome-flasher-1.3.0.tar.gz::https://github.com/esphome/esphome-flasher/archive/v1.3.0.tar.gz
+	md5sums = b61d426c17800a2da581990c2bd08a08
 
 pkgname = esphome-flasher
 

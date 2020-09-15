@@ -1,6 +1,6 @@
 # Maintainer: ouzu <ouzu att laze dott today>
 pkgname=esphome-flasher
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 epoch=
 pkgdesc="Simple GUI tool to flash ESPs over USB"
@@ -12,7 +12,7 @@ provides=("esphomeflasher")
 conflicts=("esphomeflasher")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/esphome/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=("3ee2bb5b50d7b26d1300491aa3524bf5")
+md5sums=('b61d426c17800a2da581990c2bd08a08')
 
 build() {
 	cd "$pkgname-$pkgver"
