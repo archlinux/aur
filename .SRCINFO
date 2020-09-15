@@ -1,0 +1,15 @@
+pkgbase = b43legacy-firmware
+	pkgdesc = Firmware for Broadcom B43 wireless networking chips - b43legacy
+	pkgver = 3.130.20.0
+	pkgrel = 1
+	url = https://wireless.wiki.kernel.org/en/users/Drivers/b43
+	arch = any
+	license = unknown
+	makedepends = b43-fwcutter>=018
+	depends = linux>=3.2
+	options = !emptydirs
+	source = http://downloads.openwrt.org/sources/wl_apsta-3.130.20.0.o
+	sha1sums = b1f61d283bd7d05ade313da522cb0d0ad4033652
+
+pkgname = b43legacy-firmware
+
