@@ -1,8 +1,7 @@
-# $Id$
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=msodbcsql
-pkgver=17.4.2.1
+pkgver=17.6.1.1
 pkgrel=1
 _opensslver=1.0.2k-19
 pkgdesc="Microsoft® ODBC Driver 17 for SQL Server®"
@@ -14,7 +13,7 @@ makedepends=('patchelf')
 options=('!strip')
 source=(https://packages.microsoft.com/rhel/7/prod/msodbcsql17-$pkgver-1.x86_64.rpm
         http://mirror.centos.org/centos/7/os/x86_64/Packages/openssl-libs-$_opensslver.el7.x86_64.rpm)
-sha256sums=('9a4e717e10c6c47fde8dad9cf6c13e1cee59709b26d02606d8b8fd5abcfd56fa'
+sha256sums=('cec945cee6cc9da4eaac69e51642dbc57af88b5240a8fc0dccb34104336209c2'
             '8a907020f9b1697cb8971158b3a5279e5b54e5637f55dcce751f1610a2ed6452')
 install=msodbcsql.install
 
