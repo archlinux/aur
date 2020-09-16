@@ -1,28 +1,21 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=gst-plugins-opencv
 _pkgname=gst-plugins-bad
-pkgver=1.16.2
-pkgrel=6
+pkgver=1.18.9
+pkgrel=1
 pkgdesc="GStreamer open-source multimedia framework OpenCV plugins"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
 license=(LGPL)
 depends=(gst-plugins-base-libs opencv)
 makedepends=(meson git)
-_commit=a6f26408f74a60d02ce6b4f0daee392ce847055f  # tags/1.16.2^0
-source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit"
-  "4.4.0.patch")
-sha256sums=('SKIP'
-  '5b103ae1c0a712950960fc1f01ed194d8b79bce6ec14ac899db85311456bfe4c')
+_commit=7cb583bb0427819a6b59b783e7df67961df2155f  # tags/1.18.0^0
+source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd $_pkgname
-  patch -Np1 -i ../4.4.0.patch
 }
 
 build() {
