@@ -1,11 +1,11 @@
 # Maintainer: FirstAirBender <noblechuk5 [at] web [dot] de>
 
-pkgname=unbound-root-hints
-pkgver=v1.0.0
+pkgname=unbound-root-hints-updater
+pkgver=1.0.0
 pkgrel=1
-pkgdesc='Update root hints for unbound'
+pkgdesc="A systemd timer for updating unbound's root servers."
 arch=('any')
-url='https://wiki.archlinux.org/index.php/unbound#Roothints_systemd_timer'
+url='https://gitlab.com/firstairbender/unbound-root-hints'
 optdepends=('unbound')
 depends=('systemd')
 source=(
