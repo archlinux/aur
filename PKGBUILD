@@ -1,11 +1,11 @@
 # Maintainer: ichundes <derago@gmail.com>
 pkgname='pyrescene-git'
 pkgver=0.7.r31.g78e9c0c
-pkgrel=1
+pkgrel=2
 pkgdesc='pyReScene is a port of ReScene .NET to the Python programming language.'
 url='https://github.com/EchterAgo/pyrescene'
 arch=('any')
-license=('MIT' 'GPL' 'Custom')
+license=('MIT' 'GPL' 'custom')
 depends=('python' 'unrar' 'lib32-libstdc++5')
 optdepends=('chromaprint')
 makedepends=('git')
@@ -35,5 +35,7 @@ package() {
   # RAR 5.50 breaks pyrescene
   rm "${pkgdir}/opt/rarlinux/2017-08-11_rar550"
 
-  install -D -m755 "awescript/awescript.py" "${pkgdir}/usr/bin/awescript"
+  install -Dm755 "awescript/awescript.py" "$pkgdir/usr/bin/awescript"
+
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
