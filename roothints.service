@@ -1,0 +1,9 @@
+[Unit]
+Description=Update root hints for unbound
+ConditionPathIsReadWrite=/etc/unbound/root.hints
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart="/usr/bin/curl" "-o" "/etc/unbound/root.hints" "https://www.internic.net/domain/named.cache"

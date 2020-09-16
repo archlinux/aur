@@ -1,0 +1,15 @@
+pkgbase = unbound-root-hints
+	pkgdesc = Update root hints for unbound
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/unbound#Roothints_systemd_timer
+	arch = any
+	depends = systemd
+	optdepends = unbound
+	source = roothints.service
+	source = roothints.timer
+	sha256sums = b786d36d17b352213058b0743bc03df810348ef59b7a5c9e03d41b7804d0570b
+	sha256sums = cdbe4062d40fa21109e2d55cc6059492fb5d01b36e8c788227a4d8aca25ed0bd
+
+pkgname = unbound-root-hints
+

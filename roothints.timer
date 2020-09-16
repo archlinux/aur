@@ -1,0 +1,13 @@
+[Unit]
+Description=Update root hints for unbound
+
+# Runs on first day of every month
+[Timer]
+OnCalendar=*-*-01 12:00:00
+Persistent=yes
+RandomizedDelaySec=2s
+AccuracySec=1us
+RemainAfterElapse=no
+
+[Install]
+WantedBy=timers.target
