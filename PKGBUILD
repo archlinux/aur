@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=gst-plugins-opencv
 _pkgname=gst-plugins-bad
-pkgver=1.18.9
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="GStreamer open-source multimedia framework OpenCV plugins"
 url="https://gstreamer.freedesktop.org/"
