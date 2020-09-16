@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cloud-hypervisor-git
-pkgver=0.7.0.r2.g2a16ce7e
+pkgver=0.9.0.r205.gb3435d51
 pkgrel=1
 pkgdesc="An open source Virtual Machine Monitor (VMM) that runs on top of KVM"
 arch=('x86_64')
@@ -21,7 +21,7 @@ pkgver() {
   _tag=$(git tag -l --sort -v:refname | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/v//'
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 check() {
