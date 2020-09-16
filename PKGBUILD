@@ -8,7 +8,7 @@
 
 pkgname='xampp'
 pkgver='7.4.10'
-pkgrel=2
+pkgrel=3
 pkgdesc='A stand-alone LAMPP distribution'
 url='http://www.apachefriends.org/'
 license=('GPL')
@@ -94,8 +94,9 @@ package() {
 	msg 'Copying executables and launcher...'
 
 	# Licenses
-	install -dm755 "${pkgdir}/usr/share/licenses/xampp"
-	rsync -azq "${pkgdir}/opt/lampp/licenses"/. "${pkgdir}/usr/share/licenses/xampp"
+	install -dm755 "${pkgdir}/usr/share/licenses"
+	chmod -R a+rwX,g-w,o-w "${pkgdir}/opt/lampp/licenses"
+	ln -sf "/opt/lampp/licenses" "${pkgdir}/usr/share/licenses/xampp"
 
 	# Executables
 	install -dm755 "${pkgdir}/usr/bin"
