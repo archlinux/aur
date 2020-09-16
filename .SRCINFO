@@ -1,11 +1,12 @@
 pkgbase = magicraminstaller-git
-	pkgdesc = Get ready for some painful insults...
+	pkgdesc = A Magic RAM Installer
 	pkgver = r22.754049b
 	pkgrel = 1
 	url = https://github.com/kz6fittycent/magicraminstaller
 	arch = any
-	license = BSD
-	makedepends = python-setuptools
+	license = MIT
+	makedepends = git
+	depends = python
 	source = git://github.com/kz6fittycent/magicraminstaller
 	sha256sums = SKIP
 

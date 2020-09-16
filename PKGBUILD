@@ -4,27 +4,26 @@
 pkgname=magicraminstaller-git
 pkgver=r22.754049b
 pkgrel=1
-pkgdesc='Get ready for some painful insults...'
+pkgdesc='A Magic RAM Installer'
 
 arch=('any')
 url='https://github.com/kz6fittycent/magicraminstaller'
 
-license=(BSD)
+license=(MIT)
 
 pkgver() {
   cd "${srcdir}/magicraminstaller"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-makedepends=('python-setuptools')
-depends=()
+makedepends=('git')
+depends=('python')
 
 source=("git://github.com/kz6fittycent/magicraminstaller")
 sha256sums=("SKIP")
 
 
 package() {
-	mkdir -p "$pkgdir/usr/bin/"
-        cp "${srcdir}/magicraminstaller/ram.py" "$pkgdir/usr/bin/"
-	chmod +x "$pkgdir/usr/bin/ram.py"
+	install -Dm755 "${srcdir}/magicraminstaller/ram.py" "$pkgdir/usr/bin/ram.py"
+	install -D "${srcdir}/magicraminstaller/LICENSE" "$pkgdir/usr/share/licenses/LICENSE"
 }
