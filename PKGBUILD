@@ -3,9 +3,8 @@
 _pkgname='autoadb'
 pkgname="${_pkgname}-git"
 pkgver=r4.7f84029
-pkgrel=2
+pkgrel=3
 arch=('any')
-depends=('android-tools')
 license=('Apache')
 makedepends=('git' 'rust' 'curl')
 provides=('autoadb')
