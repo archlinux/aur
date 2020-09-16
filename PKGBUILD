@@ -19,8 +19,8 @@ source=("${_pkgname}::git+https://github.com/Lockdoor-Framework/Lockdoor-Framewo
 sha256sums=(SKIP)
 
 pkgver() {
-    ver=$(curl -s -L https://raw.githubusercontent.com/SofianeHamlaoui/Lockdoor-Framework/master/VERSION)
-    printf "$ver" 
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
