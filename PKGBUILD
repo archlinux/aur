@@ -5,7 +5,7 @@
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-declarative-git
-pkgver=5.15.0_rc2.r93.g1a7457e033
+pkgver=5.15.1.r16.g33f97b6521
 pkgrel=1
 pkgdesc="Qt5 declarative module"
 arch=('i686' 'x86_64')
@@ -28,10 +28,10 @@ prepare() {
 pkgver() {
   cd "qtdeclarative"
 
-  _tag=$(git tag -l --sort -v:refname | sed -n '1,1{s/v//p}')
-  _rev=$(git rev-list --count v$_tag..HEAD)
+  _tag=$(git tag -l --sort -v:refname | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/-/_/g'
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//;s/-/_/g'
 }
 
 build() {
