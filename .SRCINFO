@@ -1,6 +1,6 @@
 pkgbase = libanimation-gnome-shell-git
 	pkgdesc = Library that provides animation calculations
-	pkgver = 3.8.1.r2.g5698baa
+	pkgver = 3.8.6.r5.gb3005f3
 	pkgrel = 1
 	url = https://github.com/hermes83/libanimation
 	arch = i686
