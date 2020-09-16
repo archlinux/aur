@@ -1,7 +1,7 @@
 # Maintainer: berberman <hatsue@typed.icu>
 
 pkgname=arch-hs-git
-pkgver=r53.a45e464
+pkgver=r74.a5d336d
 pkgrel=1
 pkgdesc="Generating PKGBUILD for hackage packages."
 arch=('x86_64')
@@ -20,6 +20,18 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+_gen_comp(){
+  LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs${1}/arch-hs${1} --bash-completion-script "/usr/bin/arch-hs${1}" > bash${1}
+  LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs${1}/arch-hs${1} --zsh-completion-script  "/usr/bin/arch-hs${1}" > zsh${1}
+  LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs${1}/arch-hs${1} --fish-completion-script "/usr/bin/arch-hs${1}" > fish${1}
+}
+
+_install_comp(){
+  install -D -m644 bash${1} "$pkgdir/usr/share/bash-completion/completions/arch-hs${1}-git"
+  install -D -m644 zsh${1}  "$pkgdir/usr/share/zsh/site-functions/_arch-hs${1}-git"
+  install -D -m644 bash${1} "$pkgdir/usr/share/fish/vendor_completions.d/arch-hs${1}-git.fish"
+}
+
 build() {
   cd "$srcdir/${pkgname%-git}"
   runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
@@ -34,13 +46,9 @@ build() {
   sed -i -r -e "s|ghc-pkg.*update[^ ]* |&'--force' |" register.sh
   sed -i -r -e "s|ghc-pkg.*unregister[^ ]* |&'--force' |" unregister.sh
   
-  LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs/arch-hs --bash-completion-script "/usr/bin/arch-hs" > bash
-  LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs/arch-hs --zsh-completion-script  "/usr/bin/arch-hs" > zsh
-  LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs/arch-hs --fish-completion-script "/usr/bin/arch-hs" > fish
-
-  LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs-diff/arch-hs-diff --bash-completion-script "/usr/bin/arch-hs-diff" > bash-diff
-  LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs-diff/arch-hs-diff --zsh-completion-script  "/usr/bin/arch-hs-diff" > zsh-diff
-  LD_LIBRARY_PATH=$PWD/dist/build dist/build/arch-hs-diff/arch-hs-diff --fish-completion-script "/usr/bin/arch-hs-diff" > fish-diff
+  _gen_comp
+  _gen_comp "-diff"
+  _gen_comp "-uusi" 
 }
 
 package() {
@@ -51,11 +59,7 @@ package() {
   install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
   
-  install -D -m644 bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  install -D -m644 zsh  "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
-  install -D -m644 bash "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
-  
-  install -D -m644 bash-diff "$pkgdir/usr/share/bash-completion/completions/arch-hs-diff-git"
-  install -D -m644 zsh-diff  "$pkgdir/usr/share/zsh/site-functions/_arch-hs-diff-git"
-  install -D -m644 bash-diff "$pkgdir/usr/share/fish/vendor_completions.d/arch-hs-diff-git.fish"
+  _install_comp
+  _install_comp "-diff"
+  _install_comp "-uusi"
 } 
