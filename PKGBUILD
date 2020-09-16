@@ -2,7 +2,8 @@
 # Contributor: Jorge <jorge.barroso.11@gmail.com>
 
 pkgname=gimp-extras
-pkgver=2.0.2
+_pkgname=gimp-data-extras
+pkgver=2.0.4
 pkgrel=1
 _pkgrel=1
 pkgdesc="The extra brushes and patterns from ubuntu"
@@ -10,16 +11,22 @@ arch=('any')
 url="http://packages.ubuntu.com/search?searchon=names&keywords=gimp-data-extras"
 license=('GPL2')
 depends=('gimp')
-source=(http://de.archive.ubuntu.com/ubuntu/pool/universe/g/gimp-data-extras/gimp-data-extras_${pkgver}-${_pkgrel}_all.deb)
-sha512sums=('7bd151b2744982d92458e1cacc9ae841bf26a8cb2b5f6c2b83258673da60c4d7ec3f6bdd37f85c2ee4a76948d7a390cf845d9919a7f179c9d63bf9f6ca10f3ee')
+# source=(http://de.archive.ubuntu.com/ubuntu/pool/universe/g/gimp-data-extras/gimp-data-extras_${pkgver}-${_pkgrel}_all.deb)
+source=("https://download.gimp.org/mirror/pub/gimp/extras/gimp-data-extras-${pkgver}.tar.bz2")
+sha512sums=('d80de250335b502d0187b0184b51d8e0192bbe4d376f64601ae0e0c0350a50e99bc431272bddfdb94ff18ea52ecdd6d29ff28d61d39c1e009d026e1cde772672')
 
+build() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  ./configure --prefix=/usr
+  make
+}
 package() {
-  cd "${srcdir}"
-  tar -xf data.tar.xz
-  install -m755 -d "${pkgdir}/usr/"
-  cp -r "${srcdir}/usr/" "${pkgdir}"
-
-  sed 's|usr/local|usr|' -i "${pkgdir}/usr/share/doc/gimp-data-extras"/*
-  sed 's|usr/local|usr|' -i "${pkgdir}/usr/share/gimp/2.0"/*/*
+  cd "$srcdir/$_pkgname-$pkgver"
+#   tar -xf data.tar.xz
+#   install -m755 -d "${pkgdir}/usr/"
+#   cp -r "${srcdir}/usr/" "${pkgdir}"
+#   sed 's|usr/local|usr|' -i "${pkgdir}/usr/share/doc/gimp-data-extras"/*
+#   sed 's|usr/local|usr|' -i "${pkgdir}/usr/share/gimp/2.0"/*/*
+  make DESTDIR="$pkgdir/" install
 }
 
