@@ -1,4 +1,5 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Matthew McGinn <mamcgi@gmail.com>
 _projectname='electron'
 _pkgname="${_projectname}7"
 pkgname="$_pkgname-bin"
