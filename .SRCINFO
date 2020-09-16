@@ -1,0 +1,21 @@
+pkgbase = mmwm-git
+	pkgdesc = Modern Minimalistic Window Manager (git)
+	pkgver = r88.ab0ce0c
+	pkgrel = 1
+	url = https://github.com/kaugm/mmwm
+	install = mmwm.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = libx11
+	depends = libxcb
+	depends = xcb-util
+	depends = xcb-util-wm
+	depends = xcb-util-keysyms
+	options = zipman
+	source = git+https://github.com/kaugm/mmwm
+	sha256sums = SKIP
+
+pkgname = mmwm-git
+
