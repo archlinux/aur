@@ -6,15 +6,15 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=2.2.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'libdbusmenu-qt5' 'lz4'
-         'minizip' 'openal' 'qt5-imageformats' 'xxhash')
-makedepends=('cmake' 'git' 'gtk3' 'microsoft-gsl' 'python' 'range-v3' 'tl-expected')
+depends=('hunspell' 'ffmpeg' 'gtk3' 'hicolor-icon-theme' 'libdbusmenu-qt5'
+         'lz4' 'minizip' 'openal' 'qt5-imageformats' 'qt5-wayland' 'xxhash')
+makedepends=('cmake' 'git' 'libwebrtc' 'microsoft-gsl' 'python' 'range-v3' 'tl-expected')
 optdepends=('ttf-opensans: default Open Sans font family')
 
 provides=('telegram-desktop')
@@ -29,6 +29,8 @@ _commit="tag=v$pkgver"
 # git submodule foreach --quiet 'echo \"${name##*/}::git+`git remote get-url origin`\"' | sort
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#$_commit"
+    "https://raw.githubusercontent.com/archlinux/svntogit-community/packages/telegram-desktop/trunk/Use-tg_owt-webrtc-fork.patch"
+    "https://raw.githubusercontent.com/archlinux/svntogit-community/packages/telegram-desktop/trunk/Fix_xcb_wayland.patch"
     "Catch::git+https://github.com/philsquared/Catch"
     "cmake::git+https://github.com/desktop-app/cmake_helpers.git"
     "codegen::git+https://github.com/desktop-app/codegen.git"
@@ -51,6 +53,7 @@ source=(
     "libtgvoip::git+https://github.com/telegramdesktop/libtgvoip"
     "lib_tl::git+https://github.com/desktop-app/lib_tl.git"
     "lib_ui::git+https://github.com/desktop-app/lib_ui.git"
+    "lib_webrtc::git+https://github.com/desktop-app/lib_webrtc.git"
     "lxqt-qtplugin::git+https://github.com/lxqt/lxqt-qtplugin.git"
     "lz4::git+https://github.com/lz4/lz4.git"
     "materialdecoration::git+https://github.com/desktop-app/materialdecoration.git"
@@ -59,10 +62,15 @@ source=(
     "qt5ct::git+https://github.com/desktop-app/qt5ct.git"
     "range-v3::git+https://github.com/ericniebler/range-v3.git"
     "rlottie::git+https://github.com/desktop-app/rlottie.git"
+    "tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
     "variant::git+https://github.com/desktop-app/variant.git"
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
 )
 sha512sums=('SKIP'
+            '071591c6bb71435f8186dcaf570703718051f00366dbbe3f13c4df3706d3de1f168bff4bfa707ad1d6f09f5505c925f0b01d76fd65efe904f3ba7db693d63f43'
+            'b318ae7a78bcacc27d3cbfce34b60f16197d8fdb9f8fcc8a9125ecf0d0760a1ed3bb526167013de61c5b6cf9a53102a901826d019bf6e9ba879953ede7d07823'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -114,6 +122,7 @@ prepare() {
     git config submodule.Telegram/lib_storage.url "$srcdir/lib_storage"
     git config submodule.Telegram/lib_tl.url "$srcdir/lib_tl"
     git config submodule.Telegram/lib_ui.url "$srcdir/lib_ui"
+    git config submodule.Telegram/lib_webrtc.url "$srcdir/lib_webrtc"
     git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
     git config submodule.Telegram/ThirdParty/expected.url "$srcdir/expected"
     git config submodule.Telegram/ThirdParty/fcitx5-qt.url "$srcdir/fcitx5-qt"
@@ -132,6 +141,7 @@ prepare() {
     git config submodule.Telegram/ThirdParty/qt5ct.url "$srcdir/qt5ct"
     git config submodule.Telegram/ThirdParty/range-v3.url "$srcdir/range-v3"
     git config submodule.Telegram/ThirdParty/rlottie.url "$srcdir/rlottie"
+    git config submodule.Telegram/ThirdParty/tgcalls.url "$srcdir/tgcalls"
     git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
     git config submodule.Telegram/ThirdParty/xxHash.url "$srcdir/xxHash"
 
@@ -139,13 +149,19 @@ prepare() {
     git submodule update
 
     # Cheating! Linking fixed patches to their usual place
-    for fixed in $srcdir/*_fixed*
-    do
-        ln -s $fixed ${fixed/_fixed/}
-    done
-
+    #for fixed in $srcdir/*_fixed*
+    #do
+    #    ln -s $fixed ${fixed/_fixed/}
+    #done
     # Patch here, if needed!
     # patch -Np1 -i "$srcdir/my_beautiful.patch"
+
+    # Official package patches
+    cd cmake
+    patch -R -Np1 -i ${srcdir}/Use-tg_owt-webrtc-fork.patch
+    sed 's|set(webrtc_build_loc ${webrtc_loc}/out/$<CONFIG>/obj)|set(webrtc_build_loc /usr/lib)|' -i external/webrtc/CMakeLists.txt
+    cd ../
+    patch -Np1 -i ${srcdir}/Fix_xcb_wayland.patch
 }
 
 build() {
@@ -155,17 +171,17 @@ build() {
     # -DTDESKTOP_API_ID=17349
     # -DTDESKTOP_API_HASH=344583e45741c457fe1862106095a5eb
     # export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/tdesktop="
-    cmake -B build -G "Unix Makefiles" . \
+    cmake . \
+        -B build \
+        -G "Unix Makefiles" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DTDESKTOP_API_TEST=ON \
-        -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
-        -DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
-        -DDESKTOP_APP_USE_PACKAGED_GSL=OFF \
+        -DTDESKTOP_API_ID=611335 \
+        -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
         -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
-        -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
+        -DTDESKTOP_LAUNCHER_BASENAME="telegram-desktop" \
         -DDESKTOP_APP_SPECIAL_TARGET="" \
-        -DTDESKTOP_LAUNCHER_BASENAME="telegram-desktop"
+        -DDESKTOP_APP_WEBRTC_LOCATION=/usr/include/libwebrtc
     make -C build
 }
 
