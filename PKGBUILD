@@ -5,7 +5,7 @@
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-graphicaleffects-git
-pkgver=5.15.0_beta1.r1.g617bb58
+pkgver=5.15.1.r2.gd53af70
 pkgrel=1
 pkgdesc="Qt5 graphical effects module"
 arch=('i686' 'x86_64')
@@ -28,10 +28,10 @@ prepare() {
 pkgver() {
   cd "qtgraphicaleffects"
 
-  _tag=$(git tag -l --sort -v:refname | sed -n '1,1{s/v//p}')
-  _rev=$(git rev-list --count v$_tag..HEAD)
+  _tag=$(git tag -l --sort -v:refname | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/-/_/g'
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//;s/-/_/g'
 }
 
 build() {
