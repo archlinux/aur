@@ -1,18 +1,17 @@
 pkgbase = python-branca
 	pkgdesc = Generate html+js with Python.
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
-	url = https://github.com/python-vizualisation/branca
+	url = https://github.com/python-visualization/branca
 	arch = any
 	license = MIT
 	checkdepends = python-nose
 	checkdepends = python-selenium
 	checkdepends = geckodriver
-	depends = python
 	depends = python-jinja
 	options = !emptydirs
-	source = python-branca-0.4.0.tar.gz::https://github.com/python-visualization/branca/archive/v0.4.0.tar.gz
-	sha256sums = d97a02d51ee7e895953e941f6c8163d261bb055040f7df77701bdd0f9e52f3ac
+	source = python-branca-0.4.1.tar.gz::https://github.com/python-visualization/branca/archive/v0.4.1.tar.gz
+	sha256sums = e75775305ddfb577786a418934233490a965314a13ac058a7fd44e00aa4c50b3
 
 pkgname = python-branca
 
