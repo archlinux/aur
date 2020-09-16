@@ -4,12 +4,12 @@
 pkgname=corny-jokes-git
 pkgver=r50.49d5e2d
 pkgrel=1
-pkgdesc='Get ready for some painful insults...'
+pkgdesc='Corny Jokes for terminal'
 
 arch=('any')
 url='https://github.com/kz6fittycent/corny-jokes'
 
-license=(BSD)
+license=(MIT)
 
 pkgver() {
   cd "${srcdir}/corny-jokes"
