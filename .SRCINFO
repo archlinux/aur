@@ -1,15 +1,15 @@
 pkgbase = json_dto
 	pkgdesc = A small header-only library for converting data between json representation and c++ structs
-	pkgver = 0.2.9.2
-	pkgrel = 2
+	pkgver = 0.2.10
+	pkgrel = 1
 	url = https://github.com/Stiffstream/json_dto
 	arch = any
 	license = BSD
 	checkdepends = catch2
 	makedepends = cmake
 	depends = rapidjson
-	source = json_dto-0.2.9.2.tar.gz::https://github.com/Stiffstream/json_dto/archive/v.0.2.9.2.tar.gz
-	sha256sums = cf12a66992e798bb801e590bb69a982272689238848c37e5853d7f6813d7c82f
+	source = json_dto-0.2.10.tar.gz::https://github.com/Stiffstream/json_dto/archive/v.0.2.10.tar.gz
+	sha256sums = 2686f9590aeaa1332f3d57049847995d7b76b5ffa2b9f6de5ac09d0a522387fd
 
 pkgname = json_dto
 
