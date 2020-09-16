@@ -26,13 +26,8 @@ pkgver() {
 
 package() {
   cd "${srcdir}"/qspec
-  make INSTALL_ROOT="$pkgdir" install
+  make INSTALL_ROOT="$pkgdir/usr/lib" release-install
 }
 
-post_install() {
-  update-desktop-database -q
-}
-post_remove() {
-  update-desktop-database -q
-}
+
  
