@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.32.0.r608.g700f4ef5fa
+pkgver=0.32.0.r723.g49f5c9b482
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -23,6 +23,7 @@ depends=(
          'gmp'
          'gnutls'
          'gsm'
+         'glslang'
          'hicolor-icon-theme'
          'jack2'
          'ladspa'
