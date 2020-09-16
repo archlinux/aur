@@ -1,6 +1,6 @@
 # Maintainer: Sofiane Hamlaoui <s0fianehaml40u1 at gmail dot com>
 
-pkgname=lockdoor-git
+pkgname=lockdoor
 _pkgname=lockdoor-framework
 pkgver=2.2.4
 pkgrel=1
