@@ -1,30 +1,60 @@
 pkgbase = jdk
-	pkgdesc = Oracle Java Development Kit
-	pkgver = 14.0.2
+	pkgdesc = Oracle Java
+	pkgver = 15
 	pkgrel = 1
 	url = https://www.oracle.com/java/
-	install = jdk.install
 	arch = x86_64
 	license = custom
-	depends = java-environment-common
-	depends = jre>=14
-	depends = jre<15
-	depends = zlib
-	depends = hicolor-icon-theme
-	provides = java-environment=14
-	provides = java-environment-jdk=14
-	source = https://download.oracle.com/otn-pub/java/jdk/14.0.2+12/205943a0976c4ed48cb16f1043c5c647/jdk-14.0.2_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn-pub/java/jdk/15+36/779bf45e88a44cbd9ea6621d33e33db1/jdk-15_linux-x64_bin.tar.gz
 	source = java.desktop
 	source = jconsole.desktop
 	source = jshell.desktop
 	source = java_16.png
 	source = java_48.png
-	sha256sums = cb811a86926cc0f529d16bec7bd2e25fb73e75125bbd1775cdb9a96998593dde
-	sha256sums = 4b38647428fc576f423197104a5721c0a07c825196dad426359c78fd19d1f823
-	sha256sums = b517c7883a81a9951b3b1ddae0427619212808324482b5f02a9b7810328c2ce6
-	sha256sums = 3061d6d325067b6a0e7f900ee699322741b53fd6da200209844edc54530e2bef
+	sha256sums = 300538e0c227c268f14957294d5c44abb5e7e476debc9d07e8d892c417ac8f0d
+	sha256sums = 15a35fe1ef4c672ca56489d0a1aaa23f260dfc58dfad3b64f73accdf5dd3a174
+	sha256sums = 8dde78d1da7d22daebb7067ff29d3ad92c267b2b2b0369ee28e418816adcca8b
+	sha256sums = 419d7b48f3267ce6a8dd969f6ae45411be42f3e123bc344b26e29201319df632
 	sha256sums = d27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed
 	sha256sums = 7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176
 
+pkgname = jre
+	pkgdesc = Oracle Java Runtime Environment
+	install = jre.install
+	depends = java-runtime-common
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = libxtst
+	depends = libxrender
+	depends = libnet
+	optdepends = alsa-lib: for basic sound support
+	provides = java-runtime=15
+	provides = java-runtime-headless=15
+	provides = java-runtime-jre=15
+	provides = java-runtime-headless-jre=15
+	backup = etc/java-jdk/management/jmxremote.access
+	backup = etc/java-jdk/management/jmxremote.password.template
+	backup = etc/java-jdk/management/management.properties
+	backup = etc/java-jdk/security/policy/limited/default_US_export.policy
+	backup = etc/java-jdk/security/policy/limited/default_local.policy
+	backup = etc/java-jdk/security/policy/limited/exempt_local.policy
+	backup = etc/java-jdk/security/policy/unlimited/default_US_export.policy
+	backup = etc/java-jdk/security/policy/unlimited/default_local.policy
+	backup = etc/java-jdk/security/policy/README.txt
+	backup = etc/java-jdk/security/java.policy
+	backup = etc/java-jdk/security/java.security
+	backup = etc/java-jdk/logging.properties
+	backup = etc/java-jdk/net.properties
+	backup = etc/java-jdk/sound.properties
+
 pkgname = jdk
+	pkgdesc = Oracle Java Development Kit
+	install = jdk.install
+	depends = java-environment-common
+	depends = jre>=15
+	depends = jre<16
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = java-environment=15
+	provides = java-environment-jdk=15
 
