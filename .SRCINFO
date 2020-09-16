@@ -1,6 +1,6 @@
 pkgbase = python-folium
 	pkgdesc = Python Data. Leaflet.js maps
-	pkgver = 0.10.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/python-visualization/folium
 	arch = any
@@ -8,12 +8,11 @@ pkgbase = python-folium
 	checkdepends = python-pillow
 	checkdepends = python-pytest
 	checkdepends = python-selenium
-	depends = python
 	depends = python-jinja
 	depends = python-branca
 	options = !emptydirs
-	source = python-folium-0.10.1.tar.gz::https://github.com/python-visualization/folium/archive/v0.10.1.tar.gz
-	sha256sums = 3174afd7da70569d7868513e76c8300e29356b1c129eba3c88fec37e6642f3b7
+	source = python-folium-0.11.0.tar.gz::https://github.com/python-visualization/folium/archive/v0.11.0.tar.gz
+	sha256sums = 5b32ffb900b6d09a0b3e23d44bfda39c6f84b63a447b0700eb01725cb6a5f0bd
 
 pkgname = python-folium
 
