@@ -2,7 +2,7 @@
 # Contributor: Alessio Fachechi <alessio.fachechi@gmail.com>
 
 pkgname=kitematic
-pkgver=0.17.12
+pkgver=0.17.13
 pkgrel=1
 pkgdesc='Visual Docker Container Management'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('git' 'npm' 'grunt-cli')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/docker/kitematic/archive/v${pkgver}.tar.gz"
         'kitematic.desktop'
         'kitematic.svg')
-sha256sums=('c47e11910a693e06435d6eaef18bc93c37f8be26304502cf92910a16e8c55e43'
+sha256sums=('fb22f98bb775ccb42ba29b3432b14cb5bae9cc1f1fb816990d73cf6d609f05da'
             'acf85b7e6a94be11c482f6119dcea00cf828d9cd25e0bdea22b844fa5d4c01c0'
             '954d9803f49e475bc3242ad8b5dbfe5f3be9b532434ff260e1cf5c929f018617')
 
@@ -33,7 +33,9 @@ package() {
     # create symlink for binary
     ln -s ../../opt/kitematic/Kitematic "${pkgdir}/usr/bin/kitematic"
     
-    # desktop file and icon
+    # desktop file and icons
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
     install -D -m644 kitematic.desktop -t "${pkgdir}/usr/share/applications"
     install -D -m644 kitematic.svg     -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    ln -s ../../../../../../opt/kitematic/resources/app/icon.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/kitematic.png"
 }
