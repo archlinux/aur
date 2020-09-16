@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=opencomic-bin
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Comic and Manga reader, written with Node.js and using Electron'
 arch=('x86_64')
@@ -9,7 +9,6 @@ url="https://github.com/ollm/OpenComic"
 license=('GPL3')
 provides=('opencomic')
 depends=('libexif'
-         'libgsf'
          'gtk3'
          'nss'
          'libxss'
@@ -21,7 +20,7 @@ depends=('libexif'
          'libjpeg-turbo')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ollm/OpenComic/releases/download/v${pkgver}/opencomic-${pkgver}.x86_64.rpm")
-sha256sums=('f73cbbb9d91a6508fdc1603e32b315dc54618b94d79989345b799a924214d529')
+sha256sums=('2862fe94318a12b34eb4432ca22d2792e7e49388024f142a63bd0298d956adfb')
 
 package() {
   rm -rf usr/lib
