@@ -1,8 +1,8 @@
 # Maintainer: FirstAirBender <noblechuk5 [at] web [dot] de>
 
 pkgname=unbound-root-hints-updater
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="A systemd timer for updating unbound's root servers."
 arch=('any')
 url='https://gitlab.com/firstairbender/unbound-root-hints'
