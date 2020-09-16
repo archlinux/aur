@@ -5,7 +5,7 @@
 
 pkgname=tikzit-git
 epoch=3
-pkgver=2.1.5.r8.g5ca0a2e
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="Creation and modification of TeX diagrams written using the pgf/TikZ macro library - rewrite in QT and C++"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ provides=('tikzit')
 conflicts=('tikzit')
 source=('git+https://github.com/tikzit/tikzit.git')
 md5sums=('SKIP')
-options=('!makeflags')
+#options=('!makeflags')
 
 pkgver() {
   cd ${pkgname%-git}
