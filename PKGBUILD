@@ -2,12 +2,12 @@
 pkgname=xcursor-we10xos
 pkgver=20200614
 _commit=438dd5be70c3b467b04a8b00cf603f05364c2910
-pkgrel=1
+pkgrel=2
 pkgdesc='Cursor theme inspired by Windows 10'
 license=(GPL)
 url=https://github.com/yeyushengfan258/We10XOS-cursors
 arch=(any)
-makedepends=(inkscape xorg-xcursorgen)
+makedepends=(git inkscape xorg-xcursorgen)
 source=("${pkgname}::git+${url}#commit=${_commit}")
 sha512sums=(SKIP)
 
