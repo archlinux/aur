@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/mindustry-bin-*.pkg.tar.*
+
+/mindustry-bin-*.jar
+/mindustry-bin.icns
