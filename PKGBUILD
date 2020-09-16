@@ -1,7 +1,7 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.4.64
+pkgver=5.4.65
 pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
@@ -14,7 +14,7 @@ makedepends=(
 options=('!strip')
 _srcname=linux-$pkgver
 source=(
-  https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
+  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
@@ -27,7 +27,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('b9d3c2938466f388a70fd190fd6691baa8b757393b267e9f7b06c4730d85d5ef'
+sha256sums=('f514834417d09de1667836e443e085bf37952603f23572b69ef0fcfda16cac69'
             'SKIP'
             '6a2ee8f822810f594921aa85087e4cf0a17c68518d395586fd9c56b6c7e63dad'
             'b3f2777462517abd75039fc56a63dfa3f5eb6b3865e02fe9e0c3512381eed54b'
