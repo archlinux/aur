@@ -1,6 +1,6 @@
 pkgbase = qt5-svg-git
 	pkgdesc = Qt5 SVG module
-	pkgver = 5.15.0_beta1.r3.gae1e354
+	pkgver = 5.15.1.r7.gfdbe89e
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
