@@ -1,6 +1,6 @@
 pkgbase = bdf-tewi-git
 	pkgdesc = Bitmap font
-	pkgver = 0.290.9841a18
+	pkgver = 0.313.a975d38
 	pkgrel = 1
 	url = https://github.com/lucy/tewi-font
 	install = bdf-tewi-git.install
@@ -10,7 +10,8 @@ pkgbase = bdf-tewi-git
 	makedepends = python
 	makedepends = make
 	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
+	depends = xorg-mkfontdir
+	depends = xorg-mkfontscale
 	source = git+https://github.com/lucy/tewi-font.git
 	sha256sums = SKIP
 
