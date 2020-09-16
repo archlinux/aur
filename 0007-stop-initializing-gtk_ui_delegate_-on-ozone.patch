@@ -1,4 +1,4 @@
-From ed5cd85a68e2f13d8ff9d5ca9e2ba8c25c03b678 Mon Sep 17 00:00:00 2001
+From 4c78771d4d4bc5f0ab9116b1e7080f0f14b48a49 Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Sun, 14 Jun 2020 01:16:53 +1000
 Subject: [PATCH 7/9] stop initializing gtk_ui_delegate_-on ozone
@@ -9,10 +9,10 @@ Subject: [PATCH 7/9] stop initializing gtk_ui_delegate_-on ozone
  2 files changed, 11 insertions(+), 4 deletions(-)
 
 diff --git a/shell/browser/electron_browser_main_parts.cc b/shell/browser/electron_browser_main_parts.cc
-index 48d497d3f..81e74fc2e 100644
+index 7e3130ee2..06124cf01 100644
 --- a/shell/browser/electron_browser_main_parts.cc
 +++ b/shell/browser/electron_browser_main_parts.cc
-@@ -213,7 +213,9 @@ int X11EmptyErrorHandler(Display* d, XErrorEvent* error) {
+@@ -215,7 +215,9 @@ int X11EmptyErrorHandler(Display* d, XErrorEvent* error) {
  int X11EmptyIOErrorHandler(Display* d) {
    return 0;
  }
@@ -22,7 +22,7 @@ index 48d497d3f..81e74fc2e 100644
  // GTK does not provide a way to check if current theme is dark, so we compare
  // the text and background luminosity to get a result.
  // This trick comes from FireFox.
-@@ -231,7 +233,7 @@ void UpdateDarkThemeSetting() {
+@@ -233,7 +235,7 @@ void UpdateDarkThemeSetting() {
  
  }  // namespace
  
@@ -31,7 +31,7 @@ index 48d497d3f..81e74fc2e 100644
  class DarkThemeObserver : public ui::NativeThemeObserver {
   public:
    DarkThemeObserver() = default;
-@@ -410,11 +412,13 @@ void ElectronBrowserMainParts::PostDestroyThreads() {
+@@ -405,11 +407,13 @@ void ElectronBrowserMainParts::PostDestroyThreads() {
  }
  
  void ElectronBrowserMainParts::ToolkitInitialized() {
@@ -47,7 +47,7 @@ index 48d497d3f..81e74fc2e 100644
    linux_ui->Initialize();
  
 diff --git a/shell/browser/electron_browser_main_parts.h b/shell/browser/electron_browser_main_parts.h
-index f63a862ba..8f5101f37 100644
+index 446e3e1c2..dc7217eec 100644
 --- a/shell/browser/electron_browser_main_parts.h
 +++ b/shell/browser/electron_browser_main_parts.h
 @@ -29,7 +29,7 @@ class WMState;

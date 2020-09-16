@@ -1,4 +1,4 @@
-From 4a796110b4e46957cdbeefa5771f5eb039b64196 Mon Sep 17 00:00:00 2001
+From ba1b3b361085e8d78739dd37b55a042ef3c8e751 Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Mon, 25 Nov 2019 13:46:20 +1100
 Subject: [PATCH 6/9] fix: add ifdefs around some X11 specific code to focus
@@ -10,7 +10,7 @@ Subject: [PATCH 6/9] fix: add ifdefs around some X11 specific code to focus
  2 files changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/shell/browser/ui/file_dialog_gtk.cc b/shell/browser/ui/file_dialog_gtk.cc
-index 146201f66..d9d371ac0 100644
+index a1693ce8a..25b5bf348 100644
 --- a/shell/browser/ui/file_dialog_gtk.cc
 +++ b/shell/browser/ui/file_dialog_gtk.cc
 @@ -14,8 +14,11 @@

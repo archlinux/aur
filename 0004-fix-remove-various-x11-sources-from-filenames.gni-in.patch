@@ -1,4 +1,4 @@
-From 3cc138d5296ef6f1f5f6fba8b5ca806ecba416a6 Mon Sep 17 00:00:00 2001
+From a5d51abeebd77220984c5fa26cd6c51cf7fffef8 Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Mon, 25 Nov 2019 10:58:21 +1100
 Subject: [PATCH 4/9] fix: remove various x11 sources from filenames.gni in
@@ -9,10 +9,10 @@ Subject: [PATCH 4/9] fix: remove various x11 sources from filenames.gni in
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/filenames.gni b/filenames.gni
-index 55306b1e1..c4ef51829 100644
+index 119593b97..5e7869612 100644
 --- a/filenames.gni
 +++ b/filenames.gni
-@@ -406,12 +406,6 @@ filenames = {
+@@ -413,12 +413,6 @@ filenames = {
      "shell/browser/ui/win/notify_icon_host.h",
      "shell/browser/ui/win/taskbar_host.cc",
      "shell/browser/ui/win/taskbar_host.h",
@@ -25,7 +25,7 @@ index 55306b1e1..c4ef51829 100644
      "shell/browser/unresponsive_suppressor.cc",
      "shell/browser/unresponsive_suppressor.h",
      "shell/browser/web_contents_permission_helper.cc",
-@@ -606,6 +600,12 @@ filenames = {
+@@ -618,6 +612,12 @@ filenames = {
        "chromium_src/chrome/browser/ui/views/frame/global_menu_bar_registrar_x11.h",
        "shell/browser/ui/views/global_menu_bar_x11.cc",
        "shell/browser/ui/views/global_menu_bar_x11.h",

@@ -1,4 +1,4 @@
-From 4afec20c261865fb0cac9e88a2094f6291a1389b Mon Sep 17 00:00:00 2001
+From 5de27db7f4a795d3ab163536478ee60c6e3444e4 Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Mon, 25 Nov 2019 10:18:23 +1100
 Subject: [PATCH 2/9] fix: don't include global_menu_bar_x11 sources in ozone
@@ -9,7 +9,7 @@ Subject: [PATCH 2/9] fix: don't include global_menu_bar_x11 sources in ozone
  1 file changed, 11 insertions(+), 4 deletions(-)
 
 diff --git a/filenames.gni b/filenames.gni
-index f5f4c54b9..55306b1e1 100644
+index e5a158ed4..119593b97 100644
 --- a/filenames.gni
 +++ b/filenames.gni
 @@ -1,3 +1,5 @@
@@ -27,7 +27,7 @@ index f5f4c54b9..55306b1e1 100644
      "shell/app/command_line_args.cc",
      "shell/app/command_line_args.h",
      "shell/app/electron_content_client.cc",
-@@ -376,8 +376,6 @@ filenames = {
+@@ -383,8 +383,6 @@ filenames = {
      "shell/browser/ui/views/electron_views_delegate_win.cc",
      "shell/browser/ui/views/frameless_view.cc",
      "shell/browser/ui/views/frameless_view.h",
@@ -36,7 +36,7 @@ index f5f4c54b9..55306b1e1 100644
      "shell/browser/ui/views/inspectable_web_contents_view_views.cc",
      "shell/browser/ui/views/inspectable_web_contents_view_views.h",
      "shell/browser/ui/views/menu_bar.cc",
-@@ -602,6 +600,15 @@ filenames = {
+@@ -614,6 +612,15 @@ filenames = {
      "shell/utility/electron_content_utility_client.h",
    ]
  

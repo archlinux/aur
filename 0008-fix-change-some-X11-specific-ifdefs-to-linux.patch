@@ -1,4 +1,4 @@
-From 43798092b1d2a17e8d6acd0199efdd5f4cb60a48 Mon Sep 17 00:00:00 2001
+From 834371edf6e85d5a63bfe2ad8df377d3db9e7390 Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Sat, 8 Aug 2020 12:00:35 +1000
 Subject: [PATCH 8/9] fix: change some X11 specific ifdefs to linux
@@ -13,10 +13,10 @@ Subject: [PATCH 8/9] fix: change some X11 specific ifdefs to linux
  6 files changed, 22 insertions(+), 13 deletions(-)
 
 diff --git a/shell/browser/common_web_contents_delegate.h b/shell/browser/common_web_contents_delegate.h
-index a7c4a8c0c..d923c3680 100644
+index 75ef90ffe..8165ff71c 100644
 --- a/shell/browser/common_web_contents_delegate.h
 +++ b/shell/browser/common_web_contents_delegate.h
-@@ -131,7 +131,7 @@ class CommonWebContentsDelegate : public content::WebContentsDelegate,
+@@ -130,7 +130,7 @@ class CommonWebContentsDelegate : public content::WebContentsDelegate,
  #if defined(TOOLKIT_VIEWS) && !defined(OS_MACOSX)
    gfx::ImageSkia GetDevToolsWindowIcon() override;
  #endif
@@ -48,7 +48,7 @@ index 45c785684..ca17e42c0 100644
      std::string* name,
      std::string* class_name) {
 diff --git a/shell/browser/native_window_views.cc b/shell/browser/native_window_views.cc
-index 677370a2d..9e78191ab 100644
+index d5170dd38..d9b650a87 100644
 --- a/shell/browser/native_window_views.cc
 +++ b/shell/browser/native_window_views.cc
 @@ -46,11 +46,13 @@
@@ -67,15 +67,15 @@ index 677370a2d..9e78191ab 100644
  #include "shell/browser/ui/views/global_menu_bar_x11.h"
  #include "shell/browser/ui/x/event_disabler.h"
  #include "shell/browser/ui/x/window_state_watcher.h"
-@@ -58,7 +60,6 @@
- #include "ui/base/x/x11_util.h"
+@@ -59,7 +61,6 @@
+ #include "ui/gfx/x/x11_atom_cache.h"
  #include "ui/gfx/x/x11_types.h"
  #include "ui/views/widget/desktop_aura/desktop_window_tree_host_x11.h"
 -#include "ui/views/window/native_frame_view.h"
  #endif
  
  #elif defined(OS_WIN)
-@@ -194,7 +195,7 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
+@@ -195,7 +196,7 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
      params.parent = parent->GetNativeWindow();
  
    params.native_widget = new ElectronDesktopNativeWidgetAura(this);
@@ -84,7 +84,7 @@ index 677370a2d..9e78191ab 100644
    std::string name = Browser::Get()->GetName();
    // Set WM_WINDOW_ROLE.
    params.wm_role_name = "browser-window";
-@@ -211,9 +212,11 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
+@@ -212,9 +213,11 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
    std::string window_type;
    options.Get(options::kType, &window_type);
  
@@ -96,17 +96,17 @@ index 677370a2d..9e78191ab 100644
  
    // Set _GTK_THEME_VARIANT to dark if we have "dark-theme" option set.
    bool use_dark_theme = false;
-@@ -221,6 +224,7 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
+@@ -222,6 +225,7 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
      SetGTKDarkThemeEnabled(use_dark_theme);
    }
  
 +#if defined(USE_X11)
    // Before the window is mapped the SetWMSpecState can not work, so we have
    // to manually set the _NET_WM_STATE.
-   std::vector<::Atom> state_atom_list;
-@@ -233,16 +237,20 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
+   std::vector<x11::Atom> state_atom_list;
+@@ -234,16 +238,20 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
    if (fullscreen) {
-     state_atom_list.push_back(GetAtom("_NET_WM_STATE_FULLSCREEN"));
+     state_atom_list.push_back(gfx::GetAtom("_NET_WM_STATE_FULLSCREEN"));
    }
 +#endif
  
@@ -117,7 +117,7 @@ index 677370a2d..9e78191ab 100644
 +#if defined(USE_X11)
      // Modal window needs the _NET_WM_STATE_MODAL hint.
      if (is_modal())
-       state_atom_list.push_back(GetAtom("_NET_WM_STATE_MODAL"));
+       state_atom_list.push_back(gfx::GetAtom("_NET_WM_STATE_MODAL"));
 +#endif
    }
  
@@ -125,7 +125,7 @@ index 677370a2d..9e78191ab 100644
    if (!state_atom_list.empty())
      ui::SetAtomArrayProperty(GetAcceleratedWidget(), "_NET_WM_STATE", "ATOM",
                               state_atom_list);
-@@ -251,6 +259,7 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
+@@ -252,6 +260,7 @@ NativeWindowViews::NativeWindowViews(const gin_helper::Dictionary& options,
    if (!window_type.empty())
      SetWindowType(GetAcceleratedWidget(), window_type);
  #endif
@@ -133,7 +133,7 @@ index 677370a2d..9e78191ab 100644
  
  #if defined(OS_WIN)
    if (!has_frame()) {
-@@ -1145,7 +1154,7 @@ void NativeWindowViews::SetProgressBar(double progress,
+@@ -1151,7 +1160,7 @@ void NativeWindowViews::SetProgressBar(double progress,
                                         NativeWindow::ProgressState state) {
  #if defined(OS_WIN)
    taskbar_host_.SetProgressBar(GetAcceleratedWidget(), progress, state);
@@ -142,16 +142,16 @@ index 677370a2d..9e78191ab 100644
    if (unity::IsRunning()) {
      unity::SetProgressFraction(progress);
    }
-@@ -1200,7 +1209,7 @@ content::DesktopMediaID NativeWindowViews::GetDesktopMediaID() const {
+@@ -1206,7 +1215,7 @@ content::DesktopMediaID NativeWindowViews::GetDesktopMediaID() const {
  #if defined(OS_WIN)
    window_handle =
        reinterpret_cast<content::DesktopMediaID::Id>(accelerated_widget);
 -#elif defined(USE_X11)
 +#elif defined(OS_LINUX)
-   window_handle = accelerated_widget;
+   window_handle = static_cast<uint32_t>(accelerated_widget);
  #endif
    aura::WindowTreeHost* const host =
-@@ -1303,7 +1312,7 @@ void NativeWindowViews::SetIcon(HICON window_icon, HICON app_icon) {
+@@ -1309,7 +1318,7 @@ void NativeWindowViews::SetIcon(HICON window_icon, HICON app_icon) {
    SendMessage(hwnd, WM_SETICON, ICON_BIG,
                reinterpret_cast<LPARAM>(app_icon_.get()));
  }
@@ -187,10 +187,10 @@ index 73c4214d3..0f2acc3cf 100644
    virtual void GetDevToolsWindowWMClass(std::string* name,
                                          std::string* class_name) {}
 diff --git a/shell/browser/ui/views/inspectable_web_contents_view_views.cc b/shell/browser/ui/views/inspectable_web_contents_view_views.cc
-index d6321c8ff..6702c7a2c 100644
+index 62770dcbe..c73a3854a 100644
 --- a/shell/browser/ui/views/inspectable_web_contents_view_views.cc
 +++ b/shell/browser/ui/views/inspectable_web_contents_view_views.cc
-@@ -188,7 +188,7 @@ void InspectableWebContentsViewViews::SetIsDocked(bool docked, bool activate) {
+@@ -186,7 +186,7 @@ void InspectableWebContentsViewViews::SetIsDocked(bool docked, bool activate) {
      params.delegate = devtools_window_delegate_;
      params.bounds = inspectable_web_contents()->GetDevToolsBounds();
  

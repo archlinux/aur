@@ -1,4 +1,4 @@
-From f17fa2c86d6ec89e71e0509253d92f244baf9385 Mon Sep 17 00:00:00 2001
+From a209af6d60ec28eda165a9195bd5e7fee40c82eb Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Valentin=20H=C4=83loiu?= <valentin.haloiu@gmail.com>
 Date: Mon, 14 Sep 2020 19:30:50 +0200
 Subject: [PATCH 9/9] Remove unnecessary ozone ifdefs in native window views
@@ -8,10 +8,10 @@ Subject: [PATCH 9/9] Remove unnecessary ozone ifdefs in native window views
  1 file changed, 14 deletions(-)
 
 diff --git a/shell/browser/native_window_views.cc b/shell/browser/native_window_views.cc
-index 9e78191ab..bd34cc6b4 100644
+index d9b650a87..652be6846 100644
 --- a/shell/browser/native_window_views.cc
 +++ b/shell/browser/native_window_views.cc
-@@ -504,15 +504,11 @@ void NativeWindowViews::SetEnabledInternal(bool enable) {
+@@ -500,15 +500,11 @@ void NativeWindowViews::SetEnabledInternal(bool enable) {
  
  #if defined(OS_LINUX)
  void NativeWindowViews::Maximize() {
@@ -27,7 +27,7 @@ index 9e78191ab..bd34cc6b4 100644
  }
  #endif
  
-@@ -823,13 +819,8 @@ bool NativeWindowViews::IsClosable() {
+@@ -818,13 +814,8 @@ bool NativeWindowViews::IsClosable() {
    }
    return !(info.fState & MFS_DISABLED);
  #elif defined(OS_LINUX)
@@ -41,7 +41,7 @@ index 9e78191ab..bd34cc6b4 100644
  }
  
  void NativeWindowViews::SetAlwaysOnTop(ui::ZOrderLevel z_order,
-@@ -1398,13 +1389,8 @@ bool NativeWindowViews::CanMinimize() const {
+@@ -1404,13 +1395,8 @@ bool NativeWindowViews::CanMinimize() const {
  #if defined(OS_WIN)
    return minimizable_;
  #elif defined(OS_LINUX)

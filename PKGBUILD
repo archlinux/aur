@@ -3,18 +3,18 @@
 # Contributor: Valentin Hăloiu <vially.ichb@gmail.com>
 
 pkgname=electron-ozone
-pkgver=9.3.1
+pkgver=10.1.2
 provides=('electron')
 conflicts=('electron')
-_commit=fe3378db92b76bd4dd14c11365c229a8be9954a7
-_chromiumver=83.0.4103.122
-pkgrel=2
+_commit=fbd99fbed1e78af18017c31af20a5baa934468b6
+_chromiumver=85.0.4183.98
+pkgrel=1
 pkgdesc='Electron compiled with wayland support via Ozone'
 arch=('x86_64')
 url='https://electronjs.org/'
 license=('MIT' 'custom')
-depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libnghttp2'
-         'libxslt' 'libxss' 'minizip' 'nss' 'snappy')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'minizip'
+         'nss' 'snappy')
 makedepends=('git' 'gn<0.1809' 'gperf' 'harfbuzz-icu' 'java-runtime-headless'
              'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja' 'npm' 'pciutils' 'yarn'
              'python2' 'wget' 'yasm' 'python2-setuptools' 'libpipewire02' 'nodejs'
@@ -29,7 +29,7 @@ source=('git+https://github.com/electron/electron.git'
         'default_app-icon.patch'
         'use-system-libraries-in-node.patch'
         'chromium-skia-harmony.patch'
-        'v8-remove-soon-to-be-removed-getAllFieldPositions.patch'
+        'media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch'
         '0001-fix-use-ozone-version-of-global_shortcut_listener-wh.patch'
         '0002-fix-don-t-include-global_menu_bar_x11-sources-in-ozo.patch'
         '0003-fix-fix-ifdefs-and-add-NOTIMPLEMENTEDs-to-make-nativ.patch'
@@ -44,18 +44,18 @@ sha256sums=('SKIP'
             'SKIP'
             '5270db01f3f8aaa5137dec275a02caa832b7f2e37942e068cba8d28b3a29df39'
             '00b21418b9468064f6f275566d3cf64c6b014e596acc650100a5a46da31efbfa'
-            'c7eadac877179e586d0cce7f898aa1462b4c207733e68ecc17de9754b691713a'
+            '50884820e07f7ce5ce55ee1ecdf610367a737e076c5029da0ab0d23154e7661d'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            'e042024423027ad3ef729a7e4709bdf9714aea49d64cfbbf46a645a05703abc2'
-            '3a9b265ebc978d6b5b165c0c0098e6e26db7ce41ae33daca01e5201bd151e72e'
-            '28e87512ae5f3be5ce5312e6aedd26bffa2d26b3bca89f9e568d6b044ad16753'
-            '7e78b61a71609a041f2a45f4c20bd9f89fb4ccb6c48b2abb61faf474fcdd10e0'
-            '0e1e1c1980ac6c8de7918b74ec3949fe54addbf89f12d4b4ecfd537549b572b4'
-            'f554de4c173ec3fb0d128fe72a3677ecbecfb74eea07b8a0fb0057b7e44e540c'
-            'd5dc4b7f050640daa015dd28b0aaba8b86681c3bb35288579c7bc10bb24f13c3'
-            '03d57fe77c7f4ad5f86e6f9e276b6e973b48df194e2bb56d7e24257924e16ec7'
-            'd95a64cef0371910c19447549d53fa7155dcb17b6daa8a15a6964d34694bf5c8'
-            'bf0e01722870f54e773ea674b7eec03c0cc3740b361d45654d4888004b410884')
+            '0f041d655335cd2a4773ae7ca5e301a0ff12c6c53f57b7cf6651c268e0420a1c'
+            '1f93ae4176cdb6ee6c3517b35a2a34fbebdcfaa387e6a0fb5de701785ec17313'
+            '960ad1f120ffe5737ffa89eeb7086651b29fe766c085a863ff8effe92e7bac5d'
+            '1a1ae23cabd98c248e75288ef55b517e23c5ca0a262953598179a2d0fbf82e18'
+            '322f5228f50a53223fba5bdadc7a0032a661336f13c714b921241ae3965e7d36'
+            '3d035ca6fb14f5e9042bb0b4cff23b5ef3e6ca51b97a0569b45e13740c518942'
+            'b77f1aa5884108dfaf70d0cb321017adc289f805378c84d12d76ec9bea47f6f5'
+            '2b5d233350e42db67db39bfce712b7465313bef25a751af94f0c6fac79f56059'
+            '48545645d6d42a7034badf9130752dbd271d0de4cf3a188f2604a89064767978'
+            'b85f7edf92be4678849196208e464028cb73f564b8adea98f191abf0995ed5c6')
 
 _system_libs=('ffmpeg'
               'flac'
@@ -67,7 +67,7 @@ _system_libs=('ffmpeg'
               'libevent'
               'libjpeg'
               'libpng'
-              'libvpx'
+              # 'libvpx'
               'libwebp'
               'libxml'
               'libxslt'
@@ -75,7 +75,6 @@ _system_libs=('ffmpeg'
               'opus'
                # 're2' Not possible with custom libcxx
               'snappy'
-              'yasm'
               'zlib'
              )
 
@@ -136,7 +135,7 @@ prepare() {
   python2 src/third_party/depot_tools/download_from_google_storage.py \
     --no_resume --extract --no_auth --bucket chromium-nodejs \
     -s src/third_party/node/node_modules.tar.gz.sha1
-  vpython src/tools/download_cros_provided_profile.py \
+  vpython src/tools/download_optimization_profile.py \
     --newest_state=src/chrome/android/profiles/newest.txt \
     --local_state=src/chrome/android/profiles/local.txt \
     --output_name=src/chrome/android/profiles/afdo.prof \
@@ -149,7 +148,7 @@ prepare() {
 
   echo "Applying local Chromium patches..."
   patch -Np0 -i ../chromium-skia-harmony.patch
-  patch -Np1 -d v8 <../v8-remove-soon-to-be-removed-getAllFieldPositions.patch
+  patch -Np1 -i ../media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch
   patch -Np1 -i ../use-system-libraries-in-node.patch
   patch -Np1 -i ../default_app-icon.patch  # Icon from .desktop file
 
@@ -168,7 +167,6 @@ prepare() {
           \! -path "${third_party_dir}/chromium/*" \
           \! -path "${third_party_dir}/google/*" \
           \! -path 'third_party/harfbuzz-ng/utils/hb_scoped.h' \
-          \! -path 'third_party/yasm/run_yasm.py' \
           \! -regex '.*\.\(gn\|gni\|isolate\)' \
           -delete
   done
@@ -185,7 +183,6 @@ build() {
     'icu_use_data_file = false'
     'is_component_ffmpeg = false'
     'link_pulseaudio = true'
-    'linux_use_bundled_binutils = false'
     'treat_warnings_as_errors = false'
     'use_gnome_keyring = false'
     'use_sysroot = false'

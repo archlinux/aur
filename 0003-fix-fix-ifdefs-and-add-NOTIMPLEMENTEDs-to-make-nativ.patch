@@ -1,4 +1,4 @@
-From c88738e5d77cb7698a0b06ec5b0ec170004ed61c Mon Sep 17 00:00:00 2001
+From 17275cd0a8a9592eed7ae196b70c1b2269ee4ce5 Mon Sep 17 00:00:00 2001
 From: Daniel Playfair Cal <daniel.playfair.cal@gmail.com>
 Date: Mon, 25 Nov 2019 10:54:34 +1100
 Subject: [PATCH 3/9] fix: fix ifdefs and add NOTIMPLEMENTEDs to make
@@ -23,7 +23,7 @@ index c6029854e..2378acc0e 100644
  #include "ui/gtk/gtk_util.h"
  #endif
 diff --git a/shell/browser/native_window_views.cc b/shell/browser/native_window_views.cc
-index 81b09b6b2..677370a2d 100644
+index 83219e3fc..d5170dd38 100644
 --- a/shell/browser/native_window_views.cc
 +++ b/shell/browser/native_window_views.cc
 @@ -43,13 +43,15 @@
@@ -44,7 +44,7 @@ index 81b09b6b2..677370a2d 100644
  #include "shell/browser/ui/x/event_disabler.h"
  #include "shell/browser/ui/x/window_state_watcher.h"
  #include "shell/browser/ui/x/x_window_utils.h"
-@@ -57,6 +59,8 @@
+@@ -58,6 +60,8 @@
  #include "ui/gfx/x/x11_types.h"
  #include "ui/views/widget/desktop_aura/desktop_window_tree_host_x11.h"
  #include "ui/views/window/native_frame_view.h"
@@ -53,7 +53,7 @@ index 81b09b6b2..677370a2d 100644
  #elif defined(OS_WIN)
  #include "shell/browser/ui/views/win_frame_view.h"
  #include "shell/browser/ui/win/electron_desktop_native_widget_aura.h"
-@@ -433,9 +437,14 @@ bool NativeWindowViews::IsVisible() {
+@@ -429,9 +433,14 @@ bool NativeWindowViews::IsVisible() {
  bool NativeWindowViews::IsEnabled() {
  #if defined(OS_WIN)
    return ::IsWindowEnabled(GetAcceleratedWidget());
@@ -69,7 +69,7 @@ index 81b09b6b2..677370a2d 100644
  }
  
  void NativeWindowViews::IncrementChildModals() {
-@@ -484,13 +493,17 @@ void NativeWindowViews::SetEnabledInternal(bool enable) {
+@@ -480,13 +489,17 @@ void NativeWindowViews::SetEnabledInternal(bool enable) {
  #endif
  }
  
@@ -88,7 +88,7 @@ index 81b09b6b2..677370a2d 100644
  }
  #endif
  
-@@ -800,9 +813,14 @@ bool NativeWindowViews::IsClosable() {
+@@ -795,9 +808,14 @@ bool NativeWindowViews::IsClosable() {
      return false;
    }
    return !(info.fState & MFS_DISABLED);
@@ -104,7 +104,7 @@ index 81b09b6b2..677370a2d 100644
  }
  
  void NativeWindowViews::SetAlwaysOnTop(ui::ZOrderLevel z_order,
-@@ -1370,9 +1388,14 @@ bool NativeWindowViews::CanMaximize() const {
+@@ -1376,9 +1394,14 @@ bool NativeWindowViews::CanMaximize() const {
  bool NativeWindowViews::CanMinimize() const {
  #if defined(OS_WIN)
    return minimizable_;
