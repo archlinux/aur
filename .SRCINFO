@@ -1,0 +1,19 @@
+pkgbase = h5cpp
+	pkgdesc = h5cpp is a C++ wrapper for HDF5s C-API.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = h5cpp.org
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = cmake
+	makedepends = hdf5
+	source = https://github.com/ess-dmsc/h5cpp/archive/v0.3.3.tar.gz
+	source = newer_hdf5_lib.patch
+	sha256sums = 2ccae670109d605a2c26729abd2b1a98b0b5a7fe5dd98df5f03c5fe76463e1e7
+	sha256sums = b84f7016e5a3363e4653abb9e975659a99daf41f0814123106f83154182e516b
+
+pkgname = h5cpp
+

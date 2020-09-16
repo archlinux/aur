@@ -1,0 +1,117 @@
+Nur in ./: .git.
+diff '--color=auto' -aur ./src/h5cpp/attribute/attribute_manager.cpp ./src/h5cpp/attribute/attribute_manager.cpp
+--- ./src/h5cpp/attribute/attribute_manager.cpp	2020-09-16 12:03:11.875317864 +0200
++++ ./src/h5cpp/attribute/attribute_manager.cpp	2020-09-16 11:36:36.420112801 +0200
+@@ -77,8 +77,12 @@
+ 
+ size_t AttributeManager::size() const
+ {
+-  H5O_info_t obj_info;
++  H5O_info_t_ obj_info;
++#if H5_VERSION_LE(1,10,2)
+   if(H5Oget_info(static_cast<hid_t>(node_),&obj_info))
++#else
++  if(H5Oget_info1(static_cast<hid_t>(node_),&obj_info))
++#endif
+   {
+     error::Singleton::instance().throw_with_stack("Failure to determine the number of attributes!");
+   }
+Nur in ./src/h5cpp/attribute: attribute_manager.cpp.orig.
+Nur in ./src/h5cpp/attribute: attribute_manager.cpp.rej.
+diff '--color=auto' -aur ./src/h5cpp/core/object_handle.cpp ./src/h5cpp/core/object_handle.cpp
+--- ./src/h5cpp/core/object_handle.cpp	2020-09-16 12:03:11.875317864 +0200
++++ ./src/h5cpp/core/object_handle.cpp	2020-09-16 11:36:36.420112801 +0200
+@@ -265,8 +265,6 @@
+       return ObjectHandle::Type::DATASET;
+     case H5I_ATTR:
+       return ObjectHandle::Type::ATTRIBUTE;
+-    case H5I_REFERENCE:
+-      return ObjectHandle::Type::REFERENCE;
+     case H5I_VFL:
+       return ObjectHandle::Type::VIRTUAL_FILE_LAYER;
+     case H5I_GENPROP_CLS:
+@@ -374,9 +372,6 @@
+     case ObjectHandle::Type::PROPERTY_LIST:
+       stream << "PROPERTY_LIST";
+       break;
+-    case ObjectHandle::Type::REFERENCE:
+-      stream << "REFERENCE";
+-      break;
+     case ObjectHandle::Type::VIRTUAL_FILE_LAYER:
+       stream << "VIRTUAL_FILE_LAYER";
+       break;
+diff '--color=auto' -aur ./src/h5cpp/core/object_handle.hpp ./src/h5cpp/core/object_handle.hpp
+--- ./src/h5cpp/core/object_handle.hpp	2020-09-16 12:03:11.875317864 +0200
++++ ./src/h5cpp/core/object_handle.hpp	2020-09-16 11:36:36.420112801 +0200
+@@ -77,7 +77,6 @@
+       DATASET,
+       ATTRIBUTE,
+       PROPERTY_LIST,
+-      REFERENCE,
+       VIRTUAL_FILE_LAYER,
+       PROPERTY_LIST_CLASS,
+       ERROR_CLASS,
+diff '--color=auto' -aur ./src/h5cpp/core/object_id.cpp ./src/h5cpp/core/object_id.cpp
+--- ./src/h5cpp/core/object_id.cpp	2020-09-16 12:03:11.875317864 +0200
++++ ./src/h5cpp/core/object_id.cpp	2020-09-16 11:36:36.426779411 +0200
+@@ -49,10 +49,14 @@
+   return fname;
+ }
+ 
+-H5O_info_t ObjectId::get_info(const ObjectHandle &handle)
++H5O_info_t_ ObjectId::get_info(const ObjectHandle &handle)
+ {
+-  H5O_info_t info;
++  H5O_info_t_ info;
++#if H5_VERSION_LE(1,10,2)
+   if (0 > H5Oget_info(static_cast<hid_t>(handle), &info))
++#else
++  if (0 > H5Oget_info1(static_cast<hid_t>(handle), &info))
++#endif
+   {
+     error::Singleton::instance().throw_with_stack("Could not get Object info.");
+   }
+diff '--color=auto' -aur ./src/h5cpp/core/object_id.hpp ./src/h5cpp/core/object_id.hpp
+--- ./src/h5cpp/core/object_id.hpp	2020-09-16 12:03:11.875317864 +0200
++++ ./src/h5cpp/core/object_id.hpp	2020-09-16 11:36:36.426779411 +0200
+@@ -130,11 +130,21 @@
+     //! Obtains the name of the file where the object is stored in.
+     static std::string get_file_name(const ObjectHandle &handle);
+ 
+-    //!
++#if H5_VERSION_LE(1,10,5)
++#define H5O_info_t_ H5O_info_t
++#else
++#define H5O_info_t_ H5O_info1_t
++#endif
++
++
++    //!H5O_info_t
+     //! \brief get object info
+     //!
+     //! Gets object info.
+-    static H5O_info_t get_info(const ObjectHandle &handle);
++    //!
++    //! For HDF5 version 1.12.0 and higher, this explicitly returns a
++    //! H5O_info1_t structure.  For versions <= 1.10.5 it returns H5O_info_t.
++    static H5O_info_t_ get_info(const ObjectHandle &handle);
+ 
+ 
+  private:
+diff '--color=auto' -aur ./src/h5cpp/node/node.cpp ./src/h5cpp/node/node.cpp
+--- ./src/h5cpp/node/node.cpp	2020-09-16 12:03:11.878651270 +0200
++++ ./src/h5cpp/node/node.cpp	2020-09-16 11:36:36.426779411 +0200
+@@ -69,8 +69,12 @@
+ 
+ Type Node::type() const
+ {
+-  H5O_info_t info;
++  H5O_info_t_ info;
++#if H5_VERSION_LE(1,10,2)
+   if(H5Oget_info(static_cast<hid_t>(*this),&info)<0)
++#else
++  if(H5Oget_info1(static_cast<hid_t>(*this),&info)<0)
++#endif
+   {
+     error::Singleton::instance().throw_with_stack("Error retrieving type information for this node!");
+   }
