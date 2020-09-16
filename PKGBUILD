@@ -1,7 +1,7 @@
 # Maintainer: hermes83 <hermes83 at github dot com>
 pkgname=libanimation-gnome-shell-git
 pkgver=3.8.6.r5.gb3005f3
-pkgrel=1
+pkgrel=2
 pkgdesc="Library that provides animation calculations"
 arch=(i686 x86_64 armv7h aarch64)
 url="https://github.com/hermes83/libanimation"
