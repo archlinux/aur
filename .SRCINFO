@@ -1,21 +1,21 @@
 pkgbase = python-mmdetection
 	pkgdesc = OpenMMLab Detection Toolbox and Benchmark
 	pkgver = 2.4.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/open-mmlab/mmdetection
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	depends = python-mmcv
 	depends = python-numpy
-	depends = python-pycocotools-openmm
+	depends = python-mmpycocotools
 	depends = python-pytorch
 	depends = python-terminaltables
 	depends = python-torchvision
 	optdepends = python-albumentations
 	optdepends = python-cityscapesscripts
 	optdepends = python-imagecorruptions
-	optdepends = python-lvis-openmm
+	optdepends = python-mmlvis
 	source = python-mmdetection-2.4.0.tar.gz::https://github.com/open-mmlab/mmdetection/archive/v2.4.0.tar.gz
 	sha512sums = 22cfb7d806a92f4a9522cccf084748c0a96f85935c630c003779f32b0bd1b57ac52d8e540c4c8e98dedbfd1ced43c7081b10c8ed1a6618c1ea274570c2879552
 
