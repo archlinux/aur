@@ -4,7 +4,7 @@
 
 pkgname=lib32-zeromq
 pkgver=4.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast messaging system built on sockets'
 arch=(x86_64)
 url=https://www.zeromq.org
