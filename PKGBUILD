@@ -4,7 +4,7 @@
 
 pkgname=dash-static-musl
 _pkgbase=dash
-pkgver=0.5.10.2
+pkgver=0.5.11.2
 pkgrel=1
 pkgdesc="A POSIX compliant shell that aims to be as small as possible, statically linked to musl libc"
 arch=('i686' 'x86_64')
@@ -14,9 +14,15 @@ provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 makedepends=('musl') #we are static
 install=dash.install
-source=("http://gondor.apana.org.au/~herbert/dash/files/${_pkgbase}-${pkgver}.tar.gz")
-sha256sums=('3c663919dc5c66ec991da14c7cf7e0be8ad00f3db73986a987c118862b5f6071')
-sha512sums=('0ae29be77794df0ba254967649b9728611a75fbb3acd32ab6634d76399d1ce97c7d12d31da465482a7e4f3207093415c496c39525cace9b78ab3cb9444dd7640')
+source=("https://git.kernel.org/pub/scm/utils/dash/dash.git/snapshot/${_pkgbase}-${pkgver}.tar.gz")
+sha512sums=('851abffe9087c79f580801b323cc1c26ca5a370a34ca4aa241f47802ba645fe854f8623a0f81e0e14f05b7b824828bace22901ac4ad77d7ce4630cb5368243c2')
+b2sums=('7a7e86e226e646adaddaf2e5bcc86c8c1ef72649851709c1aa77ce819924d6b9729dd37a2a443586849eb32a961ac7f253cfcf2c2bb9c01c1a2d7bfdcebac97d')
+
+
+prepare() {
+  cd ${_pkgbase}-${pkgver}
+  autoreconf -fiv
+}
 
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
@@ -29,7 +35,7 @@ build() {
     --exec-prefix=""  \
     --with-libedit
 
-  make
+  make V=1
 }
 
 package() {
