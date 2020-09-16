@@ -10,6 +10,7 @@ pkgbase = nomachine
 	arch = armv7h
 	arch = armv8h
 	arch = aarch64
+	arch = pentium4
 	groups = network
 	license = custom:"NoMachine EULA"
 	depends = bash
@@ -34,5 +35,7 @@ pkgbase = nomachine
 	sha512sums_armv8h = 0aca82805177a3479528118ee663333d73eb923b13ac8e85420b18b3fa4fb8fa72324bd89b9770092efc856e988768320b5b3bef97de79dd7fbfdb9ad13b8520
 	source_aarch64 = http://download.nomachine.com/download/6.11/Linux/nomachine_6.11.2_1_aarch64.tar.gz
 	sha512sums_aarch64 = 0aca82805177a3479528118ee663333d73eb923b13ac8e85420b18b3fa4fb8fa72324bd89b9770092efc856e988768320b5b3bef97de79dd7fbfdb9ad13b8520
+	source_pentium4 = http://download.nomachine.com/download/6.11/Linux/nomachine_6.11.2_1_i686.tar.gz
+	sha512sums_pentium4 = 15e68fe427cbb64b9b647d06dccbe2c4507bdcd744e929e3d89f4aac12f4abe97a29750bbeb458a26c9302ee13bee7dd9b7095b824118d50d011547b6a82dd8f
 pkgname = nomachine
 
