@@ -1,6 +1,6 @@
 # Maintainer Xuanwo <xuanwo@archlinucn.org>
 pkgname=clickup
-pkgver=2.0.16
+pkgver=2.0.17
 pkgrel=1
 pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
@@ -27,4 +27,4 @@ package() {
   cp -av squashfs-root/usr/share/icons/hicolor/* "$pkgdir/usr/share/icons/hicolor/"
   chmod -R a+rX "$pkgdir/usr/share/icons/hicolor"
 }
-sha256sums=('ac42674f7556578b5ae2ebe3ff553b57b78ffed450f2aa9beec1a96c17041e63')
+sha256sums=('708b6c33d787ded3fba197fffda083df7700e674c69ac1fef7c1f4f5723387bc')
