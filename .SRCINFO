@@ -1,6 +1,6 @@
 pkgbase = qrencode-git
 	pkgdesc = A fast and compact QR Code encoding library
-	pkgver = 4.0.2.r43.g13b159f
+	pkgver = 4.1.0.r0.g0f6149e
 	pkgrel = 1
 	url = https://fukuchi.org/works/qrencode/
 	arch = i686
