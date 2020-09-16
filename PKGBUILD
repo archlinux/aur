@@ -2,12 +2,12 @@
 
 pkgname="nojava-ipmi-kvm-docker"
 pkgver="0.9.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A tool to access Java based ipmi kvm consoles without a local Java installation (Docker dependency)."
 arch=("x86_64")
 url="https://github.com/sciapp/nojava-ipmi-kvm"
 license=("MIT")
-depends=("docker" "python" "python-requests" "python-yacl")
+depends=("docker" "python" "python-requests" "python-pyaml" "python-yacl")
 makedepends=("python-setuptools")
 optdepends=("python-pyqtwebengine: GUI support")
 provides=("${pkgname%-*}=${pkgver}")
