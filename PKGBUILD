@@ -1,8 +1,8 @@
 # Maintainer: FirstAirBender <noblechuk5 [at] web [dot] de>
 
 pkgname=systemd-removed-services-hook
-pkgver=1.3
-pkgrel=2
+pkgver=1.3.3
+pkgrel=1
 pkgdesc='Notifies you of uninstalled systemd services along with the command to disable them'
 arch=('any')
 url='https://gitlab.com/firstairbender/systemd-removed-services-hook'
@@ -31,8 +31,7 @@ build() {
 		Description = Systemd commands to disable uninstalled services
 		When        = PreTransaction
 		Depends     = systemd
-		Depends     = pacutils
-		Exec        = /bin/bash -c 'echo; cat | while read -r f; do service="${f##*/}"; if [ "${f/*\/system\/*/system}" = "system" ] && systemctl --quiet is-enabled "$service" 2> /dev/null; then echo -e "\t► systemctl disable $service"; elif [ "${f/*\/user\/*/user}" = "user" ] && systemctl --quiet --global is-enabled "$service" 2> /dev/null; then echo -e "\t► systemctl disable --global $service"; fi; done'
+		Exec        = /bin/bash -c 'echo; cat | while read -r f; do service="${f##*/}"; if [ "${f/*\/system\/*/system}" = "system" ] && systemctl --quiet is-enabled "$service" 2> /dev/null; then echo -e " ► systemctl disable $service"; elif [ "${f/*\/user\/*/user}" = "user" ] && systemctl --quiet --global is-enabled "$service" 2> /dev/null; then echo -e " ► systemctl disable --global $service"; fi; done'
 		NeedsTargets
 	EOF
 
