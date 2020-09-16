@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=afdko
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc='Adobe Font Development Kit for OpenType'
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=('python' 'psautohint>=2.1.0' "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('93a11f7f708fd94c9a0d5f13f844b2e642fa0a7fd97bf5fa49a2f6050e252d72')
+sha256sums=('5cf200b5062da9898c72f3d60f44df3a7c855cdd0fce0bcad500fb80e86be7e1')
 
 prepare () {
     cd "$pkgname-$pkgver"
