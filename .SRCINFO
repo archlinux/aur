@@ -1,6 +1,6 @@
 pkgbase = dolfin-hpc
 	pkgdesc = DOLFIN HPC is a special branch of DOLFIN optimized for distributed memory architectures
-	pkgver = 0.9.1_hpc_20200720
+	pkgver = 0.9.2_hpc_20200914
 	pkgrel = 1
 	url = https://bitbucket.org/adaptivesimulations/dolfin-hpc/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = dolfin-hpc
 	provides = dolfin
 	conflicts = dolfin
 	options = !emptydirs
-	source = dolfin-hpc::git+https://bitbucket.org/adaptivesimulations/dolfin-hpc.git#tag=0.9.1-hpc
+	source = dolfin-hpc::git+https://bitbucket.org/adaptivesimulations/dolfin-hpc.git#tag=0.9.2-hpc
 	md5sums = SKIP
 
 pkgname = dolfin-hpc
