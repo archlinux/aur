@@ -3,7 +3,7 @@ pkgbase=mindustry
 pkgname=("${pkgbase}" "${pkgbase}-server")
 _build=105
 pkgver="6.0_${_build}"
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('any')
 _repo_name="Mindustry"
@@ -55,8 +55,8 @@ build() {
   #   return 1
   # fi
 
-  # JAVA_HOME="${java_dir}" ./gradlew --no-daemon dist -Pbuildversion="${_build}"
-  ./gradlew --no-daemon dist -Pbuildversion="${_build}"
+  # JAVA_HOME="${java_dir}" ./gradlew --no-daemon dist -Pbuildversion="${_build}" desktop:dist server:dist
+  ./gradlew --no-daemon dist -Pbuildversion="${_build}" desktop:dist server:dist
   # unset java_dir
 
   cd core/assets/icons
