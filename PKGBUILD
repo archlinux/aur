@@ -1,28 +1,27 @@
 # Maintainer: Michal Ulianko <michal (dot) ulianko (at) gmail (dot) com>
 
-pkgname=coin-hg
-pkgver=r12110.04c2890cc357
+gitname=coin
+pkgname=${gitname}-git
+pkgver=12143.fd528f58e
 pkgrel=1
 pkgdesc="A high-level, retained-mode 3D graphics toolkit compatible with Open Inventor 2.1"
 arch=('x86_64')
-url="https://bitbucket.org/Coin3D/coin"
+url="https://github.com/coin3d/$gitname"
 license=('BSD')
 depends=('glu')
-makedepends=('mercurial' 'cmake' 'doxygen' 'boost')
-provides=("${pkgname%-hg}")
-conflicts=("${pkgname%-hg}")
-source=('coin::hg+https://bitbucket.org/Coin3D/coin#branch=default'
-        'generalmsvcgeneration::hg+https://bitbucket.org/Coin3D/generalmsvcgeneration#branch=default'
-        'cpack.d::hg+https://bitbucket.org/Coin3D/cpack.d#branch=default'
-        'boost-header-libs-full::hg+https://bitbucket.org/Coin3D/boost-header-libs-full#branch=default')
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+makedepends=('git' 'cmake' 'doxygen' 'boost')
+provides=(${gitname}{,-hg})
+conflicts=(${gitname}{,-hg})
+source=("git+${url}.git"
+        'git+https://github.com/coin3d/generalmsvcgeneration.git'
+        'git+https://github.com/coin3d/cpack.d.git'
+        'git+https://github.com/coin3d/boost-header-libs-full.git')
+md5sums=(SKIP SKIP SKIP SKIP)
 
 pkgver() {
-    cd "$srcdir/coin"
-    printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+    cd "${srcdir}/${gitname}"
+    local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    printf "%s" "${ver//-/.}"
 }
 
 build() {
