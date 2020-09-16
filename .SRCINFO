@@ -1,0 +1,14 @@
+pkgbase = xcursor-we10xos
+	pkgdesc = Cursor theme inspired by Windows 10
+	pkgver = 20200614
+	pkgrel = 1
+	url = https://github.com/yeyushengfan258/We10XOS-cursors
+	arch = any
+	license = GPL
+	makedepends = inkscape
+	makedepends = xorg-xcursorgen
+	source = xcursor-we10xos::git+https://github.com/yeyushengfan258/We10XOS-cursors#commit=438dd5be70c3b467b04a8b00cf603f05364c2910
+	sha512sums = SKIP
+
+pkgname = xcursor-we10xos
+
