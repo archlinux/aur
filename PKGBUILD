@@ -1,5 +1,5 @@
 # Maintainer:
-# Contributor: Michael Straube <michael.straube@posteo.de>
+# Contributor: Michael Straube <michaelfstraube@gmail.com>
 # Contributor: yugrotavele <yugrotavele at archlinux dot us>
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
