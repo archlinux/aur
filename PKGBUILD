@@ -1,4 +1,5 @@
-# Maintainer: Luca P <meti at lplab.net>
+# Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
+# Original Maintainer: Luca P <meti at lplab.net>
 
 pkgname=hss
 pkgver=1.8
