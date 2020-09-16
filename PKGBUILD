@@ -1,5 +1,5 @@
 pkgname='gomclauncher-bin'
-pkgver='1.2.5'
+pkgver='1.2.6'
 pkgrel=1
 epoch=
 pkgdesc='gml: A Minecraft Launcher'
