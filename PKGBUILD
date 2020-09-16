@@ -5,17 +5,17 @@
 # Contributor: Mario Danic <mario.danic@gmail.com>
 
 pkgname=python2-paramiko
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Python module that implements the SSH2 protocol"
 url="https://github.com/paramiko/paramiko/"
 license=('LGPL')
 arch=('any')
-depends=('python2-bcrypt' 'python2-cryptography' 'python2-pynacl')
+depends=('python2-bcrypt' 'python2-cryptography' 'python2-pynacl-git')
 makedepends=('python2-setuptools')
 #checkdepends=('python2-pytest-runner' 'python2-pytest' 'python2-pyasn1' 'python2-mock')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/paramiko/paramiko/archive/$pkgver.tar.gz")
-sha512sums=('2cebed2420cf9af77cb0d459b64a74adcffcdb15bd58c8fc9243855ae91f43e16706665b64ce2851f6e99e59ca6a47d7299a2aae35a4c9d01ab97b343569c4b2')
+sha512sums=('c9bc569428a0a61814cb73941356de5bae7fea7891ba4fd3f5c00ff1ee5083454bfde7e969fb4aaf5254b909f7f0132f590d67803eda8a67503e5c02ec2bf01a')
 
 # Check is disabled because it would involve maintaining at least 2 other python2 packages, both of which are neeeded ONLY by this check function.
 # This package will be removed in <3 months when it's ported to python3.
