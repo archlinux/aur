@@ -5,6 +5,7 @@ pkgbase = vido
 	url = https://sourceforge.net/projects/vido
 	arch = any
 	license = GPL3
+	makedepends = gendesk
 	depends = python-gobject
 	depends = gtk3
 	depends = youtube-dl

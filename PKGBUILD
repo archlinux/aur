@@ -9,6 +9,7 @@ url='https://sourceforge.net/projects/vido'
 license=('GPL3')
 conflicts=('vido-git')
 depends=('python-gobject' 'gtk3' 'youtube-dl')
+makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.zip::https://sourceforge.net/projects/vido/files/${pkgver}/vido_${pkgver}.zip/download")
 sha256sums=('147fb751d5ea79e1428780a57dc01cb771db271514b89668f8f58793d3e9d055')
 
