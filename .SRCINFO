@@ -1,6 +1,6 @@
 pkgbase = quickmedia-git
 	pkgdesc = A native client for web media. Works with youtube, 4chan and several manga sites.
-	pkgver = r219.8d66180
+	pkgver = r220.b95298d
 	pkgrel = 1
 	url = https://git.dec05eba.com/QuickMedia
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = quickmedia-git
 	provides = QuickMedia
 	conflicts = QuickMedia
 	source = quickmedia.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz
-	sha512sums = 64d0c8fd387ef35008019a5bafe93bd3d6363e7592641bb599bccc91f2e09b132e5c426a58313987022c7963126158befa74fbe8250efa3cee5f0f18156f355e
+	sha512sums = a5ebf9688f54f306f4cf39fe46f5e8721b719a0470f0a31370c2e38ffd556f79039c2d22eb712c24b10bdfcd1867f334cad9956873e82088f6f9154ba83d51f9
 
 pkgname = quickmedia-git
 
