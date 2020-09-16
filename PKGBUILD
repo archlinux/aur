@@ -7,7 +7,7 @@ pkgdesc="RTSP server library based on GStreamer"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://gstreamer.freedesktop.org/modules/gst-rtsp-server.html"
 license=('LGPL')
-makedepends=('meson' 'gobject-introspection')
+makedepends=('meson' 'gobject-introspection') #'cmake' 'hotdocs'?
 depends=("gst-plugins-base>=$pkgver" "gst-plugins-bad>=$pkgver")
 provides=('libgstrtspserver-1.0.so' 'libgstrtspclientsink.so')
 source=("https://gstreamer.freedesktop.org/src/$pkgname/$pkgname-$pkgver.tar.xz"{,.asc})
@@ -18,11 +18,15 @@ validpgpkeys=('D637032E45B8C6585B9456565D2EEE6F6F349D7C')
 
 build() {
 	arch-meson "$pkgname-$pkgver" build
-	meson compile -C build
+	meson compile -C build \
+	-D doc=disabled \
+	-D gobject-cast-checks=disabled \
+	-D package-name="GStreamer RTSP Server (Arch Linux)" \
+	-D package-origin="https://www.archlinux.org/"
 }
 
 check() {
-	meson test -C build
+	meson test -C build --print-errorlogs
 }
 
 package() {
