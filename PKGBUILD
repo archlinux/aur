@@ -3,7 +3,7 @@
 # placed in the same directory
 
 pkgname=wolframscript
-pkgver=12.1.0
+pkgver=12.1.1
 pkgrel=1
 pkgdesc="Execute Wolfram Language Code Anywhere"
 arch=('x86_64')

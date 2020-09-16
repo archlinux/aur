@@ -1,12 +1,12 @@
 pkgbase = wolframscript
 	pkgdesc = Execute Wolfram Language Code Anywhere
-	pkgver = 12.1.0
+	pkgver = 12.1.1
 	pkgrel = 1
 	url = https://www.wolfram.com/wolframscript/
 	arch = x86_64
 	license = proprietary
 	conflicts = mathematica
-	source = local://WolframScript_12.1.0_LINUX64_x86_64.rpm
+	source = local://WolframScript_12.1.1_LINUX64_x86_64.rpm
 	md5sums = 988d7872092b095e4f23243a24cb37a1
 
 pkgname = wolframscript
