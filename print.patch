@@ -1,0 +1,11 @@
+--- pkg/kfapp/aws/aws.go	2020-09-16 09:40:24.900013107 +0200
++++ pkg/kfapp/aws/aws.go	2020-09-16 09:40:39.146826683 +0200
+@@ -561,7 +561,7 @@
+ 		}
+ 
+ 		if pluginSpec.ManagedRelationDatabase.Port != nil {
+-			if err := aws.kfDef.SetApplicationParameter("metadata", "MYSQL_PORT", string(*pluginSpec.ManagedRelationDatabase.Port)); err != nil {
++			if err := aws.kfDef.SetApplicationParameter("metadata", "MYSQL_PORT", fmt.Sprint(*pluginSpec.ManagedRelationDatabase.Port)); err != nil {
+ 				return errors.WithStack(err)
+ 			}
+ 		}
