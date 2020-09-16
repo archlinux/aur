@@ -1,7 +1,7 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing4
-pkgver=4.0a1
+pkgver=4.0a2
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -19,7 +19,7 @@ source=("https://github.com/processing/processing4/archive/processing-$((1269+${
         disable_update_check.patch
         no_downloads.patch
         use_system_libraries.patch)
-sha256sums=('e1a50d673a4398730d125f6b4f159ede33475e560a8c2db91e692640abfaec66'
+sha256sums=('919e3034796e841e3bee07dea48ddafcf1efdef85b2beea718007a89a097c9c0'
             '2014fdb12f979f79c624acc514c14ce318f07cb2cc15a63e1b4febaff733f2a5'
             '66e87536b740194954670c482d698fc3183995bf48f580078511d50d1a3f0323'
             '7f821db61160248b65df19b018dc3b2ba7cc995564dd389bb83b3ce8e5097119'
