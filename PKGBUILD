@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
 
 pkgname=kdiskmark
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="HDD and SSD benchmark tool with a very friendly graphical user interface"
 arch=('i686' 'x86_64')
