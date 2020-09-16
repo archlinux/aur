@@ -1,6 +1,6 @@
 pkgbase = libuv-git
 	pkgdesc = A multi-platform support library with a focus on asynchronous I/O
-	pkgver = 1.23.0.r83.g6e7da5fb
+	pkgver = 1.39.0.r100.gdec07238
 	pkgrel = 1
 	url = https://libuv.org/
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = libuv-git
 	makedepends = git
 	makedepends = python-sphinx
 	depends = glibc
-	depends = libnsl
 	provides = libuv
 	conflicts = libuv
 	options = staticlibs
