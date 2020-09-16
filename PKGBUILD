@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=liburcu-git
-pkgver=0.10.1.r18.g34b11dd
+pkgver=0.12.1.r3.g4af3e30
 pkgrel=1
 pkgdesc="Userspace RCU implementation"
 arch=('i686' 'x86_64')
@@ -22,14 +22,15 @@ pkgver() {
   _tag=$(git tag -l --sort -v:refname | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/v//'
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
   cd "userspace-rcu"
 
   ./bootstrap
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
@@ -43,7 +44,7 @@ package() {
   cd "userspace-rcu"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/liburcu"
 
   rm "$pkgdir/usr/share/doc/userspace-rcu/LICENSE"
 }
