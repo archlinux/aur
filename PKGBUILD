@@ -3,7 +3,7 @@
 _pkgname=passivedns
 pkgname=${_pkgname}-git
 pkgver=r275.e126cbb
-pkgrel=3
+pkgrel=4
 pkgdesc="A network sniffer that logs all DNS server replies for use in a passive DNS setup"
 arch=('x86_64')
 url="https://github.com/gamelinux/passivedns"
@@ -25,7 +25,7 @@ build() {
     cd "${srcdir}/${_pkgname}"
     patch -Np1 -i "$srcdir/gcc-10_patch.txt"
     autoreconf --install
-    ./configure
+    ./configure --prefix=/usr
     make
 }
 
