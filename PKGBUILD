@@ -3,7 +3,7 @@
 # Contributor: Alex Merry <dev@randomguy3.me.uk>
 
 pkgname=python-stdnum
-pkgver=1.13
+pkgver=1.14
 pkgrel=1
 pkgdesc='Aims to provide functions to handle, parse and validate standard numbers, e.g. IBAN, EAN, ISBN'
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL2.1')
 depends=('python')
 makedepends=('python-distribute')
 source=("${pkgname}-${pkgver}.tar.gz::http://arthurdejong.org/python-stdnum/python-stdnum-${pkgver}.tar.gz")
-sha256sums=('120f83d33fb8b8be1b282f20dd755a892d5facf84f54fa21f75bbd2633128160')
+sha256sums=('fd3a92b8ec82a159c41dbaa3c5397934d090090c92b04e346412e0fd7e6a1b1c')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
