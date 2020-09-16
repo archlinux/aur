@@ -2,8 +2,8 @@
 
 _pkgname='desknamer'
 pkgname="${_pkgname}-git"
-pkgver=r41.c81f631
-pkgrel=2
+pkgver=r48.c130da0
+pkgrel=3
 pkgdesc='automatically rename bspwm desktops based on applications inside'
 arch=('any')
 url="https://gitlab.com/jallbrit/${_pkgname}"
@@ -21,5 +21,9 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    make install
+    install -Dm 755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+    mkdir -p ~/.config/desknamer 
+    cp -n desknamer.json ~/.config/desknamer/ 
+    touch ~/.config/desknamer/monitor.blacklist ~/.config/desknamer/desktop.blacklist
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${_pkgname}"
 }
