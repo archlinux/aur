@@ -9,7 +9,7 @@ pkgdesc='Get ready for some painful insults...'
 arch=('any')
 url='https://github.com/kz6fittycent/whatami'
 
-license=(BSD)
+license=(MIT)
 
 pkgver() {
   cd "${srcdir}/whatami"
