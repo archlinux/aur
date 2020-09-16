@@ -11,7 +11,7 @@ makedepends=()
 source=("https://github.com/xmdhs/gomclauncher/releases/download/v$pkgver/gml-linux"
 	"https://raw.githubusercontent.com/xmdhs/gomclauncher/v$pkgver/LICENSE")
 
-md5sums=('a77baf2ad47e549f88bf43009ab804ac'
+md5sums=('00e0bb5424692fde347ffb57bcbfc7c2'
          'aca4188a0e8807e4aecc6b293f32ce42')
 
 prepare() {

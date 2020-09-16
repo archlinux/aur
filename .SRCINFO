@@ -7,7 +7,7 @@ pkgbase = gomclauncher-bin
 	license = MIT
 	source = https://github.com/xmdhs/gomclauncher/releases/download/v1.2.6/gml-linux
 	source = https://raw.githubusercontent.com/xmdhs/gomclauncher/v1.2.6/LICENSE
-	md5sums = a77baf2ad47e549f88bf43009ab804ac
+	md5sums = 00e0bb5424692fde347ffb57bcbfc7c2
 	md5sums = aca4188a0e8807e4aecc6b293f32ce42
 
 pkgname = gomclauncher-bin
