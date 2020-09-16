@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michael.straube@posteo.de>
+# Maintainer: Michael Straube <michaelfstraube@gmail.com>
 
 pkgname=edges
 pkgver=1.0
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(libx11 libxi libxrandr libconfig)
 makedepends=(libxfixes)
 source=("https://github.com/arisinfenix/edges/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('98e372feeae5b7309ea0360dd74b26d698329316aad1e4b2b8fba958c96604f59f6ea41a88d02362448806b040b185e8d467e599fa1325741cbdb109cc3792ec')
+sha512sums=('ee815aa0c7d9e2abb4622c84e5b2c732e522aab61782c98ea72f0369d8826822ed2277a9c69be6331802d814beb51799f09f17f22fe5765dff15611d6b3b6776')
 
 build() {
   cd $pkgname-$pkgver
