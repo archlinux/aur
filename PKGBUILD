@@ -1,8 +1,8 @@
 # Maintainer : lsf <lsf@lsf>
 
 pkgname=wifite2-git
-pkgver=r376.5483a41
-pkgrel=2
+pkgver=r379.d8a6628
+pkgrel=1
 pkgdesc="A tool to attack multiple WEP and WPA encrypted networks at the same time"
 arch=(any)
 url="https://github.com/kimocoder/wifite2"
@@ -11,20 +11,13 @@ depends=(python aircrack-ng wireless_tools net-tools wireshark-cli)
 optdepends=(macchanger reaver bully
             cowpatty pyrit hcxdumptool hcxtools john hashcat)
 makedepends=(git)
-source=($pkgname::git+https://github.com/kimocoder/wifite2.git
-        "bad_indentation_fix.patch")
+source=($pkgname::git+https://github.com/kimocoder/wifite2.git)
 
-sha256sums=('SKIP'
-            '79613c5d6fb8d4e2e09789a811a40de53b6a06a863802895ffe529f4e2f0e272')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$pkgname"
-  patch -Np1 -i ../bad_indentation_fix.patch
 }
 
 package() {
