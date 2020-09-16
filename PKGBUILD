@@ -11,8 +11,8 @@ optdepends=(
 )
 depends=('unbound')
 source=(
-	"roothints.service"
-	"roothints.timer"
+	"unbound-root-hints.service"
+	"unbound-root-hints.timer"
 )
 sha256sums=(
 	'b786d36d17b352213058b0743bc03df810348ef59b7a5c9e03d41b7804d0570b'
@@ -20,7 +20,7 @@ sha256sums=(
 )
 package() {
 	install --mode=755 --directory "$pkgdir/usr/lib/systemd/system"
-	install -D --mode=644 roothints.{service,timer} "$pkgdir/usr/lib/systemd/system"
+	install -D --mode=644 * "$pkgdir/usr/lib/systemd/system"
 }
 
 # https://jlk.fjfi.cvut.cz/arch/manpages/man/PKGBUILD
