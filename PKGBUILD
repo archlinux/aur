@@ -7,6 +7,7 @@ arch=('x86_64')
 url="http://ugene.unipro.ru/"
 license=('GPL')
 depends=('qt5-base' 'libxtst')
+makedepends=('git')
 source=('qspec::git+https://github.com/ugeneunipro/QSpec.git')
 sha256sums=('SKIP')
 

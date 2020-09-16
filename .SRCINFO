@@ -5,6 +5,7 @@ pkgbase = qspec-git
 	url = http://ugene.unipro.ru/
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = qt5-base
 	depends = libxtst
 	source = qspec::git+https://github.com/ugeneunipro/QSpec.git
