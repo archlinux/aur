@@ -95,7 +95,7 @@ package() {
 
 	# Licenses
 	install -dm755 "${pkgdir}/usr/share/licenses"
-	chmod -R a+rwX,g-w,o-w "${pkgdir}/opt/lampp/licenses"
+	chmod -R a+rX,u+w "${pkgdir}/opt/lampp/licenses"
 	ln -sf "/opt/lampp/licenses" "${pkgdir}/usr/share/licenses/xampp"
 
 	# Executables
