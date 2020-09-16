@@ -1,25 +1,21 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=gst-plugins-openh264
 _pkgname=gst-plugins-bad
-pkgver=1.16.2
-pkgrel=2
+pkgver=1.18.0
+pkgrel=1
 pkgdesc="GStreamer open-source multimedia framework OpenH264 plugins"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
 license=(LGPL)
 depends=(gst-plugins-base-libs openh264)
 makedepends=(meson git)
-_commit=a6f26408f74a60d02ce6b4f0daee392ce847055f  # tags/1.16.2^0
+_commit=7cb583bb0427819a6b59b783e7df67961df2155f  # tags/1.18.0^0
 source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
   git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd $_pkgname
 }
 
 build() {
