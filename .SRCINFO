@@ -1,0 +1,27 @@
+pkgbase = gruvbox-material-theme-git
+	pkgver = r8.99ce99e2d
+	pkgrel = 1
+	url = https://github.com/sainnhe/gruvbox-material-gtk
+	arch = any
+	license = MIT
+	makedepends = git
+	source = gruvbox-material-theme::git+https://github.com/sainnhe/gruvbox-material-gtk.git
+	sha256sums = SKIP
+
+pkgname = gruvbox-material-gtk-theme-git
+	pkgdesc = Gruvbox Material theme for GTK, Gnome, Cinnamon, XFCE, Unity and Plank
+	depends = gtk3
+	optdepends = gtk-engine-murrine: for gtk2 theme
+	optdepends = gruvbox-material-icon-theme: gruvbox material icon theme
+	provides = gruvbox-material-gtk-theme
+	conflicts = gruvbox-material-gtk-theme
+	replaces = gruvbox-material-gtk-theme
+
+pkgname = gruvbox-material-icon-theme-git
+	pkgdesc = Gruvbox Material icon theme
+	depends = gtk-update-icon-cache
+	optdepends = gruvbox-material-gtk-theme: gruvbox material gtk theme
+	provides = gruvbox-material-icon-theme
+	conflicts = gruvbox-material-icon-theme
+	replaces = gruvbox-material-icon-theme
+
