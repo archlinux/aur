@@ -34,7 +34,7 @@ build() {
   # -fno-plt because performance (this is the default in makepkg anyway)
   export CFLAGS+=" -O3 -Wno-missing-profile -fno-plt"
 
-  meson --prefix=/usr --buildtype=release --wrap-mode=forcefallback -Db_lto=true . build
+  meson --prefix=/usr --buildtype=release --wrap-mode=forcefallback -Db_lto=true -Dfcft:test-text-shaping=false . build
 
   if [[ -v WAYLAND_DISPLAY ]]; then
     meson configure -Db_pgo=generate build
