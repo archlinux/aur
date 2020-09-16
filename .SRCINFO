@@ -17,6 +17,7 @@ pkgbase = codelite
 	depends = mariadb-libs
 	depends = ncurses
 	depends = xterm
+	depends = wget
 	depends = curl
 	depends = python2
 	optdepends = graphviz: callgraph visualization

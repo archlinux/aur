@@ -85,7 +85,8 @@ CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
 export CXXFLAGS
 
 # cmake find_package() will try env var WX_CONFIG as wx-config tool path before checking its builtin hardcoded naming conbinations for wx-config tool
-WX_CONFIG="wx-config-gtk2"
+#WX_CONFIG="wx-config-gtk2"
+WX_CONFIG="wx-config"
 export WX_CONFIG
 
 mkdir -p "${BUILD_DIR}"
