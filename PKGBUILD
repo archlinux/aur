@@ -2,7 +2,7 @@
 
 pkgname=ultralist
 pkgdesc='Simple task management for tech folks.'
-pkgver=1.2
+pkgver=1.5
 pkgrel=2
 url='https://ultralist.io/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -13,11 +13,11 @@ _source_prefix="https://github.com/ultralist/ultralist/releases/download/$pkgver
 source=("LICENSE::https://raw.githubusercontent.com/ultralist/ultralist/master/LICENSE.md")
 sha256sums=("11d9f7debc85882dbabbba5b0a74261010e3be35bf628e3aa841863c95d6c6f1")
 source_x86_64=("ultralist_$pkgver.tar.gz::${_source_prefix}amd64.tar.gz")
-sha256sums_x86_64=("10e145ed1eec544474d5b29c1ca682d1c477fcf0c62d15aa5f65656ab3b2b40d")
+sha256sums_x86_64=("ab50b40cc85933c3afa16b551d5b72244b8f2592e1c0f38ef66be27c3379ec72")
 source_aarch64=("ultralist_$pkgver.tar.gz::${_source_prefix}arm64.tar.gz")
-sha256sums_aarch64=("ca06fc9a84fe2bb4fc5d253d1d06114d721e2b9259effc5b4e6bc7cd6c6fe541")
+sha256sums_aarch64=("c41a651ee8350ddaaba4a18ef4fa1597e9087a106bb842b45e8a1f6fb1a862b4")
 source_i686=("ultralist_$pkgver.tar.gz::${_source_prefix}386.tar.gz")
-sha256sums_i686=("6cbc1131f96ad9cc819a6fe5b97dd2907bb607aebe53b53bf58c9479645a0f44")
+sha256sums_i686=("9c49a111cc28e7567dc87a31cac87b41871ec62d9bd4c70d5b0467213c42f8d6")
 
 package(){
     install -Dm755 "$srcdir/ultralist" "$pkgdir/usr/bin/ultralist"
