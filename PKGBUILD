@@ -1,5 +1,4 @@
 # Maintainer Dimitris Kiziridis <ragouel at outlook dot com>
-# Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=freeorion-data
 pkgver=0.4.10
