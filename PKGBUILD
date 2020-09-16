@@ -1,14 +1,13 @@
-# Maintainer Tiberiu Telcean <tiberiu.telcean@gmail.com>
-
+# Maintainer: Tiberiu Telcean <tiberiu.telcean@gmail.com>
 
 pkgbase=open-supaplex
 pkgname=open-supaplex
 pkgver=7.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Supaplex is a game released in the early nineties. OpenSupaplex is a 1:1 reimplementation of the original game in C and SDL"
 url="https://www.github.com/sergiou87/open-supaplex"
 license=('GPL3')
-deps=(sdl2, sdl2_gfx, sdl2_mixer)
+depends=(sdl2 sdl2_gfx sdl2_mixer)
 source=(
     "https://github.com/sergiou87/open-supaplex/archive/v${pkgver}.zip"
 )
@@ -21,6 +20,7 @@ arch=('x86_64')
 prepare() {
     unzip v${pkgver}.zip
     cp open-supaplex-${pkgver}/* $srcdir -r
+    desktop-file-validate ../open-supaplex.desktop && cp ../open-supaplex.desktop $srcdir/
     cd $srcdir/linux
     sed "s/^CFLAGS.*\$/& -DFILE_FHS_XDG_DIRS -DFILE_DATA_PATH=\/usr\/share\/OpenSupaplex\//" Makefile -i # Compile with data dir in /usr/share
 }
@@ -37,6 +37,7 @@ package() {
     install -m 0755	$srcdir/linux/opensupaplex			$pkgdir/usr/bin/opensupaplex
     install -m 0644	$srcdir/switch/resources/launcher-icon.jpg	$pkgdir/usr/share/icons/hicolor/256x256/apps/open-supaplex.png
     cp		-r	$srcdir/resources/*				$pkgdir/usr/share/OpenSupaplex/
+    desktop-file-install $srcdir/open-supaplex.desktop		  --dir=$pkgdir/usr/share/applications/
 }
 
 #vim: syntax=sh

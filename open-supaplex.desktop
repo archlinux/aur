@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Categories=Game;LogicGame;
+Comment=Supaplex is a logic game from the nineties.
+Exec=opensupaplex
+Icon=open-supaplex
+MimeType=
+Name=OpenSupaplex
+GenericName=Supaplex
+Path=/usr/bin
+Terminal=false
+Type=Application
