@@ -1,6 +1,6 @@
 pkgbase = gonhang
 	pkgdesc = GonhaNG is a System Monitor for several important hardware variables.
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/fredcox/gonhang
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = gonhang
 	depends = python-requests
 	conflicts = gonha
 	replaces = gonha
-	source = gonhang-0.2.5.tar.gz::https://pypi.io/packages/source/g/gonhang/gonhang-0.2.5.tar.gz
-	sha256sums = 6810db14c1cc14dff0e1ff6a129ef6924b5c6a39040ea5abe22a295666376d44
+	source = gonhang-0.2.6.tar.gz::https://pypi.io/packages/source/g/gonhang/gonhang-0.2.6.tar.gz
+	sha256sums = 57b44479e30e2e7424fc790d671d01a081ac032467f7f870b3fa289c059663cb
 
 pkgname = gonhang
 
