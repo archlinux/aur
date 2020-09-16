@@ -1,7 +1,7 @@
 # Maintainer: Fred Lins <fredcox at gmail dot com>
 # install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 pkgname=gonhang
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='GonhaNG is a System Monitor for several important hardware variables.'
 arch=('any')
@@ -19,7 +19,7 @@ depends=('python-pyqt5'
          'python-requests')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://pypi.io/packages/source/g/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=(aaabe8ce1cbf00b34a7e9739389e2ee3d4a9394299c7c453e7442cf93d79b774)
+sha256sums=(6810db14c1cc14dff0e1ff6a129ef6924b5c6a39040ea5abe22a295666376d44)
 build() {
   cd "${pkgname}-${pkgver}"
   python setup.py build
