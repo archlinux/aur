@@ -1,11 +1,11 @@
 pkgbase = unbound-root-hints-updater
 	pkgdesc = A systemd timer for updating unbound's root servers.
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 1.0.1
+	pkgrel = 2
 	url = https://gitlab.com/firstairbender/unbound-root-hints
 	arch = any
-	depends = systemd
-	optdepends = unbound
+	depends = unbound
+	optdepends = systemd: the timer needs to be run by systemd
 	source = roothints.service
 	source = roothints.timer
 	sha256sums = b786d36d17b352213058b0743bc03df810348ef59b7a5c9e03d41b7804d0570b
