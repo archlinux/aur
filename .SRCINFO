@@ -1,6 +1,6 @@
 pkgbase = qt5-networkauth-git
 	pkgdesc = Qt5 network authentication module
-	pkgver = 5.15.0_beta1.r1.g1afc993
+	pkgver = 5.15.1.r1.gc4563c2
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
