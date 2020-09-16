@@ -1,7 +1,6 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=miniserve-bin
-_pkgname=miniserve
 pkgver=0.8.0
 pkgrel=1
 pkgdesc='Tool to serve files via HTTP'
