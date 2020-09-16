@@ -1,9 +1,9 @@
 pkgbase = python-obspy
 	pkgdesc = A Python framework for processing seismological data
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = http://obspy.org/
-	arch = any
+	arch = x86_64
 	license = LGPL3
 	makedepends = python-distribute
 	depends = python-scipy
@@ -15,8 +15,8 @@ pkgbase = python-obspy
 	optdepends = python-cartopy: recommended for map plotting
 	optdepends = python-basemap>=1.0.2: legacy alternative to cartopy
 	conflicts = python-obspy-git
-	source = https://github.com/obspy/obspy/archive/1.2.1.tar.gz
-	md5sums = 2c924b5dc30d3ea560d137fb1d185552
+	source = https://github.com/obspy/obspy/archive/1.2.2.tar.gz
+	sha256sums = e0b9762be45d22ebdcf90e7742bdb419d92b90dc9e3ce6fd0a8fd145dcdf916e
 
 pkgname = python-obspy
 
