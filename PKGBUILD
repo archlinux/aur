@@ -1,4 +1,5 @@
 # Maintainer    : Vincent Grande <shoober420@gmail.com>
+# Contributor   : Adrian Perez de Castro <aperez@igalia.com>
 # Contributor   : Eric Vidal <eric@obarun.org>
 # Contributor   : Jean-Michel T.Dydak <jean-michel@obarun.org>
 # Contributor   : Brett Cornwall <ainola@archlinux.org>
@@ -31,6 +32,14 @@ makedepends=(
 provides=('libwlroots.so' 'wlroots')
 conflicts=(wlroots)
 
+pkgver () {
+	cd wlroots
+	(
+		set -o pipefail
+		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
 
 _path=(
     --prefix=/usr
