@@ -1,31 +1,35 @@
-# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
-
-pkgname=libretro-stella-git
-pkgver=216.a7acf22
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Oliver Jaksch <arch-aur@com-in.de>
+# shellcheck shell=bash disable=SC2034,SC2164
+_pkgname=libretro-stella
+pkgname=$_pkgname-git
+pkgver=6.2.r153.g67db826bc
 pkgrel=1
-pkgdesc="libretro implementation of Stella. (Atari 2600)"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-url="https://github.com/libretro/stella-libretro"
+epoch=1
+pkgdesc="A multi-platform Atari 2600 Emulator"
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+url="https://stella-emu.github.io/"
 license=('GPL2')
 groups=('libretro')
-depends=('zlib' 'glibc' 'libretro-core-info')
+depends=('libretro-core-info' 'glibc')
 makedepends=('git')
-
-_libname=stella2014_libretro
-_gitname=stella2014-libretro
-source=("git+https://github.com/libretro/${_gitname}.git")
-sha256sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+https://github.com/stella-emu/stella.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd $_pkgname
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${_gitname}"
-  make
+	cd $_pkgname
+	make -C src/libretro
 }
 
 package() {
-  install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
+	cd $_pkgname
+	# shellcheck disable=SC2154
+	install -Dm644 -t "$pkgdir"/usr/lib/libretro src/libretro/stella_libretro.so
 }
