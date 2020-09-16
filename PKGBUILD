@@ -9,7 +9,7 @@ url='https://www.azul.com/downloads/zulu-community'
 license=('custom')
 install=jdk.install
 options=(!strip)
-provides=("java-environment=11" "java-runtime=11")
+provides=("java-environment=13" "java-runtime=13")
 depends=('java-runtime-common>=3' 'java-environment-common>=3'
          'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet'
          'freetype2' 'giflib' 'libelf')
@@ -29,16 +29,16 @@ case "$CARCH" in
         provides=("java-environment=13" "java-runtime=13")
         ;;
     i686) _arch='i686'
-        _build=14.29.23
-        pkgver=14.0.2
-        sha256sums=('e1111709c5fb1ecabff8080f7974ffba0b782246a77272f2fcbedd2d15adee45')
+        _build=15.27.17
+        pkgver=15.0.0
+        sha256sums=('387AC0C807DBE4E4772E61A1B5508CC700F57CB19F3CEE2A80BC38CAF3E6DA32')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_i686.tar.gz")
         provides=("java-environment=14" "java-runtime=14")
         ;;
     x86_64) _arch='x64'
-        _build=14.29.23
-        pkgver=14.0.2
-        sha256sums=('7f4310a98ea0e52bacbec389012d859dbb51e759fe35a2cfebb11300271872d2')
+        _build=15.27.17
+        pkgver=15.0.0
+        sha256sums=('0A38F1138C15A4F243B75EB82F8EF40855AFCC402E3C2A6DE97CE8235011B1AD')
         source=("https://cdn.azul.com/zulu/bin/zulu${_build}-ca-jdk${pkgver}-linux_x64.tar.gz")
         provides=("java-environment=14" "java-runtime=14")
         ;;
