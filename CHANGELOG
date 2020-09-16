@@ -1,0 +1,394 @@
+1.0 (29 Aug 2016)
+  Initial release
+
+1.0.1 (30 Aug 2016)
+  Fixes the tutorial help file.
+  Fixes settings not being saved between sessions if the settings.json file didn't exist beforehand.
+  Fixes various typos
+
+1.0.2 (4 Sep 2016)
+  Support for bracketed paste
+  Set options at startup with command line flags
+  Use json5 for configuration files
+  Open files at a given line/column number with -startpos LINE,COL
+  Bubblegum light colorscheme
+  Infobar option
+  QuitAll action
+  Various syntax file improvements: dart, lfe, php, yaml, asm, micro, json, conf, caddyfile, ini
+  Numerous bug fixes
+
+1.0.3 (7 Sep 2016)
+  Macros
+  Support for both 'clipboard' and 'primary' clipboard on Linux
+  Change unsaved changes prompt, now says Save changes to filename before closing? (y,n,esc)
+  Syntax file improvements: Pascal, Typescript, PHP improvements, CSS improvements
+  Plugin API improvements:
+	Plugins can create custom autocomplete functions for commands
+	HandleShellCommand returns the stdout of the command
+	(*View).Open(filename string) for opening files easily
+  And many bug fixes as well
+
+1.1.0 (7 Oct 2016)
+  Plugin Manager
+	You can install, remove, update, list, or search for plugins using > plugin ....
+	  List of official plugins can be found here
+	  For more information read the end of > help plugins and also > help commands
+	Snippets Plugin
+	  Provides snippets for many languages. Uses snippet files found here.
+	  Install with > plugin install snippets
+  Add SaveAs keybinding action
+	The save command can also take an argument to save as
+  Performance improvements
+	Faster handling of xml and html
+	Search and replace is much faster
+  Runtime files change
+	Plugins can access runtime files
+	Plugins can add their own runtime files
+	  Internal handling of runtime files is much improved
+  Mouse support and more keybindings in command mode
+  Messages are now logged
+	See the logs with the > log command
+  Configuration files now use json5 instead of json
+  New colorcolumn option
+	For example: highlight column 80 with set colorcolumn 80
+  New eval command to quickly execute lua code
+	Try > eval "CurView():VSplit(NewBuffer('', 'Test'))"
+  Allow a buffer to be opened in two splits at the same time (edits will happen in both splits)
+  Version numbers are now even more informative
+  Unsplit action
+	Closes all splits except for the active one
+  Fix some issues recognizing CtrlH as a binding (depending on the terminal CtrlH may be the same as backspace)
+	Use Backspace for backspace instead of Backspace2 when creating keybindings
+  Some bugfixes regarding using splits and tabs together
+  Autosave option which will automatically save in the background and always save and quit
+	Use with caution as it will save the file, overwriting the previous copy, without asking
+  Plugins can now provide a completion function for the commands they create
+
+1.1.1 (11 Oct 2016)
+  Fixed a bug which caused the plugin manager to crash
+  Fixed a bug causing cursor not to display in certain terminals
+
+1.1.2 (24 Oct 2016)
+  Make Monokai the default colorscheme
+  Add MoveLinesUp and MoveLinesDown actions
+	Bound to Alt-up and Alt-down by default
+  Softwrap option
+  Improved search and replace
+	Some bugs with regex were fixed
+	More intuitive behavior when cancelling search
+  Add OutdentLine action
+  Some syntax file updates: Dockerfile, Yaml, TypeScript
+  Add reload command to reload the runtime files without restarting the editor
+  Add eofnewline option to automatically add make sure files end in newlines
+  Improve Windows support
+	Colors when using certain Windows terminals are no longer reset
+	Mouse tracking now works properly with PuTTY
+  Many smaller bug fixes as well.
+
+1.1.3 (6 Dec 2016)
+  Plugin API
+	plugin available command to show which plugins can be installed
+	ByteOffset and ToCharPos functions added
+	JobSpawn: like JobStart but takes arguments separately
+	tab.CurView is now public
+  New default ftoptions plugin to automatically set options for some filetypes (e.g. tabstospaces off for makefiles)
+  It is possible to resize splits via lua scripting
+  'cd'  and 'pwd' commands to manage the working directory
+  'open' command added and bound to CtrlO
+  Splits can be created either way with splitRight and splitBottom commands
+  Syntax files: Crystal language, TeX updated to use colorschemes, Pony language, VHDL, Objective C, Python 3 (separate from Python 2)
+  File reading optimization
+
+1.1.4 (10 Feb 2017)
+  New rmtrailingws option (off by default)
+  New keepautoindent option (off by default)
+  New linters: Nim, Objective-C
+  Improved syntax files: toml, Go, Nim, Solidity, Pony, Pascal, PHP, Mail, Micro
+  Plugin API
+	JobStart uses shell to parse
+	JobSpawn should be used for direct executable invocation
+  Improved key unbinding
+  Bug fixes
+	Opening a directory doesn't crash
+	Minor mouse clicking bug and more
+
+1.2.0 (27 May 2017)
+  Complete refactor and overhaul of the syntax highlighting engine
+	Syntax files now use the yaml format: the old format is no longer supported but you can convert old syntax files to the new format by using the syntax_converter.go program in the runtime/syntax folder
+	New support for syntax "regions"
+	Support for embedding languages in each other
+	Highlighting should be much more accurate (especially for large files)
+	All syntax files (the obscure languages) now support colorschemes
+	Many new languages/improvements to old syntax files: Kotlin, C++, R, Go, Nim, Swift and more...
+  Tab scrolling
+  'termtitle' option: when enabled, micro will set the terminal's title
+  'SaveAll' action to save all buffers at once
+  'Suspend' action (Linux only) which can be bound to 'CtrlZ'
+  Various bugs with resizing, search, prompts and more have been fixed
+  Unicode support for autoclose plugin
+  'tabswitch' command to change tabs without using the mouse
+  Snap installation
+  More default bindings
+  More efficient search and replace
+  View refactor
+	Under the hood improvements
+  Support for 'Literate'
+
+1.3.0 (29 Jul 2017)
+  Dependencies distributed as submodules
+  Multiple cursors
+	New actions that can be bound:
+	- SpawnMultiCursor default binding: Alt-n
+	- RemoveMultiCursor default binding: Alt-p
+	- RemoveAllMultiCursors default binding: Alt-c
+	- SkipMultiCursor default binding: Alt-x
+	- MouseMultiCursor default binding (can only be bound to mouse buttons): Ctrl-MouseLeft
+  Expanded keybinding support
+	Mouse buttons can be bound: MouseLeft, MouseRight, MouseMiddle, MouseWheelUp, MouseWheelDown, MouseWheelLeft, MouseWheelRight
+	Characters can be bound
+	Support for CtrlPgUp and CtrlPgDown
+  Various syntax highlighting improvements: Vala improvements, C improvements, New Twig syntax, New Darcula colorscheme
+  Improved search and replace
+	Default now will ask for each replacement
+	Use -a flag to replace all
+  No more 1/10th second delay when quitting and using alt keys
+  Bug fixes
+
+1.3.1 (8 Aug 2017)
+  Add support for the Suspend action for OSX and BSDs (still supported on Linux as well)
+  Multiple cursors merge if you spawn multiple with the mouse in the same place
+  Fixes to tcell and pasting
+  Micro won't write your settings if there was an error when loading settings.json.
+
+1.3.2 (15 Sep 2017)
+  Add support for crlf and lf
+  Lua now has access to most of the Go standard library
+	Simply import go packages: local fmt = import("fmt")
+  Syntax highlighting: Julia support, Improved yaml highlighting
+  Bug fixes for multiple cursors
+  Bug fixes for undo/redo
+  Add a new --config-dir option to set a custom location for the configuration directory
+
+1.3.3 (29 Sep 2017)
+  Autocompletion for colorschemes and all options more generally
+  Only register double/triple clicks if the mouse is in the same location
+  Added an option for accurate but inefficient checking if the buffer is modified
+	Set fastdirty option to off (on by default)
+  Fixed some home directory replacements
+  Fixed some command line flags
+  Fixed behavior for large pastes
+
+1.3.4 (25 Nov 2017)
+  New scrollbar option (off by default)
+	Does not have mouse support
+  New savehistory option (on by default)
+	Micro will remember your command bar history between sessions (after closing and re-opening the editor)
+  Nano-like menu for showing the keybindings
+	Use Alt-g to enable
+	Displayed in the statusline
+  Paragraph movement
+	Use Alt-{ and Alt-}
+  Support for binding raw escape sequences
+	Some key events are not sent by terminals by default but they can be configured to send custom escape sequences. This feature lets you configure micro to receive custom escape sequences and bind them to an action.
+  'retab' command will convert tabs to spaces or vice versa depending on your 'tabstospaces' setting
+  'replace' command now accepts the -l flag for 'literal'
+	It will treat the search term literally instead of as a regex
+  Command bar improvements
+	Environment variables are supported in the command bar
+	Shell commands will also be expanded in the command bar using backticks
+	Better keybindings
+	- CtrlA, CtrlLeft: start of line
+	- CtrlE, CtrlRight: end of line
+	- CtrlF, AltRight: next word
+	- CtrlB, AltLeft: previous word
+	- CtrlW, AltBackspace: delete previous word
+	- CtrlV: Paste
+	- Arrow keys as usual
+  Some settings have been renamed for consistency
+	splitRight -> splitright
+	splitBottom -> splitbottom
+  'sucmd' option for customizing "save with sudo" (some systems use a different command from sudo).
+  Colorschemes and syntax improvements
+	New twilight colorscheme
+	Matlab/Octave syntax support
+	Lua, Javascript, Scala, Fish etc... syntax improvements
+  Minor change to the behavior of search
+	Should match the behavior from Vim/Emacs better
+
+1.4.0 (26 Jan 2018)
+  Terminal emulator within micro
+	Use the 'term' command to open a shell
+	Use 'term ...' to start the emulator with a custom process
+	Only supported on MacOS, Linux, OpenBSD, FreeBSD, Dragonfly
+	Lua system for interfacing with the emulator as well
+  Brace highlighting
+	Use the 'matchbrace' option (off by default)
+  New 'JumpToMatchingBrace' action
+  New 'raw' command
+	Using this command will show all escape sequences micro is using
+	Useful for debugging
+  New 'showkey' command
+	See what action a key is bound to
+  'ReplaceMode' (bound to insert key by default)
+  Bind keys to actions
+	Use 'command:...' as an action to bind a command
+	Use 'command-edit:...' as an action to bind a command prompt
+  Optimization for saving large files
+  New 'basename' option for the path shown in the status bar
+  New railscast colorscheme
+  New 'SelectLine' action
+  Support 'line:col' syntax in JumpLine
+  Prompt to create parent folders if they don't exist when saving
+  Syntax highlighting improvements: Javascript, Git-commit, Julia, Lua, Makefile
+  Bug fixes
+
+1.4.1 (10 Aug 2018)
+  New syntax for opening files at a specific line
+	micro file.txt:line:col
+  New hidehelp option
+  Fix for "text file busy"
+  Fix for "terminal entry not found" without need for mkinfo
+  Ctrl-X acts like Ctrl-k when nothing is selected
+  Many small bug fixes and optimizations
+
+2.0.0 (11 Feb 2020)
+  The micro codebase has been refactored, introduces breaking changes to the plugin API, though nearly all official plugins have been updated with 2.0 support.
+  Please use the -clean flag when upgrading to micro 2.0 to clean out your configuration directory. This will remove unused options, remove the plugins directory if it exists, and remove any non-compliant file formats from ~/.config/micro/buffers, which stores buffer information for persistent undo and cursor history.
+
+  Overall performance and stability improvements
+  Simple autocompletion.
+	Autocompletion (tab by default) will do a simple "buffer completion" which will autocomplete according to words used elsewhere in the buffer. In the future plugin support could be added along with support for interfacing with language-specific autocompletion tools.
+  Automatic backups.
+	Backup files are stored in ~/.config/micro/backups for every open buffer and are saved roughly every 8 seconds if the buffer is being modified. Backups are removed when the buffer is closed, but if micro or the system crashes, any unsaved changes can be recovered by re-opening the file (micro will auto- recover) or by manually viewing the backup in the ~/.config/micro/backups directory.
+  Diff gutter
+	Shows your modifications in real-time in the gutter. Integrates with git automatically. Enable with the diffgutter option.
+  Configurable statusline (see the statusformatl and statusformatr options).
+  Configurable linter plugin (see the new linter docs).
+  Resizeable splits (click and drag on separators).
+  Buffer synchronization when the same file is opened multiple times.
+  Keybindings and mouse support in the command bar.
+  New options:
+	encoding: support for loading files in non-UTF8 encodings.
+	backup: performs automatic backups.
+	diffgutter: shows modifications in the gutter (integrates with Git).
+	statusformatl and statusformatr: options for customizing the look of the status line (left and right sides).
+	paste: tells micro a paste event is happening. Enable this before doing a paste through the terminal, and disable afterwards. See > help copy-paste for extensive details.
+	smartpaste: attempts to preserve correct indentation when pasting.
+  New textfilter command for using shell commands to help with editing.
+  Complete re-organization of the code to support better go modules and maintain a better directory structure.
+  Better plugin interface with better access to the Go standard library and internal Micro functions (lots of documentation still needs to be written). See the new plugins documentation.
+  The plugin manager can now be used from the CLI.
+  General QoL improvements and bug fixes.
+	Notably the infamous autoclose plugin crash issue is fixed.
+  New pre-installed colorschemes: darcula, one-dark, gotham, sunny-day, material-tc, monokai-dark
+  Improved Windows support.
+  Many new syntax files and improvements to existing syntax files.
+
+2.0.1 (12 Feb 2020)
+  Fixed bugs in core.
+  Updated documentation.
+  Expose OpenLogBuf to plugins (via bp:OpenLogBuf()).
+  Clicking the arrow in the tabbar now scrolls the tabs.
+  New IndentLine action (unbound by default).
+  New option autosu to automatically use sudo to save file if you don't have permission to save (on by default).
+  Pressing esc when prompted to reload a file will cancel the reload and all future reloads.
+  Update to Haskell syntax file.
+
+2.0.2 (26 Feb 2020)
+  Search and replace improvements:
+	Regex capture groups are now supported in the replace command. Examples:
+	- > replace "(foo)" "$1-bar"
+	- > replace "(foo)" "${1}-bar"
+	- > replace "(?P<group>foo)" "$group-bar"
+	- > replace "(?P<group>foo)" "$group-bar"
+	- > replace "(?P<key>\w+):\s+(?P<value>\w+)$" "$key=$value"
+  Search and replace will only take effect in the current selection if one exists.
+  Option changes:
+	New xterm option (off by default) to force micro to believe the current terminal is xterm-256color. Please use with caution.
+	Make eofnewline on by default.
+	Make autosu off by default.
+	Make fastdirty off by default.
+  Correct version info for snap builds.
+  Bug fixes (and a new test suite for text transformation correctness).
+
+2.0.3 (10 Apr 2020)
+  Micro will output to pipes if it is on the left side of a pipe
+	Running micro | cat will open micro and pipe the result (when the buffer is closed) to cat. Since micro can also read from pipes, this means you can make a pipe chain interactive by placing micro in it.
+  New +LINE:COL flag for opening a file at a location (file.txt:LINE:COL syntax still supported)
+  Minor bug fixes
+  Syntax file improvements: Csharp-script (new), Sagemath (new), Julia, Python 3
+  Linter improvements: Haskell, C++
+
+2.0.4 (23 May 2020)
+  Better clipboard handling for SSH sessions (use internal clipboard even if xclip/xsel is installed if no X-server is available).
+  New CopyLine action (default for CtrlC with no selection).
+  FindLiteral action for Find without regexes (unbound by default).
+  tabmove command for moving tabs.
+  Support for Unicode combining characters.
+  Better customization for dividers with new divchars and divreverse options.
+  Support for italics in colorschemes.
+  Bug fixes:
+	Dropped redraw events.
+	View relocating with a selection.
+	More minor fixes.
+
+2.0.5 (18 Jun 2020)
+  Micro will ensure that settings.json only contains non-default settings.
+	Settings will have default values unless overridden in settings.json.
+	Any settings with default values in settings.json will be removed after modifying your settings or running micro -clean.
+  New relativeruler option (default off).
+	Makes line numbers relative to your current cursor position.
+  New parsecursor option for file:line:col syntax (default off).
+	Enable for previous behavior to open a file at a location.
+  More consistent key labels to reduce confusion about keybindings.
+  Autocompletion is more conservative and only triggers for alphanumerics.
+  Performance improvements.
+  More languages supported by the default comment plugin.
+	Use Alt-/ or Ctrl-/ (new) to comment/uncomment a block of code.
+	Note that micro sees Ctrl-/ as the CtrlUnderscore event from the terminal.
+  Bug fixes:
+	Mouse support in command bar.
+	Escape sequence handling.
+  Other minor issues and improvements.
+
+2.0.6 (24 Jun 2020)
+  Improvements to the backup system.
+	permbackup option (default off).
+	backdupdir option (default directory is ~/.config/micro/backups).
+  Some new statusformat directives for the statusline:
+	status.lines, status.vcol, status.bytes, status.size.
+  Errors parsing settings.json will not cause settings to be overwritten.
+  Bug fixes:
+	Pasting CRLF text.
+	Plugin options not persisting properly.
+	Backspace on Windows.
+	Better test infrastructure.
+
+2.0.7 (6 Sep 2020)
+  Keybindings improvements
+	Key sequences can be bound with <Key1><Key2>..., for example <Ctrl-x><Ctrl-c>.
+	Different keybindings for buffers, command bar, and terminal panes can be specified.
+	- See > help keybindings for the details and defaults.
+	Better support for complex keybindings.
+	- Function keys with modifiers.
+	- PgUp, PgDown, Delete... with modifiers.
+  Clipboard
+	Support for multiple cursors (internal clipboards for each cursor).
+	Support for OSC52 (copy and paste via your terminal, which works over ssh).
+	- New clipboard option (default external).
+		Set to internal for internal clipboard only.
+		Set to external for xclip/xsel external clipboard.
+		Set to terminal to use OSC52.
+		- Known to work in iTerm2, kitty, xterm, st, rxvt-unicode.
+		- See > help copypaste for details on enabling support in your terminal.
+  24-bit color support on Windows (make sure to set MICRO_TRUECOLOR=1)
+	Doesn't work with ConEmu but works with Windows-terminal, command prompt...
+  Minor changes:
+	Better support for obscure terminals (reading terminfo dynamically without relying on infocmp).
+	Better truecolor detection.
+	No duplicates in up-arrow history.
+	Graceful exit when receiving SIGTERM.
+  Bug fixes:
+	Fix path escaping on Windows.
+	Fix issue when fastdirty is off
+	Syntax highlighting and linting fixes

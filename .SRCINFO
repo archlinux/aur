@@ -1,8 +1,9 @@
 pkgbase = micro-bin
 	pkgdesc = A modern and intuitive terminal-based text editor
 	pkgver = 2.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zyedidia/micro
+	changelog = CHANGELOG
 	arch = x86_64
 	arch = i686
 	license = MIT
