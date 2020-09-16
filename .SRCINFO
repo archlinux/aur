@@ -5,6 +5,7 @@ pkgbase = yavta-git
 	url = https://git.ideasonboard.org/yavta.git
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = GPL2
 	makedepends = git
 	source = git://git.ideasonboard.org/yavta.git
