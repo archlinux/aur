@@ -1,4 +1,4 @@
-pkgbase = lockdoor
+pkgbase = lockdoor-git
 	pkgdesc = A penetration testing framework with cyber security resources
 	pkgver = 2.2.4
 	pkgrel = 1
@@ -26,5 +26,5 @@ pkgbase = lockdoor
 	source = lockdoor-framework::git+https://github.com/Lockdoor-Framework/Lockdoor-Framework
 	sha256sums = SKIP
 
-pkgname = lockdoor
+pkgname = lockdoor-git
 

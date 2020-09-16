@@ -1,6 +1,6 @@
 # Maintainer: Sofiane Hamlaoui <s0fianehaml40u1 at gmail dot com>
 
-pkgname=lockdoor
+pkgname=lockdoor-git
 _pkgname=lockdoor-framework
 pkgver=2.2.4
 pkgrel=1
@@ -19,8 +19,8 @@ source=("${_pkgname}::git+https://github.com/Lockdoor-Framework/Lockdoor-Framewo
 sha256sums=(SKIP)
 
 pkgver() {
-    ver=$(curl -s -L https://raw.githubusercontent.com/SofianeHamlaoui/Lockdoor-Framework/master/VERSION)
-    printf "$ver" 
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
