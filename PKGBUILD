@@ -1,6 +1,6 @@
 # Maintainer: American_Jesus <american.jesus.pt AT gmail DOT com>
 pkgname=keepass-pt
-pkgver=2.43
+pkgver=2.46
 pkgrel=1
 pkgdesc="Portuguese (PT) locale for keepass"
 license=('GPL2')
@@ -9,7 +9,7 @@ makedepends=('unzip')
 url="http://keepass.info/translations.html"
 source=(http://downloads.sourceforge.net/keepass/KeePass-${pkgver}-Portuguese_PT.zip)
 arch=(any)
-sha256sums=('66a4e9bc3017fb759c8604d95d234d79bad30213c7d46b9266e13e6302f1b27b')
+sha256sums=('92ac43b96ca0a1c8a254fa60e4740ca2841493a69016ba0b6b74b10fef30159f')
 
 package(){
    mkdir -p "${pkgdir}"/usr/share/keepass
