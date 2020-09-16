@@ -1,7 +1,7 @@
 pkgbase = sheepit-client-git
 	pkgdesc = Client for the free and distributed render farm
 	pkgver = 6.2020.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.sheepit-renderfarm.com/
 	arch = i686
 	arch = x86_64
@@ -21,15 +21,17 @@ pkgbase = sheepit-client-git
 	conflicts = sheepit-client
 	backup = etc/conf.d/sheepit-client
 	source = git://github.com/laurent-clouet/sheepit-client.git#branch=master
-	source = sheepit-client.sh
-	source = sheepit-client.sysusers
 	source = sheepit-client.conf
 	source = sheepit-client.service
+	source = sheepit-client.sh
+	source = sheepit-client.sysusers
+	source = sheepit-client.tmpfiles
 	sha256sums = SKIP
-	sha256sums = 7e6b48f67f35556aaef7823d5e84b6841c46003b65b9a8c373d1cd14343068a4
+	sha256sums = 69220c93518e1bbd034feded5c5deb4e29e21340151d51096adf269d9ec641af
+	sha256sums = 4181b60d36dda17a6d93698166e46e54049d14490993912eb4b31fa833711ee2
+	sha256sums = 18c3c158263861bca6f61204741f7c7c9ea8201b99ec711bc60d096598f4e8ed
 	sha256sums = 2ec4f41f996f149102403a0376da75bf6545a80883c595232aa27eedc2eb9803
-	sha256sums = 19924349046bc2801ed8532f37d388d6e0317cb5e46b7c13acb5c3069193177d
-	sha256sums = 22c9a9461a56e37971a8662308448188164f70caac7e328fc4c7c78a91772af4
+	sha256sums = ba7e49757345d04ae42a8a86fcee3ff53eb9fc86ef8a5b3db8895b5e4b42440a
 
 pkgname = sheepit-client-git
 

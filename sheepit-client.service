@@ -9,9 +9,12 @@ NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=true
 PrivateDevices=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
 RestrictNamespaces=true
 CacheDirectory=sheepit-client/
-ExecStart=/usr/bin/sheepit-client
+CacheDirectoryMode=700
+ExecStart=/usr/bin/sheepit-client -config /etc/conf.d/sheepit-client
 RestartSec=60
 Restart=on-failure
 
