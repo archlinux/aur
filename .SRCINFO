@@ -1,0 +1,18 @@
+pkgbase = make-without-guile
+	pkgdesc = GNU make utility to maintain groups of programs, without guile dependency
+	pkgver = 4.3
+	pkgrel = 1
+	url = https://www.gnu.org/software/make
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	provides = make
+	conflicts = make
+	source = https://ftp.gnu.org/gnu/make/make-4.3.tar.lz
+	source = https://ftp.gnu.org/gnu/make/make-4.3.tar.lz.sig
+	validpgpkeys = 6D4EEB02AD834703510B117680CB727A20C79BB2
+	sha256sums = de1a441c4edf952521db30bfca80baae86a0ff1acd0a00402999344f04c45e82
+	sha256sums = SKIP
+
+pkgname = make-without-guile
+
