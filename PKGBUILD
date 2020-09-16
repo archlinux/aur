@@ -6,15 +6,15 @@
 
 pkgname=mpdscribble
 pkgver=0.23
-pkgrel=2
+pkgrel=3
 pkgdesc='MPD client which submits track info to {Libre,Last}.fm'
 url='https://github.com/MusicPlayerDaemon/mpdscribble'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL')
 depends=('curl' 'libmpdclient')
-makedepends=('boost' 'meson' 'ninja')
+makedepends=('boost' 'libsystemd' 'meson' 'ninja')
 install=$pkgname.install
-source=(https://github.com/MusicPlayerDaemon/${pkgname}/archive/v${pkgver}.tar.gz)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MusicPlayerDaemon/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('6b3b325c82f6b6eff38123960d7d91dc')
 
 prepare() {
@@ -44,7 +44,7 @@ package() {
   # example config
   install -Dm644 doc/mpdscribble.conf \
     "${pkgdir}"/usr/share/mpdscribble/mpdscribble.conf.example
-  rm -f "${pkgdir}"/etc/mpdscribble.conf
+  rm -r "${pkgdir}"/etc
 
   install -d "${pkgdir}"/var/cache/mpdscribble
     touch "${pkgdir}"/var/cache/mpdscribble/mpdscribble.cache
