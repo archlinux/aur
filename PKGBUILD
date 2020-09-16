@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-launchers')
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="GTK+ launchers for sway, i3 and some other WMs"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 makedepends=('git' 'meson')
 depends=('gtk3' 'gtkmm3' 'nlohmann-json')
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=('dd1011c29e89d5ea2e5c3e158eeee327')
+md5sums=('054cec173dbb0fd181b8acd777fe7609')
 
 build() {
    cd "$srcdir/$pkgname-${pkgver}"
