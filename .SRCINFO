@@ -1,13 +1,13 @@
 pkgbase = cloud-init-extra
 	pkgdesc = Extra configs and templates for cloud-init
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/GIJack/cloud-init-extra
 	arch = any
 	license = GPL
 	depends = cloud-init
-	source = cloud-init-extra-1.1.tar.gz::https://github.com/GIJack/cloud-init-extra/archive/v1.1.tar.gz
-	sha256sums = 2f6040e4e8e0e16a5097375ae4beaa816d48f7422f4bb12eadd125952bbff189
+	source = cloud-init-extra-1.2.tar.gz::https://github.com/GIJack/cloud-init-extra/archive/v1.2.tar.gz
+	sha256sums = 204ebd99b3ed4709826d05e2f95a7e2869d533ac28156f0274ae02376e93ddd3
 
 pkgname = cloud-init-extra
 
