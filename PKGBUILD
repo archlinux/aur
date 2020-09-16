@@ -2,7 +2,7 @@
 
 gitname=coin
 pkgname=${gitname}-git
-pkgver=12143.fd528f58e
+pkgver=r12143.fd528f58e
 pkgrel=1
 pkgdesc="A high-level, retained-mode 3D graphics toolkit compatible with Open Inventor 2.1"
 arch=('x86_64')
@@ -20,7 +20,7 @@ md5sums=(SKIP SKIP SKIP SKIP)
 
 pkgver() {
     cd "${srcdir}/${gitname}"
-    local ver="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    local ver="r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
     printf "%s" "${ver//-/.}"
 }
 
