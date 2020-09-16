@@ -1,6 +1,6 @@
 pkgbase = bootsplash-theme-manjaro-space-green-git
 	pkgdesc = Beautiful Manjaro Bootsplash with space animation
-	pkgver = 1.0.r18.g9ec6b38
+	pkgver = 1.0.r19.g60b7782
 	pkgrel = 1
 	url = https://github.com/ANDRoid7890/bootsplash-theme-manjaro-space-green
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Andrey Alekseev <andrey.android7890@gmail.com>
 
 pkgname=('bootsplash-theme-manjaro-space-green-git')
-pkgver=1.0.r18.g9ec6b38
+pkgver=1.0.r19.g60b7782
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Beautiful Manjaro Bootsplash with space animation"
