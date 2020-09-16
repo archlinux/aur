@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=js-beautify-git
-pkgver=1.10.2.r3.g45b073d9
+pkgver=1.13.0.r2.g5c00e1d7
 pkgrel=1
 pkgdesc="Beautifier for javascript"
 arch=('any')
@@ -18,10 +18,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "js-beautify"
 
-  _tag=$(git tag -l --sort -v:refname | sed -n '1,1{s/v//p}')
-  _rev=$(git rev-list --count v$_tag..HEAD)
+  _tag=$(git tag -l --sort -v:refname | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/-/_/g'
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
@@ -37,7 +37,7 @@ package() {
   npm install -g --user root --prefix="$pkgdir/usr" git+file://$(pwd)
   rm -r "$pkgdir/usr/lib/node_modules/js-beautify/js"/*
   cp -r js/* "$pkgdir/usr/lib/node_modules/js-beautify/js"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/js-beautify/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/js-beautify"
 
   find "$pkgdir/usr" -type d -exec chmod 755 {} +
   chown -R root:root "$pkgdir"
