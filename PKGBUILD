@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=qt5-serialbus-git
-pkgver=5.15.0_beta1.r5.g8b1a6de
+pkgver=5.15.1.r1.g6ffb188
 pkgrel=1
 pkgdesc="Qt5 serial bus module"
 arch=('i686' 'x86_64')
@@ -24,10 +24,10 @@ prepare() {
 pkgver() {
   cd "qtserialbus"
 
-  _tag=$(git tag -l --sort -v:refname | sed -n '1,1{s/v//p}')
-  _rev=$(git rev-list --count v$_tag..HEAD)
+  _tag=$(git tag -l --sort -v:refname | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/-/_/g'
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//;s/-/_/g'
 }
 
 build() {
