@@ -1,6 +1,6 @@
 # Maintainer: Tom Hacohen <tom@stosb.com>
 pkgname=acme-tiny-wrapper
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A wrapper around acme-tiny for easier certificate generation"
 url="https://github.com/tasn/acme-tiny-wrapper"
