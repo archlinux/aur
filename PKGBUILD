@@ -3,8 +3,9 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=lib32-zeromq
-pkgver=4.3.2
-pkgrel=2
+pkgver=4.3.3
+_cppver=4.6.0
+pkgrel=1
 pkgdesc='Fast messaging system built on sockets'
 arch=(x86_64)
 url=https://www.zeromq.org
@@ -21,23 +22,22 @@ makedepends=(
   git
   xmlto
 )
-source=(git+https://github.com/zeromq/libzmq.git#tag=9ff57777c148561a173515ed82ee30954607f332)
-sha256sums=(SKIP)
-
-pkgver() {
-  cd libzmq
-
-  git describe --tags | sed 's/^v//'
-}
+source=("https://github.com/zeromq/libzmq/releases/download/v$pkgver/zeromq-$pkgver.tar.gz"
+        "zmq.hpp.$_cppver.tgz::https://github.com/zeromq/cppzmq/archive/v$_cppver.tar.gz")
+sha256sums=('9d9285db37ae942ed0780c016da87060497877af45094ff9e1a1ca736e3875a2'
+            'e9203391a0b913576153a2ad22a2dc1479b1ec325beb6c46a3237c669aef5a52')
 
 prepare() {
-  cd libzmq
+  cd zeromq-$pkgver
+  # Needed for new libsodium
+  sed -i 's/libzmq_werror="yes"/libzmq_werror="no"/' configure
 
-  ./autogen.sh
+  sed -i 's/openpgm-5.1/openpgm-5.3/' configure configure.ac
+  sed -i 's/CXXFLAGS="-Wno-long-long/CXXFLAGS="-Wno-unused-function -Wno-long-long/' configure
 }
 
 build() {
-  cd libzmq
+  cd zeromq-$pkgver
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
@@ -50,11 +50,11 @@ build() {
     --with-libsodium \
     --with-pgm \
     --without-documentation
-  make
+  make -Wno-unused-function -Wnoerror=unused-function
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C libzmq install
+  make DESTDIR="${pkgdir}" -C zeromq-$pkgver install
   rm -rf "${pkgdir}"/usr/{bin,include,share}
 }
 
