@@ -1,0 +1,30 @@
+pkgbase = lockdoor-git
+	pkgdesc = A penetration testing framework with cyber security resources
+	pkgver = 2.2.4
+	pkgrel = 1
+	url = http://github.com/SofianeHamlaoui/Lockdoor-Framework
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-pip
+	depends = python-requests
+	depends = python2
+	depends = python2-pip
+	depends = ruby
+	depends = php
+	depends = git
+	depends = wget
+	depends = netcat
+	depends = subversion
+	depends = jre-openjdk
+	depends = linux-headers
+	depends = rsync
+	provides = lockdoor-framework
+	conflicts = lockdoor-framework
+	options = !strip
+	source = lockdoor-framework::git+https://github.com/Lockdoor-Framework/Lockdoor-Framework
+	sha256sums = SKIP
+
+pkgname = lockdoor-git
+
