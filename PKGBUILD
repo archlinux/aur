@@ -1,6 +1,6 @@
 # Maintainer: Sofiane Hamlaoui <s0fianehaml40u1 at gmail dot com>
 
-pkgname=lockdoor
+pkgname=lockdoor-git
 _pkgname=lockdoor-framework
 pkgver=2.2.4
 pkgrel=1
@@ -8,10 +8,10 @@ pkgdesc="A penetration testing framework with cyber security resources"
 url="http://github.com/SofianeHamlaoui/Lockdoor-Framework"
 arch=('any')
 license=('GPL3')
-depends=('python' 'python-pip' 'python-requests' 'python2' 'python2-pip' 'gcc' 'ruby' 'php' 'git' 'wget' 'curl' 'netcat' 'subversion' 'jre-openjdk' 'make' 'automake' 'gcc' 'linux-headers' 'gzip'  'rsync' 'wget')
+depends=('python' 'python-pip' 'python-requests' 'python2' 'python2-pip' 'ruby' 'php' 'git' 'wget' 'netcat' 'subversion' 'jre-openjdk' 'linux-headers' 'rsync')
 optdepends=()
 optdepends=()
-makedepends=()
+makedepends=('git')
 provides=('lockdoor-framework')
 options=(!strip)
 conflicts=("${_pkgname}")
