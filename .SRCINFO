@@ -1,6 +1,6 @@
 pkgbase = qt5-websockets-git
 	pkgdesc = Qt5 WebSockets module
-	pkgver = 5.15.0_beta1.r6.g87c9513
+	pkgver = 5.15.1.r1.g55e0638
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
