@@ -1,12 +1,15 @@
 pkgbase = course
 	pkgdesc = Course management tools for students.
-	pkgver = 2
-	pkgrel = 2
+	pkgver = 2.r0.geb4ff8e
+	pkgrel = 1
 	url = http://samuellando.com
 	arch = any
 	license = GPL
-	source = https://github.com/samuellando/course/archive/2.tar.gz
-	sha256sums = 636c9dd4742b75b110cadb6f367a0c9921574bf05aa7316c7112fdea1d066845
+	makedepends = git
+	provides = course
+	conflicts = course
+	source = course::git+https://github.com/samuellando/course.git
+	md5sums = SKIP
 
 pkgname = course
 

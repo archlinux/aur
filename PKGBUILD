@@ -1,19 +1,31 @@
 # Maintainer: Samuel Lando samuel.lando@aol.com
 pkgname=course
-pkgver=2
-pkgrel=2
+pkgver=2.r0.geb4ff8e
+pkgrel=1
 pkgdesc="Course management tools for students."
 arch=('any')
 url="http://samuellando.com"
 license=('GPL')
-source=("https://github.com/samuellando/course/archive/$pkgver.tar.gz")
-sha256sums=('636c9dd4742b75b110cadb6f367a0c9921574bf05aa7316c7112fdea1d066845')
+makedepends=('git')
+optdepends=()
+provides=("$pkgname")
+conflicts=("$pkgname")
+source=("$pkgname::git+https://github.com/samuellando/course.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  ( set -o pipefail
+  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
 package() {
-  rm ${srcdir}/$pkgname-$pkgver/README.md
+  rm ${srcdir}/$pkgname/README.md
   mkdir -p ${pkgdir}/usr/local/man/man1
-  cp ${srcdir}/$pkgname-$pkgver/man/* ${pkgdir}/usr/local/man/man1/
-  rm -r ${srcdir}/$pkgname-$pkgver/man
+  cp ${srcdir}/$pkgname/man/* ${pkgdir}/usr/local/man/man1/
+  rm -r ${srcdir}/$pkgname/man
   mkdir -p ${pkgdir}/usr/bin
-  cp ${srcdir}/$pkgname-$pkgver/* ${pkgdir}/usr/bin/
+  cp ${srcdir}/$pkgname/* ${pkgdir}/usr/bin/
 }
