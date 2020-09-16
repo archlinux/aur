@@ -9,7 +9,6 @@ pkgbase = mmwm-git
 	license = custom:MIT/X
 	makedepends = git
 	depends = libx11
-	depends = libxcb
 	depends = xcb-util
 	depends = xcb-util-wm
 	depends = xcb-util-keysyms
