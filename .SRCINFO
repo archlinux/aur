@@ -1,0 +1,13 @@
+pkgbase = fuzzy_rust_clock
+	pkgdesc = Simple fuzzy clock text generator
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Daniel-Bray-Aber/fuzzy_rust_clock
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	source = https://github.com/Daniel-Bray-Aber/fuzzy_rust_clock/releases/download/1.0/fuzzy_clock.1.0.tar.gz
+	sha256sums = 9893429a8da761d0c816904f440bb4ff414515c28641b8a27a680a13da2b6275
+
+pkgname = fuzzy_rust_clock
+
