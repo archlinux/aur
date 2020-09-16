@@ -1,7 +1,7 @@
 pkgbase = qt5-3d-git
 	pkgdesc = Qt5 3D module
 	pkgver = 5.15.1.r10.g8470b781f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io/
 	arch = i686
 	arch = x86_64
