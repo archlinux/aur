@@ -1,6 +1,6 @@
 pkgbase = quickmedia-git
 	pkgdesc = A native client for web media. Works with youtube, 4chan and several manga sites.
-	pkgver = r221.0f64e10
+	pkgver = r220.b95298d
 	pkgrel = 1
 	url = https://git.dec05eba.com/QuickMedia
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = quickmedia-git
 	optdepends = automedia: For automatically downloading new chapters of tracked manga
 	provides = QuickMedia
 	conflicts = QuickMedia
-	source = quickmedia-git-r221.0f64e10.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz
-	sha512sums = 4afe08fd90bfa5ac6c8d6fb8c40c98537d7a91568c4a60740ca43f30b2aa6673e33388d0865a26c3adf70fba115988a0a4f0457af160194f261ba71d523c0a94
+	source = quickmedia-git-r220.b95298d.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz
+	sha512sums = 5a7536cb1ce94fbd714f8574484a7ee349a3b473cc0745469c669685cd46e93954e9d8281ebf94ae9f5f6e1223d9a8a8f06066b446c35792ce51d83fbf792f00
 
 pkgname = quickmedia-git
 
