@@ -1,6 +1,6 @@
---- galois-0.4/src/makefile.in.orig	2016-02-06 20:53:18.701336710 +0100
-+++ galois-0.4/src/makefile.in	2016-02-06 20:53:41.444173725 +0100
-@@ -50,10 +50,10 @@
+--- galois-0.7/src/makefile.in.orig	2020-09-16 21:03:55.135600462 +0200
++++ galois-0.7/src/makefile.in	2020-09-16 21:04:28.670153046 +0200
+@@ -52,10 +52,10 @@
  	- rm -f ${AC}
  
  install : galois
@@ -14,9 +14,8 @@
  
  # dependencies
  area.o : area.h grid.h group.h
-
---- galois-0.4/misc/galois.desktop.in.orig	2016-02-06 20:52:37.265574946 +0100
-+++ galois-0.4/misc/galois.desktop.in	2016-02-06 20:52:49.085316730 +0100
+--- galois-0.7/misc/galois.desktop.in.orig	2020-09-16 21:04:56.768101564 +0200
++++ galois-0.7/misc/galois.desktop.in	2020-09-16 21:05:12.823403378 +0200
 @@ -17,7 +17,7 @@
  # @configure_input@
  

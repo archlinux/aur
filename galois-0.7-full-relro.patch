@@ -1,0 +1,11 @@
+--- galois-0.7/src/makefile.in.orig	2020-09-16 21:03:55.135600462 +0200
++++ galois-0.7/src/makefile.in	2020-09-16 21:11:50.432582306 +0200
+@@ -42,7 +42,7 @@
+ default: galois
+ all : ${EXE}
+ galois : ${OBJS}
+-	${CXX} ${CXXFLAGS} ${OBJS} -o $@ ${GTKMM_LIBS} ${XMLPP_LIBS} \
++	${CXX} ${CXXFLAGS} ${LDFLAGS} ${OBJS} -o $@ ${GTKMM_LIBS} ${XMLPP_LIBS} \
+         ${THREAD_LIBS}
+ 
+ # other targets
