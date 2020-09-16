@@ -1,6 +1,6 @@
 pkgbase = gclipboard-git
 	pkgdesc = A simple clipboard manager with a clean design approach.
-	pkgver = r41.2704588
+	pkgver = r48.1692721
 	pkgrel = 1
 	url = http://github.com/muesli4/gclipboard
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: Moritz Bruder <muesli4@gmail.com>
 pkgname=gclipboard-git
-pkgver=r41.2704588
+pkgver=r48.1692721
 pkgrel=1
 pkgdesc='A simple clipboard manager with a clean design approach.'
 arch=('x86_64' 'i686')
@@ -20,7 +20,7 @@ pkgver() {
 build() {
     cd "$pkgname"
 
-    ./bootstrap
+    autoreconf -vfi
     ./configure --prefix=/usr
     make
 }
