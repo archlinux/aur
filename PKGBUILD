@@ -1,22 +1,20 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=zcash
-pkgver=3.1.0
-_commit=65f0a4736acd9adeb91f11899bcee3439068c771
+pkgver=4.0.0
+_commit=5e7e9687fc87a2426bafef2837174eac52978b4c
 pkgrel=1
 pkgdesc='Permissionless financial system employing zero-knowledge security'
 arch=('x86_64')
 url='https://z.cash/'
 license=('MIT')
-depends=('boost-libs' 'libevent' 'qpid-proton' 'zeromq')
+depends=('boost-libs' 'libevent' 'zeromq')
 makedepends=('boost' 'cmake' 'git' 'gmock' 'python' 'rust' 'wget')
 checkdepends=('python-pyblake2' 'python-pyzmq' 'python-requests' 'python-simplejson')
 source=("git+https://github.com/zcash/zcash.git#commit=${_commit}"
-        'use-system-qpid-proton.patch'
         'use-system-rust.patch'
         'zcashd.service')
 sha512sums=('SKIP'
-            '0d9c089e1b9eddc127936dbc12984804f3ad65c35845a336368cc9fce22ae784fb486a9a74b5cf34f42739779b42c18084f0558c9c1c74f18c6d8999596c7af6'
             '1267fc174df81a80a1b0f2e1a6bbaaa6fa95402c83bc6a8678b582ed6c7f7a02eeed0f61c9600496aa782f9fb9fec6dc9ac419d366d059306a5c4f97a5a166f0'
             '2fb8b0a636ca9c7ee15f0fd2c47046c8323ade3de9562f393da7541eee50dd14b12107dd29b0e1ee90ff88963e2f7e25b12435166a1812df5c88c579c12dde88')
 
@@ -26,7 +24,6 @@ prepare() {
     # Set gitattributes on src/clientversion.cpp
     git archive --format=tar ${_commit} -- src/clientversion.cpp | tar -xf -
 
-    patch -Np1 -i ../use-system-qpid-proton.patch
     patch -Np1 -i ../use-system-rust.patch
 }
 
@@ -45,8 +42,7 @@ build() {
 
     ./autogen.sh
     depends_prefix="${PWD}/depends/${BUILD}" ./configure --prefix=/usr \
-        --enable-online-rust \
-        --enable-proton
+        --enable-online-rust
     make RUST_TARGET="${BUILD}"
 }
 
