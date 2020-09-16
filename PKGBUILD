@@ -2,7 +2,7 @@
 # Previous maintainer: Jonathan Liu <net147@gmail.com>
 
 pkgname=qt5-datavis3d-git
-pkgver=5.15.0_beta1.r0.g9ba8b807
+pkgver=5.15.1.r1.g6cc736d3
 pkgrel=1
 pkgdesc="Qt5 data visualization module"
 arch=('i686' 'x86_64')
@@ -25,10 +25,10 @@ prepare() {
 pkgver() {
   cd "qtdatavis3d"
 
-  _tag=$(git tag -l --sort -v:refname | sed -n '1,1{s/v//p}')
-  _rev=$(git rev-list --count v$_tag..HEAD)
+  _tag=$(git tag -l --sort -v:refname | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
   _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/-/_/g'
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//;s/-/_/g'
 }
 
 build() {
