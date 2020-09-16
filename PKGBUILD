@@ -2,7 +2,7 @@
 
 pkgbase=esphomeyaml
 pkgname=esphome
-pkgver=1.14.5
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="Solution for your ESP8266/ESP32 projects with Home Assistant"
 url="https://github.com/esphome/ESPHome"
@@ -25,12 +25,12 @@ arch=('any')
 replaces=('esphomeyaml')
 source=("https://github.com/esphome/ESPHome/archive/v${pkgver}.tar.gz"
 	"requirements.patch")
-sha256sums=('577dbc91dd21333f87850d6d58f34b0eef3b2574582636dd1bed3ed132c5722c'
-            'ab711b1e1ad83cf3415d1d925a4b17500b48bcf0d16ba25c7998d6cd70c6acc7')
+sha256sums=('e6b24f811a1da9b0572b4dd062cc1848d435269eb842b29a0046a33699aeaa7f'
+            'eee066bd4496d40164961d39362183c8df8362b2de263672380cabf095a23d0a')
 
 prepare() {
     cd "$srcdir/${pkgname}-${pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/requirements.patch"
+	sed -i 's/==.*//' requirements.txt
 }
 
 build() {
