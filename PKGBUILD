@@ -1,15 +1,15 @@
 # Maintainer: François-Xavier Bru <francoisxavier.bru at orange dot com>
 pkgname=dependency-check-cli
 _pkgname=dependency-check
-pkgver=5.3.2
-pkgrel=2
+pkgver=6.0.1
+pkgrel=1
 pkgdesc="Dependency-Check is a Software Composition Analysis (SCA) tool that attempts to detect publicly disclosed vulnerabilities contained within a project's dependencies."
 arch=('any')
 depends=('java-runtime')
 url="https://github.com/jeremylong/DependencyCheck"
 license=('Apache')
 source=("https://bintray.com/jeremy-long/owasp/download_file?file_path=${_pkgname}-${pkgver}-release.zip")
-sha256sums=('4c6f40cb596e335fd0cd816bd6c25773e1e029c3109979ce4c429f3b49850252')
+sha256sums=('42245c5e235015aa3296206a10d54e2495f4138fa2ff50e58272e0f0c7ffd83a')
 install=${pkgname}.install
 
 package() {
