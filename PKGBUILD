@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michael.straube@posteo.de>
+# Maintainer: Michael Straube <michaelfstraube@gmail.com>
 # Contributor: Sebastian Wolf <fatmike303 at googlemail dot com>
 
 pkgname=chipmachine
