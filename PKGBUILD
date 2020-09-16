@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/python-openxml/python-docx"
 license=('MIT')
 depends=('python>=3.4' 'python-lxml>=3.1.0')
-makedepends=()
+makedepends=('python-setuptools')
 provides=()
 conflicts=()
 replaces=()
