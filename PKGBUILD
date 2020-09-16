@@ -1,0 +1,58 @@
+# Maintainer    : Vincent Grande <shoober420@gmail.com>
+# Contributor   : Eric Vidal <eric@obarun.org>
+# Contributor   : Jean-Michel T.Dydak <jean-michel@obarun.org>
+# Contributor   : Brett Cornwall <ainola@archlinux.org>
+# Contributor   : Omar Pakker
+
+pkgname=wlroots-nosystemd-git
+pkgver=0.10.1
+pkgrel=1
+pkgdesc='Modular Wayland compositor library'
+url="https://github.com/swaywm/wlroots"
+arch=('x86_64')
+license=('MIT')
+source=("git+https://github.com/swaywm/wlroots")
+sha512sums=('SKIP')
+
+depends=(
+    'libinput'
+    'libxkbcommon'
+    'opengl-driver'
+    'pixman'
+    'xcb-util-errors'
+    'xcb-util-image'
+    'xcb-util-wm'
+)
+makedepends=(
+    'meson'
+    'ninja'
+    'wayland-protocols'
+)
+provides=('libwlroots.so' 'wlroots')
+conflicts=(wlroots)
+
+
+_path=(
+    --prefix=/usr
+)
+
+_flags=(
+    --buildtype=plain
+    -Dlibcap=enabled
+    -Dlogind=disabled
+    -Dxcb-errors=enabled
+    -Dxcb-icccm=enabled
+    -Dxcb-xkb=enabled
+    -Dxwayland=enabled
+    -Dx11-backend=enabled
+)
+
+build() {
+    meson wlroots build "${_path[@]}" "${_flags[@]}"
+    ninja -C build
+}
+
+package() {
+    DESTDIR="$pkgdir" ninja -C build install
+    install -Dm644 "wlroots/LICENSE" -t "$pkgdir/usr/share/licenses/wlroots/"
+}
