@@ -23,10 +23,6 @@ pkgver() {
 
 }
 
-build() {
-    return 0
-}
-
 package() {
     cd $srcdir
     cargo install --no-track --root="$pkgdir/usr" --git=https://github.com/ilpianista/base16-builder-rust
