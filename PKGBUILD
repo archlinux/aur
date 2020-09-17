@@ -2,8 +2,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bibtex2html
-pkgver=1.99.413
-pkgrel=2
+pkgver=1.99
+pkgrel=1
+epoch=1
 pkgdesc="Collection of tools for producing HTML documents from bibtex-bibliographies"
 url="https://github.com/backtracking/bibtex2html"
 license=('GPL2')
@@ -23,6 +24,7 @@ build() {
   hevea manual.tex
   pdflatex manual.tex
 }
+
 package() {
   cd $pkgname
   make prefix="$pkgdir"/usr install 
