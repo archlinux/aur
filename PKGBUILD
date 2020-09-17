@@ -3,14 +3,14 @@
 
 pkgname=bibtex2html
 pkgver=1.99.413
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of tools for producing HTML documents from bibtex-bibliographies"
-url="http://www.lri.fr/~filliatr/bibtex2html/"
+url="https://github.com/backtracking/bibtex2html"
 license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('perl')
 makedepends=('ocaml' 'git' 'hevea' 'texlive-latexextra' 'texlive-bibtexextra')
-source=(git+https://github.com/backtracking/bibtex2html.git#commit=8f25afb95a839c9f9522a34013d5c905af14378b)
+source=(git+$url.git#commit=8f25afb95a839c9f9522a34013d5c905af14378b)
 md5sums=('SKIP')
 
 build() {
