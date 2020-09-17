@@ -2,7 +2,7 @@
 
 pkgname=bangin
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A primitive, portable shell script which enables DuckDuckGo-like bangs"
 url="https://github.com/samhh/bangin/"
 arch=('any')

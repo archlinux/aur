@@ -1,7 +1,7 @@
 pkgbase = bangin
 	pkgdesc = A primitive, portable shell script which enables DuckDuckGo-like bangs
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/samhh/bangin/
 	arch = any
 	license = MIT
