@@ -1,8 +1,8 @@
 #Maintainer: Raimar Buehmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=eclipse-objectaid
-pkgver=1.2.3
-pkgrel=2
+pkgver=1.2.4
+pkgrel=1
 pkgdesc='Create UML class diagrams from existing Java source code and libraries with this plugin for Eclipse IDE.'
 arch=('any')
 url='http://www.objectaid.com'
@@ -10,9 +10,9 @@ license=('ObjectAid Class Diagram Editor License')
 depends=('eclipse>=4.5.0')
 options=('!strip')
 source=(
-	"http://www.objectaid.com/update/current/objectaid-$pkgver.zip"
+	"https://www.objectaid.com/update/current/objectaid-$pkgver.zip"
 )
-sha256sums=('071545f413d78250bf74ec2d40a85c05509328804901471a261c5b652cebad57')
+sha256sums=('0eea5dba170fbd8dc3b0d5d11024437b3227a87bd2eb19d337f90256457f352a')
 
 package() {
 	_dest=$pkgdir/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
