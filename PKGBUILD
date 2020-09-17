@@ -5,7 +5,7 @@
 
 pkgname=nvidia-beta
 pkgver=455.23.04
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for Arch's official 'linux' package (beta version)"
 arch=('x86_64')
 url='https://www.nvidia.com/'
