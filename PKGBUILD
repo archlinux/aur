@@ -12,6 +12,7 @@ license=('custom')
 depends=('alsa-lib' 'gconf' 'gtk2' 'libxss' 'libxtst' 'nss' 'python')
 provides=('ramboxpro')
 options=('!emptydirs')
+conflicts=('rambox-pro-bin-beta')
 # EULA file: 'html2text --body-width=80 https://rambox.pro/includes/eula.html'
 source=("${_pkgname}-EULA"
         "${_pkgname}-${pkgver}.deb::https://github.com/ramboxapp/download/releases/download/v${pkgver}/RamboxPro-${pkgver}-linux-x64.deb")
