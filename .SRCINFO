@@ -12,6 +12,7 @@ pkgbase = freeorion-bin
 	depends = openal
 	depends = freetype2
 	depends = freeorion-data
+	provides = freeorion
 	conflicts = freeorion-git
 	conflicts = freeorion
 	source = freeorion-0.4.10.deb::http://http.us.debian.org/debian/pool/main/f/freeorion/freeorion_0.4.10-1_amd64.deb
