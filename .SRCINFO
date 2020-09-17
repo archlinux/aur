@@ -5,6 +5,7 @@ pkgbase = python-branca
 	url = https://github.com/python-visualization/branca
 	arch = any
 	license = MIT
+	checkdepends = jupyter-nbconvert
 	checkdepends = python-nose
 	checkdepends = python-selenium
 	checkdepends = geckodriver
