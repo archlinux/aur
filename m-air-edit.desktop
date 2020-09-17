@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=M-AIR EDIT
+Comment=Remote control for MIDAS M-AIR mixers
+Icon=m-air-edit
+Exec=M-AIR-Edit
+TryExec=M-AIR-Edit
+Terminal=false
+Type=Application
+Categories=Audio;Mixer;AudioVideo;
