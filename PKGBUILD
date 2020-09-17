@@ -17,7 +17,7 @@ pkgrel=1
 epoch=7
 
 pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build, Community Edition'
-arch=('any')
+arch=('i686' 'x86_64')
 url=http://www.jetbrains.com/pycharm
 license=('Apache')
 
@@ -40,6 +40,15 @@ sha256sums=($(curl -s "https://download.jetbrains.com/python/pycharm-community-$
 prepare() {
 	if [ -d "pycharm-community-$_pkgver" ]; then
 		mv pycharm-community-{"$_pkgver","$_buildver"}
+	fi
+
+	cd "pycharm-community-$_buildver/bin"
+	local _vmoptfile
+	for _vmoptfile in pycharm{,64}.vmoptfile; do
+		echo $'-Dawt.useSystemAAFontSettings=on\n-Dswing.aatext=true' >>"$_vmoptfile"
+	done
+	if [ "$CARCH" = i686 ]; then
+		rm fsnotifier64 libdbm64.so
 	fi
 }
 
@@ -74,14 +83,6 @@ package() {
 	EOF
 	ln -s "/opt/$pkgname/bin/pycharm.sh" "$pkgdir/usr/bin/pycharm-ce"
 	ln -s "/opt/$pkgname/bin/pycharm.png" "$pkgdir/usr/share/pixmaps/"
-
-	local _vmoptfile=pycharm64
-	if [ "$CARCH" = i686 ]; then
-		rm -f "$pkgdir/opt/$pkgname/bin/libyjpagent-linux64.so"
-		rm -f "$pkgdir/opt/$pkgname/bin/fsnotifier64"
-		_vmoptfile=pycharm
-	fi
-	echo $'-Dawt.useSystemAAFontSettings=on\n-Dswing.aatext=true' >>"$pkgdir/opt/$pkgname/bin/$_vmoptfile.vmoptions"
 }
 
 
