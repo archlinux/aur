@@ -11,6 +11,7 @@
 #
 # NOTES:
 #
+# 20200917: MySql dbsupport temporary disabled (-DWITH_MYSQL=0) because of problem with its include internal files (fix suggested here: https://bugs.archlinux.org/task/67896)
 # 20191009: Apply cmake list hack to work around harfbuzz hb.h inclusion problem
 # 20190409: Mariadb patch applied from https://aur.archlinux.org/packages/codelite/
 # 20151027: ArchLinux clang/llvm-3.7: CommandLine Error: Option 'aarch64-reserve-x18' registered more than once
@@ -92,7 +93,7 @@ export WX_CONFIG
 mkdir -p "${BUILD_DIR}"
 #cd "${BUILD_DIR}"
 
-cmake -B "${BUILD_DIR}" -S . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DWITH_WX_CONFIG=${WX_CONFIG} -DENABLE_LLDB=1 -DWITH_MYSQL=1 -DCMAKE_INSTALL_LIBDIR=lib
+cmake -B "${BUILD_DIR}" -S . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DWITH_WX_CONFIG=${WX_CONFIG} -DENABLE_LLDB=1 -DWITH_MYSQL=0 -DCMAKE_INSTALL_LIBDIR=lib
 make -C "${BUILD_DIR}"
 
 }
