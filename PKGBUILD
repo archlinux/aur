@@ -1,13 +1,13 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _srcname=I.Ming
-_version=6.12
-_version_pkg_updates=2
-_gitcommit=e948fb4c46c83571199b9e779dc186b5a6c72799
+_version=7.00
+_version_pkg_updates=1
+_gitcommit=8258880de0f2d91757de4848f873b1396bbd9be3
 
 pkgname=ttf-i.ming
 pkgver="${_version}+${_version_pkg_updates}+${_gitcommit::7}"
-pkgrel=2
+pkgrel=1
 pkgdesc="I.Ming ( I.明體 / 一點明體 / 一点明朝 / 一点明体 )"
 url="https://github.com/ichitenfont/I.Ming"
 arch=('any')
