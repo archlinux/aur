@@ -6,4 +6,7 @@ if [ -z "$BRAVE_FLAGS" ]; then
         FLAG="--no-sandbox"
     fi
 fi
+if [[ -z "${CHROME_USER_DATA_DIR}" ]]; then
+    export CHROME_USER_DATA_DIR=~/.config/BraveSoftware/Brave-Browser-Nightly
+fi
 exec "/opt/brave.com/brave-nightly/brave-browser" "--use-gl=desktop" "$BRAVE_FLAGS" "$FLAG" "$@"
