@@ -13,6 +13,7 @@ pkgbase = rambox-pro-bin
 	depends = nss
 	depends = python
 	provides = ramboxpro
+	conflicts = rambox-pro-bin-beta
 	options = !emptydirs
 	source = ramboxpro-EULA
 	source = ramboxpro-1.3.2.deb::https://github.com/ramboxapp/download/releases/download/v1.3.2/RamboxPro-1.3.2-linux-x64.deb
