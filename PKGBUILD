@@ -17,14 +17,14 @@ arch=('i686' 'x86_64')
 url="https://github.com/OpenCBM/OpenCBM"
 license=('GPL2')
 groups=()
-depends=('ncurses' 'libusb' 'libusb-compat')
-makedepends=('cc65')
+depends=('libusb')
+makedepends=('git' 'cc65')
 checkdepends=()
-optdepends=()
-provides=()
+optdepends=('ncurses: enable interactive mode for cbmlinetester')
+provides=('opencbm')
 conflicts=()
 replaces=()
-backup=()
+backup=('etc/opencbm.conf')
 options=()
 install=
 changelog=
@@ -39,7 +39,8 @@ build_kernel_module=
 #
 #
 
-prepare() {
+prepare()
+{
   cd "${srcdir}/${_srcdirname}"
   # kernel module: add includes to kernel module source
   sed -i '\!#include <asm/uaccess.h>!s!.*!&\n#include <linux/uaccess.h>\n#include <linux/sched/signal.h>!' opencbm/sys/linux/cbm_module.c
@@ -47,7 +48,8 @@ prepare() {
   sed -i '\!-rm -f Makefile!d' opencbm/sys/linux/LINUX/Makefile
 }
 
-build() {
+build()
+{
   cd "${srcdir}/${_srcdirname}"
   CC65_HOME="/usr/share/cc65"
   export CC65_HOME
@@ -60,16 +62,25 @@ build() {
   fi
 }
 
-check() {
+check()
+{
   cd "${srcdir}/${_srcdirname}"
 }
 
-package() {
+package()
+{
   cd "${srcdir}/${_srcdirname}"
   mkdir -p "${pkgdir}/etc/udev/rules.d"
   make -f LINUX/Makefile PREFIX="/usr" MANDIR="/usr/share/man/man1" INFODIR="/usr/share/info" DESTDIR="${pkgdir}/" install install-plugin-xum1541 install-plugin-xu1541
   mv "${pkgdir}/etc/opencbm.conf" "${pkgdir}/etc/opencbm.conf.sample"
 
+  # Don't overwrite ld.so.conf
+  rm -f ${pkgdir}/etc/ld.so.conf
+
+  # Remove scary warning from /etc/opencbm.conf and don't install both /etc/opencbm.conf.d/ and opencbm_plugin_helper_tools at all
+  ##sed -i "/^;.*/d" ${pkgdir}/etc/opencbm.conf
+  ##rm -rf ${pkgdir}/etc/opencbm.conf.d/
+  ##rm ${pkgdir}/usr/bin/opencbm_plugin_helper_tools
 
   # kernel module: build (optional)
   if test "${build_kernel_module}" != ""; then
@@ -87,4 +98,6 @@ package() {
   find "${pkgdir}" -type d -empty -delete
 }
 
+#
 # EOF
+#
