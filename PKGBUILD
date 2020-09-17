@@ -1,39 +1,47 @@
-# Maintainer: Boohbah <boohbah at gmail.com>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Boohbah <boohbah at gmail.com>
 # Contributor: sekret <sekret at posteo.se>
 
 pkgname=libsodium-git
-pkgver=1.0.10.r10.g0a590b0
+pkgver=1.0.18.r291.g33b93592
 pkgrel=1
-pkgdesc="P(ortable|ackageable) NaCl-based crypto library (git version)"
-arch=('i686' 'x86_64' 'armv7l' 'armv7h')
-url="https://github.com/jedisct1/libsodium"
-license=('ISC')
+pkgdesc="A modern, portable, easy to use crypto library"
+arch=('i686' 'x86_64')
+url="https://libsodium.org/"
+license=('custom:ISC')
+depends=('glibc')
 makedepends=('git')
-conflicts=('libsodium')
 provides=('libsodium')
-source=("$pkgname::git+$url.git")
-md5sums=('SKIP')
+conflicts=('libsodium')
+options=('staticlibs')
+source=("git+https://github.com/jedisct1/libsodium.git")
+sha256sums=('SKIP')
+
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "libsodium"
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$pkgname"
-  sh autogen.sh
-  ./configure --prefix="/usr"
+  cd "libsodium"
+
+  ./autogen.sh -s
+  ./configure \
+    --prefix="/usr"
   make
 }
 
 check() {
-  cd "$pkgname"
+  cd "libsodium"
+
   make check
 }
 
 package() {
-  cd "$pkgname"
-  make DESTDIR="$pkgdir" install
-}
+  cd "libsodium"
 
-# vim:set sts=2 sw=2 et:
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/libsodium"
+}
