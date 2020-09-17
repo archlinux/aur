@@ -1,14 +1,14 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=seatd
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Seat management daemon and library"
 arch=(x86_64)
 url="https://git.sr.ht/~kennylevinsen/seatd"
 license=(MIT)
 source=("https://git.sr.ht/~kennylevinsen/seatd/archive/$pkgver.tar.gz")
-sha256sums=('6b0160fa2f0500da7db6450547b8ffa7063d063dc94a4a2a710f416b2e41699f')
+sha256sums=('2aa4f6c8b3d39f52f573848137531af3123948fad5a873039b65abf37d490b6d')
 conflicts=(seatd libseat)
 provides=(seatd libseat)
 depends=(systemd)
