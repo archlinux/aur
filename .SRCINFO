@@ -1,0 +1,15 @@
+pkgbase = vim-limelight-git
+	pkgdesc = Hyperfocus-writing in Vim.
+	pkgver = r29.815c612
+	pkgrel = 1
+	url = https://github.com/junegunn/limelight.vim
+	arch = any
+	license = MIT
+	depends = vim
+	provides = vim-limelight
+	conflicts = vim-limelight
+	source = git+https://github.com/junegunn/limelight.vim.git
+	sha256sums = SKIP
+
+pkgname = vim-limelight-git
+
