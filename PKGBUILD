@@ -6,7 +6,7 @@
 pkgbase=python-ncclient
 _pkgbase="${pkgbase#python-}"
 pkgname=python-ncclient
-pkgver=0.6.7
+pkgver=0.6.9
 pkgrel=1
 pkgdesc='Python library for NETCONF clients.'
 arch=(any)
@@ -24,7 +24,7 @@ depends=('python-paramiko'
          'python-six')
 options=(!emptydirs)
 source=("https://github.com/ncclient/${_pkgbase}/archive/v${pkgver}.tar.gz")
-sha256sums=('aa15ae1d5a99ebfacffb0f5f9ad1655d7ff00fe9a285fde08891c1dbceff3f48')
+sha256sums=('6fab4c61aea628c9dca96030571ff05e0aa936d04d5e12df9d4a4b582a2d5e3b')
 
 package_python-ncclient() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
