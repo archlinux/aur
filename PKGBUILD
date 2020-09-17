@@ -1,7 +1,7 @@
 # Maintainer: uffe _.at._ uffe _.dot._ org
 
 pkgname=minipro-git
-pkgver=0.4.r67.g4b084cd
+pkgver=0.4.r78.gce259af
 pkgrel=1
 pkgdesc="Open source programming utility for autoelectric.cn Minipro TL866"
 url="https://gitlab.com/DavidGriffith/minipro"
@@ -26,7 +26,7 @@ pkgver()
 build()
 {
   cd "${srcdir}/${pkgname}"
-  make
+  make PREFIX="/usr"
 }
 
 package()
