@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
 _major=5.8
-_minor=9
+_minor=10
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,9 +72,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0002-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0003-block-restore-a-specific-error-code-in-bdev_del_part.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0002-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch"
         'sphinx-workaround.patch'
          # the main kernel config files
         'config')
@@ -320,13 +319,12 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('d3a3a494a5ddc258d6e8eaf92eeb8957ca94ecc8657157c0647369772630848d3fb3633133fd184cc020a148b659d95a6e3d850d435c64ffa55e2f5156687220'
+sha512sums=('cff8cbbf30b8a8b3e151573d36dd6a36e3ddf849f1866f02c811c30a95945d76752051aff6c5b680d19d72dc42a6238ba438f3e00755c1eb64b5ba0276fbad0f'
             'SKIP'
             'c60498d2e9739a66f402aabd003aa0a69950fbf9d7e3ecc23423c345925a04ef96a9ac41eea249ebd459014ac05786401c544e5c58ebe52adfcb2be9f9bd12df'
             '87162080b8dcca5316951c59a90fa2b516e242c2b20b329080db00a56b88ae5269ab20a58086d19de55b56f2d81a43d0fcc594273a76e78e6741652ea5832365'
-            'b43451e698ffa4efa04932b61f970bca68c92860c8a7e5fe220e1a4ef5d1379374c9f595fbf19e93a9fee2e2a228f64c7fa1926253b8aff69ca419cbdb50c114'
-            '290ec0492c00436625e78016506fb10d10e7709a8bd6a1a48f252ce56260e08d930c2bd8882cd7f05ae15a9fdae16ae6b0d740ddfe90d0a64f6af9601cc298db'
-            '0a1179a43be45366401fdbbdf08fa9befe070e06f69300aa2a41d4f4c9ea509bf304be8d29d798c879f9cb9b84ff78a9570190c7c68a5e252c402e7c9e1cc706'
+            'd4bf28aade6156d0ecce47f3872bde11c50cf41142f36154d8bb96e86e06e25aaceaa5b100514d2f31a08fb56bbf3d5a586d8202fd1d3a272fd2dc5f1d0bd591'
+            'a65585dae67910c788a66f0bb478a801b7deac05aed5a5100b0f0be951f7e97d5489c9b265d9d16dccf57030788b92d13328b11a5f5e8f82cb532954682361be'
             '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
             '1fb2d99cf9c82637d05a5a0e591675f2c3b9e7530878bc581114fa5592fbb44752a71b473823b2c377c383e9444226c627de3919f831d5cb2ee6c49cca85f2a1')
 
