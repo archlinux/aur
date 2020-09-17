@@ -10,7 +10,7 @@
 
 pkgname=nvidia-beta-dkms
 pkgver=455.23.04
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA driver sources for linux (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
