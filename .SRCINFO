@@ -1,0 +1,16 @@
+pkgbase = python-diagnostics
+	pkgdesc = Module for logging of detailed traceback as HTML page - Alternative to Pythons module cgitb
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/miso-belica/diagnostics
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-pytest
+	makedepends = python-nose
+	depends = python
+	source = https://github.com/miso-belica/diagnostics/archive/v0.2.4/python-diagnostics-0.2.4.tar.gz
+	b2sums = e716828d9d8b7d6d54533b68090d6b14e4edbba5c732ac8687a6cf31e1debd431f9f7bfbc17b8305047556e765037c5f777c8f6e2b6f5f4f65803a17c96cc91d
+
+pkgname = python-diagnostics
+
