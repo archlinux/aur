@@ -2,7 +2,7 @@
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=transparency
-pkgver=2.7.4
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="A transparent application suite with clock, calendar, and system load applets."
 arch=('i686' 'x86_64')
@@ -23,4 +23,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('a0181920032f97d7c71afa91fe309ba8')
+md5sums=('f7d1eda9c66339a79db1191d13a82f2e')
