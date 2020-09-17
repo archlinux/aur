@@ -8,7 +8,7 @@ pkgname=('nvidia-full-beta'
          'nvidia-settings-full-beta'
          'lib32-nvidia-utils-full-beta'
          'lib32-opencl-nvidia-full-beta')
-pkgver=450.66
+pkgver=455.23.04
 pkgrel=1
 pkgdesc="Full NVIDIA driver package for Arch's official 'linux' package (drivers, utilities, and libraries) (beta version)"
 arch=('x86_64')
@@ -22,10 +22,10 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         'nvidia-utils.sysusers'
         '110-nvidia-change-dkms-conf.patch'
         '120-nvidia-settings-change-desktop-paths.patch')
-sha256sums=('ba0646928d3d1f5fda07136bd539daab131d03ad628f64d4f7f3feb51f50dba8'
+sha256sums=('8fe033313ac02d455609dee9497cc594d4f816642335a6a37f60c948745a6b67'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
-            '03faca3cdb0bb8eaf0ba4281104d20a67d2fd3908fbbcd786888acbbc316716b'
+            '9d3267c1f22455aff7058951f587a2cf04c9b7830aac98e3944df0692edf0321'
             '6bbc832f4f91a7c9ec4778eac5fffd633f5f547bc2d8bb89afe4f442ad3c8dda')
 
 # create soname links
