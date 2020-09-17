@@ -1,13 +1,13 @@
 pkgbase = ttf-recursive
 	pkgdesc = A variable type family built for better code & UI
-	pkgver = 1.064
+	pkgver = 1.065
 	pkgrel = 1
 	url = https://github.com/arrowtype/recursive
 	arch = any
 	license = custom:SIL Open Font License 1.1
 	depends = fontconfig
-	source = https://github.com/arrowtype/recursive/releases/download/1.064/ArrowType-Recursive-1.064.zip
-	sha256sums = dff79edd23386dc31530b9e58382993b54c94a6cfc0f5b0e6662353f117277af
+	source = https://github.com/arrowtype/recursive/releases/download/1.065/ArrowType-Recursive-1.065.zip
+	sha256sums = 598ed547a2dfa117091126559b17b39948bc7160e218a214262d301cc24985c1
 
 pkgname = ttf-recursive
 
