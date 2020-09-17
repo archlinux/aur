@@ -10,6 +10,8 @@ license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('perl')
 makedepends=('ocaml' 'git' 'hevea' 'texlive-latexextra' 'texlive-bibtexextra')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 source=(git+$url.git)
 md5sums=('SKIP')
 

@@ -12,6 +12,8 @@ pkgbase = bibtex2html-git
 	makedepends = texlive-latexextra
 	makedepends = texlive-bibtexextra
 	depends = perl
+	provides = bibtex2html
+	conflicts = bibtex2html
 	source = git+https://github.com/backtracking/bibtex2html.git
 	md5sums = SKIP
 
