@@ -1,7 +1,7 @@
 # Maintainer: Moritz Poldrack <moritz at poldrack dot dev>
 pkgname=got-git
 _pkgname=${pkgname%-git}
-pkgver=v0.2.1
+pkgver=v0.3.0
 pkgrel=1
 pkgdesc='Simple golang package and CLI tool to download large files faster than cURL and Wget!'
 arch=('x86_64' 'arm64')
