@@ -4,7 +4,7 @@
 
 pkgname=nvidia-beta-all
 pkgver=455.23.04
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA drivers for all kernels on the system (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
