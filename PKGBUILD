@@ -23,10 +23,6 @@ pkgver() {
 
 }
 
-build() {
-    return 0
-}
-
 package() {
     cd $srcdir
     cargo install --no-track --root="$pkgdir/usr" --git=https://git.b12f.io/b12f/wlstreamer.git
