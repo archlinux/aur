@@ -3,7 +3,7 @@
 
 pkgname=brave-nightly-bin
 pkgver=1.16.23
-pkgrel=1
+pkgrel=2
 chrome_version=86.0.4240.22
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
 arch=('x86_64')
@@ -34,7 +34,7 @@ noextract=("$pkgname-$pkgver.zip")
 
 prepare() {
   mkdir -p brave
-  ar xv package.deb $pkgname-$pkgver.deb
+  ar xv $pkgname-$pkgver.deb
   chmod +x brave/brave
 }
 
