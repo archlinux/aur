@@ -1,0 +1,14 @@
+pkgbase = lanthanum-git
+	pkgdesc = A small byte code interpreted programming language
+	pkgver = r149.d74bc01
+	pkgrel = 1
+	url = https://github.com/fioriandrea/lanthanum
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	source = lanthanum::git+https://github.com/fioriandrea/lanthanum.git
+	md5sums = SKIP
+
+pkgname = lanthanum-git
+
