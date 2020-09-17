@@ -2,7 +2,7 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
 pkgver=4.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
 sha256sums=('a106528850868d091ace596f05355ae39747a6311a00ea8d699915ee9ebf29af'
             'f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99'
             '441ab8532eac991eb5315a8ab39242aae1aa6fd633e8af4b0ab2a247fe1239cc'
-            '8a22f666e308663cb6addabe7695b1e5e3bfa07f68cc7b479e51426dee1c36b0'
+            '221f8411f5c63d8c71861fe016509e6e93d98558c90c4c1d9f3b7024ec8900c0'
             '75c7edd8714393579e29842a8e15aabccfd0a9b5130ff7501890e7c1c1931b46'
             'e82cd8d8da62bed9cd154b5b58477f205ea90ad91353b466679414adc2736414')
 
