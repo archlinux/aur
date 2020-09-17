@@ -16,7 +16,7 @@ pkgbase = mps-youtube-hd-git
 	optdepends = python-dbus: MPRIS2 support
 	provides = mps-youtube
 	conflicts = mps-youtube
-	source = git+https://github.com/th0rn/mps-youtube.git
+	source = git+https://github.com/th0rn/mps-youtube
 	md5sums = SKIP
 
 pkgname = mps-youtube-hd-git

@@ -17,16 +17,17 @@ makedepends=('git')
 provides=('mps-youtube')
 conflicts=('mps-youtube')
 
-source=('git+https://github.com/th0rn/mps-youtube.git')
+source=("git+${url}")
 
 md5sums=('SKIP')
 
 pkgver() {
-    cd mps-youtube
+    cd "${pkgname%-hd-git}"
     git describe --tags --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
-    cd mps-youtube
+    cd "${pkgname%-hd-git}"
     python setup.py install --root="$pkgdir" --optimize=1
+    install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/${pkgname%-hd-git}"
 }
