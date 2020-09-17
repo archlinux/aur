@@ -1,11 +1,13 @@
 pkgbase = lemon-lime
 	pkgdesc = 为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus
-	pkgver = 0.2.2
-	pkgrel = 7
-	url = https://github.com/iotang/Project_LemonLime
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/Project-LemonLime/Project_LemonLime
 	arch = x86_64
+	arch = i686
 	license = GPL3
 	makedepends = git
+	makedepends = qt5-tools
 	makedepends = cmake
 	makedepends = ninja
 	depends = qt5-base
@@ -17,12 +19,9 @@ pkgbase = lemon-lime
 	optdepends = python: Python support
 	provides = lemon-lime
 	conflicts = lemon-lime-git
-	source = LemonLime::git+https://github.com/iotang/Project_LemonLime#tag=v0.2.2
-	source = singleapplication::git+https://github.com/itay-grudev/SingleApplication
-	source = lemon-lime.desktop
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 707ae7795aab12effd83e92e394bccf4
+	noextract = Lemon-0.2.3-source-all.7z
+	source = https://github.com/Project-LemonLime/Project_LemonLime/releases/download/0.2.3/Lemon-0.2.3-source-all.7z
+	sha512sums = 6eaabb89bc19e4a2a37245cc890ce32b9813652fa79c4a71816540e63ab002f5731425c0b4b8bca50ebf8776cdc8cbad7e56311fcfc9e4e2c33eebaf7bf86d3b
 
 pkgname = lemon-lime
 

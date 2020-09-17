@@ -4,4 +4,4 @@ src
 *.pkg.tar.zst
 Project_LemonLime/
 LemonLime/
-singleapplication/
+*.7z
