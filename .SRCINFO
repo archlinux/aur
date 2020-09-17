@@ -1,0 +1,14 @@
+pkgbase = codechef-cli
+	pkgdesc = CodeChef Command Line Client.
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/sk364/codechef-cli
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-requests-html
+	source = codechef-cli-0.5.3.tar.gz::https://github.com/sk364/codechef-cli/archive/v0.5.3.tar.gz
+	sha256sums = 87763b117ae1970d31920a86646413713ea6fc09eddc4fca8a76ef8c84d379f9
+
+pkgname = codechef-cli
+
