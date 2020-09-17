@@ -1,6 +1,6 @@
 pkgbase = bitwarden
 	pkgdesc = Bitwarden Desktop Application
-	pkgver = 1.21.0
+	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://github.com/bitwarden/desktop
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = bitwarden
 	conflicts = bitwarden-bin
 	options = !strip
 	options = !emptydirs
-	source = bitwarden-1.21.0.tar.gz::https://github.com/bitwarden/desktop/archive/v1.21.0.tar.gz
+	source = bitwarden-1.22.1.tar.gz::https://github.com/bitwarden/desktop/archive/v1.22.1.tar.gz
 	source = jslib-5e0a2d1d998b5d36b093f3eff032453421680a41.tar.gz::https://github.com/bitwarden/jslib/archive/5e0a2d1d998b5d36b093f3eff032453421680a41.tar.gz
 	source = package.json.patch
 	source = bitwarden.sh
