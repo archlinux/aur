@@ -1,17 +1,16 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
-# Build template: https://build.opensuse.org/package/show/games/dave_gnukem
 
-pkgname=dave_gnukem
+pkgname='dave_gnukem'
 pkgver=1.0.1
 pkgrel=3
 pkgdesc='2D scrolling platform shooter inspired by Duke Nukem 1'
 arch=('x86_64')
 url='https://github.com/davidjoffe/dave_gnukem'
 license=('GPL2' 'MIT')
-depends=('sdl_mixer')
+depends=('hicolor-icon-theme' 'sdl_mixer')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}-data.tar.gz::https://github.com/davidjoffe/gnukem_data/archive/${pkgver}.tar.gz"
-        "${pkgname}-wrapper.sh"
+        "${pkgname}-${pkgver}-data.tar.gz::${url%/*}/${pkgname#*_}_data/archive/${pkgver}.tar.gz"
+        "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}.png")
 sha256sums=('2f00a6c373e270578160a73a5484fb8ec92a9361c7960cb4670856bcdc7a8a14'
@@ -25,14 +24,14 @@ build() {
 }
 
 package() {
-  install -Dm755 "${pkgname}-wrapper.sh" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 -t "${pkgdir}/usr/bin" "${pkgname}"
   install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgname}.desktop"
-  install -Dm644 -t "${pkgdir}/usr/share/pixmaps" "${pkgname}.png"
+  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/128x128/apps" "${pkgname}.png"
 
   install -d "${pkgdir}/usr/share/${pkgname}/data"
-  cp -r "gnukem_data-${pkgver}"/* "${pkgdir}/usr/share/${pkgname}/data"
+  mv -f "${pkgname#*_}_data-${pkgver}"/* "${pkgdir}/usr/share/${pkgname}/data"
 
-  install -Dm755 "${pkgname}-${pkgver}/davegnukem" "${pkgdir}/usr/share/${pkgname}/${pkgname}"
+  install -Dm755 "${pkgname}-${pkgver}/${pkgname/_/}" "${pkgdir}/usr/share/${pkgname}/${pkgname}"
   install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${pkgname}-${pkgver}/README.md"
   install -Dm644 "${pkgname}-${pkgver}/MIT-LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
