@@ -7,8 +7,7 @@ pkgdesc='A free, Open Source, turn-based space empire and galactic conquest comp
 url='https://www.freeorion.org'
 arch=('any')
 license=('GPL2')
-depends=('freeorion-bin'
-         'bash'
+depends=('bash'
          'ttf-dejavu'
          'ttf-roboto'
          'python2'

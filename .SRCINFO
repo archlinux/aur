@@ -5,7 +5,6 @@ pkgbase = freeorion-data
 	url = https://www.freeorion.org
 	arch = any
 	license = GPL2
-	depends = freeorion-bin
 	depends = bash
 	depends = ttf-dejavu
 	depends = ttf-roboto
