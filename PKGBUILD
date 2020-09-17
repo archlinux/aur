@@ -5,7 +5,7 @@
 # Maintainer: Uffe Jakobsen <microtop@starion.dk>
 #
 pkgname=view64
-pkgver=1.58
+pkgver=1.60
 pkgrel=1
 epoch=
 pkgdesc="SDL image viewer for Commodore C64 image formats"
@@ -27,8 +27,7 @@ changelog=
 source=(http://sourceforge.net/projects/view64/files/source/$pkgname-$pkgver-src.zip)
 #        fastforward-cc-conf.patch)
 noextract=()
-md5sums=('6152ba352459cefdbb3097bc443abff5')
-#         '7c6ebb4e2e514bebc11296f0a2ee80eb')
+md5sums=('1376d6a170e75c0b3c772a08c7c52877')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver-src"
@@ -58,4 +57,6 @@ package() {
   install -m 644 README.html "$pkgdir/usr/local/doc/$pkgname/"
 }
 
+#
 # EOF
+#
