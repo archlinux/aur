@@ -8,7 +8,7 @@
 
 pkgname='xampp'
 pkgver='7.4.10'
-pkgrel=5
+pkgrel=6
 pkgdesc='A stand-alone LAMPP distribution'
 url='https://www.apachefriends.org/'
 license=('GPL')
@@ -19,8 +19,8 @@ optdepends=('polkit: for launching XAMPP Manager and Control Panel from menu'
 makedepends=('sdx' 'tclkit' 'rsync')
 source=('bitrock-unpacker.tcl'
 	'org.freedesktop.xampp-manager.policy'
-	'xampp.png'
 	'xampp.service'
+	'xampp.svg'
 	'xampp.sysusers'
 	'xampp.tmpfiles'
 	'xampp-control-panel'
@@ -32,8 +32,8 @@ options=(!strip)
 install='xampp.install'
 sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
             '4092631d86ec1c3a155bfec76ea2c8433426a13f12a7a5866f843a099f1ca418'
-            '3df1d2fa8a8dbba21944045503b94315e5b7bc38b968ca5a816a57b83c6fd77a'
             '78854cb427117c69117a8f20685acbe898a02bc3af1409950117986ff1b45f1f'
+            'a3fc7f2b570af9d05435f2f9a0b8d7d9b30ee1dbeaea152f8e249ef5ef0461c9'
             '37e24dacf3a52037d0cddb11d979917f81741bf399ec5fa5e847359909b7bc25'
             'abdd8e08dc12b1cc57f430460b4653d2b76c53c43f113635983c98e59769ee63'
             'aadc86347958f83165afdcf3b65e08c9b9ead4fa1356bb9fa328dbb4c17a78cf'
@@ -116,7 +116,7 @@ package() {
 	install -Dm644 "${srcdir}/xampp.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/xampp.conf"
 
 	# Desktop launcher
-	install -Dm644 "${srcdir}/xampp.png" "${pkgdir}/usr/share/pixmaps/xampp.png"
+	install -Dm644 "${srcdir}/xampp.svg" "${pkgdir}/usr/share/pixmaps/xampp.svg"
 	install -Dm644 "${srcdir}/xampp-manager.desktop" "${pkgdir}/usr/share/applications/xampp-manager.desktop"
 	install -Dm644 "${srcdir}/xampp-control-panel.desktop" "${pkgdir}/usr/share/applications/xampp-control-panel.desktop"
 
