@@ -2,13 +2,12 @@ pkgbase = eclipse-tpd
 	pkgdesc = Target Platform DSL plug-in for Eclipse IDE
 	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://github.com/mbarbero/fr.obeo.releng.targetplatform
+	url = https://github.com/eclipse-cbi/targetplatform-dsl
 	arch = any
 	license = EPL1.0
 	depends = eclipse-tmf-xtext
 	options = !strip
-	source = https://download.eclipse.org/cbi/tpd/3.0.0-SNAPSHOT/org.eclipse.cbi.targetplatform-3.0.0.201902111444.zip
-	sha256sums = 3e754e44fd0c1b4d2b68e3d3bdd41c040fc14c9639946dc911d4ec8e17c6ab79
+	source = https://download.eclipse.org/cbi/tpd/3.0.0-SNAPSHOT/org.eclipse.cbi.targetplatform-3.0.0.202005061025.zip
+	sha256sums = ff080de2c76706fd40d6977e6fd120181421da3d4214e8fd45fd08fbbd11bc31
 
 pkgname = eclipse-tpd
-

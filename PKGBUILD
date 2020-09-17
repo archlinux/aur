@@ -2,11 +2,11 @@
 
 pkgname=eclipse-tpd
 pkgver=3.0.0
-_buildtime=201902111444
+_buildtime=202005061025
 pkgrel=1
 pkgdesc="Target Platform DSL plug-in for Eclipse IDE"
 arch=('any')
-url="https://github.com/mbarbero/fr.obeo.releng.targetplatform"
+url="https://github.com/eclipse-cbi/targetplatform-dsl"
 license=('EPL1.0')
 depends=('eclipse-tmf-xtext')
 options=('!strip')
@@ -18,7 +18,7 @@ source=(
 )
 # do not extract all package sources
 #noextract=("${source[@]##*/}")
-sha256sums=('3e754e44fd0c1b4d2b68e3d3bdd41c040fc14c9639946dc911d4ec8e17c6ab79')
+sha256sums=('ff080de2c76706fd40d6977e6fd120181421da3d4214e8fd45fd08fbbd11bc31')
 package() {
   _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
   install -d $_dest
