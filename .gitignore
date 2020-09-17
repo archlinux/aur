@@ -3,5 +3,6 @@ src
 M-AIR-Edit_LINUX_V*.tar.gz
 M-AIR-Edit_LINUX_X64_V*.tar.gz
 m-air-edit-*.pkg.tar.xz
+m-air-edit-*.pkg.tar.zst
 m-air-edit-*.src.tar.gz
 .AURINFO

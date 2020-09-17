@@ -3,17 +3,17 @@
 
 pkgname=m-air-edit
 pkgver=1.5
-pkgrel=2
-pkgdesc="Remote control and programm for MIDAS M-AIR mixers"
+pkgrel=3
+pkgdesc="Remote control program for MIDAS M-AIR mixers"
 arch=('i686' 'x86_64')
-url="http://www.music-group.com/Categories/Midas/Mixers/Digital-Mixers/MR18/p/P0C8H/downloads"
+url="https://www.midasconsoles.com/downloads.html"
 license=('custom:MUSIC Group End User License Agreement')
 depends=('libxext' 'alsa-lib' 'freetype2' 'mesa' 'mesa-libgl')
-source=("http://www.music-group.com/eurocom/assets/EULA_2012-09-12.pdf"
+source=("EULA_2012-09-12.pdf"
         "m-air-edit.desktop"
         "m-air-edit.png")
-source_i686=("http://downloads.music-group.com/software/midas/M-AIR/M-AIR-Edit_LINUX_V${pkgver}.tar.gz")
-source_x86_64=("https://downloads.music-group.com/software/midas/M-AIR/M-AIR-Edit_LINUX_X64_V${pkgver}.tar.gz")
+source_i686=("https://mediadl.musictribe.com/download/software/midas/M-AIR/M-AIR-Edit_LINUX_V${pkgver}.tar.gz")
+source_x86_64=("https://mediadl.musictribe.com/download/software/midas/M-AIR/M-AIR-Edit_LINUX_X64_V${pkgver}.tar.gz")
 
 md5sums=('20cca5d2623f1029e30e45d64438b253'
          '41c5295a2a715644c3112a77dbd78f4b'
