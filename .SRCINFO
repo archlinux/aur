@@ -1,0 +1,17 @@
+pkgbase = amidst-for-minetest
+	pkgdesc = “Amidst for Minetest is the Amidst project converted to support Minetest”
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/Treer/Amidst-for-Minetest
+	arch = any
+	license = GPLv3
+	depends = java-runtime
+	source = https://github.com/Treer/Amidst-for-Minetest/releases/download/v1.4/amidst-minetest-v1-4.jar
+	source = https://raw.githubusercontent.com/Treer/Amidst-for-Minetest/master/src/main/resources/amidst/icon/amidst-128x128.png
+	source = amidst-for-minetest.sh
+	sha256sums = 3b05a98eb6bae923daedbdd6eb7db32cb681558ddca8b8bc2537e74166a71f92
+	sha256sums = c07e10a062127c89ea4f676b4f9424f81532ded4cc1e4714cb743ab57739127d
+	sha256sums = f95fe25144314541acfb749137a1ab7e1a56c3cb0c341b1a13eb4f429cae0b6a
+
+pkgname = amidst-for-minetest
+
