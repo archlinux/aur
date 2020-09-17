@@ -1,0 +1,16 @@
+pkgbase = novix-devel-meta
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://novavita.github.io
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = xorriso
+	depends = nasm
+	depends = binutils
+	depends = grub
+	depends = mtools
+	depends = qemu
+
+pkgname = novix-devel-meta
+
