@@ -8,7 +8,7 @@
 
 pkgname='xampp'
 pkgver='7.4.10'
-pkgrel=4
+pkgrel=5
 pkgdesc='A stand-alone LAMPP distribution'
 url='https://www.apachefriends.org/'
 license=('GPL')
@@ -19,28 +19,29 @@ optdepends=('polkit: for launching XAMPP Manager and Control Panel from menu'
 makedepends=('sdx' 'tclkit' 'rsync')
 source=('bitrock-unpacker.tcl'
 	'org.freedesktop.xampp-manager.policy'
+	'xampp.png'
 	'xampp.service'
 	'xampp.sysusers'
 	'xampp.tmpfiles'
 	'xampp-control-panel'
 	'xampp-control-panel.desktop'
 	'xampp-manager'
-	'xampp-manager.desktop'
-	'xampp-manager.png')
+	'xampp-manager.desktop')
 source_x86_64=("${url}/${pkgname}-files/${pkgver}/${pkgname}-linux-x64-${pkgver}-0-installer.run")
 options=(!strip)
 install='xampp.install'
 sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
             '4092631d86ec1c3a155bfec76ea2c8433426a13f12a7a5866f843a099f1ca418'
+            '3df1d2fa8a8dbba21944045503b94315e5b7bc38b968ca5a816a57b83c6fd77a'
             '78854cb427117c69117a8f20685acbe898a02bc3af1409950117986ff1b45f1f'
             '37e24dacf3a52037d0cddb11d979917f81741bf399ec5fa5e847359909b7bc25'
             'abdd8e08dc12b1cc57f430460b4653d2b76c53c43f113635983c98e59769ee63'
             'aadc86347958f83165afdcf3b65e08c9b9ead4fa1356bb9fa328dbb4c17a78cf'
-            '731daee35514cce22b8d6b37224bfec08302d219a59b1b30acc3c6b1a799634a'
+            '82017853d6a50a53fde31deef4746c63d246e660597daca6986f6ac16dac0801'
             'e0bfd1590ac26dc6986b5c8d2d03f9899ddd742fe2e978c95f7ed5b58c629688'
-            'e2bfb817ba3c46d0e70b93e0575887c3260413e2737ba6d4347a31a3566a197a'
-            '3df1d2fa8a8dbba21944045503b94315e5b7bc38b968ca5a816a57b83c6fd77a')
+            '584f891f908aa5ea95c9a19d4298c1a582e81fcace3ab0741cbd3f4fac33128a')
 sha256sums_x86_64=('dc216c55f99b04a9e1a458c7c881127fdbf30963710a32f6d5228a09c3cde722')
+
 
 prepare() {
 
@@ -115,7 +116,7 @@ package() {
 	install -Dm644 "${srcdir}/xampp.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/xampp.conf"
 
 	# Desktop launcher
-	install -Dm644 "${srcdir}/xampp-manager.png" "${pkgdir}/usr/share/pixmaps/xampp-manager.png"
+	install -Dm644 "${srcdir}/xampp.png" "${pkgdir}/usr/share/pixmaps/xampp.png"
 	install -Dm644 "${srcdir}/xampp-manager.desktop" "${pkgdir}/usr/share/applications/xampp-manager.desktop"
 	install -Dm644 "${srcdir}/xampp-control-panel.desktop" "${pkgdir}/usr/share/applications/xampp-control-panel.desktop"
 
