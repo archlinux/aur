@@ -1,6 +1,6 @@
 diff -ruN cnijfilter-source-4.10-1.orig/backendnet/backend/cnijnetlm.c cnijfilter-source-4.10-1/backendnet/backend/cnijnetlm.c
 --- cnijfilter-source-4.10-1.orig/backendnet/backend/cnijnetlm.c	2013-12-24 07:39:15.000000000 +0330
-+++ cnijfilter-source-4.10-1/backendnet/backend/cnijnetlm.c	2019-10-18 19:59:20.867823821 +0330
++++ cnijfilter-source-4.10-1/backendnet/backend/cnijnetlm.c	2020-09-17 19:44:53.592370556 +0430
 @@ -252,6 +252,7 @@
  		
  		// waitpid( g_pid, NULL, 0) ;		/* child process wait		*/
@@ -21,7 +21,7 @@ diff -ruN cnijfilter-source-4.10-1.orig/backendnet/backend/cnijnetlm.c cnijfilte
  				fseek(tempfp, read_position, SEEK_SET);
 diff -ruN cnijfilter-source-4.10-1.orig/backendnet/lmonitor/cnijnetchk.c cnijfilter-source-4.10-1/backendnet/lmonitor/cnijnetchk.c
 --- cnijfilter-source-4.10-1.orig/backendnet/lmonitor/cnijnetchk.c	2013-12-24 07:39:15.000000000 +0330
-+++ cnijfilter-source-4.10-1/backendnet/lmonitor/cnijnetchk.c	2019-10-18 19:59:20.867823821 +0330
++++ cnijfilter-source-4.10-1/backendnet/lmonitor/cnijnetchk.c	2020-09-17 19:44:53.592370556 +0430
 @@ -337,7 +337,7 @@
  	bufsize = (src[0] << 8) + src[1]; 
  	buf = (char*)&(src[2]);
@@ -33,7 +33,7 @@ diff -ruN cnijfilter-source-4.10-1.orig/backendnet/lmonitor/cnijnetchk.c cnijfil
  	keylen = strlen(key);
 diff -ruN cnijfilter-source-4.10-1.orig/bscc2sts/src/langmon.c cnijfilter-source-4.10-1/bscc2sts/src/langmon.c
 --- cnijfilter-source-4.10-1.orig/bscc2sts/src/langmon.c	2013-12-24 07:39:15.000000000 +0330
-+++ cnijfilter-source-4.10-1/bscc2sts/src/langmon.c	2019-10-18 19:59:20.867823821 +0330
++++ cnijfilter-source-4.10-1/bscc2sts/src/langmon.c	2020-09-17 19:44:53.592370556 +0430
 @@ -258,7 +258,7 @@
  
  static int print_normal()
@@ -54,7 +54,7 @@ diff -ruN cnijfilter-source-4.10-1.orig/bscc2sts/src/langmon.c cnijfilter-source
  			ptr += w_size;
 diff -ruN cnijfilter-source-4.10-1.orig/bscc2sts/src/lm_print.c cnijfilter-source-4.10-1/bscc2sts/src/lm_print.c
 --- cnijfilter-source-4.10-1.orig/bscc2sts/src/lm_print.c	2013-12-24 07:39:15.000000000 +0330
-+++ cnijfilter-source-4.10-1/bscc2sts/src/lm_print.c	2019-10-18 19:59:20.867823821 +0330
++++ cnijfilter-source-4.10-1/bscc2sts/src/lm_print.c	2020-09-17 19:44:53.592370556 +0430
 @@ -244,13 +244,17 @@
  		ptr = buf;
  		/* data print(output) loop */
@@ -75,7 +75,7 @@ diff -ruN cnijfilter-source-4.10-1.orig/bscc2sts/src/lm_print.c cnijfilter-sourc
  				write(log_hand, ptr, w_size);
 diff -ruN cnijfilter-source-4.10-1.orig/bscc2sts/src/lm_status.c cnijfilter-source-4.10-1/bscc2sts/src/lm_status.c
 --- cnijfilter-source-4.10-1.orig/bscc2sts/src/lm_status.c	2013-12-24 07:39:15.000000000 +0330
-+++ cnijfilter-source-4.10-1/bscc2sts/src/lm_status.c	2019-10-18 19:59:20.867823821 +0330
++++ cnijfilter-source-4.10-1/bscc2sts/src/lm_status.c	2020-09-17 19:44:53.592370556 +0430
 @@ -516,7 +516,9 @@
  	int dev_path = PRNT_PATH;
  	short	cnclerr = -1;
@@ -98,7 +98,7 @@ diff -ruN cnijfilter-source-4.10-1.orig/bscc2sts/src/lm_status.c cnijfilter-sour
  			fprintf(log_path, "CNCL_CHECK_START2:response @  i : %d\n",i);
 diff -ruN cnijfilter-source-4.10-1.orig/cngpij/cngpij/bjcups.c cnijfilter-source-4.10-1/cngpij/cngpij/bjcups.c
 --- cnijfilter-source-4.10-1.orig/cngpij/cngpij/bjcups.c	2013-12-24 07:39:15.000000000 +0330
-+++ cnijfilter-source-4.10-1/cngpij/cngpij/bjcups.c	2019-10-18 21:38:49.880605949 +0330
++++ cnijfilter-source-4.10-1/cngpij/cngpij/bjcups.c	2020-09-17 19:44:53.595703924 +0430
 @@ -660,22 +660,6 @@
  
  
@@ -204,7 +204,7 @@ diff -ruN cnijfilter-source-4.10-1.orig/cngpij/cngpij/bjcups.c cnijfilter-source
  	
 diff -ruN cnijfilter-source-4.10-1.orig/cngpij/cngpij/getipc.c cnijfilter-source-4.10-1/cngpij/cngpij/getipc.c
 --- cnijfilter-source-4.10-1.orig/cngpij/cngpij/getipc.c	2013-12-24 07:39:15.000000000 +0330
-+++ cnijfilter-source-4.10-1/cngpij/cngpij/getipc.c	2019-10-18 19:59:20.867823821 +0330
++++ cnijfilter-source-4.10-1/cngpij/cngpij/getipc.c	2020-09-17 19:44:53.595703924 +0430
 @@ -60,59 +60,57 @@
  
  	while( (client_fd = accept(server_fd, (struct sockaddr *)&sun, &len)) >= 0 )
@@ -288,7 +288,7 @@ diff -ruN cnijfilter-source-4.10-1.orig/cngpij/cngpij/getipc.c cnijfilter-source
  	unlink(sname);
 diff -ruN cnijfilter-source-4.10-1.orig/cngpijmnt/src/getipc.c cnijfilter-source-4.10-1/cngpijmnt/src/getipc.c
 --- cnijfilter-source-4.10-1.orig/cngpijmnt/src/getipc.c	2013-12-24 07:39:15.000000000 +0330
-+++ cnijfilter-source-4.10-1/cngpijmnt/src/getipc.c	2019-10-18 19:59:20.867823821 +0330
++++ cnijfilter-source-4.10-1/cngpijmnt/src/getipc.c	2020-09-17 19:44:53.595703924 +0430
 @@ -62,59 +62,57 @@
  
  	while( (client_fd = accept(server_fd, (struct sockaddr *)&sun, &len)) >= 0 )
@@ -372,7 +372,7 @@ diff -ruN cnijfilter-source-4.10-1.orig/cngpijmnt/src/getipc.c cnijfilter-source
  	unlink(sname);
 diff -ruN cnijfilter-source-4.10-1.orig/cngpijmnt/src/main.c cnijfilter-source-4.10-1/cngpijmnt/src/main.c
 --- cnijfilter-source-4.10-1.orig/cngpijmnt/src/main.c	2013-12-24 07:39:15.000000000 +0330
-+++ cnijfilter-source-4.10-1/cngpijmnt/src/main.c	2019-10-18 21:38:46.250574242 +0330
++++ cnijfilter-source-4.10-1/cngpijmnt/src/main.c	2020-09-17 19:44:53.595703924 +0430
 @@ -283,22 +283,6 @@
  
  
@@ -477,16 +477,19 @@ diff -ruN cnijfilter-source-4.10-1.orig/cngpijmnt/src/main.c cnijfilter-source-4
  	
 diff -ruN cnijfilter-source-4.10-1.orig/cnijnpr/src/cnijnpr.c cnijfilter-source-4.10-1/cnijnpr/src/cnijnpr.c
 --- cnijfilter-source-4.10-1.orig/cnijnpr/src/cnijnpr.c	2013-12-24 07:39:15.000000000 +0330
-+++ cnijfilter-source-4.10-1/cnijnpr/src/cnijnpr.c	2019-10-18 19:59:20.867823821 +0330
-@@ -35,6 +35,7 @@
- #include <sys/sysctl.h>
++++ cnijfilter-source-4.10-1/cnijnpr/src/cnijnpr.c	2020-09-17 19:48:19.677933956 +0430
+@@ -32,9 +32,9 @@
+ #include <signal.h>
+ #include <sys/ioctl.h>
+ #include <net/if.h>
+-#include <sys/sysctl.h>
  #include <config.h>
  #include <fcntl.h>
 +#include <unistd.h>
  
  #include <dlfcn.h>
  #include "cncl.h"
-@@ -96,7 +97,7 @@
+@@ -96,7 +96,7 @@
  /*		argv[8]: /dev/usb/lp0                 */
  /*                                            */
  /**********************************************/
@@ -495,7 +498,16 @@ diff -ruN cnijfilter-source-4.10-1.orig/cnijnpr/src/cnijnpr.c cnijfilter-source-
  {
  	int		fd;
  	int		rtn = 0 ;
-@@ -583,7 +584,7 @@
+@@ -301,7 +301,7 @@
+ 			datawrite01:
+ 			//printf("child :X--- buf[0] ---X = %s\n", &buf[0]);
+ 			//printf("child :X--- buf[1] ---X = %s\n", &buf[1]);
+-			wrtn = write(fd, buf, STATUS_BUF + 1); /* for bug fix Ver.3.20 buf[0] */
++			wrtn = write(fd, buf, STATUS_BUF); /* for bug fix Ver.3.20 buf[0] */
+ 			//wrtn = write(fd, buf, 4096); /* for bug fix Ver.3.20 buf[0] */
+ 
+ 			if( fdusb > 0 ) {
+@@ -583,7 +583,7 @@
  /************************************************/
  /*             get_printer_devid               */
  /************************************************/
@@ -506,7 +518,7 @@ diff -ruN cnijfilter-source-4.10-1.orig/cnijnpr/src/cnijnpr.c cnijfilter-source-
  	char	*ivec = NULL;
 diff -ruN cnijfilter-source-4.10-1.orig/pstocanonij/filter/pstocanonij.c cnijfilter-source-4.10-1/pstocanonij/filter/pstocanonij.c
 --- cnijfilter-source-4.10-1.orig/pstocanonij/filter/pstocanonij.c	2013-12-24 07:39:15.000000000 +0330
-+++ cnijfilter-source-4.10-1/pstocanonij/filter/pstocanonij.c	2019-10-18 19:59:20.867823821 +0330
++++ cnijfilter-source-4.10-1/pstocanonij/filter/pstocanonij.c	2020-09-17 19:44:53.595703924 +0430
 @@ -387,7 +387,7 @@
  			{
  				if( !IS_BLANK(*p_code)  )
