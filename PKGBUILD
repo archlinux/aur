@@ -9,7 +9,7 @@ url="https://pypi.org/project/physunits/"
 makedepends=('python-setuptools')
 depends=('python-numpy')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('e95204f688e1ed41602baf4e021ea021c0807bf00d4c2fea94c730f641feab51')
+sha256sums=('22e785c7cdf503004d3bb2309d45c466666e88a215afffd8bf3b0e7d5d307603')
 arch=('any')
 
 build() {
