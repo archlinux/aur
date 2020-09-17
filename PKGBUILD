@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=xine-ui-hg
-pkgver=0.99.12.r400.ff6bdf276e71
+pkgver=0.99.12.r406.df9d850bba34
 pkgrel=1
 pkgdesc='A free video player for Unix (mercurial version)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('xine-ui')
 source=('hg+http://hg.code.sf.net/p/xine/xine-ui'
         '010-xine-ui-fix-build.patch')
 sha256sums=('SKIP'
-            '1028f927ec87fb46088c0fc93a96d0eca182c452f90fa2bda9a7abec209da88d')
+            'd72fe7a931bc2f2009cddfdf8875f7b60c1cc5ce2368e1914964e1a3c00413b8')
 
 prepare() {
     patch -d xine-ui -Np1 -i "${srcdir}/010-xine-ui-fix-build.patch"

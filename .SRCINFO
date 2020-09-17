@@ -1,6 +1,6 @@
 pkgbase = xine-ui-hg
 	pkgdesc = A free video player for Unix (mercurial version)
-	pkgver = 0.99.12.r400.ff6bdf276e71
+	pkgver = 0.99.12.r406.df9d850bba34
 	pkgrel = 1
 	url = http://xine.sourceforge.net/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = xine-ui-hg
 	source = hg+http://hg.code.sf.net/p/xine/xine-ui
 	source = 010-xine-ui-fix-build.patch
 	sha256sums = SKIP
-	sha256sums = 1028f927ec87fb46088c0fc93a96d0eca182c452f90fa2bda9a7abec209da88d
+	sha256sums = d72fe7a931bc2f2009cddfdf8875f7b60c1cc5ce2368e1914964e1a3c00413b8
 
 pkgname = xine-ui-hg
 
