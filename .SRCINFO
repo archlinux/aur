@@ -1,0 +1,12 @@
+pkgbase = netcalc
+	pkgdesc = IP network calculator - Simplified clone of sipcalc with ipcalc looks.
+	pkgver = 2.1.6
+	pkgrel = 1
+	url = https://github.com/troglobit/netcalc
+	arch = any
+	license = GPL3
+	source = https://github.com/troglobit/netcalc/archive/v2.1.6.tar.gz
+	sha1sums = 75628133999dae0604369c0874020469a184d3ae
+
+pkgname = netcalc
+
