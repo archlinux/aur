@@ -1,0 +1,15 @@
+pkgbase = conserve-git
+	pkgdesc = Robust portable backup tool written in Rust (git)
+	pkgver = 0.6.6.r1.gc820983
+	pkgrel = 1
+	url = https://github.com/sourcefrog/conserve
+	arch = x86_64
+	license = GPL2
+	makedepends = cargo
+	makedepends = git
+	conflicts = conserve
+	source = git+https://github.com/sourcefrog/conserve
+	sha512sums = SKIP
+
+pkgname = conserve-git
+
