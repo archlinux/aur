@@ -21,10 +21,6 @@ pkgver() {
     echo "$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
-build() {
-    return 0
-}
-
 package() {
     cd "$srcdir/$_pkgname"
     chmod +x ./tmpmail
