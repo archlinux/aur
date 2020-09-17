@@ -2,7 +2,7 @@
 # Contributor: Sébastien "Seblu" Luttringer
 
 pkgname=docker-bin
-pkgver=19.03.12
+pkgver=19.03.13
 pkgrel=1
 pkgdesc='Pack, ship and run any application as a lightweight container, using official binaries'
 arch=('x86_64')
@@ -21,8 +21,8 @@ source=(
   "https://github.com/docker/docker-ce/archive/v${pkgver}.tar.gz"
   "docker.sysusers"
 )
-md5sums=('c9ca48d9857c7170591e476a6c829007'
-         'bcdaf190eaa49dd8a7d8cbdf9b2f1e4f'
+md5sums=('2ed3c718ed93d883ee6cb1ac2d75e463'
+         '00ad1b569fd9c906749ebc3e0d68ce7f'
          '9a8b2744db23b14ca3cd350fdf73c179')
 
 build() {
