@@ -1,7 +1,7 @@
 # Maintainer: project-repo <archlinux-aur@project-repo.co>
 pkgname=cagebreak
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiling wayland compositor based on cage inspired by ratpoison'
 arch=('x86_64')
 url='https://github.com/project-repo/cagebreak'
@@ -18,10 +18,6 @@ build() {
 	cd "$pkgname"
 	meson build --buildtype=release -Dxwayland=true
 	ninja -C build
-}
-check() {
-	cd "$pkgname"
-	gpg --verify signatures/cagebreak.sig build/cagebreak
 }
 package() {
 	cd "$pkgname"
