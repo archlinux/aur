@@ -77,7 +77,7 @@ package() {
 
 	# Create shortcut
 	mkdir -p "${pkgdir}/usr/bin"
-	ln -srf "../..//opt/${pkgname}/shadow" "${pkgdir}/usr/bin/{$pkgname}"
+	ln -srf "../../opt/${pkgname}/shadow" "${pkgdir}/usr/bin/{$pkgname}"
 
 	# Remove AppImage related files
 	rm "${pkgdir}/opt/${pkgname}/AppRun"
@@ -93,7 +93,7 @@ _commit=9add3366d25530d51d168608c54b5339b64d2a4e
 pkgname=shadow-tech
 basename=prod
 pkgver="$(pkgver)"
-pkgrel=2
+pkgrel=1
 pkgdesc="Shadow application"
 arch=('x86_64')
 url="https://shadow.tech"

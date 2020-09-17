@@ -1,7 +1,7 @@
 pkgbase = shadow-tech
 	pkgdesc = Shadow application
-	pkgver = 5.0.706
-	pkgrel = 2
+	pkgver = 5.0.722
+	pkgrel = 1
 	url = https://shadow.tech
 	install = shadow-tech.install
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = shadow-tech
 	optdepends = nouveau-fw: Driver for old Nvidia GPU
 	optdepends = libva-intel-driver: Driver for Intel GPU
 	provides = shadow-tech
-	source = shadow-tech-5.0.706-2.AppImage::https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04/Shadow.AppImage
+	source = shadow-tech-5.0.722-1.AppImage::https://update.shadow.tech/launcher/prod/linux/ubuntu_18.04/Shadow.AppImage
 	sha512sums = SKIP
 
 pkgname = shadow-tech
