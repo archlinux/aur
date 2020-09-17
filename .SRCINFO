@@ -10,6 +10,8 @@ pkgbase = freeorion-data
 	depends = ttf-roboto
 	depends = python2
 	depends = hicolor-icon-theme
+	depends = boost171
+	depends = glew-2.1
 	source = freeorion-data-0.4.10.deb::http://http.us.debian.org/debian/pool/main/f/freeorion/freeorion-data_0.4.10-1_all.deb
 	sha256sums = 06d48663a2467a0830de9af590979e57c87cbef5b3f91244ee11d936da08a7a7
 

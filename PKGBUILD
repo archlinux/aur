@@ -11,7 +11,9 @@ depends=('bash'
          'ttf-dejavu'
          'ttf-roboto'
          'python2'
-         'hicolor-icon-theme')
+         'hicolor-icon-theme'
+         'boost171'
+         'glew-2.1')
 source=("${pkgname}-${pkgver}.deb::http://http.us.debian.org/debian/pool/main/f/freeorion/freeorion-data_${pkgver}-1_all.deb")
 sha256sums=('06d48663a2467a0830de9af590979e57c87cbef5b3f91244ee11d936da08a7a7')
 
