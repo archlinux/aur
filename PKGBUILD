@@ -25,7 +25,10 @@ provides=('pycharm-community-edition')
 conflicts=('pycharm-community-edition')
 
 makedepends=('python-setuptools')  # 'python2-setuptools'
-depends=('libdbusmenu-glib')
+depends=('python' 'glib2' 'libdbusmenu-glib')
+optdepends=('python2: Support for Python 2 language'
+			'ipython: Alternative Python shell'
+			'ipython2: Alternative Python 2 shell')
 
 options=('!strip')
 
@@ -46,7 +49,8 @@ build() {
 	# using absolute paths to the python executables so that users with an activated virtual env
 	# (like e.g. anaconda) can build without issues
 	/usr/bin/python3 ./setup_cython.py build_ext --inplace
-	if pacman -Qq python2-setuptools &>/dev/null; then
+	if [ -z "$(pacman -T python2-setuptools)" ]; then
+		# only compile the py2-debugger if `python2-setuptools’ is already installed
 		/usr/bin/python2 ./setup_cython.py build_ext --inplace
 	fi
 }
