@@ -2,7 +2,7 @@
 # Contributor: Stéphane Meyer <tigerlost at tigerfunk dot tk>
 
 pkgname=bigtime
-pkgver=2.1
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Customizable clock for the terminal"
 arch=('any')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$url/archive/"${pkgver}".tar.gz")
 noextract=()
-sha256sums=(86dd2ffe17b0787d2c4aeb2a10d45c0bc0a612d4922afa7bf3b2cfd030fddbf9)
+sha256sums=(357102c49139f2a7322ffc2007b8c0399621f7d56a2199721c824624856275b5)
 
 package() {
   cd "$pkgname-${pkgver/_/-}"
