@@ -2,7 +2,7 @@
 
 pkgname=freeorion-bin
 pkgver=0.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, Open Source, turn-based space empire and galactic conquest computer game'
 url='https://www.freeorion.org'
 arch=('x86_64')
@@ -22,5 +22,6 @@ package() {
   tar xvf data.tar.xz -C "${pkgdir}"
   install -d "${pkgdir}/usr/bin"
   mv "${pkgdir}/usr/games/freeorion" "${pkgdir}/usr/bin"
-  rm -rf "${pkgdir}/usr/games" 
+  rm -rf "${pkgdir}/usr/games"
+  sed -i "10s|/usr/|/opt/usr/lib:/usr/|" "${pkgdir}/usr/bin/freeorion"
 }
