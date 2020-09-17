@@ -1,6 +1,6 @@
 # Maintainer: Marcel H Rød <marcelroed@gmail.com>
 pkgname=kattis
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Competitive programming checker for open.kattis.com"
 url="https://github.com/marcelroed/"
@@ -9,7 +9,7 @@ arch=("x86_64")
 provides=("kattis")
 options=("strip")
 source=("https://github.com/marcelroed/kattis-rs/releases/download/v$pkgver/kattis-rs-$pkgver-x86_64.tar.gz")
-sha256sums=("99e4fd535e1cc392fb9de0e114471058737d09f188a310c21c3a0efcc5be7de0")
+sha256sums=("f388f9b335da777197742a6e59453f04cc5f6ae8e69beb113aaae178e1c9624d")
 
 package() {
     install -Dm755 kattis-rs -T "$pkgdir/usr/bin/kattis"
