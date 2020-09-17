@@ -9,7 +9,7 @@ pkgname=('nvidia-full-beta'
          'lib32-nvidia-utils-full-beta'
          'lib32-opencl-nvidia-full-beta')
 pkgver=455.23.04
-pkgrel=1
+pkgrel=2
 pkgdesc="Full NVIDIA driver package for Arch's official 'linux' package (drivers, utilities, and libraries) (beta version)"
 arch=('x86_64')
 url='https://www.nvidia.com/'
