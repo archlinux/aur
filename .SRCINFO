@@ -26,6 +26,10 @@ pkgbase = nheko-git
 	depends = openssl
 	depends = hicolor-icon-theme
 	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = libnice
 	provides = nheko
 	conflicts = nheko
 	source = nheko-git::git://github.com/Nheko-Reborn/nheko.git#branch=master
