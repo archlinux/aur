@@ -1,0 +1,19 @@
+pkgbase = bibtex2html-git
+	pkgdesc = Collection of tools for producing HTML documents from bibtex-bibliographies
+	pkgver = 1.99.16.gf1b6b57
+	pkgrel = 1
+	url = https://github.com/backtracking/bibtex2html
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = ocaml
+	makedepends = git
+	makedepends = hevea
+	makedepends = texlive-latexextra
+	makedepends = texlive-bibtexextra
+	depends = perl
+	source = git+https://github.com/backtracking/bibtex2html.git
+	md5sums = SKIP
+
+pkgname = bibtex2html-git
+
