@@ -2,7 +2,7 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python36
-pkgver=3.6.11
+pkgver=3.6.12
 pkgrel=1
 _pybasever=3.6
 _pymajver=3
@@ -15,7 +15,7 @@ makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
 source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
-sha256sums=('741ebdcbc4e3937a5ff23517dd455ebf7d543ea9fef6f5cf6f46e575d6c4fda4')
+sha256sums=('70953a9b5d6891d92e65d184c3512126a15814bee15e1eff2ddcce04334e9a99')
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
