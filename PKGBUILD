@@ -3,7 +3,7 @@
 pkgname=eclipse-tpd
 pkgver=3.0.0
 _buildtime=202005061025
-pkgrel=1
+pkgrel=2
 pkgdesc="Target Platform DSL plug-in for Eclipse IDE"
 arch=('any')
 url="https://github.com/eclipse-cbi/targetplatform-dsl"

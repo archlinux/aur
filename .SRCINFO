@@ -1,7 +1,7 @@
 pkgbase = eclipse-tpd
 	pkgdesc = Target Platform DSL plug-in for Eclipse IDE
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eclipse-cbi/targetplatform-dsl
 	arch = any
 	license = EPL1.0
