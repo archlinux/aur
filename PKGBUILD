@@ -9,7 +9,7 @@ url="https://github.com/manilarome/$pkgname"
 license=('GPL3')
 depends=('lightdm-webkit2-greeter')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('a36d945120d664e793e9f3e3cdd84db84bb2b1824349c1a71aaba83a39a57050c4e1bfa0ecf2b24fc4602dabe8a3c36e118c3ca805c5daa5f9355ec500579a10')
+sha512sums=('c081ab01a87dcaf887114d0bc61c71ca8e5957034e2239baf650f0e7f7da602c055e8637aeba578362c9e2c97e9c0b7c9a1c2f6457e5398877ab22db676e66c3')
 
 package() {
 	install -dm 755 "$pkgdir"/usr/share/lightdm-webkit/themes/glorious
