@@ -1,7 +1,7 @@
 pkgbase = sf100linux-git
 	pkgdesc = Linux software (dpcmd) for Dediprog SF100 and SF600 SPI flash programmers
 	pkgver = 1.2.1.03.r31.g7d8be06
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DediProgSW/SF100Linux
 	arch = x86_64
 	license = GPL2
