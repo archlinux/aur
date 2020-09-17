@@ -6,4 +6,4 @@ if [ -z "$BRAVE_FLAGS" ]; then
         FLAG="--no-sandbox"
     fi
 fi
-exec "/usr/lib/brave-nightly-bin/brave" "--use-gl=desktop" "$BRAVE_FLAGS" "$FLAG" "$@"
+exec "/opt/brave.com/brave-nightly/brave-browser" "--use-gl=desktop" "$BRAVE_FLAGS" "$FLAG" "$@"
