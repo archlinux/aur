@@ -1,28 +1,28 @@
 # Maintainer: Anton Leontiev <scileont /at/ gmail dot com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gst-rtsp-server
-pkgver=1.16.2
-pkgrel=2
+pkgver=1.18.0
+pkgrel=1
 pkgdesc="RTSP server library based on GStreamer"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://gstreamer.freedesktop.org/modules/gst-rtsp-server.html"
 license=('LGPL')
-makedepends=('meson' 'gobject-introspection') #'cmake' 'hotdocs'?
+makedepends=('meson' 'gobject-introspection')
 depends=("gst-plugins-base>=$pkgver" "gst-plugins-bad>=$pkgver")
 provides=('libgstrtspserver-1.0.so' 'libgstrtspclientsink.so')
 source=("https://gstreamer.freedesktop.org/src/$pkgname/$pkgname-$pkgver.tar.xz"{,.asc})
-sha256sums=('de07a2837b3b04820ce68264a4909f70c221b85dbff0cede7926e9cdbb1dc26e'
+sha256sums=('2ad19311054cbf2df0d0622936bc703dedc06ced706df46a3d3a3ea5a4b7c70f'
             'SKIP')
 validpgpkeys=('D637032E45B8C6585B9456565D2EEE6F6F349D7C')
               # Tim-Philipp Müller <tim@centricular.com>
 
 build() {
-	arch-meson "$pkgname-$pkgver" build
-	meson compile -C build \
-	-D doc=disabled \
-	-D gobject-cast-checks=disabled \
-	-D package-name="GStreamer RTSP Server (Arch Linux)" \
-	-D package-origin="https://www.archlinux.org/"
+	arch-meson "$pkgname-$pkgver" build \
+		-D doc=disabled \
+		-D gobject-cast-checks=disabled \
+		-D package-name="GStreamer RTSP Server (Arch Linux)" \
+		-D package-origin="https://www.archlinux.org/"
+	meson compile -C build
 }
 
 check() {
