@@ -4,7 +4,7 @@ _svt_hevc_ver='ead6fdf7c9ff84511b42fc1658c1654b84d83e4b'
 _svt_vp9_ver='0.2.2'
 
 pkgname=ffmpeg-full-git
-pkgver=4.4.r99044.gd1f3d721df
+pkgver=4.4.r99218.g0ea2bda099
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -28,7 +28,6 @@ depends=(
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
         'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
-        'rockchip-mpp'
 )
 makedepends=(
     # official repositories:
@@ -210,7 +209,7 @@ build() {
         --enable-nvdec \
         --enable-nvenc \
         --enable-omx \
-        --enable-rkmpp \
+        --disable-rkmpp \
         --enable-v4l2-m2m \
         --enable-vaapi \
         --enable-vdpau
