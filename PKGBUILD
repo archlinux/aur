@@ -8,9 +8,9 @@
 
 pkgname='xampp'
 pkgver='7.4.10'
-pkgrel=3
+pkgrel=4
 pkgdesc='A stand-alone LAMPP distribution'
-url='http://www.apachefriends.org/'
+url='https://www.apachefriends.org/'
 license=('GPL')
 arch=('x86_64')
 depends=('net-tools')
@@ -18,24 +18,28 @@ optdepends=('polkit: for launching XAMPP Manager and Control Panel from menu'
             'pygtk: for using XAMPP Control Panel')
 makedepends=('sdx' 'tclkit' 'rsync')
 source=('bitrock-unpacker.tcl'
-	'xampp.service'
 	'org.freedesktop.xampp-manager.policy'
+	'xampp.service'
+	'xampp.sysusers'
+	'xampp.tmpfiles'
 	'xampp-control-panel'
 	'xampp-control-panel.desktop'
+	'xampp-manager'
 	'xampp-manager.desktop'
-	'xampp-manager.png'
-	'xampp-manager-polkit')
-source_x86_64=("https://www.apachefriends.org/${pkgname}-files/${pkgver}/${pkgname}-linux-x64-${pkgver}-0-installer.run")
+	'xampp-manager.png')
+source_x86_64=("${url}/${pkgname}-files/${pkgver}/${pkgname}-linux-x64-${pkgver}-0-installer.run")
 options=(!strip)
 install='xampp.install'
 sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
-            '78854cb427117c69117a8f20685acbe898a02bc3af1409950117986ff1b45f1f'
             '4092631d86ec1c3a155bfec76ea2c8433426a13f12a7a5866f843a099f1ca418'
+            '78854cb427117c69117a8f20685acbe898a02bc3af1409950117986ff1b45f1f'
+            '37e24dacf3a52037d0cddb11d979917f81741bf399ec5fa5e847359909b7bc25'
+            'abdd8e08dc12b1cc57f430460b4653d2b76c53c43f113635983c98e59769ee63'
             'aadc86347958f83165afdcf3b65e08c9b9ead4fa1356bb9fa328dbb4c17a78cf'
             '731daee35514cce22b8d6b37224bfec08302d219a59b1b30acc3c6b1a799634a'
-            '595de672753af57c4abf1b4549530bba02b004bd45dfa82054d58ea3a174a4e6'
-            '3df1d2fa8a8dbba21944045503b94315e5b7bc38b968ca5a816a57b83c6fd77a'
-            'e0bfd1590ac26dc6986b5c8d2d03f9899ddd742fe2e978c95f7ed5b58c629688')
+            'e0bfd1590ac26dc6986b5c8d2d03f9899ddd742fe2e978c95f7ed5b58c629688'
+            'e2bfb817ba3c46d0e70b93e0575887c3260413e2737ba6d4347a31a3566a197a'
+            '3df1d2fa8a8dbba21944045503b94315e5b7bc38b968ca5a816a57b83c6fd77a')
 sha256sums_x86_64=('dc216c55f99b04a9e1a458c7c881127fdbf30963710a32f6d5228a09c3cde722')
 
 prepare() {
@@ -100,13 +104,15 @@ package() {
 
 	# Executables
 	install -dm755 "${pkgdir}/usr/bin"
-	install -Dm755 "${srcdir}/xampp-manager-polkit" "${pkgdir}/usr/bin/xampp-manager_polkit"
+	install -Dm755 "${srcdir}/xampp-manager" "${pkgdir}/usr/bin/xampp-manager"
 	install -Dm755 "${srcdir}/xampp-control-panel" "${pkgdir}/usr/bin/xampp-control-panel"
 	ln -sf '/opt/lampp/lampp' "${pkgdir}/usr/bin/xampp"
 
-	# Systemd service
+	# Systemd files
 	install -dm755 "${pkgdir}/etc/systemd/system"
 	install -Dm644 "${srcdir}/xampp.service" "${pkgdir}/etc/systemd/system/xampp.service"
+	install -Dm644 "${srcdir}/xampp.sysusers" "${pkgdir}/usr/lib/sysusers.d/xampp.conf"
+	install -Dm644 "${srcdir}/xampp.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/xampp.conf"
 
 	# Desktop launcher
 	install -Dm644 "${srcdir}/xampp-manager.png" "${pkgdir}/usr/share/pixmaps/xampp-manager.png"

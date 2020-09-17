@@ -3,13 +3,6 @@ _BACKUP=('opt/lampp/etc' 'opt/lampp/htdocs' 'opt/lampp/var')
 
 post_install() {
 
-	if ! id -u mysql &> /dev/null; then
-		echo 'Creating `mysql` user and group...'
-		useradd -r -s /usr/bin/nologin mysql
-	fi
-
-	chown -R mysql:mysql '/opt/lampp/var/mysql/'
-
 	echo
 	echo 'XAMPP is now installed below the /opt/lampp directory.'
 	echo
@@ -91,17 +84,6 @@ pre_remove() {
 }
 
 post_remove() {
-
-	if id -u mysql &> /dev/null; then
-		echo
-		echo 'A `mysql` user is still present in the system. It is possible that other'
-		echo 'programs require its presence. If you are certain that no program requires it,'
-		echo 'launch'
-		echo
-		echo '    sudo userdel mysql'
-		echo
-		echo 'to delete the `mysql` user and group from the system.'
-	fi
 
 	echo
 	echo 'REMEMBER: Your `htdocs` folder was backed up to `/opt/htdocs-backups`.'
