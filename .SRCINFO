@@ -1,6 +1,6 @@
 pkgbase = ros2-arch-deps
 	pkgdesc = Dependencies for building ROS2 on Arch
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://index.ros.org/doc/ros2/
 	arch = any
@@ -25,6 +25,7 @@ pkgbase = ros2-arch-deps
 	depends = python-netifaces
 	depends = python-nose
 	depends = python-numpy
+	depends = python-pydot
 	depends = python-pyqt5
 	depends = python-pytest-repeat
 	depends = python-setuptools

@@ -1,8 +1,8 @@
 # Maintainer: Tobias Borgert <tobias.borgert@gmail.com>
 # A lot of thanks go to the previous maintainer, Kartik Mohta, for his work.
-# Thank you to leuko for pointing out new build/run dependencies for rviz_ogre_vendor and rviz2.
+# Thank you to leuko for pointing out new build/run dependencies for rviz_ogre_vendor and rviz2 and python-pydot.
 pkgname=ros2-arch-deps
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="Dependencies for building ROS2 on Arch"
 url="https://index.ros.org/doc/ros2/"
@@ -29,6 +29,7 @@ depends=('asio'
          'python-netifaces'
          'python-nose'
          'python-numpy'
+         'python-pydot'
          'python-pyqt5'
          'python-pytest-repeat'
          'python-setuptools'
