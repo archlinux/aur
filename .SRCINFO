@@ -1,0 +1,28 @@
+pkgbase = open-numismat-bin
+	pkgdesc = Coin collecting software to organize and manage your own coin catalogue.
+	pkgver = 1.8.7
+	pkgrel = 1
+	url = http://opennumismat.github.io
+	install = open-numismat-bin.install
+	arch = any
+	groups = 
+	license = GPL3
+	depends = bash-completion
+	depends = hicolor-icon-theme
+	depends = pyside2
+	depends = python
+	depends = python-dateutil
+	depends = python-jinja
+	depends = python-django
+	depends = python-lxml
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-xlrd
+	depends = qt5-base
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/OpenNumismat/open-numismat/releases/download/1.8.7/open-numismat_1.8.7_all.deb
+	sha512sums = d0d8bc0120b00418adbd6737c31ef59e02435b9430d8ca3b805caf19c73c6628be7d1a326b0a80f2a55795a9f2587c1eebce63c69c5c25636a1f0e5541b167a4
+
+pkgname = open-numismat-bin
+
