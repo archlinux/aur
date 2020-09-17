@@ -2,7 +2,7 @@
 
 pkgname=bangin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A primitive, portable shell script which enables DuckDuckGo-like bangs"
 url="https://github.com/samhh/bangin/"
 arch=('any')
@@ -13,5 +13,6 @@ md5sums=('17918847244c08a6ef39dec9fda6ae7a')
 package() {
 	cd "$pkgname-$pkgver"
 	install -Dm 755 ./bangin.sh "$pkgdir/usr/bin/$pkgname"
+	install -Dm 644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
