@@ -4,11 +4,11 @@
 
 pkgname=zelda-roth-se
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Zelda : Return of the Hylian solarus edition."
 arch=('any')
-url="http://www.zelda-solarus.com/"
+url="https://www.solarus-games.org/en/games/the-legend-of-zelda-return-of-the-hylian-se"
 license=('custom')
 groups=()
 depends=('solarus>=1.6.0')

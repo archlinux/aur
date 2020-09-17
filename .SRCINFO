@@ -1,8 +1,8 @@
 pkgbase = zelda-roth-se
 	pkgdesc = Zelda : Return of the Hylian solarus edition.
 	pkgver = 1.2.1
-	pkgrel = 1
-	url = http://www.zelda-solarus.com/
+	pkgrel = 2
+	url = https://www.solarus-games.org/en/games/the-legend-of-zelda-return-of-the-hylian-se
 	arch = any
 	license = custom
 	makedepends = cmake
