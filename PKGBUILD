@@ -5,7 +5,7 @@ pkgver=0.4.10
 pkgrel=1
 pkgdesc='A free, Open Source, turn-based space empire and galactic conquest computer game'
 url='https://www.freeorion.org'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL2')
 depends=('python'
          'sdl2'
