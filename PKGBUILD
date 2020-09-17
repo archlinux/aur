@@ -10,13 +10,13 @@ pkgname=('starlabstheme-backgrounds-git'
          'starlabstheme-session-git'
          'starlabstheme-sounds-git')
 pkgbase=starlabstheme-git
-pkgver=1.1.8.r1359.511c0d9544
+pkgver=2starlabs30.r1410.2ea2df5c03
 pkgrel=1
 pkgdesc="Star Labs GNOME Shell and GTK Theme"
 arch=('any')
 url="https://starlabs.systems"
 license=('LGPL' 'CC-BY-SA-4.0')
-makedepends=('git' 'meson' 'sassc')
+makedepends=('git' 'meson' 'sassc' 'inkscape' 'xorg-xcursorgen')
 provides=("${pkgbase%-git}")
 conflicts=("${pkgbase%-git}")
 options=('!strip')
@@ -97,7 +97,7 @@ package_starlabstheme-font-git() {
 
 package_starlabstheme-gnome-shell-git() {
 	pkgdesc="Star Labs GNOME Shell Theme"
-	depends=('gnome-shell' 'starlabstheme-session')
+	depends=('gnome-shell')
 	provides=("${pkgname%-git}")
 	conflicts=("${pkgname%-git}")
 

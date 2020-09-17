@@ -1,6 +1,6 @@
 pkgbase = starlabstheme-git
 	pkgdesc = Star Labs GNOME Shell and GTK Theme
-	pkgver = 1.1.8.r1359.511c0d9544
+	pkgver = 2starlabs30.r1410.2ea2df5c03
 	pkgrel = 1
 	url = https://starlabs.systems
 	arch = any
@@ -9,6 +9,8 @@ pkgbase = starlabstheme-git
 	makedepends = git
 	makedepends = meson
 	makedepends = sassc
+	makedepends = inkscape
+	makedepends = xorg-xcursorgen
 	provides = starlabstheme
 	conflicts = starlabstheme
 	options = !strip
@@ -38,7 +40,6 @@ pkgname = starlabstheme-font-git
 pkgname = starlabstheme-gnome-shell-git
 	pkgdesc = Star Labs GNOME Shell Theme
 	depends = gnome-shell
-	depends = starlabstheme-session
 	provides = starlabstheme-gnome-shell
 	conflicts = starlabstheme-gnome-shell
 
