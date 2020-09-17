@@ -2,16 +2,16 @@
 
 pkgname=lemon-lime-git
 _pkgname=lemon-lime
-pkgver=0.2.2.8.r265.131a89f
+pkgver=0.2.3.12.r278.b7511c5
 pkgrel=1
 epoch=1
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
-arch=(x86_64)
-url="https://github.com/iotang/Project_LemonLime"
+arch=('x86_64' 'i686')
+url="https://github.com/Project-LemonLime/Project_LemonLime"
 license=('GPL3')
 groups=()
-depends=('qt5-base' 'qt5-tools' 'hicolor-icon-theme')
-makedepends=('git' 'cmake' 'ninja')
+depends=('qt5-base' 'hicolor-icon-theme')
+makedepends=('git' 'qt5-tools' 'cmake' 'ninja')
 checkdepends=()
 optdepends=('gcc: C and C++ support'
             'fpc: Pascal support'
@@ -25,7 +25,7 @@ backup=()
 options=()
 install=
 changelog=
-source=('Project_LemonLime::git+https://github.com/iotang/Project_LemonLime.git'
+source=('Project_LemonLime::git+https://github.com/Project-LemonLime/Project_LemonLime.git'
 		'SingleApplication::git+https://github.com/itay-grudev/SingleApplication.git'
 		)
 noextract=()
@@ -59,7 +59,7 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-GNinja \
 		-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
-		-DLEMON_BUILD_INFO="Build for Arch Linux" \
+		-DLEMON_BUILD_INFO="Build for Arch Linux (Git Version)" \
 		-DLEMON_BUILD_EXTRA_INFO="Build on $(uname -a | cut -d " " -f3,13)"
 	ninja
 
