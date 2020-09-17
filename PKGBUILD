@@ -28,7 +28,7 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.13.86
+pkgver=1.14.81
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -46,12 +46,10 @@ chromium_base_ver="85"
 patchset="2"
 patchset_name="chromium-${chromium_base_ver}-patchset-${patchset}"
 source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
-        'brave-vaapi-enable.patch'
         'chromium-no-history.patch'
         'brave-launcher'
         'brave-browser.desktop'
-        "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
-        'brave-custom-build.patch')
+        "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz")
 arch_revision=51efcaea600acd0648cb70730911f64f332feb95
 for Patches in \
         chromium-fix-vaapi-on-intel.patch \
@@ -65,12 +63,10 @@ done
 #source+=("vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=7c05464a8700b1a6144258320b2b33b352385f77")
 
 sha256sums=('SKIP'
-            '2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814'
-            'c090e4d26847831a719aea4a8cf722b7f6b6726bd7b6bf4da984e59567095917'
+            'e7dd5f8bc6959d2d0c14c7f70687303d3152eae9a50628fbb025b834d62a52d7'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '2194fe22b9e5ccdc4a86da4e3572214f670c561486671f57c90636fd3cbfa43e'
-            '69f380666f67918273fb4fc2674e53636de52c040a4ab00c220891d08b3d9f07'
             'e495f2477091557b15bff2c99831e0a3db64ea2ebde7dcb22857a6469c944b9a'
             '0f041d655335cd2a4773ae7ca5e301a0ff12c6c53f57b7cf6651c268e0420a1c'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
@@ -112,10 +108,7 @@ prepare() {
     cd "${_reponame}"
 
     # Patch to download only sources, but not all history
-    patch -Np1 -i "${srcdir}"/chromium-no-history.patch
-
-    # Apply Brave patches
-    patch -Np1 -i "${srcdir}"/brave-vaapi-enable.patch
+    #patch -Np1 -i "${srcdir}"/chromium-no-history.patch
 
     # Hack to prioritize python2 in PATH
     mkdir -p "${srcdir}/bin"
@@ -159,7 +152,7 @@ prepare() {
 
         msg2 "Add patches for custom build"
         local _patch
-        for _patch in "$srcdir/brave-custom-build.patch" "$srcdir/patches"/*.patch; do
+        for _patch in "$srcdir/patches"/*.patch; do
             patch -Np1 -i "$_patch"
         done
 
@@ -253,7 +246,8 @@ build() {
             npm run build -- Debug
             ;;
         4)
-            msg2 "Release custom build"
+            msg2 "Release custom build - TEMPORARY DISABLED - working on it"
+            exit 1
             npm run build Release -- "${npm_args[@]}"
             ;;
         *)
