@@ -17,7 +17,9 @@ pkgbase = wlroots-nosystemd-git
 	depends = xcb-util-wm
 	provides = libwlroots.so
 	provides = wlroots
+	provides = wlroots-git
 	conflicts = wlroots
+	conflicts = wlroots-git
 	source = git+https://github.com/swaywm/wlroots
 	sha512sums = SKIP
 

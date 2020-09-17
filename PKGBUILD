@@ -29,8 +29,8 @@ makedepends=(
     'ninja'
     'wayland-protocols'
 )
-provides=('libwlroots.so' 'wlroots')
-conflicts=(wlroots)
+provides=('libwlroots.so' 'wlroots' 'wlroots-git')
+conflicts=('wlroots' 'wlroots-git')
 
 pkgver () {
 	cd wlroots
