@@ -2,7 +2,7 @@
 # Maintainer: Greg White <gwhite@kupulau.com>
 
 pkgname=brave-nightly-bin
-pkgver=1.16.14
+pkgver=1.16.23
 pkgrel=1
 chrome_version=86.0.4240.22
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
@@ -16,22 +16,25 @@ optdepends=('cups: Printer support'
 	        'libglvnd: Support multiple different OpenGL drivers at any given time')
 provides=("${pkgname}" 'brave-nightly-browser')
 conflicts=("${pkgname}" 'brave-bin')
-source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-v${pkgver}-linux-x64.zip"
+source=("$pkgname-$pkgver.deb::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-nightly_${pkgver}_amd64.deb"
         'MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt'
         "$pkgname.sh"
         "$pkgname.desktop"
         "braveAbout.png")
 options=(!strip)
-sha512sums=('b392ddb238ffbaed2bd7ac2e68cf0e6b0587c846e33cf5e6dfa2328102c10419879e3d70d9b0482cc93ee52643334eb555f615561bc0fc69798f93c82a708e66'
+sha512sums=('58ba2be4bf1db6fd902283b1ad45023416c02e59f4a0aac814aff4f124469b6b015e82a1aac341ab40da7b5ee5b8197fa2072401a71f4165a9e1c96ddb0dfd6d'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f'
             '853c1715320615f7cfe39f07af07572c09265d32a3cde97309cffe0be6520f2aa405602fa51e3f497724ecaf96c68985e2babb593748e5d405f2b309bf1bcf33'
             '86cf37b0dc8b37390da9341200af511721c8d2d81ccd45f565322271654058cf47680ae263cf5339feddd42d16bfce7f0aa824f2a45a7c446ed81fe6f749bb92'
             'd5ce90529c2b75357518ebde10e28e9d6f36efe21b705d7e48be07b1f320d739ef211c1bcc353aeefab3f27b7ba78793ebb74a204ac6c8efae855001b80de72a')
 noextract=("$pkgname-$pkgver.zip")
 
+# brave-browser-nightly_1.16.23_amd64.deb
+# https://github.com/brave/brave-browser/releases/download/v1.16.23/brave-browser-nightly_1.16.23_amd64.deb
+
 prepare() {
   mkdir -p brave
-  cat $pkgname-$pkgver.zip | bsdtar -xf- -C brave
+  ar xv package.deb $pkgname-$pkgver.deb
   chmod +x brave/brave
 }
 
