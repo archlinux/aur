@@ -6,11 +6,12 @@
   ##      packaged, make sure that `python2-setuptools` is installed _before_ building this package. ##
    #####################################################################################################
 
+
 pkgname=pycharm-community-eap
 
-_buildver=202.7319.37
+_buildver=202.7319.64
 _pkgver=2020.2.2
-_eap=y
+_eap=n
 pkgver="$_pkgver.$_buildver"
 pkgrel=1
 epoch=7
@@ -40,7 +41,7 @@ prepare() {
 }
 
 build() {
-	cd "pycharm-community-$_buildver/plugins/python-ce/helpers/pydev/"
+	cd "pycharm-community-$_buildver/plugins/python-ce/helpers/pydev"
 
 	# using absolute paths to the python executables so that users with an activated virtual env
 	# (like e.g. anaconda) can build without issues
