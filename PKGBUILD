@@ -1,6 +1,6 @@
 pkgname=openmm
 pkgver=7.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolkit for molecular simulation using high performance GPU code"
 arch=('x86_64')
 url="http://openmm.org/"
@@ -40,6 +40,8 @@ package() {
   install -d "${pkgdir}"/usr/share/licenses/${pkgname}
 
   msg2 "Installing openmm python bindings"
+  # Fix to install python wrapper
+  sed -i 's:ENV{OPENMM_LIB_PATH} ":ENV{OPENMM_LIB_PATH} "$ENV{DESTDIR}:g' wrappers/python/pysetupinstall.cmake
   make DESTDIR="${pkgdir}" PythonInstall
   mv "${pkgdir}"/usr/licenses/*.txt "${pkgdir}"/usr/share/licenses/${pkgname}
   rm -rf "${pkgdir}"/usr/{bin,docs,examples,licenses}
