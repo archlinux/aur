@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-_pkgname=usbimager
-pkgname=${_pkgname}-bin
+_pkgname='usbimager'
+pkgname="${_pkgname}-bin"
 pkgver=1.0.4
 pkgrel=1
 pkgdesc='Minimal GUI application to write compressed disk images to USB drives'
@@ -19,7 +19,7 @@ sha256sums=('49a11062ac722236c2f265358b96ffaad803e530ff5c7192e68d329564f8ba66'
 package() {
   install -Dm755 -t "${pkgdir}/usr/bin" "bin/${_pkgname}"
   install -Dm644 -t "${pkgdir}/usr/share/applications" "share/applications/${_pkgname}.desktop"
-  install -Dm644 -t "${pkgdir}/usr/share/pixmaps" "share/icons/hicolor/128x128/apps/${_pkgname}.png"
+  install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/128x128/apps" "share/icons/hicolor/128x128/apps/${_pkgname}.png"
   install -Dm644 -t "${pkgdir}/usr/share/man/man8" "share/man/man8/${_pkgname}.8.gz"
   install -Dm644 "${_pkgname}-${pkgver}-manual.pdf" "${pkgdir}/usr/share/doc/${_pkgname}/${_pkgname}-manual.pdf"
   install -Dm644 "${_pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
