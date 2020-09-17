@@ -1,20 +1,19 @@
 pkgname=openmm
-pkgver=7.3.1
+pkgver=7.4.2
 pkgrel=1
 pkgdesc="Toolkit for molecular simulation using high performance GPU code"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://openmm.org/"
 license=('MIT' 'LGPL')
 depends=('fftw')
-makedepends=('cmake' 'swig' 'doxygen')
+optdepends=('cuda: prrovides cuda support')
+makedepends=('cmake' 'swig' 'doxygen' 'cython')
 source=("https://github.com/pandegroup/openmm/archive/${pkgver}.tar.gz")
-sha1sums=('3e2d18d033dbe8bb52867ac1232afb6788bff346')
+sha256sums=('2e121ad5cfcc4840861032bb1b11d4d0aea2d3ca3c59baaed73b8b0b4fd069cc')
 
-#prepare() {
-#  cd "${srcdir}"/openmm-${pkgver}
-#  patch -p1 -i "${srcdir}"/01ae387d649c959812bb3d3bc451e54746b2ab59.patch
-#  sed -i "s|sys.argv\[0\]|os.path.basename(sys.argv\[0\])|g" wrappers/python/src/swig_doxygen/swigInputBuilder.py 
-#}
+export CC=gcc-9
+export CXX=g++-9
+export FC=gfortran-9
 
 build() {
   cd "${srcdir}"
@@ -41,8 +40,6 @@ package() {
   install -d "${pkgdir}"/usr/share/licenses/${pkgname}
 
   msg2 "Installing openmm python bindings"
-  # Fix to install python wrapper
-  #sed -i 's:setup.py install:setup.py install --root=$DESTDIR:g' wrappers/python/pysetupinstall.cmake
   make DESTDIR="${pkgdir}" PythonInstall
   mv "${pkgdir}"/usr/licenses/*.txt "${pkgdir}"/usr/share/licenses/${pkgname}
   rm -rf "${pkgdir}"/usr/{bin,docs,examples,licenses}
