@@ -2,23 +2,27 @@
 
 _pkgname=folder-color
 pkgname=${_pkgname}-bzr
-pkgver=0.0.88.r290
+epoch=1
+pkgver="0.0.88"+r7+ce09b6e
 pkgrel=1
 pkgdesc="Folder color switcher extension for nautilus, caja, and nemo"
 arch=('any')
 url="http://foldercolor.tuxfamily.org/"
 license=('GPL3')
-makedepends=('bzr' 'python-distutils-extra' 'python-setuptools')
+makedepends=('git' 'python-distutils-extra' 'python-setuptools')
 optdepends=('python-nautilus:    Nautilus extension'
             'nemo-python>=3.9.0: Nemo extension'
             'python-caja:        Caja extension')
 conflicts=('folder-color-nautilus-bzr')
-source=("${_pkgname}"::bzr+http://bazaar.launchpad.net/~costales/folder-color/trunk)
+source=("${_pkgname}"::git+https://github.com/costales/folder-color)
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}"
-    echo "$(egrep -m 1 -o "([0-9]{1,}\.)+[0-9]{1,}" setup.py).r$( bzr revno )"
+    printf "%s+r%s+%s" \
+	    "$( grep 'version[\t\ ]*=' setup.py | sed 's:.*=[\t\ ]*::;s:[,\t\ ]$::' )" \
+	    "$( git rev-list --count HEAD )" \
+	    "$( git rev-parse --short HEAD )"
 }
 
 prepare() {

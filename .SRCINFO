@@ -1,18 +1,19 @@
 pkgbase = folder-color-bzr
 	pkgdesc = Folder color switcher extension for nautilus, caja, and nemo
-	pkgver = 0.0.88.r290
+	pkgver = 0.0.88+r7+ce09b6e
 	pkgrel = 1
+	epoch = 1
 	url = http://foldercolor.tuxfamily.org/
 	arch = any
 	license = GPL3
-	makedepends = bzr
+	makedepends = git
 	makedepends = python-distutils-extra
 	makedepends = python-setuptools
 	optdepends = python-nautilus: Nautilus extension
 	optdepends = nemo-python>=3.9.0: Nemo extension
 	optdepends = python-caja: Caja extension
 	conflicts = folder-color-nautilus-bzr
-	source = folder-color::bzr+http://bazaar.launchpad.net/~costales/folder-color/trunk
+	source = folder-color::git+https://github.com/costales/folder-color
 	sha256sums = SKIP
 
 pkgname = folder-color-bzr
