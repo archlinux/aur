@@ -3,10 +3,10 @@
 _pkgname=mmlvis
 pkgname=python-mmlvis
 pkgver=10.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Python API for LVIS Dataset (openmm lab fork)'
 arch=('any')
-url='https://github.com/open-mmlab/cocoapi'
+url='https://pypi.org/project/mmlvis'
 license=(BSD)
 depends=(
   opencv
