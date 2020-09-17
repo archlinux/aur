@@ -1,5 +1,12 @@
 2020-09-14 GregTheMadMonk <yagreg7@gmail.com>
-	* 1.4.4 (slight return)
+	* 1.4.4r323....
+	- Make tools/docgen.sh compatible with POSIX shell
+	- Fix NORMAL and LISTVIEW table renderer glitch
+	- Rework modes implementation (means nothing to an end-user, but allows better extensibility)
+	- Accidentaly break all upstream repo branches so had to remove them >:[
+
+2020-09-14 GregTheMadMonk <yagreg7@gmail.com>
+	* 1.4.4r320....
 	- Mirgate to cmake, eliminating all mistakes in the Makefile
 	- Fix building on clang
 
