@@ -1,0 +1,16 @@
+pkgbase = index-generator
+	pkgdesc = Yet another python index generator
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/index-generator-project/index-generator
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jinja
+	source = https://files.pythonhosted.org/packages/source/i/index-generator/index-generator-0.2.9.tar.gz
+	sha512sums = d63a13db2a30779359d54d49640d694eb6d0fbc1377428df7bf28b3fe5ad03aedd7947a736e2a0219c11d34645d813c77809d7052b39a8f3f4bde9db58b78213
+
+pkgname = index-generator
+
