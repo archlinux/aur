@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r224.3b21eda
+pkgver=r227.017da56
 pkgrel=1
 pkgdesc='A native client for web media. Works with youtube, 4chan and several manga sites.'
 arch=('x86_64')
@@ -12,12 +12,12 @@ depends=('sfml' 'libx11' 'jsoncpp' 'cppcodec' 'tidy' 'curl' 'mpv' 'youtube-dl' '
 optdepends=(
     'libnotify: For showing notifications'
     'automedia: For automatically downloading new chapters of tracked manga'
-    'waifu2x-ncnn-vulkan: For upscaling manga pages when using --upscale-images option'
+    'waifu2x-ncnn-vulkan: For upscaling manga pages when using the --upscale-images option'
 )
 provides=('QuickMedia')
 conflicts=('QuickMedia')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz")
-sha512sums=('e216cfac2b035751b1df3c47d75cbab3f8a1f0220193c1845aa7e9c887cd12eed2fe60cd889eae650fc9f36a8c88ce5fd94b9ae1335b842d22d0edc98f273f72')
+sha512sums=('b3b4cacaf1d271ad654c7cfb7e4b4560b96fa033dd164f57e7b64ba9f076ffb2bfb8cab5dd7bbde284e8bd21bcb47ea3c3024c9a0f3caa7a59240f5012b94aad')
 
 build() {
   cd "$srcdir"
