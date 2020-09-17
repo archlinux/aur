@@ -1,7 +1,7 @@
 pkgbase = webapp-manager-git
 	pkgdesc = Run websites as if they were apps.
 	pkgver = 1.0.4.r55.db2af59
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/webapp-manager
 	arch = x86_64
 	license = GPL
@@ -21,6 +21,8 @@ pkgbase = webapp-manager-git
 	optdepends = vivaldi
 	provides = webapp-manager
 	conflicts = webapp-manager
+	conflicts = ice-ssb
+	conflicts = ice-dev
 	source = git+https://github.com/linuxmint/webapp-manager.git
 	sha256sums = SKIP
 
