@@ -1,3 +1,4 @@
 # Override this file with a modified version in /etc/tmpfiles.d/
 d /etc/mautrix-whatsapp 0755 mautrix-whatsapp mautrix-whatsapp -
 Z /etc/mautrix-whatsapp - mautrix-whatsapp mautrix-whatsapp -
+d /var/log/mautrix-whatsapp - mautrix-whatsapp mautrix-whatsapp
