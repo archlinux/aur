@@ -1,15 +1,14 @@
 pkgbase = eclipse-emf
 	pkgdesc = EMF and XSD frameworks for the Eclipse platform
-	pkgver = 2.19
-	pkgrel = 2
+	pkgver = 2.23
+	pkgrel = 1
 	url = http://www.eclipse.org/modeling/emf/
 	arch = any
 	license = EPL
 	makedepends = java-environment-common
 	depends = eclipse
 	options = !strip
-	source = https://download.eclipse.org/modeling/emf/emf/builds/release/2.19/EMF-Updates-2.19.zip
-	sha256sums = ddd4f9c423b0ff5ea0029acc61cbad8844715561cd6808bdd80d3937ab055693
+	source = download.zip::https://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/builds/release/2.23/EMF-Updates-2.23.zip&r=1
+	sha256sums = af5f43ba02500f388c84745f3a1630ba20ebb0b5fe0ba9dba220dbf442921143
 
 pkgname = eclipse-emf
-

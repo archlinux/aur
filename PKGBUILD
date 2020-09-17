@@ -8,8 +8,8 @@
 # Maintainer: Raimar Buehmann <raimar at buehmann dot de>
 
 pkgname=eclipse-emf
-pkgver=2.19
-pkgrel=2
+pkgver=2.23
+pkgrel=1
 pkgdesc="EMF and XSD frameworks for the Eclipse platform"
 arch=('any')
 url="http://www.eclipse.org/modeling/emf/"
@@ -17,11 +17,11 @@ license=('EPL')
 depends=('eclipse')
 makedepends=('java-environment-common')
 options=(!strip)
-# https://download.eclipse.org/modeling/emf/emf/builds/release/2.19/EMF-Updates-2.19.zip
 source=(
-	https://download.eclipse.org/modeling/emf/emf/builds/release/${pkgver}/EMF-Updates-${pkgver}.zip
+	#https://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/builds/release/2.23/EMF-Updates-2.23.zip&r=1
+	"download.zip::https://www.eclipse.org/downloads/download.php?file=/modeling/emf/emf/builds/release/${pkgver}/EMF-Updates-${pkgver}.zip&r=1"
 )
-sha256sums=('ddd4f9c423b0ff5ea0029acc61cbad8844715561cd6808bdd80d3937ab055693')
+sha256sums=('af5f43ba02500f388c84745f3a1630ba20ebb0b5fe0ba9dba220dbf442921143')
 
 package() {
   _dest=${pkgdir}/usr/lib/eclipse/dropins/${pkgname/eclipse-}/eclipse
