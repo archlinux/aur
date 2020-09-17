@@ -4,7 +4,7 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.3.2.r108.g3c52010
+pkgver=v0.3.2.r128.g1857930
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
@@ -46,7 +46,7 @@ build() {
 
     dotnet publish        OpenTabletDriver.Daemon   \
         --configuration   Release                   \
-        --framework       net50                     \
+        --framework       net5                      \
         --runtime         linux-x64                 \
         --self-contained  false                     \
         --output          "./$_pkgname/out"         \
@@ -55,7 +55,7 @@ build() {
 
     dotnet publish        OpenTabletDriver.Console  \
         --configuration   Release                   \
-        --framework       net50                     \
+        --framework       net5                      \
         --runtime         linux-x64                 \
         --self-contained  false                     \
         --output          "./$_pkgname/out"         \
@@ -65,7 +65,7 @@ build() {
 
     dotnet publish        OpenTabletDriver.UX.Gtk   \
         --configuration   Release                   \
-        --framework       net50                     \
+        --framework       net5                      \
         --runtime         linux-x64                 \
         --self-contained  false                     \
         --output          "./$_pkgname/out"         \
@@ -76,12 +76,12 @@ build() {
     cd "$srcdir/$_pkgname-udev"
     dotnet build          OpenTabletDriver.udev     \
         --configuration   Release                   \
-        --framework       netcoreapp3.1            \
+        --framework       netcoreapp3.1             \
         --runtime         linux-x64                 \
         --output          "./$_pkgname.udev/out"    \
         /p:SuppressNETCoreSdkPreviewMessage=true
 
-    dotnet "./$_pkgname.udev/out/$_pkgname.udev.dll"       \
+    dotnet "./$_pkgname.udev/out/$_pkgname.udev.dll" \
         "$srcdir/$_pkgname/$_pkgname/Configurations" \
         "30-$_lpkgname.rules" > /dev/null
 }
