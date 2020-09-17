@@ -1,0 +1,12 @@
+pkgbase = stm32f1-headers
+	pkgdesc = Headers for STM32F1 devices
+	pkgver = r4.6ead386a08de
+	pkgrel = 1
+	url = https://github.com/STMicroelectronics
+	arch = any
+	license = apache
+	source = git://github.com/STMicroelectronics/STM32CubeF1.git
+	md5sums = SKIP
+
+pkgname = stm32f1-headers
+
