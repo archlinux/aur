@@ -3,7 +3,7 @@
 # Contributor: Alex Branham <alex.branham@gmail.com>
 
 _cranname=covr
-_cranver=3.5.0
+_cranver=3.5.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,10 +12,9 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
 depends=('r>=3.1.0' r-digest r-jsonlite r-rex r-httr r-crayon 'r-withr>=1.0.2' r-yaml)
-makedepends=(gcc)
-optdepends=(r-r6 r-knitr r-rmarkdown r-htmltools r-dt r-testthat r-rlang r-rstudioapi r-xml2 r-memoise r-mockery)
+optdepends=(r-r6 r-curl r-knitr r-rmarkdown r-htmltools r-dt r-testthat r-rlang r-rstudioapi r-xml2 r-memoise r-mockery)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('92894c27065d11b3967cbb6f9d54f247')
+sha256sums=('a54cfc3623ea56084158ac5d7fe33f216f45191f6dcddab9c9ed4ec1d9d8ac6c')
 
 build() {
   cd "${srcdir}"
