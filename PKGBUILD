@@ -1,6 +1,6 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot-git' 'foot-terminfo-git')
-pkgver=1.4.4
+pkgver=1.5.0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
@@ -34,7 +34,7 @@ build() {
   # -fno-plt because performance (this is the default in makepkg anyway)
   export CFLAGS+=" -O3 -Wno-missing-profile -fno-plt"
 
-  meson --prefix=/usr --buildtype=release --wrap-mode=forcefallback -Db_lto=true -Dfcft:test-text-shaping=false . build
+  meson --prefix=/usr --buildtype=release --wrap-mode=forcefallback -Db_lto=true -Dfcft:text-shaping=disabled -Dfcft:test-text-shaping=false . build
 
   if [[ -v WAYLAND_DISPLAY ]]; then
     meson configure -Db_pgo=generate build
