@@ -11,6 +11,7 @@ pkgbase = quill-chat
 	depends = libnotify
 	depends = nss
 	depends = xdg-utils
+	optdepends = ttf-ms-win10: emoji support
 	options = !emptydirs
 	options = !strip
 	source = https://storage.googleapis.com/app-releases-dl.quill.chat/linux/Quill-Latest.rpm
