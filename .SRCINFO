@@ -4,15 +4,11 @@ pkgbase = stegify
 	pkgrel = 1
 	url = https://github.com/DimitarPetrov/stegify
 	arch = x86_64
-	license = custom:MIT
+	license = MIT
 	makedepends = git
-	makedepends = go-pie
-	makedepends = golang-golang-x-tools
-	depends = glibc
-	provides = stegify
-	conflicts = stegify
-	source = stegify::git+https://github.com/DimitarPetrov/stegify.git#tag=v1.2
-	sha512sums = SKIP
+	makedepends = go
+	source = stegify-1.2.tar.gz::https://github.com/DimitarPetrov/stegify/archive/v1.2.tar.gz
+	sha512sums = a2b0ff8dbe6d6f06d4239446b25fe149df15ea3d995cd2dad48130834c25faaffb1142f72e45bc50ad6d5e38cc48fb9f5652ec7dd6d796f67f33cdef13ada661
 
 pkgname = stegify
 
