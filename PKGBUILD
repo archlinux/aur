@@ -1,19 +1,19 @@
 # Maintainer: Daniel Eklöf <daniel at ekloef dot se>
 pkgname=('foot' 'foot-terminfo')
-pkgver=1.4.4
-pkgrel=4
+pkgver=1.5.0
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://codeberg.org/dnkl/foot
 license=(mit)
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols')
 checkdepends=('check')
 depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'freetype2')
-source=(https://codeberg.org/dnkl/foot/archive/1.4.4.tar.gz
-        https://codeberg.org/dnkl/tllist/archive/1.0.2.tar.gz
-        https://codeberg.org/dnkl/fcft/archive/2.2.7.tar.gz)
-sha256sums=('0d00e30d38c50b67138535bbcb6f2ea0e27b83b160823842cffbe79f9cc5de30'
-            '8fe933e4614aed35aa6dfb6ab3105b2c2d6eb80a75bd3e93d4445ce6efd3dba0'
-            'd1c6f540bb75a3b66705ff72d2445b2e084cd427ffa62cbe79b7f44047773e96')
+source=(https://codeberg.org/dnkl/foot/archive/1.5.0.tar.gz
+        https://codeberg.org/dnkl/tllist/archive/1.0.4.tar.gz
+        https://codeberg.org/dnkl/fcft/archive/2.3.1.tar.gz)
+sha256sums=('47272490222e2ebc7249a2cefdaa08921475e8d0339610cf6ee611ff8c5af6a4'
+            'a135934d4955902d67f75f3c542ace3bfb7be3be9c44796852e76ea9e1d82b33'
+            '4a8ed7e9818a391ec422ec8ee561fccf2586410c1bfc86ecc64026a5cf8bc18c')
 
 build() {
   cd foot
@@ -29,7 +29,8 @@ build() {
   # -fno-plt because performance (this is the default in makepkg anyway)
   export CFLAGS+=" -O3 -Wno-missing-profile -fno-plt"
 
-  meson --prefix=/usr --buildtype=release --wrap-mode=forcefallback -Db_lto=true . build
+  # TODO: add -Dfcft:test-text-shaping=false
+  meson --prefix=/usr --buildtype=release --wrap-mode=forcefallback -Db_lto=true -Dfcft:text-shaping=false -Dfcft:test-text-shaping=false . build
 
   if [[ -v WAYLAND_DISPLAY ]]; then
     meson configure -Db_pgo=generate build
