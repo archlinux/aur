@@ -35,8 +35,7 @@ build() {
 
     # build with more cores than the default
     export CMAKE_BUILD_PARALLEL_LEVEL=$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
-    cmake -H. -Bbuild -DHUNTER_ENABLED=ON -DBUILD_SHARED_LIBS=OFF -DUSE_BUNDLED_OPENSSL=OFF -DUSE_BUNDLED_BOOST=OFF -DUSE_BUNDLED_CMARK=OFF -DUSE_BUNDLED_JSON=OFF \
-    -DCMAKE_INSTALL_PREFIX=.deps/usr -DCMAKE_BUILD_TYPE=Release
+    cmake -H. -Bbuild -DHUNTER_ENABLED=OFF -DBUILD_SHARED_LIBS=OFF -DUSE_BUNDLED_MTXCLIENT=ON -DCMAKE_INSTALL_PREFIX=.deps/usr -DCMAKE_BUILD_TYPE=Release
     cmake --build build --config Release
 }
 
