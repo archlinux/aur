@@ -4,7 +4,7 @@
 
 _name=radon
 pkgname="python-${_name}"
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="A tool that computes various metrics for Python source code"
 arch=('any')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python-flake8-polyfill' 'python-future' 'python-mando' 'python-colorama')
 makedepends=('python-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('63a7876101a64d5418fa9acebff11f9bb48367ac79f22bf3b73c7bf430a8abc0')
+sha256sums=('758b3ab345aa86e95f642713612a57da7c7da6d552c4dbfbe397a67601ace7dd')
 
 
 build() {
