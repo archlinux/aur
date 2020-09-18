@@ -9,7 +9,7 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.4.0rc1.r296.g68d375c43.0.g68d375c43
+pkgver=1.4.0rc1.r329.gf7bece3b8.0.gf7bece3b8
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 url='http://www.clementine-player.org/'
@@ -25,23 +25,18 @@ optdepends=('libcdio: for CD support'
 conflicts=(clementine)
 provides=(clementine)
 _name=Clementine
-source=("git+https://github.com/clementine-player/$_name.git"
-        "close-fix.diff")
-sha256sums=('SKIP'
-            'f8db366cf61b956a96b21d587aff42f565d9ac84636d5188249b34268d3537c5')
+source=("git+https://github.com/clementine-player/$_name.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd $_name
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd $_name
-    patch -p1 -i $srcdir/close-fix.diff
-}
-
 build() {
-  cmake -B build -S $_name -DENABLE_SPOTIFY_BLOB=off
+  cmake -B build -S $_name \
+    -DENABLE_SPOTIFY_BLOB=off \
+    -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
 
