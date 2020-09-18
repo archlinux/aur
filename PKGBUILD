@@ -1,14 +1,15 @@
 # Maintainer: satcom886 <rostik.medved@gmail.com>
+# Contributor: telsch
 
 pkgname=vc4c-git
-pkgver=r683.f986061
-pkgrel=5
+pkgver=r709.e3eed1e
+pkgrel=1
 pkgdesc="Compiler for the VC4CL OpenCL-implementation"
 arch=('any')
 url="https://github.com/doe300/VC4C"
 license=('MIT')
 groups=()
-depends=('vc4clstdlib-git' 'clang' 'clinfo' 'ocl-icd' 'khronos-ocl-icd')
+depends=('vc4clstdlib-git' 'clang' 'clinfo' 'ocl-icd')
 makedepends=('wget' 'gcc' 'cmake' 'llvm' 'opencl-headers')
 optdepends=()
 provides=('vc4c' 'vc4-compiler' 'opencl-compiler')
@@ -28,6 +29,7 @@ build() {
 }
 
 package() {
+    mkdir -p "$pkgdir/usr/local/include/vc4cl-stdlib"
 	cd "$srcdir/VC4C/build"
 	make DESTDIR="$pkgdir/" install
 }
