@@ -3,7 +3,7 @@
 # Contributor: Brendan MacDonell <macdonellba at gmail dot com>
 
 pkgname=s3ql
-pkgver=3.3.2
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="A full-featured file system for online data storage."
 arch=('i686' 'x86_64')
@@ -14,7 +14,8 @@ depends=(
   'python-cryptography'
   'python-defusedxml'
   'python-apsw'
-  'python-llfuse'
+  'python-trio'
+  'python-pyfuse3'
   'python-dugong'
   'python-systemd'
   'python-requests'
@@ -24,7 +25,7 @@ depends=(
 makedepends=('gcc')
 install="s3ql.install"
 source=(https://github.com/s3ql/s3ql/releases/download/release-$pkgver/s3ql-$pkgver.tar.bz2)
-md5sums=('3d81fad6bf8090a48539e1b9848f70d2')
+md5sums=('efbaa30808a9c557f5007763191d6060')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
