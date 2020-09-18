@@ -8,7 +8,7 @@
 
 pkgname='xampp'
 pkgver='7.4.10'
-pkgrel=7
+pkgrel=8
 pkgdesc='A stand-alone LAMPP distribution'
 _platform='linux-x64'
 _uppkgrel=0
@@ -35,7 +35,7 @@ options=(staticlibs libtool !strip)
 install='xampp.install'
 sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
             '4092631d86ec1c3a155bfec76ea2c8433426a13f12a7a5866f843a099f1ca418'
-            'db911d689c2b78d02b3829cabf03822bb213d21dfa557f388989e10e837860bc'
+            'ff3eac073707f0463a703b2c0caeaa6a513fdeb3c289c85b2708ad9defd3f6bb'
             '78854cb427117c69117a8f20685acbe898a02bc3af1409950117986ff1b45f1f'
             'a3fc7f2b570af9d05435f2f9a0b8d7d9b30ee1dbeaea152f8e249ef5ef0461c9'
             '37e24dacf3a52037d0cddb11d979917f81741bf399ec5fa5e847359909b7bc25'
@@ -80,7 +80,7 @@ package() {
 	# Set root location in all files
 	msg 'Setting root location globally (it might take a few minutes)...'
 	find "${pkgdir}/opt/lampp/" -type f \
-		-exec sed -i 's/\@\@BITNAMI_XAMPP_ROOT\@\@/\/opt\/lampp/gI;s/\@\@BITROCK_INSTALLDIR\@\@/\/opt\/lampp/gI' '{}' \;
+		-exec sed -i 's/\@\@BITNAMI_XAMPP_ROOT\@\@\|\@\@BITROCK_INSTALLDIR\@\@/\/opt\/lampp/gI' '{}' \;
 
 	# Temp folders
 	install -dm777 "${pkgdir}/opt/lampp/phpmyadmin/tmp"
@@ -95,11 +95,7 @@ package() {
 	test -d "${pkgdir}/opt/lampp/share/lampp" || \
 		ln -sf '/opt/lampp/share/xampp' "${pkgdir}/opt/lampp/share/lampp"
 
-	sed \
-		"
-			s/@STACK_VERSION@/${pkgver}-${_uppkgrel}/g
-			s/@PLATFORM@/${_platform}/g
-		" \
+	sed "s/@PACKAGE_VERSION@/${pkgver}-${_uppkgrel}/g;s/@PACKAGE_PLATFORM@/${_platform}/g" \
 		"${srcdir}/properties.ini.in" > "${pkgdir}/opt/lampp/properties.ini"
 
 	echo -n "${pkgver}-${_uppkgrel}" > "${pkgdir}/opt/lampp/lib/VERSION"
@@ -116,7 +112,7 @@ package() {
 	# Licenses
 	install -dm755 "${pkgdir}/usr/share/licenses"
 	chmod -R a+rX,u+w "${pkgdir}/opt/lampp/licenses"
-	ln -s "/opt/lampp/licenses" "${pkgdir}/usr/share/licenses/xampp"
+	ln -s '/opt/lampp/licenses' "${pkgdir}/usr/share/licenses/xampp"
 
 	# Executables
 	install -dm755 "${pkgdir}/usr/bin"
@@ -130,10 +126,11 @@ package() {
 	install -Dm644 "${srcdir}/xampp.sysusers" "${pkgdir}/usr/lib/sysusers.d/xampp.conf"
 	install -Dm644 "${srcdir}/xampp.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/xampp.conf"
 
-	# Desktop launcher
+	# Integration with the Filesystem Hierarchy Standard
 	install -Dm644 "${srcdir}/xampp.svg" "${pkgdir}/usr/share/pixmaps/xampp.svg"
 	install -Dm644 "${srcdir}/xampp-manager.desktop" "${pkgdir}/usr/share/applications/xampp-manager.desktop"
 	install -Dm644 "${srcdir}/xampp-control-panel.desktop" "${pkgdir}/usr/share/applications/xampp-control-panel.desktop"
+	ln -s '/opt/lampp' "${pkgdir}/usr/share/xampp"
 
 	# Install policy file for desktop launcher
 	install -Dm644 "${srcdir}/org.freedesktop.xampp-manager.policy" "${pkgdir}/usr/share/polkit-1/actions/org.freedesktop.xampp-manager.policy"

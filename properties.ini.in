@@ -2,8 +2,8 @@
 installdir=/opt/lampp
 base_stack_name=XAMPP
 base_stack_key=
-base_stack_version=@STACK_VERSION@
-base_stack_platform=@PLATFORM@
+base_stack_version=@PACKAGE_VERSION@
+base_stack_platform=@PACKAGE_PLATFORM@
 base_stack_service=
 require_root_privileges=1
 [Apache]

@@ -1,7 +1,7 @@
 pkgbase = xampp
 	pkgdesc = A stand-alone LAMPP distribution
 	pkgver = 7.4.10
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.apachefriends.org/
 	install = xampp.install
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = xampp
 	source = xampp-manager.desktop
 	sha256sums = 3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e
 	sha256sums = 4092631d86ec1c3a155bfec76ea2c8433426a13f12a7a5866f843a099f1ca418
-	sha256sums = db911d689c2b78d02b3829cabf03822bb213d21dfa557f388989e10e837860bc
+	sha256sums = ff3eac073707f0463a703b2c0caeaa6a513fdeb3c289c85b2708ad9defd3f6bb
 	sha256sums = 78854cb427117c69117a8f20685acbe898a02bc3af1409950117986ff1b45f1f
 	sha256sums = a3fc7f2b570af9d05435f2f9a0b8d7d9b30ee1dbeaea152f8e249ef5ef0461c9
 	sha256sums = 37e24dacf3a52037d0cddb11d979917f81741bf399ec5fa5e847359909b7bc25
