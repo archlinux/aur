@@ -13,7 +13,7 @@ _github_url='https://github.com/balena-io/etcher'
 url='https://balena.io/etcher'
 license=(Apache)
 depends=("electron" "gtk3" "libxtst" "libxss" "nss" "alsa-lib" "nodejs" "glib2" "polkit" "libusb")
-makedepends=("npm" "python2" "git" "jq")
+makedepends=("npm" "python2" "git" "jq" "patch")
 optdepends=("libnotify: for notifications")
 conflicts=("${_pkgname}"
   "${_pkgname}-git"

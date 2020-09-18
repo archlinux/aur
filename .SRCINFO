@@ -10,6 +10,7 @@ pkgbase = balena-etcher
 	makedepends = python2
 	makedepends = git
 	makedepends = jq
+	makedepends = patch
 	depends = electron
 	depends = gtk3
 	depends = libxtst
