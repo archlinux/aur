@@ -1,4 +1,4 @@
-# Maintainer: Henry Graham <hgrahamcs )at( gmail )dot( com>
+# Maintainer: Henry Graham <henry)dot(arch)at(hgrahamcs)dot(com(>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
