@@ -3,12 +3,12 @@
 pkgname=gnome-shell-extension-cpupower-git
 _gitname=cpupower
 pkgver=r198.e2320e9
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome-Shell Extension for intel-pstate driver"
 arch=('any')
 url="https://github.com/martin31821/cpupower"
 license=('GPL3')
-depends=('gnome-shell')
+depends=('gnome-shell' 'polkit')
 makedepends=('git')
 install='cpupower.install'
 source=('git+https://github.com/martin31821/cpupower.git')
@@ -23,24 +23,35 @@ pkgver() {
 package() {
 	cd $_gitname
 
-	_extid="cpupower@mko-sl.de"
-	_extpath="${pkgdir}/usr/share/gnome-shell/extensions/${_extid}"
+	# building/installation
+	make build
 
-	DIR="/usr/share/gnome-shell/extensions/cpupower@mko-sl.de"
-	CFC="${DIR}/tool/cpufreqctl"
-	POLICY="mko.cpupower.setcpufreq"
-	RULEIN="${_extpath}/data/mko.cpupower.policy.in"
-	RULEDIR="${pkgdir}/usr/share/polkit-1/actions"
+	EXTPATH="${pkgdir}/usr/share/gnome-shell/extensions/cpupower@mko-sl.de"
+	install -dm755 "${EXTPATH}"
+	cp -a * "${EXTPATH}"
+
+	# install cpufreqctl tool to /usr/bin/cpufreqctl
+	install -Dm555 "tool/cpufreqctl" "${pkgdir}/usr/bin/cpufreqctl"
+
+	# polkit policy file, authorizes /usr/bin/cpufreqctl to run
+	POLICYDIR="${pkgdir}/usr/share/polkit-1/actions"
+	POLICYFILE="mko.cpupower.setcpufreq.policy"
+	install -dm755 "${POLICYDIR}"
+	install -Dm644 "data/mko.cpupower.policy.in" "${POLICYDIR}/${POLICYFILE}"
+
+	# polkit rules file, handles policy requests
+	RULESDIR="${pkgdir}/usr/share/polkit-1/rules.d"
+	RULESFILE="10-mko.cpupower.setcpufreq.rules"
+	install -dm750 "${RULESDIR}"
+	install -Dm644 "data/${RULESFILE}" "${RULESDIR}/${RULESFILE}"
+
+	# gsettings xml schema file
 	SCHEMADIR="${pkgdir}/usr/share/glib-2.0/schemas"
+	SCHEMAFILE="org.gnome.shell.extensions.cpupower.gschema.xml"
+	install -dm755 "${SCHEMADIR}"
+	install -Dm644 "schemas/${SCHEMAFILE}" "${SCHEMADIR}/${SCHEMAFILE}"
 
-	install -dm755 "${_extpath}"
-	cp -a * "${_extpath}"
-
-	chown root:root "${pkgdir}/${CFC}"
-	chmod 0555 "${pkgdir}/${CFC}"
-
-	mkdir -p "${RULEDIR}" "${SCHEMADIR}"
-	sed "s:xxxPATHxxx:${CFC}:g" "${RULEIN}" > "${RULEDIR}/${POLICY}.policy"
-
-	cp schemas/org.gnome.shell.extensions.cpupower.gschema.xml "${SCHEMADIR}"
+	# update policy to reflect cpufreqctl path
+	sed -i -e 's:{{PATH}}:/usr/bin/cpufreqctl:g' \
+		-e 's:{{ID}}:mko.cpupower.setcpufreq:g' "${POLICYDIR}/${POLICYFILE}"
 }
