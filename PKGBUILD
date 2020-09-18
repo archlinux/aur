@@ -201,7 +201,7 @@ package_xorg-server-xnest-minimal-git() {
 #  provides=('xorg-server-xwayland')
 #  conflicts=('xorg-server-xwayland')
 #  pkgdesc="run X clients under wayland (git version)"
-#  depends=(libxfont2 libepoxy libunwind systemd-libs libgl pixman xorg-server-common-minimal-git
+#  depends=(libxfont2 libepoxy libunwind libgl pixman xorg-server-common-minimal-git
 #           nettle libtirpc)
 
 #  _install fakeinstall/usr/bin/Xwayland
