@@ -1,6 +1,6 @@
 pkgbase = oilshell
 	pkgdesc = Oil, a new unix shell
-	pkgver = 0.8.pre11
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = http://www.oilshell.org/
 	install = oilshell.install
@@ -8,8 +8,8 @@ pkgbase = oilshell
 	license = APACHE
 	depends = readline
 	options = !strip
-	source = https://www.oilshell.org/download/oil-0.8.pre11.tar.xz
-	sha256sums = 6b73574ede1e83ae6a87a1e603d19e3c4934a84e30951ff949097c9a5d758cfc
+	source = https://www.oilshell.org/download/oil-0.8.0.tar.xz
+	sha256sums = c65c8b4ca6fdcb277af62d639c6aca299b79c47ff45612add51ae9bc40c8b87a
 
 pkgname = oilshell
 
