@@ -1,0 +1,13 @@
+pkgbase = gh-cli
+	pkgdesc = GitHub command line interface client
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://cli.github.com
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = gh-cli-1.0.0.tar.gz::https://github.com/cli/cli/archive/v1.0.0.tar.gz
+	sha256sums = e3d1c341829f5b885dce9aa2bf4bc84db48072752250f6fdb2d62903caf07cfb
+
+pkgname = gh-cli
+
