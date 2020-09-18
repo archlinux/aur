@@ -1,8 +1,8 @@
 # Maintainer: Frederic Van Assche <frederic@fredericva.com>
 
 pkgname=sigasi
-pkgver=4.8.0
-pkgrel=2
+pkgver=4.9.0
+pkgrel=1
 pkgdesc='IDE for VHDL editing and browsing'
 arch=('x86_64')
 url='http://www.sigasi.com/'
@@ -12,7 +12,7 @@ source=("${pkgname}-${pkgver}-x86_64.zip::http://download.sigasi.com/updates/${p
 depends=('glib2')
 makedepends=('unzip')
 options=('!strip')
-sha256sums=('693324ac608bb231c135953c6560bb0c9ba15dc616fc6f64b5ca1189ca418f91'
+sha256sums=('3233ca2d7c9569a7064151d23964e373c3d7dcea5c196ef1a087bebe816a4b94'
             'a8084b3146904c2accd5946e2aa493e133c56e4f8f0d7f582a0edcb080a7958c')
 
 package() {
