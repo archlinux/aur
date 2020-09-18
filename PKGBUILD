@@ -2,8 +2,8 @@
 
 pkgname=st-syaoran-git
 _dir=st-syaoran
-pkgver=0.8.3.r20.00aadff
-pkgrel=2
+pkgver=0.8.4.r28.57c0827
+pkgrel=1
 pkgdesc="This is my st (suckless/simple terminal) build."
 arch=('any')
 url="https://gitlab.com/justanoobcoder/st-syaoran.git"
@@ -33,4 +33,3 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_dir}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${_dir}/README.md"
 }
-
