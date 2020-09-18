@@ -30,7 +30,7 @@ build() {
   export CFLAGS+=" -O3 -Wno-missing-profile -fno-plt"
 
   # TODO: add -Dfcft:test-text-shaping=false
-  meson --prefix=/usr --buildtype=release --wrap-mode=forcefallback -Db_lto=true -Dfcft:text-shaping=false -Dfcft:test-text-shaping=false . build
+  meson --prefix=/usr --buildtype=release --wrap-mode=forcefallback -Db_lto=true -Dfcft:text-shaping=disabled -Dfcft:test-text-shaping=false . build
 
   if [[ -v WAYLAND_DISPLAY ]]; then
     meson configure -Db_pgo=generate build
