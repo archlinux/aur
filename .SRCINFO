@@ -1,7 +1,7 @@
 pkgbase = dvc
 	pkgdesc = Open-source version control system for data science projects
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iterative/dvc
 	arch = any
 	license = Apache
@@ -16,7 +16,6 @@ pkgbase = dvc
 	depends = python-gitpython
 	depends = python-humanize
 	depends = python-inflect
-	depends = python-jsonpath-ng
 	depends = python-packaging
 	depends = python-pathspec
 	depends = python-ply

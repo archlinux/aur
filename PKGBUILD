@@ -4,7 +4,7 @@
 
 pkgname=dvc
 pkgver=1.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
 license=('Apache')
@@ -12,7 +12,7 @@ url="https://github.com/iterative/${pkgname}"
 depends=('python' 'python-appdirs' 'python-colorama' 'python-configobj'
          'python-distro' 'python-flufl-lock' 'python-funcy'
          'python-gitdb' 'python-gitpython' 'python-humanize'
-         'python-inflect' 'python-jsonpath-ng' 'python-packaging'
+         'python-inflect' 'python-packaging'
          'python-pathspec' 'python-ply' 'python-pyasn1'
          'python-yaml' 'python-requests' 'python-ruamel-yaml'
          'python-setuptools' 'python-shortuuid' 'python-tqdm'
