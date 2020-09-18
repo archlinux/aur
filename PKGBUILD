@@ -13,7 +13,7 @@ source=("local://WolframScript_${pkgver}_LINUX64_x86_64.rpm")
 conflicts=('mathematica')
 # The conflict arises due to some files that both packages use.
 # If you would like both installed, install the generated .tar.xz --overwrite '*' 
-md5sums=('988d7872092b095e4f23243a24cb37a1')
+md5sums=('fb25ec1226e9c8046562ddedf6f1e9db')
 
 package() {
   cd "${srcdir}"

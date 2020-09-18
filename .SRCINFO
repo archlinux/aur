@@ -7,7 +7,7 @@ pkgbase = wolframscript
 	license = proprietary
 	conflicts = mathematica
 	source = local://WolframScript_12.1.1_LINUX64_x86_64.rpm
-	md5sums = 988d7872092b095e4f23243a24cb37a1
+	md5sums = fb25ec1226e9c8046562ddedf6f1e9db
 
 pkgname = wolframscript
 
