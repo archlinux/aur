@@ -2,7 +2,7 @@
 _pkgname="dwm"
 pkgname="$_pkgname-oakszyjrnrdy"
 pkgver=6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic window manager for X built by oakszyjrnrdy"
 url="http://dwm.suckless.org"
 arch=("x86_64")
@@ -23,7 +23,7 @@ source=(
 sha256sums=(
 	"97902e2e007aaeaa3c6e3bed1f81785b817b7413947f1db1d3b62b8da4cd110e"
 	"bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81"
-	"6724ead226c14eb546952550001eb9dcf069627804b72a6a9bfc22a76af00fd3"
+	"1175b8bf1852394d6c9e50825224eaaeaf234bbef6605c24c4941aaa3bd04248"
 	"c978561abde2df339ef6bab73a1eaf9ad097db1038e46f6de0247b1aea35a5a2"
 	"716d43cda73744abbe12c1ecd20fd55769c2a36730a57d0a12c09c06854b7fa8"
 	"0343dccd71cb8a3f4a18637ea51f4764a51cda5d712092a103bac5cba7dfc7ad"
