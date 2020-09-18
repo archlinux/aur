@@ -16,7 +16,7 @@ pkgname=vmware-workstation11
 pkgver=11.1.4
 _buildver=3848939
 _pkgver=${pkgver}_${_buildver}
-pkgrel=13
+pkgrel=14
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -114,9 +114,9 @@ sha256sums=(
   'c0a5aea785db06921fb350d36d5e0fd9a14f5eee0c835686ec6fea1af8c92245'
   'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
 
-  '05e26d8b21d190ebabb7f693998114d9d5991d9dfb71acb4d990293a65b6b487'
-  '6ce902b1dab8fc69be253abd8e79017011985eca850ff7acc7282f9ab668e35d'
-  '0c9470a949f54924a9d037eb3dff8469b6a9c2183539edd3d0f5e8400d6fde1d'
+  '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
+  '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
+  'fa4ae98dbaf1ffda33c4de28076bcd4906b2be711efea74badc7edb9a60ac739'
   '601a5b24aa23a995a79474a57de4056d3c2a27caf3a4c079b3a271d0d1eb4083'
 )
 options=(!strip emptydirs)
@@ -139,7 +139,8 @@ _efi_unlocker_ver=1.0.0
 
 makedepends+=(
   python
-  dmg2dir
+  dmg2img
+  p7zip
   uefitool-git
 )
 
@@ -190,13 +191,8 @@ prepare() {
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then
-  dmg2dir -q --tmp="$srcdir/dmg2dir" --overwrite-dir --overwrite-img VMware-Fusion-${_vmware_fusion_ver/_/-}.dmg
-  for isoimage in ${_fusion_isoimages[@]}
-  do
-    install -Dm 644 "$srcdir/VMware-Fusion-${_vmware_fusion_ver/_/-}/VMware Fusion/VMware Fusion.app/Contents/Library/isoimages/$isoimage.iso" "$srcdir/fusion-isoimages/$isoimage.iso"
-    install -Dm 644 "$srcdir/VMware-Fusion-${_vmware_fusion_ver/_/-}/VMware Fusion/VMware Fusion.app/Contents/Library/isoimages/$isoimage.iso.sig" "$srcdir/fusion-isoimages/$isoimage.iso.sig"
-  done
-  rm -rf "$srcdir/dmg2dir"
+  dmg2img VMware-Fusion-${_vmware_fusion_ver/_/-}.dmg VMware-Fusion-${_vmware_fusion_ver/_/-}.iso > /dev/null
+  7z e -y VMware-Fusion-${_vmware_fusion_ver/_/-}.iso VMware\ Fusion/VMware\ Fusion.app/Contents/Library/isoimages/\* -o"fusion-isoimages" > /dev/null 2>&1 || true
 
   sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker-${_unlocker_ver}.py"
 fi
@@ -208,7 +204,7 @@ package() {
   # Make directories and copy files.
 
   mkdir -p \
-    "$pkgdir/etc"/{cups,pam.d,modprobe.d,profile.d,thnuclnt,vmware} \
+    "$pkgdir/etc"/{cups,pam.d,modprobe.d,thnuclnt,vmware} \
     "$pkgdir/usr"/{share,bin} \
     "$pkgdir/usr/include/vmware-vix" \
     "$pkgdir/usr/lib"/{vmware/setup,vmware-vix,vmware-ovftool,vmware-installer/"$vmware_installer_version",cups/filter,modules-load.d} \
