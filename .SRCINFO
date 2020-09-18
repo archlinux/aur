@@ -1,7 +1,7 @@
 pkgbase = brave-nightly-bin
 	pkgdesc = Web browser that blocks ads and trackers by default (nightly binary release).
 	pkgver = 1.16.26
-	pkgrel = 10
+	pkgrel = 12
 	url = https://brave.com/download-nightly
 	arch = x86_64
 	license = MPL2
