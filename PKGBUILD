@@ -2,8 +2,8 @@
 
 pkgname=fulcrum
 pkgdesc='A fast & nimble SPV server for Bitcoin Cash'
-pkgver=1.2.9
-pkgrel=2
+pkgver=1.2.10
+pkgrel=1
 url='https://gitlab.com/FloweeTheHub/fulcrum'
 arch=('x86_64')
 license=('GPL3')
