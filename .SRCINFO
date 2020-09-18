@@ -1,7 +1,7 @@
 pkgbase = rxvt-unicode-intensityfix
 	pkgdesc = A unicode enabled rxvt-clone terminal emulator (urxvt) (opinionated build)
 	pkgver = 9.22
-	pkgrel = 14
+	pkgrel = 15
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = rxvt-unicode-intensityfix
 	source = sgr-mouse-mode.patch
 	source = 256color.patch
 	source = enable-wide-glyphs.patch
+	source = perl-segfault.patch
 	md5sums = 93782dec27494eb079467dacf6e48185
 	md5sums = 9e2ccfa07aafa6aeaf1dbdd005437af7
 	md5sums = d8377a6ec47a7913636fbc368aded94b
@@ -30,6 +31,7 @@ pkgbase = rxvt-unicode-intensityfix
 	md5sums = f8325b0a33999db4d5d1eeac4f320156
 	md5sums = fb78c2ecf87626962734320cc2bb7ab1
 	md5sums = fa7e51d6a521605ff1b18470510156b0
+	md5sums = 688e82954aaf0663356330c61f505ef4
 
 pkgname = rxvt-unicode-intensityfix
 

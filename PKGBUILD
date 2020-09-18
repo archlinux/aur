@@ -3,7 +3,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-intensityfix
 pkgver=9.22
-pkgrel=14
+pkgrel=15
 pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt) (opinionated build)'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -20,6 +20,7 @@ source=(
   'sgr-mouse-mode.patch'
   '256color.patch'
   'enable-wide-glyphs.patch'
+  'perl-segfault.patch'
 )
 md5sums=('93782dec27494eb079467dacf6e48185'
          '9e2ccfa07aafa6aeaf1dbdd005437af7'
@@ -28,7 +29,8 @@ md5sums=('93782dec27494eb079467dacf6e48185'
          '9f3248bc397ee76b008375f2ab0f201a'
          'f8325b0a33999db4d5d1eeac4f320156'
          'fb78c2ecf87626962734320cc2bb7ab1'
-         'fa7e51d6a521605ff1b18470510156b0')
+         'fa7e51d6a521605ff1b18470510156b0'
+         '688e82954aaf0663356330c61f505ef4')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -46,6 +48,9 @@ prepare() {
 
   # from https://aur.archlinux.org/packages/rxvt-unicode-cvs-patched-wideglyphs/
   patch -p1 -i ../enable-wide-glyphs.patch
+
+  # https://bugs.archlinux.org/task/67691
+  patch -p1 -i ../perl-segfault.patch
 }
 
 build() {
