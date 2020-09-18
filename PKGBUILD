@@ -16,7 +16,7 @@ pkgname=vmware-workstation12
 pkgver=12.5.9
 _buildver=7535481
 _pkgver=${pkgver}_${_buildver}
-pkgrel=15
+pkgrel=16
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -115,9 +115,9 @@ sha256sums=(
   'c0a5aea785db06921fb350d36d5e0fd9a14f5eee0c835686ec6fea1af8c92245'
   'd7a9fbf39a0345ae2f14f7f389f30b1110f605d187e0c241e99bbb18993c250d'
 
-  '05e26d8b21d190ebabb7f693998114d9d5991d9dfb71acb4d990293a65b6b487'
-  '6ce902b1dab8fc69be253abd8e79017011985eca850ff7acc7282f9ab668e35d'
-  '878b2e13b4f7ec9d82c03067262b0c90f87a0b392ad79745e756e987dcefab42'
+  '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
+  '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
+  '31de75b16d8442db671dff22816fd067876b443b4fe4ed8349bd4835be827e9d'
   'd619d8a3f982fff0ce3f9cd6e6cb840767b2a70333e770367a1f87354f2b103d'
 )
 options=(!strip emptydirs)
@@ -211,7 +211,7 @@ package() {
   # Make directories and copy files.
 
   mkdir -p \
-    "$pkgdir/etc"/{cups,pam.d,modprobe.d,profile.d,thnuclnt,vmware} \
+    "$pkgdir/etc"/{cups,pam.d,modprobe.d,thnuclnt,vmware} \
     "$pkgdir/usr"/{share,bin} \
     "$pkgdir/usr/include/vmware-vix" \
     "$pkgdir/usr/lib"/{vmware/setup,vmware-vix,vmware-ovftool,vmware-installer/"$vmware_installer_version",cups/filter,modules-load.d} \
