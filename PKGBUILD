@@ -9,16 +9,42 @@ arch=('x86_64')
 license=('custom')
 depends=('bzip2' 'zlib' 'icu' 'zstd')
 optdepends=('openmpi: for mpi support')
-provides=('libboost_atomic.so' 'libboost_chrono.so' 'libboost_container.so'
-          'libboost_context.so' 'libboost_contract.so' 'libboost_coroutine.so'
-          'libboost_date_time.so' 'libboost_fiber.so' 'libboost_filesystem.so'
-          'libboost_graph.so' 'libboost_iostreams.so' 'libboost_locale.so' 'libboost_wserialization.so' 'libboost_log.so' 'libboost_wave.so'
-          'libboost_math_c99.so' 'libboost_math_c99f.so' 'libboost_math_c99l.so'
-          'libboost_math_tr1.so' 'libboost_math_tr1f.so' 'libboost_math_tr1l.so'
-          'libboost_prg_exec_monitor.so' 'libboost_program_options.so' 'libboost_random.so' 'libboost_regex.so' 'libboost_serialization.so'
-          'libboost_stacktrace_addr2line.so' 'libboost_stacktrace_basic.so'
-          'libboost_stacktrace_noop.so' 'libboost_system.so' 'libboost_thread.so'
-          'libboost_timer.so' 'libboost_type_erasure.so' 'libboost_unit_test_framework.so' 'libboost_log_setup.so' 'boost-libs')
+provides=(libboost_atomic.so
+          libboost_chrono.so 
+          libboost_container.so
+          libboost_context.so
+          libboost_contract.so
+          libboost_coroutine.so
+          libboost_date_time.so
+          libboost_fiber.so
+          libboost_filesystem.so
+          libboost_graph.so
+          libboost_iostreams.so
+          libboost_locale.so 
+          libboost_wserialization.so
+          libboost_log.so
+          libboost_wave.so
+          libboost_math_c99.so
+          libboost_math_c99f.so
+          libboost_math_c99l.so
+          libboost_math_tr1.so
+          libboost_math_tr1f.so
+          libboost_math_tr1l.so
+          libboost_prg_exec_monitor.so
+          libboost_program_options.so
+          libboost_random.so
+          libboost_regex.so
+          libboost_serialization.so
+          libboost_stacktrace_addr2line.so
+          libboost_stacktrace_basic.so
+          libboost_stacktrace_noop.so
+          libboost_system.so
+          libboost_thread.so
+          libboost_timer.so
+          libboost_type_erasure.so
+          libboost_unit_test_framework.so
+          ibboost_log_setup.so
+          'boost-libs')
 makedepends=('icu'
              'bzip2'
              'zlib'
