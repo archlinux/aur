@@ -1,9 +1,10 @@
 # Maintainer: Frederic Van Assche <frederic@fredericva.com>
+# Maintainer: Max Klein <max@maxkl.de>
 
 pkgname=sigasi
 pkgver=4.9.0
 pkgrel=2
-pkgdesc='IDE for VHDL editing and browsing'
+pkgdesc='Eclipse-based commercial VHDL, Verilog and SystemVerilog IDE'
 arch=('x86_64')
 url='http://www.sigasi.com/'
 license=('custom')

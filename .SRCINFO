@@ -1,5 +1,5 @@
 pkgbase = sigasi
-	pkgdesc = IDE for VHDL editing and browsing
+	pkgdesc = Eclipse-based commercial VHDL, Verilog and SystemVerilog IDE
 	pkgver = 4.9.0
 	pkgrel = 2
 	url = http://www.sigasi.com/
