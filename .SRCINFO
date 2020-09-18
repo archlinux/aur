@@ -1,14 +1,13 @@
 pkgbase = deepin-default-settings
 	pkgdesc = Deepin default settings
-	pkgver = 2018.5.31
+	pkgver = 2020.09.11
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/default-settings
 	arch = x86_64
-	groups = deepin
 	license = GPL3
-	depends = dkms
-	source = deepin-default-settings-2018.5.31.tar.gz::https://github.com/linuxdeepin/default-settings/archive/2018.5.31.tar.gz
-	sha512sums = 6a210f2b3797647b0bf280ecd97b2d71ff6c882d9cd8d8daadf141b2125c5ade3af4f27086be3c6e68e3f823c0acb4753afbbadcee2cf82b0d18559409b7d64d
+	source = deepin-default-settings-2020.09.11.tar.gz::https://github.com/linuxdeepin/default-settings/archive/2020.09.11.tar.gz
+	sha512sums = 6a383d3da3d59771188e2696465c3ab2ae2f3387fb24d7113b2be8d3968ce3093a1ab1e136ae8f065c99db4b504bc8dad2204496271c89277ff7b942b9e91273
 
-pkgname = deepin-default-settings
+pkgname = deepin-font-settings
+	depends = fontconfig
 
