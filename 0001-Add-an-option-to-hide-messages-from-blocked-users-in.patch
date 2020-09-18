@@ -1,4 +1,4 @@
-From 9922076fd62b84ea562ffe4af44e9aa758be4833 Mon Sep 17 00:00:00 2001
+From e3a2cbc1f4681221591ac91414b4f2003048ba5f Mon Sep 17 00:00:00 2001
 From: Ilya Fedin <fedin-ilja2010@ya.ru>
 Date: Sun, 14 Jun 2020 03:25:53 +0400
 Subject: [PATCH] Add an option to hide messages from blocked users in groups
@@ -6,14 +6,14 @@ Subject: [PATCH] Add an option to hide messages from blocked users in groups
 ---
  Telegram/Resources/langs/lang.strings         |  2 ++
  Telegram/Resources/langs/rewrites/ru.json     |  3 +-
- .../history/history_item_components.cpp       |  5 ++--
+ .../history/history_item_components.cpp       |  7 +++--
  .../SourceFiles/history/history_widget.cpp    | 28 +++++++++++++++++++
  .../history/view/history_view_element.cpp     |  7 +++++
  Telegram/SourceFiles/kotato/json_settings.cpp |  5 ++++
  Telegram/SourceFiles/kotato/settings.cpp      | 11 ++++++++
  Telegram/SourceFiles/kotato/settings.h        |  4 +++
  Telegram/SourceFiles/kotato/settings_menu.cpp |  1 +
- 9 files changed, 63 insertions(+), 3 deletions(-)
+ 9 files changed, 65 insertions(+), 3 deletions(-)
 
 diff --git a/Telegram/Resources/langs/lang.strings b/Telegram/Resources/langs/lang.strings
 index 62c9823f4..fd06553ad 100644
@@ -39,20 +39,22 @@ index f0c78e924..5aa5988d2 100644
 +	"ktg_settings_block_users_in_groups": "Блокировать пользователей в группах"
  }
 diff --git a/Telegram/SourceFiles/history/history_item_components.cpp b/Telegram/SourceFiles/history/history_item_components.cpp
-index 52be9b67e..1d45ae311 100644
+index 52be9b67e..0910b5531 100644
 --- a/Telegram/SourceFiles/history/history_item_components.cpp
 +++ b/Telegram/SourceFiles/history/history_item_components.cpp
-@@ -329,7 +329,8 @@ void HistoryMessageReply::paint(
+@@ -329,7 +329,10 @@ void HistoryMessageReply::paint(
  	p.fillRect(rbar, bar);
  
  	if (w > st::msgReplyBarSkip) {
 -		if (replyToMsg) {
-+		auto blocked = replyToMsg->from()->isUser() && replyToMsg->from()->asUser()->isBlocked();
++		auto blocked = replyToMsg
++			&& replyToMsg->from()->isUser()
++			&& replyToMsg->from()->asUser()->isBlocked();
 +		if (replyToMsg && (!blocked || !BlockUsersInGroups())) {
  			auto hasPreview = replyToMsg->media() ? replyToMsg->media()->hasReplyPreview() : false;
  			if (hasPreview && w < st::msgReplyBarSkip + st::msgReplyBarSize.height()) {
  				hasPreview = false;
-@@ -370,7 +371,7 @@ void HistoryMessageReply::paint(
+@@ -370,7 +373,7 @@ void HistoryMessageReply::paint(
  			p.setFont(st::msgDateFont);
  			auto &date = outbg ? (selected ? st::msgOutDateFgSelected : st::msgOutDateFg) : (selected ? st::msgInDateFgSelected : st::msgInDateFg);
  			p.setPen((flags & PaintFlag::InBubble) ? date : st::msgDateImgFg);

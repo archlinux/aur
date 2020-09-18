@@ -3,7 +3,7 @@
 
 pkgname=kotatogram-desktop
 pkgver=1.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Kotatogram – experimental Telegram Desktop fork"
 arch=(x86_64)
 url="https://kotatogram.github.io"
@@ -42,7 +42,7 @@ source=(
 )
 sha512sums=('f0255e1bcbf1703c684e3c71392156002456a988f4128107e0181b4f4b9956073c29c27ff19d8416b19b3d836da999b39a421bd9755683013eec71ff51104f38'
             '6bbe0583103d575a1413141799985c7c7b590d8a9856c727320ce322679a3d38343a144c314eee54fa9776c8f3a084627a333e6860d1b8cb8f496b1702070ac0'
-            'b4c4a552f7a3546529a226334ca1f87e96bc9a94e440b62bdf6bd85a48cda35c57282923ec139af1d190e77046ac0dc1662c6b2126ef4c5b4222c194a2635806')
+            'add35207d3a2772b3886f63d81751551e7ad5b6dac8ca3be4dc7bec6f126f04deaa4013d01805b524fbcdcfe7cacd94fa92c4583a62e7bd78472801d9beeb591')
 
 prepare() {
     cd ${pkgname}-$pkgver-full
