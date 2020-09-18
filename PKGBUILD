@@ -11,7 +11,6 @@ pkgrel=1
 pkgdesc='Third-party multi-platform emulator of the ARM-based TI-Nspire™ calculators'
 arch=('i686' 'x86_64')
 url='https://github.com/nspire-emus/firebird'
-conflicts=('nspire_emu')
 license=('GPL3')
 depends=('qt5-quickcontrols')
 makedepends=('qt5-declarative>=5.6' 'git')
