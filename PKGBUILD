@@ -9,41 +9,41 @@ arch=('x86_64')
 license=('custom')
 depends=('bzip2' 'zlib' 'icu' 'zstd')
 optdepends=('openmpi: for mpi support')
-provides=(libboost_atomic.so
-          libboost_chrono.so 
-          libboost_container.so
-          libboost_context.so
-          libboost_contract.so
-          libboost_coroutine.so
-          libboost_date_time.so
-          libboost_fiber.so
-          libboost_filesystem.so
-          libboost_graph.so
-          libboost_iostreams.so
-          libboost_locale.so 
-          libboost_wserialization.so
-          libboost_log.so
-          libboost_wave.so
-          libboost_math_c99.so
-          libboost_math_c99f.so
-          libboost_math_c99l.so
-          libboost_math_tr1.so
-          libboost_math_tr1f.so
-          libboost_math_tr1l.so
-          libboost_prg_exec_monitor.so
-          libboost_program_options.so
-          libboost_random.so
-          libboost_regex.so
-          libboost_serialization.so
-          libboost_stacktrace_addr2line.so
-          libboost_stacktrace_basic.so
-          libboost_stacktrace_noop.so
-          libboost_system.so
-          libboost_thread.so
-          libboost_timer.so
-          libboost_type_erasure.so
-          libboost_unit_test_framework.so
-          ibboost_log_setup.so
+provides=(libboost_atomic.so=1.71.0
+          libboost_chrono.so=1.71.0
+          libboost_container.so=1.71.0
+          libboost_context.so=1.71.0
+          libboost_contract.so=1.71.0
+          libboost_coroutine.so=1.71.0
+          libboost_date_time.so=1.71.0
+          libboost_fiber.so=1.71.0
+          libboost_filesystem.so=1.71.0
+          libboost_graph.so=1.71.0
+          libboost_iostreams.so=1.71.0
+          libboost_locale.so=1.71.0
+          libboost_wserialization.so=1.71.0
+          libboost_log.so=1.71.0
+          libboost_wave.so=1.71.0
+          libboost_math_c99.so=1.71.0
+          libboost_math_c99f.so=1.71.0
+          libboost_math_c99l.so=1.71.0
+          libboost_math_tr1.so=1.71.0
+          libboost_math_tr1f.so=1.71.0
+          libboost_math_tr1l.so=1.71.0
+          libboost_prg_exec_monitor.so=1.71.0
+          libboost_program_options.so=1.71.0
+          libboost_random.so=1.71.0
+          libboost_regex.so=1.71.0
+          libboost_serialization.so=1.71.0
+          libboost_stacktrace_addr2line.so=1.71.0
+          libboost_stacktrace_basic.so=1.71.0
+          libboost_stacktrace_noop.so=1.71.0
+          libboost_system.so=1.71.0
+          libboost_thread.so=1.71.0
+          libboost_timer.so=1.71.0
+          libboost_type_erasure.so=1.71.0
+          libboost_unit_test_framework.so=1.71.0
+          ibboost_log_setup.so=1.71.0
           'boost-libs')
 makedepends=('icu'
              'bzip2'

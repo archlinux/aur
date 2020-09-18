@@ -16,41 +16,41 @@ pkgbase = boost-libs-171-opt
 	depends = icu
 	depends = zstd
 	optdepends = openmpi: for mpi support
-	provides = libboost_atomic.so
-	provides = libboost_chrono.so
-	provides = libboost_container.so
-	provides = libboost_context.so
-	provides = libboost_contract.so
-	provides = libboost_coroutine.so
-	provides = libboost_date_time.so
-	provides = libboost_fiber.so
-	provides = libboost_filesystem.so
-	provides = libboost_graph.so
-	provides = libboost_iostreams.so
-	provides = libboost_locale.so
-	provides = libboost_wserialization.so
-	provides = libboost_log.so
-	provides = libboost_wave.so
-	provides = libboost_math_c99.so
-	provides = libboost_math_c99f.so
-	provides = libboost_math_c99l.so
-	provides = libboost_math_tr1.so
-	provides = libboost_math_tr1f.so
-	provides = libboost_math_tr1l.so
-	provides = libboost_prg_exec_monitor.so
-	provides = libboost_program_options.so
-	provides = libboost_random.so
-	provides = libboost_regex.so
-	provides = libboost_serialization.so
-	provides = libboost_stacktrace_addr2line.so
-	provides = libboost_stacktrace_basic.so
-	provides = libboost_stacktrace_noop.so
-	provides = libboost_system.so
-	provides = libboost_thread.so
-	provides = libboost_timer.so
-	provides = libboost_type_erasure.so
-	provides = libboost_unit_test_framework.so
-	provides = ibboost_log_setup.so
+	provides = libboost_atomic.so=1.71.0
+	provides = libboost_chrono.so=1.71.0
+	provides = libboost_container.so=1.71.0
+	provides = libboost_context.so=1.71.0
+	provides = libboost_contract.so=1.71.0
+	provides = libboost_coroutine.so=1.71.0
+	provides = libboost_date_time.so=1.71.0
+	provides = libboost_fiber.so=1.71.0
+	provides = libboost_filesystem.so=1.71.0
+	provides = libboost_graph.so=1.71.0
+	provides = libboost_iostreams.so=1.71.0
+	provides = libboost_locale.so=1.71.0
+	provides = libboost_wserialization.so=1.71.0
+	provides = libboost_log.so=1.71.0
+	provides = libboost_wave.so=1.71.0
+	provides = libboost_math_c99.so=1.71.0
+	provides = libboost_math_c99f.so=1.71.0
+	provides = libboost_math_c99l.so=1.71.0
+	provides = libboost_math_tr1.so=1.71.0
+	provides = libboost_math_tr1f.so=1.71.0
+	provides = libboost_math_tr1l.so=1.71.0
+	provides = libboost_prg_exec_monitor.so=1.71.0
+	provides = libboost_program_options.so=1.71.0
+	provides = libboost_random.so=1.71.0
+	provides = libboost_regex.so=1.71.0
+	provides = libboost_serialization.so=1.71.0
+	provides = libboost_stacktrace_addr2line.so=1.71.0
+	provides = libboost_stacktrace_basic.so=1.71.0
+	provides = libboost_stacktrace_noop.so=1.71.0
+	provides = libboost_system.so=1.71.0
+	provides = libboost_thread.so=1.71.0
+	provides = libboost_timer.so=1.71.0
+	provides = libboost_type_erasure.so=1.71.0
+	provides = libboost_unit_test_framework.so=1.71.0
+	provides = ibboost_log_setup.so=1.71.0
 	provides = boost-libs
 	source = boost-libs-171-opt-1.71.0.tar.gz::https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.gz
 	sha256sums = 96b34f7468f26a141f6020efb813f1a2f3dfb9797ecf76a7d7cbd843cc95f5bd
