@@ -1,0 +1,20 @@
+pkgbase = quill-chat
+	pkgdesc = Quill - Messaging for groups and teams that stay focused
+	pkgver = 2020.09.18
+	pkgrel = 1
+	url = https://quill.chat/
+	arch = x86_64
+	license = Proprietary
+	depends = at-spi2-core
+	depends = gtk3
+	depends = libxtst
+	depends = libnotify
+	depends = nss
+	depends = xdg-utils
+	options = !emptydirs
+	options = !strip
+	source = https://storage.googleapis.com/app-releases-dl.quill.chat/linux/Quill-Latest.rpm
+	sha256sums = SKIP
+
+pkgname = quill-chat
+
