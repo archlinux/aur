@@ -1,6 +1,6 @@
 pkgbase = helm2-bin
 	pkgdesc = The Kubernetes Package Manager
-	pkgver = 2.16.11
+	pkgver = 2.16.12
 	pkgrel = 1
 	url = https://helm.sh/
 	install = helm2-bin.install
@@ -19,8 +19,8 @@ pkgbase = helm2-bin
 	provides = kubernetes-helm
 	conflicts = helm2
 	conflicts = kubernetes-helm2
-	source = https://github.com/helm/helm/releases/download/v2.16.11/helm-v2.16.11-linux-amd64.tar.gz.asc
-	source = https://get.helm.sh/helm-v2.16.11-linux-amd64.tar.gz
+	source = https://github.com/helm/helm/releases/download/v2.16.12/helm-v2.16.12-linux-amd64.tar.gz.asc
+	source = https://get.helm.sh/helm-v2.16.12-linux-amd64.tar.gz
 	validpgpkeys = 672C657BE06B4B30969C4A57461449C25E36B98E
 	validpgpkeys = F1261BDE929012C8FF2E501D6EA5D7598529A53E
 	validpgpkeys = 967F8AC5E2216F9F4FD270AD92AA783CBAAE8E3B
@@ -28,7 +28,9 @@ pkgbase = helm2-bin
 	validpgpkeys = 49D09C86C3DC8DA3F0A076221EF612347F8A9958
 	validpgpkeys = ABA2529598F6626C420D335B62F49E747D911B60
 	sha256sums = SKIP
-	sha256sums = 7eeb6c01cd0f25223c885887669b57cebaf7a0552cff94c748f1c28e4df55ce2
+	sha256sums = 756ab375314329b66b452c0f9d569f74b0760141670217c07b79890ad314c214
+	b2sums = SKIP
+	b2sums = 3238d0cde382c36700e1bcee72f133eaf0fb7fb65ad8077dce115322cd9c331c3c352e467da79184cf70f0b99e76f4e239aac3dfa0403abaf6c98a929eef990b
 
 pkgname = helm2-bin
 
