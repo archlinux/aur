@@ -1,5 +1,5 @@
 # Maintainer:
-# Contributor: Michael Straube <michaelqstraube@gmail.com>
+# Contributor: Michael Straube <michael.straubej@gmail.com>
 # Contributor: Loui Chang <louipc dot ist at no spam gmail company>
 
 pkgname=tomatoes
