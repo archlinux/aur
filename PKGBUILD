@@ -1,5 +1,5 @@
 # Maintainer:
-# Contributor: Michael Straube <michaelfstraube@gmail.com>
+# Contributor: Michael Straube <michaelqstraube@gmail.com>
 
 pkgname=bluemindo
 pkgver=1.0rc1
