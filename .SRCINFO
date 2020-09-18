@@ -1,0 +1,12 @@
+pkgbase = stm32l4-headers-git
+	pkgdesc = Headers for STM32L4 devices
+	pkgver = r6.d023c0d560ac
+	pkgrel = 1
+	url = https://github.com/STMicroelectronics
+	arch = any
+	license = apache
+	source = git://github.com/STMicroelectronics/STM32CubeL4.git
+	md5sums = SKIP
+
+pkgname = stm32l4-headers-git
+
