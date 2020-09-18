@@ -6,13 +6,13 @@ pkgrel=1
 pkgdesc="A daemon/lib combo that allows games to request a set of optimisations be temporarily applied to the host OS"
 arch=('x86_64')
 url="https://github.com/FeralInteractive/gamemode"
-license=('BSD 3-Clause License (Revised)')
+license=('BSD')
 depends=('polkit')
 makedepends=('meson')
 checkdepends=('appstream')
 optdepends=('systemd')
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('4fec5a0900e8f559b37cf1711ca7dcea7e1cebfe1237ce314001f65c1e346a5d')
+sha256sums=('ede17eb042c1c87f7b35bfe96a00560afaea086f685d25bb3964d794b0af9c80')
 
 build() {
   meson "$pkgname-$pkgver" build \
