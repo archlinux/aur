@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=nct6775-master-dkms-git
-pkgver=r162.a3983ee
+pkgver=r163.c027986
 pkgrel=1
 pkgdesc="Nuvoton module for nct67xx chips synced with latest upstream kernel."
 arch=('i686' 'x86_64')
