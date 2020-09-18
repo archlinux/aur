@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=dtkgui-git
-pkgver=5.2.2.4.r0.g6d92f7e
+pkgver=5.2.2.15.r0.ge717fda
 pkgrel=1
 pkgdesc='Deepin Toolkit, gui module for DDE look and feel'
 arch=('x86_64')
