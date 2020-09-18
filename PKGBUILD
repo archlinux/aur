@@ -1,8 +1,9 @@
 # Maintainer: satcom886 <rostik.medved@gmail.com>
+# Contributor: telsch
 
 pkgname=vc4cl-git
-pkgver=r170.eec7e57
-pkgrel=4
+pkgver=r175.76edc68
+pkgrel=1
 pkgdesc="VC4CL is an implementation of the OpenCL 1.2 standard for the VideoCore IV GPU."
 arch=('any')
 url="https://github.com/doe300/VC4CL"
@@ -28,7 +29,7 @@ build() {
 }
 
 package() {
-	mkdir -m 755 "$pkgdir/etc/OpenCL/vendors/"
+    mkdir -m 755 -p "$pkgdir/etc/OpenCL/vendors/"
     install -m 644 "$srcdir/VC4CL.icd" "$pkgdir/etc/OpenCL/vendors/"
     cd "$srcdir/VC4CL/build"
     make DESTDIR="$pkgdir"/ install
