@@ -1,0 +1,16 @@
+[Unit]
+Description=pmcenter Bot Daemon
+After=network-online.target
+Wants=network.target
+
+[Service]
+User=pmcenter
+Group=pmcenter
+Environment=pmcenter_conf=/etc/pmcenter/pmcenter.json
+Environment=pmcenter_lang=/etc/pmcenter/pmcenter_locale.json
+ExecStart=/usr/bin/dotnet /usr/share/dotnet/pmcenter/pmcenter.dll
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

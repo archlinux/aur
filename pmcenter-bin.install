@@ -1,0 +1,4 @@
+post_install()
+{
+  echo "Edit /etc/pmcenter/pmcenter.json, then start pmcenter.service."
+}

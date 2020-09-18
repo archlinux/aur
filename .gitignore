@@ -1,0 +1,7 @@
+*.zip
+LICENSE.txt
+*.zst
+src/
+pkg/
+pmcenter.json
+pmcenter_locale_en.json

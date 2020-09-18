@@ -1,0 +1,29 @@
+pkgbase = pmcenter-bin
+	pkgdesc = A Telegram bot helping you process private messages.
+	pkgver = 2.0.2.0
+	pkgrel = 1
+	url = https://pmcenter.itsmy.app
+	install = pmcenter-bin.install
+	arch = x86_64
+	license = APACHE
+	makedepends = unzip
+	depends = dotnet-runtime
+	noextract = pmcenter-linux-x64-r2r.zip
+	options = staticlibs
+	backup = etc/pmcenter/pmcenter.json
+	backup = etc/pmcenter/pmcenter_locale.json
+	source = https://github.com/Elepover/pmcenter/releases/download/2.0.2.0/pmcenter-linux-x64-r2r.zip
+	source = https://raw.githubusercontent.com/Elepover/pmcenter/2.0.2.0/locales/pmcenter_locale_en.json
+	source = https://raw.githubusercontent.com/Elepover/pmcenter/2.0.2.0/pmcenter.json
+	source = pmcenter.service
+	source = pmcenter_sysuser.conf
+	source = pmcenter_tmpfile.conf
+	md5sums = aa5f485d745485546c0cbcaa20ae2e48
+	md5sums = cbfe1b615300e23d39dfaf1906f5d606
+	md5sums = b25c9763082de5e7071db8d0aea2b3f9
+	md5sums = 15dad546ed1b187cbde34214954065a9
+	md5sums = bc00968280c8190810de24fe45ec1ec3
+	md5sums = 52488093764b9de2807f161e18611335
+
+pkgname = pmcenter-bin
+
