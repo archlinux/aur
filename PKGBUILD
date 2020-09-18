@@ -40,6 +40,8 @@ build() {
   cp -r "$srcdir/$_cvsmod" "$srcdir/$_cvsmod-build"
   cd "$srcdir/$_cvsmod-build"
 
+  export CFLAGS+=" -fcommon "
+
   ./configure --prefix=/usr --libexecdir=/usr/lib/pcc || return 1
 
   make CC=gcc || return 1
