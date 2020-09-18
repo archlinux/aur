@@ -4,12 +4,13 @@
 pkgname=openresty_luarocks
 _pkgname=luarocks
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Deployment and management system for Openresty Luajit 2.1 modules"
 arch=('any')
 url="http://luarocks.org/"
 license=('custom')
-depends=('coreutils' # need chmod, md5sum
+depends=('openresty'
+         'coreutils' # need chmod, md5sum
          'curl' # need one of curl or wget
          'lua'
          'unzip' # need unzip and zip or lua-zlib

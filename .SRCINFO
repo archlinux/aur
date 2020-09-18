@@ -1,10 +1,11 @@
 pkgbase = openresty_luarocks
 	pkgdesc = Deployment and management system for Openresty Luajit 2.1 modules
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://luarocks.org/
 	arch = any
 	license = custom
+	depends = openresty
 	depends = coreutils
 	depends = curl
 	depends = lua
