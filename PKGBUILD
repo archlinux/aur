@@ -4,7 +4,7 @@
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=lib32-libgudev-nosystemd
-pkgver=233
+pkgver=234
 pkgrel=1
 pkgdesc='GObject bindings for libudev'
 arch=(x86_64)
