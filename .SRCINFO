@@ -13,7 +13,7 @@ pkgbase = lib32-eudev-git
 	makedepends = lib32-kmod
 	depends = lib32-glib2
 	depends = lib32-glibc
-	provides = lib32-udev=243
+	provides = lib32-udev=243git
 	provides = libudev.so
 	provides = lib32-libeudev
 	provides = lib32-eudev

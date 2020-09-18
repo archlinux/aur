@@ -5,7 +5,7 @@
 pkgname=lib32-eudev-git
 pkgver=3.2.9
 pkgrel=1
-udevver=243
+udevver=243git
 pkgdesc="The userspace dev tools (udev) forked by Gentoo (32-bit)"
 arch=('x86_64')
 url="https://dev.gentoo.org/~blueness/eudev"
@@ -34,19 +34,25 @@ conflicts=(
 
 options=(!makeflags !libtool)
 
+pkgver() {
+  cd eudev
+  git describe --tags | sed 's/-/+/g'
+}
+
 build() {
 
     export CC="gcc -m32"
     export CXX="g++ -m32"
     export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-    cd "${srcdir}/eudev-${pkgver}"
+    cd eudev
 
     if [ -f "Makefile" ];then
      msg2 "Cleaning up..."
      make clean
     fi
 
+    ./autogen.sh
     ./configure \
         --prefix=/usr \
         --with-rootprefix=/usr \
@@ -61,7 +67,7 @@ build() {
 
 package() {
 
-    cd "${srcdir}/eudev-${pkgver}"
+    cd eudev
 
     make DESTDIR="${pkgdir}" -C src/libudev install
 
