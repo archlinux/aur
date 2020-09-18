@@ -1,6 +1,6 @@
 pkgbase = archuseriso
 	pkgdesc = Profiles for building Arch Linux Live ISO images. Featuring persistence, encryption.
-	pkgver = 0.5.2
+	pkgver = 0.5.2.1
 	pkgrel = 1
 	url = https://github.com/laurent85v/archuseriso
 	install = archuseriso.install
@@ -17,12 +17,12 @@ pkgbase = archuseriso
 	optdepends = f2fs-tools: F2FS file system option
 	optdepends = pacman-contrib: ZFS building option
 	conflicts = archuseriso
-	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.5.2.tar.gz
-	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.5.2.tar.gz.sig
+	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.5.2.1.tar.gz
+	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.5.2.1.tar.gz.sig
 	validpgpkeys = A5143BB56952B3189F49A175FAC4560863BEEC34
-	sha256sums = 4b12fd4c5f19218cc66252dc059b6b5df681f5a297a76f12c235ee68c900ad9c
+	sha256sums = 0d43ae40ccac83666f588f2cf0ad6fb2463e7350eaa79077788a536b9ec3e930
 	sha256sums = SKIP
-	b2sums = 25ab1ec30cd6290fecfc69fc9f1f3482db0500f1801b2e765e3b5298afed3477944603f5432e76768371dc4dbfa1137e9b4e27a2ecdc8e955b5bb366778af808
+	b2sums = fed2a53f8b3546513d25d7c479fc7e6ab36b73ec32816c98fe3979e5522d6813b3702834dbf7059fbcf47dd702641ebcf2e30c1f514bf2a9608393f5b9d78cd0
 	b2sums = SKIP
 
 pkgname = archuseriso

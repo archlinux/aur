@@ -1,7 +1,7 @@
 # Maintainer: Laurent Jourden <laurent85@enarel.fr>
 
 pkgname=archuseriso
-pkgver=0.5.2
+pkgver=0.5.2.1
 pkgrel=1
 pkgdesc="Profiles for building Arch Linux Live ISO images. Featuring persistence, encryption."
 arch=('any')
@@ -15,9 +15,9 @@ conflicts=('archuseriso')
 install=archuseriso.install
 source=("http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz.sig")
-sha256sums=('4b12fd4c5f19218cc66252dc059b6b5df681f5a297a76f12c235ee68c900ad9c'
+sha256sums=('0d43ae40ccac83666f588f2cf0ad6fb2463e7350eaa79077788a536b9ec3e930'
             'SKIP')
-b2sums=('25ab1ec30cd6290fecfc69fc9f1f3482db0500f1801b2e765e3b5298afed3477944603f5432e76768371dc4dbfa1137e9b4e27a2ecdc8e955b5bb366778af808'
+b2sums=('fed2a53f8b3546513d25d7c479fc7e6ab36b73ec32816c98fe3979e5522d6813b3702834dbf7059fbcf47dd702641ebcf2e30c1f514bf2a9608393f5b9d78cd0'
         'SKIP')
 validpgpkeys=('A5143BB56952B3189F49A175FAC4560863BEEC34') # Laurent Jourden
 
