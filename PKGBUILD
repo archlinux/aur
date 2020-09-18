@@ -1,49 +1,37 @@
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
+# https://github.com/orhun/pkgbuilds
 
-_pkgname=stegify
-pkgname=${_pkgname}-git
-pkgver=1.2.r1.gde74f17
+pkgname=stegify-git
+pkgdesc="Tool for LSB steganography written in Go (git)"
+pkgver=1.2.r2.g62518ca
 pkgrel=1
-pkgdesc="Tool for LSB steganography written in Go"
-arch=(x86_64)
+arch=('x86_64')
 url="https://github.com/DimitarPetrov/stegify"
-license=("custom:MIT")
-depends=("glibc")
-makedepends=("git" "go-pie" "golang-golang-x-tools")
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=("${_pkgname}::git+https://github.com/DimitarPetrov/stegify.git")
+license=('MIT')
+makedepends=('git' 'go')
+conflicts=("${pkgname%-git}")
+source=("git+$url")
 sha512sums=('SKIP')
 
-
 pkgver() {
-    cd "$_pkgname"
-
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-
-}
-
-prepare() {
-    cd "$_pkgname"
-
-    go get -v -t -d ./...
+  cd "${pkgname%-git}"
+  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$_pkgname"
-
-    go build \
-        -trimpath \
-        -gcflags "all=-trimpath=${PWD}" \
-        -asmflags "all=-trimpath=${PWD}" \
-        -ldflags "-s -w -extldflags ${LDFLAGS}" \
-        .
+  cd "${pkgname%-git}"
+  go get -d ./...
+  go build \
+    -gcflags "all=-trimpath=$PWD" \
+    -asmflags "all=-trimpath=$PWD" \
+    -ldflags "-extldflags $LDFLAGS" \
+    -o "${pkgname%-git}" .
 }
 
 package() {
-    cd "$_pkgname"
-
-    install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-
-    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  cd "${pkgname%-git}"
+  install -Dm 755 "${pkgname%-git}" -t "$pkgdir/usr/bin"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
