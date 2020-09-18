@@ -1,6 +1,6 @@
 pkgbase = kdiskmark
 	pkgdesc = HDD and SSD benchmark tool with a very friendly graphical user interface
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/JonMagon/KDiskMark
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = kdiskmark
 	depends = hicolor-icon-theme
 	provides = kdiskmark
 	conflicts = kdiskmark
-	source = git+https://github.com/JonMagon/kdiskmark.git#tag=1.6.1
+	source = git+https://github.com/JonMagon/kdiskmark.git#tag=1.6.2
 	sha256sums = SKIP
 
 pkgname = kdiskmark
