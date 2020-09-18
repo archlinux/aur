@@ -1,8 +1,8 @@
 # Maintainer: Tiago Debastiani <debastianister@gmail.com>
 
 pkgname=brmodelo
-pkgver=3.2
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 epoch=
 pkgdesc="Ferramenta de Modelagem de Bancos de Dados Relacionais"
 arch=('any')
@@ -13,7 +13,7 @@ source=("http://www.sis4.com/brModelo/brModelo.jar"
 	"icon.png"
 	"brModelo.sh"
 	"brModelo.desktop")
-md5sums=('19943634ac4ec7473db1152cda862422'
+md5sums=('dd4788e76d95b9effe9bd7c7a3ce051b'
          '0f677c27e3af9f1a9b3ae31d0197176c'
          'eb9be16b05955c3eb81d766156b77d27'
          '3aaad69042db5a54aed691d58f3e8058')
