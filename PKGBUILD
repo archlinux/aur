@@ -14,22 +14,22 @@ source=("git+https://gitlab.gnome.org/GNOME/libgudev.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd libgudev
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd $pkgname
+  cd libgudev
   NOCONFIGURE=1 ./autogen.sh
 }
 
 #check() {
-#  cd $pkgname
+#  cd libgudev
 #  make check
 #}
 
 build() {
-  cd $pkgname
+  cd libgudev
   ./configure \
     --prefix=/usr \
     --enable-gtk-doc \
@@ -42,7 +42,7 @@ package() {
   provides=(libgudev-1.0.so libgudev)
   conflicts=(libgudev)
 
-  cd $pkgname
+  cd libgudev
   make DESTDIR="$pkgdir" install
 }
 
