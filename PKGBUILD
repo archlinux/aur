@@ -2,8 +2,8 @@
 
 pkgname=vmware-thinprint
 pkgver=2.0.21
-_vmware_ver=15.0.0_10134415
-pkgrel=1
+_vmware_ver=16.0.0_16894299
+pkgrel=2
 pkgdesc='Thinprint support on VMware guests'
 arch=('i686' 'x86_64')
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -19,11 +19,11 @@ backup=(
   'etc/tpvmlp.conf'
 )
 source=(
-  "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${_vmware_ver/_/\/}/linux/core/VMware-Workstation-${_vmware_ver/_/-}.${CARCH}.bundle.tar"
+  "https://download3.vmware.com/software/player/file/VMware-Player-${_vmware_ver/_/-}.${CARCH}.bundle"
   'vmware-thinprint.service'
 )
 sha256sums=(
-  '9b65e182d27f7ca13446e1d1f3ff6b521693af19a94d27ea794fed62a4ddbbc1'
+  '3b1546928858cbf498d198dac96868b2f3f5f507550111630973b4ba91ce67ae'
   '02971c67bdbb289accd3faa6f0a8f1803e8145713235f4ba69671c16a9938dcc'
 )
 
@@ -38,13 +38,13 @@ prepare() {
 
   rm -rf "$extracted_dir"
   bash \
-    "$(readlink -f "$srcdir/VMware-Workstation-${_vmware_ver/_/-}.${CARCH}.bundle")" \
+    "$(readlink -f "$srcdir/VMware-Player-${_vmware_ver/_/-}.${CARCH}.bundle")" \
     --extract "$extracted_dir"
 
-  7z x "$extracted_dir"/vmware-virtual-printer/VirtualPrinter-Linux.iso "thinprint_${pkgver}-1_${_arch}.deb" -y > /dev/null
+  7z x "$extracted_dir"/vmware-virtual-printer/VirtualPrinter-Linux.iso "thinprint_${pkgver}-2_${_arch}.deb" -y > /dev/null
 
   mkdir -p deb_package
-  ar p "thinprint_${pkgver}-1_${_arch}.deb" data.tar.gz | tar xz -C deb_package
+  ar p "thinprint_${pkgver}-2_${_arch}.deb" data.tar.gz | tar xz -C deb_package
 }
 
 package() {
