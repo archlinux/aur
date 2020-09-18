@@ -26,7 +26,7 @@ makedepends=(
     'lib32-kmod')
 
 provides=(
-    "lib32-udev=${udevver}" 'libudev.so' 'lib32-libeudev' 'lib32-eudev')
+    "lib32-udev=${udevver}" 'lib32-libeudev' 'lib32-eudev')
 
 conflicts=(
     'lib32-libeudev'
