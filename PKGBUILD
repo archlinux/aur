@@ -2,8 +2,8 @@
 
 _plug=dotkill
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=R1.1.g84a0e13
-pkgrel=2
+pkgver=R2.4.g0894899
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=173029'
@@ -24,7 +24,7 @@ prepare(){
   cd "${_plug}"
 
   echo "all:
-	  g++ -c -std=gnu++11 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o dotkill1.o dotkill1.cpp
+	  g++ -c -std=gnu++17 -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o dotkill1.o dotkill1.cpp
 	  g++ -shared -fPIC ${LDFLAGS} -o lib${_plug}.so dotkill1.o" > Makefile
 }
 
