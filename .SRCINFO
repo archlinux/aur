@@ -1,7 +1,7 @@
 pkgbase = dmenu2
 	pkgdesc = Fork of dmenu with many useful patches applied and additional options like screen select, dim or opacity change
-	pkgver = 0.2
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://bitbucket.org/melek/dmenu2
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = dmenu2
 	depends = libxft
 	provides = dmenu
 	conflicts = dmenu
-	source = https://github.com/arvl130/dmenu2/releases/download/v0.2/dmenu2-0.2.tar.gz
-	md5sums = bc694c8b9fa3b8f6e7be8046d46e5bc5
+	source = https://github.com/spcmd/dmenu2/raw/master/dmenu2-0.2.1.tar.gz
+	sha256sums = 20f005ecfa36fd0757f0b2169503da199ac8fd165a3b023c6007da4e4a75169e
 
 pkgname = dmenu2
 
