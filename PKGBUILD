@@ -15,10 +15,10 @@ _pkgver_upstream="$_pkgver_tag$_pkgver_suffix"
 # Use the date of the corresponding release archive asset, which can be found e.g. by using the below one-liner
 # (substitute $_pkgver_tag):
 #
-# $ curl -sSf "https://api.github.com/repos/ephtracy/ephtracy.github.io/releases/tags/$_pkgver_tag" | jq '.assets|map(select(.name|contains("win64")))[0].updated_at|fromdate|strftime("%Y%m%d")'
+# $ curl -sSf "https://api.github.com/repos/ephtracy/ephtracy.github.io/releases/tags/$_pkgver_tag" | jq '.assets|map(select(.name|contains("win64.zip")))[0].updated_at|fromdate|strftime("%Y%m%d")'
 #
 # If multiple releases happen on the same day, set $_pkgver_uniqueness to '.2', then '.3' etc.
-_pkgver_date='20200913'
+_pkgver_date='20200914'
 _pkgver_uniqueness='' # Don't forget to reset to '' when date changes.
 
 # Git tag associated with the release where the latest Intel Open Image Denoiser plugin archive is.
@@ -40,7 +40,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/ephtracy/ephtracy.github.io/re
 license=('custom')
 depends=(wine)
 makedepends=(icoutils)
-sha512sums=('9b81472ad035ca4747508cb65cdedc1222947c5dbd29f8856e25d80b0eac0a5d8121fa47b8b584d28cddb4b7ebbcdacbb13557fca58ef47eecb6c0a41a6b3e50'
+sha512sums=('cc965a1b62debc0cf4581e78d56440ba5d30e0517bb54d26bebbb26439aad53bed18fbed5526aaa6118496c5d8c30463e20ce89e66ab1eec854d0dc426986596'
             '6509da8d8b04488b369644fd104cdc820037bc2bd2567d868541562d3096041d29d265cdeb2386ccb66f8f6670b94236d565046bfad92aff9cf7b1988b4af53f'
             '7bd5cfc10ed31851e76de7080c08d350a88488b3d8e878f4656970e097d04b00c98bf235a57b154844cba1db04f8092b0c5604f4b11ca787323bbbbc47dc3f5c'
             '0872398e0d52df23a4910c3c5257f073f96bbf06db197ebdaf59598ca39d1351c6412598ac46b1eb24ba2a47db8ce7d804d227dc847260c8dbd6213396e816c1'
