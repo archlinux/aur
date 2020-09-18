@@ -39,7 +39,7 @@ package() {
     # install license
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
-    msg2 "\e[1;32mAnyDesk has a systemd service for unattended access. Enable it with: systemctl enable --now anydesk \e[0m"
+    warning "AnyDesk has a systemd service for unattended access. Enable it with: systemctl enable --now anydesk"
     # install systemd service
     install -Dm 644 "${srcdir}/anydesk-${pkgver}/systemd/anydesk.service" "${pkgdir}/usr/lib/systemd/system/anydesk.service"
 }
