@@ -1,7 +1,7 @@
 pkgbase = instawow
 	pkgdesc = Package manager for World of Warcraft
 	pkgver = 1.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/layday/instawow
 	arch = x86_64
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = instawow
 	depends = python-alembic>=1.4.0
 	depends = python-click>=7.1.0
 	depends = python-jellyfish>=0.8.2
-	depends = python-jinja
+	depends = python-jinja>=2.0.0
 	depends = python-loguru<1.0.0
 	depends = python-prompt_toolkit>3.0.2
 	depends = python-prompt_toolkit<4.0.0
