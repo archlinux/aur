@@ -3,7 +3,7 @@
 
 pkgname=brave-nightly-bin
 pkgver=1.16.26
-pkgrel=10
+pkgrel=12
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
 arch=('x86_64')
 url='https://brave.com/download-nightly'
@@ -30,19 +30,16 @@ sha512sums=('8c910d2345c2f03ea205bdacddebd19fd49e75d98f02fd67d824534ff981fd5e0c1
 # https://github.com/brave/brave-browser/releases/download/v1.16.23/brave-browser-nightly_1.16.23_amd64.deb
 
 prepare() {
-  mkdir -p brave
-  bsdtar -C brave -xf data.tar.xz
-  ls -l brave
-  # Delete unneeded things for debian
+  # Delete unneeded cron job
   rm -rf brave/opt/brave.com/brave-nightly/cron
     
   # todo: add default-app-block to /usr/share/gnome-control-center/default-apps/gnome-default-applications.xml if it exists. look-at: control.tar.gz/postinst
 }
 
 package() {
-#    install -d -m0755 "$pkgdir/usr/lib"
     cp -a --reflink=auto brave/opt "$pkgdir/opt"
     cp -a --reflink=auto brave/usr "$pkgdir/usr"
+    
     install -Dm0755 "$pkgname.sh" "$pkgdir/usr/bin/brave-nightly"
     install -Dm0644 "brave/opt/brave.com/brave-nightly/product_logo_128_nightly.png" "$pkgdir/usr/share/pixmaps/brave-nightly.png"
 
