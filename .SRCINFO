@@ -1,11 +1,10 @@
 pkgbase = b4
 	pkgdesc = Helper utility to work with patches on a public-inbox
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.kernel.org/pub/scm/utils/b4/b4.git/
 	arch = any
 	license = GPL
-	checkdepends = cpython
 	makedepends = python-setuptools
 	depends = python-requests
 	source = https://files.pythonhosted.org/packages/source/b/b4/b4-0.5.2.tar.gz
