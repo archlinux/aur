@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michaelqstraube@gmail.com>
+# Maintainer: Michael Straube <michael.straubej@gmail.com>
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
