@@ -1,67 +1,70 @@
-# Maintainer: Alexey D. <lq07829icatm@rambler.ru>
-# Contributor: Ivailo Monev <xakepa10@gmail.com>
-pkgname='lib32-eudev-git'
-pkgdesc="The userspace dev tools (udev) forked by Gentoo (32-bit)"
-pkgver=20150619
+# Maintainer     : Vincent Grande <shoober420@gmail.com>
+# Contributor    : Eric Vidal <eric@obarun.org>
+# Contributor    : Jean-Michel T.Dydak <jean-michel@obarun.org>
+
+pkgname=lib32-eudev-git
+pkgver=3.2.9
 pkgrel=1
+udevver=243
+pkgdesc="The userspace dev tools (udev) forked by Gentoo (32-bit)"
 arch=('x86_64')
-url="https://github.com/gentoo/eudev"
+url="https://dev.gentoo.org/~blueness/eudev"
 license=('GPL')
-depends=('lib32-glib2' 'eudev-git')
-makedepends=('git' 'gcc-multilib' 'lib32-util-linux' 'gobject-introspection' 'gperf')
-replaces=('lib32-systemd')
-conflicts=('lib32-systemd')
+source=("git+https://anongit.gentoo.org/git/proj/eudev.git")
+sha512sums=('SKIP')
+
+depends=(
+    'lib32-glib2'
+    'lib32-glibc')
+    
+makedepends=(
+    'lib32-gcc-libs'
+    'gcc-multilib'
+    'gobject-introspection'
+    'gperf'
+    'gtk-doc'
+    'lib32-kmod')
+
+provides=(
+    "lib32-udev=${udevver}" 'libudev.so' 'lib32-libeudev' 'lib32-eudev')
+
+conflicts=(
+    'lib32-libeudev'
+    'lib32-eudev')
+
 options=(!makeflags !libtool)
-source=('git://github.com/gentoo/eudev.git')
-md5sums=('SKIP')
-_gitname="eudev"
-
-pkgver()
-{
-  cd "${srcdir}/${_gitname}"
-
-  # Date of last commit
-  git log -1 --format="%ci" HEAD | cut -d\  -f1 | tr -d '-'
-}
 
 build() {
-  cd "${srcdir}/${_gitname}"
 
-  export CC="gcc -m32"
-  export CXX="g++ -m32"
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+    export CC="gcc -m32"
+    export CXX="g++ -m32"
+    export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  if [ -f "Makefile" ];then
-    msg2 "Cleaning up..."
-    make clean
-  fi
+    cd "${srcdir}/eudev-${pkgver}"
 
-  msg2 "Configuring sources..."
-  ./autogen.sh
-  ./configure --prefix=/usr \
-              --with-rootprefix=/usr \
-              --sysconfdir=/etc \
-              --libdir=/usr/lib32 \
-              --sbindir=/usr/bin \
-	      --disable-kmod \
-              --enable-gudev \
-              --enable-introspection \
-              --disable-manpages
+    if [ -f "Makefile" ];then
+     msg2 "Cleaning up..."
+     make clean
+    fi
 
-  msg2 "Compiling..."
-  make
+    ./configure \
+        --prefix=/usr \
+        --with-rootprefix=/usr \
+        --sysconfdir=/etc \
+        --libdir=/usr/lib32 \
+        --bindir=/usr/bin \
+        --sbindir=/usr/bin \
+        --enable-introspection \
+        --disable-manpages
+    make
 }
-
 
 package() {
-  cd "${srcdir}/${_gitname}"
-  make DESTDIR="${pkgdir}" install
 
-  rm -rf "${pkgdir}"/etc
-  rm -rf "${pkgdir}"/usr/{bin,include,lib,share}
+    cd "${srcdir}/eudev-${pkgver}"
 
-  # Getting udev version
-  udevver=$(grep UDEV_VERSION configure.ac | egrep -o "[0-9]{3}")
-  provides+=("lib32-systemd=${udevver}")
+    make DESTDIR="${pkgdir}" -C src/libudev install
+
+    rm -rf ${pkgdir}/usr/include
+
 }
-
