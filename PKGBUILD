@@ -2,7 +2,7 @@
 _name=azure-functions-core-tools
 pkgname=$_name-bin
 pkgver=3.0.2912
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tools for Azure Functions"
 arch=('x86_64')
 url="https://github.com/Azure/$_name"
@@ -18,6 +18,7 @@ package() {
 	install -dm 755 "${pkgdir}/usr/lib/${_name}/"
 	cp -r "${srcdir}/"* "${pkgdir}/usr/lib/${_name}"
 	install -m 755 "func" "${pkgdir}/usr/lib/${_name}/"
+	chmod a+x "${pkgdir}/usr/lib/${_name}/gozip" # https://github.com/Azure/azure-functions-core-tools/issues/1850
 
 	install -dm 755 "${pkgdir}/usr/bin"
 	ln -s "/usr/lib/${_name}/func" "${pkgdir}/usr/bin/func"
