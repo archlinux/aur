@@ -7,9 +7,9 @@
 # This PKGBUILD is maintained on github:
 # https://github.com/michaellass/AUR
 
-_majorver=14
-_completever=14.0.2
-_updatever=12
+_majorver=15
+_completever=15
+_updatever=36
 pkgrel=1
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
@@ -58,10 +58,10 @@ source=(https://github.com/AdoptOpenJDK/openjdk${_majorver}-binaries/releases/do
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('7d5ee7e06909b8a99c0d029f512f67b092597aa5b0e78c109bd59405bbfa74fe'
-            'e5853506c880f0c68372a0be0acfd8852dd1a1d414352155c1cd4ad49ce3c248'
-            'a645b7079c572dabe18f2ea6c2cbdef00866b8b8e22a82530858ea49e2cf8343'
-            'b8705290f505cb368c204eb02c179fc1b10e70554903fb04b7dbe809dd1bed01')
+sha256sums=('c198593d1b5188ee3570e2ca33c3bc004aaefbda2c11e68e58ae7296cf5c3982'
+            'b221b6b040fd73e081fe679c106726309cdab8977bb4be25986ddda7068ccb4f'
+            'dafd84555287f16a59d4c7603167efc2a64a632780b6d8de109e75d6aa29782e'
+            '4f05bf04f6397e9586881951116b3a12ae8336142e8be0caf196eaee1444c03f')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-adoptopenjdk
 _jdkdir=jdk-${_tag_ver}

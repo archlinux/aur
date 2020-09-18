@@ -1,6 +1,6 @@
 pkgbase = jdk-adoptopenjdk
-	pkgdesc = OpenJDK Java 14 development kit (AdoptOpenJDK build)
-	pkgver = 14.0.2.u12
+	pkgdesc = OpenJDK Java 15 development kit (AdoptOpenJDK build)
+	pkgver = 15.u36
 	pkgrel = 1
 	url = https://adoptopenjdk.net/
 	install = install_jdk-adoptopenjdk.sh
@@ -14,20 +14,20 @@ pkgbase = jdk-adoptopenjdk
 	depends = alsa-lib
 	optdepends = gtk2: for the Gtk+ 2 look and feel
 	optdepends = gtk3: for the Gtk+ 3 look and feel
-	provides = java-runtime-headless=14
-	provides = java-runtime-headless-openjdk=14
-	provides = jre14-openjdk-headless=14.0.2.u12
-	provides = jre-openjdk-headless=14.0.2.u12
-	provides = java-runtime=14
-	provides = java-runtime-openjdk=14
-	provides = jre14-openjdk=14.0.2.u12
-	provides = jre-openjdk=14.0.2.u12
-	provides = java-environment=14
-	provides = java-environment-openjdk=14
-	provides = jdk14-openjdk=14.0.2.u12
-	provides = jdk-openjdk=14.0.2.u12
-	provides = openjdk14-src=14.0.2.u12
-	provides = openjdk-src=14.0.2.u12
+	provides = java-runtime-headless=15
+	provides = java-runtime-headless-openjdk=15
+	provides = jre15-openjdk-headless=15.u36
+	provides = jre-openjdk-headless=15.u36
+	provides = java-runtime=15
+	provides = java-runtime-openjdk=15
+	provides = jre15-openjdk=15.u36
+	provides = jre-openjdk=15.u36
+	provides = java-environment=15
+	provides = java-environment-openjdk=15
+	provides = jdk15-openjdk=15.u36
+	provides = jdk-openjdk=15.u36
+	provides = openjdk15-src=15.u36
+	provides = openjdk-src=15.u36
 	backup = etc/jdk-adoptopenjdk/logging.properties
 	backup = etc/jdk-adoptopenjdk/management/jmxremote.access
 	backup = etc/jdk-adoptopenjdk/management/jmxremote.password.template
@@ -43,14 +43,14 @@ pkgbase = jdk-adoptopenjdk
 	backup = etc/jdk-adoptopenjdk/security/policy/unlimited/default_local.policy
 	backup = etc/jdk-adoptopenjdk/security/policy/unlimited/default_US_export.policy
 	backup = etc/jdk-adoptopenjdk/sound.properties
-	source = https://github.com/AdoptOpenJDK/openjdk14-binaries/releases/download/jdk-14.0.2%2B12/OpenJDK14U-jdk_x64_linux_hotspot_14.0.2_12.tar.gz
+	source = https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15%2B36/OpenJDK15U-jdk_x64_linux_hotspot_15_36.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 7d5ee7e06909b8a99c0d029f512f67b092597aa5b0e78c109bd59405bbfa74fe
-	sha256sums = e5853506c880f0c68372a0be0acfd8852dd1a1d414352155c1cd4ad49ce3c248
-	sha256sums = a645b7079c572dabe18f2ea6c2cbdef00866b8b8e22a82530858ea49e2cf8343
-	sha256sums = b8705290f505cb368c204eb02c179fc1b10e70554903fb04b7dbe809dd1bed01
+	sha256sums = c198593d1b5188ee3570e2ca33c3bc004aaefbda2c11e68e58ae7296cf5c3982
+	sha256sums = b221b6b040fd73e081fe679c106726309cdab8977bb4be25986ddda7068ccb4f
+	sha256sums = dafd84555287f16a59d4c7603167efc2a64a632780b6d8de109e75d6aa29782e
+	sha256sums = 4f05bf04f6397e9586881951116b3a12ae8336142e8be0caf196eaee1444c03f
 
 pkgname = jdk-adoptopenjdk
 
