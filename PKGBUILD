@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michaelqstraube@gmail.com>
+# Maintainer: Michael Straube <michael.straubej@gmail.com>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Stephen D. Cofer <stephen.d.cofer@outlook.com>
 
