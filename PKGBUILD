@@ -1,8 +1,8 @@
 # Maintainer: Tim Hellhake
 
 pkgname=rider
-pkgver='2020.2.2'
-pkgrel=2
+pkgver='2020.2.3'
+pkgrel=1
 epoch=1
 pkgdesc='A cross-platform C# IDE by JetBrains.'
 arch=('any')
@@ -18,7 +18,7 @@ _pkgdir="JetBrains Rider-${pkgver}"
 _srcfile="JetBrains.Rider-${pkgver}.tar.gz"
 source=("https://download-cf.jetbrains.com/rider/${_srcfile}"
         'rider.desktop')
-sha256sums=('d7e4145504fb3de938d350e34931fce96e863d8f4fbfb6c489b694855e2576ec'
+sha256sums=('39b808ac6cc39b3b1d96d47fe9181810a2e13eb58aabc1cb4912b224daafca06'
             '326be4c1dbd1ece054b2f0fdce07632d171d2cd5bdadc32f681b55325071ebfc')
 
 package() {
