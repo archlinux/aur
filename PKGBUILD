@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://tandem.chat/"
 license=('Proprietary')
 options=('!emptydirs' '!strip')
+depends=('at-spi2-core' 'gtk3' 'libxtst' 'libnotify' 'nss' 'xdg-utils')
 
 source=('https://downloads.tandem.chat/linux/rpm/x64')
 sha256sums=('SKIP')
