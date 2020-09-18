@@ -1,29 +1,32 @@
-# Maintainer:  raingloom <raingloom42@gmail.com>
+# Maintainer: Kazuki Sawada <kazuki@6715.jp>
+# Contributor: raingloom <raingloom42@gmail.com>
+
 pkgname=openresty_luarocks
 _pkgname=luarocks
-pkgver=2.3.0
-pkgrel=2
+pkgver=3.3.1
+pkgrel=1
 pkgdesc="Deployment and management system for Openresty Luajit 2.1 modules"
 arch=('any')
 url="http://luarocks.org/"
 license=('custom')
-depends=('openresty' 'zip' 'unzip' 'curl')
-install=
-options=('!makeflags')
-source=(http://keplerproject.github.io/luarocks/releases/luarocks-$pkgver.tar.gz)
-noextract=()
-sha256sums=( '68e38feeb66052e29ad1935a71b875194ed8b9c67c2223af5f4d4e3e2464ed97' )
-
+depends=('coreutils' # need chmod, md5sum
+         'curl' # need one of curl or wget
+         'lua'
+         'unzip' # need unzip and zip or lua-zlib
+         'zip')
 optdepends=('cvs: for fetching sources from CVS repositories'
             'git: for fetching sources from git repositories'
             'mercurial: for fetching sources from mercurial repositories'
-            'cmake: for building rocks that use the cmake build system')
+            'cmake: for building rocks that use the cmake build system'
+            'lua-sec: HTTPS support')
+source=("https://luarocks.org/releases/$_pkgname-$pkgver.tar.gz")
+md5sums=('1dc12df0b4dc312625a0d36b194b76ef')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
   ./configure --prefix=/opt/openresty/luajit \
     --with-lua=/opt/openresty/luajit/ \
-    --lua-suffix=jit\
+    --lua-suffix=jit \
     --force-config \
     --lua-version=5.1 \
     --with-lua-include=/opt/openresty/luajit/include/luajit-2.1
@@ -34,4 +37,3 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
-# vim:set ts=2 sw=2 et:
