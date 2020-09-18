@@ -6,6 +6,7 @@ pkgbase = lens
 	arch = x86_64
 	license = MIT
 	makedepends = nodejs-lts-erbium
+	makedepends = node-gyp
 	makedepends = yarn
 	source = lens-3.6.3.tar.gz::https://github.com/lensapp/lens/archive/v3.6.3.tar.gz
 	source = lens.desktop

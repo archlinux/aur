@@ -7,7 +7,11 @@ pkgrel=1
 arch=('x86_64')
 license=('MIT')
 url='https://github.com/lensapp/lens'
-makedepends=('nodejs-lts-erbium' 'yarn')
+makedepends=(
+  'nodejs-lts-erbium'
+  'node-gyp'
+  'yarn'
+)
 source=("$pkgname-${pkgver/_/-}.tar.gz::https://github.com/lensapp/lens/archive/v${pkgver/_/-}.tar.gz"
         "lens.desktop")
 sha256sums=('29b73ecf00b1178b3378a738f05b7565ac49ba4727b114ff3e590afe392cbfbc'
