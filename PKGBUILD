@@ -13,7 +13,7 @@ checkdepends=('python-pytest-astropy-header' 'python-joblib' 'python-reproject' 
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix_doc_version.patch')
 md5sums=('fd3f45419a4b029887f3187929a321ec'
-         '724c19919a17ff4be5ff5a7747ee6307')
+         '0c7fdbb48c8e090e6b29b4d03e6af0bb')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}

@@ -1,19 +1,13 @@
 --- a/docs/conf.py	2020-09-18 04:29:50.000000000 +0800
-+++ b/docs/conf.py	2020-09-18 16:05:29.462123649 +0800
-@@ -76,8 +76,14 @@
++++ b/docs/conf.py	2020-09-18 19:54:11.025457472 +0800
+@@ -76,8 +76,8 @@
  # |version| and |release|, also used in various other places throughout the
  # built documents.
  
 -from pkg_resources import get_distribution
 -version = release = get_distribution(setup_cfg['name']).version
-+from pkg_resources import get_distribution, DistributionNotFound
-+try:
-+    __version__ = get_distribution(__name__)
-+except DistributionNotFound:
-+    __version__ = 'unknown'
-+
-+version = __version__
-+release = __version__
++from spectral_cube import __version__
++version = release = __version__
  
  # -- Options for HTML output --------------------------------------------------
  

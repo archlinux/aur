@@ -19,7 +19,7 @@ pkgbase = python-spectral-cube
 	source = https://files.pythonhosted.org/packages/source/s/spectral-cube/spectral-cube-0.5.0.tar.gz
 	source = fix_doc_version.patch
 	md5sums = fd3f45419a4b029887f3187929a321ec
-	md5sums = 724c19919a17ff4be5ff5a7747ee6307
+	md5sums = 0c7fdbb48c8e090e6b29b4d03e6af0bb
 
 pkgname = python-spectral-cube
 	depends = python
