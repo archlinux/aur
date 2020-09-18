@@ -9,7 +9,7 @@ url='http://www.sigasi.com/'
 license=('custom')
 source=("${pkgname}-${pkgver}-x86_64.zip::http://download.sigasi.com/updates/${pkgver}/com.sigasi.hdt.product-linux.gtk.x86_64.zip"
         'sigasi.desktop')
-depends=('glib2')
+depends=('glib2' 'jre11-openjdk' 'gtk3' 'webkit2gtk')
 makedepends=('unzip')
 options=('!strip')
 sha256sums=('3233ca2d7c9569a7064151d23964e373c3d7dcea5c196ef1a087bebe816a4b94'
