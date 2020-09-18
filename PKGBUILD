@@ -2,7 +2,7 @@
 # Contributor: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-qt-dbus-factory-git
-pkgver=5.3.0.12.r1.gf5c5431
+pkgver=5.3.0.15.r0.ge7f4ccb
 pkgrel=1
 pkgdesc='A repository stores auto-generated Qt5 dbus code (libdframeworkdbus)'
 arch=('x86_64')
