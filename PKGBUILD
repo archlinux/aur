@@ -7,45 +7,46 @@ pkgrel=8
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
 arch=('x86_64')
 url='https://brave.com/download-nightly'
-license=('custom')
+license=('MPL2')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libgnome-keyring' 'ttf-font')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support'
-    	    'mesa: Hardware accelerated rendering'
-	        'libglvnd: Support multiple different OpenGL drivers at any given time')
+            'mesa: Hardware accelerated rendering'
+            'libglvnd: Support multiple different OpenGL drivers at any given time')
 provides=("${pkgname}" 'brave-nightly-browser')
 conflicts=("${pkgname}" 'brave-bin')
-source=("$pkgname-$pkgver.deb::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-nightly_${pkgver}_amd64.deb"
+source=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-nightly_${pkgver}_amd64.deb"
         'MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt'
         "$pkgname.sh"
-        "$pkgname.desktop"
-        "braveAbout.png")
+        "$pkgname.desktop")
 options=(!strip)
 sha512sums=('58ba2be4bf1db6fd902283b1ad45023416c02e59f4a0aac814aff4f124469b6b015e82a1aac341ab40da7b5ee5b8197fa2072401a71f4165a9e1c96ddb0dfd6d'
             'b8823586fead21247c8208bd842fb5cd32d4cb3ca2a02339ce2baf2c9cb938dfcb8eb7b24c95225ae625cd0ee59fbbd8293393f3ed1a4b45d13ba3f9f62a791f'
-            '9eb562b0a12a8869fecb86358a1b273b3696788c28a4dbf8b0d2752feaf96e147a8b9391a9f4b56e45b1ddb99981819d0299e51296a60452b9d74ac6ccb02c01'
-            '86cf37b0dc8b37390da9341200af511721c8d2d81ccd45f565322271654058cf47680ae263cf5339feddd42d16bfce7f0aa824f2a45a7c446ed81fe6f749bb92'
-            'd5ce90529c2b75357518ebde10e28e9d6f36efe21b705d7e48be07b1f320d739ef211c1bcc353aeefab3f27b7ba78793ebb74a204ac6c8efae855001b80de72a')
-noextract=("$pkgname-$pkgver.zip")
+            '22224d272b4a996d1d77564ca14f2e223ed872e556b9d6d7c5191e455694c939939bf04393e314aa5b6a9f802b0453f4f1ad8192063848e38426ab802e73465d'
+            '86cf37b0dc8b37390da9341200af511721c8d2d81ccd45f565322271654058cf47680ae263cf5339feddd42d16bfce7f0aa824f2a45a7c446ed81fe6f749bb92')
+#noextract=("$pkgname-$pkgver.zip")
 
 # brave-browser-nightly_1.16.23_amd64.deb
 # https://github.com/brave/brave-browser/releases/download/v1.16.23/brave-browser-nightly_1.16.23_amd64.deb
 
 prepare() {
   mkdir -p brave
-  cd brave
-  ar x ../$pkgname-$pkgver.deb
-  tar xf data.tar.xz
-}
+  bsdtar -C brave -xf data.tar.xz
 
+  # Delete unneeded things for debian
+  rm -rf brave/opt/brave.com/brave-nightly/cron
+  rm -rf brave/etc
+
+  # todo: add default-app-block to /usr/share/gnome-control-center/default-apps/gnome-default-applications.xml if it exists. look-at: control.tar.gz/postinst
+}
 
 package() {
 #    install -d -m0755 "$pkgdir/usr/lib"
-    cp -a --reflink=auto brave/opt "$pkgdir/opt"
-    cp -a --reflink=auto brave/usr "$pkgdir/usr"
+    cp -a --reflink=auto brave/ "$pkgdir/"
 
     install -Dm0755 "$pkgname.sh" "$pkgdir/usr/bin/brave-nightly"
+    install -Dm0644 "brave/opt/brave.com/brave-nightly/product_logo_128_nightly.png" "$pkgdir/usr/share/pixmaps/brave-nightly.png"
+
     install -Dm0644 -t "$pkgdir/usr/share/applications" "$pkgname.desktop"
-    install -Dm0644 "braveAbout.png" "$pkgdir/usr/share/pixmaps/brave-nightly.png"
-    install -Dm0664 -t "$pkgdir/usr/share/licenses/$pkgname" "MPL2"
+    install -Dm0664 -t "$pkgdir/usr/share/licenses/$pkgname" "brave/opt/brave.com/brave-nightly/LICENSE"
 }
