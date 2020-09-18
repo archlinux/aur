@@ -9,8 +9,8 @@ url="https://github.com/linuxdeepin/dde-file-manager"
 license=('GPL3')
 # startdde: for com.deepin.SessionManager
 depends=('deepin-anything' 'disomaster' 'file' 'gio-qt' 'libmediainfo' 'avfs' 'polkit-qt5' 'poppler'
-         'ffmpegthumbnailer' 'jemalloc' 'kcodecs' 'startdde-git' 'taglib')
-makedepends=('git' 'qt5-tools' 'deepin-dock-git' 'deepin-movie' 'deepin-gettext-tools-git')
+         'ffmpegthumbnailer' 'startdde-git' 'taglib' 'jemalloc' 'htmlcxx' 'mimetic' 'lucene++')
+makedepends=('git' 'lucene++' 'jemalloc' 'kcodecs' 'htmlcxx' 'libgsf' 'mimetic' 'boost' 'boost-libs' 'qt5-tools' 'deepin-dock-git' 'deepin-gettext-tools-git')
 optdepends=('deepin-manual: for help menual'
             'deepin-shortcut-viewer: for shortcut display'
             'deepin-screensaver: for screensaver chooser'
@@ -32,19 +32,19 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
+  cd ${pkgname}
   sed -i 's|systembusconf.path = /etc/dbus-1/system.d|systembusconf.path = /usr/share/dbus-1/system.d|' dde-file-manager-daemon/dde-file-manager-daemon.pro
 
   patch -p1 -i ../deepin-file-manager-qt5.15.patch # Fix build with Qt 5.15
 }
 
 build() {
-  cd $pkgname
+  cd ${pkgname}
   qmake-qt5 PREFIX=/usr filemanager.pro
-  make -j$(nproc)
+  make
 }
 
 package() {
-  cd $pkgname
+  cd ${pkgname}
   make INSTALL_ROOT="$pkgdir" install
 }
