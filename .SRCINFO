@@ -4,7 +4,7 @@ pkgbase = lib32-gamemode
 	pkgrel = 4
 	url = https://github.com/FeralInteractive/gamemode
 	arch = x86_64
-	license = BSD 3-Clause License (Revised)
+	license = BSD
 	checkdepends = appstream
 	makedepends = meson
 	makedepends = ninja
@@ -14,7 +14,7 @@ pkgbase = lib32-gamemode
 	depends = lib32-glibc
 	depends = lib32-dbus
 	source = https://github.com/FeralInteractive/gamemode/releases/download/1.6/gamemode-1.6.tar.xz
-	sha256sums = 4fec5a0900e8f559b37cf1711ca7dcea7e1cebfe1237ce314001f65c1e346a5d
+	sha256sums = ede17eb042c1c87f7b35bfe96a00560afaea086f685d25bb3964d794b0af9c80
 
 pkgname = lib32-gamemode
 
