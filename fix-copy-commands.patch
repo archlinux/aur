@@ -1,14 +1,46 @@
+diff --git a/External/Aga.Controls/Properties/Resources.resx b/External/Aga.Controls/Properties/Resources.resx
+index 5307ac8..fd0b9a7 100644
+--- a/External/Aga.Controls/Properties/Resources.resx
++++ b/External/Aga.Controls/Properties/Resources.resx
+@@ -122,7 +122,7 @@
+     <value>..\Resources\check.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+   </data>
+   <data name="DVSplit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+-    <value>..\resources\dvsplit.cur;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
++    <value>..\Resources\DVSplit.cur;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+   </data>
+   <data name="Folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+     <value>..\Resources\Folder.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+@@ -131,7 +131,7 @@
+     <value>..\Resources\FolderClosed.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+   </data>
+   <data name="Leaf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+-    <value>..\resources\leaf.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
++    <value>..\Resources\Leaf.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+   </data>
+   <data name="loading_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+     <value>..\Resources\loading_icon;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+@@ -146,6 +146,6 @@
+     <value>..\Resources\uncheck.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+   </data>
+   <data name="unknown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+-    <value>..\resources\unknown.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
++    <value>..\Resources\unknown.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+   </data>
+-</root>
+\ No newline at end of file
++</root>
 diff --git a/OpenHardwareMonitor.csproj b/OpenHardwareMonitor.csproj
-index 35e749b..8a177f4 100644
+index 978c757..814115a 100644
 --- a/OpenHardwareMonitor.csproj
 +++ b/OpenHardwareMonitor.csproj
-@@ -301,7 +301,7 @@
+@@ -310,6 +310,6 @@
    <PropertyGroup>
      <PreBuildEvent>
      </PreBuildEvent>
--    <PostBuildEvent>copy "$(ProjectDir)External\*.*" "$(TargetDir)"
--copy "$(ProjectDir)Licenses\*.*" "$(TargetDir)"</PostBuildEvent>
-+    <PostBuildEvent>cp "$(ProjectDir)External"/* "$(TargetDir)"
-+cp "$(ProjectDir)Licenses"/* "$(TargetDir)"</PostBuildEvent>
+-    <PostBuildEvent>copy "$(ProjectDir)Licenses\*.*" "$(TargetDir)"</PostBuildEvent>
++    <PostBuildEvent>cp "$(ProjectDir)Licenses\"*.* "$(TargetDir)"</PostBuildEvent>
    </PropertyGroup>
- </Project>
+-</Project>
+\ No newline at end of file
++</Project>

@@ -1,13 +1,13 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=openhardwaremonitor-git
-pkgver=0.8.0.r19.gc7f351b
+pkgver=0.9.5.r0.g5bd6bf0
 pkgrel=1
 pkgdesc="An open source program that monitors temperature sensors, fan speeds, voltages, load and clock speeds of a computer."
 arch=('any')
 url="http://openhardwaremonitor.org/"
 license=('custom')
-depends=('mono')
+depends=('mono' 'mono-msbuild')
 makedepends=('unzip')
 optdepends=()
 provides=('openhardwaremonitor')
@@ -18,7 +18,7 @@ source=("${pkgname}::git+https://github.com/openhardwaremonitor/openhardwaremoni
 		"openhardwaremonitor.desktop"
 		"openhardwaremonitor.png")
 sha256sums=('SKIP'
-            '31bcfc30d137158244766d52431c0f454f3508c258cd7baa34bffe4781579d42'
+            'acb381491c247953684721579c100698902605ea3cd82cf52b5a283c0e6e42f7'
             'ff9c551e5f175a751ac49a0dbb591a213f9180adf88da88cd777bb110aa2241f'
             '182a37eb59edb4f4578a6db2a06c4796b50102ab30e762223ebbe049088a8958'
             '7b4a03c97797fe5b10475a2b01f434085175bf9599c00c30beb310206b97c92a')
@@ -39,7 +39,7 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname}"
 
-	xbuild OpenHardwareMonitor.sln /p:Configuration=Release "/p:Platform=Any CPU"
+	msbuild OpenHardwareMonitor.sln /p:Configuration=Release "/p:Platform=Any CPU"
 }
 
 package() {
