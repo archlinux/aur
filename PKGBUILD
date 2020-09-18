@@ -9,6 +9,7 @@ url="https://quill.chat/"
 license=('Proprietary')
 options=('!emptydirs' '!strip')
 depends=('at-spi2-core' 'gtk3' 'libxtst' 'libnotify' 'nss' 'xdg-utils')
+optdepends=('ttf-ms-win10: emoji support')
 
 source=('https://storage.googleapis.com/app-releases-dl.quill.chat/linux/Quill-Latest.rpm')
 sha256sums=('SKIP')
