@@ -3,7 +3,7 @@
 
 pkgname=python2-ipwhois
 _pkgname=ipwhois
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Retrieve and parse whois data for IPv4 and IPv6 addresses"
 url="https://github.com/secynic/ipwhois"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python2' 'python2-dnspython')
 makedepends=('python2-setuptools')
 source=("https://github.com/secynic/${_pkgname}/archive/v${pkgver}.zip")
-sha512sums=('aa5186ec59403ad016260e3bc09bdf2e488553cd68301b0e1c3ef8d72bdbbb8428ed0ac10754315ffc95aea7e4102580acc73da77f8d2ae508ad13e2cd7c54e1')
+sha512sums=('88f021686606300461bc80ea0413c0f6a2fcd09597c8de072a7dba1703b6514b4b3792132e55198bde1b02bf99a390f7feb23ed5dfb99250a1bdacd5ab6cf860')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
