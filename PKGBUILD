@@ -7,12 +7,12 @@
 pkgname=fcitx-sogoupinyin
 pkgver=2.3.2.07
 _time=1598240917
-pkgrel=2
+pkgrel=3
 pkgdesc="Sogou Pinyin for Linux"
 arch=("x86_64")
 url="https://pinyin.sogou.com/linux/"
 license=("custom")
-depends=("fcitx" "opencc" "libidn11" "lsb-release" "xorg-xprop" "qt5-declarative" "fcitx-qt5")
+depends=("fcitx" "opencc" "libidn11" "lsb-release" "xorg-xprop" "qt5-declarative" "qt5-svg" "fcitx-qt5")
 
 source=("sogou-autostart"
 	"http://cdn2.ime.sogou.com/dl/index/${_time}/sogoupinyin_${pkgver}_amd64.deb")

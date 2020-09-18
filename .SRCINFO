@@ -1,7 +1,7 @@
 pkgbase = fcitx-sogoupinyin
 	pkgdesc = Sogou Pinyin for Linux
 	pkgver = 2.3.2.07
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pinyin.sogou.com/linux/
 	arch = x86_64
 	license = custom
@@ -11,6 +11,7 @@ pkgbase = fcitx-sogoupinyin
 	depends = lsb-release
 	depends = xorg-xprop
 	depends = qt5-declarative
+	depends = qt5-svg
 	depends = fcitx-qt5
 	source = sogou-autostart
 	source = http://cdn2.ime.sogou.com/dl/index/1598240917/sogoupinyin_2.3.2.07_amd64.deb
