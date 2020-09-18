@@ -1,41 +1,31 @@
-# Maintainer: Joost Bremmer <joost@madeofmagicandwires.online>
-# Contributor: keylo99 <keylo99official@gmail.com>
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Contributor: Joost Bremmer <joost@madeofmagicandwires.online>
+# https://github.com/orhun/pkgbuilds
 
 pkgname=pkgtop
-pkgdesc="Interactive package manager & resource monitor (stable version)"
-pkgver=2.3
-pkgrel=2
-arch=('any')
-url="https://github.com/keylo99/pkgtop"
+pkgdesc="Interactive package manager & resource monitor"
+pkgver=2.4
+pkgrel=1
+arch=('x86_64')
+url="https://github.com/orhun/pkgtop"
 license=('GPL3')
-makedepends=('go-pie' 'git')
-provides=("${pkgname}")
-conflicts=("${pkgname}-git")
-source=("${pkgname}-${pkgver}.zip::https://github.com/keylo99/${pkgname}/archive/${pkgver}.zip")
-sha256sums=('d6e73a5d0de1bd85f2393ccd0d3ca682d22caac40831eecb7e4f4128a05c10ca')
-
-prepare() {
-  mkdir -p "${srcdir}/gopath"
-}
+makedepends=('git' 'go')
+conflicts=("$pkgname-git")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha512sums=('35ae09a150f49adf4f86056f44b2c104be0904828ae1d2c83c0644dc6fd948864b5acd7ec1fe1972af82075c30be9c8568c5c122e13ee3e15a505f25b51e3f4c')
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  export GOPATH="${srcdir}/gopath" GO111MODULE="auto"
+  cd "$pkgname-$pkgver/src"
   go get -d ./...
   go build \
-    -buildmode=pie \
-    -gcflags "all=-trimpath=$srcdir" \
-    -asmflags "all=-trimpath=$srcdir" \
+    -gcflags "all=-trimpath=$PWD" \
+    -asmflags "all=-trimpath=$PWD" \
     -ldflags "-extldflags $LDFLAGS" \
-    -v -o "./${pkgname}" ./src
-
-  # Clear read-only module files after build so that makepkg -Cc still works
-  GOPATH="${srcdir}/gopath" go clean -modcache
+    -o "$pkgname" .
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  install -Dvm755 "${pkgname}" "$pkgdir/usr/bin/${pkgname}"
+  cd "$pkgname-$pkgver/src"
+  install -Dm 755 "$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm 644 "../README.md" -t "$pkgdir/usr/share/doc/$pkgname"
 }
-
-# vim: set ts=2 sts=2 sw=2 et tw=80 :
