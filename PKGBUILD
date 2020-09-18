@@ -1,6 +1,6 @@
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 pkgname=nanovg-git
-pkgver=r349.e70a78e
+pkgver=r394.e628d62
 pkgrel=1
 pkgdesc="NanoVG is small antialiased vector graphics rendering library for OpenGL."
 arch=("x86_64")
@@ -31,9 +31,9 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	patch premake4.lua < "$startdir/disable_examples.patch"
-	premake4 gmake
+	premake5 gmake
 	cd build
-	make config=release
+	make config=release_native
 }
 
 package() {
