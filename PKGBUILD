@@ -1,5 +1,5 @@
 # Maintainer:
-# Contributor: Michael Straube <michaelqstraube@gmail.com>
+# Contributor: Michael Straube <michael.straubej@gmail.com>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: kusakata <shohei atmark kusakata period com>
 
