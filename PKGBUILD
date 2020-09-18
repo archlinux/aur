@@ -2,7 +2,7 @@
 
 pkgname=sigasi
 pkgver=4.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='IDE for VHDL editing and browsing'
 arch=('x86_64')
 url='http://www.sigasi.com/'

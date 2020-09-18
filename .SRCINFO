@@ -1,7 +1,7 @@
 pkgbase = sigasi
 	pkgdesc = IDE for VHDL editing and browsing
 	pkgver = 4.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sigasi.com/
 	arch = x86_64
 	license = custom
