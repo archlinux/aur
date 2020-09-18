@@ -3,11 +3,11 @@
 
 pkgname='dhall-lsp-server-bin'
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Language Server Protocol implementation for Dhall"
 arch=('x86_64')
 url='https://github.com/dhall-lang/dhall-haskell'
-license=('BSD')
+license=('custom:MIT')
 
 _dhall_ver=1.35.0
 
