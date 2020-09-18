@@ -8,7 +8,11 @@ pkgbase = python-telegram
 	depends = python3
 	conflicts = python-telegram-bot
 	source = python-telegram-0.12.0.tar.gz::https://github.com/alexander-akhmetov/python-telegram/archive/0.12.0.tar.gz
+	source = 0001-Use-system-tdlib.diff
+	source = 0002-Remove-binarys.diff
 	md5sums = ebf3e34648e21da96e6470474e0fd7eb
+	md5sums = 287acb342038ba44bb86cdc2c6cb303b
+	md5sums = c9085c229e25cab11bffd1431c220ef1
 
 pkgname = python-telegram
 
