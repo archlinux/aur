@@ -1,5 +1,5 @@
 # Maintainer:
-# Contributor: Michael Straube <michaelfstraube@gmail.com>
+# Contributor: Michael Straube <michaelqstraube@gmail.com>
 
 pkgname=pogo
 pkgver=1.0.1
