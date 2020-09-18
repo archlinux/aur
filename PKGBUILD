@@ -1,35 +1,26 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 # Contributor: Davide Depau <davide@depau.eu>
-_pkgname="obs-xdg-portal"
-pkgname="${_pkgname}-git"
-pkgver=0.1.2.r0.gfc5876a
-pkgrel=2
+pkgname="obs-xdg-portal-git"
+pkgver=0.1.2.r21.g8430c46
+pkgrel=1
 pkgdesc="OBS Studio plugin using the Desktop portal for Wayland & X11 screencasting"
 arch=(x86_64)
-url="https://gitlab.gnome.org/feaneron/$_pkgname"
+url="https://gitlab.gnome.org/feaneron/obs-xdg-portal"
 license=('GPL')
-depends=('obs-studio' 'gst-plugins-base-libs' 'xdg-desktop-portal')
+depends=('obs-studio-wayland' 'xdg-desktop-portal')
 makedepends=('meson' 'git')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-source=("git+$url"
-        'fix-timestamp.patch')
-sha256sums=('SKIP'
-            'e7fd7d3455a4b73cf750328d47ea3667d576106207a784ab2ce62c99eeb48813')
+conflicts=("${pkgname%%-git}")
+provides=("${pkgname%%-git}")
+source=("git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd ${pkgname%%-git}
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$_pkgname"
-  # https://gitlab.gnome.org/feaneron/obs-xdg-portal/-/merge_requests/4
-  git apply "$srcdir/fix-timestamp.patch"
-}
-
 build() {
-  arch-meson "${_pkgname}" build
+  arch-meson ${pkgname%%-git} build
   meson compile -C build
 }
 
