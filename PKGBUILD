@@ -1,13 +1,13 @@
 # Maintainer: DaarkWel <daarkwel at mail dot ru>
 pkgname=fb2edit
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="FB2 ebooks editor"
+pkgrel=2
+pkgdesc="FB2 ebooks editor, qt5-patched version"
 arch=('i686' 'x86_64')
 url="https://github.com/vitlav/fb2edit"
 license=('GPL3')
 depends=('qt5-webkit' 'libxml2' 'qt5-xmlpatterns' 'qt5-imageformats' 'qt5-translations')
-makedepends=('cmake>=3.1.0')
+makedepends=('cmake>=3.1.0' 'qt5-tools')
 source=(http://fb2edit.lintest.ru/pub/$pkgname-$pkgver.tar.bz2)
 install=${pkgname}.install
 
