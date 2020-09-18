@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=golang-deepin-lib-git
-pkgver=5.5.0.6.r1.gf3021d1
+pkgver=5.6.0.2.r0.g00a1c4c
 pkgrel=1
 pkgdesc='A library containing many useful go routines for things such as glib, gettext, archive, graphic,etc.'
 arch=('any')
