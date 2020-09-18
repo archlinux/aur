@@ -1,9 +1,9 @@
-# Maintainer: Michael Straube <michaelfstraube@gmail.com>
+# Maintainer: Michael Straube <michaelqstraube@gmail.com>
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
 pkgname=freedoko-git
-pkgver=0.7.22.r38.g5fa4bbe1f
+pkgver=0.7.22.r300.g6eabe44ba
 pkgrel=1
 pkgdesc="Free implementation of the card game Doppelkopf (development version)"
 arch=('x86_64')

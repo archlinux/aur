@@ -1,6 +1,6 @@
 pkgbase = freedoko-git
 	pkgdesc = Free implementation of the card game Doppelkopf (development version)
-	pkgver = 0.7.22.r38.g5fa4bbe1f
+	pkgver = 0.7.22.r300.g6eabe44ba
 	pkgrel = 1
 	url = http://free-doko.sourceforge.net
 	arch = x86_64
