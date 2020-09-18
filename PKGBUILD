@@ -6,7 +6,7 @@
 # Contributor: PolyWolf <p0lyw0lf@protonmail.com>
 
 pkgname=firebird-nspire
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc='Third-party multi-platform emulator of the ARM-based TI-Nspire™ calculators'
 arch=('i686' 'x86_64')
