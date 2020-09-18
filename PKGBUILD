@@ -1,13 +1,13 @@
 # Maintainer: David Barri <japgolly@gmail.com>
 pkgname=shift
-pkgver=5.0.85
+pkgver=5.0.86
 pkgrel=1
 pkgdesc="Shift is the desktop app for streamlining your accounts, apps, and workflows."
 arch=('x86_64')
 url="https://tryshift.com/"
 license=('custom')
 source=("shift-linux-v$pkgver-stable.zip::https://update.tryshift.com/download/version/$pkgver-stable/linux_32")
-sha256sums=('22c77ce24e0d32eb38038c6cf21cff2816f0a946135b6661c7bea54df6b94243')
+sha256sums=('41340021fa47e19bc31243c0c3737393ff6b9ab2e3cd88672770e928e4c932e3')
 
 package() {
 	set -e
