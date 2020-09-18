@@ -6,7 +6,7 @@ _gitname=performance-tweaks
 pkgname=(
     'performance-tweaks'
     )
-pkgver=r14.db7f090
+pkgver=r15.13befa3
 pkgrel=1
 arch=('any')
 _branch='master'
@@ -46,14 +46,16 @@ package_performance-tweaks() {
     pkgdesc='automatic tweaks for Improving performance while gaming and other tasks'
     depends=(
 	'cpupower'
-        'preload'
-        'haveged'
-        'irqbalance'
-        'systemd-swap'
-        'nohang-git'
-	'ananicy-git'
+    'preload'
+    'haveged'
+    'irqbalance'
+    'systemd-swap'   
 	'hdparm'
 	'x86_energy_perf_policy'
+    'thermald'
+    'nohang-git'
+	'ananicy-git'
+    'auto-cpufreq-git'
         )
     optdepends=(
         'timeshift-autosnap: for snapshots bfore pacman upgrade'

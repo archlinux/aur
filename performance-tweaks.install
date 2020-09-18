@@ -62,6 +62,8 @@ post_upgrade() {
   systemctl is-active nohang >/dev/null || systemctl enable nohang
   systemctl is-active cpupower >/dev/null || systemctl enable cpupower
   systemctl is-active ananicy >/dev/null || systemctl enable ananicy
+  systemctl is-active auto-cpufreq >/dev/null || systemctl enable auto-cpufreq
+  systemctl is-active thermald >/dev/null || systemctl enable thermald
   systemctl is-active grub-btrfs.path >/dev/null || systemctl enable grub-btrfs.path
   systemctl is-active fstrim.timer >/dev/null || systemctl enable fstrim.timer
   systemctl is-active btrfs-scrub@-.timer >/dev/null || systemctl enable btrfs-scrub@-.timer
