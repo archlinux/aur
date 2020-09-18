@@ -5,7 +5,7 @@
 
 pkgname=ttf-paratype
 pkgver=2.005
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='ParaType font family with extended cyrillic and latin character sets'
 arch=('any')
@@ -36,6 +36,9 @@ source=(
 
 	# PT Mono
 	'https://company.paratype.com/system/attachments/631/original/ptmono.zip'
+
+	# Font config file
+	'54-paratype.conf'
 )
 sha512sums=(
 	# PT Sans
@@ -48,17 +51,25 @@ sha512sums=(
 
 	# PT Mono
 	'479f2c9067bd5631d9ac6ad61a91add41a99c2acdfec173386754891f6c8b6d78d4ec16bac73caaf816f751fa70857a7836a3733a35e3048d85f84c1ea9d734f'
+
+	# Font config file
+	'ec939bebecfb1612fdfc000fcd5eff8a2203658572f4ffdc2f3d30b4c6cc6dae414f2f263cbc7435d53de071e7f232e41b13d90e09eab4e3db8763e8e7712e22'
 )
 
 package() {
 	# Create required directories
 	mkdir -p \
 		"${pkgdir}"/usr/share/fonts/TTF/ \
-		"${pkgdir}"/usr/share/licenses/${pkgname}/
+		"${pkgdir}"/usr/share/licenses/${pkgname}/ \
+		"${pkgdir}"/etc/fonts/conf.{d,avail}/
 
 	# Install font files
 	cp "${srcdir}"/*.ttf "${pkgdir}"/usr/share/fonts/TTF/
 
 	# Install license
 	cp "${srcdir}"/PT_FreeLicense_E.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+
+	# Install font config file
+	cp "${srcdir}"/54-paratype.conf "${pkgdir}"/etc/fonts/conf.avail/
+	ln -sr "${pkgdir}"/etc/fonts/conf.avail/54-paratype.conf "${pkgdir}"/etc/fonts/conf.d/
 }
