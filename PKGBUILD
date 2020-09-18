@@ -1,4 +1,4 @@
-# Maintainer: fsyy <fossy2001 web de>
+# Maintainer: fsyy <fossy2001 at web dot de>
 # Maintainer: basxto <archlinux basxto de>
 
 pkgname=gbm
