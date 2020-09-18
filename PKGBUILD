@@ -1,6 +1,6 @@
 # Maintainer: scpketer <scpketer@protonmail.ch>
 pkgname=recaf
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="A modern Java bytecode editor"
 arch=("any")
@@ -27,7 +27,7 @@ package() {
     printf '#!/usr/bin/env bash\nexec java -cp "/usr/lib/jvm/default-runtime/lib/*:/usr/share/java/%s/%s.jar" "me.coley.recaf.Recaf" "$@"' "$pkgname" "$pkgname" > "$srcdir/recaf"
     
     # Write .desktop file
-    echo -e '[Desktop Entry]\nType=Application\nVersion=1.0\nName=Recaf\nComment=A modern Java bytecode editor\nPath=/usr/bin\nExec=recaf %u\nIcon=recaf\nTerminal=false\nCategories=Development;Java;' > "$srcdir/recaf.desktop"
+    printf "[Desktop Entry]\nType=Application\nVersion=1.0\nName=Recaf\nComment=%s\nPath=/usr/bin\nExec=recaf %%u\nIcon=recaf\nTerminal=false\nCategories=Development;Java" "$pkgdesc" > "$srcdir/recaf.desktop"
 
     # Install exec script to canonical location
     install -Dm644 "$srcdir/recaf" "$pkgdir/usr/bin/recaf"
