@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <michaelfstraube@gmail.com>
+# Maintainer: Michael Straube <michaelqstraube@gmail.com>
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
 pkgname=freedoko
