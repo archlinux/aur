@@ -1,55 +1,46 @@
 pkgbase = eudev-git
-	pkgdesc = The userspace dev tools (udev) forked by Gentoo
-	pkgver = 20150619
+	pkgver = 3.2.9
 	pkgrel = 1
 	url = https://github.com/gentoo/eudev
-	install = eudev-git.install
-	arch = i686
 	arch = x86_64
 	groups = base
+	groups = base-openrc
 	license = GPL
-	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = gperf
-	makedepends = libxslt
-	makedepends = docbook-xsl
-	depends = util-linux
-	depends = glib2
-	depends = kmod
-	depends = hwids
-	depends = bash
-	provides = eudev
-	provides = libgudev
-	conflicts = eudev
-	conflicts = udev
-	conflicts = systemd
-	conflicts = libsystemd
-	conflicts = systemd-tools
-	conflicts = libgudev
-	replaces = eudev
-	replaces = udev
-	replaces = systemd
-	replaces = libsystemd
-	replaces = systemd-tools
-	replaces = libgudev
-	options = !makeflags
+	makedepends = gtk-doc
+	makedepends = intltool
+	makedepends = kmod
 	options = !libtool
-	backup = etc/udev/udev.conf
-	backup = etc/udev/rules.d/80-net-name-slot.rules
-	source = git://github.com/gentoo/eudev.git
+	options = !staticlibs
+	source = git+https://anongit.gentoo.org/git/proj/eudev.git
 	source = initcpio_hooks
 	source = initcpio_install
-	source = 80-net-name-slot.rules
-	md5sums = SKIP
-	md5sums = e99e9189aa2f6084ac28b8ddf605aeb8
-	md5sums = d3a7b1d77e53d401ed37827ad297846a
-	md5sums = d83a59d647b511b815ee0e8c85dcd54a
+	source = udev-hwdb.hook
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = eudev-git
+	pkgdesc = The userspace dev tools (udev) forked by Gentoo
+	depends = libeudev
+	depends = kbd
+	depends = kmod
+	depends = hwids
+	depends = util-linux
+	provides = udev=243git
 	provides = eudev
-	provides = libgudev
-	provides = udev=
-	provides = systemd=
-	provides = libsystemd=
-	provides = systemd-tools=
+	conflicts = eudev
+	backup = etc/udev/udev.conf
+
+pkgname = libeudev-git
+	pkgdesc = eudev client libraries
+	depends = glib2
+	depends = glibc
+	provides = libudev=243git
+	provides = libudev.so
+	provides = libeudev
+	conflicts = libudev.so
+	conflicts = libeudev
 
