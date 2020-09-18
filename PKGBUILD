@@ -3,7 +3,7 @@
 
 pkgname=brave-nightly-bin
 pkgver=1.16.26
-pkgrel=12
+pkgrel=14
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
 arch=('x86_64')
 url='https://brave.com/download-nightly'
@@ -30,6 +30,8 @@ sha512sums=('8c910d2345c2f03ea205bdacddebd19fd49e75d98f02fd67d824534ff981fd5e0c1
 # https://github.com/brave/brave-browser/releases/download/v1.16.23/brave-browser-nightly_1.16.23_amd64.deb
 
 prepare() {
+  mkdir -p brave
+  tar xf data.tar.xz -C brave
   # Delete unneeded cron job
   rm -rf brave/opt/brave.com/brave-nightly/cron
     
