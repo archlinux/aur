@@ -11,8 +11,9 @@ depends=('zsh')
 makedepends=('git')
 provides=('spaceship-zsh-theme' 'spaceship-prompt')
 install="${pkgname}.install"
-source=("${url}/archive/v${pkgver}.tar.gz" "$pkgname.install")
-md5sums=('bd24fc2d741cb12ba49b36742d879f64'
+source=("https://github.com/denysdovhan/${pkgname}/archive/v${pkgver}.tar.gz"
+        "$pkgname.install")
+md5sums=('b745b1cee9dbb82cf2ae97887f4219b8'
          'bd24fc2d741cb12ba49b36742d879f64')
 
 package() {
