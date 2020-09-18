@@ -10,7 +10,7 @@
 
 pkgbase=calibre-git
 pkgname=calibre-git
-pkgver=4.23.0.r477.g079cbff565
+pkgver=4.23.0.r599.g9ec29bb548
 pkgrel=1
 _dictionaries_commit="libreoffice-6.4.0.0.beta1"
 pkgdesc="Ebook management application"
@@ -24,7 +24,7 @@ _py_deps=('apsw' 'beautifulsoup4' 'cssselect' 'css-parser' 'dateutil' 'dbus' 'dn
 depends=('chmlib' 'hunspell' 'hyphen' 'icu' 'jxrlib' 'libmtp' 'libusbx'
          'libwmf' 'mathjax' 'mtdev' 'optipng' 'podofo'
          "${_py_deps[@]/#/python-}" 'qt5-svg' 'udisks2')
-makedepends=('git' 'qt5-x11extras' 'sip' 'xdg-utils' 'rapydscript-ng' 'python-sphinx')
+makedepends=('git' 'qt5-x11extras' 'sip5' 'pyqt-builder' 'xdg-utils' 'rapydscript-ng' 'python-sphinx')
 checkdepends=('xorg-server-xvfb')
 optdepends=('poppler: required for converting pdf to html')
 provides=("${pkgname%-git}")
@@ -91,7 +91,10 @@ check() {
     # without xvfb-run this fails with much "Control socket failed to recv(), resetting"
     # ERROR: test_websocket_perf (calibre.srv.tests.web_sockets.WebSocketTest)
     # one or two tests are a bit flaky, but the python3 build seems to succeed more often
-    LANG='en_US.UTF-8' xvfb-run env CALIBRE_PY3_PORT=1 python3 setup.py test
+    #
+    # test_ajax_book segfaults on qt >=5.15.1 inside of qt itself, but only in nspawn containers
+    # see https://github.com/kovidgoyal/calibre/commit/28ef780d9911d598314d98bdfc3b1c88a94681df
+    LANG='en_US.UTF-8' xvfb-run python3 setup.py test --exclude-test-name=test_ajax_book
 }
 
 package() {
