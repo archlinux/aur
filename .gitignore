@@ -1,0 +1,10 @@
+src
+pkg
+*.xz
+*.deb
+*.zst
+google-chat-linux-git
+google-chat-linux
+updateSRCINFO.sh
+updatePKGBUILD.sh
+google-chat-linux-SHA512.txt
