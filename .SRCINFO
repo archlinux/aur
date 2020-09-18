@@ -1,6 +1,6 @@
 pkgbase = python-specutils
 	pkgdesc = Astropy Affiliated package for 1D spectral operations
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://specutils.readthedocs.io
 	arch = i686
@@ -12,10 +12,8 @@ pkgbase = python-specutils
 	makedepends = python-sphinx-astropy
 	makedepends = python-gwcs>=0.12
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/s/specutils/specutils-1.0.tar.gz
-	source = https://raw.githubusercontent.com/astropy/specutils/master/LICENSE.rst
-	md5sums = a323e9486654c83a317f8c002c2bb953
-	md5sums = 4d0c18788977e008ba0897bd6aed4bf7
+	source = https://files.pythonhosted.org/packages/source/s/specutils/specutils-1.1.tar.gz
+	md5sums = a92a01f83b796a3e485d93cb66ff1f0d
 
 pkgname = python-specutils
 	depends = python>=3.5
