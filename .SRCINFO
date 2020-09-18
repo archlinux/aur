@@ -1,6 +1,6 @@
 pkgbase = deepin-dock-git
 	pkgdesc = Deepin desktop-environment - dock module
-	pkgver = 5.1.0.11.r353.g0a4c6101
+	pkgver = 5.3.0.20.r3.g45e631fd
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-dock
 	arch = x86_64
@@ -23,8 +23,6 @@ pkgbase = deepin-dock-git
 	conflicts = deepin-dock
 	replaces = deepin-dock
 	source = deepin-dock-git::git://github.com/linuxdeepin/dde-dock
-	source = dde-dock.patch
-	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = deepin-dock-git
