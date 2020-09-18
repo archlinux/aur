@@ -1,3 +1,4 @@
+#Maintainer: Sam Bazley <sambazley@fastmail.com>
 dev=L4
 pkgname="stm32${dev,,}-headers-git"
 pkgver=r6.d023c0d560ac
