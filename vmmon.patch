@@ -1,0 +1,99 @@
+--- a/vmmon/Makefile
++++ b/vmmon/Makefile
+@@ -43,7 +43,11 @@ INCLUDE      += -I$(SRCROOT)/shared
+ endif
+ 
+ 
++ifdef KVERSION
++VM_UNAME = $(KVERSION)
++else
+ VM_UNAME = $(shell uname -r)
++endif
+ 
+ # Header directory for the running kernel
+ ifdef LINUXINCLUDE
+@@ -137,7 +137,6 @@
+ endif
+ 
+ # Add Spectre options when available
+-CC_OPTS += $(call vm_check_gcc,-mindirect-branch=thunk -mindirect-branch-register,)
+ 
+ include $(SRCROOT)/Makefile.kernel
+ 
+--- a/vmmon/linux/hostif.c
++++ b/vmmon/linux/hostif.c
+@@ -47,6 +47,8 @@
+ #include <asm/asm.h>
+ #include <asm/io.h>
+ #include <asm/page.h>
++#include <asm/tlbflush.h>
++#include <asm/irq_vectors.h>
+ #include <asm/uaccess.h>
+ #include <linux/capability.h>
+ #include <linux/kthread.h>
+@@ -634,7 +635,24 @@ HostIF_FastClockUnlock(int callerID) // IN
+ static void *
+ MapCrossPage(struct page *p)  // IN:
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0)
+    return vmap(&p, 1, VM_MAP, VM_PAGE_KERNEL_EXEC);
++#else
++   /* Starting with 5.8, vmap() always sets the NX bit, but the cross
++    * page needs to be executable. */
++   pte_t *ptes[1];
++   struct vm_struct *area = alloc_vm_area(1UL << PAGE_SHIFT, ptes);
++   if (area == NULL)
++      return NULL;
++
++   set_pte(ptes[0], mk_pte(p, VM_PAGE_KERNEL_EXEC));
++
++   preempt_disable();
++   __flush_tlb_all();
++   preempt_enable();
++
++   return area->addr;
++#endif
+ }
+ 
+ 
+@@ -1739,7 +1758,10 @@ HostIF_EstimateLockedPageLimit(const VMDriver* vm,                // IN
+    lockedPages += global_page_state(NR_PAGETABLE);
+ #endif
+    /* NR_SLAB_* moved from zone to node in 4.13. */
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 13, 0)
++
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 9, 0)
++   lockedPages += global_node_page_state_pages(NR_SLAB_UNRECLAIMABLE_B);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 13, 0)
+    lockedPages += global_node_page_state(NR_SLAB_UNRECLAIMABLE);
+ #else
+    lockedPages += global_page_state(NR_SLAB_UNRECLAIMABLE);
+@@ -2590,9 +2612,11 @@ HostIF_SemaphoreWait(VMDriver *vm,   // IN:
+     * the code to happily deal with a pipe or an eventfd. We only care about
+     * reading no bytes (EAGAIN - non blocking fd) or sizeof(uint64).
+     */
+-
+-   res = file->f_op->read(file, (char *) &value, sizeof value, &file->f_pos);
+-
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 14, 0)
++   res = kernel_read(file, file->f_pos, (char *)&value, sizeof value);
++#else
++   res = kernel_read(file, &value, sizeof value, &file->f_pos);
++#endif
+    if (res == sizeof value) {
+       res = MX_WAITNORMAL;
+    } else {
+@@ -2707,8 +2731,11 @@ HostIF_SemaphoreSignal(uint64 *args)  // IN:
+     * pipes. The data written is formatted to make an eventfd happy should
+     * it be present.
+     */
+-
+-   res = file->f_op->write(file, (char *) &value, sizeof value, &file->f_pos);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 14, 0)
++   res = kernel_write(file, (char *)&value, sizeof value, file->f_pos);
++#else
++   res = kernel_write(file, &value, sizeof value, &file->f_pos);
++#endif
+ 
+    if (res == sizeof value) {
+       res = MX_WAITNORMAL;
