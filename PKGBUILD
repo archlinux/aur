@@ -1,3 +1,4 @@
+# Maintainer: j.r <j.r@jugendhacker.de>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Antonio Vázquez Blanco <antoniovazquezblanco@gmail.com>
 # Contributor: Haruue Icymoon <haruue@caoyue.com.cn>
