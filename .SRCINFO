@@ -1,0 +1,13 @@
+pkgbase = fortune-mod-mechanicus
+	pkgdesc = Fortune cookies: Warhammer 40,000 - Mechanicus (game).
+	pkgver = 20200720
+	pkgrel = 1
+	url = https://www.reddit.com/r/40kLore/comments/asq4rj/collected_quotes_aphorisms_and_psalms_from_the/
+	arch = any
+	license = unknown
+	depends = fortune-mod
+	source = mechanicus
+	sha256sums = e3da67adc5f32bbc55b2b78efa57c050801d53dbdfc58995bec1f2cf57a7d5e1
+
+pkgname = fortune-mod-mechanicus
+
