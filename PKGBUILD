@@ -23,8 +23,13 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
+pkgver() {
+  cd eudev
+  git describe --tags | sed 's/-/+/g'
+}
+
 prepare(){
-	cd "${srcdir}/${pkgbase}-${pkgver}"
+	cd eudev
 	sed -e 's/GROUP="dialout"/GROUP="uucp"/' \
 		-e 's/GROUP="tape"/GROUP="storage"/' \
 		-e 's/GROUP="cdrom"/GROUP="optical"/' \
