@@ -1,7 +1,7 @@
 pkgbase = ldid
-	pkgdesc = a tool used for ad-hoc codesigning iOS binaries
+	pkgdesc = a tool used for ad-hoc codesigning iOS binaries - CRKatri's mirror
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.saurik.com/ldid
 	arch = x86_64
 	license = AGPL
@@ -11,8 +11,8 @@ pkgbase = ldid
 	depends = libxml2
 	provides = ldid
 	provides = ldid2
-	source = ldid-2.1.2::https://github.com/Diatrus/saurik-ldid/archive/v2.1.2.tar.gz
-	sha256sums = 00c90d3528365b110b8ad5fc5aa148c68175ed7023e966959c6db2899e05dd93
+	source = https://github.com/CRKatri/ldid/archive/2.1.2.tar.gz
+	md5sums = 8af2d65766f11fef4e90b26a4694c8b6
 
 pkgname = ldid
 
