@@ -5,9 +5,9 @@
 
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-#_swiftver=5.2.4-RELEASE
+_swiftver=5.3-RELEASE
 #pkgver=${_swiftver//-RELEASE/}
-_swiftver=5.3-DEVELOPMENT-SNAPSHOT-2020-07-04-a
+#_swiftver=5.3-DEVELOPMENT-SNAPSHOT-2020-07-04-a
 #_swiftver=DEVELOPMENT-SNAPSHOT-2020-06-24-a
 pkgver=5.3
 pkgrel=1
@@ -15,10 +15,8 @@ pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
 license=('apache')
-depends=('python' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
-         'sqlite' 'ncurses')
-makedepends=('git' 'cmake' 'ninja' 'swig')
-
+depends=('icu' 'libedit' 'libxml2' 'python' 'libbsd' 'ncurses' )
+makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'python2' 'swig')
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
     "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
@@ -45,9 +43,6 @@ sha256sums=(
 )
 
 prepare() {
-    # not sure where diagnostics is included, pip install it
-    pip install diagnostics
-
     # Use directory names which build-script expects
     rm -rf llvm-project
     ln -sf llvm-project-swift-${_swiftver} llvm-project
