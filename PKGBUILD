@@ -18,7 +18,7 @@ pkgver() {
 
 package() {
 	cd $srcdir/$_pkgname/src
-	for i in find -type f -printf "%f \n"
+	for i in find -type f
 		do install -Dm755 "$i" "$pkgdir/usr/bin/`basename $i`"
 	done
 }
