@@ -1,16 +1,15 @@
 pkgbase = boogrocha
 	pkgdesc = A lightweight, easy to use command-line application (bgc) for managing your group room bookings at Chalmers University of Technology
-	pkgver = v1.0.5
+	pkgver = v1.0.19
 	pkgrel = 1
 	url = https://github.com/sidusio/boogrocha
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = go
 	provides = bgc
 	conflicts = bgc
-	source = boogrocha::git+https://github.com/sidusio/boogrocha.git#tag=v1.0.5
-	sha256sums = SKIP
+	source = https://github.com/sidusio/boogrocha/archive/v1.0.19.tar.gz
+	sha256sums = d435c1c1ced813c392e33e0bac0fbdbd415f67dcebc0a165c9456ae2313c23f0
 
 pkgname = boogrocha
 
