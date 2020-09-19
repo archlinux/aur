@@ -1,0 +1,12 @@
+pkgbase = ttf-simple-line-icons
+	pkgdesc = Simple and Minimal Line Icons
+	pkgver = 2.5.4
+	pkgrel = 1
+	url = https://thesabbir.github.io/simple-line-icons
+	arch = any
+	license = MIT
+	source = ttf-simple-line-icons-2.5.4.tar.gz::https://github.com/thesabbir/simple-line-icons/archive/v2.5.4.tar.gz
+	md5sums = 52b2bb4b232f7254a8a5e1791870a91d
+
+pkgname = ttf-simple-line-icons
+
