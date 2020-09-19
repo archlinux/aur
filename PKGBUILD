@@ -9,8 +9,8 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=70.0.3728.154
-pkgrel=1
+pkgver=71.0.3770.148
+pkgrel=2
 pkgdesc="A fast and secure web browser"
 url="https://www.opera.com/"
 options=(!strip !zipman)
@@ -22,6 +22,7 @@ optdepends=(
     'opera-ffmpeg-codecs: playback of proprietary video/audio'
     'pepper-flash: flash support'
     'upower: opera battery save'
+    'chromium-widevine: support playback of drm content (AUR!)'
 )
 source=(
     "https://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb"
@@ -31,12 +32,12 @@ source=(
     'terms.html'
     'privacy.html'
 )
-sha512sums=('d708e96be745693de15a23b03716ba77430cc1feeaf56f85ba35dc9b537261a92bc1749d363ed0fba6600810a12e6d470f208c472fee116f6a3f0e100b3ad957'
+sha512sums=('88394099a30c336b2e7cd14903e525b465dcb5f364301d6602a8937bb7fecdc40fabe220ae57dde9a1efa08e64d4286f5a256704e54e9c3a1f77f7a765a98875'
             '7e854e4c972785b8941f60117fbe4b88baeb8d7ca845ef2e10e8064043411da73821ba1ab0068df61e902f242a3ce355b51ffa9eab5397ff3ae3b5defd1be496'
             'ddb1773877fcfd7d9674e63263a80f9dd5a3ba414cda4cc6c411c88d49c1d5175eede66d9362558ddd53c928c723101e4e110479ae88b8aec4d2366ec179297f'
-            'fb6c54cb4a66947b2f578bb5d9313da470ef522c90b378c90377da78c7584561f44c8c0d8e04cdfcc57dc964867afc25aad393e326d552bff0fca53deb64b4c3'
-            '1a1fa91188f79b9b69535ec796a30bd98b9d64e8ffc9a15ed9b5aaece1d91feec41ae92dc28337b1f6a62ad36b506bd682c5fcea94be7be45ee152ec7bac3586'
-            '1138b9a1aec53f6152f954da471dc5bce7340f3923c8af10b015ce47d6db89618c9d21fc730ba0900501e98546ca082fcb5d8a959fcd5691eb6167a02ce3468b')
+            'c359079544360c9c12acd222e3e31dbf4d42b7da4388393a16d7acafa4b99f66f52a3f632afaf5ac3cb5f60f78e1184e6f89a86e6f831ef9e19a65f5cab342a5'
+            '59ddb12dd7bf771f1065d5678b62a70d4f8562066fe863add00f96e5339308e6cb658a19de3475aa96cf9f9b52b73f2a7b3e2053de0aa03457b58ab1efc8cf69'
+            '329f2244fb290103b8548b76b4b6fd228b93252c3cedf6377089eecb6da998f679bbb5cbcae23a3f4cbdc8f68b18c060d90617ea7baa48af414edf7d0cfbadf3')
 
 prepare() {
     sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
@@ -57,6 +58,10 @@ package() {
 
     # suid opera_sandbox
     chmod 4755 "$pkgdir/usr/lib/$pkgname/opera_sandbox"
+
+    # add extra WidevineCdm location
+    sed -e '/\[/a\ \ "/usr/lib/chromium/WidevineCdm",' \
+        -i "$pkgdir/usr/lib/opera/resources/widevine_config.json"
 
     # install default options
     install -Dm644 "$srcdir/default" "$pkgdir/etc/$pkgname/default"
