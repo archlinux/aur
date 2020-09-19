@@ -1,0 +1,22 @@
+pkgbase = lib32-curl-git
+	pkgdesc = An URL retrieval utility and library (32-bit)
+	pkgver = 7.72.0
+	pkgrel = 1
+	url = https://curl.haxx.se
+	arch = x86_64
+	license = MIT
+	depends = lib32-libidn2
+	depends = lib32-libssh2
+	depends = lib32-krb5
+	depends = lib32-openssl
+	depends = lib32-libpsl
+	depends = lib32-zlib
+	depends = lib32-zstd
+	depends = curl
+	provides = lib32-curl
+	conflicts = lib32-curl
+	source = git+https://github.com/curl/curl
+	sha512sums = SKIP
+
+pkgname = lib32-curl-git
+
