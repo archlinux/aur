@@ -22,7 +22,7 @@ pkgver=1.2.3.r0.ga9e9160
 pkgrel=1
 pkgdesc="Intel(R) Open Image Denoise library"
 arch=('x86_64')
-url="http://www.openimagedenoise.org/"
+url="https://www.openimagedenoise.org/"
 license=('Apache')
 depends=(intel-tbb python)
 provides=(openimagedenoise=${pkgver%.r*})
