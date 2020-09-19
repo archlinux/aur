@@ -1,0 +1,13 @@
+pkgbase = python-pythontexfigures
+	pkgdesc = Embed matplotlib figures into LaTeX documents using PythonTeX
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/mje-nz/pythontexfigures
+	arch = any
+	license = BSD
+	license = 3-Clause
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-pythontexfigures
+
