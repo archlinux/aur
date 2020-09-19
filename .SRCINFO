@@ -1,15 +1,17 @@
 pkgbase = screencast
 	pkgdesc = Command line interface to record a X11 desktop
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://github.com/dbermond/screencast/
 	arch = any
 	license = GPL
+	checkdepends = xorg-server-xvfb
+	checkdepends = imagemagick
+	checkdepends = ttf-dejavu
 	depends = ffmpeg
 	depends = xorg-xdpyinfo
 	depends = libnotify
 	depends = oxygen-icons
-	optdepends = bc: fade effect support
 	optdepends = imagemagick: watermark effect support
 	optdepends = slop: graphical screen region selection support
 	optdepends = sound-theme-freedesktop: sound notification support
@@ -20,8 +22,11 @@ pkgbase = screencast
 	optdepends = pingo: watermark optimization support
 	optdepends = advancecomp: watermark optimization support
 	optdepends = bash-completion: bash-completion support
-	source = screencast-1.5.0.tar.gz::https://github.com/bermond/screencast/archive/v1.5.0.tar.gz
-	sha256sums = df3e9180c77f733b3e43f9604b630d2d6ced588505cf007a2c344907a3a97a45
+	source = https://github.com/dbermond/screencast/archive/v1.6.0/screencast-1.6.0.tar.gz
+	source = https://github.com/dbermond/screencast/releases/download/v1.6.0/screencast-1.6.0.tar.gz.asc
+	validpgpkeys = 3FFA6AB7B69AAE6CCA263DDE019A7474297D8577
+	sha256sums = 10a283372bf76753bdcbdc60661e0efe48bc579c3191f7c3495e14d65ad527e3
+	sha256sums = SKIP
 
 pkgname = screencast
 
