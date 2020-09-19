@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mesa-git
-pkgver=20.1.0_devel.120133.08cff938b76
+pkgver=20.3.0_devel.128398.95ee0ba41f0
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "${srcdir}"/mesa
   for _arch in ${_architectures}; do
-    ${_arch}-meson build-${_arch} -Db_lto=false
+    ${_arch}-meson build-${_arch} -Db_lto=false -Dgallium-drivers=swrast,swr
     ninja -C build-${_arch}
   done
 }
@@ -34,6 +34,7 @@ package() {
   for _arch in ${_architectures}; do
     install -d "$pkgdir"/usr/${_arch}/bin
     install -m755 build-${_arch}/src/gallium/targets/libgl-gdi/opengl32.dll "$pkgdir"/usr/${_arch}/bin
+    install -m755 build-${_arch}/src/gallium/drivers/swr/swr*.dll "$pkgdir"/usr/${_arch}/bin
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
   done
 }
