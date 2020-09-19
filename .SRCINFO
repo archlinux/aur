@@ -1,4 +1,4 @@
-pkgbase = oidn-git
+pkgbase = openimagedenoise-git
 	pkgdesc = Intel(R) Open Image Denoise library
 	pkgver = 1.2.3.r0.ga9e9160
 	pkgrel = 1
@@ -14,12 +14,12 @@ pkgbase = oidn-git
 	depends = python
 	provides = openimagedenoise=1.2.3
 	conflicts = openimagedenoise
-	source = oidn::git+https://github.com/OpenImageDenoise/oidn.git
+	source = openimagedenoise::git+https://github.com/OpenImageDenoise/oidn.git
 	source = git+https://github.com/OpenImageDenoise/mkl-dnn.git
 	source = git-lfs+https://github.com/OpenImageDenoise/oidn-weights.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = oidn-git
+pkgname = openimagedenoise-git
 

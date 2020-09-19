@@ -16,7 +16,7 @@ function extract_git-lfs {
   extract_git "$url"
 }
 
-pkgname=oidn-git
+pkgname=openimagedenoise-git
 pkgver=1.2.3.r0.ga9e9160
 #_fragment="#tag=v${pkgver}"
 pkgrel=1
