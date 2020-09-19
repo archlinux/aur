@@ -17,7 +17,7 @@
 _pkgname=wheezy.template
 pkgname=python-wheezy
 pkgver=0.1.195
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight template library"
 arch=('any')
 url="https://pypi.python.org/pypi/wheezy.template"
@@ -27,7 +27,7 @@ makedepends=('python-setuptools')
 conflicts=(
     'python2-wheezy'  # /usr/bin/wheezy.template
 )
-source=("https://files.pythonhosted.org/packages/ee/f8/10736275c1df7299cacb5e10cce15a5db29b4b9f29c91fa7f8f463ed3e76/wheezy.template-0.1.195.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('f98aa41e3d1e0c6cef935605cbbf03fb95c3652fd30294d7561dac8c8a87edf2')
 
 build() {
@@ -38,4 +38,5 @@ build() {
 package() {
   cd "$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
