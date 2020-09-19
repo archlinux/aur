@@ -2,27 +2,31 @@
 # Contributor: Étienne Deparis <etienne [at] depar.is>
 
 pkgname=galileo-dev
-pkgver=1.0dev
-pkgrel=3
+pkgver=0.5.1.r125.g42efa16
+pkgrel=1
 pkgdesc='Utility to securely synchronize a Fitbit tracker with the Fitbit server. Development version, which supports synchronization without dongle, through bluetooth (experimental)'
 license=('LGPL3')
-url='https://bitbucket.org/benallard/galileo'
+url='https://github.com/benallard/galileo'
 depends=('python-pyusb' 'python-requests' 'python-pydbus')
-makedepends=('mercurial' 'python-setuptools')
+makedepends=('git' 'python-setuptools')
 conflicts=('galileo')
-source=("$pkgname::hg+https://bitbucket.org/benallard/galileo/src#branch=default")
+source=("$pkgname::git+https://github.com/benallard/galileo.git")
 md5sums=('SKIP')
 arch=('any')
 options=(!emptydirs)
 backup=("etc/galileo/config")
 install=galileo.install
 
+pkgver() {
+    cd "$srcdir/$pkgname"
+    git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
   cd $srcdir/$pkgname
 
   sed -i 's/logging: verbose/logging: quiet # quiet is default/' galileorc.sample
   sed -i "26,35s/^\(.*\)$/\#\1/" galileorc.sample
-
   sed -i "s|/etc/galileorc|/etc/galileo/config|" contrib/galileo.service
 }
  
