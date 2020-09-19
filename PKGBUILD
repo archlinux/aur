@@ -3,7 +3,7 @@
 # Contributor: priyank
 # Contributor: etix
 
-pkgname=ices0
+pkgname="ices0"
 pkgver=0.4.11
 pkgrel=3
 pkgdesc="A source client for broadcasting in MP3, FLAC, AAC and OGG Vorbis formats to an icecast2 server"
@@ -23,7 +23,7 @@ options=("!docs")
 install="$pkgname.install"
 
 build(){
- cd "$srcdir/$pkgname-$pkgver"
+ cd "$pkgname-$pkgver"
  aclocal
  autoreconf -fi
  automake --add-missing
@@ -33,7 +33,7 @@ build(){
 }
 
 package(){
- cd "$srcdir/$pkgname-$pkgver"
+ cd "$pkgname-$pkgver"
  make DESTDIR="$pkgdir" install
  # Rename files to avoid conflict with ices2
  mv "$pkgdir/usr/bin/ices" "$pkgdir/usr/bin/ices0"
