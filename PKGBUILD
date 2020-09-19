@@ -2,8 +2,8 @@
 
 pkgname=pufferpanel-bin
 _pkgname=pufferpanel
-pkgver=2.0.0_alpha.3
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="PufferPanel: A web-base game management system (binary version)."
 arch=('x86_64')
 url="https://github.com/PufferPanel/PufferPanel"
