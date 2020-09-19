@@ -1,0 +1,14 @@
+pkgbase = whipper-plugin-eaclogger
+	pkgdesc = Logger plugin for whipper that carefully mimics EAC's generated ones
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/whipper-team/whipper-plugin-eaclogger/
+	arch = x86_64
+	license = ISC
+	makedepends = python-setuptools-scm
+	depends = whipper
+	source = https://github.com/whipper-team/whipper-plugin-eaclogger//archive/v0.5.0/whipper-plugin-eaclogger-v0.5.0.tar.gz
+	sha512sums = 87c09a971efccec2d4172a4745dab14eca24acd49786711cbe7c859fd3761cf94ea6e59f500bdf108a63aad5af94cc13f50a0d4238adfcc11c695c656f7a8900
+
+pkgname = whipper-plugin-eaclogger
+
