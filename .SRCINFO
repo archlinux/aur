@@ -1,6 +1,6 @@
 pkgbase = xed-git
 	pkgdesc = A small and lightweight text editor. X-Apps Project (git version).
-	pkgver = master.lmde3.r0.g7220975
+	pkgver = master.mint20.r4.ga71e7ee
 	pkgrel = 1
 	url = https://github.com/linuxmint/xed
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = xed-git
 	makedepends = meson
 	makedepends = intltool
 	makedepends = itstool
-	depends = gtksourceview3
+	depends = gtksourceview4
 	depends = enchant
 	depends = desktop-file-utils
 	depends = libsm
