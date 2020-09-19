@@ -1,0 +1,16 @@
+pkgbase = hawknl-git
+	pkgdesc = An open source game oriented network API (git)
+	pkgver = 20110125
+	pkgrel = 1
+	url = http://www.hawksoft.com/hawknl/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	source = git+https://github.com/dfyx/HawkNL.git
+	source = hawknl.patch
+	md5sums = SKIP
+	md5sums = 7dec01dc297e2a4d3c515f6747dc5c9a
+
+pkgname = hawknl-git
+
