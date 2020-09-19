@@ -1,12 +1,12 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 pkgname=python-telegram
 pkgver=0.12.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Python API for the tdlib library. It helps you build your own Telegram clients."
 arch=(any)
 url="https://github.com/alexander-akhmetov/python-telegram"
 license=('MIT')
-depends=('python3')
+depends=('python3' 'libtd')
 conflicts=('python-telegram-bot')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alexander-akhmetov/$pkgname/archive/$pkgver.tar.gz"
 	"0001-Use-system-tdlib.diff"
