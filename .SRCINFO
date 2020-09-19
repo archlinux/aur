@@ -10,6 +10,7 @@ pkgbase = man-pages-fr-git
 	makedepends = git
 	depends = man-db
 	conflicts = man-pages-fr
+	conflicts = man-pages-pacman-fr
 	options = !emptydirs
 	source = manpages-l10n::git+https://salsa.debian.org/manpages-l10n-team/manpages-l10n.git
 	sha512sums = SKIP
