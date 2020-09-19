@@ -5,7 +5,7 @@
 
 pkgname=gtkpod
 pkgver=2.1.5
-pkgrel=6
+pkgrel=7
 pkgdesc="A platform independent GUI for Apple's iPod using GTK3"
 arch=('x86_64')
 url='https://sourceforge.net/projects/gtkpod/'
@@ -20,7 +20,7 @@ optdepends=('libmp4v2: MP4/h264 support'
 source=("http://downloads.sourceforge.net/gtkpod/$pkgname-$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel.patch")
 sha256sums=('a57dc8ae9138e0cb4cee98691e7a95001130c9ea7823e6a75cc72503facd3a76'
-	'e9126a00933dd2bb28ddb378ab27c1d55b6a8c333a39657a85290b4d1fb4b39c')
+	'3b8a6d091d470271cb9cd3c0709ba0ed1d2ae849ad40cf01f730536485b5db55')
 
 prepare() {
   cd "$pkgname-$pkgver"
