@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-appindicator
 	pkgdesc = Integrates AppIndicators into GNOME Shell
-	pkgver = 33
+	pkgver = 34
 	pkgrel = 1
 	url = https://github.com/ubuntu/gnome-shell-extension-appindicator
 	arch = any
@@ -8,9 +8,8 @@ pkgbase = gnome-shell-extension-appindicator
 	depends = gnome-shell>=3.34
 	optdepends = libappindicator-gtk2: support GTK+2 applications
 	optdepends = libappindicator-gtk3: support GTK+3 applications
-	optdepends = libappindicator-sharp: support .net applications
-	source = gnome-shell-extension-appindicator-33.tar.gz::https://github.com/ubuntu/gnome-shell-extension-appindicator/archive/v33.tar.gz
-	sha256sums = 3ef412a40ff22ac124c222ad33c3d8cc45791ec14552e1842b2dd22f9a0710b9
+	source = gnome-shell-extension-appindicator-34.tar.gz::https://github.com/ubuntu/gnome-shell-extension-appindicator/archive/v34.tar.gz
+	sha256sums = 2d2721e3195a847ae184c9c354dd79062a6d22b6257225b952df7531e6661558
 
 pkgname = gnome-shell-extension-appindicator
 
