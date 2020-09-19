@@ -52,9 +52,9 @@ depends=(
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="ros_controllers-release-release-melodic-ackermann_steering_controller"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_controllers-release/archive/release/melodic/ackermann_steering_controller/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('51080af6bb85aec200e53b327731f99e4df05bca13429348296b9d113ab86859')
+_dir="ros_controllers-${pkgver}/ackermann_steering_controller"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/ros_controllers/archive/${pkgver}.tar.gz")
+sha256sums=('d1b46651956d19a36eedc628c2761526ec4769390e596bd76688abc45f59ace8')
 
 build() {
   # Use ROS environment variables
@@ -72,6 +72,7 @@ build() {
   cmake ${srcdir}/${_dir} \
           -DCMAKE_BUILD_TYPE=Release \
           -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+          -DCATKIN_ENABLE_TESTING=0 \
           -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
           -DPYTHON_EXECUTABLE=/usr/bin/python3 \
           -DSETUPTOOLS_DEB_LAYOUT=OFF
