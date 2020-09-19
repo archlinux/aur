@@ -1,0 +1,55 @@
+*** src/chips/z80/z80.cpp	Sat Sep 19 18:22:46 2020
+--- /home/tmoment/z80.cpp	Sat Sep 19 18:22:00 2020
+***************
+*** 1355,1379 ****
+  }
+  
+  
+! template<bool rlc, bool adjust> u8 Core_z80::doRL (u8 val) {
+      bool _c = reg.bit.c;
+  	reg.bit.c = !! (val & 0x80);
+      val <<= 1;
+      val |= rlc ? (u8)reg.bit.c : (u8)_c;
+  	setUndocumentedFlags(val);
+  	reg.bit.h = reg.bit.n = 0;
+!     if (adjust) setStandardFlags(val);
+      return val;
+  }
+  
+! template<bool rrc, bool adjust> u8 Core_z80::doRR (u8 val) {
+      bool _c = reg.bit.c;
+  	reg.bit.c = !! (val & 0x01);
+      val >>= 1;
+      val |= rrc ? u8 (reg.bit.c << 7) : u8 (_c << 7);
+  	setUndocumentedFlags(val);
+  	reg.bit.h = reg.bit.n = 0;
+!     if (adjust) setStandardFlags(val);
+      return val;
+  }
+  
+--- 1355,1379 ----
+  }
+  
+  
+! template<bool rlc, char adjust> u8 Core_z80::doRL (u8 val) {
+      bool _c = reg.bit.c;
+  	reg.bit.c = !! (val & 0x80);
+      val <<= 1;
+      val |= rlc ? (u8)reg.bit.c : (u8)_c;
+  	setUndocumentedFlags(val);
+  	reg.bit.h = reg.bit.n = 0;
+!     if (adjust != 0) setStandardFlags(val);
+      return val;
+  }
+  
+! template<bool rrc, char adjust> u8 Core_z80::doRR (u8 val) {
+      bool _c = reg.bit.c;
+  	reg.bit.c = !! (val & 0x01);
+      val >>= 1;
+      val |= rrc ? u8 (reg.bit.c << 7) : u8 (_c << 7);
+  	setUndocumentedFlags(val);
+  	reg.bit.h = reg.bit.n = 0;
+!     if (adjust != 0) setStandardFlags(val);
+      return val;
+  }
+  
