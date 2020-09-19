@@ -1,6 +1,6 @@
 pkgbase = protonfixes-git
 	pkgdesc = A module for applying fixes at runtime to unsupported games with Steam Proton without changing game installation files - git version
-	pkgver = 1.0.15.r102.g1202914
+	pkgver = 1.0.15.r128.gc121a1d
 	pkgrel = 1
 	url = https://github.com/simons-public/protonfixes
 	arch = any
@@ -13,6 +13,8 @@ pkgbase = protonfixes-git
 	optdepends = python-kivy: splash progress dialog
 	optdepends = kdialog: splash progress dialog
 	optdepends = zenity: splash progress dialog
+	provides = protonfixes
+	conflicts = protonfixes
 	source = protonfixes-git::git+https://github.com/simons-public/protonfixes#branch=master
 	md5sums = SKIP
 

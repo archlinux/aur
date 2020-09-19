@@ -2,12 +2,14 @@
 # Contributor: Chris Simons < chris at simonsmail dot net >
 
 pkgname=("protonfixes-git")
-pkgver=1.0.15.r102.g1202914
+pkgver=1.0.15.r128.gc121a1d
 pkgrel=1
 pkgdesc="A module for applying fixes at runtime to unsupported games with Steam Proton without changing game installation files - git version"
 arch=("any")
 url="https://github.com/simons-public/protonfixes"
 license=("BSD")
+provides=("protonfixes")
+conflicts=("protonfixes")
 makedepends=("git" "python-setuptools")
 optdepends=('wine: win32 proton prefix support'
             'winetricks: winetricks support'
