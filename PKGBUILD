@@ -2,6 +2,7 @@
 # PKGBUILD file for package clapper
 #
 # Copyright (C) 2020  sp1rit
+# Copyright (C) 2020  Rafostar
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,31 +20,47 @@
 # Maintainer: sp1rit <sp1ritCS@protonmail.com>
 
 pkgname=clapper-git
-pkgver=0.0.0
+pkgver=0.0.0.r0.a504f49
 pkgrel=1
-pkgdesc="A GNOME media player built using GJS and powered by GStreamer with OpenGL rendering. Can also be used as a pre-made widget for Gtk apps."
+pkgdesc="A GNOME media player built using GJS and powered by GStreamer with OpenGL rendering. Can also be used as a pre-made widget for GTK apps."
 arch=(any)
 url="https://github.com/Rafostar/clapper"
 license=("GPL-3.0")
-depends=("gjs" "gst-plugins-base-libs" "gst-plugin-gtk" "gst-plugins-bad-libs")
-makedepends=("meson" "gjs")
-optdepends=("gst-libav: Additional Codecs", "gstreamer-vaapi: Hardware acceleration")
+depends=(
+	"gtk3>=3.19.4"
+	"hicolor-icon-theme"
+	"gjs"
+	"gst-plugins-base-libs"
+	"gst-plugins-good"
+	"gst-plugins-bad-libs>=1.16.0"
+	"gst-plugin-gtk"
+)
+makedepends=(
+	"meson>=0.50"
+	"gjs"
+	"git"
+)
+optdepends=(
+	"gst-libav: Popular video decoders"
+	"gstreamer-vaapi: Intel/AMD video acceleration"
+)
+source=("${pkgname%-git}::git+https://github.com/Rafostar/${pkgname%-git}.git#branch=master")
 provides=("${pkgname%-git}")
-source=("${pkgname%-git}-$pkgver"::git+https://github.com/Rafostar/clapper.git)
+replaces=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 md5sums=("SKIP")
 
-prepare() {
-	cd "${pkgname%-git}-$pkgver"
+pkgver() {
+	cd "$srcdir"/"${pkgname%-git}"
+	echo "0.0.0.r0.$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${pkgname%-git}-$pkgver"
+	cd "$srcdir"/"${pkgname%-git}"
 	meson build/ --prefix=/usr
 }
 
 package() {
-	cd "${pkgname%-git}-$pkgver"
+	cd "$srcdir"/"${pkgname%-git}"
 	DESTDIR="$pkgdir" meson install -C build/
-	ln -s "$pkgdir/usr/bin/com.github.rafostar.Clapper" "$pkgdir/usr/bin/clapper"
 }
-
