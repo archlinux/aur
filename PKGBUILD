@@ -5,7 +5,7 @@
 
 pkgname=solarus-git
 pkgver=1.5.3.r1139.gf0eadc40f
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source adventure 2D game engine (git version)"
 arch=('i686' 'x86_64')
 url="http://www.solarus-games.org/"
