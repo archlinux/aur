@@ -1,4 +1,4 @@
-# Maintainer: Thomas Ascher <thomas.ascher@gmx.at>
+# Maintainer: Carson Rueter <roachh@protonmail.com>
 # Contributor: Thomas Ascher <thomas.ascher@gmx.at>
 pkgname=twombit
 _installdir=/usr/share/$pkgname
