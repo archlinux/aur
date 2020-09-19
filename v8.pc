@@ -7,5 +7,6 @@ Name: V8
 Description: @DESCRIPTION@
 Version: @VERSION@
 URL: @URL@
-Libs: -L{libdir}/v8 -lv8
-Cflags: -I{includedir}/v8
+Requires: icu-i18n
+Libs: -L${libdir}/v8 -lv8_monolith
+Cflags: -I${includedir}/v8

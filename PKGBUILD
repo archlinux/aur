@@ -16,8 +16,8 @@ depends=(icu) # TODO: glibc?
 optdepends=('rlwrap: readline support')
 makedepends=(depot-tools-git python python2)
 conflicts=(v8-3.14 v8-3.14-bin v8-6.7-static v8-6.8 v8-r v8-static-gyp v8-static-gyp-5.4)
-source=("v8.pc" "d8")
-sha512sums=('67e248d18fb31b3804289b7b43dc256227bac0166936b9a8b8781cd29b398cb83bf0bd345a3f8b903fff27438e3a356588a855b26214ab5e36ba541f1f56dbbf'
+source=(v8.pc d8)
+sha512sums=('2d698bdc61e1b7ad01e6476cea87d5a325f7dede333801f010addf1938430164b3e3376dd3078e13ee798d832907bba664d1f047dea223b5beea82287f457397'
             '5aa6fea4a6d2f84bdba2032dcc00a79e3169c49066cc055a5106f858834db38dec3257f7a435aa518eb57eb4dfe4a3e092e2486c522362d49a61dfd92fba5717')
 
 OUTDIR=out/Default/
@@ -26,6 +26,9 @@ export PATH=/opt/depot_tools:$PATH
 
 prepare() {
 	cd "$srcdir/"
+
+	# Fill pkg-config fields
+	sed -i -e "s|@VERSION@|$pkgver|g" -e "s|@DESCRIPTION@|$pkgdesc|g" -e "s|@URL@|$url|g" v8.pc
 
 	if [ ! -d "$pkgname/" ]; then
 		fetch "$pkgname"
@@ -42,9 +45,8 @@ prepare() {
 
 	./build/linux/unbundle/replace_gn_files.py --system-libraries icu
 
-	sed -i -e "s|@VERSION@|$pkgver|g" -e "s|@DESCRIPTION@|$pkgdesc|g" -e "s|@URL@|$url|g" "$srcdir/v8.pc"
-
-	gn gen $OUTDIR --script-executable=python2 --fail-on-unused-args --args="is_component_build=true use_sysroot=false use_custom_libcxx=false"
+	# TODO: Use v8gen.py?
+	gn gen $OUTDIR --script-executable=python2 --fail-on-unused-args --args="v8_monolithic=true is_component_build=false v8_use_external_startup_data=false use_custom_libcxx=false use_sysroot=false"
 
 	# Create missing directories
 	mkdir -p $OUTDIR/gen/shim_headers/icui18n_shim/third_party/icu/source/i18n/unicode/ \
@@ -55,7 +57,7 @@ build() {
 	cd "$srcdir/$pkgname/"
 	# TODO: Use autoninja?
 	# Based on BUILD_TARGETS_TEST in tools/dev/gm.py
-	ninja -C $OUTDIR d8 cctest inspector-test unittests wasm_api_tests
+	ninja -C $OUTDIR v8_monolith d8 cctest inspector-test unittests wasm_api_tests
 }
 
 check() {
@@ -67,26 +69,23 @@ check() {
 package() {
 	cd "$srcdir/$pkgname/"
 
-	# libraries
+	# Install libraries
 	install -Dm755 -t "$pkgdir/usr/lib/$pkgname/" "$OUTDIR/d8" \
-	                                              "$OUTDIR/libv8.so" \
-	                                              "$OUTDIR/libv8_libbase.so" \
-	                                              "$OUTDIR/libv8_libplatform.so" \
-	                                              "$OUTDIR/libchrome_zlib.so"
-	install -Dm644 -t "$pkgdir/usr/lib/$pkgname/" "$OUTDIR/snapshot_blob.bin"
+	                                              "$OUTDIR/obj/libv8_monolith.a"
 
-	# executable
+	# Install executable wrapper
 	install -Dm755 -t "$pkgdir/usr/bin/" "$srcdir/d8"
 
-	# headers
+	# Install headers
 	install -Dm644 -t "$pkgdir/usr/include/v8/" include/*.h
 	for dir in include/*/; do
 		install -Dm644 -t "$pkgdir/usr/include/v8/${dir##include/}" "$dir"/*.h
 	done
+	ln -s "$pkgdir/usr/include/v8/" "$pkgdir/usr/include/v8/include"
 
-	# pkgconfig
+	# Install pkg-config
 	install -Dm644 -t "$pkgdir/usr/lib/pkgconfig/" "$srcdir/v8.pc"
 
-	# licenses
+	# Install licenses
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE*
 }
