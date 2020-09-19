@@ -1,7 +1,7 @@
 # Maintainer: Thomas Gläßle <aur@coldfix.de>
 
 pkgname=steam-acolyte
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Lightweight user account switcher/login keeper for steam"
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:UNLICENSE')
 depends=('python' 'python-pyqt5' 'python-vdf' 'python-docopt')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('528ef922e368ee97b439ec0d34c60403')
+md5sums=('c4ca3bed808c8317e26fc7aab7ac00d9')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
