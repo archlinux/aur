@@ -8,7 +8,6 @@ pkgdesc="Google Material Design icon font"
 arch=('any')
 url='https://github.com/google/material-design-icons'
 license=('Apache')
-depends=(fontconfig xorg-font-utils)
 makedepends=('git')
 replaces=(ttf-material-icons)
 install=$pkgname.install
