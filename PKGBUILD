@@ -4,7 +4,7 @@
 pkgname=virtualbox-ext-oracle-manjaro
 pkgver=6.1.14
 pkgrel=1
-pkgdesc='Oracle VM VirtualBox Extension Pack for Manjaro'
+pkgdesc='Oracle VM VirtualBox Extension Pack for Manjaro Linux'
 arch=('any')
 url='https://www.virtualbox.org/'
 license=('custom:PUEL')
