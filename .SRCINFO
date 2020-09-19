@@ -1,11 +1,11 @@
 pkgbase = cmdtools-git
 	pkgdesc = Tools to manipulate, create, and view commands.
-	pkgver = 1.0.1
+	pkgver = 1.0.1.r4.g9a36144
 	pkgrel = 1
 	url = https://github.com/binex-dsk/cmdtools
 	arch = any
 	license = GPL3
-	makedepends = bash
+	makedepends = coreutils
 	source = git+https://github.com/binex-dsk/cmdtools.git
 	md5sums = SKIP
 
