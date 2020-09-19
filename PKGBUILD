@@ -1,40 +1,42 @@
-# Maintainer: Jakob Gruber (jakob dot gruber at kabelnet dot at)
- 
+# Contributor: Jakob Gruber (jakob dot gruber at kabelnet dot at)
+# Maintainer: Jack Rubacha (rubacha dot jack03 at gmail dot com) 
 _pkgname="mobile-broadband-provider-info"
 pkgname="${_pkgname}-git"
-pkgver=20120129
+pkgver=20190618.r16.g402655a
 pkgdesc="Mobile broadband provider database."
 pkgrel=1
 arch=('any')
 provides=('mobile-broadband-provider-info')
 conflicts=('mobile-broadband-provider-info')
-url="http://git.gnome.org/cgit/mobile-broadband-provider-info/"
+url="http://gitlab.gnome.org/GNOME/mobile-broadband-provider-info/"
+source=("git+https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info.git")
 license=('custom')
-makedepends=('git')
+makedepends=('git' 'libxslt')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $_pkgname
+  NOCONFIGURE=1 ./autogen.sh
+}
+
+check() {
+  cd $_pkgname
+  make check
+}
 
 build() {
-  cd ${srcdir}
-
-  rm -rf "${srcdir}/${_pkgname}"
-  git clone git://git.gnome.org/${_pkgname}
+  cd $_pkgname
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
-
-  mkdir -p ${pkgdir}/usr/share/{,doc/}${_pkgname}/
-  install -m644 \
-        README.svn \
-        ChangeLog \
-        NEWS \
-        authors.svn2cl \
-        MAINTAINERS \
-        README \
-        "${pkgdir}/usr/share/doc/${_pkgname}/"
-  install -m644 \
-        serviceproviders.2.dtd \
-        serviceproviders.xml \
-        "${pkgdir}/usr/share/${_pkgname}/"
-  install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cd $_pkgname
+  make DESTDIR="$pkgdir" install
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
 }
-

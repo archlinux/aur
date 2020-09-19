@@ -1,13 +1,16 @@
 pkgbase = mobile-broadband-provider-info-git
 	pkgdesc = Mobile broadband provider database.
-	pkgver = 20120129
+	pkgver = 20190618.r16.g402655a
 	pkgrel = 1
-	url = http://git.gnome.org/cgit/mobile-broadband-provider-info/
+	url = http://gitlab.gnome.org/GNOME/mobile-broadband-provider-info/
 	arch = any
 	license = custom
 	makedepends = git
+	makedepends = libxslt
 	provides = mobile-broadband-provider-info
 	conflicts = mobile-broadband-provider-info
+	source = git+https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info.git
+	sha256sums = SKIP
 
 pkgname = mobile-broadband-provider-info-git
 
