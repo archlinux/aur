@@ -1,6 +1,6 @@
 pre_remove() {
-    systemctl stop pritunl || true
-    systemctl disable pritunl || true
+    systemctl stop pritunl || :
+    systemctl disable pritunl || :
 }
 
 post_remove() {
