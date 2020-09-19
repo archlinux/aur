@@ -3,7 +3,7 @@
 pkgname="embedded-studio"
 pkgver=5.10b
 pkgrel=1
-pkgdesc="SEGGER Embedded Studio for ARM"
+pkgdesc="Segger Embedded Studio for ARM"
 arch=("x86_64")
 makedepends=()
 depends=('jlink-software-and-documentation')

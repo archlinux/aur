@@ -1,5 +1,5 @@
 pkgbase = embedded-studio
-	pkgdesc = SEGGER Embedded Studio for ARM
+	pkgdesc = Segger Embedded Studio for ARM
 	pkgver = 5.10b
 	pkgrel = 1
 	url = https://www.segger.com/products/development-tools/embedded-studio/
