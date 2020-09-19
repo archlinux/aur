@@ -1,0 +1,17 @@
+pkgbase = alan
+	pkgdesc = The Alan programming language compiler and runtime
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/alantech/alan
+	arch = x86_64
+	license = AGPL3
+	license = Apache
+	makedepends = git
+	makedepends = nodejs-lts-erbium
+	makedepends = rust
+	makedepends = python2
+	source = alan-0.1.8.tar.gz::https://github.com/alantech/alan/archive/v0.1.8.tar.gz
+	sha256sums = 7c4bdaf4ea441c753bd82c85f90fc66da6e5737fc0b55fd872e49b624aa3c6bb
+
+pkgname = alan
+
