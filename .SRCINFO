@@ -4,7 +4,7 @@ pkgbase = ttf-unicons
 	pkgrel = 1
 	url = https://iconscout.com/unicons
 	arch = any
-	license = MIT
+	license = Apache
 	source = https://github.com/iconscout/unicons/releases/download/v3.0.0/fonts.zip
 	md5sums = 40d0cf6fecde35cb3e38fb4074db46b1
 
