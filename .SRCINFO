@@ -1,0 +1,12 @@
+pkgbase = ttf-tabler-icons
+	pkgdesc = A set of over 700 icons.
+	pkgver = 1.21.0
+	pkgrel = 1
+	url = https://github.com/tabler/tabler-icons
+	arch = any
+	license = MIT
+	source = ttf-tabler-icons-1.21.0.tar.gz::https://github.com/tabler/tabler-icons/archive/v1.21.0.tar.gz
+	md5sums = 598fa034068e117025ebfb67ad7d03fb
+
+pkgname = ttf-tabler-icons
+
