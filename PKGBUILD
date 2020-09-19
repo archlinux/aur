@@ -67,7 +67,7 @@ prepare() {
 
 	msg 'Extracting package...'
 	chmod +x "${srcdir}/bitrock-unpacker.tcl"
-	rm -rf "${srcdir}/${pkgname}-${_platform}-${pkgver}"
+	rm -rf "${srcdir}/${_pkgstring}"
         "${srcdir}/bitrock-unpacker.tcl" "${srcdir}/${_pkgstring}-installer.run" \
 		"${srcdir}/${_pkgstring}"
 
