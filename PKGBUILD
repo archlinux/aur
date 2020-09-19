@@ -1,6 +1,6 @@
-# Maintainer: Hussein Al Abry <zidhussein at gmail dot com>
+# Maintainer: Ananthu S Kumar <ask1234560 at gmail dot com>
 pkgname=ttf-material-icons-git
-pkgver=r124.224895a86
+pkgver=r145.96206ade0e
 pkgrel=1
 pkgdesc="Google Material Design icon font"
 arch=('any')
@@ -19,6 +19,6 @@ pkgver() {
 }
 
 package() {
-    cd $srcdir/material-design-icons/iconfont
+    cd $srcdir/material-design-icons/font
     install -D -m644 "MaterialIcons-Regular.ttf" "${pkgdir}/usr/share/fonts/TTF/MaterialIcons-Regular.ttf"
 }
