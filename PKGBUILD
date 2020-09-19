@@ -3,9 +3,8 @@
 # Contributor: Timothée Ravier <tim@siosm.fr>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
-_jqueryver=1.12.4
 pkgname=etherpad-lite
-pkgver=1.8.5
+pkgver=1.8.6
 pkgrel=1
 epoch=1
 pkgdesc="Lightweight fork of etherpad based on javascript"
@@ -26,17 +25,14 @@ backup=("etc/${pkgname}/settings.json"
         "etc/${pkgname}/APIKEY.txt"
         "etc/${pkgname}/SESSIONKEY.txt")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ether/${pkgname}/archive/${pkgver}.tar.gz"
-        "jquery-${_jqueryver}.js::https://code.jquery.com/jquery-${_jqueryver}.js"
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf"
         "${pkgname}.service")
-sha512sums=('2f299e5709249b99447a63f98b3b1a9320fbcc672b400bdbf631f3796ad67c4aaa6dc2e854229094aa80140ccd50eddfe5d98bf922c9475f609bf5a1f6e13a6a'
-            '8cac69ec91c437aa5e126ce683a6bb5c904e44d4c1d084c3d8f8bee85524735e8f09a340257d9a859d5e8e7d69d6e637ecfc728ab9ffd0e30d65b2136c48378f'
+sha512sums=('5dff4acfc5a23752a7e0496fbfa3d263b40e76f67dba26e8c1a9cf8889ed302172e00e94710933b7b5b3f9580a675808d85d9da8a2b3aade08a03e2b7999a384'
             '8c9093cc82acb814023b60eecffae7cb697abfa6193a68ca068f010baf3bf1e5f1678bdb862f4af370badbd71deb6a8499f61c8b6115d280477db1b3fd895dfd'
             'f1be6d7094ea0dd267fba21c7c64017de6a63974e193720100d49eba07170a078d43f0b76c96e6453b8e9e94cdc24b36fb7ab14218598d65d1455418daf9e447'
             'db3f27c2bed7cc84910154da8851daf32ea248aeaca5026c9c4cf138841b921498a0c39d4f9b635d6686d13ac498399e4657563867d87d406ff6b8b6d9dd0d28')
-b2sums=('b59b74b9313ebd8b46e031f3238b5fcd1b48e46d86bbf76779a49f298ec33466b9f713b02b45e51cde677c30d3ef9253cf10cd3e5be7abc637a501e17ca49866'
-        'be6bbbc56409dfc71f26dc071d4ede8a15264780f72add929d18451b7a3d704b860a38f6c8f57f1e355a4776ef7bc97059d2b06cd861632af0bca2935e331f0d'
+b2sums=('450a8d405dbc2536509cc86bada5d9cda6fdf49ec23eb3860a3ecb080a47e340a50c6b8596abecbe0f08cf3d80fd3216c1ac2a5aa8fcdfe10cbac8624b201823'
         'cb519b7d749982d899037445be36dc54754c523ee7aaa3f7d005b4cea4dd74c1596535b17bfdd6910923e4f723ee02c625d579966a601b84ca1b1eeb82fe932e'
         '88f0f7b9bbc64b853e3169cc9627b64c4b5aaef7238553ed110f82ebd40e1f8b0078d17a69adee6a37f6d59f6eb0871fc209a1fb6e4b71b7ac5239071db2eec7'
         '12c3be8037959b0613adc82a5632845a79c966a6c9ccbadffd103c30c5cb951c0d31e2cc8f2cfce5ebcaba847baf168584cd6dac4a76c0d14b0d534f1c82219b')
@@ -157,9 +153,6 @@ package() {
   # symlink directory for custom css and js
   ln -vs "/etc/${pkgname}/no-skin/" \
     "${pkgdir}/usr/share/${pkgname}/src/static/skins/"
-  #jquery
-  install -vDm 644 "${srcdir}/jquery-${_jqueryver}.js" \
-    "${pkgdir}/usr/share/${pkgname}/src/static/js/jquery.js"
   # configuration
   install -vDm 640 settings.json.template \
     "${pkgdir}/etc/${pkgname}/settings.json"
