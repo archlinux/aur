@@ -1,0 +1,11 @@
+--- a/README.rst	2020-09-19 05:16:43.000000000 +0800
++++ b/README.rst	2020-09-19 10:36:34.102121731 +0800
+@@ -108,7 +108,7 @@
+ should have a clockwise order. When creating a new spherical polygon,
+ the order of the points defining a polygon will be reversed if they are
+ not in clockwise order. The method ``SphericalPolygon.is_clockwise`` is
+-used to est if the points are in clockwise order. It takes two
++used to test if the points are in clockwise order. It takes two
+ successive sides and computes the normal vector to the sides. If the
+ normal vector points inward towards the center of the sphere, the two
+ sides are counter clockwise. If the normal vector points outward, the
