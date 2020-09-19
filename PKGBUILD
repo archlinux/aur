@@ -5,7 +5,7 @@
 
 pkgname=lxd-git
 _pkgname=lxd
-pkgver=4.1.r4.70ddda927
+pkgver=4.6.r2.e1fa47b27
 pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
@@ -13,8 +13,8 @@ url="https://linuxcontainers.org/lxd"
 license=('APACHE')
 conflicts=('lxd' 'lxd-lts')
 provides=('lxd')
-depends=('lxc' 'lxcfs' 'squashfs-tools' 'dnsmasq' 'libuv')
-makedepends=('go' 'git' 'tcl' 'patchelf')
+depends=('lxc' 'lxcfs' 'squashfs-tools' 'dnsmasq' 'libuv' 'sqlite')
+makedepends=('go' 'git' 'patchelf')
 optdepends=('lvm2: for lvm2 support'
             'thin-provisioning-tools: for thin provisioning support'
             'btrfs-progs: for btrfs storage driver support'
@@ -49,9 +49,9 @@ build() {
   export GOPATH="${srcdir}/go"
   cd "${GOPATH}/src/${_lxd}"
   make deps
-  export CGO_CFLAGS="-I${GOPATH}/deps/sqlite/ -I${GOPATH}/deps/libco/ -I${GOPATH}/deps/raft/include/ -I${GOPATH}/deps/dqlite/include/"
-  export CGO_LDFLAGS="-L${GOPATH}/deps/sqlite/.libs/ -L${GOPATH}/deps/libco/ -L${GOPATH}/deps/raft/.libs -L${GOPATH}/deps/dqlite/.libs/"
-  export LD_LIBRARY_PATH="${GOPATH}/deps/sqlite/.libs/:${GOPATH}/deps/libco/:${GOPATH}/deps/raft/.libs/:${GOPATH}/deps/dqlite/.libs/"
+  export CGO_CFLAGS="-I${GOPATH}/deps/raft/include/ -I${GOPATH}/deps/dqlite/include/"
+  export CGO_LDFLAGS="-L${GOPATH}/deps/raft/.libs -L${GOPATH}/deps/dqlite/.libs/"
+  export LD_LIBRARY_PATH="${GOPATH}/deps/raft/.libs/:${GOPATH}/deps/dqlite/.libs/"
   export CGO_LDFLAGS_ALLOW="-Wl,-wrap,pthread_create"
   make
 }
@@ -67,8 +67,6 @@ package() {
   install -p -m755 "${go_bin_dir}/"* "${pkgdir}/usr/bin"
   patchelf --set-rpath "/usr/lib/lxd" "${pkgdir}/usr/bin/lxd"
   cp --no-dereference --preserve=timestamps \
-    "${go_deps_dir}/sqlite/.libs/"libsqlite3.so* \
-    "${go_deps_dir}/libco/"libco.so* \
     "${go_deps_dir}/raft/.libs/"libraft.so* \
     "${go_deps_dir}/dqlite/.libs/"libdqlite.so* \
     "${pkgdir}/usr/lib/lxd"
