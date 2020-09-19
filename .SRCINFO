@@ -1,13 +1,13 @@
 pkgbase = shelldio
-	pkgdesc = KISS Shell Radio for your terminal
-	pkgver = 1.2
+	pkgdesc = KISS Shell Radio (Greek) for your terminal
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/CerebruxCode/Shelldio
 	arch = any
 	license = GPL3
 	depends = mpv
-	source = shelldio-1.2.tar.gz::https://github.com/CerebruxCode/shelldio/archive/v1.2.tar.gz
-	md5sums = 430223fd21dede9cc337fc7e086f0764
+	source = shelldio-2.0.tar.gz::https://github.com/CerebruxCode/shelldio/archive/v2.0.tar.gz
+	md5sums = 07cfe95733ade9ba30be98c9a6d0849b
 
 pkgname = shelldio
 
