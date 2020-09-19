@@ -1,16 +1,16 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Dominic Radermacher <blip@mockmoon-cybernetics.ch>
 
-_pkgname=ptouch-print
-pkgname=${_pkgname}-git
-pkgver=1.4.2.r12.geb59d40
+_pkgname='ptouch-print'
+pkgname="${_pkgname}-git"
+pkgver=1.4.2.r13.g4a6c15d
 pkgrel=1
 pkgdesc="Command line tool to print labels on Brother P-Touch printers"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url='https://mockmoon-cybernetics.ch/computer/p-touch2430pc/'
 license=('GPL2')
 depends=('gd' 'libusb')
-makedepends=('autoconf' 'git')
+makedepends=('git')
 provides=("${_pkgname}")
 source=("git+https://mockmoon-cybernetics.ch/cgi/cgit/linux/${_pkgname}.git")
 sha256sums=('SKIP')
@@ -28,8 +28,8 @@ build() {
 
 package() {
   make DESTDIR="${pkgdir}" -C "${_pkgname}" install
-  install -Dm644 "${_pkgname}/${_pkgname}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
-  install -Dm644 "${_pkgname}/README" "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  install -Dm644 -t "${pkgdir}/usr/share/man/man1" "${_pkgname}/${_pkgname}.1"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_pkgname}/README"
 }
 
 # vim: ts=2 sw=2 et:
