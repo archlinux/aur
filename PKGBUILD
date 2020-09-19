@@ -1,7 +1,7 @@
 # Maintainer: Wenxuan <wenxuangm@gmail.com>
 pkgname=csview
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance csv viewer with cjk/emoji support."
 arch=(x86_64)
 url="https://github.com/wfxr/csview"
