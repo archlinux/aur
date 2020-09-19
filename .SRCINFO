@@ -1,25 +1,27 @@
 pkgbase = curl-git
-	pkgdesc = A URL retrieval utility and library
-	pkgver = 7.56.0.55.g4440b6ad5
+	pkgdesc = An URL retrieval utility and library
+	pkgver = 7.72.0
 	pkgrel = 1
-	url = https://curl.haxx.se/
-	arch = i686
+	url = https://curl.haxx.se
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	depends = ca-certificates
 	depends = krb5
 	depends = libssh2
+	depends = libssh2.so
 	depends = openssl
 	depends = zlib
 	depends = libpsl
+	depends = libpsl.so
 	depends = libnghttp2
-	provides = curl=7.56.0.55.g4440b6ad5
+	depends = libidn2
+	depends = libidn2.so
+	depends = zstd
 	provides = libcurl.so
+	provides = curl
 	conflicts = curl
-	options = !libtool
-	source = git://github.com/curl/curl.git
-	md5sums = SKIP
+	source = git+https://github.com/curl/curl
+	sha512sums = SKIP
 
 pkgname = curl-git
 
