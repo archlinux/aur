@@ -1,0 +1,23 @@
+diff '--color=auto' -Naur a/hotdoc/parsers/gtk_doc.py b/hotdoc/parsers/gtk_doc.py
+--- a/hotdoc/parsers/gtk_doc.py	2020-09-19 19:54:17.255795972 +0800
++++ b/hotdoc/parsers/gtk_doc.py	2020-09-19 19:44:25.378975943 +0800
+@@ -27,7 +27,7 @@
+ import cgi
+ from collections import OrderedDict
+ from itertools import zip_longest
+-from xdg import XDG_DATA_HOME, XDG_DATA_DIRS
++from hotdoc.xdg import XDG_DATA_HOME, XDG_DATA_DIRS
+ from lxml import etree
+ 
+ import yaml
+diff '--color=auto' -Naur a/setup.py b/setup.py
+--- a/setup.py	2020-09-19 19:37:44.225050630 +0800
++++ b/setup.py	2020-09-19 19:53:43.295486605 +0800
+@@ -317,7 +317,6 @@
+     'appdirs',
+     'wheezy.template==0.1.167',
+     'toposort>=1.4',
+-    'xdg>=4.0.0',
+ ]
+ 
+ # dbus-deviation requires sphinx, which requires python 3.5

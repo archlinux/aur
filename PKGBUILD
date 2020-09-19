@@ -19,11 +19,12 @@
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
 pkgname=hotdoc
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The tastiest API documentation system'
 arch=('x86_64') # parsers are built into native libraries
 url='https://github.com/hotdoc/hotdoc'
 license=('LGPL2.1')
+_xdgver=4.0.1
 depends=(
     'json-glib'
     'clang'
@@ -35,7 +36,6 @@ depends=(
     'python-appdirs'
     'python-wheezy-0.1.167'
     'python-toposort'
-    'python-xdg'
     'python-dbus-deviation'
     'python-pkgconfig-1.1.0'
     'python-cchardet'
@@ -49,15 +49,30 @@ makedepends=(
     'npm'
 )
 # upstream tarball does not contain submodules or their revision info
-source=("git+https://github.com/${pkgname}/${pkgname}.git#tag=${pkgver}")
-sha256sums=('SKIP')
+source=(
+    "git+https://github.com/${pkgname}/${pkgname}.git#tag=${pkgver}"
+    'xdg-path.patch'
+    "https://github.com/srstevenson/xdg/archive/${_xdgver}.tar.gz"
+)
+sha256sums=('SKIP'
+            'c29c62073f0ffe03c8975a28855a42cf96c40085ff53d14303f832269c0d7d7c'
+            'dfa8c94c29980faa6f67199c305b3e1de0f5aba48a0636d3a2aeccf0e0a662b7')
+
+prepare() {
+  cd "${pkgname}"
+  patch -p1 -i ../xdg-path.patch
+  mkdir -p hotdoc/xdg
+  cp "../xdg-${_xdgver}/src/xdg/__init__.py" hotdoc/xdg
+}
 
 build() {
-  cd "$pkgname"
+  cd "${pkgname}"
   python setup.py build
 }
 
 package() {
-  cd "$pkgname"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "${pkgname}"
+  python setup.py install --root="${pkgdir}/" --optimize=1
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm644 "../xdg-${_xdgver}/LICENCE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE.xdg"
 }

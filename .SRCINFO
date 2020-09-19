@@ -1,7 +1,7 @@
 pkgbase = hotdoc
 	pkgdesc = The tastiest API documentation system
 	pkgver = 0.12.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hotdoc/hotdoc
 	arch = x86_64
 	license = LGPL2.1
@@ -9,7 +9,6 @@ pkgbase = hotdoc
 	makedepends = flex
 	makedepends = git
 	makedepends = npm
-	makedepends = python-setuptools
 	depends = json-glib
 	depends = clang
 	depends = llvm
@@ -20,13 +19,17 @@ pkgbase = hotdoc
 	depends = python-appdirs
 	depends = python-wheezy-0.1.167
 	depends = python-toposort
-	depends = python-xdg
 	depends = python-dbus-deviation
 	depends = python-pkgconfig-1.1.0
 	depends = python-cchardet
 	depends = python-networkx-1.11
+	depends = python-setuptools
 	source = git+https://github.com/hotdoc/hotdoc.git#tag=0.12.2
+	source = xdg-path.patch
+	source = https://github.com/srstevenson/xdg/archive/4.0.1.tar.gz
 	sha256sums = SKIP
+	sha256sums = c29c62073f0ffe03c8975a28855a42cf96c40085ff53d14303f832269c0d7d7c
+	sha256sums = dfa8c94c29980faa6f67199c305b3e1de0f5aba48a0636d3a2aeccf0e0a662b7
 
 pkgname = hotdoc
 
