@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="dkimpy-milter"
-pkgver="1.2.2"
+pkgver=1.2.2
 pkgrel=2
 pkgdesc="DomainKeys Identified Mail (DKIM) milter in Python, with support for ed25519 signatures"
 url="https://launchpad.net/dkimpy-milter"
