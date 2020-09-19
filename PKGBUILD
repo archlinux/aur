@@ -40,7 +40,7 @@ sha256sums=(
 
 package() {
   cd "$srcdir/GUIDE-1.0.2-ubuntu"
-  install -Dm644 doc/**/*.* -t "$pkgdir"/usr/share/doc/GUIDE/html/
+  install -Dm644 doc/*.* doc/**/*.* -t "$pkgdir"/usr/share/doc/GUIDE/html/
   install -Dm644 lang_en.qm -t "$pkgdir"/usr/share/
   install -Dm644 apis/* -t "$pkgdir"/usr/share/apis/
   install -Dm644 doc/images/Manna.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/GUIDE.png
