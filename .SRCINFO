@@ -1,6 +1,6 @@
 pkgbase = foo2zjs-nightly
 	pkgdesc = foo2zjs Printer Drivers (automatically updated). Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers.
-	pkgver = 20200505
+	pkgver = 20200917
 	pkgrel = 1
 	url = http://foo2zjs.rkkda.com/
 	install = foo2zjs.install
