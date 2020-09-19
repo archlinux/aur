@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-libheif
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HEIF file format decoder and encoder."
 url="https://github.com/strukturag/libheif"
 license=("LGPL")
@@ -14,7 +14,7 @@ depends=(
 	"mingw-w64-rav1e"
 	#"mingw-w64-x265"
 )
-makedepends=("mingw-w64-make")
+makedepends=("mingw-w64-make" "mingw-w64-configure")
 arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
