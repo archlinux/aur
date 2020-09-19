@@ -1,0 +1,14 @@
+pkgbase = python-pyepsg
+	pkgdesc = A simple interface to https://epsg.io/
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/rhattersley/pyepsg
+	arch = any
+	license = LGPL3
+	makedepends = python-setuptools
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/p/pyepsg/pyepsg-0.4.0.tar.gz
+	sha256sums = 2d08fad1e7a8b47a90a4e43da485ba95705923425aefc4e2a3efa540dbd470d7
+
+pkgname = python-pyepsg
+
