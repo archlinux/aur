@@ -87,7 +87,7 @@ index f18459f..0956c79 100644
  
  ifeq ($(UNAME),Darwin)
  install-hotplug: install-hotplug-test install-hotplug-osx
-@@ -1008,67 +1020,14 @@ install-hotplug-test:
+@@ -1008,68 +1020,14 @@ install-hotplug-test:
  	#
  
  install-hotplug-prog:
@@ -118,6 +118,7 @@ index f18459f..0956c79 100644
 -	    elif [ -x /usr/lib/systemd/systemd-udevd ]; then \
 -		version=`/usr/lib/systemd/systemd-udevd --version 2>/dev/null`; \
 -	    fi; \
+-	    version=`echo $$version | sed -e 's/^v//' -e 's/-.*//' `; \
 -	    if [ "$$version" = "" ]; then version=0; fi; \
 -	    echo "***"; \
 -	    echo "*** udev version $$version"; \

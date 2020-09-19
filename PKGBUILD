@@ -4,8 +4,8 @@
 # Contributor: Muhammed Uluyol <uluyol0@gmail.com>
 
 pkgname=foo2zjs-nightly
-pkgver=20180920
-pkgrel=2
+pkgver=20200505
+pkgrel=1
 pkgdesc="foo2zjs Printer Drivers (automatically updated). Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
 license=('GPL' 'custom')
@@ -84,7 +84,7 @@ noextract=(
 sha256sums=('SKIP'
             '430881c9ac27cddf584103445f91741ded6798b8a1e96c94e9153f9af4f70994'
             'e00c67c20db3e035dbef9561b87289481741c7cc7e7a00594ade2b519f544f95'
-            '60d6752a125e0c886f529514d005af573828c2c4c7781103f5edd1c9f03f040e'
+            'a83dd6561cf2ffd12c47833e665c9d7aa79b46ba5d7fea270216b0ec2828f4ee'
             'b6ec41a41c7a13223792daf1444803e389127885e5b2bdd932a1cb693143fd8f'
             '52f149a0e13a6d208fc49b8168a61349989b99ab2b2fdebf3334e23a38ed5c16'
             '89c929daedb6e7ad610676eabecfb9b1f1f5244ace2c443508c55171be340944'
@@ -120,6 +120,8 @@ sha256sums=('SKIP'
             'bf007787256d55bcc468a0e77d244a3a6ab383e38a6849ddcf6b3647eb965c0e')
 
 prepare() {
+	export LC_COLLATE=C
+
 	cd foo2zjs
 
 	for p in "${_patches[@]}"; do
