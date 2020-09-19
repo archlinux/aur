@@ -1,4 +1,4 @@
-From f385ff60cf00ed6bac84483bd5da9aa84638bb14 Mon Sep 17 00:00:00 2001
+From 9b1439bc349d79874e0b446d156982c130e698f0 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Wed, 19 Aug 2020 15:09:26 -0300
 Subject: [PATCH 18/24] UI: Disable and ignore Always On Top on Wayland

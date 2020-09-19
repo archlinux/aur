@@ -1,4 +1,4 @@
-From 334bad8172f854d14e3079f03349d16a4ce2df73 Mon Sep 17 00:00:00 2001
+From 810e7a1d5e547d25da3d62ecbb25a1dcb8990d2f Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Tue, 18 Aug 2020 19:38:29 -0300
 Subject: [PATCH 15/24] UI: Destroy display when becoming invisible

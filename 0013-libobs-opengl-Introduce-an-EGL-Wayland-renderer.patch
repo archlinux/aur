@@ -1,4 +1,4 @@
-From c5e9210a3b0d5a19cfc1b74ea400f049d4983992 Mon Sep 17 00:00:00 2001
+From fc5b9a4e3f196e0795b1966b64b86d02e4cc1ecb Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Mon, 9 Mar 2020 21:09:11 -0300
 Subject: [PATCH 13/24] libobs-opengl: Introduce an EGL/Wayland renderer

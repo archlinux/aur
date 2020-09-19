@@ -1,7 +1,7 @@
-From 8b047f19f5351382da17951a24923ca195fb5002 Mon Sep 17 00:00:00 2001
+From 54e6e2f92cfeb9375e281c958102d58d076295a1 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Sat, 14 Mar 2020 14:26:02 -0300
-Subject: [PATCH 23/24] libobs-opengl: Implement DMA-BUF importing on EGL
+Subject: [PATCH 24/24] libobs-opengl: Implement DMA-BUF importing on EGL
  renderers
 
 This is currently extremely limited. It only supports XRGB8888
@@ -30,7 +30,7 @@ index 0f694b6c..c434c65f 100644
  		gl-x11-glx.c)
 diff --git a/libobs-opengl/gl-egl-common.c b/libobs-opengl/gl-egl-common.c
 new file mode 100644
-index 00000000..8688af6b
+index 00000000..0696839e
 --- /dev/null
 +++ b/libobs-opengl/gl-egl-common.c
 @@ -0,0 +1,340 @@
@@ -297,8 +297,8 @@ index 00000000..8688af6b
 +	}
 +
 +	egl_image = create_dmabuf_egl_image(egl_display, width, height,
-+					    DRM_FORMAT_ARGB8888, n_planes, fds,
-+					    strides, offsets, modifiers);
++					    drm_format, n_planes, fds, strides,
++					    offsets, modifiers);
 +	if (egl_image == EGL_NO_IMAGE) {
 +		blog(LOG_ERROR, "Cannot create EGLImage: %s",
 +		     gl_egl_error_to_string(eglGetError()));

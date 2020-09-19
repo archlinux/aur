@@ -1,4 +1,4 @@
-From a80131faaa1fad9aff4c4cbe79d49016ff24a6e7 Mon Sep 17 00:00:00 2001
+From f686f95d5577e39d1e230992db9667263a50b056 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Tue, 7 Apr 2020 23:17:02 -0300
 Subject: [PATCH 09/24] UI: Set the Unix platform on startup
