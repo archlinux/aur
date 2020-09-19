@@ -1,4 +1,4 @@
-# Maintainer: Carson Rueter <bottomtext97@gmail.com>
+# Maintainer: Carson Rueter <roachh@protonmail.com>
 pkgname='cmdtools-git'
 _pkgname='cmdtools'
 pkgver=1.0.1.r4.g9a36144
@@ -18,7 +18,7 @@ pkgver() {
 
 package() {
 	cd $srcdir/$_pkgname/src
-	for i in find -type f
+	for i in `find -type f`
 		do install -Dm755 "$i" "$pkgdir/usr/bin/`basename $i`"
 	done
 }
