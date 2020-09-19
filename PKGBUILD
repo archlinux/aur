@@ -3,13 +3,13 @@
 pkgname=semgrep-bin
 _name=semgrep
 pkgver=0.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and syntax-aware semantic code pattern search for many languages: like grep but for code"
 arch=(x86_64)
 url=https://github.com/returntocorp/semgrep
 license=(LGPL2.1)
 makedepends=('python-setuptools' 'python-wheel')
-depends=('zlib' 'bzip2' 'python' 'python-ruamel-yaml' 'python-colorama' 'python-requests' 'python-attrs' 'python-tqdm' 'python-ruamel-yaml' 'python-packaging' 'python-jsonschema')
+depends=('python' 'python-ruamel-yaml' 'python-colorama' 'python-requests' 'python-attrs' 'python-tqdm' 'python-ruamel-yaml' 'python-packaging' 'python-jsonschema')
 provides=('semgrep')
 options=('!strip')
 source=(
