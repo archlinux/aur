@@ -6,7 +6,10 @@ pkgbase = python-mkdocs-material-extensions-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = python-wheel
 	provides = python-materialx
+	provides = python-mkdocs-material-extensions
 	source = git+https://github.com/facelessuser/mkdocs-material-extensions
 	md5sums = SKIP
 
