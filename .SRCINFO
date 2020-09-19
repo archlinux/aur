@@ -1,5 +1,5 @@
 pkgbase = passman-git
-	pkgdesc = Super-secure, easy-to-use password manager.
+	pkgdesc = Secure, simple-to-use, lightweight command line password manager.
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/binex-dsk/PyPassMan
@@ -9,7 +9,9 @@ pkgbase = passman-git
 	depends = python3
 	depends = python-cryptography
 	source = git+https://github.com/binex-dsk/PyPassMan.git
+	source = passman.sh
 	md5sums = SKIP
+	md5sums = 8bb57da0fa0dcee2823bda7f1fbc132b
 
 pkgname = passman-git
 
