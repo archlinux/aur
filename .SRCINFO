@@ -1,11 +1,11 @@
 pkgbase = zoiper-classic
-	pkgdesc = An IAX and SIP VoIP softphone
-	pkgver = 2.20
+	pkgdesc = An IAX and SIP VoIP softphone (classic version)
+	pkgver = 3.3
 	pkgrel = 1
 	url = http://www.zoiper.com/
-	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = bitrock-unpacker
 	depends = gtk2
 	depends = alsa-lib
 	depends = libxdamage
@@ -13,7 +13,7 @@ pkgbase = zoiper-classic
 	source = zoiper-classic.desktop
 	source = zoiper-classic.png
 	sha1sums = 74e9f2d5dc6ec7174923e824b3db64b47b6d3b3c
-	sha1sums = 0c97f32bf45d48ec992b1c1f22a7b24a904e4417
+	sha1sums = 7458a11bac24aa7ecc454f374b43e5c3cb83faff
 	sha1sums = 1b68b4fc56baff2de6661b654053ce6b60fe174f
 
 pkgname = zoiper-classic
