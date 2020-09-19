@@ -1,6 +1,6 @@
 pkgname=(husky-tosser-git husky-msged-git husky-all-git)
 _realpkg=husky
-pkgver=20190108
+pkgver=20200415
 pkgrel=1
 pkgdesc="Husky Fido Tosser"
 arch=('x86_64')
@@ -83,7 +83,7 @@ package_husky-msged-git() {
     make DESTDIR="$pkgdir" install
 }
 
-md5sums=('799c230ec374e22abcdb0b5452dce37c'
+md5sums=('e54eecdaef0be214f22dfd966cc5a297'
          '0ec212f2bb31d149cd1717ab681f519a'
          '48ba1f5f4ded114e500ef83ce1fe407a'
          'c7238eec644bd1aeaf0a0c993f5dd8fc'
@@ -101,5 +101,4 @@ md5sums=('799c230ec374e22abcdb0b5452dce37c'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP'
-         )
+         'SKIP')

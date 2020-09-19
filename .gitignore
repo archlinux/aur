@@ -3,6 +3,7 @@ pkg/
 *.tar.?z
 *.tar.bz2
 *.t?z
+*.zst
 areafix/
 areastat/
 bsopack/

@@ -1,6 +1,6 @@
 pkgbase = husky-tosser-git
 	pkgdesc = Husky Fido Tosser
-	pkgver = 20190108
+	pkgver = 20200415
 	pkgrel = 1
 	url = http://husky.sourceforge.net/hpt.html
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = husky-tosser-git
 	source = htick::git+https://github.com/huskyproject/htick.git
 	source = hptsqfix::git+https://github.com/huskyproject/hptsqfix.git
 	source = msged::git+https://github.com/huskyproject/msged.git
-	md5sums = 799c230ec374e22abcdb0b5452dce37c
+	md5sums = e54eecdaef0be214f22dfd966cc5a297
 	md5sums = 0ec212f2bb31d149cd1717ab681f519a
 	md5sums = 48ba1f5f4ded114e500ef83ce1fe407a
 	md5sums = c7238eec644bd1aeaf0a0c993f5dd8fc
@@ -48,7 +48,7 @@ pkgbase = husky-tosser-git
 
 pkgname = husky-tosser-git
 	pkgdesc = Husky Fido Tosser: hpt (tosser) and netmail/echomail tools (git version)
-	provides = husky-tosser=20190108
+	provides = husky-tosser=20200415
 	conflicts = husky-all
 	conflicts = husky-tosser
 	conflicts = husky-all-git
@@ -56,14 +56,14 @@ pkgname = husky-tosser-git
 pkgname = husky-msged-git
 	pkgdesc = Husky Fido Tosser: msged (message editor) (git version)
 	depends = husky-tosser-git
-	provides = husky-tosser=20190108
+	provides = husky-tosser=20200415
 	conflicts = husky-all
 	conflicts = husky-msged
 	conflicts = husky-all-git
 
 pkgname = husky-all-git
 	pkgdesc = Husky Fido Tosser: Complete bundle (git version)
-	provides = husky-all=20190108
+	provides = husky-all=20200415
 	conflicts = husky-all
 	conflicts = husky-tosser
 	conflicts = husky-tosser-git
