@@ -1,0 +1,14 @@
+pkgbase = nocturnal-themes-git
+	pkgdesc = A GTK, xfwm4, openbox-3, and GNOME-Shell - Dark Mode Theme
+	pkgver = 1.0.r100.g66fb761
+	pkgrel = 1
+	url = https://github.com/rtlewis88/rtl88-Themes/tree/Nocturnal
+	arch = any
+	license = custom:CC BY-SA
+	makedepends = git
+	optdepends = gtk-engine-murrine: for gtk2 themes
+	optdepends = gtk-engines: for gtk2 themes
+	conflicts = nocturnal-themes
+
+pkgname = nocturnal-themes-git
+
