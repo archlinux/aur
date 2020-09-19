@@ -1,0 +1,4 @@
+f /etc/mstream.json 0640 root mstream
+d /var/cache/mstream 0750 mstream mstream
+d /var/lib/mstream 0750 mstream mstream
+d /var/log/mstream 0750 mstream mstream

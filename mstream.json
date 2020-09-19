@@ -4,7 +4,7 @@
   "writeLogs": "true",
   "storage": {
     "albumArtDirectory":"/var/lib/mstream/album-art",
-    "dbDirectory":"/var/lib/mstream/",
+    "dbDirectory":"/var/lib/mstream/db/",
     "logsDirectory": "/var/log/mstream/"
   },
   "folders": {
