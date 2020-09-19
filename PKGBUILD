@@ -59,10 +59,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.8.7.arch1.r935506.fb2821e72648
+pkgver=v5.8.10.arch1.r935506.fb2821e72648
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v5.8.7.arch1
+_srcver_tag=v5.8.10.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
