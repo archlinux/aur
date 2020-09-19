@@ -22,6 +22,7 @@ sha512sums=('SKIP')
 build() {
   cd curl
 
+  ./buildconf
   ./configure \
       --prefix=/usr \
       --mandir=/usr/share/man \
