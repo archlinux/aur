@@ -4,7 +4,7 @@
 
 pkgname=platformio-git
 _pkgname=platformio-core
-pkgver=v4.3.4.r85.g7bc22353
+pkgver=v5.0.1.r9.ga384411a
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
