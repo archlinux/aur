@@ -1,15 +1,18 @@
 pkgbase = printit-git
 	pkgdesc = Utility for printing at Chalmers University
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/viddem/printit
 	arch = any
 	license = AGPL3
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python>=3
 	depends = python-requests
 	depends = python-setuptools
 	depends = python-pip
+	depends = python-click
+	depends = python-lxml
 	source = printit-git::git+https://github.com/viddem/printit.git
 	sha256sums = SKIP
 
