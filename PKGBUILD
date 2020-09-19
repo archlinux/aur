@@ -1,54 +1,51 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Fernando Carmona Varo <ferkiwi @t gmail dot com>
 # Contributor: BenObiWan <benobiwan @t gmail dot com>
 
 pkgname=solarus-git
-pkgver=1.5.3.r380.gfd4a0e295
+pkgver=1.5.3.r1139.gf0eadc40f
 pkgrel=1
-pkgdesc="An open-source adventure 2D game engine (development version)"
+pkgdesc="An open-source adventure 2D game engine (git version)"
 arch=('i686' 'x86_64')
 url="http://www.solarus-games.org/"
 license=('GPL3')
-depends=('sdl2_image' 'sdl2_ttf' 'luajit' 'physfs' 'openal' 'libmodplug' 'libvorbis'
-         'hicolor-icon-theme' 'qt5-base')
-makedepends=('git' 'cmake' 'ninja' 'qt5-tools' 'glm')
-optdepends=('zsdx-git: Free 2D Zelda fangame'
-            'zsxd-git: Parodic Zelda fangame'
-            'zelda-mercuris-chest: Zelda fangame (in development)'
-            'zelda-xd2: April Fools game'
-            'zelda-roth-se: Remake of Zelda Return of the Hylian'
-            'zelda-olb-se: Remake of Zelda Oni Link Begins')
-provides=('solarus-engine' 'solarus')
+depends=('glm'
+         'hicolor-icon-theme'
+         'libmodplug>=0.8.8.4'
+         'libvorbis'
+         'luajit>=2.0'
+         'openal'
+         'physfs'
+         'qt5-base'
+         'qt5-tools'
+         'sdl2>=2.0.6'
+         'sdl2_image'
+         'sdl2_ttf')
+makedepends=('git' 'cmake')
+provides=('solarus')
 conflicts=('solarus')
 source=($pkgname::'git+https://gitlab.com/solarus-games/solarus.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  local _tag=$(git tag -l 'v*' | sort -r | head -n1 | tr -cd 0-9.)
-  local _rev=$(git rev-list --count v${_tag}..HEAD)
-  local _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"  
+  cd "$pkgname"
+  git describe --long | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd $pkgname
-
-  rm -rf build
-  mkdir build
+  cmake -Wno-dev -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_CXX_FLAGS="$CXXFLAGS $CPPFLAGS" -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" .
 }
 
 build() {
-  cd $pkgname/build
-
-  cmake .. -GNinja -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release
-  ninja
+  make -C "$pkgname"
 }
 
 check() {
-  ninja -C $pkgname/build test
+  make -C "$pkgname" test
 }
 
 package() {
-  DESTDIR="$pkgdir/" ninja -C $pkgname/build install
+  make -C "$pkgname" install
 }

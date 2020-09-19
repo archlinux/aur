@@ -1,6 +1,6 @@
 pkgbase = solarus-git
-	pkgdesc = An open-source adventure 2D game engine (development version)
-	pkgver = 1.5.3.r380.gfd4a0e295
+	pkgdesc = An open-source adventure 2D game engine (git version)
+	pkgver = 1.5.3.r1139.gf0eadc40f
 	pkgrel = 1
 	url = http://www.solarus-games.org/
 	arch = i686
@@ -8,25 +8,18 @@ pkgbase = solarus-git
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
-	makedepends = ninja
-	makedepends = qt5-tools
-	makedepends = glm
+	depends = glm
+	depends = hicolor-icon-theme
+	depends = libmodplug>=0.8.8.4
+	depends = libvorbis
+	depends = luajit>=2.0
+	depends = openal
+	depends = physfs
+	depends = qt5-base
+	depends = qt5-tools
+	depends = sdl2>=2.0.6
 	depends = sdl2_image
 	depends = sdl2_ttf
-	depends = luajit
-	depends = physfs
-	depends = openal
-	depends = libmodplug
-	depends = libvorbis
-	depends = hicolor-icon-theme
-	depends = qt5-base
-	optdepends = zsdx-git: Free 2D Zelda fangame
-	optdepends = zsxd-git: Parodic Zelda fangame
-	optdepends = zelda-mercuris-chest: Zelda fangame (in development)
-	optdepends = zelda-xd2: April Fools game
-	optdepends = zelda-roth-se: Remake of Zelda Return of the Hylian
-	optdepends = zelda-olb-se: Remake of Zelda Oni Link Begins
-	provides = solarus-engine
 	provides = solarus
 	conflicts = solarus
 	source = solarus-git::git+https://gitlab.com/solarus-games/solarus.git
