@@ -17,7 +17,7 @@ optdepends=('rlwrap: readline support')
 makedepends=(depot-tools-git python python2)
 conflicts=(v8-3.14 v8-3.14-bin v8-6.7-static v8-6.8 v8-r v8-static-gyp v8-static-gyp-5.4)
 source=(v8.pc d8)
-sha512sums=('2d698bdc61e1b7ad01e6476cea87d5a325f7dede333801f010addf1938430164b3e3376dd3078e13ee798d832907bba664d1f047dea223b5beea82287f457397'
+sha512sums=('f637ce092b4f32dc8bb0cb925b6bce4490e26e0a290a994479b02670bf6290d264e53c4ab576aa0381999f0f887ae43137bfec14ab9e40164d367c313c858fcf'
             '5aa6fea4a6d2f84bdba2032dcc00a79e3169c49066cc055a5106f858834db38dec3257f7a435aa518eb57eb4dfe4a3e092e2486c522362d49a61dfd92fba5717')
 
 OUTDIR=out/Default/
