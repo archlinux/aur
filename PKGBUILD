@@ -5,7 +5,7 @@
 
 _pkgname=triton
 pkgname=${_pkgname}-git
-pkgver=v0.7.r102.gfb3241e9
+pkgver=0.8.1.r49.g1b1da143
 pkgrel=1
 pkgdesc='Dynamic binary analysis framework'
 url='https://triton.quarkslab.com/'
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
