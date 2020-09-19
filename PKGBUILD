@@ -19,6 +19,11 @@ conflicts=(curl)
 source=("git+https://github.com/curl/curl")
 sha512sums=('SKIP')
 
+pkgver() {
+  cd curl
+  git describe --tags | sed 's/-/+/g'
+}
+
 build() {
   cd curl
 
