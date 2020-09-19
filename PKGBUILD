@@ -1,7 +1,7 @@
 # Maintainer  : Chris Billington <chrisjbillington@gmail.com>
 pkgname=python-mkl-fft-bin
 _pkgname=mkl_fft
-_pkgver=1.1.0
+_pkgver=1.2.0
 _build=py38h23d657b_0
 _build_number=0
 pkgver="${_pkgver}.${_build_number}.${_build//_/.}"
@@ -14,7 +14,7 @@ provides=('python-mkl-fft')
 conflicts=('python-mkl-fft')
 depends=('python-mkl-service' 'python-numpy')
 source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2")
-sha256sums=('12a63ea7e97d4b6fdbd58ac67693170c9a4bc55c1dc6b902560c597d01016438')
+sha256sums=('79d9ba628abf260db647f44b4b435ff223a06775c138878ca881e29f9d87ff3e')
 
 package() {
   mkdir "${pkgdir}/usr"
