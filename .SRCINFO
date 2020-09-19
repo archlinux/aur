@@ -5,6 +5,7 @@ pkgbase = python-pykeepass_cache
 	url = https://github.com/libkeepass/pykeepass_cache
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python-pykeepass
 	provides = python-pykeepass_cache
