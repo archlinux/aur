@@ -1,8 +1,8 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 # Contributor: Maxwell Anselm
 
-pkgname=gcs
-pkgver=4.23.1
+pkgname="gcs"
+pkgver=4.24.1
 pkgrel=1
 pkgdesc="WYSIWYG editor for building character sheets for GURPS 4th Edition"
 url="https://gurpscharactersheet.com"
@@ -10,7 +10,7 @@ license=("MPL2")
 arch=("x86_64")
 depends=("java-runtime")
 source=("$pkgname-$pkgver.deb::https://github.com/richardwilkes/gcs/releases/download/v$pkgver/gcs_$pkgver-1_amd64.deb")
-md5sums=("61cc4023636c580fe012367d198f21d5")
+md5sums=("3781724a047cfcc1bf7dc539068a9664")
 
 prepare(){
  tar -xf "data.tar.xz"
