@@ -2,6 +2,7 @@
 
 	* PKGBUILD:
 	Migrated the legacy explicit git clone to a VCS source line
+	Removed gzip from the makedepends array as it is alreayd part of the base-devel group
 
 2020-08-30 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 

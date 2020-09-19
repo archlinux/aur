@@ -6,13 +6,13 @@
 
 pkgname=eternallands
 pkgver=1.9.5.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A free 3D MMORPG game with thousands of on-line players"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.eternal-lands.com/"
 depends=('sdl2_net' 'sdl2_image' 'openal' 'cal3d' 'libvorbis' 'glu')
-makedepends=('gzip' 'git' 'unzip' 'pkgconf')
+makedepends=('git' 'unzip' 'pkgconf')
 optdepends=('zenity: to use the launch script' 'kdialog: to use the launch script')
 options=('!emptydirs')
 changelog=eternallands.changelog

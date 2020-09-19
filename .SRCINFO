@@ -1,13 +1,12 @@
 pkgbase = eternallands
 	pkgdesc = A free 3D MMORPG game with thousands of on-line players
 	pkgver = 1.9.5.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.eternal-lands.com/
 	changelog = eternallands.changelog
 	arch = i686
 	arch = x86_64
 	license = custom
-	makedepends = gzip
 	makedepends = git
 	makedepends = unzip
 	makedepends = pkgconf
