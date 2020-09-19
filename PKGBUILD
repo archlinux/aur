@@ -1,42 +1,29 @@
-# Maintainer: Jack Chen <redchenjs@live.com>
+# Maintainer: Jack Wu (OriginCode) <self@origincode.me>
 
 pkgname=linuxqq
-pkgver=2.0.0.1082
+pkgver=2.0.0_b2_1084
 pkgrel=1
+arch=('x86_64')
 pkgdesc="Tencent QQ for Linux"
-arch=('x86_64' 'aarch64')
-url="https://im.qq.com/linuxqq/"
+url="https://im.qq.com/linuxqq"
+depends=('gtk2' 'glibc' 'gcc-libs' 'nss')
 license=('custom')
-depends=(
-    'gtk2'
-    'nss'
+source=(
+    "$pkgname-${pkgver}_orig_x86_64.pkg.tar.xz::https://down.qq.com/qqweb/LinuxQQ/linuxqq_2.0.0-b2-1084_x86_64.pkg.tar.xz"
+    "qq.desktop"
 )
-source_x86_64=(
-    "https://down.qq.com/qqweb/LinuxQQ_1/linuxqq_2.0.0-b2-1082_x86_64.pkg.tar.xz"
-)
-sha512sums_x86_64=(
-    '01a5babf0fbc5e96f5ddeef3fbb6f5e766523766742d6f95ecf84d2a7f599d35dd9971ba67c8976ae7c26c5cd5f985a81e124b3621d041ebb26c7ff9db525df7'
-)
-source_aarch64=(
-    "https://down.qq.com/qqweb/LinuxQQ_1/linuxqq_2.0.0-b2-1082_aarch64.rpm"
-)
-sha512sums_aarch64=(
-    '9da9407a58dc9ef4361174feaef29c808241c4f77f2b543b6455211a55399baaefef8fab25c01095198b973486f6b2d4ec25e8995fe2a5502a2d45fdbd249953'
-)
+sha512sums=('7bccbb2caf1f072ae7345d5b66c702e705439068bebfacf2093a135b2c93058e89b5c3bf8ef2e68bc179ea75805cd10f065729729db6d0acca7ee96b501ba027'
+            'a6118c6a2dc03d22b423d4bca393c6a2ef0c8494f6480db0ee1b29ca28485e3a5e648d9485595d2d4c921d1688f72c70a70949c241b2fdde6d43bd0053cdcaa2')
+replaces=('qq-linux')
 
 package() {
-    mkdir -p "$pkgdir/opt"
-    cp -r "$srcdir/usr/local/share/tencent-qq" "$pkgdir/opt/"
-
-    cp "$srcdir/usr/local/bin/qq" "$pkgdir/opt/tencent-qq/"
-    cp "$srcdir/usr/local/bin/crashpad_handler" "$pkgdir/opt/tencent-qq/"
-
-    install -Dm 644 "$srcdir/usr/share/applications/qq.desktop" \
-                    "$pkgdir/usr/share/applications/qq.desktop"
-
-    sed -i 's#/usr/local/share#/opt#' "$pkgdir/usr/share/applications/qq.desktop"
-    sed -i 's#/usr/local/bin#/opt/tencent-qq#' "$pkgdir/usr/share/applications/qq.desktop"
+    mkdir -p "$pkgdir/opt/tencent-qq"
+    cp -pr "$srcdir/usr/local/bin/"* "$pkgdir/opt/tencent-qq/"
+    cp -pr "$srcdir/usr/local/share/tencent-qq/"* "$pkgdir/opt/tencent-qq/"
 
     mkdir -p "$pkgdir/usr/bin"
-    ln -s "/opt/tencent-qq/qq" "$pkgdir/usr/bin/qq"
+    ln -s ../../opt/tencent-qq/qq "$pkgdir/usr/bin/qq"
+    
+    install -Dm644 "$pkgdir/opt/tencent-qq/qq.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/qq.png"
+    install -Dm644 "$srcdir/qq.desktop" "$pkgdir/usr/share/applications/qq.desktop"
 }
