@@ -1,13 +1,13 @@
 pkgbase = ttf-iosevka-term-slab
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v3.6.0/ttf-iosevka-term-slab-3.6.0.zip
-	source = ttf-iosevka-term-slab-3.6.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v3.6.0/LICENSE.md
-	sha256sums = 88a690108e972fbe712aabb4136d4a2109422ba08cf763e3ea85cf1d9065920b
+	source = https://github.com/be5invis/Iosevka/releases/download/v3.6.1/ttf-iosevka-term-slab-3.6.1.zip
+	source = ttf-iosevka-term-slab-3.6.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v3.6.1/LICENSE.md
+	sha256sums = b0934ad97aa92f63a137e9bde575c714d8020bfd5342cca4a49a76d226af31ba
 	sha256sums = e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9
 
 pkgname = ttf-iosevka-term-slab
