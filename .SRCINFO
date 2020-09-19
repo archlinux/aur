@@ -1,0 +1,14 @@
+pkgbase = eclipse-gef3
+	pkgdesc = Graphical Editing Framework for Eclipse IDE
+	pkgver = 3.10.1
+	pkgrel = 1
+	url = https://projects.eclipse.org/projects/tools.gef/
+	arch = any
+	license = EPL
+	makedepends = java-environment-common
+	depends = eclipse-common
+	options = !strip
+	source = download.zip::https://www.eclipse.org/downloads/download.php?file=/tools/gef/downloads/drops/3.10.1/R201509250000/GEF-runtime-3.10.1.zip&mirror_id=1
+	sha256sums = ae1bcace58e153adf4022d3dd9de14c7bf62eef32d93458926741795e7ae3302
+
+pkgname = eclipse-gef3
