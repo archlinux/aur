@@ -17,17 +17,19 @@
 _pkgname=wheezy.template
 pkgname=python-wheezy-0.1.167
 pkgver=0.1.167
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight template library (0.1.167)'
 arch=('any')
 url="https://pypi.python.org/pypi/wheezy.template"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools') # when fallback to distutils /usr/bin/wheezy.template will be missing
+provides=("python-wheezy=${pkgver}")
 conflicts=(
+    'python-wheezy'
     'python2-wheezy'  # /usr/bin/wheezy.template
 )
-source=('https://files.pythonhosted.org/packages/b1/67/7f0a14a4cc9bd949b8d22383c26fec83a00e7bd428e15c697f998e3e37ba/wheezy.template-0.1.167.tar.gz')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('a2ee933452f0352fb8587d79bf6fc66dbf3a14779ef7d17b9fa75e80c0003f19')
 
 build() {
@@ -38,4 +40,5 @@ build() {
 package() {
   cd "$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
