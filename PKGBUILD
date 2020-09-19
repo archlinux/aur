@@ -3,8 +3,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.27
 
 pkgname='perl-protocol-websocket'
-pkgver='0.24'
-pkgrel='2'
+pkgver='0.26'
+pkgrel='1'
 pkgdesc="WebSocket protocol"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -13,8 +13,7 @@ depends=('perl-digest-sha1>=0')
 makedepends=('perl-module-build-tiny')
 url='http://search.cpan.org/dist/Protocol-WebSocket'
 source=("http://search.cpan.org/CPAN/authors/id/V/VT/VTI/Protocol-WebSocket-$pkgver.tar.gz")
-md5sums=('dedb9413da61aeeb9ade69e883a4a3d9')
-sha512sums=('f5834963436c76697473185c5d9038b1fe160a740910c0db02ced361860211b6c865ae533a321c50d60bfd08d5e3efa04700bb9588650eacda3232977c98ce05')
+sha512sums=('82384cdbeafc7b37fd4a97471c414e6653d311d1f4cc21de5ea4bbc3e06589df8e0a909e781470e8a84d3d74f6907a851f222338cea3f1f1aa6eb4a276149357')
 _distdir="Protocol-WebSocket-$pkgver"
 
 build() {
