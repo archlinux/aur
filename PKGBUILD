@@ -3,7 +3,7 @@
 
 pkgname=guide-bin
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='由北航 GAIT 研究组开发的、专门为 NOI 选手设计的轻型集成开发环境'
 arch=('i686' 'x86_64')
 url='http://www.noi.cn/newsview.html?id=27&hash=B7759F&type=1'
@@ -40,7 +40,8 @@ sha256sums=(
 
 package() {
   cd "$srcdir/GUIDE-1.0.2-ubuntu"
-  install -Dm644 doc/*.* doc/**/*.* -t "$pkgdir"/usr/share/doc/GUIDE/html/
+  install -Dm644 doc/*.* -t "$pkgdir"/usr/share/doc/GUIDE/html/
+  install -Dm644 doc/images/*.* -t "$pkgdir"/usr/share/doc/GUIDE/html/images/
   install -Dm644 lang_en.qm -t "$pkgdir"/usr/share/
   install -Dm644 apis/* -t "$pkgdir"/usr/share/apis/
   install -Dm644 doc/images/Manna.png "$pkgdir"/usr/share/icons/hicolor/128x128/apps/GUIDE.png
