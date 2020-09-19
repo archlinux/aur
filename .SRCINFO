@@ -1,0 +1,32 @@
+pkgbase = guide-bin
+	pkgdesc = 由北航 GAIT 研究组开发的、专门为 NOI 选手设计的轻型集成开发环境
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://www.noi.cn/newsview.html?id=27&hash=B7759F&type=1
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = lib32-libpng12
+	depends = lib32-libsm
+	depends = lib32-libice
+	depends = lib32-libxi
+	depends = lib32-libxrender
+	depends = lib32-libxrandr
+	depends = lib32-freetype2
+	depends = lib32-fontconfig
+	depends = lib32-libxext
+	depends = lib32-libx11
+	depends = lib32-zlib
+	depends = lib32-glib2
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+	optdepends = gcc: C++
+	optdepends = gdb: Debug C++
+	optdepends = fpc: Pascal
+	source = http://download.noi.cn/T/noi/GUIDE-1.0.2-ubuntu.tar
+	source = GUIDE.desktop
+	sha256sums = 263af8b4710408f08c772edf065dd9d41e287f8bbd3e57054fdb5b612c6f3086
+	sha256sums = 121f3e0eebc4bfa911fefa55025ed4d6a74a183b225dee8801361e6873e24859
+
+pkgname = guide-bin
+

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=GUIDE
+GenericName=IDE for NOI
+GenericName[zh_CN]=NOI 集成开发环境
+Exec=/usr/bin/GUIDE
+Comment=由北航 GAIT 研究组开发的、专门为 NOI 选手设计的轻型集成开发环境
+Icon=GUIDE
+Terminal=false
+StartupNotify=true
+Categories=Development;Qt;
