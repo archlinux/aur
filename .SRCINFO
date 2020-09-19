@@ -14,9 +14,9 @@ pkgbase = pufferpanel-bin
 	source = https://github.com/PufferPanel/PufferPanel/releases/download/v2.1.0/pufferpanel_2.1.0_amd64.zip
 	source = https://raw.githubusercontent.com/PufferPanel/PufferPanel/v2.1.0/systemd/servicefiles/pufferpanel.service
 	source = https://raw.githubusercontent.com/PufferPanel/PufferPanel/v2.1.0/config.linux.json
-	b2sums = ff2e7bb2d8dcc9e7ce01b7d110790a1151a46af484ade3839780c4f2c641ae77562161ac7f9d96a29686db07d0ee05107ce7b182d0c492cccd76887907c3d354
+	b2sums = a7928ff4cb5d0cc41c319dc809b0656e0551eb8220be175c7acc3e922182632cd4bacfcefe5fd94d40ac644ca606a8e02c27644c669d98c125ae45ab00934d80
 	b2sums = ed744c35200b918c3107ea6191e3c6c38b3a731183b5cf7ed8b066550a6038fd712429b24264b0b00c52f9533b8503462962d2bfdb45c49724be49a2b9b39141
-	b2sums = deab865a5dabfc82d448928bcaf92c3cc693a7345aad148f255a4e8a3ecf94ad39b41d6e47a69026af4b063c0bb978c0a388f3fae9adcb45facde637bdd2933b
+	b2sums = 8e71e40eab92d6d49d7c71998256a849aa1027142cc3d8a9d8e418b6a7f66cac5eeff4f6e8d73ff8389746513ef7d74b2b0ef6b42b4e857c1906ce21a4d14f81
 
 pkgname = pufferpanel-bin
 
