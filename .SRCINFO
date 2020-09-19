@@ -1,6 +1,6 @@
 pkgbase = python-word_forms-git
 	pkgdesc = Accurately generate all possible forms of an English word
-	pkgver = r29.4e1d76f
+	pkgver = 2.1.0.r1.g9f24160
 	pkgrel = 1
 	url = https://github.com/gutfeeling/word_forms
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-word_forms-git
 	makedepends = python-setuptools
 	depends = python-nltk
 	depends = python-inflect
-	depends = python-unipath
+	depends = python-levenshtein
 	source = git+https://github.com/gutfeeling/word_forms.git
 	sha256sums = SKIP
 
