@@ -2,7 +2,7 @@
 
 _pkgname=ropium
 pkgname=${_pkgname}-git
-pkgver=v3.1.r7.g41085d3
+pkgver=3.2.r0.ge710087
 pkgrel=1
 pkgdesc='A tool to makes ROP-exploits easy'
 arch=(x86_64)
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = ropium-git
 	pkgdesc = A tool to makes ROP-exploits easy
-	pkgver = v3.1.r7.g41085d3
+	pkgver = 3.2.r0.ge710087
 	pkgrel = 1
 	url = https://github.com/Boyan-MILANOV/ropium
 	arch = x86_64
