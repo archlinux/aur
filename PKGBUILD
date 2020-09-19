@@ -1,6 +1,6 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
-pkgname=shlink
+pkgname="shlink"
 pkgver=2.3.0
 pkgrel=1
 pkgdesc="The definitive self-hosted URL shortener"
