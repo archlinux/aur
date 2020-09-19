@@ -1,6 +1,6 @@
 #Maintainer: vresod
 pkgname=novix-devel-meta
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Meta package for development of the Novix kernel"
 arch=(i686 x86_64)
