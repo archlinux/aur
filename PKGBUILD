@@ -97,7 +97,7 @@ sha256sums=(
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
-  '7c7d8789fa524b74155fc8b43d41eeff1d8a17ec89d51065d246e83b5f58e8fc'
+  'd4ff92c41f56e886eca08cdc0307747a9b35723534fa266ed44449812425ae12'
   'd50aa0a3fe94025178965d988e18d41eb60aa1ce2b28ee6e3ca15edeabfa2ca7'
   '8e4d08668a66be79a900521792b39c16a026cc90659241edee80b64e701bfbcd'
   'b94959a11b28e51b541321be0588190eb10825e9ff55cbd16eb01483a839a69f'
@@ -169,6 +169,8 @@ _create_database_file() {
   sqlite3 "$database_filename" "CREATE TABLE settings(key VARCHAR PRIMARY KEY, value VARCHAR NOT NULL, component_name VARCHAR NOT NULL);"
   sqlite3 "$database_filename" "INSERT INTO settings(key,value,component_name) VALUES('db.schemaVersion','2','vmware-installer');"
   sqlite3 "$database_filename" "CREATE TABLE components(id INTEGER PRIMARY KEY, name VARCHAR NOT NULL, version VARCHAR NOT NULL, buildNumber INTEGER NOT NULL, component_core_id INTEGER NOT NULL, longName VARCHAR NOT NULL, description VARCHAR, type INTEGER NOT NULL);"
+
+  sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-player\",\"$pkgver\",\"${_pkgver#*_}\",1,\"VMware Player\",\"VMware Player for Linux\",0);"
 
   for isoimage in ${_isoimages[@]}
   do
