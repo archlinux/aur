@@ -1,9 +1,10 @@
-# Maintainer: Jason Huang <jasonhuang20035 at gmail dot com>
+# Maintainer: Mathijs van Westendorp <mathijs at vanwestendorp dot org>
+# Contributor: Jason Huang <jasonhuang20035 at gmail dot com>
 
 # Based on the zotero PKGBUILD
 
 pkgname=jurism
-pkgver=5.0.90m2
+pkgver=5.0.90m3
 pkgrel=1
 pkgdesc="Juris-M Standalone. Is a variant of Zotero, with legal and multilingual support."
 arch=('x86_64')
@@ -12,7 +13,7 @@ license=('AGPL3')
 depends=('dbus-glib' 'gtk3' 'nss' 'libxt')
 
 sha256sums=('e77753174477bfd22d9b983e9e53954e9579e944c2b62bf32fcbdf17f1b36281')
-sha256sums_x86_64=('1da3711efc4037cc54b3b26b86ad46bc202e70db9f7b377c83c3614f36b42b4c')
+sha256sums_x86_64=('f1ff5d1babf62394065e2033b4b03b086e92160de6e29d1bcb5916ec0b8cca98')
 
 install='jurism.install'
 
@@ -34,4 +35,3 @@ package() {
   # No need to keep a shell around when launching Juris-M
   sed -i -r 's/^("\$CALLDIR\/jurism-bin" -app "\$CALLDIR\/application.ini" "\$@")/exec \1/' "$pkgdir"/usr/lib/jurism/jurism
 }
-
