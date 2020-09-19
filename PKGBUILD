@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-net-ssh2'
-pkgver='0.69'
+pkgver='0.71'
 pkgrel='1'
 pkgdesc="Support for the SSH 2 protocol via libssh2."
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ options=('!emptydirs')
 depends=('libssh2>=1.6.0' 'openssl>=1.0.2.d' 'openssl>=1.0.2.d' 'perl>=5.6.0' 'zlib>=1.2.8')
 makedepends=()
 url='https://metacpan.org/release/Net-SSH2'
-source=("http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Net-SSH2-$pkgver.tar.gz")
-sha512sums=('adb3872c72543f1e06cc0b0cd76cb1c5b4ca262804c8e0612da447647075cf5c00033ecb530eaa26c7b5a37aeccc2c734e91a72c9998b43354fab1c1bd3b5c9d')
+source=("http://search.cpan.org/CPAN/authors/id/R/RK/RKITOVER/Net-SSH2-$pkgver.tar.gz")
+sha512sums=('3bd9f965786711a47c9a2f7c1288c0c444571dea2fd7ed1e26d60b476b55bb6d0aeb4c3a7c9387c1d2a200734cb62328ea90ef5f89f3e0451f06affc9a13c14a')
 _distdir="Net-SSH2-$pkgver"
 
 build() {
