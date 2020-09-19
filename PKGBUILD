@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: Andrés J. Díaz <ajdiaz@ajdiaz.me>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Andrew Stubbs <andrew.stubbs@gmail.com>
 
