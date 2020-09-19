@@ -110,23 +110,12 @@ package() {
 	install -dm777 "${pkgdir}${_xamppdir}/phpmyadmin/tmp"
 	chmod 777 "${pkgdir}${_xamppdir}/temp"
 
-	# phpMyAdmin MySQL settings (currently unused option)
-	#msg 'Configuring phpMyAdmin settings for MySQL...'
-	#find "${pkgdir}${_xamppdir}/phpmyadmin" -type f -exec sed -i 's/localhost/localhost:3306/gI' '{}' \;
-
 	# Links and missing files
 	sed "${_sed_subst}" "${srcdir}/properties.ini.in" > "${pkgdir}${_xamppdir}/properties.ini"
 	echo -n "${pkgver}-${_uppkgrel}" > "${pkgdir}${_xamppdir}/lib/VERSION"
 	ln -s "${_xamppdir}/xampp" "${pkgdir}${_xamppdir}/lampp"
 	test -d "${pkgdir}${_xamppdir}/share/lampp" || \
 		ln -sf "${_xamppdir}/share/xampp" "${pkgdir}${_xamppdir}/share/lampp"
-
-	# For using MariaDB from the official packages (currently unused option)
-	#find "${pkgdir}${_xamppdir}/mysql/scripts" -type f -exec sed -i 's/'"$(_sed_escape "${_xamppdir}")"'\/var\/mysql\/$HOSTNAME.pid/\/var\/lib\/mysql\/$HOSTNAME.pid/gI' '{}' \;
-	#find "${pkgdir}${_xamppdir}/" -type f -exec sed -i "s/$(_sed_escape "${_xamppdir}")\/var\/mysql\/mysql.sock/\/run\/mysqld\/mysqld.sock/gI" '{}' \;
-
-	# For running MySQL from the official packages (currently unused option)
-	#find "${pkgdir}${_xamppdir}/mysql/scripts" -type f -exec sed -i "s/$(_sed_escape "${_xamppdir}")\/lampp\ startmysql/systemctl\ start\ mysqld/gI" '{}' \;
 
 	msg 'Copying executables and launcher...'
 
@@ -166,10 +155,6 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/polkit-1/actions"
 	install -Dm644 "${srcdir}/org.apachefriends.xampp.policy" \
 		"${pkgdir}/usr/share/polkit-1/actions/org.apachefriends.xampp.policy"
-
-	# Update backup list for the next time – currently unused method (we use the
-	# install script for this) - requires `readarray backup < "./backup.lst"`)
-	#(cd "${pkgdir}" && find -L 'opt/lampp/etc' -type f && find -L 'opt/lampp/var' -type f && find -L 'opt/lampp/htdocs' -type f) > "$(readlink 'backup.lst')"
 
 }
 
