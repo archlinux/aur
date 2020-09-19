@@ -1,0 +1,26 @@
+--- src/polkitgnomeauthenticationdialog.c    2011-10-25 18:30:59.000000000 +0300
++++ src/polkitgnomeauthenticationdialog.c    2020-09-19 19:54:39.916298638 +0300
+@@ -566,6 +566,7 @@
+   g_free (s);
+   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+   gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
++  gtk_label_set_max_width_chars (GTK_LABEL (label), 70);
+   gtk_box_pack_start (GTK_BOX (main_vbox), label, FALSE, FALSE, 0);
+ 
+   /* secondary message */
+@@ -593,6 +594,7 @@
+     }
+   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+   gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
++  gtk_label_set_max_width_chars (GTK_LABEL (label), 70);
+   gtk_box_pack_start (GTK_BOX (main_vbox), label, FALSE, FALSE, 0);
+ 
+   /* user combobox */
+@@ -636,6 +638,7 @@
+   /* A label for showing PAM_TEXT_INFO and PAM_TEXT_ERROR messages */
+   label = gtk_label_new (NULL);
+   gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
++  gtk_label_set_max_width_chars (GTK_LABEL (label), 70);
+   gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+   dialog->priv->info_label = label;
+ 

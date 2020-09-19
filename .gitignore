@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/polkit-gnome-*.pkg.tar.*
+
+/polkit-gnome-git/

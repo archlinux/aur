@@ -1,0 +1,23 @@
+pkgbase = polkit-gnome-git
+	pkgdesc = Legacy polkit authentication agent for GNOME
+	pkgver = 0.105.r66.ga0763a2
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/polkit/
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = intltool
+	depends = polkit
+	depends = gtk3
+	provides = polkit-gnome
+	conflicts = polkit-gnome
+	source = polkit-gnome-git::git+https://gitlab.gnome.org/Archive/policykit-gnome.git
+	source = polkit-gnome-git-authentication-agent-1.desktop
+	source = polkit-gnome-git-label-wrap-fix.patch
+	sha256sums = SKIP
+	sha256sums = 5074c723a4eab274830587d799ba781ff57f4fbe4ac99fbdc5aac5009c441ee7
+	sha256sums = 67674d940e063520c518027ac2fe5e55797936c620f31286501f39f0b6ed7581
+
+pkgname = polkit-gnome-git
+
