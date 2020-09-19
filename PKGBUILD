@@ -40,13 +40,13 @@ depends=(
     'python-pkgconfig-1.1.0'
     'python-cchardet'
     'python-networkx-1.11'
+    'python-setuptools' # needed by hotdoc/utils/utils.py
 )
 makedepends=(
     'cmake'
     'flex'
     'git'
     'npm'
-    'python-setuptools'
 )
 # upstream tarball does not contain submodules or their revision info
 source=("git+https://github.com/${pkgname}/${pkgname}.git#tag=${pkgver}")
