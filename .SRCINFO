@@ -1,5 +1,5 @@
 pkgbase = mingw-w64-libheif
-	pkgdesc = HEIF file format decoder and encoder.
+	pkgdesc = HEIF file format decoder and encoder. (mingw-w64)
 	pkgver = 1.8.0
 	pkgrel = 2
 	url = https://github.com/strukturag/libheif
