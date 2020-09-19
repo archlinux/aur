@@ -1,7 +1,7 @@
 pkgbase = semgrep-bin
 	pkgdesc = Fast and syntax-aware semantic code pattern search for many languages: like grep but for code
 	pkgver = 0.24.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/returntocorp/semgrep
 	arch = x86_64
 	license = LGPL2.1
