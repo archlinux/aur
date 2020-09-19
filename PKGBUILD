@@ -3,15 +3,16 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-git
-pkgver=5.15.0.r4568.g9edfb7a1b5
+pkgver=5.15.0.r5275.g92640829ad
 pkgrel=1
+_commit=9edfb7a1b5
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework'
 depends=(libjpeg-turbo xcb-util-keysyms xcb-util-renderutil libgl fontconfig xdg-utils
          shared-mime-info xcb-util-wm libxrender libxi sqlite xcb-util-image mesa
-         tslib libinput libxkbcommon-x11 libproxy libcups double-conversion md4c brotli)
+         tslib libinput libxkbcommon-x11 libproxy libcups double-conversion md4c) # brotli https://bugreports.qt.io/browse/QTBUG-86772
 makedepends=(cmake libfbclient mariadb-libs unixodbc postgresql-libs alsa-lib gst-plugins-base-libs
              gtk3 libpulse cups freetds vulkan-headers git)
 optdepends=('postgresql-libs: PostgreSQL driver'
@@ -24,7 +25,7 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 conflicts=(qt6-base)
 provides=(qt6-base)
 groups=(qt6)
-source=(git+https://code.qt.io/qt/qtbase.git#branch=dev)
+source=(git+https://code.qt.io/qt/qtbase.git#commit=$_commit)
 sha256sums=('SKIP')
 
 pkgver() {
@@ -44,7 +45,7 @@ build() {
     -DINSTALL_EXAMPLESDIR=share/doc/qt6/examples \
     -DQT_FEATURE_journald=ON
 #    -DQT_FEATURE_openssl_linked=ON
-  cmake --build build
+  VERBOSE=1 cmake --build build
 }
 
 package() {
