@@ -1,15 +1,14 @@
 pkgbase = csview
 	pkgdesc = A high performance csv viewer with cjk/emoji support.
-	pkgver = 0.3.3
-	pkgrel = 2
-	epoch = 1
+	pkgver = 0.3.4
+	pkgrel = 1
 	url = https://github.com/wfxr/csview
 	arch = x86_64
 	license = MIT
 	license = APACHE
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/wfxr/csview/archive/v0.3.3.tar.gz
+	source = https://github.com/wfxr/csview/archive/v0.3.4.tar.gz
 	md5sums = 672f4912f98226f4e62fba88085de49b
 
 pkgname = csview
