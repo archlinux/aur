@@ -1,7 +1,7 @@
 pkgbase = stern
 	pkgdesc = Multi pod and container log tailing for Kubernetes
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wercker/stern
 	arch = x86_64
 	license = apache

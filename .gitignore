@@ -1,0 +1,4 @@
+*.log
+*.patch
+*.pkg.tar.zst
+*.tar.gz

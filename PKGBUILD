@@ -3,7 +3,7 @@
 pkgname=stern
 pkgdesc="Multi pod and container log tailing for Kubernetes"
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/wercker/stern"
 license=('apache')
@@ -17,7 +17,7 @@ sha256sums=('d6f47d3a6f47680d3e4afebc8b01a14f0affcd8fb625132af14bb77843f0333f'
             '872b9c67fcf8ee622a40a1eec020bced187bb833ea0beeace2c283e2889f1f4e')
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
 
   patch -p1 -i ../gomodules.patch
 
@@ -26,13 +26,13 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   go build -o "./out/${pkgname}"
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
 
   install -Dm 755 "./out/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
