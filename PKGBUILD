@@ -1,7 +1,7 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=elastix
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Toolbox for rigid and nonrigid registration of images'
 arch=('x86_64')
 url='http://elastix.isi.uu.nl/'
@@ -135,7 +135,7 @@ prepare() {
 }
 
 build() {
-	cd "$_build_dir"
+	cd "${srcdir}/${pkgname}-${pkgver}/build"
 	make
 }
 
@@ -144,7 +144,7 @@ package() {
 
 	make install DESTDIR="${pkgdir}"
 
-	cd ..
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	install -D -m644 \
 		"LICENSE" \
