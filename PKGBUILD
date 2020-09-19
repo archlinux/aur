@@ -1,8 +1,8 @@
 # Maintainer: Cynthia Coan <cynthia@coan.dev>
 
 pkgname=ant-dracula-gtk-theme
-pkgver=1.3.0
-pkgrel=3
+pkgver=2.0
+pkgrel=1
 pkgdesc="Ant Dracula Theme for GTK 3.x"
 license=('GPL3')
 arch=(any)
@@ -12,7 +12,7 @@ conflicts=(ant-dracula-theme-git)
 options=(!strip)
 
 source=("https://github.com/dracula/gtk/archive/v$pkgver.tar.gz")
-sha256sums=('c96c4152a2fdf38765da764b2d39aa5b37f97f7a787a6eab08e5351abded5fc4')
+sha256sums=('2cfbaef1fa79c8b9361e3aa9d9d19a0fefadec43562c1fbe148b38f2559e6fe3')
 
 package(){
 	cd "$srcdir"

@@ -1,15 +1,15 @@
 pkgbase = ant-dracula-gtk-theme
 	pkgdesc = Ant Dracula Theme for GTK 3.x
-	pkgver = 1.3.0
-	pkgrel = 3
+	pkgver = 2.0
+	pkgrel = 1
 	url = https://github.com/dracula/gtk
 	arch = any
 	license = GPL3
 	depends = gtk3
 	conflicts = ant-dracula-theme-git
 	options = !strip
-	source = https://github.com/dracula/gtk/archive/v1.3.0.tar.gz
-	sha256sums = c96c4152a2fdf38765da764b2d39aa5b37f97f7a787a6eab08e5351abded5fc4
+	source = https://github.com/dracula/gtk/archive/v2.0.tar.gz
+	sha256sums = 2cfbaef1fa79c8b9361e3aa9d9d19a0fefadec43562c1fbe148b38f2559e6fe3
 
 pkgname = ant-dracula-gtk-theme
 
