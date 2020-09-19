@@ -1,6 +1,6 @@
 pkgbase = python-linetools
 	pkgdesc = Package for the analysis of 1-D spectra for astronomy.
-	pkgver = 0.3
+	pkgver = 0.3.dev2147
 	pkgrel = 2
 	url = https://linetools.readthedocs.io/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-linetools
 	depends = python-matplotlib
 	depends = python-pyqt5
 	depends = python-h5py
-	source = https://files.pythonhosted.org/packages/ca/17/8ea3b0a7a05cca067d061b097f0df9b74bddeab702391aba0bb566b97cc2/linetools-0.3.dev2147.tar.gz
+	source = https://files.pythonhosted.org/packages/source/l/linetools/linetools-0.3.dev2147.tar.gz
 	md5sums = 86f631e7e52b2dc80e5e96b2d22621f3
 
 pkgname = python-linetools
