@@ -21,6 +21,11 @@ depends=('lib32-libidn2' 'lib32-libssh2' 'lib32-krb5' 'lib32-openssl'
 source=("git+https://github.com/curl/curl")
 sha512sums=('SKIP')
 
+pkgver() {
+  cd curl
+  git describe --tags | sed 's/-/+/g'
+}
+
 build() {
   cd curl
 
@@ -28,6 +33,7 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
+  ./buildconf
   ./configure \
       --prefix=/usr \
       --mandir=/usr/share/man \
