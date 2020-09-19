@@ -1,13 +1,13 @@
 # Maintainer: Vidar Magnusson <printit at vidarmagnusson dot com>
 
 pkgname=printit-git
-pkgver=1.1.0 
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Utility for printing at Chalmers University"
 arch=("any")
 url="https://github.com/viddem/printit"
 makedepends=("git" "python-setuptools")
-depends=("python>=3" "python-requests" "python-setuptools" "python-pip" "python-click" "python-lxml")
+depends=("python>=3" "python-requests" "python-setuptools" "python-pip" "python-click" "python-lxml" "python-paramiko" "python-scp")
 source=("$pkgname::git+$url.git")
 sha256sums=("SKIP")
 license=('AGPL3')
