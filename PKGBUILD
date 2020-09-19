@@ -4,7 +4,7 @@
 # Contributor: Muhammed Uluyol <uluyol0@gmail.com>
 
 pkgname=foo2zjs-nightly
-pkgver=20200505
+pkgver=20200917
 pkgrel=1
 pkgdesc="foo2zjs Printer Drivers (automatically updated). Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
@@ -84,7 +84,7 @@ noextract=(
 sha256sums=('SKIP'
             '430881c9ac27cddf584103445f91741ded6798b8a1e96c94e9153f9af4f70994'
             'e00c67c20db3e035dbef9561b87289481741c7cc7e7a00594ade2b519f544f95'
-            'a83dd6561cf2ffd12c47833e665c9d7aa79b46ba5d7fea270216b0ec2828f4ee'
+            '72c45368e41dfc0e6a89834152adaedc98a1bb0d1f81d900140f1b3336016ad6'
             'b6ec41a41c7a13223792daf1444803e389127885e5b2bdd932a1cb693143fd8f'
             '52f149a0e13a6d208fc49b8168a61349989b99ab2b2fdebf3334e23a38ed5c16'
             '89c929daedb6e7ad610676eabecfb9b1f1f5244ace2c443508c55171be340944'

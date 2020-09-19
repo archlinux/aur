@@ -87,7 +87,7 @@ index f18459f..0956c79 100644
  
  ifeq ($(UNAME),Darwin)
  install-hotplug: install-hotplug-test install-hotplug-osx
-@@ -1008,68 +1020,14 @@ install-hotplug-test:
+@@ -1008,68 +1020,14 @@ 	# ... OK!
  	#
  
  install-hotplug-prog:
@@ -118,7 +118,7 @@ index f18459f..0956c79 100644
 -	    elif [ -x /usr/lib/systemd/systemd-udevd ]; then \
 -		version=`/usr/lib/systemd/systemd-udevd --version 2>/dev/null`; \
 -	    fi; \
--	    version=`echo $$version | sed -e 's/^v//' -e 's/-.*//' `; \
+-	    version=`echo $$version | sed -e 's/^v//' -e 's/-.*//' -e 's/\..*//'`; \
 -	    if [ "$$version" = "" ]; then version=0; fi; \
 -	    echo "***"; \
 -	    echo "*** udev version $$version"; \
@@ -309,8 +309,6 @@ index 0000000..115e734
 +	fi
 +done
 diff --git a/foo2zjs-loadfw@.service.in b/foo2zjs-loadfw@.service.in
-new file mode 100644
-index 0000000..7bf47be
 --- /dev/null
 +++ b/foo2zjs-loadfw@.service.in
 @@ -0,0 +1,6 @@
@@ -320,8 +318,6 @@ index 0000000..7bf47be
 +[Service]
 +Type=oneshot
 +ExecStart=@PREFIX@/bin/foo2zjs-loadfw %f
-diff --git a/hplj10xx.rules b/hplj10xx.rules
-index ee0295d..dec1cdd 100644
 --- a/hplj10xx.rules
 +++ b/hplj10xx.rules
 @@ -1,39 +1,21 @@
@@ -386,8 +382,6 @@ index ee0295d..dec1cdd 100644
 +
 +LABEL="foo2zjs_fw_end"
 diff --git a/usblp.conf b/usblp.conf
-new file mode 100644
-index 0000000..5a604bf
 --- /dev/null
 +++ b/usblp.conf
 @@ -0,0 +1 @@
