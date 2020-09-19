@@ -1,7 +1,7 @@
 # Maintainer: Alesh Slovak <aleshslovak@gmail.com>
 
 pkgname=steam-buddy
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="A web interface for managing Steam remotely"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-bottle' 'python-pyftpdlib' 'python-yaml' 'python-requests' 'python-beaker' 'python-pygame' 'python-bcrypt' 'python-psutil' 'steam-tweaks' 'retroarch' 'libretro-genesis-plus-gx' 'libretro-mgba' 'libretro-nestopia' 'libretro-snes9x' 'libretro-mupen64plus-next' 'libretro-beetle-pce-fast' 'libretro-flycast' 'libretro-beetle-psx-hw' 'libretro-play' 'libretro-yabause' 'libretro-dolphin' 'retroarch-autoconfig-udev-git' 'flatpak' 'xdotool' 'ponymix' 'libretro-picodrive' 'legendary')
 optdepends=('libretro-mame-git' 'libretro-stella2014-git') # compiling cores takes a long time, so make them optional
 source=("https://github.com/gamer-os/steam-buddy/archive/$pkgver.tar.gz")
-md5sums=('fd337bee60c51e498ed8c4b6792c9e25')
+md5sums=('0699fb6dcf7066d3ea046468aeaefbbf')
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
