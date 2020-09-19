@@ -22,7 +22,7 @@ package() {
 	cd "$srcdir/${pkgname}-${pkgver}"
 	install -Dm755 "target/release/${pkgname}"        "$pkgdir/usr/bin/${pkgname}"
 	install -Dm644 "completions/fish/${pkgname}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-	install -Dm644 "completions/zsh/_${pkgname}"      "$pkgdir/usr/share/zsh/vendor-completions/_${pkgdir}"
+	install -Dm644 "completions/zsh/_${pkgname}"      "$pkgdir/usr/share/zsh/site-functions/_${pkgname}"
 	install -Dm644 "README.md"                        "$pkgdir/usr/share/doc/README.md"
 	install -Dm644 "LICENSE-MIT"                      "$pkgdir/usr/share/doc/LICENSE-MIT"
 	install -Dm644 "LICENSE-APACHE"                   "$pkgdir/usr/share/doc/LICENSE-APACHE"
