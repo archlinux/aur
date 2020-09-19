@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r454.542554f
+pkgver=r465.6c1a744
 pkgrel=1
 pkgdesc='Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS'
 arch=('i686' 'x86_64')
@@ -23,9 +23,11 @@ backup=("etc/${_pkgname}/sftpgo.json")
 install=${pkgname}.install
 
 source=("git+https://github.com/drakkan/${_pkgname}.git"
-  "sftpgo.json")
+  "sftpgo.json"
+  "sftpgo.sysusers")
 sha256sums=('SKIP'
-  '3ed05cb055374a935c142c74503ed5125c2f99734394b25cf53d08f8ce2e0cdf')
+  '3ed05cb055374a935c142c74503ed5125c2f99734394b25cf53d08f8ce2e0cdf'
+  '24709c97e96376cc581b489810320450ea1ed74ef41d2670aec9905eb5ed717c')
 
 pkgver() {
   cd "${_pkgname}"
@@ -41,12 +43,17 @@ build() {
 }
 
 package() {
+  SFTPGO_UID=315
+  SFTPGO_GID=315
   cd "${_pkgname}"
   install -Dm 755 sftpgo "$pkgdir/usr/bin/${_pkgname}"
   install -Dm 755 examples/rest-api-cli/sftpgo_api_cli.py "${pkgdir}"/usr/bin/sftpgo_api_cli
+  sed -i 's/^User=root/User=sftpgo/g' init/${_pkgname}.service 
+  sed -i 's/^Group=root/Group=sftpgo/g' init/${_pkgname}.service 
   install -Dm 644 init/${_pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
-  install -Dm 644 "$srcdir/sftpgo.json" -t "${pkgdir}/etc/${_pkgname}"
-  install -d "${pkgdir}/var/lib/${_pkgname}"
+  install -dm750 -o ${SFTPGO_UID} -g ${SFTPGO_GID} "${pkgdir}/etc/${_pkgname}"
+  install -Dm 640 -o ${SFTPGO_UID} -g ${SFTPGO_GID} "$srcdir/sftpgo.json" -t "${pkgdir}/etc/${_pkgname}"
+  install -dm750 -o ${SFTPGO_UID} -g ${SFTPGO_GID} "${pkgdir}/var/lib/${_pkgname}"
   install -d "${pkgdir}/usr/share/${_pkgname}"
   cp -r templates "${pkgdir}/usr/share/${_pkgname}/"
   cp -r static "${pkgdir}/usr/share/${_pkgname}/"
@@ -58,6 +65,7 @@ package() {
   install -Dm 644 sftpgo-completion.bash "${pkgdir}/etc/bash_completion.d/"
   install -d "${pkgdir}/usr/share/man"
   cp -r man1 "${pkgdir}/usr/share/man/"
+  install -Dm 644 "$srcdir/${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
 }
 
 # vim:set ts=2 sw=2 et:
