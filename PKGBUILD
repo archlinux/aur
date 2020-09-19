@@ -2,7 +2,7 @@
 
 pkgname=ttf-inconsolata-g
 pkgver=20090213
-pkgrel=3
+pkgrel=4
 conflicts=('ttf-inconsolata-g')
 provides=('ttf-inconsolata-g')
 pkgdesc="Monospace font for pretty code listings and for the terminal modified by Leonardo Maffi (http://www.fantascienza.net/leonardo/)"
