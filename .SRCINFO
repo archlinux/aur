@@ -1,6 +1,6 @@
 pkgbase = felinks-python
 	pkgdesc = the elinks text browser, with Python support
-	pkgver = 0.13.3
+	pkgver = 0.13.5
 	pkgrel = 1
 	url = http://github.com/rkd77/felinks
 	arch = x86_64
