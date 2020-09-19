@@ -6,7 +6,7 @@
 
 pkgname=eternallands
 pkgver=1.9.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A free 3D MMORPG game with thousands of on-line players"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -16,32 +16,12 @@ makedepends=('gzip' 'git' 'unzip' 'pkgconf')
 optdepends=('zenity: to use the launch script' 'kdialog: to use the launch script')
 options=('!emptydirs')
 changelog=eternallands.changelog
-source=('https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.7/el_195_p7_data_files.zip')
-md5sums=('c58b6f374d0f9ce3f0aa0fe4eab348d5')
+source=("git://github.com/raduprv/Eternal-Lands.git#tag=${pkgver}" 'https://github.com/raduprv/Eternal-Lands/releases/download/1.9.5.7/el_195_p7_data_files.zip')
+md5sums=('SKIP' 'c58b6f374d0f9ce3f0aa0fe4eab348d5')
 
 build()
 {
-  # Local to the function to avoid version bumping
-  _gitroot="git://github.com/raduprv/Eternal-Lands.git"
-  _gitname="elc"
-
-  cd "$srcdir"
-  echo "Connecting to GIT server...."
-
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull $_gitroot
-    echo "The local files are updated."
-  else
-    git clone $_gitroot $_gitname
-  fi
-
-  echo "GIT checkout done or server timeout"
-  echo "Starting make..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-  git checkout ${pkgver}
+  cd ${srcdir}/Eternal-Lands
 
   sed -i "s|/usr/games/|/usr/bin/|" pkgfiles/eternallands
   sed -i "s|/usr/share/games/EternalLands/|/usr/share/eternallands/|" pkgfiles/eternallands
@@ -52,7 +32,7 @@ build()
 }
 
 package() {
-  cd "$srcdir"
+  cd ${srcdir}/Eternal-Lands
 
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/share/man/man6"
@@ -61,16 +41,16 @@ package() {
   mkdir -p "${pkgdir}/usr/share/licenses/eternallands/"
   mkdir -p "${pkgdir}/usr/share/eternallands"
 
-  install -m755 elc-build/el.x86.linux.bin "${pkgdir}/usr/bin/"
-  install -m755 elc-build/pkgfiles/eternallands "${pkgdir}/usr/bin/"
-  install -m644 elc-build/pkgfiles/eternallands.6 "${pkgdir}/usr/share/man/man6"
-  install -m644 elc-build/pkgfiles/el.x86.linux.bin.6 "${pkgdir}/usr/share/man/man6"
-  install -m644 elc-build/pkgfiles/eternallands.png "${pkgdir}/usr/share/pixmaps/"
-  install -m644 elc-build/pkgfiles/eternallands.xpm "${pkgdir}/usr/share/pixmaps/"
-  install -m644 elc-build/pkgfiles/eternallands.desktop "${pkgdir}/usr/share/applications"
-  install -m644 elc-build/eternal_lands_license.txt "${pkgdir}/usr/share/licenses/eternallands/"
+  install -m755 el.x86.linux.bin "${pkgdir}/usr/bin/"
+  install -m755 pkgfiles/eternallands "${pkgdir}/usr/bin/"
+  install -m644 pkgfiles/eternallands.6 "${pkgdir}/usr/share/man/man6"
+  install -m644 pkgfiles/el.x86.linux.bin.6 "${pkgdir}/usr/share/man/man6"
+  install -m644 pkgfiles/eternallands.png "${pkgdir}/usr/share/pixmaps/"
+  install -m644 pkgfiles/eternallands.xpm "${pkgdir}/usr/share/pixmaps/"
+  install -m644 pkgfiles/eternallands.desktop "${pkgdir}/usr/share/applications"
+  install -m644 eternal_lands_license.txt "${pkgdir}/usr/share/licenses/eternallands/"
 
-  cd el_data
+  cd ${srcdir}/el_data
 
   # Compress textures and maps
   find \( -name *.bmp -or -name *.elm \) -exec gzip -f {} \;
@@ -86,5 +66,5 @@ package() {
     install -m644 ${file} "${pkgdir}/usr/share/eternallands/"
   done
 
-  install -m644 ${srcdir}/elc-build/el.ini "${pkgdir}/usr/share/eternallands/"
+  install -m644 ${srcdir}/Eternal-Lands/el.ini "${pkgdir}/usr/share/eternallands/"
 }

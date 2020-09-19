@@ -1,3 +1,8 @@
+2020-09-19 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD:
+	Migrated the legacy explicit git clone to a VCS source line
+
 2020-08-30 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
