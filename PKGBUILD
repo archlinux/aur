@@ -25,7 +25,7 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 conflicts=(qt6-base)
 provides=(qt6-base)
 groups=(qt6)
-source=(git+https://code.qt.io/qt/qtbase.git#commit=$_commit)
+source=(git+https://code.qt.io/qt/qtbase.git#branch=dev)
 sha256sums=('SKIP')
 
 pkgver() {

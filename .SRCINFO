@@ -51,7 +51,7 @@ pkgbase = qt6-base-git
 	optdepends = perl: for fixqt4headers and syncqt
 	provides = qt6-base
 	conflicts = qt6-base
-	source = git+https://code.qt.io/qt/qtbase.git#commit=9edfb7a1b5
+	source = git+https://code.qt.io/qt/qtbase.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = qt6-base-git
