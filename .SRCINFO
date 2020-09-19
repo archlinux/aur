@@ -9,7 +9,6 @@ pkgbase = mstream-git
 	makedepends = npm
 	depends = nodejs
 	provides = mstream
-	conflicts = mstream
 	conflicts = nodejs-mstream
 	backup = etc/mstream.json
 	source = git+https://github.com/d10n/mStream.git#branch=d10n-master

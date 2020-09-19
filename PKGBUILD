@@ -1,6 +1,6 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
-pkgname=mstream-git
+pkgname="mstream-git"
 pkgver=v4.7.0.r20.gb52fdde
 pkgrel=2
 pkgdesc="Music player server with a web-based interface"
@@ -8,7 +8,7 @@ url="https://mstream.io"
 license=("GPL3")
 arch=("any")
 provides=("mstream")
-conflicts=("mstream" "nodejs-mstream")
+conflicts=("nodejs-mstream")
 depends=("nodejs")
 makedepends=("npm")
 #source=("git+https://github.com/IrosTheBeggar/mStream.git"
