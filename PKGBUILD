@@ -20,7 +20,7 @@ source=(
     "https://gitlab.com/FloweeTheHub/fulcrum/-/archive/v$pkgver/fulcrum-v$pkgver.tar.gz"
     "fulcrum.conf"
 )
-sha256sums=('bc38a33c84c1940c33ea88ca4e81bdd01c7fc842e2aaef945a5e4e45822883f8'
+sha256sums=('5429b0e76e3f5f11941217a2a1c3d2619d63d2f70ae0111efda58bba5891eb61'
     '975025a1810178a7ec32dc4bd8cd5767a68d21378ec65baf9708f6d5b3842a1b'
 )
 
