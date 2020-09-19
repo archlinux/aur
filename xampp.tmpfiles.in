@@ -1,0 +1,1 @@
+Z @PACKAGE_INSTALLDIR@/var/mysql/ - mysql mysql -

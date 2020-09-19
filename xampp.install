@@ -47,7 +47,7 @@ post_upgrade() {
 			rm -rf "/${_COIN}.pacnew"
 			mv "/${_COIN}" "/${_COIN}.pacnew"
 			mv "/${_COIN}.keep" "/${_COIN}"
-			echo "/${_COIN} has been installed as /${_COIN}.pacnew."
+			echo "/${_COIN} has been installed as /${_COIN}.pacnew"
 		fi
 	done
 
@@ -66,7 +66,7 @@ pre_remove() {
 
 	local _STDERR
 	local _COIN
-	local _DATESTAMP="$(date '+%Y-%m-%d-%H.%M.%S')"
+	local _DATESTAMP="$(date '+%Y-%m-%d-%H-%M-%S')"
 
 	echo -n 'Stopping lampp services...'
 	_STDERR="$(/opt/lampp/lampp stop >/dev/null 2>&1)" && echo ' OK' || (echo ' FAILED'; test "x${_STDERR}" != 'x' && echo "${_STDERR}")
@@ -75,22 +75,29 @@ pre_remove() {
 		rm -rf "/${_COIN}.pacnew"
 	done
 
-	install -dm755 '/opt/htdocs-backups'
-	rm -rf "/opt/htdocs-backups/${_DATESTAMP}"
-	mv '/opt/lampp/htdocs' "/opt/htdocs-backups/${_DATESTAMP}" || echo 'ERROR: Could not create a backup of /opt/lampp/htdocs.' 1>&2
+	if test "${#_BACKUP[@]}" -gt 0; then
+		rm -rf "/opt/xampp-backups/${_DATESTAMP}"
+		install -dm755 "/opt/xampp-backups/${_DATESTAMP}"
+		for _COIN in "${_BACKUP[@]}"; do
+			if test -d "/${_COIN}"; then
+				mv "/${_COIN}" "/opt/xampp-backups/${_DATESTAMP}/" || \
+					echo "ERROR: Could not create a backup of /${_COIN}" 1>&2
+			fi
+		done
+	fi
 
-	rm -rf '/opt/lampp/var' '/opt/lampp/temp' '/opt/lampp/etc' '/opt/lampp/phpmyadmin/tmp'
+	rm -rf '/opt/lampp/'
 
 }
 
 post_remove() {
 
 	echo
-	echo 'REMEMBER: Your `htdocs` folder was backed up to `/opt/htdocs-backups`.'
+	echo 'REMEMBER: Your `htdocs` folder was backed up to `/opt/xampp-backups`.'
 	echo
 	echo 'If you don'\''t need them, launch'
 	echo
-	echo '    sudo rm -rf /opt/htdocs-backups'
+	echo '    sudo rm -rf /opt/xampp-backups'
 	echo
 	echo 'to erase all backups.'
 	echo

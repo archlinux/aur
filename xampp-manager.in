@@ -1,0 +1,2 @@
+#!/bin/sh
+'@PACKAGE_INSTALLDIR@/manager-@PACKAGE_PLATFORM@.run' "${@}"

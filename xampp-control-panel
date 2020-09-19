@@ -1,6 +1,0 @@
-#!/bin/sh
-if which pkexec &> /dev/null; then
-	pkexec env DISPLAY="${DISPLAY}" XAUTHORITY="${XAUTHORITY}" python2 '/opt/lampp/share/xampp-control-panel/xampp-control-panel.py'
-else
-	python2 '/opt/lampp/share/xampp-control-panel/xampp-control-panel.py'
-fi

@@ -3,6 +3,6 @@ Description=XAMPP service (XAMPP Apache + MariaDB + PHP + Perl)
 
 [Service]
 Type=oneshot
-ExecStart=/opt/lampp/lampp start
-ExecStop=/opt/lampp/lampp stop
+ExecStart=@PACKAGE_INSTALLDIR@/lampp start
+ExecStop=@PACKAGE_INSTALLDIR@/lampp stop
 RemainAfterExit=yes

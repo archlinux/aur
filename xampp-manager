@@ -1,6 +1,0 @@
-#!/bin/sh
-if which pkexec &> /dev/null; then
-	pkexec env DISPLAY="${DISPLAY}" XAUTHORITY="${XAUTHORITY}" '/opt/lampp/manager-linux-x64.run' "${@}"
-else
-	'/opt/lampp/manager-linux-x64.run' "$@"
-fi

@@ -1,0 +1,2 @@
+#!/bin/sh
+python2 '@PACKAGE_INSTALLDIR@/share/xampp-control-panel/xampp-control-panel.py'
