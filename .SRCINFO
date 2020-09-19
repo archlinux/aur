@@ -1,7 +1,7 @@
 pkgbase = droidcam
 	pkgdesc = A tool for using your android device as a wireless/usb webcam
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/aramg/droidcam
 	arch = x86_64

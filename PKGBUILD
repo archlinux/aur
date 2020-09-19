@@ -6,7 +6,7 @@
 pkgbase=droidcam
 pkgname=('droidcam' 'v4l2loopback-dc-dkms')
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
 arch=('x86_64')
@@ -35,6 +35,10 @@ prepare() {
   # Apply patches.
   cd "${pkgname}-${pkgver}"
   patch -p0 --input="${srcdir}/0001-Makefile-allow-to-modify-how-to-link-to-libusbmuxd.patch"
+
+  # Ensure that 'install' script from repository does not collide with install binary used for
+  # building the package.
+  chmod -x ./linux/install
 }
 
 build() {
