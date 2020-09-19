@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://mockmoon-cybernetics.ch/computer/p-touch2430pc/'
 license=('GPL2')
 depends=('gd' 'libusb')
-makedepends=('autoconf' 'git')
+makedepends=('git')
 provides=("${pkgname}")
 source=("git+https://mockmoon-cybernetics.ch/cgi/cgit/linux/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')

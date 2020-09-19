@@ -5,7 +5,6 @@ pkgbase = ptouch-print
 	url = https://mockmoon-cybernetics.ch/computer/p-touch2430pc/
 	arch = x86_64
 	license = GPL2
-	makedepends = autoconf
 	makedepends = git
 	depends = gd
 	depends = libusb
