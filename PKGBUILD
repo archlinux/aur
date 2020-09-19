@@ -6,7 +6,7 @@ pkgname='ros-melodic-costmap-converter'
 pkgver='0.0.12'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -26,12 +26,9 @@ ros-melodic-std-msgs)
 depends=(${ros_depends[@]}
   python-rospkg)
 
-# Git version (e.g. for debugging)
-_dir=${pkgname}
-_tag=${pkgver}
-source=("${_dir}"::"git+https://github.com/rst-tu-dortmund/costmap_converter.git#tag=${__tag}")
-sha256sums=('SKIP')
-options=('!makeflags')  
+_dir="costmap_converter-${pkgver}/"
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/rst-tu-dortmund/costmap_converter/archive/${pkgver}.tar.gz")
+sha256sums=('6b799f36c78c096e5bf0535c76ded14743b4b31da3a54603a183d73d09f054f3')
 
 build() {
   # Use ROS environment variables
@@ -46,7 +43,7 @@ build() {
   /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
 
   # Build project
-  cmake ${srcdir}/${pkgname} \
+  cmake ${srcdir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
