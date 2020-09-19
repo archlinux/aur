@@ -4,9 +4,9 @@ pkgdesc="ROS - MAVLink communication library."
 url='https://wiki.ros.org/libmavconn'
 
 pkgname='ros-melodic-libmavconn'
-pkgver='1.1.0'
+pkgver='1.3.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('GPLv3, LGPLv3, BSD')
 
 ros_makedepends=(ros-melodic-mavlink
@@ -22,15 +22,8 @@ depends=(${ros_depends[@]}
   console-bridge)
 
 _dir="mavros-${pkgver}/libmavconn"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros/archive/${pkgver}.tar.gz"
-        "boost-1.70.patch")
-sha256sums=('7bed7003e0905a5bbf53a8927068201a90ff08fab23e5483622295c2eea4aa10'
-            'd7a6c462f9328536ffd9b5b59e3a7e483fc5d403d71114bfc03024c364df233d')
-
-prepare() {
-    cd "${srcdir}/${_dir}"
-    patch -uN src/tcp.cpp ../../../boost-1.70.patch || return 1
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros/archive/${pkgver}.tar.gz")
+sha256sums=('1046802606eadf6d578ef221b685702a985e46e3624b24bfbe2bfaf40182e4dc')
 
 build() {
   # Use ROS environment variables
