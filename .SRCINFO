@@ -1,7 +1,7 @@
 pkgbase = silentdragonlite
 	pkgdesc = HUSH Lite wallet that supports zaddrs
-	pkgver = 1.3.9
-	pkgrel = 2
+	pkgver = 1.3.10
+	pkgrel = 1
 	url = http://github.com/MyHush/SilentDragonLite
 	arch = x86_64
 	license = GPL3
@@ -12,8 +12,8 @@ pkgbase = silentdragonlite
 	depends = qt5-base
 	depends = qt5-tools
 	conflicts = silentdragonlite-appimage
-	source = silentdragonlite-1.3.9.tar.gz::https://github.com/MyHush/SilentDragonLite/archive/v1.3.9.tar.gz
-	sha256sums = dc164039f937efe1ad308a3971a83921c20691c3c6f8a3cae5883f9043b37136
+	source = silentdragonlite-1.3.10.tar.gz::https://github.com/MyHush/SilentDragonLite/archive/v1.3.10.tar.gz
+	sha256sums = d0f9c412d45cba54935c2b4ae06dad392314d3a3b7eb40412633c6e568622ad5
 
 pkgname = silentdragonlite
 
