@@ -1,4 +1,4 @@
-# Maintainer: nl6720 <nl6720@gmail.com>
+# Maintainer: nl6720 <nl6720@archlinux.org>
 # Contributor: Jack Random <jack (@) random.to>
 # Contributor: Jerome Leclanche <jerome.leclanche+arch@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
@@ -8,17 +8,15 @@
 
 pkgbase=akonadi-git
 pkgname=(akonadi-git libakonadi-git)
-pkgver=19.04.2.r107.gf72c57701
+pkgver=20.08.1.r48.g5cc47ec9d
 pkgrel=1
-pkgdesc="PIM layer, which provides an asynchronous API to access all kind of PIM data"
+pkgdesc='PIM layer, which provides an asynchronous API to access all kind of PIM data'
 arch=(x86_64)
 url='https://kontact.kde.org'
 license=(LGPL)
-makedepends=(git extra-cmake-modules mariadb postgresql qt5-tools boost kdesignerplugin kio kitemmodels)
-source=("git+https://anongit.kde.org/akonadi.git")
+makedepends=(git extra-cmake-modules mariadb postgresql qt5-tools boost kitemmodels kaccounts-integration)
+source=("git+https://invent.kde.org/pim/akonadi.git")
 sha512sums=('SKIP')
-validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
-              F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
 
 pkgver() {
 	cd "${pkgname%-git}"
@@ -31,22 +29,20 @@ prepare() {
 }
 
 build() {
-	cd build
-	cmake ../"${pkgname%-git}" \
+	cmake -B build -S "${pkgname%-git}" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DBUILD_TESTING=OFF
-	make
+	cmake --build build
 }
 
 package_libakonadi-git() {
 	pkgdesc='Libraries used by applications based on Akonadi'
-	depends=(kio kitemmodels hicolor-icon-theme)
+	depends=(kitemmodels kaccounts-integration)
 	conflicts=("${pkgname%-git}")
 	provides=("${pkgname%-git}=${pkgver}")
 
-	cd build
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" cmake --install build
 	rm -r "$pkgdir"/usr/bin # Provided by akonadi
 }
 
@@ -59,7 +55,6 @@ package_akonadi-git() {
 	conflicts=("${pkgname%-git}")
 	provides=("${pkgname%-git}=${pkgver}")
 
-	cd build
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" cmake --install build
 	rm -r "$pkgdir"/{etc,usr/{include,lib,share}} # Provided by libakonadi
 }
