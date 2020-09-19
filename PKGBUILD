@@ -1,6 +1,6 @@
 # Contributor: Manifest0
 pkgname=perl-extutils-install
-pkgver=2.14
+pkgver=2.18
 pkgrel=1
 pkgdesc='ExtUtils::Install - install files from here to there'
 _dist='ExtUtils-Install'
@@ -10,8 +10,8 @@ license=('GPL' 'PerlArtistic')
 depends=('perl')
 options=('!emptydirs' purge)
 source=("https://cpan.metacpan.org/authors/id/B/BI/BINGOS/$_dist-$pkgver.tar.gz")
-md5sums=('ae6af2689daa6f8c2d01d04a28ab0ef0')
-sha512sums=('10f8b7e8bbd11c0860c9df72f8eb074eb329f889707788c7a1e81463022e4366173fa2681ddcb9c61514a075ddf3a63534a4758b47b259c84948bc633ddd78f5')
+md5sums=('9e7e733487358ee9e3888b1b69fd7f23')
+sha512sums=('3af42cd2b5f7b978552b03348184e734014a1e950fd48496089dd5ddfb2cab7d0193751bd6d8e1265f0cbd5a85dbd9c248ab38bb0ea41eaa4f1e70d37eaf2a1c')
 
 
 build() {
