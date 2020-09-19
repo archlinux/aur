@@ -2,7 +2,7 @@
 
 _prjname=makehuman
 pkgname=makehuman-git
-pkgver=r2405.ebb245b2
+pkgver=r2602.b3e9b869
 pkgrel=1
 pkgdesc="Parametrical modeling program for creating human bodies (git latest)"
 arch=('any')
@@ -10,6 +10,8 @@ url="http://www.makehumancommunity.org/"
 license=('AGPL3')
 depends=('python' 'python-numpy' 'python-pyqt5' 'python-opengl' 'qt5-svg')
 makedepends=('git' 'git-lfs')
+provides=('makehuman')
+conflicts=('makehuman')
 source=("git+https://github.com/makehumancommunity/${_prjname}.git")
 sha256sums=('SKIP')
 
