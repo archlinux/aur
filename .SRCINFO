@@ -1,13 +1,13 @@
 pkgbase = nwnsc-bin
 	pkgdesc = A Neverwinter Nights script compiler (binary version)
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/nwneetools/nwnsc
 	arch = any
 	license = MIT
 	conflicts = nwnsc-git
-	source = https://github.com/nwneetools/nwnsc/releases/download/v1.1.1/nwnsc-linux-v1.1.1.zip
-	md5sums = bdc3ad95b70c420d6998ea39900a80ac
+	source = https://github.com/nwneetools/nwnsc/releases/download/v1.1.2/nwnsc-linux-v1.1.2.zip
+	md5sums = 898869a925d1f6f9a5eced980383246a
 
 pkgname = nwnsc-bin
 
