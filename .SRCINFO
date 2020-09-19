@@ -1,0 +1,13 @@
+pkgbase = reapack
+	pkgdesc = Package manager for the Reaper DAW
+	pkgver = v1.2.3
+	pkgrel = 1
+	url = https://reapack.com
+	arch = x86_64
+	license = GPL
+	depends = reaper-bin
+	source = https://github.com/cfillion/reapack/releases/download/v1.2.3/reaper_reapack-x86_64.so
+	md5sums = 81af4f8d488979495ba0264dd711de74
+
+pkgname = reapack
+
