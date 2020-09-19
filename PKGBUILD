@@ -2,12 +2,12 @@
 
 pkgname=eclipse-objectaid
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Create UML class diagrams from existing Java source code and libraries with this plugin for Eclipse IDE.'
 arch=('any')
 url='http://www.objectaid.com'
 license=('ObjectAid Class Diagram Editor License')
-depends=('eclipse>=4.5.0')
+depends=('eclipse>=4.5.0' eclipse-gef3)
 options=('!strip')
 source=(
 	"https://www.objectaid.com/update/current/objectaid-$pkgver.zip"
