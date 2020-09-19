@@ -11,10 +11,11 @@
 #  - remove depends on aom, remove --enable-libaom
 #  - remove depends on intel-media-sdk, remove --enable-libmfx
 #  - remove depends on vmaf, remove --enable-vmaf
+#  - remove depends on rav1e, remove --enable-librav1e
 # Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-pkgver=4.2.3
+pkgver=4.3.1
 pkgrel=2
 epoch=1
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
@@ -95,7 +96,7 @@ provides=(
   libswscale.so
 )
 conflicts=('ffmpeg')
-_tag=d3b963cc41824a3c5b2758ac896fb23e20a87875
+_tag=6b6b9e593dd4d3aaf75f48d40a13ef03bdef9fdb
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
   vmaf-model-path.patch
@@ -113,10 +114,6 @@ pkgver() {
 
 prepare() {
   cd ffmpeg
-
-  # backport avisynthplus support
-  git show 6d8cddd1c67758636843f6a08295b3896c2e9ef8 -- libavformat/avisynth.c | git apply -
-  git show 56f59246293de417d27ea7e27cb9a7727ee579fb -- libavformat/avisynth.c | git apply -
 
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
 }
