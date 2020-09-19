@@ -1,4 +1,4 @@
-pkgbase = oidn
+pkgbase = openimagedenoise-develop
 	pkgdesc = Intel(R) Open Image Denoise library
 	pkgver = 1.2.3
 	pkgrel = 1
@@ -11,12 +11,12 @@ pkgbase = oidn
 	makedepends = ispc>=1.14
 	depends = intel-tbb
 	depends = python
-	source = oidn::git+https://github.com/OpenImageDenoise/oidn.git#tag=v1.2.3
+	source = openimagedenoise-develop::git+https://github.com/OpenImageDenoise/oidn.git#tag=v1.2.3
 	source = git+https://github.com/OpenImageDenoise/mkl-dnn.git
 	source = git-lfs+https://github.com/OpenImageDenoise/oidn-weights.git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = oidn
+pkgname = openimagedenoise-develop
 
