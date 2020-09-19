@@ -2,7 +2,7 @@
 # Contributor: Soukyuu <chrno-sphered at hotmail dot com>
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 pkgname=deadbeef-git
-pkgver=r9370.bbd10e84c
+pkgver=r9665.b4e867ec3
 pkgrel=1
 pkgdesc="A GTK+ audio player for GNU/Linux (devel branch)"
 url="https://deadbeef.sourceforge.io/"
@@ -10,10 +10,10 @@ arch=('i686' 'x86_64')
 license=('GPL2'
          'LGPL2.1'
          'ZLIB')
-depends=('alsa-lib' 'hicolor-icon-theme' 'jansson')
+depends=('alsa-lib' 'hicolor-icon-theme' 'jansson' 'libblocksruntime' 'libdispatch')
 makedepends=('curl' 'faad2' 'flac' 'git' 'intltool' 'imlib2' 'libcddb' 'libcdio' 'libmad' 'libpulse' 
              'libsamplerate' 'libvorbis' 'libx11' 'libzip' 'wavpack' 'yasm'
-             'ffmpeg' 'gtk2' 'gtk3')
+             'ffmpeg' 'gtk2' 'gtk3' 'clang')
 optdepends=('gtk2: for the GTK2 interface'
             'gtk3: for the GTK3 interface'
             'libsamplerate: for dsp_libsrc plugin (resampler)'
@@ -59,7 +59,7 @@ build() {
   cd "$srcdir/deadbeef"
 
   ./autogen.sh
-  ./configure --prefix=/usr
+  CC=clang CXX=clang++ ./configure --prefix=/usr
   make
 }
 
