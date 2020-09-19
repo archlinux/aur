@@ -1,7 +1,7 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=5.8.9
-_archver=arch2
+_kernver=5.8.10
+_archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
 pkgbase="${_pkgname}-versioned-bin"
@@ -42,9 +42,9 @@ source=("${_kernsrc}"
         "${_headerssrc}"
         "${_docssrc}")
 
-sha256sums=('8056705c227cd5a1b4bebf34454d2835f398399874bb1876984f929cd5d9a3ac'
-            '0780bfe16d1e9dadb9be999676bca5f453bb1bfe091503a627d2251bed2391cb'
-            '57797cdfb7ca5d2ef4533998292efad26c40caaf5c4ba5e32615b8a37a7fb32f')
+sha256sums=('831470314beae0a1418711ef9b7fd8528b10eb0f372977c39ea3014b65976faf'
+            '2b5bce229818db71677f80076c37320ed9236a405a56093ad4c61928e8dbc9bd'
+            '466028c2e8e804649706b581cc6c274449976d0de0e07a84eaee4c6adf34eab5')
 
 package_linux-versioned-bin() {
     pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -62,7 +62,7 @@ package_linux-versioned-docs-bin() {
     depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.8.9.arch2-1-bin() {
+package_linux5.8.10.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils kmod initramfs)
   conflicts=("${_pkgname}")
@@ -75,7 +75,7 @@ package_linux5.8.9.arch2-1-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.8.9.arch2-1-headers-bin() {
+package_linux5.8.10.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -83,7 +83,7 @@ package_linux5.8.9.arch2-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.8.9.arch2-1-docs-bin() {
+package_linux5.8.10.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
