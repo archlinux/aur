@@ -1,6 +1,6 @@
 pkgbase = gvls
 	pkgdesc = GNOME Vala Language Server
-	pkgver = 0.14.3
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/esodan/gvls
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = gvls
 	depends = libpeas
 	depends = gtksourceview3
 	depends = jsonrpc-glib
-	source = https://gitlab.gnome.org/esodan/gvls/-/archive/gvls-0.14.3/gvls-gvls-0.14.3.tar.gz
-	sha256sums = 56eeb00ad8272462caffe8b3a4e4a7752c1c3f9b9203d32deadc2e14f7da4f5b
+	source = https://gitlab.gnome.org/esodan/gvls/-/archive/gvls-0.16.0/gvls-gvls-0.16.0.tar.gz
+	sha256sums = 854a34c2c2b35bd744f4199758276fd889134a3e15d4b5dc4c2a577eee31da84
 
 pkgname = gvls
 
