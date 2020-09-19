@@ -8,16 +8,16 @@ pkgbase=pipewire-gstfree
 _pkgbase=pipewire
 pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse pipewire-gstfree-alsa)
 pkgver=0.3.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
 license=(LGPL2.1)
 arch=(x86_64)
 makedepends=(git meson doxygen graphviz xmltoman valgrind jack2 libpulse
              alsa-lib sbc rtkit vulkan-icd-loader
-             dbus libsndfile bluez-libs vulkan-headers)
+             dbus libsndfile bluez-libs vulkan-headers ffmpeg)
 _commit=fc0354ae1d74e5b3681ff852507d9bc1719027d5
-source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
+source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")  # tags/0.3.12
 sha256sums=('SKIP')
 
 pkgver() {
@@ -32,6 +32,7 @@ prepare() {
 build() {
   arch-meson $_pkgbase build \
     -D gstreamer=false \
+    -D ffmpeg=true \
     -D docs=true \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
@@ -54,7 +55,7 @@ _pick() {
 _ver=${pkgver:0:3}
 
 package_pipewire-gstfree() {
-  depends=(sbc rtkit vulkan-icd-loader bluez-libs
+  depends=(sbc rtkit vulkan-icd-loader bluez-libs ffmpeg
            libdbus-1.so libsndfile.so libudev.so libasound.so libsystemd.so
            libglib-2.0.so libgobject-2.0.so)
   optdepends=('pipewire-docs: Documentation'
