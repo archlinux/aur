@@ -1,8 +1,7 @@
-# Maintainer: Jerome Leclanche <jerome@leclan.ch>
-
+# Maintainer: Carson Rueter <roachh@protonmail.com>
 _pkgname=lxqt-desktop
 pkgname=$_pkgname-git
-pkgver=0.13.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="The LXQt desktop"
 arch=("i686" "x86_64")
@@ -26,20 +25,27 @@ depends=(
 	"lxqt-session-git"
 	"lxqt-sudo-git"
 	"lxqt-themes-git"
+	"lxqt_wallet-git"
+	"lxqt-organizer-git"
 )
 optdepends=(
 	"lximage-qt-git: The LXQt image viewer"
 	"openbox: Recommended window manager"
-	"obconf-qt: Openbox configuration tool. Qt port of ObConf"
+	"obconf-qt: Openbox configuration tool (Qt port)"
 	"sddm-git: Recommended display manager"
+	"sddm-config-editor-git: SDDM Configuration Editor"
+	"kwin: Recommended display manager"
+	"lxqt-kcm-integration-git: KCM Integration"
 	"qterminal-git: Pure Qt terminal"
 	"featherpad-git: Pure Qt text editor"
 	"screengrab-git: Screenshot capture"
 	"qps-git: Task Monitoring"
 	"nm-tray-git: Qt front-end to NetworkManager"
-    "compton-conf-git: Qt-based configuration tool for compton"
-    "pavucontrol-qt-git: PulseAudio mixer. Qt port of pavucontroli"
-    "lxqt-connman-applet-git: Qt front-end to ConnMan"
+	"qlipper: Clipboard manager"
+	"kvantum-qt5-git: Alternate Qt style"
+	"compton-conf-git: Qt-based configuration tool for compton"
+	"pavucontrol-qt-git: PulseAudio mixer (Qt port)"
+	"lxqt-connman-applet-git: Qt front-end to ConnMan"
 )
 makedepends=("git")
 provides=("$_pkgname")
