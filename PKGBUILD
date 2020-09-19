@@ -1,4 +1,6 @@
 # Maintainer: Ananthu S Kumar <ask1234560 at gmail dot com>
+# Contributor: Hussein Al Abry <zidhussein at gmail dot com>
+
 pkgname=ttf-material-icons-git
 pkgver=r145.96206ade0e
 pkgrel=1
