@@ -1,6 +1,7 @@
 # Maintainer: Jannik Birk <birk dot jannik at gmail dot com>
 
 pkgname=python-pyulog
+_name=${pkgname#python-}
 pkgver=0.8.0
 pkgrel=1
 pkgdesc="Python module & scripts for ULog files"
@@ -9,7 +10,7 @@ url="https://github.com/px4/pyulog"
 license=("BSD")
 depends=("python")
 optdepends=('python-simplekml')
-source=("https://files.pythonhosted.org/packages/a7/fd/9fae916d991ea8a76dd1e00060e283ac006ca198cb63bcbb0118c75e76cf/pyulog-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=("85d8c7bf6aa34bde6aea82f90ebc7ff698d10206321be0d26c38eb9ca2837bc7")
 
 build() {
