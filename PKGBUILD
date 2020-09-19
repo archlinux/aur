@@ -1,7 +1,7 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.4.65
+pkgver=5.4.66
 pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
@@ -27,7 +27,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('f514834417d09de1667836e443e085bf37952603f23572b69ef0fcfda16cac69'
+sha256sums=('ff1930376774f4c1fc884d82184b5ebea6628f0a37ed9be781c0b119c4cfdab2'
             'SKIP'
             '6a2ee8f822810f594921aa85087e4cf0a17c68518d395586fd9c56b6c7e63dad'
             'b3f2777462517abd75039fc56a63dfa3f5eb6b3865e02fe9e0c3512381eed54b'
