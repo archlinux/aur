@@ -9,4 +9,4 @@ Version: @VERSION@
 URL: @URL@
 Requires: icu-i18n
 Libs: -L${libdir}/v8 -lv8_monolith
-Cflags: -I${includedir}/v8 -pthread -std=c++11 -DV8_COMPRESS_POINTERS
+Cflags: -I${includedir}/v8 -pthread -std=c++11 @CFLAGS@
