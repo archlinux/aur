@@ -1,4 +1,4 @@
-# Maintainer: Sidney Crestani (sidneycrestani@yahoo.com)
+# Maintainer: Ryan Delaney <ryan.patrick.delaney@protonmail.com>
 
 pkgname=ttf-inconsolata-g
 pkgver=20090213
