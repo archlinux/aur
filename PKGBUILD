@@ -1,11 +1,11 @@
-# Maintainer: Yaohan Chen <yaohan.chen@gmail.com>
+# Maintainer: Carson Rueter <roachh@protonmail.com>
 
 pkgname='sddm-config-editor-git'
 _pkgname='sddm-config-editor'
 pkgdesc='SDDM Configuration Editor'
 url='https://github.com/hagabaka/sddm-config-editor'
 license=('APACHE')
-pkgver=0.1.r21.g8cd5edc
+pkgver=0.1.r57.gc01cbcd
 pkgrel=1
 source=('git+https://github.com/hagabaka/sddm-config-editor.git')
 md5sums=('SKIP')
