@@ -9,7 +9,7 @@
 pkgbase=eclipse
 pkgname=(eclipse-{common,java,jee,cpp,php,javascript,rust})
 pkgver=4.16
-pkgrel=1
+pkgrel=7
 _release=2020-09/R
 pkgdesc="Highly extensible IDE"
 license=(EPL)
