@@ -9,7 +9,7 @@ arch=(x86_64)
 url=https://www.silabs.com/products/development-tools/software/simplicity-studio
 license=(unknown)
 backup=("opt/$installdir/studio.ini")
-depends=(qt5-base libxtst)
+depends=(qt5-base libxtst webkit2gtk)
 optdepends=('wine: for IAR support'
             'lib32-qt4: for old tools like battery estimator'
             'qt4: for Segger tools like systemview')
