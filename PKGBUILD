@@ -1,8 +1,9 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
+# Comaintainer: Jujudusud <jujudusud gmail com>
 
 pkgname=jamulus-headless
 _pkgname=Jamulus
-pkgver=3.5.10
+pkgver=3.5.11
 pkgrel=1
 pkgdesc="Internet jam session software (headless server)"
 arch=('x86_64')
@@ -28,5 +29,6 @@ package() {
   install -Dm644 $srcdir/jamulus.service $pkgdir/usr/lib/systemd/system/jamulus.service
 }
 
-sha1sums=('370d67fe2ce93611e24b48c9653c94cf5403afb0'
+sha1sums=('d2f627ac84f3e8e54a6ab3a3150bc71860bacd61'
           'cbe82818b40eba6dc3ee88f98af8ae16ff44137e')
+
