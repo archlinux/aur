@@ -3,15 +3,14 @@ pkgbase = python-awesometkinter
 	pkgver = 2020.9.18
 	pkgrel = 2
 	url = https://github.com/Aboghazala/AwesomeTkinter
+	changelog = python-awesometkinter.changelog
 	arch = any
 	license = MIT
 	depends = python
 	depends = tk
 	depends = python-pillow
 	source = https://github.com/Aboghazala/AwesomeTkinter/archive/2020.9.18.tar.gz
-	source = python-awesometkinter.license
 	b2sums = 0b4f8e4b1581c5bbfead9b90d86cee0fe750643e09277099a70d0a094fd385c39d43b200f2d9d837d39721f39b395eeffa43036ce0ad716e7c2c13c54da250df
-	b2sums = c14d9f8f71d788a2f4776128973b6fcff244f55a3b5fb9410404e3d04f7c8f81316fc69622f3f2ada4c23eabbd2194ad2d4bca4ab6e8733625b4328c7aaa8456
 
 pkgname = python-awesometkinter
 

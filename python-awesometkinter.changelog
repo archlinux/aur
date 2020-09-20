@@ -1,0 +1,6 @@
+2020.9.18:
+- Fixed scrolled text bad index and missing scrollbar imports
+- Add limitation to readme
+
+2020.9.16:
+- First release
