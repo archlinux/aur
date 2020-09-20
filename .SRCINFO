@@ -1,6 +1,6 @@
 pkgbase = qtfm-git
 	pkgdesc = A lightweight file manager (git version)
-	pkgver = 2019.08.23
+	pkgver = 2019.10.14
 	pkgrel = 1
 	url = https://github.com/rodlie/qtfm/releases
 	arch = i686
@@ -14,7 +14,9 @@ pkgbase = qtfm-git
 	provides = qtfm
 	conflicts = qtfm
 	source = qtfm::git+https://github.com/rodlie/qtfm.git#branch=master
-	md5sums = SKIP
+	source = qt-5.15+gentoo.patch
+	sha256sums = SKIP
+	sha256sums = 34271a58f32eeed01ab2db408505e8a1cef20f4a60a372ba78c5607b404eb010
 
 pkgname = qtfm-git
 
