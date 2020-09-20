@@ -2,7 +2,7 @@
 
 pkgname=solarus-run
 pkgver=1.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight, free and open-source game engine for Action-RPGs"
 arch=('i686' 'x86_64')
 url="http://www.solarus-games.org/"
@@ -25,11 +25,15 @@ b2sums=('fdf9b6703af8424b4731b25b307dcc7a0966cbf89a0bf043bcfb6745d0c6e8aa1fee026
 
 prepare() {
   cd "solarus-v$pkgver"
-  cmake -Wno-dev -DSOLARUS_GUI=OFF -DSOLARUS_TESTS=OFF -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_CXX_FLAGS="${CXXFLAGS} ${CPPFLAGS}" -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" .
+  cmake -Wno-dev -DSOLARUS_GUI=OFF -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_CXX_FLAGS="${CXXFLAGS} ${CPPFLAGS}" -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS}" .
 }
 
 build() {
   make -C "solarus-v$pkgver" ${MAKEFLAGS}
+}
+
+check() {
+  make -C "solarus-v$pkgver" test
 }
 
 package() {
