@@ -2,7 +2,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-glib-networking
-pkgver=2.64.3
+pkgver=2.66.0
 pkgrel=1
 pkgdesc='Network-related giomodules for glib'
 arch=(x86_64)
@@ -25,7 +25,8 @@ checkdepends=(
 optdepends=(
   'lib32-openssl: Alternative backend'
 )
-source=(git+https://gitlab.gnome.org/GNOME/glib-networking.git#tag=533d3a76e2cc622b072e3ec789f69e888f3fd8eb)
+_tag=61d7e024ca354e6d2e39930d66a2067f3de5842c
+source=(git+https://gitlab.gnome.org/GNOME/glib-networking.git#tag=${_tag})
 sha256sums=(SKIP)
 
 pkgver() {
