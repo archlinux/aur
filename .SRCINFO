@@ -1,0 +1,34 @@
+pkgbase = waveedit-git
+	pkgdesc = A wavetable editor for the E370 and E352 Eurorack synthesizer modules (git version)
+	pkgver = 1.1.r0.gf699e1a
+	pkgrel = 1
+	url = https://github.com/AndrewBelt/WaveEdit
+	arch = x86_64
+	groups = pro-audio
+	license = GPL3
+	makedepends = git
+	depends = gtk2
+	depends = jansson
+	depends = libsamplerate
+	depends = libsndfile
+	depends = sdl2
+	provides = waveedit
+	provides = waveedit=1.1
+	provides = waveedit
+	conflicts = waveedit
+	conflicts = waveedit
+	source = waveedit::git+https://github.com/AndrewBelt/WaveEdit.git
+	source = imgui::git+https://github.com/AndrewBelt/imgui.git
+	source = lodepng::git+https://github.com/lvandeve/lodepng.git
+	source = osdialog::git+https://github.com/AndrewBelt/osdialog.git
+	source = pffft::git+https://github.com/marton78/pffft.git
+	source = waveedit-makefile-flags.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = d13b1f10a705803cbc8a24b87247ed60
+
+pkgname = waveedit-git
+
