@@ -1,0 +1,15 @@
+pkgbase = streamdeck
+	pkgdesc = Utility to control Elgato StreamDeck on Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Luzifer/streamdeck
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = hidapi
+	source = streamdeck-1.0.0.tar.gz::https://github.com/Luzifer/streamdeck/archive/v1.0.0.tar.gz
+	sha512sums = 0f93d4a2dabd44588ab663a7c1f1bd745f347d69b274ab71cf533e84989b5b3705ff61d7d8b82535f0f714885b0127dfb858991de38efe4f319cb11c7144976b
+
+pkgname = streamdeck
+
