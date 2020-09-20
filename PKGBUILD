@@ -1,6 +1,6 @@
 # Maintainer: Dan Maftei <dan.maftei@gmail.com>
 pkgname="molden"
-pkgver=6.3
+pkgver=6.5
 pkgrel=1
 pkgdesc="A program for molecular and electronic structure visualization"
 arch=('i686' 'x86_64')
@@ -31,25 +31,25 @@ source=(
     "ftp://ftp.cmbi.umcn.nl/pub/molgraph/molden/$pkgname$pkgver.tar.gz"
 )
 noextract=()
-md5sums=('92d6aa6442c3e67571b4494553b0d180')
+md5sums=('97bfffd55e166ca3a9fbddee111993ff')
 
 build() {
   cd "molden$pkgver"
   # Patch Makefile for surf utility to reflect 
   # the replacement of missing makedepend 
-  sed -i 's/@.*makedepend.*$/@ \$(CC) \$(INCLUDE) -M \$(SRCS) \> makedep/' surf/Makefile
+  sed -i 's/@.*makedepend.*$/@ \$(CC) \$(INCLUDE) -M \$(SRCS) \> makedep/' src/surf/Makefile
   
   # Patch to compile with gfortran 10
   # Contributed by Panadestein on 5/31/2020
   sed -i 's/FFLAGS = -g ${AFLAG}/& -fallow-argument-mismatch/g' makefile
-  sed -i 's/FFLAGS = -c -g -ffast-math -funroll-loops -O3/& -fallow-argument-mismatch/g' ambfor/makefile
+  sed -i 's/FFLAGS = -c -g -ffast-math -funroll-loops -O3/& -fallow-argument-mismatch/g' src/ambfor/makefile
   make
 }
 
 package() {
   cd "molden$pkgver"
-  install -t "$pkgdir/usr/bin/"  -Dm755 molden gmolden
-  install -t "$pkgdir/usr/lib/$pkgname/" -Dm755 ambfor/ambfor ambfor/ambmd surf/surf  
+  install -t "$pkgdir/usr/bin/"  -Dm755 bin/{molden,gmolden}
+  install -t "$pkgdir/usr/lib/$pkgname/" -Dm755 src/ambfor/ambfor src/ambfor/ambmd src/surf/surf  
   install -t "$pkgdir/usr/share/doc/$pkgname" -Dm755 doc/figures.ps.Z  doc/manual.ps.Z doc/manual.txt.Z  
   install -t "$pkgdir/usr/share/licenses/$pkgname/" -Dm755 CopyRight COMMERCIAL_LICENSE REGISTER     
 }
