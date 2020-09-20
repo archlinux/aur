@@ -1,6 +1,6 @@
 pkgbase = julia-mkl
 	pkgdesc = High-level, high-performance, dynamic programming language (compiled with the Intel MKL library)
-	pkgver = 1.4.2
+	pkgver = 1.5.1
 	pkgrel = 2
 	epoch = 2
 	url = https://julialang.org/
@@ -11,6 +11,7 @@ pkgbase = julia-mkl
 	makedepends = gmp
 	makedepends = python
 	makedepends = intel-common-libs
+	makedepends = llvm
 	depends = fftw
 	depends = hicolor-icon-theme
 	depends = intel-mkl
@@ -21,17 +22,16 @@ pkgbase = julia-mkl
 	depends = mbedtls
 	depends = openlibm
 	depends = pcre2
+	depends = llvm-libs
 	optdepends = gnuplot: If using the Gaston Package from julia
 	provides = julia
 	conflicts = julia
 	conflicts = julia-git
 	backup = etc/julia/startup.jl
-	source = https://github.com/JuliaLang/julia/releases/download/v1.4.2/julia-1.4.2-full.tar.gz
+	source = https://github.com/JuliaLang/julia/releases/download/v1.5.1/julia-1.5.1-full.tar.gz
 	source = make-install-no-build.patch
-	source = julia-libgit2-1.0.patch::https://patch-diff.githubusercontent.com/raw/JuliaLang/julia/pull/35233.patch
-	sha256sums = 948c70801d5cce81eeb7f764b51b4bfbb2dc0b1b9effc2cb9fc8f8cf6c90a334
+	sha256sums = 1d0debfccfc7cd07047aa862dd2b1a96f7438932da1f5feff6c1033a63f9b1d4
 	sha256sums = 0b57e0bc6e25c92fde8a6474394f7a99bfb57f9b5d0f7b53f988622ae67de8b7
-	sha256sums = c8be2be8d62ea653439a5c18e56f8026c83f0f1127934b12d7faf60630befd45
 
 pkgname = julia-mkl
 
