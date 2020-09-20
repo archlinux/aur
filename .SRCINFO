@@ -10,7 +10,6 @@ pkgbase = svtplay-dl
 	depends = python-requests
 	depends = ffmpeg
 	depends = python-yaml
-	depends = python-dateutil
 	optdepends = python-pysocks: proxy support
 	source = https://github.com/spaam/svtplay-dl/archive/2.5.tar.gz
 	sha256sums = 6b28df776f61b8327461dee4ad7817b1d1144db6cc676d5b22324588dab63993
