@@ -1,0 +1,18 @@
+pkgbase = lib32-libxcursor-git
+	pkgdesc = X cursor management library (32-bit)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = x86_64
+	license = custom
+	makedepends = xorg-util-macros
+	depends = lib32-libxfixes
+	depends = lib32-libxrender
+	depends = libxcursor
+	provides = lib32-libxcursor
+	conflicts = lib32-libxcursor
+	source = git+https://gitlab.freedesktop.org/xorg/lib/libxcursor
+	sha256sums = SKIP
+
+pkgname = lib32-libxcursor-git
+
