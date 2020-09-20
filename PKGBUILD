@@ -3,7 +3,7 @@
 
 pkgname=guide-bin
 pkgver=1.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc='由北航 GAIT 研究组开发的、专门为 NOI 选手设计的轻型集成开发环境'
 arch=('i686' 'x86_64')
 url='http://www.noi.cn/newsview.html?id=27&hash=B7759F&type=1'
@@ -25,7 +25,6 @@ depends=(
   'lib32-gcc-libs'
 )
 optdepends=(
-  'gcc: C++'
   'gdb: Debug C++'
   'fpc: Pascal'
 )
