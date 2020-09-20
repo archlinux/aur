@@ -2,12 +2,12 @@
 
 pkgname=ocaml-ppx_derivers-git
 pkgver=20190404
-pkgrel=2
+pkgrel=3
 pkgdesc="deriving plugin registry"
 arch=('x86_64')
 url='https://github.com/ocaml-ppx/ppx_derivers'
 license=('BSD')
-provides=('ocaml-ppx_derivers')
+provides=('ocaml-ppx_derivers=1.2.1')
 conflicts=('ocaml-ppx_derivers')
 makedepends=('ocamlbuild' 'ocaml-findlib' 'dune')
 source=("${pkgname}::git://github.com/ocaml-ppx/ppx_derivers.git")
