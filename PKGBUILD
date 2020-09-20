@@ -28,7 +28,7 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  ./configure --prefix=/usr --sysconfdir=/etc \
+  ./autogen.sh --prefix=/usr --sysconfdir=/etc \
     --libdir=/usr/lib32
   make
 }
