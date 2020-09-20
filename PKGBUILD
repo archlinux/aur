@@ -36,11 +36,13 @@ source=(
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests'
     'llvm-project::git+https://github.com/apple/llvm-project#branch=swift/master'
 #    'llvm-project::git+https://github.com/apple/llvm-project#commit=e80a6b097761253'
+    'yams::git+https://github.com/jpsim/Yams#commit=3.0.1'
     '0001-arch-aur-pachtes.patch'
     '0002-llbuild-ninja-test-binary-links-against-ncurses.patch'
 )
 noextract=()
 md5sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
