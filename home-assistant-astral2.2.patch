@@ -1,3 +1,17 @@
+From 6a75aa37253dd04d4ba12dd72b5bb374ea0154f1 Mon Sep 17 00:00:00 2001
+From: Maxime Gauduin <alucryd@archlinux.org>
+Date: Thu, 27 Feb 2020 17:27:37 +0100
+Subject: [PATCH] bump astral to 2.2
+
+---
+ homeassistant/components/moon/sensor.py  |  4 +-
+ homeassistant/components/sun/__init__.py | 20 +++++-----
+ homeassistant/helpers/sun.py             | 51 ++++++++++++++----------
+ homeassistant/package_constraints.txt    |  2 +-
+ requirements.txt                         |  2 +-
+ setup.py                                 |  2 +-
+ 6 files changed, 47 insertions(+), 34 deletions(-)
+
 diff --git a/homeassistant/components/moon/sensor.py b/homeassistant/components/moon/sensor.py
 index 3a25b68eea..20ee6c1c54 100644
 --- a/homeassistant/components/moon/sensor.py
@@ -18,7 +32,7 @@ index 3a25b68eea..20ee6c1c54 100644
 -        self._state = Astral().moon_phase(today)
 +        self._state = moon.phase(today)
 diff --git a/homeassistant/components/sun/__init__.py b/homeassistant/components/sun/__init__.py
-index fe89413f4d..677948de02 100644
+index 5fb777bd32..55d86de49a 100644
 --- a/homeassistant/components/sun/__init__.py
 +++ b/homeassistant/components/sun/__init__.py
 @@ -92,6 +92,7 @@ class Sun(Entity):
@@ -39,7 +53,7 @@ index fe89413f4d..677948de02 100644
                  return
              self.location = location
 +            self.elevation = elevation
-             self.update_events(dt_util.utcnow())
+             self.update_events()
  
          update_location(None)
 @@ -140,7 +142,7 @@ class Sun(Entity):
@@ -51,7 +65,7 @@ index fe89413f4d..677948de02 100644
          )
          if next_utc < self._next_change:
              self._next_change = next_utc
-@@ -167,7 +169,7 @@ class Sun(Entity):
+@@ -169,7 +171,7 @@ class Sun(Entity):
          )
          self.location.solar_depression = -10
          self._check_event(utc_point_in_time, "dawn", PHASE_SMALL_DAY)
@@ -60,7 +74,7 @@ index fe89413f4d..677948de02 100644
          self._check_event(utc_point_in_time, "dusk", PHASE_DAY)
          self.next_setting = self._check_event(
              utc_point_in_time, SUN_EVENT_SUNSET, PHASE_SMALL_DAY
-@@ -178,9 +180,7 @@ class Sun(Entity):
+@@ -180,9 +182,7 @@ class Sun(Entity):
          self._check_event(utc_point_in_time, "dusk", PHASE_NAUTICAL_TWILIGHT)
          self.location.solar_depression = "astronomical"
          self._check_event(utc_point_in_time, "dusk", PHASE_ASTRONOMICAL_TWILIGHT)
@@ -71,7 +85,7 @@ index fe89413f4d..677948de02 100644
          self.location.solar_depression = "civil"
  
          # if the event was solar midday or midnight, phase will now
-@@ -188,7 +188,7 @@ class Sun(Entity):
+@@ -190,7 +190,7 @@ class Sun(Entity):
          # even in the day at the poles, so we can't rely on it.
          # Need to calculate phase if next is noon or midnight
          if self.phase is None:
@@ -80,10 +94,10 @@ index fe89413f4d..677948de02 100644
              if elevation >= 10:
                  self.phase = PHASE_DAY
              elif elevation >= 0:
-@@ -218,9 +218,11 @@ class Sun(Entity):
-     @callback
-     def update_sun_position(self, utc_point_in_time):
+@@ -222,9 +222,11 @@ class Sun(Entity):
          """Calculate the position of the sun."""
+         # Grab current time in case system clock changed since last time we ran.
+         utc_point_in_time = dt_util.utcnow()
 -        self.solar_azimuth = round(self.location.solar_azimuth(utc_point_in_time), 2)
 +        self.solar_azimuth = round(
 +            self.location.solar_azimuth(utc_point_in_time, self.elevation), 2
@@ -227,7 +241,7 @@ index 818010c341..f1f7ee1f19 100644
          return None
  
 diff --git a/homeassistant/package_constraints.txt b/homeassistant/package_constraints.txt
-index 58d3e3be88..2ec7bd09d6 100644
+index 0f88f88469..9871886a0a 100644
 --- a/homeassistant/package_constraints.txt
 +++ b/homeassistant/package_constraints.txt
 @@ -2,7 +2,7 @@ PyJWT==1.7.1
@@ -240,7 +254,7 @@ index 58d3e3be88..2ec7bd09d6 100644
  attrs==19.3.0
  bcrypt==3.1.7
 diff --git a/requirements.txt b/requirements.txt
-index 702e4eaf19..f58f7b9d76 100644
+index baa48241a0..64b5a3ab89 100644
 --- a/requirements.txt
 +++ b/requirements.txt
 @@ -2,7 +2,7 @@
@@ -253,7 +267,7 @@ index 702e4eaf19..f58f7b9d76 100644
  attrs==19.3.0
  bcrypt==3.1.7
 diff --git a/setup.py b/setup.py
-index 81f8727ed6..5c75d1e9b6 100755
+index 0bbdf9f05a..481077b7c6 100755
 --- a/setup.py
 +++ b/setup.py
 @@ -33,7 +33,7 @@ PACKAGES = find_packages(exclude=["tests", "tests.*"])
@@ -265,3 +279,6 @@ index 81f8727ed6..5c75d1e9b6 100755
      "async_timeout==3.0.1",
      "attrs==19.3.0",
      "bcrypt==3.1.7",
+-- 
+2.28.0
+
