@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Insomnia
+Exec=/opt/Insomnia/insomnia %U
+Terminal=false
+Type=Application
+Icon=insomnia
+StartupWMClass=Insomnia
+Comment=The Collaborative API Design Tool
+MimeType=x-scheme-handler/insomnia;
+Categories=Development;
