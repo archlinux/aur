@@ -2,13 +2,13 @@
 
 pkgname=lavalauncher
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple launcher panel for Wayland'
 arch=(x86_64)
 url='https://git.sr.ht/~leon_plickat/lavalauncher'
 license=(GPL3)
-depends=(cairo wayland wayland-protocols scdoc)
-makedepends=(git gcc meson ninja)
+depends=('cairo' 'wayland' 'wayland-protocols')
+makedepends=('git' 'gcc' 'meson' 'ninja' 'scdoc')
 optdepends=("librsvg: SVG image support.")
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
