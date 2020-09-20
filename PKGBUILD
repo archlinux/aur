@@ -7,7 +7,7 @@
 # information on Python packaging.
 
 # Maintainer: Your Name <youremail@domain.com>
-pkgname=python-xdelta3-python
+pkgname=python-xdelta3
 pkgver=0.0.5
 pkgrel=1
 pkgdesc=""
