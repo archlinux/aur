@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=texinfo-git
-pkgver=6.6.r277.g7286af71f2
+pkgver=6.6.r381.gd2c82c662
 pkgrel=1
 epoch=1
 pkgdesc="GNU documentation system for on-line information and printed output"
@@ -39,12 +39,6 @@ build() {
   cd $pkgname
   ./autogen.sh 
   ./configure --prefix=/usr --libexecdir=/usr/lib
-  make
-  cd js
-  aclocal -I gnulib/m4
-  automake --add-missing
-  autoreconf -f
-  ./configure --prefix=/usr
   make
 }
 
