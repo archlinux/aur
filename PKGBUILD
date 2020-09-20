@@ -3,7 +3,7 @@
 
 pkgname=jamulus
 _pkgname=Jamulus
-pkgver=3.5.10
+pkgver=3.5.11
 pkgrel=1
 pkgdesc="Internet jam session software"
 arch=('x86_64')
@@ -29,5 +29,4 @@ package() {
   install -vDm 644 {ChangeLog,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
-sha1sums=('370d67fe2ce93611e24b48c9653c94cf5403afb0')
-
+sha1sums=('d2f627ac84f3e8e54a6ab3a3150bc71860bacd61')
