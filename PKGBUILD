@@ -12,12 +12,12 @@ source=("git://github.com/bajaco/hotbox.git")
 md5sums=('SKIP')
 
 build() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/hotbox"
 	python setup.py build
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/hotbox"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
 }
