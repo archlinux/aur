@@ -24,6 +24,7 @@ pkgbase = lib32-sdl2-hg
 	depends = lib32-libx11
 	depends = lib32-libgl
 	depends = lib32-libxcursor
+	depends = lib32-libxxf86vm
 	depends = sdl2
 	optdepends = lib32-alsa-lib: ALSA audio driver
 	optdepends = lib32-libpulse: PulseAudio audio driver

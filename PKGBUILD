@@ -17,6 +17,7 @@ depends=(
   lib32-libx11
   lib32-libgl
   lib32-libxcursor
+  lib32-libxxf86vm
   sdl2
 )
 makedepends=(
