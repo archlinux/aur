@@ -2,7 +2,7 @@
 
 pkgname=tt-rss-auth-ldap-git
 _gitname=TTRSS-Auth-LDAP
-pkgver=r48.52e452c
+pkgver=r52.0cc2a21
 pkgrel=1
 pkgdesc="Tiny Tiny RSS plugin for LDAP authentication"
 arch=('any')
