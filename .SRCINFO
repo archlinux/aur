@@ -5,7 +5,6 @@ pkgbase = plasma5-applets-kde-arch-update-notifier
 	url = https://github.com/I-Dream-in-Code/kde-arch-update-plasmoid
 	arch = any
 	license = GPL
-	makedepends = make
 	makedepends = cmake
 	makedepends = git
 	makedepends = extra-cmake-modules
