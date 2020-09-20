@@ -4,17 +4,17 @@
 
 pkgname=('python-pymupdf')
 _name='PyMuPDF'
-pkgver=1.17.5
+pkgver=1.17.6
 pkgrel=1
 pkgdesc='Python bindings for MuPDF'
 arch=('x86_64')
 url='https://github.com/pymupdf/PyMuPDF'
 license=('AGPL3')
 depends=('python' 'libjpeg-turbo' 'jbig2dec' 'openjpeg2'  'freetype2')
-makedepends=('python-setuptools' 'libmupdf-pymupdf>=1.17' 'libmupdf-pymupdf<1.18')
+makedepends=('python-setuptools' 'libmupdf-pymupdf>=1.17' 'libmupdf-pymupdf<1.18' 'swig' 'python-sphinx' 'python-sphinx_rtd_theme')
 
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-${pkgver}.tar.gz")
-sha256sums=('ddec02c4dd1c2e0ead4d61cd97b52e725d643602f1f7832b5016190f5c653add')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pymupdf/PyMuPDF/archive/${pkgver}.tar.gz")
+sha256sums=('cb0d78e5f80a9f242191cf64c30724b545f11162458136d23a08c16854ce9257')
 
 prepare() {
   cd "${_name}-${pkgver}"
@@ -23,6 +23,7 @@ prepare() {
 build() {
   cd "${_name}-${pkgver}"
   python setup.py build
+  sphinx-build docs docs_built
 }
 
 check() {
@@ -34,4 +35,7 @@ check() {
 package() {
   cd "${_name}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -D COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
+  mkdir -p "$pkgdir/usr/share/doc"
+  cp -r docs_built "$pkgdir/usr/share/doc/$pkgname"
 }
