@@ -35,7 +35,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  cmake -Wno-dev -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_CXX_FLAGS="$CXXFLAGS $CPPFLAGS" -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" .
+  cmake -Wno-dev -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_CXX_FLAGS="$CXXFLAGS $CPPFLAGS" -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" .
 }
 
 build() {
@@ -47,5 +47,5 @@ check() {
 }
 
 package() {
-  make -C "$pkgname" install
+  make -C "$pkgname" DESTDIR="$pkgdir/" install
 }
