@@ -1,0 +1,6 @@
+#pkgbuild
+*.pkg.*
+xdelta3-python/
+pkg/
+src/
+

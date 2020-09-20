@@ -1,0 +1,12 @@
+pkgbase = python-xdelta3-python
+	pkgver = 0.0.5
+	pkgrel = 1
+	arch = any
+	license = Apache
+	depends = python
+	depends = xdelta3
+	source = git+https://github.com/samuelcolvin/xdelta3-python/
+	md5sums = SKIP
+
+pkgname = python-xdelta3-python
+
