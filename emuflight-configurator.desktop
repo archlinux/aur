@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Emuflight Configurator
+Comment=Crossplatform configuration tool for the Emuflight flight control system
+Exec=emuflight-configurator
+Icon=emuflight-configurator
+Terminal=false
+Type=Application
+Categories=Utility

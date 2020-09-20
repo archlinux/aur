@@ -1,0 +1,7 @@
+pkg/*
+src/*
+*.xz
+*.gz
+*.zip
+*.zst
+/EmuConfigurator/
