@@ -1,7 +1,8 @@
-amsynth
-src
-pkg
-amsynth-git-*.tar.xz
+amsynth/
+src/
+pkg/
+amsynth-git-*.pkg.tar.xz
+amsynth-git-*.pkg.tar.zst
 amsynth-git-*.src.tar.gz
 .AURINFO
 
