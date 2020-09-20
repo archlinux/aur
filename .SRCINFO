@@ -1,12 +1,12 @@
 pkgbase = libnss-cache
 	pkgdesc = A NSS module for reading directory service information for Linux hosts from an indexed, local disk cache
-	pkgver = 0.16
+	pkgver = 0.17
 	pkgrel = 1
 	url = https://github.com/google/libnss-cache
 	arch = x86_64
-	license = GPL
-	source = https://github.com/google/libnss-cache/archive/version/0.16.tar.gz
-	sha256sums = 09099ce2a3becb9cc4c282f7809198ac9707929dbc767030e32da8b824110bfe
+	license = LGPL
+	source = https://github.com/google/libnss-cache/archive/version/0.17.tar.gz
+	sha256sums = 3777cbc46dc8d08144b99321d1f039718cd347d3be8ed66a8cb3722d3e6692f5
 
 pkgname = libnss-cache
 
