@@ -1,3 +1,10 @@
+2020.9.20:
+    "This release has major changes"
+- New GUI design based on tkinter.
+- use tkinter clipboard module instead of pyperclip.
+- No cpu usage when application is idle.
+- Implement MVC design.
+
 2020.8.13:
 - Ability to delete any item while download in progress.
 - added buttons for open log file, or log folder, issue #134

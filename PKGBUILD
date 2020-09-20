@@ -1,28 +1,27 @@
 # Maintainer: Franck Stauffer <franck.stauffer@monaco.mc>
 
 pkgname=pyidm
-pkgver=2020.8.13
-pkgrel=2
+pkgver=2020.9.20
+pkgrel=1
 pkgdesc="Python open source alternative to IDM (Internet Download Manager)"
 arch=('any')
 url="https://github.com/pyIDM/PyIDM"
 license=('LGPL3')
 depends=('ffmpeg'
          'python>=3.6' 
+         'python-awesometkinter'
          'python-certifi' 
          'python-pillow'
          'python-plyer' 
          'python-pycurl' 
-         'python-pyperclip' 
-         'python-pysimplegui>=4.18' 
          'python-pystray'
          'youtube-dl')
 makedepends=('python-setuptools')
 changelog=$pkgname.changelog
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pyIDM/PyIDM/archive/$pkgver.tar.gz"
         "no_update.patch")
-b2sums=('6a95c17beeff63e0aecaf6263ea214499b3fb762364ca5d538275074f57fa0719d8a1c8e5b56fb512c80fb0ccef2740f01d3f5c8f8bd696fc64ccbfee00b6fa9'
-        '0e0049941a2cf01da6b43dee63c808f5752da911cd2b158941ca0bbb243ee296a7528700921479567fad70b4bd061863ec7698f0a095fa02fcac5026d6774fc3')
+b2sums=('5fd2580871e21e1ed1a9039d9bb62da286f930718989719cc6fdb04c842be6f865ee801b0b7dd282e63f51d9f0285bddcec777f40b852ee600aa2f2658e1e104'
+        '677078adaca806f4d495af63e829bf96cc06d39d26cf749434fe7112fd45c555f826ea9de41c7c67e071c00df6e29572c9b01c208925bff94c07365522427cb6')
 
 prepare() {
   cd "$srcdir/PyIDM-$pkgver"

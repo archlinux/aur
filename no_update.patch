@@ -1,211 +1,204 @@
-diff --color --unified --recursive --text PyIDM-2020.8.13.orig/pyidm/config.py PyIDM-2020.8.13/pyidm/config.py
---- PyIDM-2020.8.13.orig/pyidm/config.py	2020-08-14 08:30:11.528633421 +0200
-+++ PyIDM-2020.8.13/pyidm/config.py	2020-08-14 08:31:15.721969874 +0200
-@@ -138,11 +138,6 @@
- active_downloads = set()  # indexes for active downloading items
- d_list = []
+Only in PyIDM: no_update.patch
+diff --color --unified --recursive --text pyidm.old/pyidm/controller.py PyIDM/pyidm/controller.py
+--- pyidm.old/pyidm/controller.py	2020-09-20 12:10:30.880454171 +0200
++++ PyIDM/pyidm/controller.py	2020-09-20 11:59:18.148427096 +0200
+@@ -21,7 +21,6 @@
+ from queue import Queue
+ from datetime import date
  
--# update
--update_frequency = 7  # 'every day'=1, every week=7, every month=30 and so on
--last_update_check = 0  # day number in the year range from 1 to 366
--update_frequency_map = {'Everyday': 1, 'Every Week': 7, 'Every Month': 30, 'Never': -1}
--
- # store hashes for installed update patches in update_record.info file at current folder
- update_record_path = os.path.join(current_directory, 'update_record.info')
- 
-@@ -157,7 +152,7 @@
- # settings parameters to be saved on disk
- settings_keys = ['current_theme', 'monitor_clipboard', 'show_download_window', 'auto_close_download_window',
-                  'segment_size', 'show_thumbnail', 'speed_limit', 'max_concurrent_downloads', 'max_connections',
--                 'update_frequency', 'last_update_check', 'proxy', 'proxy_type', 'raw_proxy', 'enable_proxy',
-+                 'proxy', 'proxy_type', 'raw_proxy', 'enable_proxy',
-                  'log_level', 'download_folder', 'manually_select_dash_audio', 'use_referer', 'referer_url',
-                  'close_action', 'process_playlist', 'keep_temp', 'auto_rename', 'dynamic_theme_change', 'checksum',
-                  'use_proxy_dns', 'use_thread_pool_executor', 'write_metadata']
-diff --color --unified --recursive --text PyIDM-2020.8.13.orig/pyidm/gui.py PyIDM-2020.8.13/pyidm/gui.py
---- PyIDM-2020.8.13.orig/pyidm/gui.py	2020-08-14 08:30:11.528633421 +0200
-+++ PyIDM-2020.8.13/pyidm/gui.py	2020-08-14 08:47:00.598682433 +0200
-@@ -23,7 +23,6 @@
+-from . import update
+ from .utils import *
  from . import setting
  from . import config
- from .config import Status
--from . import update
- from .brain import brain
- from . import video
- from .video import Video, check_ffmpeg, download_ffmpeg, unzip_ffmpeg, get_ytdl_options, process_video_info, \
-@@ -469,25 +468,6 @@
-             [sg.T('', size=(1, 1))]
-         ]
+@@ -762,85 +761,6 @@
+         except Exception as e:
+             log('download_subtitle() error', e)
  
--        update = [
--            [sg.T(' ', size=(100, 1))],
--            [sg.T('Check for update:'),
--             sg.Combo(list(config.update_frequency_map.keys()), default_value=[k for k, v in config.update_frequency_map.items() if v == config.update_frequency][0],
--                      size=(15, 1), key='update_frequency', enable_events=True)],
--            [
--                sg.B('', key='update_pyIDM', image_data=refresh_icon, **transparent, tooltip='check for update'),
--                sg.T(f'PyIDM version = {config.APP_VERSION}', size=(50, 1), key='pyIDM_version_note'),
--            ],
--            [
--                sg.B('', key='update_youtube_dl', image_data=refresh_icon, **transparent,
--                     tooltip=' check for update '),
--                sg.T('Youtube-dl version = 00.00.00', size=(50, 1), key='youtube_dl_update_note'),
--                sg.B('', key='rollback_ytdl_update', image_data=delete_icon, **transparent,
--                     tooltip=' rollback youtube-dl update '),
--            ],
--            [sg.T('', size=(1, 14))]  # fill lines
--        ]
+-    def _check_for_ytdl_update(self):
+-        """check for new youtube-dl version"""
 -
-         advanced = [
- 
-             [sg.T('')],
-@@ -506,7 +486,7 @@
-         layout = [
-             [sg.T('', size=(70, 1)), ],
-             [sg.TabGroup([[sg.Tab('General   ', general), sg.Tab('Network  ', network), sg.Tab('SysTray  ', systray),
--                           sg.Tab('Update    ', update), sg.Tab('Advanced ', advanced)]],
-+                           sg.Tab('Advanced ', advanced)]],
-                          tab_location='lefttop')]
-         ]
- 
-@@ -861,11 +841,6 @@
-             speed_limit = size_format(config.speed_limit) if config.speed_limit > 0 else "_no limit_"
-             self.window['current_speed_limit'](f'Current value: {speed_limit}')
- 
--            self.window['youtube_dl_update_note'](
--                f'Youtube-dl version = {config.ytdl_VERSION}, Latest version = {config.ytdl_LATEST_VERSION}')
--            self.window['pyIDM_version_note'](
--                f'PyIDM version = {config.APP_VERSION}, Latest version = {config.APP_LATEST_VERSION}')
+-        current_version = config.ytdl_VERSION
+-        if current_version is None:
+-            log('youtube-dl not loaded yet, try again', showpopup=True)
+-            return
 -
-             # update total speed
-             total_speed = 0
-             for i in self.active_downloads:
-@@ -1561,22 +1536,6 @@
- 
-                 # log('user, pass:', config.username, config.password)
- 
--            # update -------------------------------------------------
--            elif event == 'update_frequency':
--                selected = values['update_frequency']
--                config.update_frequency = config.update_frequency_map[selected]  # selected
--                # print('config.update_frequency:', config.update_frequency)
+-        latest_version = config.ytdl_LATEST_VERSION or update.check_for_ytdl_update()
+-        if latest_version:
+-            config.ytdl_LATEST_VERSION = latest_version
+-            note = f'Youtube-dl version: {config.ytdl_VERSION}, Latest version: {config.ytdl_LATEST_VERSION}'
+-            log(note)
 -
--            elif event == 'update_youtube_dl':
--                self.update_ytdl()
+-            if latest_version != current_version:
+-                # select log tab
+-                # self.select_tab('Log')
 -
--            elif event == 'rollback_ytdl_update':
--                Thread(target=update.rollback_ytdl_update).start()
--                self.select_tab('Log')
+-                response = self.get_user_response(
+-                    'Found new version of youtube-dl on github \n'
+-                    f'new version     =  {latest_version}\n'
+-                    f'current version =  {current_version} \n'
+-                    'Install new version? (check Log Tab for progress)',  options=['Ok', 'Cancel'])
 -
--            elif event in ['update_pyIDM']:
--                Thread(target=self.update_app, daemon=True).start()
--
-             # systray -------------------------------------------------
-             elif event in ('radio_close', 'radio_minimize', 'radio_quit'):
-                 config.close_action = event.replace('radio_', '')
-@@ -1644,44 +1603,6 @@
-                 # check availability of ffmpeg in the system or in same folder with this script
-                 self.ffmpeg_check()
- 
--                # print last check for update
--                if config.update_frequency < 0:
--                    log('check for update is disabled!')
--
--            # check for update block, negative values for config.last_update_check mean never check for update
--            if config.update_frequency >= 0 and time.time() - self.check_for_update_timer >= 60:
--                self.check_for_update_timer = time.time()
--
--                t = time.localtime()
--                today = t.tm_yday  # today number in the year range (1 to 366)
--
--                if config.last_update_check == 0:  # no setting.cfg file found / fresh start
--                    config.last_update_check = today
--                else:
+-                if response == 'Ok':
 -                    try:
--                        if today < config.last_update_check:  # new year
--                            days_since_last_update = today + 366 - config.last_update_check
--                        else:
--                            days_since_last_update = today - config.last_update_check
--
--                        if days_since_last_update >= config.update_frequency:
--                            log('days since last check for update:', days_since_last_update, 'day(s).')
--                            log('asking user permission to check for update')
--                            response = sg.PopupOKCancel('PyIDM reminder to check for updates!',
--                                                        f'days since last check: {days_since_last_update} day(s).',
--                                                        'you can change frequency or disable check for update from settings\n', title='Reminder')
--                            if response == 'OK':
--                                # it will check for updates and offer auto-update for frozen app. version
--                                Thread(target=self.update_app, daemon=True).start()
--                                # Thread(target=self.check_for_update, daemon=True).start()
--                                config.last_update_check = today
--                            else:
--                                config.last_update_check = 0
--                                log('check for update cancelled by user, next reminder will be after',
--                                    config.update_frequency, 'day(s).')
+-                        run_thread(update.update_youtube_dl, daemon=True)
 -                    except Exception as e:
--                        log('MainWindow.run()>', e)
+-                        log('failed to update youtube-dl module:', e)
+-            else:
+-                log(f'youtube_dl is up-to-date, current version = {current_version}', showpopup=True)
 -
-             # reset statusbar periodically
-             if time.time() - self.statusbar_timer >= 10:
-                 self.statusbar_timer = time.time()
-@@ -2958,59 +2879,6 @@
- 
-     # endregion
- 
--    # region update
--    def update_app(self):
+-    def _rollback_ytdl_update(self):
+-        """delete last youtube-dl update and restore last one"""
+-        response = self.get_user_response('Delete last youtube-dl update and restore previous version?',
+-                                          options=['Ok', 'Cancel'])
+-
+-        if response == 'Ok':
+-            try:
+-                run_thread(update.rollback_ytdl_update, daemon=True)
+-            except Exception as e:
+-                log('failed to restore youtube-dl module:', e)
+-
+-    def _check_for_pyidm_update(self):
 -        """
--        check for new version or update patch and show update window,
+-        check for new app version or update patch and show update window,
 -        this method is time consuming and should run from a thread
 -        """
 -
 -        # check for new App. version
 -        changelog = update.check_for_new_version()
 -        if changelog:
--            self.active_windows.append(UpdateWindow(changelog))
+-
+-            response = self.get_user_response(f'New pyidm version available, full change log:\n{changelog}',
+-                                              options=['Homepage', 'cancel'])
+-            if response == 'Homepage':
+-                update.open_update_link()
 -
 -        else:
--            # check for update patch -- for frozen versions only --
--            batch_info = update.check_for_new_patch() if config.FROZEN else None
+-            log('No Update available', showpopup=True)
 -
--            if batch_info:
--                self.active_windows.append(UpdateWindow(batch_info.get('description', 'No description available')))
--            else:
--                log('No Update available', showpopup=True, start='')
+-    def _auto_check_for_update(self):
+-        """auto check for pyidm update"""
+-        if config.check_for_update:
+-            today = date.today()
+-            try:
+-                last_check = date(*config.last_update_check)
+-            except:
+-                last_check = today
+-
+-            delta = today - last_check
+-            if delta.days >= config.update_frequency:
+-                res = self.get_user_response(f'Check for PyIDM update?\nLast check was {delta.days} days ago',
+-                                             options=['Ok', 'Cancel'])
+-                if res == 'Ok':
+-                    self.check_for_pyidm_update()
+-
+-            config.last_update_check = (today.year, today.month, today.day)
+-
+     # public API for  a view / GUI (it shouldn't block to prevent gui freeze) ------------------------------------------
+     def log_runtime_info(self):
+         """Print useful information about the system"""
+@@ -1218,18 +1138,6 @@
+ 
+         return d
+ 
+-    def auto_check_for_update(self):
+-        run_thread(self._auto_check_for_update)
+-
+-    def check_for_pyidm_update(self):
+-        run_thread(self._check_for_pyidm_update)
 -
 -    def check_for_ytdl_update(self):
--        config.ytdl_LATEST_VERSION = update.check_for_ytdl_update()
--        log('youtube-dl, latest version = ', config.ytdl_LATEST_VERSION, ' - current version = ', config.ytdl_VERSION)
+-        run_thread(self._check_for_ytdl_update)
 -
--    def update_ytdl(self):
--        current_version = config.ytdl_VERSION
--        latest_version = config.ytdl_LATEST_VERSION or update.check_for_ytdl_update()
--        if latest_version:
--            config.ytdl_LATEST_VERSION = latest_version
--            log('youtube-dl, latest version = ', latest_version, ' - current version = ', current_version)
+-    def rollback_ytdl_update(self):
+-        run_thread(self._rollback_ytdl_update)
 -
--            if latest_version != current_version:
--                # select log tab
--                self.select_tab('Log')
--
--                response = sg.popup_ok_cancel(
--                    f'Found new version of youtube-dl on github \n'
--                    f'new version     =  {latest_version}\n'
--                    f'current version =  {current_version} \n'
--                    'Install new version?',
--                    title='youtube-dl module update')
--
--                if response == 'OK':
--                    try:
--                        Thread(target=update.update_youtube_dl).start()
--                    except Exception as e:
--                        log('failed to update youtube-dl module:', e)
--            else:
--                sg.popup_ok(f'youtube_dl is up-to-date, current version = {current_version}')
--    # endregion
--
--
- # Note every window class must have self.active property and close method
- class DownloadWindow:
+     def get_user_response(self, msg, options):
+         """get user response from current view
  
-Only in PyIDM-2020.8.13.orig/pyidm: update.py
+diff --color --unified --recursive --text pyidm.old/pyidm/tkview.py PyIDM/pyidm/tkview.py
+--- pyidm.old/pyidm/tkview.py	2020-09-20 12:10:30.880454171 +0200
++++ PyIDM/pyidm/tkview.py	2020-09-20 12:04:57.266440744 +0200
+@@ -32,7 +32,6 @@
+ from .controller import Controller, set_option, get_option
+ from .utils import *
+ from . import config
+-from . import update
+ from .iconsbase64 import *
+ from .systray import SysTray
+ from .about import about_notes
+@@ -2352,36 +2351,6 @@
+ 
+         separator()
+ 
+-        # update -----------------------------------------------------------------------------------------------------
+-        heading('Update:')
+-        update_frame = tk.Frame(tab, bg=bg)
+-
+-        def lbl(var):
+-            return tk.Label(update_frame, bg=bg, fg=fg, textvariable=var, padx=5)
+-
+-        CheckEntryOption(update_frame, 'Check for update every: ', entry_key='update_frequency', width=4, justify='center',
+-                         check_key='check_for_update', get_text_validator=lambda x: int(x) if int(x) > 0 else 7)\
+-            .grid(row=0, column=0, columnspan=2, sticky='w')
+-        lbl('days').grid(row=0, column=2, sticky='w')
+-
+-        # PyIDM update
+-        Button(update_frame, image=self.refresh_img, command=self.controller.check_for_pyidm_update).grid(row=1, column=0, sticky='e', pady=5, padx=(20, 5))
+-        self.pyidm_update_note = tk.StringVar()
+-        self.pyidm_update_note.set(f'PyIDM version: {config.APP_VERSION}')
+-        lbl(self.pyidm_update_note).grid(row=1, column=1, columnspan=2, sticky='w')
+-
+-        Button(update_frame, text='About!', command=lambda: self.msgbox(about_notes)).grid(row=1, column=3, sticky='w', pady=5, padx=(20, 5))
+-
+-        # youtube-dl update
+-        Button(update_frame, image=self.refresh_img, command=self.check_for_ytdl_update).grid(row=2, column=0, sticky='e', pady=5, padx=(20, 5))
+-        self.youtube_dl_update_note = tk.StringVar()
+-        self.youtube_dl_update_note.set(f'Youtube-dl version: {config.ytdl_VERSION}')
+-        lbl(self.youtube_dl_update_note).grid(row=2, column=1, columnspan=2, sticky='w')
+-
+-        Button(update_frame, text='Rollback update', command=self.rollback_ytdl_update).grid(row=2, column=3, sticky='w', pady=5, padx=(20, 5))
+-
+-        update_frame.pack(anchor='w', fill='x', expand=True)
+-
+         # add padding
+         for w in tab.pack_slaves():
+             if not w.pack_info().get('pady'):
+@@ -2745,24 +2714,6 @@
+                     self.response_q.put(data)
+                 time.sleep(0.01)
+ 
+-    def update_youtube_dl_info(self):
+-        """write youtube-dl version once it gets imported"""
+-        current_version = config.ytdl_VERSION
+-        if current_version:
+-            self.youtube_dl_update_note.set(
+-                f'Youtube-dl version: {config.ytdl_VERSION}')
+-        else:
+-            self.root.after(1000, self.update_youtube_dl_info)
+-
+-    def check_for_ytdl_update(self):
+-        self.controller.check_for_ytdl_update()
+-        self.select_tab('Log')
+-
+-    def rollback_ytdl_update(self):
+-        """delete last youtube-dl update and restore last one"""
+-        self.controller.rollback_ytdl_update()
+-        self.select_tab('Log')
+-
+     def restart_gui(self):
+         self.main_frame.destroy()
+         self.d_items.clear()
+@@ -2786,12 +2737,6 @@
+         # run systray
+         run_thread(self.systray.run, daemon=True)
+ 
+-        # update youtube-dl version info once gets loaded
+-        self.update_youtube_dl_info()
+-
+-        # auto check for update
+-        self.controller.auto_check_for_update()
+-
+     def focus(self):
+         """focus main window and bring it to front"""
+ 
+Only in pyidm.old/pyidm: update.py
