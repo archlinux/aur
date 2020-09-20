@@ -1,13 +1,11 @@
 pkgbase = gohufont-otb
 	pkgdesc = OpenType bitmap conversion of Gohufont
 	pkgver = 2.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://font.gohu.org
 	arch = any
 	license = custom:WTFPL
-	conflicts = gohufont
 	conflicts = gohu-ttf
-	conflicts = gohufont-powerline
 	source = https://font.gohu.org/gohufont-2.1-otb.tar.gz
 	md5sums = f2b1a23af358988a014e2386e55bdda3
 
