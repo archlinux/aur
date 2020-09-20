@@ -2,7 +2,7 @@
 # Contributor: Martin Wagner <martin.wagner.dev@gmail.com>
 
 pkgname=mpdevil-git
-pkgver=v0.9.1.r0.g79ce749
+pkgver=v0.9.2.r0.gc3bf66e
 pkgrel=1
 pkgdesc="A simple music browser for MPD (git version)"
 arch=('any')
