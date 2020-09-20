@@ -16,7 +16,7 @@ md5sums=('6dce0b7cb0ef2065018fa66c313ae838'
 BUILDENV+=('!check')
 
 prepare() {
-	cd "$srcdir"
+    cd "$srcdir"
     mkdir -p "$srcdir/unzip"
     cd "$srcdir/unzip"
     unzip -q "$srcdir/$pkgname-$pkgver.zip"
@@ -24,8 +24,8 @@ prepare() {
 }
 
 package() {
-	cd "$srcdir"
-	mkdir -p "$pkgdir/opt/"
+    cd "$srcdir"
+    mkdir -p "$pkgdir/opt/"
     mv "$srcdir/unzip" "$pkgdir/opt/discord-chat-exporter-cli"
     install -m755 discord-chat-exporter-cli "$pkgdir/opt/discord-chat-exporter-cli/"
     mkdir -p "$pkgdir/usr/bin/"
