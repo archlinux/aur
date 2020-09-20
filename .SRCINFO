@@ -1,4 +1,4 @@
-pkgbase = python-xdelta3-python
+pkgbase = python-xdelta3
 	pkgver = 0.0.5
 	pkgrel = 1
 	arch = any
@@ -8,5 +8,5 @@ pkgbase = python-xdelta3-python
 	source = git+https://github.com/samuelcolvin/xdelta3-python/
 	md5sums = SKIP
 
-pkgname = python-xdelta3-python
+pkgname = python-xdelta3
 
