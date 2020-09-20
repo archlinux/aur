@@ -1,0 +1,16 @@
+pkgbase = jlc-kicad-tools-git
+	pkgdesc = Tool for using JLCPCB assembly service with KiCad
+	pkgver = v1.0.2_r69.6a7ac08
+	pkgrel = 1
+	url = https://github.com/matthewlai/JLCKicadTools
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python>=3.6.0
+	provides = jlc-kicad-tools=v1.0.2_r69.6a7ac08
+	conflicts = jlc-kicad-tools
+	source = git+https://github.com/matthewlai/JLCKicadTools.git
+	sha256sums = SKIP
+
+pkgname = jlc-kicad-tools-git
+
