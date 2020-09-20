@@ -3,7 +3,7 @@
 pkgname=xboot
 pkgver=2.0.1
 pkgrel=2
-pkgdesc="The extensible bootloader for embedded system with application engine, write once, run everywhere.Linux Sandbox for x86_64"
+pkgdesc="The extensible bootloader for embedded system with application engine, write once, run everywhere. (Linux Sandbox for x86_64)"
 arch=('x86_64')
 url="https://github.com/xboot/xboot"
 license=('MIT')
