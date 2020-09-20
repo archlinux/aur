@@ -1,4 +1,5 @@
-# Maintainer: FFY00 <filipe.lains@gmail.com>
+# Maintainer: Alexis Janon <kardyne -at- gmail -dot- com>
+# Contributor: FFY00 <filipe.lains@gmail.com>
 # Contributor: Jinho Jeong <jjinho0203@gmail.com>
 pkgname=ttf-d2coding
 pkgver=1.3.2
