@@ -1,0 +1,25 @@
+pkgbase = readline-git
+	pkgdesc = GNU readline library
+	pkgver = 8.0.r4.gc5ad6be
+	pkgrel = 1
+	url = https://tiswww.case.edu/php/chet/readline/rltop.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	depends = libncursesw.so
+	depends = ncurses
+	provides = readline
+	provides = libhistory.so
+	provides = libreadline.so
+	conflicts = readline
+	options = !emptydirs
+	options = staticlibs
+	source = git+https://git.savannah.gnu.org/git/readline.git
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/readline/trunk/inputrc
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = readline-git
+
