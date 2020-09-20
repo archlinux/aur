@@ -1,4 +1,5 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Alexis Janon <kardyne -at- gmail -dot- com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Zhukov Pavel <gelios@gmail.com>
 # Contributor: Christof Musik <christof@senfdax.de>
 # Contributor: Falconindy
