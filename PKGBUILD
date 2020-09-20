@@ -4,9 +4,9 @@
 pkgname=sac-compiler-weekly
 _version=1.3.3
 _rev=1
-_changes=383
+_changes=386
 _name=MijasCosta
-_commit=g6ea12
+_commit=g66d20
 pkgver="${_version}.${_changes}"
 pkgrel=1
 pkgdesc='The compiler (sac2c) of the Single-Assignment C programming language (weekly build)'
@@ -22,7 +22,7 @@ conflicts=('sac-compiler')
 source=("https://gitlab.science.ru.nl/sac-group/sac-packages/-/raw/master/packages/weekly/Linux/${_version}-${_changes}-${_rev}/full/sac2c-${_version}-${_name}-${_changes}-${_commit}-omnibus.tar.gz"
         'LICENSE.txt'
         'Makefile')
-sha256sums=('7e91934e3fdbd12715dbe3dd4e28a37b48e9b6894a590ef091db25660165bc98'
+sha256sums=('be6dd0f8f97ff26576df401dd5c28ffebb6d70ed06bfd98d02b5997fa9193c4b'
             '70a44340820b0515f1d29e663342f0ed8efb3a29fa5619f18461cbaf7cdf27c3'
             'eb965cc10ff6d032627429b87c553c2eb962d92753a8e30cfebdf699d1f5504a')
 
