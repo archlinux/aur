@@ -1,7 +1,7 @@
 pkgbase = obs-motion-effect-git
 	pkgdesc = v4l2-output for obs-studio
 	pkgver = 1.2.1.r3.167596a+obs25.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CatxFish/motion-effect
 	arch = x86_64
 	license = GPL

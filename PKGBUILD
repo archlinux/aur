@@ -2,7 +2,7 @@
 pkgname=obs-motion-effect-git
 obsver=$(obs --version | sed -e 's/[^0-9]*//;s/\(-\|\.[^0-9]\).*//' 2>/dev/null)
 pkgver=1.2.1.r3.167596a+obs25.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="v4l2-output for obs-studio"
 arch=(x86_64)
 url="https://github.com/CatxFish/motion-effect"
@@ -34,7 +34,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir"
 	# If obs is installed, then try to match installed version
-	test -z "$obsver" || git -C obs-studio checkout "$obsver"
+	test -z "$obsver" || git -C obs-studio checkout "$obsver" || :
 	mkdir -p build
 	cd build
 	cmake -DLIBOBS_INCLUDE_DIR="../obs-studio/libobs" -DCMAKE_INSTALL_PREFIX=/usr "../${pkgstem}"
