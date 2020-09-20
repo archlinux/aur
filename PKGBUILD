@@ -20,18 +20,18 @@ source=("git+https://gitlab.freedesktop.org/xorg/lib/libxcursor")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd libXcursor
+  cd libxcursor
   git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  cd libXcursor
+  cd libxcursor
   ./configure --prefix=/usr --sysconfdir=/etc --disable-static
   make
 }
 
 package() {
-  cd libXcursor
+  cd libxcursor
   make DESTDIR="${pkgdir}" install
 
   install -m755 -d "${pkgdir}/usr/share/icons/default"
