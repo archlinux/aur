@@ -1,0 +1,28 @@
+pkgbase = hey-mail-bin
+	pkgdesc = Hey Mail desktop app
+	pkgver = 1.0.11
+	pkgrel = 1
+	url = https://hey.com/apps/
+	arch = x86_64
+	license = Proprietary
+	makedepends = squashfs-tools
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	depends = libnotify
+	depends = libappindicator-gtk2
+	depends = libappindicator-gtk3
+	source = https://api.snapcraft.io/api/v1/snaps/download/lfWUNpR7PrPGsDfuxIhVxbj0wZHoH7bK_9.snap
+	md5sums = 2e44b4593f1644df6f2314aa037aae8b
+
+pkgname = hey-mail-bin
+
