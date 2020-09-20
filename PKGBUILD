@@ -26,7 +26,7 @@ options=(debug !strip)
 pkgver () {
   cd "$srcdir/$_pkgname"
   #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  printf "%s" "$(git describe --tags | sed 's/-/\.r/' | sed 's/v//g' | sed 's/-/\./')"
+  printf "%s" "$(git describe --tags | sed 's/-/\.r/' | sed 's/v//g' | sed 's/-/\./g')"
 }
 
 build() {
