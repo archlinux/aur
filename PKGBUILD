@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=redditgtk-git
-pkgver=51
+pkgver=r32.c7406bc
 pkgrel=1
 epoch=
 pkgdesc="Reddit gtk client"
@@ -16,6 +16,7 @@ depends=(
 	'python-flask'
 	'python-praw'
 	'python-gobject'
+	'python-dateutil'
 )
 makedepends=('meson' 'git')
 checkdepends=()
@@ -24,6 +25,15 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
 sha256sums=("SKIP")
+
+pkgver() {
+	cd "$srcdir/$pkgname"
+	( set -o pipefail
+	git describe --tags --long 2>/dev/null | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
+
 
 build() {
 	arch-meson "$pkgname" build
