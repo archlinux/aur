@@ -1,0 +1,15 @@
+pkgbase = xboot
+	pkgdesc = The extensible bootloader for embedded system with application engine, write once, run everywhere.Linux Sandbox for x86_64
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/xboot/xboot
+	arch = x86_64
+	license = MIT
+	depends = sdl2
+	provides = xboot-sandbox
+	conflicts = xboot-sandbox
+	source = xboot-2.0.1.tar.gz::https://github.com/xboot/xboot/archive/v2.0.1.tar.gz
+	sha256sums = 13d32fa8c199ff8f2755543996f6c74ab7f00909834090a01b39f706ce10b799
+
+pkgname = xboot
+
