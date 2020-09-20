@@ -1,6 +1,6 @@
 _name=wisp
 pkgname=guile-$_name-hg
-pkgver=r1628+.62d6a170aefd+
+pkgver=r1710.ad2b1867648a
 pkgrel=1
 pkgdesc="Whitespace to Lisp converter (srfi-119) as a guile module"
 arch=(any)
@@ -8,11 +8,9 @@ license=(gpl3+)
 makedepends=(mercurial)
 depends=("guile>=2")
 provides=("$_name")
-source=("hg+https://bitbucket.org/ArneBab/wisp"
-        "fix-build-path.patch")
+source=("hg+https://hg.sr.ht/~arnebab/wisp")
 url="http://www.draketo.de/english/wisp"
-md5sums=(SKIP
-         SKIP)
+md5sums=(SKIP)
 
 pkgver() {
   cd "$srcdir/$_name" &&
@@ -21,7 +19,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_name"
-  patch -i "${srcdir}/fix-build-path.patch"
 }
 
 build() {
