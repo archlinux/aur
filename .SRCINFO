@@ -1,11 +1,11 @@
 pkgbase = pacman-boot-backup-hook
 	pkgdesc = Pacman hook that creates a copy of the /boot directory prior and post to upgrades of the systemd package or when mkinitcpio is triggered.
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
+	install = pacman-boot-backup-hook.install
 	changelog = CHANGELOG
 	arch = any
 	license = MIT
-	depends = rsync
 	source = LICENSE
 	source = backup-boot-partition
 	source = 50_bootbackup.hook

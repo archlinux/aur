@@ -1,3 +1,7 @@
+v1.5 (2020/09/20):
+- rsync is no longer a dependency of this package.
+  - The previous version only stopped using it, without removing it as a dependency.
+
 v1.4 (2018/08/01):
 - Simplified package by dropping rsync dependency
     - cp is now used in favor of rsync

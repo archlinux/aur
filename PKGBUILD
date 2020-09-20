@@ -1,13 +1,12 @@
 # Maintainer: Markus Schanz <coksnuss@googlemail.com>
 pkgname=pacman-boot-backup-hook
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Pacman hook that creates a copy of the /boot directory prior and post to upgrades of the systemd package or when mkinitcpio is triggered."
 install=$pkgname.install
 arch=('any')
 license=('MIT')
 changelog=CHANGELOG
-depends=('rsync')
 
 source=('LICENSE'
         'backup-boot-partition'
@@ -17,7 +16,7 @@ source=('LICENSE'
 md5sums=('ac9ac34b11dd5a53d096a734ab677479'
          'b9dcf01f081c8a2aa10b53e46b2add06'
          'a38b6feb83944ea401e871b2c2fa704d'
-         'f041fe352b3f48f08a1afad132312b94'
+         '41d1095e8e4ee71e1ef6fa11a0c0180e'
          '24b9fcd221dce61036831f9a6e2b49bb')
 
 package() {

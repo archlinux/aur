@@ -15,5 +15,4 @@ Target = usr/lib/initcpio/*
 [Action]
 Description = Backup boot partition...
 When = PostTransaction
-Depends = rsync
 Exec = /usr/share/libalpm/scripts/backup-boot-partition post
