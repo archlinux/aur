@@ -10,7 +10,7 @@ depends=('gtk3')
 conflicts=('fixme')
 replaces=('fixme')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('f992e6a1c4727e2eec51c6b9ebc6453bf67d4fed60acb0601badd6454057ef49')
+sha256sums=('3df879ce3327b42cf61f19641bef074e7491c85f5899aaa10d59e63b75f4445b')
 options=('!emptydirs')
 
 build() {
