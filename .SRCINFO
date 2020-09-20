@@ -1,0 +1,13 @@
+pkgbase = satellite-decoders
+	pkgdesc = Small experimental project aimed at decoding various satellites such as Metop and FengYun
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.altillimity.com/altillimity/satellite-decoders
+	arch = x86_64
+	license = GPLv3
+	makedepends = libfec-git
+	source = https://gitlab.altillimity.com/altillimity/satellite-decoders/-/archive/master/satellite-decoders-master.tar.gz
+	sha256sums = 1ead86b24beed186cb6e899eb32b7ac941b02a84fe4dc246156f36d27a782c2a
+
+pkgname = satellite-decoders
+
