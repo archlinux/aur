@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r230.12c59fd
+pkgver=r233.45c427b
 pkgrel=1
 pkgdesc='A native client for web media. Supports youtube, nyaa.si, 4chan and several manga sites.'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
 provides=('QuickMedia')
 conflicts=('QuickMedia')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz")
-sha512sums=('0677a187ae59eee30b1b336328e554f5f1079c5f688412efc6ef0d758cd1eb44fb1924c1a9e9ba041b3a72df619c3e897e9278c6f617bd2d34b3fbf95a2ba1b1')
+sha512sums=('f88155f1cdf88b7b10e9002667a400687d45f3365980cf8ae4da0971aae0e359fb5d2d6f1d7781fea6c6cf222e7c52f5817110fd2fc2fe34f5d75330f3041a3a')
 
 build() {
   cd "$srcdir"
