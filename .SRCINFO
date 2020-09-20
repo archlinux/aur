@@ -1,7 +1,7 @@
 pkgbase = ttf-fluentui-system-icons
 	pkgdesc = A collection of familiar, friendly and modern icons from Microsoft.
 	pkgver = 1.1.59
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/fluentui-system-icons
 	arch = any
 	license = MIT
