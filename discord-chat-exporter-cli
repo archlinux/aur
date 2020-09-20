@@ -1,2 +1,2 @@
 #! /bin/sh
-/usr/bin/dotnet /opt/DiscordChatExporterCLI/DiscordChatExporter.Cli.dll "$@"
+/usr/bin/dotnet /opt/discord-chat-exporter-cli/DiscordChatExporter.Cli.dll "$@"
