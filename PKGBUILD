@@ -46,7 +46,6 @@ chromium_base_ver="85"
 patchset="2"
 patchset_name="chromium-${chromium_base_ver}-patchset-${patchset}"
 source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
-        'chromium-no-history.patch'
         'brave-launcher'
         'brave-browser.desktop'
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz")
@@ -63,7 +62,6 @@ done
 #source+=("vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=7c05464a8700b1a6144258320b2b33b352385f77")
 
 sha256sums=('SKIP'
-            'e7dd5f8bc6959d2d0c14c7f70687303d3152eae9a50628fbb025b834d62a52d7'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '2194fe22b9e5ccdc4a86da4e3572214f670c561486671f57c90636fd3cbfa43e'
@@ -106,9 +104,6 @@ fi
 
 prepare() {
     cd "${_reponame}"
-
-    # Patch to download only sources, but not all history
-    #patch -Np1 -i "${srcdir}"/chromium-no-history.patch
 
     # Hack to prioritize python2 in PATH
     mkdir -p "${srcdir}/bin"
