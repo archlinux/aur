@@ -2,7 +2,7 @@
 
 pkgname=python-loguru
 _pkgname=loguru
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='Python logging made (stupidly) simple'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-colorama')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Delgan/loguru/archive/$pkgver.tar.gz")
-md5sums=('abe977ca534f1aa1c635e508485a696e')
+md5sums=('dc7f03e676f7bbfc8e6b5c9c1a30b7c0')
 
 package() {
   cd $_pkgname-$pkgver
