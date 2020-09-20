@@ -1,0 +1,17 @@
+pkgbase = moodyrain-git
+	pkgdesc = Generate custom ambient soundscapes on Linux
+	pkgver = r11.9eded08
+	pkgrel = 1
+	url = https://github.com/glutanimate/MoodyRain
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = yad
+	depends = sox
+	depends = vorbis-tools
+	provides = moodyrain
+	source = moodyrain::git+https://github.com/glutanimate/MoodyRain
+	sha256sums = SKIP
+
+pkgname = moodyrain-git
+
