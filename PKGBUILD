@@ -1,6 +1,8 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-brotli
-pkgver=1.0.7
+_pkgname=brotli
+_gitcommit=e61745a6b7add50d380cfd7d3883dd6c62fc2c71
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='Brotli compression library (mingw-w64)'
 arch=('any')
@@ -9,14 +11,19 @@ url='https://github.com/google/brotli'
 depends=('mingw-w64-gcc')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
-source=(https://github.com/google/brotli/archive/v$pkgver.tar.gz)
-sha512sums=('a82362aa36d2f2094bca0b2808d9de0d57291fb3a4c29d7c0ca0a37e73087ec5ac4df299c8c363e61106fccf2fe7f58b5cf76eb97729e2696058ef43b1d3930a')
+source=(${_pkgname}::"git+${url}#commit=${_gitcommit}")
+sha512sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+pkgver() {
+  cd ${_pkgname} 
+  git describe --tags --match 'v*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
   for _arch in ${_architectures}; do
-    cd "$srcdir"/brotli-$pkgver
+    cd "$srcdir"/${_pkgname}
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake ..
     make
@@ -26,7 +33,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/brotli-$pkgver/build-${_arch}"
+    cd "${srcdir}/${_pkgname}/build-${_arch}"
     make DESTDIR="${pkgdir}" install
     find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec ${_arch}-strip --strip-all {} \;
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
