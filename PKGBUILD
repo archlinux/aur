@@ -1,4 +1,4 @@
-# Maintainer: Alexis Janon <kardyne+aur@gmail.com>
+# Maintainer: Alexis Janon <kardyne -at- gmail -dot- com>
 # Contributor: JR Boyens
 # Contributor: sballert <sballert@posteo.de>
 # Contributor: Alex Whitt <alex.joseph.whitt@gmail.com>
