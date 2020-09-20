@@ -1,0 +1,15 @@
+pkgbase = hotbox-git
+	pkgdesc = Python3-based CLI hotkey configurator for Openbox
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/bajaco/hotbox
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	source = git://github.com/bajaco/hotbox.git
+	md5sums = SKIP
+
+pkgname = hotbox-git
+
