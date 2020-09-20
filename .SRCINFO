@@ -5,9 +5,17 @@ pkgbase = python-pythontexfigures
 	url = https://github.com/mje-nz/pythontexfigures
 	arch = any
 	license = BSD
-	license = 3-Clause
-	makedepends = python
-	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = python
+	depends = python-matplotlib
+	depends = python-pygments
+	provides = pythontexfigures
+	source = https://files.pythonhosted.org/packages/source/p/pythontexfigures/pythontexfigures-0.2.0.tar.gz
+	source = pythontexfigures-0.2.0-Readme.md::https://github.com/mje-nz/pythontexfigures/raw/master/Readme.md
+	source = pythontexfigures-0.2.0-LICENSE::https://github.com/mje-nz/pythontexfigures/raw/master/LICENSE
+	sha256sums = 99f2c9bff53ce5a41fa901add18328f0a767017949aee3198d58619c4fba9a4c
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-pythontexfigures
 
