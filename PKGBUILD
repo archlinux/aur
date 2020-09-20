@@ -1,7 +1,7 @@
 # Contributor, Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=findwild
 pkgver=2.8
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gtk3')
