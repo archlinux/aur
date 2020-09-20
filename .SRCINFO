@@ -1,13 +1,13 @@
 pkgbase = redditgtk-git
 	pkgdesc = Reddit gtk client
 	pkgver = r32.c7406bc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GabMus/redditgtk
 	arch = any
 	license = GPL3
 	makedepends = meson
 	makedepends = git
-	depends = gobject-introspection
+	makedepends = gobject-introspection
 	depends = gtksourceview4
 	depends = libhandy1
 	depends = python-flask

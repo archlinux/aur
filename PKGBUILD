@@ -2,7 +2,7 @@
 
 pkgname=redditgtk-git
 pkgver=r32.c7406bc
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Reddit gtk client"
 arch=('any')
@@ -10,7 +10,6 @@ url="https://gitlab.gnome.org/GabMus/redditgtk"
 license=('GPL3')
 groups=()
 depends=(
-	'gobject-introspection'
 	'gtksourceview4'
 	'libhandy1'
 	'python-flask'
@@ -18,7 +17,7 @@ depends=(
 	'python-gobject'
 	'python-dateutil'
 )
-makedepends=('meson' 'git')
+makedepends=('meson' 'git' 'gobject-introspection')
 checkdepends=()
 optdepends=()
 provides=("${pkgname%-git}")
