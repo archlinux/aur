@@ -1,10 +1,14 @@
 pkgbase = console-bridge
 	pkgdesc = A ROS-independent package for logging that seamlessly pipes into rosconsole/rosout for ROS-dependent packages.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ros.org/
 	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7hv
+	arch = aarch64
 	license = BSD
 	makedepends = cmake
 	depends = gcc-libs
