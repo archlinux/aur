@@ -4,12 +4,11 @@
 pkgname=ttf-d2coding
 pkgver=1.3.2
 _pkgver="Ver$pkgver-20180524"
-pkgrel=1
+pkgrel=2
 pkgdesc="D2Coding Fixed Width TrueType fonts"
 arch=('any')
 url='https://github.com/naver/d2codingfont'
 license=('custom:OFL')
-depends=('xorg-font-utils')
 provides=('ttf-font')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/VER$pkgver/D2Coding-$_pkgver.zip"
         "$pkgname-LICENSE")
