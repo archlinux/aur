@@ -1,6 +1,6 @@
 pkgbase = tsduck
 	pkgdesc = An extensible toolkit for MPEG/DVB transport streams
-	pkgver = 3.22_1953
+	pkgver = 3.23_1965
 	pkgrel = 1
 	url = https://tsduck.io/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = tsduck
 	depends = curl
 	depends = srt
 	depends = jq
-	source = tsduck-3.22-1953.tar.gz::https://github.com/tsduck/tsduck/archive/v3.22-1953.tar.gz
-	md5sums = bccf9a1eaade14feae1967ca49846648
+	source = tsduck-3.23-1965.tar.gz::https://github.com/tsduck/tsduck/archive/v3.23-1965.tar.gz
+	md5sums = a33e5f8d615b84decc51def55a072c6e
 
 pkgname = tsduck
 
