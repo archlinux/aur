@@ -1,6 +1,7 @@
+# Maintainer: Tivoli Cloud VR <maki@tivolicloud.com>
 # Maintainer: Maki <mxmcube@gmail.com>
 pkgname="tivoli-cloud-vr-bin"
-pkgver=0.13.2
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Free and open-source metaverse to create positive social impact."
 arch=("x86_64")
@@ -30,8 +31,8 @@ source=("tivoli-cloud-vr-$pkgver.tar.xz::https://cdn.tivolicloud.com/releases/Ti
 sha256sums=("SKIP")
 
 package() {
-    cd "${_pkgname}"
-    rm -f .INSTALL .MTREE .PKGINFO
+	cd "${_pkgname}"
+	rm -f .INSTALL .MTREE .PKGINFO
 	mv * "${pkgdir}"
-    chmod 755 "${pkgdir}/opt/Tivoli Cloud VR/tivoli-cloud-vr"
+	chmod 755 "${pkgdir}/opt/Tivoli Cloud VR/tivoli-cloud-vr"
 }
