@@ -1,11 +1,10 @@
 pkgbase = ttf-atom-file-icons
 	pkgdesc = Atom file-specific icons for improved visual grepping.
 	pkgver = 2.1.43
-	pkgrel = 1
+	pkgrel = 2
 	url = https://atom.io/packages/file-icons
 	arch = any
 	license = MIT
-	makedepends = woff2
 	source = ttf-atom-file-icons-2.1.43.tar.gz::https://github.com/file-icons/atom/archive/v2.1.43.tar.gz
 	md5sums = 56a7657be8b518715b13845a2d33168e
 
