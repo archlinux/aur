@@ -1,0 +1,21 @@
+pkgbase = shargo
+	pkgdesc = A simple screensharing tool
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/jmattheis/shargo
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	depends = libpng
+	depends = libxtst
+	depends = libglvnd
+	depends = libxkbcommon-x11
+	source = shargo-0.0.2.tar.gz::https://github.com/jmattheis/shargo/archive/v0.0.2.tar.gz
+	sha256sums = e88d173de3fbd64098f382b7ae5f0dd33167400a54793725cfd6188623c613ca
+
+pkgname = shargo
+
