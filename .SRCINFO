@@ -6,8 +6,7 @@ pkgbase = python-pymupdf
 	arch = x86_64
 	license = AGPL3
 	makedepends = python-setuptools
-	makedepends = libmupdf-pymupdf>=1.17
-	makedepends = libmupdf-pymupdf<1.18
+	makedepends = libmupdf-pymupdf=1.17.0-3
 	makedepends = swig
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme

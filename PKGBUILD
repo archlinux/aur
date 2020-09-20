@@ -11,7 +11,7 @@ arch=('x86_64')
 url='https://github.com/pymupdf/PyMuPDF'
 license=('AGPL3')
 depends=('python' 'libjpeg-turbo' 'jbig2dec' 'openjpeg2'  'freetype2')
-makedepends=('python-setuptools' 'libmupdf-pymupdf>=1.17' 'libmupdf-pymupdf<1.18' 'swig' 'python-sphinx' 'python-sphinx_rtd_theme')
+makedepends=('python-setuptools' 'libmupdf-pymupdf=1.17.0-3' 'swig' 'python-sphinx' 'python-sphinx_rtd_theme')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pymupdf/PyMuPDF/archive/${pkgver}.tar.gz")
 sha256sums=('bbdc4c5fc18dec8122f13fdeb75c90cb8fee13d4fd37c9397ac68bb096129fc1')
