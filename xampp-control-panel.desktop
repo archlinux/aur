@@ -8,5 +8,4 @@ StartupWMClass=XAMPP
 Icon=xampp
 Terminal=false
 Type=Application
-Categories=Network;
-Name[en_US]=XAMPP Control Panel
+Categories=Database;Network;RemoteAccess;WebDevelopment;

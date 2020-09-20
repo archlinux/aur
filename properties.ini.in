@@ -1,9 +1,9 @@
 [General]
-installdir=@PACKAGE_INSTALLDIR@
+installdir=@XAMPP_ROOT@
 base_stack_name=XAMPP
 base_stack_key=
-base_stack_version=@PACKAGE_VERSION@
-base_stack_platform=@PACKAGE_PLATFORM@
+base_stack_version=@XAMPP_VERSION@
+base_stack_platform=@XAMPP_PLATFORM@
 base_stack_service=
 require_root_privileges=1
 [Apache]
@@ -11,20 +11,20 @@ apache_server_port=80
 apache_user=daemon
 apache_group=daemon
 apache_server_ssl_port=443
-apache_root_directory=@PACKAGE_INSTALLDIR@
-apache_htdocs_directory=@PACKAGE_INSTALLDIR@/htdocs
+apache_root_directory=@XAMPP_ROOT@
+apache_htdocs_directory=@XAMPP_ROOT@/htdocs
 apache_domainname=127.0.0.1
-apache_configuration_directory=@PACKAGE_INSTALLDIR@/apache2/conf
+apache_configuration_directory=@XAMPP_ROOT@/apache2/conf
 [MySQL]
 mysql_port=3306
 mysql_host=localhost
-mysql_root_directory=@PACKAGE_INSTALLDIR@/
-mysql_binary_directory=@PACKAGE_INSTALLDIR@/bin
-mysql_data_directory=@PACKAGE_INSTALLDIR@/var/mysql/
-mysql_configuration_directory=@PACKAGE_INSTALLDIR@/etc
-mysql_arguments=-u root -S "@PACKAGE_INSTALLDIR@/var/mysql/mysql.sock"
-mysql_socket=@PACKAGE_INSTALLDIR@/var/mysql/mysql.sock
+mysql_root_directory=@XAMPP_ROOT@/
+mysql_binary_directory=@XAMPP_ROOT@/bin
+mysql_data_directory=@XAMPP_ROOT@/var/mysql/
+mysql_configuration_directory=@XAMPP_ROOT@/etc
+mysql_arguments=-u root -S "@XAMPP_ROOT@/var/mysql/mysql.sock"
+mysql_socket=@XAMPP_ROOT@/var/mysql/mysql.sock
 [PHP]
-php_binary_directory=@PACKAGE_INSTALLDIR@/bin
-php_configuration_directory=@PACKAGE_INSTALLDIR@/etc
-php_extensions_directory=@PACKAGE_INSTALLDIR@/lib/php/extensions/no-debug-non-zts-20190902
+php_binary_directory=@XAMPP_ROOT@/bin
+php_configuration_directory=@XAMPP_ROOT@/etc
+php_extensions_directory=@XAMPP_ROOT@/lib/php/extensions/no-debug-non-zts-20190902

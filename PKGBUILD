@@ -9,7 +9,7 @@
 pkgname='xampp'
 pkgver='7.4.10'
 _uppkgrel=0
-pkgrel=9
+pkgrel=10
 pkgdesc='A stand-alone LAMPP distribution'
 url='https://www.apachefriends.org/'
 license=('GPL')
@@ -39,16 +39,16 @@ source_x86_64=("${url}/${pkgname}-files/${pkgver}/${pkgname}-${_build64name}-${p
 options=('staticlibs' 'libtool' '!strip')
 install='xampp.install'
 sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
-            'ce87d4c7d227a94ca8252cde1f6dca7e1691a213779c8e6485ac1e2bd4cc63ba'
-            'ae9dc07ce5cd57987cdd03af5fff415be471d60fe71563b900c9f4bd9cd71e04'
-            'f3165bfb3b5fac6e840b423b62a0aee4ab7c60d1955b7f5f1bc58e33f5174f6a'
+            'd72750c1dba2f754e6ea4eec22770f8a9c3858f270a91e7b1da4129e053a9d68'
+            'ccaed1c416936323c60e2b3efead26d9c57f033f10454e5fb80f65b03ad590e5'
+            '72dffe1ee4ae96a966a301dd1486832ce823cf3132f3ab1cd4ddb75ef9816d08'
             'a3fc7f2b570af9d05435f2f9a0b8d7d9b30ee1dbeaea152f8e249ef5ef0461c9'
             '37e24dacf3a52037d0cddb11d979917f81741bf399ec5fa5e847359909b7bc25'
-            'e8e0ddeb7201b7ee6e7e6838b3b37cdca03f0f3e8ba1b9e05fbd657c18efb99e'
-            '94976a27b06192c5cc8fea64058cda164751be137d853c863238e965db51db40'
-            'b03a927a8bc13de2f8ad728607f4b0841e738246ee858a0c202fe10dc8ed26dd'
-            '0cbfb01a844e48ac64a256b1639eebbe6a36c60f712b0c8794eef8722f436762'
-            '9d0cc215118fdb3aae00cbd64e284bcbbda28273f0b82ee2a3bb0aa725336ffd')
+            '1447876c2d2dcf48c8e94c3bffbb09f1b4005621a55f78fb7d9faecebdb26264'
+            '80de3facade04b394a501f13dd1c16d66381715c42c1f597fc1142cdcbe5f3de'
+            '39a5617deaf42d17281b3b1b828351c0f6108cee774b3e4671af3d9bbcd48883'
+            '8825623ea18abb8bfb3a8811b6c59dc8485f7d767c6f3a013fdc1b1afc979426'
+            '83b30970378e8d30d7acd13ebe6dc31652548a44d2cca9fd5919fa7f06fe238d')
 sha256sums_x86_64=('dc216c55f99b04a9e1a458c7c881127fdbf30963710a32f6d5228a09c3cde722')
 sha256sums_i686=('SKIP')
 
@@ -75,20 +75,20 @@ prepare() {
 
 package() {
 
-	# This is a constant, you should not change it - this path is hard coded in some of the files
-	local _xamppdir='/opt/lampp'
+	# This is a constant, you should not change it - this path is hard-coded in some of the files
+	local _xampp_root='/opt/lampp'
 
 	local _sed_subst="
-		s/@PACKAGE_VERSION@/$(_sed_escape "${pkgver}-${_uppkgrel}")/g
-		s/@PACKAGE_PLATFORM@/$(_sed_escape "${_platform}")/g
-		s/@PACKAGE_INSTALLDIR@/$(_sed_escape "${_xamppdir}")/g
+		s/@XAMPP_VERSION@/$(_sed_escape "${pkgver}-${_uppkgrel}")/g
+		s/@XAMPP_PLATFORM@/$(_sed_escape "${_platform}")/g
+		s/@XAMPP_ROOT@/$(_sed_escape "${_xampp_root}")/g
 	"
 
 	cd "${srcdir}"
 
 	# Package tree
 	msg 'Recreating package tree...'
-	install -dm755 "${pkgdir}${_xamppdir}"
+	install -dm755 "${pkgdir}${_xampp_root}"
 	rsync -azq --remove-source-files \
 		"${srcdir}/${_pkgstring}/xampp_core_files/xampp_core_folder"/. \
 		"${srcdir}/${_pkgstring}/xampp_developer_files/xampp_developer_folder"/. \
@@ -97,36 +97,36 @@ package() {
 		"${srcdir}/${_pkgstring}/native_mysql_adapter/mysql_xampp_linux"/. \
 		"${srcdir}/${_pkgstring}/manager/binary"/. \
 		"${srcdir}/${_pkgstring}/common_native_adapter/common"/. \
-		"${pkgdir}${_xamppdir}"
+		"${pkgdir}${_xampp_root}"
 
-	rm "${pkgdir}${_xamppdir}/ctlscript.bat" "${pkgdir}${_xamppdir}/killprocess.bat"
+	rm "${pkgdir}${_xampp_root}/ctlscript.bat" "${pkgdir}${_xampp_root}/killprocess.bat"
 
 	# Root location in all files
 	msg 'Setting root location globally (it might take a few minutes)...'
-	find "${pkgdir}${_xamppdir}/" -type f \
-		-exec sed -i "s/@@BITNAMI_XAMPP_ROOT@@\|@@BITROCK_INSTALLDIR@@/$(_sed_escape "${_xamppdir}")/gI" '{}' \;
+	find "${pkgdir}${_xampp_root}/" -type f \
+		-exec sed -i "s/@@BITNAMI_XAMPP_ROOT@@\|@@BITROCK_INSTALLDIR@@/$(_sed_escape "${_xampp_root}")/gI" '{}' \;
 
 	# Temp folders
-	install -dm777 "${pkgdir}${_xamppdir}/phpmyadmin/tmp"
-	chmod 777 "${pkgdir}${_xamppdir}/temp"
+	install -dm777 "${pkgdir}${_xampp_root}/phpmyadmin/tmp"
+	chmod 777 "${pkgdir}${_xampp_root}/temp"
 
 	# Links and missing files
-	sed "${_sed_subst}" "${srcdir}/properties.ini.in" > "${pkgdir}${_xamppdir}/properties.ini"
-	echo -n "${pkgver}-${_uppkgrel}" > "${pkgdir}${_xamppdir}/lib/VERSION"
-	ln -s "${_xamppdir}/xampp" "${pkgdir}${_xamppdir}/lampp"
-	test -d "${pkgdir}${_xamppdir}/share/lampp" || \
-		ln -sf "${_xamppdir}/share/xampp" "${pkgdir}${_xamppdir}/share/lampp"
+	sed "${_sed_subst}" "${srcdir}/properties.ini.in" > "${pkgdir}${_xampp_root}/properties.ini"
+	echo -n "${pkgver}-${_uppkgrel}" > "${pkgdir}${_xampp_root}/lib/VERSION"
+	ln -s "${_xampp_root}/xampp" "${pkgdir}${_xampp_root}/lampp"
+	test -d "${pkgdir}${_xampp_root}/share/lampp" || \
+		ln -sf "${_xampp_root}/share/xampp" "${pkgdir}${_xampp_root}/share/lampp"
 
 	msg 'Copying executables and launcher...'
 
 	# Licenses
 	install -dm755 "${pkgdir}/usr/share/licenses"
-	chmod -R a+rX,u+w "${pkgdir}${_xamppdir}/licenses"
-	ln -s "${_xamppdir}/licenses" "${pkgdir}/usr/share/licenses/xampp"
+	chmod -R a+rX,u+w "${pkgdir}${_xampp_root}/licenses"
+	ln -s "${_xampp_root}/licenses" "${pkgdir}/usr/share/licenses/xampp"
 
 	# Executables
 	install -dm755 "${pkgdir}/usr/bin"
-	ln -s "${_xamppdir}/xampp" "${pkgdir}/usr/bin/xampp"
+	ln -s "${_xampp_root}/xampp" "${pkgdir}/usr/bin/xampp"
 	sed "${_sed_subst}" "${srcdir}/xampp-manager.in" > "${pkgdir}/usr/bin/xampp-manager"
 	sed "${_sed_subst}" "${srcdir}/xampp-control-panel.in" > "${pkgdir}/usr/bin/xampp-control-panel"
 	chmod +x "${pkgdir}/usr/bin/xampp-control-panel" "${pkgdir}/usr/bin/xampp-manager"
@@ -149,7 +149,7 @@ package() {
 	install -Dm644 "${srcdir}/xampp.svg" "${pkgdir}/usr/share/pixmaps/xampp.svg"
 	install -Dm644 "${srcdir}/xampp-manager.desktop" "${pkgdir}/usr/share/applications/xampp-manager.desktop"
 	install -Dm644 "${srcdir}/xampp-control-panel.desktop" "${pkgdir}/usr/share/applications/xampp-control-panel.desktop"
-	ln -s "${_xamppdir}" "${pkgdir}/usr/share/xampp"
+	ln -s "${_xampp_root}" "${pkgdir}/usr/share/xampp"
 
 	# Polkit files
 	install -dm755 "${pkgdir}/usr/share/polkit-1/actions"

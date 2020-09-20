@@ -1,2 +1,2 @@
 #!/bin/sh
-'@PACKAGE_INSTALLDIR@/manager-@PACKAGE_PLATFORM@.run' "${@}"
+'@XAMPP_ROOT@/manager-@XAMPP_PLATFORM@.run' "${@}"

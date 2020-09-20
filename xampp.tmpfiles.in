@@ -1,1 +1,1 @@
-Z @PACKAGE_INSTALLDIR@/var/mysql/ - mysql mysql -
+Z @XAMPP_ROOT@/var/mysql/ - mysql mysql -

@@ -8,7 +8,7 @@ post_install() {
 	echo
 	echo 'To start, stop or restart XAMPP simply call the command'
 	echo
-	echo '    xampp {start, stop, restart}'
+	echo '    sudo xampp {start, stop, restart}'
 	echo
 	echo 'Alternatively you can use the `xampp` systemd service.'
 	echo
