@@ -4,24 +4,43 @@
 # Contributor: J0k3r <moebius282@gmail.com>
 
 pkgname=lib32-sdl2-hg
-pkgver=2.0.9.r13.45038f8422c9+
-pkgrel=2
+pkgver=2.0.12
+pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2. 32 -bit)"
 arch=('x86_64')
 url="https://www.libsdl.org"
 license=('MIT')
-depends=('lib32-glibc' 'lib32-libxext' 'lib32-libxrender' 'lib32-libx11' 'lib32-libgl'
-         'lib32-libxcursor' 'sdl2')
-makedepends=('lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse' 'lib32-libxrandr'
-             'lib32-libxinerama' 'lib32-wayland' 'lib32-libxkbcommon' 'wayland-protocols' 'lib32-libxxf86vm'
-             'lib32-libxss' 'cmake' 'mercurial')
-optdepends=('lib32-alsa-lib: ALSA audio driver'
-            'lib32-libpulse: PulseAudio audio driver'
-            'lib32-jack: JACK audio driver'
-            'jack: JACK audio support'
-            'lib32-tslib: Touchscreen support')
+depends=(
+  lib32-glibc
+  lib32-libxext
+  lib32-libxrender
+  lib32-libx11
+  lib32-libgl
+  lib32-libxcursor
+  sdl2
+)
+makedepends=(
+  cmake
+  jack
+  lib32-alsa-lib
+  lib32-mesa
+  lib32-libpulse
+  lib32-libxrandr
+  lib32-libxinerama
+  lib32-wayland
+  lib32-libxkbcommon
+  lib32-libxss
+  lib32-libxxf86vm
+  mercurial
+  wayland-protocols
+)
+optdepends=(
+  'lib32-alsa-lib: ALSA audio driver'
+  'lib32-libpulse: PulseAudio audio driver'
+  'lib32-jack: JACK audio driver'
+)
 provides=(lib32-sdl2)
-conflicts=(lib32-sdl2)
+conflicts=(lib32-sdl2 lib32-sdl2-minimal-hg)
 source=("hg+http://hg.libsdl.org/SDL#branch=default")
 sha512sums=('SKIP')
 
