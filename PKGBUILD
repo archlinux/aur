@@ -35,6 +35,7 @@ build() {
 	  --enable-xinput \
           --enable-xkb \
 	  --libdir=/usr/lib32 \
+	  --without-doxygen \
 	  --disable-static
   make
 }
