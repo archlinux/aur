@@ -1,14 +1,14 @@
 pkgbase = textlint
-	pkgdesc = The pluggable linting tool for text and markdown.
-	pkgver = 10.2.1
+	pkgdesc = The pluggable natural language linter for text and markdown.
+	pkgver = 11.7.6
 	pkgrel = 1
 	url = https://github.com/textlint/textlint/
 	arch = any
+	license = MIT
+	makedepends = npm
 	depends = nodejs
-	depends = npm
-	noextract = textlint-10.2.1.tgz
-	source = http://registry.npmjs.org/textlint/-/textlint-10.2.1.tgz
-	sha1sums = ee22b7967d59cef7c74a04a5f4e8883134e5c79d
+	source = https://registry.npmjs.org/textlint/-/textlint-11.7.6.tgz
+	sha256sums = 3cbd430dc6f548fc9a07efc26ccf10c8dd1f61258935a1d6696f076997d7a0a1
 
 pkgname = textlint
 
