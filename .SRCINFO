@@ -1,0 +1,14 @@
+pkgbase = kbtui
+	pkgdesc = Keybase TUI written in Go
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Rudi9719/kbtui
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	source = kbtui-1.0.1.tar.gz::https://github.com/Rudi9719/kbtui/archive/1.0.1.tar.gz
+	sha512sums = de520f9be01e237eb5401f2705badd6c5a41f297e8bf705538b7221fb403b46d582f6af7b9a78d57382a15128e457dd2f4c03dbf48259fa216932ba823a416d6
+
+pkgname = kbtui
+
