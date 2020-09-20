@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Randoragon <randoragongamedev@gmail.com>
-pkgname=mousemode
+pkgname=mousemode-git
 pkgver=1.0.0
 pkgrel=1
 epoch=
@@ -18,12 +18,12 @@ source=("git+$url")
 md5sums=('SKIP')
 
 build() {
-	cd "$pkgname"
+	cd mousemode
 	make
 }
 
 package() {
-	cd "$pkgname"
+	cd mousemode
     mkdir -p "$pkgdir/usr/bin"
 	make DESTDIR="$pkgdir/" PREFIX=/usr/bin install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/license.txt"

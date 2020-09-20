@@ -1,4 +1,4 @@
-pkgbase = mousemode
+pkgbase = mousemode-git
 	pkgdesc = An intuitive, home-row mouse replacement
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = mousemode
 	source = git+https://github.com/randoragon/mousemode
 	md5sums = SKIP
 
-pkgname = mousemode
+pkgname = mousemode-git
 
