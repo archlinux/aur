@@ -1,0 +1,22 @@
+pkgbase = nightpdf-git
+	pkgdesc = Dark mode PDF reader (git version)
+	pkgver = 0.2.1.r10.g9ab6f45
+	pkgrel = 1
+	url = https://github.com/joeloya/NightPDF/
+	arch = any
+	license = custom:WTFPL
+	makedepends = git
+	depends = sh
+	depends = electron
+	depends = hicolor-icon-theme
+	provides = nightpdf
+	conflicts = nightpdf
+	source = git+https://github.com/joeloya/NightPDF.git
+	source = nightpdf.sh
+	source = nightpdf.desktop
+	sha256sums = SKIP
+	sha256sums = cef2a1e472a922bc7a93a5ad9b380821a7588ed1b89d89c3a8e8544d675eb63d
+	sha256sums = 1eb70aff787a3a18fb2d5f8f3efabefd4ee0f9a8ec0fdac02c2c25decc5c31b3
+
+pkgname = nightpdf-git
+
