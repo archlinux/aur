@@ -9,13 +9,13 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=python-xdelta3
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=(any)
 url=""
 license=('Apache')
 groups=()
-depends=('python' 'xdelta3')
+depends=('python' 'xdelta3' 'python-pip')
 source=(git+https://github.com/samuelcolvin/xdelta3-python/)
 md5sums=(SKIP)
 

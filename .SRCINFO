@@ -1,10 +1,11 @@
 pkgbase = python-xdelta3
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = Apache
 	depends = python
 	depends = xdelta3
+	depends = python-pip
 	source = git+https://github.com/samuelcolvin/xdelta3-python/
 	md5sums = SKIP
 
