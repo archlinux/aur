@@ -2,8 +2,8 @@
 # Co-maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=betterdiscordctl-git
-pkgver=1.6.0.r34.g6433a5b
-pkgrel=1
+pkgver=1.7.0.r0.g785ad01
+pkgrel=2
 pkgdesc="A utility for managing BetterDiscord on Linux"
 arch=('any')
 url="https://github.com/bb010g/betterdiscordctl"
@@ -22,9 +22,7 @@ prepare() {
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf '%s.r%s.g%s' \
-    "$(sed -n 's/^VERSION=//p' "${pkgname%-git}")" \
-    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
