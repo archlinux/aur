@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=ccleste
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 epoch=
 pkgdesc="Celeste Classic C source port for 3DS and PC."
@@ -16,7 +16,7 @@ optdepends=()
 provides=()
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("232a19f3cdf4818cd3031b4393162dcfba3313a63c775702c99d035ff4149720")
+sha256sums=("156602fd74d165e6694b7c18c373b33a17ce0a58e6c07d56880ebd4fe45e0214")
 
 prepare() {
 	cd "$pkgname-$pkgver"
