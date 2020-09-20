@@ -12,10 +12,10 @@ groups=()
 depends=(
 	'gtksourceview4'
 	'libhandy1'
-	'python-flask'
-	'python-praw'
-	'python-gobject'
 	'python-dateutil'
+	'python-flask'
+	'python-gobject'
+	'python-praw'
 )
 makedepends=('meson' 'git' 'gobject-introspection')
 checkdepends=()
@@ -42,6 +42,4 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
-
-	cd "$srcdir/$pkgname"
 }
