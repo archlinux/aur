@@ -1,31 +1,23 @@
-
 # Maintainer: Vincent Grande <shoober420@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=sdl2-hg
-pkgver=2.0.9.r22.80f861112154
+pkgver=2.0.12
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64')
 url="https://www.libsdl.org"
 license=('MIT')
-depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor')
+depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'libibus' 'hidapi')
 makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
-             'wayland-protocols' 'libxss' 'cmake' 'libxxf86vm' 'mercurial' 'hidapi' 'ninja')
+             'wayland-protocols' 'ibus' 'fcitx' 'libxss' 'cmake' 'jack' 'ninja' 'mercurial' 'libxxf86vm')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
-            'jack: JACK audio driver'
-            'fcitx: Asian language support'
-            'ibus: Asian language support'
-            'libibus: Asian language support'
-            'tslib: Touchscreen support')
-source=("hg+http://hg.libsdl.org/SDL#branch=default"
-         fix-hidapi.patch)
+            'jack: JACK audio driver')
+source=("hg+http://hg.libsdl.org/SDL#branch=default")
 provides=(sdl2)
-conflicts=(sdl2)
-sha512sums=('SKIP'
-            'SKIP')
-validpgpkeys=('SKIP') # Sam Lantinga
+conflicts=(sdl2 sdl2-minimal-hg)
+sha512sums=('SKIP')
 
 pkgver() {
 
@@ -42,8 +34,6 @@ prepare() {
   cd SDL
 
   sed -i "s/LIBUSB libusb/LIBUSB libusb-1.0/g" cmake/sdlchecks.cmake
-
-  patch -Np1 -i "${srcdir}"/fix-hidapi.patch
 
   rm -rf build
   mkdir build
