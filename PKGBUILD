@@ -1,15 +1,16 @@
-# Maintainer: Harry Beadle <harrybeadle@protonmail.com>
+# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
+# Previous Maintainer: Harry Beadle <harrybeadle@protonmail.com>
 
 pkgname=otf-san-francisco-pro
-pkgver=1
-pkgrel=3
+pkgver=16.0d11e1
+pkgrel=1
 pkgdesc='System font for iOS, macOS, and tvOS. Sourced directly from Apple.'
 arch=('any')
 url='https://developer.apple.com/fonts/'
 license=('custom')
 makedepends=('p7zip')
 source=('https://developer.apple.com/design/downloads/SF-Font-Pro.dmg')
-md5sums=('84b4193c7738b32c11c276424de1db1a')
+md5sums=('c9b028c031374918cff395ec313de02a')
 
 prepare() {
   7z x SF-Font-Pro.dmg
