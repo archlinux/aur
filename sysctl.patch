@@ -1,0 +1,11 @@
+diff --unified --recursive --text package.orig/os.h package.new/os.h
+--- package.orig/os.h	2015-08-16 19:54:19.000000000 +0200
++++ package.new/os.h	2020-09-20 23:55:27.463447823 +0200
+@@ -177,7 +177,6 @@
+ #elif defined (__linux__)             /* L I N U X */
+ #include <stdio.h>
+ #include <sys/param.h>
+-#include <sys/sysctl.h>
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <unistd.h>
