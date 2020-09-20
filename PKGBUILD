@@ -3,7 +3,7 @@
 
 pkgname=sge
 pkgver=8.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Son of Grid Engine/Sun Grid Engine"
 arch=('x86_64')
 url="https://arc.liv.ac.uk/trac/SGE"
@@ -36,8 +36,8 @@ source=(
 	"qmake.patch"
 )
 md5sums=('a2f03ca8b803ca4da7d2dedadeca74bb'
-         '238d9581610a5e71784e4c51a1f12cba'
-         'c4dc1e4e74e0ee45e44ae48677fa3697'
+         '0f4d29ce1dd17af61f48e61431020ea7'
+         'b3e8d5b14639e1f16773f468dabec7de'
          '209d58787a6980f1680dbf00f251403f'
          '573880df6c2915002af3422376933588'
          '4d77510a2601cc79f1260257f2989f08'

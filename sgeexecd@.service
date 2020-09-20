@@ -3,8 +3,9 @@ Description=SGE qmaster service
 After=network.target
 
 [Service]
-Type=simple
-ExecStart=/opt/sge/%i/common/sgeexecd
+Type=forking
+ExecStart=/opt/sge/%i/common/sgeexecd start
+ExecStop=/opt/sge/%i/common/sgeexecd stop
 
 [Install]
 WantedBy=multi-user.target
