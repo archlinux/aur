@@ -8,7 +8,7 @@
 
 pkgname=libmupdf-pymupdf
 pkgver=1.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Library for Lightweight PDF and XPS viewer with patch to build PyMuPDF'
 arch=('x86_64')
 url='https://mupdf.com/'
@@ -26,7 +26,7 @@ source=("https://mupdf.com/downloads/archive/mupdf-${pkgver/_/}-source.tar.xz"
         'mupdf.xpm')
 sha256sums=('c935fb2593d9a28d9b56b59dad6e3b0716a6790f8a257a68fa7dcb4430bc6086'
             '53e3ccc9dd613277a1cfb99dcf7e71216c8497a84f6a7663a2fbff9d58a10be5'
-            'e1c908e0126fdcd2cb1fa6a8ee72e373ee3cc4f9c30ced0b09ea44a98e25f272'
+            '10d6ee6ea3707b5821f84ba81f855b46b44492821d7158ae109db458563bbd8f'
             'ccff66979249bd4ab4ba8918660f194eb90eb0ae231b16e36a6cecdcf471883f'
             'a435f44425f5432c074dee745d8fbaeb879038ec1f1ec64f037c74662f09aca8')
 
@@ -52,13 +52,13 @@ build() {
   export USE_SYSTEM_LIBS
 
   cd mupdf-${pkgver/_/}-source
-  make build=release libs apps
+  make HAVE_X11=no HAVE_GLFW=no HAVE_GLUT=no build=release libs apps
 }
 
 package() {
   cd mupdf-${pkgver/_/}-source
 
-  make build=release prefix="$pkgdir"/usr install
+  make HAVE_X11=no HAVE_GLFW=no HAVE_GLUT=no build=release prefix="$pkgdir"/usr install
 
   rm -rf "$pkgdir"/usr/{bin,share/man}
   mv "$pkgdir"/usr/share/doc/mupdf "$pkgdir"/usr/share/doc/libmupdf
