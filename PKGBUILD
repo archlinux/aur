@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/binex-dsk/cmdtools"
 license=('GPL3')
 source=("git+https://github.com/binex-dsk/cmdtools.git")
-makedepends=('coreutils')
+makedepends=('git')
 md5sums=('SKIP')
 
 pkgver() {

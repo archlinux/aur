@@ -5,7 +5,7 @@ pkgbase = cmdtools-git
 	url = https://github.com/binex-dsk/cmdtools
 	arch = any
 	license = GPL3
-	makedepends = coreutils
+	makedepends = git
 	source = git+https://github.com/binex-dsk/cmdtools.git
 	md5sums = SKIP
 
