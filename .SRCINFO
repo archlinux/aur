@@ -1,0 +1,14 @@
+pkgbase = nanolist-git
+	pkgdesc = mailing lists - the unix way
+	pkgver = r19.ba179b7
+	pkgrel = 1
+	url = https://github.com/eXeC64/nanolist
+	arch = i686
+	arch = x86_64
+	license = BSD 3-Clause License
+	makedepends = go
+	source = git+git://github.com/eXeC64/nanolist
+	sha1sums = SKIP
+
+pkgname = nanolist-git
+
