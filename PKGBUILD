@@ -1,4 +1,5 @@
 # Maintainer: Carson Rueter <roachh@protonmail.com>
+# Contributor: Yaohan Chen <yaohan.chen@gmail.com>
 
 pkgname='sddm-config-editor-git'
 _pkgname='sddm-config-editor'
