@@ -1,8 +1,3 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Mees Luten <mees [dot] luten [at] gmail [dot] com>
 pkgname=satellite-decoders
 pkgver=0.1
@@ -13,8 +8,6 @@ url="https://gitlab.altillimity.com/altillimity/satellite-decoders"
 license=('GPLv3')
 depends=()
 makedepends=('libfec-git')
-checkdepends=()
-optdepends=()
 provides=()
 conflicts=()
 replaces=()
