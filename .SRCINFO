@@ -9,7 +9,7 @@ pkgbase = ukopp2
 	depends = gtk3
 	options = !emptydirs
 	source = http://www.kornelix.net/downloads/downloads/ukopp2-1.5.tar.gz
-	sha256sums = 25178569309e19e50f7f0cd0831b8b20eadcde922ade3ec4fac044083dfcb77c
+	sha256sums = d86f09bd1854b0b653d8463c42890a32923d0f94094040c3d90117a22424eb5f
 
 pkgname = ukopp2
 
