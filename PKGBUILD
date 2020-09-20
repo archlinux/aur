@@ -7,7 +7,7 @@
 
 pkgname=packettracer
 pkgver=7.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Cisco PacketTracer 7.3.1 installation package"
 arch=( 'x86_64' )
 depends=('openssl-1.0' 'dbus' 'icu' 'glib2' 'libxml2' 'libjpeg-turbo' 'nss')
@@ -26,7 +26,7 @@ sha512sums=('3fe369ef8cd1e0429422e58ce42d1b4288143e49cdf06e1c0bb15cb0b75a0d0fe0f
 package() {
 
 	tar xf data.tar.xz -C "${pkgdir}"
-
+	chown -R 0:0 ${pkgdir}
 	mv ${pkgdir}/opt/pt/ ${pkgdir}/opt/packettracer/
 
 	mkdir -p "${pkgdir}/usr/bin/"
