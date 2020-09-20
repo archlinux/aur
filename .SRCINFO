@@ -1,6 +1,6 @@
 pkgbase = appleseed-git
 	pkgdesc = physically-based global illumination rendering engine primarily designed for animation and visual effects.
-	pkgver = 2.1.0.beta.r137.g802dbf67b
+	pkgver = 2.1.0.beta.r267.gabb612f03
 	pkgrel = 1
 	epoch = 1
 	url = https://appleseedhq.net
@@ -17,8 +17,8 @@ pkgbase = appleseed-git
 	depends = boost
 	depends = openexr
 	depends = opencolorio
-	depends = openimageio
-	depends = openshadinglanguage>=1.8.9
+	depends = openimageio=2.1.19.0
+	depends = openshadinglanguage=1.10.13
 	depends = xerces-c
 	depends = zlib
 	provides = appleseed
