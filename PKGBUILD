@@ -2,7 +2,7 @@
 
 pkgname=blucontrol
 pkgver=0.2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Configurable blue light filter"
 url="https://github.com/jumper149/${pkgname}"
 license=('custom:BSD3')
@@ -19,6 +19,9 @@ depends=(
   'haskell-x11'
   'libx11'
   'libxrandr'
+)
+makedepends=(
+  'haskell-hspec'
 )
 source=(
   "${url}/archive/v${pkgver}.tar.gz"
