@@ -1,6 +1,6 @@
 pkgbase = carla-bridges-win
 	pkgdesc = Carla windows bridges
-	pkgver = 2.1
+	pkgver = 2.2.0RC2
 	pkgrel = 1
 	url = https://kx.studio/Applications:Carla
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = carla-bridges-win
 	provides = carla-bridges-win
 	conflicts = carla-bridges-win32
 	conflicts = carla-bridges-win64
-	source = carla-bridges-win::https://github.com/falkTX/Carla/releases/download/v2.1/Carla_2.1-linux64.tar.xz
-	sha256sums = 2a6d07da633facc375a66a31ca052358fe29b69b24fe177f6041478c14eec36f
+	source = carla-bridges-win::https://github.com/falkTX/Carla/releases/download/v2.2.0-RC2/Carla_2.2.0-RC2-linux64.tar.xz
+	sha256sums = 0472aa002a8edcc2b41c74be1741c9d8401381b57d1d90e7b7a197fc1fde9d64
 
 pkgname = carla-bridges-win
 
