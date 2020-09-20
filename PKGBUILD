@@ -4,9 +4,9 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
 pkgname=mingw-w64-glib2
-pkgver=2.64.4
+pkgver=2.66.0
 pkgrel=1
-_commit=551bd5c1d1db1aa10d71acb9cde6a088a374d8bb  # tags/2.64.4^0
+_commit=c2c12e42920d6e06c23c87398996827e53c1fc72  # tags/2.66.0^0
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
 depends=(mingw-w64-libffi mingw-w64-pcre mingw-w64-gettext mingw-w64-zlib)
@@ -18,7 +18,7 @@ source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
   "0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch"
   "glib-prefer-constructors-over-DllMain.patch")
 sha256sums=('SKIP'
-            '74ae54ada7dce2c95f197e5e389b61100e622b8a9ae9cd8e2dfa681138abade8'
+            'f24badc8897bdcf36949f4eef0a0c6e2c26823e8f0400b4dd44a5553f4bdfae0'
             '3c9848916492435852e4e27bee608a0b2146e146c40f889d725acffd9409aae8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
