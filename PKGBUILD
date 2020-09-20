@@ -4,7 +4,7 @@
 
 pkgname=('python-pymupdf')
 _name='PyMuPDF'
-pkgver=1.17.6
+pkgver=1.17.7
 pkgrel=1
 pkgdesc='Python bindings for MuPDF'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('python' 'libjpeg-turbo' 'jbig2dec' 'openjpeg2'  'freetype2')
 makedepends=('python-setuptools' 'libmupdf-pymupdf>=1.17' 'libmupdf-pymupdf<1.18' 'swig' 'python-sphinx' 'python-sphinx_rtd_theme')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pymupdf/PyMuPDF/archive/${pkgver}.tar.gz")
-sha256sums=('cb0d78e5f80a9f242191cf64c30724b545f11162458136d23a08c16854ce9257')
+sha256sums=('bbdc4c5fc18dec8122f13fdeb75c90cb8fee13d4fd37c9397ac68bb096129fc1')
 
 prepare() {
   cd "${_name}-${pkgver}"
