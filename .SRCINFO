@@ -1,0 +1,19 @@
+pkgbase = libxcursor-git
+	pkgdesc = X cursor management library
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = x86_64
+	license = custom
+	makedepends = xorg-util-macros
+	depends = libxfixes
+	depends = libxrender
+	optdepends = gnome-themes-standard: fallback icon theme
+	provides = libxcursor
+	conflicts = libxcursor
+	backup = usr/share/icons/default/index.theme
+	source = git+https://gitlab.freedesktop.org/xorg/lib/libxcursor
+	sha512sums = SKIP
+
+pkgname = libxcursor-git
+
