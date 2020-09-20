@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=NightPDF
+Comment=Dark mode PDF reader
+Exec=nightpdf
+Icon=nightpdf
+Terminal=false
+Type=Application
+Categories=Office
+MimeType=application/pdf;
