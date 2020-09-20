@@ -1,16 +1,18 @@
 pkgbase = gestures
-	pkgdesc = A minimal Gtk+ GUI app for libinput-gestures
-	pkgver = 0.2.2
-	pkgrel = 3
+	pkgdesc = Modern, minimal GUI app for libinput-gestures
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://gitlab.com/cunidev/gestures
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
+	depends = hicolor-icon-theme
+	depends = libinput-gestures
 	depends = python
 	depends = python-gobject
-	depends = libinput-gestures
-	source = https://gitlab.com/cunidev/gestures/-/archive/0.2.2/gestures-0.2.2.tar.gz
-	sha256sums = d01a8dc98f69fab5267ed5e23947be2e362b2c98aaad2b722b451348215d9426
+	optdepends = xdotool: Simulate keyboard input or mouse activity
+	source = https://gitlab.com/cunidev/gestures/-/archive/0.2.3/gestures-0.2.3.tar.gz
+	sha256sums = 5ddfa9da49d154b8031093decd14891442e9c6b6ff5424ffa676ff1bc94bc929
 
 pkgname = gestures
 
