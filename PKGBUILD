@@ -8,7 +8,7 @@ pkgdesc="A library for portable low-level access to a video framebuffer, audio o
 arch=('x86_64')
 url="https://www.libsdl.org"
 license=('MIT')
-depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'libibus' 'hidapi')
+depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'libibus' 'hidapi' 'libxxf86vm')
 makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
              'wayland-protocols' 'ibus' 'fcitx' 'libxss' 'cmake' 'jack' 'ninja' 'mercurial' 'libxxf86vm')
 optdepends=('alsa-lib: ALSA audio driver'
