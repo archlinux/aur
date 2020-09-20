@@ -1,0 +1,19 @@
+pkgbase = lib32-libpciaccess-git
+	pkgdesc = X11 PCI access library (32-bit
+	pkgver = 0.16
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = x86_64
+	license = custom
+	makedepends = gcc-multilib
+	makedepends = pkgconfig
+	makedepends = xorg-util-macros
+	depends = lib32-glibc
+	depends = libpciaccess
+	provides = lib32-libpciaccess
+	conflicts = lib32-libpciaccess
+	source = git+https://gitlab.freedesktop.org/xorg/lib/libpciaccess
+	sha512sums = SKIP
+
+pkgname = lib32-libpciaccess-git
+
