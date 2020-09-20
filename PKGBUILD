@@ -4,7 +4,7 @@ _pkgsrcname=simple-line-icons
 _pkgmaintainer=thesabbir
 _versionprefix=v
 pkgver=2.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and Minimal Line Icons "
 pkgname=ttf-simple-line-icons
 arch=(any)
@@ -16,4 +16,5 @@ md5sums=('e4179283cdcce2038e5f286616feb058')
 package() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}/fonts"
   install -D -m644 "Simple-Line-Icons.ttf" "$pkgdir/usr/share/fonts/TTF/Simple-Line-Icons.ttf"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
