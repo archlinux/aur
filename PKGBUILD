@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd libxcursor
-  ./configure --prefix=/usr --sysconfdir=/etc --disable-static
+  ./autogen.sh --prefix=/usr --sysconfdir=/etc --disable-static
   make
 }
 
@@ -35,7 +35,6 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   install -m755 -d "${pkgdir}/usr/share/icons/default"
-  install -m644 "$srcdir"/index.theme "${pkgdir}/usr/share/icons/default/"
 
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
