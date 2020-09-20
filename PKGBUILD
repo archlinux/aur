@@ -1,9 +1,10 @@
-# Maintainer: Det <nimetonmaili g-mail>
+# Maintainer: Carson Rueter <roachh@protonmail.com>
+# Contributor: Det <nimetonmaili g-mail>
 # Contributor: Jose Riha <jose1711 gmail com>
 # Contributor: max1m <keyworker@rambler.ru>
 
 pkgname=utorrent
-pkgver=3.5.4.44590
+pkgver=3.5.5.45776
 pkgrel=1
 pkgdesc="The world's most popular BitTorrent client (Wine version)"
 arch=('x86_64')
@@ -11,7 +12,7 @@ url="https://www.utorrent.com/"
 license=('freeware')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'wine')
 install=$pkgname.install
-source=("uTorrent-$pkgver.exe::http://download-new.utorrent.com/endpoint/utorrent/os/windows/track/stable/"
+source=("uTorrent.exe::http://download-new.utorrent.com/endpoint/utorrent/os/windows/track/stable/"
         'uTorrent'
         'uTorrent.desktop'
          uTorrent_{16,24,32,48,128,256}.png)
