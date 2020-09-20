@@ -1,6 +1,6 @@
 # Maintainer: John Downey <jdowney@gmail.com>
 pkgname=nsscache
-pkgver=0.37
+pkgver=0.39
 pkgrel=1
 epoch=
 pkgdesc="Asynchronously synchronise local NSS databases with remote directory services"
@@ -8,10 +8,10 @@ arch=("x86_64")
 url="https://github.com/google/nsscache"
 license=("GPL")
 groups=()
-depends=("python2" "python2-pycurl" "python2-ldap")
+depends=("python" "python-bsddb" "python-pycurl" "python-ldap")
 makedepends=()
 checkdepends=()
-optdepends=("python2-boto3")
+optdepends=("python-boto3: Fetch source data from S3")
 provides=()
 conflicts=()
 replaces=()
@@ -19,21 +19,17 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/google/nsscache/archive/version/0.37.tar.gz" "nsscache-fix-config-path.patch")
+source=("https://github.com/google/nsscache/archive/version/${pkgver}.tar.gz")
 noextract=()
-sha256sums=("fab735cabb6ea6e46ce2c52e2c9ea9c2938057fa9e3992b3509f31cf5948fff4" "1212644452638f75fc6a3ea16c7eb8209d93ba608c9dc34e898fafd3df0630a9")
+sha256sums=("3eb0b2a4c163d2c2fd3748e23fc6296f253d9be0a74a1fe9c0fe3191f4c2638d")
 validpgpkeys=()
-
-prepare() {
-  patch -Np1 -i "${srcdir}/nsscache-fix-config-path.patch"
-}
 
 build() {
   cd "$pkgname-version-$pkgver"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "$pkgname-version-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
