@@ -1,4 +1,4 @@
-# $Id$
+# Maintainer: Jack Rubacha  <rubacha.jack03@gmail.com>
 # Mainainter: Paul Nicholson <brenix@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -8,13 +8,13 @@
 # Contributor: atweiden <archbaum@gmail.com>
 
 pkgname=ansible-git
-pkgver=v2.7.0.a1.r3199.g2721ed260e
+pkgver=r50663.e6e98407178
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
 url='https://www.ansible.com'
 license=('GPL3')
-depends=('python' 'python-yaml' 'python-paramiko' 'python-jinja' 'python-crypto')
+depends=('python' 'python-yaml' 'python-paramiko' 'python-jinja')
 provides=('ansible' 'python-ansible')
 replaces=('ansible' 'python-ansible')
 conflicts=('ansible' 'python-ansible')
@@ -28,18 +28,16 @@ optdepends=('sshpass: for ssh connections with password'
             'python-ovirt-engine-sdk: ovirt support'
             'python-boto3: aws_s3 module'
             'python-jmespath: json_query support'
+            'python-ldap: ldap support'
             'acme-tiny: openssl_certificate module')
-makedepends=('asciidoc' 'fakeroot' 'python-setuptools' 'python-sphinx')
+makedepends=('fakeroot' 'python-setuptools' 'python-straight.plugin' 'git' 'python-sphinx')
 backup=('etc/ansible/ansible.cfg')
 source=($pkgname::git+https://github.com/ansible/ansible.git)
 sha512sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
