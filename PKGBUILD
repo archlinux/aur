@@ -1,6 +1,9 @@
 # Maintainer: Carson Rueter <roachh@protonmail.com>
+# Contributor: Jerome Leclanche <jerome@leclan.ch>
+# Contributor: Marcin Mikołajczak <me@m4sk.in>
+
 _pkgname=lxqt-desktop
-pkgname=$_pkgname-git
+pkgname="$_pkgname-git"
 pkgver=0.15.0
 pkgrel=1
 pkgdesc="The LXQt desktop"
