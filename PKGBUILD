@@ -15,6 +15,7 @@ depends=(
 	'libhandy1'
 	'python-flask'
 	'python-praw'
+	'python-gobject'
 )
 makedepends=('meson' 'git')
 checkdepends=()
