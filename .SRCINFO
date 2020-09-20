@@ -1,6 +1,6 @@
 pkgbase = python-pymupdf
 	pkgdesc = Python bindings for MuPDF
-	pkgver = 1.17.5
+	pkgver = 1.17.6
 	pkgrel = 1
 	url = https://github.com/pymupdf/PyMuPDF
 	arch = x86_64
@@ -8,13 +8,16 @@ pkgbase = python-pymupdf
 	makedepends = python-setuptools
 	makedepends = libmupdf-pymupdf>=1.17
 	makedepends = libmupdf-pymupdf<1.18
+	makedepends = swig
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	depends = python
 	depends = libjpeg-turbo
 	depends = jbig2dec
 	depends = openjpeg2
 	depends = freetype2
-	source = https://files.pythonhosted.org/packages/source/P/PyMuPDF/PyMuPDF-1.17.5.tar.gz
-	sha256sums = ddec02c4dd1c2e0ead4d61cd97b52e725d643602f1f7832b5016190f5c653add
+	source = python-pymupdf-1.17.6.tar.gz::https://github.com/pymupdf/PyMuPDF/archive/1.17.6.tar.gz
+	sha256sums = cb0d78e5f80a9f242191cf64c30724b545f11162458136d23a08c16854ce9257
 
 pkgname = python-pymupdf
 
