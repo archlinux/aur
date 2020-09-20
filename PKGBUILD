@@ -3,7 +3,7 @@
 pkgname=pufferpanel-bin
 _pkgname=pufferpanel
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PufferPanel: A web-base game management system (binary version)."
 arch=('x86_64')
 url="https://github.com/PufferPanel/PufferPanel"
@@ -26,7 +26,7 @@ package() {
   install -D "${srcdir}/pufferpanel" "${pkgdir}/usr/bin/pufferpanel" 
   install -D "${srcdir}/config.linux.json" "${pkgdir}/etc/pufferpanel/config.json" 
   mkdir -p ${pkgdir}/var/www/${pkg}/
-  cp -R "${srcdir}/www/" "${pkgdir}/var/"
+  cp -R ${srcdir}/www/* "${pkgdir}/var/www/${pkg}"
   cp -R "${srcdir}/email/" "${pkgdir}/etc/${pkg}/"
   install -D "${srcdir}/pufferpanel.service" "${pkgdir}/etc/systemd/system/pufferpanel.service" 
   install -D -m 644 "${srcdir}/../pufferpanel.sysusers" "${pkgdir}/usr/lib/sysusers.d/pufferpanel.conf"
