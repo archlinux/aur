@@ -1,0 +1,22 @@
+diff -Naur qtfm-6.2.0.orig/libfm/iconlist.cpp qtfm-6.2.0.new/libfm/iconlist.cpp
+--- qtfm-6.2.0.orig/libfm/iconlist.cpp	2019-06-04 07:47:00.000000000 +0200
++++ qtfm-6.2.0.new/libfm/iconlist.cpp	2020-08-02 17:47:04.899432194 +0200
+@@ -1,5 +1,7 @@
+ #include "iconlist.h"
+ 
++#include <QPainterPath>
++
+ QSize IconListDelegate::sizeHint(const QStyleOptionViewItem &option,
+                                  const QModelIndex &index) const
+ {
+diff -Naur qtfm-6.2.0.orig/libfm/iconview.cpp qtfm-6.2.0.new/libfm/iconview.cpp
+--- qtfm-6.2.0.orig/libfm/iconview.cpp	2019-06-04 07:47:00.000000000 +0200
++++ qtfm-6.2.0.new/libfm/iconview.cpp	2020-08-02 17:46:53.629482772 +0200
+@@ -1,5 +1,7 @@
+ #include "iconview.h"
+ 
++#include <QPainterPath>
++
+ bool IconViewDelegate::eventFilter(QObject *object,
+                                    QEvent *event)
+ {
