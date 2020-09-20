@@ -1,0 +1,17 @@
+pkgbase = mousemode
+	pkgdesc = An intuitive, home-row mouse replacement
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/randoragon/mousemode
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	depends = libx11
+	depends = libxtst
+	depends = xorgproto
+	source = git+https://github.com/randoragon/mousemode
+	md5sums = SKIP
+
+pkgname = mousemode
+
