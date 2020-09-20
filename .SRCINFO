@@ -9,7 +9,7 @@ pkgbase = mystuff
 	depends = gtk3
 	options = !emptydirs
 	source = http://www.kornelix.net/downloads/downloads/mystuff-3.3.tar.gz
-	sha256sums = 8e8523094be5226d0a8d4b8984570a2ce9b911a66f4dc99fc836fb43e47c1295
+	sha256sums = 07fb0e7393d3fad8383ce440cce6556032bb247e4acd46beee794c640db431e6
 
 pkgname = mystuff
 
