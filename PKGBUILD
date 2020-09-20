@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://www.libsdl.org"
 license=('MIT')
 depends=('lib32-glibc' 'lib32-libxext' 'lib32-libxrender' 'lib32-libx11' 'lib32-libgl'
-         'lib32-libxcursor' 'sdl2')
+         'lib32-libxcursor' 'sdl2' 'lib32-libxxf86vm')
 makedepends=('lib32-alsa-lib' 'lib32-mesa' 'lib32-libxrandr'
              'lib32-libxinerama' 'lib32-libxkbcommon' 'lib32-libxxf86vm'
              'lib32-libxss' 'cmake' 'mercurial')
