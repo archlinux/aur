@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.32.0.r723.g49f5c9b482
+pkgver=0.32.0.r734.g7831e52238
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -342,7 +342,6 @@ prepare() {
     '--enable-gbm'
     '--enable-gl'
     '--enable-gl-wayland'
-    '--enable-gl-x11'
     '--enable-html-build'
     '--enable-iconv'
     '--enable-jack'
@@ -369,7 +368,6 @@ prepare() {
     '--enable-vaapi-x11'
     '--enable-vaapi-x-egl'
     '--enable-vdpau'
-    '--enable-vdpau-gl-x11'
     '--enable-vulkan'
     '--enable-wayland'
     '--enable-wayland-protocols'
@@ -378,6 +376,11 @@ prepare() {
     '--enable-xv'
     '--enable-zimg'
     '--enable-zlib'
+  )
+
+  local _legacy_mpv_options=(
+    '--enable-gl-x11'
+    '--enable-vdpau-gl-x11'
   )
 
   local _ffmpeg_cflags=''
