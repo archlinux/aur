@@ -8,7 +8,7 @@ _pkgmaintainer=file-icons
 _pkgdestdirname=atom-file-icons
 _versionprefix=v
 pkgver=2.1.43
-pkgrel=2
+pkgrel=3
 pkgdesc="Atom file-specific icons for improved visual grepping."
 pkgname=ttf-${_pkgdestdirname}
 arch=(any)
@@ -21,5 +21,5 @@ package() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}/"
   install -d $pkgdir/usr/share/fonts/TTF/
   install -m644 fonts/file-icons.ttf "$pkgdir/usr/share/fonts/TTF/${_pkgdestdirname}.ttf"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname"
+  install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
