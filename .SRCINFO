@@ -9,6 +9,7 @@ pkgbase = revelation
 	depends = python-gobject
 	depends = libpwquality
 	depends = python-pycryptodomex
+	depends = pkg-config
 	source = https://github.com/mikelolasagasti/revelation/releases/download/revelation-0.5.3/revelation-0.5.3.tar.xz
 	sha256sums = 8976644b8904db179f5927ea9045c5082faefdfecf079845ca081321935bdfac
 
