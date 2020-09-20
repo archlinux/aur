@@ -1,4 +1,4 @@
-# Maintainer: Alexis Janon <kardyne+aur@gmail.com>
+# Maintainer: Alexis Janon <kardyne -at- gmail -dot- com>
 
 _pkgsrcname=unicons
 _pkgmaintainer=iconscout
