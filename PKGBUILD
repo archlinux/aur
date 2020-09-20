@@ -1,7 +1,7 @@
 # Maintainer: Kevin Andriessens <kevin@kelaun.be>
 # Contributor: layday <layday@protonmail.com>
 pkgname='instawow'
-pkgver='1.14.3'
+pkgver='1.14.4'
 pkgrel=1
 pkgdesc="Package manager for World of Warcraft"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('tar' 'python-setuptools' 'python-setuptools-scm' 'python-toml')
 optdepends=('python-aiohttp_rpc: server support')
 checkdepends=('python-pytest>=6.0.1' 'python-pytest-asyncio' 'python-aresponses')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('be4d8ef9e1c50829195853bfefb257b34c743012af43e747b0ebebe6e1d5589a')
+sha256sums=('f5382550ca1055b922bb61d7cd8a900773129f7475b8dffe0a48ec24d8b43d7c')
 
 build() {
 	cd "$pkgname-$pkgver"
