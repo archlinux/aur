@@ -1,8 +1,8 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 
 pkgname=viu
-pkgver=1.0.0
-_pkgver=1.0
+pkgver=1.1.0
+_pkgver=1.1
 pkgrel=1
 pkgdesc='A command-line application to view images from the terminal written in Rust'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=()
 conflicts=('viu-git')
 makedepends=('cargo')
 source=("$pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz")
-sha256sums=('9e224808a96ec1e01b29a25e99135850a593b38dbbd08d4ae5205236a50e7b41')
+sha256sums=('22699390fd9501394e10fcd81a3d6a8633e9b7c9d2083529c7edbae27229bbc6')
 
 build() {
   cd "$pkgname-$_pkgver"
