@@ -8,7 +8,7 @@ url="http://prime-rogue.net/"
 license=('GPL')
 depends=('ncurses' 'gcc-libs' 'libsigsegv' 'lua51' 'sdl_net' 'sdl_mixer')
 makedepends=('fpc')  # whhhhyyyyy
-source=("http://prime-rogue.net/game/prime_src-$pkgver.tar.bz2")
+source=("https://pkgbuild.com/~kkeen/sources/prime_src-$pkgver.tar.bz2")
 md5sums=('321beb1cff617d41b37ca33968512442')
 
 build()
