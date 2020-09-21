@@ -1,6 +1,6 @@
 # Maintainer: Everett B. everettbutts@hotmail.com
 pkgname=natural-wallpaper-collection-git
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A collection of backgrounds/wallpapers. Themed around natural colors and subject matter."
 arch=('any')
