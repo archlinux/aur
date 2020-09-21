@@ -1,0 +1,13 @@
+pkgbase = python-magcode-core
+	pkgdesc = MAG Code Core utility module
+	pkgver = 1.4.13
+	pkgrel = 1
+	url = https://github.com/grantma/py-magcode-core
+	arch = any
+	license = MIT
+	depends = python3
+	source = https://github.com/grantma/py-magcode-core/archive/v1.4.13.zip
+	sha256sums = 470367b6c54bd306051462b4dd1eda8078f2b29538e92cd83eb3a19dc65a5e11
+
+pkgname = python-magcode-core
+
