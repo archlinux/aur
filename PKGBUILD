@@ -1,8 +1,8 @@
 # Maintainer: Max Shaughnessy <max@mshaugh.com>
 
 pkgname=dnscontrol-bin
-pkgver=3.2.0
-pkgrel=3
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL (binary release)"
 arch=('x86_64')
 url="https://stackexchange.github.io/dnscontrol/"
@@ -11,7 +11,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname}-${pkgver}::https://github.com/StackExchange/dnscontrol/releases/download/v${pkgver}/dnscontrol-Linux"
         "LICENSE::https://raw.githubusercontent.com/StackExchange/dnscontrol/v${pkgver}/LICENSE")
-sha512sums=('777b1b204256eb0c29e0d117de63a2f3a3fe189d6ffd5f8d308464422c98402c01e3c63b48e468b7e0d098273b5e1e2af9e99d560f182084d47866504074064c'
+sha512sums=('97ea1432686a2aa8f2f89a3cb7166611a7e2b06fcbab3e24e39fc606363df5489e4d3272c8a8eead0bdf01c7878b1760ba09a96d20aaff96598479f59e895be1'
             'd268dfcfce2ffa0f1abef5334207bdd4c142a0c069d7a5a5d4863d6f2ab57fde740fe6e6270225479de564bfde78891a131d879c3d2ab29708c63f786c0e009e')
 
 package() {
