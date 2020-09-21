@@ -1,5 +1,5 @@
 # Maintainer: Mees Luten <mees [dot] luten [at] gmail [dot] com>
-
+# This package is build from a non-release version, going to change soon.
 pkgname=gr-hrpt
 pkgver=0.1
 pkgrel=2
