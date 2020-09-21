@@ -1,0 +1,15 @@
+pkgbase = hkd-git
+	pkgdesc = hkd allows to define system-wide hotkeys independent from the graphical session
+	pkgver = r99.213db3c
+	pkgrel = 1
+	url = https://git.alemauri.eu/alema/hkd
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = hkd
+	conflicts = hkd
+	source = git+https://git.alemauri.eu/alema/hkd
+	sha512sums = SKIP
+
+pkgname = hkd-git
+
