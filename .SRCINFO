@@ -17,7 +17,7 @@ pkgbase = zsnapd
 	backup = etc/zsnapd/process.conf
 	backup = etc/zsnapd/template.conf
 	backup = etc/zsnapd/zsnapd-rcmd.conf
-	source = https://github.com/genofire/zsnapd/archive/master.zip
+	source = https://github.com/genofire/zsnapd/archive/patch-2.zip
 	sha256sums = SKIP
 
 pkgname = zsnapd
