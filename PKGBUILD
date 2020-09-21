@@ -37,7 +37,7 @@ build() {
 
 package_mhwd-garuda-git() {
   pkgdesc="mhwd-garuda(manjaro's mhwd backported to archlinux with additional features and limited to only dkms drivers)"
-  depends=('hwinfo' 'mesa' 'mhwd-db-garuda-git' 'uvesafb-dkms' 'pacman')
+  depends=('hwinfo' 'mesa' 'mhwd-db-garuda-git' 'pacman')
   provides=("mhwd" "mhwd-garuda")
   conflicts=("mhwd" "mhwd-garuda")
   replaces=("mhwd-garuda")

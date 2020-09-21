@@ -18,7 +18,6 @@ pkgname = mhwd-garuda-git
 	depends = hwinfo
 	depends = mesa
 	depends = mhwd-db-garuda-git
-	depends = uvesafb-dkms
 	depends = pacman
 	optdepends = lib32-mesa: for 32bit libgl support
 	provides = mhwd
