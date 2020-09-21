@@ -9,12 +9,13 @@ url="https://gitlab.altillimity.com/altillimity/gr-hrpt"
 license=('GPL3')
 depends=(gnuradio liborcus)
 makedepends=(boost boost-libs cmake)
-source=("https://gitlab.altillimity.com/altillimity/gr-hrpt/-/archive/master/gr-hrpt-master.tar.gz")
-sha256sums=('c1e730d3717c73037b8ceee3fce10320cc06d0da8225a16591caa543bd9abf6f')
-
+#source=("https://gitlab.altillimity.com/altillimity/gr-hrpt/-/archive/master/gr-hrpt-master.tar.gz")
+#sha256sums=('c1e730d3717c73037b8ceee3fce10320cc06d0da8225a16591caa543bd9abf6f')
+source=("$pkgname"::'git+http://gitlab.altillimity.com/altillimity/gr-hrpt.git')
+sha256sums=("SKIP")
 prepare() {
-	rm -f -r $pkgname
-	mv gr-hrpt-master $pkgname
+#	rm -f -r $pkgname
+#	mv gr-hrpt-master $pkgname
 	mkdir -p "$pkgname"/build
 }
 
