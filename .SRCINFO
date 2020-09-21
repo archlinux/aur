@@ -17,6 +17,9 @@ pkgbase = stratagus-git
 	depends = libmikmod
 	depends = sqlite
 	depends = tolua++
+	provides = stratagus-git
+	provides = stratagus
+	provides = stratagus-gameutils.h
 	source = stratagus-git::git://github.com/Wargus/stratagus.git
 	md5sums = SKIP
 

@@ -12,7 +12,10 @@ depends=('libgl' 'sdl' 'libpng' 'libmng' 'libtheora' 'libmikmod' 'sqlite' 'tolua
 makedepends=('git' 'cmake' 'glu')
 source=("${pkgname}::git://github.com/Wargus/stratagus.git")
 md5sums=('SKIP')
-
+provides=(${pkgname}
+	  'stratagus'
+	  'stratagus-gameutils.h'
+)
 pkgver() {
   cd "$srcdir/${pkgname}"
   
@@ -28,7 +31,7 @@ build() {
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DGAMEDIR=/usr/bin \
-  -DSBINDIR=/usr/bin \
+  -DSBINDIr=/usr/bin \
   -DLUA_INCLUDE_DIR=/usr/include/lua5.1 \
   -Bbuild
 
