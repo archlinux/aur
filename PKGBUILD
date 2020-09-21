@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/xdrie/niacop"
 license=('GPL3')
 depends=('xprintidle' 'xorg-xprop' 'xdotool' 'xorg-xinput' 'xorg-xmodmap')
-makedepends=('git' 'dotnet-sdk>=3.1.0.sdk100')
+makedepends=('clang' 'dotnet-sdk>=3.1.0.sdk100')
 optdepends=()
 source=("$pkgname::git+https://github.com/xdrie/niacop.git")
 sha256sums=('SKIP')
