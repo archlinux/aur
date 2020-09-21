@@ -1,8 +1,0 @@
---- etc/arno-iptables-firewall/firewall.conf.orig	2015-10-01 16:58:12.000000000 +0200
-+++ etc/arno-iptables-firewall/firewall.conf	2015-11-14 13:05:29.748859879 +0100
-@@ -235 +235 @@
--ENV_FILE="/usr/local/share/arno-iptables-firewall/environment"
-+ENV_FILE="/usr/share/arno-iptables-firewall/environment"
-@@ -239 +239 @@
--PLUGIN_BIN_PATH="/usr/local/share/arno-iptables-firewall/plugins"
-+PLUGIN_BIN_PATH="/usr/share/arno-iptables-firewall/plugins"

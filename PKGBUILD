@@ -3,13 +3,12 @@
 
 pkgname=arno-iptables-firewall
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure stateful firewall for both single and multi-homed machine"
 arch=('any')
 url="https://github.com/arno-iptables-firewall/aif/"
 license=('GPL')
 depends=('iptables' 'iproute2')
-makedepends=('patch')
 backup=(etc/${pkgname}/firewall.conf
         etc/${pkgname}/custom-rules
         etc/${pkgname}/plugins/dmz-dnat.conf
@@ -33,16 +32,8 @@ backup=(etc/${pkgname}/firewall.conf
         etc/${pkgname}/plugins/traffic-shaper.conf
         etc/${pkgname}/plugins/transparent-dnat.conf
         etc/${pkgname}/plugins/transparent-proxy.conf)
-source=($pkgname-$pkgver.tar.gz::https://github.com/arno-iptables-firewall/aif/archive/${pkgver}.tar.gz
-        $pkgname.patch)
-sha256sums=('6f5ae0e671b8ded8eb80efa48d4d0aa50324acde6ffdc4b3d34c7f8cc4fce598'
-            'fbac95bced8565b00f5ff7b403579b1aaf7d386deb61c0f4a9acf50408a8200d')
-
-prepare() {
-  cd "${srcdir}"/aif-${pkgver}
-
-  patch -Np0 -i "${srcdir}"/${pkgname}.patch
-}
+source=($pkgname-$pkgver.tar.gz::https://github.com/arno-iptables-firewall/aif/archive/${pkgver}.tar.gz)
+sha256sums=('6f5ae0e671b8ded8eb80efa48d4d0aa50324acde6ffdc4b3d34c7f8cc4fce598')
 
 package() {
   cd "${srcdir}"/aif-${pkgver}
