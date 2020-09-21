@@ -2,7 +2,7 @@
 # Contributor: Christof "chdorner" Dorner <https://github.com/chdorner>
 
 pkgname=riemann
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Monitors distributed systems"
 arch=('any')
@@ -19,7 +19,7 @@ source=("https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.service")
 backup=("etc/$pkgname/$pkgname.config")
-sha256sums=('c13aae3f969189496baa2b51c3f863dce171733d66881722e2c8b26f97bef66f'
+sha256sums=('f6f3fbe0770bdda9ad1e2bb74498802633ee7652e4c5b9c3c6c5b0c55ab55d02'
             '30c09cf2432f5cc49cbd77576c6fc3251495b2862e51d81af2ab71109c2706f8'
             'c62dfdd9c723e0717d5da33dc85def9a9a8f623f671aafa9505df3790bb4d2ae'
             '18e21c05c351a8bcbd55b3a454bceb67b7dcfe1385e7cca6936fe63640c44303'
