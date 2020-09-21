@@ -7,10 +7,8 @@ pkgbase = wuzz
 	arch = i686
 	license = AGPL3
 	makedepends = go
-	makedepends = git
-	options = !strip
-	options = !emptydirs
-	source = https://github.com/asciimoo/wuzz/archive/v0.4.0.tar.gz
+	depends = glibc
+	source = wuzz-0.4.0.tar.gz::https://github.com/asciimoo/wuzz/archive/v0.4.0.tar.gz
 	sha256sums = acf8e82481740d1403b744c58918b9089128d91c3c6edc15b76b6e1c97ead645
 
 pkgname = wuzz
