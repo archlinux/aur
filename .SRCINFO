@@ -1,7 +1,7 @@
 pkgbase = eclipse
 	pkgdesc = Highly extensible IDE
 	pkgver = 4.17
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://eclipse.org
 	arch = x86_64
@@ -28,26 +28,33 @@ pkgbase = eclipse
 	sha256sums_x86_64 = b5bddcd1bf8c602f5304e400d199e9377d6d47fd61f99cbec95e7246aa184d5c
 	sha256sums_x86_64 = 896df756643ca2cf17803ffde785181f5660fc23148957b58d2e853b4a88f284
 
-pkgname = eclipse-common
-	pkgdesc = Highly extensible IDE (common files)
+pkgname = eclipse-java
 	depends = java-environment>=8
 	depends = webkit2gtk
 	depends = unzip
 
-pkgname = eclipse-java
-	depends = eclipse-common
-
 pkgname = eclipse-jee
-	depends = eclipse-common
+	depends = java-environment>=8
+	depends = webkit2gtk
+	depends = unzip
 
 pkgname = eclipse-cpp
-	depends = eclipse-common
+	depends = java-environment>=8
+	depends = webkit2gtk
+	depends = unzip
 
 pkgname = eclipse-php
-	depends = eclipse-common
+	depends = java-environment>=8
+	depends = webkit2gtk
+	depends = unzip
 
 pkgname = eclipse-javascript
-	depends = eclipse-common
+	depends = java-environment>=8
+	depends = webkit2gtk
+	depends = unzip
 
 pkgname = eclipse-rust
-	depends = eclipse-common
+	depends = java-environment>=8
+	depends = webkit2gtk
+	depends = unzip
+

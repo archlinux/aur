@@ -6,10 +6,16 @@
 # Contributor: Andreas W. Hauser <andy-aur@splashground.de>
 # Contributor: Marco Crosio <marco.crosio@gmail.com>
 
+# Toggle this if you're building outside of the AUR, for a repo.
+AUR_BUILD=true
+
 pkgbase=eclipse
-pkgname=(eclipse-{common,java,jee,cpp,php,javascript,rust})
+pkgname=(eclipse-{java,jee,cpp,php,javascript,rust})
+if [ "$AUR_BUILD" = false ]; then
+pkgname+=(eclipse-common)
+fi
 pkgver=4.17
-pkgrel=1
+pkgrel=2
 epoch=2
 _release=2020-09/R
 pkgdesc="Highly extensible IDE"
@@ -54,9 +60,11 @@ prepare() {
 }
 
 build() {
+  if [ "$AUR_BUILD" = false ]; then
   mkdir eclipse-common/dropins
   touch eclipse-common/dropins/.keep
   ./commonify --identical ${pkgname[@]}
+  fi
 }
 
 package_eclipse-common() {
@@ -81,7 +89,10 @@ _package() {
   esac
 
   pkgdesc+=" for $variant"
+  depends=("java-environment>=8" webkit2gtk unzip)
+  if [ "$AUR_BUILD" = false ]; then
   depends=("eclipse-common=$pkgver-$pkgrel" bash)
+  fi
   provides=("eclipse=$pkgver-$pkgrel")
   conflicts=(eclipse)
 
@@ -106,8 +117,10 @@ Categories=Development;IDE;Java;
 StartupNotify=true
 END
 
+  if [ "$AUR_BUILD" = false ]; then
   for i in 16 22 24 32 48 64 128 256 512 1024; do
     install -Dm644 eclipse-common/plugins/org.eclipse.platform_*/eclipse$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x$i/apps/eclipse.png"
   done
+  fi
 }
