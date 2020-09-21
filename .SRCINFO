@@ -1,0 +1,24 @@
+pkgbase = zsnapd
+	pkgdesc = ZFS Snapshot Daemon
+	pkgver = 0.8.11c
+	pkgrel = 1
+	url = https://github.com/grantma/zsnapd
+	install = zsnapd.install
+	arch = any
+	license = MIT
+	depends = zfs
+	depends = mbuffer
+	depends = python3
+	depends = python-setproctitle
+	depends = python-psutil
+	depends = python-magcode-core
+	optdepends = openssh: transfer snapshots
+	backup = etc/zsnapd/dataset.conf
+	backup = etc/zsnapd/process.conf
+	backup = etc/zsnapd/template.conf
+	backup = etc/zsnapd/zsnapd-rcmd.conf
+	source = https://github.com/genofire/zsnapd/archive/master.zip
+	sha256sums = SKIP
+
+pkgname = zsnapd
+

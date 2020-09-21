@@ -1,0 +1,16 @@
+post_install() {
+	systemctl daemon-reload
+}
+
+post_upgrade() {
+	systemctl daemon-reload
+	systemctl restart zsnapd
+}
+
+pre_remove() {
+	systemctl disable zsnapd
+}
+
+post_remove() {
+	systemctl daemon-reload
+}
