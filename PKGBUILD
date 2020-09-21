@@ -4,7 +4,7 @@
 
 pkgname=miniflux
 pkgver=2.0.23
-pkgrel=3
+pkgrel=4
 pkgdesc='Minimalist Feed Reader'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://miniflux.app'
