@@ -1,3 +1,17 @@
+2020-09-21 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.3.0.6-1:
+    [!] General code refactor for implementing C# 8.0 nullable references. This change might require some third-party plugins to be recompiled, due to misc API changes that had to be applied in the process (#1543).
+    [!] ASF now supports specifying custom headers and cookies with a WebBrowser request - this is a breaking API change which might require some third-party plugins to be recompiled with additional code fixes (#1964).
+    [!] ASF will no longer retry requests upon receiving 5xx strError response during accepting a trade offer. This change slightly modifies internal API of (...)WithSession() functions, which may require plugin recompilation of third-party plugins (#1832).
+    AdditionalProperties field of Steam.Asset has been changed to AdditionalPropertiesReadOnly to allow proper extension deserialization. If you're a plugin developer and using this field, please adapt your usage (#1958).
+    ASF will now use a GET request for 301 and 302 redirections (#1963).
+    Added encrypt command (#1950).
+    Fixed ASF not accepting case-insensitive 2FA codes (regression).
+    Fixed a possibility of level command to produce response for unauthorized users (#1957).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    [Deprecation] Endpoints deprecated in the previous release have been removed.
 2020-08-19 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.2.4.0-1:
     Added POST /Api/Bot/{botNames}/TwoFactorAuthentication/Confirmations API endpoint which allows to accept/reject confirmations with more parameters.
