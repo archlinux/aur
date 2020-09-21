@@ -7,7 +7,6 @@ pkgdesc="Interactive cli tool for HTTP inspection"
 arch=('x86_64' 'i686')
 url="https://github.com/asciimoo/wuzz"
 license=('AGPL3')
-options=('!strip' '!emptydirs')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/asciimoo/wuzz/archive/v${pkgver}.tar.gz")
