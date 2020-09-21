@@ -49,14 +49,12 @@ Follow the steps;
 * After logging in and accepting license; select
 `Advanced Options > I want to download without installing`
 from the top dropdown menu.
+* Set the download location to an empty directory called `matlab`
 * Select the toolboxes you want in the `PKGBUILD`.
 (Alternatively install them all)
-* Download the files to an empty directory called `matlab`
 * After downloading; from the parent directory; do
-`tar --create --verbose --file matlab.tar.gz .../matlab`
+`tar --create --verbose --file matlab.tar matlab`
 to create the tarball.
-
-# Tips
 
 ## Large files
 
