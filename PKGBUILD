@@ -1,47 +1,47 @@
-# Maintainer: Dan Beste <Dan.Ray.Beste@gmail.com>
-# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Dan Beste <Dan.Ray.Beste@gmail.com>
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
-pkgname='python-black-git'
-pkgver=19.3b0.r51.g1bbb01b
+_pkgname='python-black'
+pkgname="${_pkgname}-git"
+pkgver=20.8b1.r24.g6dddbd7
 pkgrel=1
 pkgdesc='Uncompromising Python code formatter'
 arch=('any')
-url='https://github.com/ambv/black'
+url='https://github.com/psf/black'
 license=('MIT')
-depends=('python-appdirs' 'python-attrs' 'python-click' 'python-setuptools'
-         'python-toml' 'python-typed-ast')
-makedepends=('git')
-checkdepends=('python-aiohttp')
-optdepends=('python-aiohttp: for the blackd HTTP server')
-provides=("${pkgname/-git}")
-conflicts=("${pkgname/-git}")
-source=("${pkgname}::git+$url.git")
+depends=('python'
+        'python-appdirs'
+        'python-click'
+        'python-mypy_extensions'
+        'python-pathspec'
+        'python-regex'
+        'python-setuptools'
+        'python-toml'
+        'python-typed-ast'
+        'python-typing_extensions')
+makedepends=('git' 'python-setuptools')
+optdepends=('python-aiohttp: for the blackd HTTP server'
+            'python-aiohttp-cors: for the blackd HTTP server'
+            'python-colorama: for colored diffs')
+provides=("${_pkgname}")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
-
-  git describe --long --tags \
-    | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname}"
-
+  cd "${_pkgname}"
   python setup.py build
 }
 
-check() {
-  cd "${pkgname}"
-
-  python -m unittest tests/test_black.py
-}
-
 package() {
-  cd "${pkgname}"
-
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  cd "${_pkgname}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
 }
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=2 sw=2 et:
