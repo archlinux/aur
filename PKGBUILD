@@ -8,7 +8,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.16.2_0.6.1.45-1"
+_ver="1.16.2_0.6.1.51-1"
 _minecraft_ver_latest="1.16.2"
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
