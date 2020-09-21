@@ -1,7 +1,7 @@
 # Maintainer: Gamma <GammaFunction@vivaldi.net>
 pkgname=bwutil-git
-pkgver=r27.0b4c688
-pkgrel=1
+pkgver=v0.1
+pkgrel=2
 license=('MIT')
 pkgdesc='A wrapper for bitwarden'
 url='https://github.com/xPMo/bwutils'
@@ -9,6 +9,7 @@ arch=('any')
 provides=('bwutil')
 conflicts=('bwutil')
 depends=('zsh' 'bitwarden-cli')
+makedepends=('git')
 optdepends=('keyutils: Save BW_SESSION in kernel keyring')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
