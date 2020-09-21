@@ -1,0 +1,42 @@
+--- a/NXT/nbcunix.mak
++++ b/NXT/nbcunix.mak
+@@ -3,7 +3,7 @@ VER = 1.2.1.r4
+ DOBJECTS=uNXTClasses.o uPreprocess.o Parser10.o P10Build.o uNXCComp.o uRPGComp.o uRIC.o uRICComp.o uNBCCommon.o uNXTConstants.o uNBCInterface.o nbc.dpr
+ DEFAULT_INCLUDE_DIR=/usr/local/include/nbc
+ 
+-all:: $(DOBJECTS) $(PROGRAMS)
++all:: $(PROGRAMS)
+ 
+ clean::
+ 	rm -f *.o *.ppu *.rst *.compiled *.dcu nbc_preproc.inc
+@@ -21,11 +21,11 @@ PTOOLPREFIX=/usr/bin/
+ PPC=$(PTOOLPREFIX)fpc
+ 
+ # how to link executable
+-nbc: nbc.dpr nbc_preproc.inc
++nbc: nbc.dpr nbc_preproc.inc $(DOBJECTS)
+ 	$(PPC) $(PFLAGS) $< -o$@
+ 
+ # how to compile pas source
+-%.o: %.pas mkdata NBCCommonData.pas NXTDefsData.pas NXCDefsData.pas
++%.o: %.pas NBCCommonData.pas NXTDefsData.pas NXCDefsData.pas
+ 	$(PPC) $(PFLAGS) $< -o$@
+ 
+ # how to create the include file
+@@ -40,13 +40,13 @@ mkdata: mkdata.dpr
+ 	$(PPC) $(PFLAGS) $< -o$@
+ 
+ # how to create NBCCommonData.pas
+-NBCCommonData.pas: NBCCommon.h
++NBCCommonData.pas: NBCCommon.h mkdata
+ 	./mkdata $< $@ nbc_common_data
+ 
+ # how to create NXTDefsData.pas
+-NXTDefsData.pas: NXTDefs.h
++NXTDefsData.pas: NXTDefs.h mkdata
+ 	./mkdata $< $@ nxt_defs_data
+ 
+ # how to create NXCDefsData.pas
+-NXCDefsData.pas: NXCDefs.h
++NXCDefsData.pas: NXCDefs.h mkdata
+ 	./mkdata $< $@ nxc_defs_data
