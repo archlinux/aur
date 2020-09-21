@@ -3,7 +3,7 @@
 pkgbase=bitcoinhd
 pkgname=('bitcoinhd-daemon' 'bitcoinhd-cli' 'bitcoinhd-qt' 'bitcoinhd-tx')
 pkgver=1.4.3
-pkgrel=2
+pkgrel=1
 commit=7fe720529
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://btchd.org/"
@@ -28,7 +28,11 @@ package_bitcoinhd-qt() {
 	install -Dm755 bhd-v$pkgver/bin/btchd-qt $pkgdir/usr/bin/btchd-qt
 	install -Dm644 bhd-v$pkgver/share/man/man1/btchd-qt.1 $pkgdir/usr/share/man/man1/btchd-qt.1
 	install -Dm644 btchd-$pkgver/share/pixmaps/bitcoin128.png $pkgdir/usr/share/pixmaps/btchd128.png
-	install -Dm644 btchd-$pkgver/COPYING $pkgdir/usr/share/licenses/btchd/COPYING
+
+	ls /usr/share/licenses/btchd/COPYING > /dev/null
+	if [ $? -ne 0 ]; then
+	    install -Dm644 btchd-$pkgver/COPYING $pkgdir/usr/share/licenses/btchd/COPYING
+	fi
 	install -Dm644 bitcoinhd-qt.desktop $pkgdir/usr/share/applications/btchd-qt.desktop
 }
 
@@ -40,7 +44,11 @@ package_bitcoinhd-daemon() {
 	install -Dm755 bhd-v$pkgver/bin/btchdd $pkgdir/usr/bin/btchdd
 	install -Dm644 bhd-v$pkgver/share/man/man1/btchdd.1 $pkgdir/usr/share/man/man1/btchdd.1
 	install -Dm644 btchd-$pkgver/share/examples/btchd.conf $pkgdir/etc/btchd/btchd.conf
-	install -Dm644 btchd-$pkgver/COPYING $pkgdir/usr/share/licenses/btchd/COPYING
+
+	ls /usr/share/licenses/btchd/COPYING > /dev/null
+	if [ $? -ne 0 ]; then
+	    install -Dm644 btchd-$pkgver/COPYING $pkgdir/usr/share/licenses/btchd/COPYING
+	fi
 }
 
 package_bitcoinhd-cli() {
@@ -49,7 +57,11 @@ package_bitcoinhd-cli() {
 
 	install -Dm755 bhd-v$pkgver/bin/btchd-cli $pkgdir/usr/bin/btchd-cli
 	install -Dm644 bhd-v$pkgver/share/man/man1/btchd-cli.1 $pkgdir/usr/share/man/man1/btchd-cli.1
-	install -Dm644 btchd-$pkgver/COPYING $pkgdir/usr/share/licenses/btchd/COPYING
+
+	ls /usr/share/licenses/btchd/COPYING > /dev/null
+	if [ $? -ne 0 ]; then
+	    install -Dm644 btchd-$pkgver/COPYING $pkgdir/usr/share/licenses/btchd/COPYING
+	fi
 }
 
 package_bitcoinhd-tx() {
@@ -58,5 +70,9 @@ package_bitcoinhd-tx() {
 
 	install -Dm755 bhd-v$pkgver/bin/btchd-tx $pkgdir/usr/bin/btchd-tx
 	install -Dm644 bhd-v$pkgver/share/man/man1/btchd-tx.1 $pkgdir/usr/share/man/man1/btchd-tx.1
-	install -Dm644 btchd-$pkgver/COPYING $pkgdir/usr/share/licenses/btchd/COPYING
+
+	ls /usr/share/licenses/btchd/COPYING > /dev/null
+	if [ $? -ne 0 ]; then
+	    install -Dm644 btchd-$pkgver/COPYING $pkgdir/usr/share/licenses/btchd/COPYING
+	fi
 }
