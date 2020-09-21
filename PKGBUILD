@@ -34,11 +34,11 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
-## Enable PDS CPU scheduler by default https://gitlab.com/alfredchen/linux-pds
-## Set variable "use_pds" to: n to disable (stock Xanmod)
-##                            y to enable
-if [ -z ${use_pds+x} ]; then
-  use_pds=n
+## Enable Cachy CPU scheduler by default https://github.com/xanmod/linux/blob/5.8/Documentation/scheduler/sched-Cachy.rst
+## Set variable "use_cachy" to: n to disable (stock Xanmod)
+##                              y to enable
+if [ -z ${use_cachy+x} ]; then
+  use_cachy=n
 fi
 
 ## Enable CONFIG_USER_NS_UNPRIVILEGED flag https://aur.archlinux.org/cgit/aur.git/tree/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck
@@ -70,7 +70,7 @@ pkgver=5.8.10
 _major=5.8
 _branch=5.x
 xanmod=1
-pkgrel=${xanmod}
+pkgrel=2
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -149,9 +149,11 @@ prepare() {
     scripts/config --disable CONFIG_NUMA
   fi
 
-  if [ "$use_pds" = "y" ]; then
-    msg2 "Enabling PDS CPU scheduler by default..."
-    scripts/config --enable CONFIG_SCHED_PDS
+  if [ "$use_cachy" = "y" ]; then
+    msg2 "Enabling Cachy CPU scheduler by default (also NUMA and grouping for tasks, which are not compatible with Cachy)..."
+    scripts/config --disable CONFIG_NUMA
+    scripts/config --disable FAIR_GROUP_SCHED
+    scripts/config --enable CONFIG_CACHY_SCHED
   fi
 
   if [ "$use_ns" = "n" ]; then
