@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=duf
-pkgver=r15.60af98d
+pkgver=r18.db676e3
 pkgrel=1
 pkgdesc="Disk Usage/Free Utility"
 arch=('x86_64')
