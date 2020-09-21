@@ -103,7 +103,7 @@ post_remove() {
 	echo
 	echo 'If you don'\''t need them, launch'
 	echo
-	echo '    sudo rm -rf /opt/xampp-backups'
+	echo '    sudo rm -r /opt/xampp-backups'
 	echo
 	echo 'to erase all backups.'
 	echo
