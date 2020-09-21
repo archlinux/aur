@@ -11,7 +11,7 @@ depends=('zfs' 'mbuffer' 'python3' 'python-setproctitle' 'python-psutil' 'python
 optdepends=('openssh: transfer snapshots')
 #source=("https://github.com/grantma/$pkgname/archive/v$pkgver.zip")
 #sha256sums=('7aca24e007fc9599ce558d9be9d88e9691515717e4ec50709c99797e160c5bbc')
-source=("https://github.com/genofire/zsnapd/archive/master.zip")
+source=("https://github.com/genofire/zsnapd/archive/patch-2.zip")
 sha256sums=('SKIP')
 install=$pkgname.install
 
@@ -23,12 +23,13 @@ backup=(
 )
 
 build () {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  #cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-patch-2
   python setup.py build
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-patch-2
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   mkdir -p ${pkgdir}/etc/zsnapd
