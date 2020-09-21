@@ -1,0 +1,16 @@
+pkgbase = gamemaker-studio-decompiler-git
+	pkgdesc = GameMaker: Studio data.win unpacker and decompiler non-YYC, specifically made for Undertale, based on libaltar and Mirrawrs data site
+	pkgver = v1.0.beta.with.bugfixes.r2.g7d2b606
+	pkgrel = 1
+	url = https://github.com/jeason1997/GameMaker-Studio-Decompiler
+	arch = x86_64
+	license = DBAD
+	makedepends = clang
+	depends = mono
+	depends = sdl2
+	conflicts = gamemaker-studio-decompiler
+	source = AltarNET::git+https://github.com/jeason1997/GameMaker-Studio-Decompiler
+	sha256sums = SKIP
+
+pkgname = gamemaker-studio-decompiler-git
+
