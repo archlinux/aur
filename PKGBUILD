@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ufolint
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='UFO source file linter'
 arch=(any)
@@ -14,7 +14,7 @@ depends=('python'
          "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ea06cd42e5d9ec144f273f60de743247266e59d4d8ee4ec0f7366d123c8ad075')
+sha256sums=('009aef40401ffe86c9665ee34936aa38422d0afe3817fdbaae19740acc73d3f0')
 
 build() {
 	cd "$pkgname-$pkgver"
