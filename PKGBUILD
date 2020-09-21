@@ -23,6 +23,5 @@ build() {
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/bin"
-    install -D -m 755 "$srcdir/gopath/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$srcdir/gopath/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
