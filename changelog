@@ -1,3 +1,42 @@
+Proton-5.9-GE-6-ST
+
+GloriousEggroll released this Sep 17, 2020
+
+This is more of a "catch up" release. Since we're still waiting on esync/fsync to be rebased and it's been about 5 releases since any major backports, I decided to go ahead and backport the remaining important stuff so that if need be we can continue to backport stuff from 5.17+ until esync/fsync are rebased without me needing to go through another 7 wine releases worth of patches.
+Nothing too crazy here except Path of Exile fixed as of the 3.12.2 update and Horizon Zero Dawn works now. Last I checked there were some nvidia driver issues with HZD that may have since been fixed but otherwise it works.
+Nothing has really changed in terms of media foundation. Persona 4 is also still broken (again) I was hoping backporting the quartz stuff would help here but no luck unfortunately.
+There were quite a bit of audio patches so hopefully audio improves a bit, specifically a lof of xactengine work and wavebank work in both wine and FAudio. FAudio also introduced WMA decoding with gstreamer and is now built with gstreamer support instead of ffmpeg.
+
+    Horizon Zero Dawn crash fixes backported
+    lsteamclient fixes added from stevenlafl and tkg:
+    Frogging-Family/wine-tkg-git@09eb525
+    ---> This fix is also related to fixing and/or partially fixing the following:
+    Path of Exile
+    Half-Life Alyx workshop
+    Rust
+    SoulWorker
+    ECO
+    Tom Clancy's Rainbow Six: Vegas
+    Tom Clancy's Rainbow Six: Vegas 2
+    Bloons TD6 crash fix backported
+    Pyxel Edit file menu crash fix backported
+    Fall Guys controller input fixed (although now the game doesn't work due to EAC)
+    rfactor2 fix added
+    All media foundation 5.10 -> 5.17 patches backported
+    All quartz 5.10 -> 5.17 patches backported
+    All ws2_32,winhttp,wininet 5.10 -> 5.17 patches backported
+    All xaudio,xactengine,wavebank 5.10->5.17 patches backported
+    All vulkan,winevulkan 5.10->5.17 patches backported
+    Geforce Now patches added
+    vkd3d-proton updated - works with HZD now. For RADV you'll need mesa-git.
+    dxvk updated
+    FAudio updated from 20.07->20.09
+    gstreamer gst-libav pending backport PRs applied:
+    https://gitlab.freedesktop.org/gstreamer/gst-libav/-/merge_requests/90
+    https://gitlab.freedesktop.org/gstreamer/gst-libav/-/merge_requests/88
+    https://gitlab.freedesktop.org/gstreamer/gst-libav/-/merge_requests/81
+
+
 Proton-5.9-GE-5-ST
 
 GloriousEggroll released this Jul 28, 2020
