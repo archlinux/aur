@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/cc-map-editor-bin-*.pkg.tar.*
+
+/cc-map-editor-*-linux.AppImage
+/cc-map-editor-bin-LICENSE
