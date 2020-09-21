@@ -1,62 +1,73 @@
-# Maintainer: Jonathan Liu <net147@gmail.com>
-# Contributer: N30N <archlinux@alunamation.com>
+# Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 pkgname=djv
-pkgver=1.3.0
-pkgrel=5
-pkgdesc="Movie playback and image processing software for the film and computer animation industries"
+pkgver=2.0.8
+pkgrel=1
+pkgdesc="Professional media review software for VFX, animation, and film production"
+arch=("x86_64")
 url="http://djv.sourceforge.net/"
-license=('BSD')
-arch=('i686' 'x86_64')
-depends=("desktop-file-utils" "ffmpeg" "glew" "libjpeg" "libpng" "libquicktime" "libtiff" "openal" "openexr" "qt5-base" "qt5-svg")
-makedepends=("cmake" "git" "glm" "picojson-git" "portaudio" "qt5-tools")
-source=("${pkgname}::git+https://github.com/darbyjohnston/DJV#tag=${pkgver}"
-        "${pkgname}_view.desktop")
-md5sums=('SKIP'
-         'bf03a9488996f357497e044e66df3b97')
+license=('CUSTOM')
+groups=()
+depends=('glm' 'libjpeg' 'libpng' 'libtiff' 'ffmpeg' 'openexr' 'rtaudio')
+makedepends=('cmake')
+replaces=()
+backup=()
+options=()
+source=("https://github.com/darbyjohnston/DJV/archive/$pkgver.tar.gz" "djv.desktop" "djv.sh" "CMakeLists.patch")
+noextract=()
+md5sums=('3b5df10a31591b21441ea2512da34c6b' 'SKIP' 'SKIP' 'SKIP'
+)
+
 
 prepare() {
-    cd "${pkgname}"
-    sed -i '/enable_testing()/d' CMakeLists.txt
-    sed -i '/add_subdirectory(tests)/d' CMakeLists.txt
-    sed -i 's/set(djvPackageThirdParty true)/set(djvPackageThirdParty false)/' CMakeLists.txt
-    sed -i 's#picojson/picojson.h#picojson.h#' lib/djvCore/PicoJSON.h
-    find . -not -wholename './.git*' -type f -exec sed -i 's#OPENEXR_VERSION_HEX#((OPENEXR_VERSION_MAJOR << 24) | (OPENEXR_VERSION_MINOR << 16) | (OPENEXR_VERSION_PATCH << 8))#g' {} \+
+	if [ -d "${pkgname}-${pkgver}" ]; then rm -R ${pkgname}-${pkgver}; fi
+	tar -xzf ${pkgver}.tar.gz
+	mv DJV-${pkgver} ${pkgname}-${pkgver}
+	cd "$srcdir/"
+	export DJV_BUILD=$PWD
+	export LD_LIBRARY_PATH=$DJV_BUILD/DJV-install/lib:$LD_LIBRARY_PATH
+	
+	patch ${pkgname}-${pkgver}/CMakeLists.txt < CMakeLists.patch
+	
+	# Remove assert macro
+	sed -i '44,51d' ${pkgname}-${pkgver}/lib/djvCore/Core.h
+	sed -i '44i#ifdef DJV_ASSERT \n #undef DJV_ASSERT\n#endif\n#define DJV_ASSERT(value)' ${pkgname}-${pkgver}/lib/djvCore/Core.h
 }
 
 build() {
-    [[ -d build ]] && rm -r build
-    mkdir build && cd build
-    cmake -DCMAKE_INSTALL_PREFIX:PATH="/opt/${pkgname}" \
-          -DOpenGL_GL_PREFERENCE=LEGACY \
-          -DILMBASE_SHARED_LIBS=ON \
-          -DOPENEXR_SHARED_LIBS=ON \
-          -DPicoJSON_INCLUDE_DIR=/usr/include \
-          -DQT_INCLUDE_DIR=/usr/include/qt \
-          -DQT_CORE_INCLUDE_DIR=/usr/include/qt/QtCore \
-          -DQT_DBUS_INCLUDE_DIR=/usr/include/qt/QtDBus \
-          -DQT_GUI_INCLUDE_DIR=/usr/include/qt/QtGui \
-          -DQT_NETWORK_INCLUDE_DIR=/usr/include/qt/QtNetwork \
-          -DQT_OPENGL_INCLUDE_DIR=/usr/include/qt/QtOpenGL \
-          -DQT_PLATFORM_HEADERS_INCLUDE_DIR=/usr/include/qt/QtPlatformHeaders \
-          -DQT_PRINT_SUPPORT_INCLUDE_DIR=/usr/include/qt/QtPrintSupport \
-          -DQT_SQL_INCLUDE_DIR=/usr/include/qt/QtSql \
-          -DQT_WIDGETS_INCLUDE_DIR=/usr/include/qt/QtWidgets \
-          -DQT_XML_INCLUDE_DIR=/usr/include/qt/QtXml \
-          "../${pkgname}"
-    make
+	cd "$srcdir/"
+	ncores=$(grep -c ^processor /proc/cpuinfo)
+	
+	
+	mkdir -p DJV-third-party
+	cd DJV-third-party
+	cmake ../${pkgname}-${pkgver}/third-party -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$DJV_BUILD/DJV-install
+	cmake --build . -j ${ncores}
+	cmake --build . -j ${ncores} --target install
+	cd ..
+	
+	mkdir -p DJV-Release
+	cd DJV-Release
+	cmake ../${pkgname}-${pkgver} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$DJV_BUILD/DJV-install -DCMAKE_PREFIX_PATH=$DJV_BUILD/DJV-install -DCMAKE_INSTALL_RPATH=""
+
+	cmake --build . -j ${ncores}
+	cmake --build . -j ${ncores} --target install
+
 }
 
 package() {
-    cd build
-    make DESTDIR="${pkgdir}" install
-    install -d "${pkgdir}/usr/bin"
-    for x in djv_convert djv_info djv_ls djv_view; do
-      ln -s "/opt/${pkgname}/bin/$x" "${pkgdir}/usr/bin/$x"
-    done
-    install -D -m644 {"${srcdir}","${pkgdir}/usr/share/applications"}/"${pkgname}_view.desktop"
-    install -D -m644 "${srcdir}/${pkgname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-    install -D -m644 "${srcdir}/${pkgname}/etc/Windows/djv_view_512x512.png" "${pkgdir}/usr/share/pixmaps/djv_view.png"
-    rm "${pkgdir}/opt/${pkgname}/bin/djv_view.sh"
+	mkdir -p $pkgdir/opt/${pkgname}/bin
+	cp $srcdir/DJV-install/bin/djv* $pkgdir/opt/${pkgname}/bin/
+	cp -r $srcdir/DJV-install/docs $pkgdir/opt/${pkgname}/
+	cp -r $srcdir/DJV-install/etc $pkgdir/opt/${pkgname}/
+	install -D -m644 $srcdir/${pkgname}-${pkgver}/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+	install -D -m644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/etc/Icons/djv-app-icon-512.svg" "${pkgdir}/usr/share/pixmaps/djv.svg"
+	
+	mkdir -p ${pkgdir}/usr/bin/
+	for x in djv_info djv_ls djv_test_pattern; do
+		ln -s "/opt/${pkgname}/bin/$x" "${pkgdir}/usr/bin/$x"
+	done
+	
+	install -D -m655 "${srcdir}/djv.sh" "${pkgdir}/usr/bin/djv"
+	
 }
-
-# vim:set ts=2 sw=2 et:

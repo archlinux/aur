@@ -1,0 +1,16 @@
+--- CMakeLists.txt	2020-06-12 04:11:18.000000000 +0200
++++ CMakeLists.txt.new	2020-09-19 09:43:40.809604495 +0200
+@@ -299,11 +299,11 @@
+ include(djvPackage)
+ 
+ add_subdirectory(lib)
+-add_subdirectory(tests)
++#add_subdirectory(tests)
+ if(NOT DJV_BUILD_TINY)
+     add_subdirectory(bin)
+     add_subdirectory(docs)
+-    add_subdirectory(examples)
++    #add_subdirectory(examples)
+ endif()
+ 
+ include(CPack)
