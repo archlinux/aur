@@ -2,7 +2,7 @@
 _basename="gint"
 _branch="master"
 pkgname="${_basename}-git"
-pkgver=r220.4288dc2
+pkgver=r221.e5abe03
 pkgrel=1
 pkgdesc='Alternative library and kernel for add-in development on fx-9860G and fx-CG50'
 arch=('i686' 'x86_64')
