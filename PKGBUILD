@@ -1,13 +1,13 @@
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 pkgname=nanosvg-git
-pkgver=r120.25241c5
+pkgver=r122.07a5e2a
 pkgrel=1
 pkgdesc="Simple stupid SVG parser."
 arch=("x86_64")
 url="https://github.com/memononen/nanosvg"
 license=('ZLIB')
 groups=()
-depends=()
+depends=('glfw' 'glu')
 makedepends=('git' 'premake' 'patch')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	premake4 gmake
+	premake5 gmake
 	cd build
 	make config=release
 }
