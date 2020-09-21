@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/randoragon/mousemode"
 license=('MIT')
 depends=(libx11 libxtst xorgproto)
-makedepends=(git gcc)
+makedepends=(git)
 source=("git+$url")
 md5sums=('SKIP')
 

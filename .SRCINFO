@@ -6,7 +6,6 @@ pkgbase = mousemode-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = gcc
 	depends = libx11
 	depends = libxtst
 	depends = xorgproto
