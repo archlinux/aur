@@ -2,13 +2,13 @@
 _pkgname=cc-map-editor
 pkgname="${_pkgname}-bin"
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Map Editor for the game CrossCode"
 arch=('any')
 url='https://github.com/CCDirectLink/crosscode-map-editor'
 license=('custom:MIT')
 depends=(electron)
-makedepends=(asar npm)
+makedepends=(asar npm jq)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
@@ -49,8 +49,14 @@ EOF
   msg2 "Patching app.asar..."
   (
     cd "app"
+
     patch --forward --input="${srcdir}/${pkgname}-disable-autoupdates.patch"
-    npm uninstall --no-audit --no-fund --no-package-lock electron-{updater,log}
+
+    echo "patching file package.json"
+    jq '.dependencies |= del(.["electron-log", "electron-updater"])' package.json > package.json.new
+    mv package.json.new package.json
+
+    npm prune --no-audit --no-fund --production
   )
 
   msg2 "Packing app.asar..."
