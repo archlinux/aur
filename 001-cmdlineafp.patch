@@ -1,0 +1,12 @@
+diff --color --unified --recursive --text afpfs-ng/cmdline/cmdline_afp.h afpfs-ng/cmdline/cmdline_afp.h
+--- afpfs-ng/cmdline/cmdline_afp.h	2020-09-21 17:10:42.665823984 +0200
++++ afpfs-ng/cmdline/cmdline_afp.h	2020-09-21 17:11:30.546858894 +0200
+@@ -1,7 +1,7 @@
+ #ifndef CMDLINE_AFP_H_
+ #define CMDLINE_AFP_H_
+ 
+-int full_url;
++extern int full_url;
+ 
+ int com_connect(char * arg);
+ int com_dir(char * arg);
