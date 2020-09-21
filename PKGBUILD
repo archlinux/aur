@@ -8,7 +8,7 @@ pkgdesc="A simple command line tool for reading and writing AT24/EE1004 SPD EEPR
 arch=('any')
 url="https://github.com/redchenjs/spd-eeprom"
 license=('Apache')
-depends=('python' 'i2c-tools')
+depends=('python')
 source=("https://github.com/redchenjs/spd-eeprom/archive/$_commit/spd-eeprom-$_commit.tar.gz")
 sha512sums=('a204678c4a2dffe27fc15eb6e093140cd1ef483850cb122f37fbf1572f78c5689b2df892aca5665e5a64bb68c6bea4ed65bac4339013309fa1b5ecab9c0197b5')
 
