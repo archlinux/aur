@@ -28,7 +28,10 @@ pre_upgrade() {
 	local _COIN
 
 	echo -n 'Stopping lampp services...'
-	_STDERR="$(/opt/lampp/lampp stop >/dev/null 2>&1)" && echo ' OK' || (echo ' FAILED'; test "x${_STDERR}" != 'x' && echo "${_STDERR}")
+	_STDERR="$(/opt/lampp/lampp stop 2>&1 >/dev/null)" && echo ' OK' || {
+		echo ' FAILED'
+		test "x${_STDERR}" != 'x' && echo "${_STDERR}" 1>&2
+	}
 
 	for _COIN in "${_BACKUP[@]}"; do
 		! test -d "/${_COIN}" || (rm -rf "/${_COIN}.keep" && mv "/${_COIN}" "/${_COIN}.keep")
@@ -69,7 +72,10 @@ pre_remove() {
 	local _DATESTAMP="$(date '+%Y-%m-%d-%H-%M-%S')"
 
 	echo -n 'Stopping lampp services...'
-	_STDERR="$(/opt/lampp/lampp stop >/dev/null 2>&1)" && echo ' OK' || (echo ' FAILED'; test "x${_STDERR}" != 'x' && echo "${_STDERR}")
+	_STDERR="$(/opt/lampp/lampp stop 2>&1 >/dev/null)" && echo ' OK' || {
+		echo ' FAILED'
+		test "x${_STDERR}" != 'x' && echo "${_STDERR}" 1>&2
+	}
 
 	for _COIN in "${_BACKUP[@]}"; do
 		rm -rf "/${_COIN}.pacnew"
