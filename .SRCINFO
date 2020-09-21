@@ -1,6 +1,6 @@
 pkgbase = qt5ct-svn-translucent
 	pkgdesc = Qt5 Configuration Tool, patched to globally allow translucent window backgrounds.
-	pkgver = 0.42.r561
+	pkgver = 1.2.r582
 	pkgrel = 1
 	url = https://sourceforge.net/projects/qt5ct/
 	install = qt5ct.install
