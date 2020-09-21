@@ -1,15 +1,13 @@
 pkgbase = wlr-randr
-	pkgdesc = Utility to manage outputs of a Wayland compositor. You need a support wlr-output-management-unstable-v1 in the compositor.
+	pkgdesc = A xrandr clone for wlroots compositors
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emersion/wlr-randr
 	arch = x86_64
 	license = MIT
 	makedepends = meson
 	makedepends = ninja
-	makedepends = gcc
 	depends = wayland
-	provides = wlr-randr
 	source = https://github.com/emersion/wlr-randr/releases/download/v0.1.0/wlr-randr-0.1.0.tar.gz
 	source = https://github.com/emersion/wlr-randr/releases/download/v0.1.0/wlr-randr-0.1.0.tar.gz.sig
 	validpgpkeys = 34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48
