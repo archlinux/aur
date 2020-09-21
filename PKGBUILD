@@ -11,7 +11,7 @@
 
 pkgname=conky-mt
 pkgver=1.11.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight system monitor for X'
 url='https://github.com/brndnmtthws/conky'
 license=('BSD' 'GPL')
@@ -25,7 +25,7 @@ source=("https://github.com/brndnmtthws/conky/archive/v${pkgver}.tar.gz"
         'xshape.patch'
 )
 sha256sums=('4cefdd92219a90934c28297e4ac7448a3f69d6aeec5d48c5763b23f6b214ef13'
-						'e88d967ac00ffcda4bd85d7f175608246d795590007a4d0e481e8dfc13c486e6')
+            'e88d967ac00ffcda4bd85d7f175608246d795590007a4d0e481e8dfc13c486e6')
 options=('!strip' 'debug')
 
 prepare() {
