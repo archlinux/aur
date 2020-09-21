@@ -12,11 +12,14 @@ makedepends=('libfec-git')
 provides=()
 conflicts=()
 replaces=()
-source=("https://gitlab.altillimity.com/altillimity/satellite-decoders/-/archive/master/satellite-decoders-master.tar.gz")
-sha256sums=('1ead86b24beed186cb6e899eb32b7ac941b02a84fe4dc246156f36d27a782c2a')
+#source=("https://gitlab.altillimity.com/altillimity/satellite-decoders/-/archive/master/satellite-decoders-master.tar.gz")
+#sha256sums=('1ead86b24beed186cb6e899eb32b7ac941b02a84fe4dc246156f36d27a782c2a')
+source=("$pkgname"::'git+http://gitlab.altillimity.com/altillimity/satellite-decoders.git')
+sha256sums=("SKIP")
+
 prepare() {
-	rm -f -r $pkgname
-	mv $pkgname-master $pkgname
+	#rm -f -r $pkgname
+	#mv $pkgname-master $pkgname
 	mkdir -p "$pkgname"/build
 }
 
