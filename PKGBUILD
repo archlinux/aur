@@ -17,7 +17,7 @@ _nautilus="no"    # GNOME Files support
 
 _pkgname=evince
 pkgname=${_pkgname}-light
-pkgver=3.36.7
+pkgver=3.38.0
 pkgrel=1
 pkgdesc="GNOME document viewer, built with minimal dependencies by default but configurable."
 url="https://wiki.gnome.org/Apps/Evince"
@@ -34,7 +34,8 @@ depends=('gtk3' 'libsm' 'gspell')
 [[ "${_comics}"     == "yes" ]] && depends+=('libarchive')
 [[ "${_nautilus}"   == "yes" ]] && depends+=('libnautilus-extension')
 
-makedepends=('itstool' 'intltool' 'python' 'gobject-introspection' 'gtk-doc' 'appstream-glib')
+makedepends=('itstool' 'intltool' 'python' 'gobject-introspection' 'gtk-doc'
+  'appstream-glib' 'meson' 'cmake' 'libnautilus-extension')
 
 [[ "${_nautilus}"   == "yes" ]] && makedepends+=('libnautilus-extension' 'gnome-common')
 
@@ -42,7 +43,7 @@ optdepends=('gvfs: bookmark support and session saving')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "evince-no-gnome")
 source=("https://ftp.gnome.org/pub/GNOME/sources/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('65d61a423e3fbbe07001f65e87422dfb7d2e42b9edf0ca6a1d427af9a04b8f32')
+sha256sums=('26df897a417545b476d2606b14731122e84278ae994bd64ea535449c3cf01948')
 
 build() {
     cd ${_pkgname}-${pkgver}
@@ -60,31 +61,15 @@ build() {
     [[ "${_thumbnailer}" == "yes" ]] && _build_cfg+='--enable-thumbnailer ' || _build_cfg+='--disable-thumbnailer '
     [[ "${_nautilus}"    == "yes" ]] && _build_cfg+='--enable-nautilus '    || _build_cfg+='--disable-nautilus '
 
-    ./configure \
-        --sysconfdir=/etc \
-        --prefix=/usr \
-        --libexecdir=/usr/lib/${_pkgname} \
-        --localstatedir=/var \
-        --with-platform=gnome \
-        --disable-static \
-        --disable-debug \
-        --disable-maintainer-mode \
-        --disable-schemas-compile \
-        --disable-libgnome-desktop \
-        --enable-dbus \
-        --enable-gtk-doc \
-        --enable-introspection \
-        --enable-viewer \
-        ${_build_cfg} \
-        --enable-t1lib \
-        --disable-browser-plugin \
-        --without-keyring \
-        --with-gtk-unix-print
-    make
+    meson build && cd build
+    ninja
+
 }
 
 package() {
     cd ${_pkgname}-${pkgver}
+    cd build
 
-    make DESTDIR="${pkgdir}" install
+    ninja install
+
 }
