@@ -1,0 +1,14 @@
+pkgbase = ttf-miriam-libre
+	pkgdesc = Miriam Libre is a mono-linear Hebrew and Latin sans serif font family.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Miriam+Libre
+	arch = any
+	license = ofl
+	source = https://cdn.rawgit.com/google/fonts/b07806a6f57c74b57f744be755b87ea3b24fb93e/ofl/miriamlibre/MiriamLibre-Bold.ttf
+	source = https://cdn.rawgit.com/google/fonts/b07806a6f57c74b57f744be755b87ea3b24fb93e/ofl/miriamlibre/MiriamLibre-Regular.ttf
+	sha256sums = d88c315eb0b8c83f2db2929702b086063a7072448a5cccf78af47a9d2dd484f8
+	sha256sums = 277eaa259e6ef59252e0827fcf0738f23f46e5af289b243a187fa0f78ec7917f
+
+pkgname = ttf-miriam-libre
+
