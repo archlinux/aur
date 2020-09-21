@@ -1,19 +1,17 @@
 pkgbase = komorebi-bin
 	pkgdesc = Parallax backgrounds manager
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Komorebi-Fork/komorebi
 	arch = x86_64
 	license = GPL
-	depends = desktop-file-utils
-	depends = glib2>=2.38
-	depends = gtk3>=3.14
-	depends = hicolor-icon-theme
 	depends = libgee
-	depends = clutter
 	depends = clutter-gtk
 	depends = clutter-gst
 	depends = webkit2gtk
+	optdepends = gst-libav: full video wallpaper support
+	optdepends = gstreamer-vaapi: hardware-accelerated video decoding through VAAPI
+	optdepends = gst-plugins-bad: hardware-accelerated video decoding through VDPAU
 	provides = komorebi
 	conflicts = komorebi
 	source = https://github.com/Komorebi-Fork/komorebi/releases/download/v2.2.1/komorebi_2.2.1-1_amd64.deb
