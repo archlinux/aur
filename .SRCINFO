@@ -7,8 +7,8 @@ pkgbase = spd-eeprom
 	license = Apache
 	depends = python
 	depends = i2c-tools
-	source = https://github.com/redchenjs/spd-eeprom/archive/09fa2c8bcd45907b656cbb4b7757eac238c3eea6/spd-eeprom-09fa2c8bcd45907b656cbb4b7757eac238c3eea6.tar.gz
-	sha512sums = 0db33a8dbda508f75b128eca0225c50ae6af40b1b175e3c65395da744ba0f8b2cfb615848191d646d50e7e13fec21f7628f085506c40f368101b6373eb7b5bad
+	source = https://github.com/redchenjs/spd-eeprom/archive/b9afcb8602b579020061cb0ca0761d59d8603327/spd-eeprom-b9afcb8602b579020061cb0ca0761d59d8603327.tar.gz
+	sha512sums = a204678c4a2dffe27fc15eb6e093140cd1ef483850cb122f37fbf1572f78c5689b2df892aca5665e5a64bb68c6bea4ed65bac4339013309fa1b5ecab9c0197b5
 
 pkgname = spd-eeprom
 
