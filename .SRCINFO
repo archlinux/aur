@@ -1,18 +1,20 @@
 pkgbase = python-blis
-	pkgdesc = The Blis linear algebra routines as a self-contained Python C-extension
-	pkgver = 0.4.1
+	pkgdesc = Fast matrix-multiplication as a self-contained Python library
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/explosion/cython-blis
+	arch = i686
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = cython
 	depends = python-numpy
 	depends = python-pytest
 	depends = python-hypothesis
-	source = python-blis-0.4.1.tar.gz::https://github.com/explosion/cython-blis/archive/v0.4.1.tar.gz
-	md5sums = 277685a789be880d455b8855a550d2ac
+	source = https://files.pythonhosted.org/packages/d2/85/b96045fcbd87c8e2e06c7dcd069ccb97e1bf5b6778e0e609a7f965b87e39/blis-0.7.1.tar.gz
+	sha256sums = 014771a0f753a64ef5610c5b3d4a090b263073bdd59b8ad0d872ce1e06e7315a
 
 pkgname = python-blis
 
