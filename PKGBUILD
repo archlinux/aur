@@ -1,7 +1,7 @@
 # Maintainer:  ElXreno <elxreno@gmail.com>
 
 pkgname=rescuetime2
-pkgver=2.16.3.1
+pkgver=2.16.4.2
 pkgrel=1
 pkgdesc="Application time-tracking for Linux. Stable version"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ makedepends=('gendesk')
 conflicts=('rescuetime')
 source_i686=("${pkgname}_${pkgver}_i686.deb"::"$url/installers/rescuetime_current_i386.deb")
 source_x86_64=("${pkgname}_${pkgver}_amd64.deb"::"$url/installers/rescuetime_current_amd64.deb")
-sha256sums_i686=('e26115ba4147ec79f2ed16f0cb6fa0ec9db201537f12603623829b6764b5e48c')
-sha256sums_x86_64=('13de3c3f2b53855e922cd0d3714cfdd57524491dc80e9638fa059cc116371a17')
+sha256sums_i686=('8cc898a7e6685dbe316c6c2072123a347a6cb08d45e0b0478848ba3c6ca2ca7f')
+sha256sums_x86_64=('9b1960b71049175ead560f555b7387ea5e187c9d0a69ec2c8d3cdc08fbb4750d')
 
 pkgver() {
     grep Version control | cut --fields=2 -d' '
