@@ -1,0 +1,29 @@
+# Maintainer: Gamma <GammaFunction@vivaldi.net>
+pkgname=bwutil-git
+pkgver=r27.0b4c688
+pkgrel=1
+license=('MIT')
+pkgdesc='A wrapper for bitwarden'
+url='https://github.com/xPMo/bwutils'
+arch=('any')
+provides=('bwutil')
+conflicts=('bwutil')
+depends=('zsh' 'bitwarden-cli')
+optdepends=('keyutils: Save BW_SESSION in kernel keyring')
+source=("${pkgname}::git+${url}")
+sha512sums=('SKIP')
+
+pkgver () {
+	cd "${pkgname}"
+	(
+		set -o pipefail
+		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
+}
+
+package () {
+	cd "${pkgname}"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	PREFIX="${pkgdir}/usr" make install
+}
