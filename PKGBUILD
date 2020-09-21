@@ -1,5 +1,6 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 # Contributor: Nikolay Arhipov <nikolajs.arhipovs@gmail.com>
+# Contributor: codl <aur@codl.fr>
 
 pkgname=wuzz
 pkgver=0.4.0
