@@ -1,20 +1,27 @@
 pkgbase = stargus-git
-	pkgdesc = StarCraft Mod that allows you to play StarCraft with the Stratagus engine (git version)
-	pkgver = 2.4.0
+	pkgdesc = Starcraft 1 plugin for Stratagus, free cross-platform real-time strategy gaming engine.
+	pkgver = 2.4.4.72f8ea9e7.20200921
 	pkgrel = 1
 	url = https://github.com/Wargus/stargus
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = stratagus=2.4.0
-	depends = ffmpeg2theora
-	depends = cdparanoia
-	depends = timidity++
-	depends = gtk2
-	provides = stargus=2.4.0
-	conflicts = stargus
-	replaces = stargus
-	source = stargus::git://github.com/Wargus/stargus.git
+	makedepends = git
+	makedepends = cmake
+	makedepends = glu
+	depends = libgl
+	depends = sdl
+	depends = libpng
+	depends = libmng
+	depends = libtheora
+	depends = libmikmod
+	depends = sqlite
+	depends = tolua++
+	depends = stratagus
+	depends = stratagus-gameutils.h
+	provides = stargus-git
+	provides = stargus
+	source = stargus-git::git://github.com/Wargus/stargus.git
 	md5sums = SKIP
 
 pkgname = stargus-git
