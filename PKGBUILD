@@ -20,7 +20,13 @@ build() {
     mkdir -p gopath/src/${_goname}
     mv "$srcdir/$pkgname-$pkgver/"* "gopath/src/${_goname}"
     cd "gopath/src/${_goname}"
-    env GOPATH="$srcdir/gopath" go get -v
+	export GOPATH="$srcdir/gopath"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go get -v
 }
 
 package() {
