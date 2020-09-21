@@ -1,1 +1,1 @@
-%= include "$default_package_name/mingw-w64/PKGBUILD";
+%= include "$default_package_name/mingw-w64/PKGBUILD", pkgrel => '2';

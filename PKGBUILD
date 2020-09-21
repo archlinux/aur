@@ -24,7 +24,7 @@
 _qt_module=qttools
 pkgname=mingw-w64-qt5-tools-static
 pkgver=5.15.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
 depends=('mingw-w64-qt5-declarative-static')
@@ -37,7 +37,7 @@ _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-linguist-macro.patch')
 sha256sums=('c98ee5f0f980bf68cbf0c94d62434816a92441733de50bd9adbe9b9055f03498'
-            'ca4cdea138d38a8f55a20f4821d35138035115dd1c61ae1b28156d90aa75b38a')
+            '23243c0326d63474a293cec35cb0b64795e46b90ddc631d240b128274c030421')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -117,11 +117,6 @@ package() {
         find "${pkgdir}/usr/${_arch}/lib/qt/bin/" -exec strip --strip-all {} \;
       find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
 
-      # create symlinks for tools
-      mkdir -p "${pkgdir}/usr/bin"
-      for tool in lconvert lupdate lrelease windeployqt; do
-        ln -sf "../${_arch}/lib/qt/bin/${tool}" "${pkgdir}/usr/bin/${_arch}-$tool-qt5"
-      done
       popd
     done
 
