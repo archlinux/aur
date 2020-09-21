@@ -2,7 +2,7 @@
 
 pkgname=zsnapd
 pkgver=0.8.11c
-pkgrel=1
+pkgrel=2
 pkgdesc="ZFS Snapshot Daemon"
 arch=('any')
 url="https://github.com/grantma/zsnapd"
@@ -41,4 +41,6 @@ package() {
 
   mkdir -p ${pkgdir}/usr/lib/systemd/system
   install -Dm 644 system/zsnapd.service ${pkgdir}/usr/lib/systemd/system/zsnapd.service
+
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
