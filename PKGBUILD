@@ -9,7 +9,7 @@ pkgver=4.8.0
 _pkgver_release=$pkgver.RELEASE
 _eclipse_pkgver=e4.17.0
 _eclipse_pkgver_short=e4.17
-pkgrel=1
+pkgrel=2
 pkgdesc="The Spring Tool Suite (STS) from SpringSource"
 arch=('x86_64')
 url="https://spring.io/tools"
@@ -26,17 +26,19 @@ sha256sums_x86_64=('beed1e6c4e4b6ac521ce8afcd5146c0f71771f2b31e9ce4236bffd36842e
                    '4f3891945c9f86d2efa5b388d0da74d323b28795c46cbb35c56073e1e4cade32')
 
 package() {
-    # install eclipse
+    # Install eclipse to version-agnostic sts4 dirirectory
     install -m755 -d "${pkgdir}/opt"
-    mv "${srcdir}/sts-${_pkgver_release}" "${pkgdir}/opt/"
+    mv "${srcdir}/sts-${_pkgver_release}" "${pkgdir}/opt/sts4"
 
-    # install misc
+    # Install misc
     install -d ${pkgdir}/usr/bin ${pkgdir}/usr/share/applications
     install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-    ln -s "/opt/sts-${_pkgver_release}/SpringToolSuite4" ${pkgdir}/usr/bin/STS
-    ln -s "/opt/sts-${_pkgver_release}" "${pkgdir}/opt/sts4"
+    ln -s "/opt/sts4/SpringToolSuite4" ${pkgdir}/usr/bin/STS
 
-    # install icon
+    # Install icon
     install -m755 -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-    ln -s "/opt/sts-${_pkgver_release}/icon.xpm" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.xpm"
+    ln -s "/opt/sts4/icon.xpm" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.xpm"
+
+    # Create simlink for backward compatibility
+    ln -s "/opt/sts4" "${pkgdir}/opt/sts-${_pkgver_release}"
 }
