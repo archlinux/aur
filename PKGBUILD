@@ -3,8 +3,8 @@
 pkgbase=python-pythumbnailer
 pkgname=python-pythumbnailer
 _module='pythumbnailer'
-pkgver=0.4
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Create static HTML galleries with thumbnails"
 url="https://gitlab.com/somini/pythumbnailer/"
 depends=('python' 'python-argparse-utils' 'ffmpeg')
@@ -24,3 +24,4 @@ package() {
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
+sha256sums=('32be5940486f799e610d3410c2b0ae1c1e3ff92bb2ffc2708bacc98c415ac68e')
