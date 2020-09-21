@@ -1,7 +1,7 @@
 pkgbase = openssl-git
 	pkgdesc = Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols
-	pkgver = 1.1.1.r2775.g30a4cda5e0
-	pkgrel = 2
+	pkgver = 3.0.0.alpha6.r483.g6600baa9bb
+	pkgrel = 1
 	url = https://www.openssl.org/
 	arch = i686
 	arch = x86_64

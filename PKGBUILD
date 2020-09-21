@@ -3,8 +3,8 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl-git
-pkgver=1.1.1.r2775.g30a4cda5e0
-pkgrel=2
+pkgver=3.0.0.alpha6.r483.g6600baa9bb
+pkgrel=1
 pkgdesc="Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols"
 arch=('i686' 'x86_64')
 url="https://www.openssl.org/"
@@ -25,13 +25,13 @@ sha256sums=('SKIP'
 prepare() {
   cd "openssl"
 
-  patch -Np0 -i "$srcdir/ca-dir.patch"
+  patch -Np0 -F100 -i "$srcdir/ca-dir.patch"
 }
 
 pkgver() {
   cd "openssl"
 
-  git describe --long --tags | sed 's/^OpenSSL_//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g'
+  git describe --long --tags | sed 's/^OpenSSL[_-]//I;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g'
 }
 
 build() {
@@ -48,7 +48,8 @@ build() {
     --libdir="lib" \
     --openssldir="/etc/ssl" \
     "$_target" \
-    "-Wa,--noexecstack $CPPFLAGS $CFLAGS $LDFLAGS"
+    "-Wa,--noexecstack $CPPFLAGS $CFLAGS $LDFLAGS" \
+    shared
   make depend
   make
 }
@@ -58,9 +59,10 @@ check() {
 
   # the test fails due to missing write permissions in /etc/ssl
   # revert this patch for make test
-  #patch -Np0 -R -i "$srcdir/ca-dir.patch"
+  #patch -Np0 -F100 -R -i "$srcdir/ca-dir.patch"
   #make test
-  #patch -Np0 -i "$srcdir/ca-dir.patch"
+  #patch -Np0 -F100 -i "$srcdir/ca-dir.patch"
+  #make apps/CA.pl
 }
 
 package() {
