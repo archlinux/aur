@@ -1,7 +1,7 @@
 # Maintainer: Tyler Dence <tyzoid@archlinux32.org>
 
 pkgname=nextcloud-desktop-git
-pkgver=2.6.5
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='Nextcloud desktop client'
 arch=('i686' 'x86_64')
