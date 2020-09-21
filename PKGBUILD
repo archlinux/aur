@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=age
-_pkgver=1.0.0-beta4
+_pkgver=1.0.0-beta5
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc='A simple, modern and secure file encryption tool'
@@ -11,7 +11,7 @@ url="https://github.com/FiloSottile/$pkgname"
 license=('BSD')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz")
-sha256sums=('a0e644557ad37ed08dbae0fdbd6ddbcca6bebcd62a1f8a62544c4bd815ac3669')
+sha256sums=('6d1000e233ae1011ca44ed73c72d6ffd564c4c728eb0b53ed380ca24df1f5673')
 
 prepare() {
     cd "$pkgname-$_pkgver"
