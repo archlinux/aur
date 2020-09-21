@@ -1,27 +1,27 @@
 # Maintainer: nblock <nblock [/at\] archlinux DOT us>
 # Contributor: Simon Kohlmeyer <simon.kohlmeyer@gmail.com>
 
-_modulename=tasklib
-pkgname=python-$_modulename
-pkgver=1.3.0
+pkgname=python-tasklib
+_name=${pkgname#python-}
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Python library for interacting with taskwarrior databases."
 arch=('any')
 url="https://github.com/robgolding/tasklib"
 license=('BSD')
-depends=('python' 'python-six' 'python-pytz' 'python-tzlocal')
+depends=('python' 'python-pytz' 'python-tzlocal')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/robgolding/$_modulename/archive/$pkgver.tar.gz")
-sha256sums=('ac5137466f0a3e2940a1c973f9765afec4ec02cd1d42ac81e226dca95de35670')
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha256sums=('21525a34469928876b64edf8abf79cf788bb3fa796d4554ba22a68bc1f0693f5')
 
 build() {
-  cd "$_modulename-$pkgver"
+  cd "$_name-$pkgver"
   python setup.py build
 }
 
 package() {
-  cd "$_modulename-$pkgver"
+  cd "$_name-$pkgver"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }

@@ -1,18 +1,17 @@
 pkgbase = python-tasklib
 	pkgdesc = Python library for interacting with taskwarrior databases.
-	pkgver = 1.3.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/robgolding/tasklib
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	depends = python-six
 	depends = python-pytz
 	depends = python-tzlocal
 	options = !emptydirs
-	source = python-tasklib-1.3.0.tar.gz::https://github.com/robgolding/tasklib/archive/1.3.0.tar.gz
-	sha256sums = ac5137466f0a3e2940a1c973f9765afec4ec02cd1d42ac81e226dca95de35670
+	source = https://files.pythonhosted.org/packages/source/t/tasklib/tasklib-2.2.1.tar.gz
+	sha256sums = 21525a34469928876b64edf8abf79cf788bb3fa796d4554ba22a68bc1f0693f5
 
 pkgname = python-tasklib
 
