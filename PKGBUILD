@@ -1,33 +1,34 @@
-# Maintainer: Ronuk Raval <ronuk.raval at gmail dot com>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Ronuk Raval <ronuk.raval at gmail dot com>
 
-pkgname=python-flexx
-pkgver=0.8.0
+_pkgname='flexx'
+pkgname="python-${_pkgname}"
+pkgver=0.8.1
 pkgrel=1
-pkgdesc="Write desktop and web apps in pure Python"
+pkgdesc='Write desktop and web apps in pure Python'
 arch=('any')
-url="https://flexx.readthedocs.io"
+url='https://github.com/flexxui/flexx'
 license=('BSD')
-depends=(
-    python
-    python-tornado
-    'python-pscript>=0.7.1'
-    'python-webruntime>=0.5.6'
-    'python-dialite>=0.5.2'
-)
-source=(
-    ${pkgname}-${pkgver}.tar.gz::https://github.com/flexxui/flexx/archive/v${pkgver}.tar.gz
-)
-sha256sums=(
-    994fbb5b433012b93db13759514e15a84facb57824adb6194a24378425ee6c10
-)
+depends=('python'
+        'python-dialite'
+        'python-pscript'
+        'python-tornado'
+        'python-webruntime')
+makedepends=('python-setuptools')
+provides=("${_pkgname}")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('a691f1f950efef17c37831a994c7e09c6fc24573b95a45439c2c8d1b6c765388')
 
 build() {
-    cd "flexx-${pkgver}"
-    python setup.py build
+  cd "${_pkgname}-${pkgver}"
+  python setup.py build
 }
 
 package() {
-    cd "flexx-${pkgver}"
-    python setup.py install --skip-build --root="$pkgdir/" --optimize=1
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
 }
+
+# vim: ts=2 sw=2 et:
