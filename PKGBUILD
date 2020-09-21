@@ -4,7 +4,7 @@ pkgdesc="ROS - Messages for transmitting audio via ROS."
 url='https://wiki.ros.org/audio_common_msgs'
 
 pkgname='ros-melodic-audio-common-msgs'
-pkgver='0.3.7'
+pkgver='0.3.8'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="audio_common-${pkgver}/audio_common_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/audio_common/archive/${pkgver}.tar.gz")
-sha256sums=('842736eaddf227e67631782a909d6ae2483e2167d011ede4a8888d8fd23fbbf0')
+sha256sums=('f0c552e06e211998981c7204d479b7c5130503812fbba28324d1cb52b3454d21')
 
 build() {
   # Use ROS environment variables
