@@ -1,8 +1,8 @@
 # Maintainer: Max Shaughnessy <max@mshaugh.com>
 
 pkgname=dnscontrol-git
-pkgver=3.2.0.r812.0a36cb7f
-pkgrel=4
+pkgver=3.2.0.r865.408e7eb0
+pkgrel=1
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL (master branch)"
 arch=('x86_64')
 url="https://github.com/StackExchange/dnscontrol.git"
@@ -28,14 +28,11 @@ build() {
         export GOPATH="${srcdir}/gopath"
         cd "${GOPATH}/src/github.com/StackExchange/${pkgname%-git}"
 
-        go build \
-           -gcflags "all=-trimpath=${GOPATH}" \
-           -asmflags "all=-trimpath=${GOPATH}" \
-           -ldflags "-extldflags ${LDFLAGS}" \
-           -v .
+	GO111MODULE=on go run build/build.go -os=linux
+	go clean -modcache
 }
 
 package() {
-          install -Dm755 "${srcdir}/gopath/src/github.com/StackExchange/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+          install -Dm755 "${srcdir}/gopath/src/github.com/StackExchange/${pkgname%-git}/${pkgname%-git}-Linux" "${pkgdir}/usr/bin/${pkgname%-git}"
           install -Dm644 "${srcdir}/gopath/src/github.com/StackExchange/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
