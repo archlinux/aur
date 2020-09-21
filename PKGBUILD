@@ -3,7 +3,7 @@
 
 pkgname=dnscontrol
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL"
 arch=('x86_64')
 url="https://stackexchange.github.io/${pkgname}/"
@@ -23,14 +23,11 @@ build() {
   export GOPATH="${srcdir}/gopath"
   cd gopath/src/github.com/StackExchange/dnscontrol
 
-  go build \
-    -gcflags "all=-trimpath=$GOPATH" \
-    -asmflags "all=-trimpath=$GOPATH" \
-    -ldflags "-extldflags ${LDFLAGS}" \
-    -v .
+  GO111MODULE=on go run build/build.go -os=linux
+  go clean -modcache
 }
 
 package() {
-  install -Dm755 gopath/src/github.com/StackExchange/dnscontrol/$pkgname "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 gopath/src/github.com/StackExchange/dnscontrol/${pkgname}-Linux "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 gopath/src/github.com/StackExchange/dnscontrol/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
