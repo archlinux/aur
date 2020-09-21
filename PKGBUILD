@@ -1,8 +1,8 @@
 # Maintainer: Husam Bilal <husam212@gmail.com>
 
 pkgname=komorebi-bin
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="Parallax backgrounds manager"
 arch=("x86_64")
 url="https://github.com/Komorebi-Fork/komorebi"
