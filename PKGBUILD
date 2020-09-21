@@ -1,7 +1,7 @@
 # Maintainer: Hans Ole Hatzel <hhatzel@gmail.com>
 pkgname=otf-fira-mono-italic-git
 pkgver=7205478c
-pkgrel=1
+pkgrel=2
 pkgdesc="Italic and bold-italic version of Fira Mono"
 arch=("any")
 url="https://github.com/Avi-D-coder/fira-mono-italic"
