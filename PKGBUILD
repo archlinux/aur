@@ -1,12 +1,12 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=python-networkx-1.11
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Python package for creating and manipulating graphs and networks'
 provides=('python-networkx=1.11')
 conflicts=('python-networkx')
 url=http://networkx.github.io/
-depends=(python)
+depends=(python-decorator)
 makedepends=(python-distribute)
 license=(custom:BSD)
 arch=(any)

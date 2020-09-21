@@ -1,12 +1,12 @@
 pkgbase = python-networkx-1.11
 	pkgdesc = Python package for creating and manipulating graphs and networks
 	pkgver = 1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://networkx.github.io/
 	arch = any
 	license = custom:BSD
 	makedepends = python-distribute
-	depends = python
+	depends = python-decorator
 	provides = python-networkx=1.11
 	conflicts = python-networkx
 	source = https://pypi.python.org/packages/3b/d4/1b6ca16678d13ffd426bcd199231f3d5effaa6d234747fb88899e649dec3/networkx-1.11.zip
