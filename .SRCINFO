@@ -1,14 +1,16 @@
 pkgbase = python-webruntime
 	pkgdesc = Launch HTML5 apps in the browser or a desktop-like runtime.
-	pkgver = 0.5.6
+	pkgver = 0.5.8
 	pkgrel = 1
-	url = https://webruntime.readthedocs.io
+	url = https://github.com/flexxui/webruntime
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
 	depends = python
 	depends = python-dialite
-	source = python-webruntime-0.5.6.tar.gz::https://github.com/flexxui/webruntime/archive/v0.5.6.tar.gz
-	sha256sums = f9898617ae2b0d3f81724b89da9e7ae5f6bac39949b41699d05e9ff07e3907c4
+	provides = webruntime
+	source = https://files.pythonhosted.org/packages/source/w/webruntime/webruntime-0.5.8.tar.gz
+	sha256sums = ee3692b8194a8fd4aec476dcad75f05c43b3766903f7e13d4e16c1f9c433a033
 
 pkgname = python-webruntime
 
