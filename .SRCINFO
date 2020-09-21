@@ -3,6 +3,7 @@ pkgbase = mucommander
 	pkgver = 0.9.5
 	pkgrel = 1
 	url = http://www.mucommander.com
+	install = mucommander.install
 	arch = any
 	license = GPL
 	depends = java-runtime

@@ -1,0 +1,4 @@
+## arg 1:  the old package version
+pre_remove() {
+	rm -rf /usr/share/mucommander/felix-cache/*
+}

@@ -13,6 +13,7 @@ url="http://www.mucommander.com"
 depends=('java-runtime' 'bash')
 arch=('any')
 license=('GPL')
+install=${pkgname}.install
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${_pkgver}/${pkgname}-${_pkgver}.tar.gz"
         "${pkgname}.png" "${pkgname}.desktop")
 sha256sums=('0fd53ea3cf7f1a302a8cb9a889779454185006e9c66d7142b6058d236980c1c5'
