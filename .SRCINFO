@@ -1,0 +1,36 @@
+pkgbase = arduino-pro-ide-latest
+	pkgdesc = The Arduino Pro IDE bring features that address the needs of advanced users whilst retaining continuity with the simple classic Arduino IDE.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/arduino/arduino-pro-ide
+	install = arduino-pro-ide-latest.install
+	arch = x86_64
+	license = EPLv2
+	makedepends = gendesk
+	makedepends = ruby-ronn
+	makedepends = git
+	depends = libxss
+	depends = gtk3
+	depends = nodejs-lts-dubnium
+	depends = nss
+	depends = libxkbfile
+	depends = python
+	depends = arduino-cli
+	noextract = .zip
+	source = https://downloads.arduino.cc/arduino-pro-ide/arduino-pro-ide_0.1.2_Linux_64bit.zip
+	source = git+git://github.com/arduino/arduino-pro-ide.git
+	sha1sums = 0a7b12129275fc1fc50ee4380478ea451f096a0f
+	sha1sums = SKIP
+	sha224sums = 9fd87b4c156a06040c331696d98d18f2e4af8c494a167b17798d5d1e
+	sha224sums = SKIP
+	sha256sums = b98a23986d788c3214647eca3bb57be09865ab15676c7b245bc41e7b9b8d8477
+	sha256sums = SKIP
+	sha384sums = 2e8703547f8f32c67afda0f2057775ec3bd7a722c04b1589d138c5e66bdf369a9ba5cb508a6077d22072bd464782eaab
+	sha384sums = SKIP
+	sha512sums = 32e4cedc4abb5da999df025751f016e97a3302e8cc0183f4f31f940497313e187ef3dca92608554b676f01dac27416fe5fe17f31715b0e540d038e97eed9510a
+	sha512sums = SKIP
+	b2sums = 2aef8d1f88100fa3ee765f855c01c4dbe35d0ea7ebf8cfe0cd75fe5d1da14260be78ec6b6aafc09a619adc76ae921b8c106d560b78fab0b6bf5f6e389abe659f
+	b2sums = SKIP
+
+pkgname = arduino-pro-ide-latest
+
