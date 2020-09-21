@@ -9,8 +9,8 @@ url='https://www.github.com/systemd/systemd'
 arch=('any')
 license=('LGPL2.1')
 # this file has no original code at all
-provides=('systemd-libs')
-conflicts=('systemd-libs')
+provides=('systemd-libs' 'libsystemd' 'libsystemd.so')
+conflicts=('systemd-libs' 'libsystemd' 'libsystemd.so')
 
 build() {
    echo "Nothing to build"

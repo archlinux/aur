@@ -6,7 +6,11 @@ pkgbase = systemd-libs-dummy
 	arch = any
 	license = LGPL2.1
 	provides = systemd-libs
+	provides = libsystemd
+	provides = libsystemd.so
 	conflicts = systemd-libs
+	conflicts = libsystemd
+	conflicts = libsystemd.so
 
 pkgname = systemd-libs-dummy
 
