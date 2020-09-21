@@ -1,42 +1,32 @@
-# -*- mode: pkgbuild; -*-
-# Maintainer: Christopher Snowhill <chris@kode54.net>
+# Maintainer: Robert Cegliński <rob.ceglinski@gmail.com>
+# Contributor: Christopher Snowhill <chris@kode54.net>
 # Contributor: Denis Zheleztsov <difrex.punk@gmail.com>
+
 pkgname=wlr-randr-git
-_pkgname=${pkgname/-git}
 pkgver=0.1.0.r0.g988a802
-pkgrel=1
-pkgdesc="Utility to manage outputs of a Wayland compositor. You need a support wlr-output-management-unstable-v1 in the compositor."
+pkgrel=2
+pkgdesc="A xrandr clone for wlroots compositors (latest git version)"
 arch=('x86_64')
 url="https://github.com/emersion/wlr-randr"
 license=('MIT')
 depends=("wayland")
-makedepends=("git" "meson" "ninja" "gcc")
-checkdepends=()
-optdepends=()
+makedepends=("git" "meson" "ninja")
 provides=("wlr-randr")
-source=("git+https://github.com/emersion/wlr-randr.git")
-md5sums=('SKIP')
+conflicts=("wlr-randr")
+source=("$pkgname::git+https://github.com/emersion/wlr-randr.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$_pkgname"
-  meson --prefix /usr "$srcdir/build"
+  cd $pkgname
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-
-  ninja -C "$srcdir/build"
+  arch-meson $pkgname build
+  meson compile -C build
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-
-  DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
+  DESTDIR="$pkgdir" meson install -C build
+  install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
