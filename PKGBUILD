@@ -45,13 +45,10 @@ pkgver() {
 package_performance-tweaks() {
     pkgdesc='automatic tweaks for Improving performance while gaming and other tasks'
     depends=(
-	'cpupower'
-    'preload'
     'haveged'
     'irqbalance'
     'systemd-swap'   
 	'hdparm'
-	'x86_energy_perf_policy'
     'thermald'
     'nohang-git'
 	'ananicy-git'
