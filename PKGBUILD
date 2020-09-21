@@ -5,7 +5,7 @@ _svt_hevc_ver='ead6fdf7c9ff84511b42fc1658c1654b84d83e4b'
 _svt_vp9_ver='0.2.2'
 
 pkgname=ffmpeg-intel-full-git
-pkgver=4.4.r98687.g6e951d0cf8
+pkgver=4.4.r99308.g7a4b2c196c
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)'
 arch=('x86_64')
@@ -49,9 +49,9 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         'LICENSE')
 
 sha256sums=('SKIP'
-	    '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
-            '87292cf51f47e4408b0b7b0ee8387d18cf7ea7d352832d5d97c413456eb34b38'
+            '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
             '05ec4d3323dc80ef6c1d4d6d50d339accd51d22b12a735b7a6605f10feb09cec'
+            '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
             'b74be6d805672210e226e7c0b403f88b0ee8a53c732c9bdc873c4b44aeb75c96'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
