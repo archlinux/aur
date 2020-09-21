@@ -1,12 +1,12 @@
 pkgbase = ddnet-skins
 	pkgdesc = DDraceNetwork skin database
-	pkgver = 20200918
+	pkgver = 20200921
 	pkgrel = 1
 	url = https://ddnet.tw
 	arch = any
 	license = custom:unknown
 	makedepends = unzip
-	source = ddnet-skins-20200918.zip::https://ddnet.tw/skins/zip/database.zip
+	source = ddnet-skins-20200921.zip::https://ddnet.tw/skins/zip/database.zip
 	sha256sums = 25707f99eb0914626b0e17fbef76e0ce1912efec942c16003dd1ba0f600e40d5
 
 pkgname = ddnet-skins
