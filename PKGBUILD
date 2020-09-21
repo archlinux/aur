@@ -1,11 +1,12 @@
-#Maintainer: Ekin Dursun <ekindursun@gmail.com>
+#Maintainer: Jay Ta'ala <jay@jaytaala.com>
+#Contributor: Ekin Dursun <ekindursun@gmail.com>
 #Contributor: danyf90 <daniele.formichelli@gmail.com>
 #Contributor: syncrtl64 <syncrtl64@gmail.com>
 #Contributor: Andrea Cattaneo <andrea.cattaneo.dev@gmail.com>
 
 pkgname=genymotion
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete set of tools that provides a virtual environment for Android."
 arch=('x86_64')
 url="http://www.genymotion.com/"
