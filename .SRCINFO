@@ -1,0 +1,14 @@
+pkgbase = makepkg-git-lfs-proto
+	pkgdesc = Add Git-lfs support to makepkg. Use "git-lfs+" as protocol specifier in source url.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/bartoszek/AUR-makepkg-git-lfs-proto
+	arch = any
+	license = GPL
+	depends = pacman
+	depends = git-lfs
+	source = git-lfs.sh.in
+	sha256sums = e5a344a5fb196f5263bea00b3f9e208d68a1a2d7eb2ceb6c632f88dcba06bf9b
+
+pkgname = makepkg-git-lfs-proto
+
