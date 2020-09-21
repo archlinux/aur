@@ -20,7 +20,6 @@ source=("https://github.com/sysown/${pkgname}/archive/v${pkgver}.tar.gz"
 sha256sums=('741ae415f0604a0fda1380aad01fdd195e7f1dfea7ba51518185fd7cc0035770'
             '8b074c0d72e4b66349a84a13fdb65918145fcaf6a8697ba99304bd603d097735'
             'fadc103f88e699d0920f617ad9982a76504673a00aba0e2d4c0223bbc9a1a4a6'
-            '74c96841767a6b97d42e8abf13c21838602f20538d99f73bbd1971a5237ea3d1'
             '6f48bd54c6b8592cd84006e991d3cbd8b38a460c6e72091acdca05f6781ae380')
 
 build() {
