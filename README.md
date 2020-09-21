@@ -17,6 +17,7 @@ this cuts a fair amount of time from the build and compression is unneccessary o
 # Requirements
 
 Besides the dependencies; the source files MUST be present at the directory.
+Dummy files are supplied to keep AUR happy; but they must be overwritten.
 The user MUST supply;
 
 * **matlab.fik**: Plain text file installation key

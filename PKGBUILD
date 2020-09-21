@@ -79,7 +79,7 @@ source=("matlab.tar.gz"
   "matlab.fik"
   "matlab.lic"
   "matlab.script")
-md5sums=(SKIP SKIP SKIP SKIP)
+md5sums=(SKIP SKIP SKIP 'b6651d0199305f18ab8c0c464b86a9c7')
 
 # Limit products to lower size, set this to true to do a partial install
 partialinstall=false
