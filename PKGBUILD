@@ -4,15 +4,16 @@
 # Contributor: Matthew Bowra-Dean <matthew@ijw.co.nz>
 #
 pkgname=openra-git
-pkgver=BLEED.20190714.579d2c19e2
+pkgver=BLEED.20200921.9cf38c1784
 pkgrel=1
-pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL. Red Alert 2, mods Included. -GIT VERSION"
+pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL. -GIT VERSION"
 arch=('any')
 url="http://www.openra.net"
 license=('GPL3')
 install=openra.install
 depends=('mono' 'msbuild' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
          'desktop-file-utils' 'xdg-utils' 'zenity')
+optionaldepends=('openra-ra2-git' 'openra-d2-git')
 makedepends=('git' 'unzip')
 provides=('openra')
 conflicts=('openra')

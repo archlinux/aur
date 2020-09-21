@@ -1,6 +1,6 @@
 pkgbase = openra-git
-	pkgdesc = An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL. Red Alert 2, mods Included. -GIT VERSION
-	pkgver = BLEED.20190714.579d2c19e2
+	pkgdesc = An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL. -GIT VERSION
+	pkgver = BLEED.20200921.9cf38c1784
 	pkgrel = 1
 	url = http://www.openra.net
 	install = openra.install
