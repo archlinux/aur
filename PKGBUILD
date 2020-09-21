@@ -1,8 +1,8 @@
 # Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
 
 pkgname=rime-aurora-pinyin
-pkgver=0.0.0.20200818
-_commit=78a92462ad4452b308cf1ab2ebe6f15ac8d595c3
+pkgver=0.0.0.20200921
+_commit=962deee720b3757e40c958fbe7ca65fe3f497806
 pkgrel=1
 pkgdesc="【极光拼音】输入方案"
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('rime-stroke')
 makedepends=('librime' 'rime-prelude')
 source=("https://github.com/hosxy/rime-aurora-pinyin/archive/$_commit/rime-aurora-pinyin-$_commit.tar.gz")
-sha512sums=('48f02ad3c532c94eeb84a74865875973e3391afedb9685bcd418a271f24685dee8661f3159251acab38d0ccf89281137f4688050766a303e7d40c791bd9fc039')
+sha512sums=('92615d60319fb8217eb1b21e5aa59024ee07762e4d69b1cf731cd3ee37829f7d6ef67a9abc3503db27128ddfe2a99cd9eacd67f550dc44aaddf4f8011778b5ed')
 
 prepare() {
   cd $pkgname-$_commit
