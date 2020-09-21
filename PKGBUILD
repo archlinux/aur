@@ -3,18 +3,18 @@
 
 _author=jeanguyomarch
 pkgname=eovim
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Eovim is the Enlightened Neovim. That's just an EFL GUI client for Neovim."
 arch=('any')
 url="https://phab.enlightenment.org/w/projects/eovim/"
 license=('MIT')
 depends=('efl' 'msgpack-c' 'neovim')
-makedepends=('cmake' 'python' 'python-jinja')
+makedepends=('cmake' 'python')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_author/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('765f4716b2573e547ad11300957cb27fbe29cc7e288f611953a3d10566524bae')
+sha256sums=('d11da1d3736e19af4d6f7f97a382893fcfa0eba58f7137290e7c8a1ce802f53e')
 
 build() {
 	cd "$pkgname-$pkgver"
