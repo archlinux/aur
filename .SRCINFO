@@ -1,0 +1,19 @@
+pkgbase = dtmf
+	pkgdesc = Client for the DTMF.io telephony service
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://dtmf.io/
+	arch = x86_64
+	license = MIT
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = gtk3
+	source = dtmf-1.9.0.tar.gz::https://github.com/dtmf-io/dtmf-flutter/archive/v1.9.0.tar.gz
+	source = https://storage.googleapis.com/flutter_infra/releases/dev/linux/flutter_linux_1.22.0-12.0.pre-dev.tar.xz
+	sha256sums = e3dc21c15604387a339ddc64babb5c682afdc8b804a7ee2a1015e41028206a28
+	sha256sums = 088465e692ed42e55f992e4a6082f3ec4c2177c791bd11a3a2017b61109dc52c
+
+pkgname = dtmf
+
