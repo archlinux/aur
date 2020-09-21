@@ -7,8 +7,9 @@
 # Contributor: oguzkagan <me@oguzkaganeren.com.tr>
 
 pkgname='xampp'
-pkgver='7.4.10'
-_uppkgrel=0
+_srcver='7.4.10'
+_binver=0
+pkgver="${_srcver}$(test "${_binver}" -eq 0 || echo ".${_binver}")"
 pkgrel=10
 pkgdesc='A stand-alone LAMPP distribution'
 url='https://www.apachefriends.org/'
@@ -34,8 +35,8 @@ source=('bitrock-unpacker.tcl'
 	'xampp-manager.desktop')
 _build32name='linux'
 _build64name='linux-x64'
-source_i686=("${url}/${pkgname}-files/${pkgver}/${pkgname}-${_build32name}-${pkgver}-${_uppkgrel}-installer.run")
-source_x86_64=("${url}/${pkgname}-files/${pkgver}/${pkgname}-${_build64name}-${pkgver}-${_uppkgrel}-installer.run")
+source_i686=("${url}/${pkgname}-files/${_srcver}/${pkgname}-${_build32name}-${_srcver}-${_binver}-installer.run")
+source_x86_64=("${url}/${pkgname}-files/${_srcver}/${pkgname}-${_build64name}-${_srcver}-${_binver}-installer.run")
 options=('staticlibs' 'libtool' '!strip')
 install='xampp.install'
 sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
@@ -54,7 +55,7 @@ sha256sums_i686=('SKIP')
 
 
 _platform="$(test "${CARCH}" = 'x86_64' && echo "${_build64name}" || echo "${_build32name}")"
-_pkgstring="${pkgname}-${_platform}-${pkgver}-${_uppkgrel}"
+_pkgstring="${pkgname}-${_platform}-${_srcver}-${_binver}"
 
 # Make a string suitable for `sed`, by escaping []/&$.*^ - syntax: `_sed_escape STRING`
 _sed_escape() {
@@ -79,7 +80,7 @@ package() {
 	local _xampp_root='/opt/lampp'
 
 	local _sed_subst="
-		s/@XAMPP_VERSION@/$(_sed_escape "${pkgver}-${_uppkgrel}")/g
+		s/@XAMPP_VERSION@/$(_sed_escape "${_srcver}-${_binver}")/g
 		s/@XAMPP_PLATFORM@/$(_sed_escape "${_platform}")/g
 		s/@XAMPP_ROOT@/$(_sed_escape "${_xampp_root}")/g
 	"
@@ -112,7 +113,7 @@ package() {
 
 	# Links and missing files
 	sed "${_sed_subst}" "${srcdir}/properties.ini.in" > "${pkgdir}${_xampp_root}/properties.ini"
-	echo -n "${pkgver}-${_uppkgrel}" > "${pkgdir}${_xampp_root}/lib/VERSION"
+	echo -n "${_srcver}-${_binver}" > "${pkgdir}${_xampp_root}/lib/VERSION"
 	ln -s "${_xampp_root}/xampp" "${pkgdir}${_xampp_root}/lampp"
 	test -d "${pkgdir}${_xampp_root}/share/lampp" || \
 		ln -sf "${_xampp_root}/share/xampp" "${pkgdir}${_xampp_root}/share/lampp"
