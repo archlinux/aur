@@ -11,7 +11,7 @@ pkgbase = passman-git
 	source = git+https://github.com/binex-dsk/PyPassMan.git
 	source = passman.sh
 	md5sums = SKIP
-	md5sums = 8bb57da0fa0dcee2823bda7f1fbc132b
+	md5sums = b95d2bbfde09a1619c0615eb91598d8b
 
 pkgname = passman-git
 

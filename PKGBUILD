@@ -12,10 +12,10 @@ source=("git+https://github.com/binex-dsk/PyPassMan.git"
 makedepends=('git')
 depends=('python3' 'python-cryptography')
 md5sums=('SKIP'
-         '8bb57da0fa0dcee2823bda7f1fbc132b')
+         'b95d2bbfde09a1619c0615eb91598d8b')
 
 package() {
-	mkdir -pm755 "$pkgdir/usr/lib/passman"
+	mkdir -p "$pkgdir/usr/lib/passman"
 	cd $srcdir/$_pkgname
 	find -type f -name "*.py" -exec install -Dm755 "{}" "$pkgdir/usr/lib/passman/" \;
 	cd ..
