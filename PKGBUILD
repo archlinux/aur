@@ -1,4 +1,5 @@
-# Maintainer: Nikolay Arhipov <nikolajs.arhipovs@gmail.com>
+# Maintainer: j.r <j.r@jugendhacker.de>
+# Contributor: Nikolay Arhipov <nikolajs.arhipovs@gmail.com>
 
 pkgname=wuzz
 pkgver=0.4.0
