@@ -1,4 +1,5 @@
 # Maintainer: Stefan Cocora <stefan dot cocora at gmail dot com>
+# Maintainer: Sam A. Horvath-Hunt <hello at samhh dot com>
 # Contributor:
 
 _pkgauthor=ambientsound
