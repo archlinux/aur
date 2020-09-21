@@ -8,6 +8,7 @@ arch=('x86_64' 'i686')
 url="https://github.com/asciimoo/wuzz"
 license=('AGPL3')
 options=('!strip' '!emptydirs')
+depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/asciimoo/wuzz/archive/v${pkgver}.tar.gz")
 sha256sums=('acf8e82481740d1403b744c58918b9089128d91c3c6edc15b76b6e1c97ead645')
