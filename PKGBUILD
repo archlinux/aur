@@ -3,7 +3,7 @@
 pkgname=chromium-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content'
 pkgver=4.10.1679.0
-_chrome_ver=85.0.4183.102
+_chrome_ver=85.0.4183.121
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("chromium-widevine-dev=$pkgver")
 conflicts=('chromium-widevine-dev')
 options=('!strip')
 source=("https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${_chrome_ver}-1_amd64.deb")
-sha256sums=('f5b2c4563b8ba63744330d209a97b565a68851c1b643a4a2de00bd6a7b571dc5')
+sha256sums=('8a29cd996516ffada9687aa5ac7c2554e704085d848c436654039c9076707823')
 
 prepare() {
   bsdtar -x --strip-components 4 -f data.tar.xz opt/google/chrome/WidevineCdm
