@@ -1,55 +1,92 @@
 # Maintainer: Bernhard Landauer <bernhard@manjaro.org>
+# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
-# Contributor: yochananmarqos https://github.com/yochananmarqos
 
-_pkgname=AppImageLauncher
 pkgname=appimagelauncher
-pkgver=2.1.2
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=('x86_64')
-url="https://github.com/TheAssassin/$_pkgname"
+url="https://github.com/TheAssassin/AppImageLauncher"
 license=('MIT')
-depends=('binutils'
-    'boost'
-    'cairo'
-    'desktop-file-utils'
-    'fuse'
-    'gtest'
-    'libarchive'
-    'libbsd'
-    'librsvg'
-    'qt5-base'
-    'shared-mime-info')
-makedepends=('cmake' 'git' 'wget' 'vim' 'qt5-tools')
-conflicts=('appimagelauncher-git')
-source=("git+$url.git#tag=v$pkgver"
-    'appimage-binfmt-remove.hook')
+depends=('cairo' 'desktop-file-utils' 'gtest' 'hicolor-icon-theme' 'libappimage'
+         'libbsd' 'libxpm' 'qt5-base' 'shared-mime-info')
+makedepends=('git' 'boost' 'cmake' 'python' 'qt5-tools' 'wget' 'xxd')
+source=("$pkgname::git+$url.git#tag=v$pkgver"
+        'git+https://github.com/AppImage/AppImageUpdate.git'
+        'git+https://github.com/AppImage/libappimage.git'
+        'git+https://github.com/TheAssassin/zsync2'
+        'git+https://github.com/arsenm/sanitizers-cmake'
+        'git+https://github.com/google/googletest.git'
+        'git+https://github.com/AppImage/cpr'
+        'git+https://github.com/Taywee/args'
+        'appimage-binfmt-remove.hook')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81')
 
 prepare() {
-  cd $_pkgname
-  git submodule update --init --recursive
+	cd "$srcdir/$pkgname"
+	git submodule init
+	git config submodule.lib/AppImageUpdate.url "$srcdir/AppImageUpdate"
+	git config submodule.lib/libappimage.url "$srcdir/libappimage"
+	git submodule update
+
+	cd "$srcdir/$pkgname/lib/AppImageUpdate"
+	git submodule init
+	git config submodule.lib/zsync2.url "$srcdir/zsync2"
+	git config submodule.lib/sanitizers-cmake.url "$srcdir/sanitizers-cmake"
+	git config submodule.lib/libappimage.url "$srcdir/libappimage"
+	git submodule update
+
+	cd "$srcdir/$pkgname/lib/AppImageUpdate/lib/libappimage"
+	git submodule init
+	git config submodule.lib/gtest.url "$srcdir/googletest"
+	git submodule update
+
+	cd "$srcdir/$pkgname/lib/AppImageUpdate/lib/zsync2"
+	git submodule init
+	git config submodule.lib/cpr.url "$srcdir/cpr"
+	git config submodule.lib/args.url "$srcdir/args"
+	git config submodule.lib/gtest.url "$srcdir/googletest"
+	git submodule update
+
+	cd "$srcdir/$pkgname/lib/libappimage"
+	git submodule init
+	git config submodule.lib/gtest.url "$srcdir/googletest"
+	git submodule update
 }
 
 build() {
-  cd $_pkgname
-  cmake . \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DUSE_SYSTEM_GTEST=ON \
-    -DUSE_SYSTEM_XZ=ON \
-    -DUSE_SYSTEM_LIBARCHIVE=ON
-  make
+	cd "$srcdir/$pkgname"
+	cmake . \
+		-DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DUSE_SYSTEM_GTEST=ON \
+		-DUSE_SYSTEM_XZ=ON \
+		-DUSE_SYSTEM_LIBARCHIVE=ON \
+		-DUSE_SYSTEM_LIBAPPIMAGE=ON \
+		-DBUILD_TESTING=OFF \
+		-Wno-dev
+
+	# Dependencies need to be made before cmake to resolve path limitations in cmake
+	make libappimageupdate libappimageupdate-qt
+	cmake .
+
+	# Make needs to be run again after to finish compile
+	make
 }
 
 package() {
-  install -Dm644 -t $pkgdir/usr/share/libalpm/hooks *.hook
+	cd "$srcdir/$pkgname"
+	make DESTDIR="$pkgdir" install
 
-  cd $_pkgname
-  # re-run CMake to populate list of library files to bundle
-  cmake .
-  make DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 "$srcdir"/*.hook -t "$pkgdir"/usr/share/libalpm/hooks
 }
