@@ -1,12 +1,12 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: vscncls <lucaslou4@protonmail.com>
 
-_pkgname=quich
-pkgname=${_pkgname}-git
-pkgver=2.4.r7.gbac0edd
+_pkgname='quich'
+pkgname="${_pkgname}-git"
+pkgver=3.0.0.r16.g446e5e3
 pkgrel=1
 pkgdesc='Small, easy to use, fast and useful calculator for your terminal with numerous features'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url='https://github.com/Usbac/quich'
 license=('MIT')
 makedepends=('git')
@@ -23,7 +23,10 @@ build() {
 }
 
 package() {
-  make DESTDIR="${pkgdir}" PREFIX="/usr" -C "${_pkgname}" install
-  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm644 "${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  cd "${_pkgname}"
+  install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}"
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" 'LICENSE'
 }
+
+# vim: ts=2 sw=2 et:
