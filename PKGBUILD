@@ -2,7 +2,7 @@
 
 pkgname=wuzz
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive cli tool for HTTP inspection"
 arch=('x86_64' 'i686')
 url="https://github.com/asciimoo/wuzz"
