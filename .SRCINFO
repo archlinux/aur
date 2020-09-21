@@ -6,7 +6,7 @@ pkgbase = openimagedenoise-develop
 	arch = x86_64
 	license = Apache
 	makedepends = git
-	makedepends = git-lfs
+	makedepends = makepkg-git-lfs-proto
 	makedepends = cmake
 	makedepends = ispc>=1.14
 	makedepends = ninja

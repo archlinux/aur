@@ -1,19 +1,5 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
-function download_git-lfs {
-  local url dir
-  url=${1#git-lfs+}
-  download_git "$url"
-  dir="$SRCDEST/$(get_filename "$url")"
-  git -C "$dir" lfs install
-  git -C "$dir" lfs fetch
-}
-
-function extract_git-lfs {
-  url=${1/git-lfs/https}
-  extract_git "$url"
-}
-
 pkgname=openimagedenoise-develop
 pkgver=1.2.3
 _fragment="#tag=v${pkgver}"
@@ -24,7 +10,7 @@ url="https://www.openimagedenoise.org/"
 license=('Apache')
 depends=(intel-tbb python)
 provides=("openimagedenoise=${pkgver%.r*}")
-makedepends=(git git-lfs cmake 'ispc>=1.14' ninja)
+makedepends=(git makepkg-git-lfs-proto cmake 'ispc>=1.14' ninja)
 source=("${pkgname}::git+https://github.com/OpenImageDenoise/oidn.git${_fragment}"
         "git+https://github.com/OpenImageDenoise/mkl-dnn.git"
         "git-lfs+https://github.com/OpenImageDenoise/oidn-weights.git"
