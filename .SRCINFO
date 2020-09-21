@@ -1,0 +1,22 @@
+pkgbase = eclipse-java-bin
+	pkgdesc = Java ide but makepkg actually works with it
+	pkgver = 4.17
+	pkgrel = 1
+	url = https://www.eclipse.org
+	arch = x86_64
+	license = EPL
+	makedepends = tar
+	depends = java-environment>=11
+	depends = python
+	depends = libsecret
+	provides = eclipse-java
+	conflicts = eclipse-java
+	source = https://mirrors.xmission.com/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-java-2020-09-R-linux-gtk-x86_64.tar.gz
+	source = eclipse.desktop
+	source = eclipse.png
+	sha512sums = 38b063a4df5a0ae6d22f82fb1c64281e462ef8b4de6e4cc970d47e89575c447376550ebc8063b8bcf2c6532ac7a276fe9d4c79f140846357c4218899f9d93bf3
+	sha512sums = eb3e245f27a0eb328bdf3dcc1258013d55cf24d4ec3864cdc0ad9c68995bfc1af44f05a5973368f115e9957359c9e50b4cefa2fa7014c36e499447c48769f505
+	sha512sums = 7933c44f9e4d47aa89706e839fd5f1339e58454125cc8533ea4d7d391f677805ebcb937857ccea305f8829a2e8c6b38dc0447491ad0fbd26e55fcad6c782128f
+
+pkgname = eclipse-java-bin
+
