@@ -9,8 +9,12 @@
 pkgname='xampp'
 _srcver='7.4.10'
 _binver=0
-pkgver="${_srcver}$(test "${_binver}" -eq 0 || echo ".${_binver}")"
 pkgrel=10
+# This PKGBUILD deals with two different versioning formats: the upstream
+# format MAJOR.MINOR.REVISION-BUILD - used internally by XAMPP - and the
+# makepkg-friendly format MAJOR.MINOR.REVISION[.BUILD]-RELEASE (where the only
+# hyphen allowed is the one automatically added by makepkg before `$pkgrel`).
+pkgver="${_srcver}$(test "${_binver}" -eq 0 || echo ".${_binver}")"
 pkgdesc='A stand-alone LAMPP distribution'
 url='https://www.apachefriends.org/'
 license=('GPL')
