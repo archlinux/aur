@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=copilot-cli
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A tool to help deploy containerized applications on Amazon ECS'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/aws/copilot-cli'
 license=(Apache)
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('44c816a7f6ac975da6d5f9ab49e226c85e52e5a1b10cbaf686a10210edbb9d28')
+sha256sums=('745275306605a882460d8a9f5c03ee87c63d669227f3d27fc389888066fc010b')
 
 build() {
   cd $pkgname-$pkgver
