@@ -3,14 +3,14 @@
 
 pkgname=ddnet-skins
 pkgver=20200921
-pkgrel=1
+pkgrel=2
 pkgdesc="DDraceNetwork skin database"
 arch=(any)
 url="https://ddnet.tw"
 license=('custom:unknown') # skins were provided to DDNet without any license
 makedepends=('unzip')
 source=("$pkgname-$pkgver.zip::https://ddnet.tw/skins/zip/database.zip")
-sha256sums=('25707f99eb0914626b0e17fbef76e0ce1912efec942c16003dd1ba0f600e40d5')
+sha256sums=('fc6630b80f3c220ea71bb59b6abc71148c8501e41e343051afa79b83c31a1fbc')
 
 prepare() {
   rm -rf $pkgname-$pkgver
