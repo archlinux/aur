@@ -5,7 +5,7 @@ pkgbase = niacop-git
 	url = https://github.com/xdrie/niacop
 	arch = x86_64
 	license = GPL3
-	makedepends = git
+	makedepends = clang
 	makedepends = dotnet-sdk>=3.1.0.sdk100
 	depends = xprintidle
 	depends = xorg-xprop
