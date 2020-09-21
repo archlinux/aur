@@ -3,12 +3,12 @@
 pkgname=rocketchat-desktop
 pkgver=2.17.11
 _pkgname="Rocket.Chat.Electron-${pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url='https://github.com/RocketChat/Rocket.Chat.Electron'
 license=('MIT')
-depends=('electron7')
+depends=('electron')
 makedepends=('nodejs' 'node-gyp' 'python' 'yarn')
 optdepends=('hunspell-en_US: spell checking')
 conflicts=('rocketchat-client-bin')
@@ -17,14 +17,14 @@ source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         rocketchat-desktop.desktop
         use-system-dictionaries.patch)
 sha256sums=('2f13cc5d62b2246db8715809c4278748a770e5975f1a439a5d922ef7af4e26b7'
-            '996bd106c0e742be0f4a342c5b3f683a28b65b2f93e98c783cb6ef03e8fcc98c'
+            '18fab390ffce4f89a17d5d71a7e78fea9afa9f9d2bcdafecb4f310d4f804996f'
             '31fae4f98a61a774f84030fd43d2ef92c7633740dc5aa55967a21d0e29ea621a'
             '9a18a4db55c49c8c71c84e331d519dc16509c38566f5c1602224dc4a3ca73a3e')
 
 prepare() {
   cd "$_pkgname"
   patch -Np1 <../use-system-dictionaries.patch
-  yarn upgrade electron@"$(</usr/lib/electron7/version)" @babel/core@7.8.7 @babel/preset-env@7.8.7 --non-interactive
+  yarn upgrade electron@"$(</usr/lib/electron/version)" @babel/core@7.8.7 @babel/preset-env@7.8.7 --non-interactive
 }
 
 build() {
@@ -33,8 +33,8 @@ build() {
   export NODE_ENV=production
   yarn gulp build
   yarn run electron-builder --linux --"${!CARCH}" --dir \
-    -c.electronDist=/usr/lib/electron7 \
-    -c.electronVersion="$(</usr/lib/electron7/version)"
+    -c.electronDist=/usr/lib/electron \
+    -c.electronVersion="$(</usr/lib/electron/version)"
 }
 
 package() {
