@@ -1,6 +1,6 @@
 pkgbase = ncurses-git
 	pkgdesc = Screen handling and optimization package
-	pkgver = 6.1.20200111.r0.g431911e0
+	pkgver = 6.2.20200919.r0.gfceb2b7d
 	pkgrel = 1
 	url = https://invisible-island.net/ncurses/ncurses.html
 	arch = i686

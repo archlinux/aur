@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ncurses-git
-pkgver=6.1.20200111.r0.g431911e0
+pkgver=6.2.20200919.r0.gfceb2b7d
 pkgrel=1
 pkgdesc="Screen handling and optimization package"
 arch=('i686' 'x86_64')
@@ -33,6 +33,7 @@ build() {
     --with-cxx-shared \
     --with-pkg-config-libdir="/usr/lib/pkgconfig" \
     --with-shared \
+    --without-ada \
     --without-debug
   make
 }
