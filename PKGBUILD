@@ -1,7 +1,7 @@
 # Maintainer: zetaPRIME <qmanxt at gmail dot com>
 
 pkgname=qt5ct-svn-translucent
-pkgver=0.42.r561
+pkgver=1.2.r582
 pkgrel=1
 pkgdesc="Qt5 Configuration Tool, patched to globally allow translucent window backgrounds."
 arch=('i686' 'x86_64')
