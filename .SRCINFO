@@ -1,0 +1,14 @@
+pkgbase = gtk-theme-material-black
+	pkgdesc = Dark themes based on Material Design standards. Includes icons.
+	pkgver = 1.8.8
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1316887/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	options = !strip
+	source = https://github.com/rtlewis88/rtl88-Themes/archive/08236a5885fd334cd8f728d8241ae820ba5c575f.zip
+	sha256sums = 97485fcdcdb543c22086c2c80a2c6b7da33d6972251fe00e881965943f0462c3
+
+pkgname = gtk-theme-material-black
+
