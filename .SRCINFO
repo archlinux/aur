@@ -1,0 +1,16 @@
+pkgbase = duf-git
+	pkgdesc = Disk Usage/Free Utility
+	pkgver = r27.ac4f62d
+	pkgrel = 1
+	url = https://github.com/muesli/duf
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = duf
+	conflicts = duf
+	source = duf-git::git://github.com/muesli/duf.git
+	sha256sums = SKIP
+
+pkgname = duf-git
+
