@@ -1,5 +1,5 @@
 pkgbase = eclipse-java-bin
-	pkgdesc = Java ide but makepkg actually works with it
+	pkgdesc = Highly customizable Java IDE
 	pkgver = 4.17
 	pkgrel = 1
 	url = https://www.eclipse.org
