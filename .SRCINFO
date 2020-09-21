@@ -9,14 +9,16 @@ pkgbase = openimagedenoise-develop
 	makedepends = git-lfs
 	makedepends = cmake
 	makedepends = ispc>=1.14
+	makedepends = ninja
 	depends = intel-tbb
 	depends = python
+	provides = openimagedenoise=1.2.3
 	source = openimagedenoise-develop::git+https://github.com/OpenImageDenoise/oidn.git#tag=v1.2.3
 	source = git+https://github.com/OpenImageDenoise/mkl-dnn.git
 	source = git-lfs+https://github.com/OpenImageDenoise/oidn-weights.git
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = openimagedenoise-develop
 

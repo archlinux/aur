@@ -23,20 +23,20 @@ arch=('x86_64')
 url="https://www.openimagedenoise.org/"
 license=('Apache')
 depends=(intel-tbb python)
-makedepends=(git git-lfs cmake 'ispc>=1.14')
+provides=("openimagedenoise=${pkgver%.r*}")
+makedepends=(git git-lfs cmake 'ispc>=1.14' ninja)
 source=("${pkgname}::git+https://github.com/OpenImageDenoise/oidn.git${_fragment}"
         "git+https://github.com/OpenImageDenoise/mkl-dnn.git"
         "git-lfs+https://github.com/OpenImageDenoise/oidn-weights.git"
         )
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
-  cd ${srcdir}/${pkgname}
-  git config submodule.mkl-dnn.url ${srcdir}/mkl-dnn
-  git config submodule.weights.url ${srcdir}/oidn-weights
-  git submodule update --init --recursive # --remote
+  git -C "${srcdir}"/${pkgname%-git} config submodule.mkl-dnn.url "${srcdir}"/mkl-dnn
+  git -C "${srcdir}"/${pkgname%-git} config submodule.weights.url "${srcdir}"/oidn-weights
+  git -C "${srcdir}"/${pkgname%-git} submodule update --init --recursive # --remote
 }
 
 #pkgver() {
@@ -45,15 +45,14 @@ prepare() {
 #}
 
 build() {
-  cd ${srcdir}
-  mkdir -p build && cd build
-  cmake -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_INSTALL_PREFIX=/usr/ ../${pkgname}
-  make 
+  cmake -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_INSTALL_PREFIX=/usr/ \
+        -G Ninja -B "build" -S "${srcdir}"/${pkgname%-git}
+# shellcheck disable=SC2086 # to allow multiple flags in MAKEFLAGS variable.
+  ninja -C "build" ${MAKEFLAGS:--j1}
 }
 
 package() {
-  cd ${srcdir}/build
-  make install DESTDIR=${pkgdir}
+  DESTDIR=${pkgdir} ninja -C "build" install
 }
 
 # vim:set ts=2 sw=2 et:
