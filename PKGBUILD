@@ -13,7 +13,7 @@ conflicts=('sfk')
 _bin='sfk197-linux-64.exe'
 source=("$_bin::https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/$pkgver/$_bin/download")
 noextract=("$_bin")
-md5sums=('84972c34612a4afc5ba4b45e366b5c95')
+md5sums=('02fdd68d9a0310182af579518b921a13')
 
 prepare() {
   cp "$_bin" "$srcdir/sfk"
