@@ -10,8 +10,8 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='7570cf07107685ae6fac3989e3fc3e40fdd1db55' # git rev-parse v${pkgver}
-pkgver=246.5
+_tag='27d60e13ed5db2194cac14ad4cc86ad06d753805' # git rev-parse v${pkgver}
+pkgver=246.6
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
