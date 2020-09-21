@@ -1,6 +1,6 @@
 pkgbase = keybase-git
 	pkgdesc = the Keybase Go client, filesystem, and GUI
-	pkgver = 5.5.0+35896.807c29924b
+	pkgver = 5.6.0+36105.38f703e170
 	pkgrel = 1
 	url = https://keybase.io
 	install = keybase.install
@@ -14,6 +14,7 @@ pkgbase = keybase-git
 	makedepends = npm
 	makedepends = git
 	makedepends = rsync
+	makedepends = unzip
 	depends = fuse
 	depends = libxss
 	depends = gtk2
