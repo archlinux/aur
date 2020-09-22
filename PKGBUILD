@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/ioancole/ioanaur101")
+source=("https://raw.githubusercontent.com/ioancole/ioanaur101/master/aprogram.sh")
 noextract=()
-md5sums=('d8b4d56ee85d62765218746c3d31cf31')
+md5sums=('6445c32eb304f9de4a34d1d8ff54c23b')
 validpgpkeys=()
 
 package() {
