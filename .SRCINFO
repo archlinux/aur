@@ -1,6 +1,6 @@
 pkgbase = firefox-esr-bin
 	pkgdesc = Standalone web browser from mozilla.org - Extended Support Release
-	pkgver = 78.2.0
+	pkgver = 78.3.0
 	pkgrel = 1
 	url = http://www.mozilla.org/en-US/firefox/organizations/
 	install = firefox-esr.install
@@ -15,7 +15,7 @@ pkgbase = firefox-esr-bin
 	depends = dbus-glib
 	depends = nss
 	provides = firefox=78
-	source = https://ftp.mozilla.org/pub/firefox/releases/78.2.0esr/linux-x86_64/en-US/firefox-78.2.0esr.tar.bz2
+	source = https://ftp.mozilla.org/pub/firefox/releases/78.3.0esr/linux-x86_64/en-US/firefox-78.3.0esr.tar.bz2
 	source = firefox-esr.desktop
 	source = firefox-esr-safe.desktop
 	sha512sums = af733f1a7f84d0b7c540bf793dcd7706d1894fb3ee96d322583e640ad486eaffd8b35abd3c6e62c1d0a50a82f80368f6e1a7c9694a7872d485662ca8f66c0ca6
