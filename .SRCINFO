@@ -71,13 +71,7 @@ pkgbase = matlab
 	provides = matlab-licenses
 	provides = matlab-engine-for-python
 	provides = matlab-bin
-	source = matlab.tar
-	source = matlab.fik
-	source = matlab.lic
 	source = matlab.script
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
 	md5sums = b6651d0199305f18ab8c0c464b86a9c7
 
 pkgname = matlab
