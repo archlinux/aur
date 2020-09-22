@@ -1,7 +1,7 @@
 pkgbase = nushell-bin
 	pkgdesc = A new type of shell
 	pkgver = 0.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nushell.sh
 	install = nushell-bin.install
 	arch = i686
