@@ -2,18 +2,19 @@
 
 _pkgname=httpcore
 pkgname=python-httpcore
-pkgver=0.9.1
-pkgrel=3
+pkgver=0.10.2
+pkgrel=1
 pkgdesc="A minimal HTTP client"
 arch=('any')
 url="https://github.com/encode/${_pkgname}"
 license=('BSD')
-depends=('python-h11' 'python-h2' 'python-sniffio')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest-asyncio' 'python-pytest-trio' 'python-trustme' 'mitmproxy')
+depends=('python-h11' 'python-sniffio')
+optdepends=('python-h2: for HTTP/2 support')
+makedepends=('python-setuptools' 'python-h2')
+checkdepends=('python-pytest-asyncio' 'python-pytest-trio' 'python-trustme' 'uvicorn' 'mitmproxy')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('5105ff0c19b8a4a34080e79aa1d191199131450e658fbe0949b091e5acfb9cd8b11033757a3bd7dd1490e5fb61352eb44d086babd70d22be33479befd16745fd')
-b2sums=('8f7416c1e726892b152e7e9623790ac1e70b9142f45028b23df25f1d54b6f113f1a79839ec2a7d90b196197d53c880847526c2e47e07d52a0e104a9e2849bccf')
+sha512sums=('714ae548d194f5eb71447d13669b32ae9b37deee5791e0e171e04c721eb99f21c55996cc06cf82f115d9e11d806c1d6c0b54fe61922bb419d90c94cd93e374ce')
+b2sums=('ad5615b6a45dc5cd1a0128a6a6a48b0b29a4f56b753869c55018913a9047d712a028ed74a8fa2fcee36cc851f1c0f85a9f4ddf7c7aa1f5e3b28b09761c511aea')
 
 prepare() {
     cd "${srcdir}"/${_pkgname}-${pkgver}
