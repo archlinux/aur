@@ -1,7 +1,7 @@
 pkgbase = ocaml-compiler-libs-repackaged
 	pkgdesc = OCaml compiler libraries repackaged
-	pkgver = 0.12.1
-	pkgrel = 4
+	pkgver = 0.12.3
+	pkgrel = 1
 	url = https://github.com/janestreet/ocaml-compiler-libs
 	arch = x86_64
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = ocaml-compiler-libs-repackaged
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = dune>=1.0.0
+	makedepends = dune>=1.5.1
 	depends = ocaml>=4.04.1
 	options = !strip
-	source = ocaml-compiler-libs-repackaged-0.12.1-4.tar.gz::https://github.com/janestreet/ocaml-compiler-libs/archive/v0.12.1.tar.gz
-	sha256sums = d20f217992f26fa2012c67537391d55e1619e37c51087d1d65b583f08c849a04
+	source = ocaml-compiler-libs-repackaged-0.12.3-1.tar.gz::https://github.com/janestreet/ocaml-compiler-libs/archive/v0.12.3.tar.gz
+	sha256sums = 86b23bf8df2e027ecfc04f6a326cdc87f27b2e3790860fbc28aabb9d0c2cc174
 
 pkgname = ocaml-compiler-libs-repackaged
