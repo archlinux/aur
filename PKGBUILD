@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdisplay-git
-pkgver=5.19.0.beta.0.r50.gebeb9ec
+pkgver=5.19.0.beta.0.r72.g04d83ed
 pkgrel=1
 pkgdesc="App and daemon for display managing by KWinFT project, forked from KDE's KScreen"
 arch=(
