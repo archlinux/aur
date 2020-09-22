@@ -1,0 +1,13 @@
+pkgbase = nano-backup
+	pkgdesc = Precise and minimal file tracker
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/AlxHnr/nano-backup
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = nano-backup-0.4.0.tar.gz::https://github.com/AlxHnr/nano-backup/archive/v0.4.0.tar.gz
+	md5sums = 86a0ab0683c88f21a09022b2832d3487
+
+pkgname = nano-backup
+
