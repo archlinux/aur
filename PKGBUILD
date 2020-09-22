@@ -6,7 +6,7 @@
 
 _pkgname=garcon
 pkgname=$_pkgname-git
-pkgver=0.7.0.34.g0cbc6fb
+pkgver=4.16pre1.3.g189c43f
 pkgrel=1
 pkgdesc="Freedesktop.org compliant menu library"
 arch=(i686 x86_64)
@@ -25,7 +25,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname/
-    git describe | sed 's/^garcon-//;s/-/./g'
+    git describe | sed 's/^xfce-//;s/-/./g'
 }
 
 
