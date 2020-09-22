@@ -38,7 +38,7 @@ def main(pkgver):
         sha256sum, filename = line.split(maxsplit=1)
         if not filename.startswith('linux-x86_64/xpi/'):
             continue
-        sha256sums.append(sha256sum.strip("b'").strip("'"))
+        sha256sums.append(sha256sum)
         available_languages.append(
             filename[len('linux-x86_64/xpi/'):][:-len('.xpi')])
     available_languages = sorted(available_languages)
