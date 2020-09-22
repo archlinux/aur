@@ -1,8 +1,8 @@
 # Maintainer: neilg <neil.r.green+aur@gmail.com>
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=yourkit
-_version=2020.7
-_build=376
+_version=2020.9
+_build=408
 pkgver=${_version}b${_build}
 pkgrel=1
 pkgdesc="Java CPU and memory profiler."
@@ -20,7 +20,7 @@ source=(
   yourkit.sh
 )
 sha256sums=(
-  '5e7be560a7f77fe98a0644960011ee3aca8927f5b6fac07eea1ed06c99361146'
+  '056e22c3a39b16bc2a3b6c1a72414954d156dca94600ed52645ecb431b3c84ae'
   'b071670d8264f4ec8c61d83f3717e83c7c87873c678a75d60670a002e185373d'
   '6fc9612a76e2b50bb84130b0c40fcaccd04fe513e23ced398e707087459cc50e'
 )
