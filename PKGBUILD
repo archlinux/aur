@@ -1,7 +1,7 @@
-# Maintainer: tildearrow <acc12345acc at gmail dot com>
+# Maintainer: tildearrow <tildearrow@protonmail.com>
 # yes, I'm aware of the reference to $srcdir issue
 pkgname=input-modifier
-pkgver=1.3.2
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="uinput based key bindings and macros tool"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('udev')
 makedepends=('cmake')
 source=("https://github.com/tildearrow/input-modifier/archive/v$pkgver.tar.gz")
-sha256sums=('b7ac3755d22018dd78058d601e09ab2d9b9238b3b1671eeb83938b10de78829d')
+sha256sums=('25b522d72d3a5a75c42e4c7bf9d63fa547e7912e7266d7306d04a532ae149137')
 install=imod.install
 
 build() {
