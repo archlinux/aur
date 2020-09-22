@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Tor Browser (__REPL_LANGUAGE__)
+Name=Tor Browser (@PACKAGE_LANGUAGE@)
 Exec=/usr/bin/tor-browser
 Icon=tor-browser
 Categories=Network;
