@@ -5,7 +5,7 @@ _patch=01
 
 pkgname=nexus
 pkgver=${_version}.${_patch}
-pkgrel=1
+pkgrel=2
 pkgdesc="Nexus 2 Repository Manager (OSS)"
 url="http://nexus.sonatype.org"
 arch=('any')
@@ -39,8 +39,8 @@ package() {
 
   # move documentation to the right location
   mkdir -p $pkgdir/usr/share/doc/nexus
-  install $srcdir/nexus-$pkgver-$patchver/*.txt $pkgdir/usr/share/doc/nexus
-  rm $srcdir/nexus-$pkgver-$patchver/*.txt
+  install $srcdir/nexus-$_version-$_patch/*.txt $pkgdir/usr/share/doc/nexus
+  rm $srcdir/nexus-$_version-$_patch/*.txt
 
   # move example configuration to the right location
   mkdir -p $pkgdir/usr/share/doc/nexus/conf
@@ -49,7 +49,7 @@ package() {
   mkdir -p $pkgdir/opt/nexus/run
 
   # copy the source to the final directory
-  cp -a $srcdir/nexus-${pkgver}-${patchver}/* $pkgdir/opt/nexus || return 1
+  cp -a $srcdir/nexus-$_version-${_patch}/* $pkgdir/opt/nexus || return 1
   install $srcdir/nexus $pkgdir/opt/nexus/bin/nexus
 
     #install $srcdir/nexus.properties $pkgdir/opt/nexus/conf/nexus.properties || return 1

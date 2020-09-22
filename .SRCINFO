@@ -1,7 +1,7 @@
 pkgbase = nexus
 	pkgdesc = Nexus 2 Repository Manager (OSS)
 	pkgver = 2.14.13.01
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nexus.sonatype.org
 	install = nexus.install
 	arch = any
