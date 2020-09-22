@@ -1,0 +1,17 @@
+pkgbase = xwidgets
+	pkgdesc = The C++ backend for Jupyter interactive widgets.
+	pkgver = 0.20.2
+	pkgrel = 1
+	url = https://github.com/jupyter-xeus/xwidgets
+	arch = x86_64
+	license = BSD
+	depends = xtl
+	depends = xproperty
+	depends = xeus
+	depends = nlohmann-json
+	depends = jupyter-widgetsnbextension
+	source = https://github.com/jupyter-xeus/xwidgets/archive/0.20.2.tar.gz
+	md5sums = 2dda1147460516b6756b5cfb8766a13f
+
+pkgname = xwidgets
+
