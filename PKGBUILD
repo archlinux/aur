@@ -10,8 +10,8 @@ arch=("any")
 conflicts=("roundcube-rcmcarddav" "roundcube-rcmcarddav-git" "roundcubemail-plugin-carddav-git")
 depends=("roundcubemail")
 makedepends=("composer")
-source=("$url/releases/download/v$pkgver-alpha1/carddav-v$pkgver-alpha1.tgz")
-md5sums=("525688b0e165821bc1843ac5be7628c6")
+source=("$url/releases/download/v$pkgver/carddav-v$pkgver.tgz")
+md5sums=("c8be16d057cff5da136db8a6829b0c1b")
 backup=("etc/webapps/roundcubemail/plugins/carddav/config.inc.php")
 
 package() {
