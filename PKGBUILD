@@ -1,15 +1,15 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='usbimager'
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc='Minimal GUI application to write compressed disk images to USB drives'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://gitlab.com/bztsrc/usbimager'
 license=('MIT')
 depends=('gtk3' 'udisks2')
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('1dc151d08e99f298b4b1cb9000b6adb94ab765a2816da4b33c8ccc52f08ec99d')
+sha256sums=('20ffc3720f4c806285628064d536cbf5a59f05d6fdef92bd06f9fbd694426ce6')
 
 build() {
   USE_LIBUI=yes USE_UDISKS2=yes make -C "${pkgname}-${pkgver}/src"
