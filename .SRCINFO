@@ -1,23 +1,18 @@
 pkgbase = thunderbird-tbsync
 	pkgdesc = Sync contacts, tasks and calendars to thunderbird using Exchange ActiveSync (EAS) and CalDAV/CardDAV
-	pkgver = 0.7.11
+	pkgver = 2.12
 	pkgrel = 1
 	url = https://github.com/jobisoft/TbSync
 	arch = any
 	groups = office
-	license = GPL3
-	makedepends = zip
-	depends = thunderbird>=50
-	depends = thunderbird<61
-	provides = tbsync=0.7.11
+	license = MPL-2.0
+	depends = thunderbird>=68
+	depends = thunderbird<69
+	provides = tbsync=2.12
 	conflicts = thunderbird-tbsync-beta
-	replaces = thunderbird-tbsync-beta
-	options = !strip
-	options = !libtool
-	options = !staticlibs
-	options = !docs
-	source = thunderbird-tbsync-0.7.11.xpi::https://github.com/jobisoft/TbSync/releases/download/v0.7.11/TbSync-0.7.11.xpi
-	sha256sums = 04ae3b66ce85ea4cd0d78fd3c48a7b8a9f6919897c06c97ee80db6c5faa6a254
+	noextract = tbsync-2.12-tb.xpi
+	source = https://addons.thunderbird.net/thunderbird/downloads/file/1016743/tbsync-2.12-tb.xpi
+	sha256sums = d7e28222b569b50d6e624c8a6cfa1808956b8b8e0c64211d03fabf8d5acd857a
 
 pkgname = thunderbird-tbsync
 
