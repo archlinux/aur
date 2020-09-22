@@ -1,0 +1,6 @@
+diff --unified --recursive --new-file llvm-hs-pretty-0.9.0.0/Setup.hs llvm-hs-pretty-0.9.0.0-new/Setup.hs
+--- llvm-hs-pretty-0.9.0.0/Setup.hs	1969-12-31 17:00:00.000000000 -0700
++++ llvm-hs-pretty-0.9.0.0-new/Setup.hs	2020-09-14 10:14:03.727694328 -0600
+@@ -0,0 +1,2 @@
++import Distribution.Simple
++main = defaultMain
