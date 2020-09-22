@@ -4,7 +4,7 @@ post_install() {
   echo ":: You need to initialize a data provider prior to starting the service."
   echo "   This can be done using the initprovider command, for example, as root:"
   echo ""
-  echo "   su - sftpgo -c 'sftpgo initprovider -c /etc/sftpgo'"
+  echo "   su - sftpgo -s /bin/bash -c 'sftpgo initprovider -c /etc/sftpgo'"
   echo ""
   echo "   take a look at sftpgo initprovider --help for usage and all available options"
 }

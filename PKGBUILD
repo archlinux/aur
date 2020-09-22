@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r466.a550d08
+pkgver=r468.b23276c
 pkgrel=1
 pkgdesc='Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS'
 arch=('i686' 'x86_64')
@@ -27,7 +27,10 @@ source=("git+https://github.com/drakkan/${_pkgname}.git"
   "sftpgo.sysusers")
 sha256sums=('SKIP'
   '3ed05cb055374a935c142c74503ed5125c2f99734394b25cf53d08f8ce2e0cdf'
-  '24709c97e96376cc581b489810320450ea1ed74ef41d2670aec9905eb5ed717c')
+  '44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8')
+
+_uid_sftpgo=315
+_gid_sftpgo=315
 
 pkgver() {
   cd "${_pkgname}"
@@ -36,24 +39,22 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  go build -ldflags "-s -w -X github.com/drakkan/sftpgo/version.commit=`git describe --always --dirty` -X github.com/drakkan/sftpgo/version.date=`date --utc +%FT%TZ`" -o sftpgo
+  go build -ldflags "-s -w -X github.com/drakkan/sftpgo/version.commit=`git describe --always --dirty` -X github.com/drakkan/sftpgo/version.date=`date --utc +%FT%TZ`" -v -o sftpgo
   ./sftpgo gen completion bash > sftpgo-completion.bash
   ./sftpgo gen man -d man1
   gzip man1/*
 }
 
 package() {
-  SFTPGO_UID=315
-  SFTPGO_GID=315
   cd "${_pkgname}"
   install -Dm 755 sftpgo "$pkgdir/usr/bin/${_pkgname}"
   install -Dm 755 examples/rest-api-cli/sftpgo_api_cli.py "${pkgdir}"/usr/bin/sftpgo_api_cli
   sed -i 's/^User=root/User=sftpgo/g' init/${_pkgname}.service 
   sed -i 's/^Group=root/Group=sftpgo/g' init/${_pkgname}.service 
   install -Dm 644 init/${_pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
-  install -dm750 -o ${SFTPGO_UID} -g ${SFTPGO_GID} "${pkgdir}/etc/${_pkgname}"
-  install -Dm 640 -o ${SFTPGO_UID} -g ${SFTPGO_GID} "$srcdir/sftpgo.json" -t "${pkgdir}/etc/${_pkgname}"
-  install -dm750 -o ${SFTPGO_UID} -g ${SFTPGO_GID} "${pkgdir}/var/lib/${_pkgname}"
+  install -dm750 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "${pkgdir}/etc/${_pkgname}"
+  install -Dm 640 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "$srcdir/sftpgo.json" -t "${pkgdir}/etc/${_pkgname}"
+  install -dm750 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "${pkgdir}/var/lib/${_pkgname}"
   install -d "${pkgdir}/usr/share/${_pkgname}"
   cp -r templates "${pkgdir}/usr/share/${_pkgname}/"
   cp -r static "${pkgdir}/usr/share/${_pkgname}/"
