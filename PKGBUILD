@@ -2,7 +2,7 @@
 
 pkgname=1password
 pkgver=0.8.7.26947
-pkgrel=1
+pkgrel=2
 pkgdesc="The world's most-loved password manager - read-only development preview"
 arch=('x86_64')
 url='https://1password.com/'
@@ -12,7 +12,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::https://onepassword.s3.amazonaws.com/linux/appimage/1password-latest.AppImage")
 noextract=("${_appimage}")
-sha256sums=('32914f56660d8ba23fe04df8762035deb397448243e1875c8d88fead7cc10184')
+sha256sums=('e98de64e42a25172569c7303b253450c831fe011eb1e7a7152b770ef0caae224')
 
 prepare() {
     chmod +x "${_appimage}"
