@@ -23,22 +23,20 @@ pkgver() {
 }
 
 package() {
-    mkdir -p "${pkgdir}/usr/share/nightpdf"
-    cp -a NightPDF/app "${pkgdir}/usr/share/nightpdf"
-    install -D -m644 NightPDF/{app.js,package.json} -t "${pkgdir}/usr/share/nightpdf"
     install -D -m755 nightpdf.sh "${pkgdir}/usr/bin/nightpdf"
     install -D -m644 nightpdf.desktop -t "${pkgdir}/usr/share/applications"
     install -D -m644 NightPDF/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 NightPDF/{app.js,package.json} -t "${pkgdir}/usr/share/nightpdf"
+    cp -a NightPDF/app "${pkgdir}/usr/share/nightpdf"
     
     local _file
     local _res
     while read -r -d '' _file
     do
-        _res="$(file -S "$_file" | grep -o '[[:digit:]]*[[:space:]]x[[:space:]][[:digit:]]*,' | awk '{ print $1 }')"
+        _res="$(file -S "$_file" | grep -o '[0-9]*[[:space:]]x[[:space:]][0-9]*,' | awk '{ print $1 }')"
         
         # skip duplicated icons
-        [[ "${_file##*/}" =~ icon_[[:digit:]]*x[[:digit:]]*@2x.png ]] &&
-            [ -f "NightPDF/build/icon.iconset/icon_${_res}x${_res}.png" ] && continue
+        [ -d "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}" ] && continue
             
         mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps"
         install -D -m644 "$_file" "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/nightpdf.png"
