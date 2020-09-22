@@ -18,10 +18,10 @@ provides=('firefox=78')
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
 
-sha512sums=('af733f1a7f84d0b7c540bf793dcd7706d1894fb3ee96d322583e640ad486eaffd8b35abd3c6e62c1d0a50a82f80368f6e1a7c9694a7872d485662ca8f66c0ca6'
+sha512sums=('bc435663b80b6edc328b8fbc076a968cbeca9353773d9ad4abfa0a1b2c342f0b75b433bd25faa9c958513ba3f039343d5a4df18eeb0ac75bc33633c2628fdbe6'
             'c585f6e8ac7abfc96ad4571940b6f0dcc3f7331a18a518b4fe5d19b45e4c2d96c394524ea5c115c8fdd256c9229ea2fabeb1fc04ca7102f1626fd20728aef47d'
             'ab2fa2e08c7a65ac0bfe169a4b579e54b038bddabf838cd3df5ab341bd77be7c101092d0123598944d2174ab3a8fbc70dfbd692b2944016efdb7a69216a74428')
-[[ "$CARCH" == "i686" ]] && sha512sums[0]='38bd4fcf422831be0a2fbb1ee853da2db52300c25aa5cde6e901af9f159d2c1cc4a410678e64e42cb30f7cc48c89b9a54d7d184f25800ea7ee84fa8f6cc734b9'
+[[ "$CARCH" == "i686" ]] && sha512sums[0]='8fb2f3b0bc68636303a4596b2957e2680202ff5501602791c423e5a120ab787dcc2e93480e5b8e649e72ee233b0553dee940cfe7a928ca5de9ed76166c9f67cb'
 
 if [[ -n "$FIREFOX_ESR_BIN_PREFER_OLDER" ]]; then
     pkgver=68.12.0
