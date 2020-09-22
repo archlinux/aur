@@ -7,6 +7,7 @@ pkgbase = stegano-git
 	license = GPL3
 	makedepends = cargo
 	makedepends = git
+	provides = stegano
 	conflicts = stegano
 	source = git+https://github.com/steganogram/stegano-rs
 	sha512sums = SKIP

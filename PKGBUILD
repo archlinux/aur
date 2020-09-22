@@ -10,6 +10,7 @@ url="https://github.com/steganogram/stegano-rs"
 license=('GPL3')
 makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 source=("git+${url}")
 sha512sums=('SKIP')
 
