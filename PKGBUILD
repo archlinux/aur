@@ -2,15 +2,15 @@
 # Maintainer: Ryozuki <ryo@ryozuki.xyz>
 
 pkgname=ddnet-skins
-pkgver=20200921
+pkgver=20200922
 pkgrel=2
 pkgdesc="DDraceNetwork skin database"
 arch=(any)
 url="https://ddnet.tw"
-license=('custom:unknown') # skins were provided to DDNet without any license
+license=('custom:unknown')
 makedepends=('unzip')
 source=("$pkgname-$pkgver.zip::https://ddnet.tw/skins/zip/database.zip")
-sha256sums=('fc6630b80f3c220ea71bb59b6abc71148c8501e41e343051afa79b83c31a1fbc')
+sha256sums=('c46ee862cf87edc4f929bde5f173503b725ac6ec8f645b628e9764d98490bc16')
 
 prepare() {
   rm -rf $pkgname-$pkgver
