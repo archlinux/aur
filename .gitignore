@@ -2,3 +2,4 @@ pkg/
 src/
 torrserver
 TorrServer-linux-*
+torrserver-bin-*.pkg.tar.zst
