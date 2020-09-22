@@ -2,7 +2,7 @@
 
 _pkgname='usbimager'
 pkgname="${_pkgname}-bin"
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Minimal GUI application to write compressed disk images to USB drives'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gtk3' 'udisks2')
 source=("${_pkgname}-${pkgver}.zip::${url}/-/raw/binaries/${_pkgname}_${pkgver}-x86_64-linux-gtk.zip"
         "${_pkgname}-${pkgver}-manual.pdf::${url}/-/raw/master/usbimager-manual.pdf"
         "${_pkgname}-${pkgver}-LICENSE::${url}/-/raw/master/LICENSE")
-sha256sums=('49a11062ac722236c2f265358b96ffaad803e530ff5c7192e68d329564f8ba66'
+sha256sums=('36ccfa7942aeba4486cb3234e25ce04154fafbde619195926dd1dec97442d31d'
             'SKIP'
             'SKIP')
 
