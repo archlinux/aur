@@ -1,0 +1,19 @@
+pkgbase = htd
+	pkgdesc = A small but efficient C++ library for computing (customized) tree and hypertree decompositions.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/mabseher/htd/
+	arch = x86_64
+	groups = viennarna-package
+	license = GPL3
+	makedepends = cmake
+	makedepends = doxygen
+	provides = libhtd.so=1.2
+	provides = htd_main=1.2
+	source = htd-1.2.tar.gz::https://github.com/mabseher/htd/archive/1.2.tar.gz
+	md5sums = b96a0a6ff95b1321b3fbaf5261d82619
+	sha1sums = 042074e7c14dbeb6448beb8a27858b7a91257d01
+	sha256sums = 072a67d0853316626012961d2fcf2a112c4df75369b02a88f9d8757a868ccba4
+
+pkgname = htd
+
