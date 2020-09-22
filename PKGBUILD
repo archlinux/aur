@@ -30,6 +30,7 @@ build() {
 package() {
     cd "$srcdir"/aws-cli-$pkgver
     python setup.py install --root="$pkgdir"
+    ./scripts/gen-ac-index --index-location="$pkgdir"/usr/lib/python3.8/site-packages/awscli/data/ac.index
 
     install -Dm 644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
     install -Dm 644 bin/aws_bash_completer "$pkgdir"/usr/share/bash-completion/completions/aws
