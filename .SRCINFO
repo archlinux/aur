@@ -1,0 +1,15 @@
+pkgbase = qsixmixer
+	pkgdesc = Linux gui mixer for Focusrite Scarlett 6i6
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://sourceforge.net/projects/qsismixer/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	depends = qt5-base
+	source = https://master.dl.sourceforge.net/project/qsismixer/qsismix.tar.gz
+	md5sums = 13c173b0dd9c7b74c7930de611084cb5
+
+pkgname = qsixmixer
+
