@@ -7,13 +7,13 @@
 
 pkgname=python2-urwid
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Curses-based user interface library'
 url='http://excess.org/urwid/'
 arch=('x86_64')
 license=('LGPL')
 depends=('python2' 'glibc')
-makedepends=('glibc' 'python2-setuptools' 'python2-mock')
+makedepends=('glibc' 'python2-setuptools' 'python2-mock' 'python-tox')
 source=(https://github.com/urwid/urwid/archive/release-${pkgver}/${pkgname}-${pkgver}.tar.gz)
 sha256sums=('06fc11e62083f0de2ae8525d278bd5ca7f06bcf10773e299812ab5f617f8bd50')
 sha512sums=('6ab861c02edff37e31b1a5b138e71abf978f8ef9a54e0993b740ec62c0986ce1e25c2421a4a4b0d428a8cd64970496b23790074c911b6e4990b3d821a3bf2b4c')
@@ -26,7 +26,7 @@ build() {
 
 check() {
   (cd urwid-release-${pkgver}
-    python2 setup.py test
+    tox -e py27
   )
 }
 
