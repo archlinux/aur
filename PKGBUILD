@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/nushell/nushell/releases/do
         "https://raw.githubusercontent.com/nushell/nushell/$pkgver/LICENSE")
 url="http://nushell.sh"
 license=('MIT')
-sha256sums=('81d9d2c45aaa2f7b4be6744a9a59c61fac941f172c757b47a51160ef52d78592'
+sha256sums=('513f8d17351d9e4670134ad03dafb0a8bb8231d171ddaaf6776e5326527a3073'
             '57fdb6634a2372af0978dd178f8e157f227d96f3ca27ae9c73f1320f6c0c41d4')
 
 build() {
