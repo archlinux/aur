@@ -2,7 +2,7 @@
 
 pkgname='sfz-bin'
 pkgver='0.2.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A simple static file serving command-line tool written in Rust'
 arch=('x86_64')
 provides=('sfz')
