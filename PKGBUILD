@@ -1,18 +1,19 @@
-# Maintainer: Alex Peltzer ("alexpe87") <alexpe.aur@mailbox.org>
+# Maintainer: Christopher Vittal ("viralstitch") <chris@vittal.dev>
+# Former Maintainer (thans!) : Alex Peltzer ("alexpe87") <alexpe.aur@mailbox.org>
 # Former Maintainer (thanks dude!) : Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 # Contributor: Markus Heuser <markus.heuser@web.de>
 
 pkgname=samtools
-pkgver=1.10
-pkgrel=3
+pkgver=1.11
+pkgrel=1
 pkgdesc="tools for manipulating next-generation sequencing data"
 arch=('i686' 'x86_64')
 url="http://www.htslib.org/"
 license=('custom')
-depends=('htslib>=1.10')
+depends=('htslib>=1.11')
 optdepends=('luajit: needed for r2plot.lua vcfutils.lua')
 source=(https://github.com/samtools/samtools/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
-sha256sums=('7b9ec5f05d61ec17bd9a82927e45d8ef37f813f79eb03fe06c88377f1bd03585')
+sha256sums=('c067f08edf18ad2ff7a1b26165ec4652f57fe427a9eff0cadd169f72c7961b6a')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
