@@ -2,7 +2,7 @@
 
 pkgname=libinih
 pkgver=51
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Simple .INI file parser in C, good for embedded systems"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gcc-libs')
 makedepends=('meson')
 checkdepends=()
 optdepends=()
-provides=("$pkgname.so.0" "libINIReader.so.0")
+provides=("$pkgname.so=0-64" "libINIReader.so=0-64")
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/r$pkgver.tar.gz")
 sha256sums=("132361da6d3172760a40319722b50244aee1b7ce7077a0dd8805881e6a8ea4aa")
