@@ -3,7 +3,7 @@
 
 pkgname=wolfssl
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='small, fast, portable implementation of TLS/SSL for embedded devices to the cloud (formerly CyaSSL)'
 arch=(i686 x86_64)
 license=(GPL)
@@ -13,8 +13,7 @@ source=(${pkgname}-${pkgver}-stable.tar.gz::https://github.com/wolfSSL/wolfssl/a
         https://github.com/wolfSSL/wolfssl/releases/download/v${pkgver}-stable/${pkgname}-${pkgver}-stable.tar.gz.asc)
 sha256sums=('7de62300ce14daa0051bfefc7c4d6302f96cabc768b6ae49eda77523b118250c'
             'SKIP')
-validpgpkeys=('EBC80E415CA29677'
-              '8CE817DE0D3CCB4A')
+validpgpkeys=('A2A48E7BCB96C5BECB987314EBC80E415CA29677')
 
 build() {
   cd $pkgname-$pkgver-stable
