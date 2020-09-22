@@ -19,6 +19,7 @@ source=("git+https://github.com/petrmanek/$_pkgname.git")
 sha256sums=('SKIP')
 
 package() {
+	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	cd "$_pkgname"
 	install -m 755 -D "$_pkgname" "$pkgdir/usr/bin/${_pkgname}"
 }
