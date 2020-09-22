@@ -8,14 +8,14 @@
 
 pkgname=filebot
 pkgver=4.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://www.filebot.net/"
 license=('Commercial')
 install=$pkgname.install
 # install=()
-depends=('java8-openjfx' 'jre8-openjdk' 'fontconfig' 'chromaprint')
+depends=('liberica-jre-11-full-bin' 'fontconfig' 'chromaprint')
 makedepends=()
 provides=('filebot')
 conflicts=('filebot47' 'filebot-git')
@@ -34,7 +34,7 @@ source=(#"https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-po
         )
 
 md5sums=('07dc606ca9a5132bb39bf1bb55088605'
-         '3506d0f6c990fb918e91337c634ba70c')
+         '0176d5e120aecabce9f0a320ce8b0955')
 
 optdepends=('libzen: Required by libmediainfo'
 	    'libmediainfo: Read media info such as video codec, resolution or duration'
