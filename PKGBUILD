@@ -18,7 +18,7 @@
 
 pkgname='tor-browser'
 pkgver='9.5.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD)'
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
@@ -77,7 +77,7 @@ _dist_checksum() {
 
 }
 
-# Make a string suitable for `sed`, by escaping []/&$.*^\ - syntax: `_sed_escape STRING`
+# Make a string suitable for `sed`, by escaping "[]/&$.*^\" - syntax: `_sed_escape STRING`
 _sed_escape() {
 	echo "${1}" | sed 's/[]\/&.*$^[]/\\&/g'
 }
@@ -93,7 +93,7 @@ source=("${pkgname}.desktop.in"
 # No need for `makepkg -g`: the following sha256sums¸don't need to be updated #
 # with each release, everything is done automatically! Leave them like this!  #
 ###############################################################################
-sha256sums=('a4210f777196ec5c7c6b10cbf10146d2c72086e85419ed72d0d0e7cb6bcbad25'
+sha256sums=('0b0614d04d55ac3748775fd34cb6c1f244fd05b5a16cc1e3ae70d887f7eedbc6'
             '8a6e0945571c332c1fc8b1cef11d15f699a752da2bb403bd0b65ee44821cc643'
             'f25ccf68b47f5eb14c6fec0664c74f30ea9c6c58d42fc6abac3b64670aaa3152'
             '7b28b5dbe8ad573bb46e61b4d542b33e01ca240825ca640b4893fee6203b021f')
