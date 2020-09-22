@@ -6,14 +6,14 @@
 # Maintainer: Sebastian Markgraf <sebastian-markgraf@t-online.de>
 pkgname=python-numerai-cli
 pkgver=0.1.22
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A library for helping to deploy a Numer.ai compute node"
 arch=('any')
 url="https://github.com/numerai/numerai-cli/"
 license=('MIT')
 groups=()
-depends=("python" "python-setuptools")
+depends=("python" "python-setuptools" "python-boto3" "python-requests" "python-colorama" "python-click>=7" "python-numerapi")
 makedepends=()
 checkdepends=()
 optdepends=()

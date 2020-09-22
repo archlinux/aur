@@ -1,12 +1,17 @@
 pkgbase = python-numerai-cli
 	pkgdesc = A library for helping to deploy a Numer.ai compute node
 	pkgver = 0.1.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/numerai/numerai-cli/
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-setuptools
+	depends = python-boto3
+	depends = python-requests
+	depends = python-colorama
+	depends = python-click>=7
+	depends = python-numerapi
 	source = python-numerai-cli-0.1.22.tar.gz::https://github.com/numerai/numerai-cli/archive/v0.1.22.tar.gz
 	md5sums = 8b3318b40d807d9d6dbec1d0e7f75c96
 
