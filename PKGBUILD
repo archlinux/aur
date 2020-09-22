@@ -10,6 +10,7 @@ depends=('zlib' 'libxcb' 'openssl' 'libgit2')
 optdepends=('libx11: for binaryview plugin')
 arch=('i686' 'x86_64')
 pkgdesc="A new type of shell"
+provides=('nushell')
 conflicts=('nushell')
 install=nushell-bin.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nushell/nushell/releases/download/$pkgver/nu_${_underscoredpkgver}_linux.tar.gz"
