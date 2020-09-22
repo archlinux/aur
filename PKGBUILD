@@ -2,7 +2,7 @@
 
 pkgname=nft-blackhole
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Script / Daemon to blocking IP in nftables by country and black lists'
 arch=('x86_64')
 url='https://github.com/tomasz-c/nft-blackhole'
@@ -23,6 +23,6 @@ package() {
   install -Dm644 nft-blackhole.conf "$pkgdir/etc/nft-blackhole.conf"
   # Systemd unit files
   install -Dm644 nft-blackhole.service "$pkgdir/usr/lib/systemd/system/nft-blackhole.service"
-  install -Dm644 nft-blackhole.service "$pkgdir/usr/lib/systemd/system/nft-blackhole-reload.service"
-  install -Dm644 nft-blackhole.service "$pkgdir/usr/lib/systemd/system/nft-blackhole-reload.timer"
+  install -Dm644 nft-blackhole-reload.service "$pkgdir/usr/lib/systemd/system/nft-blackhole-reload.service"
+  install -Dm644 nft-blackhole-reload.timer "$pkgdir/usr/lib/systemd/system/nft-blackhole-reload.timer"
 }
