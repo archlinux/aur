@@ -1,6 +1,6 @@
 pkgname=diylc
-pkgver=4.8.0
-pkgrel=2
+pkgver=4.9.0
+pkgrel=1
 pkgdesc="Multi platform circuit layout and schematic drawing tool"
 arch=('any')
 url="https://bancika.github.io/diy-layout-creator/"
@@ -9,7 +9,7 @@ depends=('java-environment' 'sh' 'hicolor-icon-theme')
 optdepends=()
 makedepends=('unzip')
 source=(
-    "https://github.com/bancika/diy-layout-creator/releases/download/v${pkgver}/diylc-${pkgver/a/}.zip"
+    "https://github.com/bancika/diy-layout-creator/releases/download/v${pkgver}a/diylc-${pkgver/a/}.zip"
     "https://raw.githubusercontent.com/bancika/diy-layout-creator/v$pkgver/diylc/diylc-core/src/org/diylc/images/icon_small.png"
     "https://raw.githubusercontent.com/bancika/diy-layout-creator/v$pkgver/diylc/diylc-core/src/org/diylc/images/icon_medium.png"
     "https://raw.githubusercontent.com/bancika/diy-layout-creator/v$pkgver/diylc/diylc-core/src/org/diylc/images/icon_large.png"
@@ -17,7 +17,7 @@ source=(
     "diylc.desktop"
 )
 sha256sums=(
-    'c512dd3f9058208de9fc49dfaad04e802a12c2adefc6ceb68d85ef626172ad53'
+    'f712e9e258a78daf9757f660ab8ff62e8a22f1cfbf5057c7414b287182e8934e'
     'a4a3c6059cb8cd3e129deb9ccb826025830e3914fa948df977fc73d7a20245c7'
     '6d586133cba43fae2871038ff717fc78d748a5097eec3f9a0dbf136451b88528'
     '66b616f47f907354fc1f7aaf3f077af5640475b025e692bfad0e22cf1af8b319'
