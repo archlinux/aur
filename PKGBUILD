@@ -2,7 +2,7 @@
 
 pkgname=hkd-git
 pkgver=r99.213db3c
-pkgrel=3
+pkgrel=4
 pkgdesc='hkd allows to define system-wide hotkeys independent from the graphical session'
 arch=('x86_64')
 url="https://git.alemauri.eu/alema/hkd"
@@ -33,11 +33,6 @@ pkgver() {
 build() {
   cd "${srcdir}/${_basename}"
   make
-}
-
-package() {
-  cd "${srcdir}/${_basename}"
-  make install
 }
 
 package() {
