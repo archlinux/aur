@@ -3,7 +3,7 @@
 # Based on nushell package, but uses prebuilt binary
 
 pkgname=nushell-bin
-pkgver=0.19.0
+pkgver=0.20.0
 _underscoredpkgver="${pkgver//./_}"
 pkgrel=1
 depends=('zlib' 'libxcb' 'openssl' 'libgit2')
