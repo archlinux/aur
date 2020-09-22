@@ -1,14 +1,12 @@
 pkgbase = nexus
 	pkgdesc = Nexus 2 Repository Manager (OSS)
-	pkgver = 2.14.13.01
-	pkgrel = 2
+	pkgver = 2.14.18.01
+	pkgrel = 1
 	url = http://nexus.sonatype.org
 	install = nexus.install
 	arch = any
 	license = GPL3
-	depends = java-environment
-	optdepends = apache: a full featured webserver
-	optdepends = maven: a java project management and project comprehension tool
+	depends = java-environment=8
 	provides = nexus2
 	provides = nexus
 	conflicts = nexus2
@@ -16,15 +14,19 @@ pkgbase = nexus
 	conflicts = nexus-oss
 	options = !strip
 	options = !docs
-	backup = opt/nexus/bin/jsw/conf/wrapper.conf
-	source = http://www.sonatype.org/downloads/nexus-2.14.13-01-bundle.tar.gz
-	source = http://wrapper.tanukisoftware.com/download/3.5.26/wrapper-delta-pack-3.5.26.tar.gz
-	source = nexus
+	backup = usr/lib/nexus/conf/nexus.properties
+	source = https://www.sonatype.org/downloads/nexus-2.14.18-01-bundle.tar.gz
+	source = https://wrapper.tanukisoftware.com/download/3.5.43/wrapper-delta-pack-3.5.43.tar.gz
+	source = nexus.sysusers
+	source = nexus.tmpfiles
 	source = nexus.service
-	sha256sums = 66e2ae803af26c6af34a82cc510d7fa2037080f35a72b4398f65d2f157fd3afc
-	sha256sums = 635e545fde9c8728e4d7126859cab286637d565f041ce63596f5361fb85fc924
-	sha256sums = 945e2fa64d6096416edd60c2a98c0ed385aee00f6bb3b33f6cbbc428b6b47d07
-	sha256sums = b89aaee6f035d7be20af5b738ed3b892df7f4db6538f9b7ec3c3f54685bbe7f8
+	source = 01-paths.patch
+	sha256sums = 350af8b270bec7fda5861a15b8a5b7870fd8903d0b9a210754113d5a966ce6a6
+	sha256sums = eb25cd3a4d63e1540daf37f90820ce48befe673071fcf2ba37f3773654498de1
+	sha256sums = 9a5908103137af8176664ddb17d166183aa19cd455746d08f0f58a1a3d9f4eb2
+	sha256sums = e4110396c5c2c617f6bc37bbd3cf4c6fa9da72df7df6d035117dea39f3e24ac9
+	sha256sums = a62d439d727c1eced9341ad5fedbc1a5a42494925b01c559e6426c46bbf55c25
+	sha256sums = 9136aee79732184e1da6cfeca0a77708d0595a35b2e38b16cf28a1b41ae7429d
 
 pkgname = nexus
 

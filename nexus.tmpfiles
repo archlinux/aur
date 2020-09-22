@@ -1,0 +1,5 @@
+d /var/log/nexus 0750 nexus nexus -
+d /var/lib/nexus 0750 nexus nexus -
+d /run/nexus 0750 nexus nexus -
+z /usr/lib/nexus/conf/nexus.properties 0640 nexus nexus -
+L+ /var/lib/nexus/logs - - - - /var/log/nexus

@@ -1,0 +1,94 @@
+diff -rNc nexus-2.14.18-01-orig/bin/jsw/conf/wrapper.conf nexus-2.14.18-01/bin/jsw/conf/wrapper.conf
+*** nexus-2.14.18-01-orig/bin/jsw/conf/wrapper.conf	Mon May 18 13:59:42 2020
+--- nexus-2.14.18-01/bin/jsw/conf/wrapper.conf	Tue Sep 22 08:26:29 2020
+***************
+*** 26,32 ****
+  wrapper.java.library.path.1=bin/jsw/lib
+  
+  # Additional JVM parameters (tune if needed, but match the sequence of numbers!)
+! wrapper.java.additional.1=-Djava.io.tmpdir=./tmp
+  wrapper.java.additional.2=-Djava.net.preferIPv4Stack=true
+  wrapper.java.additional.3=-Dcom.sun.jndi.ldap.connect.pool.protocol="plain ssl"
+  wrapper.java.additional.3.stripquotes=TRUE
+--- 26,32 ----
+  wrapper.java.library.path.1=bin/jsw/lib
+  
+  # Additional JVM parameters (tune if needed, but match the sequence of numbers!)
+! wrapper.java.additional.1=-Djava.io.tmpdir=/var/lib/nexus/tmp
+  wrapper.java.additional.2=-Djava.net.preferIPv4Stack=true
+  wrapper.java.additional.3=-Dcom.sun.jndi.ldap.connect.pool.protocol="plain ssl"
+  wrapper.java.additional.3.stripquotes=TRUE
+***************
+*** 58,64 ****
+  wrapper.on_exit.12=RESTART
+  
+  # Set up JSW logging
+! wrapper.logfile=logs/wrapper.log
+  wrapper.logfile.format=PM
+  wrapper.logfile.loglevel=INFO
+  wrapper.logfile.maxsize=10m
+--- 58,64 ----
+  wrapper.on_exit.12=RESTART
+  
+  # Set up JSW logging
+! wrapper.logfile=/var/log/nexus/wrapper.log
+  wrapper.logfile.format=PM
+  wrapper.logfile.loglevel=INFO
+  wrapper.logfile.maxsize=10m
+diff -rNc nexus-2.14.18-01-orig/bin/nexus nexus-2.14.18-01/bin/nexus
+*** nexus-2.14.18-01-orig/bin/nexus	Mon May 18 13:59:42 2020
+--- nexus-2.14.18-01/bin/nexus	Tue Sep 22 08:26:29 2020
+***************
+*** 11,17 ****
+  # These settings can be modified to fit the needs of your application
+  
+  # Set this to the root of the Nexus installation
+! NEXUS_HOME=".."
+  
+  # If specified, the Wrapper will be run as the specified user.
+  
+--- 11,17 ----
+  # These settings can be modified to fit the needs of your application
+  
+  # Set this to the root of the Nexus installation
+! NEXUS_HOME="/usr/lib/nexus"
+  
+  # If specified, the Wrapper will be run as the specified user.
+  
+***************
+*** 31,37 ****
+  PRIORITY=
+  
+  # Location of the pid file.
+! #PIDDIR="."
+  
+  # If uncommented, causes the Wrapper to be shutdown using an anchor file.
+  #  When launched with the 'start' command, it will also ignore all INT and
+--- 31,37 ----
+  PRIORITY=
+  
+  # Location of the pid file.
+! PIDDIR="/run/nexus"
+  
+  # If uncommented, causes the Wrapper to be shutdown using an anchor file.
+  #  When launched with the 'start' command, it will also ignore all INT and
+diff -rNc nexus-2.14.18-01-orig/conf/nexus.properties nexus-2.14.18-01/conf/nexus.properties
+*** nexus-2.14.18-01-orig/conf/nexus.properties	Mon May 18 13:59:42 2020
+--- nexus-2.14.18-01/conf/nexus.properties	Tue Sep 22 08:37:42 2020
+***************
+*** 22,28 ****
+! nexus-webapp-context-path=/nexus
+  
+  # Nexus section
+! nexus-work=${bundleBasedir}/../sonatype-work/nexus
+  runtime=${bundleBasedir}/nexus/WEB-INF
+  
+  # orientdb buffer size in megabytes
+--- 22,28 ----
+! nexus-webapp-context-path=/
+  
+  # Nexus section
+! nexus-work=/var/lib/nexus
+  runtime=${bundleBasedir}/nexus/WEB-INF
+  
+  # orientdb buffer size in megabytes

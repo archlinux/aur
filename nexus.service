@@ -3,12 +3,14 @@ Description=Sonatype Nexus 2.x
 After=network.target
 
 [Service]
-ExecStart=/opt/nexus/bin/nexus start
-ExecStop=/opt/nexus/bin/nexus stop
-ExecReload=/opt/nexus/bin/nexus restart
-PIDFile=/opt/nexus/run/nexus.pid
+Environment=PLEXUS_NEXUS_WORK=/var/lib/nexus
+ExecStart=/usr/lib/nexus/bin/nexus start
+ExecStop=/usr/lib/nexus/bin/nexus stop
+ExecReload=/usr/lib/nexus/bin/nexus restart
+PIDFile=/run/nexus/nexus.pid
 Type=forking
 User=nexus
+Group=nexus
 
 [Install]
 WantedBy=multi-user.target

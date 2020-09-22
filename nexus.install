@@ -1,83 +1,80 @@
-#!/bin/sh
-# $Id$
-# vim:set ts=2 sw=2 et:
-
-# arg 1:  the new package version
-pre_install() {
- /bin/true
+has_old_layout()
+{
+	test -d /opt/sonatype-work/nexus/conf && ! test -d /var/lib/nexus/conf
 }
 
-# arg 1:  the new package version
-post_install() {
-  ln -s /opt/nexus/bin/nexus /etc/rc.d/nexus
+post_install()
+{
+	systemd-sysusers nexus.conf
+	systemd-tmpfiles --create nexus.conf
 
-  echo ">>> Creating user and group and setting permissions..."
-  getent group nexus > /dev/null || usr/sbin/groupadd nexus
-  getent passwd nexus > /dev/null || usr/sbin/useradd -c \
-        'Maven Repository Manager' -g nexus -d '/opt/nexus' \
-        --system -s /bin/bash nexus &> /dev/null
+	cat <<EOF
 
-  cd opt/nexus
+The default URL for this installation is
 
-  chown -R nexus:nexus * 
-  chown -R nexus:nexus /opt/sonatype-work/
-  chown -R nexus:nexus /opt/nexus 
-  chown -R nexus:nexus /opt/nexus/run
+	http://127.0.0.1:8081/
 
-  cat << EOF
->>>
->>>                      Systemd service file added
->>> If you would like to start it on system startup, please enable it by 
->>> systemctl enable nexus.service
->>>
->>> Nexus is running by default on port 8081 and is bound to all interfaces,
->>> you can change this in the nexus.properties as well. 
->>>
->>> The nexus.log can be found in /opt/nexus/logs.
->>>
->>> For additional information please visit http://nexus.sonatype.org
+To change these settings edit the file
+
+	/usr/lib/nexus/conf/nexus.properties
+
+All logs can be found at
+
+	/var/log/nexus
+
+Sonatype strongly suggests using the latest Java 8 release version of Java
+available from Oracle. Support for Java 9 has not been verified - DO NOT USE IT.
+
+See https://help.sonatype.com/repomanager2/system-requirements
+
 EOF
 }
 
-# arg 1:  the new package version
-# arg 2:  the old package version
-pre_upgrade() {
- /bin/true
+pre_upgrade()
+{
+	if has_old_layout; then
+	   	systemctl disable --now nexus
+	fi
 }
 
-# arg 1:  the new package version
-# arg 2:  the old package version
-post_upgrade() {
-  cd opt/nexus
+post_upgrade()
+{
+	systemctl daemon-reload
 
-  chown -R nexus:nexus * 
-  chown -R nexus:nexus /opt/sonatype-work
-  chown -R nexus:nexus /opt/nexus 
-  chown -R nexus:nexus /opt/nexus/run
+	cat <<EOF
 
+See Release Notes at
+	https://help.sonatype.com/repomanager2/release-notes/2020-release-notes
+
+EOF
+
+	if has_old_layout; then
+		echo ">>>"
+		echo ">>>"
+		echo ">>> Found old Nexus package layout."
+		echo ">>>"
+		echo ">>> You need to move all the content of /opt/sonatype-work/nexus"
+		echo ">>> to /var/log/nexus and /var/lib/nexus, e.g."
+		echo ">>>"
+	    echo ">>>      mv /opt/sonatype-work/nexus/logs/* /var/log/nexus"
+		echo ">>>      rm -rf /opt/sonatype-work/nexus/logs"
+	    echo ">>>      mv /opt/sonatype-work/nexus/* /var/lib/nexus"
+		echo ">>>"
+		echo ">>> Re-enable nexus.service if needed"
+		echo ">>>"
+		echo ">>>      systemctl enable --now nexus.service"
+		echo ">>>"
+		echo ">>>"
+	fi
 }
 
-# arg 1:  the old package version
-pre_remove() {
- /bin/true
+pre_remove()
+{
+	systemctl disable --now nexus
 }
 
-# arg 1:  the old package version
-post_remove() {
-  getent passwd nexus > /dev/null && usr/sbin/userdel nexus &>/dev/null
-  getent group nexus > /dev/null && usr/sbin/groupdel nexus &>/dev/null  
-
-	if [ -d /opt/nexus/run ] ; then
-	    rm -r /opt/nexus/run
-	fi  
-
-	if [ -d /opt/sonatype-work ] ; then
-	    rm -r /opt/sonatype-work
-	fi  
-
-	if [ -h /etc/rc.d/nexus ] ; then
-	    rm /etc/rc.d/nexus
-	fi  
-
+post_remove()
+{
+	systemctl daemon-reload
 }
 
