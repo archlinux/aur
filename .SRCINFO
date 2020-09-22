@@ -1,0 +1,22 @@
+pkgbase = python-numerapi
+	pkgdesc = Python API and command line interface for the numer.ai machine learning competition
+	pkgver = 2.3.4
+	pkgrel = 1
+	url = https://github.com/uuazed/numerapi
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-responses
+	checkdepends = python-pytest-cov
+	checkdepends = python-codecov
+	depends = python
+	depends = python-setuptools
+	depends = python-dateutil
+	depends = python-pytz
+	depends = python-tqdm
+	depends = python-click>=7
+	source = python-numerapi-2.3.4.tar.gz::https://github.com/uuazed/numerapi/archive/2.3.4.tar.gz
+	md5sums = 4279f7857916b96fa6fd876c0f8f62f7
+
+pkgname = python-numerapi
+
