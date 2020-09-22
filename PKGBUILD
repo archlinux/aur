@@ -3,7 +3,7 @@
 pkgname=crispy-doom
 pkgdesc="Vanilla-compatible enhanced Doom engine"
 pkgver=5.9.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://fabiangreffrath.github.io/crispy-doom"
 license=('GPL2')
@@ -13,8 +13,10 @@ optdepends=('freedm: Free deathmatch game'
             'freedoom1: Free Ultimate Doom-compatible game'
             'freedoom2: Free Doom II-compatible game')
 install=crispy-doom.install
-source=(https://github.com/fabiangreffrath/$pkgname/archive/$pkgname-$pkgver.tar.gz)
-b2sums=('63d9a89d6099485c79ff4cad69975de790b32a4ece4bded172ebf771a2bf1b4dcd21ab58383ca3c5eea32a4eff72e65ec0e3a283c85f1bc62be680de04f88e52')
+source=(https://github.com/fabiangreffrath/$pkgname/archive/$pkgname-$pkgver.tar.gz
+        0001-prevent-crashes-with-simultaneous-use-of-record-and-.patch)
+b2sums=('63d9a89d6099485c79ff4cad69975de790b32a4ece4bded172ebf771a2bf1b4dcd21ab58383ca3c5eea32a4eff72e65ec0e3a283c85f1bc62be680de04f88e52'
+        'b1e77adf37f22f1ef47b614e27e6158ac7c19bf5b7adfa97a434b04f514a1e5cb7f1f77024a373392c836c5456c87b5bb6f7240566389574392a2e5f05d63d5d')
 
 prepare() {
   cd "$pkgname-$pkgname-$pkgver"
