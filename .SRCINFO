@@ -9,6 +9,7 @@ pkgbase = kmscon-patched-git
 	makedepends = libxslt
 	makedepends = docbook-xsl
 	makedepends = linux-api-headers
+	makedepends = git
 	depends = systemd
 	depends = libdrm
 	depends = mesa
