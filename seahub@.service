@@ -1,0 +1,13 @@
+[Unit]
+Description=The web frontend for seafile server.
+After=seafile-server@.service
+
+[Service]
+Type=forking
+ExecStart=/srv/seafile/%i/seafile-server/seahub.sh start
+ExecStop=/srv/seafile/%i/seafile-server/seahub.sh stop
+User=seafile
+Group=seafile
+
+[Install]
+WantedBy=multi-user.target

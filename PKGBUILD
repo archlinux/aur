@@ -45,12 +45,14 @@ source=(
     "$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz"
     "${_thirdpart[0],,}.tar.gz::https://media.djangoproject.com/releases/1.11/${_thirdpart[0]}.tar.gz"
     "${_thirdpart[1],,}.tar.gz::https://github.com/gintas/${_thirdpart[1]%-*}/archive/v${_thirdpart[1]##*-}.tar.gz"
+    'seahub@.service'
     'nginx.example.conf'
 )
 sha256sums=(
     'cc7f5a1642d203b2390ae3c30c8a5546d1e829d9d1a5ddf686e558292746ce5c'
     '4200aefb6678019a0acf0005cd14cfce3a5e6b9b90d06145fcdd2e474ad4329c'
     '5985205ec990ad1319e6d238616284b342f018d41a30dc089b76349fb17b15ae'
+    '67bb375871ce908b48bef53277284c9d8f80ee2e733efc89cb66d987647195e4'
     '461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171'
 )
 options=('!strip')
@@ -90,8 +92,11 @@ package() {
             --install-lib="usr/share/seafile-server/$pkgname/thirdpart/" \
             --optimize=1
     done
-    rm -rf "$pkgdir"/usr/{bin,share/seafile-server/$pkgname/thirdpart/*.egg-info}
+    rm -rf "$pkgdir"/usr/{bin,share/seafile-server/"$pkgname"/thirdpart/*.egg-info}
 
+    install -Dm644 \
+        "$srcdir/seahub@.service" \
+        "$pkgdir/usr/lib/systemd/system/seahub@.service"
     install -Dm644 \
         "$srcdir/nginx.example.conf" \
         "$pkgdir/etc/webapps/$pkgname/nginx.conf"
