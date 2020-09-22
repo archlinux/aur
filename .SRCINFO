@@ -1,0 +1,23 @@
+pkgbase = infrared-git
+	pkgdesc = Library for uniform sampling of RNA sequences given structural and sequence constraints.
+	pkgver = 0.3.r7.gec411b9
+	pkgrel = 1
+	url = https://github.com/s-will/Infrared/
+	arch = x86_64
+	groups = viennarna-package
+	license = GPL3
+	makedepends = git
+	makedepends = boost
+	makedepends = doxygen
+	depends = htd
+	depends = boost-libs
+	depends = python-rna
+	provides = libinfrared.so
+	provides = libhtdwrap.so
+	provides = redprint.py
+	conflicts = infrared
+	source = Infrared::git+https://github.com/s-will/Infrared/#branch=master
+	md5sums = SKIP
+
+pkgname = infrared-git
+
