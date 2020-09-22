@@ -3,20 +3,17 @@
 _pkgbase=akvcam
 pkgname=${_pkgbase}-dkms-git
 pkgver=1.1.0.r0.gce8c98e
-pkgrel=2
+pkgrel=3
 pkgdesc="Virtual camera for Linux"
 url="https://github.com/webcamoid/akvcam"
-arch=('x86_64' 'i686')
-license=('GPLv2')
+arch=('any')
+license=('GPL2')
 depends=('dkms')
 makedepends=('git')
 conflicts=("${_pkgbase}-dkms")
 provides=("${_pkgbase}-dkms")
-install="${pkgname}.install"
-source=("git://github.com/webcamoid/akvcam.git"
-        "${pkgname}.install")
-md5sums=('SKIP'
-         '3e315711dc9e57c9ba963abea81468b1')
+source=("git://github.com/webcamoid/akvcam.git")
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${_pkgbase}"
@@ -25,11 +22,6 @@ pkgver() {
         git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
-}
-
-build() {
-    cd "${srcdir}/${_pkgbase}/src"
-    make
 }
 
 package() {
@@ -43,6 +35,4 @@ package() {
     cp -vf share/examples/output.c "${pkgdir}/etc/${_pkgbase}/examples"
     cd "${srcdir}/${_pkgbase}/src"
     cp -ar * "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
-    cd "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
-    make clean
 }
