@@ -5,7 +5,7 @@
 pkgname=php56-composer
 epoch=1
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dependency Manager for PHP 5.6"
 arch=('any')
 license=('MIT')
@@ -34,7 +34,7 @@ prepare() {
 build() {
     cd ${srcdir}/${pkgname}
 
-    patch -p0 < ../../php56.patch
+    patch -p0 < ${srcdir}/php56.patch
 
     php56 -d phar.readonly=Off bin/compile
 }
@@ -45,7 +45,7 @@ check() {
     # Install the dev dependencies to run the unit tests
     bin/composer -n install
 
-    patch -p0 < ../../phpunit56.patch
+    patch -p0 < ${srcdir}/phpunit56.patch
 
     vendor/bin/phpunit
 }
