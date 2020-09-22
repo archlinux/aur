@@ -1,6 +1,6 @@
-diff --unified --recursive --text src/vulkan-man-pages-1.2.148/Makefile src2/vulkan-man-pages-1.2.148/Makefile
---- src/vulkan-man-pages-1.2.148/Makefile	2020-07-20 03:04:18.000000000 -0500
-+++ src2/vulkan-man-pages-1.2.148/Makefile	2020-08-02 21:37:51.683223751 -0500
+diff --unified --recursive --text src/vulkan-man-pages-1.2.154/Makefile src2/vulkan-man-pages-1.2.154/Makefile
+--- src/vulkan-man-pages-1.2.154/Makefile	2020-07-20 03:04:18.000000000 -0500
++++ src2/vulkan-man-pages-1.2.154/Makefile	2020-08-02 21:37:51.683223751 -0500
 @@ -407,7 +407,7 @@
  
  # Build the individual refpages, then the symbolic links from aliases

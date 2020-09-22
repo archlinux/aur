@@ -2,7 +2,7 @@
 # Modified PKGBUILD from vulkan-html-docs
 
 pkgname="vulkan-man-pages"
-pkgver=1.2.148
+pkgver=1.2.154
 pkgrel=1
 pkgdesc="Vulkan man pages as manpages"
 arch=("any")
@@ -11,7 +11,6 @@ license=('custom')
 makedepends=(
 	"asciidoctor"
 	"cmake"
-	"dblatex"
 	"ghostscript"
 	"git"
 	"nodejs"
@@ -21,8 +20,8 @@ makedepends=(
 )
 source=("$url/archive/v$pkgver.tar.gz" "manpage.patch")
 sha256sums=(
-	'6eb9f22f193308efa90d947b927c47583d2a6c0e133d1b4a1a0f97d94b8a670e'
-	'6de188870cdd213f7184d34df69b65df811bb52932a0f604248dbb323bfd979b'
+	'd0c9dae301c13f2d2f992056982864c4df2ab7e8b3d9dde7fb398e0520d1f574'
+	'f867124881d2735ae2091f1071213f196590c9e6b6e6ce06bab70c6c965d8540'
 )
 
 prepare() {
