@@ -276,8 +276,8 @@ END
 
   export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
   if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
-      make -C obj uploadsymbols
+    make -C obj uploadsymbols
   else
-      cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.zip
+    cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.tar.zst
   fi
 }
