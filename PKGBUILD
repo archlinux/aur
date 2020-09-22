@@ -14,5 +14,5 @@ sha256sums=("SKIP")
 
 package() {
   mkdir -p $pkgdir/usr/share/backgrounds
-	cp -a $srcdir/cynicalteam $pkgdir/usr/share/backgrounds
+	cp -a $srcdir/wallpapers-$pkgver-$pkgrel/cynicalteam $pkgdir/usr/share/backgrounds
 }
