@@ -1,8 +1,8 @@
 # Maintainer: Andrey Alekseev <andrey.android7890@gmail.com>
 
 pkgname=('bootsplash-theme-manjaro-space-purple-git')
-pkgver=1.0.r13.g1c6189d
-pkgrel=1
+pkgver=1.0.r14.gb02ee87
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Beautiful Manjaro Bootsplash with space animation"
 url="https://github.com/ANDRoid7890/bootsplash-theme-manjaro-space-purple"
