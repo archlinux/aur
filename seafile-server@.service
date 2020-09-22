@@ -1,16 +1,13 @@
 [Unit]
-Description=Next-generation open source cloud storage.
-After=syslog.target network.target
+Description=Seafile Server Core.
+After=network.target
 
 [Service]
 Type=forking
-User=seafile
-WorkingDirectory=/srv/seafile/%i/seafile-server
-
-ExecStartPre=/srv/seafile/%i/seafile-server/seafile.sh start
-ExecStart=/srv/seafile/%i/seafile-server/seahub.sh start
-ExecStop=/srv/seafile/%i/seafile-server/seahub.sh stop
+ExecStart=/srv/seafile/%i/seafile-server/seafile.sh start
 ExecStop=/srv/seafile/%i/seafile-server/seafile.sh stop
+User=seafile
+Group=seafile
 
 [Install]
 WantedBy=multi-user.target
