@@ -3,7 +3,7 @@
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
 pkgname="multisystem"
-pkgver="1.0449"
+pkgver="1.0450"
 pkgrel="1"
 pkgdesc="A GUI tool to create a usb system that can boot multiple distro's"
 url="http://liveusb.info/dotclear/index.php"
@@ -18,9 +18,8 @@ optdepends=('fatresize: The FAT16/FAT32 non-destructive resizer.')
 source=("${pkgname}-${pkgver}.tar.bz2::http://liveusb.info/${pkgname}/${pkgname}.tar.bz2"
         "Packages::http://liveusb.info/${pkgname}/depot/dists/all/main/binary-i386/Packages"
 )
-sha256sums=('dff4200f7318b55dfb240ea24563f0eb0026e778918bddd3f13601afb16c502e'
-            'ab6702b6dd0d5f3d26e8bb3f0fe8211253f45e14456fb01be9c1dd96cec5282c'
-)
+sha256sums=('c8556c6dcb23f86510c4c3f1fbd49a394097b6b969dee20b9bc0b1a079bb9265'
+            '3a2092c3ce6ec8094ba8edd0de39f252b366691ca349fba1cfab9163364aad00')
 
 _multisystem="#!/usr/bin/sh
 exec /usr/local/share/multisystem/gui_multisystem.sh
