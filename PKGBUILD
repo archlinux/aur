@@ -2,12 +2,12 @@
 
 pkgname=sais
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Strange Adventures In Infinite Space is a roguelike video game created by the indie developer Digital Eel'
 url='http://digital-eel.com/sais/'
 license=('GPL3')
 arch=('x86_64' 'aarch64')
-depends=()
+depends=('physfs' 'sdl2_mixer')
 makedepends=('tar' 'cmake' 'git' 'wget' 'make' 'sdl2' 'sdl2_mixer')
 source=("https://github.com/kuroneko/sais/archive/v${pkgver}.tar.gz")
 sha512sums=('4f44eb367a0feecfdf2f25dae81f8335d0ea0db99fd3ae89f298bd9dae373d51db7f14c67b1ea0552ca2f72ce64db1372daa8b14876d6e0c04ad28a6bc0e7bb7')
