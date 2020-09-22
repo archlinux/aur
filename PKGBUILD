@@ -158,6 +158,7 @@ build() {
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
+  export MOZ_ENABLE_FULL_SYMBOLS=1
   export MACH_USE_SYSTEM_PYTHON=1
 
   # LTO needs more open files
