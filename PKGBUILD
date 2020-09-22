@@ -1,10 +1,12 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
 # Contributor: E100
 
+### THIS PACKAGE IS NOT REQUIRED TO RUN STEAM, INSTALL THE NOSYSTEMD VERSIONS OF STEAM DEPENDENCIES ###
+
 _spkgrel=1
 _repo=http://mirror.chaoticum.net/arch/multilib/os
 pkgname=lib32-libsystemd.so
-pkgver=246.4
+pkgver=246.6
 pkgrel=1
 arch=('x86_64')
 license=('GPL2')
