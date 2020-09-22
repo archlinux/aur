@@ -1,5 +1,5 @@
 pkgbase = infrared-git
-	pkgdesc = Library for uniform sampling of RNA sequences given structural and sequence constraints.
+	pkgdesc = A generic C++/Python hybrid library for efficient (fixed-parameter tractable) Boltzmann sampling.
 	pkgver = 0.3.r7.gec411b9
 	pkgrel = 1
 	url = https://github.com/s-will/Infrared/
