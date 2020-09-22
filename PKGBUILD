@@ -2,9 +2,9 @@
 
 pkgname=1password
 pkgver=0.8.7.26947
-pkgrel=3
+pkgrel=4
 _appimagver=0.8.7-1
-_appimage="${pkgname}-${pkgver}.AppImage"
+_appimage="${pkgname}-${pkgver}-${pkgrel}.AppImage"
 pkgdesc="The world's most-loved password manager - read-only development preview"
 arch=('x86_64')
 url='https://1password.com/'
