@@ -1,5 +1,5 @@
 pkgbase = tuprolog
-	pkgdesc = A light-weight Prolog system for distributed applications and infrastructures.
+	pkgdesc = A light-weight Prolog system for distributed applications and infrastructures
 	pkgver = 4.0.3
 	pkgrel = 1
 	url = http://apice.unibo.it/xwiki/bin/view/Tuprolog/

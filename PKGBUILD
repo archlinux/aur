@@ -3,7 +3,7 @@
 pkgname=tuprolog
 pkgver=4.0.3
 pkgrel=1
-pkgdesc='A light-weight Prolog system for distributed applications and infrastructures.'
+pkgdesc='A light-weight Prolog system for distributed applications and infrastructures'
 arch=('any')
 url='http://apice.unibo.it/xwiki/bin/view/Tuprolog/'
 license=('LGPL')
