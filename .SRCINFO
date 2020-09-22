@@ -1,7 +1,7 @@
 pkgbase = gamemode
 	pkgdesc = A daemon/lib combo that allows games to request a set of optimisations be temporarily applied to the host OS
 	pkgver = 1.6
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/FeralInteractive/gamemode
 	arch = x86_64
 	license = BSD

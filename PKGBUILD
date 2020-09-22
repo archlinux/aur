@@ -3,7 +3,7 @@
 pkgname=('gamemode' 'lib32-gamemode')
 pkgbase='gamemode'
 pkgver=1.6
-pkgrel=7
+pkgrel=8
 pkgdesc="A daemon/lib combo that allows games to request a set of optimisations be temporarily applied to the host OS"
 arch=('x86_64')
 url="https://github.com/FeralInteractive/gamemode"
@@ -22,8 +22,8 @@ build() {
         -Dwith-systemd-user-unit-dir=/usr/lib/systemd/user
     meson compile -C build64
 
-    export CFLAGS=-m32
-    export CXXFLAGS=-m32
+    export CFLAGS+=" -m32"
+    export CXXFLAGS+=" -m32"
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
     meson "${pkgbase}-${pkgver}" build32 \
