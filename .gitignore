@@ -1,0 +1,5 @@
+/pkg/
+/please-bin-*.pkg.tar.xz
+/please-bin-*.pkg.tar.zst
+/please_*_*_*.tar.gz
+/src/
