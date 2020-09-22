@@ -4,7 +4,7 @@
 buildarch=8
 
 pkgname=uboot-raspberrypi4-rc
-pkgver=2020.07rc5
+pkgver=2020.10rc5
 pkgrel=1
 pkgdesc="U-Boot for Raspberry Pi 4"
 arch=('aarch64')
@@ -18,7 +18,7 @@ options=('!strip' '!makeflags' !buildflags 'staticlibs')
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver/rc/-rc}.tar.bz2"
         'boot.txt'
         'mkscr')
-md5sums=('3b10951fa62e91433d0045a29a8588b0'
+md5sums=('96675a44190df17f2083c348e574b79c'
          '364b0d31dfa497efa18ee71676a73145'
          '96d327ad1824134515d3ec25b4ffd7c6')
 
