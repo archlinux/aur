@@ -1,0 +1,23 @@
+pkgbase = compiler-rt8
+	pkgdesc = Compiler runtime libraries for clang (8.x)
+	pkgver = 8.0.1
+	pkgrel = 1
+	url = https://compiler-rt.llvm.org/
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = gcc8
+	makedepends = llvm8
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	depends = gcc8-libs
+	provides = compiler-rt=8.0.1
+	conflicts = compiler-rt
+	options = staticlibs
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/compiler-rt-8.0.1.src.tar.xz
+	source = 0001-Fix-sanitizer-common-build-with-glibc-2.31.patch
+	sha256sums = 11828fb4823387d820c6715b25f6b2405e60837d12a7469e7a8882911c721837
+	sha256sums = 78ba7227c75f62909ce2f93d9609655f0427e12025c9ace666be60aa9c70bc8d
+
+pkgname = compiler-rt8
+

@@ -1,0 +1,63 @@
+From 0e3c9f6c358da501ce7edfa0a9cbb309cd2f2416 Mon Sep 17 00:00:00 2001
+From: Felix Schindler <aur@felixschindler.net>
+Date: Tue, 22 Sep 2020 09:55:10 +0000
+Subject: [PATCH] Fix sanitizer-common build with glibc 2.31
+
+This is basically https://reviews.llvm.org/D70662 adapted to the
+current state.
+---
+ .../sanitizer_platform_limits_posix.cc            |  5 +++--
+ .../sanitizer_platform_limits_posix.h             | 15 +--------------
+ 2 files changed, 4 insertions(+), 16 deletions(-)
+
+diff --git a/lib/sanitizer_common/sanitizer_platform_limits_posix.cc b/lib/sanitizer_common/sanitizer_platform_limits_posix.cc
+index ecc69bc..5a0035f 100644
+--- a/lib/sanitizer_common/sanitizer_platform_limits_posix.cc
++++ b/lib/sanitizer_common/sanitizer_platform_limits_posix.cc
+@@ -1127,8 +1127,9 @@ CHECK_SIZE_AND_OFFSET(ipc_perm, uid);
+ CHECK_SIZE_AND_OFFSET(ipc_perm, gid);
+ CHECK_SIZE_AND_OFFSET(ipc_perm, cuid);
+ CHECK_SIZE_AND_OFFSET(ipc_perm, cgid);
+-#if !defined(__aarch64__) || !SANITIZER_LINUX || __GLIBC_PREREQ (2, 21)
+-/* On aarch64 glibc 2.20 and earlier provided incorrect mode field.  */
++#if !SANITIZER_LINUX || __GLIBC_PREREQ (2, 31)
++/* glibc 2.30 and earlier provided 16-bit mode field instead of 32-bit
++   on many architectures.  */
+ CHECK_SIZE_AND_OFFSET(ipc_perm, mode);
+ #endif
+ 
+diff --git a/lib/sanitizer_common/sanitizer_platform_limits_posix.h b/lib/sanitizer_common/sanitizer_platform_limits_posix.h
+index de69852..652d5cb 100644
+--- a/lib/sanitizer_common/sanitizer_platform_limits_posix.h
++++ b/lib/sanitizer_common/sanitizer_platform_limits_posix.h
+@@ -204,26 +204,13 @@ namespace __sanitizer {
+     u64 __unused1;
+     u64 __unused2;
+ #elif defined(__sparc__)
+-#if defined(__arch64__)
+     unsigned mode;
+-    unsigned short __pad1;
+-#else
+-    unsigned short __pad1;
+-    unsigned short mode;
+     unsigned short __pad2;
+-#endif
+     unsigned short __seq;
+     unsigned long long __unused1;
+     unsigned long long __unused2;
+-#elif defined(__mips__) || defined(__aarch64__) || defined(__s390x__)
+-    unsigned int mode;
+-    unsigned short __seq;
+-    unsigned short __pad1;
+-    unsigned long __unused1;
+-    unsigned long __unused2;
+ #else
+-    unsigned short mode;
+-    unsigned short __pad1;
++    unsigned int mode;
+     unsigned short __seq;
+     unsigned short __pad2;
+ #if defined(__x86_64__) && !defined(_LP64)
+-- 
+2.28.0
+
