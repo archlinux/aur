@@ -6,7 +6,7 @@
 # Mantainer: Lorenzo Ferrillo <lorenzofer at live dot it>
 _pkgname=zbar
 pkgname=lib32-zbar
-pkgver=0.23
+pkgver=0.23.1
 pkgrel=1
 pkgdesc="Application and library for reading bar codes from various sources. 32bit libraries only version"
 arch=('x86_64')
@@ -16,8 +16,7 @@ depends=('zbar' 'lib32-imagemagick' 'lib32-v4l-utils' 'lib32-dbus' 'lib32-libsm'
 makedepends=('docbook-xsl' 'xmlto')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/mchehab/zbar/archive/$pkgver.tar.gz"
 )
-sha512sums=('bc2667a2a5a5f2e9fd3f39e57bf1d7f860b20a0b5faffc38791d222a6ff0414aff880295ce5ccb92acce7250503f2a7f48ac12651cf82cfb1933b302da26e393'
-)
+sha256sums=('297439f8859089d2248f55ab95b2a90bba35687975365385c87364c77fdb19f3')
 prepare() {
   cd zbar-$pkgver
   autoreconf -vfi
