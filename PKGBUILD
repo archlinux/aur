@@ -17,6 +17,4 @@ sha256sums=('SKIP'
 	    'SKIP'
 	    'SKIP'
 	    'SKIP')
-pkgdesc="Native replacement for the Steam runtime using system libraries"
-provides=(libudev0-shim lib32-libudev0-shim lib32-libgudev lib32-libpulse)
-conflicts=(libudev0-shim lib32-libudev0-shim lib32-libgudev lib32-libpulse)
+pkgdesc="Native replacement for the Steam runtime using system libraries (non systemd)"
