@@ -1,0 +1,10 @@
+post_install() {
+	echo
+	echo "==========================================================================="
+	echo "The ARIN TAL is not included in this package due due licensing constraints."
+	echo "To use the ARIN TAL, download it yourself from"
+	echo "https://www.arin.net/resources/manage/rpki/tal/"
+	echo "and place the arin.tal file in /etc/rpki/"
+	echo "==========================================================================="
+	echo
+}
