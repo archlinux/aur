@@ -25,5 +25,6 @@ pkgname = python-rnablueprint
 
 pkgname = perl-rnablueprint
 	depends = perl
+	depends = libxcrypt
 	depends = rnablueprint=1.3.0
 

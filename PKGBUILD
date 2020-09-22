@@ -55,7 +55,7 @@ package_python-rnablueprint() {
 }
 
 package_perl-rnablueprint() {
-  depends=('perl' rnablueprint="${pkgver}")
+  depends=('perl' 'libxcrypt' rnablueprint="${pkgver}")
   cd "$srcdir/$pkgName-$pkgver"
 	cd interfaces/Perl
 	make DESTDIR="$pkgdir" install
