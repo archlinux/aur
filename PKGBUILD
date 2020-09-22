@@ -4,7 +4,7 @@ pkgname=clerk-git
 _pkgname=clerk
 pkgver=944.0bbc0b7
 pkgrel=1
-conflicts=('clerk')
+conflicts=('clerk-legacy')
 provides=('clerk')
 pkgdesc="rofi/fzf driven mpd client"
 arch=('any')
@@ -15,7 +15,7 @@ install=clerk-git.install
 makedepends=('git')
 optdepends=('flac: tagging support'
 			'vorbis-tools: tagging support'
-			'mutagen: tagging support')
+			'python-mutagen: tagging support')
 source=('git+https://github.com/carnager/clerk')
 
 pkgver() {
