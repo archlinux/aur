@@ -1,7 +1,7 @@
 # Maintainer: Greyson Christoforo <grey@christoforo.net>
 # Contributor: Alex Forencich <alex@alexforencich.com>
 pkgname=python-pyvisa 
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A Python package with bindings to the 'Virtual Instrument Software Architecture' VISA library"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-distribute' 'python-docutils')
 optdepends=('python-pyvisa-py: Pure Python backend')
 
 source=("https://github.com/pyvisa/pyvisa/archive/$pkgver.tar.gz")
-md5sums=('1ef98142678a989e91c940630eb781a9')
+md5sums=('1922d2631d370c4dd83118da22842d76')
 
 build() {
   cd "pyvisa-${pkgver}"
