@@ -4,8 +4,8 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=7.1.4
-pkgrel=2
+pkgver=7.1.5
+pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('any')
 url='https://github.com/haiwen/seahub'
@@ -48,7 +48,7 @@ source=(
     'nginx.example.conf'
 )
 sha256sums=(
-    '921ef4373311c06c1192975a294d7d38c12ac34381a7df19542391fc1d810baf'
+    'cc7f5a1642d203b2390ae3c30c8a5546d1e829d9d1a5ddf686e558292746ce5c'
     '4200aefb6678019a0acf0005cd14cfce3a5e6b9b90d06145fcdd2e474ad4329c'
     '5985205ec990ad1319e6d238616284b342f018d41a30dc089b76349fb17b15ae'
     '461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171'
