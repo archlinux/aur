@@ -4,7 +4,7 @@
 pkgbase=zenkit
 pkgname=zenkit
 pkgver=20200922
-pkgrel=1
+pkgrel=2
 pkgdesc='A platform for collaboration and project management'
 arch=('x86_64')
 url='https://zenkit.com'
@@ -28,7 +28,7 @@ package() {
 
     mkdir "${pkgdir}/opt/${pkgbase}"
 
-    tar xpf zenkit-linux.tar.gz -C "${pkgdir}/opt/${pkgbase}/" --strip-components=1
+    tar xpf zenkit-base-linux.tar.gz -C "${pkgdir}/opt/${pkgbase}/" --strip-components=1
     mv favicon.ico "${pkgdir}/opt/${pkgbase}/zenkit.ico" 
 
     ln -s "/opt/${pkgbase}/${pkgbase}" "${pkgdir}/usr/bin/${pkgbase}"
