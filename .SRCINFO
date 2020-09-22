@@ -1,14 +1,14 @@
 pkgbase = comedilib
 	pkgdesc = Comedi is the kernel-level driver code. Comedilib is the user-level API library code. This package includes official python bindings.
-	pkgver = 0.11.0
-	pkgrel = 2
+	pkgver = 0.12.0
+	pkgrel = 1
 	url = http://comedi.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL2
 	makedepends = swig
-	source = http://www.comedi.org/download/comedilib-0.11.0.tar.gz
-	sha512sums = bebf24161d145d077498db91e4fac92a962c33c6b7dce3e19b68b32814e44aafdf6b5f8f9c0dd5fdbf5cbbe3b150498bbe08c9307503e4c7be5e7699a68e1b34
+	source = http://www.comedi.org/download/comedilib-0.12.0.tar.gz
+	sha512sums = e2df049e1b23b6488ba426b48d4701faabfca2ccfeb439b67fb69f2fe13320d3f2d48ec93233805a1277c27af8e5f916f6d91de2e71a0cc710b38eed8519b2ff
 
 pkgname = comedilib
 
