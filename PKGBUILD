@@ -2,7 +2,7 @@
 
 _pkgname=neovim
 _pkgver=0.5.0
-_pkgdate=20200921
+_pkgdate=20200922
 pkgname=neovim-nightly
 epoch=2
 pkgver="${_pkgver}+${_pkgdate}"
