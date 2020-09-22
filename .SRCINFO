@@ -5,9 +5,8 @@ pkgbase = qsixmixer
 	url = https://sourceforge.net/projects/qsismixer/
 	arch = x86_64
 	license = GPL
-	makedepends = git
-	makedepends = gcc
 	depends = qt5-base
+	depends = alsa-lib
 	source = https://master.dl.sourceforge.net/project/qsismixer/qsismix.tar.gz
 	md5sums = 13c173b0dd9c7b74c7930de611084cb5
 

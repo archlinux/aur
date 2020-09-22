@@ -8,7 +8,6 @@ arch=('x86_64')
 url="https://sourceforge.net/projects/qsismixer/"
 license=('GPL')
 depends=(qt5-base alsa-lib)
-makedepends=(gcc make)
 source=("https://master.dl.sourceforge.net/project/qsismixer/qsismix.tar.gz")
 md5sums=('13c173b0dd9c7b74c7930de611084cb5')
 
