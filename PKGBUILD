@@ -3,21 +3,18 @@
 
 _pkgbase=v4l2loopback
 pkgname=${_pkgbase}-dkms-git
-pkgver=0.12.5.r21.gaba3067
-pkgrel=2
+pkgver=0.12.5.r27.g6225222
+pkgrel=1
 pkgdesc="v4l2-loopback device"
 url="https://github.com/umlaeute/v4l2loopback"
-arch=('x86_64' 'i686')
-license=('GPLv2')
+arch=('any')
+license=('GPL2')
 depends=('dkms')
 makedepends=('git' 'help2man')
 conflicts=("${_pkgbase}-dkms")
 provides=("${_pkgbase}-dkms")
-install="${pkgname}.install"
-source=("git://github.com/umlaeute/v4l2loopback.git"
-        "${pkgname}.install")
-md5sums=('SKIP'
-         '3105b604a5ebe4af6df587049ed19946')
+source=("git://github.com/umlaeute/v4l2loopback.git")
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${_pkgbase}"
@@ -28,11 +25,6 @@ pkgver() {
     )
 }
 
-build() {
-    cd "${srcdir}/${_pkgbase}"
-    make
-}
-
 package() {
     cd "${srcdir}/${_pkgbase}"
     mkdir -p "${pkgdir}/usr/share/licenses/${_pkgbase}"
@@ -40,8 +32,4 @@ package() {
     make DESTDIR="${pkgdir}" PREFIX="/usr" install-utils install-man
     mkdir -p "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
     cp -ar * "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
-    cd "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
-    make clean
 }
-
-# vim:set ts=4 sw=4 et:
