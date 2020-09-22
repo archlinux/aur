@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=naabu
-pkgver=1.1.4
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A fast port scanner written in go with focus on reliability and simplicity"
 arch=("x86_64" "i686")
@@ -10,17 +10,16 @@ license=("GPL3")
 depends=("libpcap")
 makedepends=("go")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/projectdiscovery/naabu/archive/v${pkgver}.tar.gz")
-sha256sums=('fb5fae5ef7ef45217a238b59ed16095960c197c6f8b2f460873a445dbc80c2b4')
+sha256sums=('0d9e970c70b10d56695c8836847ee91a6717ceb1054e1ac7eb1d1c01437e0aa0')
 
 build() {
   cd ${pkgname}-${pkgver}/cmd/${pkgname}
-  go build \
-    -trimpath \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags "-extldflags \"${LDFLAGS}\"" \
-    .
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  go build .
 }
 
 package() {
