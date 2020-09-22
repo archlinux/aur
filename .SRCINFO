@@ -8,7 +8,6 @@ pkgbase = tuprolog
 	makedepends = gendesk
 	depends = java-runtime
 	depends = bash
-	provides = tuprolog
 	noextract = tuprolog-4.0.3.tar.gz
 	source = tuprolog-4.0.3.jar::https://gitlab.com/pika-lab/tuprolog/2p/wikis/uploads/87b96d15ce4a1c42ac9825883fd3cfdd/2p-4.0.3.jar
 	sha256sums = c7694d724f70c06544e4c360cc4bdacad0717974b8f721ae0e2c2cddcc477f2c

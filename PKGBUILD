@@ -7,7 +7,6 @@ pkgdesc='A light-weight Prolog system for distributed applications and infrastru
 arch=('any')
 url='http://apice.unibo.it/xwiki/bin/view/Tuprolog/'
 license=('LGPL')
-provides=('tuprolog')
 depends=('java-runtime' 'bash')
 makedepends=('gendesk')
 source=("${pkgname}-${pkgver}.jar::https://gitlab.com/pika-lab/tuprolog/2p/wikis/uploads/87b96d15ce4a1c42ac9825883fd3cfdd/2p-${pkgver}.jar")
