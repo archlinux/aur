@@ -3,7 +3,7 @@
 _pkgsrcname=tabler-icons
 _pkgmaintainer=tabler
 _versionprefix=v
-pkgver=1.23.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="A set of over 700 icons."
 pkgname=ttf-tabler-icons
@@ -11,7 +11,7 @@ arch=(any)
 url="https://github.com/tabler/tabler-icons"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${_versionprefix}${pkgver}.tar.gz")
-md5sums=('15081c49afb68838be939a3a7011d22c')
+md5sums=('184a7cd91adeb454d8b1a303ad3f1015')
 
 package() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}/"
