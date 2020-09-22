@@ -3,7 +3,7 @@
 
 pkgbase=zenkit
 pkgname=zenkit
-pkgver=20200408
+pkgver=20200922
 pkgrel=1
 pkgdesc='A platform for collaboration and project management'
 arch=('x86_64')
@@ -12,10 +12,10 @@ license=('Commercial')
 depends=('gconf')
 provides=('zenki')
 options=('!strip')
-source=('https://static.zenkit.com/downloads/zenkit-linux.tar.gz'
+source=('https://static.zenkit.com/downloads/desktop-apps/base/zenkit-base-linux.tar.gz'
         'https://zenkit.com/favicon.ico'
 	'zenkit.desktop')
-sha512sums=('0fb108c94edc735af48ddff9bf919fb1db33aab892f92aa09c2e20afdfd5c46da2a0a7807344c8bb8402cc02c63451894104441a6b39fca683071ec2556a3925'
+sha512sums=('a4eba606d2e2efe8b48e9291b168c36b13aa61dc49c252b8a88511f3447e6ade618eebc051fbbfe4af48cea99e2463d70ae6a7173af036c172c9f3d7e9efd068'
             '58137e4f6f50baae693a48ec2f6f0112abf62d28287e3fec86289d20aac77a023373fe23514e32cab463e298679995f68a545d8f1c8f260ce57020b6873d7811'
             '5b824efd2de3d8b213d850b5b1b2920583c7b2b9c25e77667b041aa65f97b368c6da888cc4ae700d11fa336a9668ddfe2ad062caa4ce1af83dfbf50fa4c103fb')
 package() {
