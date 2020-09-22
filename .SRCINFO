@@ -1,0 +1,25 @@
+pkgbase = xmrig-raspi4-donateless
+	pkgdesc = High performance, open source, cross platform RandomX, KawPow, CryptoNight and AstroBWT unified CPU/GPU miner.
+	pkgver = 6.3.3
+	pkgrel = 1
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = jansson
+	makedepends = gmp
+	makedepends = libmicrohttpd
+	makedepends = gcc81-raspi4-xmrig
+	depends = hwloc
+	depends = libuv
+	depends = curl
+	depends = openssl
+	conflicts = xmrig-bin
+	conflicts = xmrig
+	conflicts = xmrig-donateless
+	source = https://github.com/xmrig/xmrig/archive/v6.3.3.tar.gz
+	source = donateless.patch
+	md5sums = 79217eaec40dc91378b92043f2c34e48
+	md5sums = 0b557af84f7866f4a12c29c0413b4b5a
+
+pkgname = xmrig-raspi4-donateless
+

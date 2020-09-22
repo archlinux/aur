@@ -1,0 +1,28 @@
+diff --unified --recursive --text xmrig-6.3.3.orig/src/config.json xmrig-6.3.3.new/src/config.json
+--- xmrig-6.3.3.orig/src/config.json	2020-08-28 14:39:26.000000000 +0000
++++ xmrig-6.3.3.new/src/config.json	2020-09-21 17:05:45.849178754 +0000
+@@ -54,8 +54,8 @@
+         "cn/0": false,
+         "cn-lite/0": false
+     },
+-    "donate-level": 1,
+-    "donate-over-proxy": 1,
++    "donate-level": 0,
++    "donate-over-proxy": 0,
+     "log-file": null,
+     "pools": [
+         {
+diff --unified --recursive --text xmrig-6.3.3.orig/src/donate.h xmrig-6.3.3.new/src/donate.h
+--- xmrig-6.3.3.orig/src/donate.h	2020-08-28 14:39:26.000000000 +0000
++++ xmrig-6.3.3.new/src/donate.h	2020-09-21 17:04:33.220614492 +0000
+@@ -44,8 +44,8 @@
+  * XMR: 48edfHu7V9Z84YzzMa6fUueoELZ9ZRXq9VetWzYGzKt52XU5xvqgzYnDK9URnRoJMk1j8nLwEVsaSWJ4fhdUyZijBGUicoD
+  * BTC: 1P7ujsXeX7GxQwHNnJsRMgAdNkFZmNVqJT
+  */
+-constexpr const int kDefaultDonateLevel = 1;
+-constexpr const int kMinimumDonateLevel = 1;
++constexpr const int kDefaultDonateLevel = 0;
++constexpr const int kMinimumDonateLevel = 0;
+ 
+ 
+ #endif /* XMRIG_DONATE_H */
