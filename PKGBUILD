@@ -1,9 +1,9 @@
 # Ruijie Yu (first.last@outlook.com)
 pkgname=ctre-git
 _pkgname=${pkgname%-git}
-pkgver=2.8.4
+pkgver=2.9.1.r2.gfca770c
 pkgrel=1
-pkgdesc=
+pkgdesc='A Compile time PCRE (almost) compatible regular expression matcher'
 url="https://github.com/hanickadot/compile-time-regular-expressions/"
 arch=(any)
 license=(Apache-2.0)
