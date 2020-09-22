@@ -3,7 +3,7 @@
 pkgname=('gamemode' 'lib32-gamemode')
 pkgbase=gamemode
 pkgver=1.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Optimise Linux system performance on demand"
 arch=('x86_64')
 url="https://github.com/FeralInteractive/gamemode"
@@ -19,8 +19,9 @@ build() {
 		-Dwith-systemd-user-unit-dir=/usr/lib/systemd/user
 	meson compile -C build64
 
-	export CFLAGS=-m32
-	export CXXFLAGS=-m32
+	export CFLAGS+=" -m32"
+	export CXXFLAGS+=" -m32"
+	export LDFLAGS+=" -m32"
 	export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
 	arch-meson "$pkgbase-$pkgver" build32  \

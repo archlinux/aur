@@ -1,7 +1,7 @@
 pkgbase = gamemode
 	pkgdesc = Optimise Linux system performance on demand
 	pkgver = 1.6
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/FeralInteractive/gamemode
 	arch = x86_64
 	license = BSD
