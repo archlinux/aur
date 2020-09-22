@@ -3,12 +3,9 @@
 _version=2.14.18
 _patch=01
 
-# wrapper version
-_wersion=3.5.43
-
 pkgname=nexus
 pkgver=$_version.$_patch
-pkgrel=1
+pkgrel=2
 pkgdesc="Nexus 2 Repository Manager (OSS)"
 url="http://nexus.sonatype.org"
 arch=('any')
@@ -21,15 +18,13 @@ provides=(nexus2 nexus)
 options=(!strip !docs)
 
 source=("https://www.sonatype.org/downloads/nexus-$_version-$_patch-bundle.tar.gz"
-        "https://wrapper.tanukisoftware.com/download/$_wersion/wrapper-delta-pack-$_wersion.tar.gz"
 	nexus.sysusers
 	nexus.tmpfiles
-        nexus.service
+	nexus.service
 	01-paths.patch
 	)	
 
 sha256sums=('350af8b270bec7fda5861a15b8a5b7870fd8903d0b9a210754113d5a966ce6a6'
-            'eb25cd3a4d63e1540daf37f90820ce48befe673071fcf2ba37f3773654498de1'
             '9a5908103137af8176664ddb17d166183aa19cd455746d08f0f58a1a3d9f4eb2'
             'e4110396c5c2c617f6bc37bbd3cf4c6fa9da72df7df6d035117dea39f3e24ac9'
             'a62d439d727c1eced9341ad5fedbc1a5a42494925b01c559e6426c46bbf55c25'
@@ -62,8 +57,6 @@ package()
 
 	# move documentation to the right location
 	mv $pkgdir/usr/lib/nexus/*.txt $pkgdir/usr/share/doc/nexus
-
-	#install $srcdir/nexus.properties $pkgdir/opt/nexus/conf/nexus.properties || return 1
 
 	install -Dm644 $srcdir/nexus.service $pkgdir/usr/lib/systemd/system/nexus.service
 	install -Dm644 $srcdir/nexus.sysusers $pkgdir/usr/lib/sysusers.d/nexus.conf
