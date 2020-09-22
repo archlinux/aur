@@ -4,49 +4,40 @@
 # Contributor: Sergej Pupykin <pupykin DOT s+arch AT gmail.com>
 # Contributor: wahnby <wahnby AT yahoo DOT fr>
 
-pkgname='gnunet-git'
 _appname='gnunet'
-pkgver='0.12.2.r28750.b03978816'
+pkgname="${_appname}-git"
+pkgver='0.13.3.r29153.87467c4aa'
 pkgrel=1
 pkgdesc="A framework for secure peer-to-peer networking"
-arch=('any')
-url="http://gnunet.org"
+arch=('i686' 'x86_64')
+url="http://${_appname}.org"
 license=('GPL')
 provides=("${_appname}")
 conflicts=("${_appname}")
-depends=('gmp' 'libgcrypt' 'libextractor' 'sqlite' 'gnurl'
-	 'libmicrohttpd' 'libunistring' 'libidn' 'jansson')
-makedepends=('gettext' 'pkgconfig' 'autoconf' 'fakeuser-git'
-	     'bluez-libs' 'python' 'glpk' 'libpulse' 'opus')
+depends=('gmp' 'libgcrypt' 'libextractor' 'sqlite' 'gnurl' 'libsodium'
+	 'libmicrohttpd' 'libunistring' 'libidn' 'jansson' 'zbar')
+makedepends=('gettext' 'pkgconfig' 'autoconf' 'gst-plugins-base-libs'
+	     'bluez-libs' 'python' 'glpk' 'libpulse' 'git' 'opus')
 optdepends=('bluez-libs'
 	    'python'
 	    'glpk'
 	    'libpulse'
-	    'opus')
-install='gnunet.install'
+	    'opus'
+            'gst-plugins-base-libs: for gnunet-helper-audio-record')
 backup=('etc/gnunetd.conf')
 options=('!makeflags')
+install="${_appname}.install"
+source=("git+https://${_appname}.org/git/${_appname}.git"
+        "${_appname}.service"
+        "${_appname}.sysusers"
+        "${_appname}.tmpfiles"
+        'gnunetd.conf')
 
-source=("git+https://gnunet.org/git/${_appname}.git"
-        'gnunet.service')
-
-md5sums=('SKIP'
-         'a64f19ce71c02c200fa78ca2d1585bc8')
-
-_fakeadd_error() {
-
-	echo "You must have a 'gnunet' user and group, and additionally a 'gnunetdns' group in"
-	echo 'your system prior to building this package.'
-	echo
-	echo 'You can do:'
-	echo
-	echo '  groupadd -r gnunet'
-	echo '  useradd -r -l -g gnunet -d /var/lib/gnunet gnunet'
-	echo '  groupadd -r gnunetdns'
-
-	return 1
-
-}
+sha256sums=('SKIP'
+            '2fb156b5bda51ef7c0659ca19113e7c8cd651637ffb379264e2b61f65be367d1'
+            '65daa9fb07bdc8b8a11ca06f320b94ce6cfcc9681c6693ac655ca54881645a39'
+            '4832e45c02ad768a713ca7f2a04b58794e268a49130b5b8ab6b91917e3d4f945'
+            '52185d9f89eab7cdf10b8de4e5b651a854b05cc9d22e0c8139056a945b01f4cc')
 
 pkgver() {
 
@@ -63,44 +54,32 @@ prepare() {
 	cd "${srcdir}/${_appname}"
 	./bootstrap
 	sed -i 's|contrib doc|doc|' Makefile.*
-	[ -f Makefile ] || ./configure --prefix=/usr \
-	--without-mysql
 
-	# enable fakeadd under fakeroot environment
-	export LD_PRELOAD='/usr/lib/fakeuser/libfakeuser.so'
+}
+
+build() {
+
+	cd "${srcdir}/${_appname}"
+
+	test -f Makefile || ./configure --prefix=/usr --without-mysql
+	make
+	make -C contrib
 
 }
 
 package() {
 
-	local _gnunet_guid=714
-	local _gnunetdns_gid=715
-
 	cd "${srcdir}/${_appname}"
 
 	install -dm755 "${pkgdir}/etc"
-	touch "${pkgdir}/etc/gnunetd.conf"
+	install -Dm644 "${srcdir}/gnunetd.conf" "${pkgdir}/etc/gnunetd.conf"
 
-	# fakeadd
-	getent group gnunet > /dev/null || fakeadd -G -n gnunet -g ${_gnunet_guid} || _fakeadd_error
-	getent passwd gnunet > /dev/null || fakeadd -U -n gnunet -u ${_gnunet_guid} -g ${_gnunet_guid} -d /var/lib/gnunet || _fakeadd_error
-	getent group gnunetdns > /dev/null || fakeadd -G -n gnunetdns -g ${_gnunetdns_gid} || _fakeadd_error
-	install -dm755 "${pkgdir}/var/lib/gnunet"
-	chown gnunet:gnunet "${pkgdir}/var/lib/gnunet"
-
-	if ! getent group gnunet > /dev/null || ! getent passwd gnunet > /dev/null || ! getent group gnunetdns > /dev/null || [[ $(stat -c %u "${pkgdir}/var/lib/gnunet") -ne ${_gnunet_guid} ]]; then
-		_fakeadd_error
-	fi
-
-	# build
-	# ...I know, `make` should be inside `build()`... But we need the power of fakeadd+fakeroot *while* building!
-	make
-	make -C contrib
-
-	# install
 	make DESTDIR="${pkgdir}" install
 	make DESTDIR="${pkgdir}" -C contrib install
-	install -Dm0644 "${srcdir}/${_appname}.service" "${pkgdir}/usr/lib/systemd/system/${_appname}.service"
+
+	install -Dm644 "${srcdir}/${_appname}.service" "${pkgdir}/usr/lib/systemd/system/${_appname}.service"
+	install -Dm644 "${srcdir}/${_appname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_appname}.conf"
+	install -Dm644 "${srcdir}/${_appname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_appname}.conf"
 
 }
 
