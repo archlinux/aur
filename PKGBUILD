@@ -2,7 +2,7 @@
 
 pkgname=zsa-wally-cli
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Wally: Flash your ZSA Keyboard the EZ way."
 arch=('i686' 'x86_64')
 url="https://github.com/zsa/wally"
