@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/ioancole/ioanaur101")
 noextract=()
-md5sums=('3030e3d0e799ce0b26e38d6ebf7f910f')
+md5sums=('4fbe66c42568cb10e48878bf653053e5')
 validpgpkeys=()
 
 package() {
