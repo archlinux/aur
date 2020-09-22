@@ -9,29 +9,32 @@ arch=('i686' 'x86_64')
 url="http://www.glfw.org/"
 license=('ZLIB')
 depends=('glu' 'libgl' 'libxrandr')
-makedepends=('mesa')
-source=("http://downloads.sourceforge.net/sourceforge/glfw/glfw-${pkgver}.tar.bz2")
-sha512sums=('78f36d85734bc6689bd51f6af96f4f1773a57c62e7b1ff7ac9b88f4c3c6915685cb967350c2eaf94179df0db14973d543498aa490d6f9d6a9d4eddd5d1771201')
+makedepends=('mesa' 'texlive-latexextra')
+source=("${pkgname%2}-${pkgver}.tar.gz::https://github.com/glfw/glfw-legacy/archive/${pkgver}.tar.gz")
+sha512sums=('ccbe2f8c90359b83e8ee94a7ba8df293f5366accad8689cf9dba630c61bded18db0d18c020d72c67e422b4c0a3bd3b8311d6ebe65ba28c1e6739fa4ed2b53ab9')
 
 prepare() {
-  cd "${srcdir}/glfw-${pkgver}"
+  cd "glfw-legacy-${pkgver}"
   sed -i 's/glfw\.so/glfw2.so/g' compile.sh lib/x11/Makefile.x11.in
   sed -i 's/lglfw/&2/' compile.sh
 }
 
 build() {
-  cd "${srcdir}/glfw-${pkgver}"
+  cd "glfw-legacy-${pkgver}"
   export LFLAGS+="-lrt"
   make x11
+  cd docs
+  make
 }
 
 package() {
-  cd "${srcdir}/glfw-${pkgver}"
+  cd "glfw-legacy-${pkgver}"
   make PREFIX="${pkgdir}/usr" x11-dist-install
 
   # Documentation.
   install -d "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm644 docs/*.pdf "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 docs/glfwrm.pdf "${pkgdir}/usr/share/doc/${pkgname}/Reference.pdf"
+  install -Dm644 docs/glfwug.pdf "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide.pdf"
 
   # License.
   install -Dm644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
