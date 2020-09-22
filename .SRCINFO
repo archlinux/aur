@@ -1,7 +1,7 @@
 pkgbase = xmrig-raspi4-donateless
-	pkgdesc = High performance, open source, cross platform RandomX, KawPow, CryptoNight and AstroBWT unified CPU/GPU miner.
+	pkgdesc = High performance, open source, cross platform RandomX, KawPow, CryptoNight and AstroBWT unified CPU/GPU miner. This package is meant only for the Raspberry Pi 4.
 	pkgver = 6.3.3
-	pkgrel = 1
+	pkgrel = 2
 	arch = aarch64
 	license = GPL3
 	makedepends = cmake
