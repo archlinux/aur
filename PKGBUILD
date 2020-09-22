@@ -2,10 +2,10 @@
 
 pkgname=mod_authn_otp
 pkgver=1.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Apache module for one time password authentication'
 arch=('i686' 'x86_64')
-url='http://code.google.com/p/mod-authn-otp/'
+url='https://github.com/archiecobbs/mod-authn-otp'
 license=('Apache')
 depends=('openssl')
 makedepends=('apache')
