@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://raw.githubusercontent.com/ioancole/ioanaur101/master/aprogram.sh")
 noextract=()
-md5sums=('6445c32eb304f9de4a34d1d8ff54c23b')
+md5sums=('c08b6d884be68857132d67a185c562a5')
 validpgpkeys=()
 
 package() {
