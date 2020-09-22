@@ -1,7 +1,7 @@
 pkgbase = lib32-x265
 	pkgdesc = Open Source H265/HEVC video encoder. 32bit libraries.
 	pkgver = 3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/multicoreware/x265
 	arch = x86_64
 	license = GPL
@@ -11,8 +11,8 @@ pkgbase = lib32-x265
 	depends = lib32-gcc-libs
 	depends = lib32-numactl
 	provides = libx265.so
-	source = https://bitbucket.org/multicoreware/x265/downloads/x265_3.4.tar.gz
-	sha256sums = c2047f23a6b729e5c70280d23223cb61b57bfe4ad4e8f1471eeee2a61d148672
+	source = https://github.com/videolan/x265/archive/3.4.tar.gz
+	sha256sums = 544d147bf146f8994a7bf8521ed878c93067ea1c7c6e93ab602389be3117eaaf
 
 pkgname = lib32-x265
 
