@@ -1,7 +1,8 @@
 #Maintainer: Karl Wikström <boogrocha@sidus.io>
 #Maintainer: William Leven <boogrocha@sidus.io>
 
-_tag=v1.0.21
+# _tag and sha256 is populated by the pipeline
+_tag=v1.0.22
 pkgname=boogrocha
 pkgver=$_tag
 pkgrel=1
@@ -13,7 +14,7 @@ url="https://github.com/sidusio/boogrocha"
 license=("GPL3")
 makedepends=(go)
 source=($url/archive/$_tag.tar.gz)
-sha256sums=('e017fe0212da76c217146190fe89b40e6a32569ea9d037a6018967bd469998e6')
+sha256sums=('20f7728c12a5ba033d594a7f1a7a95b6c3e354b11bdcea20911ab7761bb8337d')
 # The name of the root directory of the tar.gz that Github
 # automatically creates and which therefore will be extracted
 _src="BooGroCha-${pkgver:1}"
@@ -21,6 +22,7 @@ _src="BooGroCha-${pkgver:1}"
 build() {
     cd $_src
     # Build as per Go package guidelines
+    # https://wiki.archlinux.org/index.php/Go_package_guidelines#Flags_and_build_options
     go build \
       -trimpath \
       -buildmode=pie \
