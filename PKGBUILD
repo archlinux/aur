@@ -10,7 +10,7 @@ url="https://github.com/FeralInteractive/gamemode"
 license=('BSD')
 makedepends=('meson' 'lib32-systemd')
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('4fec5a0900e8f559b37cf1711ca7dcea7e1cebfe1237ce314001f65c1e346a5d')
+sha256sums=('ede17eb042c1c87f7b35bfe96a00560afaea086f685d25bb3964d794b0af9c80')
 
 build() {
 	arch-meson "$pkgbase-$pkgver" build64 \
