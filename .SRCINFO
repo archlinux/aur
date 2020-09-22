@@ -1,14 +1,16 @@
 pkgbase = gcc81-raspi4-xmrig
 	pkgdesc = This package is meant to be a dependency for xmrig-raspi4-donateless because it will not compile with gcc 10. It only includes C and C++
 	pkgver = 8.1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = aarch64
 	license = GPL3
 	options = !buildflags
+	options = staticlibs
+	options = !strip
 	source = https://ftpmirror.gnu.org/gcc/gcc-8.1.0/gcc-8.1.0.tar.gz
 	source = fix.patch
 	md5sums = 6a1fabd167fe98c11857181c210fc743
-	md5sums = a0bb00114182d8095e0eb255ddf0c767
+	md5sums = c6fe49a2334ccd59635694a1655d3a09
 
 pkgname = gcc81-raspi4-xmrig
 

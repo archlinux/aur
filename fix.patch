@@ -1,34 +1,6 @@
-diff --unified --recursive --text gcc-8.1.0.orig/gcc/gimple-fold.c gcc-8.1.0.new/gcc/gimple-fold.c
---- gcc-8.1.0.orig/gcc/gimple-fold.c	2018-04-20 23:43:51.000000000 +0000
-+++ gcc-8.1.0.new/gcc/gimple-fold.c	2020-09-20 23:38:08.592114777 +0000
-@@ -2654,6 +2654,7 @@
- 		return false;
- 
- 	      gimple_seq stmts = NULL;
-+	      len = force_gimple_operand (len, &stmts, true, NULL_TREE);
- 	      len = gimple_convert (&stmts, loc, size_type_node, len);
- 	      len = gimple_build (&stmts, loc, PLUS_EXPR, size_type_node, len,
- 				  build_int_cst (size_type_node, 1));
-diff --unified --recursive --text gcc-8.1.0.orig/gcc/tree-ssa-strlen.c gcc-8.1.0.new/gcc/tree-ssa-strlen.c
---- gcc-8.1.0.orig/gcc/tree-ssa-strlen.c	2018-03-12 18:04:16.000000000 +0000
-+++ gcc-8.1.0.new/gcc/tree-ssa-strlen.c	2020-09-20 23:45:48.304795200 +0000
-@@ -2533,6 +2533,13 @@
-       len = force_gimple_operand_gsi (gsi, len, true, NULL_TREE, true,
- 				      GSI_SAME_STMT);
-     }
-+  if (objsz)
-+    {
-+      objsz = fold_build2_loc (loc, MINUS_EXPR, TREE_TYPE (objsz),
-+			       objsz, unshare_expr (dstlen));
-+      objsz = force_gimple_operand_gsi (gsi, objsz, true, NULL_TREE, true,
-+					GSI_SAME_STMT);
-+    }
-   if (endptr)
-     dst = fold_convert_loc (loc, TREE_TYPE (dst), unshare_expr (endptr));
-   else
 diff --unified --recursive --text gcc-8.1.0.orig/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc gcc-8.1.0.new/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc
 --- gcc-8.1.0.orig/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2017-10-19 11:23:59.000000000 +0000
-+++ gcc-8.1.0.new/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2020-09-20 23:31:33.498439014 +0000
++++ gcc-8.1.0.new/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2020-09-20 17:45:49.165998729 +0000
 @@ -157,7 +157,6 @@
  # include <sys/procfs.h>
  #endif

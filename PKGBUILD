@@ -1,7 +1,7 @@
 # Maintainer: Westly Ward <sonicrules1234 at gmail dot com>
 pkgname=gcc81-raspi4-xmrig
 pkgver=8.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="This package is meant to be a dependency for xmrig-raspi4-donateless because it will not compile with gcc 10.  It only includes C and C++"
 arch=('aarch64')
@@ -16,23 +16,20 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=(!buildflags)
+options=(!buildflags staticlibs !strip)
 install=
 changelog=
 source=("https://ftpmirror.gnu.org/gcc/gcc-8.1.0/gcc-8.1.0.tar.gz"
 		"fix.patch")
 noextract=()
 md5sums=('6a1fabd167fe98c11857181c210fc743'
-         'a0bb00114182d8095e0eb255ddf0c767')
+         'c6fe49a2334ccd59635694a1655d3a09')
 validpgpkeys=()
 
 prepare() {
 	cd "gcc-8.1.0"
 	./contrib/download_prerequisites
-	#mv gcc-8.1.0 gcc-8.1.0.orig
-	#cp -r gcc-8.1.0.orig gcc-8.1.0.new
-	#cd gcc-8.1.0.new
-	patch --strip=1 --input="../fix.patch"
+	patch --strip=1 --input="../avoid_ustat.patch"
 	cd "../"
 	mkdir -p build
 }
