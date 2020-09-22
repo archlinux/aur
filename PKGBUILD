@@ -2,7 +2,7 @@
 # Contributor: Daniel Ratcliffe <dratcliffe@gmail.com>
 # Contributor: Jonathan Coates <contact@squiddev.cc>
 pkgname=craftos-pc-data-git
-pkgver=2.3.0~0+0000000
+pkgver=2.4.3.0~147+8a5d92f
 pkgrel=1
 epoch=
 pkgdesc="ROM package for CraftOS-PC"

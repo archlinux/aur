@@ -1,6 +1,6 @@
 pkgbase = craftos-pc-data-git
 	pkgdesc = ROM package for CraftOS-PC
-	pkgver = 2.3.0~0+0000000
+	pkgver = 2.4.3.0~147+8a5d92f
 	pkgrel = 1
 	url = https://github.com/MCJack123/craftos2-rom
 	arch = any
