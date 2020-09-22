@@ -15,7 +15,7 @@ if [ "$AUR_BUILD" = false ]; then
 pkgname+=(eclipse-common)
 fi
 pkgver=4.17
-pkgrel=2
+pkgrel=3
 epoch=2
 _release=2020-09/R
 pkgdesc="Highly extensible IDE"
@@ -120,6 +120,11 @@ END
   if [ "$AUR_BUILD" = false ]; then
   for i in 16 22 24 32 48 64 128 256 512 1024; do
     install -Dm644 eclipse-common/plugins/org.eclipse.platform_*/eclipse$i.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x$i/apps/eclipse.png"
+  done
+  else
+  for i in 16 22 24 32 48 64 128 256 512 1024; do
+    install -Dm644 $1/plugins/org.eclipse.platform_*/eclipse$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x$i/apps/eclipse.png"
   done
   fi

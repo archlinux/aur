@@ -1,7 +1,7 @@
 pkgbase = eclipse
 	pkgdesc = Highly extensible IDE
 	pkgver = 4.17
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = https://eclipse.org
 	arch = x86_64
