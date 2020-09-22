@@ -2,7 +2,7 @@
 
 pkgname=crispy-doom
 pkgdesc="Vanilla-compatible enhanced Doom engine"
-pkgver=5.9.1
+pkgver=5.9.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://fabiangreffrath.github.io/crispy-doom"
@@ -13,10 +13,8 @@ optdepends=('freedm: Free deathmatch game'
             'freedoom1: Free Ultimate Doom-compatible game'
             'freedoom2: Free Doom II-compatible game')
 install=crispy-doom.install
-source=(https://github.com/fabiangreffrath/$pkgname/archive/$pkgname-$pkgver.tar.gz
-        0001-Only-load-Sigil-when-gameversion-is-Ultimate-Doom-66.patch)
-b2sums=('2bf862d8134689afba101abeed5cf1e1695378f235718941bf9fc2717bc93dd848173bb758e8bf0bc4a8ab1bfa75533c2ae838210326451f7c4285b0acb2e08b'
-        'e6566c793fc561c0beb350e0ce075580b7374b2f18764ff61b960e7410c1f4b79300bbf37050891c1fe38e98ec706d2bc696a8e0700b55cf13eb8517901339c9')
+source=(https://github.com/fabiangreffrath/$pkgname/archive/$pkgname-$pkgver.tar.gz)
+b2sums=('63d9a89d6099485c79ff4cad69975de790b32a4ece4bded172ebf771a2bf1b4dcd21ab58383ca3c5eea32a4eff72e65ec0e3a283c85f1bc62be680de04f88e52')
 
 prepare() {
   cd "$pkgname-$pkgname-$pkgver"
