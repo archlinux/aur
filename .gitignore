@@ -1,0 +1,21 @@
+# ignore everything
+*
+!.gitignore
+
+# except PKGBUILD needed files
+!PKGBUILD
+!.SRCINFO
+!settings.json
+!package.json
+!defaults.json
+!*.install
+!*.sysusers
+!*.service
+!*.socket
+!ChangeLog
+
+# common wing-man files
+!*.diff
+!*.patch
+
+# add files that don't have an online source

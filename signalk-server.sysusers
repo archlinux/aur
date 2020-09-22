@@ -1,0 +1,3 @@
+# create a user + group to run geoserver
+g signalk - -
+u signalk - "Signal K Node Server" /var/lib/signalk-server

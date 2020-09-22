@@ -1,0 +1,12 @@
+[Service]
+ExecStart=signalk-server
+Restart=always
+WorkingDirectory=/var/lib/signalk-server
+#User=signalk
+Environment=EXTERNALPORT=3443
+Environment=SIGNALK_NODE_CONFIG_DIR=/etc/signalk-server
+User=signalk
+Group=signalk
+
+[Install]
+WantedBy=multi-user.target

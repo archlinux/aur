@@ -1,0 +1,22 @@
+post_install() {
+    # cut off $pkgrel part
+    pkgver="${1%-*}"
+
+    # force _immediate_ creation of geoserver user
+    systemd-sysusers /usr/lib/sysusers.d/signalk-server.conf
+
+    # adjust permissions
+    chown -R signalk:signalk /usr/lib/signalk-server
+    chown -R signalk:signalk /etc/signalk-server
+    chown -R signalk:signalk /var/lib/signalk-server
+
+    # inform user about new systemd service
+    cat <<EOF
+==> Enable and/or start the \`signalk-server.service\` systemd service.
+EOF
+
+}
+
+post_upgrade() {
+    post_install $1
+}

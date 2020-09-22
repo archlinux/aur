@@ -1,0 +1,29 @@
+pkgbase = signalk-server
+	pkgdesc = An implementation of a Signal K server.
+	pkgver = 1.34.0
+	pkgrel = 1
+	url = https://github.com/SignalK/signalk-server
+	install = signalk.install
+	arch = any
+	license = Apache
+	makedepends = npm
+	depends = nodejs
+	depends = npm
+	options = !strip
+	backup = etc/signalk-server/settings.json
+	backup = etc/signalk-server/package.json
+	source = https://registry.npmjs.org/signalk-server/-/signalk-server-1.34.0.tgz
+	source = defaults.json
+	source = package.json
+	source = signalk-server.sysusers
+	source = signalk-server.service
+	source = signalk-server.socket
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = signalk-server
+

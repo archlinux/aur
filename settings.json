@@ -1,0 +1,8 @@
+{
+  "interfaces": {},
+  "ssl": false,
+  "pipedProviders": [],
+  "security": {
+    "strategy": "./tokensecurity"
+  }
+}
