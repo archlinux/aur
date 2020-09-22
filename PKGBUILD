@@ -1,7 +1,7 @@
 # Maintainer: Your Name <ioan.coleman@gmail.com>
 pkgname=ioanaur
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Description here"
 arch=('any')
 url="https://ioan.cc"

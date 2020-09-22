@@ -1,7 +1,7 @@
 pkgbase = ioanaur
 	pkgdesc = Description here
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ioan.cc
 	arch = any
 	source = https://raw.githubusercontent.com/ioancole/ioanaur101/master/aprogram.sh
