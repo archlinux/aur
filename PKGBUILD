@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-cached-property
-pkgver=1.5.1
-pkgrel=4
+pkgver=1.5.2
+pkgrel=1
 pkgdesc="A decorator for caching properties in classes"
 arch=('any')
 license=('BSD')
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-freezegun')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pydanny/cached-property/archive/$pkgver.tar.gz")
-sha512sums=('d6c2cd35d7781e3123c7c076681c0dbfd352b24f71b87e1689b304a5a65759d3f7a27e46a1ce5fe1571cbe6c0dc4981b1eb5eb8314b76b13aa15eb8429645a43')
+sha512sums=('71ce8376c5d90c8e97dc91af7a9329d3645a311c7cc41cf052074989430de68b66efc17c62c6780982f500b3d09a12cb24613df7b4f1bff95cf68f6442f50d0d')
 
 build() {
   cd cached-property-$pkgver
