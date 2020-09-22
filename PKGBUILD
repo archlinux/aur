@@ -1,5 +1,5 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Co-Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Silvio Knizek <knizek@b1-systems.de>
 
 pkgname=zypper
 pkgver=1.14.36
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/zypper"
 license=('GPL')
 depends=('libzypp' 'libxml2' 'procps' 'readline' 'augeas')
-makedepends=('git' 'cmake' 'ninja' 'boost' 'asciidoc')
+makedepends=('git' 'cmake' 'ninja' 'boost' 'asciidoc' 'asciidoctor')
 provides=('zypper' 'apt')
 conflicts=('apt')
 source=("https://github.com/openSUSE/zypper/archive/${pkgver}.tar.gz"
