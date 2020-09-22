@@ -5,25 +5,27 @@
 
 pkgname=gauche
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 url='https://practical-scheme.net/gauche/'
 pkgdesc='R7RS Scheme implementation (includes gosh)'
-depends=(libatomic_ops slib)
+depends=(libatomic_ops libxcrypt slib)
+makedepends=(autoconf gauche git)
 license=(BSD)
 arch=(x86_64)
-source=("https://downloads.sourceforge.net/$pkgname/Gauche-$pkgver.tgz")
-sha256sums=('4ca9325322a7efadb9680d156eb7b53521321c9ca4955c4cbe738bc2e1d7f7fb')
+# gauche tag: release0_9_9
+source=("git+https://github.com/shirok/Gauche#commit=b9a861bdbc354cf5a357fe0b2cfc05e7cbd99ab9")
+sha256sums=('SKIP')
 
 build() {
-  cd "Gauche-$pkgver"
-
-  ./configure --enable-multibyte=utf-8 --prefix=/usr
+  cd Gauche
+  export BUILD_GOSH=/usr/bin/gosh
+  ./DIST gen
+  ./configure --prefix=/usr --with-slib=/usr/share/slib
   make
 }
 
 package() {
-  cd "Gauche-$pkgver"
-
+  cd Gauche
   make DESTDIR="$pkgdir" install-pkg install-doc
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
