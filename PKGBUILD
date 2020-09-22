@@ -4,7 +4,7 @@
 
 pkgname=rivalcfg
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='SteelSeries Rival gaming mouse configuration utility'
 arch=('any')
 url='https://github.com/flozz/rivalcfg'
@@ -12,7 +12,7 @@ license=('custom:WTFPL')
 depends=('python' 'hidapi' 'python-hidapi' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('29c4d983ef878d2bc66bf5541631d670e063bfe47d86f09198a525869dc93f433552867d28e636d29219f82b6b376ad9c6a98d81ebd43d9cd6864e8f9f0d36af')
-
+install=install
 build() {
   cd $pkgname-$pkgver
 
@@ -25,8 +25,4 @@ package() {
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -Dm 644 doc/rival-spec.md "$pkgdir"/usr/share/doc/$pkgname/rival-spec.md
-  install -Dm 644 doc/rival100-spec.md "$pkgdir"/usr/share/doc/$pkgname/rival-spec100.md
-  install -Dm 644 doc/rival300-spec.md "$pkgdir"/usr/share/doc/$pkgname/rival-spec300.md
-  install -Dm 644 $pkgname/data/99-steelseries-rival.rules "$pkgdir"/etc/udev/rules.d/99-steelseries-rival.rules
 }
