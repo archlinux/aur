@@ -7,11 +7,19 @@ pkgdesc="A Python package with bindings to the 'Virtual Instrument Software Arch
 arch=('any')
 url="https://github.com/pyvisa/pyvisa"
 license=('MIT')
-depends=('python' 'python-distribute' 'python-docutils')
+depends=('python' 'python-distribute' 'python-docutils' 'python-setuptools-scm')
 optdepends=('python-pyvisa-py: Pure Python backend')
 
 source=("https://github.com/pyvisa/pyvisa/archive/$pkgver.tar.gz")
 md5sums=('1922d2631d370c4dd83118da22842d76')
+
+prepare() {
+  cd "pyvisa-${pkgver}"
+  sed "/^author =.*/i version = ${pkgver}" -i setup.cfg
+  sed -i "s,use_scm_version=True,use_scm_version=False,g" setup.py
+
+  sed '/\[tool.setuptools_scm\]/d' -i pyproject.toml
+}
 
 build() {
   cd "pyvisa-${pkgver}"
