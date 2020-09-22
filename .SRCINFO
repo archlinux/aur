@@ -1,6 +1,6 @@
 pkgbase = livetikz
 	pkgdesc = A live preview for TikZ drawings
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/misc0110/LiveTikZ
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = livetikz
 	depends = ki18n
 	depends = ktexteditor
 	depends = kparts
-	source = https://github.com/misc0110/LiveTikZ/archive/release-0.3.tar.gz
-	md5sums = 96f3b815de209f20b3477b6cb9524eca
+	source = https://github.com/misc0110/LiveTikZ/archive/release-0.4.tar.gz
+	md5sums = 8f5e50c63d5c00bc557f3bd861bd0b15
 
 pkgname = livetikz
 
