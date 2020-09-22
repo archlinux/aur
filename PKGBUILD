@@ -3,7 +3,7 @@
 
 pkgbase=linux-pf-git
 pkgdesc="Linux pf-kernel (git version)"
-pkgver=5.7.7.r190.g62a6be503ef8
+pkgver=5.8.5.r0.g6d112431d09f
 _kernel_rel=5.8
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
@@ -73,7 +73,7 @@ build() {
   make htmldocs
 }
 
-_package-git() {
+_package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
@@ -100,7 +100,7 @@ _package-git() {
   rm -f "$modulesdir"/{source,build}
 }
 
-_package-headers-git() {
+_package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
   cd $_srcname
@@ -178,7 +178,7 @@ _package-headers-git() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-_package-docs-git() {
+_package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
 
   cd $_srcname
@@ -197,10 +197,12 @@ _package-docs-git() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$_product-headers-git" "$_product-docs-git")
-for _p in "${pkgname[@]}"; do
-  eval "package_$_p() {
-    $(declare -f "_package${_p#$_product}")
-    _package${_p#$_product}
-  }"
+pkgname=("${_product}-git" "${_product}-headers-git" "${_product}-docs-git")
+for _package in "${pkgname[@]}"; do
+	local _package_no_git="${_package%-git}"
+	local _package_stripped="${_package_no_git#$_product}"
+	eval "package_${_package}() {
+	$(declare -f "_package${_package_stripped}")
+	_package${_package_stripped}
+}"
 done
