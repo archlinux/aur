@@ -1,33 +1,29 @@
 pkgbase = lib32-avahi
 	pkgdesc = Service Discovery for Linux using mDNS/DNS-SD -- compatible with Bonjour (32-bit)
-	pkgver = 0.7+18+g1b5f401
+	pkgver = 0.8+15+ge8a3dd0
 	pkgrel = 1
 	url = https://github.com/lathiat/avahi
 	arch = x86_64
 	license = LGPL
-	makedepends = gcc-multilib
 	makedepends = git
 	makedepends = gobject-introspection
-	makedepends = gtk-sharp-2
-	makedepends = intltool
-	makedepends = lib32-gtk2
+	makedepends = libevent
+	makedepends = lib32-libevent
 	makedepends = lib32-gtk3
-	makedepends = pygtk
 	makedepends = python-dbus
 	makedepends = python-gobject
-	makedepends = mono
 	makedepends = xmltoman
 	depends = avahi
 	depends = expat
+	depends = lib32-dbus
 	depends = lib32-gdbm
 	depends = lib32-glib2
 	depends = lib32-libcap
 	depends = lib32-libdaemon
-	depends = lib32-dbus
 	optdepends = lib32-gtk3: gtk3 bindings
-	optdepends = lib32-gtk2: gtk2 bindings
+	optdepends = lib32-libevent: libevent bindings
 	options = !emptydirs
-	source = git+https://github.com/lathiat/avahi#tag=1b5f401f64d7bed40c4335b0327acf4125da3086
+	source = git+https://github.com/lathiat/avahi#tag=e8a3dd0d480a754318e312e6fa66fea249808187
 	sha256sums = SKIP
 
 pkgname = lib32-avahi
