@@ -3,7 +3,7 @@
 
 pkgname=dnieremote-bin
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="DNIeRemote enable to use the smartphone as reader for Spanish DNI"
 arch=('x86_64')
 url="https://www.dnielectronico.es/"
@@ -12,8 +12,8 @@ depends=('gtkmm3' 'libpkcs11-dnie')
 source=("https://www.dnielectronico.es/descargas/Apps/DNIeRemoteSetup_${pkgver}-${pkgrel}_amd64.deb"
         "https://www.dnielectronico.es/PDFs/DNIeRemote_user_manual.pdf")
 noextract=("DNIeRemoteSetup_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=('dbae5a50b943e52ff03186e0b99abac387004e6c2f62c8dce0fd2569c00eb28c'
-            'c236326ba5bb2354e2a62b1be38e673f8a0a392423de354e8663c9069145022d')
+sha256sums=('b8fdcfe57350dc45e75f876e962aff7c6b31d124ee5ac63b62260874e53ef07b'
+            'afb1520fc5d3329d5ef271d89b6c7026d9208b79c52de0d491eaf543d642f9d0')
 
 # Misconfigured server
 DLAGENTS=('https::/usr/bin/curl -A "Mozilla/5.0" -fLC - --retry 3 --retry-delay 3 -o %o %u')
