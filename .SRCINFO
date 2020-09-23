@@ -1,7 +1,7 @@
 pkgbase = networkmanager-iwd
 	pkgdesc = NM modified package to use exclusively iwd backend getting rid of wpa_supplicant dependency
 	pkgver = 1.26.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.gnome.org/Projects/NetworkManager
 	arch = x86_64
 	license = GPL2

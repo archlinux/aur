@@ -10,7 +10,7 @@
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
 pkgver=1.26.2
-pkgrel=2
+pkgrel=3
 pkgdesc="NM modified package to use exclusively iwd backend getting rid of wpa_supplicant dependency"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
