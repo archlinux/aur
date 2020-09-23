@@ -1,6 +1,6 @@
 pkgbase = hotbox-git
 	pkgdesc = Python3-based CLI hotkey configurator for Openbox
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/bajaco/hotbox
 	arch = any

@@ -1,6 +1,6 @@
 # Maintainer: bajaco <admin@agyx.org>
 pkgname=hotbox-git
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Python3-based CLI hotkey configurator for Openbox"
 arch=('any')
