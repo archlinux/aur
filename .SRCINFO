@@ -1,6 +1,6 @@
 pkgbase = picapport
 	pkgdesc = An easy-to-use, free of charge, photo server for your home network
-	pkgver = 8.3.00
+	pkgver = 9.0.01
 	pkgrel = 1
 	url = http://www.picapport.de/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = picapport
 	depends = java-runtime-headless
 	depends = shared-mime-info
 	optdepends = java-openjfx: for running the interactive GUI
-	source = picapport-8.3.00.jar::https://www.picapport.de/prepare_download.php?dlfile=8-3-00/picapport.jar
-	sha256sums = e4ae91029b74374eb7649a18ed1191812f91793d33c4dc61b70a4cb4da6bb22a
+	source = picapport-9.0.01.jar::https://www.picapport.de/prepare_download.php?dlfile=9-0-01/picapport.jar
+	sha256sums = 24a3d0fb963bedad2230e49ddf6d137ce6444ae165e3979c3ff0068d937d7895
 
 pkgname = picapport
 
