@@ -2,30 +2,30 @@
 # Upstream URL: https://gitlab.com/gabmus/gnome-feeds
 
 pkgname=gfeeds-git
-pkgver=0.14.1.r0.g2d63e3b
+pkgver=0.15.r0.ge80b18f
 pkgrel=1
 pkgdesc='News reader for GNOME'
 arch=('any')
 url='https://gitlab.com/gabmus/gnome-feeds'
 license=('GPL3')
 depends=(
-    'gtk3'
-    'python'
-    'python-pytz'
-    'python-dateutil'
-    'python-pillow'
-    'libhandy1>=0.83'
-    'python-listparser'
-    'python-feedparser'
-    'python-requests'
-    'python-lxml'
-    'webkit2gtk'
-    'python-html5lib'
-    'python-gobject'
-    'gobject-introspection'
-    'python-readability-lxml'
-    'python-pygments'
-    'python-beautifulsoup4'
+  'gtk3'
+  'python'
+  'python-pytz'
+  'python-dateutil'
+  'python-pillow'
+  'libhandy1>=0.83'
+  'python-listparser'
+  'python-feedparser'
+  'python-requests'
+  'python-lxml'
+  'webkit2gtk'
+  'python-html5lib'
+  'python-gobject'
+  'gobject-introspection'
+  'python-readability-lxml'
+  'python-pygments'
+  'python-beautifulsoup4'
 )
 replaces=(gnome-feeds gnome-feeds-git)
 makedepends=('git' 'meson')
