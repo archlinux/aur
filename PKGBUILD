@@ -1,7 +1,7 @@
 # Maintainer: Wenxuan <wenxuangm@gmail.com>
 pkgname=csview
-pkgver=0.3.4
-pkgrel=5
+pkgver=0.3.5
+pkgrel=1
 pkgdesc="A high performance csv viewer with cjk/emoji support"
 arch=(i686 x86_64)
 url="https://github.com/wfxr/csview"
@@ -10,7 +10,7 @@ depends=()
 makedepends=("rust" "cargo")
 
 source=("https://github.com/wfxr/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('4ae5ed16e688577326e0615d7481cfdd')
+md5sums=('f97909c070d2dacaeba8fc5f98926a12')
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
