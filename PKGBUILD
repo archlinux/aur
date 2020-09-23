@@ -1,15 +1,15 @@
 # Maintainer: Florian Pelz <pelzflorian at pelzflorian.de>
 pkgname=potool
-pkgver=0.16
-pkgrel=2
+pkgver=0.19
+pkgrel=1
 pkgdesc="Program to help editing gettext po files"
 arch=('i686' 'x86_64')
-url="http://marcin.owsiany.pl/potool-page"
+url="https://marcin.owsiany.pl/potool-page"
 license=('GPL')
 depends=('perl' 'glib2')
 conflicts=('potool-renamed' 'poedit')
-source=("http://marcin.owsiany.pl/potool/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7cf5990f5c60ded21b342b1917731eb75fb12b0762cf639fa9c6f0823d0e08da')
+source=("https://marcin.owsiany.pl/potool/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('1251621b5e69b660987e8c9497df9e75e0b3e40bcf8304bdbd26a4fbd37c4384')
 
 build() {
   cd "$pkgname"-"$pkgver"

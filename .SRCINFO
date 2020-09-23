@@ -1,8 +1,8 @@
 pkgbase = potool
 	pkgdesc = Program to help editing gettext po files
-	pkgver = 0.16
-	pkgrel = 2
-	url = http://marcin.owsiany.pl/potool-page
+	pkgver = 0.19
+	pkgrel = 1
+	url = https://marcin.owsiany.pl/potool-page
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -10,8 +10,8 @@ pkgbase = potool
 	depends = glib2
 	conflicts = potool-renamed
 	conflicts = poedit
-	source = http://marcin.owsiany.pl/potool/potool-0.16.tar.gz
-	sha256sums = 7cf5990f5c60ded21b342b1917731eb75fb12b0762cf639fa9c6f0823d0e08da
+	source = https://marcin.owsiany.pl/potool/potool-0.19.tar.gz
+	sha256sums = 1251621b5e69b660987e8c9497df9e75e0b3e40bcf8304bdbd26a4fbd37c4384
 
 pkgname = potool
 
