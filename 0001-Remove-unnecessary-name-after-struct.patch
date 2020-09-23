@@ -1,0 +1,23 @@
+From ed05fa2dcbc4b27cc7b02d772327cb41905eab76 Mon Sep 17 00:00:00 2001
+From: Davide Depau <davide@depau.eu>
+Date: Tue, 8 Sep 2020 23:04:18 +0200
+Subject: [PATCH] Remove unnecessary name after struct
+
+---
+ wiringPiD/drcNetCmd.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/wiringPiD/drcNetCmd.h b/wiringPiD/drcNetCmd.h
+index 23f7dc1..70ef51b 100644
+--- a/wiringPiD/drcNetCmd.h
++++ b/wiringPiD/drcNetCmd.h
+@@ -40,5 +40,5 @@ struct drcNetComStruct
+   uint32_t pin ;
+   uint32_t cmd ;
+   uint32_t data ;
+-} comDat ;
++};
+ 
+-- 
+2.28.0
+

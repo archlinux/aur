@@ -1,15 +1,204 @@
 pkgbase = wiringop-git
 	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP. (git-version)
-	pkgver = 20151115.r16.7538fcb
-	pkgrel = 2
-	url = https://github.com/zhaolei/WiringOP
-	arch = any
-	license = unknown
-	makedepends = cmake
+	pkgver = 2.46.r39.39e6dce
+	pkgrel = 1
+	url = https://github.com/orangepi-xunlong/wiringOP
+	arch = aarch64
+	arch = armv7h
+	license = LGPL3
 	makedepends = gcc
 	makedepends = git
-	source = wiringop::git+https://github.com/zhaolei/WiringOP.git#branch=h3
+	source = wiringop::git+https://github.com/orangepi-xunlong/wiringOP.git
+	source = 0001-Remove-unnecessary-name-after-struct.patch
 	sha256sums = SKIP
+	sha256sums = d56b191cc60300b310242e87513dce930011087bbb6749f991216232be79607f
 
-pkgname = wiringop-git
+pkgname = wiringop-orangepir1-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepir1)
+	provides = wiringop-orangepir1
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepir1
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepizero-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepizero)
+	provides = wiringop-orangepizero
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepizero
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepipc-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepipc)
+	provides = wiringop-orangepipc
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepipc
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepipcplus-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepipcplus)
+	provides = wiringop-orangepipcplus
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepipcplus
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepiplus2e-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepiplus2e)
+	provides = wiringop-orangepiplus2e
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepiplus2e
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepione-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepione)
+	provides = wiringop-orangepione
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepione
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepilite-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepilite)
+	provides = wiringop-orangepilite
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepilite
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepiplus-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepiplus)
+	provides = wiringop-orangepiplus
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepiplus
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepizeroplus2h3-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepizeroplus2h3)
+	provides = wiringop-orangepizeroplus2h3
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepizeroplus2h3
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepizeroplus-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepizeroplus)
+	provides = wiringop-orangepizeroplus
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepizeroplus
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepipc2-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepipc2)
+	provides = wiringop-orangepipc2
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepipc2
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepiprime-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepiprime)
+	provides = wiringop-orangepiprime
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepiprime
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepizeroplus2h5-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepizeroplus2h5)
+	provides = wiringop-orangepizeroplus2h5
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepizeroplus2h5
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepiwin-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepiwin)
+	provides = wiringop-orangepiwin
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepiwin
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepiwinplus-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepiwinplus)
+	provides = wiringop-orangepiwinplus
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepiwinplus
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepi3-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepi3)
+	provides = wiringop-orangepi3
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepi3
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepilite2-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepilite2)
+	provides = wiringop-orangepilite2
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepilite2
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepioneplus-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepioneplus)
+	provides = wiringop-orangepioneplus
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepioneplus
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepi4-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepi4)
+	provides = wiringop-orangepi4
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepi4
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepirk3399-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepirk3399)
+	provides = wiringop-orangepirk3399
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepirk3399
+	conflicts = wiringop
+	conflicts = wiringpi
+
+pkgname = wiringop-orangepizero2-git
+	pkgdesc = This is a modified WiringPi for OrangePi. We call it WiringOP (built for orangepizero2)
+	provides = wiringop-orangepizero2
+	provides = wiringop
+	provides = wiringpi
+	conflicts = wiringop-orangepizero2
+	conflicts = wiringop
+	conflicts = wiringpi
 
