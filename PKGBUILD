@@ -2,7 +2,7 @@
 # Contributor: Sergio Schneider <spsf1964@gmail.com>
 
 pkgname=session-desktop-appimage
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=('x86_64')
@@ -12,7 +12,6 @@ depends=('gtk2' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss')
 provides=('session-desktop-appimage')
 conflicts=('session-desktop' 'session-desktop-bin')
 
-#https://github.com/loki-project/session-desktop/releases/download/v1.0.9/session-messenger-desktop-linux-x86_64-1.0.9.AppImage
 #https://github.com/loki-project/session-desktop/releases/download/1.1.0/session-messenger-desktop-linux-x86_64-1.1.0.AppImage
 #https://github.com/loki-project/session-desktop/releases/download/v1.1.2/session-messenger-desktop-linux-x86_64-1.1.2.AppImage
 
@@ -22,7 +21,7 @@ source=("${_bin}::https://github.com/loki-project/session-desktop/releases/downl
         'session-desktop.desktop'
         'session-desktop.png')
 
-sha256sums=('646ae6b742b1e70f201a297913ef525fe5b9a517dc0e0754c01b28bd355722b3'
+sha256sums=('2114e49270c2b7f9641da83c7cdb31b9cdaad0cb26b7260a94967a24b05e45b7'
             '2bf3c1718e157626851aa1661388353c9a430635058a6e327f5cf4be3161e47b'
             '8f6f2fa7ac49e24551b6a6324e4fd6cd73b478c24f450296c7fd30556c01575c')
 
