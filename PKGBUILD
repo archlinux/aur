@@ -9,10 +9,11 @@ pkgname=steam-native-runtime-nosystemd
 pkgver=1
 pkgrel=1
 arch=('x86_64')
+depends=(lib32-elogind-dummy libeudev lib32-eudev)
+optdepends=('elogind-dummy: pulseaudio support')
 url="https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime"
 source=("$_repo1/x86_64/libudev0-shim-1-4-x86_64.pkg.tar.zst"
 	"$_repo2/x86_64/libpulse-13.99.2+2+g410db7d21-1-x86_64.pkg.tar.zst"
-	"$_repo2/x86_64/pulseaudio-13.99.2+2+g410db7d21-1-x86_64.pkg.tar.zst"
 	"$_repo3/x86_64/lib32-libudev0-shim-1-4-x86_64.pkg.tar.xz"
 	"$_repo3/x86_64/lib32-libgudev-234-1.1-x86_64.pkg.tar.zst"
 	"$_repo4/x86_64/lib32-libpulse-13.99.1+98+g460d0c0b7-1-x86_64.pkg.tar.zst")
@@ -20,6 +21,5 @@ sha256sums=('SKIP'
 	    'SKIP'
 	    'SKIP'
 	    'SKIP'
-            'SKIP'
             'SKIP')
 pkgdesc="Native replacement for the Steam runtime using system libraries (non systemd)"
