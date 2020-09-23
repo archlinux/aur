@@ -1,0 +1,18 @@
+pkgbase = python-sympy-git
+	pkgdesc = Computer algebra system (CAS) in Python, written in pure Python - git version
+	pkgver = 1.6.r1720.ge32abe4b08
+	pkgrel = 1
+	url = https://sympy.org/en/index.html
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-mpmath
+	optdepends = ipython: user friendly interface for isympy
+	provides = python-sympy
+	conflicts = python-sympy
+	source = python-sympy-git::git+https://github.com/sympy/sympy.git
+	sha256sums = SKIP
+
+pkgname = python-sympy-git
+
