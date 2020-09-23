@@ -25,13 +25,17 @@ sha256sums=('726dd28f7fe37c705625b6907dc992cdbf4b38aa95c294efe11a4d118684d471')
 build() {
     cd "$srcdir"/aws-cli-$pkgver
     python setup.py build
+
+    echo "Generating auto-complete index. Takes 5-10 minutes..."
+    local PYTHONPATH=.
+    ./scripts/gen-ac-index --index-location=./ac.index
 }
 
 package() {
     cd "$srcdir"/aws-cli-$pkgver
     python setup.py install --root="$pkgdir"
-    ./scripts/gen-ac-index --index-location="$pkgdir"/usr/lib/python3.8/site-packages/awscli/data/ac.index
 
+    install -Dm 644 ac.index "$pkgdir"/usr/lib/python3.8/site-packages/awscli/data/ac.index
     install -Dm 644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
     install -Dm 644 bin/aws_bash_completer "$pkgdir"/usr/share/bash-completion/completions/aws
 }
