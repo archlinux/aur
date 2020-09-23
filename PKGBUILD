@@ -3,8 +3,8 @@
 # Release Code Name: Pausch
 
 pkgname=lbry-app-bin
-pkgver=0.47.2
-pkgrel=2
+pkgver=0.48.0
+pkgrel=1
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')
 url='https://lbry.com/'
@@ -14,8 +14,8 @@ provides=('lbry' 'lbrynet')
 # gconf deprecated: https://github.com/electron/electron/issues/2727
 # gnome-keyring still required: https://github.com/lbryio/lbry-desktop/issues/386
 depends=('libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libsecret')
-source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.47.2/LBRY_0.47.2.deb')
-sha256sums=('f3de900fe4b25afadc433c305dd6680e7c83ee6effc46a3a60338017ac1e9ca3')
+source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.48.0/LBRY_0.48.0.deb')
+sha256sums=('e62ab5f3e584406a0b191d92deed1ce431706c0efc9e5dcd4ac6fa4bfe0145ab')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
