@@ -1,0 +1,26 @@
+From 45e92fcf45def2b59c06b6407c73b798eaa321ae Mon Sep 17 00:00:00 2001
+From: Julie Hockett <juliehockett@google.com>
+Date: Fri, 29 Mar 2019 16:56:36 +0000
+Subject: [PATCH] [clang-doc] Build as clang_tool
+
+Instead of as clang_executable.
+
+Differential Revision: https://reviews.llvm.org/D59974
+
+git-svn-id: https://llvm.org/svn/llvm-project/clang-tools-extra/trunk@357274 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ clang-doc/tool/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/clang-doc/tool/CMakeLists.txt b/clang-doc/tool/CMakeLists.txt
+index d7f28cf681..35f99ea08e 100644
+--- a/clang-doc/tool/CMakeLists.txt
++++ b/clang-doc/tool/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/..)
+ 
+-add_clang_executable(clang-doc
++add_clang_tool(clang-doc
+   ClangDocMain.cpp
+   )
+ 

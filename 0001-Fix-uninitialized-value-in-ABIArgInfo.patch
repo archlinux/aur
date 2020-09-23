@@ -1,0 +1,38 @@
+From 565b9633ee68b311c1a954022869d9e99fee7286 Mon Sep 17 00:00:00 2001
+From: serge-sans-paille <sguelton@redhat.com>
+Date: Fri, 1 Feb 2019 06:39:13 +0000
+Subject: [PATCH] Fix uninitialized value in ABIArgInfo
+
+GCC-9 takes advantage of this uninitialized values to optimize stuff,
+which ends up in failing validation when compiling clang.
+---
+ include/clang/CodeGen/CGFunctionInfo.h | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/include/clang/CodeGen/CGFunctionInfo.h b/include/clang/CodeGen/CGFunctionInfo.h
+index cf64e9f3ee..131eb38393 100644
+--- a/include/clang/CodeGen/CGFunctionInfo.h
++++ b/include/clang/CodeGen/CGFunctionInfo.h
+@@ -112,14 +112,13 @@ private:
+   }
+ 
+   ABIArgInfo(Kind K)
+-      : TheKind(K), PaddingInReg(false), InReg(false), SuppressSRet(false) {
+-  }
++      : TypeData(nullptr), PaddingType(nullptr), DirectOffset(0),
++        TheKind(K), PaddingInReg(false), InAllocaSRet(false), IndirectByVal(false),
++        IndirectRealign(false), SRetAfterThis(false), InReg(false),
++        CanBeFlattened(false), SignExt(false), SuppressSRet(false) {}
+ 
+ public:
+-  ABIArgInfo()
+-      : TypeData(nullptr), PaddingType(nullptr), DirectOffset(0),
+-        TheKind(Direct), PaddingInReg(false), InReg(false),
+-        SuppressSRet(false) {}
++  ABIArgInfo() : ABIArgInfo(Direct) {}
+ 
+   static ABIArgInfo getDirect(llvm::Type *T = nullptr, unsigned Offset = 0,
+                               llvm::Type *Padding = nullptr,
+-- 
+2.19.2
+

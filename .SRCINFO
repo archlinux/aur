@@ -1,0 +1,51 @@
+pkgbase = clang8
+	pkgdesc = C language family frontend for LLVM (8.x)
+	pkgver = 8.0.1
+	pkgrel = 1
+	url = https://clang.llvm.org/
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = gcc8
+	makedepends = llvm8
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python-sphinx
+	makedepends = python2
+	depends = llvm8-libs
+	depends = gcc
+	depends = compiler-rt8
+	optdepends = openmp: OpenMP support in clang with -fopenmp
+	optdepends = python: for scan-view and git-clang-format
+	optdepends = llvm8: referenced by some clang headers
+	provides = clang=8.0.1
+	provides = clang-analyzer=8.0.1
+	provides = clang-tools-extra=8.0.1
+	conflicts = clang
+	conflicts = clang-analyzer
+	conflicts = clang-tools-extra
+	replaces = clang
+	replaces = clang-analyzer
+	replaces = clang-tools-extra
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/cfe-8.0.1.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/clang-tools-extra-8.0.1.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/llvm-8.0.1.src.tar.xz
+	source = 0001-OpenCL-Change-type-of-block-pointer-for-OpenCL.patch
+	source = 0002-OpenCL-Simplify-LLVM-IR-generated-for-OpenCL-blocks.patch
+	source = 0003-OpenCL-Fix-assertion-due-to-blocks.patch
+	source = clang-doc-build-as-clang_tool.patch
+	source = 0001-Fix-uninitialized-value-in-ABIArgInfo.patch
+	source = enable-SSP-and-PIE-by-default.patch
+	validpgpkeys = B6C8F98282B944E3B0D5C2530FC3042E345AD05D
+	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
+	sha256sums = 70effd69f7a8ab249f66b0a68aba8b08af52aa2ab710dfb8a0fba102685b1646
+	sha256sums = 187179b617e4f07bb605cc215da0527e64990b4a7dd5cbcc452a16b64e02c3e1
+	sha256sums = 44787a6d02f7140f145e2250d56c9f849334e11f9ae379827510ed72f12b75e7
+	sha256sums = fbb6d3c8135942e458bcad8882605a623bcd09bdec488eb0800e3afee0061e3a
+	sha256sums = 91c49139e02c6d29f6201aa394868939b991b39b84215c082392ea96fbd8c334
+	sha256sums = 191434810b5298331908ea1e193203e8441693da900238344e946ee6a79dad31
+	sha256sums = 1dfa5f93c0c084b8a25ca79ef9e2fe63a476826629e8ef366e0a6eaf5fa10625
+	sha256sums = b7f31bcf03255f6a9b51b02935648e015ea538a0eef0b0c6d9c052fc5accb0c4
+	sha256sums = 58f86da25eb230ed6d423b5b61870cbf3bef88f38103ca676a2c7f34b2372171
+
+pkgname = clang8
+
