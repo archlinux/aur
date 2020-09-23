@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd ${srcdir}/hotbox
-	git rev-list --count HEAD
+	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
