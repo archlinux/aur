@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Markgraf <sebastian-markgraf@t-online.de>
 pkgname=python-numerai-cli
 pkgver=0.1.22
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A library for helping to deploy a Numer.ai compute node"
 arch=('any')
@@ -36,4 +36,5 @@ check() {
 package() {
 	cd "numerai-cli-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
