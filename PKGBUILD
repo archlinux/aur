@@ -2,7 +2,7 @@
 
 _pkgname='naabu'
 pkgname="${_pkgname}-bin"
-pkgver=1.1.4
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Fast port scanner with a focus on reliability and simplicity'
 arch=('x86_64' 'armv6h' 'aarch64')
@@ -14,9 +14,9 @@ source_x86_64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver
 source_armv6h=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv6.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('897d950aaefb41a096a7396eddd97712c1330521b3feb3fc36ea3d0998599cd1')
-sha256sums_armv6h=('2faa469944e9613d8bb9b6e8576a75a51bb0e9b772ea266a17ce970ef88c41e9')
-sha256sums_aarch64=('ed25d88d7dc15f6a9627d66548ef993dcfa4ed35b037232678584bbc6fa002a5')
+sha256sums_x86_64=('67e0968020e82c658cb14f6ad7c80a9861b75a1d4bd8db1b32021fc8a0c0d446')
+sha256sums_armv6h=('f1383cab0cd51e616481db654996fcb6e8dd149f09a0fb9e0849cacc7729de4a')
+sha256sums_aarch64=('c3e44178a11dfaebf02b6020b701877a7b2a18f97a9f0a995c072614a8d73572')
 
 package() {
   install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}"
