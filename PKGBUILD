@@ -1,4 +1,5 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Nathan <ndowens@artixlinux.org>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinxu.org>
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
@@ -9,7 +10,7 @@
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
 pkgver=1.26.2
-pkgrel=1
+pkgrel=2
 pkgdesc="NM modified package to use exclusively iwd backend getting rid of wpa_supplicant dependency"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
@@ -31,6 +32,8 @@ pkgver() {
 
 prepare() {
   cd NetworkManager
+  # Fix doc build
+  git cherry-pick -n 54e25f23f53af889703dfc50d51a8afeeea8a439
 }
 
 build() {
@@ -41,8 +44,7 @@ build() {
     # platform
     -D dist_version="$pkgver-$pkgrel"
     -D session_tracking_consolekit=false
-    -D suspend_resume=systemd
-    -D modify_system=true
+
     -D polkit_agent=true
     -D selinux=false
 
