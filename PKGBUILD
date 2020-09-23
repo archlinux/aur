@@ -1,11 +1,12 @@
-# Maintainer: Joe Groocock <aur@frebib.net>
+# Maintainer: Shayne Hartford <shayneehartford@gmail.com>
+# Contributor: Joe Groocock <aur@frebib.net>
 # Contributor: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: OK100 <ok100 at lavabit dot com>
 # Contributor: Valère Monseur <valere dot monseur at ymail dot com>
 
 pkgname=picom-tryone-git
 _gitname=picom
-pkgver=1417_Next.136.g7a3137b_2020.04.11
+pkgver=1477_Next.196.g9bb21fc_2020.09.16
 pkgrel=1
 pkgdesc="tryone144's picom fork with dual_kawase blur, an X compositor (fork of compton)"
 arch=(i686 x86_64)
