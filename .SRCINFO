@@ -1,7 +1,7 @@
 pkgbase = infrared-git
 	pkgdesc = A generic C++/Python hybrid library for efficient (fixed-parameter tractable) Boltzmann sampling.
 	pkgver = 0.3.r7.gec411b9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/s-will/Infrared/
 	arch = x86_64
 	groups = viennarna-package

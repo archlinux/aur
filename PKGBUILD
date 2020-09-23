@@ -3,7 +3,7 @@
 pkgname=('infrared-git')
 pkgName=('Infrared-git')
 pkgver=0.3.r7.gec411b9
-pkgrel=1
+pkgrel=2
 pkgdesc="A generic C++/Python hybrid library for efficient (fixed-parameter tractable) Boltzmann sampling."
 arch=('x86_64')
 url="https://github.com/s-will/Infrared/"
