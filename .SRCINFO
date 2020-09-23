@@ -11,7 +11,7 @@ pkgbase = python-sympy-git
 	optdepends = ipython: user friendly interface for isympy
 	provides = python-sympy
 	conflicts = python-sympy
-	source = python-sympy-git::git+https://github.com/sympy/sympy.git
+	source = git+https://github.com/sympy/sympy.git
 	sha256sums = SKIP
 
 pkgname = python-sympy-git
