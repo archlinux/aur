@@ -1,6 +1,6 @@
 pkgbase = wingpanel-standalone-git
 	pkgdesc = Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)
-	pkgver = r580.4c359a3
+	pkgver = r595.52c921b
 	pkgrel = 1
 	url = https://github.com/elementary/wingpanel
 	arch = i686
@@ -49,7 +49,7 @@ pkgbase = wingpanel-standalone-git
 	source = fix-for-openbox.patch
 	source = no-mutter-typelib.patch
 	sha256sums = SKIP
-	sha256sums = 96076d8eab47bf9fe4bfaea58e79c98550c4f8e595a26fe052e59d755ae884b8
+	sha256sums = 916d436b283b73fc006689efee9de809107fc9f405bd0d6c46049e4144defaab
 	sha256sums = aa0a27e41df60a7b15e2fd7e0d06551663b98917b7632e4067e6b9a39407de1c
 	sha256sums = cbea39c2f11ecaf8f6d86f79253746575da479bdd25a166a36ee82f09f9135a0
 	sha256sums = aa15974b87a1000ab432bb048bc8a6ba0f36edd24e682d4e57833179c7b93f45
