@@ -52,7 +52,7 @@ _pick() {
 }
 
 package_pulseaudio-nosystemd-git() {
-  depends=("libpulse=$pkgver-$pkgrel" rtkit libltdl speexdsp tdb orc libsoxr
+  depends=(libpulse rtkit libltdl speexdsp tdb orc libsoxr
            webrtc-audio-processing gst-plugins-base-libs)
   optdepends=('pulseaudio-alsa: ALSA configuration (recommended)')
   backup=(etc/pulse/{daemon.conf,default.pa,system.pa})
@@ -131,14 +131,14 @@ package_pulseaudio-zeroconf-nosystemd-git(){
   pkgdesc="Zeroconf support for PulseAudio"
   provides=(pulseaudio-zeroconf)
   conflicts=(pulseaudio-zeroconf)
-  depends=("pulseaudio=$pkgver-$pkgrel" avahi openssl)
+  depends=(pulseaudio avahi openssl)
 
   mv zeroconf/* "$pkgdir"
 }
 
 package_pulseaudio-lirc-nosystemd-git(){
   pkgdesc="IR (lirc) support for PulseAudio"
-  depends=("pulseaudio=$pkgver-$pkgrel" lirc)
+  depends=(pulseaudio lirc)
   provides=(pulseaudio-lirc)
   conflicts=(pulseaudio-lirc)
 
@@ -147,7 +147,7 @@ package_pulseaudio-lirc-nosystemd-git(){
 
 package_pulseaudio-jack-nosystemd-git(){
   pkgdesc="Jack support for PulseAudio"
-  depends=("pulseaudio=$pkgver-$pkgrel" jack)
+  depends=(pulseaudio jack)
   provides=(pulseaudio-jack)
   conflicts=(pulseaudio-jack)
 
@@ -156,7 +156,7 @@ package_pulseaudio-jack-nosystemd-git(){
 
 package_pulseaudio-bluetooth-nosystemd-git(){
   pkgdesc="Bluetooth support for PulseAudio"
-  depends=("pulseaudio=$pkgver-$pkgrel" bluez bluez-libs sbc)
+  depends=(pulseaudio bluez bluez-libs sbc)
   provides=(pulseaudio-bluetooth)
   conflicts=(pulseaudio-bluetooth)
 
@@ -165,7 +165,7 @@ package_pulseaudio-bluetooth-nosystemd-git(){
 
 package_pulseaudio-equalizer-nosystemd-git(){
   pkgdesc="Equalizer for PulseAudio"
-  depends=("pulseaudio=$pkgver-$pkgrel" python-{pyqt5,dbus} fftw)
+  depends=(pulseaudio python-{pyqt5,dbus} fftw)
   provides=(pulseaudio-equalizer)
   conflicts=(pulseaudio-equalizer)
 

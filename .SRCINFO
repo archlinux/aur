@@ -36,7 +36,7 @@ pkgbase = pulseaudio-nosystemd-git
 	sha256sums = SKIP
 
 pkgname = pulseaudio-nosystemd-git
-	depends = libpulse=13.99.1+98+g460d0c0b7-1
+	depends = libpulse
 	depends = rtkit
 	depends = libltdl
 	depends = speexdsp
@@ -72,7 +72,7 @@ pkgname = libpulse-nosystemd-git
 
 pkgname = pulseaudio-zeroconf-nosystemd-git
 	pkgdesc = Zeroconf support for PulseAudio
-	depends = pulseaudio=13.99.1+98+g460d0c0b7-1
+	depends = pulseaudio
 	depends = avahi
 	depends = openssl
 	provides = pulseaudio-zeroconf
@@ -80,21 +80,21 @@ pkgname = pulseaudio-zeroconf-nosystemd-git
 
 pkgname = pulseaudio-lirc-nosystemd-git
 	pkgdesc = IR (lirc) support for PulseAudio
-	depends = pulseaudio=13.99.1+98+g460d0c0b7-1
+	depends = pulseaudio
 	depends = lirc
 	provides = pulseaudio-lirc
 	conflicts = pulseaudio-lirc
 
 pkgname = pulseaudio-jack-nosystemd-git
 	pkgdesc = Jack support for PulseAudio
-	depends = pulseaudio=13.99.1+98+g460d0c0b7-1
+	depends = pulseaudio
 	depends = jack
 	provides = pulseaudio-jack
 	conflicts = pulseaudio-jack
 
 pkgname = pulseaudio-bluetooth-nosystemd-git
 	pkgdesc = Bluetooth support for PulseAudio
-	depends = pulseaudio=13.99.1+98+g460d0c0b7-1
+	depends = pulseaudio
 	depends = bluez
 	depends = bluez-libs
 	depends = sbc
@@ -103,7 +103,7 @@ pkgname = pulseaudio-bluetooth-nosystemd-git
 
 pkgname = pulseaudio-equalizer-nosystemd-git
 	pkgdesc = Equalizer for PulseAudio
-	depends = pulseaudio=13.99.1+98+g460d0c0b7-1
+	depends = pulseaudio
 	depends = python-pyqt5
 	depends = python-dbus
 	depends = fftw
