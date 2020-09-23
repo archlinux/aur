@@ -3,7 +3,7 @@
 
 pkgname=coz
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A new kind of profiler that measures optimization potential"
 arch=('x86_64')
 url="https://github.com/plasma-umass/coz"
@@ -33,6 +33,8 @@ build() {
 package() {
   cd $pkgname-$pkgver
   make prefix="$pkgdir/usr" install
+
+  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
 }
 
 # vim:set ts=2 sw=2 et:

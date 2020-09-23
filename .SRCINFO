@@ -1,7 +1,7 @@
 pkgbase = coz
 	pkgdesc = A new kind of profiler that measures optimization potential
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/plasma-umass/coz
 	arch = x86_64
 	license = BSD
