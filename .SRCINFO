@@ -1,7 +1,7 @@
 pkgbase = amfora
 	pkgdesc = A fancy terminal browser for the Gemini protocol
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/makeworld-the-better-one/amfora
 	arch = x86_64
 	license = GPL3

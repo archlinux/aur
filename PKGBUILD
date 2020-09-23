@@ -1,7 +1,7 @@
 # Maintainer: Paul Boyd <boyd.paul2@gmail.com>
 pkgname=amfora
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fancy terminal browser for the Gemini protocol'
 arch=('x86_64')
 url='https://github.com/makeworld-the-better-one/amfora'
@@ -19,7 +19,7 @@ build() {
         -buildmode=pie \
         -mod=readonly \
         -modcacherw \
-        -ldflags "-extldflags \"${LDFLAGS}\" -X main.builtBy=amfora-AUR"
+        -ldflags "-extldflags \"${LDFLAGS}\" -X main.builtBy=amfora-AUR -X main.commit=922e7981a92cb7bf0d7b3baf1694d0fffe90d448"
 }
 
 package() {
