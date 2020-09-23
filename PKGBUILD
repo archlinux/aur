@@ -1,24 +1,26 @@
+# Maintainer: luxcem <a@luxcem.fr>
 # Contributor: Olivier Duclos <olivier.duclos gmail.com>
 # Contributor: Matthew Longley <randomticktock@gmail.com>
 
 pkgname=ttf-mona
 pkgver=2.90
-pkgrel=1
+pkgrel=2
 pkgdesc="A Japanese proportional font which allows you to view Japanese text arts correctly."
-arch=('i686' 'x86_64')
-license=('custom')
+license=("custom")
+arch=("any")
 url="http://monafont.sourceforge.net/"
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-makedepends=('unzip')
-install=ttf.install
-source=(http://downloads.sourceforge.net/monafont/monafont-ttf-${pkgver}.zip license.txt)
-md5sums=('fa952f01f0187664aaca5d3e259197d3'
-         'b98e405f9b27aba83c32ff42a2fdf3e4')
+source=(
+  "http://downloads.sourceforge.net/monafont/monafont-ttf-${pkgver}.zip"
+  "license.txt"
+)
+sha256sums=(
+  "06b324342ad13ea06a7e74811e1334a28cc52a1a16f9a326a919249622daeed6"
+  "faebecfa8a8b117d7e2ea3b13e111d04aee5782ec2a1178dba34a9b3d5560e3b"
+)
 
 package() {
-  cd $srcdir
-  mkdir -p $pkgdir/usr/share/fonts/TTF
-  install -m644 mona.ttf $pkgdir/usr/share/fonts/TTF/
-  mkdir -p $pkgdir/usr/share/licenses/custom/${pkgname}
-  install -m644 license.txt $pkgdir/usr/share/licenses/custom/${pkgname}/license.txt
+  install -d "${pkgdir}/usr/share/fonts/TTF"
+  install -m644 mona.ttf "${pkgdir}/usr/share/fonts/TTF/"
+  install -d "${pkgdir}/usr/share/licenses/custom/${pkgname}" 
+  install -m644 license.txt "${pkgdir}/usr/share/licenses/custom/${pkgname}/license.txt"
 }
