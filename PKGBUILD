@@ -1,18 +1,23 @@
 # Maintainer: Mees Luten <mees [dot] luten [at] gmail [dot] com>
 pkgname=l-band-decoders-git
-pkgver=0.1
+pkgver=r65.e8eb8e6
 pkgrel=1
-pkgdesc="Small experimental project aimed at decoding various satellites such as Metop and FengYun"
+pkgdesc="Small experimental project aimed at decoding various (HRPT) satellites such as Metop and FengYun"
 arch=('x86_64')
 url="https://github.com/altillimity/L-Band-Decoders"
 license=('GPLv3')
 depends=()
-makedepends=('libfec-git')
+makedepends=('libfec-git' 'git')
 provides=()
 conflicts=(satellite-decoders)
 replaces=()
 source=("$pkgname"::'git+https://github.com/altillimity/L-Band-Decoders.git')
 sha256sums=("SKIP")
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
 	#rm -f -r $pkgname
@@ -41,6 +46,6 @@ package() {
 	install -Dm755 NOAA\ Demodulator/NOAA-Demodulator "${pkgdir}"/usr/bin/NOAA-Demodulator
 	install -Dm755 NOAA\ MHS\ Decoder/MHS_Decoder "${pkgdir}"/usr/bin/MHS_Decoder
 	install -Dm755 QPSK\ Demodulator/QPSK-Demodulator "${pkgdir}"/usr/bin/QPSK-Demodulator
-	#install -Dm755  "${pkgdir}"/usr/bin/
+#	install -Dm755 NOAA\ AVHRR\ Decoder/NOAA-AVHRR-Decode "${pkgdir}"/usr/bin/NOAA-AVHRR-Decode
 }
 

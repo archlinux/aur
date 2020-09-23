@@ -1,11 +1,12 @@
 pkgbase = l-band-decoders-git
-	pkgdesc = Small experimental project aimed at decoding various satellites such as Metop and FengYun
-	pkgver = 0.1
+	pkgdesc = Small experimental project aimed at decoding various (HRPT) satellites such as Metop and FengYun
+	pkgver = r65.e8eb8e6
 	pkgrel = 1
 	url = https://github.com/altillimity/L-Band-Decoders
 	arch = x86_64
 	license = GPLv3
 	makedepends = libfec-git
+	makedepends = git
 	conflicts = satellite-decoders
 	source = l-band-decoders-git::git+https://github.com/altillimity/L-Band-Decoders.git
 	sha256sums = SKIP
