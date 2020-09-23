@@ -1,0 +1,11 @@
+pkgbase = vaspkit-bin
+	pkgdesc = VASPKIT is a postprocessing tool for VASP code.(Warning! May overwrite your .vaspkit and utilities dir!)
+	pkgver = 1.12
+	pkgrel = 2
+	url = https://sourceforge.net/projects/vaspkit/files/
+	arch = x86_64
+	source = https://downloads.sourceforge.net/vaspkit/vaspkit.1.12.linux.x64.tar.gz
+	sha256sums = 8d15358d5a9bb0a079f258eee1494558d800b151c5a459ba57577318c379eabd
+
+pkgname = vaspkit-bin
+
