@@ -1,4 +1,4 @@
-# Maintainer: Simon Kronberg <Simon dot Kronberg at gmail dot com>
+# Maintainer: Simon Kronberg <Simon.Kronberg at gmail dot com>
 # Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-current-bin
