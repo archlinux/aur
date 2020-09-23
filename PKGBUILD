@@ -4,7 +4,7 @@
 
 pkgname=libva-intel-driver-next-git
 _pkgname=libva-intel-driver
-pkgver=2.3.0.10.2018.r2639.gce593cf4
+pkgver=2.4.1.01.2020.r2672.g9a1f0c64
 pkgrel=1
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('git' 'meson')
 provides=('libva-intel-driver')
 conflicts=('libva-intel-driver')
 replaces=('libva-driver-intel')
-source=('git+https://github.com/intel/intel-vaapi-driver.git#branch=v2.3-branch')
+source=('git+https://github.com/intel/intel-vaapi-driver.git#branch=v2.4-branch')
 md5sums=('SKIP')
 
 pkgver() {
@@ -31,9 +31,6 @@ prepare() {
   # Only relevant if intel-gpu-tools is installed,
   # since then the shaders will be recompiled
   sed -i '1s/python$/&2/' src/shaders/gpp.py
-
-  # Fix undefined variable in src/meson.build
-  sed -i 's/2.2.0/2.2.0.0/' meson.build
 }
 
 build() {
