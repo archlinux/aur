@@ -2,7 +2,7 @@
 # Upstream URL: https://gitlab.gnome.org/gabmus/notorious
 
 pkgname=notorious-git
-pkgver=0.3.r0.g70f8b62
+pkgver=0.4.r0.g2483044
 pkgrel=1
 pkgdesc='Keyboard centric notes'
 arch=('any')
