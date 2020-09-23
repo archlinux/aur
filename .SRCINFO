@@ -1,17 +1,17 @@
-pkgbase = coz-git
-	pkgdesc = a new kind of profiler that measures optimization potential
-	pkgver = r424.d87e924
+pkgbase = coz
+	pkgdesc = A new kind of profiler that measures optimization potential
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/plasma-umass/coz
 	arch = x86_64
 	license = BSD
-	makedepends = git
 	makedepends = python-docutils
-	depends = python3
-	depends = libelfin-git
-	depends = npm
-	source = coz-git::git+https://github.com/plasma-umass/coz.git
-	md5sums = SKIP
+	depends = libelfin
+	depends = python
+	source = coz-0.2.2.tar.gz::https://github.com/plasma-umass/coz/archive/0.2.2.tar.gz
+	source = python3.diff
+	b2sums = 7fca65148f0542c939ea7aae0a9711435f75fb0afebf1b8b0db0a2a5783be9c29236f970c4a3b11bf0583ae3c5f695c4222b3b705c404d97255fc2bba963731f
+	b2sums = 06a5e526ac7da3b4aec10664b296193faeef0e9c53cfcb9004696ed9fd008a7fb0f8f7310bdf9fc2fbef0239b189f7cecfdf793dbfccf9deee3ed767e2b67671
 
-pkgname = coz-git
+pkgname = coz
 

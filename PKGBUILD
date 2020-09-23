@@ -1,36 +1,37 @@
-# Maintainer: Jon Gjengset <jon@thesquareplanet.com>
-pkgname=coz-git
-pkgver=r424.d87e924
+# Maintainer: Jonathon Fernyhough <jonathon+m2x dev>
+# Contributor: Jon Gjengset <jon@thesquareplanet.com> (coz-git)
+
+pkgname=coz
+pkgver=0.2.2
 pkgrel=1
-pkgdesc="a new kind of profiler that measures optimization potential"
+pkgdesc="A new kind of profiler that measures optimization potential"
 arch=('x86_64')
 url="https://github.com/plasma-umass/coz"
 license=('BSD')
-depends=('python3' 'libelfin-git' 'npm')
-makedepends=('git' 'python-docutils')
-options=()
-install=
-source=('coz-git::git+https://github.com/plasma-umass/coz.git')
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+depends=(libelfin python)
+makedepends=(python-docutils)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
+        python3.diff)
+b2sums=('7fca65148f0542c939ea7aae0a9711435f75fb0afebf1b8b0db0a2a5783be9c29236f970c4a3b11bf0583ae3c5f695c4222b3b705c404d97255fc2bba963731f'
+        '06a5e526ac7da3b4aec10664b296193faeef0e9c53cfcb9004696ed9fd008a7fb0f8f7310bdf9fc2fbef0239b189f7cecfdf793dbfccf9deee3ed767e2b67671')
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd $pkgname-$pkgver
+  patch -Np1 -i ../python3.diff
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd $pkgname-$pkgver
   make
 }
 
-package() {
-  cd $pkgname
+#check() {
+#  cd $pkgname-$pkgver
+#  make bench_small
+#}
 
-  mkdir -p "$pkgdir/usr/share/man/man1"
+package() {
+  cd $pkgname-$pkgver
   make prefix="$pkgdir/usr" install
 }
 
