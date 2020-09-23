@@ -1,0 +1,22 @@
+pkgbase = fantasque-sans-font
+	pkgdesc = A font family with a great monospaced variant for programmers.
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/belluzj/fantasque-sans
+	arch = any
+	license = SIL OPEN FONT LICENSE Version 1.1
+	source = https://github.com/belluzj/fantasque-sans/releases/download/v1.8.0/FantasqueSansMono-Normal.tar.gz
+	source = https://github.com/belluzj/fantasque-sans/releases/download/v1.8.0/FantasqueSansMono-NoLoopK.tar.gz
+	source = https://github.com/belluzj/fantasque-sans/releases/download/v1.8.0/FantasqueSansMono-LargeLineHeight.tar.gz
+	source = https://github.com/belluzj/fantasque-sans/releases/download/v1.8.0/FantasqueSansMono-LargeLineHeight-NoLoopK.tar.gz
+	sha256sums = 645709a54ea6fba24c926135a213d342ddb18f0f8b49f4e604b2210b73e9068a
+	sha256sums = d78359c79a951a484b5b20d6d20dc237694698d65cb5e357abccfbc678e4fed8
+	sha256sums = 5aa995f3e5b23a39c14039fceb8436330a1c1636667ab73197b9e0ca697ade34
+	sha256sums = 0604700e264c57d1d734a387012ddf153a0c53b6660bd7b66374ca86090e9099
+
+pkgname = ttf-fantasque-sans
+	conflicts = otf-fantasque-sans
+
+pkgname = otf-fantasque-sans
+	conflicts = ttf-fantasque-sans
+
