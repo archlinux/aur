@@ -36,7 +36,6 @@ pkgbase = pulseaudio-nosystemd-git
 	sha256sums = SKIP
 
 pkgname = pulseaudio-nosystemd-git
-	depends = libpulse
 	depends = rtkit
 	depends = libltdl
 	depends = speexdsp

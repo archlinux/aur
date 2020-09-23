@@ -52,7 +52,7 @@ _pick() {
 }
 
 package_pulseaudio-nosystemd-git() {
-  depends=(libpulse rtkit libltdl speexdsp tdb orc libsoxr
+  depends=(rtkit libltdl speexdsp tdb orc libsoxr
            webrtc-audio-processing gst-plugins-base-libs)
   optdepends=('pulseaudio-alsa: ALSA configuration (recommended)')
   backup=(etc/pulse/{daemon.conf,default.pa,system.pa})
