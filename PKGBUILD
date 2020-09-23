@@ -2,9 +2,9 @@
 # Contributor: defkeh <defkeh@gmail.com>
 pkgname=rivalcfg-git
 _pkgname=${pkgname%-git}
-pkgver=3.0.0.beta1.r1.2968f64
+pkgver=4.0.0
 pkgrel=1
-pkgdesc='SteelSeries Rival gaming mouse configuration utility'
+pkgdesc='CLI tool and Python library to configure SteelSeries gaming mice'
 arch=('any')
 url='https://github.com/flozz/rivalcfg'
 license=('custom:WTFPL')
@@ -14,6 +14,7 @@ conflicts=('rivalcfg')
 provides=('rivalcfg')
 source=('git+https://github.com/flozz/rivalcfg')
 sha256sums=('SKIP')
+install=install
 
 pkgver() {
   cd "$srcdir"/$_pkgname
@@ -23,10 +24,5 @@ pkgver() {
 package() {
   cd "$srcdir"/$_pkgname
   python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
-
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -D -m644 doc/rival-spec.md "$pkgdir"/usr/share/doc/$pkgname/rival-spec.md
-  install -D -m644 doc/rival100-spec.md "$pkgdir"/usr/share/doc/$pkgname/rival-spec100.md
-  install -D -m644 doc/rival300-spec.md "$pkgdir"/usr/share/doc/$pkgname/rival-spec300.md
-  install -D -m644 rivalcfg/data/99-steelseries-rival.rules "$pkgdir"/etc/udev/rules.d/99-steelseries-rival.rules
 }
