@@ -4,7 +4,7 @@
 pkgname=libnvidia-container-bin
 _pkgname=libnvidia-container
 
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 
 pkgdesc='NVIDIA container runtime library'
@@ -18,8 +18,8 @@ conflicts=('libnvidia-container')
 
 source=("https://nvidia.github.io/libnvidia-container/centos7/$CARCH/${_pkgname}1-${pkgver}-1.$CARCH.rpm"
         "https://nvidia.github.io/libnvidia-container/centos7/$CARCH/${_pkgname}-devel-${pkgver}-1.$CARCH.rpm")
-sha256sums=('3fa63bf811eacd4454692035bf75594c95582f550865a3dd19e89f968faff1e9'
-            'a818887b3163ff768f3db1a1fb4422414d2b846473c8ee42c67a416e7502c946')
+sha256sums=('4c44c54ec893a45429cae865e2d255ff0b3a5d700fde797ac5f8699f007298c4'
+            '0256da411c3b2246a27aad02f190ebabe40dc59437f4f7fdb99cd79ffecb606e')
 
 package() {
   cd "$srcdir"
