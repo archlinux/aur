@@ -1,7 +1,7 @@
 # Maintainer: Keil Miller Jr <keilmillerjr@outlook.com>
 pkgname="endlines"
 pkgver=1.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Endlines smartly converts text files line endings."
 arch=("x86_64")
 url="https://github.com/mdolidon/endlines"

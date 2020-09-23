@@ -1,7 +1,7 @@
 pkgbase = endlines
 	pkgdesc = Endlines smartly converts text files line endings.
 	pkgver = 1.9.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/mdolidon/endlines
 	arch = x86_64
 	license = Apache License 2.0
