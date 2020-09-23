@@ -1,4 +1,4 @@
-From 104b0ed4916d639c53cdb2d5e9caf3549330c113 Mon Sep 17 00:00:00 2001
+From 31a32f5be1739d5c9bd1c25ebe2b582ce9aa2fe6 Mon Sep 17 00:00:00 2001
 From: Jan Cholasta <jan@cholasta.net>
 Date: Thu, 6 Feb 2020 07:59:18 +0100
 Subject: [PATCH] Fix file paths
@@ -6,9 +6,8 @@ Subject: [PATCH] Fix file paths
 ---
  source/common/gameconfigfile.cpp     | 13 +------------
  source/common/gamecontrol.cpp        |  2 +-
- source/common/music/i_soundfont.cpp  |  4 +---
  source/platform/posix/sdl/i_main.cpp | 14 +-------------
- 4 files changed, 4 insertions(+), 29 deletions(-)
+ 3 files changed, 3 insertions(+), 26 deletions(-)
 
 diff --git a/source/common/gameconfigfile.cpp b/source/common/gameconfigfile.cpp
 index dd4c0889e..ae7d282d4 100644
@@ -55,10 +54,10 @@ index dd4c0889e..ae7d282d4 100644
  	}
  
 diff --git a/source/common/gamecontrol.cpp b/source/common/gamecontrol.cpp
-index 05ed78781..4b330ddff 100644
+index 99bc5ae6d..92e07fd6e 100644
 --- a/source/common/gamecontrol.cpp
 +++ b/source/common/gamecontrol.cpp
-@@ -599,7 +599,7 @@ int RunGame()
+@@ -613,7 +613,7 @@ int RunGame()
  	FString logfile = Args->TakeValue("+logfile");
  
  	// As long as this engine is still in prerelease mode let's always write a log file.
@@ -67,21 +66,6 @@ index 05ed78781..4b330ddff 100644
  
  	if (logfile.IsNotEmpty())
  	{
-diff --git a/source/common/music/i_soundfont.cpp b/source/common/music/i_soundfont.cpp
-index 672ec9268..046c52b7b 100644
---- a/source/common/music/i_soundfont.cpp
-+++ b/source/common/music/i_soundfont.cpp
-@@ -230,9 +230,7 @@ FPatchSetReader::FPatchSetReader(const char *filename)
- #ifndef _WIN32
- 	mCaseSensitivePaths = true;
- 	const char *paths[] = {
--		"/usr/local/lib/timidity",
--		"/etc/timidity",
--		"/etc"
-+		"/etc/timidity++"
- 	};
- #else
- 	const char *paths[] = {
 diff --git a/source/platform/posix/sdl/i_main.cpp b/source/platform/posix/sdl/i_main.cpp
 index b0e2ce978..0c2a2a96e 100644
 --- a/source/platform/posix/sdl/i_main.cpp
@@ -108,5 +92,5 @@ index b0e2ce978..0c2a2a96e 100644
  	I_StartupJoysticks();
  
 -- 
-2.25.0
+2.28.0
 
