@@ -1,17 +1,18 @@
 # Maintainer: Vyacheslav Konovalov <vyachkonovalov@protonmail.com>
 
-_commit=09589f9603096297e2a5b318199bc47b4dfbfafc
+_commit=09331516c7e96099cb9bb15646a95cb5502c5dbd
 pkgname=deemix
-pkgver=1.2.15
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='A barebone deezer downloader library'
 arch=(any)
 url='https://deemix.app/'
 license=('GPL3')
-depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-spotipy')
+depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-spotipy'
+         'python-eventlet')
 makedepends=('python-setuptools')
 source=("https://codeberg.org/RemixDev/deemix/archive/$_commit.tar.gz")
-sha256sums=('51838d768a25bd05b1ebd7ef2ec3526521d0af78dc6457e827fa37fc3f4564e4')
+sha256sums=('4c2832b06457d1d480b19d189e6ff8b1f93d9dd17f7af35b6e03c014635b028c')
 
 pkgver() {
   cd deemix
