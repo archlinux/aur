@@ -1,14 +1,15 @@
 pkgbase = systemd-dummy
-	pkgdesc = A dummy package to provide systemd
+	pkgdesc = system and service manager
 	pkgver = 1
-	pkgrel = 6
-	epoch = 1
-	url = http://www.freedesktop.org/wiki/Software/systemd
+	pkgrel = 1
+	url = https://www.github.com/systemd/systemd
 	arch = any
 	license = GPL2
 	license = LGPL2.1
-	license = MIT
 	provides = systemd
+	provides = systemd-tools
+	conflicts = systemd
+	conflicts = systemd-tools
 
 pkgname = systemd-dummy
 

@@ -1,20 +1,22 @@
-# Maintainer: Jack L. Frost <fbt@fleshless.org>
-# vim: ft=sh syn=sh et
-# % Trigger: 1434923067 %
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Lone_Wolf <lonewolf AT xs4all DOT nl>
 
-pkgdesc='A dummy package to provide systemd'
-pkgname='systemd-dummy'
-epoch=1
+pkgname=systemd-dummy
 pkgver=1
-pkgrel=6
-arch=( 'any' )
-url="http://www.freedesktop.org/wiki/Software/systemd"
-license=('GPL2' 'LGPL2.1' 'MIT')
+pkgrel=1
+pkgdesc="system and service manager"
+url='https://www.github.com/systemd/systemd'
+arch=('any')
+license=('GPL2' 'LGPL2.1')
+# this file has no original code at all
+provides=('systemd' 'systemd-tools')
+conflicts=('systemd' 'systemd-tools')
 
-provides=( 'systemd' )
+build() {
+   echo "Nothing to build"
+}
 
 package() {
-  # systemd-tmfiles stub
-  mkdir -pm755 "${pkgdir}/usr/bin"
-  ln -s /usr/bin/true "${pkgdir}/usr/bin/systemd-tmpfiles"
+   echo "Nothing to package"
 }
+
