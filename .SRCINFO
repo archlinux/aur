@@ -1,8 +1,9 @@
 pkgbase = dstask
-	pkgdesc = A personal task tracker designed to help you focus
-	pkgver = 0.20
+	pkgdesc = Single binary terminal-based TODO manager with git-based sync + markdown notes per task
+	pkgver = 0.21
 	pkgrel = 1
 	url = https://github.com/naggie/dstask
+	install = dstask.install
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -10,9 +11,9 @@ pkgbase = dstask
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	depends = glibc
-	source = dstask-0.20.tar.gz::https://github.com/naggie/dstask/archive/v0.20.tar.gz
-	sha256sums = a2a79e534896f16094df1e16033f63f7399326f15d689c1b22d8ceb6d9547b40
+	depends = git
+	source = dstask-0.21.tar.gz::https://github.com/naggie/dstask/archive/v0.21.tar.gz
+	sha256sums = 43c5828ad19221cbdf0ac6c43b2fd9a777d00fbd9d45b96353f18c969cf7987b
 
 pkgname = dstask
 

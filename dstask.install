@@ -1,0 +1,4 @@
+post_install() {
+    printf '==> %s\n' "Dstask needs a Git repository to work. Create a new Git repo in \$HOME/.dstask:"
+    printf '    %s\n' "$ mkdir \$HOME/.dstask && git -C \$HOME/.dstask init"
+}
