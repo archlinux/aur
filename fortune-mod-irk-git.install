@@ -1,0 +1,3 @@
+post_install() {
+  echo Type \"fortune irk\" to show a quote from this collection.
+}

@@ -10,6 +10,7 @@ depends=(fortune-mod)
 makedepends=(git)
 md5sums=('SKIP')
 license=('unknown')
+install=$pkgname.install
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
