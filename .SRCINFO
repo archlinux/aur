@@ -5,6 +5,7 @@ pkgbase = sublime-text-4-dev
 	url = http://www.sublimetext.com/
 	install = sublime-text.install
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	depends = libpng
 	depends = gtk3

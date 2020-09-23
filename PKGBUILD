@@ -2,16 +2,22 @@ pkgname=sublime-text-4-dev
 pkgver=4.4086
 pkgrel=1
 pkgdesc="Sophisticated text editor for code, html and prose - dev build"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="http://www.sublimetext.com/"
 license=('custom')
 depends=('libpng' 'gtk3')
 conflicts=('sublime-text')
 optdepends=('gksu: sudo-save support')
 install=sublime-text.install
+case "${CARCH}" in
+  x86_64)    _CARCH='x64'    && sha256sums=('388d1fe620727bd3e6bdda7b60150734616d8ba86ef1001478d0a41d1718c018'
+  'a400ae041bd8b3ed08bf04129e1d7ddc9df9edf5610532bd7b321a43e28c7ca9'
+  'ff58895daf5e4ee8c0b2f6c08fd272d6a2c8ed353689b39668436794a92bf504');;
+  aarch64)   _CARCH='arm64'  && sha256sums=('SKIP' 'SKIP' 'SKIP');;
+esac
 source=("sublime-text.install"
         "sublime_text.desktop"
-        "https://download.sublimetext.com/sublime_text_build_${pkgver:2}_x64.tar.xz")
+        "https://download.sublimetext.com/sublime_text_build_${pkgver:2}_${_CARCH}.tar.xz")
 sha256sums=('388d1fe620727bd3e6bdda7b60150734616d8ba86ef1001478d0a41d1718c018'
             'a400ae041bd8b3ed08bf04129e1d7ddc9df9edf5610532bd7b321a43e28c7ca9'
             'ff58895daf5e4ee8c0b2f6c08fd272d6a2c8ed353689b39668436794a92bf504')
