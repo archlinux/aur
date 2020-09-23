@@ -3,8 +3,8 @@
 
 pkgname=gzdoom
 pkgver=4.4.2
-pkgrel=2
-pkgdesc='Advanced Doom source port with OpenGL support'
+pkgrel=3
+pkgdesc='Feature centric port for all Doom engine games'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'GPL3' 'LGPL3')
@@ -40,7 +40,7 @@ source=("gzdoom::git://github.com/coelckers/gzdoom.git#tag=g${pkgver}"
         '0001-Fix-file-paths.patch')
 sha256sums=('SKIP'
             '59122e670f72aa2531aff370e7aaab2d886a7642e79e91f27a533d3b4cad4f6d'
-            'ee6629e35d0422dff628cf715244a8a444b9cb9fac4e11f2b852ee7f23f4d587')
+            '9b6c37c6fc90080ceb4162673f23187210b083af7cd61294ece2711790eac186')
 
 prepare() {
     cd gzdoom

@@ -1,29 +1,13 @@
-From 401bce4a69d773cbacc28df57004155204dbe707 Mon Sep 17 00:00:00 2001
+From ae97c9c15f3ee0d63573a319afda1e15fbe40cce Mon Sep 17 00:00:00 2001
 From: Jan Cholasta <jan@cholasta.net>
 Date: Tue, 25 Feb 2020 12:53:07 +0100
 Subject: [PATCH] Fix file paths
 
 ---
- src/common/audio/music/i_soundfont.cpp   |  4 +---
  src/common/platform/posix/sdl/i_main.cpp | 14 +-------------
  src/gameconfigfile.cpp                   | 14 ++------------
- 3 files changed, 4 insertions(+), 28 deletions(-)
+ 2 files changed, 3 insertions(+), 25 deletions(-)
 
-diff --git a/src/common/audio/music/i_soundfont.cpp b/src/common/audio/music/i_soundfont.cpp
-index a8b4e9fdf..911b8e308 100644
---- a/src/common/audio/music/i_soundfont.cpp
-+++ b/src/common/audio/music/i_soundfont.cpp
-@@ -232,9 +232,7 @@ FPatchSetReader::FPatchSetReader(const char *filename)
- #ifndef _WIN32
- 	mCaseSensitivePaths = true;
- 	const char *paths[] = {
--		"/usr/local/lib/timidity",
--		"/etc/timidity",
--		"/etc"
-+		"/etc/timidity++"
- 	};
- #else
- 	const char *paths[] = {
 diff --git a/src/common/platform/posix/sdl/i_main.cpp b/src/common/platform/posix/sdl/i_main.cpp
 index 7fc179a51..f39a38440 100644
 --- a/src/common/platform/posix/sdl/i_main.cpp
@@ -89,5 +73,5 @@ index 7f7e55a21..8dfd6a9b3 100644
  	}
  
 -- 
-2.27.0
+2.28.0
 
