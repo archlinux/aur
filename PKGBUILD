@@ -1,7 +1,7 @@
 # Maintainer: deadc0de6 <info@deadc0de.ch>
 
 pkgname=dotdrop
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Save your dotfiles once, deploy them everywhere "
 arch=('any')
@@ -23,5 +23,6 @@ package() {
   python setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm644 ${srcdir}/${pkgname}/completion/dotdrop-completion.bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
   install -Dm644 ${srcdir}/${pkgname}/completion/_dotdrop-completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -Dm644 ${srcdir}/${pkgname}/completion/dotdrop.fish "${pkgdir}/usr/share/fish/completions/${pkgname}.fish"
 }
 
