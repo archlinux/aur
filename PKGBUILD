@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=bios_extract-git
-pkgver=r117.a257643
+pkgver=r127.effb120
 pkgrel=1
 pkgdesc='Tool for extracting individual modules from proprietary BIOS images'
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ url='http://www.coreboot.org/Bios_extract'
 license=(GPL2)
 depends=(glibc)
 makedepends=(git)
-source=(git+http://review.coreboot.org/p/bios_extract)
+source=(git+https://review.coreboot.org/cgit/bios_extract.git)
 sha1sums=('SKIP')
 
 pkgver() {
