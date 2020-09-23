@@ -2,7 +2,7 @@
 
 pkgname=matrix-mirage-git
 _name=mirage
-pkgver=r2167.65f1cfe0
+pkgver=r2303.17a8e1ce
 pkgrel=1
 pkgdesc='A fancy, customizable, keyboard-operable Matrix chat client for encrypted and decentralized communication.'
 arch=('any')
@@ -14,13 +14,14 @@ conflits=('mirage' 'mirage-matrix' 'matrix-mirage')
 source=("git://github.com/mirukana/${_name}.git")
 sha256sums=('SKIP')
 
+prepare() {
+        cd ${srcdir}/"${_name}"
+	git checkout dev
+	git submodule update --init --recursive
+}
 pkgver() {
         cd ${srcdir}/"${_name}"
 	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
-}
-prepare() {
-        cd ${srcdir}/"${_name}"
-	git submodule update --init --recursive
 }
 build() {
         cd ${srcdir}/"${_name}"
