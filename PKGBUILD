@@ -2,7 +2,7 @@
 # Contributor: xantares
 
 pkgname=python-pythran
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Ahead of Time compiler for numeric kernels"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python-numpy' 'python-setuptools')
 _name=${pkgname#python-}
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('2d102a55d9d53f77cf0f4a904eeb5cbaa8fe76e4892319a859fc618401e2f6ba')
+sha256sums=('ac36a94bd862e3c80dae585158b90d3e7c5c05fd252819f3ca7d880a1c7c1012')
 depends=(
   'python' 'python-networkx' 'python-ply' 'python-numpy'
   'python-beniget>=0.2.0' 'python-gast>=0.3.0' 'python-six' 'gperftools' 'gmp'
