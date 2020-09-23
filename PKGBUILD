@@ -1,7 +1,7 @@
 # Maintainer: Ashwin Vishnu <ashwinvis+arch at pr0t0nm4il dot com>
 
 pkgname=python-beniget
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A static analyzer for Python3 code"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 makedepends=('python-setuptools')
 _name=${pkgname#python-}
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('350422b0598c92fcc5f8bcaf77f2a62f6744fb8f2fb495b10a50176c1283639f')
+sha256sums=('062c893be9cdf87c3144fb15041cce4d81c67107c1591952cd45fdce789a0ff1')
 depends=('python' 'python-gast')
 provides=('python-beniget')
 
