@@ -1,15 +1,17 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Submitter: Spyhawk
 
 _pkgname=libsolv
-pkgname=libsolv-git
-pkgver=0.7.14.r13.g956cb2d1
+pkgname="${_pkgname}-git"
+pkgver=0.7.15.r0.g1b6c40ba
 pkgrel=1
 pkgdesc='Package dependency solver using a satisfiability algorithm'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/openSUSE/${_pkgname}"
 license=('BSD')
-depends=('rpm-tools' 'zchunk')
+depends=(
+  'rpm-tools'
+  'zchunk'
+)
 makedepends=(
   'git'
   'cmake'
@@ -17,14 +19,16 @@ makedepends=(
   'perl'
   'python'
   'ruby'
-  'swig')
+  'swig'
+)
 optdepends=(
   'perl: for perl bindings'
   'python: for python bindings'
-  'ruby: for ruby bindings')
+  'ruby: for ruby bindings'
+)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${pkgname}::git+https://github.com/openSUSE/libsolv.git")
+source=("${pkgname}::git+https://github.com/openSUSE/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -77,15 +81,15 @@ build() {
     -DMULTI_SEMANTICS=ON \
     -DWITH_LIBXML2=OFF \
 
-  ninja -C build
+  cmake --build build
 }
 
 check() {
-  ARGS="-V" ninja -C build test
+  ARGS="-V" cmake --test build
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" cmake --install build
 
   install -Dp -m644 "${pkgname}"/LICENSE.BSD  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.BSD"
   install -Dp -m644 "${pkgname}"/README       "${pkgdir}/usr/share/doc/${pkgname}/README"
