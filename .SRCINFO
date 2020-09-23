@@ -1,7 +1,7 @@
 pkgbase = dell-idractools
 	pkgdesc = Dell EMC iDRAC Tools (RACADM, VMCLI, IPMI Tool)
 	pkgver = 9.4.0.3732
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dell.com/support/home/de/de/debsdt1/drivers/driversdetails?driverid=G3NDF&oscode=RHE70&productcode=poweredge-r640
 	arch = x86_64
 	license = GPL2
