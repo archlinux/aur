@@ -64,7 +64,7 @@ pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
 license=(GPL2)
-makedepends=(bc kmod libelf)
+makedepends=(bc kmod libelf cpio)
 if [ -n "$_htmldocs_enable" ]; then
     makedepends+=(xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick)
 fi
