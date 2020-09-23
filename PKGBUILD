@@ -4,7 +4,7 @@
 
 pkgname=plecs-standalone
 _pkgname="plecs"
-pkgver=v4.3.6
+pkgver=v4.4.4
 pkgrel=1
 pkgdesc="A circuit simulation tool written by Plexim (license needed / 30-days free trial)"
 url='http://www.plexim.com/de/products/plecs_standalone'
