@@ -1,7 +1,7 @@
 # Maintainer: Jojii <jojii@gmx.net>
 pkgname=logo-ls
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern ls command with vscode like file icon and git integrations"
 arch=('i686' 'x86_64')
 url="https://github.com/Yash-Handa/logo-ls"
@@ -18,6 +18,7 @@ source=("git+$url")
 md5sums=('SKIP')
 
 prepare() {
+    cd "$pkgname"
     go mod tidy
 }
 
