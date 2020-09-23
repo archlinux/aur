@@ -1,18 +1,18 @@
 # Maintainer: Florian Pelz <pelzflorian at pelzflorian.de>
 pkgname=potool-renamed
-pkgver=0.16
-pkgrel=2
+pkgver=0.19
+pkgrel=1
 pkgdesc="Program to help editing po files, without poedit name clash"
 arch=('i686' 'x86_64')
-url="http://marcin.owsiany.pl/potool-page"
+url="https://marcin.owsiany.pl/potool-page"
 license=('GPL')
 depends=('perl' 'glib2')
 provides=('potool')
 conflicts=('potool')
-source=("http://marcin.owsiany.pl/potool/potool-${pkgver}.tar.gz"
+source=("https://marcin.owsiany.pl/potool/potool-${pkgver}.tar.gz"
         'poedit-rename.patch'
         'poedit-test.patch')
-sha256sums=('7cf5990f5c60ded21b342b1917731eb75fb12b0762cf639fa9c6f0823d0e08da'
+sha256sums=('1251621b5e69b660987e8c9497df9e75e0b3e40bcf8304bdbd26a4fbd37c4384'
             'b331dde0a64ddac275ce607fe6fff8517b692bb186e2c0ea6ff907acbcb604be'
             'fed991e63843b265da85708bc3ce75329e5ead0193e73d0527961122bcd43b3b')
 
