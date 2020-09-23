@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fdiff
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='An OpenType table diff tool for fonts based on the fontTools TTX format'
 arch=(any)
@@ -15,7 +15,7 @@ depends=('python'
          "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e84a51582ccfe9b9ae3e6df06a96fa4673d47567c0e1c014af8ca6cc86cf92b5')
+sha256sums=('e1780089d02dc65c73e4673e9a546d8033e7867b263f68125f65c46ada227e6c')
 
 build() {
 	cd "$pkgname-$pkgver"
