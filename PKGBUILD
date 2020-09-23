@@ -4,7 +4,7 @@
 
 pkgname=firefox-bin
 _pkgname=firefox
-pkgver=80.0.1
+pkgver=81.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - official prebuilt binary"
 arch=(x86_64)
@@ -23,7 +23,7 @@ conflicts=('firefox')
 source=(https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-x86_64/en-US/firefox-$pkgver.tar.bz2{,.asc}
         $_pkgname.sh
         $_pkgname.desktop)
-sha256sums=('3ac0c9c4454647ce986bbe6f3567b0e1de5c0719ed6b6627344292c581a2afd3'
+sha256sums=('689d75035303b47266a3819e8aa3bb9026559b819aec2f6e95faa67b86888ce0'
             'SKIP'
             '9491f195066aa56f4f0bbc83e5f0581a460f4c34ee455ba24db312b540322703'
             'c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef')
