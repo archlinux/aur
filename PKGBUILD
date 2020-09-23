@@ -2,24 +2,17 @@
 
 pkgname=system76-acpi-dkms
 _pkgname=system76-acpi
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="System76 ACPI Driver (DKMS)"
 arch=('x86_64')
 url="https://github.com/pop-os/system76-acpi-dkms"
 license=('GPL')
 depends=('dkms')
 source=("https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
-        'system76-acpi.conf'
-        'airplane-led.patch')
-sha256sums=('032fc6e0ba0ad6b94abb7f0f3dbc6126f8bdef3384d08be37823d684235c8e8d'
-            '7b7e6bac10669d47576c8bd0bedad8217b32c1e25cab9cbb2ff64aa6be11fd39'
-            '0724d21de572885636348900a99426613f6e255dee335652b80ec18f97622c60')
-
-prepare() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  patch --no-backup-if-mismatch -Np1 -i ${srcdir}/airplane-led.patch
-}
+        'system76-acpi.conf')
+sha256sums=('b6154e77aec8b171dfe2f1248a96f60370ba803c762833e644f41049ec3f5d33'
+            '7b7e6bac10669d47576c8bd0bedad8217b32c1e25cab9cbb2ff64aa6be11fd39')
 
 package() {
   # Installation directory
