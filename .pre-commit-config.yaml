@@ -16,8 +16,4 @@ repos:
     always_run: true
     language: system
     entry: >
-      sh -c '
-      makepkg -g >> PKGBUILD &&
-      makepkg --printsrcinfo > .SRCINFO &&
-      git add PKGBUILD .SRCINFO
-      '
+      sh -c 'make codegen && git add PKGBUILD .SRCINFO'
