@@ -1,0 +1,30 @@
+pkgbase = briar-gtk-git
+	pkgdesc = Native GTK Briar client
+	pkgver = 0.1.0.beta1.r17.ga9c883b
+	pkgrel = 1
+	url = https://code.briarproject.org/briar/briar-gtk
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = meson
+	makedepends = gtk3
+	makedepends = appstream-glib
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = java-environment=11
+	depends = libhandy1
+	depends = python
+	depends = gettext
+	depends = python-briar-wrapper-git
+	depends = python-gobject
+	depends = briar-headless-git
+	depends = java-runtime=11
+	conflicts = briar-gtk
+	source = git+https://code.briarproject.org/briar/briar-gtk.git
+	source = briar-wrapper::git+https://code.briarproject.org/briar/python-briar-wrapper.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = briar-gtk-git
+
