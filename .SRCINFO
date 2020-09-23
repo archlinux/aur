@@ -1,0 +1,12 @@
+pkgbase = elogind-dummy
+	pkgdesc = The systemd project's logind, extracted to a standalone package
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/elogind/elogind
+	arch = any
+	license = GPL
+	provides = elogind
+	conflicts = elogind
+
+pkgname = elogind-dummy
+
