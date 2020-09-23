@@ -1,7 +1,7 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='speculum'
-pkgver=1.4.8
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Yet another mirror list optimization tool'
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/coNQP/${pkgname}"
 license=('GPLv3')
 depends=('python')
 source=(${pkgname}-${pkgver}::"https://github.com/conqp/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('851d5f979c999560a9bd4c5f96eb11300f3b717354a0c2f80308c240d94b3e88')
+sha256sums=('3d0c5878844b212081a1471719407432eb0ea068bdc3c2feffd74fc10d77bc85')
 
 
 package() {
