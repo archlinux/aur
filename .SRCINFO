@@ -7,6 +7,8 @@ pkgbase = lib32-systemd-dummy
 	license = GPL2
 	license = LGPL2.1
 	provides = lib32-systemd
+	provides = libsystemd.so
+	provides = libsystemd.so.0
 	conflicts = lib32-systemd
 
 pkgname = lib32-systemd-dummy

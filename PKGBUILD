@@ -9,14 +9,16 @@ url="https://www.github.com/systemd/systemd"
 arch=('any')
 license=('GPL2' 'LGPL2.1')
 # this file has no original code at all
-provides=('lib32-systemd')
+provides=('lib32-systemd' 'libsystemd.so' 'libsystemd.so.0')
 conflicts=('lib32-systemd')
 
 build() {
-   echo "Nothing to build"
+echo "Nothing to build"
 }
 
 package() {
-   echo "Nothing to package"
+   mkdir -p ${pkgdir}/usr/lib32
+   cp -v ${startdir}/libsystemd.so ${pkgdir}/usr/lib32
+   cp -v ${startdir}/libsystemd.so.0 ${pkgdir}/usr/lib32
 }
 
