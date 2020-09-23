@@ -1,6 +1,6 @@
 pkgbase = edges
 	pkgdesc = A command-line tool to set up X11 hot-corners
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/arisinfenix/edges
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = edges
 	depends = libx11
 	depends = libxi
 	depends = libxrandr
-	source = https://github.com/arisinfenix/edges/archive/2.0.0/edges-2.0.0.tar.gz
-	sha512sums = 5dca6b832a915b1d7dff845787d2386f1ca6b3799563b236cc2ff779581596b3e1157656f3de569b8dc85894d6c5577e7fb2a32f896ef134a6c2cc14646f5c55
+	source = https://github.com/arisinfenix/edges/archive/2.0.1/edges-2.0.1.tar.gz
+	sha512sums = 24f7aa17ad755a6c4644ac8a9fa20e14802d64635851aeba428f907aa9d6621c9236e31bf16b8178a97c2d16e311e122b70ab19c3f0e0db080508292594e73d8
 
 pkgname = edges
 
