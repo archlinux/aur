@@ -1,0 +1,14 @@
+pkgbase = fortune-mod-irk-git
+	pkgdesc = Fortune cookies from Irk bitig - Book of omens
+	pkgver = r1.5bd929f
+	pkgrel = 1
+	url = https://repo.or.cz/fortune-mod-irk
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = fortune-mod
+	source = git://repo.or.cz/fortune-mod-irk
+	md5sums = SKIP
+
+pkgname = fortune-mod-irk-git
+
