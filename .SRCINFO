@@ -1,0 +1,12 @@
+pkgbase = stayawake-bin
+	pkgdesc = Advanced wakeup alarm
+	pkgver = 0.5
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	depends = mpg123
+	source = https://github.com/PolyphasicDevTeam/stayawake/releases/download/0.5-beta/stayawake-0.5.tar.xz
+	md5sums = b6506ca6e8228edf6aed1a91e9e846fd
+
+pkgname = stayawake-bin
+
