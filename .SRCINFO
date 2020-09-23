@@ -1,13 +1,13 @@
 pkgbase = spd-eeprom
 	pkgdesc = A simple command line tool for reading and writing AT24/EE1004 SPD EEPROMs.
 	pkgver = 0.0.0.20200915
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/redchenjs/spd-eeprom
 	arch = any
 	license = Apache
 	depends = python
-	source = https://github.com/redchenjs/spd-eeprom/archive/b9afcb8602b579020061cb0ca0761d59d8603327/spd-eeprom-b9afcb8602b579020061cb0ca0761d59d8603327.tar.gz
-	sha512sums = a204678c4a2dffe27fc15eb6e093140cd1ef483850cb122f37fbf1572f78c5689b2df892aca5665e5a64bb68c6bea4ed65bac4339013309fa1b5ecab9c0197b5
+	source = https://github.com/redchenjs/spd-eeprom/archive/baffbf68fdb8fb3745f260154d0baf9e2b0c3c75/spd-eeprom-baffbf68fdb8fb3745f260154d0baf9e2b0c3c75.tar.gz
+	sha512sums = e60aaaec492a1ff0e57c4498b7e3dabc541f6a07ad13b392645f1a93e6c9ac233df96657072e8da3fa8848aee7915f78a5e276151c3b79b1fb98e44560c6ef7f
 
 pkgname = spd-eeprom
 
