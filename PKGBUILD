@@ -1,7 +1,7 @@
 # Maintainer: h_cheung <mail@h-cheung.cf>
 pkgname=clash-tun
-pkgver=20200805.r503.7f77c72
-pkgrel=2
+pkgver=20200923.r532.eadaef3
+pkgrel=1
 pkgdesc="Clash Tun Scripts for Linux"
 arch=('any')
 url="https://github.com/h0cheung/kr328-clash-setup-scripts"
@@ -31,6 +31,9 @@ pkgver() {
 
 build() {
     cd "${srcdir}/clash"
+    sed -i "s/Dreamacro\/go-shadowsocks2/h0cheung\/go-shadowsocks2/g" `grep Dreamacro\/go-shadowsocks2 -rl .`
+    sed -i 's/go-shadowsocks2 .*/go-shadowsocks2 v0.1.6-none/g' go.mod
+    rm go.sum
     go build .
     cd "${srcdir}/clash-tun-scripts"
     g++ $CPPFLAGS $CXXFLAGS -std=c++17 -static -o bypass-proxy-pid bypass-proxy-pid.cc
