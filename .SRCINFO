@@ -1,0 +1,15 @@
+pkgbase = ids-peak
+	pkgdesc = IDS peak is a modern, free software development kit for all USB3 Vision and GigE Vision compliant industrial cameras from any manufacturer.
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://en.ids-imaging.com/ids-peak.html
+	arch = x86_64
+	license = custom
+	depends = libusb
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	source = https://en.ids-imaging.com/files/downloads/ids-peak/software/linux-desktop/ids-peak-linux-x86-1.1.8.0-64.tgz
+	sha512sums = a014ce1e83def8603845f47ce2319e43216e6baf4dde2233f2c737c32389eafadac52542ab8189596e700f016d34bdadc4a2c284606bcc80458ad3841c212ed3
+
+pkgname = ids-peak
+
