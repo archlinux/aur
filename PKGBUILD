@@ -2,14 +2,14 @@
 
 pkgname=ntfs-3g-onedrive-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NTFS-3G plugin for reading OneDrive directories created by Windows 10"
 arch=("x86_64")
 url="https://jp-andre.pagesperso-orange.fr/advanced-ntfs-3g.html"
 license=("GPL2")
 depends=("ntfs-3g")
 source=("https://jp-andre.pagesperso-orange.fr/onedrive.zip")
-sha256sums=("c18de9c41596fc34dde48ec8193c733d49a607cd3ecf7213697ab6dc347461d9")
+sha256sums=("c6fc4488d389ebfb8e0e23314e6ff49ada5e2096c5ef7b84292fdca78c91ca64")
 
 package() {
 	cd "$srcdir/onedrive"
