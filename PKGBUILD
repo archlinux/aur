@@ -12,18 +12,18 @@ source=("git://github.com/bajaco/hotbox.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname-$pkgver"
+	cd "$srcdir/hotbox"
 	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$srcdir/hotbox"
 	python setup.py build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$srcdir/hotbox"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
