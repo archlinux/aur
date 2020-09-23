@@ -28,9 +28,9 @@ arch=('x86_64' )
 url="https://github.com/OriginQ/qpanda-2"
 license=('Apache2' )
 pkgrel=1
-depends=('python' 'pkgconf')
+depends=('python' )
 optdepends=('cuda' )
-makedepends=('git' 'make' 'gcc' 'cmake' 'python-setuptools' )
+makedepends=('git' 'cmake' 'python-setuptools' )
 sha512sums=('SKIP' )
 
 source=(
