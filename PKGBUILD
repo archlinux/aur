@@ -1,7 +1,7 @@
 # Maintainer: Hydral <nathan.dacunha.nd@gmail.com>
 
 pkgname=solarus-bin
-pkgver=1.6.5.dev.700953463
+pkgver=1.7.0.dev.700953463
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A lightweight, free and open-source game engine for Action-RPGs"

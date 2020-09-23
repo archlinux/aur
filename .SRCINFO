@@ -1,6 +1,6 @@
 pkgbase = solarus-bin
 	pkgdesc = A lightweight, free and open-source game engine for Action-RPGs
-	pkgver = 1.6.5.dev.700953463
+	pkgver = 1.7.0.dev.700953463
 	pkgrel = 1
 	url = http://www.solarus-games.org/
 	arch = x86_64
