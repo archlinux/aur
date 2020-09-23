@@ -1,0 +1,22 @@
+pkgbase = python-briar-wrapper-git
+	pkgdesc = A wrapper for the Briar headless API.
+	pkgver = 0.0.4.r1.gb8ac26b
+	pkgrel = 1
+	url = https://code.briarproject.org/briar/python-briar-wrapper
+	arch = any
+	license = GNU Affero GPL
+	makedepends = python-setuptools
+	makedepends = python-dephell
+	makedepends = git
+	depends = python
+	depends = python-websockets
+	depends = python-requests
+	depends = briar-headless-git
+	conflicts = python-briar-wrapper
+	source = git+https://code.briarproject.org/briar/python-briar-wrapper.git
+	source = address_error.patch
+	sha256sums = SKIP
+	sha256sums = dff2e1645420e76c543065d3bedcfe17fc4669bb01627f6ba43a66c225b52f18
+
+pkgname = python-briar-wrapper-git
+

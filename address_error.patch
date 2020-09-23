@@ -1,0 +1,14 @@
+diff --git a/briar_wrapper/api_thread.py b/briar_wrapper/api_thread.py
+index 18b5928..7b922b8 100644
+--- a/briar_wrapper/api_thread.py
++++ b/briar_wrapper/api_thread.py
+@@ -60,6 +60,8 @@ class ApiThread:
+                 if http_error.code == 404:
+                     return self._api.on_successful_startup(callback)
+             except URLError as url_error:
+-                if not isinstance(url_error.reason, ConnectionRefusedError):
++                if (not isinstance(url_error.reason, ConnectionRefusedError)
++                        and (isinstance(url_error.reason, OSError)
++                             and url_error.reason.errno != 99)):
+                     raise url_error
+         callback(False)
