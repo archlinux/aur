@@ -12,7 +12,7 @@ url='https://github.com/NVIDIA/nvidia-container-toolkit'
 license=('Apache')
 
 makedepends=('go')
-depends=('libnvidia-container-tools')
+depends=('libnvidia-container-tools>=1.3.0')
 conflicts=('nvidia-container-runtime-hook' 'nvidia-container-runtime<2.0.0')
 replaces=('nvidia-container-runtime-hook')
 
