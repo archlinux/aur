@@ -44,6 +44,8 @@ build() {
     # platform
     -D dist_version="$pkgver-$pkgrel"
     -D session_tracking_consolekit=false
+    -D suspend_resume=systemd
+    -D modify_system=true
 
     -D polkit_agent=true
     -D selinux=false
