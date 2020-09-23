@@ -4,7 +4,7 @@
 pkgname=hashlink
 pkgver=1.11
 pkgrel=1
-pkgdesc="A virtual machine for Haxe"
+pkgdesc="A virtual machine for Haxe (tagged releases)"
 url="https://hashlink.haxe.org/"
 arch=(x86_64)
 license=('MIT')
