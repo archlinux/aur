@@ -1,30 +1,14 @@
-From a8beb39ac0babaa9516a9888b35d1bfe657c0747 Mon Sep 17 00:00:00 2001
+From 8cde74c80be9fdfb0e00bb00b85b5bfed0e70da7 Mon Sep 17 00:00:00 2001
 From: Jan Cholasta <jan@cholasta.net>
 Date: Thu, 6 Feb 2020 07:59:18 +0100
 Subject: [PATCH] Fix file paths
 
 ---
- source/common/audio/music/i_soundfont.cpp   |  4 +---
  source/common/platform/posix/sdl/i_main.cpp | 14 +-------------
  source/core/gameconfigfile.cpp              | 13 +------------
  source/core/gamecontrol.cpp                 |  2 +-
- 4 files changed, 4 insertions(+), 29 deletions(-)
+ 3 files changed, 3 insertions(+), 26 deletions(-)
 
-diff --git a/source/common/audio/music/i_soundfont.cpp b/source/common/audio/music/i_soundfont.cpp
-index a8b4e9fdf..911b8e308 100644
---- a/source/common/audio/music/i_soundfont.cpp
-+++ b/source/common/audio/music/i_soundfont.cpp
-@@ -232,9 +232,7 @@ FPatchSetReader::FPatchSetReader(const char *filename)
- #ifndef _WIN32
- 	mCaseSensitivePaths = true;
- 	const char *paths[] = {
--		"/usr/local/lib/timidity",
--		"/etc/timidity",
--		"/etc"
-+		"/etc/timidity++"
- 	};
- #else
- 	const char *paths[] = {
 diff --git a/source/common/platform/posix/sdl/i_main.cpp b/source/common/platform/posix/sdl/i_main.cpp
 index 7fc179a51..fb4ce733e 100644
 --- a/source/common/platform/posix/sdl/i_main.cpp
@@ -95,10 +79,10 @@ index b532b2925..8ffd663b1 100644
  	}
  
 diff --git a/source/core/gamecontrol.cpp b/source/core/gamecontrol.cpp
-index 92b6c47ae..1d8bf338c 100644
+index cf89415e5..512577cf6 100644
 --- a/source/core/gamecontrol.cpp
 +++ b/source/core/gamecontrol.cpp
-@@ -749,7 +749,7 @@ int RunGame()
+@@ -826,7 +826,7 @@ int RunGame()
  	FString logfile = Args->TakeValue("+logfile");
  
  	// As long as this engine is still in prerelease mode let's always write a log file.
@@ -108,5 +92,5 @@ index 92b6c47ae..1d8bf338c 100644
  	if (logfile.IsNotEmpty())
  	{
 -- 
-2.27.0
+2.28.0
 
