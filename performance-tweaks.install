@@ -40,11 +40,11 @@ post_upgrade
 }
 
 post_upgrade() {
+  msg "Attempting to enable services..."
   systemctl is-active haveged >/dev/null || systemctl enable haveged
   systemctl is-active systemd-swap >/dev/null || systemctl enable systemd-swap
   systemctl is-active irqbalance >/dev/null || systemctl enable irqbalance
-  systemctl is-active preload >/dev/null || systemctl enable preload
-  systemctl is-active nohang >/dev/null || systemctl enable nohang
+  systemctl is-active nohang-desktop >/dev/null || systemctl enable nohang-desktop
   systemctl is-active ananicy >/dev/null || systemctl enable ananicy
   systemctl is-active auto-cpufreq >/dev/null || systemctl enable auto-cpufreq
   systemctl is-active thermald >/dev/null || systemctl enable thermald
