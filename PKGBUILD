@@ -2,11 +2,11 @@
 # Contributor: Daan De Meyer <daan.j.demeyer@gmail.com>
 
 pkgname=libzypp
-pkgver=17.24.1
-pkgrel=2
-pkgdesc="Library for package, patch, pattern and product management"
-arch=('i686' 'x86_64')
-url="https://github.com/openSUSE/libzypp"
+pkgver=17.25.0
+pkgrel=1
+pkgdesc="ZYpp Package Management library"
+arch=('x86_64')
+url="https://github.com/openSUSE/${pkgname}"
 license=('GPL')
 depends=(
   'boost-libs'
@@ -16,6 +16,7 @@ depends=(
   'libsolv'
   'libsystemd'
   'libxml2'
+  'yaml-cpp'
 )
 makedepends=(
   'asciidoc'
@@ -28,17 +29,12 @@ makedepends=(
   'graphviz'
   'ninja'
 )
-source=("${pkgname}-${pkgver}::https://github.com/openSUSE/libzypp/archive/${pkgver}.tar.gz")
-sha256sums=('fcb44a4ce56d6976e15267206971d6a98641964a16ccc601e854056b4b7874cb')
+source=("${pkgname}-${pkgver}::https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('7065027886d4a99d6b54af0915133b407e4a68bd2c672af7527ace38a1a97f4b')
 
 prepare() {
   # CMake doesn't find FindLibSolv.cmake in /usr/share/cmake/Modules
   cp /usr/share/cmake/Modules/FindLibSolv.cmake "${pkgname}-${pkgver}"/cmake/modules/
-
-  # Remove once https://github.com/openSUSE/libzypp/pull/236 is merged/released.
-  sed -i '15,16 s/^/\/\//' "${pkgname}-${pkgver}"/zypp/parser/xml/libxmlfwd.h
-  sed -i '19 s/^/\/\//' "${pkgname}-${pkgver}"/zypp/parser/xml/libxmlfwd.h
-
   rm -rf build
 }
 
@@ -55,15 +51,15 @@ build() {
     -D DISABLE_AUTODOCS=1 \
     -D DISABLE_MEDIABACKEND_TESTS=ON \
 
-  ninja -C build
+  cmake --build build
 }
 
-# check() {
-#   ninja -C build test
-# }
+check() {
+  ARGS="-V" cmake --test build
+}
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" cmake --install build
 
   # cmake fix (see GH#28)
   mkdir -p "${pkgdir}"/usr/lib/cmake/Zypp
