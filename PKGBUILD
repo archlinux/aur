@@ -10,11 +10,11 @@ url="https://github.com/s-will/Infrared/"
 license=('GPL3')
 groups=('viennarna-package')
 depends=('htd'
-         'boost-libs'
-         'python-rna')
+         'boost-libs')
 makedepends=('git'
              'boost'
              'doxygen')
+optdepends=('python-rna: required by redprint.py')
 provides=('libinfrared.so' 'libhtdwrap.so' 'redprint.py')
 conflicts=('infrared')
 source=("Infrared::git+${url}#branch=master")
