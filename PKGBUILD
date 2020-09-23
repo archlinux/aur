@@ -12,7 +12,7 @@ source=("git://github.com/bajaco/hotbox.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd ${srcdir}/hotbox
+	cd $pkgname/hotbox
 	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
