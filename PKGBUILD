@@ -3,20 +3,21 @@
 
 _pkgname=libzypp
 pkgname="${_pkgname}-git"
-pkgver=17.24.1.r9.g52f82f322
+pkgver=17.25.0.r7.gf247a52b7
 pkgrel=1
 pkgdesc='Library for package, patch, pattern and product management'
-arch=('i686' 'x86_64')
-url="https://github.com/openSUSE/libzypp"
+arch=('x86_64')
+url="https://github.com/openSUSE/${_pkgname}"
 license=('GPL')
 depends=(
   'boost-libs'
   'gpgme'
   'libproxy'
   'libsigc++'
-  'libsolv'
+  'libsolv-git'
   'libsystemd'
   'libxml2'
+  'yaml-cpp'
 )
 makedepends=(
   'asciidoc'
@@ -33,7 +34,6 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}::git+https://github.com/openSUSE/${_pkgname}.git")
 sha256sums=('SKIP')
-
 
 pkgver() {
   cd "${pkgname}"
@@ -63,9 +63,9 @@ build() {
   ninja -C build
 }
 
-# check() {
-#   ninja -C build test
-# }
+check() {
+  ninja -C build test
+}
 
 package() {
   DESTDIR="${pkgdir}" ninja -C build install
