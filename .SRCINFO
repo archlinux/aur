@@ -8,6 +8,7 @@ pkgbase = systemd-libs-dummy
 	provides = systemd-libs
 	provides = libsystemd
 	provides = libsystemd.so
+	provides = libsystemd.so.0
 	conflicts = systemd-libs
 	conflicts = libsystemd
 	replaces = libsystemd

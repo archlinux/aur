@@ -9,7 +9,7 @@ url='https://www.github.com/systemd/systemd'
 arch=('any')
 license=('LGPL2.1')
 # this file has no original code at all
-provides=('systemd-libs' 'libsystemd' 'libsystemd.so')
+provides=('systemd-libs' 'libsystemd' 'libsystemd.so' 'libsystemd.so.0')
 conflicts=('systemd-libs' 'libsystemd')
 replaces=('libsystemd')
 
@@ -18,6 +18,7 @@ build() {
 }
 
 package() {
-   echo "Nothing to package"
+   mkdir -p ${pkgdir}/usr/lib
+   cp -v ${startdir}/libsystemd.so ${pkgdir}/usr/lib
+   cp -v ${startdir}/libsystemd.so.0 ${pkgdir}/usr/lib
 }
-
