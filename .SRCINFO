@@ -1,15 +1,13 @@
 pkgbase = git-town
-	pkgdesc = A git extension for generic high-level git workflow support
-	pkgver = 7.3.0
+	pkgdesc = Generic, high-level Git workflow support!
+	pkgver = 7.4.0
 	pkgrel = 1
-	url = https://github.com/Originate/git-town
+	url = https://github.com/git-town/git-town
 	arch = x86_64
 	license = MIT
 	depends = git
-	source = git-town::https://github.com/Originate/git-town/releases/download/v7.3.0/git-town-linux-amd64
-	source = https://raw.githubusercontent.com/Originate/git-town/master/LICENSE
-	sha256sums = 33436f4b81e18cd751dcd5afc4867c245b97aa531cf6f8dd6753e491c4e77f47
-	sha256sums = 83067ad148e1c7c64566986f7717428b3632f1982d0ffb72c4a254be0a521730
+	source = git-town.tar.gz::https://github.com/git-town/git-town/releases/download/v7.4.0/git-town_7.4.0_linux_intel_64.tar.gz
+	sha256sums = 80ae7fd645be59d60689b117bde1ab363f18be2329ae92688d4b0297e272ce06
 
 pkgname = git-town
 
