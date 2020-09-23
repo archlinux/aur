@@ -2,7 +2,7 @@
 # Swiped from the official libyaml package and modified for mingw-w64
 # Also swiped some code from 0X1A and Schala's mingw-w64-libyaml
 pkgname=mingw-w64-libyaml
-pkgver=0.2.1
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="YAML 1.1 library (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=(staticlibs !strip !buildflags)
 source=(http://pyyaml.org/download/libyaml/yaml-${pkgver}.tar.gz)
-md5sums=('72724b9736923c517e5a8fc6757ef03d')
+md5sums=('bb15429d8fb787e7d3f1c83ae129a999')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -34,7 +34,7 @@ package() {
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
     #${_arch}-strip -g "$pkgdir"/usr/${_arch}/bin/*.dll
     find "$pkgdir/usr/${_arch}" -name '*.exe' -delete
-    cd "${srcdir}/yaml-$pkgver"
-    install -m644 -D LICENSE "${pkgdir}/usr/${_arch}/share/licenses/${pkgname}/LICENSE"
+    #cd "${srcdir}/yaml-$pkgver"
+    #install -m644 -D LICENSE "${pkgdir}/usr/${_arch}/share/licenses/${pkgname}/LICENSE"
   done
 }

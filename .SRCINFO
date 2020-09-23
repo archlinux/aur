@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libyaml
 	pkgdesc = YAML 1.1 library (mingw-w64)
-	pkgver = 0.2.1
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = http://pyyaml.org/wiki/LibYAML
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mingw-w64-libyaml
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://pyyaml.org/download/libyaml/yaml-0.2.1.tar.gz
-	md5sums = 72724b9736923c517e5a8fc6757ef03d
+	source = http://pyyaml.org/download/libyaml/yaml-0.2.5.tar.gz
+	md5sums = bb15429d8fb787e7d3f1c83ae129a999
 
 pkgname = mingw-w64-libyaml
 
