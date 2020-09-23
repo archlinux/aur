@@ -18,8 +18,8 @@
 
 _pkgname='tor-browser'
 pkgname='tor-browser-behind-tor'
-pkgver='9.5.4'
-pkgrel='2'
+pkgver='10.0'
+pkgrel='1'
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD) (using tor service to download sources)'
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
@@ -82,7 +82,7 @@ _dist_checksum() {
 source_i686=("${_urlbase}/${_pkgname}-${_tag_i686}-${pkgver}_${_language}.tar.xz"{,.asc})
 source_x86_64=("${_urlbase}/${_pkgname}-${_tag_x86_64}-${pkgver}_${_language}.tar.xz"{,.asc})
 
-# Make a string suitable for `sed`, by escaping "[]/&$.*^\" - syntax: `_sed_escape STRING`
+# Make a string suitable for `sed`, by escaping `[]/&$.*^\` - syntax: `_sed_escape STRING`
 _sed_escape() {
 	echo "${1}" | sed 's/[]\/&.*$^[]/\\&/g'
 }
@@ -96,9 +96,9 @@ sha256sums=('0b0614d04d55ac3748775fd34cb6c1f244fd05b5a16cc1e3ae70d887f7eedbc6'
             '8a6e0945571c332c1fc8b1cef11d15f699a752da2bb403bd0b65ee44821cc643'
             'f25ccf68b47f5eb14c6fec0664c74f30ea9c6c58d42fc6abac3b64670aaa3152'
             '7b28b5dbe8ad573bb46e61b4d542b33e01ca240825ca640b4893fee6203b021f')
-sha256sums_i686=('1320f20310793a0d429f4e2db8117da1bf01c6a50bcb652bd3b06e0f16659aa4'
+sha256sums_i686=('82b204864265e01de993929a4059cbc2f934fbbc4dbe50b3fdd5acc904e00075'
                  'SKIP')
-sha256sums_x86_64=('5d6d81db04e0a8c536c3d5e13c935c52318bac7ca44089e031c1bf7c54d66f4e'
+sha256sums_x86_64=('54d0e3165b55eee2d3feee94e9f7104797ad78d0f73713a286065ae7ec7459d0'
                    'SKIP')
 
 noextract=("${_pkgname}-${_tag_i686}-${pkgver}_${_language}.tar.xz"
