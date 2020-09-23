@@ -1,7 +1,7 @@
 pkgbase = python-numerapi
 	pkgdesc = Python API and command line interface for the numer.ai machine learning competition
 	pkgver = 2.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uuazed/numerapi
 	arch = any
 	license = MIT

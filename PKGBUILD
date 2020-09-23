@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Markgraf <sebastian-markgraf@t-online.de>
 pkgname=python-numerapi
 pkgver=2.3.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Python API and command line interface for the numer.ai machine learning competition"
 arch=('any')
@@ -36,4 +36,5 @@ check() {
 package() {
 	cd "numerapi-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"	
 }
