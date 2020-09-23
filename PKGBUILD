@@ -15,16 +15,16 @@ provides=('plecs-standalone')
 depends=('qt4' 'ncurses5-compat-libs' 'zlib')
 makedepends=('coreutils')
 
-source=("plecs.desktop" "plecs.png" "plecs.sh" "$pkgname-$pkgver-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-standalone-4-3-6_linux64.tar.gz")
+source=("plecs.desktop" "plecs.png" "plecs.sh" "$pkgname-$pkgver-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-standalone-4-4-4_linux64.tar.gz")
 
 md5sums=('7e0990a952785f929402da88efbd6cde'
          '8ed62f1ce2de47c761c9244531dc154e'
          '675ece23be004504ae71890909f8819c'
-         '5542d38cef1d9dbac5ff7fd709f6b61c')
+         '88ab7e4114fcfb0e816ce5aa379f700f')
 sha1sums=('6dbc37f69996baf211e0c387cc5ee6bb4c456619'
           'e1d9007695acbf40ce55b47f3724c4de8b5ac270'
           '4150e3dcc41210b7a28b7042972f76e7f6f3ac71'
-          'eef8bf9311e2392aeef7708a28fa1cd018f24a53')
+          '3ea0f099e5659d0234a9780e81d8caac5b74a4ad')
 package() {
     # install icon
     mkdir -p "$pkgdir/usr/share/pixmaps/"
