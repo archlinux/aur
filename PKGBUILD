@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=migraphx
-pkgver=3.7.0
-_pkgver=0.7
+pkgver=3.8.0
+_pkgver=0.8
 pkgrel=1
 pkgdesc="AMD's graph optimization engine"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('rocm-cmake' 'miopen' 'hip' 'protobuf' 'half' 'pybind11')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ROCmSoftwarePlatform/AMDMIGraphX/archive/$_pkgver.tar.gz")
-sha256sums=('697c3c7babaa025eaabec630dbd8a87d10dc4fe35fafa3b0d3463aaf1fc46399')
+sha256sums=('08fa991349a2b95364b0a69be7960580c3e3fde2fda0f0c67bc41429ea2d67a0')
 
 build() {
   mkdir -p "$srcdir/build"
