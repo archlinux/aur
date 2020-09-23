@@ -10,7 +10,7 @@ url='https://github.com/elementary/wingpanel'
 license=('GPL3')
 groups=('pantheon-qq')
 depends=(lib{gee,wnck3} 'cogl')
-makedepends=('meson' 'libgranite.so' 'git' 'vala' 'nano')
+makedepends=('meson' 'libgranite.so' 'git' 'vala')
 optdepends=("pantheon-applications-menu-git: Application launcher"
             wingpanel-indicator-{a11y,bluetooth,datetime,keyboard,network,notifications,power,session,sensors,sound}-git": Tray applet"
             wingpanel-indicator-{ayatana,namarupa}-git": Display Unity 7 tray applets"
@@ -41,6 +41,10 @@ pkgver() {
 
 prepare() {
   cd wingpanel
+
+  #Lie
+  #msg2 "FAKE 2.0 API"
+  #git revert -n c6313641f56fd12d14ad4d064dd64422f1140ff3
 
   #Autohide
   msg2 "Autohide"
