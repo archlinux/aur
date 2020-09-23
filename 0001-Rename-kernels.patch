@@ -1,0 +1,30 @@
+diff --unified --recursive --text xeus-cling-0.10.0/share/jupyter/kernels/xcpp11/kernel.json.in xeus-cling-0.10.0-fixed/share/jupyter/kernels/xcpp11/kernel.json.in
+--- xeus-cling-0.10.0/share/jupyter/kernels/xcpp11/kernel.json.in	2020-08-29 00:08:47.000000000 +0200
++++ xeus-cling-0.10.0-fixed/share/jupyter/kernels/xcpp11/kernel.json.in	2020-09-23 17:42:44.849674536 +0200
+@@ -1,5 +1,5 @@
+ {
+-  "display_name": "C++11",
++  "display_name": "C++11 (xeus)",
+   "argv": [
+       "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_BINDIR@/xcpp",
+       "-f",
+diff --unified --recursive --text xeus-cling-0.10.0/share/jupyter/kernels/xcpp14/kernel.json.in xeus-cling-0.10.0-fixed/share/jupyter/kernels/xcpp14/kernel.json.in
+--- xeus-cling-0.10.0/share/jupyter/kernels/xcpp14/kernel.json.in	2020-08-29 00:08:47.000000000 +0200
++++ xeus-cling-0.10.0-fixed/share/jupyter/kernels/xcpp14/kernel.json.in	2020-09-23 17:42:54.722971891 +0200
+@@ -1,5 +1,5 @@
+ {
+-  "display_name": "C++14",
++  "display_name": "C++14 (xeus)",
+   "argv": [
+       "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_BINDIR@/xcpp",
+       "-f",
+diff --unified --recursive --text xeus-cling-0.10.0/share/jupyter/kernels/xcpp17/kernel.json.in xeus-cling-0.10.0-fixed/share/jupyter/kernels/xcpp17/kernel.json.in
+--- xeus-cling-0.10.0/share/jupyter/kernels/xcpp17/kernel.json.in	2020-08-29 00:08:47.000000000 +0200
++++ xeus-cling-0.10.0-fixed/share/jupyter/kernels/xcpp17/kernel.json.in	2020-09-23 17:43:03.549606392 +0200
+@@ -1,5 +1,5 @@
+ {
+-  "display_name": "C++17",
++  "display_name": "C++17 (xeus)",
+   "argv": [
+       "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_BINDIR@/xcpp",
+       "-f",
