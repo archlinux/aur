@@ -1,0 +1,20 @@
+pkgbase = qpanda-2-git
+	pkgdesc = QPanda 2 is an open source quantum computing framework developed by OriginQC that can be used to build, run, and optimize quantum algorithms.
+	pkgver = v2.1.3.r6.g2a04a70
+	pkgrel = 1
+	url = https://github.com/OriginQ/qpanda-2
+	arch = x86_64
+	license = Apache2
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = python-setuptools
+	depends = python
+	depends = pkgconf
+	optdepends = cuda
+	source = QPanda::git+https://github.com/OriginQ/qpanda-2
+	sha512sums = SKIP
+
+pkgname = qpanda-2-git
+
