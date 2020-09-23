@@ -3,8 +3,8 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_tag=2.1-304-g8488f77d
-_version=2.1+304+g8488f77d
+_tag=2.1-351-g0bfaac1c
+_version=2.1+351+g0bfaac1c
 
 _pkgbase=${_basename}-${_pkgname}
 _debname=${_basename}-${_pkgname}2
@@ -17,13 +17,14 @@ url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
 depends=("java-runtime" "bash")
 optdepends=("prosody")
-makedepends=('tar')
+makedepends=('tar' 'unzip')
 options=('!strip')
 backup=(
   "etc/${_pkgbase}/config"
   "etc/${_pkgbase}/log4j2.xml"
   "etc/${_pkgbase}/logging.properties"
   "etc/${_pkgbase}/sip-communicator.properties"
+  "etc/${_pkgbase}/jvb.conf"
 )
 source=(
         "https://download.jitsi.org/stable/${_debname}_${_tag}-1_all.deb"
@@ -56,22 +57,24 @@ package() {
 
         chown -R root:root "${DESTDIR}"
 
-        install -dm750 "${CONFDIR}"
-        install -Dm640 -t "${CONFDIR}" etc/jitsi/videobridge/*
+        install -dm700 "${CONFDIR}"
+        install -Dm600 -t "${CONFDIR}" etc/jitsi/videobridge/*
         sed -i 's@/var/log/jitsi@/var/log/'${_pkgbase}'@' "${CONFDIR}/log4j2.xml"
 
         install -Dm644 "etc/sysctl.d/20-jvb-udp-buffers.conf" "${pkgdir}/etc/sysctl.d/${_pkgbase}.conf"
 
         cd "$srcdir"
-        install -Dm640 -t "${CONFDIR}" "config" "sip-communicator.properties"
+        unzip "$srcdir/${_pkgbase}/usr/share/jitsi-videobridge/jitsi-videobridge.jar" reference.conf
+        mv reference.conf jvb.conf
+        install -Dm600 -t "${CONFDIR}" "config" "sip-communicator.properties" "jvb.conf"
         install -Dm644 "service" "${pkgdir}/usr/lib/systemd/system/${_pkgbase}.service"
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('80f098cc861c1c8acfbb933fe359342f2e5eacf749b0a463855b4dd2db15f18d'
-            '5c79dc1e1f5ee04eba3da987c488fc53cb6e4348345cab05ab0ed6d7000f3d9d'
+sha256sums=('372613cd0af65b45ec4ae9bb48f305add7b6b01615f3dffe52aa7164cddfc919'
+            'd3c62e021edb1a17ba21fd62c328dd99df4ead44044a2850f25e34448f781a76'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
-            'f87c5250acba49a62ae55293059281764a6dc8cd99acf23e4b1b8bbee03b4fb1'
+            '5d78e8eec07c6aae84a1f1c0922f951217741ccc6f1a50ed7ef966c665bbf291'
             '998cbc64def56ab98080ff7150dd0913a5e10325cd2b038cf3db14baf8cb19fc'
-            '4dd8141e71bbf73b39cf242902e1c1a84a38dc3160ff89e76883d999af10541c'
+            '8a8f2fd5d02f196dff0ce7ceb75e45d19028a9f22dc9e55653ab17cce29051af'
             '59c2b2068205d6972c4b25bf1bbed9aaf08ff395b28309888cfe9b386dc29fa0')
