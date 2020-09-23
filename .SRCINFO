@@ -1,0 +1,15 @@
+pkgbase = x-band-decoders-git
+	pkgdesc = A project aimed at decoding various X-Band satellites
+	pkgver = r23.135216d
+	pkgrel = 1
+	url = https://github.com/MALuten/L-Band-Decoders
+	arch = x86_64
+	license = GPLv3
+	makedepends = libfec-git
+	makedepends = libcorrect-git
+	makedepends = git
+	source = x-band-decoders-git::git+https://github.com/MALuten/X-Band-Decoders.git
+	sha256sums = SKIP
+
+pkgname = x-band-decoders-git
+
