@@ -1,6 +1,6 @@
 pkgbase = rocm-smi-lib64
 	pkgdesc = ROCm SMI LIB
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/rocm_smi_lib
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = rocm-smi-lib64
 	makedepends = cmake
 	options = !staticlibs
 	options = strip
-	source = rocm-smi-lib64-3.7.0.tar.gz::https://github.com/RadeonOpenCompute/rocm_smi_lib/archive/rocm-3.7.0.tar.gz
-	sha256sums = 72d2a3deda0b55a2d92833cd648f50c7cb64f8341b254a0badac0152b26f1391
+	source = rocm-smi-lib64-3.8.0.tar.gz::https://github.com/RadeonOpenCompute/rocm_smi_lib/archive/rocm-3.8.0.tar.gz
+	sha256sums = 86250c9ae9dfb18d4f7259a5f2f09b21574d4996fe5034a739ce63a27acd0082
 
 pkgname = rocm-smi-lib64
 
