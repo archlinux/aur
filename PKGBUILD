@@ -3,15 +3,15 @@
 
 pkgname=bitwarden
 pkgver=1.22.1
-pkgrel=1
+pkgrel=2
 _jslibcommit='5e0a2d1d998b5d36b093f3eff032453421680a41'
 _nodeversion='10.20.1'
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64')
 url='https://github.com/bitwarden/desktop'
 license=('GPL3')
-makedepends=('expac' 'git' 'npm' 'python' 'nvm' 'jq' 'patch' 'pkgconf' 'make' 'gcc')
-depends=('alsa-lib' 'electron' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nss')
+makedepends=('git' 'npm' 'python' 'nvm' 'jq' 'patch' 'pkgconf' 'make' 'gcc')
+depends=('electron' 'libnotify' 'libsecret' 'libxtst')
 conflicts=('bitwarden-git' 'bitwarden-bin')
 options=('!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/desktop/archive/v${pkgver}.tar.gz"
@@ -30,10 +30,12 @@ prepare() {
   rmdir "${srcdir}/desktop-${pkgver}/jslib"
   ln -s "${srcdir}/jslib-${_jslibcommit}" "${srcdir}/desktop-${pkgver}/jslib"
   cd "${srcdir}/desktop-${pkgver}"
+
   # Patch out postinstall routines
   patch --strip=1 package.json ${srcdir}/package.json.patch
+  
   # Patch build to make it work with system electron
-  SYSTEM_ELECTRON_VERSION=$(expac %v electron | cut -d'-' -f1)
+  SYSTEM_ELECTRON_VERSION=$(pacman -Q electron | cut -d' ' -f2 | cut -d'-' -f1)
   jq < package.json --arg ver $SYSTEM_ELECTRON_VERSION\
   '.build["electronVersion"]=$ver | .build["electronDist"]="/usr/lib/electron"'\
   > package.json.patched
@@ -42,7 +44,7 @@ prepare() {
 
 build() {
   export npm_config_cache="$srcdir/npm_cache"
-  _npm_prefix=$(npm config get prefix)
+  local npm_prefix=$(npm config get prefix)
   npm config delete prefix
   source /usr/share/nvm/init-nvm.sh
   nvm install ${_nodeversion} && nvm use ${_nodeversion}
@@ -56,7 +58,7 @@ build() {
   npx electron-builder --dir build
 
   # Restore node config from nvm
-  npm config set prefix ${_npm_prefix}
+  npm config set prefix "${npm_prefix}"
   nvm unalias default
 }
 
@@ -70,6 +72,7 @@ package() {
   for i in 16 32 48 64 128 256 512; do
     install -Dm644 resources/icons/${i}x${i}.png "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
   done
+	install -Dm644 resources/icon.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
 
   install -dm755 "${pkgdir}/usr/bin"
   install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/bitwarden-desktop"
