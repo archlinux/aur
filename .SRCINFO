@@ -6,8 +6,8 @@ pkgbase = spd-eeprom
 	arch = any
 	license = Apache
 	depends = python
-	source = https://github.com/redchenjs/spd-eeprom/archive/baffbf68fdb8fb3745f260154d0baf9e2b0c3c75/spd-eeprom-baffbf68fdb8fb3745f260154d0baf9e2b0c3c75.tar.gz
-	sha512sums = e60aaaec492a1ff0e57c4498b7e3dabc541f6a07ad13b392645f1a93e6c9ac233df96657072e8da3fa8848aee7915f78a5e276151c3b79b1fb98e44560c6ef7f
+	source = https://github.com/redchenjs/spd-eeprom/archive/d2f896095e5303993f379ddbfdf9bb30616f2f98/spd-eeprom-d2f896095e5303993f379ddbfdf9bb30616f2f98.tar.gz
+	sha512sums = 37dbd5d5c060878db812bd4496db0eb0b2ebb81f7a366ae9adb30bc601354d754d0ce0fecdd47b82916237ecc1a4cff25ffdecdbd05a369f0eb3dcf452fb9866
 
 pkgname = spd-eeprom
 
