@@ -2,15 +2,21 @@
 # Maintainer: Ryozuki <ryo@ryozuki.xyz>
 
 pkgname=ddnet-skins
-pkgver=20200922
-pkgrel=2
+pkgver=20200923
+pkgrel=1
 pkgdesc="DDraceNetwork skin database"
 arch=(any)
 url="https://ddnet.tw"
-license=('custom:unknown')
+license=('custom:zlib'
+         'custom:CC0'
+         'CCPL:cc-by'
+         'CCPL:cc-by-sa'
+         'CCPL:cc-by-nc-nd')
 makedepends=('unzip')
-source=("$pkgname-$pkgver.zip::https://ddnet.tw/skins/zip/database.zip")
-sha256sums=('c46ee862cf87edc4f929bde5f173503b725ac6ec8f645b628e9764d98490bc16')
+source=("$pkgname-$pkgver.zip::https://ddnet.tw/skins/zip/database.zip"
+        "https://raw.githubusercontent.com/ddnet/ddnet/master/data/skins/license.txt")
+sha256sums=('1d9f15431e33f9a75bad18c00204346d8cb27c478b8df526662cf1ded5fd2ef9'
+            '163301fe1b71d2d9ad19888690d0a82a9dea865119459f7bcad44e0d1d8f461c')
 
 prepare() {
   rm -rf $pkgname-$pkgver
@@ -18,6 +24,8 @@ prepare() {
 }
 
 package() {
+  install -Dvm644 "$srcdir/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+  
   cd $pkgname-$pkgver
   install -dm755 "$pkgdir/usr/share/ddnet/data/skins/"
   install -Dvm644 * "$pkgdir/usr/share/ddnet/data/skins/"
