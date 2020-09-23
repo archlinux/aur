@@ -2,7 +2,7 @@
 # Contributor: Slashbunny <demodevil5[at]yahoo>
 
 pkgname=prometheus-node-exporter-bin
-pkgver=0.18.1
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Prometheus exporter for machine metrics (binary, not built from source)"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -21,13 +21,13 @@ source_armv7h=( 'prometheus-node-exporter.service'
 source_aarch64=( 'prometheus-node-exporter.service'
 "https://github.com/prometheus/node_exporter/releases/download/v${pkgver}/node_exporter-${pkgver}.linux-arm64.tar.gz")
 sha256sums_x86_64=('df4ef8a34999ac2acedead7a48e67da31e0b65a29e4570d3075cd8ca663cf1d0'
-                   'b2503fd932f85f4e5baf161268854bf5d22001869b84f00fd2d1f57b51b72424')
+                   '3369b76cd2b0ba678b6d618deab320e565c3d93ccb5c2a0d5db51a53857768ae')
 sha256sums_armv6h=('df4ef8a34999ac2acedead7a48e67da31e0b65a29e4570d3075cd8ca663cf1d0'
-                   '6f3cb593c15c12cdfaef20d7e1c61d28ef822af6fc8c85d670cb3f0a1212778a')
+                   'c1d7affbc7762c478c169830c43b4c6177a761bf1d2dd715dbffa55ca772655a')
 sha256sums_armv7h=('df4ef8a34999ac2acedead7a48e67da31e0b65a29e4570d3075cd8ca663cf1d0'
-                   '5de85067f44b42b22d62b2789cb1a379ff5559649b99795cd1ba0c144b512ad0')
+                   'e7f4427a25f1870103588e4968c7dc8c1426c00a0c029d0183a9a7afdd61357b')
 sha256sums_aarch64=('df4ef8a34999ac2acedead7a48e67da31e0b65a29e4570d3075cd8ca663cf1d0'
-                   'd5a28c46e74f45b9f2158f793a6064fd9fe8fd8da6e0d1e548835ceb7beb1982')
+                   '017514906922fcc4b7d727655690787faed0562bc7a17aa9f72b0651cb1b47fb')
 
 package() {
     case "$CARCH" in
