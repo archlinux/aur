@@ -1,7 +1,7 @@
 pkgbase = libsolv-git
-	pkgdesc = Package dependency solver using a satisfiability algorithm
+	pkgdesc = Library for solving packages and reading repositories
 	pkgver = 0.7.15.r0.g1b6c40ba
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openSUSE/libsolv
 	arch = x86_64
 	license = BSD

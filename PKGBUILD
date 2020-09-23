@@ -3,8 +3,8 @@
 _pkgname=libsolv
 pkgname="${_pkgname}-git"
 pkgver=0.7.15.r0.g1b6c40ba
-pkgrel=1
-pkgdesc='Package dependency solver using a satisfiability algorithm'
+pkgrel=2
+pkgdesc='Library for solving packages and reading repositories'
 arch=('x86_64')
 url="https://github.com/openSUSE/${_pkgname}"
 license=('BSD')
