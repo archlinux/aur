@@ -1,11 +1,11 @@
-# Maintainer:	Simon Legner <Simon.Legner@gmail.com>
-# Maintainer:	Filippo Berto <berto.f at protonmail dot com>
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Contributor: Filippo Berto <berto.f at protonmail dot com>
 # Contributor: Viktor Hundahl Strate <viktorstrate@gmail.com>
 
 _gitname=tinyMediaManager
 pkgname=tiny-media-manager
-pkgver=3.1.8
-pkgrel=2
+pkgver=3.1.9
+pkgrel=1
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
 url="https://www.tinymediamanager.org/"
@@ -15,27 +15,27 @@ install=tinyMediaManager.install
 noextract=("tmm_${pkgver}_linux.tar.gz")
 source=("https://release.tinymediamanager.org/v3/dist/tmm_${pkgver}_linux.tar.gz"
         "tinyMediaManager.install"
-			  "tinyMediaManager.desktop"
-				"tinymediamanager"
-				"tinymediamanager-cli"
-				"tinymediamanager.JAVA_OPTS")
+        "tinyMediaManager.desktop"
+        "tinymediamanager"
+        "tinymediamanager-cli"
+        "tinymediamanager.JAVA_OPTS")
 
 package() {
-	destpath="$pkgdir/usr/share/$_gitname"
-	mkdir -p "$destpath"
-	tar -xvf "tmm_${pkgver}_linux.tar.gz" -C "$destpath"
-	install -m644 tinymediamanager.JAVA_OPTS "$destpath/tmm.JAVA_OPTS"
+  destpath="$pkgdir/usr/share/$_gitname"
+  mkdir -p "$destpath"
+  tar -xvf "tmm_${pkgver}_linux.tar.gz" -C "$destpath"
+  install -m644 tinymediamanager.JAVA_OPTS "$destpath/tmm.JAVA_OPTS"
 
-	# Install desktop entry
-	install -D "$srcdir/tinyMediaManager.desktop" "$pkgdir/usr/share/applications/tinyMediaManager.desktop"
-	install -D "$destpath/tmm.png" "$pkgdir/usr/share/pixmaps/tmm.png"
+  # Install desktop entry
+  install -D "$srcdir/tinyMediaManager.desktop" "$pkgdir/usr/share/applications/tinyMediaManager.desktop"
+  install -D "$destpath/tmm.png" "$pkgdir/usr/share/pixmaps/tmm.png"
 
-	# Install launch scripts
-	install -D "$srcdir/tinymediamanager-cli" "$pkgdir/usr/bin/tinymediamanager-cli"
-	install -D "$srcdir/tinymediamanager" "$pkgdir/usr/bin/tinymediamanager"
+  # Install launch scripts
+  install -D "$srcdir/tinymediamanager-cli" "$pkgdir/usr/bin/tinymediamanager-cli"
+  install -D "$srcdir/tinymediamanager" "$pkgdir/usr/bin/tinymediamanager"
 }
 
-sha256sums=('f21a6f6b511d5534e4d2a968fd4101d46b503e0c8273d7f6e1ffd06e9d88300e'
+sha256sums=('6d77752f6e255a6364c580dbef34628d577225a79ae90524d31bcac2ee27e20c'
             '49bd16ee848ae21f1c02e408469e5c09c253e6ffe353d7e65434298a1092f010'
             '02bbfd492d10114cd314fc24fd7016532b0b992077d722d8bfccc4f99a79b7a3'
             '4bf36dd16bfc02a39ddde88cfcf30b4f4a5f0b08d2b34ffbab03f6553f57d596'
