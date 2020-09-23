@@ -7,7 +7,7 @@
 
 pkgname=notekit-clatexmath-git
 basename=${pkgname%-clatexmath-git}
-pkgver=r107.61ad2d4
+pkgver=r116.4f5374a
 pkgrel=1
 pkgdesc="A GTK3 hierarchical markdown notetaking application with tablet support."
 arch=('x86_64')
@@ -62,17 +62,9 @@ package() {
 	mkdir -p "$pkgdir"/usr/share/notekit/
 	cp -r "$srcdir"/notekit/data "$srcdir"/notekit/sourceview "$pkgdir"/usr/share/notekit/
 
-	#install desktop shortcut (taken from lyessaadi/notekit on COPR and modified to fit Arch)
-	mkdir -p "$pkgdir"/usr/share/applications/
-	echo "[Desktop Entry]
-Version="$pkgver"
-Name=NoteKit
-GenericName=NoteKit
-Comment=Write your notes in instantly-formatted Markdown
-Icon=accessories-text-editor
-Exec=notekit
-Terminal=false
-Type=Application
-Categories=Office;
-Keywords=note;onenote;notetaking;markdown;" > "$pkgdir"/usr/share/applications/notekit.desktop
+	#install application icons
+	install -Dm644 "$srcdir/notekit/freedesktop/notekit.png" -t "$pkgdir/usr/share/icons/hicolor/128x128/apps/"
+	install -Dm644 "$srcdir/notekit/freedesktop/notekit.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+	#install desktop shortcut
+	install -Dm644 "$srcdir/notekit/freedesktop/notekit.desktop" -t "$pkgdir/usr/share/applications/"
 }

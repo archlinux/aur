@@ -1,6 +1,6 @@
 pkgbase = notekit-clatexmath-git
 	pkgdesc = A GTK3 hierarchical markdown notetaking application with tablet support.
-	pkgver = r107.61ad2d4
+	pkgver = r116.4f5374a
 	pkgrel = 1
 	url = https://github.com/blackhole89/notekit
 	arch = x86_64
