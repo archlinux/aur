@@ -5,7 +5,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.5.0.gm.2.r62.ga94314fc'
+pkgver='5.5.0.gm.2.r64.g62df97a3'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -62,6 +62,12 @@ prepare() {
 
 	# Specify path for autostart file
 	patch --forward -p1 < '../fix-autostart-path.diff'
+
+	# Build recipe archives
+	cd "$srcdir/$_sourcedirectory/recipes/"
+	HOME="$srcdir/$_homedirectory" npm install
+	HOME="$srcdir/$_homedirectory" npm run package
+	cd "$srcdir/$_sourcedirectory/"
 
 	# Prepare dependencies
 	HOME="$srcdir/$_homedirectory" npx lerna bootstrap
