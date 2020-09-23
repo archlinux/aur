@@ -16,9 +16,10 @@
 #     tor-browser -u
 
 
+_pkgname='tor-browser'
 pkgname='tor-browser-behind-tor'
 pkgver='9.5.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor (international PKGBUILD) (using tor service to download sources)'
 url='https://www.torproject.org/projects/torbrowser.html'
 arch=('i686' 'x86_64')
@@ -57,9 +58,9 @@ _localetor() {
 	local _fulllocale="$(locale | grep LANG | cut -d= -f2 | cut -d. -f1 | sed s/_/\-/)"
 	local _shortlocale="$(locale | grep LANG | cut -d= -f2 | cut -d_ -f1)"
 
-	if curl --output /dev/null --silent --head --fail "${_urlbase}/tor-browser-${_archstr}-${pkgver}_${_fulllocale}.tar.xz"; then
+	if curl --output /dev/null --silent --head --fail "${_urlbase}/${_pkgname}-${_archstr}-${pkgver}_${_fulllocale}.tar.xz"; then
 		echo -n "${_fulllocale}"
-	elif curl --output /dev/null --silent --head --fail "${_urlbase}/tor-browser-${_archstr}-${pkgver}_${_shortlocale}.tar.xz"; then
+	elif curl --output /dev/null --silent --head --fail "${_urlbase}/${_pkgname}-${_archstr}-${pkgver}_${_shortlocale}.tar.xz"; then
 		echo -n "${_shortlocale}"
 	else
 		echo -n 'en-US'
@@ -77,22 +78,31 @@ _dist_checksum() {
 	curl --silent --fail "${_urlbase}/sha256sums-signed-build.txt" | grep "${1}-${pkgver}_${_language}.tar.xz" | cut -d ' ' -f1
 
 }
-source_i686=("${_urlbase}/tor-browser-${_tag_i686}-${pkgver}_${_language}.tar.xz"{,.asc})
-source_x86_64=("${_urlbase}/tor-browser-${_tag_x86_64}-${pkgver}_${_language}.tar.xz"{,.asc})
-source=("tor-browser.desktop"
-	"tor-browser.png"
-	"tor-browser.sh")
 
-sha256sums=('9ee0a4672e2d0835ffb94bcf26e17b56432030496a9cdf019b70c96083c24340'
+source_i686=("${_urlbase}/${_pkgname}-${_tag_i686}-${pkgver}_${_language}.tar.xz"{,.asc})
+source_x86_64=("${_urlbase}/${_pkgname}-${_tag_x86_64}-${pkgver}_${_language}.tar.xz"{,.asc})
+
+# Make a string suitable for `sed`, by escaping "[]/&$.*^\" - syntax: `_sed_escape STRING`
+_sed_escape() {
+	echo "${1}" | sed 's/[]\/&.*$^[]/\\&/g'
+}
+
+source=("tor-browser.desktop.in"
+	"tor-browser.in"
+	"tor-browser.png"
+	"tor-browser.svg")
+
+sha256sums=('0b0614d04d55ac3748775fd34cb6c1f244fd05b5a16cc1e3ae70d887f7eedbc6'
+            '8a6e0945571c332c1fc8b1cef11d15f699a752da2bb403bd0b65ee44821cc643'
             'f25ccf68b47f5eb14c6fec0664c74f30ea9c6c58d42fc6abac3b64670aaa3152'
-            '89118837e6db1d7b089e0067a6430e9a1a8602a64e00b7ea94382abfb0d3e502')
+            '7b28b5dbe8ad573bb46e61b4d542b33e01ca240825ca640b4893fee6203b021f')
 sha256sums_i686=('1320f20310793a0d429f4e2db8117da1bf01c6a50bcb652bd3b06e0f16659aa4'
                  'SKIP')
 sha256sums_x86_64=('5d6d81db04e0a8c536c3d5e13c935c52318bac7ca44089e031c1bf7c54d66f4e'
                    'SKIP')
 
-noextract=("tor-browser-${_tag_i686}-${pkgver}_${_language}.tar.xz"
-           "tor-browser-${_tag_x86_64}-${pkgver}_${_language}.tar.xz")
+noextract=("${_pkgname}-${_tag_i686}-${pkgver}_${_language}.tar.xz"
+           "${_pkgname}-${_tag_x86_64}-${pkgver}_${_language}.tar.xz")
 
 prepare() {
 
@@ -109,17 +119,10 @@ prepare() {
 	msg "Packaging tor-browser (language: ${_language})..."
 
 	if [[ -z "${TORBROWSER_PKGLANG}" ]]; then
-		echo -e "\n  ${_COL_BBLUE_}->${_COL_DEFAULT_} ${_COL_BRED_}NOTE:${_COL_DEFAULT_} If you want to package ${_COL_BWHITE_}tor-browser${_COL_DEFAULT_} in a different language, please"
+		echo -e "\n  ${_COL_BBLUE_}->${_COL_DEFAULT_} ${_COL_BRED_}NOTE:${_COL_DEFAULT_} If you want to package ${_COL_BWHITE_}${_pkgname}${_COL_DEFAULT_} in a different language, please"
 		echo -e "     set a \`${_COL_YELLOW_}TORBROWSER_PKGLANG${_COL_DEFAULT_}\` environment variable before running makepkg.\n"
 		echo '     For instance:'
 		echo -e "\n        ${_COL_LIGHTGREY_}TORBROWSER_PKGLANG='en-US' makepkg${_COL_DEFAULT_}\n"
-	fi
-
-	# we search and replace using sed with / as delimiter below so don't allow slashes in these vars.
-	# makepkg already enforces that there're no slashes in tor-browser, so we don't check that again here.
-	if [[ ${pkgver} = */* || ${_language} = */* || ${pkgdesc} = */* ]]; then
-		error '${pkgver}, ${_language} and ${pkgdesc} for this package are not allowed to contain /' >&2
-		return 1
 	fi
 
 }
@@ -128,19 +131,28 @@ package() {
 
 	cd "${srcdir}"
 
-	sed -i "s/__REPL_LANGUAGE__/${_language}/g" "tor-browser.desktop"
+	local _sed_subst="
+		s/@PACKAGE_NAME@/$(_sed_escape "${_pkgname}")/g
+		s/@PACKAGE_VERSION@/$(_sed_escape "${pkgver}")/g
+		s/@PACKAGE_RELEASE@/$(_sed_escape "${pkgrel}")/g
+		s/@PACKAGE_LANGUAGE@/$(_sed_escape "${_language}")/g
+		s/@PACKAGE_ARCH@/$(_sed_escape "${_archstr}")/g
+	"
 
-	sed -i "s/__REPL_NAME__/tor-browser/g"		"tor-browser.sh"
-	sed -i "s/__REPL_VERSION__/${pkgver}/g"	"tor-browser.sh"
-	sed -i "s/__REPL_RELEASE__/${pkgrel}/g"	"tor-browser.sh"
-	sed -i "s/__REPL_LANGUAGE__/${_language}/g"	"tor-browser.sh"
-	sed -i "s/__REPL_ARCH__/${_archstr}/g"		"tor-browser.sh"
+	install -dm755 "${pkgdir}/usr/bin"
+	sed "${_sed_subst}" "${_pkgname}.in" > "${pkgdir}/usr/bin/${_pkgname}"
+	chmod +x "${pkgdir}/usr/bin/${_pkgname}"
 
-	install -Dm 644 "tor-browser.desktop"		"${pkgdir}/usr/share/applications/tor-browser.desktop"
-	install -Dm 644 "tor-browser.png"		"${pkgdir}/usr/share/pixmaps/tor-browser.png"
-	install -Dm 755 "tor-browser.sh"		"${pkgdir}/usr/bin/tor-browser"
+	install -Dm 644 "${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 
-	install -Dm 644 "tor-browser-${_archstr}-${pkgver}_${_language}.tar.xz" "${pkgdir}/opt/tor-browser/tor-browser-${_archstr}-${pkgver}_${_language}.tar.xz"
+	install -Dm 644 "${_pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
+
+	install -dm755 "${pkgdir}/usr/share/applications"
+	sed "${_sed_subst}" "${_pkgname}.desktop.in" > \
+		"${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+	install -Dm 644 "${_pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz" \
+		"${pkgdir}/opt/${_pkgname}/${_pkgname}-${_archstr}-${pkgver}_${_language}.tar.xz"
 
 }
 
