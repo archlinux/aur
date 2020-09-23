@@ -1,0 +1,9 @@
+--- ./ryosmk/libroccatryosmk/ryos_device.h.orig 2020-06-30 16:41:33.348116743 +0200
++++ ./ryosmk/libroccatryosmk/ryos_device.h  2020-06-30 16:40:18.701450210 +0200
+@@ -23,5 +23,5 @@
+ G_BEGIN_DECLS
+
+-enum {
++typedef enum {
+    RYOS_WRITE_CHECK_WAIT_LIGHT_CONTROL = 10,
+ } RyosWriteCheckWait;

@@ -6,6 +6,7 @@
 # Contributor: Jesus Gonzalez <jesusmgh@gmail.com>
 # Contributor: Francisco Pina-Martins <f.pinamartins@gmail.com>
 # Contributor: Alex <antianno52@gmail.com>
+# Contributor: Martchus <martchus@gmx.net>
 
 pkgname=('roccat-tools-common'
          'roccat-tools-arvo'
@@ -39,15 +40,23 @@ pkgdesc='Userland applications to configure and make extended use of ROCCAT devi
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
 license=('GPL2')
-depends=('libgaminggear>=0.15.1' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme' 'libgudev' 'lua>=5.3')
+depends=('libgaminggear>=0.15.1' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme' 'libgudev' 'lua>=5.4' 'lua<5.5')
 makedepends=('cmake')
 optdepends=('kmod-roccat: Adds support for the old kone device.')
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2"
+        'fix-multiple-definitions.patch'
         '90-uinput.rules'
         'uhid.conf')
 sha256sums=('6f6766309bace2aece09910912d4a6d8bec61c9b4432f4f3ed388ebf7e16408a'
+            '6268347c22392606c1ea3ea265a43607ed708b5428faa87c0ed1f6d776edb80b'
             '097a333b61921698d60f448e66c34c57905d2098aca998d987be782a0e4862ff'
             '0d328038322f62ff1f3319666df5f8f58c0a028415a917ad247b0446c1ff90f5')
+
+prepare() {
+  cd "$srcdir/$pkgbase-$pkgver"
+
+  patch -p1 -i ../fix-multiple-definitions.patch
+}
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
@@ -57,7 +66,7 @@ build() {
     -DUDEVDIR=/usr/lib/udev/rules.d \
     -DWITHOUT_PYTHON=TRUE \
     -DLIBDIR="/usr/lib" \
-    -DWITH_LUA="5.3" \
+    -DWITH_LUA="5.4" \
     -DCMAKE_C_FLAGS="$(pkg-config --cflags harfbuzz)" \
     -DCMAKE_MODULE_PATH="/usr/share/libgaminggear/cmake/Modules"
   make
