@@ -11,6 +11,12 @@ makedepends=('python-setuptools' 'git')
 source=("git://github.com/bajaco/hotbox.git")
 md5sums=('SKIP')
 
+pkgver() {
+	cd ${srcdir}/hotbox
+	git rev-list --count HEAD
+}
+
+
 build() {
 	cd "${srcdir}/hotbox"
 	python setup.py build
