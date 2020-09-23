@@ -12,7 +12,7 @@ license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework'
 depends=(libjpeg-turbo xcb-util-keysyms xcb-util-renderutil libgl fontconfig xdg-utils
          shared-mime-info xcb-util-wm libxrender libxi sqlite xcb-util-image mesa
-         tslib libinput libxkbcommon-x11 libproxy libcups double-conversion md4c) # brotli https://bugreports.qt.io/browse/QTBUG-86772
+         tslib libinput libxkbcommon-x11 libproxy libcups double-conversion md4c brotli)
 makedepends=(cmake libfbclient mariadb-libs unixodbc postgresql-libs alsa-lib gst-plugins-base-libs
              gtk3 libpulse cups freetds vulkan-headers git)
 optdepends=('postgresql-libs: PostgreSQL driver'

@@ -42,6 +42,7 @@ pkgbase = qt6-base-git
 	depends = libcups
 	depends = double-conversion
 	depends = md4c
+	depends = brotli
 	optdepends = postgresql-libs: PostgreSQL driver
 	optdepends = mariadb-libs: MariaDB driver
 	optdepends = unixodbc: ODBC driver
