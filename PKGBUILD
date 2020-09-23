@@ -16,13 +16,14 @@ optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support')
 provides=("${pkgname}" 'brave-browser')
 conflicts=('brave' 'brave-git' 'brave-bin' 'brave-dev-bin' 'brave-nightly-bin')
-source=("${pkgname}-${pkgver}.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-v${pkgver}-linux-x64.zip"
+#source=("${pkgname}-${pkgver}.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-v${pkgver}-linux-x64.zip"
+source=("${pkgname}-${pkgver}.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-beta-${pkgver}-linux-amd64.zip"
         "LICENSE::https://raw.githubusercontent.com/brave/brave-browser/master/LICENSE"
         "${pkgname}.sh"
         "brave-browser.desktop"
         "logo.png")
 options=(!strip)
-sha512sums=('41db3b3ca9d427bbe2db404a39dd947d77c56f72d58a0e2c852268fc82a7f6adce9a9c797249319693efac6377a44d8a1c16186ff50c78b4a4de5081b588d72c'
+sha512sums=('7d210f8f529b363bb83012a81105059a809fa31be8a4f14d6d62f8cec44422e5c5b7c01050479b034b3fe317ffadfe1c1e4291fa69f95677723afe31b1a12c1e'
             '239dbc27d68e0a03e92c68fb746602d8183084c9624a533fe92a991b8a4658d5154c901ff64826992eabcf89a5b52cb32f9cf29fd25a42bef2b5d3932010d806'
             'dee61e98ab61ebe78f3d9a55f33150efdd851644113970afada5758f2fceb3329e9f1e49438304e03358242e893ea50e0d2afb6a18dac3f4c5b26f04cf8e508c'
             '44809972e3980856494659b15d033b02c63dd1743293dc079d90d022904160532bbf82e70686dea20a46431981bf147cc5392ecc483c61378908b4a92a3d7515'
