@@ -1,7 +1,7 @@
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 pkgname=djv
 pkgver=2.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional media review software for VFX, animation, and film production"
 arch=("x86_64")
 url="http://djv.sourceforge.net/"
