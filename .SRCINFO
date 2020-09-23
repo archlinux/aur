@@ -1,8 +1,9 @@
 pkgbase = rivalcfg-git
-	pkgdesc = SteelSeries Rival gaming mouse configuration utility
-	pkgver = 3.0.0.beta1.r1.2968f64
+	pkgdesc = CLI tool and Python library to configure SteelSeries gaming mice
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/flozz/rivalcfg
+	install = install
 	arch = any
 	license = custom:WTFPL
 	makedepends = git
