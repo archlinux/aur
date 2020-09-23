@@ -1,8 +1,8 @@
-# Maintainer: Simon Kronberg <Simon.Kronberg@gmail.com>
+# Maintainer: Simon Kronberg <Simon dot Kronberg at gmail dot com>
 # Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-current-bin
-pkgver=2020.08
+pkgver=2020.09
 pkgrel=1
 pkgdesc="64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons."
 arch=('x86_64')
@@ -60,4 +60,4 @@ END
 }
 
 sha256sums=('b8db6f9ee6abd9349b41333bf01ba04ef78a36335f94f35d9ea6762bc4fea548'
-            'd76b0181007283323225c0cd3800888ed01cad36e5e795b079fcedfbc2a224c1')
+            '74e7e5ebd8e2b9e466e63b70369deb70b1854c5abfd7c9d6bd6fe9fbb77de87a')
