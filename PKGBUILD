@@ -10,7 +10,8 @@ arch=('any')
 license=('LGPL2.1')
 # this file has no original code at all
 provides=('systemd-libs' 'libsystemd' 'libsystemd.so')
-conflicts=('systemd-libs' 'libsystemd' 'libsystemd.so')
+conflicts=('systemd-libs' 'libsystemd')
+replaces=('libsystemd')
 
 build() {
    echo "Nothing to build"

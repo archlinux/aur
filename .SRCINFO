@@ -10,7 +10,7 @@ pkgbase = systemd-libs-dummy
 	provides = libsystemd.so
 	conflicts = systemd-libs
 	conflicts = libsystemd
-	conflicts = libsystemd.so
+	replaces = libsystemd
 
 pkgname = systemd-libs-dummy
 
