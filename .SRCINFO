@@ -1,0 +1,20 @@
+pkgbase = appveyor-server
+	pkgdesc = Appveyor Server for Linux
+	pkgver = 7.0.2915
+	pkgrel = 1
+	url = https://www.appveyor.com/self-hosted/
+	arch = x86_64
+	license = custom
+	depends = dotnet-runtime
+	depends = libcap
+	noextract = appveyor-server.deb
+	backup = etc/sudoers.d/appveyor-server-sudoers
+	source = https://www.appveyor.com/downloads/appveyor/appveyor-server.deb
+	source = appveyor-check-version.sh
+	source = ver.pgrep
+	sha512sums = 695f1a60b012df6327ebc1a86d94da155ec5e9a0970ddd3040d0ed0bade1dce33d3b1ec490504b6e562266165e903987314f826bdb8642caaee0bb470893aaf2
+	sha512sums = aef44a8ca47cc60df8ca75cbd8deeada2d52d4ceb282f204c31ff97cadcb3754761f3c173363d516e41ac90035cf7ba50c4708f232802fea26444820cd00f768
+	sha512sums = a0c55edb4d482876566db8a3178b3d7a318acae4185dbe28cae83482ae45e122495a99109a7ddf44b499cfd51f5c63dbfe15f480aa28add27af9f893375cc974
+
+pkgname = appveyor-server
+

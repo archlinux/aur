@@ -1,0 +1,1 @@
+(?<=[<]a href=/releases/)(?<version>[\d.]+)(?=/?\s*[>]\k<version>[<]/a[>])
