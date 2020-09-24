@@ -1,12 +1,13 @@
 pkgbase = zchunk
 	pkgdesc = A file format that allows easy deltas while maintaining good compression
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zchunk/zchunk
 	arch = x86
 	arch = x86_64
 	license = BSD
 	makedepends = meson
+	makedepends = ninja
 	depends = libcurl.so
 	depends = zstd
 	provides = libzck.so
