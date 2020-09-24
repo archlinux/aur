@@ -5,7 +5,7 @@
 _font="dosis"
 _group="impallari"
 pkgname=ttf-${_group}-${_font}
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="Very simple, rounded, sans serif font family, from Pablo Impallari"
 arch=(any)
@@ -13,7 +13,7 @@ url="https://github.com/impallari/Dosis"
 license=('custom:OFL')
 groups=("${_group}-fonts")
 makedepends=('git')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig')
 install=updatefont.install
 source=("git+git://github.com/impallari/Dosis")
 sha1sums=('SKIP')
