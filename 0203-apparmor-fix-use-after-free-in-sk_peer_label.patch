@@ -1,0 +1,43 @@
+diff --git a/security/apparmor/lsm.c b/security/apparmor/lsm.c
+index 5c54d4588ede7be8a7d14469dec9129f9dafc406..bd37100000fdead3d5c27a316c818d419db5c2b1 100644
+--- a/security/apparmor/lsm.c
++++ b/security/apparmor/lsm.c
+@@ -1135,9 +1135,10 @@ static struct aa_label *sk_peer_label(struct sock *sk)
+ {
+ 	struct sock *peer_sk;
+ 	struct aa_sk_ctx *ctx = SK_CTX(sk);
++	struct aa_label *label = ERR_PTR(-ENOPROTOOPT);
+ 
+ 	if (ctx->peer)
+-		return ctx->peer;
++		return aa_get_label(ctx->peer);
+ 
+ 	if (sk->sk_family != PF_UNIX)
+ 		return ERR_PTR(-ENOPROTOOPT);
+@@ -1145,14 +1146,15 @@ static struct aa_label *sk_peer_label(struct sock *sk)
+ 	/* check for sockpair peering which does not go through
+ 	 * security_unix_stream_connect
+ 	 */
+-	peer_sk = unix_peer(sk);
++	peer_sk = unix_peer_get(sk);
+ 	if (peer_sk) {
+ 		ctx = SK_CTX(peer_sk);
+ 		if (ctx->label)
+-			return ctx->label;
++			label = aa_get_label(ctx->label);
++		sock_put(peer_sk);
+ 	}
+ 
+-	return ERR_PTR(-ENOPROTOOPT);
++	return label;
+ }
+ 
+ /**
+@@ -1196,6 +1198,7 @@ static int apparmor_socket_getpeersec_stream(struct socket *sock,
+ 
+ 	}
+ 
++	aa_put_label(peer);
+ done:
+ 	end_current_label_crit_section(label);
+ 
