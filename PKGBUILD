@@ -1,13 +1,13 @@
-# Maintainer: M Jordan Stanway <bluesquall+aur-avl@gmail.com>
+# Maintainer: M Jordan Stanway <aur-avl@mjstanway.com>
 pkgname=avl
 pkgver=3.36
-pkgrel=1
+pkgrel=2
 pkgdesc="aerodynamic and flight-dynamic analysis of rigid aircraft using an extended vortex lattice model"
 arch=('i686' 'x86_64')
 url="http://web.mit.edu/drela/Public/web/avl/"
 license=('GPL')
 makedepends=('gcc-fortran')
-depends=('gcc-libs' 'libx11')
+depends=('gcc-libs' 'libx11' 'xorg-fonts-misc')
 options=('!strip')
 source=('http://web.mit.edu/drela/Public/web/avl/avl3.36.tgz' 'avl.patch')
 md5sums=('61cf7ed7629142567ac8a9c9e1ba4981'
