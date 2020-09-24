@@ -1,6 +1,6 @@
 pkgbase = mcelog
 	pkgdesc = Print machine check event log from x86-64 kernel
-	pkgver = 172
+	pkgver = 173
 	pkgrel = 1
 	url = https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git
 	install = mcelog.install
@@ -10,8 +10,8 @@ pkgbase = mcelog
 	makedepends = git
 	options = docs
 	backup = etc/mcelog/mcelog.conf
-	source = https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git/snapshot/mcelog-172.tar.gz
-	sha256sums = d21dfddaaa8e6f4ebd59ce353165c8d8079d0d5ed563492a0415af2248d8b3a5
+	source = https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git/snapshot/mcelog-173.tar.gz
+	sha256sums = 15b06366527d0958e4f6eb9f11e68533435e989259663625dbffb53dd275b555
 
 pkgname = mcelog
 
