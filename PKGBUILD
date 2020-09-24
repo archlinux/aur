@@ -2,7 +2,7 @@
 
 _pkgname='nuclei'
 pkgname="${_pkgname}-bin"
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use'
 arch=('x86_64' 'armv6h' 'aarch64')
@@ -14,9 +14,9 @@ source_x86_64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver
 source_armv6h=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv6.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('29228a11ddca9a4992203facde9c8325f39bbfa8ecf5f8808f1aa243a5412159')
-sha256sums_armv6h=('27d6086c83f9d16ee18c69a0e6bb0b0f5f9e01ffcbd5118cdd5ab9501dff7026')
-sha256sums_aarch64=('6d37041ef6927b66e6f9ea97a76ed7ade086ee12222a434e0fca6a1cd1ed4fac')
+sha256sums_x86_64=('cbb9b2cd4e6b131232370a62fd2ba60cbc3ceb6aef61893a959b2233fb0e2b4c')
+sha256sums_armv6h=('679349d89bfbff180b060f4a1b270023e7bb22903b54428c2d6e72721b498b19')
+sha256sums_aarch64=('ebadf7cfcba0c7ebf33a7bf2e81191165f7d3d0a9e2a81844726792b834f68fa')
 
 package() {
   install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}"
