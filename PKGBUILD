@@ -1,6 +1,6 @@
 # Maintainer: Harm Müller <harm[DOT]mueller[AT]gmail[DOT]com>
 pkgname='perl-rex'
-pkgver='1.12.1'
+pkgver='1.12.2'
 pkgrel='1'
 pkgdesc="(R)?ex, the friendly automation framework"
 arch=('any')
@@ -14,16 +14,19 @@ depends=(
   'perl-file-sharedir-install'
   'perl-hash-merge'
   'perl-http-message'
+  'perl-io-pty-easy'
   'perl-io-string'
   'perl-json-maybexs'
   'perl-list-moreutils'
   'perl-libwww'
   'perl-net-openssh'
   'perl-net-sftp-foreign'
+  'perl-net-ssh2'
   'perl-scalar-list-utils'
   'perl-sort-naturally'
   'perl-term-readkey'
   'perl-test-deep'
+  'perl-test-output'
   'perl-test-simple'
   'perl-test-useallmodules'
   'perl-text-glob'
@@ -37,10 +40,10 @@ optdepends=(
 )
 makedepends=()
 url='https://www.rexify.org/'
-source=('https://cpan.metacpan.org/authors/id/F/FE/FERKI/Rex-1.12.1.tar.gz')
-md5sums=('18364b57903000bcb2ed7ce4d3d2b889')
-sha256sums=('5c4c60a5ed35de6aff9494c5cf3bd760990161b32f77be7247c421bdfd047963')
-_distdir="Rex-1.12.1"
+source=('https://cpan.metacpan.org/authors/id/F/FE/FERKI/Rex-1.12.2.tar.gz')
+md5sums=('c79a400e323dfac7aa39b1423970c5bf')
+sha256sums=('2bbcb781d7914ed88535933e7769033d8a1b53f938e5989c3da84f5fd7055df7')
+_distdir="Rex-1.12.2"
 
 build()
 (
