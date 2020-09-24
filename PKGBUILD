@@ -1,8 +1,8 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=redditgtk-git
-pkgver=r32.c7406bc
-pkgrel=2
+pkgver=r52.82127b4
+pkgrel=1
 epoch=
 pkgdesc="Reddit gtk client"
 arch=('any')
@@ -15,6 +15,7 @@ depends=(
 	'python-dateutil'
 	'python-flask'
 	'python-gobject'
+	'python-mistune'
 	'python-praw'
 )
 makedepends=('meson' 'git' 'gobject-introspection')

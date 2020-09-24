@@ -1,7 +1,7 @@
 pkgbase = redditgtk-git
 	pkgdesc = Reddit gtk client
-	pkgver = r32.c7406bc
-	pkgrel = 2
+	pkgver = r52.82127b4
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GabMus/redditgtk
 	arch = any
 	license = GPL3
@@ -13,6 +13,7 @@ pkgbase = redditgtk-git
 	depends = python-dateutil
 	depends = python-flask
 	depends = python-gobject
+	depends = python-mistune
 	depends = python-praw
 	provides = redditgtk
 	conflicts = redditgtk
