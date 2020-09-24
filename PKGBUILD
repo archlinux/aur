@@ -2,7 +2,7 @@
 
 pkgname=spd-eeprom
 pkgver=0.0.0.20200915
-_commit=8e423b4887b20bbb7d8d5767aa85dd7f2fd71286
+_commit=5c49fd3d752ea9c0740d8d62029da20b470c8233
 pkgrel=2
 pkgdesc="A simple command line tool for reading and writing AT24/EE1004 SPD EEPROMs."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/redchenjs/spd-eeprom"
 license=('Apache')
 depends=('python')
 source=("https://github.com/redchenjs/spd-eeprom/archive/$_commit/spd-eeprom-$_commit.tar.gz")
-sha512sums=('b60a6077d7fdf43f122caf50686f574775787c75ce50292e6f15c31cfe69c5dd54075b83a20339958beebbc96f3a401c68fa66fad11d57862bea26e5a1eeb74c')
+sha512sums=('1238e762b47d264d46d8ede74d80af035fe76e89ba7c5cd66508af0a42eb86fc10c440d3d4d607b28d9cf9e4967a6993c517f63fa5b14051a2a17a88cae812c8')
 
 package() {
     cd $pkgname-$_commit
