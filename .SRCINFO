@@ -1,6 +1,6 @@
 pkgbase = serverplate
 	pkgdesc = A simple aesthetic web front for your server.
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/ArisuOngaku/serverplate
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = serverplate
 	provides = serverplate
 	conflicts = serverplate
 	options = !strip
-	source = serverplate-src::git://github.com/ArisuOngaku/serverplate.git#tag=v0.1.5
+	source = serverplate-src::git://github.com/ArisuOngaku/serverplate.git#tag=v0.1.6
 	source = serverplate.service
 	source = serverplate.sysusers
 	source = local.ts
