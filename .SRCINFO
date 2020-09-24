@@ -1,6 +1,6 @@
 pkgbase = quickmedia-git
 	pkgdesc = A native client for web media. Supports youtube, nyaa.si, 4chan and several manga sites.
-	pkgver = r251.fe6db40
+	pkgver = r255.6cb237c
 	pkgrel = 1
 	url = https://git.dec05eba.com/QuickMedia
 	arch = x86_64
@@ -24,8 +24,8 @@ pkgbase = quickmedia-git
 	optdepends = xdg-utils: For downloading torrents when using nyaa.si plugin
 	provides = QuickMedia
 	conflicts = QuickMedia
-	source = quickmedia-git-r251.fe6db40.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz
-	sha512sums = f71df7be0501d07a00cff4be54715578de78263bfbe4efafad7717e5e40f3641fc48bb606d4f17e5d6e82ef8e947ceda60b9799d6e38585aa9bf6eb650e7047d
+	source = quickmedia-git-r255.6cb237c.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz
+	sha512sums = bed19f92831fca6635b5af4bb9e4eb1d07897fe1c61c03958e0c235c3098e8428bd74eac8376264011212d7e3ad701fb0314d253c172a762cf1bf30172b3d4d5
 
 pkgname = quickmedia-git
 
