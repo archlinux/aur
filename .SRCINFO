@@ -1,0 +1,15 @@
+pkgbase = dwz
+	pkgdesc = DWARF optimization and duplicate removal tool
+	pkgver = 0.13
+	pkgrel = 1
+	url = https://sourceware.org/git/dwz.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = libelf
+	source = dwz::git+https://sourceware.org/git/dwz.git#tag=dwz-0.13
+	sha512sums = SKIP
+
+pkgname = dwz
+
