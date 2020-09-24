@@ -6,7 +6,6 @@ pkgbase = r5u87-webcam-drivers
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = mercurial
 	depends = glib2
 	depends = libusb-compat
 	optdepends = guile: script for extracting firmware from Windows driver

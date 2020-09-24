@@ -13,7 +13,6 @@ pkgdesc='Userspace modules for Ricoh R5U870 OEM cameras, improved packages and c
 arch=('i686' 'x86_64')
 url='https://gitea.artixlinux.org/linuxer/r5u87x'
 license=('GPL2')
-makedepends=('mercurial')
 depends=('glib2' 'libusb-compat')
 optdepends=('guile: script for extracting firmware from Windows driver')
 source=("${url}/archive/${pkgver}.tar.gz")
