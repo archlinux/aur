@@ -1,0 +1,19 @@
+pkgbase = nishanths-license-git
+	pkgdesc = Command line license text generator
+	pkgver = v5.0.0.r2.g39dde89
+	pkgrel = 1
+	url = https://github.com/nishanths/license
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = nishanths-license
+	conflicts = license
+	conflicts = nishanths-license
+	options = !emptydirs
+	source = nishanths-license-git::git+https://github.com/nishanths/license
+	sha256sums = SKIP
+
+pkgname = nishanths-license-git
+
