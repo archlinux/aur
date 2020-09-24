@@ -8,7 +8,6 @@ pkgbase = ktechlab
 	license = GPL
 	makedepends = git
 	makedepends = cmake
-	makedepends = gcc
 	makedepends = gendesk
 	makedepends = automoc4
 	depends = kdelibs
