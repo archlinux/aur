@@ -1,7 +1,7 @@
 # Maintainer: Mees Luten <mees [dot] luten [at] gmail [dot] com>
 pkgname=l-band-decoders-git
 pkgver=r67.425f3a0
-pkgrel=1
+pkgrel=2
 pkgdesc="Small experimental project aimed at decoding various (HRPT) satellites such as Metop and FengYun"
 arch=('x86_64')
 url="https://github.com/altillimity/L-Band-Decoders"
