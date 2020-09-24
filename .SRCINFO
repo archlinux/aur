@@ -1,11 +1,13 @@
 pkgbase = python-django-js-asset-git
 	pkgdesc = script tag with additional attributes for django.forms.Media
-	pkgver = 1.2.2.r7.g4a0d951
+	pkgver = 1.2.2.r8.gfe5cce8
 	pkgrel = 1
 	url = https://github.com/matthiask/django-js-asset/
 	arch = any
 	license = bsd
 	checkdepends = python-pytz
+	makedepends = python-setuptools
+	makedepends = git
 	depends = python-django
 	provides = python-django-js-asset
 	source = python-django-js-asset-git::git+https://github.com/matthiask/django-js-asset/
