@@ -1,4 +1,5 @@
 zypper
 src
+*.log
 pkg
 *.pkg.*
