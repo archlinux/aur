@@ -20,12 +20,11 @@ optdepends=('bin32-firefox-i18n: i18n support'
             'lib32-gtk-engines: libclearlooks.so library'
             'lib32-ffmpeg: extra codec support (x264)')
 source=(https://download-installer.cdn.mozilla.net/pub/firefox/releases/$pkgver/linux-$_arch/en-US/firefox-$pkgver.tar.bz2{,.asc}
-        'firefox32.desktop'
-	'firefox32-safe.desktop')
+        'firefox32.desktop')
 sha256sums=('68bebc780f225d5694506c4cdc6a7c31c779d2f1feffa792e599f99d0b2e58cd'
             'SKIP'
-            'd24cf628f3fe57da81c0e36ed2ac6b615560931bc588eda2e76dfd8d93e813f2'
-            'ae6ddbaa9734c3938bb809a334acc96c54195b997ad0fb43d9a9442eb80e0f16')
+            '8477bb0a22be7fc39fcad1daad444862fac359b74662b447954811fdae1a5bf2'
+            )
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 package() {
@@ -44,6 +43,6 @@ EOF
   # desktop icons
   cd ${srcdir}
   install -d ${pkgdir}/usr/share/applications
-  install -Dm644 firefox32.desktop firefox32-safe.desktop ${pkgdir}/usr/share/applications
+  install -Dm644 firefox32.desktop ${pkgdir}/usr/share/applications
   install -Dm644 firefox/browser/chrome/icons/default/default128.png ${pkgdir}/usr/share/pixmaps/firefox32.png
 }
