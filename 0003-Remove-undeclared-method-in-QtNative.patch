@@ -1,0 +1,11 @@
+--- a/qtbase/src/android/jar/src/org/qtproject/qt5/android/QtNative.java	2020-09-02 07:15:07.000000000 -0300
++++ b/qtbase/src/android/jar/src/org/qtproject/qt5/android/QtNative.java	2020-09-21 11:51:56.726695150 -0300
+@@ -949,8 +949,6 @@
+
+     private static void clearClipData()
+     {
+-        if (Build.VERSION.SDK_INT >= 28 && m_clipboardManager != null && m_usePrimaryClip)
+-            m_clipboardManager.clearPrimaryClip();
+         m_usePrimaryClip = false;
+     }
+     private static void setClipboardText(String text)
