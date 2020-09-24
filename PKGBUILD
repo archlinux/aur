@@ -1,8 +1,8 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-libheif
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.9.0
+pkgrel=1
 pkgdesc="HEIF file format decoder and encoder. (mingw-w64)"
 url="https://github.com/strukturag/libheif"
 license=("LGPL")
@@ -11,15 +11,14 @@ depends=(
 	"mingw-w64-libpng"
 	"mingw-w64-libjpeg-turbo"
 	"mingw-w64-aom"
-	"mingw-w64-rav1e"
 	#"mingw-w64-x265"
 )
-makedepends=("mingw-w64-make" "mingw-w64-configure")
+makedepends=("mingw-w64-cmake")
 arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
 sha256sums=(
-	"d0da9db71f9e835b5afb6364749a52ed97bc31ffd886d36ce1ad8b0a50c6ceb3"
+	"b9e1dde935675c451ff89517b46fe33d574fcbd0540c635296f512c7950c0dee"
 )
 source=(
 	"https://github.com/strukturag/libheif/archive/v${pkgver}.tar.gz"
@@ -27,24 +26,16 @@ source=(
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-prepare() {
-	cd "libheif-${pkgver}"
-	sed -r -i 's/AC_INIT\(\[libheif\], \[1.8.0\], \[opensource@struktur.de\]/AC_INIT\(\[libheif\], \[1.8.0\], \[opensource@struktur.de\], \[win32-dll\]/' "configure.ac"
-	autoreconf -fi
-}
-
 build() {
-	cd "libheif-${pkgver}"
+	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG" -DWITH_EXAMPLES=OFF )
+	
 	for _arch in ${_architectures}; do
-		mkdir -p "build-${_arch}" && pushd "build-${_arch}"
-		${_arch}-configure --disable-tests --disable-examples --disable-go ..
-		LDFLAGS="$LDFLAGS -no-undefined -lssp" ${_arch}-make
-		popd
+		${_arch}-cmake -S "libheif-${pkgver}" -B "build-${_arch}" "${_flags[@]}"
+		make -C "build-${_arch}"
 	done
 }
 
 package() {
-	cd "libheif-${pkgver}"
 	for _arch in ${_architectures}; do
 		make DESTDIR="${pkgdir}" -C "build-${_arch}" install
 		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll

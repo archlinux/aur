@@ -1,22 +1,20 @@
 pkgbase = mingw-w64-libheif
 	pkgdesc = HEIF file format decoder and encoder. (mingw-w64)
-	pkgver = 1.8.0
-	pkgrel = 2
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = https://github.com/strukturag/libheif
 	arch = any
 	license = LGPL
-	makedepends = mingw-w64-make
-	makedepends = mingw-w64-configure
+	makedepends = mingw-w64-cmake
 	depends = mingw-w64-crt
 	depends = mingw-w64-libpng
 	depends = mingw-w64-libjpeg-turbo
 	depends = mingw-w64-aom
-	depends = mingw-w64-rav1e
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/strukturag/libheif/archive/v1.8.0.tar.gz
-	sha256sums = d0da9db71f9e835b5afb6364749a52ed97bc31ffd886d36ce1ad8b0a50c6ceb3
+	source = https://github.com/strukturag/libheif/archive/v1.9.0.tar.gz
+	sha256sums = b9e1dde935675c451ff89517b46fe33d574fcbd0540c635296f512c7950c0dee
 
 pkgname = mingw-w64-libheif
 
