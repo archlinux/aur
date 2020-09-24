@@ -23,7 +23,7 @@ _name=${pkgname#python-}
 
 pkgver=0.6.4.post2
 pkgrel=1
-pkgdesc="ProjectQ - An open source software framework for quantum computing"
+pkgdesc="HiQ-ProjectQ - An open source software framework for quantum computing"
 arch=('x86_64')
 license=('Apache')
 url="https://hiq.huaweicloud.com/en/"
