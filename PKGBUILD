@@ -51,7 +51,7 @@ _major=5.8
 _minor=11
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -74,7 +74,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_lucjanpath}/arch-patches-v2-sep/0002-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch"
-        'sphinx-workaround.patch'
+        "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
 
@@ -325,7 +325,7 @@ sha512sums=('bb6994f09aabfb0076f3023dd8359c5c569a4b398d3a3c3c8d6b27052092cab56ad
             '87162080b8dcca5316951c59a90fa2b516e242c2b20b329080db00a56b88ae5269ab20a58086d19de55b56f2d81a43d0fcc594273a76e78e6741652ea5832365'
             'd4bf28aade6156d0ecce47f3872bde11c50cf41142f36154d8bb96e86e06e25aaceaa5b100514d2f31a08fb56bbf3d5a586d8202fd1d3a272fd2dc5f1d0bd591'
             'a65585dae67910c788a66f0bb478a801b7deac05aed5a5100b0f0be951f7e97d5489c9b265d9d16dccf57030788b92d13328b11a5f5e8f82cb532954682361be'
-            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
+            '711ecce2ce54c81e8b60b9b347cb88db054bf697396ee15e9b425671f88d22a14dae17c1c451aa10bd1d7a71c145b2fa588863205ec94e1439ed9b2769ee2e4c'
             '1fb2d99cf9c82637d05a5a0e591675f2c3b9e7530878bc581114fa5592fbb44752a71b473823b2c377c383e9444226c627de3919f831d5cb2ee6c49cca85f2a1')
 
 validpgpkeys=(
