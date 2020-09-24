@@ -2,14 +2,14 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-cars-bonus
-pkgver=20.0623
+pkgver=20.0920
 pkgrel=1
 pkgdesc="Additional RVGL cars used for special events."
 url='https://re-volt.io/online/cars'
 arch=('any')
 license=('custom')
 depends=('rvgl-bin')
-optdepends=('rvgl-io-skins: additional car skins')
+optdepends=('rvgl-io-skins-bonus: additional car skins')
 makedepends=('git')
 conflicts=('rvgl-cars-bonus')
 replaces=('rvgl-cars-bonus')
