@@ -1,6 +1,7 @@
 pkgname=rust-analyzer-git
-pkgver=0.1.0.7807.g4e288c64f
+pkgver=0.0.0.12704.g277488b51
 pkgrel=1
+epoch=1
 pkgdesc="An experimental Rust compiler front-end for IDEs"
 arch=('x86_64' 'i686')
 url="https://github.com/rust-analyzer/rust-analyzer"
