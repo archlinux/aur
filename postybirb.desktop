@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PostyBirb
+Comment=Post art and other multimedia to multiple websites more quickly. 
+Exec=postybirb %U
+Terminal=false
+Type=Application
+Icon=postybirb
+Categories=Network;
+StartupWMClass=PostyBirb
