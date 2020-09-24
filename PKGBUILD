@@ -1,7 +1,7 @@
 # Maintainer: Erich Eckner <arch at eckner dot net>
 pkgname=nagircbot
 pkgver=0.0.33
-pkgrel=8
+pkgrel=9
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc='IRC bot announcing Nagios status'
 url='https://www.vanheusden.com/nagircbot/'
@@ -11,7 +11,7 @@ license=(GPL)
 _pinned_dependencies=(
   'gcc-libs=10.2.0'
   'glibc>=2.31'
-  'openssl=1.1.1.g'
+  'openssl=1.1.1.h'
 )
 depends=("${_pinned_dependencies[@]}")
 
