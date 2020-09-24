@@ -1,6 +1,6 @@
 # Maintainer: Matt Coffin <mcoffin13@gmail.com>
 pkgname=ffbtools-git
-pkgver=r51.117153c
+pkgver=r58.8e03880
 pkgrel=1
 pkgdesc="Set of tools for FFB testing and debugging on GNU/Linux"
 arch=('x86_64')
@@ -21,9 +21,9 @@ source=(
 	0002-ffbwrap-Use-global-install-paths-for-arch.patch
 )
 noextract=()
-sha256sums=('SKIP'
-            '3699c92397c56854bed93a5c0740aa7fa5da3f278a71d139ff111c19d62a1d5e'
-            '461f881b6fde3d14c2d5fcbedd13569f7261a6110b32fab88d8502d5d8f8f5b7')
+sha512sums=('SKIP'
+            'c61f52b12398d1063bdab25452d70210de990cc65e92159596d6e35a13f395d42914a9c666101d18c34c499a6be1cd25e7046bd04c2cd8fc6f951b6aeef0a6a1'
+            'c440104013dc21bf1a23b18b4e35c907902ed21e40ae4e3ca07e9b5b132680d273496822ffdde0935bda2f88bc0ef3b7bc1654e76f7dbff730d5aecce2151ff7')
 
 # Please refer to the 'USING git SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
