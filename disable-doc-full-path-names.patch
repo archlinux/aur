@@ -1,0 +1,12 @@
+diff -Naur liberasurecode.orig/doc/doxygen.cfg.in liberasurecode/doc/doxygen.cfg.in
+--- liberasurecode.orig/doc/doxygen.cfg.in	2019-01-22 15:21:05.201089059 -0500
++++ liberasurecode/doc/doxygen.cfg.in	2019-01-22 15:21:41.881011385 -0500
+@@ -140,7 +140,7 @@
+ # shortest path that makes the file name unique will be used
+ # The default value is: YES.
+ 
+-FULL_PATH_NAMES        = YES
++FULL_PATH_NAMES        = NO
+ 
+ # The STRIP_FROM_PATH tag can be used to strip a user-defined part of the path.
+ # Stripping is only done if one of the specified strings matches the left-hand

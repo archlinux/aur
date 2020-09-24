@@ -1,0 +1,21 @@
+pkgbase = liberasurecode-git
+	pkgdesc = Erasure Code API library written in C with pluggable Erasure Code backends
+	pkgver = 1.6.1.r9.gfb13b37
+	pkgrel = 1
+	url = https://github.com/openstack/liberasurecode
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = doxygen
+	depends = zlib
+	source = liberasurecode::git+https://github.com/openstack/liberasurecode.git
+	source = disable-doc-full-path-names.patch
+	sha256sums = SKIP
+	sha256sums = 9ff00135d87efb99fc558106e7f38b506651673acb4163bdfd1e4428abf325a8
+
+pkgname = liberasurecode-git
+
