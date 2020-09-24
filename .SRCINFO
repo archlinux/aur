@@ -1,0 +1,32 @@
+pkgbase = python-openfermionprojectq
+	pkgdesc = A plugin allowing OpenFermion to interaface with ProjectQ.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/quantumlib/OpenFermion-ProjectQ/
+	arch = any
+	groups = python-hiq
+	license = Apache
+	checkdepends = python-openfermion
+	checkdepends = python-h5py
+	checkdepends = jupyter-nbformat
+	checkdepends = python-projectq
+	makedepends = python-pip
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/o/openfermionprojectq/openfermionprojectq-0.2.tar.gz
+	source = fix-failing-test.patch
+	source = openfermion-0.11.0.patch
+	sha256sums = bbaf9d2906a2f5893fa4ea49ce16a3dad640063ec365b21c8970bc88216820fd
+	sha256sums = 56753a2b5237e7e6194bb964dba6a17350828b6321078cc3a217a2bac59d06ef
+	sha256sums = b20875b96e7eaed9db2871986043677fa8243c3dad6e10fb4302a03c22dace38
+
+pkgname = python-openfermionprojectq
+	depends = python-openfermion
+	depends = python-projectq
+	conflicts = python-openfermionprojectq-hiq
+
+pkgname = python-openfermionprojectq-hiq
+	pkgdesc = A plugin allowing OpenFermion to interaface with HiQ-ProjectQ.
+	depends = python-openfermion
+	depends = python-hiq-projectq
+	conflicts = python-openfermionprojectq
+

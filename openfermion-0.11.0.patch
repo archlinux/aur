@@ -1,0 +1,48 @@
+diff --unified --recursive --text openfermionprojectq-0.2/openfermionprojectq/_ffft.py openfermionprojectq-0.2.new/openfermionprojectq/_ffft.py
+--- openfermionprojectq-0.2/openfermionprojectq/_ffft.py	2017-10-06 23:08:06.000000000 +0200
++++ openfermionprojectq-0.2.new/openfermionprojectq/_ffft.py	2020-09-24 13:05:14.669616444 +0200
+@@ -5,10 +5,9 @@
+ from openfermionprojectq import TimeEvolution
+ from openfermionprojectq._parallel_bubble_sort import (
+     index_of_position_in_1d_array, parallel_bubble_sort)
+-from openfermion.ops import (FermionOperator, normal_ordered,
+-                             QubitOperator)
++from openfermion.ops import (FermionOperator, QubitOperator)
+ from openfermion.transforms import jordan_wigner
+-from openfermion.utils import fourier_transform, Grid
++from openfermion.utils import fourier_transform, Grid, normal_ordered
+ 
+ from projectq import MainEngine
+ from projectq.ops import (H, X, Y, Z, C, Rx, Ry, Rz, Ph, Swap,
+diff --unified --recursive --text openfermionprojectq-0.2/openfermionprojectq/_ffft_test.py openfermionprojectq-0.2.new/openfermionprojectq/_ffft_test.py
+--- openfermionprojectq-0.2/openfermionprojectq/_ffft_test.py	2018-03-30 01:36:16.000000000 +0200
++++ openfermionprojectq-0.2.new/openfermionprojectq/_ffft_test.py	2020-09-24 13:06:11.776404143 +0200
+@@ -12,11 +12,10 @@
+     operator_2d_fft_with_reordering)
+ 
+ from openfermion.hamiltonians import jellium_model
+-from openfermion.ops import (FermionOperator, normal_ordered,
+-                             QubitOperator)
++from openfermion.ops import (FermionOperator, QubitOperator)
+ from openfermion.transforms import jordan_wigner
+ from openfermion.utils import (count_qubits, eigenspectrum,
+-                               fourier_transform, Grid)
++                               fourier_transform, Grid, normal_ordered)
+ 
+ from projectq import MainEngine
+ from projectq.ops import (H, X, Y, Z, C, Rx, Ry, Rz, Swap, Ph,
+diff --unified --recursive --text openfermionprojectq-0.2/openfermionprojectq/_low_depth_trotter_simulation_test.py openfermionprojectq-0.2.new/openfermionprojectq/_low_depth_trotter_simulation_test.py
+--- openfermionprojectq-0.2/openfermionprojectq/_low_depth_trotter_simulation_test.py	2017-10-17 00:28:16.000000000 +0200
++++ openfermionprojectq-0.2.new/openfermionprojectq/_low_depth_trotter_simulation_test.py	2020-09-24 13:06:48.753149258 +0200
+@@ -11,9 +11,9 @@
+ from openfermionprojectq import _low_depth_trotter_simulation
+ 
+ from openfermion.hamiltonians import plane_wave_hamiltonian
+-from openfermion.ops import FermionOperator, normal_ordered
++from openfermion.ops import FermionOperator
+ from openfermion.transforms import get_sparse_operator
+-from openfermion.utils import Grid
++from openfermion.utils import Grid, normal_ordered
+ 
+ 
+ os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"

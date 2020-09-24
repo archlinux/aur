@@ -1,0 +1,36 @@
+diff --unified --recursive --text openfermionprojectq-0.2/openfermionprojectq/_unitary_cc.py openfermionprojectq-0.2.new/openfermionprojectq/_unitary_cc.py
+--- openfermionprojectq-0.2/openfermionprojectq/_unitary_cc.py	2018-03-30 01:36:16.000000000 +0200
++++ openfermionprojectq-0.2.new/openfermionprojectq/_unitary_cc.py	2020-09-24 14:09:37.147786529 +0200
+@@ -21,6 +21,7 @@
+ import projectq
+ import projectq.setups
+ import projectq.setups.decompositions
++from projectq.ops import TimeEvolution as TimeEvolutionGate
+ 
+ 
+ def uccsd_evolution(fermion_generator, fermion_transform=jordan_wigner):
+@@ -268,7 +269,7 @@
+ 
+     # Set rules for splitting non-commuting operators
+     trotter_rule_set = (projectq.cengines.DecompositionRule(
+-        gate_class=TimeEvolution,
++        gate_class=TimeEvolutionGate,
+         gate_decomposer=_first_order_trotter,
+         gate_recognizer=_identify_non_commuting))
+     rule_set.add_decomposition_rule(trotter_rule_set)
+@@ -284,8 +285,14 @@
+                                                                 True))))
+         rule_set.add_decomposition_rule(connectivity_rule_set)
+ 
++    # Make sure to select our decomposition for the NOT gate
++    def decomp_chooser(cmd, decomp_list):
++        if cmd.gate == projectq.ops.NOT:
++            return decomp_list[-1]
++        return decomp_list[0]
++        
+     # Build the full set of engines that will be applied to qubits
+-    replacer = projectq.cengines.AutoReplacer(rule_set)
++    replacer = projectq.cengines.AutoReplacer(rule_set, decomp_chooser)
+     compiler_engine_list = [replacer,
+                             projectq.
+                             cengines.
