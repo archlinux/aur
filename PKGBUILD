@@ -2,7 +2,7 @@
 
 pkgname=wudcompress
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wii U image (WUD) compression tool'
 arch=('x86_64')
 url='https://gbatemp.net/threads/wii-u-image-wud-compression-tool.397901/'
@@ -12,7 +12,7 @@ sha256sums=('dff8834b21309e09567834e9024f609dbb74bebb83d4cca7bbe4701cf443b163')
 build() {
   cd ${srcdir}/wudcompress-master
 
-  gcc main.cpp wud.cpp -o wudcompress -Wno-multichar
+  gcc ${CXXFLAGS} main.cpp wud.cpp -o wudcompress -Wno-multichar ${LDFLAGS}
 }
 
 package() {

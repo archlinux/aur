@@ -1,7 +1,7 @@
 pkgbase = wudcompress
 	pkgdesc = Wii U image (WUD) compression tool
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gbatemp.net/threads/wii-u-image-wud-compression-tool.397901/
 	arch = x86_64
 	source = https://github.com/John-Gee/wudcompress/archive/master.zip
