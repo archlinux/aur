@@ -1,0 +1,45 @@
+pkgbase = lua-lyaml
+	pkgdesc = libYAML binding for Lua
+	pkgver = 6.2.6
+	pkgrel = 1
+	url = http://github.com/gvvaughan/lyaml
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	depends = luarocks
+	depends = libyaml
+	source = git+https://github.com/gvvaughan/lyaml.git#branch=release-v6.2.6
+	md5sums = SKIP
+
+pkgname = lua-lyaml
+	pkgdesc = libYAML binding for Lua 5.4
+	depends = luarocks
+	depends = libyaml
+	depends = lua
+	depends = lua-std-normalize
+
+pkgname = lua51-lyaml
+	pkgdesc = libYAML binding for Lua 5.1
+	depends = luarocks
+	depends = libyaml
+	depends = lua51
+	depends = lua51-std-normalize
+
+pkgname = lua52-lyaml
+	pkgdesc = libYAML binding for Lua 5.2
+	depends = luarocks
+	depends = libyaml
+	depends = lua52
+	depends = lua52-std-normalize
+
+pkgname = lua53-lyaml
+	pkgdesc = libYAML binding for Lua 5.3
+	depends = luarocks
+	depends = libyaml
+	depends = lua53
+	depends = lua53-std-normalize
+
