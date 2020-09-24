@@ -2,7 +2,7 @@
 
 _branch=dev
 pkgname=modulo-git
-pkgver=r.
+pkgver=r85.1a6a389
 pkgrel=1
 pkgdesc="Basic Cross-platform GUI Toolkit for Any Language"
 arch=(x86_64)
@@ -17,7 +17,7 @@ sha512sums=('SKIP')
 
 
 pkgver() {
-    cd "$_pkgname"
+    cd "$pkgname"
 
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

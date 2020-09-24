@@ -1,6 +1,6 @@
 pkgbase = modulo-git
 	pkgdesc = Basic Cross-platform GUI Toolkit for Any Language
-	pkgver = r.
+	pkgver = r85.1a6a389
 	pkgrel = 1
 	url = https://github.com/federico-terzi/modulo
 	arch = x86_64
