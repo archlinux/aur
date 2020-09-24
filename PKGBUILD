@@ -8,17 +8,16 @@
 
 # Maintainer: Nemin <pergerlori@gmail.com>
 pkgname=relive-git
-pkgver=r3164.f70e390b
+pkgver=r3166.4bc00b39
 pkgrel=1
 pkgdesc="An open-source Abe's Oddysee / Abe's Exoddus engine"
 arch=('i686' 'x86_64')
 url="https://aliveteam.github.io"
 license=('unknown')
-depends=('sdl2')
+depends=('sdl2' 'zenity')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install='relive-git.install'
 source=('relive::git+https://github.com/AliveTeam/alive_reversing')
 md5sums=('SKIP')
 

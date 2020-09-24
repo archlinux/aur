@@ -1,4 +1,0 @@
-post_install() {
-  echo "To use the engine, navigate to the folder where Abe's Exoddus is installed and call 'AliveExeAE'."
-  echo "If you're using the Steam version, it's '~/.local/share/Steam/steamapps/common/Oddworld Abes Exoddus' by default."
-}
