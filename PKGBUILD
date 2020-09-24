@@ -1,4 +1,5 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: aus <austin@theaus.xyz>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Swift Geek
 # Contributor: c0nd0r <gcesarmza@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
@@ -6,22 +7,22 @@
 # Contributor: magedon <magedon.zt@gmail.com>
 
 pkgname=bin32-firefox
-pkgver=78.0.2
+pkgver=81.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - 32bit version for 64bit systems"
 arch=('x86_64')
 _arch=i686
 license=('MPL' 'GPL' 'LGPL')
-url="https://www.mozilla.org/projects/firefox"
+url="https://www.mozilla.org/en-US/firefox/"
 depends=('lib32-dbus-glib' 'lib32-gtk3' 'lib32-libxt' 'lib32-nss')
 optdepends=('bin32-firefox-i18n: i18n support'
             'lib32-librsvg: svg_loader.so library'
             'lib32-gtk-engines: libclearlooks.so library'
             'lib32-ffmpeg: extra codec support (x264)')
-source=(https://ftp.mozilla.org/pub/firefox/releases/$pkgver/linux-$_arch/en-US/firefox-$pkgver.tar.bz2{,.asc}
+source=(https://download-installer.cdn.mozilla.net/pub/firefox/releases/$pkgver/linux-$_arch/en-US/firefox-$pkgver.tar.bz2{,.asc}
         'firefox32.desktop'
 	'firefox32-safe.desktop')
-sha256sums=('8e6d63f2ff1c3a2644cc0d392db079b2a1228a9ce587c046245feb7d0a0a53e7'
+sha256sums=('68bebc780f225d5694506c4cdc6a7c31c779d2f1feffa792e599f99d0b2e58cd'
             'SKIP'
             'd24cf628f3fe57da81c0e36ed2ac6b615560931bc588eda2e76dfd8d93e813f2'
             'ae6ddbaa9734c3938bb809a334acc96c54195b997ad0fb43d9a9442eb80e0f16')
