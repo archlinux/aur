@@ -7,7 +7,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-qt5
-pkgver=5.15.0
+pkgver=5.15.1
 pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('any')
@@ -65,10 +65,12 @@ _pkgfqn="qt-everywhere-src-${pkgver}"
 install="${pkgname}.install"
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz"
         "0001-Support-pkg-config-under-Android.patch"
-        "0002-Force-64-bit-atomics-usage.patch")
-md5sums=('610a228dba6ef469d14d145b71ab3b88'
+        "0002-Force-64-bit-atomics-usage.patch"
+        "0003-Remove-undeclared-method-in-QtNative.patch")
+md5sums=('ab16c28f4f9e6db8299096312decdbc4'
          '6af9dcc450ae6c69d8fddccf0680d84a'
-         'f17efcb3d46afefd9d2c011301fd53c5')
+         'f17efcb3d46afefd9d2c011301fd53c5'
+         'b5e5c0d979b0f6a4dd90f32ce999965b')
 
 prepare() {
     cd ${_pkgfqn}
@@ -87,6 +89,7 @@ prepare() {
             ;;
     esac
 
+    patch -Np1 -i "../0003-Remove-undeclared-method-in-QtNative.patch"
     sed -i "s/android-21/android-$ANDROID_MINIMUM_PLATFORM/g" qtbase/configure.pri
 }
 
@@ -146,8 +149,14 @@ build() {
 
     # Platform specific patches
     case "$_android_arch" in
-        x86*)
+        x86)
              configue_opts+="
+                 -no-sql-mysql
+                 -no-sql-psql"
+            ;;
+        x86-64)
+             configue_opts+="
+                 -no-avx2
                  -no-sql-mysql
                  -no-sql-psql"
             ;;
