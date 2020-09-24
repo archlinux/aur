@@ -1,0 +1,17 @@
+pkgbase = simple-stocks-git
+	pkgdesc = Keep tabs on your favorite stocks
+	pkgver = 1.0.8.r2.g9b4be86
+	pkgrel = 1
+	url = https://github.com/brendanperry/stocks
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	provides = simple-stocks
+	source = git+https://github.com/brendanperry/stocks.git
+	sha256sums = SKIP
+
+pkgname = simple-stocks-git
+
