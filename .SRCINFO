@@ -1,6 +1,6 @@
 pkgbase = ktechlab
-	pkgdesc = KTechLab IDE for microcontrollers and simulating electronics. This package ships the latest released version.
-	pkgver = 0.40.1
+	pkgdesc = IDE for microcontrollers and electronic simulation.
+	pkgver = 0.50.0
 	pkgrel = 1
 	url = https://cgit.kde.org/ktechlab.git
 	arch = x86_64
@@ -11,10 +11,16 @@ pkgbase = ktechlab
 	makedepends = gcc
 	makedepends = gendesk
 	makedepends = automoc4
-	depends = qt4
 	depends = kdelibs
-	source = https://codeload.github.com/ktechlab/ktechlab/tar.gz/v0.40.1
-	md5sums = bdfe559bc98131a569cb64d497810999
+	depends = gpsim
+	depends = khtml
+	depends = ktexteditor
+	depends = kdebase-runtime
+	depends = qt5-base
+	optdepends = gpsim: for simulating PIC microcontrollers
+	source = https://download.kde.org/unstable/ktechlab/ktechlab-0.50.0.tar.xz
+	md5sums = 5efe09b276fad08d74ead245a597797d
+	sha256sums = cf0fe078f8afad7f3237a4e052dd2cace185d390a02f15ebe60cccabcbe8fdfe
 
 pkgname = ktechlab
 
