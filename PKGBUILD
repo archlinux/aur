@@ -1,15 +1,15 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='speculum'
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.5.3
+pkgrel=1
 pkgdesc='Yet another mirror list optimization tool'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
 license=('GPLv3')
 depends=('python')
 source=(${pkgname}-${pkgver}::"${url}/archive/${pkgver}.tar.gz")
-sha256sums=('1ba9a8a1b4b2ad9b65812a3a612b1799383a78c0335cd27c4a2cc7b6d1c9c89b')
+sha256sums=('dd0b0f611daafa3f017d0c9ce9a68055eb5af0787684b206f3a139f57e70fa03')
 backup=('etc/speculum.conf')
 
 
