@@ -1,21 +1,27 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgbase=btcd
 pkgname=('btcd' 'btcwallet')
-pkgver=20170818
+pkgver=v0.21.0.beta.r34.g13405137
 pkgrel=1
+pkgdesc="btcd an alternative full node Bitcoin implementation written in Go and btcwallet a secure Bitcoin wallet daemon written in Go "
 arch=('i686' 'x86_64')
-makedepends=('git' 'glide' 'go')
+makedepends=('git' 'go')
 groups=('btcsuite')
 url="https://github.com/btcsuite"
 license=('ISC')
-options=('!strip' '!emptydirs')
+options=('!emptydirs')
+provides=('btcd' 'btcwallet')
+conflicts=('btcd')
 source=(git+https://github.com/btcsuite/btcd
         git+https://github.com/btcsuite/btcwallet)
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
-  date +%Y%m%d
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -27,17 +33,17 @@ prepare() {
 build() {
   export GOPATH="$srcdir"
 
-  msg2 'Building btcd and dependencies...'
+  echo 'Building btcd and dependencies...'
   cd "$GOPATH/src/github.com/btcsuite/btcd"
-  glide install
-  go install . ./cmd/...
+  go install -buildmode=pie -ldflags -extldflags=-Wl,-z,now,-z,relro . ./cmd/...
+  go clean -modcache
 
-  msg2 'Building btcwallet and dependencies...'
+  echo 'Building btcwallet and dependencies...'
   cd "$GOPATH/src/github.com/btcsuite/btcwallet"
-  glide install
-  go install . ./cmd/...
+  go install -buildmode=pie -ldflags -extldflags=-Wl,-z,now,-z,relro . ./cmd/...
+  go clean -modcache
 
-  msg2 'Prepending btc to unqualified binaries...'
+  echo 'Prepending btc to unqualified binaries...'
   for _bin in $(find "$srcdir/bin"  \
                         -mindepth 1 \
                         -maxdepth 1 \
@@ -51,11 +57,11 @@ package_btcd() {
   provides=('btcd')
   conflicts=('btcd')
 
-  msg2 'Installing btcd license...'
+  echo 'Installing btcd license...'
   install -Dm 644 "$srcdir/src/github.com/btcsuite/btcd/LICENSE" \
           -t "$pkgdir/usr/share/licenses/btcd"
 
-  msg2 'Installing btcd docs...'
+  echo 'Installing btcd docs...'
   for _doc in CHANGES README.md sample-btcd.conf; do
     install -Dm 644 "$srcdir/src/github.com/btcsuite/btcd/$_doc" \
             -t "$pkgdir/usr/share/doc/btcd"
@@ -63,7 +69,7 @@ package_btcd() {
   cp -dpr --no-preserve=ownership "$srcdir/src/github.com/btcsuite/btcd/docs" \
     "$pkgdir/usr/share/doc/btcd"
 
-  msg2 'Installing btcd...'
+  echo 'Installing btcd...'
   for _bin in btcaddblock \
               btcctl \
               btcd \
@@ -72,7 +78,7 @@ package_btcd() {
     install -Dm 755 "$srcdir/bin/$_bin" -t "$pkgdir/usr/bin"
   done
 
-  msg2 'Cleaning up pkgdir...'
+  echo 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
@@ -82,11 +88,11 @@ package_btcwallet() {
   provides=('btcwallet')
   conflicts=('btcwallet')
 
-  msg2 'Installing btcwallet license...'
+  echo 'Installing btcwallet license...'
   install -Dm 644 "$srcdir/src/github.com/btcsuite/btcwallet/LICENSE" \
           -t "$pkgdir/usr/share/licenses/btcwallet"
 
-  msg2 'Installing btcwallet docs...'
+  echo 'Installing btcwallet docs...'
   for _doc in CHANGES README.md sample-btcwallet.conf; do
     install -Dm 644 "$srcdir/src/github.com/btcsuite/btcwallet/$_doc" \
             -t "$pkgdir/usr/share/doc/btcwallet"
@@ -95,14 +101,15 @@ package_btcwallet() {
     "$srcdir/src/github.com/btcsuite/btcwallet/docs" \
     "$pkgdir/usr/share/doc/btcwallet"
 
-  msg2 'Installing btcwallet...'
+  echo 'Installing btcwallet...'
   for _bin in btcdropwtxmgr \
               btcsweepaccount \
               btcwallet; do
     install -Dm 755 "$srcdir/bin/$_bin" -t "$pkgdir/usr/bin"
   done
 
-  msg2 'Cleaning up pkgdir...'
+  echo 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
+
