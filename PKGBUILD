@@ -28,7 +28,7 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.14.81
+pkgver=1.14.84
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -62,6 +62,7 @@ done
 #source+=("vdpau-support.patch::https://aur.archlinux.org/cgit/aur.git/plain/vdpau-support.patch?h=chromium-vaapi&id=7c05464a8700b1a6144258320b2b33b352385f77")
 
 sha256sums=('SKIP'
+            'e7dd5f8bc6959d2d0c14c7f70687303d3152eae9a50628fbb025b834d62a52d7'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '2194fe22b9e5ccdc4a86da4e3572214f670c561486671f57c90636fd3cbfa43e'
@@ -241,8 +242,7 @@ build() {
             npm run build -- Debug
             ;;
         4)
-            msg2 "Release custom build - TEMPORARY DISABLED - working on it"
-            exit 1
+            msg2 "Release custom build"
             npm run build Release -- "${npm_args[@]}"
             ;;
         *)
