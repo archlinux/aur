@@ -1,9 +1,10 @@
 # $Id: PKGBUILD 310007 2017-11-15 14:11:34Z foutrelis $
 # Maintainer: Thomas Bächler <thomas@archlinux.org>
+# Contributor: Mykyta Poturai <mykyta.poturai@tutanota.com>
 
 pkgname=watchdog
-pkgver=5.15
-pkgrel=2
+pkgver=5.16
+pkgrel=1
 pkgdesc="Watchdog daemon"
 arch=(x86_64)
 url="http://sourceforge.net/projects/watchdog"
@@ -13,7 +14,7 @@ backup=(etc/watchdog.conf)
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz
         watchdog.systemd
         watchdog.logrotate)
-md5sums=('678c32f6f35a0492c9c1b76b4aa88828'
+md5sums=('1b4f51cabc64d1bee2fce7cdd626831f'
          '06677f094ec76b7fbb7b0db141209dec'
          '6430e9071aa724918b47f8c3b0412a5f')
 

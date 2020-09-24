@@ -1,16 +1,16 @@
 pkgbase = watchdog
 	pkgdesc = Watchdog daemon
-	pkgver = 5.15
-	pkgrel = 2
+	pkgver = 5.16
+	pkgrel = 1
 	url = http://sourceforge.net/projects/watchdog
 	arch = x86_64
 	license = GPL
 	depends = glibc
 	backup = etc/watchdog.conf
-	source = http://downloads.sourceforge.net/watchdog/watchdog-5.15.tar.gz
+	source = http://downloads.sourceforge.net/watchdog/watchdog-5.16.tar.gz
 	source = watchdog.systemd
 	source = watchdog.logrotate
-	md5sums = 678c32f6f35a0492c9c1b76b4aa88828
+	md5sums = 1b4f51cabc64d1bee2fce7cdd626831f
 	md5sums = 06677f094ec76b7fbb7b0db141209dec
 	md5sums = 6430e9071aa724918b47f8c3b0412a5f
 
