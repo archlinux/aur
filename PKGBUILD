@@ -1,16 +1,17 @@
 # Maintainer: zoe <aur at fully dot automated dot ee ignore everything else after the first ee>
 pkgname=ktechlab
-pkgver=0.40.1
+pkgver=0.50.0
 pkgrel=1
-pkgdesc="KTechLab IDE for microcontrollers and simulating electronics. This package ships the latest released version."
+pkgdesc="IDE for microcontrollers and electronic simulation."
 arch=('x86_64' 'i686')
 url="https://cgit.kde.org/ktechlab.git"
 license=('GPL')
-depends=('qt4' 'kdelibs')
-makedepends=('git' 'cmake' 'gcc' 'gendesk' 'automoc4')
-source=(https://codeload.github.com/ktechlab/ktechlab/tar.gz/v0.40.1
-    )
-md5sums=('bdfe559bc98131a569cb64d497810999')
+depends=('kdelibs' 'gpsim' 'khtml' 'ktexteditor' 'kdebase-runtime' 'qt5-base')
+makedepends=('git' 'cmake' 'gcc' 'gendesk' 'automoc4') 
+optdepends=('gpsim: for simulating PIC microcontrollers')
+source=(https://download.kde.org/unstable/ktechlab/ktechlab-$pkgver.tar.xz)
+md5sums=('5efe09b276fad08d74ead245a597797d')
+sha256sums=('cf0fe078f8afad7f3237a4e052dd2cace185d390a02f15ebe60cccabcbe8fdfe')
 
 build() {
   cd ktechlab-$pkgver
@@ -18,32 +19,7 @@ build() {
     mkdir build
   fi
   cd build
-  cmake .. -DCMAKE_BUILD_TYPE=debugfull
-        UI_HEADERS_TO_GENERATE="
-        ./src/gui/ui_contexthelpwidget.h
-        ./src/gui/ui_generaloptionswidget.h
-        ./src/gui/ui_linkeroptionswidget.h
-        ./src/gui/ui_processingoptionswidget.h
-        ./src/gui/ui_programmerwidget.h
-        ./src/gui/ui_gpasmsettingswidget.h
-        ./src/gui/ui_newprojectwidget.h
-        ./src/gui/ui_newfilewidget.h
-        ./src/gui/ui_outputmethodwidget.h
-        ./src/gui/ui_scopescreenwidget.h
-        ./src/gui/ui_createsubprojectwidget.h
-        ./src/gui/ui_asmformattingwidget.h
-        ./src/gui/ui_oscilloscopewidget.h
-        ./src/gui/ui_microsettingswidget.h
-        ./src/gui/ui_newpinmappingwidget.h
-        ./src/gui/ui_logicwidget.h
-        ./src/gui/ui_sdccoptionswidget.h
-        ./src/gui/ui_picprogrammerconfigwidget.h
-        ./src/gui/ui_gplinksettingswidget.h
-        "
-    for HEADER in $UI_HEADERS_TO_GENERATE ; do
-        make -f src/gui/CMakeFiles/gui.dir/build.make "$HEADER"
-    done
-
+  cmake .. 
   make
 }
 
@@ -51,5 +27,5 @@ package() {
   cd $srcdir/ktechlab-$pkgver/build
   make DESTDIR="$pkgdir" install
   install -d $pkgdir/usr/share/pixmaps
-  install -m664 $srcdir/ktechlab-$pkgver/icons/hi128-app-ktechlab.png $pkgdir/usr/share/pixmaps/$pkgname-icon.png
+  install -m664 $srcdir/ktechlab-$pkgver/icons/128-apps-ktechlab.png $pkgdir/usr/share/pixmaps/$pkgname-icon.png
 } 
