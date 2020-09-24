@@ -1,0 +1,40 @@
+[Unit]
+Description=Serverplate
+After=network-online.target
+Wants=network-online.target systemd-networkd-wait-online.service
+StartLimitIntervalSec=14400
+StartLimitBurst=10
+
+[Service]
+User=serverplate
+Group=serverplate
+Environment=NODE_CONFIG_DIR=/etc/serverplate
+ExecStart=/usr/bin/serverplate
+
+# Do not allow the process to be restarted in a tight loop. If the
+# process fails to start, something critical needs to be fixed.
+Restart=on-abnormal
+
+# Use graceful shutdown with a reasonable timeout
+KillMode=mixed
+KillSignal=SIGQUIT
+TimeoutStopSec=5s
+
+LimitNOFILE=1048576
+LimitNPROC=512
+
+# Hardening options
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=strict
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target
