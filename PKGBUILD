@@ -2,7 +2,7 @@
 
 _pkgname=iex
 pkgname="${_pkgname}-git"
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="C++17 library for querying IEX Cloud API."
 arch=("x86_64")
