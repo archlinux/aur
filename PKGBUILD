@@ -1,0 +1,66 @@
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+
+pkgname=glewlwyd
+pkgver=2.3.3
+pkgrel=1
+pkgdesc='Single-Sign-On (SSO) server with multiple factor authentication'
+arch=(x86_64)
+url=https://github.com/babelouest/glewlwyd
+license=(GPL3)
+depends=(
+  glibc
+  gnutls
+  jansson
+  libcbor.so
+  libconfig.so
+  libcrypt.so
+  libcurl.so
+  libldap
+  libmicrohttpd
+  libnettle.so
+  oath-toolkit
+)
+makedepends=(
+  cmake
+  git
+  mariadb-libs
+  ninja
+  postgresql-libs
+  sqlite
+)
+optdepends=(
+  'postgresql-libs: PostgreSQL support'
+  'mariadb-libs: MariaDB support'
+  'sqlite: SQLite support'
+)
+backup=(etc/glewlwyd/glewlwyd.conf)
+_tag=675f5e4c4a72554ad2eddaacca3bfd9ef03c6fcd
+source=(
+  git+https://github.com/babelouest/glewlwyd.git#tag=${_tag}
+  glewlwyd.service
+)
+validpgpkeys=(8405B02FCC28EF9744C8F253FE82139440BD22B9) # Nicolas Mora <nicolas@babelouest.org>
+b2sums=('SKIP'
+        '3111b839f2f69a7daf9158a365ad36fddb2fd5a0ae9e63f0ef1ded4a76098fabb1fb340290755184e7ba44f7d64820d2b7980c22328ec792f6f56f85a025f931')
+
+pkgver() {
+  cd glewlwyd
+
+  git describe --tags | sed 's/^v//'
+}
+
+build() {
+  cmake -S glewlwyd -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DDOWNLOAD_DEPENDENCIES=ON
+  ninja -C build
+}
+
+package() {
+  DESTDIR="${pkgdir}" ninja -C build install
+  install -Dm 644 glewlwyd.service -t "${pkgdir}"/usr/lib/systemd/system
+}
+
+# vim: ts=2 sw=2 et:

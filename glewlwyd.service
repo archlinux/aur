@@ -1,0 +1,17 @@
+[Unit]
+Description=Glewlwyd OAuth2 authentication provider
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/glewlwyd/glewlwyd.conf
+ExecStart=/usr/bin/glewlwyd --config-file=/etc/glewlwyd/glewlwyd.conf
+User=glewlwyd
+DynamicUser=yes
+ConfigurationDirectory=glewlwyd
+LogsDirectory=glewlwyd
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
