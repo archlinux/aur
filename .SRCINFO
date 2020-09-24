@@ -1,0 +1,15 @@
+pkgbase = sf-down-git
+	pkgdesc = Allows you to download all of a SourceForge project's files
+	pkgver = r9.a7cc380
+	pkgrel = 1
+	url = https://github.com/SpiritQuaddicted/sourceforge-file-download
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = bash
+	depends = wget
+	source = sf-down-git::git+https://github.com/SpiritQuaddicted/sourceforge-file-download.git
+	sha256sums = SKIP
+
+pkgname = sf-down-git
+
