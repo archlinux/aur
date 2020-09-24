@@ -1,0 +1,4 @@
+post_install() {
+  echo "To use the engine, navigate to the folder where Abe's Exoddus is installed and call 'relive'."
+  echo "If you're using the Steam version, it's ~/.steam/steam/steamapps/common/Oddworld Abe's Exoddus by default."
+}
