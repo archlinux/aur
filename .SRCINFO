@@ -1,7 +1,7 @@
 pkgbase = bin32-firefox
 	pkgdesc = Standalone web browser from mozilla.org - 32bit version for 64bit systems
 	pkgver = 81.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/en-US/firefox/
 	arch = x86_64
 	license = MPL
