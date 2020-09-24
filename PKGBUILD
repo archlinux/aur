@@ -1,7 +1,7 @@
 # Maintainer: Adrian Wheeldon <arandomowl at gmail dot com>
 pkgname=workcraft
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A framework for interpreted graph models including petri nets and STGs"
 arch=('i686' 'x86_64')
 url="http://www.workcraft.org/"
@@ -22,6 +22,8 @@ package() {
   mkdir -p "$pkgdir"/usr/bin
   mkdir -p "$pkgdir"/opt/workcraft
   cp -RP ./* "$pkgdir"/opt/workcraft/
+  chmod 755 "$pkgdir"/opt/workcraft/libraries
+  chmod 755 "$pkgdir"/opt/workcraft/libraries/*
   chmod 755 "$pkgdir"/opt/workcraft/tools
   chmod 755 "$pkgdir"/opt/workcraft/tools/*
   chmod 755 "$pkgdir"/opt/workcraft/tools/ATACS/atacs
