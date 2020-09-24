@@ -1,13 +1,14 @@
 pkgbase = python-wsgidav-seafile
 	pkgdesc = Seafile webdav server
 	pkgver = 7.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haiwen/seafdav
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = libyaml
 	depends = python
+	depends = python-json5
 	depends = python-seafobj
 	conflicts = python-wsgidav
 	source = https://github.com/haiwen/seafdav/archive/v7.1.5-server.tar.gz
