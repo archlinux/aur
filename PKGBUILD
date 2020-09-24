@@ -7,30 +7,31 @@
 
 pkgname=r5u87x
 pkgver=64
-pkgrel=2
+pkgrel=3
 pkgdesc='Userspace module for Ricoh R5U870 OEM cameras'
 arch=('i686' 'x86_64')
 url='https://bitbucket.org/ahixon/r5u87x'
 license=('GPL2')
+makedepends=('git')
 depends=('glib2' 'libusb-compat')
 optdepends=('guile: script for extracting firmware from Windows driver')
-source=('https://launchpadlibrarian.net/82424811/r5u87x_0.2.1+r64+dfsg1.orig.tar.gz')
-sha256sums=('0a4f8034e97d7fec72f90af1361a9f7809a39bab18c3f6a040c78c71f6f0bc1e')
+source=('git+https://github.com/tmn505/r5u87x.git#commit=6e521e39d60afee08370970d3ccd362ad5541cfe')
+sha256sums=('SKIP')
 
 prepare() {
-	cd ${srcdir}/${pkgname}-0.2.1+r${pkgver}+dfsg1
+	cd ${srcdir}/${pkgname}
 	# fix udev rule
 	sed -i 's| --reload||' contrib/90-r5u87x-loader.rules.in
 }
 
 build() {
-	cd ${srcdir}/${pkgname}-0.2.1+r${pkgver}+dfsg1
+	cd ${srcdir}/${pkgname}
 	# set UCODE_PATH because we don't install to default location
 	make UCODE_PATH=/usr/lib/firmware/r5u87x-%vid%-%pid%.fw
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-0.2.1+r${pkgver}+dfsg1
+	cd ${srcdir}/${pkgname}
 	make DESTDIR="${pkgdir}" \
 		sbindir="/bin" \
 		firmdir="/lib/firmware" \
