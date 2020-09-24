@@ -8,7 +8,7 @@ _bldtype=Release
 
 _mozcver=2.23.2815.102
 _fcitxver=2.23.2815.102.1
-_utdicdate=20200821
+_utdicdate=20200924
 pkgver=${_mozcver}.${_utdicdate}
 pkgrel=1
 
@@ -28,7 +28,7 @@ source=(
   https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/add_support_new_japanese_era.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-  'https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F26%2F26575%2Fmozcdic-ut-20200821.1.tar.bz2'
+  'https://osdn.net/frs/chamber_redir.php?m=osdn&f=%2Fscmarchive%2Fu%2Freasonset%2Fhg%2Faur_mozc_ut_unified%2F74%2Fd99b%2Faur_mozc_ut_unified-74d99b.tar.gz'
 )
 
 sha1sums=(
@@ -57,7 +57,7 @@ prepare() {
   rm -rf src/unix/fcitx5/
 
   # Add UT dictionary
-  cat ${srcdir}/mozcdic-ut-${_utdicdate}.${pkgrel}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
+  cat ${srcdir}/aur_mozc_ut_unified*/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
 }
 
 build() {
@@ -70,7 +70,7 @@ build() {
 }
 
 package_mozc-ut-unified() {
-  pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with NEologd UT dictionary and UT2 dictionary."
+  pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with NEologd UT dictionary and UT2 dictionary (all dictionaries enabled.)"
   arch=('i686' 'x86_64')
   depends=('qt5-base' 'zinnia')
   conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-ut' 'mozc-ut' 'fcitx-mozc-neologd-ut' 'mozc-neologd-ut' 'fcitx-mozc-neologd-ut+ut2')
@@ -83,7 +83,7 @@ package_mozc-ut-unified() {
 }
 
 package_fcitx-mozc-ut-unified() {
-  pkgdesc="Fcitx engine module for Mozc with NEologd UT dictionary and UT2 dictionary."
+  pkgdesc="Fcitx engine module for Mozc with NEologd UT dictionary and UT2 dictionary (all dictionaries enabled.)"
   arch=('i686' 'x86_64')
   depends=("mozc-ut-unified=${pkgver}" 'fcitx')
   conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-ut' 'mozc-ut' 'fcitx-mozc-neologd-ut' 'mozc-neologd-ut' 'fcitx-mozc-neologd-ut+ut2')

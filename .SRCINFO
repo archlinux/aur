@@ -1,5 +1,5 @@
 pkgbase = mozc-ut-unified
-	pkgver = 2.23.2815.102.20200821
+	pkgver = 2.23.2815.102.20200924
 	pkgrel = 1
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = mozc-ut-unified
 	source = https://salsa.debian.org/debian/mozc/-/raw/master/debian/patches/add_support_new_japanese_era.patch
 	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-2.23.2815.102.1.patch
 	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-	source = https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F26%2F26575%2Fmozcdic-ut-20200821.1.tar.bz2
+	source = https://osdn.net/frs/chamber_redir.php?m=osdn&f=%2Fscmarchive%2Fu%2Freasonset%2Fhg%2Faur_mozc_ut_unified%2F74%2Fd99b%2Faur_mozc_ut_unified-74d99b.tar.gz
 	sha1sums = 7e0a39ffd5ea68ecadb792fc521c16b5be1f25cb
 	sha1sums = d0c551031828ed9c07cc683762353a67b1a17627
 	sha1sums = c6f5aac79c7e98fbda96de251d8f0d0787344ca9
@@ -39,7 +39,7 @@ pkgbase = mozc-ut-unified
 	sha1sums = SKIP
 
 pkgname = mozc-ut-unified
-	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with NEologd UT dictionary and UT2 dictionary.
+	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with NEologd UT dictionary and UT2 dictionary (all dictionaries enabled.)
 	arch = i686
 	arch = x86_64
 	depends = qt5-base
@@ -55,10 +55,10 @@ pkgname = mozc-ut-unified
 	conflicts = fcitx-mozc-neologd-ut+ut2
 
 pkgname = fcitx-mozc-ut-unified
-	pkgdesc = Fcitx engine module for Mozc with NEologd UT dictionary and UT2 dictionary.
+	pkgdesc = Fcitx engine module for Mozc with NEologd UT dictionary and UT2 dictionary (all dictionaries enabled.)
 	arch = i686
 	arch = x86_64
-	depends = mozc-ut-unified=2.23.2815.102.20200821
+	depends = mozc-ut-unified=2.23.2815.102.20200924
 	depends = fcitx
 	conflicts = fcitx-mozc
 	conflicts = mozc
