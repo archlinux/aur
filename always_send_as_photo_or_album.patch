@@ -16,7 +16,8 @@ diff --git a/Telegram/SourceFiles/boxes/send_files_box.cpp b/Telegram/SourceFile
 -				? SendFilesWay::Album
 -				: SendFilesWay::Photos;
 -		}
- 		return (_list.albumIsPossible && !_albumPhotosCount)
+-		return (_list.albumIsPossible && !_albumPhotosCount)
++		return _list.albumIsPossible
  			? SendFilesWay::Album
  			: SendFilesWay::Photos;
  	}();

@@ -11,7 +11,7 @@
 
 pkgname=telegram-desktop-udf-patched
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Telegram Desktop client with several personal patches'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -42,7 +42,7 @@ sha512sums=(
     'e88fa96024efc6176c818d0a46684e0ee1fb3a7bdadb323ad3b29f736209c80b6c31b135cf84389e7e2bbd614e57b241e4437c94b6fd114e73cfc418bf130015'
     '4a7e9de924bbf32fb4cd24ffa2764bcf49e0540bba649829b180da20a62810d4a21ebf11529d4eca22c9ceaa93b434ca3fbfd0b636795f8109ea4e1eddbff8f3'
     'b4eeeb4b2801f3edcc7423f28403b1dfabd3f3869425e4f102a2a4554bde93e63bd73d2d4dbf3e5748ce831b570e441d3917f532fc5cceac1ee5e8fd0832cb30'
-    'e4781ea7dabb6deb96d4ef26af21ce7925270ba1ea8e91ba365165a023423907a727bdc9bc948f935ed919130632f260d0a7b5e79cac56a942ef24c3cc600b89'
+    'cab2d1d07275dcb2ee98e2642c8f90ee241e5dae43b88286a9617f5baf9bcc1a7c80a28fb6e812a92a4a039bb773b3069fbba38c5f5049da29e9993e4e4241e3'
     '17faeff3ee56edd63be658c3730dbbed26437cb9bf0a9890d16cae26fd500aaab738b66de57b573903a5bd727dafe65105e151b08d7a6d8c426c148e754a7114'
 )
 
