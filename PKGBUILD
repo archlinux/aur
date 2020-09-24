@@ -1,7 +1,7 @@
 # Maintainer: Harvey Tindall <hrfee@protonmail.ch>
 pkgname=jfa-go-git
 _pkgname=jfa-go
-pkgver=r91.802f957
+pkgver=r127.9fec714
 pkgrel=1
 pkgdesc="A web app for managing users on Jellyfin"
 arch=("x86_64")
@@ -29,12 +29,12 @@ pkgver() {
 
 prepare() {
     cd ${pkgname}
-    make configuration sass-headless mail-headless version
+    make configuration sass-headless mail-headless version swagger
 }
 
 build() {
 	cd ${pkgname}
-	make compile
+	make typescript compile
 }
 
 package() {
