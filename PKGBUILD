@@ -14,7 +14,6 @@ sha512sums=('182fa3aadf086c37187511f3acb4d59610884dd53d8ff8bf0eb6c473b3e5570dc15
 
 package_otf-commissioner() {
 	pkgdesc+=' (54 static cuts)'
-	conflicts=(ttf-commissioner)
 	cd "$_reponame-$_commit"
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt
 	install -Dm644 -t "$pkgdir/usr/share/fonts/commissioner" fonts/static/otfs/*.otf
@@ -22,7 +21,6 @@ package_otf-commissioner() {
 
 package_ttf-commissioner() {
 	pkgdesc+=' (54 static cuts)'
-	conflicts=(otf-commissioner)
 	cd "$_reponame-$_commit"
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt
 	install -Dm644 -t "$pkgdir/usr/share/fonts/commissioner" fonts/static/ttfs/*.ttf
