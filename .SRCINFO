@@ -1,6 +1,6 @@
 pkgbase = openvsp-git
 	pkgdesc = OpenVSP allows the user to create a 3D model of an aircraft defined by common engineering parameters.
-	pkgver = r4142.bf787072
+	pkgver = r4615.75deb2fb
 	pkgrel = 1
 	url = http://www.openvsp.org
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = openvsp-git
 	depends = glew
 	depends = glm
 	depends = libxml2
+	depends = stepcode
 	optdepends = doxygen: generate documentation
 	optdepends = graphviz: generate documentation
 	optdepends = python: python API module

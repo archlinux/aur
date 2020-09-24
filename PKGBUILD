@@ -1,7 +1,7 @@
 # Contributor: Max Devaine <max@devaine.cz>
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=openvsp-git
-pkgver=r4142.bf787072
+pkgver=r4615.75deb2fb
 pkgrel=1
 pkgdesc='OpenVSP allows the user to create a 3D model of an aircraft defined by
          common engineering parameters.'
@@ -18,7 +18,8 @@ depends=('cblas'
          'gcc'
          'glew'
          'glm'
-         'libxml2')
+         'libxml2'
+         'stepcode')
 optdepends=('doxygen: generate documentation'
             'graphviz: generate documentation'
             'python: python API module'
@@ -43,18 +44,13 @@ prepare() {
 
 }
 
-_buildtype="Release"
-
 build() {
 
   # Create a build directory
   mkdir -p "${srcdir}/${_name}/SuperProject/build"
   cd "${srcdir}/${_name}/SuperProject/build"
 
-  msg "Starting CMake (build type: ${_buildtype})"
-
   cmake .. \
-        -DCMAKE_BUILD_TYPE=${_buildtype} \
         -DCMAKE_PREFIX_PATH='/usr' \
         -DVSP_USE_SYSTEM_CPPTEST=true \
         -DVSP_USE_SYSTEM_LIBXML2=true \
@@ -63,9 +59,12 @@ build() {
         -DVSP_USE_SYSTEM_FLTK=true \
         -DVSP_USE_SYSTEM_GLM=true \
         -DVSP_USE_SYSTEM_GLEW=true \
-        -DVSP_USE_SYSTEM_CMINPACK=true
+        -DVSP_USE_SYSTEM_CMINPACK=true \
+        -DVSP_USE_SYSTEM_LIBIGES=false \
+        -DVSP_USE_SYSTEM_STEPCODE=false \
+        -DVSP_USE_SYSTEM_EXPRPARSE=false
 
-  msg "Building the project"
+
   make || return 0
 }
 
