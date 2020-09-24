@@ -26,13 +26,6 @@ sha256sums=('bf000a5f6d95fec26b77a2133ac225da439b0cd7a64f190a569d5c42fdacf795'
             '81b9f9b78395405b679849143a6709911d00e9317928fdb2a2540f52965847c2')
 install=$pkgname.install
 
-prepare() {
-  cd "$srcdir"/${pkgname}-${pkgver}
-  sed -i rsyslog.service.in \
-    -e 's|rsyslogd -n|rsyslogd -n -i /run/rsyslogd.pid|' \
-    -e '/ExecStart=.*$/iPIDFile=/run/rsyslogd.pid'
-}
-
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}
   ./autogen.sh
