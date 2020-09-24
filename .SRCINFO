@@ -1,14 +1,14 @@
 pkgbase = helm-freeze
 	pkgdesc = Freeze your charts in the wished versions
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Qovery/helm-freeze
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = go
-	source = https://github.com/Qovery/helm-freeze/archive/v0.3.0.tar.gz
-	md5sums = b0201fff4e7e3f48b5fa4d8ef21139b5
+	source = https://github.com/Qovery/helm-freeze/archive/v0.3.1.tar.gz
+	md5sums = c9fe24f2b9e70a2b4d7e97cfc3e8627d
 
 pkgname = helm-freeze
 
