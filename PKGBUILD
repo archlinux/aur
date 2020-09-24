@@ -2,13 +2,13 @@
 
 pkgname=remind-dav-helper-git
 pkgver=r8.1e7a014
-pkgrel=1
+pkgrel=2
 pkgdesc="Helper scripts to sync 'remind' files with Nextcloud via CalDAV"
 arch=('any')
 url="https://www.kabus.eu/git/remind-dav-helper"
 license=('GPL')
 groups=()
-depends=('remind' 'remind-agenda' 'python-remind-caldav' 'bash' 'systemd')
+depends=('remind' 'remind-agenda' 'python-remind-caldav' 'bash' 'systemd' 'fzf')
 makedepends=('git' 'make')
 provides=('remind-dav-helper')
 conflicts=('remind-dav-helper')
