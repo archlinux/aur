@@ -1,0 +1,17 @@
+pkgbase = arc-gtk-theme-colorpack
+	pkgdesc = Build of arc-theme for a variety of Material Design colors.
+	pkgver = 20200819
+	pkgrel = 1
+	url = https://github.com/j-james/arc-theme-colorpack
+	arch = any
+	license = GPL3
+	makedepends = sassc
+	makedepends = optipng
+	makedepends = inkscape
+	provides = arc-gtk-theme
+	conflicts = arc-gtk-theme
+	source = https://github.com/jnsh/arc-theme/releases/download/20200819/arc-theme-20200819.tar.xz
+	sha512sums = bedff15a195c21934a813ca600b88ced81c3db66b7c25ab75b7193998a89338a7888711abb213877210a62d2460300bc32d40402bdd1f6c4d8fa903999eb1b0e
+
+pkgname = arc-gtk-theme-colorpack
+
