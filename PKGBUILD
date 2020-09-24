@@ -1,6 +1,6 @@
 # Maintainer: Mees Luten <mees [dot] luten [at] gmail [dot] com>
 pkgname=l-band-decoders-git
-pkgver=r65.e8eb8e6
+pkgver=r67.425f3a0
 pkgrel=1
 pkgdesc="Small experimental project aimed at decoding various (HRPT) satellites such as Metop and FengYun"
 arch=('x86_64')
@@ -46,6 +46,6 @@ package() {
 	install -Dm755 NOAA\ Demodulator/NOAA-Demodulator "${pkgdir}"/usr/bin/NOAA-Demodulator
 	install -Dm755 NOAA\ MHS\ Decoder/MHS_Decoder "${pkgdir}"/usr/bin/MHS_Decoder
 	install -Dm755 QPSK\ Demodulator/QPSK-Demodulator "${pkgdir}"/usr/bin/QPSK-Demodulator
-#	install -Dm755 NOAA\ AVHRR\ Decoder/NOAA-AVHRR-Decode "${pkgdir}"/usr/bin/NOAA-AVHRR-Decode
+	install -Dm755 NOAA\ AVHRR\ Decoder/NOAA-AVHRR-Decoder "${pkgdir}"/usr/bin/NOAA-AVHRR-Decoder
 }
 

@@ -1,6 +1,6 @@
 pkgbase = l-band-decoders-git
 	pkgdesc = Small experimental project aimed at decoding various (HRPT) satellites such as Metop and FengYun
-	pkgver = r65.e8eb8e6
+	pkgver = r67.425f3a0
 	pkgrel = 1
 	url = https://github.com/altillimity/L-Band-Decoders
 	arch = x86_64
