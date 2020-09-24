@@ -1,8 +1,8 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 
 pkgname=azote-git
-pkgver=1.7.14.r12.g3c53ff6
-pkgrel=1
+pkgver=1.7.14.r17.g76607a2
+pkgrel=2
 pkgdesc="Wallpaper & color manager for Sway, i3 and other WMs (development version)"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/azote"
@@ -16,7 +16,7 @@ optdepends=('python-send2trash: for deleting pictures'
 			'maim: for screen color picker on X11-based WMs'
 			'imagemagick: for screen color picker'
 			'libappindicator-gtk3: for tray status icon'
-			'python-pyaml: for alacritty.yml toolbox'
+			'python-yaml: for alacritty.yml toolbox'
 			'swaybg: for wlroots-based compositors other than sway'
 			'feh: for setting background on X11-based WMs'
 			'xorg-xrandr: for checking outputs on X11-based WMs'
