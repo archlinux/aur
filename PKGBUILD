@@ -1,7 +1,7 @@
 # Maintainer: Alesh Slovak <aleshslovak@gmail.com>
 
 pkgname=frzr
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A deployment and update system for read-only btrfs subvolume based operating systems"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/gamer-os/frzr"
 license=('MIT')
 depends=('btrfs-progs' 'syslinux' 'parted' 'libnewt' 'efibootmgr' 'dosfstools' 'jq')
 source=("https://github.com/gamer-os/frzr/archive/$pkgver.tar.gz")
-md5sums=('d3fd14a2c9939cfdbed86a719dabb730')
+md5sums=('62bc258c087ac64fcf2cb0ba76596e09')
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
