@@ -23,7 +23,7 @@ _name=${pkgname#python-}
 
 pkgver=0.6.4.post2
 pkgrel=1
-pkgdesc="HiQ-ProjectQ - An open source software framework for quantum computing"
+pkgdesc="Huawei HiQ ProjectQ - An open source software framework for quantum computing"
 arch=('x86_64')
 license=('Apache')
 url="https://hiq.huaweicloud.com/en/"
@@ -36,7 +36,9 @@ depends=('python-matplotlib'
          'python-sympy')
 makedepends=('gcc'
 	     'pybind11'
-	     'python-setuptools' )
+	     'python-setuptools'
+	     'python-sphinx'
+	     'python-sphinx_rtd_theme')
 checkdepends=('python-matplotlib'
               'python-networkx'
               'python-numpy'
@@ -47,6 +49,7 @@ checkdepends=('python-matplotlib'
 conflicts=('python-projectq')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha512sums=('02b9cef43f4e3f2ab49d8f6d3c170d6dbcce310dd3a038a115eea9bf0d0e51a7d8796631e2a9698d36d525857c70bec35f1536f0fd48d9f00fc25bb6b0ba79c0')
+
 groups=(python-hiq)
 
 prepare() {
@@ -57,6 +60,10 @@ prepare() {
 build() {
   cd "$srcdir/$_name-$pkgver"
   python setup.py build
+
+  if [ -d doc ]; then
+    cd doc && make html
+  fi
 }
 
 check() {
@@ -76,6 +83,21 @@ EOF
 package() {
   cd "$srcdir/$_name-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -d "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm 644 README.rst "$pkgdir"/usr/share/doc/$pkgname/README.rst
+  install -Dm 644 CHANGELOG.rst "$pkgdir"/usr/share/doc/$pkgname/CHANGELOG.rst
+  install -Dm 644 NOTICE "$pkgdir"/usr/share/doc/$pkgname/NOTICE
+  
+  if [ -d doc ]; then
+    cp -r docs/_build/html "$pkgdir"/usr/share/doc/$pkgname
+  fi
+
+  if [ -d examples ]; then
+    cp -r examples "$pkgdir"/usr/share/doc/$pkgname
+    find "$pkgdir"/usr/share/doc/$pkgname/examples -type f -exec chmod 644 {} +
+  fi
+  
 }
 
 # vim:set ts=2 sw=2 et:

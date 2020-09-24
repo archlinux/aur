@@ -1,5 +1,5 @@
 pkgbase = python-hiq-projectq
-	pkgdesc = ProjectQ - An open source software framework for quantum computing
+	pkgdesc = Huawei HiQ ProjectQ - An open source software framework for quantum computing
 	pkgver = 0.6.4.post2
 	pkgrel = 1
 	url = https://hiq.huaweicloud.com/en/
@@ -16,6 +16,8 @@ pkgbase = python-hiq-projectq
 	makedepends = gcc
 	makedepends = pybind11
 	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	depends = python-matplotlib
 	depends = python-networkx
 	depends = python-numpy
