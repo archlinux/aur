@@ -1,6 +1,6 @@
 pkgbase = libhdhomerun
 	pkgdesc = Library and command line utility for interfacing with HDHomeRun device
-	pkgver = 20200521
+	pkgver = 20200907
 	pkgrel = 1
 	url = http://www.silicondust.com/downloads
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = libhdhomerun
 	license = LGPL
 	optdepends = hdhomerun-firmware-bin: firmware for hdhomerun devices
 	optdepends = hdhomerun_config_gui: hdhomerun configuration gui
-	source = http://download.silicondust.com/hdhomerun/libhdhomerun_20200521.tgz
-	sha512sums = ac253923b531a8e1f714b7fb98da5a2a062144c045117a63e5bb16b33a49ccafcffd24f5520d412d15ca55bc1810fc0ecb9ad05e2d7f5a196b5439b4e28d5c23
+	source = http://download.silicondust.com/hdhomerun/libhdhomerun_20200907.tgz
+	sha512sums = 872364cc054b77c24ce813d68285ffcbfb31c8ff4f796085a886dc437506e2a86c199615a1ec68818f9e9ed106204a60fd91567ac14f6d82c09f55063dfdabed
 
 pkgname = libhdhomerun
 
