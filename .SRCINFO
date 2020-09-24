@@ -33,6 +33,7 @@ pkgbase = onivim2
 	makedepends = nasm
 	makedepends = python2
 	makedepends = clang
+	makedepends = node-gyp
 	options = !strip
 	source = onivim2::git+https://github.com/onivim/oni2.git#commit=c6b7772e18696ac033a4ec3d0e19e6fa4e0249b5
 	source = onivim2.install
