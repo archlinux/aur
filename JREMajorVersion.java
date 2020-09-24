@@ -9,14 +9,16 @@ public final class JREMajorVersion {
       throw new AssertionError("System property \"java.version\" is null. " + JREMajorVersion.bugLink);
     } else {
       final String[] javaVersionComponents = javaVersion.split("\\.");
-      if (javaVersionComponents.length < 2) {
-        throw new AssertionError("Unable to determine Java version because System property \"java.version\" has < 2 components. Value found: " + javaVersion + ". " + JREMajorVersion.bugLink);
+      if (javaVersionComponents.length < 1) {
+        // In this case there is no '.' in the version number, e.g. it
+        // is "15"
+        return javaVersion;
+      } else if (javaVersionComponents[0].equals("1")) {
+        // Probably using the older version number scheme,
+        // e.g. "1.8.0"
+        return javaVersionComponents[1];
       } else {
-        if (javaVersionComponents[0].equals("1")) {
-          return javaVersionComponents[1];
-        } else {
-          return javaVersionComponents[0];
-        }
+        return javaVersionComponents[0];
       }
     }
   }

@@ -80,7 +80,7 @@ function build_cp {
 
 function determine_jre_version {
     pushd "$_UTIL_DIR" &>/dev/null
-    _JRE_VERSION="$(java JREMajorVersion 2>/dev/null)"
+    _JRE_VERSION="$(java JREMajorVersion)"
     popd &>/dev/null
     readonly _JRE_VERSION
     echo "JRE version determined to be ${_JRE_VERSION}" 1>&2
