@@ -4,6 +4,7 @@ pkgbase = watchdog
 	pkgrel = 1
 	url = http://sourceforge.net/projects/watchdog
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	depends = glibc
 	backup = etc/watchdog.conf
