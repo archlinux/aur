@@ -1,8 +1,8 @@
 pkgbase = relive-git
 	pkgdesc = An open-source Abe's Oddysee / Abe's Exoddus engine
-	pkgver = r3159.98bcf2a9
+	pkgver = r3164.f70e390b
 	pkgrel = 1
-	url = https://github.com/AliveTeam/alive_reversing
+	url = https://aliveteam.github.io
 	install = relive-git.install
 	arch = i686
 	arch = x86_64

@@ -8,7 +8,7 @@
 
 # Maintainer: Nemin <pergerlori@gmail.com>
 pkgname=relive-git
-pkgver=r3159.98bcf2a9
+pkgver=r3164.f70e390b
 pkgrel=1
 pkgdesc="An open-source Abe's Oddysee / Abe's Exoddus engine"
 arch=('i686' 'x86_64')
@@ -30,12 +30,10 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"
   git submodule update --init --recursive
-  cmake -B build -S .
+  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" -B build -S .
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}/build"
-  make
-  mkdir -p "$pkgdir/usr/bin"
-  cp Source/AliveExe/AliveExeAE "$pkgdir/usr/bin/${pkgname%-git}"
+  make install
 }
