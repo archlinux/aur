@@ -1,13 +1,13 @@
 # Maintainer: Pig Fang <g-plane@hotmail.com>
 pkgname=icd
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful `cd` command with fuzzy-search tool.'
 
 arch=('any')
 url="https://github.com/g-plane/$pkgname"
 source=("https://github.com/g-plane/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('3691ad0215e4f2d2f9a0b3080b7be7dee9d8e694412b1decf2ed2eca9786fb0d')
+sha256sums=('4ad64ebd0afcb99f8def17044d2255c34fd3bdf16683ff938829b64a1048fdf2')
 license=('MIT')
 depends=('zsh')
 optdepends=('fzy' 'fzf' 'ripgrep' 'grep')
