@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/coNQP/${pkgname}"
 license=('GPLv3')
 depends=('python')
-source=(${pkgname}-${pkgver}::"https://github.com/conqp/${pkgname}/archive/${pkgver}.tar.gz")
+source=(${pkgname}-${pkgver}::"${url}/archive/${pkgver}.tar.gz")
 sha256sums=('1ba9a8a1b4b2ad9b65812a3a612b1799383a78c0335cd27c4a2cc7b6d1c9c89b')
 backup=('etc/speculum.conf')
 
