@@ -1,6 +1,6 @@
 pkgbase = qytdl
 	pkgdesc = Basic PyQt5 frontend to Youtube-DL
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/jahendrie/qytdl
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = qytdl
 	depends = python>=3.7
 	depends = python-pyqt5>=5.13
 	depends = youtube-dl
-	source = http://www.someplacedumb.net/content/progs/qytdl/qytdl-1.1.tar.xz
-	md5sums = ebe47db7741ef6f37b1a448f0647957e
+	source = http://www.someplacedumb.net/content/progs/qytdl/qytdl-1.2.tar.xz
+	md5sums = f3876dce2816d0344e995128e870d48c
 
 pkgname = qytdl
 
