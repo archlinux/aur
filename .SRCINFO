@@ -1,7 +1,7 @@
 pkgbase = espanso-bin
 	pkgdesc = Cross-platform Text Expander written in Rust
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://espanso.org/
 	install = espanso-bin.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = espanso-bin
 	depends = xclip
 	depends = libxtst
 	depends = libnotify
+	optdepends = modulo: Support for interactive forms
 	provides = espanso
 	conflicts = espanso
 	source = espanso-linux-0.7.2.tar.gz::https://github.com/federico-terzi/espanso/releases/download/v0.7.2/espanso-linux.tar.gz
