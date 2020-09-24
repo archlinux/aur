@@ -1,7 +1,8 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Que Quotion <quequotion@bugmenot.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-session-git
-pkgver=r133.98a7230
+pkgver=r145.d73813f
 pkgrel=1
 pkgdesc='Session settings for Pantheon'
 arch=(any)
@@ -9,24 +10,20 @@ url=https://github.com/elementary/session-settings
 license=(GPL3)
 groups=(pantheon-unstable)
 depends=(
-  cerbere-git
   dconf
-  gala-git
-  gconf
-  gnome-keyring
-  gnome-session
-  gnome-settings-daemon
-  pantheon-applications-menu-git
-  pantheon-dpms-helper-git
+  gnome-{keyring,session,settings-daemon}
+  lib{gala.so=0-64,wingpanel-2.0.so=0-64}
+  onboard
+  orca
+  pantheon-{applications-menu,dpms-helper}
   plank
-  wingpanel-git
   xdg-user-dirs-gtk
 )
 makedepends=(
   git
   meson
 )
-optdepends=(pantheon-default-settings-git)
+optdepends=(pantheon-default-settings)
 source=(pantheon-session::git+https://github.com/elementary/session-settings.git)
 sha256sums=(SKIP)
 
