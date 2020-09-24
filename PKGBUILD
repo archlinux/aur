@@ -22,7 +22,7 @@ source=(http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar
         postgresql.service 
         postgresql-check-db-dir)
 sha512sums=('1fde89487c3e50a7a07e1d42fba60d415645ea89c5d4c5c7fcc93fbd5330feca7ec991d5b274f6ab757d5d04667ca1a7efdf4eaaa760add19d2e02437465f8f5'
-            '031efe12d18ce386989062327cdbbe611c5ef1f94e4e1bead502304cb3e2d410af533d3c7f1109d24f9da9708214fe32f9a10ba373a3ca8d507bdb521fbb75f7'
+            '7308305514db0a4bd719e59a0a88114c99584ef99591575b805ad90c263632a20f7bfc72f9610d2ea96374ebfb7ff10c22764ca37ee47d4ef77b3c4049550ba5'
             '1e6183ab0eb812b3ef687ac2c26ce78f7cb30540f606d20023669ac00ba04075487fb72e4dc89cc05dab0269ff6aca98fc1167cc75669c225b88b592482fbf67'
             '9ab4da01337ffbab8faec0e220aaa2a642dbfeccf7232ef2645bdc2177a953f17ee3cc14a4d8f8ebd064e1dae8b3dba6029adbffb8afaabea383963213941ba8'
             'ec2625c3ccfb6c142ea12ef4392b00f3d4cb0a5411d603b98157d55cd162ed3b422dbbd42e8b13211063db94a42f6d1f3febd4acaadde69ea17bfd8eccae3539'
