@@ -1,14 +1,14 @@
 pkgbase = speculum
 	pkgdesc = Yet another mirror list optimization tool
-	pkgver = 1.5.5
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://github.com/coNQP/speculum
 	arch = any
 	license = GPLv3
 	depends = python
 	backup = etc/speculum.conf
-	source = speculum-1.5.5::https://github.com/coNQP/speculum/archive/1.5.5.tar.gz
-	sha256sums = b313ee499f2388dc2b66d46de19b3924da81d49632c9eb5731c1781d51837cdb
+	source = speculum-1.5.6::https://github.com/coNQP/speculum/archive/1.5.6.tar.gz
+	sha256sums = f12077eedababc17e0b214e27da08a8247840f29dfb15862019a8addd2dfdce9
 
 pkgname = speculum
 
