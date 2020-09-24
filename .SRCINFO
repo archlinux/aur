@@ -1,6 +1,6 @@
 pkgbase = silo-stadia
 	pkgdesc = Silo app for Google Stadia
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/intersimone999/silos-apps
 	arch = i686
