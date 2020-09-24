@@ -1,0 +1,16 @@
+pkgbase = python-google-crc32c
+	pkgdesc = A python wrapper of the C library 'Google CRC32C'
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/google-crc32c/
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python>=3.5
+	depends = python-cffi>=1.0.0
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/g/google-crc32c/google-crc32c-1.0.0.tar.gz
+	sha256sums = 9439b960b6ecd847557675d130fc3626d762bf535da595c20a6949a705fb3eae
+
+pkgname = python-google-crc32c
+
