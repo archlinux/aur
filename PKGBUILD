@@ -15,15 +15,13 @@ makedepends=('python-pip'
 checkdepends=(# AUR dependencies
               'python-openfermion'
 	      'python-h5py'
-	      'jupyter-nbformat'
-	      'python-projectq')
+	      'jupyter-nbformat')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
 	"fix-failing-test.patch"
 	"openfermion-0.11.0.patch")
 sha256sums=('bbaf9d2906a2f5893fa4ea49ce16a3dad640063ec365b21c8970bc88216820fd'
             '56753a2b5237e7e6194bb964dba6a17350828b6321078cc3a217a2bac59d06ef'
             'b20875b96e7eaed9db2871986043677fa8243c3dad6e10fb4302a03c22dace38')
-groups=(python-hiq)
 
 prepare() {
   cd "$srcdir/$_name-$pkgver"
@@ -38,7 +36,19 @@ build() {
 
 check() {
   cd "$srcdir/$_name-$pkgver"
-  python -m pytest --color=yes -x
+
+  # Not adding either python-projectq or python-hiq-projectq to makedepends as
+  # they conflitct one another.
+  # However, make sure that we have at least one of them installed in order to
+  # run the tests
+  if ! python -c 'import projectq' 2> /dev/null ; then
+    echo "Installing ProjectQ to temporary folder"
+    PYTHONUSERBASE=$PWD/tmp python3 -m pip install projectq > /dev/null
+  fi
+
+  PYTHONUSERBASE=$PWD/tmp python -m pytest --color=yes -x
+
+  rm -rf tmp
 }
 
 package_python-openfermionprojectq() {
@@ -52,6 +62,7 @@ package_python-openfermionprojectq() {
 package_python-openfermionprojectq-hiq() {
   pkgdesc="A plugin allowing OpenFermion to interaface with HiQ-ProjectQ."
   conflicts=(python-openfermionprojectq)
+  groups=(python-hiq)
   depends+=('python-openfermion'
 	    'python-hiq-projectq')
   cd "$srcdir/$_name-$pkgver"
