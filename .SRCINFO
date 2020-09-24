@@ -1,6 +1,6 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern streamlined music player
-	pkgver = 6.3.1
+	pkgver = 6.3.2
 	pkgrel = 1
 	url = https://tauonmusicbox.rocks
 	arch = any
@@ -39,8 +39,8 @@ pkgbase = tauon-music-box
 	optdepends = python-tekore: Spotify playback control
 	optdepends = picard: Recommended tag editor
 	optdepends = gst-plugins-ugly: For GStreamer WMA support
-	source = tauon-music-box-6.3.1.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v6.3.1.tar.gz
-	sha256sums = 50162703c5bdbe0ac2ce9f0147bde982a8c2bdf1ea6bd7d0638fd33df5a6436b
+	source = tauon-music-box-6.3.2.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v6.3.2.tar.gz
+	sha256sums = fcb15c1938f3f47531dc1895211e073a939ab0031003b397ad37a8303008ebf5
 
 pkgname = tauon-music-box
 
