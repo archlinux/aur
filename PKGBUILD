@@ -23,7 +23,7 @@ _name=${pkgname#python-}
 
 pkgver=0.0.2.post4
 pkgrel=1
-pkgdesc="A high performance distributed quantum simulator"
+pkgdesc="Huawei HiQ: A high performance distributed quantum simulator"
 arch=('x86_64')
 url="https://hiq.huaweicloud.com/en/"
 license=('Apache')
@@ -32,7 +32,7 @@ depends=('boost-libs'
 	 'google-glog'
 	 'hwloc'
 	 'openmpi'
-	 'python')
+	 'python-mpi4py')
 makedepends=('cmake'
 	     'gcc'
 	     'boost'
@@ -42,7 +42,7 @@ checkdepends=('boost-libs'
 	      'google-glog'
 	      'hwloc'
 	      'openmpi'
-	      'python'
+	      'python-mpi4py'
 	      'python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha512sums=('a890fb3c62e03f40840c8cd097a5bc03e439f2061407095c8dfcc824c4b7a725ba33da9028ac15a74e2de56bc714f20d2aaac2d0d075b59dd03dce73a32089fa')

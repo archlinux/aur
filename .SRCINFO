@@ -1,5 +1,5 @@
 pkgbase = python-hiq-circuit
-	pkgdesc = A high performance distributed quantum simulator
+	pkgdesc = Huawei HiQ: A high performance distributed quantum simulator
 	pkgver = 0.0.2.post4
 	pkgrel = 1
 	url = https://hiq.huaweicloud.com/en/
@@ -11,7 +11,7 @@ pkgbase = python-hiq-circuit
 	checkdepends = google-glog
 	checkdepends = hwloc
 	checkdepends = openmpi
-	checkdepends = python
+	checkdepends = python-mpi4py
 	checkdepends = python-pytest
 	makedepends = cmake
 	makedepends = gcc
@@ -22,7 +22,7 @@ pkgbase = python-hiq-circuit
 	depends = google-glog
 	depends = hwloc
 	depends = openmpi
-	depends = python
+	depends = python-mpi4py
 	source = https://files.pythonhosted.org/packages/source/h/hiq-circuit/hiq-circuit-0.0.2.post4.tar.gz
 	sha512sums = a890fb3c62e03f40840c8cd097a5bc03e439f2061407095c8dfcc824c4b7a725ba33da9028ac15a74e2de56bc714f20d2aaac2d0d075b59dd03dce73a32089fa
 
@@ -32,6 +32,6 @@ pkgname = python-hiq-circuit
 	depends = google-glog
 	depends = hwloc
 	depends = openmpi
-	depends = python
+	depends = python-mpi4py
 	depends = python-hiq-projectq
 
