@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-suite-git
-pkgver=r485.fa4cd6d
+pkgver=r493.545147c
 pkgrel=1
 epoch=
 pkgdesc="A complete neatroff typesetting system (neatmkfn, neatroff, neatpost, neateqn, neatrefer and shape)."
@@ -16,7 +16,7 @@ optdepends=('troff-git: Port of Plan 9 troff (the preprocessors and the macro pa
             'nref: Manages document references, it can be used as a troff preprocessor')
 checkdepends=()
 provides=('neatmkfn' 'neatroff' 'neatpost' 'neateqn' 'neatrefer' 'shape')
-conflicts=('neatroff' 'neatroff-git' 'neatmkfn' 'neatmkfn-git' 
+conflicts=('neatroff' 'neatroff-git' 'neatmkfn' 'neatmkfn-git'
            'neatpost' 'neatpost-git' 'neateqn' 'neateqn-git'
            'neatrefer' 'neatrefer-git' 'shape')
 replaces=('mktrfn')
@@ -24,12 +24,12 @@ backup=()
 options=()
 changelog=
 install=${pkgname%-*}.install
-source=("neatmkfn::git://repo.or.cz/neatmkfn.git"
-        "neatroff::git+git://repo.or.cz/neatroff.git"
-        "neatroff_make::git://repo.or.cz/neatroff_make.git"
-        "neatpost::git://repo.or.cz/neatpost.git"
-        "neateqn::git://repo.or.cz/neateqn.git"
-        "neatrefer::git://repo.or.cz/neatrefer.git"
+source=("neatmkfn::git+https://github.com/aligrudi/neatmkfn"
+        "neatroff::git+https://github.com/aligrudi/neatroff"
+        "neatroff_make::git+https://github.com/aligrudi/neatroff_make"
+        "neatpost::git+https://github.com/aligrudi/neatpost"
+        "neateqn::git+https://github.com/aligrudi/neateqn"
+        "neatrefer::git+https://github.com/aligrudi/neatrefer"
         "http://litcave.rudi.ir/shape.tar.gz"
         "http://litcave.rudi.ir/neatroff.pdf"
         "http://litcave.rudi.ir/neateqn.pdf" tmac.hyph)
@@ -41,7 +41,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP
 ## Ghostscript Fonts Location:
 FP="/usr/share/fonts/Type1/"
 
-## FONTS directory 
+## FONTS directory
 FDIR=/usr/share/neatroff/font
 
 ## MACROS directory
@@ -55,7 +55,7 @@ prepare() {
   mkdir hyph/ || return 0
 
   LNG=(en-us de-1996 fr es it ru)
-  LNK="ftp://ftp.ctan.org/tex-archive/language/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/"
+  LNK="http://mirrors.ctan.org/language/hyph-utf8/tex/generic/hyph-utf8/patterns/txt/"
   for i in "${LNG[@]}"; do
     for j in "pat.txt" "hyp.txt" "chr.txt"; do
       curl -f -o hyph/hyph-${i}.$j ${LNK}hyph-${i}.$j
@@ -72,6 +72,8 @@ build() {
   cd "$srcdir/neatmkfn"
   make all
   mkdir fonts || return 0
+  ## XXX: temporary fix until `gen.sh' is updated
+  sed -i 's/NimbusSansNarrow-BoldOblique.afm/NimbusSansNarrow-BdOblique.afm/' gen.sh
   ./gen.sh $FP fonts
   sed -i 's|./mkfn|neatmkfn|g' gen.sh
   cd $srcdir/neatroff
@@ -133,4 +135,3 @@ package() {
   ## copy hyphenation macro file
   install -m644 $srcdir/tmac.hyph $pkgdir/$MDIR/tmac.hyph
 }
-
