@@ -13,7 +13,7 @@ diff -arU2 a/requirements/base.txt b/requirements/base.txt
  PyYAML~=5.1
 -cookiecutter~=1.6.0
 +cookiecutter~=1.6
- aws-sam-translator==1.26.0
+ aws-sam-translator==1.27.0
  #docker minor version updates can include breaking changes. Auto update micro version only.
 -docker~=4.2.0
 +docker~=4.2
