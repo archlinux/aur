@@ -49,7 +49,6 @@ pkgbase = brave
 	source = media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch?h=packages/chromium&id=51efcaea600acd0648cb70730911f64f332feb95
 	source = chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium&id=51efcaea600acd0648cb70730911f64f332feb95
 	sha256sums = SKIP
-	sha256sums = e7dd5f8bc6959d2d0c14c7f70687303d3152eae9a50628fbb025b834d62a52d7
 	sha256sums = 725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5
 	sha256sums = fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d
 	sha256sums = 2194fe22b9e5ccdc4a86da4e3572214f670c561486671f57c90636fd3cbfa43e
