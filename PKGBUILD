@@ -3,7 +3,7 @@
 
 _pkgname=libzypp
 pkgname="${_pkgname}-git"
-pkgver=17.25.0.r7.gf247a52b7
+pkgver=17.25.0.r8.ga46695f85
 pkgrel=1
 pkgdesc='Library for package, patch, pattern and product management'
 arch=('x86_64')
@@ -60,15 +60,15 @@ build() {
     -D DISABLE_AUTODOCS=1 \
     -D DISABLE_MEDIABACKEND_TESTS=ON \
 
-  ninja -C build
+  cmake --build build
 }
 
 check() {
-  ninja -C build test
+  cmake --test build
 }
 
 package() {
-  DESTDIR="${pkgdir}" ninja -C build install
+  DESTDIR="${pkgdir}" cmake --install build
 
   # cmake fix (see GH#28)
   mkdir -p "${pkgdir}"/usr/lib/cmake/Zypp
