@@ -1,6 +1,6 @@
 pkgbase = bespokesynth-git
 	pkgdesc = Software modular synth, VST host input, transport/Ableton Push (unstable)
-	pkgver = r259.042693b
+	pkgver = r311.881cb92
 	pkgrel = 1
 	url = https://github.com/awwbees/BespokeSynth
 	arch = x86_64
@@ -16,6 +16,8 @@ pkgbase = bespokesynth-git
 	depends = python
 	depends = libxext
 	depends = ladspa
+	depends = juce
+	depends = xorg-server-xvfb
 	provides = bespokesynth
 	provides = bespokesynth-bin
 	conflicts = bespokesynth

@@ -2,12 +2,12 @@
 _pkgname=bespokesynth
 pkgname="$_pkgname"-git
 pkgdesc="Software modular synth, VST host input, transport/Ableton Push (unstable)"
-pkgver=r259.042693b
+pkgver=r311.881cb92
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/awwbees/BespokeSynth"
 license=(GPL3)
-depends=('jack' 'curl' 'mesa' 'xorg-xrandr' 'python' 'libxext' 'ladspa')
+depends=('jack' 'curl' 'mesa' 'xorg-xrandr' 'python' 'libxext' 'ladspa' 'juce' 'xorg-server-xvfb')
 makedepends=('gcc' 'libx11' 'libxinerama' 'freetype2' )
 checkdepends=()
 optdepends=()
@@ -56,5 +56,5 @@ package() {
   mkdir -p ${pkgdir}/usr/share/icons/hicolor/512x512/apps
   install ${srcdir}/BespokeSynth/bespoke_icon.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps
   mkdir -p ${pkgdir}/usr/share/applications/
-  install ${srcdir}/../BespokeSynth.desktop  ${pkgdir}/usr/share/applications/BespokeSynth.desktop
+  install ${srcdir}/BespokeSynth/BespokeSynth.desktop  ${pkgdir}/usr/share/applications/BespokeSynth.desktop
 }
