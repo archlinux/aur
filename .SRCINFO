@@ -1,0 +1,18 @@
+pkgbase = modulo-git
+	pkgdesc = Basic Cross-platform GUI Toolkit for Any Language
+	pkgver = r.
+	pkgrel = 1
+	url = https://github.com/federico-terzi/modulo
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = git
+	makedepends = clang
+	depends = wxgtk2
+	provides = modulo
+	conflicts = modulo
+	source = modulo-git::git+https://github.com/federico-terzi/modulo.git#branch=dev
+	sha512sums = SKIP
+
+pkgname = modulo-git
+
