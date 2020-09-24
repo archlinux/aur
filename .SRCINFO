@@ -1,0 +1,31 @@
+pkgbase = python-hiq-projectq
+	pkgdesc = ProjectQ - An open source software framework for quantum computing
+	pkgver = 0.6.4.post2
+	pkgrel = 1
+	url = https://hiq.huaweicloud.com/en/
+	arch = x86_64
+	groups = python-hiq
+	license = Apache
+	checkdepends = python-matplotlib
+	checkdepends = python-networkx
+	checkdepends = python-numpy
+	checkdepends = python-pytest
+	checkdepends = python-requests
+	checkdepends = python-scipy
+	checkdepends = python-sympy
+	makedepends = gcc
+	makedepends = pybind11
+	makedepends = python-setuptools
+	depends = python-matplotlib
+	depends = python-networkx
+	depends = python-numpy
+	depends = python-pytest
+	depends = python-requests
+	depends = python-scipy
+	depends = python-sympy
+	conflicts = python-projectq
+	source = https://files.pythonhosted.org/packages/source/h/hiq-projectq/hiq-projectq-0.6.4.post2.tar.gz
+	sha512sums = 02b9cef43f4e3f2ab49d8f6d3c170d6dbcce310dd3a038a115eea9bf0d0e51a7d8796631e2a9698d36d525857c70bec35f1536f0fd48d9f00fc25bb6b0ba79c0
+
+pkgname = python-hiq-projectq
+
