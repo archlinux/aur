@@ -1,7 +1,7 @@
 # Maintainer: Alice Gaudon <alice at gaudon dot pro>
 
 pkgname='serverplate'
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='A simple aesthetic web front for your server.'
 arch=('x86_64')
