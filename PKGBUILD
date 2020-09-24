@@ -1,6 +1,6 @@
 # Maintainer: Pierre Mavro <deimosfr@gmail.com>
 pkgname=jeedom-status
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Add Jeedom global status to your favorite desktop bar (i3blocks, polybar, etc...)"
 arch=(x86_64)
@@ -24,4 +24,4 @@ package() {
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('1f6e2f17cc5639c813a1d989cc9951f6')
+md5sums=('98cadcc13ddc127d159020b205ad7463')
