@@ -1,6 +1,6 @@
 # Maintainer: Julian Oes <julian at oes dot ch>
 pkgname=mavsdk
-pkgver=0.30.1
+pkgver=0.31.0
 pkgrel=1
 epoch=
 pkgdesc="API and library for MAVLink compatible systems written in C++11"
@@ -41,7 +41,7 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-    cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr -DSUPERBUILD=OFF -DBUILD_BACKEND=OFF -DENABLE_MAVLINK_PASSTHROUGH=ON -Bbuild -S.
+    cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr -DSUPERBUILD=OFF -DBUILD_BACKEND=OFF -Bbuild -S.
     cmake  --build build
 }
 
