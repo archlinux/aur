@@ -4,19 +4,36 @@
 
 pkgname=zypper
 pkgver=1.14.39
-pkgrel=1
-pkgdesc="Command line software manager using libzypp"
-arch=('i686' 'x86_64')
-url="https://github.com/openSUSE/zypper"
+pkgrel=2
+pkgdesc="World's most powerful command line package manager"
+arch=('x86_64')
+url="https://github.com/openSUSE/${pkgname}"
 license=('GPL')
-depends=('libzypp' 'libxml2' 'procps' 'readline' 'augeas')
-makedepends=('git' 'cmake' 'ninja' 'boost' 'asciidoc' 'asciidoctor')
-provides=('zypper' 'apt')
+depends=(
+  'libzypp'
+  'libxml2'
+  'procps'
+  'readline'
+  'augeas'
+)
+makedepends=(
+  'git'
+  'cmake'
+  'ninja'
+  'boost'
+  'asciidoc'
+  'asciidoctor'
+)
+provides=('apt')
 conflicts=('apt')
-source=("zypper-${pkgver}.tar.gz::https://github.com/openSUSE/zypper/archive/${pkgver}.tar.gz"
-        'make-ZyppCommon-cmake-module-includable.patch')
-sha256sums=('6a86eef7dc1b6da5021ae032929e10038b7586f8edf8b2e3aeb40f44ee88927d'
-            'f5cdd85109c58d786f1124fa3cab1c5431a93a8d87a59117eac257c6e4698ae7')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/openSUSE/zypper/archive/${pkgver}.tar.gz"
+  'make-ZyppCommon-cmake-module-includable.patch'
+)
+sha256sums=(
+  '6a86eef7dc1b6da5021ae032929e10038b7586f8edf8b2e3aeb40f44ee88927d'
+  'f5cdd85109c58d786f1124fa3cab1c5431a93a8d87a59117eac257c6e4698ae7'
+)
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -33,11 +50,15 @@ build() {
   -D LIB=/lib \
   -D ZYPP_PREFIX=/usr \
 
-  ninja -C build
+  cmake --build build
+}
+
+check() {
+  ARGS="-V" cmake --test build
 }
 
 package() {
-  DESTDIR="${pkgdir}/" ninja -C build install
+  DESTDIR="${pkgdir}" cmake --install build
 
   # hacky sbin symlink fix
   mv "${pkgdir}"/usr/sbin/* "${pkgdir}/usr/bin/"
