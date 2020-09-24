@@ -1,7 +1,7 @@
 pkgbase = linux-bfq-dev
 	pkgdesc = Linux BFQ-dev
 	pkgver = 5.8.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sirlucjan/bfq-mq-lucjan
 	arch = x86_64
 	license = GPL2
@@ -21,7 +21,7 @@ pkgbase = linux-bfq-dev
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.8/cpu-patches-sep/0001-cpu-5.8-merge-graysky-s-patchset.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.8/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.8/arch-patches-v2-sep/0002-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
-	source = sphinx-workaround.patch
+	source = https://gitlab.com/sirlucjan/kernel-patches/raw/master/5.8/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
@@ -32,7 +32,7 @@ pkgbase = linux-bfq-dev
 	sha512sums = 87162080b8dcca5316951c59a90fa2b516e242c2b20b329080db00a56b88ae5269ab20a58086d19de55b56f2d81a43d0fcc594273a76e78e6741652ea5832365
 	sha512sums = d4bf28aade6156d0ecce47f3872bde11c50cf41142f36154d8bb96e86e06e25aaceaa5b100514d2f31a08fb56bbf3d5a586d8202fd1d3a272fd2dc5f1d0bd591
 	sha512sums = a65585dae67910c788a66f0bb478a801b7deac05aed5a5100b0f0be951f7e97d5489c9b265d9d16dccf57030788b92d13328b11a5f5e8f82cb532954682361be
-	sha512sums = 98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be
+	sha512sums = 711ecce2ce54c81e8b60b9b347cb88db054bf697396ee15e9b425671f88d22a14dae17c1c451aa10bd1d7a71c145b2fa588863205ec94e1439ed9b2769ee2e4c
 	sha512sums = 3724767218f201b036a2ea93f81b1eb7c511357b4917ff63aee8c72b8648992507d21e3d200e1dc17739dde03a28d26ff6ba726cb125d77e4311906ca9543f2d
 
 pkgname = linux-bfq-dev
