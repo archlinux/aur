@@ -1,18 +1,20 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Credit: Christian Hesse <mail@eworm.de>
-# Credit: Dave Reisner <dreisner@archlinux.org>
-# Credit: Tom Gundersen <teg@jklm.no>
+# Based on multilib/lib32-systemd by:
+# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Dave Reisner <dreisner@archlinux.org>
+# Maintainer: Tom Gundersen <teg@jklm.no>
 
 pkgname=lib32-systemd-git
 _pkgname=lib32-systemd
 _pkgbasename=systemd
-pkgver=245.r1582.ga07e962549
+pkgver=246.r927.gc7828862b3
 pkgrel=1
 pkgdesc='system and service manager (32-bit, git version)'
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 license=('GPL2' 'LGPL2.1')
-depends=('lib32-gcc-libs' 'lib32-libcap' 'lib32-libgcrypt' 'lib32-xz' 'lib32-zstd' 'systemd-git')
+depends=('lib32-gcc-libs' 'lib32-libcap' 'lib32-libgcrypt' 'lib32-libxcrypt'
+         'lib32-xz' 'lib32-zstd' 'systemd-git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 makedepends=('git' 'gperf' 'intltool' 'lib32-acl' 'lib32-bzip2'

@@ -1,6 +1,6 @@
 pkgbase = lib32-systemd-git
 	pkgdesc = system and service manager (32-bit, git version)
-	pkgver = 245.r1582.ga07e962549
+	pkgver = 246.r927.gc7828862b3
 	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = lib32-systemd-git
 	depends = lib32-gcc-libs
 	depends = lib32-libcap
 	depends = lib32-libgcrypt
+	depends = lib32-libxcrypt
 	depends = lib32-xz
 	depends = lib32-zstd
 	depends = systemd-git
