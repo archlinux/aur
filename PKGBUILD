@@ -3,7 +3,7 @@
 
 pkgname='ktechlab'
 pkgver=0.50.0
-pkgrel=1
+pkgrel=2
 pkgdesc='IDE for microcontrollers and electronic simulation'
 arch=('x86_64')
 url="https://invent.kde.org/sdk/ktechlab"
