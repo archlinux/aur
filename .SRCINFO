@@ -1,13 +1,13 @@
 pkgbase = cadabra2
 	pkgdesc = A field-theory motivated approach to computer algebra
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cadabra.science
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	depends = python
-	depends = sqlite3
+	depends = sqlite
 	depends = boost
 	depends = gtkmm3
 	depends = jsoncpp

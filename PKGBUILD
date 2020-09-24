@@ -3,13 +3,13 @@
 
 pkgname=cadabra2
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A field-theory motivated approach to computer algebra"
 arch=('x86_64')
 url="http://cadabra.science"
 license=('GPL')
 conflicts=('cadabra2-git')
-depends=('python' 'sqlite3' 'boost' 'gtkmm3' 'jsoncpp' 'xeus')
+depends=('python' 'sqlite' 'boost' 'gtkmm3' 'jsoncpp' 'xeus')
 makedepends=('cmake')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/kpeeters/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('1ba2dd2c91e6678a49a136c181da4ec424f1cec9a7172cf95fd1b0c04c253217')
