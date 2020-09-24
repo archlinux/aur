@@ -13,7 +13,7 @@ source=(https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$
 sha512sums=('08806885b3ad70606423e3189fa4f3c2f3586db7b0be496aeef796ba5f40eeb1e2eb2e0a175b3e1bdd98d33bad34d61621db2dabe8485bd4a2c54f13c9f441b0')
 
 prepare() {
-  arch-hs-uusi $pkgname-$pkgver/$pkgname.cabal
+  uusi $pkgname-$pkgver/$pkgname.cabal
 }
 
 build() {
