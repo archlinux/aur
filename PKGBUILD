@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-neocd-git
-pkgver=66.e58c46d
+pkgver=68.cd35d71
 pkgrel=1
 pkgdesc="Neo Geo CD emulator for libretro"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
