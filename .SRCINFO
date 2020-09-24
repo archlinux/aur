@@ -14,7 +14,6 @@ pkgbase = pantheon-dock-git
 	makedepends = libdbusmenu-gtk3
 	depends = libgee
 	depends = bamf
-	depends = plank
 	depends = python
 	provides = plank
 	conflicts = plank
