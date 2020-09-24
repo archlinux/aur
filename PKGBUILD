@@ -51,7 +51,7 @@ _major=5.7
 _minor=19
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -74,7 +74,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "${_lucjanpath}/arch-updates-v12-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_lucjanpath}/arch-updates-v12-sep/0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch"
         "${_lucjanpath}/arch-updates-v12-sep/0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch"
-        'sphinx-workaround.patch'
+        "${_lucjanpath}/docs-patches/0001-Documentation-Fix-sphinx-3.0-causes-compilation-erro.patch"
          # the main kernel config files
         'config')
 
@@ -326,7 +326,7 @@ sha512sums=('c64aacd11f90dd1fb4f163ba3757ba52543c8a3c3932b9600109ad2b8ac97c8819d
             'b69b58856a2bdd62ea1a4ea7ce2932c6ed9ca9ec0b7796a13d4e051bb6c1d85bb576d651a7ae5b515e1226b524d4446c8d9c8f1d1c4b58ad982ae15d8cd7acbf'
             'e8ce50a564c8412f3225c06eac4778f09a663c9ba05b5043916675934ab74a769cc91ef3f4162b73aa6854fceabb8e4d9c3143ebe105ce725fbac26df4044862'
             'b9fd69758b1a5bdcf69d2b8d85d3acfaf20fe7e842e734ae03f4ab82a26743301336193db87b7e801636e487faceaf6eadc3bb5cecbb975d9a3afd9f9aa1851c'
-            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
+            '711ecce2ce54c81e8b60b9b347cb88db054bf697396ee15e9b425671f88d22a14dae17c1c451aa10bd1d7a71c145b2fa588863205ec94e1439ed9b2769ee2e4c'
             '6a8191b6ead182c9409f13cc3d297829ff6c2f982cb50aa7f0ca5a24e59030434b5de5d8f945abc09d4ed88df2510432481fd791d5056a0289c651b764e4e4bd')
 
 validpgpkeys=(
