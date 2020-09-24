@@ -1,7 +1,7 @@
 # Maintainer: Jojii <jojii@gmx.net>
 pkgname=logo-ls
 pkgver=1.3.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern ls command with vscode like file icon and git integrations"
 arch=('i686' 'x86_64')
 url="https://github.com/Yash-Handa/logo-ls"
@@ -30,4 +30,5 @@ build() {
 package() {
     cd "$pkgname"-"$pkgver"
     install -DT logo-ls $pkgdir/usr/bin/logo-ls
+    install -DT LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
