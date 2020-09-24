@@ -1,7 +1,7 @@
 # Maintainer <shlomochoina@gmail.com> 
 
 pkgname=pantheon-dock-git
-pkgver=r1966.ac87d90
+pkgver=r1970.e9fa02b
 pkgrel=1
 pkgdesc='The Pantheon Dock'
 arch=('i686' 'x86_64')
