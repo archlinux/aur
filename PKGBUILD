@@ -1,7 +1,7 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 
 pkgname=deepin-mail-bin
-pkgver=5.1.0.37.1
+pkgver=5.1.0.45
 pkgrel=1
 pkgdesc="Deepin mail"
 arch=("x86_64" "i386")
@@ -11,10 +11,10 @@ depends=( 'qt5-webengine'  'liblockfile'  'dtkwidget')
 source_x86_64=("https://community-packages.deepin.com/deepin/pool/main/d/deepin-mail/deepin-mail_${pkgver}-1_amd64.deb")
 source_i386=("https://community-packages.deepin.com/deepin/pool/main/d/deepin-mail/deepin-mail_${pkgver}-1_i386.deb")
 sha512sums_x86_64=(
-    '39e867cb3fe6121ca1b0ce5d7924bf2546e20d0d81d393f2cfbf653c11d4f3179cd5efe023d649d46b8c6691e0ee359e2d91d6d174ad1acfef059a1d611e7d34'
+    '642a2e41883489f6606bdc3801e1f1419c928884994bad0e438e730fe58cde2ef2cf0b72c2f5b34835b586ac8ba8c7ec44743871ebb7e266159b20a14a390978'
 )
 sha512sums_i386=(
-    'a6f0aabaa15bc9e3761bc036a8992adb6629ee0cb4cb552dd44a875c05ff1058519f73223e2c613016a9a901ef6f79c1322386f73710ba8ade3dd3d8a9558107'
+    '32b7e2f715aaff3ca0259fc01807e6ae9a44b1452078ff834a4579cee4a166b7492beeb7ca9397ad18d925d3521c0af1a6cc833ff41f53028888e1da6abedc7a'
 )
 
 package(){
