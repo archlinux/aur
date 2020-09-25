@@ -73,7 +73,7 @@ pkgbase = graceful-linux58
 	sha256sums = 60e295601e4fb33d9bf65f198c54c7eb07c0d1e91e2ad1e0dd6cd6e142cb266d
 	sha256sums = 035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef
 
-pkgname = linux58
+pkgname = graceful-linux58
 	pkgdesc = The graceful-Linux58 kernel and modules
 	depends = coreutils
 	depends = linux-firmware
@@ -84,7 +84,7 @@ pkgname = linux58
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 
-pkgname = linux58-headers
+pkgname = graceful-linux58-headers
 	pkgdesc = Header files and scripts for building modules for graceful-Linux58 kernel
 	provides = linux-headers=5.8.11
 

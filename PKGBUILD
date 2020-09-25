@@ -11,7 +11,7 @@
 _server=cpx51
 
 pkgbase=graceful-linux58
-pkgname=('linux58' 'linux58-headers')
+pkgname=('graceful-linux58' 'graceful-linux58-headers')
 _kernelname=-graceful-linux
 _basekernel=5.8
 _basever=58
@@ -152,7 +152,7 @@ build() {
   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
-package_linux58() {
+package_graceful-linux58() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=27')
   optdepends=('crda: to set the correct wireless channels of your country')
@@ -197,7 +197,7 @@ package_linux58() {
   install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/build" -m644 vmlinux
 }
 
-package_linux58-headers() {
+package_graceful-linux58-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
   provides=("linux-headers=$pkgver")
 
