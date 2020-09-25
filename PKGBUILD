@@ -15,8 +15,7 @@ sha256sums=('7f73cdb814e62e05053e4d38ca75a8dc09f225ac30b7e5ce7d7432035cfe79cd')
 # Options:
 # - !makeflags: Parallel builds result in build errors.
 # - !buildflags: Default build flags result in build errors.
-# - !strip: Stripping cross-compiled libraries like libgcc.a results in errors.
-options=('!makeflags' '!buildflags' '!strip')
+options=('!makeflags' '!buildflags')
 
 build() {
   # no-op
