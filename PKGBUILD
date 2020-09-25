@@ -9,6 +9,9 @@ url='https://github.com/jichu4n/palm-os-sdk'
 license=('unknown')
 depends=()
 makedepends=('git')
+optdepends=(
+  'prc-tools-remix: C/C++ toolchain for Palm OS'
+  'pilrc: Palm OS resource compiler')
 options=(!emptydirs !strip)
 source=("git+${url}.git")
 sha512sums=('SKIP')
