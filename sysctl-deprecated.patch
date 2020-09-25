@@ -1,0 +1,23 @@
+From f68fa2ff5a5d4355f128d8b4b9689011b01e3014 Mon Sep 17 00:00:00 2001
+From: Joel Linn <jl@conductive.de>
+Date: Sun, 20 Oct 2019 15:59:20 +0200
+Subject: [PATCH] Fix Linux build on recent systems with deprecated
+ sys/sysctl.h
+
+---
+ config_lin.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config_lin.h b/config_lin.h
+index 3ceac51fdf..f5de57cd16 100644
+--- a/config_lin.h
++++ b/config_lin.h
+@@ -257,7 +257,7 @@
+ #define HAVE_SLEEP 0
+ #define HAVE_STRERROR_R 1
+ #define HAVE_SYSCONF 1
+-#define HAVE_SYSCTL 1
++#define HAVE_SYSCTL 0
+ #define HAVE_USLEEP 1
+ #define HAVE_VIRTUALALLOC 0
+ #define HAVE_PTHREADS 1
