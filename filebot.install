@@ -5,7 +5,7 @@ echo ""
 echo -e "\e[1;33m==>\e[0m \e[1;31mfilebot --license license.file\e[0m will activate your license.file"
 echo ""
 echo "This version of Filebot is using Java 11 + OpenJFX (liberica-jre-11-full-bin)"
-echo "so java-8 dependency could be removed"
+echo "so java-8 dependency could be removed."
 
 
 
