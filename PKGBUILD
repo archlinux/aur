@@ -9,7 +9,7 @@
 pkgname='xampp'
 _srcver='7.4.10'
 _binver=0
-pkgrel=10
+pkgrel=11
 # This PKGBUILD deals with two different versioning formats: the upstream
 # format MAJOR.MINOR.REVISION-BUILD - used internally by XAMPP - and the
 # makepkg-friendly format MAJOR.MINOR.REVISION[.BUILD]-RELEASE (where the only
@@ -23,7 +23,7 @@ license=('GPL')
 # versions where these were available are 5.6.23-0 and 7.0.8-0. If you want
 # to include a 32-bit release add 'i686' to the array below.
 arch=('x86_64')
-depends=('net-tools')
+depends=('inetutils' 'net-tools')
 optdepends=('polkit: for launching XAMPP Manager and Control Panel from menu'
             'pygtk: for using XAMPP Control Panel')
 makedepends=('sdx' 'tclkit' 'rsync')
@@ -62,7 +62,7 @@ sha256sums_i686=('SKIP')
 _platform="$(test "${CARCH}" = 'x86_64' && echo "${_build64name}" || echo "${_build32name}")"
 _pkgstring="${pkgname}-${_platform}-${_srcver}-${_binver}"
 
-# Make a string suitable for `sed`, by escaping []/&$.*^ - syntax: `_sed_escape STRING`
+# Make a string suitable for `sed`, by escaping `[]/&$.*^\` - syntax: `_sed_escape STRING`
 _sed_escape() {
 	echo "${1}" | sed 's/[]\/&.*$^[]/\\&/g'
 }
