@@ -7,6 +7,7 @@ pkgdesc="Chaloult condensé Truetype fonts."
 arch=('any')
 url="http://www.calq.gouv.qc.ca/normes/organismes.htm#modeles"
 license=('custom')
+depends=('xorg-mkfontscale')
 install=ttf.install
 source=(http://www.calq.gouv.qc.ca/normes/pc/Chaloult_pc.zip)
 md5sums=('69a2a3d0f08fabdfd27efb63e5d35a25')
