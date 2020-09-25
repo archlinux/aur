@@ -11,7 +11,7 @@ license=('GPL')
 makedepends=('texinfo' 'gperf' 'gcc9')
 depends=('ncurses')
 source=("https://github.com/jichu4n/prc-tools-remix/archive/v${pkgver}.tar.gz")
-sha256sums=('7f73cdb814e62e05053e4d38ca75a8dc09f225ac30b7e5ce7d7432035cfe79cd')
+sha256sums=('c079aa526021217fbaf55f954eff6e9c53a816c4a64a8960c3a16b43e6b865a1')
 # Options:
 # - !makeflags: Parallel builds result in build errors.
 # - !buildflags: Default build flags result in build errors.
