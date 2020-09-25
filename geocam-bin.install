@@ -1,0 +1,4 @@
+post_install() {
+	udevadm control --reload-rules
+	udevadm trigger --attr-match=idVendor="29fe" --attr-match=idProduct="b00c"
+}

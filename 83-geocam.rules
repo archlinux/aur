@@ -1,0 +1,1 @@
+ATTR{idVendor} =="29fe", ATTR{idProduct} =="b00c", MODE="0660", OWNER="root", GROUP="video", RUN+="/usr/lib/geocam-bin/mxcam boot /usr/lib/geocam-bin/gc6500_ddrboot_fw.img /usr/lib/geocam-bin/config.json /usr/lib/geocam-bin/sensor_ov2710_mayfield_le.bin
