@@ -1,0 +1,15 @@
+pkgbase = fzf-open
+	pkgdesc = Use fzf to open files in appropriate applications (a la macOS Spotlight)
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/trmckay/fzf-open.git
+	arch = any
+	license = GNU General Public License v3.0
+	makedepends = git
+	depends = fzf
+	depends = bash
+	source = https://github.com/trmckay/fzf-open/releases/download/v0.1/fzf-open-0.2.tar.gz
+	sha256sums = 0cd770e85129a91d685b102ce34fed0b2ba51f3db6ef6c762da47984f507c61c
+
+pkgname = fzf-open
+
