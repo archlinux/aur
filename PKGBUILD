@@ -28,6 +28,7 @@ build() {
 package_lua51-lyaml() {
   pkgdesc='libYAML binding for Lua 5.1'
   depends+=('lua51' 'lua51-std-normalize')
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" lyaml/LICENSE
 
   luarocks install --lua-version=5.1 --tree="$pkgdir/usr/" --deps-mode=none 5.1/*.rock
 
@@ -38,6 +39,7 @@ package_lua51-lyaml() {
 package_lua52-lyaml() {
   pkgdesc='libYAML binding for Lua 5.2'
   depends+=('lua52' 'lua52-std-normalize')
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" lyaml/LICENSE
 
   luarocks install --lua-version=5.2 --tree="$pkgdir/usr/" --deps-mode=none 5.2/*.rock
 
@@ -48,6 +50,7 @@ package_lua52-lyaml() {
 package_lua53-lyaml() {
   pkgdesc='libYAML binding for Lua 5.3'
   depends+=('lua53' 'lua53-std-normalize')
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" lyaml/LICENSE
 
   luarocks install --lua-version=5.3 --tree="$pkgdir/usr/" --deps-mode=none 5.3/*.rock
 
@@ -58,6 +61,7 @@ package_lua53-lyaml() {
 package_lua-lyaml() {
   pkgdesc='libYAML binding for Lua 5.4'
   depends+=('lua' 'lua-std-normalize')
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" lyaml/LICENSE
 
   luarocks install --lua-version=5.4 --tree="$pkgdir/usr/" --deps-mode=none 5.4/*.rock
 
