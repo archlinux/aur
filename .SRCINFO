@@ -1,0 +1,14 @@
+pkgbase = geocam-v4l2
+	pkgdesc = MDG-217 camera assembly stream format userspace parser V4L2 plugin. It is necessary for accessing the H.264-encoded stream and is not used with raw streams.
+	pkgver = r5.69f8f3f
+	pkgrel = 1
+	url = https://github.com/digitalloggers/geocam-v4l2/
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = v4l-utils
+	source = git+https://github.com/digitalloggers/geocam-v4l2#commit=69f8f3fd41ba2632534f9bce42816b11fde1e1e8
+	md5sums = SKIP
+
+pkgname = geocam-v4l2
+
