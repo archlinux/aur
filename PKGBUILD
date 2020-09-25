@@ -11,7 +11,7 @@ license=('Apache')
 provides=('python-cadquery')
 conflicts=('python-cadquery')
 depends=(python-ocp python python-ezdxf)
-checkdepends=('python-pytest' 'python-pytest-cov')
+checkdepends=('python-pytest' 'python-pytest-cov' 'python-typing_extensions')
 
 source=("git+https://github.com/CadQuery/cadquery.git")
 md5sums=('SKIP')

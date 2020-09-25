@@ -1,12 +1,13 @@
 pkgbase = python-cadquery-git
 	pkgdesc = A parametric CAD scripting framework based on PythonOCC built from git
-	pkgver = 2.0.1.r55.gc7b7e95
+	pkgver = 2.0.1.r60.g2d721d0
 	pkgrel = 1
 	url = https://github.com/CadQuery/cadquery
 	arch = any
 	license = Apache
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
+	checkdepends = python-typing_extensions
 	depends = python-ocp
 	depends = python
 	depends = python-ezdxf
