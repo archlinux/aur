@@ -8,6 +8,7 @@ pkgbase = r5u87-webcam-drivers
 	license = GPL2
 	depends = glib2
 	depends = libusb-compat
+	depends = lib32-libusb-compat
 	optdepends = guile: script for extracting firmware from Windows driver
 	source = https://gitea.artixlinux.org/linuxer/r5u87x/archive/0.2.2.tar.gz
 	sha256sums = d87dc965f6fcb2a1c849ff309d8bc4e4669b9b37d73ba875af35f580c5e32036
