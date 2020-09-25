@@ -1,4 +1,4 @@
-# Contributor: Sergio Tridente <tioduke (at) gmail (dot) com>
+# Contributor: Sergio Tridente <tioduke (at) gmail (dot) com> 
 
 pkgname=jackrabbit
 pkgver=2.16.6
