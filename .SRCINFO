@@ -1,6 +1,6 @@
 pkgbase = novix-devel-meta
 	pkgdesc = Meta package for development of the Novix kernel
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://novavita.github.io
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = novix-devel-meta
 	depends = mtools
 	depends = qemu
 	depends = novatools
+	depends = meson
 
 pkgname = novix-devel-meta
 
