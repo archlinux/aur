@@ -2,7 +2,7 @@
 
 pkgname='serverplate'
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple aesthetic web front for your server.'
 arch=('x86_64')
 url='https://github.com/ArisuOngaku/serverplate'
@@ -19,7 +19,7 @@ provides=('serverplate')
 conflicts=('serverplate')
 depends=('figlet' 'lolcat')
 optdepends=('bind-tools: dig command for reverse DNS lookup')
-makedepends=('yarn' 'npm')
+makedepends=('yarn' 'npm' 'git')
 options=("!strip")
 
 prepare() {

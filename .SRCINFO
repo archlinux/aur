@@ -1,12 +1,13 @@
 pkgbase = serverplate
 	pkgdesc = A simple aesthetic web front for your server.
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ArisuOngaku/serverplate
 	arch = x86_64
 	license = GPL3
 	makedepends = yarn
 	makedepends = npm
+	makedepends = git
 	depends = figlet
 	depends = lolcat
 	optdepends = bind-tools: dig command for reverse DNS lookup
