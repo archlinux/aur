@@ -1,9 +1,9 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-_buildver=0.6.0+58ee5f4e6
+_buildver=0.6.0+c8cd6145a
 
 pkgname=zig-dev-bin
-pkgver=20200920
+pkgver=20200924
 pkgrel=1
 pkgdesc="A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "https://ziglang.org/builds/zig-linux-x86_64-${_buildver}.tar.xz"
 )
 sha256sums=(
-  'd281cccd1d850355820b7d20dfa20c3317e0f75a57561c89e8046596a1dd153f'
+  '7d8f00343cc36c3160d85fae42c8c57c973eb51152119303f1c397284e6a9248'
 )
 
 package() {
