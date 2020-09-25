@@ -12,7 +12,7 @@ arch=('any')
 url=https://github.com/CadQuery/OCP
 license=('Apache 2.0 or LGPL2')
 depends=(python opencascade)
-makedepends=(gcc8 gcc8-libs python-joblib python-click python-pandas python-path gcc pybind11 python-setuptools ninja cmake python-logzero python-tqdm python-toposort python-cymbal python-schema)
+makedepends=(gcc8 gcc8-libs clang python-joblib python-click python-pandas python-path gcc pybind11 python-setuptools ninja cmake python-logzero python-tqdm python-toposort python-cymbal python-schema)
 source=("https://github.com/CadQuery/OCP/archive/${_pkgver}.tar.gz" "https://github.com/CadQuery/pywrap/archive/${_pywrap_hash}.tar.gz")
 sha256sums=('cd04ad30d38a4836ed2cd0c7ba77174aa41f42f487ba42baf7094624802194d5'
             '1cdc071e4c731d853efbb14f00a7a40ebbf01c189a5c11c83a7f74af96d6c265')

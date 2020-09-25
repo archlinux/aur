@@ -7,6 +7,7 @@ pkgbase = python-ocp
 	license = Apache 2.0 or LGPL2
 	makedepends = gcc8
 	makedepends = gcc8-libs
+	makedepends = clang
 	makedepends = python-joblib
 	makedepends = python-click
 	makedepends = python-pandas
