@@ -1,0 +1,26 @@
+pkgbase = dwm-nho1ix-git
+	pkgdesc = Nho1ix's patched build of dwm.
+	pkgver = 6.2.r1845.afaddc4
+	pkgrel = 1
+	url = https://github.com/nho1ix/dwm.git
+	arch = any
+	groups = base-devel
+	license = MIT
+	makedepends = make
+	depends = libx11
+	depends = libxinerama
+	depends = libxft-bgra-git
+	depends = otf-hermit
+	depends = ttf-font-awesome
+	depends = freetype2
+	optdepends = dunst
+	optdepends = ios-emoji
+	provides = dwm
+	conflicts = dwm
+	replaces = dwm
+	replaces = dwm-distrotube-git
+	source = git+https://github.com/nho1ix/dwm.git
+	md5sums = SKIP
+
+pkgname = dwm-nho1ix-git
+
