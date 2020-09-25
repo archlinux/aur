@@ -34,7 +34,6 @@ depends=('boost-libs'
 	 'openmpi'
 	 'python-mpi4py')
 makedepends=('cmake'
-	     'gcc'
 	     'boost'
 	     'python-setuptools')
 checkdepends=('boost-libs'

@@ -14,7 +14,6 @@ pkgbase = python-hiq-circuit
 	checkdepends = python-mpi4py
 	checkdepends = python-pytest
 	makedepends = cmake
-	makedepends = gcc
 	makedepends = boost
 	makedepends = python-setuptools
 	depends = boost-libs
