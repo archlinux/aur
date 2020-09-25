@@ -34,8 +34,7 @@ depends=('python-matplotlib'
          'python-requests'
          'python-scipy'
          'python-sympy')
-makedepends=('gcc'
-	     'pybind11'
+makedepends=('pybind11'
 	     'python-setuptools'
 	     'python-sphinx'
 	     'python-sphinx_rtd_theme')

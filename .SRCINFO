@@ -13,7 +13,6 @@ pkgbase = python-hiq-projectq
 	checkdepends = python-requests
 	checkdepends = python-scipy
 	checkdepends = python-sympy
-	makedepends = gcc
 	makedepends = pybind11
 	makedepends = python-setuptools
 	makedepends = python-sphinx
