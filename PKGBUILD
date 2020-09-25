@@ -1,7 +1,6 @@
 pkgname=lighthouse-ethereum
-pkgver=0.2.9
+pkgver=0.2.11
 _pkgname=lighthouse
-_commit=0821e6b39f3913cddfd6a89d72132c206d562d66
 pkgrel=1
 pkgdesc='Ethereum 2.0 client'
 arch=('x86_64')
@@ -12,7 +11,7 @@ makedepends=('cargo' 'cmake')
 provides=('lighthouse')
 conflicts=('lighthouse')
 replaces=('lighthouse')
-source=("git+https://github.com/sigp/lighthouse.git#commit=${_commit}")
+source=("git+https://github.com/sigp/lighthouse.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
