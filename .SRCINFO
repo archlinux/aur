@@ -1,0 +1,27 @@
+pkgbase = lib32-wxgtk3
+	pkgdesc = GTK+ implementation of wxWidgets API for GUI
+	pkgver = 3.0.5.1
+	pkgrel = 2
+	url = https://wxwidgets.org
+	arch = x86_64
+	license = custom:wxWindows
+	makedepends = git
+	makedepends = lib32-glu
+	depends = lib32-expat
+	depends = lib32-gtk3
+	depends = lib32-libjpeg
+	depends = lib32-libpng
+	depends = lib32-libsm
+	depends = lib32-libtiff
+	depends = lib32-zlib
+	depends = wxgtk3
+	provides = lib32-wxgtk
+	conflicts = lib32-wxgtk
+	replaces = lib32-wxgtk
+	source = git+https://github.com/wxWidgets/wxWidgets.git#tag=db9378c1d32e84cf7ca4453932df259471d67dc9
+	source = make-abicheck-non-fatal.patch
+	sha256sums = SKIP
+	sha256sums = d4c2d070a06eb63f0a018c8cf687589e5ffdec601225b4d16a268ffe390fb58b
+
+pkgname = lib32-wxgtk3
+
