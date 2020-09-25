@@ -2,10 +2,10 @@
 # Contributor: Det
 # Contributor: josephgbr
 
-_bundleid=241524
-_hash=1f5b5a70bf22433b84d0e960903adac8
+_bundleid=242978
+_hash=a4634525489241b9a9e1aa73d9e118e6
 _major=8
-_minor=241
+_minor=261
 _pkgname=jre
 
 pkgname=bin32-jre
@@ -13,7 +13,7 @@ pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Enviroment (32-bit)"
 arch=('x86_64')
-url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
+url="https://www.java.com/en/download/linux_manual.jsp"
 license=('custom:Oracle')
 depends=('ca-certificates-java'
 		 'hicolor-icon-theme'
@@ -59,7 +59,7 @@ source=(
   "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
   "policytool32-$_jname.desktop"
 )
-sha256sums=('53e353e97e1e5a04d19f7a5da451c3858fe2ac044c76d20137b263092efc1d93'
+sha256sums=('20384c4f8a904d81b57d18e8a1906d39e8f3000719b6f15bf0400b52c9808b71'
             'f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
             'b92df5151b7b21fbdce2be8717b3b83e58bd290111b47c8c81c657ab2ccb0db8')
 
