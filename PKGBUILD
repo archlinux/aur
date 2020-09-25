@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium-bin and code-stable-git
 
 pkgname=vscodium-git
-pkgver=1.49.1
+pkgver=1.49.2
 pkgrel=1
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing (git build)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -14,16 +14,17 @@ license=('MIT')
 _nodejs='12.14.1'
 
 depends=(
-    'glibc>=2.28-4'
-    'gcc-libs'
-    'python'
-    'alsa-lib'
-    'libnotify'
-    'libsecret'
-    'libx11'
-    'libxkbfile'
+    'fontconfig'
     'libxtst'
-    'ripgrep'
+    'gtk3'
+    'cairo'
+    'alsa-lib'
+    'nss'
+    'gcc-libs'
+    'libnotify'
+    'libxss'
+    'glibc>=2.28-4'
+    'libxkbfile'
 )
 optdepends=(
     'gvfs: For move to trash functionality'
@@ -36,16 +37,19 @@ makedepends=(
     'jq'
     'libxdmcp'
     'bash'
+    'git'
 )
 source=(
     "git+${url}#tag=${pkgver}"
     "git+https://github.com/microsoft/vscode.git#tag=${pkgver}"
     'vscodium.desktop'
+    'build_sh.patch'
 )
 sha256sums=(
     'SKIP'
     'SKIP'
     '33ea43092cc895b9e6eea9056d72fbe462a450d41b6a1465da22566912110d69'
+    '13d4b1c0d568bf55ad111e5ff85efbcf626d59456901602cef83ddeb88fb2ce9'
 )
 provides=('code')
 conflicts=(
@@ -96,6 +100,9 @@ build() {
     export LATEST_MS_COMMIT=$(git rev-list --tags --max-count=1)
     export LATEST_MS_TAG=$(git describe --tags "${LATEST_MS_COMMIT}")
 
+    # Patch the build.sh script to not build DEB, RPM, and AppImage packages.
+    patch -p0 < ../build_sh.patch
+
     # Build just like Travis does: install NodeJS and run the build.sh script.
     source /usr/share/nvm/init-nvm.sh
     nvm install ${_nodejs}
@@ -105,6 +112,8 @@ build() {
 package() {
     install -d -m755 ${pkgdir}/usr/bin
     install -d -m755 ${pkgdir}/usr/share/{${pkgname},applications,pixmaps}
+    install -d -m755 ${pkgdir}/usr/share/licenses/${pkgname}
+    cp -r ${srcdir}/vscodium/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
     cp -r ${srcdir}/vscodium/VSCode-linux-${_vscode_arch}/* ${pkgdir}/usr/share/${pkgname}
     ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/code
     ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/vscode

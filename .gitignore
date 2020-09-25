@@ -2,4 +2,5 @@
 !.gitignore
 !PKGBUILD
 !vscodium.desktop
+!build_sh.patch
 !.SRCINFO

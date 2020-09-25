@@ -1,0 +1,14 @@
+--- build.sh	2020-09-25 09:04:18.080895034 +0200
++++ build.sh	2020-09-25 09:04:46.644599355 +0200
+@@ -38,11 +38,6 @@
+   else # linux
+     yarn gulp vscode-linux-${BUILDARCH}-min-ci
+ 
+-    yarn gulp "vscode-linux-${BUILDARCH}-build-deb"
+-    if [[ "$BUILDARCH" == "x64" ]]; then
+-      yarn gulp "vscode-linux-${BUILDARCH}-build-rpm"
+-    fi
+-    . ../create_appimage.sh
+   fi
+ 
+   cd ..
