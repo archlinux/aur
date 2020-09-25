@@ -1,15 +1,15 @@
 # Maintainer: Roman Beslik <me@beroal.in.ua>
 pkgname=firebird-odbc
-pkgver=2.0.4
-_pkgsubver=155
+pkgver=2.0.5
+_pkgsubver=156
 pkgrel=1
 pkgdesc="An ODBC Driver for the Firebird RDBMS"
 arch=(i686 x86_64)
 url="http://www.firebirdsql.org/en/odbc-driver/"
 license=('custom')
 depends=(unixodbc libfbclient)
-sha512sums=(43a2b7450e985c2d6d0cb4f658a4652956f2da0f9c8d235b7e6f7e86cf3d3d5720a77697fa98ad0628bf1cc77907916bb5d2718179ba342526a210239e7d4068
-	f2390c05a301759883506956346ce3f79ce3acd46e6f9f45a6e271e9598833fed997aae2899b088ad921cf048226d98efcab8984afd46af1d80c1bc3915081f3
+sha512sums=(ccbeee20abef51d54bbd89c65fa68229d95b87f77d21fc161e8dad4ab27d0c5bbb4a03c383fa542c6e4da48fb11f0cf233dac0dd3bb21bd518e88722a6637764
+	d6b4342aee00315ea94357687ac6fa3c4230fbfd9d0e73b010603b971cafa5974fd6cb24d36a8e1d2ffff0159ce4afe17a0ac6e079cf2823989de51cad198339
 	e375d0998d2edac4a8041294001793420c4797ed348d1a88a55097d775d8f016782614c7b045e3dd2ecef4f604bbf8e152db0894d13c6be4cb36dccb63834694)
 source=(${pkgver}.${_pkgsubver}.tar.gz::http://sourceforge.net/projects/firebird/files/firebird-ODBC-driver/${pkgver}-Release/OdbcJdbc-src-${pkgver}.${_pkgsubver}.tar.gz/download
 	license.html::http://www.firebirdsql.org/en/initial-developer-s-public-license-version-1-0/
