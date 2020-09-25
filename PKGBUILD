@@ -2,7 +2,7 @@
 pkgbase=python-photutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Astropy Affiliated package for image photometry utilities"
 arch=('i686' 'x86_64')
@@ -19,11 +19,9 @@ makedepends=('cython>=0.28'
 checkdepends=('python-pytest-astropy' 'python-gwcs')
 #-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('19c40140ea6407fad44732df93cd60ad')
+md5sums=('9b35f119f6b7cd1901d47ea74bec33c5')
 
 prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
