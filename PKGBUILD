@@ -1,12 +1,15 @@
 # Maintainer: lightning1141 <lightning1141@gmail.com>
 
-pkgname=qtalk
+pkgname=qtalk-bin
 pkgver=2.1.006
 pkgrel=1
 pkgdesc="QTalk (Window/Linux) 2.0 by Qunar"
 arch=("x86_64")
-url="https://qt.qunar.com/win_2_0/index.html"
+url="https://qim.qunar.com"
 license=('custom')
+conflicts=('qtalk')
+provides=('qtalk')
+makedepends=('tar')
 depends=('qt5-base' 'qt5-webengine' 'qt5-multimedia' 'qt5-x11extras' 'qt5-quickcontrols' 'qt5-svg')
 source=("qtalk_linux_$pkgver.bin::https://qim.qunar.com/win_2_0/downloads/qtalk_setup_linux.run"
   "com.qunar.QTalk.desktop"
