@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=rom-properties
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='This shell extension adds a few nice features to file browsers for managing video game ROM and disc images'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gtk2'
          'libjpeg-turbo')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v${pkgver}.tar.gz")
-sha256sums=('04cf8667cf8b7d3a203254f25c8a1a6a7ab9a408f41f7c897ff99eb4b3f73f20')
+sha256sums=('d727a18d91fbf925c47e1049cffa74a4003221ce69720ce938c0ea92270b70b9')
 
 build() {
   cd "${pkgname}-${pkgver}"
