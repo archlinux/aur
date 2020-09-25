@@ -1,0 +1,17 @@
+pkgbase = xyz-thumbnailer-kde-git
+	pkgdesc = KDE Thumbnail provider for RPG Maker 2000/2003 XYZ image files (development version)
+	pkgver = r137.6f4dcbd
+	pkgrel = 1
+	url = https://easyrpg.org/tools/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = dolphin
+	depends = zlib
+	source = xyz-thumbnailer-kde-git::git+https://github.com/EasyRPG/Tools.git
+	md5sums = SKIP
+
+pkgname = xyz-thumbnailer-kde-git
+
