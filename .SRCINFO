@@ -2,7 +2,7 @@ pkgbase = dwm-supermario9590-git
 	pkgdesc = My custom build of dwm
 	pkgver = 6.2
 	pkgrel = 1
-	url = https://gitlab.com/supermario9590/st-supermario9590.git
+	url = https://gitlab.com/supermario9590/dwm-supermario9590.git
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = dwm-supermario9590-git
 	depends = dmenu
 	provides = dwm
 	conflicts = dwm
-	source = git+https://gitlab.com/supermario9590/st-supermario9590.git
+	source = git+https://gitlab.com/supermario9590/dwm-supermario9590.git
 	md5sums = SKIP
 
 pkgname = dwm-supermario9590-git
