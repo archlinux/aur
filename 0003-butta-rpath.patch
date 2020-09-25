@@ -1,0 +1,53 @@
+From 69d04aad08da3245f87c6a2df35869126d48b55e Mon Sep 17 00:00:00 2001
+From: Butta <repo@butta.fastem.com>
+Date: Tue, 22 Sep 2020 14:45:47 +0530
+Subject: [PATCH] [linux] remove absolute rpath of /usr/lib/swift/linux added
+ to many shared libraries
+
+This was presumably added as a backup, in case the libraries in a toolchain
+couldn't be found, but will not work well, so take it out.
+---
+ cmake/modules/AddSwift.cmake                          | 2 +-
+ stdlib/cmake/modules/AddSwiftStdlib.cmake             | 2 +-
+ tools/SourceKit/cmake/modules/AddSwiftSourceKit.cmake | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/cmake/modules/AddSwift.cmake b/cmake/modules/AddSwift.cmake
+index ec61d2abb836..904e281a0eb1 100644
+--- a/cmake/modules/AddSwift.cmake
++++ b/cmake/modules/AddSwift.cmake
+@@ -461,7 +461,7 @@ function(add_swift_host_library name)
+       INSTALL_NAME_DIR "@rpath")
+   elseif(SWIFT_HOST_VARIANT_SDK STREQUAL LINUX)
+     set_target_properties(${name} PROPERTIES
+-      INSTALL_RPATH "$ORIGIN:/usr/lib/swift/linux")
++      INSTALL_RPATH "$ORIGIN")
+   elseif(SWIFT_HOST_VARIANT_SDK STREQUAL CYGWIN)
+     set_target_properties(${name} PROPERTIES
+       INSTALL_RPATH "$ORIGIN:/usr/lib/swift/cygwin")
+diff --git a/stdlib/cmake/modules/AddSwiftStdlib.cmake b/stdlib/cmake/modules/AddSwiftStdlib.cmake
+index 0131417cbc71..cbf16b98f065 100644
+--- a/stdlib/cmake/modules/AddSwiftStdlib.cmake
++++ b/stdlib/cmake/modules/AddSwiftStdlib.cmake
+@@ -998,7 +998,7 @@ function(_add_swift_target_library_single target name)
+   elseif("${SWIFTLIB_SINGLE_SDK}" STREQUAL "LINUX")
+     set_target_properties("${target}"
+       PROPERTIES
+-      INSTALL_RPATH "$ORIGIN:/usr/lib/swift/linux")
++      INSTALL_RPATH "$ORIGIN")
+   elseif("${SWIFTLIB_SINGLE_SDK}" STREQUAL "CYGWIN")
+     set_target_properties("${target}"
+       PROPERTIES
+diff --git a/tools/SourceKit/cmake/modules/AddSwiftSourceKit.cmake b/tools/SourceKit/cmake/modules/AddSwiftSourceKit.cmake
+index caba3e1d7bd7..d182a1d1f0f8 100644
+--- a/tools/SourceKit/cmake/modules/AddSwiftSourceKit.cmake
++++ b/tools/SourceKit/cmake/modules/AddSwiftSourceKit.cmake
+@@ -99,7 +99,7 @@ macro(add_sourcekit_library name)
+   if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
+     if(SOURCEKITLIB_SHARED)
+       set_target_properties(${name} PROPERTIES BUILD_WITH_INSTALL_RPATH TRUE)
+-      set_target_properties(${name} PROPERTIES INSTALL_RPATH "$ORIGIN/../lib/swift/linux:/usr/lib/swift/linux")
++      set_target_properties(${name} PROPERTIES INSTALL_RPATH "$ORIGIN/../lib/swift/linux")
+     endif()
+   endif()
+ 

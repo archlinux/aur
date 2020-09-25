@@ -4,7 +4,7 @@
 # Contributor: soloturn@gmail.com
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.09.11.a.r74.gc56ae1e3364
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.09.23.a.r85.gc22ba90700a
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -40,9 +40,11 @@ source=(
 #    'yams::git+https://github.com/jpsim/Yams#commit=3.0.1'
     '0001-arch-aur-pachtes.patch'
     '0002-llbuild-ninja-test-binary-links-against-ncurses.patch'
+    '0003-butta-rpath.patch'
 )
 noextract=()
 md5sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -71,6 +73,7 @@ md5sums=(
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
     ( cd llbuild && patch -p1 -i "$srcdir/0002-llbuild-ninja-test-binary-links-against-ncurses.patch" )
+    ( cd swift && patch -p1 -i "$srcdir/0003-butta-rpath.patch" )
 }
 
 pkgver() {
