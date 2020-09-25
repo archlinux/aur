@@ -1,5 +1,5 @@
 pkgname=ntfs3-dkms
-pkgver=6.0.0
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="NTFS read-write driver GPL implementation by Paragon Software. Current version works with NTFS (including v3.1), normal/compressed/sparse files and supports journal replaying."
 arch=('any')
@@ -9,24 +9,24 @@ depends=('dkms')
 options=('!strip')
 source=(Makefile.patch
         dkms.conf
-        "v$pkgver~1.patch::https://lore.kernel.org/patchwork/patch/1308074/raw"
-        "v$pkgver~2.patch::https://lore.kernel.org/patchwork/patch/1308079/raw"
-        "v$pkgver~3.patch::https://lore.kernel.org/patchwork/patch/1308077/raw"
-        "v$pkgver~4.patch::https://lore.kernel.org/patchwork/patch/1308073/raw"
-        "v$pkgver~5.patch::https://lore.kernel.org/patchwork/patch/1308069/raw"
-        "v$pkgver~6.patch::https://lore.kernel.org/patchwork/patch/1308070/raw"
-        "v$pkgver~7.patch::https://lore.kernel.org/patchwork/patch/1308078/raw"
-        "v$pkgver~8.patch::https://lore.kernel.org/patchwork/patch/1308067/raw")
+        "v$pkgver~1.patch::https://lore.kernel.org/patchwork/patch/1311863/raw"
+        "v$pkgver~2.patch::https://lore.kernel.org/patchwork/patch/1311861/raw"
+        "v$pkgver~3.patch::https://lore.kernel.org/patchwork/patch/1311857/raw"
+        "v$pkgver~4.patch::https://lore.kernel.org/patchwork/patch/1311859/raw"
+        "v$pkgver~5.patch::https://lore.kernel.org/patchwork/patch/1311864/raw"
+        "v$pkgver~6.patch::https://lore.kernel.org/patchwork/patch/1311865/raw"
+        "v$pkgver~7.patch::https://lore.kernel.org/patchwork/patch/1311860/raw"
+        "v$pkgver~8.patch::https://lore.kernel.org/patchwork/patch/1311858/raw")
 sha512sums=('ab49381b37714bc61b17c5a4d857aac776a674574e8dbd46738eab438eef984b7762430cac05860038d8a875d5538347a1e1176acfd2169d9b5a640a9ef04d7c'
             '5f4087b05eb831fe277f1894240a8d72824daa821317e873f77574fc25d97b273ac3ddd8075d58b96c5e4e441de630817d68a3fa33d6176e26743cdb17ec664f'
-            'e5a5c3d1716ba9bcdac03e444e99a8a3284fe95694bd8d7b789bd825772532d343d48ec1f106103d8231fa6260a6b60c0bee512e88af064ecfcac9f15a5fb026'
-            '3e1b22ac173549bf1d7ad54e608f137ee6fb7ce31b3dc413c6e7ae1851dd3915ac3dec2eddc46da043531fa8babfa737b4f910d0983599c36a9b1b90e190aa02'
-            '246618d8536d4961f8584237bc26cc0b820200f551e03e333915692c76016a75c1ef063d553e0bfe854eab6f75f55b4253996ebd216741ea6d82ad0d041c4922'
-            '2fd5c325a203afe7270448e56920b139596cc1b5d0648bf7b0501d064137cf62d212fec99cf5cdf79cb604a10d286c8c9bbb623614402e2e24baf0d3bfc4d7a7'
-            '7aae2bdba4ee0b85a906c540d5687923112c9cb69e8491c4cc72e4d1c585d8a4643ce0a645e9554e0bd865903aec56aa38eda4f075f0d87486dd713a7c291074'
+            'cf432fc545fcf49b3e210ae31debd0e13464f43d1a0ebffc88041589fa3094f3a0c365644c6bda978cd2d02f2795d93d4758922bae17424a149c14a19d0f52ac'
+            '3bbddc706398fd489c4f9afbdb5eb89a4b48ac150de3b303f0e0a8c847161acb93a08356ee83f3e7e541cebe5175b1f2c06a4aab488089fe7eec46bb546a1d7f'
+            '747a71c63dbbb3017216c4788008a5bab5709f4c73606e81daa68912d6663035acfffdde84930d8f49bffef357dabb3d71436f1efe1174e22c306638e04980f2'
+            'd1010919f8f73fa8aed69bc0370a8922709bc077914fea07fb0374e42b5335b7bd0bc43e01b5376c2604aa21c9347cd4bb533469bea0091c5106aef54c49372e'
+            '4747012314b8261f75ea5c292f5825b7a789a54aab45bb9241dd0a7c09d287b467615fb815c5d7aa1327940bf517961ea3fce3ef0c6ad1856635dae22947d54e'
             '9c7f11d4cd755c91f4581a3ac45c22295b790d9a642ccbc44579ea4d4b4de2d82dfb8932967c3c1a0ec8f0e8a497acc327a0cc49c5b6f2ce9da208e97809cd74'
-            '9e20c2659348b83aa1677fe57a7dd8f85efedffcad65183d19120cfbd17ac814f95721fbaa26a3ba19fb6530465002b68e8a301d1ec7f33d2e37934e95e380aa'
-            'c1133e8ccaa32b3d4ef5834054b6dd2e529c3b15e5a97ae71c79f311ff89e3ac73f49f542744ff3d464cd9e3a1a707569da5e7e2e3e742d881b6a3b176f938b6')
+            'e9efd5acdabfe723fa96933c81d033679db92af50ab3754481ad4453b2279051bbe4d152f2643296e4b044d6d9b33808a9b9da8a467130a707f51b286b7f36a7'
+            '420547e7f200bbd32137b17ae567b18edf7be8cfa25ec483be2aaed252f42ba543a439042dd52882fd6ffce2c9abf8df73267b0720d26b27339d297832d8d9ee')
 
 
 prepare() {
