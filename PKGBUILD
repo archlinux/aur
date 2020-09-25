@@ -1,13 +1,13 @@
 # Maintainer: Chuan Ji <chuan@jichu4n.com>
 
 pkgname=jfbview-git
-pkgver=r414.4a8b0a7
+pkgver=r415.f46b487
 pkgrel=1
 pkgdesc="PDF and image viewer for the Linux framebuffer"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=('i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/jichu4n/jfbview"
 license=('Apache')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 depends=('ncurses' 'libjpeg-turbo' 'harfbuzz' 'freetype2' 'zlib' 'openjpeg2')
 conflicts=('jfbpdf' 'jfbview')
 replaces=('jfbpdf' 'jfbview')
