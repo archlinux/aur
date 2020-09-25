@@ -1,8 +1,8 @@
 # Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
 
 pkgname=python-awesometkinter
-pkgver=2020.9.18
-pkgrel=3
+pkgver=2020.9.22
+pkgrel=1
 pkgdesc="Pretty tkinter widgets"
 arch=('any')
 url='https://github.com/Aboghazala/AwesomeTkinter'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'tk' 'python-pillow')
 changelog="$pkgname.changelog"
 source=("https://github.com/Aboghazala/AwesomeTkinter/archive/$pkgver.tar.gz")
-b2sums=('0b4f8e4b1581c5bbfead9b90d86cee0fe750643e09277099a70d0a094fd385c39d43b200f2d9d837d39721f39b395eeffa43036ce0ad716e7c2c13c54da250df')
+b2sums=('6a090e92fc7e4f87224230c574da6bdaaf011d757ca96eceead3af5709fad8a53e4ba4345b883264311573416d72162f65e5a5e3a048c33653b0cc17cb3a0a7c')
 
 build() {
   cd "AwesomeTkinter-$pkgver"
