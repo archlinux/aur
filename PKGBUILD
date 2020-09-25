@@ -1,4 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer:
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ldapauthmanager
 pkgver=1.4.0
