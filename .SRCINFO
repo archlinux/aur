@@ -1,7 +1,7 @@
 pkgbase = cpuid.py-git
 	pkgdesc = Pure Python interface to the CPUID instruction
 	pkgver = r27.fcffb0a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flababah/cpuid.py
 	arch = any
 	license = MIT
