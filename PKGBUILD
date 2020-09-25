@@ -2,7 +2,7 @@
 
 _pkgname=gnome-remote-desktop
 pkgname=$_pkgname-git
-pkgver=0.1.8.33.g392e7fc
+pkgver=0.1.9.1.gab97841
 pkgrel=1
 pkgdesc='Remote desktop daemon for GNOME using pipewire'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ depends=('dconf' 'freerdp' 'libvncserver' 'libnotify' 'libsecret' 'pipewire')
 makedepends=('git' 'meson')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=(git+https://gitlab.gnome.org/jadahl/$_pkgname.git)
+source=(git+https://gitlab.gnome.org/GNOME/$_pkgname.git)
 sha512sums=('SKIP')
 
 pkgver() {

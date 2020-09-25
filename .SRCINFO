@@ -1,6 +1,6 @@
 pkgbase = gnome-remote-desktop-git
 	pkgdesc = Remote desktop daemon for GNOME using pipewire
-	pkgver = 0.1.8.33.g392e7fc
+	pkgver = 0.1.9.1.gab97841
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/Mutter/RemoteDesktop
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = gnome-remote-desktop-git
 	depends = pipewire
 	provides = gnome-remote-desktop
 	conflicts = gnome-remote-desktop
-	source = git+https://gitlab.gnome.org/jadahl/gnome-remote-desktop.git
+	source = git+https://gitlab.gnome.org/GNOME/gnome-remote-desktop.git
 	sha512sums = SKIP
 
 pkgname = gnome-remote-desktop-git
