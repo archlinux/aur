@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=lx-music-desktop
+Exec=/usr/bin/lx-music-desktop
+Terminal=false
+Type=Application
+Icon=lx-music-desktop
+StartupWMClass=lx-music-desktop
+Name[zh_CN]=洛雪音乐助手
+Comment[zh_CN]=一个免费的音乐下载助手
+Categories=Utility;AudioVideo;Audio;Player;Music;
