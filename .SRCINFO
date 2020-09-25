@@ -1,0 +1,18 @@
+pkgbase = workspaces-git
+	pkgdesc = Configure and quickly launch all you need to work on a project
+	pkgver = 3.1.0.r0.gd3d69be
+	pkgrel = 1
+	url = https://github.com/DevAlien/workspaces
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	provides = workspaces
+	conflicts = workspaces
+	source = git+https://github.com/DevAlien/workspaces.git
+	sha256sums = SKIP
+
+pkgname = workspaces-git
+
