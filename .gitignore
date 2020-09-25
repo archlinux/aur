@@ -1,0 +1,7 @@
+*
+!.gitignore
+
+!PKGBUILD
+!.SRCINFO
+
+!depot-tools-git.install
