@@ -11,7 +11,7 @@ makedepends=(git)
 changelog=
 sha256sums=('0cd770e85129a91d685b102ce34fed0b2ba51f3db6ef6c762da47984f507c61c')
 pkgver=0.2
-source=("https://github.com/trmckay/fzf-open/releases/download/v0.1/fzf-open-$pkgver.tar.gz")
+source=("https://github.com/trmckay/fzf-open/releases/download/v$pkgver/fzf-open-$pkgver.tar.gz")
 
 package() {
     cd $srcdir
