@@ -1,0 +1,13 @@
+pkgbase = timescale-prometheus
+	pkgdesc = An open source analytical platform for Prometheus metrics
+	pkgver = 0.1.0.beta.4
+	pkgrel = 1
+	url = https://github.com/timescale/timescale-prometheus
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	source = timescale-prometheus-0.1.0.beta.4.tar.gz::https://github.com/timescale/timescale-prometheus/archive/0.1.0-beta.4.tar.gz
+	b2sums = 579313a01302531eafabe324de7e1e80f01d8e8d491bdf49924f9809707141e591079f6f2efb0043a64aa787b0c56753875bcc97c7156a68e34ccb6f5d2fef02
+
+pkgname = timescale-prometheus
+
