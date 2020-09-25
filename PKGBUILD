@@ -3,7 +3,7 @@
 
 pkgname=mpz
 pkgver=0.0.11
-pkgrel=1
+pkgrel=6
 pkgdesc='Music player for the large local collections'
 arch=('x86_64')
 url="https://github.com/olegantonyan/mpz"

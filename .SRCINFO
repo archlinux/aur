@@ -1,7 +1,7 @@
 pkgbase = mpz
 	pkgdesc = Music player for the large local collections
 	pkgver = 0.0.11
-	pkgrel = 1
+	pkgrel = 6
 	url = https://github.com/olegantonyan/mpz
 	arch = x86_64
 	license = GPL3
