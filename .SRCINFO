@@ -1,6 +1,6 @@
 pkgbase = nocturnal-themes-git
 	pkgdesc = A GTK, xfwm4, openbox-3, and GNOME-Shell - Dark Mode Theme
-	pkgver = 1.0.r100.g66fb761
+	pkgver = 1.0.r101.g07eb188
 	pkgrel = 1
 	url = https://github.com/rtlewis88/rtl88-Themes/tree/Nocturnal
 	arch = any
