@@ -8,7 +8,7 @@ arch=('i686' 'pentium4' 'x86_64')
 url="https://github.com/jichu4n/prc-tools-remix"
 license=('GPL')
 # Compiling with GCC 10 currently doesn't work, so explicitly depend on GCC 9.
-makedepends=('autoconf' 'automake' 'flex' 'bison' 'texinfo' 'gperf' 'make' 'gcc9')
+makedepends=('texinfo' 'gperf' 'gcc9')
 depends=('ncurses')
 source=("https://github.com/jichu4n/prc-tools-remix/archive/v${pkgver}.tar.gz")
 sha256sums=('7f73cdb814e62e05053e4d38ca75a8dc09f225ac30b7e5ce7d7432035cfe79cd')
@@ -16,11 +16,6 @@ sha256sums=('7f73cdb814e62e05053e4d38ca75a8dc09f225ac30b7e5ce7d7432035cfe79cd')
 # - !makeflags: Parallel builds result in build errors.
 # - !buildflags: Default build flags result in build errors.
 options=('!makeflags' '!buildflags')
-
-build() {
-  # no-op
-  true
-}
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
