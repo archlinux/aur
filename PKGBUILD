@@ -3,7 +3,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=micropython-lib-git
-pkgver=1.9.3.140.gb89114c
+pkgver=1.9.3.144.geae01bd
 pkgrel=1
 epoch=1
 pkgdesc="Core Python libraries ported to MicroPython (git version)"
@@ -41,7 +41,7 @@ package() {
             warning "Skipping ${pkg} (no setup)."
             continue
         fi
-        if test -f $_d/metadata.txt && grep '^srctype=dummy' -q $_d/metadata.txt; then
+        if test -f $_d/metadata.txt && grep '^srctype *= *dummy' -q $_d/metadata.txt; then
             warning "Skipping ${pkg} (dummy module)."
             continue
         fi

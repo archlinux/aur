@@ -1,6 +1,6 @@
 pkgbase = micropython-lib-git
 	pkgdesc = Core Python libraries ported to MicroPython (git version)
-	pkgver = 1.9.3.140.gb89114c
+	pkgver = 1.9.3.144.geae01bd
 	pkgrel = 1
 	epoch = 1
 	url = http://micropython.org/
