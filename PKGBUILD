@@ -5,7 +5,7 @@
 
 pkgbase=tsmclient
 pkgname=(tsmclient-service tsmclient-dkms)
-pkgver=8.1.9.0
+pkgver=8.1.10.0
 pkgrel=1
 pkgdesc="IBM Tivoli Storage Manager Client"
 arch=('x86_64')
@@ -37,7 +37,7 @@ source=(
 	jbb_version.h
 )
 
-sha1sums=('8651fb42f596e360c51fe521d70bb19a57d3be82'
+sha1sums=('8ed715ad4c934a9891b2357d4877f3095a2c5ac2'
           '9ebfc76be666a44675f0d8e25a37dbe36242c725'
           '46b7b0a46ee50a49d33fd23e0b0a682f162eda65')
 
