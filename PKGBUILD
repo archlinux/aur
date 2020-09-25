@@ -1,4 +1,5 @@
-# Maintainer: Ridales
+# Maintainer: Phantasm <phantasm@centrum.cz>
+# Contributor: whight
 
 pkgname=plata-theme-slim
 pkgver=0.9.8
