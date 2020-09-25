@@ -6,6 +6,7 @@ pkgbase = geocam-bin
 	arch = x86_64
 	license = unknown
 	makedepends = git
+	optdepends = geocam-v4l2: H.264-encoded stream support
 	source = git+https://github.com/digitalloggers/geocam-bin#commit=7416d9e26003fea1fdab5b2b25c2a714abf67575
 	source = 83-geocam.rules
 	md5sums = SKIP

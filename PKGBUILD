@@ -9,6 +9,7 @@ pkgdesc="Camera Assembly for the Atomic Pi Single-board computer from Digital Lo
 url="https://github.com/digitalloggers/geocam-bin"
 license=('unknown')
 makedepends=('git')
+optdepends=('geocam-v4l2: H.264-encoded stream support')
 source=(
   "git+https://github.com/digitalloggers/geocam-bin#commit=$_commit"
   83-geocam.rules
