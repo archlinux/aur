@@ -7,6 +7,10 @@ pkgbase = python-kb
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
+	provides = python-kb
+	conflicts = kb
+	conflicts = python-kb
+	conflicts = python-kb-git
 	source = https://files.pythonhosted.org/packages/source/k/kb-manager/kb-manager-0.1.3.tar.gz
 	sha256sums = 78e14f6eef30a4742925cc75ba9a5509c032ae42e73e26582cd7ed91794f41df
 
