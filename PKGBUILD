@@ -2,7 +2,7 @@
 
 _pkgname=onics
 pkgname=onics-git
-pkgver=618.b6b8d90
+pkgver=639.fed6e01
 pkgrel=1
 pkgdesc="A command line tool suite to capture, dissect, manipulate and send network data."
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ build() {
   # Make ONICS
   cd "$srcdir/${_pkgname}"
   ./configure
-  make
+  make INSTALL_PREFIX=/usr
 }
 
 package() {

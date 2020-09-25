@@ -1,6 +1,6 @@
 pkgbase = onics-git
 	pkgdesc = A command line tool suite to capture, dissect, manipulate and send network data.
-	pkgver = 618.b6b8d90
+	pkgver = 639.fed6e01
 	pkgrel = 1
 	url = https://gitorious.org/onics/pages/Home
 	arch = i686
