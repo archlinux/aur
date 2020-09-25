@@ -1,16 +1,20 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+
 pkgname=mingw-w64-orc
-pkgver=0.4.31
+pkgver=0.4.32
 pkgrel=1
 pkgdesc="Optimized Inner Loop Runtime Compiler (mingw-w64)"
 arch=('any')
-license=('custom')
+license=('custom:BSD')
 url="https://gitlab.freedesktop.org/gstreamer/orc"
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'wine' 'git')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 #source=(https://gstreamer.freedesktop.org/data/src/orc/orc-${pkgver}.tar.xz{,.asc}
-_commit=9901a96eaff271c2d3b595214213f6805ff803c8  # tags/0.4.31^0
+_commit=629864f073ae003e63c026c1de2407fec713cb53  # tags/0.4.32^0
 source=("git+https://gitlab.freedesktop.org/gstreamer/orc.git#commit=$_commit"
         meson_i686-w64-mingw32
         meson_x86_64-w64-mingw32)
@@ -26,6 +30,7 @@ build() {
     mkdir -p "${srcdir}/orc/build-${_arch}" && cd "${srcdir}/orc/build-${_arch}"
 
     ${_arch}-meson \
+          --default-library both \
           "${srcdir}/orc"
     ninja
   done
