@@ -5,18 +5,18 @@ pkgrel=1
 pkgdesc="Use fzf to open files in appropriate applications (a la macOS Spotlight)"
 arch=('any')
 url="https://github.com/trmckay/fzf-open.git"
-license=('GNU General Public License v3.0')
+license=('GPL3')
 depends=(fzf bash)
 makedepends=(git)
 changelog=
-sha256sums=('0cd770e85129a91d685b102ce34fed0b2ba51f3db6ef6c762da47984f507c61c')
-pkgver=0.2
+sha256sums=('85c53baf412dfc4ca0f8b2c9a9603585a5aa981638d63b91bb52773616f226f9')
+pkgver=0.2.1
 source=("https://github.com/trmckay/fzf-open/releases/download/v$pkgver/fzf-open-$pkgver.tar.gz")
 
 package() {
     cd $srcdir
-    sudo cp ./fzf-open.sh /usr/bin/fzf-open
-    mkdir -p $HOME/.config/fzf-open
-    cp lopen.sh $HOME/.config/fzf-open/lopen.sh
-    cp example_config $HOME/.config/fzf-open/config
+    install -Dm 755 fzf-open.sh ${pkgdir}/usr/bin/fzf-open
+    install -d ${pkgdir}/usr/share/fzf-open/
+    install -Dm 755 lopen.sh ${pkgdir}/usr/share/fzf-open
+    install -Dm 644 example_config ${pkgdir}/usr/share/fzf-open/example_config
 }
