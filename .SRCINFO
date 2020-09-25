@@ -1,7 +1,7 @@
 pkgbase = gopenvpn-git
 	pkgdesc = gopenvpn is a simple graphical front-end for OpenVPN, the open source VPN solution.
 	pkgver = svn.migration.r12.gb4192eb
-	pkgrel = 6
+	pkgrel = 7
 	url = http://gopenvpn.sourceforge.net/
 	arch = i686
 	arch = x86_64
