@@ -6,12 +6,12 @@
 
 pkgname=marktext
 pkgver=0.16.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=('x86_64')
 url='https://marktext.app'
 license=('MIT')
-depends=('electron7'
+depends=('electron8'
          'libxkbfile'
          'libsecret'
          'ripgrep')
