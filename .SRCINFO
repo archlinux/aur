@@ -1,5 +1,5 @@
 pkgbase = dwm-nho1ix-git
-	pkgdesc = Nho1ix's patched build of dwm.
+	pkgdesc = nho1ix's patched build of dwm.
 	pkgver = 6.2.r1845.afaddc4
 	pkgrel = 1
 	url = https://github.com/nho1ix/dwm.git
