@@ -1,7 +1,7 @@
 # Maintainer: Vidar Magnusson <printit at vidarmagnusson dot com>
 
 pkgname=printit-git
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Utility for printing at Chalmers University"
 arch=("any")
