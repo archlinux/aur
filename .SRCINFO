@@ -1,0 +1,17 @@
+pkgbase = bandwhich-git
+	pkgdesc = Terminal bandwidth utilization tool
+	pkgver = 0.18.1.r9.g8020b94
+	pkgrel = 1
+	url = https://github.com/imsnif/bandwhich
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = bandwhich
+	conflicts = bandwhich
+	source = git+https://github.com/imsnif/bandwhich.git
+	sha256sums = SKIP
+
+pkgname = bandwhich-git
+
