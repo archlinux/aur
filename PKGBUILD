@@ -1,6 +1,6 @@
 # Maintainer: Mees Luten <mees [dot] luten [at] gmail [dot] com>
 pkgname=x-band-decoders-git
-pkgver=r26.ab66418
+pkgver=r31.62e592d
 pkgrel=1
 pkgdesc="A project aimed at decoding various X-Band satellites"
 arch=('x86_64')
@@ -40,4 +40,5 @@ package() {
 	install -Dm755 FengYun\ 3D\ Decoder/FY3DDecoder "${pkgdir}"/usr/bin/FY3DDecoder
 	install -Dm755 FengYun\ MPT\ Decoder/FengYun-MPT-Decoder "${pkgdir}"/usr/bin/FengYun-MPT-Decoder
 	install -Dm755 FengYun\ MERSI-2\ Decoder/FengYun-MERSI-2-Decoder "${pkgdir}"/usr/bin/FengYun-MERSI-2-Decoder
+	install -Dm755 FengYun\ MERSI-1\ Decoder/FengYun-MERSI-1-Decoder "${pkgdir}"/usr/bin/FengYun-MERSI-1-Decoder
 }

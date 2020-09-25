@@ -1,6 +1,6 @@
 pkgbase = x-band-decoders-git
 	pkgdesc = A project aimed at decoding various X-Band satellites
-	pkgver = r26.ab66418
+	pkgver = r31.62e592d
 	pkgrel = 1
 	url = https://github.com/altillimity/X-Band-Decoders
 	arch = x86_64
