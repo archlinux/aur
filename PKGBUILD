@@ -3,7 +3,7 @@
 _pkgname="dmenu"
 pkgname="$_pkgname-oakszyjrnrdy"
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic menu for X built by oakszyjrnrdy"
 url="https://tools.suckless.org/dmenu/"
 arch=("x86_64")
