@@ -3,8 +3,8 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://jitsi.org/jitsi-meet/"
@@ -23,7 +23,7 @@ makedepends=('coreutils'
 options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'jitsi-meet-desktop.desktop')
-sha256sums=('09acbdd1207a0e48457d8c3db88988f14098652e5183e4fd39492e250eb0e6d3'
+sha256sums=('e6c7d849b2028e9751480a36eb40594cc7db6d6ed9a1dbc76a618ca03ab7fd58'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
 prepare() {
@@ -31,9 +31,6 @@ prepare() {
 
   sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron/version)'"#' -i package.json
 
-  # workaround to keep it working with electron 10 until addressed upstream
-  # see https://github.com/electron/electron/blob/master/docs/breaking-changes.md#default-changed-enableremotemodule-defaults-to-false
-  sed 's#webPreferences: {#webPreferences: {\n            enableRemoteModule: true,#' -i main.js
   export npm_config_cache="${srcdir}/npm_cache"
   npm install
 }
