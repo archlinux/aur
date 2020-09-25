@@ -142,8 +142,7 @@ prepare() {
     --pkgdesc "${pkgdesc}" \
     --categories "Development;Education;Science;Mathematics;IDE" \
     --mimetypes "application/x-matlab-data;text/x-matlab" \
-    --exec 'matlab -desktop'
-    #--exec 'sh -c '\''if [ "${MATLAB_INTEL_OVERRIDE}" = "yes" ] ; then exec env MESA_LOADER_DRIVER_OVERRIDE=i965 matlab -desktop ; else exec matlab -desktop ; fi'\'
+    --exec 'sh -c '\''if [ "${MATLAB_INTEL_OVERRIDE}" = "yes" ] ; then exec env MESA_LOADER_DRIVER_OVERRIDE=i965 matlab -desktop ; else exec matlab -desktop ; fi'\'
 }
 
 build() {

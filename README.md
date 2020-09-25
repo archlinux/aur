@@ -13,6 +13,8 @@ exclude this package from your workflow.
 (Partial install is around 8 GB; and full install about 16 GB)
 * Turn off compression if this package will only be installed on the build machine;
 this cuts a fair amount of time from the build and compression is unneccessary on local machines.
+* Set `MATLAB_INTEL_OVERRIDE='yes'` in your environment if hardware acceleration
+does not work on your Intel GPU.
 
 # Requirements
 
