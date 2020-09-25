@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=ipfs-desktop
-pkgver=0.12.2
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=(c-ares ffmpeg gtk3 http-parser libevent libvpx libxslt libxss minizip n
 makedepends=(nodejs npm node-gyp)
 install=$pkgname.install
 source=("https://github.com/ipfs-shipyard/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=(072151bd1c6e01ba8ef561ae30c751cba7ffb83a643f242f46016841d8467893)
+sha256sums=(ac3653833469724160664b58b0b15602a9f6dc273665c50f1a7ebd2c3143e08b)
 
 build() {
 	cd "$pkgname-$pkgver"
