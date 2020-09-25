@@ -2,13 +2,13 @@
 
 pkgname=duf
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Disk Usage/Free Utility"
 arch=('x86_64' 'i686')
 url="https://github.com/muesli/duf"
 license=('MIT')
 makedepends=('go')
-source=("$url/archive/v$pkgver.tar.gz")
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('dfa2b9fee88e192a7cb7b87a4abdcacffd5ef8f17fc12226443059d27a0c0438')
 
 build() {
