@@ -1,7 +1,7 @@
 # Maintainer: Olivier Le Moal <mail at olivierlemoal dot fr>
 
 pkgname=kubeaudit-bin
-pkgver=0.11.3
+pkgver=0.11.4
 pkgrel=1
 pkgdesc="kubeaudit is a command line tool and a Go package to audit Kubernetes clusters for various different security concerns."
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/Shopify/kubeaudit"
 license=('MIT')
 source=("https://github.com/Shopify/kubeaudit/releases/download/v${pkgver}/kubeaudit_${pkgver}_linux_amd64.tar.gz"
 "https://raw.githubusercontent.com/Shopify/kubeaudit/v${pkgver}/LICENSE")
-sha256sums=('30f0eaec794bd296d407ee1d0af8361b9376179197733802250126b5b313f243'
+sha256sums=('e64fb3fe5f0453db374942327f37c8ad0b522c574f87aff6aa69ccc61ebc1532'
             'c10410d02ed565696f3804b055391354ce279d44392c286fd35754818ea2aa3f')
 
 package() {
