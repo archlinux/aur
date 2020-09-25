@@ -1,5 +1,5 @@
 pkgname=sublime-text-4-dev
-pkgver=4.4086
+pkgver=4.4087
 pkgrel=1
 pkgdesc="Sophisticated text editor for code, html and prose - dev build"
 arch=('x86_64' 'aarch64')
@@ -12,15 +12,12 @@ install=sublime-text.install
 case "${CARCH}" in
   x86_64)    _CARCH='x64'    && sha256sums=('388d1fe620727bd3e6bdda7b60150734616d8ba86ef1001478d0a41d1718c018'
   'a400ae041bd8b3ed08bf04129e1d7ddc9df9edf5610532bd7b321a43e28c7ca9'
-  'ff58895daf5e4ee8c0b2f6c08fd272d6a2c8ed353689b39668436794a92bf504');;
+  '76eaa3ae6bfc3f7a348fc17761887f28c8e1c9f40eb90211f5f420dba5aafd3e');;
   aarch64)   _CARCH='arm64'  && sha256sums=('SKIP' 'SKIP' 'SKIP');;
 esac
 source=("sublime-text.install"
         "sublime_text.desktop"
         "https://download.sublimetext.com/sublime_text_build_${pkgver:2}_${_CARCH}.tar.xz")
-sha256sums=('388d1fe620727bd3e6bdda7b60150734616d8ba86ef1001478d0a41d1718c018'
-            'a400ae041bd8b3ed08bf04129e1d7ddc9df9edf5610532bd7b321a43e28c7ca9'
-            'ff58895daf5e4ee8c0b2f6c08fd272d6a2c8ed353689b39668436794a92bf504')
 
 package() {
   cd "${srcdir}"
