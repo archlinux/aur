@@ -1,6 +1,6 @@
 pkgbase = madx-dev
 	pkgdesc = Accelerator Optics simulation code, shared object, development files
-	pkgver = 5.06.00
+	pkgver = 5.06.01
 	pkgrel = 1
 	url = http://cern.ch/mad
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = madx-dev
 	depends = lapack
 	provides = madx
 	conflicts = madx-svn
-	source = https://github.com/MethodicalAcceleratorDesign/MAD-X/archive/5.06.00.tar.gz
-	md5sums = 91e574bfef75f270586ac745bc04747c
+	source = https://github.com/MethodicalAcceleratorDesign/MAD-X/archive/5.06.01.tar.gz
+	md5sums = 32b007d0a8dcc80f709554777905f34a
 
 pkgname = madx-dev
 

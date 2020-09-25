@@ -1,7 +1,7 @@
 # Maintainer: Thomas Gläßle <t_glaessleATgmxDOTnet>
 
 pkgname=madx-dev
-pkgver=5.06.00
+pkgver=5.06.01
 pkgrel=1
 pkgdesc="Accelerator Optics simulation code, shared object, development files"
 url="http://cern.ch/mad"
@@ -16,7 +16,7 @@ tarball=${pkgver}.tar.gz
 extract=MAD-X-${pkgver}
 
 source=("https://github.com/MethodicalAcceleratorDesign/MAD-X/archive/${tarball}")
-md5sums=('91e574bfef75f270586ac745bc04747c')
+md5sums=('32b007d0a8dcc80f709554777905f34a')
 
 build() {
     rm -rf ${srcdir}/build
