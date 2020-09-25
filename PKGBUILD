@@ -10,15 +10,15 @@
 pkgname=st-supermario9590-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=0.8.4
 pkgrel=1
-pkgdesc="My custom build of suckless' ST (Simple terminal)"
+pkgdesc="My custom build of ST"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/supermario9590/st-supermario9590.git"
 license=('MIT')
 groups=()
-depends=('libxft' 'nerd-fonts-mononoki' 'ttf-symbola')
+depends=(nerd-fonts-mononoki ttf-symbola)
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
-provides=(st)
-conflicts=(st)
+provides=("dwm")
+conflicts=("dwm")
 replaces=()
 backup=()
 options=()
@@ -31,20 +31,18 @@ md5sums=('SKIP')
 # a description of each element in the source array.
 
 pkgver() {
-	cd st-supermario9590
+	cd "$srcdir/st-supermario9590"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd st-supermario9590
+	cd "$srcdir/st-supermario9590"
 	make
 }
 
 package() {
-	cd st-supermario9590
-	mkdir $pkgdir/opt/$pkgname/
-	cp -rf * $pkgdir/opt/$pkgname/
-	make DESTDIR=$pkgdir/ PREFIX=/usr/ install
-	install -m644 -D LICENCE $pkgdir/usr/share/licences/$pkgname
-	install -m644 -D README.md $pkgdir/usr/share/doc/$pkgname
+	cd "$srcdir/st-supermario9590"
+	make PREFIX=/usr DESTDIR="$pkgdir/" install
+	install -Dm644 LICENSE $pkgdir/usr/share/licences/$pkgname/LICENCE
+	install -Dm644 README.md $pkgdir/usr/share/doc/$pkgname/README.md
 }
