@@ -1,7 +1,7 @@
 # Maintainer: berberman <hatsue@typed.icu>
 
 pkgname=arch-hs-git
-pkgver=r74.a5d336d
+pkgver=r105.73e92e7
 pkgrel=1
 pkgdesc="Generating PKGBUILD for hackage packages."
 arch=('x86_64')
@@ -16,8 +16,8 @@ md5sums=('SKIP')
 
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"        
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname%-git}"        
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 _gen_comp(){
@@ -48,7 +48,6 @@ build() {
   
   _gen_comp
   _gen_comp "-diff"
-  _gen_comp "-uusi" 
 }
 
 package() {
@@ -61,5 +60,4 @@ package() {
   
   _install_comp
   _install_comp "-diff"
-  _install_comp "-uusi"
 } 
