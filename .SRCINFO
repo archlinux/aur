@@ -13,6 +13,7 @@ pkgbase = proxysql
 	makedepends = gcc
 	makedepends = git
 	makedepends = patch
+	makedepends = python2
 	depends = openssl
 	depends = gnutls
 	provides = proxysql
