@@ -1,0 +1,17 @@
+pkgbase = shoop-git
+	pkgdesc = high-speed encrypted file transfer tool reminiscent of scp, written in rust
+	pkgver = 0.1.1.210
+	pkgrel = 1
+	url = https://github.com/mcginty/shoop
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cargo
+	depends = openssl
+	provides = shoop
+	conflicts = shoop
+	source = git+https://github.com/mcginty/shoop.git
+	sha256sums = SKIP
+
+pkgname = shoop-git
+
