@@ -8,14 +8,14 @@
 
 pkgname=filebot
 pkgver=4.9.1
-pkgrel=5
+pkgrel=6
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://www.filebot.net/"
 license=('Commercial')
 install=$pkgname.install
 # install=()
-depends=('liberica-jre-11-full-bin' 'fontconfig' 'chromaprint')
+depends=('java-runtime-headless' 'java-openjfx' 'fontconfig' 'chromaprint')
 makedepends=()
 provides=('filebot')
 conflicts=('filebot47' 'filebot-git')
