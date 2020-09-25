@@ -15,7 +15,8 @@ sha256sums=('9b6b79d56722e76a9a24f2f459a530545d0c7407349c4e9a7ee3084dad39c733')
 # Options:
 # - !makeflags: Parallel builds result in build errors.
 # - !buildflags: Default build flags result in build errors.
-options=('!makeflags' '!buildflags')
+# - !strip: Stripping breaks static libs installed by this package.
+options=('!makeflags' '!buildflags' '!strip')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"

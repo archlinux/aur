@@ -13,6 +13,7 @@ pkgbase = prc-tools-remix
 	depends = ncurses
 	options = !makeflags
 	options = !buildflags
+	options = !strip
 	source = https://github.com/jichu4n/prc-tools-remix/archive/v2.3.5.tar.gz
 	sha256sums = 9b6b79d56722e76a9a24f2f459a530545d0c7407349c4e9a7ee3084dad39c733
 
