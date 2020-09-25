@@ -7,7 +7,7 @@ pkgdesc="A Python package with bindings to the 'Virtual Instrument Software Arch
 arch=('any')
 url="https://github.com/pyvisa/pyvisa"
 license=('MIT')
-depends=('python' 'python-distribute' 'python-docutils' 'python-setuptools-scm')
+depends=('python' 'python-distribute' 'python-docutils' 'python-setuptools-scm' 'python-typing_extensions')
 optdepends=('python-pyvisa-py: Pure Python backend')
 
 source=("https://github.com/pyvisa/pyvisa/archive/$pkgver.tar.gz")
