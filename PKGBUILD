@@ -5,7 +5,7 @@ _name="${pkgname#python-}"
 pkgdesc="Remind you to pack your rain gear when it’s forecast to rain"
 url="https://gitlab.com/christophfink/wolkenbruch/"
 
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=0
 
 arch=("x86_64" "i686")
@@ -22,7 +22,7 @@ depends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("b0f6c2019462cc41ac3038c08a4ae211a19d89840dd40e3d595de6eeaa48be59")
+sha256sums=("7f8ab2b59517a6808585b89191bc691382e485461fd36c97b6df41719cdc1cb3")
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -35,8 +35,8 @@ package() {
 
     # install systemd service + timer
     install -Dm644 \
-        "extra/systemd/wolkenbruch@."{timer,service} \
-        -t "${pkgdir}/usr/lib/systemd/system/"
+        "extra/systemd/wolkenbruch."{timer,service} \
+        -t "${pkgdir}/usr/lib/systemd/user/"
 
     install -Dm644 \
         LICENSE \
