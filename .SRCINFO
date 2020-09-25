@@ -1,0 +1,16 @@
+pkgbase = boop-gtk
+	pkgdesc = Port of @IvanMathy's Boop to GTK, a scriptable scratchpad for developers.
+	pkgver = v1.3.0
+	pkgrel = 1
+	url = https://github.com/mrbenshef/Boop-GTK
+	arch = any
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gtksourceview3
+	depends = gtk3
+	source = Boop-GTK::git+https://github.com/mrbenshef/Boop-GTK#branch=release
+	md5sums = SKIP
+
+pkgname = boop-gtk
+
