@@ -1,7 +1,7 @@
 # Maintainer: Gautham Velchuru <gvelchuru@gmail.com>
 # Co-Maintainer: Konstantin Gizdov <arch at kge dot pw>
 pkgname=vale
-pkgver=2.2.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A customizable, syntax-aware linter for prose"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/errata-ai/vale"
 license=('MIT')
 makedepends=('go' 'go-bindata' 'rsync')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('bf90648b364c36eecbf2c7b510439507e27d8107016f23cf4f26b32550cf1674')
+sha256sums=('d99aeea5d0e93a96088f849db05520f7b531f211d158e9538a46eb2ca7931f3e')
 
 build() {
     cd "${srcdir}"
@@ -25,8 +25,8 @@ build() {
     cd "${srcdir}/gopath/src/github.com/errata-ai/vale"
 
     go env
-    make LAST_TAG=${pkgver} rules
-    make LAST_TAG=${pkgver} build
+    make LAST_TAG=${pkgver} exe=vale rules
+    make LAST_TAG=${pkgver} exe=vale build
 }
 
 package() {
