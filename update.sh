@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 
-makepkg
+makepkg -i
 makepkg --printsrcinfo > .SRCINFO
 
 git add .
