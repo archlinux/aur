@@ -3,15 +3,17 @@
 pkgname=prc-tools-remix
 pkgver=2.3.5
 pkgrel=1
-pkgdesc="Collection of tools supporting C and C++ programming for Palm OS"
+pkgdesc='C/C++ toolchain for Palm OS'
 arch=('i686' 'pentium4' 'x86_64')
 url="https://github.com/jichu4n/prc-tools-remix"
 license=('GPL')
-# Compiling with GCC 10 currently doesn't work, so explicitly depend on GCC 9.
-makedepends=('texinfo' 'gperf' 'gcc9')
+makedepends=('texinfo' 'gperf')
 depends=('ncurses')
+optdepends=(
+  'palm-os-sdk-git: Palm OS SDK files'
+  'pilrc: Palm OS resource compiler')
 source=("https://github.com/jichu4n/prc-tools-remix/archive/v${pkgver}.tar.gz")
-sha256sums=('9b6b79d56722e76a9a24f2f459a530545d0c7407349c4e9a7ee3084dad39c733')
+sha256sums=('d8c29e81c197ba7801d8331eddcb94990f780c96b3ccea83b60b08d8349c96a8')
 # Options:
 # - !makeflags: Parallel builds result in build errors.
 # - !buildflags: Default build flags result in build errors.
@@ -22,12 +24,9 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Environment variables:
-  # - CC: Compiling with GCC 10 currently doesn't work, so using GCC 9 here.
   # - SHELL: Compilation can fail if the user has a different default shell
   #   like fish.
   env \
-    CC=gcc-9 \
-    CXX=g++-9 \
     SHELL=/bin/sh \
     ./tools/build.sh "${pkgdir}"
 }
