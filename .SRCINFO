@@ -1,0 +1,15 @@
+pkgbase = palm-os-sdk-git
+	pkgdesc = Palm OS SDK files
+	pkgver = r1.6958f76
+	pkgrel = 1
+	url = https://github.com/jichu4n/palm-os-sdk
+	arch = any
+	license = unknown
+	makedepends = git
+	options = !emptydirs
+	options = !strip
+	source = git+https://github.com/jichu4n/palm-os-sdk.git
+	sha512sums = SKIP
+
+pkgname = palm-os-sdk-git
+
