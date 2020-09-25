@@ -1,35 +1,28 @@
-# Maintainer: ml <ml@visu.li>
+# Maintainer: ml <>
 # Contributor: Jean Lucas <jean@4ray.co>
 
-# TODO cleanup asar, drop as much as possible, remove local references
 pkgname=whalebird-desktop
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 pkgdesc='Electron-based Mastodon/Pleroma client'
 arch=('any')
 url='https://whalebird.org'
 license=('MIT')
 depends=('electron')
-makedepends=('git' 'npm')
+makedepends=('git' 'yarn')
 provides=('whalebird')
 source=("https://github.com/h3poteto/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
   whalebird.desktop
   whalebird.sh)
-sha256sums=('09d126356812dcfdd73d343bf8a037250b915d1b16a40472770e528e41361248'
+sha256sums=('64bab2149e827d2056beaa69949f7ad1118947cc88c537e02b08931f16810dc6'
             '8feed931453da872291c4588c981007ed36566155cfcf55ab3ff5d7431d60aef'
             'a0a050952353c78389bdafd8885cae4a402d0819acad07010566657e387c5ce9')
 
 _npmopt=(--no-audit --no-progress --no-fund)
 prepare() {
   cd "${pkgname}-${pkgver}"
-  #npm "${_npmopt[@]}" --ignore-scripts uninstall electron{,-debug,-devtools-installer} listr cross-env \
-  #  cfonts chalk webpack-dev-server stylelint{,-config-standard} ttfinfo prettier-stylelint
-
-  # node-sass 4.14.1 for Node 14 support
-  npm "${_npmopt[@]}" --ignore-scripts install electron@"$(</usr/lib/electron/version)" node-sass@4.14.1
-
-  # run install script for node-sass only
-  node node_modules/node-sass/scripts/install.js
+  rm -f package-lock.json
+  yarn --non-interactive upgrade electron@"$(</usr/lib/electron/version)"
 }
 
 build() {
@@ -38,13 +31,10 @@ build() {
 
   # the same as calling `node .electron-vue/build.js` but doesn't try to display fancy text
   for c in webpack.{main,renderer}.config.js; do
-    npx --no-install webpack --mode production --config=.electron-vue/"$c"
+    yarn --non-interactive exec -- webpack --mode production --config=.electron-vue/"$c"
   done
 
-  # make cachefiles writable for makepkg -c to work
-  chmod -R u+w node_modules/.cache
-
-  npx electron-builder --linux --dir \
+  yarn --non-interactive exec -- electron-builder --linux --dir \
     -c.electronDist=/usr/lib/electron \
     -c.electronVersion="$(</usr/lib/electron/version)"
 }
