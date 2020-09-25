@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r468.b23276c
+pkgver=r469.4ebedac
 pkgrel=1
 pkgdesc='Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS'
 arch=('i686' 'x86_64')
@@ -49,8 +49,6 @@ package() {
   cd "${_pkgname}"
   install -Dm 755 sftpgo "$pkgdir/usr/bin/${_pkgname}"
   install -Dm 755 examples/rest-api-cli/sftpgo_api_cli.py "${pkgdir}"/usr/bin/sftpgo_api_cli
-  sed -i 's/^User=root/User=sftpgo/g' init/${_pkgname}.service 
-  sed -i 's/^Group=root/Group=sftpgo/g' init/${_pkgname}.service 
   install -Dm 644 init/${_pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
   install -dm750 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "${pkgdir}/etc/${_pkgname}"
   install -Dm 640 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "$srcdir/sftpgo.json" -t "${pkgdir}/etc/${_pkgname}"
