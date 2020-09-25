@@ -3,7 +3,7 @@
 # Contributor: redchenjs <redchenjs@live.com>
 
 pkgname=browser360
-pkgver=12.2.1070.0
+pkgver=10.2.1006.19
 pkgrel=1
 pkgdesc="360 Security Browser"
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
   'libglvnd'
 )
 source=("https://down.360safe.com/gc/browser360-cn-stable_$pkgver-${pkgrel}_amd64.deb")
-sha256sums=('77bcf2895f5c780156af449147371901f5b12348cdbcd23bb848db3412370cb7')
+sha256sums=('d22c4f95d63fc587f54000a56dbc62cd28473bf1aecba5056176b8d00cc74c0f')
 
 package() {
   tar -xf "$srcdir/data.tar.xz" -C "$pkgdir/"
