@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc='A simple aesthetic web front for your server.'
 arch=('x86_64')
 url='https://github.com/ArisuOngaku/serverplate'
-license=('GPL3')
+license=('MIT')
 source=("serverplate-src::git://github.com/ArisuOngaku/serverplate.git#tag=v$pkgver"
   'serverplate.service'
   'serverplate.sysusers'
