@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=aws-cli-v2
-pkgver=2.0.51
+pkgver=2.0.52
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services (version 2)'
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
   'python-s3transfer'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aws/aws-cli/archive/$pkgver.tar.gz")
-sha256sums=('1b057ca12456264166ae606513aed8e38c1679b54e2262f8ec87ae928cc4f8b3')
+sha256sums=('9a92f2ebbd6bb3bcd2d67270d7762280a919e87f3de5d19475185f652928601f')
 
 build() {
     cd "$srcdir"/aws-cli-$pkgver
