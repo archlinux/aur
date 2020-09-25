@@ -2,12 +2,12 @@
 
 pkgname=(xyz-thumbnailer-kde-git)
 pkgver=r137.6f4dcbd
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE Thumbnail provider for RPG Maker 2000/2003 XYZ image files (development version)"
 arch=('i686' 'x86_64')
 url="https://easyrpg.org/tools/"
 license=('MIT')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'extra-cmake-modules')
 depends=('dolphin' 'zlib')
 source=($pkgname::"git+https://github.com/EasyRPG/Tools.git")
 md5sums=('SKIP')
