@@ -4,21 +4,50 @@
 post_install() {
     # Installs Snapshot Hook
     pacback -ih
+    
     # Make Base Dirs
     mkdir -p /var/lib/pacback
     mkdir -p /var/lib/pacback/restore-points
     mkdir -p /var/lib/pacback/snapshots
-
 }
 
 post_upgrade() {
-    # Run Alpha Upgrade
-    /tmp/alpha-upgrade.sh
-    rm -f /tmp/alpha-upgrade.sh
-    # Fix For Broken Package Versions
+    ## Patch pacman Hook Location
+    if [ -f "/etc/pacman.d/hooks/pacback.hook" ]; then
+      mv /etc/pacman.d/hooks/pacback.hook /usr/share/libalpm/hooks/pacback.hook
+    fi
+
+    ## Fix For Broken Pacakge Versions
     mkdir -p /var/lib/pacback
     mkdir -p /var/lib/pacback/restore-points
     mkdir -p /var/lib/pacback/snapshots
+    
+    ## Run Alpha Upgrade
+    # Fix First Line
+    find /var/lib/pacback -type f -name '*.meta' -exec sed -i '1 s/^====== Pacback RP.*/======= Pacback Info =======/' {} +
+
+    # Fix Version Field
+    find /var/lib/pacback -type f -name '*.meta' -exec sed -i 's/^Pacback Version:/Version:/' {} +
+
+    # Add Type Fields
+    find /var/lib/pacback -type f -name '*.meta' -exec sed -i '/^Time Created:.*/a Type: Restore Point' {} +
+    find /var/lib/pacback -type f -name '*.meta' -exec sed -i 's/^Packages in RP: 0/SubType: Light/' {} +
+
+    # Remove Fields If No Packages Are Cached
+    find /var/lib/pacback -type f -name '*.meta' -exec sed -i '/^Size of Packages in RP: 0B/d' {} +
+
+    # Add SubType Field
+    find /var/lib/pacback -type f -name '*.meta' -exec sed -i '/^Packages in RP:.*/i SubType: Full' {} +
+
+    # Fix Fields If Package Are Cached
+    find /var/lib/pacback -type f -name '*.meta' -exec sed -i 's/^Packages in RP:/Packages Cached:/' {} +
+    find /var/lib/pacback -type f -name '*.meta' -exec sed -i 's/^Size of Packages in RP:/Package Cache Size:/' {} +
+
+    # Fix Custom Dir Fields
+    find /var/lib/pacback -type f -name '*.meta' -exec sed -i 's/^Dirs /Dir /' {} +
+
+    # Change Package Cache Folder Name
+    find /var/lib/pacback/restore-points -type d -name 'pac_cache' -exec rename 'pac_cache' 'pkg-cache' {} +
 }
 
 pre_remove() {

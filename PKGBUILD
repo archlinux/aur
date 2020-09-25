@@ -2,7 +2,7 @@
 # Co-Maintainer/Author: Justin Timperio <justintimperio[at]gmail[dot]com>
  
 pkgname=pacback-git
-pkgver=r116.acbb480
+pkgver=r130.24f046a
 pkgrel=0
 pkgdesc='Advanced Version Control for Arch Linux'
 arch=('x86_64')
@@ -40,6 +40,5 @@ package() {
   cp -dr --no-preserve='ownership' pacback/core "${pkgdir}"/usr/share/pacback
   cp -dr --no-preserve='ownership' pacback/LICENSE "${pkgdir}"/usr/share/licences/pacback
   cp -dr --no-preserve='ownership' pacback/build/config "${pkgdir}"/etc/pacback.conf
-  cp -dr --no-preserve='ownership' pacback/build/alpha-upgrade.sh "${pkgdir}"/tmp
   ln -sf /usr/share/pacback/core/pacback.py "${pkgdir}"/usr/bin/pacback
 }
