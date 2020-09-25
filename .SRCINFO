@@ -1,0 +1,21 @@
+pkgbase = qt1-git
+	pkgdesc = Historical copy of Qt 1, adapted to compile on modern systems (circa. 2016)
+	pkgver = 1.1.2r12.c6fc7ef
+	pkgrel = 1
+	url = https://quickgit.kde.org/?p=qt1.git
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	license = custom:Qt Free Edition License
+	makedepends = cmake
+	makedepends = git
+	makedepends = byacc
+	depends = libxext
+	depends = gcc-libs
+	provides = qt1
+	conflicts = qt1
+	source = git+https://github.com/heliocastro/qt1.git
+	md5sums = SKIP
+
+pkgname = qt1-git
+
