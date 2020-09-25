@@ -4,12 +4,13 @@ pkgname=pokemon-revolution-online-bin
 __LIN_DESKTOP_ASSET_VER=0.3.2
 __PROCLIENT_VER=0.98.5
 pkgver=20200821+${__LIN_DESKTOP_ASSET_VER}+${__PROCLIENT_VER}
-pkgrel=1
+pkgrel=2
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
 url="https://pokemonrevolution.net"
 license=('custom')
 depends=('vulkan-driver' 'opengl-driver')
+makedepends=('git')
 optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 conflicts=('pokemon-revolution-online')
 install="$(/usr/bin/tail -n 1 /usr/lib/os-release | /usr/bin/cut -d= -f2).install"

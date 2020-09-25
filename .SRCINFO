@@ -6,6 +6,7 @@ pkgbase = pokemon-revolution-online-bin
 	install = archlinux.install
 	arch = x86_64
 	license = custom
+	makedepends = git
 	depends = vulkan-driver
 	depends = opengl-driver
 	optdepends = gtk2: required for the Unity ScreenSelector plugin
