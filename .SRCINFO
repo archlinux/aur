@@ -6,7 +6,6 @@ pkgbase = campdown
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
 	depends = python-mutagen
 	depends = python-requests
 	depends = python-docopt
