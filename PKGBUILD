@@ -1,8 +1,8 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=vlang-bin
-pkgver=0.1.27
-pkgrel=4
+pkgver=0.1.29
+pkgrel=1
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software. Compiles itself in <1s with zero dependencies'
 arch=('x86_64')
 url="https://vlang.io"
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('vlang')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.zip::https://github.com/vlang/v/releases/download/${pkgver}/v_linux.zip")
-sha256sums=('719adbea053d362ea0941572f491e44b3092cb8b186c51f5ae20e8b07c11343b')
+sha256sums=('e7b6224e7eff5c9e2f4c1039b0ed1bc0d68069ac92379d363222f2e7928aceab')
 
 package() {
   install -d "$pkgdir/usr/lib/vlang" "$pkgdir/usr/share/vlang" "$pkgdir/usr/bin"
-  install -Dm644 "${srcdir}"/LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm755 "${srcdir}"/v "$pkgdir/usr/lib/vlang"
-  cp -a cmd "$pkgdir/usr/lib/vlang/"
+  install -Dm644 v/LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 v/v "$pkgdir/usr/lib/vlang"
+  cp -avR v/cmd "$pkgdir/usr/lib/vlang/"
   chmod -R 777 "$pkgdir/usr/lib/vlang/cmd"
-  cp -a examples "$pkgdir/usr/share/vlang/"
-  cp -a thirdparty "$pkgdir/usr/lib/vlang/"
-  cp -a vlib "$pkgdir/usr/lib/vlang/"
+  cp -avR v/examples "$pkgdir/usr/share/vlang/"
+  cp -avR v/thirdparty "$pkgdir/usr/lib/vlang/"
+  cp -avR v/vlib "$pkgdir/usr/lib/vlang/"
   ln -s /usr/lib/vlang/v "$pkgdir/usr/bin/v"
 }
 # vim:set ts=2 sw=2 et:
