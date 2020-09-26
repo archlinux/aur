@@ -1,13 +1,13 @@
 pkgbase = octetos-version
 	pkgdesc = A command line function for package version management.
-	pkgver = 0.17.0
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/azaeldevel/octetos-version.git
 	arch = x86_64
 	license = GPL
 	depends = octetos-coreutils
-	source = https://github.com/azaeldevel/octetos-version/archive/0.17.0-alpha.tar.gz
-	md5sums = 19f214299176f060d964adb6b09eeb88
+	source = https://github.com/azaeldevel/octetos-version/archive/0.19.0-alpha.tar.gz
+	md5sums = 24e61fa85905dba46fcb9fe6be40212d
 
 pkgname = octetos-version
 
