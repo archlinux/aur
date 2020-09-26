@@ -2,7 +2,7 @@
 
 pkgorg='stack-of-tasks'
 pkgname=('tsid' 'tsid-docs')
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Efficient Task Space Inverse Dynamics (TSID) based on Pinocchio"
 arch=('i686' 'x86_64')
