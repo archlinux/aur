@@ -1,0 +1,17 @@
+pkgbase = linvst-bin
+	pkgdesc = Linux Windows vst wrapper/bridge
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://github.com/osxmidi/LinVst
+	arch = x86_64
+	groups = pro_audio
+	license = GPL
+	depends = wine
+	depends = gtk3
+	optdepends = jack
+	conflicts = linvst
+	source = https://github.com/osxmidi/LinVst/releases/download/3.1/LinVst-3.1-Debian-rz.zip
+	md5sums = c679ab480c3954ff9a6d7cae21bb779f
+
+pkgname = linvst-bin
+
