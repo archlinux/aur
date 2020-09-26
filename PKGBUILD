@@ -1,10 +1,10 @@
 # Maintainer: Alexander Phinikarides (alexisph -at- gmail -dot- com)
 
 pkgname=microsoft-r-open
-pkgver=3.5.3
+pkgver=4.0.2
 pkgrel=1
-_majorver=3.5
-_mrandate=2019-04-15
+_majorver=4.0
+_mrandate=2020-07-16
 pkgdesc="Language and environment for statistical computing and graphics, enhanced by Microsoft"
 arch=('x86_64')
 license=('GPL')
@@ -43,15 +43,15 @@ backup=('etc/R/Makeconf'
         'etc/R/javaconf')
 options=('!emptydirs')
 install=microsoft-r-open.install
-source=("https://mran.blob.core.windows.net/install/mro/${pkgver}/rhel/microsoft-r-open-${pkgver}.tar.gz"
+source=("https://mran.blob.core.windows.net/install/mro/${pkgver}/Rhel/microsoft-r-open-${pkgver}.tar.gz"
         'mro.desktop'
         'mro.png'
         'R.conf')
-md5sums=('df8a1c4b5e6d0e3c05897ccb5a034e9f'
+md5sums=('ab6dd10b93d265361ebacc8141cd8373'
          '70e8f9d0b1eebeb1f0b45f4568bc0701'
          '8e0c51650b8a63f110fa7b09e699e9c4'
          '1dfa62c812aed9642f6e4ac34999b9fe')
-sha512sums=('e9459bf6cb5974a5f67c8fff0c96401f579e9acaa5e95773a625161f9f2d0dd790d88e4756fa799c4668b007dd94a26700f66beb19fc44ff1e1a732588bca31c'
+sha512sums=('4ee8448a59b2848d6d2b22fbc8d9922b56bff4b93a2ef12074b9271989c683f1e0e155efda234e0ed58b18c6659835100ebebb224af3dd943661dca64f36c52b'
             '2b0221bd1e0fdd399284333e6f2020bb9ad11395ad39dd2fca688b7ebc68fbbc60de59a757e1898be8bcd9e2926afccc121043f38445e7693f177c3076f92b61'
             '1491b01d3d14b86d26c383e00e2305858a52ddd498158c9f7f6b33026ee01f246408b1676cffea73f7783c8c4cf546285705c43c0286adbd75ad77706918b5fe'
             'aae388c5b6c02d9fb857914032b0cd7d68a9f21e30c39ba11f5a29aaf1d742545482054b57ce18872eabb6605bbb359b2fc1e9be5ce6881443fdbdf6b67fab3b')
@@ -61,6 +61,7 @@ prepare() {
   # extract rpms
   bsdtar -xf "rpm/rhel/${pkgname}-mro-${pkgver}.rpm"
   bsdtar -xf "rpm/rhel/${pkgname}-mkl-${pkgver}.rpm"
+  bsdtar -xf "rpm/rhel/${pkgname}-sparklyr-${pkgver}.rpm"
 }
 
 package() {
@@ -88,13 +89,9 @@ package() {
     mv -f ${i} "${pkgdir}/etc/R"
     ln -s /etc/R/${i} ${i}
   done
-  # fix typos
-  sed -i "s|IMPLEMENTATIN|IMPLEMENTATION|g" "${pkgdir}/etc/R/Makeconf"
-  sed -i "s|3.3|3.4|g" "${pkgdir}/etc/R/Renviron"
 
   # Ensure other applications can access the shared libs
   install -Dm644 "${srcdir}/R.conf" "${pkgdir}/etc/ld.so.conf.d/R.conf"
-  sed -i "s/VERSION/${_majorver}/" "${pkgdir}/etc/ld.so.conf.d/R.conf"
 
   # Install pkgconfig file
   cd "${pkgdir}/usr/lib/"
@@ -120,6 +117,8 @@ package() {
   cp -r "${pkgdir}/usr/lib/R/share/R" "${pkgdir}/usr/share/R/"
   cp -r "${pkgdir}/usr/lib/R/share/Rd" "${pkgdir}/usr/share/R/"
   cp -r "${pkgdir}/usr/lib/R/share/sh" "${pkgdir}/usr/share/R/"
+  cp -r "${pkgdir}/usr/lib/R/share/tcl8.6" "${pkgdir}/usr/share/R/"
+  cp -r "${pkgdir}/usr/lib/R/share/tk8.6" "${pkgdir}/usr/share/R/"
   # LaTeX templates
   cp -r "${pkgdir}/usr/lib/R/share/texmf" "${pkgdir}/usr/share/"
 
