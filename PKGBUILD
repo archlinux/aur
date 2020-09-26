@@ -2,8 +2,8 @@
 
 pkgbase='sublime-music'
 pkgname=('sublime-music')
-_module='sublime-music'
-pkgver='0.11.8'
+_module='sublime_music'
+pkgver='0.11.9'
 pkgrel=1
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+.'
 url='https://sublimemusic.app'
@@ -34,11 +34,11 @@ makedepends=(
 license=('GPL3')
 arch=('any')
 source=(
-    'https://files.pythonhosted.org/packages/source/s/sublime-music/sublime-music-0.11.8.tar.gz'
-    'https://gitlab.com/sumner/sublime-music/-/archive/v0.11.8/sublime-music-v0.11.8.tar.gz'
+    'https://files.pythonhosted.org/packages/source/s/sublime-music/sublime_music-0.11.9.tar.gz'
+    'https://gitlab.com/sumner/sublime-music/-/archive/v0.11.9/sublime-music-v0.11.9.tar.gz'
 )
-md5sums=('ac40493244d1697d2d33ed5bce8dc8e9'
-         '021a8b4ea8ebbaae38c6b0d1af542d37')
+md5sums=('ebf9d389111144783ffbd33a9f267411'
+         '5f02febf14cd3ccdc9ffe080878665c0')
 
 
 build() {
@@ -53,7 +53,7 @@ package() {
     # Move all of the package data resources to ${pkgdir}/usr/share/sublime-music
     data_dir=${pkgdir}/usr/share/sublime-music
     mkdir -p ${data_dir}/adapters/subsonic ${data_dir}/dbus ${data_dir}/ui
-    pushd ${pkgdir}/usr/lib/python3.8/site-packages/sublime
+    pushd ${pkgdir}/usr/lib/python3.8/site-packages/sublime_music
     mv adapters/icons ${data_dir}/adapters
     mv adapters/images ${data_dir}/adapters
     mv adapters/subsonic/icons ${data_dir}/adapters/subsonic
@@ -64,7 +64,7 @@ package() {
 
     popd
 
-    pushd "${_module}-v${pkgver}"
+    pushd "sublime-music-v${pkgver}"
 
     desktop-file-install --dir=${pkgdir}/usr/share/applications sublime-music.desktop
 

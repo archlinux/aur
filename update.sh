@@ -2,6 +2,7 @@
 
 AUR_NAME=sublime-music
 PROJ_NAME=sublime-music
+PKG_NAME=sublime_music
 DESCRIPTION="A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+."
 URL=https://sublimemusic.app
 DEPENDS=(
@@ -29,7 +30,7 @@ if [[ $# == 2 ]]; then
 fi
 
 SRCS=(
-    https://files.pythonhosted.org/packages/source/${PROJ_NAME:0:1}/${PROJ_NAME}/${PROJ_NAME}-$1.tar.gz
+    https://files.pythonhosted.org/packages/source/${PROJ_NAME:0:1}/${PROJ_NAME}/${PKG_NAME}-$1.tar.gz
     https://gitlab.com/sumner/sublime-music/-/archive/v$1/sublime-music-v$1.tar.gz
 )
 
@@ -38,7 +39,7 @@ echo "# Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
 
 pkgbase='${AUR_NAME}'
 pkgname=('${AUR_NAME}')
-_module='${PROJ_NAME}'
+_module='${PKG_NAME}'
 pkgver='$1'
 pkgrel=$pkgrel
 pkgdesc='${DESCRIPTION}'
@@ -88,7 +89,7 @@ package() {
     # Move all of the package data resources to \${pkgdir}/usr/share/sublime-music
     data_dir=\${pkgdir}/usr/share/sublime-music
     mkdir -p \${data_dir}/adapters/subsonic \${data_dir}/dbus \${data_dir}/ui
-    pushd \${pkgdir}/usr/lib/python3.8/site-packages/sublime
+    pushd \${pkgdir}/usr/lib/python3.8/site-packages/sublime_music
     mv adapters/icons \${data_dir}/adapters
     mv adapters/images \${data_dir}/adapters
     mv adapters/subsonic/icons \${data_dir}/adapters/subsonic
@@ -99,7 +100,7 @@ package() {
 
     popd
 
-    pushd \"\${_module}-v\${pkgver}\"
+    pushd \"${AUR_NAME}-v\${pkgver}\"
 
     desktop-file-install --dir=\${pkgdir}/usr/share/applications sublime-music.desktop
 
