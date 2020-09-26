@@ -15,11 +15,8 @@ pkgver=1.20.8
 pkgrel=1
 url="http://xorg.freedesktop.org"
 source=("git+https://gitlab.freedesktop.org/xorg/xserver.git"
-        xserver-autobind-hotplug.patch
         xvfb-run # with updates from FC master
-        xvfb-run.1
-        0001-v2-FS-58644.patch
-        0002-fix-libshadow-2.patch)
+        xvfb-run.1)
 
 makedepends=(
 	'xorgproto'
@@ -58,24 +55,6 @@ pkgver() {
   # cutting off 'xorg.server.' prefix that presents in the git tag
   git describe --long --tags| sed 's/^xorg.server.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
-prepare() {
-  cd xserver
- #cd "${pkgbase}-${pkgver}"
-
-  # patch from Fedora, not yet merged
-  patch -Np1 -i ../xserver-autobind-hotplug.patch
-  
-  # https://bugs.freedesktop.org/show_bug.cgi?id=106588
-  patch -Np1 -i ../0001-v2-FS-58644.patch
-  
-  # Fix libshadow.so: libfb.so => not found - FS#58731
-  # https://bugs.freedesktop.org/show_bug.cgi?id=106656
-  patch -Np1 -i ../0002-fix-libshadow-2.patch
-
-}
-
-#--------------------------------------------| BUILD |------------------------------------------
 
 build() {
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
