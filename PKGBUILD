@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=dmenu-jacob-git
-pkgver=4.9.0.r3.8459c44
+pkgver=5.0.0.r5.46abd56
 pkgrel=1
 pkgdesc="This Jacob McDonnell's build of dmenu see the repo for more details"
 arch=(x86_64 i686)
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver(){
 	cd dmenu
-	printf "4.9.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "5.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
