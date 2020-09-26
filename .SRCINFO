@@ -1,0 +1,12 @@
+pkgbase = dscp
+	pkgdesc = frontend for scp and ssh (dsh like)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/muhas/dscp
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = openssh
+
+pkgname = dscp
+
