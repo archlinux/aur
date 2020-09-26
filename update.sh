@@ -6,6 +6,7 @@ PKG_NAME=sublime_music
 DESCRIPTION="A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+."
 URL=https://sublimemusic.app
 DEPENDS=(
+    python-bleach
     python-dataclasses-json
     python-dateutil
     python-deepdiff
