@@ -6,7 +6,6 @@ pkgdesc="frontend for scp and ssh (dsh like)"
 url="https://github.com/muhas/dscp"
 license=("GPL")
 depends=('openssh')
-makedepends=('git')
 arch=('any')
 source=(https://github.com/muhas/dscp/archive/${pkgver}.tar.gz)
 md5sums=('3fb46daa8e6c2ce15bb85fc798804cff')
