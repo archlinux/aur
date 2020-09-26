@@ -2,7 +2,7 @@ _pkgname='desmume'
 pkgname="$_pkgname-git"
 _pkgver='0.9.11'
 _lastrelease='ccbf85ed42e4350af415d56b1465e83614c85ef8'
-pkgver=0.9.11.r1419.2ac787a85
+pkgver=0.9.11.r1431.8aaabb9b0
 pkgrel=1
 pkgdesc="Nintendo DS emulator"
 arch=('i686' 'x86_64')
@@ -52,10 +52,4 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}/${_pkgname}/build"
   DESTDIR="${pkgdir}" meson install
-
-  #copy man pages
-  cd "${srcdir}/${_pkgname}/${_builddir}"
-  mkdir -p ${pkgdir}/usr/share/man/man1/
-  install -D gtk/doc/desmume.1 ${pkgdir}/usr/share/man/man1/
-  install -D cli/doc/desmume-cli.1 ${pkgdir}/usr/share/man/man1/
 }
