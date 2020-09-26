@@ -1,7 +1,7 @@
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 pkgname=ludo
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ludo is a minimalist frontend for emulators"
 arch=('x86_64' 'armv7h')
 url="https://github.com/libretro/ludo"
@@ -18,12 +18,12 @@ depends=(
 )
 source=(
   "git+https://github.com/libretro/ludo"
-  "ludo.json"
+  "ludo.toml"
   "ludo.desktop"
 )
 sha256sums=(
   'SKIP'
-  '89e860320694d3bec02942bb81af01a8553d5f49c4c50a2cbf377d6252b481a5'
+  'c7ee8acced118b64c6edd54260bc31a976ef551337dcf57d2e45cbfafbe8c84b'
   '139eedd5dd868717b46032cd9773bc63b692237c37e6da4450357a3f56a18042'
 )
 
@@ -42,7 +42,7 @@ package() {
     _ARCH="$arch"
   fi
 
-  install -Dm644 "ludo.json" "$pkgdir/etc/ludo.json"
+  install -Dm644 "ludo.toml" "$pkgdir/etc/ludo.toml"
   install -Dm644 "ludo.desktop" "$pkgdir/usr/share/applications/ludo.desktop"
 
   cd "${srcdir}/ludo"
