@@ -1,48 +1,44 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 
-pkgname='solvespace-git'
-pkgver=r1304.bc3e09e
+_pkgname='solvespace'
+pkgname="${_pkgname}-git"
+pkgver=r1574.0a061b6
 pkgrel=1
-pkgdesc="SOLVESPACE is a parametric 3d CAD program."
-arch=('i686' 'x86_64')
-url='http://solvespace.com/'
+pkgdesc='Parametric 2d/3d CAD'
+arch=('x86_64')
+url='https://solvespace.com'
 license=('GPL3')
-depends=('libpng' 'json-c' 'glew' 'gtkmm3' 'libspnav')
-# aww, moved away from fltk
-makedepends=('git' 'cmake')
-provides=('solvespace')
-conflicts=('solvespace')
-source=('solvespace-git::git+https://github.com/solvespace/solvespace.git')
+depends=('gtkmm3' 'libspnav')
+makedepends=('cmake' 'git')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("git+https://github.com/${_pkgname}/${_pkgname}.git")
 sha256sums=('SKIP')
 
+prepare() {
+  cd "${_pkgname}"
+  git submodule update --init 'extlib/flatbuffers' 'extlib/libdxfrw' 'extlib/mimalloc' 'extlib/q3d'
+}
+
 pkgver() {
-  cd "$pkgname"
-  #git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "$pkgname"
-  git submodule update --init extlib/libdxfrw
-  git submodule update --init extlib/q3d
-  git submodule update --init extlib/flatbuffers
-  # uncomment if test fails
-  #sed -i 's|request/ttf_text/test.cpp||' request/ttf_text/test.cpp
-}
-
-# -std=c++11 or -std=gnu++11
-
 build() {
-  cd "$pkgname"
-  mkdir -p build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_CXX_FLAGS="-std=c++11" ../
-  sed -i 's/lib64/lib/' src/cmake_install.cmake
-  make
+  export CFLAGS+=" ${CPPFLAGS}"
+  export CXXFLAGS+=" ${CPPFLAGS}"
+  cmake -B build -S "${_pkgname}" \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -Wno-dev
+  make -C build
 }
 
 package() {
-  cd "$pkgname/build"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" PREFIX="/usr" -C "build" install
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_pkgname}/README.md"
 }
 
+# vim: ts=2 sw=2 et:
