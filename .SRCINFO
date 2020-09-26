@@ -1,9 +1,11 @@
 pkgbase = pakku-git
 	pkgdesc = Pacman wrapper with AUR support with latest changes from github repo
-	pkgver = 0.14.r6.gb2321b0
+	pkgver = 0.14.r19.gf2a93be
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/zqqw/pakku
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = nim
 	makedepends = git
