@@ -1,17 +1,17 @@
 # Maintainer: kraxarn <me@kraxarn.com>
 
 pkgname=kirigami-gallery-git
-pkgver=r144.40f6034
+pkgver=r171.fda9443
 pkgrel=1
 pkgdesc='Gallery application built using Kirigami'
 arch=('i686' 'x86_64')
-url='https://cgit.kde.org/kirigami-gallery.git'
+url='https://github.com/KDE/kirigami-gallery'
 license=(LGPL)
 depends=(kirigami2 qt5-svg)
 makedepends=(extra-cmake-modules qt5-tools git)
 conflicts=(kirigami-gallery)
 provides=(kirigami-gallery)
-source=('git://anongit.kde.org/kirigami-gallery.git')
+source=('git://github.com/KDE/kirigami-gallery.git')
 groups=(kde-applications kdesdk)
 md5sums=('SKIP')
 

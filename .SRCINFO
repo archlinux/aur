@@ -2,7 +2,7 @@ pkgbase = kirigami-gallery-git
 	pkgdesc = Gallery application built using Kirigami
 	pkgver = r144.40f6034
 	pkgrel = 1
-	url = https://cgit.kde.org/kirigami-gallery.git
+	url = https://github.com/KDE/kirigami-gallery
 	arch = i686
 	arch = x86_64
 	groups = kde-applications
@@ -15,7 +15,7 @@ pkgbase = kirigami-gallery-git
 	depends = qt5-svg
 	provides = kirigami-gallery
 	conflicts = kirigami-gallery
-	source = git://anongit.kde.org/kirigami-gallery.git
+	source = git://github.com/KDE/kirigami-gallery.git
 	md5sums = SKIP
 
 pkgname = kirigami-gallery-git
