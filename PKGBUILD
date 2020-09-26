@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=fopnu
-pkgver=1.48
+pkgver=1.51
 pkgrel=1
 pkgdesc='A new and powerful P2P File Sharing System'
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('gtk2' 'dbus-glib')
 makedepends=('tar')
 source=("${pkgname}-${pkgver}.deb::https://download2.fopnu.com/download/fopnu_${pkgver}-1_amd64.deb"
         'LICENSE')
-sha256sums=('966a29b5c36146dd902153e25e914fc2b0eeb96a9fe62ce664e96b1778f58667'
-            'SKIP')
+sha256sums=('345af359ab2066371272c520137e316cf46ea1a302dfd35009899fc64897f347'
+            '0bc342f6415aa54c3d313af6a45152cb005024c7167d4fd0c71bfa004a2f8e4f')
 
 package() {
   tar xvf data.tar.xz -C "${pkgdir}"
