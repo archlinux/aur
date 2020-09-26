@@ -6,9 +6,9 @@
 
 _pkgname=instantclient-jdbc
 pkgname=oracle-${_pkgname}
-pkgver=19.6.0.0.0
-_urlver=19600
-_unzippath=instantclient_19_6
+pkgver=19.8.0.0.0
+_urlver=19800
+_unzippath=instantclient_19_8
 pkgrel=1
 pkgdesc="Additional support for XA, Internationalization, and RowSet operations under JDBC"
 arch=('x86_64')
@@ -25,9 +25,9 @@ DLAGENTS+=('manual::/usr/bin/false');
 source=(LICENSE
         "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}dbru.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         'babe1819533862dd474b26109d26230f')
+         'b900e0c1396c7318cff5737443b57450')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            'ecf4183a054ca7c3c70012fb7b2c68670ec2383e2218b5e1a87c8e9ca2fbf85d')
+            'ae69160fda142e68cd1c0d54c3982196ae3dd53c81eb20bd5b38946acef22a75')
 
 plain "If you run into any problems downloading the files, get the .zip version from"
 plain "Oracle and place them in the PKGBUILD directory then re-run makepkg:"
@@ -47,8 +47,8 @@ plain "[1]: http://www.oracle.com/technetwork/licenses/instant-client-lic-152016
 plain ""
 
 package() {
-	local basedir="$srcdir/${_unzippath}/"
+	local basedir="$srcdir/${_unzippath}"
 	install -d "$pkgdir/usr/lib"
-	install -m 755 -t "$pkgdir/usr/lib" "$basedir"*.so
-	install -m 644 -t "$pkgdir/usr/lib" "$basedir"*.jar
+	install -m 755 -t "$pkgdir/usr/lib" "$basedir/"*.so
+	install -m 644 -t "$pkgdir/usr/lib" "$basedir/"*.jar
 }
