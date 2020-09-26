@@ -2,7 +2,7 @@
 # Contributor: Soukyuu <chrno-sphered at hotmail dot com>
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 pkgname=deadbeef-git
-pkgver=r9665.b4e867ec3
+pkgver=r9681.35714bfc7
 pkgrel=1
 pkgdesc="A GTK+ audio player for GNU/Linux (devel branch)"
 url="https://deadbeef.sourceforge.io/"
@@ -51,8 +51,8 @@ md5sums=('SKIP')
 
 prepare() {
   cd "$srcdir/deadbeef"
-  # skip osx/deps submodule
-  git -c submodule."osx/deps".update=none submodule update --init --recursive
+  # skip osx/deps and external/apbuild submodules
+  git -c submodule."osx/deps".update=none -c submodule."external/apbuild".update=none submodule update --init --recursive
 }
 
 build() {

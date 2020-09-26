@@ -1,6 +1,6 @@
 pkgbase = deadbeef-git
 	pkgdesc = A GTK+ audio player for GNU/Linux (devel branch)
-	pkgver = r9665.b4e867ec3
+	pkgver = r9681.35714bfc7
 	pkgrel = 1
 	url = https://deadbeef.sourceforge.io/
 	arch = i686
