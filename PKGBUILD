@@ -2,7 +2,7 @@
 
 pkgname=zrepl
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='One-stop ZFS backup & replication solution'
 arch=('x86_64')
 url='https://zrepl.github.io/'
@@ -19,13 +19,14 @@ build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
     GO_LDFLAGS="-X github.com/zrepl/zrepl/version.zreplVersion=${zrepl_version}"
 
     cd "${pkgname}-${pkgver}"
     go build \
-        -ldflags "${GO_LDFLAGS} -extldflags ${LDFLAGS}" \
+        -ldflags "${GO_LDFLAGS} -linkmode=external -extldflags ${LDFLAGS}" \
         -o "${pkgname}" .
 }
 
