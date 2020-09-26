@@ -3,7 +3,7 @@
 # Contributor: Liganic <liganic-aur@gmx.net>
 _pkgname='cpplint'
 pkgname="python-${_pkgname}"
-pkgver='1.5.2'
+pkgver='1.5.4'
 pkgrel=1
 pkgdesc="Command-line tool to check C/C++ files for style issues following Google's C++ style guide."
 arch=('any')
@@ -15,7 +15,7 @@ replaces=('cpplint-py3')
 conflicts=('cpplint')
 checkdepends=('python-pytest' 'python-pytest-cov')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('5ace9cb77ddfa61bb0135b21d8a3fe62970266588ba41b8a644cd271d3c0676e')
+sha256sums=('e254b5620fb039689b8f5e64b07384ee53beb695304c5c01195133be662b4457')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
