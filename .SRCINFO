@@ -1,0 +1,23 @@
+pkgbase = fuse-nx-git
+	pkgdesc = Mount Nintendo Switch archives through FUSE
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/averne/Fuse-Nx
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = meson
+	makedepends = libgcrypt
+	provides = fuse-nx
+	source = git+https://github.com/averne/Fuse-Nx.git
+	md5sums = SKIP
+
+pkgname = fuse-nx-git
+
