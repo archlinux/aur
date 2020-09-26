@@ -1,4 +1,5 @@
-# $Id$
+# Maintainer: Ryan Greenblatt <ryan_greenblatt at brown dot edu>
+#
 # Contributor: Paul Nicholson <brenix@gmail.com>
 
 pkgname=openpyn-nordvpn
