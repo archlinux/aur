@@ -1,6 +1,6 @@
 pkgbase = xtables-addons-dkms
 	pkgdesc = DKMS for additional extensions for Xtables packet filter present in the Linux kernel
-	pkgver = 3.10
+	pkgver = 3.11
 	pkgrel = 1
 	url = https://inai.de/projects/xtables-addons/
 	arch = i686
@@ -17,9 +17,9 @@ pkgbase = xtables-addons-dkms
 	replaces = xtables-addons
 	replaces = xtables-addons-git
 	replaces = xtables-addons-multikernel
-	source = https://inai.de/files/xtables-addons/xtables-addons-3.10.tar.xz
+	source = https://inai.de/files/xtables-addons/xtables-addons-3.11.tar.xz
 	source = dkms.conf
-	sha256sums = b783ecbab46ff3534a0aaff2baacc79553f685697b1f034ca61698443b8210dc
+	sha256sums = c1b3c796f37bf282fc11fe1894f8d2fe5f29f8e960415d2af9103eda0f56a548
 	sha256sums = 87546f6d100a33271086d3bc990a2a1e4de83e25fb4a048774c520f4c36729e6
 
 pkgname = xtables-addons-dkms
