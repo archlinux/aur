@@ -2,7 +2,7 @@
 # Contributor: Oleg Antonyan <oleg.b.antonyan@gmail.com>
 
 pkgname=mpz
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc='Music player for the large local collections'
 arch=('x86_64')
@@ -10,8 +10,8 @@ url="https://github.com/olegantonyan/mpz"
 license=('GPL3')
 depends=('qt5-multimedia' 'qt5-x11extras' 'hicolor-icon-theme')
 provides=('mpz')
-source=(https://github.com/olegantonyan/mpz/archive/0.0.12.tar.gz)
-sha256sums=('fa257d252ce05e46af9c7fa8f536e204cdf1e2d5d2641cc3a7a13c9a5b9898ac')
+source=(https://github.com/olegantonyan/mpz/archive/0.0.13.tar.gz)
+sha256sums=('c97eda33741a906aba4bd66613e45b79a044d7dc282ea1e72f22feec3e1f03b8')
 
 build() {
     cd $pkgname-$pkgver
