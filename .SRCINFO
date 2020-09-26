@@ -10,7 +10,6 @@ pkgbase = ryzom-git
 	makedepends = git
 	makedepends = cpptest
 	makedepends = cmake
-	makedepends = bison
 	depends = curl
 	depends = freetype2
 	depends = libx11
