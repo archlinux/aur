@@ -1,11 +1,13 @@
+# Maintainer: Ning Sun <n@sunng.info>
+
 pkgname=zipkin
 pkgver=2.21.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Opensource Distributed Tracing System'
 arch=('any')
 url='http://zipkin.io'
 license=('APACHE')
-depends=('java-runtime>=8')
+depends=('java-runtime>=8' 'bash')
 install='zipkin.install'
 source=(https://search.maven.org/remotecontent?filepath=io/zipkin/zipkin-server/${pkgver}/zipkin-server-${pkgver}-exec.jar
         'zipkin.sh'
@@ -17,7 +19,6 @@ sha1sums=('f9b9bdf62f3bc20b0b07616dd0cd7723f5391218'
           'SKIP')
 
 package() {
-  mkdir -p ${pkgdir}/{etc/zipkin}
   mkdir -p ${pkgdir}/{usr/bin,usr/share/java/zipkin}
 
   cp zipkin-server-${pkgver}-exec.jar ${pkgdir}/usr/share/java/zipkin/zipkin.jar

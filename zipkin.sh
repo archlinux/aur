@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 ZIPKIN_ENV=/etc/zipkin/zipkin-env.sh
 if [[ -e $ZIPKIN_ENV ]]
