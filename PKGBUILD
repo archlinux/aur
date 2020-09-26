@@ -3,14 +3,14 @@
 
 pkgname=ali-bin
 pkgdesc="Generate HTTP load and plot the results in real-time"
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nakabonne/ali"
 license=('MIT')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 source=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('b6cbf8120f72c6a9648d15e23c3ad04b8d113d468d766ad4941d054c983e54f1')
+sha256sums=('8a39661a03163dbe319908913249c90012b2bb68f8c30c7be34ca6d0b55ed556')
 
 package() {
   install -Dm 755 ${pkgname%-bin} -t "$pkgdir/usr/bin"
