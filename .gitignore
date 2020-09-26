@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!vulkan-caps-viewer.desktop
+!android_icon_256.png

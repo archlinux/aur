@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Vulkan Caps Viewer
+Comment=Vulkan Hardware Capability Viewer
+Exec=vulkanCapsViewer
+Icon=vulkanCapsViewer
+Terminal=false
+StartupNotify=false
+Categories=Application;Graphics;Development;
