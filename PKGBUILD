@@ -3,7 +3,7 @@
 pkgbase='sublime-music-git'
 pkgname=('sublime-music-git')
 _module='sublime-music'
-pkgver=v0.11.6.r5.g0a5faa2
+pkgver=v0.11.9.r0.gd454b90
 pkgrel=1
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+.'
 url='https://sublimemusic.app'
@@ -11,6 +11,7 @@ provides=('sublime-music')
 conflicts=('sublime-music')
 depends=(
     'python'
+    'python-bleach'
     'python-dataclasses-json'
     'python-dateutil'
     'python-deepdiff'
