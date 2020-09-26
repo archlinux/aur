@@ -1,16 +1,17 @@
 pkgbase = freshfetch-git
 	pkgdesc = A fresh take on Neofetch
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 3
 	url = https://github.com/K4rakara/freshfetch
 	arch = any
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	depends = libcpuid
-	depends = libxcb
 	depends = luajit
+	optdepends = xorg-xrandr
+	optdepends = xorg-xwininfo
 	provides = freshfetch
+	conflicts = freshfetch
 	source = git://github.com/K4rakara/freshfetch.git
 	md5sums = SKIP
 
