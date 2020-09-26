@@ -15,8 +15,10 @@ md5sums=('a7fd6a3c6eafab840ba6902da52370ff')
 
 package() {
 
+	# Shared library
+	install -Dm755 "$srcdir/LinVst3-$pkgver-Debian-rz/embedded/linvst3.so" "$pkgdir/usr/share/LinVst/linvst3.so"
+
 	# Embedded
-	install -Dm755 "$srcdir/LinVst3-$pkgver-Debian-rz/embedded/linvst3.so" "$pkgdir/usr/bin/linvst3.so"
 	install -Dm755 "$srcdir/LinVst3-$pkgver-Debian-rz/embedded/lin-vst3-servertrack.exe" "$pkgdir/usr/bin/lin-vst3-servertrack.exe"
 	install -Dm755 "$srcdir/LinVst3-$pkgver-Debian-rz/embedded/lin-vst3-servertrack.exe.so" "$pkgdir/usr/bin/lin-vst3-servertrack.exe.so"
 
