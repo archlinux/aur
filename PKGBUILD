@@ -100,7 +100,7 @@ package() {
 	for dir in include/*/; do
 		install -Dm644 -t "$pkgdir/usr/include/v8/${dir##include/}" "$dir"/*.h
 	done
-	ln -s "$pkgdir/usr/include/v8/" "$pkgdir/usr/include/v8/include"
+	ln -rs "$pkgdir/usr/include/v8/" "$pkgdir/usr/include/v8/include"
 
 	# Install pkg-config
 	install -Dm644 -t "$pkgdir/usr/lib/pkgconfig/" "$srcdir/v8.pc"
