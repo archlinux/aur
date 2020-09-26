@@ -80,7 +80,9 @@ build() {
     -D suid_wrapper=false \
     -D xkb_dir=/usr/share/X11/xkb \
     -D xkb_output_dir=/var/lib/xkb \
-    -D systemd_logind=false 
+    -D systemd_logind=false \
+    -D b_lto=false \
+    -D b_lundef=false
      
 
   # Print config
