@@ -14,7 +14,7 @@ pkgbase = vulkan-caps-viewer-bin
 	source = android_icon_256.png
 	sha1sums = 7ccdb4b4487b43bb428c32994092c00ca14f594a
 	sha1sums = 96c802c82c45626f3b6bdbb846d0f1f7e67ab28e
-	source_x86_64 = http://vulkan.gpuinfo.org/downloads/vulkancapsviewer_2_21_linux64.AppImage
+	source_x86_64 = https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_2_21_linux64.AppImage
 	sha1sums_x86_64 = 6993a57dbc099dc529e36fd1592731bf8d922862
 
 pkgname = vulkan-caps-viewer-bin
