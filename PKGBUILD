@@ -29,7 +29,6 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	#mkdir -p $pkgdir/usr/lib/pkgconfig $pkgdir/usr/include
 	make DESTDIR="$pkgdir" PREFIX="/usr" install
 	install --target-directory="${pkgdir}/usr/share/licenses/${pkgname}" -D "LICENSE"
 }
