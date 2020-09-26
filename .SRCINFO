@@ -6,8 +6,8 @@ pkgbase = minetest-mineclone2
 	arch = any
 	license = GPL3
 	depends = minetest-common
-	source = mineclone2-0.67.2.tar.gz::https://git.minetest.land/Wuzzy/MineClone2/archive/0.67.2.tar.gz
-	sha256sums = 2434e75dfc9f2da5e10b16491af4dc0de1562394ccf30bce347b16a23fbf2587
+	source = mineclone2-0.67.2.zip::https://content.minetest.net/packages/Wuzzy/mineclone2/releases/4921/download/
+	sha256sums = 39c2482c3d3937a787cdb7d0f6909049a5af2027d2d22f9b50501561daab30b3
 
 pkgname = minetest-mineclone2
 
