@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 # Contributor: Steven Hiscocks <steven[at]hiscocks[dot]me[dot]uk>
 pkgname=milter-greylist
-pkgver=4.6.3
+pkgver=4.6.4
 pkgrel=1
 pkgdesc="A stand-alone milter written in C that implements the greylist filtering method."
 url="http://hcpnet.free.fr/milter-greylist/"
@@ -12,17 +12,14 @@ makedepends=('libmilter')
 backup=('etc/mail/greylist.conf')
 source=("http://ftp.espci.fr/pub/${pkgname}/${pkgname}-${pkgver}.tgz"
         'milter-greylist-4.5.11-warning.patch'
-        'milter-greylist-4.6.3-geoip2.patch'
         "${pkgname}.service")
-md5sums=('7fdd068c456001454a82e0b9c7171927'
+md5sums=('def021c0ff43e4c3f1ae2f8bb997ceac'
          '0901deb488277f8fed50158cffb726a2'
-         '186b62e3cf1d27a693aebf2c4af0b148'
          '51665e97390bf7df11bb509bfb57544b')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -p0 < ../milter-greylist-4.5.11-warning.patch
-  patch -p0 < ../milter-greylist-4.6.3-geoip2.patch
 }
 
 build() {
