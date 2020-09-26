@@ -6,8 +6,8 @@
 pkgbase=qubes-gui-agent-linux
 pkgname=(qubes-vm-gui qubes-vm-pulseaudio)
 _gitname=${pkgname%-git*}
-pkgver=4.0.27
-pkgrel=4
+pkgver=4.0.30
+pkgrel=1
 pkgdesc="The Qubes GUI Agent for AppVMs"
 arch=("x86_64")
 url="https://github.com/QubesOS/qubes-gui-agent-linux"
@@ -52,9 +52,11 @@ package_qubes-vm-gui() {
            'zenity'
            'qubes-libvchan-xen'
            'python-xcffib'
-           'xorg-server>=1.20'
-           'xorg-server<=1.21'
-           'qubes-vm-core>=3.0.14'
+
+           # Xorg dependencies are on specific ABI versions: https://www.x.org/wiki/XorgModuleABIVersions/
+           # These can also be verified with pacman -Qi xorg-server (Provides)
+           # There is however a discrepency if verifying via pkg-config --variable abi_videodrv xorg-server
+           'X-ABI-VIDEODRV_VERSION=24.0' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0'
   )
   install=PKGBUILD.install
 
@@ -75,7 +77,6 @@ package_qubes-vm-pulseaudio() {
   depends=('alsa-lib'
            'alsa-utils'
            'pulseaudio-alsa'
-           'pulseaudio>=13.0'
            'pulseaudio<14.0'
   )
   install=PKGBUILD-pulseaudio.install
