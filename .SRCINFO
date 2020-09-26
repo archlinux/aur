@@ -1,6 +1,6 @@
 pkgbase = muwire
 	pkgdesc = An I2P file sharing program
-	pkgver = 0.7.2
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://muwire.com/
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = muwire
 	depends = sh
 	depends = java-runtime>=9
 	depends = hicolor-icon-theme
-	source = https://github.com/zlatinb/muwire/archive/muwire-0.7.2.tar.gz
+	source = https://github.com/zlatinb/muwire/archive/muwire-0.7.4.tar.gz
 	source = muwire.desktop
 	source = muwire.sh
-	sha256sums = f2d79bd82515d0b97e3ee4cbbdf4c2880579bab4cb1349dddaf077b08401b25f
+	sha256sums = 0f14685dc064eee5433b0e96e63db22232f9170929ee73f0854562ea8bb090c7
 	sha256sums = 7d61c69613029bd2b2e82f227a230104b880635fd8d44a649b2192b03c3cc509
 	sha256sums = e47811d85a211d0c2272fbcd7bbbb03a49d3176a1aab81e95580d377e825aa2d
 
