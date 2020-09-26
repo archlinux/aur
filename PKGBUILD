@@ -7,14 +7,14 @@ pkgrel=1
 pkgdesc='Add words from Kindle to Anki'
 url='https://github.com/psamim/kindle2anki'
 license=('GPL3')
-source=('git+https://github.com/psamim/kindle2anki.git'
-        'git+https://github.com/dae/anki.git'
+source=('https://github.com/psamim/kindle2anki.git'
         'kindle2anki.sh')
 sha256sums=('SKIP'
-            'SKIP'
             '4fd11d9c95ff8f8c044a98248bc114cdcb7ee65ba10d2881a036fc419a677d68')
 arch=('any')
-depends=('python'
+depends=('anki'
+         'python'
+         'python-pyperclip'
          'python-colorama'
          'python-pyaudio'
          'python-retrying')
@@ -32,9 +32,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  git submodule init
-  git config submodule.anki.url $srcdir/anki
-  git submodule update
 }
 
 package() {
