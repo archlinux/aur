@@ -1,13 +1,13 @@
 # Maintainer: Sander Vrijders <sander.vrijders@ugent.be>
 pkgname=ouroboros-git
-pkgver=0.15.2.r0.gd6bd976
+pkgver=0.17.5.r0.gd68bb3b
 pkgrel=1
 pkgdesc="A completely decentralized packet network"
 arch=('x86_64' 'i686' 'arm')
 license=('GPL2' 'LGPL2.1' 'BSD')
 depends=('protobuf-c')
 makedepends=('git' 'fakeroot' 'cmake')
-optdepends=('libgcrypt' 'openssl' 'fuse' 'dnsutils' 'swig')
+optdepends=('libgcrypt' 'openssl' 'fuse' 'dnsutils')
 source=("git+https://ouroboros.rocks/git/ouroboros")
 url="https://ouroboros.rocks"
 noextract=()
@@ -23,7 +23,6 @@ build() {
     cd ${srcdir}/${_gitname}
     cmake -DCMAKE_INSTALL_LIBDIR='/usr/lib' -DCMAKE_INSTALL_SBINDIR='/usr/bin' . || exit 1
     make -j${nproc} || exit 1
-    msg "Build completed"
 }
 
 check() {

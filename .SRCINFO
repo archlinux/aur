@@ -1,6 +1,6 @@
 pkgbase = ouroboros-git
 	pkgdesc = A completely decentralized packet network
-	pkgver = 0.15.2.r0.gd6bd976
+	pkgver = 0.17.5.r0.gd68bb3b
 	pkgrel = 1
 	url = https://ouroboros.rocks
 	arch = x86_64
@@ -17,9 +17,7 @@ pkgbase = ouroboros-git
 	optdepends = openssl
 	optdepends = fuse
 	optdepends = dnsutils
-	optdepends = swig
 	source = git+https://ouroboros.rocks/git/ouroboros
 	md5sums = SKIP
 
 pkgname = ouroboros-git
-
