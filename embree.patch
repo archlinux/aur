@@ -1,0 +1,57 @@
+diff --git a/build_files/cmake/Modules/FindEmbree.cmake b/build_files/cmake/Modules/FindEmbree.cmake
+index 90cf23d3e13..f625efaa542 100644
+--- a/build_files/cmake/Modules/FindEmbree.cmake
++++ b/build_files/cmake/Modules/FindEmbree.cmake
+@@ -7,6 +7,9 @@
+ #  EMBREE_ROOT_DIR, The base directory to search for Embree.
+ #                        This can also be an environment variable.
+ #  EMBREEFOUND, If false, do not try to use Embree.
++#
++# also defined, but not for general use are
++#  EMBREE_LIBRARY, where to find the Embree library.
+ 
+ #=============================================================================
+ # Copyright 2018 Blender Foundation.
+@@ -67,14 +70,23 @@ FOREACH(COMPONENT ${_embree_FIND_COMPONENTS})
+ ENDFOREACH()
+ 
+ 
++FIND_LIBRARY(EMBREE_LIBRARY
++  NAMES
++    embree3
++  HINTS
++    ${_embree_SEARCH_DIRS}
++  PATH_SUFFIXES
++    lib64 lib
++)
++
+ # handle the QUIETLY and REQUIRED arguments and set EMBREE_FOUND to TRUE if
+ # all listed variables are TRUE
+ INCLUDE(FindPackageHandleStandardArgs)
+ FIND_PACKAGE_HANDLE_STANDARD_ARGS(Embree DEFAULT_MSG
+-    _embree_LIBRARIES EMBREE_INCLUDE_DIR)
++    EMBREE_LIBRARY EMBREE_INCLUDE_DIR)
+ 
+ IF(EMBREE_FOUND)
+-  SET(EMBREE_LIBRARIES ${_embree_LIBRARIES})
++  SET(EMBREE_LIBRARIES ${EMBREE_LIBRARY})
+   SET(EMBREE_INCLUDE_DIRS ${EMBREE_INCLUDE_DIR})
+ ENDIF(EMBREE_FOUND)
+ 
+diff --git a/intern/cycles/blender/CMakeLists.txt b/intern/cycles/blender/CMakeLists.txt
+index 2316800e21e..591841152e2 100644
+--- a/intern/cycles/blender/CMakeLists.txt
++++ b/intern/cycles/blender/CMakeLists.txt
+@@ -67,6 +67,12 @@ if(WITH_CYCLES_LOGGING)
+   )
+ endif()
+ 
++if(WITH_CYCLES_EMBREE)
++  list(APPEND LIB
++    ${EMBREE_LIBRARIES}
++  )
++endif()
++
+ set(ADDON_FILES
+   addon/__init__.py
+   addon/engine.py
