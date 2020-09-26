@@ -2,7 +2,7 @@
 
 pkgname=wezterm-nightly-bin
 pkgver=20200517.122836.92c201c6.105.g5d508350
-pkgrel=3
+pkgrel=4
 pkgdesc='Bleeding edge builds of a GPU-accelerated cross-platform terminal emulator and multiplexer implemented in Rust'
 arch=('i686' 'x86_64')
 url='https://wezfurlong.org/wezterm'
@@ -51,6 +51,4 @@ package() {
                  "${pkgdir}/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png"
   install -Dm644 squashfs-root/usr/share/applications/org.wezfurlong.wezterm.desktop \
                  "${pkgdir}/usr/share/applications/org.wezfurlong.wezterm.desktop"
-  install -dm755 ${pkgdir}/usr/share/wezterm/colors
-  install -Dm644 -t ${pkgdir}/usr/share/wezterm/colors/ squashfs-root/usr/share/wezterm/colors/*
 }
