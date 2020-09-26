@@ -6,10 +6,15 @@ pkgdesc="Mount Nintendo Switch archives through FUSE"
 arch=("i686" "pentium4" "x86_64" "arm" "armv7h" "armv6h" "aarch64")
 url="https://github.com/averne/Fuse-Nx"
 license=("GPL3")
-makedepends=("git" "gcc" "meson" "libgcrypt")
+makedepends=("git" "meson" "libgcrypt")
 provides=("fuse-nx")
 source=("git+https://github.com/averne/Fuse-Nx.git")
 md5sums=("SKIP")
+
+pkgver() {
+    cd $srcdir/Fuse-Nx
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
     cd $srcdir/Fuse-Nx

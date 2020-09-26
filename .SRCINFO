@@ -12,7 +12,6 @@ pkgbase = fuse-nx-git
 	arch = aarch64
 	license = GPL3
 	makedepends = git
-	makedepends = gcc
 	makedepends = meson
 	makedepends = libgcrypt
 	provides = fuse-nx
