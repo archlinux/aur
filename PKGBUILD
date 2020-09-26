@@ -1,11 +1,11 @@
 # Maintainer: Artjom Löbsack <me@ceigh.com>
 pkgname=git-hours
-pkgver=1.1.5
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 epoch=
-pkgdesc="Count the time spent on code via git"
+pkgdesc='Count the time spent on code via git'
 arch=('x86_64')
-url="https://github.com/ceigh/git-hours"
+url='https://github.com/ceigh/git-hours'
 license=('GPL3')
 groups=()
 depends=('libgit2')
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/ceigh/$pkgname/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=("6a44f989e69a881aceaf6a1ad73e6750")
+md5sums=('ca84bf4c1612bc32655139a2f7423688')
 validpgpkeys=()
 
 build() {
