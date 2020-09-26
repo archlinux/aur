@@ -230,8 +230,4 @@ license=('custom')
 
 sha512sums=('SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP' 
-	    'SKIP')
+            'SKIP')

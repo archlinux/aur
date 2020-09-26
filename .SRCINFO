@@ -41,10 +41,6 @@ pkgbase = xorg-server-rootless-nosystemd-minimal-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
 
 pkgname = xorg-server-rootless-nosystemd-minimal-git
 	pkgdesc = Xorg X server
