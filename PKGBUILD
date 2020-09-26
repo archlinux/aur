@@ -2,7 +2,7 @@
 
 pkgname=python-pylint-venv
 _internal_pkgname=pylint-venv
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Make pylint respect virtualenvs.'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('python-pylint: Kind of useless without it'
 
 source=("https://github.com/jgosmann/${_internal_pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/jgosmann/${_internal_pkgname}/raw/v${pkgver}/LICENSE.txt")
-sha256sums=('d296b30963d050d042f751925a8f2ca1eb5132ea4c6eb9cba20c3d49829d1c2d'
+sha256sums=('03dc824be74956b3162ad5e723d885dcd7ef8d32d97daedf339093a032705dae'
             'b6b087cae10c9386509b0590c190a5ef86075eca6626ecf6afc5254fc5fcc550')
 
 package() {
