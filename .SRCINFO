@@ -8,6 +8,7 @@ pkgbase = iboview
 	depends = qt5-base
 	depends = openblas
 	depends = boost
+	depends = intel-mkl
 	provides = iboview
 	options = !strip
 	options = !emptydirs
