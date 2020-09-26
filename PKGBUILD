@@ -2,7 +2,7 @@
 pkgname=arch-sign-modules
 _pkgname=Arch-SKM
 pkgver=0.2.51
-pkgrel=2
+pkgrel=3
 pkgdesc="Signed (In Tree & Out of Tree) Kernel Modules for linux-lts linux-hardened linux-zen"
 arch=(x86_64)
 url="https://github.com/itoffshore/Arch-SKM"
