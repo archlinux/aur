@@ -1,6 +1,6 @@
 pkgbase = rocsolver
 	pkgdesc = Subset of LAPACK functionality on the ROCm platform
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://rocsolver.readthedocs.io/en/latest/userguidedocu.html
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = rocsolver
 	makedepends = rocminfo
 	depends = hip-rocclr
 	depends = rocblas
-	source = rocsolver-3.7.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocSOLVER/archive/rocm-3.7.0.tar.gz
-	sha256sums = 8c1c630595952806e658c539fd0f3056bd45bafc22b57f0dd10141abefbe4595
+	source = rocsolver-3.8.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocSOLVER/archive/rocm-3.8.0.tar.gz
+	sha256sums = 72aa74284944d8b454088e8c8d74cf05464a4e2e46d33a57017ddd009113025e
 
 pkgname = rocsolver
 
