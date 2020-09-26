@@ -7,7 +7,7 @@ pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
-pkgver=v0.3.9.r0.a52e056
+pkgver=v0.4.0.r0.5740584
 pkgrel=1
 
 pkgdesc='Web path scanner/fuzzer, written in Python'
@@ -24,6 +24,7 @@ makedepends=('git')
 changelog=CHANGELOG.md
 source=("git+$url.git")
 sha256sums=('SKIP')
+
 
 prepare() {
   cd "${pkgname%-git}"
