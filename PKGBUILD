@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://www.libsdl.org"
 license=('MIT')
 depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'libxxf86vm')
-makedepends=('alsa-lib' 'mesa' 'libxrandr' 'libxinerama' 'libxkbcommon' 'libxss' 'cmake' 'libxxf86vm' 'mercurial' 'ninja' 'hidapi')
+makedepends=('alsa-lib' 'libxrandr' 'libxinerama' 'libxkbcommon' 'libxss' 'cmake' 'libxxf86vm' 'mercurial' 'ninja' 'hidapi')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver'
@@ -20,7 +20,8 @@ optdepends=('alsa-lib: ALSA audio driver'
             'tslib: Touchscreen support'
             'wayland: wayland support'
             'wayland-protocols: wayland support'
-            'hidapi: hidapi support')
+            'hidapi: hidapi support'
+            'mesa: open source graphics support')
 source=("hg+http://hg.libsdl.org/SDL#branch=default")
 provides=(sdl2)
 conflicts=(sdl2 sdl2-hg)
@@ -41,8 +42,6 @@ prepare() {
   cd SDL
 
   sed -i "s/LIBUSB libusb/LIBUSB libusb-1.0/g" cmake/sdlchecks.cmake
-
-  patch -Np1 -i "${srcdir}"/fix-hidapi.patch
 
   rm -rf build
   mkdir build
