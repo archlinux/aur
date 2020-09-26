@@ -35,13 +35,16 @@ prepare() {
     templates_url=https://downloads.tuxfamily.org/godotengine/${godot_version_number}
     curl -O ${templates_url}/SHA512-SUMS.txt
     grep ${templates_file} SHA512-SUMS.txt > ${templates_file}.sha512sum
+
     if [ ! -f ${templates_file} ]
     then
       curl -O ${templates_url}/${templates_file}
     fi
+
     if ! sha512sum -c ${templates_file}.sha512sum ; then
       curl -O ${templates_url}/${templates_file}
     fi
+
     mkdir -p ${templates_home_dir}
     unzip ${templates_file} 'templates/*' -d ${templates_home_dir}
     cd ${templates_home_dir}
@@ -63,25 +66,24 @@ build() {
 }
     
 package() {
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/lib/${pkgname}"
-  install -d "${pkgdir}/usr/share/metainfo"
-  install -d "${pkgdir}/usr/share/applications"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-
   install -Dm755 "${srcdir}/${pkgname}" \
                  "${pkgdir}/usr/bin/${pkgname}"
+
   install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/build/${pkgname}" \
                  "${pkgdir}/usr/lib/${pkgname}/${pkgname}"
+
   install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/build/${pkgname}.pck" \
                  "${pkgdir}/usr/lib/${pkgname}/${pkgname}.pck"
+
   install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/Misc/Linux/com.orama_interactive.${_pkgname}.desktop" \
                  "${pkgdir}/usr/share/applications/com.orama_interactive.${pkgname}.desktop"
+
   install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/Misc/Linux/com.orama_interactive.${_pkgname}.appdata.xml" \
                  "${pkgdir}/usr/share/metainfo/com.orama_interactive.${pkgname}.appdata.xml"
+
   install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/assets/graphics/icons/icon.png" \
                  "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+
   install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" \
                  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
