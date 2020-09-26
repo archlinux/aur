@@ -8,11 +8,11 @@ arch=('any')
 url='https://git.minetest.land/Wuzzy/MineClone2'
 license=('GPL3')
 depends=('minetest-common')
-source=("mineclone2-$pkgver.tar.gz::https://git.minetest.land/Wuzzy/MineClone2/archive/${pkgver}.tar.gz")
-sha256sums=('2434e75dfc9f2da5e10b16491af4dc0de1562394ccf30bce347b16a23fbf2587')
+source=("mineclone2-$pkgver.zip::https://content.minetest.net/packages/Wuzzy/mineclone2/releases/4921/download/")
+sha256sums=('39c2482c3d3937a787cdb7d0f6909049a5af2027d2d22f9b50501561daab30b3')
 
 package() {
-  cd mineclone2
+  #cd mineclone2
 
   for f in $(find . -type f); do
     install -Dm644 "$f" "$pkgdir/usr/share/minetest/games/mineclone2/$f"
