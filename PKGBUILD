@@ -1,43 +1,49 @@
-pkgname=dmenu-supermario9590-git
-pkgver=4.9.r572.9b38fda
+# This is an example PKGBUILD file. Use this as a start to creating your own,
+# and remove these comments. For more information, see 'man PKGBUILD'.
+# NOTE: Please fill out the license field for your package! If it is unknown,
+# then please put 'unknown'.
+
+# The following guidelines are specific to BZR, GIT, HG and SVN packages.
+# Other VCS sources are not natively supported by makepkg yet.
+
+# Maintainer: Your Name <youremail@domain.com>
+pkgname=dmenu-supermario9590-git # '-bzr', '-git', '-hg' or '-svn'
+pkgname_=dmenu-supermario9590
+pkgver=r576.26e2309
 pkgrel=1
-epoch=
-pkgdesc="This is my personal build of dmenu that is patched for fonts, centering, borders, etc."
-arch=(x86_64 i686)
-url="https://www.gitlab.com/supermario9590/dmenu-supermario9590.git"
+pkgdesc="My custom build of suckless' dmenu"
+arch=('i686' 'x86_64')
+url="https://gitlab.com/supermario9590/dmenu-supermario9590.git"
 license=('MIT')
 groups=()
-depends=()
-makedepends=(git)
-checkdepends=()
-optdepends=()
-provides=(dmenu)
-conflicts=(dmenu)
+depends=(nerd-fonts-mononoki ttf-symbola)
+makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+provides=("dwm")
+conflicts=("dwm")
 replaces=()
 backup=()
 options=()
 install=
-changelog=
 source=("git+$url")
 noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
+
+# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
+# a description of each element in the source array.
 
 pkgver() {
-		cd "${_pkgname}"
-		    printf "4.9.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	    }
+	cd "$srcdir/${pkgname_}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
-    build() {
-	    	cd dmenu-supermario9590
-		    make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
-	    }
+build() {
+	cd "$srcdir/${pkgname_}"
+	make
+}
 
-    package() {
-	        cd dmenu-supermario9590  
-		    mkdir -p ${pkgdir}/opt/${pkgname}
-		        cp -rf * ${pkgdir}/opt/${pkgname}
-			    make PREFIX=/usr DESTDIR="${pkgdir}" install
-			        install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-			    }
-
+package() {
+	cd "$srcdir/${pkgname_}"
+	make PREFIX=/usr DESTDIR="$pkgdir/" install
+	install -Dm644 LICENSE $pkgdir/usr/share/licences/$pkgname/LICENCE
+	install -Dm644 README.md $pkgdir/usr/share/doc/$pkgname/README.md
+}
