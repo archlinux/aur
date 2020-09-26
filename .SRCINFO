@@ -1,15 +1,15 @@
 pkgbase = apidb-postgresql
 	pkgdesc = API Generator for Database acces.
 	pkgver = 5.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/azaeldevel/apidb
 	arch = x86_64
 	license = GPL
 	depends = octetos-db-postgresql
 	depends = apidb-core
 	conflicts = apidb
-	source = https://github.com/azaeldevel/apidb/archive/5.0.0-alpha18.tar.gz
-	md5sums = 9079b88650045e0ab212813903ce32ee
+	source = https://github.com/azaeldevel/apidb/archive/5.0.0-alpha19.tar.gz
+	md5sums = f1d88bd5499fae19416af572d16c9d6a
 
 pkgname = apidb-postgresql
 
