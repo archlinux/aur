@@ -1,0 +1,15 @@
+pkgbase = dlnacast-git
+	pkgdesc = A commandline UPnP/DLNA caster
+	pkgver = r14.4b9f8a3
+	pkgrel = 1
+	url = https://github.com/xat/dlnacast
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nodejs
+	depends = npm
+	source = dlnacast-git::git://github.com/xat/dlnacast.git
+	md5sums = SKIP
+
+pkgname = dlnacast-git
+
