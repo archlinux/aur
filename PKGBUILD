@@ -10,7 +10,7 @@ groups=('pro-audio')
 depends=('wine' 'git')
 makedepends=('cmake' 'make' 'gcc' 'qt5-base')
 conflicts=('linvstmanager')
-optdepends=('jack')
+optdepends=('jack' 'linvst-bin' 'linvst3-bin' 'linvst-x-bin' 'linvst3-x-bin')
 source=("https://github.com/Goli4thus/linvstmanager/archive/v$pkgver.zip")
 md5sums=('36d9540486a95d92b23dd5d6e8ededa7')
 
