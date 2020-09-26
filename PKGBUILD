@@ -1,14 +1,14 @@
 # Maintainer: Dominic Radermacher <blip@mockmoon-cybernetics.ch>
 pkgname=pslib
-pkgver=0.4.5
-pkgrel=4
+pkgver=0.4.6
+pkgrel=1
 pkgdesc="pslib is a C-library to create PostScript files on the fly"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('x86_64' 'aarch64' 'armv7h')
 url="http://pslib.sourceforge.net/"
 license=('GPL')
 depends=('glibc' 'libjpeg' 'libpng' 'libtiff' 'perl' 'perl-xml-parser' 'intltool')
 source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('7a33928982b281660206bb3749a4a563e3ac987eea64f41696f212df345212be')
+sha256sums=('642e8405c85dc2ebcd307e0b46ed3d366fd28de098c6d8b717720689270b2954')
 
 build() {
 	cd ${srcdir}/${pkgname}-${pkgver}
