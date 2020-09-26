@@ -1,7 +1,7 @@
 pkgbase = hush3
 	pkgdesc = HUSH (fork of KMD) full node that supports zaddrs
 	pkgver = 3.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/MyHush/hush3
 	arch = x86_64
 	license = GPL3

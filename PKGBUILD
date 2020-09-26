@@ -2,7 +2,7 @@
 
 pkgname=hush3
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='HUSH (fork of KMD) full node that supports zaddrs'
 url='http://github.com/MyHush/hush3'
 arch=('x86_64')
@@ -25,6 +25,7 @@ package() {
   # create the necessary directory structure
   install -d "${pkgdir}/opt/${pkgname}"
   install -d "${pkgdir}/usr/share/hush"
+  install -d "${pkgdir}/usr/share/man/man1"
   install -d "${pkgdir}/usr/bin"
  
   # rename KMD binaries used to not overwrite any installed
@@ -45,6 +46,13 @@ package() {
   cd ..
   install -m 644 sapling-output.params "${pkgdir}/opt/${pkgname}"
   install -m 644 sapling-spend.params "${pkgdir}/opt/${pkgname}"
+
+  # install man pages
+  cd "doc/man"
+  install -m 644 hush-cli.1 "${pkgdir}/usr/share/man/man1"
+  install -m 644 hushd.1 "${pkgdir}/usr/share/man/man1"
+  install -m 644 hush-tx.1 "${pkgdir}/usr/share/man/man1"
+  #install -Dm644 -t "${pkgdir}/usr/share/man/man1" "doc/man/${_pkgname}.1"
  
   # links scripts to /usr/bin
   ln -s /opt/${pkgname}/hush-cli "${pkgdir}/usr/bin"
@@ -54,6 +62,7 @@ package() {
   ln -s /opt/${pkgname}/hush-komodo-cli "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/hush-komodod "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/hush-komodo-tx "${pkgdir}/usr/bin"
+
   ln -s /opt/${pkgname}/sapling-output.params "${pkgdir}/usr/share/hush"
   ln -s /opt/${pkgname}/sapling-spend.params "${pkgdir}/usr/share/hush"
 }
