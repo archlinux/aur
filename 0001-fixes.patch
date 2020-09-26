@@ -1,0 +1,111 @@
+From 1d003a2554f5b8e9a2f7b45b26eb44d506a66d3f Mon Sep 17 00:00:00 2001
+From: Sam Day <me@samcday.com>
+Date: Sat, 26 Sep 2020 22:21:17 +0200
+Subject: [PATCH] fixes
+
+---
+ gbulb/glib_events.py | 6 +++---
+ gbulb/transports.py  | 6 +++---
+ tests/test_utils.py  | 2 +-
+ tests/utils.py       | 8 ++++----
+ 4 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/gbulb/glib_events.py b/gbulb/glib_events.py
+index 4c06a48..47723e0 100644
+--- a/gbulb/glib_events.py
++++ b/gbulb/glib_events.py
+@@ -7,7 +7,7 @@ import socket
+ import sys
+ import threading
+ import weakref
+-from asyncio import constants, events, futures, sslproto, tasks
++from asyncio import constants, events, exceptions, sslproto, tasks
+ 
+ from gi.repository import GLib, Gio
+ 
+@@ -382,7 +382,7 @@ class GLibBaseEventLoop(_BaseEventLoop, GLibBaseEventLoopPlatformExt):
+                         'socket': sock,
+                     })
+                     sock.close()
+-            except futures.CancelledError:
++            except exceptions.CancelledError:
+                 sock.close()
+             else:
+                 self._accept_futures[sock.fileno()] = f
+@@ -549,7 +549,7 @@ class GLibBaseEventLoop(_BaseEventLoop, GLibBaseEventLoopPlatformExt):
+             # Coroutine closing the accept socket if the future is cancelled
+             try:
+                 return (yield from future)
+-            except futures.CancelledError:
++            except exceptions.CancelledError:
+                 sock.close()
+                 raise
+ 
+diff --git a/gbulb/transports.py b/gbulb/transports.py
+index ebc9f81..950ff0d 100644
+--- a/gbulb/transports.py
++++ b/gbulb/transports.py
+@@ -1,7 +1,7 @@
+ import collections
+ import socket
+ import subprocess
+-from asyncio import base_subprocess, futures, transports
++from asyncio import base_subprocess, exceptions, futures, transports
+ 
+ 
+ class BaseTransport(transports.BaseTransport):
+@@ -159,10 +159,10 @@ class ReadTransport(BaseTransport, transports.ReadTransport):
+             self._force_close(exc)
+         except OSError as exc:
+             self._fatal_error(exc, 'Fatal read error on pipe transport')
+-        except futures.CancelledError:
++        except exceptions.CancelledError:
+             if not self._closing:
+                 raise
+-        except futures.InvalidStateError:
++        except concurrent.futures.InvalidStateError:
+             self._read_fut = fut
+             self._cancelable.add(self._read_fut)
+         else:
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index 18fa7bb..5b754ce 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -2,7 +2,7 @@ from unittest import mock
+ 
+ import pytest
+ 
+-from utils import glib_loop
++from utils import glib_loop, glib_policy
+ 
+ 
+ @pytest.mark.parametrize('gtk,gtk_available', [
+diff --git a/tests/utils.py b/tests/utils.py
+index da65e5e..8040356 100644
+--- a/tests/utils.py
++++ b/tests/utils.py
+@@ -28,8 +28,8 @@ def gtk_policy():
+ 
+ 
+ @pytest.yield_fixture(scope='function')
+-def glib_loop():
+-    l = glib_policy().new_event_loop()
++def glib_loop(glib_policy):
++    l = glib_policy.new_event_loop()
+     setup_test_loop(l)
+     yield l
+     check_loop_failures(l)
+@@ -37,8 +37,8 @@ def glib_loop():
+ 
+ 
+ @pytest.yield_fixture(scope='function')
+-def gtk_loop():
+-    l = gtk_policy().new_event_loop()
++def gtk_loop(gtk_policy):
++    l = gtk_policy.new_event_loop()
+     setup_test_loop(l)
+     yield l
+     check_loop_failures(l)
+-- 
+2.28.0
+
