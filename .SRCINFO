@@ -1,0 +1,21 @@
+pkgbase = linvstmanager-git
+	pkgdesc = Graphical companion application for various bridges like LinVst, etc.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/Goli4thus/linvstmanager
+	arch = x86_64
+	groups = pro-audio
+	license = GPL
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = qt5-base
+	depends = wine
+	depends = git
+	optdepends = jack
+	conflicts = linvstmanager
+	source = https://github.com/Goli4thus/linvstmanager/archive/v1.1.1.zip
+	md5sums = 36d9540486a95d92b23dd5d6e8ededa7
+
+pkgname = linvstmanager-git
+
