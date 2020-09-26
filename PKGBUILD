@@ -10,7 +10,7 @@
 
 pkgname=ffmpeg-svt-av1-git
 pkgver=4.4.r99362.gf8f23a7af7
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (with svt-av1; git version)'
 arch=(x86_64)
 url=https://ffmpeg.org/
@@ -85,6 +85,7 @@ optdepends=(
   'nvidia-utils: Nvidia NVDEC/NVENC support'
 )
 provides=(
+  ffmpeg
   libavcodec.so
   libavdevice.so
   libavfilter.so
@@ -94,6 +95,7 @@ provides=(
   libswresample.so
   libswscale.so
 )
+conflicts=('ffmpeg')
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git
   vmaf-model-path.patch
