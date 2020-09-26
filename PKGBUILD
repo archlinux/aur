@@ -3,7 +3,7 @@
 pkgname=vulkan-caps-viewer-bin
 pkgver=2.21
 pkgrel=1
-pkgdesc='Vulkan Hardware Capability Viewer'
+pkgdesc='Vulkan Hardware Capability Viewer (prebuilt, for use on X11)'
 url='http://vulkan.gpuinfo.org/'
 arch=('x86_64')
 license=('GPL2')

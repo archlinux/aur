@@ -1,5 +1,5 @@
 pkgbase = vulkan-caps-viewer-bin
-	pkgdesc = Vulkan Hardware Capability Viewer
+	pkgdesc = Vulkan Hardware Capability Viewer (prebuilt, for use on X11)
 	pkgver = 2.21
 	pkgrel = 1
 	url = http://vulkan.gpuinfo.org/
