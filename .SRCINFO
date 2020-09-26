@@ -1,7 +1,7 @@
 pkgbase = steamtinkerlaunch
 	pkgdesc = Wrapper script for Steam custom launch options
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
 	license = GPL3
@@ -28,7 +28,8 @@ pkgbase = steamtinkerlaunch
 	optdepends = xorg-xprop: for optional window toggle and side-by-side VR
 	optdepends = gamescope: for optional GameScope support
 	optdepends = libnotify: for optional Notifier
-	optdepends = yad: for the optional settings menu
+	optdepends = yad: for the optional Settings Menu
+	optdepends = zenity: optional for the Editor Dialog
 	source = steamtinkerlaunch-2.0.4.tar.gz::https://github.com/frostworx/steamtinkerlaunch/archive/v2.0.4.tar.gz
 	sha256sums = eb20966ea2be986276a34a45db94da97f3abd2b3b27e3490a86c1a947c3cff44
 
