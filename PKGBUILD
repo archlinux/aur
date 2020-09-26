@@ -38,8 +38,8 @@ prepare(){
         --strip \
         -Dc_args='-minline-all-stringops -D_FORTIFY_SOURCE=2' \
         -Db_pie=true \
-        -Dopenal=true
-        #-Dwifi=true #wifi wants libagg??
+        -Dopenal=true \
+        -Dwifi=true
 
   meson configure ../../../build/
 }
