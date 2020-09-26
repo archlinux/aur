@@ -1,6 +1,6 @@
 pkgbase = v8
 	pkgdesc = Google's open source JavaScript engine
-	pkgver = 8.5.210.20
+	pkgver = 8.5.210.26
 	pkgrel = 1
 	url = https://v8.dev/
 	arch = x86_64
