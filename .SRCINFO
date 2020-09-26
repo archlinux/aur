@@ -1,13 +1,13 @@
 pkgbase = libcyaml
 	pkgdesc = C library for reading and writing YAML
-	pkgver = 0.1.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/tlsa/libcyaml
 	arch = x86_64
 	license = ISC
 	depends = libyaml
-	source = https://github.com/tlsa/libcyaml/archive/v0.1.0.tar.gz
-	md5sums = SKIP
+	source = https://github.com/tlsa/libcyaml/archive/v1.1.0.tar.gz
+	sha512sums = 01a328063d4bd22bf722498061af7c1b55de995bb0b84c2249b34b5708e65657767edf8f0de9a7400d09b98e5ad71f369c0cd6293710b5c9d0578276e4703643
 
 pkgname = libcyaml
 
