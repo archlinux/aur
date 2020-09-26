@@ -83,6 +83,7 @@ build() {
     -D systemd_logind=false \
     -D b_lto=false \
     -D b_lundef=false \
+    -D xinerama=false \
     -D screensaver=false \
     -D libunwind=false \
     -D debug=false
