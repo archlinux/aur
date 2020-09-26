@@ -1,28 +1,3 @@
-diff --git a/main-beta.lua b/main-beta.lua
-index 24dbe974..d49003d5 100644
---- a/main-beta.lua
-+++ b/main-beta.lua
-@@ -1,8 +1,10 @@
- local currentPath = debug.getinfo(1, 'S').source:sub(2)
- local rootPath = currentPath:gsub('[/\\]*[^/\\]-$', '')
--loadfile((rootPath == '' and '.' or rootPath) .. '/platform.lua')('script-beta')
-+loadfile(rootPath .. '/platform.lua')(rootPath, 'script-beta')
- local fs = require 'bee.filesystem'
-+local math = require 'math'
- ROOT = fs.path(rootPath)
-+LOG_PATH = fs.path('/tmp/lua-language-server.' .. math.random(1000, 9000)) / 'log'
- LANG = LANG or 'en-US'
- 
- debug.setcstacklimit(1000)
-@@ -10,7 +12,7 @@ collectgarbage('generational', 10, 50)
- --collectgarbage('incremental', 120, 120, 0)
- 
- log = require 'log'
--log.init(ROOT, ROOT / 'log' / 'service.log')
-+log.init(ROOT, LOG_PATH / 'service.log')
- log.info('Lua Lsp startup, root: ', ROOT)
- log.debug('ROOT:', ROOT:string())
- 
 diff --git a/main.lua b/main.lua
 index 8e581d14..6d55d75b 100644
 --- a/main.lua
@@ -37,11 +12,11 @@ index 8e581d14..6d55d75b 100644
  ROOT = fs.current_path() / rootPath
 +LOG_PATH = fs.path('/tmp/lua-language-server.' .. math.random(1000, 9000)) / 'log'
  LANG = LANG or 'en-US'
- 
+
  --collectgarbage('generational')
 @@ -10,7 +12,7 @@ collectgarbage("setpause", 100)
  collectgarbage("setstepmul", 1000)
- 
+
  log = require 'log'
 -log.init(ROOT, ROOT / 'log' / 'service.log')
 +log.init(ROOT, LOG_PATH / 'service.log')
@@ -55,12 +30,12 @@ index 46656fda..e024f3d7 100644
 @@ -1,4 +1,4 @@
 -local script = ...
 +local rootPath, script = ...
- 
+
  local function findExePath()
      local n = 0
 @@ -30,13 +30,7 @@ cpath:    %s
  end
- 
+
  local fs = require 'bee.filesystem'
 -local rootPath = fs.path(exePath):parent_path():parent_path():remove_filename():string()
 -if dll == '.dll' then
@@ -89,31 +64,6 @@ index d2699851..7b673438 100644
      log.info('Log path: ', logPath)
      log.init(ROOT, logPath)
  end
-diff --git a/test-beta.lua b/test-beta.lua
-index d975832b..28975463 100644
---- a/test-beta.lua
-+++ b/test-beta.lua
-@@ -1,17 +1,18 @@
- local currentPath = debug.getinfo(1, 'S').source:sub(2)
- local rootPath = currentPath:gsub('[/\\]*[^/\\]-$', '')
--loadfile(rootPath .. '\\platform.lua')('script-beta')
-+loadfile(rootPath .. '\\platform.lua')(rootPath, 'script-beta')
- package.path  = package.path
-       .. ';' .. rootPath .. '\\test-beta\\?.lua'
-       .. ';' .. rootPath .. '\\test-beta\\?\\init.lua'
- local fs = require 'bee.filesystem'
- ROOT = fs.path(rootPath)
-+LOG_PATH = ROOT / 'log'
- LANG = 'en-US'
- 
- collectgarbage 'generational'
- 
- log = require 'log'
--log.init(ROOT, ROOT / 'log' / 'test.log')
-+log.init(ROOT, LOG_PATH / 'test.log')
- log.debug('测试开始')
- ac = {}
- 
 diff --git a/test.lua b/test.lua
 index 72178860..ab1b51a3 100644
 --- a/test.lua
@@ -131,10 +81,10 @@ index 72178860..ab1b51a3 100644
  ROOT = fs.absolute(fs.path(rootPath):parent_path())
 +LOG_PATH = ROOT / 'log'
  LANG = 'en-US'
- 
+
  log = require 'log'
 -log.init(ROOT, ROOT / 'log' / 'test.log')
 +log.init(ROOT, LOG_PATH / 'test.log')
  log.debug('测试开始')
  ac = {}
- 
+
