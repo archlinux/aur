@@ -2,7 +2,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 
 pkgname=lazygit
-pkgver=0.22.1
+pkgver=0.22.8
 pkgrel=1
 pkgdesc="A simple terminal UI for git commands"
 arch=("x86_64")
@@ -11,8 +11,8 @@ license=("MIT")
 depends=("git" "glibc")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jesseduffield/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=("ca2dbca39512e402cde22cd47eba3ff38cbbe4e12265aa0cb46b34277653b9bf")
-_commit="45a0378c01236af91451a1fbf14aa2e65561200b"
+sha256sums=("1771c113b8b93db3321a90ff8270e736628a156a44bd6963200656a49ab488c1")
+_commit="307d051ec2ec03a2fcd347ce94f205aa2dca75fc"
 
 prepare() {
   mkdir -p "${srcdir}/src/github.com/jesseduffield"
