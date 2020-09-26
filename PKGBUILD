@@ -45,7 +45,7 @@ makedepends=(
 	'xcb-util-wm'
 	'xcb-util-keysyms'
 	'libxshmfence'
-	'libunwind'
+#	'libunwind'
 	'wayland-protocols'
 	'egl-wayland'
 	'meson')
@@ -82,7 +82,9 @@ build() {
     -D xkb_output_dir=/var/lib/xkb \
     -D systemd_logind=false \
     -D b_lto=false \
-    -D b_lundef=false
+    -D b_lundef=false \
+    -D unwind=false \
+    -D debug=false
      
 
   # Print config
@@ -120,9 +122,10 @@ package_xorg-server-common-rootless-nosystemd-minimal-git() {
 
 package_xorg-server-rootless-nosystemd-minimal-git() {
   pkgdesc="Xorg X server"
-  depends=(libepoxy libxfont2 pixman xorg-server-common-rootless-nosystemd-minimal-git libunwind 
+  depends=(libepoxy libxfont2 pixman xorg-server-common-rootless-nosystemd-minimal-git 
            dbus libgl xf86-input-libinput nettle
            libpciaccess libdrm libxshmfence) # FS#52949
+  optdepends=('libunwind: unwind backtrace support')
 
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
@@ -165,7 +168,8 @@ package_xorg-server-xephyr-rootless-nosystemd-minimal-git() {
 
 package_xorg-server-xvfb-rootless-nosystemd-minimal-git() {
   pkgdesc="Virtual framebuffer X server"
-  depends=(libxfont2 libunwind pixman xorg-server-common-rootless-nosystemd-minimal-git xorg-xauth libgl nettle libtirpc)
+  depends=(libxfont2 pixman xorg-server-common-rootless-nosystemd-minimal-git xorg-xauth libgl nettle libtirpc)
+  optdepends=('libunwind: unwind backtrace support')
   conflicts=('xorg-server-xvfb')
   provides=('xorg-server-xvfb')
   
@@ -194,8 +198,9 @@ package_xorg-server-xnest-rootless-nosystemd-minimal-git() {
 
 #package_xorg-server-xwayland-rootless-nosystemd-minimal-git() {
 #  pkgdesc="run X clients under wayland"
-#  depends=(libxfont2 libepoxy libunwind libgl pixman xorg-server-common-rootless-nosystemd-minimal-git
+#  depends=(libxfont2 libepoxy libgl pixman xorg-server-common-rootless-nosystemd-minimal-git
 #           nettle libtirpc)
+#  optdepends=('libunwind: unwind backtrace support')
 #  conflicts=('xorg-server-xwayland')
 #  provides=('xorg-server-xwayland')
   

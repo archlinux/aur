@@ -31,7 +31,6 @@ pkgbase = xorg-server-rootless-nosystemd-minimal-git
 	makedepends = xcb-util-wm
 	makedepends = xcb-util-keysyms
 	makedepends = libxshmfence
-	makedepends = libunwind
 	makedepends = wayland-protocols
 	makedepends = egl-wayland
 	makedepends = meson
@@ -49,7 +48,6 @@ pkgname = xorg-server-rootless-nosystemd-minimal-git
 	depends = libxfont2
 	depends = pixman
 	depends = xorg-server-common-rootless-nosystemd-minimal-git
-	depends = libunwind
 	depends = dbus
 	depends = libgl
 	depends = xf86-input-libinput
@@ -57,6 +55,7 @@ pkgname = xorg-server-rootless-nosystemd-minimal-git
 	depends = libpciaccess
 	depends = libdrm
 	depends = libxshmfence
+	optdepends = libunwind: unwind backtrace support
 	provides = X-ABI-VIDEODRV_VERSION=24.0
 	provides = X-ABI-XINPUT_VERSION=24.1
 	provides = X-ABI-EXTENSION_VERSION=10.0
@@ -90,13 +89,13 @@ pkgname = xorg-server-xephyr-rootless-nosystemd-minimal-git
 pkgname = xorg-server-xvfb-rootless-nosystemd-minimal-git
 	pkgdesc = Virtual framebuffer X server
 	depends = libxfont2
-	depends = libunwind
 	depends = pixman
 	depends = xorg-server-common-rootless-nosystemd-minimal-git
 	depends = xorg-xauth
 	depends = libgl
 	depends = nettle
 	depends = libtirpc
+	optdepends = libunwind: unwind backtrace support
 	provides = xorg-server-xvfb
 	conflicts = xorg-server-xvfb
 
