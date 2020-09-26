@@ -1,36 +1,35 @@
-# Maintainer: Alexandros Theodotou <alex at alextee dot org>
+# Contributor: Pascal Ernster <aur at hardfalcon dot net>
+# Contributor: Alexandros Theodotou <alex at alextee dot org>
 
-_pkgname=libcyaml
-pkgname=$_pkgname-git
-pkgver=r432.9f7dc2b
+_pkgname="libcyaml"
+pkgname="${_pkgname}-git"
+pkgver=1.1.0+10+gc95c7bc
 pkgrel=1
 pkgdesc="C library for reading and writing YAML"
 arch=('x86_64')
 url="https://github.com/tlsa/libcyaml"
 license=('ISC')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 depends=('libyaml')
 makedepends=('git')
-source=("$_pkgname::git+https://github.com/tlsa/$_pkgname.git")
-md5sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/tlsa/${_pkgname}.git")
+sha512sums=('SKIP')
 
 pkgver () {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "$srcdir/$_pkgname"
+	cd "${srcdir}/${_pkgname}"
+	git tag "1.1.0" "7e1cd870e1ec92365d37b2081a6b29a55096e999" # Fix for upstream repo lacking versioning tags
+	git describe --long --tags | sed 's|-|+|g'
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
-  make
+	cd "${srcdir}/${_pkgname}"
+	make
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
-  mkdir -p $pkgdir/usr/lib/pkgconfig $pkgdir/usr/include
-	make DESTDIR="$pkgdir" PREFIX=/usr install
+	cd "${srcdir}/${_pkgname}"
+	#mkdir -p $pkgdir/usr/lib/pkgconfig $pkgdir/usr/include
+	make DESTDIR="$pkgdir" PREFIX="/usr" install
+	install --target-directory="${pkgdir}/usr/share/licenses/${pkgname}" -D "LICENSE"
 }
