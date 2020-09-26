@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=matrixStats
-_cranver=0.56.0
+_cranver=0.57.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,10 +11,9 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(Artistic-2.0)
 depends=('r>=2.12.0')
-makedepends=(gcc)
 optdepends=(r-base64enc r-ggplot2 r-knitr r-microbenchmark r-r.devices r-r.rsp)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('27aa52de739cfdbfb01f5fc9fe9df71c')
+sha256sums=('f9681887cd3b121762c83f55f189cae26cb8443efce91fcd212ac714fde9f343')
 
 build() {
   cd "${srcdir}"
