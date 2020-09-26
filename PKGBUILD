@@ -2,7 +2,7 @@
 pkgname=gnome-shell-extension-pop-shell-git
 pkgdesc="Pop Shell - Tiling window management in Gnome (WIP)"
 pkgver=r540.9286532
-pkgrel=1
+pkgrel=2
 _gitorg=pop-os
 _gitname=shell
 _gitbranch=master_focal
