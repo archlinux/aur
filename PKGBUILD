@@ -14,8 +14,8 @@ makedepends=('git' 'inetutils' 'gtk2' 'jansson' 'gtk3' 'libxv' 'libvdpau' 'nvidi
 options=('staticlibs')
 source=(nvidia-settings-${pkgver}.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/${pkgver}.tar.gz
         libxnvctrl_so.patch)
-sha512sums=('2f01a7ac516e92f11e9dfe8f07a198f38bace4b9515824bdda3771b0482c6c540b03f614216814a74af2c35675ea5f8af7b62f74fa625cf628333d4636586bb1'
-            '91ff94736063b911c83b8876fe3e3778db82e0ffe0102036d81a3a6e872ca44a585914646fcbbbe399cd63aa17685fc7f73263ec4f4084f48768ca4d704037fa')
+sha512sums=('SKIP'
+            'SKIP')
 
 prepare() {
   export PREFIX=/usr
