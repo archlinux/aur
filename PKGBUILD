@@ -3,12 +3,12 @@
 
 _pkgname='ptouch-print'
 pkgname="${_pkgname}-git"
-pkgver=1.4.2.r13.g4a6c15d
+pkgver=1.4.3.r0.g32c0d3b
 pkgrel=1
 pkgdesc="Command line tool to print labels on Brother P-Touch printers"
 arch=('x86_64')
 url='https://mockmoon-cybernetics.ch/computer/p-touch2430pc/'
-license=('GPL2')
+license=('GPL3')
 depends=('gd' 'libusb')
 makedepends=('git')
 provides=("${_pkgname}")

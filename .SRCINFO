@@ -1,10 +1,10 @@
 pkgbase = ptouch-print-git
 	pkgdesc = Command line tool to print labels on Brother P-Touch printers
-	pkgver = 1.4.2.r13.g4a6c15d
+	pkgver = 1.4.3.r0.g32c0d3b
 	pkgrel = 1
 	url = https://mockmoon-cybernetics.ch/computer/p-touch2430pc/
 	arch = x86_64
-	license = GPL2
+	license = GPL3
 	makedepends = git
 	depends = gd
 	depends = libusb
