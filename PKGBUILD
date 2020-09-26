@@ -7,9 +7,9 @@
 
 _pkgname=instantclient-basic
 pkgname=oracle-${_pkgname}
-pkgver=19.6.0.0.0
-_urlver=19600
-_unzippath=instantclient_19_6
+pkgver=19.8.0.0.0
+_urlver=19800
+_unzippath=instantclient_19_8
 pkgrel=1
 pkgdesc="Light replacement for the Oracle client (files to run OCI, OCCI and JDBC-OCI programs)"
 arch=('x86_64')
@@ -28,10 +28,10 @@ source=(LICENSE
         "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}dbru.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
          '784005aa31cb56bb2303179d98fccd8e'
-         '9fe2fc71226da1bdb3c47481b4a14cc2')
+         '6c1fbe6300fb567a85fc2a83264eca1b')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
             '36b5ab97950f1667403dd9b59c3cad25d8f9e457702feaece835d1bff7c971c9'
-            'b7d9fe82a61cdb46d80917d93c22650dc5c6c5dda9c5f828ab0b7d71753340f9')
+            'b7a5854ff8aa64acf90d1c6d6d313517292d79163e9e3b583c3e9d7a313cca46')
 
 plain "If you run into any problems downloading the files, get the .zip version from"
 plain "Oracle and place them in the PKGBUILD directory then re-run makepkg:"
