@@ -21,7 +21,6 @@ options=()
 install=
 source=(
     'git+https://github.com/apple/swift'
-    #'git+https://github.com/apple/swift#commit=30ccb5294'
     'cmark::git+https://github.com/apple/swift-cmark'
     'llbuild::git+https://github.com/apple/swift-llbuild'
     'swift-argument-parser::git+https://github.com/apple/swift-argument-parser'
@@ -35,7 +34,6 @@ source=(
     'swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch'
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests'
     'llvm-project::git+https://github.com/apple/llvm-project#branch=swift/master'
-#    'llvm-project::git+https://github.com/apple/llvm-project#commit=e80a6b097761253'
     'yams::git+https://github.com/jpsim/Yams'
 #    'yams::git+https://github.com/jpsim/Yams#commit=3.0.1'
     '0001-arch-aur-pachtes.patch'
