@@ -1,7 +1,7 @@
 # Maintainer: ftsell <aur@finn-thorben.me>
 pkgname=gnome-shell-extension-pop-shell-git
 pkgdesc="Pop Shell - Tiling window management in Gnome (WIP)"
-pkgver=r192.e15786b
+pkgver=r540.9286532
 pkgrel=1
 _gitorg=pop-os
 _gitname=shell
@@ -35,5 +35,6 @@ build() {
 package() {
     cd "${srcdir}/${_dir}"
     make DESTDIR="${pkgdir}/" install
+    install -Dm644 rebuild.sh "${pkgdir}//usr/share/gnome-shell/extensions/pop-shell@system76.com"
 }
 
