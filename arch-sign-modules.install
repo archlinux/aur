@@ -48,9 +48,8 @@ post_remove() {
         for x in $module_list; do
 		dkms_link="$dkms_dir/$x.conf"
 		if [ -L $dkms_link ]; then
-                                echo "Removing DKMS symlink: $dkms_link"
-                                rm -f $dkms_link
-                        fi
-                fi
-        done
+			echo "Removing DKMS symlink: $dkms_link"
+			rm -f $dkms_link
+		fi
+	done
 }
