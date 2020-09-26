@@ -3,7 +3,7 @@
 pkgname=('wezterm-git')
 pkgdesc="A terminal emulator implemented in Rust, using OpenGL ES 2 for rendering."
 pkgver=20200517.122836.92c201c6.105.g5d508350
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686')
 url="https://github.com/wez/wezterm"
 license=('MIT')
@@ -42,7 +42,6 @@ package() {
   install -Dsm755 target/release/wezterm $pkgdir/usr/bin/wezterm
   install -Dsm755 target/release/strip-ansi-escapes $pkgdir/usr/bin/strip-ansi-escapes
   install -Dm644 assets/icon/terminal.png $pkgdir/usr/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png
-  install -Dm644 -t $pkgdir/usr/share/wezterm/colors assets/colors/*
   install -Dm644 assets/wezterm.desktop $pkgdir/usr/share/applications/org.wezfurlong.wezterm.desktop
   install -Dm644 assets/wezterm.appdata.xml $pkgdir/usr/share/metainfo/org.wezfurlong.wezterm.appdata.xml
   install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
