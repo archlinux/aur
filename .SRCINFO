@@ -1,12 +1,13 @@
 pkgbase = gigatribe
 	pkgdesc = Create your own secure and private network to share files with friends.
 	pkgver = 3.06.006
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gigatribe.com/
 	arch = x86_64
 	license = custom
 	depends = zlib
 	options = !emptydirs
+	options = !strip
 	source = https://www.gigatribe.com/software/linux/gigatribe_3.06.006-1.deb
 	source = LICENSE.html::https://www.gigatribe.com/en/legal
 	sha256sums = eb5a2b4c97db48906b51eeb80b10cabea118252166df9ae275785815a26d9098
