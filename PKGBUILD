@@ -2,25 +2,26 @@
 
 
 pkgname=apidb
-pkgver=4.3.3
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="API Generator for Database acces."
 arch=('x86_64')
 license=('GPL')
 url="https://github.com/azaeldevel/apidb"
 depends=('octetos-db-maria' 'libxml2' 'boost' 'bison' 'flex' 'gtkmm' 'libtar' 'imagemagick' 'cmake' 'cunit')
-md5sums=('00af0411e4f8fbf78dba5095c27ce098')
-source=(https://github.com/azaeldevel/apidb/archive/4.3.3-beta.5.tar.gz)
+md5sums=('f1d88bd5499fae19416af572d16c9d6a')
+source=(https://github.com/azaeldevel/apidb/archive/5.0.0-alpha19.tar.gz)
+conflicts=('apidb-core')
 
 build() {
-    cd apidb-4.3.3-beta.5
+    cd apidb-5.0.0-alpha19
     mkdir build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Debug -DAPIDB_VERSION_STAGE=betarelease -DAPIDB_MARIADB=Y -DDISTRO="ArchLinux" -DCMAKE_INSTALL_PREFIX=/usr ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DAPIDB_VERSION_STAGE=alpha -DPLATFORM=LINUX_ARCH -DAPIDBBUILD="CORE;MARIADB;POSTGRESQL;COMMANDS;GTK3" -DAPIDBINSTALL="CORE;MARIADB;POSTGRESQL;COMMANDS;GTK3" ..
     make
 }
 
 package() {
-  cd apidb-4.3.3-beta.5/build
+  cd apidb-5.0.0-alpha19/build
   make DESTDIR="$pkgdir" install
 }
