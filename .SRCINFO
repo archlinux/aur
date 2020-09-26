@@ -1,6 +1,6 @@
 pkgbase = manjaro-asian-input-support
 	pkgdesc = Asian input support from Manjaro
-	pkgver = 2020.08
+	pkgver = 2020.09
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/packages/community/manjaro-asian-input-support
 	install = input-support.install
@@ -35,7 +35,6 @@ pkgname = fcitx-input-support
 	pkgdesc = Asian input support for fcitx
 	depends = fcitx-qt5
 	depends = fcitx-configtool
-	optdepends = fcitx-qt4: required by some closed source Chinese IMEs
 	optdepends = kcm-fcitx: KDE configuration module
 	optdepends = fcitx-googlepinyin: 中文 | Chinese
 	optdepends = fcitx-cloudpinyin: 云拼音 | Use internet resources to provide candidate input for Chinese
