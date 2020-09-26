@@ -2,11 +2,10 @@
 # based on core/linux: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-amd-staging-drm-next-git
-pkgdesc='Linux kernel with AMDGPU DC patches'
-
+pkgdesc='Linux kernel with AMDGPU WIP patches'
+pkgver=5.10.949809.8f0ba3310c12
 _branch=amd-staging-drm-next
-_kernelname=${pkgbase#linux}
-pkgver=5.6.891392.6302a40c6dfa
+_product="${pkgbase%-git}"
 pkgrel=1
 arch=(x86_64)
 url='https://gitlab.freedesktop.org/drm/amd'
@@ -19,17 +18,13 @@ makedepends=(
 options=('!strip')
 _srcname=linux-agd5f
 source=(
-  "${_srcname}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
+  "$_srcname::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}"
   config         # the main kernel config file
   sphinx-workaround.patch
-  gcc10-early-boot-fix.patch
-  wno-maybe-initialized.patch
 )
 sha256sums=('SKIP'
-            '623601ed9d7879dd9dba1cd50fc8051f9db508b49b4fc0c47c5a9eb9165fc04e'
-            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            '8c8fb0be88fcd767e8768ee1bde491e8b4de83f6a644e002019d1d5a0da920f9'
-            'b4e60ef20c47093ec47867439d057d936c6ba8384cc47a0d0737830c48bea63a')
+            '181330a9cf4517abbbe29b93165bc859ad8ca14a43582f4e1d69aae2b5ecc2c9'
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c')
 
 pkgver() {
   cd "${_srcname}"
@@ -75,7 +70,7 @@ build() {
   make htmldocs
 }
 
-_package-git() {
+_package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
@@ -102,7 +97,7 @@ _package-git() {
   rm "$modulesdir"/{source,build}
 }
 
-_package-headers-git() {
+_package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
   cd $_srcname
@@ -180,7 +175,7 @@ _package-headers-git() {
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-_package-docs-git() {
+_package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
 
   cd $_srcname
@@ -199,11 +194,12 @@ _package-docs-git() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-_product=linux-amd-staging-drm-next
-pkgname=("$pkgbase" "$_product-headers-git" "$_product-docs-git")
-for _p in "${pkgname[@]}"; do
-  eval "package_$_p() {
-    $(declare -f "_package${_p#$_product}")
-    _package${_p#$_product}
-  }"
+pkgname=("${_product}-git" "${_product}-headers-git" "${_product}-docs-git")
+for _package in "${pkgname[@]}"; do
+	local _package_no_git="${_package%-git}"
+	local _package_stripped="${_package_no_git#$_product}"
+	eval "package_${_package}() {
+	$(declare -f "_package${_package_stripped}")
+	_package${_package_stripped}
+}"
 done
