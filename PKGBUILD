@@ -5,7 +5,7 @@
 pkgbase=librealsense-git
 pkgname=(librealsense-git python-pyrealsense2-git)
 _pkgname=librealsense
-pkgver=v2.33.1
+pkgver=v2.38.1
 pkgrel=1
 pkgdesc="Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300)"
 arch=('x86_64')
@@ -47,7 +47,7 @@ package_librealsense-git() {
   conflicts=('librealsense')
   cd "${srcdir}/${_pkgname}/build"
   DESTDIR="${pkgdir}" make install
-  find ${pkgdir}/usr/lib -name "py*" -delete
+  rm -r ${pkgdir}/usr/lib/{python*}
   cd "${srcdir}/${_pkgname}/config"
   sed -i 's/plugdev/video/g' 99-realsense-libusb.rules
   install -Dm644 99-realsense-libusb.rules "${pkgdir}/etc/udev/rules.d/99-realsense-libusb.rules"
