@@ -6,7 +6,7 @@
 pkgname=qubes-vm-xen
 _gitname=${pkgname%-git*}
 pkgver='4.8.5'
-pkgrel=14
+pkgrel=23
 epoch=
 pkgdesc="QubesOS component"
 arch=("x86_64")
@@ -35,7 +35,7 @@ sha512sums=('SKIP')
 
 
 build() {
-    export PYTHON=/usr/bin/python2
+    export PYTHON=/usr/bin/python
 
     cd "${srcdir}/${_gitname}/"
     make get-sources
