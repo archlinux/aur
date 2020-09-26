@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster (milk on freenode)
 _pkgname=studio-controls
 pkgname=${_pkgname}-git
-pkgver=1.8.r119.g8f2d563
+pkgver=2.0.8.r0.g2675e63
 pkgrel=1
 pkgdesc="An audio setup utility."
 arch=('x86_64')
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${_pkgname%}"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
