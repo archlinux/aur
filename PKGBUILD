@@ -24,6 +24,8 @@ package() {
   cd $pkgname-$pkgver
 
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-}
 
+  # license
+  install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
+}
 # vim: set sw=2 ts=2 et:
