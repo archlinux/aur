@@ -10,6 +10,7 @@ pkgbase = vulkan-caps-viewer-bin
 	depends = qt5-x11extras
 	provides = vulkan-caps-viewer
 	conflicts = vulkan-caps-viewer
+	options = !strip
 	source = vulkan-caps-viewer.desktop
 	source = android_icon_256.png
 	sha1sums = 7ccdb4b4487b43bb428c32994092c00ca14f594a

@@ -16,6 +16,7 @@ source_x86_64=("https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver//
 depends=('vulkan-icd-loader' 'qt5-base' 'qt5-x11extras')
 conflicts=(vulkan-caps-viewer)
 provides=(vulkan-caps-viewer)
+options=('!strip')
 
 package() {
   # App
