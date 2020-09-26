@@ -2,16 +2,16 @@
 # Contributor: Aaron Blair <aaron@aaronpb.me>
 
 pkgname='subfinder'
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc='Subdomain discovery tool'
-arch=('x86_64')
+arch=('x86_64' 'armv6h' 'aarch64')
 url='https://github.com/projectdiscovery/subfinder'
 license=('MIT')
 makedepends=('go')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('26f11c278e72c63932b3f3cfedb7f9240032ef39185e8bc6fe262946fd986040')
+sha256sums=('1adbd9c180f7ca6378796748491e23a808e423268bc61fe63af0206877f0ba68')
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -21,13 +21,13 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   export GOPATH="${srcdir}"
 
-  cd "${pkgname}-${pkgver}"
-  go build -v -o "${pkgname}" ."/cmd/${pkgname}"
+  cd "${pkgname}-${pkgver}/v2/cmd/${pkgname}"
+  go build -v -o "${pkgname}" .
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-  install -Dm755 -t "${pkgdir}/usr/bin" "${pkgname}"
+  install -Dm755 -t "${pkgdir}/usr/bin" "v2/cmd/${pkgname}/${pkgname}"
   install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
   install -Dm644 'LICENSE.md' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
