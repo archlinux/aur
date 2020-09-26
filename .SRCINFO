@@ -4,6 +4,7 @@ pkgbase = linvst3-x-bin
 	pkgrel = 1
 	url = https://github.com/osxmidi/LinVst3x
 	arch = x86_64
+	groups = pro-audio
 	license = GPL
 	depends = wine
 	depends = gtk3
