@@ -30,7 +30,7 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
-  arch-meson atk build -D enable_docs=false --libdir=/usr/lib32
+  arch-meson atk build -D enable_docs=false -D introspection=false --libdir=/usr/lib32
   ninja -C build
 }
 
