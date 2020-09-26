@@ -1,6 +1,6 @@
 pkgbase = st-jacob-git
 	pkgdesc = This Jacob McDonnell's build of st see the repo for more details
-	pkgver = 0.8.3.r6.ee5ae82
+	pkgver = 0.8.4.r9.106ac05
 	pkgrel = 1
 	url = https://gitlab.com/Jacob_McDonnell/st.git
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = st-jacob-git
 	optdepends = dmenu
 	optdepends = xurls
 	optdepends = xclip
-	optdepends = python-pywal
 	optdepends = ttf-joypixels
 	provides = st
 	conflicts = st
