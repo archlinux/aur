@@ -1,0 +1,41 @@
+pkgbase = nvidia-440xx-utils
+	pkgver = 440.100
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = nvidia-drm-outputclass.conf
+	source = nvidia-440xx-utils.sysusers
+	source = https://download.nvidia.com/XFree86/Linux-x86_64/440.100/NVIDIA-Linux-x86_64-440.100.run
+	sha512sums = c49d246a519731bfab9d22afa5c2dd2d366db06d80182738b84881e93cd697c783f16ee04819275c05597bb063451a5d6102fbc562cd078d2a374533a23cea48
+	sha512sums = 4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499
+	sha512sums = 274b3a8e4c801b67a3f71f11da93134bc1a16a48bc85a6bf63265c00bb3fd8caf935dd23c85c40285a162e83c146bd5e34bb0b1d74fc34e7122bfc4c3a8c81e7
+
+pkgname = nvidia-440xx-utils
+	pkgdesc = NVIDIA drivers utilities
+	install = nvidia-440xx-utils.install
+	depends = xorg-server
+	depends = libglvnd
+	depends = egl-wayland
+	optdepends = nvidia-440xx-settings: configuration tool
+	optdepends = xorg-server-devel: nvidia-xconfig
+	optdepends = opencl-nvidia-440xx: OpenCL support
+	provides = vulkan-driver
+	provides = opengl-driver
+	provides = nvidia-utils
+	provides = nvidia-440xx-libgl
+	provides = nvidia-libgl
+	conflicts = nvidia-440xx-libgl
+	conflicts = nvidia-utils
+	conflicts = nvidia-libgl
+	replaces = nvidia-440xx-libgl
+
+pkgname = opencl-nvidia-440xx
+	pkgdesc = OpenCL implemention for NVIDIA
+	depends = zlib
+	optdepends = opencl-headers: headers necessary for OpenCL development
+	provides = opencl-nvidia
+	provides = opencl-driver
+	conflicts = opencl-nvidia
+
