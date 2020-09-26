@@ -1,7 +1,7 @@
 pkgbase = gnome-terminal-fedora
 	pkgdesc = The GNOME Terminal Emulator with Fedora patches
-	pkgver = 3.36.1.1
-	pkgrel = 2
+	pkgver = 3.36.2
+	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal
 	arch = i686
 	arch = x86_64
@@ -21,13 +21,13 @@ pkgbase = gnome-terminal-fedora
 	depends = dconf
 	optdepends = gconf: for gnome-terminal-migration
 	optdepends = libnautilus-extension: for "Open Terminal Here" in GNOME Files
-	provides = gnome-terminal=3.36.1.1
+	provides = gnome-terminal=3.36.2
 	conflicts = gnome-terminal
 	options = !emptydirs
-	source = https://download.gnome.org/sources/gnome-terminal/3.36/gnome-terminal-3.36.0.1.tar.xz
-	source = 0001-build-Don-t-treat-warnings-as-errors.patch-bb5f88b61f68a1bb0b1f1269dfb48eabfc35b5c0::http://src.fedoraproject.org/rpms/gnome-terminal/raw/bb5f88b61f68a1bb0b1f1269dfb48eabfc35b5c0/f/0001-build-Don-t-treat-warnings-as-errors.patch
-	source = gnome-terminal-cntr-ntfy-autottl-ts.patch-bb5f88b61f68a1bb0b1f1269dfb48eabfc35b5c0::http://src.fedoraproject.org/rpms/gnome-terminal/raw/bb5f88b61f68a1bb0b1f1269dfb48eabfc35b5c0/f/gnome-terminal-cntr-ntfy-autottl-ts.patch
-	source = org.gnome.Terminal.gschema.override-bb5f88b61f68a1bb0b1f1269dfb48eabfc35b5c0::http://src.fedoraproject.org/rpms/gnome-terminal/raw/bb5f88b61f68a1bb0b1f1269dfb48eabfc35b5c0/f/org.gnome.Terminal.gschema.override
+	source = https://download.gnome.org/sources/gnome-terminal/3.36/gnome-terminal-3.36.2.tar.xz
+	source = 0001-build-Don-t-treat-warnings-as-errors.patch-f30999752f2f5a3dbbf4748369550b6019c167ee::http://src.fedoraproject.org/rpms/gnome-terminal/raw/f30999752f2f5a3dbbf4748369550b6019c167ee/f/0001-build-Don-t-treat-warnings-as-errors.patch
+	source = gnome-terminal-cntr-ntfy-autottl-ts.patch-f30999752f2f5a3dbbf4748369550b6019c167ee::http://src.fedoraproject.org/rpms/gnome-terminal/raw/f30999752f2f5a3dbbf4748369550b6019c167ee/f/gnome-terminal-cntr-ntfy-autottl-ts.patch
+	source = org.gnome.Terminal.gschema.override-f30999752f2f5a3dbbf4748369550b6019c167ee::http://src.fedoraproject.org/rpms/gnome-terminal/raw/f30999752f2f5a3dbbf4748369550b6019c167ee/f/org.gnome.Terminal.gschema.override
 	sha256sums = f3d708a1e76d77c1c85b126f6e003220a15d4a46a50fd8070e1a3aabe678a376
 	sha256sums = 672615edf1f8e5ede72bdfa2e671ad35d355a1df64f349762899ad7bc7254769
 	sha256sums = 8417a68521fd8bae432b5e9832321d95a296279fa4cdc64827520db552829cf5
