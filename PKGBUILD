@@ -13,8 +13,27 @@ arch=("x86_64")
 url="https://github.com/QubesOS/qubes-vmm-xen"
 license=('GPL')
 groups=()
-depends=('python2' 'bridge-utils' 'python2-lxml' 'libutil-linux' 'lzo' 'libsystemd' 'yajl')
-makedepends=('wget' 'make' 'gcc' 'patch' 'git' 'bin86' 'dev86' 'iasl' 'yajl' 'pkg-config' 'openssl' 'pixman')
+depends=('python2'
+         'bridge-utils'
+         'python2-lxml'
+         'libutil-linux'
+         'lzo'
+         'libsystemd'
+         'yajl'
+)
+makedepends=('wget'
+             'make'
+             'gcc'
+             'patch'
+             'git'
+             'bin86'
+             'dev86'
+             'iasl'
+             'yajl'
+             'pkg-config'
+             'openssl'
+             'pixman'
+)
 checkdepends=()
 optdepends=()
 provides=('xen-qubes-vm-essentials')
