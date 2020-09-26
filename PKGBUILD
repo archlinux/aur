@@ -10,7 +10,7 @@ groups=('pro_audio')
 depends=('wine' 'gtk3')
 conflicts=('linvst3')
 optdepends=('jack')
-source=("https://github.com/osxmidi/LinVst3/releases/download/2.1/LinVst3-$pkgver-Debian-rz.zip")
+source=("https://github.com/osxmidi/LinVst3/releases/download/$pkgver/LinVst3-$pkgver-Debian-rz.zip")
 md5sums=('a7fd6a3c6eafab840ba6902da52370ff')
 
 package() {
