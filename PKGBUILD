@@ -26,7 +26,7 @@
 
 
 pkgname=archey4
-pkgver=v4.7.2
+pkgver=v4.8.0
 pkgrel=1
 pkgdesc="A simple system information tool written in Python"
 arch=('any')
@@ -39,15 +39,14 @@ optdepends=('bind-tools: WAN_IP would be detected faster'
             'lm_sensors: Temperature would be more accurate'
             'pciutils: GPU wouldn'"'"'t be detected without it'
             'wmctrl: WindowManager would be more accurate'
-            'virt-what: Model would contain details about the hypervisor'
-            'btrfs-progs: Disk would support BTRFS in usage computations')
+            'virt-what: Model would contain details about the hypervisor')
 provides=('archey')
 conflicts=('archey-git' 'archey2' 'archey3-git' 'pyarchey')
 install="${pkgname}.install"
 backup=("etc/${pkgname}/config.json")
 source=("${pkgname}_${pkgver}-${pkgrel}.tar.gz::https://github.com/HorlogeSkynet/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('2d8bce85af9606e9a586ca7837bd2073')
-sha1sums=('5f701e32122054939ee5150c3cdfde43bc3597b0')
+md5sums=('9f359a60134f28b9d9569b5913c61f7a')
+sha1sums=('cb376135b640ad89660e2c800b2bdbc12d8d36fc')
 
 
 build() {
