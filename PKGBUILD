@@ -1,7 +1,7 @@
 # Maintainer: Bence Hornák <bence.hornak@gmail.com>
 
 pkgname=theia-electron
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 arch=('any')
 url='https://www.theia-ide.org/'
@@ -21,17 +21,17 @@ source=(
   "https://raw.githubusercontent.com/eclipse-theia/theia/v$pkgver/LICENSE"
 )
 md5sums=('5a26cc7b1b461bec8533266dbe64c87e'
-         '6db9b981f8543c90db7666449c258631'
+         '9448b29ece4f003326d1d25756f4c364'
          '54b30057095cf131ec7296b0d0bd2046'
          'b316dead79fa33f45c8d689a1c940dab'
          '1dde0e422484895d3509f4ee9bb8d980'
          '84e52389f141be88a24bcfdd44c91a19')
 
 build() {
-  yarn install --cache-folder "$srcdir/yarn-cache"
+  HOME="$srcdir/.electron-gyp" yarn install --cache-folder "$srcdir/yarn-cache"
   yarn build
   # Remove dev dependencies
-  yarn install --cache-folder "$srcdir/yarn-cache" --production --ignore-scripts --prefer-offline
+  HOME="$srcdir/.electron-gyp" yarn install --cache-folder "$srcdir/yarn-cache" --production --ignore-scripts --prefer-offline
 }
 
 package() {
