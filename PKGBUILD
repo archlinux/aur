@@ -6,17 +6,18 @@ pkgdesc="Use fzf to open files in appropriate applications (a la macOS Spotlight
 arch=('any')
 url="https://github.com/trmckay/fzf-open.git"
 license=('GPL3')
-depends=(fzf bash)
+depends=(fzf python)
 makedepends=(git)
 changelog=
-sha256sums=('85c53baf412dfc4ca0f8b2c9a9603585a5aa981638d63b91bb52773616f226f9')
-pkgver=0.2.1
+sha256sums=('504514d2c8f5fe8bc47c51619e438c911f12b4b19019798bd477c5cae08e164c')
+pkgver=0.3
 source=("https://github.com/trmckay/fzf-open/releases/download/v$pkgver/fzf-open-$pkgver.tar.gz")
 
 package() {
     cd $srcdir
-    install -Dm 755 fzf-open.sh ${pkgdir}/usr/bin/fzf-open
+    install -Dm 755 fzf-open ${pkgdir}/usr/bin/fzf-open
     install -d ${pkgdir}/usr/share/fzf-open/
     install -Dm 755 lopen.sh ${pkgdir}/usr/share/fzf-open
-    install -Dm 644 example_config ${pkgdir}/usr/share/fzf-open/example_config
+    install -Dm 644 fzf-open.py ${pkgdir}/usr/share/fzf-open
+    install -Dm 666 config ${pkgdir}/usr/share/fzf-open/example_config
 }
