@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # This is a default template for a post-install scriptlet.
 ## arg 1:  the old package version
 #post_remove() {
@@ -29,9 +31,9 @@ post_install() {
 	done
 }
 
-#post_upgrade() {
-	# do something here
-#}
+post_upgrade() {
+	post_install
+}
 
 ## arg 1:  the old package version
 #pre_remove() {
@@ -39,6 +41,16 @@ post_install() {
 #}
 
 ## arg 1:  the old package version
-#post_remove() {
-	# do something here
-#}
+post_remove() {
+	local x= module_list="zfs nvidia p_lkrg"
+        local dkms_dir=/etc/dkms dkms_link=
+
+        for x in $module_list; do
+		dkms_link="$dkms_dir/$x.conf"
+		if [ -L $dkms_link ]; then
+                                echo "Removing DKMS symlink: $dkms_link"
+                                rm -f $dkms_link
+                        fi
+                fi
+        done
+}
