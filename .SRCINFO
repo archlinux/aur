@@ -1,0 +1,20 @@
+pkgbase = zipkin
+	pkgdesc = Opensource Distributed Tracing System
+	pkgver = 2.21.7
+	pkgrel = 3
+	url = http://zipkin.io
+	install = zipkin.install
+	arch = any
+	license = APACHE
+	depends = java-runtime>=8
+	source = https://search.maven.org/remotecontent?filepath=io/zipkin/zipkin-server/2.21.7/zipkin-server-2.21.7-exec.jar
+	source = zipkin.sh
+	source = zipkin.sysusers
+	source = zipkin.service
+	sha1sums = f9b9bdf62f3bc20b0b07616dd0cd7723f5391218
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+
+pkgname = zipkin
+

@@ -1,0 +1,12 @@
+[Unit]
+Description=Zipkin distributed tracing system
+Documentation=https://zipkin.io/
+After=network.target
+
+[Service]
+Type=simple
+User=zipkin
+ExecStart=/usr/bin/zipkin
+
+[Install]
+WantedBy=multi-user.target
