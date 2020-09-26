@@ -4,11 +4,12 @@ pkgbase = linvst-x-bin
 	pkgrel = 1
 	url = https://github.com/osxmidi/LinVst-X
 	arch = x86_64
+	groups = pro-audio
 	license = GPL
 	depends = wine
 	depends = gtk3
 	optdepends = jack
-	conflicts = linvst-x
+	conflicts = linvstx
 	source = https://github.com/osxmidi/LinVst-X/releases/download/3.1/LinVst-X-3.1-Debian-rz.zip
 	md5sums = c40316afaa2b99fe95863209417b5c64
 
