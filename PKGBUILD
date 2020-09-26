@@ -5,7 +5,7 @@
 _pkgname="Snap4Arduino_desktop-gnu"
 _tname="Snap4Arduino"
 pkgname="snap4arduino"
-pkgver="5.1.0"
+pkgver="6.2"
 pkgrel="1"
 pkgdesc="A modification of the Snap! visual programming language that lets you seamlessly interact with almost all versions of the Arduino board."
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ options=('!strip')
 source_i686=("${_pkgname}-32_${pkgver}.tar.gz::https://github.com/bromagosa/${_tname}/releases/download/${pkgver}/${_pkgname}-32_${pkgver}.tar.gz")
 source_x86_64=("${_pkgname}-64_${pkgver}.tar.gz::https://github.com/bromagosa/${_tname}/releases/download/${pkgver}/${_pkgname}-64_${pkgver}.tar.gz")
 
-sha256sums_i686=('0b599275f5d1132335116967ff2983a434c4ae4260395b05292fbfa5562cc312')
-sha256sums_x86_64=('52d32af4d73d4568a3bbb1f8f5392c77902a12993a4dc7cdc6575aa67f1da8a0')
+sha256sums_i686=('72bdf9138e26d29ba2c965eecd017c7235904414352e235323fa24374419d4b2')
+sha256sums_x86_64=('312fd6a8aabfbe8d44a3f2795a0f93c2ed3da481b688150f3f54b78fdd9ecc3a')
 
 if [[ $CARCH == i686 ]]; then
     _dir="32";
@@ -62,4 +62,4 @@ package() {
     chmod +x ${pkgdir}/opt/${_tname}/{chromedriver,launcher*,minidump_stackwalk,nacl_*,nwjc,payload,run}
 }
 
-# vim:set ts=4 sw=4 et syn=sh ft=sh:
+# vim: set ts=4 sw=4 et syn=sh ft=sh:
