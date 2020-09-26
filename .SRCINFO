@@ -1,6 +1,6 @@
 pkgbase = notion-enhancer
 	pkgdesc = An enhancer/customiser for the all-in-one productivity workspace notion.so
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/dragonwocky/notion-enhancer
 	install = notion-enhancer
@@ -11,9 +11,9 @@ pkgbase = notion-enhancer
 	depends = notion-app>=1:2.0.7-3.2
 	depends = nodejs>=14.8.0-1
 	depends = asar>=3.0.3-1
-	noextract = notion-enhancer-0.9.0.tgz
-	source = https://registry.npmjs.org/notion-enhancer/-/notion-enhancer-0.9.0.tgz
-	md5sums = 1236b1b83a8605f0acbe65bfd02653cd
+	noextract = notion-enhancer-0.9.1.tgz
+	source = https://registry.npmjs.org/notion-enhancer/-/notion-enhancer-0.9.1.tgz
+	md5sums = e5567054115ca1e12d3bf85d9e1b7d6a
 
 pkgname = notion-enhancer
 
