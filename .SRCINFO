@@ -1,0 +1,17 @@
+pkgbase = rebel
+	pkgdesc = Fast, beautiful and focused note taking
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/kumarasinghe/rebel
+	arch = x86_64
+	license = MIT
+	depends = nss
+	depends = gtk3
+	options = !emptydirs
+	source = rebel-0.9.1.deb::https://github.com/kumarasinghe/rebel/releases/download/0.9.1/rebel-0.9.1-ubuntu-amd64.deb
+	source = LICENSE::https://github.com/kumarasinghe/rebel/raw/master/LICENSE
+	sha512sums = e9ea488684665b40b130ef86d64f4190b1a0f0736d232416b36cfd13eba4ddf0b46d0581ef87baffe5e2497f75a8a7ad51b7df8faf48019777fd86820c62185d
+	sha512sums = d094f158926e0ef3a7577ed8c0184a29a186201ce40457e4a4f42aeb8875eb5978a3feb882f25f228cbd78ea0aafbf81b6c19455422c91c6a0341476756585be
+
+pkgname = rebel
+
