@@ -3,7 +3,7 @@
 pkgname=('rdma-core-no-pandoc')
 _srcname='rdma-core'
 pkgdesc='RDMA core userspace libraries and daemons'
-pkgver='30.0'
+pkgver='31.0'
 _tag="v${pkgver}"
 pkgrel='2'
 arch=('x86_64')
