@@ -2,7 +2,7 @@
 pkgname=eclipse-java-bin
 pkgver=4.17
 _releasemonth="2020-09"
-pkgrel=1
+pkgrel=2
 pkgdesc="Highly extensible IDE"
 arch=('x86_64')
 url="https://www.eclipse.org"
@@ -26,4 +26,8 @@ package() {
 	ln -sv /opt/eclipse/eclipse "$pkgdir/usr/bin/eclipse"
 	install -Dm644 eclipse.desktop "$pkgdir/usr/share/applications/eclipse.desktop"
 	install -Dm644 eclipse.png "$pkgdir/usr/share/pixmaps/eclipse.png"
+	# Uncomment these lines if you want pacman -R to remove some extra eclipse files
+	# Will cause problems if you have other versions of eclipse installed
+	#mkdir -p "${pkgdir}${HOME}/.m2"
+	#mkdir -p "${pkgdir}${HOME}/.p2"
 }
