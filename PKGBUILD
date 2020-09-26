@@ -6,9 +6,9 @@
 
 _pkgname=instantclient-tools
 pkgname=oracle-${_pkgname}
-pkgver=19.6.0.0.0
-_urlver=19600
-_unzippath=instantclient_19_6
+pkgver=19.8.0.0.0
+_urlver=19800
+_unzippath=instantclient_19_8
 pkgrel=1
 pkgdesc="Data Pump, SQL*Loader and Workload Replay Client for Oracle Instant Client"
 arch=('x86_64')
@@ -25,9 +25,9 @@ DLAGENTS+=('manual::/usr/bin/false');
 source=(LICENSE
         "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}dbru.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         'c6ad2b6266412a7551005fc2b6e0463d')
+         'c57b0c86fe6273763b5b349adf643f9c')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            '6860f5106b2d2e464b9c5d5657111ec3951de7b5bcb3fa48806a1ab586e2c450')
+            '6ab05caae5742c37c150d3428b28fe72d4f1df035fc4dde906e2b418a9e142f6')
 
 plain "If you run into any problems downloading the files, get the .zip version from"
 plain "Oracle and place them in the PKGBUILD directory then re-run makepkg:"
