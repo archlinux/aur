@@ -1,25 +1,27 @@
-# Maintainer Alex Mcmillan <linuxguy93@gmail.com>
-
+# Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=linvst3-bin
-pkgver=1.8.2
+pkgver=2.1
 pkgrel=1
-pkgdesc="enables Windows vst3's to be used as Linux vst's in Linux vst capable DAW's"
+pkgdesc="Linux Windows vst3 wrapper/bridge"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst3"
-groups=('pro-audio')
-depends=('wine' 'freetype2' 'xcb-util' 'xcb-util-cursor' 'xcb-util-keysyms' 'libxkbcommon-x11' 'libx11' 'expat' 'gtkmm3' 'sqlite')
-replaces=('linvst3')
+license=('GPL')
+groups=('pro_audio')
+depends=('wine' 'gtk3')
 conflicts=('linvst3')
-provides=('linvst3' "${pkgname}")
-source=("https://github.com/osxmidi/LinVst3/releases/download/1.8/LinVst3-${pkgver}-Debian-Buster.zip")
-sha256sums=('6ba8644872a093959615b3a70817530214a1fb1bfaf98bfaeb803349e912f349')
+optdepends=('jack')
+source=("https://github.com/osxmidi/LinVst3/releases/download/2.1/LinVst3-$pkgver-Debian-rz.zip")
+md5sums=('a7fd6a3c6eafab840ba6902da52370ff')
 
 package() {
-	cd "${srcdir}/LinVst3-${pkgver}-Debian-Buster/embedded/"
-	for file in *.so; do
-        	install -Dm755 $file $pkgdir/usr/bin/$file
-	done
-	for file in *.exe; do
-		install -Dm755 $file $pkgdir/usr/bin/$file
-	done
+
+	# Embedded
+	install -Dm755 "$srcdir/LinVst3-$pkgver-Debian-rz/embedded/linvst3.so" "$pkgdir/usr/bin/linvst3.so"
+	install -Dm755 "$srcdir/LinVst3-$pkgver-Debian-rz/embedded/lin-vst3-servertrack.exe" "$pkgdir/usr/bin/lin-vst3-servertrack.exe"
+	install -Dm755 "$srcdir/LinVst3-$pkgver-Debian-rz/embedded/lin-vst3-servertrack.exe.so" "$pkgdir/usr/bin/lin-vst3-servertrack.exe.so"
+
+	# Converter
+	install -Dm755 "$srcdir/LinVst3-$pkgver-Debian-rz/convert/linvst3convert" "$pkgdir/usr/bin/linvst3convert"
+	install -Dm755 "$srcdir/LinVst3-$pkgver-Debian-rz/convert/linvst3converttree" "$pkgdir/usr/bin/linvst3converttree"
+
 }
