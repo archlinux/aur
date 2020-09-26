@@ -1,0 +1,20 @@
+pkgbase = ptmv-git
+	pkgdesc = An utf-8/truecolor image and video viewer for the terminal.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/kal39/ptmv.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = python3
+	makedepends = python-pip
+	depends = youtube-dl
+	provides = ptmv
+	conflicts = ptmv
+	source = git+https://github.com/kal39/ptmv.git
+	md5sums = SKIP
+
+pkgname = ptmv-git
+
