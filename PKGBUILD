@@ -12,7 +12,7 @@ url="https://www.libsdl.org"
 license=('MIT')
 depends=('lib32-glibc' 'lib32-libxext' 'lib32-libxrender' 'lib32-libx11' 'lib32-libgl'
          'lib32-libxcursor' 'sdl2' 'lib32-libxxf86vm')
-makedepends=('lib32-alsa-lib' 'lib32-mesa' 'lib32-libxrandr'
+makedepends=('lib32-alsa-lib' 'lib32-libxrandr'
              'lib32-libxinerama' 'lib32-libxkbcommon' 'lib32-libxxf86vm'
              'lib32-libxss' 'cmake' 'mercurial')
 optdepends=('lib32-alsa-lib: ALSA audio driver'
@@ -21,7 +21,8 @@ optdepends=('lib32-alsa-lib: ALSA audio driver'
             'jack: JACK audio support'
             'lib32-tslib: Touchscreen support'
             'lib32-wayland: wayland support'
-            'wayland-protocols: wayland support')
+            'wayland-protocols: wayland support'
+            'lib32-mesa: open source graphics support')
 provides=(lib32-sdl2)
 conflicts=(lib32-sdl2 lib32-sdl2-hg)
 source=("hg+http://hg.libsdl.org/SDL#branch=default")
