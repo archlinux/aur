@@ -6,9 +6,9 @@
 
 _pkgname=instantclient-sqlplus
 pkgname=oracle-${_pkgname}
-pkgver=19.6.0.0.0
-_urlver=19600
-_unzippath=instantclient_19_6
+pkgver=19.8.0.0.0
+_urlver=19800
+_unzippath=instantclient_19_8
 pkgrel=1
 pkgdesc="SQL*Plus for Oracle Instant Client"
 arch=('x86_64')
@@ -25,9 +25,9 @@ DLAGENTS+=('manual::/usr/bin/false');
 source=(LICENSE
         "https://download.oracle.com/otn_software/linux/instantclient/${_urlver}/${_pkgname}-linux.x64-${pkgver}dbru.zip")
 md5sums=('2d62e22e4f2d7e6d220fafde0f692a7d'
-         'a723347be650b07b438807bd622694c7')
+         'f7c8308af694869091a5c73a9491816d')
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            '0e74098b03ed20f60246703ffbc041bce5c3d07fe7b198269924dce5c22da2f3')
+            '90fbb84c2a5c21626bcaf3f4fdfa0771950fa545b5979ade6ce9c92a06f11a0b')
 
 plain "If you run into any problems downloading the files, get the .zip version from"
 plain "Oracle and place them in the PKGBUILD directory then re-run makepkg:"
