@@ -2,15 +2,14 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
-pkgver=2.0.3
-pkgrel=2
+pkgver=2.0.4
+pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
 license=('GPL3')
 depends=(
     'bash'
-    'yad'
 )
 optdepends=(
     'strace: write a strace log of the launched game'
@@ -35,10 +34,11 @@ optdepends=(
     'xorg-xprop: for optional window toggle and side-by-side VR'
     'gamescope: for optional GameScope support'
     'libnotify: for optional Notifier'
+    'yad: for the optional settings menu'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5f7784f805a8ab7d03da0ae1ac2b7997dee4f79b30426dd042ce43d4c3f79e89')
+sha256sums=('eb20966ea2be986276a34a45db94da97f3abd2b3b27e3490a86c1a947c3cff44')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
