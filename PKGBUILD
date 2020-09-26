@@ -1,4 +1,4 @@
-# Maintainer: Sander Vrijders <sander.vrijders@ugent.be>
+# Maintainer: Sander Vrijders <sander@ouroboros.rocks>
 pkgname=ouroboros-git
 pkgver=0.17.5.r0.gd68bb3b
 pkgrel=1
