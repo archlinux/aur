@@ -2,12 +2,12 @@
 
 _pkgname=kindle2anki
 pkgname=${_pkgname}-git
-pkgver=r9.181d533
+pkgver=r19.0173afb
 pkgrel=1
 pkgdesc='Add words from Kindle to Anki'
 url='https://github.com/psamim/kindle2anki'
 license=('GPL3')
-source=('https://github.com/psamim/kindle2anki.git'
+source=('git+https://github.com/psamim/kindle2anki.git'
         'kindle2anki.sh')
 sha256sums=('SKIP'
             '4fd11d9c95ff8f8c044a98248bc114cdcb7ee65ba10d2881a036fc419a677d68')
@@ -28,10 +28,6 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
 }
 
 package() {
