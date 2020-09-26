@@ -155,9 +155,10 @@ package_xorg-server-rootless-nosystemd-minimal-git() {
 
 package_xorg-server-xephyr-rootless-nosystemd-minimal-git() {
   pkgdesc="A nested X server that runs as an X application"
-  depends=(libxfont2 libgl libepoxy libunwind libxv pixman xorg-server-common-rootless-nosystemd-minimal-git
+  depends=(libxfont2 libgl libepoxy libxv pixman xorg-server-common-rootless-nosystemd-minimal-git
            xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
            nettle libtirpc)
+  optdepends=('libunwind: unwind backtrace support')
   conflicts=('xorg-server-xephyr')
   provides=('xorg-server-xephyr')
   

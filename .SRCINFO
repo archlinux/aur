@@ -73,7 +73,6 @@ pkgname = xorg-server-xephyr-rootless-nosystemd-minimal-git
 	depends = libxfont2
 	depends = libgl
 	depends = libepoxy
-	depends = libunwind
 	depends = libxv
 	depends = pixman
 	depends = xorg-server-common-rootless-nosystemd-minimal-git
@@ -83,6 +82,7 @@ pkgname = xorg-server-xephyr-rootless-nosystemd-minimal-git
 	depends = xcb-util-keysyms
 	depends = nettle
 	depends = libtirpc
+	optdepends = libunwind: unwind backtrace support
 	provides = xorg-server-xephyr
 	conflicts = xorg-server-xephyr
 
