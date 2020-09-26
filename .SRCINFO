@@ -1,0 +1,17 @@
+pkgbase = cubbit
+	pkgdesc = Cubbit desktop-sync application
+	pkgver = 7.1.2
+	pkgrel = 1
+	url = https://www.cubit.io/
+	arch = x86_64
+	license = custom
+	depends = gtk2
+	depends = hicolor-icon-theme
+	depends = libxss
+	depends = libxtst
+	options = !strip
+	source = https://get.cubbit.io/desktop/linux/Cubbit-7.1.2.AppImage
+	sha256sums = fd1007d7bec9bcbf72b6f8c5ea764344ecd4105ac9e09375b1828ccb3c838e46
+
+pkgname = cubbit
+
