@@ -1,0 +1,5 @@
+xorgproto-git
+src
+pkg
+*.pkg.*
+*.log

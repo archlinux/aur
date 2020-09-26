@@ -1,51 +1,56 @@
-# Maintainer: Det <nimetonmaili g-mail>  
-# Based on [extra]'s xorgproto: https://projects.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/xorgproto
+# Maintainer: Yurii Kolesnykov
+# Based on [extra]'s xorgproto by AndyRTR <andyrtr@archlinux.org>
 
 _pkgname=xorgproto
 pkgname=$_pkgname-git
-pkgver=2018.1.2.r2585.g5c6e9a6
+pkgver=2020.1.16.r2653.ge4d9ffd
 pkgrel=1
-pkgdesc="Combined X.Org X11 Protocol headers - Git version"
+pkgdesc="Combined X.Org X11 Protocol headers (git version)"
 arch=('any')
-url="http://cgit.freedesktop.org/xorg/proto/$_pkgname/"
+url="https://xorg.freedesktop.org/"
 license=('custom')
-makedepends=('git' 'xorg-util-macros') # 'xmlto' 'libxslt' 'linuxdoc-tools' 'docbook-sgml' 'fop')
-provides=('xorgproto' 'bigreqsproto' 'compositeproto' 'damageproto' 'dmxproto' 'dri2proto' 'dri3proto' 'fixesproto' 'fontsproto' 'glproto' 'inputproto' 'kbproto' 'presentproto' 'printproto' 'randrproto' 'recordproto' 'renderproto' 'resourceproto' 'scrnsaverproto' 'videoproto' 'xcmiscproto' 'xextproto' 'xf86dgaproto' 'xf86driproto' 'xf86miscproto' 'xf86vidmodeproto' 'xineramaproto' 'xproto')
+makedepends=('xorg-util-macros' 'meson' 'git')
+provides=('xorgproto')
 conflicts=(${provides[@]})
-replaces=(${provides[@]/xorgproto})
-source=("git://anongit.freedesktop.org/xorg/proto/$_pkgname")
-md5sums=('SKIP')
+source=("$pkgname::git://anongit.freedesktop.org/xorg/proto/$_pkgname")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd "$pkgname"
   echo $(git describe --long | cut -d "-" -f2-3 | tr - .).r$(git rev-list HEAD --count).$(git describe --long | cut -d "-" -f4)
 }
 
+prepare() {
+  rm -rf build
+  mkdir build
+}
+
 build() {
-  cd $_pkgname
+  arch-meson "$pkgname" build
+  ninja -C build
+}
 
-  msg2 "Starting autogen.sh..."
-  ./autogen.sh  --prefix=/usr \
-    --without-xmlto \
-    --without-xsltproc \
-    --without-fop
-
-  msg2 "Starting make..."
-  make
+check() {
+  meson test -C build
 }
 
 package() {
-  cd $_pkgname
+  DESTDIR="$pkgdir" ninja -C build install
 
-  msg2 "Starting make install..."
-  make DESTDIR="$pkgdir" install
+  # missing docs
+  install -m755 -d "${pkgdir}/usr/share/doc/${pkgname}"
+  install -m644 "$pkgname"/*.txt "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -m644 "$pkgname"/PM_spec "${pkgdir}/usr/share/doc/${pkgname}/"
+  rm "${pkgdir}"/usr/share/doc/${pkgname}/meson_options.txt
 
-  for i in COPYING*; do
-    install -Dm644 $i "$pkgdir"/usr/share/licenses/$_pkgname/$i
-  done
+  # licenses
+  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 "${pkgname}"/COPYING* "${pkgdir}/usr/share/licenses/${pkgname}/"
+  # remove licences of legacy stuff we don't ship anymore
+  rm -f "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING-{evieproto,fontcacheproto,lg3dproto,printproto,xcalibrateproto,xf86rushproto}
 
-  # Cleanup
-  rm -f "$pkgdir"/usr/include/X11/extensions/{apple,windows}*
-  rm -f "$pkgdir"/usr/share/licenses/$_pkgname/COPYING-{apple,windows}wmproto
-  rm -f "$pkgdir"/usr/share/pkgconfig/{apple,windows}wmproto.pc
+  # cleanup
+  rm -f "${pkgdir}"/usr/include/X11/extensions/apple*
+  rm -f "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING-{apple,windows}wmproto
+  rm -f "${pkgdir}"/usr/share/pkgconfig/applewmproto.pc
 }
