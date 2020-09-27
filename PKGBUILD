@@ -2,7 +2,7 @@
 # Maintainer: Alex Dahl <adahl1@umbc.edu>
 _name="partio"
 pkgname=${_name}
-pkgver=1.10.1
+pkgver=1.13.0
 _fragment="#tag=v${pkgver}"
 pkgrel=1
 pkgdesc="Particle IO and manipulation library"
