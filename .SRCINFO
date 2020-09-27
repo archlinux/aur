@@ -1,0 +1,12 @@
+pkgbase = rvlprog
+	pkgdesc = CLI tool for REVELPROG IS programmer
+	pkgver = 0.91
+	pkgrel = 1
+	url = https://gitlab.com/spectrum70/rvlprog
+	arch = x86_64
+	license = GPL3
+	source = https://gitlab.com/spectrum70/rvlprog/-/archive/0.91/rvlprog-0.91.tar.gz
+	md5sums = 4f30a539c9337af9ee47478c16580497
+
+pkgname = rvlprog
+
