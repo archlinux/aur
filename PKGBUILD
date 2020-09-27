@@ -1,6 +1,7 @@
-# Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
+# Maintainer of this PKGBUILD file: mehalter <micah at mehalter.com>
+# Contributor of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=write-good
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Naive linter for English prose"
 arch=('any')
@@ -9,7 +10,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('7a69215e1fcf1f5cb376086e6e56c3e5e6113b34ccb2747157b2d84e4a53b35e')
+sha256sums=('0c3e857846696947ae253bf776a46d4f0192636d667a8131adeae97bd9ad14e2')
 
 package() {
 	npm install -g \
