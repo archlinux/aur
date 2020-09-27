@@ -4,28 +4,28 @@
 # Contributor: Christoph Zeiler <rabyte*gmail>
 
 pkgname=sdl-ball
-pkgver=1.03
-pkgrel=3
+pkgver=1.04
+pkgrel=1
 pkgdesc="A Breakout clone with pretty graphics"
 arch=('x86_64')
 url="http://sdl-ball.sourceforge.net/"
 license=('GPL3')
 depends=('glu' 'sdl_mixer' 'sdl_ttf' 'sdl_image' 'wiiuse')
-source=("https://sourceforge.net/projects/sdl-ball/files/SDL-Ball_${pkgver}_build-6_src.tar.xz")
-sha256sums=('6910a7166d16e3bfe4a67b538d02e25eec0d06276aef399b9143fd246cd76442')
+source=("https://github.com/DusteDdk/SDL-Ball/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('c2e45f3663dc79762bf88d23d19fa875fca6dc73cd38e5e80f803072b7761bb2f98a3b20a16ea14b7d260624602892914aa96b9a485ca16cb5dadcfacd3dd57c')
 
 build() {
-  cd SDL-Ball_source_build_0006_src
+  cd SDL-Ball-$pkgver
 
   export LIBS='-lwiiuse'
   export CPPFLAGS+=' -DWITH_WIIUSE'
 
-  export CFLAGS="$CXXFLAGS $CPPFLAGS"
+  export CXXFLAGS+=" $CPPFLAGS"
   make DATADIR="/usr/share/sdl-ball/themes/"
 }
 
 package() {
-  cd SDL-Ball_source_build_0006_src
+  cd SDL-Ball-$pkgver
 
   install -d "$pkgdir"/usr/share/sdl-ball/leveleditor
   cp -r README themes "$pkgdir"/usr/share/sdl-ball/

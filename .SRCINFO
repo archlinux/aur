@@ -1,7 +1,7 @@
 pkgbase = sdl-ball
 	pkgdesc = A Breakout clone with pretty graphics
-	pkgver = 1.03
-	pkgrel = 3
+	pkgver = 1.04
+	pkgrel = 1
 	url = http://sdl-ball.sourceforge.net/
 	arch = x86_64
 	license = GPL3
@@ -10,8 +10,8 @@ pkgbase = sdl-ball
 	depends = sdl_ttf
 	depends = sdl_image
 	depends = wiiuse
-	source = https://sourceforge.net/projects/sdl-ball/files/SDL-Ball_1.03_build-6_src.tar.xz
-	sha256sums = 6910a7166d16e3bfe4a67b538d02e25eec0d06276aef399b9143fd246cd76442
+	source = https://github.com/DusteDdk/SDL-Ball/archive/1.04/sdl-ball-1.04.tar.gz
+	sha512sums = c2e45f3663dc79762bf88d23d19fa875fca6dc73cd38e5e80f803072b7761bb2f98a3b20a16ea14b7d260624602892914aa96b9a485ca16cb5dadcfacd3dd57c
 
 pkgname = sdl-ball
 
