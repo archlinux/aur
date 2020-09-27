@@ -1,4 +1,4 @@
-pkgbase = rae
+pkgbase = rae-cli
 	pkgdesc = RAE dictionary on the terminal / El Diccionario de la Real Academia Española desde la terminal.
 	pkgver = 0.12
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = rae
 	source = git+https://github.com/sardach/rae-cli
 	md5sums = SKIP
 
-pkgname = rae
+pkgname = rae-cli
 
