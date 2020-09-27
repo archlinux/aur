@@ -1,0 +1,14 @@
+pkgbase = dokuwiki-template-argon
+	pkgdesc = Dokuwiki Template based on the Argon Design System
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://www.dokuwiki.org/template:argon
+	arch = any
+	license = MIT
+	depends = dokuwiki
+	options = !strip
+	source = dokuwiki-template-argon-1.3.tar.gz::https://github.com/IceWreck/Argon-Dokuwiki-Template/archive/v1.3.tar.gz
+	sha512sums = 529a990b4f765b026412df4a54d7b1dc9445c37ae0a301b1189b224a54841e94b64a2c169627d3f6e718f491b8d598985487812daed272b5d2aa50e61439946d
+
+pkgname = dokuwiki-template-argon
+
