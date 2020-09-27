@@ -1,0 +1,4 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/radarr 0755 radarr radarr
+Z /var/lib/radarr - radarr radarr
+L /var/log/radarr - - - - /var/lib/radarr/logs/
