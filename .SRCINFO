@@ -1,0 +1,15 @@
+pkgbase = findfileconflicts
+	pkgdesc = Detect and solve possible file conflicts
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/artemanufrij/findfileconflicts
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	source = findfileconflicts-1.1.3.tar.gz::https://github.com/artemanufrij/findfileconflicts/archive/1.1.3.tar.gz
+	sha256sums = 027d280232703a024033add4f68c7b93e8c56340ecf4a7d20dc82bdcb990bb2b
+
+pkgname = findfileconflicts
+
