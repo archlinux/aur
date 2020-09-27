@@ -1,14 +1,11 @@
 [Unit]
-Description="auth-thu - Authentication utility for srun4000"
+Description=Authenticating utility for auth.tsinghua.edu.cn
 After=network-online.target
 
 [Service]
-Type=simple
-RemainAfterExit=yes
-ExecStart=bash -c "auth-thu -c ~/.config/auth-thu/config | grep 'Login Successfully!'"
-ExecStop=bash -c "auth-thu auth -c ~/.config/auth-thu/config --logout | grep 'Logout Successfully!'"
-RestartSec=5s
-Restart=on-failure
+ExecStart=auth-thu -D auth -k
+ExecStopPost=auth-thu -D deauth
+Restart=always
 
 [Install]
 WantedBy=default.target

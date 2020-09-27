@@ -1,16 +1,15 @@
 pkgbase = auth-thu
-	pkgdesc = Authentication utility for srun4000 (auth.tsinghua.edu.cn / auth4.tsinghua.edu.cn / Tsinghua-IPv4)
-	pkgver = 1.6.1
+	pkgdesc = A commandline Tunet (auth4/6.tsinghua.edu.cn, Tsinghua-IPv4) authentication tool
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://github.com/z4yx/GoAuthing
 	arch = x86_64
 	license = GPL3
 	makedepends = go
-	depends = glibc
-	source = auth-thu-1.6.1.tar.gz::https://github.com/z4yx/GoAuthing/archive/v1.6.1.tar.gz
+	source = auth-thu-1.9.3.tar.gz::https://github.com/z4yx/GoAuthing/archive/v1.9.3.tar.gz
 	source = auth-thu.service
-	sha256sums = b876ec554eb00ed0e85964548781e5e59d62e74218985f08df84a4bc58c8618f
-	sha256sums = 70b6f9881ead54da946636a93807e2a7b1f262959b4faa1fabc5b2592b76c2fc
+	sha256sums = f14759326419622871ce1ae8f54d29182529d38546938a7b0636fd34d3eb4ab3
+	sha256sums = 476e9a9f4442a5d6a0f0145bae40cc468710f8d8f121fce6eedce67fbacc32b3
 
 pkgname = auth-thu
 

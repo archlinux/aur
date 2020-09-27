@@ -1,27 +1,24 @@
 # Maintainer: Nick Cao <nickcao@nichi.co>
-pkgname='auth-thu'
-pkgver=1.6.1
+pkgname=auth-thu
+pkgver=1.9.3
 pkgrel=1
-pkgdesc="Authentication utility for srun4000 (auth.tsinghua.edu.cn / auth4.tsinghua.edu.cn / Tsinghua-IPv4)"
+pkgdesc="A commandline Tunet (auth4/6.tsinghua.edu.cn, Tsinghua-IPv4) authentication tool"
 arch=('x86_64')
 url="https://github.com/z4yx/GoAuthing"
 license=('GPL3')
-depends=('glibc')
 makedepends=('go')
-source=(
-    "auth-thu-$pkgver.tar.gz::https://github.com/z4yx/GoAuthing/archive/v$pkgver.tar.gz"
-    "auth-thu.service")
-sha256sums=('b876ec554eb00ed0e85964548781e5e59d62e74218985f08df84a4bc58c8618f'
-            '70b6f9881ead54da946636a93807e2a7b1f262959b4faa1fabc5b2592b76c2fc')
+source=("auth-thu-$pkgver.tar.gz::https://github.com/z4yx/GoAuthing/archive/v$pkgver.tar.gz"
+        "auth-thu.service")
+sha256sums=('f14759326419622871ce1ae8f54d29182529d38546938a7b0636fd34d3eb4ab3'
+            '476e9a9f4442a5d6a0f0145bae40cc468710f8d8f121fce6eedce67fbacc32b3')
 
 build() {
     cd "GoAuthing-$pkgver"
-    GO111MODULE=on
-    CGO_ENABLED=0
-    go build -trimpath -buildmode=pie -ldflags -extldflags=-Wl,-z,now,-z,relro -o auth-thu ./cli
+    CGO_ENABLED=0 go build -ldflags="-s -w" -o auth-thu ./cli
 }
 
 package() {
-    install -Dm755 "GoAuthing-$pkgver/auth-thu" "$pkgdir/usr/bin/auth-thu"
+    cd "GoAuthing-$pkgver"
+    install -Dm755 "auth-thu" "$pkgdir/usr/bin/auth-thu"
     install -Dm644 "$srcdir/auth-thu.service" "$pkgdir/usr/lib/systemd/user/auth-thu.service"
 }
