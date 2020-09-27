@@ -27,8 +27,7 @@ build() {
     python setup.py build
 
     echo "Generating auto-complete index. Takes 5-10 minutes..."
-    local PYTHONPATH=.
-    ./scripts/gen-ac-index --index-location=./ac.index
+    PYTHONPATH=. ./scripts/gen-ac-index --index-location=./ac.index
 }
 
 package() {
