@@ -1,6 +1,6 @@
 pkgbase = musiclake-git
 	pkgdesc = A cross-platform music player based on electron, with access to Netease Music, QQ Music and Xiami Music.
-	pkgver = 219.4399a52
+	pkgver = 224.38d4ca5
 	pkgrel = 1
 	url = https://github.com/sunzongzheng/music
 	arch = x86_64
@@ -8,13 +8,12 @@ pkgbase = musiclake-git
 	makedepends = python2
 	makedepends = git
 	makedepends = npm
+	makedepends = jq
 	provides = musiclake
 	conflicts = musiclake
 	options = !strip
 	source = musiclake::git://github.com/sunzongzheng/music.git
-	source = package.json
 	sha256sums = SKIP
-	sha256sums = 6cd0e1060d18c917cf1d438d0880e25bed4855cde559057fb0c6dd0bf0de748a
 
 pkgname = musiclake-git
 
