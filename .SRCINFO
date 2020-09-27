@@ -17,7 +17,7 @@ pkgbase = instamenu
 	replaces = instantmenu
 	replaces = dmenu
 	source = https://github.com/TheCynicalTeam/instantmenu/archive/2020.9.27-2.tar.gz
-	sha256sums = 8c5e49264cf71f730e43ff31eab308bc3e5e0eaed24d4da9b1afa655724ab0cb
+	sha256sums = 0a135b635883c58abde95a8aa6a4298cdb9392c445ac33f528109a0f05e75057
 
 pkgname = instamenu
 
