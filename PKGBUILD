@@ -2,21 +2,19 @@
 
 pkgname=musiclake-git
 _pkgname=musiclake
-pkgver=219.4399a52
+pkgver=224.38d4ca5
 pkgrel=1
 pkgdesc="A cross-platform music player based on electron, with access to Netease Music, QQ Music and Xiami Music."
 arch=('x86_64')
 url="https://github.com/sunzongzheng/music"
 license=('GPL3')
 depends=()
-makedepends=('python2' 'git' 'npm')
+makedepends=('python2' 'git' 'npm' 'jq')
 provides=('musiclake')
 conflicts=('musiclake')
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
-source=("$_pkgname::git://github.com/sunzongzheng/music.git"
-        "package.json")
-sha256sums=("SKIP"
-            "6cd0e1060d18c917cf1d438d0880e25bed4855cde559057fb0c6dd0bf0de748a")
+source=("$_pkgname::git://github.com/sunzongzheng/music.git")
+sha256sums=("SKIP")
 _filename=player-1.2.0-linux.AppImage
 
 pkgver() {
@@ -26,7 +24,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-    cp ../package.json ./ # our modified package.json will only generate AppImage binary
+    < package.json jq 'del(.build.dmg)' | jq 'del(.build.mac)' | jq 'del(.build.win)' | jq 'del(.build.nsis)' | jq '.build.linux.target = ["AppImage"]' > package.json.new && mv package.json.new package.json # modify package.json to generate AppImage binary only
     npm install
     npm audit fix
     npm run build
