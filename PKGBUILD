@@ -3,9 +3,9 @@
 pkgname=gnome-shell-extension-haguichi-indicator-git
 _gitname=gse-haguichi-indicator
 _uuid='gse-haguichi-indicator@ztefn.github.com'
-pkgver=r30.6d0d3db
+pkgver=r36.25968bd
 pkgrel=1
-pkgdesc="Let's you control Haguichi directly from the system status area in GNOME Shell."
+pkgdesc="Lets you control Haguichi directly from the system status area in GNOME Shell."
 arch=('any')
 url="https://github.com/ztefn/$_gitname"
 license=('GPL3')
