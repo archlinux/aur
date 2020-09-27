@@ -8,7 +8,7 @@ pkgdesc="a deezer downloader built from the ashes of Deezloader Remix."
 arch=('any')
 url="https://codeberg.org/RemixDev/$_pkgname"
 license=('gpl3')
-depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-requests'  'python-spotipy')
+depends=('python>=3.6' 'python-click' 'python-pycryptodomex' 'python-mutagen' 'python-requests'  'python-spotipy' 'python-eventlet')
 conflicts=('deemix')
 makedepends=('git')
 provides=('deemix')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=10 HEAD)"
 }
 
 build() {

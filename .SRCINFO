@@ -12,6 +12,7 @@ pkgbase = deemix-git
 	depends = python-mutagen
 	depends = python-requests
 	depends = python-spotipy
+	depends = python-eventlet
 	provides = deemix
 	conflicts = deemix
 	source = deemix::git+https://codeberg.org/RemixDev/deemix
