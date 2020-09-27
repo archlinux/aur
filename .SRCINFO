@@ -1,6 +1,6 @@
 pkgbase = nordic-kde-git
 	pkgdesc = Theme for KDE Plasma 5 using the awesome Nord color pallete
-	pkgver = 1.8.1.r1.gdad6343
+	pkgver = 1.9.0.r19.gf702c96
 	pkgrel = 1
 	url = https://github.com/EliverLara/Nordic
 	arch = any
@@ -13,11 +13,17 @@ pkgbase = nordic-kde-git
 
 pkgname = nordic-kde-git
 	optdepends = nordic-theme-git: Matching GTK theme
-	optdepends = kvantum-theme-nordic: Nordic theme for Kvantum Qt style (recommended)
+	optdepends = kvantum-theme-nordic-git: Nordic theme for Kvantum Qt style (recommended)
+	optdepends = sddm-nordic-theme-git: Nordic theme for SDDM
 	provides = nordic-kde
 
 pkgname = kvantum-theme-nordic-git
 	pkgdesc = Nordic theme for KDE Plasma 5
 	depends = kvantum-qt5
 	provides = kvantum-theme-nordic
+
+pkgname = sddm-nordic-theme-git
+	pkgdesc = Nordic theme for SDDM
+	depends = sddm
+	provides = sddm-nordic-theme
 
