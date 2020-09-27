@@ -18,10 +18,10 @@ index 2081d0c683a4..641133bf1ea4 100644
      'pixman.h',
      'pk11func.h',
      'pk11pqg.h',
-diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build b/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
+diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build b/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
 index 90b40431c7e4..03581f7c38b5 100644
---- a/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
-+++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
+--- a/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
++++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
 @@ -194,6 +194,28 @@ if CONFIG["OS_TARGET"] == "Linux":
          "/media/webrtc/trunk/webrtc/modules/desktop_capture/window_capturer_linux.cc"
      ]
