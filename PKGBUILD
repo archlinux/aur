@@ -8,16 +8,16 @@
 _pkgbase=vlc
 pkgname=vlc-nox
 pkgver=3.0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua' 'libidn'
-         'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
+         'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
-         'libarchive' 'freetype2' 'fribidi' 'harfbuzz' 'fontconfig' 'libxml2'
-         'gnutls' 'libplacebo' 'aribb24')
+         'libupnp' 'libarchive' 'freetype2' 'fribidi' 'harfbuzz'
+         'fontconfig' 'libxml2' 'gnutls' 'libplacebo' 'aribb24')
 makedepends=('live-media' 'libbluray' 'flac' 'libdc1394' 'libavc1394' 'libcaca'
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'systemd-libs'
              'libmtp' 'libupnp' 'libmicrodns' 'libdvdcss' 'smbclient'
@@ -92,16 +92,19 @@ replaces=('vlc' 'vlc-plugin' 'vlc-git')
 options=('!emptydirs')
 source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         update-vlc-plugin-cache.hook
-        lua53_compat.patch)
+        lua53_compat.patch
+        vlc-3.0.11.1-srt_1.4.2.patch)
 sha512sums=('8ce1e2f11aabf847dc5c55cf21ce6d7c0419a1051b5f4795e36cd060eab82d5056e44b4c070b80af56744e6aa841ef538386d08bc3b397a444e7258b2ba3f76b'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
-            '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f')
+            '33cda373aa1fb3ee19a78748e2687f2b93c8662c9fda62ecd122a2e649df8edaceb54dda3991bc38c80737945a143a9e65baa2743a483bb737bb94cd590dc25f'
+            '090c75878894f89184179f534da503a78234cf4f0f5af602873ea2ba6b68326afed71ef6160d1352bdd5c05e45b36bfcd23b7286d5111a900b7c11829642ae0d')
 
 prepare() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed -e 's|-Werror-implicit-function-declaration||g' -i configure
   patch -Np1 < "${srcdir}/lua53_compat.patch"
+  patch -Np1 < "${srcdir}/vlc-3.0.11.1-srt_1.4.2.patch"
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
 }
