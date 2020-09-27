@@ -1,12 +1,11 @@
 pkgbase = ytcc-git
 	pkgdesc = Command line tool to keep track of playlists
-	pkgver = r229.f067673
+	pkgver = r283.d97eebd
 	pkgrel = 1
 	url = https://github.com/woefe/ytcc
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = gettext
 	makedepends = python-setuptools
 	depends = python-click
 	depends = youtube-dl
