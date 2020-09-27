@@ -1,6 +1,6 @@
 # Maintainer: amtoaer <amtoaer@outlook.com>
 pkgname=iwsp-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Northeastern University Gymnasium Reservation."
 arch=('x86_64')
@@ -13,11 +13,11 @@ source=(
 )
 
 md5sums=(
-        'dc668a31b88456c8e723d399dd0a068c'
+        '928f25b64f59222d52819de8a2855601'
         '31fad0aacc583d621612630ce8f5a26c'
 )
 
 package(){
-        install -D -m 755 /iwsp-linux /usr/bin/iwsp
-        install -D -m 644 /LICENSE /usr/share/licenses/iwsp/LICENSE
+        install -D -m 755 $srcdir/iwsp-linux $pkgdir/usr/bin/iwsp
+        install -D -m 644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
