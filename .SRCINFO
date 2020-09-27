@@ -1,0 +1,19 @@
+pkgbase = kde1-kdetoys-git
+	pkgdesc = Historical copy of the toys module of KDE 1, adapted to compile on modern systems
+	pkgver = 1.1.2r204.2fdce62
+	pkgrel = 1
+	url = https://quickgit.kde.org/?p=kde1-kdetoys.git
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde1-kdelibs
+	provides = kde1-kdetoys
+	conflicts = kde1-kdetoys
+	source = git+https://github.com/KDE/kde1-kdetoys.git
+	md5sums = SKIP
+
+pkgname = kde1-kdetoys-git
+
