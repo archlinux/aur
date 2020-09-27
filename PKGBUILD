@@ -7,7 +7,7 @@ pkgdesc="Javascript Bindings for GNOME"
 url="https://gitlab.gnome.org/GNOME/gjs/blob/master/doc/Home.md"
 arch=(x86_64)
 license=(GPL)
-depends=('cairo' 'gobject-introspection-runtime' 'js68' 'dconf')
+depends=('cairo' 'gobject-introspection-runtime' 'js78' 'dconf')
 makedepends=('gobject-introspection' 'git' 'autoconf-archive' 'sysprof' 'meson')
 checkdepends=('valgrind' 'xorg-server-xvfb')
 provides=(gjs=$pkgver)
