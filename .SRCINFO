@@ -1,0 +1,15 @@
+pkgbase = plymouth-theme-serene-logo-git
+	pkgdesc = SereneLinux用のplymouthテーマ
+	pkgver = r5.4b6c944
+	pkgrel = 1
+	url = https://github.com/FascodeNet/plymouth-theme-serene
+	install = plymouth-theme-serene-logo-git.install
+	arch = any
+	license = GPL
+	depends = plymouth
+	conflicts = plymouth-theme-serene
+	source = git+https://github.com/FascodeNet/plymouth-theme-serene.git
+	md5sums = SKIP
+
+pkgname = plymouth-theme-serene-logo-git
+
