@@ -1,8 +1,8 @@
 diff --git a/cmd/vmessconv/main.go b/cmd/vmessconv/main.go
-index 15a116b..b33a9ca 100644
+index 15a116b..5fc5b47 100644
 --- a/cmd/vmessconv/main.go
 +++ b/cmd/vmessconv/main.go
-@@ -14,8 +14,8 @@ var (
+@@ -14,14 +14,14 @@ var (
  )
  
  func main() {
@@ -13,6 +13,13 @@ index 15a116b..b33a9ca 100644
  	showQ := flag.Bool("q", false, "show Quantumult format")
  	flag.Parse()
  	var link string
+ 	if flag.NArg() == 0 {
+ 		if link = os.Getenv("VMESS"); link == "" {
+-			fmt.Println(os.Args[0], "vmess://....")
++			fmt.Println(os.Args[0], "vmess:// ...")
+ 			flag.Usage()
+ 			os.Exit(1)
+ 		}
 @@ -33,21 +33,21 @@ func main() {
  	if err != nil {
  		log.Fatalln(err)
