@@ -1,0 +1,25 @@
+pkgbase = grsim-git
+	pkgdesc = RoboCup Small Size Robot Soccer Simulator
+	pkgver = v1.5.Beta1.r262.g59058ec
+	pkgrel = 1
+	url = https://github.com/RoboCup-SSL/grSim
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = mesa
+	makedepends = qt5-base
+	makedepends = ode
+	makedepends = protobuf
+	makedepends = boost
+	makedepends = vartypes-qt5
+	depends = gcc
+	depends = glibc
+	provides = grsim
+	conflicts = grsim
+	source = git+https://github.com/RoboCup-SSL/grSim.git
+	sha256sums = SKIP
+
+pkgname = grsim-git
+
