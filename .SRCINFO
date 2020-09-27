@@ -1,0 +1,14 @@
+pkgbase = rae
+	pkgdesc = RAE dictionary on the terminal / El Diccionario de la Real Academia Española desde la terminal.
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://github.com/sardach/rae-cli
+	arch = any
+	license = GPL3
+	depends = elinks
+	depends = curl
+	source = git+https://github.com/sardach/rae-cli
+	md5sums = SKIP
+
+pkgname = rae
+
