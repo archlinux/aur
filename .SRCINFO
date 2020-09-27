@@ -1,0 +1,23 @@
+pkgbase = asus-nb-ctrl-git
+	pkgdesc = Asus laptop control utilities
+	pkgver = 2.0.4.r4.gf61f62c
+	pkgrel = 1
+	url = https://github.com/wroberts/rogauracore
+	arch = x86_64
+	license = Mozilla Public License Version 2.0
+	makedepends = git
+	makedepends = rust
+	makedepends = make
+	makedepends = clang
+	depends = glibc
+	depends = libusb
+	depends = udev
+	depends = systemd
+	depends = hid-asus-rog-dkms-git
+	source = git+https://gitlab.com/asus-linux/asus-nb-ctrl.git
+	source = userpatch.patch
+	md5sums = SKIP
+	md5sums = 0add5394ceece18c95d338ec621db3c3
+
+pkgname = asus-nb-ctrl-git
+
