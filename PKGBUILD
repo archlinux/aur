@@ -2,12 +2,13 @@
 
 pkgname=asus-nb-ctrl-git
 pkgver=2.0.4.r4.gf61f62c
-pkgrel=1
+pkgrel=2
 pkgdesc="Asus laptop control utilities"
 arch=('x86_64')
 url="https://gitlab.com/asus-linux/asus-nb-ctrl"
 license=('Mozilla Public License Version 2.0')
-depends=('glibc' 'libusb' 'udev' 'systemd' 'hid-asus-rog-dkms-git')
+depends=('glibc' 'libusb' 'udev' 'systemd')
+optdepends=('asus-rog-nb-wmi-dkms-git: power and fan control')
 makedepends=('git' 'rust' 'make' 'clang')
 source=('git+https://gitlab.com/asus-linux/asus-nb-ctrl.git' 'userpatch.patch')
 md5sums=('SKIP' '0add5394ceece18c95d338ec621db3c3')

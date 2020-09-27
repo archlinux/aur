@@ -1,7 +1,7 @@
 pkgbase = asus-nb-ctrl-git
 	pkgdesc = Asus laptop control utilities
 	pkgver = 2.0.4.r4.gf61f62c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/asus-linux/asus-nb-ctrl
 	arch = x86_64
 	license = Mozilla Public License Version 2.0
@@ -13,7 +13,7 @@ pkgbase = asus-nb-ctrl-git
 	depends = libusb
 	depends = udev
 	depends = systemd
-	depends = hid-asus-rog-dkms-git
+	optdepends = asus-rog-nb-wmi-dkms-git: power and fan control
 	source = git+https://gitlab.com/asus-linux/asus-nb-ctrl.git
 	source = userpatch.patch
 	md5sums = SKIP
