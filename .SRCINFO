@@ -11,6 +11,7 @@ pkgbase = python2-pynacl-git
 	makedepends = libsodium
 	provides = python2-pynacl
 	replaces = python2-libnacl
+	replaces = python2-pynacl
 	source = python2-pynacl-git::git+https://github.com/pyca/pynacl.git
 	md5sums = SKIP
 
