@@ -1,7 +1,7 @@
 pkgbase = python-pyscipopt
 	pkgdesc = A Python Interface to the SCIP Optimization Suite.
-	pkgver = 3.0.1
-	pkgrel = 2
+	pkgver = 3.0.3
+	pkgrel = 1
 	url = http://scip.zib.de
 	arch = any
 	license = MIT
@@ -10,8 +10,8 @@ pkgbase = python-pyscipopt
 	depends = python
 	depends = scipoptsuite
 	conflicts = python-pyscipopt-git
-	source = https://github.com/SCIP-Interfaces/PySCIPOpt/archive/v3.0.1.tar.gz
-	md5sums = 413aa9cd8b29f561948632f8c7a4ecc7
+	source = https://github.com/SCIP-Interfaces/PySCIPOpt/archive/v3.0.3.tar.gz
+	md5sums = c22dce0f30b73a1f716a76ed46c66737
 
 pkgname = python-pyscipopt
 
