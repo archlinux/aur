@@ -11,7 +11,7 @@ license=('GNU General Public License v3.0')
 depends=('sh' 'libxinerama' 'libxft')
 makedepends=('git')
 provides=($pkgname instantmenu dmenu)
-conflicts=($pkgname instantmenu)
+replaces=($pkgname instantmenu dmenu)
 source=("https://github.com/TheCynicalTeam/$_pkgname/archive/$pkgver-$pkgrel.tar.gz")
 sha256sums=('8c5e49264cf71f730e43ff31eab308bc3e5e0eaed24d4da9b1afa655724ab0cb')
 
