@@ -1,0 +1,15 @@
+pkgbase = discover-overlay-git
+	pkgdesc = Yet another discord overlay for linux written in Python using GTK3
+	pkgver = v0.1.1.r7.ge0b6f83
+	pkgrel = 1
+	url = https://github.com/trigg/Discover
+	arch = x86_64
+	license = BSD
+	depends = python-gobject
+	depends = python-pyxdg
+	depends = python-websocket-client
+	source = git+https://github.com/trigg/Discover.git
+	sha512sums = SKIP
+
+pkgname = discover-overlay-git
+
