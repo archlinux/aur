@@ -16,16 +16,19 @@ pkgver() {
 }
 
 build() {
-   cargo build --release --locked --target-dir=target
+  cd "$pkgname"
+  cargo build --release --locked --target-dir=target
 }
 
 check() {
+  cd "$pkgname"
   cargo test --release --locked --target-dir=target
 }
 
 package() {
+  cd "$pkgname"
   install -Dm 4755 target/release/yas -t "${pkgdir}/usr/bin"
   #chmod 4755 "$pkgdir"/usr/bin/yas
-  install -Dm 755 $pkgname/LICENSE "${pkgdir}/usr/share/licenses/yas"
+  install -Dm 755 ../$pkgname/LICENSE "${pkgdir}/usr/share/licenses/yas"
 }
 
