@@ -1,6 +1,6 @@
 pkgname='stratisd-boot'
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Stratis binary for inclusion in initramfs to allow using Stratis as boot volume'
 arch=('x86_64')
 url='https://stratis-storage.github.io'
@@ -30,19 +30,11 @@ build() {
   make build-no-default
 }
 
-
-check() {
-  cd "stratisd-${pkgver}"
-
-  # Disabled temporarily - warning breaks compile
-  #make test
-}
-
 package() {
   cd "stratisd-${pkgver}"
   
-  install -Dm 755 'target/debug/stratisd' "${pkgdir}/usr/bin/stratisd-boot"
-  install -Dm 644 '../stratisd-boot.service' "${pkgdir}/usr/lib/systemd/system"
+  install -Dm 755 'target/debug/stratisd' -t "${pkgdir}/usr/bin/stratisd-boot"
+  install -Dm 644 '../stratisd-boot.service' -t "${pkgdir}/usr/lib/systemd/system"
   install -Dm 644 '../initcpio-install' "${pkgdir}/usr/lib/initcpio/install/stratis"
 }
 

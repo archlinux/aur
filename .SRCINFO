@@ -1,7 +1,7 @@
 pkgbase = stratisd-boot
 	pkgdesc = Stratis binary for inclusion in initramfs to allow using Stratis as boot volume
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stratis-storage.github.io
 	arch = x86_64
 	license = MPL2
