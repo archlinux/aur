@@ -1,32 +1,32 @@
-# Maintainer: Jesus Franco <jesusfranco at gmail dot com>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Jesus Franco <jesusfranco at gmail dot com>
 
-_pkgname="findfileconflicts"
+_pkgname='findfileconflicts'
 pkgname="${_pkgname}-git"
-_gitname=findfileconflicts
-pkgver=2018.04.04
+pkgver=1.1.3.r7.gd78810e
 pkgrel=1
-pkgdesc="Helps to find file names which could have conflicts on Windows"
-arch=('i686' 'x86_64')
-url="https://github.com/artemanufrij/${_pkgname}"
+pkgdesc='Detect and solve possible file conflicts'
+arch=('x86_64')
+url='https://github.com/artemanufrij/findfileconflicts'
 license=('GPL3')
+depends=('granite')
+makedepends=('git' 'meson' 'vala')
+provides=("${_pkgname}")
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
-depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'vala' 'granite' 'libpurple' 'gtksourceview3' 'libdbusmenu-gtk3')
-optdepends=('elementary-icon-theme')
-makedepends=('git' 'desktop-file-utils' 'hicolor-icon-theme' 'intltool' 'yelp-tools' 'gnome-common' 'gobject-introspection' 'meson' 'ninja')
-options=('!libtool')
-conflicts=('findfileconflicts' 'findfileconflicts-bzr')
-provides=('findfileconflicts')
-source=("git+https://github.com/artemanufrij/findfileconflicts.git")
-md5sums=('SKIP')
+pkgver() {
+  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-	cd "${_pkgname}"
-	meson build --prefix=/usr
-	cd build
-	ninja
+  arch-meson "${_pkgname}" build
+  meson compile -C build
 }
 
 package() {
-	cd "${_gitname}/build"
-	DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" meson install -C build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_pkgname}/README.md"
 }
+
+# vim: ts=2 sw=2 et:
