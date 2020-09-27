@@ -2,8 +2,8 @@
 
 pkgname=zy-player-appimage
 _pkgname=zy-player
-pkgver=2.4.7
-pkgrel=2
+pkgver=2.4.8
+pkgrel=1
 pkgdesc="跨平台视频资源播放器, 简洁免费无广告"
 arch=("x86_64")
 url="http://zyplayer.fun/"
