@@ -47,6 +47,19 @@ index 15a116b..5fc5b47 100644
  		fmt.Println()
  		fmt.Println("Quantumult:", lk.LinkStr("quan"))
  	}
+diff --git a/cmd/vmessping/main.go b/cmd/vmessping/main.go
+index bbcfb6a..d44870f 100644
+--- a/cmd/vmessping/main.go
++++ b/cmd/vmessping/main.go
+@@ -28,7 +28,7 @@ func main() {
+ 	var vmess string
+ 	if flag.NArg() == 0 {
+ 		if vmess = os.Getenv("VMESS"); vmess == "" {
+-			fmt.Println(os.Args[0], "vmess://....")
++			fmt.Println(os.Args[0], "vmess:// ...")
+ 			flag.Usage()
+ 			os.Exit(1)
+ 		}
 diff --git a/ping.go b/ping.go
 index 5eed928..b563d6d 100644
 --- a/ping.go

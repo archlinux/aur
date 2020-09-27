@@ -13,7 +13,7 @@ makedepends=('go')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "vmessping-0.3.4.patch")
 sha256sums=('1f3f1759039f83e32d3b8a824b9f7518e22ee07e515069a35d1dc22f36cd5f64'
-            '8a20300c396b6475adabc54110d3ffef7de6249a48352248aad2ee9dcb1ad2ea')
+            'd0a736017cf46485144a84fc389be1de3699da386ad1ef1e05ff32a098ba60d5')
 
 prepare() {
     cd "$srcdir"/"$pkgbase-$pkgver"/
