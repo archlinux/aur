@@ -2,5 +2,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!/*.conf
-!/*.install
+!sysusers.conf

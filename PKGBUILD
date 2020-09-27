@@ -4,14 +4,14 @@ pkgname=(
    'zapret-tpws-git'
 )
 pkgbase=zapret-git
-pkgver=r90.495a751
+pkgver=r92.0f09398
 pkgrel=1
 pkgdesc="Bypass deep packet inspection."
 arch=('x86_64')
 url="https://github.com/bol-van/zapret"
 license=('GPL')
 depends=('systemd' 'ipset' 'curl')
-#makedepends=()
+makedepends=('libnetfilter_queue')
 backup=('opt/zapret/config')
 provides=('zapret')
 conflicts=('zapret')
