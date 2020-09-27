@@ -2,17 +2,19 @@
 
 pkgname=sierrabreeze-kwin-decoration-git
 _gitname=SierraBreeze
-pkgver=r60.ca6e144
+pkgver=r65.a84c1c5
 pkgrel=1
 pkgdesc="OSX-like window decoration for KDE Plasma written in C++ (git version)"
 arch=('x86_64')
-url="https://github.com/ishovkun/SierraBreeze"
+url="https://github.com/muchanem/SierraBreeze"
 license=('GPL2')
 depends=('kwin')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
 optdepends=('breezemite-yakuake-git: Matching theme for Yakuake')
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+${url}.git"
+        "breezebutton.ccp.patch")
+sha256sums=('SKIP'
+            '8a98d8d59ca4c820759e53ac3e7281aa0e6bf87201bc2dcde4585ed60c18707d')
 
 pkgver() {
   
@@ -22,6 +24,12 @@ pkgver() {
   
 }
 
+prepare() {
+cd ${srcdir}/${_gitname}
+patch --strip=1 breezebutton.cpp < ../breezebutton.ccp.patch
+   
+}
+   
 build() {
   
    cd ${srcdir}/${_gitname}
