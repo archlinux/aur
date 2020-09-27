@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=radium
-pkgver=6.3.84
+pkgver=6.4.76
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(x86_64)
@@ -52,7 +52,7 @@ optdepends=(
 )
 options=(!strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz" add-vstsdk-location-var.patch)
-sha256sums=('70a92a328f8fd3779f0fb1ec78006a7b4d8320c399bf06e8f29f46cdf27fee11'
+sha256sums=('a2d28142b8bc8254802397b8b67ffea0e34046d65af0509d142cc0c3581a3333'
             '2466b88e345c48be43a835ee0001aac55189ce74b4181d3c4275e459089e7ccc')
 
 prepare() {
