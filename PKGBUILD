@@ -47,7 +47,7 @@ package_librealsense-git() {
   conflicts=('librealsense')
   cd "${srcdir}/${_pkgname}/build"
   DESTDIR="${pkgdir}" make install
-  rm -r ${pkgdir}/usr/lib/{python*}
+  rm -rf ${pkgdir}/usr/lib/python*
   cd "${srcdir}/${_pkgname}/config"
   sed -i 's/plugdev/video/g' 99-realsense-libusb.rules
   install -Dm644 99-realsense-libusb.rules "${pkgdir}/etc/udev/rules.d/99-realsense-libusb.rules"
