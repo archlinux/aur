@@ -1,14 +1,14 @@
 # Maintainer: Mads Kjeldgaard <mail@madskjeldgaard.dk>
 pkgname=linvstmanager-git
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical companion application for various bridges like LinVst, etc."
 arch=('x86_64')
 url="https://github.com/Goli4thus/linvstmanager"
 license=('GPL')
 groups=('pro-audio')
 depends=('wine' 'git')
-makedepends=('cmake' 'make' 'gcc' 'qt5-base')
+makedepends=('cmake' 'qt5-base')
 conflicts=('linvstmanager')
 optdepends=('jack' 'linvst-bin' 'linvst3-bin' 'linvst-x-bin' 'linvst3-x-bin')
 source=("https://github.com/Goli4thus/linvstmanager/archive/v$pkgver.zip")
@@ -19,7 +19,7 @@ build() {
 
 	mkdir build && cd build
 	cmake ..
-	make -j${nproc}
+	make
 }
 
 package() {
