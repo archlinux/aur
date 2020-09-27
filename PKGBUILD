@@ -1,50 +1,47 @@
+# Maintainer: Jimmy Xu <me at jimmyxu dot org>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-test-name-fromline'
-pkgver='0.11'
-pkgrel='1'
+_perlmod='Test-Name-FromLine'
+_modnamespace=Test
+pkgname=perl-test-name-fromline
+pkgver=0.13
+pkgrel=1
 pkgdesc="Auto fill test names from caller line"
-arch=('any')
-license=('PerlArtistic' 'GPL')
+arch=("any")
+url="http://search.cpan.org/dist/$_perlmod"
+license=('GPL' 'PerlArtistic')
+depends=('perl' 'perl-file-slurp' 'perl-test-differences' 'perl-test-fatal')
+makedepends=('perl-module-build')
 options=('!emptydirs')
-depends=('perl-file-slurp' 'perl-test-differences' 'perl-test-fatal')
-makedepends=()
-url='http://search.cpan.org/dist/Test-Name-FromLine'
-source=('http://search.cpan.org/CPAN/authors/id/S/SA/SATOH/Test-Name-FromLine-0.11.tar.gz')
-md5sums=('e7e7637079d127b411738aeff5612502')
-sha512sums=('4aa22fd1ac646ac39c56285d37d949680a83eb0462300d679f6aa8e112a471f7f73ba27228916d3b88ba7ae81c5647914226670e6d92beee5617430d47efa8c7')
-_distdir="Test-Name-FromLine-0.11"
+source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
+sha256sums=('cee6cc18f6f46f37fe4437130bad4e740df79818683f13f922763c0e9c5c6378')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  cd "$srcdir/$_perlmod-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Build.PL
-    /usr/bin/perl Build
-  )
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+
+  perl Build.PL
+  ./Build
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    /usr/bin/perl Build test
-  )
+  cd "$srcdir/$_perlmod-$pkgver"
+
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+
+  ./Build test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  /usr/bin/perl Build install
+  cd "$srcdir/$_perlmod-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+
+  ./Build install --installdirs=vendor --destdir="$pkgdir"
 }
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
 # vim:set ts=2 sw=2 et:

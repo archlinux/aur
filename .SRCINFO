@@ -1,18 +1,19 @@
 pkgbase = perl-test-name-fromline
 	pkgdesc = Auto fill test names from caller line
-	pkgver = 0.11
+	pkgver = 0.13
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Test-Name-FromLine
 	arch = any
-	license = PerlArtistic
 	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-build
+	depends = perl
 	depends = perl-file-slurp
 	depends = perl-test-differences
 	depends = perl-test-fatal
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SA/SATOH/Test-Name-FromLine-0.11.tar.gz
-	md5sums = e7e7637079d127b411738aeff5612502
-	sha512sums = 4aa22fd1ac646ac39c56285d37d949680a83eb0462300d679f6aa8e112a471f7f73ba27228916d3b88ba7ae81c5647914226670e6d92beee5617430d47efa8c7
+	source = http://cpan.perl.org/modules/by-module/Test/Test-Name-FromLine-0.13.tar.gz
+	sha256sums = cee6cc18f6f46f37fe4437130bad4e740df79818683f13f922763c0e9c5c6378
 
 pkgname = perl-test-name-fromline
 
