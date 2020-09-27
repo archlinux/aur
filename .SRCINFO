@@ -1,35 +1,35 @@
 pkgbase = oracle-xe
 	pkgdesc = a non free DBMS
-	pkgver = 11.2.0_1.0
-	pkgrel = 4
+	pkgver = 18.4.0_1.0
+	pkgrel = 1
 	url = http://www.oracle.com/
-	install = oracle.install
+	install = oracle-xe.install
 	arch = x86_64
 	license = custom
-	depends = libaio>=0.3.104
-	depends = gcc>=4.1.2
-	depends = binutils>=2.16.91.0.5
-	depends = make>=3.80
-	depends = glibc>=2.3.4-2.41
+	depends = libaio>=0.3.112-2
+	depends = gcc>=9.3.0-1
+	depends = binutils>=2.34-2.1
+	depends = make>=4.3-1
+	depends = glibc>=2.31-2
 	depends = bc
 	depends = net-tools
 	provides = oracle-xe
 	conflicts = oracle-xe
 	options = !strip
-	source = manual://download/file/from/oracle/page/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+	source = manual://download/file/from/oracle/page/oracle-database-xe-18c-1.0-1.x86_64.rpm
 	source = oracle_env.csh
 	source = oracle_env.sh
-	source = oracle-xe
-	source = oracle-xe.conf
-	source = listener.ora
+	source = oracle-xe-18c
+	source = oracle-xe-18c.conf
+	source = oracle-xe-18c.ld.so.conf
 	source = oracle-xe.service
-	md5sums = dd7881a55569d890241f11cd0eeb7d48
-	md5sums = cff2a6dbbbbf4d3454c05970183cc1b8
-	md5sums = 6dd1d97571b823e8f682f290edeb9e7b
-	md5sums = e558d7dcb9e455f8cb03db8638832774
-	md5sums = 5a3eaff3cb867d97cd250f04fe372ae7
-	md5sums = 4d4a2e1bcc29b9c1fd197b42ccc4e0ac
-	md5sums = 3dd923ac2df9fd38827fc9fc0048273a
+	sha256sums = 4df0318d72a0b97f5468b36919a23ec07533f5897b324843108e0376566d50c8
+	sha256sums = 5472f8ea19a2b33780146bc95e5dc9263bb9c05b18150d24d08a85f04ed86b84
+	sha256sums = 9b584b6403ec0a3c8567d1720347769c92ba9f02ee460979506d641a5aa32f8b
+	sha256sums = 5e8296afc2c6402146cec06c3c1f73516e340f3104581c59e0f66af12f80b8e8
+	sha256sums = 2d96e23869665f3648e54c85f004bf1b99f22ca227d7b148727b239135ae0e6b
+	sha256sums = 067e68295e4e2bcefe290ba0b8fcbe6594adc89de66875cc79c5e9f1190f8932
+	sha256sums = dc59dd2abd55678abd4566af7b0cabfe7837d5c43db6612905c3f8c7b498c992
 
 pkgname = oracle-xe
 

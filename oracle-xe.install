@@ -1,0 +1,539 @@
+pre_install(){
+  #Create the corresponding log for the RPM installation
+  RPM_LOG_LOCATION=/var/log/oracle-database-xe-18c/results
+  RPM_LOG_FILE=$RPM_LOG_LOCATION/oraInstall.log
+
+  mkdir -p $RPM_LOG_LOCATION
+  #Start the logging og the installation
+  echo '[INFO] Starting the installation process of the Oracle Database...' >> $RPM_LOG_FILE
+  echo $(date +%x-%r) >> $RPM_LOG_FILE
+
+  # Do not execute %pre section during upgrade
+  RPM_ORCL_USR='oracle'
+  RPM_ORCL_USR_ID='54321'
+
+  #Declare the arrays required to validate and create if necessary the required user groups
+  declare -a USER_GROUP_NAMES=('oinstall' 'dba' 'oper' 'backupdba' 'dgdba' 'kmdba' 'racdba')
+  declare -a USER_GROUP_IDS=('54321' '54322' '54323' '54324' '54325' '54326' '54330')
+
+  #User group data organized for Oracle home owner creation
+  PRIMARY_USER_GROUP_NAME='oinstall'
+  SECONDARY_USER_GROUPS_NAMES='dba,oper,backupdba,dgdba,kmdba,racdba'
+
+  # Identify platform on which this script is running, it might happen that it is running
+  # on a platform where rpm logic doesn't work as the rpm might have been converted to other
+  # installation media.
+  DISTRO=''
+
+  if [ -f /etc/debian_version ]; then
+    DISTRO='DEBIAN'
+  elif [ -f /etc/ubuntu_version ]; then
+    DISTRO='UBUNTU'
+  elif [ -f /etc/redhat-release ]; then
+    DISTRO='REDHAT'
+  elif [ -f /etc/lsb-release ]; then
+    DISTRO_NAME=$(lsb_release -si)
+    DISTRO="$(tr [a-z] [A-Z] <<< $DISTRO_NAME)"
+  else
+    DISTRO=$(uname -s)
+  fi
+
+  # User must be root
+
+  if [ $(id -u) != "0" ]; then
+    echo "[SEVERE] You must be the root user to install the software" >&2
+    exit 1
+  fi
+
+  # ORACLE_BASE must be unset
+  if `env | grep -q ORACLE_BASE`; then
+    unset ORACLE_BASE
+  fi
+  #check if the required user groups exists, if not then they are created.
+
+  USER_GROUP_INDEX=0
+  #Declare an array to store the detected remote groups during the pre check installation
+  declare -a REMOTE_GROUP_LIST=();
+
+  for TARGET_USER_GROUP in "${USER_GROUP_NAMES[@]}"
+  do
+    getent group "${TARGET_USER_GROUP}" >> /dev/null
+    if [ "$?" -ne "0" ]; then
+      #In case that the group is there, but not a primary one, then we lastly check locally
+      grep "^${TARGET_USER_GROUP}:" -q /etc/group
+      if [ "$?" -ne "0" ]; then
+        #group doesn't exist create it
+        groupadd -g "${USER_GROUP_IDS[USER_GROUP_INDEX]}" "${TARGET_USER_GROUP}"
+        if [ "$?" -ne "0" ]; then
+          echo "[SEVERE] Unable to create group $TARGET_USER_GROUP"
+          exit 1
+        fi
+      fi
+    else
+      REMOTE_GROUP_LIST+=("${TARGET_USER_GROUP}")
+    fi
+    ((USER_GROUP_INDEX++))
+  done
+
+  #check if rpm_oracle user exist, if not, create it
+  id "${RPM_ORCL_USR}" > /dev/null 2>&1;
+  if [ "$?" -ne "0" ]; then
+    #user doesn't exist, create it
+    useradd --uid "${RPM_ORCL_USR_ID}" --gid "${PRIMARY_USER_GROUP_NAME}" -G "${SECONDARY_USER_GROUPS_NAMES}" -M "${RPM_ORCL_USR}"
+
+    if [ "$?" -ne "0" ]; then
+      echo "[SEVERE] Unable to create user $RPM_ORCL_USR"
+      exit 1
+    fi
+  else
+    #If the user does exist then we check for the added groups
+    for TARGET_GROUP_NAME in "${USER_GROUP_NAMES[@]}"
+    do
+      getent group "${TARGET_GROUP_NAME}" | grep -w "${RPM_ORCL_USR}" > /dev/null
+      if [ "$?" -ne "0" ]; then
+        #If the user name is not currently part of the determined group,then we add it
+        /usr/sbin/usermod -a -G "${TARGET_GROUP_NAME}" "${RPM_ORCL_USR}"
+
+        #Check for operation status
+        if [ "$?" -ne "0" ]; then
+          echo "[WARNING] Unable to add ${RPM_ORCL_USR} to $TARGET_GROUP_NAME group. Verify and add it manually. Not doing so may cause some features to not work properly due incorrect user privileges on the system."
+        fi
+      fi
+    done
+  fi
+
+  #Verify that all the detected remote user groups were indeed added to the target user. Otherwise we flag the warning
+  for DETECTED_USER_GROUP in "${REMOTE_GROUP_LIST[@]}"
+  do
+    groups "${RPM_ORCL_USR}" | grep -q "\b${DETECTED_USER_GROUP}\b"
+    if [ "$?" -ne "0" ]; then
+      #The target user is not currently part not was added to a given remote group, therefore we need to flag it to the user
+      #It can proceed with no issues.
+      echo "[WARNING] The ${RPM_ORCL_USR} user couldn't be added to the ${DETECTED_USER_GROUP} group because such group is defined in a remote directory. It is recommended to complete this operation manually, not doing so may cause some features to not work properly due incorrect user privileges on the system."
+    fi
+  done
+
+  if [ -f '/etc/oraInst.loc' ]; then
+    INVENTORY_GROUP_NAME=`cat /etc/oraInst.loc | grep -o ^inst_group=.* | sed -e 's/^inst_group=//'`
+
+    echo "[INFO] Existing Oracle inventory detected. Currently owned by ${INVENTORY_GROUP_NAME}" >> $RPM_LOG_FILE
+
+    #if the user name is not currently part of the determined group,then we add it
+    /usr/sbin/usermod -a -G "${INVENTORY_GROUP_NAME}" "${RPM_ORCL_USR}"
+
+    #Check if indeed the user group was added to the oracle user
+    groups "${RPM_ORCL_USR}" | grep -q "\b${INVENTORY_GROUP_NAME}\b"
+    if [ "$?" -ne "0" ]; then
+      #The user group could not be added using the local command, therefore, we need to confirm that indeed is a remote (LDAP) group
+      getent group "${INVENTORY_GROUP_NAME}" >> /dev/null
+      if [ "$?" -eq "0" ]; then
+        echo "[WARNING] The ${RPM_ORCL_USR} user couldn't be added to the ${INVENTORY_GROUP_NAME} group because such group is defined in a remote directory. Verify and try again to register manually the Oracle home into the existing inventory."
+      else
+        echo "[WARNING] There was an issue when attempting to register the Oracle home into the existing inventory"
+      fi
+    fi
+  fi
+
+  # Check and disallow installation of 12.2, if oracle home  directory
+  # exists and is not empty
+
+  if  [ -d /opt/oracle/product/18c/dbhomeXE ]; then
+    if [ X"`ls -A  /opt/oracle/product/18c/dbhomeXE`" != "X" ]; then
+      echo "[SEVERE] The install cannot proceed because the directory \"/opt/oracle/product/18c/dbhomeXE\"
+      is not empty. Remove its contents and retry the installation."
+      echo
+      exit 1
+    fi
+  fi
+
+  # Check and disallow if ORACLE_BASE directory /opt/oracle exists and not owned by oracle:oinstall
+
+  if [ -d /opt/oracle ]; then
+    if [ "`ls -ld /opt/oracle | grep ^d | awk '{ print $3}'`" != "${RPM_ORCL_USR}" ]; then
+      echo
+      echo "[SEVERE] The install cannot proceed because ORACLE_BASE directory (/opt/oracle)
+is not owned by \"${RPM_ORCL_USR}\" user. You must change the ownership of ORACLE_BASE
+      directory to \"$RPM_ORCL_USR\" user and retry the installation."
+      echo
+      exit 1
+    fi
+  fi
+
+  if [ -d /opt/oracle ]; then
+    if [ "`ls -ld /opt/oracle | grep ^d | awk '{ print $4}'`" != "${PRIMARY_USER_GROUP_NAME}" ]; then
+      echo
+      echo "[SEVERE] The install cannot proceed because ORACLE_BASE directory (/opt/oracle)
+is not owned by \"${PRIMARY_USER_GROUP_NAME}\" group. You must change the ownership of
+      ORACLE_BASE directory to \"${PRIMARY_USER_GROUP_NAME}\" group and retry the installation."
+      echo
+      exit 1
+    fi
+  fi
+
+  # Check and change directory permissions to 755 if it is less at all the levels of the Oracle home path.
+
+  if [ -d /opt/oracle  ]; then
+    if test `stat -c "%a" /opt` -lt 755; then
+      chmod 755 /opt
+    fi
+  fi
+
+  if [ -d /opt/oracle ]; then
+    if test `stat -c "%a" /opt/oracle` -lt 755; then
+      chmod 755 /opt/oracle
+    fi
+  fi
+
+  if [ -d /opt/oracle/product ]; then
+    if test `stat -c "%a" /opt/oracle/product` -lt 755; then
+      chmod 755 /opt/oracle/product
+    fi
+  fi
+
+  if [ -d  /opt/oracle/product/18c ]; then
+    if test `stat -c "%a" /opt/oracle/product/18c` -lt 755; then
+      chmod 755 /opt/oracle/product/18c
+    fi
+  fi
+
+  if [ -d /opt/oracle/product/18c/dbhomeXE ]; then
+    if test `stat -c "%a" /opt/oracle/product/18c/dbhomeXE` -lt 755; then
+      chmod 755 /opt/oracle/product/18c/dbhomeXE
+    fi
+  fi
+
+  # Check and disallow for the required  diskspace is not present on the system
+  if [ -d /opt/oracle ]
+  then
+    diskspace=`df -Pk /opt/oracle | grep % | tr -s " " | cut -d" " -f4 | tail -1`
+    diskspace=`expr $diskspace / 1024`
+    if [ $diskspace -lt 7680 ]
+    then
+      echo "[SEVERE] You have insufficient diskspace in the destination directory (/opt/oracle)
+to install Oracle Database 18c Express Edition.  The installation requires at
+      least 7680 MB free on this disk."
+      exit 1
+    fi
+elif [ -d /opt ]
+  then
+    diskspace=`df -k /opt | grep % | tr -s " " | cut -d" " -f4 | tail -1`
+    diskspace=`expr $diskspace / 1024`
+    if [ $diskspace -lt 7680 ]
+    then
+      echo "[SEVERE] You have insufficient diskspace in the destination directory (/opt) to
+install Oracle Database 18c Express Edition.  The installation requires at
+      least 7680 MB free on this disk."
+      exit 1
+    fi
+  else
+    diskspace=`df -Pk / | grep % | tr -s " " | cut -d" " -f4 | tail -1`
+    diskspace=`expr $diskspace / 1024`
+    if [ $diskspace -lt 7680 ]
+    then
+      echo "[SEVERE] You have insufficient diskspace to install Oracle Database 18c Express Edition.
+      The installation requires at least 7680 MB free diskspace."
+      exit 1
+
+    fi
+  fi
+
+  # Check and disallow install, if RAM is less than 1 GB
+  space=`cat /proc/meminfo | grep '^MemTotal' | awk '{print $2}'`
+  PhyMem=`expr $space / 1024`
+  swapspace=`free -m | grep Swap | awk '{print $4}'`
+
+  if [ $PhyMem -lt 1024 ]
+  then
+    echo "[SEVERE] Oracle Database 18c Express Edition requires a minimum of 1GB of physical
+memory (RAM).  This system has $PhyMem MB of RAM and does not meet minimum
+    requirements."
+    echo
+    exit 1
+  fi
+
+  # Finally, we check for the docker-based installs that we disable the hard memlock parameter for the oracle user
+  # to assure that the post installation and database lifecycle in the environment.
+  if `env | grep -q ORACLE_DOCKER_INSTALL`
+  then
+    echo "[INFO] Container installation detected, adjusting corresponding parameters..." >> $RPM_LOG_FILE
+    target_security_file=/etc/security/limits.d/oracle-database-preinstall-18c.conf
+
+    if [ -f $target_security_file ]
+    then
+      # Proceed to update the corresponding parameter
+      target_txt=`cat $target_security_file | grep -e 'oracle *hard *memlock*'`
+      `sed -i "/^$target_txt/ c#$target_txt" $target_security_file`
+      echo "[INFO] Container related settings updated" >> $RPM_LOG_FILE
+    else
+      echo "[WARNING] Container parameters not found, skipping parameters modification"
+    fi
+  fi
+
+  # At the end we need to check that the RPM_ORCL_USR has the required su privilegies for the post install and
+  # further configuration actions for the Oracle Database.
+  su $RPM_ORCL_USR -c "echo Testing..." >> /dev/null
+  if [ $? -ne "0" ]
+  then
+    echo "[SEVERE] The su command is not configured properly or the $RPM_ORCL_USR user does not have the required privileges to install the Oracle database. If you are running in a Docker environment, ensure to set the environment variable ORACLE_DOCKER_INSTALL=true and try again.";
+    exit 1
+  fi
+}
+
+post_install(){
+  RPM_LOG_FILE=/var/log/oracle-database-xe-18c/results/oraInstall.log;
+  INVENTORY_SETUP_ALREADY=false;
+  if [ -f '/etc/oraInst.loc' ]; then
+    INVENTORY_LOC=`cat /etc/oraInst.loc | grep -o ^inventory_loc=.* | sed -e 's/^inventory_loc=//'`;
+    echo "[INFO] Inventory located at: ${INVENTORY_LOC}" >> $RPM_LOG_FILE;
+    INVENTORY_SETUP_ALREADY=true;
+  else
+    INVENTORY_LOC='/opt/oracle/oraInventory';
+  fi
+  INVENTORY_FILE="${INVENTORY_LOC}/ContentsXML/inventory.xml";
+  SEQ=1;
+  MAX_VAL=0;
+  ORA_HOME_NAME_PREFIX='OraHome_';
+  NEW_ORA_HOME_NAME='OraHomeXE';
+  if [ -f "${INVENTORY_FILE}" ]; then
+    LAST_ORA_HOME_NAME=`cat ${INVENTORY_FILE} | grep -o 'NAME=['"'"'"][^"'"'"']*['"'"'"]' | sed -e 's/^NAME=["'"'"']//' -e 's/["'"'"']$//' | sort | uniq | tail -n 1`;
+    if [ ! -z "${LAST_ORA_HOME_NAME}" ]; then
+      MAX_VAL="${LAST_ORA_HOME_NAME//[!0-9]/}";
+      if [ -z "${MAX_VAL}" ]; then
+        ORA_HOME_NAME_PREFIX="${LAST_ORA_HOME_NAME}_"
+      fi
+      SEQ="$(($MAX_VAL + 1))"
+    fi
+    NEW_ORA_HOME_NAME="$ORA_HOME_NAME_PREFIX$SEQ"
+    echo "[INFO] Oracle home name defined as: ${NEW_ORA_HOME_NAME}" >> $RPM_LOG_FILE;
+  fi
+  chown -R oracle:oinstall /opt/oracle
+  echo "[INFO] Registering Oracle home to the Oracle inventory..." >> $RPM_LOG_FILE;
+  su -c "/opt/oracle/product/18c/dbhomeXE/oui/bin/runInstaller.sh -silent -ignoreSysPrereqs -detachHome ORACLE_HOME=/opt/oracle/product/18c/dbhomeXE ORACLE_BASE=/opt/oracle ORACLE_HOME_NAME=${NEW_ORA_HOME_NAME} INVENTORY_LOCATION=${INVENTORY_LOC} " >> /dev/null -m oracle
+  su -c "/opt/oracle/product/18c/dbhomeXE/oui/bin/runInstaller.sh -silent -ignoreSysPrereqs -attachHome ORACLE_HOME=/opt/oracle/product/18c/dbhomeXE ORACLE_BASE=/opt/oracle ORACLE_HOME_NAME=${NEW_ORA_HOME_NAME} INVENTORY_LOCATION=${INVENTORY_LOC} " >> /dev/null -m oracle
+  if [ $? -ne "0" ]; then
+    echo "[SEVERE] An error occurred while registering the Oracle home. Verify logs in ${RPM_LOG_FILE} and ${INVENTORY_LOC} for more details and try again."
+    exit 1
+  fi
+  echo "[INFO] Oracle home registered to the Oracle inventory." >> $RPM_LOG_FILE;
+  echo "[INFO] Executing post installation scripts...">> $RPM_LOG_FILE;
+  echo "[INFO] Executing post installation scripts...";
+  if [ "$INVENTORY_SETUP_ALREADY" = "false" ];  then
+    echo "[INFO] Setting up inventory as it has not been setup on this machine." >> $RPM_LOG_FILE;
+    if [ -f "${INVENTORY_LOC}/orainstRoot.sh" ]
+    then
+      ${INVENTORY_LOC}/orainstRoot.sh >> /dev/null
+    fi
+  fi
+  /opt/oracle/product/18c/dbhomeXE/root.sh >> /dev/null
+  chmod 6751 /opt/oracle/product/18c/dbhomeXE/bin/oracle >> /dev/null
+  if [ "$INVENTORY_SETUP_ALREADY" = "false" ];  then
+    if [ -f "/etc/oratab" ]
+    then
+      chown -R oracle:oinstall /etc/oratab
+    fi
+  fi
+  echo "[INFO] Configuring ADR directories..." >> $RPM_LOG_FILE;
+  su -c "/opt/oracle/product/18c/dbhomeXE/bin/diagsetup clustercheck=false basedir=/opt/oracle oraclehome=/opt/oracle/product/18c/dbhomeXE " >> /dev/null -m oracle
+  if [ $? -ne "0" ]; then
+    echo "[SEVERE] An error occurred while configuring the ADR directories for the Oracle home. Verify the execution of the following command: /opt/oracle/product/18c/dbhomeXE/bin/diagsetup clustercheck=false basedir=/opt/oracle oraclehome=/opt/oracle/product/18c/dbhomeXE "
+    exit 1
+  fi
+  echo "[INFO] ADR directories configured." >> $RPM_LOG_FILE;
+  echo "[INFO] Post installation scripts executed successfully." >> $RPM_LOG_FILE;
+
+  echo "[INFO] Oracle home installed successfully and ready to be configured." >> $RPM_LOG_FILE;
+  echo "[INFO] Oracle home installed successfully and ready to be configured.";
+  echo "To configure Oracle Database XE, optionally modify the parameters in '/etc/sysconfig/oracle-xe-18c.conf' and then execute '/etc/init.d/oracle-xe-18c configure' as root."
+}
+
+pre_remove(){
+  RPM_LOG_FILE=/var/log/oracle-database-xe-18c/results/oraInstall.log;
+  echo "[PRE-UNINSTALL]" >> $RPM_LOG_FILE;
+  echo "[INFO] Performing uninstall actions on Oracle home..." >> $RPM_LOG_FILE;
+  echo "$(date +%x-%r)" >> $RPM_LOG_FILE;
+  TMP_FOLDER='/tmp';
+  FOLDER_NAME_FRM="deinstall_rsp_";
+  SEQ=1;
+  IS_ENV_CLEAN=false;
+  SEARCH_RES=`find $TMP_FOLDER -maxdepth 1 -type d -name $FOLDER_NAME_FRM* | sort -t'_' -n -k3 | tail -n 1`;
+  if [ ! -z "$SEARCH_RES" ]; then
+    MAX_VAL="${SEARCH_RES//[!0-9]/}";
+    SEQ="$(($MAX_VAL + 1))";
+  fi
+  DEINST_FOLDER="$FOLDER_NAME_FRM$SEQ";
+  mkdir -p "$TMP_FOLDER"/"$DEINST_FOLDER"
+  chmod -R 777  "$TMP_FOLDER"
+  echo "[INFO] Discovering configuration in Oracle home ..." >> $RPM_LOG_FILE;
+  if [ -f  "/opt/oracle/product/18c/dbhomeXE/deinstall/deinstall" ]; then
+    su -c  "/opt/oracle/product/18c/dbhomeXE/deinstall/deinstall -silent -checkonly -tmpdir $TMP_FOLDER/$DEINST_FOLDER > /dev/null" -m oracle
+    if [ $? -ne "0" ]; then
+      echo "[SEVERE] An error occured while discovering the configuration of the Oracle home. Verify the deinstall logs for more details."
+      exit 1
+    fi
+    echo "[INFO] Configuration discovering completed ..." >> $RPM_LOG_FILE;
+    DEINST_SPEC_FILE=`find $TMP_FOLDER/$DEINST_FOLDER -type f -name *.rsp`;
+    if [ ! -z "$DEINST_SPEC_FILE" ]; then
+      LISTENERS_VALUE=`awk -F= -v key="NETCA_LOCAL_LISTENERS" '$1==key {print $2}' $DEINST_SPEC_FILE`;
+      DBS_VALUE=`awk -F= -v key="DB_UNIQUE_NAME_LIST" '$1==key {print $2}' $DEINST_SPEC_FILE`;
+      if [ -z "$LISTENERS_VALUE" ] && [ -z "$DBS_VALUE" ]
+      then
+        IS_ENV_CLEAN=true;
+      fi
+    else
+      echo "[SEVERE] Deinstall parameter file not found. Automatic deinstallation cannot proceed.";
+      exit 1
+    fi
+    if [ "$IS_ENV_CLEAN" = true ]; then
+      echo "[INFO] Proceeding with RPM deinstallation ..." >> $RPM_LOG_FILE;
+      su -c "/opt/oracle/product/18c/dbhomeXE/oui/bin/detachHome.sh > /dev/null" -m oracle
+      if [ $? -ne "0" ]; then
+        echo "[SEVERE] An error occured while detaching the Oracle home from the inventory. Verify and try again."
+        exit 1
+      fi
+    else
+      echo "[SEVERE] Database or a listener exists. To delete the database and the listener run '/etc/init.d/oracle-xe-18c delete' as root.";
+      exit 1
+    fi
+  else
+    echo "[INFO] Oracle home software not found ..." >> $RPM_LOG_FILE
+  fi
+  echo "[INFO] Oracle home software removed successfully." >> $RPM_LOG_FILE
+}
+
+post_remove(){
+  if [ -f '/etc/oraInst.loc' ]; then
+    #Existing inventory found!!
+    INVENTORY_LOCATION=`cat /etc/oraInst.loc | grep -o ^inventory_loc=.* | sed -e 's/^inventory_loc=//'`;
+    INVENTORY_FILE="${INVENTORY_LOCATION}/ContentsXML/inventory.xml";
+    #First validate if the inventory is already empty
+    if `grep -q '<HOME *NAME=' $INVENTORY_FILE`; then
+      #Registered homes found
+      if `grep -v '<HOME *NAME=.*LOC=\"/opt/oracle/.*REMOVED=\"T\"' $INVENTORY_FILE | grep -q '<HOME *NAME=.*LOC=\"/opt/oracle/'`; then
+        #Remove everything under RPM home;
+        rm -rf /opt/oracle/product/18c/dbhomeXE >> /dev/null;
+        grep -v '<HOME *NAME=.*LOC=\"/opt/oracle/product/18c.*REMOVED=\"T\"' $INVENTORY_FILE | grep -q '<HOME *NAME=.*LOC=\"/opt/oracle/product/18c'
+        if [ $? != 0 ];then
+          #Remove up to version location since there are no more homes registered to that product version
+          rm -rf /opt/oracle/product/18c >> /dev/null;
+        fi
+      else
+        #Cleaning oracle base with exception of oraInventory
+        rm -rf /opt/oracle/product/18c/dbhomeXE >> /dev/null;
+        ADMIN_FOLDER=/opt/oracle/admin;
+        if [ -d "$ADMIN_FOLDER" ] && [ -z "$(ls -A $ADMIN_FOLDER)" ]; then
+          rm -rf $ADMIN_FOLDER >> /dev/null;
+        fi
+        AUDIT_FOLDER=/opt/oracle/audit;
+        if [ -d "$AUDIT_FOLDER" ] && [ -z "$(ls -A $AUDIT_FOLDER)" ]; then
+          rm -rf $AUDIT_FOLDER >> /dev/null;
+        fi
+        CFGTOOLLOGS_FOLDER=/opt/oracle/cfgtoollogs;
+        if [ -d "$CFGTOOLLOGS_FOLDER" ] && [ -z "$(ls -A $CFGTOOLLOGS_FOLDER)" ]; then
+          rm -rf $CFGTOOLLOGS_FOLDER >> /dev/null;
+        fi
+        CHECKPOINTS_FOLDER=/opt/oracle/checkpoints;
+        if [ -d "$CHECKPOINTS_FOLDER" ] && [ -z "$(ls -A $CHECKPOINTS_FOLDER)" ]; then
+          rm -rf $CHECKPOINTS_FOLDER >> /dev/null;
+        fi
+        DIAG_FOLDER=/opt/oracle/diag;
+        #Using files to assure cross console env compatibility
+        if [ -d "$DIAG_FOLDER" ]; then
+          DIAG_EMPTY_LOG=/tmp/diag_empty_folders.tmp;
+          DIAG_FOLDER_LOG=/tmp/diag_folders.tmp;
+          find $DIAG_FOLDER/* -type d -empty > $DIAG_EMPTY_LOG;
+          find $DIAG_FOLDER/* -type d > $DIAG_FOLDER_LOG;
+          if [ -z "$(diff $DIAG_EMPTY_LOG $DIAG_FOLDER_LOG)" ]; then
+            rm -rf $DIAG_FOLDER >> /dev/null;
+          fi
+          rm -rf $DIAG_EMPTY_LOG >> /dev/null;
+          rm -rf $DIAG_FOLDER_LOG >> /dev/null;
+        fi
+        FRA_FOLDER=/opt/oracle/fast_recovery_area;
+        if [ -d "$FRA_FOLDER" ] && [ -z "$(ls -A $FRA_FOLDER)" ]; then
+          rm -rf $FRA_FOLDER >> /dev/null;
+        fi
+        ORADATA_FOLDER=/opt/oracle/oradata;
+        if [ -d "$ORADATA_FOLDER" ] && [ -z "$(ls -A $ORADATA_FOLDER)" ]; then
+          rm -rf $ORADATA_FOLDER >> /dev/null;
+        fi
+        PRODUCT_FOLDER=/opt/oracle/product;
+        #Using files to assure cross console env compatibility
+        if [ -d "$PRODUCT_FOLDER" ]; then
+          PRODUCT_EMPTY_LOG=/tmp/product_empty_folders.tmp;
+          PRODUCT_FOLDER_LOG=/tmp/product_folders.tmp;
+          find $PRODUCT_FOLDER/* -type d -empty > $PRODUCT_EMPTY_LOG;
+          find $PRODUCT_FOLDER/* -type d > $PRODUCT_FOLDER_LOG;
+          if [ -z "$(diff $PRODUCT_EMPTY_LOG $PRODUCT_FOLDER_LOG)" ]; then
+            rm -rf $PRODUCT_FOLDER >> /dev/null;
+          fi
+          rm -rf $PRODUCT_EMPTY_LOG >> /dev/null;
+          rm -rf $PRODUCT_FOLDER_LOG >> /dev/null;
+        fi
+      fi
+    else
+      #Can wipe everything
+      rm -rf /opt/oracle/product/18c/dbhomeXE >> /dev/null;
+      ADMIN_FOLDER=/opt/oracle/admin;
+      if [ -d "$ADMIN_FOLDER" ] && [ -z "$(ls -A $ADMIN_FOLDER)" ]; then
+        rm -rf $ADMIN_FOLDER >> /dev/null;
+      fi
+      AUDIT_FOLDER=/opt/oracle/audit;
+      if [ -d "$AUDIT_FOLDER" ] && [ -z "$(ls -A $AUDIT_FOLDER)" ]; then
+        rm -rf $AUDIT_FOLDER >> /dev/null;
+      fi
+      CFGTOOLLOGS_FOLDER=/opt/oracle/cfgtoollogs;
+      if [ -d "$CFGTOOLLOGS_FOLDER" ] && [ -z "$(ls -A $CFGTOOLLOGS_FOLDER)" ]; then
+        rm -rf $CFGTOOLLOGS_FOLDER >> /dev/null;
+      fi
+      CHECKPOINTS_FOLDER=/opt/oracle/checkpoints;
+      if [ -d "$CHECKPOINTS_FOLDER" ] && [ -z "$(ls -A $CHECKPOINTS_FOLDER)" ]; then
+        rm -rf $CHECKPOINTS_FOLDER >> /dev/null;
+      fi
+      DIAG_FOLDER=/opt/oracle/diag;
+      #Using files to assure cross console env compatibility
+      if [ -d "$DIAG_FOLDER" ]; then
+        DIAG_EMPTY_LOG=/tmp/diag_empty_folders.tmp;
+        DIAG_FOLDER_LOG=/tmp/diag_folders.tmp;
+        find $DIAG_FOLDER/* -type d -empty > $DIAG_EMPTY_LOG;
+        find $DIAG_FOLDER/* -type d > $DIAG_FOLDER_LOG;
+        if [ -z "$(diff $DIAG_EMPTY_LOG $DIAG_FOLDER_LOG)" ]; then
+          rm -rf $DIAG_FOLDER >> /dev/null;
+        fi
+        rm -rf $DIAG_EMPTY_LOG >> /dev/null;
+        rm -rf $DIAG_FOLDER_LOG >> /dev/null;
+      fi
+      FRA_FOLDER=/opt/oracle/fast_recovery_area;
+      if [ -d "$FRA_FOLDER" ] && [ -z "$(ls -A $FRA_FOLDER)" ]; then
+        rm -rf $FRA_FOLDER >> /dev/null;
+      fi
+      ORADATA_FOLDER=/opt/oracle/oradata;
+      if [ -d "$ORADATA_FOLDER" ] && [ -z "$(ls -A $ORADATA_FOLDER)" ]; then
+        rm -rf $ORADATA_FOLDER >> /dev/null;
+      fi
+      PRODUCT_FOLDER=/opt/oracle/product;
+      #Using files to assure cross console env compatibility
+      if [ -d "$PRODUCT_FOLDER" ]; then
+        PRODUCT_EMPTY_LOG=/tmp/product_empty_folders.tmp;
+        PRODUCT_FOLDER_LOG=/tmp/product_folders.tmp;
+        find $PRODUCT_FOLDER/* -type d -empty > $PRODUCT_EMPTY_LOG;
+        find $PRODUCT_FOLDER/* -type d > $PRODUCT_FOLDER_LOG;
+        if [ -z "$(diff $PRODUCT_EMPTY_LOG $PRODUCT_FOLDER_LOG)" ]; then
+          rm -rf $PRODUCT_FOLDER >> /dev/null;
+        fi
+        rm -rf $PRODUCT_EMPTY_LOG >> /dev/null;
+        rm -rf $PRODUCT_FOLDER_LOG >> /dev/null;
+      fi
+
+      rm -rf $INVENTORY_LOCATION >> /dev/null;
+
+      ORACLE_BASE=/opt/oracle;
+      if [ -z "$(ls -A $ORACLE_BASE)" ]; then
+        rm -rf $ORACLE_BASE >> /dev/null;
+      fi
+    fi
+  fi
+
+  #Also remove the corresponding RPM log location
+  rm -rf /var/log/oracle-database-xe-18c >> /dev/null
+  rm -fr /usr/share/doc/oracle-xe-18c >> /dev/null
+}

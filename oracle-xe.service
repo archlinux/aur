@@ -3,6 +3,6 @@ Description=Oracle XE
 
 [Service]
 Type=oneshot
-ExecStart=/etc/rc.d/oracle-xe start
-ExecStop=/etc/rc.d/oracle-xe stop
+ExecStart=/etc/rc.d/oracle-xe-18c start
+ExecStop=/etc/rc.d/oracle-xe-18c stop
 RemainAfterExit=yes 
