@@ -1,7 +1,7 @@
 # Maintainer: Roland <hr_01y@protonmail.com>
 
 pkgname=wine-x64
-pkgver=5.17
+pkgver=5.18
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs. This only configured with x64 support."
 url="http://www.winehq.com"
@@ -16,8 +16,8 @@ _pkgbasever=${pkgver/rc/-rc}
 
 source=(https://dl.winehq.org/wine/source/5.x/wine-$_pkgbasever.tar.xz{,.sign}
         30-win32-aliases.conf)
-sha512sums=('05338036fa9b195d9cf8a84a1bcc03f35422d5f07744ec4430f20874601829be5904be10060353599cb0187728123f959ccc75e79f1ce1c47178ae9cd55ef696'
-            '118c5ffefc986bec85c94c674317f81c609e325b791a8638652191a8a3011585d8de1d98029c0ed11a1f8abc83d1762546656c02188a3844d4fc929b663d765e'
+sha512sums=('70565fbea61b78580ca86443fcb4c10c7814c1dffcfa49ee38746fef21a52a00f2e040d9d2515892fed4021e7868720cc22b650d18872656838e4610d4d4e823'
+            'ad9921b1607ca51db45abd4d903becc0183f4aeff70fc175aa78ef6d1c69acea3f4f5d8a96651942c7426ab16c54b646aaec528fa57efd10bbf42e96b9a70b42'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb')
 validpgpkeys=(DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
@@ -57,6 +57,10 @@ optdepends=(
   vkd3d
   vulkan-icd-loader
   vulkan-headers
+)
+
+conflicts=(
+  wine
 )
 
 prepare() {
