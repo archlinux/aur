@@ -1,7 +1,7 @@
 pkgbase = linux-clear-bin
 	pkgdesc = Clear Linux kernel and modules in binary
 	pkgver = 5.8.10.987
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://clearlinux.org/node/15538
 	arch = x86_64

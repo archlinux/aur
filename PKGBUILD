@@ -7,7 +7,7 @@ _major=5.8
 _minor=10
 _clr=987
 pkgver=${_major}.${_minor}.${_clr}
-pkgrel=1
+pkgrel=2
 # use in case we need to update the Arch package without incrementing pkgrel
 epoch=0
 arch=('x86_64')
@@ -34,9 +34,9 @@ b2sums=('44dda8765e2651c73cacd47bc144e3de9636a5a8264bfd2f9c62cfa9ae49608d6fbc9cd
 build() {
     # get kernel's filename (hash) from the Manifest, ie:
     # 4776962fb058c91e89dcefac4740d7a1af37ea12d217d3f8d0f49797553146e7
-    local kernel=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/kernel\/org.clearlinux.native.*$/\1/p" Manifest.kernel-native.${_clear_version})
-    local cmdline=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/kernel\/cmdline.*$/\1/p" Manifest.kernel-native.${_clear_version})
-    local modules=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/(modules.*)$/\1 \2/p" Manifest.kernel-native.${_clear_version})
+    local kernel=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+[[:digit:]]+[[:space:]]+\/usr\/lib\/kernel\/org.clearlinux.native.*$/\1/p" Manifest.kernel-native.${_clear_version})
+    local cmdline=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+[[:digit:]]+[[:space:]]+\/usr\/lib\/kernel\/cmdline.*$/\1/p" Manifest.kernel-native.${_clear_version})
+    local modules=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+[[:digit:]]+[[:space:]]+\/usr\/lib\/(modules.*)$/\1 \2/p" Manifest.kernel-native.${_clear_version})
 
     cp staged/$kernel vmlinuz-${pkgname}
     cp staged/$cmdline vmlinuz-${pkgname}.cmdline
