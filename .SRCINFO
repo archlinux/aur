@@ -1,0 +1,19 @@
+pkgbase = kde1-kdenetwork-git
+	pkgdesc = Historical copy of the network module of KDE 1, adapted to compile on modern systems
+	pkgver = 1.1.2r2979.157d50dd
+	pkgrel = 1
+	url = https://quickgit.kde.org/?p=kde1-kdenetwork.git
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde1-kdelibs
+	provides = kde1-kdenetwork
+	conflicts = kde1-kdenetwork
+	source = git+https://github.com/KDE/kde1-kdenetwork.git
+	md5sums = SKIP
+
+pkgname = kde1-kdenetwork-git
+
