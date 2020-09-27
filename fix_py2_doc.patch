@@ -1,0 +1,11 @@
+--- a/doc/_static/listings/tutorial3-netstrings2.py	2015-09-09 10:37:48.000000000 +0800
++++ b/doc/_static/listings/tutorial3-netstrings2.py	2020-09-27 18:54:46.607308297 +0800
+@@ -21,7 +21,7 @@
+         self.transport = transport
+ 
+     def sendNetstring(self, string):
+-        print 'received', repr(string)
++        print('received'), repr(string)
+ 
+ 
+ class NetstringReceiver(object):

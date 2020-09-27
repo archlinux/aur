@@ -1,0 +1,24 @@
+pkgbase = python-parsley
+	pkgdesc = Parsing and pattern matching made easy
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://parsley.readthedocs.io
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-sphinx
+	source = https://files.pythonhosted.org/packages/source/P/Parsley/Parsley-1.3.tar.gz
+	source = https://raw.githubusercontent.com/pyga/parsley/master/ometa/vm.parsley
+	source = fix_py2_doc.patch
+	md5sums = 92bc256e5f73810a609dc7874637ad31
+	md5sums = 00a76749668164b14ec773784134712c
+	md5sums = f61f5c5fc7649d1d7543c07575db251f
+
+pkgname = python-parsley
+	depends = python
+	optdepends = python-parsley-doc: Documentation for Parsley
+
+pkgname = python-parsley-doc
+	pkgdesc = Documentation for Python Parsley module
+
