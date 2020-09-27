@@ -1,36 +1,21 @@
 pkgbase = perl-test-file-sharedir
 	pkgdesc = Create a Fake ShareDir for your modules for testing.
-	pkgver = 1.001001
+	pkgver = 1.001002
 	pkgrel = 1
-	url = https://metacpan.org/release/Test-File-ShareDir
+	url = http://search.cpan.org/dist/Test-File-ShareDir
 	arch = any
+	license = GPL
 	license = PerlArtistic
-	checkdepends = perl>=5.6
-	checkdepends = perl-pathtools>=0
-	checkdepends = perl-extutils-makemaker>=0
-	checkdepends = perl-test-simple>=0.96
-	checkdepends = perl-test-fatal>=0
-	checkdepends = perl-lib>=0
-	depends = perl>=5.6
-	depends = perl-file-sharedir>=1.00
-	depends = perl-path-tiny>=0.018
-	depends = perl-class-tiny>=0
-	depends = perl-file-copy-recursive>=0
-	depends = perl-exporter>=5.57
-	depends = perl-scope-guard>=0
-	depends = perl-parent>=0
-	depends = perl-carp>=0
-	provides = perl-test-file-sharedir-dist=1.001001
-	provides = perl-test-file-sharedir-module=1.001001
-	provides = perl-test-file-sharedir-object-dist=1.001001
-	provides = perl-test-file-sharedir-object-inc=1.001001
-	provides = perl-test-file-sharedir-object-module=1.001001
-	provides = perl-test-file-sharedir-tempdirobject=1.001001
-	provides = perl-test-file-sharedir-utils=1.001001
+	depends = perl
+	depends = perl-class-tiny
+	depends = perl-file-copy-recursive
+	depends = perl-file-sharedir
+	depends = perl-path-tiny
+	depends = perl-scope-guard
+	depends = perl-test-fatal
 	options = !emptydirs
-	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/K/KE/KENTNL/Test-File-ShareDir-1.001001.tar.gz
-	sha256sums = c8815ee3644949ad6419616c2706a04b3c22d709bfb610ad5c4cfe78884a8658
+	source = http://cpan.perl.org/modules/by-module/Test/Test-File-ShareDir-1.001002.tar.gz
+	sha256sums = b33647cbb4b2f2fcfbde4f8bb4383d0ac95c2f89c4c5770eb691f1643a337aad
 
 pkgname = perl-test-file-sharedir
 
