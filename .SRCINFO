@@ -1,0 +1,14 @@
+pkgbase = bash-timer
+	pkgdesc = Human-readable execution time for every command in bash!
+	pkgver = v1.1.0.r0.g35040fb
+	pkgrel = 1
+	url = https://github.com/hopeseekr/bash-timer
+	install = bash-timer.install
+	arch = any
+	license = APACHE
+	depends = bash-preexec-git
+	source = bash-timer::git+https://github.com/hopeseekr/bash-timer.git
+	md5sums = SKIP
+
+pkgname = bash-timer
+
