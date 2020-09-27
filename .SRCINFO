@@ -1,9 +1,9 @@
 pkgbase = python2-apsw
 	pkgdesc = Python 2 wrapper for SQLite
 	pkgver = 3.33.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rogerbinns/apsw
-	arch = any
+	arch = x86_64
 	license = GPL
 	makedepends = python2-setuptools
 	depends = python2
