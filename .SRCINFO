@@ -1,7 +1,7 @@
 pkgbase = rstudio-desktop-daily-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary version from RStudio official repository)
 	pkgver = 1.4.875
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rstudio.org/
 	arch = x86_64
 	license = GPL
@@ -20,7 +20,7 @@ pkgbase = rstudio-desktop-daily-bin
 	conflicts = rstudio-desktop-git
 	conflicts = rstudio-desktop-bin
 	options = !strip
-	source_x86_64 = https://s3.amazonaws.com/rstudio-ide-build/desktop/xenial/amd64/rstudio-1.4.875-amd64.deb
+	source_x86_64 = https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-1.4.875-amd64.deb
 	sha256sums_x86_64 = 1b80df4086c57724284fcba588b19f0eedb5b7c4d883e0a7e8b76f1177a31c44
 
 pkgname = rstudio-desktop-daily-bin
