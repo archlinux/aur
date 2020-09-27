@@ -1,7 +1,7 @@
 pkgbase = dokuwiki-template-argon
 	pkgdesc = Dokuwiki Template based on the Argon Design System
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dokuwiki.org/template:argon
 	arch = any
 	license = MIT
