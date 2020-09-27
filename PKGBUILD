@@ -1,8 +1,8 @@
 # Maintainer: David Peter <mail@david-peter.de>
 _npmname=insect
-_npmver=5.4.0
+_npmver=5.5.0
 pkgname=insect
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="High precision scientific calculator with support for physical units"
 arch=(any)
@@ -10,10 +10,10 @@ url="https://github.com/sharkdp/insect"
 license=('MIT')
 depends=('nodejs' 'npm' )
 optdepends=()
-makedepends=('nodejs-pulp>=13.0' 'psc-package' 'purescript-bin' )
+makedepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(4feec6743fa986179f37874d989693a1e3ecada5)
+sha1sums=(396e97017d32a415da442a809a51ed2d82db462a)
 
 package() {
   cd $srcdir
