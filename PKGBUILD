@@ -9,7 +9,7 @@ pkgname=magicavoxel
 
 # $_pkgver_upstream should ideally match the version in the archive name and the one specified on the website.
 _pkgver_tag='0.99.6' # Git tag associated with the release where the latest archive is.
-_pkgver_suffix='.1' # Anything after $_pkgver_tag that is present in the archive name.
+_pkgver_suffix='.2' # Anything after $_pkgver_tag that is present in the archive name.
 _pkgver_upstream="$_pkgver_tag$_pkgver_suffix"
 
 # Use the date of the corresponding release archive asset, which can be found e.g. by using the below one-liner
@@ -18,7 +18,7 @@ _pkgver_upstream="$_pkgver_tag$_pkgver_suffix"
 # $ curl -sSf "https://api.github.com/repos/ephtracy/ephtracy.github.io/releases/tags/$_pkgver_tag" | jq '.assets|map(select(.name|contains("win64.zip")))[0].updated_at|fromdate|strftime("%Y%m%d")'
 #
 # If multiple releases happen on the same day, set $_pkgver_uniqueness to '.2', then '.3' etc.
-_pkgver_date='20200914'
+_pkgver_date='20200927'
 _pkgver_uniqueness='' # Don't forget to reset to '' when date changes.
 
 # Git tag associated with the release where the latest Intel Open Image Denoiser plugin archive is.
@@ -40,7 +40,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/ephtracy/ephtracy.github.io/re
 license=('custom')
 depends=(wine)
 makedepends=(icoutils)
-sha512sums=('cc965a1b62debc0cf4581e78d56440ba5d30e0517bb54d26bebbb26439aad53bed18fbed5526aaa6118496c5d8c30463e20ce89e66ab1eec854d0dc426986596'
+sha512sums=('38586bf240eeaeb1a65db7797acda231957303f74ad24b59e724983379884e5748c1c692e75763d05ec87a4f57b13eca3669b37d3b9a1d5e01bffbce9aa8ae34'
             '6509da8d8b04488b369644fd104cdc820037bc2bd2567d868541562d3096041d29d265cdeb2386ccb66f8f6670b94236d565046bfad92aff9cf7b1988b4af53f'
             '7bd5cfc10ed31851e76de7080c08d350a88488b3d8e878f4656970e097d04b00c98bf235a57b154844cba1db04f8092b0c5604f4b11ca787323bbbbc47dc3f5c'
             '0872398e0d52df23a4910c3c5257f073f96bbf06db197ebdaf59598ca39d1351c6412598ac46b1eb24ba2a47db8ce7d804d227dc847260c8dbd6213396e816c1'
