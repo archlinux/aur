@@ -1,6 +1,6 @@
 # Maintainer: Eugene Dvoretsky <radioxoma at gmail dot com>
 pkgname=pilorama-git
-pkgver=2.1.r18.gd47de29
+pkgver=v3.0.2.r2.gf0ce031
 pkgrel=1
 epoch=
 pkgdesc="Advanced timeboxing pomodoro timer"
