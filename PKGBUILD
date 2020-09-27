@@ -1,11 +1,13 @@
 pkgname='stratisd-boot'
-pkgver=1.0.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Stratis binary for inclusion in initramfs to allow using Stratis as boot volume'
 arch=('x86_64')
 url='https://stratis-storage.github.io'
 license=('MPL2')
-makedepends=('asciidoc' 'cargo' 'git' 'mpfr' 'rust')
+depends=('cryptsetup')
+makedepends=('asciidoc' 'cargo' 'git' 'mpfr' 'rust' 'systemd-libs'
+             'llvm' 'clang')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
@@ -14,11 +16,9 @@ source=(
   'initcpio-install'
   'stratisd-boot.service'
 )
-sha256sums=(
-  '27e8dcae06b5bbb89ed4e798435f004fd86964400da7162fa2a56742cb4e9bc3'
-  'ba1812d04a837df55475d4348d4325f3cf4ceae30f963bd9e99a2eb81b0c9b63'
-  '2fb79ecabe72885ae637412ad208d3c3290cf1a6754f4165366458714aa14ea9'
-)
+sha256sums=('6dbae1f46c1fb6cd3e367181243724b2b3c410bd44d5fba7d98c083d39bd691c'
+            'ba1812d04a837df55475d4348d4325f3cf4ceae30f963bd9e99a2eb81b0c9b63'
+            '2fb79ecabe72885ae637412ad208d3c3290cf1a6754f4165366458714aa14ea9')
 
 build() {
   cd "stratisd-${pkgver}"
@@ -40,13 +40,9 @@ check() {
 
 package() {
   cd "stratisd-${pkgver}"
-
-  install -d -m 755 "${pkgdir}/usr/bin"
-  install -d -m 755 "${pkgdir}/usr/lib/initcpio/install"
-  install -d -m 755 "${pkgdir}/usr/lib/systemd/system"
-
-  install -m 755 'target/x86_64-unknown-linux-gnu/release/stratisd' "${pkgdir}/usr/bin/stratisd-boot"
-  install -m 644 '../stratisd-boot.service' "${pkgdir}/usr/lib/systemd/system"
-  install -m 644 '../initcpio-install' "${pkgdir}/usr/lib/initcpio/install/stratis"
+  
+  install -Dm 755 'target/debug/stratisd' "${pkgdir}/usr/bin/stratisd-boot"
+  install -Dm 644 '../stratisd-boot.service' "${pkgdir}/usr/lib/systemd/system"
+  install -Dm 644 '../initcpio-install' "${pkgdir}/usr/lib/initcpio/install/stratis"
 }
 
