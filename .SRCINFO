@@ -1,7 +1,7 @@
 pkgbase = linux-clear-headers-bin
 	pkgdesc = Header files and scripts for Clear Linux kernel and modules
 	pkgver = 5.8.10.987
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 0
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
