@@ -1,0 +1,19 @@
+pkgbase = kde1-kdeutils-git
+	pkgdesc = Historical copy of the utils module of KDE 1, adapted to compile on modern systems
+	pkgver = 1.1.2r1689.7f0cb07
+	pkgrel = 1
+	url = https://quickgit.kde.org/?p=kde1-kdeutils.git
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde1-kdelibs
+	provides = kde1-kdeutils
+	conflicts = kde1-kdeutils
+	source = git://anongit.kde.org/kde1-kdeutils.git
+	md5sums = SKIP
+
+pkgname = kde1-kdeutils-git
+
