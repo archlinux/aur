@@ -3,13 +3,13 @@
 
 pkgname=latte-dock-git
 _gitname=latte-dock
-pkgver=r4245.0c577d68
+pkgver=r4549.1fab6237
 pkgrel=1
 pkgdesc='Latte is a dock based on plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids'
 arch=('x86_64')
 url='https://invent.kde.org/plasma/latte-dock'
 license=('GPL')
-depends=('plasma-framework' 'plasma-desktop')
+depends=('plasma-framework' 'kirigami2' 'knewstuff' 'hicolor-icon-theme')
 optdepends=('libunity: quicklists, counters, and progress bars for apps using libunity')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'python')
 conflicts=('latte-dock')
