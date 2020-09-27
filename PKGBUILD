@@ -4,7 +4,7 @@
 # Contributor: soloturn@gmail.com
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.09.11.a.r74.gc56ae1e3364
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.09.23.a.r165.gb03457ddf38
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -34,8 +34,8 @@ source=(
     'swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch'
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests'
     'llvm-project::git+https://github.com/apple/llvm-project#branch=swift/master'
-    'yams::git+https://github.com/jpsim/Yams'
-#    'yams::git+https://github.com/jpsim/Yams#commit=3.0.1'
+#    'yams::git+https://github.com/jpsim/Yams'
+    'yams::git+https://github.com/jpsim/Yams#commit=3.0.1'
     '0001-arch-aur-pachtes.patch'
     '0002-llbuild-ninja-test-binary-links-against-ncurses.patch'
 )
