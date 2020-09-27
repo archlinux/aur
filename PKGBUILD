@@ -5,9 +5,9 @@
 
 pkgname=ttf-malayalam-fonts-meta
 pkgver=7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="This is a set of TrueType and OpenType fonts released under the 
-GNU General Public License for Malayalam Language."
+GNU General Public License or SIL Open Font License for Malayalam Language."
 arch=(any)
 url="http://smc.org.in/fonts/"
 depends=(otf-manjari ttf-malayalam-font-anjalioldlipi ttf-malayalam-font-chilanka ttf-malayalam-font-dyuthi 
