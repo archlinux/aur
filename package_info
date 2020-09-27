@@ -1,5 +1,5 @@
 # PackageVersion is added by PKGBUILD
-PackageAuthor=[radarr-aphrodite](https://aur.archlinux.org/packages/radarr-aphrodite/)
+PackageAuthor=[radarr-nightly](https://aur.archlinux.org/packages/radarr-nightly/)
 UpdateMethod=External
-UpdateMethodMessage=use an [aur helper](https://wiki.archlinux.org/index.php/AUR_helpers) or the [manual method](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages) to update [radarr-aphrodite](https://aur.archlinux.org/packages/radarr-aphrodite/).
-Branch=aphrodite
+UpdateMethodMessage=use an [aur helper](https://wiki.archlinux.org/index.php/AUR_helpers) or the [manual method](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages) to update [radarr-nightly](https://aur.archlinux.org/packages/radarr-nightly/).
+Branch=nightly
