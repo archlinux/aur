@@ -1,7 +1,7 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium-bin
-pkgver=6.3.84
+pkgver=6.4.76
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker. (Demo Version)'
 arch=(x86_64)
@@ -27,15 +27,16 @@ optdepends=(
 )
 options=(!strip)
 source=("https://users.notam02.no/~kjetism/radium/demos/linux/radium_64bit_linux-$pkgver-demo.tar.xz")
-sha256sums=('17cb7c5dc66c32dd995ff3757969eff648bd787875c17ca696efc87dfc5352a6')
+sha256sums=('ca2a12cc73d9a8fad46e0322d0a2e972dc31e341f24a394bbb8d80e06d82fb18')
 
 package() {
   cd radium_64bit_linux-$pkgver-demo
 
-  # Nouveau and AMD drivers require a newer libstdc++ than Radium provides so removing it is necessary to avoid crash
+  # Nouveau and AMD drivers require a newer libstdc++ than Radium provides so removing it is necessary to avoid crashes
   rm lib/libstdc++.so.6
 
-  # Generate a dummy libselinux.so because official builds link to it for some reason
+  # Generate a dummy libselinux.so because official builds depend on it
+  # https://github.com/kmatheussen/radium/pull/1286#issuecomment-686697881
   echo "extern int is_selinux_enabled(void){return 0;}" > selinux-dummy.c
   gcc -s -shared -o lib/libselinux.so.1 selinux-dummy.c
   rm selinux-dummy.c
