@@ -1,0 +1,12 @@
+diff --git a/avidemux/qt4/ADM_jobs/src/ADM_jobControl.cpp b/avidemux/qt4/ADM_jobs/src/ADM_jobControl.cpp
+index 95403e4..b2f91c5 100644
+--- a/avidemux/qt4/ADM_jobs/src/ADM_jobControl.cpp
++++ b/avidemux/qt4/ADM_jobs/src/ADM_jobControl.cpp
+@@ -16,6 +16,7 @@
+ #include "ADM_default.h"
+ #include "ADM_coreJobs.h"
+ #include "DIA_coreToolkit.h"
++#include <QAction>
+ 
+ static QTableWidgetItem *fromText(const string &t,int id)
+ {

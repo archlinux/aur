@@ -1,0 +1,21 @@
+diff --git a/cmake/admCheckX264.cmake b/cmake/admCheckX264.cmake
+index 10b7333..ea10eae 100644
+--- a/cmake/admCheckX264.cmake
++++ b/cmake/admCheckX264.cmake
+@@ -14,16 +14,9 @@ MACRO(checkX264)
+ 				STRING(REGEX REPLACE ".*[ ]([0-9]+).*" "\\1" x264_version "${X264_H}")
+ 				MESSAGE(STATUS "  core version: ${x264_version}")
+ 				
+-				IF (x264_version LESS 67)
+-					MESSAGE("WARNING: x264 core version is too old.  At least version 67 is required.")
+-					SET(X264_FOUND 0)
+-				ELSE (x264_version LESS 67)
+                                         IF (x264_version GREATER 73)
+ 					        FIND_HEADER_AND_LIB(X264 x264.h x264 x264_encoder_open_${x264_version})
+                                         ENDIF (x264_version GREATER 73)
+-				ELSE (x264_version LESS 67)
+-					FIND_HEADER_AND_LIB(X264 x264.h x264 x264_encoder_open)
+-				ENDIF (x264_version LESS 67)
+                                 IF(X264_FOUND)
+                                         SET(USE_X264 True CACHE BOOL "")
+                                 ENDIF(X264_FOUND)

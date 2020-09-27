@@ -1,0 +1,13 @@
+diff --git a/avidemux_plugins/ADM_videoFilters6/mplayerDelogo/qt5/DIA_flyMpDelogo.h b/avidemux_plugins/ADM_videoFilters6/mplayerDelogo/qt5/DIA_flyMpDelogo.h
+index a69c976..9bcac1d 100644
+--- a/avidemux_plugins/ADM_videoFilters6/mplayerDelogo/qt5/DIA_flyMpDelogo.h
++++ b/avidemux_plugins/ADM_videoFilters6/mplayerDelogo/qt5/DIA_flyMpDelogo.h
+@@ -17,7 +17,7 @@
+     \class flyASharp
+ */
+ #include "delogo.h"
+-class QRubberBand;
++#include <QRubberBand>
+ class flyMpDelogo;
+ /**
+         \class Resizable_rubber_band

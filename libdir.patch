@@ -1,0 +1,22 @@
+diff --git a/cmake/admInstallDir.cmake b/cmake/admInstallDir.cmake
+index 2c1c3e0..fb01fa9 100644
+--- a/cmake/admInstallDir.cmake
++++ b/cmake/admInstallDir.cmake
+@@ -16,13 +16,13 @@ ELSE(WIN32)
+                 MESSAGE(STATUS "No install dir provided, using /usr/local")
+         ENDIF(NOT AVIDEMUX_INSTALL_DIR )
+         SET(AVIDEMUX_BIN_DIR ${AVIDEMUX_INSTALL_DIR}/bin)
+-        IF(CMAKE_C_IMPLICIT_LINK_DIRECTORIES MATCHES "\\/lib64([; ]|$)")
+-                SET(AVIDEMUX_RELATIVE_LIB_DIR lib64)
++        IF(CMAKE_C_IMPLICIT_LINK_DIRECTORIES MATCHES "\\/lib([; ]|$)")
++                SET(AVIDEMUX_RELATIVE_LIB_DIR lib)
+         ELSEIF(CMAKE_C_IMPLICIT_LINK_DIRECTORIES MATCHES "\\/lib32([; ]|$)")
+                 SET(AVIDEMUX_RELATIVE_LIB_DIR lib32)
+-        ELSE(CMAKE_C_IMPLICIT_LINK_DIRECTORIES MATCHES "\\/lib64([; ]|$)")
++        ELSE(CMAKE_C_IMPLICIT_LINK_DIRECTORIES MATCHES "\\/lib([; ]|$)")
+                 SET(AVIDEMUX_RELATIVE_LIB_DIR lib)
+-        ENDIF(CMAKE_C_IMPLICIT_LINK_DIRECTORIES MATCHES "\\/lib64([; ]|$)")
++        ENDIF(CMAKE_C_IMPLICIT_LINK_DIRECTORIES MATCHES "\\/lib([; ]|$)")
+         SET(AVIDEMUX_LIB_DIR ${AVIDEMUX_INSTALL_DIR}/${AVIDEMUX_RELATIVE_LIB_DIR})
+ ENDIF(WIN32)
+ SET(AVIDEMUX_INCLUDE_DIR ${AVIDEMUX_INSTALL_DIR}/include)
