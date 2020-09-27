@@ -1,6 +1,6 @@
 pkgbase = obs-shaderfilter-git
 	pkgdesc = enables custom shaders for OBS sources
-	pkgver = v1.2.r18.gd32e79f
+	pkgver = v1.2.r21.g9b40d37
 	pkgrel = 1
 	url = https://github.com/Oncorporation/obs-shaderfilter/
 	arch = x86_64
