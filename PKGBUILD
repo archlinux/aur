@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=python2-pynacl-git
-pkgver=1.4.0.r4.g44fb453
+pkgver=1.4.0.r21.gc3279b1
 pkgrel=1
 pkgdesc='A simple ctypes based python binding to libsodium'
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = python2-pynacl-git
 	pkgdesc = A simple ctypes based python binding to libsodium
-	pkgver = 1.4.0.r4.g44fb453
+	pkgver = 1.4.0.r21.gc3279b1
 	pkgrel = 1
 	url = http://libnacl.readthedocs.org
 	arch = any
