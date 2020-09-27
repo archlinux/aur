@@ -5,22 +5,20 @@
 
 pkgname=ttf-malayalam-font-dyuthi
 pkgver=3.0.0+20200101
-pkgrel=1
+pkgrel=2
 pkgdesc="This is Dyuthi, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language."
 arch=(any)
 url="http://smc.org.in/fonts/"
-license=("OFL1.1")
-depends=(fontconfig xorg-font-utils)
+license=("OFL")
 source=("http://smc.org.in/downloads/fonts/dyuthi/Dyuthi-Regular.ttf"
-        "https://gitlab.com/smc/dyuthi/raw/master/67-smc-dyuthi.conf")
+        "https://gitlab.com/smc/fonts/dyuthi/raw/master/LICENSE.txt"
+        "https://gitlab.com/smc/fonts/dyuthi/raw/master/67-smc-dyuthi.conf")
 sha256sums=('d7587e6982943aa5dee8f1c9b5a7775b80de6ba05345e2d34c37b96d3286db48'
+            '3c039a91d61ba6b48397d0c1b1af9306686c79cfd0bd0735089b8499955a3e30'
             '3ca219d970748beaa7b64f3cacf398fff5f6164786f9db6a93292fa81c919652')
-install=ttf-malayalam-fonts.install
-
 
 package() {
-  mkdir -p "${pkgdir}/usr/share/fonts/TTF" || return 1
-  install -m644 *.ttf "${pkgdir}/usr/share/fonts/TTF"
-  mkdir -p "${pkgdir}/etc/fonts/conf.d" || return 1
-  install *.conf "${pkgdir}/etc/fonts/conf.d" || return 1
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
+  install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" *.ttf
+  install -Dm644 -t "$pkgdir/etc/fonts/conf.d" *.conf
 }
