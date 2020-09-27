@@ -6,7 +6,6 @@ pkgbase = i2c-nct6775-dkms
 	arch = any
 	license = GPL2
 	depends = dkms
-	conflicts = linux>5.7
 	conflicts = i2c-piix4-aura-dkms
 	source = i2c-nct6775.c
 	source = dkms.conf

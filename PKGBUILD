@@ -10,7 +10,7 @@ arch=('any')
 url='https://gitlab.com/CalcProgrammer1/OpenRGB'
 license=('GPL2')
 depends=('dkms')
-conflicts=('linux>5.7' 'i2c-piix4-aura-dkms')
+conflicts=('i2c-piix4-aura-dkms')
 source=('i2c-nct6775.c'
         'dkms.conf'
         'Makefile'
