@@ -90,7 +90,7 @@ build() {
     -D xephyr=false \
     -D xnest=false \
     -D xquartz=false \
-    -D xv=false \
+    -D xv=true \
     -D xvmc=false \
     -D xvfb=false \
     -D xwin=false \
@@ -98,6 +98,10 @@ build() {
     -D libunwind=false \
     -D debug=false
      
+# xinerama needed with nvidia blob
+# screensaver needed for chrome and steam gui
+# mitshm needed with nvidia blob
+# xv needed with nvidia blob
 
   # Print config
   meson configure build
