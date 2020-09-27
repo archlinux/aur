@@ -7,11 +7,11 @@ pkgrel=1
 pkgdesc="menu for instantOS"
 url="https://github.com/TheCynicalTeam/instantmenu"
 arch=('any')
-license=('MIT')
+license=('GNU General Public License v3.0')
 depends=('sh' 'libxinerama' 'libxft')
 makedepends=('git')
-provides=(instantmenu)
-conflicts=(instantmenu)
+provides=($_pkgname)
+conflicts=($_pkgname)
 source=("https://github.com/TheCynicalTeam/$_pkgname/archive/$pkgver-$pkgrel.tar.gz")
 
 sha256sums=('SKIP')
