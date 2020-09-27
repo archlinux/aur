@@ -19,7 +19,7 @@ depends=(gtk3 mozilla-common libxt mime-types dbus-glib
          libvpx libjpeg zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils python-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
-             python nodejs python-psutil cbindgen nasm libpipewire02 lld)
+             python nodejs python-psutil python-zstandard cbindgen nasm libpipewire02 lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'xdg-desktop-portal: Required for screen sharing'
@@ -135,11 +135,11 @@ build() {
   export MOZ_SOURCE_REPO="$_repo"
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
+  export MACH_USE_SYSTEM_PYTHON=1
 
   # LTO/PGO needs more open files
   ulimit -n 4096
 
-  ./mach create-mach-environment
   xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
   ./mach buildsymbols
 }

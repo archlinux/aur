@@ -26,6 +26,7 @@ pkgbase = firefox-wayland-hg
 	makedepends = python
 	makedepends = nodejs
 	makedepends = python-psutil
+	makedepends = python-zstandard
 	makedepends = cbindgen
 	makedepends = nasm
 	makedepends = libpipewire02
