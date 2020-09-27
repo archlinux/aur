@@ -1,0 +1,44 @@
+diff --git a/compile.py b/compile.py
+index 35bfeb1..5604b4a 100644
+--- a/compile.py
++++ b/compile.py
+@@ -4,7 +4,6 @@ import time
+ import sys
+ import argparse
+ import re
+-import zipfile
+ 
+ import opengl
+ import glsl
+@@ -75,17 +74,17 @@ if args.local_assets:
+     if not os.path.exists(path):
+       dirname = os.path.dirname(path)
+       create_directory(dirname)
+-      url = url + filename + suffix
++      url = url + filename + (suffix or '')
+       with open(path, 'w') as f:
+         print "Downloading " + url
+-        f.write(urllib2.urlopen(url).read())
++        f.write(urllib2.urlopen(urllib2.Request(url, headers={"User-Agent": None})).read())
+ 
+   for name, filename, url in FONTS:
+     path = 'html/copy/' + filename
+     if not os.path.exists(path):
+       with open(path, 'wb') as f:
+         print "Downloading " + url
+-        f.write(urllib2.urlopen(url).read())
++        f.write(urllib2.urlopen(urllib2.Request(url, headers={"User-Agent": None})).read())
+ 
+ #################### Copy "html/copy" Files To Output Directory ####################
+ 
+@@ -998,10 +997,3 @@ for version in major_versions:
+     output.close()
+   
+   print "Wrote " + str(written) + " commands for " + version
+-
+-with zipfile.ZipFile('docs.gl.zip', 'w', compression=zipfile.ZIP_DEFLATED) as docs_gl_zip:
+-  for dirname, _, files in os.walk('htdocs'):
+-    for filename in files:
+-      docs_gl_zip.write(os.path.join(dirname, filename))
+-
+-shutil.move("docs.gl.zip", "htdocs/") 

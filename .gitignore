@@ -1,0 +1,8 @@
+/pkg/
+/src/
+/docs-gl-git-*.pkg.tar.*
+
+/docs-gl-git/
+/docs-gl-git-jquery-bonsai/
+/docs-gl-git-jquery-cookie/
+/docs-gl-git-htmlmin/

@@ -1,0 +1,25 @@
+pkgbase = docs-gl-git
+	pkgdesc = An improved version of the official OpenGL documentation
+	pkgver = r278.c4d7fbf
+	pkgrel = 1
+	url = https://docs.gl/
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python2
+	provides = docs-gl
+	conflicts = docs-gl
+	options = !strip
+	source = docs-gl-git::git+https://github.com/BSVino/docs.gl.git
+	source = docs-gl-git-jquery-bonsai::git+https://github.com/BSVino/jquery-bonsai.git
+	source = docs-gl-git-jquery-cookie::git+https://github.com/carhartl/jquery-cookie.git
+	source = docs-gl-git-htmlmin::git+https://github.com/mankyd/htmlmin.git
+	source = docs-gl-git.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 2148042ca60f00d53ea18c7cd6b919fbba00c0b3cfcb0a308e192571d4a02121
+
+pkgname = docs-gl-git
+
