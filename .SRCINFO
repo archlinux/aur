@@ -7,7 +7,6 @@ pkgbase = vartypes-qt5-git
 	license = LGPL3
 	makedepends = git
 	makedepends = cmake
-	depends = gcc
 	depends = glibc
 	depends = qt5-base
 	provides = vartypes-qt5
