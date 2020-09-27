@@ -1,7 +1,7 @@
 # Maintainer: Andri Yngvason <andri@yngvason.is>
 
 pkgname=neatvnc
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=0
 pkgdesc='Fast and neat VNC server library'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(custom:ISC)
 depends=(aml pixman gnutls libjpeg-turbo)
 makedepends=(meson ninja libdrm)
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/any1/neatvnc/archive/v$pkgver.tar.gz")
-sha512sums=('6b75a76d012be4d000d334fe4a5da774073dbcaaf9e1bf2a6e7fa54581575c45edb60c6ee267c649c67e638c2d14e2ac659b455d37ec7c05a82c97566ba63cab')
+sha512sums=('c47c60ead46d866ddf63cd21e961062e65b886a67f90926fadeca5e3e13fe52d05acd6fd51e921c45b09ae7c79658d85dfed381091dfc0e52c2680ccd8e7c1b6')
 
 build() {
 	cd $pkgname-$pkgver
