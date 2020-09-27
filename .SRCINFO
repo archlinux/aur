@@ -1,0 +1,20 @@
+pkgbase = vartypes-qt5-git
+	pkgdesc = Vartypes, but Qt5!
+	pkgver = r20.2d16e81
+	pkgrel = 1
+	url = https://github.com/jpfeltracco/vartypes
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-base
+	makedepends = boost
+	depends = gcc
+	depends = glibc
+	provides = vartypes-qt5
+	conflicts = vartypes-qt5
+	source = git+https://github.com/jpfeltracco/vartypes.git
+	sha256sums = SKIP
+
+pkgname = vartypes-qt5-git
+
