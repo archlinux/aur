@@ -2,18 +2,16 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=bitrock-unpacker
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="this is a tcl script for unpacking bitrock packed archives"
-arch=(i686 x86_64)
+arch=(any)
 url="https://github.com/greyltc/bitrock-unpacker/"
 license=('MIT')
-depends=(sdx)
-depends_i688=(tclkit)
-depends_x86_64=(lib32-tclkit)
+depends=('sdx' 'tclkit')
 
 source=("https://github.com/greyltc/bitrock-unpacker/archive/v${pkgver}.tar.gz")
-md5sums=('0cf9408b717d1d831611c2c35cb2cbd4')
+md5sums=('bd515e5db5c2a8e0f2f52078246eebc2')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
