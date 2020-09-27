@@ -13,7 +13,7 @@ pkgver=1.20.1.3252
 _pkgsum=a78fef9a9
 pkgrel=1
 pkgdesc='The back-end media server component of Plex.'
-arch=('x86_64' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://plex.tv/'
 license=('custom')
 options=('!emptydirs'  '!strip' 'staticlibs')
@@ -30,6 +30,7 @@ source=('plexmediaserver.conf.d'
 source_aarch64=("https://downloads.plex.tv/plex-media-server-new/${pkgver}-${_pkgsum}/debian/plexmediaserver_${pkgver}-${_pkgsum}_arm64.deb")
 source_armv7h=("https://downloads.plex.tv/plex-media-server-new/${pkgver}-${_pkgsum}/debian/plexmediaserver_${pkgver}-${_pkgsum}_armhf.deb")
 source_x86_64=("https://downloads.plex.tv/plex-media-server-new/${pkgver}-${_pkgsum}/redhat/plexmediaserver-${pkgver}-${_pkgsum}.x86_64.rpm")
+source_i686=("https://downloads.plex.tv/plex-media-server-new/${pkgver}-${_pkgsum}/redhat/plexmediaserver-${pkgver}-${_pkgsum}.i686.rpm")
 
 sha256sums=('398ba7958598609453f5289b3d5f2389d2756158b340cf28e83c39d9ed60280b'
             '348075917da3bac9659d047a45c264c556475e66779ecd84cf00d178a5b7bebf'
@@ -38,6 +39,7 @@ sha256sums=('398ba7958598609453f5289b3d5f2389d2756158b340cf28e83c39d9ed60280b'
             'b7ff6525a3c7a8be885edc85bb523095f8e25ddb38873127e2a4e97b28f2c7ad'
             'dbfb5a9a7146a975863c0932f1a68c4b040ec5d7e693361f39ddfbf60885e631')
 sha256sums_x86_64=('bd4a5024ac6ab4283392e6d458a9e47375d270a42b16d390bce177fda661a07c')
+sha256sums_i686=('d68dc2480f34e481848516ecda02dfafea35baddbb05e292ef365e52c915ba04')
 sha256sums_armv7h=('0333d5bd46f3d277c5875f17048bb5c24105334574b2433a2c14baf1b15c29e0')
 sha256sums_aarch64=('590243d3dfce6bc08fc5233a884c889b15f5965b7b38c5ddb3916391c49bc9dc')
 
