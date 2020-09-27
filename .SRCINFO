@@ -1,7 +1,7 @@
 pkgbase = dokuwiki-plugin-dw2pdf
 	pkgdesc = Fork of Luigi Micco's PDF export plugin for DokuWiki
 	pkgver = 2020.08.20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.dokuwiki.org/plugin:dw2pdf
 	arch = any
 	license = GPL2
