@@ -1,0 +1,13 @@
+pkgbase = nrf-udev
+	pkgdesc = udev rules for nRF (Nordic Semiconductor) development kits
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/NordicSemiconductor/nrf-udev
+	install = nrf-udev.install
+	arch = any
+	license = Commercial
+	source = nrf-udev-1.0.1::https://github.com/NordicSemiconductor/nrf-udev/archive/v1.0.1.tar.gz
+	sha256sums = ee00fbd3247bc851f3a315e12825933ce953b0673b1f41c1a5cbace493fae7b5
+
+pkgname = nrf-udev
+
