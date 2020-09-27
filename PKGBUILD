@@ -12,6 +12,7 @@ depends=('libxcb')
 makedepends=('cargo' 'python' 'git')
 options=('zipman')
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
+provides=("${pkgname%-git}")
 source=('git://github.com/orhun/kmon.git')
 sha256sums=('SKIP')
 

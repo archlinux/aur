@@ -12,6 +12,7 @@ pkgbase = kmon-git
 	makedepends = python
 	makedepends = git
 	depends = libxcb
+	provides = kmon
 	conflicts = kmon
 	conflicts = kmon-bin
 	options = zipman
