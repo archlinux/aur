@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=python2-apsw
 pkgver=3.33.0
-pkgrel=2
+pkgrel=3
 _pkgrel="r1"
 _pkgver="${pkgver}-${_pkgrel}"
 pkgdesc="Python 2 wrapper for SQLite"
@@ -10,7 +10,7 @@ url="https://github.com/rogerbinns/apsw"
 license=("GPL")
 depends=("python2" "sqlite")
 makedepends=("python2-setuptools")
-conflicts=("${pkgname}" "${pkgname}-git")
+conflicts=("${pkgname}-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${_pkgver}.tar.gz")
 md5sums=("d729fd27a50394ce584931a44ad01834")
 
