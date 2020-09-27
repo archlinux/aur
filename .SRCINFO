@@ -1,6 +1,6 @@
 pkgbase = yas-git
 	pkgdesc = A sudo replacement, written in rust
-	pkgver = 0.1.0
+	pkgver = 0.1.0.21.ge52ac6d
 	pkgrel = 1
 	url = https://github.com/alx365/yas
 	arch = any
@@ -12,5 +12,4 @@ pkgbase = yas-git
 	sha256sums = SKIP
 
 pkgname = yas-git
-
 

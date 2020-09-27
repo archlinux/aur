@@ -1,6 +1,6 @@
 # PKGBUILD created by using cargo-aur
 pkgname='yas-git'
-pkgver=0.1.0
+pkgver=0.1.0.21.ge52ac6d
 pkgrel=1
 pkgdesc='A sudo replacement, written in rust'
 arch=('any')
@@ -16,7 +16,7 @@ pkgver() {
 }
 
 build() {
-   cargo build --release --locked --all-features --target-dir=target
+   cargo build --release --locked --target-dir=target
 }
 
 check() {
@@ -24,7 +24,8 @@ check() {
 }
 
 package() {
-  install -Dm 755 target/release/yas -t "${pkgdir}/usr/bin"
-  # install -Dm 755 $pkgname/LICENSE "${pkgdir}/usr/share/licenses/yas"
+  install -Dm 4755 target/release/yas -t "${pkgdir}/usr/bin"
+  #chmod 4755 "$pkgdir"/usr/bin/yas
+  install -Dm 755 $pkgname/LICENSE "${pkgdir}/usr/share/licenses/yas"
 }
 
