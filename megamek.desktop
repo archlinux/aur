@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MegaMek
+GenericName=Java version of BattleTech
+Exec=megamek
+Terminal=false
+Type=Application
+Icon=megamek
+Categories=Games;Java;
+StartupWMClass=SWT
