@@ -1,21 +1,22 @@
 pkgbase = lsd-git
 	pkgdesc = The next gen ls command
-	pkgver = 0.16.0.471.gad25edc
-	pkgrel = 2
+	pkgver = 0.18.0.566.g16f1b1c
+	pkgrel = 1
 	url = https://github.com/Peltoche/lsd
 	arch = i686
 	arch = x86_64
-	arch = armv6h
-	arch = armv7h
-	license = Apache
+	arch = arm
+	arch = aarch64
+	license = MIT
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
-	depends = gcc-libs
+	optdepends = powerline-fonts: powerline symbols for terminals
+	optdepends = nerd-fonts-complete: popular collections such as Font Awesome & fonts such as Hack
 	provides = lsd
 	conflicts = lsd
 	source = lsd::git+https://github.com/Peltoche/lsd.git
-	sha384sums = SKIP
+	sha256sums = SKIP
 
 pkgname = lsd-git
 
