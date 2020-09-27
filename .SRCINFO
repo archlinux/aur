@@ -1,6 +1,6 @@
 pkgbase = python-sphinxcontrib-ditaa
 	pkgdesc = A sphinx extension for embedding ditaa diagram.
-	pkgver = 0.7
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://pypi.org/project/sphinxcontrib-ditaa/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-sphinxcontrib-ditaa
 	makedepends = python-setuptools
 	depends = python-sphinx
 	depends = ditaa
-	source = https://pypi.python.org/packages/source/s/sphinxcontrib-ditaa/sphinxcontrib-ditaa-0.7.tar.gz
-	sha256sums = 19567a44d8dd1c6804be2b2e4d24d0801d44f5acf299a3177e80832dfe71276f
+	source = https://pypi.python.org/packages/source/s/sphinxcontrib-ditaa/sphinxcontrib-ditaa-1.0.1.tar.gz
+	sha256sums = 757a318bbd5c8a09bfb4cf7676757314ea43906a792c5eef1fd118cb8ec3f84e
 
 pkgname = python-sphinxcontrib-ditaa
 

@@ -2,7 +2,7 @@
 
 _name=sphinxcontrib-ditaa
 pkgname=python-sphinxcontrib-ditaa
-pkgver=0.7
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A sphinx extension for embedding ditaa diagram.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python-sphinx' 'ditaa')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/s/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('19567a44d8dd1c6804be2b2e4d24d0801d44f5acf299a3177e80832dfe71276f')
+sha256sums=('757a318bbd5c8a09bfb4cf7676757314ea43906a792c5eef1fd118cb8ec3f84e')
 
 build() {
   cd "${_name}-${pkgver}"
