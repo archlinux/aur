@@ -28,6 +28,10 @@ depends=(
   # Winetricks is needed to install the .NET 3.5 SP1 runtime required by the mod launcher.
   'winetricks'
 )
+optdeps=(
+  # wrestools is needed to get the version of the mod launcher EXE and apply any workarounds.
+  'icoutils: old launcher support'
+)
 source=(
   # TODO: Add the package version here to the saved file name too!
   # Official mod launcher download for the current release.
