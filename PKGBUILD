@@ -4,7 +4,7 @@ pkgname=flameshot-33kk-git
 _pkgname=flameshot
 pkgver=r561.914e27e
 pkgrel=1
-pkgdesc="Powerful yet simple to use screenshot software (with custom uploader and increased blur radius)"
+pkgdesc="Powerful yet simple to use screenshot software (with custom command uploader)"
 arch=('i686' 'x86_64')
 url="https://github.com/33kk/flameshot"
 license=('GPL')
@@ -24,11 +24,11 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  qmake CONFIG+=packaging
+  cmake -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  make INSTALL_ROOT="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
 }
