@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader-git
-pkgver=0.34.1.r2376.a85c6d51
+pkgver=0.37.1.r2693.ef31fbf0
 pkgrel=1
 pkgdesc="Open source modding toolkit for Halo Combat Evolved on the PC"
 depends=('libtiff' 'libarchive' 'flac' 'freetype2' 'libsamplerate' 'libvorbis' 'qt5-base' 'qt5-multimedia' 'zlib' 'zstd')
@@ -9,7 +9,7 @@ makedepends=('cmake' 'git' 'ninja' 'python')
 arch=('x86_64')
 url="https://invader.opencarnage.net"
 license=('GPL3')
-source=('git+https://github.com/Kavawuvi/invader.git')
+source=('git+https://github.com/SnowyMouse/invader.git')
 sha256sums=('SKIP')
 provides=('invader')
 
