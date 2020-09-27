@@ -1,0 +1,19 @@
+pkgbase = kde1-kdegames-git
+	pkgdesc = Historical copy of the games module of KDE 1, adapted to compile on modern systems
+	pkgver = 1.1.2r1123.c4b13e6
+	pkgrel = 1
+	url = https://quickgit.kde.org/?p=kde1-kdegames.git
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde1-kdelibs
+	provides = kde1-kdegames
+	conflicts = kde1-kdegames
+	source = git+https://github.com/KDE/kde1-kdegames.git
+	md5sums = SKIP
+
+pkgname = kde1-kdegames-git
+
