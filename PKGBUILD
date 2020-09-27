@@ -68,14 +68,10 @@ build() {
   arch-meson xserver build \
     -D os_vendor="Arch Linux" \
     -D ipv6=false \
-    -D xvfb=true \
-    -D xnest=true \
     -D xcsecurity=true \
     -D xorg=true \
-    -D xephyr=true \
     -D xwayland=false \
     -D xwayland_eglstream=false \
-    -D glamor=true \
     -D udev=true \
     -D suid_wrapper=false \
     -D xkb_dir=/usr/share/X11/xkb \
