@@ -1,0 +1,44 @@
+pkgbase = ogre-1.10
+	pkgdesc = Scene-oriented, flexible 3D engine written in C++
+	pkgver = 1.10.11
+	pkgrel = 4
+	url = http://www.ogre3d.org
+	install = ogre.install
+	arch = x86_64
+	license = custom:MIT
+	makedepends = boost
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = ttf-dejavu
+	makedepends = mesa
+	makedepends = python
+	makedepends = swig
+	makedepends = systemd
+	depends = boost-libs
+	depends = freeimage
+	depends = freetype2
+	depends = libxaw
+	depends = libxrandr
+	depends = nvidia-cg-toolkit
+	depends = zziplib
+	depends = sdl2
+	depends = glu
+	depends = tinyxml
+	provides = ogre=1.10
+	provides = ogre-docs=1.10
+	source = https://github.com/OGRECave/ogre/archive/v1.10.11.tar.gz
+	sha512sums = 2dfedd6f0a0de1a8c687c001439138b233200ca11e5c9940debf43d8a0380ca6472e0b5f4d599f0e22ca2049d0a5d34066ef41b6bc4912130694fa5d851fc900
+
+pkgname = ogre-1.10
+	optdepends = cppunit: unit testing
+	optdepends = intel-tbb: better threading support
+	optdepends = poco: portability
+	optdepends = python: python bindings
+	optdepends = boost: for developing using ogre
+	optdepends = ogre-docs: documentation
+
+pkgname = ogre-docs-1.10
+	pkgdesc = Documentation for ogre
+	depends = 
+
