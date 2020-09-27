@@ -1,7 +1,7 @@
 pkgbase = zapret-git
 	pkgdesc = Bypass deep packet inspection.
 	pkgver = r92.0f09398
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/bol-van/zapret
 	arch = x86_64
 	license = GPL
@@ -18,6 +18,10 @@ pkgbase = zapret-git
 	sha256sums = 25c309e2ec545c9ee53759e23961c8a3f02708a7ba8dcbabab6eb681a36c03c0
 
 pkgname = zapret-nfqws-git
+	depends = systemd
+	depends = ipset
+	depends = curl
+	depends = libnetfilter_queue
 
 pkgname = zapret-tpws-git
 

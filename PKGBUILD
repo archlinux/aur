@@ -1,11 +1,8 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
-pkgname=(
-   'zapret-nfqws-git'
-   'zapret-tpws-git'
-)
+pkgname=(zapret-{nfqws,tpws}-git)
 pkgbase=zapret-git
 pkgver=r92.0f09398
-pkgrel=1
+pkgrel=3
 pkgdesc="Bypass deep packet inspection."
 arch=('x86_64')
 url="https://github.com/bol-van/zapret"
@@ -49,6 +46,8 @@ _package_common()
    sed -ri 's/^#?WS_USER=.*$/WS_USER=zapret/' "$pkgdir/opt/zapret/init.d/sysv/functions"
 }
 package_zapret-nfqws-git() {
+
+   depends+=('libnetfilter_queue')
    cd "$srcdir/${pkgbase%-git}"
    _package_common
    install -Dm755 "binaries/my/nfqws" "$pkgdir/opt/zapret/nfq/nfqws"
