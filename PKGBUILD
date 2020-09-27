@@ -13,8 +13,7 @@ makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("https://github.com/TheCynicalTeam/$_pkgname/archive/$pkgver-$pkgrel.tar.gz")
-
-sha256sums=('SKIP')
+sha256sums=('8c5e49264cf71f730e43ff31eab308bc3e5e0eaed24d4da9b1afa655724ab0cb')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver-$pkgrel"
