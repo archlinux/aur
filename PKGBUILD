@@ -1,48 +1,40 @@
-# Maintainer: xRemaLx <anton.komolov@gmail.com>
-# Contributor: Caleb Cushing <xenoterracide@gmail.com>
+# Maintainer: Jimmy Xu <me at jimmyxu dot org>
+# Contributor: xRemaLx <anton dot komolov at gmail dot com>
+# Contributor: Caleb Cushing <xenoterracide at gmail dot com>
 
-pkgname='perl-cache-fastmmap'
-_pkgname='Cache-FastMmap'
-pkgver='1.47'
-pkgrel='1'
+_perlmod='Cache-FastMmap'
+_modnamespace=Cache
+pkgname=perl-cache-fastmmap
+pkgver=1.49
+pkgrel=1
 pkgdesc="Uses an mmap'ed file to act as a shared memory interprocess cache"
-arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
+arch=("x86_64" "i686")
+url="http://search.cpan.org/dist/$_perlmod"
+license=('GPL' 'PerlArtistic')
 depends=('perl')
-makedepends=('perl-extutils-makemaker')
-url="http://search.cpan.org/dist/Cache-FastMmap"
-source=("http://search.cpan.org/CPAN/authors/id/R/RO/ROBM/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('20d839ac10578387465a0d5e6d6d4018073eb644460b4e079bb7b774a6c7be453a7f2bd8d499be962d60bd51657bc49a651684e773efb02a5d5fcf6c341640b2')
+options=('!emptydirs')
+source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
+sha256sums=('95e99a74b4911052f5858990e1e38bc86da9e89bb995c49e59667a4d9a31ffab')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  cd "$srcdir/$_perlmod-$pkgver"
 
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  # Install module in vendor directories.
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "$srcdir/$_perlmod-$pkgver"
+
+  # Install module in vendor directories.
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make test
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  cd "$srcdir/$_perlmod-$pkgver"
+  make install DESTDIR="$pkgdir/"
 }
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
 # vim:set ts=2 sw=2 et:
