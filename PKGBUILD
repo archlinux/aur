@@ -12,6 +12,7 @@ url='https://github.com/Philip-Scott/wallpaperize'
 _pool_url='http://packages.elementary.io/appcenter/pool/main'
 license=('GPL3')
 depends=('granite')
+provides=("${_pkgname}")
 source=("${_pool_url}/${_binary_name::1}/${_binary_name}/${_binary_name}${pkgver}-${_pkg_hash}.deb")
 sha256sums=('1771b899280be020f6579679964aeb0836afced910de84cad88461001a542f59')
 

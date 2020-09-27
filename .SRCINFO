@@ -6,6 +6,7 @@ pkgbase = wallpaperize-bin
 	arch = x86_64
 	license = GPL3
 	depends = granite
+	provides = wallpaperize
 	source = http://packages.elementary.io/appcenter/pool/main/c/com.github.philip-scott.wallpaperize/com.github.philip-scott.wallpaperize1.2.8-fa31b8.deb
 	sha256sums = 1771b899280be020f6579679964aeb0836afced910de84cad88461001a542f59
 
