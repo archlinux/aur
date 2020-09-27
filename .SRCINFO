@@ -1,6 +1,6 @@
 pkgbase = deemix-git
 	pkgdesc = a deezer downloader built from the ashes of Deezloader Remix.
-	pkgver = r342.0ad552e
+	pkgver = r471.6e955ee
 	pkgrel = 1
 	url = https://codeberg.org/RemixDev/deemix
 	arch = any
@@ -18,3 +18,4 @@ pkgbase = deemix-git
 	md5sums = SKIP
 
 pkgname = deemix-git
+

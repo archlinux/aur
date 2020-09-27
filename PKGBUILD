@@ -2,7 +2,7 @@
 
 pkgname="deemix-git"
 _pkgname="deemix"
-pkgver=r342.0ad552e
+pkgver=r471.6e955ee
 pkgrel=1
 pkgdesc="a deezer downloader built from the ashes of Deezloader Remix."
 arch=('any')
