@@ -12,8 +12,10 @@ pkgrel=1
 arch=(i686 x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(LGPL)
-depends=(dbus libasyncns libcap libxtst libsm libsndfile)
-makedepends=(attr rtkit speexdsp tdb orc gtk3 libsoxr meson xmltoman)
+makedepends=(libasyncns libcap attr libxtst libsm libsndfile rtkit libsoxr
+             speexdsp tdb dbus avahi bluez bluez-libs jack sbc
+             lirc openssl fftw orc gtk3 webrtc-audio-processing check git meson
+             xmltoman gst-plugins-base-libs)
 provides=("libpulse=${pkgver}" libpulse{,-simple,-mainloop-glib}.so)
 conflicts=('libpulse')
 replaces=('libpulse')
