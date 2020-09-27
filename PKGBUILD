@@ -3,7 +3,7 @@
 _pkgname=instantmenu
 pkgname=instamenu 
 pkgver=2020.9.27
-pkgrel=1
+pkgrel=2
 pkgdesc="dmenu like menu with the Manjaro Breath theme"
 url="https://github.com/TheCynicalTeam/instantmenu"
 arch=('any')
