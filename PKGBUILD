@@ -2,6 +2,8 @@
 # ^ Indicate that this is meant for use with Bash.
 # Don't warn about unused variables.
 # shellcheck disable=2034
+# Don't warn about referencing unassigned variables.
+# shellcheck disable=2154
 
 # Maintainer: Koopa <codingkoopa@gmail.com>
 
