@@ -1,13 +1,13 @@
 # Maintainer: robertfoster
 
 pkgname=openbazaar
-pkgver=2.4.7
-pkgrel=3
+pkgver=2.4.8
+pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(i686 x86_64)
 url="https://github.com/OpenBazaar/openbazaar-desktop"
 license=('MIT')
-depends=('electron6-bin')
+depends=('electron6')
 makedepends=('npm')
 source=("https://github.com/OpenBazaar/openbazaar-desktop/archive/v$pkgver.tar.gz"
     "$pkgname.js"
@@ -53,7 +53,7 @@ package() {
     sed -i "s/$pathtoreplace//g" {} +
 }
 
-md5sums=('b05520316946fc82626135fd33affcb6'
+md5sums=('68a4ab8feb254a4b8da1dc47f861b6fc'
          '9cbd95a65cb9d7a81cb39ec02127ac8d'
          '2e7c7804b970baa7f9274dae47618a52')
 
