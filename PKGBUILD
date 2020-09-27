@@ -19,7 +19,7 @@ optdepends=('python-matplotlib'
             'python-pip')
 options=(!emptydirs)
 source=("https://gitlab.com/pyspread/pyspread/-/archive/v${pkgver}/pyspread-v${pkgver}.tar.gz")
-sha512sums=('3189c9c664a112f0b1ccc96982d8f990c66cab16f1dff9abb5d951fe611de177f8ccbfabcb67c838b4b75548dfc9bc90d91429fcb4a1c340c06dbca5e5db8f83')
+sha512sums=('e865238fbe32aca5785b4a83f3c901367925326d0b2c6d86b0fa0b3cc04b56605e8e0809df1f09f642553fd94e6bbacc6abc80153a50835b1ef49c6161efc5dc')
 
 package() {  
   cd "${srcdir}/${pkgname}-v${pkgver}"
