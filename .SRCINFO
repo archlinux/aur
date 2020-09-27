@@ -1,16 +1,15 @@
 pkgbase = ttf-malayalam-font-rachana
 	pkgdesc = This is Rachana, a font belonging to a set of TrueType and OpenType fonts released under the GNU General Public License for Malayalam Language.
-	pkgver = 7.0.0+20200101
+	pkgver = 7.0.0+20200405
 	pkgrel = 1
 	url = http://smc.org.in/fonts/
-	install = ttf-malayalam-fonts.install
 	arch = any
-	license = OFL1.1
-	depends = fontconfig
-	depends = xorg-font-utils
+	license = OFL
 	source = http://smc.org.in/downloads/fonts/rachana/Rachana-Regular.ttf
-	source = https://gitlab.com/smc/rachana/raw/master/65-0-smc-rachana.conf
-	sha256sums = 50688439e1a63894d875650be2e1c0356c73487d978657ea4776e0678762815c
+	source = https://gitlab.com/smc/fonts/rachana/raw/master/LICENSE.txt
+	source = https://gitlab.com/smc/fonts/rachana/raw/master/65-0-smc-rachana.conf
+	sha256sums = 9a3f162beb791f07a9aa820df472ac066002686dc34144f016c12233f8515d8a
+	sha256sums = 8454343e7d16a7b4ee5ddc594ee67761531a4ca84cb47cf2a8196223b3d568ac
 	sha256sums = fa5f4fc01ed63ae0d50e12083657b218134196346102af92bf3513642f47078c
 
 pkgname = ttf-malayalam-font-rachana
