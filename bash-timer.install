@@ -10,12 +10,11 @@ post_install() {
 >   # Define timer callback functions
 >   [[ -f $bash_timer_path ]] && source $bash_timer_path    
 >   # Register callback functions with bash-preexec
->   [[ -f $preexec_path ]]    && source $preexec_path
+>   [[ -f $preexec_path ]] && source $preexec_path
 >
 
-$ echo \"#\n#   bash-timer\n#\" >> /etc/bash.bashrc
 $ echo \"[[ -f $bash_timer_path ]] && source $bash_timer_path\" >> /etc/bash.bashrc
-$ echo \"[[ -f $preexec_path ]]    && source $preexec_path\" >> /etc/bash.bashrc
+$ echo \"[[ -f $preexec_path ]] && source $preexec_path\" >> /etc/bash.bashrc
 
 "
 }
