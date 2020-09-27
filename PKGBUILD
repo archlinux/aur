@@ -19,6 +19,6 @@ sha256sums=('d650460d79f67557418f080185909a3f8b34759fb164294b43a9648c1fc02557'
 
 package() {
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
-  install -Dm644 -t "$pkgdir/usr/share/fonts/" *.ttf
+  install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" *.ttf
   install -Dm644 -t "$pkgdir/etc/fonts/conf.d" *.conf
 }
