@@ -3,8 +3,8 @@
 
 pkgname=gnome-ssh-askpass3
 _pkgname=openssh
-pkgver=8.3p1
-pkgrel=2
+pkgver=8.4p1
+pkgrel=1
 pkgdesc='A GTK3 passphrase requester for ssh-add.'
 arch=('x86_64')
 url="http://www.openssh.org/portable.html"
@@ -15,7 +15,7 @@ conflicts=('x11-ssh-askpass' 'ssh-askpass-fullscreen' 'gnome-ssh-askpass' 'gnome
 
 source=(https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${_pkgname}-${pkgver}.tar.gz
         ${pkgname}.sh)
-sha256sums=('f2befbe0472fe7eb75d23340eb17531cb6b3aac24075e2066b41f814e12387b2'
+sha256sums=('5a01d22e407eb1c05ba8a8f7c654d388a13e9f226e4ed33bd38748dafa1d2b24'
             '8a18ef3a2c6e61f117db49aabef4e191fea47df43907872113fd64536d2f4c11')
 
 build() {
