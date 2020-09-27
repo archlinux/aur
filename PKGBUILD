@@ -4,9 +4,9 @@
 
 pkgname=(
 	'xorg-server-rootless-nosystemd-minimal-git'
-	'xorg-server-xephyr-rootless-nosystemd-minimal-git'
-	'xorg-server-xvfb-rootless-nosystemd-minimal-git'
-	'xorg-server-xnest-rootless-nosystemd-minimal-git'
+#	'xorg-server-xephyr-rootless-nosystemd-minimal-git'
+#	'xorg-server-xvfb-rootless-nosystemd-minimal-git'
+#	'xorg-server-xnest-rootless-nosystemd-minimal-git'
 #	'xorg-server-xwayland-rootless-nosystemd-minimal-git'
 	'xorg-server-common-rootless-nosystemd-minimal-git'
 	'xorg-server-devel-rootless-nosystemd-minimal-git')
@@ -167,51 +167,51 @@ package_xorg-server-rootless-nosystemd-minimal-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
 }
 
-package_xorg-server-xephyr-rootless-nosystemd-minimal-git() {
-  pkgdesc="A nested X server that runs as an X application"
-  depends=(libxfont2 libgl libepoxy libxv pixman xorg-server-common-rootless-nosystemd-minimal-git
-           xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
-           nettle libtirpc)
-  optdepends=('libunwind: unwind backtrace support')
-  conflicts=('xorg-server-xephyr')
-  provides=('xorg-server-xephyr')
+#package_xorg-server-xephyr-rootless-nosystemd-minimal-git() {
+#  pkgdesc="A nested X server that runs as an X application"
+#  depends=(libxfont2 libgl libepoxy libxv pixman xorg-server-common-rootless-nosystemd-minimal-git
+#           xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
+#           nettle libtirpc)
+#  optdepends=('libunwind: unwind backtrace support')
+#  conflicts=('xorg-server-xephyr')
+#  provides=('xorg-server-xephyr')
   
-  _install fakeinstall/usr/bin/Xephyr
-  _install fakeinstall/usr/share/man/man1/Xephyr.1
+#  _install fakeinstall/usr/bin/Xephyr
+#  _install fakeinstall/usr/share/man/man1/Xephyr.1
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
-}
+#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
+#}
 
-package_xorg-server-xvfb-rootless-nosystemd-minimal-git() {
-  pkgdesc="Virtual framebuffer X server"
-  depends=(libxfont2 pixman xorg-server-common-rootless-nosystemd-minimal-git xorg-xauth libgl nettle libtirpc)
-  optdepends=('libunwind: unwind backtrace support')
-  conflicts=('xorg-server-xvfb')
-  provides=('xorg-server-xvfb')
+#package_xorg-server-xvfb-rootless-nosystemd-minimal-git() {
+#  pkgdesc="Virtual framebuffer X server"
+#  depends=(libxfont2 pixman xorg-server-common-rootless-nosystemd-minimal-git xorg-xauth libgl nettle libtirpc)
+#  optdepends=('libunwind: unwind backtrace support')
+#  conflicts=('xorg-server-xvfb')
+#  provides=('xorg-server-xvfb')
   
-  _install fakeinstall/usr/bin/Xvfb
-  _install fakeinstall/usr/share/man/man1/Xvfb.1
+#  _install fakeinstall/usr/bin/Xvfb
+#  _install fakeinstall/usr/share/man/man1/Xvfb.1
 
-  install -m755 "${srcdir}/xvfb-run" "${pkgdir}/usr/bin/"
-  install -m644 "${srcdir}/xvfb-run.1" "${pkgdir}/usr/share/man/man1/" # outda
+#  install -m755 "${srcdir}/xvfb-run" "${pkgdir}/usr/bin/"
+#  install -m644 "${srcdir}/xvfb-run.1" "${pkgdir}/usr/share/man/man1/" # outda
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
-}
+#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
+#}
 
-package_xorg-server-xnest-rootless-nosystemd-minimal-git() {
-  pkgdesc="A nested X server that runs as an X application"
-  depends=(libxfont2 libxext pixman xorg-server-common-rootless-nosystemd-minimal-git nettle libtirpc)
-  conflicts=('xorg-server-xnest')
-  provides=('xorg-server-xnest')
+#package_xorg-server-xnest-rootless-nosystemd-minimal-git() {
+#  pkgdesc="A nested X server that runs as an X application"
+#  depends=(libxfont2 libxext pixman xorg-server-common-rootless-nosystemd-minimal-git nettle libtirpc)
+#  conflicts=('xorg-server-xnest')
+#  provides=('xorg-server-xnest')
   
-  _install fakeinstall/usr/bin/Xnest
-  _install fakeinstall/usr/share/man/man1/Xnest.1
+#  _install fakeinstall/usr/bin/Xnest
+#  _install fakeinstall/usr/share/man/man1/Xnest.1
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
-}
+#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
+#}
 
 #package_xorg-server-xwayland-rootless-nosystemd-minimal-git() {
 #  pkgdesc="run X clients under wayland"
