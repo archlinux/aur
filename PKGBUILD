@@ -83,6 +83,22 @@ build() {
     -D systemd_logind=false \
     -D b_lto=false \
     -D b_lundef=false \
+    -D xinerama=true \
+    -D screensaver=true \
+    -D dmx=false \
+    -D glamor=false \
+    -D linux_apm=false \
+    -D mitshm=false \
+    -D vgahw=false \
+    -D xdmcp=false \
+    -D xephyr=false \
+    -D xnest=false \
+    -D xquartz=false \
+    -D xv=false \
+    -D xvmc=false \
+    -D xvfb=false \
+    -D xwin=false \
+    -D xres=false \
     -D libunwind=false \
     -D debug=false
      
