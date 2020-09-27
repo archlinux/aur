@@ -10,7 +10,10 @@ pkgbase = instamenu
 	depends = libxinerama
 	depends = libxft
 	provides = instamenu
+	provides = instantmenu
+	provides = dmenu
 	conflicts = instamenu
+	conflicts = instantmenu
 	source = https://github.com/TheCynicalTeam/instantmenu/archive/2020.9.27-1.tar.gz
 	sha256sums = 8c5e49264cf71f730e43ff31eab308bc3e5e0eaed24d4da9b1afa655724ab0cb
 
