@@ -1,4 +1,4 @@
-# Maintainer: Koopa <thekoopakingdom@gmail.com>
+# Maintainer: Koopa <codingkoopa@gmail.com>
 
 # Verification:
 # - All scripts are ran through ShellCheck (Ignoring PKGBUILD related false positives.).
