@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=python-pa-ringbuffer
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Python wrapper for PortAudio's ring buffer"
 arch=(any)
@@ -21,4 +21,4 @@ package() {
     python setup.py install --root="$pkgdir" --skip-build
 }
 
-sha256sums=('ab4bebceaac4278bca8116a9884d24f6c7714d5db57ddc3a61aad5a2a4407808')
+sha256sums=('58d54698bf1b13490595671342225dd7cd264e820a7695abf4789ebdedd4d1c0')
