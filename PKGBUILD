@@ -1,9 +1,9 @@
-# Maintainer: Koopa <codingkoopa@gmail.com>
+#!/bin/bash
+# ^ Indicate that this is meant for use with Bash.
+# Don't warn about unused variables.
+# shellcheck disable=2034
 
-# Verification:
-# - All scripts are ran through ShellCheck (Ignoring PKGBUILD related false positives.).
-# - This PKGBUILD in particular is ran through namcap.
-# - Desktop entries are ran through desktop-file-validate.
+# Maintainer: Koopa <codingkoopa@gmail.com>
 
 pkgname='lucas-simpsons-hit-and-run-mod-launcher'
 pkgver='1.25.1'
