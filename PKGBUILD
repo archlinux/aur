@@ -25,7 +25,7 @@ pkgver() {
 
 package() {
     install -D -m 755 ${srcdir}/clerk/clerk.pl "${pkgdir}/usr/bin/clerk"
-    install -D -m 755 ${srcdir}/clerk/clerk_rating_client.service "${pkgdir}/usr/lib/systemd/user/clerk_rating_client.service"
+    install -D -m 644 ${srcdir}/clerk/clerk_rating_client.service "${pkgdir}/usr/lib/systemd/user/clerk_rating_client.service"
     install -D -m 755 ${srcdir}/clerk/clerk_rating_client "${pkgdir}/usr/bin/clerk_rating_client"
 }
 md5sums=('SKIP')
