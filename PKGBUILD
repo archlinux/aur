@@ -1,13 +1,13 @@
 # Maintainer: Alan Orth <aorth@mjanja.ch>
 pkgdesc="Clear Linux kernel and modules in binary"
-url="https://clearlinux.org/node/15538"
+url="https://github.com/clearlinux-pkgs/linux"
 pkgname=linux-clear-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.8
 _minor=10
 _clr=987
 pkgver=${_major}.${_minor}.${_clr}
-pkgrel=2
+pkgrel=3
 # use in case we need to update the Arch package without incrementing pkgrel
 epoch=0
 arch=('x86_64')
