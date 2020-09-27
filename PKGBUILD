@@ -1,32 +1,33 @@
-# Maintainer: Jesus Franco <jesusfranco at gmail dot com>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Jesus Franco <jesusfranco at gmail dot com>
 
-_pkgname="trimdown"
+_pkgname='trimdown'
 pkgname="${_pkgname}-git"
-_gitname=trimdown
-pkgver=2018.04.04
+pkgver=r67.81b3a3b
 pkgrel=1
-pkgdesc="A simple, feature rich, writing app for writing Novels, Short stories, Scripts and Articls."
-arch=('i686' 'x86_64')
-url="https://github.com/artemanufrij/${_pkgname}"
+pkgdesc='Simple, feature rich, writing app for writing Novels, Short stories, Scripts and Articles'
+arch=('x86_64')
+url='https://github.com/artemanufrij/trimdown'
 license=('GPL3')
+depends=('granite' 'gtksourceview3')
+makedepends=('git' 'meson' 'vala')
+provides=("${_pkgname}")
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
-depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'vala' 'granite' 'libpurple' 'gtksourceview3' 'libdbusmenu-gtk3')
-optdepends=('elementary-icon-theme')
-makedepends=('git' 'desktop-file-utils' 'hicolor-icon-theme' 'intltool' 'yelp-tools' 'gnome-common' 'gobject-introspection' 'meson' 'ninja')
-options=('!libtool')
-conflicts=('trimdown' 'trimdown-bzr')
-provides=('trimdown')
-source=("git+https://github.com/artemanufrij/trimdown.git")
-md5sums=('SKIP')
+pkgver() {
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-	cd "${_pkgname}"
-	meson build --prefix=/usr
-	cd build
-	ninja
+  arch-meson "${_pkgname}" build
+  meson compile -C build
 }
 
 package() {
-	cd "${_gitname}/build"
-	DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" meson install -C build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_pkgname}/README.md"
 }
+
+# vim: ts=2 sw=2 et:
