@@ -1,0 +1,23 @@
+pkgbase = badgie-git
+	pkgdesc = Generate badges for your android app's README with realtime data from Google Playstore such as Version, Number of Installs, Rating etc
+	pkgver = r26.5fc4538
+	pkgrel = 1
+	url = https://github.com/rajkumaar23/badgie
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = granite
+	depends = libgee
+	depends = libsoup
+	depends = gdk-pixbuf2
+	provides = badgie
+	conflicts = badgie
+	source = git+https://github.com/rajkumaar23/badgie.git
+	md5sums = SKIP
+
+pkgname = badgie-git
+
