@@ -10,6 +10,7 @@ pkgbase = pimagizer
 	depends = desktop-file-utils
 	depends = pygobject-devel
 	depends = python2-gobject
+	depends = python-setuptools
 	options = !emptydirs
 	source = https://github.com/vfrico/pimagizer/archive/v0.4.5.tar.gz
 	md5sums = 1cd841e648e767f3e7693550ba19586f
