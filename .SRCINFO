@@ -1,0 +1,16 @@
+pkgbase = graphui
+	pkgdesc = Graph visualization based on graphviz with included text editor and preview area
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/artemanufrij/graphui
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	depends = gtksourceview3
+	source = graphui-1.1.1.tar.gz::https://github.com/artemanufrij/graphui/archive/1.1.1.tar.gz
+	sha256sums = 8520a394bbd2072aac2db03b1c3fa54d1f32459caafa85c9bc0fa43eadbe1a80
+
+pkgname = graphui
+
