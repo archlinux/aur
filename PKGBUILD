@@ -2,7 +2,7 @@
 
 _pkgname=sord
 pkgname="${_pkgname}-git"
-pkgver=0.16.4.r421.61d9657
+pkgver=0.16.6.r446.3faa8cc
 pkgrel=1
 pkgdesc="Lightweight C library for storing RDF statements in memory (git version)"
 arch=('i686' 'x86_64')
@@ -39,8 +39,13 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  python ./waf configure --prefix=/usr
+  python ./waf configure --prefix=/usr --test
   python waf build $MAKEFLAGS
+}
+
+check() {
+  cd "${srcdir}/${_pkgname}"
+  python waf test -v
 }
 
 package() {
