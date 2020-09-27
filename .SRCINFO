@@ -1,0 +1,20 @@
+pkgbase = vmessping
+	pkgdesc = A ping prober for vmess:// links in common seen formats
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/v2fly/vmessping
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = vmessping-0.3.4.tar.gz::https://github.com/v2fly/vmessping/archive/v0.3.4.tar.gz
+	source = vmessping-0.3.4.patch
+	sha256sums = 1f3f1759039f83e32d3b8a824b9f7518e22ee07e515069a35d1dc22f36cd5f64
+	sha256sums = 68b77256c1ec20f1628667719afbd2653b3005001ae94e4754e3cba38b7bbd00
+
+pkgname = vmessconv
+
+pkgname = vmessping
+
+pkgname = vmessspeed
+
