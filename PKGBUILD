@@ -2,7 +2,7 @@
 # Author: Matthias Blaicher <matthias at blaicher dot com>
 
 pkgname=disman-git
-pkgver=0.519.0.beta.0.r180.g2b9cafd
+pkgver=0.520.0.beta.0.r4.g42bb907
 pkgrel=1
 pkgdesc='Qt/C++ display management library by KWinFT project ~ forked from KDE libkscreen'
 arch=(
