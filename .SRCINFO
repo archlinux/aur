@@ -1,5 +1,5 @@
 pkgbase = instamenu
-	pkgdesc = menu for instantOS
+	pkgdesc = dmenu like menu with the Manjaro Breath theme
 	pkgver = 2020.9.27
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/instantmenu
