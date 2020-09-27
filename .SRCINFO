@@ -1,0 +1,19 @@
+pkgbase = kde1-kdemultimedia-git
+	pkgdesc = Historical copy of the multimedia module of KDE 1, adapted to compile on modern systems
+	pkgver = 1.1.2r1162.8bcc29f
+	pkgrel = 1
+	url = https://quickgit.kde.org/?p=kde1-kdemultimedia.git
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde1-kdelibs
+	provides = kde1-kdemultimedia
+	conflicts = kde1-kdemultimedia
+	source = git+https://github.com/KDE/kde1-kdemultimedia.git
+	md5sums = SKIP
+
+pkgname = kde1-kdemultimedia-git
+
