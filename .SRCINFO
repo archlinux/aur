@@ -1,0 +1,18 @@
+pkgbase = translit-git
+	pkgdesc = Simple method of encoding Cyrillic letters with Latin ones
+	pkgver = 1.0.0.r10.g326e80e
+	pkgrel = 1
+	url = https://github.com/artemanufrij/translit
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	depends = gtkspell3
+	provides = translit
+	source = git+https://github.com/artemanufrij/translit.git
+	sha256sums = SKIP
+
+pkgname = translit-git
+
