@@ -7,7 +7,7 @@ _major=5.8
 _minor=10
 _clr=987
 pkgver=${_major}.${_minor}.${_clr}
-pkgrel=4
+pkgrel=5
 # use in case we need to update the Arch package without incrementing pkgrel
 epoch=0
 arch=('x86_64')
@@ -21,10 +21,11 @@ _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
 _config_hash=7cc390a851266764bc2f5a33477bce2b4b486e2caa9706b216c649c36be5404d
+_config_hash_clear_version=33730
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
-        "https://cdn.download.clearlinux.org/update/${_clear_version}/files/${_config_hash}.tar"
+        "https://cdn.download.clearlinux.org/update/${_config_hash_clear_version}/files/${_config_hash}.tar"
 )
 build() {
     local files=$(sed -n -re "s/^[FL]...[[:space:]]+([a-f0-9]+)[[:space:]]+[[:digit:]]+[[:space:]]+\/usr\/lib\/(modules.*build.*)$/\1 \2/p" Manifest.linux-dev.${_clear_version})
