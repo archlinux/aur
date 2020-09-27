@@ -2,7 +2,7 @@
 
 _module=utils
 pkgname=kde1-kde${_module}-git
-pkgver=1.1.2r1689.7f0cb07
+pkgver=1.1.2r1692.9f1cc03
 pkgrel=1
 pkgdesc="Historical copy of the $_module module of KDE 1, adapted to compile on modern systems"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ depends=(kde1-kdelibs)
 makedepends=(cmake git)
 provides=(kde1-kde${_module})
 conflicts=(kde1-kde${_module})
-source=("git://anongit.kde.org/kde1-kde${_module}.git")
+source=("git+https://anongit.kde.org/kde1-kde${_module}.git")
 md5sums=('SKIP')
 
 pkgver() {
