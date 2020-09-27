@@ -1,0 +1,14 @@
+pkgbase = ttf-know-your-product
+	pkgdesc = The font Know Your Product by Vic Fieger used in the game teeworlds
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.dafont.com/know-your-product.font
+	arch = any
+	license = CCPL:cc-by-sa-3.0
+	source = knowyour.ttf::https://www.dafont.com/know-your-product.font
+	source = LICENSE::https://creativecommons.org/licenses/by-sa/3.0/
+	sha256sums = 10ff07d6740a723b18c88ae6b5e4c09702226bddadffdafe20ca78ab375de8b3
+	sha256sums = e550f7bd34d25b04bb0a3fac7f3981d51b41df363d21f35952ee27da259039a2
+
+pkgname = ttf-know-your-product
+
