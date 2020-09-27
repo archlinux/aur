@@ -4,15 +4,15 @@ pkgbase = instamenu
 	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/instantmenu
 	arch = any
-	license = MIT
+	license = GNU General Public License v3.0
 	makedepends = git
 	depends = sh
 	depends = libxinerama
 	depends = libxft
-	provides = instantmenu
-	conflicts = instantmenu
+	provides = instamenu
+	conflicts = instamenu
 	source = https://github.com/TheCynicalTeam/instantmenu/archive/2020.9.27-1.tar.gz
-	sha256sums = SKIP
+	sha256sums = 8c5e49264cf71f730e43ff31eab308bc3e5e0eaed24d4da9b1afa655724ab0cb
 
 pkgname = instamenu
 
