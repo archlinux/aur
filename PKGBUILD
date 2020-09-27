@@ -1,4 +1,4 @@
-# Maintainer: Hugo Haldi <hugo dot haldi at google dot com>
+# Maintainer: Hugo Haldi <hugo dot haldi at gmail dot com>
 
 pkgname=swift-format
 pkgver=0.50300.0
