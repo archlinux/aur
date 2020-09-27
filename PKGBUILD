@@ -85,7 +85,7 @@ build() {
     -D glamor=false \
     -D linux_apm=false \
     -D mitshm=false \
-    -D vgahw=false \
+    -D vgahw=true \
     -D xdmcp=false \
     -D xephyr=false \
     -D xnest=false \
