@@ -13,6 +13,7 @@ pkgbase = deemix-pyweb-git
 	depends = python-pyqt5
 	depends = python-pyqt5-sip
 	depends = python-pyqtwebengine
+	depends = python-eventlet
 	provides = deemix-pyweb
 	source = deemix-pyweb::git+https://codeberg.org/RemixDev/deemix-pyweb
 	source = deemix-webui::git+https://codeberg.org/RemixDev/deemix-webui

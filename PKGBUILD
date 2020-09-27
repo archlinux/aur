@@ -8,7 +8,7 @@ pkgdesc="This is a pywebview wrapper for deemix-webui"
 arch=('any')
 url="https://codeberg.org/RemixDev/$_pkgname"
 license=('gpl3')
-depends=('python>=3.6' 'deemix' 'python-flask' 'python-flask-socketio' 'python-pyqt5' 'python-pyqt5-sip' 'python-pyqtwebengine')
+depends=('python>=3.6' 'deemix' 'python-flask' 'python-flask-socketio' 'python-pyqt5' 'python-pyqt5-sip' 'python-pyqtwebengine' 'python-eventlet')
 makedepends=('git')
 provides=('deemix-pyweb')
 source=("${_pkgname}::git+https://codeberg.org/RemixDev/$_pkgname"
@@ -17,7 +17,7 @@ md5sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd "${srcdir}/$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=10 HEAD)"
 }
 
 package() {
