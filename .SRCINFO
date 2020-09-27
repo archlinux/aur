@@ -1,0 +1,16 @@
+pkgbase = metronome
+	pkgdesc = Simple metronome for all musicians that helps to practice several rythms at many speeds
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/artemanufrij/metronome
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	depends = gstreamer
+	source = metronome-1.0.0.tar.gz::https://github.com/artemanufrij/metronome/archive/1.0.0.tar.gz
+	sha256sums = 6d90a2f3c39094689fd07cd777c9b3b4f65527a14b93ae1e91cc4b0276adc294
+
+pkgname = metronome
+
