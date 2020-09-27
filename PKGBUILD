@@ -1,14 +1,14 @@
 # Maintainer: Baltazár Radics <baltazar.radics@gmail.com>
 pkgname=m3dviewer
-pkgver=1.99.155
-pkgrel=2
+pkgver=1.99.172
+pkgrel=1
 pkgdesc='Viewer for mozaik3D animations'
 arch=(x86_64)
 url='https://www.mozaweb.com/mozaik3D'
 license=('unknown')
 depends=(glu gtk2)
 source=("https://download.mozaweb.com/$pkgname/${pkgname}_${pkgver}_x64.tar.gz")
-md5sums=('62d94d1004b827186e71746de691804e')
+md5sums=('e56aee581ec09e818eaba55f43cb8b10')
 
 package() {
 	install -Dm644 "usr/share/applications/m3d.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
