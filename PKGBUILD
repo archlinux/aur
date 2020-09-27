@@ -8,6 +8,7 @@ arch=('any')
 url='http://libnacl.readthedocs.org'
 license=('APACHE')
 makedepends=(git python-setuptools python2-setuptools libsodium)
+conflicts=('python2-pynacl')
 replaces=('python2-libnacl' 'python2-pynacl')
 provides=('python2-pynacl')
 source=("$pkgname::git+https://github.com/pyca/pynacl.git")
