@@ -1,0 +1,5 @@
+/harmonist-*
+*.pkg.tar.*
+*.tar.gz
+/src
+/pkg

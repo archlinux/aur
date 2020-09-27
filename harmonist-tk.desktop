@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Harmonist
+Comment=A stealth coffee-break roguelike game.
+Exec=/usr/bin/harmonist-tk
+Categories=Game;AdventureGame
