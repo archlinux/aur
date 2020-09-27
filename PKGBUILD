@@ -12,6 +12,7 @@ url='https://github.com/jeremyvaartjes/ping'
 _pool_url='http://packages.elementary.io/appcenter/pool/main'
 license=('GPL3')
 depends=('granite' 'gtksourceview3')
+provides=("${_pkgname}")
 source=("${_pool_url}/${_binary_name::1}/${_binary_name}/${_binary_name}${pkgver}-${_pkg_hash}.deb")
 sha256sums=('d85e4f9021b34eba7c18b633f2defe309e94631abb67f1bb5a1a2adef7ea20d9')
 

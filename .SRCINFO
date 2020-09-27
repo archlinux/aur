@@ -7,6 +7,7 @@ pkgbase = ping-bin
 	license = GPL3
 	depends = granite
 	depends = gtksourceview3
+	provides = ping
 	source = http://packages.elementary.io/appcenter/pool/main/c/com.github.jeremyvaartjes.ping/com.github.jeremyvaartjes.ping0.6.0-e80a97.deb
 	sha256sums = d85e4f9021b34eba7c18b633f2defe309e94631abb67f1bb5a1a2adef7ea20d9
 
