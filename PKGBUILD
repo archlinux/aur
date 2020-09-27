@@ -7,20 +7,20 @@
 
 pkgname=qaac-wine
 _pkgname=qaac
-pkgver=2.68
-pkgrel=2
+pkgver=2.70
+pkgrel=1
 pkgdesc="QuickTime AAC/ALAC encoder (wine version)"
 arch=('x86_64')
 url="https://sites.google.com/site/qaacpage/"
 license=('custom')
 depends=('wine')
-makedepends=('p7zip')
+makedepends=('p7zip' 'wine' 'winetricks')
 source=("https://github.com/nu774/qaac/releases/download/v${pkgver}/qaac_${pkgver}.zip"
         "iTunes64Setup.exe::https://www.apple.com/itunes/download/win64"
         "https://raw.githubusercontent.com/nu774/qaac/master/COPYING"
         "https://www.apple.com/legal/sla/docs/iTunesWindows.pdf"
         "wrapper.sh")
-sha256sums=('8067826564d182a239a2347b40d52369c4a378b7df7918bd156138bf904168d0'
+sha256sums=('200ca3e4e7f8b4f27ae35d6fd5f0ed78440e9424710ab26086a590b298799873'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -28,9 +28,13 @@ sha256sums=('8067826564d182a239a2347b40d52369c4a378b7df7918bd156138bf904168d0'
 
 build() {
     cd "${srcdir}"
-    mkdir -p AppleApplicationSupport64
-    cd AppleApplicationSupport64
-    7z x -y ../AppleApplicationSupport64.msi
+    mkdir -p wineprefix
+    export WINEPREFIX=$PWD/wineprefix
+    export WINEARCH=win64
+    wineserver -k
+    winetricks win7
+    msiexec /i "${srcdir}/iTunes64.msi" /qn
+    wineserver -k
 }
 
 package() {
@@ -43,9 +47,9 @@ package() {
     for f in libsoxconvolver64.dll libsoxr64.dll; do
         install -Dm644 "qaac_${pkgver}/x64/${f}" "${pkgdir}/usr/lib/qaac/${f}"
     done
-    local LIBICUDT_NAME="$(ls AppleApplicationSupport64/*icudt*.dll | sed 's/.*icudt/icudt/')"
+    local LIBICUDT_NAME=$(find 'wineprefix/drive_c/Program Files/iTunes' -name 'icudt*.dll' -printf '%f')
     for f in ASL.dll CoreAudioToolbox.dll CoreFoundation.dll $LIBICUDT_NAME libdispatch.dll libicuin.dll libicuuc.dll objc.dll; do
-        install -Dm644 "AppleApplicationSupport64/x64_AppleApplicationSupport_${f}" "${pkgdir}/usr/lib/qaac/${f}"
+        install -Dm644 "wineprefix/drive_c/Program Files/iTunes/${f}" "${pkgdir}/usr/lib/qaac/${f}"
     done
     install -Dm755 wrapper.sh "${pkgdir}/usr/lib/qaac/wrapper.sh"
 
