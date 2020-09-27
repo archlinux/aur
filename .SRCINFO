@@ -1,12 +1,12 @@
 pkgbase = ssdb
 	pkgdesc = A fast NoSQL database, an alternative to Redis.
-	pkgver = 1.9.4
+	pkgver = 1.9.9
 	pkgrel = 1
 	url = http://ssdb.io/
 	arch = x86_64
 	license = BSD
-	source = https://github.com/ideawu/ssdb/archive/1.9.4.tar.gz
-	md5sums = 0a3349bc5f58037fc4a9a71bae3fce3d
+	source = https://github.com/ideawu/ssdb/archive/1.9.9.tar.gz
+	md5sums = 3502031320b804cbc2325dc84fe4e09c
 
 pkgname = ssdb
 
