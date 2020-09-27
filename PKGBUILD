@@ -51,7 +51,7 @@ md5sums=(
 )
 
 package() {
-  # Stage 1: Install the mod launcher files.
+  # Install the mod launcher files.
 
   # Install the Windows executable to /usr/lib/lucas-simpsons-hit-and-run-mod-launcher/ because it's
   # an executable, but not meant to be ran as-is.
@@ -63,30 +63,21 @@ package() {
   # they aren't really shared objects, but just data like textures and models.
   install -Dm644 -t "$pkgdir/usr/share/$pkgname/mods/" Mods/*.lmlm
 
-  # Stage 2: Install the mod launcher Linux launcher files.
+  # Install the mod launcher Linux launcher files.
   cd lml-linux-launcher-master-* || exit 1
 
-  # Install the launchers.
-
+  # Install the mod launcher launcher.
   install -Dm655 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-
   # Install the MIME types.
-
   install -Dm644 "$pkgname.xml" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
-
   # Install the icons.
-
   for SIZE in 16 22 32 48 64 256; do
     install -Dm644 "$pkgname-$SIZE.png" \
       "$pkgdir/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/$pkgname.png"
   done
-
-  # Install the desktop entries.
-
+  # Install the desktop entry.
   install -Dm644 "com.donutteam.$pkgname.desktop" \
     "$pkgdir/usr/share/applications/com.donutteam.$pkgname.desktop"
-
   # Install the helper script.
-
   install -m655 "check-for-duplicate-lmlms.sh" "$pkgdir/usr/bin/check-for-duplicate-lmlms"
 }
