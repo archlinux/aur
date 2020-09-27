@@ -1,0 +1,14 @@
+pkgbase = dokuwiki-plugin-captcha
+	pkgdesc = Use a CAPTCHA challenge to protect DokuWiki against automated spam
+	pkgver = 2019.03.20
+	pkgrel = 1
+	url = http://www.dokuwiki.org/plugin:captcha
+	arch = any
+	license = GPL2
+	depends = dokuwiki
+	options = !strip
+	source = dokuwiki-plugin-captcha-2019.03.20.tar.gz::https://github.com/splitbrain/dokuwiki-plugin-captcha/archive/2019-03-20.tar.gz
+	sha512sums = 1b6788bdfbf68cbfe51e6ef65f9a266c3b5781e0b9d5a285fb41c9ebb646cc54f0af6d925c39a76127aaab8e5c2f1e1d324e474829b8452cc1a60c3b3d08df6c
+
+pkgname = dokuwiki-plugin-captcha
+
