@@ -4,32 +4,27 @@
 
 _number_of_bits=32
 pkgname=microchip-mplabxc${_number_of_bits}-bin
-pkgver=2.40
+pkgver=2.41
 pkgrel=1
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for all of their 32bit microcontrollers"
-arch=(i686 x86_64)
+arch=(x86_64)
 url=https://www.microchip.com/development-tools/downloads-archive
 license=(custom)
-depends_i688=(gcc-libs)
-depends_x86_64=(lib32-gcc-libs)
-makedepends=(sdx)
-makedepends_x86_64=(lib32-tclkit)
-makedepends_i686=(tclkit)
+depends=(gcc-libs)
+makedepends=(bitrock-unpacker)
 
 options=(!strip docs libtool emptydirs !zipman staticlibs)
-source=("http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run"
-        "bitrock-unpacker.tcl")
+source=("http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run")
 
-md5sums=('db700eadf606da4207a1239015f3fcc3'
-         '70dedba4c417f8c0bb07c32d19e9d197')
+md5sums=('172f15c463ae3123faebe79e19d91189')
 
 install=$pkgname.install
 
 instdir="/opt/microchip/xc${_number_of_bits}/v${pkgver}"
 
 build() {
-  msg2 "Unpacking files from installer"
-  ./bitrock-unpacker.tcl ./xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run ./unpacked.vfs
+  msg2 "Unpacking files from Microchip's installer blob"
+  bitrock-unpacker ./xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run ./unpacked.vfs
 }
 
 package() {
