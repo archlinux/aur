@@ -1,7 +1,7 @@
 # Owner: Daniel Mason (idanoo) <daniel@m2.nz>
 pkgbase=element-desktop-git
-_vers=v1.7.8-rc.1
-pkgver=v1.7.8.rc.1.r0.g7f6c2bbe
+_vers=v1.7.8
+pkgver=v1.7.8.r0.g802829f0
 pkgrel=1
 pkgname=(element-web-git element-desktop-git)
 pkgdesc="A glossy Matrix collaboration client for the desktop."
@@ -19,7 +19,7 @@ source=("element-web::${_giturl}/riot-web.git#tag=${_vers}"
         "element-desktop.sh")
 sha256sums=('SKIP'
             'SKIP'
-            '81354e663e354bd66b3f2bb303314b790bdf6d61c3d8e2df7407eb500885647d'
+            '81354e663e354bd66b3f2bb303314b790bdf6d61c3d8e2df7407eb500885647d'y
             'e4965abefbd609cf88349437b811bc4433d671f5ec5cd51992fd6179d483925f')
 
 pkgver() {
