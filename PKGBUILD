@@ -6,8 +6,8 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=weston-eglstream
-pkgver=8.0.0
-pkgrel=2
+pkgver=9.0.0
+pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor with EGLStream support'
 arch=('x86_64')
 url='https://wayland.freedesktop.org/'
@@ -25,13 +25,13 @@ source=("https://wayland.freedesktop.org/releases/weston-$pkgver.tar.xz"
         '0004-backend-drm-Gracefully-handle-vblank-and-flip-invali.patch'
         '0005-backend-drm-Add-support-for-EGLDevice-EGLOutput.patch'
         '0006-compositor-Process-stream-attach-requests-with-wl_eg.patch')
-sha256sums=('7518b49b2eaa1c3091f24671bdcc124fd49fc8f1af51161927afa4329c027848'
-            '8d644af0432944ec0c8710f3d31ffdccb8a0661683247743df08915cf9670915'
-            'bbfc35859b4561ddaee39077c1b449c729ce6e691193a64090b44746bc46d587'
-            '0e2616445c720fc23137feffc6148f891648e3ab8a52f6790cf484b0b39d7fe2'
-            '557aa28b89b18c4fb28ea7ab56dd6f3580dbc44d6ae0a983b8b615eab5bf00b1'
-            '36e9d9a317c32e61910465394977c8a35bf94afe97a11e56476ea7ff1e8d708a'
-            'dc64ac1cacac8dea668644a2a64aeaf3123983dcc61bf5b993bbd48dbc4f69ef')
+sha256sums=('5cf5d6ce192e0eb15c1fc861a436bf21b5bb3b91dbdabbdebe83e1f83aa098fe'
+            '39eb26160b63183f35e5c50bea8cc10248fe194ab96b2cb9417990e5ed45fa1a'
+            '55ee7aaed84cdc75cc58919a3ec71c7b2cfdbcf936a5f6c8f07f54376b9cc3a5'
+            'c971abb2b84d9b2519c08aacbd3a4afc44d31bf0970d3bc71e48cca850a9765f'
+            'ac1c048f6944b1ddd24c17205a7bd8f55578af5489d2f9ca7121727b0cbacc68'
+            '5898de8565d3c449fb276f9e3b1ae1bb9e908e8153e0802989a49baa8d1d134a'
+            '5834b4b0068cc0debe5bc20cddafd17f9ca4cb472035716da3942401a130ccc8')
 prepare() {
     cd weston-$pkgver
 
