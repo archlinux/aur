@@ -1,7 +1,8 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
+# pkg: git
 pkgname="openbangla-keyboard-git"
-pkgver=1.5.1.r94.g08f7e4b
-pkgrel=1
+pkgver=1.5.1.r102.g360208e
+pkgrel=2
 pkgdesc="An OpenSource, Unicode compliant Bengali Input Method"
 arch=('x86_64')
 url="https://openbangla.github.io"
