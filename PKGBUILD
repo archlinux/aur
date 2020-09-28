@@ -4,7 +4,7 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=jhbuild
-pkgver=3.36.0
+pkgver=3.38.0.r0.g30ef98f3
 pkgrel=1
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('subversion: fetch subversion repositories'
             'bzr: fetch Bazaar repositories'
             'mercurial: fetch Mercurial repositories'
             'darcs: fetch Darcs repositories')
-_commit=a05fc06b
+_commit=30ef98f3
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/jhbuild.git#commit=$_commit"
         "module_args.patch")
 sha256sums=('SKIP'
@@ -25,13 +25,12 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/-/+/g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd $pkgname
-  msg2 "Set parameters known to be required in Arch Linux"
-  patch -p1 -i "$srcdir/module_args.patch"
+  #patch -p1 -i "$srcdir/module_args.patch"
 }
 
 build() {
