@@ -1,7 +1,7 @@
 pkgbase = rime-cloverpinyin
-	pkgdesc = ✤四叶草简体拼音输入方案 for rime
+	pkgdesc = Clover Simplified pinyin input for rime.
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.fkxxyz.com/d/cloverpinyin/
 	arch = x86_64
 	license = LGPL
