@@ -22,7 +22,7 @@ package() {
             --pkgdesc "$pkgdesc" \
             --name "jdMinecraftLauncher" \
             --comment "$pkgdesc" \
-            --exec jdTextEdit \
-            --categories 'Game;' \
+            --exec jdMinecraftLauncher \
+            --categories 'Game'
   install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
