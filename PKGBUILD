@@ -7,7 +7,7 @@
 
 pkgname=r5u87-webcam-drivers
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 _alias=r5u87x
 pkgdesc='Userspace modules for Ricoh R5U870 OEM cameras, improved packages and compatibility'
 arch=('i686' 'x86_64')
@@ -35,6 +35,7 @@ package() {
 	cd ${srcdir}/${_alias}
 	mkdir -p "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/lib/ru587x/ucode"
+	mkdir -p "${pkgdir}/usr/lib32/ru587x/ucode"
 	install "${srcdir}/${_alias}/ricoh-webcam-loader" ${pkgdir}/usr/bin
 	make DESTDIR="${pkgdir}" \
 		sbindir="/bin" \
@@ -42,5 +43,5 @@ package() {
 		UDEV_INSTALL="/usr/lib/udev/rules.d" \
 	install recode-fw.scm ${pkgdir}/usr/bin
 	cp -r "${pkgdir}/usr/lib/ucode" "${pkgdir}/usr/lib/ru587x/"
+	cp -r "${pkgdir}/usr/lib/ucode" "${pkgdir}/usr/lib32/ru587x/"
 }
-
