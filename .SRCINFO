@@ -1,5 +1,5 @@
 pkgbase = python-catalogue
-	pkgdesc = Python wrapper library for subprocess module
+	pkgdesc = Super lightweight function registries for your library
 	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/explosion/catalogue
