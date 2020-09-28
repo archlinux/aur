@@ -1,7 +1,7 @@
 pkgbase = openlierox
 	pkgdesc = An extremely addictive realtime worms shoot-em-up backed by an active gamers community
 	pkgver = 0.58_rc5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://openlierox.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = openlierox
 	depends = sdl
 	depends = sdl_mixer
 	depends = sdl_image
-	depends = hawknl-git
+	depends = hawknl
 	depends = gd
 	depends = zlib
 	depends = libxml2

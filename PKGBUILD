@@ -4,12 +4,12 @@
 
 pkgname=openlierox
 pkgver=0.58_rc5
-pkgrel=3
+pkgrel=4
 pkgdesc="An extremely addictive realtime worms shoot-em-up backed by an active gamers community"
 arch=(i686 x86_64)
 license=("GPL")
 url="http://openlierox.sourceforge.net/"
-depends=("sdl" "sdl_mixer" "sdl_image" "hawknl-git" "gd" "zlib" "libxml2" "libzip")
+depends=("sdl" "sdl_mixer" "sdl_image" "hawknl" "gd" "zlib" "libxml2" "libzip")
 makedepends=("gendesk" "cmake")
 source=("http://downloads.sourceforge.net/sourceforge/openlierox/OpenLieroX_${pkgver}.src.tar.bz2"
         "options.cfg"
