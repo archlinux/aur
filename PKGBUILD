@@ -1,5 +1,5 @@
 pkgname=mingw-w64-tools
-pkgver=7.0.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="MinGW-w64 utilities"
 arch=(i686 x86_64)
@@ -9,7 +9,7 @@ groups=(mingw-w64)
 options=(!libtool !emptydirs)
 validpgpkeys=('CAF5641F74F7DFBA88AE205693BDB53CD4EBC740')
 source=(https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v${pkgver}.tar.bz2{,.sig})
-sha256sums=('aa20dfff3596f08a7f427aab74315a6cb80c2b086b4a107ed35af02f9496b628'
+sha256sums=('44c740ea6ab3924bc3aa169bad11ad3c5766c5c8459e3126d44eabb8735a5762'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
