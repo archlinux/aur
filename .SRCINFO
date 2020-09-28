@@ -1,7 +1,7 @@
 pkgbase = r5u87-webcam-drivers
 	pkgdesc = Userspace modules for Ricoh R5U870 OEM cameras, improved packages and compatibility
 	pkgver = 0.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitea.artixlinux.org/linuxer/r5u87x
 	arch = i686
 	arch = x86_64
