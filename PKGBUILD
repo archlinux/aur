@@ -1,6 +1,6 @@
 pkgname=ignition-common-1
 pkgver=1.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A collection of useful classes and functions for handling many command tasks. This includes parsing 3D mesh files, managing console output, and using PID controllers."
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="https://ignitionrobotics.org/libs/common"
@@ -11,10 +11,10 @@ makedepends=('ignition-cmake=0' 'util-linux')
 optdepends=()
 provides=('ignition-common=1')
 _name="ignition-common"
-source=("https://bitbucket.org/osrf-migrated/ign-common/get/${_name}_${pkgver}.tar.bz2")
-sha256sums=('49d3afe2b0f84b4b1fc8c1de8961d889a348688a129f078dc14176d2fc1c902b')
+source=("https://github.com/ignitionrobotics/ign-common/archive/ignition-common_${pkgver}.tar.gz")
+sha256sums=('2e561f6c5d39622917171016f95302d0e2dfbdbc2c3c994a52a60949f3ed7ba3')
 
-_dir="osrf-migrated-ign-common-4d7ed1df80b0"
+_dir="ign-common-ignition-common_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
