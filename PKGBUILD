@@ -17,9 +17,9 @@
 
 pkgname=protonmail-bridge-nogui
 
-_pkgver=1.3.3
+_pkgver=1.4.0
 _rev=""
-_srcver="$_pkgver"
+_srcver=ie-1.1.0
 _srcname=proton-bridge-"$_srcver"
 
 pkgver="$_pkgver""$_rev"
@@ -31,21 +31,17 @@ url="https://github.com/ProtonMail/proton-bridge"
 license=('GPL3')
 makedepends=('go' 'gcc')
 depends=('libsecret')
-optdepends=(
-    'gnome-keyring: supported password manager (password manager is required)'
-    'pass: supported password manager (password manager is required)'
-)
+optdepends=('gnome-keyring: supported password manager (password manager is required)'
+            'pass: supported password manager (password manager is required)')
 conflicts=('protonmail-bridge-bin' 'protonmail-bridge')
 options=('!emptydirs' '!strip')
-source=("$_srcname.tar.gz::https://github.com/ProtonMail/proton-bridge/archive/v"$_srcver".tar.gz"
-	"bridge.service")
-sha256sums=('613907baa5d5c93cebb2581adeb7259eab750cebe04a9db6873b592138686209'
+source=("$_srcname.tar.gz::https://github.com/ProtonMail/proton-bridge/archive/"$_srcver".tar.gz"
+        "bridge.service")
+sha256sums=('d2d592749c87d134e0e1832d396684045bd994feb9e8e5dba435230bde2c6307'
             '6b2fd1e042b55dc6d0ffe5eb44e82ffd233452b4571ef571132600e7ec0d5d82')
 
 prepare() {
     cd "${srcdir}"/"$_srcname"/
-    sed -i "s/BRIDGE_VERSION?=.*/BRIDGE_VERSION?="$_srcver"/" Makefile
-    sed -i "s/REVISION:=.*/REVISION:=git/" Makefile
     export PATH=$PATH:$(go env GOPATH)/bin/
     make clean
     make build-nogui
