@@ -2,13 +2,13 @@ pkgbase = yishu
 	pkgdesc = Bespoke and simple Todo.txt client
 	pkgver = 1.2.5
 	pkgrel = 1
-	url = https://github.com/lainsce/yishu/
+	url = https://github.com/lainsce/yishu
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
 	makedepends = vala
 	depends = granite
-	source = yishu-1.2.5.tar.gz::https://github.com/lainsce/yishu//archive/1.2.5.tar.gz
+	source = yishu-1.2.5.tar.gz::https://github.com/lainsce/yishu/archive/1.2.5.tar.gz
 	sha256sums = fbb1ebcf16672b818cb92f7022c1d9e5e17bdb1b776612535e0af6a8abd75a39
 
 pkgname = yishu
