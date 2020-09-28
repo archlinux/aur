@@ -1,9 +1,9 @@
 pkgname=mingw-w64-wine
 pkgver=1
-pkgrel=5
+pkgrel=6
 arch=('any')
 pkgdesc="Wine wrapper for MinGW (mingw-w64)"
-depends=('wine')
+depends=('wine' 'lockfile-progs')
 license=("MIT")
 url="http://fedoraproject.org/wiki/MinGW"
 source=("mingw-wine.sh" "mingw-msiexec.sh")
