@@ -2,7 +2,7 @@
 
 pkgname=olive-git
 _pkgname=olive
-pkgver=continuous.r0.g2afa5a42
+pkgver=continuous.r35.g610f4c54
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Free non-linear video editor"
@@ -19,7 +19,7 @@ makedepends=('cmake' 'git' 'qt5-tools')
 
 provides=('olive')
 conflicts=('olive')
-source=("git+https://github.com/olive-editor/olive.git")
+source=('git+https://github.com/olive-editor/olive.git')
 sha512sums=('SKIP')
 
 pkgver() {
@@ -41,10 +41,12 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         ../$_pkgname
-  make
+  cmake --build .
 }
 
 package() {
   cd build
   make DESTDIR="$pkgdir/" install
+  install -Dm755 "$srcdir/build/app/olive-editor" \
+                 "$pkgdir/usr/bin/olive-editor"
 }
