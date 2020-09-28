@@ -1,42 +1,42 @@
-# Maintainer: Chris Brendel <cdbrendel@gmail.com>
-# Python package author: Matthew Honnibal <matt@explosion.ai>
+# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Contributor: Chris Brendel <cdbrendel@gmail.com>
+
 pkgname=python-thinc
-_origpkgname=thinc
-pkgver=7.4.0.dev2
+pkgver=7.4.1
 pkgrel=1
 pkgdesc="Practical Machine Learning for NLP"
-arch=("x86_64")
+arch=(i686 x86_64 armv7h aarch64)
 url="https://github.com/explosion/thinc"
-license=("MIT")
-depends=("cython"
-	"python-numpy"
-	"python-cymem"
-	"python-preshed"
-	"python-murmurhash"
-	"python-plac"
-	"python-mock"
-	"python-pathlib"
-	"python-catalogue"
-	"python-tqdm"
-	"python-hypothesis"
-	"python-blis"
-	"python-six"
-	"python-tqdm"
-	"python-srsly"
-	"python-wasabi"
-	"python-pydantic"
+license=(MIT)
+depends=(
+    python-blis
+    python-catalogue
+    python-cymem
+    python-hypothesis
+    python-mock
+    python-murmurhash
+    python-numpy
+    python-pathlib
+    python-plac
+    python-preshed
+    python-pydantic
+    python-six
+    python-srsly
+    python-tqdm
+    python-wasabi
 )
-makedepends=("python-setuptools" "python-wheel" "cython")
-optdepends=("python-spacy: examples" "flake8: linting for Python code" "python-pytest-cov: run included tests" 
-            "mypy: run included tests" "python-ipykernel: run included tests" )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/explosion/thinc/archive/v$pkgver.tar.gz")
-md5sums=('0a62680b89d478955eeb6fac875e71e8')
+makedepends=(python-setuptools cython)
+source=("https://files.pythonhosted.org/packages/17/5d/4343b3a79565af88ba2d53818d97995c3c239288f2565b826865f376d271/thinc-7.4.1.tar.gz")
+sha256sums=('0139fa84dc9b8d88af15e648fc4ae13d899b8b5e49cb26a8f4a0604ee9ad8a9e')
 
 
-package() {
-    cd "$_origpkgname-$pkgver"
-    python setup.py install --root="${pkgdir}/" --optimize=1 
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"    
+build(){
+    cd "thinc-${pkgver}"
+    python setup.py build
 }
 
-
+package() {
+    cd "thinc-${pkgver}"
+    python setup.py install --skip-build --root="${pkgdir}" --optimize=1
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"    
+}
