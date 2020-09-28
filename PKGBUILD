@@ -7,7 +7,7 @@
 _pkgbasename=ffmpeg
 pkgname=("lib32-$_pkgbasename" "lib32-lib$_pkgbasename")
 pkgver=4.3.1
-pkgrel=3
+pkgrel=4
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -83,11 +83,13 @@ optdepends=(
 source=(
       "git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
       "vmaf-model-path.patch"
+      "issue8760-fix-libsrt-1.4.1.patch"
 )
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 sha256sums=(
       'SKIP'
       '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d'
+      'd19626d3b803e2985b8114ab3f79c149420d5054491c282ca71f50f1934c579e'
 )
 
 prepare() {
@@ -96,6 +98,7 @@ prepare() {
   # Patching if needed
 
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
+  patch -Np1 -i "${srcdir}"/issue8760-fix-libsrt-1.4.1.patch
 }
 
 build() {
