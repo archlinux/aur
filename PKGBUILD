@@ -23,7 +23,7 @@ prepare() {
 build() {
   cd $pkgname
 
-  cmake -H. -B"build/flux" -G"Ninja" -DOBS_DOWNLOAD=ON -DCMAKE_PACKAGE_NAME=StreamFX -DCMAKE_PACKAGE_PREFIX="build/package" -DCMAKE_INSTALL_PREFIX="build/distrib" -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+  cmake -H. -B"build/flux" -G"Ninja" -DOBS_DOWNLOAD=ON -DCMAKE_PACKAGE_NAME=StreamFX -DCMAKE_PACKAGE_PREFIX="build/package" -DCMAKE_INSTALL_PREFIX="build/distrib" -DENABLE_UPDATER=FALSE -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
 
   cmake --build "build/flux" --config RelWithDebInfo --target install
 }
