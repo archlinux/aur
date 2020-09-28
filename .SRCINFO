@@ -1,7 +1,7 @@
 pkgbase = lua-resty-core
 	pkgdesc = Lua script engine for nginx lua module
 	pkgver = 0.1.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/openresty/lua-resty-core
 	arch = any
 	license = BSD

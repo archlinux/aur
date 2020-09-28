@@ -1,8 +1,8 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
-
+# pkg: github openresty/lua-resty-core
 pkgname=lua-resty-core
 pkgver=0.1.19
-pkgrel=2
+pkgrel=3
 
 pkgdesc='Lua script engine for nginx lua module'
 arch=('any')
