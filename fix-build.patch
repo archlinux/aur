@@ -1,0 +1,31 @@
+diff --git a/desktop-app/package.json b/desktop-app/package.json
+index 8039dfd..fc1e5dc 100644
+--- a/desktop-app/package.json
++++ b/desktop-app/package.json
+@@ -1,7 +1,7 @@
+ {
+   "name": "Responsively-App",
+   "productName": "ResponsivelyApp",
+-  "version": "0.13.1",
++  "version": "0.13.2",
+   "description": "A developer-friendly browser for developing responsive web apps",
+   "scripts": {
+     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
+@@ -66,7 +66,6 @@
+   "main": "./app/main.prod.js",
+   "build": {
+     "afterSign": "scripts/notarize.js",
+-    "afterAllArtifactBuild": "scripts/extraPublishFiles.js",
+     "productName": "ResponsivelyApp",
+     "appId": "app.responsively",
+     "files": [
+@@ -147,8 +146,7 @@
+     },
+     "linux": {
+       "target": [
+-        "AppImage",
+-        "rpm"
++        "AppImage"
+       ],
+       "category": "Development"
+     },
