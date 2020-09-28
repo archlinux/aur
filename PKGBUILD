@@ -1,6 +1,7 @@
 pkgname=cmm
+groups=('kos32-dev')
 pkgver=0.240
-pkgrel=1
+pkgrel=2
 pkgdesc="SPHINX C-- Compiler . C-- is a programming language occupying an intermediate position between Assembler and C."
 url="http://c--sphinx.narod.ru/"
 source=("https://github.com/XVilka/cminusminus/archive/v${pkgver}.tar.gz")
