@@ -80,7 +80,7 @@ build() {
     -D b_lto=false \
     -D b_lundef=false \
     -D xinerama=true \
-    -D screensaver=true \
+    -D screensaver=false \
     -D dmx=false \
     -D glamor=false \
     -D linux_apm=false \
@@ -99,7 +99,6 @@ build() {
     -D debug=false
      
 # xinerama needed with nvidia blob
-# screensaver needed for chrome and steam gui
 # mitshm needed with nvidia blob
 # xv needed with nvidia blob
 
