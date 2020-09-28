@@ -1,0 +1,18 @@
+pkgbase = prettifier-git
+	pkgdesc = Simple application that makes your JSON/XML requests/responses prettier to read
+	pkgver = 1.1.4.r2.gffc7138
+	pkgrel = 1
+	url = https://github.com/fleury08/prettifier
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	depends = gtksourceview3
+	provides = prettifier
+	source = git+https://github.com/fleury08/prettifier.git
+	sha256sums = SKIP
+
+pkgname = prettifier-git
+
