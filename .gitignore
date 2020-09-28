@@ -1,6 +1,7 @@
-*.tar.gz
-*.pkg.tar.xz
-pkg/
-src/
-shell-shortcuts/
+# Ignore everything
+*
 
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO

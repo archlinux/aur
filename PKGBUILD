@@ -1,40 +1,31 @@
-# Maintainer: ftsell <aur@finn-thorben.me>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: ftsell <aur@finn-thorben.me>
 pkgname=pop-shell-shortcuts-git
-pkgdesc="Application for displaying and demoing Pop Shell shortcuts "
-pkgver=r25.ada2c50
+pkgver=r37.9280535
 pkgrel=1
-_gitorg=pop-os
-_gitname=shell-shortcuts
-_gitbranch=master_focal
-arch=(any)
+pkgdesc="Application for displaying and demoing Pop Shell shortcuts"
+arch=('x86_64')
 url="https://github.com/pop-os/shell-shortcuts"
-license=("GPLv3")
-
-conflicts=("pop-shell-shortcuts")
-makedepends=("rust")
-depends=("cairo" "pango" "atk" "gdk-pixbuf2" "gtk3")
-
-
-_dir="${_gitname}"
-source=("${_dir}::git+https://github.com/${_gitorg}/${_gitname}.git#branch=${_gitbranch}")
-sha256sums=("SKIP")
-
+license=('GPL')
+depends=('gnome-shell')
+makedepends=('git' 'rust')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/pop-os/shell-shortcuts.git')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_dir}"
+    cd "$srcdir/shell-shortcuts"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
 build() {
-    cd "${srcdir}/${_dir}"
-    make update
-    make all
+    cd "$srcdir/shell-shortcuts"
+    make prefix=/usr
 }
 
-
 package() {
-    cd "${srcdir}/${_dir}"
-    make DESTDIR="${pkgdir}/" install
+    cd "$srcdir/shell-shortcuts"
+    make prefix=/usr DESTDIR="$pkgdir" install
 }
 
