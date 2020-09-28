@@ -1,0 +1,19 @@
+pkgbase = pylivestream-git
+	pkgdesc = Python FFmpeg-based live streaming to YouTube, Facebook, Periscope, Twitch, etc
+	pkgver = v1.11.1.r0.g6b0d23e
+	pkgrel = 1
+	url = https://github.com/scivision/pylivestream
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = ffmpeg>=3.0
+	depends = python>=3.6
+	depends = python-setuptools
+	provides = pylivestream
+	conflicts = pylivestream
+	source = pylivestream::git+https://github.com/scivision/pylivestream.git
+	md5sums = SKIP
+
+pkgname = pylivestream-git
+
