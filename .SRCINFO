@@ -1,0 +1,14 @@
+pkgbase = home-bin
+	pkgdesc = Control your smart home gadgets
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/manexim/home
+	arch = x86_64
+	license = GPL3
+	depends = granite
+	provides = home
+	source = http://packages.elementary.io/appcenter/pool/main/c/com.github.manexim.home/com.github.manexim.home0.5.0-64ee7c.deb
+	sha256sums = fae55770e6f4b3c40a613262644e9d137963887227def39866a498c029cc6412
+
+pkgname = home-bin
+
