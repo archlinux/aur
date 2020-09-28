@@ -1,16 +1,32 @@
 pkgbase = lua-pc
-	pkgdesc = Lua Process Call
+	pkgdesc = Lua Process Call (lpc)
 	pkgver = 1.0.0
-	pkgrel = 2
-	url = https://github.com/LuaDist/lpc
+	pkgrel = 3
+	url = https://github.com/fabled/lpc
 	arch = i686
 	arch = x86_64
 	license = MIT/X11
-	depends = lua
-	source = https://github.com/LuaDist/lpc/tarball/1.0.0
-	source = lpc-lua5.2-compat.patch
-	md5sums = d25afbbb5feaf6d966306e80dfef11fd
-	md5sums = 97c3a94797b03b84c6340781b413e5be
+	makedepends = git
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	source = git+https://github.com/fabled/lpc.git
+	md5sums = SKIP
 
 pkgname = lua-pc
+	pkgdesc = Lua Process Call (lpc) for Lua 5.4
+	depends = lua
+
+pkgname = lua51-pc
+	pkgdesc = Lua Process Call (lpc) for Lua 5.1
+	depends = lua51
+
+pkgname = lua52-pc
+	pkgdesc = Lua Process Call (lpc) for Lua 5.2
+	depends = lua52
+
+pkgname = lua53-pc
+	pkgdesc = Lua Process Call (lpc) for Lua 5.3
+	depends = lua53
 
