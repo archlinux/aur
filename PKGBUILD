@@ -39,14 +39,6 @@ check() {
   # Run all tests
   PATH="$tmpdir/bin:$PATH" pytest --ignore tests/perf
 
-  # Uninstall all test projects
-  pip uninstall -y textX || exit 1
-  pip uninstall -y textX-subcommand-test || exit 1
-  pip uninstall -y types_dsl || exit 1
-  pip uninstall -y data_dsl || exit 1
-  pip uninstall -y flow_dsl || exit 1
-  pip uninstall -y flow_codegen || exit 1
-
   rm -rf "$tmpdir"
 }
 
