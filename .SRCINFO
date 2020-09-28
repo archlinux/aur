@@ -1,0 +1,16 @@
+pkgbase = peeq-bin
+	pkgdesc = Postgresql Client with programmer utilities
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/dbhowell/peeq
+	arch = x86_64
+	license = GPL3
+	depends = granite
+	depends = gtksourceview3
+	depends = postgresql-libs
+	provides = peeq
+	source = http://packages.elementary.io/appcenter/pool/main/c/com.github.dbhowell.peeq/com.github.dbhowell.peeq0.5.0-02a0c5.deb
+	sha256sums = 263e27b1d4e75074220eb29629ea51c8b2b1d3020359c9000eee682cd12fadff
+
+pkgname = peeq-bin
+
