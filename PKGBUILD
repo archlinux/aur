@@ -1,6 +1,7 @@
 pkgname=kos32-sdk-bin
+groups=('kos32-dev')
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="SDK for Kolibri OS + Toolchain by Serge."
 arch=('x86_64')
 license=('GPLv3')
