@@ -2,7 +2,7 @@
 
 _pkgname=pylivestream
 pkgname=$_pkgname-git
-pkgver=v1.11.1.r0.g6b0d23e
+pkgver=1.11.1.r0.g6b0d23e
 pkgrel=1
 pkgdesc="Python FFmpeg-based live streaming to YouTube, Facebook, Periscope, Twitch, etc"
 arch=('any')
