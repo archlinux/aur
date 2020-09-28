@@ -4,12 +4,13 @@
 _pkgname=plymouth-theme-serene
 pkgname="${_pkgname}-git"
 pkgver=r5.4b6c944
-pkgrel=1
+pkgrel=2
 pkgdesc="SereneLinux用のplymouthテーマ"
 arch=('any')
 url="https://github.com/FascodeNet/${_pkgname}"
 license=('GPL')
 depends=('plymouth')
+makedepends=('git')
 optdepends=()
 source=("git+${url}.git")
 md5sums=('SKIP')
