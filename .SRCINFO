@@ -1,7 +1,7 @@
 pkgbase = zy-player-appimage
 	pkgdesc = 跨平台视频资源播放器, 简洁免费无广告
 	pkgver = 2.4.8
-	pkgrel = 3
+	pkgrel = 4
 	url = http://zyplayer.fun/
 	arch = x86_64
 	license = MIT

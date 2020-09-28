@@ -3,7 +3,7 @@
 pkgname=zy-player-appimage
 _pkgname=zy-player
 pkgver=2.4.8
-pkgrel=3
+pkgrel=4
 pkgdesc="跨平台视频资源播放器, 简洁免费无广告"
 arch=("x86_64")
 url="http://zyplayer.fun/"
@@ -20,8 +20,9 @@ prepare() {
     cd "${srcdir}"
     chmod +x ${_filename}
     ./${_filename} --appimage-extract
-    sed -i "s,Exec=AppRun,Exec=/usr/bin/${_pkgname} %U,g" "squashfs-root/zy.desktop"
-    sed -i "s,Icon=zy,Icon=zy-player,g" "squashfs-root/zy.desktop"
+    sed -i "s,^Exec=AppRun,Exec=/usr/bin/${_pkgname} %U,g" "squashfs-root/zy.desktop"
+    sed -i "s,^Icon=zy,Icon=zy-player,g" "squashfs-root/zy.desktop"
+    sed -i "s,^StartupWMClass=ZY Player,StartupWMClass=zy,g" "squashfs-root/zy.desktop"
 }
 
 package() {
