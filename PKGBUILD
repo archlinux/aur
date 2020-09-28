@@ -7,7 +7,8 @@ pkgname=kfoldersync
 #_id3=1526499274
 #_id4=338265
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
+pkgrel_=1
 pkgdesc="Folder synchronization and backup tool for KDE"
 arch=('x86_64')
 url="https://www.linux-apps.com/content/show.php/${_pkgname}?content=164092"
@@ -15,10 +16,10 @@ license=('GPLv2')
 depends=('plasma-workspace' 'hicolor-icon-theme' 'kconfigwidgets' 'kdbusaddons' 'kitemviews' 'kwindowsystem' 'kxmlgui')
 #makedepends=('extra-cmake-modules' 'phonon-qt5-gstreamer')
 #source=("https://dl.opendesktop.org/api/files/downloadfile/id/$_id1/s/$_id2/t/$_id3/u/$_id4/${pkgname}-${pkgver}.tar.xz"
-source=("https://download.opensuse.org/repositories/home:/Vindex17:/myapps/Arch_Linux/x86_64/${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz"
+source=("https://download.opensuse.org/repositories/home:/Vindex17:/myapps/Arch/x86_64/${pkgname}-${pkgver}-${pkgrel_}-x86_64.pkg.tar.zst"         
         "${pkgname}.install")
 install=${pkgname}.install
-md5sums=('172eb772746af84e12e6f976f9beb419' '262fc1597fb332894d1367f510a7f39b')
+md5sums=('dd5beca2231def66c9605a82df863cc2' '262fc1597fb332894d1367f510a7f39b')
 
 build()
 {
@@ -28,7 +29,7 @@ build()
 #cmake -DCMAKE_INSTALL_PREFIX=`qtpaths --install-prefix` -DCMAKE_BUILD_TYPE=Release ..
 #make -j`nproc`
   cd ${srcdir}
-  rm "../${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz"
+  rm "../${pkgname}-${pkgver}-${pkgrel_}-x86_64.pkg.tar.zst"
 }
 
 package()
