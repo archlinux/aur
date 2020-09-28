@@ -1,7 +1,7 @@
 # Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
 pkgname=esp8266-rtos-sdk
-pkgver=3.2
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 pkgdesc="ESP8266 RTOS SDK"
 arch=('x86_64')
 url="https://github.com/espressif/ESP8266_RTOS_SDK"
@@ -12,7 +12,7 @@ makedepends=('git')
 options=(!strip)
 source=("https://github.com/espressif/ESP8266_RTOS_SDK/archive/v$pkgver.tar.gz"
 	"esp8266-rtos-sdk.sh")
-sha256sums=('5fc58b547d21029999ee648e7782dfaeb65bb620fc54e3fbb4b786ace6b9a17f'
+sha256sums=('7207f9b81642d4f09251b51f18f13c7162b4f29eab115def3345d1d37665793f'
             '8fd9449b64edd705c635e4a9f482c2a38b877a939ebadaba375f1a3ef06648f3')
 
 package() {
