@@ -1,0 +1,40 @@
+--- libgnomeprint-2.18.8/configure.in	2010-09-28 01:34:49.000000000 +0200
++++ ../configure.in.patched	2020-09-12 15:34:19.933347740 +0200
+@@ -138,7 +138,8 @@
+ pango_modules="pango >= 1.5 pangoft2 >= 1.5"
+ libxml2_modules="libxml-2.0 >= 2.4.23"
+ fontconfig_modules="fontconfig >= 1.0"
+-PKG_CHECK_MODULES(GP_F, [ $glib_modules $libart_modules $pango_modules $libxml2_modules $fontconfig_modules ])
++freetype2_module="freetype2 >= 2.0.5"
++PKG_CHECK_MODULES(GP_F, [ $glib_modules $libart_modules $pango_modules $libxml2_modules $fontconfig_modules $freetype2_modules])
+ GP_CFLAGS="$GP_F_CFLAGS"
+ GP_LIBS="$GP_F_LIBS"
+ 
+@@ -159,27 +160,9 @@
+ esac
+ LDFLAGS="$LDFLAGS $LIBM"
+ 
+-dnl =================================
+-dnl Checking for freetype2
+-dnl =================================
+-FREETYPE_LIBS=
+-FREETYPE_CFLAGS=
+-AC_PATH_PROG(FREETYPE_CONFIG, freetype-config, no)
+-if test "x$FREETYPE_CONFIG" = "xno" ; then
+-	AC_MSG_ERROR(You need FreeType2 (freetype-devel v 2.x package) for this version of libgnomeprint)
+-else
+-	FREETYPE_CFLAGS=`$FREETYPE_CONFIG --cflags`
+-	FREETYPE_LIBS=`$FREETYPE_CONFIG --libs`
+-fi
+-
+ libgnomeprint_save_ldflags=$LDFLAGS
+ LDFLAGS="$LDFLAGS $FREETYPE_LIBS"
+ 
+-freetype_version=false
+-AC_MSG_NOTICE([checking for sufficiently new FreeType (at least 2.0.5)])
+-AC_CHECK_LIB(freetype, FT_Get_Postscript_Name,:,[
+-    AC_MSG_ERROR(You need FreeType2 (freetype-devel 2.0.5 or greater package) for this version of libgnomeprint)])
+-
+ LDFLAGS=$libgnomeprint_save_ldflags
+ 
+ dnl =================================
