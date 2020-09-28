@@ -7,6 +7,7 @@ pkgbase = kbtui-git
 	license = GPL3
 	makedepends = git
 	makedepends = go
+	provides = kbtui
 	conflicts = kbtui
 	source = git+https://github.com/Rudi9719/kbtui
 	sha256sums = SKIP

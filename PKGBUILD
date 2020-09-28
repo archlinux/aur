@@ -10,6 +10,7 @@ url="https://github.com/Rudi9719/kbtui"
 license=('GPL3')
 makedepends=('git' 'go')
 conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 source=("git+$url")
 sha256sums=('SKIP')
 
