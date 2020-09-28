@@ -1,6 +1,6 @@
 pkgname=ignition-transport-4
 pkgver=4.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="The transport library combines ZeroMQ with Protobufs to create a fast and efficient message passing system. Asynchronous message publication and subscription is provided along with service calls and discovery."
 arch=('i686' 'x86_64')
 url="https://ignitionrobotics.org/libs/transport"
@@ -11,10 +11,10 @@ makedepends=('ignition-cmake=0' 'util-linux')
 optdepends=()
 provides=('ignition-transport=4')
 _name="ignition-transport4"
-source=("https://bitbucket.org/osrf-migrated/ign-transport/get/${_name}_${pkgver}.tar.bz2")
-sha256sums=('6ddc5c279feecb9538e39730a231a3bad2971e3d0e5ad0b6575179f2dd337c30')
+source=("https://github.com/ignitionrobotics/ign-transport/archive/ignition-transport4_${pkgver}.tar.gz")
+sha256sums=('69d8943df6947c9f09ce6176b62a03a721be9cfe75b5fada9a7b41d13281af52')
 
-_dir="osrf-migrated-ign-transport-add6058e5b8c"
+_dir="ign-transport-ignition-transport4_${pkgver}"
 
 build() {
   cd "${srcdir}/${_dir}"
