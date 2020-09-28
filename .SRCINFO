@@ -2,6 +2,7 @@ pkgbase = kos32-sdk-bin
 	pkgdesc = SDK for Kolibri OS + Toolchain by Serge.
 	pkgver = 0.3
 	pkgrel = 2
+	url = http://board.kolibrios.org/viewtopic.php?t=3540
 	arch = x86_64
 	groups = kos32-dev
 	license = GPLv3

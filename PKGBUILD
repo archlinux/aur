@@ -3,6 +3,7 @@ groups=('kos32-dev')
 pkgver=0.3
 pkgrel=2
 pkgdesc="SDK for Kolibri OS + Toolchain by Serge."
+url="http://board.kolibrios.org/viewtopic.php?t=3540"
 arch=('x86_64')
 license=('GPLv3')
 depends=('gcc')
