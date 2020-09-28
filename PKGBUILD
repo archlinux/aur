@@ -87,6 +87,7 @@ ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
+ac_add_options --disable-tests
 ac_add_options --enable-lto
 export MOZ_PGO=1
 export CC=clang
