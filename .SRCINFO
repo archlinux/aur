@@ -1,6 +1,6 @@
 pkgbase = kdisplay-kwinft
 	pkgdesc = App and daemon for display managing
-	pkgver = 5.19.0
+	pkgver = 5.20.0_beta
 	pkgrel = 1
 	url = https://gitlab.com/kwinft/kdisplay
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = kdisplay-kwinft
 	provides = kdisplay
 	conflicts = kdisplay
 	conflicts = kscreen
-	source = https://gitlab.com/kwinft/kdisplay/-/archive/kdisplay@5.19.0/kdisplay-kdisplay@5.19.0.tar.gz
-	md5sums = 4a491c0a0f6d159e8e1137882a11cf08
+	source = https://gitlab.com/kwinft/kdisplay/-/archive/kdisplay@5.20.0-beta.0/kdisplay-kdisplay@5.20.0-beta.0.tar.gz
+	md5sums = ec6c8186fcc638d29b5aeb2ccc742e29
 
 pkgname = kdisplay-kwinft
 
