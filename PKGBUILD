@@ -1,12 +1,12 @@
 pkgname=otf-bodoni
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="An OpenType Bodoni revival created by indestructible type*."
 arch=('any')
 url="https://indestructibletype.com/Bodoni.html"
 license=('custom:OFL')
 source=("https://github.com/indestructible-type/Bodoni/archive/$pkgver.tar.gz")
-sha256sums=('8e4febd19ba6a32e8bef7f935efb896d4459f5dc55f9c0afe1f4b9a10dc37525')
+sha256sums=('13f76c99c6c8a7b640528180438cf3fa031d68c3561f853e1328b492891128f2')
 
 package() {
   install -d "$pkgdir/usr/share/fonts/bodoni"
