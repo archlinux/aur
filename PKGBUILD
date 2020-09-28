@@ -4,7 +4,7 @@
 pkgname=imagewriter
 pkgver=1.10.1432200249.1d253d9
 _release=1.10
-pkgrel=13
+pkgrel=14
 pkgdesc="A graphical utility for writing raw disk images & hybrid isos to USB keys"
 arch=('i686' 'x86_64', 'aarch64')
 url='https://github.com/openSUSE/imagewriter'
@@ -17,6 +17,7 @@ prepare() {
 	cd $srcdir
 	tar xvf $pkgname-$pkgver.tar.xz
 	find . -name '*.cpp' -exec sed -i -e '/sysctl.h/d' {} \;
+	find . -type f -exec sed -i 's/toAscii/toLatin1/g' {} \;
 }
 
 build() {
