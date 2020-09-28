@@ -10,9 +10,10 @@ pkgbase = kde1-kdegraphics-git
 	makedepends = cmake
 	makedepends = git
 	depends = kde1-kdelibs
+	depends = giflib
 	provides = kde1-kdegraphics
 	conflicts = kde1-kdegraphics
-	source = git+https://github.com/KDE/kde1-kdegraphics.git
+	source = git+https://anongit.kde.org/kde1-kdegraphics.git
 	md5sums = SKIP
 
 pkgname = kde1-kdegraphics-git
