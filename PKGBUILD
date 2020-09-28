@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=golang-mockery
 _pkgname=${pkgname##golang-}
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='A mock code autogenerator for golang'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b9f3311706ec9b5936b1a9d9b3014c3183132b1fd347500f8eb5deab0ab5582d')
+sha256sums=('ec373ef32fccdd1b9277e0de7c19b37fb1b64d7a230831cc0d41033f554e15df')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
