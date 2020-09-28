@@ -1,4 +1,5 @@
 pkgbase = semver-cpp-git
+	pkgdesc = Semantic Versioning for modern C++
 	pkgver = 0.2.2.r18.ge804882
 	pkgrel = 1
 	url = https://github.com/Neargye/semver
