@@ -1,21 +1,22 @@
 # Maintainer: Israel Roldan <israel.alberto.rv@gmail.com>
-pkgname=battery-discharging-beep-git
-pkgver=r14.2fc3787
+_name=battery-discharging-beep
+_git_project=linux-"${_name}"
+pkgname="${_name}"-git
+pkgver=r19.d860a26
 pkgrel=1
-_unique_package_name="arch-install"
 pkgdesc="Generate a sound when the battery is discharging."
 arch=(x86_64)
-url="https://github.com/airvzxf/linux-battery-discharging-beep.git"
+url="https://github.com/airvzxf/${_git_project}.git"
 license=('GPL-3.0')
 makedepends=(git bash)
-provides=(battery-discharging-beep)
-conflicts=(battery-discharging-beep)
+provides=("${_name}")
+conflicts=("${_name}")
 options=()
-source=("${_unique_package_name}::git+${url}")
+source=("${_name}::git+${url}#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${_unique_package_name}" || return
+  cd "${srcdir}" || return
   (
     set -o pipefail
     git describe --long 2> /dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
@@ -24,7 +25,9 @@ pkgver() {
 }
 
 package() {
-  cd "${_unique_package_name}/src" || return
-  chmod 755 battery-discharging-beep
-  sudo cp battery-discharging-beep /usr/bin/
+  cd "${srcdir}/${_name}" || return
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  cd "src" || return
+  install -Dm755 "${_name}" "${pkgdir}/usr/bin/${_name}"
 }
