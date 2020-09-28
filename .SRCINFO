@@ -1,6 +1,6 @@
 pkgbase = auto-ytdl-git
 	pkgdesc = A youtube-dl wrapper with automatisation features. Run from terminal: aytdl
-	pkgver = 1.2.1.r10.g5be3d3f
+	pkgver = 1.2.2.r11.gb114c07
 	pkgrel = 1
 	url = https://github.com/michaelb/auto-ytdl
 	arch = any
