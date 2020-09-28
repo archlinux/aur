@@ -1,5 +1,5 @@
 pkgbase = rime-cloverpinyin
-	pkgdesc = Clover Simplified pinyin input for rime.
+	pkgdesc = Clover Simplified pinyin input for rime
 	pkgver = 1.1.4
 	pkgrel = 2
 	url = https://www.fkxxyz.com/d/cloverpinyin/

@@ -3,7 +3,7 @@
 pkgname=rime-cloverpinyin
 pkgver=1.1.4
 pkgrel=2
-pkgdesc="Clover Simplified pinyin input for rime."
+pkgdesc="Clover Simplified pinyin input for rime"
 arch=('x86_64')
 url="https://www.fkxxyz.com/d/cloverpinyin/"
 license=('LGPL')
