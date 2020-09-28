@@ -1,0 +1,17 @@
+pkgbase = yishu-git
+	pkgdesc = Bespoke and simple Todo.txt client
+	pkgver = 1.2.5.r0.g4388104
+	pkgrel = 1
+	url = https://github.com/lainsce/yishu
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	provides = yishu
+	source = git+https://github.com/lainsce/yishu.git
+	sha256sums = SKIP
+
+pkgname = yishu-git
+
