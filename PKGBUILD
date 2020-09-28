@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-multimedia' 'qt5-x11extras' 'hicolor-icon-theme')
 provides=('mpz')
 source=(https://github.com/olegantonyan/mpz/archive/master.zip)
-sha256sums=('82e68476b9d8eb0928f517532bba41d124f5eda689a82b45e1a7f087d53725bf')
+sha256sums=('74da7fce9e933b6094a873e4aa6f0b60ff8c24de74492b3928ee506749e5e114')
 
 build() {
     cd $pkgname-$pkgver
