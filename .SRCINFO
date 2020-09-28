@@ -1,0 +1,19 @@
+pkgbase = quickdocs-git
+	pkgdesc = Quickly Read Developer Docs
+	pkgver = 2.2.6.r0.g2ad9559
+	pkgrel = 1
+	url = https://github.com/mdh34/quickDocs
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = devhelp
+	depends = granite
+	depends = libarchive
+	provides = quickdocs
+	source = git+https://github.com/mdh34/quickDocs.git
+	sha256sums = SKIP
+
+pkgname = quickdocs-git
+
