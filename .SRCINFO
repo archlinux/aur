@@ -1,6 +1,6 @@
 pkgbase = conky-colors-git
 	pkgdesc = An easier way to configure Conky
-	pkgver = 20200723.r167.b091a4e
+	pkgver = 20200927.r171.138963a
 	pkgrel = 1
 	url = https://github.com/helmuthdu/conky_colors
 	install = conky-colors-git.install
