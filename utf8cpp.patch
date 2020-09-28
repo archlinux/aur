@@ -1,6 +1,19 @@
-diff -ru blockattack-game-2.5.0-orig/source/code/ReadKeyboard.cpp blockattack-game-2.5.0/source/code/ReadKeyboard.cpp
---- blockattack-game-2.5.0-orig/source/code/ReadKeyboard.cpp	2019-05-25 16:06:13.000000000 +0200
-+++ blockattack-game-2.5.0/source/code/ReadKeyboard.cpp	2019-06-23 10:47:51.021461071 +0200
+Binärdateien blockattack-game-2.6.0-orig/Game/blockattack.data und blockattack-game-2.6.0/Game/blockattack.data sind verschieden.
+diff -ru blockattack-game-2.6.0-orig/source/code/DialogBox.cpp blockattack-game-2.6.0/source/code/DialogBox.cpp
+--- blockattack-game-2.6.0-orig/source/code/DialogBox.cpp	2020-09-28 07:47:32.756216112 +0200
++++ blockattack-game-2.6.0/source/code/DialogBox.cpp	2020-09-28 07:51:09.984218603 +0200
+@@ -25,7 +25,7 @@
+ #include "global.hpp"
+ #include "common.h"
+ #include "ReadKeyboard.h"
+-#include "utf8.h"
++#include <utf8cpp/utf8.h>
+ #include "MenuSystem.h"
+ 
+ static void setButtonFont(const sago::SagoDataHolder* holder, sago::SagoTextField& field, const char* text) {
+diff -ru blockattack-game-2.6.0-orig/source/code/ReadKeyboard.cpp blockattack-game-2.6.0/source/code/ReadKeyboard.cpp
+--- blockattack-game-2.6.0-orig/source/code/ReadKeyboard.cpp	2020-09-28 07:47:32.756216112 +0200
++++ blockattack-game-2.6.0/source/code/ReadKeyboard.cpp	2020-09-28 07:50:38.949743007 +0200
 @@ -22,7 +22,7 @@
  */
  
@@ -10,9 +23,9 @@ diff -ru blockattack-game-2.5.0-orig/source/code/ReadKeyboard.cpp blockattack-ga
  #include <iostream>
  
  ReadKeyboard::ReadKeyboard(void) {
-diff -ru blockattack-game-2.5.0-orig/source/code/sago/SagoTextBox.cpp blockattack-game-2.5.0/source/code/sago/SagoTextBox.cpp
---- blockattack-game-2.5.0-orig/source/code/sago/SagoTextBox.cpp	2019-05-25 16:06:13.000000000 +0200
-+++ blockattack-game-2.5.0/source/code/sago/SagoTextBox.cpp	2019-06-23 10:47:12.214334136 +0200
+diff -ru blockattack-game-2.6.0-orig/source/code/sago/SagoTextBox.cpp blockattack-game-2.6.0/source/code/sago/SagoTextBox.cpp
+--- blockattack-game-2.6.0-orig/source/code/sago/SagoTextBox.cpp	2020-09-28 07:47:32.766211112 +0200
++++ blockattack-game-2.6.0/source/code/sago/SagoTextBox.cpp	2020-09-28 07:50:38.949743007 +0200
 @@ -26,7 +26,7 @@
  #include "SagoTextField.hpp"
  #include <vector>
