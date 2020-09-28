@@ -1,6 +1,6 @@
 pkgname=ignition-fuel_tools-1
 pkgver=1.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A C++ client library and command line tools for interacting with Ignition Fuel servers"
 arch=('i686' 'x86_64')
 url="https://ignitionrobotics.org/libs/fuel_tools"
@@ -11,10 +11,10 @@ makedepends=('ignition-cmake=0')
 optdepends=('ruby')
 provides=('ignition-fuel_tools=1')
 _name="ignition-fuel-tools1"
-source=("https://bitbucket.org/osrf-migrated/ign-fuel-tools/get/${_name}_${pkgver}.tar.bz2")
-sha256sums=('daca2ecdb180b6b78a55286bcd3d498b35813f80a1ed34bfaa02d7c47caa93e7')
+source=("https://github.com/ignitionrobotics/ign-fuel-tools/archive/ignition-fuel-tools1_${pkgver}.tar.gz")
+sha256sums=('8c91ee29a24ad968143309297c73955e0a1e235bafd25d28179fcf83b7b70c7e')
 
-_dir="osrf-migrated-ign-fuel-tools-0ffbf3a2c836"
+_dir="ign-fuel-tools-ignition-fuel-tools1_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
