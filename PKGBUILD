@@ -1,5 +1,5 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
-
+# pkg: pypi combomethod
 _name=combomethod
 pkgname=( python-$_name python2-$_name)
 pkgbase=python-$_name
