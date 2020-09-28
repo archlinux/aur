@@ -78,8 +78,8 @@ build() {
 	colorize "Pink" "#E91E63" "#F06292"
 	colorize "Purple" "#9C27B0" "#BA68C8"
 	colorize "Red" "#F44336" "#E57373"
-	colorize "Teal" "#009688" "#4DB6AC"
-	#16a085?
+	colorize "Teal" "#009688" "#16a085"
+	#4DB6AC
 
 	cd ${_pkgname}-${pkgver}
 	./autogen.sh --prefix=/usr --with-gnome-shell=3.36 --with-cinnamon=4.6 --with-gtk3=3.24
