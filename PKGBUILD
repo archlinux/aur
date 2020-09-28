@@ -1,20 +1,20 @@
-# Maintainer: Philipp Schmitt <philipp@schmitt.co>
-# GitHub: https://github.com/pschmitt/aur-python-hpilo
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: Philipp Schmitt <philipp@schmitt.co>
+
 pkgname=python-hpilo
-pkgver=2.6.1
+pkgver=4.3
 pkgrel=1
 pkgdesc='Accessing the HP iLO XML interface from python'
 arch=('any')
-url='https://pythonhosted.org/python-hpilo/'
+url='https://github.com/seveas/python-hpilo'
 license=('GPL')
 depends=('python')
 options=(!emptydirs)
 source=("https://github.com/seveas/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('5ba543569b278bea3139aa02fa18494d')
+md5sums=('99f611fe3da652bd0a56b2e5b5a22299')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
-# vim:set ts=2 sw=2 et:
