@@ -1,7 +1,7 @@
 pkgbase = ramus-modeler
 	pkgdesc = Java-based IDEF0 & DFD Modeler
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ramussoftware.com/
 	arch = any
 	license = GPL
