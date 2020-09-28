@@ -1,6 +1,6 @@
 pkgbase = python-textx
 	pkgdesc = Python library for building Domain-Specific Languages and parsers
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = http://textx.github.io/textX/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-textx
 	depends = python
 	depends = python-arpeggio
 	depends = python-click
-	source = python-textx-2.1.0.tar.gz::https://github.com/textX/textX/archive/v2.1.0.tar.gz
-	md5sums = 56a22b50ce0cb391f994b53c5978661f
+	source = python-textx-2.2.0.tar.gz::https://github.com/textX/textX/archive/v2.2.0.tar.gz
+	md5sums = 486b93f50c7c2b5b129ebc80a804ee15
 
 pkgname = python-textx
 
