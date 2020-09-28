@@ -1,0 +1,13 @@
+#! /bin/bash
+echo ":: The emulator is being configured, please wait..."
+mkdir -p ~/.kex/root/RD/1/
+cd ~/.kex
+curl -o char.mt "http://websvn.kolibrios.org/dl.php?repname=Kolibri+OS&path=%2Fkernel%2Ftrunk%2Fgui%2Fchar.mt" 
+curl -o charUni.mt "http://websvn.kolibrios.org/dl.php?repname=Kolibri+OS&path=%2Fkernel%2Ftrunk%2Fgui%2FcharUni.mt" 
+cd ~/.kex/root/RD/1/
+curl -O http://builds.kolibrios.org/eng/latest-img.7z
+7z e -y latest-img.7z  >> /dev/null 2>&1
+7z x -y kolibri.img  >> /dev/null 2>&1
+rm -f latest-img.7z kolibri.img >> /dev/null 2>&1
+echo ":: Done!"
+

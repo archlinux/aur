@@ -1,0 +1,19 @@
+pkgbase = kex-git
+	pkgdesc = KolibriOS emulator for running applications.
+	pkgver = r52.96d1fa2
+	pkgrel = 1
+	url = https://github.com/tsdima/kex
+	install = kex-git.install
+	arch = any
+	groups = kos32-dev
+	license = GPLv3
+	makedepends = libx11
+	makedepends = gcc
+	makedepends = libxrender
+	depends = wget
+	depends = p7zip
+	source = git://github.com/tsdima/kex.git
+	md5sums = SKIP
+
+pkgname = kex-git
+
