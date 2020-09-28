@@ -2,7 +2,7 @@
 
 pkgname=sunloginclient
 pkgver=10.1.1.38139
-pkgrel=2
+pkgrel=3
 pkgdesc="Sunlogin Remote Control is a software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64")
 url="https://sunlogin.oray.com"
@@ -44,6 +44,8 @@ package() {
   # 修改路径
   sed -i 's#/usr/local/#/opt/#g' "${pkgdir}/opt/sunlogin/etc/watch.sh"
   sed -i "s#/usr/local/#/opt/#g" "${pkgdir}/usr/lib/systemd/system/runsunloginclient.service"
+  # 修复开机启动后第一次连接失败的问题
+  sed -i '2a\Requires=network-online.target\nAfter=network-online.target' "${pkgdir}/usr/lib/systemd/system/runsunloginclient.service"
   sed -i 's#Exec=/usr/local/sunlogin/#Exec=/usr/#g' "${pkgdir}/usr/share/applications/sunlogin.desktop"
   sed -i 's#Icon=/usr/local/sunlogin/res/icon/sunlogin_client.png#Icon=sunlogin_client#g' "${pkgdir}/usr/share/applications/sunlogin.desktop"
 	
