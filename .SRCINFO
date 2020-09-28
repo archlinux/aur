@@ -1,6 +1,6 @@
 pkgbase = python-ufo2ft
 	pkgdesc = A bridge from UFOs to FontTools objects.
-	pkgver = 2.15.0
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://github.com/googlefonts/ufo2ft
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-ufo2ft
 	depends = python-cu2qu
 	depends = python-defcon
 	depends = python-fonttools
-	source = https://pypi.org/packages/source/u/ufo2ft/ufo2ft-2.15.0.zip
-	sha256sums = afcbedcdc9b77078046eb4cf3ef2e2ee005dc4712600a9aed7ec055e4d0c63f2
+	source = https://pypi.org/packages/source/u/ufo2ft/ufo2ft-2.16.0.zip
+	sha256sums = 5bc99bb08a1180f8a68bee823a914f71b4809442036f8a3642533aa330a32f85
 
 pkgname = python-ufo2ft
 
