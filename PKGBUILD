@@ -2,8 +2,8 @@
 _name=battery-discharging-beep
 _git_project=linux-"${_name}"
 pkgname="${_name}"-git
-pkgver=r19.d860a26
-pkgrel=2
+pkgver=v1.0.r0.g1c67673
+pkgrel=1
 pkgdesc="Generate a sound when the battery is discharging."
 arch=(x86_64)
 url="https://github.com/airvzxf/${_git_project}.git"
@@ -16,12 +16,8 @@ source=("${_name}::git+${url}#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}" || return
-  (
-    set -o pipefail
-    git describe --long 2> /dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
-      || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "${_name}" || return
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
