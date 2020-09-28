@@ -1,7 +1,7 @@
 # Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
 pkgname=sdformat-6
 pkgver=6.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="SDF Converter for gazebo"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://sdformat.org/"
@@ -11,10 +11,10 @@ optdepends=('urdfdom')
 makedepends=('cmake' 'doxygen' 'ignition-cmake=0' 'ignition-tools' 'ruby>=1.9.1')
 provides=('sdformat=6')
 _name="sdformat"
-source=("http://bitbucket.org/osrf-migrated/${_name}/get/${_name}6_${pkgver}.tar.bz2")
-sha256sums=('43894eaa1d9cc4a486879e09870c4f3adec33a3fc87cc06d62fad74a0ae061dd')
+source=("https://github.com/osrf/sdformat/archive/sdformat6_${pkgver}.tar.gz")
+sha256sums=('88d0fe2fcf27842f33d60e087e9142312c0392d55dfb250f2a66e66d55eb40dd')
 
-_dir="osrf-migrated-sdformat-d4d9796600b9"
+_dir="sdformat-sdformat6_${pkgver}"
 prepare(){
   cd "${srcdir}/${_dir}"
   mkdir -p build && cd build
