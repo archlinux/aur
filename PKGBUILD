@@ -3,15 +3,13 @@
 coname=ramus
 pkgname=$coname-modeler
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Java-based IDEF0 & DFD Modeler'
 arch=('any')
 url='http://ramussoftware.com/'
 license=('GPL')
 depends=('java-runtime>=8')
-# makedepends=('gendesk')
-#optdepends=('java-environment: for java development'
-#            'noto-fonts: a usable font')
+ makedepends=('gendesk')
 options=('!emptydirs')
 source=("https://github.com/isu-enterprise/ramus/archive/v-$pkgver.zip")
 sha256sums=('907d9f5ad8339d770251a353cbd320ffaff1b8a0e71f1293da6606c2c4237c10')
