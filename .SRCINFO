@@ -1,0 +1,15 @@
+pkgbase = python-diagrams
+	pkgdesc = Diagram as Code for prototyping cloud system architectures
+	pkgver = 0.17.0
+	pkgrel = 1
+	url = https://diagrams.mingrammer.com
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-graphviz
+	depends = python-jinja
+	source = https://files.pythonhosted.org/packages/source/d/diagrams/diagrams-0.17.0.tar.gz
+	sha256sums = 86436166fd3a9b8dddb8ccce2716f458a55614527feedcb95ae4a8cdf5b7659f
+
+pkgname = python-diagrams
+
