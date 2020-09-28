@@ -1,7 +1,7 @@
 # Maintainer: Jianfeng Zhang <swordfeng123@gmail.com>
 
 pkgname=curlie
-pkgver=1.3.1
+pkgver=1.5.4
 pkgrel=1
 pkgdesc='A frontend to curl that adds the ease of use of httpie'
 arch=('x86_64')
