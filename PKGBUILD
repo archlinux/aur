@@ -2,9 +2,8 @@
 pkgname=pinktrace-1
 pkgdesc='Lightweight ptrace() wrapper library'
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 license=(custom:BSD)
-makedepends=(automake autoconf)
 depends=(glibc)
 url='https://git.exherbo.org/pinktrace-1.git'
 source=("${url}/snapshot/${pkgname}-${pkgver}.tar.xz")
