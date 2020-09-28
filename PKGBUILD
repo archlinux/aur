@@ -2,7 +2,7 @@
 
 _module=games
 pkgname=kde1-kde${_module}-git
-pkgver=1.1.2r1123.c4b13e6
+pkgver=1.1.2r1127.b6fbdc4
 pkgrel=1
 pkgdesc="Historical copy of the $_module module of KDE 1, adapted to compile on modern systems"
 arch=(i686 x86_64)

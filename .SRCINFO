@@ -1,6 +1,6 @@
 pkgbase = kde1-kdegames-git
 	pkgdesc = Historical copy of the games module of KDE 1, adapted to compile on modern systems
-	pkgver = 1.1.2r1123.c4b13e6
+	pkgver = 1.1.2r1127.b6fbdc4
 	pkgrel = 1
 	url = https://quickgit.kde.org/?p=kde1-kdegames.git
 	arch = i686
