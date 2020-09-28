@@ -4,7 +4,7 @@
 
 pkgname=premid
 _pkgname=PreMiD
-pkgver=2.2.15
+pkgver=2.2.17
 pkgrel=1
 pkgdesc="Discord Rich Presence for web services"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url='https://premid.app'
 license=('MPL2')
 optdepends=('discord: Proper Rich Presence support')
 conflicts=('premid-git')
-source=("https://github.com/${_pkgname}/Linux/releases/download/v${pkgver}/${_pkgname}.tar.gz")
+source=("https://github.com/doomlerd/LinuxUpdater/releases/download/v${pkgver}/${_pkgname}.tar.gz")
 sha512sums=('SKIP') # CI build
 
 package() {
