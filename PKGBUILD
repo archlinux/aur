@@ -11,7 +11,7 @@ url="https://github.com/pop-os/shell"
 license=("GPLv3")
 
 conflicts=("gnome-shell-extension-pop-shell")
-makedepends=("typescript")
+makedepends=("typescript" "git")
 depends=("gnome-shell" "pop-shell-shortcuts-git")
 
 
