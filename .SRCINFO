@@ -10,6 +10,6 @@ pkgbase = mpz
 	depends = hicolor-icon-theme
 	provides = mpz
 	source = https://github.com/olegantonyan/mpz/archive/master.zip
-	sha256sums = d07ad2e2766cc75d8fdcc6cae48cf437fd400a348d06f2efd4e5002a5efe6c12
+	sha256sums = 82e68476b9d8eb0928f517532bba41d124f5eda689a82b45e1a7f087d53725bf
 
 pkgname = mpz
