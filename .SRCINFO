@@ -1,0 +1,18 @@
+pkgbase = sydbox-1
+	pkgdesc = ptrace()-based sandbox utility
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://git.exherbo.org/sydbox-1.git/
+	arch = x86_64
+	license = custom:BSD
+	makedepends = automake
+	makedepends = autoconf
+	depends = bash
+	depends = pinktrace-1>=0.9
+	depends = pinktrace-1<1.0
+	depends = python
+	source = https://git.exherbo.org/sydbox-1.git//snapshot/sydbox-1-1.0.8.tar.xz
+	sha512sums = 80d7614569519d226eabeeb63c688d96a7899b36dc8f8c009d4532c910b7e2a7da0322e375051264b902ec9f2b62a066451ae57d35385c7ac69bc718815ff433
+
+pkgname = sydbox-1
+
