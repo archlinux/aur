@@ -3,7 +3,7 @@
 coname=ramus
 pkgname=$coname-modeler
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Java-based IDEF0 & DFD Modeler'
 arch=('any')
 url='http://ramussoftware.com/'
@@ -41,7 +41,7 @@ package() {
   install -t "$pkgdir/usr/share/doc/$pkgname"/en "$dname/dest/doc/en"/*
   mv "$dname/dest/full/lib/thirdparty/"{local-client-1.0-SNAPSHOT.jar,ramus-modeler.jar}
   install -C -t "$pkgdir/usr/share/java/$pkgname" "$dname/dest/full/lib/$coname/"*.jar "$dname/dest/full/lib/thirdparty/"*.jar
-  install -Dm755 ../$pkgname.sh "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$startdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$dname/dest/izpack/icon.png" "$pkgdir/usr/share/icons/32x32/$pkgname/icon.png"
   install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
