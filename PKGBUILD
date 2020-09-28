@@ -1,7 +1,7 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
 
 pkgname=ssh-audit
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A tool for ssh server auditing."
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/jtesta/ssh-audit"
 license=('MIT')
 depends=('python')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jtesta/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('a8f4f01122234bd84c01440bfd3b7a6026c50c1a06f3044846a8503c94f94cfb')
+b2sums=('86dd949d24c0fd7612d99f615028c68d483d681509f34b196916d2f27fa6e144cc5ebe559043466fc78fdec1dd57f3deba7139cf856478b07514eaa3f9a31327')
 
 package() {
   cd "$pkgname-$pkgver"
