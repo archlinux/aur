@@ -1,10 +1,11 @@
 pkgbase = gdlauncher
 	pkgdesc = GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://gdevs.io
 	arch = x86_64
 	license = GPL3
+	makedepends = gendesk
 	makedepends = git
 	makedepends = yarn
 	makedepends = nodejs
