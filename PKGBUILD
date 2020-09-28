@@ -2,7 +2,7 @@
 
 pkgname=signalk-server
 pkgver=1.34.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An implementation of a Signal K server."
 arch=('any')
 url="https://github.com/SignalK/signalk-server"
@@ -67,7 +67,7 @@ package() {
 
   mkdir -p "$pkgdir/var/lib/signalk-server"
 
-  find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i /_where/d
+  find "$pkgdir" -name package.json -type f -print0 | xargs -r -0 sed -i /_where/d
 }
 
 
