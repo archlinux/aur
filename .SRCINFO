@@ -1,0 +1,15 @@
+pkgbase = ghistory
+	pkgdesc = Graphic interface for your bash history
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/padjis/ghistory
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	source = ghistory-1.0.1.tar.gz::https://github.com/padjis/ghistory/archive/1.0.1.tar.gz
+	sha256sums = 839305235dd134d4f036f7aeedfdd6614b5ba2d0e08877c459783e17399ff173
+
+pkgname = ghistory
+
