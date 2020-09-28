@@ -6,8 +6,8 @@ _install_libs=false
 
 pkgname=servo-git
 _pkgname=servo
-pkgver=43073.62c7cb4c79
-pkgrel=1
+pkgver=43153.f518ffc858d
+pkgrel=2
 pkgdesc="Parallel Browser Project: web browser written in Rust"
 arch=('i686' 'x86_64')
 url="https://github.com/servo/servo"
