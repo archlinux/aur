@@ -1,7 +1,7 @@
 pkgbase = steamtinkerlaunch
 	pkgdesc = Wrapper script for Steam custom launch options
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
 	license = GPL3
@@ -30,6 +30,7 @@ pkgbase = steamtinkerlaunch
 	optdepends = libnotify: for optional Notifier
 	optdepends = yad: for the optional Settings Menu
 	optdepends = zenity: optional for the Editor Dialog
+	optdepends = xrandr: optional for automatic resolution detection
 	source = steamtinkerlaunch-2.0.5.tar.gz::https://github.com/frostworx/steamtinkerlaunch/archive/v2.0.5.tar.gz
 	sha256sums = f43dc92cba96d314f8e9568689aba2059c20477d703396e50b216e5d20c2a9f2
 
