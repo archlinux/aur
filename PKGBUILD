@@ -4,40 +4,48 @@
 
 pkgname=pantheon-workarounds
 pkgver=3.2.0.r73.gc49189b
-#pkgver=r1158.5898845
 pkgrel=2
 pkgdesc='Workarounds for Pantheon derivatives'
 arch=('any')
-url='https://github.com/quequotion/pantheon-bzr-qq'
+url='https://github.com/quequotion/pantheon-qq'
 license=('GPL3')
 groups=('pantheon-qq')
-depends=(cinnamon-settings-daemon
-         dconf gnome-{keyring,session} xdg-user-dirs-gtk
-         pantheon-applications-menu plank wingpanel)
+depends=("cinnamon-settings-daemon"
+         "dconf" gnome-{keyring,session} "xdg-user-dirs-gtk"
+         "pantheon-applications-menu" "plank" "libwingpanel-2.0=0-64")
 optdepends=("contractor: A desktop-wide extension service"
+            "dconf-editor: GUI gsettings editor"
+            "elementary-blue-icon-theme-git: Restore blue folder icons to elementary theme"
+            "file-roller-pantheon: Archive manipulator for GNOME (with elementary OS patches)"
+            "lightdm-gtk-greeter: GTK+ Greeter for LightDM"
             "numlockx: Turn on the numlock key in X11"
-            "pantheon-dpms-helper: Manage DPMS settigns in place of gnome-settings-daemon"
-            "pantheon-default-settings: Pantheon configuration and themeing"
-            "pantheon-geoclue2-agent-git: Pantheon Geoclue2 Agent"
-            "pantheon-polkit-agent: Polkit Authentication Agent"
-            "pantheon-print: Print settings dialog"
-            "pantheon-screenshot: Screenshot utility"
-            "pantheon-shortcut-overlay: OS-wide shortcut overlay"
-            "simple-scan: Simple scan utility"
-            "switchboard: Pluggable settings manager"
-            "xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops")
+            "pantheon-calculator: The Pantheon Calculator"
+            "pantheon-calendar: The Pantheon Calendar"
+            "pantheon-code: The Pantheon Code Editor"
+            "pantheon-default-settings: Default settings for Pantheon"
+            "pantheon-dpms-helper: DPMS helper for Pantheon"
+            "pantheon-files: The Pantheon File Browser"
+            "pantheon-geoclue2-agent: Pantheon Geoclue2 Agent"
+            "pantheon-music: The Pantheon Music Player"
+            "pantheon-notifications-git: A Gtk notification server for Pantheon"
+            "pantheon-photos: The Pantheon Photos Manager"
+            "pantheon-polkit-agent: Pantheon Polkit Agent"
+            "pantheon-print: Simple shim for printing support via Contractor"
+            "pantheon-screenshot: The Pantheon Screenshot Tool"
+            "pantheon-terminal: The Pantheon Terminal Emulator"
+            "xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops"
+            "wingpanel-standalone-git: Stylish top panel that holds indicators and spawns an application launcher (with autohide and without Gala dependencies)")
 makedepends=('git' 'intltool')
-provides=(gala{,-bzr,-git}="${pkgver}")
-conflicts=(gala{,-bzr,-git})
+provides=("libgala.so=0-64")
+conflicts=("libgala.so=0-64")
 install='gala.install'
-source=("https://raw.githubusercontent.com/elementary/gala/master/data/org.pantheon.desktop.gala.gschema.xml.in"
-        'pantheon-session-qq'
+source=("https://raw.githubusercontent.com/elementary/gala/master/data/org.pantheon.desktop.gala.gschema.xml.in"        'pantheon-session-qq'
         'numlockx-pantheon.desktop'
         'gtk.css'
         'settings.ini'
         '26_pantheon-qq-gconf.gschema.override'
         '.xprofile')
-sha512sums=('30a488431a23ff5521a12e97fa69ed17b2033ba8f016bb922e07ad9bf2d671e14a90a38266de1567c4dcbf178b6919a8108fad3dd13e50573018dc2a8e9b070e'
+sha256sums=('30a488431a23ff5521a12e97fa69ed17b2033ba8f016bb922e07ad9bf2d671e14a90a38266de1567c4dcbf178b6919a8108fad3dd13e50573018dc2a8e9b070e'
             '842db1b456c96287865955741ba00c3ceeecf82691700f691d9fc45dc665230f1224ce7cdf5a1301826ab96cfe59e922c3878a5986ab3639da0cb79a2948f727'
             'bc5724ef255adad39e35e3fbd7beacbd3ea270c7019362ff6a8bc15cf8f503a4304c18c5e35ae2a6ddb8d1e6e7cc6973642a2ffdc8fe9e219c7f2dbacf5eab72'
             '5481a5784ee687c346fd22751796c0264ce981710dd722d036397afd8423ecf356e5c24b7d348257a04c99af2250f2076c958c069a604db438b61c342359bf05'
