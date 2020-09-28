@@ -2,7 +2,7 @@
 
 pkgname=yabridge-git
 _pkgname=yabridge
-pkgver=1.6.0.r1.g2ad78a9
+pkgver=1.6.1.r0.g59c9a23
 pkgrel=1
 pkgdesc="Yet Another VST bridge, run Windows VST2 plugins under Linux"
 arch=('x86_64')
@@ -25,17 +25,21 @@ pkgver() {
 build() {
   cd "$_pkgname"
 
+  # Meson won't apply any new options or update wraps if they already exist, so
+  # if we're building from a dirty src/ directory we'll just nuke any cached
+  # files
+  if [[ -d build ]]; then
+    rm -rf build
+
+    # Can't use `git clean` here since the entire src/ directory will be
+    # gitignored
+    find ./subprojects -mindepth 1 -maxdepth 1 -type d -exec rm -rf '{}' ';'
+  fi
+
   # If you don't want to build lib32-boost-libs and you don't need the 32-bit
   # bitbridge, then you can leave out the dependency for it and set the
   # `use-bitbridge` option to false.
-  options=(--buildtype=release -Dwith-bitbridge=true)
-
-  # Meson won't apply any new options when this is not a clean build
-  if [[ -d build ]]; then
-    meson setup --reconfigure "${options[@]}" build
-  else
-    meson setup --cross-file cross-wine.conf "${options[@]}" build
-  fi
+  meson setup --cross-file cross-wine.conf --buildtype=release -Dwith-bitbridge=true build
 
   ninja -C build
 }
