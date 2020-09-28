@@ -20,8 +20,10 @@ build() {
 }
 
 check() {
-
   cd $_srcname-$pkgver
+
+  tmpdir=$(mktemp -d)
+  export PYTHONUSERBASE="$tmpdir"
 
   # Install all tests projects
   pip install --user -e . || exit 1
@@ -32,7 +34,7 @@ check() {
   pip install --user -e tests/functional/registration/projects/flow_codegen || exit 1
 
   # Run all tests
-  python setup.py pytest --addopts tests/functional
+  PATH="$tmpdir/bin:$PATH" pytest --ignore tests/perf
 
   # Uninstall all test projects
   pip uninstall -y textX || exit 1
@@ -41,6 +43,8 @@ check() {
   pip uninstall -y data_dsl || exit 1
   pip uninstall -y flow_dsl || exit 1
   pip uninstall -y flow_codegen || exit 1
+
+  rm -rf "$tmpdir"
 }
 
 package() {
