@@ -17,7 +17,7 @@ build() {
   cd "$srcdir/json-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DBUILD_TESTING=OFF ..
+    ${_arch}-cmake -DBUILD_TESTING=OFF -DJSON_MultipleHeaders=ON ..
     make
     popd
   done
