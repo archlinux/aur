@@ -1,15 +1,12 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
+# pkg: git
 pkgname=anbox-launchers-git
 pkgver=r14.7d9530f
-pkgrel=2
+pkgrel=3
 pkgdesc="Add Anbox App Launchers to Anbox Category in Desktop Menu."
 arch=('any')
 url="https://github.com/ahmubashshir/anbox-launchers"
 license=('GPL')
-groups=()
-depends=('anbox-git'
-		 'systemd'
-		 'python-xdg')
 makedepends=('coreutils')
 provides=('anbox-launchers')
 conflicts=('anbox-launchers')
@@ -26,6 +23,11 @@ pkgver()
   pkgrel=$(git diff --shortstat|cut -d' ' -f2)
 }
 package() {
-   cd "$srcdir/${pkgname%-git}"
+  depends=(
+    'anbox-git'
+    'systemd'
+    'python-xdg'
+  )
+  cd "$srcdir/${pkgname%-git}"
    make DESTDIR="$pkgdir" SYSCONFDIR=/etc install
 }
