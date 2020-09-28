@@ -14,7 +14,6 @@ pkgbase = kmon-git
 	depends = libxcb
 	provides = kmon
 	conflicts = kmon
-	conflicts = kmon-bin
 	options = zipman
 	source = git://github.com/orhun/kmon.git
 	sha256sums = SKIP
