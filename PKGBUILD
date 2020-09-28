@@ -10,7 +10,7 @@
 
 pkgname=python37
 pkgver=3.7.9
-pkgrel=2
+pkgrel=3
 _pybasever=${pkgver%.*}
 _pymajver=3
 pkgdesc="Major release 3.7 of the Python high-level programming language"
@@ -82,9 +82,9 @@ build() {
 
   # Obtain next free server number for xvfb-run; this even works in a chroot environment.
   export servernum=99
-  while ! xvfb-run -a -n "$servernum" /bin/true 2>/dev/null; do servernum=$((servernum+1)); done
+  while ! xvfb-run -d -n "$servernum" /bin/true 2>/dev/null; do servernum=$((servernum+1)); done
 
-  LC_CTYPE=en_US.UTF-8 xvfb-run -s "-screen 0 1280x720x24 -ac +extension GLX" -a -n "$servernum" make EXTRA_CFLAGS="$CFLAGS"
+  LC_CTYPE=en_US.UTF-8 xvfb-run -s "-screen 0 1280x720x24 -ac +extension GLX" -d -n "$servernum" make EXTRA_CFLAGS="$CFLAGS"
 }
 
 package() {
