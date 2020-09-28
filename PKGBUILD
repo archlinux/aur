@@ -12,7 +12,7 @@ license=('GPL3')
 makedepends=('meson' 'ninja')
 depends=(
   'appstream-glib' 'desktop-file-utils' 'gst-python'
-  'gstreamer' 'gtk3' 'python-dbus' 'python-distro' 'python-requests' 'python-pytz' 'python-gobject' 'python-mutagen' 'python-cairo' 'python-peewee' 'python-apsw' 'file' 'gst-plugins-good'
+  'gstreamer' 'gtk3' 'python-dbus' 'python-distro' 'python-requests' 'python-pytz' 'python-gobject' 'python-mutagen' 'python-cairo' 'python-peewee' 'python-apsw' 'python-packaging' 'file' 'gst-plugins-good'
 )
 source=( "https://github.com/geigi/cozy/archive/${pkgver}.tar.gz")
 sha256sums=('984508506c9907c765f75f8042249ff3a95db7e6407e7a66338fd52384ac797f')

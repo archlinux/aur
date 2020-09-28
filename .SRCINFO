@@ -22,6 +22,7 @@ pkgbase = cozy-audiobooks
 	depends = python-cairo
 	depends = python-peewee
 	depends = python-apsw
+	depends = python-packaging
 	depends = file
 	depends = gst-plugins-good
        source = https://github.com/geigi/cozy/archive/0.7.2.tar.gz
