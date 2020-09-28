@@ -5,10 +5,10 @@
 # Contributor: Gabriele Lanaro <gabriele.lanaro@gmail.com>
 
 pkgname=f2c
-pkgver=20200425
-pkgrel=2
+pkgver=20200916
+pkgrel=1
 pkgdesc='Fortran to C code translator'
-url='http://www.netlib.org/f2c'
+url='https://www.netlib.org/f2c'
 license=('custom')
 arch=('x86_64')
 depends=('glibc')
@@ -16,7 +16,7 @@ makedepends=('unzip')
 source=("$url/src.tgz"
         "$url/libf2c.zip")
 noextract=("libf2c.zip")
-sha256sums=('75cea7d59ae2a704959132938d7e014f9c62602fce1ad1be996ac187ebf95c72'
+sha256sums=('d4847456aa91c74e5e61e2097780ca6ac3b20869fae8864bfa8dcc66f6721d35'
             'ca404070e9ce0a9aaa6a71fc7d5489d014ade952c5d6de7efb88de8e24f2e8e0')
 
 prepare() {
