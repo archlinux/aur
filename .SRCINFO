@@ -1,0 +1,16 @@
+pkgbase = ruby-tzinfo-data
+	pkgdesc = Timezone data for ruby-tzinfo
+	pkgver = 1.2020.1
+	pkgrel = 1
+	url = https://github.com/tzinfo/tzinfo-data
+	arch = x86_64
+	license = MIT
+	depends = ruby
+	depends = ruby-tzinfo
+	noextract = tzinfo-data-1.2020.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/tzinfo-data-1.2020.1.gem
+	b2sums = 79abe079d811b3ee03e827cf19a4cfaa4d1be5fb07a9605ce393296858e9f6458659f70a8abbb718a4e24d31a89980677d4f8c268d2ddb30475656fc7fe26dae
+
+pkgname = ruby-tzinfo-data
+
