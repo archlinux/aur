@@ -7,7 +7,6 @@ pkgdesc="Documentation for SoupSieve"
 arch=('i686' 'x86_64')
 url="https://facelessuser.github.io/soupsieve"
 license=('MIT')
-#makedepends=("python-${_pyname}=${pkgver}" 'mkdocs-material-extensions' 'python-regex')
 makedepends=("python-${_pyname}=${pkgver}"
              'mkdocs-pymdownx-material-extras'
              'python-mkdocs-material-extensions'
@@ -19,7 +18,7 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     sed -i -e '/-\ git-rev/a \      fallback_to_build_date: true' \
-           -e '$a use_directory_urls: false' -e '/-\ git-rev/s/$/:/' mkdocs.yml
+           -e '/-\ git-rev/s/$/:/' -e '$a use_directory_urls: false' mkdocs.yml
 }
 
 build() {
