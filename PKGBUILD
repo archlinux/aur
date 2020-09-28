@@ -1,8 +1,8 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=instamenu 
-pkgver=2020.9.27
-pkgrel=2
+pkgver=2020.9.28
+pkgrel=1
 pkgdesc="dmenu like menu with the Manjaro Breath theme"
 url="https://github.com/TheCynicalTeam/$pkgname"
 arch=('any')

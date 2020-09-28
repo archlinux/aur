@@ -1,7 +1,7 @@
 pkgbase = instamenu
 	pkgdesc = dmenu like menu with the Manjaro Breath theme
-	pkgver = 2020.9.27
-	pkgrel = 2
+	pkgver = 2020.9.28
+	pkgrel = 1
 	url = https://github.com/TheCynicalTeam/instamenu
 	arch = any
 	license = GNU General Public License v3.0
@@ -16,7 +16,7 @@ pkgbase = instamenu
 	conflicts = dmenu
 	replaces = instantmenu
 	replaces = dmenu
-	source = https://github.com/TheCynicalTeam/instamenu/archive/2020.9.27-2.tar.gz
+	source = https://github.com/TheCynicalTeam/instamenu/archive/2020.9.28-1.tar.gz
 	sha256sums = 0a135b635883c58abde95a8aa6a4298cdb9392c445ac33f528109a0f05e75057
 
 pkgname = instamenu
