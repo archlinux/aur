@@ -1,0 +1,15 @@
+pkgbase = nodejs-vls
+	pkgdesc = Vue language server (LSP)
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/vuejs/vetur/tree/master/server
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = vls-0.5.4.tgz
+	source = https://registry.npmjs.org/vls/-/vls-0.5.4.tgz
+	sha256sums = d2f4a42d73b01526da0e7b0a97b18a7f3933b2c99c50b202d298d0574e602b92
+
+pkgname = nodejs-vls
+
