@@ -3,13 +3,13 @@
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
 pkgver=3.76.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
 license=('GPL3')
 depends=('nss' 'libxss' 'libxtst' 'libappindicator-gtk3' 'libnotify')
-makedepends=('npm' 'nvm')
+makedepends=('npm')
 source=("https://github.com/tutao/tutanota/archive/tutanota-release-$pkgver.tar.gz"
         "$pkgname"
         "$pkgname.desktop")
@@ -18,22 +18,9 @@ sha256sums=('2d2ba3bb31048b0adae241fa4c07e2e52d486a40cc6326426009ebe6415d0a57'
             '1215678e2fc23cfbeb73063f68dc440891e5b2e10734fa7f402e06860c292e31')
 
 build() {
-
-	# Use nodejs v12 until upstream fixes build with v14
-	export npm_config_cache="$srcdir/npm-cache"
-	local npm_prefix=$(npm config get prefix)
-	local nodeversion='12.18.4'
-	npm config delete prefix
-	source /usr/share/nvm/init-nvm.sh
-	nvm install "$nodeversion" && nvm use "$nodeversion"
-
 	cd "${pkgname%-*}-${pkgname%-*}-release-$pkgver"
-	npm install
+	npm install --cache "$srcdir/npm-cache"
 	node dist -l --custom-desktop-release --unpacked
-
-	# Restore node config from nvm
-	npm config set prefix "$npm_prefix"
-	nvm unalias default
 }
 
 package() {
