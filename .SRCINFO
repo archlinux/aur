@@ -1,11 +1,12 @@
 pkgbase = plymouth-theme-serene-git
 	pkgdesc = SereneLinux用のplymouthテーマ
 	pkgver = r5.4b6c944
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FascodeNet/plymouth-theme-serene
 	install = plymouth-theme-serene-git.install
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = plymouth
 	conflicts = plymouth-theme-serene
 	source = git+https://github.com/FascodeNet/plymouth-theme-serene.git
