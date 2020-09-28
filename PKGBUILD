@@ -2,12 +2,12 @@
 pkgname=exiftool
 _srcname=Image-ExifTool
 pkgver=12.06
-pkgrel=1
+pkgrel=2
 pkgdesc="Meta information reader/writer"
 arch=('x86_64')
 url="https://www.exiftool.org"
 license=('PerlArtistic')
-depends=('perl' 'sudo')
+depends=('perl')
 source=("${pkgname}-${pkgver}.tar.gz::https://exiftool.org/${_srcname}-${pkgver}.tar.gz")
 sha1sums=('40217757c8f21733073f55fb58b520588fe28fee')
 
