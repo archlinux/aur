@@ -2,7 +2,7 @@
 
 pkgname="odio-bzr"
 _pkgname="odio"
-pkgver="20.5.21.244"
+pkgver="20.5.21.245"
 pkgrel=1
 pkgdesc="Audio compression tool for FLAC and Nero AAC"
 arch=("any")
