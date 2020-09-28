@@ -1,0 +1,15 @@
+pkgbase = spdlog_setup
+	pkgdesc = A library to initialize spdlog via file configuration for convenience
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/guangie88/spdlog_setup
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = spdlog
+	depends = cpptoml
+	source = spdlog_setup-0.3.0.tar.gz::https://github.com/guangie88/spdlog_setup/archive/v0.3.0.tar.gz
+	sha256sums = d0cfa7d306ff65596e36be42e23c231a1b8f84e8fe339b94c15fca58c67516e3
+
+pkgname = spdlog_setup
+
