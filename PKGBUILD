@@ -1,42 +1,31 @@
-# Maintainer: Marcin Tydelski <marcin.tydelski@gmail.com> 
-# Contributor: Nicolas Laplante <https://launchpad.net/~nicolas-laplante>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname=envelope-git
-pkgver=386.97c1a25
+_pkgname='envelope'
+pkgname="${_pkgname}-git"
+pkgver=0.0.4.r8.g0c0b212
 pkgrel=1
-_gitname=envelope
-pkgdesc='Personal budget application for the Elementary OS desktop'
-arch=('i686' 'x86_64')
-url='http://nlaplante.github.io/envelope/'
+pkgdesc='Personal budget manager'
+arch=('x86_64')
+url='https://github.com/cjfloss/envelope'
 license=('GPL3')
-depends=('granite' 'gtk3' 'libgee' 'glib2' 'glib-networking' 'sqlheavy')
-makedepends=('git' 'vala' 'cmake')
-provides=("${pkgname%-*}")
-conflicts=("${pkgname%-*}")
-install="${pkgname%-*}.install"
-source=('git+https://github.com/nlaplante/envelope.git')
+depends=('granite' 'sqlite')
+makedepends=('git' 'meson' 'vala')
+provides=("${_pkgname}")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_gitname
-
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug ..
-  make
+  arch-meson "${_pkgname}" build
+  meson compile -C build
 }
 
 package() {
-  cd $_gitname/build
-
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" meson install -C build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" "${_pkgname}/README.md"
 }
 
 # vim: ts=2 sw=2 et:
