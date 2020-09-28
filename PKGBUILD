@@ -1,11 +1,12 @@
+# Maintainer: Ernesto Castellotti <mail@ernestocastellotti.it>
 # Maintainer: Christian Hesse <mail@eworm.de>
 # Maintainer: Dave Reisner <dreisner@archlinux.org> ([core] package)
 # Maintainer: Thomas Bächler <thomas@archlinux.org> ([core] package)
 
-pkgname=mkinitcpio-git
-pkgver=23.r6.g32dbf89
+pkgname=mkinitcpio-nohooks-git
+pkgver=28.r0.g3340dbc
 pkgrel=1
-pkgdesc='Modular initramfs image creation utility - git checkout'
+pkgdesc='Modular initramfs image creation utility - Without pacman.d and kernel.d hooks'
 arch=('any')
 url='http://www.archlinux.org/'
 license=('GPL')
@@ -17,7 +18,7 @@ optdepends=('xz: Use lzma or xz compression for the initramfs image'
             'mkinitcpio-nfs-utils: Support for root filesystem on NFS')
 makedepends=('git' 'asciidoc')
 provides=("mkinitcpio=${pkgver}")
-conflicts=('mkinitcpio')
+conflicts=('mkinitcpio' 'mkinitcpio-git')
 backup=('etc/mkinitcpio.conf')
 source=('git://projects.archlinux.org/mkinitcpio.git')
 sha256sums=('SKIP')
@@ -41,5 +42,6 @@ package() {
 	cd mkinitcpio/
 
 	make DESTDIR="${pkgdir}" install
+	rm -r "${pkgdir}/etc/mkinitcpio.d" "${pkgdir}/usr/lib/kernel" "${pkgdir}/usr/share/libalpm" "${pkgdir}/usr/share/mkinitcpio"
 }
 
