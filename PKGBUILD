@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=quantreg
-_cranver=5.67
+_cranver=5.70
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,10 +13,9 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 depends=('r>=2.6' r-sparsem r-matrixmodels r-conquer)
-makedepends=(gcc-fortran)
 optdepends=(r-tripack r-akima r-rgl r-logspline r-nor1mix r-formula r-zoo r-r.rsp)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('999b54484eb5a5b0b353c044c968ced96440cf9516b0132a3f5374d311640f26')
+sha256sums=('2102c13bade301c38d0251a3b3658a1b63e11f2f6466ffc9a0529dc6a6f63b5e')
 
 build() {
   cd "${srcdir}"
