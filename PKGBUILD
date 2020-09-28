@@ -1,6 +1,6 @@
 pkgname=ignition-cmake-0
 pkgver=0.6.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Provides modules that are used to find dependencies of ignition projects and generate cmake targets for consumers of ignition projects to link against."
 arch=('any')
 url="https://ignitionrobotics.org/libs/cmake"
@@ -9,11 +9,10 @@ groups=('development')
 depends=('cmake' 'pkg-config' 'ruby-ronn' 'doxygen')
 optdepends=()
 provides=('ignition-cmake=0')
-_name="ignition-cmake"
-source=("https://bitbucket.org/osrf-migrated/ign-cmake/get/${_name}_${pkgver}.tar.bz2")
-sha256sums=('969239312eee6f0691e1a3a5215c542ea029bc7c84d479d596d5b1128aef83ae')
+source=("https://github.com/ignitionrobotics/ign-cmake/archive/ignition-cmake_${pkgver}.tar.gz")
+sha256sums=('149e359b23f843b764c7c1537820a12a76b555585cf4cb91ecfb3769a3d5da7a')
 
-_dir="osrf-migrated-ign-cmake-a93e1ac2472b"
+_dir="ign-cmake-ignition-cmake_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
