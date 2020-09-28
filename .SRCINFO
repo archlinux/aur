@@ -1,9 +1,10 @@
 pkgbase = cmm
 	pkgdesc = SPHINX C-- Compiler . C-- is a programming language occupying an intermediate position between Assembler and C.
 	pkgver = 0.240
-	pkgrel = 1
+	pkgrel = 2
 	url = http://c--sphinx.narod.ru/
 	arch = any
+	groups = kos32-dev
 	license = GPLv3
 	makedepends = cmake
 	makedepends = gcc
