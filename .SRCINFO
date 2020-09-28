@@ -1,7 +1,7 @@
 pkgbase = afancontrol
 	pkgdesc = Advanced Fan Control program, which controls PWM fans according to the current temperatures of the system components.
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.2.1
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/KostyaEsmukov/afancontrol
 	arch = any
@@ -9,12 +9,13 @@ pkgbase = afancontrol
 	makedepends = python-setuptools
 	depends = python-click
 	optdepends = lm_sensors: to use the motherboard-based sensors and PWM fans
+	optdepends = freeipmi: readonly PWM fans
 	optdepends = hddtemp: for measuring HDD/SSD temperatures
 	optdepends = python-pyserial: Arduino support
 	optdepends = python-prometheus_client: Prometheus support
 	backup = etc/afancontrol/afancontrol.conf
-	source = afancontrol-2.1.0.tar.gz::https://github.com/KostyaEsmukov/afancontrol/archive/2.1.0.tar.gz
-	sha256sums = 0c248291d43a31af4e06411a64cfa6623d63bec89b0c3594317388855b4a49cf
+	source = afancontrol-2.2.1.tar.gz::https://github.com/KostyaEsmukov/afancontrol/archive/2.2.1.tar.gz
+	sha256sums = e984d83791a0a0131e5fc874f7e3240e874c6bb9215075ef02e740091ea6a450
 
 pkgname = afancontrol
 
