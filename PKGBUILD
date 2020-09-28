@@ -2,12 +2,12 @@
 # Contributor: ftsell <aur@finn-thorben.me>
 pkgname=pop-shell-shortcuts-git
 pkgver=r37.9280535
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for displaying and demoing Pop Shell shortcuts"
 arch=('x86_64')
 url="https://github.com/pop-os/shell-shortcuts"
 license=('GPL')
-depends=('gnome-shell')
+depends=('gtk3')
 makedepends=('git' 'rust')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
