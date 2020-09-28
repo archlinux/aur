@@ -1,0 +1,15 @@
+pkgbase = pinktrace-1
+	pkgdesc = Lightweight ptrace() wrapper library
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://git.exherbo.org/pinktrace-1.git
+	arch = x86_64
+	license = custom:BSD
+	makedepends = automake
+	makedepends = autoconf
+	depends = glibc
+	source = https://git.exherbo.org/pinktrace-1.git/snapshot/pinktrace-1-0.9.3.tar.xz
+	sha512sums = 78d6b3509380ccfff06c31babb23326d1609a4e18f9f4da925b1d81e4305092375013c63b73d5a42cbdbd521db64994006839ef9ad86771dc3f45a73cd4608e1
+
+pkgname = pinktrace-1
+
