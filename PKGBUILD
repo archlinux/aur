@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libbacktrace-git
-pkgver=r30.ca0de05
+pkgver=r47.95e8e96
 pkgrel=1
 pkgdesc="Library to produce symbolic backtraces (mingw-w64)"
 arch=('any')
@@ -22,7 +22,6 @@ pkgver() {
 
 prepare () {
   cd "libbacktrace"
-  curl -L https://github.com/ianlancetaylor/libbacktrace/pull/28.patch | patch -p1
   # dont allow undefined symbols to build the dll
   sed -i "87ilibbacktrace_la_LDFLAGS = -no-undefined" Makefile.am
   autoreconf -vfi
