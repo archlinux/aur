@@ -2,7 +2,7 @@
 
 pkgname=gazebo-10
 pkgver=10.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://gazebosim.org/"
@@ -27,10 +27,10 @@ provides=('gazebo')
 conflicts=('gazebo')
 install="gazebo.install"
 source=("https://github.com/osrf/gazebo/archive/gazebo10_$pkgver.tar.gz"
-        "fix-openal.patch::https://bitbucket.org/shrit/gazebo/commits/556354dcebd180e0f1015b96890f9906e441b551/raw"
+        "fix-openal.patch::https://github.com/osrf/gazebo/commit/bef4dba1ef51a1d97cd7220b7d88916eaa8132a6.diff"
 	"cmake-policy.patch")
 sha256sums=('8fbba7008be004f6df93f279c26d03910b3b07768881a7e9b0df80b6db738552'
-            '4b386e845e94008102609a4fb666d698bee0480d2ce88b250dc1d849cfc93b72'
+            '21c18f26d81f8dec37065ea273525c07880d2aeb0306fda47f6c11be594fe7da'
             'c8c122405a91013f960a7795784ae7332f333f09031bf83887053740ea35fbc9')
 
 prepare() {
