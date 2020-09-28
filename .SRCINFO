@@ -12,7 +12,7 @@ pkgbase = kde1-kdemultimedia-git
 	depends = kde1-kdelibs
 	provides = kde1-kdemultimedia
 	conflicts = kde1-kdemultimedia
-	source = git+https://github.com/KDE/kde1-kdemultimedia.git
+	source = git+https://anongit.kde.org/kde1-kdemultimedia.git
 	md5sums = SKIP
 
 pkgname = kde1-kdemultimedia-git
