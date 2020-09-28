@@ -1,7 +1,7 @@
 pkgbase = passivedns-git
 	pkgdesc = A network sniffer that logs all DNS server replies for use in a passive DNS setup
-	pkgver = r275.e126cbb
-	pkgrel = 4
+	pkgver = r283.3f387d0
+	pkgrel = 1
 	url = https://github.com/gamelinux/passivedns
 	arch = x86_64
 	license = GPLv2
@@ -11,9 +11,7 @@ pkgbase = passivedns-git
 	depends = libpcap
 	provides = passivedns
 	source = passivedns::git+git://github.com/gamelinux/passivedns.git
-	source = https://github.com/gamelinux/passivedns/files/5089290/gcc-10_patch.txt
 	sha256sums = SKIP
-	sha256sums = 575fafb4642073ee326894382bf7dd422dd180726b107a602a69ea1a61ea03fc
 
 pkgname = passivedns-git
 
