@@ -1,0 +1,19 @@
+pkgbase = llbuild-git
+	pkgdesc = Build system and library at the core of XCode and Swift package manager.
+	pkgver = swift.DEVELOPMENT.SNAPSHOT.2020.09.23.a.r0.g3332fc26
+	pkgrel = 1
+	url = https://swift.org/
+	arch = x86_64
+	license = apache2
+	makedepends = clang
+	makedepends = git
+	makedepends = ninja
+	provides = llbuild
+	conflicts = llbuild
+	source = llbuild::git+https://github.com/apple/swift-llbuild
+	source = 0002-llbuild-ninja-test-binary-links-against-ncurses.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = llbuild-git
+

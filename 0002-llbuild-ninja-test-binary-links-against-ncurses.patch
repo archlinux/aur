@@ -1,0 +1,25 @@
+From bc82c7d063aff71d09e9a0cef4e059c278459f47 Mon Sep 17 00:00:00 2001
+From: soloturn <soloturn@gmail.com>
+Date: Tue, 15 Sep 2020 02:53:24 +0200
+Subject: [PATCH] llbuild ninja test binary links against ncurses
+
+llbuild ninja test binary needs to link against ncurses:
+https://github.com/apple/swift-llbuild/blob/a9f4b75cf7288156ed1880f98cebe17da1543a38/Package.swift#L207
+---
+ lib/llvm/Support/CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/lib/llvm/Support/CMakeLists.txt b/lib/llvm/Support/CMakeLists.txt
+index 5871d60a..9d5a714b 100644
+--- a/lib/llvm/Support/CMakeLists.txt
++++ b/lib/llvm/Support/CMakeLists.txt
+@@ -64,3 +64,6 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
+     execinfo)
+ endif()
+ 
++if(${CMAKE_SYSTEM_NAME} MATCHES "Android|Darwin|Linux")
++  target_link_libraries(llvmSupport PRIVATE curses)
++endif()
+-- 
+2.28.0
+
