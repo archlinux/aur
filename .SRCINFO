@@ -1,13 +1,15 @@
 pkgbase = python-catalogue
-	pkgdesc = Super lightweight function registries for your library
-	pkgver = 2.0.0
+	pkgdesc = Python wrapper library for subprocess module
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/explosion/catalogue
-	arch = x86_64
+	arch = any
 	license = MIT
-	depends = python>=3.6
-	source = python-catalogue-2.0.0.tar.gz::https://github.com/explosion/catalogue/archive/v2.0.0.tar.gz
-	md5sums = e9e14d6aab9dad97770a8c1285f78400
+	makedepends = python-setuptools
+	depends = python
+	provides = catalogue
+	source = https://files.pythonhosted.org/packages/source/c/catalogue/catalogue-2.0.1.tar.gz
+	sha256sums = 0d01077dbfca7aa53f3ef4adecccce636bce4f82e5b52237703ab2f56478e56e
 
 pkgname = python-catalogue
 

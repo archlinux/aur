@@ -1,19 +1,30 @@
-# Maintainer: Chris Brendel <cdbrendel@gmail.com>
-# Python package author: Matthew Honnibal <matt@explosion.ai>
-pkgname=python-catalogue
-_origpkgname=catalogue
-pkgver=2.0.0
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Chris Brendel <cdbrendel@gmail.com>
+
+_pkgname='catalogue'
+pkgname="python-${_pkgname}"
+pkgver=2.0.1
 pkgrel=1
-pkgdesc="Super lightweight function registries for your library "
-arch=("x86_64")
-url="https://github.com/explosion/catalogue"
-license=("MIT")
-depends=("python>=3.6")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/explosion/catalogue/archive/v$pkgver.tar.gz")
-md5sums=('e9e14d6aab9dad97770a8c1285f78400')
+pkgdesc='Python wrapper library for subprocess module'
+arch=('any')
+url='https://github.com/explosion/catalogue'
+license=('MIT')
+depends=('python')
+makedepends=('python-setuptools')
+provides=("${_pkgname}")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('0d01077dbfca7aa53f3ef4adecccce636bce4f82e5b52237703ab2f56478e56e')
+
+build() {
+  cd "${_pkgname}-${pkgver}"
+  python setup.py build
+}
 
 package() {
-    cd "$_origpkgname-$pkgver"
-    python setup.py install --root="${pkgdir}/" --optimize=1
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"    
+  cd "${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.md'
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE'
 }
+
+# vim: ts=2 sw=2 et:
