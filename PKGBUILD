@@ -17,6 +17,7 @@ arch=('x86_64' 'i686')
 source=("https://github.com/nushell/nushell/archive/$pkgver.tar.gz")
 # Use updpkgsums to update the checksum
 sha256sums=('ccecbfd49d03ca45f347fe55b789b8732003ceab49a14af110390e723f2fd274')
+b2sums=('3d8fcccc0c353ab7c98a4ad5c3485cd74950d96c481cb6b855e8d5f549b3622d28d1e32f087eb6f620f83f1b7160d25efe80255694cad79b23ad5c2585c5678a')
 
 package() {
   install=nushell.install
