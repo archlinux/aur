@@ -2,7 +2,7 @@
 _name=battery-discharging-beep
 _git_project=linux-"${_name}"
 pkgname="${_name}"-git
-pkgver=v1.0.r0.g1c67673
+pkgver=v1.0.r1.gb55d021
 pkgrel=1
 pkgdesc="Generate a sound when the battery is discharging."
 arch=(x86_64)
