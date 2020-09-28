@@ -3,7 +3,7 @@
 # Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
 pkgver=2.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
@@ -21,7 +21,7 @@ optdepends=(
     'unzip: for optional reshade download'
     'git: for pulling optional shaders'
     'xdotool: for playing regular games side-by-side in VR'
-    'xorg-xwininfo: for playing regular games side-by-side in VR'
+    'xorg-xwininfo: for playing regular games side-by-side in VR and for automatic resolution detection'
     'vr-video-player: for playing regular games side-by-side in VR'
     'nyrna: for using Nyrna per game'
     'replay-sorcery: for using Replay-Sorcery per game'
