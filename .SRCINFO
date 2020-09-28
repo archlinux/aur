@@ -1,0 +1,18 @@
+pkgbase = image-optimizer-bin
+	pkgdesc = Simple lossless image compression
+	pkgver = 0.1.17
+	pkgrel = 1
+	url = https://github.com/gijsgoudzwaard/image-optimizer
+	arch = x86_64
+	license = MIT
+	depends = granite
+	depends = jpegoptim
+	depends = optipng
+	provides = image-optimizer
+	source = http://packages.elementary.io/appcenter/pool/main/c/com.github.gijsgoudzwaard.image-optimizer/com.github.gijsgoudzwaard.image-optimizer0.1.17-64559e.deb
+	source = image-optimizer-bin-0.1.17-LICENSE::https://github.com/gijsgoudzwaard/image-optimizer/raw/0.1.17/LICENSE
+	sha256sums = c2eefbaaf5f9392e6d01e240da27b21a4533165d26cf47a66399a5f3c6e84115
+	sha256sums = 6477678e949d04b38104a51115dc9f2978cb34c7c98aa56865babf8b50277c21
+
+pkgname = image-optimizer-bin
+
