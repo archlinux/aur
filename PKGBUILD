@@ -1,5 +1,5 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
-
+# pkg: pypi nulltype
 _name=nulltype
 pkgname=( python-$_name python2-$_name )
 pkgbase=python-$_name
@@ -17,10 +17,7 @@ depends=()
 makedepends=(python-setuptools python2-setuptools)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.zip)
 sha256sums=('64aa3cb2ab5e904d1b37175b9b922bea268c13f9ce32e3d373313150ab5ef272')
-pkgver()
-{
-    curl -s https://pypi.org/pypi/$_name/json|jq -r '.info.version'
-}
+
 prepare() {
     # copy folder, so we can cleanly build for both python versions
     cp -rup $_name-$pkgver $_name-$pkgver-py2
