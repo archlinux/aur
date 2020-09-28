@@ -33,7 +33,7 @@ check() {
         tests/functional/registration/projects/flow_dsl
         tests/functional/registration/projects/flow_codegen)
   for prj in "${prjs[@]}"; do
-    pip install --user -e "$prj" || exit 1
+    pip install --user --no-index -f ./ -e "$prj" || exit 1
   done
 
   # Run all tests
