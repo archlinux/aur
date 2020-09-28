@@ -3,7 +3,7 @@ set -e -u -o pipefail
 
 VERSION=$1
 PKGREL=${2:-1}
-SOURCE="https://github.com/brocode/goat/releases/download/$VERSION/goat"
+SOURCE="https://github.com/brocode/goat/releases/download/v$VERSION/goat"
 NAME="goat"
 SHA256=$(curl -L --silent --fail $SOURCE  | sha256sum | awk '{print $1}')
 

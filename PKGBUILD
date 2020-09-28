@@ -1,14 +1,14 @@
 # Maintainer: Brocode <bros at brocode dot sh>
 
 pkgname=goat
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="better sleep"
 arch=('x86_64')
 url="https://github.com/brocode/goat"
 license=('WTFPL')
-source=('https://github.com/brocode/goat/releases/download/0.9.1/goat')
-sha256sums=('56f5047c35cefb597abc658e4096fc64df3b18d138d0b5b054c04ed5fd1bd963')
+source=('https://github.com/brocode/goat/releases/download/v0.10.0/goat')
+sha256sums=('8d51e8c03edd6ae5b30c3829876022c4a7bb1e88171fba8fe6cea28efe1c688d')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
