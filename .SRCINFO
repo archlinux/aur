@@ -1,5 +1,5 @@
 pkgbase = kex-git
-	pkgdesc = KolibriOS emulator for running applications.
+	pkgdesc = KolibriOS emulator for running applications in Linux.
 	pkgver = r52.96d1fa2
 	pkgrel = 1
 	url = https://github.com/tsdima/kex

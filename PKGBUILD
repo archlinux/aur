@@ -1,7 +1,7 @@
 pkgname='kex-git'
 pkgver='r52.96d1fa2'
 pkgrel=1
-pkgdesc="KolibriOS emulator for running applications."
+pkgdesc="KolibriOS emulator for running applications in Linux."
 url="https://github.com/tsdima/kex"
 source=("git://github.com/tsdima/kex.git")
 license=('GPLv3')
