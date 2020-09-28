@@ -6,11 +6,12 @@
 _pkgname=touchegg
 pkgname=${_pkgname}-git
 pkgver=r322.a82d299
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux multi-touch gesture recognizer'
 arch=('x86_64')
 url='https://github.com/JoseExposito/touchegg'
 license=('GPL3')
+install="${_pkgname}.install"
 source=("${_pkgname}::git://github.com/JoseExposito/touchegg.git" 'filesystem.h')
 depends=('libinput' 'cairo' 'systemd-libs' 'libx11' 'libxrandr' 'libxtst' 'pugixml')
 makedepends=('git' 'cmake')
@@ -25,17 +26,14 @@ pkgver() {
 
 build() {
     cp "$srcdir/filesystem.h" "$srcdir/${_pkgname}/src/utils/filesystem.h"
-    cd "$srcdir/${_pkgname}"
-    mkdir build
-    cd build
-    cmake -DCMAKE_BUILD_TYPE=Release ..
-    make -j$(nproc)
+    cmake -B build -S "${_pkgname}" -DCMAKE_BUILD_TYPE=Release ..
+    make -C build -j$(nproc)
 }
 
 package() {
     #cd "$srcdir/${_pkgname}/build"
     #DESTDIR="$pkgdir" make install
-    install -D       "$srcdir/${_pkgname}/build/touchegg"                     "$pkgdir/usr/bin/touchegg"
+    install -D       "$srcdir/build/touchegg"                     "$pkgdir/usr/bin/touchegg"
     install -Dm 0644 "$srcdir/${_pkgname}/installation/touchegg.conf"         "$pkgdir/usr/share/touchegg/touchegg.conf"
     install -Dm 0644 "$srcdir/${_pkgname}/installation/touchegg.service"      "$pkgdir/usr/lib/systemd/system/touchegg.service"
 }
