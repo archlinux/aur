@@ -2,7 +2,7 @@
 
 _name=gnome-2048
 pkgname=$_name-git
-pkgver=3.37.1.r5.g4fc9c07
+pkgver=3.38.0.r0.g76a9159
 pkgrel=1
 pkgdesc="Obtain the 2048 tile"
 arch=(x86_64)
