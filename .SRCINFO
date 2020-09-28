@@ -1,0 +1,19 @@
+pkgbase = mkdocs-pymdownx-material-extras
+	pkgdesc = Plugin to extend MkDocs Material theme.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/facelessuser/mkdocs_pymdownx_material_extras
+	arch = i686
+	arch = x86_64
+	license = MIT
+	checkdepends = mkdocs-material-extensions
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs_pymdownx_material_extras/mkdocs_pymdownx_material_extras-1.1.1.tar.gz
+	source = https://raw.githubusercontent.com/facelessuser/mkdocs_pymdownx_material_extras/master/LICENSE
+	md5sums = c107e0384cdf366e6549a540ff2a6575
+	md5sums = SKIP
+
+pkgname = mkdocs-pymdownx-material-extras
+	depends = python>=3.5
+	depends = mkdocs-material>=5.0.2
+
