@@ -15,8 +15,8 @@ provides=(kde1-kde${_module})
 conflicts=(kde1-kde${_module})
 
 # Mirror
-source=("git+https://github.com/KDE/kde1-kde${_module}.git")
-#source=("git+https://anongit.kde.org/kde1-kde${_module}.git")
+#source=("git+https://github.com/KDE/kde1-kde${_module}.git")
+source=("git+https://anongit.kde.org/kde1-kde${_module}.git")
 
 md5sums=('SKIP')
 
