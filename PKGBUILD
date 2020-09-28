@@ -1,25 +1,27 @@
 # Maintainer: Martin
 
-pkgname=kde1-kdegraphics-git
+_module=graphics
+pkgname=kde1-kde${_module}-git
 pkgver=1.1.2r1129.170e6a7
 pkgrel=1
-pkgdesc="Historical copy of the graphics module of KDE 1, adapted to compile on modern systems (circa. 2016)"
-arch=('i686' 'x86_64')
-url="https://quickgit.kde.org/?p=kde1-kdegraphics.git"
+pkgdesc="Historical copy of the $_module module of KDE 1, adapted to compile on modern systems"
+arch=(i686 x86_64)
+url="https://quickgit.kde.org/?p=kde1-kde${_module}.git"
 license=("GPL2")
-groups=('kde1')
-depends=('kde1-kdelibs' 'giflib')
-makedepends=('cmake' 'git')
-provides=('kde1-kdegraphics')
-conflicts=('kde1-kdegraphics')
-source=("git+https://anongit.kde.org/kde1-kdelibs.git")
+groups=(kde1)
+depends=(kde1-kdelibs giflib)
+makedepends=(cmake git)
+provides=(kde1-kde${_module})
+conflicts=(kde1-kde${_module})
+
+# Mirror
+source=("git+https://github.com/KDE/kde1-kde${_module}.git")
+#source=("git+https://anongit.kde.org/kde1-kde${_module}.git")
+
 md5sums=('SKIP')
 
-# Mirror, in case it fails:
-#source=("git+https://github.com/KDE/kde1-kdegraphics.git")
-
 pkgver() {
-  cd kde1-kdegraphics
+  cd kde1-kde${_module}
   printf "1.1.2r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -33,13 +35,13 @@ prepare() {
 
 build() {
   cd build
-  cmake "$srcdir"/kde1-kdegraphics -DCMAKE_INSTALL_PREFIX='/usr'
+  cmake "$srcdir"/kde1-kde${_module} -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
   cd build
   make DESTDIR="$pkgdir/" install
-  cd "$srcdir"/kde1-kdegraphics
+  cd "$srcdir"/kde1-kde${_module}
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
 }

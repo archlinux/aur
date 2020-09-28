@@ -1,5 +1,5 @@
 pkgbase = kde1-kdegraphics-git
-	pkgdesc = Historical copy of the graphics module of KDE 1, adapted to compile on modern systems (circa. 2016)
+	pkgdesc = Historical copy of the graphics module of KDE 1, adapted to compile on modern systems
 	pkgver = 1.1.2r1129.170e6a7
 	pkgrel = 1
 	url = https://quickgit.kde.org/?p=kde1-kdegraphics.git
@@ -10,7 +10,6 @@ pkgbase = kde1-kdegraphics-git
 	makedepends = cmake
 	makedepends = git
 	depends = kde1-kdelibs
-	depends = giflib
 	provides = kde1-kdegraphics
 	conflicts = kde1-kdegraphics
 	source = git+https://github.com/KDE/kde1-kdegraphics.git
