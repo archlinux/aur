@@ -1,18 +1,18 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=qt1-git
-pkgver=1.1.2r12.c6fc7ef
+pkgver=1.1.2r13.dc8a8d6
 pkgrel=1
 pkgdesc="Historical copy of Qt 1, adapted to compile on modern systems (circa. 2016)"
 arch=('i686' 'x86_64')
-url="https://quickgit.kde.org/?p=qt1.git"
+url="https://invent.kde.org/historical/qt1"
 license=("custom:Qt Free Edition License")
 groups=('kde1')
 depends=('libxext' 'gcc-libs')
 makedepends=('cmake' 'git' 'byacc')
 provides=('qt1')
 conflicts=('qt1')
-source=("git+https://github.com/heliocastro/qt1.git")
+source=("git+https://invent.kde.org/historical/qt1.git")
 md5sums=('SKIP')
 
 pkgver() {
