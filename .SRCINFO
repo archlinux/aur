@@ -13,6 +13,7 @@ pkgbase = libappindicator-sharp
 	makedepends = dbus-glib
 	makedepends = perl-xml-libxml
 	makedepends = gtk-doc
+	makedepends = python-dulwich
 	depends = mono
 	depends = libappindicator-gtk2=12.10.0.r296
 	depends = gtk-sharp-2
