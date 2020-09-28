@@ -5,7 +5,7 @@
 
 _pkgname=nu
 pkgname=${_pkgname}shell
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="A new type of shell."
 url="https://www.nushell.sh"
@@ -16,7 +16,7 @@ optdepends=('libxcb' 'libx11')
 arch=('x86_64' 'i686')
 source=("https://github.com/nushell/nushell/archive/$pkgver.tar.gz")
 # Use updpkgsums to update the checksum
-sha256sums=('18aefc280a51b2202daca4c5c27aa166f5c0049ebef16d9206fdd88616e8b2a0')
+sha256sums=('ccecbfd49d03ca45f347fe55b789b8732003ceab49a14af110390e723f2fd274')
 
 package() {
   install=nushell.install
