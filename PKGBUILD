@@ -1,8 +1,7 @@
-# Maintainer: Yamada Hayao                    <hayao@fascode.net>
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-zen-letsnote
-pkgver=5.8.1.zen1
+pkgver=5.8.12.zen1
 pkgrel=1
 pkgdesc="Linux ZEN patched for Let's note"
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -23,9 +22,9 @@ source=(
   lets-note.patch
 )
 sha256sums=('SKIP'
-            'c5b4ee3ab2526ab4459bdabbe184ebd7aea82d57045811b65a951ea8790ca799'
-            '19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a'
-            'd7a7204385202abffce22babdabff58085d7a44babcde3de6b005ecd369e3b83')
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

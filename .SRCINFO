@@ -1,8 +1,8 @@
 pkgbase = linux-zen-letsnote
 	pkgdesc = Linux ZEN patched for Let's note
-	pkgver = 5.8.1.zen1
+	pkgver = 5.8.12.zen1
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.8.1-zen1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.8.12-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,14 +16,14 @@ pkgbase = linux-zen-letsnote
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel#tag=v5.8.1-zen1
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel#tag=v5.8.12-zen1
 	source = config
 	source = sphinx-workaround.patch
 	source = lets-note.patch
 	sha256sums = SKIP
-	sha256sums = c5b4ee3ab2526ab4459bdabbe184ebd7aea82d57045811b65a951ea8790ca799
-	sha256sums = 19c19fef1fd46d1b184d888226d286be9b00e8feb8fb745f8d408cfce3d9622a
-	sha256sums = d7a7204385202abffce22babdabff58085d7a44babcde3de6b005ecd369e3b83
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = linux-zen-letsnote
 	pkgdesc = The Linux ZEN patched for Let's note kernel and modules
