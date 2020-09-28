@@ -1,0 +1,18 @@
+pkgbase = spectator
+	pkgdesc = Comfortably test your REST APIs
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/treagod/spectator
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = duktape
+	depends = granite
+	depends = gtksourceview3
+	depends = webkit2gtk
+	source = spectator-0.4.3.tar.gz::https://github.com/treagod/spectator/archive/0.4.3.tar.gz
+	sha256sums = 7ac4e0fb85a630a3f4a2bddf482186a3db990a20b92d25c6e243abbb366fda75
+
+pkgname = spectator
+
