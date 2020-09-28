@@ -1,6 +1,6 @@
 # Maintainer: Israel Roldan <israel.alberto.rv@gmail.com>
 pkgname=battery-discharging-beep-git
-pkgver=1
+pkgver=r14.2fc3787
 pkgrel=1
 _unique_package_name="arch-install"
 pkgdesc="Generate a sound when the battery is discharging."

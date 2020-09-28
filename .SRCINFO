@@ -1,6 +1,6 @@
 pkgbase = battery-discharging-beep-git
 	pkgdesc = Generate a sound when the battery is discharging.
-	pkgver = 1
+	pkgver = r14.2fc3787
 	pkgrel = 1
 	url = https://github.com/airvzxf/linux-battery-discharging-beep.git
 	arch = x86_64
