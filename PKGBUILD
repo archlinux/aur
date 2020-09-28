@@ -4,7 +4,7 @@
 
 _name="meshlab"
 pkgname="$_name-git"
-pkgver=2020.07.r3.g7b3202f96
+pkgver=2020.09.r79.g6ff7f9d67
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
