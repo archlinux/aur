@@ -46,8 +46,8 @@ makedepends=(
 	'xcb-util-keysyms'
 	'libxshmfence'
 #	'libunwind'
-	'wayland-protocols'
-	'egl-wayland'
+#	'wayland-protocols'
+#	'egl-wayland'
 	'meson')
 
 pkgver() {
