@@ -1,8 +1,8 @@
 #Maintainer: chris west <c@xvxx.io>
 
 pkgname=phetch
-pkgver=1.0.4
-pkgrel=7
+pkgver=1.0.5
+pkgrel=8
 pkgdesc="A quick lil gopher client for your terminal."
 url="https://github.com/xvxx/phetch"
 depends=('openssl')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 arch=('x86_64')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('34aa2deb1cee83787ed065775660c42b932f481307839eb12de7b5ab57c27c38')
+sha256sums=('3e0852f5806fe369d914099a7b34f76201d4b38e1b728d520e55de908ade8f74')
 
 build() {
   cd "$pkgname-$pkgver"
