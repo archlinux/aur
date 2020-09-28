@@ -1,12 +1,12 @@
 pkgbase = numix-blue-gtk-theme-bin
 	pkgdesc = Variant of the Numix theme with blue highlights
-	pkgver = 20.04.1
+	pkgver = 0.54
 	pkgrel = 2
 	url = https://packages.ubuntu.com/focal/numix-blue-gtk-theme
 	arch = any
 	license = GPL
 	depends = gtk-engine-murrine
-	source = http://mirrors.kernel.org/ubuntu/pool/universe/u/ubuntustudio-look/numix-blue-gtk-theme_20.04.1_all.deb
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/u/ubuntustudio-look/numix-blue-gtk-theme_0.54_all.deb
 	md5sums = SKIP
 
 pkgname = numix-blue-gtk-theme-bin
