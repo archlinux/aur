@@ -1,0 +1,15 @@
+pkgbase = ruby-strptime
+	pkgdesc = a fast strptime/strftime engine
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/nurse/strptime
+	arch = x86_64
+	license = BSD
+	depends = ruby
+	noextract = strptime-0.2.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/strptime-0.2.5.gem
+	b2sums = 827baf3e21d1c3f40e102d2e1ab1be769434e0fe6421be86abfdf1ef42a9dc05740d181778cd056c2250cb2ae4204f7c7f255761eff859d52235adb2b3912a7a
+
+pkgname = ruby-strptime
+
