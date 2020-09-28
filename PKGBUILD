@@ -26,12 +26,15 @@ check() {
   export PYTHONUSERBASE="$tmpdir"
 
   # Install all tests projects
-  pip install --user -e . || exit 1
-  pip install --user -e tests/functional/subcommands/example_project || exit 1
-  pip install --user -e tests/functional/registration/projects/types_dsl || exit 1
-  pip install --user -e tests/functional/registration/projects/data_dsl || exit 1
-  pip install --user -e tests/functional/registration/projects/flow_dsl || exit 1
-  pip install --user -e tests/functional/registration/projects/flow_codegen || exit 1
+  prjs=(.
+        tests/functional/subcommands/example_project
+        tests/functional/registration/projects/types_dsl
+        tests/functional/registration/projects/data_dsl
+        tests/functional/registration/projects/flow_dsl
+        tests/functional/registration/projects/flow_codegen)
+  for prj in "${prjs[@]}"; do
+    pip install --user -e "$prj" || exit 1
+  done
 
   # Run all tests
   PATH="$tmpdir/bin:$PATH" pytest --ignore tests/perf
