@@ -16,7 +16,7 @@ pkgbase = pantheon-workarounds
 	depends = xdg-user-dirs-gtk
 	depends = pantheon-applications-menu
 	depends = plank
-	depends = libwingpanel-2.0=0-64
+	depends = libwingpanel-2.0.so=0-64
 	optdepends = contractor: A desktop-wide extension service
 	optdepends = dconf-editor: GUI gsettings editor
 	optdepends = elementary-blue-icon-theme-git: Restore blue folder icons to elementary theme
