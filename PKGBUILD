@@ -11,7 +11,7 @@ pkgname=(
 	'xorg-server-common-rootless-nosystemd-minimal-git'
 	'xorg-server-devel-rootless-nosystemd-minimal-git')
 
-pkgver=1.20.99
+pkgver=1.20.999
 pkgrel=1
 url="http://xorg.freedesktop.org"
 source=("git+https://gitlab.freedesktop.org/xorg/xserver.git"
@@ -49,6 +49,9 @@ makedepends=(
 #	'wayland-protocols'
 #	'egl-wayland'
 	'meson')
+
+optdepends=('wayland-protocols: xwayland support'
+	    'egl-wayland: xwayland support')
 
 pkgver() {
   cd xserver

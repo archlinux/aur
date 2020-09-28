@@ -1,5 +1,5 @@
 pkgbase = xorg-server-rootless-nosystemd-minimal-git
-	pkgver = 1.20.99
+	pkgver = 1.20.999
 	pkgrel = 1
 	url = http://xorg.freedesktop.org
 	arch = x86_64
@@ -32,6 +32,8 @@ pkgbase = xorg-server-rootless-nosystemd-minimal-git
 	makedepends = xcb-util-keysyms
 	makedepends = libxshmfence
 	makedepends = meson
+	optdepends = wayland-protocols: xwayland support
+	optdepends = egl-wayland: xwayland support
 	source = git+https://gitlab.freedesktop.org/xorg/xserver.git
 	source = xvfb-run
 	source = xvfb-run.1
