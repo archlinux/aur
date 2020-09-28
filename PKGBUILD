@@ -1,7 +1,7 @@
 # Maintainer: Michael William Le Nguyen <michael at mail dot ttp dot codes>
 # Maintainer: Buildpacks Maintainers <cncf-buildpacks-maintainers at lists dot cncf dot io>
 pkgname=pack-cli-git
-pkgver=0.13.1+r130.g501c5aec
+pkgver=0.13.1+r134.ge61ccdf9
 pkgrel=1
 pkgdesc="CLI for building apps using Cloud Native Buildpacks"
 arch=('x86_64')
