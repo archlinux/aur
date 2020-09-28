@@ -1,6 +1,6 @@
 pkgbase = kde1-kdeutils-git
 	pkgdesc = Historical copy of the utils module of KDE 1, adapted to compile on modern systems
-	pkgver = 1.1.2r1692.9f1cc03
+	pkgver = 1.1.2r1703.ba7b51d
 	pkgrel = 1
 	url = https://quickgit.kde.org/?p=kde1-kdeutils.git
 	arch = i686
