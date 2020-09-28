@@ -1,35 +1,41 @@
 #
 # Touchégg : Multitouch gesture recogniser
 #
-# Maintainer: Guillaume Turchini <guillaume.turchini@gmail.com>"
+# Original Maintainer: Guillaume Turchini <guillaume.turchini@gmail.com>"
 
 _pkgname=touchegg
 pkgname=${_pkgname}-git
-pkgver=r196.6bccd0d
+pkgver=r322.a82d299
 pkgrel=1
-pkgdesc='Multitouch gesture recogniser'
-arch=('i686' 'x86_64')
+pkgdesc='Linux multi-touch gesture recognizer'
+arch=('x86_64')
 url='https://github.com/JoseExposito/touchegg'
-license=('GPL')
-source=("${_pkgname}::git+https://github.com/JoseExposito/touchegg")
-depends=('qt4' 'geis')
-makedepends=('git')
-md5sums=('SKIP')
+license=('GPL3')
+source=("${_pkgname}::git://github.com/JoseExposito/touchegg.git" 'filesystem.h')
+depends=('libinput' 'cairo' 'systemd-libs' 'libx11' 'libxrandr' 'libxtst' 'pugixml')
+makedepends=('git' 'cmake')
+sha256sums=('SKIP' 'f58961b18b2d7b1ddf60d6784860e7c84588d991e72d7595e50267209506fb85')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 
 pkgver() {
-  cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $srcdir/${_pkgname}/
-  qmake-qt4
-  make
+    cp "$srcdir/filesystem.h" "$srcdir/${_pkgname}/src/utils/filesystem.h"
+    cd "$srcdir/${_pkgname}"
+    mkdir build
+    cd build
+    cmake -DCMAKE_BUILD_TYPE=Release ..
+    make -j$(nproc)
 }
 
 package() {
-  cd $srcdir/${_pkgname}/
-  INSTALL_ROOT="$pkgdir" make install
+    #cd "$srcdir/${_pkgname}/build"
+    #DESTDIR="$pkgdir" make install
+    install -D       "$srcdir/${_pkgname}/build/touchegg"                     "$pkgdir/usr/bin/touchegg"
+    install -Dm 0644 "$srcdir/${_pkgname}/installation/touchegg.conf"         "$pkgdir/usr/share/touchegg/touchegg.conf"
+    install -Dm 0644 "$srcdir/${_pkgname}/installation/touchegg.service"      "$pkgdir/usr/lib/systemd/system/touchegg.service"
 }
