@@ -5,6 +5,7 @@ pkgbase = python-ufolib2
 	url = https://github.com/fonttols/ufoLib2
 	arch = any
 	license = Apache
+	checkdepends = python-fs
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python
