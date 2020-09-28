@@ -1,6 +1,6 @@
 pkgname=ignition-msgs-1
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Standard set of message definitions, used by Ignition Transport, and other applications."
 arch=('i686' 'x86_64')
 url="https://ignitionrobotics.org/libs/msgs"
@@ -11,10 +11,10 @@ makedepends=('ignition-cmake=0' 'ruby-ronn' 'doxygen')
 optdepends=()
 provides=('ignition-msgs=1')
 _name="ignition-msgs"
-source=("https://bitbucket.org/osrf-migrated/ign-msgs/get/${_name}_${pkgver}.tar.bz2")
-sha256sums=('3f20453cc3fedeb414684bd0ed5ee042c30d19aa01cc9a4aad5685a1c6ded35d')
+source=("https://github.com/ignitionrobotics/ign-msgs/archive/ignition-msgs_${pkgver}.tar.gz")
+sha256sums=('4327e47c1ed01fc635b1a1bad0e86b78cdfd401540eb3d0f94e98be161a753ee')
 
-_dir="osrf-migrated-ign-msgs-9ba6a3e1c418"
+_dir="ign-msgs-ignition-msgs_${pkgver}"
 
 build() {
   cd "${srcdir}/${_dir}"
