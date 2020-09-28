@@ -1,5 +1,5 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
-
+# pkg: pypi trakt-scrobbler
 pkgname=trakt-scrobbler
 pkgver=1.0.0
 pkgrel=1
@@ -27,10 +27,7 @@ build() {
     python setup.py build
     go-md2man -in "$srcdir/trakts-man.md" 2>/dev/null|gzip -n > trakts.1.gz
 }
-pkgver()
-{
-    curl -s https://pypi.org/pypi/$pkgname/json|jq -r '.info.version'
-}
+
 package()
 {
     cd "$srcdir/$pkgname-$pkgver"
