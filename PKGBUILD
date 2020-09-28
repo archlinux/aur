@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=jdtls
-pkgver=0.59.0
+pkgver=0.61.0
 pkgrel=1
 pkgdesc="Eclipse Java language server"
 arch=(any)
@@ -9,9 +9,9 @@ url="https://github.com/eclipse/eclipse.jdt.ls"
 license=('EPL')
 depends=('java-runtime')
 makedepends=()
-source=("https://download.eclipse.org/jdtls/milestones/0.59.0/jdt-language-server-0.59.0-202007221016.tar.gz"
+source=("https://download.eclipse.org/jdtls/milestones/0.61.0/jdt-language-server-0.61.0-202009152130.tar.gz"
         "launcher.sh")
-sha256sums=('a3a7999032114673bd2212d929a74c56b22fece0fb7e7410bd82f3e17443a295'
+sha256sums=('75636553e463ba848b8a67377abbcf76f480d4e7d9b21195ccad8de4309e0b3d'
             '813801c237676764f6fb005df3ccaaee33c7cc0ab54fc1c73ef3cf4cee5a65de')
 
 package() {
