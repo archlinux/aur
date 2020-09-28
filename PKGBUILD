@@ -23,7 +23,7 @@ source=("https://free-astro.org/download/siril-${pkgver}.tar.bz2")
 sha1sums=('7a2689c6843e9c4bf97f225bb91a27600f543f79')
 
 build() {
-  ./autogen.sh --prefix=/usr
+  CFLAGS='-fcommon' ./autogen.sh --prefix=/usr
   make
 }
 
