@@ -1,19 +1,27 @@
-# Oops, lapse of mind and I created a package for something that's already in
-# extra. Leaving it as merely depending on the actual package, AUR maintainers
-# feel free to wipe it.
-
+# Maintainer: Jared Monger <info@jaredmonger.com>
 pkgname=exiftool
-pkgver=10.36
-pkgrel=3
-pkgdesc="Read, write and edit meta information in a wide variety of images."
-arch=('any')
-url="http://www.sno.phy.queensu.ca/~phil/exiftool/"
-license=('GPL-1.0' 'Artistic-1.0-Perl')
-depends=('perl-image-exiftool')
-source=('tool::https://www.archlinux.org/packages/extra/any/perl-image-exiftool/')
-sha512sums=('SKIP')
-noextract=('tool')
+_srcname=Image-ExifTool
+pkgver=12.06
+pkgrel=1
+pkgdesc="Meta information reader/writer"
+arch=('x86_64')
+url="https://www.exiftool.org"
+license=('PerlArtistic')
+depends=('perl' 'sudo')
+source=("${pkgname}-${pkgver}.tar.gz::https://exiftool.org/${_srcname}-${pkgver}.tar.gz")
+sha1sums=('40217757c8f21733073f55fb58b520588fe28fee')
+
+build() {
+  cd "${_srcname}-${pkgver}"
+  perl Makefile.PL
+}
+
+check() {
+  cd "${_srcname}-${pkgver}"
+  make test
+}
 
 package() {
-  echo "The package you're looking for is perl-image-exiftool! Uninstall this one."
+  cd "${_srcname}-${pkgver}"
+  make DESTDIR="$pkgdir/" install
 }
