@@ -1,5 +1,5 @@
 pkgbase = xorg-server-rootless-nosystemd-minimal-git
-	pkgver = 1.20.9
+	pkgver = 1.20.99
 	pkgrel = 1
 	url = http://xorg.freedesktop.org
 	arch = x86_64

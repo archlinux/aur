@@ -11,7 +11,7 @@ pkgname=(
 	'xorg-server-common-rootless-nosystemd-minimal-git'
 	'xorg-server-devel-rootless-nosystemd-minimal-git')
 
-pkgver=1.20.9
+pkgver=1.20.99
 pkgrel=1
 url="http://xorg.freedesktop.org"
 source=("git+https://gitlab.freedesktop.org/xorg/xserver.git"
