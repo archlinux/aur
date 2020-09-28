@@ -3,7 +3,7 @@
 # Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
@@ -36,7 +36,7 @@ optdepends=(
     'libnotify: for optional Notifier'
     'yad: for the optional Settings Menu'
     'zenity: optional for the Editor Dialog'
-    'xrandr: optional for automatic resolution detection'
+    'xorg-xrandr: optional for automatic resolution detection'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
