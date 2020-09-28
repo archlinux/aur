@@ -2,7 +2,7 @@
 
 _module=toys
 pkgname=kde1-kde${_module}-git
-pkgver=1.1.2r204.2fdce62
+pkgver=1.1.2r207.66a0fb3
 pkgrel=1
 pkgdesc="Historical copy of the $_module module of KDE 1, adapted to compile on modern systems"
 arch=(i686 x86_64)
@@ -15,8 +15,8 @@ provides=(kde1-kde${_module})
 conflicts=(kde1-kde${_module})
 
 # Mirror
-source=("git+https://github.com/KDE/kde1-kde${_module}.git")
-#source=("git+https://anongit.kde.org/kde1-kde${_module}.git")
+#source=("git+https://github.com/KDE/kde1-kde${_module}.git")
+source=("git+https://anongit.kde.org/kde1-kde${_module}.git")
 
 md5sums=('SKIP')
 
