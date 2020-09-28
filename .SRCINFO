@@ -6,13 +6,12 @@ pkgbase = lua-pc
 	arch = i686
 	arch = x86_64
 	license = MIT/X11
-	makedepends = git
 	makedepends = lua
 	makedepends = lua51
 	makedepends = lua52
 	makedepends = lua53
-	source = git+https://github.com/fabled/lpc.git
-	md5sums = SKIP
+	source = https://github.com/fabled/lpc/archive/1.0.0.zip
+	md5sums = 9b3b26a88599e37857b54c8e3dea19e3
 
 pkgname = lua-pc
 	pkgdesc = Lua Process Call (lpc) for Lua 5.4

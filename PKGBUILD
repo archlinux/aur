@@ -9,9 +9,9 @@ pkgdesc="Lua Process Call (lpc)"
 license=('MIT/X11')
 arch=('i686' 'x86_64')
 url="https://github.com/fabled/lpc"
-makedepends=('git' 'lua' 'lua51' 'lua52' 'lua53')
-source=( git+https://github.com/fabled/lpc.git )
-md5sums=('SKIP')
+makedepends=('lua' 'lua51' 'lua52' 'lua53')
+source=( https://github.com/fabled/lpc/archive/$pkgver.zip )
+md5sums=('9b3b26a88599e37857b54c8e3dea19e3')
 
 build() {
     mkdir -p 5.1 5.2 5.3 5.4
