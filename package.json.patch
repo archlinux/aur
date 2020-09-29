@@ -1,5 +1,5 @@
---- package.json	2020-03-10 19:42:23.103515416 -0700
-+++ package.json.new	2020-03-10 19:43:05.616838093 -0700
+--- package.json.orig	2020-09-29 11:47:07.696435033 -0700
++++ package.json.new	2020-09-29 11:47:30.039767842 -0700
 @@ -22,7 +22,7 @@
      "sub:update": "git submodule update --remote",
      "sub:pull": "git submodule foreach git pull origin master",

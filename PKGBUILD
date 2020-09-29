@@ -2,9 +2,9 @@
 # Contributor: Milo Gilad <myl0gcontact@gmail.com>
 
 pkgname=bitwarden
-pkgver=1.22.1
-pkgrel=2
-_jslibcommit='5e0a2d1d998b5d36b093f3eff032453421680a41'
+pkgver=1.22.2
+pkgrel=1
+_jslibcommit='f30d6f8027055507abfdefd1eeb5d9aab25cc601'
 _nodeversion='10.20.1'
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64')
@@ -19,9 +19,9 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/desktop/archi
         "package.json.patch"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha512sums=('de62f511ea6691877cd1571ed6e90a3808ee2ae575d8d3b81d78e2ff384d53ecbde729c4a873b06bee596ccf849784c9f8ed2fe9ce34b2c66cce818cf6ae63b8'
-            'd63dd8717d092b1bae9cf0e22fd6c2670d511dfd94e55b029ab3aab737e13a02f75d98977d96ac0cb42083cd77e275791e145cb165a70dac10f4e78f00a6179d'
-            'b6b4b52ab3ab8e4ae726bbfad0027a0de0978bbf427bfe7582561114ad421f6778d83661423fac712f920cfac18d4045961591e00df3587fbf95942fa70ee50b'
+sha512sums=('14e1131deb77aabe0a1c4f04b4449c72d825cda7913d5818a71b0ea3df614fbd45b0481b490e2c06348cd1eb224e12656e9ef6dd7367bc931a2b2c7c406d1268'
+            '1801f91af9a52f0d1364137c40bc2382cc4b683206b73c6effc26ad81c547341b156713617f7c692402b77b8861cfb60ef6b2c3385d5f31a006ac4d53e6e0389'
+            'cbe6dff699de7a274b7c5ab1dd25a348443dd3dc50eb8b2290c8c300b6b3a560271aef773b2cd55d25ccaa1527ed25d5626310f6da342f2893d2f63212bd2814'
             '724b548688e2af1d8d25e6ebe6e35831e891453f2df011e5fa757b57fcbcfef3c171510be4537652891441c65121bd9766f372f82d3edd5971fb77b726409575'
             '05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd')
 
@@ -49,13 +49,14 @@ build() {
   source /usr/share/nvm/init-nvm.sh
   nvm install ${_nodeversion} && nvm use ${_nodeversion}
 
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   cd "${srcdir}/desktop-${pkgver}/jslib"
   npm install
   cd "${srcdir}/desktop-${pkgver}"
   npm install
   npm run build
   npm run clean:dist
-  npx electron-builder --dir build
+  npx electron-builder build --dir
 
   # Restore node config from nvm
   npm config set prefix "${npm_prefix}"
