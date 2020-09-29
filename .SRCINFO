@@ -2,6 +2,7 @@ pkgbase = kmonad-git
 	pkgdesc = An advanced keyboard manager
 	pkgver = 0.4.0.r37.9a2a8a8
 	pkgrel = 1
+	url = https://github.com/david-janssen/kmonad
 	arch = any
 	license = MIT
 	makedepends = git

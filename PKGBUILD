@@ -4,19 +4,14 @@ pkgver=0.4.0.r37.9a2a8a8
 pkgrel=1
 pkgdesc="An advanced keyboard manager"
 arch=('any')
-url=""
+url="https://github.com/david-janssen/kmonad"
 license=('MIT')
 groups=()
 depends=()
 makedepends=('git' 'stack') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
 source=("git+https://github.com/david-janssen/kmonad")
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {
