@@ -1,6 +1,6 @@
 pkgbase = bitwarden-cli
 	pkgdesc = The command line vault (Windows, macOS, & Linux). bitwarden.com
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://github.com/bitwarden/cli
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = bitwarden-cli
 	depends = nodejs
 	conflicts = bitwarden-cli-git
 	options = !strip
-	source = bitwarden-cli-1.12.0.tar.gz::https://github.com/bitwarden/cli/archive/v1.12.0.tar.gz
-	source = jslib-5e0a2d1d998b5d36b093f3eff032453421680a41.tar.gz::https://github.com/bitwarden/jslib/archive/5e0a2d1d998b5d36b093f3eff032453421680a41.tar.gz
-	sha512sums = ca7c8cbdbd59fa5ab974a43f1aa7f41d35865272b5b878eb48d316469b2fba3ac13e4ce8b341d0c0621bb61e2634cf68b7072e6c7df0bbfed2db7f51997a99e2
-	sha512sums = d63dd8717d092b1bae9cf0e22fd6c2670d511dfd94e55b029ab3aab737e13a02f75d98977d96ac0cb42083cd77e275791e145cb165a70dac10f4e78f00a6179d
+	source = bitwarden-cli-1.12.1.tar.gz::https://github.com/bitwarden/cli/archive/v1.12.1.tar.gz
+	source = jslib-f30d6f8027055507abfdefd1eeb5d9aab25cc601.tar.gz::https://github.com/bitwarden/jslib/archive/f30d6f8027055507abfdefd1eeb5d9aab25cc601.tar.gz
+	sha512sums = 51788d5c2ac3184cf203df2404e6447bc4a1141a330a4fd908278a159e29817c66902a4b8119aaada83e87de4d456478840ef0f61961609eb51e79c882b5dd3a
+	sha512sums = 1801f91af9a52f0d1364137c40bc2382cc4b683206b73c6effc26ad81c547341b156713617f7c692402b77b8861cfb60ef6b2c3385d5f31a006ac4d53e6e0389
 
 pkgname = bitwarden-cli
 
