@@ -1,5 +1,5 @@
 pkgbase = tidal-dl-git
-	pkgdesc = Tidal Music Download
+	pkgdesc = Download videos and tracks from Tidal.
 	pkgver = 1.1.1.0.r35.g51fbf37
 	pkgrel = 1
 	url = https://github.com/yaronzz/Tidal-Media-Downloader
