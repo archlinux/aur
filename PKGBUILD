@@ -4,7 +4,7 @@
 pkgname=octave-hg
 epoch=5
 pkgrel=1
-pkgver=7.0.0.r28774.d2ad5e0e5aca
+pkgver=7.0.0.r28820.52744f8127d7
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -49,7 +49,7 @@ prepare () {
 
 build() {
   cd ${_hgrepo}
-  export TEXINFO_XS_PARSER=0
+#  export TEXINFO_XS_PARSER=0
   ./bootstrap --gnulib-srcdir="$srcdir"/gnulib
   [[ -d build ]] && rm -rf build
   mkdir build
