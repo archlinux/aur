@@ -1,7 +1,7 @@
 # Maintainer: Haruyuki lxz <lxz@ilxz.me>
 
 pkgname=dtkwidget-git
-pkgver=5.2.2.15.r4.gb809bebb
+pkgver=5.2.2.16.r4.g40f4c7e5
 pkgrel=1
 pkgdesc='Deepin graphical user interface library'
 arch=('x86_64')
@@ -10,9 +10,8 @@ license=('LGPL3')
 depends=('deepin-qt-dbus-factory-git' 'dtkcore-git' 'dtkgui-git' 'librsvg' 'qt5-multimedia' 'qt5-svg'
          'qt5-x11extras' 'startup-notification')
 makedepends=('git' 'qt5-tools')
-replaces=('dtkwidget')
-conflicts=('dtkwidget')
 provides=('dtkwidget')
+conflicts=('dtkwidget')
 groups=('deepin-git')
 source=("$pkgname::git://github.com/linuxdeepin/dtkwidget.git")
 sha512sums=('SKIP')
@@ -30,7 +29,7 @@ prepare() {
 build() {
   cd $pkgname
   qmake-qt5 PREFIX=/usr
-  make -j$(nproc)
+  make
 }
 
 package() {
