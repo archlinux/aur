@@ -9,6 +9,7 @@ pkgbase = telegram-tdlib-purple-minimal-git
 	makedepends = git
 	depends = libpurple-minimal
 	depends = telegram-tdlib
+	conflicts = telegram-tdlib-purple-git
 	source = telegram-tdlib-purple-minimal-git::git+https://github.com/ars3niy/tdlib-purple
 	sha256sums = SKIP
 

@@ -9,6 +9,7 @@ url='https://github.com/ars3niy/tdlib-purple'
 license=(GPL2)
 depends=(libpurple-minimal telegram-tdlib)
 makedepends=(cmake git)
+conflicts=(telegram-tdlib-purple-git)
 source=($pkgname::git+"$url")
 sha256sums=(SKIP)
 
