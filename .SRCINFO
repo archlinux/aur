@@ -1,16 +1,13 @@
 pkgbase = simplest-studio
 	pkgdesc = Simplest Studio 2020 SE
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/SimplestStudio/simplest-studio.git
 	arch = x86_64
 	license = GPL
 	depends = ffmpeg>=4.2
 	depends = mediainfo>=20.03
-	depends = python>=3.6
-	depends = python-pyqt5
-	depends = python-pymediainfo
-	source = https://github.com/SimplestStudio/simplest-studio/archive/1.0.tar.gz
+	source = https://github.com/SimplestStudio/simplest-studio/archive/1.1.tar.gz
 	md5sums = SKIP
 
 pkgname = simplest-studio
