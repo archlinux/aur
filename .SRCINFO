@@ -1,0 +1,23 @@
+pkgbase = python-google-images-search
+	pkgdesc = Search for image using Google Custom Search API and resize & crop the image afterwords
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://github.com/arrrlo/Google-Images-Search
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-colorama
+	depends = python-pyfiglet
+	depends = python-termcolor
+	depends = python-click
+	depends = python-six
+	depends = python-requests
+	depends = python-pillow
+	depends = python-resize-image
+	depends = python-google-api-python-client
+	source = https://github.com/arrrlo/Google-Images-Search/archive/1.3.3.tar.gz
+	sha256sums = b658f191446471d4513b76fff152e7e4ae4f9a89bba4cee4c470f3081f896652
+
+pkgname = python-google-images-search
+
