@@ -1,0 +1,19 @@
+pkgbase = streampi-server
+	pkgdesc = An Opensource Alternative to the Elgato Stream Deck for the Raspberry Pi
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://stream-pi.com
+	arch = x86_64
+	license = MIT
+	depends = java-runtime>=11
+	depends = ttf-roboto
+	depends = libnet
+	depends = gtk3
+	depends = gtk2
+	source = streampi-server-0.0.6.zip::https://github.com/dubbadhar/streampi_server/releases/download/0.0.6/linux64.zip
+	source = LICENSE::https://github.com/dubbadhar/streampi_server/raw/master/LICENSE
+	sha256sums = 9b171b41a4060430f3251856f6024e2b4cba328c829fe864dc908cbcf380a17c
+	sha256sums = 9cf04e2ea376310dc9957385a2151dad13150abbba0f01084f5b0324307519ae
+
+pkgname = streampi-server
+
