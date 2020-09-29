@@ -31,7 +31,7 @@ pkgbase = libdnf_fixed
 	provides = hawkey
 	conflicts = hawkey
 	replaces = hawkey
-	source = https://github.com/kokkiemouse/libdnf/archive/0.48.0/libdnf_fixed-0.48.0.tar.gz
+	source = https://github.com/kokkiemouse/libdnf/archive/0.48.0/libdnf-0.48.0.tar.gz
 	md5sums = e34706b8bf2bed4c6bc42dbb737837fe
 
 pkgname = libdnf_fixed

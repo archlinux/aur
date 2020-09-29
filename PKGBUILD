@@ -14,7 +14,7 @@ optdepends=('python: for python bindings')
 provides=( 'hawkey')
 conflicts=('hawkey')
 replaces=( 'hawkey')
-source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("$url/archive/$pkgver/libdnf-$pkgver.tar.gz")
 md5sums=('e34706b8bf2bed4c6bc42dbb737837fe')
 
 prepare() {
