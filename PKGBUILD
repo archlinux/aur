@@ -180,11 +180,13 @@ package() {
 
   # Symlink executables'
   install -d -m755 "${pkgdir}/usr/bin/"
-  for _executable in deploytool matlab mbuild mcc; do
+  for _executable in deploytool matlab mbuild; do
     ln -s "${instdir}/bin/${_executable}" "${pkgdir}/usr/bin/${_executable}"
   done
   # This would otherwise conflict with mixtex
   ln -s "${instdir}/bin/mex" "${pkgdir}/usr/bin/mex-${pkgname}"
+  # This would otherwise conflict with mathematica
+  ln -s "${instdir}/bin/mcc" "${pkgdir}/usr/bin/mcc-${pkgname}"
   # Why is this in this directory, I wonder...
   ln -s "${instdir}/bin/glnxa64/mlint" "${pkgdir}/usr/bin/mlint"
 
