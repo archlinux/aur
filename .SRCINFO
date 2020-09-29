@@ -6,6 +6,7 @@ pkgbase = workcraft
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = gendesk
 	depends = java-runtime
 	optdepends = graphviz: Graph manipulation,
 	optdepends = stack: Concepts support

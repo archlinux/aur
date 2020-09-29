@@ -10,18 +10,17 @@ depends=('java-runtime')
 optdepends=(
   'graphviz: Graph manipulation',
   'stack: Concepts support')
+makedepends=('gendesk')
 provides=('workcraft')
 conflicts=('workcraft')
 source=(http://www.workcraft.org/_media/download/workcraft-v${pkgver}-linux.tar.gz)
 prepare() {
-  cd "$srcdir"/"$pkgname"
-  sed -i 's|^cd "\$(dirname "\$0")"$|cd \$(dirname "\$(readlink -f \$0)")|' workcraft
+  gendesk -f -n --name='Workcraft' --pkgname "$pkgname" --pkgdesc "$pkgdesc"
 }
 package() {
-  cd "$srcdir"/"$pkgname"
-  mkdir -p "$pkgdir"/usr/bin
-  mkdir -p "$pkgdir"/opt/workcraft
-  cp -RP ./* "$pkgdir"/opt/workcraft/
+  mkdir -p "$pkgdir"/opt "$pkgdir"/usr/bin
+  mv "$srcdir/$pkgname" "$pkgdir"/opt/"$pkgname"
   ln -s /opt/workcraft/workcraft "$pkgdir"/usr/bin/workcraft
+  install -Dm644 "$pkgname".desktop "$pkgdir"/usr/share/applications/"$pkgname".desktop
 }
 md5sums=('cb4f9efc85e60e7e97164418c511e7a6')
