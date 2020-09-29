@@ -1,6 +1,6 @@
 pkgbase = golang-github-linuxdeepin-go-x11-client-git
 	pkgdesc = X11 protocol go language binding
-	pkgver = 0.6.1.r1.gfe50ee5
+	pkgver = 0.6.2.r0.gfe50ee5
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/go-x11-client
 	arch = any
@@ -12,16 +12,14 @@ pkgbase = golang-github-linuxdeepin-go-x11-client-git
 	checkdepends = golang-gopkg-yaml.v2
 	checkdepends = git
 	makedepends = git
+	makedepends = go
 	makedepends = xorg-server-xvfb
 	makedepends = golang-github-stretchr-testify
 	makedepends = golang-gopkg-check.v1
 	makedepends = golang-gopkg-yaml.v2
-	depends = go
-	depends = golang-deepin-lib-git
 	depends = golang-golang-x-text
 	provides = golang-github-linuxdeepin-go-x11-client
 	conflicts = golang-github-linuxdeepin-go-x11-client
-	replaces = golang-github-linuxdeepin-go-x11-client
 	source = golang-github-linuxdeepin-go-x11-client-git::git://github.com/linuxdeepin/go-x11-client
 	sha512sums = SKIP
 
