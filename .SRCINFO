@@ -1,0 +1,18 @@
+pkgbase = mpz-git
+	pkgdesc = Music player for the large local collections
+	pkgver = 0.0.14.r21.gfd49b2f
+	pkgrel = 1
+	url = https://github.com/olegantonyan/mpz
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = qt5-multimedia
+	depends = qt5-x11extras
+	depends = hicolor-icon-theme
+	provides = mpz
+	conflicts = mpz
+	source = git+https://github.com/olegantonyan/mpz.git
+	sha256sums = SKIP
+
+pkgname = mpz-git
+
