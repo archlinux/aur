@@ -1,6 +1,6 @@
 # Maintainer: Vasia Novikov <n1dr+cmarchlinux@yaaandex.com> (replace "aaa" with "a")
 pkgname=rua
-pkgver=0.17.12
+pkgver=0.17.13
 pkgrel=1
 pkgdesc='AUR helper in Rust providing control, review, patch application and safe build options'
 url='https://github.com/vn971/rua'
@@ -18,7 +18,7 @@ optdepends=(
 
 #options+=(!strip)  # uncomment if you want readable stack traces
 
-sha256sums=(f98cd563b5b90463e2f72b2915bfc4f9da79825d6ccd0cf16e62aa9a7fa6a6d3)
+sha256sums=(c640d89282f217047fa7610daf488e6ed7bf65bd0425eb0e91d40c53f278ee9b)
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
