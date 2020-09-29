@@ -1,32 +1,30 @@
-# Maintainer: anon at sansorgan.es 
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
-# Contributor: Balló György <ballogyor+arch at gmail dot com>
-# Contributor: Bartłomiej Piotrowski
-# Contributor: Brad Fanella <bradfanella@archlinux.us>
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Tomas A. Schertel <tschertel@gmail.com>
+# Maintainer: anon at sansorgan.es 
 
 pkgname=cherrytree
-pkgver=0.39.4
+pkgver=0.99.13
 pkgrel=1
-pkgdesc="Hierarchical note taking application featuring rich text and syntax highlighting"
-arch=('any')
+pkgdesc="Hierarchical note-taking application"
+arch=('x86_64')
 url="https://www.giuspen.com/cherrytree/"
 license=('GPL3')
-depends=('python2-gtksourceview2' 
-	 'python2-dbus')
-optdepends=('python2-pyenchant: for spell checking support'
-            'p7zip: for password protection support'
-	    'enchant-hspell: spell checking')
-source=(https://www.giuspen.com/software/$pkgname-$pkgver.tar.xz)
-sha256sums=('6db3d17c49dfd3c7d83ad2cc8b8be28350497566acfe827e6f178538669b4f76')
+depends=('gspell'
+	 'gtksourceviewmm'
+	 'libxml++2.6')
+makedepends=('cmake'
+	     'python-lxml')
+source=("https://www.giuspen.com/software/${pkgname}_${pkgver}.tar.xz")
+sha256sums=('716e627777c46b5b9b41ede082fb27f3466905021fd95c661cd00365274b7d7e')
 
 build() {
-  cd "$pkgname-$pkgver"
-  python2 setup.py build
+  cmake \
+	-B "${pkgname}_${pkgver}/build" \
+	-S "${pkgname}_${pkgver}" \
+	-DBUILD_TESTING:BOOL=OFF \
+	-Wno-dev
+  make -C "${pkgname}_${pkgver}/build"
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  make -C "${pkgname}_${pkgver}/build" DESTDIR="${pkgdir}" install
 }

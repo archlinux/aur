@@ -1,17 +1,17 @@
 pkgbase = cherrytree
-	pkgdesc = Hierarchical note taking application featuring rich text and syntax highlighting
-	pkgver = 0.39.4
+	pkgdesc = Hierarchical note-taking application
+	pkgver = 0.99.13
 	pkgrel = 1
 	url = https://www.giuspen.com/cherrytree/
-	arch = any
+	arch = x86_64
 	license = GPL3
-	depends = python2-gtksourceview2
-	depends = python2-dbus
-	optdepends = python2-pyenchant: for spell checking support
-	optdepends = p7zip: for password protection support
-	optdepends = enchant-hspell: spell checking
-	source = https://www.giuspen.com/software/cherrytree-0.39.4.tar.xz
-	sha256sums = 6db3d17c49dfd3c7d83ad2cc8b8be28350497566acfe827e6f178538669b4f76
+	makedepends = cmake
+	makedepends = python-lxml
+	depends = gspell
+	depends = gtksourceviewmm
+	depends = libxml++2.6
+	source = https://www.giuspen.com/software/cherrytree_0.99.13.tar.xz
+	sha256sums = 716e627777c46b5b9b41ede082fb27f3466905021fd95c661cd00365274b7d7e
 
 pkgname = cherrytree
 
