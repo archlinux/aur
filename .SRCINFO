@@ -7,7 +7,7 @@ pkgbase = gmedit-bin
 	license = MIT
 	makedepends = gendesk
 	conflicts = gmeedit
-	source_x86_64 = gmedit-editor-linux.zip::https://cdn.crankysupertoon.live/dist/gmedit-editor-linux.zip
+	source_x86_64 = gmedit-editor-5.6.20.zip::https://cdn.crankysupertoon.live/dist/gmedit-editor-linux.zip
 	md5sums_x86_64 = SKIP
 
 pkgname = gmedit-bin

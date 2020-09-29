@@ -11,7 +11,7 @@ makedepends=('gendesk')
 conflicts=('gmeedit')
 source_x86_64=(
     # Official File is here (https://yellowafterlife.itch.io/gmedit) but does not support direct download links. So im mirroring it
-    "gmedit-editor-linux.zip::https://cdn.crankysupertoon.live/dist/gmedit-editor-linux.zip"
+    "gmedit-editor-${pkgver}.zip::https://cdn.crankysupertoon.live/dist/gmedit-editor-linux.zip"
 )
 
 md5sums_x86_64=('SKIP')
