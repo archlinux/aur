@@ -2,7 +2,7 @@
 
 pkgname=python-pygls
 _name=${pkgname#python-}
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Pythonic generic implementation of the Language Server Protocol"
 arch=('any')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=("0be0dce93745cba445b7a2568910ca7e45a3865347f01860eff9ed3e37e64e7b")
+sha256sums=("c21c942415457315f316c0b6c19d4c743fd2974d457e02a85472154c8f1b6399")
 
 build() {
 	cd "$_name-$pkgver"
