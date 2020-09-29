@@ -4,7 +4,7 @@
 _pkgname=themix-theme-materia
 _reponame=materia-theme
 pkgname="${_pkgname}-git"
-pkgver=20200320.r36.gec7ec240
+pkgver=20200916.r2.ge329aaee
 pkgrel=1
 pkgdesc="Materia theme plugin
  (GTK2, GTK3, Cinnamon, GNOME, Metacity, Unity, Xfwm) for Themix GUI designer.
@@ -29,13 +29,12 @@ depends=(
 	'sed'
 	'findutils'
 	'grep'
-	'bc'
 	'parallel'
 	'optipng'
 
-	'resvg'
+	'inkscape'
 	## or
-	#'inkscape'
+	#'resvg'
 )
 makedepends=(
        'git'
