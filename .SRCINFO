@@ -1,7 +1,7 @@
 pkgbase = lib32-pipewire
 	pkgdesc = Server and user space API to deal with multimedia pipelines (32-bit client libraries)
-	pkgver = 0.3.11
-	pkgrel = 2
+	pkgver = 0.3.13
+	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
 	license = LGPL2.1
@@ -20,7 +20,7 @@ pkgbase = lib32-pipewire
 	makedepends = lib32-libsndfile
 	makedepends = lib32-bluez-libs
 	makedepends = vulkan-headers
-	source = git+https://github.com/PipeWire/pipewire#commit=b0c758719dfd661d9d2237e780f93d56ea181669
+	source = git+https://github.com/PipeWire/pipewire#commit=d7714f734dcf2a346f939e11e1e3f6a2373c8632
 	sha256sums = SKIP
 
 pkgname = lib32-pipewire
@@ -41,11 +41,11 @@ pkgname = lib32-pipewire
 
 pkgname = lib32-pipewire-jack
 	pkgdesc = Server and user space API to deal with multimedia pipelines (32-bit client libraries) (JACK support)
-	depends = lib32-pipewire=0.3.11
+	depends = lib32-pipewire=0.3.13
 	depends = lib32-jack2
 
 pkgname = lib32-pipewire-pulse
 	pkgdesc = Server and user space API to deal with multimedia pipelines (32-bit client libraries) (PulseAudio support)
-	depends = lib32-pipewire=0.3.11
+	depends = lib32-pipewire=0.3.13
 	depends = lib32-glib2
 

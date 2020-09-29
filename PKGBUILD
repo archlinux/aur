@@ -4,8 +4,8 @@
 
 pkgbase=lib32-pipewire
 pkgname=(lib32-pipewire lib32-pipewire-jack lib32-pipewire-pulse)
-pkgver=0.3.11
-pkgrel=2
+pkgver=0.3.13
+pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines (32-bit client libraries)"
 url="https://pipewire.org"
 license=(LGPL2.1)
@@ -14,7 +14,7 @@ makedepends=(git meson valgrind lib32-jack2 lib32-libpulse lib32-alsa-lib
              lib32-gstreamer lib32-gst-plugins-base lib32-sbc rtkit
              lib32-vulkan-icd-loader dbus lib32-libsndfile lib32-bluez-libs
              vulkan-headers)
-_commit=b0c758719dfd661d9d2237e780f93d56ea181669  # tags/0.3.11
+_commit=d7714f734dcf2a346f939e11e1e3f6a2373c8632  # tags/0.3.13
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -37,7 +37,6 @@ build() {
     -D docs=false \
     -D tests=false \
     -D udevrulesdir=/usr/lib/udev/rules.d
-
   meson compile -C build
 }
 
@@ -67,6 +66,9 @@ package_lib32-pipewire() {
 
   DESTDIR="$srcdir/install" meson install -C build
 
+  _pick $srcdir/install/usr/lib32/spa-0.2/jack
+  mv $pkgdir/usr $srcdir/jack
+
   _pick $srcdir/install/usr/lib32/libpipewire-$_ver.so*
   _pick $srcdir/install/usr/lib32/alsa-lib/*
   _pick $srcdir/install/usr/lib32/gstreamer-1.0/*
@@ -79,6 +81,7 @@ package_lib32-pipewire-jack() {
   pkgdesc+=" (JACK support)"
   depends=(lib32-pipewire=$pkgver lib32-jack2)
   _pick $srcdir/install/usr/lib32/pipewire-$_ver/jack/*
+  mv $srcdir/jack/lib32/spa-0.2 $pkgdir/usr/lib32/spa-0.2
 }
 
 package_lib32-pipewire-pulse() {
