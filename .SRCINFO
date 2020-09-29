@@ -1,12 +1,13 @@
 pkgbase = relive-git
 	pkgdesc = An open-source Abe's Oddysee / Abe's Exoddus engine
 	pkgver = r3166.4bc00b39
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aliveteam.github.io
 	arch = i686
 	arch = x86_64
 	license = unknown
 	makedepends = git
+	makedepends = cmake
 	depends = sdl2
 	depends = zenity
 	provides = relive
