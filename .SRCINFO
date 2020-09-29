@@ -1,0 +1,22 @@
+pkgbase = python-resize-image
+	pkgdesc = Search for image using Google Custom Search API and resize & crop the image afterwords
+	pkgver = 1.1.19
+	pkgrel = 1
+	url = https://github.com/arrrlo/Google-Images-Search
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = https://pypi.io/packages/source/p/python-resize-image/python-resize-image-1.1.19.tar.gz
+	sha256sums = 2aea25e9811fd44d4cb8fef82059ace114f6cc72bbef059f69b0b7f79f55e03e
+
+pkgname = python-resize-image
+	depends = python-requests
+	depends = python-pillow
+
+pkgname = python2-resize-image
+	depends = python2-requests
+	depends = python2-pillow
+
