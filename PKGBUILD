@@ -1,8 +1,10 @@
 #!/hint/bash
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
+# Contributor: bartus <arch-user-repository]a[bartus.33mail.com
+
 pkgname=djv
 pkgver=2.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Professional media review software for VFX, animation, and film production"
 arch=("x86_64")
 url="http://djv.sourceforge.net/"
