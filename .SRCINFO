@@ -1,0 +1,25 @@
+pkgbase = mesen-s-bin
+	pkgdesc = A cross-platform Super Nintendo emulator
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/SourMesen/Mesen-S
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	makedepends = wget
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = libindicator-gtk3
+	depends = libappindicator-gtk3
+	conflicts = mesen-s-git
+	conflicts = mesen-s
+	source_x86_64 = Mesen-S.0.4.0.zip::https://github.com/SourMesen/Mesen-S/releases/download/0.4.0/Mesen-S.0.4.0.zip
+	source_x86_64 = icon.png::https://raw.githubusercontent.com/SourMesen/Mesen-S/master/UI/Resources/Icon.ico
+	source_x86_64 = libMesenSCore.dll::https://cdn.crankysupertoon.live/dist/libMesenSCore.dll
+	md5sums_x86_64 = SKIP
+	md5sums_x86_64 = SKIP
+	md5sums_x86_64 = SKIP
+
+pkgname = mesen-s-bin
+
