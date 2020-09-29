@@ -3,8 +3,8 @@
 
 _srcname=plasma-pa
 pkgname=${_srcname}-git
-pkgver=r322.d50ee61
-pkgrel=2
+pkgver=v5.19.90.r1.g62d3c9e
+pkgrel=1
 pkgdesc='Volume applet for Plasma'
 arch=('i686' 'x86_64')
 url='https://www.kde.org/workspaces/plasmadesktop/'
