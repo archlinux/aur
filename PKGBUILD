@@ -3,7 +3,7 @@
 # Contributor: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=appimagelauncher
-pkgver=2.1.4
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A Helper application for running and integrating AppImages."
 arch=('x86_64')
