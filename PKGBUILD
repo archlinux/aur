@@ -1,12 +1,13 @@
 # Maintainer: Cerebrux <mail@cerebrux.net>
 pkgname=shelldio
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="KISS Shell Radio (Greek) for your terminal"
 arch=( 'any' )
 url="https://github.com/CerebruxCode/Shelldio"
 license=('GPL3')
 depends=( 'mpv' 'curl' )
+install=shelldio.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CerebruxCode/shelldio/archive/v${pkgver}.tar.gz")
 
 package() {
@@ -15,4 +16,4 @@ install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 install -Dm755 shelldio.sh "$pkgdir/usr/bin/shelldio"
 }
 
-md5sums=('4a43966b303fab4de8197a2871e52e0c')
+md5sums=('ea2b87772ded3f67131efe5c8f363ad4')

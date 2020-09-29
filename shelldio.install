@@ -1,0 +1,15 @@
+remove_info() {
+echo " ======================== Shelldio INFO =========================="
+echo " "
+echo " Shelldio has downloaded the stations file in your home diectory. "
+echo " The file is in the ~/.shelldio folder"
+echo " If you don't want them anymore. Type:"
+echo " rm -r ~/.shelldio"
+echo " "
+echo " ======================== Shelldio INFO =========================="
+echo " "
+}
+
+post_remove() {
+    remove_info
+}
