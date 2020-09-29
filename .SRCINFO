@@ -1,6 +1,6 @@
 pkgbase = cog-wpe-gl-armv7l
 	pkgdesc = WPE launcher and webapp container
-	pkgver = 0.6.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/Igalia/cog
 	arch = armv7l
@@ -14,11 +14,11 @@ pkgbase = cog-wpe-gl-armv7l
 	provides = cog-git
 	conflicts = cog
 	conflicts = cog-git
-	source = https://webreflection.github.io/aur/cog-wpe-gl-armv7l-0.6.0.tar.gz
-	md5sums = 9c33bcc44002793cf31406d42f484af8
-	sha1sums = 41ace329c3a12ca7bbf211078af618ddcbbb319d
-	sha256sums = 1ea3f08798918765e95c218a10b0de68234b15d1bcf926e0e0b357169b4303b7
-	sha512sums = 71ae542759c1db1a273de553ef4ac89dec16e5829a6f3f851a0aa992d02844d7c9dab44e09b85f4bbe0ae12810ee3f859162f08ba121c5877b4935cbf5651e36
+	source = https://webreflection.github.io/aur/cog-wpe-gl-armv7l-0.8.0.tar.gz
+	md5sums = 155ad64e25b9008893dc7f02dd4958a0
+	sha1sums = 024049f1a4596ff127fa039b4d7554e6dcd1404d
+	sha256sums = e8efc0fab5909f04f4219b13c927a61b60d5202c5e03f52bc307d33fe70b6722
+	sha512sums = de5963e658eb235bb7ee99395867b17f83c9077c5b08629416dfc1e3070b76d1ff7607363b3dce1e078b1d7c9a1eaa09d42fd32dc5921f83fb194344e8a28d2e
 
 pkgname = cog-wpe-gl-armv7l
 
