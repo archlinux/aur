@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=buildstream
-pkgver=1.4.3
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Framework for modelling build pipelines in a declarative YAML format"
 arch=('any')
@@ -17,13 +17,14 @@ depends=(
     python-psutil
     python-pyroaring
     python-ruamel-yaml
+    python-six
     python-ujson
     # specific host site dependencies
-    bzr git lzip python-arpy
+    bzr git lzip ostree python-arpy
 )
 makedepends=(python-setuptools cython)
 source=("https://download.gnome.org/sources/BuildStream/${pkgver%.*}/BuildStream-$pkgver.tar.xz")
-sha256sums=('a8d89952d97e78744c42f1577fa06935dc704707e7b391b65d820ef734d17ade')
+sha256sums=('40611f1347e0f2e681f740bceca851155d295ec9e4bb76f3903f6fc94667557e')
 
 build() {
   cd BuildStream-$pkgver
