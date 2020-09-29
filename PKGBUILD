@@ -14,13 +14,13 @@ makedepends=('gendesk')
 depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
 conflict=('gdlauncher' 'gdlauncher-bin' 'gdlauncher-git')
 source_x86_64=(
-    "GDLauncher-linux-setup.AppImage::https://github.com/gorilla-devs/GDLauncher/releases/download/v${pkgver}/GDLauncher-linux-setup.AppImage"
+    "GDLauncher-${pkgver}.AppImage::https://github.com/gorilla-devs/GDLauncher/releases/download/v${pkgver}/GDLauncher-linux-setup.AppImage"
 )
 
 md5sums_x86_64=('SKIP')
 
 prepare() {
-    
+
     # make executable
     chmod +x "${srcdir}/GDLauncher-linux-setup.AppImage"
     # extract appimage (didn't know this was possible)
@@ -43,7 +43,6 @@ package() {
     mv "${srcdir}/squashfs-root/gdlauncher.png" "${srcdir}/squashfs-root/gdlauncher-appimage.png"
     cp -Rr "${srcdir}/squashfs-root/${pkgname}.png" "${pkgdir}/usr/share/icons/"
 
-    
     # fix file permissions - all files as 644 - directories as 755
     find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
     find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
