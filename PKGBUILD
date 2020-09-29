@@ -16,7 +16,7 @@ backup=("etc/${_pkgname}/Config.conf"
         "etc/${_pkgname}/IPFilter.conf"
         "etc/${_pkgname}/Routing.txt"
         "etc/${_pkgname}/WhiteList.txt")
-source=("${_pkgname}"::"https://github.com/chengr28/Pcap_DNSProxy/archive/v${pkgver}.tar.gz"
+source=("${_pkgname}"::"https://github.com/Lyoko-Jeremie/Pcap_DNSProxy_release/raw/master/v${pkgver}.tar.gz"
         "${_pkgname}.service")
 md5sums=('5188e5ee29caee80cbfe13c6cdb8b524'
          '1016c2abee0334ab5d93f5767df8a8f7')
