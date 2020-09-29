@@ -2,9 +2,9 @@
 
 pkgname=duf
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Disk Usage/Free Utility"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/muesli/duf"
 license=('MIT')
 makedepends=('go')
@@ -13,15 +13,25 @@ sha256sums=('98b5cdc4a7b3c5eddc0ec397c65860110b446e85cc4f3cfe3e32f31ce524e90d')
 
 build() {
     cd "$pkgname-$pkgver"
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+
     go build \
         -trimpath \
-        -ldflags "-X main.Version=$pkgver -extldflags $LDFLAGS" \
-        -o "duf" .
+        -buildmode=pie \
+        -mod=readonly \
+        -modcacherw \
+        -ldflags "-X main.Version=$pkgver -linkmode external -extldflags \"${LDFLAGS}\"" \
+        -o "$pkgname" .
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm755 "duf" "$pkgdir/usr/bin/duf"
+
+    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
