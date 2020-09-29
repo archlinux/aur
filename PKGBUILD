@@ -3,7 +3,7 @@
 
 pkgname=themix-full-git
 pkgver=1.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Themix: GUI for generating different color variations
 of Materia, Oomox themes
 (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
