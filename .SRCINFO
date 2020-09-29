@@ -23,7 +23,7 @@ pkgbase = element-desktop-git
 	source = element-desktop.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 81354e663e354bd66b3f2bb303314b790bdf6d61c3d8e2df7407eb500885647dy
+	sha256sums = 81354e663e354bd66b3f2bb303314b790bdf6d61c3d8e2df7407eb500885647d
 	sha256sums = e4965abefbd609cf88349437b811bc4433d671f5ec5cd51992fd6179d483925f
 
 pkgname = element-web-git
