@@ -2,7 +2,7 @@
 
 pkgname=aes-git
 pkgver=0.2.0.r2.gd311ffd
-pkgrel=1
+pkgrel=2
 pkgdesc="encryption utility with very simple interface"
 arch=('any')
 url="https://github.com/x1b6e6/aes"
@@ -10,6 +10,7 @@ license=("MIT")
 depends=("libgcrypt" "docopt")
 makedepends=("gcc" "make" "cmake")
 conflicts=("aes")
+provides=("aes")
 
 source=("${pkgname%-git}::git+${url}")
 

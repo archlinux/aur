@@ -1,7 +1,7 @@
 pkgbase = aes-git
 	pkgdesc = encryption utility with very simple interface
 	pkgver = 0.2.0.r2.gd311ffd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/x1b6e6/aes
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = aes-git
 	makedepends = cmake
 	depends = libgcrypt
 	depends = docopt
+	provides = aes
 	conflicts = aes
 	source = aes::git+https://github.com/x1b6e6/aes
 	sha1sums = SKIP
