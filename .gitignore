@@ -1,0 +1,7 @@
+.AURINFO
+pkg/
+src/
+XTuner_*.tar.gz
+xtuner-*.pkg.tar.xz
+xtuner-*.pkg.tar.zst
+xtuner-*.src.tar.gz
