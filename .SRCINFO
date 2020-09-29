@@ -1,7 +1,7 @@
 pkgbase = python-kb
 	pkgdesc = A command line minimalist knowledge base manager
-	pkgver = 0.1.3
-	pkgrel = 2
+	pkgver = 0.1.4
+	pkgrel = 1
 	url = https://github.com/gnebbia/kb
 	arch = any
 	license = GPL3
@@ -11,8 +11,8 @@ pkgbase = python-kb
 	depends = python-setuptools
 	depends = python-toml
 	provides = kb
-	source = https://files.pythonhosted.org/packages/source/k/kb-manager/kb-manager-0.1.3.tar.gz
-	sha256sums = 78e14f6eef30a4742925cc75ba9a5509c032ae42e73e26582cd7ed91794f41df
+	source = https://files.pythonhosted.org/packages/source/k/kb-manager/kb-manager-0.1.4.tar.gz
+	sha256sums = 33581d4e4977ce3504d24b0c16ee6460557c68925acfcb1c81208c931dbfbf45
 
 pkgname = python-kb
 
