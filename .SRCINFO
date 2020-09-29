@@ -1,0 +1,26 @@
+pkgbase = mos-chinadns
+	pkgdesc = Realtek 802.11n WLAN Adapter Linux driver for rtl8812au (patched for the Raspberry Pi)
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/IrineSistiana/mos-chinadns
+	install = mos-chinadns.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	depends = python-netaddr
+	depends = python-requests
+	provides = mos-chinadns
+	conflicts = mos-chinadns
+	source = mos-chinadns-1.5.2.tar.gz::https://github.com/IrineSistiana/mos-chinadns/archive/v1.5.2.tar.gz
+	source = mos-chinadns.install
+	source = mos-chinadns.service
+	source = mos-chinadns.yaml
+	sha256sums = 145ff178ecf80cde091f0b99f50cd479132c90f688a01ee744644f2f7bfd5c1f
+	sha256sums = b090d24740b96f289b62b0dde73c4e1f372bb640ac631c49bb36351f56c07c17
+	sha256sums = 7302819d1dd3a98abb18847ff435e1630e58208aef2fe33451aa8314acd8d6e3
+	sha256sums = 3b12eb4b41136391bda12edbb77bf89a89335875aff654677f3f70fe020cd548
+
+pkgname = mos-chinadns
+

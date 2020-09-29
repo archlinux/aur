@@ -1,0 +1,16 @@
+[Unit]
+Description = mos-chinadns Service
+After = network-online.target
+Wants = network-online.target
+
+[Service]
+Type = simple
+DynamicUser = true
+# in case need to bind privileged ports (<1024)
+CapabilityBoundingSet = CAP_NET_BIND_SERVICE
+ExecStart = /usr/bin/mos-chinadns -c /etc/mos-chinadns.yaml
+
+[Install]
+WantedBy = multi-user.target
+
+# vim:set ft=systemd:

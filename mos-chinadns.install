@@ -1,0 +1,19 @@
+pkgname=mos-chinadns
+vardir=/var/lib/$pkgname
+
+post_install() {
+  cp /usr/lib/$pkgname/$pkgname.yaml /etc/$pkgname.yaml
+  mkdir -p $vardir 
+  cp /usr/lib/$pkgname/{chn,chn_domain}.list $vardir/
+  systemctl daemon-reload
+}
+post_upgrade() {
+  mkdir -p $vardir 
+  cp /usr/lib/$pkgname/{chn,chn_domain}.list $vardir/
+  systemctl daemon-reload
+}
+pre_remove() {
+  systemctl disable mos-chinadns
+  systemctl stop mos-chinadns
+  rm -r $vardir
+}
