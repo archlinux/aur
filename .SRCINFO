@@ -1,8 +1,8 @@
 pkgbase = gnome-shell-extension-arc-menu-git
 	pkgdesc = A GNOME shell extension designed to replace the standard menu found in GNOME 3, git version
-	pkgver = 45.Stable.r0.gced0ff0
+	pkgver = 2.r8.g8b101fe
 	pkgrel = 1
-	url = https://gitlab.com/arcmenu-team/Arc-Menu
+	url = https://gitlab.com/arcmenu/ArcMenu
 	install = gnome-shell-extension.install
 	arch = any
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = gnome-shell-extension-arc-menu-git
 	depends = gnome-shell>=3.18
 	depends = gnome-menus
 	conflicts = gnome-shell-extension-arc-menu
-	source = git+https://gitlab.com/arcmenu-team/Arc-Menu.git
+	source = git+https://gitlab.com/arcmenu/ArcMenu.git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-arc-menu-git
