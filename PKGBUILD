@@ -1,35 +1,33 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 # Contributor: Sergei Lebedev <superbobry@gmail.com>
 # Contributor: serp <serp 256 at gmail dot com>
+_projectname='react'
+pkgname="ocaml-$_projectname"
+pkgver='1.2.1'
+pkgrel='2'
+pkgdesc='An OCaml module for functional reactive programming'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://erratique.ch/software/$_projectname"
+license=('ISC')
+depends=('ocaml>=4.01.0')
+makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg>=0.9.0' 'opam')
+options=('!strip')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/dbuenzli/$_projectname/archive/v$pkgver.tar.gz")
+sha256sums=('7fc875faba6e4834fb3e8bdc59a997b230dd870cec72ebcf6d08f2df0ac40bfa')
 
-_pkgname=react
-pkgname=ocaml-${_pkgname}
-pkgver=1.2.1
-pkgrel=1
-pkgdesc="An OCaml module for functional reactive programming"
-arch=('i686' 'x86_64')
-url="http://erratique.ch/software/react"
-license=('BSD')
-depends=('ocaml')
-makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-topkg' 'opam')
-source=("http://erratique.ch/software/${_pkgname}/releases/${_pkgname}-${pkgver}.tbz")
-md5sums=('ce1454438ce4e9d2931248d3abba1fcc')
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-
-  ocaml pkg/pkg.ml build
+	cd "$srcdir/$_sourcedirectory/"
+	ocaml 'pkg/pkg.ml' build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+	cd "$srcdir/$_sourcedirectory/"
+	opam-installer --prefix="$pkgdir/usr" --libdir='lib/ocaml' --docdir='share/doc'
 
-  opam-installer --prefix=${pkgdir}/usr \
-    --libdir=${pkgdir}$(ocamlc -where) \
-    --docdir=${pkgdir}/usr/share/doc
-
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  mv "${pkgdir}/usr/share/doc/react/LICENSE.md" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
