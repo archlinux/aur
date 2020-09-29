@@ -11,7 +11,7 @@ makedepends=('gendesk' 'wget')
 depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
 conflicts=('koalalauncher')
 source_x86_64=(
-    "KoalaLauncher-linux-setup.zip::https://github.com/KoalaDevs/KoalaLauncher/releases/download/v${pkgver}/KoalaLauncher-linux-setup.zip"
+    "KoalaLauncher-${pkgver}.zip::https://github.com/KoalaDevs/KoalaLauncher/releases/download/v${pkgver}/KoalaLauncher-linux-setup.zip"
     "icon.png::https://raw.githubusercontent.com/KoalaDevs/KoalaLauncher/master/public/icon.png"
 )
 
