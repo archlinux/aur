@@ -1,7 +1,7 @@
 pkgbase = libfprint-git
 	pkgdesc = Library for fingerprint readers
-	pkgver = 1.90.3
-	pkgrel = 2
+	pkgver = 1.90.3.r5.ga63dcc9
+	pkgrel = 1
 	epoch = 1
 	url = https://fprint.freedesktop.org/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = libfprint-git
 	depends = pixman
 	depends = nss
 	depends = systemd-libs
-	provides = libfprint=1.90.3
+	provides = libfprint=1.90.3.r5.ga63dcc9
 	provides = libfprint-2.so
 	conflicts = libfprint
 	source = git+https://gitlab.freedesktop.org/libfprint/libfprint.git
