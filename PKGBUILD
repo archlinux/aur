@@ -4,7 +4,7 @@
 pkgname=parsoid
 _pkgname=parsoid
 pkgver=0.12.0_a13
-pkgrel=2
+pkgrel=3
 pkgdesc="A bidirectional wikitext parser and runtime"
 arch=('any')
 url="https://www.mediawiki.org/wiki/Parsoid"
