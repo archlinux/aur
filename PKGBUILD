@@ -4,7 +4,7 @@
 _gemname='gettext'
 pkgname="ruby-${_gemname}"
 pkgver=3.3.6
-pkgrel=3
+pkgrel=4
 pkgdesc='Gettext gem is a pure Ruby Localization(L10n) library and tool which is modeled after the GNU gettext package.'
 arch=(any)
 url='https://github.com/ruby-gettext/gettext'
@@ -46,4 +46,6 @@ package() {
   gem install --verbose --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
 
   rm -rf "${pkgdir}/${_gemdir}/cache"
+
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }

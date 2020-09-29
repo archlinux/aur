@@ -1,7 +1,7 @@
 pkgbase = ruby-gettext
 	pkgdesc = Gettext gem is a pure Ruby Localization(L10n) library and tool which is modeled after the GNU gettext package.
 	pkgver = 3.3.6
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/ruby-gettext/gettext
 	arch = any
 	license = RUBY
