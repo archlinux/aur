@@ -2,11 +2,13 @@
 # Contributor: François M. <francois5537 @ gmail.com>
 
 pkgname=manager-accounting
-pkgver=$(wget -o /dev/null https://github.com/Manager-io/Manager.zip/releases -O - \
-    | grep -o -P 'Manager-io/Manager\.zip/releases/download/[0-9]+\.[0-9]+\.[0-9]+' \
-    | head -n1 \
-    | grep -o -P '[0-9]+\.[0-9]+\.[0-9]+'
-)
+pkgver=20.9.63
+# Dynamic version
+#pkgver=$(wget -o /dev/null https://github.com/Manager-io/Manager.zip/releases -O - \
+#    | grep -o -P 'Manager-io/Manager\.zip/releases/download/[0-9]+\.[0-9]+\.[0-9]+' \
+#    | head -n1 \
+#    | grep -o -P '[0-9]+\.[0-9]+\.[0-9]+'
+#)
 pkgrel=1
 pkgdesc='Manager is free accounting software for small business'
 arch=('i686' 'x86_64' 'aarch64')
