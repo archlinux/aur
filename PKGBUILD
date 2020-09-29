@@ -10,7 +10,7 @@ url="https://github.com/zhullyb/deepin.com.dingtalk.com"
 license=('custom')
 depends=('deepin-wine' 'wqy-microhei')
 source=("https://github.com/zhullyb/deepin.com.dingtalk.com/releases/download/v${pkgver}/deepin.com.dingtalk.com_${pkgver}_i386.deb")
-md5sums=('54764f0ecceb8ed794814edffd83ece4')
+md5sums=('491e2c6229575bc9170450d497d41896')
 prepare() {
     bsdtar -xf "$srcdir"/data.tar.xz
 }
