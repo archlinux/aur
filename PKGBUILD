@@ -1,12 +1,13 @@
 # Maintainer: BlackyFox <blacky@blackyfox.net>
 pkgname=purevpn
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="PureVPN Linux Application (CLI). World's Fastest, Most Reliable and Easy to Use VPN service."
 arch=('i686' 'x86_64')
 url="https://www.purevpn.com"
 license=('custom')
 options=('!strip' '!emptydirs')
+depends=('net-tools')
 makedepends=('tar')
 conflicts=('purevpn-networkmanager')
 install=${pkgname}.install
@@ -28,6 +29,8 @@ package(){
 	mv usr/sbin/* usr/bin
 	rm -Rf usr/sbin
 	rm -Rf usr/lib/${pkgname}
+	rm etc/purevpn/ifconfig
+	rm etc/purevpn/route
 	
 	#Install systemd config files
 	install -D -m 644 "${srcdir}"/purevpn.service "${pkgdir}"/usr/lib/systemd/system/purevpn.service

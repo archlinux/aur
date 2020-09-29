@@ -1,13 +1,14 @@
 pkgbase = purevpn
 	pkgdesc = PureVPN Linux Application (CLI). World's Fastest, Most Reliable and Easy to Use VPN service.
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.purevpn.com
 	install = purevpn.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = tar
+	depends = net-tools
 	conflicts = purevpn-networkmanager
 	options = !strip
 	options = !emptydirs
