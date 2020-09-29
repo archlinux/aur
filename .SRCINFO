@@ -1,0 +1,17 @@
+pkgbase = ssh-tools-git
+	pkgdesc = Tools for ssh
+	pkgver = 1.6.r6.gfba194d
+	pkgrel = 1
+	url = https://github.com/vaporup/ssh-tools
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = openssh
+	optdepends = colordiff: colors for ssh-diff
+	provides = ssh-tools
+	conflicts = ssh-tools
+	source = git+https://github.com/vaporup/ssh-tools.git
+	sha256sums = SKIP
+
+pkgname = ssh-tools-git
+
