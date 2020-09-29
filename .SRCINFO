@@ -1,14 +1,14 @@
 pkgbase = yavta-git
 	pkgdesc = Yet Another V4L2 Test Application
 	pkgver = r122.405e530
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.ideasonboard.org/yavta.git
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = GPL2
 	makedepends = git
-	source = git://git.ideasonboard.org/yavta.git
+	source = yavta::git+https://git.ideasonboard.org/git/yavta.git
 	md5sums = SKIP
 
 pkgname = yavta-git
