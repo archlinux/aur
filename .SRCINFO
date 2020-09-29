@@ -1,17 +1,20 @@
 pkgbase = brmodelo
 	pkgdesc = Ferramenta de Modelagem de Bancos de Dados Relacionais
 	pkgver = 3.31
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sis4.com/brModelo/index.html
+	install = brModelo.install
 	arch = any
 	license = GPL3
 	depends = java-runtime>=8
 	noextract = brmodelo-3.31.jar
-	source = brmodelo-3.31.jar::http://www.sis4.com/brModelo/brModelo.jar
+	source = brmodelo-3.31.jar::https://github.com/chcandido/brModelo/releases/download/3.31/brModelo.jar
+	source = https://github.com/chcandido/brModelo/raw/3.31/Ajuda.brMh
 	source = icon.png
 	source = brModelo.sh
 	source = brModelo.desktop
 	md5sums = 2ed50e3fa966829caa447c0d64b9a149
+	md5sums = f657ef19358d3cf5fbbbdfe3bdb7931d
 	md5sums = 0f677c27e3af9f1a9b3ae31d0197176c
 	md5sums = eb9be16b05955c3eb81d766156b77d27
 	md5sums = 3aaad69042db5a54aed691d58f3e8058

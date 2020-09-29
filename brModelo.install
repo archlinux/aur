@@ -1,0 +1,8 @@
+
+post_install() {
+    ln -sf /opt/brModelo/Ajuda.brMh /home/$SUDO_USER/Ajuda.brMh
+}
+
+post_remove() {
+    rm /home/$SUDO_USER/Ajuda.brMh
+}
