@@ -1,12 +1,14 @@
-# Maintainer: Davi da Silva Böger <dsboger@gmail.com>
+# Maintainer: Mubashshir <ahmubashshir@gmail.com>
+# Contributor: Davi da Silva Böger <dsboger@gmail.com>
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 # Contributor: Charles Lindsay <charles@chaoslizard.org>
+# pkg: git
 
 pkgname=vhba-module-dkms-git
 _pkgname=vhba-module
-pkgver=20170610.r2.g3008c64c
-pkgrel=2
+pkgver=20200106.r31.ga3c1a208
+pkgrel=1
 pkgdesc="Kernel module that emulates SCSI devices (DKMS, git master)"
 url="http://cdemu.sourceforge.net/"
 arch=(i686 x86_64)
