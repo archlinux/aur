@@ -14,7 +14,6 @@ pkgbase = golang-deepin-gir-git
 	depends = libgudev
 	provides = golang-deepin-gir
 	conflicts = golang-deepin-gir
-	replaces = golang-deepin-gir
 	source = golang-deepin-gir-git::git://github.com/linuxdeepin/go-gir-generator
 	source = SettingsBackendLike.patch
 	source = glib-2.63.patch
