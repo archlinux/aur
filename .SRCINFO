@@ -1,7 +1,7 @@
 pkgbase = vmessping
 	pkgdesc = A ping prober for vmess:// links in common seen formats
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/v2fly/vmessping
 	arch = x86_64
 	license = MIT
