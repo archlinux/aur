@@ -1,6 +1,6 @@
 pkgbase = okular-git
 	pkgdesc = Universal document viewer
-	pkgver = 19.04.1.r43.gb1c30cd0e
+	pkgver = 20.08.1.r120.gd78e2ff9e
 	pkgrel = 1
 	url = http://kde.org/applications/graphics/okular/
 	arch = i686
@@ -32,7 +32,7 @@ pkgbase = okular-git
 	conflicts = okular
 	conflicts = okular-frameworks-git
 	replaces = okular-frameworks-git
-	source = git://anongit.kde.org/okular.git
+	source = git+https://invent.kde.org/graphics/okular.git
 	sha256sums = SKIP
 
 pkgname = okular-git

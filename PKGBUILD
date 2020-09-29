@@ -4,7 +4,7 @@
 # Contributor Martchus <martchus@gmx.net>
 
 pkgname=okular-git
-pkgver=19.04.1.r43.gb1c30cd0e
+pkgver=20.08.1.r120.gd78e2ff9e
 pkgrel=1
 pkgdesc='Universal document viewer'
 arch=(i686 x86_64)
@@ -12,11 +12,12 @@ url='http://kde.org/applications/graphics/okular/'
 license=(GPL)
 depends=(kpty kirigami2 discount kdegraphics-mobipocket purpose threadweaver kactivities khtml chmlib djvulibre libspectre poppler-qt5 libkexiv2)
 makedepends=(extra-cmake-modules kdoctools git python ebook-tools qca-qt5)
-optdepends=('ebook-tools: mobi and epub support' 'qca-qt5: support for encrypted ODF documents')
+optdepends=('ebook-tools: mobi and epub support' 
+            'qca-qt5: support for encrypted ODF documents')
 conflicts=(kdegraphics-okular okular okular-frameworks-git)
 provides=(okular)
 replaces=(okular-frameworks-git)
-source=('git://anongit.kde.org/okular.git')
+source=('git+https://invent.kde.org/graphics/okular.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -32,7 +33,7 @@ build() {
   cd build
   cmake ../okular \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DKDE_INSTALL_LIBDIR=lib
   make
 }
