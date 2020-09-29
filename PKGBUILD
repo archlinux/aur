@@ -6,13 +6,13 @@ pkgver=5.0b8
 pkgrel=7
 arch=('i686' 'x86_64')
 pkgdesc="a flexible, screen-oriented MUD client, for use with any type of MUD"
-url="http://tinyfugue.sourceforge.net/"
+url="https://github.com/cipherize/tinyfugue"
 license=('GPL3')
 
 depends=(openssl pcre)
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/cipherize/tinyfugue/releases/download/v$pkgver-$pkgrel/tf-$pkgver-$pkgrel.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://github.com/cipherize/tinyfugue/releases/download/v$pkgver-$pkgrel/tf-$pkgver-$pkgrel.tar.gz.asc")
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver-$pkgrel/tf-$pkgver-$pkgrel.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver-$pkgrel/tf-$pkgver-$pkgrel.tar.gz.asc")
 
 b2sums=('01c4a9e63368d197d3251adf751e705ae6dd0fdb098524337f2e48256fb0e6ca46b35b7cb932b0b11ca887f5690f65f1c1cae0f81523bcee60652f354c22bd18'
         'SKIP')
