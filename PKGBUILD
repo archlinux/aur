@@ -1,11 +1,11 @@
 # Maintainer: <random-nick at email dot com>
 # Based on the official firefox package by:
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=2020.08
+pkgver=2020.09
 pkgrel=1
 pkgdesc="Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch."
 arch=(x86_64)
@@ -22,13 +22,15 @@ optdepends=('libnotify: Notification integration'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
-_archivename=2020.08-current # patch releases don't follow the same format so we can't use $pkgver
+_archivename=2020.09-current # patch releases don't follow the same format so we can't use $pkgver
 source=(Waterfox-$_archivename.tar.gz::https://github.com/MrAlex94/Waterfox/archive/$_archivename.tar.gz
         $pkgname.desktop
-	bug1654465.diff)
-sha256sums=('45e407c01fb9a378ba3f174d2218a3e71cbda312e80a6f1fdc8ea00552b4a69f'
+	0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch
+        0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch)
+sha256sums=('458f372f08ce5791a4f561372a78f2e212c8bb2245a59d89c0901ce50431b8c1'
             '3c8a3e73ffcb4670ca25fc7087b9c5d93ebbef2f3be8a33cf81ae424c3f27fa3'
-            '4d181c76060845048092724b2fc6f0c2aa76db543c9ba3490f313651de6bb97d')
+            'c2489a4ad3bfb65c064e07180a1de9a2fbc3b1b72d6bc4cd3985484d1b6b7b29'
+            '52cc26cda4117f79fae1a0ad59e1404b299191a1c53d38027ceb178dab91f3dc')
 #_disable_pgo=y # uncomment this to disable building the profiled browser and using PGO
 
 prepare() {
@@ -36,9 +38,16 @@ prepare() {
   cd Waterfox-$_archivename
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1654465
-  patch -Np1 -i ../bug1654465.diff
+  #patch -Np1 -i ../bug1654465.diff
+
+  # https://bugs.archlinux.org/task/67978
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1660901
+  patch -Np1 -i ../0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch
+  patch -Np1 -i ../0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch
 
   cat >../mozconfig <<END
+mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
+
 ac_add_options --enable-application=browser
 
 ac_add_options --prefix=/usr
@@ -71,6 +80,7 @@ ac_add_options --enable-crashreporter
 ac_add_options --disable-gconf
 ac_add_options --disable-updater
 ac_add_options --disable-tests
+ac_add_options --disable-elf-hack
 END
 }
 
@@ -79,21 +89,17 @@ build() {
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
+  export MACH_USE_SYSTEM_PYTHON=1
 
   # LTO needs more open files
   ulimit -n 4096
-
-  # -fno-plt with cross-LTO causes obscure LLVM errors
-  # LLVM ERROR: Function Import: link error
-  CFLAGS="${CFLAGS/-fno-plt/}"
-  CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
   # prevents references to $srcdir being included in error messages
   # some references still remain in libxul.so and omni.ja
   CFLAGS+=" -ffile-prefix-map=$srcdir=."
   CXXFLAGS+=" -ffile-prefix-map=$srcdir=."
 
-  # supress warnings
+  # suppress warnings
   CFLAGS+=" -w"
   CXXFLAGS+=" -w"
 
@@ -111,32 +117,38 @@ END
 				 JARLOG_FILE="$PWD/jarlog" \
 				 xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
 				 ./mach python build/pgo/profileserver.py
+	echo "Merging profile data..."
+	for i in *.profraw; do
+          stat -c "Raw profile data file $i found (%s bytes)" $i
+	done
 	llvm-profdata merge -o merged.profdata *.profraw
 
 	if [[ ! -s merged.profdata ]]; then
       echo "No profile data produced."
       return 1
 	fi
+        stat -c "Profile data found (%s bytes)" merged.profdata
 
 	if [[ ! -s jarlog ]]; then
-      echo "No jar log produced."
+      echo "No jarlog produced."
       return 1
 	fi
+        stat -c "Profile jarlog found (%s bytes)" jarlog
 
 	echo "Removing instrumented browser..."
 	./mach clobber
 
 	echo "Building optimized browser..."
 	cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto
+ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use
-ac_add_options --with-pgo-profile-path=${PWD@Q}
+ac_add_options --with-pgo-profile-path=${PWD@Q}/
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
   else
 	echo "Building browser without PGO..."
 	cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto
+ac_add_options --enable-lto=cross
 END
   fi
   ./mach build
