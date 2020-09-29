@@ -4,7 +4,7 @@ pkgbase='sublime-music-git'
 pkgname=('sublime-music-git')
 _module='sublime-music'
 pkgver=v0.11.9.r0.gd454b90
-pkgrel=1
+pkgrel=2
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+.'
 url='https://sublimemusic.app'
 provides=('sublime-music')
@@ -59,7 +59,7 @@ package() {
     # Move all of the package data resources to ${pkgdir}/usr/share/sublime-music
     data_dir=${pkgdir}/usr/share/sublime-music
     mkdir -p $data_dir/adapters/subsonic $data_dir/dbus $data_dir/ui
-    pushd ${pkgdir}/usr/lib/python3.8/site-packages/sublime
+    pushd ${pkgdir}/usr/lib/python3.8/site-packages/sublime_music
     mv adapters/icons $data_dir/adapters
     mv adapters/images $data_dir/adapters
     mv adapters/subsonic/icons $data_dir/adapters/subsonic
