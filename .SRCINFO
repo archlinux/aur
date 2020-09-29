@@ -11,6 +11,7 @@ pkgbase = mesen-s-git
 	depends = mono
 	depends = sdl2
 	conflicts = mesen-s
+	conflicts = mesen-s-bin
 	source = Mesen-S::git+https://github.com/SourMesen/Mesen-S.git
 	sha256sums = SKIP
 
