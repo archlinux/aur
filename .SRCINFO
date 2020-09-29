@@ -6,6 +6,7 @@ pkgbase = gamemaker-studio-decompiler-git
 	arch = x86_64
 	license = DBAD
 	makedepends = clang
+	makedepends = git
 	depends = mono
 	depends = sdl2
 	conflicts = gamemaker-studio-decompiler
