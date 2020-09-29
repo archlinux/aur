@@ -5,7 +5,7 @@ pkgname=themix-full-git
 pkgver=1.13.3
 pkgrel=1
 pkgdesc="Themix: GUI for generating different color variations
-of Arc, Materia, Oomox themes
+of Materia, Oomox themes
 (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
 ArchDroid, Gnome-Colors, Numix, Papirus, Suru++ icons,
 and terminal palettes.
@@ -15,8 +15,7 @@ url="https://github.com/themix-project/oomox"
 license=('GPL3')
 source=(
 )
-md5sums=(
-)
+
 depends=(
 	'themix-gui-git'
 
@@ -26,7 +25,7 @@ depends=(
 
 	'themix-plugin-base16-git'
 
-	'themix-theme-arc-git'
+	#'themix-theme-arc-git'
 	'themix-theme-materia-git'
 	'themix-theme-oomox-git'
 
