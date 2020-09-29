@@ -1,7 +1,7 @@
 pkgbase = ruby-test-unit-rr
 	pkgdesc = test-unit-rr is a RR adapter for test-unit
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/test-unit/test-unit-rr
 	arch = any
 	license = LGPL2.1

@@ -3,7 +3,7 @@
 _gemname='test-unit-rr'
 pkgname="ruby-${_gemname}"
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='test-unit-rr is a RR adapter for test-unit'
 arch=('any')
 url='https://github.com/test-unit/test-unit-rr'
@@ -40,6 +40,9 @@ package() {
   gem install --verbose --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
 
   rm -rf "${pkgdir}/${_gemdir}/cache"
+
+  install -Dm 644 README.md doc/text/news.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 doc/text/lgpl-2.1.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
