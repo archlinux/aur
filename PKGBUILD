@@ -7,7 +7,7 @@
 # Download website:
 # https://developer.nvidia.com/tensorrt/
 
-_tensorrt_tag=20.08
+_tensorrt_tag=20.09
 _cudaver=11.0
 _cudnnver=8.0
 _graphsurgeonver=0.4.5
@@ -15,7 +15,7 @@ _uffver=0.6.9
 _ubuntuver=18.04
 _protobuf_branch=3.8.x
 _protobuf_ver=3.12.4
-_cub_branch=1.8.0
+_cub_tag=1.8.0
 _onnx_tensorrt_branch=7.1
 _onnx_branch=rel-1.6.0
 _onnx_ver=1.7.0
@@ -23,7 +23,7 @@ _onnx_ver=1.7.0
 pkgbase=tensorrt
 pkgname=('tensorrt' 'tensorrt-doc')
 pkgver=7.2.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc='A platform for high-performance deep learning inference using NVIDIA hardware'
 arch=('x86_64')
 url='https://github.com/NVIDIA/TensorRT/'
@@ -32,12 +32,12 @@ makedepends=('git' 'cmake' 'poppler' 'pybind11' 'python' 'python-pip' 'zlib'
              'cuda' 'cudnn')
 source=("local://TensorRT-${pkgver}.Ubuntu-${_ubuntuver}.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_cudnnver}.tar.gz"
         "git+https://github.com/NVIDIA/TensorRT.git#tag=${_tensorrt_tag}"
-        'protobuf-protocolbuffers'::"git+https://github.com/protocolbuffers/protobuf#branch=${_protobuf_branch}"
-        "git+https://github.com/NVlabs/cub#branch=${_cub_branch}"
-        "git+https://github.com/onnx/onnx-tensorrt#branch=${_onnx_tensorrt_branch}"
-        "git+https://github.com/onnx/onnx#branch=${_onnx_branch}"
-        'git+https://github.com/pybind/pybind11'
-        'git+https://github.com/google/benchmark'
+        'protobuf-protocolbuffers'::"git+https://github.com/protocolbuffers/protobuf.git#branch=${_protobuf_branch}"
+        "git+https://github.com/NVIDIA/cub.git#tag=${_cub_tag}"
+        "git+https://github.com/onnx/onnx-tensorrt.git#branch=${_onnx_tensorrt_branch}"
+        "git+https://github.com/onnx/onnx.git#branch=${_onnx_branch}"
+        'git+https://github.com/pybind/pybind11.git'
+        'git+https://github.com/google/benchmark.git'
         "https://github.com/google/protobuf/releases/download/v${_protobuf_ver}/protobuf-cpp-${_protobuf_ver}.tar.gz"
         '010-tensorrt-use-local-protobuf-sources.patch'
         '020-tensorrt-fix-cub-deprecation-huge-warnings.patch')
@@ -52,7 +52,7 @@ sha256sums=('5681d6f7d4a6d6b9ef7239caa5a0508748e6f6cade77cb4d48f89e133295ab60'
             'SKIP'
             'ccfbaaba52f67e0e6536a05f3df3f6618620d255513cfca3a07f5935b624e26b'
             'ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac'
-            'bfc2230de7d1afa97febd2bc74c0cca019d86c303008533c347c18c20dea5cd7')
+            '6a12e65113b6c1814a73be85b96b4be365850dcdf772f9a3c66476f8647b5ba1')
 
 prepare() {
     # tensorrt git submodules

@@ -1,7 +1,7 @@
 pkgbase = tensorrt
 	pkgdesc = A platform for high-performance deep learning inference using NVIDIA hardware
 	pkgver = 7.2.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/TensorRT/
 	arch = x86_64
 	license = custom
@@ -17,13 +17,13 @@ pkgbase = tensorrt
 	makedepends = cudnn
 	noextract = protobuf-cpp-3.12.4.tar.gz
 	source = local://TensorRT-7.2.0.14.Ubuntu-18.04.x86_64-gnu.cuda-11.0.cudnn8.0.tar.gz
-	source = git+https://github.com/NVIDIA/TensorRT.git#tag=20.08
-	source = protobuf-protocolbuffers::git+https://github.com/protocolbuffers/protobuf#branch=3.8.x
-	source = git+https://github.com/NVlabs/cub#branch=1.8.0
-	source = git+https://github.com/onnx/onnx-tensorrt#branch=7.1
-	source = git+https://github.com/onnx/onnx#branch=rel-1.6.0
-	source = git+https://github.com/pybind/pybind11
-	source = git+https://github.com/google/benchmark
+	source = git+https://github.com/NVIDIA/TensorRT.git#tag=20.09
+	source = protobuf-protocolbuffers::git+https://github.com/protocolbuffers/protobuf.git#branch=3.8.x
+	source = git+https://github.com/NVIDIA/cub.git#tag=1.8.0
+	source = git+https://github.com/onnx/onnx-tensorrt.git#branch=7.1
+	source = git+https://github.com/onnx/onnx.git#branch=rel-1.6.0
+	source = git+https://github.com/pybind/pybind11.git
+	source = git+https://github.com/google/benchmark.git
 	source = https://github.com/google/protobuf/releases/download/v3.12.4/protobuf-cpp-3.12.4.tar.gz
 	source = 010-tensorrt-use-local-protobuf-sources.patch
 	source = 020-tensorrt-fix-cub-deprecation-huge-warnings.patch
@@ -37,7 +37,7 @@ pkgbase = tensorrt
 	sha256sums = SKIP
 	sha256sums = ccfbaaba52f67e0e6536a05f3df3f6618620d255513cfca3a07f5935b624e26b
 	sha256sums = ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac
-	sha256sums = bfc2230de7d1afa97febd2bc74c0cca019d86c303008533c347c18c20dea5cd7
+	sha256sums = 6a12e65113b6c1814a73be85b96b4be365850dcdf772f9a3c66476f8647b5ba1
 
 pkgname = tensorrt
 	depends = cuda
