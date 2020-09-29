@@ -2,13 +2,13 @@
 
 pkgname=latex-questionnaire  
 pkgver=20100202
-pkgrel=2
+pkgrel=3
 pkgdesc="Styles for creating questionnaires with LaTeX"
 url="http://www.qdds.org"
 arch=('any')
 license=('custom')
 depends=('texlive-core')
-source=('http://www.qdds.org/fileadmin/files/latexstyles.zip'
+source=('http://132.252.189.3/fileadmin/files/latexstyles.zip'
         'latex-questionnaire.install')
 md5sums=('7ec3014675e1318c26cd1a7d625400b1'
          'a573ca786bc416e905171f49abf3ba46')

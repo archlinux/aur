@@ -1,13 +1,13 @@
 pkgbase = latex-questionnaire
 	pkgdesc = Styles for creating questionnaires with LaTeX
 	pkgver = 20100202
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.qdds.org
 	install = latex-questionnaire.install
 	arch = any
 	license = custom
 	depends = texlive-core
-	source = http://www.qdds.org/fileadmin/files/latexstyles.zip
+	source = http://132.252.189.3/fileadmin/files/latexstyles.zip
 	source = latex-questionnaire.install
 	md5sums = 7ec3014675e1318c26cd1a7d625400b1
 	md5sums = a573ca786bc416e905171f49abf3ba46
