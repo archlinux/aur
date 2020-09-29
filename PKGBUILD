@@ -2,7 +2,7 @@
 # Contributor: vapourismo <ole at vprsm dot de>
 _pkgname=knxd
 pkgname='knxd-git'
-pkgver=1647.r672ca39
+pkgver=1844.r9929ed6
 pkgrel=1
 pkgdesc='A server which provides an interface to a KNX/EIB installation'
 license=('GPL')

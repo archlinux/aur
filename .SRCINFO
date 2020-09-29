@@ -1,6 +1,6 @@
 pkgbase = knxd-git
 	pkgdesc = A server which provides an interface to a KNX/EIB installation
-	pkgver = 1647.r672ca39
+	pkgver = 1844.r9929ed6
 	pkgrel = 1
 	url = https://github.com/knxd/knxd
 	arch = i686
