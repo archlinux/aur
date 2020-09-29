@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/polynote/polynote"
 license=('Apache')
 depends=('java-runtime' 'python-jep')
+optdepends=('apache-spark')
 source=("$pkgname-$pkgver.tgz::https://github.com/polynote/polynote/releases/download/$pkgver/polynote-dist.tar.gz")
 md5sums=('1ea21c6972461c1cb3a8fd37e0bb56f8')
 
