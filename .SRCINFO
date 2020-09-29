@@ -6,6 +6,7 @@ pkgbase = neovim-vimvi
 	arch = any
 	license = APACHE
 	depends = neovim
+	optdepends = xxd: for xxd support
 	provides = vi
 	provides = vim
 	conflicts = vi

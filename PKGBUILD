@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/neovim/neovim"
 license=('APACHE')
 depends=('neovim')
+optdepends=('xxd: for xxd support')
 provides=('vi' 'vim')
 conflicts=('vi' 'vim')
 source=('vimdiff')
