@@ -35,6 +35,7 @@ build() {
       -DAF_BUILD_DOCS=ON \
       -DCUDA_architecture_build_targets="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6" \
       -DCMAKE_BUILD_TYPE=Release \
+      -DCUDA_HOST_COMPILER=/usr/bin/gcc \
       -DBoost_NO_BOOST_CMAKE=ON
 
   ninja -C build
