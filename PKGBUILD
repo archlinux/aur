@@ -1,7 +1,7 @@
 # Maintainer: Rodrigo Lourenço <rzl@rzl.ooo>
 
 pkgname=grub2-theme-fallout-git
-pkgver=0+41.gcd6cf16
+pkgver=0+44.g211348f
 pkgrel=1
 pkgdesc="Fallout GRUB theme"
 url=https://github.com/shvchk/fallout-grub-theme
@@ -11,6 +11,7 @@ depends=()
 makedepends=('git')
 source=('git+https://github.com/shvchk/fallout-grub-theme')
 md5sums=('SKIP')
+install=grub-fallout-theme.install
 
 pkgver() {
     cd fallout-grub-theme
@@ -19,14 +20,14 @@ pkgver() {
 
 package() {
     cd fallout-grub-theme
-    install -v -Dm644 -t "$pkgdir/usr/share/grub/themes/fallout-grub-theme" \
+    install -v -Dm644 -t "$pkgdir/usr/share/grub/themes/fallout" \
         background.png \
         fixedsys-regular-32.pf2 \
         item_c.png \
         selected_item_c.png \
         terminal_box_c.png \
         theme.txt
-    install -v -Dm644 -t "$pkgdir/usr/share/grub/themes/fallout-grub-theme/icons" \
+    install -v -Dm644 -t "$pkgdir/usr/share/grub/themes/fallout" \
         icons/*.png
     install -v -Dm644 -t "$pkgdir/usr/share/licenses/${pkgname}" \
         LICENSE

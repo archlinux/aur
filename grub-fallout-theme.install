@@ -1,0 +1,15 @@
+#!/bin/sh
+
+post_install() {
+    echo ":: To use the theme:"
+    echo "   1. Install it to your /boot/grub/themes folder"
+    echo "      e.g. grub-install --themes=fallout ..."
+    echo "   2. Set GRUB_THEME to /boot/grub/themes/fallout/theme.txt"
+    echo "   3. Regenerate your GRUB configuration"
+    echo "      e.g. grub-mkconfig -o /boot/grub/grub.cfg"
+}
+
+post_upgrade() {
+    echo ":: To complete the upgrade, you must re-install the theme using"
+    echo "   grub-install and grub-config."
+}
