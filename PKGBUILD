@@ -1,13 +1,15 @@
 # Maintainer: Mike Kazantsev <mk.fraggod@gmail.com>
 
+# MINIMAL
+
 pkgname=telegram-tdlib-purple-git
 pkgver=r275.66f9c98
-pkgrel=4
+pkgrel=3
 pkgdesc='libpurple/pidgin Telegram plugin implemented using official tdlib client library.'
 arch=(any)
 url='https://github.com/ars3niy/tdlib-purple'
 license=(GPL2 LGPL2.1 custom:FTL custom:PIX custom:RPD custom:SKIA custom:STB)
-depends=(libpurple libpng libwebp telegram-tdlib gperf)
+depends=(libpurple libpng libwebp telegram-tdlib libtgvoip)
 makedepends=(git)
 source=($pkgname::git+"$url")
 sha256sums=(SKIP)
@@ -21,7 +23,7 @@ build() {
 	cd $pkgname
 	mkdir -p build
 	cd build
-	cmake ..
+	cmake -Dtgvoip_INCLUDE_DIRS=/usr/include/tgvoip ..
 	make
 }
 
