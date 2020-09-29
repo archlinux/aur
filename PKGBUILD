@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-qt5platform-plugins-git
-pkgver=5.0.18.r0.gfb42f84
+pkgver=5.0.18.r1.g2ce3b77
 pkgrel=1
 pkgdesc='Qt platform plugins for DDE'
 arch=('x86_64')
@@ -9,7 +9,6 @@ url="https://github.com/linuxdeepin/qt5platform-plugins"
 license=('GPL3')
 provides=('deepin-qt5platform-plugins')
 conflicts=('deepin-qt5platform-plugins')
-replaces=('deepin-qt5platform-plugins')
 depends=('cairo' 'kwayland' 'qt5-wayland' 'qt5-x11extras')
 makedepends=('git' 'expac' 'qt5-xcb-private-headers' 'libglvnd' 'libxcb')
 groups=('deepin-git')
@@ -38,7 +37,7 @@ prepare() {
 build() {
   cd $pkgname
   qmake-qt5 PREFIX=/usr
-  make -j$(nproc)
+  make
 }
 
 package() {
