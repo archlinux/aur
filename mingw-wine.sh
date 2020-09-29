@@ -27,7 +27,7 @@ export WINEDLLOVERRIDES="mscoree,mshtml="
 # if MINGW_WINE_LOCK is set, only one wine process is allowed at once
 if test -n "${MINGW_WINE_LOCK}"
 then
-  /usr/bin/lockfile-create -r 100 ${WINEPREFIX}
+  /usr/bin/lockfile-create -r 1000 ${WINEPREFIX}
   /usr/bin/wine "$@"
   /usr/bin/lockfile-remove ${WINEPREFIX}
 else
