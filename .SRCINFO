@@ -6,7 +6,7 @@ pkgbase = kahlo
 	arch = any
 	license = GPL3
 	depends = python>=3.8.0
-	depends = youtube-dl>=2020.07.28
+	depends = youtube-dl>=2020.09.14
 	source = kahlo-0.1.0-1.tar.gz::https://gitlab.com/dpeukert/kahlo/-/archive/0.1.0/kahlo-0.1.0.tar.gz
 	sha256sums = 2e1c45d74fded133f80e3a02fc6750a3bf8389c7995cf9b405a130be2910a878
 
