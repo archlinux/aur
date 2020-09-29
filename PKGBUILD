@@ -1,9 +1,8 @@
-# Maintainer: S Stewart <tda@null.net>
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="koalalauncher"
-pkgver="1.0.0"
+pkgver="1.0.0.1"
 pkgrel=1
-commitsha="cf8bb600f5c61e4b9462d22d5cc3b4230bed2bc6"
+commitsha="b41457b4c579568bee7dfa3f539130beff24cb81"
 arch=('x86_64')
 pkgdesc="Koala Launcher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://koalalauncher.netlify.app"
