@@ -1,0 +1,25 @@
+From 81d5c7f1602cf355684d70a5e3449fefccfc44b8 Mon Sep 17 00:00:00 2001
+From: Hugo Hromic <hhromic@gmail.com>
+Date: Mon, 1 Jun 2020 18:45:16 +0100
+Subject: [PATCH] Add missing include directive for QPainterPath
+
+* Not implicit anymore since Qt 5.15
+---
+ src/entities/jumper.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/entities/jumper.cpp b/src/entities/jumper.cpp
+index 5d4b31e0..edd38fa9 100644
+--- a/src/entities/jumper.cpp
++++ b/src/entities/jumper.cpp
+@@ -17,6 +17,7 @@
+ #include "entities/jumper.h"
+ #include "map_model.h"
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ namespace SolarusEditor {
+ 
+-- 
+GitLab
+

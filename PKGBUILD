@@ -1,42 +1,41 @@
-# Maintainer: Maxs <max dot van dot den dot branden @t gmail dot com>
-pkgname="solarus-quest-editor"
-pkgver="1.6.0"
-pkgrel="2"
-epoch=
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: Maxs <max dot van dot den dot branden @t gmail dot com>
+
+pkgname=solarus-quest-editor
+pkgver=1.6.4
+pkgrel=1
 pkgdesc="A graphical user interface to create and modify quests for the Solarus engine."
 arch=("i686" "x86_64")
-url="http://www.solarus-games.org/"
+url="https://www.solarus-games.org/"
 license=("GPL" "custom")
-groups=()
 depends=("solarus" "qt5-base" "qt5-tools" "glm")
 makedepends=("cmake" "zip")
 checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://gitlab.com/solarus-games/$pkgname/-/archive/v$pkgver.tar.gz")
-noextract=()
-md5sums=("405466fc52f7d22cb271bdf6e4193b16")
-commit=("cfbcf8a3bf22968c0fef1b431edcf2d19be7c1e3")
+source=("https://gitlab.com/solarus-games/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
+        "qpainter-include.patch")
+sha256sums=('741f44c4e04316b67c9ec3fba636526c1013d61b32a23343f8a655e8a50f9ac7'
+            '02eb7a944b2161d471a1f14230da9f292cd29a8ac6427d331011b749efe7de47')
+
+prepare() {
+  cd "$srcdir/$pkgname-v$pkgver"
+
+  patch -p1 < "$srcdir/qpainter-include.patch"
+}
 
 build() {
-  cd "$srcdir/$pkgname-v$pkgver-$commit"
+  mkdir build
+  cd build
 
-  cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX="/usr" .
+  cmake \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_INSTALL_PREFIX="/usr" \
+    "../$pkgname-v$pkgver"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-v$pkgver-$commit"
+  cd "$srcdir/build"
 
   make DESTDIR="${pkgdir}/" install
-  install -Dm644 "license.txt" "$pkgdir/usr/share/licences/$pkgname/license.txt"
-  install -Dm644 "images/logo/sqe-logo.png" "$pkgdir/usr/share/pixmaps/sqe-logo.png"
-  install -Dm644 "resources/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$srcdir/$pkgname-v$pkgver/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 }
-
