@@ -1,7 +1,7 @@
 pkgbase = koalalauncher-bin
 	pkgdesc = Koala Launcher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://koalalauncher.netlify.app
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = koalalauncher-bin
 	depends = libindicator-gtk3
 	depends = libappindicator-gtk3
 	conflicts = koalalauncher
-	source_x86_64 = KoalaLauncher-linux-setup.zip::https://github.com/KoalaDevs/KoalaLauncher/releases/download/v1.0.1/KoalaLauncher-linux-setup.zip
+	source_x86_64 = KoalaLauncher-1.0.1.zip::https://github.com/KoalaDevs/KoalaLauncher/releases/download/v1.0.1/KoalaLauncher-linux-setup.zip
 	source_x86_64 = icon.png::https://raw.githubusercontent.com/KoalaDevs/KoalaLauncher/master/public/icon.png
 	md5sums_x86_64 = SKIP
 	md5sums_x86_64 = SKIP
