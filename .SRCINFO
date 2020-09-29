@@ -1,0 +1,18 @@
+pkgbase = 3mux
+	pkgdesc = Terminal multiplexer inspired by i3
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/aaronjanse/3mux
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = 3mux-1.0.1.tar.gz::https://github.com/aaronjanse/3mux/archive/v1.0.1.tar.gz
+	sha256sums = 925e23850ad69ce12069bb4c48af6e70c820bbd4bfe5a83ebf72eaefb9d8ab83
+
+pkgname = 3mux
+
