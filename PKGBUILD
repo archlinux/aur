@@ -1,8 +1,8 @@
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="koalalauncher"
-pkgver="1.0.0.1"
+pkgver="1.0.1"
 pkgrel=1
-commitsha="b41457b4c579568bee7dfa3f539130beff24cb81"
+commitsha="510398df44ac0f2e995a34569630e75748ece788"
 arch=('x86_64')
 pkgdesc="Koala Launcher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://koalalauncher.netlify.app"
@@ -19,14 +19,14 @@ prepare() {
     git checkout origin/master
     git switch master
     git reset --hard ${commitsha}
-    
+
     # generate .desktop
     gendesk --pkgname "Koala Launcher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
     mv "Koala Launcher.desktop" "${pkgname}.desktop"
 
     # put yarn in testing mode
     cd "${srcdir}/${pkgname}"
-    echo "RELEASE_TESTING=true" > .env    
+    echo "RELEASE_TESTING=true" > .env
 }
 
 build() {
@@ -49,7 +49,7 @@ package() {
     # install the icon
     install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
     cp -Rr "${srcdir}/${pkgname}/public/icon.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
-    
+
     # fix file permissions - all files as 644 - directories as 755
     find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
     find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
