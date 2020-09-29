@@ -1,44 +1,29 @@
 # Maintainer: Denton Liu <liu.denton@gmail.com>
 
 pkgname=tetrio-desktop
-pkgver=1.0.0
+pkgver=4.0.0
 # sometimes, they release without bumping the version
-_release=2
-pkgrel=8
+_release=20200928
+_licenserelease=20200928
+pkgrel=1
 pkgdesc='TETR.IO desktop client'
 arch=('x86_64')
-license=('unknown' 'APACHE' 'MIT')
+license=('custom')
 url='https://tetr.io/'
-source=("$pkgname-$pkgver-$_release.tar.gz::https://tetr.io/about/desktop/builds/TETR.IO%20Setup.tar.gz"
-        # XXX: This should be called tetrio-desktop.desktop, however due to a
-        # bug in xdg-settings, desktop files with - are apparently mishandled.
-        # https://github.com/electron/electron/issues/20382
-        tetrio.desktop
-        tetrio-desktop.png)
-sha256sums=('cb23feff26a37e5a51036c59d97af97ae72323f7023faec64e8d90afa86802ef'
-            '01c2a44867113cf7161251a9228224579401fdecb2ceb99c659664038763aeaa'
-            'e7b9d7639b4b51e43836a08dab3fcf8055b12dfb87f18d60ded93963146743f0')
-noextract=("$pkgname-$pkgver-$_release.tar.gz")
+source=("$pkgname-$pkgver-$_release.deb::https://tetr.io/about/desktop/builds/TETR.IO%20Setup.deb"
+        "LICENSE-$_licenserelease.html::https://tetr.io/about/terms/")
+sha256sums=('54a8ed7eb5babf9ede22a3a59556241005cb6de7f06f4dbde00308f26f521e36'
+            'caab771d948c7bf8cc924481dceaae9f6174d74ce70f5a0d7e8433525665eccf')
 
 package() {
     cd "$srcdir"
 
-    mkdir "$pkgdir/opt"
-    tar -xzf "$pkgname-$pkgver-$_release.tar.gz" -C "$pkgdir/opt"
-    mv "$pkgdir/opt/$pkgname-$pkgver" "$pkgdir/opt/$pkgname"
-
-    rm "$pkgdir/opt/$pkgname/LICENSES.chromium.html"
-    rm "$pkgdir/opt/$pkgname/LICENSE.electron.txt"
-
-    # fix permissions
-    chmod -R 644 "$pkgdir/opt/$pkgname"
-    find "$pkgdir/opt/$pkgname" \
-        \( -type d -o -name '*.so' -o -name tetrio-desktop -o -name chrome-sandbox \) \
-        -exec chmod 755 {} +
-
-    install -Dm644 tetrio-desktop.png "$pkgdir/usr/share/pixmaps/tetrio-desktop.png"
-    install -Dm644 tetrio.desktop "$pkgdir/usr/share/applications/tetrio.desktop"
+    tar -xf data.tar.xz -C "$pkgdir"
 
     mkdir -p "$pkgdir/usr/bin"
-    ln -sf /opt/$pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"
+    ln -sf "/opt/TETR.IO/$pkgname" "$pkgdir/usr/bin/$pkgname"
+
+    install -Dm 644 "LICENSE-$_licenserelease.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.html"
+
+    chmod -R go-w "$pkgdir"
 }
