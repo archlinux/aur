@@ -7,8 +7,8 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=80.0.1
-pkgrel=1
+pkgver=81.0
+pkgrel=2
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -16,7 +16,7 @@ url="https://www.mozilla.org/firefox/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm jack gtk2 nodejs cbindgen nasm
-             python-setuptools python-psutil lld)
+             python-setuptools python-psutil python-zstandard lld)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -27,13 +27,17 @@ conflicts=("firefox")
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
         0001-Use-remoting-name-for-GDK-application-names.patch
+        0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch
+        0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch
         $_pkgname.desktop
         unity-menubar.patch)
-sha256sums=('596b085e32a2d683ba960e161ea65c6271f90f576d4bf956e0d48e83af992c21'
+sha256sums=('9328745012178aee5a4f47c833539f7872cc6e0f20a853568a313e60cabd1ec8'
             'SKIP'
-            '3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75'
+            'e0eaec8ddd24bbebf4956563ebc6d7a56f8dada5835975ee4d320dd3d0c9c442'
+            'c2489a4ad3bfb65c064e07180a1de9a2fbc3b1b72d6bc4cd3985484d1b6b7b29'
+            '52cc26cda4117f79fae1a0ad59e1404b299191a1c53d38027ceb178dab91f3dc'
             '34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c'
-            '7945c168afbcf99027ebc8060eb1a31fcdb4a4cee7eb05daeb5359ae51fdba8b')
+            '70d30136888b08283f58e15b97109d02adfddab0544831aaecc696f9b09750da')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -54,6 +58,11 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
+
+  # https://bugs.archlinux.org/task/67978
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1660901
+  patch -Np1 -i ../0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch
+  patch -Np1 -i ../0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch
 
   # actual appmenu patch from ubuntu repos
   # http://archive.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_80.0+build2-0ubuntu0.16.04.1.debian.tar.xz
@@ -113,6 +122,8 @@ build() {
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
+  export MOZ_ENABLE_FULL_SYMBOLS=1
+  export MACH_USE_SYSTEM_PYTHON=1
 
   # LTO needs more open files
   ulimit -n 4096
@@ -220,7 +231,7 @@ END
   if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
     make -C obj uploadsymbols
   else
-  cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.zip
+    cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.tar.zst
   fi
 }
 

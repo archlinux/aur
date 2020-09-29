@@ -14,7 +14,7 @@
              <menu id="file-menu" data-l10n-id="menu-file">
 --- a/browser/base/content/browser.js
 +++ b/browser/base/content/browser.js
-@@ -6289,11 +6289,17 @@ function onViewToolbarsPopupShowing(aEve
+@@ -6316,11 +6316,17 @@ function onViewToolbarsPopupShowing(aEve
  
    let toolbarNodes = gNavToolbox.querySelectorAll("toolbar");
  
@@ -109,7 +109,7 @@
  
 --- a/toolkit/content/xul.css
 +++ b/toolkit/content/xul.css
-@@ -200,6 +200,13 @@ toolbar[type="menubar"] {
+@@ -209,6 +209,13 @@ toolbar[type="menubar"] {
  }
  %endif
  
@@ -125,7 +125,7 @@
  }
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -55,6 +55,15 @@ UNIFIED_SOURCES += [
+@@ -56,6 +56,15 @@ UNIFIED_SOURCES += [
  
  SOURCES += [
      'MediaKeysEventSourceFactory.cpp',
@@ -141,9 +141,9 @@
      'nsWindow.cpp', # conflicts with X11 headers
      'WaylandVsyncSource.cpp', # conflicts with X11 headers
  ]
-@@ -135,6 +144,7 @@ FINAL_LIBRARY = 'xul'
- LOCAL_INCLUDES += [
+@@ -136,6 +145,7 @@ LOCAL_INCLUDES += [
      '/layout/base',
+     '/layout/forms',
      '/layout/generic',
 +    '/layout/style',
      '/layout/xul',
@@ -319,7 +319,7 @@
 +#endif /* __nsDbusmenu_h__ */
 --- /dev/null
 +++ b/widget/gtk/nsMenu.cpp
-@@ -0,0 +1,796 @@
+@@ -0,0 +1,795 @@
 +/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 +/* vim:expandtab:shiftwidth=4:tabstop=4:
 + */
@@ -334,7 +334,6 @@
 +#include "mozilla/Assertions.h"
 +#include "mozilla/ComputedStyleInlines.h"
 +#include "mozilla/EventDispatcher.h"
-+#include "mozilla/GuardObjects.h"
 +#include "mozilla/MouseEvents.h"
 +#include "mozilla/PresShell.h"
 +#include "mozilla/PresShellInlines.h"
@@ -3971,7 +3970,7 @@
 +#endif /* __nsMenuSeparator_h__ */
 --- /dev/null
 +++ b/widget/gtk/nsNativeMenuDocListener.cpp
-@@ -0,0 +1,350 @@
+@@ -0,0 +1,347 @@
 +/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 +/* vim:expandtab:shiftwidth=4:tabstop=4:
 + */
@@ -4005,11 +4004,9 @@
 +{
 +public:
 +    DispatchHelper(nsNativeMenuDocListener *aListener,
-+                   nsIContent *aContent
-+                   MOZ_GUARD_OBJECT_NOTIFIER_PARAM) :
++                   nsIContent *aContent) :
 +                   mObserver(nullptr)
 +    {
-+        MOZ_GUARD_OBJECT_NOTIFIER_INIT;
 +        if (aContent == aListener->mLastSource) {
 +            mObserver = aListener->mLastTarget;
 +        } else {
@@ -4029,7 +4026,6 @@
 +
 +private:
 +    nsNativeMenuChangeObserver *mObserver;
-+    MOZ_DECL_USE_GUARD_OBJECT_NOTIFIER
 +};
 +
 +NS_IMPL_ISUPPORTS(nsNativeMenuDocListener, nsIMutationObserver)
@@ -4324,7 +4320,7 @@
 +}
 --- /dev/null
 +++ b/widget/gtk/nsNativeMenuDocListener.h
-@@ -0,0 +1,157 @@
+@@ -0,0 +1,152 @@
 +/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 +/* vim:expandtab:shiftwidth=4:tabstop=4:
 + */
@@ -4336,7 +4332,6 @@
 +#define __nsNativeMenuDocListener_h__
 +
 +#include "mozilla/Attributes.h"
-+#include "mozilla/GuardObjects.h"
 +#include "mozilla/RefPtr.h"
 +#include "mozilla/UniquePtr.h"
 +#include "nsDataHashtable.h"
@@ -4391,9 +4386,8 @@
 +    class MOZ_STACK_CLASS BlockUpdatesScope
 +    {
 +    public:
-+        BlockUpdatesScope(MOZ_GUARD_OBJECT_NOTIFIER_ONLY_PARAM)
++        BlockUpdatesScope()
 +        {
-+            MOZ_GUARD_OBJECT_NOTIFIER_INIT;
 +            nsNativeMenuDocListener::AddUpdateBlocker();
 +        }
 +
@@ -4401,9 +4395,6 @@
 +        {
 +            nsNativeMenuDocListener::RemoveUpdateBlocker();
 +        }
-+
-+    private:
-+        MOZ_DECL_USE_GUARD_OBJECT_NOTIFIER
 +    };
 +
 +private:
@@ -5077,7 +5068,7 @@
 +#endif /* __nsNativeMenuService_h__ */
 --- a/widget/gtk/nsWindow.cpp
 +++ b/widget/gtk/nsWindow.cpp
-@@ -6159,6 +6159,10 @@ void nsWindow::HideWindowChrome(bool aSh
+@@ -6039,6 +6039,10 @@ void nsWindow::HideWindowChrome(bool aSh
    SetWindowDecoration(aShouldHide ? eBorderStyle_none : mBorderStyle);
  }
  
@@ -5099,7 +5090,7 @@
  #undef LOG
  #ifdef MOZ_LOGGING
  
-@@ -187,6 +189,8 @@ class nsWindow final : public nsBaseWidg
+@@ -177,6 +179,8 @@ class nsWindow final : public nsBaseWidg
                                    nsIScreen* aTargetScreen = nullptr) override;
    virtual void HideWindowChrome(bool aShouldHide) override;
  
@@ -5108,7 +5099,7 @@
    /**
     * GetLastUserInputTime returns a timestamp for the most recent user input
     * event.  This is intended for pointer grab requests (including drags).
-@@ -721,6 +725,8 @@ class nsWindow final : public nsBaseWidg
+@@ -698,6 +702,8 @@ class nsWindow final : public nsBaseWidg
  
    mozilla::UniquePtr<mozilla::CurrentX11TimeGetter> mCurrentTimeGetter;
    static CSDSupportLevel sCSDSupportLevel;
@@ -5154,7 +5145,7 @@
  import sys
  
  # Static atom definitions, used to generate nsGkAtomList.h.
-@@ -2541,7 +2542,7 @@ STATIC_ATOMS = [
+@@ -2549,7 +2550,7 @@ STATIC_ATOMS = [
      InheritingAnonBoxAtom("AnonBox_mozSVGForeignContent", ":-moz-svg-foreign-content"),
      InheritingAnonBoxAtom("AnonBox_mozSVGText", ":-moz-svg-text"),
      # END ATOMS

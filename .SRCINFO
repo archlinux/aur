@@ -1,7 +1,7 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 80.0.1
-	pkgrel = 1
+	pkgver = 81.0
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL
@@ -26,6 +26,7 @@ pkgbase = firefox-appmenu
 	makedepends = nasm
 	makedepends = python-setuptools
 	makedepends = python-psutil
+	makedepends = python-zstandard
 	makedepends = lld
 	depends = gtk3
 	depends = libxt
@@ -40,22 +41,26 @@ pkgbase = firefox-appmenu
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=80.0.1
+	provides = firefox=81.0
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://archive.mozilla.org/pub/firefox/releases/80.0.1/source/firefox-80.0.1.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/80.0.1/source/firefox-80.0.1.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/81.0/source/firefox-81.0.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/81.0/source/firefox-81.0.source.tar.xz.asc
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
+	source = 0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch
+	source = 0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch
 	source = firefox.desktop
 	source = unity-menubar.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 596b085e32a2d683ba960e161ea65c6271f90f576d4bf956e0d48e83af992c21
+	sha256sums = 9328745012178aee5a4f47c833539f7872cc6e0f20a853568a313e60cabd1ec8
 	sha256sums = SKIP
-	sha256sums = 3bb7463471fb43b2163a705a79a13a3003d70fff4bbe44f467807ca056de9a75
+	sha256sums = e0eaec8ddd24bbebf4956563ebc6d7a56f8dada5835975ee4d320dd3d0c9c442
+	sha256sums = c2489a4ad3bfb65c064e07180a1de9a2fbc3b1b72d6bc4cd3985484d1b6b7b29
+	sha256sums = 52cc26cda4117f79fae1a0ad59e1404b299191a1c53d38027ceb178dab91f3dc
 	sha256sums = 34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c
-	sha256sums = 7945c168afbcf99027ebc8060eb1a31fcdb4a4cee7eb05daeb5359ae51fdba8b
+	sha256sums = 70d30136888b08283f58e15b97109d02adfddab0544831aaecc696f9b09750da
 
 pkgname = firefox-appmenu
 
