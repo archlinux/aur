@@ -1,8 +1,8 @@
 pkgbase = koalalauncher-bin
-	pkgdesc = GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
+	pkgdesc = Koala Launcher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://gdevs.io
+	url = https://koalalauncher.netlify.app
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
