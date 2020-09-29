@@ -7,12 +7,13 @@ pkgdesc="Java Embedded Python - Embeds CPython in Java through JNI"
 arch=('any')
 url="https://github.com/ninia/jep"
 license=('ZLIB')
-depends=('python-setuptools' 'python-numpy')
+depends=('python-setuptools' 'python-numpy' 'java-runtime')
 makedepends=('python-setuptools')
 source=(https://files.pythonhosted.org/packages/5c/4c/ab6253ba5409ee787604dcbf1b02733aeed03ce0cf7d85a9ab5cfd4956b2/jep-$pkgver.tar.gz)
 sha256sums=('7a15b6279b703c8af6b1f002186c542770f9059e8b3fe724914f664e67b7e595')
 
 build() {
+  export JAVA_HOME=${JAVA_HOME:-/usr/lib/jvm/default}
   cd jep-$pkgver
   python3 setup.py build
 }
