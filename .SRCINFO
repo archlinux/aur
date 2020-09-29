@@ -1,6 +1,6 @@
 pkgbase = clair
 	pkgdesc = Vulnerability Static Analysis for Containers
-	pkgver = 4.0.0.alpha.6
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://github.com/coreos/clair
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = clair
 	depends = rpm-tools
 	depends = postgresql
 	depends = glibc
-	source = clair-4.0.0.alpha.6.tar.gz::https://github.com/quay/clair/archive/v4.0.0-alpha.6.tar.gz
-	sha256sums = f280ce47977c2ac41ec23569a7f142ead55968ed10fe2cf3e5986c18e442339b
+	source = clair-2.1.5.tar.gz::https://github.com/quay/clair/archive/v2.1.5.tar.gz
+	sha256sums = 8489857e7e9e79e3e33b8ad6893d8773f8e8f0b9879058a012fead2b8290c545
 
 pkgname = clair
 
