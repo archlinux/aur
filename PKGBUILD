@@ -1,7 +1,7 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-polkit-agent-git
-pkgver=5.3.0.1.r5.g89be13b
+pkgver=5.3.0.2.r0.g89be13b
 pkgrel=1
 pkgdesc='Deepin Polkit Agent'
 arch=('x86_64')
