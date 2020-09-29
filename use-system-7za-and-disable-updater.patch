@@ -2,7 +2,7 @@ diff --git i/src/app/desktop/utils/index.js w/src/app/desktop/utils/index.js
 index 9d23894..37ae04d 100644
 --- i/src/app/desktop/utils/index.js
 +++ w/src/app/desktop/utils/index.js
-@@ -302,14 +302,7 @@ export const isLatestJavaDownloaded = async (meta, userData, retry) => {
+@@ -301,14 +301,7 @@ export const isLatestJavaDownloaded = async (meta, userData, retry) => {
    return isValid;
  };
  
@@ -74,7 +74,7 @@ index 38ac891..8113d39 100644
  let mainWindow;
  let tray;
  let watcher;
-@@ -419,80 +381,3 @@ ipcMain.handle('calculateMurmur2FromPath', (e, filePath) => {
+@@ -419,78 +381,3 @@ ipcMain.handle('calculateMurmur2FromPath', (e, filePath) => {
      });
    });
  });
@@ -83,9 +83,7 @@ index 38ac891..8113d39 100644
 -
 -if (process.env.REACT_APP_RELEASE_TYPE === 'setup') {
 -  autoUpdater.autoDownload = false;
--  // False for now
--  // autoUpdater.allowDowngrade = allowUnstableReleases;
--  autoUpdater.allowDowngrade = false;
+-  autoUpdater.allowDowngrade = !allowUnstableReleases;
 -  autoUpdater.allowPrerelease = allowUnstableReleases;
 -  autoUpdater.setFeedURL({
 -    owner: 'gorilla-devs',
