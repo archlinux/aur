@@ -19,6 +19,7 @@ prepare() {
 }
 package() {
   mkdir -p "$pkgdir"/opt "$pkgdir"/usr/bin
+  install -Dm644 "$srcdir/$pkgname"/icon.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/"$pkgname".svg
   mv "$srcdir/$pkgname" "$pkgdir"/opt/"$pkgname"
   ln -s /opt/workcraft/workcraft "$pkgdir"/usr/bin/workcraft
   install -Dm644 "$pkgname".desktop "$pkgdir"/usr/share/applications/"$pkgname".desktop
