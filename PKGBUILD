@@ -2,7 +2,7 @@
 
 pkgname=redditgtk-git
 pkgver=r70.8f21801
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Reddit gtk client"
 arch=('any')
@@ -18,6 +18,7 @@ depends=(
 	'python-mistune'
 	'python-pillow'
 	'python-praw'
+	'webkit2gtk'
 )
 makedepends=('meson' 'git' 'gobject-introspection')
 checkdepends=()
