@@ -3,7 +3,7 @@
 
 pkgname=mpz
 pkgver=0.0.14
-pkgrel=9
+pkgrel=10
 pkgdesc='Music player for the large local collections'
 arch=('x86_64')
 url="https://github.com/olegantonyan/mpz"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt5-multimedia' 'qt5-x11extras' 'hicolor-icon-theme')
 provides=('mpz')
 source=(https://github.com/olegantonyan/mpz/archive/master.zip)
-sha256sums=('3d0e1a0a00c7b21069cc1654221757406ff0f6e0d8841c1c7402c0eb4c312bcb')
+sha256sums=('fcc5c4ee504d24753b370f66b7e82ab12d961899fc90f5443276d6d1966dc4ec')
 
 build() {
     cd $pkgname-master
