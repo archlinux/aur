@@ -3,15 +3,15 @@
 
 pkgname=dvb-fe-tda10046-fw
 pkgver=0.1
-pkgrel=7
+pkgrel=8
 license=('custom')
 pkgdesc="Firmware dvb-fe-tda10046.fw for Philips TDA10046H DVB-T"
 arch=(any)
 depends=()
 makedepends=('perl' 'unzip')
-source=('http://www.kernel.org/doc/Documentation/dvb/get_dvb_firmware')
+source=('https://raw.githubusercontent.com/torvalds/linux/master/scripts/get_dvb_firmware')
 url="http://www.kernel.org/"
-md5sums=('037013f80c7653969b2c0b94f4de1a63')
+md5sums=('SKIP')
 
 build() {
   cd $srcdir/ || return 1
