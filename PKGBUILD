@@ -1,12 +1,8 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: printfn <printfn@users.noreply.github.com>
+
 pkgname=fend
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Arbitrary-precision unit-aware calculator"
 arch=('x86_64')
@@ -14,7 +10,7 @@ url="https://github.com/printfn/fend-rs"
 license=('GPL3' 'custom:MIT')
 groups=()
 depends=('gcc-libs')
-makedepends=('rust>=1.46.0')
+makedepends=('rust')
 checkdepends=()
 optdepends=()
 provides=()
