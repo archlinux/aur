@@ -2,7 +2,7 @@
 
 pkgname=krita-beta
 _basever=4.4.0
-_subver=beta1
+_subver=beta2
 pkgver="$_basever.$_subver"
 pkgrel=1
 pkgdesc="Edit and paint images - beta release"
@@ -16,7 +16,7 @@ provides=(krita)
 conflicts=(krita)
 _target="krita-$_basever-$_subver"
 source=("https://download.kde.org/unstable/krita/$_basever-$_subver/$_target.tar.xz")
-sha256sums=('e5254f9b5d84a7885ae8ef93fb79448acf0bf9f46fad1d537867419ddbf0455c')
+sha256sums=('544c375f03df7f80b345885909a5d12de8add53d39c3375a221346caebec8ae6')
 
 build() {
     cmake -B build -S $_target
