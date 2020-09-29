@@ -2,7 +2,7 @@
 # Builds the fortran part of the shtools library
 # Maintainer: Roelof Rietbroek <roelof@wobbly.earth>
 pkgname=shtools-fortran
-pkgver=4.5.4
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="Tools for working with spherical harmonics"
 arch=('any')
@@ -13,7 +13,7 @@ depends=("fftw" "blas" "lapack")
 makedepends=("gcc-fortran")
 source=("https://github.com/SHTOOLS/SHTOOLS/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=('5ed51cf712fe52f1e48bea46199b456b')
+md5sums=('746934fcfaf18d6702bad98480a6aace')
 
 validpgpkeys=()
 
@@ -26,7 +26,7 @@ build() {
     cd ${srcdir}/SHTOOLS-${pkgver}/
     make fortran 
     make fortran-mp 
-    make doc 
+    #make doc 
    cd ${_startdir}
 }
 
@@ -39,7 +39,7 @@ check() {
 
 package() {
     cd ${srcdir}/SHTOOLS-${pkgver}/
-    make DESTDIR="$pkgdir/" PREFIX=usr/ install-fortran
+    make DESTDIR="$pkgdir/" PREFIX=usr/ install
     cd ${_startdir}
 }
 
