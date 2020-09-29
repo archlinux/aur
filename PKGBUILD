@@ -3,7 +3,7 @@
 
 _pkgname=penlight
 pkgname=("lua-$_pkgname-git" "lua53-$_pkgname-git" "lua52-$_pkgname-git" "lua51-$_pkgname-git")
-pkgver=1.8.0.r0.g76079c1
+pkgver=1.9.2.r0.gce0bdba
 pkgrel=1
 pkgdesc='Lua libraries for on input data handling, functional programming, and OS interface'
 url='https://tieske.github.io/Penlight'
@@ -11,7 +11,7 @@ arch=('any')
 license=('MIT')
 _lua_deps=('filesystem')
 makedepends=('lua' 'lua53' 'lua52' 'lua51')
-checkdepends=('lua' "${_lua_deps[@]/#/lua-}")
+checkdepends=("${_lua_deps[@]/#/lua-}")
 source=("$_pkgname::git+https://github.com/Tieske/Penlight.git")
 sha256sums=('SKIP')
 
@@ -23,8 +23,8 @@ pkgver() {
 
 check() {
   cd "$_pkgname"
-  export LUA_PATH="$PWD/lua/?/init.lua;$PWD/lua/?.lua;$(lua -e 'print(package.path)')"
-  lua run.lua
+  export LUA_PATH="./lua/?/init.lua;./lua/?.lua;;"
+  lua run.lua tests
 }
 
 _package_helper() {
