@@ -1,16 +1,15 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=asciigraph
-pkgver=0.4.1
-pkgrel=4
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Go package to make lightweight ASCII line graph ╭┈╯ in command line apps with no other dependencies"
 arch=('x86_64')
 url='https://github.com/guptarohit/asciigraph'
 license=('BSD')
-depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/guptarohit/asciigraph/archive/v${pkgver}.tar.gz")
-sha256sums=('5f8dc2e2dcfb253ebc0b23e824a590ae38e20a4d180393d175e25fa0f21d547d')
+sha256sums=('2149a341868f128c78a997a93a37baf99fd8080dfe3e6219fe9370febc6a05f5')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -24,6 +23,9 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export GOPATH="${srcdir}"/go
+  export PATH=$PATH:$GOPATH/bin
+  go get -d -v ./...
   go build -o build ./cmd/...
 }
 
