@@ -23,7 +23,7 @@ QPANDA_JOBS=12
 pkgname="qpanda-2-git"
 pkgdesc="QPanda 2 is an open source quantum computing framework developed by OriginQC that can be used to build, run, and optimize quantum algorithms."
 
-pkgver=v2.1.3.r6.g2a04a70
+pkgver=v2.1.4.r0.g1092d38
 arch=('x86_64' )
 url="https://github.com/OriginQ/qpanda-2"
 license=('Apache2' )
