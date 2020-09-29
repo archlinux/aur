@@ -1,7 +1,5 @@
 # Maintainer: Mike Kazantsev <mk.fraggod@gmail.com>
 
-# MINIMAL
-
 pkgname=telegram-tdlib-purple-git
 pkgver=r275.66f9c98
 pkgrel=3
