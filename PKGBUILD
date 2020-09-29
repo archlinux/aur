@@ -1,10 +1,11 @@
 # Maintainer GI Jack <GI_Jack@hackermail.com>
+
 pkgname=gtk-theme-windows-server-2003
 pkgver=1.0
-pkgrel=1
-pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines."
+pkgrel=2
+pkgdesc="GTK theme based on the appearance of Windows Server 2003"
 arch=('any')
-url="https://github.com/B00merang-Project/Windows-10"
+url="https://github.com/B00merang-Project/Windows-Server-2003"
 license=('GPLv3')
 optdepends=('gnome-themes-extra: for the GTK3 theme?'
             'gtk-engine-murrine: for the GTK2 theme')
