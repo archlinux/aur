@@ -1,3 +1,4 @@
+#!/hint/bash
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 pkgname=djv
 pkgver=2.0.8
@@ -12,62 +13,65 @@ makedepends=('cmake')
 replaces=()
 backup=()
 options=()
-source=("https://github.com/darbyjohnston/DJV/archive/$pkgver.tar.gz" "djv.desktop" "djv.sh" "CMakeLists.patch")
+source=("${pkgname}-${pkgver}.tgz::https://github.com/darbyjohnston/${pkgname^^}/archive/$pkgver.tar.gz"
+	"djv.desktop"
+	"djv.sh"
+	"disable_tests_and_examples.patch")
 noextract=()
-md5sums=('3b5df10a31591b21441ea2512da34c6b' 'SKIP' 'SKIP' 'SKIP'
-)
+sha256sums=('bee18559d8a04b361376741900f21f69c637b51306d2b504b67f125dd14fd427'
+            'ca440bc9c1713e9edb17ed5adc0456441e69af25f803c834427f23a6991e2eca'
+            'e2bb0b7ebccd1e645d9a62f0c6dadafb94705766c787a2ea38b91b1da4e95cf7'
+            'edd3888cc651edcd2cc5d03fcde44283f75de7aee04cc9f02eafdb108140dfdf')
 
 
 prepare() {
-	if [ -d "${pkgname}-${pkgver}" ]; then rm -R ${pkgname}-${pkgver}; fi
-	tar -xzf ${pkgver}.tar.gz
-	mv DJV-${pkgver} ${pkgname}-${pkgver}
-	cd "$srcdir/"
-	export DJV_BUILD=$PWD
-	export LD_LIBRARY_PATH=$DJV_BUILD/DJV-install/lib:$LD_LIBRARY_PATH
-	
-	patch ${pkgname}-${pkgver}/CMakeLists.txt < CMakeLists.patch
+	patch -b ${pkgname^^}-${pkgver}/CMakeLists.txt -i disable_tests_and_examples.patch
 	
 	# Remove assert macro
-	sed -i '44,51d' ${pkgname}-${pkgver}/lib/djvCore/Core.h
-	sed -i '44i#ifdef DJV_ASSERT \n #undef DJV_ASSERT\n#endif\n#define DJV_ASSERT(value)' ${pkgname}-${pkgver}/lib/djvCore/Core.h
+	sed -i '44,51d' ${pkgname^^}-${pkgver}/lib/djvCore/Core.h
+	sed -i '44i#ifdef DJV_ASSERT \n #undef DJV_ASSERT\n#endif\n#define DJV_ASSERT(value)' ${pkgname^^}-${pkgver}/lib/djvCore/Core.h
 }
 
 build() {
-	cd "$srcdir/"
-	ncores=$(grep -c ^processor /proc/cpuinfo)
-	
-	
-	mkdir -p DJV-third-party
-	cd DJV-third-party
-	cmake ../${pkgname}-${pkgver}/third-party -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$DJV_BUILD/DJV-install
-	cmake --build . -j ${ncores}
-	cmake --build . -j ${ncores} --target install
-	cd ..
-	
-	mkdir -p DJV-Release
-	cd DJV-Release
-	cmake ../${pkgname}-${pkgver} -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$DJV_BUILD/DJV-install -DCMAKE_PREFIX_PATH=$DJV_BUILD/DJV-install -DCMAKE_INSTALL_RPATH=""
+	export DJV_BUILD=$PWD
+	export LD_LIBRARY_PATH=$DJV_BUILD/${pkgname^^}-install/lib:$LD_LIBRARY_PATH
 
-	cmake --build . -j ${ncores}
-	cmake --build . -j ${ncores} --target install
+	njobs=$(grep -Po -- '-j\s?[0-9]+'<<<"${MAKEFLAGS}") ||
+	njobs=$(grep -c ^processor /proc/cpuinfo)
+	
+	msg2 'Building third-party'
+	cmake -S "${pkgname^^}-${pkgver}/third-party" -B ${pkgname^^}-third-party \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX="$DJV_BUILD/${pkgname^^}-install"
+	cmake --build ${pkgname^^}-third-party -j "${njobs}"
+	cmake --build ${pkgname^^}-third-party -j "${njobs}" --target install
+	msg2 'Finish building third-party'
+	
+	msg2 'Building DJV'
+	cmake -S "${pkgname^^}-${pkgver}" -B ${pkgname^^}-Release \
+		-DJV_PYTHON=ON \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX="$DJV_BUILD/${pkgname^^}-install" \
+		-DCMAKE_PREFIX_PATH="$DJV_BUILD/${pkgname^^}-install" \
+		-DCMAKE_INSTALL_RPATH=""
 
+	cmake --build ${pkgname^^}-Release -j "${njobs}"
+	cmake --build ${pkgname^^}-Release -j "${njobs}" --target install
+	msg2 'Finish building DJV'
 }
 
 package() {
-	mkdir -p $pkgdir/opt/${pkgname}/bin
-	cp $srcdir/DJV-install/bin/djv* $pkgdir/opt/${pkgname}/bin/
-	cp -r $srcdir/DJV-install/docs $pkgdir/opt/${pkgname}/
-	cp -r $srcdir/DJV-install/etc $pkgdir/opt/${pkgname}/
-	install -D -m644 $srcdir/${pkgname}-${pkgver}/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-	install -D -m644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/etc/Icons/djv-app-icon-512.svg" "${pkgdir}/usr/share/pixmaps/djv.svg"
+	install -D -m755 "$srcdir"/${pkgname^^}-install/bin/djv* -t "$pkgdir/opt/${pkgname}/bin/"
+	cp -r "$srcdir/${pkgname^^}-install/docs" "$pkgdir/opt/${pkgname}/"
+	cp -r "$srcdir/${pkgname^^}-install/etc" "$pkgdir/opt/${pkgname}/"
+	install -D -m644 "${srcdir}/${pkgname^^}-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+	install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -D -m644 "${srcdir}/${pkgname^^}-${pkgver}/etc/Icons/djv-app-icon-512.svg" "${pkgdir}/usr/share/pixmaps/djv.svg"
 	
-	mkdir -p ${pkgdir}/usr/bin/
-	for x in djv_info djv_ls djv_test_pattern; do
-		ln -s "/opt/${pkgname}/bin/$x" "${pkgdir}/usr/bin/$x"
+	install -d -m755 "${pkgdir}/usr/bin/"
+	for file in "${pkgdir}/opt/${pkgname}"/bin/*; do
+		ln -s "/opt/${pkgname}/bin/${file##*/}" "${pkgdir}/usr/bin/${file##*/}"
 	done
 	
 	install -D -m655 "${srcdir}/djv.sh" "${pkgdir}/usr/bin/djv"
-	
 }

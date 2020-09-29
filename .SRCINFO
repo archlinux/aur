@@ -13,14 +13,14 @@ pkgbase = djv
 	depends = ffmpeg
 	depends = openexr
 	depends = rtaudio
-	source = https://github.com/darbyjohnston/DJV/archive/2.0.8.tar.gz
+	source = djv-2.0.8.tgz::https://github.com/darbyjohnston/DJV/archive/2.0.8.tar.gz
 	source = djv.desktop
 	source = djv.sh
-	source = CMakeLists.patch
-	md5sums = 3b5df10a31591b21441ea2512da34c6b
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	source = disable_tests_and_examples.patch
+	sha256sums = bee18559d8a04b361376741900f21f69c637b51306d2b504b67f125dd14fd427
+	sha256sums = ca440bc9c1713e9edb17ed5adc0456441e69af25f803c834427f23a6991e2eca
+	sha256sums = e2bb0b7ebccd1e645d9a62f0c6dadafb94705766c787a2ea38b91b1da4e95cf7
+	sha256sums = edd3888cc651edcd2cc5d03fcde44283f75de7aee04cc9f02eafdb108140dfdf
 
 pkgname = djv
 
