@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=codelobster
-pkgver=1.9.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc='Free cross-platform IDE for PHP/HTML/CSS/JavaScript development'
 arch=('x86_64')
@@ -9,8 +9,7 @@ url="http://www.codelobster.com"
 license=("custom:${pkgname}")
 provides=('codelobster-ide')
 options=('!strip')
-depends=('rtmpdump'
-         'libxcomposite'
+depends=('libxcomposite'
          'qt5-svg'
          'hicolor-icon-theme'
          'libxrandr'
@@ -23,8 +22,8 @@ depends=('rtmpdump'
          'libxcursor')
 source=("${pkgname}-${pkgver}.rpm::http://codelobsteride.com/download/codelobsteride-${pkgver}-1.x86_64.rpm"
         'LICENSE')
-sha256sums=('6f52b8249dcb57f1e6ac0a2d7537031fdcc188c6dd0e7ba7807fdc2c9cda47aa'
-            'SKIP')
+sha256sums=('97b01ad923863b487fa4bf111c0cfa10c39c7fa4ce7c891a82ed3b0eb9de7908'
+            '70ce1193a0036cff727f29e1c94bd3ddd61599993ba5d130491037b91158a73a')
 
 package() {
  mv "${srcdir}/opt" "${pkgdir}"

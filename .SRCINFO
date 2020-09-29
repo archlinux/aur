@@ -1,11 +1,10 @@
 pkgbase = codelobster
 	pkgdesc = Free cross-platform IDE for PHP/HTML/CSS/JavaScript development
-	pkgver = 1.9.0
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = http://www.codelobster.com
 	arch = x86_64
 	license = custom:codelobster
-	depends = rtmpdump
 	depends = libxcomposite
 	depends = qt5-svg
 	depends = hicolor-icon-theme
@@ -19,10 +18,10 @@ pkgbase = codelobster
 	depends = libxcursor
 	provides = codelobster-ide
 	options = !strip
-	source = codelobster-1.9.0.rpm::http://codelobsteride.com/download/codelobsteride-1.9.0-1.x86_64.rpm
+	source = codelobster-1.10.2.rpm::http://codelobsteride.com/download/codelobsteride-1.10.2-1.x86_64.rpm
 	source = LICENSE
-	sha256sums = 6f52b8249dcb57f1e6ac0a2d7537031fdcc188c6dd0e7ba7807fdc2c9cda47aa
-	sha256sums = SKIP
+	sha256sums = 97b01ad923863b487fa4bf111c0cfa10c39c7fa4ce7c891a82ed3b0eb9de7908
+	sha256sums = 70ce1193a0036cff727f29e1c94bd3ddd61599993ba5d130491037b91158a73a
 
 pkgname = codelobster
 
