@@ -2,7 +2,7 @@
 
 pkgname=telegram-tdlib-purple-git
 pkgver=r275.66f9c98
-pkgrel=3
+pkgrel=5
 pkgdesc='libpurple/pidgin Telegram plugin implemented using official tdlib client library.'
 arch=(any)
 url='https://github.com/ars3niy/tdlib-purple'
