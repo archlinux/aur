@@ -18,7 +18,6 @@ depends=('libvirt-python'
         'nfs-utils'
         'python-paramiko'
         'python-pillow'
-        'python-ipaddr'
         'python-magic'
         'python-configobj'
         'python-pyparted'
@@ -43,7 +42,6 @@ sha256sums=('feef8c324831e1b66173da0041fc4e512a140c67c35f89d20edb80df916b21ad')
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
   ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var PYTHON=/usr/bin/python3
-  #PYTHON=/usr/bin/python2 ./autogen.sh --system && make
 }
  
 package() {
