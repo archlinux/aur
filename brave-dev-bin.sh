@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -z "$BRAVE_FLAGS" ]; then
-    if [[ ! (-r /proc/sys/kernel/unprivileged_userns_clone && $(< /proc/sys/kernel/unprivileged_userns_clone) == 1 && -n $(zcat /proc/config.gz | grep CONFIG_USER_NS=y) ) ]]; then
-        >&2 echo "User namespaces are not detected as enabled on your system, brave will run with the sandbox disabled"
-        FLAG="--no-sandbox"
-    fi
+if [[ -z "${CHROME_USER_DATA_DIR}" ]]; then
+    export CHROME_USER_DATA_DIR=~/.config/BraveSoftware/Brave-Browser-Dev
 fi
-exec "/usr/lib/brave-dev-bin/brave" "--use-gl=desktop" "$BRAVE_FLAGS" "$FLAG" -- "$@"
+exec "/opt/brave.com/brave-dev/brave-browser" "$BRAVE_FLAGS" "$FLAG" "$@"
