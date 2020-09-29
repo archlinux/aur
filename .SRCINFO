@@ -1,7 +1,7 @@
 pkgbase = gdlauncher-git
 	pkgdesc = Modded Minecraft launcher built with Electron/React (git version)
-	pkgver = 1.0.8.r0.g735449de
-	pkgrel = 3
+	pkgver = 1.0.10.r2.g08790168
+	pkgrel = 2
 	url = https://gdevs.io
 	arch = x86_64
 	license = GPL3
@@ -25,7 +25,7 @@ pkgbase = gdlauncher-git
 	source = use-system-7za-and-disable-updater.patch
 	sha256sums = SKIP
 	sha256sums = f4cbb8a47e80c498972e548897a01190ac1975fbed0879565ff8fc57b8e9dbf0
-	sha256sums = 26f2b1d6b01c5eb51de2310ccac4bbb8b6e07de8954fd792c8aa76aa8042cf34
+	sha256sums = 39e664c95d4615d54c0b06d72bebbdaa8e92505f2ce0963eee4c3b3ab86f05a7
 
 pkgname = gdlauncher-git
 
