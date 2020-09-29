@@ -20,6 +20,7 @@ build() {
     tar -xf $pkgver.tar.gz
     cd "$srcdir/$pkgname-$pkgver"
     cargo build --release --locked --all-features
+    scdoc < doc/license.scd > license.1
 }
 
 check() {
@@ -32,6 +33,7 @@ package() {
     install -D -m755 "$srcdir/$pkgname-$pkgver/scripts/set-license" "$pkgdir/usr/bin/set-license"
     install -D -m755 "$srcdir/$pkgname-$pkgver/scripts/copy-header" "$pkgdir/usr/bin/copy-header"
     install -D -m644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m644 "$srcdir/$pkgname-$pkgver/license.1" "$pkgdir/usr/share/man/man1/license.1"
 
     install -D -m644 "$srcdir/$pkgname-$pkgver/completions/license.bash" \
                      "$pkgdir/usr/share/bash-completion/completions/license"
