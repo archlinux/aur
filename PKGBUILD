@@ -4,7 +4,7 @@
 # Contributor: soloturn@gmail.com
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.09.23.a.r165.gb03457ddf38
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.09.28.a.r26.g0756c402583
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -22,6 +22,7 @@ install=
 source=(
     'git+https://github.com/apple/swift'
     'cmark::git+https://github.com/apple/swift-cmark'
+    'indexstore-db::git+https://github.com/apple/indexstore-db'
     'llbuild::git+https://github.com/apple/swift-llbuild'
     'swift-argument-parser::git+https://github.com/apple/swift-argument-parser'
     'swift-driver::git+https://github.com/apple/swift-driver'
@@ -41,6 +42,7 @@ source=(
 )
 noextract=()
 md5sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
