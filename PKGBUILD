@@ -2,7 +2,7 @@
 
 pkgname=license
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to easily add a license to your project"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
 url="https://sr.ht/~zethra/license/"
@@ -33,10 +33,10 @@ package() {
     install -D -m755 "$srcdir/$pkgname-$pkgver/scripts/copy-header" "$pkgdir/usr/bin/copy-header"
     install -D -m644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    install -D -m755 "$srcdir/$pkgname-$pkgver/completions/license.bash" \
+    install -D -m644 "$srcdir/$pkgname-$pkgver/completions/license.bash" \
                      "$pkgdir/usr/share/bash-completion/completions/license"
-    install -D -m755 "$srcdir/$pkgname-$pkgver/completions/_license" \
+    install -D -m644 "$srcdir/$pkgname-$pkgver/completions/_license" \
                      "$pkgdir/usr/share/zsh/site-functions/_license"
-    install -D -m755 "$srcdir/$pkgname-$pkgver/completions/license.fish" \
+    install -D -m644 "$srcdir/$pkgname-$pkgver/completions/license.fish" \
                      "$pkgdir/usr/share/fish/vendor_completions.d/license.fish"
 }
