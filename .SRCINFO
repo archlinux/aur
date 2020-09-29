@@ -1,19 +1,19 @@
 pkgbase = vim-rust-git
-	pkgdesc = Syntax and supporting functionality for the Rust filetype
-	pkgver = r337.fc11d02
+	pkgdesc = Rust language support for Vim
+	pkgver = 20200918
 	pkgrel = 1
 	url = https://github.com/rust-lang/rust.vim
-	install = vimdoc.install
 	arch = any
-	license = Apache
 	license = MIT
+	license = Apache
 	makedepends = git
+	depends = vim
 	optdepends = rust: for RustRun and similar commands
 	optdepends = vim-syntastic: syntax checking
-	source = git://github.com/rust-lang/rust.vim.git
-	source = git-manifest.txt
+	provides = vim-rust
+	conflicts = vim-rust
+	source = vim-rust::git+https://github.com/rust-lang/rust.vim
 	sha256sums = SKIP
-	sha256sums = 393ac5362b776461f8d80f380f9fcf75e101eefeab710554732a6a10785b9f54
 
 pkgname = vim-rust-git
 
