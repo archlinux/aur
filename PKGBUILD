@@ -1,9 +1,9 @@
 # Maintainer: Dmytro Meleshko <dmytro.meleshko@gmail.com>
 pkgbase=mindustry
 pkgname=("${pkgbase}" "${pkgbase}-server")
-_build=106
+_build=107
 pkgver="6.0_${_build}"
-pkgrel=2
+pkgrel=1
 epoch=1
 arch=('any')
 _repo_name="Mindustry"
@@ -16,7 +16,7 @@ source=("${pkgbase}-${_build}.tar.gz::https://github.com/Anuken/${_repo_name}/ar
         "${pkgbase}.sh"
         "${pkgbase}-server.desktop"
         "${pkgbase}-server.sh")
-sha256sums=('65cae3bf3081a44932d5ed9869f13cf9a11803154378444d11c5912221660ec0'
+sha256sums=('5cf571b1f698381ae25995273d9fad1a7d82b9e74052dc09147bc053857a4fe0'
             'e5fd49ed3456c53e91b834cb388956e3f9ded4e2c880352d36cf9c2246ca0f0b'
             '938f5f9f636379402ba0bb9a53345de499f4f3fd50f232b31605129dcf4ea6c9'
             '053030932334f40145e927f6c7e9ebf01bd28ddd1e7b9fba6234b51cc83ad241'
