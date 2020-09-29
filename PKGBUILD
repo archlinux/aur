@@ -9,8 +9,8 @@
 
 pkgname=xnviewmp
 pkgver=0.97.0
-srcrel=1 # Incremented when there is a new release for the same version number
-pkgrel=1
+srcrel=2 # Incremented when there is a new release for the same version number
+pkgrel=2
 pkgdesc="An efficient multimedia viewer, browser and converter."
 url="http://www.xnview.com/en/xnviewmp/"
 
@@ -21,7 +21,7 @@ optdepends=('glib2: support for moving files to trash')
 
 source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::http://download.xnview.com/XnViewMP-linux-x64.tgz"
         'xnviewmp.desktop')
-sha256sums=('FD59DCCE36ECDE9442C4F42A97DFF23AA33C1126FD37A9C142C7EDCCEB668E0D'
+sha256sums=('6FA888E9049A5E908F5E16A9075C9DD618A12E44063AA2CF8EF71553CE1C4010'
             'F6B3A4AAA0A55B5F21D9B91AB6F3DA3D6EE077BA7FDD17E7C4AB1C69AD2A9E3A')
 
 package() {
