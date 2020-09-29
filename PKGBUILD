@@ -27,7 +27,7 @@ backup=(
   "etc/${pkgname%-git}/WhiteList.txt"
 )
 source=(
-  "${pkgname%-git}::git+git://github.com/chengr28/Pcap_DNSProxy.git"
+  "${pkgname%-git}::git+git://github.com/Lyoko-Jeremie/Pcap_DNSProxy.git"
   "make.patch"
   "service.patch"
 )
