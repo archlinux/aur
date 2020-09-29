@@ -2,7 +2,7 @@ pkgname="mcreator"
 _pkgname="MCreator"
 pkgver="2020.4"
 _pkgver="20204"
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc="MCreator is a software used to make Minecraft mods and data packs using intuitive easy-to-learn interface or with an integrated code editor. It is used worldwide by Minecraft players, aspiring mod developers, for education and by STEM workshops."
 url="https://mcreator.net"
@@ -10,7 +10,7 @@ license=('ARR')
 makedepends=('gendesk')
 depends=('jdk8-openjdk')
 source_x86_64=(
-	"MCreator.tar.gz::https://mcreator.net/repository/2020-4/MCreator%202020.4%20Linux%2064bit.tar.gz"
+	"MCreator-${_pkgver}.tar.gz::https://mcreator.net/repository/2020-4/MCreator%202020.4%20Linux%2064bit.tar.gz"
 	"mcreatorlaunch.sh"
 )
 
@@ -36,16 +36,16 @@ package() {
 
     # desktop entry
     install -D -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	
+
     # install the icon
     install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
     cd ${srcdir}/${_pkgname}${_pkgver}
     mv "icon.png" "${pkgname}.png"
     cp -Rr "${srcdir}/${_pkgname}${_pkgver}/${pkgname}.png" "${pkgdir}/usr/share/icons"
-	
+
     # file perms
     find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
-    find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;	
+    find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
 
     # make sure the main binary has the right permissions
     chmod +x "${pkgdir}/opt/${pkgname}/${pkgname}launch.sh"
