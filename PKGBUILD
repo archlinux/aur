@@ -1,8 +1,8 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=spiderfoot
-pkgver=3.0
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="SpiderFoot is an open source intelligence automation tool. Its goal is to automate the process of gathering intelligence about a given target."
 arch=('any')
 url="http://www.spiderfoot.net/"
@@ -13,14 +13,15 @@ depends=( 'python' 'python-dnspython' 'python-exifread' 'python-cherrypy'
 	   'python-ipaddress' 'python-phonenumbers' 'python-pypdf2'
 	   'python-stem' 'python-whois' 'python-future' 'python-pyopenssl'
 	   'python-docx' 'python-pptx' 'python-networkx' 'python-cryptography'
-	   'python-secure' 'python-pygexf' 'python-adblockparser')
+	   'python-secure' 'python-pygexf' 'python-adblockparser'
+	   'python-publicsuffixlist')
 makedepends=('python')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/smicallef/spiderfoot/archive/v${pkgver}.tar.gz"
 	"spiderfoot.sh"
 	"spiderfoot.service"
 	"spiderfoot.default")
-sha256sums=('bc8048ead13ab02d24155c9d8426f3ec15efb7adc9ce585de796ea34df1808ad'
+sha256sums=('c4f34b2b625c3a64c4a55879499b19ce6f361e65da907958c1388c34f4b9f745'
             '2246fe34cd61433a35cd49f2d6d18a6a66fd714014c6c703d1f1f29e3b2a5007'
             '98a4230a697def859e062c8a236b6e56dc8a3d2a11885e67464cfe8c837737a5'
             'b55ca3ad0243f3678ab0ed700fb0b3c5f901dfb9c364ba4ca12ed36267e3c32c')
