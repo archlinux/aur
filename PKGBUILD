@@ -33,7 +33,7 @@ prepare() {
 
   # Patch out postinstall routines
   patch --strip=1 package.json ${srcdir}/package.json.patch
-  
+
   # Patch build to make it work with system electron
   SYSTEM_ELECTRON_VERSION=$(pacman -Q electron | cut -d' ' -f2 | cut -d'-' -f1)
   jq < package.json --arg ver $SYSTEM_ELECTRON_VERSION\
@@ -73,7 +73,7 @@ package() {
   for i in 16 32 48 64 128 256 512; do
     install -Dm644 resources/icons/${i}x${i}.png "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
   done
-	install -Dm644 resources/icon.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
+  install -Dm644 resources/icon.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/${pkgname}.png"
 
   install -dm755 "${pkgdir}/usr/bin"
   install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/bitwarden-desktop"
