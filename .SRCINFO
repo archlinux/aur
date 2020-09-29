@@ -1,7 +1,7 @@
 pkgbase = stm32cubemonitor
 	pkgdesc = graphical software for helping debug and diagnose STM32 applications while they are running by reading and displaying their variables in real-time
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://my.st.com/content/my_st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-performance-and-debuggers/stm32cubemonitor.html
 	arch = x86_64
 	license = custom
