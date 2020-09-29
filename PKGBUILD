@@ -3,7 +3,7 @@ pkgname=$_pkgname-git
 pkgver=r994.95d86f8
 pkgrel=1
 pkgdesc="Kamoso is an application to take pictures and videos out of your webcam. Git version."
-url="https://projects.kde.org/projects/extragear/multimedia/kamoso"
+url="https://kde.org/applications/en/kamoso"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('purpose' 'kirigami2')
@@ -11,7 +11,7 @@ makedepends=('cmake' 'git')
 conflicts=('kamoso')
 provides=('kamoso')
 
-source=("git://anongit.kde.org/kamoso/")
+source=("https://invent.kde.org/multimedia/kamoso.git")
 sha256sums=('SKIP')
 
 pkgver() {
