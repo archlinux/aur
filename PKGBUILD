@@ -1,8 +1,9 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
+# Maintainer: Bjoern Franke <bjo+aur<at>schafweide.org>
+# Contributor: Ivan Semkin (ivan at semkin dot ru)
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=1.6.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Canonical's display server"
 url='https://mir-server.io'
@@ -18,7 +19,7 @@ optdepends=('qterminal: required for miral demos'
             'xcursor-dmz: opt requirement for miral demos'
             'qtubuntu: opt requirement for miral demos')
 source=("https://github.com/MirServer/mir/archive/v${pkgver}.tar.gz")
-sha256sums=('4e949ee64f35a1f55e16bef011a47c75ef06b243489e9010c017151758ebb744')
+sha256sums=('09fe7554d9030fcb7ad7e491a0b290c989e75d31bdba91eb8e265843e5f56e97')
 
 BUILD_DIR=build
 
