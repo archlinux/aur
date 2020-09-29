@@ -9,7 +9,7 @@ _pkgname=arc-theme
 pkgname=('arc-gtk-theme' 'arc-solid-gtk-theme')
 pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell"
 pkgver=20200819
-pkgrel=1
+pkgrel=2
 arch=('any')
 # Upstream url: https://github.com/horst3180/arc-theme
 # Now using soft fork: https://github.com/jnsh/arc-theme/issues/18
@@ -27,6 +27,9 @@ sha512sums=('bedff15a195c21934a813ca600b88ced81c3db66b7c25ab75b7193998a89338a788
 validpgpkeys=('31743CDF250EF641E57503E5FAEDBC4FB5AA3B17')
 
 prepare() {
+    # Fix https://github.com/jnsh/arc-theme/commit/2c726e439b1f157f9a2f54955e51a8c9900ff41a?branch=2c726e439b1f157f9a2f54955e51a8c9900ff41a&diff=unified
+    echo '@define-color text_view_bg #{"" + $base_color};' >> ${_pkgname}-${pkgver}/common/gtk-3.0/3.24/sass/_colors-public.scss
+
     cp -a ${_pkgname}-${pkgver}{,-solid}
 }
 
