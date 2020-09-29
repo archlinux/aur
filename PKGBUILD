@@ -1,5 +1,5 @@
 pkgname=newsboat-sendmail
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="A companion script that sends unread RSS items in Newsboat through email"
 arch=("any")
@@ -8,7 +8,7 @@ license=("MIT")
 depends=("newsboat" "python" "python-beautifulsoup4")
 makedepends=()
 source=("https://github.com/lenormf/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=("c4673cf4c4bd28872aa4dcae2875840ddb83e16047a5735235ae1d6dbe0df1e0")
+sha256sums=("579c8245e62c78b16ec3786cf89136646bc9c05a0269966017208f3472c8b388")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
