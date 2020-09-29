@@ -1,0 +1,25 @@
+pkgbase = ajour-git
+	pkgdesc = World of Warcraft addon manager written in Rust
+	pkgver = 0.3.4.r33.3dd767f
+	pkgrel = 1
+	url = https://www.getajour.com
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	makedepends = icoutils
+	makedepends = git
+	depends = fontconfig
+	depends = freetype2
+	depends = hicolor-icon-theme
+	depends = libxcb
+	depends = openssl
+	provides = ajour
+	conflicts = ajour
+	source = git+https://github.com/casperstorm/ajour.git
+	source = ajour.desktop
+	sha256sums = SKIP
+	sha256sums = d356c0f7ab3087a087e2ff261bf6348e62e87190805fa166fcbe9e3f8b64fb0d
+
+pkgname = ajour-git
+
