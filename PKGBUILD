@@ -7,7 +7,7 @@ pkgver='1.1.19'
 pkgrel='1'
 pkgdesc="Search for image using Google Custom Search API and resize & crop the image afterwords"
 arch=("any")
-url="https://github.com/arrrlo/Google-Images-Search"
+url="https://github.com/VingtCinq/${pkgname}"
 makedepends=('python' 'python-setuptools'
 	     'python2' 'python2-setuptools')
 license=('MIT')
