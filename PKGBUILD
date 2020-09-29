@@ -1,26 +1,24 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=yaloco
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Yet Another Log Colorizer'
 arch=(x86_64)
 url='https://github.com/xyproto/yaloco'
 license=(MIT)
 makedepends=(git go)
-source=("git+$url#tag=v$pkgver")
-md5sums=('SKIP')
+source=("git+$url#commit=88cb5e00cce2d6b8feb77591ce0cec5fd3e31b74") # tag: v1.3.0
+sha256sums=('SKIP')
 
 build() {
   cd $pkgname
-
-  go build .
+  ./static_linux.sh
 }
 
 package() {
-  cd "$pkgname"
-
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd $pkgname
+  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
