@@ -1,9 +1,8 @@
 # Maintainer: Tobias Gerold <tobias at g3ro dot eu>
-pkgbase=shiftfs
-pkgname=(shiftfs shiftfs-dkms)
+pkgname=shiftfs
 pkgver=20200804
 pkgrel=1
-pkgdesc="kernel filesystem for uid/gid shifting, dkms version"
+pkgdesc="kernel module that provides a kernel filesystem for uid/gid shifting; version for default Arch kernel"
 arch=('x86_64')
 url="https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/groovy/tree/fs/shiftfs.c"
 license=('GPL2')
@@ -28,11 +27,5 @@ package_shiftfs() {
   find "${pkgdir}" -name '*.ko' -exec xz {} +
 }
 
-package_shiftfs-dkms() {
-  depends=('dkms')
-  conflicts=('shiftfs')
-  provides=('shiftfs')
 
-  install -Dt "${pkgdir}/usr/src/${pkgbase}-${pkgver}" -m644 Makefile shiftfs.c dkms.conf
-}
 

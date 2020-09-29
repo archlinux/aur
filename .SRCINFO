@@ -1,5 +1,5 @@
 pkgbase = shiftfs
-	pkgdesc = kernel filesystem for uid/gid shifting, dkms version
+	pkgdesc = kernel module that provides a kernel filesystem for uid/gid shifting; version for default Arch kernel
 	pkgver = 20200804
 	pkgrel = 1
 	url = https://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/groovy/tree/fs/shiftfs.c
@@ -15,9 +15,4 @@ pkgbase = shiftfs
 
 pkgname = shiftfs
 	depends = linux
-
-pkgname = shiftfs-dkms
-	depends = dkms
-	provides = shiftfs
-	conflicts = shiftfs
 
