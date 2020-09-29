@@ -1,5 +1,5 @@
 # Maintainer: Nichlas Severinsen <ns@nsz.no>
-pkgname=libray-git
+pkgname=libray
 _gitname="libray"
 pkgver=0.0.5
 pkgrel=1
