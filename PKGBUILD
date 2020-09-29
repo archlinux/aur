@@ -2,8 +2,8 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
-pkgver=2.0.6
-pkgrel=3
+pkgver=2.0.7
+pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/frostworx/steamtinkerlaunch"
@@ -40,7 +40,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('728a949f62883a8a531b0bba31ee451b1120abc5c1fb3d426b441b583550e4e0')
+sha256sums=('e86b96f7dcc5f09147d3e6ac4afa002b079d9e3e031ee9fefd268d2d103219ed')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
