@@ -1,0 +1,14 @@
+pkgbase = nds-banner-editor
+	pkgdesc = A tool to make animated Nintendo DS banners.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/TheGameratorT/NDS_Banner_Editor
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	conflicts = nds-banner-editor-git
+	source = source.zip::https://github.com/TheGameratorT/NDS_Banner_Editor/archive/1.1.zip
+	md5sums = SKIP
+
+pkgname = nds-banner-editor
+
