@@ -1,7 +1,7 @@
 # Maintainer: zhullyb <5435486@qq.com>
 
 pkgname=deepin.com.dingtalk.com
-pkgver=5.1.15.16
+pkgver=5.1.28.12
 pkgrel=1
 install=.INSTALL
 pkgdesc="DingTalk Client on Deepin Wine"
