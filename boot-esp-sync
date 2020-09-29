@@ -13,6 +13,18 @@ if ! [ -s "/etc/machine-id" ]; then {
 	}
 fi
 
+case $@ in
+	--quiet|-q)
+		VERBOSITY="--quiet"
+	;;
+	--verbose|-v)
+		VERBOSITY="--verbose --verbose"
+	;;
+	*)
+		VERBOSITY=""
+	;;
+esac
+
 ESP="/efi"
 MACHINE_ID="$(/usr/bin/cat /etc/machine-id)"
 BOOTFILES_SRC="/boot/"
@@ -27,6 +39,6 @@ if ! [ -d "${BOOTFILES_DEST}" ]; then {
 	}
 fi
 
-/usr/bin/rsync --verbose --verbose --modify-window=1 --times --recursive --delete "${BOOTFILES_SRC}" "${BOOTFILES_DEST}"
+/usr/bin/rsync ${VERBOSITY} --modify-window=1 --times --recursive --delete "${BOOTFILES_SRC}" "${BOOTFILES_DEST}"
 
 exit 0

@@ -1,0 +1,11 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/modules/*/vmlinuz
+
+[Action]
+Description = Sync /boot to ESP...
+When = PostTransaction
+Exec = /usr/bin/boot-esp-sync --quiet
