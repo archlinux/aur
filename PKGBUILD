@@ -1,8 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=wart-git
-pkgver=4134.r789671d7
-pkgrel=2
+pkgver=4134.g789671d7
+pkgrel=1
+epoch=1
 pkgdesc="A small, readable lisp with thorough unit tests and extensible functions/macros."
 arch=('i686' 'x86_64')
 url="https://github.com/akkartik/wart"
@@ -22,7 +23,7 @@ _gitname="wart"
 
 pkgver() {
   cd $_gitname
-  printf %s.r%s $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  printf %s.g%s $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 build() {
