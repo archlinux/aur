@@ -1,15 +1,15 @@
 # Maintainer: DingYuan Zhang <justforlxz>
 
 pkgname=deepin-session-ui-git
-pkgver=5.3.0.11.r0.gd07ced4c
+pkgver=5.3.0.16.r0.g2a7eceee
 pkgrel=1
 pkgdesc='Deepin desktop-environment - Session UI module'
 arch=('x86_64')
 url="https://github.com/linuxdeepin/dde-session-ui"
 license=('GPL3')
 groups=('deepin')
-depends=('gsettings-qt' 'startdde-git' 'liblightdm-qt5' 'qt5-svg' 'deepin-daemon-git' 'deepin-wallpapers')
-makedepends=('deepin-gettext-tools-git' 'qt5-tools')
+depends=('gsettings-qt' 'startdde-git' 'liblightdm-qt5' 'qt5-svg' 'deepin-daemon-git' 'deepin-dock-git' 'deepin-wallpapers')
+makedepends=('git' 'deepin-gettext-tools-git' 'qt5-tools' 'deepin-dock-git')
 provides=('deepin-notifications' 'deepin-session-ui')
 conflicts=('dde-workspace' 'deepin-session-ui' 'deepin-notifications')
 replaces=('dde-workspace' 'deepin-session-ui' 'deepin-notifications')
