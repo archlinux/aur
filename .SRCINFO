@@ -1,13 +1,13 @@
 pkgbase = iwsp-bin
 	pkgdesc = Northeastern University Gymnasium Reservation.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/amtoaer/iwsp
 	arch = x86_64
 	license = MIT
-	source = iwsp-linux::https://github.com/amtoaer/iwsp/releases/download/1.0.2/iwsp-linux
+	source = iwsp-linux::https://github.com/amtoaer/iwsp/releases/download/1.0.3/iwsp-linux
 	source = LICENSE::https://raw.githubusercontent.com/amtoaer/iwsp/master/LICENSE
-	md5sums = 928f25b64f59222d52819de8a2855601
+	md5sums = 6f2673b36d207cf5f7b0106862ace140
 	md5sums = 31fad0aacc583d621612630ce8f5a26c
 
 pkgname = iwsp-bin
