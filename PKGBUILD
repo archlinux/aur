@@ -2,7 +2,7 @@
 
 _npmname=editly
 pkgname=nodejs-$_npmname # All lowercase
-pkgver=0.4.0
+pkgver=0.7.0
 pkgrel=0
 pkgdesc='create video from a set of clips, images and titles, NLE, non-linear video editing'
 arch=('any')

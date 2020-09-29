@@ -1,6 +1,6 @@
 pkgbase = nodejs-editly
-	pkgdesc = Declarative NLE (non-linear video editing) using Node.js and ffmpeg.
-	pkgver = 0.4.0
+	pkgdesc = create video from a set of clips, images and titles, NLE, non-linear video editing
+	pkgver = 0.7.0
 	pkgrel = 0
 	url = https://github.com/mifi/editly
 	arch = any
