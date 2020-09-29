@@ -9,7 +9,6 @@ pkgbase = kex-git
 	license = GPLv3
 	makedepends = git
 	makedepends = libx11
-	makedepends = gcc
 	makedepends = libxrender
 	depends = curl
 	depends = p7zip

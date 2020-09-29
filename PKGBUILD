@@ -7,11 +7,15 @@ source=("git://github.com/tsdima/kex.git")
 license=('GPLv3')
 arch=('any')
 depends=('curl' 'p7zip')
-makedepends=('git' 'libx11' 'gcc' 'libxrender')
+makedepends=('git' 'libx11' 'libxrender')
 md5sums=('SKIP')
 groups=('kos32-dev')
 install=$pkgname.install
 
+pkgver() {
+  cd $srcdir/kex
+  printf "r% s.% s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build(){
     cd kex
@@ -20,8 +24,8 @@ build(){
 
 package() {
     mkdir -p $pkgdir/usr/bin
-    cp $srcdir/kex/kex $pkgdir/usr/bin
-    cp $startdir/kex-setup $pkgdir/usr/bin 
+    install $srcdir/kex/kex $pkgdir/usr/bin
+    install $startdir/kex-setup $pkgdir/usr/bin 
 }
 
 
