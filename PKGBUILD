@@ -11,7 +11,7 @@ depends=()
 makedepends=()
 provides=('yandex-cloud')
 source=("yc::https://storage.yandexcloud.net/yandexcloud-yc/release/${pkgver}/linux/amd64/yc")
-md5sums=('d24b27884e58fae9da9a8faf483f9015')
+md5sums=('371f25d9a4a7e252513199e5bc8fa8ec')
 
 build(){
     cd "$srcdir"
