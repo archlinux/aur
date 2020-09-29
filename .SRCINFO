@@ -9,7 +9,7 @@ pkgbase = git-team-git
 	depends = go
 	provides = git-team
 	conflicts = git-team
-	source = git+https://github.com/hekmekk/git-team.git
+	source = git+https://github.com/hekmekk/git-team.git#branch=master
 	md5sums = SKIP
 
 pkgname = git-team-git

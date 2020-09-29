@@ -1,4 +1,5 @@
 # Maintainer: Jan Schmitt <arch@smittie.de>
+_pkgname=git-team
 pkgname=git-team-git
 pkgver=1.4.1.r3.g60d6116
 pkgrel=1
@@ -26,11 +27,11 @@ validpgpkeys=()
 
 pkgver(){
     cd "${_pkgname}"
-    printf "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
-}
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    }
 
 build() {
-    cd git-team
+    cd "${_pkgname}"
     if [[ "$GOPATH" == "" ]]; then
         GOPATH="$HOME/go" make --jobs=1
     else
@@ -39,7 +40,7 @@ build() {
 }
 
 package() {
-    cd git-team
+    cd "${_pkgname}"
     mkdir -p ${pkgdir}/opt/${pkgname}
     cp -rf * ${pkgdir}/opt/${pkgname}
 	sudo make PREFIX=/usr DESTDIR="$pkgdir/" install
