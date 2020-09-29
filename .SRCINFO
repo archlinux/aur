@@ -1,0 +1,24 @@
+pkgbase = koalalauncher
+	pkgdesc = Koala Launcher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gdevs.io
+	arch = x86_64
+	license = GPL3
+	makedepends = gendesk
+	makedepends = git
+	makedepends = yarn
+	makedepends = nodejs
+	makedepends = rust
+	makedepends = unzip
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = libindicator-gtk3
+	depends = libappindicator-gtk3
+	conflicts = koalalauncher-bin
+	source = koalalauncher::git+https://github.com/KoalaDevs/KoalaLauncher.git
+	md5sums = SKIP
+
+pkgname = koalalauncher
+
