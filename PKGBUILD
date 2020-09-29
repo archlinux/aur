@@ -1,13 +1,13 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
-# Contributor: tim@bastelfreak.de
+# Maintainer: tim@bastelfreak.de
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _gemname='gettext'
 pkgname="ruby-${_gemname}"
 pkgver=3.3.6
-pkgrel=1
+pkgrel=3
 pkgdesc='Gettext gem is a pure Ruby Localization(L10n) library and tool which is modeled after the GNU gettext package.'
 arch=(any)
-url="https://github.com/ruby-gettext/gettext"
+url='https://github.com/ruby-gettext/gettext'
 license=('RUBY' 'LGPL3')
 makedepends=('ruby-rdoc' 'ruby-yard' 'ruby-bundler')
 depends=('ruby' 'ruby-locale' 'ruby-text')
@@ -43,7 +43,7 @@ package() {
   cd "${_gemname}-${pkgver}"
 
   local _gemdir="$(gem env gemdir)"
-  gem install --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
+  gem install --verbose --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
 
   rm -rf "${pkgdir}/${_gemdir}/cache"
 }
