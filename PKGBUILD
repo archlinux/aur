@@ -8,14 +8,14 @@
 
 # Maintainer: Yoep Kortekaas <yoep dot kortekaas at gmail dot com>
 pkgname=palisade-development-git
-pkgver=1.9.1
-pkgrel=2
+pkgver=1.10.4
+pkgrel=1
 pkgdesc="PALISADE is a general lattice cryptography library that currently includes efficient implementations of the following lattice cryptography capabilities"
 arch=('i686' 'x86_64')
 url="https://palisade-crypto.org"
 license=('custom:NJIT')
 groups=()
-depends=('gperftools')
+depends=()
 makedepends=('cmake>=3.5.1' 'make' 'gcc>=5.2.0' 'git')
 provides=("palisade-development")
 conflicts=("${pkgname%-git}")
@@ -37,8 +37,7 @@ build() {
 	mkdir build
 	cd build
 
-	cmake -DWITH_TCM=Y ..
-	make tcm -j4
+	cmake ..
 
 	make allmodules -j4
 }
