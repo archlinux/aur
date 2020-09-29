@@ -1,0 +1,20 @@
+diff --git a/desktop-app/app/components/Header/index.js b/desktop-app/app/components/Header/index.js
+index 1cc5f88..58f3e29 100644
+--- a/desktop-app/app/components/Header/index.js
++++ b/desktop-app/app/components/Header/index.js
+@@ -10,7 +10,6 @@ import PermissionPopup from '../PermissionPopup';
+ 
+ import NavigationControlsContainer from '../../containers/NavigationControlsContainer';
+ import BookmarksBar from '../../containers/BookmarksBarContainer';
+-import AppNotification from '../AppNotification/AppNotification';
+ import Logo from '../icons/Logo';
+ 
+ const Header = () => {
+@@ -52,7 +51,6 @@ const Header = () => {
+         pauseOnHover
+         toastClassName={classes.darkToast}
+       />
+-      <AppNotification />
+     </div>
+   );
+ };
