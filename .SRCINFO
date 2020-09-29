@@ -1,14 +1,14 @@
 pkgbase = tidal-dl-git
 	pkgdesc = Download videos and tracks from Tidal.
 	pkgver = 1.1.1.0.r35.g51fbf37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yaronzz/Tidal-Media-Downloader
 	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = python-setuptools
+	depends = python-prettytable
 	depends = python-aigpy
-	depends = python-requests
 	depends = python-libffmpeg
 	depends = python-pycryptodome
 	depends = python-pydub
