@@ -22,10 +22,10 @@ prepare() {
   sed '/\[tool.setuptools_scm\]/d' -i pyproject.toml
 
   # fix serial device name bug
-  curl https://patch-diff.githubusercontent.com/raw/pyvisa/pyvisa-py/pull/269.patch | patch -p1
+  curl https://patch-diff.githubusercontent.com/raw/pyvisa/pyvisa-py/pull/269.patch | patch -p1 || true
 
   # fix broken serial writes
-  curl https://patch-diff.githubusercontent.com/raw/greyltc/pyvisa-py/pull/1.patch | patch -p1
+  curl https://patch-diff.githubusercontent.com/raw/pyvisa/pyvisa-py/pull/273.patch | patch -p1
 }
 
 package() {
