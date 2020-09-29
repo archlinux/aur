@@ -2,8 +2,8 @@
 # Contributor: Felix Golatofski <contact@xdfr.de>
 
 pkgname=plexamp-appimage
-pkgver=3.2.0
-pkgrel=1
+pkgver=3.2.1
+pkgrel=0
 pkgdesc="Modern music client for Plex"
 provides=('plexamp')
 conflicts=('plexamp')
@@ -15,7 +15,7 @@ _filename=Plexamp-${pkgver}.AppImage
 source=(
   ${url}/plexamp.plex.tv/desktop/Plexamp-${pkgver}.AppImage
 )
-sha512sums=('30effa676990cad50f3831a4d6848acaae57f4b121219e92600d7218ffb4c249df9e9ea12c0939090a795d9947ae2c904fbb7d18cf4882c5e82cbd1a7140fc9a')
+sha512sums=('12e0bf34a7d794af68560995ce7358296c0d52c4d3cb7e9e7e5f8842a51eaad1ce4c6c2b91c94a3178ffabf3d8cf0c33c745b09e1adb8f232eb143a9a8665110')
 
 
 prepare() {
