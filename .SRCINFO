@@ -8,9 +8,11 @@ pkgbase = tinyfugue
 	license = GPL3
 	depends = openssl
 	depends = pcre
-	source = https://github.com/cipherize/tinyfugue/releases/download/v5.0b8-7/tf-5.0b8-7.tar.gz
-	sha256sums = d7e53ee7647c20ea97c49aadb07e6906c8ff44639af64433dfd70e459286964e
+	source = tinyfugue-5.0b8.tar.gz::https://github.com/cipherize/tinyfugue/releases/download/v5.0b8-7/tf-5.0b8-7.tar.gz
+	source = tinyfugue-5.0b8.tar.gz.asc::https://github.com/cipherize/tinyfugue/releases/download/v5.0b8-7/tf-5.0b8-7.tar.gz.asc
+	validpgpkeys = 28F768BE4B746F79A6D3288302FBEAF81EAD18C3
 	b2sums = 01c4a9e63368d197d3251adf751e705ae6dd0fdb098524337f2e48256fb0e6ca46b35b7cb932b0b11ca887f5690f65f1c1cae0f81523bcee60652f354c22bd18
+	b2sums = SKIP
 
 pkgname = tinyfugue
 
