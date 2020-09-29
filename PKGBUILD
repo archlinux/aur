@@ -10,7 +10,6 @@ license=('LGPL3')
 depends=('dtkcore-git' 'librsvg' 'qt5-x11extras')
 makedepends=('git' 'qt5-tools')
 conflicts=('dtkgui')
-replaces=('dtkgui')
 provides=('dtkgui')
 groups=('deepin-git')
 source=("$pkgname::git://github.com/linuxdeepin/dtkgui")
@@ -24,7 +23,7 @@ pkgver() {
 build() {
   cd $pkgname
   qmake-qt5 PREFIX=/usr DTK_VERSION=$pkgver LIB_INSTALL_DIR=/usr/lib
-  make -j$(nproc)
+  make
 }
 
 package() {

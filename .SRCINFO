@@ -13,7 +13,6 @@ pkgbase = dtkgui-git
 	depends = qt5-x11extras
 	provides = dtkgui
 	conflicts = dtkgui
-	replaces = dtkgui
 	source = dtkgui-git::git://github.com/linuxdeepin/dtkgui
 	sha512sums = SKIP
 
