@@ -1,6 +1,6 @@
 pkgname=gog-heroes-of-might-and-magic-3-complete-edition
 pkgver=4.0.28740
-pkgrel=1
+pkgrel=2
 _gamename=${pkgname#gog-}
 _gamename=${_gamename//-/_}
 _gamehdpatchname="HoMM3%20HD%20Latest.exe"
@@ -32,12 +32,10 @@ sha256sums=('eaf75707911b16850ec770a551c59e594abba60c7a879fb0c171fc442b1299b3'
             '14927c0c59520861fd8a00d05f4b9fbcc70a71ff669add852ba0f5c670f8556a'
             '493ef7009c2f4d103ed5b283fcc5dd900ff13cfb1d494052227bf7760fe0f7c7')
 depends=(wine unionfs-fuse util-linux)
-makedepends=(icoutils)
+makedepends=(icoutils "lgogdownloader>=2.25")
 
 # Register lgogdownloader as a download agent
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
-
-makedepends=("lgogdownloader>=2.25")
 
 build() {
   export WINEDEBUG=-all
