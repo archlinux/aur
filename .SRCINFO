@@ -1,0 +1,13 @@
+pkgbase = otb-raize
+	pkgdesc = Monospaced bitmap font from Raize Software
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://web.archive.org/web/20180627152019/http://www.raize.com/DevTools/Tools/RzFont.asp
+	arch = any
+	license = as-is
+	makedepends = fonttosfnt
+	source = otb-raize-1.0.tar.gz::https://github.com/Tecate/bitmap-fonts/raw/master/archives/raize.tar.gz
+	sha512sums = 1fd22873fb7309ac526eccf9811a31a522c3294558a8a4a077e67fcf2854f1658fce9250db0761dee7c409dc7d2b0ed66c08938202f8e64895202964259541c7
+
+pkgname = otb-raize
+
