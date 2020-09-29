@@ -2,7 +2,7 @@
 
 pkgname=symfony-cli
 pkgrel=4
-pkgver=4.18.4
+pkgver=4.19.0
 pkgdesc="The Symfony client helps developers create and manage Symfony applications."
 url="https://symfony.com/"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
     "$pkgname-$pkgver.gz::https://github.com/symfony/cli/releases/download/v${pkgver}/symfony_linux_amd64.gz"
     'eula.txt'
 )
-sha256sums=('380b557a200f9f2242074c535a5e2d1f66ce9e246bb06d8f214a5419ec141dbb'
+sha256sums=('b64978cc5fb154bc0d901f1d0c764e64ee620b98080593b8cdebf7ef0d9f2715'
             '46711d74e64aa4a26ae257063b795c432113b56fb80d1a69ffaa7b0b079dcf11')
 
 package() {
