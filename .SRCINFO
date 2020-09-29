@@ -1,7 +1,7 @@
 pkgbase = kimchi
 	pkgdesc = KVM management plugin for WoK.
 	pkgver = 3.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/kimchi-project/kimchi
 	arch = any
 	groups = kimchi-project
@@ -14,7 +14,6 @@ pkgbase = kimchi
 	depends = nfs-utils
 	depends = python-paramiko
 	depends = python-pillow
-	depends = python-ipaddr
 	depends = python-magic
 	depends = python-configobj
 	depends = python-pyparted
