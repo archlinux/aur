@@ -17,8 +17,8 @@ source=('git+https://invent.kde.org/plasma/plasma-pa.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_srcname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_srcname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
