@@ -1,0 +1,34 @@
+--- FindFFmpeg.cmake.orig	2020-09-29 06:54:28.852902300 +0200
++++ FindFFmpeg.cmake	2020-09-29 06:54:51.001983600 +0200
+@@ -175,31 +175,6 @@
+ 			${CMAKE_PREFIX_PATH}/lib/libswscale.5.dylib
+ 			${CMAKE_PREFIX_PATH}/lib/libswscale.5.5.100.dylib
+ 			DESTINATION lib)
+-	else()
+-		install(
+-			FILES
+-			${FFmpeg_LIBAVCODEC}
+-			${FFmpeg_LIBAVCODEC}.58
+-			${FFmpeg_LIBAVCODEC}.58.54.100
+-			${FFmpeg_LIBAVDEVICE}
+-			${FFmpeg_LIBAVDEVICE}.58
+-			${FFmpeg_LIBAVDEVICE}.58.8.100
+-			${FFmpeg_LIBAVFILTER}
+-			${FFmpeg_LIBAVFILTER}.7
+-			${FFmpeg_LIBAVFILTER}.7.57.100
+-			${FFmpeg_LIBAVFORMAT}
+-			${FFmpeg_LIBAVFORMAT}.58
+-			${FFmpeg_LIBAVFORMAT}.58.29.100
+-			${FFmpeg_LIBAVUTIL}
+-			${FFmpeg_LIBAVUTIL}.56
+-			${FFmpeg_LIBAVUTIL}.56.31.100
+-			${FFmpeg_LIBSWRESAMPLE}
+-			${FFmpeg_LIBSWRESAMPLE}.3
+-			${FFmpeg_LIBSWRESAMPLE}.3.5.100
+-			${FFmpeg_LIBSWSCALE}
+-			${FFmpeg_LIBSWSCALE}.5
+-			${FFmpeg_LIBSWSCALE}.5.5.100
+-			DESTINATION lib)
+ 	endif()
+ endif()
+ 

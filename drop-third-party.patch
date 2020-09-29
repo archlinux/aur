@@ -1,0 +1,42 @@
+--- CMakeLists.txt.orig	2020-06-12 04:11:18.000000000 +0200
++++ CMakeLists.txt	2020-09-28 22:34:58.109414300 +0200
+@@ -34,37 +34,23 @@
+ endif()
+ 
+ # Set the list of required dependencies.
+-set(DJV_THIRD_PARTY_REQUIRED_DEPS ZLIB)
+ set(DJV_THIRD_PARTY_REQUIRED_DEPS
+-    ${DJV_THIRD_PARTY_REQUIRED_DEPS}
+     FSeq
+-    GLM
+-    GLFW
+     PicoJSON
+-    #OpenAL
+-    RtAudio
+-    IlmBase
+-    PNG
+-    OCIO
+-    #OTIO
+-    FreeType)
++    )
+ 
+ # Set the list of optional dependencies.
+ if(WIN32)
+ else()
+     set(DJV_THIRD_PARTY_OPTIONAL_DEPS
+         ${DJV_THIRD_PARTY_OPTIONAL_DEPS}
+-        NASM
+         #MbedTLS
+         )
+ endif()
+ set(DJV_THIRD_PARTY_OPTIONAL_DEPS
+     ${DJV_THIRD_PARTY_OPTIONAL_DEPS}
+     #curl
+-    FFmpeg
+-    JPEGTurbo
+-    TIFF
+-    OpenEXR)
++    )
+ if(WIN32)
+     set(DJV_THIRD_PARTY_OPTIONAL_DEPS
+         ${DJV_THIRD_PARTY_OPTIONAL_DEPS}
