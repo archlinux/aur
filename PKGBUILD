@@ -28,7 +28,6 @@ prepare() {
   tar xf data.tar.xz -C brave
   # Delete unneeded cron job
   rm -rf brave/opt/brave.com/brave-dev/cron
-  find brave
   # Use our script to launch (allows overriding flags, sets up data dir)
   sed -i "s/\/usr\/bin\/brave-browser-dev/\/usr\/bin\/brave-dev/g" brave/usr/share/applications/brave-browser-dev.desktop    
 }
