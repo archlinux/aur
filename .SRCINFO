@@ -15,7 +15,6 @@ pkgbase = dtkcore-git
 	depends = lshw
 	provides = dtkcore
 	conflicts = dtkcore
-	replaces = dtkcore
 	source = dtkcore-git::git://github.com/linuxdeepin/dtkcore.git
 	sha512sums = SKIP
 
