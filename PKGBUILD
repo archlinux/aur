@@ -1,6 +1,6 @@
 # Maintainer: Jan Schmitt <arch@smittie.de>
 pkgname=git-team-git
-pkgver=1.4.0.r10.e30ad27
+pkgver=1.4.1.r3.g60d6116
 pkgrel=1
 epoch=
 pkgdesc="Command line interface for managing and enhancing git commit messages with co-authors."
@@ -26,7 +26,7 @@ validpgpkeys=()
 
 pkgver(){
     cd "${_pkgname}"
-    printf "$(git describe)"
+    printf "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
