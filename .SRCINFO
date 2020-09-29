@@ -1,6 +1,6 @@
 pkgbase = devskim-cli-bin
 	pkgdesc = Microsoft DevSkim is a set of IDE plugins and rules that provide security "linting" capabilities (official CLI binary version)
-	pkgver = 0.4.189
+	pkgver = 0.4.192
 	pkgrel = 1
 	url = https://github.com/Microsoft/DevSkim/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = devskim-cli-bin
 	depends = dotnet-runtime
 	provides = devskim-cli
 	options = staticlibs
-	source = https://github.com/microsoft/DevSkim/releases/download/v0.4.189/DevSkim_linux_0.4.189.zip
-	sha256sums = 7771C74E257F8ADE198BAAC3918DB6640D2EE7E95FE20E6D8A9EFBD96B13BC1F
+	source = https://github.com/microsoft/DevSkim/releases/download/v0.4.192/DevSkim_linux_0.4.192.zip
+	sha256sums = E1D21660F24976D1817F3F110675443F8922704D57B4F126A207387EC5194A93
 
 pkgname = devskim-cli-bin
 
