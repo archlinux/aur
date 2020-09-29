@@ -2,13 +2,13 @@
 
 pkgname=telegram-tdlib-purple-git
 pkgver=r275.66f9c98
-pkgrel=5
+pkgrel=6
 pkgdesc='libpurple/pidgin Telegram plugin implemented using official tdlib client library.'
 arch=(any)
 url='https://github.com/ars3niy/tdlib-purple'
 license=(GPL2 LGPL2.1 custom:FTL custom:PIX custom:RPD custom:SKIA custom:STB)
 depends=(libpurple libpng libwebp telegram-tdlib libtgvoip)
-makedepends=(git)
+makedepends=(cmake git)
 source=($pkgname::git+"$url")
 sha256sums=(SKIP)
 
