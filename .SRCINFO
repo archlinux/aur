@@ -1,6 +1,6 @@
 pkgbase = tmpmail-git
 	pkgdesc = A temporary email right from your terminal
-	pkgver = 2.g177dcc3
+	pkgver = 72.gf32c7ee
 	pkgrel = 1
 	url = https://github.com/sdushantha/tmpmail
 	arch = any

@@ -3,7 +3,7 @@
 
 pkgname=tmpmail-git
 _pkgname=tmpmail
-pkgver=2.g177dcc3
+pkgver=72.gf32c7ee
 pkgrel=1
 pkgdesc="A temporary email right from your terminal"
 arch=('any')
