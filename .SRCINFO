@@ -5,6 +5,7 @@ pkgbase = tidal-dl-git
 	url = https://github.com/yaronzz/Tidal-Media-Downloader
 	arch = any
 	license = Apache
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python-aigpy
 	depends = python-requests

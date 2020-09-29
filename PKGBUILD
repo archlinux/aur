@@ -15,7 +15,10 @@ depends=(
     'python-pycryptodome'
     'python-pydub'
 )
-makedepends=('python-setuptools')
+makedepends=(
+    'git'
+    'python-setuptools'
+)
 conflicts=('tidal-dl')
 source=(git+"${url}.git")
 sha256sums=('SKIP')
