@@ -4,7 +4,7 @@
 pkgname="gdlauncher-bin"
 _pkgname="gdlauncher"
 pkgver="1.0.10"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
@@ -13,7 +13,7 @@ makedepends=('gendesk' 'wget')
 depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
 conflicts=('gdlauncher-appimage' 'gdlauncher' 'gdlauncher-git')
 source_x86_64=(
-    "GDLauncher-linux-setup.zip::https://github.com/gorilla-devs/GDLauncher/releases/download/v${pkgver}/GDLauncher-linux-setup.zip"
+    "GDLauncher-${pkgver}.zip::https://github.com/gorilla-devs/GDLauncher/releases/download/v${pkgver}/GDLauncher-linux-setup.zip"
 )
 
 md5sums_x86_64=('SKIP')
@@ -22,7 +22,7 @@ prepare() {
     # Generate .desktop
     gendesk --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
     mv "GDLauncher.desktop" "${pkgname}.desktop"
-    
+
     # Download icon
     wget https://github.com/gorilla-devs/GDLauncher/raw/master/public/icon.png
 }
