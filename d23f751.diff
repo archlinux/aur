@@ -1,0 +1,39 @@
+From d23f751309e430050ab9ee3ac9423397a7fea7d0 Mon Sep 17 00:00:00 2001
+From: Maksim Sisov <msisov@igalia.com>
+Date: Mon, 28 Sep 2020 14:07:36 +0000
+Subject: [PATCH] ozone/wayland: temporarily disable usage of RGBX_8888.
+
+RGBX_8888 shall be used as buffer format with images without alpha. However,
+Chromium doesn't allow it to use for scanout in some parts of the code,
+and allows to use in other.
+
+Thus, temporarily disable usage of RGBX_8888 and always use either RGBA or
+BGRA_8888 for images with alpha and no alpha.
+
+Bug: 1128997
+Change-Id: I4a3a8ad102d46d6dc12ccaba4cbade41432d6b49
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2434928
+Auto-Submit: Maksim Sisov (GMT+3) <msisov@igalia.com>
+Commit-Queue: Peng Huang <penghuang@chromium.org>
+Reviewed-by: Peng Huang <penghuang@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#811220}
+---
+
+diff --git a/ui/ozone/platform/wayland/host/wayland_screen.cc b/ui/ozone/platform/wayland/host/wayland_screen.cc
+index fcebc07..9beaf27 100644
+--- a/ui/ozone/platform/wayland/host/wayland_screen.cc
++++ b/ui/ozone/platform/wayland/host/wayland_screen.cc
+@@ -46,8 +46,11 @@
+     // crbug.com/1127558.
+     if (format == gfx::BufferFormat::RGBA_8888)
+       image_format_alpha_ = gfx::BufferFormat::RGBA_8888;
+-    if (format == gfx::BufferFormat::RGBX_8888)
+-      image_format_no_alpha_ = format;
++
++      // TODO(1128997): |image_format_no_alpha_| should use RGBX_8888 when it's
++      // available, but for some reason Chromium gets broken when it's used.
++      // Though,  we can import RGBX_8888 dma buffer to EGLImage successfully.
++      // Enable that back when the issue is resolved.
+ #endif  // !BUILDFLAG(IS_LACROS)
+ 
+     if (!image_format_alpha_ && format == gfx::BufferFormat::BGRA_8888)

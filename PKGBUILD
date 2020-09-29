@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-dev-ozone
-pkgver=87.0.4252.0
+pkgver=87.0.4270.0
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (dev channel)"
@@ -28,10 +28,12 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        chromium-skia-harmony.patch)
-sha256sums=('5ea43fa7c79061f8fa5ce9f9f1e1776f1e639dad8fdfdd613af00f136dd3b4d3'
+        chromium-skia-harmony.patch
+        d23f751.diff)
+sha256sums=('dfcc78c1b8bd5c447004dbd50f95b9c83666e308d7e77a9a50a4c4663edf3aa9'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
+            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
+            '458419d7dc4acded51f1684fbc1163f9db778c48a1987c0b3aec37757b6935d1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -66,14 +68,6 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _google_default_client_id=413772536636.apps.googleusercontent.com
 _google_default_client_secret=0ZChLK6AxeA3Isu96MkwqDR4
 
-# Branch point: 772468
-# Extra commits related specifically to wayland support:
-
-# These consist of the above commits and their dependencies
-# generated with `git-deps -r -e <release tag> <commit>^! ...` (in reverse order)
-_bugfix_patches=(
-)
-
 prepare() {
   cd "$srcdir/chromium-$pkgver"
 
@@ -90,11 +84,8 @@ prepare() {
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
 
-  for PATCH in ${_bugfix_patches[@]}
-  do
-    echo "Applying $PATCH"
-    patch -Np1 -i $srcdir/${PATCH}
-  done
+  # https://bugs.chromium.org/p/chromium/issues/detail?id=1128997#c33
+  patch -Np1 -i ../d23f751.diff
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
@@ -144,7 +135,7 @@ build() {
     'ozone_platform_gbm=false'
     'ozone_platform_headless=true'
     'use_system_libwayland=true'
-    'use_vaapi=true'
+    'use_vaapi=false'
     'enable_nacl=false'
     "google_api_key=\"${_google_api_key}\""
     "google_default_client_id=\"${_google_default_client_id}\""
