@@ -26,7 +26,7 @@ validpgpkeys=()
 
 pkgver(){
     cd "${_pkgname}"
-    printf "1.4.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "$(git describe)"
 }
 
 build() {
