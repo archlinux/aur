@@ -1,0 +1,24 @@
+pkgbase = com.qq.tim.spark
+	pkgdesc = Tencent TIM Client on Deepin Wine 5 (from Spark Store)
+	pkgver = 3.2.0.21856spark0
+	pkgrel = 1
+	url = http://tim.qq.com/
+	install = tim.install
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-wine5
+	depends = p7zip
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	depends = noto-fonts-cjk
+	depends = deepin-wine-helper
+	conflicts = com.qq.tim.dcs
+	source = https://cdn.jerrywang.top/store/chat/com.qq.tim.spark/com.qq.tim.spark_3.2.0.21856spark0_i386.deb
+	source = reg.patch
+	sha512sums = 957d7ccd97561ee8c490d3aea6924cb164569fb76fc11875f3f56b0fbefda8a5a521eb554915a7500a1c19d8b78fb05175e4a55b43ef6709799b89e7a3227e84
+	sha512sums = 5730066dc9bf3689e3db1c08ba83b516efc0bcc7fe6ff47198b43dd352718a6942d01190da87fe010816bf1e9e0e453a09fd15314e4004c309e7f52725b32528
+
+pkgname = com.qq.tim.spark
+
