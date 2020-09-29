@@ -1,8 +1,8 @@
 # Maintainer: printfn <printfn@users.noreply.github.com>
 
 pkgname=fend
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.1.5
+pkgrel=1
 epoch=
 pkgdesc="Arbitrary-precision unit-aware calculator"
 arch=('x86_64')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 noextract=()
-sha512sums=("38fcfce4b5a67c5eb00bfd2fda7db03584a5e79390c31f7a92e5a3a7b576b922b4541ba9ba3818746ea28a0878c45b93437650e8d41feb388959c7972eafd3f3")
+sha512sums=("3aaeacc11303bcfc8ed73345b604fbb85f6ef0edac37050e7ca88aacf591461d985ca3ad6c42de41a5e0ceb10bbbcd818607c0c7c41ea16e72755d0846cfff37")
 validpgpkeys=()
 
 build() {
@@ -38,6 +38,6 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -Dm 755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
-	install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
