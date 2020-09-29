@@ -1,7 +1,7 @@
 # Maintainer: Matteo Bonora <bonora.matteo@gmail.com>
 pkgname=kmonad-git
 pkgver=0.4.0.r37.9a2a8a8
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced keyboard manager"
 arch=('any')
 url="https://github.com/david-janssen/kmonad"
@@ -29,4 +29,5 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	stack install --local-bin-path="$pkgdir/usr/bin"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
