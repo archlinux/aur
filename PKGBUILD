@@ -19,7 +19,7 @@ source=("element-web::${_giturl}/riot-web.git#tag=${_vers}"
         "element-desktop.sh")
 sha256sums=('SKIP'
             'SKIP'
-            '81354e663e354bd66b3f2bb303314b790bdf6d61c3d8e2df7407eb500885647d'y
+            '81354e663e354bd66b3f2bb303314b790bdf6d61c3d8e2df7407eb500885647d'
             'e4965abefbd609cf88349437b811bc4433d671f5ec5cd51992fd6179d483925f')
 
 pkgver() {
