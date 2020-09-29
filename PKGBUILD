@@ -2,7 +2,7 @@
 
 pkgname=pnghide-git
 pkgver=0.2.3.r3.gb152869
-pkgrel=1
+pkgrel=2
 pkgdesc="hide plain text in png file inside pixels (unvisible changes)."
 url="https://github.com/x1b6e6/pnghide.git"
 license=("MIT")
@@ -11,6 +11,7 @@ depends=("libpng" "docopt")
 makedepends=("gcc" "make" "cmake" "png++")
 optdepends=("aes: for encryping data")
 conflicts=("pnghide")
+provides=("pnghide")
 
 pkgver() {
 	cd $srcdir/${pkgname%-git}
