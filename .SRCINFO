@@ -1,0 +1,18 @@
+pkgbase = soks-git
+	pkgdesc = A minimalistic SOCKS5 server proxy over a network interface (like a VPN or a second physical network device)
+	pkgver = r4.59552a7
+	pkgrel = 1
+	url = https://github.com/dariost/soks
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MPL2
+	makedepends = git
+	provides = soks
+	conflicts = soks
+	source = git+https://github.com/dariost/soks.git
+	sha384sums = SKIP
+
+pkgname = soks-git
+
