@@ -1,0 +1,38 @@
+pkgbase = libdnf_fixed
+	pkgdesc = Library providing simplified C and Python API to libsolv
+	pkgver = 0.48.0
+	pkgrel = 1
+	url = https://github.com/kokkiemouse/libdnf
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	checkdepends = check
+	checkdepends = cppunit
+	checkdepends = python-nose
+	makedepends = cmake
+	makedepends = gtk-doc
+	makedepends = python
+	makedepends = python-sphinx
+	makedepends = swig
+	makedepends = zchunk>=0.9.11
+	makedepends = clang
+	depends = glib2
+	depends = gpgme
+	depends = json-c
+	depends = libmodulemd>=2.5.0
+	depends = librepo>=1.12.0
+	depends = libsolv>=0.7.7
+	depends = libutil-linux
+	depends = openssl
+	depends = rpm-tools>=4.11.0
+	depends = sqlite
+	depends = zlib
+	optdepends = python: for python bindings
+	provides = hawkey
+	conflicts = hawkey
+	replaces = hawkey
+	source = https://github.com/kokkiemouse/libdnf/archive/0.48.0/libdnf_fixed-0.48.0.tar.gz
+	md5sums = e34706b8bf2bed4c6bc42dbb737837fe
+
+pkgname = libdnf_fixed
+
