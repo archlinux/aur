@@ -2,7 +2,7 @@
 
 pkgname=python-olxsearch
 _name=${pkgname#python-}
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=0
 
 pkgdesc="Download metadata from the OLX online market place(s)"
@@ -23,7 +23,7 @@ depends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("37fc04450cd8d86180d4bd42eb3eb0bc1864f07e684e6955af8a1ee24cdaeafe")
+sha256sums=("2e46a2e5c847248557aeda9677887b6251dbc651b9dd36af702a5f60418b9634")
 
 prepare() {
    rm -Rf "${srcdir}/*/*.egg-info"
