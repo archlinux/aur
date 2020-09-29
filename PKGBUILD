@@ -3,7 +3,7 @@
 # Contributor: thatgeek
 # Contributor: TorGuard Support <support@torguard.com>
 pkgname=torguard
-pkgver=4.0.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="TorGuard VPN Software
  Stay private online with TorGuard's anonymous VPN software and connect to 37+ countries worldwide."
@@ -19,7 +19,7 @@ optdepends=('wireguard-tools: wireguard support')
 license=(custom)
 source_x86_64=("https://updates.torguard.biz/Software/Linux/torguard-v${pkgver}-amd64-arch.tar.gz")
 source=('torguard.sysusers')
-sha256sums_x86_64=('803e43c51d3a334fe62a3cf078b323a983461309613943b960ae880b46577308')
+sha256sums_x86_64=('31116d6ebfa7e45acdacaf30cafb147be1c2ee9909adc79585010f1ac3bb938c')
 sha256sums=('b1f954c54725794f94009c72e12746f203ce6dd4318a19ad0c10d5d8684cd873')
 
 prepare() {
