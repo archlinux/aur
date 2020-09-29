@@ -1,7 +1,7 @@
 # Maintainer: Chris Down <chris@chrisdown.name>
 
 pkgname=plenv
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='Simple Perl version management'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 optdepends=('perl-build: To build perl')
 depends=()
 source=("https://github.com/tokuhirom/plenv/archive/${pkgver}.zip")
-md5sums=('a71ef9947e134d31e5a024f56483c2c9')
+md5sums=('a5513465573a2d9374e2168cdb0dccbd')
 
 package() {
     mkdir -p "${pkgdir?}"/{opt/plenv,usr/bin}
