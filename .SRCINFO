@@ -2,7 +2,7 @@ pkgbase = neovim-vimvi
 	pkgdesc = symlinks neovim to vi, vim, and every binary those packages provide
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/Duncaen/OpenDoas
+	url = https://github.com/neovim/neovim
 	arch = any
 	license = APACHE
 	depends = neovim
@@ -10,6 +10,8 @@ pkgbase = neovim-vimvi
 	provides = vim
 	conflicts = vi
 	conflicts = vim
+	source = vimdiff
+	sha256sums = 59280029bdf81684836c8b720fdbab3eeb38feff78f0fd843607f5cdd30aa598
 
 pkgname = neovim-vimvi
 
