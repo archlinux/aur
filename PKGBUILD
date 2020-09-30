@@ -9,7 +9,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=85.0.4183.102
+pkgver=85.0.4183.121
 pkgrel=1
 _launcher_ver=6
 _gcc_patchset=2
@@ -18,7 +18,7 @@ _pkgver=$(echo $pkgver | cut -d\. -f1-4)
 # ungoogled chromium variables
 _uc_ver=$pkgver-1
 _uc_usr=Eloston
-_uc_sum='c5f157a1cad84699ea420caf318ab84ae56f11972b67cfb7b95cf9eb072cc12f'
+_uc_sum='038fdbecb3a93535a60f02482eff29782e41deb2b171d2eb4511d56e7f103c95'
 _uc_url="$_pkgname-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz"
 pkgdesc="A lightweight approach to removing Google web service dependency"
 arch=('x86_64')
@@ -28,7 +28,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'mesa' 'ninja' 'nodejs' 'git' 'libva'
-             'libpipewire02' 'clang' 'lld' 'gn' 'java-runtime-headless'
+             'libpipewire02' 'clang' 'lld' 'gn-m85' 'java-runtime-headless'
              'python2-setuptools')
 optdepends=('pepper-flash: support for Flash content'
             'libpipewire02: WebRTC desktop sharing under Wayland'
@@ -49,7 +49,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         wayland-egl.patch
         nvidia-vdpau.patch
         chromium-skia-harmony.patch)
-sha256sums=('8a68d474724a7a8acfc7742405942836f08e30e713f12f8c3ada46ee6a805e0c'
+sha256sums=('e018547e54566410fb365d9f3dae10037c30fca5debe6ba8baceef3ad3b03d28'
             $_uc_sum
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
@@ -204,7 +204,7 @@ build() {
   CXXFLAGS+=' -Wno-unknown-warning-option'
 
   msg2 'Configuring Chromium'
-  gn gen out/Release --args="${_flags[*]}" --script-executable=/usr/bin/python2
+  gn-m85 gen out/Release --args="${_flags[*]}" --script-executable=/usr/bin/python2
   msg2 'Building Chromium'
   ninja -C out/Release chrome chrome_sandbox chromedriver
 }
