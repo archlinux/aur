@@ -17,7 +17,7 @@ else
 :
 fi
 
-pkgname=usd
+pkgname=usd19
 pkgver=${_ver#v}
 pkgrel=2
 pkgdesc="3D VFX pipeline interchange file format."
