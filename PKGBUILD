@@ -1,13 +1,13 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=bitcoin-abc-qt
-pkgver=0.22.2
+pkgver=0.22.3
 pkgrel=0
 pkgdesc="Bitcoin ABC with bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-seeder and bitcoin-qt"
 arch=('i686' 'x86_64')
 url="https://bitcoinabc.org"
 depends=('boost-libs' 'libevent' 'desktop-file-utils' 'qt5-base' 'protobuf' 'openssl' 'miniupnpc' 'zeromq' 'qrencode' 'jemalloc')
-makedepends=('cmake' 'ninja' 'boost' 'qt5-tools' 'python')
+makedepends=('cmake' 'ninja' 'boost' 'qt5-tools' 'python' 'help2man' 'xorg-server-xvfb')
 license=('MIT')
 source=(https://github.com/Bitcoin-ABC/bitcoin-abc/archive/v$pkgver.tar.gz
         bitcoin.conf
@@ -77,8 +77,11 @@ package() {
   install -dm 755 "$pkgdir/run/bitcoin"
 
   pushd build
-  msg2 'Installing executables and man pages...'
+  msg2 'Installing executables...'
   ninja install/strip
+
+  msg2 'Installing man pages...'
+  xvfb-run ninja install-manpages
   popd
 
   msg2 'Installing bitcoin.conf...'
@@ -98,7 +101,7 @@ package() {
       "$pkgdir/usr/share/bash-completion/completions/$_compl"
   done
 }
-sha256sums=('916e461bcf25f697a1753cf699435a4434645d1f866dcc9de58422027309fa7d'
+sha256sums=('5e178e86dccb7aec5d193fe2074d62f83263acb0efeef599f69a94334518563d'
             'c30e5c7e0e97b001fdeac5f4510d5ebc0e0499ec086325e845db609a24f2e22f'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             'f2fd9d8331238727333cf2412ba3759cb194a65b2060eff36808b24c06382104'
