@@ -1,19 +1,18 @@
-From fb9cbe559ac41226adda4d9c4aa8c454ea0455f2 Mon Sep 17 00:00:00 2001
+From b9cea2dcf42a77581483165199bd2443b0e5cc53 Mon Sep 17 00:00:00 2001
 From: soloturn <soloturn@gmail.com>
 Date: Sat, 1 Aug 2020 16:21:07 +0200
 Subject: [PATCH] arch aur pachtes
 
 ---
  CMakeLists.txt          | 1 +
- docs/CMakeLists.txt     | 1 -
  utils/build-presets.ini | 6 +++---
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ 2 files changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index a84adb0ca46..43d8b885648 100644
+index ecdbbca9539..c43da553ed9 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -914,6 +914,7 @@ if(NOT CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+@@ -894,6 +894,7 @@ if(NOT CMAKE_SYSTEM_NAME STREQUAL "Darwin")
    endif()
  endif()
  
@@ -21,20 +20,8 @@ index a84adb0ca46..43d8b885648 100644
  find_package(Python3 COMPONENTS Interpreter REQUIRED)
  
  #
-diff --git a/docs/CMakeLists.txt b/docs/CMakeLists.txt
-index c748bd36eba..eef2c349848 100644
---- a/docs/CMakeLists.txt
-+++ b/docs/CMakeLists.txt
-@@ -10,7 +10,6 @@ SET(SWIFT_SPHINX_PAPER_SIZE "letter"
-   CACHE STRING "Paper size for generated documentation")
- 
- SET(SPHINX_ARGS
--  -W
-   -D latex_elements.papersize=${SWIFT_SPHINX_PAPER_SIZE}
-   -d ${CMAKE_BINARY_DIR}/doctrees)
- 
 diff --git a/utils/build-presets.ini b/utils/build-presets.ini
-index b1fe751b1ac..3d67f7223aa 100644
+index 7d9a5c264c8..9c98234813e 100644
 --- a/utils/build-presets.ini
 +++ b/utils/build-presets.ini
 @@ -779,16 +779,17 @@ mixin-preset=
