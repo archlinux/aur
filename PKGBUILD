@@ -1,7 +1,7 @@
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="koalalauncher-bin"
 _pkgname="koalalauncher"
-pkgver="1.0.2"
+pkgver="1.0.3"
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Koala Launcher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
@@ -26,23 +26,24 @@ prepare() {
 package() {
     # install the main files.
     install -d -m755 "${pkgdir}/opt/${pkgname}"
-    cp -Rr "${srcdir}/"* "${pkgdir}/opt/${pkgname}"
+    cp -R "${srcdir}/"* "${pkgdir}/opt/${pkgname}"
+    mv "${pkgdir}/opt/${pkgname}/${_pkgname}" "${pkgdir}/opt/${pkgname}/${pkgname}"
 
     # desktop entry
     install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     # install the icon
     install -d -m755 "${pkgdir}/usr/share/icons"
-    cp -Rr "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
+    cp "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
 
     # fix file permissions - all files as 644 - directories as 755
     find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
     find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
 
     # make sure the main binary has the right permissions
-    chmod +x "${pkgdir}/opt/${pkgname}/${_pkgname}"
+    chmod +x "${pkgdir}/opt/${pkgname}/${pkgname}"
 
     # link the binary
     install -d -m755 "${pkgdir}/usr/bin"
-    ln -sr "${pkgdir}/opt/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    ln -sr "${pkgdir}/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
