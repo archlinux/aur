@@ -3,12 +3,12 @@
 
 pkgname=siril
 pkgver=0.99.6
-pkgrel=1
+pkgrel=2
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 arch=('i686' 'x86_64')
 license=('GPLv3')
 depends=('gtk3' 'fftw' 'cfitsio' 'gsl' 'libconfig' 'opencv')
-makedepends=('intltool')
+makedepends=('intltool' 'cmake')  
 url="https://www.siril.org/"
 optdepends=('libpng: PNG import'
             'libjpeg: JPEG import and export'
