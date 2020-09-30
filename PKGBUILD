@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+$url")
+source=("$_pkgname"::"git+$url#branch=master")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
