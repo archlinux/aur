@@ -1,6 +1,6 @@
 pkgbase = deepin-qt-dbus-factory-git
 	pkgdesc = A repository stores auto-generated Qt5 dbus code (libdframeworkdbus)
-	pkgver = 5.3.0.15.r0.ge7f4ccb
+	pkgver = 5.3.0.19.r0.g8798b9c
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-qt-dbus-factory
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = deepin-qt-dbus-factory-git
 	depends = qt5-base
 	provides = deepin-qt-dbus-factory
 	conflicts = deepin-qt-dbus-factory
-	replaces = deepin-qt-dbus-factory
 	source = deepin-qt-dbus-factory-git::git://github.com/linuxdeepin/dde-qt-dbus-factory.git
 	sha512sums = SKIP
 
