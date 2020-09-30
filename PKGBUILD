@@ -11,10 +11,10 @@ depends=(kcoreaddons)
 makedepends=(extra-cmake-modules python mariadb-libs postgresql qt5-tools doxygen qt5-doc)
 optdepends=('mariadb-libs: MySQL plugin' 'postgresql: PostgreSQL plugin')
 source=("https://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz"{,.sig}
-         kdb-postgresql-12.patch::"https://cgit.kde.org/kdb.git/patch/src/drivers/postgresql?id=40cdaea4")
+         kdb-postgresql-12.patch::"https://invent.kde.org/libraries/kdb/-/commit/40cdaea4.patch")
 sha256sums=('8f8983bc8d143832dc14bc2003ba6af1af27688e477c0c791fd61445464f2069'
             'SKIP'
-            'c576a6375d6694c6ca017737ee959f2fe079abd5deb56bd5e1a0674f8812cb76')
+            '7c67b4b349432cbe44413758dcd020600eca1366c82fb2d02c361dbf66e8d0f7')
 validpgpkeys=(4866BAF713B465677A4059643C7C0E201B6524DB) # Jarosław Staniek <staniek@kde.org>
 
 
