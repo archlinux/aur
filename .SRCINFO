@@ -1,7 +1,7 @@
 pkgbase = freeipmi
 	pkgdesc = Provides in-band and out-of-band IPMI software based on the IPMI v1.5/2.0 specification.
 	pkgver = 1.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/freeipmi
 	arch = x86_64
 	arch = aarch64
@@ -12,9 +12,18 @@ pkgbase = freeipmi
 	provides = libipmiconsole.so=2
 	provides = libfreeipmi.so=17
 	options = !libtool
-	backup = etc/freeipmi/*.conf
+	backup = etc/freeipmi/freeipmi.conf
+	backup = etc/freeipmi/freeipmi_interpret_sel.conf
+	backup = etc/freeipmi/freeipmi_interpret_sensor.conf
+	backup = etc/freeipmi/ipmidetect.conf
+	backup = etc/freeipmi/ipmidetectd.conf
+	backup = etc/freeipmi/ipmiseld.conf
+	backup = etc/freeipmi/libipmiconsole.conf
 	source = https://ftp.gnu.org/gnu/freeipmi/freeipmi-1.6.6.tar.gz
+	source = https://ftp.gnu.org/gnu/freeipmi/freeipmi-1.6.6.tar.gz.sig
+	validpgpkeys = A865A9FB6F0387624468543A3EFB7C4BE8303927
 	sha256sums = cfa30179b44c582e73cf92c2ad0e54fe49f9fd87f7a0889be9dc2db5802e6aab
+	sha256sums = SKIP
 
 pkgname = freeipmi
 
