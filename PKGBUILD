@@ -10,7 +10,7 @@ _pkgname=jre
 
 pkgname=bin32-jre
 pkgver=${_major}u${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Java $_major Runtime Enviroment (32-bit)"
 arch=('x86_64')
 url="https://www.java.com/en/download/linux_manual.jsp"
@@ -60,7 +60,7 @@ source=(
   "policytool32-$_jname.desktop"
 )
 sha256sums=('20384c4f8a904d81b57d18e8a1906d39e8f3000719b6f15bf0400b52c9808b71'
-            'f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59'
+            '9c64997edfce44e29296bfbd0cf90abf8b6b9ef2ea64733adae3bdac9ae2c5a6'
             'b92df5151b7b21fbdce2be8717b3b83e58bd290111b47c8c81c657ab2ccb0db8')
 
 package() {

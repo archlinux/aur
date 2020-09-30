@@ -1,7 +1,7 @@
 pkgbase = bin32-jre
 	pkgdesc = Oracle Java 8 Runtime Enviroment (32-bit)
 	pkgver = 8u261
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.java.com/en/download/linux_manual.jsp
 	install = bin32-jre.install
 	arch = x86_64
@@ -42,7 +42,7 @@ pkgbase = bin32-jre
 	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
 	source = policytool32-jre8.desktop
 	sha256sums = 20384c4f8a904d81b57d18e8a1906d39e8f3000719b6f15bf0400b52c9808b71
-	sha256sums = f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59
+	sha256sums = 9c64997edfce44e29296bfbd0cf90abf8b6b9ef2ea64733adae3bdac9ae2c5a6
 	sha256sums = b92df5151b7b21fbdce2be8717b3b83e58bd290111b47c8c81c657ab2ccb0db8
 
 pkgname = bin32-jre
