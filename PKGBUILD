@@ -2,8 +2,8 @@
 # Contributor: rbrt
 
 pkgname=klystrack-git
-pkgver=1.7.5.r25.gc136d33
-pkgrel=2
+pkgver=1.7.6.make.fix.r12.gfe6e746
+pkgrel=1
 pkgdesc="Tracker for making chiptune-like music on a modern computer"
 arch=('i686' 'x86_64')
 url="http://kometbomb.github.io/klystrack/"
@@ -33,6 +33,8 @@ prepare() {
   git submodule update
   # path to default song
   sed -i 's/Default.kt/\/usr\/share\/klystrack\/Default\.kt/' "$srcdir/klystrack/src/main.c"
+  # CFLAGS needed until https://github.com/kometbomb/klystrack/issues/292 is resolved
+  sed -i '/CFLAGS :=/ a CFLAGS += -fcommon' Makefile
 }
 
 build() {
