@@ -1,11 +1,11 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-modsecurity-git
-pkgver=v1.0.1.10.g11a35fb
+pkgver=v1.0.1.12.g22e53ab
 pkgrel=1
 
 _modname=ModSecurity-nginx
-_nginxver=1.19.2
+_nginxver=1.19.3
 
 pkgdesc='ModSecurity v3 Nginx Connector (module for mainline nginx)'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('7c1f7bb13e79433ee930c597d272a64bc6e30c356a48524f38fd34fa88d62473'
+sha256sums=('91e5b74fa17879d2463294e93ad8f6ffc066696ae32ad0478ffe15ba0e9e8df0'
             'SKIP'
             'SKIP')
 
