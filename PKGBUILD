@@ -1,4 +1,4 @@
-# Maintainer: Zhang Hai <dreaming.in.code.zh@gmail.com>
+# Maintainer: Hai Zhang <dreaming.in.code.zh@gmail.com>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: Gordin <9ordin@gmail.com>
