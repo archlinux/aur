@@ -6,7 +6,7 @@
 pkgbase=droidcam
 pkgname=('droidcam' 'v4l2loopback-dc-dkms')
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
 arch=('x86_64')
@@ -47,7 +47,7 @@ build() {
 
 package_droidcam() {
   depends=('alsa-lib' 'libjpeg-turbo' 'ffmpeg' 'v4l2loopback-dc-dkms' 'libusbmuxd')
-  optdepends=('gtk3: use GUI version in addition to CLI interface' )
+  optdepends=('gtk3: use GUI version in addition to CLI interface' 'libappindicator-gtk3: use GUI version in addition to CLI interface')
 
   pushd ${pkgbase}-${pkgver}/linux
 

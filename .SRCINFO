@@ -1,7 +1,7 @@
 pkgbase = droidcam
 	pkgdesc = A tool for using your android device as a wireless/usb webcam
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/aramg/droidcam
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgname = droidcam
 	depends = v4l2loopback-dc-dkms
 	depends = libusbmuxd
 	optdepends = gtk3: use GUI version in addition to CLI interface
+	optdepends = libappindicator-gtk3: use GUI version in addition to CLI interface
 
 pkgname = v4l2loopback-dc-dkms
 	depends = dkms
