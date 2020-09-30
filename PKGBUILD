@@ -1,12 +1,12 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=recastnavigation-git
-pkgver=r741.57610fa
+pkgver=r744.9337e12
 pkgrel=1
 pkgdesc="Navigation-msh Toolset for Games"
 url="https://github.com/recastnavigation/recastnavigation"
 arch=(x86_64)
 license=('Zlib')
-makedepends=(git cmake gcc sdl2 glut)
+makedepends=(git cmake sdl2 glut)
 depends=(sdl2 glut)
 provides=('recastnavigation')
 conflicts=('recastnavigation')
