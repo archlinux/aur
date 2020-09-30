@@ -2,7 +2,7 @@
 
 pkgname=giara-git
 pkgver=r81.22ca5d1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Reddit gtk client"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 groups=()
 depends=(
 	'gtksourceview4'
-	'libhandy>=1'
+	'libhandy1'
 	'python-dateutil'
 	'python-flask'
 	'python-gobject'
