@@ -7,7 +7,7 @@ pkgbase = python-minidump
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = minidump-0.0.13.tar.gz::https://files.pythonhosted.org/packages/a9/cb/8465e1f2b3ea39764dce7726543ed8519b0bd8cef4aede075298a01e0ac9/minidump-0.0.13.tar.gz
+	source = https://files.pythonhosted.org/packages/source/m/minidump/minidump-0.0.13.tar.gz
 	sha256sums = ba8a988f915e53005f8b4747515269e7ab7c937bc74ab09fec949edf04f423f1
 
 pkgname = python-minidump
