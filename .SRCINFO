@@ -6,6 +6,7 @@ pkgbase = hr-zig
 	arch = i686
 	arch = x86_64
 	license = custom:Public Domain
+	makedepends = zig
 	provides = hr
 	conflicts = hr
 	source = https://github.com/djmattyg007/hr-zig/archive/1.0.0.tar.gz
