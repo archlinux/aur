@@ -1,0 +1,16 @@
+pkgbase = ttf-arphic-tex-extra
+	pkgdesc = TrueType versions of the Chinese Arphic fonts for use with XeLaTeX and LuaLaTeX.
+	pkgver = 20161212
+	pkgrel = 1
+	url = https://www.ctan.org/pkg/arphic-ttf
+	arch = any
+	license = custom:ARPHIC_PUBLIC_LICENSE
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-font-util
+	noextract = arphic-ttf.zip
+	source = http://mirrors.ctan.org/fonts/arphic-ttf.zip
+	sha256sums = 1f2a2f979d35354f383851aa5631e38dda63f5995b309aa5da97679fd132de39
+
+pkgname = ttf-arphic-tex-extra
+
