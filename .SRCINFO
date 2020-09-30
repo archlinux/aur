@@ -1,15 +1,15 @@
 pkgbase = logo-ls
 	pkgdesc = Modern ls command with vscode like file icon and git integrations
-	pkgver = 1.3.5
-	pkgrel = 4
+	pkgver = 1.3.6
+	pkgrel = 1
 	url = https://github.com/Yash-Handa/logo-ls
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = https://github.com/Yash-Handa/logo-ls/archive/v1.3.5.tar.gz
-	md5sums = 0b1b1528f1d7251583f3b8ab9effe2d9
+	source = https://github.com/Yash-Handa/logo-ls/archive/v1.3.6.tar.gz
+	md5sums = a1cfbfd0953f435a18c2b8bac48e23f0
 
 pkgname = logo-ls
 
