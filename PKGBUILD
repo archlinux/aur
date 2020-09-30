@@ -1,6 +1,6 @@
 # Maintainer: Fabian Bornschein <plusfabi(At)gmail(Dot)com>
 pkgname=systemd-boot-esp-sync
-pkgver=2
+pkgver=2.1
 pkgrel=1
 pkgdesc="Sync /boot to your machines /efi"
 url='https://aur.archlinux.org/packages/systemd-boot-esp-sync/'
