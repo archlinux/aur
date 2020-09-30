@@ -1,4 +1,4 @@
-# Maintainer: Zhang Hai <dreaming.in.code.zh@gmail.com>
+# Maintainer: Hai Zhang <dreaming.in.code.zh@gmail.com>
 
 # Taken from android-sdk-platform-tools
 
