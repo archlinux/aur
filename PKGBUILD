@@ -1,11 +1,11 @@
 # Maintainer: Simon Brulhart <simon@brulhart.me>
-# Contributor: Simone Sclavi 'Ito' <darkhado@gmail.com>
+# Contributors: Simone Sclavi 'Ito' <darkhado@gmail.com>, bittin
 
 pkgname=firefox-beta-bin-all-localizations
 _pkgname=firefox-beta
 pkgdesc='Perl script for installing latest FF beta in the language of your choice'
 url='https://www.mozilla.com/firefox/channel/#beta'
-pkgver=82.0b4
+pkgver=82.0b5
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
