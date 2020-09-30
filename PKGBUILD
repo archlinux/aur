@@ -8,9 +8,10 @@ pkgdesc="Command-line interface for Kanttiinit, a Finnish student restaurant
 menu tool (git)"
 arch=('any')
 url="https://github.com/Kanttiinit/cli"
+depends=('curl')
 makedepends=('gcc' 'make' 'git')
 source=(git+$url)
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 build() {
     cd $dest
