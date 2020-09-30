@@ -1,19 +1,19 @@
 pkgbase = jape
 	pkgdesc = A configurable, graphical proof assistant.
-	pkgver = 8.1.3
+	pkgver = 9.0.9
 	pkgrel = 1
 	url = http://japeforall.org.uk/
 	arch = x86_64
 	license = GPL
 	makedepends = unzip
-	depends = java-runtime
-	noextract = InstallLinuxjape.jar
+	depends = java-runtime>=9
+	noextract = 9_0_9_InstallLinuxjape.jar
 	source = jape
 	source = jape.desktop
 	sha256sums = 43cfa222c48f819c9c4508f4847212d4327f8c7aa49ba4f3bfc9dc4f0f330f8d
 	sha256sums = 4677512343900e325f763cf79c8571ae3e493d7f074ebc7c68182ef487e6e579
-	source_x86_64 = http://www.cs.ox.ac.uk/people/bernard.sufrin/personal/jape.org/BUILDS/8.1.3/InstallLinuxjape.jar
-	sha256sums_x86_64 = 768ab130d59c75ddab10a2b8dbaf10e0403c57b48a5b837f940af2c7182c72ce
+	source_x86_64 = https://github.com/RBornat/jape/releases/download/9.0.9/9_0_9_InstallLinuxjape.jar
+	sha256sums_x86_64 = dc001d7fde1e8808e474393e5a987f6c731b0915118a50e4c6750ccec534b00b
 
 pkgname = jape
 
