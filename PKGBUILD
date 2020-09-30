@@ -1,4 +1,4 @@
-# Maintainer: Unknown Packager
+# Maintainer: John Hamelink <me@johnhame.link>
 
 export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
