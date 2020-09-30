@@ -1,5 +1,5 @@
 pkgname=libbde
-pkgver=20190701
+pkgver=20200724
 pkgrel=1
 pkgdesc="Library and tools to access the BitLocker Drive Encryption (BDE) encrypted volumes"
 url="https://github.com/libyal/libbde"
@@ -10,7 +10,7 @@ depends=(openssl)
 #source=("git+https://github.com/libyal/libbde#commit=$_commit")
 source=("https://github.com/libyal/libbde/releases/download/$pkgver/libbde-alpha-$pkgver.tar.gz"
         "https://github.com/libyal/libbde/releases/download/$pkgver/libbde-alpha-$pkgver.tar.gz.asc")
-sha256sums=('749343eb86e8c1fcd1d16f023acce628773741f40c04c1580917beef8274bb83'
+sha256sums=('aa2a3fab8e599fcbef3b7aca26ccae18157e6be9c74d2ea929657553e0592a6d'
             'SKIP')
 validpgpkeys=('0ED9020DA90D3F6E70BD3945D9625E5D7AD0177E')
 
