@@ -1,0 +1,12 @@
+pkgbase = fcitx5-pinyin-chinese-idiom
+	pkgdesc = Fcitx 5 Pinyin Chinese Idiom Dictionary
+	pkgver = 20200930
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = libime
+	source = https://raw.githubusercontent.com/pwxcoo/chinese-xinhua/master/data/idiom.json
+	md5sums = SKIP
+
+pkgname = fcitx5-pinyin-chinese-idiom
+
