@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sxemacs-git
-pkgver=22.1.16.68.g3ba3d30
+pkgver=22.1.17.1.ga354e10
 pkgrel=1
 pkgdesc="A derivation of xemacs - git checkout"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libao' 'gpm' 'libtiff' 'jack' 'libmad' 'desktop-file-utils' 
 	 'compface' 'libpulse' 'libxaw' 'sox' 'openssl' 'ffmpeg' 'xaw3d'
 	 'postgresql-libs')
-# dependancy postgresql-libs can be avoides using --with-postgres=no in configure statement
+# dependancy postgresql-libs can be avoided using --with-postgres=no in configure statement
 makedepends=('git' 'texinfo' 'xbitmaps')
 provides=('sxemacs')
 conflicts=('sxemacs' 'xemacs')
