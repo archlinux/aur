@@ -7,8 +7,9 @@ pkgbase = kanttiinit-git
 	makedepends = gcc
 	makedepends = make
 	makedepends = git
+	depends = curl
 	source = git+https://github.com/Kanttiinit/cli
-	md5sums = SKIP
+	sha512sums = SKIP
 
 pkgname = kanttiinit-git
 
