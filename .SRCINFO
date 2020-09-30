@@ -1,7 +1,7 @@
 pkgbase = com.qq.im.deepin
 	pkgdesc = Deepin Wine QQ
 	pkgver = 9.3.2
-	pkgrel = 10
+	pkgrel = 9
 	url = http://im.qq.com/
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = com.qq.im.deepin
 	depends = deepin-wine-helper
 	conflicts = deepin-qq-im
 	conflicts = deepin.com.qq.im
-	noextract = com.qq.im.deepin_9.3.2deepin10_i386.deb
-	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.qq.im.deepin/com.qq.im.deepin_9.3.2deepin10_i386.deb
-	md5sums = eb2994eb4a04236b4c4120ec9c4c8e58
+	noextract = com.qq.im.deepin_9.3.2deepin9_i386.deb
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.qq.im.deepin/com.qq.im.deepin_9.3.2deepin9_i386.deb
+	md5sums = 2c1eed367e78d9431ca1c40f7181cd29
 
 pkgname = com.qq.im.deepin
 
