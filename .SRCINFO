@@ -1,0 +1,19 @@
+pkgbase = tasmotizer-git
+	pkgdesc = The full-featured flashing tool for Tasmota. With the great ESPtool from Espressif under the hood, and all required settings by default.
+	pkgver = r42.810760d
+	pkgrel = 1
+	url = https://github.com/tasmota/tasmotizer
+	arch = any
+	license = GPL3
+	depends = python-pyqt5
+	depends = python-pyserial
+	depends = qt5-serialport
+	provides = tasmotizer
+	conflicts = tasmotizer
+	source = git+https://github.com/tasmota/tasmotizer.git
+	source = tasmotizer.desktop
+	sha256sums = SKIP
+	sha256sums = 0bc209d3ba418262f3f33715566f50b9e7867da86e07979fffc52ac4efe03ca1
+
+pkgname = tasmotizer-git
+
