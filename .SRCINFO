@@ -1,8 +1,8 @@
 pkgbase = bwutil-git
 	pkgdesc = A wrapper for bitwarden
 	pkgver = v0.1
-	pkgrel = 2
-	url = https://github.com/xPMo/bwutils
+	pkgrel = 3
+	url = https://github.com/xPMo/bwutil
 	arch = any
 	license = MIT
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = bwutil-git
 	optdepends = keyutils: Save BW_SESSION in kernel keyring
 	provides = bwutil
 	conflicts = bwutil
-	source = bwutil-git::git+https://github.com/xPMo/bwutils
+	source = bwutil-git::git+https://github.com/xPMo/bwutil
 	sha512sums = SKIP
 
 pkgname = bwutil-git

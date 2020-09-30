@@ -1,10 +1,10 @@
 # Maintainer: Gamma <GammaFunction@vivaldi.net>
 pkgname=bwutil-git
 pkgver=v0.1
-pkgrel=2
+pkgrel=3
 license=('MIT')
 pkgdesc='A wrapper for bitwarden'
-url='https://github.com/xPMo/bwutils'
+url='https://github.com/xPMo/bwutil'
 arch=('any')
 provides=('bwutil')
 conflicts=('bwutil')
