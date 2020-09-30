@@ -1,7 +1,7 @@
 pkgbase = python-resize-image
 	pkgdesc = A Small python package to easily resize images
 	pkgver = 1.1.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VingtCinq/python-resize-image
 	arch = any
 	license = MIT
@@ -10,7 +10,9 @@ pkgbase = python-resize-image
 	makedepends = python2
 	makedepends = python2-setuptools
 	source = https://pypi.io/packages/source/p/python-resize-image/python-resize-image-1.1.19.tar.gz
+	source = https://raw.githubusercontent.com/VingtCinq/python-resize-image/master/LICENSE
 	sha256sums = 2aea25e9811fd44d4cb8fef82059ace114f6cc72bbef059f69b0b7f79f55e03e
+	sha256sums = bf3a8525e859c6ce1c4b6b463f65ffbe331480aae194c63e896a56d4d7708f08
 
 pkgname = python-resize-image
 	depends = python-requests
