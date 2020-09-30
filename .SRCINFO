@@ -1,14 +1,14 @@
 pkgbase = kattis
 	pkgdesc = Competitive programming checker for open.kattis.com
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/marcelroed/
 	arch = x86_64
 	license = MIT
 	provides = kattis
 	options = strip
-	source = https://github.com/marcelroed/kattis-rs/releases/download/v1.2.3/kattis-rs-1.2.3-x86_64.tar.gz
-	sha256sums = 93f2dd3fdb3b53b00f4c4c48bedae74992026ac5e8bc986ae257fa964aff9baf
+	source = https://github.com/marcelroed/kattis-rs/releases/download/v1.2.4/kattis-rs-1.2.4-x86_64.tar.gz
+	sha256sums = aeb0f988f7cf3aac78192f2879c279b2e698be5be3f9171e9aff3c70b7d370af
 
 pkgname = kattis
 
