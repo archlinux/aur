@@ -1,4 +1,4 @@
-# Maintainer: Zhang Hai <dreaming.in.code.zh@gmail.com>
+# Maintainer: Hai Zhang <dreaming.in.code.zh@gmail.com>
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Gordin <9ordin @t gmail dot com>
 # Contributor: Christoph Bayer <chrbayer@criby.de>
