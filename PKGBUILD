@@ -3,7 +3,7 @@
 
 pkgname=knot-resolver
 pkgver=5.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='full caching DNS resolver implementation'
 url='https://www.knot-resolver.cz/'
 arch=('x86_64' 'armv7h')

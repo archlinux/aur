@@ -1,7 +1,7 @@
 pkgbase = knot-resolver
 	pkgdesc = full caching DNS resolver implementation
 	pkgver = 5.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.knot-resolver.cz/
 	install = install
 	arch = x86_64
