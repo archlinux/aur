@@ -1,11 +1,14 @@
 pkgbase = fcitx5-pinyin-chinese-idiom
 	pkgdesc = Fcitx 5 Pinyin Chinese Idiom Dictionary
 	pkgver = 20200930
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = MIT
 	makedepends = libime
+	makedepends = pypinyin
+	source = https://github.com/Kienyew/fcitx5-pinyin-chinese-idiom/releases/download/v1.0/fcitx5-pinyin-chinese-idiom-v1.0.tgz
 	source = https://raw.githubusercontent.com/pwxcoo/chinese-xinhua/master/data/idiom.json
+	md5sums = 6ce28a54da860336a81cf80552e892fb
 	md5sums = SKIP
 
 pkgname = fcitx5-pinyin-chinese-idiom
