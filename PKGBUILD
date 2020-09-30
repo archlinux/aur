@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-redis2
 pkgver=0.14
-pkgrel=36
+pkgrel=37
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.19.2
+_nginxver=1.19.3
 
 pkgdesc='Redis 2.0 protocol module for mainline nginx'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('7c1f7bb13e79433ee930c597d272a64bc6e30c356a48524f38fd34fa88d62473'
+sha256sums=('91e5b74fa17879d2463294e93ad8f6ffc066696ae32ad0478ffe15ba0e9e8df0'
             'SKIP'
             'd830e072fcb4acee8490ba3e38eee6034fd884a954d17ad4efeb397032c58a71')
 
