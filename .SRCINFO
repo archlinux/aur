@@ -1,7 +1,7 @@
 pkgbase = tea-qt
 	pkgdesc = Powerful text editor for Linux, *BSD, Windows and OS/2
 	pkgver = 50.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://semiletov.org/tea/
 	arch = x86_64
 	license = GPL

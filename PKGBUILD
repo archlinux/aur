@@ -9,7 +9,7 @@
 
 pkgname=tea-qt
 pkgver=50.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful text editor for Linux, *BSD, Windows and OS/2"
 arch=('x86_64')
 url="http://semiletov.org/tea/"
