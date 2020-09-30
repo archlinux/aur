@@ -11,6 +11,7 @@ pkgbase = liberasurecode-git
 	arch = aarch64
 	license = BSD
 	makedepends = doxygen
+	makedepends = git
 	depends = zlib
 	source = liberasurecode::git+https://github.com/openstack/liberasurecode.git
 	source = disable-doc-full-path-names.patch
