@@ -1,5 +1,6 @@
 # Maintainer: Pavle <xpio at tut.by>
 # Contributor: rbrt
+# Contributor: Simon Perry <aur [at] sanxion [dot] net>
 
 pkgname=klystrack-git
 pkgver=1.7.6.make.fix.r12.gfe6e746
@@ -9,7 +10,6 @@ arch=('i686' 'x86_64')
 url="http://kometbomb.github.io/klystrack/"
 license=('MIT')
 groups=()
-options=(!makeflags)
 depends=('sdl2_image' 'sdl2_mixer')
 makedepends=('git')
 provides=('klystrack')
@@ -45,17 +45,18 @@ build() {
 package() {
   mkdir "$pkgdir/usr"
   cd "$pkgdir/usr"
-  mkdir -p bin share/klystrack share/applications share/pixmaps share/licenses/klystrack lib/klystrack
+  mkdir -p bin share/klystrack share/applications share/pixmaps share/licenses/klystrack lib/klystrack share/man/man1
+
   cd "$srcdir/$_gitname"
   install bin.debug/klystrack "$pkgdir/usr/bin/"
+
   cp -r res/ key/ "$pkgdir/usr/lib/klystrack/"
   cp -r examples/ "$pkgdir/usr/share/klystrack/"
+  
+  gzip -ck doc/klystrack.1 > "$pkgdir/usr/share/man/man1/klystrack.1.gz"
+
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/klystrack/"
   install -Dm644 doc/Default.kt "$pkgdir/usr/share/klystrack/"
-  # man page
-  mkdir -p "$pkgdir/usr/share/man/man1"
-  gzip -ck doc/klystrack.1 > "$pkgdir/usr/share/man/man1/klystrack.1.gz"
-  # .desktop file
   install -Dm644 "linux/klystrack.desktop" "$pkgdir/usr/share/applications/klystrack.desktop"
   install -Dm644 "icon/256x256.png" "$pkgdir/usr/share/pixmaps/klystrack.png"
 }
