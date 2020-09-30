@@ -1,14 +1,14 @@
 pkgbase = golaunch
 	pkgdesc = a simple .desktop launcher written in go.
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/hen6003/golaunch
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = https://github.com/hen6003/golaunch/archive/0.5.tar.gz
-	sha256sums = 7ba6bd3840f4ba8a0efd7a9a29cfa34960705287662c91143009289e4ae28a79
+	source = https://github.com/hen6003/golaunch/archive/0.6.tar.gz
+	sha256sums = fde982f86a52569507ad1b9436a6554f3cdc73ae91a1d4548939a69bf821533e
 
 pkgname = golaunch
 

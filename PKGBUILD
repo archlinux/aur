@@ -1,7 +1,7 @@
 # Maintainer Henry Smith <henrysmith6003@protonmail.com>
 
 pkgname=golaunch
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc='a simple .desktop launcher written in go.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/hen6003/golaunch"
 license=('MIT')
 makedepends=('go' 'git')
 source=("https://github.com/hen6003/golaunch/archive/$pkgver.tar.gz")
-sha256sums=("7ba6bd3840f4ba8a0efd7a9a29cfa34960705287662c91143009289e4ae28a79")
+sha256sums=('fde982f86a52569507ad1b9436a6554f3cdc73ae91a1d4548939a69bf821533e')
 
 prepare() {
   go get -u \
@@ -23,11 +23,17 @@ build() {
     -gcflags "all=-trimpath=$PWD" \
     -asmflags "all=-trimpath=$PWD" \
     -ldflags "-extldflags $LDFLAGS" \
-    -o $pkgname .
+    -o $pkgname ./golaunch
+  go build \
+    -gcflags "all=-trimpath=$PWD" \
+    -asmflags "all=-trimpath=$PWD" \
+    -ldflags "-extldflags $LDFLAGS" \
+    -o godesktop ./godesktop
 }
 
 package() {
   cd "$pkgname"-"$pkgver"
   install -Dm755 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
-  install -Dm755 $pkgname "$pkgdir"/usr/bin/"$pkgname"
+  install -Dm755 golaunch/$pkgname "$pkgdir"/usr/bin/"$pkgname"
+  install -Dm755 godesktop/godesktop "$pkgdir"/usr/bin/"godesktop"
 }
