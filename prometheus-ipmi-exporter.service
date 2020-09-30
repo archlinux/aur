@@ -1,0 +1,17 @@
+[Unit]
+Description=Prometheus exporter for IPMI metrics
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=-/etc/conf.d/prometheus-ipmi-exporter
+ExecStart=/usr/bin/prometheus-ipmi-exporter $IPMI_EXPORTER_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+User=ipmi-exporter
+Group=ipmi-exporter
+Restart=on-failure
+NoNewPrivileges=true
+ProtectSystem=true
+
+[Install]
+WantedBy=multi-user.target
