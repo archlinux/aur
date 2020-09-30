@@ -1,16 +1,16 @@
 # Maintainer: Per Osbäck <per@osbeck.com>
 
 pkgname=terraform-provider-cloudflare
-pkgver=2.0.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Terraform provider for Cloudflare"
-url="https://github.com/terraform-providers/terraform-provider-cloudflare"
+url="https://github.com/cloudflare/terraform-provider-cloudflare"
 arch=("x86_64")
 license=("MPL")
 makedepends=("go" "git")
 _gourl="github.com/terraform-providers"
-source=("https://github.com/terraform-providers/terraform-provider-cloudflare/archive/v$pkgver.tar.gz")
-sha256sums=('8bb0ca5afe0ed78dfbd6c3e2b2cc440713aa108403261b047d7b149fc2a1c7f5')
+source=("https://github.com/cloudflare/terraform-provider-cloudflare/archive/v$pkgver.tar.gz")
+sha256sums=('d296a57dcbefd449bb2a44aec3a80ce38f5f794179843958f3dc40df07f8cc5c')
 
 
 build() {
