@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=rmarkdown
-_cranver=2.3
+_cranver=2.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -16,7 +16,7 @@ depends=("r>=3.0.0" "pandoc>=1.12.3" "r-knitr>=1.22" "r-yaml>=2.1.19" "r-htmltoo
 # makedepends=()
 optdepends=("r-shiny>=0.11" "r-tufte" "r-testthat" "r-digest" "r-dygraphs" "r-tibble" "r-fs" "r-pkgdown" "r-rsconnect")
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=("51423dcae7284860c99744422dabd7a3bc12bd9913a17244157976cf26c1b26d")
+sha256sums=('c0cd725fefa3dacc1bb1848b0e227a3268b4693467d08d5c43332e15b82941f8')
 
 build() {
   cd "${srcdir}"
