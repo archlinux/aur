@@ -1,50 +1,24 @@
 pkgbase = ruby-gollum-lib
-	pkgdesc = A simple, Git-powered wiki, external library dependencies.
-	pkgver = 4.2.10
+	pkgdesc = A simple, Git-powered wiki.
+	pkgver = 5.0.6
 	pkgrel = 1
 	url = http://github.com/gollum/gollum-lib
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
 	depends = ruby
-	depends = ruby-gollum-grit_adapter
+	depends = ruby-gollum-rugged_adapter
 	depends = ruby-rouge
 	depends = ruby-nokogiri
-	depends = ruby-stringex
-	depends = ruby-sanitize
+	depends = ruby-loofah
 	depends = ruby-github-markup
 	depends = ruby-gemojione
-	provides = ruby-gollum-grit_adapter=1.0.1
-	provides = ruby-mini_portile2=2.1.0
-	provides = ruby-sanitize=2.1.0
-	provides = ruby-github-markup=1.6.1
-	provides = ruby-kramdown=1.9.0
-	provides = ruby-rack=1.6.8
-	provides = ruby-mustache=0.99.8
-	noextract = gollum-lib-4.2.10.gem
-	noextract = gollum-grit_adapter-1.0.1.gem
-	noextract = mini_portile2-2.1.0.gem
-	noextract = sanitize-2.1.0.gem
-	noextract = github-markup-1.6.1.gem
-	noextract = kramdown-1.9.0.gem
-	noextract = rack-1.6.8.gem
-	noextract = mustache-0.99.8.gem
+	depends = ruby-octicons<9
+	depends = ruby-twitter-text<2
+	noextract = gollum-lib-5.0.6.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/gollum-lib-4.2.10.gem
-	source = https://rubygems.org/downloads/gollum-grit_adapter-1.0.1.gem
-	source = https://rubygems.org/downloads/mini_portile2-2.1.0.gem
-	source = https://rubygems.org/downloads/sanitize-2.1.0.gem
-	source = https://rubygems.org/downloads/github-markup-1.6.1.gem
-	source = https://rubygems.org/downloads/kramdown-1.9.0.gem
-	source = https://rubygems.org/downloads/rack-1.6.8.gem
-	source = https://rubygems.org/downloads/mustache-0.99.8.gem
-	sha256sums = 6eb75173fbd6ed18621e650f747e0581b53f6c070f8fc995474a389363e42999
-	sha256sums = 8b644bac7bd10f38b7944c324263b3f6d4506a0571e6221d604e853d4c5d9139
-	sha256sums = 0b0e83fe0fc190640a93c48cef0c8e1f1f40f77840d82c160fefc1b07a5345f8
-	sha256sums = c3be075f5b38a1b02404be5778b181e50fba9ab253bac851cb217d9a71375b77
-	sha256sums = 38828ee5b49a2f645919d08fc4b6bdd888500117251f6b50c4e52726264bcbdb
-	sha256sums = e00ef90f083f845118577dd6a040b4a4aa475bd7a2a645b2ad6944da0555598b
-	sha256sums = eae37ccb7686b2c672f64bc6be366cfda4d828ea58e1086cb82766b17a54a7a6
-	sha256sums = 826a96db895819c13fffa4fa3c20b85e80b60aaec1f28f79e7db80092abdb0bc
+	source = https://rubygems.org/downloads/gollum-lib-5.0.6.gem
+	sha1sums = a9e4f966a7c621a79372bebed87c8efd2e7c6fa2
 
 pkgname = ruby-gollum-lib
 
