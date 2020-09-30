@@ -3,7 +3,7 @@
 pkgname=edgedb-cli
 pkgver=1.0a5
 pkgrel=1
-pkgdesc="Command-line tools for edgedb'"
+pkgdesc="Command-line tools for edgedb"
 arch=("x86_64")
 url="https://github.com/edgedb/edgedb-cli"
 license=("MIT" "APACHE")
