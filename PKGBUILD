@@ -1,4 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: George Rawlinson <george@rawlinson.net.nz>
 # Contributor: Phillip Smith <pkgbuild@phs.id.au>
 # Contributor: Nathan Owe <ndowens04 at gmail>
 pkgname=freeipmi
