@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/djmattyg007/hr"
 license=('custom:Public Domain')
 source=("https://github.com/djmattyg007/hr/releases/download/${pkgver}/hr-${pkgver}.tar.gz")
-md5sums=('cd05ca336dc87bc0b22db97a831dd3ee')
+sha512sums=("5e53749217bf3516bcf625a72428d7839839a722183d36ba7af333ab8e374379e9cbde753249a30aed474f2f8dc781ebead5a7a761f127d7d4b516e6cb59bfd5")
 
 build() {
     cd "hr-${pkgver}"
