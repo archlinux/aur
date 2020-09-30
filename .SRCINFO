@@ -1,15 +1,19 @@
 pkgbase = jspin
 	pkgdesc = A java based GUI for spin.
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.google.com/archive/p/jspin/
 	arch = any
 	license = GPL2
 	depends = spin
 	depends = java-runtime
 	depends = bash
+	depends = gcc
+	depends = graphviz
 	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/jspin/jspin-5-0.zip
+	source = config.cfg
 	md5sums = a4cd4e338a4172004a0c6b5d79cbffc5
+	md5sums = 0235bc5375629ae9ccc17b045c724940
 
 pkgname = jspin
 
