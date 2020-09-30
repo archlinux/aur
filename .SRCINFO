@@ -1,7 +1,7 @@
 pkgbase = python-pympress
 	pkgdesc = Dual-screen PDF reader designed for presentations
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cimbali.github.io/pympress/
 	arch = any
 	license = GPL-2
@@ -9,7 +9,7 @@ pkgbase = python-pympress
 	depends = python-vlc
 	depends = poppler
 	depends = python-gobject
-	depends = cairo
+	depends = python-cairo
 	depends = gtk3
 	depends = perl-x11-protocol
 	depends = perl-net-dbus
