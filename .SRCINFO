@@ -1,6 +1,6 @@
 pkgbase = shelldio
 	pkgdesc = KISS Shell Radio (Greek) for your terminal
-	pkgver = 2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/CerebruxCode/Shelldio
 	install = shelldio.install
@@ -8,8 +8,8 @@ pkgbase = shelldio
 	license = GPL3
 	depends = mpv
 	depends = curl
-	source = shelldio-2.2.tar.gz::https://github.com/CerebruxCode/shelldio/archive/v2.2.tar.gz
-	md5sums = ea2b87772ded3f67131efe5c8f363ad4
+	source = shelldio-2.3.0.tar.gz::https://github.com/CerebruxCode/shelldio/archive/v2.3.0.tar.gz
+	md5sums = cadb989a3d4214387b0a70d19c8f9f84
 
 pkgname = shelldio
 
