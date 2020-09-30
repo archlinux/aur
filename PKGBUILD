@@ -2,20 +2,20 @@
 # Contributor: Justin Coffman <jcoffman@uid0.io>
 
 pkgname=tinyfugue
-pkgver=5.0b8
-pkgrel=7
+pkgver=5.0
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="a flexible, screen-oriented MUD client, for use with any type of MUD"
 url="https://github.com/cipherize/tinyfugue"
 license=('GPL3')
 
-depends=(openssl pcre)
+depends=('openssl' 'pcre')
 
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver-$pkgrel/$pkgname-$pkgver-$pkgrel.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver-$pkgrel/$pkgname-$pkgver-$pkgrel.tar.gz.asc")
+source=("$pkgname-v$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz"
+        "$pkgname-v$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz.asc")
 
-b2sums=('91ebe1f81e0e9392c28d09108af3b95d1718bcdb2ed9143f3e1b322344ca2197f5607be27c232fde02baf43d7066222d57e08002da573a05ce03c3a80ab4bc03'
-        'SKIP')
+b2sums=('aa6882d97b69d31d509bc736ac2fa7dadce2548d886b5d05cf3792a9134265641dd5f9e4d2aacc7df8bbeaeeb3dca0f34a6f288e09a8a0e39cde158b83a5ad2a'
+	'SKIP')
 
 validpgpkeys=('28F768BE4B746F79A6D3288302FBEAF81EAD18C3')
 
