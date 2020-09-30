@@ -1,0 +1,13 @@
+pkgbase = jsq
+	pkgdesc = Query JSON using JavaScript
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~minus/jsq
+	arch = x86_64
+	license = custom
+	makedepends = quickjs
+	source = https://git.sr.ht/~minus/jsq/archive/v0.1.0.tar.gz
+	sha256sums = 5f0663d744d7f8591beea46d60db8bdf66c4ff1013e455f19ceb8fb9ab3c09dc
+
+pkgname = jsq
+
