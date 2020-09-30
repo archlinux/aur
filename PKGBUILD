@@ -3,12 +3,11 @@
 
 pkgname=ttf-liberastika
 pkgver=1.1.5
-pkgrel=3
+pkgrel=4
 pkgdesc='A fork of Liberation Sans font by Apanov'
 arch=('any')
 url='https://sourceforge.net/projects/lib-ka/'
 license=('GPL2')
-depends=('xorg-fonts-encodings')
 conflicts=('ttf-liberastika-ib')
 source=("https://downloads.sourceforge.net/project/lib-ka/liberastika-ttf-${pkgver}.tar.xz")
 sha256sums=('b95add839826cfa4a44146dfcc5ebffc31773b5137eddb525a00a2a6deeab8db')
