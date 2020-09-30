@@ -7,7 +7,7 @@ pkgdesc="Simplest Studio 2020 SE"
 arch=(x86_64)
 url="https://github.com/SimplestStudio/simplest-studio.git"
 license=('GPL')
-depends=('ffmpeg>=4.2' 'mediainfo>=20.03')
+depends=('qt5-base>=5.14.2' 'ffmpeg>=4.2' 'libmediainfo>=20.03')
 source=("https://github.com/SimplestStudio/simplest-studio/archive/1.1.tar.gz")
 md5sums=('SKIP')
 

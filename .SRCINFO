@@ -5,8 +5,9 @@ pkgbase = simplest-studio
 	url = https://github.com/SimplestStudio/simplest-studio.git
 	arch = x86_64
 	license = GPL
+	depends = qt5-base>=5.14.2
 	depends = ffmpeg>=4.2
-	depends = mediainfo>=20.03
+	depends = libmediainfo>=20.03
 	source = https://github.com/SimplestStudio/simplest-studio/archive/1.1.tar.gz
 	md5sums = SKIP
 
