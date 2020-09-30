@@ -3,17 +3,23 @@
 
 pkgname=servefile
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Serve or receive files from shell via a small HTTP server"
 arch=('any')
-url="http://seba-geek.de/stuff/servefile/"
+url="https://github.com/sebageek/servefile"
 license=('GPL3')
 depends=('python')
 makedepends=('git' 'bash')
+checkdepends=('python-tox')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('802ab4c513ea7f1756852025ad2234c5dd0cb75243a2e277aea9eae8325d5511')
+source=("https://github.com/sebageek/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('65bf1eba442ab356cbda54d9ce51471ca6df9ec87d3338a02a5bfb5cb062c157')
+
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+    tox -e py3
+}
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"

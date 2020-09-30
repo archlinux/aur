@@ -1,17 +1,18 @@
 pkgbase = servefile
 	pkgdesc = Serve or receive files from shell via a small HTTP server
 	pkgver = 0.5.1
-	pkgrel = 1
-	url = http://seba-geek.de/stuff/servefile/
+	pkgrel = 2
+	url = https://github.com/sebageek/servefile
 	arch = any
 	license = GPL3
+	checkdepends = python-tox
 	makedepends = git
 	makedepends = bash
 	depends = python
 	provides = servefile
 	conflicts = servefile
-	source = https://files.pythonhosted.org/packages/source/s/servefile/servefile-0.5.1.tar.gz
-	sha256sums = 802ab4c513ea7f1756852025ad2234c5dd0cb75243a2e277aea9eae8325d5511
+	source = https://github.com/sebageek/servefile/archive/v0.5.1.tar.gz
+	sha256sums = 65bf1eba442ab356cbda54d9ce51471ca6df9ec87d3338a02a5bfb5cb062c157
 
 pkgname = servefile
 
