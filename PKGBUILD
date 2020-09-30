@@ -1,10 +1,10 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname=ssh-chat
+pkgname='ssh-chat'
 pkgver=1.10
 pkgrel=2
 pkgdesc='Chat over SSH'
-arch=('x86_64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/shazow/ssh-chat'
 license=('MIT')
 makedepends=('go')
@@ -12,13 +12,17 @@ provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('63f795e24a125db7ed58f12b0a1a8ac6b6329348935a68433d59e4a18a3899ff')
 
+prepare() {
+  export GOPATH="${srcdir}/gopath"
+  go clean -modcache
+}
+
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  export GOPATH="${srcdir}"
 
   cd "${pkgname}-${pkgver}"
   go build -v -o "${pkgname}" ."/cmd/${pkgname}"
