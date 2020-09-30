@@ -11,10 +11,10 @@ license=('GPL3')
 
 depends=(openssl pcre)
 
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver-$pkgrel/tf-$pkgver-$pkgrel.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver-$pkgrel/tf-$pkgver-$pkgrel.tar.gz.asc")
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver-$pkgrel/$pkgname-$pkgver-$pkgrel.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver-$pkgrel/$pkgname-$pkgver-$pkgrel.tar.gz.asc")
 
-b2sums=('01c4a9e63368d197d3251adf751e705ae6dd0fdb098524337f2e48256fb0e6ca46b35b7cb932b0b11ca887f5690f65f1c1cae0f81523bcee60652f354c22bd18'
+b2sums=('91ebe1f81e0e9392c28d09108af3b95d1718bcdb2ed9143f3e1b322344ca2197f5607be27c232fde02baf43d7066222d57e08002da573a05ce03c3a80ab4bc03'
         'SKIP')
 
 validpgpkeys=('28F768BE4B746F79A6D3288302FBEAF81EAD18C3')
