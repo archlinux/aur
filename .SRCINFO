@@ -9,6 +9,7 @@ pkgbase = kermit-git
 	makedepends = cmake
 	depends = gtk3>=3.18.9
 	depends = vte3>=0.42.5
+	provides = kermit
 	conflicts = kermit
 	source = git://github.com/orhun/kermit.git
 	sha256sums = SKIP

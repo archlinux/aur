@@ -11,6 +11,7 @@ license=('GPL3')
 depends=('gtk3>=3.18.9' 'vte3>=0.42.5')
 makedepends=('git' 'cmake')
 conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 source=('git://github.com/orhun/kermit.git')
 sha256sums=('SKIP')
 
