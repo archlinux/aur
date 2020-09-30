@@ -1,4 +1,5 @@
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: tinywrkb <tinywrkb@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 _pkgname=polkit
 pkgname=${_pkgname}-duktape
