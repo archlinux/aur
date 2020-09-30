@@ -1,7 +1,7 @@
 pkgbase = nvidia-xrun-pm
 	pkgdesc = Alternative version of nvidia-xrun, that relies on kernel PM instead of bbswitch
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/michelesr/nvidia-xrun-pm
 	install = nvidia-xrun-pm.install
 	arch = x86_64

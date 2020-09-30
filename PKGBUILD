@@ -1,14 +1,14 @@
 # Maintainer: Michele Sorcinelli <michelesr@autistici.org>
 pkgname=nvidia-xrun-pm
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='Alternative version of nvidia-xrun, that relies on kernel PM instead of bbswitch'
 arch=('x86_64')
 url='https://github.com/michelesr/nvidia-xrun-pm'
 license=('GPL')
 groups=()
-depends=('xorg-server' 'xorg-xinit' 'xorg-xrandr' 'nvidia' 'mesa-libgl')
+depends=('xorg-server' 'xorg-xinit' 'xorg-xrandr' 'NVIDIA-MODULE' 'mesa-libgl')
 makedepends=()
 checkdepends=()
 optdepends=()
