@@ -13,13 +13,17 @@ provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('1adbd9c180f7ca6378796748491e23a808e423268bc61fe63af0206877f0ba68')
 
+prepare() {
+  export GOPATH="${srcdir}/gopath"
+  go clean -modcache
+}
+
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  export GOPATH="${srcdir}"
 
   cd "${pkgname}-${pkgver}/v2/cmd/${pkgname}"
   go build -v -o "${pkgname}" .
