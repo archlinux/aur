@@ -1,6 +1,6 @@
 pkgbase = arch-hs-git
 	pkgdesc = Generating PKGBUILD for hackage packages.
-	pkgver = r139.a397720
+	pkgver = r143.f64aada
 	pkgrel = 1
 	url = https://github.com/berberman/arch-hs
 	arch = x86_64
@@ -23,7 +23,6 @@ pkgbase = arch-hs-git
 	depends = haskell-polysemy
 	depends = haskell-colourista
 	depends = haskell-optparse-applicative
-	depends = haskell-csv
 	provides = arch-hs
 	conflicts = arch-hs
 	source = arch-hs::git+https://github.com/berberman/arch-hs.git
