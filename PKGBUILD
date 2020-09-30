@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=('BSD')
 url="https://github.com/openstack/liberasurecode"
 depends=('zlib')
-makedepends=('doxygen')
+makedepends=('doxygen','git')
 source=("${_pkgname}::git+https://github.com/openstack/liberasurecode.git" "disable-doc-full-path-names.patch")
 sha256sums=('SKIP' '9ff00135d87efb99fc558106e7f38b506651673acb4163bdfd1e4428abf325a8')
 
