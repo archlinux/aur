@@ -1,7 +1,7 @@
 pkgbase = duf
 	pkgdesc = Disk Usage/Free Utility
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/muesli/duf
 	arch = x86_64
 	arch = i686
