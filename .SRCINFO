@@ -1,6 +1,6 @@
 pkgbase = dnsproxy-adguard
 	pkgdesc = Simple DNS proxy with DoH, DoT, and DNSCrypt support by AdguardTeam
-	pkgver = 0.31.0
+	pkgver = 0.32.6
 	pkgrel = 1
 	url = https://github.com/AdguardTeam/dnsproxy
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = dnsproxy-adguard
 	backup = etc/conf.d/dnsproxy-adguard
 	source = dnsproxy-adguard.service
 	source = dnsproxy-adguard
-	source = https://github.com/AdguardTeam/dnsproxy/archive/v0.31.0.tar.gz
+	source = https://github.com/AdguardTeam/dnsproxy/archive/v0.32.6.tar.gz
 	sha256sums = 7a6c7a49bae6865e23db6ea0bb438a5588769cae742936bfd4c6d7b0a0c6b424
 	sha256sums = de2afa0883f2829a1f7487899ddc9e711913686aea1ce186a60aad022604df4b
-	sha256sums = 03b9f44376dd57d107c8b8b1bd0ecd2f9e327f8c81be2e63111e6e8dac1d5c5e
+	sha256sums = 1aa647459484958f31546e7215c49fec37c71e04e3a3c66a598da6bbed83f7b7
 
 pkgname = dnsproxy-adguard
 
