@@ -1,0 +1,13 @@
+pkgbase = endpoint-verification-minimal
+	pkgdesc = Endpoint Verification Helper for Chrome
+	pkgver = 2020.08.25.c328417887_00
+	pkgrel = 1
+	url = https://chrome.google.com/webstore/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg
+	arch = x86_64
+	license = unknown
+	depends = google-chrome
+	source = endpoint-verification.deb::https://packages.cloud.google.com/apt/pool/endpoint-verification_2020.08.25.c328417887-00_amd64_466d329b82384574a5b062adcd6312623918ac27c5ea3999985856366735bdca.deb
+	sha256sums = 466d329b82384574a5b062adcd6312623918ac27c5ea3999985856366735bdca
+
+pkgname = endpoint-verification-minimal
+
