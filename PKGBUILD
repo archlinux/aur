@@ -1,4 +1,4 @@
-# Maintainer: Zhang Hai <dreaming.in.code.zh@gmail.com>
+# Maintainer: Hai Zhang <dreaming.in.code.zh@gmail.com>
 # Contributor: Bartłomiej Bułat <bartek (dot) bulat (at) gmail (dot) com>
 
 pkgname=deadbeef-gnome-mmkeys-git
