@@ -1,0 +1,7 @@
+# Ignore everything
+*
+
+# Allow files needed for build
+!.gitignore
+!PKGBUILD
+!.SRCINFO
