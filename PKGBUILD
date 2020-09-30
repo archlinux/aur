@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-_pkgname=anew
-pkgname=${_pkgname}-git
+_pkgname='anew'
+pkgname="${_pkgname}-git"
 pkgver=r6.f212493
 pkgrel=1
 pkgdesc='Append lines from stdin to a file, but only if they dont already appear in the file'
@@ -12,6 +12,11 @@ makedepends=('git' 'go')
 provides=("${_pkgname}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
+
+prepare() {
+  export GOPATH="${srcdir}/gopath"
+  go clean -modcache
+}
 
 pkgver() {
   cd "${_pkgname}"
@@ -24,7 +29,6 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  export GOPATH="${srcdir}"
 
   cd "${_pkgname}"
   go build -v -o "${_pkgname}" main.go
