@@ -6,7 +6,7 @@
 
 pkgname=yosys-git
 pkgrel=1
-pkgver=r9464.283b1130
+pkgver=r10242.5a3ac39f
 pkgdesc='A framework for RTL synthesis'
 arch=('x86_64' 'i686')
 url='http://www.clifford.at/yosys/'
@@ -56,7 +56,7 @@ package() {
     cd "${srcdir}/yosys"
 
     # disable stripping in the makefile - duplicated effort and makes debug packages impossible
-    make STRIP=':' PREFIX="/usr" PYTHON_PREFIX="${pkgdir}/usr" DESTDIR="${pkgdir}" install
+    make STRIP=':' PREFIX="/usr" PYTHON_PREFIX="${pkgdir}/usr" PYTHON_DESTDIR="${pkgdir}/usr/lib/python3.8/site-packages" DESTDIR="${pkgdir}" install
 
     install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
