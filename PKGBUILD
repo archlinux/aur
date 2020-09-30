@@ -14,9 +14,9 @@ pkgname=()
 [ -n "$_build_no_opt" ] && pkgname+=(tensorflow-rocm python-tensorflow-rocm)
 [ -n "$_build_opt" ] && pkgname+=(tensorflow-opt-rocm python-tensorflow-opt-rocm)
 
-pkgver=2.3.0
-_pkgver=2.3.0
-pkgrel=9
+pkgver=2.3.1
+_pkgver=2.3.1
+pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -36,7 +36,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archi
         fix_occupancy_block.patch
         rocm-3.7.patch::https://github.com/tensorflow/tensorflow/pull/42689.patch)
 
-sha512sums=('86aa087ea84dac1ecc1023b23a378100d41cc6778ccd20404a4b955fc67cef11b3dc08abcc5b88020124d221e6fb172b33bd5206e9c9db6bc8fbeed399917eac'
+sha512sums=('e497ef4564f50abf9f918be4522cf702f4cf945cb1ebf83af1386ac4ddc7373b3ba70c7f803f8ca06faf2c6b5396e60b1e0e9b97bfbd667e733b08b6e6d70ef0'
             'df2e0373e2f63b8766f31933f7db57f6a7559b8f03af1db51644fba87731451a7cd3895529a3192e5394612fcb42f245b794b1c9ca3c05881ca03a547c8c9acc'
             'e51e3f3dced121db3a09fbdaefd33555536095584b72a5eb6f302fa6fa68ab56ea45e8a847ec90ff4ba076db312c06f91ff672e08e95263c658526582494ce08'
             '7acc2f2579158be1d8c824da0f6d44d084a56182f1aab3cd7a78d513931b3a16ce72f2e05b44b1de76f5519af39e80431660de294ff337842e4ee8949cb85b28'
