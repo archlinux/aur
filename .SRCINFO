@@ -1,0 +1,21 @@
+pkgbase = python-tidalapi4mopidy
+	pkgdesc = Unofficial API for TIDAL music streaming service.
+	pkgver = 0.1.3
+	pkgrel = 00
+	url = https://github.com/mones88/python-tidal
+	arch = any
+	license = LGPL3
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytest
+	depends = python-requests
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/1f/ab/65a39a39c184222f5cae4b5e5e1c75a5f19f02d2bc903af3672ca4b0021d/tidalapi4mopidy-0.1.3.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 8e9a82926e7cf5d53503ad5816cb146b
+	md5sums = e6a600fd5e1d9cbde2d983680233ad02
+
+pkgname = python-tidalapi4mopidy
+
