@@ -1,4 +1,4 @@
-# Maintainer: Zhang Hai <dreaming.in.code.zh@gmail.com>
+# Maintainer: Hai Zhang <dreaming.in.code.zh@gmail.com>
 
 # Instructions were copied from ttf-ms-win8 and slightly modified:
 #
