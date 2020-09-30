@@ -3,7 +3,7 @@
 pkgname=otf-literata
 pkgver=2.00
 pkgrel=2
-pkgdesc="Google's default typeface for Play Books. Android distribution."
+pkgdesc="Google's contemporary serif typeface family for long-form reading; default typeface for Play Books. Android distribution."
 arch=('any')
 url="https://play.google.com/store/apps/details?id=com.google.android.apps.books"
 license=('custom:propietary')
