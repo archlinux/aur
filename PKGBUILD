@@ -4,7 +4,7 @@
 # Contributor: soloturn@gmail.com
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.09.28.a.r26.g0756c402583
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.09.28.a.r45.g8857deb6742
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -22,7 +22,6 @@ install=
 source=(
     'git+https://github.com/apple/swift'
     'cmark::git+https://github.com/apple/swift-cmark'
-    'indexstore-db::git+https://github.com/apple/indexstore-db'
     'llbuild::git+https://github.com/apple/swift-llbuild'
     'swift-argument-parser::git+https://github.com/apple/swift-argument-parser'
     'swift-driver::git+https://github.com/apple/swift-driver'
@@ -35,13 +34,25 @@ source=(
     'swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch'
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests'
     'llvm-project::git+https://github.com/apple/llvm-project#branch=swift/master'
-#    'yams::git+https://github.com/jpsim/Yams'
-    'yams::git+https://github.com/jpsim/Yams#commit=3.0.1'
     '0001-arch-aur-pachtes.patch'
     '0002-llbuild-ninja-test-binary-links-against-ncurses.patch'
+    # swift src to check afterwards
+    'indexstore-db::git+https://github.com/apple/indexstore-db'
+#    'yams::git+https://github.com/jpsim/Yams'
+    'yams::git+https://github.com/jpsim/Yams#commit=3.0.1'
+    'sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp'
+    'swift-format::git+https://github.com/apple/swift-format'
+    'swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core'
+    'swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support'
+    'tensorflow-swift-apis::git+https://github.com/tensorflow/swift-apis.git'
 )
 noextract=()
 md5sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
