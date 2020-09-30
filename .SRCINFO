@@ -1,6 +1,6 @@
 pkgbase = dtkcore-git
 	pkgdesc = DTK core modules
-	pkgver = 5.2.2.15.r0.g562b0e8
+	pkgver = 5.2.2.15.r1.gc864b8f
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dtkcore
 	arch = x86_64
