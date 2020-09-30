@@ -1,6 +1,6 @@
 pkgbase = code-minimap
 	pkgdesc = A high performance code minimap render
-	pkgver = 0.3.1
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/wfxr/code-minimap
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = code-minimap
 	license = APACHE
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/wfxr/code-minimap/archive/v0.3.1.tar.gz
-	md5sums = 38d98daabd2ebf30b5d262e462fbc0d3
+	source = https://github.com/wfxr/code-minimap/archive/v0.4.1.tar.gz
+	md5sums = 72f8fa621695c46875d9ca8e82ea97a7
 
 pkgname = code-minimap
 
