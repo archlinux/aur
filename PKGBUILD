@@ -16,7 +16,7 @@ pkgname=()
 
 pkgver=2.3.1
 _pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -34,7 +34,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archi
         fix_gpu_atomic_redef.patch::https://github.com/tensorflow/tensorflow/commit/c054f40f66fa625f51085a20c48554c61d05c5fd.patch
         fix_ldexp_float.patch::https://github.com/tensorflow/tensorflow/commit/655ce09f679a90ecd561538227c703b42d0fc5fa.patch
         fix_occupancy_block.patch
-        rocm-3.7.patch::https://github.com/tensorflow/tensorflow/pull/42689.patch)
+        new-rocm.patch)
 
 sha512sums=('e497ef4564f50abf9f918be4522cf702f4cf945cb1ebf83af1386ac4ddc7373b3ba70c7f803f8ca06faf2c6b5396e60b1e0e9b97bfbd667e733b08b6e6d70ef0'
             'df2e0373e2f63b8766f31933f7db57f6a7559b8f03af1db51644fba87731451a7cd3895529a3192e5394612fcb42f245b794b1c9ca3c05881ca03a547c8c9acc'
@@ -44,7 +44,7 @@ sha512sums=('e497ef4564f50abf9f918be4522cf702f4cf945cb1ebf83af1386ac4ddc7373b3ba
             '75972acf0ec53b28aa6c93de77a385acaf675c0d0ae93b6545f67414e9895cbd1074a5d65b211390846b736df271a567b49ec4c992883ad83c060f708bbe0d20'
             '42fc09bc15412f3b9a82f36485735faed0dcc2f47d72c5bfc451bc09a2aad472db59edb387455fb6594b1606de3a7789917e1fb31280c7044898097ec37db3d5'
             '88c04ed7a766193687d7079102332e3c63d6f0accbda777836abe5e03e9ebb83fd1aeaa9e4adca70310ce18bf3c6c3907f1f8a11c13e67e3ef79497b91bbf126'
-            'SKIP')
+            '080fd9d4e1228ceb04901a0caceb18b965ef199704196a9b7711fcada3a8cfc2f65c529c4c0e05960ab1e469d203727bf0bbded82d895c13e0e2ab29ae524317')
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
@@ -89,8 +89,9 @@ prepare() {
   # https://github.com/tensorflow/tensorflow/commit/22def20bae7be6d5b790b360abed5919385b16c2
   patch -Np1 -d tensorflow-${_pkgver} -i "$srcdir"/fix_occupancy_block.patch
 
-  # Update codebase for ROCm 3.7
-  patch -Np1 -d tensorflow-${_pkgver} -i "$srcdir"/rocm-3.7.patch
+  # Patch for ROCm 3.7 and later
+  # https://github.com/tensorflow/tensorflow/pull/42689
+  patch -Np1 -d tensorflow-${_pkgver} -i "$srcdir"/new-rocm.patch
 
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-rocm
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-rocm
