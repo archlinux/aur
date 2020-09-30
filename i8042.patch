@@ -1,6 +1,6 @@
 --- a/drivers/input/serio/i8042-x86ia64io.h
 +++ b/drivers/input/serio/i8042-x86ia64io.h
-@@ -705,6 +705,30 @@
+@@ -721,6 +721,30 @@
  			DMI_MATCH(DMI_BOARD_VENDOR, "MICRO-STAR INTERNATIONAL CO., LTD"),
  		},
  	},
