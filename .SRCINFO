@@ -1,7 +1,7 @@
 pkgbase = giara-git
 	pkgdesc = Reddit gtk client
-	pkgver = r80.f595496
-	pkgrel = 2
+	pkgver = r81.22ca5d1
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GabMus/giara
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = giara-git
 	makedepends = git
 	makedepends = gobject-introspection
 	depends = gtksourceview4
-	depends = libhandy1
+	depends = libhandy>=1
 	depends = python-dateutil
 	depends = python-flask
 	depends = python-gobject
