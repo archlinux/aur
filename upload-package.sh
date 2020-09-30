@@ -16,9 +16,16 @@
 makepkg -f
 rm -fR battery-discharging-beep* pkg src .SRCINFO
 makepkg --printsrcinfo > .SRCINFO
+echo ""
+
+git diff --exit-code
 git add .
 git status
+
 echo "Write your commit comment: "
 read -r COMMENT
 git commit -m "${COMMENT}"
+echo ""
+
 git push
+echo ""
