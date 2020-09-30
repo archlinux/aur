@@ -24,4 +24,5 @@ package() {
   cd "${_pkgname}-${pkgver}"
 
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licences/${pkgname}/LICENSE"
 }
