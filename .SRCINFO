@@ -1,17 +1,17 @@
 pkgbase = nginx-mainline-mod-redis
 	pkgdesc = Redis caching module for mainline nginx
 	pkgver = 0.3.8
-	pkgrel = 40
+	pkgrel = 41
 	url = https://www.nginx.com/resources/wiki/modules/redis/
 	arch = i686
 	arch = x86_64
 	license = CUSTOM
 	depends = nginx-mainline
-	source = https://nginx.org/download/nginx-1.19.2.tar.gz
-	source = https://nginx.org/download/nginx-1.19.2.tar.gz.asc
+	source = https://nginx.org/download/nginx-1.19.3.tar.gz
+	source = https://nginx.org/download/nginx-1.19.3.tar.gz.asc
 	source = http://people.freebsd.org/~osa/ngx_http_redis-0.3.8.tar.gz
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = 7c1f7bb13e79433ee930c597d272a64bc6e30c356a48524f38fd34fa88d62473
+	sha256sums = 91e5b74fa17879d2463294e93ad8f6ffc066696ae32ad0478ffe15ba0e9e8df0
 	sha256sums = SKIP
 	sha256sums = 95d0ed7be40da2efc88883d72e52e5e272d2c34463583b7078e8fd6d55004934
 
