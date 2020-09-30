@@ -2,16 +2,16 @@
 # Contributer: Martchus <martchus@gmx.net>
 
 pkgname=crazycat-dvb-firmware
-pkgver=20200126
+pkgver=20200730
 pkgrel=1
 pkgdesc='DVB firmware from CrazyCat media_build repo'
 arch=('any')
-url="https://bitbucket.org/CrazyCat/media_build"
+url="https://github.com/crazycat69/media_build"
 license=('GPL3')
 conflicts=('openelec-dvb-firmware')
 provides=('crazycat-dvb-firmware')
 makedepends=('linux-firmware')
-source=("https://bitbucket.org/CrazyCat/media_build/downloads/dvb-firmwares.tar.bz2")
+source=("https://github.com/crazycat69/media_build/releases/download/latest/dvb-firmwares.tar.bz2")
 sha256sums=('2aed0c3385572b11fd6d5202cc3114b82b865573d264ba03a87939f2437d90bf')
 
 package() {
