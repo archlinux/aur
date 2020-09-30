@@ -17,8 +17,6 @@ package() {
 
 	install -Dm755 switchBashZsh "${pkgdir}"/usr/bin/switchBashZsh
 	install -Dm644 switchBashZsh.1 "${pkgdir}"/usr/share/man/man1/switchBashZsh.1
-	mkdir -p /usr/share/licenses/switchBashZsh 2>/dev/null
-	install -Dm644 LICENSE /usr/share/licenses/switchBashZsh/
 }
 
 sha256sums=('d40f28a0d21105cbd864eca182485455038221384b0cb45f049ac5c47434688e')
