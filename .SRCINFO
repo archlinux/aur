@@ -1,13 +1,13 @@
 pkgbase = ledger-live-bin
 	pkgdesc = Ledger Hardware Wallet management software
-	pkgver = 2.11.1
+	pkgver = 2.13.0
 	pkgrel = 1
 	url = https://github.com/LedgerHQ/ledger-live-desktop
 	arch = x86_64
 	license = MIT
 	depends = ledger-udev
 	options = !strip
-	source = ledger-live-desktop-2.11.1-linux-x86_64.AppImage::https://github.com/LedgerHQ/ledger-live-desktop/releases/download/v2.11.1/ledger-live-desktop-2.11.1-linux-x86_64.AppImage
+	source = ledger-live-desktop-2.13.0-linux-x86_64.AppImage::https://github.com/LedgerHQ/ledger-live-desktop/releases/download/v2.13.0/ledger-live-desktop-2.13.0-linux-x86_64.AppImage
 	source = LICENSE
 	sha512sums = d8510e5b37597f16caf6911a533e0017ec75dbe77c776734920a80ce05f14c34f6306157966ceb2820412a2e41a5aadf1b46dac75a96bee15f8ce7275c01f5f3
 	sha512sums = 0e76943ab7d3849ee569a30a46dec494658b8de9937965a81d043ad957116bf9c8bdb9bb9aee20e2f00fb15b736df90bbe6144dc2088a968ced2cc7b8e2de07f
