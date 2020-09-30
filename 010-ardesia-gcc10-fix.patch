@@ -1,0 +1,22 @@
+--- a/src/bar.c
++++ b/src/bar.c
+@@ -26,6 +26,8 @@
+ #include <utils.h>
+ #include <bar.h>
+ 
++GtkBuilder *bar_gtk_builder = NULL;
++
+ /* 
+  * Calculate the better position where put the bar.
+  */
+--- a/src/utils.h
++++ b/src/utils.h
+@@ -62,7 +62,7 @@
+ 
+ 
+ /* The gtk builder object of the bar window */
+-GtkBuilder *bar_gtk_builder;
++extern GtkBuilder *bar_gtk_builder;
+ 
+ 		
+ #define PROGRAM_NAME "Ardesia"
