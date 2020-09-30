@@ -1,13 +1,18 @@
 pkgname=vk-layer-flimes-git
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.0.r0.gc6c1151
+pkgrel=2
 pkgdesc="Vulkan frame limiter"
 arch=('x86_64')
 url="https://github.com/zaps166/vk-layer-flimes"
 license=('MIT')
-makedepends=('git' 'gcc' 'cmake' 'vulkan-headers')
+makedepends=('git' 'cmake' 'vulkan-headers')
 source=("git+https://github.com/zaps166/vk-layer-flimes.git")
 sha256sums=('SKIP')
+
+pkgver() {
+    cd "${srcdir}/vk-layer-flimes"
+    git describe --long --tags | cut -c 2- | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
     cd "${srcdir}/vk-layer-flimes"
@@ -29,4 +34,6 @@ package() {
 
     cd "${srcdir}/vk-layer-flimes/build-64"
     DESTDIR=${pkgdir} make install
+
+    install -Dm644 "${srcdir}/vk-layer-flimes/LICENSE" "$pkgdir/usr/share/licenses/vk-layer-flimes/LICENSE"
 }
