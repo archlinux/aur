@@ -1,7 +1,7 @@
 # Maintainer: Bastien Traverse <firstname at lastname dot email>
 
 pkgname=primitive
-pkgver=r150.673f57e
+pkgver=r152.0373c21
 pkgrel=1
 pkgdesc='Reproducing images with geometric primitives'
 arch=('i686' 'x86_64')

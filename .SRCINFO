@@ -1,6 +1,6 @@
 pkgbase = primitive
 	pkgdesc = Reproducing images with geometric primitives
-	pkgver = r150.673f57e
+	pkgver = r152.0373c21
 	pkgrel = 1
 	url = https://github.com/fogleman/primitive
 	arch = i686
