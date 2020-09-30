@@ -5,6 +5,7 @@ pkgver=20200930
 pkgrel=2
 _commit='0c1b605e7797d7cf509c45fba308cdd25dfe9a26'
 pkgdesc="Fcitx 5 Pinyin Chinese Idiom Dictionary"
+url='https://github.com/Kienyew/fcitx5-pinyin-chinese-idiom'
 arch=('any')
 license=('MIT')
 makedepends=('libime' 'pypinyin')
