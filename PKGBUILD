@@ -4,7 +4,7 @@
 
 pkgname=todotxt
 _pkgname=todo.txt_cli
-pkgver=2.11.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="lifehacker.com's todo.sh script for maintaining a todo.txt file"
 url="https://github.com/todotxt/todo.txt-cli"
@@ -13,7 +13,7 @@ install=$pkgname.install
 source=(https://github.com/todotxt/todo.txt-cli/releases/download/v${pkgver}/$_pkgname-${pkgver}.tar.gz)
 arch=('any')
 license=('GPL')
-md5sums=('8b81c7ccff967c1a1add8472dd63448b')
+md5sums=('6e5865091c4105491a82e9d5514ce5a9')
 
 package() {
   cd $srcdir/$_pkgname-$pkgver

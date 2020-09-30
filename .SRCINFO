@@ -1,14 +1,14 @@
 pkgbase = todotxt
 	pkgdesc = lifehacker.com's todo.sh script for maintaining a todo.txt file
-	pkgver = 2.11.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/todotxt/todo.txt-cli
 	install = todotxt.install
 	arch = any
 	license = GPL
 	depends = bash
-	source = https://github.com/todotxt/todo.txt-cli/releases/download/v2.11.0/todo.txt_cli-2.11.0.tar.gz
-	md5sums = 8b81c7ccff967c1a1add8472dd63448b
+	source = https://github.com/todotxt/todo.txt-cli/releases/download/v2.12.0/todo.txt_cli-2.12.0.tar.gz
+	md5sums = 6e5865091c4105491a82e9d5514ce5a9
 
 pkgname = todotxt
 
