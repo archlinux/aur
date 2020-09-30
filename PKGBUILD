@@ -1,4 +1,4 @@
-# Maintainer: Zhang Hai <dreaming.in.code.zh@gmail.com>
+# Maintainer: Hai Zhang <dreaming.in.code.zh@gmail.com>
 # Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
 
 _pkgname=danmaku2ass
