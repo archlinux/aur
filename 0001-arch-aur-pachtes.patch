@@ -1,12 +1,12 @@
-From b9cea2dcf42a77581483165199bd2443b0e5cc53 Mon Sep 17 00:00:00 2001
+From 5f7f22acb3d287a657206c5c0a41c0e18dcde468 Mon Sep 17 00:00:00 2001
 From: soloturn <soloturn@gmail.com>
 Date: Sat, 1 Aug 2020 16:21:07 +0200
 Subject: [PATCH] arch aur pachtes
 
 ---
  CMakeLists.txt          | 1 +
- utils/build-presets.ini | 6 +++---
- 2 files changed, 4 insertions(+), 3 deletions(-)
+ utils/build-presets.ini | 3 ---
+ 2 files changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index ecdbbca9539..c43da553ed9 100644
@@ -21,17 +21,10 @@ index ecdbbca9539..c43da553ed9 100644
  
  #
 diff --git a/utils/build-presets.ini b/utils/build-presets.ini
-index 7d9a5c264c8..9c98234813e 100644
+index 7d9a5c264c8..0d57da51e33 100644
 --- a/utils/build-presets.ini
 +++ b/utils/build-presets.ini
-@@ -779,16 +779,17 @@ mixin-preset=
-     mixin_lightweight_assertions,no-stdlib-asserts
-     mixin_linux_install_components_with_clang
- 
-+extra-cmake-options=
-+   -DCMAKE_IGNORE_PATH="/usr/include/bits"
-+
- llbuild
+@@ -783,12 +783,10 @@ llbuild
  swiftpm
  swift-driver
  xctest
@@ -44,7 +37,7 @@ index 7d9a5c264c8..9c98234813e 100644
  install-llvm
  install-swift
  install-lldb
-@@ -796,7 +797,6 @@ install-llbuild
+@@ -796,7 +794,6 @@ install-llbuild
  install-swiftpm
  install-swift-driver
  install-xctest
