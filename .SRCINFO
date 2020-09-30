@@ -9,7 +9,7 @@ pkgbase = waybackurls-git
 	makedepends = go
 	provides = waybackurls
 	source = git+https://github.com/tomnomnom/waybackurls.git
-	source = waybackurls-0.0.2.r6.g89da10c-LICENSE::https://raw.githubusercontent.com/tomnomnom/gron/master/LICENSE
+	source = waybackurls-0.0.2.r6.g89da10c-LICENSE::https://github.com/tomnomnom/gron/raw/master/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 
