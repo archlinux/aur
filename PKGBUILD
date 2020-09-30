@@ -2,7 +2,7 @@
 
 pkgname=giara-git
 pkgver=r80.f595496
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Reddit gtk client"
 arch=('any')
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('meson' 'git' 'gobject-introspection')
 checkdepends=()
-optdepends=()
+optdepends=('ffmpeg: For video')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" redditgtk)
 replaces=("redditgtk")
