@@ -17,3 +17,8 @@ instructions, as well as some scripts and themes to chose from, see:
 
 EOF
 }
+
+post_upgrade() {
+    set 1=$2
+    post_install
+}
