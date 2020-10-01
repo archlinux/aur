@@ -1,9 +1,9 @@
 pkgbase = yuzu-mainline-bin
 	pkgdesc = Yuzu emulator 'mainline' branch binaries for Arch Linux
 	pkgver = 0.394
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linux-gamers/arch-yuzu-mainline
-	arch = any
+	arch = x86_64
 	license = GNU General Public License v2.0
 	depends = shared-mime-info
 	depends = desktop-file-utils
