@@ -1,7 +1,7 @@
 src
 pkg
-*.src.tar.gz
-*.pkg.tar.xz
+*.src.tar.*
+*.src.tar.*
+*.pkg.tar.*
 *.part
 *.AppImage
-
