@@ -1,7 +1,7 @@
 pkgbase = mpz
 	pkgdesc = Music player for the large local collections
 	pkgver = 0.0.14
-	pkgrel = 24
+	pkgrel = 25
 	url = https://github.com/olegantonyan/mpz
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = mpz
 	depends = qt5-x11extras
 	depends = hicolor-icon-theme
 	provides = mpz
-	source = mpz-0.0.14-24.zip::https://github.com/olegantonyan/mpz/archive/master.zip
-	sha256sums = 6a58d0c04b06319e471be13cba96eae0406947fd5c9d5bdeee87c2c3f3a9f859
+	source = mpz-0.0.14-25.zip::https://github.com/olegantonyan/mpz/archive/master.zip
+	sha256sums = 6ee46e32bfa6e1889a3ccae552856054c6870fc29b5504e9b966ab23a607b85e
 
 pkgname = mpz
