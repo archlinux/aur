@@ -1,7 +1,8 @@
 # Maintainer: Luis Pérez <luis.perez@protonmail.com>
+
 pkgname=mmark
 pkgver=2.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A powerful markdown processor in Go geared towards the IETF'
 arch=('x86_64')
 url="https://github.com/mmarkdown/mmark"
@@ -31,4 +32,5 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
