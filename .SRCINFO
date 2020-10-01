@@ -1,7 +1,7 @@
 pkgbase = wayvnc
 	pkgdesc = VNC server for wlroots-based Wayland compositors
 	pkgver = 0.3.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/any1/wayvnc
 	arch = x86_64
 	license = custom:ISC
