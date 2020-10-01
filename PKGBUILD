@@ -1,8 +1,8 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=giara-git
-pkgver=r81.22ca5d1
-pkgrel=2
+pkgver=r84.9b950c9
+pkgrel=1
 epoch=
 pkgdesc="Reddit gtk client"
 arch=('any')
@@ -29,6 +29,12 @@ replaces=("redditgtk")
 source=("$pkgname::git+$url.git")
 sha256sums=("SKIP")
 
+prepare() {
+	# Generate pycache, if you ran giara as root this will conflict
+	find "$srcdir/$pkgname/${pkgname%-git}" -name "*.py" |\
+		xargs python -c 'import py_compile, sys; py_compile.main(sys.argv[1:])'
+}
+
 pkgver() {
 	cd "$srcdir/$pkgname"
 	( set -o pipefail
@@ -36,7 +42,6 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
-
 
 build() {
 	arch-meson "$pkgname" build
