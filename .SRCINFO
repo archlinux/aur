@@ -1,7 +1,7 @@
 pkgbase = twitch
 	pkgdesc = Unofficial Twitch desktop application.
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/twitch-application/application
 	arch = any
 	license = GPL
