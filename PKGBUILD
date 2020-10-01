@@ -59,7 +59,7 @@ _lqxpatchrel=11
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.8.12.lqx2
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -157,7 +157,7 @@ prepare() {
         if [ -n "$_NUMAdisable" ]; then
             echo "Disabling NUMA from kernel config..."
             sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-                -i -e '/CONFIG_AMD_NUMA=y/d' \
+                -i -e '/# CONFIG_AMD_NUMA is not set/d' \
                 -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
                 -i -e '/# CONFIG_NUMA_EMU is not set/d' \
                 -i -e '/CONFIG_NODES_SHIFT=6/d' \
