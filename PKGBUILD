@@ -1,7 +1,7 @@
 # Maintainer: Chris Chamberlain <chris at chamberlain dot id dot au>
 pkgname=otf-fira-code-symbol
 pkgver=1.206
-pkgrel=1
+pkgrel=2
 pkgdesc="Fira Code: monospaced font with programming ligatures (symbol font)."
 arch=('any')
 url='https://github.com/tonsky/FiraCode/issues/211#issuecomment-239058632'

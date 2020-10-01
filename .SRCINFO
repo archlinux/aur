@@ -1,7 +1,7 @@
 pkgbase = otf-fira-code-symbol
 	pkgdesc = Fira Code: monospaced font with programming ligatures (symbol font).
 	pkgver = 1.206
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tonsky/FiraCode/issues/211#issuecomment-239058632
 	arch = any
 	license = custom:OFL
