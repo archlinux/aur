@@ -1,0 +1,17 @@
+pkgbase = posterazor-git
+	pkgdesc = GUI tool to split an image into multiple pages to make posters
+	pkgver = r1117.710d969
+	pkgrel = 1
+	url = https://posterazor.sourceforge.io/
+	arch = x86_64
+	license = GPL
+	depends = poppler-qt5
+	source = git+https://github.com/aportale/posterazor
+	source = fix_build.patch
+	source = posterazor.desktop
+	sha256sums = SKIP
+	sha256sums = 986f165233488a405766f2022ccfa63909a9d1111e6c94affd4bf652e9094843
+	sha256sums = 5ed91452dea88eddd943622f5f971d251606765330a0112a287e2d31c0b7f74b
+
+pkgname = posterazor-git
+
