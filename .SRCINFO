@@ -1,5 +1,5 @@
 pkgbase = simplest-studio
-	pkgdesc = Simplest Studio 2020 SE
+	pkgdesc = Simplest Studio 2020SE
 	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/SimplestStudio/simplest-studio.git
