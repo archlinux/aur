@@ -2,15 +2,13 @@
 pkgname=python-dowel
 _name=${pkgname#python-}
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A logger for machine learning research"
 arch=('any')
 url="https://github.com/rlworkgroup/dowel"
 license=('MIT')
 depends=(
-	'python'
 	'python-dateutil'
-	'python-gym'
 	'python-matplotlib'
 	'python-numpy'
 	'python-scipy'
