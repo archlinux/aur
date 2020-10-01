@@ -1,0 +1,13 @@
+--- db-4.8.30/dist/config.sub	2010-04-12 14:25:23.000000000 -0600
++++ db-4.8.30.new/dist/config.sub	2020-09-30 11:33:22.746637496 -0600
+@@ -303,6 +303,10 @@
+ 	ms1)
+ 		basic_machine=mt-unknown
+ 		;;
++	raspi4)
++		basic_machine=aarch64-unknown
++		os=-linux
++		;;
+ 
+ 	# We use `pc' rather than `unknown'
+ 	# because (1) that's what they normally are, and

@@ -1,0 +1,25 @@
+pkgbase = db-4.8-raspi4-magi
+	pkgdesc = The Berkeley DB embedded database system 4.8 - This is meant only to be used as a dependency for magiwallet-magid-raspi4
+	pkgver = 4.8.30
+	pkgrel = 1
+	url = http://www.oracle.com/technology/software/products/berkeley-db/index.html
+	arch = aarch64
+	license = custom
+	depends = gcc-libs
+	options = !libtool
+	options = !makeflags
+	source = http://download.oracle.com/berkeley-db/db-4.8.30.tar.gz
+	source = db-atomic.patch
+	source = CVE-2017-10140-cwd-db_config.patch
+	source = addraspi4.patch
+	md5sums = f80022099c5742cd179343556179aa8c
+	md5sums = d56cef85d0fc9432b54a32993d4c9f06
+	md5sums = c2d29f72c20625c09f30e35af3c4f2ff
+	md5sums = 3cd79ed62a089b20b33e163146d5aabd
+	sha256sums = e0491a07cdb21fb9aa82773bbbedaeb7639cbd0e7f96147ab46141e0045db72a
+	sha256sums = 7ab718c5624b4724a585c91f4cfdcd3830cfaf0ce1e865a4a79b316ba35990c0
+	sha256sums = 7dfea34368f4d3d5b81973f7b0dbb8a54cdd09effb09b2b28763b2470833a614
+	sha256sums = c059d699a2202b8d321d053214f3d190cdfec174c589d1fee65fd7b7b73c2ec4
+
+pkgname = db-4.8-raspi4-magi
+
