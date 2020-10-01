@@ -1,4 +1,6 @@
 src
 pkg
+ecal
 *.tar.gz
 *.tar.xz
+*.tar.zst
