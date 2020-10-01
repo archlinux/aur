@@ -3,7 +3,7 @@
 
 pkgname=bitwarden_rs-git
 _pkgbase=bitwarden_rs
-pkgver=1.14.2.r7.g0de52c6
+pkgver=1.16.3.r62.g3777624
 pkgrel=1
 pkgdesc="An unofficial lightweight implementation of the bitwarden-server using rust and sqlite. Does NOT include the web-interface."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -27,7 +27,7 @@ sha512sums=('SKIP'
             '6f6b05881ee3344bdc553fae00a709404ddd086af347f909b3f3a620aabd2294b7dd2892472cd72515e9ceced2449eacbd9ef24626a1429776ea4599673a665b'
             '15b00b0dc9122f98ce8d7b55668fdfbb2e0387563e7d9ad6c0ebc73b75e46e1ccdb3a2186a453795a1b3e2d45358ff5a8076d5cf30319ab2c21539d20cff81c6'
             '6fd0ea962f077f92ad7f55a1bab479e68e3463b41eb171d501847554b676b7ecf05e016544f6331bdb53bf71038fcf2ce67ad213d0a7c2f93acbafd72e8441a6'
-            '9fde678747d120704d0d99751af1eebd89ba2643af5917da9d9d2a8712fe5bb6ef1d3545d3b669467d14cab51c0c1514853364f323ff92bab7e7ed8501fe5b56')
+            'd3ef28356adb66f3f0b50ef9efdae034f542c3ec486952c01ebdb959c2aa5a00a6aad8b73d57e71eb23db6320b5728ac7b26829f8856e0b7220708b91027f944')
 
 
 pkgver() {
