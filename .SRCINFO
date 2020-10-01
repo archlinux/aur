@@ -1,6 +1,6 @@
 pkgbase = usb2sniffer-qt-git
 	pkgdesc = LambdaConcept lcsniff software for USB2Sniffer hardware
-	pkgver = r158.4587d55
+	pkgver = r160.cf74d49
 	pkgrel = 1
 	url = https://github.com/lambdaconcept/usb2sniffer-qt
 	arch = x86_64

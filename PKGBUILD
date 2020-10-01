@@ -1,7 +1,7 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 pkgname=usb2sniffer-qt-git
 _pkgname=usb2sniffer-qt
-pkgver=r158.4587d55
+pkgver=r160.cf74d49
 pkgrel=1
 pkgdesc="LambdaConcept lcsniff software for USB2Sniffer hardware"
 arch=(x86_64)
@@ -30,7 +30,7 @@ prepare() {
 	git submodule init
 	git config submodule.qhexedit2.url "$srcdir/qhexedit2"
 	git submodule update
-	mkdir build
+	mkdir -p build
 }
 
 build() {
