@@ -1,9 +1,9 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-openimageio
-pkgver=2.2.6.1
-pkgrel=6
-pkgdesc="A library for reading and writing images (mingw-w64)"
+pkgver=2.2.7.0
+pkgrel=1
+pkgdesc="A library for reading and writing images. (mingw-w64)"
 url="http://www.openimageio.org/"
 license=("BSD-3-Clause")
 depends=(
@@ -32,13 +32,11 @@ arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
 sha256sums=(
-	"adc245c9b2fa2bce1dd2decbdd1d03974e1e9818219d267d1da3dd1bd91216df"
-	"87e13ccaf0359ad86713721448f14073d9e4b8904fb1353b259c351482c326a7"
+	"857ac83798d6d2bda5d4d11a90618ff19486da2e5a4c4ff022c5976b5746fe8c"
 	"9afbed7e3f989dba04a8bb784af24dda26b362f13d4b5933c56bed68289ee352"
 )
 source=(
 	"https://github.com/OpenImageIO/oiio/archive/Release-${pkgver}.tar.gz"
-	"mingw-compile-fix.patch"
 	"mingw-dependency-fix.patch"
 )
 
@@ -46,7 +44,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
 	cd "oiio-Release-${pkgver}"
-	patch -uNp1 < "../mingw-compile-fix.patch"
 	patch -uNp1 < "../mingw-dependency-fix.patch"
 	rm -f src/cmake/modules/FindOpenCV.cmake
 	sed -i -r 's/set \(REQUIED_DEPS/set \(REQUIRED_DEPS/' "src/cmake/externalpackages.cmake"
