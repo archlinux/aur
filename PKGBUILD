@@ -2,18 +2,18 @@
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Scytrin dai Kinthra <scytrin@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
-# Maintainer: Arnold Sommerfeld <mrsommerfeld+aur@pm.me>
+# Maintainer: Arnold Sommerfeld <aur@mrsommerfeld.xyz>
 
 pkgname=st-ruifm-git
 _pkgname=st-ruifm
-pkgver=0.8.3.r1123.3f6e55f
-pkgrel=1
+pkgver=0.8.4.r1152.8decb59
+pkgrel=2
 pkgdesc='Simple virtual terminal emulator for X'
 url='https://github.com/ruifm/st.git'
 arch=('any')
 license=('MIT')
 options=('zipman')
-depends=('libxft')
+depends=('libxft-bgra' 'harfbuzz')
 makedepends=('ncurses' 'libxext' 'git')
 
 source=("${_pkgname}::git+$url")
