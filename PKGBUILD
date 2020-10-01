@@ -2,7 +2,7 @@
 
 pkgname=glewlwyd
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Single-Sign-On (SSO) server with multiple factor authentication'
 arch=(x86_64)
 url=https://github.com/babelouest/glewlwyd
