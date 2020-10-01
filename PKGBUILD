@@ -9,7 +9,7 @@
 
 pkgname=tea-qt
 pkgver=50.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Powerful text editor for Linux, *BSD, Windows and OS/2"
 arch=('x86_64')
 url="http://semiletov.org/tea/"
@@ -17,7 +17,7 @@ license=('GPL')
 depends=('qt5-base' 'qt5-declarative' 'gcc-libs' 'hunspell' 'desktop-file-utils')
 makedepends=('cmake')
 source=(https://github.com/psemiletov/tea-qt/archive/$pkgver.tar.gz)
-md5sums=(bd713fc3e3086b04175ccb00622616f9)
+md5sums=(a59cbec5ee60c05e44ada9d8ae1fe4fc)
 
 build() {
   mkdir -p "${srcdir}/tea-qt-${pkgver}/b"
