@@ -1,0 +1,17 @@
+pkgbase = perl-http-tiny-paranoid
+	pkgdesc = A safer HTTP::Tiny
+	pkgver = 0.07
+	pkgrel = 1
+	url = http://search.cpan.org/dist/HTTP-Tiny-Paranoid
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-class-method-modifiers
+	depends = perl-net-dns-paranoid
+	options = !emptydirs
+	source = http://cpan.perl.org/modules/by-module/HTTP/HTTP-Tiny-Paranoid-0.07.tar.gz
+	sha256sums = 8b7f9389fb42d77f7b9e0a42f93da413e7b32d183db96bd35b3707840a29b094
+
+pkgname = perl-http-tiny-paranoid
+
