@@ -1,0 +1,7 @@
+post_install() {
+  echo "Your installation of superblt is not yet complete!
+You'll need to set launch options in Steam for Payday 2:
+LD_PRELOAD=\"\$LD_PRELOAD /usr/lib/superblt/superblt_loader.so\" %command%
+And clone the https://gitlab.com/znixian/payday2-superblt-lua inside
+<payday install directory>/mods/base"
+}

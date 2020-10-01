@@ -1,0 +1,19 @@
+pkgbase = superblt-git
+	pkgdesc = Mod loader for Payday 2 (non-Steam runtime only)
+	pkgver = r506.10dfbdc
+	pkgrel = 1
+	url = https://gitlab.com/znixian/payday2-superblt
+	install = superblt.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = curl
+	depends = openal
+	conflicts = superblt
+	source = superblt::git+https://gitlab.com/znixian/payday2-superblt.git
+	md5sums = SKIP
+
+pkgname = superblt-git
+
