@@ -4,7 +4,7 @@
 pkgname=db-4.8-raspi4-magi
 pkgver=4.8.30
 pkgrel=1
-pkgdesc="The Berkeley DB embedded database system 4.8 - This is meant only to be used as a dependency for magiwallet-magid-raspi4"
+pkgdesc="The Berkeley DB embedded database system 4.8 - This is meant only to be used as a dependency for magiwallet-magid-raspi4-git"
 arch=('aarch64')
 license=('custom')
 url="http://www.oracle.com/technology/software/products/berkeley-db/index.html"
