@@ -1,14 +1,15 @@
 pkgbase = textlint-rule-write-good
 	pkgdesc = textlint rule to check your English style with write good
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/textlint-rule/textlint-rule-write-good
 	arch = any
+	license = MIT
+	makedepends = npm
 	depends = nodejs
-	depends = npm
-	noextract = textlint-rule-write-good-1.6.2.tgz
+	depends = textlint
 	source = http://registry.npmjs.org/textlint-rule-write-good/-/textlint-rule-write-good-1.6.2.tgz
-	sha1sums = 3c79b04091319d4e8be5fb442c596bf500e8493e
+	sha256sums = 898faf1f76a641392bf874d573dd291d346966338fdb77b419f6e52e44285e5f
 
 pkgname = textlint-rule-write-good
 
