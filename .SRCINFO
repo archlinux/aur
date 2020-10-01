@@ -1,7 +1,7 @@
 pkgbase = raid-check-systemd
 	pkgdesc = Raid data scrubbing script with systemd timer to be used with mdadm.
 	pkgver = 4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.archlinux.org/index.php/RAID#Scrubbing
 	install = raid-check-systemd.install
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = raid-check-systemd
 	depends = systemd
 	conflicts = raid-check
 	backup = etc/conf.d/raid-check
-	source = http://mirror.centos.org/centos/7/os/x86_64/Packages/mdadm-4.1-1.el7.x86_64.rpm
+	source = http://mirror.centos.org/centos/8/BaseOS/x86_64/os/Packages/mdadm-4.1-13.el8.x86_64.rpm
 	source = raid-check.service
 	source = raid-check.timer
-	sha256sums = 075def82364c7f4d2c197c78719a6fc4b7b6b9f02ed71833b98a46929d77de83
+	sha256sums = c0fdb7887239752074760d1aa3d8bc78a729e7def1c6e5a7a13b10bf727702fd
 	sha256sums = 90db8f53984df9d7ab32fde09a853632e9d76cbd91224c0efd760406118af84b
 	sha256sums = 2a7677fb83b67f71cb626169746ccaf39417f2b291b4cbc5a264706fdb8cc8b2
 
