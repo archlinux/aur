@@ -2,8 +2,8 @@
 
 pkgname=3dslicer-bin
 _pkgname=3dslicer
-pkgver=4.10.2
-pkgrel=4
+pkgver=4.11.20200930
+pkgrel=1
 pkgdesc="A multi-platform, free open source software package for visualization and medical image computing"
 arch=('x86_64')
 url="https://www.slicer.org"
@@ -13,7 +13,7 @@ makedepends=('gendesk')
 provides=('3dslicer')
 conflicts=('3dslicer')
 source=(
-    "${_pkgname}.tar.gz::http://download.slicer.org/download?os=linux&stability=release"
+    "${_pkgname}-${pkgver}.tar.gz::http://download.slicer.org/download?os=linux&stability=release"
     "${_pkgname}.svg::https://github.com/Slicer/Slicer/raw/master/Resources/3DSlicerLogo-app-icon.svg"
 )
 sha512sums=('36f1b175f987e7d1e288f08d55c6942e494f1234bfdfb4ffae8517bb1711418c6ae3d5efd3f57dc31a7f65c451c8324d8c09d4de697b6b81d0a85ec48299c686'
@@ -22,7 +22,7 @@ sha512sums=('36f1b175f987e7d1e288f08d55c6942e494f1234bfdfb4ffae8517bb1711418c6ae
 prepare() {
 # manually extract tarball due to their unpredicted name
   mkdir "${srcdir}/${_pkgname}"
-  tar xvf "${srcdir}/${_pkgname}.tar.gz" -C "${srcdir}/${_pkgname}" --strip-components 1
+  tar xvf "${srcdir}/${_pkgname}-${pkgver}.tar.gz" -C "${srcdir}/${_pkgname}" --strip-components 1
 
   echo "Creating desktop file"
   gendesk -f -n --pkgname ${_pkgname} \
