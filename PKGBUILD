@@ -3,13 +3,13 @@
 _gemname=github-markup
 pkgname=ruby-$_gemname-git
 pkgver=3.0.4.r10.gcd01f9e
-pkgrel=1
+pkgrel=2
 pkgdesc='The code GitHub uses to render README.markup'
 arch=(any)
 url='https://github.com/github/markup'
 license=(MIT)
 depends=(ruby)
-makedepends=(ruby-rdoc)
+makedepends=(git ruby-rdoc)
 provides=(ruby-github-markup)
 conflicts=(ruby-github-markup)
 options=(!emptydirs)
