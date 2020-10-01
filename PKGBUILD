@@ -1,6 +1,6 @@
 # Maintainer: Petr Šťastný <aur@soptik.tech>
 pkgname=desed-git
-pkgver=1.1.4.cae6ecf
+pkgver=1.2.0.7ae641b
 pkgrel=1
 pkgdesc="Debugger for sed, written in rust. Step through code and observe sed inner state."
 arch=('x86_64')
