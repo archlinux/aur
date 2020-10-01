@@ -1,0 +1,21 @@
+pkgbase = wolf-m7m-cpuminer-v2-raspi4-git
+	pkgdesc = cpu miner for magicoin
+	pkgver = r5.9bbcb3b
+	pkgrel = 1
+	url = https://github.com/j6mes/wolf-m7m-cpuminer
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	depends = curl
+	depends = gmp
+	depends = jansson
+	depends = openssl-1.0
+	provides = wolf-m7m-cpuminer-v2-raspi4
+	provides = minerd
+	conflicts = wolf-m7m-cpuminer-v2-raspi4
+	conflicts = minerd
+	source = wolf-m7m-cpuminer-v2-raspi4::git+https://github.com/j6mes/wolf-m7m-cpuminer.git
+	md5sums = SKIP
+
+pkgname = wolf-m7m-cpuminer-v2-raspi4-git
+
