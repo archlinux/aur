@@ -1,9 +1,10 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: K900 <me@0upti.me>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
-# Headless by: K900 <me@0upti.me>
 
 pkgname=qt5-base-headless
-_qtver=5.15.0
+_qtver=5.15.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -11,19 +12,20 @@ url='https://www.qt.io/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='A cross-platform application and UI framework - headless build (no QtGui or QtWidgets)'
 depends=('sqlite' 'libproxy' 'double-conversion' 'pcre2' 'glib2' 'icu' 'zstd')
-makedepends=('mariadb-libs' 'sqlite' 'unixodbc' 'postgresql-libs' 'dbus')
+makedepends=('mariadb-libs' 'sqlite' 'unixodbc' 'postgresql-libs' 'dbus' 'systemd')
 optdepends=('postgresql-libs: PostgreSQL driver'
             'mariadb-libs: MariaDB driver'
             'unixodbc: ODBC driver'
             'freetds: MS SQL driver'
 	    'python: build scripts for Apple platforms'
-	    'dbus: DBus module')
+	    'dbus: DBus module'
+            'shared-mime-info: Freedesktop.org Shared MIME Info')
 conflicts=('qtchooser' 'qt5-base')
 provides=('qt5-base')
 _pkgfqn="qtbase-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
 	qt5-base-cflags.patch)
-sha256sums=('9e7af10aece15fa9500369efde69cb220eee8ec3a6818afe01ce1e7d484824c5'
+sha256sums=('33960404d579675b7210de103ed06a72613bfc4305443e278e2d32a3eb1f3d8c'
 	    'cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c')
 
 prepare() {
