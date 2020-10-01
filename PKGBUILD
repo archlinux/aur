@@ -4,7 +4,7 @@
 
 pkgname='dashcore-bin'
 _pkgname='dashcore'
-pkgver=0.15.0.0
+pkgver=0.16.0.1
 pkgrel=1
 pkgdesc="Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy-centric digital currency. (Includes the qt-client, the headless daemon and the command-line tool.)"
 arch=('x86_64')
@@ -21,9 +21,9 @@ source=('dash256.png'
 sha256sums=('d719e01df4b47f4d6f0d4d6eac50d402bebb4127d0b6d64764fe2a42e903819b'
             '41f83cb53ecf33688d899f83e09bd52f9aa8e6d7b9b0f30810f192988b26079a'
             'c8f1e2426af7d29fd7b22445fac83f3209962187761a0bc4abc927d6c5b6c500'
-            '4cc0815ebd595f3d0134a8df9e6224cbe3d79398a5a899b60ca5f4ab8a576160'
+            'd1cfa14ee614872d21956f4fc6648969049a9354cf638efcf69916c0b6465346'
             'SKIP')
-validpgpkeys=('99DF0DABDEE182FA53A33AE763A96B406102E091')
+validpgpkeys=('29590362EC878A81FD3C202B52527BEDABE87984')
 
 package() {
   install -D -m755 "$srcdir/$_pkgname-${pkgver%.*}/bin/dash-qt" "$pkgdir/usr/bin/dash-qt"
