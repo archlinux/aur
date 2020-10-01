@@ -7,6 +7,7 @@ pkgbase = wayvnc
 	license = custom:ISC
 	makedepends = meson
 	makedepends = ninja
+	makedepends = scdoc
 	depends = libdrm
 	depends = libxkbcommon
 	depends = aml
