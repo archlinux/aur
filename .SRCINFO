@@ -1,6 +1,6 @@
 pkgbase = pulseaudio-git
 	pkgdesc = A featureful, general-purpose sound server (development version)
-	pkgver = v13.99.1.35.g1778f76c7
+	pkgver = 13.99.2.r4.g36a86d414
 	pkgrel = 1
 	url = http://pulseaudio.org/
 	arch = i686
@@ -29,7 +29,7 @@ pkgbase = pulseaudio-git
 	makedepends = gtk3
 	makedepends = webrtc-audio-processing
 	makedepends = check
-	makedepends = autoconf-archive
+	makedepends = meson
 	depends = libltdl
 	depends = libsoxr
 	depends = libasyncns
@@ -78,7 +78,7 @@ pkgbase = pulseaudio-git
 	backup = etc/pulse/default.pa
 	backup = etc/pulse/system.pa
 	backup = etc/pulse/client.conf
-	source = git+git://anongit.freedesktop.org/pulseaudio/pulseaudio
+	source = git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git
 	sha256sums = SKIP
 
 pkgname = pulseaudio-git
