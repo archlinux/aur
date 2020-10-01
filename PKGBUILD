@@ -4,36 +4,31 @@
 # Contributor: Dale Blount <dale@archlinux.org>
 
 pkgname=purple-plugin-pack
-pkgver=2.7.0
-pkgrel=5
-pkgdesc="Compilation of plugins for the libpurple family of IM clients"
+pkgver=2.8.0
+pkgrel=1
+pkgdesc="Plugins for libpurple and derived IM clients"
 arch=('x86_64')
-url="https://bitbucket.org/rekkanoryo/purple-plugin-pack"
+url="https://keep.imfreedom.org/pidgin/purple-plugin-pack"
 license=('GPL')
 depends=('libpurple')
-makedepends=('intltool' 'python2' 'pidgin')
-source=(https://bitbucket.org/rekkanoryo/$pkgname/downloads/$pkgname-$pkgver.tar.bz2)
-sha256sums=('2bbcf5e778a33968ba7f2864d2a6cb526a8984be3e4151642a583eee8eafb03c')
+makedepends=('meson' 'pidgin')
+source=(https://dl.bintray.com/pidgin/releases/$pkgname-$pkgver.tar.xz{,.asc})
+sha256sums=('82ccde9a7251a75b7e03a3f9a929014d8e008c1b6f46e58638f5f476da3e242d'
+            'SKIP')
+validpgpkeys=('40DE1DC7288FE3F50AB938C548F66AFFD9BDB729') # Gary Kramlich <grim@reaperworld.com>
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  sed -i '/PKG_CHECK_MODULES(ENCHANT/{n;s/enchant/&-2/}' configure.ac
-  autoreconf -vi
+  cd $pkgname-$pkgver
+  mkdir build
 }
 
-
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  PYTHON=/usr/bin/python2 \
-    ./configure --prefix=/usr
+  arch-meson $pkgname-$pkgver build
+  ninja -C build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  make
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }
 
 # vim:set ts=2 sw=2 et:
