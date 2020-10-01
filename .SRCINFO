@@ -1,13 +1,13 @@
 pkgbase = python2-ipy
 	pkgdesc = Python class and tools for handling of IPv4 and IPv6 addresses and networks.
-	pkgver = 0.83
+	pkgver = 1.00
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/IPy
 	arch = any
 	license = BSD
 	depends = python2
-	source = https://cheeseshop.python.org/packages/source/I/IPy/IPy-0.83.tar.gz
-	sha256sums = 61da5a532b159b387176f6eabf11946e7458b6df8fb8b91ff1d345ca7a6edab8
+	source = https://cheeseshop.python.org/packages/source/I/IPy/IPy-1.00.tar.gz
+	sha256sums = 2f2bf658a858d43868d8a4352b3889cf78c66e2ce678b300dcf518c9149ba621
 
 pkgname = python2-ipy
 
