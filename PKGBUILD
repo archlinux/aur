@@ -2,7 +2,7 @@
 
 pkgname=wayvnc
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='VNC server for wlroots-based Wayland compositors'
 arch=(x86_64)
 url=https://github.com/any1/wayvnc
@@ -14,7 +14,7 @@ sha512sums=('0ddfd949b76a4dc140b825f488eb887cf4608a685b9d2b8a514a2ad5b436baf2ea1
 
 build() {
   cd $pkgname-$pkgver
-  arch-meson build -Dman-pages=enable
+  arch-meson build -Dman-pages=enabled
   ninja -C build
 }
 
