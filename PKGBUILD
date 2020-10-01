@@ -1,11 +1,11 @@
 pkgname=mkunified-git
-pkgver=0.r1.g10a3bcb
-pkgrel=1
+pkgver=0.r1.g8b9d817
+pkgrel=2
 pkgdesc="Unified kernel image generation utility which supports initrd generation using mkinitcpio"
 arch=(any)
 url='https://github.com/ErnyTech/mkunified'
 license=('AGPL-3.0')
-depends=('bash' 'util-linux' 'grep' 'sed' 'imagemagick')
+depends=('bash' 'util-linux' 'grep' 'sed' 'imagemagick' 'mkinitcpio-nohooks-git')
 makedepends=('git')
 backup=(etc/mkunified.conf)
 source=('git://github.com/ErnyTech/mkunified.git')
