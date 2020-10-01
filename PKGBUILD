@@ -1,7 +1,7 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=createrepo_c
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="A C implementation of createrepo, a tool to create yum repositories"
 arch=('i686' 'x86_64')
@@ -9,49 +9,44 @@ license=('GPL2')
 url="https://github.com/rpm-software-management/$pkgname"
 depends=('curl' 'drpm>=0.4.0' 'glib2' 'libmodulemd>=2.3.0'
          'libxml2' 'rpm-tools' 'sqlite' 'zchunk' 'zlib')
-makedepends=('bash-completion' 'cmake' 'doxygen'
+makedepends=('bash-completion' 'cmake>=3.13' 'doxygen'
              'python' 'python-sphinx')
 checkdepends=('python-nose')
 optdepends=('python: for python bindings')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('12dca94e651f73776c15192d1641ab34')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	rm -rf build
-	mkdir build
-}
+md5sums=('8916255d7586fbabe3a04275e3e725ce')
 
 build() {
-	cd "$pkgname-$pkgver"/build
+	cd "$pkgname-$pkgver"
 
-	cmake -DCMAKE_BUILD_TYPE=Release \
-	      -DCMAKE_C_FLAGS="$CFLAGS $CPPFLAGS" \
+	cmake -B build \
+	      -DCMAKE_BUILD_TYPE=Release \
+	      -DCMAKE_C_FLAGS_RELEASE='-DNDEBUG' \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DCMAKE_INSTALL_LIBDIR=lib \
 	      -DPYTHON_DESIRED=3 \
 	      -DENABLE_DRPM=ON \
 	      -DWITH_LIBMODULEMD=ON \
 	      -DWITH_ZCHUNK=ON \
-	      ..
+	      -Wno-dev
 
-	make
-	make doc
+	make -C build
+	make -C build doc
 }
 
 check() {
-	cd "$pkgname-$pkgver"/build
+	cd "$pkgname-$pkgver"
 
-	make tests
-	make ARGS="-V" test
+	make -C build tests
+	make -C build ARGS="-V" test
 }
 
 package() {
-	cd "$pkgname-$pkgver"/build
+	cd "$pkgname-$pkgver"
 
-	make DESTDIR="$pkgdir/" install
+	make -C build DESTDIR="$pkgdir/" install
 
-	install -Dp -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dp -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
