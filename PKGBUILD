@@ -29,7 +29,7 @@ source=("https://github.com/ilime/Petal/releases/download/v$pkgver/Petal-$pkgver
 )
 noextract=()
 validpgpkeys=()
-md5sums=('3d88e2a1fb7b5dd62d9fdf8230a1284c'
+md5sums=('20e8d9ed1311010c3d460fd443db2cef'
          'cebd0dda9b913e6254f5e09a257955bb'
          'e3da3170012174fea78d060f9f77f0e5'
          'e946f427355b1a85454b74e7ca918072'
@@ -37,7 +37,7 @@ md5sums=('3d88e2a1fb7b5dd62d9fdf8230a1284c'
 
 package() {
     mkdir -p "$pkgdir/usr/lib"
-    cp -r "$srcdir/petal-$pkgver" "$pkgdir/usr/lib/petal"
+    cp -r "$srcdir/Petal-$pkgver" "$pkgdir/usr/lib/petal"
     
     install -Dm755 "$srcdir/petal.sh" "$pkgdir/usr/bin/petal"
     install -Dm644 "$srcdir/Petal.desktop" -t "$pkgdir/usr/share/applications/"
