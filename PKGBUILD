@@ -1,8 +1,8 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=mingw-w64-libheif
-pkgver=1.9.0
-pkgrel=2
+pkgver=1.9.1
+pkgrel=1
 pkgdesc="HEIF file format decoder and encoder. (mingw-w64)"
 url="https://github.com/strukturag/libheif"
 license=("LGPL")
@@ -18,20 +18,13 @@ arch=("any")
 options=(!strip !buildflags staticlibs)
 optdepends=()
 sha256sums=(
-	"b9e1dde935675c451ff89517b46fe33d574fcbd0540c635296f512c7950c0dee"
-	"9ae4197f1fe1d2c78b9612581636055ca8599ad4c5633c191d78b5391f43155a"
+	"2b0d5cf7e74d7aa45da4fe53fb8c1fbac04d2b1e2bef79723d6ef154d0514deb"
 )
 source=(
 	"https://github.com/strukturag/libheif/archive/v${pkgver}.tar.gz"
-	"fix-missing-inline.patch"
 )
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-	cd "libheif-${pkgver}"
-	patch -uNp1 < "../fix-missing-inline.patch"
-}
 
 build() {
 	_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG" -DWITH_EXAMPLES=OFF )
