@@ -1,4 +1,4 @@
-nextcloud-client/
-pkg/
-src/
-*.pkg.tar.xz
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
