@@ -1,0 +1,15 @@
+pkgbase = textlint-rule-proselint
+	pkgdesc = Proselint wrapper for textlint
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/textlint-rule/textlint-rule-proselint
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = textlint
+	depends = proselint
+	source = http://registry.npmjs.org/@textlint-rule/textlint-rule-proselint/-/textlint-rule-proselint-1.0.1.tgz
+	sha1sums = 88a63c729d263a0082c7c34625d911eddcaf52c2
+
+pkgname = textlint-rule-proselint
+
