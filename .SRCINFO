@@ -1,0 +1,19 @@
+pkgbase = kde1-kcmlaptop-git
+	pkgdesc = Historical copy of laptop support for KDE 1, adapted to compile on modern systems
+	pkgver = 1.1.2r12.7afd21d
+	pkgrel = 1
+	url = https://github.com/sandsmark/kcmlaptop
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde1-kdelibs
+	provides = kde1-kde
+	conflicts = kde1-kde
+	source = git+https://github.com/sandsmark/kcmlaptop.git
+	md5sums = SKIP
+
+pkgname = kde1-kcmlaptop-git
+
