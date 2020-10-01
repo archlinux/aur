@@ -1,32 +1,31 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
-# Contributor: Alexander Rødseth <rodseth@gmail.com>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# https://github.com/aur-archive/kradio
 
 pkgname=kradio
-pkgver=4.0.8
+pkgver=5.0.0_beta1
 pkgrel=1
-pkgdesc='Comfortable KDE internet and AM/FM radio application'
+pkgdesc='Comfortable KDE Frameworks 5 internet and AM/FM radio application'
 arch=('i686' 'x86_64')
 url='http://kradio.sourceforge.net/'
 license=('GPL2')
-depends=('kdebase-runtime' 'lirc-utils' 'libmms' 'ffmpeg')
-makedepends=('automoc4' 'cmake' 'boost')
+depends=('alsa-lib' 'ffmpeg' 'libmms' 'libsndfile' 'plasma-framework' 'qt5-base')
+optdepends=('lirc' 'lame' 'libvorbis')
+makedepends=('cmake' 'boost')
+replaces=('kradio' 'kradio-git')
 install="${pkgname}.install"
-source=("http://downloads.sourceforge.net/${pkgname}/kradio4-${pkgver}.tar.bz2")
-sha256sums=('b6a0354ee0d8a69700b95428cf305940d00ff67c1a3268e8fdd9852bbacc000e')
+source=("https://downloads.sourceforge.net/project/kradio/kradio/${pkgver//_/-}/${pkgname}5-${pkgver//_/-}.tar.bz2")
+sha512sums=('b40079d130ffbe47f4717b93d5c804f833f9219c4c6b0afdd44ae8a5b105c014f54b8f008b0a2962464e0080fa4724b842b7a7ba32504a09372d1bf5ab1ed9ec')
 
 build() {
-  cd "${srcdir}"
+  cd "${srcdir}/${pkgname}5-${pkgver//_/-}"
   mkdir build
   cd build
-  cmake "../${pkgname}4-${pkgver}" \
+  cmake -Wno-dev ".." \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=RELEASE
   make ${MAKEFLAGS}
 }
 
 package() {
-  cd "${srcdir}/build"
+  cd "${srcdir}/${pkgname}5-${pkgver//_/-}/build"
   make DESTDIR="${pkgdir}" install
 }
