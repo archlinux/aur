@@ -6,13 +6,13 @@ pkgver=5.4.7.1
 _rawver=${pkgver//./_}
 _hashver='81f361962c74427d'
 _pkgupname='Upwork'
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop Application'
 arch=(x86_64)
 url='https://www.upwork.com/downloads/'
 license=(custom)
 conflicts=(upwork-alpha)
-depends=(alsa-lib gtk3 libp11-kit libxss nss util-linux-libs)
+depends=(alsa-lib gtk3 libp11-kit libutil-linux libxss nss)
 source=(https://updates-desktopapp.upwork.com/binaries/v${_rawver}_${_hashver}/upwork_${pkgver}_amd64.deb
 	LICENSE
 	upwork)
