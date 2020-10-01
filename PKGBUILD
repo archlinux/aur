@@ -3,17 +3,16 @@
 _perlmod='Mail-BIMI'
 _modnamespace=Mail
 pkgname=perl-mail-bimi
-pkgver=1.20200226
+pkgver=2.20200930.1
 pkgrel=1
 pkgdesc="BIMI object"
 arch=("any")
 url="http://search.cpan.org/dist/$_perlmod"
 license=('GPL' 'PerlArtistic')
-depends=('perl' 'perl-mail-authenticationresults' 'perl-mail-dmarc' 'perl-moo' 'perl-net-dns' 'perl-type-tiny')
-makedepends=('perl-mail-spf' 'perl-net-dns-resolver-mock' 'perl-test-class' 'perl-test-exception' 'perl-test-simple')
+depends=('perl' 'perl-app-cmd' 'perl-cache-fastmmap' 'perl-capture-tiny' 'perl-class-load' 'perl-convert-asn1' 'perl-crypt-openssl-verify' 'perl-crypt-openssl-x509' 'perl-http-tiny-paranoid' 'perl-import-into' 'perl-json' 'perl-mail-authenticationresults' 'perl-mail-dmarc' 'perl-mail-spf' 'perl-moo' 'perl-moose' 'perl-mozilla-ca' 'perl-net-dns' 'perl-net-dns-resolver-mock' 'perl-pod-elemental' 'perl-pod-weaver' 'perl-sereal' 'perl-sub-install' 'perl-test-class' 'perl-test-exception' 'perl-xml-libxml')
 options=('!emptydirs')
 source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha256sums=('0fb3a3c77afa986618c3c926bfb4fb5131b4e5595466959c41cdcf5d89f383f9')
+sha256sums=('ab17c10f6f863e3fb820c37d6616225fec4d9d3fda190600028f3bbfb47f49d8')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
