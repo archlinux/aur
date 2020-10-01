@@ -1,15 +1,13 @@
 pkgbase = legacyfox
 	pkgdesc = Legacy bootstrapped extensions for Firefox 65 and beyond
-	pkgver = 2.0
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://gir.st/blog/legacyfox.htm
 	arch = any
 	license = MPL
-	makedepends = git
 	depends = firefox
-	noextract = legacyfox.tar.gz
-	source = https://github.com/girst/LegacyFox/releases/download/v2.0/legacyfox.tar.gz
-	sha256sums = 44ce5bca375e92e1d7ec58a78326deac3e67ac044b42e40892f5b18087e0c95b
+	source = https://git.gir.st/LegacyFox.git/snapshot/v2.2.tar.gz
+	sha256sums = 19306101a5d0a973e2b0913250678dadc932432db70c56eaa443748e23825d58
 
 pkgname = legacyfox
 
