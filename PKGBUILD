@@ -1,24 +1,43 @@
-_npmname=textlint-rule-unexpanded-acronym
-_npmver=1.2.1
-pkgname=textlint-rule-unexpanded-acronym # All lowercase
-pkgver=1.2.1
+# Maintainer: PY Chuang <pychuang@pm.me>
+# Contributor: Arjun Nemani <nemaniarjun@gmail.com>
+pkgname=textlint-rule-unexpanded-acronym
+pkgver=1.2.4
 pkgrel=1
-pkgdesc="textlint rule that check unexpanded acronym word."
+pkgdesc='textlint rule that check unexpanded acronym'
 arch=(any)
 url="https://github.com/azu/textlint-rule-unexpanded-acronym"
-license=()
-depends=('nodejs' 'npm' )
-optdepends=()
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-noextract=($_npmname-$_npmver.tgz)
-sha1sums=(4e5c649898fea702c23683b60d46fe97fd903117)
-
+license=('MIT')
+depends=('textlint' )
+makedepends=('npm')
+source=(http://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
+sha256sums=('33893ffa564c5802c0046ca825dec2fcc20192557d8f7d54332bef529e8f8150')
 package() {
-  cd $srcdir
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p $_npmdir
-  cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
-}
+    cd ${srcdir}
 
-# vim:set ts=2 sw=2 et:
+    # remove cache folder
+    if [[ -d npm-cache ]]; then rm -rf npm-cache; fi
+
+    # npm install with the local tarball
+    npm install \
+        --cache ${srcdir}/npm-cache \
+        --production \
+        --no-optional \
+        --no-audit \
+        -g \
+        --user root \
+        --prefix ${pkgdir}/usr \
+        ${pkgname}-${pkgver}.tgz
+
+    # change the destination of references
+    grep -Rl ${pkgdir} ${pkgdir} | xargs -r sed -i "s@${pkgdir}@@g"
+    grep -Rl ${srcdir} ${pkgdir} | xargs -r sed -i "s@\"${srcdir}.*\"@\"\"@g"
+
+    # install README
+    install -Dm644 ${srcdir}/package/README.md -t ${pkgdir}/usr/share/doc/${pkgname}
+
+    # install LICENSE
+    install -Dm644 ${srcdir}/package/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}
+
+    # change owner
+    chown -R root:root ${pkgdir}
+}
