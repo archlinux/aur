@@ -1,7 +1,7 @@
 # Maintainer: Daniel Biehl dbiehl@live.de
 
 pkgname=getgauge
-pkgver=1.1.1
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Light weight cross-platform test automation tool for authoring test cases in the business language."
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('go')
 
 source=("https://github.com/getgauge/gauge/archive/v$pkgver.tar.gz")
-sha256sums=('b136727d0ed114ab18d9d380e1ff70ad70e60b56bbacf854be2aeddc9b20044a')
+sha256sums=('9250fde749c51b76acd375a82e27fbed758ff8982d9e6dc82c70e4dc218e6b4a')
 
 _gauge_path="src/github.com/getgauge/gauge"
 
