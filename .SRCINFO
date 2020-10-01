@@ -1,14 +1,14 @@
 pkgbase = peco-bin
 	pkgdesc = Simplistic interactive filtering tool
-	pkgver = 0.5.7
+	pkgver = 0.5.8
 	pkgrel = 1
 	url = https://github.com/peco/peco
 	arch = x86_64
 	license = MIT
 	provides = peco
-	source = peco-bin-0.5.7.tar.gz::https://github.com/peco/peco/releases/download/v0.5.7/peco_linux_amd64.tar.gz
+	source = peco-bin-0.5.8.tar.gz::https://github.com/peco/peco/releases/download/v0.5.8/peco_linux_amd64.tar.gz
 	source = LICENSE::https://github.com/peco/peco/raw/master/LICENSE
-	sha256sums = d273c8adcd173ab982168a04068b1733e1f20b3193a143f1719e34881aa546e1
+	sha256sums = 2554f6c71f33f1f9ffe99c5f1c3041b47d467aa18462a3cea18a88e2324e86c4
 	sha256sums = 38c6b4a6df580c74891927faf550dc6f7c41a51d3017c0a352be339d4a5b69f3
 
 pkgname = peco-bin
