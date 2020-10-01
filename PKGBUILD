@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=extra-cmake-modules-git
-pkgver=5.72.0.r3159.fb6ae44
+pkgver=5.75.0.r3194.693781d
 pkgrel=1
 pkgdesc='Extra modules and scripts for CMake'
 arch=('any')
@@ -12,6 +12,7 @@ license=('LGPL')
 depends=('cmake')
 makedepends=('git'
              'python-sphinx'
+             'python-requests'
              'qt5-tools'
              )
 conflicts=('extra-cmake-modules')
