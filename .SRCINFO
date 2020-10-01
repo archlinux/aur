@@ -1,13 +1,13 @@
 pkgbase = bwping
 	pkgdesc = Tool to measure bandwidth and RTT between two hosts using ICMP
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://bwping.sourceforge.io/
 	arch = x86_64
 	license = BSD
 	depends = glibc
-	source = bwping-2.0.tar.gz::https://github.com/oleg-derevenetz/bwping/archive/RELEASE_2.0.tar.gz
-	sha256sums = 777aeb5b696bfe4960ab6dc5ce3eac7e788c91e07af2f94ec450678cf0b657a7
+	source = bwping-2.1.tar.gz::https://github.com/oleg-derevenetz/bwping/archive/RELEASE_2.1.tar.gz
+	sha256sums = d07b76c6c4f44297e8c6daf8657b810c99471f1612534cda52901ac477df54e6
 
 pkgname = bwping
 
