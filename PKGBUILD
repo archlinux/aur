@@ -2,7 +2,7 @@
 # pkg: git
 pkgname=tldr-sh
 pkgver=r71.6bd83e6
-pkgrel=6
+pkgrel=7
 pkgdesc="A fully-functional POSIX shell client for tldr."
 arch=(any)
 url="https://github.com/raylee/tldr-sh-client"
@@ -35,10 +35,9 @@ pkgver()
   	cd "$srcdir/$pkgname"
 	(
 		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
-	pkgrel=$(git diff --shortstat|cut -d' ' -f2)
 }
 
 package() {
