@@ -1,28 +1,31 @@
-# Maintainer: Oliver Jaksch <arch-aur@com-in.de>
-
-pkgname=libretro-database-git
-pkgver=1516.6fc94a75
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Oliver Jaksch <arch-aur@com-in.de>
+# shellcheck shell=bash disable=SC2034,SC2164
+_pkgname=libretro-database
+pkgname=$_pkgname-git
+pkgver=1.9.0.r13.g4bc43bbf
 pkgrel=1
-pkgdesc="Repository containing cheatcode files, content data files, etc."
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+epoch=1
+pkgdesc="RetroArch's cheatcode files, content data files, etc."
+arch=('any')
 url="https://github.com/libretro/libretro-database"
-license=('GPL3')
+license=('MIT')
 groups=('libretro')
-depends=('zlib')
 makedepends=('git')
-
-_libname=database
-_gitname=libretro-database
-source=("git+https://github.com/libretro/${_gitname}.git")
-sha256sums=('SKIP')
+optdepends=('retroarch')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+options=('!strip')
+source=("$_pkgname::git+$url.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "${_gitname}"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd $_pkgname
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/share/libretro/${_libname}/
-  mv ${srcdir}/${_gitname}/* ${pkgdir}/usr/share/libretro/${_libname}/
-  rm ${pkgdir}/usr/share/libretro/${_libname}/Makefile ${pkgdir}/usr/share/libretro/${_libname}/configure
+	cd $_pkgname
+	# shellcheck disable=SC2154
+	make DESTDIR="$pkgdir" install
 }
