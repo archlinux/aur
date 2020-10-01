@@ -3,16 +3,16 @@
 _name=elstob
 pkgbase=$_name-font
 pkgname=(otf-$_name ttf-$_name ttf-$_name-variable)
-pkgver=1.009
+pkgver=1.010
 pkgrel=1
 pkgdesc='A variable font for medievalists '
 arch=('any')
 url="https://github.com/psb1558/${pkgbase^}"
 license=('OFL')
-source=("$url/releases/download/v${pkgver}a/${_name^}_v${pkgver/./_}_desktop.zip"
-        "$url/releases/download/v${pkgver}a/${_name^}_v${pkgver/./_}_web.zip")
-sha256sums=('f5fbbd4ff1eaa25458bbec6dfc817de278ea9234bb838e160ea6ef0eda47beb9'
-            'f6c32b2d17f22aa49345fb8ddbfb09be865604a870e7e314be17646199407062')
+source=("$url/releases/download/v${pkgver}/${_name^}_v${pkgver/./_}_desktop.zip"
+        "$url/releases/download/v${pkgver}/${_name^}_v${pkgver/./_}_web.zip")
+sha256sums=('3d155414c0143f0b1fa6a3a9d96995ba4acd8cfda53d3d5ae04463a2a261a569'
+            'a229072e2cb25abcb820729b9ed1ee82c0d40efe2a06d7bdda7179a2545198be')
 
 package_otf-elstob() {
     provides=("$pkgbase")
