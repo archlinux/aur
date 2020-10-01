@@ -8,7 +8,7 @@ _pkgname=spotify
 pkgver=1.1.42.622
 _commit=gbd112320
 _rel=37
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary music streaming service"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2006-2010 Spotify Ltd"')
@@ -37,12 +37,11 @@ _SPOTIFY_ARCH=amd64
 
 prepare() {
     # Validate hashes from the PGP signed "Release" file
-    #echo "$(grep non-free/binary-${_SPOTIFY_ARCH}/Packages ${_pkgname}-Release | tail -n 2 | head -n 1 | awk '{print $1}') ${_pkgname}-${CARCH}-Packages" > "${_pkgname}-${CARCH}-Packages.sha256"
-    #sha256sum -c "${_pkgname}-${CARCH}-Packages.sha256"
+    echo "$(grep non-free/binary-${_SPOTIFY_ARCH}/Packages ${_pkgname}-Release | tail -n 2 | head -n 1 | awk '{print $1}') ${_pkgname}-${CARCH}-Packages" > "${_pkgname}-${CARCH}-Packages.sha256"
+    sha256sum -c "${_pkgname}-${CARCH}-Packages.sha256"
 
-    #echo "$(grep SHA512 ${_pkgname}-${CARCH}-Packages | awk '{print $2}') ${_pkgname}-${pkgver}-${CARCH}.deb" > "${_pkgname}-${pkgver}-${CARCH}.deb.sha512"
-    #sha512sum -c "${_pkgname}-${pkgver}-${CARCH}.deb.sha512"
-    true
+    echo "$(grep SHA512 ${_pkgname}-${CARCH}-Packages | awk '{print $2}') ${_pkgname}-${pkgver}-${CARCH}.deb" > "${_pkgname}-${pkgver}-${CARCH}.deb.sha512"
+    sha512sum -c "${_pkgname}-${pkgver}-${CARCH}.deb.sha512"
 }
 
 build() {
