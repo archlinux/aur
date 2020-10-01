@@ -1,12 +1,12 @@
 # Maintainer: Helg1980 <depositmail@rambler.ru>
 pkgname=simplest-studio
-_name=${pkgname#cpp-}
+_name=${pkgname}
 pkgver=1.1
 pkgrel=1
 pkgdesc="Simplest Studio 2020 SE"
 arch=(x86_64)
 url="https://github.com/SimplestStudio/simplest-studio.git"
-license=('GPL')
+license=('GPL3')
 depends=('qt5-base>=5.15' 'ffmpeg>=4.2' 'libmediainfo>=20.03')
 source=("https://github.com/SimplestStudio/simplest-studio/archive/1.1.tar.gz")
 md5sums=('SKIP')
@@ -19,7 +19,7 @@ build() {
 
 package() {
   cd "${srcdir}/simplest-studio-${pkgver}"
-  make INSTALL_ROOT="$pkgdir" install
+  make INSTALL_ROOT=${pkgdir} install
   
   cd "${srcdir}/simplest-studio-${pkgver}"
   # install documentation
