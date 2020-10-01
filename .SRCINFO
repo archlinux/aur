@@ -1,0 +1,17 @@
+pkgbase = python-pycdlib-git
+	pkgdesc = Python library to read and write ISOs
+	pkgver = 1.10.0.42.g2d41d2d
+	pkgrel = 1
+	url = https://github.com/clalancette/pycdlib
+	arch = any
+	license = LGPL2.1
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	provides = python-pycdlib
+	conflicts = python-pycdlib
+	source = pycdlib::git+https://github.com/clalancette/pycdlib.git
+	sha512sums = SKIP
+
+pkgname = python-pycdlib-git
+
