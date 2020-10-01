@@ -1,0 +1,15 @@
+[Unit]
+Description=A network sniffer that logs all DNS server replies for use in a passive DNS setup
+Documentation=https://github.com/gamelinux/passivedns
+# Not sure whether network-online.target should be required
+After=network.target
+
+[Service]
+Type=simple
+## log to syslog
+#ExecStart=/usr/bin/passivedns -y
+# log to /var/log/passivedns.log
+ExecStart=/usr/bin/passivedns
+
+[Install]
+WantedBy=default.target
