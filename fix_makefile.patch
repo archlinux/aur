@@ -1,0 +1,45 @@
+--- magiwallet-magid-raspi4_orig/src/makefile.unix	2020-10-01 09:27:40.191728566 -0600
++++ magiwallet-magid-raspi4/src/makefile.unix	2020-10-01 09:28:43.590613692 -0600
+@@ -30,24 +30,24 @@
+ 	TESTDEFS += -DBOOST_TEST_DYN_LINK
+ endif
+ 
+-DEFS += $(addprefix -I,$(CURDIR) $(CURDIR)/hash $(CURDIR)/obj $(BOOST_INCLUDE_PATH) $(BDB_INCLUDE_PATH) $(OPENSSL_INCLUDE_PATH)) $(OPT_INCLUDE_PATHS)
+-LIBS = $(addprefix -L,$(BOOST_LIB_PATH) $(BDB_LIB_PATH) $(OPENSSL_LIB_PATH))
++DEFS += $(addprefix -I,$(CURDIR) $(CURDIR)/hash $(CURDIR)/obj /usr/include/boost63 /usr/include/db4.8 /usr/include/openssl-1.0) $(OPT_INCLUDE_PATHS)
++LIBS = $(addprefix -L,/usr/lib/boost63 /usr/lib/db-4.8 /usr/lib/openssl-1.0)
+ 
+ TESTDEFS = -DTEST_DATA_DIR=$(abspath test/data)
+ 
+-#BOOST_LIB_SUFFIX = -mt-s
+-
++BOOST_LIB_SUFFIX = .so.1.63.0
++BDB_LIB_SUFFIX = -4.8.so
+ # for boost 1.37, add -mt to the boost libraries
+ LIBS += \
+  -Wl,-B$(LMODE) \
+-   -l boost_system$(BOOST_LIB_SUFFIX) \
+-   -l boost_filesystem$(BOOST_LIB_SUFFIX) \
+-   -l boost_program_options$(BOOST_LIB_SUFFIX) \
+-   -l boost_thread$(BOOST_LIB_SUFFIX) \
+-   -l db_cxx$(BDB_LIB_SUFFIX) \
++   -l:libboost_system$(BOOST_LIB_SUFFIX) \
++   -l:libboost_filesystem$(BOOST_LIB_SUFFIX) \
++   -l:libboost_program_options$(BOOST_LIB_SUFFIX) \
++   -l:libboost_thread$(BOOST_LIB_SUFFIX) \
++   -l:libdb_cxx$(BDB_LIB_SUFFIX) \
+    -l ssl \
+    -l gmp \
+-   -l crypto
++   -l:libcrypto.so
+ 
+ ifndef USE_UPNP
+ 	override USE_UPNP = -
+@@ -113,6 +113,7 @@
+ # xCPUARCH is passed in as a define (xCPUARCH=armv7l, xCPUARCH=armv6l)
+ ifeq ($(xCPUARCH),armv7l)
+ else ifeq ($(xCPUARCH),armv6l)
++else ifeq ($(xCPUARCH),aarch64)
+ else
+     xCXXFLAGS+=-msse2
+ endif

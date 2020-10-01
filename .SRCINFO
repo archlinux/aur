@@ -1,0 +1,25 @@
+pkgbase = magiwallet-magid-raspi4-git
+	pkgdesc = Magicoin wallet
+	pkgver = r300.d316219f3
+	pkgrel = 1
+	url = https://github.com/m-pays/magi
+	arch = aarch64
+	license = custom
+	makedepends = git
+	depends = db-4.8-raspi4-magi
+	depends = boost-63-raspi4-magi
+	depends = openssl-1.0
+	depends = gmp
+	depends = miniupnpc
+	provides = magid
+	conflicts = magiwallet-magid-raspi4
+	options = !makeflags
+	source = magiwallet-magid-raspi4::git+https://github.com/m-pays/magi.git
+	source = fix_makefile.patch
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = a77b8747d17f4bca417c729c272b0f37
+	md5sums = 97b022da0f876d9eb53279e7c047182a
+
+pkgname = magiwallet-magid-raspi4-git
+
