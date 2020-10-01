@@ -1,6 +1,6 @@
 pkgbase = rclonesync-git
 	pkgdesc = A Bidirectional Cloud Sync Utility using rclone
-	pkgver = 2.9.r39
+	pkgver = 3.1.r2.g5971851
 	pkgrel = 1
 	url = https://github.com/cjnaz/rclonesync-V2
 	arch = any

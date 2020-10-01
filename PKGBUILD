@@ -1,7 +1,7 @@
 # Maintainer: Stephanie Hobbs (RX14) <steph@rx14.co.uk>
 
 pkgname=rclonesync-git
-pkgver=2.9.r39
+pkgver=3.1.r2.g5971851
 pkgrel=1
 pkgdesc="A Bidirectional Cloud Sync Utility using rclone"
 arch=("any")
@@ -15,13 +15,12 @@ sha256sums=('SKIP')
 pkgver() {
     cd rclonesync
 
-    local project_version="$(python rclonesync.py -V | sed -E 's|^rclonesync.py V(.+) (.+)$|\1|')"
-    printf "%s.r%s" "$project_version" "$(git rev-list --count HEAD)"
+    git describe --long --tags | sed 's/^V//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
     cd rclonesync
 
     install -m 0755 -d "$pkgdir"/usr/bin
-    install -m 0755 rclonesync.py "$pkgdir"/usr/bin/rclonesync
+    install -m 0755 rclonesync "$pkgdir"/usr/bin/rclonesync
 }
