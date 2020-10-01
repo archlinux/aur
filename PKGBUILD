@@ -6,7 +6,7 @@
 pkgbase=python-powerline-git
 pkgname=('python2-powerline-git' 'python-powerline-git')
 pkgdesc='The ultimate statusline/prompt utility'
-pkgver=2.7+25+g15c611ca
+pkgver=2.8.1+10+g40c3e092
 pkgrel=1
 epoch=1
 url='https://github.com/powerline/powerline'
@@ -19,8 +19,8 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd powerline
-	local base_version=$(sed -n "s/\s*base_version\s*=\s*['\"]\(.*\)['\"]\s*/\1/p" setup.py)
-	local count=+$(git rev-list --count $(git blame setup.py | grep "\s*base_version\s*=.*$base_version" | cut -d\  -f1)..HEAD)
+	local base_version=$(sed -n "s/\s*__version__\s*=\s*['\"]\(.*\)['\"]\s*/\1/p" powerline/version.py)
+	local count=+$(git rev-list --count $(git blame powerline/version.py | grep "\s*__version__\s*=.*$base_version" | cut -d\  -f1)..HEAD)
 	local rev=$(git rev-parse --short HEAD)
 	printf '%s%s+g%s' "$base_version" "${count/+0/}" "$rev"
 }
