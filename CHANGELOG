@@ -1,3 +1,22 @@
+4.3.3
+-----
+
+ - Add :py:func:`pyteomics.electrochem.gravy` (`#9 <https://github.com/levitsky/pyteomics/pull/9>`_).
+
+ - Fixes and improvements in :py:func:`pyteomics.pepxml.roc_curve` (`#10 <https://github.com/levitsky/pyteomics/pull/10>`_).
+
+ - Changes in guessing behavior of :py:func:`read` functions.
+
+   In modules that implement :ref:`indexing parsers <indexing>` for non-XML formats (MGF, FASTA, PEFF, ms1/ms2),
+   when a parser is instantiated using :py:func:`read`, the parser class to instantiate is guessed
+   based on the mode of the file object passed to :py:func:`read` (text or binary).
+
+   With some file-like objects, mode cannot be easily deduced without consuming some of the data.
+   You will now see more warnings in case `use_index` is not explicitly passed to :py:func:`read` and reading mode is not obvious.
+   There will also be warnings if `use_index` is specified but the file is opened in the wrong mode.
+   To avoid all of this, you are encouraged to instantiate parser classes directly,
+   or explicitly specify `use_index` to :py:func:`read` in all corner cases.
+
 4.3.2
 -----
 
