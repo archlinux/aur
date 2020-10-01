@@ -1,16 +1,16 @@
 pkgbase = ruby-rotp
 	pkgdesc = A Ruby library for generating and verifying one time passwords
-	pkgver = 6.1.0
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://github.com/mdp/rotp
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-addressable
-	noextract = rotp-6.1.0.gem
+	noextract = rotp-6.2.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rotp-6.1.0.gem
-	sha256sums = 48447824a9e5baab3126c7a04056c89e569bcb0ec4340f7ee9cfdd8356d35036
+	source = https://rubygems.org/downloads/rotp-6.2.0.gem
+	sha256sums = 239a2eefba6f1bd4157b2c735d0f975598e0ef94823eea2f35d103d2e5cc0787
 
 pkgname = ruby-rotp
 
