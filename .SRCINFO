@@ -1,7 +1,7 @@
 pkgbase = magiwallet-magid-raspi4-git
 	pkgdesc = Magicoin wallet
 	pkgver = r300.d316219f3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/m-pays/magi
 	arch = aarch64
 	license = custom

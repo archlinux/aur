@@ -2,7 +2,7 @@
 
 pkgname=magiwallet-magid-raspi4-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r300.d316219f3
-pkgrel=1
+pkgrel=2
 pkgdesc="Magicoin wallet"
 arch=("aarch64")
 url="https://github.com/m-pays/magi"
@@ -66,6 +66,6 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm775 "src/magid" "${pkgdir}/usr/bin/magid"
-	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-git}-git/LICENSE"
 #	make DESTDIR="$pkgdir/" install
 }
