@@ -2,7 +2,7 @@
 
 pkgname=giara-git
 pkgver=r84.9b950c9
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Reddit gtk client"
 arch=('any')
@@ -31,8 +31,7 @@ sha256sums=("SKIP")
 
 prepare() {
 	# Generate pycache, if you ran giara as root this will conflict
-	find "$srcdir/$pkgname/${pkgname%-git}" -name "*.py" |\
-		xargs python -c 'import py_compile, sys; py_compile.main(sys.argv[1:])'
+	python -m compileall "$srcdir/$pkgname/${pkgname%-git}"
 }
 
 pkgver() {
