@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20200911.r0.gd5b2251d63b5
+pkgver=20201001.r0.gd39294091fee
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -133,11 +133,9 @@ prepare() {
             sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
                 -i -e '/CONFIG_AMD_NUMA=y/d' \
                 -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-                -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
                 -i -e '/# CONFIG_NUMA_EMU is not set/d' \
-                -i -e '/CONFIG_NODES_SHIFT=6/d' \
+                -i -e '/CONFIG_NODES_SHIFT=5/d' \
                 -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-                -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
                 -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
                 -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
         fi
