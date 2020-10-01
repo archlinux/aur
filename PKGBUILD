@@ -59,7 +59,7 @@ _lqxpatchrel=11
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.8.12.lqx2
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -159,11 +159,9 @@ prepare() {
             sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
                 -i -e '/CONFIG_AMD_NUMA=y/d' \
                 -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-                -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
                 -i -e '/# CONFIG_NUMA_EMU is not set/d' \
                 -i -e '/CONFIG_NODES_SHIFT=6/d' \
                 -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-                -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
                 -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
                 -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
         fi
