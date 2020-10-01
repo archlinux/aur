@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=webapp-manager-git
-pkgver=1.0.4.r55.db2af59
-pkgrel=2
+pkgver=1.0.5.r61.42eb60e
+pkgrel=1
 pkgdesc="Run websites as if they were apps."
 arch=('x86_64')
 url="https://github.com/linuxmint/webapp-manager"
@@ -31,7 +31,11 @@ prepare() {
 		"usr/lib/${pkgname%-git}/common.py"
 
 	# Fix license path
-	sed -i 's/common-licenses/licenses\/common/g' \
+	sed -i 's/common-licenses\/GPL/licenses\/common\/GPL\/license.txt/g' \
+		"usr/lib/${pkgname%-git}/${pkgname%-git}.py"
+
+	# Set version in About dialog
+	sed -i "s/__DEB_VERSION__/${pkgver%.r*}/g" \
 		"usr/lib/${pkgname%-git}/${pkgname%-git}.py"
 }
 
