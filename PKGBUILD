@@ -1,6 +1,6 @@
 # Maintainer: Helg1980 <depositmail@rambler.ru>
 pkgname=simplest-studio
-_name=${pkgname}
+_pkgname=${pkgname}
 pkgver=1.1
 pkgrel=1
 pkgdesc="Simplest Studio 2020 SE"
@@ -15,7 +15,6 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make
 }
-
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
