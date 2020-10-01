@@ -1,0 +1,16 @@
+pkgbase = ruby-mini_exiftool
+	pkgdesc = A wrapper for the ExifTool command-line application
+	pkgver = 2.10.0
+	pkgrel = 2
+	url = https://github.com/janfri/mini_exiftool
+	arch = any
+	license = LGPL2.1
+	depends = ruby
+	depends = perl-image-exiftool
+	noextract = mini_exiftool-2.10.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/mini_exiftool-2.10.0.gem
+	sha256sums = 1cd78896a4825c7b693ca8e68c1b3b532cef3733df0cac3289a98c66631cb968
+
+pkgname = ruby-mini_exiftool
+
