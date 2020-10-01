@@ -4,7 +4,7 @@
 # Contributor: Mariusz Libera <mariusz.libera@gmail.com>
 # Contributor: Jakob Nixdorf <flocke [swirly thing] shadowice [dot] org>
 pkgname=conspy
-pkgver=1.14
+pkgver=1.16
 pkgrel=1
 pkgdesc="Remote control of Linux virtual consoles"
 arch=('x86_64' 'i686' 'armv6h')
@@ -13,7 +13,7 @@ license=('AGPL3')
 depends=('ncurses')
 changelog=ChangeLog
 source=("http://downloads.sourceforge.net/project/conspy/conspy-$pkgver-$pkgrel/conspy-$pkgver.tar.gz")
-sha256sums=('4e2f05c9e19a6673a323127711ff007f7f9244f3a5c793c2b079eb7fbb113319')
+sha256sums=('ee5ef648ea08d20d9062db22e7bf62a7b7261af02053f916016d1b80a66a5609')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
