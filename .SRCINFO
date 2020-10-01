@@ -1,6 +1,6 @@
 pkgbase = hbmame
 	pkgdesc = A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support.
-	pkgver = 0.224
+	pkgver = 0.225
 	pkgrel = 1
 	url = https://mamedev.org/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = hbmame
 	depends = flac
 	conflicts = sdlmame
 	replaces = sdlmame
-	source = https://github.com/Robbbert/hbmame/archive/tag224.tar.gz
+	source = https://github.com/Robbbert/hbmame/archive/tag225.tar.gz
 	source = hbmame.sh
 	sha256sums = SKIP
 	sha256sums = SKIP

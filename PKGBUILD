@@ -8,7 +8,7 @@
 # also not building tools since you most likely have MAME installed as well
 
 pkgname=hbmame
-pkgver=0.224
+pkgver=0.225
 pkgrel=1
 pkgdesc="A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support."
 url="https://mamedev.org/"
