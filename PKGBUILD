@@ -13,6 +13,10 @@ depends=(
     'python-pyserial'
     'qt5-serialport'
 )
+makedepends=(
+    'git'
+    'python-setuptools'
+)
 provides=('tasmotizer')
 conflicts=('tasmotizer')
 source=(
@@ -28,12 +32,6 @@ pkgver() {
     cd "$srcdir/$_pkgname"
 
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-build() {
-    cd "$srcdir/$_pkgname"
-
-    python setup.py build
 }
 
 package() {
