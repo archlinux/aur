@@ -1,5 +1,5 @@
 pkgbase = boost-63-raspi4-magi
-	pkgdesc = Free peer-reviewed portable C++ source libraries - This is meant only to be used as a dependency for magiwallet-magid-raspi4
+	pkgdesc = Free peer-reviewed portable C++ source libraries - This is meant only to be used as a dependency for magiwallet-magid-raspi4-git
 	pkgver = 1.63.0
 	pkgrel = 1
 	url = http://www.boost.org/
