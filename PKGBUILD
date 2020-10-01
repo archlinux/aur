@@ -12,8 +12,8 @@ md5sums=('aa76674049761a31d20379679d6a32b3')
 
 package() {
     # Prepare destination directory
-    install -dm755 "$pkgdir/usr/share/fonts/$installdir"
+    install -dm755 "$pkgdir/usr/share/fonts/OTF"
 
     # Install fonts
-    install -m644 "FiraCode-Regular-Symbol.otf" "$pkgdir/usr/share/fonts/$installdir"
+    install -m644 "FiraCode-Regular-Symbol.otf" "$pkgdir/usr/share/fonts/OTF"
 }
