@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gstreamer-git
-pkgver=1.16.0.r241.g826230ba1
+pkgver=1.18.0.r27.g220ce9c3f
 pkgrel=1
 pkgdesc='GStreamer Multimedia Framework (Git version)'
 arch=('i686' 'x86_64')
