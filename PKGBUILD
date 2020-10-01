@@ -3,7 +3,7 @@
 pkgname=(zapret-{nfqws,tpws}-git)
 pkgbase=zapret-git
 pkgver=r92.0f09398
-pkgrel=4
+pkgrel=5
 pkgdesc="Bypass deep packet inspection."
 arch=('x86_64')
 url="https://github.com/bol-van/zapret"
@@ -23,7 +23,7 @@ pkgver()
 {
    cd "$srcdir/${pkgbase%-git}"
    (  set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+      git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
    )
    pkgrel=$(git diff --shortstat|cut -d' ' -f2)
