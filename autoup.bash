@@ -23,7 +23,7 @@ if [ "$?" -ne 0 ]; then
     exit 1
 fi
 
-makepkg -si
+makepkg -si --noconfirm
 if [ "$?" -ne 0 ]; then
     echo "Building and installing the package failed."
     exit 1
