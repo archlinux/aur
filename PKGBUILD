@@ -12,16 +12,16 @@ source=("https://github.com/SimplestStudio/simplest-studio/archive/1.1.tar.gz")
 md5sums=('SKIP')
 
 build() {
-  cd "${srcdir}/simplest-studio-${pkgver}"
-  make -j4
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make
 }
 
 
 package() {
-  cd "${srcdir}/simplest-studio-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make INSTALL_ROOT=${pkgdir} install
   
-  cd "${srcdir}/simplest-studio-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   # install documentation
   install -Dm644 ABOUT -t "${pkgdir}/usr/share/doc/${pkgname}"
   # install license
