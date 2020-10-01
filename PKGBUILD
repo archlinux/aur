@@ -1,7 +1,7 @@
 # Maintainer: Midov <midov@midov.pl>
 
 pkgname=pantalaimon
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Pantalaimon is an end-to-end encryption aware Matrix reverse proxy daemon.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python' 'libolm' 'python-matrix-nio>=0.14' 'python-prompt_toolkit' 'python-janus' 'python-peewee' 'python-logbook' 'python-aiohttp' 'python-cachetools' 'python-pycryptodome' 'python-unpaddedbase64' 'python-h2' 'python-h11' 'python-notify2' 'python-pydbus' 'python-olm' 'python-jsonschema' 'python-atomicwrites' 'python-click' 'python-appdirs' 'python-keyring>=21.2.1' 'python-future')
 source=("https://github.com/matrix-org/pantalaimon/archive/${pkgver}.tar.gz"
         "${pkgname}.service")
-sha256sums=('f9c86c7867f97ca96f48e1ec7d1e117d93fac507741a1a36f62482bbb101bb62'
+sha256sums=('82437a6265a3c747618b422d55138181e799da906111e02e7577853b33f5433b'
             'cf693e0324a7f2965bc9e64ab2c3d75137e7993503ddb3ae3dddc84af6c0b0e9')
 
 build() {
