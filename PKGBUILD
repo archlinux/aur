@@ -3,8 +3,8 @@
 # Contributor: JJK
 
 pkgname=srb2
-pkgver=2.2.6
-_dataver=2.2.6
+pkgver=2.2.7
+_dataver=2.2.7
 pkgrel=1
 pkgdesc='A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends_i686=('nasm')
 source=("https://github.com/STJr/SRB2/archive/SRB2_release_${pkgver}.zip"
         "srb2.desktop"
         "srb2-opengl.desktop")
-sha256sums=('01c8a18dcb8483306e7cf8384df4114cd5e12356e66cfa0c79096f49a9779ddb'
+sha256sums=('ad057b4dd2b52d9d755bac8ea84bb0e8544d4563b13edda1301f6b042f1eae77'
             'ac9fa63f29ad9413797da8c6f0a4f76fa6f4dd0710d1e84a457a8c42cf6df4f9'
             'f696bab390d2b1028bf2f5c5d4d838c0981dc211cec4c4a8f349b7ec0580e701')
 
