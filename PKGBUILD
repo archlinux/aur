@@ -1,6 +1,6 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgname=('lua-discount' 'lua51-discount' 'lua52-discount')
+pkgname=('lua-discount' 'lua51-discount' 'lua52-discount' 'lua53-discount')
 pkgver=0.4
 pkgrel=1
 pkgdesc="Lua bindings for the Discount Markdown library"
@@ -24,7 +24,7 @@ prepare() {
 }
 
 build() {
-  mkdir -p 5.1 5.2 5.3
+  mkdir -p 5.1 5.2 5.3 5.4
 
   # Build for 5.1
   (cd 5.1; luarocks build --pack-binary-rock --lua-version=5.1 --deps-mode=none ../lua-discount-${pkgver}/"discount-$pkgver-1.rockspec")
@@ -32,9 +32,20 @@ build() {
   (cd 5.2; luarocks build --pack-binary-rock --lua-version=5.2 --deps-mode=none ../lua-discount-${pkgver}/"discount-$pkgver-1.rockspec")
   # Build for 5.3
   (cd 5.3; luarocks build --pack-binary-rock --lua-version=5.3 --deps-mode=none ../lua-discount-${pkgver}/"discount-$pkgver-1.rockspec")
+  # Build for 5.4
+  (cd 5.4; luarocks build --pack-binary-rock --lua-version=5.4 --deps-mode=none ../lua-discount-${pkgver}/"discount-$pkgver-1.rockspec")
 }
 
 package_lua-discount() {
+  pkgdesc='Lua bindings for the Discount Markdown library for Lua 5.4'
+
+  luarocks install --lua-version=5.4 --tree="$pkgdir/usr/" --deps-mode=none 5.4/*.rock
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # remove luarocks-created root manifest
+  rm "$pkgdir/usr/lib/luarocks/rocks-5.4/manifest"
+}
+
+package_lua53-discount() {
   pkgdesc='Lua bindings for the Discount Markdown library for Lua 5.3'
 
   luarocks install --lua-version=5.3 --tree="$pkgdir/usr/" --deps-mode=none 5.3/*.rock

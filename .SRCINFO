@@ -15,11 +15,14 @@ pkgbase = lua-discount
 	sha256sums = 8b2fffc6b27a33bf6958a2a2293ce19ce5cbd7206ccb6dda7a9d3abe6f80c9fa
 
 pkgname = lua-discount
-	pkgdesc = Lua bindings for the Discount Markdown library for Lua 5.3
+	pkgdesc = Lua bindings for the Discount Markdown library for Lua 5.4
 
 pkgname = lua51-discount
 	pkgdesc = Lua bindings for the Discount Markdown library for Lua 5.1
 
 pkgname = lua52-discount
 	pkgdesc = Lua bindings for the Discount Markdown library for Lua 5.2
+
+pkgname = lua53-discount
+	pkgdesc = Lua bindings for the Discount Markdown library for Lua 5.3
 
