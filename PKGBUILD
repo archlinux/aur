@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -155,11 +155,9 @@ prepare() {
             sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
                 -i -e '/CONFIG_AMD_NUMA=y/d' \
                 -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-                -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
                 -i -e '/# CONFIG_NUMA_EMU is not set/d' \
-                -i -e '/CONFIG_NODES_SHIFT=6/d' \
+                -i -e '/CONFIG_NODES_SHIFT=5/d' \
                 -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-                -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
                 -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
                 -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
         fi
