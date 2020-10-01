@@ -1,0 +1,18 @@
+pkgbase = osxiv-git
+	pkgdesc = Overly Simple X Image Viewer
+	pkgver = 0.r290.264b912
+	pkgrel = 1
+	url = https://github.com/Baitinq/osxiv.git
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = sdl2
+	makedepends = sdl2_image
+	provides = osxiv
+	source = git+https://github.com/Baitinq/osxiv.git
+	md5sums = SKIP
+	sha1sums = SKIP
+	sha256sums = SKIP
+
+pkgname = osxiv-git
+
