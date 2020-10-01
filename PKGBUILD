@@ -3,8 +3,7 @@
 # Contributor: JJK
 
 pkgname=srb2-data
-pkgver=2.2.6
-instver=2.2.1
+pkgver=2.2.7
 pkgrel=1
 pkgdesc="Data files for Sonic Robo Blast 2"
 arch=('any')
@@ -12,11 +11,10 @@ license=('GPL')
 url='http://www.srb2.org'
 optdepends=('srb2: "Sonic Robo Blast 2" game')
 source=(
-    "https://github.com/STJr/SRB2/releases/download/SRB2_release_$instver/SRB2-v_${instver//./}-Installer.exe"
-    "https://github.com/STJr/SRB2/releases/download/SRB2_release_${pkgver}/SRB2-${pkgver}-Patch.zip"
+    "https://github.com/STJr/SRB2/releases/download/SRB2_release_${pkgver}/SRB2-${pkgver}-Full.zip"
 )
-sha256sums=('5af82508be353dd41b05b793fa7aaef418eab246df7050f72c569f1809b3160f'
-            'ca71aa9045f02336dc0ae2ababed49eb93dcb06405ccd4c19fc684f002ab9017')
+sha256sums=('6e82e51eb61b2df42e5020dfd690a31c8e4d67eedad81564a58b2f9837479b72')
+
 package() {
   install -d "$pkgdir"/usr/share/games/SRB2
   install -m644 {player,music}.dta {srb2,zones,patch_music,patch}.pk3 "$pkgdir"/usr/share/games/SRB2
