@@ -1,7 +1,7 @@
 pkgbase = python-pycdlib
 	pkgdesc = Python library to read and write ISOs
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clalancette/pycdlib
 	arch = any
 	license = LGPL2.1
