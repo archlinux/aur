@@ -1,13 +1,14 @@
 pkgbase = gracegtk
 	pkgdesc = A port of the Grace plotting tool to gtk2
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://plasma-gate.weizmann.ac.il/Grace/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = linuxdoc-tools
-	makedepends = gcc-fortran
+	makedepends = gcc9
+	makedepends = gcc9-fortran
 	depends = libjpeg
 	depends = fftw
 	depends = t1lib

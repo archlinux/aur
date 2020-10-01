@@ -2,12 +2,12 @@
 
 pkgname=gracegtk
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A port of the Grace plotting tool to gtk2"
 arch=(i686 x86_64)
 url="http://plasma-gate.weizmann.ac.il/Grace/"
 depends=('libjpeg' 'fftw' 't1lib' 'netcdf' 'pdflib-lite' 'gtk2')
-makedepends=('linuxdoc-tools' 'gcc-fortran')
+makedepends=('linuxdoc-tools' 'gcc9' 'gcc9-fortran')
 license=('GPL')
 source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tgz window_close.patch $pkgname.png $pkgname.desktop $pkgname-mimetypes ggrace)
 
@@ -29,8 +29,11 @@ build() {
   sed -i -e 's|SIZEOF_CHAR|sizeof(char)|g' src/*.c src/pars.yacc
   sed -i -e 's|SIZEOF_VOID_P|sizeof(void *)|g' src/*.c grace_np/*.c
 
+  export CC=/usr/bin/gcc-9
+  export CXX=/usr/bin/g++-9
+  export FC=/usr/bin/gfortran-9
   sed -i -e 's| -V -qversion||g' ./configure
-  FCFLAGS="-g" ./configure --prefix=/usr --with-f77=/usr/bin/gfortran
+  FCFLAGS="-g" ./configure --prefix=/usr --with-f77=/usr/bin/gfortran-9
   make
 }
 
