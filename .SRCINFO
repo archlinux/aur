@@ -1,0 +1,13 @@
+pkgbase = python-bottle-sqlite
+	pkgdesc = SQLite3 integration for Bottle
+	pkgver = 0.1.3
+	pkgrel = 0
+	url = https://pypi.org/project/bottle-sqlite
+	arch = any
+	license = MIT
+	depends = python-bottle
+	source = https://pypi.python.org/packages/source/b/bottle-sqlite/bottle-sqlite-0.1.3.tar.gz
+	md5sums = 6194e8e6f2472482f9d617c7e6173ed7
+
+pkgname = python-bottle-sqlite
+
