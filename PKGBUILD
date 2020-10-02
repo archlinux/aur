@@ -2,8 +2,8 @@
 
 pkgname=httplz-bin
 _pkgname=httplz
-pkgver=1.9.2
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc='Host These Things Please - a basic http server for hosting a folder fast and simply'
 arch=('x86_64')
 url="https://github.com/thecoshman/http"
