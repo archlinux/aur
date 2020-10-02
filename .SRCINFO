@@ -1,0 +1,18 @@
+pkgbase = python-skia
+	pkgdesc = Python binding to Skia Graphics Library
+	pkgver = 86.0
+	pkgrel = 1
+	url = https://github.com/kyamagu/skia-python
+	arch = x86_64
+	license = BSD
+	makedepends = pybind11
+	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = fontconfig
+	depends = opengl-driver
+	depends = python
+	source = https://files.pythonhosted.org/packages/cp38/s/skia-python/skia_python-86.0-cp38-cp38-manylinux2014_x86_64.whl
+	sha256sums = e9c402276242d48772c3edb77076d135e27f4f3fd4e078c7d8bdc29704338c4d
+
+pkgname = python-skia
+
