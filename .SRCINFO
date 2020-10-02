@@ -1,7 +1,7 @@
 pkgbase = wayfire-desktop-git
 	pkgdesc = A meta package to use Wayfire as a desktop
 	pkgver = 0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wayfire.org/
 	arch = any
 	depends = wayfire
@@ -25,7 +25,7 @@ pkgbase = wayfire-desktop-git
 	depends = qt5ct
 	depends = kvantum-qt5
 	depends = clipman
-	depends = wl-clipboard-x11
+	depends = wl-clipboard
 	depends = brightnessctl
 	depends = pulseaudio-ctl
 	depends = playerctl
