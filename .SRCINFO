@@ -1,6 +1,6 @@
 pkgbase = printit-git
 	pkgdesc = Utility for printing at Chalmers University
-	pkgver = v1.3.2.r0.g3675199
+	pkgver = v1.3.2.r1.g4acb7a6
 	pkgrel = 1
 	url = https://github.com/viddem/printit
 	arch = any
