@@ -1,0 +1,17 @@
+pkgbase = ruby-spider
+	pkgdesc = A Web spidering library
+	pkgver = 0.5.4
+	pkgrel = 3
+	url = https://github.com/johnnagro/spider
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = spider-0.5.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/spider-0.5.4.gem
+	source = https://raw.githubusercontent.com/johnnagro/spider/master/LICENSE
+	sha256sums = 9d95235b1e50ae03ec54b75b17956ddffae59c5eb7f1be8c79d8d16de13f3d3a
+	sha256sums = SKIP
+
+pkgname = ruby-spider
+
