@@ -9,7 +9,7 @@ url="https://github.com/SimplestStudio/simplest-studio.git"
 license=('GPL3')
 depends=('qt5-base>=5.15' 'ffmpeg>=4.2' 'libmediainfo>=20.03')
 source=("https://github.com/SimplestStudio/simplest-studio/archive/1.1.tar.gz")
-md5sums=('c9340ac83a40c513a0eafb8be4bfb0f1')
+md5sums=('28b5322e17a2228af267a71f81cf4c0c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -18,7 +18,7 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make INSTALL_ROOT=$pkgdir install
+  install -Dm755 simplest_studio "$pkgdir"/usr/bin/simplest_studio
   
   # install documentation
   install -Dm644 ABOUT -t "${pkgdir}/usr/share/doc/${pkgname}"
