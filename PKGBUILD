@@ -1,14 +1,15 @@
 # PKGBUILD created by using cargo-aur
-pkgname='yas-git'
+pkgname='yas-tui-git'
 pkgver=0.1.1
 pkgrel=1
-pkgdesc='A sudo replacement, written in rust'
+pkgdesc='A sudo replacement, written in rust, with a tui'
 arch=('any')
 url='https://github.com/alx365/yas'
 license=('MIT')
 sha256sums=('SKIP')
 makedepends=('rust' 'cargo' 'git')
 source=('yas-git::git+https://github.com/alx365/yas')
+conflicts=('yas-git')
 
 pkgver() {
  cd "$pkgname"
@@ -17,12 +18,12 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  cargo build --release --locked --target-dir=target
+  cargo build --release --features "tui" --locked --target-dir=target
 }
 
 check() {
   cd "$pkgname"
-  cargo test --release --locked --target-dir=target
+  cargo test --release --features "tui" --locked --target-dir=target
 }
 
 package() {
