@@ -23,7 +23,7 @@ index 90b40431c7e4..03581f7c38b5 100644
 --- a/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
 +++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
 @@ -194,6 +194,28 @@ if CONFIG["OS_TARGET"] == "Linux":
-         "/third_party/libwebrtc/webrtc/modules/desktop_capture/window_capturer_linux.cc"
+         "/media/webrtc/trunk/webrtc/modules/desktop_capture/window_capturer_linux.cc"
      ]
  
 +# PipeWire specific files
@@ -42,19 +42,19 @@ index 90b40431c7e4..03581f7c38b5 100644
 +    CXXFLAGS += CONFIG['TK_CFLAGS']
 +
 +    UNIFIED_SOURCES += [
-+        "/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc",
-+        "/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc",
-+        "/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc"
++        "/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc",
++        "/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc",
++        "/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc"
 +    ]
 +
 +
  if CONFIG["OS_TARGET"] == "NetBSD":
  
      DEFINES["USE_X11"] = "1"
-diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_options.h b/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_options.h
+diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_options.h b/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_options.h
 index 1eb8ead26efa..316468eed1fc 100644
---- a/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_options.h
-+++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/desktop_capture_options.h
+--- a/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_options.h
++++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_options.h
 @@ -141,7 +141,7 @@ class DesktopCaptureOptions {
    bool disable_effects_ = true;
    bool detect_updated_region_ = false;
@@ -64,10 +64,10 @@ index 1eb8ead26efa..316468eed1fc 100644
  #endif
  };
  
-diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
+diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
 index 379341c833de..d156be1c18a0 100644
---- a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
-+++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
+--- a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
++++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.cc
 @@ -18,6 +18,11 @@
  #include <spa/param/video/raw-utils.h>
  #include <spa/support/type-map.h>
@@ -359,10 +359,10 @@ index 379341c833de..d156be1c18a0 100644
 +}
 +
  }  // namespace webrtc
-diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
+diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
 index 56b101acbaa6..56af57891379 100644
---- a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
-+++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
+--- a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
++++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/base_capturer_pipewire.h
 @@ -32,7 +32,11 @@ class PipeWireType {
  
  class BaseCapturerPipeWire : public DesktopCapturer {
@@ -419,10 +419,10 @@ index 56b101acbaa6..56af57891379 100644
    static void OnStateChanged(void* data,
                               pw_remote_state old_state,
                               pw_remote_state state,
-diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc
+diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc
 index 26956fc67dc8..3813d697bb38 100644
---- a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc
-+++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc
+--- a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc
++++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/screen_capturer_pipewire.cc
 @@ -15,7 +15,7 @@
  namespace webrtc {
  
@@ -432,10 +432,10 @@ index 26956fc67dc8..3813d697bb38 100644
  ScreenCapturerPipeWire::~ScreenCapturerPipeWire() {}
  
  // static
-diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc
+diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc
 index 35436475cb4d..c43a1f1a0c4e 100644
---- a/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc
-+++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc
+--- a/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc
++++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc
 @@ -15,7 +15,7 @@
  namespace webrtc {
  
@@ -445,10 +445,10 @@ index 35436475cb4d..c43a1f1a0c4e 100644
  WindowCapturerPipeWire::~WindowCapturerPipeWire() {}
  
  // static
-diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/screen_capturer_linux.cc b/third_party/libwebrtc/webrtc/modules/desktop_capture/screen_capturer_linux.cc
+diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/screen_capturer_linux.cc b/media/webrtc/trunk/webrtc/modules/desktop_capture/screen_capturer_linux.cc
 index cf8a9dd0e0db..d27fab8d28d9 100644
---- a/third_party/libwebrtc/webrtc/modules/desktop_capture/screen_capturer_linux.cc
-+++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/screen_capturer_linux.cc
+--- a/media/webrtc/trunk/webrtc/modules/desktop_capture/screen_capturer_linux.cc
++++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/screen_capturer_linux.cc
 @@ -26,7 +26,7 @@ std::unique_ptr<DesktopCapturer> DesktopCapturer::CreateRawScreenCapturer(
      const DesktopCaptureOptions& options) {
  #if defined(WEBRTC_USE_PIPEWIRE)
@@ -458,10 +458,10 @@ index cf8a9dd0e0db..d27fab8d28d9 100644
    }
  #endif  // defined(WEBRTC_USE_PIPEWIRE)
  
-diff --git a/third_party/libwebrtc/webrtc/modules/desktop_capture/window_capturer_linux.cc b/third_party/libwebrtc/webrtc/modules/desktop_capture/window_capturer_linux.cc
+diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/window_capturer_linux.cc b/media/webrtc/trunk/webrtc/modules/desktop_capture/window_capturer_linux.cc
 index 82359e50c2db..bb9724cf7cc2 100644
---- a/third_party/libwebrtc/webrtc/modules/desktop_capture/window_capturer_linux.cc
-+++ b/third_party/libwebrtc/webrtc/modules/desktop_capture/window_capturer_linux.cc
+--- a/media/webrtc/trunk/webrtc/modules/desktop_capture/window_capturer_linux.cc
++++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/window_capturer_linux.cc
 @@ -26,7 +26,7 @@ std::unique_ptr<DesktopCapturer> DesktopCapturer::CreateRawWindowCapturer(
      const DesktopCaptureOptions& options) {
  #if defined(WEBRTC_USE_PIPEWIRE)
