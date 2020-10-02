@@ -1,0 +1,18 @@
+pkgbase = tunasync-git
+	pkgdesc = Mirror job management tool developed by TUNA
+	pkgver = master
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = tunasync
+	provides = tunasynctl
+	conflicts = tunasync-bin
+	replaces = tunasync-bin
+	source = tunasync::git+https://github.com/tuna/tunasync#branch=master
+	md5sums = SKIP
+
+pkgname = tunasync-git
+
