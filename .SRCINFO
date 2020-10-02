@@ -1,6 +1,6 @@
 pkgbase = instawow
 	pkgdesc = Package manager for World of Warcraft
-	pkgver = 1.14.4
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://github.com/layday/instawow
 	arch = x86_64
@@ -22,15 +22,14 @@ pkgbase = instawow
 	depends = python-prompt_toolkit>3.0.2
 	depends = python-prompt_toolkit<4.0.0
 	depends = python-pydantic>=1.6.1
-	depends = python-questionary>1.3.0
-	depends = python-questionary<2.0.0
+	depends = python-questionary>=1.4.0
 	depends = python-sqlalchemy>=1.3.19
 	depends = python-typing_extensions>=3.7.0
 	depends = python-yarl>=1.4.0
 	depends = python-slpp-git
 	optdepends = python-aiohttp_rpc: server support
-	source = https://files.pythonhosted.org/packages/source/i/instawow/instawow-1.14.4.tar.gz
-	sha256sums = f5382550ca1055b922bb61d7cd8a900773129f7475b8dffe0a48ec24d8b43d7c
+	source = https://files.pythonhosted.org/packages/source/i/instawow/instawow-1.15.0.tar.gz
+	sha256sums = 3780fa9f2427ded0c28c8167ec09c870e52232d1205aa62764b1fb13983660ab
 
 pkgname = instawow
 
