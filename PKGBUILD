@@ -7,15 +7,15 @@
 # usr/bin/iqtree
 
 pkgname=iqtree
-pkgver=2.0.4
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Efficient phylogenomic software by maximum likelihood; multicore version (OMP)"
 arch=(x86_64)
 url="http://www.iqtree.org/"
 license=('GPL2')
 depends=('cmake' 'eigen' 'glibc' 'libstdc++5' 'zlib')
-source=("https://github.com/Cibiv/IQ-TREE/archive/v${pkgver}.tar.gz")
-md5sums=('784fb575d7c0a18658ee8c6a2d3b74ec')
+source=("https://github.com/iqtree/iqtree2/archive/v${pkgver}.tar.gz")
+md5sums=('c4ea15d476f138c1b07c5900970b6af9')
 
 build() {
   cd IQ-TREE-${pkgver}
