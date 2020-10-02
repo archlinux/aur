@@ -8,7 +8,9 @@ pkgbase = miniserve-bin
 	provides = miniserve
 	conflicts = miniserve
 	source = miniserve-0.9.0::https://github.com/svenstaro/miniserve/releases/download/v0.9.0/miniserve-v0.9.0-linux-x86_64
+	source = https://github.com/svenstaro/miniserve/raw/v0.9.0/README.md
 	source = https://github.com/svenstaro/miniserve/raw/v0.9.0/LICENSE
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 
