@@ -1,0 +1,19 @@
+pkgbase = ruby-http_configuration
+	pkgdesc = Gem that provides the ability to set defaults for proxies and timeouts for Net::HTTP.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/bdurand/http_configuration
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-rdoc
+	noextract = http_configuration-1.0.4.gem
+	noextract = MIT-LICENSE
+	options = !emptydirs
+	source = https://rubygems.org/downloads/http_configuration-1.0.4.gem
+	source = https://raw.githubusercontent.com/bdurand/http_configuration/master/MIT-LICENSE
+	sha256sums = c3536eb4a22ad9b38321587669cadef2fee01c6eb105f0d45528dcae3273d189
+	sha256sums = SKIP
+
+pkgname = ruby-http_configuration
+
