@@ -2,7 +2,7 @@
 
 pkgname=tunasync-git
 pkgver=master
-pkgrel=2
+pkgrel=3
 pkgdesc="Mirror job management tool developed by TUNA"
 arch=('x86_64')
 license=('GPL3')
@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-  install -Dm755 "${srcdir}"/build-linux-amd64/tunasync "${pkgdir}"/usr/bin/tunasync
-  install -Dm755 "${srcdir}"/build-linux-amd64/tunasynctl "${pkgdir}"/usr/bin/tunasynctl
+  install -Dm755 "${srcdir}"/tunasync/build-linux-amd64/tunasync "${pkgdir}"/usr/bin/tunasync
+  install -Dm755 "${srcdir}"/tunasync/build-linux-amd64/tunasynctl "${pkgdir}"/usr/bin/tunasynctl
 }
