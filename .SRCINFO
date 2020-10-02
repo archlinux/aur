@@ -1,0 +1,19 @@
+pkgbase = globalplatformpro
+	pkgdesc = Manage applets and keys on JavaCard-s like a pro
+	pkgver = 20.08.12
+	pkgrel = 1
+	url = https://github.com/martinpaljak/GlobalPlatformPro
+	arch = any
+	license = LGPL3
+	makedepends = git
+	makedepends = java-environment
+	makedepends = maven
+	depends = java-runtime-headless
+	depends = pcsclite
+	source = globalplatformpro::git+https://github.com/martinpaljak/GlobalPlatformPro.git#tag=v20.08.12
+	source = gp-pro
+	sha256sums = SKIP
+	sha256sums = a8769c37ac54b3e98645f509b011a290d7e914937de0158cc8f2a8fcef0e255e
+
+pkgname = globalplatformpro
+
