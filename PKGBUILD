@@ -1,7 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
 # pkg: pypi trakt-scrobbler
 pkgname=trakt-scrobbler
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
@@ -19,7 +19,7 @@ source=(
     "trakts-man.md"
     "trakts.zsh"
 )
-sha256sums=('07f17ec08fbb0af58b38ec832c24aeeeab05c8c8db24dbd59496aa136cbb4e84'
+sha256sums=('0566cd5f38de34612fe693404237e1820db29e54f68905849854b11bd3404867'
             '81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c'
             '6b6c3f55ab153a9dc749e67acd6e091b5d1e9e35c3b51af4d2f1c687e8c8fab8')
 build() {
