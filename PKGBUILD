@@ -1,7 +1,7 @@
 # Maintainer: Nazar Vinnichuk <nazar.vinnichuk at tutanota dot com>
 pkgname=pacwall-git
 _pkgname=${pkgname%-git}
-pkgver=2.0rc2
+pkgver=2.0.r1.g235e1bb
 pkgrel=1
 pkgdesc="A live wallpaper that shows the dependency graph and status of installed packages."
 url="http://github.com/Kharacternyk/${_pkgname}"
@@ -36,15 +36,11 @@ package() {
     for _FILE in *; do
         install -Dm755 "$_FILE" "$pkgdir/usr/lib/pacwall/$_FILE"
     done
-    cd ../examples/hook
-    for _FILE in *; do
-        install -Dm644 "$_FILE" "$pkgdir/usr/share/pacwall/examples/hook/$_FILE"
+    cd ../examples/
+    for _FILE in */*; do
+        install -Dm644 "$_FILE" "$pkgdir/usr/share/pacwall/examples/$_FILE"
     done
-    cd ../attributes
-    for _FILE in *; do
-        install -Dm644 "$_FILE" "$pkgdir/usr/share/pacwall/examples/attributes/$_FILE"
-    done
-    cd ../../systemd
+    cd ../systemd/
     for _FILE in *; do
         install -Dm644 "$_FILE" "$pkgdir/usr/lib/systemd/user/$_FILE"
     done
