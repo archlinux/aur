@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=globalplatformpro
 pkgver=20.08.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Manage applets and keys on JavaCard-s like a pro"
 arch=('any')
 url="https://github.com/martinpaljak/GlobalPlatformPro"
@@ -10,7 +10,7 @@ depends=('java-runtime-headless' 'pcsclite')
 makedepends=('git' 'java-environment' 'maven')
 source=(
   "$pkgname::git+https://github.com/martinpaljak/GlobalPlatformPro.git#tag=v${pkgver}"
-  'gp-pro'
+  'gpp'
 )
 sha256sums=(
   'SKIP'
@@ -19,7 +19,8 @@ sha256sums=(
 
 prepare() {
 	cd $pkgname
-	git tag -a v${pkgver} -m "v${pkgver}" v${pkgver} -f
+	# otherwise git complains about nested tags
+	git tag -f -a v${pkgver} -m "v${pkgver}" v${pkgver}^{}
 }
 
 build() {
@@ -30,7 +31,7 @@ build() {
 package() {
   # Install the executables
   install -d "$pkgdir"/usr/bin/
-  install -m 755 gp-pro "$pkgdir"/usr/bin/
+  install -m 755 gpp "$pkgdir"/usr/bin/
   cd $pkgname
   install -d "$pkgdir"/usr/share/java/globalplatformpro/
   install -m 644 tool/target/gp.jar "$pkgdir"/usr/share/java/globalplatformpro/
