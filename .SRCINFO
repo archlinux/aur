@@ -1,6 +1,6 @@
 pkgbase = esearch
-	pkgdesc = Replacement for both pacman -Ss and pacman -Si
-	pkgver = 2.1.8
+	pkgdesc = Replacement for pacman -Ss and pacman -Si
+	pkgver = 4.3.8
 	pkgrel = 1
 	url = https://github.com/KLZ-0/pacman-esearch
 	arch = x86_64
@@ -8,7 +8,9 @@ pkgbase = esearch
 	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
-	source = git+https://github.com/KLZ-0/pacman-esearch#branch=master
+	makedepends = python
+	provides = esearch
+	source = git+https://github.com/KLZ-0/pacman-esearch#tag=v4.3.8
 	md5sums = SKIP
 
 pkgname = esearch
