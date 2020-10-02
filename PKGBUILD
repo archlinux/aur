@@ -20,7 +20,6 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make INSTALL_ROOT=$pkgdir install
   
-  cd "${srcdir}/${pkgname}-${pkgver}"
   # install documentation
   install -Dm644 ABOUT -t "${pkgdir}/usr/share/doc/${pkgname}"
   # install license
