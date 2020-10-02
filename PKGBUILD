@@ -2,7 +2,7 @@
 # Maintainer: anon at sansorgan.es 
 
 pkgname=cherrytree
-pkgver=0.99.13
+pkgver=0.99.14
 pkgrel=1
 pkgdesc="Hierarchical note-taking application"
 arch=('x86_64')
@@ -13,18 +13,18 @@ depends=('gspell'
 	 'libxml++2.6')
 makedepends=('cmake'
 	     'python-lxml')
-source=("https://www.giuspen.com/software/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('716e627777c46b5b9b41ede082fb27f3466905021fd95c661cd00365274b7d7e')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/giuspen/cherrytree/archive/${pkgver}.tar.gz")
+sha256sums=('5bc7d5aeb34a77e8756fc6f19c1769ded403f86a2aa89d348f7a3fe34dd4aec5')
 
 build() {
   cmake \
-	-B "${pkgname}_${pkgver}/build" \
-	-S "${pkgname}_${pkgver}" \
+	-B "${pkgname}-${pkgver}/build" \
+	-S "${pkgname}-${pkgver}" \
 	-DBUILD_TESTING:BOOL=OFF \
 	-Wno-dev
-  make -C "${pkgname}_${pkgver}/build"
+  make -C "${pkgname}-${pkgver}/build"
 }
 
 package() {
-  make -C "${pkgname}_${pkgver}/build" DESTDIR="${pkgdir}" install
+  make -C "${pkgname}-${pkgver}/build" DESTDIR="${pkgdir}" install
 }
