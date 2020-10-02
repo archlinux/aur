@@ -1,9 +1,10 @@
-# Maintainer: Bastien Traverse <firstname at lastname dot email>
+# Maintainer: Bao Trinh <qubidt at gmail>
+# Contributor: Bastien Traverse <firstname at lastname dot email>
 
 pkgname=python-proxmoxer
 _name=${pkgname#python-}
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Wrapper for the Proxmox 2.x API (HTTP and SSH)"
 arch=('any')
 url="https://github.com/swayf/proxmoxer"
