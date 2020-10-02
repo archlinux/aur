@@ -1,6 +1,6 @@
 # Maintainer: Felix Barz <skycoder42.de@gmx.de>
 pkgname=dolphin-seafile-plugin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A plugin for dolphin to show the seafile synchronization status"
 arch=('i686' 'x86_64')
