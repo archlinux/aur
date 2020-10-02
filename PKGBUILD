@@ -18,7 +18,7 @@ source=("https://github.com/iqtree/iqtree2/archive/v${pkgver}.tar.gz")
 md5sums=('c4ea15d476f138c1b07c5900970b6af9')
 
 build() {
-  cd IQ-TREE-${pkgver}
+  cd iqtree2-${pkgver}
   mkdir -p build
   cd build
   cmake -DIQTREE_FLAGS=omp ..
@@ -26,6 +26,6 @@ build() {
 }
 
 package() {
-  cd IQ-TREE-${pkgver}
+  cd iqtree2-${pkgver}
   install -D -m 755 build/iqtree2 ${pkgdir}/usr/bin/iqtree2
 }
