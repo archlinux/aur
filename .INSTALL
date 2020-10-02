@@ -10,12 +10,15 @@ post_install() {
   else
   ECHO='echo'
   fi
-  $ECHO "\033[36m**************************************\033[0m"
-  $ECHO "\033[36m*  Start SunloginClient Service      *\033[0m"
-  $ECHO "\033[36m*  systemctl start runsunloginclient *\033[0m"
-  $ECHO "\033[36m*  Enable Remote Control             *\033[0m"
-  $ECHO "\033[36m*  xhost +                           *\033[0m"
-  $ECHO "\033[36m**************************************\033[0m"
+  $ECHO "\033[36m***********************************************************************************************\033[0m"
+  $ECHO "\033[36m*  Start SunloginClient Service                                                               *\033[0m"
+  $ECHO "\033[36m*  systemctl start runsunloginclient                                                          *\033[0m"
+  $ECHO "\033[36m*  Enable Remote Control                                                                      *\033[0m"
+  $ECHO "\033[36m*  xhost +                                                                                    *\033[0m"
+  $ECHO "\033[36m*  如果遇到开机自启动后客户端连接不上的情况                                                   *\033[0m"
+  $ECHO "\033[36m*  请根据https://wiki.archlinux.org/index.php/Systemd#Running_services_after_the_network_is_up*\033[0m"
+  $ECHO "\033[36m*  由你目前的网络管理,使能相应的*-wait-online.service                                         *\033[0m"
+  $ECHO "\033[36m***********************************************************************************************\033[0m"
 }
 
 post_upgrade() {
@@ -31,12 +34,15 @@ post_upgrade() {
   else
     ECHO='echo'
   fi
-  $ECHO "\033[36m**************************************\033[0m"
-  $ECHO "\033[36m*  Start SunloginClient Service      *\033[0m"
-  $ECHO "\033[36m*  systemctl start runsunloginclient *\033[0m"
-  $ECHO "\033[36m*  Enable Remote Control             *\033[0m"
-  $ECHO "\033[36m*  xhost +                           *\033[0m"
-  $ECHO "\033[36m**************************************\033[0m"
+  $ECHO "\033[36m***********************************************************************************************\033[0m"
+  $ECHO "\033[36m*  Start SunloginClient Service                                                               *\033[0m"
+  $ECHO "\033[36m*  systemctl start runsunloginclient                                                          *\033[0m"
+  $ECHO "\033[36m*  Enable Remote Control                                                                      *\033[0m"
+  $ECHO "\033[36m*  xhost +                                                                                    *\033[0m"
+  $ECHO "\033[36m*  如果遇到开机自启动后客户端连接不上的情况                                                   *\033[0m"
+  $ECHO "\033[36m*  请根据https://wiki.archlinux.org/index.php/Systemd#Running_services_after_the_network_is_up*\033[0m"
+  $ECHO "\033[36m*  由你目前的网络管理,使能相应的*-wait-online.service                                         *\033[0m"
+  $ECHO "\033[36m***********************************************************************************************\033[0m"
 }
 
 pre_remove() {
