@@ -1,6 +1,6 @@
 pkgbase = batman-adv
 	pkgdesc = Batman kernel module
-	pkgver = 2020.1
+	pkgver = 2020.3
 	pkgrel = 1
 	epoch = 1
 	url = https://www.open-mesh.net/
@@ -14,9 +14,9 @@ pkgbase = batman-adv
 	license = GPL
 	makedepends = linux-headers
 	depends = linux
-	source = https://downloads.open-mesh.org/batman/releases/batman-adv-2020.1/batman-adv-2020.1.tar.gz
+	source = https://downloads.open-mesh.org/batman/releases/batman-adv-2020.3/batman-adv-2020.3.tar.gz
 	source = batman-adv.install
-	sha256sums = 23abf5576d4594c36a5b6a775f8d2bbd0025f004a8980f68358484f4a0730fbb
+	sha256sums = 65516dca919ea5be58d141c78bd1f0a94a02a784c5c85fb4e8f27f4226803f73
 	sha256sums = 347599c02426a905690002885c277f91b82da2b29d3372348e5f02d03c435c37
 
 pkgname = batman-adv

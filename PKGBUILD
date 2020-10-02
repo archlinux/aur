@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=batman-adv
-pkgver=2020.1
+pkgver=2020.3
 pkgrel=1
 epoch=1
 pkgdesc='Batman kernel module'
@@ -19,18 +19,19 @@ source=("https://downloads.open-mesh.org/batman/releases/${pkgname}-${pkgver}/${
 )
 depends=('linux')
 makedepends=('linux-headers')
-sha256sums=('23abf5576d4594c36a5b6a775f8d2bbd0025f004a8980f68358484f4a0730fbb'
+sha256sums=('65516dca919ea5be58d141c78bd1f0a94a02a784c5c85fb4e8f27f4226803f73'
             '347599c02426a905690002885c277f91b82da2b29d3372348e5f02d03c435c37')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
+  export CFLAGS="${CFLAGS} -fplt"
+  echo $CFLAGS
   make KERNELPATH=/usr/lib/modules/$(uname -r)/build
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  install -D -m644 build/net/batman-adv/batman-adv.ko "${pkgdir}/usr/lib/modules/$(uname -r)/updates/net/batman-adv/batman_adv.ko"
+  install -D -m644 net/batman-adv/batman-adv.ko "${pkgdir}/usr/lib/modules/$(uname -r)/updates/net/batman-adv/batman_adv.ko"
   install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" README.external.rst \
     CHANGELOG.rst MAINTAINERS
 }
