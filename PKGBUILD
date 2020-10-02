@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail.com>
 
 pkgname=uoj-data-converter-git
-pkgver=0.4.1.r5.g14db296
+pkgver=0.4.2.r0.g14db296
 pkgrel=1
 pkgdesc='将各种各样格式的数据转换为 UOJ 的格式'
 arch=('x86_64')
