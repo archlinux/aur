@@ -1,14 +1,14 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname=tscrape
-pkgver=0.5
-pkgrel=2
+pkgname='tscrape'
+pkgver=0.6
+pkgrel=1
 pkgdesc='Twitter scraper'
 arch=('x86_64')
 url='https://codemadness.org/tscrape.html'
 license=('ISC')
-source=("https://codemadness.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('826611882263959faed479589b78db01891a68e0b1e15e2d32fdacfea22af5a4')
+source=("${url%/*}/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('d9cbb9ab1072f808fc29dfa69a685f959ac0afd3ec69ca11df3a0b555b0bee87')
 
 build() {
   make -C "${pkgname}-${pkgver}"
@@ -16,7 +16,7 @@ build() {
 
 package() {
   make DESTDIR="${pkgdir}" PREFIX="/usr" MANPREFIX="/usr/share/man" -C "${pkgname}-${pkgver}" install
-  install -Dm644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${pkgname}-${pkgver}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
