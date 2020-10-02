@@ -12,6 +12,8 @@ source=("https://sourceforge.net/projects/deniseemu/files/v%20${pkgver}/${_filen
         "desktop_patch.patch")
 md5sums=('9adddea0fc2952e084eb58317da36b43'
          '6b7f888ac874aa42cb852ab33d651580')
+provides=('denise')
+conflicts=('denise-bin' 'denise-git')
 depends=('sdl2' 'gtk3')
 arch=('i686' 'x86_64')
 
