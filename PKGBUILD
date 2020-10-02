@@ -1,6 +1,6 @@
 # Maintainer: Alex Agura <agura@tfwno.gf>
 pkgname=asus-fan-control
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="Fan control for ASUS devices running Linux."
 arch=('any')
@@ -14,7 +14,7 @@ install=$pkgname.install
 source=("https://github.com/dominiksalvet/$pkgname/archive/$pkgver.tar.gz")
 #_commit=5f8413164a65c590dad8bac31399d0908275de0a
 #source=("$pkgname::git+https://github.com/dominiksalvet/asus-fan-control.git#commit=$_commit")
-md5sums=('5b5720dc93c793d78676fd883e9e7e5d')
+md5sums=('8eb7c6d1eeb43bdd6ac06f670d610edf')
 
 #pkgver() {
 #    cd $pkgname
