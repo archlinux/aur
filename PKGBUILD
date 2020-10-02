@@ -6,7 +6,7 @@ _npmname=cli
 _npmid="@$_npmscope/$_npmname"
 
 pkgname="${_npmscope}-${_npmname}"
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='CLI management tool for development with the Quasar framework'
 arch=('any')
@@ -18,8 +18,8 @@ optdepends=('npm: JS package management support')
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$_npmid/-/$_npmname-$pkgver.tgz")
 noextract=("${source[@]%%::*}")
-# Get SHASUM:  curl -s "https://registry.npmjs.org/@quasar/cli" | jq '.versions."1.1.1".dist.shasum'
-sha1sums=('7275a7a5b85e9840bbe0d3d58cbe915788709c6d')
+# Get SHASUM:  curl -s "https://registry.npmjs.org/@quasar/cli" | jq '.versions."1.1.2".dist.shasum'
+sha1sums=('133042273b8edc38bb981468d839f74a08e44112')
 
 package() {
  # Setting temporary cache
