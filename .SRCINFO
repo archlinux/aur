@@ -1,7 +1,7 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 81.0
-	pkgrel = 2
+	pkgver = 81.0.1
+	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
 	license = MPL
@@ -41,20 +41,20 @@ pkgbase = firefox-appmenu
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=81.0
+	provides = firefox=81.0.1
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://archive.mozilla.org/pub/firefox/releases/81.0/source/firefox-81.0.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/81.0/source/firefox-81.0.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/81.0.1/source/firefox-81.0.1.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/81.0.1/source/firefox-81.0.1.source.tar.xz.asc
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = 0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch
 	source = 0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch
 	source = firefox.desktop
 	source = unity-menubar.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 9328745012178aee5a4f47c833539f7872cc6e0f20a853568a313e60cabd1ec8
+	sha256sums = 7eac8d3eaaf580e0f30e9bd79d798c3138aaa5fa2737616fa08c588b730e8fff
 	sha256sums = SKIP
 	sha256sums = e0eaec8ddd24bbebf4956563ebc6d7a56f8dada5835975ee4d320dd3d0c9c442
 	sha256sums = c2489a4ad3bfb65c064e07180a1de9a2fbc3b1b72d6bc4cd3985484d1b6b7b29
