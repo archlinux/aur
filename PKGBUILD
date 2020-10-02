@@ -4,8 +4,8 @@
 
 pkgname=nvchecker-git
 epoch=1
-pkgver=2.0b0.r68
-pkgrel=2
+pkgver=2.1dev.r6
+pkgrel=1
 pkgdesc="a tool for checking if a new version of some software has been released."
 arch=('any')
 url="https://github.com/lilydjwg/nvchecker"
@@ -33,6 +33,7 @@ build() {
 package() {
   cd $srcdir/$_gitroot
   python3 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 sample_config.toml docs/usage.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 # vim:set ts=2 sw=2 et:

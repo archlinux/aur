@@ -1,6 +1,6 @@
 pkgbase = nvchecker-git
 	pkgdesc = a tool for checking if a new version of some software has been released.
-	pkgver = 2.0b0.r68
+	pkgver = 2.1dev.r6
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/lilydjwg/nvchecker
@@ -15,7 +15,7 @@ pkgbase = nvchecker-git
 	depends = python-toml
 	depends = python-appdirs
 	optdepends = pyalpm: for "sort_version_key = vercmp" config
-	provides = nvchecker=2.0b0.r68
+	provides = nvchecker=2.1dev.r6
 	conflicts = nvchecker
 	source = git://github.com/lilydjwg/nvchecker.git
 	md5sums = SKIP
