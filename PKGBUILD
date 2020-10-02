@@ -8,9 +8,9 @@ arch=('x86_64')
 url="https://posterazor.sourceforge.io/"
 license=('GPL')
 depends=(poppler-qt5)
-provides=()
-conflicts=()
-makedepends=()
+provides=(posterazor)
+conflicts=(posterazor)
+makedepends=(git)
 source=("git+https://github.com/aportale/posterazor"
         "fix_build.patch" "posterazor.desktop")
 sha256sums=('SKIP'
