@@ -3,16 +3,16 @@
 pkgname=namd
 pkgver=2.14
 _charmver=6.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Scalable molecular dynamic engine"
 url="http://www.ks.uiuc.edu/Research/namd/"
 license=(custom)
 arch=(x86_64)
-depends=(gcc9 gcc9-libs fftw tcl)
+depends=(gcc fftw tcl)
 makedepends=(make patch)
 md5sums=('7a827066e0d7f2a37f748ca9f165ea80'
          '3dee29385fed05eb8f3d2d38dd799383'
-         'e9d2d7f92283ee479f08f4f9c4c85709')
+         '2b5fe6cfcdc2ce44da9329cf0d30a071')
 options=(!buildflags)
 
 # You MUST download the package from the NAMD url and put it in the PKGBUILD folder!
@@ -34,13 +34,13 @@ build() {
   # build Charm++
   cd "${srcdir}/NAMD_${pkgver}_Source/charm-${_charmver}"
 
-  CC=gcc-9 CXX=g++-9 ./build charm++ multicore-linux64 --with-production
+  ./build charm++ multicore-linux64 --with-production
 
   # go to the NAMD build
   cd "${srcdir}/NAMD_${pkgver}_Source"
 
   # configure and build NAMD
-  ./config Linux-x86_64-g++ --charm-arch multicore-linux64 --with-fftw3 --cc gcc-9 --cxx g++-9
+  ./config Linux-x86_64-g++ --charm-arch multicore-linux64 --with-fftw3
   cd Linux-x86_64-g++
   make
 }

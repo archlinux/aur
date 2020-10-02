@@ -1,14 +1,13 @@
 pkgbase = namd
 	pkgdesc = Scalable molecular dynamic engine
 	pkgver = 2.14
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ks.uiuc.edu/Research/namd/
 	arch = x86_64
 	license = custom
 	makedepends = make
 	makedepends = patch
-	depends = gcc9
-	depends = gcc9-libs
+	depends = gcc
 	depends = fftw
 	depends = tcl
 	options = !buildflags
@@ -17,7 +16,7 @@ pkgbase = namd
 	source = namd.patch
 	md5sums = 7a827066e0d7f2a37f748ca9f165ea80
 	md5sums = 3dee29385fed05eb8f3d2d38dd799383
-	md5sums = e9d2d7f92283ee479f08f4f9c4c85709
+	md5sums = 2b5fe6cfcdc2ce44da9329cf0d30a071
 
 pkgname = namd
 
