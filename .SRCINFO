@@ -1,6 +1,6 @@
 pkgbase = cargo-generate
 	pkgdesc = Use pre-existing git repositories as templates
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/ashleygwilliams/cargo-generate
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = cargo-generate
 	license = APACHE
 	license = MIT
 	depends = cargo
-	source = cargo-generate-0.5.0.tar.gz::https://github.com/ashleygwilliams/cargo-generate/archive/v0.5.0.tar.gz
-	sha256sums = c44dc534651d531ffdf0ad4c4e2cba2b966a057aca88827ef6938957ba3800fc
+	source = cargo-generate-0.5.1.tar.gz::https://github.com/ashleygwilliams/cargo-generate/archive/v0.5.1.tar.gz
+	sha256sums = 1146dd9dfa9a4d7bb94a2be105f452e3f89e609a88ae87d7de39f5da943467d6
 
 pkgname = cargo-generate
 
