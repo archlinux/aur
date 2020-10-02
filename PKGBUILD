@@ -3,7 +3,7 @@
 
 pkgname=neofetch
 pkgver=7.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI system information tool written in BASH that supports displaying images."
 arch=('any')
 url="https://github.com/dylanaraps/neofetch"
@@ -18,7 +18,6 @@ optdepends=(
   'jp2a: Display Images'
   'libcaca: Display Images'
   'nitrogen: Wallpaper Display'
-  'pacman-contrib: Display package count'
   'w3m: Display Images'
   'xdotool: See https://github.com/dylanaraps/neofetch/wiki/Images-in-the-terminal'
   'xorg-xdpyinfo: Resolution detection (Single Monitor)'
