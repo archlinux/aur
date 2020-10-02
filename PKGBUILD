@@ -6,7 +6,7 @@ pkgname=('marble-git'
          'libastro-git'
          'marble-data-git'
 	 'marble-common-git')
-pkgver=20.03.80.1.g4e727daf0
+pkgver=20.08.1.47.g5ded04e18
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('git' 'gpsd' 'quazip' 'shapelib' 'libwlocate' 'phonon-qt5'
 	     'extra-cmake-modules' 'krunner' 'python' 'qt5-webkit'
 	     'qt5-tools' 'qt5-serialport' 'kparts' 'knewstuff' 'opencv'
 	     'hicolor-icon-theme')
-source=('git://anongit.kde.org/marble.git')
+source=('git+https://invent.kde.org/education/marble.git')
 sha256sums=('SKIP')
 
 pkgver() {
