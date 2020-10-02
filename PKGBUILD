@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=rar2fs
-pkgver=1.29.0
-_unrarver=5.9.2
+pkgver=1.29.1
+_unrarver=5.9.4
 pkgrel=1
 pkgdesc="Fuse file system for reading Rar archives"
 arch=("i686" "x86_64")
@@ -12,14 +12,14 @@ depends=("fuse2" "libunrar")
 makedepends=("libunrar")
 source=("https://github.com/hasse69/rar2fs/releases/download/v$pkgver/rar2fs-$pkgver.tar.gz"
         "http://www.rarlab.com/rar/unrarsrc-$_unrarver.tar.gz")
-md5sums=('13b518a6be0863f1fd10ce4c14bc2c30'
-         '67148484b431aea1329653b885ffcdf2')
-sha1sums=('66be422ec7436bd2ffd7ff1fa190d3895da7ad2b'
-          '4ad31c3d18eb80f7e42f2542fde1cd6213e8ea5a')
-sha256sums=('1bc42aa0516b276d24bdd8b69c53973fddd58bbd4e2c0d293c84912d14fdc6c7'
-            '73d3baf18cf0a197976af2794a848893c35e7d42cee0ff364c89d2e476ebdaa6')
-sha512sums=('199767cf22a11a7afd53318d471138ed1d82b92dc6d4e0d20094262a2f2d8f9c03ac6b47ceff8318923e01228b33f12684b1664e4b1c28bf43fb0d81f3d044c5'
-            'e48dd3327d57522aa676e8fd6e29b7133ee9921eb1525d90ddedc61716ecfeefb51a7eb3a667f4f81f21a5ce8654727617d33463a5b6a40a7bc32252fa9f25df')
+md5sums=('084b65e49db239f6e210d08eb92da237'
+         'b4aa9106e8820b89f11a1c2143a2815b')
+sha1sums=('d900922ab217325cfc3bd57bb4b0a9fb833e1f48'
+          '7c907ede1aded10449bb5a766d268d909ea51845')
+sha256sums=('664d8b3893cb37fd0c46f7cf9d34623f8c8a23891d6a57408f40ec0fa3ac83b3'
+            '3d010d14223e0c7a385ed740e8f046edcbe885e5c22c5ad5733d009596865300')
+sha512sums=('c0cb4cca59e6adb450350a9730500bf9c569bb9ad835af0726ff05876a7a02c43e905293cc5582239b7a2564bf46bd02e6122934e0ad8c1785c326dbeff9c096'
+            '4c026bc12c38314c7df6e1b2f296be681fffa4ba525e378809063519cb5d51889fe8d3cbce16e802023354f02b45b1bcc672b79a6fa81b4baa13a374ce22c8f1')
 
 build() {
   cd "$srcdir/unrar"
@@ -33,4 +33,3 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   make install DESTDIR="$pkgdir"
 }
-
