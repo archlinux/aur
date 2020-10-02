@@ -3,7 +3,7 @@
 # Release notes: https://support.google.com/webdesigner/topic/6350071?hl=en&ref_topic=3249465
 
 pkgname=google-webdesigner
-pkgver=8.0.3.0603
+pkgver=9.0.1.0902
 pkgrel=1
 pkgdesc="Create engaging, interactive HTML5-based designs and motion graphics that can run on any device."
 arch=('x86_64')
@@ -17,7 +17,7 @@ install=${pkgname}.install
 _source_arch="i386"
 [ "${CARCH}" = 'x86_64' ] && _source_arch="amd64"
 source=("google-webdesigner_current_${_source_arch}.deb::https://dl.google.com/linux/direct/google-webdesigner_current_${_source_arch}.deb")
-sha256sums=('a61041e32893aa3a1b8271df47f3f9f4867623448d14b2c0e60839e7486f5d4f')
+sha256sums=('1ded0a1465071214076aa7c29706abceade9320cefbfd80602ac737f3a5d6ab4')
 
 package() {
   msg2 "Extracting the data.tar.xz"
