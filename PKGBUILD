@@ -2,22 +2,15 @@
 # Contributor: Eric Le Lay <contact at elelay dot fr>
 
 pkgname=ansifilter
-pkgver=2.16
+pkgver=2.17
 pkgrel=1
 pkgdesc="remove or convert ANSI codes to another format"
 arch=('i686' 'x86_64' 'pentium4' 'i486')
 url="http://www.andre-simon.de/doku/ansifilter/en/ansifilter.php"
 license=('GPL3')
 depends=('gcc-libs')
-source=("http://www.andre-simon.de/zip/${pkgname}-${pkgver}.tar.bz2"
-        "ansifilter-flags.patch")
-sha256sums=('7fcd2fa3520bce2bd3834c299f533cbfb43a29a095c83e8fea372a383dfbbaf2'
-            '2d2feb27f4e07a78c95d423ecea144e225940508004e023d21c8bb67ae77c72a')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/ansifilter-flags.patch"
-}
+source=("http://www.andre-simon.de/zip/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('5985beb39c960a3cb5b0e70d6a121687043dc8458e5783777ff250303cccc42f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
