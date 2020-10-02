@@ -1,7 +1,7 @@
 _name=slycot
 pkgname="python-${_name}"
 pkgver=0.4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for selected SLICOT routines, notably including solvers for Riccati, Lyapunov and Sylvester equations."
 arch=('i686' 'x86_64')
 url="http://github.com/python-control/Slycot"
@@ -11,10 +11,10 @@ makedepends=('cmake'
              'gcc-fortran'
              'lapack'
              'python-coverage'
-             'python-distro'
              'python-pytest'
              'python-scipy'
-             'python-scikit-build>=0.8.1')
+             'python-scikit-build>=0.8.1'
+             'python-setuptools')
 opts=(!strip)
 optdepends=()
 provides=('python-slycot')
