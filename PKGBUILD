@@ -8,7 +8,7 @@ url='https://github.com/alx365/yas'
 license=('MIT')
 sha256sums=('SKIP')
 makedepends=('rust' 'cargo' 'git')
-source=('yas-git-tui::git+https://github.com/alx365/yas')
+source=('yas-tui-git::git+https://github.com/alx365/yas')
 conflicts=('yas-git')
 
 pkgver() {
