@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(rust libusb)
 makedepends=('git')
 
-source=(https://gitlab.com/asus-linux/asus-nb-ctrl.git)
+source=(git://github.com/mirkobrombin/asus-nb-ctrl.git)
 sha512sums=('SKIP')
 
 build() {
