@@ -1,7 +1,7 @@
 # Maintainer: Aaron Fischer <mail@aaron-fischer.net>
 
 pkgname=dataexplorer
-pkgver=3.4.0
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="Graphical tool to display data from various chargers/dischargers"
 url="http://savannah.nongnu.org/projects/dataexplorer"
@@ -29,8 +29,8 @@ noextract=("dataexplorer-$pkgver-src.tar.gz.sig"
            "40-ProfilicTechnology.rules.sig"
            "40-SiliconLabs.rules"
            "40-SiliconLabs.rules.sig")
-sha512sums=("6836b98c79c414b7393576cf1b40e677ddb66ed1b78674d016f781d308005e199c83947d9affced1c319693d562a5d0d6a203111b9772758bf20ac460dde7f1e"
-            "87cadbb3459ede52c7040dda0821c211e1cb632399adda17fbb6f20dbf9613a7aea67e424e6b38468a8ecc05b9dff72998c472c4e71680c69d62aeb436171b1a"
+sha512sums=("46c039e5b1267dbb3846f75cb65f84a614aadbe79dfb9d671018de6f656703fe69ddb457b167745327d00e3ae151a754bac777dbf7fe453b004986628f6a5f7b"
+            "32b9b68dc7bca7913fc7b3eacff117908637ddcb2ab095fa6f2bfceac542c4dd5f88f195acd6df51f119d22f68c9261bc797c56e985c95edd6d1e3379c907529"
             "adc0d042c68970d21c3e44faa29015e6d916a14587ea73c2273e7b15351d161d4d54ccc94293a67e53d63d97a70e0dbee6a2b5af30e6e1f8df6f12cb27516036"
             "3c33312870686ec57872f7f22abe23cc487cbf22366ce874c2cf65075b1044077438db9370f3eea4dfd0d8fee9633f9a2bff6177cdc6b480960de5c2c0c9aeb2"
             "8bb9d77e86e47a5a42bfdf661ea35a4543b3a22336ae4f718657e12089091cf1d6664fd1090e194da4c56f34c5febef960f50692246a1109ded19921854b9e5f"
@@ -39,7 +39,8 @@ sha512sums=("6836b98c79c414b7393576cf1b40e677ddb66ed1b78674d016f781d308005e199c8
             "855ac8b53e4733cb71819aaa03063b4e0cb60fe139b7e9eb07c42031091b067ed1a445fa0a894a87f4445254f6d7a0d12ba4f4a208370e8a702161eeac5cdfe0"
             "8d969524ae67b5170976efd408ab4c28b23d8a33bc0d671d1b968a6cab4ebfbc80067561f1837470c8cd92e711df136851fec85e683ddf7fd1a33f93b6e39210"
             "a6a3b9e4cfbd4b59750bcdfa383b36f78bcfb7613463bdbe67a32ba73e3e132c5b32bb7de5da2f72b528bf3cbb48b1e9d2f571dec9e41d767099c1bd14bee745")
-validpgpkeys=("5EA6D73C6706D261118024746F1B47F2E5758C39") # Winfried Bruegmann
+validpgpkeys=("5EA6D73C6706D261118024746F1B47F2E5758C39"
+              "3F0CC709ECF91C5CC0BE9E601D295C19C9C06AF6") # Winfried Bruegmann (old and new key)
 
 build() {
   echo $pkgdir
