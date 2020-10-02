@@ -3,8 +3,8 @@
 
 pkgname=systray-x-git
 _pkgname=systray-x
-pkgver=0.3.0.r4.g7b2dbf9
-pkgrel=2
+pkgver=0.3.0.r23.gc226265
+pkgrel=1
 pkgdesc="SysTray-X is a system tray extension for Thunderbird 68+. The addon uses the WebExtension API's to control an external system dependent system tray application."
 arch=('any')
 url="https://github.com/Ximi1970/systray-x"
