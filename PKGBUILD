@@ -3,7 +3,7 @@
 author=Baitinq
 pkgname=osxiv-git
 _gitname=osxiv
-pkgver=0.r290.264b912
+pkgver=0.r1.c622573
 pkgrel=1
 pkgdesc='Overly Simple X Image Viewer'
 url='https://github.com/Baitinq/osxiv.git'
@@ -30,7 +30,5 @@ build() {
 }
 
 package() {
-  cd "$_gitname"
-	
   install -Dm755 -t "${pkgdir}/usr/bin" "${_gitname}/${_gitname}"
 }
