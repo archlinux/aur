@@ -1,0 +1,18 @@
+pkgbase = r-limer-git
+	pkgdesc = Provides access to LimeSurvey's RemoteControl 2 API
+	pkgver = r49.4e0f7c5
+	pkgrel = 1
+	url = https://github.com/cloudyr/limer
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = r
+	depends = r-base64enc
+	depends = r-httr
+	depends = r-jsonlite
+	optdepends = r-testthat
+	source = limer_src::git+https://github.com/cloudyr/limer.git
+	md5sums = SKIP
+
+pkgname = r-limer-git
+
