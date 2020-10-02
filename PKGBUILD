@@ -2,7 +2,7 @@
 pkgbase=python-parfive
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A HTTP and FTP parallel file downloader"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools-scm' 'python-sphinx-astropy' 'python-aiohttp' 'python-tqdm' 'graphviz' 'python-sunpy-sphinx-theme')
 checkdepends=('python-pytest-localserver' 'python-pytest-asyncio' 'python-pytest-socket' 'python-aioftp')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('798f4a6b9067f45b76771d4926c1ab0a')
+md5sums=('28743d80b9f208854eb7824f7dcdd3de')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
