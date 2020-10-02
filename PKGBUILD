@@ -1,99 +1,35 @@
-# Maintainer: Pablo Lezaeta <prflr88@gmail.com>
-
 pkgname=hfsutils
-pkgver=3.2.6
-pkgrel=11
-pkgdesc="A comprehensive software to permit manipulation of HFS volumes"
-arch=("i686" "x86_64")
-url="http://www.mars.org/home/rob/proj/hfs/"
-license=("GPL")
-depends=("glibc")
-optdepends=("tcl: For the graphical interface [rebuild using --with-tcl]"
-	"tk: For the graphical interface [rebuild using --with-tk]")
-source=("ftp://ftp.mars.org/pub/hfs/$pkgname-$pkgver.tar.gz"
-        "Makefile-install.patch"
-        "hfsutils-3.2.6-errno.patch"
-        "largerthan2gb.patch"
-        "hfsutils-3.2.6-fix-tcl-8.6.patch")
+pkgver=3.2.6_p14
+pkgrel=1
+pkgdesc="HFS Access utils"
+arch=('x86_64')
+license=('GPL2')
+url="https://www.mars.org/home/rob/proj/hfs/"
+depends=(glibc)
+source=(
+	"https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver/_p*}.orig.tar.gz"
+	"https://deb.debian.org/debian/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver/_p/-}.debian.tar.xz"
+	)
+sha256sums=('bc9d22d6d252b920ec9cdf18e00b7655a6189b3f34f42e58d5bb152957289840'
+            '855cbdad4fead0e3e37a994d4a2b82f872eda4fe5ed7703d9a3e1de398dbc7ac')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  # Fixed Makefile @INSTALL@ path
-  patch -Np0 -i "${srcdir}/Makefile-install.patch"
-
-  # Fix the errno issue on glibc-2.3.2+
-  patch -Np1 -i "${srcdir}/hfsutils-3.2.6-errno.patch"
-
-  # Add support for files larger than 2 GB, like any dvd image
-  patch -Np1 -i "${srcdir}/largerthan2gb.patch"
-
-  # Fixed compilation with tcl-8.6+
-  patch -Np1 -i "${srcdir}/hfsutils-3.2.6-fix-tcl-8.6.patch"
+	for file in $(cat ./debian/patches/series); do
+		patch -Np1 -d ${pkgname}-${pkgver%_p*} <"debian/patches/$file"
+	done
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  # Upstream bug, need patch, not build with default cppflags
-  unset CPPFLAGS CFLAGS
-
-  ./configure --prefix="${pkgdir}/usr" \
-  	--sbindir="/usr/bin" \
-  	--bindir="/usr/bin" \
-	--mandir="/usr/share/man" \
-	--without-tcl --without-tk
-
-  make prefix="${pkgdir}/usr" \
-  	MANDEST="${pkgdir}/usr/share/man" \
-  	DESTDIR="${pkgdir}/usr" \
-  	BINDEST="${pkgdir}/usr/bin" \
-	SBINDEST="${pkgdir}/usr/bin"
-
-  # change the without to with to add tcl and/or tk support
-
-  cd "${srcdir}/${pkgname}-${pkgver}/hfsck"
-  make prefix="${pkgdir}/usr" \
-  	MANDEST="${pkgdir}/usr/share/man" \
-  	DESTDIR="${pkgdir}/usr" \
-  	BINDEST="${pkgdir}/usr/bin" \
-	SBINDEST="${pkgdir}/usr/bin"
+	cd "${pkgname}-${pkgver%_p*}"
+	autoreconf -fi
+	./configure
+	make prefix=/usr
+	make -C hfsck prefix=/usr
 }
-
-#check() {
-#  cd "${srcdir}/${pkgname}-${pkgver}"
-#  # Check ALLWAYS fail
-#  make -k check
-#}
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  msg "Installing to ${pkgdir}"
-  
-  make prefix="${pkgdir}/usr" \
-  	MANDEST="${pkgdir}/usr/share/man" \
-  	DESTDIR="${pkgdir}/usr" \
-  	BINDEST="${pkgdir}/usr/bin" \
-  	SBINDEST="${pkgdir}/usr/bin" \
-  	install
-
-  # Faulty makefile, install hfsck
-  install -m 755 "${srcdir}/${pkgname}-${pkgver}/hfsck/hfsck" \
-  	"${pkgdir}/usr/bin/hfsck"
-  
-  # Standard linux toolset
-  cd "${pkgdir}/usr/bin"
-  ln -f "hfsck" "fsck.hfs"
-  ln -f "hformat" "mkfs.hfs"
-
-  # Toolset for standard linux manpages
-  cd "${pkgdir}/usr/share/man/man1/"
-  # ln -f "hfsck.1" "fsck.hfs.1" # there no manpage for hfsck
-  ln -f "hformat.1" "mkfs.hfs.1"
+	cd "${pkgname}-${pkgver%_p*}"
+	install -d -m755 "${pkgdir}/usr/bin"
+	install -d -m755 "${pkgdir}/usr/share/man/man1"
+	DESTDIR="${pkgdir}" make install prefix="${pkgdir}/usr" MANDEST="${pkgdir}/usr/share/man"
 }
-
-md5sums=('fa572afd6da969e25c1455f728750ec4'
-         'af48f3ff82c6aa8607c10271c2e56c77'
-         '4f5ea10416823de9fd38f6121dd3b8f0'
-         '7ab54a275889301df989c4a0351781c6'
-         'a4b7920d3302f4c79f162923d8c1c654')

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 src
 srcdir
 pkg
@@ -9,3 +10,8 @@ pkgdir
 *.tar
 *.zip
 *.rar
+=======
+*.tar.*
+pkg/
+src/
+>>>>>>> c7bac17... init

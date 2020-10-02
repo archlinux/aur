@@ -1,24 +1,15 @@
 pkgbase = hfsutils
-	pkgdesc = A comprehensive software to permit manipulation of HFS volumes
-	pkgver = 3.2.6
-	pkgrel = 11
-	url = http://www.mars.org/home/rob/proj/hfs/
-	arch = i686
+	pkgdesc = HFS Access utils
+	pkgver = 3.2.6_p14
+	pkgrel = 1
+	url = https://www.mars.org/home/rob/proj/hfs/
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	depends = glibc
-	optdepends = tcl: For the graphical interface [rebuild using --with-tcl]
-	optdepends = tk: For the graphical interface [rebuild using --with-tk]
-	source = ftp://ftp.mars.org/pub/hfs/hfsutils-3.2.6.tar.gz
-	source = Makefile-install.patch
-	source = hfsutils-3.2.6-errno.patch
-	source = largerthan2gb.patch
-	source = hfsutils-3.2.6-fix-tcl-8.6.patch
-	md5sums = fa572afd6da969e25c1455f728750ec4
-	md5sums = af48f3ff82c6aa8607c10271c2e56c77
-	md5sums = 4f5ea10416823de9fd38f6121dd3b8f0
-	md5sums = 7ab54a275889301df989c4a0351781c6
-	md5sums = a4b7920d3302f4c79f162923d8c1c654
+	source = https://deb.debian.org/debian/pool/main/h/hfsutils/hfsutils_3.2.6.orig.tar.gz
+	source = https://deb.debian.org/debian/pool/main/h/hfsutils/hfsutils_3.2.6-14.debian.tar.xz
+	sha256sums = bc9d22d6d252b920ec9cdf18e00b7655a6189b3f34f42e58d5bb152957289840
+	sha256sums = 855cbdad4fead0e3e37a994d4a2b82f872eda4fe5ed7703d9a3e1de398dbc7ac
 
 pkgname = hfsutils
 
