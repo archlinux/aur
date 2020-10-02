@@ -1,6 +1,6 @@
 # Maintainer: amtoaer <amtoaer@outlook.com>
 pkgname=iwsp-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Northeastern University Gymnasium Reservation."
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
 )
 
 md5sums=(
-        '6f2673b36d207cf5f7b0106862ace140'
+        '20eb5bb6ae8c73a7df78db641c2394d7'
         '31fad0aacc583d621612630ce8f5a26c'
 )
 
