@@ -20,5 +20,5 @@ build() {
 
 package() {
 	cd "${srcdir}/asus-nb-ctrl"
-	make install
+	sudo make install
 }
