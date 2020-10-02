@@ -1,4 +1,4 @@
-# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgbase=marble-git
@@ -33,9 +33,6 @@ prepare() {
       -e '/Quick/d' \
       -e '/touch/d' \
       -i marble/src/apps/CMakeLists.txt
-  # fix an example
-  #sed -e 's/CV_RGB2BGR/CV_RGB/' \
-  #    -i 's/marble/examples/cpp/animation-video/main.cpp
 }
 
 build() {
