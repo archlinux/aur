@@ -1,0 +1,15 @@
+pkgbase = asus-nb-ctrl
+	pkgdesc = asusd is a utility for Linux to control many aspects of various ASUS laptops
+	pkgver = 20201002
+	pkgrel = 1
+	url = https://github.com/mirkobrombin/asus-nb-ctrl
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = rust
+	depends = libusb
+	source = git://gitlab.com/asus-linux/asus-nb-ctrl.git
+	sha512sums = SKIP
+
+pkgname = asus-nb-ctrl
+
