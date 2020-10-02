@@ -1,6 +1,6 @@
 pkgbase = koma-script
 	pkgdesc = A versatile bundle of LaTeX2e document classes and packages
-	pkgver = 3.25.3445
+	pkgver = 3.32.3546
 	pkgrel = 1
 	url = http://www.komascript.de/
 	install = texlive.install
@@ -8,8 +8,8 @@ pkgbase = koma-script
 	license = LPPL
 	depends = texlive-core
 	depends = texlive-latexextra
-	source = http://sourceforge.net/projects/koma-script/files/KOMA-Script/koma-script-3445.zip
-	sha512sums = 5bc1c7e2b00ce46cdd1b7ac45649a11cf5400371f1c0a1f061878d217a983b516d0d58d18aab9d81cb851dae01cee39999e3906fcda1a435a2cdd1e68523d208
+	source = http://sourceforge.net/projects/koma-script/files/KOMA-Script/koma-script-3546.zip
+	sha512sums = 3bc34e00bd66f0d379e2457772888fc07fe936db27db56d2cbe144c4359be88573791a6e1364c287dfb0f7d48460b6d741938dc3d454bed2e1f7e24b2f5aadf7
 
 pkgname = koma-script
 
