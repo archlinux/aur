@@ -1,0 +1,19 @@
+pkgbase = kdiskmark-git
+	pkgdesc = Simple disk benchmark tool
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/JonMagon/KDiskMark
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = qt5-tools
+	depends = fio
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	provides = kdiskmark
+	source = KDiskMark::git+https://github.com/JonMagon/KDiskMark.git
+	sha256sums = SKIP
+
+pkgname = kdiskmark-git
+
