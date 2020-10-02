@@ -1,13 +1,13 @@
 pkgbase = gomclauncher-bin
 	pkgdesc = gml: A Minecraft Launcher
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/xmdhs/gomclauncher
 	arch = any
 	license = MIT
-	source = https://github.com/xmdhs/gomclauncher/releases/download/v1.2.6/gml-linux
-	source = https://raw.githubusercontent.com/xmdhs/gomclauncher/v1.2.6/LICENSE
-	md5sums = 00e0bb5424692fde347ffb57bcbfc7c2
+	source = https://github.com/xmdhs/gomclauncher/releases/download/v1.2.7/gml-linux
+	source = https://raw.githubusercontent.com/xmdhs/gomclauncher/v1.2.7/LICENSE
+	md5sums = 3ff64e737a50791f2a277e07a7c8741a
 	md5sums = aca4188a0e8807e4aecc6b293f32ce42
 
 pkgname = gomclauncher-bin
