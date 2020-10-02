@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libjpeg-xl-git
-pkgver=r14.g519b856
+pkgver=r22.g849ebf6
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
@@ -38,8 +38,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'f8d4950895f71b9709dd3b6399be6f87474051a7ac0addb608676e7ffe9f19da'
-            '27e9e0e9e1017c57b3da8602062cc578da8036737ab62b96ff511311b35212d6')
+            '96560239a5c9761728b8eddcb721d8e3556d32df178ca8a40da3c18613e6b99e'
+            '287f18dfe7a75c75527e879c5a4470239153cc74dd76d459aed20db1062fdc47')
 
 prepare() {
     local _mingw_commit

@@ -1,6 +1,6 @@
 --- a/jpegxl.cmake
 +++ b/jpegxl.cmake
-@@ -447,9 +447,9 @@ endif()  # APPLE
+@@ -446,9 +446,9 @@ endif()  # APPLE
  install(TARGETS jpegxl
    DESTINATION ${CMAKE_INSTALL_LIBDIR})
  install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/jpegxl
