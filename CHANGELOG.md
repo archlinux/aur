@@ -1,3 +1,11 @@
+## 10.0.0 (2020-10-02)
+
+Yopass CLI support was added: <https://github.com/jhaals/yopass/pull/580>.
+Yopass have had several CLIs for creating secrets over the years but this is the first official which is hosted in the same repository.
+
+Binaries have changed slightly so yopass is now the CLI and yopass-server will run the regular server.
+There won't be a difference for those running yopass in Docker since the entrypoint will remain the same.
+
 ## 9.0.0 (2020-09-03)
 
 * #573 Add file upload to the navigation bar file_cabinet
