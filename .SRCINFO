@@ -8,7 +8,7 @@ pkgbase = hid-asus-rog-dkms
 	makedepends = git
 	depends = dbus
 	depends = libusb
-	source = https://gitlab.com/asus-linux/hid-asus-rog.git
+	source = git://github.com/mirkobrombin/hid-asus-rog.git
 	sha512sums = SKIP
 
 pkgname = hid-asus-rog-dkms
