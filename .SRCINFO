@@ -7,6 +7,8 @@ pkgbase = python-dbus-next
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	provides = python-dbus-next
+	conflicts = python-dbus-next-git
 	source = https://files.pythonhosted.org/packages/source/d/dbus-next/dbus_next-0.1.4.tar.gz
 	md5sums = 0d44e12e8689637a0c048ec7bb51d842
 
