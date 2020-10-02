@@ -2,22 +2,22 @@
 pkgname=gomuks-midek-git
 _name=gomuks
 pkgdesc='A terminal based Matrix client written in Go. Upload and pantalaimon support'
-pkgver=r563.6932ebe
+pkgver=r564.37fbd2c
 pkgrel=1
-url='https://github.com/Midek/gomuks'
+url='https://git.peerfreedom.org/midov/gomuks.git'
 license=(GPL3)
 arch=(x86_64 i686)
 depends=(libolm)
 makedepends=(go-pie git)
 provides=(${_name})
 conflicts=("${provides[@]}")
-source=("git://github.com/Midek/${_name}.git")
+source=("git+https://git.peerfreedom.org/midov/${_name}.git")
 sha512sums=(SKIP)
 
 prepare() {
 	cd "${srcdir}/${_name}"
 	# all the good stuff is in the revert_attachments branch
-	git checkout revert_attachments
+	git checkout midek
 }
 pkgver () {
 	cd "${srcdir}/${_name}"
