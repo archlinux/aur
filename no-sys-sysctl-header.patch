@@ -1,0 +1,11 @@
+diff -Naur Chipmunk2D-Chipmunk-7.0.3.orig/src/cpHastySpace.c Chipmunk2D-Chipmunk-7.0.3/src/cpHastySpace.c
+--- Chipmunk2D-Chipmunk-7.0.3.orig/src/cpHastySpace.c	2020-10-01 22:42:46.218323897 -0400
++++ Chipmunk2D-Chipmunk-7.0.3/src/cpHastySpace.c	2020-10-01 22:43:20.858552865 -0400
+@@ -8,7 +8,6 @@
+ 
+ //#include <sys/param.h >
+ #ifndef _WIN32
+-#include <sys/sysctl.h>
+ #include <pthread.h>
+ #else
+ #ifndef WIN32_LEAN_AND_MEAN
