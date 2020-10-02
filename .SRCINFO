@@ -1,16 +1,16 @@
 pkgbase = anki-official-binary-bundle
 	pkgdesc = The official binary shipped with the tested versions of the dependent libraries.
-	pkgver = 2.1.34
+	pkgver = 2.1.35
 	pkgrel = 1
 	url = https://apps.ankiweb.net
 	arch = x86_64
 	license = GNU AGPL
 	provides = anki
 	conflicts = anki-git
-	source = https://apps.ankiweb.net/downloads/current/anki-2.1.34-linux-amd64.tar.bz2
+	source = https://apps.ankiweb.net/downloads/current/anki-2.1.35-linux-amd64.tar.bz2
 	source = remove_xdg_cmds_from_makefile.patch
 	source = prefix-fix.patch
-	md5sums = aaf2aa0f850582966c09136cb36b6b20
+	md5sums = d7ad8af7c1d9ddd92bb14d9d4a10ea7c
 	md5sums = 0eb542757f6b15d9904a53496627c76b
 	md5sums = 82a5d4f63bbc29e6a80043dd95973b4f
 
