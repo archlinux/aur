@@ -1,7 +1,7 @@
 pkgbase = dbus-go
 	pkgdesc = Native Go bindings for D-Bus
 	pkgver = 5.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/godbus/dbus
 	arch = x86_64
 	arch = i686
