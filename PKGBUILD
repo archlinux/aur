@@ -8,8 +8,8 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.16.2_0.6.1.51-1"
-_minecraft_ver_latest="1.16.2"
+_ver="1.16.3_0.6.1.51-1"
+_minecraft_ver_latest="1.16.3"
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
 IFS="_" read -ra _pkgver_temp <<< "${_ver_temp[0]}"
@@ -56,7 +56,7 @@ source+=("fabric-installer-${_fabric_ver}.jar"::"https://maven.fabricmc.net/net/
 # -- /Fabric Installer -- #
 
 prepare() {
-	java -Duser.home="${srcdir}" -jar "fabric-installer-${_fabric_ver}.jar" server -downloadMinecraft
+	java -Duser.home="${srcdir}" -jar "fabric-installer-${_fabric_ver}.jar" server -mcversion ${_minecraft_ver} -downloadMinecraft
 }
 
 package() {

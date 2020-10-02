@@ -1,6 +1,6 @@
 pkgbase = fabric-server
 	pkgdesc = Minecraft Fabric server unit files, script and jar
-	pkgver = 1.16.2_0.6.1.51
+	pkgver = 1.16.3_0.6.1.51
 	pkgrel = 1
 	url = https://fabricmc.net
 	install = fabric-server.install
@@ -14,8 +14,8 @@ pkgbase = fabric-server
 	depends = sed
 	optdepends = tar: needed in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
-	provides = fabric-server=1.16.2_0.6.1.51
-	noextract = fabric-1.16.2-0.6.1.51.jar
+	provides = fabric-server=1.16.3_0.6.1.51
+	noextract = fabric-1.16.3-0.6.1.51.jar
 	backup = etc/conf.d/fabric
 	source = fabricd-backup.service
 	source = fabricd-backup.timer
