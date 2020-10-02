@@ -2,7 +2,7 @@
 pkgname=gomuks-midek-git
 _name=gomuks
 pkgdesc='A terminal based Matrix client written in Go. Upload and pantalaimon support'
-pkgver=r564.37fbd2c
+pkgver=r586.8a7185c
 pkgrel=1
 url='https://git.peerfreedom.org/midov/gomuks.git'
 license=(GPL3)
