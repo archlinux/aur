@@ -1,7 +1,4 @@
-From 5846c5fffd392e1158e228d05e64c0613fef4d49 Mon Sep 17 00:00:00 2001
-From: Luke D Jones <luke@ljones.dev>
-Date: Sun, 6 Sep 2020 19:30:02 +1200
-Subject: [PATCH V6] HID: ASUS: Add support for ASUS N-Key keyboard
+From: Luke D Jones <luke@xxxxxxxxxx>
 
 The ASUS N-Key keyboard uses the productId of 0x1866 and is used in
 almost all modern ASUS gaming laptops with slight changes to the
@@ -23,7 +20,7 @@ intitialised before such things as keyboard backlight control work.
 Misc changes in scope: update some hardcoded comparisons to use an
 available define.
 
-Signed-off-by: Luke D Jones <luke@ljones.dev>
+Signed-off-by: Luke D Jones <luke@xxxxxxxxxx>
 ---
  drivers/hid/hid-asus.c                     | 188 ++++++++++++++++++---
  drivers/hid/hid-ids.h                      |   1 +
@@ -344,4 +341,3 @@ index 897b8332a39f..05253cfe786c 100644
  /* Wireless */
 -- 
 2.26.2
-

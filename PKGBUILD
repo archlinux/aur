@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=5.8.7.arch1
+pkgver=5.8.12.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -23,7 +23,8 @@ source=(
 	"sys-kernel_arch-sources-g14_files_0002-asus-nb-wmi-add-support-for-GU502DU.patch"
 	"sys-kernel_arch-sources-g14_files_0003-i8042-dmiids.patch"
 	"sys-kernel_arch-sources-g14_files_0004-hid-asus-n-key.patch"
-	"sys-kernel_arch-sources-g14_files_0006-ALSA-hda-fixup-headset-for-ASUS-GX502-laptop.patch"
+	#"sys-kernel_arch-sources-g14_files_0006-ALSA-hda-fixup-headset-for-ASUS-GX502-laptop.patch"
+	"sys-kernel_arch-sources-g14_files_0007-snd-hda-realtek-g401-ga502.patch"
 	"sys-kernel_arch-sources-g14_files_6002-amdgpu-dm-kernel-5.8.patch"
 	"sys-kernel_arch-sources-g14_files_6003-vboxdrv-glp.patch"
 )
@@ -39,10 +40,13 @@ sha256sums=('SKIP'
             '02c59a722f5d1912ba9ee4c2b5e84b079c13badc225040b834a18a42345a7a61'
             'edf23d81eb39f38e106c6ce172600cc06d7d155a4ef578c3c94344a45a8a7858'
             'a7b045dc36aea9b3203a4910da3f3314121672e940d7bd8a8cf0126d913e0fe3'
-            '68bf0dcc390ed14d97f48ebd1095d2587ac2eb2671445125fbcaaf7a6aa01733'
+            '8ef9f603fa838cda5eec84da18f00b81f5acde9b3705717cbc4b0e7ee2e2fe8d'
             'ac09472e9bcd5604666590b798b9194d446f79fa718ea67889173498676e99c3'
+            'd2b60458875f5be280ee755276b3702c4657baaab82850d53a64faf5814d538a'
             '7063af2e6588575ee4fd20d2339850221595acd3da5d8912e6298aea57186887'
             'e92f713d50425be96f118a7a3b9f62787453341a27ff10ac5ba394de060ccef7')
+
+
 
 
 export KBUILD_BUILD_HOST=archlinux
