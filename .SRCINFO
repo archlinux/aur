@@ -1,0 +1,25 @@
+pkgbase = python-mopidy-jellyfin
+	pkgdesc = Mopidy extension for playing music from jellyfin
+	pkgver = 0.9.3
+	pkgrel = 00
+	url = https://github.com/jellyfin/mopidy-jellyfin
+	arch = any
+	license = Apache
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python
+	depends = mopidy
+	depends = python-setuptools
+	depends = python-websocket-client
+	depends = python-pykka
+	depends = python-unidecode
+	depends = python-requests
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/62/a2/58eae9e7b67f51f47ccec0326c17bf0a6fc0967fd17556a54c7177cc740e/Mopidy-Jellyfin-0.9.3.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = af21bfdc6b0fc8c011346e37bed6dbd5
+	md5sums = 3b83ef96387f14655fc854ddc3c6bd57
+
+pkgname = python-mopidy-jellyfin
+
