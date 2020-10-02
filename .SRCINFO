@@ -1,0 +1,15 @@
+pkgbase = xerox-phaser-3320
+	pkgdesc = CUPS driver for the Xerox Phaser 3320 series. Also supports Phaser 3117, 3140, 3160, 3200, 3250, 3250, 3300, 3435, 3600, 6110, WorkCentre 3210, 3220, 3315, 3325, 3550, 4118, PE120, PE220, FaxCentre 2218
+	pkgver = 4.01.06
+	pkgrel = 1
+	url = https://www.support.xerox.com/en-us/product/phaser-3320/downloads
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = gettext
+	source = https://www.support.xerox.com/download/121251
+	sha256sums = 9b5180af42ab042048969d8412a3e423c50d8fd5e4ec9186cb029802e92454a2
+
+pkgname = xerox-phaser-3320
+
