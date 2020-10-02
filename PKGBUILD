@@ -2,7 +2,7 @@
 
 pkgname=esearch
 _pkgdirname="pacman-$pkgname"
-pkgver=4.3.8
+pkgver=4.3.9
 _gittag="v$pkgver"
 pkgrel=1
 pkgdesc="Replacement for pacman -Ss and pacman -Si"
