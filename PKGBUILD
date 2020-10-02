@@ -1,28 +1,40 @@
-#Maintainer: Plague-doctor <plague at privacyrequired dot com >
+# Maintainer: picokan <todaysoracle@protonmail.com>
+# Contributor: Plague-doctor <plague at privacyrequired dot com >
 
 pkgname=freetube
-pkgver=0.5.2
+_pkgname=FreeTube
+pkgver=0.8.0
 pkgrel=1
-pkgdesc="An open source desktop YouTube player built with privacy in mind."
-arch=('x86_64')
-url="https://github.com/FreeTubeApp/FreeTube"
-license=('GPL')
-options=("!strip" "staticlibs")
-source=(
-    "freetube.desktop"
-    "$pkgname-$pkgver-$pkgrel.zip"::"https://github.com/FreeTubeApp/FreeTube/releases/download/v$pkgver-beta/FreeTube-linux-x64.zip"
-    )
+pkgdesc='An open source desktop YouTube player built with privacy in mind.'
+arch=('x86_64' 'arm')
+license=('AGPL3')
+makedepends=('git' 'npm')
+conflicts=('freetube-git' 'freetube-bin')
+url=https://freetubeapp.io
+source=(https://github.com/FreeTubeApp/FreeTube/archive/v0.8.0-beta.tar.gz
+        package-only-necessary.diff
+        freetube.desktop)
+sha256sums=(bad1e794baaca52f582cab0e60c23ddcfad32c78dc15ad17fcd3dd11342a91b8
+            SKIP SKIP)
 
-validpgpkeys=('A8F7858263C1E39480B731DCEAD4F103068DF8E5')
-
-package() {
-    install -d "$pkgdir/"{usr/bin,/usr/share/pixmaps,usr/share/applications/,opt}
-    cp -R $srcdir/FreeTube-linux-x64 $pkgdir/opt/$pkgname
-    ln -s /opt/$pkgname/FreeTube $pkgdir/usr/bin/$pkgname
-    install -Dm644 "$srcdir/FreeTube-linux-x64/resources/app/src/icons/iconColor.png" "${pkgdir}/usr/share/pixmaps/freetube.png"
-    install -Dm644 "freetube.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+prepare() {
+  patch "$srcdir/$_pkgname-$pkgver-beta/_scripts/build.js" < package-only-necessary.diff
 }
 
+build() {
+  cd "$srcdir/$_pkgname-$pkgver-beta"
+  npm install
+  npm run build
+}
 
-md5sums=('28055125824ebe9e9a6ad564c776a7fe'
-         'c8dbc2e15402c1cc94f3597cef4bdadf')
+package() {
+  install -d "${pkgdir}"/{usr/bin,opt}
+  cp -R "./$_pkgname-$pkgver-beta/build/linux-unpacked" "$pkgdir/opt/$pkgname"
+  ln -s "/opt/$pkgname/freetube" "$pkgdir/usr/bin/$pkgname"
+  
+  cd $_pkgname-$pkgver-beta
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "./_icons/256x256.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  cd ..
+  install -Dm644 "freetube.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+}
