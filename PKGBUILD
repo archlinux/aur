@@ -2,13 +2,13 @@
 
 _pkgname=lotus
 pkgname=$_pkgname-git
-pkgver=0.3.0.r135.g2632621f7
+pkgver=0.8.1.r10.gefc1b24f4
 pkgrel=1
 pkgdesc='Filecoin client in Go'
 arch=('x86_64')
 url="https://github.com/filecoin-project/$_pkgname"
 license=('MIT' 'APACHE')
-makedepends=('go' 'gcc' 'git')
+makedepends=('go' 'gcc' 'git' 'jq' 'pkgconf')
 depends=('ocl-icd' 'gcc-libs')
 source=("git+${url}.git")
 b2sums=('SKIP')
@@ -43,8 +43,8 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
-  install -Dm755 $_pkgname-storage-miner "$pkgdir"/usr/bin/$_pkgname-storage-miner
-  install -Dm755 $_pkgname-seal-worker "$pkgdir"/usr/bin/$_pkgname-seal-worker
+  install -Dm755 $_pkgname-miner "$pkgdir"/usr/bin/$_pkgname-miner
+  install -Dm755 $_pkgname-worker "$pkgdir"/usr/bin/$_pkgname-worker
 
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
