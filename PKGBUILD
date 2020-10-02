@@ -2,7 +2,7 @@
 
 _gemname='cool.io'
 pkgname="ruby-${_gemname}"
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=0
 pkgdesc='provides a high performance event framework for Ruby which uses the libev C library.'
 arch=('x86_64')
@@ -13,10 +13,10 @@ makedepends=('ruby-rdoc' 'ruby-bundler' 'ruby-rake-compiler')
 checkdepends=('ruby-rake' 'ruby-rspec')
 source=("${url}/archive/v${pkgver}/${_gemname}-v${pkgver}.tar.gz")
 options=("!emptydirs")
-sha512sums=('0523b4af2560afa19dfa87feeda7f9bfe36dd08f4a0e77ff344b9083f6b3e80e4824e5e83fad80bf98ec4f88b2a36ca07b7a01be5a60c154c76f44621a404d2a')
+sha512sums=('5bae91a4db83999922e8b75e2ba943d0a211636456bb197d914acaae0ead3e7575d6eb52cd9228304941c4f4b8274a82ca302a54d1484e894361a68038b20f24')
 provides=(
-  cool.io_ext.so
-  iobuffer_ext.so
+  cool.io_ext.so=${pkgver}
+  iobuffer_ext.so=${pkgver}
 )
 build() {
   cd "${srcdir}/${_gemname}-${pkgver}"
@@ -44,6 +44,7 @@ package() {
 
   rm -rf "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/ext"
   rm -rf "${pkgdir}/${_gemdir}/cache"
+  rm -r ${pkgdir}/${_gemdir}/extensions/*/*/${_gemname}-${pkgver}/{mkmf.log,gem_make.out}
 }
 
 # vim: ts=2 sw=2 et:
