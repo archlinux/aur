@@ -1,8 +1,8 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=giara-git
-pkgver=r84.9b950c9
-pkgrel=2
+pkgver=r86.5d92db6
+pkgrel=1
 epoch=
 pkgdesc="Reddit gtk client"
 arch=('any')
@@ -30,8 +30,13 @@ source=("$pkgname::git+$url.git")
 sha256sums=("SKIP")
 
 prepare() {
+	cd "$srcdir/$pkgname/${pkgname%-git}"
+
+	local _pver="$(python --version | sed "s/Python \(.*\)\..*/\1/")"
+	local _ddir="/usr/lib/python$_pver/site-packages/${pkgname%-git}/"
+
 	# Generate pycache, if you ran giara as root this will conflict
-	python -m compileall "$srcdir/$pkgname/${pkgname%-git}"
+	python -OO -m compileall . --invalidation-mode checked-hash -d "$_ddir"
 }
 
 pkgver() {
