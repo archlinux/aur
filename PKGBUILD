@@ -16,7 +16,6 @@ depends=('cython'
          'libsavitar'
          'openblas'
          'python'
-         'python-cx_freeze'
          'python-nose'
          'python-numpy'
          'python-numpy-stl'
@@ -32,9 +31,10 @@ depends=('cython'
          'qt5-svg')
 makedepends=('cmake'
              'git'
-             'python-sip'
+             'python-pip'
              'python-netifaces'
              'python-pyserial'
+             'python-sip'
              'python-zeroconf'
              'qt5-tools'
              'sip')
@@ -59,6 +59,12 @@ build() {
   sed -i 's/DCURA_ENGINE_VERSION=${CURA_VERSION}/DCURA_ENGINE_VERSION=${CURA_VERSION} -DENABLE_OPENMP=OFF/' ../CMakeLists.txt
   sed -i '33,34 s/^/#pkgbuild /' ../setup_linux.py.in # Disable missing paths from using system python
   sed -i '57,60 s/^/#pkgbuild /' ../setup_linux.py.in # Disable missing qt plugins when using system version
+
+  # Use an older version of cx_freeze to address
+  # TypeError: $ expected str, bytes or os.PathLike object, not NoneType
+  # https://github.com/marcelotduarte/cx_Freeze/issues/730
+  pip install --user cx_freeze==6.0
+
   sed -i 's/get_commit_hash("Savitar", cmake_binary_dir)/"4.1.0"/' ../scripts/cura_version.py # Fake hash when using system libsavitar
 
   sed -i 's/6a4ffb2f90ef7bbd3f20f2a1db4948630ad37dc8/v3.11.0/' ../CMakeLists.txt # Protobuf v3.7.0
@@ -105,6 +111,9 @@ package() {
   PYTHONPATH=`pwd`/inst/lib/python3/dist-packages make package
 
   cp -r _CPack_Packages/Linux/DEB/cura-lulzbot-*-Linux/usr $pkgdir/
+
+  cp -r `pwd`/inst/share/cura/resources $pkgdir/usr/share/cura-lulzbot/
+  cp -r `pwd`/inst/share/uranium/resources $pkgdir/usr/share/cura-lulzbot/
 }
 
 # Update md5sum
@@ -121,4 +130,4 @@ package() {
 # We also need to manually install openblas to avoid a conflict with blas.
 #
 # Ex.
-# extra-x86_64-build -- -c -I ~/builds/libffi6/libffi6-3.2.1-1-x86_64.pkg.tar.xz -I ~/builds/python-numpy-stl/python-numpy-stl-2.10.1-1-any.pkg.tar.xz -I /var/cache/pacman/pkg/openblas-0.3.10-1-x86_64.pkg.tar.zst
+# extra-x86_64-build -- -c -I ~/builds/libffi6/libffi6-3.2.1-1-x86_64.pkg.tar.zst -I ~/builds/python-numpy-stl/python-numpy-stl-2.11.2-1-any.pkg.tar.zst -I /var/cache/pacman/pkg/openblas-0.3.10-1-x86_64.pkg.tar.zst
