@@ -1,5 +1,5 @@
 #
-# PKGBUILD file for package czkawa
+# PKGBUILD file for package czkawka
 #
 # Copyright (C) 2020  sp1rit
 #
@@ -28,7 +28,7 @@ url="https://github.com/qarmin/czkawka"
 license=('MIT')
 depends=("gtk3>=3.22")
 makedepends=("rust" "cargo")
-provides=("czkawa")
+provides=("czkawka")
 source=("${_basename}::git+https://github.com/qarmin/czkawka.git" "com.github.qarmin.czkawka.desktop")
 md5sums=("SKIP" "bbc480c6106a7bd7dc73c3cc49a76961")
 
