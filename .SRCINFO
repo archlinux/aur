@@ -1,0 +1,16 @@
+pkgbase = les-git
+	pkgdesc = A pager program like less
+	pkgver = r83.a3841fd
+	pkgrel = 1
+	url = https://github.com/zorgnax/les
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	depends = bash
+	provides = les
+	conflicts = les
+	source = les::git+https://github.com/zorgnax/les.git
+	md5sums = SKIP
+
+pkgname = les-git
+
