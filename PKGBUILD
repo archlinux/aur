@@ -7,13 +7,13 @@
 pkgname=st-ruifm-git
 _pkgname=st-ruifm
 pkgver=0.8.4.r1152.8decb59
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple virtual terminal emulator for X'
 url='https://github.com/ruifm/st.git'
 arch=('any')
 license=('MIT')
 options=('zipman')
-depends=('libxft-bgra' 'harfbuzz')
+depends=('libxft-bgra-git' 'harfbuzz')
 makedepends=('ncurses' 'libxext' 'git')
 
 source=("${_pkgname}::git+$url")
