@@ -1,7 +1,7 @@
 pkgbase = xmonad-log
 	pkgdesc = DBus monitor for xmonad log events
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xintron/xmonad-log
 	arch = x86_64
 	arch = i686
