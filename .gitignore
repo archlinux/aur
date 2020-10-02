@@ -1,0 +1,10 @@
+element/
+JUCE/
+jlv2/
+lua-rt/
+kv-modules/
+pkg/
+src/
+element-git-*.pkg.tar.xz
+element-git-*.pkg.tar.zst
+element-git-*.src.tar.gz
