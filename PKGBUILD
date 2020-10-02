@@ -25,7 +25,7 @@ build() {
 
     # Enable the libffi-system feature so the system libffy is used, instead of
     # compiling it from source.
-    make build FEATURES='libinko/libffi-system'
+    make build FEATURES='libinko/libffi-system' PREFIX='/usr'
 }
 
 package() {
