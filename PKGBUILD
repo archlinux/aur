@@ -8,12 +8,12 @@ arch=('x86_64')
 url='https://github.com/mirkobrombin/hid-asus-rog-dkms'
 license=('GPL3')
 depends=(dbus libusb)
-makedepends=('git')
+makedepends=('git' 'linux-headers')
 
 source=(git://github.com/mirkobrombin/hid-asus-rog-dkms.git)
 sha512sums=('SKIP')
 
 package() {
 	cd "${srcdir}/hid-asus-rog-dkms"
-	make dkms
+	sudo make dkms
 }

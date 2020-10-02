@@ -6,6 +6,7 @@ pkgbase = hid-asus-rog-dkms
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = linux-headers
 	depends = dbus
 	depends = libusb
 	source = git://github.com/mirkobrombin/hid-asus-rog-dkms.git
