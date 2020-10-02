@@ -1,10 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 _svt_hevc_ver='ead6fdf7c9ff84511b42fc1658c1654b84d83e4b'
-_svt_vp9_ver='0.2.2'
 
 pkgname=ffmpeg-full-git
-pkgver=4.4.r99218.g0ea2bda099
+pkgver=4.4.r99456.g45070eec4c
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -20,11 +19,11 @@ depends=(
         'openjpeg2' 'opus' 'pulseaudio' 'librabbitmq-c' 'rav1e' 'librsvg' 'rubberband'
         'rtmpdump' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc' 'svt-av1'
         'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
-        'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'x264' 'x265'
-        'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
-        'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
-        'vulkan-icd-loader' 'libxv' 'libx11'  'libxext' 'zlib' 'cuda'
-        'libomxil-bellagio' 'libdrm' 'intel-media-sdk' 'libva' 'libvdpau'
+        'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264' 'x265' 'libxcb'
+        'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz' 'libmysofa'
+        'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth' 'vulkan-icd-loader'
+        'libxv' 'libx11'  'libxext' 'zlib' 'cuda' 'libomxil-bellagio' 'libdrm'
+        'intel-media-sdk' 'libva' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
         'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
@@ -44,14 +43,14 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '015-ffmpeg-cuda11-fix.patch'
         "020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        "040-ffmpeg-add-svt-vp9-${_svt_vp9_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/v${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
+        '040-ffmpeg-add-svt-vp9.patch'
         'LICENSE')
 sha256sums=('SKIP'
             '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
-            '87292cf51f47e4408b0b7b0ee8387d18cf7ea7d352832d5d97c413456eb34b38'
+            'b0bbf3db9c0cfd80bf2337bd0cab47081ea54a60c1bd9d85ffa845d4542875cd'
             '05ec4d3323dc80ef6c1d4d6d50d339accd51d22b12a735b7a6605f10feb09cec'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            'b74be6d805672210e226e7c0b403f88b0ee8a53c732c9bdc873c4b44aeb75c96'
+            '9431f9bce14d9140f473d772eca693a1801efbea428de5d9735461d17108fcae'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
@@ -61,7 +60,7 @@ prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/015-ffmpeg-cuda11-fix.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-${_svt_vp9_ver}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9.patch"
 }
 
 pkgver() {
@@ -166,7 +165,6 @@ build() {
         --enable-libvorbis \
         --enable-libvpx \
         --enable-libsvtvp9 \
-        --enable-libwavpack \
         --enable-libwebp \
         --enable-libx264 \
         --enable-libx265 \
