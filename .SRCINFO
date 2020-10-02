@@ -1,7 +1,7 @@
 pkgbase = fcitx5-configtool-git
 	pkgdesc = Config tools for Fcitx5, nightly build from git
-	pkgver = r332.734741d
-	pkgrel = 4
+	pkgver = r348.7031cf4
+	pkgrel = 1
 	url = https://github.com/fcitx/fcitx5-configtool
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = fcitx5-configtool-git
 	depends = kitemviews
 	depends = kirigami2
 	depends = kpackage
+	optdepends = kdeclarative: for KCM support
+	optdepends = kirigami2: for KCM support
 	provides = fcitx5-configtool
 	provides = fcitx5-config-qt
 	provides = kbd-layout-viewer5
@@ -28,6 +30,4 @@ pkgbase = fcitx5-configtool-git
 	sha512sums = SKIP
 
 pkgname = fcitx5-configtool-git
-	provides = fcitx5-configtool
-	conflicts = fcitx5-configtool
 
