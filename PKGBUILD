@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-auth-ldap-git
 pkgver=r158.83c059b
-pkgrel=3
+pkgrel=4
 
 _modname=nginx-auth-ldap
-_nginxver=1.19.2
+_nginxver=1.19.3
 
 pkgdesc='LDAP Authentication module for nginx'
 arch=('i686' 'x86_64')
@@ -43,3 +43,5 @@ package() {
     done
 }
 
+sha256sums=('91e5b74fa17879d2463294e93ad8f6ffc066696ae32ad0478ffe15ba0e9e8df0'
+            'SKIP')
