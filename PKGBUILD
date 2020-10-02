@@ -4,7 +4,7 @@ _pkgname=dbus
 _gourl="github.com/godbus/dbus"
 
 pkgname="$_pkgname-go"
-pkgver=4.0.0
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="Native Go bindings for D-Bus"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('go')
 options=('!strip' '!emptydirs')
 source=("https://$_gourl/archive/v$pkgver.tar.gz")
-sha256sums=('2b40e749786260a053785be29ff12e6ddd618762ccaafdfbe4a6e07f3d2a6e66')
+sha256sums=('49d27bde2861f5e5ab4195fddc5f38f25324aac3b32b3cc03e712cca3d2b75fa')
 
 
 build() {
