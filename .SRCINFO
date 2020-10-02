@@ -6,6 +6,7 @@ pkgbase = svtplay-dl
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = perl
 	depends = python-cryptography
 	depends = python-requests
 	depends = ffmpeg

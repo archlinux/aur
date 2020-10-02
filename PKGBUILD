@@ -8,7 +8,7 @@ license=('MIT')
 arch=('any')
 depends=('python-cryptography' 'python-requests' 'ffmpeg' 'python-yaml')
 optdepends=('python-pysocks: proxy support')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'perl')
 source=(https://github.com/spaam/svtplay-dl/archive/$pkgver.tar.gz)
 sha256sums=('e9b7675b5224169107dcb7d7c1cc86741c3eceddd2c15f6c30a4d65c89b643fd')
 
