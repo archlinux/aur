@@ -11,7 +11,7 @@ pkgbase = python2-notify
 	depends = libnotify>=0.7.1
 	conflicts = python-notify<=0.1.1-11
 	replaces = python-notify<=0.1.1-11
-	source = http://www.galago-project.org/files/releases/source/notify-python/notify-python-0.1.1.tar.gz
+	source = https://www.galago-project.org/files/releases/source/notify-python/notify-python-0.1.1.tar.gz
 	source = libnotify07.patch
 	source = notify-python-0.1.1-fix-GTK-symbols.patch
 	sha512sums = f900d58e4004d199f718e458ebaa9b654c0040b848312f6fe5a885afbdf67c771fd3360b4cbf121b66404d750a7cce24f776c360568eadcefc9733e7f501cccf
