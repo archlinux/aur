@@ -1,13 +1,13 @@
 pkgbase = r-broom
 	pkgdesc = Convert Statistical Analysis Objects into Tidy Tibbles
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=broom
 	arch = any
 	license = MIT
 	depends = r>=3.1
 	depends = r-backports
-	depends = r-dplyr
+	depends = r-dplyr>=1.0.0
 	depends = r-ellipsis
 	depends = r-generics>=0.0.2
 	depends = r-glue
@@ -15,7 +15,7 @@ pkgbase = r-broom
 	depends = r-rlang
 	depends = r-stringr
 	depends = r-tibble>=3.0.0
-	depends = r-tidyr
+	depends = r-tidyr>=1.0.0
 	optdepends = r-aer
 	optdepends = r-akima
 	optdepends = r-auc
@@ -61,18 +61,19 @@ pkgbase = r-broom
 	optdepends = r-lsmeans
 	optdepends = r-maps
 	optdepends = r-maptools
+	optdepends = r-margins
 	optdepends = r-mclogit
 	optdepends = r-mclust
 	optdepends = r-mediation
 	optdepends = r-metafor
 	optdepends = r-mfx
 	optdepends = r-mgcv
+	optdepends = r-mlogit
 	optdepends = r-modeldata
 	optdepends = r-modeltests
 	optdepends = r-muhaz
 	optdepends = r-multcomp
 	optdepends = r-network
-	optdepends = r-nnet
 	optdepends = r-orcutt
 	optdepends = r-ordinal
 	optdepends = r-plm
@@ -90,15 +91,13 @@ pkgbase = r-broom
 	optdepends = r-spatialreg
 	optdepends = r-speedglm
 	optdepends = r-spelling
-	optdepends = r-statnet.common
 	optdepends = r-survey
-	optdepends = r-survival
 	optdepends = r-systemfit
 	optdepends = r-testthat
 	optdepends = r-tseries
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/broom_0.7.0.tar.gz
-	md5sums = 6d70e2deea3ff281c1d23bf9d2c5e4b3
+	source = https://cran.r-project.org/src/contrib/broom_0.7.1.tar.gz
+	sha256sums = efe2ed968b59a149d3b397427658701db0c36f7e3c33fec8d6137a166abdb68b
 
 pkgname = r-broom
 
