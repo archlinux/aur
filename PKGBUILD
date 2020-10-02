@@ -1,7 +1,7 @@
 # Maintainer: Edmundo Sanchez <zomundo at gmail dot com>
 pkgname=biscuit
-pkgver=1.2.9
-pkgrel=1
+pkgver=1.2.11
+pkgrel=1.1
 pkgdesc='A browser where you can organize your apps'
 arch=('x86_64')
 url='https://eatbiscuit.com/'
@@ -11,7 +11,7 @@ source=(
     "https://github.com/agata/dl.biscuit/releases/download/v${pkgver}/Biscuit-${pkgver}.AppImage"
 )
 
-sha256sums=('93bfd04e2ad56af929dd6ef62b5dfc7e42d95a554ebd955445084bd39d9c5cf0')
+sha256sums=('e9e3fb804dfabdf4cc95a9a21ef0c0fd91ba6ed6292c2c41bb3cdb4305c82d5f')
 
 prepare() {
     chmod u+x ./Biscuit-${pkgver}.AppImage
