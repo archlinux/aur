@@ -1,7 +1,7 @@
 # Maintainer:  Shakib Hossain <shakib609@gmail.com>
 
 pkgname=openbangla-keyboard-bin
-pkgver=1.5.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="An OpenSource, Unicode compliant Bengali Input Method"
 arch=('x86_64')
@@ -25,11 +25,11 @@ provides=('openbangla-keyboard')
 
 # Sources
 source=(
-	'https://github.com/OpenBangla/OpenBangla-Keyboard/releases/download/'$pkgver'/OpenBangla-Keyboard_'$pkgver'-archlinux.pkg.tar.xz'
+	'https://github.com/OpenBangla/OpenBangla-Keyboard/releases/download/'$pkgver'/OpenBangla-Keyboard_'$pkgver'-archlinux.pkg.tar.zst'
 )
 # Checksums
 sha256sums=(
-	'e0c67d8aed1dd7f726c2a82e9378ae8783748629d7025a52901ad74a1279fce5'
+	'1a72b4e0327d8a25265ebfe5e6050bb3ad8e50ea2aac180bce62e6019f08eb02'
 )
 # Some installation information
 install="$pkgname.install"
