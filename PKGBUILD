@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=globalplatformpro
 pkgver=20.08.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage applets and keys on JavaCard-s like a pro"
 arch=('any')
 url="https://github.com/martinpaljak/GlobalPlatformPro"
@@ -16,6 +16,11 @@ sha256sums=(
   'SKIP'
   'a8769c37ac54b3e98645f509b011a290d7e914937de0158cc8f2a8fcef0e255e'
 )
+
+prepare() {
+	cd $pkgname
+	git tag -a v${pkgver} -m "v${pkgver}" v${pkgver} -f
+}
 
 build() {
   cd $pkgname
