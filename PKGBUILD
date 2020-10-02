@@ -1,4 +1,4 @@
-pkgname="brother-dcp197c"
+pkgname="brother-dcp-197c"
 pkgver="1.1.3"
 pkgrel=2
 _pkgrel=1

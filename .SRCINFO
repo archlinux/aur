@@ -1,9 +1,9 @@
-pkgbase = brother-dcp197c
+pkgbase = brother-dcp-197c
 	pkgdesc = LPR and CUPS driver for the Brother DCP197C
 	pkgver = 1.1.3
 	pkgrel = 2
 	url = http://solutions.brother.com/linux/en_us/
-	install = brother-dcp197c.install
+	install = brother-dcp-197c.install
 	arch = i686
 	arch = x86_64
 	license = custom:brother commercial license
@@ -15,5 +15,5 @@ pkgbase = brother-dcp197c
 	source = cupswrapper-license.txt
 	source = lpr-license.txt
 
-pkgname = brother-dcp197c
+pkgname = brother-dcp-197c
 
