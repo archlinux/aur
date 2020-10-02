@@ -2,7 +2,7 @@
 _name=slycot
 pkgname="python-${_name}-mkl"
 pkgver=0.4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for selected SLICOT routines, notably including solvers for Riccati, Lyapunov and Sylvester equations. Built against Intel MKL"
 arch=('i686' 'x86_64')
 url="http://github.com/python-control/Slycot"
@@ -11,8 +11,8 @@ depends=('python-numpy-mkl')
 makedepends=('cmake'
              'gcc-fortran'
              'intel-mkl'
-             'python-distro'
              'python-pytest'
+             'python-setuptools'
              'python-scipy-mkl'
              'python-scikit-build>=0.8.1')
 opts=(!strip)
