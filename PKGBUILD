@@ -2,7 +2,7 @@
 
 _pkgname='KDiskMark'
 pkgname="${_pkgname,,}-git"
-pkgver=0.2.5
+pkgver=1.6.2.r16.g0efbcec
 pkgrel=1
 pkgdesc='Simple disk benchmark tool'
 arch=('x86_64')
@@ -13,6 +13,10 @@ makedepends=('extra-cmake-modules' 'git' 'qt5-tools')
 provides=("${_pkgname,,}")
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   export CFLAGS+=" ${CPPFLAGS}"

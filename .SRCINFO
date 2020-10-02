@@ -1,6 +1,6 @@
 pkgbase = kdiskmark-git
 	pkgdesc = Simple disk benchmark tool
-	pkgver = 0.2.5
+	pkgver = 1.6.2.r16.g0efbcec
 	pkgrel = 1
 	url = https://github.com/JonMagon/KDiskMark
 	arch = x86_64
