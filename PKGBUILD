@@ -1,15 +1,21 @@
 # Maintainer: Ashar Khan <ashar786khan at gmail.com>
 
 pkgname=cpeditor
-pkgver=6.5.5
+pkgver=6.6.5
 _pkgdir=cpeditor-$pkgver-full-source
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
 url='https://github.com/cpeditor/cpeditor'
 license=('GPL3')
-depends=('qt5-base')
-makedepends=("cmake" "git" "python3")
+depends=('qt5-base>=5.15.0')
+makedepends=(
+	"cmake"
+	"git"
+	"ninja"
+	"python3"
+	"qt5-tools"
+)
 optdepends=(
 	'cf-tool: submit to Codeforces support'
 	'clang: C++ format and language server support'
@@ -20,15 +26,15 @@ optdepends=(
 )
 conflicts=("cpeditor-git")
 source=("https://github.com/cpeditor/$pkgname/releases/download/$pkgver/cpeditor-$pkgver-full-source.tar.gz")
-sha256sums=('1e3a16557e2c73ce63aaff4b0ef6ce51f7e14f1fc9a7ed2872a8e72b0a97ee51')
+sha256sums=('889c1f655813996f772dc66315be92131c1667be952ebecf3020445f5796ead9')
 
 build() {
 	cd "$_pkgdir"
-	cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DPORTABLE_VERSION=Off -DCMAKE_BUILD_TYPE=Release -GNinja
 	cmake --build build -j$(nproc)
 }
 
 package() {
 	cd "$_pkgdir/build"
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir/" ninja install
 }
