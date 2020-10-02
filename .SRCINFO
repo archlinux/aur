@@ -1,0 +1,18 @@
+pkgbase = identity
+	pkgdesc = Compare multiple versions of an image or video
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/YaLTeR/identity
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = rust
+	depends = gtk3
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = libhandy1
+	source = https://gitlab.gnome.org/YaLTeR/identity/-/archive/v0.1.0/identity-v0.1.0.tar.gz
+	sha256sums = 6d994ca2286976c8067076f323049a61a22ad4c5a3b2449265d33b5f57c3292a
+
+pkgname = identity
+
