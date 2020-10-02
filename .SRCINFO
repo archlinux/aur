@@ -1,0 +1,15 @@
+pkgbase = hid-asus-rog-dkms
+	pkgdesc = DKMS installable module for ASUS ROG laptops
+	pkgver = 20201002
+	pkgrel = 1
+	url = https://github.com/mirkobrombin/hid-asus-rog-dkms
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = dbus
+	depends = libusb
+	source = git://gitlab.com/asus-linux/hid-asus-rog.git
+	sha512sums = SKIP
+
+pkgname = hid-asus-rog-dkms
+
