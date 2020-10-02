@@ -5,7 +5,7 @@
 
 pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
-pkgver=20.30.1109583
+pkgver=20.40.1147286
 pkgrel=1
 arch=('x86_64')
 url='http://www.amd.com'
@@ -19,13 +19,14 @@ DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/relea
 
 prefix='amdgpu-pro-'
 postfix='-ubuntu-20.04'
-major='20.30'
-minor='1109583'
+major='20.40'
+minor='1147286'
 amdver='2.4.100'
 shared="opt/amdgpu-pro/lib/x86_64-linux-gnu"
+tarname="${prefix}${major}-${minor}${postfix}"
 
-source=("https://drivers.amd.com/drivers/linux/${prefix}${major}-${minor}${postfix}.tar.xz")
-sha256sums=('57f92e29e273ee51893bed57b473a5f781033761ad2a6796cb3e6808a123151f')
+source=("https://drivers.amd.com/drivers/linux/$tarname.tar.xz")
+sha256sums=('e6b2b2d76cc80ca989b5f2f1cf3e0c0bd0bdee97b1dba0767c28c91995cffb5e')
 
 pkgver() {
 	echo "${major}.${minor}"
@@ -35,19 +36,19 @@ package() {
 	mkdir -p "${srcdir}/opencl"
 	cd "${srcdir}/opencl"
 	# pal
-	ar x "${srcdir}/${prefix}${major}-${minor}${postfix}/opencl-amdgpu-pro-icd_${major}-${minor}_amd64.deb"
+	ar x "${srcdir}/$tarname/opencl-amdgpu-pro-icd_${major}-${minor}_amd64.deb"
 	tar xJf data.tar.xz
-	ar x "${srcdir}/${prefix}${major}-${minor}${postfix}/opencl-amdgpu-pro-comgr_${major}-${minor}_amd64.deb"
+	ar x "${srcdir}/$tarname/opencl-amdgpu-pro-comgr_${major}-${minor}_amd64.deb"
 	tar xJf data.tar.xz
 	# orca
-	ar x "${srcdir}/${prefix}${major}-${minor}${postfix}/opencl-orca-amdgpu-pro-icd_${major}-${minor}_amd64.deb"
+	ar x "${srcdir}/$tarname/opencl-orca-amdgpu-pro-icd_${major}-${minor}_amd64.deb"
 	tar xJf data.tar.xz
 	cd ${shared}
 	sed -i "s|libdrm_amdgpu|libdrm_amdgpo|g" libamdocl-orca64.so
 
 	mkdir -p "${srcdir}/libdrm"
 	cd "${srcdir}/libdrm"
-	ar x "${srcdir}/${prefix}${major}-${minor}${postfix}/libdrm-amdgpu-amdgpu1_${amdver}-${minor}_amd64.deb"
+	ar x "${srcdir}/$tarname/libdrm-amdgpu-amdgpu1_${amdver}-${minor}_amd64.deb"
 	tar xJf data.tar.xz
 	cd ${shared/amdgpu-pro/amdgpu}
 	rm "libdrm_amdgpu.so.1"
@@ -58,7 +59,7 @@ package() {
 	mkdir -p ${pkgdir}/usr/lib
 	# pal
 	mv "${srcdir}/opencl/${shared}/libamdocl64.so" "${pkgdir}/usr/lib/"
-	mv "${srcdir}/opencl/${shared}/libamd_comgr.so.1.6.0" "${pkgdir}/usr/lib"
+	mv "${srcdir}/opencl/${shared}/libamd_comgr.so.1.7.0" "${pkgdir}/usr/lib"
 	mv "${srcdir}/opencl/${shared}/libamd_comgr.so" "${pkgdir}/usr/lib/"
 	# orca
 	mv "${srcdir}/opencl/${shared}/libamdocl-orca64.so" "${pkgdir}/usr/lib/"
