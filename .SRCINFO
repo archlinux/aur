@@ -1,7 +1,7 @@
 pkgbase = bauh-staging
 	pkgdesc = Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web). Testing branch (it may not be working properly).
 	pkgver = 0.9.8.RC
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinifmor/bauh
 	arch = any
 	license = zlib/libpng
@@ -44,8 +44,8 @@ pkgbase = bauh-staging
 	optdepends = axel: multi-threaded downloading support
 	provides = bauh
 	conflicts = bauh
-	source = https://github.com/vinifmor/bauh/archive/a205c7cca8fb1cc520635f732d48403c7306a66f.tar.gz
-	sha512sums = cbdd2b81301ac64021fc82730c9d2b5e79a6dcaf69da169cc0d95917a94d62a487027179336aa38ea35ddddad6643662186e8529c972e1a5a8fe9b6764cc7a0f
+	source = https://github.com/vinifmor/bauh/archive/f8276024c031822c4a9b670376fd6cce508d8b7d.tar.gz
+	sha512sums = e7648df47d86269a8a9d067cc01c84f63b234e30a78adfe00178f9f7f73357ffa19c9d403a156b5c3fd8ab9fe0d0e5f7f1f9d46af9c5149b5823e0d2ab3ddc9c
 
 pkgname = bauh-staging
 
