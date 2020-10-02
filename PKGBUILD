@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark.wagie at tutanota dot com>
 pkgname=sticky-git
 pkgver=0.0.1.r33.9f12863
-pkgrel=1
+pkgrel=2
 pkgdesc="A sticky notes app for the Linux desktop"
 arch=('x86_64')
 url="https://github.com/collinss/sticky"
@@ -22,6 +22,6 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	cp -r usr "$pkgdir"
+	cp -r etc usr "$pkgdir"
 	chmod +x "$pkgdir/usr/bin/${pkgname%-git}"
 }
