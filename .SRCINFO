@@ -9,6 +9,7 @@ pkgbase = eprosima-fast-dds
 	depends = foonathan_memory-shared
 	depends = asio
 	depends = tinyxml2
+	depends = eprosima-fast-cdr
 	source = https://github.com/eProsima/Fast-DDS/archive/v2.0.1.tar.gz
 	sha256sums = d557425232da27c84b6142b17cdbccd3076233b445762a5f232205ecf5fff6ab
 
