@@ -3,15 +3,15 @@
 pkgname=rocketchat-desktop
 pkgver=3.0.1
 _pkgname="Rocket.Chat.Electron-${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url='https://github.com/RocketChat/Rocket.Chat.Electron'
 license=('MIT')
 depends=('electron')
 makedepends=('nodejs' 'node-gyp' 'python' 'yarn')
-optdepends=('hunspell-en_US: spell checking')
 conflicts=('rocketchat-client-bin')
+install=rocketchat-desktop.install
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         rocketchat-desktop
         rocketchat-desktop.desktop)
