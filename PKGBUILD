@@ -3,13 +3,14 @@
 pkgname=python-skia
 _pkgname=skia-python
 pkgver=86.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python binding to Skia Graphics Library'
 arch=('x86_64')
 url="https://github.com/kyamagu/$_pkgname"
 license=('BSD')
 depends=('fontconfig' 'opengl-driver' 'python')
 makedepends=('pybind11' 'python-pip' 'python-setuptools')
+options=(!strip)
 _py=cp38
 _wheel=${_pkgname/-/_}-$pkgver-$_py-$_py-manylinux2014_x86_64.whl
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/$_wheel")
