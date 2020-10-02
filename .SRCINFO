@@ -1,0 +1,24 @@
+pkgbase = pencil2d-mypaint-git
+	pkgdesc = Animation/drawing software, that lets you create traditional hand-drawn animation using both bitmap and vector graphics with mypaint brushes extension testing branch
+	pkgver = 4505.1fc3f62a
+	pkgrel = 1
+	url = http://www.pencil2d.org/
+	install = pencil2d.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-tools
+	depends = ming
+	depends = ffmpeg
+	depends = qt5-svg
+	depends = qt5-multimedia
+	depends = qt5-xmlpatterns
+	provides = pencil2d
+	conflicts = pencil2d
+	options = !staticlibs
+	source = pencil2d::git+https://github.com/CandyFace/pencil.git
+	md5sums = SKIP
+
+pkgname = pencil2d-mypaint-git
+
