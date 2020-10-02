@@ -2,7 +2,7 @@
 
 pkgname=tunasync-git
 pkgver=master
-pkgrel=1
+pkgrel=2
 pkgdesc="Mirror job management tool developed by TUNA"
 arch=('x86_64')
 license=('GPL3')
@@ -15,12 +15,12 @@ source=('tunasync::git+https://github.com/tuna/tunasync#branch=master')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir"/tunasync
+  cd "${srcdir}"/tunasync
   git log -1 --format="%cd" --date=short | sed 's|-||g'
 }
 
 build() {
-  cd "srcdir"/tunasync
+  cd "${srcdir}"/tunasync
   make
 }
 
