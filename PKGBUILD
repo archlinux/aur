@@ -25,11 +25,12 @@ pkgver() {
         "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+build() {
+  make -C "${_gitname}"
+}
+
 package() {
   cd "$_gitname"
-  make
-
-  mkdir -p $pkgdir/usr/bin/
-  mv osxiv $pkgdir/usr/bin/osxiv
-  chmod +x $pkgdir/usr/bin/osxiv
+	
+  install -Dm755 -t "${pkgdir}/usr/bin" "${_gitname}/${_gitname}"
 }
