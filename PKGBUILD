@@ -2,7 +2,7 @@
 # Contributor: Hannes Graeuler < hgraeule [at] uos [dot] de >
 
 pkgname=sfcgal
-pkgver=v1.3.9
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="Wrapper around the CGAL library that intents to implement 2D and 3D operations on OGC standards models"
 arch=('i686' 'x86_64')
