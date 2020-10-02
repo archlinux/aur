@@ -1,7 +1,7 @@
 pkgbase = rocketchat-desktop
 	pkgdesc = Rocket.Chat Native Cross-Platform Desktop Application via Electron.
-	pkgver = 2.17.11
-	pkgrel = 3
+	pkgver = 3.0.1
+	pkgrel = 1
 	url = https://github.com/RocketChat/Rocket.Chat.Electron
 	arch = i686
 	arch = x86_64
@@ -13,14 +13,12 @@ pkgbase = rocketchat-desktop
 	depends = electron
 	optdepends = hunspell-en_US: spell checking
 	conflicts = rocketchat-client-bin
-	source = https://github.com/RocketChat/Rocket.Chat.Electron/archive/2.17.11/rocketchat-desktop-2.17.11.tar.gz
+	source = https://github.com/RocketChat/Rocket.Chat.Electron/archive/3.0.1/rocketchat-desktop-3.0.1.tar.gz
 	source = rocketchat-desktop
 	source = rocketchat-desktop.desktop
-	source = use-system-dictionaries.patch
-	sha256sums = 2f13cc5d62b2246db8715809c4278748a770e5975f1a439a5d922ef7af4e26b7
+	sha256sums = 6586b4745f2e2262f93eefce3e6001c0bb200e7eed243afeb8a37e6ad82bd1b5
 	sha256sums = 18fab390ffce4f89a17d5d71a7e78fea9afa9f9d2bcdafecb4f310d4f804996f
 	sha256sums = 31fae4f98a61a774f84030fd43d2ef92c7633740dc5aa55967a21d0e29ea621a
-	sha256sums = 9a18a4db55c49c8c71c84e331d519dc16509c38566f5c1602224dc4a3ca73a3e
 
 pkgname = rocketchat-desktop
 
