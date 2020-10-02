@@ -2,7 +2,7 @@
 
 pkgname=python-proxmoxer
 _name=${pkgname#python-}
-pkgver=1.0.3
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Python Wrapper for the Proxmox 2.x API (HTTP and SSH)"
 arch=('any')
@@ -14,10 +14,12 @@ optdepends=('python-requests: for https backend'
 			'python-openssh-wrapper: for openssh backend')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('70c3d4cdfdf98dfec57ee0f7ab345da0c4086cb48d8661b5c17c7fbae1ddb090')
+sha256sums=('684a69190129da0f102703fc9861f5eea82a7d804f9f96d35c7fd73452f1da7e')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
+  # remove tests because they interfere with other system packages
+  sed -i "s/, 'tests', 'tests.base'//" setup.py
   python setup.py build
 }
 
