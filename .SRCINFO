@@ -41,7 +41,7 @@ pkgbase = confluent-platform
 	source = https://packages.confluent.io/archive/6.0/confluent-6.0.0.tar.gz
 	source = systemd_sysusers.d_confluent.conf
 	source = https://s3-us-west-2.amazonaws.com/confluent.cloud/confluent-cli/archives/latest/confluent_latest_linux_amd64.tar.gz
-	sha256sums = 1d3998ad30f498dcc89f87bb468d92b893a8f595e230586e56d14a1945208211
+	sha256sums = ce1ba5754611f98028381c9b19309a3b42c43a359f45860fc860608507a81e7e
 	sha256sums = 6f5dfdbaf6ef405117482413b376e55148f75423bc6b8681cd8f91cdb7d96a99
 	sha256sums = SKIP
 
