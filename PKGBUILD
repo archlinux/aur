@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(dbus libusb)
 makedepends=('git')
 
-source=(git://gitlab.com/asus-linux/hid-asus-rog.git)
+source=(https://gitlab.com/asus-linux/hid-asus-rog.git)
 sha512sums=('SKIP')
 
 package() {
