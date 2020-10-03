@@ -1,19 +1,28 @@
-# Maintainer: Ekin Dursun <ekindursun@gmail.com>
-pkgname=python-mpv
-pkgver=0.4.5
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Ekin Dursun <ekindursun@gmail.com>
+
+pkgname='python-mpv'
+pkgver=0.5.2
 pkgrel=1
-pkgdesc="Python interface to the mpv media player"
+pkgdesc='Python interface to the awesome mpv media player'
 arch=('any')
-url="https://github.com/jaseg/python-mpv"
+url='https://github.com/jaseg/python-mpv'
 license=('AGPL3')
-depends=("mpv" "python>=3.5")
+depends=('python')
 optdepends=('python-pillow: raw screenshot support')
-makedepends=("python-setuptools")
-conflicts=('python-mpv-git' 'python-pympv' 'python-pympv-git')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('4183dbed697549d1cc272fee7875b5c9')
+sha256sums=('10c7ae61eff441602c7188595108391cdede153c15454772d8811c2bcb9e6823')
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  python setup.py build
+}
 
 package() {
-    cd "$pkgname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
+  cd "${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.rst'
 }
+
+# vim: ts=2 sw=2 et:
