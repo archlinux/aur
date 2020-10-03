@@ -1,0 +1,19 @@
+pkgbase = pcbdraw-git
+	pkgdesc = KiCad automation scripts.
+	pkgver = 194.99bcecd
+	pkgrel = 1
+	url = https://github.com/INTI-CMNB/pcbdraw
+	arch = i686
+	arch = x86_64
+	license = Apache2.0
+	makedepends = git
+	makedepends = python
+	depends = python
+	depends = kicad
+	provides = pcbdraw
+	conflicts = pcbdraw
+	source = pcbdraw::git+https://github.com/INTI-CMNB/pcbdraw
+	md5sums = SKIP
+
+pkgname = pcbdraw-git
+
