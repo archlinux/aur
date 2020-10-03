@@ -1,7 +1,6 @@
 # Maintainer: Dud803 <Dude803aur<AT>gmail<DOT>com>
-# Contributor: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
-pkgname="asf-git"
+pkgname=("asf-git")
 pkgrel=1
 pkgver=0
 pkgver(){
@@ -10,7 +9,7 @@ pkgver(){
 }
 pkgdesc="Steam cards farmer. Git version"
 conflicts=('asf')
-provides('asf')
+provides=('asf')
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache')
