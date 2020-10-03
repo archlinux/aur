@@ -1,8 +1,7 @@
-diff --git a/brave/BUILD.gn b/brave/BUILD.gn
-index c3907daf6..ef9cd2f6c 100644
---- a/brave/BUILD.gn
-+++ b/brave/BUILD.gn
-@@ -4,6 +4,7 @@ import("//brave/build/config.gni")
+diff -ru a/brave/BUILD.gn b/brave/BUILD.gn
+--- a/brave/BUILD.gn	2020-09-25 22:55:12.193333434 +0200
++++ b/brave/BUILD.gn	2020-10-01 12:15:47.486663146 +0200
+@@ -4,6 +4,7 @@
  import("//ui/base/ui_features.gni")
  import("//third_party/icu/config.gni")
  import("//build/config/locales.gni")
@@ -10,7 +9,7 @@ index c3907daf6..ef9cd2f6c 100644
  import("//build/util/process_version.gni")
  import("//extensions/buildflags/buildflags.gni")
  import("//media/cdm/library_cdm/cdm_paths.gni")
-@@ -205,8 +205,11 @@ group("create_dist") {
+@@ -238,8 +239,11 @@
      }
    }
    if (is_linux) {
@@ -23,7 +22,7 @@ index c3907daf6..ef9cd2f6c 100644
        "//brave/app/linux:dist_resources",
        ":theme_files",
      ]
-@@ -328,9 +331,12 @@ if (!is_android && !is_ios) {
+@@ -336,9 +340,12 @@
        ":packed_resources",
        "build/$target_os:brave",
        "//chrome:packed_resources",
@@ -37,7 +36,7 @@ index c3907daf6..ef9cd2f6c 100644
      if (!is_mac) {
        sources += [
          "$root_out_dir/brave_resources.pak",
-@@ -339,10 +345,13 @@ if (!is_android && !is_ios) {
+@@ -347,10 +354,13 @@
          "$root_out_dir/$brave_exe",
          "$root_out_dir/chrome_100_percent.pak",
          "$root_out_dir/chrome_200_percent.pak",
@@ -52,85 +51,9 @@ index c3907daf6..ef9cd2f6c 100644
        if (v8_use_external_startup_data) {
          deps += [ "//v8" ]
  
-diff --git a/brave/vendor/adblock_rust_ffi/src/wrapper.cpp b/brave/vendor/adblock_rust_ffi/src/wrapper.cpp
-index f13a777..2b4e90a 100644
---- a/brave/vendor/adblock_rust_ffi/src/wrapper.cpp
-+++ b/brave/vendor/adblock_rust_ffi/src/wrapper.cpp
-@@ -1,4 +1,5 @@
- #include "wrapper.hpp"
-+#include <cstring>
- #include <iostream>
- using namespace std;
- 
-diff --git a/brave/vendor/bat-native-ledger/src/bat/ledger/internal/contribution/contribution.cc b/brave/vendor/bat-native-ledger/src/bat/ledger/internal/contribution/contribution.cc
-index eeaec36bc..c919332b0 100644
---- a/brave/vendor/bat-native-ledger/src/bat/ledger/internal/contribution/contribution.cc
-+++ b/brave/vendor/bat-native-ledger/src/bat/ledger/internal/contribution/contribution.cc
-@@ -7,6 +7,7 @@
- 
- #include <algorithm>
- #include <cmath>
-+#include <ctime>
- #include <memory>
- #include <utility>
- #include <vector>
-diff --git a/brave/vendor/bat-native-usermodel/src/transformation.cc b/brave/vendor/bat-native-usermodel/src/transformation.cc
-index f6e0a17..86d2a10 100644
---- a/brave/vendor/bat-native-usermodel/src/transformation.cc
-+++ b/brave/vendor/bat-native-usermodel/src/transformation.cc
-@@ -4,6 +4,7 @@
-  * You can obtain one at http://mozilla.org/MPL/2.0/. */
-  
- #include "transformation.h"
-+#include <algorithm>
- #include <codecvt>
- #include <math.h>
- namespace usermodel {
-diff --git a/brave/vendor/bat-native-ads/src/bat/ads/internal/logging.h b/brave/vendor/bat-native-ads/src/bat/ads/internal/logging.h
-index 4f927a7d1..6367a43cc 100644
---- a/brave/vendor/bat-native-ads/src/bat/ads/internal/logging.h
-+++ b/brave/vendor/bat-native-ads/src/bat/ads/internal/logging.h
-@@ -52,7 +52,7 @@ void Log(
- //   8 Database queries
- 
- #define BLOG(verbose_level, stream) ads::Log(__FILE__, __LINE__, \
--    verbose_level, (std::ostringstream() << stream).str());
-+    verbose_level, static_cast<std::ostringstream &>(std::ostringstream() << stream).str());
- 
- // You can also do conditional verbose logging when some extra computation and
- // preparation for logs is not needed:
-
-diff --git a/brave/vendor/bat-native-confirmations/src/bat/confirmations/internal/logging.h b/brave/vendor/bat-native-confirmations/src/bat/confirmations/internal/logging.h
-index 73f259f0c..8ed1f196f 100644
---- a/brave/vendor/bat-native-confirmations/src/bat/confirmations/internal/logging.h
-+++ b/brave/vendor/bat-native-confirmations/src/bat/confirmations/internal/logging.h
-@@ -51,7 +51,7 @@ void Log(
- //   8 Database queries
- 
- #define BLOG(verbose_level, stream) confirmations::Log(__FILE__, \
--    __LINE__, verbose_level, (std::ostringstream() << stream).str());
-+    __LINE__, verbose_level, static_cast<std::ostringstream &>(std::ostringstream() << stream).str());
- 
- // You can also do conditional verbose logging when some extra computation and
- // preparation for logs is not needed:
-diff --git a/brave/vendor/bat-native-ledger/src/bat/ledger/internal/logging.h b/brave/vendor/bat-native-ledger/src/bat/ledger/internal/logging.h
-index fa62ecbef..347819840 100644
---- a/brave/vendor/bat-native-ledger/src/bat/ledger/internal/logging.h
-+++ b/brave/vendor/bat-native-ledger/src/bat/ledger/internal/logging.h
-@@ -52,7 +52,7 @@ void Log(
- //   8 Database queries
- 
- #define BLOG(verbose_level, stream) ledger::Log(__FILE__, __LINE__, \
--    verbose_level, (std::ostringstream() << stream).str());
-+    verbose_level, static_cast<std::ostringstream &>(std::ostringstream() << stream).str());
- 
- // You can also do conditional verbose logging when some extra computation and
- // preparation for logs is not needed:
-
-diff --git a/brave/components/brave_rewards/browser/logging.h b/brave/components/brave_rewards/browser/logging.h
-index c3171e9b2..b96c5b447 100644
---- a/brave/components/brave_rewards/browser/logging.h
-+++ b/brave/components/brave_rewards/browser/logging.h
+diff -ru a/brave/components/brave_rewards/browser/logging.h b/brave/components/brave_rewards/browser/logging.h
+--- a/brave/components/brave_rewards/browser/logging.h	2020-09-25 22:55:11.176666768 +0200
++++ b/brave/components/brave_rewards/browser/logging.h	2020-10-01 12:16:30.493329812 +0200
 @@ -11,7 +11,7 @@
  namespace brave_rewards {
  
@@ -140,4 +63,80 @@ index c3171e9b2..b96c5b447 100644
  
  #define BLOG_IF(verbose_level, condition, stream) \
      !(condition) ? (void) 0 : BLOG(verbose_level, stream)
-
+diff -ru a/brave/vendor/adblock_rust_ffi/src/wrapper.cpp b/brave/vendor/adblock_rust_ffi/src/wrapper.cpp
+--- a/brave/vendor/adblock_rust_ffi/src/wrapper.cpp	2020-09-26 00:29:10.890000602 +0200
++++ b/brave/vendor/adblock_rust_ffi/src/wrapper.cpp	2020-10-01 12:15:47.649996482 +0200
+@@ -1,4 +1,5 @@
+ #include "wrapper.hpp"
++#include <cstring>
+ #include <iostream>
+ using namespace std;
+ 
+diff -ru a/brave/vendor/bat-native-ads/src/bat/ads/internal/logging.h b/brave/vendor/bat-native-ads/src/bat/ads/internal/logging.h
+--- a/brave/vendor/bat-native-ads/src/bat/ads/internal/logging.h	2020-09-25 22:55:11.660000101 +0200
++++ b/brave/vendor/bat-native-ads/src/bat/ads/internal/logging.h	2020-10-01 12:15:47.669996481 +0200
+@@ -52,7 +52,7 @@
+ //   8 Database queries
+ 
+ #define BLOG(verbose_level, stream) ads::Log(__FILE__, __LINE__, \
+-    verbose_level, (std::ostringstream() << stream).str());
++    verbose_level, static_cast<std::ostringstream &>(std::ostringstream() << stream).str());
+ 
+ // You can also do conditional verbose logging when some extra computation and
+ // preparation for logs is not needed:
+diff -ru a/brave/vendor/bat-native-ledger/src/bat/ledger/internal/contribution/contribution.cc b/brave/vendor/bat-native-ledger/src/bat/ledger/internal/contribution/contribution.cc
+--- a/brave/vendor/bat-native-ledger/src/bat/ledger/internal/contribution/contribution.cc	2020-09-25 22:55:12.273333434 +0200
++++ b/brave/vendor/bat-native-ledger/src/bat/ledger/internal/contribution/contribution.cc	2020-10-01 12:15:47.663329814 +0200
+@@ -7,6 +7,7 @@
+ 
+ #include <algorithm>
+ #include <cmath>
++#include <ctime>
+ #include <memory>
+ #include <utility>
+ #include <vector>
+diff -ru a/brave/vendor/bat-native-ledger/src/bat/ledger/internal/logging/logging.h b/brave/vendor/bat-native-ledger/src/bat/ledger/internal/logging/logging.h
+--- a/brave/vendor/bat-native-ledger/src/bat/ledger/internal/logging/logging.h	2020-09-25 22:55:11.680000101 +0200
++++ b/brave/vendor/bat-native-ledger/src/bat/ledger/internal/logging/logging.h	2020-10-01 12:38:06.619996468 +0200
+@@ -53,7 +53,7 @@
+ //   9 Detailed debugging (response headers, etc)
+ 
+ #define BLOG(verbose_level, stream) ledger::Log(__FILE__, __LINE__, \
+-    verbose_level, (std::ostringstream() << stream).str());
++    verbose_level, static_cast<std::ostringstream &>(std::ostringstream() << stream).str());
+ 
+ // You can also do conditional verbose logging when some extra computation and
+ // preparation for logs is not needed:
+diff -ru a/brave/vendor/bat-native-usermodel/src/transformation.cc b/brave/vendor/bat-native-usermodel/src/transformation.cc
+--- a/brave/vendor/bat-native-usermodel/src/transformation.cc	2020-09-26 00:30:07.446667262 +0200
++++ b/brave/vendor/bat-native-usermodel/src/transformation.cc	2020-10-01 12:15:47.669996481 +0200
+@@ -4,6 +4,7 @@
+  * You can obtain one at http://mozilla.org/MPL/2.0/. */
+  
+ #include "transformation.h"
++#include <algorithm>
+ #include <codecvt>
+ #include <math.h>
+ namespace usermodel {
+--- a/brave/vendor/bat-native-ads/src/bat/ads/internal/classification/classification_util.cc	2020-10-01 16:12:59.776666163 +0200
++++ b/brave/vendor/bat-native-ads/src/bat/ads/internal/classification/classification_util.cc	2020-10-01 17:26:05.076665847 +0200
+@@ -5,6 +5,7 @@
+ 
+ #include "bat/ads/internal/classification/classification_util.h"
+ 
++#include <algorithm>
+ #include "base/strings/string_split.h"
+ 
+ namespace ads {
+diff --git a/brave/vendor/bat-native-ads/src/bat/ads/internal/filters/ads_history_conversion_filter.cc b/brave/vendor/bat-native-ads/src/bat/ads/internal/filters/ads_history_conversion_filter.cc
+index 67bd13c94d..5e8e8736f5 100644
+--- a/brave/vendor/bat-native-ads/src/bat/ads/internal/filters/ads_history_conversion_filter.cc
++++ b/brave/vendor/bat-native-ads/src/bat/ads/internal/filters/ads_history_conversion_filter.cc
+@@ -4,6 +4,7 @@
+  * You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
+ #include "bat/ads/internal/filters/ads_history_conversion_filter.h"
++#include <algorithm>
+ 
+ namespace ads {
+ 
