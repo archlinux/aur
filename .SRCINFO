@@ -1,10 +1,11 @@
-pkgbase = pantheon-dock-git
-	pkgdesc = The Pantheon Dock
+pkgbase = pantheon-dock-instctl-git
+	pkgdesc = The Pantheon Dock (with instance controls)
 	pkgver = r1970.e9fa02b
 	pkgrel = 1
 	url = https://github.com/elementary/dock
 	arch = i686
 	arch = x86_64
+	groups = pantheon-qq
 	license = GPL3
 	makedepends = git
 	makedepends = gnome-common
@@ -12,13 +13,16 @@ pkgbase = pantheon-dock-git
 	makedepends = vala
 	makedepends = gnome-menus
 	makedepends = libdbusmenu-gtk3
+	makedepends = libgranite.so=5-64
 	depends = libgee
 	depends = bamf
 	depends = python
 	provides = plank
 	conflicts = plank
 	source = pantheon-dock::git+https://github.com/elementary/dock
+	source = instance-controls.patch
 	sha256sums = SKIP
+	sha256sums = 04bdb2b50e7150f9265664fd6d02ed894380c91af26fede3e4560bc80975e77c
 
-pkgname = pantheon-dock-git
+pkgname = pantheon-dock-instctl-git
 

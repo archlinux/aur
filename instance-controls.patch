@@ -1,0 +1,94 @@
+diff --git a/lib/Items/ApplicationDockItem.vala b/lib/Items/ApplicationDockItem.vala
+index a58dbed..0c375f7 100644
+--- a/lib/Items/ApplicationDockItem.vala
++++ b/lib/Items/ApplicationDockItem.vala
+@@ -469,13 +469,35 @@ namespace Plank
+ 					
+ 					if (pbuf != null)
+ 						window_item = create_literal_menu_item_with_pixbuf (window_name, pbuf);
+-					else 
++					else
+ 						window_item = create_literal_menu_item (window_name, Icon);
+ 					
++					//instance "Close"
++					Gdk.Pixbuf close_icon = Gtk.IconTheme.get_default ().load_icon ("window-close-symbolic", Gtk.IconSize.MENU, 0);
++					Gtk.MenuItem close_item = create_literal_menu_item_with_pixbuf ("Close", close_icon);
++					close_item.activate.connect (() => WindowControl.close_window (window, event_time));
++					
++					//instance "Switch to"
++					Gdk.Pixbuf switch_icon = Gtk.IconTheme.get_default ().load_icon ("go-next-symbolic", Gtk.IconSize.MENU, 0);
++					Gtk.MenuItem switch_item = create_literal_menu_item_with_pixbuf ("Switch to", switch_icon);
++					switch_item.activate.connect (() => WindowControl.focus_window (window, event_time));
++					
++					//instance "Minimize"
++					Gdk.Pixbuf minimize_icon = Gtk.IconTheme.get_default ().load_icon ("window-minimize-symbolic", Gtk.IconSize.MENU, 0);
++					Gtk.MenuItem minimize_item = create_literal_menu_item_with_pixbuf ("Minimize", minimize_icon);
++					minimize_item.activate.connect (() => minimized_active (window, minimize_item, switch_item));
++					
++					//instance control submenu
++					var control_menu = new Gtk.Menu ();
++					control_menu.append (close_item);
++					control_menu.append (minimize_item);
++					control_menu.append (switch_item);
++					close_item.show();
+ 					if (window.is_active ())
+-						window_item.set_sensitive (false);
++						minimize_item.show();
+ 					else
+-						window_item.activate.connect (() => WindowControl.focus_window (window, event_time));
++						switch_item.show();
++					window_item.set_submenu (control_menu);
+ 					
+ 					items.add (window_item);
+ 				}
+@@ -484,6 +506,13 @@ namespace Plank
+ 			return items;
+ 		}
+ 		
++		public static void minimized_active (Bamf.Window window, Gtk.MenuItem minimize_item, Gtk.MenuItem switch_item)
++		{
++			WindowControl.minimize_window (window);
++			minimize_item.hide();
++			switch_item.show();
++		}
++		
+ 		/**
+ 		 * {@inheritDoc}
+ 		 */
+diff --git a/lib/Services/WindowControl.vala b/lib/Services/WindowControl.vala
+index e387612..db2997b 100644
+--- a/lib/Services/WindowControl.vala
++++ b/lib/Services/WindowControl.vala
+@@ -225,6 +225,32 @@ namespace Plank
+ 			}
+ 		}
+ 		
++		public static void close_window (Bamf.Window window, uint32 event_time)
++		{
++			Wnck.Screen.get_default ();
++			unowned Wnck.Window w = Wnck.Window.@get (window.get_xid ());
++			
++			warn_if_fail (w != null);
++			
++			if (w == null)
++				return;
++
++			w.close (event_time);
++		}
++		
++		public static void minimize_window (Bamf.Window window)
++		{
++			Wnck.Screen.get_default ();
++			unowned Wnck.Window w = Wnck.Window.@get (window.get_xid ());
++			
++			warn_if_fail (w != null);
++			
++			if (w == null)
++				return;
++
++			w.minimize ();
++		}
++		
+ 		public static void focus_window (Bamf.Window window, uint32 event_time)
+ 		{
+ 			Wnck.Screen.get_default ();

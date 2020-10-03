@@ -1,23 +1,33 @@
-# Maintainer <shlomochoina@gmail.com> 
+# Maintainer: Que Quotion <quequotion@bugmenot.com> 
+# Contributor: <shlomochoina@gmail.com> 
 
-pkgname=pantheon-dock-git
+pkgname=pantheon-dock-instctl-git
 pkgver=r1970.e9fa02b
 pkgrel=1
-pkgdesc='The Pantheon Dock'
+pkgdesc='The Pantheon Dock (with instance controls)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/dock'
 license=('GPL3')
+groups=('pantheon-qq')
 depends=('libgee' 'bamf' 'python')
-makedepends=('git' 'gnome-common' 'meson' 'vala' 'gnome-menus' 'libdbusmenu-gtk3')
+makedepends=('git' 'gnome-common' 'meson' 'vala' 'gnome-menus' 'libdbusmenu-gtk3' 'libgranite.so=5-64')
 conflicts=('plank')
 provides=('plank')
-source=(pantheon-dock::git+$url)
-sha256sums=('SKIP')
+source=(pantheon-dock::git+$url
+        'instance-controls.patch')
+sha256sums=('SKIP'
+            '04bdb2b50e7150f9265664fd6d02ed894380c91af26fede3e4560bc80975e77c')
 
 pkgver() {
   cd pantheon-dock
 
    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd pantheon-dock
+
+  patch -Np1 < ../instance-controls.patch
 }
 
 build() {
