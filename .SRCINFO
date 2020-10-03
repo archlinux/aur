@@ -1,8 +1,8 @@
 pkgbase = kde1-kdebase-git
 	pkgdesc = Historical copy of the base applications module of KDE 1, adapted to compile on modern systems (circa. 2016)
-	pkgver = 1.1.2r6075.a40a9a0de
+	pkgver = 1.1.2r6137.849cc4d1a
 	pkgrel = 1
-	url = https://quickgit.kde.org/?p=kde1-kdebase.git
+	url = https://invent.kde.org/historical/kde1-kdebase
 	arch = i686
 	arch = x86_64
 	groups = kde1
@@ -14,9 +14,12 @@ pkgbase = kde1-kdebase-git
 	depends = libjpeg
 	depends = libtiff
 	depends = perl
+	depends = pulseaudio
+	depends = glu
+	depends = libxpm
 	provides = kde1-kdebase
 	conflicts = kde1-kdebase
-	source = git://anongit.kde.org/kde1-kdebase.git
+	source = git+https://invent.kde.org/historical/kde1-kdebase.git
 	md5sums = SKIP
 
 pkgname = kde1-kdebase-git
