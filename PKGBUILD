@@ -1,6 +1,6 @@
 pkgbase=watchdog-ddns
 pkgname=("${pkgbase}-server" "${pkgbase}-client")
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='开箱即用的可常驻 Dynamic DNS 客户端，现已支持 DNSPod 阿里云 Cloudflare，支持网卡 IP'
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('go')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/yzy613/${pkgbase}/archive/v${pkgver}.tar.gz"
         "${pkgname[0]}.service"
         "${pkgname[1]}.service")
-sha256sums=('6b225f398b11434c2dc93eb2dc9426c684ad000966d69fa491f66f296759d91a'
+sha256sums=('19cc69ae3c27a7862d2eafa92e95c0bb6c9171a4e9ef76580f38dea289c088ab'
             'e5d1cd8822d45ed8586ca23f8f893fda6636171c9109341e05816355089237bc'
             '245e4aa6bb204ca0cecef5d3e22643935d187dca068bb23562f604f3277ae5ed')
 
@@ -44,7 +44,7 @@ packaging() {
 
   # conf
   install -dm 755 ${pkgdir}/etc/${pkgbase}
-  ${pkgdir}/usr/bin/${1} -init -conf_path ${pkgdir}/etc/${pkgbase}/
+  ${pkgdir}/usr/bin/${1} -init 0123 -conf_path ${pkgdir}/etc/${pkgbase}/
 
   # systemd service
   install -Dm644 ${srcdir}/${1}.service ${pkgdir}/usr/lib/systemd/system/${1}.service
