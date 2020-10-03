@@ -102,7 +102,7 @@ build() {
     # Which will break `compiler-rt`
     unset CPPFLAGS
 
-    python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="/opt/swift" installable_package="$srcdir/swift.tar.gz"
+    python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="/opt/swift"
 }
 
 package() {
