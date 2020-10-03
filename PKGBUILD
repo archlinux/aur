@@ -9,7 +9,6 @@ pkgver(){
 }
 pkgdesc="Steam cards farmer. Git version"
 conflicts=('asf')
-provides=('asf')
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache')
