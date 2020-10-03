@@ -1,14 +1,11 @@
 pkgbase = tastyworks-bin
-	pkgdesc = trading platform client
+	pkgdesc = One of the fastest, most reliable, and most secure trading platforms in the world.
 	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://tastyworks.com/
 	arch = x86_64
-	license = Copyright
-	makedepends = tar
-	makedepends = xz
-	depends = jre>=8
-	options = !strip
+	license = custom:commercial
+	depends = java-runtime
 	source = https://download.tastyworks.com/desktop-1.x.x/1.9.2/tastyworks-1.9.2-1_amd64.deb
 	sha256sums = a59d74919ce035c772bd2c0577b495827e20773d21eb0f164b4791cd954adac5
 
