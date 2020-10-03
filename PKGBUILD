@@ -11,7 +11,7 @@ url="https://www.oilshell.org/"
 license=("Apache")
 options=(!strip)
 optdepends=("readline: interactive features")
-source=("https://www.oilshell.org/download/$_pkgname-$pkgver.tar.gz")
+source=("https://www.oilshell.org/download/oil-$pkgver.tar.gz")
 sha256sums=('d2ebfe83b5ea1c3fbc77cb90241cab6115d2152f61b53db3c8f39bbff73be1da')
 
 prepare() {
