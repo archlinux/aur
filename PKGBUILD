@@ -3,7 +3,7 @@
 
 pkgname=spdlog-git
 pkgver=1.8.1.cbe9448
-pkgrel=1
+pkgrel=2
 pkgdesc='Very fast, header only, C++ logging library'
 arch=('any')
 url='https://github.com/gabime/spdlog'
@@ -27,7 +27,7 @@ build() {
   cd build
   cmake ../spdlog \
     -DSPDLOG_BUILD_BENCH=OFF \
-    -DSPDLOG_BUILD_EXAMPLES=OFF \
+    -DSPDLOG_BUILD_EXAMPLE=OFF \
     -DSPDLOG_BUILD_TESTS=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
