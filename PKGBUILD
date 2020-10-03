@@ -1,8 +1,8 @@
 # Maintainer: archibald869 <archibald869 at web dot de>
 
 pkgname=cling
-pkgver=0.6
-pkgrel=5
+pkgver=0.7
+pkgrel=1
 pkgdesc="Interactive C++ interpreter, built on the top of LLVM and Clang libraries"
 arch=("i686" "x86_64")
 url="https://root.cern.ch/cling"
@@ -44,7 +44,7 @@ build() {
     cmake \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="/opt/cling" \
-        -DLLVM_TARGETS_TO_BUILD="host" \
+        -DLLVM_TARGETS_TO_BUILD="host;NVPTX" \
         -DLLVM_BUILD_LLVM_DYLIB=OFF \
         -DLLVM_ENABLE_RTTI=ON \
         -DLLVM_ENABLE_FFI=ON \
