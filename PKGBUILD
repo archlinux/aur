@@ -1,10 +1,10 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
-# Contributor: Filip Brcic <brcha@gna.org>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Filip Brcic <brcha at gna dot org>
 
 pkgname=mingw-w64-pdcurses
 provides=(mingw-w64-curses)
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="Public Domain Curses wincon port (mingw-w64)"
 arch=('any')
 url="https://www.projectpluto.com/win32a.htm"
@@ -13,18 +13,15 @@ makedepends=('mingw-w64-gcc')
 options=(staticlibs !buildflags !strip)
 license=("public domain")
 source=(pdcurses-${pkgver}.tar.gz::"https://github.com/Bill-Gray/PDCursesMod/archive/v${pkgver}.tar.gz"
-        001-mingw-pdcurses-4.1.0-build.patch
-        002-fix-exports.patch)
-sha256sums=('c6e036c0cb24f7909dbb8fa5011564727cd64a91efd3b7bb3e81c7509d7f5fde'
-            '913b5aff09d0ab1a2197f66a98657927d85a0dc3577c2b5e69179148fb2b0242'
-            '246f93facdd2703f8b9d0bcd57e89688fd861d34a30facc60a48892b330b08bc')
+        001-mingw-pdcurses-4.1.0-build.patch)
+sha256sums=('50e982a680f97ddc4dbf657e933dd1597101294e2f71a51e37060c85b07a3d5d'
+            '029b3755eacc8b3bebc09767b2090e18c160acc80be0b07742d8aaa098b6be89')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/PDCursesMod-${pkgver}"
   patch -p1 -i ${srcdir}/001-mingw-pdcurses-4.1.0-build.patch
-  patch -p1 -i ${srcdir}/002-fix-exports.patch
 }
 
 build() {
@@ -36,7 +33,15 @@ build() {
 # vice-versa.  That causes build failures - no surpise.
     cp -rf wingui wingui-shared-${_arch}
     pushd wingui-shared-${_arch}
-      make -f Makefile.mng \
+      make \
+        CC=${_arch}-gcc \
+        LINK=${_arch}-gcc \
+        STRIP=${_arch}-strip \
+        AR=${_arch}-ar \
+        WIDE=Y \
+        UTF8=Y \
+        DLL=Y
+      make demos \
         CC=${_arch}-gcc \
         LINK=${_arch}-gcc \
         STRIP=${_arch}-strip \
@@ -48,7 +53,14 @@ build() {
 
     cp -rf wingui wingui-static-${_arch}
     pushd wingui-static-${_arch}
-      make -f Makefile.mng \
+      make \
+        CC=${_arch}-gcc \
+        LINK=${_arch}-gcc \
+        STRIP=${_arch}-strip \
+        AR=${_arch}-ar \
+        WIDE=Y \
+        UTF8=Y
+      make demos \
         CC=${_arch}-gcc \
         LINK=${_arch}-gcc \
         STRIP=${_arch}-strip \
@@ -76,7 +88,7 @@ package() {
     install wingui-static-${_arch}/libpdcurses.a ${pkgdir}/usr/${_arch}/lib/libpanel.a
 
     echo '#include "pdcurses/curses.h"' > pdcurses.h
-    install -m 0644 curses.h panel.h term.h acs_defs.h ${pkgdir}/usr/${_arch}/include/pdcurses/
+    install -m 0644 curses.h curspriv.h panel.h ${pkgdir}/usr/${_arch}/include/pdcurses/
     install -m 0644 pdcurses.h ${pkgdir}/usr/${_arch}/include/pdcurses.h
 
     find "$pkgdir/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip --strip-unneeded {} \;
