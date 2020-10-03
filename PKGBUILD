@@ -5,9 +5,9 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=firefox-nightly-hg
 _pkgname=firefox-nightly
-pkgver=82.0a1.r546634.109f3a4de567
-_pkgver=82.0a1
-pkgrel=2
+pkgver=83.0a1.r551354+.7d7faf0b6d7a+
+_pkgver=83.0a1
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, nightly version"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -30,10 +30,12 @@ conflicts=('firefox-nightly')
 options=(!emptydirs !makeflags !strip)
 source=("hg+$_repo"
         "firefox-nightly.desktop"
-        "0001-Use-remoting-name-for-GDK-application-names.patch")
+        "0001-Use-remoting-name-for-GDK-application-names.patch"
+	"D90627.diff")
 sha512sums=('SKIP'
             '8b4ac564aaa39d5a3ea7fda12eed047687916fd9c084407157dd380d4a3db7cf41aebc4b6ab9aa2a5a3e1cddd1f03440f9471a6c091e5d8339bde193436612d0'
-            'afb4a230b3e87cfb71687b3fe375c78463e02a6f7b1daa15bf6127f6414c6c29bf2d8df372b59b4df7f90fc8929582e8aab4e3db5e8b54b1817c96aad00d92ea')
+            'afb4a230b3e87cfb71687b3fe375c78463e02a6f7b1daa15bf6127f6414c6c29bf2d8df372b59b4df7f90fc8929582e8aab4e3db5e8b54b1817c96aad00d92ea'
+            '02480231cec469fba1e03f669f0a47954bf633f0487ed27d4e0f135d100d9ae023044ef659cc32915aa8acb8dbcbfa2a6a69c78a94700961f9fa80a18bd2f4eb')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -59,6 +61,9 @@ prepare() {
   
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
+
+  # https://phabricator.services.mozilla.com/D90627
+  patch -Np1 -i ../D90627.diff
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
  
