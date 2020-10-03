@@ -1,15 +1,18 @@
 pkgbase = qt1
 	pkgdesc = Historical copy of Qt 1, adapted to compile on modern systems (circa. 2016)
 	pkgver = 1.45
-	pkgrel = 1
-	url = https://github.com/KDE/qt1
+	pkgrel = 2
+	url = https://invent.kde.org/historical/qt1
 	arch = i686
 	arch = x86_64
 	license = custom:Qt Free Edition License
+	makedepends = cmake
+	makedepends = byacc
 	depends = libx11
 	depends = libxext
-	source = https://github.com/KDE/qt1/archive/78811a56cc111d17f42221566e7e4430d5de8d40.tar.gz
-	sha256sums = cf745bb7a40f4fe2c830f3ece3133853eb5d99280e6b108852c4655e83fa30af
+	depends = mesa
+	source = https://invent.kde.org/historical/qt1/-/archive/46b0d20a2823088b8942020b896a3e77376eb29a/qt1-46b0d20a2823088b8942020b896a3e77376eb29a.tar.gz
+	sha256sums = 08c47fb02f326d58ec55049c12439c09a8e24dd863686c6c29a4075a06d575af
 
 pkgname = qt1
 
