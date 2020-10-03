@@ -1,9 +1,9 @@
 # Maintainer: l42 <i at tfwno dot gf>
 pkgname=stretchly-bin
 _pkgname=Stretchly
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-_rlsver=v1.1.0
+_rlsver=v1.2.0
 pkgdesc="The break time reminder app"
 arch=('x86_64')
 url="https://github.com/hovancik/stretchly/"
@@ -16,7 +16,7 @@ source=(
   "https://github.com/hovancik/stretchly/releases/download/$_rlsver/$_pkgname-$pkgver.pacman"
   "LICENSE::https://raw.githubusercontent.com/hovancik/stretchly/$_rlsver/LICENSE"
 )
-sha256sums=('ccbd8423752cc9fae635e7470a95b606326e00939be2a737befa9a09769cdb79'
+sha256sums=('3ef43fd10ffa1c84aeb0e0cf32f82c1e680cac40132bab9bf555332411b990db'
             'd4262f71a6c02b19bdbdf760033803c0c7ca24acf2591ba425633f7e3315790a')
 
 package() {
