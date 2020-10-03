@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 
 pkgname=kepubify
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc='Convert your ePubs into kepubs, with a easy-to-use command-line tool'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=('kepubify-bin')
 makedepends=('go')
 source=("https://github.com/pgaskin/kepubify/archive/v$pkgver.tar.gz")
-sha256sums=('52e2099ed130d85d828d11c9addaf8099d6b84c53a477caa2fce77954ab043c4')
+sha256sums=('73cc026538ed5cdb961366b1b9897c8bec36a6cdf6d1cc404b86aa24da276374')
 
 build() {
   cd "$pkgname-$pkgver"
