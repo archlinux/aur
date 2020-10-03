@@ -1,8 +1,8 @@
 pkgbase = kde1-kdelibs
 	pkgdesc = Historical copy of the libraries module of KDE 1, adapted to compile on modern systems (circa. 2016)
 	pkgver = 1.1.2
-	pkgrel = 4
-	url = https://github.com/KDE/kde1-kdelibs
+	pkgrel = 5
+	url = https://invent.kde.org/historical/kde1-kdelibs
 	arch = i686
 	arch = x86_64
 	groups = kde1
@@ -13,8 +13,8 @@ pkgbase = kde1-kdelibs
 	depends = libpng
 	depends = libjpeg-turbo
 	depends = libtiff
-	source = https://github.com/KDE/kde1-kdelibs/archive/ca9e8f0f2806ca5879ca3dccac1ca2cb5feab6fa.tar.gz
-	sha256sums = 761e8a98c3c5259ed664b9ef7305192cc246c770369690c3e1d142321849bbeb
+	source = https://invent.kde.org/historical/kde1-kdelibs/-/archive/cc31c174ab60ceeb53552cec121aecdf26a52db3/kde1-kdelibs-cc31c174ab60ceeb53552cec121aecdf26a52db3.tar.gz
+	sha512sums = 78d2d66a60009ef3ae98088b4f8b742f01814cf0ad7befd2d7dc3481110399e462070d8240f6f225e44a845905fa3d6ea8f90c55542c50a72e49bfb26a5a55a0
 
 pkgname = kde1-kdelibs
 

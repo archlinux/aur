@@ -2,37 +2,42 @@
 
 pkgname=kde1-kdelibs
 pkgver=1.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Historical copy of the libraries module of KDE 1, adapted to compile on modern systems (circa. 2016)"
 arch=('i686' 'x86_64')
-url="https://github.com/KDE/kde1-kdelibs"
+url="https://invent.kde.org/historical/kde1-kdelibs"
 license=("GPL2" "LGPL2")
-groups=("kde1")
-depends=("qt1" "libpng" "libjpeg-turbo" "libtiff")
-makedepends=("cmake")
-_commit="ca9e8f0f2806ca5879ca3dccac1ca2cb5feab6fa"
-source=("https://github.com/KDE/$pkgname/archive/$_commit.tar.gz")
-sha256sums=('761e8a98c3c5259ed664b9ef7305192cc246c770369690c3e1d142321849bbeb')
+groups=('kde1')
+depends=('qt1' 'libpng' 'libjpeg-turbo' 'libtiff')
+makedepends=('cmake')
+_commit="cc31c174ab60ceeb53552cec121aecdf26a52db3"
+source=("https://invent.kde.org/historical/$pkgname/-/archive/$_commit/$pkgname-$_commit.tar.gz")
+sha512sums=('78d2d66a60009ef3ae98088b4f8b742f01814cf0ad7befd2d7dc3481110399e462070d8240f6f225e44a845905fa3d6ea8f90c55542c50a72e49bfb26a5a55a0')
 
 prepare() {
-  mkdir -p build
-  cd $pkgname-$_commit
-  sed -i 's/lib64/lib/' cmake/FindQt1.cmake cmake/KDE1InstallDirs.cmake
+  if [[ -d build ]]; then
+    rm -rf build && mkdir build
+  else
+    mkdir build
+  fi
 }
 
 build() {
   cd build
-  cmake ../$pkgname-$_commit -DCMAKE_INSTALL_PREFIX='/usr'
+  cmake ../$pkgname-$_commit \
+    -DCMAKE_INSTALL_PREFIX='/usr'
   make
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir/" install
+  cd build
+  make DESTDIR="$pkgdir/" install
 
-  cd $pkgname-$_commit
-  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
-  install -Dm644 COPYING.LIB $pkgdir/usr/share/licenses/$pkgname/COPYING.LIB
-  ln -s /opt/kde1/share/doc/HTML/en/ $pkgdir/opt/kde1/share/doc/HTML/default
+  cd ../$pkgname-$_commit
+  install -Dm644 COPYING \
+    "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 COPYING.LIB \
+    "$pkgdir"/usr/share/licenses/$pkgname/COPYING.LIB
 }
 
 # vim:set ts=2 sw=2 et:
