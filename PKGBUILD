@@ -1,8 +1,8 @@
-# Maintainer: timetoplatypus <timetoplatypus@protonmail.com>
+# Maintainer: Franck STAUFFER <franck.stauffer@monaco.mc>
+# Contributor: timetoplatypus <timetoplatypus@protonmail.com>
 # Contributor: andychu <andy@oilshell.org>
 
 pkgname=osh
-_pkgname=oil
 pkgver=0.8.1
 pkgrel=1
 pkgdesc="A bash-compatible UNIX shell written in Python."
