@@ -5,7 +5,7 @@ pkgname="asf-git"
 pkgrel=1
 pkgver=0
 pkgver(){
-  cd asf/
+  cd "$pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 pkgdesc="Steam cards farmer. Git version"
