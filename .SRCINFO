@@ -1,7 +1,7 @@
 pkgbase = chihaya
 	pkgdesc = A customizable, multi-protocol BitTorrent tracker
 	pkgver = 1.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/chihaya/chihaya
 	arch = i686
 	arch = x86_64

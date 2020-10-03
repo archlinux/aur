@@ -2,7 +2,7 @@
 
 pkgname=chihaya
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A customizable, multi-protocol BitTorrent tracker"
 arch=('i686' 'x86_64')
 url="https://github.com/chihaya/chihaya"
@@ -18,6 +18,12 @@ sha256sums=('17207aeaf1887befba4a100df4e860000fe2e4747ab0c518aad98005606b05fd'
             'SKIP')
 
 
+export CGO_CPPFLAGS="${CPPFLAGS}"
+export CGO_CFLAGS="${CFLAGS}"
+export CGO_CXXFLAGS="${CXXFLAGS}"
+export CGO_LDFLAGS="${LDFLAGS}"
+export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -modcacherw"  # -mod=readonly
+
 build() {
   cd "$pkgname-$pkgver"
 
@@ -25,17 +31,15 @@ build() {
 
   GO111MODULE=on \
     go build \
-      -buildmode=pie \
-      -ldflags "-extldflags $LDFLAGS" \
-      -trimpath \
-      -modcacherw \
       ./cmd/...
 }
 
 check() {
   cd "$pkgname-$pkgver"
 
-  go test -bench $(go list ./...)
+  go test \
+    -bench \
+    $(go list ./...)
 }
 
 package() {
