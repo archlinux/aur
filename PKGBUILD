@@ -2,7 +2,7 @@
 
 pkgname=irtt
 pkgver=0.9.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Isochronous round-trip tester"
 arch=('i686' 'x86_64')
 url="https://github.com/heistp/irtt"
@@ -16,15 +16,17 @@ sha256sums=('f9767fa9259db1932d011ed0a9f9528c70411878668ba0db6451264557ddd800'
 validpgpkeys=('35C296FC733AA777B03DB9A8CAEC8F418885D165')  # Pete Heist <pete@eventide.io>
 
 
+export CGO_CPPFLAGS="${CPPFLAGS}"
+export CGO_CFLAGS="${CFLAGS}"
+export CGO_CXXFLAGS="${CXXFLAGS}"
+export CGO_LDFLAGS="${LDFLAGS}"
+export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -modcacherw"  # -mod=readonly
+
 build() {
   cd "$pkgname-$pkgver"
 
   go mod init "github.com/heistp/irtt"
   go build \
-    -buildmode=pie \
-    -ldflags "-extldflags $LDFLAGS" \
-    -trimpath \
-    -modcacherw \
     "github.com/heistp/irtt/cmd/irtt"
 }
 
@@ -32,7 +34,6 @@ check() {
   cd "$pkgname-$pkgver"
 
   go test \
-    -mod=readonly \
     ./...
 }
 
