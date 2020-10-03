@@ -1,11 +1,12 @@
 pkgbase = python-mpv
 	pkgdesc = Python interface to the awesome mpv media player
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jaseg/python-mpv
 	arch = any
 	license = AGPL3
 	makedepends = python-setuptools
+	depends = mpv
 	depends = python
 	optdepends = python-pillow: raw screenshot support
 	source = https://files.pythonhosted.org/packages/source/p/python-mpv/python-mpv-0.5.2.tar.gz
