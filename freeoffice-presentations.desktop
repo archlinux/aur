@@ -75,4 +75,5 @@ Name=FreeOffice Presentations
 Icon=freeoffice-presentations
 TryExec=freeoffice-presentations
 Exec=freeoffice-presentations %F
+StartupWMClass=pr
 

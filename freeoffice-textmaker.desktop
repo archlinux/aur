@@ -75,4 +75,4 @@ Name=FreeOffice TextMaker
 Icon=freeoffice-textmaker
 TryExec=freeoffice-textmaker
 Exec=freeoffice-textmaker %F
-
+StartupWMClass=tm

@@ -76,4 +76,5 @@ Name=FreeOffice PlanMaker
 Icon=freeoffice-planmaker
 TryExec=freeoffice-planmaker
 Exec=freeoffice-planmaker %F
+StartupWMClass=pm
 

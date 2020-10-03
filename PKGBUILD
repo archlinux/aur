@@ -2,7 +2,7 @@
 
 pkgname=freeoffice
 pkgver=978
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete, reliable, lightning-fast and Microsoft Office-compatible office suite with a word processor, spreadsheet, and presentation graphics software."
 arch=('x86_64')
 url="http://www.freeoffice.com/"
@@ -22,9 +22,9 @@ sha256sums=('1b18ea29ad12642688227cdca51738369513626070f2841c22d2fb35c38eadb0'
             '0437328f3fddf93e18ad3df270971802c2e0fcaf3f030588c1301767a968da69'
             'c90e2575c71f03f0b627e4f6c70f437b9c40e5878bf9f553a4244b4a1f6dbd3c'
             'e6bc7608e58f44b55654c5d1fc93d442a400de638e2cbc6d5a3b3a8fbceaa0e4'
-            '1554213ee9058a6594e2b92e47891ad58e593a4ea7d678c755cd32e263f43da8'
-            '518913a4e3edb1f38dec65b865cf0687d5a4a5a1ecaa7fb5d653d5516a4d2ff8'
-            '2b305734e63c5fba12def3c6ddfa79ef711f1c857fe68250b0d03d56df2bd980')
+            '5068c61226553a04d7a9373e95fa77b0aac43b7abb45d17149464473162ebe47'
+            '0b167897477e0914fcbafc40d188977daaff6df3ebda38f80feeab33c51d4e1e'
+            '1c80fdb7cb4119cd08b892f033eb57a1b38bcc758f307c1621248009693f2f10')
 
 prepare() {
   xz -d "freeoffice2018.tar.lzma"
