@@ -1,7 +1,7 @@
 # Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=backdoor
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='A deck-building card roguelike cyberpunk game.'
 url="https://uspgamedev.org"
@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('luajit' 'love')
 makedepends=('cmake' 'git' 'wget' 'make')
 source=("https://github.com/uspgamedev/backdoor/archive/v${pkgver}.tar.gz")
-sha512sums=('5c3ce6187d47d5b62faa725ebfae523179edda1de3b1d45e9844c5bfd429ea62242446865c47f3f006e0554ea86c1c9785a473d577bb44c9503c48e69b899eee')
+sha512sums=('023832620dd61e5ff145dabc20577c887fb3d5926052ad9aefd5ae602dddf6360abb675c134d584e440694630759d131d72b9a064b232e1e028f9535b76976f2')
 
 build() {
 	cd ${pkgname}-${pkgver}
