@@ -2,7 +2,7 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=nextcloud-app-maps
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="OpenStreetMap layers including POIs"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('nextcloud')
 options=('!strip')
 source=("https://github.com/nextcloud/maps/releases/download/v$pkgver/maps-$pkgver.tar.gz")
-sha256sums=('33df2a92e80204dd5ca31775eaac6186e94dd76dff54f651f98f86c44c8205fa')
+sha256sums=('d7ffb425fa0f11d2c3b7cad857eca258c94d635d77663fe524a6e6bff5416c41')
 
 package() {
 	install -d "${pkgdir}"/usr/share/webapps/nextcloud/apps
