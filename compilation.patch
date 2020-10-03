@@ -1,0 +1,25 @@
+--- src/Comskip-0.82.009/video_out_sdl.c.orig	2020-10-03 11:22:19.744061757 +0100
++++ src/Comskip-0.82.009/video_out_sdl.c	2020-10-03 11:22:47.983306370 +0100
+@@ -306,10 +306,10 @@
+ unsigned char buf0[MAXWIDTH*MAXHEIGHT*3];
+ 
+ vo_instance_t * instance;
+-vo_setup_result_t result;
+ 
+ void vo_init(int width, int height, char *title)
+ {
++  vo_setup_result_t result;
+   instance = vo_sdl_open();
+   SDL_WM_SetCaption(title, "comskip");
+   sdl_setup(instance, width, height, width, height, &result);
+--- src/Comskip-0.82.009/mpeg2dec.c.orig	2020-10-03 11:21:36.328556330 +0100
++++ src/Comskip-0.82.009/mpeg2dec.c	2020-10-03 11:21:43.071709312 +0100
+@@ -161,7 +161,7 @@
+ 
+ int video_stream_index = -1;
+ int audio_stream_index = -1;
+-int width, height;
++// int width, height;
+ int have_frame_rate ;
+ int stream_index;
+ 
