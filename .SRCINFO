@@ -1,0 +1,14 @@
+pkgbase = rofi-gh
+	pkgdesc = GitHub issues in rofi
+	pkgver = 0.0.0
+	pkgrel = 0
+	url = https://github.com/OJFord/rofi-gh
+	arch = any
+	license = BSD-3
+	depends = github-cli
+	depends = rofi
+	provides = rofi-gh-issues
+	source = https://github.com/OJFord/rofi-gh/archive/v0.0.0.tar.gz
+
+pkgname = rofi-gh
+
