@@ -1,0 +1,16 @@
+pkgbase = ox-git
+	pkgdesc = An independent Rust text editor that runs in your terminal!
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/curlpipe/ox
+	arch = any
+	license = GPLv2
+	makedepends = git
+	makedepends = cargo
+	provides = ox
+	conflicts = ox
+	source = ox::git+https://github.com/curlpipe/ox
+	sha256sums = SKIP
+
+pkgname = ox-git
+
