@@ -68,6 +68,9 @@ package() {
     install -m644 "$f" "$install_dir/$f"
   done
 
+  # Install firmware
+  install -Dm644 firmware/rtl8188fufw.bin ${pkgdir}/usr/lib/firmware/rtlwifi/rtl8188fufw.bin
+
   mkdir -p "$pkgdir/etc/modprobe.d/"
   echo "options rtl8188fu rtw_power_mgnt=0 rtw_enusbss=0" > "$pkgdir/etc/modprobe.d/rtl8188fu.conf"
 }
