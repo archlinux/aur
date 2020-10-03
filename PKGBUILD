@@ -6,8 +6,8 @@
 
 _pkgname=8188fu
 pkgname="$_pkgname-dkms-git"
-pkgver=r8.1d12cae
-pkgrel=2
+pkgver=r83.7c988d6
+pkgrel=1
 pkgdesc='Driver for Realtek RTL8188FU USB wireless adapter'
 arch=('any')
 url="https://github.com/kelebek333/rtl8188fu"
@@ -30,7 +30,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname/rtl$_pkgname"
+  cd "$srcdir/$_pkgname"
   local i;for i in "${source[@]}";do
     case $i in
       *.patch)
@@ -57,7 +57,7 @@ package() {
   sed -e "s/@_PKGNAME@/$_pkgname/" -e "s/@PKGVER@/$pkgver/" -i "$install_dir/dkms.conf"
 
   # Copy sources
-  cd "$_pkgname/rtl$_pkgname"
+  cd "$_pkgname"
 
   for d in $(find . -type d); do
     install -dm755 "$install_dir/$d"
