@@ -1,6 +1,6 @@
 pkgbase = jitsi-meet-prosody-bin
 	pkgdesc = Jitsi Meet Prosody Plugins binary
-	pkgver = 1.0.4425
+	pkgver = 1.0.4428
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = jitsi.install
@@ -15,9 +15,9 @@ pkgbase = jitsi-meet-prosody-bin
 	provides = jitsi-meet-prosody
 	conflicts = jitsi-meet-prosody
 	options = !strip
-	source = https://download.jitsi.org/stable/jitsi-meet-prosody_1.0.4425-1_all.deb
+	source = https://download.jitsi.org/stable/jitsi-meet-prosody_1.0.4428-1_all.deb
 	source = jitsi.install
-	sha256sums = 32c6dfc4303ff41030da706897bdb02935ae55d91eb96d11803182adfe53166c
+	sha256sums = 8c07a6d2de76dbcea71a1bcb5621cfaa21521d735824b27369026bf9d7287e56
 	sha256sums = f1be0156fa053042b6f0306a8966a4b5b65c5fd3b53ac2268d275fb9daa986bf
 
 pkgname = jitsi-meet-prosody-bin
