@@ -1,0 +1,13 @@
+pkgbase = lipl
+	pkgdesc = Analyse the output over time of custom shell commands
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/yxdunc/lipl
+	arch = x86_64
+	license = unknown
+	makedepends = cargo
+	source = lipl-0.1.1.tar.gz::https://github.com/yxdunc/lipl/archive/v0.1.1.tar.gz
+	sha512sums = 75ea0243c687a8288d25c1dc53c1845337b5398108ca4e0322c16fadc88dd5e3201a787aac3c240bafae51dd8d2297787a616d18cd63c921ec0bb01f5b8794aa
+
+pkgname = lipl
+
