@@ -1,6 +1,6 @@
 pkgbase = kodi-devel
 	pkgver = 19.0a1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -95,7 +95,7 @@ pkgname = kodi-devel
 	depends = hicolor-icon-theme
 	depends = mesa
 	depends = python-pycryptodomex
-	depends = python-pillow6
+	depends = python-pillow
 	depends = python-simplejson
 	depends = xorg-xdpyinfo
 	depends = KODI-BIN
