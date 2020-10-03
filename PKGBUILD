@@ -1,21 +1,33 @@
-# Maintainer: Ekin Dursun <ekindursun@gmail.com>
-# Contributor: Oliver Mangold omangold at gmail dot com
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributer: Ekin Dursun <ekindursun@gmail.com>
+# Contributer: Oliver Mangold omangold at gmail dot com
 
-_name='xdis'
-pkgname="python-${_name}"
-pkgver=4.4.0
+_pkgname='xdis'
+pkgname="python-${_pkgname}"
+pkgver=5.0.4
 pkgrel=1
-pkgdesc="Python cross-version byte-code disassembler and marshal routines."
+pkgdesc='Python cross-version bytecode library and disassembler'
 arch=('any')
-url="https://github.com/rocky/python-xdis/"
-license=('MIT')
-depends=('python-click' 'python-six>=1.10.0')
+url='https://github.com/rocky/python-xdis'
+license=('GPL2')
+depends=('flake8'
+        'python-click'
+        'python-nose'
+        'python-six')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('ee12eb0e6f7dfc1aed1a5fc1f0e1aafc47aec76edef320f2f9626b6270396b3a')
+provides=("${_pkgname}")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('9074c15d92111877adf9e6a3156106acde8f87fc279a4ec03538f3faa1a5bfca')
+
+build() {
+  cd "${_pkgname}-${pkgver}"
+  python setup.py build
+}
 
 package() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
-    sed -i '1i#!/usr/bin/python' "$pkgdir/usr/bin/pydisasm"
+  cd "${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" 'README.rst'
 }
+
+# vim: ts=2 sw=2 et:
