@@ -9,7 +9,6 @@ pkgbase = recidia-audio-visualizer
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	makedepends = pkgconf
 	depends = gsl
 	depends = fftw
 	depends = ncurses
