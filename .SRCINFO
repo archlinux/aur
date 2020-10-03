@@ -1,11 +1,12 @@
 pkgbase = 4kstogram
 	pkgdesc = Download and backup Instagram photos shared by any user.
 	pkgver = 3.1.0.3300
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.4kdownload.com/products/product-stogram
 	arch = x86_64
 	license = custom:eula
 	makedepends = chrpath
+	depends = qt5-multimedia
 	depends = qt5-script
 	depends = qt5-quickcontrols
 	depends = qt5-graphicaleffects
@@ -15,11 +16,9 @@ pkgbase = 4kstogram
 	source = 4kstogram_3.1.0.3300_amd64.tar.bz2::https://dl.4kdownload.com/app/4kstogram_3.1.0_amd64.tar.bz2
 	source = 4kstogram.desktop
 	source = 4kstogram.png
-	source = fix_symlink_path.patch
 	sha256sums = 6b8c9db6ead9ae37c6c249a50f8437d729fd8348f1e7b434b218cd75e445c436
 	sha256sums = 7970c1f1aacd5a546ca8252c2d48a874478a26e23eb57769f54c5feac7316f51
 	sha256sums = b1add61c84f745911dee0672b25e021a3da0d90127843f3a814864858306ab8b
-	sha256sums = 78c14f0bdb2bd2539d734562b4655a024baf1af866e259babab07877c8901986
 
 pkgname = 4kstogram
 
