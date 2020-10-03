@@ -1,6 +1,6 @@
 pkgbase = gf_backup_tool-git
 	pkgdesc = Backup Terminal tool based on rsync & systemd
-	pkgver = v1.0.9.gd1c3dee
+	pkgver = 20201003
 	pkgrel = 1
 	url = https://github.com/Gregory-F/gf_backup_tool
 	install = gf_backup_tool.install
