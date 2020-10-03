@@ -1,6 +1,6 @@
 pkgbase = kpublictransport-git
 	pkgdesc = Library to assist with accessing public transport timetables and other information
-	pkgver = r729.5c6f655
+	pkgver = r1324.4e58cf7
 	pkgrel = 1
 	url = https://kontact.kde.org
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kpublictransport-git
 	depends = qt5-declarative
 	provides = kpublictransport
 	conflicts = kpublictransport
-	source = git+https://anongit.kde.org/kpublictransport.git
+	source = git+https://invent.kde.org/libraries/kpublictransport.git
 	sha256sums = SKIP
 
 pkgname = kpublictransport-git

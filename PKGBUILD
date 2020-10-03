@@ -2,7 +2,7 @@
 
 pkgname=kpublictransport-git
 _pkgname=kpublictransport
-pkgver=r729.5c6f655
+pkgver=r1324.4e58cf7
 pkgrel=1
 pkgdesc="Library to assist with accessing public transport timetables and other information"
 arch=(x86_64)
@@ -12,7 +12,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 depends=(qt5-declarative)
 makedepends=(git extra-cmake-modules)
-source=("git+https://anongit.kde.org/kpublictransport.git")
+source=("git+https://invent.kde.org/libraries/kpublictransport.git")
 sha256sums=('SKIP')
 
 pkgver() {
