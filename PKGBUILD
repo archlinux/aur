@@ -1,7 +1,7 @@
 # Maintainer: Pig Fang <g-plane@hotmail.com>
 pkgname=icd
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Powerful `cd` command with fuzzy-search tool.'
 
 arch=('any')
@@ -13,10 +13,8 @@ depends=('zsh')
 optdepends=('fzy' 'fzf' 'ripgrep' 'grep')
 
 package() {
-    cd $srcdir/$pkgname-$pkgver/
-    mkdir -p $pkgdir/usr/share/zsh/scripts/$pkgname/
-    cp $pkgname.plugin.zsh $pkgdir/usr/share/zsh/scripts/$pkgname/
+  cd $srcdir/$pkgname-$pkgver/
 
-    mkdir -p $pkgdir/usr/share/licenses/$pkgname/
-    cp ./LICENSE $pkgdir/usr/share/licenses/$pkgname/
+  install -Dm644 $pkgname.plugin.zsh $pkgdir/usr/share/zsh/scripts/$pkgname/$pkgname.plugin.zsh
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }

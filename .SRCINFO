@@ -1,7 +1,7 @@
 pkgbase = icd
 	pkgdesc = Powerful `cd` command with fuzzy-search tool.
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/g-plane/icd
 	arch = any
 	license = MIT
