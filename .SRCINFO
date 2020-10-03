@@ -1,14 +1,14 @@
 pkgbase = nextcloud-app-previewgenerator
 	pkgdesc = Nextcloud app that allows admins to pre-generate previews.
-	pkgver = 2.3.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/rullzer/previewgenerator
 	arch = any
 	license = AGPL
 	depends = nextcloud
 	options = !strip
-	source = previewgenerator-2.3.0.tar.gz::https://github.com/rullzer/previewgenerator/releases/download/v2.3.0/previewgenerator.tar.gz
-	sha256sums = 7776d35d09789b02482aa2839fd393598b239b4cf6dc78dea706b3f15883e01c
+	source = previewgenerator-3.0.1.tar.gz::https://github.com/rullzer/previewgenerator/releases/download/v3.0.1/previewgenerator.tar.gz
+	sha256sums = 032564b5c217c270305eab69e0ebf7a1005b72e14893d5b7ed829b8226014eec
 
 pkgname = nextcloud-app-previewgenerator
 
