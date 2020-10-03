@@ -1,5 +1,5 @@
 pkgbase = pcbdraw-git
-	pkgdesc = KiCad automation scripts.
+	pkgdesc = Convert your KiCAD boards into nice looking 2D drawings suitable for pinout diagrams.
 	pkgver = 194.99bcecd
 	pkgrel = 1
 	url = https://github.com/INTI-CMNB/pcbdraw
