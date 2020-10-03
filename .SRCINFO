@@ -1,7 +1,8 @@
 pkgbase = pop-shell-shortcuts-git
 	pkgdesc = Application for displaying and demoing Pop Shell shortcuts
-	pkgver = r37.9280535
-	pkgrel = 2
+	pkgver = r27.a653635
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/pop-os/shell-shortcuts
 	arch = x86_64
 	license = GPL3
