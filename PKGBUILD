@@ -3,13 +3,13 @@
 
 pkgname=arcanefortune-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A game of empire building, diplomacy, conquest, construction, and deconstruction"
 arch=('x86_64')
 url="https://arcanefortune.com"
 license=('AGPL3' 'CC BY-SA 4.0')
 options=(!strip !emptydirs)
-depends=('sh')
+depends=('sh' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'ncurses' 'freetype2' 'gcc-libs' 'libjpeg6-turbo' 'libtiff' 'zlib')
 provides=("${pkgname/-bin}")
 conflicts=("${pkgname/-bin}")
 install=arcanefortune.install
