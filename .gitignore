@@ -13,3 +13,4 @@
 
 # packages
 *.pkg.tar.xz
+*.pkg.tar.zst

@@ -1,6 +1,6 @@
 pkgbase = ptpython
 	pkgdesc = Python REPL build on top of prompt_toolkit
-	pkgver = 3.0.2
+	pkgver = 3.0.6
 	pkgrel = 1
 	url = https://github.com/prompt-toolkit/ptpython
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = ptpython
 	depends = python-pygments
 	optdepends = ipython: ptipython (ptpython + ipython)
 	provides = ptpython3
-	source = ptpython-3.0.2.tar.gz::https://github.com/prompt-toolkit/ptpython/archive/3.0.2.tar.gz
-	sha256sums = ac78c6942c7ca14b38f05eb75dc1b564b8c9f99e8f63455323e18a0c4a439967
+	source = ptpython-3.0.6.tar.gz::https://github.com/prompt-toolkit/ptpython/archive/3.0.6.tar.gz
+	sha256sums = 4ba023801e4bbe742dd1bdd7a710d7dd44356d847809c7b0519a0adcc3275751
 
 pkgname = ptpython
 
