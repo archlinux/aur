@@ -1,12 +1,14 @@
 pkgbase = thermald-git
 	pkgdesc = The Linux Thermal Daemon program from 01.org
-	pkgver = 1.4.2
+	pkgver = v1.4.2.r503.g7f2003e
 	pkgrel = 1
 	url = https://github.com/01org/thermal_daemon
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
+	makedepends = gtk-doc
+	makedepends = autoconf-archive
 	depends = dbus-glib>=0.94
 	depends = libxml2>=2.4
 	provides = thermald
