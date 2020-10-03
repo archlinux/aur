@@ -2,7 +2,7 @@
 
 pkgname=sakura-frp
 pkgver=0.33.0_sakura_6
-pkgrel=3
+pkgrel=4
 pkgdesc="Sakura Frp"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h' 'arm')
 url="https://www.natfrp.com/"
@@ -19,9 +19,9 @@ source_armv7h=("https://qianqu.me/frp/frpc_linux_arm")
 source_armv6h=("https://qianqu.me/frp/frpc_linux_arm")
 source_aarch64=("https://qianqu.me/frp/frpc_linux_arm64")
 
-md5sums=('fb48bb6ff4b09b98ede0919ab446d157'
-         'd49ed511e6d5edf054826fdf8410692a'
-         '9980819da2249749cb87373adcc76c28')
+md5sums=('1407d25307cd98902f60db064f2e2bc0'
+         'a87e9ee64c87ab609d1e978adc6446e0'
+         'd3f3b3c8368fdc692a8a7d71bf9ae5c8')
 md5sums_x86_64=('365e027265c6548b862d022c079faf62')
 md5sums_i686=('c94b5adacb30b28dc5003ed97f94a0c9')
 md5sums_aarch64=('2d65556d917628c04bafe3213864b6d6')

@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=idle
-User=nobody
+DynamicUser=yes
 Restart=on-failure
 RestartSec=5s
 ExecStart=/usr/bin/sakura-frpc -f %i
