@@ -1,0 +1,21 @@
+pkgbase = kibot-git
+	pkgdesc = KiCad automation scripts.
+	pkgver = 701.75ae78a
+	pkgrel = 1
+	url = https://github.com/INTI-CMNB/kibot
+	arch = i686
+	arch = x86_64
+	license = Apache2.0
+	makedepends = git
+	depends = python
+	depends = kibom
+	depends = pcbdraw
+	depends = kiauto
+	depends = python-yaml
+	provides = kibot
+	conflicts = kibot
+	source = kibot::git+https://github.com/INTI-CMNB/kibot
+	md5sums = SKIP
+
+pkgname = kibot-git
+
