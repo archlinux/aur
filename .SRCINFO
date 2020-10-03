@@ -1,7 +1,7 @@
 pkgbase = rofi-gh
 	pkgdesc = GitHub issues in rofi
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OJFord/rofi-gh
 	arch = any
 	license = BSD-3
@@ -9,7 +9,7 @@ pkgbase = rofi-gh
 	depends = rofi
 	provides = rofi-gh-issues
 	source = https://github.com/OJFord/rofi-gh/archive/v0.1.0.tar.gz
-	md5sums = 3e73853b540b81bae4214d8615fe162f
+	md5sums = b71d7604e1c65af5e8bc90f3df2727e5
 
 pkgname = rofi-gh
 
