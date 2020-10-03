@@ -1,19 +1,19 @@
-# Maintainer: Vaporeon <vaporeon@vaporeon.io>
-# Contributor: Luca Weiss <WEI16416 (at) spengergasse (dot) at>
+# Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Contributor: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=kde1-kdelibs-git
-pkgver=1.1.2r3033.ca9e8f0f
+pkgver=1.1.2r3049.cc31c174
 pkgrel=1
 pkgdesc="Historical copy of the libraries module of KDE 1, adapted to compile on modern systems (circa. 2016)"
 arch=('i686' 'x86_64')
-url="https://quickgit.kde.org/?p=kde1-kdelibs.git"
+url="https://invent.kde.org/historical/kde1-kdelibs"
 license=("GPL2" "LGPL2")
 groups=('kde1')
 depends=('qt1' 'libpng' 'libjpeg-turbo' 'libtiff')
 makedepends=('cmake' 'git')
 provides=('kde1-kdelibs')
 conflicts=('kde1-kdelibs')
-source=("git://anongit.kde.org/kde1-kdelibs.git")
+source=("git+https://invent.kde.org/historical/kde1-kdelibs.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -27,21 +27,22 @@ prepare() {
   else
     mkdir build
   fi
-  cd kde1-kdelibs
-  sed -i 's/lib64/lib/' cmake/FindQt1.cmake
-  sed -i 's/lib64/lib/' cmake/KDE1InstallDirs.cmake
 }
 
 build() {
   cd build
-  cmake "$srcdir"/kde1-kdelibs -DCMAKE_INSTALL_PREFIX='/usr'
+  cmake ../kde1-kdelibs \
+    -DCMAKE_INSTALL_PREFIX='/usr'
   make
 }
 
 package() {
   cd build
   make DESTDIR="$pkgdir/" install
-  cd "$srcdir"/kde1-kdelibs
-  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
-  install -Dm644 COPYING.LIB $pkgdir/usr/share/licenses/$pkgname/COPYING.LIB
+
+  cd ../kde1-kdelibs
+  install -Dm644 COPYING \
+    "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 COPYING.LIB \
+    "$pkgdir"/usr/share/licenses/$pkgname/COPYING.LIB
 }

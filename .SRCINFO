@@ -1,8 +1,8 @@
 pkgbase = kde1-kdelibs-git
 	pkgdesc = Historical copy of the libraries module of KDE 1, adapted to compile on modern systems (circa. 2016)
-	pkgver = 1.1.2r3033.ca9e8f0f
+	pkgver = 1.1.2r3049.cc31c174
 	pkgrel = 1
-	url = https://quickgit.kde.org/?p=kde1-kdelibs.git
+	url = https://invent.kde.org/historical/kde1-kdelibs
 	arch = i686
 	arch = x86_64
 	groups = kde1
@@ -16,7 +16,7 @@ pkgbase = kde1-kdelibs-git
 	depends = libtiff
 	provides = kde1-kdelibs
 	conflicts = kde1-kdelibs
-	source = git://anongit.kde.org/kde1-kdelibs.git
+	source = git+https://invent.kde.org/historical/kde1-kdelibs.git
 	md5sums = SKIP
 
 pkgname = kde1-kdelibs-git
