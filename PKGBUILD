@@ -135,7 +135,7 @@ package_xorg-server-common-rootless-nosystemd-minimal-git() {
 
   install -m644 -Dt "${pkgdir}/var/lib/xkb/" xserver/xkb/README.compiled
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
 }
 
 package_xorg-server-rootless-nosystemd-minimal-git() {
@@ -166,7 +166,7 @@ package_xorg-server-rootless-nosystemd-minimal-git() {
   install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d"
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
 }
 
 #package_xorg-server-xephyr-rootless-nosystemd-minimal-git() {
@@ -182,7 +182,7 @@ package_xorg-server-rootless-nosystemd-minimal-git() {
 #  _install fakeinstall/usr/share/man/man1/Xephyr.1
 
   # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
+#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
 #}
 
 #package_xorg-server-xvfb-rootless-nosystemd-minimal-git() {
@@ -199,7 +199,7 @@ package_xorg-server-rootless-nosystemd-minimal-git() {
 #  install -m644 "${srcdir}/xvfb-run.1" "${pkgdir}/usr/share/man/man1/" # outda
 
   # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
+#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
 #}
 
 #package_xorg-server-xnest-rootless-nosystemd-minimal-git() {
@@ -212,7 +212,7 @@ package_xorg-server-rootless-nosystemd-minimal-git() {
 #  _install fakeinstall/usr/share/man/man1/Xnest.1
 
   # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
+#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
 #}
 
 #package_xorg-server-xwayland-rootless-nosystemd-minimal-git() {
@@ -226,7 +226,7 @@ package_xorg-server-rootless-nosystemd-minimal-git() {
 #  _install fakeinstall/usr/bin/Xwayland
 
   # license
-#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
+#  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
 #}
 
 package_xorg-server-devel-rootless-nosystemd-minimal-git() {
@@ -242,7 +242,7 @@ package_xorg-server-devel-rootless-nosystemd-minimal-git() {
   _install fakeinstall/usr/share/aclocal/xorg-server.m4
 
   # license
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xserver/COPYING
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
 
   # make sure there are no files left to install
   find fakeinstall -depth -print0 | xargs -0 rmdir
