@@ -1,7 +1,7 @@
 pkgbase = drawbot-skia
 	pkgdesc = A tool for the removal of TrueType instruction sets (hints) in fonts
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/justvanrossum/drawbot-skia
 	arch = any
 	license = MIT
