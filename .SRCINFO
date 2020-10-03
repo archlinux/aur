@@ -1,0 +1,16 @@
+pkgbase = hackup
+	pkgdesc = Read Hacker News from the desktop
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://github.com/mdh34/hackup
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	depends = webkit2gtk
+	source = hackup-1.1.8.tar.gz::https://github.com/mdh34/hackup/archive/1.1.8.tar.gz
+	sha256sums = c2391d56f0413803be329dd1942132fd9ddc1021649868e61281d8dccffe2b1b
+
+pkgname = hackup
+
