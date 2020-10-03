@@ -1,7 +1,7 @@
 pkgbase = hfsprogs
 	pkgdesc = User space utils for create and check Apple HFS/HFS+ filesystem
 	pkgver = 540.1.linux3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.opensource.apple.com/
 	arch = x86_64
 	license = custom:APSL
@@ -11,11 +11,13 @@ pkgbase = hfsprogs
 	source = https://src.fedoraproject.org/rpms/hfsplus-tools/raw/master/f/hfsplus-tools-no-blocks.patch
 	source = https://src.fedoraproject.org/rpms/hfsplus-tools/raw/master/f/hfsplus-tools-learn-to-stdarg.patch
 	source = https://src.fedoraproject.org/rpms/hfsplus-tools/raw/master/f/apsl-2.0.txt
+	source = https://src.fedoraproject.org/rpms/hfsplus-tools/raw/master/f/hfsplus-tools-sysctl.patch
 	source = ldflags_relro.patch
 	sha256sums = b01b203a97f9a3bf36a027c13ddfc59292730552e62722d690d33bd5c24f5497
 	sha256sums = d78d883f9b485e58d40820595000a8c20ec12f4aff6ca424368b5d1c04b2fe5e
 	sha256sums = fb6556be9af656f7a83841db6de92482c697a9d706145d4c6041b5e284bd2820
 	sha256sums = e5881019d8766c1e88a5fe1dbca4ba40c78011d41fcb18f6e9f50df60182685b
+	sha256sums = 2ab3de8bb2d4e18dbda89590e32f0fbdbeb4541875ff5726d68cdc5ba25235b6
 	sha256sums = 1bc2a40c66c244f6273b3d102d00bbcf16bbbfc1c6dc4e33f3cc890349bb20f4
 
 pkgname = hfsprogs
