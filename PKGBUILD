@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)"
 arch=('i686' 'x86_64')
@@ -21,10 +21,10 @@ build() {
   cmake "../${pkgname}_${pkgver}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DPROC_TARGET_NUMBER="2" 
-#    -DWITH_LTO="ON" \
-#    -DENABLE_TCMALLOC="ON" \
-#    -DTCMALLOC_LIB_DIR=/usr/lib
+    -DPROC_TARGET_NUMBER="2" \
+    -DWITH_LTO="ON" 
+    #-DENABLE_TCMALLOC="ON" \
+    #-DTCMALLOC_LIB_DIR=/usr/lib
 
   NPROC=$(getconf _NPROCESSORS_ONLN)
   make -j${NPROC} 
