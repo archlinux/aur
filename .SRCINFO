@@ -1,8 +1,8 @@
 pkgbase = haguichi
 	pkgdesc = Provides a user friendly GUI to control the Hamachi client on Linux
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
-	url = https://www.haguichi.net
+	url = https://haguichi.net
 	arch = x86_64
 	arch = i686
 	arch = arm
@@ -15,8 +15,8 @@ pkgbase = haguichi
 	depends = libappindicator-gtk3
 	depends = libnotify
 	depends = logmein-hamachi
-	source = http://launchpad.net/haguichi/1.4/1.4.2/+download/haguichi-1.4.2.tar.xz
-	sha256sums = 637cfd192722357ecd0aa2f345396a68387e93e415fc747fb863b219ab502cc6
+	source = http://launchpad.net/haguichi/1.4/1.4.3/+download/haguichi-1.4.3.tar.xz
+	sha256sums = e961bbb72f225d0aa547130452921c824c5cb43424deda4266d66626808b8e22
 
 pkgname = haguichi
 
