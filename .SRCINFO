@@ -1,5 +1,5 @@
 pkgbase = asf-git
-	pkgdesc = Steam cards farmer. Git version
+	pkgdesc = Steam cards farmer. Git version with asf-ui included
 	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
@@ -11,7 +11,6 @@ pkgbase = asf-git
 	makedepends = git
 	makedepends = dotnet-sdk>=3.1
 	depends = aspnet-runtime>=3.1
-	optdepends = asf-ui: standalone web interface for ASF
 	conflicts = asf
 	source = asf-git::git+https://github.com/JustArchiNET/ArchiSteamFarm.git
 	source = service
