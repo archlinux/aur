@@ -1,6 +1,6 @@
 pkgbase = traefik-git
 	pkgdesc = The cloud native edge router
-	pkgver = 2.2.1.r15.g7928e6d0c
+	pkgver = 2.3.0.r16.gf2e53a356
 	pkgrel = 1
 	url = https://containo.us/traefik/
 	arch = i686
