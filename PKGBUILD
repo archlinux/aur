@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.15.0.r15.gcc32fa735
+pkgver=1.21.0rc2.r9.ge3debf968
 pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
@@ -10,41 +10,69 @@ url="https://github.com/matrix-org/synapse"
 arch=('any')
 license=('Apache')
 
-depends=('python-jsonschema' 'python-twisted' 'python-service-identity'
-         'python-pyopenssl' 'python-yaml' 'python-pyasn1' 'python-pynacl'
-         'python-daemonize' 'python-bcrypt' 'python-frozendict'
-         'python-pillow' 'python-ujson'
-         'python-pysaml2' 'python-setuptools'
-         'python-systemd' 'python-unpaddedbase64' 'python-canonicaljson'
-         'python-signedjson' 'python-pymacaroons'
-         'python-service-identity' 'python-msgpack'
-         'python-phonenumbers' 'python-prometheus_client'
-         'python-attrs' 'python-netaddr' 'python-sortedcontainers'
-         'python-treq' 'python-psutil' 'python-sdnotify' 'python-jinja'
-         'python-bleach' 'python-psutil' 'python-typing-extensions'
-         'python-idna' 'python-pyasn1-modules' 'python-six'
-         'systemd')
-makedepends=('git')
-checkdepends=('python-lxml' 'python-mock' 'python-parameterized' 'python-authlib')
-optdepends=('python-matrix-synapse-ldap3: LDAP3 auth provider'
-            'python-psycopg2: PostgreSQL support'
-            "python-txacme: ACME support (Let's Encrypt)"
-            'python-pysaml2: SAML2 support'
-            'python-authlib: OIDC support'
-            'python-lxml: URL previewing'
-            'python-sentry_sdk: Sentry support'
-            'python-pyjwt: JWT support'
-            'python-txredisapi: worker communication via Redis'
-            'python-hiredis: worker communication via Redis (faster)')
+depends=(
+	'python-jsonschema'
+	'python-frozendict'
+	'python-unpaddedbase64'
+	'python-canonicaljson'
+	'python-signedjson'
+	'python-pynacl'
+	'python-idna'
+	'python-service-identity'
+	'python-twisted'
+	'python-treq'
+	'python-pyopenssl'
+	'python-yaml'
+	'python-pyasn1'
+	'python-pyasn1-modules'
+	'python-bcrypt'
+	'python-pillow'
+	'python-sortedcontainers'
+	'python-pymacaroons'
+	'python-msgpack'
+	'python-phonenumbers'
+	'python-prometheus_client'
+	'python-attrs'
+	'python-netaddr'
+	'python-jinja'
+	'python-bleach'
+	'python-typing-extensions'
+
+	'python-systemd'
+	'systemd'
+)
+makedepends=(
+	'git'
+	'python-setuptools'
+)
+checkdepends=(
+	'python-mock'
+	'python-parameterized'
+	'python-lxml'
+	'python-authlib'
+	'python-pyjwt'
+)
+optdepends=(
+	'python-matrix-synapse-ldap3: LDAP3 auth provider'
+	'python-psycopg2: PostgreSQL support'
+	"python-txacme: ACME support (Let's Encrypt)"
+	'python-pysaml2: SAML2 support'
+	'python-authlib: OIDC support'
+	'python-lxml: URL previewing'
+	'python-sentry_sdk: Sentry support'
+	'python-jaeger-client: tracing support'
+	'python-opentracing: tracing support'
+	'python-pyjwt: JWT support'
+	'python-txredisapi: worker communication via Redis'
+	'python-hiredis: worker communication via Redis (faster)'
+)
 
 source=("git+https://github.com/matrix-org/synapse.git#branch=develop"
-        '0001-synapse-python_dependencies.py-permit-prometheus_cli.patch'
         'synapse.service'
         'sysusers-synapse.conf')
 
 
 md5sums=('SKIP'
-         'bcbaf40db1116b0c4ec4e1dc8f5e89b6'
          'c4352682c5fb5eb0440ceb54a20ac4cb'
          'ecd9f66fb57fe1a2e1e2df07a460a35b')
 
