@@ -1,15 +1,22 @@
 #!/bin/sh
+# Running this script with --ncurses will start the game in the current terminal.
 
-# Game has limited knowledge of terms, "xterm", "xterm-256color" and "linux" should be safe
-#export TERM=linux
 pkgname=arcanefortune
 
-if [[ ! -d "${HOME}/.${pkgname}" ]]; then
-  mkdir -p "${HOME}/.${pkgname}/saves"
-  ln -s /opt/"${pkgname}"/nn "${HOME}/.${pkgname}/nn"
-  ln -s /opt/"${pkgname}"/arcane_fortune "${HOME}/.${pkgname}/arcane_fortune"
-  cp -rn /opt/"${pkgname}"/config "${HOME}/.${pkgname}/config"
+if [ ! -d "${HOME}/.${pkgname}" ]; then
+  mkdir -p "${HOME}/.${pkgname}/game"
+  mkdir -p "${HOME}/.${pkgname}/game/saves"
+  for f in nn arcane_fortune_linux arcane_fortune_linux_ncurses icon.ico; do
+    ln -s "/opt/${pkgname}/game/$f" "${HOME}/.${pkgname}/game/$f"
+  done
+  cp -rn "/opt/${pkgname}/game/fonts" "${HOME}/.${pkgname}/game/fonts"
+  cp -rn "/opt/${pkgname}/game/config" "${HOME}/.${pkgname}/game/config"
 fi
 
-cd "${HOME}/.${pkgname}"
-exec ./arcane_fortune "${@}"
+cd "${HOME}/.${pkgname}/game"
+if [ "$1" = "--ncurses" ]; then
+  shift
+  exec ./arcane_fortune_linux_ncurses "${@}"
+else
+  exec ./arcane_fortune_linux "${@}"
+fi

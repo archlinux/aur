@@ -1,17 +1,31 @@
 pkgbase = arcanefortune
 	pkgdesc = A game of empire building, diplomacy, conquest, construction, and deconstruction
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://arcanefortune.com
 	install = arcanefortune.install
 	arch = x86_64
-	license = CC BY-NC-SA 4.0
-	options = !strip
-	options = !emptydirs
-	source = https://arcanefortune.com/releases/arcane_fortune_v0_1_0_linux.zip
+	license = AGPL3
+	license = CC BY-SA 4.0
+	makedepends = git
+	makedepends = rust
+	makedepends = musl
+	depends = sh
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = ncurses
+	depends = freetype2
+	depends = gcc-libs
+	depends = libjpeg6-turbo
+	depends = libtiff
+	depends = zlib
+	source = arcanefortune::git+https://github.com/cody2007/arcane_fortune.git#commit=c5f440473999a4012db9c5ea71989c0db6f734c8
+	source = https://arcanefortune.com/releases/arcane_fortune_v0_2_0_linux.zip
 	source = arcane_fortune
-	sha512sums = ca81299acceb6a4fb4744dd7618f852ca02b12db6b1bccc6c62cd75bcbb50ac5ec89349bd06d8763596148adac69c02cf87cbd549e3cba74bab7304b9513198e
-	sha512sums = 52fab1757d298fe1d78596ad7965a618c1bebca2094be377e33cd10c5aa66a37ed6eb9bb3ea1a36f204946656e1ac5b4eab3c993b6a30e9a90f91d3661090d5a
+	sha512sums = SKIP
+	sha512sums = 639ca6e102af94281f9ee5fe3588ca7954b773fc41ca5a4d05db5abd4d72943d9380698ed3cc9313f05677016e2cf595d7f09c089bfb9172fec95de18f08c68b
+	sha512sums = d02f70b65490c70c1cbe0f240289f2942186df3ca0058066507f1b9930e56a74f87c9e78f0bad78d81eba013dae39bf5fc636a6c5abec3fa6d357876eec14602
 
 pkgname = arcanefortune
 
