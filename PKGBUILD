@@ -3,7 +3,7 @@
 
 pkgname=ttyd
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Share your terminal over the web'
 arch=('i686' 'x86_64' 'armv7h')
 url=https://tsl0922.github.io/ttyd/
@@ -14,6 +14,13 @@ source=("ttyd.service"
 	"https://github.com/tsl0922/ttyd/archive/$pkgver/ttyd-$pkgver.tar.gz")
 sha512sums=('b6c731444ad78d68464082557a4b7dae857f2b86511810f055d2a4c8e1c7051328cdbcd1f8a43c322a2dd20c20474b483f9fa104785268bafdefb04cce54287d'
             '42fbff479e05dbaab94c8c83180f4ec98b8efe0af2f853e5c9317a84a5a2d46b7fc53308dccfeeea92793f05183a29e29428d2ba62a2a954c1b04335863082b0')
+
+prepare() {
+	echo srcdir=$srcdir, pkgname=$pkgname, pkgver=$pkgver
+	cd "$srcdir/$pkgname-$pkgver"/src
+	cp -p server.c server.c.0
+	sed 's/  info.ws_ping_pong_interval = 5/\/\/   info.ws_ping_pong_interval = 5/' server.c.0 > server.c
+}
 
 build() {
 	cd ttyd-$pkgver
