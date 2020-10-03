@@ -2,17 +2,17 @@
 
 _pkgname=isoimagewriter
 pkgname=$_pkgname-git
-pkgver=0.1.r3.g50219e1
+pkgver=0.8.r21.g081a939
 pkgrel=1
 pkgdesc="Tool to write a .iso file to a USB disk"
 arch=("x86_64" "i686")
 url="https://community.kde.org/ISOImageWriter"
 license=('GPL3')
-depends=('ki18n' 'kauth' 'qgpgme')
+depends=('ki18n' 'kauth' 'kwidgetsaddons' 'kiconthemes' 'kcrash' 'qgpgme')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=(git+https://anongit.kde.org/isoimagewriter.git)
+source=(git+https://invent.kde.org/utilities/isoimagewriter.git)
 sha512sums=('SKIP')
 
 pkgver() {
