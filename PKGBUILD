@@ -2,7 +2,7 @@
 
 pkgname=theia-electron
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
@@ -29,7 +29,7 @@ md5sums=('5a26cc7b1b461bec8533266dbe64c87e'
 
 build() {
   HOME="$srcdir/.electron-gyp" yarn install --cache-folder "$srcdir/yarn-cache"
-  yarn build
+  HOME="$srcdir/.electron-gyp" yarn build
   # Remove dev dependencies
   HOME="$srcdir/.electron-gyp" yarn install --cache-folder "$srcdir/yarn-cache" --production --ignore-scripts --prefer-offline
 }
