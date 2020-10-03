@@ -1,8 +1,8 @@
 # Maintainer:  Nicholas Wang <me#nicho1as.wang>
 
 pkgname=tunasync-git
-pkgver=master
-pkgrel=3
+pkgver=20200917
+pkgrel=1
 pkgdesc="Mirror job management tool developed by TUNA"
 arch=('x86_64')
 license=('GPL3')
