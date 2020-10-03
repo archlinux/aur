@@ -83,7 +83,7 @@ index 6b8cac0..54648c6 100644
 @@ -48,8 +48,8 @@
    display: block;
    text-shadow: none;
-   overflow: -moz-hidden-unscrollable;
+   overflow: clip;
 -  margin-inline: @urlbarViewMarginInline@;
 -  width: calc(100% - 2 * @urlbarViewMarginInline@);
 +  margin-inline: 0;

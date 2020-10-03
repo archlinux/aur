@@ -61,14 +61,10 @@ diff --git a/browser/locales/l10n.toml b/browser/locales/l10n.toml
 index 0b53c52..f8b605d 100644
 --- a/browser/locales/l10n.toml
 +++ b/browser/locales/l10n.toml
-@@ -129,14 +129,6 @@ locales = [
+@@ -133,10 +133,6 @@ locales = [
      reference = "browser/extensions/fxmonitor/locales/en-US/**"
      l10n = "{l}browser/extensions/fxmonitor/**"
  
--[[paths]]
--    reference = "browser/extensions/webcompat-reporter/locales/en-US/**"
--    l10n = "{l}browser/extensions/webcompat-reporter/**"
--
 -[[paths]]
 -    reference = "browser/extensions/report-site-issue/locales/en-US/**"
 -    l10n = "{l}browser/extensions/report-site-issue/**"

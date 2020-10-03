@@ -1,7 +1,7 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 80.0.1
-	pkgrel = 1
+	pkgver = 81.0
+	pkgrel = 2
 	url = https://librewolf-community.gitlab.io/
 	arch = x86_64
 	arch = aarch64
@@ -27,6 +27,7 @@ pkgbase = librewolf
 	makedepends = nasm
 	makedepends = python-setuptools
 	makedepends = python-psutil
+	makedepends = python-zstandard
 	makedepends = git
 	makedepends = binutils
 	makedepends = lld
@@ -46,32 +47,40 @@ pkgbase = librewolf
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source_x86_64 = https://archive.mozilla.org/pub/firefox/releases/80.0.1/source/firefox-80.0.1.source.tar.xz
+	source_x86_64 = https://archive.mozilla.org/pub/firefox/releases/81.0/source/firefox-81.0.source.tar.xz
 	source_x86_64 = librewolf.desktop
+	source_x86_64 = 0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch?h=packages/firefox
+	source_x86_64 = 0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch?h=packages/firefox
 	source_x86_64 = git+https://gitlab.com/librewolf-community/browser/common.git
 	source_x86_64 = git+https://gitlab.com/librewolf-community/settings.git
 	source_x86_64 = megabar.patch
 	source_x86_64 = remove_addons.patch
-	sha256sums_x86_64 = 596b085e32a2d683ba960e161ea65c6271f90f576d4bf956e0d48e83af992c21
+	sha256sums_x86_64 = 9328745012178aee5a4f47c833539f7872cc6e0f20a853568a313e60cabd1ec8
 	sha256sums_x86_64 = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
+	sha256sums_x86_64 = c2489a4ad3bfb65c064e07180a1de9a2fbc3b1b72d6bc4cd3985484d1b6b7b29
+	sha256sums_x86_64 = 52cc26cda4117f79fae1a0ad59e1404b299191a1c53d38027ceb178dab91f3dc
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
-	sha256sums_x86_64 = 2bef819c55935f6c72a7aa28273ecddfce0888429a32465feb6c34a16ff1ed9c
-	sha256sums_x86_64 = d191e65a0ce3eeba0a3171c143fc93e3ded6c29eb751b90d58a7d3bf1983aca6
-	source_aarch64 = https://archive.mozilla.org/pub/firefox/releases/80.0.1/source/firefox-80.0.1.source.tar.xz
+	sha256sums_x86_64 = 682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5
+	sha256sums_x86_64 = 41719289b309912c4b6bc86b41594f671427979481a90c32a9d3d0bf1cdd6d44
+	source_aarch64 = https://archive.mozilla.org/pub/firefox/releases/81.0/source/firefox-81.0.source.tar.xz
 	source_aarch64 = librewolf.desktop
+	source_aarch64 = 0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0002-Bug-1660901-Support-the-fstat-like-subset-of-fstatat.patch?h=packages/firefox
+	source_aarch64 = 0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0003-Bug-1660901-ignore-AT_NO_AUTOMOUNT-in-fstatat-system.patch?h=packages/firefox
 	source_aarch64 = git+https://gitlab.com/librewolf-community/browser/common.git
 	source_aarch64 = git+https://gitlab.com/librewolf-community/settings.git
 	source_aarch64 = megabar.patch
 	source_aarch64 = remove_addons.patch
 	source_aarch64 = arm.patch
 	source_aarch64 = https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
-	sha256sums_aarch64 = 596b085e32a2d683ba960e161ea65c6271f90f576d4bf956e0d48e83af992c21
+	sha256sums_aarch64 = 9328745012178aee5a4f47c833539f7872cc6e0f20a853568a313e60cabd1ec8
 	sha256sums_aarch64 = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
+	sha256sums_aarch64 = c2489a4ad3bfb65c064e07180a1de9a2fbc3b1b72d6bc4cd3985484d1b6b7b29
+	sha256sums_aarch64 = 52cc26cda4117f79fae1a0ad59e1404b299191a1c53d38027ceb178dab91f3dc
 	sha256sums_aarch64 = SKIP
 	sha256sums_aarch64 = SKIP
-	sha256sums_aarch64 = 2bef819c55935f6c72a7aa28273ecddfce0888429a32465feb6c34a16ff1ed9c
-	sha256sums_aarch64 = d191e65a0ce3eeba0a3171c143fc93e3ded6c29eb751b90d58a7d3bf1983aca6
+	sha256sums_aarch64 = 682bf4bf5d79db0080aa132235a95b25745c8ef944d2a2e1fed985489d894df5
+	sha256sums_aarch64 = 41719289b309912c4b6bc86b41594f671427979481a90c32a9d3d0bf1cdd6d44
 	sha256sums_aarch64 = 6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7
 	sha256sums_aarch64 = 2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9
 
