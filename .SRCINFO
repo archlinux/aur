@@ -1,5 +1,5 @@
 pkgbase = kibom-git
-	pkgdesc = Helps you to generate the fabrication and documentation files for your KiCad projects.
+	pkgdesc = Configurable BoM generation tool for KiCad EDA
 	pkgver = 572.51244bb
 	pkgrel = 1
 	url = https://github.com/INTI-CMNB/kibom
