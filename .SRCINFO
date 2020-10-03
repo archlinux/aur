@@ -1,12 +1,12 @@
 pkgbase = faubox
 	pkgdesc = Desktop client for FAU's file synchronization service
 	pkgver = 15.5.100
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.fau.eu/intranet/tools/faubox-cloud-storage-for-all-fau-members/
 	arch = any
 	license = custom
 	makedepends = gendesk
-	depends = jre8-openjdk
+	depends = java-runtime=8
 	source = faubox.sh
 	source = https://faubox.rrze.uni-erlangen.de/client_deployment/FAUbox_Linux.tar.gz
 	sha256sums = 0c8d4a37f00f60b4afa4bc4e1b91598a0996bbf44b3dd3e8be1fe9c47ec25391

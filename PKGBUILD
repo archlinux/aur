@@ -2,12 +2,12 @@
 
 pkgname=faubox
 pkgver=15.5.100
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for FAU's file synchronization service"
 arch=('any')
 url="https://www.fau.eu/intranet/tools/faubox-cloud-storage-for-all-fau-members/"
 license=(custom)
-depends=('jre8-openjdk')
+depends=('java-runtime=8')
 makedepends=('gendesk')
 
 
@@ -25,7 +25,7 @@ package() {
     cd $srcdir
     install -Dm655 faubox.sh $pkgdir/usr/bin/faubox
     install -Dm644 faubox.desktop $pkgdir/usr/share/applications/faubox.desktop
-    
+
     cd $srcdir/FAUbox
     install -Dm644 FAUbox.jar $pkgdir/usr/share/java/$pkgname/FAUbox.jar
     install -Dm644 VERSION $pkgdir/usr/share/$pkgname/VERSION
