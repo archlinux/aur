@@ -2,12 +2,12 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=lipl-git
-pkgver=0.1.0.r23.g60835e5
+pkgver=0.1.0.r27.gea84852
 pkgrel=1
 pkgdesc="Analyse the output over time of custom shell commands (git)"
 arch=('x86_64')
 url="https://github.com/yxdunc/lipl"
-license=('unknown')
+license=('MIT')
 makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 provides=("${pkgname%-git}")
@@ -33,4 +33,5 @@ package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }

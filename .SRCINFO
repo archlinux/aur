@@ -1,10 +1,10 @@
 pkgbase = lipl-git
 	pkgdesc = Analyse the output over time of custom shell commands (git)
-	pkgver = 0.1.0.r23.g60835e5
+	pkgver = 0.1.0.r27.gea84852
 	pkgrel = 1
 	url = https://github.com/yxdunc/lipl
 	arch = x86_64
-	license = unknown
+	license = MIT
 	makedepends = cargo
 	makedepends = git
 	provides = lipl
