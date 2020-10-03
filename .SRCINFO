@@ -1,14 +1,14 @@
 pkgbase = nextcloud-app-gpxpod
 	pkgdesc = view gpx tracks
-	pkgver = 4.2.2
-	pkgrel = 2
+	pkgver = 4.2.3
+	pkgrel = 1
 	url = https://gitlab.com/eneiluj/gpxpod-oc
 	arch = any
 	license = GPL
 	depends = nextcloud
 	options = !strip
-	source = https://gitlab.com/eneiluj/gpxpod-oc/-/wikis/uploads/2b929123c8dbcd01a561598397c7a67f/gpxpod-4.2.2.tar.gz
-	sha256sums = 438f8d3de405ac09908b7d11f2a78bcee810b1bd94627f77c6d8868c0603a10b
+	source = https://gitlab.com/eneiluj/gpxpod-oc/-/archive/v4.2.3/gpxpod-oc-v4.2.3.tar.gz
+	sha256sums = cdcfa6ee80e6ad1540fa41a43b2a6c6ca75b2d6dfaad90ad244ca1c9cd6bf164
 
 pkgname = nextcloud-app-gpxpod
 
