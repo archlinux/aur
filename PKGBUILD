@@ -2,7 +2,7 @@
 pkgname=gedit-plugin-discord-rpc
 pkgver=3.ffc4fff
 pkgrel=1
-pkgdesc="A Dircord RPC plugin for gedit."
+pkgdesc="A Discord RPC plugin for gedit."
 arch=('any')
 url="https://github.com/M4xi1m3/gedit-discord-rpc"
 license=('MIT')

@@ -1,5 +1,5 @@
 pkgbase = gedit-plugin-discord-rpc
-	pkgdesc = A Dircord RPC plugin for gedit.
+	pkgdesc = A Discord RPC plugin for gedit.
 	pkgver = 3.ffc4fff
 	pkgrel = 1
 	url = https://github.com/M4xi1m3/gedit-discord-rpc
