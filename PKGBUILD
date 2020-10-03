@@ -52,13 +52,14 @@ package() {
 	do
 	    mkdir -p $pkgdir/snapshots/$var
         done
+	pkgvar=gf_backup_tool
 	#make PREFIX=/usr DESTDIR="$pkgdir/" install
-	install -Dm 644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/gf_backup_tool/LICENSE"
-	install -Dm 644 "$srcdir/$pkgname/config" "$pkgdir/etc/gf_backup_tool/config" 
-	install -Dm 644 "$srcdir/$pkgname/exclude_file" "$pkgdir/etc/gf_backup_tool/exclude_file"
-	install -Dm 645 "$srcdir/$pkgname/backup_tool" "$pkgdir/usr/bin/backup_tool"
-	install -Dm 644 "$srcdir/$pkgname/gf_backup_tool.timer" "$pkgdir/etc/systemd/system/gf_backup_tool.timer"
-	install -Dm 644 "$srcdir/$pkgname/gf_backup_tool.service" "$pkgdir/etc/systemd/system/gf_backup_tool.service"
+	install -Dm 644 "$srcdir/$pkgvar/LICENSE" "$pkgdir/usr/share/licenses/gf_backup_tool/LICENSE"
+	install -Dm 644 "$srcdir/$pkgvar/config" "$pkgdir/etc/gf_backup_tool/config" 
+	install -Dm 644 "$srcdir/$pkgvar/exclude_file" "$pkgdir/etc/gf_backup_tool/exclude_file"
+	install -Dm 645 "$srcdir/$pkgvar/backup_tool" "$pkgdir/usr/bin/backup_tool"
+	install -Dm 644 "$srcdir/$pkgvar/gf_backup_tool.timer" "$pkgdir/etc/systemd/system/gf_backup_tool.timer"
+	install -Dm 644 "$srcdir/$pkgvar/gf_backup_tool.service" "$pkgdir/etc/systemd/system/gf_backup_tool.service"
 
 }
 
