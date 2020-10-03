@@ -2,7 +2,7 @@
 
 pkgname=github-cli-git
 pkgver=1.0.0.r115.g72eeae9d
-pkgrel=1
+pkgrel=2
 pkgdesc="The GitHub CLI tool"
 arch=('i686' 'x86_64')
 url="https://github.com/cli/cli"
@@ -16,11 +16,11 @@ source=("git+https://github.com/cli/cli.git")
 sha256sums=('SKIP')
 
 
-export CGO_CPPFLAGS+="${CPPFLAGS}"
-export CGO_CFLAGS+="${CFLAGS}"
-export CGO_CXXFLAGS+="${CXXFLAGS}"
-export CGO_LDFLAGS+="${LDFLAGS}"
-export GOFLAGS+="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readonly -modcacherw"
+export CGO_CPPFLAGS="${CPPFLAGS}"
+export CGO_CFLAGS="${CFLAGS}"
+export CGO_CXXFLAGS="${CXXFLAGS}"
+export CGO_LDFLAGS="${LDFLAGS}"
+export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readonly -modcacherw"
 
 pkgver() {
   cd "cli"

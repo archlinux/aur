@@ -1,7 +1,7 @@
 pkgbase = github-cli-git
 	pkgdesc = The GitHub CLI tool
 	pkgver = 1.0.0.r115.g72eeae9d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cli/cli
 	arch = i686
 	arch = x86_64
