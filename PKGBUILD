@@ -1,8 +1,8 @@
 # Maintainer: Oliver Ford <dev.aur@ojford.com>
 # shellcheck disable=SC2034,SC2154
 pkgname=rofi-gh
-pkgver=$PKG_VERSION
-pkgrel=$PKG_RELEASE
+pkgver=0.1.0
+pkgrel=1
 pkgdesc='GitHub issues in rofi'
 url='https://github.com/OJFord/rofi-gh'
 license=('BSD-3')
