@@ -1,6 +1,6 @@
 pkgbase = sysglance
 	pkgdesc = Utility for collecting information about the hardware and the operating system by generating a simple report.
-	pkgver = 1.4.10
+	pkgver = 1.4.11
 	pkgrel = 1
 	url = https://github.com/Utappia/sysglance
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = sysglance
 	depends = usbutils
 	depends = util-linux
 	depends = curl
-	source = sysglance-1.4.10.tar.gz::https://github.com/Utappia/sysglance/archive/v1.4.10.tar.gz
-	md5sums = 51f3259a3c1debcfa759dda30873ec20
+	source = sysglance-1.4.11.tar.gz::https://github.com/Utappia/sysglance/archive/v1.4.11.tar.gz
+	md5sums = SKIP
 
 pkgname = sysglance
 
