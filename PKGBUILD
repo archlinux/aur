@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-    cd asf/out/result
+    cd "${pkgname}/out/result"
     install -d -m 755 "${pkgdir}/usr/lib/asf"
     cp -rdp --no-preserve=ownership . "${pkgdir}/usr/lib/asf"
     install -D -m755 ../../run.sh "${pkgdir}/usr/bin/asf"
