@@ -2,14 +2,16 @@
 
 pkgname='python-zulip-api'
 pkgver='0.7.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Pyhton bindings for Zulip API."
 url="https://github.com/zulip/python-zulip-api"
-depends=('python'
+depends=(
+    'python'
     'python-requests'
     'python-pyopenssl'
-    'python-six'
-    'python-matrix-client-git')
+    'python-six')
+optdepends=(
+    'python-matrix-client-git: For zulip matrix bridge')
 makedepends=('cython' 'python-setuptools')
 license=('GPL')
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
