@@ -1,15 +1,16 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
 pkgname=btcpayserver
 pkgdesc="https://github.com/btcpayserver"
-pkgver='stable'
+pkgver='1.0.5.6'
 pkgpath="github.com/${pkgname}/${pkgname}"
-pkgrel=7
+pkgrel=1
 arch=('any')
 url="https://${pkgpath}"
 license=(MIT)
 makedepends=('dotnet-host' 'dotnet-runtime' 'dotnet-sdk' 'aspnet-runtime-2.1')
 depends=(${makedepends} 'nbxplorer')
-source=("$url/archive/stable.tar.gz")
+source=("$url/archive/v${pkgver}.tar.gz")
+#https://github.com/btcpayserver/btcpayserver/archive/v1.0.5.6.tar.gz
 sha256sums=('SKIP')
 
 build() {
