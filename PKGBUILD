@@ -2,7 +2,7 @@
 
 pkgname=irtt-git
 pkgver=0.9.0.r56.g440389f
-pkgrel=1
+pkgrel=2
 pkgdesc="Isochronous round-trip tester"
 arch=('i686' 'x86_64')
 url="https://github.com/heistp/irtt"
@@ -15,6 +15,12 @@ source=("git+https://github.com/heistp/irtt.git")
 sha256sums=('SKIP')
 
 
+export CGO_CPPFLAGS="${CPPFLAGS}"
+export CGO_CFLAGS="${CFLAGS}"
+export CGO_CXXFLAGS="${CXXFLAGS}"
+export CGO_LDFLAGS="${LDFLAGS}"
+export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readonly -modcacherw"
+
 pkgver() {
   cd "irtt"
 
@@ -25,11 +31,6 @@ build() {
   cd "irtt"
 
   go build \
-    -buildmode=pie \
-    -ldflags "-extldflags $LDFLAGS" \
-    -trimpath \
-    -mod=readonly \
-    -modcacherw \
     ./cmd/...
 }
 
@@ -37,7 +38,6 @@ check() {
   cd "irtt"
 
   go test \
-    -mod=readonly \
     ./...
 }
 
