@@ -1,0 +1,16 @@
+pkgbase = python-drawsvg
+	pkgdesc = A Python 3 library for programmatically generating SVG images (vector drawings) and rendering them or displaying them in a Jupyter notebook
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/cduck/drawSvg
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-numpy
+	depends = python-imageio
+	depends = python-cairosvg
+	source = https://github.com/cduck/drawSvg/archive/1.6.1.tar.gz
+	md5sums = bd01161c1edffb34f6b955bfcb2a0108
+
+pkgname = python-drawsvg
+
