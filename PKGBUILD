@@ -4,10 +4,10 @@
 # Modified PKGBUILD from https://aur.archlinux.org/packages/vivaldi-codecs-ffmpeg-extra-bin/
 
 pkgname=vivaldi-codecs-ffmpeg-extra-bin-arm
-pkgver=85.0.4183.83
+pkgver=85.0.4183.121
 pkgrel=1
 _ubuver=0ubuntu0
-_ubudist=18.04.2
+_ubudist=18.04.1
 pkgdesc='Prebuilt ffmpeg-codecs package for Vivaldi for arm'
 arch=('armv6h' 'armv7h' 'aarch64')
 url='https://packages.ubuntu.com/bionic/chromium-codecs-ffmpeg-extra'
@@ -20,9 +20,9 @@ source_armhf=("http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-bro
 source_armv6h=("$source_armhf")
 source_armv7h=("$source_armhf")
 source_aarch64=("http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-${_ubuver}.${_ubudist}_arm64.deb")
-sha256sums_armv6h=('51e005c5039112736fac9031747220aee3f057ced46c5577375896021003a8c4')
-sha256sums_armv7h=('51e005c5039112736fac9031747220aee3f057ced46c5577375896021003a8c4')
-sha256sums_aarch64=('9d9303b70b43b15133a1048c01b982b60225f48ec2e1438e1455599876409a3f')
+sha256sums_armv6h=('139ef1fbf3272c0cb8b4e65c55499dcc86ab8482be5e01010e91620289c05a8e')
+sha256sums_armv7h=('139ef1fbf3272c0cb8b4e65c55499dcc86ab8482be5e01010e91620289c05a8e')
+sha256sums_aarch64=('4cd9736f9e82ff4be2f5bff077e3cd8c9237abf98d1e4f3af3fcb85d6b84f26f')
 
 prepare() {
   tar -xJf data.tar.xz

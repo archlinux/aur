@@ -1,6 +1,6 @@
 pkgbase = vivaldi-codecs-ffmpeg-extra-bin-arm
 	pkgdesc = Prebuilt ffmpeg-codecs package for Vivaldi for arm
-	pkgver = 85.0.4183.83
+	pkgver = 85.0.4183.121
 	pkgrel = 1
 	url = https://packages.ubuntu.com/bionic/chromium-codecs-ffmpeg-extra
 	changelog = changes
@@ -12,12 +12,12 @@ pkgbase = vivaldi-codecs-ffmpeg-extra-bin-arm
 	depends = vivaldi
 	depends = perl
 	provides = vivaldi-ffmpeg-codecs
-	source_armv6h = http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_85.0.4183.83-0ubuntu0.18.04.2_armhf.deb
-	sha256sums_armv6h = 51e005c5039112736fac9031747220aee3f057ced46c5577375896021003a8c4
-	source_armv7h = http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_85.0.4183.83-0ubuntu0.18.04.2_armhf.deb
-	sha256sums_armv7h = 51e005c5039112736fac9031747220aee3f057ced46c5577375896021003a8c4
-	source_aarch64 = http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_85.0.4183.83-0ubuntu0.18.04.2_arm64.deb
-	sha256sums_aarch64 = 9d9303b70b43b15133a1048c01b982b60225f48ec2e1438e1455599876409a3f
+	source_armv6h = http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_85.0.4183.121-0ubuntu0.18.04.1_armhf.deb
+	sha256sums_armv6h = 139ef1fbf3272c0cb8b4e65c55499dcc86ab8482be5e01010e91620289c05a8e
+	source_armv7h = http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_85.0.4183.121-0ubuntu0.18.04.1_armhf.deb
+	sha256sums_armv7h = 139ef1fbf3272c0cb8b4e65c55499dcc86ab8482be5e01010e91620289c05a8e
+	source_aarch64 = http://ports.ubuntu.com/ubuntu-ports/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_85.0.4183.121-0ubuntu0.18.04.1_arm64.deb
+	sha256sums_aarch64 = 4cd9736f9e82ff4be2f5bff077e3cd8c9237abf98d1e4f3af3fcb85d6b84f26f
 
 pkgname = vivaldi-codecs-ffmpeg-extra-bin-arm
 
