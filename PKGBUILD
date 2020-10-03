@@ -2,7 +2,7 @@
 
 pkgname=theia-electron
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
