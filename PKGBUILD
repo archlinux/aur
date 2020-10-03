@@ -18,8 +18,8 @@ build() {
 }
 
 check() {
-    cd "$pkgname-$pkgver"
-    cargo test --release --locked
+  cd "$pkgname-$pkgver"
+  cargo test --release --locked
 }
 
 package() {
