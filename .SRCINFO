@@ -1,20 +1,26 @@
 pkgbase = kde1-kdebase
 	pkgdesc = Historical copy of the base applications module of KDE 1, adapted to compile on modern systems (circa. 2016)
 	pkgver = 1.1.2
-	pkgrel = 5
-	url = https://github.com/KDE/kde1-kdebase
+	pkgrel = 6
+	url = https://invent.kde.org/historical/kde1-kdebase
 	arch = i686
 	arch = x86_64
 	groups = kde1
 	license = GPL2
 	makedepends = cmake
+	makedepends = git
 	depends = qt1
 	depends = kde1-kdelibs
 	depends = libjpeg
 	depends = libtiff
 	depends = perl
-	source = https://github.com/KDE/kde1-kdebase/archive/a40a9a0de966d1831688bb9371a3c165b825bc7e.tar.gz
-	sha256sums = a368f1294edafcae10a78fb5c0694dbcd38ae65379813bac67c2afda66390e6a
+	depends = pulseaudio
+	depends = glu
+	depends = libxpm
+	provides = kde1-kdebase
+	conflicts = kde1-kdebase
+	source = https://invent.kde.org/historical/kde1-kdebase/-/archive/849cc4d1ad30e8d5881b2a7bf42d9c3c2c41e173/kde1-kdebase-849cc4d1ad30e8d5881b2a7bf42d9c3c2c41e173.tar.gz
+	sha512sums = e23ee724c1baa298acd3fd30acf182b2b6ac142158ff5aa3092a8cd615f384007a0df90cc6c47520223943cf860b19cc153bb5428ba7f2f425c7e5fa80283c90
 
 pkgname = kde1-kdebase
 
