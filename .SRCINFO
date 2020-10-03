@@ -1,10 +1,14 @@
 pkgbase = lua-discount
 	pkgdesc = Lua bindings for the Discount Markdown library
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/craigbarnes/lua-discount
 	arch = x86_64
 	license = ISC
+	makedepends = lua
+	makedepends = lua53
+	makedepends = lua52
+	makedepends = lua51
 	makedepends = luarocks
 	depends = discount
 	source = https://github.com/craigbarnes/lua-discount/archive/0.4.tar.gz
@@ -15,14 +19,22 @@ pkgbase = lua-discount
 	sha256sums = 8b2fffc6b27a33bf6958a2a2293ce19ce5cbd7206ccb6dda7a9d3abe6f80c9fa
 
 pkgname = lua-discount
-	pkgdesc = Lua bindings for the Discount Markdown library for Lua 5.4
-
-pkgname = lua51-discount
-	pkgdesc = Lua bindings for the Discount Markdown library for Lua 5.1
-
-pkgname = lua52-discount
-	pkgdesc = Lua bindings for the Discount Markdown library for Lua 5.2
+	pkgdesc = Lua bindings for the Discount Markdown library (for Lua 5.4)
+	depends = discount
+	depends = lua
 
 pkgname = lua53-discount
-	pkgdesc = Lua bindings for the Discount Markdown library for Lua 5.3
+	pkgdesc = Lua bindings for the Discount Markdown library (for Lua 5.3)
+	depends = discount
+	depends = lua53
+
+pkgname = lua52-discount
+	pkgdesc = Lua bindings for the Discount Markdown library (for Lua 5.2)
+	depends = discount
+	depends = lua52
+
+pkgname = lua51-discount
+	pkgdesc = Lua bindings for the Discount Markdown library (for Lua 5.1)
+	depends = discount
+	depends = lua51
 
