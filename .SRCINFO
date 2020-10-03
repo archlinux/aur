@@ -1,11 +1,12 @@
 pkgbase = sourcetrail
 	pkgdesc = A cross-platform source explorer for C/C++ and Java
 	pkgver = 2020.2.43
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sourcetrail.com
 	arch = x86_64
 	license = LGPL3
 	makedepends = rsync
+	depends = libglvnd
 	provides = sourcetrail=2020.2.43
 	conflicts = coati
 	replaces = coati

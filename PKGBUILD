@@ -5,13 +5,14 @@ _pkgname=Sourcetrail
 pkgver=2020.2.43
 _pkgver=${pkgver/\./\_}
 _pkgver=${_pkgver/\./\_}
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform source explorer for C/C++ and Java'
 arch=('x86_64')
 url='https://www.sourcetrail.com'
 license=('LGPL3')
 conflicts=('coati')
 replaces=('coati')
+depends=('libglvnd')
 makedepends=('rsync')
 provides=("${pkgname}=${pkgver}")
 options=(!strip)
