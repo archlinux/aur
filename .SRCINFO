@@ -1,7 +1,7 @@
 pkgbase = identity
 	pkgdesc = Compare multiple versions of an image or video
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/YaLTeR/identity
 	arch = x86_64
 	license = GPL3
