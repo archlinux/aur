@@ -1,13 +1,13 @@
 # Maintainer: Krystof Pistek <krystof1119@gmail.com>
 pkgname=cpu-checker-bzr
 pkgver=r41
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace tools for helping to evaluate the CPU (or BIOS) support for various features."
 arch=('x86_64')
 url="https://launchpad.net/cpu-checker"
 license=('GPL')
 depends=('awk' 'grep' 'msr-tools')
-makedepends=('bzr' 'make')
+makedepends=('bzr' 'make' 'python-dulwich')
 source=('bzr+lp:cpu-checker')
 md5sums=('SKIP')
 
