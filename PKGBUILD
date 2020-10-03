@@ -4,20 +4,18 @@
 
 pkgname=android-platform-30
 _apilevel=30
-_rev=r01
+_rev=r02
 pkgver=${_apilevel}_${_rev}
-pkgrel=2
+pkgrel=1
 pkgdesc="Android SDK Platform, API 30"
 arch=('any')
 url="http://developer.android.com/sdk/index.html"
 license=('custom')
 depends=('android-sdk' 'android-sdk-platform-tools')
-provides=("${pkgname}-${_apilevel}")
-conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
 source=("https://dl-ssl.google.com/android/repository/platform-${_apilevel}_${_rev}.zip")
-sha1sums=('63aed027a1aa272ff894545af8106255e84f2140')
-sha384sums=('c3d9fe96b6d9a36f91a123689465f7c33d4ff2035b2de7510f596ace9f4f1f15135eb8f26b3713df6e55214d9a482723')
+sha1sums=('0b1102c5f0be7bc629e396fcefd36b9f1edfa0a7')
+sha384sums=('035f8aa55d9543b21406d9e9956f65bc427b3812420b53618ec1b810ae1adb9c2dbeecafdab1d83d4901943bec63cc14')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/platforms/"
