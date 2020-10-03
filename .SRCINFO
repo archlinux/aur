@@ -1,0 +1,23 @@
+pkgbase = python-wal-vtop-git
+	pkgdesc = Automate vtop theme creation from generated pywal colors
+	pkgver = 0.1.1.r11.g7c13792
+	pkgrel = 1
+	url = https://github.com/elock37/wal_vtop
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-wheel
+	makedepends = git
+	depends = python
+	depends = python-pywal
+	provides = python-wal-vtop
+	conflicts = python-wal-vtop
+	source = PKGBUILD_EXTRAS
+	source = git+https://github.com/3vanlock/wal_vtop.git
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = f730128a7db709e2704294289e59c47d
+
+pkgname = python-wal-vtop-git
+
