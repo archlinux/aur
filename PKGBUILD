@@ -6,7 +6,7 @@ pkgrel=1
 pkgver=0
 pkgver(){
   cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 pkgdesc="Steam cards farmer. Git version"
 arch=('x86_64' 'armv7h' 'aarch64')
