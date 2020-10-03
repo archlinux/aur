@@ -1,6 +1,7 @@
 # Maintainer: Alexander Menzhinsky <amenzhinsky@gmail.com>
 pkgname=protoc-gen-go-grpc
-pkgver=1.32.0
+epoch=1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="gRPC bindings generator for Go language"
 arch=("any")
@@ -8,15 +9,15 @@ url="https://github.com/grpc/grpc-go"
 license=('Apache')
 depends=('protoc-gen-go')
 makedepends=('go')
-source=("https://github.com/grpc/grpc-go/archive/v${pkgver}.tar.gz")
+source=("https://github.com/grpc/grpc-go/archive/cmd/protoc-gen-go-grpc/v${pkgver}.tar.gz")
 
 build() {
-	cd grpc-go-${pkgver}/cmd/protoc-gen-go-grpc
+	cd grpc-go-cmd-protoc-gen-go-grpc-v${pkgver}/cmd/protoc-gen-go-grpc
 	go build -trimpath -buildmode=pie -mod=readonly -modcacherw
 }
 
 package() {
-	install -Dm755 "grpc-go-${pkgver}/cmd/protoc-gen-go-grpc/protoc-gen-go-grpc" "${pkgdir}/usr/bin/protoc-gen-go-grpc"
+	install -Dm755 "grpc-go-cmd-protoc-gen-go-grpc-v${pkgver}/cmd/protoc-gen-go-grpc/protoc-gen-go-grpc" "${pkgdir}/usr/bin/protoc-gen-go-grpc"
 }
 
-sha256sums=('47a991a1d561738839e74803e350a276b4b753ae4af329091cb35ad2a117dcb2')
+sha256sums=('488bb2b4b282b7d4adda32a6534268b2622990d59e2bdadd6f28603638f07116')
