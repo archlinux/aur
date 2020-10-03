@@ -3,7 +3,7 @@
 # Contributor: 2GMon <t_2gmon@yahoo.co.jp>
 
 pkgname=mikutter
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="a moest twitter client"
 arch=('i686' 'x86_64')
@@ -33,5 +33,5 @@ package() {
   chmod a+x $pkgdir/usr/share/applications/mikutter.desktop
 }
 
-md5sums=('19ca22777098b15dd68247378d742903'
+md5sums=('804629671366a91394918a00e05a37b2'
          'be88935513f84d6287cc084e1c50cd88' )
