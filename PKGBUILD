@@ -3,7 +3,7 @@
 _pkgname='sfeed_curses'
 pkgname="${_pkgname/_/-}-git"
 pkgver=0.9.2.r7.g5f2bf1c
-pkgrel=1
+pkgrel=2
 pkgdesc='Curses UI front-end for sfeed RSS and Atom parser'
 arch=('x86_64')
 url='https://www.codemadness.org/sfeed_curses-ui.html'
@@ -11,7 +11,6 @@ license=('ISC')
 depends=('ncurses')
 makedepends=('git')
 optdepends=('sfeed: RSS and Atom parser')
-options=('!buildflags')
 provides=("${_pkgname}")
 source=("git://git.codemadness.org/${_pkgname}")
 sha256sums=('SKIP')
