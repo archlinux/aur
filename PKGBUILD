@@ -4,7 +4,7 @@
 
 _pkgname=htop
 pkgname=${_pkgname}-dev-git
-pkgver=3.0.0.r31.gf5b3e8d
+pkgver=3.0.2.r82.g4b14ab9
 pkgrel=1
 pkgdesc="htop - an interactive process viewer, full-featured"
 url="https://github.com/htop-dev/${_pkgname}"
@@ -39,7 +39,6 @@ prepare() {
       --enable-ancient-vserver \
       --enable-taskstats \
       --enable-unicode \
-      --enable-linux-affinity \
       --enable-hwloc \
       --enable-setuid \
       --enable-delayacct

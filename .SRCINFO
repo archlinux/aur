@@ -1,6 +1,6 @@
 pkgbase = htop-dev-git
 	pkgdesc = htop - an interactive process viewer, full-featured
-	pkgver = 3.0.0.r31.gf5b3e8d
+	pkgver = 3.0.2.r82.g4b14ab9
 	pkgrel = 1
 	url = https://github.com/htop-dev/htop
 	arch = i686
