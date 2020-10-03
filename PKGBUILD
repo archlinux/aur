@@ -1,12 +1,13 @@
-# Maintainer: Michael Yang <ohmyarchlinux@pm.me>
+# Maintainer: Isho Antar <isho.antar1@gmail.com>
+# Contributor: Michael Yang <ohmyarchlinux@pm.me>
 
 pkgname=fmt-git
-pkgver=5.1.0.r45.g5c0101a
+pkgver=7.0.3.a581e9e
 pkgrel=1
 pkgdesc='An open-source formatting library for C++'
-url='http://fmtlib.net'
+url='https://fmt.dev/'
 arch=('x86_64')
-license=('BSD')
+license=('MIT')
 makedepends=('git' 'cmake>=3.1.0')
 conflicts=('fmt')
 provides=('fmt')

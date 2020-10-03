@@ -1,10 +1,10 @@
 pkgbase = fmt-git
 	pkgdesc = An open-source formatting library for C++
-	pkgver = 5.1.0.r45.g5c0101a
+	pkgver = 7.0.3.a581e9e
 	pkgrel = 1
-	url = http://fmtlib.net
+	url = https://fmt.dev/
 	arch = x86_64
-	license = BSD
+	license = MIT
 	makedepends = git
 	makedepends = cmake>=3.1.0
 	provides = fmt
