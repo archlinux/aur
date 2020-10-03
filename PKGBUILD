@@ -5,7 +5,7 @@
 # Contributor: Runnytu < runnytu at gmail dot com > for 8192cu-dkms
 
 _pkgname=8188fu
-pkgname="$_pkgname-dkms-git"
+pkgname="$_pkgname-kelebek333-dkms-git"
 pkgver=r83.7c988d6
 pkgrel=1
 pkgdesc='Driver for Realtek RTL8188FU USB wireless adapter'
