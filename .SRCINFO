@@ -1,0 +1,17 @@
+pkgbase = openssl-pkcs11-export
+	pkgdesc = PKCS#11 software token providing access to OpenSSL 'engine' keys
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.kernel.org/pub/scm/linux/kernel/git/jejb/openssl-pkcs11-export.git
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = asciidoc
+	makedepends = gnutls
+	makedepends = p11-kit
+	depends = openssl
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/jejb/openssl-pkcs11-export.git#commit=310acdb8a592bde39ee2a20d696410ef02df4108
+	sha256sums = SKIP
+
+pkgname = openssl-pkcs11-export
+
