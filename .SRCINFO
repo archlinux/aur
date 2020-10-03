@@ -8,7 +8,6 @@ pkgbase = kde1-kdebase
 	groups = kde1
 	license = GPL2
 	makedepends = cmake
-	makedepends = git
 	depends = qt1
 	depends = kde1-kdelibs
 	depends = libjpeg
@@ -17,8 +16,6 @@ pkgbase = kde1-kdebase
 	depends = pulseaudio
 	depends = glu
 	depends = libxpm
-	provides = kde1-kdebase
-	conflicts = kde1-kdebase
 	source = https://invent.kde.org/historical/kde1-kdebase/-/archive/849cc4d1ad30e8d5881b2a7bf42d9c3c2c41e173/kde1-kdebase-849cc4d1ad30e8d5881b2a7bf42d9c3c2c41e173.tar.gz
 	sha512sums = e23ee724c1baa298acd3fd30acf182b2b6ac142158ff5aa3092a8cd615f384007a0df90cc6c47520223943cf860b19cc153bb5428ba7f2f425c7e5fa80283c90
 
