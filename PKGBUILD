@@ -2,8 +2,8 @@
 
 _pkgname='colorpicker'
 pkgname="${_pkgname}-ym1234-git"
-pkgver=r16.b48e036
-pkgrel=3
+pkgver=r17.0e1c53c
+pkgrel=1
 pkgdesc='A small tool for X11 that writes the color value on your screen at the cursor position to stdout, in RGB'
 arch=('i686' 'x86_64')
 url="https://github.com/ym1234/${_pkgname}"
@@ -27,5 +27,6 @@ build() {
 
 package() {
   install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}/${_pkgname}"
+  cd "${_pkgname}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
