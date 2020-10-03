@@ -25,7 +25,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $_pkgname
-  git describe --always | sed -e 's|-|.|g' -e 's|v||'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
