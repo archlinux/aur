@@ -1,6 +1,6 @@
-# Maintainer: John Hammen <jhammen@j2page.com>
+# Maintainer: Colean <colean@colean.cc>
 pkgname=bipscript-ide
-pkgver=0.7
+pkgver=0.9
 pkgrel=1
 pkgdesc="IDE for the bipscript language"
 arch=('i686' 'x86_64')
@@ -11,25 +11,22 @@ depends=('jack' 'qt5-base')
 makedepends=('git' 'qt5-tools' 'ruby')
 provides=("bipscript-ide")
 conflicts=("bipscript-ide")
-source=("https://github.com/bipscript/$pkgname/archive/v$pkgver.tar.gz"
-	"$pkgname-v$pkgver.patch")
-md5sums=('e775c796dc8b1893fb4fa16bf0030c8f'
-         'c2b4c56a0e005e8231a91bd31de2cd07')
+source=("https://gitlab.domainepublic.net/bipscript/ide/-/archive/v$pkgver/ide-v$pkgver.tar.gz")
+md5sums=('47b77eb323957ef5582a302858ad9d5a')
 
 prepare() {
-	cd "$pkgname-$pkgver"
-        patch -p2 -i "$srcdir/$pkgname-v$pkgver.patch"
+	cd "ide-v$pkgver"
 	./version.sh v$pkgver
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "ide-v$pkgver"
 	qmake-qt5 "$pkgname.pro"
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "ide-v$pkgver"
 	make INSTALL_ROOT="$pkgdir" install
 }
 
