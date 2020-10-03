@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=rofi-gh
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='GitHub issues in rofi'
 url='https://github.com/OJFord/rofi-gh'
 license=('BSD-3')
@@ -20,6 +20,8 @@ provides=(
 package() {
     set -eu
     cd "$pkgname-$pkgver"
+
+    install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     mkdir -p "$pkgdir/usr/bin"
 
