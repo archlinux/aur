@@ -1,7 +1,7 @@
 # Maintainer: Colean <colean@colean.cc>
 pkgname=bipscript
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A scripting language for interactive music"
 arch=('i686' 'x86_64')
 url="http://www.bipscript.org"
