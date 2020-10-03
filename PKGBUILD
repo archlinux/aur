@@ -13,7 +13,8 @@ license=('GPL2')
 depends=('dbus-glib>=0.94' 'libxml2>=2.4')
 backup=('etc/thermald/thermal-conf.xml')
 makedepends=('git'
-  'gtk-doc')
+  'gtk-doc'
+  'autoconf-archive')
 conflicts=('thermald')
 provides=('thermald')
 source=("$_pkgname::git://github.com/01org/thermal_daemon.git"
