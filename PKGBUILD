@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_tag=2.1-351-g0bfaac1c
-_version=2.1+351+g0bfaac1c
+_tag=2.1-362-g25c5f8db
+_version=2.1+362+g25c5f8db
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}2
@@ -16,7 +16,7 @@ url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
 depends=("java-runtime" "bash")
 optdepends=("prosody")
-makedepends=('tar')
+makedepends=('tar' 'unzip')
 options=('!strip')
 backup=(
   "etc/${_pkgbase}/config"
@@ -68,7 +68,7 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('372613cd0af65b45ec4ae9bb48f305add7b6b01615f3dffe52aa7164cddfc919'
+sha256sums=('402e33415a00e9526a5ce8e955de94c0e8b7b4ccf80336bbbc725bb3bab9a55b'
             'c9d3e6968592206c86818f5a0f8208cd25387c779c4edc629e36a6ec5acd303c'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
             '6c64d8ae8a38fc6674c3d068cbfce7f82458d71403a40b0aa25768b1f4f1e10f'
