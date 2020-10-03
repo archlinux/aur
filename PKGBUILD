@@ -3,7 +3,7 @@
 # Contributor: scan
 
 pkgname=obsidian-2-theme
-pkgver=2.14
+pkgver=2.15
 pkgrel=1
 pkgdesc="Obsidian 2 Theme GNOME 3.22+"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('gnome-tweak-tool: A tool to customize advanced GNOME 3 options.')
 source=(
 	"${pkgname}-${pkgver}.tar.xz::https://github.com/madmaxms/theme-obsidian-2/releases/download/v${pkgver}/obsidian-2-theme.tar.xz"
 )
-sha256sums=('1e857389d0c46e90ba03758a41bc3afdb0db7af221d5f9738c6b37ee8c1ee160')
+sha256sums=('5d26475fe18cdf1ff20c86d4269c889767cde9be10ea1fc55e3264f4b444d0b4')
 
 package() {
 	install -d ${pkgdir}/usr/share/themes
