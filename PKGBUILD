@@ -1,4 +1,5 @@
 # Maintainer: Igor R. Dejanović <igor dot dejanovic at gmail.com>
+# Contributor: Xiretza <xiretza at xiretza dot xyz>
 
 pkgname=python-textx
 _srcname=textX
