@@ -1,7 +1,7 @@
 # Maintainer: hexchain <i at hexchain dot org>
 
 pkgname=yaml-language-server
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Language Server for Yaml Files"
 url="https://github.com/redhat-developer/yaml-language-server"
@@ -26,4 +26,4 @@ package() {
     install -d "$pkgdir"/usr/share/licenses/$pkgname
     ln -s ../../../lib/node_modules/$pkgname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-sha256sums=('57c0ceb7bfe2f50d426bbfdd44824870c8a0499756d56910e461c0789722989b')
+sha256sums=('2676e86ba3c88307648a75d0d74825e91d4edf23bd28e9460d14e0f6ceb00337')
