@@ -1,0 +1,7 @@
+pre_remove() {
+    systemctl disable --now gf_backup_tool.timer
+    systemctl disable --now gf_backup_tool.service
+    sudo rm -rf /snapshots
+    sudo rm -rf /etc/gf_backup_tool/
+
+}
