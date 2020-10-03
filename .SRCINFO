@@ -2,14 +2,14 @@ pkgbase = palaura
 	pkgdesc = Find any words definition with this handy dictionary
 	pkgver = 1.2.2
 	pkgrel = 1
-	url = https://github.com/lainsce/palaura/
+	url = https://github.com/lainsce/palaura
 	arch = x86_64
 	license = GPL3
 	makedepends = meson
 	makedepends = vala
 	depends = granite
 	depends = gtksourceview3
-	source = palaura-1.2.2.tar.gz::https://github.com/lainsce/palaura//archive/1.2.2.tar.gz
+	source = palaura-1.2.2.tar.gz::https://github.com/lainsce/palaura/archive/1.2.2.tar.gz
 	sha256sums = 555c1e06981b98280e806504bc9b31e93ac501e4e4845c301982207a60d9daae
 
 pkgname = palaura
