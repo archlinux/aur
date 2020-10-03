@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Workcraft
+Comment=A framework for interpreted graph models including petri nets and STGs
+Exec=workcraft
+Icon=workcraft
+Terminal=false
+StartupNotify=false
+Categories=Application;
+MimeType=application/x-workcraft;
