@@ -1,13 +1,13 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=words-insane
-pkgver=2018.04.16
+pkgver=2019.10.06
 pkgrel=1
 pkgdesc="A really big wordlist with 675k entries, based on SCOWL."
 arch=('any')
 url="http://wordlist.sourceforge.net/"
 license=('custom:copyright')
 source=("http://downloads.sourceforge.net/wordlist/scowl-$pkgver.tar.gz")
-md5sums=('00f469e82a067109d39f66463557575a')
+md5sums=('a2e116fa1f18b3a71452540162f955c8')
 
 build() {
   cd "$srcdir/scowl-$pkgver"
