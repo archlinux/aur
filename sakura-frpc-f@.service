@@ -1,0 +1,13 @@
+[Unit]
+Description=Sakura Frp Client Service
+After=network.target
+
+[Service]
+Type=idle
+User=nobody
+Restart=on-failure
+RestartSec=5s
+ExecStart=/usr/bin/sakura-frpc -f %i
+
+[Install]
+WantedBy=multi-user.target

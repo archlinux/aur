@@ -9,7 +9,8 @@ url="https://www.natfrp.com/"
 license=('unknown')
 provides=('sakura-frpc' 'natfrp')
 source=("${pkgname}c.service"
-        "${pkgname}c@.service")
+        "${pkgname}c@.service"
+        "${pkgname}c-f@.service")
 backup=("etc/${pkgname}/frpc.ini")
 source_x86_64=("https://qianqu.me/frp/frpc_linux_amd64")
 source_i686=("https://qianqu.me/frp/frpc_linux_386")
@@ -19,7 +20,8 @@ source_armv6h=("https://qianqu.me/frp/frpc_linux_arm")
 source_aarch64=("https://qianqu.me/frp/frpc_linux_arm64")
 
 md5sums=('fb48bb6ff4b09b98ede0919ab446d157'
-         'd49ed511e6d5edf054826fdf8410692a')
+         'd49ed511e6d5edf054826fdf8410692a'
+         '9980819da2249749cb87373adcc76c28')
 md5sums_x86_64=('365e027265c6548b862d022c079faf62')
 md5sums_i686=('c94b5adacb30b28dc5003ed97f94a0c9')
 md5sums_aarch64=('2d65556d917628c04bafe3213864b6d6')
@@ -37,6 +39,7 @@ package() {
   # systemd service
   install -Dm644 ${pkgname}c.service -t ${pkgdir}/usr/lib/systemd/system/
   install -Dm644 ${pkgname}c@.service -t ${pkgdir}/usr/lib/systemd/system/
+  install -Dm644 ${pkgname}c-f@.service -t ${pkgdir}/usr/lib/systemd/system/
 }
 
 # vim: set sw=2 ts=2 et:
