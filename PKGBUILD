@@ -4,7 +4,7 @@
 
 pkgname=osh
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A bash-compatible UNIX shell written in Python."
 arch=("x86_64" "i686")
 url="https://www.oilshell.org/"
@@ -21,11 +21,11 @@ prepare() {
 
 build() {
   cd "oil-$pkgver"
-  ./configure --prefix="$pkgdir/usr"
+  ./configure --prefix="/usr"
   make $MAKEFLAGS
 }
 
 package() {
   cd "oil-$pkgver"
-  ./install
+  DESTDIR="$pkgdir/" ./install
 }

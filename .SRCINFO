@@ -1,7 +1,7 @@
 pkgbase = osh
 	pkgdesc = A bash-compatible UNIX shell written in Python.
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.oilshell.org/
 	arch = x86_64
 	arch = i686
