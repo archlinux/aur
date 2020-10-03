@@ -40,4 +40,5 @@ package() {
   make DESTDIR="$pkgdir" install
   mkdir -p ${pkgdir}/usr/lib/modules-load.d
   install -m644 ${srcdir}/modules-load-msr.conf ${pkgdir}/usr/lib/modules-load.d/thermald.conf
+  install -m644 ${srcdir}/${_pkgname}/data/thermal-conf.xml ${pkgdir}/etc/${_pkgname}/
 }
