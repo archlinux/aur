@@ -3,12 +3,12 @@
 pkgname=dovecot-fts-elastic
 _reponame=fts-elastic
 pkgver=r123.ce47a7d
-pkgrel=1
+pkgrel=2
 pkgdesc="Dovecot FTS plugin for elasticsearch"
 arch=(x86_64)
 url="https://github.com/filiphanes/fts-elastic"
 license=(MIT)
-depends=(dovecot elasticsearch json-c)
+depends=(dovecot json-c)
 makedepends=(git)
 backup=('etc/dovecot/conf.d/90-fts.conf')
 
