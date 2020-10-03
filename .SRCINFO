@@ -1,0 +1,21 @@
+pkgbase = kiauto-git
+	pkgdesc = KiCad automation scripts.
+	pkgver = 379.f984245
+	pkgrel = 1
+	url = https://github.com/INTI-CMNB/KiAuto
+	arch = i686
+	arch = x86_64
+	license = Apache2.0
+	makedepends = git
+	depends = python
+	depends = kicad
+	depends = xdotool
+	depends = xclip
+	depends = libxslt
+	provides = kiauto
+	conflicts = kiauto
+	source = kiauto::git+https://github.com/INTI-CMNB/KiAuto
+	md5sums = SKIP
+
+pkgname = kiauto-git
+
