@@ -1,18 +1,18 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kvideotomp3
-pkgver=2.6.2.915
+pkgver=3.0.0.930
 pkgrel=1
 pkgdesc="Extract audio in high-quality MP3 from any video."
 arch=('x86_64')
 url="http://www.4kdownload.com/products/product-videotomp3"
 license=('custom:eula')
-depends=('qt5-script' 'qt5-quickcontrols' 'portaudio' 'ffmpeg2.8')
+depends=('qt5-multimedia' 'qt5-script' 'qt5-quickcontrols' 'portaudio' 'ffmpeg')
 makedepends=('chrpath')
 source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${pkgname}_${pkgver%.*}_amd64.tar.bz2"
         "${pkgname}.desktop"
         "${pkgname}.png")
-sha256sums=('b6e1f12eab71bacd290fc3a5b58b0756d37c7171b1b02d4a0ba9915a091286ac'
+sha256sums=('5eecbe6d963370c30cf2faa699a2926223902ac06ba9163b6a9733a9cf177c3b'
             'a53e776426f30fd1d35b5d78df95f3608f25a8637a7c5f0c731ff538226c2185'
             '3aa5efcf8111c63fde7397f491d2b85ff47d50fd531f7792842d94016b814a4c')
 
