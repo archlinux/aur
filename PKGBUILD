@@ -2,8 +2,8 @@
 
 _pkgname='bashmount'
 pkgname="${_pkgname}-git"
-pkgver=0.43.r17.g1f75f01
-pkgrel=2
+pkgver=4.3.2.r0.g9a15ab7
+pkgrel=1
 pkgdesc='Tool to mount and unmount removable media from the command-line'
 arch=('any')
 url='https://github.com/jamielinux/bashmount'
@@ -16,6 +16,10 @@ conflicts=("${_pkgname}")
 backup=("etc/${_pkgname}.conf")
 source=("git+${url}.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
   cd "${_pkgname}"
