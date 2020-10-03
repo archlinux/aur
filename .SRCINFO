@@ -1,0 +1,16 @@
+pkgbase = fujprog
+	pkgdesc = ULX2S / ULX3S JTAG programmer
+	pkgver = 4.6
+	pkgrel = 1
+	url = https://github.com/kost/fujprog
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = libftdi
+	depends = libusb
+	source = fujprog-4.6::https://github.com/kost/fujprog/archive/v4.6.tar.gz
+	sha1sums = bdc741829b5dbc51872aec57482df20ed90d12ff
+	sha256sums = e6a2732b294e2b051aa3505faed13bd143630fa5564bf86bbebedaf5ff9dbb15
+
+pkgname = fujprog
+
