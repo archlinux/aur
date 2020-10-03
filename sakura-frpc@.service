@@ -3,12 +3,12 @@ Description=Sakura Frp Client Service
 After=network.target
 
 [Service]
-Type=simple
+Type=idle
 User=nobody
 Restart=on-failure
 RestartSec=5s
-ExecStart=/usr/bin/sakura-frpc -c /etc/sakura-frp/frpc.ini
-ExecReload=/usr/bin/sakura-frpc reload -c /etc/sakura-frp/frpc.ini
+ExecStart=/usr/bin/sakura-frpc -c /etc/sakura-frp/%i.ini
+ExecReload=/usr/bin/sakura-frpc reload -c /etc/sakura-frp/%i.ini
 
 [Install]
 WantedBy=multi-user.target
