@@ -3,11 +3,12 @@
 _pkgname='bashmount'
 pkgname="${_pkgname}-git"
 pkgver=0.43.r17.g1f75f01
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to mount and unmount removable media from the command-line'
 arch=('any')
 url='https://github.com/jamielinux/bashmount'
 license=('GPL2')
+depends=('cryptsetup')
 makedepends=('git')
 optdepends=('udisks2: manage removable media without sudo')
 provides=("${_pkgname}")

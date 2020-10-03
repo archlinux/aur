@@ -1,11 +1,12 @@
 pkgbase = bashmount-git
 	pkgdesc = Tool to mount and unmount removable media from the command-line
 	pkgver = 0.43.r17.g1f75f01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jamielinux/bashmount
 	arch = any
 	license = GPL2
 	makedepends = git
+	depends = cryptsetup
 	optdepends = udisks2: manage removable media without sudo
 	provides = bashmount
 	conflicts = bashmount
