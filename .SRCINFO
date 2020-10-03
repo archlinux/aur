@@ -1,14 +1,15 @@
 pkgbase = python-panflute
 	pkgdesc = A Pythonic alternative to John MacFarlane’s pandocfilters
 	pkgver = 1.12.5
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/sergiocorreia/panflute
+	install = python-panflute.install
 	arch = any
 	license = BSD
 	checkdepends = python-pandocfilters
 	checkdepends = python-pytest-cov
 	makedepends = python-setuptools
-	depends = pandoc<2.10.0
+	depends = pandoc
 	depends = python
 	depends = python-click
 	depends = python-yaml
