@@ -11,7 +11,7 @@ depends=('gsl' 'fftw' 'ncurses' 'libconfig' 'portaudio')
 makedepends=('git' 'meson' 'ninja' 'pkgconf')
 optdepends=('pulseaudio')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/GhostNaN/$_gitname/archive/$pkgver.tar.gz)
-sha256sums=('afdbd0f069e857b62bbb30ca3ba34ee95a7b8334c02711a4c82829bf206dfd0d')
+sha256sums=('f1a6f8e2a2d56e9f57bb26e08987b50900664e5f0a221733416635359e51fae5')
 
 build() {
   cd $pkgname-$pkgver

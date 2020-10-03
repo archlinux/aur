@@ -17,7 +17,7 @@ pkgbase = recidia-audio-visualizer
 	depends = portaudio
 	optdepends = pulseaudio
 	source = recidia-audio-visualizer-0.1.tar.gz::https://github.com/GhostNaN/recidia-audio-visualizer/archive/0.1.tar.gz
-	sha256sums = afdbd0f069e857b62bbb30ca3ba34ee95a7b8334c02711a4c82829bf206dfd0d
+	sha256sums = f1a6f8e2a2d56e9f57bb26e08987b50900664e5f0a221733416635359e51fae5
 
 pkgname = recidia-audio-visualizer
 
