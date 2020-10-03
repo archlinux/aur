@@ -1,9 +1,9 @@
 # Maintainer: ml <>
 # Contributor: sum01 <sum01@protonmail.com>
 pkgname=rocketchat-desktop
-pkgver=3.0.1
+pkgver=3.0.2
 _pkgname="Rocket.Chat.Electron-${pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url='https://github.com/RocketChat/Rocket.Chat.Electron'
@@ -15,7 +15,7 @@ install=rocketchat-desktop.install
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         rocketchat-desktop
         rocketchat-desktop.desktop)
-sha256sums=('6586b4745f2e2262f93eefce3e6001c0bb200e7eed243afeb8a37e6ad82bd1b5'
+sha256sums=('5ca518421dde4fbbf5f3b3b1904dd63562bc43f16bb9c169ffed07022033a0df'
             '18fab390ffce4f89a17d5d71a7e78fea9afa9f9d2bcdafecb4f310d4f804996f'
             '31fae4f98a61a774f84030fd43d2ef92c7633740dc5aa55967a21d0e29ea621a')
 
