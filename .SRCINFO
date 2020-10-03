@@ -1,7 +1,7 @@
 pkgbase = python-dbus-next
 	pkgdesc = The next great DBus library for Python with asyncio support
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/altdesktop/python-dbus-next
 	arch = any
 	license = MIT

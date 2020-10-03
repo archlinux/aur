@@ -1,7 +1,7 @@
 pkgname='python-dbus-next'
 _module='dbus_next'
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='The next great DBus library for Python with asyncio support'
 url=https://github.com/altdesktop/python-dbus-next
 arch=('any')
