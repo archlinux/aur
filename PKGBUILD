@@ -28,10 +28,12 @@ md5sums=('5a26cc7b1b461bec8533266dbe64c87e'
          '84e52389f141be88a24bcfdd44c91a19')
 
 build() {
-  HOME="$srcdir/.electron-gyp" yarn install --cache-folder "$srcdir/yarn-cache"
-  HOME="$srcdir/.electron-gyp" yarn build
+  local FAKEHOME="$srcdir/.electron-gyp"
+  mkdir -p "$FAKEHOME"
+  HOME="$FAKEHOME" yarn install --cache-folder "$srcdir/yarn-cache"
+  HOME="$FAKEHOME" yarn build
   # Remove dev dependencies
-  HOME="$srcdir/.electron-gyp" yarn install --cache-folder "$srcdir/yarn-cache" --production --ignore-scripts --prefer-offline
+  HOME="$FAKEHOME" yarn install --cache-folder "$srcdir/yarn-cache" --production --ignore-scripts --prefer-offline
 }
 
 package() {
