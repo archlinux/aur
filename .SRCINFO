@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn-cli
 	pkgdesc = The Mullvad VPN client cli
-	pkgver = 2020.4
-	pkgrel = 2
+	pkgver = 2020.5
+	pkgrel = 1
 	url = https://www.mullvad.net
 	install = mullvad-vpn-cli.install
 	arch = x86_64
@@ -11,12 +11,11 @@ pkgbase = mullvad-vpn-cli
 	makedepends = go
 	depends = nss
 	conflicts = mullvad-vpn
-	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2020.4?signed
-	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=90b0c06b59a0b9d6cda69924377335f39854b216?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2020.5?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=f9c55513f372de96223fad3ab6bd2aa78d517387?signed
 	source = override.conf
 	source = settings.json.sample
 	validpgpkeys = EA0A77BF9E115615FC3BD8BC7653B940E494FE87
-	validpgpkeys = 8339C7D2942EB854E3F27CE5AEE9DECFD582E984
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = ed978958f86da9acbce950a832491b140a350c594e2446b99a7c397a98731316
