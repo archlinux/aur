@@ -1,13 +1,13 @@
 # Maintainer: Jordan Day < jordanday444 at gmail dot com >
 
 pkgname=dasm
-pkgver=2.20.13
+pkgver=2.20.14
 pkgrel=1
 pkgdesc="A versatile macro assembler with support for several 8-bit microprocessors including 6502, 6507, 6803, HD6303, 68HC11, 68705, and F8"
 arch=('x86_64')
 url="https://dasm-assembler.github.io/"
 source=(https://github.com/dasm-assembler/dasm/archive/${pkgver}.tar.gz)
-sha256sums=('48be84858d578dd7e1ac702fb2dca713a2e0be930137cbb3d6ecbeac1944ff5c')
+sha256sums=('c66538ad8c413a4ea88525246ed9fef2bf9c9d2e36593acdf651e06635ad7497')
 license=('GPL2')
 provides=('dasm' 'ftohex')
 depends=('glibc')
@@ -24,8 +24,8 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   install -Dm755 bin/dasm bin/ftohex "$pkgdir/usr/bin"
 
-  install -dm755 "$pkgdir/usr/share/man/man1" "$pkgdir/usr/share/doc/dasm"
-  install -Dm644 doc/dasm.txt doc/ftohex.txt "$pkgdir/usr/share/doc/dasm"
+  install -dm755 "$pkgdir/usr/share/man/man1" "$pkgdir/usr/share/docs/dasm"
+  install -Dm644 docs/dasm.txt docs/ftohex.txt "$pkgdir/usr/share/docs/dasm"
 
   install -dm755 "$pkgdir/usr/include/dasm/atari2600" "$pkgdir/usr/include/dasm/channel-f"
   install -Dm644 machines/atari2600/* "$pkgdir/usr/include/dasm/atari2600"

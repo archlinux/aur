@@ -1,6 +1,6 @@
 pkgbase = dasm
 	pkgdesc = A versatile macro assembler with support for several 8-bit microprocessors including 6502, 6507, 6803, HD6303, 68HC11, 68705, and F8
-	pkgver = 2.20.13
+	pkgver = 2.20.14
 	pkgrel = 1
 	url = https://dasm-assembler.github.io/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = dasm
 	depends = glibc
 	provides = dasm
 	provides = ftohex
-	source = https://github.com/dasm-assembler/dasm/archive/2.20.13.tar.gz
-	sha256sums = 48be84858d578dd7e1ac702fb2dca713a2e0be930137cbb3d6ecbeac1944ff5c
+	source = https://github.com/dasm-assembler/dasm/archive/2.20.14.tar.gz
+	sha256sums = c66538ad8c413a4ea88525246ed9fef2bf9c9d2e36593acdf651e06635ad7497
 
 pkgname = dasm
 
