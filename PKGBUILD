@@ -1,9 +1,9 @@
 # Maintainer: Luca Weiss <luca (at) z3ntu (dot) xyz>
-# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=elisa-git
-pkgver=0.4.0.r61.gbe00ded
+pkgver=20.08.1.r81.g5192facb
 pkgrel=1
 arch=(i686 x86_64)
 pkgdesc="A simple music player for KDE aiming to provide a nice experience for its users"
@@ -13,7 +13,7 @@ depends=(qt5-quickcontrols2 kcmutils baloo kirigami2)
 makedepends=(git python extra-cmake-modules kdoctools)
 provides=(elisa)
 conflicts=(elisa)
-source=("git+https://anongit.kde.org/elisa.git")
+source=("git+https://invent.kde.org/multimedia/elisa.git")
 sha512sums=('SKIP')
 
 pkgver() {

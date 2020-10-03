@@ -1,6 +1,6 @@
 pkgbase = elisa-git
 	pkgdesc = A simple music player for KDE aiming to provide a nice experience for its users
-	pkgver = 0.4.0.r61.gbe00ded
+	pkgver = 20.08.1.r81.g5192facb
 	pkgrel = 1
 	url = https://community.kde.org/Elisa
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = elisa-git
 	depends = kirigami2
 	provides = elisa
 	conflicts = elisa
-	source = git+https://anongit.kde.org/elisa.git
+	source = git+https://invent.kde.org/multimedia/elisa.git
 	sha512sums = SKIP
 
 pkgname = elisa-git
