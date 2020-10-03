@@ -13,6 +13,7 @@ arch=('any')
 url="https://github.com/kelebek333/rtl8188fu"
 license=('GPL3')
 depends=('dkms')
+conflicts=('8188fu-dkms-git')
 makedepends=('git')
 install="${_pkgname}-dkms.install"
 source=("$_pkgname::git+https://github.com/kelebek333/rtl8188fu.git"
