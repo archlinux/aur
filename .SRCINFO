@@ -1,0 +1,14 @@
+pkgbase = iconoscope
+	pkgdesc = Explore the icon database in your system
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = https://github.com/santileortiz/Iconoscope
+	arch = x86_64
+	license = GPL3
+	makedepends = python
+	depends = gtk3
+	source = Iconoscope-0.9.7.tar.gz::https://github.com/santileortiz/Iconoscope/archive/0.9.7.tar.gz
+	sha256sums = e4093003edc72545f33f379645e57437add4de3291814f813c230d3540a4818f
+
+pkgname = iconoscope
+
