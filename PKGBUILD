@@ -39,11 +39,11 @@ package() {
     cp -rdp --no-preserve=ownership . "${pkgdir}/usr/lib/asf"
     install -D -m755 ../../run.sh "${pkgdir}/usr/bin/asf"
     sed -i 's,^\(BINARY_DIR[ ]*=\).*,\1'/usr/lib/asf',g' "${pkgdir}/usr/bin/asf"
-    find "${pkgdir}/usr/lib/${pkgname}" -type f -exec chmod 644 {} \;
-    find "${pkgdir}/usr/lib/${pkgname}" -type d -exec chmod 755 {} \;
+    find "${pkgdir}/usr/lib/asf" -type f -exec chmod 644 {} \;
+    find "${pkgdir}/usr/lib/asf" -type d -exec chmod 755 {} \;
 
     install -d -m 755 "${pkgdir}/var/lib/asf/config"
-    install -D -m644 "${srcdir}/NLog.config" "${pkgdir}/usr/lib/${pkgname}/NLog.config"
+    install -D -m644 "${srcdir}/NLog.config" "${pkgdir}/usr/lib/asf/NLog.config"
 
     install -D -m644 "${srcdir}/service" "${pkgdir}/usr/lib/systemd/system/asf.service"
     install -D -m644 "${srcdir}/service.user" "${pkgdir}/usr/lib/systemd/user/asf.service"
