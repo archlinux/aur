@@ -1,0 +1,12 @@
+pkgbase = libffi.so.6
+	pkgdesc = Portable foreign function interface library (symlink)
+	pkgver = 1
+	pkgrel = 1
+	url = https://sourceware.org/libffi/
+	arch = x86_64
+	license = MIT
+	provides = libffi.so.6
+	conflicts = libffi.so.6
+
+pkgname = libffi.so.6
+
