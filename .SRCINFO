@@ -1,13 +1,13 @@
 pkgbase = pcm
 	pkgdesc = Processor Counter Monitor
-	pkgver = 202008
+	pkgver = 202009
 	pkgrel = 1
 	url = https://github.com/opcm/pcm
 	arch = x86_64
 	license = custom:BSD-3-Clause
 	depends = gcc-libs
-	source = pcm-202008.tar.gz::https://github.com/opcm/pcm/archive/202008.tar.gz
-	sha256sums = 38722e53b0fde5aae450abf871c0bd4c55a5152c28493dd989f800c58cb21f1f
+	source = pcm-202009.tar.gz::https://github.com/opcm/pcm/archive/202009.tar.gz
+	sha256sums = 3d292fbff4d549071127b8d19524b4cf251a0706fccef2863d50abf77b40629b
 
 pkgname = pcm
 

@@ -1,7 +1,7 @@
 # Maintainer: hexchain <i at hexchain dot org>
 
 pkgname=pcm
-pkgver=202008
+pkgver=202009
 pkgrel=1
 pkgdesc="Processor Counter Monitor"
 url="https://github.com/opcm/pcm"
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('custom:BSD-3-Clause')
 depends=('gcc-libs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('38722e53b0fde5aae450abf871c0bd4c55a5152c28493dd989f800c58cb21f1f')
+sha256sums=('3d292fbff4d549071127b8d19524b4cf251a0706fccef2863d50abf77b40629b')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
