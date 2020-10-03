@@ -1,0 +1,17 @@
+pkgbase = gcron-git
+	pkgdesc = Manage and understand your cron configuration with ease
+	pkgver = 1.0.5.r5.g36b830c
+	pkgrel = 1
+	url = https://github.com/padjis/gcron
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	provides = gcron
+	source = git+https://github.com/padjis/gcron.git
+	sha256sums = SKIP
+
+pkgname = gcron-git
+
