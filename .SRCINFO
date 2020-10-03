@@ -1,0 +1,18 @@
+pkgbase = kibom-git
+	pkgdesc = KiCad automation scripts.
+	pkgver = 572.51244bb
+	pkgrel = 1
+	url = https://github.com/INTI-CMNB/kibom
+	arch = i686
+	arch = x86_64
+	license = Apache2.0
+	makedepends = git
+	makedepends = python
+	depends = python
+	provides = kibom
+	conflicts = kibom
+	source = kibom::git+https://github.com/INTI-CMNB/KiBom
+	md5sums = SKIP
+
+pkgname = kibom-git
+
