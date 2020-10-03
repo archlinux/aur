@@ -11,6 +11,7 @@ pkgbase = toontown-rewritten
 	depends = openal
 	depends = gendesk
 	depends = python
+	depends = python-pyqtwebengine
 	source = toontown-rewritten::git+https://github.com/Xytime/Xytime.github.io.git
 	source = toontown.py
 	md5sums = SKIP
