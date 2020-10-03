@@ -2,14 +2,14 @@
 
 pkgname=cling
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive C++ interpreter, built on the top of LLVM and Clang libraries"
 arch=("i686" "x86_64")
 url="https://root.cern.ch/cling"
 license=("custom:Cling Release License")
 provides=("cling")
 conflicts=("cling")
-depends=("libxml2" "libffi")
+depends=("libxml2")
 makedepends=("git" "cmake")
 optdepends=(
     "python2: support for scan-view and Jupyter"
