@@ -22,13 +22,13 @@ _basename=czkawka
 _releasever=1.0.0
 pkgname=${_basename}-git
 pkgver=1.0.0.8d263fd
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi functional app to find duplicates, empty folders etc."
 arch=(any)
 url="https://github.com/qarmin/czkawka"
 license=('MIT')
 depends=("gtk3>=3.22")
-makedepends=("rust" "cargo")
+makedepends=("git" "rust" "cargo")
 provides=("czkawka")
 source=("${_basename}::git+https://github.com/qarmin/czkawka.git" "com.github.qarmin.czkawka.desktop")
 md5sums=("SKIP" "bbc480c6106a7bd7dc73c3cc49a76961")
