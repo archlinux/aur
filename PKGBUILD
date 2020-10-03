@@ -3,8 +3,8 @@
 # Maintainer: Wainer Vandelli <wainer dot vandelli at gmail dot com>
 # Contributor: Konstantin Gizdov < arch at kge dot pw >
 pkgname=cvmfs
-pkgver=2.7.2
-pkgrel=3
+pkgver=2.7.4
+pkgrel=1
 pkgdesc="A client-server file system implemented in FUSE and developed to deliver software distributions onto virtual machines in a fast, scalable, and reliable way."
 arch=('x86_64')
 url="http://cernvm.cern.ch/portal/filesystem"
@@ -17,12 +17,11 @@ options=('!emptydirs')
 source=("https://ecsft.cern.ch/dist/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"
         'settings.cmake'
 	    'externals.patch'
-        'gcc-version.patch'
         )
-md5sums=('c5e25df42fddf92cc0a3ab2902e5526e'
+md5sums=('bba59378f109b97f4dfdd1109fcf8563'
          '20dc60c61077f4a3711463e8686d260d'
          '22b41fe0f5983d35e3622c52f70b25d6'
-         '4d5b5f208d4f20a5a40b7ce9ae6d19ac')
+)
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -31,9 +30,6 @@ prepare() {
     # We remove all those that are provided by Arch/AUR and leave only
     # the ones not currently available
     patch -Np1 -i "$srcdir/externals.patch"
-
-    # Fix detection of gcc major version for >10
-    patch -Np1 -i "$srcdir/gcc-version.patch"
 }
 
 build() {
