@@ -8,7 +8,7 @@ pkgver(){
   cd asf/
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-pkgdesc="Steam cards farmer."
+pkgdesc="Steam cards farmer. Git version"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache')
