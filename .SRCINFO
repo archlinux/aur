@@ -1,5 +1,5 @@
 pkgbase = kibot-git
-	pkgdesc = KiCad automation scripts.
+	pkgdesc = Helps you to generate the fabrication and documentation files for your KiCad projects.
 	pkgver = 701.75ae78a
 	pkgrel = 1
 	url = https://github.com/INTI-CMNB/kibot
