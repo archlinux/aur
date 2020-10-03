@@ -1,0 +1,12 @@
+pkgbase = rotcheck
+	pkgdesc = Recursively generate, update and verify checksums for your files
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/jamielinux/rotcheck
+	arch = any
+	license = MIT
+	source = rotcheck-1.1.2.tar.gz::https://github.com/jamielinux/rotcheck/archive/v1.1.2.tar.gz
+	sha256sums = 09a80f936c9ac9096d614616abbe097d2bcde5049228de977ebeedef227d3e05
+
+pkgname = rotcheck
+
