@@ -1,12 +1,12 @@
-From 5f7f22acb3d287a657206c5c0a41c0e18dcde468 Mon Sep 17 00:00:00 2001
+From 74c5e8dc2c8cb46aa4376bca999138c480419911 Mon Sep 17 00:00:00 2001
 From: soloturn <soloturn@gmail.com>
 Date: Sat, 1 Aug 2020 16:21:07 +0200
 Subject: [PATCH] arch aur pachtes
 
 ---
  CMakeLists.txt          | 1 +
- utils/build-presets.ini | 3 ---
- 2 files changed, 1 insertion(+), 3 deletions(-)
+ utils/build-presets.ini | 4 ----
+ 2 files changed, 1 insertion(+), 4 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index ecdbbca9539..c43da553ed9 100644
@@ -21,7 +21,7 @@ index ecdbbca9539..c43da553ed9 100644
  
  #
 diff --git a/utils/build-presets.ini b/utils/build-presets.ini
-index 7d9a5c264c8..0d57da51e33 100644
+index 7d9a5c264c8..5e6c207842a 100644
 --- a/utils/build-presets.ini
 +++ b/utils/build-presets.ini
 @@ -783,12 +783,10 @@ llbuild
@@ -45,6 +45,14 @@ index 7d9a5c264c8..0d57da51e33 100644
  install-prefix=/usr
  install-libcxx
  install-sourcekit-lsp
+@@ -816,7 +813,6 @@ toolchain-benchmarks
+ install-destdir=%(install_destdir)s
+ 
+ # Path to the .tar.gz package we would create.
+-installable-package=%(installable_package)s
+ 
+ [preset: buildbot_linux]
+ mixin-preset=mixin_linux_installation
 -- 
 2.28.0
 
