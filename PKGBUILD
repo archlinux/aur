@@ -3,8 +3,8 @@
 
 pkgname=fmt-git
 pkgver=7.0.3.a581e9e
-pkgrel=1
-pkgdesc='An open-source formatting library for C++'
+pkgrel=2
+pkgdesc='An open-source C++ formatting library providing a fast and safe alternative to C stdio and C++ iostreams'
 url='https://fmt.dev/'
 arch=('x86_64')
 license=('MIT')
