@@ -2,12 +2,12 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=rofi-gh
 pkgver=0.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc='GitHub issues in rofi'
 url='https://github.com/OJFord/rofi-gh'
 license=('BSD-3')
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=()
+md5sums=('3e73853b540b81bae4214d8615fe162f')
 arch=('any')
 depends=(
     'github-cli'
