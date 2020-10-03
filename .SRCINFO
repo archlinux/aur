@@ -1,6 +1,6 @@
 pkgbase = amarok-git
 	pkgdesc = The powerful music player for KDE - GIT version
-	pkgver = 2.9.0.r464.gfb5b5abcd3
+	pkgver = 2.9.0.r481.g252b9ffcfe
 	pkgrel = 1
 	url = http://amarok.kde.org
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = amarok-git
 	depends = knewstuff
 	depends = ktexteditor
 	depends = kdnssd
+	depends = knotifyconfig
 	depends = libmariadbclient
 	depends = taglib-extras
 	depends = qca-qt5
@@ -31,7 +32,7 @@ pkgbase = amarok-git
 	optdepends = gmock: tests
 	provides = amarok
 	conflicts = amarok
-	source = git+https://anongit.kde.org/amarok.git
+	source = git+https://invent.kde.org/multimedia/amarok.git
 	sha512sums = SKIP
 
 pkgname = amarok-git
