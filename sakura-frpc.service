@@ -1,0 +1,14 @@
+[Unit]
+Description=Frp Client Service
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+Restart=on-failure
+RestartSec=5s
+ExecStart=/usr/bin/sakura-frpc -c /etc/sakura-frp/frpc.ini
+ExecReload=/usr/bin/sakura-frpc reload -c /etc/sakura-frp/frpc.ini
+
+[Install]
+WantedBy=multi-user.target
