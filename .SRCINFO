@@ -1,0 +1,14 @@
+pkgbase = matplotplusplus
+	pkgdesc = Matplot++: A C++ Graphics Library for Data Visualization
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://alandefreitas.github.io/matplotplusplus/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = gnuplot
+	source = matplotplusplus-1.0.1.tar.gz::https://github.com/alandefreitas/matplotplusplus/archive/v1.0.1.tar.gz
+	sha256sums = 19f5f6fe40b56efc49dcda7f6c6de07679f5707254dea6859c3c7b4a8a0759a3
+
+pkgname = matplotplusplus
+
