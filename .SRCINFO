@@ -1,0 +1,25 @@
+pkgbase = asf-git
+	pkgdesc = Steam cards farmer.
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/JustArchiNET/ArchiSteamFarm
+	install = install
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	makedepends = dotnet-sdk>=3.1
+	depends = aspnet-runtime>=3.1
+	optdepends = asf-ui: standalone web interface for ASF
+	source = asf-git::git+https://github.com/JustArchiNET/ArchiSteamFarm.git
+	source = service
+	source = service.user
+	source = NLog.config
+	sha256sums = SKIP
+	sha256sums = ba1ff85e55e56d71dbdd0d898244ff7725bced8625f29c5389e28525e6cdb987
+	sha256sums = b627c8d4b3ba7f194a44749bd401b33bae601b9570da98e457737a6f9cfa408f
+	sha256sums = 1353977a61a2e8700df80729cabc88f453b704a0c6ccf45d80a91691fcf6338f
+
+pkgname = asf-git
+
