@@ -1,7 +1,7 @@
 pkgbase = sil-q
 	pkgdesc = A role-playing game with a strong emphasis on discovery and tactical combat
 	pkgver = 1.4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sil-quirk/sil-q
 	arch = i686
 	arch = x86_64

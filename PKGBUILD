@@ -1,7 +1,7 @@
 # Maintainer: dalz <dalz @t disroot d0t org>
 pkgname=sil-q
 pkgver=1.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A role-playing game with a strong emphasis on discovery and tactical combat"
 arch=('i686' 'x86_64')
 url="https://github.com/sil-quirk/sil-q"
@@ -30,6 +30,8 @@ LIBS = -L/usr/X11R6/lib -lX11 -lncurses' \
 path_parse(parsed_dir_user, sizeof(parsed_dir_user), ANGBAND_DIR_USER); \
 path_build(tmp_Path, sizeof(tmp_Path), parsed_dir_user, "CharOutput.txt");' \
     save.c
+
+    sed -i '56,57s/^/extern /' externs.h
 }
 
 build() {
