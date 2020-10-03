@@ -1,7 +1,7 @@
 pkgbase = hush3
 	pkgdesc = HUSH (fork of KMD) full node that supports zaddrs
 	pkgver = 3.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/MyHush/hush3
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = hush3
 	makedepends = wget
 	makedepends = git
 	makedepends = python
-	makedepends = pkgconf
 	makedepends = rust
 	makedepends = curl
 	depends = libsodium
