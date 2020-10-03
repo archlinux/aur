@@ -1,7 +1,7 @@
 pkgbase = rofi-gh
 	pkgdesc = GitHub issues in rofi
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/OJFord/rofi-gh
 	arch = any
 	license = BSD-3
