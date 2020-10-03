@@ -7,7 +7,7 @@ arch=(i686 x86_64)
 url="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/openssl-pkcs11-export.git"
 license=(LGPL2.1)
 depends=(openssl)
-makedepends=(asciidoc gnutls p11-kit)
+makedepends=(asciidoc git gnutls p11-kit)
 _commit=310acdb8a592bde39ee2a20d696410ef02df4108
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/jejb/openssl-pkcs11-export.git#commit=$_commit")
 sha256sums=('SKIP')
