@@ -1,0 +1,18 @@
+pkgbase = com.dingtalk.deepin
+	pkgdesc = Deepin Wine dingtalk
+	pkgver = 5.0.15deepin7
+	pkgrel = 1
+	url = https://www.dingtalk.com/
+	arch = i686
+	arch = x86_64
+	license = Proprietary
+	makedepends = tar
+	depends = deepin-wine5
+	depends = deepin-wine-helper
+	conflicts = deepin.com.dingtalk.com
+	noextract = com.dingtalk.deepin_5.0.15deepin7_i386.deb
+	source = https://cdn-package-store6.deepin.com/appstore/pool/appstore/c/com.dingtalk.deepin/com.dingtalk.deepin_5.0.15deepin7_i386.deb
+	md5sums = b4d7f7304cfb5b6b72a671f95f4064f1
+
+pkgname = com.dingtalk.deepin
+
