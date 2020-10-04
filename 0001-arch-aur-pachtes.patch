@@ -1,25 +1,12 @@
-From 74c5e8dc2c8cb46aa4376bca999138c480419911 Mon Sep 17 00:00:00 2001
+From a5582eb180b2568a6d52e15d2e83f0ebd23330bc Mon Sep 17 00:00:00 2001
 From: soloturn <soloturn@gmail.com>
 Date: Sat, 1 Aug 2020 16:21:07 +0200
 Subject: [PATCH] arch aur pachtes
 
 ---
- CMakeLists.txt          | 1 +
  utils/build-presets.ini | 4 ----
- 2 files changed, 1 insertion(+), 4 deletions(-)
+ 1 file changed, 4 deletions(-)
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index ecdbbca9539..c43da553ed9 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -894,6 +894,7 @@ if(NOT CMAKE_SYSTEM_NAME STREQUAL "Darwin")
-   endif()
- endif()
- 
-+find_package(Python2 COMPONENTS Interpreter)
- find_package(Python3 COMPONENTS Interpreter REQUIRED)
- 
- #
 diff --git a/utils/build-presets.ini b/utils/build-presets.ini
 index 7d9a5c264c8..5e6c207842a 100644
 --- a/utils/build-presets.ini
