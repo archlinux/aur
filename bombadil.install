@@ -1,0 +1,13 @@
+#!/bin/sh
+
+package() {
+    # install the Rust binary
+    install -Dm755 "${srcdir}/bombadil" "${pkgdir}/usr/bin/bombadil"
+}
+
+post_upgrade() {
+    echo ":: This version contains breaking changes, you might need to"
+    echo "modify your existing bombadil configuration, please refer to"
+    echo "the project README : https://github.com/oknozor/toml-bombadil"
+}
+
