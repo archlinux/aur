@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/thermald/
+/thermald*.pkg.tar.*
