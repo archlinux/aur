@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: awh
 pkgname=python-pytweening
 _name=PyTweening
