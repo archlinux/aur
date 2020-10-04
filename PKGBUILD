@@ -28,7 +28,9 @@ prepare() {
 }
 
 build() {
-  arch-meson pango build -D gtk_doc=false
+  arch-meson pango build 
+  -D gtk_doc=false \
+  -D libthai=false
   ninja -C build
 }
 
