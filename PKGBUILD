@@ -13,7 +13,7 @@ depends=('hostapd'
          'procps-ng'
          'dnsmasq'
          'iproute2')
-makedepends=('git' 'glade')
+makedepends=('glade')
 optdepends=('haveged: For random MAC generation'
             'wireless_tools: if iw cannot recognize your adapter'
             'bash-completion: for bash completions')
