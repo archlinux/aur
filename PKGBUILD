@@ -13,7 +13,7 @@ license=('custom')
 url="https://developer.amd.com/amd-aocl/"
 source=(
 	"local://${pkgbase}-linux-aocc-${pkgver}-${_pkgrel}.tar.gz"
-	"local://${pkgbase}-linux-gcc-${pkgver}-${_pkgrel}.tar.gz"
+	"local://${pkgbase}-linux-gcc-${pkgver}-5.tar.gz"
 	"local://${pkgbase}-aocc.install"
 	"local://${pkgbase}-gcc.install"
 	"local://modulefile"
@@ -22,7 +22,7 @@ options=('staticlibs' '!strip')
 depends=('env-modules')
 sha256sums=(
 	"4bdc5caec0233066ded3e2bfedb1e03bdeec82725361764d8860075f64ff4031"
-	"2779d4d117c0a2fcfb06c8d6f135fbcab4bbf8f63a6d81c12efde09516977a3b"
+	"2cdfbf9f03be7b4756316f0ecd117cf323d3a54e0d66d7fcaa4bc947e1846540"
 	"SKIP"
 	"SKIP"
 	"SKIP"
@@ -68,7 +68,7 @@ package_aocl-gcc() {
 	prefix=${pkgdir}/${aocl_prefix}
 	mkdir -p ${prefix}
 
-	cd ${srcdir}/${pkgbase}-linux-gcc-${pkgver}-${_pkgrel}
+	cd ${srcdir}/${pkgbase}-linux-gcc-${pkgver}-5
 
 	cp AOCL_User_Guide_${pkgver}.pdf ${prefix}
 
