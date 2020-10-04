@@ -1,6 +1,6 @@
 # Maintainer: Gregory-F <guegre1979@netcourrier.com>
 pkgname=gf_backup_tool-git
-pkgver=1.0.5.f2bc87b
+pkgver=1.0.6.5bb5432
 pkgrel=1
 pkgdesc="Backup Terminal tool based on rsync & systemd"
 arch=('x86_64')
