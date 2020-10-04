@@ -1,6 +1,6 @@
 pkgbase = lipl-git
 	pkgdesc = Analyse the output over time of custom shell commands (git)
-	pkgver = 0.1.0.r27.gea84852
+	pkgver = 0.1.2.r0.gdd4ddbe
 	pkgrel = 1
 	url = https://github.com/yxdunc/lipl
 	arch = x86_64

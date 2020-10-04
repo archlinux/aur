@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=lipl-git
-pkgver=0.1.0.r27.gea84852
+pkgver=0.1.2.r0.gdd4ddbe
 pkgrel=1
 pkgdesc="Analyse the output over time of custom shell commands (git)"
 arch=('x86_64')
