@@ -1,6 +1,6 @@
 # Maintainer: Kostas Georgiadis <kot+aur at cons dot gr>
 
-pkgname=cudnn
+pkgname=cudnn7-cuda10.1
 pkgver=7.6.5.32
 _pkgver=7.6.5
 _cudaver=10.1
