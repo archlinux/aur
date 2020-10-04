@@ -9,6 +9,8 @@ arch=('any')
 url="https://github.com/KaizIqbal/Bibata_Extra_Cursor"
 license=('GPL3')
 makedepends=('git' 'python' 'inkscape' 'xorg-xcursorgen' 'python-pillow')
+provides=('bibata-extra-cursor')
+conflicts=('bibata-extra-cursor-theme')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
