@@ -1,0 +1,10 @@
+pkgbase = gsfonts-dummy
+	pkgdesc = dummy package for (URW)++ Core Font Set [Level 2]
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	provides = gsfonts
+	conflicts = gsfonts
+
+pkgname = gsfonts-dummy
+
