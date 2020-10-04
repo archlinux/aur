@@ -1,7 +1,7 @@
 pkgbase = beekeeper-studio-bin
 	pkgdesc = Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.beekeeperstudio.io
 	arch = x86_64
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = beekeeper-studio-bin
 	source = https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v1.7.5/beekeeper-studio_1.7.5_amd64.deb
 	source = beekeeper-studio-1.7.5-LICENSE::https://github.com/beekeeper-studio/beekeeper-studio/raw/master/LICENSE.md
 	sha256sums = 13da76eb871a549ef8876681351f1a9edec7460d5152bbda68b5e49cf6430638
-	sha256sums = 787ebc78ce29cd0cea3e52651936df7fef96b117782882fce389c3b7ce5683f5
+	sha256sums = SKIP
 
 pkgname = beekeeper-studio-bin
 

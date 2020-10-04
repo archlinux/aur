@@ -5,7 +5,7 @@ _name_upper='Beekeeper Studio'
 _pkgname='beekeeper-studio'
 pkgname="${_pkgname}-bin"
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 arch=('x86_64')
 url='https://www.beekeeperstudio.io'
@@ -18,7 +18,7 @@ source=("${_url_source}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64
         "${_pkgname}-${pkgver}-LICENSE::${_url_source}/raw/master/LICENSE.md")
 # NB: updpkgsums: LICENSE == SKIP
 sha256sums=('13da76eb871a549ef8876681351f1a9edec7460d5152bbda68b5e49cf6430638'
-            '787ebc78ce29cd0cea3e52651936df7fef96b117782882fce389c3b7ce5683f5')
+            'SKIP')
 
 package() {
   tar -xvf data.tar.xz -C "${pkgdir}"
