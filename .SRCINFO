@@ -1,0 +1,24 @@
+pkgbase = python-tf2onnx
+	pkgdesc = Convert TensorFlow models to ONNX
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/onnx/tensorflow-onnx
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-graphviz
+	checkdepends = python-parameterized
+	checkdepends = python-yaml
+	checkdepends = python-onnxruntime
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tensorflow
+	depends = python-numpy
+	depends = python-onnx
+	depends = python-requests
+	depends = python-six
+	source = https://github.com/onnx/tensorflow-onnx/archive/v1.6.3/tf2onnx-v1.6.3.tar.gz
+	sha256sums = 82ab1ed80b26e66b5b25dbee713be6ae3a916092db1fe088bc94634158d90cfa
+
+pkgname = python-tf2onnx
+
