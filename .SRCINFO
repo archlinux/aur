@@ -1,0 +1,18 @@
+pkgbase = python-aiohttp-json-rpc
+	pkgdesc = Implements JSON-RPC 2.0 Specification using aiohttp
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = https://github.com/pengutronix/aiohttp-json-rpc
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-django
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiohttp
+	source = aiohttp-json-rpc-0.13.2.tar.gz::https://github.com/pengutronix/aiohttp-json-rpc/archive/v0.13.2.tar.gz
+	sha256sums = 6ba383d761787a533c3ceb71cf0d22b883bccc5824e45168897e727c474e8fc7
+
+pkgname = python-aiohttp-json-rpc
+
