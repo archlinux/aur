@@ -1,6 +1,6 @@
 pkgbase = motd
 	pkgdesc = Dynamically generate system information for MOTD SSH banner
-	pkgver = 1.0.9
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/desbma/motd
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = motd
 	makedepends = rust
 	optdepends = hddtemp: to probe hard drive temperatures
 	optdepends = systemd: to display failed units
-	source = motd-1.0.9.tar.gz::https://github.com/desbma/motd/archive/1.0.9.tar.gz
-	sha512sums = 6c0b0135d859617df19a7ce26dbbdf526a45330aa091f0c0e598dedf0fcdac3fdfd4b4ffb28464aeb771fbcab00b4f8d8501b0a54e75ca5e38d802f7796f6b69
+	source = motd-1.1.0.tar.gz::https://github.com/desbma/motd/archive/1.1.0.tar.gz
+	sha512sums = 71dec622c6574a72638f753b9d58ae0190905d2b64c95153262ca7c65b25ff5bc00ff7a2841c19c05ca81a81f48295396f9bf104cafd0fb9a5e5fd704111911e
 
 pkgname = motd
 

@@ -1,6 +1,6 @@
 # Maintainer: desbma
 pkgname=motd
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Dynamically generate system information for MOTD SSH banner'
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('rust')
 optdepends=('hddtemp: to probe hard drive temperatures'
             'systemd: to display failed units')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('6c0b0135d859617df19a7ce26dbbdf526a45330aa091f0c0e598dedf0fcdac3fdfd4b4ffb28464aeb771fbcab00b4f8d8501b0a54e75ca5e38d802f7796f6b69')
+sha512sums=('71dec622c6574a72638f753b9d58ae0190905d2b64c95153262ca7c65b25ff5bc00ff7a2841c19c05ca81a81f48295396f9bf104cafd0fb9a5e5fd704111911e')
 
 build() {
     cd "${pkgname}-${pkgver}"
