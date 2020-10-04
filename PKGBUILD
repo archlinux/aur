@@ -3,14 +3,14 @@
 
 pkgname=ali
 pkgdesc="Generate HTTP load and plot the results in real-time"
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nakabonne/ali"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('127d042e83b0cf82eee8ecadea253f1583f49a2e6ddce4bc4c90b272eb782f8a7916217896e796b9643e578e321248097e45b2028de95a07e29b222f5fc6ecb1')
+sha512sums=('17bd32e031ec6eef473fbc10733a3c1ddbcc30df92d123751f805ba8741632403da6266ea5d968c027a240d04e7eda40dd4e45c1ab511164d924030bd4873056')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
