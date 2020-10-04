@@ -12,11 +12,12 @@ sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib/win
 sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib/wine/dxvk/dxg*
 
 sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib64/wine/dxvk/d3d*
-sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib64/wine/dxvk/dxg* " -n 1 -r
+sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib64/wine/dxvk/dxg* "
+-n 1 -r
 echo    # (optional) move to a new line
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
-
+ exit 1
 fi
 
 }
