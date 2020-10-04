@@ -2,14 +2,14 @@
 pkgbase="fujprog"
 pkgname="$pkgbase"
 pkgver="4.6"
-pkgrel="1"
+pkgrel="2"
 
 pkgdesc="ULX2S / ULX3S JTAG programmer"
 arch=("x86_64")
 url="https://github.com/kost/${pkgbase}"
 license=("BSD")
 
-depends=("libftdi" "libusb")
+depends=("libftdi")
 makedepends=("cmake")
 
 source=("${pkgbase}-${pkgver}::https://github.com/kost/${pkgbase}/archive/v${pkgver}.tar.gz")
@@ -26,4 +26,6 @@ build() {
 
 package() {
     make DESTDIR="$pkgdir/" -C build install
+    install -Dm644 "$pkgbase-$pkgver/LICENSE" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
