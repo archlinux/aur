@@ -10,6 +10,8 @@ url='https://github.com/agateau/nanonote'
 license=('BSD')
 depends=('hicolor-icon-theme' 'qt5-base')
 makedepends=('cmake' 'git' 'python-jinja' 'python-pyaml')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("git+${url}.git"
         "git+${url%/*}/qpropgen.git"
         "git+https://github.com/itay-grudev/SingleApplication.git")
