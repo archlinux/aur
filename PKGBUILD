@@ -1,6 +1,6 @@
 # Maintainer: Gregory-F <guegre1979@netcourrier.com>
 pkgname=gf_backup_tool-git
-pkgver=1.0.r3.ccde33b
+pkgver=1.0.5.f2bc87b
 pkgrel=1
 pkgdesc="Backup Terminal tool based on rsync & systemd"
 arch=('x86_64')
@@ -23,8 +23,7 @@ validpgpkeys=()
 
 pkgver() {
   cd "${_pkgname}"
-  #date +%Y%m%d
-  printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.0.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
