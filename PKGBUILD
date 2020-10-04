@@ -15,12 +15,12 @@
 #   - deJaVu and GhostScript font directories are the default ones
 #   - Windows font directory is set according to a Wiki example
 
-_commit='03f1b51b53ffce46d9ff34c6eb9419115b762b45'
+_commit='af1665e481db5f5efc6be984d2b835380ae509d0'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.0.10.31
+pkgver=7.0.10.32
 pkgrel=1
 arch=('x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all features)"
@@ -34,7 +34,7 @@ makedepends=(
         'libx11' 'bzip2' 'zlib' 'libltdl' 'jemalloc' 'djvulibre' 'gperftools' 'libraw'
         'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
         'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
-        'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl'
+        'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip'
     # AUR:
         'pstoedit-nomagick' 'autotrace-nomagick' 'flif' 'libfpx' 'libumem-git'
         'brunsli'
@@ -49,11 +49,6 @@ prepare() {
     
     # fix up typemaps to match Arch Linux packages, where possible
     patch -d ImageMagick -Np1 -i "${srcdir}/arch-fonts.diff"
-    
-    # fix for 'sh: gitversion.sh: command not found' during autoreconf
-    sed -i 's|(gitversion|(./gitversion|' ImageMagick/configure.ac
-    
-    autoreconf -fis ImageMagick
 }
 
 build() {
@@ -63,6 +58,8 @@ build() {
     ./configure \
         --prefix='/usr' \
         --sysconfdir='/etc' \
+        --enable-shared \
+        --disable-static \
         --enable-openmp \
         --enable-opencl \
         --disable-delegate-build \

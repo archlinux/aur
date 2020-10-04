@@ -1,6 +1,6 @@
 pkgbase = imagemagick-full
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all features)
-	pkgver = 7.0.10.31
+	pkgver = 7.0.10.32
 	pkgrel = 1
 	url = https://www.imagemagick.org/
 	arch = x86_64
@@ -51,13 +51,14 @@ pkgbase = imagemagick-full
 	makedepends = gsfonts
 	makedepends = ttf-dejavu
 	makedepends = perl
+	makedepends = libzip
 	makedepends = pstoedit-nomagick
 	makedepends = autotrace-nomagick
 	makedepends = flif
 	makedepends = libfpx
 	makedepends = libumem-git
 	makedepends = brunsli
-	source = git+https://github.com/ImageMagick/ImageMagick.git#commit=03f1b51b53ffce46d9ff34c6eb9419115b762b45
+	source = git+https://github.com/ImageMagick/ImageMagick.git#commit=af1665e481db5f5efc6be984d2b835380ae509d0
 	source = arch-fonts.diff
 	sha256sums = SKIP
 	sha256sums = a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73
@@ -106,9 +107,9 @@ pkgname = imagemagick-full
 	depends = libumem-git
 	depends = brunsli
 	optdepends = imagemagick-full-doc: manual and API docs
-	provides = imagemagick=7.0.10.31
-	provides = libmagick=7.0.10.31
-	provides = libmagick-full=7.0.10.31
+	provides = imagemagick=7.0.10.32
+	provides = libmagick=7.0.10.32
+	provides = libmagick-full=7.0.10.32
 	conflicts = imagemagick
 	conflicts = libmagick
 	replaces = libmagick-full
@@ -128,6 +129,6 @@ pkgname = imagemagick-full
 pkgname = imagemagick-full-doc
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all features) (manual and API docs)
 	arch = any
-	provides = imagemagick-doc=7.0.10.31
+	provides = imagemagick-doc=7.0.10.32
 	conflicts = imagemagick-doc
 
