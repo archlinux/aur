@@ -1,7 +1,7 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5vpn
 pkgver=7183.2020.0108.1
-pkgrel=2
+pkgrel=3
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM 13.0'
 arch=('x86_64')
 source=('LICENSE'

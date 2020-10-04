@@ -8,13 +8,21 @@ Usage
 
 1. In a web browser, go to `<https://[your-BIG-IP-APM-server]/>`_ and log in (including 2-factor authentication, if you use it).
 
-2. Open Developer Tools and run this JavaScript:
+2. Choose Web Network Access. If this works for you, the following steps do not apply to you.
+   If you prefer connecting in the command line, open Developer Tools and run this JavaScript:
 
-    .. code-block:: javascript
+   .. code-block:: javascript
 
-        snaGetLaunchLink('network_access', dcl.getBins[0].res.reduce((result, bin) => bin.type === 'network_access' ? bin.id : result, {}))['link']
+       xhr = new XMLHttpRequest();
+       resourceType = "network_access";
+       with (xhr) {
+           responseType = "document";
+           open("GET", `https://${location.host}:${location.port}/vdesk/resource_list.xml?resourcetype=res`);
+           onload = () => console.log(`f5-vpn://${location.host}:${location.port}/?server=${location.host}&resourcename=${responseXML.querySelector(`list[type=${resourceType}] entry`).textContent}&resourcetype=${resourceType}&cmd=launch&protocol=https&port=${location.port || 443}&sid=${document.cookie.match(/MRHSession=(.*?); /)[1]}`);
+           send();
+       }
 
-    You should have received a URL starting with ``f5-vpn://``.
+   You should have received a URL starting with ``f5-vpn://``.
 
 3. In a terminal, run ``f5vpn`` using the URL from Step 2 as its argument (including single quotes):
 
@@ -24,12 +32,11 @@ Usage
 
 If everything worked, the GUI for F5 VPN should be visible. Assuming continuous Internet connectivity, you should remain connected for several hours.
 
-Known Bugs
-----------
+CLI-Only Alternatives
+---------------------
 
-If you resize the window, it disconnects. If that happens, you can re-run the ``f5vpn`` command with the same URL as before.
+* `kayrus/gof5 <https://github.com/kayrus/gof5>`_ (FOSS)
 
-Open Source Alternatives
-------------------------
+* `zrhoffman/svpn-login <https://github.com/zrhoffman/svpn-login>`_
 
-* `zrhoffman/f5vpn-login <https://github.com/zrhoffman/f5vpn-login>`_
+* `zrhoffman/f5vpn-login <https://github.com/zrhoffman/f5vpn-login>`_ (FOSS, very slow)
