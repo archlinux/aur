@@ -1,6 +1,6 @@
 # PKGBUILD created by using cargo-aur
 pkgname='yas-git'
-pkgver=0.1.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A sudo replacement, written in rust'
 arch=('any')
