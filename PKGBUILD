@@ -16,3 +16,7 @@ _bombadil_version='1.2.0'
 source=("$pkgname-$pkgver.tar.gz::${url}/releases/download/${pkgver}/bombadil-${pkgver}-${CARCH}-unknown-linux-musl.tar.gz")
 md5sums=('e44d662c3c52899e1f59a33836d3b593')
 
+package() {
+    # install the Rust binary
+    install -Dm755 "${srcdir}/bombadil" "${pkgdir}/usr/bin/bombadil"
+}
