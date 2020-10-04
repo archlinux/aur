@@ -10,6 +10,7 @@ url="https://github.com/nakabonne/ali"
 license=('MIT')
 makedepends=('git' 'go')
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
+provides=("${pkgname%-git}")
 source=("git+$url")
 sha256sums=('SKIP')
 

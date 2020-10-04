@@ -7,6 +7,7 @@ pkgbase = ali-git
 	license = MIT
 	makedepends = git
 	makedepends = go
+	provides = ali
 	conflicts = ali
 	conflicts = ali-bin
 	source = git+https://github.com/nakabonne/ali
