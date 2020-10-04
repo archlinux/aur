@@ -1,6 +1,6 @@
 # Maintainer: David Schmidt <schmidt@linux.com>
 pkgname=xcowsay
-pkgver=1.5.5
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="a program based on cowsay that displays a cute cow and message on your desktop"
 arch=(i686 x86_64)
