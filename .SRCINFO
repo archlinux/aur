@@ -1,7 +1,7 @@
 pkgbase = i3lock-cri
 	pkgdesc = An improved screenlocker based upon XCB and PAM - cri's version
-	pkgver = 2.11.1.cri
-	pkgrel = 4
+	pkgver = 2.12.cri
+	pkgrel = 0
 	url = https://github.com/epita/i3lock/
 	arch = i686
 	arch = x86_64
