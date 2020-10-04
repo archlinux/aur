@@ -1,6 +1,6 @@
 pkgbase = loop-aes
 	pkgdesc = This package provides loadable Linux kernel module loop that has AES,Twofish,Blowfish,Serpent cipher built-in.
-	pkgver = 3.7q
+	pkgver = 3.7r
 	pkgrel = 1
 	url = https://loop-aes.sourceforge.net
 	install = loop-aes.install
@@ -10,10 +10,10 @@ pkgbase = loop-aes
 	makedepends = linux-headers
 	depends = linux
 	depends = util-linux-aes
-	source = https://loop-aes.sourceforge.net/loop-AES/loop-AES-v3.7q.tar.bz2
-	source = https://loop-aes.sourceforge.net/loop-AES/loop-AES-v3.7q.tar.bz2.sign
+	source = https://downloads.sourceforge.net/project/loop-aes/loop-aes/v3.7r/loop-AES-v3.7r.tar.bz2
+	source = https://downloads.sourceforge.net/project/loop-aes/loop-aes/v3.7r/loop-AES-v3.7r.tar.bz2.sign
 	validpgpkeys = 12D64C3ADCDA0AA427BDACDFF0733C808132F189
-	md5sums = b9628468b35e92feee63eccfee8e4863
+	md5sums = e264e305c829d002a7a94376789f4adc
 	md5sums = SKIP
 
 pkgname = loop-aes
