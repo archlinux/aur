@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/hzeller/gmrender-resurrect"
 license=('GPL')
 conflicts=('gmediarender')
-depends=('libupnp' 'gst-plugins-good' 'gst-plugins-base')
+depends=('libupnp-1.12' 'gst-plugins-good' 'gst-plugins-base')
 optdepends=(
     'gst-libav: Extra media codecs'
     'gst-plugins-bad: Extra media codecs'
@@ -39,7 +39,7 @@ pkgver() {
 build() {
 	cd $_gitname
 	./autogen.sh
-	./configure --prefix=/usr/
+	PKG_CONFIG_PATH=/usr/lib/libupnp-1.12/pkgconfig ./configure --prefix=/usr/
 	make
 }
 
