@@ -39,7 +39,7 @@ index 99b0d18..e1dbae1 100644
  [Preferences]
 -theme = "Nitter"
 -replaceTwitter = "nitter.net"
--replaceYouTube = "invidio.us"
+-replaceYouTube = "invidious.snopyta.org"
 +theme = "twitter_dark"  # Change this?
 +replaceTwitter = "nitter.net"  # Use the same "hostname" as above
 +replaceYouTube = ""
