@@ -1,0 +1,16 @@
+pkgbase = react-deluge-git
+	pkgdesc = The very first React Front-end for the Deluge BitTorrent client
+	pkgver = r9.77417a8
+	pkgrel = 1
+	url = https://github.com/varyoo/react-deluge
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = npm
+	options = !strip
+	backup = etc/flood/config.js
+	source = git+https://github.com/varyoo/react-deluge
+	sha256sums = SKIP
+
+pkgname = react-deluge-git
+
