@@ -1,7 +1,7 @@
 pkgbase = ruby-sinatra-contrib
 	pkgdesc = Collection of useful Sinatra extensions
-	pkgver = 2.0.8.1
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = http://sinatrarb.com/contrib/
 	arch = any
 	license = MIT
@@ -13,10 +13,10 @@ pkgbase = ruby-sinatra-contrib
 	depends = ruby-tilt
 	depends = ruby-rack-protection
 	depends = ruby-multi_json
-	noextract = sinatra-contrib-2.0.8.1.gem
+	noextract = sinatra-contrib-2.1.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/sinatra-contrib-2.0.8.1.gem
-	sha1sums = 400d357e0d491fb2a0a02eaffedcfd19e4b21470
+	source = https://rubygems.org/downloads/sinatra-contrib-2.1.0.gem
+	sha1sums = 93b6cf507ca40dbef581f47c5d639b06c277dc02
 
 pkgname = ruby-sinatra-contrib
 

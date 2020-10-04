@@ -2,8 +2,8 @@
 
 _gemname=sinatra-contrib
 pkgname=ruby-$_gemname
-pkgver=2.0.8.1
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Collection of useful Sinatra extensions'
 arch=(any)
 url='http://sinatrarb.com/contrib/'
@@ -18,7 +18,7 @@ depends=(ruby
 makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha1sums=('400d357e0d491fb2a0a02eaffedcfd19e4b21470')
+sha1sums=('93b6cf507ca40dbef581f47c5d639b06c277dc02')
 noextract=($_gemname-$pkgver.gem)
 
 package() {
