@@ -1,20 +1,20 @@
 # Maintainer: Henri Derycke <nheir.kim@gmail.com>
 pkgname=bluez-alsa-git
-pkgver=2.1.0.r43.g49ad348
+pkgver=3.0.0.r2.g560caf5
 pkgrel=1
 pkgdesc="Bluetooth Audio ALSA Backend"
 arch=('x86_64' 'armv7h' 'aarch64' 'armv6h')
 url="https://github.com/Arkq/bluez-alsa"
 license=('MIT')
 depends=(
-	'alsa-lib' 'bluez-libs' 'dbus' 'glib2' 'sbc'
+	'alsa-lib' 'bluez' 'dbus' 'glib2' 'sbc'
 	'libfdk-aac'         # --enable-aac
 #	'lame'               # --enable-mp3lame
 #	'mpg123'             # --enable-mpg123
 #	'readline'           # --enable-rfcomm
 #	'libbsd' 'ncurses'   # --enable-hcitop
 )
-makedepends=('git')
+makedepends=('git' 'pandoc')
 source=("$pkgname::git+https://github.com/Arkq/bluez-alsa.git"
 	"https://github.com/Arkq/bluez-alsa/wiki/files/Systemd-integration/bluealsa.service"
 	bluealsa.conf)
@@ -28,17 +28,24 @@ pkgver() {
 	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	sed "s:dbus-org.bluez.service:bluetooth.service:" -i bluealsa.service
+}
+
 build() {
 	cd "$pkgname"
 	autoreconf --install
 	local flags=(
-	#	--enable-debug
 		--enable-aac
+	#	--enable-debug
+		--enable-manpages
 	#	--enable-mp3lame
 	#	--enable-mpg123
 	#	--enable-msbc
-	#	--enable-rfcomm
 	#	--enable-hcitop
+	#	--enable-ldac
+	#	--enable-upower
+	#	--enable-rfcomm
 	)
 	./configure --prefix=/usr \
 	            --sysconfdir=/etc \
