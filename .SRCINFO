@@ -1,8 +1,9 @@
-pkgbase = swift-bin
+pkgbase = swift-ldconfig-bin
 	pkgdesc = Binary builds of the Swift programming language
 	pkgver = 5.3
 	pkgrel = 1
 	url = https://swift.org
+	install = swift-ldconfig-bin.install
 	arch = x86_64
 	license = apache
 	makedepends = patchelf
@@ -17,5 +18,5 @@ pkgbase = swift-bin
 	source = https://swift.org/builds/swift-5.3-release/centos8/swift-5.3-RELEASE/swift-5.3-RELEASE-centos8.tar.gz
 	sha256sums = 08a7cd7702e1fd80e4473525ed59b4ff834274aab5e2709c8a5b2346ff637ae5
 
-pkgname = swift-bin
+pkgname = swift-ldconfig-bin
 
