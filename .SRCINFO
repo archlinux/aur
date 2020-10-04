@@ -1,0 +1,15 @@
+pkgbase = qpropgen
+	pkgdesc = Generate QML-friendly QObject-based C++ classes from class definition files
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/agateau/qpropgen
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python-jinja
+	depends = python-pyaml
+	source = https://files.pythonhosted.org/packages/source/q/qpropgen/qpropgen-0.1.2.tar.gz
+	sha256sums = d7745d6d25d428fde373ea3b1c9f8436e380c9bc6b9ffde3ce02a037a55ba4f6
+
+pkgname = qpropgen
+
