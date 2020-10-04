@@ -14,11 +14,11 @@ pkgbase = appimagetool-bin
 	source = appimagetool-12-LICENSE::https://github.com/AppImage/AppImageKit/raw/12/LICENSE
 	sha256sums = e7396f995fed233e08063a5bec8f26c343d7f1038f0fca80c3cad26d74090255
 	sha256sums = b54da09f0d48f1c42a1b27035711ed41494551ed8a20b991746e669e6f944a94
-	source_x86_64 = appimagetool-12.appimage::https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-x86_64.AppImage
+	source_x86_64 = appimagetool-12-x86_64.appimage::https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-x86_64.AppImage
 	sha256sums_x86_64 = d918b4df547b388ef253f3c9e7f6529ca81a885395c31f619d9aaf7030499a13
-	source_armv7h = appimagetool-12.appimage::https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-armhf.AppImage
+	source_armv7h = appimagetool-12-armv7.appimage::https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-armhf.AppImage
 	sha256sums_armv7h = 8bca91ae4dac9a6505a4939f29ce5c75b74a8c8e80d56f738b17863fbd6d2770
-	source_aarch64 = appimagetool-12.appimage::https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-aarch64.AppImage
+	source_aarch64 = appimagetool-12-aarch64.appimage::https://github.com/AppImage/AppImageKit/releases/download/12/appimagetool-aarch64.AppImage
 	sha256sums_aarch64 = c9d058310a4e04b9fbbd81340fff2b5fb44943a630b31881e321719f271bd41a
 
 pkgname = appimagetool-bin

@@ -14,9 +14,9 @@ noextract=("${_pkgname}")
 
 source=("${_pkgname}-${pkgver}-README.md::${url}/raw/${pkgver}/README.md"
         "${_pkgname}-${pkgver}-LICENSE::${url}/raw/${pkgver}/LICENSE")
-source_x86_64=("${_pkgname}-${pkgver}.appimage::${url}/releases/download/${pkgver}/${_pkgname}-x86_64.AppImage")
-source_armv7h=("${_pkgname}-${pkgver}.appimage::${url}/releases/download/${pkgver}/${_pkgname}-armhf.AppImage")
-source_aarch64=("${_pkgname}-${pkgver}.appimage::${url}/releases/download/${pkgver}/${_pkgname}-aarch64.AppImage")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.appimage::${url}/releases/download/${pkgver}/${_pkgname}-x86_64.AppImage")
+source_armv7h=("${_pkgname}-${pkgver}-armv7.appimage::${url}/releases/download/${pkgver}/${_pkgname}-armhf.AppImage")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.appimage::${url}/releases/download/${pkgver}/${_pkgname}-aarch64.AppImage")
 
 sha256sums=('e7396f995fed233e08063a5bec8f26c343d7f1038f0fca80c3cad26d74090255'
             'b54da09f0d48f1c42a1b27035711ed41494551ed8a20b991746e669e6f944a94')
@@ -24,9 +24,9 @@ sha256sums_x86_64=('d918b4df547b388ef253f3c9e7f6529ca81a885395c31f619d9aaf703049
 sha256sums_armv7h=('8bca91ae4dac9a6505a4939f29ce5c75b74a8c8e80d56f738b17863fbd6d2770')
 sha256sums_aarch64=('c9d058310a4e04b9fbbd81340fff2b5fb44943a630b31881e321719f271bd41a')
 
-build() {
-  chmod a+x "${_pkgname}-${pkgver}.appimage"
-  ./"${_pkgname}-${pkgver}.appimage" --appimage-extract
+prepare() {
+  chmod a+x "${_pkgname}-${pkgver}-${CARCH}.appimage"
+  ./"${_pkgname}-${pkgver}-${CARCH}.appimage" --appimage-extract
 }
 
 package(){
