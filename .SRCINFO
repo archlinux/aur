@@ -48,7 +48,7 @@ pkgbase = liberica-jdk-full-bin
 	source_armv8h = https://download.bell-sw.com/java/15+36/bellsoft-jdk15+36-linux-arm32-vfp-hflt-full.tar.gz
 	sha1sums_armv8h = dd75e332678125e6a903790009df48a39054a169
 	source_x86_64 = https://download.bell-sw.com/java/15+36/bellsoft-jdk15+36-linux-amd64-full.tar.gz
-	sha1sums_x86_64 = 8740c469281f48d0823adbc02e5a6dd0cf46bea5
+	sha1sums_x86_64 = d0961efb2ddf99faaf9c56afce4f86e874710fa8
 
 pkgname = liberica-jdk-full-bin
 

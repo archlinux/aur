@@ -52,7 +52,7 @@ source_x86_64=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-lin
 sha1sums_aarch64=('a06c1e75604ad9b51ba3bc85c08c905349533047')
 sha1sums_armv7h=('dd75e332678125e6a903790009df48a39054a169')
 sha1sums_armv8h=(${sha1sums_armv7h[@]})
-sha1sums_x86_64=('8740c469281f48d0823adbc02e5a6dd0cf46bea5')
+sha1sums_x86_64=('d0961efb2ddf99faaf9c56afce4f86e874710fa8')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
