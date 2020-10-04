@@ -1,9 +1,9 @@
 # Maintainer: Isho Antar <isho.antar1@gmail.com>
-# Maintainer: Michael Yang <ohmyarchlinux@protonmail.com>
+# Contributor: Michael Yang <ohmyarchlinux@protonmail.com>
 
 pkgname=spdlog-git
 pkgver=1.8.1.cbe9448
-pkgrel=2
+pkgrel=3
 pkgdesc='Very fast, header only, C++ logging library'
 arch=('any')
 url='https://github.com/gabime/spdlog'
@@ -32,7 +32,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
-  make
+  make -j$(nproc)
 }
 
 check() {
