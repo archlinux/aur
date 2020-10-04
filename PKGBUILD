@@ -1,9 +1,10 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Clemmitt M. Sigler <cmsigler dot online at gmail dot com>
 # Contributor: xantares
 pkgname=python-pyautogui
 _name=PyAutoGUI
-pkgver=0.9.50
+pkgver=0.9.51
 pkgrel=1
 pkgdesc="A cross-platform GUI automation Python module for human beings"
 arch=('any')
@@ -13,7 +14,7 @@ depends=('python-pymsgbox' 'python-pyscreeze' 'python-pytweening' 'python-mousei
           # 'python-pygetwindow' - Not compatible with Linux yet
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('ac293fa2e74fc29d52056c8401ec8ec248db72cd77732e12dfae5caa32c432ca')
+sha256sums=('2ca9b44cdde3f2c18a67b00301cd8a1262853a68b8045d557067b8ac979affda')
 
 build() {
 	cd "$_name-$pkgver"
