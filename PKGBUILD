@@ -1,14 +1,23 @@
 # Maintainer: CamuseCao camusecao@gmail.com
-pkgname=spx2wav
-pkgver=0.0
+pkgname=spx2wav-git
+pkgver=r5.6322c0e
 pkgrel=1
-pkgdesc="微信高清语音 spx 转 wav 解决方案, 基于 speex-devel 和微信官方提供的 declib, 修改了部分错误，重写了 Makefile，在 Debian & CentOS & Arch 下测试通过"
+pkgdesc="微信高清语音 spx 转 wav 解决方案, 基于 speex 和微信官方提供的 declib, 修改了部分错误。"
 arch=('x86_64')
 url="https://github.com/baogaitou/spx2wav"
 license=('unknown')
-depends=('speex' 'lame')
-source=("${pkgname%-git}::git+$url.git")
+depends=('speex')
+makedepends=('git')
+optdepends=('lame: A high quality MPEG Audio Layer III (MP3) encoder')
+conflicts=()
+replaces=()
+backup=()
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "./$pkgname"
@@ -17,5 +26,5 @@ build() {
 
 package() {
   cd "./$pkgname"
-  install -D $pkgname "${pkgdir}"/usr/bin/$pkgname
+  install -D spx2wav "${pkgdir}"/usr/bin/spx2wav
 }
