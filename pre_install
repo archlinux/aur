@@ -1,0 +1,16 @@
+read -p "You need to remove certain old 64bit and 32bit dxvk .dll files from your proton-ge directory before installing this package, or you will receive errors when trying to install.
+
+Continue [y/n]?
+
+Examples:
+
+sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib/wine/dxvk/d3d*
+sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib/wine/dxvk/dxg*
+
+sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib64/wine/dxvk/d3d*
+sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib64/wine/dxvk/dxg* " -n 1 -r
+echo    # (optional) move to a new line
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    exit 1
+fi
