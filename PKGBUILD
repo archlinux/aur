@@ -2,6 +2,8 @@
 # Contributor: loathingkernel <loathingkernel @at gmail .dot com>
 # Contributor: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
+# This package needs reinstalled after every Proton update.
+
 pkgname=('dxvk-mingw-proton-ge-async-git')
 pkgver=1.5.r3.ga265af74
 pkgrel=1
