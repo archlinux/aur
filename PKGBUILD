@@ -2,11 +2,11 @@
 
 pkgname=groonga
 pkgver=10.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An opensource fulltext search engine."
 arch=('i686' 'x86_64')
 url="http://groonga.org/"
-license=('LGPL2')
+license=('LGPL2.1')
 source=("http://packages.groonga.org/source/groonga/$pkgname-$pkgver.tar.gz"
         "groonga-httpd.service")
 depends=('zlib' 'lz4' 'glib2' 'libedit' 'zeromq' 'autoconf-archive'
