@@ -1,0 +1,14 @@
+pkgbase = restish
+	pkgdesc = A CLI for interacting with REST-ish HTTP APIs
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/danielgtaylor/restish
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = https://github.com/danielgtaylor/restish/archive/v0.4.3.tar.gz
+	sha256sums = bc517eb50f2e14d9cc5b9da802b458de0280111d68ad503b465191661e2b4c62
+
+pkgname = restish
+
