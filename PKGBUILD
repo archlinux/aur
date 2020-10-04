@@ -12,7 +12,7 @@ url="https://swift.org/"
 license=('apache2')
 groups=()
 depends=('icu' 'libedit' 'libxml2' 'swig' 'python' 'libbsd' 'ncurses' )
-makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'python2' 'rsync')
+makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'python2' 'rsync' 'sccache')
 provides=('swift-language-git')
 replaces=()
 backup=()
@@ -99,7 +99,7 @@ build() {
     # Which will break `compiler-rt`
     unset CPPFLAGS
 
-    python swift/utils/build-script --preset=buildbot_linux,no_test install_prefix="/usr/lib/swift-git" install_destdir="$pkgdir"
+    C_CXX_LAUNCHER="$(which sccache)" SCCACHE_DIR=${srcdir}/sccache python swift/utils/build-script --preset=buildbot_linux,no_test install_prefix="/usr/lib/swift-git" install_destdir="$pkgdir"
 }
 
 package() {
