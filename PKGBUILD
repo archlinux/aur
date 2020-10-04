@@ -1,20 +1,18 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
-
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the patches!
 # https://github.com/mymedia2/tdesktop
-
 pkgname=telegram-desktop-dev
-pkgver=2.3.2
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=('hunspell' 'ffmpeg' 'gtk3' 'hicolor-icon-theme' 'libdbusmenu-qt5'
-         'lz4' 'minizip' 'openal' 'qt5-imageformats' 'qt5-wayland' 'xxhash')
-makedepends=('cmake' 'git' 'libwebrtc' 'microsoft-gsl' 'python' 'range-v3' 'tl-expected')
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
+         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5' 'qt5-wayland' 'gtk3')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libwebrtc')
 optdepends=('ttf-opensans: default Open Sans font family')
 
 provides=('telegram-desktop')
@@ -30,7 +28,7 @@ _commit="tag=v$pkgver"
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#$_commit"
     "https://raw.githubusercontent.com/archlinux/svntogit-community/packages/telegram-desktop/trunk/Use-tg_owt-webrtc-fork.patch"
-    "https://raw.githubusercontent.com/archlinux/svntogit-community/packages/telegram-desktop/trunk/Fix_xcb_wayland.patch"
+    "Update-webrtc-packaged-build-for-tg_owt.patch::https://github.com/desktop-app/cmake_helpers/commit/d955882cb4d4c94f61a9b1df62b7f93d3c5bff7d.patch"
     "Catch::git+https://github.com/philsquared/Catch"
     "cmake::git+https://github.com/desktop-app/cmake_helpers.git"
     "codegen::git+https://github.com/desktop-app/codegen.git"
@@ -63,13 +61,11 @@ source=(
     "range-v3::git+https://github.com/ericniebler/range-v3.git"
     "rlottie::git+https://github.com/desktop-app/rlottie.git"
     "tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
-    "variant::git+https://github.com/desktop-app/variant.git"
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
 )
 sha512sums=('SKIP'
             '071591c6bb71435f8186dcaf570703718051f00366dbbe3f13c4df3706d3de1f168bff4bfa707ad1d6f09f5505c925f0b01d76fd65efe904f3ba7db693d63f43'
-            'b318ae7a78bcacc27d3cbfce34b60f16197d8fdb9f8fcc8a9125ecf0d0760a1ed3bb526167013de61c5b6cf9a53102a901826d019bf6e9ba879953ede7d07823'
-            'SKIP'
+            'b3c44e76a3907f7acc197746b471564577e912bf0561e9576dc8459211c88f400716437bcaa10967376461c69c8a98a56477d26d3feb9ca34747d9208bf5f6c6'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -142,7 +138,6 @@ prepare() {
     git config submodule.Telegram/ThirdParty/range-v3.url "$srcdir/range-v3"
     git config submodule.Telegram/ThirdParty/rlottie.url "$srcdir/rlottie"
     git config submodule.Telegram/ThirdParty/tgcalls.url "$srcdir/tgcalls"
-    git config submodule.Telegram/ThirdParty/variant.url "$srcdir/variant"
     git config submodule.Telegram/ThirdParty/xxHash.url "$srcdir/xxHash"
 
     # Magic is over!
@@ -158,10 +153,9 @@ prepare() {
 
     # Official package patches
     cd cmake
+    patch -R -Np1 -i ${srcdir}/Update-webrtc-packaged-build-for-tg_owt.patch
     patch -R -Np1 -i ${srcdir}/Use-tg_owt-webrtc-fork.patch
     sed 's|set(webrtc_build_loc ${webrtc_loc}/out/$<CONFIG>/obj)|set(webrtc_build_loc /usr/lib)|' -i external/webrtc/CMakeLists.txt
-    cd ../
-    patch -Np1 -i ${srcdir}/Fix_xcb_wayland.patch
 }
 
 build() {
@@ -173,7 +167,7 @@ build() {
     # export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/tdesktop="
     cmake . \
         -B build \
-        -G "Unix Makefiles" \
+        -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
@@ -182,10 +176,10 @@ build() {
         -DTDESKTOP_LAUNCHER_BASENAME="telegram-desktop" \
         -DDESKTOP_APP_SPECIAL_TARGET="" \
         -DDESKTOP_APP_WEBRTC_LOCATION=/usr/include/libwebrtc
-    make -C build
+    ninja -C build
 }
 
 package() {
     cd "$srcdir/tdesktop"
-    DESTDIR="$pkgdir" make -C build install
+    DESTDIR="$pkgdir" ninja -C build install
 }
