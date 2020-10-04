@@ -1,4 +1,5 @@
 *.xz
+*.zst
 pkg
 src
 *.zip
