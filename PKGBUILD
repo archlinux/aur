@@ -15,7 +15,7 @@ optdepends=('dmenu: install for the default backend'
 makedepends=('git' 'cmake')
 conflicts=('j4-dmenu-desktop-git')
 source=("${pkgname}-r${pkgver}.tar.gz::${url}/archive/r${pkgver}.tar.gz"
-		"${url}/releases/download/r${pkgver}/r${pkgver}.tar.gz.sig")
+		"${pkgname}-r${pkgver}.tar.gz.sig::${url}/releases/download/r${pkgver}/r${pkgver}.tar.gz.sig")
 validpgpkeys=('A1774C1B37DC1DCEDB65EE469B8450B91D1362C1') # Marian Beermann <public@enkore.de>
 sha256sums=('77c5605d0c1291bcf1e13b186ea3b32ddf4753de0d0e39127b4a7d2098393e25'
 			'SKIP')
