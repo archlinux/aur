@@ -1,6 +1,6 @@
 # Maintainer: Remi Gacogne <rgacogne-arch at archlinux dot org>
 pkgname=powerdns-recursor-git
-pkgver=r19561.e5e184cb8
+pkgver=4.5.0alpha0.r133.gfb8b7ee85
 pkgrel=1
 pkgdesc='Resolving DNS server'
 arch=('x86_64')
@@ -16,14 +16,18 @@ provides=('powerdns-recursor')
 conflicts=('powerdns-recursor')
 backup=('etc/powerdns/recursor.conf')
 
+prepare() {
+  cd "${pkgname}/pdns/recursordist"
+  autoreconf -i
+}
+
 pkgver() {
   cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --match 'rec-*' | sed 's/rec-//;s/.\(\(rc\|alpha\|beta\)\d*\)/\1/;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "${pkgname}/pdns/recursordist"
-  autoreconf -i
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \

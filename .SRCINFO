@@ -1,6 +1,6 @@
 pkgbase = powerdns-recursor-git
 	pkgdesc = Resolving DNS server
-	pkgver = r19561.e5e184cb8
+	pkgver = 4.5.0alpha0.r133.gfb8b7ee85
 	pkgrel = 1
 	url = https://www.powerdns.com/
 	arch = x86_64
