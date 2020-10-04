@@ -1,0 +1,19 @@
+pkgbase = kde1-kdewizard-git
+	pkgdesc = Historical copy of kdewizard for KDE 1, adapted to compile on modern systems
+	pkgver = 1.1.2r5.b4d33ce
+	pkgrel = 1
+	url = https://github.com/sandsmark/kdewizard
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde1-kdelibs
+	provides = kde1-kdewizard
+	conflicts = kde1-kdewizard
+	source = git+https://github.com/sandsmark/kdewizard.git
+	md5sums = SKIP
+
+pkgname = kde1-kdewizard-git
+
