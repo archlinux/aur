@@ -1,6 +1,6 @@
 # Maintainer: Artjom Löbsack <me@ceigh.com>
 pkgname=git-hours
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 epoch=
 pkgdesc='Count the time spent on code via git'
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/ceigh/$pkgname/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('ca84bf4c1612bc32655139a2f7423688')
+md5sums=('fa38fe80cf01f7c2639e1e6a6f7b32fe')
 validpgpkeys=()
 
 build() {
