@@ -1,5 +1,5 @@
 pkgbase = jpeg2png-git
-	pkgdesc = Finds the smoothest possible picture that encodes to the given JPEG file.
+	pkgdesc = Finds the smoothest PNG that encodes to the given JPEG file, aka. a good JPEG decoder.
 	pkgver = r144.04054a2
 	pkgrel = 1
 	url = https://github.com/sandsmark/jpeg2png
