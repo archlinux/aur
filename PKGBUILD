@@ -102,11 +102,13 @@ build() {
     # Which will break `compiler-rt`
     unset CPPFLAGS
 
-    python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="/opt/swift"
+    python swift/utils/build-script --preset=buildbot_linux,no_test install_prefix="/usr/lib/swift-git" install_destdir="$pkgdir"
 }
 
 package() {
-  mv /opt/swift $pkgdir
+#  mv /opt/swift/* $pkgdir
+  pwd
+  ls -la
   # mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
   # ln -s /opt/swift/swift-linux-$CARCH/bin/{lldb-moduleimport-test,sil-extract,sil-opt,swift,swift-autolink-extract,swiftc,swift-demangle,swift-ide-test,swift-llvm-opt} "$pkgdir/usr/bin"
 }
