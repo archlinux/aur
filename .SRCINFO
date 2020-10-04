@@ -1,10 +1,11 @@
 pkgbase = tv_grab_fr_telerama
 	pkgdesc = Grab TV listings for France, from guidetv-iphone.telerama.fr
-	pkgver = 1.36
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/zubrick/tv_grab_fr_telerama
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = xmltv
 	depends = perl-digest-hmac
 	source = tv_grab_fr_telerama.git::git+https://github.com/zubrick/tv_grab_fr_telerama.git

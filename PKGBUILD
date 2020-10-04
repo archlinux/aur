@@ -1,13 +1,14 @@
 # Maintainer: zoe <chp321 AT gmail DOT com>
 
 pkgname=tv_grab_fr_telerama
-pkgver=1.36
+pkgver=2.3
 pkgrel=1
 pkgdesc="Grab TV listings for France, from guidetv-iphone.telerama.fr"
 arch=(any)
 url="https://github.com/zubrick/${pkgname}"
 license=("GPL")
 depends=('xmltv' 'perl-digest-hmac')
+makedepends=('git')
 source=("${pkgname}.git::git+https://github.com/zubrick/${pkgname}.git"
         "http://www.number6.ch/tools/logos.tar.gz")
 md5sums=('SKIP' '9a5c99e77a58358188b16301d7e0872b')
