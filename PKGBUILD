@@ -20,7 +20,7 @@ pkgver() {
 build() {
   cd ${_gitname}
   chmod +x build.sh
-  echo 5 > ./build.sh
+  echo 5 | ./build.sh
 }
 
 package() {
