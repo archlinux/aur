@@ -8,17 +8,17 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-git
-pkgver=84.0.4147.89.1.r0.gdf199c0
+pkgver=85.0.4183.121.1.r0.ge46b774
 pkgrel=1
-_pkgname=ungoogled-chromium
-_pkgver=84.0.4147.89
-# sometimes an ungoogled patches can be combined with a new chromium release
-# only if the release only includes security fixes
-_ungoogled_ver=master
-_uc_url="$_pkgname-$_ungoogled_ver::git://github.com/Eloston/ungoogled-chromium.git"
-_uc_sum="SKIP"
 _launcher_ver=6
-_gcc_patchset=3
+_gcc_patchset=2
+_pkgname=$(echo $pkgname | cut -d\- -f1-2)
+_pkgver=$(echo $pkgver | cut -d\. -f1-4)
+# ungoogled chromium variables
+_uc_ver=master
+_uc_usr=Eloston
+_uc_sum='SKIP'
+_uc_url="$_pkgname-$_uc_ver::git://github.com/$_uc_usr/ungoogled-chromium.git"
 pkgdesc="A lightweight approach to removing Google web service dependency (master branch)"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -27,7 +27,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'mesa' 'ninja' 'nodejs' 'git' 'libva'
-             'libpipewire02' 'clang' 'lld' 'gn' 'java-runtime-headless'
+             'libpipewire02' 'clang' 'lld' 'gn-m85' 'java-runtime-headless'
              'python2-setuptools')
 optdepends=('pepper-flash: support for Flash content'
             'libpipewire02: WebRTC desktop sharing under Wayland'
@@ -43,23 +43,17 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        remove-NotifyError-calls-and-just-send-a-normal-message.patch
-        avoid-calling-DeleteForCurrentDocument-from-destructor.patch
-        force-mp3-files-to-have-a-start-time-of-zero.patch
-        chromium-ffmpeg-4.3.patch
+        media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch
         intel-vp9-quirk.patch
         wayland-egl.patch
         nvidia-vdpau.patch
         chromium-skia-harmony.patch)
-sha256sums=('17970d998c125b40765141f2cd346d1674f05dbd4a28fdcf31f9e3540890c679'
+sha256sums=('e018547e54566410fb365d9f3dae10037c30fca5debe6ba8baceef3ad3b03d28'
             $_uc_sum
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
-            'f77088dd59b170b767ba91c6b410abb778ff2e68553433b24124d398fa4d3ce7'
-            '3b10917f646f88ae988ca18be9cbef82025abb6a6e5cb00b77a11077192ce32c'
-            '4e41cb637e96bcef98c119ed052ba1aeab45fca5b89d65955583dab002de783e'
-            'abc3fad113408332c3b187b083bf33eba59eb5c87fa3ce859023984b5804623c'
-            '5390304b5f544868985ce00a3ec082d4ece2dacb1c73cdb35dd4facfea12449a'
+            '2194fe22b9e5ccdc4a86da4e3572214f670c561486671f57c90636fd3cbfa43e'
+            '0f041d655335cd2a4773ae7ca5e301a0ff12c6c53f57b7cf6651c268e0420a1c'
             'a25fc6fccb84fd0a58a799661cd9c4ffeb2731fa49268f43aa7108f1542c5af6'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574'
             '8095bf73afbca7c2b07306c5b4dd8f79b66e1053fa4e58b07f71ef938be603f1'
@@ -77,7 +71,7 @@ declare -gA _system_libs=(
   [libdrm]=
   [libjpeg]=libjpeg
   [libpng]=libpng
-  [libvpx]=libvpx
+  #[libvpx]=libvpx
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
@@ -92,7 +86,7 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 
 pkgver() {
-  cd "$_pkgname-$_ungoogled_ver"
+  cd "$_pkgname-$_uc_ver"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -109,26 +103,12 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
 
-  # https://chromium-review.googlesource.com/c/chromium/src/+/2223010
-  patch -Np1 -i ../remove-NotifyError-calls-and-just-send-a-normal-message.patch
-
-  # https://chromium-review.googlesource.com/c/chromium/src/+/2224737
-  patch -Np1 -i ../avoid-calling-DeleteForCurrentDocument-from-destructor.patch
-  
-  # https://chromium-review.googlesource.com/c/chromium/src/+/2268221
-  patch -Np1 -i ../force-mp3-files-to-have-a-start-time-of-zero.patch
+  # https://crbug.com/1095962
+  patch -Np1 -i ../media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch
 
   # Fixes for building with libstdc++ instead of libc++
-  patch -Np1 -i ../patches/chromium-84-AXObject-stl-iterator.patch
-  patch -Np1 -i ../patches/chromium-84-ListContainerHelper-include-cstring.patch
-  patch -Np1 -i ../patches/chromium-84-crashpad-include-cstring.patch
-  patch -Np1 -i ../patches/chromium-84-gcc-10-include-stddef.patch
-  patch -Np1 -i ../patches/chromium-84-gcc-10-webrtc-include-stddef.patch
-  patch -Np1 -i ../patches/chromium-84-gcc-DCHECK_EQ-unique_ptr.patch
-  patch -Np1 -i ../patches/chromium-84-std-vector-const.patch
-
-  # https://crbug.com/1095962
-  patch -Np1 -i ../chromium-ffmpeg-4.3.patch
+  patch -Np1 -i ../patches/chromium-85-NearbyShareEncryptedMetadataKey-include.patch
+  patch -Np1 -i ../patches/chromium-85-sim_hash-include.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
@@ -143,7 +123,7 @@ prepare() {
   patch -Np1 -i ../nvidia-vdpau.patch
 
   # Ungoogled Chromium changes
-  _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
+  _ungoogled_repo="$srcdir/$_pkgname-$_uc_ver"
   _utils="${_ungoogled_repo}/utils"
   msg2 'Pruning binaries'
   python "$_utils/prune_binaries.py" ./ "$_ungoogled_repo/pruning.list"
@@ -155,9 +135,6 @@ prepare() {
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
-
-  # Make xcbgen available to ui/gfx/x/gen_xproto.py running under Python 2
-  ln -s /usr/lib/python3.*/site-packages/xcbgen "$srcdir/"
 
   mkdir -p third_party/node/linux/node-linux-x64/bin
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
@@ -189,9 +166,6 @@ build() {
     export CCACHE_SLOPPINESS=time_macros
   fi
 
-  # ui/gfx/x/gen_xproto.py needs xcbgen
-  export PYTHONPATH=$srcdir
-
   export CC=clang
   export CXX=clang++
   export AR=ar
@@ -208,8 +182,8 @@ build() {
     'use_gnome_keyring=false'
     'use_sysroot=false'
     'use_custom_libcxx=false'
+    'enable_widevine=true'
     'use_vaapi=true'
-    'enable_swiftshader=false'
   )
 
   if [[ -n ${_system_libs[icu]+set} ]]; then
@@ -221,7 +195,7 @@ build() {
   fi
 
   # Append ungoogled chromium flags to _flags array
-  _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
+  _ungoogled_repo="$srcdir/$_pkgname-$_uc_ver"
   readarray -t -O ${#_flags[@]} _flags < "${_ungoogled_repo}/flags.gn"
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
@@ -234,7 +208,7 @@ build() {
   CXXFLAGS+=' -Wno-unknown-warning-option'
 
   msg2 'Configuring Chromium'
-  gn gen out/Release --args="${_flags[*]}" --script-executable=/usr/bin/python2
+  gn-m85 gen out/Release --args="${_flags[*]}" --script-executable=/usr/bin/python2
   msg2 'Building Chromium'
   ninja -C out/Release chrome chrome_sandbox chromedriver
 }
@@ -280,6 +254,10 @@ package() {
     resources.pak
     v8_context_snapshot.bin
 
+    # ANGLE
+    libEGL.so
+    libGLESv2.so
+
     chromedriver
   )
 
@@ -289,6 +267,7 @@ package() {
 
   cp "${toplevel_files[@]/#/out/Release/}" "$pkgdir/usr/lib/chromium/"
   install -Dm644 -t "$pkgdir/usr/lib/chromium/locales" out/Release/locales/*.pak
+  install -Dm755 -t "$pkgdir/usr/lib/chromium/swiftshader" out/Release/swiftshader/*.so
 
   for size in 24 48 64 128 256; do
     install -Dm644 "chrome/app/theme/chromium/product_logo_$size.png" \
