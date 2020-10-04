@@ -4,6 +4,16 @@
 
 # This package needs reinstalled after every Proton update.
 
+# You need to remove certain old 64bit and 32bit dxvk .dll files from your proton-ge directory before installing this package, or you will receive errors when trying to install.
+
+# Examples:
+
+# sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib/wine/dxvk/d3d*
+# sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib/wine/dxvk/dxg*
+
+# sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib64/wine/dxvk/d3d*
+# sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib64/wine/dxvk/dxg*"
+
 pkgname=('dxvk-mingw-proton-ge-async-git')
 pkgver=1.5.r3.ga265af74
 pkgrel=1
@@ -15,15 +25,13 @@ depends=('vulkan-icd-loader' 'wine>=4.0rc1' 'lib32-vulkan-icd-loader')
 provides=("dxvk" "d9vk" "dxvk=$pkgver")
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'mingw-w64-gcc' 'git' 'wine')
 conflicts=('d9vk-mingw-git' 'dxvk-mingw-git' 'dxvk-mingw' 'dxvk-winelib' 'd9vk-bin' 'd9vk-winelib-git' "dxvk-bin" "dxvk-git" "dxvk-wine32-git" "dxvk-wine64-git" "dxvk-win32-git" "dxvk-win64-git" "dxvk-winelib-git")
-options=(!strip !buildflags staticlibs)
+options=(!strip staticlibs)
 source=("git+https://github.com/doitsujin/dxvk.git"
 	"dxvk-async.patch"
         "extraopts.patch")
 sha256sums=("SKIP"
 	    "SKIP"
             "SKIP")
-install=$pkgname.install
-
 
 pkgver() {
     cd dxvk
