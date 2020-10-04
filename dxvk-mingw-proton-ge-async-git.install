@@ -16,7 +16,7 @@ sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib64/w
 echo    # (optional) move to a new line
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
-    exit 1
+
 fi
 
 }
