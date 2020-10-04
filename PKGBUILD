@@ -1,7 +1,7 @@
 # Maintainer: Mubashshir <ahmubashshir@gmail.com>
 # pkg: pypi notify-send.py
 pkgname=notify-send-py
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A python script for sending desktop notifications from the shell"
 
@@ -14,7 +14,7 @@ depends=( python-notify2 python-dbus python-gobject )
 source=(
     "https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname%-*}.${pkgname##*-}/${pkgname%-*}.${pkgname##*-}-$pkgver.tar.gz"
 )
-sha256sums=('ae4573ca4a4071cd38dfc97b13a18a48124cdf9f23cd6b347bbd23284de31260')
+sha256sums=('805ddd198c3884c5b453835d4d2bbd4ddaa3e1be715b1ddd0fe48c1d485eff50')
 build() {
     cd "$srcdir/${pkgname%-*}.${pkgname##*-}-$pkgver"
     python setup.py build
