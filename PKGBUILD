@@ -4,7 +4,7 @@
 # Contributor: soloturn@gmail.com
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.09.28.a.r151.g72b6a00ff8c
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.09.28.a.r173.gc02dc720da8
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -34,7 +34,6 @@ source=(
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests'
     'llvm-project::git+https://github.com/apple/llvm-project#branch=swift/master'
     '0001-arch-aur-pachtes.patch'
-    '0002-llbuild-ninja-test-binary-links-against-ncurses.patch'
     '0003-linux_load_commands-test-sourcekit-lsp-are-python2.patch'
     # swift src to check afterwards
     'indexstore-db::git+https://github.com/apple/indexstore-db'
@@ -71,7 +70,6 @@ md5sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    'SKIP'
 )
 
 
@@ -82,7 +80,6 @@ md5sums=(
 
 prepare () {
     ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
-    ( cd llbuild && patch -p1 -i "$srcdir/0002-llbuild-ninja-test-binary-links-against-ncurses.patch" )
     ( cd swift-integration-tests && patch -p1 -i "$srcdir/0003-linux_load_commands-test-sourcekit-lsp-are-python2.patch" )
 }
 
