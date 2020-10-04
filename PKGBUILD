@@ -1,6 +1,6 @@
 # Maintainer: Remi Gacogne <rgacogne at archlinux dot org>
 pkgname=dnsdist-git
-pkgver=r18687.148a1b87a
+pkgver=1.5.0.r458.gfb8b7ee85
 pkgrel=1
 pkgdesc='Highly DNS-, DoS- and abuse-aware loadbalancer'
 arch=('x86_64')
@@ -15,14 +15,18 @@ depends=('fstrm' 'gnutls' 'h2o' 'libcap' 'libedit' 'libsodium' 'libsystemd' 'lmd
 provides=('dnsdist')
 conflicts=('dnsdist')
 
+prepare() {
+  cd "${pkgname}/pdns/dnsdistdist"
+  autoreconf -i
+}
+
 pkgver() {
   cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --match 'dnsdist-*' | sed 's/dnsdist-//;s/.\(\(rc\|alpha\|beta\)\d*\)/\1/;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "${pkgname}/pdns/dnsdistdist"
-  autoreconf -i
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
