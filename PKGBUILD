@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _name=alex
 pkgname=alexjs
-pkgver=8.0.1
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="Catch insensitive, inconsiderate writing"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_name/-/$_name-$pkgver.tgz")
-sha256sums=('0a64c66e15fecf8e9cfc9e456ca2efd5c700cd806c38a02c4ae65f02b5073baa')
+sha256sums=('fdc022406dd69ded7efec38ec193d1c4d3fcf325b8b9586d65dfcb3da73efde1')
 
 package() {
 	npm install -g \
