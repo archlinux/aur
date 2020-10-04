@@ -1,6 +1,6 @@
 pkgbase = asymptote-git
 	pkgdesc = A vector graphics language (like metapost)
-	pkgver = 2.68.git.4.gd2f6e59e
+	pkgver = 2.68.git.18.gc96e0b7e
 	pkgrel = 1
 	epoch = 2
 	url = http://asymptote.sourceforge.net/
@@ -24,7 +24,7 @@ pkgbase = asymptote-git
 	optdepends = tix: for the xasy GUI
 	provides = asymptote
 	conflicts = asymptote
-	source = git+https://github.com/vectorgraphics/asymptote.git
+	source = git+https://github.com/spotrh/asymptote.git
 	source = remove_include.patch
 	sha256sums = SKIP
 	sha256sums = 3f72eab932e4713a58fbfafba8e24df362f23d29cb75db94204c8280246f024e
