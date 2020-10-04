@@ -2,12 +2,13 @@
 
 pkgname=xcursor-thedot
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A mouse theme with circles (fork of the unmaintained original)"
 arch=('any')
 url="https://www.gnome-look.org/p/1244392/"
 license=('GPL')
 depends=()
+DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 # Hash and Timestamp
 _p="var \(hash = '\(.*\)\|timetamp = '\(.*\)\)';"
