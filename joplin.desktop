@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Joplin
+Terminal=false
+Exec=/usr/bin/joplin-desktop
+Categories=Utility;GTK;Office;TextTools;
+Icon=/usr/share/joplin/resources/build/icons/128x128.png
+Comment=Joplin - a note taking and to-do application with synchronization capabilities for Windows, macOS, Linux, Android and iOS.
