@@ -1,7 +1,7 @@
 # Maintainer: arshlinux
 pkgname=react-deluge-git
 pkgver=r9.77417a8
-pkgrel=1
+pkgrel=2
 pkgdesc="The very first React Front-end for the Deluge BitTorrent client"
 url="https://github.com/varyoo/react-deluge"
 license=(GPL3)
@@ -9,7 +9,7 @@ arch=(x86_64)
 depends=()
 makedepends=(git npm)
 optdepends=()
-backup=("etc/flood/config.js")
+backup=()
 source=("git+https://github.com/varyoo/react-deluge")
 sha256sums=("SKIP")
 options=(!strip)
