@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/hzeller/gmrender-resurrect"
 license=('GPL')
 conflicts=('gmediarender')
-depends=('libupnp-1.12' 'gst-plugins-good' 'gst-plugins-base')
+depends=('libupnp1.12' 'gst-plugins-good' 'gst-plugins-base')
 optdepends=(
     'gst-libav: Extra media codecs'
     'gst-plugins-bad: Extra media codecs'
