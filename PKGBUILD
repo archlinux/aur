@@ -3,7 +3,7 @@
 pkgname=mastotool
 pkgver=0.2.2
 pkgrel=1
-pkgdesc="Disk Usage/Free Utility"
+pkgdesc="a collection of tools to work with your Mastodon account"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/muesli/mastotool"
 license=('MIT')

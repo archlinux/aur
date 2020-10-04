@@ -1,5 +1,5 @@
 pkgbase = mastotool
-	pkgdesc = Disk Usage/Free Utility
+	pkgdesc = a collection of tools to work with your Mastodon account
 	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/muesli/mastotool
