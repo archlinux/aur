@@ -106,11 +106,9 @@ build() {
 }
 
 package() {
-  cd "$pkgdir"
-  mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
-  # unpack the produced tar, to pack it again. how to avoid this pack-unpack-pack? 
-  tar xvf $srcdir/swift.tar.gz
-  ln -s /opt/swift/swift-linux-$CARCH/bin/{lldb-moduleimport-test,sil-extract,sil-opt,swift,swift-autolink-extract,swiftc,swift-demangle,swift-ide-test,swift-llvm-opt} "$pkgdir/usr/bin"
+  mv /opt/swift $pkgdir
+  # mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
+  # ln -s /opt/swift/swift-linux-$CARCH/bin/{lldb-moduleimport-test,sil-extract,sil-opt,swift,swift-autolink-extract,swiftc,swift-demangle,swift-ide-test,swift-llvm-opt} "$pkgdir/usr/bin"
 }
 
 # vim:set ts=2 sw=2 et:
