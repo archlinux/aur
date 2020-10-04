@@ -1,0 +1,17 @@
+pkgbase = bibata-extra-cursor-theme
+	pkgdesc = Material Based Cursor Theme: More Bibata!
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/ful1e5/Bibata_Extra_Cursor
+	arch = any
+	license = GPL3
+	makedepends = python-pillow
+	makedepends = inkscape
+	makedepends = xorg-xcursorgen
+	provides = bibata-extra-cursor
+	conflicts = bibata-extra-cursor-git
+	source = bibata-extra-cursor-theme-0.3.tar.gz::https://github.com/ful1e5/Bibata_Extra_Cursor/archive/v0.3.tar.gz
+	sha256sums = cb43593b189b4dbfaa6e2a83c5c401fac8fc02b268f36a3873fa107b90087f93
+
+pkgname = bibata-extra-cursor-theme
+
