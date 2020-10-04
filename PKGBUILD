@@ -2,18 +2,18 @@
 # Contributor : Immae <ismael.bouya@normalesup.org>
 
 pkgname=spip
-pkgver=3.2.7
+pkgver=3.2.8
 pkgrel=1
 pkgdesc="A publishing system for the Internet in which great importance is attached to collaborative working, to multilingual environments, and to simplicity of use for web authors."
 arch=('x86' 'x86_64')
 url="http://www.spip.net/"
 license=("GPL")
 depends=("php")
-source=("http://files.spip.org/spip/archives/SPIP-v${pkgver}.zip"
+source=("http://files.spip.org/spip/archives/${pkgname}-v${pkgver}.zip"
         "httpd-spip.conf"
         "mes_options.php")
 options=(!strip)
-sha256sums=('c861ecd74b37fe6d42a7052b9cab9d0ad30ccc1f143640d53f85f5cc347e6cb2'
+sha256sums=('22c96d24e02dbe9e65c66afc52c9678faef898930333ce44cc8c3c9a11085e9d'
             '18c625bf2192ceb7647617593285c9fbfc110197c0179ac8ae4bc70c414b9582'
             '9c2eed4d009faef9128ec60135b4ff03c3c2d09387a7ac7f4887748f0d85ce75')
 
