@@ -1,14 +1,14 @@
 # Maintainer: Martin Hoeher <martin@rpdev.net>
-# Automatically released from https://gitlab.com/rpdev/opentodolist/-/pipelines/186578590
+# Automatically released from https://gitlab.com/rpdev/opentodolist/-/pipelines/197914572
 pkgname=opentodolist
-pkgver=3.26.0
+pkgver=3.27.0
 pkgrel=2
 pkgdesc="Maintain todo lists, notes and images in libraries, which can be synced via various services like NextCloud between your devices."
 arch=('x86_64')
 url="https://opentodolist.rpdev.net/"
 license=('GPL')
 groups=()
-depends=('qt5-base' 'qt5-tools' 'qt5-quickcontrols2' 'syntax-highlighting' 'libsecret' 'ttf-roboto' 'noto-fonts')
+depends=('qt5-base' 'qt5-tools' 'qt5-quickcontrols2' 'qt5-remoteobjects' 'syntax-highlighting' 'libsecret' 'ttf-roboto' 'noto-fonts')
 makedepends=('git')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
@@ -29,7 +29,7 @@ pkgver() {
         if [ -n "$release_build" ]; then
             printf "${pkgver}"
         else
-            printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+            printf "%s" "$(git describe --long --tags | cut -f1 -d'-')"
         fi
 }
 
