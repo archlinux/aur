@@ -4,7 +4,7 @@
 pkgname=freetube
 _pkgname=FreeTube
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source desktop YouTube player built with privacy in mind.'
 arch=('x86_64' 'arm')
 license=('AGPL3')
@@ -31,6 +31,8 @@ package() {
   install -d "${pkgdir}"/{usr/bin,opt}
   cp -R "./$_pkgname-$pkgver-beta/build/linux-unpacked" "$pkgdir/opt/$pkgname"
   ln -s "/opt/$pkgname/freetube" "$pkgdir/usr/bin/$pkgname"
+  
+  chmod 4755 $pkgdir/opt/$pkgname/chrome-sandbox
   
   cd $_pkgname-$pkgver-beta
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
