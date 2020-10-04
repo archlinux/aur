@@ -6,7 +6,6 @@ pkgbase = sph2pipe
 	arch = x86_64
 	arch = i686
 	license = APACHE
-	makedepends = gcc
 	depends = glibc
 	source = https://www.openslr.org/resources/3/sph2pipe_v2.5.tar.gz
 	sha256sums = 5be236dc94ed0a301c5c8a369f849f76799ec7e70f25dfc0521068d9d1d4d3e3

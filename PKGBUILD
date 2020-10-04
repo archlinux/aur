@@ -4,7 +4,6 @@ pkgname=sph2pipe
 pkgdesc='Converts SPHERE-formatted audio to usable audio'
 pkgver=2.5
 pkgrel=2
-makedepends=(gcc)
 depends=('glibc')
 arch=('x86_64' 'i686')
 url='https://www.openslr.org/'
