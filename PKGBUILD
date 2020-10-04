@@ -1,7 +1,7 @@
 # Maintainer: Remi Gacogne <rgacogne at archlinux dot org>
 pkgname=bgpq3
 pkgver=0.1.35
-pkgrel=2
+pkgrel=3
 pkgdesc="bgp filtering automation for Cisco and Juniper routers"
 arch=('x86_64')
 url="https://github.com/snar/bgpq3"
@@ -9,7 +9,7 @@ license=('BSD')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/snar/$pkgname/archive/v$pkgver.tar.gz"
         "bgpq3_install_destdir_cppflags.patch")
 sha512sums=('a41a424fc0230a0ab7d64ff017b9c1a52e32d7deae542ba096d4815e0e5ce76342ad55c204bbcc22ae4c47ad486917410c53b0dbb2306d40fa5c5a5cf93fcd01'
-            'de8089c3d11cc7bdaee692275eb6e9cba3091ebfb8f4db63a735f576ede0ade15cd99635c50d0f083a3ad390fe98ec7ba20f6436acaee9d9090cfffd36b7dc74')
+            'c07f3c06433df6a3c285f4f29a0394e03ed85f747604fa7560027891dd0023fa70a521e275d87b77a70be4e5dd21a3289fb8b8b0322b6fc46633e929359b2757')
 depends=('glibc')
 
 prepare() {

@@ -1,7 +1,6 @@
-diff --git a/Makefile.in b/Makefile.in
-index c66c309..490dc13 100644
---- a/Makefile.in
-+++ b/Makefile.in
+diff -ruw bgpq3-0.1.35/Makefile.in bgpq3-0.1.35.patched/Makefile.in
+--- bgpq3-0.1.35/Makefile.in	2018-11-30 10:53:12.000000000 +0100
++++ bgpq3-0.1.35.patched/Makefile.in	2020-10-04 15:23:52.608308665 +0200
 @@ -1,5 +1,5 @@
  CC=@CC@
 -CFLAGS=@CFLAGS@ @DEFS@ -g -Wall -I. -O0
@@ -9,7 +8,7 @@ index c66c309..490dc13 100644
  LDADD=@LDFLAGS@ @LIBS@
  INSTALL=@INSTALL@
  
-@@ -20,20 +20,18 @@ SRCS=bgpq3.c sx_report.c bgpq_expander.c sx_slentry.c bgpq3_printer.c \
+@@ -20,19 +20,18 @@
  all: bgpq3
  
  bgpq3: ${OBJECTS}
@@ -25,11 +24,10 @@ index c66c309..490dc13 100644
  	rm -rf *.o *.core core.* core
  
  install: bgpq3
--	if test ! -d @bindir@ ; then mkdir -p @bindir@ ; fi
 -	${INSTALL} -c -s -m 755 bgpq3 @bindir@
--	if test ! -d @mandir@/man8 ; then mkdir -p @mandir@/man8 ; fi
--	${INSTALL} -m 644 bgpq3.8 @mandir@/man8
-+	${INSTALL} -D -c -s -m 755 bgpq3 ${DESTDIR}@bindir@/bgpq3/bgpq3
+-	if test ! -d @prefix@/man/man8 ; then mkdir -p @prefix@/man/man8 ; fi
+-	${INSTALL} -m 644 bgpq3.8 @prefix@/man/man8
++	${INSTALL} -D -c -s -m 755 bgpq3 ${DESTDIR}@bindir@/bgpq3
 +	${INSTALL} -D -m 644 bgpq3.8 ${DESTDIR}@mandir@/man8/bgpq3.8
  
  depend: 
