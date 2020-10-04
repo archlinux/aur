@@ -2,7 +2,7 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop9
-pkgver=2.3.2
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='Official Telegram Desktop client (personal build)'
 arch=('x86_64')
@@ -15,6 +15,8 @@ optdepends=('ttf-opensans: default Open Sans font family')
 provides=('telegram-desktop')
 conflicts=('telegram-desktop')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
+        "Use-tg_owt-webrtc-fork._patch::https://github.com/desktop-app/cmake_helpers/commit/4c8956027de8e8e8b984c5daa643aacb14a89123.patch"
+        "Update-webrtc-packaged-build-for-tg_owt._patch::https://github.com/desktop-app/cmake_helpers/commit/d955882cb4d4c94f61a9b1df62b7f93d3c5bff7d.patch"
 
         "always_delete_for_everyone.patch"
         "always_pin_without_notify.patch"
@@ -22,7 +24,9 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
         "clicky_sticker_panel.patch"
         "dont_pulse_mentions.patch"
         "no_circles.patch")
-sha512sums=('757e57389ce24656c1d6676d6f0808e3d444785394e916b9f5fb47511662f01b6742c88c2a27274c4d9bb58263ae281218579c78cce7db119e2c863c1eaacc90'
+sha512sums=('e626ac2f74b7ba9c8db847b26275d88d4c95beb3c2b8787d0ecdc7dc1b40548e825056acf45ece1e647e6a3d6da7215d16d908f443da311b9d99769639c19ad3'
+            '3a7a20ace7dcea5be202e7b3008807ba0ae38ae8266709e3595f6b3c0aa2bf81299da4b5a7e7d66d2d9b3040cc6618e67e4d7b9572b2649db4c477056e649bcf'
+            'b3c44e76a3907f7acc197746b471564577e912bf0561e9576dc8459211c88f400716437bcaa10967376461c69c8a98a56477d26d3feb9ca34747d9208bf5f6c6'
             'fdef3a430bdd60d88c9e9011ee878805e7803699204a2a7e22797d0f8729bf7dc0543851083ad700a4ece32bc768b6bfeb6f0135c8c039e035b22afb6df1171d'
             '91a0edab6408a223db77b75df5a913ffd36efa79340e8d78fa01ac2c3b6e09d5a5fc7fa214ccd40473093809f86b7aef199cebf56a1d5821c20083c4a3e5780b'
             'f934856707feec5c141ea2d03bf3fb5583c7a9065c46ce0bc3cbf7cbc853ad0c6ee64267eba66a94ce7b85caf9f61cb4c661295ca84f361ec049ee2de128d6dd'
@@ -42,10 +46,10 @@ prepare() {
         patch -Np1 < "../$src"
     done
 
-    sed \
-        -e 's|set(webrtc_build_loc ${libs_loc}/tg_owt/out/$<CONFIG>)|set(webrtc_build_loc /usr/lib)|' \
-        -e 's|${webrtc_lib_prefix}tg_owt|${webrtc_lib_prefix}webrtc|' \
-        -i cmake/external/webrtc/CMakeLists.txt
+    cd cmake
+    patch -R -Np1 -i ${srcdir}/Update-webrtc-packaged-build-for-tg_owt._patch
+    patch -R -Np1 -i ${srcdir}/Use-tg_owt-webrtc-fork._patch
+    sed 's|set(webrtc_build_loc ${webrtc_loc}/out/$<CONFIG>/obj)|set(webrtc_build_loc /usr/lib)|' -i external/webrtc/CMakeLists.txt
 }
 
 build() {
