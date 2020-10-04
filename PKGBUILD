@@ -7,15 +7,15 @@
 
 _basename=util-linux
 pkgbase=util-linux-aes
-pkgname=(util-linux-aes libutil-linux-aes)
-_pkgmajor=2.35
-pkgver=${_pkgmajor}.2
-pkgrel=1
-pkgdesc="Miscellaneous system utilities for Linux, with loop-AES support"
+pkgname=(util-linux-aes util-linux-libs-aes)
+_pkgmajor=2.36
+pkgver=${_pkgmajor}
+pkgrel=4
+pkgdesc='Miscellaneous system utilities for Linux, with loop-AES support'
 url='https://github.com/karelzak/util-linux'
 #url="http://sourceforge.net/projects/loop-aes/"
 arch=('x86_64')
-makedepends=('systemd' 'python' 'libcap-ng')
+makedepends=('systemd' 'python' 'libcap-ng' 'libxcrypt')
 license=('GPL2')
 options=('strip')
 install=${pkgname}.install
@@ -28,9 +28,9 @@ source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${_basena
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('21b7431e82f6bcd9441a01beeec3d57ed33ee948f8a5b41da577073c372eb58a'
+sha256sums=('9e4b1c67eb13b9b67feb32ae1dc0d50e08ce9e5d82e1cccd0ee771ad2fa9e0b1'
             'SKIP'
-            'b500e906f0675318647a1af5696866822794d1fd535a6adf1b3f0f17e4ce56f7'
+            'dab79ac6d863a1b93a6885f0c33badb4030522592848e5b4df37d3d9e0cbe73a'
             '560ca858961eb997a216ce6b419d900e84688591abf4584ef30c9323ba06fffd'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92'
             'fc6807842f92e9d3f792d6b64a0d5aad87995a279153ab228b1b2a64d9f32f20'
@@ -80,7 +80,9 @@ package_util-linux-aes() {
   conflicts=('rfkill' "${_basename}")
   provides=('rfkill' "${_basename}")
   replaces=('rfkill')
-  depends=('pam' 'shadow' 'coreutils' 'systemd-libs' 'libcap-ng' 'libutil-linux-aes')
+  depends=('pam' 'shadow' 'coreutils' 'systemd-libs' 'libsystemd.so'
+           'libudev.so' 'libcap-ng' 'libxcrypt' 'libcrypt.so' 'util-linux-libs-aes'
+           'libmagic.so' 'libncursesw.so' 'libreadline.so')
   optdepends=('python: python bindings to libmount'
               'words: default dictionary for look')
   backup=(etc/pam.d/chfn
@@ -99,13 +101,13 @@ package_util-linux-aes() {
   chmod 4755 "$pkgdir"/usr/bin/{newgrp,ch{sh,fn}}
 
   # install PAM files for login-utils
-  install -Dm644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chfn"
-  install -m644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chsh"
-  install -m644 "$srcdir/pam-login" "$pkgdir/etc/pam.d/login"
-  install -m644 "$srcdir/pam-runuser" "$pkgdir/etc/pam.d/runuser"
-  install -m644 "$srcdir/pam-runuser" "$pkgdir/etc/pam.d/runuser-l"
-  install -m644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su"
-  install -m644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su-l"
+  install -Dm0644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chfn"
+  install -m0644 "$srcdir/pam-common" "$pkgdir/etc/pam.d/chsh"
+  install -m0644 "$srcdir/pam-login" "$pkgdir/etc/pam.d/login"
+  install -m0644 "$srcdir/pam-runuser" "$pkgdir/etc/pam.d/runuser"
+  install -m0644 "$srcdir/pam-runuser" "$pkgdir/etc/pam.d/runuser-l"
+  install -m0644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su"
+  install -m0644 "$srcdir/pam-su" "$pkgdir/etc/pam.d/su-l"
 
   # TODO(dreisner): offer this upstream?
   sed -i '/ListenStream/ aRuntimeDirectory=uuidd' "$pkgdir/usr/lib/systemd/system/uuidd.socket"
@@ -116,30 +118,30 @@ package_util-linux-aes() {
   mv usr/sbin/* usr/bin
   rmdir usr/sbin
 
-  ### runtime libs are shipped as part of libutil-linux
+  ### runtime libs are shipped as part of util-linux-libs
   rm "$pkgdir"/usr/lib/lib*.{a,so}*
 
   ### install systemd-sysusers
-  install -Dm644 "$srcdir/util-linux-aes.sysusers" \
+  install -Dm0644 "$srcdir/util-linux-aes.sysusers" \
     "$pkgdir/usr/lib/sysusers.d/util-linux-aes.conf"
 
-  install -Dm644 "$srcdir/60-rfkill.rules" \
+  install -Dm0644 "$srcdir/60-rfkill.rules" \
     "$pkgdir/usr/lib/udev/rules.d/60-rfkill.rules"
 
-  install -Dm644 "$srcdir/rfkill-unblock_.service" \
+  install -Dm0644 "$srcdir/rfkill-unblock_.service" \
     "$pkgdir/usr/lib/systemd/system/rfkill-unblock@.service"
-  install -Dm644 "$srcdir/rfkill-block_.service" \
+  install -Dm0644 "$srcdir/rfkill-block_.service" \
     "$pkgdir/usr/lib/systemd/system/rfkill-block@.service"
 
   # install modules
   install -Dm644 "${srcdir}/${pkgname}.modules" "${pkgdir}/etc/modules-load.d/${pkgname}.conf"
 }
 
-package_libutil-linux-aes() {
+package_util-linux-libs-aes() {
   pkgdesc="util-linux runtime libraries"
-  provides=('libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so')
-  conflicts=("libutil-linux")
-  provides=("libutil-linux")
+  provides=('libutil-linux' 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so')
+  conflicts=('libutil-linux')
+  replaces=('libutil-linux')
 
   make -C "$_basename-$pkgver" DESTDIR="$pkgdir" install-usrlib_execLTLIBRARIES
 }
