@@ -3,8 +3,8 @@
 
 pkgbase=linux-bcachefs-steph-git
 _basever=5.8
-_arch_pkgver=${_basever}.10.arch1
-pkgver=5.8.10.arch1.bcachefs.r296.gfb2821e72648
+_arch_pkgver=${_basever}.13.arch1
+pkgver=5.8.13.arch1.bcachefs.r296.gfb2821e72648
 pkgrel=1
 pkgdesc='Linux with bcachefs'
 _srctag=v${_arch_pkgver%.*}-${_arch_pkgver##*.}
