@@ -3,7 +3,7 @@
 _svt_hevc_ver='ead6fdf7c9ff84511b42fc1658c1654b84d83e4b'
 
 pkgname=ffmpeg-full-git
-pkgver=4.4.r99456.g45070eec4c
+pkgver=4.4.r99459.g05872c67a4
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -17,8 +17,8 @@ depends=(
         'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm' 'libiec61883'
         'libilbc' 'jack' 'kvazaar' 'lensfun' 'libmodplug' 'lame' 'opencore-amr'
         'openjpeg2' 'opus' 'pulseaudio' 'librabbitmq-c' 'rav1e' 'librsvg' 'rubberband'
-        'rtmpdump' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc' 'svt-av1'
-        'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
+        'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc'
+        'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
         'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264' 'x265' 'libxcb'
         'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz' 'libmysofa'
         'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth' 'vulkan-icd-loader'
@@ -64,13 +64,9 @@ prepare() {
 }
 
 pkgver() {
-    local _version
-    local _revision
-    local _shorthash
-    _version="$(git -C ffmpeg describe --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }')"
-    _revision="$(git -C ffmpeg describe --tags --match 'N' | awk -F'-' '{ print $2 }')"
-    _shorthash="$(git -C ffmpeg rev-parse --short HEAD)"
-    printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
+    printf '%s.r%s.g%s' "$(git -C ffmpeg describe --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }')" \
+                        "$(git -C ffmpeg describe --tags --match 'N' | awk -F'-' '{ print $2 }')" \
+                        "$(git -C ffmpeg rev-parse --short HEAD)"
 }
 
 build() {
@@ -145,7 +141,7 @@ build() {
         --enable-librubberband \
         --enable-librtmp  \
         --enable-libshine \
-        --disable-libsmbclient \
+        --enable-libsmbclient \
         --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
