@@ -1,0 +1,14 @@
+pkgbase = archlinux-wallpapers-mixbranding
+	pkgdesc = Wallpapers who are not what they seems to be
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://gitlab.com/fabis_cafe/archlinux-wallpapers-mixbranding
+	install = archlinux.install
+	arch = any
+	license = costum
+	makedepends = git
+	source = git+https://gitlab.com/fabis_cafe/archlinux-wallpapers-mixbranding.git#commit=969d46b9a244e5bc4b44bdff006b3c6e5e847096
+	sha512sums = SKIP
+
+pkgname = archlinux-wallpapers-mixbranding
+

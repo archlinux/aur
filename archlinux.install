@@ -1,0 +1,11 @@
+post_install() {
+	printf "\nThanks for using my pkg 😊\n\n"
+}
+
+post_upgrade() {
+	printf "\nThanks for still using my pkg 😊\n\n"
+}
+
+post_remove() {
+	printf "\n🖐️🖐️ bye bye 😞\n\n"
+}
