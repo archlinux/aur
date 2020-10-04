@@ -1,0 +1,36 @@
+diff --git a/Makefile.in b/Makefile.in
+index c66c309..490dc13 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1,5 +1,5 @@
+ CC=@CC@
+-CFLAGS=@CFLAGS@ @DEFS@ -g -Wall -I. -O0
++CFLAGS=@CFLAGS@ @DEFS@ -Wall -I.
+ LDADD=@LDFLAGS@ @LIBS@
+ INSTALL=@INSTALL@
+ 
+@@ -20,20 +20,18 @@ SRCS=bgpq3.c sx_report.c bgpq_expander.c sx_slentry.c bgpq3_printer.c \
+ all: bgpq3
+ 
+ bgpq3: ${OBJECTS}
+-	${CC} ${CFLAGS} -o bgpq3 ${OBJECTS} ${LDADD}
++	${CC} ${CFLAGS} ${CPPFLAGS} -o bgpq3 ${OBJECTS} ${LDADD}
+ 
+ .c.o: 
+-	${CC} ${CFLAGS} -c $<
++	${CC} ${CFLAGS} ${CPPFLAGS} -c $<
+ 
+ clean: 
+ 	rm -rf Makefile autom4te.cache bgpq3 config.h config.log config.status
+ 	rm -rf *.o *.core core.* core
+ 
+ install: bgpq3
+-	if test ! -d @bindir@ ; then mkdir -p @bindir@ ; fi
+-	${INSTALL} -c -s -m 755 bgpq3 @bindir@
+-	if test ! -d @mandir@/man8 ; then mkdir -p @mandir@/man8 ; fi
+-	${INSTALL} -m 644 bgpq3.8 @mandir@/man8
++	${INSTALL} -D -c -s -m 755 bgpq3 ${DESTDIR}@bindir@/bgpq3/bgpq3
++	${INSTALL} -D -m 644 bgpq3.8 ${DESTDIR}@mandir@/man8/bgpq3.8
+ 
+ depend: 
+ 	makedepend -- $(CFLAGS) -- $(SRCS)
