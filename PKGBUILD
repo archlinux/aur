@@ -14,6 +14,8 @@
 # sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib64/wine/dxvk/d3d*
 # sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib64/wine/dxvk/dxg*"
 
+# You can also pacman --overwrite "*"
+
 pkgname=('dxvk-mingw-proton-ge-async-git')
 pkgver=1.5.r3.ga265af74
 pkgrel=1
