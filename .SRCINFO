@@ -1,0 +1,16 @@
+pkgbase = cudnn
+	pkgdesc = NVIDIA CUDA Deep Neural Network library
+	pkgver = 7.6.5.32
+	pkgrel = 1
+	url = https://developer.nvidia.com/cuDNN
+	arch = x86_64
+	license = custom
+	depends = cuda-10.1
+	noextract = cudnn-10.1-linux-x64-v7.6.5.32.tgz
+	source = https://developer.download.nvidia.com/compute/redist/cudnn/v7.6.5/cudnn-10.1-linux-x64-v7.6.5.32.tgz
+	source = NVIDIA_SLA+cuDNN_Supp_Feb2017_release.pdf
+	sha512sums = 1073bc42c2c36fce6b710882a04a4035d66d95c410200b9d50953e993d7b801cc3a837e42843ad2447e62ea5dfc8ba22c8a803464716c56ffb811aa278645771
+	sha512sums = 38bbb7eb287914e4d7ba79da20a47222382687832d4ba0290715199a129c08715a23681800cf8d381f40e24202470a7b20505a31c8cea51a78762a740860251b
+
+pkgname = cudnn
+
