@@ -1,6 +1,6 @@
 pkgbase = xcowsay
 	pkgdesc = a program based on cowsay that displays a cute cow and message on your desktop
-	pkgver = 1.5
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = http://www.doof.me.uk/xcowsay
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = xcowsay
 	depends = dbus-glib
 	depends = cairo
 	depends = gtk2
-	source = http://www.nickg.me.uk/files/xcowsay-1.5.tar.gz
-	md5sums = 8a61050cda5cf98b46767ce1a17239c4
+	source = http://www.nickg.me.uk/files/xcowsay-1.5.1.tar.gz
+	md5sums = e57cfd50979de8cd590968a8d3230eaa
 
 pkgname = xcowsay
 
