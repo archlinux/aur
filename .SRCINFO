@@ -1,13 +1,13 @@
 pkgbase = ttc-iosevka-slab
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 3.6.2
+	pkgver = 3.6.3
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v3.6.2/ttc-iosevka-slab-3.6.2.zip
-	source = ttc-iosevka-slab-3.6.2-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v3.6.2/LICENSE.md
-	sha256sums = d99048a989bf82d38f015bfbc925256dd17ff4da43f96ee5b2b9fef2f9c819cb
+	source = https://github.com/be5invis/Iosevka/releases/download/v3.6.3/ttc-iosevka-slab-3.6.3.zip
+	source = ttc-iosevka-slab-3.6.3-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v3.6.3/LICENSE.md
+	sha256sums = dbb46ffffac1a1253d51bacc8f98dcd38981a1964e63e8357f6bf9b776bb37c6
 	sha256sums = e61c0988bb231a321f14cce1b119a468f279ea86826c32e943ab16dbf08c1ba9
 
 pkgname = ttc-iosevka-slab
