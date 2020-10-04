@@ -34,7 +34,7 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  arch-meson pango build --libdir=/usr/lib32 -D introspection=disabled -D libthai=false
+  arch-meson pango build --libdir=/usr/lib32 -D introspection=disabled -D libthai=disabled
   ninja -C build
 }
 
