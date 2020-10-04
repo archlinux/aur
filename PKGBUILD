@@ -2,7 +2,7 @@
 
 pkgbase=linux-froidzen
 pkgver=5.8.13.zen1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux ZEN with Patches'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -19,7 +19,6 @@ source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
   config         # the main kernel config file
   sphinx-workaround.patch
-  "https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/stable-proposed/extra-kernel/linux-kernel/autobuild/patches/8000-feature-aosc-univt.patch" # CJK Patch
   "https://raw.githubusercontent.com/dolohow/uksm/master/v5.x/uksm-5.8.patch" # UKSM Patch
 )
 validpgpkeys=(
@@ -30,7 +29,6 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '78c336773e9b063c5d8824003540b34f6a014ee888e59f779a27ab6973f3d305'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
-            'acf96c21e7836ac80b7f6d9427c25784e0187fc0206d5e51d4b5defc68b8ba58'
             '0389c65d8357f8b22f65aceaf9ceda5a3c76e60ca34f713ff9a09ec379f51dc7')
 
 export KBUILD_BUILD_HOST=archlinux
