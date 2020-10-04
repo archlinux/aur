@@ -3,6 +3,7 @@ pkgbase = dxvk-mingw-proton-ge-async-git
 	pkgver = 1.5.r3.ga265af74
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
+	install = dxvk-mingw-proton-ge-async-git.install
 	arch = x86_64
 	license = zlib/libpng
 	makedepends = ninja

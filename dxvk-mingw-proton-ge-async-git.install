@@ -1,3 +1,5 @@
+pre_install() {
+
 read -p "You need to remove certain old 64bit and 32bit dxvk .dll files from your proton-ge directory before installing this package, or you will receive errors when trying to install.
 
 This package also needs reinstalled after every Proton update.
@@ -16,3 +18,5 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
     exit 1
 fi
+
+}
