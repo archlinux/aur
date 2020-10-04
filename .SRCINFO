@@ -1,7 +1,7 @@
 pkgbase = linux-xanmod
 	pkgdesc = Linux Xanmod
 	pkgver = 5.8.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
@@ -21,6 +21,7 @@ pkgbase = linux-xanmod
 	source = https://github.com/xanmod/linux/releases/download/5.8.13-xanmod1/patch-5.8.13-xanmod1.xz
 	source = choose-gcc-optimization.sh
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b
+	source = cachy5.8.pick.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5
@@ -28,6 +29,7 @@ pkgbase = linux-xanmod
 	sha256sums = e7e367b6218ea8d54dc444445d9e0965be6ee6ff0f4a8dcb7c1d12a7e798f827
 	sha256sums = 2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511
 	sha256sums = 6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991
+	sha256sums = 22a41176682a83fa4d1d04a4522651add4840a914a93d82f13729a33734be944
 
 pkgname = linux-xanmod
 	pkgdesc = The Linux kernel and modules with Xanmod patches
