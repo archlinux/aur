@@ -1,17 +1,19 @@
 pkgbase = lipl-bin
 	pkgdesc = Analyse the output over time of custom shell commands
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/yxdunc/lipl
 	arch = x86_64
-	license = unknown
+	license = MIT
 	provides = lipl
 	conflicts = lipl
 	conflicts = lipl-git
-	source = https://github.com/yxdunc/lipl/releases/download/v0.1.1/lipl-linux.tar.gz
-	source = lipl-0.1.1-README.md::https://github.com/yxdunc/lipl/raw/v0.1.1/README.md
+	source = https://github.com/yxdunc/lipl/releases/download/v0.1.2/lipl-linux.tar.gz
+	source = lipl-0.1.2-LICENSE::https://github.com/yxdunc/lipl/raw/v0.1.2/LICENSE
+	source = lipl-0.1.2-README.md::https://github.com/yxdunc/lipl/raw/v0.1.2/README.md
 	sha512sums = bf9d64e49f0bf77d1f6daf7fe68538e45a19e528dd18caf11898dd66b94f5a070e65e5bfd474349e04d8d4a4684507a61b2340eb890ae78afcc5be09fdaf88d6
-	sha512sums = 70bc26aef6a68871a7ef855ac5cc018ecd42aad6f8b84f04d1964fd87b0b3463c881064f15b20c8066e02f98ddaf94c1709558cb9d508189d8ccbad3dce8eb14
+	sha512sums = 845ea50d8249e25f4b7267716ed84cb87240aed6e81f56cd63607b84b9eca360ce3230be761621451644a5e3118d5624fb887f09c01428f34fca093c6adbec6f
+	sha512sums = b88dda9425d154ea25701eadcc4f07abf0d98b7a1ab2204d32ce3e6e6beac4bed6a0210fe6f5a2d38e5de8060a8000f96a445242a556ade4ab29191a62db82cd
 
 pkgname = lipl-bin
 
