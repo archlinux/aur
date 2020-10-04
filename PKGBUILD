@@ -1,20 +1,20 @@
-# Maintainer: nl6720 <nl6720@gmail.com>
+# Maintainer: nl6720 <nl6720@archlinux.org>
 # Contributor: David Runge <dave@sleepmap.de>
 
 pkgname=apparmor-git
-pkgver=2.13.r676.g1567ea6f
+pkgver=3.0.0.r5.ge6e54dc9
 pkgrel=1
 pkgdesc='Mandatory Access Control (MAC) using Linux Security Module (LSM)'
 arch=('x86_64')
 url='https://gitlab.com/apparmor/apparmor'
 license=('GPL')
-depends=('audit' 'bash' 'pam' 'python')
+depends=('audit' 'bash' 'glibc' 'libcrypt.so' 'pam' 'python')
 makedepends=('git' 'apache' 'swig' 'perl' 'ruby')
 checkdepends=('dejagnu' 'perl-locale-gettext' 'python-pyflakes' 'python-notify2' 'python-psutil')
-optdepends=('perl: perl bindings'
-            'ruby: ruby bindings'
-            'python-notify2: for the aa-notify tool'
-            'python-psutil: for the aa-notify tool')
+optdepends=('perl: for perl bindings'
+            'python-notify2: for aa-notify'
+            'python-psutil: for aa-notify'
+            'ruby: for ruby bindings')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}" 'libapparmor.so')
 backup=('etc/apparmor/easyprof.conf'
@@ -23,8 +23,10 @@ backup=('etc/apparmor/easyprof.conf'
         'etc/apparmor/parser.conf'
         'etc/apparmor/subdomain.conf'
         'etc/apparmor/severity.db')
-source=('git+https://gitlab.com/apparmor/apparmor.git')
-sha512sums=('SKIP')
+source=('git+https://gitlab.com/apparmor/apparmor.git'
+        'https://gitlab.com/apparmor/apparmor/-/merge_requests/641.patch')
+sha512sums=('SKIP'
+            'a116e2ab2e7d145fec21413cc7d1d4a6c6cd0eb50671130312a5f5969c6a795fe09964d631cafc31f3f3634a175a74f00dd64bbc54ec8f1118051a0d70382ff8')
 # AppArmor Development Team (AppArmor signing key) <apparmor@lists.ubuntu.com>
 validpgpkeys=('3ECDCBA5FB34D254961CC53F6689E64E3D3664BB')
 
@@ -37,6 +39,11 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname%-git}"
+
+	# fix issue with test trying to access /var/log/wtmp
+	# https://gitlab.com/apparmor/apparmor/-/issues/120
+	patch -Np1 -i "../641.patch"
+
 	# fix PYTHONPATH and add LD_LIBRARY_PATH for aa-logprof based check:
 	# https://gitlab.com/apparmor/apparmor/issues/39
 	local _py3_ver=$(python --version | cut -d " " -f2)
@@ -82,7 +89,7 @@ check() {
 	# only running check-parser, as check-logprof (included in check) fails:
 	# https://gitlab.com/apparmor/apparmor/issues/36
 	make -C profiles check-parser
-	make -C utils check
+	make PYFLAKES='pyflakes' -C utils check
 }
 
 package() {
@@ -90,11 +97,11 @@ package() {
 	make -C libraries/libapparmor DESTDIR="${pkgdir}" install
 	make -C changehat/pam_apparmor DESTDIR="${pkgdir}" SECDIR="${pkgdir}/usr/lib/security" install
 	make -C changehat/mod_apparmor DESTDIR="${pkgdir}" install
-	make -C binutils DESTDIR="${pkgdir}" install
+	make -C binutils DESTDIR="${pkgdir}" SBINDIR="${pkgdir}/usr/bin" USR_SBINDIR="${pkgdir}/usr/bin" install
 	make -C parser DESTDIR="${pkgdir}" APPARMOR_BIN_PREFIX="${pkgdir}/usr/lib/apparmor" SBINDIR="${pkgdir}/usr/bin" USR_SBINDIR="${pkgdir}/usr/bin" install
 	make -C parser DESTDIR="${pkgdir}" APPARMOR_BIN_PREFIX="${pkgdir}/usr/lib/apparmor" SBINDIR="${pkgdir}/usr/bin" USR_SBINDIR="${pkgdir}/usr/bin" install-systemd
 	make -C profiles DESTDIR="${pkgdir}" install
-	make -C utils DESTDIR="${pkgdir}" BINDIR="${pkgdir}/usr/bin" VIM_INSTALL_PATH="${pkgdir}/usr/share/vim/vimfiles/syntax" install
+	make -C utils DESTDIR="${pkgdir}" BINDIR="${pkgdir}/usr/bin" SBINDIR="${pkgdir}/usr/bin" USR_SBINDIR="${pkgdir}/usr/bin" VIM_INSTALL_PATH="${pkgdir}/usr/share/vim/vimfiles/syntax" install
 	# removing empty core_perl directory:
 	# https://gitlab.com/apparmor/apparmor/issues/40
 	rm -rv "${pkgdir}/usr/lib/perl5/"*/core_perl
@@ -103,7 +110,7 @@ package() {
 	mv -v "${pkgdir}/usr/lib/ruby/site_ruby/" "${pkgdir}/usr/lib/ruby/vendor_ruby/"
 	# adding files below /etc/apparmor.d to backup array
 	cd "${pkgdir}"
-	# tricking extract_function_variable() in makepkg into not detecting the
+	# trick extract_function_variable() in makepkg into not detecting the
 	# backup array modification and adding remaining configuration files
-	[[ /usr/bin/true ]] && backup=( ${backup[@]} $(find 'etc/apparmor.d/' -type f) )
+	true && backup+=( $(find 'etc/apparmor.d/' -type f) )
 }
