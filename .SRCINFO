@@ -1,7 +1,7 @@
 pkgbase = gdm-plymouth-nox
 	pkgdesc = Display manager and login screen with plymouth support, but without xorg-server
-	pkgver = 3.36.3
-	pkgrel = 3
+	pkgver = 3.38.0
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GDM
 	arch = x86_64
 	license = GPL
@@ -9,20 +9,21 @@ pkgbase = gdm-plymouth-nox
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = docbook-xsl
+	makedepends = yelp-tools
+	makedepends = meson
 	depends = plymouth
 	depends = gnome-shell
 	depends = gnome-session
 	depends = upower
-	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=24a4c0afe337a7a381397c87a39e3a666c0ae6cc
+	depends = systemd
+	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=6fc40ac6aa37c8ad87c32f0b1a5d813d34bf7770
 	source = 0001-Xsession-Don-t-start-ssh-agent-by-default.patch
-	source = 0002-pam-arch-Don-t-check-greeter-account-for-expiry.patch
-	source = 0003-pam-arch-Restrict-greeter-service-to-the-gdm-user.patch
-	source = 0004-pam-arch-Update-to-match-pambase-20200721.1-2.patch
+	source = 0002-pam-arch-Update-to-match-pambase-20200721.1-2.patch
+	source = default.pa
 	sha256sums = SKIP
 	sha256sums = 5a32db412fc5256e16691e8f2db0b460bafbbb2be8eb9b9bcc71b5cd49688f9e
-	sha256sums = e879a982467a62c4c1557067dbdef6b56a774273df1368a60c4b036015111cdd
-	sha256sums = 4648e7b920ccb14d8a87634c3c98d51ff13163ae2fc9fc4a3c2e9ec876515469
-	sha256sums = ba98385cf1de00560f77d75a241b1895567c6b8d4babf230d10ae7fd19739fda
+	sha256sums = 723bf4462ea4eed4193a891e95137687abfeefe6a170ec5822921bffdfc1f412
+	sha256sums = a18ea3a17bf1c52011cb15f500973946625586786ad8f7c7eec1808f80ffd939
 
 pkgname = gdm-plymouth-nox
 	install = gdm.install
@@ -31,6 +32,7 @@ pkgname = gdm-plymouth-nox
 	depends = gnome-shell
 	depends = gnome-session
 	depends = upower
+	depends = systemd
 	depends = libgdm-plymouth-nox
 	optdepends = fprintd: fingerprint authentication
 	provides = gdm
