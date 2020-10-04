@@ -123,11 +123,11 @@ package_dxvk-mingw-proton-ge-async-git() {
 	mkdir -p ${pkgdir}/usr/share/steam/compatibilitytools.d/proton-ge-custom-stable/dist/lib64/wine/dxvk/
 	mkdir -p ${pkgdir}/usr/share/steam/compatibilitytools.d/proton-ge-custom-legacy/dist/lib64/wine/dxvk/
 
-	ln -s ${pkgdir}/usr/share/dxvk/x32/* ${pkgdir}/usr/share/steam/compatibilitytools.d/proton-ge-custom/dist/lib/wine/dxvk/
-	ln -s ${pkgdir}/usr/share/dxvk/x32/* ${pkgdir}/usr/share/steam/compatibilitytools.d/proton-ge-custom-stable/dist/lib/wine/dxvk/
-	ln -s ${pkgdir}/usr/share/dxvk/x32/* ${pkgdir}/usr/share/steam/compatibilitytools.d/proton-ge-custom-legacy/dist/lib/wine/dxvk/
+	cp -r ${pkgdir}/usr/share/dxvk/x32/* ${pkgdir}/usr/share/steam/compatibilitytools.d/proton-ge-custom/dist/lib/wine/dxvk/
+	cp -r ${pkgdir}/usr/share/dxvk/x32/* ${pkgdir}/usr/share/steam/compatibilitytools.d/proton-ge-custom-stable/dist/lib/wine/dxvk/
+	cp -r ${pkgdir}/usr/share/dxvk/x32/* ${pkgdir}/usr/share/steam/compatibilitytools.d/proton-ge-custom-legacy/dist/lib/wine/dxvk/
 
-	ln -s ${pkgdir}/usr/share/dxvk/x64/* ${pkgdir}/usr/share/steam/compatibilitytools.d/proton-ge-custom/dist/lib64/wine/dxvk/
-	ln -s ${pkgdir}/usr/share/dxvk/x64/* ${pkgdir}/usr/share/steam/compatibilitytools.d/proton-ge-custom-stable/dist/lib64/wine/dxvk/
-	ln -s ${pkgdir}/usr/share/dxvk/x64/* ${pkgdir}/usr/share/steam/compatibilitytools.d/proton-ge-custom-legacy/dist/lib64/wine/dxvk/
+	cp -r ${pkgdir}/usr/share/dxvk/x64/* ${pkgdir}/usr/share/steam/compatibilitytools.d/proton-ge-custom/dist/lib64/wine/dxvk/
+	cp -r ${pkgdir}/usr/share/dxvk/x64/* ${pkgdir}/usr/share/steam/compatibilitytools.d/proton-ge-custom-stable/dist/lib64/wine/dxvk/
+	cp -r ${pkgdir}/usr/share/dxvk/x64/* ${pkgdir}/usr/share/steam/compatibilitytools.d/proton-ge-custom-legacy/dist/lib64/wine/dxvk/
 }
