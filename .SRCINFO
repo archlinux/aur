@@ -6,6 +6,7 @@ pkgbase = nanonote
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
+	makedepends = git
 	makedepends = python-jinja
 	makedepends = python-pyaml
 	depends = hicolor-icon-theme

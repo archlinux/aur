@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/agateau/nanonote'
 license=('BSD')
 depends=('hicolor-icon-theme' 'qt5-base')
-makedepends=('cmake' 'python-jinja' 'python-pyaml')
+makedepends=('cmake' 'git' 'python-jinja' 'python-pyaml')
 source=("git+${url}.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
