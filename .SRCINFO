@@ -1,7 +1,7 @@
 pkgbase = nanonote
 	pkgdesc = Minimalist note taking application
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/agateau/nanonote
 	arch = x86_64
 	license = BSD
@@ -12,6 +12,10 @@ pkgbase = nanonote
 	depends = hicolor-icon-theme
 	depends = qt5-base
 	source = git+https://github.com/agateau/nanonote.git#tag=1.3.0
+	source = git+https://github.com/agateau/qpropgen.git
+	source = git+https://github.com/itay-grudev/SingleApplication.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = nanonote

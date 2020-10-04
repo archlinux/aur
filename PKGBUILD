@@ -2,19 +2,26 @@
 
 pkgname='nanonote'
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalist note taking application '
 arch=('x86_64')
 url='https://github.com/agateau/nanonote'
 license=('BSD')
 depends=('hicolor-icon-theme' 'qt5-base')
 makedepends=('cmake' 'git' 'python-jinja' 'python-pyaml')
-source=("git+${url}.git#tag=${pkgver}")
-sha256sums=('SKIP')
+source=("git+${url}.git#tag=${pkgver}"
+        "git+${url%/*}/qpropgen.git"
+        "git+https://github.com/itay-grudev/SingleApplication.git")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
   cd "${pkgname}"
-  git submodule update --init
+  git submodule init
+  git config submodule.qpropgen.url "${srcdir}/qpropgen"
+  git config submodule.singleapplication.url "${srcdir}/SingleApplication"
+  git submodule update
 }
 
 build() {
