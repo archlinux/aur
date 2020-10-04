@@ -3,7 +3,7 @@
 
 pkgname=fmt-git
 pkgver=7.0.3.a581e9e
-pkgrel=2
+pkgrel=3
 pkgdesc='An open-source C++ formatting library providing a fast and safe alternative to C stdio and C++ iostreams'
 url='https://fmt.dev/'
 arch=('x86_64')
@@ -30,7 +30,7 @@ build() {
     -DBUILD_SHARED_LIBS=TRUE \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
-  make
+  make -j$(nproc)
 }
 
 check() {
