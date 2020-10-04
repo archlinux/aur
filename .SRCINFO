@@ -1,0 +1,16 @@
+pkgbase = notify-send-py
+	pkgdesc = A python script for sending desktop notifications from the shell
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/phuhl/notify-send.py
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-notify2
+	depends = python-dbus
+	depends = python-gobject
+	source = https://files.pythonhosted.org/packages/source/n/notify-send.py/notify-send.py-1.2.1.tar.gz
+	sha256sums = ae4573ca4a4071cd38dfc97b13a18a48124cdf9f23cd6b347bbd23284de31260
+
+pkgname = notify-send-py
+
