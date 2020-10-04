@@ -7,7 +7,7 @@ _svt_vp9_ver='0.2.2'
 
 pkgname=ffmpeg-full
 pkgver=4.3.1
-pkgrel=7
+pkgrel=8
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -20,8 +20,8 @@ depends=(
         'fontconfig' 'freetype2' 'fribidi' 'glslang' 'libgme' 'gsm' 'libiec61883'
         'libilbc' 'jack' 'kvazaar' 'lensfun' 'libmodplug' 'lame' 'opencore-amr'
         'openjpeg2' 'opus' 'pulseaudio' 'librabbitmq-c' 'rav1e' 'librsvg' 'rubberband'
-        'rtmpdump' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc' 'svt-av1'
-        'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
+        'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc'
+        'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
         'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'x264' 'x265'
         'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
         'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
@@ -144,7 +144,7 @@ build() {
         --enable-librubberband \
         --enable-librtmp  \
         --enable-libshine \
-        --disable-libsmbclient \
+        --enable-libsmbclient \
         --enable-libsnappy \
         --enable-libsoxr \
         --enable-libspeex \
