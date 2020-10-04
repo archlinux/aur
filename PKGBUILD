@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-mouseinfo
 _name=MouseInfo
 pkgver=0.1.3
