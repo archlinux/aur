@@ -9,6 +9,7 @@ arch=('x86_64')
 url="https://github.com/nakabonne/ali"
 license=('MIT')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
+provides=("${pkgname%-bin}")
 source=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
 sha256sums=('62e0f01a8a66098c978330da6d3e09d1005eef94c84712dbd18b6f3fd41680de')
 
