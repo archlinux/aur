@@ -10,6 +10,8 @@ pkgbase = bibata-extra-cursor-git
 	makedepends = inkscape
 	makedepends = xorg-xcursorgen
 	makedepends = python-pillow
+	provides = bibata-extra-cursor
+	conflicts = bibata-extra-cursor
 	source = git+https://github.com/KaizIqbal/Bibata_Extra_Cursor.git
 	sha256sums = SKIP
 
