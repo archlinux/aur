@@ -11,6 +11,9 @@
 # Set this to 'true' to enable auto login
 #_autologin='true'
 
+# Set this to 'false' to disable nativ (system) dialogs
+_nativ_dialogs='true'
+
 # Set this to 'true' to enable wiki functionality (experimental)
 #_wiki='true'
 
@@ -28,14 +31,14 @@
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.5.r1153.gdb42c7a97
+pkgver=v0.6.5.r1965.g5006ee139
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://retroshare.cc/'
 license=('GPL' 'LGPL')
 depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libxss' 'libmicrohttpd' 'xapian-core')
-makedepends=('git' 'qt5-tools' 'rapidjson')
+makedepends=('git' 'qt5-tools')
 optdepends=('tor: tor hidden node support'
             'i2p: i2p hidden node support')
 provides=("${_pkgname}")
@@ -52,7 +55,7 @@ _optSql=''
 # Add missing dependencies if needed
 [[ "$_plugin_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
 [[ "$_plugin_feedreader" == 'true' ]] && depends=(${depends[@]} 'curl' 'libxslt')
-[[ "$_jsonapi" == 'true' ]] && depends=(${depends[@]} 'restbed') && makedepends=(${makedepends[@]} 'cmake' 'doxygen')
+[[ "$_jsonapi" == 'true' ]] && depends=(${depends[@]} 'restbed') && makedepends=(${makedepends[@]} 'cmake' 'doxygen' 'rapidjson')
 [[ "$_clang" == 'true' ]] && makedepends=(${makedepends[@]} 'clang')
 [[ "$_autologin" == 'true' ]] && depends=(${depends[@]} 'libsecret')
 
@@ -62,9 +65,11 @@ _optClang=''
 _optAutol=''
 _optPlugin=''
 _optWiki=''
+_optNativDialogs=''
 [[ "$_jsonapi" == 'true' ]] && _optJsonapi='CONFIG+=rs_jsonapi'
-[[ "$_clang" == 'true' ]] && _optClang='-spec linux-clang CONFIG+=c++11'
+[[ "$_clang" == 'true' ]] && _optClang='-spec linux-clang'
 [[ "$_autologin" == 'true' ]] && _optAutol='CONFIG+=rs_autologin'
+[[ "$_nativ_dialogs" == 'true' ]] && _optNativDialogs='CONFIG*=rs_use_native_dialogs'
 ([[ "$_plugin_voip" == 'true' ]] || [[ "$_plugin_feedreader" == 'true' ]] || [[ "$_plugin_lua4rs" == 'true' ]]) && _optPlugin='CONFIG+=retroshare_plugins'
 [[ "$_wiki" == 'true' ]] && _optWiki='CONFIG+=wikipoos'
 
@@ -94,12 +99,13 @@ build() {
 	[[ "$_plugin_voip" != 'true' ]] && sed -i '/VOIP \\/d' plugins/plugins.pro
 	[[ "$_plugin_feedreader" != 'true' ]] && sed -i '/FeedReader/d' plugins/plugins.pro
 
-	rmdir supportlibs/restbed/include || true
-	rmdir /tmp/makepkg/retroshare-git/src/retroshare/supportlibs/cmark/build/src && /tmp/makepkg/retroshare-git/src/retroshare/supportlibs/cmark/build || true
+#	rmdir supportlibs/restbed/include || true
+#	rmdir /tmp/makepkg/retroshare-git/src/retroshare/supportlibs/cmark/build/src && /tmp/makepkg/retroshare-git/src/retroshare/supportlibs/cmark/build || true
 
-	qmake   CONFIG-=debug CONFIG+=release \
+	qmake   CONFIG-=debug CONFIG+=release 'RS_UPNP_LIB=none' \
 		${_optSql} \
 		${_optJsonapi} ${_optAutol} ${_optClang} \
+		${_optNativDialogs} \
 		${_optPlugin} ${_optWiki} \
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
@@ -107,7 +113,8 @@ build() {
 
 	make || true
 	rmdir supportlibs/restbed/include || true
-	make || make
+#	make || make
+	make
 }
 
 package() {
