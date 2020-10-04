@@ -1,4 +1,4 @@
-pkgbase = spx2wav-git
+pkgbase = spx2wav
 	pkgdesc = 微信高清语音 spx 转 wav 解决方案, 基于 speex 和微信官方提供的 declib, 修改了部分错误。
 	pkgver = r5.6322c0e
 	pkgrel = 1
@@ -8,8 +8,8 @@ pkgbase = spx2wav-git
 	makedepends = git
 	depends = speex
 	optdepends = lame: A high quality MPEG Audio Layer III (MP3) encoder
-	source = spx2wav-git::git+https://github.com/baogaitou/spx2wav.git
+	source = spx2wav::git+https://github.com/baogaitou/spx2wav.git
 	sha256sums = SKIP
 
-pkgname = spx2wav-git
+pkgname = spx2wav
 

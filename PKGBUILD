@@ -1,5 +1,5 @@
 # Maintainer: CamuseCao camusecao@gmail.com
-pkgname=spx2wav-git
+pkgname=spx2wav
 pkgver=r5.6322c0e
 pkgrel=1
 pkgdesc="微信高清语音 spx 转 wav 解决方案, 基于 speex 和微信官方提供的 declib, 修改了部分错误。"
@@ -12,7 +12,7 @@ optdepends=('lame: A high quality MPEG Audio Layer III (MP3) encoder')
 conflicts=()
 replaces=()
 backup=()
-source=("$pkgname::git+$url.git")
+source=("${pkgname%-git}::git+$url.git")
 sha256sums=('SKIP')
 pkgver() {
   cd "$pkgname"
@@ -20,11 +20,11 @@ pkgver() {
 }
 
 build() {
-  cd "./$pkgname"
+  cd "$pkgname"
   make
 }
 
 package() {
-  cd "./$pkgname"
-  install -D spx2wav "${pkgdir}"/usr/bin/spx2wav
+  cd "$pkgname"
+  install -D "$pkgname" "${pkgdir}"/usr/bin/"$pkgname"
 }
