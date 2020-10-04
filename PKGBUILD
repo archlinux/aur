@@ -4,13 +4,15 @@
 _pkgname=carps-cups
 pkgname=${_pkgname}-git
 pkgver=r158.18d80d1
-pkgrel=1
+pkgrel=2
 pkgdesc="CUPS driver for Canon CARPS printers"
 arch=('x86_64')
 url="https://github.com/ondrej-zary/carps-cups"
 license=('GPL')
 depends=('libcups')
 makedepends=('git')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=('git://github.com/ondrej-zary/carps-cups.git')
 md5sums=('SKIP')
 
