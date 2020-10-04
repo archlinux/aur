@@ -12,7 +12,7 @@ depends=()
 makedepends=()
 options=()
 install=bombadil.install
-_bombadil_version='1.2.0'
+_bombadil_version='1.11.2'
 source=("$pkgname-$pkgver.tar.gz::${url}/releases/download/${pkgver}/bombadil-${pkgver}-${CARCH}-unknown-linux-musl.tar.gz")
 md5sums=('e44d662c3c52899e1f59a33836d3b593')
 
