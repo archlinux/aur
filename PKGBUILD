@@ -2,7 +2,7 @@
 
 _pkgname=tidal-hifi
 pkgname="$_pkgname-git"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine."
 arch=("x86_64")
@@ -15,7 +15,7 @@ provides=("$_pkgname")
 
 source=("https://github.com/Mastermindzh/tidal-hifi/archive/$pkgver.zip"
         "${_pkgname}.desktop")
-sha512sums=('099c4a7d0700ff0e1ddd464e0bf1417454010b16e4f19dec51be6b47314b53979e467e999bb9f106de75162087535e7cf7492b8c2f4af0fa3d45501d48653f32'
+sha512sums=('ed6127627400cc8d1a614f3084eaed0ee9109cc4be99ad8865a7cd68c45d9bbd7b20404c394930af005320da5cc2221a8818a7cb48d4cccc73991e88320408e5'
             '35f38ac308b871c1822d7f6f760f2fb54c3748cf769822cb0f0dfb90f0f5754ba9316da5e903a0d2e9839de3a43ec76f238f3f2e44021956fa1da19142081349')
 
 cdToPkg(){
@@ -33,7 +33,7 @@ build() {
     cdToPkg
 
     # We are not using the systems Electron as we need castlab's Electron.
-    npx electron-builder --linux dir
+    npm run build-arch
 }
 
 package() {
