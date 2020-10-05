@@ -1,9 +1,8 @@
-# $Id$
-# Maintainer: Gergely Imreh <imrehg@gmail.com>
 # Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Gergely Imreh <imrehg@gmail.com>
 
 pkgname=balena-engine
-pkgver=18.9.13
+pkgver=19.03.11
 pkgrel=1
 epoch=1
 pkgdesc='A Moby-based container engine for the Internet of Things'
