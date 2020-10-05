@@ -1,0 +1,17 @@
+pkgbase = arend
+	pkgdesc = Proof assistant based on Homotopy Type Theory
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://arend-lang.github.io/
+	arch = x86_64
+	license = Apache
+	depends = java-environment
+	provides = arend
+	conflicts = arend
+	source = https://github.com/JetBrains/Arend/archive/v1.4.1.tar.gz
+	source = arend.sh
+	sha512sums = 94f0995ae2b7b0b7560d99a75dd23c3fb9825107aea342f3b82248cce9a0957c8531130335977f7571aca5f492783c7ecbc0a7646e1198ddd3a4082f07436a21
+	sha512sums = 4668958c7d98aa241260b8cf87ce0b6710050c2915ad8cbf24d285adbee0c782320c6ac5f5fe90cb7886dc0386f9d13492e571eb3a63998106bc5c982ec8711a
+
+pkgname = arend
+
