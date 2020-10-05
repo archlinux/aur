@@ -1,7 +1,7 @@
 pkgbase = eprosima-fast-dds-gen
 	pkgdesc = Fast-DDS IDL code generator tool
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eProsima/Fast-DDS-Gen
 	arch = any
 	license = Apache
