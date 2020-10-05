@@ -2,7 +2,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=readr
-_cranver=1.3.1
+_cranver=1.4.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,11 +10,11 @@ pkgdesc="Read Rectangular Text Data"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
-depends=('r>=3.1' 'r-rcpp>=0.12.0.5' r-tibble 'r-hms>=0.4.1' r-r6 r-clipr r-crayon r-bh)
-makedepends=(gcc make)
-optdepends=(r-curl r-testthat r-knitr r-rmarkdown r-stringi r-covr r-spelling)
+depends=('r>=3.1' r-cli r-clipr r-crayon 'r-hms>=0.4.1' r-rlang r-r6 r-tibble r-lifecycle r-bh r-cpp11)
+makedepends=(make)
+optdepends=(r-covr r-curl r-dplyr r-knitr r-rmarkdown r-spelling r-stringi r-testthat r-xml2)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('b41b0e9251c19b1c54c032e1f55be9d0')
+sha256sums=('02b1188aab8b2bc3f3d2bba5b946bd299610e87f3f7660c88b60b444093c46b9')
 
 build() {
   cd "${srcdir}"
