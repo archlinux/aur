@@ -30,6 +30,6 @@ package() {
     install -d "${pkgdir}/usr/bin/"
     install -Dm 644 "Arend-${pkgver}/cli/build/libs/cli-${pkgver}-full.jar" "${pkgdir}/usr/share/${pkgname}/bin/Arend.jar"
     install -Dm 755 arend.sh "${pkgdir}/usr/share/${pkgname}/bin"
-    ln -s "${pkgdir}/usr/share/${pkgname}/bin/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}" 
+    ln -s "/usr/share/${pkgname}/bin/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}" 
 }
 
