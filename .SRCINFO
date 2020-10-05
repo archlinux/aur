@@ -1,6 +1,6 @@
 pkgbase = pokemon-revolution-online-bin
 	pkgdesc = A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games.
-	pkgver = 20201005+0.3.2+0.98.5
+	pkgver = 20201005+0.3.2
 	pkgrel = 1
 	url = https://pokemonrevolution.net
 	install = archlinux.install

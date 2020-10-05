@@ -2,8 +2,7 @@
 
 pkgname=pokemon-revolution-online-bin
 __LIN_DESKTOP_ASSET_VER=0.3.2
-__PROCLIENT_VER=0.98.5
-pkgver=20201005+${__LIN_DESKTOP_ASSET_VER}+${__PROCLIENT_VER}
+pkgver=20201005+${__LIN_DESKTOP_ASSET_VER}
 pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
