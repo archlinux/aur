@@ -1,3 +1,4 @@
+# Maintainer: linuxer <linuxer@artixlinux.org>
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=jackett-runit
