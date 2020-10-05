@@ -6,7 +6,7 @@
 
 pkgname=lutris-git
 _pkgname=lutris
-pkgver=0.5.7.r46.ga8ae60e9
+pkgver=0.5.7.1.r232.g3edfd15b
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -14,7 +14,7 @@ url='https://lutris.net/'
 license=('GPL3')
 depends=('python-gobject' 'python-yaml' 'python-evdev' 'python-dbus' 'gtk3' 'glib2' 'psmisc' 'cabextract' 'unzip' 'p7zip' 'curl' 'xorg-xrandr' 'gnome-desktop' 'python-requests' 'python-pillow' 'mesa-demos' 'python-distro')
 makedepends=('git' 'python-setuptools')
-checkdepends=('xorg-server-xvfb' 'xterm' 'python-nose-cover3' 'wine' 'webkit2gtk')
+checkdepends=('xorg-server-xvfb' 'xterm' 'python-nose-cover3' 'wine' 'webkit2gtk' 'python-magic')
 optdepends=(
   'wine: Run windows games'
   'wine-staging: Run windows games - Staging patches'
@@ -56,5 +56,5 @@ package() {
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   # Temporary fix
-  mkdir -p ${pkgdir}/usr/lib/python3.8/site-packages/lutris/runners/json
+ # mkdir -p ${pkgdir}/usr/lib/python3.8/site-packages/lutris/runners/json
 }
