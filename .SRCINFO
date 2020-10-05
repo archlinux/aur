@@ -1,6 +1,6 @@
 pkgbase = r-htmlwidgets
 	pkgdesc = HTML Widgets for R
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=htmlwidgets
 	arch = any
@@ -9,9 +9,11 @@ pkgbase = r-htmlwidgets
 	depends = r-htmltools>=0.3
 	depends = r-jsonlite>=0.9.16
 	depends = r-yaml
-	optdepends = r-knitr>=1.8
-	source = http://cran.r-project.org/src/contrib/htmlwidgets_1.5.1.tar.gz
-	md5sums = 52d97ed9d87f1ffe908b5926ad3f7b1f
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-shiny
+	source = https://cran.r-project.org/src/contrib/htmlwidgets_1.5.2.tar.gz
+	sha256sums = 650c33635ef93c4a7a36cb834cd0212a63d4eb351cffaff1d88aa24227e5e200
 
 pkgname = r-htmlwidgets
 
