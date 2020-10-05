@@ -94,7 +94,7 @@ build() {
     # Which will break `compiler-rt`
     unset CPPFLAGS
 
-    C_CXX_LAUNCHER="$(which sccache)" SCCACHE_DIR=${srcdir}/sccache python swift/utils/build-script --preset=buildbot_linux,no_test install_prefix="/usr/lib/swift-git" install_destdir="$pkgdir"
+    C_CXX_LAUNCHER="$(which sccache)" SCCACHE_DIR=${srcdir}/sccache python swift/utils/build-script --preset=buildbot_linux,no_test install_prefix="/usr/lib/swift-git" install_destdir="$pkgdir" cmake_c_launcher="$(which sccache)" cmake_cxx_launcher="$(which sccache)"
 }
 
 package() {
