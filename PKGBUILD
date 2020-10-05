@@ -6,10 +6,10 @@
 
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="An email, contacts and calendar server"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('x86_64' 'armv6h' 'armv7h')
 url="https://www.cyrusimap.org/"
 license=('BSD')
 makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
@@ -24,7 +24,7 @@ source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-$
         "cyrus-imapd.sysusers.conf"
         "cyrus-imapd.tmpfiles.conf")
 validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
-sha512sums=('17548b4e2025539ff8c7c23a5e7bbf72c7480f0e1179f50ea3b1eeb2f49d71546752d9946ddf52188215224c34fb17ad401bb6b9345e9eef3449e0b8887a8367'
+sha512sums=('68df1154e48fa8aa0b1c09ab8b9fb6026a77e5473599ef229f6fe99b097a05bd9b923dde756dd5e455bc7db0af1e59d8fd282f42f37d83edd6bdf84da0750425'
             'SKIP'
             '3f4cb6d4383cd41ce168255d5c5123ff2c350d33e293643971e51c4fd04faaab2b08067d77559376cbd60663358f467284097d86bb476eb85312797354bab174'
             '0862ffc8c05208efd4d2fb50a6e3719ebc65fc2d72f8e6404235aa32cc44d8227056a17b78f2726e15ff8e38d473795f837c34bfbe89b694b2298c9baab9d5db'
@@ -123,7 +123,7 @@ package_cyrus-imapd() {
   patch "${pkgdir}/etc/cyrus/imapd.conf" "${srcdir}/imapd.conf.patch"
 
   # Install default directories
-  install -dm750 -o70 -gmail \
+  install -dm750 -o70 -g12 \
     "${pkgdir}/var/lib/cyrus" \
     "${pkgdir}/var/spool/cyrus" \
     "${pkgdir}/var/spool/sieve"
