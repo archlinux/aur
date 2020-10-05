@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=drawbot-skia
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='A tool for the removal of TrueType instruction sets (hints) in fonts'
 arch=(any)
@@ -16,7 +16,7 @@ depends=('python'
          'python-unicodedata2')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('21ad8750e1ec136776844a95a628b5f8f221743c4c0f80ac3bc77b1b67adf0a3')
+sha256sums=('a89519fb7939663aa824ef1b8f10d0f43aa93a32dceca91bcd95d6040a97190b')
 
 build() {
     cd "$pkgname-$pkgver"
