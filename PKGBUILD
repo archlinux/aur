@@ -3,13 +3,13 @@
 
 pkgname=vc4c-git
 pkgver=r709.e3eed1e
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiler for the VC4CL OpenCL-implementation"
 arch=('any')
 url="https://github.com/doe300/VC4C"
 license=('MIT')
 groups=()
-depends=('vc4clstdlib-git' 'clang' 'clinfo' 'ocl-icd')
+depends=('vc4clstdlib-git' 'clang' 'clinfo')
 makedepends=('wget' 'gcc' 'cmake' 'llvm' 'opencl-headers')
 optdepends=()
 provides=('vc4c' 'vc4-compiler' 'opencl-compiler')
