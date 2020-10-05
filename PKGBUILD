@@ -2,7 +2,7 @@
 
 pkgname=vc4clstdlib-git
 pkgver=r66.0ad47e3
-pkgrel=2
+pkgrel=3
 pkgdesc="VC4CL implementation of the OpenCL standard-library and is required to build the VC4C compiler"
 arch=('any')
 url="https://github.com/doe300/VC4CLStdLib"
@@ -11,7 +11,7 @@ groups=()
 depends=()
 makedepends=('git' 'make')
 optdepends=()
-provides=('vc4clstdlib' 'vc4-libraries')
+provides=('vc4clstdlib' 'vc4-libraries' 'khronos-ocl-icd')
 source=("VC4CLStdLib::git+https://github.com/doe300/VC4CLStdLib")
 md5sums=('SKIP')
 
