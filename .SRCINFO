@@ -1,7 +1,7 @@
 pkgbase = arend
 	pkgdesc = Proof assistant based on Homotopy Type Theory
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://arend-lang.github.io/
 	arch = x86_64
 	license = Apache

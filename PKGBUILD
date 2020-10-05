@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Nisht <zeron DOT n1 AT yandex DOT ru>
 pkgname=arend
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Proof assistant based on Homotopy Type Theory"
 arch=(x86_64)
 url="https://arend-lang.github.io/"
