@@ -1,0 +1,23 @@
+pkgbase = python2-pycurl-motioneye
+	pkgver = 7.43.0.4
+	pkgrel = 1
+	url = http://pycurl.sourceforge.net/
+	arch = x86_64
+	license = LGPL
+	license = MIT
+	checkdepends = python2-bottle
+	checkdepends = python2-nose-show-skipped
+	checkdepends = vsftpd
+	checkdepends = python2-flaky
+	checkdepends = python2-pyflakes
+	makedepends = python2
+	makedepends = curl
+	conflicts = python2-pycurl
+	source = python2-pycurl-motioneye-7.43.0.4.tar.gz::https://github.com/pycurl/pycurl/archive/REL_7_43_0_4.tar.gz
+	sha512sums = 0dbc42ee43534634b604536b5f8598be78d4b16f840fc3ef26e68674bce265707d3d0183bdfd37252979920abebe25d772acb028408d7dedcaf3f7469e2684fe
+
+pkgname = python2-pycurl-motioneye
+	pkgdesc = A Python 2.x interface to libcurl
+	depends = python2
+	depends = curl
+
