@@ -4,7 +4,7 @@
 pkgname=shy-git
 pkgver=0.1.8.r2.g1e5c772
 pkgrel=1
-pkgdesc="Bare-bones SSH launcher"
+pkgdesc="Bare-bones SSH launcher (git)"
 arch=('x86_64')
 url="https://github.com/xvxx/shy"
 license=('MIT')
