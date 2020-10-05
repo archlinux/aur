@@ -7,7 +7,7 @@ pkgver() {
   cd "${pkgname%-git}"
   printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r842.g93c7729
+pkgver=r844.g2269519
 pkgrel=1
 
 pkgdesc='Simple interface to auto-configure neomutt and isync with safe passwords'
@@ -36,18 +36,9 @@ optdepends=('imagemagick: view images inside of the neomutt TUI'
 options=('zipman')
 
 install="${pkgname%-git}.install"
-source=("git+$url"
-        "https://patch-diff.githubusercontent.com/raw/LukeSmithxyz/${pkgname%-git}/pull/536.diff")
-sha256sums=('SKIP'
-            '72f1270a5fca02a16dceba6825d2a769dbaecd68df819c089951481a912a7140')
+source=("git+$url")
+sha256sums=('SKIP')
 
-
-prepare() {
-  cd "${pkgname%-git}"
-  # temporary fix for the `notmuch` macro, until #536 is merged upstream
-  if grep -q read\ x "share/${pkgname%-git}.muttrc"; then
-    patch -Np1 -i ../536.diff; fi
-}
 
 package() {
   cd "${pkgname%-git}"
