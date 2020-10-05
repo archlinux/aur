@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=vivaldi-snapshot-ffmpeg-codecs
-pkgver=85.0.4183.102
+pkgver=86.0.4240.55
 _vivaldi_major_version=3.4
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for vivaldi"
@@ -18,7 +18,7 @@ options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('acd6f0a7b74018098752b6598e09a2bd6d1c9f1120c39a5c6cd3d924c466be92b854f3c7f91693ba9506e47b173ef12c14427f998362524b2497fbe5587a6b6c')
+sha512sums=('770e579f33e0292f90bd10ed73ba1a31449ca69db42c8ec53392df2db64796474b5b7778e0e035404778aabb92f1144f4394417d722e2477e9e4b4db389edfaa')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -40,6 +40,10 @@ build() {
 
   # ui/gfx/x/gen_xproto.py needs xcbgen
   export PYTHONPATH=$srcdir
+
+  # error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory
+  ln -s /usr/lib/libtinfo.so.6 \
+    third_party/llvm-build/Release+Asserts/lib/libtinfo.so.5
 
   export CC="clang"
   export CXX="clang++"
