@@ -1,13 +1,13 @@
 # Maintainer: Mees Luten <mees [dot] luten [at] gmail [dot] com>
 pkgname=x-band-decoders-git
-pkgver=r31.62e592d
+pkgver=r52.f8d2295
 pkgrel=1
 pkgdesc="A project aimed at decoding various X-Band satellites"
 arch=('x86_64')
 url="https://github.com/altillimity/X-Band-Decoders"
 license=('GPLv3')
-depends=()
-makedepends=('libfec-git' 'libcorrect-git' 'git')
+depends=(libaec)
+makedepends=('libfec-git' 'libcorrect-git' 'git' 'libccsds-git')
 provides=()
 conflicts=()
 replaces=()
@@ -41,4 +41,5 @@ package() {
 	install -Dm755 FengYun\ MPT\ Decoder/FengYun-MPT-Decoder "${pkgdir}"/usr/bin/FengYun-MPT-Decoder
 	install -Dm755 FengYun\ MERSI-2\ Decoder/FengYun-MERSI-2-Decoder "${pkgdir}"/usr/bin/FengYun-MERSI-2-Decoder
 	install -Dm755 FengYun\ MERSI-1\ Decoder/FengYun-MERSI-1-Decoder "${pkgdir}"/usr/bin/FengYun-MERSI-1-Decoder
+	install -Dm755 MODIS\ Decoder/MODIS-Decoder "${pkgdir}"/usr/bin/MODIS-Decoder
 }
