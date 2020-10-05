@@ -1,0 +1,23 @@
+pkgbase = evolution-etesync-legacy
+	pkgdesc = EteSync (end-to-end encrypted sync) plugin for Evolution - legacy (EteSync 1.0)
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/evolution-etesync/
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	makedepends = git
+	makedepends = intltool
+	depends = libgee
+	depends = json-glib
+	depends = evolution-data-server
+	depends = evolution
+	depends = etesync
+	source = evolution-etesync::git+https://gitlab.gnome.org/GNOME/evolution-etesync.git?tag=v0.5.1
+	sha512sums = SKIP
+
+pkgname = evolution-etesync-legacy
+
