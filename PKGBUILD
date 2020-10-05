@@ -3,7 +3,7 @@
 
 pkgname=motioneye
 pkgver=0.42.1
-pkgrel=2
+pkgrel=3
 pkgdesc="web-based user interface for motion"
 arch=(any)
 url="https://github.com/ccrisan/motioneye/"
@@ -17,7 +17,7 @@ depends=('motion>3'
          'python2-tornado'
 	 'python2-futures'
          'python2-jinja'
-         'python2-pycurl'
+         'python2-pycurl-motioneye'
 	 'python2-pytz'	
          'python2-pillow'
 	 'mime-types')
