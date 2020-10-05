@@ -10,10 +10,10 @@ url="https://github.com/xvxx/shy"
 license=('MIT')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 provides=("${pkgname%-bin}")
-source=("$url/releases/download/v$pkgver/${pkgname%-bin}-v${pkgver}-linux-x86_64.tgz"
+source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}-v${pkgver}-linux-x86_64.tgz"
         "${pkgname%-bin}-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE"
         "${pkgname%-bin}-$pkgver-README.md::$url/raw/v$pkgver/README.md")
-sha512sums=('caed7f4f97aa1a1c34ce5b378ead2254fd26156f01b7caba011e64a6fb83940d047ff709d9faa9cbd68d39d7a609d67e063ed34ccab58bb87002c814803a4236'
+sha512sums_x86_64=('caed7f4f97aa1a1c34ce5b378ead2254fd26156f01b7caba011e64a6fb83940d047ff709d9faa9cbd68d39d7a609d67e063ed34ccab58bb87002c814803a4236'
             '35dfcd7980f4de2dfafd4ce335ad70f6a058dbcbdc57f91c85684676c19750daec61ecbec567d03cdd1ca5ee37477b49a23ebdea6c1ba48fc7c4d32800a00033'
             'SKIP')
 
