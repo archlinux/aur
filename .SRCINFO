@@ -1,7 +1,7 @@
 pkgbase = pipewire-gstfree
 	pkgdesc = Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies
 	pkgver = 0.3.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pipewire.org
 	arch = x86_64
 	license = LGPL2.1
@@ -32,6 +32,7 @@ pkgname = pipewire-gstfree
 	depends = vulkan-icd-loader
 	depends = bluez-libs
 	depends = ffmpeg
+	depends = alsa-card-profiles
 	depends = libdbus-1.so
 	depends = libsndfile.so
 	depends = libudev.so
