@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.20.1.r32.ga87537d4
+pkgver=1.20.1.r88.gc70b3e04
 pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
@@ -102,7 +102,7 @@ package() {
 	cd src/
 
 	# iPXE kernel bzImage
-	install -D -m0644 bin/ipxe.lkrn ${pkgdir}/boot/ipxe/ipxe.lkrn
+	install -D -m0644 bin/ipxe.lkrn ${pkgdir}/usr/lib/ipxe/ipxe.lkrn
 
 	# default targets, legacy and EFI ISO
 	install -D -m0644 bin/ipxe.dsk ${pkgdir}/usr/share/ipxe/ipxe.dsk

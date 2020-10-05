@@ -1,3 +1,14 @@
+#!/bin/sh
+
+post_upgrade() {
+	mkdir -p /boot/ipxe/
+	cp /usr/lib/ipxe/ipxe.lkrn /boot/ipxe/ipxe.lkrn
+
+	if [ -x /usr/sbin/grub-mkconfig ] && [ -s /boot/grub/grub.cfg ]; then
+		echo " > You should run grub-mkconfig now."
+	fi
+}
+
 post_install() {
 	# This text is taken from Makefile
 cat <<EOF
@@ -19,8 +30,11 @@ cat <<EOF
  > can build more customised images, and ROM images, using
  >     make bin/<rom-name>.<output-format>
 EOF
-	if [ -x /usr/sbin/grub-mkconfig ] && [ -s /boot/grub/grub.cfg ]; then
-		echo " >"
-		echo " > You should run grub-mkconfig now."
-	fi
+
+	post_upgrade
+}
+
+post_remove() {
+	rm -f /boot/ipxe/ipxe.lkrn
+	rmdir /boot/ipxe/
 }
