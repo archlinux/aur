@@ -1,15 +1,16 @@
 # Maintainer: satcom886 <rostik.medved@gmail.com>
-# Contributor: telsch
+# Contributor: bronze <jlbakker@gmail.com>
+# Contributor: telsch <telsch@gmx.de>
 
 pkgname=vc4cl-git
 pkgver=r175.76edc68
-pkgrel=2
+pkgrel=3
 pkgdesc="VC4CL is an implementation of the OpenCL 1.2 standard for the VideoCore IV GPU."
 arch=('any')
 url="https://github.com/doe300/VC4CL"
 license=('MIT')
 groups=()
-depends=('clang' 'clinfo' 'vc4c-git')
+depends=('vc4c-git')
 makedepends=('make' 'git' 'gcc' 'cmake' 'llvm' 'opencl-headers' 'pkg-config')
 optdepends=()
 provides=('opencl-pi' 'opencl-vc4' 'opencl-driver' 'vc4-opencl' 'vc4cl')
