@@ -2,7 +2,7 @@
 
 pkgbase=linux-g14
 pkgver=5.8.12.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/"
@@ -41,8 +41,7 @@ sha256sums=('SKIP'
             'edf23d81eb39f38e106c6ce172600cc06d7d155a4ef578c3c94344a45a8a7858'
             'a7b045dc36aea9b3203a4910da3f3314121672e940d7bd8a8cf0126d913e0fe3'
             '8ef9f603fa838cda5eec84da18f00b81f5acde9b3705717cbc4b0e7ee2e2fe8d'
-            'ac09472e9bcd5604666590b798b9194d446f79fa718ea67889173498676e99c3'
-            'd2b60458875f5be280ee755276b3702c4657baaab82850d53a64faf5814d538a'
+            'dc2fad922a2e557e38f63dcaeefe7cd1ba1094699f44968cc916788ba14848a3'
             '7063af2e6588575ee4fd20d2339850221595acd3da5d8912e6298aea57186887'
             'e92f713d50425be96f118a7a3b9f62787453341a27ff10ac5ba394de060ccef7')
 
