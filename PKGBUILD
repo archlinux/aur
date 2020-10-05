@@ -2,7 +2,7 @@
 
 _pkgsrcname=fluentui-system-icons
 _pkgmaintainer=microsoft
-pkgver=1.1.64
+pkgver=1.1.65
 pkgrel=1
 pkgdesc="A collection of familiar, friendly and modern icons from Microsoft."
 pkgname=ttf-fluentui-system-icons
@@ -10,7 +10,7 @@ arch=(any)
 url="https://github.com/microsoft/fluentui-system-icons"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/${pkgver}.tar.gz")
-md5sums=('c9686b98b6ae9e8f385498db06ebe031')
+md5sums=('018414ac194cc20599c9d6eed7e1ec33')
 
 package() {
   cd "${srcdir}/${_pkgsrcname}-${pkgver}/"
