@@ -10,25 +10,25 @@ depends=('mingw-w64-openssl')
 optdepends=('mingw-w64-wine: runtime support')
 makedepends=('mingw-w64-tools' 'mingw-w64-binutils')
 options=('staticlibs' '!buildflags' '!strip')
-source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}rc2-embed-win32.zip"
-        "https://www.python.org/ftp/python/${pkgver}/python-${pkgver}rc2-embed-amd64.zip"
-        "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}rc2.tgz"
+source=("https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-win32.zip"
+        "https://www.python.org/ftp/python/${pkgver}/python-${pkgver}-embed-amd64.zip"
+        "https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tgz"
         wine-python.sh)
-noextract=("python-${pkgver}rc2-embed-win32.zip"
-           "python-${pkgver}rc2-embed-amd64.zip")
-sha256sums=('68a1acb76fa390cda48236a466ed7ff93913227eda320943898b90e95610e9c7'
-            '670243acf57063ad11004a5427a1c0e6632a5cc1cb89607dc4552ec3c8d1aa67'
-            'f49fcaef992d908995afcda93d150c77bd452af4fe8c23ac1b92843fda0b6fb2'
+noextract=("python-${pkgver}-embed-win32.zip"
+           "python-${pkgver}-embed-amd64.zip")
+sha256sums=('4900f2296c5eb4da0075305ffece434522668173079cc09a37e6569a8377bb23'
+            'a96fba43060e5c39f98376ae201283b07d20aa1c0532940c9f02c855a7ec13a3'
+            'df796b2dc8ef085edae2597a41c1c0a63625ebd92487adaef2fed22b567873e8'
             '86e768f17994ce586d646b4ace95f819943dfe6a0fb1afa40de4188e975d5db8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
-  cd "${srcdir}/Python-${pkgver}rc2"
+  cd "${srcdir}/Python-${pkgver}"
 }
 
 build() {
-  cd "${srcdir}/Python-${pkgver}rc2"
+  cd "${srcdir}/Python-${pkgver}"
   for _arch in ${_architectures}; do
     target="win32"
     if test "${_arch}" = x86_64-w64-mingw32
@@ -46,7 +46,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/Python-${pkgver}rc2/build-${_arch}"
+    cd "${srcdir}/Python-${pkgver}/build-${_arch}"
     install -d "$pkgdir"/usr/${_arch}/lib
     install -m644 libpython${_pybasever}*.a "$pkgdir"/usr/${_arch}/lib
     install -d "$pkgdir"/usr/${_arch}/bin
