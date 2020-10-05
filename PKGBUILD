@@ -7,8 +7,8 @@ pkgrel=1
 pkgdesc="A password manager for the GNOME desktop"
 arch=('x86_64')
 license=('GPL')
-makedepends=('meson')
-depends=('gobject-introspection' 'gtk3' 'libpwquality' 'python-gobject' 'python-pycryptodomex')
+makedepends=('gobject-introspection' 'meson')
+depends=('gtk3' 'libpwquality' 'python-gobject' 'python-pycryptodomex')
 url="http://revelation.olasagasti.info/"
 source=("https://github.com/mikelolasagasti/revelation/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.xz"
         'mime-icon-path.patch')
