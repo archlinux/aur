@@ -1,6 +1,6 @@
 pkgbase = python-ray
 	pkgdesc = A fast and simple framework for building and running distributed applications.
-	pkgver = 0.8.7
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://ray.io
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = python-ray
 	depends = psmisc
 	depends = python
 	depends = python-aiohttp
+	depends = python-aiohttp-cors
 	depends = python-aioredis
 	depends = python-click
 	depends = python-colorama
@@ -34,7 +35,8 @@ pkgbase = python-ray
 	depends = python-prometheus-client
 	optdepends = uvicorn: for ray[serve] module
 	optdepends = python-flask: for ray[serve] module
-	optdepends = python-blist: for ray[serve] module
+	optdepends = python-pydantic: for ray[serve] module
+	optdepends = python-dataclasses: for ray[serve] and ray[tune] and ray[rllib] module
 	optdepends = python-tabulate: for ray[tune] and ray[rllib] module
 	optdepends = python-tensorboardx: for ray[tune] and ray[rllib] module
 	optdepends = python-pandas: for ray[tune] and ray[rllib] module
@@ -45,8 +47,8 @@ pkgbase = python-ray
 	optdepends = opencv: for ray[rllib] module
 	optdepends = python-pyaml: for ray[rllib] module
 	optdepends = python-scipy: for ray[rllib] module
-	source = python-ray-0.8.7.tar.gz::https://github.com/ray-project/ray/archive/ray-0.8.7.tar.gz
-	sha256sums = 2df328f1bcd3eeb4fa33119142ea0d669396f4ab2a3e78db90178757aa61534b
+	source = python-ray-1.0.0.tar.gz::https://github.com/ray-project/ray/archive/ray-1.0.0.tar.gz
+	sha256sums = 53aa83f6cc020a84d56192d4f4678e192a58ce33f12c5996343949d28780a788
 
 pkgname = python-ray
 
