@@ -1,6 +1,6 @@
 # Maintainer: Maxime "M4x1m3" FRIESS <M4x1me at protonmail dot com>
 pkgname=gedit-plugin-discord-rpc
-pkgver=3.ffc4fff
+pkgver=4.72dca08
 pkgrel=1
 pkgdesc="A Discord RPC plugin for gedit."
 arch=('any')
