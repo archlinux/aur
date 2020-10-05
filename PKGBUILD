@@ -1,6 +1,6 @@
 pkgname=robwork
-pkgver=1.1.11
-pkgrel=8
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="A collection of C++ libraries for simulation and control of robot systems"
 arch=('x86_64')
 url='http://www.robwork.org'
@@ -13,7 +13,7 @@ optdepends=('lua')
 source=("debian-pkg.tar.gz::https://nextcloud.sdu.dk/index.php/s/C9amCp9f2e5jNw7/download"
 				"0001-fix-install-dir.patch")
 
-sha256sums=('f1f6f91c5a7a56f9b62ab6d6952436127c481441ff2810424030db7a6da9ae8c'
+sha256sums=('cd90e6513abe8d87526b283e95952a0db653988e2b97b35d7cd8111cd9391d39'
 	'b36296131f82489d415d34134bb09063c329ccd45243e366ba6151771543a321')
 
 prepare() {
