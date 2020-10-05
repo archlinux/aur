@@ -2,7 +2,7 @@
 
 pkgname=haskell-language-server-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Integration point for ghcide and haskell-ide-engine. One IDE to rule them all."
 arch=('x86_64')
 url="https://github.com/haskell/${pkgname%-bin}"
@@ -23,17 +23,17 @@ _prefix="${pkgname%-bin}-Linux"
 _ghc_versions=('8.6.4' '8.6.5' '8.8.2' '8.8.3' '8.8.4' '8.10.1' '8.10.2')
 
 for ver in ${_ghc_versions[@]}; do
-  source+=("${_prefix}-${ver}.gz::${url}/releases/download/${pkgver}/${_prefix}-${ver}.gz")
+  source+=("${_prefix}-${ver}-${pkgver}.gz::${url}/releases/download/${pkgver}/${_prefix}-${ver}.gz")
 done
 
 # Wrapper is independent from ghc version
-source+=("${pkgname%-bin}-wrapper-Linux.gz::${url}/releases/download/${pkgver}/${pkgname%-bin}-wrapper-Linux.gz")
+source+=("${pkgname%-bin}-wrapper-Linux-${pkgver}.gz::${url}/releases/download/${pkgver}/${pkgname%-bin}-wrapper-Linux.gz")
 
 package() {
   cd "${srcdir}"
   for ver in ${_ghc_versions[@]}; do
-    install -Dm755 "${_prefix}-${ver}" "${pkgdir}/usr/bin/"${pkgname%-bin}-${ver}""
+    install -Dm755 "${_prefix}-${ver}-${pkgver}" "${pkgdir}/usr/bin/"${pkgname%-bin}-${ver}""
   done
-  install -Dm755 "${pkgname%-bin}-wrapper-Linux" "${pkgdir}/usr/bin/${pkgname%-bin}-wrapper"
+  install -Dm755 "${pkgname%-bin}-wrapper-Linux-${pkgver}" "${pkgdir}/usr/bin/${pkgname%-bin}-wrapper"
 }
  
