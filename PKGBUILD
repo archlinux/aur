@@ -1,24 +1,25 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
+# Maintainer: Ossama Hjaji <ossama-hjaji@live.fr>
 pkgname=onefetch
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Git repository summary on your terminal"
 url="https://github.com/o2sh/onefetch"
 license=('MIT')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('gcc-libs' 'zlib')
+depends=('libgit2')
 makedepends=('cargo')
-source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6091a0411a4278cd2de9f78d451188440c084ed944a48451adb77bc7d2e0d54f')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('ea7b2c0a3742a110a60528df7fb05647ea87d41fe22de1de3be61d310486ae0d')
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --all-features
+  cargo build --release --all-features --locked
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --release
+  cargo test --release --locked
 }
 
 package() {
