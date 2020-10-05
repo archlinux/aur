@@ -1,8 +1,8 @@
 # Maintainer: Ruslan Bekenev <furyinbox at gmail dot com>
 pkgname=todoist-electron
 _pkgname=Todoist
-pkgver=1.23.0
-rlsver=1.23.0
+pkgver=1.24.0
+rlsver=1.24.0
 pkgrel=4
 pkgdesc="Electron wrapper for todoist web client."
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'l
 options=('!strip' '!emptydirs')
 install=${_pkgname}.install
 source=("https://github.com/KryDos/todoist-linux/releases/download/$rlsver/$_pkgname-$pkgver.pacman")
-sha256sums=('316F69F76711EE91104E5B219E0673467C74D00EC96AEBDB0932AAD4A61098CA')
+sha256sums=('fe272d4ebc70cb018dfc77aa05a76d0367df29a8508492393d92b94e13a14680')
 
 package() {
 	# copy binaries to fakeroot
