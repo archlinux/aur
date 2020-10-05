@@ -2,15 +2,15 @@
 
 pkgname=fcitx5-skin-arc
 _pkgname=fcitx5-arc-theme
-pkgver=0.0.0.20201002
-_commit=e759f97590e02f307e402bdba68849f943558218
+pkgver=0.0.0.20201005
+_commit=5d2a3981304499e81131730577cbf22f881d7919
 pkgrel=1
 pkgdesc="A fcitx5 theme imitates the famous Arc theme"
 arch=('any')
 url="https://github.com/Kienyew/fcitx5-arc-theme"
 license=('MIT')
 source=("https://github.com/Kienyew/fcitx5-arc-theme/archive/$_commit/$_pkgname-$_commit.tar.gz")
-md5sums=('f9e3f4ac9ea621dafbbae3ff16a9aada')
+md5sums=('3e61fcd7379de96615d0601ac43b2aef')
 
 package() {
     cd $_pkgname-$_commit
