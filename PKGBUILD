@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-log-dispatch
-pkgver=2.68
+pkgver=2.70
 pkgrel=1
 pkgdesc="Dispatches messages to one or more outputs"
 arch=('any')
@@ -15,8 +15,8 @@ checkdepends=('perl-test-fatal' 'perl-test-needs' 'perl-specio' 'perl-namespace-
               'perl-eval-closure' 'perl-params-validationcompiler')
 url='https://metacpan.org/release/Log-Dispatch'
 source=("http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/Log-Dispatch-${pkgver}.tar.gz")
-md5sums=('c273198cd4ffee4bf51b398a45e785ba')
-sha512sums=('7efc68b7519a3f5cf354cd94d6e4edc6f6955fbae8e7f23da99136c90a29b05e933460157cb5a5d08b10f0ec2b2643a4fe8e10b6aed155b02c4885e77c0d7e92')
+md5sums=('3369ffd45dc098ef6c74622ceee7ad74')
+sha512sums=('c4c8cfb9e74b3176d5f95e3f9fbc86303321caa3e608a7ec318786ecd80d2238fd06a3b74ded65d5d3fab5c3a1297f99c92c62b1136b27d3b5396fd3fca602f6')
 _distdir="Log-Dispatch-${pkgver}"
 
 build() {
