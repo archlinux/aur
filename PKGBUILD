@@ -1,17 +1,20 @@
 # Maintainer: Alfredo Luque <me@aluque.io>
 # Maintainer: Paul Mourer <paul.mourer@gmail.com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
-pkgname='chrysalis'
-pkgdesc="A graphical configuration tool for programmable keyboards. Prebuilt AppImage Releases"
+pkgname=chrysalis-bin
+pkgdesc="Graphical configurator for Kaleidoscope-powered keyboards (AppImage)"
 pkgver=0.7.9
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/keyboardio/Chrysalis'
 license=('GPL3')
 depends=('fuse2')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 options=('!strip')
-source=("https://github.com/keyboardio/Chrysalis/releases/download/$pkgname-$pkgver/Chrysalis-$pkgver.AppImage")
-sha512sums=('62a57c37783151f77a0a4b6ff02b90420df36483e7a1f7a8d761cc0ebdf37bfdf738755b187f8e3f3969f5b981e0fd136dde55e80a850372168d391d9b4b2371')
+source=("$url/releases/download/${pkgname%-bin}-$pkgver/Chrysalis-$pkgver.AppImage")
+sha256sums=('f10f9b69897405bec7370908d9d0aac8fbe341d2cadd89d8edfb3adecede848b')
 
 package() {
     mkdir -p "$pkgdir/usr/bin"
