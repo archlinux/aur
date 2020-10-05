@@ -2,7 +2,7 @@
 # pkg: pypi notify-send.py
 pkgname=notify-send-py
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A python script for sending desktop notifications from the shell"
 
 arch=(any)
@@ -24,4 +24,5 @@ package()
 {
     cd "$srcdir/${pkgname%-*}.${pkgname##*-}-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
