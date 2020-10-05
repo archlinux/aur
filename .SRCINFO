@@ -1,14 +1,14 @@
 pkgbase = page-generator
 	pkgdesc = Python Automatic GUI Generator
-	pkgver = 5.3
+	pkgver = 5.4
 	pkgrel = 1
 	url = http://page.sourceforge.net/
 	arch = x86_64
 	license = GPL
 	depends = tk
 	depends = python
-	source = https://jaist.dl.sourceforge.net/project/page/page/5.3/page-5.3.tgz
-	sha256sums = de5bd2cc16f0c28873c8d00ca74c6bcaed40eee1097f97255a1d20286158bcd4
+	source = https://jaist.dl.sourceforge.net/project/page/page/5.4/page-5.4.tgz
+	sha256sums = 4de02c36f317847a839343533794bb6a22c50b01b4d0026cea5b9702b9383229
 
 pkgname = page-generator
 
