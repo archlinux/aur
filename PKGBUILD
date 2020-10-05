@@ -3,17 +3,19 @@
 _pyname=graphqlmap
 pkgname=graphqlmap-git
 pkgver=r44.87b5626
-pkgrel=2
+pkgrel=3
 pkgdesc="scripting engine to interact with a GraphQL endpoint for pentesting purposes"
 arch=('any')
 url="https://github.com/swisskyrepo/GraphQLmap"
 license=('MIT')
 depends=(
-  'git'
   'python'
   'python-setuptools'
   'python-argparse'
   'python-requests'
+)
+makedepends=(
+  'git'
 )
 provides=("$_pyname")
 conflicts=(graphqlmap)
