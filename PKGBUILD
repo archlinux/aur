@@ -1,9 +1,10 @@
 # Maintainer: satcom886 <rostik.medved@gmail.com>
-# Contributor: telsch
+# Contributor: bronze <jlbakker@gmail.com>
+# Contributor: telsch <telsch@gmx.de>
 
 pkgname=vc4c-git
 pkgver=r709.e3eed1e
-pkgrel=2
+pkgrel=3
 pkgdesc="Compiler for the VC4CL OpenCL-implementation"
 arch=('any')
 url="https://github.com/doe300/VC4C"
