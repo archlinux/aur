@@ -1,7 +1,7 @@
 pkgbase = qlstatus
-	pkgdesc = A stream generator of system statistics for spectrwm status bar
-	pkgver = 1.01
-	pkgrel = 2
+	pkgdesc = A stream generator of system statistics for tiling window managers status bar
+	pkgver = 1.0.2
+	pkgrel = 3
 	url = https://github.com/qlem/qlstatus
 	arch = x86_64
 	license = MIT
@@ -12,8 +12,8 @@ pkgbase = qlstatus
 	depends = libpulse
 	depends = libnl
 	depends = libnotify
-	source = qlstatus-1.01.tar.gz::https://github.com/qlem/qlstatus/archive/v1.01.tar.gz
-	md5sums = 3ba29b96a22e23337e237f15d9b3193e
+	source = qlstatus-1.0.2.tar.gz::https://github.com/qlem/qlstatus/archive/v1.0.2.tar.gz
+	md5sums = 9effef4705a48616b6af1be5edb3135d
 
 pkgname = qlstatus
 
