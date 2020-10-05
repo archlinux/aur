@@ -1,0 +1,11 @@
+pkgbase = d3d8to9
+	pkgdesc = direct3d wrapper
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/crosire/d3d8to9
+	arch = x86_64
+	source = https://github.com/crosire/d3d8to9/releases/download/v1.11.0/d3d8.dll
+	sha256sums = SKIP
+
+pkgname = d3d8to9
+
