@@ -1,6 +1,6 @@
 pkgbase = dolphin-emu-beta-git
 	pkgdesc = A GameCube / Wii / Triforce emulator - monhtly beta release
-	pkgver = 5.0.r12247.9c12a843f8
+	pkgver = 5.0.r12716.31524288e3
 	pkgrel = 1
 	url = http://www.dolphin-emu.org/
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = dolphin-emu-beta-git
 	depends = libxxhash.so
 	optdepends = pulseaudio: PulseAudio backend
 	options = !emptydirs
-	source = dolphin-emu::git+https://github.com/dolphin-emu/dolphin.git#commit=9c12a843f86d39bc64d9e9b5b670e67455487739
+	source = dolphin-emu::git+https://github.com/dolphin-emu/dolphin.git#commit=31524288e3b2450eaefff8202c6d26c4ba3f7333
 	sha256sums = SKIP
 
 pkgname = dolphin-emu-beta-git
