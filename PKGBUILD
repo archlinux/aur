@@ -3,14 +3,14 @@
 
 pkgname=python-cq-editor-git
 pkgver=0.1.2.r15.g3a87ed0
-pkgrel=1
+pkgrel=2
 pkgdesc="CadQuery GUI editor based on PyQT built from git"
 arch=('x86_64')
 url="https://github.com/CadQuery/CQ-editor"
 license=('Apache 2.0')
 provides=('python-cq-editor')
 conflicts=('python-cq-editor')
-depends=('python-cadquery' 'python-pyqt5' 'python-qtconsole' 'python-logbook' 'python-pyparsing' 'python-pyqtgraph' 'python-path.py' 'python-requests' 'spyder')
+depends=('python-cadquery' 'python-pyqt5' 'python-qtconsole' 'python-logbook' 'python-pyparsing' 'python-pyqtgraph' 'python-path.py' 'python-requests' 'spyder' 'python-scipy' 'python-nptyping')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-qt' 'python-pytest-mock')
 source=("git+https://github.com/CadQuery/CQ-editor.git")
