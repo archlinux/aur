@@ -1,7 +1,7 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=nppcrypt
 pkgver=1.0.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Cryptography plugin from Nodepad++"
 url="https://github.com/jeanpaulrichter/nppcrypt"
 arch=('i686' 'x86_64')
@@ -19,5 +19,5 @@ build() {
 }
 
 package() {
-  install -D -m4755 "$srcdir/nppcrypt-1.0.1.6/bin/release/nppcrypt" "${pkgdir}/usr/bin/nppcrypt"
+  install -D -m755 "$srcdir/nppcrypt-1.0.1.6/bin/release/nppcrypt" "${pkgdir}/usr/bin/nppcrypt"
 }
