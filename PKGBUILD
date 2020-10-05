@@ -2,7 +2,7 @@
 # Contributor: Nils Czernia <nils[at]czserver[dot]de>
 
 pkgname=librenms
-pkgver=1.67
+pkgver=1.68
 pkgrel=1
 pkgdesc='Autodiscovering PHP/MySQL/SNMP based network monitoring'
 arch=('any')
@@ -25,13 +25,13 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
         "${pkgname}.uwsgi"
         "apache.example.conf"
         "nginx.example.conf")
-sha512sums=('ed92f347852f085770a8c89732a973aba0c73a49012d0b1672a208b1fbd8f5949f975ad212af12cddad2ad4c6641eaa4b2e6cb889cc5588c605d878259b60d4c'
+sha512sums=('753a8e90d0ef11b73062fca1a988b81cc16e41cd39518a2b676ff2a077fbe7b1a3f32fd33418d069827eed5544d58b33a9519289fc8dc86ecaf1d137ed59c231'
             '19fa542b7597adeccdb94add97102a86ba4a238ba44e999c6e8d186cb7d5ed0523893559719e0b8036acd90cdc1a908497c3027ed49b028fba729ed61ad34052'
             'ce020d1a85b9c897dacceb45840aae30e305b65d96854e19a4a58e3ddbc1c78694de1a8665a51c2fb53929f8f52c94bc0d918ab3fd06ede4935e8a617e755f24'
             'f575ed35f6fa1ae9ffd2b7c00e292de574e4a62e60fba7b653e9f55f4d987959be08331c08afa7afe8a616eb9f3a35f304912416f07ea170b70887bf8ff94c2f'
             '150aa9912d25502d9397f0c4a6831363c79c1603ff65151d4efc0061516ee19586f3cc38f08f9e60530176c103c845d0cc1a46f685cb22c1a8a7cb8db4ab6274'
             'cde868416a13353290e4063c937e13b029e616abe3416e4e7c906bbd8000f871429546335470bbc2b219c1bcc95d6ee0f79481ee765c7351bbed6487ad42fee4')
-b2sums=('72d9191f5c60f4846291b639e2c869dc5b1256ac61d2db2476c7e3e8666bedbe3fb623507870c423fabae83d0f920f2c82fbacd4fa288b1814107cdd20522c28'
+b2sums=('1625aac261854b0151a16cb61bc16213298c75673360d8e0dd83b68261fe5bd94e2a71a5b5b4c097e220863cf027a50e163ed977a6ffd7f9116ce3a55b76fba0'
         'f0c69bb17540b00df6cae0d29fbdfaf547de69a7e20ab31292a9b89bda8db1af332416165baec975bdbc41799ae5868ac1848b615195c960a4498cc2b86b581d'
         '90cdfb3a448c63a5fbc1c79ae86a11131946a9e42bfe234561376ae0930522d429a8f3f68f0878dde1cb99985d557dd9b8f21cc23c091713cee304536149bbe5'
         '2c00ee62d12c2fba040e1ebea9f11e0de453cbbc2a124e70f9dc362a2adbb848b8834c074739eb640150e12c502bcf917254f2987ac4922a47952d12c1614c80'
@@ -90,7 +90,7 @@ package() {
     -t "${pkgdir}/usr/share/webapps/${pkgname}/database/migrations"
   install -vDm 644 database/seeds/*.php \
     -t "${pkgdir}/usr/share/webapps/${pkgname}/database/seeds"
-  install -vDm 644 misc/*.{json,yaml,conf,rss,xml} \
+  install -vDm 644 misc/*.{json,yaml,conf,rss} \
     -t "${pkgdir}/usr/share/webapps/${pkgname}/misc"
   install -vDm 644 routes/*.php \
     -t "${pkgdir}/usr/share/webapps/${pkgname}/routes"
