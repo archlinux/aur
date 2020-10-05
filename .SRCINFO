@@ -1,16 +1,16 @@
 pkgbase = snapmaker-luban
 	pkgdesc = Snapmaker Luban is an easy-to-use 3-in-1 software tailor-made for Snapmaker machines.
-	pkgver = 3.8.0
+	pkgver = 3.9.0
 	pkgrel = 1
 	url = http://www.snapmaker.com
 	arch = x86_64
 	license = AGPL v3
-	noextract = snapmaker-luban-3.8.0-linux-amd64.deb
+	noextract = snapmaker-luban-3.9.0-linux-amd64.deb
 	noextract = libgconf-2-4_3.2.6-6_amd64.deb
 	options = !strip
-	source = https://github.com/Snapmaker/Luban/releases/download/v3.8.0/snapmaker-luban-3.8.0-linux-amd64.deb
+	source = https://github.com/Snapmaker/Luban/releases/download/v3.9.0/snapmaker-luban-3.9.0-linux-amd64.deb
 	source = https://snapshot.debian.org/archive/debian/20191014T030756Z/pool/main/g/gconf/libgconf-2-4_3.2.6-6_amd64.deb
-	sha256sums = 46eeb3af29a6b2638aefa787a30f3fc604519f41a34ad0e10cd28ef377005bd8
+	sha256sums = bb36fa85a4424c922d4071b0d2c7d71905d1ff94fb1a83db2250c2975cdc154d
 	sha256sums = 57a77787a3b29cef92470e2ffdf6582924bfdab2f38d089c490c5ac8511c60cd
 
 pkgname = snapmaker-luban
