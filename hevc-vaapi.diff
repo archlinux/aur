@@ -1,5 +1,5 @@
 diff --git a/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c b/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
-index a7063d85..a55cd647 100644
+index 8b9c0f243..d39291389 100644
 --- a/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
 +++ b/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
 @@ -547,17 +547,14 @@ static inline int open_output_file(struct ffmpeg_mux *ffm)
@@ -8,8 +8,7 @@ index a7063d85..a55cd647 100644
  	ret = avformat_write_header(ffm->output, &dict);
 +	av_dict_free(&dict);
  	if (ret < 0) {
--		fprintf(stderr, "Error opening '%s': %s", ffm->params.file,
-+		fprintf(stderr, "Error opening '%s': %s\n", ffm->params.file,
+ 		fprintf(stderr, "Error opening '%s': %s\n", ffm->params.file,
  			av_err2str(ret));
  
 -		av_dict_free(&dict);
@@ -23,7 +22,7 @@ index a7063d85..a55cd647 100644
  }
  
 diff --git a/plugins/obs-ffmpeg/obs-ffmpeg-vaapi.c b/plugins/obs-ffmpeg/obs-ffmpeg-vaapi.c
-index 9f2660a4..cdf8f8a8 100644
+index ee5829678..3475efef7 100644
 --- a/plugins/obs-ffmpeg/obs-ffmpeg-vaapi.c
 +++ b/plugins/obs-ffmpeg/obs-ffmpeg-vaapi.c
 @@ -69,10 +69,35 @@ struct vaapi_encoder {
@@ -96,7 +95,7 @@ index 9f2660a4..cdf8f8a8 100644
  }
  
  static bool vaapi_update(void *data, obs_data_t *settings)
-@@ -262,6 +287,7 @@ static bool vaapi_update(void *data, obs_data_t *settings)
+@@ -278,6 +303,7 @@ static bool vaapi_update(void *data, obs_data_t *settings)
  
  	info("settings:\n"
  	     "\tdevice:       %s\n"
@@ -104,7 +103,7 @@ index 9f2660a4..cdf8f8a8 100644
  	     "\trate_control: %s\n"
  	     "\tprofile:      %d\n"
  	     "\tlevel:        %d\n"
-@@ -272,9 +298,9 @@ static bool vaapi_update(void *data, obs_data_t *settings)
+@@ -288,9 +314,9 @@ static bool vaapi_update(void *data, obs_data_t *settings)
  	     "\twidth:        %d\n"
  	     "\theight:       %d\n"
  	     "\tb-frames:     %d\n",
@@ -117,7 +116,7 @@ index 9f2660a4..cdf8f8a8 100644
  
  	return vaapi_init_codec(enc, device);
  }
-@@ -328,9 +354,12 @@ static void *vaapi_create(obs_data_t *settings, obs_encoder_t *encoder)
+@@ -344,9 +370,12 @@ static void *vaapi_create(obs_data_t *settings, obs_encoder_t *encoder)
  
  	if (vaapi_codec == AV_CODEC_ID_H264) {
  		enc->vaapi = avcodec_find_encoder_by_name("h264_vaapi");
@@ -132,7 +131,7 @@ index 9f2660a4..cdf8f8a8 100644
  
  	blog(LOG_INFO, "---------------------------------");
  
-@@ -466,7 +495,10 @@ static bool vaapi_encode(void *data, struct encoder_frame *frame,
+@@ -482,7 +511,10 @@ static bool vaapi_encode(void *data, struct encoder_frame *frame,
  		packet->data = enc->buffer.array;
  		packet->size = enc->buffer.num;
  		packet->type = OBS_ENCODER_VIDEO;
@@ -144,7 +143,7 @@ index 9f2660a4..cdf8f8a8 100644
  		*received_packet = true;
  	} else {
  		*received_packet = false;
-@@ -487,19 +519,20 @@ static void set_visible(obs_properties_t *ppts, const char *name, bool visible)
+@@ -503,19 +535,20 @@ static void set_visible(obs_properties_t *ppts, const char *name, bool visible)
  	obs_property_set_visible(p, visible);
  }
  
@@ -172,7 +171,7 @@ index 9f2660a4..cdf8f8a8 100644
  	obs_data_set_default_int(settings, "qp", 20);
  	obs_data_set_default_int(settings, "maxrate", 0);
  }
-@@ -522,9 +555,13 @@ static bool rate_control_modified(obs_properties_t *ppts, obs_property_t *p,
+@@ -538,9 +571,13 @@ static bool rate_control_modified(obs_properties_t *ppts, obs_property_t *p,
  	return true;
  }
  
@@ -187,7 +186,7 @@ index 9f2660a4..cdf8f8a8 100644
  
  	obs_properties_t *props = obs_properties_create();
  	obs_property_t *list;
-@@ -544,41 +581,44 @@ static obs_properties_t *vaapi_properties(void *unused)
+@@ -560,41 +597,44 @@ static obs_properties_t *vaapi_properties(void *unused)
  		}
  	}
  
@@ -262,7 +261,7 @@ index 9f2660a4..cdf8f8a8 100644
  
  	obs_property_set_modified_callback(list, rate_control_modified);
  
-@@ -597,6 +637,7 @@ static obs_properties_t *vaapi_properties(void *unused)
+@@ -613,6 +653,7 @@ static obs_properties_t *vaapi_properties(void *unused)
  			       obs_module_text("KeyframeIntervalSec"), 0, 20,
  			       1);
  
@@ -270,7 +269,7 @@ index 9f2660a4..cdf8f8a8 100644
  	return props;
  }
  
-@@ -626,11 +667,26 @@ struct obs_encoder_info vaapi_encoder_info = {
+@@ -642,11 +683,26 @@ struct obs_encoder_info vaapi_encoder_info = {
  	.create = vaapi_create,
  	.destroy = vaapi_destroy,
  	.encode = vaapi_encode,
@@ -300,7 +299,7 @@ index 9f2660a4..cdf8f8a8 100644
  
  #endif
 diff --git a/plugins/obs-ffmpeg/obs-ffmpeg.c b/plugins/obs-ffmpeg/obs-ffmpeg.c
-index 38a7c857..03b270e9 100644
+index 38a7c8573..03b270e99 100644
 --- a/plugins/obs-ffmpeg/obs-ffmpeg.c
 +++ b/plugins/obs-ffmpeg/obs-ffmpeg.c
 @@ -34,6 +34,7 @@ extern struct obs_encoder_info nvenc_encoder_info;
