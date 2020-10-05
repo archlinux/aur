@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.32.0.r734.g7831e52238
+pkgver=0.32.0.r753.g39f4fd0dc7
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -96,7 +96,6 @@ depends=(
          'vid.stab'
          'vmaf'
          'vulkan-icd-loader'
-         'wavpack'
          'wayland'
          'x264'
          'x265'
@@ -217,7 +216,7 @@ fi
 
 pkgver() {
   cd mpv
-  git describe --tags | sed 's|^v\(.*\)|\1|;s|\([^-]*-g\)|r\1|;s|-|.|g'
+  git describe --tags --long | sed 's|^v\(.*\)|\1|;s|\([^-]*-g\)|r\1|;s|-|.|g'
 }
 
 prepare() {
@@ -291,7 +290,6 @@ prepare() {
     '--enable-libvmaf'
     '--enable-libvorbis'
     '--enable-libvpx'
-    '--enable-libwavpack'
     '--enable-libwebp'
     '--enable-libx264'
     '--enable-libx265'
