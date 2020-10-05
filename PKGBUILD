@@ -14,7 +14,7 @@ options=(staticlibs !buildflags !strip)
 license=("public domain")
 source=(pdcurses-${pkgver}.tar.gz::"https://github.com/Bill-Gray/PDCursesMod/archive/v${pkgver}.tar.gz"
         001-mingw-pdcurses-4.1.0-build.patch)
-sha256sums=('50e982a680f97ddc4dbf657e933dd1597101294e2f71a51e37060c85b07a3d5d'
+sha256sums=('bb6e6f6fe3e2fe1e6a5013b980a3b7a547fae9ac00eae9eb8b432ab5003cc7ab'
             '029b3755eacc8b3bebc09767b2090e18c160acc80be0b07742d8aaa098b6be89')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"

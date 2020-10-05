@@ -13,7 +13,7 @@ pkgbase = mingw-w64-pdcurses
 	options = !strip
 	source = pdcurses-4.2.0.tar.gz::https://github.com/Bill-Gray/PDCursesMod/archive/v4.2.0.tar.gz
 	source = 001-mingw-pdcurses-4.1.0-build.patch
-	sha256sums = 50e982a680f97ddc4dbf657e933dd1597101294e2f71a51e37060c85b07a3d5d
+	sha256sums = bb6e6f6fe3e2fe1e6a5013b980a3b7a547fae9ac00eae9eb8b432ab5003cc7ab
 	sha256sums = 029b3755eacc8b3bebc09767b2090e18c160acc80be0b07742d8aaa098b6be89
 
 pkgname = mingw-w64-pdcurses
