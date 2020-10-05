@@ -8,9 +8,9 @@
 pkgname=opencpn
 _name="OpenCPN"
 pkgver=5.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Open Source Chart Plotting / Marine Navigation"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=("GPL2")
 depends=('wxgtk3' 'gpsd' 'portaudio' 'tinyxml' 'hicolor-icon-theme' 'webkit2gtk')
 makedepends=('cmake' 'lsb-release')
