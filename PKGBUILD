@@ -3,18 +3,19 @@
 # Contributor: Michael Healy <horsemanoffaith@gmail.com>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
-pkgname=ubuntu-wallpapers
-pkgver=20.04.2
+pkgname='ubuntu-wallpapers'
+pkgver=20.10.1
 pkgrel=1
 pkgdesc='The default Wallpapers for Ubuntu'
 arch=('any')
 url='https://launchpad.net/ubuntu-wallpapers'
+_pool_url='http://archive.ubuntu.com/ubuntu/pool/main'
 license=('custom')
-makedepends=('libxslt' 'python2-distutils-extra')
-source=("http://archive.ubuntu.com/ubuntu/pool/main/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz"
-        "http://archive.ubuntu.com/ubuntu/pool/main/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}-0ubuntu1.debian.tar.xz")
-sha256sums=('c89d53a769967edce106fb6b431e35ee1e3a14a91aa50545ff72b5c8159737ee'
-            'cf9f2ab08a2efaab369289ecb63fd098c46978648d4c68a38a4571b34244fade')
+makedepends=('python-distutils-extra' 'python-setuptools')
+source=("${_pool_url}/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz"
+        "${_pool_url}/${pkgname::1}/${pkgname}/${pkgname}_${pkgver}-0ubuntu1.debian.tar.xz")
+sha256sums=('3db2a2612239cdc06e58035cd8910005f7e75969fcb5aa149712261c8c6f3bac'
+            'fd58fbdc7cbd4c60400bdc63ec71e9b59dfa11dd0e441d375b76afa5af605adc')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -24,7 +25,7 @@ prepare() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  python setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm644 'debian/copyright' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
