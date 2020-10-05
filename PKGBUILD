@@ -2,7 +2,7 @@
 
 pkgname=obs-ndi-git
 _pkgname=obs-ndi
-pkgver=4.9.1.r1.g9f96d80
+pkgver=4.9.1.r20.gadcf4f0
 pkgrel=1
 pkgdesc="Network A/V in OBS Studio with NewTek's NDI technology"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 url="https://github.com/Palakis/obs-ndi"
 provides=('obs-ndi')
 conflicts=('obs-ndi-bin')
-depends=('avahi' 'libndi' 'obs-studio-git')
+depends=('avahi' 'libndi' 'obs-studio')
 makedepends=('git' 'cmake')
 source=("git+${url}.git")
 sha256sums=('SKIP')
