@@ -1,9 +1,9 @@
-# Maintainer: Gergely Imreh <imrehg@gmail.com>
-# Contributor: Matthew McGinn <mamcgi@gmail.com>
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Gergely Imreh <imrehg@gmail.com>
 
 pkgname=balena-cli
 pkgdesc='balena.io command line interface'
-pkgver=12.23.3
+pkgver=12.23.4
 pkgrel=1
 arch=('x86_64')
 url='https://balena.io/'
@@ -20,7 +20,7 @@ source=(https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
 noextract=(${pkgname}-${pkgver}.tgz)
 options=(!strip)
 replaces=('resin-cli')
-sha256sums=('698ac3be228f87a134c4aebccbe2e75458d72fbb4509f2ff092b39ebcae2f003')
+sha256sums=('ce8de3201b60b26e16f2bfdc65d4a09ba3735be3a7ca334f48a20de8bdb0d9e6')
 
 package() {
   npm install --global --production --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
