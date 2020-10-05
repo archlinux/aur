@@ -1,6 +1,6 @@
 pkgname=robwork
 pkgver=1.1.11
-pkgrel=7
+pkgrel=8
 pkgdesc="A collection of C++ libraries for simulation and control of robot systems"
 arch=('x86_64')
 url='http://www.robwork.org'
@@ -34,6 +34,6 @@ build() {
 
 package() {
 	cmake --install ${srcdir}/build --prefix ${pkgdir}/usr
-	sed -iE "s+${pkgdir}++g" ${pkgdir}/usr/share/robwork-20.9/cmake/RobWorkTargets-release.cmake
+	sed -iE "s+${pkgdir}++g" ${pkgdir}/usr/share/**/cmake/RobWorkTargets-release.cmake
 }
 

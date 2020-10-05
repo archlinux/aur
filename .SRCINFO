@@ -1,7 +1,7 @@
 pkgbase = robwork
 	pkgdesc = A collection of C++ libraries for simulation and control of robot systems
 	pkgver = 1.1.11
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.robwork.org
 	arch = x86_64
 	license = APACHE
