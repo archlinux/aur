@@ -5,5 +5,7 @@ post_upgrade() {
     warning 'This package no longer stores user data in /usr/share/tinyMediaManager/. Please migrate the data to $HOME/.tiny-media-manager'
     warning '$ mkdir $HOME/.tiny-media-manager/'
     warning '$ find /usr/share/tinyMediaManager/ -maxdepth 1 -user $USER -exec mv --interactive "{}" $HOME/.tiny-media-manager/ ";"'
+    warning ''
+    warning 'tinyMediaManager v4 changed to a subscription based license model, see https://www.tinymediamanager.org/blog/version-4-0/'
   fi
 }
