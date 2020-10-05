@@ -17,6 +17,7 @@ pkgbase = librearp-git
 	depends = libx11
 	depends = libxext
 	depends = libxinerama
+	depends = curl
 	provides = librearp
 	conflicts = librearp
 	source = git+https://gitlab.com/LibreArp/LibreArp.git
