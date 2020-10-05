@@ -2,7 +2,7 @@
 # Contributor: Rodrigo Gryzinski <rogryza@gmail.com>
 
 pkgname='spotify-tui-bin'
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Spotify client for the terminal written in Rust"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('spotify-tui')
 
 source=("spotify-tui-linux-$pkgver.tar.gz::$url/releases/download/v$pkgver/spotify-tui-linux.tar.gz"
         "https://raw.githubusercontent.com/Rigellute/spotify-tui/v$pkgver/LICENSE")
-sha256sums=('2a74e6223f36b7e03b31c48da759929da2db593df97143d87c97a349fba8acd7'
+sha256sums=('480b28eecd1e1a5123a348629151ce40b81c887163f4761b389bbf7f943a6d7a'
             '76b2d30f74716c0cbd02e37868961dce2b52f65af6355864d010ee7e695d2b88')
 
 function package {
