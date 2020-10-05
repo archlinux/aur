@@ -2,15 +2,15 @@
 
 pkgname=gitea-tea
 _pkgname=tea
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Painless self-hosted Git service.."
 arch=(x86_64)
 url="https://gitea.io"
 license=(MIT)
 makedepends=(go-pie)
-source=(https://gitea.com/gitea/tea/archive/v0.4.0.tar.gz)
-sha256sums=(689b67fac6200846633c66aa0a687371b20aa85a5d2d338a4e8f5f51b44d1b32)
+source=(https://gitea.com/gitea/tea/archive/v${pkgver}.tar.gz)
+sha256sums=('05586abda4f992380abe8bcbceca1f05b7c0198b62d172ee535f9e21b9afcac6')
 
 build() {
   cd ${_pkgname}
