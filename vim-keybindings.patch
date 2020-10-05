@@ -1,8 +1,8 @@
 diff --git a/Action.c b/Action.c
-index 9a7c3c5..8d08394 100644
+index 233f132..c885197 100644
 --- a/Action.c
 +++ b/Action.c
-@@ -406,7 +406,7 @@ static Htop_Reaction actionRedraw() {
+@@ -393,7 +393,7 @@ static Htop_Reaction actionRedraw(ATTR_UNUSED State *st) {
  }
  
  static const struct { const char* key; const char* info; } helpLeft[] = {
@@ -11,7 +11,7 @@ index 9a7c3c5..8d08394 100644
     { .key = " Digits: ", .info = "incremental PID search" },
     { .key = "   F3 /: ", .info = "incremental name search" },
     { .key = "   F4 \\: ",.info = "incremental name filtering" },
-@@ -427,7 +427,7 @@ static const struct { const char* key; const char* info; } helpRight[] = {
+@@ -414,7 +414,7 @@ static const struct { const char* key; const char* info; } helpRight[] = {
     { .key = "  Space: ", .info = "tag process" },
     { .key = "      c: ", .info = "tag process and its children" },
     { .key = "      U: ", .info = "untag all processes" },
@@ -19,23 +19,22 @@ index 9a7c3c5..8d08394 100644
 +   { .key = "   F9 x: ", .info = "kill process/tagged processes" },
     { .key = "   F7 ]: ", .info = "higher priority (root only)" },
     { .key = "   F8 [: ", .info = "lower priority (+ nice)" },
- #if (HAVE_LIBHWLOC || HAVE_LINUX_AFFINITY)
-@@ -435,11 +435,11 @@ static const struct { const char* key; const char* info; } helpRight[] = {
+ #if (defined(HAVE_LIBHWLOC) || defined(HAVE_LINUX_AFFINITY))
+@@ -422,11 +422,11 @@ static const struct { const char* key; const char* info; } helpRight[] = {
  #endif
     { .key = "      e: ", .info = "show process environment" },
     { .key = "      i: ", .info = "set IO priority" },
 -   { .key = "      l: ", .info = "list open files with lsof" },
 +   { .key = "      L: ", .info = "list open files with lsof" },
+    { .key = "      M: ", .info = "show process command in multiple lines" },
     { .key = "      s: ", .info = "trace syscalls with strace" },
-    { .key = "         ", .info = "" },
--   { .key = " F2 C S: ", .info = "setup" },
+    { .key = " F2 C S: ", .info = "setup" },
 -   { .key = "   F1 h: ", .info = "show this help screen" },
-+   { .key = "   F2 S: ", .info = "setup" },
 +   { .key = "   F1 ?: ", .info = "show this help screen" },
     { .key = "  F10 q: ", .info = "quit" },
     { .key = NULL, .info = NULL }
  };
-@@ -567,6 +567,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -566,6 +566,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['I'] = actionInvertSortOrder;
     keys[KEY_F(6)] = actionExpandCollapseOrSortColumn;
     keys[KEY_F(18)] = actionExpandCollapseOrSortColumn;
@@ -43,7 +42,7 @@ index 9a7c3c5..8d08394 100644
     keys['<'] = actionSetSortColumn;
     keys[','] = actionSetSortColumn;
     keys['>'] = actionSetSortColumn;
-@@ -575,7 +576,7 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -574,7 +575,7 @@ void Action_setBindings(Htop_Action* keys) {
     keys['q'] = actionQuit;
     keys['a'] = actionSetAffinity;
     keys[KEY_F(9)] = actionKill;
@@ -52,7 +51,7 @@ index 9a7c3c5..8d08394 100644
     keys[KEY_RECLICK] = actionExpandOrCollapse;
     keys['+'] = actionExpandOrCollapse;
     keys['='] = actionExpandOrCollapse;
-@@ -586,12 +587,11 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -585,12 +586,11 @@ void Action_setBindings(Htop_Action* keys) {
     keys['S'] = actionSetup;
     keys['C'] = actionSetup;
     keys[KEY_F(2)] = actionSetup;
@@ -66,45 +65,11 @@ index 9a7c3c5..8d08394 100644
     keys['?'] = actionHelp;
     keys['U'] = actionUntagAll;
     keys['c'] = actionTagAllChildren;
-diff --git a/CRT.h b/CRT.h
-index 933fe06..65998ac 100644
---- a/CRT.h
-+++ b/CRT.h
-@@ -140,7 +140,7 @@ extern const char **CRT_treeStr;
- 
- extern int CRT_delay;
- 
--int* CRT_colors;
-+extern int* CRT_colors;
- 
- extern int CRT_colorSchemes[LAST_COLORSCHEME][LAST_COLORELEMENT];
- 
-@@ -150,13 +150,13 @@ extern int CRT_scrollHAmount;
- 
- extern int CRT_scrollWheelVAmount;
- 
--char* CRT_termType;
-+extern char* CRT_termType;
- 
- // TODO move color scheme to Settings, perhaps?
- 
- extern int CRT_colorScheme;
- 
--void *backtraceArray[128];
-+extern void *backtraceArray[128];
- 
- #if HAVE_SETUID_ENABLED
- 
 diff --git a/Panel.c b/Panel.c
-index 1e53b4a..7f6580b 100644
+index 315f388..5842cc7 100644
 --- a/Panel.c
 +++ b/Panel.c
-@@ -372,14 +372,16 @@ void Panel_draw(Panel* this, bool focus) {
- 
- bool Panel_onKey(Panel* this, int key) {
-    assert (this != NULL);
--   
-+
+@@ -318,10 +318,12 @@ bool Panel_onKey(Panel* this, int key) {
     int size = Vector_size(this->items);
     switch (key) {
     case KEY_DOWN:
@@ -117,14 +82,14 @@ index 1e53b4a..7f6580b 100644
     case KEY_CTRL('P'):
        this->selected--;
        break;
-@@ -394,23 +396,33 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -336,23 +338,33 @@ bool Panel_onKey(Panel* this, int key) {
        break;
     #endif
     case KEY_LEFT:
 -   case KEY_CTRL('B'):
 +   case 'h':
        if (this->scrollH > 0) {
-          this->scrollH -= MAX(CRT_scrollHAmount, 0);
+          this->scrollH -= MAXIMUM(CRT_scrollHAmount, 0);
           this->needsRedraw = true;
        }
        break;
@@ -145,15 +110,15 @@ index 1e53b4a..7f6580b 100644
     case KEY_PPAGE:
 +   case KEY_CTRL('B'):
        this->selected -= (this->h - 1);
-       this->scrollV = MAX(0, this->scrollV - this->h + 1);
+       this->scrollV = MAXIMUM(0, this->scrollV - this->h + 1);
        this->needsRedraw = true;
        break;
     case KEY_NPAGE:
 +   case KEY_CTRL('F'):
        this->selected += (this->h - 1);
-       this->scrollV = MAX(0, MIN(Vector_size(this->items) - this->h,
+       this->scrollV = MAXIMUM(0, MINIMUM(Vector_size(this->items) - this->h,
                                   this->scrollV + this->h - 1));
-@@ -432,9 +444,11 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -374,9 +386,11 @@ bool Panel_onKey(Panel* this, int key) {
        break;
     }
     case KEY_HOME:
@@ -166,12 +131,12 @@ index 1e53b4a..7f6580b 100644
        break;
     case KEY_CTRL('A'):
 diff --git a/README b/README
-index 33a8739..d0b00ae 100644
+index 67f80ef..84f90d7 100644
 --- a/README
 +++ b/README
-@@ -17,6 +17,44 @@ but we also have code for running under FreeBSD and Mac OS X
- This software has evolved considerably over the years,
- and is reasonably complete, but there is always room for improvement.
+@@ -17,6 +17,47 @@ The information displayed is configurable through a graphical setup and can be s
+ 
+ Tasks related to processes (e.g. killing and renicing) can be done without entering their PIDs.
  
 +Vim keybindings
 +----------------
@@ -211,14 +176,17 @@ index 33a8739..d0b00ae 100644
 +* 'l' can no longer be used to list open files, being replaced with 'L'
 +
 +
- Comparison between `htop` and classic `top`
- -------------------------------------------
++Comparison between `htop` and classic `top`
++-------------------------------------------
++
+ Running `htop` requires `ncurses` libraries (typically named libncursesw*).
  
+ For more information and details on how to contribute to `htop` visit [htop.dev](https://htop.dev).
 diff --git a/ScreenManager.c b/ScreenManager.c
-index 06e9019..887d6a9 100644
+index 2a2cb1d..705ae17 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
-@@ -277,7 +277,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -250,7 +250,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
           continue;
        }
        case KEY_LEFT:
@@ -227,7 +195,7 @@ index 06e9019..887d6a9 100644
           if (this->panelCount < 2) {
              goto defaultHandler;
           }
-@@ -291,7 +291,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -264,7 +264,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
              goto tryLeft;
           break;
        case KEY_RIGHT:
@@ -236,16 +204,3 @@ index 06e9019..887d6a9 100644
        case 9:
           if (this->panelCount < 2) {
              goto defaultHandler;
-diff --git a/linux/LinuxProcess.h b/linux/LinuxProcess.h
-index 6ce3037..cbd77be 100644
---- a/linux/LinuxProcess.h
-+++ b/linux/LinuxProcess.h
-@@ -144,7 +144,7 @@ typedef struct LinuxProcess_ {
- #endif
- 
- 
--long long btime; /* semi-global */
-+extern long long btime; /* semi-global */
- 
- extern ProcessFieldData Process_fields[];
- 

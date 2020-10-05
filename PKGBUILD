@@ -2,10 +2,10 @@
 
 _pkgname=htop
 pkgname=${_pkgname}-vim-git
-pkgver=1077.402e46b
+pkgver=1417.dc6523b
 pkgrel=1
 pkgdesc="Interactive text-mode process viewer. Patched for vim keybindings"
-url="https://github.com/hishamhm/${_pkgname}"
+url="https://github.com/htop-dev/${_pkgname}"
 license=('GPL')
 arch=('i686' 'x86_64' 'armv7h')
 depends=('ncurses')
@@ -18,7 +18,7 @@ options=('!emptydirs')
 source=("git+${url}.git"
         'vim-keybindings.patch')
 sha256sums=('SKIP'
-            'ab1df29dc5a73d8e723137ffc767d2592e6024b6a6ffeb13e7c967f04008a255')
+            'c15ecb884c65d3c168923728816157fc4a2dc80df6190fb46b2484a16d201d3a')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -37,12 +37,9 @@ prepare() {
 
     ./autogen.sh
 
-    sed -i 's|ncursesw/curses.h|curses.h|' RichString.[ch] configure
-    sed -i 's|python|python2|' scripts/MakeHeader.py
-
     ./configure \
-        CFLAGS="-O2 -fno-common" \
         --prefix=/usr \
+        --sysconfdir=/etc \
         --enable-unicode \
         --enable-openvz \
         --enable-vserver \
