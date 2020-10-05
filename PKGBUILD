@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2)
 depends=('r>=2.01')
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('088d291339a4d8d9396cdb956889ac571fd9e834c6e3c3d51621a8c3f0eb9f32')
+sha256sums=('488451182663197ae4513e46e24f72cadb2297d35a58a3007a0dbf1bf0833031')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
