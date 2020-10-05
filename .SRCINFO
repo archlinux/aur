@@ -1,4 +1,5 @@
 pkgbase = famistudio-bin
+	pkgdesc = A very simple music editor for the Nintendo Entertainment System or Famicom
 	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://famistudio.org/
@@ -19,4 +20,4 @@ pkgbase = famistudio-bin
 	sha256sums = f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8
 
 pkgname = famistudio-bin
-
+ 
