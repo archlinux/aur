@@ -2,12 +2,12 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=shortwave-git
 pkgver=1.1.1.r64.g20e39c6
-pkgrel=2
+pkgrel=3
 pkgdesc="Find and listen to internet radio stations"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://gitlab.gnome.org/World/Shortwave"
 license=('GPL3')
-depends=('gst-plugins-bad' 'libhandy>=1.0.0')
+depends=('gst-plugins-bad' 'libhandy-1.so')
 makedepends=('git' 'gobject-introspection' 'libdazzle' 'meson' 'rust' 'xorgproto')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
