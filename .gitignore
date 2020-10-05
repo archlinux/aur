@@ -1,6 +1,5 @@
-/*.tar.xz
-/*.tar.gz
-/*.tar.zst
+*.tar*
 /pkg
 /src
 PySceneDetect
+testvideo.mp4
