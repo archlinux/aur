@@ -8,6 +8,7 @@ pkgbase = librearp-git
 	license = GPL
 	makedepends = jack
 	makedepends = libxcursor
+	makedepends = git
 	depends = freetype2
 	depends = alsa-lib
 	depends = gcc-libs
