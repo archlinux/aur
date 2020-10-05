@@ -1,0 +1,17 @@
+pkgbase = shy-git
+	pkgdesc = Bare-bones SSH launcher
+	pkgver = 0.1.8.r2.g1e5c772
+	pkgrel = 1
+	url = https://github.com/xvxx/shy
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = shy
+	conflicts = shy
+	conflicts = shy-bin
+	source = git+https://github.com/xvxx/shy
+	sha512sums = SKIP
+
+pkgname = shy-git
+
