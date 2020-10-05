@@ -1,5 +1,5 @@
 pkgbase = deusex-utglr
-	pkgdesc = updated opengl render for deus ex
+	pkgdesc = updated opengl renderer for deus ex
 	pkgver = 2.1
 	pkgrel = 1
 	url = https://www.cwdohnal.com/utglr/
