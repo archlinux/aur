@@ -7,7 +7,7 @@
 # Contributor: tardo <tardo@nagi-fanboi.net>
 
 pkgname=chuck-alsa
-pkgver=1.3.5.2
+pkgver=1.4.0.1
 pkgrel=1
 pkgdesc='Concurrent, on-the-fly audio programming language'
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ depends=('gcc-libs' 'libsndfile')
 conflicts=('chuck')
 provides=('chuck')
 source=("http://chuck.cs.princeton.edu/release/files/chuck-$pkgver.tgz")
-sha256sums=('e900b8545ffcb69c6d49354b18c43a9f9b8f789d3ae822f34b408eaee8d3e70b')
+sha256sums=('11a20c34b385e132bf43d5ae6a562c652f631828cc6b1562a4c029bc9a850ed4')
 
 build() {
     make -C "chuck-$pkgver/src" linux-alsa
