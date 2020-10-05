@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=teams
-pkgver=1.3.00.16851
+pkgver=1.3.00.25560
 pkgrel=1
 pkgdesc="Microsoft Teams for Linux is your chat-centered workspace in Office 365"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("ms-teams")
 replaces=("ms-teams")
 source=("https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('23838c8f8dea4960dce8bba559cd7ee3cdedc78ea7fdb226139b5b2204eee4d6')
+sha256sums=('acfe094beacbacfc29641c1c9a85ec4bb61157d371fad67e03108b6d706aec4e')
 
 package() {
   bsdtar -O -xf "${pkgname}_${pkgver}_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
