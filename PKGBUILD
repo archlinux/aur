@@ -10,14 +10,9 @@ pkgdesc="The Swift programming language, taken directly from the Apple repositor
 arch=('x86_64')
 url="https://swift.org/"
 license=('apache2')
-groups=()
 depends=('icu' 'libedit' 'libxml2' 'swig' 'python' 'libbsd' 'ncurses' )
 makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'python2' 'rsync' 'sccache')
 provides=('swift-language-git')
-replaces=()
-backup=()
-options=()
-install=
 source=(
     'git+https://github.com/apple/swift'
     'cmark::git+https://github.com/apple/swift-cmark'
