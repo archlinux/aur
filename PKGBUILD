@@ -5,8 +5,9 @@
 
 pkgname=pencil2d-mypaint-git
 _gitname=pencil2d
-pkgver=4505.1fc3f62a
-pkgrel=1
+_branchname=implement_mypaint_nobitmapsurface
+pkgver=4563.627016bd
+pkgrel=2
 pkgdesc="Animation/drawing software, that lets you create traditional hand-drawn animation using both bitmap and vector graphics with mypaint brushes extension testing branch"
 arch=('i686' 'x86_64')
 url="http://www.pencil2d.org/"
@@ -17,7 +18,7 @@ provides=('pencil2d')
 conflicts=('pencil2d')
 options=('!staticlibs')
 install=pencil2d.install
-source=('pencil2d::git+https://github.com/CandyFace/pencil.git')
+source=("pencil2d::git+https://github.com/CandyFace/pencil.git#branch=${_branchname}")
 md5sums=('SKIP')
 
 pkgver()
@@ -29,8 +30,8 @@ pkgver()
 build()
 {
     cd "${_gitname}"
-    git checkout implement_mypaint_nobitmapsurface
-
+    msg "make cleaen..."
+    make clean
     msg "Starting qmake..."
     qmake PREFIX=/usr
     msg "Starting make..."

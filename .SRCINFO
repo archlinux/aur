@@ -1,7 +1,7 @@
 pkgbase = pencil2d-mypaint-git
 	pkgdesc = Animation/drawing software, that lets you create traditional hand-drawn animation using both bitmap and vector graphics with mypaint brushes extension testing branch
-	pkgver = 4505.1fc3f62a
-	pkgrel = 1
+	pkgver = 4563.627016bd
+	pkgrel = 2
 	url = http://www.pencil2d.org/
 	install = pencil2d.install
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = pencil2d-mypaint-git
 	provides = pencil2d
 	conflicts = pencil2d
 	options = !staticlibs
-	source = pencil2d::git+https://github.com/CandyFace/pencil.git
+	source = pencil2d::git+https://github.com/CandyFace/pencil.git#branch=implement_mypaint_nobitmapsurface
 	md5sums = SKIP
 
 pkgname = pencil2d-mypaint-git
