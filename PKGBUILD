@@ -4,7 +4,7 @@
 pkgname=vdr-iptv
 pkgver=2.4.0
 _vdrapi=2.4.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Integrates multicast IPTV transport streams seamlessly into VDR"
 url="http://www.saunalahti.fi/~rahrenbe/vdr/iptv/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -13,6 +13,7 @@ depends=('curl' "vdr-api=${_vdrapi}")
 optdepends=('vlc: Needed for vlc2iptv')
 _plugname=${pkgname//vdr-/}
 source=("http://www.saunalahti.fi/~rahrenbe/vdr/$_plugname/files/$pkgname-$pkgver.tgz"
+        "$pkgname-fix_vlc2iptv.patch"
         'https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/3Sat.conf'
         'https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/Bundesligen-TV.conf'
         'https://github.com/yavdr/yavdr-base/raw/stable-0.5/etc/vdr/plugins/iptv/vlcinput/Daytona-Beach.conf'
@@ -33,17 +34,24 @@ backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'etc/vdr/plugins/iptv/vlcinput/zdf-iptv.conf'
         'etc/vdr/plugins/iptv/vlcinput/zdf_info-iptv.conf'
         'etc/vdr/plugins/iptv/vlcinput/zdf_kultur-iptv.conf')
-md5sums=('4de2b227c24f362b452870dbee05b30f'
-         '5e960f7a71ee493c0bb7a7c56ea109c4'
-         '8b51a64c8278f62dd9721a83a0654933'
-         '48c790160833a16bc29aff1e0410995b'
-         '7b70a8121d1ae0bc9dabc803589b89d0'
-         'cbfba3010acd61c93ac6ca2b18de6c23'
-         '433df5f08b933040bf81684f45006f09'
-         'cf7e544dd2eba58ebef78131706749e4'
-         'b611bef1267193d056f8e0b3eae3a63d'
-         '793750d284f06285ea317128abcc398c'
-         '5ffc4e10ee120975540a7b3bff916d56')
+sha256sums=('73d91b6ffc87e39a7bad235abff73dea4be08638cf2bd34b13c2ad46dff33185'
+            'd4a39fae860ce961b2aab8b721cef7f37e80640c50cc9c06d5f9d2b9c265379d'
+            '9c8e99d0c82ef5af5141ff89ffd411e0feb3ee6ff2416fee03d9b09e2edb2a6c'
+            'c5ead86e396eb0f2bbfced5913f381764131575379b2930bd0e86f6d2df3f774'
+            '040d48f0384e8e3afc3a7cb8ccd35127c7b4a795c4a7a0591e45f386060140c7'
+            'd1bc5cda831d59d2520fddad69061dd4498ab12a08ebbc7824f96a34de43ee5c'
+            'c5dd96d8bf4924f33df9e75a0e65fb60db53b60b7ec5385ea0d45268c5b670dc'
+            '2ffcb0906e2412f706c9f6316f0f8bdaf1d4e9a79c37558c93826fdf4cf6335b'
+            'd4f0bf84f02b429dd68b8fedb8a892cedba50a932c5178c887e03305cee43e80'
+            '73e12fd7132b9fbe277299fa36378fabbe9a3ebba3966f36c64831968b6e7272'
+            'a82edea74b3834462ffd7e504c9afb00c2297ddb5aa624c62c0a738e512523e9'
+            '0aa1a3f9050345774ff3a7aa1b581ce80416d81fc5fdf8dcc7112f29045be27e')
+
+prepare() {
+  cd "${srcdir}/${_plugname}-${pkgver}"
+
+  patch -p1 -i "$srcdir/$pkgname-fix_vlc2iptv.patch"
+}
 
 build() {
   cd "${srcdir}/${_plugname}-${pkgver}"
@@ -55,6 +63,7 @@ package() {
   make DESTDIR="${pkgdir}" install-lib install-i18n
 
   install -Dm755 iptv/vlc2iptv "$pkgdir/usr/share/vdr/plugins/iptv/vlc2iptv"
+  install -Dm755 iptv/vlc2iptv_raw "$pkgdir/usr/share/vdr/plugins/iptv/vlc2iptv_raw"
 
   mkdir -p "$pkgdir/etc/vdr/plugins/iptv/vlcinput"
   cp "$srcdir"/*.conf "$pkgdir/etc/vdr/plugins/iptv/vlcinput"

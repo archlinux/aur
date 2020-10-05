@@ -1,0 +1,126 @@
+--- a/iptv/vlc2iptv
++++ b/iptv/vlc2iptv
+@@ -66,9 +66,9 @@
+ {
+     local CHANNEL_SETTINGS_FILE="$CHANNEL_SETTINGS_DIR/$CHANNEL_NAME.conf"
+ 
+-    [ ! -e $CHANNEL_SETTINGS_FILE ] && \
++    [ ! -e "$CHANNEL_SETTINGS_FILE" ] && \
+       exit_with_error "No vlc input configuration for channel '$CHANNEL_NAME'"
+-    . $CHANNEL_SETTINGS_FILE
++    . "$CHANNEL_SETTINGS_FILE"
+     
+     [ -z "$URL" ] && \
+       exit_with_error "No URL specified for channel '$CHANNEL_NAME'"
+@@ -88,7 +88,7 @@
+     RESIZE_OPTIONS=""
+ fi
+ 
+-vlc "${URL}" \
++LC_NUMERIC=C vlc "${URL}" \
+   --sout "#transcode{vcodec=mp2v$RESIZE_OPTIONS,acodec=mpga,vb=${VIDEO_BITRATE},ab=${AUDIO_BITRATE}}:standard{access=udp,mux=ts{pid-video=${VPID},pid-audio=${APID},pid-spu=${SPID}},dst=127.0.0.1:${PORT}}" \
+   --intf dummy &
+ 
+--- /dev/null
++++ b/iptv/vlc2iptv_raw
+@@ -0,0 +1,100 @@
++#!/bin/sh
++#
++# vlc2iptv is used by the VDR iptv plugin to transcode external sources
++#
++# (C) 2007 Rolf Ahrenberg, Antti Seppälä
++# (C) 2007 Tobias Grimm
++#
++# vlc2iptv is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 2 of the License, or
++# (at your option) any later version.
++#
++# This package is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this package; if not, write to the Free Software
++# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
++# MA 02110-1301, USA.
++#
++
++#
++# <Global Settings>
++#
++
++CHANNELS_CONF=/var/lib/vdr/channels.conf
++CHANNEL_SETTINGS_DIR=/etc/vdr/plugins/iptv/vlcinput/
++VIDEO_BITRATE=2400
++AUDIO_BITRATE=320
++
++#
++# </Global Settings>
++#
++
++exit_with_error()
++{
++    logger "vlc2iptv: error: $*"
++    exit 1
++}
++
++read_arguments()
++{
++    [ $# -ne 2 ] && exit_with_error "Invalid parameter count '$#' $*"
++    PARAMETER=$1
++    PORT=$2
++}
++
++lookup_channel_and_pids()
++{
++    [ ! -e "$CHANNELS_CONF" ] && \
++      exit_with_error "channels.conf not found ($CHANNELS_CONF)"
++
++    local CHANNEL_RECORD=`grep "[:]S=[10][|]P=[10][|]F=EXT[|]U=vlc2iptv_raw[|]A=$PARAMETER[:]I" $CHANNELS_CONF`
++    [ -z "$CHANNEL_RECORD" ] && \
++      exit_with_error "no iptv channel with parameter $PARAMETER found"
++
++    CHANNEL_NAME=`echo $CHANNEL_RECORD | awk "-F[;,:]" '{print $1}'`
++    VPID=`echo $CHANNEL_RECORD | awk -F: '{print $6}'`
++    APID=`echo $CHANNEL_RECORD | awk -F: '{print $7}'`
++    SPID=0
++}
++
++load_channel_configuration()
++{
++    local CHANNEL_SETTINGS_FILE="$CHANNEL_SETTINGS_DIR/$CHANNEL_NAME.conf"
++
++    [ ! -e "$CHANNEL_SETTINGS_FILE" ] && \
++      exit_with_error "No vlc input configuration for channel '$CHANNEL_NAME'"
++    . "$CHANNEL_SETTINGS_FILE"
++
++    [ -z "$URL" ] && \
++      exit_with_error "No URL specified for channel '$CHANNEL_NAME'"
++}
++
++read_arguments $*
++lookup_channel_and_pids
++load_channel_configuration
++
++#
++# Start VLC
++#
++
++if [ -n "$WIDTH" -a -n "$HEIGHT" ] ; then
++    RESIZE_OPTIONS=",width=${WIDTH},height=${HEIGHT}"
++else
++    RESIZE_OPTIONS=""
++fi
++
++LC_NUMERIC=C vlc "${URL}" \
++  --sout "#duplicate{dst=std{access=udp,mux=ts{pid-video=${VPID},pid-audio=${APID},pid-spu=${SPID}},dst=127.0.0.1:${PORT}}}" \
++  --intf dummy &
++
++PID=${!}
++
++trap 'kill -INT ${PID} 2> /dev/null' INT EXIT QUIT TERM
++
++# Waiting for the given PID to terminate
++wait ${PID}
