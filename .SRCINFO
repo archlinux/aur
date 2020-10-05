@@ -1,0 +1,15 @@
+pkgbase = nmly-git
+	pkgdesc = Bulk rename utility with useful functions
+	pkgver = 1.1.1.r1.ge147cbf
+	pkgrel = 1
+	url = https://github.com/Usbac/nmly
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = nmly
+	conflicts = nmly
+	source = git+https://github.com/Usbac/nmly.git
+	sha256sums = SKIP
+
+pkgname = nmly-git
+
