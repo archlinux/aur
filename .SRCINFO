@@ -1,0 +1,12 @@
+pkgbase = nmly
+	pkgdesc = Bulk rename utility with useful functions
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/Usbac/nmly
+	arch = x86_64
+	license = MIT
+	source = nmly-1.1.1.tar.gz::https://github.com/Usbac/nmly/archive/v1.1.1.tar.gz
+	sha256sums = d593cd1adb056bf61e6a7e9c72961642727229f5b00e07c0d330d8dc8fb3a0e7
+
+pkgname = nmly
+
