@@ -1,7 +1,7 @@
 
 _project_name='aioftp'
 pkgname="python-${_project_name}"
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="ftp client/server for asyncio"
 url="https://github.com/aio-libs/aioftp"
@@ -9,7 +9,7 @@ arch=('any')
 license=("Apache License Version 2.0")
 depends=('python')
 makedepends=('python' 'python-setuptools')
-source=("https://files.pythonhosted.org/packages/55/c8/2301ef2569d70badd0e5dbfcebb3ed0224b9cabafd3bb169930f328e7feb/aioftp-0.18.0.tar.gz")
+source=("https://files.pythonhosted.org/packages/b8/57/dfa5657e2feaa99a3ff1222ef6956f649a7b5d5f996c1d335272f8bb5e48/aioftp-0.18.1.tar.gz")
 
 package() {
   cd "${srcdir}/${_project_name}-${pkgver}"
@@ -17,4 +17,4 @@ package() {
   python3 setup.py install --prefix=/usr --root="${pkgdir}"
 }
 
-md5sums=('8e8633b4bcc06bf1eae305700c3378ce')
+md5sums=('1220d1c3c7faf4ae80fb8fc84c224f81')
