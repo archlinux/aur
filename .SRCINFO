@@ -1,0 +1,21 @@
+pkgbase = graphqlmap-git
+	pkgdesc = scripting engine to interact with a GraphQL endpoint for pentesting purposes
+	pkgver = r44.87b5626
+	pkgrel = 1
+	url = https://github.com/swisskyrepo/GraphQLmap
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	depends = python-argparse
+	depends = python-requests
+	provides = graphqlmap
+	conflicts = graphqlmap
+	options = !emptydirs
+	source = git://github.com/swisskyrepo/graphqlmap.git
+	source = setup.py
+	sha512sums = SKIP
+	sha512sums = f8298ccecb9010627a80e12ae736ba2d7b4526bd668585cbc8a3cb1245866d1ea1d762e69511ce55c04824138f4c9bcaddf7c96149efd24f191ca06147633346
+
+pkgname = graphqlmap-git
+
