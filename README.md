@@ -1,6 +1,9 @@
 # What?
 Just a package, that enabled some experimental features
 
+## V 20201004
+* Drop enforcing aco, because it's the default in mesa 20.2
+
 ## V 20200911
 * Drop sished for better performance
 

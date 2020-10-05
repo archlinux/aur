@@ -1,13 +1,16 @@
 post_install() {
-	printf "\nYou need to reboot your system now"
+	printf "\nBe sure to add 'amdgpu' to your MODULES in /etc/mkinitcpio.conf"
+	printf "\nYou need to to reboot your system after the installation is complete"
 	printf "\nThanks for using my pkg 😊\n\n"
 }
 
 post_upgrade() {
-	post_install
+	printf "\nYou need to to reboot your system after the installation is complete"
+	printf "\nThanks for still using my pkg 😊\n\n"
 }
 
 post_remove() {
+	printf "\nBe sure to remove 'amdgpu' from your MODULES in /etc/mkinitcpio.conf"
 	printf "\nYou need to reboot your system now"
 	printf "\n🖐️🖐️ bye bye 😞\n\n"
 }
