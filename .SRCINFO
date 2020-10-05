@@ -6,6 +6,7 @@ pkgbase = r-exact
 	arch = any
 	license = GPL2
 	depends = r>=3.1.0
+	depends = r-rootsolve
 	source = https://cran.r-project.org/src/contrib/Exact_2.1.tar.gz
 	sha256sums = 088d291339a4d8d9396cdb956889ac571fd9e834c6e3c3d51621a8c3f0eb9f32
 
