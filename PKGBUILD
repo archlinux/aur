@@ -26,7 +26,7 @@ source=("git+https://github.com/drakkan/${_pkgname}.git"
   "sftpgo.json"
   "sftpgo.sysusers")
 sha256sums=('SKIP'
-  '3ed05cb055374a935c142c74503ed5125c2f99734394b25cf53d08f8ce2e0cdf'
+  'f969c0ca4d52e55de3a9823d8fbede2726c1b33feae54a2baa712a0496ceefc7'
   '44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8')
 
 _uid_sftpgo=315

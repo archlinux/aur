@@ -80,7 +80,7 @@
     "manage_users": 1,
     "track_quota": 2,
     "pool_size": 0,
-    "users_base_dir": "",
+    "users_base_dir": "/var/lib/sftpgo/users",
     "actions": {
       "execute_on": [],
       "hook": ""
@@ -99,7 +99,8 @@
         "iterations": 1,
         "parallelism": 2
       }
-    }
+    },
+    "update_mode": 0
   },
   "httpd": {
     "bind_port": 8080,
