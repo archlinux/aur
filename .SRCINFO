@@ -1,6 +1,6 @@
 pkgbase = gaw3
 	pkgdesc = Gtk analog waveform viewer - tool for viewing analog data, such as the output of Spice simulations
-	pkgver = 20190716
+	pkgver = 20200922
 	pkgrel = 1
 	url = http://www.rvq.fr/linux/gaw.php
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = gaw3
 	optdepends = alsa-lib
 	provides = gaw
 	conflicts = gaw
-	source = http://download.tuxfamily.org/gaw/download/gaw3-20190716.tar.gz
-	md5sums = 4f3deb51ec27ebe488e2913f9a396475
+	source = http://download.tuxfamily.org/gaw/download/gaw3-20200922.tar.gz
+	md5sums = 91eb6020fdf2174e70ad14301732a052
 
 pkgname = gaw3
 
