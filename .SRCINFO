@@ -1,0 +1,13 @@
+pkgbase = openfoam-selector
+	pkgdesc = A simple tool to help manage multiple installed OpenFOAM versions
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://develop.openfoam.com/Community/feature-scripts/
+	arch = any
+	license = BSD
+	depends = perl
+	source = https://sourceforge.net/projects/openfoam/files/utils/openfoam-selector-1.0.6.tgz
+	md5sums = 371aabdbb72fa612c2404b2bfcd39401
+
+pkgname = openfoam-selector
+
