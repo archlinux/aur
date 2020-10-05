@@ -1,4 +1,4 @@
-# Maintainer      :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
+# Maintainer :       Kr1ss  $(tr +- .@ <<<'<kr1ss+x-yandex+com>')
 # Upstream author :  Luke Smith <https://git{hub,lab}.com/lukesmithxyz/>
 
 
@@ -7,12 +7,12 @@ pkgver() {
   cd "${pkgname%-git}"
   printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r799.g497839b
+pkgver=r842.g93c7729
 pkgrel=1
 
-pkgdesc='A simple interface to auto-configure neomutt and isync with safe passwords'
+pkgdesc='Simple interface to auto-configure neomutt and isync with safe passwords'
 arch=('any')
-url='https://github.com/lukesmithxyz/mutt-wizard'
+url="https://github.com/lukesmithxyz/${pkgname%-git}"
 license=('GPL3')
 
 provides=("${pkgname%-git}")
@@ -36,9 +36,18 @@ optdepends=('imagemagick: view images inside of the neomutt TUI'
 options=('zipman')
 
 install="${pkgname%-git}.install"
-source=("git+$url")
-sha256sums=('SKIP')
+source=("git+$url"
+        "https://patch-diff.githubusercontent.com/raw/LukeSmithxyz/${pkgname%-git}/pull/536.diff")
+sha256sums=('SKIP'
+            '72f1270a5fca02a16dceba6825d2a769dbaecd68df819c089951481a912a7140')
 
+
+prepare() {
+  cd "${pkgname%-git}"
+  # temporary fix for the `notmuch` macro, until #536 is merged upstream
+  if grep -q read\ x "share/${pkgname%-git}.muttrc"; then
+    patch -Np1 -i ../536.diff; fi
+}
 
 package() {
   cd "${pkgname%-git}"
