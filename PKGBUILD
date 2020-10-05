@@ -4,7 +4,7 @@
 
 pkgname=libosip2
 epoch=1
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="an implementation of SIP"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ depends=(glibc)
 options=(!emptydirs)
 validpgpkeys=('34C3985D068879312FE23C8BB5902A3AD90A5421')
 source=(https://ftp.gnu.org/gnu/osip/libosip2-${pkgver/_/-}.tar.gz)
-sha256sums=('61bb28317221a630e47f65389d5ff3e4693996d3128e9e0d5d1399e4feebf64d')
+sha256sums=('2bc0400f21a64cf4f2cbc9827bf8bdbb05a9b52ecc8e791b4ec0f1f9410c1291')
 
 build() {
   cd "$srcdir"/libosip2-${pkgver/_/-}/
