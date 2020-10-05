@@ -1,0 +1,19 @@
+pkgbase = shy-bin
+	pkgdesc = Bare-bones SSH launcher
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/xvxx/shy
+	arch = any
+	license = MIT
+	provides = shy
+	conflicts = shy
+	conflicts = shy-git
+	source = https://github.com/xvxx/shy/releases/download/v0.1.8/shy-v0.1.8-linux-x86_64.tgz
+	source = shy-0.1.8-LICENSE::https://github.com/xvxx/shy/raw/v0.1.8/LICENSE
+	source = shy-0.1.8-README.md::https://github.com/xvxx/shy/raw/v0.1.8/README.md
+	sha512sums = caed7f4f97aa1a1c34ce5b378ead2254fd26156f01b7caba011e64a6fb83940d047ff709d9faa9cbd68d39d7a609d67e063ed34ccab58bb87002c814803a4236
+	sha512sums = 35dfcd7980f4de2dfafd4ce335ad70f6a058dbcbdc57f91c85684676c19750daec61ecbec567d03cdd1ca5ee37477b49a23ebdea6c1ba48fc7c4d32800a00033
+	sha512sums = SKIP
+
+pkgname = shy-bin
+
