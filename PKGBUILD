@@ -9,8 +9,8 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=openssh-selinux
-pkgver=8.3p1
-pkgrel=4
+pkgver=8.4p1
+pkgrel=1
 pkgdesc='Premier connectivity tool for remote login with the SSH protocol, with SELinux support'
 url='https://www.openssh.com/portable.html'
 license=('custom:BSD')
@@ -28,17 +28,13 @@ groups=('selinux')
 validpgpkeys=('59C2118ED206D927E667EBE3D3E5F56B6D920D30')
 #source=("git://anongit.mindrot.org/openssh.git?signed#tag=V_8_2_P1"
 source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux}-${pkgver}.tar.gz"{,.asc}
-        '67290.patch'
-        '3122.patch'
         'sshdgenkeys.service'
         'sshd.service'
         'sshd.conf'
         'sshd.pam'
         'glibc-2.31.patch')
-sha256sums=('f2befbe0472fe7eb75d23340eb17531cb6b3aac24075e2066b41f814e12387b2'
+sha256sums=('5a01d22e407eb1c05ba8a8f7c654d388a13e9f226e4ed33bd38748dafa1d2b24'
             'SKIP'
-            '3ccc1c6672521782c154c89607d2c2d7a67e0f66a349260e00e28ae999ea54f5'
-            'a13330ca7560b25e4defcd4bdecf28ed37b416362e13aebcb0e57164e575e659'
             '4031577db6416fcbaacf8a26a024ecd3939e5c10fe6a86ee3f0eea5093d533b7'
             'e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7'
             '4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6'
@@ -51,14 +47,6 @@ install=install
 
 prepare() {
 	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
-
-	# Fix FS#67290
-	# From https://anongit.mindrot.org/openssh.git/patch/?id=c514f3c0522855b4d548286eaa113e209051a6d2
-	patch -p1 -i ../67290.patch
-
-	# Fix https://bugzilla.mindrot.org/show_bug.cgi?id=3122
-	# Backported from https://anongit.mindrot.org/openssh.git/patch/?id=7af1e92cd289b7eaa9a683e9a6f2fddd98f37a01'
-	patch -p1 -i ../3122.patch
 
 	patch -p1 -i ../glibc-2.31.patch
 	autoreconf
