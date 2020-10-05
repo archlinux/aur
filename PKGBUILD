@@ -1,12 +1,17 @@
 # Maintainer: Vitaly Ankh <https://aur.archlinux.org/account/VitalyAnkh>
 # Maintainer of emacs-git: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+# Maintainer of emacs-pgtk-native-comp: Andrew Whatson <https://aur.archlinux.org/account/flatwhatson>
 
 ################################################################################
 # The difference between this PKGBUILD and the one from `emacs-git` is that:
-# - this one builds emacs from `feature/native-comp` branch.
+# - this one builds emacs from flatwhatson's `pgtk-nativecomp` branch, which
+#   contains an up-to-date merge of masm11 and fejfighter's pgtk work with
+#   the feature/native-comp branch from the official emacs repo
+# - the pure-GTK3 rendering backend is enabled
+# - the xwidgets webkit2gtk support is enabled
+# - the native Elisp compiler is enabled
 # - built-in packages are native compiled by default.
 # - link-time optimization is enabled by default.
-#
 # Pre-compiling all built-in elisp modules takes *hours* on fast systems. You
 # can set FAST_BOOT="YES" to pre-compile the bare minimum, then you'll need to
 # manage native-compilation later (eg. with comp-deferred-compilation).
@@ -57,7 +62,7 @@ CAIRO="YES"       # GOOD NEWS! No longer experimental and fully supported.
                   # This is now, along with harfbuzz, the prefered font
                   # and text shaping engine.
                   # If using GTK+, you'll get printing for free.
-XWIDGETS=         # Use GTK+ widgets pulled from webkit2gtk. Usable.
+XWIDGETS="YES"         # Use GTK+ widgets pulled from webkit2gtk. Usable.
 DOCS_HTML=        # Generate and install html documentation.
 DOCS_PDF=         # Generate and install pdf documentation.
 MAGICK=           # ImageMagick 7 support. Deprecated (read the logs).
@@ -73,7 +78,7 @@ PROFILING=        # Enable gprof profiling support.
 
 ################################################################################
 pkgname="emacs-native-comp-git-enhanced"
-pkgver=28.0.50.142686
+pkgver=28.0.50.144362
 pkgrel=1
 pkgdesc="GNU Emacs. Development native-comp branch."
 arch=('x86_64' )
@@ -84,7 +89,7 @@ makedepends=('git')
 provides=('emacs' 'emacs-seq')
 conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq')
 replaces=('emacs26-git' 'emacs27-git' 'emacs-git' 'emacs-seq')
-source=("emacs-git::git://git.savannah.gnu.org/emacs.git#branch=feature/native-comp")
+source=("emacs-git::git://github.com/flatwhatson/emacs.git#branch=pgtk-nativecomp")
 # If Savannah access is blocked for reasons, use Github instead.
 # Edit the config file of your local repo copy as well.
 #source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
@@ -211,6 +216,7 @@ build() {
    --without-gconf
    --without-gsettings
    --with-nativecomp
+   --with-pgtk
   )
 
 ################################################################################
