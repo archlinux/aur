@@ -1,13 +1,15 @@
 _name=slycot
 pkgname="python-${_name}"
 pkgver=0.4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python wrapper for selected SLICOT routines, notably including solvers for Riccati, Lyapunov and Sylvester equations."
 arch=('i686' 'x86_64')
 url="http://github.com/python-control/Slycot"
 license=('GPL2')
 depends=('python-numpy')
-makedepends=('cmake'
+makedepends=(
+             'blas'
+             'cmake'
              'gcc-fortran'
              'lapack'
              'python-coverage'
@@ -24,6 +26,10 @@ sha256sums=('1d9921e9b04a5b9892870fd3481f7b08e6fa083a1a3848ad262819de19eb5e02')
 
 build() {
   cd "$srcdir/${_name}-${pkgver}"
+  # Link against the Generic NetLIB blas/lapack ABI. If openblas is installed
+  # instead of blas, that one will provide the library. Same mechanism as in
+  # Extra/python-numpy
+  export BLA_VENDOR=Generic
   python setup.py build -G "Unix Makefiles"
 }
 
