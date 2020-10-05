@@ -1,0 +1,16 @@
+pkgbase = dedbae-git
+	pkgdesc = Library and tools for manipulating Nintendo Switch file formats
+	pkgver = 1.0.0.1.r1.g87b08da
+	pkgrel = 1
+	url = https://gitlab.com/roothorick/dedbae
+	arch = any
+	license = ISC
+	makedepends = git
+	depends = glibc
+	depends = mbedtls
+	provides = dedbae
+	source = git+https://gitlab.com/roothorick/dedbae.git
+	sha256sums = SKIP
+
+pkgname = dedbae-git
+
