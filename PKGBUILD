@@ -24,7 +24,7 @@ depends=('aarch64-linux-gnu-gcc'
          'libxrandr'
          'libxrender'
          'libxxf86vm'
-	 'vagrant-substrate')
+	 'vagrant')
 source=(http://www.twistednormal.com/download/glise_1.7.1_amd64.deb)
 md5sums=('eb0453d1708e9113e24f333a6b5e4553')
 package() {
