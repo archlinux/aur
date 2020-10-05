@@ -2,28 +2,36 @@
 # Contributor: Thomas Hebb <tommyhebb@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=revelation
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="A password manager for the GNOME desktop"
 arch=('x86_64')
 license=('GPL')
-depends=('gtk3' 'python-gobject' 'libpwquality' 'python-pycryptodomex')
+makedepends=('meson')
+depends=('gobject-introspection' 'gtk3' 'libpwquality' 'python-gobject' 'python-pycryptodomex')
 url="http://revelation.olasagasti.info/"
-source=("https://github.com/mikelolasagasti/revelation/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('8976644b8904db179f5927ea9045c5082faefdfecf079845ca081321935bdfac')
+source=("https://github.com/mikelolasagasti/revelation/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.xz"
+        'mime-icon-path.patch')
+sha256sums=('880a90c3c1d317fbf617809f2bb24a8752cce241248fb681812e2757c9e17fe2'
+            '330295c0d806aaffc2e51d3fdfed663af2f8c587cc0c5afa797bb5384dda0e74')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  patch -p1 -i "${srcdir}/mime-icon-path.patch"
+}
 
 build() {
 	cd "${pkgname}-${pkgver}"
-	./autogen.sh
-	./configure \
-		--prefix=/usr \
-		--disable-desktop-update \
-		--disable-mime-update
-	make
+
+  meson _build
+  meson configure --prefix=/usr _build
 }
 
 package() {
 	cd "${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
+
+  cd _build
+  DESTDIR="${pkgdir}"  meson install
 }
 

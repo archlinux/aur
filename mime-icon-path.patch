@@ -1,0 +1,25 @@
+From b79fbacf97d2a9c5484c09242f3ed9d41250cf80 Mon Sep 17 00:00:00 2001
+From: Mikel Olasagasti Uranga <mikel@olasagasti.info>
+Date: Sun, 4 Oct 2020 16:17:03 +0200
+Subject: [PATCH] Change mime icon path
+
+---
+ data/icons/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/icons/meson.build b/data/icons/meson.build
+index e7e1f29..928e678 100644
+--- a/data/icons/meson.build
++++ b/data/icons/meson.build
+@@ -19,7 +19,7 @@ endforeach
+ # Mime icons
+ install_data(
+   join_paths('48x48', 'gnome-mime-application-x-revelation.png'),
+-  install_dir: join_paths(rvl_pkgdatadir, 'icons', 'hicolor', '48x48', 'mimetypes'),
++  install_dir: join_paths(rvl_datadir, 'icons', 'hicolor', '48x48', 'mimetypes'),
+ )
+ 
+ # Actions icons
+-- 
+2.26.2
+
