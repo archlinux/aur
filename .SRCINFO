@@ -6,6 +6,7 @@ pkgbase = eprosima-fast-dds-gen
 	arch = x86_64
 	license = Apache
 	makedepends = gradle
+	makedepends = git
 	depends = java-environment
 	source = git+https://github.com/eProsima/Fast-DDS-Gen.git#tag=v1.0.4
 	sha256sums = SKIP
