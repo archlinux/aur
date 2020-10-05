@@ -1,0 +1,15 @@
+pkgbase = python-thefuck
+	pkgdesc = Magnificent app which corrects your previous console command.
+	pkgver = 3.30
+	pkgrel = 1
+	url = https://github.com/nvbn/thefuck
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyte
+	source = python-thefuck-3.30.tar.gz::https://github.com/nvbn/thefuck/archive/3.30.tar.gz
+	sha256sums = dd2e7bc94e9453beabbafc10c4d62c67601ea705250103a67ababcdad2991dd3
+
+pkgname = python-thefuck
+
