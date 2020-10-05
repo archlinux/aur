@@ -1,7 +1,7 @@
 pkgbase = frankenwm-git
 	pkgdesc = Fast dynamic tiling window manager based on monsterwm-xcb
 	pkgver = 1.0.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sulami/FrankenWM
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,9 @@ pkgbase = frankenwm-git
 	makedepends = git
 	depends = xcb-util-wm
 	depends = xcb-util-keysyms
+	depends = libx11
+	depends = libxcb
+	depends = xcb-util
 	source = git+https://github.com/sulami/FrankenWM.git
 	md5sums = SKIP
 
