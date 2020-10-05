@@ -1,7 +1,7 @@
 # Maintainer: Joakim Repomaa <aur@j.repomaa.com>
 
 pkgname=autopass.cr
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='a rofi frontend for pass'
 arch=(x86_64)

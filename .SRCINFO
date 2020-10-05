@@ -1,6 +1,6 @@
 pkgbase = autopass.cr
 	pkgdesc = a rofi frontend for pass
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://gitlab.com/repomaa/autopass.cr
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = autopass.cr
 	conflicts = autopass
 	conflicts = autopass.cr-git
 	conflicts = autopass.cr-bin
-	source = git+https://gitlab.com/repomaa/autopass.cr?signed#tag=v0.2.5
+	source = git+https://gitlab.com/repomaa/autopass.cr?signed#tag=v0.2.6
 	validpgpkeys = F0AF1CE34733B22317A8937D05557F53CD3C6458
 	md5sums = SKIP
 
