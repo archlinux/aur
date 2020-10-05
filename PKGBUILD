@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=conserve
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Robust portable backup tool written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/sourcefrog/conserve"
 license=('GPL2')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('1dac59f716977d62cffd41c1c151f903aabd6a769026d8b0c607da1e5ff575ed14aaf7f580973f50194528b69654a6200655180fb831350209cffd605aa1015d')
+sha512sums=('0d316ec649bad18aeea2ef132b4f76a03e49eb2033ee9b5675b59a37f55d25a5b647398208acefde4d58444500b28ffeb84512fe649fa3e8f2cd6cd2a5e6eb60')
 
 build() {
   cd "$pkgname-$pkgver"
