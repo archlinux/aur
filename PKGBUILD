@@ -5,7 +5,7 @@ _contribname='github.com/CryptoCopter/dtn7-contrib'
 
 pkgname=dtn7
 pkgver=0.8.0
-_contribrel=1
+_contribrel=2
 _archrel=1
 pkgrel=$_contribrel.$_archrel
 pkgdesc="Delay tolerant routing daemon - Implements Bundle Protocol Version 7"
@@ -20,7 +20,7 @@ backup=("etc/dtn7/configuration.toml" "etc/ufw/applications.d/dtn7")
 source=("https://$_gopkgname/archive/v$pkgver.tar.gz"
 	    "https://$_contribname/archive/v$pkgver-$_contribrel.tar.gz")
 sha512sums=("61e079519740b79af2d3429694b2a4d93ce9e0e4279a973d2e464fb37ef51402503de7ee33a1ba3a439927312ec78056bcb6d5c68ff6b6b77f5f23fc10b7dab5"
-	        "f50e52f6f6a75e3a09c02ea006c21ba55ff6ef97c22193625265da066bd4060da55bb11862ff488d085163fb24d18e20548e161cda5344304cfd719c9427429a")
+	        "29d3ef84205814bcfe1a23207238a0d4c3aa21209f817a3e5bee0f1c770542831e2321a098ef769fc61f0cf54e55f77604787fcb90400950607dc0e12aaaf661")
 
 build() {
 	cd "$srcdir/$pkgname-go-$pkgver"
