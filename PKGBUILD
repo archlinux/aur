@@ -3,11 +3,14 @@
 pkgname=python-speech
 _name=google-cloud-speech
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A google cloud speech api for python to convert audio to text."
 arch=('any')
 url="https://github.com/googleapis/python-speech"
 license=('Apache')
+depends=('python-libcst'
+        'python-proto-plus'
+        'python-google-api-core')
 makedepends=('python'
 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
