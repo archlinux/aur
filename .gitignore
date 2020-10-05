@@ -1,4 +1,6 @@
 *.zip
 libtgvoip-*.tar*
+11bc9089ad136b713190e0e8f5b484cba9ad495c.patch
+6e82b6e45664c1f80b9039256c99bebc76d34672.patch
 pkg/
 src/
