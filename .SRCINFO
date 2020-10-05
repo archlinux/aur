@@ -1,0 +1,15 @@
+pkgbase = lyrics-in-terminal
+	pkgdesc = Shows lyrics of songs from your favourite music player in terminal
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/Jugran/lyrics-in-terminal
+	arch = any
+	license = MIT
+	depends = python>=3.6
+	depends = python-dbus
+	depends = ncurses
+	source = https://github.com/Jugran/lyrics-in-terminal/archive/1.2.1/lyrics-in-terminal-1.2.1.tar.gz
+	md5sums = 6ed1f0fb438e6e0b12ad46a0eee7b92a
+
+pkgname = lyrics-in-terminal
+
