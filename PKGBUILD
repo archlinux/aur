@@ -1,6 +1,6 @@
 # Maintainer: Noah (coolreader18)
 pkgname=ndless-sdk-git
-pkgver=r490.84b8b9f
+pkgver=r503.79d2aa6
 pkgrel=1
 pkgdesc="SDK for programs targeting Ndless on the TI-Nspire"
 arch=(x86_64)
@@ -76,7 +76,7 @@ package() {
 	cp --remove-destination tools/zehn_loader/zehn_loader*.tns "$sdkdir"/lib
 	mkdir -p "$pkgdir"/usr/bin
  	cd "$pkgdir"/usr/bin
-	for exe in ../share/ndless-sdk/bin/*; do
+	for exe in ../share/ndless-sdk/bin/{nspire-*,genzehn,make-prg}; do
 		[[ -x $exe ]] && ln -s "$exe" .
 	done
 	local profiled="$pkgdir"/etc/profile.d
