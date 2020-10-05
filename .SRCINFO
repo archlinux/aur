@@ -1,0 +1,11 @@
+pkgbase = redfaction-dashfaction
+	pkgdesc = red faction community patch
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/rafalh/dashfaction
+	arch = x86_64
+	source = https://github.com/rafalh/dashfaction/releases/download/v1.5.0/DashFaction-1.5.0-setup.exe
+	sha256sums = SKIP
+
+pkgname = redfaction-dashfaction
+
