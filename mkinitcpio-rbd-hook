@@ -2,9 +2,9 @@
 
 run_hook() {
     msg -n ":: Map RBD device..."
-    if [ -n "${ip}" -a -n "${rbd}" ]; then
+    if [ -n "${ip}" ]; then
         modprobe rbd
-        echo ${rbd//:/ } > /sys/bus/rbd/add
+        echo ${rbd//:/ } > /sys/bus/rbd/add_single_major
         msg "done."
     else
         msg "failed."
