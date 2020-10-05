@@ -1,7 +1,7 @@
 # Maintainer: Yorick Peterse <aur AT yorickpeterse DOT com>
 
 pkgname=inko-git
-pkgver=0.7.0.r25.g5f9bf6e0
+pkgver=0.8.1.r2.g055b80da
 pkgrel=1
 pkgdesc="A statically-typed object-oriented language for writing concurrent programs"
 url="https://inko-lang.org"

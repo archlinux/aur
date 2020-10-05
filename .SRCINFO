@@ -1,6 +1,6 @@
 pkgbase = inko-git
 	pkgdesc = A statically-typed object-oriented language for writing concurrent programs
-	pkgver = 0.7.0.r25.g5f9bf6e0
+	pkgver = 0.8.1.r2.g055b80da
 	pkgrel = 1
 	url = https://inko-lang.org
 	arch = x86_64
