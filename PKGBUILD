@@ -2,8 +2,8 @@
 
 _pkgname='sfeed_curses'
 pkgname="${_pkgname/_/-}"
-pkgver=0.9.2
-pkgrel=3
+pkgver=0.9.3
+pkgrel=1
 pkgdesc='Curses UI front-end for sfeed RSS and Atom parser'
 arch=('x86_64')
 url='https://www.codemadness.org/sfeed_curses-ui.html'
@@ -11,11 +11,11 @@ license=('ISC')
 depends=('ncurses')
 optdepends=('sfeed: RSS and Atom parser')
 source=("${url%/*}/releases/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('19a46fe4de63fe033ad836efc2b002ecea157946ed2af2801124d9283dc11511')
+sha256sums=('579c11e36ec02d00c63ca354da44285eb5ecdf89f9690c750c08a74543757b14')
 
 prepare() {
-  # https://git.codemadness.org/sfeed_curses/commit/0a9c4460c15e90113607ff1928858dfa940df725.html
-  sed -i.bak 's/${CC} ${SFEED_LDFLAGS} -o $@ $</${CC} -o $@ $< ${SFEED_LDFLAGS}/g' "${_pkgname}-${pkgver}/Makefile"
+  # Remove deprecated _BSD_SOURCE
+  sed -i.bak 's/_BSD_SOURCE/_DEFAULT_SOURCE/g' "${_pkgname}-${pkgver}/Makefile"
 }
 
 build() {
