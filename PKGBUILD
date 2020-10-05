@@ -54,7 +54,4 @@ package() {
   cd ${_pkgname}
 
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-
-  # Temporary fix
- # mkdir -p ${pkgdir}/usr/lib/python3.8/site-packages/lutris/runners/json
 }
