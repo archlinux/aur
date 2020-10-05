@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=minetime-bin
-pkgver=1.8.8
+pkgver=1.8.9
 pkgrel=1
 pkgdesc='MineTime is a modern, intuitive and smart calendar application'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libsecret' 'libxss' 'dbus' 'hicolor-icon-theme' 'desktop-file-utils')
 provides=('minetime')
 source=("${url}/releases/download/v${pkgver}/MineTime_${pkgver}_amd64.deb"
         minetime)
-b2sums=('59e8f1878d8ef602d8ba98feb3e4a8cdcf3cc9d4d21404d91152933c66931d28919ed10525ddd717c93086b06bc5a534bb822fbd25926758bef8d98faff3ae78'
+b2sums=('8450ec406cf76808e4c8180cee6ec1314782247f7c36f6cd8b15c0deb20d0db81837016c5edefb80456dc20d33ef4dd0ae821c850669057c052dcf720ece957f'
         '5d7b161312866c7093913428743bb8901c622cbd6d29e447bbd9ba70aea2972ceaf01263a285f78f8a39e6deee4f5d968ed96eee555e456eb3cd879c230ad02d')
 
 package() {
