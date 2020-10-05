@@ -1,6 +1,6 @@
 pkgbase = sm64ex-redrawn-git
 	pkgdesc = Super Mario 64 PC port (sm64ex fork) with the redrawn texture pack and HD Mario
-	pkgver = r509.58
+	pkgver = r511.58
 	pkgrel = 1
 	url = https://github.com/sm64pc/sm64ex
 	arch = i686
