@@ -2,7 +2,7 @@
 
 pkgname=python-speech
 _name=google-cloud-speech
-pkgver=1.3.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A google cloud speech api for python to convert audio to text."
 arch=('any')
