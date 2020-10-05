@@ -1,0 +1,17 @@
+#!/bin/sh
+# $ cat pkg/tiny-media-manager/usr/share/tinyMediaManager/getdown.txt | grep -E "jvmarg = (\[linux] )?-" | grep -o -- "-.*" | sed 's/^/JAVA_OPTS="$JAVA_OPTS /' | sed 's/$/"/'
+
+JAVA_OPTS="$JAVA_OPTS -XX:+IgnoreUnrecognizedVMOptions"
+JAVA_OPTS="$JAVA_OPTS -XX:+UseG1GC"
+JAVA_OPTS="$JAVA_OPTS -XX:+UseStringDeduplication"
+JAVA_OPTS="$JAVA_OPTS -Xms64m"
+#JAVA_OPTS="$JAVA_OPTS -Xmx512m"
+JAVA_OPTS="$JAVA_OPTS -Xss512k"
+JAVA_OPTS="$JAVA_OPTS -splash:splashscreen.png"
+JAVA_OPTS="$JAVA_OPTS -Djava.net.preferIPv4Stack=true"
+JAVA_OPTS="$JAVA_OPTS -Dfile.encoding=UTF-8"
+JAVA_OPTS="$JAVA_OPTS -XX:CompileCommand=exclude,ca/odell/glazedlists/impl/filter/TextMatchers,matches"
+JAVA_OPTS="$JAVA_OPTS -XX:CompileCommand=exclude,ca/odell/glazedlists/impl/filter/BoyerMooreCaseInsensitiveTextSearchStrategy,indexOf"
+JAVA_OPTS="$JAVA_OPTS -Djna.nosys=true"
+JAVA_OPTS="$JAVA_OPTS -Dawt.useSystemAAFontSettings=on"
+JAVA_OPTS="$JAVA_OPTS -Dswing.aatext=true"

@@ -1,0 +1,15 @@
+#!/bin/bash
+# Launch script for tinyMediaManager
+set -e
+
+mkdir --parents "$HOME/.tiny-media-manager"
+mkdir --parents "$HOME/.tiny-media-manager/templates"
+cd "$HOME/.tiny-media-manager"
+ln --symbolic --force /usr/share/tinyMediaManager/templates/templates.jar ./templates/templates.jar
+
+source /usr/share/tinyMediaManager/tmm.JAVA_OPTS
+
+java $JAVA_OPTS \
+  -Dappbase=https://www.tinymediamanager.org/ \
+  -cp /usr/share/tinyMediaManager/tmm.jar:/usr/share/tinyMediaManager/lib/* \
+  org.tinymediamanager.TinyMediaManager
