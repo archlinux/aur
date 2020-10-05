@@ -1,6 +1,6 @@
 pkgbase = lidarr-nightly
 	pkgdesc = Music download automation for usenet and torrents.
-	pkgver = 0.7.1.1834
+	pkgver = 0.7.1.1851
 	pkgrel = 1
 	url = https://github.com/lidarr/Lidarr
 	arch = x86_64
@@ -33,12 +33,12 @@ pkgbase = lidarr-nightly
 	sha512sums = 3800547b7c3d2b6e0a590ebd2db5ed48a6c31249098a4c36876faca36dd81e84ac45f3679d16bfe101be594dc6d5d0cfc91bfc66ed8cba35ec05f22027ab2441
 	sha512sums = ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622
 	sha512sums = 70cf5c953e26339fd70250fb6bd471628aca9a8d3c4fc943099aa477ed272a1ee597e03feaee2dfb08eece9417924a2d86f383e1fcee0dc5c58da9b35d31f72c
-	source_x86_64 = lidarr-0.7.1.1834-linux-core-x64.tar.gz::https://services.lidarr.audio/v1/update/nightly/updatefile?version=0.7.1.1834&os=linux&runtime=netcore&arch=x64
-	sha512sums_x86_64 = daf97825676e73de09b09d7b8fa3dc44d75bdcc712b75db7943cf731e884de34aaafa4bdcdbf76f8bbc7d86e2a9f23e5f6addd8498eae647fef9465da0611a9e
-	source_aarch64 = lidarr-0.7.1.1834-linux-core-arm64.tar.gz::https://services.lidarr.audio/v1/update/nightly/updatefile?version=0.7.1.1834&os=linux&runtime=netcore&arch=arm64
-	sha512sums_aarch64 = a6465bec8ec7b940bea428a9951022237cf8d2d01a835802850f087f47415283b7a9026c31c6f2fc4eac1e85df46023a74cdb97aee1c39efc74859fe2597a93c
-	source_armv7h = lidarr-0.7.1.1834-linux-core-arm.tar.gz::https://services.lidarr.audio/v1/update/nightly/updatefile?version=0.7.1.1834&os=linux&runtime=netcore&arch=arm
-	sha512sums_armv7h = 6849da987b7edabf9082d1f4dfebb3bc0739692c7118c0d62df29eb222c8327c5fea342c3087f751ca025068f6b3f099aae3797d809b09077c1a594a2d1f83d9
+	source_x86_64 = lidarr-0.7.1.1851-linux-core-x64.tar.gz::https://services.lidarr.audio/v1/update/nightly/updatefile?version=0.7.1.1851&os=linux&runtime=netcore&arch=x64
+	sha512sums_x86_64 = 757ed2998eec05ea8c9df5382c07f2d2a5e47a93355bc725966dffb25614115b72a160eb0309cc31bd9b0f51246ca7ca6dec04b72dfe4da728538b94fb54c323
+	source_aarch64 = lidarr-0.7.1.1851-linux-core-arm64.tar.gz::https://services.lidarr.audio/v1/update/nightly/updatefile?version=0.7.1.1851&os=linux&runtime=netcore&arch=arm64
+	sha512sums_aarch64 = 8e7faa867d628a3cde39d3e6f55a15a9fc58f767e64f0a6f8eacf49504203a8f3e80ababb70302f297f3d62e0460c2383102101633737fa38307a40007789a83
+	source_armv7h = lidarr-0.7.1.1851-linux-core-arm.tar.gz::https://services.lidarr.audio/v1/update/nightly/updatefile?version=0.7.1.1851&os=linux&runtime=netcore&arch=arm
+	sha512sums_armv7h = b718487a98bf241879db221c6eeccced5cc4eb03649ee8e4f7834b5c523efb0ca1f62d71c6bd253e89e4d7c5510938aba76fbb0e4f8cfcb7a5a72c6adaedab68
 
 pkgname = lidarr-nightly
 
