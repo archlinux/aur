@@ -40,9 +40,9 @@ package() {
 	mkdir -p "${pkgdir}/usr/lib/systemd/user/"
 	mkdir -p "${pkgdir}/usr/lib/moc-mpris/"
 	
-	install -D *.service "${pkgdir}/usr/lib/systemd/user/"
-	install -D *.sh "${pkgdir}/usr/lib/moc-mpris/"
-	install -D *.py "${pkgdir}/usr/lib/moc-mpris/"
+	install -D -m644 *.service "${pkgdir}/usr/lib/systemd/user/"
+	install -D -m755 *.sh "${pkgdir}/usr/lib/moc-mpris/"
+	install -D -m755 *.py "${pkgdir}/usr/lib/moc-mpris/"
 	
 	echo "Run \`systemctl --user enable --now moc_mpris\` to enable MPRIS2 support for a local instance of MOC"
 	echo "Run \`systemctl --user enable --now moc_mpris@'<ssh-user>@<ssh-address>'\` to enable MPRIS2 support for a remote instance of MOC. You will need to set up a password-less ssh connection for this to work."
