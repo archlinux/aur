@@ -1,0 +1,13 @@
+pkgbase = libccsds-git
+	pkgdesc = A library to handle several CCSDS routines
+	pkgver = r5.81a0c5e
+	pkgrel = 1
+	url = https://github.com/altillimity/libccsds
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	source = libccsds-git::git+https://github.com/altillimity/libccsds.git
+	sha256sums = SKIP
+
+pkgname = libccsds-git
+
