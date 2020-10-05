@@ -3,12 +3,13 @@
 _pyname=graphqlmap
 pkgname=graphqlmap-git
 pkgver=r44.87b5626
-pkgrel=1
+pkgrel=2
 pkgdesc="scripting engine to interact with a GraphQL endpoint for pentesting purposes"
 arch=('any')
 url="https://github.com/swisskyrepo/GraphQLmap"
 license=('MIT')
 depends=(
+  'git'
   'python'
   'python-setuptools'
   'python-argparse'
@@ -40,6 +41,7 @@ package() {
   touch graphqlmap/__init__.py
   mv ../setup.py .
   python setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm 644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
