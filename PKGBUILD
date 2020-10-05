@@ -1,8 +1,8 @@
 # Maintainer: Joakim Repomaa <aur@j.repomaa.com>
 
 pkgname=autopass.cr
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.2.5
+pkgrel=1
 pkgdesc='a rofi frontend for pass'
 arch=(x86_64)
 url='https://gitlab.com/repomaa/autopass.cr'
