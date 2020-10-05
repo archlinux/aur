@@ -4,6 +4,7 @@
 pkgname=korla-icon-theme
 pkgver=1.3.1
 pkgrel=1
+epoch=1
 pkgdesc="SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)"
 arch=("any")
 url="https://github.com/bikass/korla"
