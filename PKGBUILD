@@ -1,5 +1,5 @@
-# Maintainer: Gergely Imreh <imrehg@gmail.com>
-# Contributor: Matthew McGinn <mamcgi@gmail.com>
+# Maintainer: Matthew McGinn <mamcgi@gmail.com>
+# Contributor: Gergely Imreh <imrehg@gmail.com>
 
 pkgname=versionist
 pkgdesc='Flexible CHANGELOG generation toolkit that adapts to your commit conventions'
