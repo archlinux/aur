@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-srt
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Secure Reliable Transport library (mingw-w64)"
 url="https://www.srtalliance.org/"
@@ -10,7 +10,7 @@ depends=(mingw-w64-openssl)
 makedepends=(mingw-w64-cmake)
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/Haivision/srt/archive/v${pkgver}.tar.gz")
-sha256sums=('e80ca1cd0711b9c70882c12ec365cda1ba852e1ce8acd43161a21a04de0cbf14')
+sha256sums=('28a308e72dcbb50eb2f61b50cc4c393c413300333788f3a8159643536684a0c4')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -20,7 +20,6 @@ build() {
 		mkdir -p build-${_arch} && pushd build-${_arch}
   	${_arch}-cmake \
 			-DCMAKE_INSTALL_BINDIR=/usr/${_arch}/bin \
-			-DCMAKE_INSTALL_INCLUDEDIR=/usr/${_arch}/include \
 			..
 		make
 		popd
