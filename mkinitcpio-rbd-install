@@ -9,14 +9,13 @@ build() {
 
 help() {
     cat <<HELPEOF
-This hook allows map rbd, and use it for root device.
-It requires the 'ip' kernel argument of the net hook for ip settings.
-And it uses an extra 'rbd' kernel argument for ceph settings.
-Don't forget using the net hook before the rbd hook.
+This hook allows to map rbd, and use it as a root device.
+It requires the 'ip' kernel argument of the net hook for ip settings and it uses an extra 'rbd' kernel argument for ceph settings.
+Don't forget to set the net hook before the rbd hook in your mkinitcpio configuration file.
+
 Arguments:
     ip: examples at https://wiki.archlinux.org/index.php/Mkinitcpio#Using_net
-    rbd: rbd=<monitor address>:<credential>:<pool name>:<disk name>
-         <credential>::=name=<username>,secret=<secret key>
+    rbd: rbd=<monitor address>:name=<username>,secret=<secret key>:<pool name>:<disk name>
 HELPEOF
 }
 
