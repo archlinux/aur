@@ -1,20 +1,30 @@
-# Maintainer: Alfredo Luque <me@aluque.io>
-# Maintainer: Paul Mourer <paul.mourer@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname='chrysalis'
-pkgdesc="A graphical configuration tool for programmable keyboards. Prebuilt AppImage Releases"
+pkgname=chrysalis
+pkgdesc="Graphical configurator for Kaleidoscope-powered keyboards"
 pkgver=0.7.9
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/keyboardio/Chrysalis'
 license=('GPL3')
-depends=('fuse2')
-options=('!strip')
-source=("https://github.com/keyboardio/Chrysalis/releases/download/$pkgname-$pkgver/Chrysalis-$pkgver.AppImage")
-sha512sums=('62a57c37783151f77a0a4b6ff02b90420df36483e7a1f7a8d761cc0ebdf37bfdf738755b187f8e3f3969f5b981e0fd136dde55e80a850372168d391d9b4b2371')
+depends=('fuse2' 'uucp')
+makedepends=('yarn')
+source=("$url/archive/$pkgname-$pkgver.tar.gz")
+sha256sums=('224e73ad733ecc03da5caa6fd460ed7d63f65f2d15134397f7eb978bdf174f4e')
+
+prepare() {
+    cd "${pkgname^}-$pkgname-$pkgver"
+    sed -i -e 's,algernon/avr.*",^4.2.4",g' package.json
+    sed -i -e '/prettier/d' .eslintrc.js
+    yarn --cache-folder "$srcdir/node_modules" install --no-lockfile
+}
+
+build() {
+    cd "${pkgname^}-$pkgname-$pkgver"
+    yarn --cache-folder "$srcdir/node_modules" run build:linux
+}
 
 package() {
-    mkdir -p "$pkgdir/usr/bin"
-    chmod +x "$srcdir/Chrysalis-$pkgver.AppImage"
-    cp "$srcdir/Chrysalis-$pkgver.AppImage" "$pkgdir/usr/bin/chrysalis"
+    cd "${pkgname^}-$pkgname-$pkgver/dist"
+    install -Dm755 ${pkgname^}-$pkgver.AppImage "$pkgdir/usr/bin/$pkgname"
 }
