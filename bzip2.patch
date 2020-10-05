@@ -1,0 +1,14 @@
+diff --git a/src/vokoscreenNG.pro b/src/vokoscreenNG.pro
+index 09158dec..180ab9f5 100644
+--- a/src/vokoscreenNG.pro
++++ b/src/vokoscreenNG.pro
+@@ -73,8 +73,7 @@ QMAKE_LFLAGS += -Wl,--as-needed
+ 
+ unix:CONFIG += link_pkgconfig
+ unix:PKGCONFIG += gstreamer-1.0 libpulse
+-unix:LIBS += -lpulse-simple
+-unix:PKGCONFIG += bzip2
++unix:LIBS += -lpulse-simple -lbz2
+ 
+ win32:RC_ICONS = vokoscreenNG.ico
+ 

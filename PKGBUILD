@@ -5,7 +5,7 @@
 
 _pkgname=vokoscreenNG
 pkgname=vokoscreen-git
-pkgver=3.0.5.r4.g2b49a60b
+pkgver=3.0.7.r5.gf877a1d0
 pkgrel=1
 epoch=1
 pkgdesc='An easy to use screencast creator. Development version.'
@@ -14,16 +14,22 @@ url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
 license=('GPL2')
 depends=('qt5-x11extras' 'qt5-multimedia' 'qt-gstreamer'
 	'gst-plugins-good' 'gst-plugins-bad' 'pulseaudio')
-makedepends=('git' 'qt5-tools' 'libxrandr')
+makedepends=('git' 'qt5-tools' 'libxrandr' 'bzip2')
 optdepends=('gst-plugins-ugly: for x264 video codec')
 provides=("${_pkgname%NG}=${pkgver}")
 conflicts=("${_pkgname%NG}")
-source=("git+https://github.com/vkohaupt/${_pkgname}.git")
-sha512sums=('SKIP')
+source=("git+https://github.com/vkohaupt/${_pkgname}.git" bzip2.patch)
+sha256sums=('SKIP'
+            'eafc44d38e255851f221c86dd65e9651d520041b89bdb55eecbc49d7f303ac2e')
 
 pkgver() {
   cd ${_pkgname}
   git describe --long --tags 2>/dev/null | sed -r 's/-/.r/' | tr - .
+}
+
+prepare() {
+  cd ${_pkgname}
+  git apply "$srcdir"/bzip2.patch
 }
 
 build() {
@@ -32,6 +38,7 @@ build() {
   qmake-qt5 ../${_pkgname}/src/ \
 	    QMAKE_CFLAGS="${CFLAGS}" \
 	    QMAKE_CXXFLAGS="${CXXFLAGS}" \
+	    QMAKE_LDFLAGS="${LDFLAGS} -lbz2" \
 	    CONFIG+=release \
 	    CONFIG+=c++14 
   make
