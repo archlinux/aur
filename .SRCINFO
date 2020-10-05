@@ -1,7 +1,7 @@
 pkgbase = python-torchvision
 	pkgdesc = Datasets, transforms, and models specific to computer vision
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/pytorch/vision
 	arch = x86_64
 	license = BSD
@@ -21,6 +21,7 @@ pkgbase = python-torchvision
 	depends = python-tqdm
 	optdepends = ffmpeg: video reader backend (the recommended one with better performance)
 	optdepends = python-av: video reader backend (the default one)
+	optdepends = python-pycocotools: support for MS-COCO dataset
 	source = vision-0.7.0.tar.gz::https://github.com/pytorch/vision/archive/v0.7.0.tar.gz
 	sha512sums = f22c8fd67f4efafa4a934ed5014e1ad661d0d0a800d4c8ae0e6b85f4860a5dc131c513428028949c9130486ba24ecf8a9f6b9881efc68a0c2158110924d05e81
 
