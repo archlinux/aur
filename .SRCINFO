@@ -1,7 +1,7 @@
 pkgbase = python-keras2onnx
 	pkgdesc = Convert tf.keras/Keras models to ONNX
-	pkgver = 1.7.0.40.g0c037e5
-	pkgrel = 1
+	pkgver = 1.7.0.46.g9b9fc36
+	pkgrel = 2
 	url = https://github.com/onnx/keras-onnx
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = python-keras2onnx
 	depends = python-onnxconverter-common
 	depends = python-fire
 	depends = python-tensorflow
-	source = git+https://github.com/onnx/keras-onnx.git#commit=0c037e5968c0b5dc6bb12dcf4edcfdeeaf4c964f
+	source = git+https://github.com/onnx/keras-onnx.git#commit=9b9fc367c30e3a6c2f8a8464db4c3cced52df4ab
 	sha256sums = SKIP
 
 pkgname = python-keras2onnx
