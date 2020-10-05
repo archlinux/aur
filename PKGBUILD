@@ -39,7 +39,7 @@ _srcdir=Proton-${_pkgver}
 _protondir=usr/share/steam/compatibilitytools.d/${_pkgname}
 _licensedir=usr/share/licenses/${_pkgname}
 _pfxdir=var/games/pfx_${_pkgname}
-_execfile=usr/local/bin/proton
+_execfile=usr/bin/proton
 _protoncfg=${_protondir}/user_settings.py
 
 ## user edited files to backup
