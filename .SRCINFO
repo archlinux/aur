@@ -1,0 +1,11 @@
+pkgbase = deusex-utglr
+	pkgdesc = updated opengl render for deus ex
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://www.cwdohnal.com/utglr/
+	arch = x86_64
+	source = https://www.cwdohnal.com/utglr/dxglr21.zip
+	sha256sums = SKIP
+
+pkgname = deusex-utglr
+
