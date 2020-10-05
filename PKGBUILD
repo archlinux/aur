@@ -7,22 +7,27 @@
 pkgname=toggldesktop-git
 _pkgname=toggldesktop
 pkgver=7.5.50.r0.gb3a38da9e
-pkgrel=2
+pkgrel=3
 pkgdesc="Toggl time tracking software"
 arch=('x86_64')
 url="https://github.com/toggl-open-source/toggldesktop"
 license=('BSD')
 depends=(
+  'jsoncpp'
   'libxss'
-  'qt5-base'
-  'qt5-webengine'
-  'qt5-x11extras'
+  'lua'
   'openssl'
   'poco'
-  'lua'
-  'jsoncpp'
+  'qt5-base'
+  'qt5-networkauth'
+  'qt5-webengine'
+  'qt5-x11extras'
 )
-makedepends=('cmake' 'ninja')
+makedepends=(
+  'cmake'
+  'git'
+  'ninja'
+)
 conflicts=("${_pkgname}" "${_pkgname}-bin" 'toggl-bin')
 provides=("${_pkgname}")
 source=(
@@ -30,10 +35,8 @@ source=(
   "jsoncpp.patch"
 )
 
-sha512sums=(
-  'SKIP'
-  '05813df185163e1361d99cf24291bd44bdfefeee050b56f2923fb909c2c57d532e0a459cdaea96504ed10d27004fe3ee9f3c34ec35bcc9f9f2e064cccd8cfe77'
-)
+sha512sums=('SKIP'
+            '05813df185163e1361d99cf24291bd44bdfefeee050b56f2923fb909c2c57d532e0a459cdaea96504ed10d27004fe3ee9f3c34ec35bcc9f9f2e064cccd8cfe77')
 
 pkgver() {
   cd "${_pkgname}"
