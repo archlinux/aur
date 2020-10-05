@@ -1,7 +1,7 @@
 pkgbase = devscripts
 	pkgdesc = Scripts to make the life of a Debian Package maintainer easier
 	pkgver = 2.19.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tracker.debian.org/pkg/devscripts
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = devscripts
 	makedepends = perl-libwww
 	makedepends = perl-list-compare
 	makedepends = perl-parse-debcontrol
+	makedepends = perl-pod-parser
 	makedepends = perl-timedate
 	makedepends = po4a
 	makedepends = python-setuptools

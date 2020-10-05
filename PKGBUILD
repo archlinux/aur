@@ -6,7 +6,7 @@
 
 pkgname=devscripts
 pkgver=2.19.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts to make the life of a Debian Package maintainer easier"
 arch=('i686' 'x86_64')
 url="https://tracker.debian.org/pkg/devscripts"
@@ -25,6 +25,7 @@ makedepends=(
     'perl-libwww'
     'perl-list-compare'
     'perl-parse-debcontrol'
+    'perl-pod-parser'
     'perl-timedate'
     'po4a'
     'python-setuptools'
