@@ -22,9 +22,9 @@ pkgname=(
   "$pkgbase" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=19.0a1
+pkgver=19.0a2
 #_major=18.7.1
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -92,7 +92,7 @@ noextract=(
   "flatbuffers-$_flatbuffers_version.tar.gz"
   "spdlog-$_spdlog_version.tar.gz"
 )
-sha256sums=('3c66715448e18f95bc5e8a3075f95e643f3b2c0bae3957f2abb5b567b7e7eceb'
+sha256sums=('b581e7eaa319e7ab98295a5ba5a569af17c19b7987a34e5212704cf2ba2d1650'
             '38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
             'a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf'

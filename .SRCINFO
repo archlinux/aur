@@ -1,6 +1,6 @@
 pkgbase = kodi-devel
-	pkgver = 19.0a1
-	pkgrel = 2
+	pkgver = 19.0a2
+	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
 	license = GPL2
@@ -64,7 +64,7 @@ pkgbase = kodi-devel
 	noextract = fstrcmp-0.7.D001.tar.gz
 	noextract = flatbuffers-1.11.0.tar.gz
 	noextract = spdlog-1.5.0.tar.gz
-	source = kodi-19.0a1-Matrix.tar.gz::https://github.com/xbmc/xbmc/archive/19.0a1-Matrix.tar.gz
+	source = kodi-19.0a2-Matrix.tar.gz::https://github.com/xbmc/xbmc/archive/19.0a2-Matrix.tar.gz
 	source = libdvdcss-1.4.2-Leia-Beta-5.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.2-Leia-Beta-5.tar.gz
 	source = libdvdnav-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.0.0-Leia-Alpha-3.tar.gz
 	source = libdvdread-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdread/archive/6.0.0-Leia-Alpha-3.tar.gz
@@ -76,7 +76,7 @@ pkgbase = kodi-devel
 	source = http://mirrors.kodi.tv/build-deps/sources/spdlog-1.5.0.tar.gz
 	source = cpuinfo
 	source = 000-python3.8.patch
-	sha256sums = 3c66715448e18f95bc5e8a3075f95e643f3b2c0bae3957f2abb5b567b7e7eceb
+	sha256sums = b581e7eaa319e7ab98295a5ba5a569af17c19b7987a34e5212704cf2ba2d1650
 	sha256sums = 38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d
 	sha256sums = 071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a
 	sha256sums = a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf
@@ -107,7 +107,7 @@ pkgname = kodi-devel
 	optdepends = shairplay: AirPlay support
 	optdepends = upower: Display battery level
 	provides = xbmc
-	provides = kodi=19.0a1
+	provides = kodi=19.0a2
 	conflicts = xbmc
 	replaces = xbmc
 
@@ -135,7 +135,7 @@ pkgname = kodi-devel-x11
 	depends = tinyxml
 	depends = kodi-devel
 	provides = KODI-BIN
-	provides = kodi-x11=19.0a1
+	provides = kodi-x11=19.0a2
 	replaces = kodi-bin
 
 pkgname = kodi-devel-wayland
@@ -162,7 +162,7 @@ pkgname = kodi-devel-wayland
 	depends = waylandpp
 	depends = kodi-devel
 	provides = KODI-BIN
-	provides = kodi-wayland=19.0a1
+	provides = kodi-wayland=19.0a2
 
 pkgname = kodi-devel-gbm
 	pkgdesc = gbm kodi binary
@@ -188,12 +188,12 @@ pkgname = kodi-devel-gbm
 	depends = tinyxml
 	depends = kodi-devel
 	provides = KODI-BIN
-	provides = kodi-gbm=19.0a1
+	provides = kodi-gbm=19.0a2
 
 pkgname = kodi-devel-eventclients
 	pkgdesc = Kodi Event Clients
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=19.0a1
+	provides = kodi-eventclients=19.0a2
 	conflicts = kodi-eventclients
 
 pkgname = kodi-devel-tools-texturepacker
@@ -202,12 +202,12 @@ pkgname = kodi-devel-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=19.0a1
+	provides = kodi-tools-texturepacker=19.0a2
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-devel-dev
 	pkgdesc = Kodi dev files
 	depends = kodi-devel
-	provides = kodi-dev=19.0a1
+	provides = kodi-dev=19.0a2
 	conflicts = kodi-dev
 
