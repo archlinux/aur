@@ -6,7 +6,7 @@ pkgbase = jcloisterzone5
 	arch = any
 	license = AGPL
 	depends = java-runtime>=11
-	depends = nodejs-lts-erbium
+	depends = nodejs>=12.13.0
 	conflicts = jcloisterzone
 	options = !strip
 	source = https://github.com/farin/JCloisterZone-Client/releases/download/v5.0.10/jcloisterzone-5.0.10.deb
