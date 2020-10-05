@@ -36,7 +36,7 @@ index 90cf23d3e13..f625efaa542 100644
 -  SET(EMBREE_LIBRARIES ${_embree_LIBRARIES})
 +  SET(EMBREE_LIBRARIES ${EMBREE_LIBRARY})
    SET(EMBREE_INCLUDE_DIRS ${EMBREE_INCLUDE_DIR})
- ENDIF(EMBREE_FOUND)
+ ENDIF()
  
 diff --git a/intern/cycles/blender/CMakeLists.txt b/intern/cycles/blender/CMakeLists.txt
 index 2316800e21e..591841152e2 100644
