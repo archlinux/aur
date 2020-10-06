@@ -2,7 +2,7 @@
 
 pkgname=tasmotizer-git
 _pkgname=tasmotizer
-pkgver=r42.810760d
+pkgver=r43.a2d048f
 pkgrel=1
 pkgdesc="The full-featured flashing tool for Tasmota. With the great ESPtool from Espressif under the hood, and all required settings by default."
 arch=('any')
@@ -37,7 +37,7 @@ pkgver() {
 package() {
     cd "$srcdir/$_pkgname"
 
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python setup.py install --root="$pkgdir" --optimize=1
     
     mv $pkgdir/usr/bin/"$_pkgname".py $pkgdir/usr/bin/"$_pkgname"
     

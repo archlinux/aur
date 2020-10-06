@@ -1,6 +1,6 @@
 pkgbase = tasmotizer-git
 	pkgdesc = The full-featured flashing tool for Tasmota. With the great ESPtool from Espressif under the hood, and all required settings by default.
-	pkgver = r42.810760d
+	pkgver = r43.a2d048f
 	pkgrel = 1
 	url = https://github.com/tasmota/tasmotizer
 	arch = any
