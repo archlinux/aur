@@ -9,7 +9,7 @@ url='https://github.com/elementary/screenshot-tool'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 
-         'gtk3' 'libcanberra' 'libhandy1'
+         'gtk3' 'libcanberra' 'libhandy'
          'libgranite.so')
 makedepends=('git' 'granite' 'intltool' 'meson' 'vala')
 provides=('pantheon-screenshot')
