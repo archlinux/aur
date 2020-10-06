@@ -1,11 +1,12 @@
+# Maintainer: Atomisirsi <atomisirsi@gsklan.de>
 # Maintainer: farwayer <farwayer@gmail.com>
 # Submitter: Francisco Demartino <demartino.francisco@gmail.com>
 
-_ver=1.4.4
+_ver=1.4.5
 _pkgname=telegram-purple
 pkgname=${_pkgname}-git
-pkgver=1.4.4.r1563.85ff0ed
-pkgrel=2
+pkgver=1.4.5.r1577.6f5500f
+pkgrel=1
 pkgdesc="Adds support for Telegram to Pidgin, Adium, Finch and other Libpurple based messengers."
 arch=('any')
 url="https://github.com/majn/telegram-purple"
