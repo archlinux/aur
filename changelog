@@ -1,3 +1,45 @@
+
+Proton-5.9-GE-7-ST
+
+GloriousEggroll released this Oct 5, 2020
+
+Update: 10/6/2020
+
+    Fixed a regression caused by an upstream pending vulkan patch that caused Horizon Zero Dawn to crash for nvidia users
+    Fixed the Serious Sam 4 protonfix -- now launches using DX12, as that version works in both AMD and Nvidia (Nvidia vulkan has a hang)
+    -- Note: The weird flicker bug is present across all APIs - DX11, DX12, and Vulkan.
+
+Attached build has been updated. Please re-download
+
+This release just has a butt ton of game fixes. Some full, some partial. Some important notes are that a workaround has been found for multiplayer desync in some games (SUCH AS MK11 AND AGE OF EMPIRES II:DE !!!).Yes, that's right, MK11 multiplayer finally works, -and- renders correctly as far as I could tell. If you know of other games that have desyncing with multiplayer, they will likely need the custom vcrun2019_ge winetricks verb I've added to protonfixes. Also it's highly recommended to update your graphics drivers for games such as HZD, Death Stranding, Serious Sam 4. AMD users mesa-git, Nvidia users 455.23.04 beta.
+So let's get down to the fixes:
+    Path of Exile protonfix modified for native dxgi - fixes using wrong gpu on igpu+dgpu systems
+    Path of Exile waitforpreload and garbage collection launch options removed from protonfix
+    Mafia:DE and Mafia:II DE protonfixes added - both fully playable now
+    Age of Empires II: DE protonfix added - fixes online multiplayer desync
+    Mortal Kombat 11 protonfix added - fixes online multiplayer desync
+    Monster Hunter World protonfix added to auto-enable seccomp (necessary as of latest update)
+    Endless Space 2 Fixed incorrect video color
+    Saints Row 2 protonfix added which allows menu, cutscene, and in-game audio to work
+    Bloons TD6 missing wbemprox patch added to make Bloons TD6 devs happier: ValveSoftware#2330 (comment)
+    Marvel Avengers patches and protonfix added to allow game to run - note this is still very buggy:
+    -- dx12 does not work, so dx11 is forced
+    -- dx11 is not intended to be used in this game, however it has dx11 functionality built in
+    -- there are graphical glitches currently in the dx11 renderer
+    -- there are still random crashes
+    Serious Sam 4 protonfix added to force to run on Vulkan - important notes:
+    -- the game still does not launch on nvidia, no matter what API is used (vulkan,d3d12,d3d11)
+    -- on RADV and AMDVLK, there is a bad texture flicker, noted here: https://gitlab.freedesktop.org/mesa/mesa/-/issues/3563
+    vkd3d-proton updated to temporarily use github.com/intersectRaven's fork of vkd3d-proton for the vram workaround for Horizon Zero Dawn- notes:
+    -- This build is temporarily using github.com/intersectRaven's fork of vkd3d-proton for the vram workaround for Horizon Zero Dawn. A proper fix for horizon zero dawn running out of vram has not yet been found, however this should allow the game to not crash within short time periods. Details here: HansKristian-Work/vkd3d-proton#266 (comment)
+    -- for nvidia, nvidia beta driver 455.23.04 fixes the floating objects in horizon zero dawn
+    -- for amd, mesa 20.1.9 or higher fixes various graphical issues
+    vulkan patches updated in wine through current git (5.19) and some deprecated proton patches removed. This seems to also allow the vsync option in HZD to not break the game, and seems to run overall smoother in some vulkan native titles (Doom Eternal, SS4, Path of Exile)
+    mfplat, quartz, gstreamer patches update in wine through current git (5.19)
+    dxvk updated
+    faudio updated
+
+
 Proton-5.9-GE-6-ST
 
 GloriousEggroll released this Sep 17, 2020
