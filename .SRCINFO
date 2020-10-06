@@ -1,0 +1,27 @@
+pkgbase = nixnote2-appimage
+	pkgdesc = Nixnote is Evernote desktop client for Linux and macOS
+	pkgver = 2.1.6
+	pkgrel = 1
+	url = https://github.com/robert7/nixnote2
+	arch = x86_64
+	license = GPL3
+	depends = gtk2
+	depends = libnotify
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	depends = libxss
+	provides = nixnote2-appimage
+	conflicts = nixnote2
+	conflicts = nixnote2-git
+	options = !strip
+	options = !emptydirs
+	source = NixNote2-x86_64.AppImage::https://github.com/robert7/nixnote2/releases/download/v2.1.6/NixNote2-x86_64.AppImage
+	source = nixnote2.desktop
+	source = nixnote2.png
+	sha256sums = ce8821c816c1b7f10f95c1bb076e6761fb8a95bbc65baa5bf7df6b5425189eee
+	sha256sums = ef23c8f133114827ed455d4f4bb88394b1209159c3b37e04f829619ed093b8bd
+	sha256sums = 4272984c0eae4f8b3f38285d5c7f11ee7cd854df4edfd607395314074d658edc
+
+pkgname = nixnote2-appimage
+

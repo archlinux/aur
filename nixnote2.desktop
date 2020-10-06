@@ -1,0 +1,20 @@
+[Desktop Entry]
+Name=NixNote2
+#Comment=Create notes and sync with Evernote
+Comment=Use with Evernote to remember everything
+GenericName=NixNote2
+Exec=/usr/bin/nixnote2
+Icon=/opt/nixnote2/nixnote2.png
+StartupNotify=true
+Terminal=false
+Type=Application
+#Categories=Utility
+Categories=Office;Network;
+#MimeType=application/x-vnd.cryptomator-vault-metadata
+Categories=Qt;Utility;Network;
+Keywords=NixNote2;Text;Evernote;note;
+
+Actions=NewNote;
+[Desktop Action NewNote]
+Name=New Note
+Exec=/usr/bin/nixnote2 --newNote
