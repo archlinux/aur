@@ -1,6 +1,6 @@
 pkgbase = pulseaudio-ctl
 	pkgdesc = Control pulseaudio volume from the shell or mapped to keyboard shortcuts.
-	pkgver = 1.67
+	pkgver = 1.68
 	pkgrel = 1
 	url = https://github.com/graysky2/pulseaudio-ctl
 	install = readme.install
@@ -12,8 +12,8 @@ pkgbase = pulseaudio-ctl
 	optdepends = libnotify: to display volume and mute status
 	conflicts = pulseaudio_ctl
 	replaces = pulseaudio_ctl
-	source = pulseaudio-ctl-1.67.tar.gz::https://github.com/graysky2/pulseaudio-ctl/archive/v1.67.tar.gz
-	sha256sums = 7e0ae9f96b44ae6e5d361133aa89b7bbf3136407f164f1545f030f8bee7fa635
+	source = pulseaudio-ctl-1.68.tar.gz::https://github.com/graysky2/pulseaudio-ctl/archive/v1.68.tar.gz
+	b2sums = a126730f53687b8456ed06f205e13d9380f7cadd4581430b4263dff65ebd33b22ad698cad4271402f873d9fa6c3499fd805ba02e9108723dcd60690016fcc196
 
 pkgname = pulseaudio-ctl
 
