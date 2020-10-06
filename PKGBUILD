@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=giara-git
-pkgver=r86.5d92db6
+pkgver=r100.8eb6e84
 pkgrel=1
 epoch=
 pkgdesc="Reddit gtk client"
@@ -11,7 +11,7 @@ license=('GPL3')
 groups=()
 depends=(
 	'gtksourceview4'
-	'libhandy1'
+	'libhandy>=1'
 	'python-dateutil'
 	'python-flask'
 	'python-gobject'
