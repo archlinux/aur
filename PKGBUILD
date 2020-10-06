@@ -1,7 +1,7 @@
 # Maintainer: Ilaï Deutel
 
 pkgname=cargo-lock
-pkgver=4.0.1
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Cargo subcommand to analyze Cargo.toml packages and translate Cargo.lock files"
 url="https://github.com/RustSec/cargo-lock"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 arch=('x86_64')
 license=('MIT' 'APACHE')
 source=("https://github.com/RustSec/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7fd41181d03027207581ccd3496ae99241b44e284b9e1aec6a32cd10b2fd0762')
+sha256sums=('aadeb034d5d88408eea3d165609519dae0ab2e8aa8499326681e33718299dd79')
 
 build() {
   cd "${pkgname}-${pkgver}"
