@@ -1,6 +1,6 @@
 pkgbase = python-google-cloud-storage
 	pkgdesc = Google Cloud Storage API client library
-	pkgver = 1.31.1
+	pkgver = 1.31.2
 	pkgrel = 1
 	url = https://github.com/googleapis/python-storage
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-google-cloud-storage
 	depends = python-google-resumable-media
 	depends = python-protobuf
 	depends = python-google-api-core
-	source = python-google-cloud-storage-1.31.1.tar.gz::https://github.com/googleapis/python-storage/archive/v1.31.1.tar.gz
-	sha256sums = 36951c4a6cb5b534723bbd4fa926d541edc18984474b871c221b8cdd6070316e
+	source = python-google-cloud-storage-1.31.2.tar.gz::https://github.com/googleapis/python-storage/archive/v1.31.2.tar.gz
+	sha256sums = 309e7cf8c86bba4887499c88e8a98dbef5231088bbf6c030556d4611e09577c8
 
 pkgname = python-google-cloud-storage
 
