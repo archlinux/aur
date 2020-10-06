@@ -2,44 +2,42 @@
 # Contributor: Edison Ibañez <edison@opmbx.org>
 
 pkgname=sqlectron-gui
-pkgver=1.30.0
-pkgrel=4
+pkgver=1.32.0
+pkgrel=1
 pkgdesc="A simple and lightweight SQL client with cross database and platform support"
 arch=('x86_64')
 url="https://sqlectron.github.io/"
 license=('MIT')
-depends=('electron2')
+depends=('electron5')
 makedepends=(
 	'asar'
 	'libsass'
+	'nodejs'
 	'npm'
+	'python2'
 )
-source=("https://github.com/sqlectron/sqlectron-gui/archive/v${pkgver}.tar.gz"
-        'sqlectron-gui.sh'
-		'sqlectron-gui.desktop'
-		'node.sh'
+source=(
+	"https://github.com/sqlectron/sqlectron-gui/archive/v${pkgver}.tar.gz"
+	'sqlectron-gui.sh'
+	'sqlectron-gui.desktop'
 )
 
-sha1sums=('467869f0678cc0e99ca268c9c3d1aafc565c130f'
-          '6ad81d34e04c1760d4be27f0e4ec25ff5267deca'
-          'b9fb3bc29a17dee5de9295e2fdb2b3025ed51d1f'
-          '1c03020a3cba2e4d054ff565d3b607efb8f8cf58')
+sha1sums=('f8a7c8a8367518d9acb25277a7734e7ea8e61fe8'
+          '24ea99fbf25d936d05d197638cfad2e1dc6a6d93'
+          'b9fb3bc29a17dee5de9295e2fdb2b3025ed51d1f')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 
 	# remove extra dependencies
 	sed -i package.json \
-		-e '/"node-sass":/  s/3\.4\.2/4.11.0/' \
 		-e '/"postinstall":/            d' \
 		-e '/"electron":/               d' \
 		-e '/"electron-builder":/       d' \
 		-e '/"spawn-auto-restart":/     d' \
 		-e '/"webpack-dev-middleware":/ d' \
 		-e '/"webpack-dev-server":/     d' \
-		-e '/"webpack-bundle-analyzer":/ s/,$//'
-
-	install -Dm0755 "$srcdir/node.sh" "$srcdir/bin/node"
+		-e '/"webpack-cli":/ s/,$//'
 }
 
 build() {
@@ -49,27 +47,28 @@ build() {
 	export SASS_FORCE_BUILD=1
 	export LIBSASS_EXT=auto
 	export npm_config_optional=false
-	export npm_config_nodedir=/usr/lib/electron2/node
 	export npm_config_scripts_prepend_node_path=false
+	export npm_config_build_from_source=true
+	export npm_config_sqlite=/usr
 
-	npm install --build-from-source
+	npm install
 
 	npm run compile:browser
 	npm run compile:renderer
 
 	mkdir app
-	mv -t ./app out
-	cp -t ./app package.json
+	mv -t  app out
+	cp -rt app build package.json
 
-	pushd app
-	npm install \
-		--production \
-		--build-from-source \
-		--runtime=electron \
-		--target=$(</usr/lib/electron2/version)
-	popd
+	cd app
 
-	asar p app app.asar
+	export npm_config_arch=x64
+	export npm_config_target_arch=x64
+	export npm_config_runtime=electron
+	export npm_config_target=$(</usr/lib/electron5/version)
+	export npm_config_disturl=https://electronjs.org/headers
+
+	HOME="$srcdir/.electron-gyp" npm install --production
 }
 
 package() {
@@ -79,6 +78,7 @@ package() {
 
 	install -Dm0644 build/app.png "${pkgdir}/usr/share/pixmaps/sqlectron-gui.png"
 
+	asar p app app.asar
 	install -Dm0644 -t "${pkgdir}/usr/lib/sqlectron-gui" app.asar
 
 	install -Dm0644 -t "${pkgdir}/usr/share/applications"  ../sqlectron-gui.desktop
