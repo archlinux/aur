@@ -2,7 +2,7 @@ pkgname="mcreator"
 _pkgname="MCreator"
 pkgver="2020.4"
 _pkgver="20204"
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 pkgdesc="MCreator is a software used to make Minecraft mods and data packs using intuitive easy-to-learn interface or with an integrated code editor. It is used worldwide by Minecraft players, aspiring mod developers, for education and by STEM workshops."
 url="https://mcreator.net"
@@ -18,14 +18,13 @@ md5sums_x86_64=('SKIP' 'SKIP')
 
 prepare() {
     # make desktop
-    rm -rf "${srcdir}/${_pkgname}${_pkgver}/jdk"
     gendesk --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
 }
 
 package() {
     # Remove Bundled Java
-    cd "${srcdir}/${_pkgname}"
-    rm -rf "${srcdir}/${_pkgname}/jdk"
+    cd "${srcdir}/${_pkgname}${_pkgver}/jdk"
+
     # install the main files.
     cd ${srcdir}/${_pkgname}${_pkgver}
     install -d -m755 "${pkgdir}/opt/${pkgname}"

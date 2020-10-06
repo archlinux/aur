@@ -1,7 +1,7 @@
 pkgbase = mcreator
 	pkgdesc = MCreator is a software used to make Minecraft mods and data packs using intuitive easy-to-learn interface or with an integrated code editor. It is used worldwide by Minecraft players, aspiring mod developers, for education and by STEM workshops.
 	pkgver = 2020.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://mcreator.net
 	arch = x86_64
 	license = ARR
