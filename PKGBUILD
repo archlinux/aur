@@ -2,16 +2,14 @@
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
-pkgname=('swift-llvm-git' 'swift-llvm-libs-git' 'swift-llvm-ocaml-git')
+pkgname=('swift-llvm-git' 'swift-llvm-libs-git')
 instprefix="usr/lib/swift-git"
 pkgver=10.0.1
 pkgrel=3
-_ocaml_ver=4.11.1
 arch=('x86_64')
 url="https://github.com/apple/swift-llvm"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
-             "ocaml>=$_ocaml_ver" 'ocaml-ctypes' 'ocaml-findlib'
              'python-sphinx' 'python-recommonmark')
 options=('staticlibs')
 source=(
@@ -51,7 +49,7 @@ build() {
     -DLLVM_ENABLE_DOXYGEN=OFF \
     -DSPHINX_WARNINGS_AS_ERRORS=OFF \
     -DLLVM_BINUTILS_INCDIR=/usr/include
-  ninja all ocaml_doc
+  ninja all
 }
 
 check() {
@@ -84,11 +82,6 @@ package_swift-llvm-git() {
   mv -f "$pkgdir"/$instprefix/lib/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
   mv -f "$pkgdir"/$instprefix/lib/LLVMgold.so "$srcdir"
 
-  # OCaml bindings go to a separate package
-  rm -rf "$srcdir"/ocaml.{lib,doc}
-  mv "$pkgdir/$instprefix/lib/ocaml" "$srcdir/ocaml.lib"
-  mv "$pkgdir/$instprefix/share/doc/$pkgname/ocaml-html" "$srcdir/ocaml.doc"
-
 # do not do in a first version until somebody reports a bug
 #  if [[ $CARCH == x86_64 ]]; then
 #    # Needed for multilib (https://bugs.archlinux.org/task/29951)
@@ -116,20 +109,6 @@ package_swift-llvm-libs-git() {
   # https://bugs.archlinux.org/task/28479
   install -d "$pkgdir/$instprefix/lib/bfd-plugins"
   ln -s ../LLVMgold.so "$pkgdir/$instprefix/lib/bfd-plugins/LLVMgold.so"
-
-  install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
-    "$pkgdir/$instprefix/share/licenses/$pkgname/LICENSE"
-}
-
-package_swift-llvm-ocaml-git() {
-  pkgdesc="OCaml bindings for LLVM"
-  depends=('swift-llvm' "ocaml=$_ocaml_ver" 'ocaml-ctypes')
-  conflicts=(swift-llvm-ocaml)
-  provides=(swift-llvm-ocaml)
-
-  install -d "$pkgdir"/$instprefix/lib,$instprefix/share/doc/$pkgname}
-  cp -a "$srcdir/ocaml.lib" "$pkgdir/$instprefix/lib/ocaml"
-  cp -a "$srcdir/ocaml.doc" "$pkgdir/$instprefix/share/doc/$pkgname/html"
 
   install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
     "$pkgdir/$instprefix/share/licenses/$pkgname/LICENSE"
