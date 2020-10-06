@@ -1,6 +1,6 @@
 # Maintainer: Gregory Dushkin (GregTheMadMonk) <yagreg7@gmail.com>
 pkgname=gnome-shell-extension-cmus-status-git
-pkgver=7
+pkgver=8
 pkgrel=1
 pkgdesc="A GNOME shell extension for displaying controlling cmus status via cmus-remote"
 arch=(any)
