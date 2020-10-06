@@ -1,0 +1,19 @@
+pkgbase = qt6-svg
+	pkgdesc = Classes for displaying the contents of SVG files
+	pkgver = 6.0.0alpha
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-alpha/submodules/qtsvg-everywhere-src-6.0.0-alpha.tar.xz
+	sha256sums = 1ff80c015fe044fa1b625d37830b02e0cc780ee92638a1b7a5561adb5a0546ee
+
+pkgname = qt6-svg
+
