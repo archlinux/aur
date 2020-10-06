@@ -9,7 +9,7 @@ depends=(
 	gtk3
 	gst-plugins-base
 	gst-plugins-good
-	libhandy1
+	'libhandy>=1.0.0'
 )
 makedepends=(
 	meson
