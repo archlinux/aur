@@ -5,16 +5,16 @@
 #_jdkname=liberica-jre-8-full
 pkgname="liberica-jre-full"
 #_java_ver=11
-pkgver=8
+pkgver=11
 pkgrel=1
-pkgdesc='[Metapackage JRE $pkgver] BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
+pkgdesc='[Metapackage] BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.'
 arch=(aarch64 armv7h armv8h x86_64)
 url='https://bell-sw.com/'
 license=('custom')
-depends=('liberica-jre-8-full-bin')
+depends=('liberica-jre-11-full-bin')
 optdepends=()
 provides=(
-  "liberica-jre-8-bin=$pkgver"
+  "liberica-jre-11-bin=$pkgver"
 )
 
 #install=$_jdkname.install

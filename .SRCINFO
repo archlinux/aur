@@ -1,6 +1,6 @@
 pkgbase = liberica-jre-full
-	pkgdesc = [Metapackage JRE $pkgver] BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.
-	pkgver = 8
+	pkgdesc = [Metapackage] BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.
+	pkgver = 11
 	pkgrel = 1
 	url = https://bell-sw.com/
 	arch = aarch64
@@ -8,8 +8,8 @@ pkgbase = liberica-jre-full
 	arch = armv8h
 	arch = x86_64
 	license = custom
-	depends = liberica-jre-8-full-bin
-	provides = liberica-jre-8-bin=8
+	depends = liberica-jre-11-full-bin
+	provides = liberica-jre-11-bin=11
 
 pkgname = liberica-jre-full
 
