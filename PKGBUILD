@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-developer-ffmpeg-codecs
-pkgver=87.0.4263.3
+pkgver=87.0.4270.0
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-developer"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('071cc9f88ad7229619b101911202f9c0fa094c99238a20ade793a9e013e2bb497033fb1a1c4458218003f1892e4a3018ac103ea0bf28a44ea689cb4b4cb4c17d')
+sha512sums=('76cbf88b1390c2e64d6615e29763f00493b94beff5836c240833840b1b50fa782c137ebc66a81a6940f35052895bdc0098fefca5e6cc46f56dbc2b8b2184ca6f')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
@@ -39,6 +39,10 @@ build() {
 
   # ui/gfx/x/gen_xproto.py needs xcbgen
   export PYTHONPATH=$srcdir
+
+  # error while loading shared libraries: libtinfo.so.5: cannot open shared object file: No such file or directory
+  ln -s /usr/lib/libtinfo.so.6 \
+    third_party/llvm-build/Release+Asserts/lib/libtinfo.so.5
 
   export CC="clang"
   export CXX="clang++"
