@@ -2,7 +2,7 @@
 pkgname='basicanalysis'
 pkgdesc='Framework for automatic extraction of fundamental factors for Paraver traces (from BSC).'
 pkgver='0.3.6.20180531'
-pkgrel='1'
+pkgrel='2'
 arch=('any')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
@@ -19,6 +19,7 @@ package() {
 	find "cfgs" -type f -exec install -D -m644 "{}" "$pkgdir/usr/lib/basicanalysis/cfgs/" \;
 
 	# Create a symlink to the script in /usr/bin for ease of use
-	mkdir -p -m755 "$pkgdir/usr/bin"
+	mkdir -p "$pkgdir/usr/bin"
+	chmod 0755 "$pkgdir/usr/bin" "$pkgdir/usr"
 	ln -s "/usr/lib/basicanalysis/modelfactors.py" "$pkgdir/usr/bin/modelfactors.py"
 }
