@@ -110,7 +110,7 @@ package_swift-llvm-libs-git() {
   install -d "$pkgdir/$instprefix/lib/bfd-plugins"
   ln -s ../LLVMgold.so "$pkgdir/$instprefix/lib/bfd-plugins/LLVMgold.so"
 
-  install -Dm644 "$srcdir/llvm-$pkgver.src/LICENSE.TXT" \
+  install -Dm644 "$srcdir/llvm-project/LICENSE.txt" \
     "$pkgdir/$instprefix/share/licenses/$pkgname/LICENSE"
 }
 
