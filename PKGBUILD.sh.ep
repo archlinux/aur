@@ -1,0 +1,14 @@
+% layout 'qt6-module';
+\
+% content_for additional_contributors => begin
+# FIXME: requires sources of the Qt modules
+% end
+\
+_qtver=6.0.0-alpha
+pkgver=${_qtver/-/}
+pkgrel=1
+arch=(any)
+url='https://www.qt.io'
+license=(GPL3 LGPL3 FDL custom)
+pkgdesc='A cross-platform application and UI framework (Documentation)'
+makedepends=(cmake qt6-tools qt6-declarative vulkan-headers ninja)

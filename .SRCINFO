@@ -1,0 +1,21 @@
+pkgbase = qt6-doc
+	pkgdesc = A cross-platform application and UI framework (Documentation)
+	pkgver = 6.0.0alpha
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = cmake
+	makedepends = qt6-tools
+	makedepends = qt6-declarative
+	makedepends = vulkan-headers
+	makedepends = ninja
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-alpha/submodules/qtdoc-everywhere-src-6.0.0-alpha.tar.xz
+	sha256sums = ea4a3239bac44f78ba57cdb9982ca37c3feb1b49ebbfb253e6fb94178c60b6ce
+
+pkgname = qt6-doc
+
