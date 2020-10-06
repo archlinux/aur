@@ -1,4 +1,5 @@
-# Maintainer:  Gabriel Souza Franco <Z2FicmllbGZyYW5jb3NvdXphQGdtYWlsLmNvbQ==>
+# Maintainer: Antoine Viallon <antoine@lesviallon.fr>
+# Contributor:  Gabriel Souza Franco <Z2FicmllbGZyYW5jb3NvdXphQGdtYWlsLmNvbQ==>
 # Contributor: Florian Pritz
 # Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
