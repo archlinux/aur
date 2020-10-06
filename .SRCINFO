@@ -1,0 +1,20 @@
+pkgbase = crunch-test
+	pkgdesc = crunch your code. Crunch is a unit testing framework written for C and C++.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/DX-MON/crunch
+	arch = x86_64
+	arch = i386
+	arch = aarch64
+	license = LGPL3
+	makedepends = ninja
+	makedepends = meson
+	provides = crunch++
+	source = https://github.com/DX-MON/crunch/releases/v1.1.1/crunch-1.1.1.tar.xz
+	source = https://github.com/DX-MON/crunch/releases/v1.1.1/crunch-1.1.1.tar.xz.asc
+	validpgpkeys = 5E30DFF73626CA96F83DDF5E0137BA904EBDB4CD
+	sha256sums = bef4d52588ebf2534387e557c235cc1ea85d5890e91c15e28689bbc06a09548f
+	sha256sums = SKIP
+
+pkgname = crunch-test
+
