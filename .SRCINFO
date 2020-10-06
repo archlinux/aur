@@ -1,0 +1,17 @@
+pkgbase = lounge-gtk-theme
+	pkgdesc = Simple and clean theme, based on original Adwaita
+	pkgver = 1.24
+	pkgrel = 1
+	url = https://github.com/monday15/lounge-gtk-theme
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = sassc
+	makedepends = gnome-shell
+	depends = gtk3
+	conflicts = lounge-gtk-theme-git
+	source = lounge-gtk-theme-1.24.tar.gz::https://github.com/monday15/lounge-gtk-theme/archive/1.24.tar.gz
+	sha512sums = bad9ccbfd0007c98a8a222a7fb3f7fec3d23e922bf894429d47367ee9036130bfede62f8bf08635b8efca5c834151635a585428975aefac16e5fdcd0f4fa0658
+
+pkgname = lounge-gtk-theme
+
