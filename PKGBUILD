@@ -3,7 +3,7 @@
 
 _pkgname=hydrogen
 pkgname="${_pkgname}-git"
-pkgver=1.0.0.r3715.7cdf94d3
+pkgver=1.0.0.r90.g051e723e
 pkgrel=1
 pkgdesc="An advanced drum machine (git version)"
 arch=('x86_64')
@@ -28,10 +28,10 @@ md5sums=('SKIP'
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  local version="$(git describe --tags | sed -e 's/-[^-]*-[^-]*$//;s/-/./g')"
-  local revision=$(git rev-list --count HEAD)
-  local hash=$(git rev-parse --short HEAD)
-  echo $version.r$revision.$hash
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
@@ -49,7 +49,10 @@ prepare() {
   git submodule update
 
   # update docbook dtd version
-  patch -Np1 -i "${srcdir}/fix_dtd_version.patch" || true
+  patch -Np1 -r - -i "${srcdir}/fix_dtd_version.patch" || true
+
+  # fix *.qm file installation path
+  sed -i 's|\./data/i18n|${H2_DATA_PATH}/data/i18n|' data/i18n/CMakeLists.txt
 }
 
 build() {
