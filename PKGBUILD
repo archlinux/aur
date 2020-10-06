@@ -2,7 +2,7 @@
 pkgname='qlstatus'
 pkgver=1.0.2
 pkgrel=3
-pkgdesc='A stream generator of system statistics for tiling window managers status bar'
+pkgdesc='Light and modular status bar for tiling window managers'
 arch=('x86_64')
 url='https://github.com/qlem/qlstatus'
 license=('MIT')

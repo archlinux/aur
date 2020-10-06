@@ -1,5 +1,5 @@
 pkgbase = qlstatus
-	pkgdesc = A stream generator of system statistics for tiling window managers status bar
+	pkgdesc = Light and modular status bar for tiling window managers
 	pkgver = 1.0.2
 	pkgrel = 3
 	url = https://github.com/qlem/qlstatus
