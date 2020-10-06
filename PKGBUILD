@@ -2,13 +2,14 @@
 
 pkgname=atool-git
 _pkgname=atool
-pkgver=r4.1b89353
+pkgver=r6.e8b18a2
 pkgrel=1
 pkgdesc="A script for managing file archives of various types (with zstd support)"
 arch=('any')
 url="https://github.com/solsticedhiver/atool"
 license=('GPL3')
 depends=('file' 'perl')
+makedepends=('bash')
 conflicts=('atool')
 optdepends=('bzip2: for using atool with bzip2 compressed archives'
             'cpio: for using atool with cpio archives'
@@ -34,7 +35,7 @@ pkgver() {
 build() {
   cd "${srcdir}"/${_pkgname}
 
-  ./configure --prefix=/usr --sysconfdir=/etc
+  CONFIG_SHELL=/bin/bash ./configure --prefix=/usr --sysconfdir=/etc
 }
 
 package() {

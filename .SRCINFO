@@ -1,10 +1,11 @@
 pkgbase = atool-git
 pkgdesc = A script for managing file archives of various types (with zstd support)
-pkgver = r4.1b89353
+pkgver = r6.e8b18a2
 pkgrel = 1
 url = https://github.com/solsticedhiver/atool
 arch = any
 license = GPL3
+makedepends = bash
 depends = file
 depends = perl
 optdepends = bzip2: for using atool with bzip2 compressed archives
