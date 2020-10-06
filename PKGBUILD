@@ -2,7 +2,7 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-files-git
-pkgver=r7225.f100853d3
+pkgver=r7239.813bcd1ea
 pkgrel=1
 pkgdesc='The Pantheon File Browser'
 arch=(x86_64)
@@ -10,7 +10,7 @@ url=https://github.com/elementary/files
 license=(GPL3)
 groups=(pantheon-unstable)
 depends=(
-  libhandy1
+  libhandy
   atk
   cairo
   gdk-pixbuf2
