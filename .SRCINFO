@@ -1,6 +1,6 @@
 pkgbase = python-pgmpy
 	pkgdesc = A library for Probabilistic Graphical Models
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/pgmpy/pgmpy
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-pgmpy
 	depends = python-tqdm
 	depends = python-pyparsing
 	depends = python-pytorch
-	source = https://pypi.io/packages/source/p/pgmpy/pgmpy-0.1.11.tar.gz
-	sha256sums = 1a0081ad3282099e5343ad3455efe099fbe1d77598bc2f27cdcd848b0c2fe5d8
+	source = https://pypi.io/packages/source/p/pgmpy/pgmpy-0.1.12.tar.gz
+	sha256sums = ff5b8b8ef3c22642a499d6b1633035800185de4628fb380f9fb78db08f71b7e4
 
 pkgname = python-pgmpy
 
