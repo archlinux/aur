@@ -1,17 +1,19 @@
 # Maintainer Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 
 # This script contains as well instructions for other Linux systems.
-# There you have to execute the commands in the functions(){…} below by hand.
+# Have a look what is done in the build() and package() functions below.
+# Execute the same command which are used there.
 
 # On other systems, ignore the used variables like $pkgdir, $srcdir or $startdir
 # (there $pkgdir would be the same as an undefined variable (empty),
-#  and $srcdir as well as $stardir would be the place where you have your files)
+#  and $srcdir would be the place where you have your files)
+
 
 pkgname=wesnoth-1.8
 pkgver=1.8.6+dev
 pkgrel=6
 pkgdesc="Turn-based strategy game on a fantasy world (for old replays)"
-arch=('i686' 'x86_64')
+arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.wesnoth.org"
 license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_ttf' 'sdl_net' 'boost-libs' 'zlib' 'pango' 'cairo' 'fontconfig' 'dbus' 'fribidi' 'lua51')
@@ -19,34 +21,23 @@ makedepends=('boost' 'cmake' 'git')
 # package names on Debian / Ubuntu / Mint:
 # libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl-net1.2-dev libboost-iostreams-dev libboost-regex-dev libboost-serialization-dev zlib1g-dev libpango1.0-dev libcairo2-dev libfontconfig1-dev libdbus-1-dev libfribidi-dev liblua5.1.0-dev gettext-base cmake make pkgconf gcc g++ git
 options=('!emptydirs')
-source=("wesnoth-1.8.desktop"
+source=("wesnoth-1.8-git::git+https://github.com/wesnoth/wesnoth.git#branch=1.8"
+        "wesnoth-1.8.desktop"
         "wesnothd-1.8.tmpfiles.conf"
         "wesnothd-1.8.service"
         "wesnoth-1.8.appdata.xml")
 # Not finding the files? https://aur.archlinux.org/packages/wesnoth-1.8
 # Rest assured, they are optional. Things like a launcher for your convenience…
 
-md5sums=('7fa59aab4ec96e6466dd276a76462e78'
+# Except for the wesnoth download, which can also be retrieved with this command:
+# git clone https://github.com/wesnoth/wesnoth.git -b 1.8 --shallow-exclude=1.8.6 wesnoth-1.8-git
+
+md5sums=('SKIP'
+         '7fa59aab4ec96e6466dd276a76462e78'
          'a3afc892c43bbff72a9b150de513beaf'
          '58d23c44e290cda649df336d159b5d06'
          '46f8e791922b58f4b0cea7bebef511ad')
 
-PKGEXT='.pkg.tar'
-
-prepare() {
-  cd "$startdir"
-
-  # get a shallow clone of the git repo and store it outside the srcdir
-  if  [ ! -d "wesnoth-1.8-git" ] ; then
-    git clone https://github.com/wesnoth/wesnoth -b 1.8 --shallow-exclude=1.8.6 wesnoth-1.8-git
-    msg "Git checkout done (or server timeout)"
-  fi
-
-  # Archlinux specific (hide the usage of the $startdir variable)
-  if [ ! -e "$srcdir/wesnoth-1.8-git" ] ; then
-    ln -s "$startdir/wesnoth-1.8-git" "$srcdir/wesnoth-1.8-git"
-  fi
-}
 
 build() {
   # As this is an older version and not worked on anymore, it will someday break
@@ -70,9 +61,10 @@ build() {
       -DFIFO_DIR=/run/wesnothd-1.8 \
       -DPREFERENCES_DIR=.local/share/wesnoth/1.8 \
       -DENABLE_DESKTOP_ENTRY=OFF \
-      -Wno-dev # silence cmake warnings
-  make -j 4
+      -Wno-dev
+  make
 }
+
 
 # Note: the manpages are first installed to the same place which other wesnoth
 # versions use and renamed afterwards, this may cause conflicts. One can change
@@ -115,5 +107,5 @@ package() {
   install -D -m644 "$srcdir/wesnothd-1.8.service" "$pkgdir/usr/lib/systemd/system/wesnothd-1.8.service"
 
   # All done, but it doesn't show up? Try that:
-  # update-desktop-database
+  # sudo update-desktop-database
 }
