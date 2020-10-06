@@ -1,0 +1,19 @@
+pkgbase = qt6-5compat
+	pkgdesc = Classes from Qt 5
+	pkgver = 6.0.0alpha
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-alpha/submodules/qt5compat-everywhere-src-6.0.0-alpha.tar.xz
+	sha256sums = e0d2fbfeaf40e2e00b5b124f50b5887ef09f471030536869e3e31c38b8f9e00a
+
+pkgname = qt6-5compat
+
