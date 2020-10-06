@@ -9,7 +9,7 @@ pkgbase = kbs2
 	makedepends = python
 	depends = libx11
 	source = kbs2-0.1.5.tar.gz::https://github.com/woodruffw/kbs2/archive/v0.1.5.tar.gz
-	sha512sums = SKIP
+	sha512sums = cf0723bb8382b9300013519d303fa45a9f93778af544662445bdf30ba146e1568a9ae4afd368b8f9ba3525c19fc648cd017cc3dfabf63835a8fdba2be68f196f
 
 pkgname = kbs2
 

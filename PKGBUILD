@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libx11')
 makedepends=('cargo' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('cf0723bb8382b9300013519d303fa45a9f93778af544662445bdf30ba146e1568a9ae4afd368b8f9ba3525c19fc648cd017cc3dfabf63835a8fdba2be68f196f')
 
 build() {
   cd "$pkgname-$pkgver"
