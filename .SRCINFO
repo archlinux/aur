@@ -1,8 +1,8 @@
 pkgbase = birdie-git
 	pkgdesc = Twitter client for Linux
-	pkgver = 1.1+git.99.g89a63d3
+	pkgver = 1.1+git.106.gba4adb3
 	pkgrel = 1
-	url = http://birdieapp.github.io
+	url = https://github.com/ivonunes/birdie
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -28,7 +28,7 @@ pkgbase = birdie-git
 	conflicts = birdie
 	conflicts = birdie-bzr
 	options = !libtool
-	source = birdie::git+https://github.com/birdieapp/birdie.git
+	source = birdie::git+https://github.com/ivonunes/birdie.git
 	md5sums = SKIP
 
 pkgname = birdie-git
