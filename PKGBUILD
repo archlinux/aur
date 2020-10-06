@@ -1,6 +1,6 @@
 # Maintainer: Manhong Dai <daimh@umich.edu>
 pkgname=dirfingerprint-git
-pkgver=r9.f120497
+pkgver=r10.b6c7117
 pkgrel=1
 pkgdesc="Calculate a fingerprint for directories, recursively"
 arch=('any')
