@@ -1,19 +1,19 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Frederic Bezies <fredbezies at gmail dot com0
 # Contributor : Ivo Nunes <ivoavnunes at gmail dot com>
 _pkgname="birdie"
 pkgname="${_pkgname}-git"
-pkgver=1.1+git.99.g89a63d3
+pkgver=1.1+git.106.gba4adb3
 pkgrel=1
 pkgdesc="Twitter client for Linux"
 arch=('i686' 'x86_64')
-url="http://birdieapp.github.io"
+url="https://github.com/ivonunes/birdie"
 license=('GPL3')
 depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'vala' 'granite' 'libpurple' 'gtksourceview3' 'libdbusmenu-gtk3' 'webkit2gtk') 
 makedepends=('git' 'desktop-file-utils' 'hicolor-icon-theme' 'intltool' 'yelp-tools' 'gnome-common' 'gobject-introspection' 'meson' 'ninja')
 options=('!libtool')
 conflicts=('birdie' 'birdie-bzr')
 provides=('birdie')
-source=("${_pkgname}::git+https://github.com/birdieapp/birdie.git")
+source=("${_pkgname}::git+https://github.com/ivonunes/birdie.git")
 md5sums=('SKIP')
 
 pkgver() {
