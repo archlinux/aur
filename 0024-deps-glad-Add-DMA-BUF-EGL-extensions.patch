@@ -1,7 +1,7 @@
-From 17e54962b4de4008a52c7d54d5402752a6d6f0e7 Mon Sep 17 00:00:00 2001
+From 063ff409840692bbee85ea4d5d5e63446efe7596 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Thu, 12 Mar 2020 23:57:23 -0300
-Subject: [PATCH 23/24] deps-glad: Add DMA-BUF EGL extensions
+Subject: [PATCH 24/25] deps-glad: Add DMA-BUF EGL extensions
 
 ---
  deps/glad/include/glad/glad_egl.h | 63 +++++++++++++++++++++++++++++--

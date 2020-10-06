@@ -1,7 +1,7 @@
-From f686f95d5577e39d1e230992db9667263a50b056 Mon Sep 17 00:00:00 2001
+From c5734b839a8e50e561d6ad42b3924e65800bdacf Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Tue, 7 Apr 2020 23:17:02 -0300
-Subject: [PATCH 09/24] UI: Set the Unix platform on startup
+Subject: [PATCH 09/25] UI: Set the Unix platform on startup
 
 Move the OBS_USE_EGL environment variable check to obs-app.cpp,
 and set the OBS platform to be either OBS_NIX_PLATFORM_X11_GLX
@@ -13,10 +13,10 @@ or OBS_NIX_PLATFORM_X11_EGL.
  3 files changed, 12 insertions(+), 4 deletions(-)
 
 diff --git a/UI/obs-app.cpp b/UI/obs-app.cpp
-index cf9ecabf..c62ba1da 100644
+index 7afa2209..2a8de8d9 100644
 --- a/UI/obs-app.cpp
 +++ b/UI/obs-app.cpp
-@@ -1354,6 +1354,10 @@ bool OBSApp::OBSInit()
+@@ -1377,6 +1377,10 @@ bool OBSApp::OBSInit()
  #if !defined(_WIN32) && !defined(__APPLE__)
  	obs_set_nix_platform(OBS_NIX_PLATFORM_X11_GLX);
  	if (QApplication::platformName() == "xcb") {

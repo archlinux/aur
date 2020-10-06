@@ -1,7 +1,7 @@
-From 656c0b68892d1ab455979c59dfef529924c57bff Mon Sep 17 00:00:00 2001
+From 8a8757b4b6ce1e74d68c9fe6a3f31fad906c0fe7 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Thu, 20 Aug 2020 11:58:45 -0300
-Subject: [PATCH 20/24] UI: Check for Expose and PlatformSurface events to
+Subject: [PATCH 20/25] UI: Check for Expose and PlatformSurface events to
  create display
 
 This is a workaround for QWaylandWindow never becoming exposed, or
@@ -9,14 +9,14 @@ receiving the QEvent::Expose [1].
 
 [1] https://bugreports.qt.io/browse/QTBUG-86176
 ---
- UI/qt-display.cpp | 58 +++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 58 insertions(+)
+ UI/qt-display.cpp | 56 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 56 insertions(+)
 
 diff --git a/UI/qt-display.cpp b/UI/qt-display.cpp
-index b230ab4e..4487d460 100644
+index b230ab4e..5d81c463 100644
 --- a/UI/qt-display.cpp
 +++ b/UI/qt-display.cpp
-@@ -10,6 +10,58 @@
+@@ -10,6 +10,56 @@
  
  #ifdef ENABLE_WAYLAND
  #include <obs-nix-platform.h>
@@ -35,7 +35,6 @@ index b230ab4e..4487d460 100644
 +		QPlatformSurfaceEvent *surfaceEvent;
 +
 +		switch (event->type()) {
-+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1)
 +		case QEvent::PlatformSurface:
 +			surfaceEvent =
 +				static_cast<QPlatformSurfaceEvent *>(event);
@@ -48,7 +47,6 @@ index b230ab4e..4487d460 100644
 +			else
 +				mTimerId = startTimer(67); // Arbitrary
 +			break;
-+#endif
 +		case QEvent::Expose:
 +			createOBSDisplay();
 +			break;
@@ -75,7 +73,7 @@ index b230ab4e..4487d460 100644
  #endif
  
  static inline long long color_to_int(const QColor &color)
-@@ -65,6 +117,12 @@ OBSQTDisplay::OBSQTDisplay(QWidget *parent, Qt::WindowFlags flags)
+@@ -65,6 +115,12 @@ OBSQTDisplay::OBSQTDisplay(QWidget *parent, Qt::WindowFlags flags)
  
  	connect(windowHandle(), &QWindow::visibleChanged, windowVisible);
  	connect(windowHandle(), &QWindow::screenChanged, screenChanged);

@@ -1,7 +1,7 @@
-From 0c2fdafdb3c0b522732905632bb01e4ada33171c Mon Sep 17 00:00:00 2001
+From d6f5ba86a0ba2b11344e9ef1f8e0b043b9860dad Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Wed, 19 Aug 2020 13:08:01 -0300
-Subject: [PATCH 17/24] UI: Rename callback to match signal name
+Subject: [PATCH 17/25] UI: Rename callback to match signal name
 
 The sizeChanged callback is connected to the screenChanged signal,
 and evidently the naming doesn't match. Rename the callback to

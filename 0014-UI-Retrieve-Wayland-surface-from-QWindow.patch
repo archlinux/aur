@@ -1,7 +1,7 @@
-From 925a05f9db662ceb3200997d085dbce682f74ffc Mon Sep 17 00:00:00 2001
+From ee7de65649ce502b68cd0b2a1da8cf15f016cc0d Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Mon, 9 Mar 2020 21:23:37 -0300
-Subject: [PATCH 14/24] UI: Retrieve Wayland surface from QWindow
+Subject: [PATCH 14/25] UI: Retrieve Wayland surface from QWindow
 
 On Wayland, we want to query the window's underlying
 platform for the Wayland surface, instead of foolishly
@@ -29,11 +29,11 @@ index 1bb97c7b..685ee6f9 100644
  	display = obs_display_create(&info, backgroundColor);
  
 diff --git a/UI/qt-wrappers.cpp b/UI/qt-wrappers.cpp
-index e8a51d37..1485a181 100644
+index b9d00a78..040d1bb6 100644
 --- a/UI/qt-wrappers.cpp
 +++ b/UI/qt-wrappers.cpp
-@@ -27,9 +27,14 @@
- #include <QKeyEvent>
+@@ -28,9 +28,14 @@
+ #include <QFileDialog>
  
  #if !defined(_WIN32) && !defined(__APPLE__)
 +#include <obs-nix-platform.h>
@@ -47,7 +47,7 @@ index e8a51d37..1485a181 100644
  static inline void OBSErrorBoxva(QWidget *parent, const char *msg, va_list args)
  {
  	char full_message[4096];
-@@ -105,15 +110,28 @@ void OBSMessageBox::critical(QWidget *parent, const QString &title,
+@@ -106,15 +111,28 @@ void OBSMessageBox::critical(QWidget *parent, const QString &title,
  	mb.exec();
  }
  
@@ -82,7 +82,7 @@ index e8a51d37..1485a181 100644
  }
  
 diff --git a/UI/qt-wrappers.hpp b/UI/qt-wrappers.hpp
-index 69996deb..f191f8f9 100644
+index 71b11354..51c4f937 100644
 --- a/UI/qt-wrappers.hpp
 +++ b/UI/qt-wrappers.hpp
 @@ -20,6 +20,7 @@

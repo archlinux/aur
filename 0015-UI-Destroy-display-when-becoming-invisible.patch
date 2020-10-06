@@ -1,7 +1,7 @@
-From 810e7a1d5e547d25da3d62ecbb25a1dcb8990d2f Mon Sep 17 00:00:00 2001
+From 8c902a15e93978d9e1c61f559a076fe5ae606503 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Tue, 18 Aug 2020 19:38:29 -0300
-Subject: [PATCH 15/24] UI: Destroy display when becoming invisible
+Subject: [PATCH 15/25] UI: Destroy display when becoming invisible
 
 When a window is made invisible, then visible again, the
 obs_display is reused. Turns out, QT destroys the wl_surface
@@ -51,13 +51,13 @@ index 685ee6f9..fc83e0e0 100644
  		if (!display) {
  			CreateDisplay();
 diff --git a/UI/qt-display.hpp b/UI/qt-display.hpp
-index a2e5a3ef..50f891f8 100644
+index 816d96bc..21308e70 100644
 --- a/UI/qt-display.hpp
 +++ b/UI/qt-display.hpp
 @@ -25,6 +25,7 @@ signals:
  public:
  	OBSQTDisplay(QWidget *parent = nullptr,
- 		     Qt::WindowFlags flags = nullptr);
+ 		     Qt::WindowFlags flags = Qt::WindowFlags());
 +	~OBSQTDisplay() { display = nullptr; }
  
  	virtual QPaintEngine *paintEngine() const override;

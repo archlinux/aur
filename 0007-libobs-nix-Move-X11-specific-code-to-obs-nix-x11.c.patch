@@ -1,7 +1,7 @@
-From 1aa93bda22845acc9dabfd4f810ce88d649de041 Mon Sep 17 00:00:00 2001
+From fa8912d9e82334714646eb3e23047fb5f00026f6 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Fri, 6 Mar 2020 17:24:33 -0300
-Subject: [PATCH 07/24] libobs/nix: Move X11-specific code to obs-nix-x11.c
+Subject: [PATCH 07/25] libobs/nix: Move X11-specific code to obs-nix-x11.c
 
 Currently, obs-nix.c is highly tied to the X11 display
 server. It includes X11 headers directly, and make use
@@ -26,10 +26,10 @@ a new function to retrieve the X11 hotkeys vtable.
  create mode 100644 libobs/obs-nix.h
 
 diff --git a/libobs/CMakeLists.txt b/libobs/CMakeLists.txt
-index 0b592d7a..1625363f 100644
+index 3702875e..e1765034 100644
 --- a/libobs/CMakeLists.txt
 +++ b/libobs/CMakeLists.txt
-@@ -180,6 +180,7 @@ elseif(APPLE)
+@@ -181,6 +181,7 @@ elseif(APPLE)
  elseif(UNIX)
  	set(libobs_PLATFORM_SOURCES
  		obs-nix.c

@@ -1,7 +1,7 @@
-From 5af41c0c15639b58491b573e6c00eb6e9c7272a2 Mon Sep 17 00:00:00 2001
+From ebefca8cedc271fcea12f85fe26521a40dc7baa8 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Thu, 12 Mar 2020 23:50:18 -0300
-Subject: [PATCH 22/24] libobs/graphics: Add Linux-only
+Subject: [PATCH 23/25] libobs/graphics: Add Linux-only
  device_texture_create_from_dmabuf
 
 The implementation are stubs as of now
@@ -221,10 +221,10 @@ index 4154688c..4e8f4e53 100644
  };
  
 diff --git a/libobs/graphics/graphics.c b/libobs/graphics/graphics.c
-index 902ba4b6..ea403ac8 100644
+index e403edb0..a2785d82 100644
 --- a/libobs/graphics/graphics.c
 +++ b/libobs/graphics/graphics.c
-@@ -1358,6 +1358,25 @@ gs_texture_t *gs_texture_create(uint32_t width, uint32_t height,
+@@ -1363,6 +1363,25 @@ gs_texture_t *gs_texture_create(uint32_t width, uint32_t height,
  						       levels, data, flags);
  }
  

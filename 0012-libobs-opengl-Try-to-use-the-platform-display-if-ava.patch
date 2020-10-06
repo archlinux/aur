@@ -1,7 +1,7 @@
-From a9847552f9b6034f78ce6aae2e4ad7a63a274c5a Mon Sep 17 00:00:00 2001
+From f867ce062bd6033291a7f1168804439f88929de5 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Sat, 11 Apr 2020 23:32:16 -0300
-Subject: [PATCH 12/24] libobs-opengl: Try to use the platform display if
+Subject: [PATCH 12/25] libobs-opengl: Try to use the platform display if
  available
 
 We need to ensure we're running all X11 code on the same display.

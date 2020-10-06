@@ -1,7 +1,7 @@
-From 00fcdb6b5f8a01da49d3325884c2e17fa15a5110 Mon Sep 17 00:00:00 2001
+From 1e1f2a08d604ef81bf73584e89544b6002a8923b Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Wed, 19 Aug 2020 10:11:08 -0300
-Subject: [PATCH 16/24] UI: Don't create obs_display when QTToGSWindow fails
+Subject: [PATCH 16/25] UI: Don't create obs_display when QTToGSWindow fails
 
 Right after showing the OBSQTDisplay widget, it may happen that a
 wl_surface is not yet created and attached to the window. When this
@@ -30,10 +30,10 @@ index fc83e0e0..c00719ce 100644
  	display = obs_display_create(&info, backgroundColor);
  
 diff --git a/UI/qt-wrappers.cpp b/UI/qt-wrappers.cpp
-index 1485a181..da5a8ef5 100644
+index 040d1bb6..446576f3 100644
 --- a/UI/qt-wrappers.cpp
 +++ b/UI/qt-wrappers.cpp
-@@ -110,8 +110,10 @@ void OBSMessageBox::critical(QWidget *parent, const QString &title,
+@@ -111,8 +111,10 @@ void OBSMessageBox::critical(QWidget *parent, const QString &title,
  	mb.exec();
  }
  
@@ -45,7 +45,7 @@ index 1485a181..da5a8ef5 100644
  #ifdef _WIN32
  	gswindow.hwnd = (HWND)window->winId();
  #elif __APPLE__
-@@ -129,10 +131,12 @@ void QTToGSWindow(QWindow *window, gs_window &gswindow)
+@@ -130,10 +132,12 @@ void QTToGSWindow(QWindow *window, gs_window &gswindow)
  			QGuiApplication::platformNativeInterface();
  		gswindow.display =
  			native->nativeResourceForWindow("surface", window);
@@ -59,7 +59,7 @@ index 1485a181..da5a8ef5 100644
  
  uint32_t TranslateQtKeyboardEventModifiers(Qt::KeyboardModifiers mods)
 diff --git a/UI/qt-wrappers.hpp b/UI/qt-wrappers.hpp
-index f191f8f9..cb244a74 100644
+index 51c4f937..604e67e0 100644
 --- a/UI/qt-wrappers.hpp
 +++ b/UI/qt-wrappers.hpp
 @@ -56,7 +56,7 @@ public:

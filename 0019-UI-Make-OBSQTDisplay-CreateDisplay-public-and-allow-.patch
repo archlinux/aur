@@ -1,7 +1,7 @@
-From 721a2b85b798f09a8458ed23198e95019dcc9bae Mon Sep 17 00:00:00 2001
+From fd3cd8b1134bc069943e1a2012f138437d210046 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Thu, 20 Aug 2020 11:57:19 -0300
-Subject: [PATCH 19/24] UI: Make OBSQTDisplay::CreateDisplay() public and allow
+Subject: [PATCH 19/25] UI: Make OBSQTDisplay::CreateDisplay() public and allow
  forcing creation
 
 This will be used by a new event filter, added only when running as a Wayland
@@ -31,7 +31,7 @@ index feed5b6c..b230ab4e 100644
  
  	QSize size = GetPixelSize(this);
 diff --git a/UI/qt-display.hpp b/UI/qt-display.hpp
-index 50f891f8..ac717b82 100644
+index 21308e70..c48c1267 100644
 --- a/UI/qt-display.hpp
 +++ b/UI/qt-display.hpp
 @@ -13,8 +13,6 @@ class OBSQTDisplay : public QWidget {

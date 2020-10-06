@@ -1,7 +1,7 @@
-From 0bbcf8f5989342a8dd5115a8792bec6706e5bc54 Mon Sep 17 00:00:00 2001
+From 986bb88baa8836c90abc0a3d621f98b6ade1f8d7 Mon Sep 17 00:00:00 2001
 From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
 Date: Fri, 6 Mar 2020 16:22:01 -0300
-Subject: [PATCH 06/24] ci: Install qtbase5-private-dev on Linux
+Subject: [PATCH 06/25] ci: Install qtbase5-private-dev on Linux
 
 List this dependency both under CI/install-dependencies-linux.sh, and
 .github/workflows/main.yml.
@@ -11,17 +11,17 @@ List this dependency both under CI/install-dependencies-linux.sh, and
  2 files changed, 2 insertions(+)
 
 diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml
-index 47c47101..008c3ee9 100644
+index 33552e05..e24d811f 100644
 --- a/.github/workflows/main.yml
 +++ b/.github/workflows/main.yml
-@@ -176,6 +176,7 @@ jobs:
+@@ -375,6 +375,7 @@ jobs:
             pkg-config \
             python3-dev \
             qtbase5-dev \
 +           qtbase5-private-dev \
             libqt5svg5-dev \
-            swig
-       - name: 'Install prerequisite: Chromium Embedded Framework'
+            swig \
+            libcmocka-dev
 diff --git a/CI/install-dependencies-linux.sh b/CI/install-dependencies-linux.sh
 index 0d92fbf9..478f953a 100755
 --- a/CI/install-dependencies-linux.sh
