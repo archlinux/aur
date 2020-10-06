@@ -10,9 +10,6 @@ pkgbase = swift-llvm-git
 	makedepends = libedit
 	makedepends = ncurses
 	makedepends = libxml2
-	makedepends = ocaml>=4.11.1
-	makedepends = ocaml-ctypes
-	makedepends = ocaml-findlib
 	makedepends = python-sphinx
 	makedepends = python-recommonmark
 	options = staticlibs
@@ -39,12 +36,4 @@ pkgname = swift-llvm-libs-git
 	depends = libxml2
 	provides = swift-llvm-libs
 	conflicts = swift-llvm-libs
-
-pkgname = swift-llvm-ocaml-git
-	pkgdesc = OCaml bindings for LLVM
-	depends = swift-llvm
-	depends = ocaml=4.11.1
-	depends = ocaml-ctypes
-	provides = swift-llvm-ocaml
-	conflicts = swift-llvm-ocaml
 
