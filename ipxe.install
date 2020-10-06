@@ -3,10 +3,6 @@
 post_upgrade() {
 	mkdir -p /boot/ipxe/
 	cp /usr/lib/ipxe/ipxe.lkrn /boot/ipxe/ipxe.lkrn
-
-	if [ -x /usr/sbin/grub-mkconfig ] && [ -s /boot/grub/grub.cfg ]; then
-		echo " > You should run grub-mkconfig now."
-	fi
 }
 
 post_install() {
@@ -30,6 +26,11 @@ cat <<EOF
  > can build more customised images, and ROM images, using
  >     make bin/<rom-name>.<output-format>
 EOF
+
+	if [ -x /usr/sbin/grub-mkconfig ] && [ -s /boot/grub/grub.cfg ]; then
+		echo ' >'
+		echo ' > Run grub-mkconfig now for iPXE in Grub boot menu.'
+	fi
 
 	post_upgrade
 }

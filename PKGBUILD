@@ -2,7 +2,7 @@
 
 pkgname=ipxe-git
 pkgver=1.20.1.r88.gc70b3e04
-pkgrel=1
+pkgrel=2
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
 url='http://www.ipxe.org/'
