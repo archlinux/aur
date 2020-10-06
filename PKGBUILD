@@ -7,8 +7,8 @@ arch=('any')
 url="https://github.com/Rudd-O/ledgerhelpers"
 license=('unknown')
 groups=()
-# Depend on `ledger-git`, because the package `ledger` does not include python bindings
-depends=('python' 'python-setuptools' 'ledger-git')
+# Since ledger-3.2.0 the package builds python support. Before that version it was necessary to use ledger-git.
+depends=('python' 'python-setuptools' 'ledger')
 makedepends=('git')
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
