@@ -1,6 +1,6 @@
 pkgbase = pantheon-screenshot-git
 	pkgdesc = The Pantheon Screenshot Tool
-	pkgver = 1.7.1.r88.ged7980f
+	pkgver = 1.7.1.r96.gf44ee9d
 	pkgrel = 1
 	url = https://github.com/elementary/screenshot-tool
 	arch = x86_64
@@ -22,9 +22,7 @@ pkgbase = pantheon-screenshot-git
 	provides = pantheon-screenshot
 	conflicts = pantheon-screenshot
 	source = pantheon-screenshot::git+https://github.com/elementary/screenshot-tool.git
-	source = 0001-support-libhandy1.patch
 	sha256sums = SKIP
-	sha256sums = b300a47911342fbe1cf22ccae0287b53ca584bff873d3491ef480687d8d9933a
 
 pkgname = pantheon-screenshot-git
 

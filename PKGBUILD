@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-screenshot-git
-pkgver=1.7.1.r88.ged7980f
+pkgver=1.7.1.r96.gf44ee9d
 pkgrel=1
 pkgdesc='The Pantheon Screenshot Tool'
 arch=('x86_64')
@@ -14,10 +14,8 @@ depends=('cairo' 'gdk-pixbuf2' 'glib2' 'glibc'
 makedepends=('git' 'granite' 'intltool' 'meson' 'vala')
 provides=('pantheon-screenshot')
 conflicts=('pantheon-screenshot')
-source=("pantheon-screenshot::git+https://github.com/elementary/screenshot-tool.git"
-        "0001-support-libhandy1.patch")
-sha256sums=('SKIP'
-            'b300a47911342fbe1cf22ccae0287b53ca584bff873d3491ef480687d8d9933a')
+source=("pantheon-screenshot::git+https://github.com/elementary/screenshot-tool.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd pantheon-screenshot
@@ -28,8 +26,6 @@ pkgver() {
 prepare() {
   sed 's/extra/io.elementary.screenshot-tool.extra/' -i pantheon-screenshot/po/extra/meson.build
 
-   cd pantheon-screenshot
-   patch -Np1 -i ../0001-support-libhandy1.patch
 }
 
 build() {
