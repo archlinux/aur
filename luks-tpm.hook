@@ -1,0 +1,16 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = File
+Target = boot/vmlinuz-*
+Target = boot/amd-ucode.img
+Target = boot/intel-ucode.img
+Target = usr/lib/initcpio/*
+Target = usr/lib/systemd/boot/efi/linux*.efi.stub
+Target = usr/share/refind/refind_x64.efi
+
+[Action]
+Description = Adding temporary LUKS TPM key...
+When = PostTransaction
+Exec = /usr/bin/luks-tpm temp

@@ -1,0 +1,9 @@
+post_install() {
+cat << EOF
+
+  Configure luks-tpm by editing /etc/default/luks-tpm
+  A pacman hook has been installed at /usr/share/libalpm/hooks/luks-tpm.hook
+  Consider overriding this hook by creating /etc/pacman.d/hooks/luks-tpm.hook
+
+EOF
+}
