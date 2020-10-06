@@ -68,6 +68,9 @@ package_swift-llvm-git() {
 
   DESTDIR="$pkgdir" ninja install
 
+  # remove ocaml in case it was installed
+  rm -rf "$pkgdir"/$instprefix/usr/lib/ocaml/
+
 # lit is not swift specific, do not install
 # # Include lit for running lit-based tests in other projects
 # pushd ../utils/lit
