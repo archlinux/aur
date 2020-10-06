@@ -17,7 +17,7 @@ pkgbase = playkey-linux
 	options = !strip
 	source_x86_64 = https://static.playkey.net/clientdownload.aspx?file=windows-desktop/Release/PlaykeySetup.exe&name=PlaykeySetup.exe
 	source_x86_64 = git+https://github.com/vilkoz/playkey-linux-launcher.git
-	sha256sums_x86_64 = 13c4bcb6fe07a18c2805097a1394e1a6971628cadab25032c16adfa90f969fac
+	sha256sums_x86_64 = 064d6bffc5e03039e59a3e175236b44c39c906a1f0f94d9820bb2157167499e4
 	sha256sums_x86_64 = SKIP
 
 pkgname = playkey-linux
