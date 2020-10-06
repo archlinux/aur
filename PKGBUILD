@@ -4,18 +4,6 @@
 
 # This package needs reinstalled after every Proton update.
 
-# You need to remove certain old 64bit and 32bit dxvk .dll files from your proton-ge directory before installing this package, or you will receive errors when trying to install.
-
-# Examples:
-
-# sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib/wine/dxvk/d3d*
-# sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib/wine/dxvk/dxg*
-
-# sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib64/wine/dxvk/d3d*
-# sudo rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom*/dist/lib64/wine/dxvk/dxg*"
-
-# You can also pacman --overwrite "*"
-
 pkgname=('dxvk-mingw-proton-ge-async-git')
 pkgver=1.5.r3.ga265af74
 pkgrel=1
