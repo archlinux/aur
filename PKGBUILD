@@ -1,4 +1,4 @@
-# Maintainer: Sosthène Guédon <sosthene.gued@gmail.com>
+# Maintainer: Sosthène Guédon <dev@peertube-viewer.com>
 pkgname=peertube-viewer-rs
 pkgver=1.7.2
 pkgrel=1
