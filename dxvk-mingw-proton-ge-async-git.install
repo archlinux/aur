@@ -1,0 +1,25 @@
+pre_remove() {
+
+        rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom/dist/lib/wine/dxvk/d3d*
+	rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom/dist/lib/wine/dxvk/dxg*
+
+
+        rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom-stable/dist/lib/wine/dxvk/d3d*
+	rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom-stable/dist/lib/wine/dxvk/dxg*
+
+
+        rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom-legacy/dist/lib/wine/dxvk/d3d*
+        rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom-legacy/dist/lib/wine/dxvk/dxg*
+
+        rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom/dist/lib64/wine/dxvk/d3d*
+	rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom/dist/lib64/wine/dxvk/dxg*
+
+
+        rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom-stable/dist/lib64/wine/dxvk/d3d*
+	rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom-stable/dist/lib64/wine/dxvk/dxg*
+
+
+        rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom-legacy/dist/lib64/wine/dxvk/d3d*
+	rm -rf /usr/share/steam/compatibilitytools.d/proton-ge-custom-legacy/dist/lib64/wine/dxvk/dxg*
+
+}

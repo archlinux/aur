@@ -34,6 +34,7 @@ source=("git+https://github.com/doitsujin/dxvk.git"
 sha256sums=("SKIP"
 	    "SKIP"
             "SKIP")
+install=$pkgname.install
 
 pkgver() {
     cd dxvk
