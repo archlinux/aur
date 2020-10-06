@@ -1,17 +1,19 @@
 # Maintainer Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 
 # This script contains as well instructions for other Linux systems.
-# There you have to execute the commands in the functions(){…} below by hand.
+# Have a look what is done in the build() and package() functions below.
+# Execute the same command which are used there.
 
-# On other systems, ignore the used variables like $pkgdir, $srcdir or $startdir
+# On other systems, ignore the used variables like $pkgdir and $srcdir.
 # (there $pkgdir would be the same as an undefined variable (empty),
-#  and $srcdir as well as $stardir would be the place where you have your files)
+#  and $srcdir would be the place where you have your files)
+
 
 pkgname=wesnoth-1.0
 pkgver=1.0.2+dev
 pkgrel=1
 pkgdesc="Turn-based strategy game on a fantasy world (historical version)"
-arch=('i686' 'x86_64')
+arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.wesnoth.org"
 license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_net' 'freetype2')
@@ -19,7 +21,8 @@ depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_net' 'freetype2')
 # libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev gettext-base pkgconf autoconf automake make gcc g++ git
 options=('!emptydirs')
 install=wesnoth-1.0.install
-source=("wesnoth-1.0.desktop"
+source=("wesnoth-1.0-git::git+https://github.com/wesnoth/wesnoth.git#branch=1.0"
+        "wesnoth-1.0.desktop"
         "wesnothd-1.0.tmpfiles.conf"
         "wesnothd-1.0.service"
         "wesnoth-1.0.appdata.xml"
@@ -28,34 +31,25 @@ source=("wesnoth-1.0.desktop"
 # Not finding the files? https://aur.archlinux.org/packages/wesnoth-1.0/
 # Rest assured, they are optional. Things like a launcher for your convenience…
 
-md5sums=('29dcc619dad3ba9e7806b97badee3023'
+# Except for the wesnoth download, which can also be retrieved with this command:
+# git clone https://github.com/wesnoth/wesnoth.git -b 1.0 --shallow-exclude=1.0.2  wesnoth-1.0-git
+
+md5sums=('SKIP'
+         '29dcc619dad3ba9e7806b97badee3023'
          '1d061d2df18d707b212c314440c30cd2'
          'bd36602fa96cacfebd9d64bd589509fa'
          '81953f9a24639fb66e435b34ba530b94'
          '3c271ac7485d871400dd1f7af2ecfd8d'
          '0327cec01cd5b98acee056ec79702bab')
 
-PKGEXT='.pkg.tar'
 
 prepare() {
-  cd "$startdir"
-
-  # get a shallow clone of the git repo (and store it outside the srcdir)
-  if  [ ! -d "wesnoth-1.0-git" ] ; then
-    git clone https://github.com/wesnoth/wesnoth -b 1.0 --shallow-exclude=1.0.2  wesnoth-1.0-git
-    msg "Git checkout done (or server timeout)"
-  fi
-
-  # Archlinux specific (hide the usage of the $startdir variable)
-  if [ ! -e "$srcdir/wesnoth-1.0-git" ] ; then
-    ln -s "$startdir/wesnoth-1.0-git" "$srcdir/wesnoth-1.0-git"
-  fi
-
   # clean up previous builds, in case different flags or library versions were
   # used before. (|| true avoids failure if the makefile is not yet generated.)
   cd "$srcdir/wesnoth-1.0-git"
   make distclean || true
 }
+
 
 build() {
   cd "$srcdir/wesnoth-1.0-git"
@@ -69,8 +63,9 @@ build() {
   # Explicitely disabled zipios, as it causes huge slowdowns.
   ./configure --with-freetype-prefix=/usr/lib --prefix=/usr --program-suffix=-1.0 --with-datadir-name=wesnoth-1.0 --enable-editor --enable-server --with-fifodir=/run/wesnothd-1.0 --without-zipios
 
-  make -j4
+  make
 }
+
 
 # These commands have to be run with root privileges.
 # E.g. by prefixing them with "sudo ".
@@ -109,5 +104,5 @@ package() {
   install -D -m644 "$srcdir/wesnothd-1.0.service" "$pkgdir/usr/lib/systemd/system/wesnothd-1.0.service"
 
   # All done, but it doesn't show up? Try that:
-  # update-desktop-database
+  # sudo update-desktop-database
 }
