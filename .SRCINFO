@@ -1,6 +1,6 @@
 pkgbase = rbdoom3-bfg-git
 	pkgdesc = Doom 3 BFG Edition with soft shadows, cleaned up source, Linux and 64 bit Support
-	pkgver = r887.163a31f9
+	pkgver = r971.42d5436d
 	pkgrel = 1
 	url = https://github.com/RobertBeckebans/RBDOOM-3-BFG
 	install = rbdoom3-bfg-git.install
@@ -11,7 +11,7 @@ pkgbase = rbdoom3-bfg-git
 	makedepends = cmake
 	makedepends = zip
 	depends = sdl2
-	depends = ffmpeg
+	depends = ffmpeg-git
 	depends = openal
 	depends = glew
 	optdepends = doom3bfg-data: packaged game data files
