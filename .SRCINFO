@@ -1,5 +1,5 @@
 pkgbase = mineonline
-	pkgdesc = Launch old versions of minecraft just as you remembered them, only without a browser.
+	pkgdesc = Launch old versions of Minecraft just as you remembered them, only without a browser.
 	pkgver = 2.5.8
 	pkgrel = 1
 	url = http://mineonline.codie.gg
