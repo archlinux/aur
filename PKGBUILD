@@ -12,7 +12,7 @@ depends=('ca-certificates' 'python-acme' 'python-configargparse' 'python-configo
          'python-cryptography' 'python-distro' 'python-mock' 'python-parsedatetime'
          'python-pyrfc3339' 'python-pytz' 'python-setuptools' 'python-zope-component'
          'python-zope-interface')
-checkdepends=('python-pytest-runner')
+checkdepends=('python-pytest')
 optdepends=('certbot-apache: Apache plugin for Let’s Encrypt client'
             'certbot-nginx: Nginx plugin for Let’s Encrypt client')
 replaces=("letsencrypt")
@@ -30,7 +30,7 @@ build() {
 
 check() {
   cd "$srcdir"/$pkgname-$pkgver
-  python setup.py pytest
+  python -m pytest
 }
 
 package() {
