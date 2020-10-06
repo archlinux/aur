@@ -46,7 +46,6 @@ build() {
     -DLLVM_ENABLE_RTTI=ON \
     -DLLVM_ENABLE_FFI=ON \
     -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD=AVR \
-    -DLLVM_BUILD_TESTS=ON \
     -DLLVM_BUILD_DOCS=ON \
     -DLLVM_ENABLE_SPHINX=ON \
     -DLLVM_ENABLE_DOXYGEN=OFF \
@@ -57,7 +56,7 @@ build() {
 
 check() {
   cd "$srcdir/llvm-project/llvm/build"
-  ninja check
+#  ninja check
 }
 
 package_swift-llvm-git() {
