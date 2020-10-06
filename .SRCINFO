@@ -1,0 +1,20 @@
+pkgbase = qt6-quickcontrols2
+	pkgdesc = Next generation user interface controls based on Qt Quick
+	pkgver = 6.0.0alpha
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = cmake
+	makedepends = vulkan-headers
+	makedepends = ninja
+	depends = qt6-declarative
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-alpha/submodules/qtquickcontrols2-everywhere-src-6.0.0-alpha.tar.xz
+	sha256sums = 2cf6c41075154e6dd92864f1ce95b58c3da35b4bb171a8fdc48cafb1802a3e00
+
+pkgname = qt6-quickcontrols2
+
