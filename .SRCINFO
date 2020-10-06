@@ -1,0 +1,21 @@
+pkgbase = qt6-wayland
+	pkgdesc = Provides APIs for Wayland
+	pkgver = 6.0.0alpha
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = cmake
+	makedepends = vulkan-headers
+	makedepends = ninja
+	depends = qt6-declarative
+	depends = libxcomposite
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-alpha/submodules/qtwayland-everywhere-src-6.0.0-alpha.tar.xz
+	sha256sums = cdddc443549b7c90ed062ef4b8f64563e91897464f0be22cb121be5c068bd57d
+
+pkgname = qt6-wayland
+
