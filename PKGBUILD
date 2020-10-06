@@ -28,6 +28,8 @@ validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstel
 prepare() {
   cd "$srcdir/llvm-project/llvm"
   mkdir -p build
+  # permission test fails when building in a docker image
+  rm test/tools/llvm-ar/error-opening-permission.test
 }
 
 build() {
@@ -69,13 +71,15 @@ package_swift-llvm-git() {
 
   DESTDIR="$pkgdir" ninja install
 
-  # Include lit for running lit-based tests in other projects
-  pushd ../utils/lit
-  python3 setup.py install --root="$pkgdir" -O1
-  popd
+# lit is not swift specific, do not install
+# # Include lit for running lit-based tests in other projects
+# pushd ../utils/lit
+# python3 setup.py install --root="$pkgdir" -O1
+# popd
 
-  # Remove documentation sources
-  rm -r "$pkgdir"/$instprefix/share/doc/$pkgname/html/{_sources,.buildinfo}
+# not necessary as sources are not in pkg
+#  # Remove documentation sources
+#  rm -r "$pkgdir"/$instprefix/share/doc/$pkgname/html/{_sources,.buildinfo}
 
   # The runtime libraries go into llvm-libs
   mv -f "$pkgdir"/$instprefix/lib/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
