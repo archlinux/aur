@@ -4,40 +4,29 @@
 # of wine running TagScanner, the  is default '~/.wine-tagscanner'.
 
 pkgname=tagscanner
-pkgver=6.1.4
+pkgver=6.1.6
 pkgrel=1
 pkgdesc='Powerful tool for organizing and managing your music collection'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.xdlab.ru/en/'
 license=('custom')
 depends=('wine')
 
-source=('tagscanner.sh')
-md5sums=('2a07e489f02b4897ff10f818309101d7')
-
-source_i686=("https://www.xdlab.ru/files/tagscan-${pkgver}.zip")
-md5sums_i686=('f2059adbcab6f0883460a87f9b60094e')
-
-source_x86_64=("https://www.xdlab.ru/files/tagscan-${pkgver}_x64.zip")
-md5sums_x86_64=('6d63a2fda159a314f1a11a712f2c8ff7')
+source=('tagscanner.sh'
+        "https://www.xdlab.ru/files/tagscan-${pkgver}_x64.zip")
+md5sums=('2a07e489f02b4897ff10f818309101d7'
+         'da34c4741e274268cd89704ef1feffbb')
 
 package() {
     mkdir -p "${pkgdir}/opt/tagscanner/"
     cp -r "${srcdir}/"* "${pkgdir}/opt/tagscanner/"
     rm -f "${pkgdir}/opt/tagscanner/tagscan-${pkgver}_x64.zip"
-    rm -f "${pkgdir}/opt/tagscanner/tagscan-${pkgver}.zip"
+    rm -f "${pkgdir}/opt/tagscanner/tagscanner.sh"
 
     mkdir -p "${pkgdir}/usr/bin/"
     install -Dm755 "${srcdir}/tagscanner.sh" "${pkgdir}/usr/bin/tagscanner"
 
-    if [[ "$arch" == 'i686' ]]; then
-        sed -i 's#${REPLACE_WINEARCH}#win32#g' "${pkgdir}/usr/bin/tagscanner"
-    elif [[ "$arch" == 'x86_64' ]]; then
-        sed -i 's#${REPLACE_WINEARCH}#win64#g' "${pkgdir}/usr/bin/tagscanner"
-    else
-        echo "error: unsupported architecture '$arch'"
-        exit 1
-    fi
+    sed -i 's#${REPLACE_WINEARCH}#win64#g' "${pkgdir}/usr/bin/tagscanner"
 
     if [[ -z "$TAGSCANNER_WINEPREFIX" ]]; then
         sed -i "s#\${REPLACE_WINEPREFIX}#~/.wine-tagscanner#g" "${pkgdir}/usr/bin/tagscanner"
