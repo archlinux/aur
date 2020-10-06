@@ -1,6 +1,6 @@
 pkgbase = pantheon-terminal-git
 	pkgdesc = The Pantheon Terminal Emulator
-	pkgver = 5.5.2.r80.g0bb980e0
+	pkgver = 5.5.2.r99.gba140c36
 	pkgrel = 1
 	url = https://github.com/elementary/terminal
 	arch = x86_64
@@ -12,20 +12,18 @@ pkgbase = pantheon-terminal-git
 	makedepends = intltool
 	makedepends = meson
 	makedepends = vala
-	makedepends = libhandy1
+	makedepends = libhandy
 	depends = glib2
 	depends = gtk3
 	depends = libnotify
 	depends = pango
 	depends = vte3
 	depends = libgranite.so
-	depends = libhandy-1.so
+	depends = libhandy
 	provides = pantheon-terminal
 	conflicts = pantheon-terminal
 	source = pantheon-terminal::git+https://github.com/elementary/terminal.git
-	source = 0001-libhandy1-support.patch
 	sha256sums = SKIP
-	sha256sums = ff08cdcbc3a16f99e65814abb8d933b43a75161250e0140792cf27f476e1741c
 
 pkgname = pantheon-terminal-git
 
