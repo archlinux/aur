@@ -2,13 +2,13 @@
 
 pkgname=mroonga
 pkgver=10.06
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast fulltext search on MySQL(MariaDB bundled Mroonga package)."
 mariadbver=10.4.14
 MYSQL_VERSION=mariadb-${mariadbver}
 arch=('i686' 'x86_64')
 url="http://mroonga.org/"
-license=('LGPL2')
+license=('LGPL2.1')
 provides=("mysql-clients=$mariadbver" "mysql=$mariadbver" "libmysqlclient=$mariadbver")
 source=(http://packages.groonga.org/source/mroonga/mroonga-$pkgver.tar.gz
         https://downloads.mariadb.org/f/${MYSQL_VERSION}/source/${MYSQL_VERSION}.tar.gz
