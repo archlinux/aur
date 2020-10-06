@@ -1,15 +1,15 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=mastotool
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
-pkgdesc="a collection of tools to work with your Mastodon account"
+pkgdesc="A collection of tools to work with your Mastodon account"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/muesli/mastotool"
 license=('MIT')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0fb625d9a22cf16d348602bd1660d0e1877c047444848f798f272764be2a424c')
+sha256sums=('cd9c8d65c6e69cf0b559c8925512c139b37970c2cd814645c21fe6d8423f7842')
 
 prepare() {
     export GOPATH="$srcdir/gopath"
