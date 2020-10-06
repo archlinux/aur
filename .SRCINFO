@@ -1,6 +1,6 @@
 pkgbase = kibi
 	pkgdesc = A tiny text editor, written in Rust
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/ilai-deutel/kibi
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = kibi
 	makedepends = cargo
 	depends = gcc-libs
 	backup = etc/kibi/config.ini
-	source = https://github.com/ilai-deutel/kibi/archive/v0.2.0/kibi-0.2.0.tar.gz
-	sha256sums = 7af69657ce50816e45e9111138cf9e050f74289bba3ceaa2a52e4715951c8885
+	source = https://github.com/ilai-deutel/kibi/archive/v0.2.1/kibi-0.2.1.tar.gz
+	sha256sums = f6171a2c1be66aa52814b736d6c06ad9ad50b71869e4447196e16ecf951eb494
 
 pkgname = kibi
 
