@@ -3,7 +3,7 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
-pkgver=6.3.2
+pkgver=6.3.3
 pkgrel=1
 pkgdesc="A modern streamlined music player"
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=('p7zip: 7z archive extraction support'
             'gst-plugins-ugly: For GStreamer WMA support')
             
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v$pkgver.tar.gz")
-sha256sums=('fcb15c1938f3f47531dc1895211e073a939ab0031003b397ad37a8303008ebf5')
+sha256sums=('62b6b988e699d20e11ed93c7754371e8e6eb76baba67af767abdfc6343556e73')
 
 build() {
     cd "$_gitname-$pkgver"
@@ -65,7 +65,7 @@ package() {
     install -Dm644 input.txt -t "$pkgdir/opt/$pkgname"
     cp -r  assets templates theme t_modules lib "$pkgdir/opt/$pkgname"
  
-    for t in de fr_FR ja_JP nb_NO pt_BR pt_PT sv zh_CN; do
+    for t in de fr_FR ja_JP nb_NO pt pt_BR pt_PT sv zh_CN; do
         install -Dm644 locale/${t}/LC_MESSAGES/*.mo -t "$pkgdir/usr/share/locale/${t}/LC_MESSAGES"
     done
  
