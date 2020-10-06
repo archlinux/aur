@@ -5,7 +5,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org> (gnome-control-center PKGBUILD)
 _pkgname='gnome-control-center'
 pkgname="$_pkgname-nocheese"
-pkgver='3.36.4'
+pkgver='3.38.1'
 _gvccommit='468022b708fc1a56154f3b0cc5af3b938fb3e9fb'
 pkgrel='1'
 pkgdesc="GNOME's main interface to configure various aspects of the desktop - without Cheese dependency"
@@ -36,7 +36,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-gvc.tar.gz::https://gitlab.gnome.org/GNOME/libgnome-volume-control/-/archive/$_gvccommit/libgnome-volume-control-$_gvccommit.tar.gz"
 )
-sha256sums=('ddc1d2dc2ebf9cf82ce8460eb0e13e412432e95ebc49b23e9b3b51d460fd4d79'
+sha256sums=('3855a3122d9e2396870e7a448741f9b778d5fac2faf239184b19bf8305fda5c8'
             '3ab63b0073bf21cab80b3974c9f6aa969ff1a4c4911aae6a09681c7d1b2b785f')
 
 _sourcedirectory="$_pkgname-$pkgver"
