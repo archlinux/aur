@@ -2,9 +2,8 @@
 # Contributor: Bradley Kennedy <bk@co60.ca>
 
 pkgname=libuiohook
-newname=uiohook
 pkgver=1.0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A multi-platform C library to provide global input/ouput hooking from userland."
 arch=('i686' 'x86_64')
 url="https://github.com/kwhat/libuiohook"
@@ -14,17 +13,17 @@ depends=("libxt" "libxtst" "libxinerama")
 makedepends=() # All included in base-devel
 optdepends=()
 conflicts=()
-source=("https://github.com/kwhat/$newname/archive/${pkgver}.zip")
-sha256sums=('e972be653e303838354781209798ec0ad2ff1e416c62cf20db6f1cf2ba1ef604')
+source=("https://github.com/kwhat/$pkgname/archive/${pkgver}.zip")
+sha256sums=('a7bfdf7377223bf3c46b0028fa44e6070a009bfbd2e1111c506b777c8cf48e7d')
 
 build() {
-  cd "$srcdir/$newname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   ./bootstrap.sh
   ./configure --prefix=/usr --libexecdir=/usr/lib --without-libsigsegv
   make
 }
 
 package() {
-  cd "$srcdir/$newname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }

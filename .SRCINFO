@@ -1,7 +1,7 @@
 pkgbase = libuiohook
 	pkgdesc = A multi-platform C library to provide global input/ouput hooking from userland.
 	pkgver = 1.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/kwhat/libuiohook
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = libuiohook
 	depends = libxt
 	depends = libxtst
 	depends = libxinerama
-	source = https://github.com/kwhat/uiohook/archive/1.0.3.zip
-	sha256sums = e972be653e303838354781209798ec0ad2ff1e416c62cf20db6f1cf2ba1ef604
+	source = https://github.com/kwhat/libuiohook/archive/1.0.3.zip
+	sha256sums = a7bfdf7377223bf3c46b0028fa44e6070a009bfbd2e1111c506b777c8cf48e7d
 
 pkgname = libuiohook
 
