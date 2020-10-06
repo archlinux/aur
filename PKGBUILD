@@ -1,52 +1,43 @@
 # Maintainer Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 
 # This script contains as well instructions for other Linux systems.
-# There you have to execute the commands in the functions(){…} below by hand.
+# Have a look what is done in the build() and package() functions below.
+# Execute the same command which are used there.
 
-# On other systems, ignore the used variables like $pkgdir, $srcdir or $startdir
+# On other systems, ignore the used variables like $pkgdir and $srcdir.
 # (there $pkgdir would be the same as an undefined variable (empty),
-#  and $srcdir as well as $stardir would be the place where you have your files)
+#  and $srcdir would be the place where you have your files)
+
 
 pkgname=wesnoth-1.6
 pkgver=1.6.5+dev
 pkgrel=2
 pkgdesc="Turn-based strategy game on a fantasy world (for old replays)"
-arch=('i686' 'x86_64')
+arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.wesnoth.org"
 license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_ttf' 'sdl_net' 'boost-libs' 'zlib' 'pango' 'cairo' 'fontconfig' 'dbus' 'fribidi')
 makedepends=('boost' 'cmake' 'git')
 # Package names on Debian / Ubuntu / Mint:
 # libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl-net1.2-dev libboost-iostreams-dev libboost-regex-dev zlib1g-dev libpango1.0-dev libcairo2-dev libfontconfig1-dev libdbus-1-dev libfribidi-dev gettext-base cmake make pkgconf gcc g++ git
-options=('!emptydirs' '!zipman')
-source=("wesnoth-1.6.desktop"
+options=('!emptydirs')
+source=("wesnoth-1.6-git::git+https://github.com/wesnoth/wesnoth.git#branch=1.6"
+        "wesnoth-1.6.desktop"
         "wesnothd-1.6.tmpfiles.conf"
         "wesnothd-1.6.service"
         "wesnoth-1.6.appdata.xml")
 # Not finding the files? https://aur.archlinux.org/packages/wesnoth-1.6
 # Rest assured, they are optional. Things like a launcher for your convenience…
 
-md5sums=('99f136647c5af1820d0132df08350965'
+# Except for the wesnoth download, which can also be retrieved with this command:
+# git clone https://github.com/wesnoth/wesnoth.git -b 1.6 --shallow-exclude=1.6.5 wesnoth-1.6-git
+
+md5sums=('SKIP'
+         '99f136647c5af1820d0132df08350965'
          'ec9cab718ba96b7a4c85c224f6b747c3'
          '6ba3f7977da5b5ccee8382c20dd7db4d'
          '1018b1fae1a65d49bed1094ba0280d87')
 
-PKGEXT='.pkg.tar'
-
-prepare() {
-  cd "$startdir"
-
-  # get a shallow clone of the git repo and store it outside the srcdir
-  if  [ ! -d "wesnoth-1.6-git" ] ; then
-    git clone https://github.com/wesnoth/wesnoth -b 1.6 --shallow-exclude=1.6.5 wesnoth-1.6-git
-    msg "Git checkout done (or server timeout)"
-  fi
-
-  # Archlinux specific (hide the usage of the $startdir variable)
-  if [ ! -e "$srcdir/wesnoth-1.6-git" ] ; then
-    ln -s "$startdir/wesnoth-1.6-git" "$srcdir/wesnoth-1.6-git"
-  fi
-}
 
 build() {
   # As this is an older version and not worked on anymore, it will someday break
@@ -72,6 +63,7 @@ build() {
       -DCMAKE_C_FLAGS="$CFLAGS -ansi -w"
   make
 }
+
 
 # Note: the manpages are first installed to the same place which other wesnoth
 # versions use and renamed afterwards, this may cause conflicts. One can change
@@ -112,5 +104,5 @@ package() {
   install -D -m644 "$srcdir/wesnothd-1.6.service" "$pkgdir/usr/lib/systemd/system/wesnothd-1.6.service"
 
   # All done, but it doesn't show up? Try that:
-  # update-desktop-database
+  # sudo update-desktop-database
 }
