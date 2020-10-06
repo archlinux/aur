@@ -1,7 +1,7 @@
 # Maintainer: Fabio Sussarellu <sussarellu.fabio@gmail.com>
 pkgname=bashtop-git
-pkgver=r28.bb3cc59
-pkgrel=2
+pkgver=r313.4bf71e6
+pkgrel=1
 pkgdesc="Resource monitor that shows usage and stats for processor, memory, disks, network and processes."
 arch=('any')
 url="https://github.com/aristocratos/bashtop"
