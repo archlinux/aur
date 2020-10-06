@@ -31,4 +31,6 @@ package() {
     cd "$srcdir/${_pkgname}"
     install -Dm 755 -t "${pkgdir}/usr/bin/" ./bin/*
     install -Dm 644 -t "${pkgdir}/usr/lib/" ./lib/libdedbae.a
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
 }
