@@ -36,6 +36,5 @@ package() {
     cd "${srcdir}/${_dir}"
     make DESTDIR="${pkgdir}/" install
     install -Dm755 scripts/configure.sh "${pkgdir}/usr/share/gnome-shell/extensions/pop-shell@system76.com/scripts/configure.sh"
-    touch "${pkgdir}/usr/share/gnome-shell/extensions/pop-shell@system76.com/scripts/.confirm_shortcut_change"
 }
 

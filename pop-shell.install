@@ -1,7 +1,8 @@
 post_install() {
     echo "POP-shell configuration"
-    cd /usr/share/gnome-shell/extensions/pop-shell@system76.com/scripts
-    ./configure.sh
+    cd $(mktemp -d)
+    touch .confirm_shortcut_change
+    /usr/share/gnome-shell/extensions/pop-shell@system76.com/scripts/configure.sh
 }
 
 post_upgrade() {
