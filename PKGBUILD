@@ -4,7 +4,7 @@ pkgname=('qtscrcpy-git')
 pkgver=1.4.3
 pkgrel=1
 pkgdesc="Android real-time display control software."
-provides=("qtscrcpy-git")
+provides=("qt-scrcpy")
 conflicts=("qt-scrcpy")
 url='https://github.com/barry-ran/QtScrcpy'
 arch=('x86_64')
@@ -36,4 +36,6 @@ package(){
 	 cd "${srcdir}"
 	 install -Dm644 QtScrcpy.desktop "${pkgdir}"/usr/share/applications/QtScrcpy.desktop
 	 install -Dm644 QtScrcpy/backup/logo.png "${pkgdir}"/usr/share/pixmaps/QtScrcpy.png
+	 
+	 install -Dm644 /usr/share/scrcpy/scrcpy-server /usr/bin/scrcpy-server
 }
