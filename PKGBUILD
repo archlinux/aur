@@ -2,7 +2,7 @@
 
 pkgname=geh-git
 pkgver=0.4.0.r9.g26bfe3a
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple command line image viewer written in C/GTK3
 with various nice features."
 arch=('x86_64' 'i686')
@@ -27,23 +27,26 @@ conflicts=(
 )
 
 pkgver() {
-	cd "${srcdir}/geh"
+	cd "$srcdir/geh"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${srcdir}/geh"
+	cd "$srcdir/geh"
 	./autogen.sh
 	./configure --prefix="$pkgdir" --disable-gtk2
 	make
 }
 
 package() {
-	cd "${srcdir}/geh"
+	cd "$srcdir/geh"
 	make install
-	mkdir -p "$pkgdir/usr/bin"
-	mv "$pkgdir/bin/"* "$pkgdir/usr/bin"
-	rmdir "$pkgdir/bin"
+	### fix prefix dir:
+	mkdir -p "$pkgdir/usr/"
+	mv "$pkgdir"/{bin,share} "$pkgdir/usr/"
+	### move license file:
+	install -Dm644 "$pkgdir/usr/share/doc/geh/LICENSE" "$pkgdir/usr/share/licenses/geh/LICENSE"
+	rm "$pkgdir/usr/share/doc/geh/LICENSE"
 }
 
 # vim: ft=PKGBUILD

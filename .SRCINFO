@@ -1,7 +1,7 @@
 pkgbase = geh-git
 	pkgdesc = A simple command line image viewer written in C/GTK3 with various nice features.
 	pkgver = 0.4.0.r9.g26bfe3a
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/software-revive/geh-rv
 	arch = x86_64
 	arch = i686
