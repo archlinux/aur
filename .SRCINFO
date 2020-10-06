@@ -1,0 +1,13 @@
+pkgbase = ttf-open-sans-condensed
+	pkgdesc = Open Sans is a humanist sans serif typeface designed by Steve Matteson, Type Director of Ascender Corp.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Open+Sans+Condensed
+	arch = any
+	license = Apache License, Version 2.0
+	depends = fontconfig
+	source = ttf-open-sans-condensed.zip::https://fonts.google.com/download?family=Open+Sans+Condensed
+	sha256sums = 7cdde7b0a0a572f80c2b80cfb4d7964f05579c386974eaaf6f873fc3035a42c2
+
+pkgname = ttf-open-sans-condensed
+
