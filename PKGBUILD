@@ -12,7 +12,7 @@ pkgdesc="fallout 2 community patch"
 
 prepare() {
 
-wget -O sfall_4.2.7.7z https://sourceforge.net/projects/sfall/files/sfall/sfall_4.2.7.7z/download
+wget -O sfall_$pkgver.7z https://sourceforge.net/projects/sfall/files/sfall/sfall_$pkgver.7z/download
 
 mv $srcdir/sfall_$pkgver.7z $startdir
 
