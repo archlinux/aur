@@ -1,28 +1,33 @@
 # Maintainer: revelation60 <benruyl@gmail.com>
+# Co-Maintainer: Mark wagie <mark dot wagie at tutanota dot com>
 
 pkgname=gnome-shell-extension-gtile-git
-pkgver=r205.9535f8b
+pkgver=35.r24.g345e051
 pkgrel=1
-pkgdesc='A window tiling extension for Gnome'
-url='https://github.com/gTile/gTile'
-license=('GPL')
+pkgdesc="A window tiling extension for GNOME"
 arch=('any')
-conflicts=(${pkgname%-git})
-provides=(${pkgname%-git})
-makedepends=('git')
-depends=('gnome-shell>=3.32')
-optdepends=()
-source=("${pkgname}::git+${url}.git")
-sha512sums=('SKIP')
+url="https://github.com/gTile/gTile"
+license=('GPL')
+depends=('gnome-shell')
+makedepends=('git' 'bazel' 'yarn')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+https://github.com/gTile/gTile.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/^V//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$srcdir/${pkgname%-git}"
+  bazel build :install-extension
 }
 
 package() {
-  # Copy extension files into place.
-  cd "$srcdir/${pkgname}" 
-  mkdir -p "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou"
-  cp -r . "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou"
+  cd "$srcdir/${pkgname%-git}"
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou"
+  bsdtar -xvf bazel-bin/install-extension.runfiles/gtile/dist.tar.gz -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou"
 }

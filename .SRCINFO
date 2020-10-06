@@ -1,16 +1,18 @@
 pkgbase = gnome-shell-extension-gtile-git
-	pkgdesc = A window tiling extension for Gnome
-	pkgver = r205.9535f8b
+	pkgdesc = A window tiling extension for GNOME
+	pkgver = 35.r24.g345e051
 	pkgrel = 1
 	url = https://github.com/gTile/gTile
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = gnome-shell>=3.32
+	makedepends = bazel
+	makedepends = yarn
+	depends = gnome-shell
 	provides = gnome-shell-extension-gtile
 	conflicts = gnome-shell-extension-gtile
-	source = gnome-shell-extension-gtile-git::git+https://github.com/gTile/gTile.git
-	sha512sums = SKIP
+	source = gnome-shell-extension-gtile::git+https://github.com/gTile/gTile.git
+	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-gtile-git
 
