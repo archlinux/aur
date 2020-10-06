@@ -2,7 +2,7 @@
 
 pkgname=sakura-frp
 pkgver=0.34.1_sakura_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sakura Frp"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h' 'arm')
 url="https://www.natfrp.com/"
@@ -12,12 +12,12 @@ source=("${pkgname}c.service"
         "${pkgname}c@.service"
         "${pkgname}c-f@.service")
 backup=("etc/${pkgname}/frpc.ini")
-source_x86_64=("https://getfrp.sh/d/frpc_linux_amd64")
-source_i686=("https://getfrp.sh/d/frpc_linux_386")
-source_arm=("https://getfrp.sh/d/frpc_linux_arm")
-source_armv7h=("https://getfrp.sh/d/frpc_linux_arm")
-source_armv6h=("https://getfrp.sh/d/frpc_linux_arm")
-source_aarch64=("https://getfrp.sh/d/frpc_linux_arm64")
+source_x86_64=(${pkgname}-${pkgver}-x86_64::"https://getfrp.sh/d/frpc_linux_amd64")
+source_i686=(${pkgname}-${pkgver}-i686::"https://getfrp.sh/d/frpc_linux_386")
+source_arm=(${pkgname}-${pkgver}-arm::"https://getfrp.sh/d/frpc_linux_arm")
+source_armv7h=(${pkgname}-${pkgver}-arm::"https://getfrp.sh/d/frpc_linux_arm")
+source_armv6h=(${pkgname}-${pkgver}-arm::"https://getfrp.sh/d/frpc_linux_arm")
+source_aarch64=(${pkgname}-${pkgver}-aarch64::"https://getfrp.sh/d/frpc_linux_arm64")
 
 md5sums=('1407d25307cd98902f60db064f2e2bc0'
          'a87e9ee64c87ab609d1e978adc6446e0'
@@ -30,7 +30,7 @@ md5sums_armv7h=('7ee16fe70e600ea835ebc0a8a4c6ee4a')
 md5sums_arm=('7ee16fe70e600ea835ebc0a8a4c6ee4a')
 
 package() {
-  install -Dm755 frpc_linux_* ${pkgdir}/usr/bin/${pkgname}c
+  install -Dm755 ${pkgname}-${pkgver}-* ${pkgdir}/usr/bin/${pkgname}c
 
   # frpc.ini
   install -dm755 ${pkgdir}/etc/${pkgname}
