@@ -2,7 +2,7 @@
 
 pkgname=geh-git
 pkgver=0.4.0.r9.g26bfe3a
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple command line image viewer written in C/GTK3
 with various nice features."
 arch=('x86_64' 'i686')
@@ -31,11 +31,16 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {
+build() {
 	cd "${srcdir}/geh"
 	./autogen.sh
 	./configure --prefix="$pkgdir" --disable-gtk2
-	make && make install
+	make
+}
+
+package() {
+	cd "${srcdir}/geh"
+	make install
 	mkdir -p "$pkgdir/usr/bin"
 	mv "$pkgdir/bin/"* "$pkgdir/usr/bin"
 	rmdir "$pkgdir/bin"
