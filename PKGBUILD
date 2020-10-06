@@ -74,9 +74,10 @@ package_swift-llvm-git() {
 # python3 setup.py install --root="$pkgdir" -O1
 # popd
 
-# not necessary as sources are not in pkg
+# not necessary as sources are not in pkg, but remove doc
 #  # Remove documentation sources
 #  rm -r "$pkgdir"/$instprefix/share/doc/$pkgname/html/{_sources,.buildinfo}
+  rm -r "$pkgdir"/$instprefix/share/doc/
 
   # The runtime libraries go into llvm-libs
   mv -f "$pkgdir"/$instprefix/lib/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
