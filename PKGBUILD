@@ -6,7 +6,7 @@
 
 pkgname=tupitube
 pkgver=0.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Design and authoring tool for digital artists interested in 2D animation"
 arch=(x86_64)
 url="https://www.maefloresta.com/"
@@ -24,8 +24,8 @@ sha256sums=('700433296de253539c3ec3189c9eeffa5fd1b864f3010fac38259ac5ac40d8a4'
 prepare() {
   cd $pkgname.desk
   patch -p1 -i ../qt-5.15.patch
-  sed -i 's|quazip/|quazip5/|' configure.tests/quazip/main.cpp src/libtupi/tuppackagehandler.cpp
-  sed -i 's|quazip-qt5|quazip5|' qonf/test.rb
+  sed -i 's|quazip/|QuaZip-Qt5-1.0/quazip/|' configure.tests/quazip/main.cpp src/libtupi/tuppackagehandler.cpp
+  sed -i 's|quazip-qt5|quazip1-qt5|' qonf/test.rb
   sed -i 's|/share/pixmaps|/share/icons/hicolor/128x128/apps|' qonf/makefile.rb
 }
 
