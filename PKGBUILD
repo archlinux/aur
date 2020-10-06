@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=lelgenio-meta
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="meta"
 arch=('any')
 url=""
@@ -57,7 +57,7 @@ depends=(
     neomutt urlview isync
     # Files
     syncthing nextcloud-client
-    deluge deemix
+    transmission-sequential-cli deemix
     # Media
     imv mpv mpd mpc ncmpcpp mpv
     blender gimp kdenlive picard
