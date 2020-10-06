@@ -1,4 +1,5 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Maintainer: Edgar Luque <git@edgarluque.com>
 
 _name=ddnet-maps
 pkgname=$_name-git
