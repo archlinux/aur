@@ -1,29 +1,26 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Maintainer: AwesomeHaircut <jesusbalbastro@gmail.com>
 
 pkgname=touchegg
-pkgver=1.1.1
-pkgrel=3
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Multitouch gesture recognizer"
-arch=(i686 x86_64)
-url="https://code.google.com/p/touchegg/"
-license=(GPL)
-depends=(qt4 geis)
-source=("https://github.com/JoseExposito/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('99d934b1c5e161a19499ecce54ac3efd92b739937ff0844d68d0af73a4fcd4b6b2ab39e7e3780f6372486d6dd3433aec3e8e011e240df87ff42e912a4d50222f')
-
+arch=('i686' 'x86_64')
+url="https://github.com/JoseExposito/touchegg/"
+license=('GPL')
+depends=('libinput' 'cairo' 'systemd-libs' 'libx11' 'libxrandr' 'libxtst' 'pugixml')
+makedepends=('cmake')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha512sums=(SKIP)
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}/touchegg"
-  qmake-qt4 
-  make 
-  
-  cd "$srcdir/${pkgname}-${pkgver}/touchegg-gui"
-  qmake-qt4
-  make 
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-Wno-dev
+	make -j$(nproc) -c build
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}/touchegg"
-  make INSTALL_ROOT="${pkgdir}" install
-  cd "$srcdir/${pkgname}-${pkgver}/touchegg-gui"
-  make INSTALL_ROOT="${pkgdir}" install
+
+	make -C build DESTDIR="$pkgdir" install
+
+	[ -d "$pkgdir/lib" ] && mv "$pkgdir/lib" "$pkgdir/usr/lib"
 }

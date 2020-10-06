@@ -1,15 +1,21 @@
 pkgbase = touchegg
 	pkgdesc = Multitouch gesture recognizer
-	pkgver = 1.1.1
-	pkgrel = 3
-	url = https://code.google.com/p/touchegg/
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/JoseExposito/touchegg/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = qt4
-	depends = geis
-	source = https://github.com/JoseExposito/touchegg/archive/1.1.1.tar.gz
-	sha512sums = 99d934b1c5e161a19499ecce54ac3efd92b739937ff0844d68d0af73a4fcd4b6b2ab39e7e3780f6372486d6dd3433aec3e8e011e240df87ff42e912a4d50222f
+	makedepends = cmake
+	depends = libinput
+	depends = cairo
+	depends = systemd-libs
+	depends = libx11
+	depends = libxrandr
+	depends = libxtst
+	depends = pugixml
+	source = touchegg-2.0.1.tar.gz::https://github.com/JoseExposito/touchegg//archive/2.0.1.tar.gz
+	sha512sums = SKIP
 
 pkgname = touchegg
 
