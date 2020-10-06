@@ -5,9 +5,9 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-_pkgver=2020.5
-_channel=stable
-pkgver=${_pkgver}.${_channel}
+_pkgver=2020.6
+_channel=beta
+pkgver=${_pkgver}.${_channel}3
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
@@ -18,15 +18,17 @@ makedepends=('git' 'go' 'rust' 'npm' 'python')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
-_commit='f9c55513f372de96223fad3ab6bd2aa78d517387'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$_pkgver?signed"
+_commit='b82a3e9a7717b8b15c339bc78d4a2f3c6d90ea50'
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}3?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "${pkgname%-beta}.sh")
 sha256sums=('SKIP'
             'SKIP'
             'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
-validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87')
+validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
+              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
+              # David Lönnhager (code signing) <david dot l at mullvad dot net>
 
 prepare() {
 	# Point the submodule to our local copy
@@ -38,10 +40,11 @@ prepare() {
 	# Disable building of rpm
 	sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
 
+	echo "Removing old Rust build artifacts"
+	cargo clean
+
 	export GOPATH="$srcdir/gopath"
 	go clean -modcache
-
-	mkdir -p dist-assets/shell-completions
 }
 
 build() {
@@ -53,7 +56,10 @@ build() {
 
 	echo "Building Mullvad VPN $PRODUCT_VERSION..."
 
-	# Compile wireguard-go
+	echo "Updating version in metadata files..."
+	./version-metadata.sh inject $PRODUCT_VERSION
+
+	echo "Building wireguard-go..."
 	cd "$srcdir/mullvadvpn-app/wireguard/libwg"
 	mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -66,17 +72,11 @@ build() {
 	# Clean mod cache for makepkg -C
 	go clean -modcache
 
-	cd "$srcdir/mullvadvpn-app"
-	echo "Updating version in metadata files..."
-	./version-metadata.sh inject $PRODUCT_VERSION
-
-	echo "Removing old Rust build artifacts"
-	cargo clean
-
 	echo "Building Rust code in release mode using $RUSTC_VERSION..."
 
-	cd mullvad-cli
-	for sh in bash zsh; do
+	cd "$srcdir/mullvadvpn-app/mullvad-cli"
+	mkdir -p dist-assets/shell-completions
+	for sh in bash zsh fish; do
 		echo "Generating shell completion script for $sh..."
 		cargo run --release --locked --features shell-completions -- \
 			shell-completions "$sh" ../dist-assets/shell-completions/
@@ -98,8 +98,8 @@ build() {
 		cp "target/release/$binary" "dist-assets/$binary"
 	done
 
-	# Update relay list & generate relays.json
-	./update-relays.sh
+	echo "Updating relay list..."
+	cargo run -p mullvad-rpc --bin relay_list > dist-assets/relays.json
 
 	# Build Electron GUI app
 	cd gui
@@ -143,11 +143,13 @@ package() {
 		"$pkgdir/usr/share/bash-completion/completions/mullvad"
 	install -Dm755 dist-assets/shell-completions/_mullvad -t \
 		"$pkgdir/usr/share/zsh/site-functions"
+	install -Dm755 dist-assets/shell-completions/mullvad.fish -t \
+		"$pkgdir/usr/share/fish/vendor_completions.d"
 
 	# Install desktop file & icons from deb
 	cd dist
-	ar x "MullvadVPN-$_pkgver.0_amd64.deb"
-	tar -xf data.tar.xz
+	ar x "MullvadVPN-${_pkgver}.0-${_channel}3_amd64.deb"
+	bsdtar -xf data.tar.xz
 	install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
 		"$pkgdir/usr/share/applications"
 
