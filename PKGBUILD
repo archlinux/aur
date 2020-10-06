@@ -8,8 +8,8 @@ arch=(x86_64 i686)
 url="https://github.com/kal39/ptmv.git"
 license=('MIT')
 groups=()
-depends=(youtube-dl)
-makedepends=(git make  python3 python-pip)
+depends=(youtube-dl python3)
+makedepends=(git python3 python-pip)
 checkdepends=()
 optdepends=()
 provides=(ptmv)
@@ -30,12 +30,9 @@ pkgvar() {
 }
 
 build() {
-	cd "ptmv"
-	sudo pip install pyinstaller opencv-python simpleaudio youtube-dl
-	make build
+	python3 setup.py build
 }
 
 package() {
-	cd "ptmv"
-	sudo make install
+	python3 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
