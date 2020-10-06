@@ -3,10 +3,10 @@
 
 pkgname=python-raet
 pkgver=0.6.8
-pkgrel=4
+pkgrel=5
 pkgdesc='Asynchronous encrypted transaction based protocol using Ioflo'
 arch=('any')
-url='http://raet.docs.saltstack.com/'
+url='https://github.com/saltstack/raet'
 license=('Apache')
 depends=('python-libnacl' 'python-ioflo' 'python-six')
 makedepends=('python-setuptools-git')
