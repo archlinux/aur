@@ -5,7 +5,7 @@ pkgver=0.16.6
 pkgrel=1
 commit=fb64d89
 arch=('x86_64')
-url="https://ltchd.io"
+url="https://ltchd.org"
 license=('MIT')
 source=("https://github.com/ltchd2019/litecoinhd/releases/download/ltchd-v$pkgver/ltchd-v$pkgver.0-$commit-x86_64-linux-gnu.tar.gz"
         "https://raw.githubusercontent.com/ltchd2019/litecoinhd/ltchd-v$pkgver/COPYING"
