@@ -37,5 +37,5 @@ package(){
 	 install -Dm644 QtScrcpy.desktop "${pkgdir}"/usr/share/applications/QtScrcpy.desktop
 	 install -Dm644 QtScrcpy/backup/logo.png "${pkgdir}"/usr/share/pixmaps/QtScrcpy.png
 	 
-	 install -Dm644 /usr/share/scrcpy/scrcpy-server /usr/bin/scrcpy-server
+	 install -Dm644 QtScrcpy/third_party/scrcpy-server "${pkgdir}"/usr/bin/scrcpy-server
 }
