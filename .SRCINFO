@@ -1,0 +1,19 @@
+pkgbase = geh-git
+	pkgdesc = A simple command line image viewer written in C/GTK3 with various nice features.
+	pkgver = 0.4.0.r9.g26bfe3a
+	pkgrel = 1
+	url = https://github.com/software-revive/geh-rv
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = gtk3
+	provides = geh
+	conflicts = geh
+	conflicts = geh-gtk2
+	conflicts = geh-gtk2-git
+	source = geh::git+https://github.com/software-revive/geh-rv.git#branch=master
+	md5sums = SKIP
+
+pkgname = geh-git
+
