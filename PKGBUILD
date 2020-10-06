@@ -1,15 +1,15 @@
-# Maintainer: ftsell <aur@finn-thorben.me>
+# Maintainer: Vincent.Ducamps <aur@ducamps.win>
 pkgname=gnome-shell-extension-pop-shell-git
 pkgdesc="Pop Shell - Tiling window management in Gnome (WIP)"
-pkgver=r540.9286532
-pkgrel=2
+pkgver=r552.0fce7eb
+pkgrel=3
 _gitorg=pop-os
 _gitname=shell
 _gitbranch=master_focal
 arch=(any)
 url="https://github.com/pop-os/shell"
 license=("GPLv3")
-
+install="pop-shell.install"
 conflicts=("gnome-shell-extension-pop-shell")
 makedepends=("typescript" "git")
 depends=("gnome-shell" "pop-shell-shortcuts-git")
@@ -35,6 +35,7 @@ build() {
 package() {
     cd "${srcdir}/${_dir}"
     make DESTDIR="${pkgdir}/" install
-    install -Dm644 rebuild.sh "${pkgdir}//usr/share/gnome-shell/extensions/pop-shell@system76.com"
+    install -Dm755 scripts/configure.sh "${pkgdir}/usr/share/gnome-shell/extensions/pop-shell@system76.com/scripts/configure.sh"
+    touch "${pkgdir}/usr/share/gnome-shell/extensions/pop-shell@system76.com/scripts/.confirm_shortcut_change"
 }
 
