@@ -11,7 +11,7 @@ url="https://github.com/DX-MON/crunch"
 depends=()
 makedepends=('ninja' 'meson')
 provides=('crunch++')
-source=("https://github.com/DX-MON/crunch/releases/v${pkgver}/${_pkgname}-${pkgver}.tar.xz"{,.asc})
+source=("https://github.com/DX-MON/crunch/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.xz"{,.asc})
 sha256sums=('bef4d52588ebf2534387e557c235cc1ea85d5890e91c15e28689bbc06a09548f' 'SKIP')
 validpgpkeys=(
 	'5E30DFF73626CA96F83DDF5E0137BA904EBDB4CD' # "Rachel Mant <dx-mon@users.sourceforge.net>"
