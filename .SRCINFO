@@ -1,6 +1,6 @@
 pkgbase = fpga-toolchain-bin
 	pkgdesc = Nightly builds of open-source FPGA tools
-	pkgver = 20200930
+	pkgver = 20201006
 	pkgrel = 1
 	url = https://github.com/open-tool-forge/fpga-toolchain
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = fpga-toolchain-bin
 	conflicts = dfu-util-git
 	conflicts = ecpprog
 	conflicts = openfpgaloader
-	source_x86_64 = https://github.com/open-tool-forge/fpga-toolchain/releases/download/nightly-20200930/fpga-toolchain-linux_x86_64-nightly-20200930.tar.xz
-	sha256sums_x86_64 = f85208b6b70805ff260c6aa3e6b60ccc68c121faa5ffa13d8a768abf30e8f7fd
+	source_x86_64 = https://github.com/open-tool-forge/fpga-toolchain/releases/download/nightly-20201006/fpga-toolchain-linux_x86_64-nightly-20201006.tar.xz
+	sha256sums_x86_64 = f59b2e208ad065c6033e348f6ac571d1ea2e919ef0201eb908764ad911273ae2
 
 pkgname = fpga-toolchain-bin
 
