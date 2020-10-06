@@ -1,10 +1,11 @@
 pkgbase = git-lab-git
 	pkgdesc = Subcommand for git providing an arcanist-style interface to GitLab.
-	pkgver = r39.268af55
+	pkgver = r114.0556136
 	pkgrel = 1
 	url = https://invent.kde.org/jbbgameich/git-lab
 	arch = any
 	license = GPL
+	checkdepends = python-pytest
 	makedepends = git
 	depends = python-gitlab
 	depends = python-gitpython
