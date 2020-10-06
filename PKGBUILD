@@ -1,17 +1,19 @@
 # Maintainer Severin Glöckner <severin.gloeckner@stud-htwk.leipzig.de>
 
 # This script contains as well instructions for other Linux systems.
-# Have a look what is done in the function(){…} below.
+# Have a look what is done in the build() and package() functions below.
+# Execute the same command which are used there.
 
-# On other systems, ignore the used variables like $pkgdir, $srcdir or $startdir
+# On other systems, ignore the used variables like $pkgdir and $srcdir.
 # (there $pkgdir would be the same as an undefined variable (empty),
-#  and $srcdir as well as $stardir would be the place where you have your files)
+#  and $srcdir would be the place where you have your files)
+
 
 pkgname=wesnoth-1.12
 pkgver=1.12.6+dev
 pkgrel=11
 pkgdesc="Turn-based strategy game on a fantasy world (oldstable)"
-arch=('i686' 'x86_64' 'aarch64')
+arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.wesnoth.org"
 license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_ttf' 'sdl_net' 'boost-libs' 'bzip2' 'zlib' 'libvorbis' 'pango' 'cairo' 'fontconfig' 'dbus' 'fribidi')
@@ -19,34 +21,23 @@ makedepends=('boost' 'scons' 'git')
 # package names on Debian / Ubuntu / Mint:
 # libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl-net1.2-dev libboost-filesystem-dev libboost-locale-dev libboost-iostreams-dev libboost-regex-dev libboost-serialization-dev libasio-dev libboost-program-options-dev libboost-system-dev zlib1g-dev libpango1.0-dev libcairo2-dev libvorbis-dev libfontconfig1-dev libdbus-1-dev libfribidi-dev gettext-base scons pkgconf gcc g++ git
 options=('!emptydirs')
-source=("wesnoth-1.12.desktop"
+source=("wesnoth-1.12-git::git+https://github.com/wesnoth/wesnoth.git#branch=1.12"
+        "wesnoth-1.12.desktop"
         "wesnothd-1.12.tmpfiles.conf"
         "wesnothd-1.12.service"
         "wesnoth-1.12.appdata.xml")
 # Not finding some files? https://aur.archlinux.org/packages/wesnoth-1.12
 # Rest assured, they are optional. Things like a launcher for your convenience…
 
-sha256sums=('f765499315d6650fe91424c0818cc57fc9fd06108c29e78c2db987c148dbf877'
+# Except for the wesnoth download, which can also be retrieved with this command:
+# git clone https://github.com/wesnoth/wesnoth.git -b 1.12 --shallow-exclude=1.12.6 wesnoth-1.12-git
+
+sha256sums=('SKIP'
+            'f765499315d6650fe91424c0818cc57fc9fd06108c29e78c2db987c148dbf877'
             '4d11e481ad8610bb2ad65290d2b3d1bf2d058485deaa9016325499b113e0f89f'
             'f8e20adabc0ecdbce23aed375ad9b28b616cebb0d261b3c6b8e576ccb61dcdae'
             'e5b0bd418e97d5f8cfc9392045dc749941c71e9cf805ef6f343c318022088384')
 
-PKGEXT='.pkg.tar'
-
-prepare() {
-  cd "$startdir"
-
-  # get a shallow clone of the git repo and store it outside the srcdir
-  if  [ ! -d "wesnoth-1.12-git" ] ; then
-    git clone https://github.com/wesnoth/wesnoth -b 1.12 --shallow-exclude=1.12.6 wesnoth-1.12-git
-    msg "Git checkout done (or server timeout)"
-  fi
-
-  # Archlinux specific (hide the usage of the $startdir variable)
-  if [ ! -e "$srcdir/wesnoth-1.12-git" ] ; then
-    ln -s "$startdir/wesnoth-1.12-git" "$srcdir/wesnoth-1.12-git"
-  fi
-}
 
 build() {
   # As this is an older version and not worked on anymore, it will someday break
@@ -73,6 +64,7 @@ build() {
       desktop_entry=False \
       wesnoth wesnothd
 }
+
 
 # The commands below have to be run with root privileges.
 # E.g. by prefixing them with "sudo ".
@@ -113,5 +105,5 @@ package() {
   install -D -m644 "$srcdir/wesnothd-1.12.service" "$pkgdir/usr/lib/systemd/system/wesnothd-1.12.service"
 
   # All done, but it doesn't show up? Try that:
-  # update-desktop-database
+  # sudo update-desktop-database
 }
