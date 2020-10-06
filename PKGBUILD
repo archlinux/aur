@@ -1,8 +1,8 @@
 # Maintainer: yjun <jerrysteve1101@gmail.com>
 
 pkgname=sakura-frp
-pkgver=0.33.0_sakura_6
-pkgrel=4
+pkgver=0.34.1_sakura_1
+pkgrel=1
 pkgdesc="Sakura Frp"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h' 'arm')
 url="https://www.natfrp.com/"
@@ -12,22 +12,22 @@ source=("${pkgname}c.service"
         "${pkgname}c@.service"
         "${pkgname}c-f@.service")
 backup=("etc/${pkgname}/frpc.ini")
-source_x86_64=("https://qianqu.me/frp/frpc_linux_amd64")
-source_i686=("https://qianqu.me/frp/frpc_linux_386")
-source_arm=("https://qianqu.me/frp/frpc_linux_arm")
-source_armv7h=("https://qianqu.me/frp/frpc_linux_arm")
-source_armv6h=("https://qianqu.me/frp/frpc_linux_arm")
-source_aarch64=("https://qianqu.me/frp/frpc_linux_arm64")
+source_x86_64=("https://getfrp.sh/d/frpc_linux_amd64")
+source_i686=("https://getfrp.sh/d/frpc_linux_386")
+source_arm=("https://getfrp.sh/d/frpc_linux_arm")
+source_armv7h=("https://getfrp.sh/d/frpc_linux_arm")
+source_armv6h=("https://getfrp.sh/d/frpc_linux_arm")
+source_aarch64=("https://getfrp.sh/d/frpc_linux_arm64")
 
 md5sums=('1407d25307cd98902f60db064f2e2bc0'
          'a87e9ee64c87ab609d1e978adc6446e0'
          'd3f3b3c8368fdc692a8a7d71bf9ae5c8')
-md5sums_x86_64=('365e027265c6548b862d022c079faf62')
-md5sums_i686=('c94b5adacb30b28dc5003ed97f94a0c9')
-md5sums_aarch64=('2d65556d917628c04bafe3213864b6d6')
-md5sums_armv6h=('0ceea6a1bdbbd6dd9068a88bb2cd1c93')
-md5sums_armv7h=('0ceea6a1bdbbd6dd9068a88bb2cd1c93')
-md5sums_arm=('0ceea6a1bdbbd6dd9068a88bb2cd1c93')
+md5sums_x86_64=('51039909f9e3c1478365b07788eaa0c3')
+md5sums_i686=('9062043d7a61aee84b38315f14903b72')
+md5sums_aarch64=('bad9388ed72ce3b9117cd81d63e8382b')
+md5sums_armv6h=('7ee16fe70e600ea835ebc0a8a4c6ee4a')
+md5sums_armv7h=('7ee16fe70e600ea835ebc0a8a4c6ee4a')
+md5sums_arm=('7ee16fe70e600ea835ebc0a8a4c6ee4a')
 
 package() {
   install -Dm755 frpc_linux_* ${pkgdir}/usr/bin/${pkgname}c
