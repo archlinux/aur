@@ -1,0 +1,20 @@
+[Desktop Entry]
+Comment[en_US]=Minecraft API Reimplementation
+Comment=Minecraft API Reimplementation
+Exec=/usr/bin/mineonline
+GenericName[en_US]=Minecraft API Reimplementation
+GenericName=Minecraft API Reimplementation
+Icon=MineOnline
+MimeType=
+Name[en_US]=MineOnline
+Name=MineOnline
+NoDisplay=false
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
