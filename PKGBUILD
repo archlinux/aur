@@ -2,12 +2,12 @@
 
 pkgname=geh-git
 pkgver=0.4.0.r9.g26bfe3a
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple command line image viewer written in C/GTK3
 with various nice features."
 arch=('x86_64' 'i686')
 url="https://github.com/software-revive/geh-rv"
-license=('GPL3')
+license=('MIT')
 source=(
 	"geh::git+${url}.git#branch=master"
 )
