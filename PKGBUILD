@@ -19,6 +19,7 @@ prepare() {
 	cd src/wxparaver
 	sed -i 's|-lparaver-kernel -lparaver-api|-L../../paraver-kernel/src/.libs -L../../paraver-kernel/api/.libs -lparaver-kernel -lparaver-api|g' src/Makefile.am
 	sed -i 's|^wxparaver_bin_CXXFLAGS =.*|& -I../../paraver-kernel -I../../paraver-kernel/api|' src/Makefile.am
+	# shellcheck disable=SC2016
 	sed -i 's| -L$PARAVER_LIBDIR||g' configure.ac
 
 	autoreconf -i -f
