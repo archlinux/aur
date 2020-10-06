@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-pytest-black
-pkgver=0.3.11
+pkgver=0.3.12
 pkgrel=1
 pkgdesc="A pytest plugin to enable format checking with black"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/shopkeep/pytest-black/"
 depends=('python-black' 'python-pytest')
 makedepends=('python-setuptools-scm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shopkeep/pytest-black/archive/$pkgver.tar.gz")
-sha512sums=('566c496abfcf87e17b355a3edddb4de371c54226565fda40803eb8c5c0c2caa3d4b2438c7575f616148ebab34f4e8d6085e26f321cbe0505aaeb2fda73652553')
+sha512sums=('1576761c9a93e6a05d5f1d40200e228791a67ac33f437330940ccbb898121df22814a794858b36de9223d4cc45d58fcbefaa08c87275f36e04901cb4cd217760')
 
 export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
 
