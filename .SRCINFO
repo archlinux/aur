@@ -1,0 +1,11 @@
+pkgbase = reload-wacom-after-suspend
+	pkgdesc = Reloads the wacom kernel module after suspend
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X390_Yoga#Fix_touchscreen_after_resume
+	arch = any
+	source = 10-wacom.sh
+	md5sums = adc3f8a2be01b081b75ad5bcaca9bde1
+
+pkgname = reload-wacom-after-suspend
+
