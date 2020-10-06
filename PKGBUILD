@@ -4,12 +4,12 @@ pkgver=0.2.0
 pkgrel=1
 epoch=
 pkgdesc="An utf-8/truecolor image and video viewer for the terminal."
-arch=(x86_64 i686)
+arch=(any)
 url="https://github.com/kal39/ptmv.git"
 license=('MIT')
 groups=()
-depends=(youtube-dl python3)
-makedepends=(git python3 python-pip)
+depends=(youtube-dl python)
+makedepends=(git python python-setuptools)
 checkdepends=()
 optdepends=()
 provides=(ptmv)
@@ -31,11 +31,11 @@ pkgvar() {
 
 build() {
 	cd "ptmv"
-	python3 setup.py build
+	python setup.py build
 }
 
 package() {
 	cd "ptmv"
-	python3 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
