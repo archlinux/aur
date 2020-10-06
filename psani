@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# Skript na spousteni programu psani-profi
+#
+
+# Spousteni pomoci nasledujiciho radku vyuzije program luit
+# pro emulovani iso-8859-2 kodovani na UTF-8 terminalech (doporuceno).
+# Pro spravnou funkci je potreba mit nainstalovan program luit.
+
+lang=$(locale -a | perl -ne 'print $1 if /(cs_CZ|sk_SK).iso88592/')
+if [ -z "${lang}" ]
+then
+  echo "Je potreba odkomentovat radek cs_CZ ISO-8859-2 v /etc/locale.gen"
+  echo "a spustit locale-gen -a"
+  exit 1
+fi
+
+LC_ALL=${lang}.ISO-8859-2 luit /usr/bin/psani-profi-3.4.01 $@; exit 0
+
+# Spousteni pomoci nasledujiciho radku spusti program v 
+# defaultnim kodovani iso-8859-2
+
+# /usr/bin/psani-profi-3.4.01 $@
