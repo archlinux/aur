@@ -1,0 +1,19 @@
+pkgbase = tuxedo-keyboard-ite
+	pkgdesc = Per-key keyboard backlight driver for TUXEDO ITE Keyboards devices.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://www.tuxedocomputers.com/
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	optdepends = linux-headers: build modules against Arch kernel
+	optdepends = linux-lts-headers: build modules against LTS kernel
+	optdepends = linux-zen-headers: build modules against ZEN kernel
+	optdepends = linux-hardened-headers: build modules against the HARDENED kernel
+	conflicts = tuxedo-keyboard
+	source = http://rpm.tuxedocomputers.com/opensuse/15.2/noarch/tuxedo-keyboard-ite-0.0.2-1.noarch.rpm
+	sha256sums = ece4ac9b2f049b67a8fe002f98b620372eb14bd48263c13e012f928cb576e2b4
+	sha512sums = 8879a60f1a9a8245800b8a5ee78ffe8908b1d1f4bdebcd84fa417f091a77a374d00a28606c2df0857a35c05715f58dd525b9804a2d4216b8795d4c14e4de064c
+
+pkgname = tuxedo-keyboard-ite
+
