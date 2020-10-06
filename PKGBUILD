@@ -8,7 +8,7 @@ url="https://github.com/joanbm/full-offline-backup-for-todoist"
 license=('GPLv3')
 depends=('python')
 makedepends=('python-setuptools')
-source=(https://github.com/joanbm/${pkgname}/archive/${pkgver}.tar.gz)
+source=("https://github.com/joanbm/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('f131496f9de369ab05cfafcb45393a78bb1bb0b7d063e563f0c42eb74e2812ce')
 
 package() {
