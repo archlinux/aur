@@ -2,20 +2,20 @@
 # Contributor: Stephen Gregoratto <dev@sgregoratto.me>
 
 pkgname=glow-bin
-pkgver=0.2.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Markdown renderer for the CLI"
 arch=('x86_64')
 url="https://github.com/charmbracelet/glow"
 license=('MIT')
-provides=('glow')
-conflicts=('glow')
-source_x86_64=("$url/releases/download/v$pkgver/glow_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('ea3b158c1c3f3f9ce63a701817ffc9023bbcf2c5375f21a5890ddda7d57554c5')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_x86_64.tar.gz")
+sha256sums_x86_64=('97c71fba259ba51b43b527abef8dc1c032f67b23aecb66567fdcfae9dda5c3d9')
 
 package() {
-    install -Dm755 "glow" "$pkgdir/usr/bin/glow"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname%-bin}/LICENSE"
 }
 
 # vim:set ts=4 sw=4 et:
