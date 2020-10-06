@@ -12,9 +12,9 @@ source=("https://www.hdd.cash/download/hddcash-v$pkgver.0-$commit-x86_64-linux-g
         "hdd-qt.sh"
         "hddcash128.png")
 sha256sums=('86dd44cc85b63449cec7a8d3ff5cee2a341b2a9ed739139acf05caad5a0b66ca'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+            '891294892851d7abc3c88abd135556e6ade57dc17ddbc727d60242f53faee1b2'
+            '040357f068438ad2acc4cc781a5cf2d94202a0dc15b0ddaa07a317921fab994d'
+            '29e495e885f124c391f65473bc34190d0a151b4e2bd16a8f3e8c81904d33d6a0')
 
 package() {
 	pkgdesc="HDDCash is a peer-to-peer network based digital currency"
