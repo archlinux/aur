@@ -1,6 +1,6 @@
 pkgname=identity
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Compare multiple versions of an image or video'
 arch=(x86_64)
 url=https://gitlab.gnome.org/YaLTeR/identity
