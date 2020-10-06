@@ -1,7 +1,7 @@
 # Maintainer: haha662 <haha662 at outlook dot com>
 
 _cranname=servr
-_cranver=0.18
+_cranver=0.19
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ depends=("r>=3.0.0" "r-mime>=0.2" "r-httpuv>=1.5.2" "r-xfun" "r-jsonlite")
 # makedepends=()
 optdepends=("r-later" "r-rstudioapi" "r-knitr>=1.9" "r-rmarkdown")
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=("4ade7860ecbe854d9f9dcf9e71837b670be17026b96549ba5e900c1e5470cb75")
+sha256sums=('5dbe0f29b8422e32de7b8283a00eb1a2b6b9c1dbc238d0ac56b4ea2ef8fe2036')
 
 build() {
   cd "${srcdir}"
