@@ -1,0 +1,15 @@
+pkgbase = fcitx5-arc-git
+	pkgdesc = Arc color theme for fcitx5
+	pkgver = r5.5d2a398
+	pkgrel = 1
+	url = https://github.com/Kienyew/fcitx5-arc-theme
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = fcitx5-arc
+	conflicts = fcitx5-arc
+	source = git+https://github.com/Kienyew/fcitx5-arc-theme.git
+	sha512sums = SKIP
+
+pkgname = fcitx5-arc-git
+
