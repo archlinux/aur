@@ -1,0 +1,18 @@
+pkgbase = kbs2-git
+	pkgdesc = A secret manager backed by age (git)
+	pkgver = 0.1.5.r0.gd7a70e1
+	pkgrel = 1
+	url = https://github.com/woodruffw/kbs2
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = python
+	makedepends = git
+	depends = libx11
+	provides = kbs2
+	conflicts = kbs2
+	source = git+https://github.com/woodruffw/kbs2
+	sha512sums = SKIP
+
+pkgname = kbs2-git
+
