@@ -4,12 +4,12 @@
 
 pkgname=oolite
 pkgver=1.90
-pkgrel=1
+pkgrel=2
 pkgdesc="A space-sim based on the classic Elite"
 arch=('x86_64')
 url="http://www.oolite.org/"
 license=('GPL2')
-depends=('espeak' 'gnustep-base' 'sdl_mixer')
+depends=('espeak' 'gnustep-base' 'sdl_mixer' 'sdl_image' 'glu' 'nspr' 'openal')
 makedepends=('gnustep-make' 'curl' 'zip' 'mesa' 'gcc-objc')
 source=("oolite" "https://github.com/OoliteProject/oolite/releases/download/$pkgver/oolite-source-$pkgver.tar.bz2")
 md5sums=('ade14e17fe9d52d16b35f2e97046362c'
