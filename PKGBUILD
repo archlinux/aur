@@ -1,5 +1,5 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
-# Maintainer: Ryozuki <ryo@ryozuki.xyz>
+# Maintainer: Edgar Luque <git@edgarluque.com> 
 
 pkgname=ddnet
 pkgver=15.0.5
