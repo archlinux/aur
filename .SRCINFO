@@ -1,7 +1,7 @@
 pkgbase = tuxedo-keyboard
 	pkgdesc = Keyboard Backlight Driver from TUXEDO Computers
 	pkgver = 2.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tuxedocomputers/tuxedo-keyboard
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = tuxedo-keyboard
 	optdepends = linux-lts-headers: build modules against LTS kernel
 	optdepends = linux-zen-headers: build modules against ZEN kernel
 	optdepends = linux-hardened-headers: build modules against the HARDENED kernel
-	conflicts = tuxedo-keyboard-dkms
+	conflicts = tuxedo-keyboard-ite
 	conflicts = tuxedo-wmi
 	conflicts = tuxedo-wmi-dkms
 	replaces = tuxedo-keyboard-dkms
