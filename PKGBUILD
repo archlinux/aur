@@ -1,6 +1,6 @@
 # Maintainer: kal39 <kal390983@gmail.com>
 pkgname=ptmv-git
-pkgver=0.2.0
+pkgver=46b3d29
 pkgrel=1
 epoch=
 pkgdesc="An utf-8/truecolor image and video viewer for the terminal."
@@ -24,9 +24,9 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-pkgvar() {
-	cd "ptmv"
-	printf "r%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgver() {
+  cd "ptmv"
+  git describe --long --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
