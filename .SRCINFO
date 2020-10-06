@@ -1,6 +1,6 @@
 pkgbase = pantheon-music-git
 	pkgdesc = The Pantheon Music Player
-	pkgver = 5.0.5.r37.gaf29a5ff
+	pkgver = 5.0.5.r52.g9759fd26
 	pkgrel = 1
 	url = https://github.com/elementary/music
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = pantheon-music-git
 	depends = json-glib
 	depends = libaccounts-glib
 	depends = libgda
-	depends = libhandy1
+	depends = libhandy
 	depends = libgee
 	depends = libgpod
 	depends = libgranite.so
