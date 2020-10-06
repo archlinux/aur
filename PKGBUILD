@@ -2,7 +2,7 @@
 
 pkgname=python-ray
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(psmisc python python-aiohttp python-aiohttp-cors python-aioredis
          python-click python-colorama python-colorful python-filelock
          python-google python-gpustat python-grpcio python-jsonschema
          python-msgpack python-numpy python-protobuf py-spy python-pyaml
-         python-requests python-redis python-opencensus python-prometheus-client)
+         python-requests python-redis python-opencensus python-prometheus_client)
 optdepends=(
             'uvicorn: for ray[serve] module'
             'python-flask: for ray[serve] module'
@@ -31,8 +31,17 @@ optdepends=(
            )
 makedepends=(python python-setuptools python-wheel python-pip cython bazel)
 _pkgname=ray
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz")
-sha256sums=('53aa83f6cc020a84d56192d4f4678e192a58ce33f12c5996343949d28780a788')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz"
+        "bazelrc.patch::https://patch-diff.githubusercontent.com/raw/ray-project/ray/pull/11238.patch")
+sha256sums=('53aa83f6cc020a84d56192d4f4678e192a58ce33f12c5996343949d28780a788'
+            'SKIP')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
+
+  # https://github.com/ray-project/ray/pull/11238
+  patch -Np1 -i "${srcdir}"/bazelrc.patch
+}
 
 build() {
   cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}/python"
