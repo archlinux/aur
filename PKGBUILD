@@ -20,7 +20,7 @@ sha256sums=('5e694dafa6d0a338bb744d43d09b0d31fc55f105b3659754ea226d170b590999'
 prepare() {
   cd Bibata_Cursor-$pkgver
   mkdir -p bitmaps
-  bsdtar -xvf "$srcdir"/bitmaps.zip -C bitmaps
+  bsdtar -xvf "$srcdir/$pkgname-bitmaps-$pkgver.zip" -C bitmaps
 
   rm -rf themes
 }
