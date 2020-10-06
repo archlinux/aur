@@ -1,7 +1,7 @@
 pkgbase = gitter-bin
 	pkgdesc = Where developers come to talk
 	pkgver = 5.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/gitlab-org/gitter/desktop/
 	install = gitter.install
 	arch = x86_64

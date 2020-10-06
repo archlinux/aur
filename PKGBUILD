@@ -5,7 +5,7 @@
 _pkgname=gitter
 pkgname=gitter-bin
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Where developers come to talk'
 url='https://gitlab.com/gitlab-org/gitter/desktop/'
 license=('MIT')
@@ -42,11 +42,11 @@ package() {
   mkdir -p "$pkgdir/opt/Gitter/lib"
   ln -sf /usr/lib/libudev.so.1 "$pkgdir/opt/Gitter/lib/libudev.so.0"
   if [ "$CARCH" == "x86_64" ]; then
-	  install -Dm755 "$srcdir/${_pkgname}_x86_64.sh" "$pkgdir/usr/bin/$pkgname"
+	  install -Dm755 "$srcdir/${_pkgname}_x86_64.sh" "$pkgdir/usr/bin/$_pkgname"
 	  RPM_BUILD_ROOT="$pkgdir" desktop-file-install "$pkgdir/opt/Gitter/linux64/gitter.desktop"
 	  sed -e 's#/opt/Gitter/linux64/Gitter#/usr/bin/gitter#' -i "$pkgdir/usr/share/applications/gitter.desktop"
   else
-	  install -Dm755 "$srcdir/${_pkgname}_i686.sh" "$pkgdir/usr/bin/$pkgname"
+	  install -Dm755 "$srcdir/${_pkgname}_i686.sh" "$pkgdir/usr/bin/$_pkgname"
 	  RPM_BUILD_ROOT="$pkgdir" desktop-file-install "$pkgdir/opt/Gitter/linux32/gitter.desktop"
 	  sed -e 's#/opt/Gitter/linux32/Gitter#/usr/bin/gitter#' -i "$pkgdir/usr/share/applications/gitter.desktop"
   fi
