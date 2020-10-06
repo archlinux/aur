@@ -5,7 +5,7 @@
 pkgbase=glib2-git
 _pkgname=glib2
 pkgname=(glib2-git glib2-docs-git)
-pkgver=2.59.0.92.g3fe6f2a44
+pkgver=2.66.0.89.g7bfd6278b
 pkgrel=1
 pkgdesc="Low Level Core Library"
 arch=('x86_64')
@@ -49,6 +49,7 @@ prepare() {
   }
 
 build () {
+    CFLAGS+=" -DG_DISABLE_CAST_CHECKS"
     arch-meson glib build \
     -Dgtk_doc=true \
     -Dman=true \
