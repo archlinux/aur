@@ -1,0 +1,25 @@
+pkgbase = qt6-tools
+	pkgdesc = A cross-platform application and UI framework (Development Tools, QtHelp)
+	pkgver = 6.0.0alpha
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = cmake
+	makedepends = qt6-declarative
+	makedepends = vulkan-headers
+	makedepends = llvm
+	makedepends = clang
+	makedepends = ninja
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	optdepends = clang: for qdoc
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-alpha/submodules/qttools-everywhere-src-6.0.0-alpha.tar.xz
+	sha256sums = 69f242ecca020b78643d2d7aaae9e2c1713b6aa7b9b915b16cc9265bf5dfd212
+
+pkgname = qt6-tools
+
