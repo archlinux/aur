@@ -1,5 +1,5 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
-# Maintainer: Ryozuki <ryo@ryozuki.xyz>
+# Maintainer: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet-git
 pkgver=14.3.2.r0.g048bb992b
