@@ -2,8 +2,8 @@
 # Contributor: saxonbeta <saxonbeta at gmail dot com>
 pkgname=openms
 _pkgname=OpenMS
-pkgver=2.5.0
-_pkgver=2.5
+pkgver=2.6.0
+_pkgver=2.6
 pkgrel=1
 pkgdesc="C++ library and tools for LC/MS data management and analyses"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=("https://abibuilder.informatik.uni-tuebingen.de/archive/openms/OpenMSIns
         "OpenMS-TOPPView.desktop"
         "OpenMS-TOPPAS.desktop"
         "OpenMS.sh")
-sha256sums=('2c76cbb68b5b5c2c77003d467a1ed14e6d1efc36b135f97d2839449c4e696081'
+sha256sums=('55f30d09cba420009587e50d70812a4775d012151df8c600c7c39e59079bc10b'
             '4f93d5c22a8267e4fbde6883ecc34a00abfc2ee5eafb46f6d81256ad8a33cdac'
             '9b33c6c91d931802e88af89ade4beb6c8d05484d57d1ad804888511b7a8b00a0'
             '2cf69cb56959f101614129d2a87dc078daca904e1701ed674d399afed1ff306d')
