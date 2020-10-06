@@ -40,8 +40,6 @@ build() {
 
   CFLAGS+=" -DG_DISABLE_CAST_CHECKS"
   arch-meson glib build \
-    -D b_lto=false \
-    -D b_pie=false \
     -D selinux=disabled \
     --libdir=/usr/lib32
   meson compile -C build
