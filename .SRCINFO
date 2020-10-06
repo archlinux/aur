@@ -1,0 +1,19 @@
+pkgbase = mingw-w64-pybind11
+	pkgdesc = A lightweight header-only library that exposes C++ types in Python and vice versa (mingw-w64)
+	pkgver = 2.6.0b1
+	pkgrel = 1
+	url = https://pybind11.readthedocs.org/
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-boost
+	makedepends = mingw-w64-eigen
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = https://github.com/pybind/pybind11/archive/v2.6.0b1.tar.gz
+	sha256sums = SKIP
+
+pkgname = mingw-w64-pybind11
+
