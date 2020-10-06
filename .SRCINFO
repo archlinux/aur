@@ -1,0 +1,20 @@
+pkgbase = anymeal-git
+	pkgdesc = Recipe Management Software
+	pkgver = 1.8.r1.g1535c12
+	pkgrel = 1
+	url = https://wedesoft.github.io/anymeal/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gtest
+	makedepends = qt5-tools
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	depends = recode
+	provides = anymeal
+	conflicts = anymeal
+	source = git+https://github.com/wedesoft/anymeal.git
+	sha256sums = SKIP
+
+pkgname = anymeal-git
+
