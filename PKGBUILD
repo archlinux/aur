@@ -39,7 +39,7 @@ package() {
 
   mkdir -p "$pkgdir/usr/share/$pkgname" "$pkgdir/usr/share/doc/$pkgname"
   echo "Packaging application..."
-  cp -r *.jar "$pkgdir/usr/share/$pkgname"
+  cp -r -- *.jar "$pkgdir/usr/share/$pkgname"
   install -DTm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   echo "Packaging examples..."
   cp -r Chapter_examples "$pkgdir/usr/share/doc/$pkgname/examples"
