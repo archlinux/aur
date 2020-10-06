@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=breitbandmessung
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc="Die Breitbandmessung Desktop-App erlaubt es Ihnen, die tatsächliche Datenübertragungsrate Ihres Breitbandanschlusses zu messen. Weitere Informationen erhalten Sie unter https://breitbandmessung.de"
 arch=('x86_64')
@@ -10,18 +10,17 @@ url="https://breitbandmessung.de/"
 options=('!strip')
 
 source=("breitbandmessung-${pkgver}.deb::https://download.breitbandmessung.de/bbm/Breitbandmessung-linux.deb")
-sha256sums=("1fc34fcac94263ab86937695e9d2e7a0d8fd5eaf64bffb1b31b463e4c8aabdb0")
+sha256sums=("815ea9c9830ac84a8a11e7ed2915b125bfe5145826ee65be78799dd4a5ae779b")
 depends=("net-tools")
 makedepends=("asar")
 
-package() {
-	cd ${srcdir}
+build() {
+    _builddir="${srcdir}/${pkgver}-${pkgrel}"
+    mkdir -p "${_builddir}"
 
-    #Extract debian sources 
-	tar -xvf data.tar.xz -C ${pkgdir} --exclude='./control'
+    tar --extract --overwrite --file=data.tar.xz --directory="${_builddir}"
 
-    #Fixing the sources to allow running on arch
-    cd "${pkgdir}/opt/Breitbandmessung/resources"
+    cd "${_builddir}/opt/Breitbandmessung/resources/"
 
     _unpatched="}return m.current={}"
     _patched="}m.allowed=!0;return m.current={}"
@@ -30,6 +29,11 @@ package() {
     sed -i "s/${_unpatched}/${_patched}/g" unpacked/build/static/js/*.js
     asar p unpacked/ app.asar
     rm -rf unpacked/
+}
+
+package() {
+
+    cp -a "${srcdir}/${pkgver}-${pkgrel}/." "${pkgdir}"
 
     #Create /usr/bin symlink
     mkdir -p "${pkgdir}/usr/bin/"
