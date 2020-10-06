@@ -6,7 +6,7 @@
 
 pkgname=mod_perl
 pkgver=2.0.11
-pkgrel=3
+pkgrel=4
 pkgdesc='Apache module that embeds the Perl interpreter within the server'
 arch=(i686 x86_64 armv6h armv7h)
 url='http://perl.apache.org/'
@@ -35,7 +35,7 @@ build() {
 check() {
   cd mod_perl-$pkgver
   # Workaround test bug as per https://rt.cpan.org/Public/Bug/Display.html?id=118919
-  APACHE_TEST_PRETEND_NO_LWP=1 make test
+  APACHE_TEST_PORT=48251 APACHE_TEST_PRETEND_NO_LWP=1 make test
 }
 
 package() {
