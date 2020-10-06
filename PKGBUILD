@@ -1,6 +1,7 @@
 pkgname=papermc-git
-pkgver=1.15.1
+pkgver=1.16.3.r5125.faf8eb035
 pkgrel=1
+epoch=1
 pkgdesc="High performance Spigot fork that aims to fix gameplay and mechanics inconsistencies"
 arch=('any')
 url="https://papermc.io/"
@@ -20,7 +21,7 @@ prepare() {
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	printf "%s_%s" "$(awk -F: '/minecraftVersion/ {gsub(/"|,|\s/,""); printf $2}' work/BuildData/info.json)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(awk -F: '/minecraftVersion/ {gsub(/"|,|\s/,""); printf $2}' work/BuildData/info.json)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
