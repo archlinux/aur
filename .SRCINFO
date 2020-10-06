@@ -1,0 +1,17 @@
+pkgbase = noisy-py3-git
+	pkgdesc = Simple random DNS, HTTP/S internet traffic noise generator
+	pkgver = 20180908.r54_c21e768
+	pkgrel = 1
+	url = https://github.com/1tayH/noisy
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python>=3.6.0
+	depends = python-requests>=2.9.1
+	options = emptydirs
+	source = noisy-py3-git::git://github.com/1tayH/noisy#branch=master
+	sha256sums = SKIP
+
+pkgname = noisy-py3-git
+
