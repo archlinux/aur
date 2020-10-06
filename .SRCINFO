@@ -1,0 +1,14 @@
+pkgbase = brother-9320cw-cups-bin
+	pkgdesc = CUPS driver for Brother 9320CW printer
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=mfc9320cw_all
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf006463/mfc9320cwcupswrapper-1.1.2-2.i386.deb
+	md5sums = 3400469099272f571ff86078a944c696
+
+pkgname = brother-9320cw-cups-bin
+
