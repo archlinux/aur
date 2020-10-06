@@ -2,13 +2,15 @@
 pkgname=thiefmd
 pkgver=0.0.12
 _codename=luminance
-pkgrel=1
+pkgrel=2
 pkgdesc="The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter"
 arch=('x86_64')
 url="https://thiefmd.com"
 license=('GPL3')
 depends=('gtkspell3' 'webkit2gtk' 'discount' 'gtksourceview3' 'clutter' 'libarchive' 'libgee')
 makedepends=('git' 'meson' 'vala' 'cmake' 'python-gobject')
+provides=('libgxml-0.20.so=2.0.2-64')
+conflicts=('gxml')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kmwallio/ThiefMD/archive/v$pkgver-$_codename.tar.gz")
 sha256sums=('af4f3317f42f2d68a30ba325260f8d515253b2c0bbeeeba87d32643e3e717b95')
 
