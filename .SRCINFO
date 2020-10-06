@@ -1,6 +1,6 @@
 pkgbase = eprosima-micro-xrce-dds-agent
 	pkgdesc = eProsima's XRCE DDS agent
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/eProsima/Micro-XRCE-DDS-Agent
 	arch = x86_64
@@ -13,12 +13,10 @@ pkgbase = eprosima-micro-xrce-dds-agent
 	depends = eprosima-fast-dds
 	depends = cli11
 	depends = spdlog
-	source = https://github.com/eProsima/Micro-XRCE-DDS-Agent/archive/v1.4.0.tar.gz
+	source = https://github.com/eProsima/Micro-XRCE-DDS-Agent/archive/v1.5.0.tar.gz
 	source = git+https://github.com/arsenm/sanitizers-cmake.git
-	source = no-exact-version-requirements.patch
-	sha256sums = f5e6eb4ae78f3f994a3775194bf2b571d15bbaaf07d5bf158ac10292d0c0d6bd
+	sha256sums = 62e84ce802b21b358fb7248c6e5b44777f1a296a1aa7478601c704eed05c6714
 	sha256sums = SKIP
-	sha256sums = baaddf35d538769a3af8d572ddbc55a12abbf51fa0f97f55272d805a57d9794c
 
 pkgname = eprosima-micro-xrce-dds-agent
 
