@@ -1,9 +1,7 @@
-
 post_install() {
     echo "POP-shell configuration"
     cd /usr/share/gnome-shell/extensions/pop-shell@system76.com/scripts
     ./configure.sh
-    touch toto
 }
 
 post_upgrade() {
