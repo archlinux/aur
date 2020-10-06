@@ -9,7 +9,7 @@ url="https://juicefs.com/"
 license=('custom')
 depends=('python')
 source=("juicefs-$pkgver-$pkgrel::https://juicefs.com/static/juicefs")
-sha512sums=('097a1b99e8aefa050e249cc609fd048ea965de429ae3e8aec3f104fcd3fb5138b030796cd15e6b27a801ef57d013cb9639910913b0043c5da1224a668ab7a626')
+sha512sums=('7662f1b95c0a88e9ac93bcaffa06b49898f67172bc52d2ac0fb187158e8934ef39e703825850f4e3ba27e4caf40f4e2f7639db144356da3e64c18e5f5f2f37e6')
 
 build() {
   cd "${srcdir}/"
@@ -18,5 +18,5 @@ build() {
 package() {
   cd "${srcdir}/"
   install -Dm755 "${srcdir}/juicefs-$pkgver-$pkgrel" "${pkgdir}/usr/bin/juicefs"
-  ln -s "./juicefs" "${pkgdir}/usr/bin/mount.juicefs"
+  ln -s "/usr/bin/juicefs" "${pkgdir}/usr/bin/mount.juicefs"
 }
