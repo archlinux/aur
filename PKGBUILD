@@ -1,7 +1,8 @@
-# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: Fredy García <frealgagu at gmail dot com>
 
 pkgname=nodejs-redbird
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A modern reverse proxy for node"
 arch=("x86_64")
@@ -11,7 +12,7 @@ depends=("nodejs")
 makedepends=("npm" "python2")
 source=("https://registry.npmjs.org/${pkgname#nodejs-}/-/${pkgname#nodejs-}-${pkgver}.tgz")
 noextract=("${pkgname#nodejs-}-${pkgver}.tgz")
-sha1sums=("8ce76bee700c6c3c4a4329ae8c296430d3ac4e95")
+sha1sums=("3027a6fcef7afebeaa8e5388bef283a84d308518")
 
 package() {
   cd "${srcdir}"
