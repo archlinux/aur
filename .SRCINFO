@@ -1,6 +1,6 @@
 pkgbase = pantheon-files-git
 	pkgdesc = The Pantheon File Browser
-	pkgver = r7225.f100853d3
+	pkgver = r7239.813bcd1ea
 	pkgrel = 1
 	url = https://github.com/elementary/files
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pantheon-files-git
 	makedepends = granite-git
 	makedepends = meson
 	makedepends = vala
-	depends = libhandy1
+	depends = libhandy
 	depends = atk
 	depends = cairo
 	depends = gdk-pixbuf2
