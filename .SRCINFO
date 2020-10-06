@@ -1,0 +1,21 @@
+pkgbase = qt6-3d
+	pkgdesc = C++ and QML APIs for easy inclusion of 3D graphics
+	pkgver = 6.0.0alpha
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = cmake
+	makedepends = vulkan-headers
+	makedepends = ninja
+	depends = qt6-declarative
+	depends = assimp
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-alpha/submodules/qt3d-everywhere-src-6.0.0-alpha.tar.xz
+	sha256sums = 3362d01c7542af0e902908d2d339374feda1a037552ea625b900278982375c27
+
+pkgname = qt6-3d
+

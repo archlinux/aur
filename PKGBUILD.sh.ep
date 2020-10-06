@@ -1,0 +1,11 @@
+% layout 'qt6-module';
+\
+_qtver=6.0.0-alpha
+pkgver=${_qtver/-/}
+pkgrel=1
+arch=(x86_64)
+url='https://www.qt.io'
+license=(GPL3 LGPL3 FDL custom)
+pkgdesc='C++ and QML APIs for easy inclusion of 3D graphics'
+depends=(qt6-declarative assimp)
+makedepends=(cmake vulkan-headers ninja)
