@@ -1,9 +1,9 @@
 pkgbase = python-justpy
 	pkgdesc = An object oriented high-level Python Web Framework that requires no front-end programming
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://justpy.io/
-	arch = x86_64
+	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = cython

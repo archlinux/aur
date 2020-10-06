@@ -2,9 +2,9 @@
 
 pkgname=python-justpy
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An object oriented high-level Python Web Framework that requires no front-end programming"
-arch=('x86_64')
+arch=('any')
 license=('Apache')
 url="https://justpy.io/"
 depends=('python' 'python-starlette' 'uvicorn' 'python-itsdangerous' 'python-jinja' 'python-addict' 'demjson' 'python-httpx' 'python-aiofiles')
