@@ -3,7 +3,7 @@
 
 pkgname=libuiohook
 pkgver=1.2
-pkgrel=2
+pkgrel=1
 pkgdesc="A multi-platform C library to provide global input/ouput hooking from userland."
 arch=('i686' 'x86_64')
 url="https://github.com/kwhat/libuiohook"
