@@ -15,7 +15,7 @@ sha512sums=(159efc17ba446f3f2205a8c0580ed10fab263f8bdb7306d5444d1fc6a592f80d749c
 
 # WORKAROUND: The sources are outdated compared to Arch's environment,
 #             so we have to downgrade/disable some things...
-[[ ! -z "$LDFLAGS" ]] && export LDFLAGS="$LDFLAGS,--no-as-needed"
+[[ -n "$LDFLAGS" ]] && export LDFLAGS="$LDFLAGS,--no-as-needed"
 
 prepare() {
 	cd "$srcdir/${_bundlepkgname}-${_bundlepkgver}/$pkgname-${pkgver%.*}"
