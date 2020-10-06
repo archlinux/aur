@@ -1,18 +1,19 @@
 # Maintainer Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 
 # This script contains as well instructions for other Linux systems.
+# Have a look what is done in the build() and package() functions below.
+# Execute the same command which are used there.
 
-# On other systems, ignore the used variables like $pkgdir, $srcdir or $startdir
+# On other systems, ignore the used variables like $pkgdir and $srcdir.
 # (there $pkgdir would be the same as an undefined variable (empty),
-#  and $srcdir as well as $stardir would be the place where you have your files)
+#  and $srcdir would be the place where you have your files)
 
-# skip right below to the interesting part in the functions() { … }
 
 pkgname=wesnoth-1.10
 pkgver=1.10.7+dev
 pkgrel=7
 pkgdesc="Turn-based strategy game on a fantasy world (for old replays)"
-arch=('i686' 'x86_64')
+arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.wesnoth.org"
 license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_ttf' 'sdl_net' 'boost-libs' 'zlib' 'pango' 'cairo' 'fontconfig' 'dbus')
@@ -20,34 +21,23 @@ makedepends=('boost' 'cmake' 'git')
 # package names on Debian / Ubuntu / Mint:
 # libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl-net1.2-dev libboost-iostreams-dev libboost-regex-dev libboost-serialization-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev zlib1g-dev libpango1.0-dev libcairo2-dev libfontconfig1-dev libdbus-1-dev libfribidi-dev gettext-base cmake make pkgconf gcc g++ git
 options=('!emptydirs')
-source=("wesnoth-1.10.desktop"
+source=("wesnoth-1.10-git::git+https://github.com/wesnoth/wesnoth.git#branch=1.10"
+        "wesnoth-1.10.desktop"
         "wesnothd-1.10.tmpfiles.conf"
         "wesnothd-1.10.service"
         "wesnoth-1.10.appdata.xml")
 # Not finding the files? https://aur.archlinux.org/packages/wesnoth-1.10
 # Rest assured, they are optional. Things like a launcher for your convenience…
 
-md5sums=('fe8278239945d0c69d686bf70b8362e0'
+# Except for the wesnoth download, which can also be retrieved with this command:
+# git clone https://github.com/wesnoth/wesnoth.git -b 1.10 --shallow-exclude=1.10.7 wesnoth-1.10-git
+
+md5sums=('SKIP'
+         'fe8278239945d0c69d686bf70b8362e0'
          '6c139ff1ccb6f30a375d6fea6d7049a2'
          '29df1e28cf007b910bb556a63a4532e8'
          'a9085aef6abd6cae39059ac83f7dd687')
 
-PKGEXT='.pkg.tar'
-
-prepare() {
-  cd "$startdir"
-
-  # get a shallow clone of the git repo and store it outside the srcdir
-  if  [ ! -d "wesnoth-1.10-git" ] ; then
-    git clone https://github.com/wesnoth/wesnoth -b 1.10 --shallow-exclude=1.10.7 wesnoth-1.10-git
-    msg "Git checkout done (or server timeout)"
-  fi
-
-  # Archlinux specific (hide the usage of the $startdir variable)
-  if [ ! -e "$srcdir/wesnoth-1.10-git" ] ; then
-    ln -s "$startdir/wesnoth-1.10-git" "$srcdir/wesnoth-1.10-git"
-  fi
-}
 
 build() {
   # As this is an older version and not worked on anymore, it will someday break
@@ -73,9 +63,10 @@ build() {
       -DPREFERENCES_DIR=.local/share/wesnoth/1.10 \
       -DENABLE_OMP=ON \
       -DENABLE_DESKTOP_ENTRY=OFF \
-      -Wno-dev # silence cmake warnings
-  make    # -j 4
+      -Wno-dev
+  make
 }
+
 
 # Note: the manpages are first installed to the same place which other wesnoth
 # versions use and renamed afterwards, this may cause conflicts. One can change
@@ -118,5 +109,5 @@ package() {
   install -D -m644 "$srcdir/wesnothd-1.10.service" "$pkgdir/usr/lib/systemd/system/wesnothd-1.10.service"
 
   # All done, but it doesn't show up? Try that:
-  # update-desktop-database
+  # sudo update-desktop-database
 }
