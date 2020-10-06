@@ -1,0 +1,19 @@
+pkgbase = dpscreenocr-git
+	pkgdesc = Recognize text on screen
+	pkgver = 1.0.2.r148.g533c91a
+	pkgrel = 1
+	url = https://danpla.github.io/dpscreenocr/
+	arch = x86_64
+	license = zlib
+	makedepends = cmake
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	depends = tesseract
+	provides = dpscreenocr
+	conflicts = dpscreenocr
+	source = git+https://github.com/danpla/dpscreenocr.git
+	sha256sums = SKIP
+
+pkgname = dpscreenocr-git
+
