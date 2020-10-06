@@ -7,45 +7,37 @@ pkgname=wesnoth-1.2
 pkgver=1.2.8+dev
 pkgrel=1
 pkgdesc="Turn-based strategy game on a fantasy world (for old replays)"
-arch=('i686' 'x86_64')
+arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.wesnoth.org"
 license=('GPL')
 depends=('sdl' 'sdl_image' 'sdl_mixer' 'sdl_net' 'freetype2')
 makedepends=('gcc43')
 options=('!emptydirs')
-source=("wesnoth-1.2.desktop"
+source=("esnoth-1.2-git::git+https://github.com/wesnoth/wesnoth.git#branch=1.2"
+        "wesnoth-1.2.desktop"
         "wesnothd-1.2.tmpfiles.conf"
         "wesnothd-1.2.service"
         "wesnoth-1.2.appdata.xml")
 # Not finding the files? https://aur.archlinux.org/packages/wesnoth-1.2
 # Rest assured, they are optional. Things like a launcher for your convenience…
 
-md5sums=('c3ba9b84c818bba105b0ea236b1d3744'
+# If one wants to download wesnoth manually:
+# git clone https://github.com/wesnoth/wesnoth.git -b 1.2 --shallow-exclude=1.2.8  wesnoth-1.2-git
+
+md5sums=('SKIP'
+         'c3ba9b84c818bba105b0ea236b1d3744'
          'd23cafae5c732d6bf10a836bdabd15b9'
          'f75bef73c448e101b09beb8ad92c791e'
          'b6dfb0e146e6ac3a265487b6e32e9766')
 
-PKGEXT='.pkg.tar'
 
 prepare() {
-  cd "$startdir"
-
-  # get a shallow clone of the git repo and store it outside the srcdir
-  if  [ ! -d "wesnoth-1.2-git" ] ; then
-    git clone https://github.com/wesnoth/wesnoth -b 1.2 --shallow-exclude=1.2.8  wesnoth-1.2-git
-    msg "Git checkout done (or server timeout)"
-  fi
-
-  # Archlinux specific (hide the usage of the deprecated $startdir variable)
-  if [ ! -e "$srcdir/wesnoth-1.2-git" ] ; then
-    ln -s "$startdir/wesnoth-1.2-git" "$srcdir/wesnoth-1.2-git"
-  fi
-
   # clean up previous builds, in case different flags or library versions were
   # used before. (|| true avoids failure if the makefile is not yet generated.)
   cd "$srcdir/wesnoth-1.2-git"
   make distclean || true
 }
+
 
 build() {
   cd "$srcdir/wesnoth-1.2-git"
@@ -65,9 +57,12 @@ build() {
   # Feel free to replace ALL occurences of /usr with /usr/local in the commands
   # below, and edit the start command in the file wesnothd-1.2.service.
   ./autogen.sh
+
   ./configure --with-freetype-prefix=/usr/lib --prefix=/usr --with-preferences-dir=.local/share/wesnoth/1.2 --program-suffix=-1.2 --with-datadir-name=wesnoth-1.2 --enable-editor --enable-server --with-fifodir=/run/wesnothd-1.2
-  make -j4
+
+  make
 }
+
 
 # These commands have to be run with root privileges.
 # E.g. by prefixing them with "sudo ".
@@ -106,5 +101,5 @@ package() {
   install -D -m644 "$srcdir/wesnothd-1.2.service" "$pkgdir/usr/lib/systemd/system/wesnothd-1.2.service"
 
   # All done, but it doesn't show up? Try that:
-  # update-desktop-database
+  # sudo update-desktop-database
 }
