@@ -23,7 +23,7 @@ depends=(
   lib32-portaudio
   lib32-sdl2
   lib32-soundtouch
-  lib32-wxgtk2
+  lib32-wxgtk3
 )
 makedepends=(
   cmake
@@ -54,6 +54,7 @@ build() {
     -DPLUGIN_DIR=/usr/lib32/pcsx2 \
     -DGAMEINDEX_DIR=/usr/share/pcsx2 \
     -GNinja \
+    -DGTK3_API=on\
     -DPACKAGE_MODE=ON \
     -DXDG_STD=TRUE
   ninja
