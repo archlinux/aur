@@ -3,17 +3,17 @@
 
 pkgname=ali
 pkgdesc="Generate HTTP load and plot the results in real-time"
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nakabonne/ali"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('17bd32e031ec6eef473fbc10733a3c1ddbcc30df92d123751f805ba8741632403da6266ea5d968c027a240d04e7eda40dd4e45c1ab511164d924030bd4873056')
+sha512sums=('093efa05070dbffd9c5cc9db74f3c5596ce7f3d641bb5c0f66a15a711b7ffe1a90de57e568482f98e9c7de1fa639d49839df569ddf43e3738d65ce202d6c466f')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   go get -d ./...
   go build \
     -gcflags "all=-trimpath=$PWD" \
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   install -Dm 755 "$pkgname" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
