@@ -1,0 +1,10 @@
+pkgbase = fallout2-sfall
+	pkgdesc = fallout 2 community patch
+	pkgver = 4.2.7
+	pkgrel = 1
+	url = https://sourceforge.net/projects/sfall/
+	arch = x86_64
+	makedepends = wget
+
+pkgname = fallout2-sfall
+
