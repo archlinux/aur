@@ -1,0 +1,27 @@
+pkgbase = chronic-bin
+	pkgdesc = Tool that hides cron output unless the command fails
+	pkgver = 1.0.11
+	pkgrel = 1
+	url = https://github.com/docwhat/chronic
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	provides = chronic
+	conflicts = chronic
+	source = chronic-1.0.11-README.md::https://github.com/docwhat/chronic/raw/master/README.md
+	source = chronic-1.0.11-LICENSE::https://github.com/docwhat/chronic/raw/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	source_x86_64 = chronic-1.0.11-x86_64::https://github.com/docwhat/chronic/releases/download/v1.0.11/chronic_linux_amd64
+	sha256sums_x86_64 = a407e1bab1fcea63395cc342fd74f422c15c7c8d970fadba741e93ea7ad567d8
+	source_armv6h = chronic-1.0.11-armv6h::https://github.com/docwhat/chronic/releases/download/v1.0.11/chronic_linux_armv6
+	sha256sums_armv6h = 8cc2baa2fab9a36a9f7f3d51661178a55701040e906bf0b576890e255ec09548
+	source_armv7h = chronic-1.0.11-armv7h::https://github.com/docwhat/chronic/releases/download/v1.0.11/chronic_linux_armv7
+	sha256sums_armv7h = 34b9585b8e7d60f91b9b1cfe310eb41bbca1548c9e9abf7c964155faced13eea
+	source_aarch64 = chronic-1.0.11-aarch64::https://github.com/docwhat/chronic/releases/download/v1.0.11/chronic_linux_arm64
+	sha256sums_aarch64 = fe8424e95e52d92d6220b8407953db402cd83399d6b79cfb7ca64c52c0221d04
+
+pkgname = chronic-bin
+
