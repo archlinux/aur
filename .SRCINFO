@@ -1,7 +1,7 @@
 pkgbase = gtk3-patched-filechooser-icon-view
 	pkgdesc = GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch.
 	pkgver = 3.24.23
-	pkgrel = 1.1
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/Dudemanguy/gtk
 	install = gtk3.install
@@ -42,6 +42,8 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	depends = libcanberra
 	depends = fribidi
 	depends = iso-codes
+	depends = tracker3
+	depends = libcloudproviders
 	depends = gtk-update-icon-cache
 	optdepends = glib2-patched-thumbnailer: Thumbnail generation in upload dialog
 	provides = gtk3=3.24.23
@@ -53,10 +55,12 @@ pkgbase = gtk3-patched-filechooser-icon-view
 	conflicts = gtk3-print-backends
 	replaces = gtk3-print-backends<=3.22.26-1
 	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=016e8c55ab924c9ef4d32c8cb06253b1dc1be60d
+	source = 0001-gtkplacessidebar-Disconnect-and-unref-cloud_manager-.patch
 	source = settings.ini
 	source = gtk-query-immodules-3.0.hook
 	source = gtk3-filechooser-icon-view.patch
 	sha256sums = SKIP
+	sha256sums = d6f6bf347482553bc20a1640c1619f674520b853a5b2ade9fd56bb77bfdfe170
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
 	sha256sums = a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229
 	sha256sums = 37d8d594ee3ef4528b8066992999c39746f3506078083a7d21c19bbceae87b2b
