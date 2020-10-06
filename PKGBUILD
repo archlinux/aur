@@ -1,14 +1,14 @@
 # Maintainer: José Almeida <jose.afga@gmail.com>
 
 pkgname=echowo
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Near-drop-in replacement for the Unix echo command which also uwu-fies text."
+pkgdesc="Bash echo like with string uwufication."
 url="https://github.com/joseafga/echowo"
 license=('MIT')
 arch=('x86_64')
 source=("$pkgname-$pkgver::https://github.com/joseafga/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('d1f1ad7ffe7b50cfb328f451c981900e95531dc48bad3e673c517706a0b80413')
+sha256sums=('b02f055c9c4d69d8c36127c00095aa0afc33735dd540c521e32dde8e021e74e5')
 makedepends=('crystal')
 
 provides=('echowo')

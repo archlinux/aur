@@ -1,6 +1,6 @@
 pkgbase = echowo
-	pkgdesc = Near-drop-in replacement for the Unix echo command which also uwu-fies text.
-	pkgver = 0.1.0
+	pkgdesc = Bash echo like with string uwufication.
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/joseafga/echowo
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = echowo
 	makedepends = crystal
 	provides = echowo
 	conflicts = echowo
-	source = echowo-0.1.0::https://github.com/joseafga/echowo/archive/v0.1.0.tar.gz
-	sha256sums = d1f1ad7ffe7b50cfb328f451c981900e95531dc48bad3e673c517706a0b80413
+	source = echowo-0.2.0::https://github.com/joseafga/echowo/archive/v0.2.0.tar.gz
+	sha256sums = b02f055c9c4d69d8c36127c00095aa0afc33735dd540c521e32dde8e021e74e5
 
 pkgname = echowo
 
