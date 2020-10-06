@@ -1,7 +1,7 @@
 # Maintainer: Steven Seifried <gitlab@canox.net>
 # Contributor: Steven Seifried <gitlab@canox.net>
 pkgname=tuxedo-keyboard
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="Keyboard Backlight Driver from TUXEDO Computers"
 url="https://github.com/tuxedocomputers/tuxedo-keyboard"
@@ -15,17 +15,13 @@ optdepends=('linux-headers: build modules against Arch kernel'
             'linux-hardened-headers: build modules against the HARDENED kernel')
 replaces=('tuxedo-keyboard-dkms' 'tuxedo-wmi' 'tuxedo-wmi-dkms')
 backup=(etc/modprobe.d/tuxedo_keyboard.conf)
-source=('https://github.com/tuxedocomputers/tuxedo-keyboard/archive/v2.0.5.tar.gz' 'tuxedokeyboard.conf')
-sha256sums=('fdeb4068395c7a1dc83f9d97a4ed5c804a02973e30327f2d8294dd2777327017'
+source=('http://rpm.tuxedocomputers.com/opensuse/15.2/noarch/tuxedo-keyboard-2.0.6-1.noarch.rpm' 'tuxedokeyboard.conf')
+sha256sums=('0eb2e57db7e6c01a234561a3b12c54e643a3bd3c95aa8c65a1942e5fcab2ea4b'
             'd22aadf76a400f38ddee7ce2fd7f8b14694bf1d402bfbb99e65133d122ccb0f8')
-sha512sums=('3b7a9331d04e2918f3452f9561b05f39ea458960c2ade299a368899638987178cfd33fa066a0835f88b14c240d7937692d7994ccf978749ea7fdc428e587e06a'
+sha512sums=('84d7fbacfa60305e62e00c91aca7bd775c749554c765958fead7bbec6719c3d0f2d98cbae9186c9025abce8572c49ea869f7eb1587c725963c14306af5111d8b'
             '8aef78240aacf4a5c15cfb648400750a17db3203d230d6a1f8a84b1db71f0bd0d65251690f6290d8707b771cf74c6f008b82c65b00220e8d3fa70153be65ade6')
 package() {
-  tar -vxzf "v${pkgver}.tar.gz" 
   mkdir -p "${pkgdir}/usr/src/${pkgname}-${pkgver}"
-  cp -r "${srcdir}/${pkgname}-${pkgver}"/* "${pkgdir}/usr/src/${pkgname}-${pkgver}"
-  install -D "${srcdir}/${pkgname}-${pkgver}/dkms.conf" "${pkgdir}/usr/src/${pkgname}-${pkgver}/dkms.conf"
-  echo "Copy tuxedo_keyboard.conf to /etc/modprobe.d/tuxedo_keyboard.conf"
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/tuxedo_keyboard.conf" "${pkgdir}/etc/modprobe.d/tuxedo_keyboard.conf"
-  install -Dm644 ${srcdir}/tuxedokeyboard.conf ${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf
+  cp -r "${srcdir}/usr/src/${pkgname}-${pkgver}"/* "${pkgdir}/usr/src/${pkgname}-${pkgver}"
+  install -D "${srcdir}/usr/src/${pkgname}-${pkgver}/dkms.conf" "${pkgdir}/usr/src/${pkgname}-${pkgver}/dkms.conf"
 }
