@@ -1,15 +1,16 @@
 pkgbase = rtl8192eu-git
 	pkgdesc = Drivers for the rtl8192eu chipset for wireless adapters (D-Link DWA-131).
-	pkgver = 35.0b8394b
+	pkgver = 118.1628c74
 	pkgrel = 1
 	url = https://github.com/Mange/rtl8192eu-linux-driver
 	install = rtl8192eu.install
 	arch = x86_64
 	license = GPL
-	makedepends = linux-headers
+	makedepends = bc
 	makedepends = git
+	makedepends = linux-headers
 	depends = dkms
-	source = git+https://github.com/Mange/rtl8192eu-linux-driver.git
+	source = git+https://github.com/Mange/rtl8192eu-linux-driver.git#branch=realtek-4.4.x
 	source = fix.patch
 	sha256sums = SKIP
 	sha256sums = 582f8e8f8bd513b598ada3a1ac625f188fbf313cddf018a440ca4cd8aaf9964c
