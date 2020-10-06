@@ -30,9 +30,11 @@ pkgvar() {
 }
 
 build() {
+	cd "ptmv"
 	python3 setup.py build
 }
 
 package() {
+	cd "ptmv"
 	python3 setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
