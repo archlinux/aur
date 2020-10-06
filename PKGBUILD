@@ -9,7 +9,7 @@ conflicts=("qt-scrcpy")
 url='https://github.com/barry-ran/QtScrcpy'
 arch=('x86_64')
 makedepends=('git')
-depends=('qt5-base' 'scrcpy' 'qt5-x11extras')
+depends=('qt5-base' 'android-tools' 'qt5-x11extras')
 license=('Apache')
 source=("git+https://github.com/barry-ran/QtScrcpy"
 QtScrcpy.desktop
