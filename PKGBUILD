@@ -1,13 +1,13 @@
 # Maintainer    zan <zan@420blaze.it>
 
 pkgname=obs-hevc-vaapi-git
-pkgver=26.0.1.r0.g50cbafd71
+pkgver=26.0.1.r5.g3486c0b36
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With VAAPI HEVC support."
 arch=(i686 x86_64)
 url="https://github.com/obsproject/obs-studio"
 license=(GPL2)
-depends=(ffmpeg jansson libxinerama qt5-x11extras mbedtls)
+depends=(at-spi2-atk ffmpeg jansson libxinerama qt5-x11extras mbedtls libxrandr nss libxss)
 makedepends=(cmake git x264 jack vlc swig cef-minimal-3770)
 optdepends=("libfdk-aac: FDK AAC codec support"
             "libxcomposite: XComposite capture support"
