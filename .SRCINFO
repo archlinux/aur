@@ -1,6 +1,6 @@
 pkgbase = tuxedo-cc-wmi
 	pkgdesc = An interface to the WMI methods on TUXEDO laptops.
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/tuxedocomputers/tuxedo-cc-wmi
 	arch = x86_64
@@ -13,9 +13,8 @@ pkgbase = tuxedo-cc-wmi
 	conflicts = tuxedo-wmi
 	conflicts = tuxedo-wmi-dkms
 	conflicts = tuexdo-cc-wmi-dkms
-	source = https://github.com/tuxedocomputers/tuxedo-cc-wmi/archive/v0.1.6.tar.gz
-	sha256sums = 4640f0ae9dcb1fb341b75db37e16cc8b645b1cca31b7078e79a26d0d42f70b69
-	sha512sums = 39ba22ab33a4229e18b711233460fa881d5cce867ab5c1a72cd912d752611f03b6ac9d42b304e465c4b65dca4c6205862878d61bc997c0e1355d9d0f71a97fc9
+	source = http://rpm.tuxedocomputers.com/opensuse/15.2/noarch/tuxedo-cc-wmi-0.1.7-1.noarch.rpm
+	md5sums = d3f341caff3adebd6f361e050a4cebd6
 
 pkgname = tuxedo-cc-wmi
 
