@@ -1,7 +1,8 @@
-# Maintainer:
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Balló György
+# Contributor: Artem Vorotnikov <artem at vorotnikov dot me>
 pkgname=gxml
-pkgver=0.18.1
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="GObject-based XML parser and writer library"
 arch=('x86_64')
@@ -10,17 +11,17 @@ license=('LGPL')
 depends=('glib2' 'libgee' 'libxml2')
 makedepends=('gobject-introspection' 'meson' 'vala')
 source=("https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.xz")
-sha256sums=('bac5bc82c39423c1dbbfd89235f4a9b03b69cfcd3188905359ce81747b6400ed')
+sha256sums=('fbe078b9a56dee1719ef266c6cc6f0c4191371294572c4d67304c828012fe19d')
 
 build() {
-  arch-meson $pkgname-$pkgver build
-  ninja -C build
+	arch-meson "$pkgname-$pkgver" build
+	meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlogs
+	meson test -C build --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+	DESTDIR="$pkgdir" meson install -C build
 }
