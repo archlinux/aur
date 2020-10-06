@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=thiefmd
 pkgver=0.0.12
 _codename=luminance
