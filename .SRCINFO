@@ -1,0 +1,20 @@
+pkgbase = qtscrcpy-git
+	pkgdesc = Android real-time display control software.
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://github.com/barry-ran/QtScrcpy
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = qt5-base
+	depends = scrcpy
+	depends = qt5-x11extras
+	provides = qtscrcpy-git
+	conflicts = qt-scrcpy
+	source = git+https://github.com/barry-ran/QtScrcpy
+	source = QtScrcpy.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = qtscrcpy-git
+

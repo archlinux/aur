@@ -1,0 +1,10 @@
+[Desktop Entry] 
+Type=Application
+Version=1.4.3
+Name=QtScrcpy
+Comment=Android real-time display control software.
+Exec=QtScrcpy
+Icon=QtScrcpy
+Terminal=false
+Categories=Qt;Utility
+
