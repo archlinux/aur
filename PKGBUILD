@@ -6,7 +6,8 @@ pkgrel=1
 pkgdesc="Google Meets desktop built with electron"
 arch=("x86_64")
 license=("custom")
-makedepends=("electron" "gendesk")
+makedepends=("gendesk")
+depends=("electron" "yarn" "npm")
 source_x86_64=("icon.png::https://www.gstatic.com/images/branding/product/2x/meet_64dp.png"
 	       "https://github.com/arjun-g/google-meet-desktop/archive/v1.2.0.tar.gz")
 md5sums_x86_64=('SKIP' 'SKIP')
