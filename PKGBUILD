@@ -24,12 +24,7 @@ package() {
   mkdir -p "$pkgdir/etc" "$pkgdir/usr/lib/pacmanity" "$pkgdir/usr/share/libalpm/hooks"
   install -m774 "$srcdir/${pkgname/-git/}/src/pacmanity.sh"   "$pkgdir/usr/lib/pacmanity/pacmanity.sh"
   install -m664 "$srcdir/${pkgname/-git/}/src/pacmanity.hook" "$pkgdir/usr/share/libalpm/hooks/zzz-pacmanity.hook"
-  if [[ -f "/etc/pacmanity"  ]]; then
-    install -m664 "/etc/pacmanity" "$pkgdir/etc/pacmanity"
-    sudo rm -f "/etc/pacmanity"
-  else
-    touch "$pkgdir/etc/pacmanity"
-  fi
+  [[ -f "/etc/pacmanity"  ]] || touch "$pkgdir/etc/pacmanity"  # if file is present, assume it is maanged externally (via a build system)
 
   # run
   . $pkgdir/usr/lib/pacmanity/pacmanity.sh
