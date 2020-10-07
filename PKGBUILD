@@ -1,4 +1,4 @@
-# Maintainer: Nico <desoxhd@gmail.com>
+# Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=plasmasur-dark-kde-theme-git
 _themeName=PlasmaSur-dark
 _gitname="$_themeName-kde"
