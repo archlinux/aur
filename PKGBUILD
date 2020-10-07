@@ -2,8 +2,8 @@
 
 pkgbase=brotli-git
 pkgname=('brotli-git' 'python-brotli-git')
-pkgver=1.0.7.r5.g4b2b2d4
-pkgrel=2
+pkgver=1.0.9.r10.g685d7ba
+pkgrel=1
 pkgdesc="Brotli compression library"
 arch=('i686' 'x86_64')
 url="https://github.com/google/brotli"
@@ -24,19 +24,19 @@ build() {
 
   python "setup.py" build
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    ../
-  make
+    ./
+  make -C "_build"
 }
 
 check() {
   cd "brotli"
 
-  make test
+  make -C "_build" test
 }
 
 package_brotli-git() {
@@ -44,10 +44,10 @@ package_brotli-git() {
   provides=('brotli')
   conflicts=('brotli')
 
-  cd "brotli/_build"
+  cd "brotli"
 
-  make DESTDIR="$pkgdir" install
-  install -Dm644 "../LICENSE" "$pkgdir/usr/share/licenses/brotli/LICENSE"
+  make -C "_build" DESTDIR="$pkgdir" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/brotli"
 }
 
 package_python-brotli-git() {
