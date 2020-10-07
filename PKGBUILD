@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=blosc2-git
-pkgver=2.0.0.beta.4.r12.gfc0ce98
+pkgver=2.0.0.beta.5.r201.gf4a74cb
 pkgrel=1
 pkgdesc="Next generation c-blosc"
 arch=('i686' 'x86_64')
@@ -25,17 +25,17 @@ pkgver() {
 build() {
   cd "c-blosc2"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DPREFER_EXTERNAL_LZ4="ON" \
     -DPREFER_EXTERNAL_SNAPPY="ON" \
     -DPREFER_EXTERNAL_ZLIB="ON" \
-    -DPREFER_EXTERNAL_ZSTD="OFF" \
-    "../"
-  make
+    -DPREFER_EXTERNAL_ZSTD="ON" \
+    ./
+  make -C "_build"
 }
 
 package() {
