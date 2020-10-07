@@ -2,28 +2,28 @@
 # Contributor: Bradley Kennedy <bk@co60.ca>
 
 pkgname=libuiohook
-pkgver=1.0.3
-pkgrel=5
+pkgver=1.2.2
+pkgrel=2
 pkgdesc="A multi-platform C library to provide global input/ouput hooking from userland."
 arch=('i686' 'x86_64')
 url="https://github.com/kwhat/libuiohook"
 license=('GPL3')
 groups=()
-depends=("libxt" "libxtst" "libxinerama")
-makedepends=() # All included in base-devel
+depends=("libxt" "libxtst" "libxinerama" "libxkbcommon-x11")
+makedepends=("cmake" "libxkbfile")
 optdepends=()
 conflicts=()
 source=("https://github.com/kwhat/$pkgname/archive/${pkgver}.zip")
-sha256sums=('a7bfdf7377223bf3c46b0028fa44e6070a009bfbd2e1111c506b777c8cf48e7d')
+sha256sums=('8a199538f45889bc49a56f73a727e221f2fb7156324ab29f4dcb855f1ec80979')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./bootstrap.sh
-  ./configure --prefix=/usr --libexecdir=/usr/lib --without-libsigsegv
-  make
+  mkdir build && cd build
+  cmake -S .. -D BUILD_SHARED_LIBS=ON -D CMAKE_INSTALL_PREFIX=/usr
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  cd build
+  DESTDIR="$pkgdir" cmake --build . --parallel 2 --target install 
 }
