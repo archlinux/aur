@@ -13,4 +13,12 @@ sha256sums=('SKIP'
 	    'SKIP'
             'SKIP'
             'SKIP')
+makedepends=(wget)
 pkgdesc="gothic community patches"
+
+prepare() {
+
+	wget http://www.freewebs.com/dracolich/inextremo.rar
+
+	mv $srcdir/inextremo.rar $startdir
+}
