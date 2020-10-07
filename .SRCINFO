@@ -1,0 +1,22 @@
+pkgbase = pbincli-git
+	pkgdesc = Command line client for PrivateBin
+	pkgver = 0.3.1.r2.g94023a9
+	pkgrel = 1
+	url = https://github.com/r4sas/PBinCLI
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-base58
+	depends = python-requests
+	depends = python-sjcl
+	depends = python-pyaml
+	depends = python-pycryptodome
+	provides = pbincli
+	conflicts = pbincli
+	source = pbincli::git+https://github.com/r4sas/PBinCLI.git
+	sha256sums = SKIP
+
+pkgname = pbincli-git
+
