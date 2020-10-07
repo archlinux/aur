@@ -1,0 +1,17 @@
+pkgbase = gothic-patches
+	pkgdesc = gothic community patches
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.worldofgothic.com/
+	arch = x86_64
+	source = https://github.com/shoober420/tfixmirror/raw/main/gothic_patch_108k.exe
+	source = https://github.com/shoober420/tfixmirror/raw/main/gothic1_playerkit-1.08k.exe
+	source = https://github.com/GothicFixTeam/GothicFix/releases/download/v1.8/G1Classic-SystemPack-1.8.exe
+	source = https://github.com/GothicFixTeam/GothicFix/releases/download/v1.8/Gothic1_PlayerKit-2.8.exe
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gothic-patches
+
