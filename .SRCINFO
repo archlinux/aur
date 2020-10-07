@@ -1,0 +1,24 @@
+pkgbase = imgur-screenshot
+	pkgdesc = The Imgur-Screenshot uploader for Linux & OS X from imgur.com/tools
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/jomo/imgur-screenshot
+	arch = any
+	license = MIT
+	depends = curl
+	depends = jq
+	depends = libnotify
+	depends = scrot
+	depends = xclip
+	optdepends = scrot: (or other screenshot tool) for making screenshots
+	optdepends = xclip: needed for copy_url
+	conflicts = imgur-screenshot-git
+	source = https://github.com/jomo/imgur-screenshot/archive/v2.0.0.tar.gz
+	source = imgur-screenshot.desktop
+	source = imgur-screenshot.png
+	sha256sums = 1581b3d71e9d6c022362c461aa78ea123b60b519996ed068e25a4ccf5a3409f5
+	sha256sums = ba1c175b17cece30d6f2bcd4b15d924ae64855bd350a42efa9ea146880135fa2
+	sha256sums = b7f0eb70c642bb5cea60bf8a3b87125c53e64b0636fcfe9b9f591c6731a2b0c0
+
+pkgname = imgur-screenshot
+
