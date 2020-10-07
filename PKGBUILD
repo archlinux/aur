@@ -1,7 +1,7 @@
 # Maintainer: Your Name <1289747698@qq.com>
 
 pkgname=ydict
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="dictionary/translation tool developed in Rust+Qt"
 arch=('x86_64')

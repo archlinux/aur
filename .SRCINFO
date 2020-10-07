@@ -1,11 +1,11 @@
 pkgbase = ydict
 	pkgdesc = dictionary/translation tool developed in Rust+Qt
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/DreamSaddle/youdao-dict
 	arch = x86_64
 	license = GPL3
-	source = https://files.cnblogs.com/files/dream-saddle/YDict-0.3.1.tar.gz
+	source = https://files.cnblogs.com/files/dream-saddle/YDict-0.3.2.tar.gz
 	md5sums = SKIP
 
 pkgname = ydict
