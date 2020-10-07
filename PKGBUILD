@@ -7,12 +7,14 @@ pkgver(){
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-pkgdesc="Steam cards farmer. Git version with asf-ui included"
+pkgdesc="Steam cards farmer. Git version."
 conflicts=('asf')
+provides=('asf')
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache')
 depends=('aspnet-runtime>=3.1')
+optdepends=('asf-ui: standalone web interface for ASF')
 makedepends=('git' 'dotnet-sdk>=3.1')
 install=install
 source=("asf-git::git+https://github.com/JustArchiNET/ArchiSteamFarm.git"
@@ -28,7 +30,7 @@ sha256sums=('SKIP'
 build() {
     cd ${pkgname}
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
-    ./cc.sh --no-pull
+    ./cc.sh --no-asf-ui --no-pull
 }
 
 package() {
