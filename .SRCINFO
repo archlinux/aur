@@ -1,6 +1,6 @@
 pkgbase = pugixml-git
 	pkgdesc = Light-weight, simple and fast XML parser for C++
-	pkgver = 1.9.r55.g7247a82
+	pkgver = 1.10.r52.gc4bae8d
 	pkgrel = 1
 	url = https://pugixml.org/
 	arch = i686

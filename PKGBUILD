@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=pugixml-git
-pkgver=1.9.r55.g7247a82
+pkgver=1.10.r52.gc4bae8d
 pkgrel=1
 pkgdesc="Light-weight, simple and fast XML parser for C++"
 arch=('i686' 'x86_64')
@@ -24,19 +24,19 @@ pkgver() {
 build() {
   cd "pugixml"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DBUILD_SHARED_LIBS=ON \
-    ../
-  make
+    ./
+  make -C "_build"
 }
 
 package() {
   cd "pugixml"
 
   make -C "_build" DESTDIR="$pkgdir" install
-  install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/pugixml/LICENSE.md"
+  install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/pugixml"
 }
