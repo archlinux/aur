@@ -8,13 +8,13 @@
 
 pkgname=filebot
 pkgver=4.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://www.filebot.net/"
 license=('Commercial')
 #groups=()
-depends=('liberica-jre-11-full-bin' 'fontconfig' 'chromaprint')
+depends=('jre11-openjdk' 'java11-openjfx' 'fontconfig' 'chromaprint')
 makedepends=()
 checkdepends=()
 
@@ -30,10 +30,12 @@ conflicts=('filebot47' 'filebot-git')
 #options=()
 install=$pkgname.install
 #changelog=
-source=("https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur.tar.xz")
+source=("https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur.tar.xz"
+         "filebot.sh")
 
 #noextract=()
-md5sums=('8417980b971ad2099066216b815f50af')
+md5sums=('8417980b971ad2099066216b815f50af'
+         'a49421b6cfd7b17834fc01990b93fbb7')
 #validpgpkeys=()
 
 #prepare() {}
@@ -44,18 +46,13 @@ md5sums=('8417980b971ad2099066216b815f50af')
 
 package() {
   mkdir -p $pkgdir/usr/bin
+ 
+  install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
 
   cd $srcdir
-
-  # install -Dm755 usr/share/filebot/bin/$pkgname.sh "$pkgdir/usr/bin/$pkgname"
-  # chmod +x usr/share/filebot/bin/$pkgname.sh
-  # cp -dp -s /usr/share/filebot/bin/$pkgname.sh $pkgdir/usr/bin/$pkgname
   
   cp -dpr --no-preserve=ownership * "$pkgdir"
   
-  ln -sf $srcdir/usr/share/$pkgname/bin/$pkgname.sh $pkgdir/usr/bin/$pkgname
-
-  # chmod +x usr/share/filebot/bin/$pkgname.sh
-  # cp -dp -s /usr/share/filebot/bin/$pkgname.sh $pkgdir/usr/bin/$pkgname
+  # ln -sf $srcdir/usr/share/$pkgname/bin/$pkgname.sh $pkgdir/usr/bin/$pkgname
 
 }

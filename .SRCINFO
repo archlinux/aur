@@ -1,7 +1,7 @@
 pkgbase = filebot
 	pkgdesc = The ultimate TV and Movie Renamer
 	pkgver = 4.9.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.filebot.net/
 	install = filebot.install
 	arch = i686
@@ -10,7 +10,8 @@ pkgbase = filebot
 	arch = armv7l
 	arch = armv7h
 	license = Commercial
-	depends = liberica-jre-11-full-bin
+	depends = jre11-openjdk
+	depends = java11-openjfx
 	depends = fontconfig
 	depends = chromaprint
 	optdepends = libzen: Required by libmediainfo
@@ -20,7 +21,9 @@ pkgbase = filebot
 	conflicts = filebot47
 	conflicts = filebot-git
 	source = https://get.filebot.net/filebot/FileBot_4.9.2/FileBot_4.9.2-aur.tar.xz
+	source = filebot.sh
 	md5sums = 8417980b971ad2099066216b815f50af
+	md5sums = a49421b6cfd7b17834fc01990b93fbb7
 
 pkgname = filebot
 
