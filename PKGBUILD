@@ -1,8 +1,9 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
+# Last Packager: liolok <aur@liolok.com>
 
 _uuid=vscode-search-provider@jomik.org
 pkgname=gnome-shell-extension-vscode-search-provider
-pkgver=16
+pkgver=17
 pkgrel=1
 pkgdesc="Add recent VSCode projects to Gnome Shell search"
 arch=('any')
@@ -13,12 +14,12 @@ source=(
 	"$url/releases/download/v$pkgver/${_uuid}.shell-extension.zip"
 	"https://raw.githubusercontent.com/Jomik/vscode-search-provider/v$pkgver/LICENSE"
 )
-md5sums=('ba887105a843f650d9e4318268c299c4'
-	'b400106cc2bda3124008645a217c10bd')
-sha1sums=('bbf0db9391aefad7f498b9a4906e796d88bc6be3'
-	'f930f495d8cf7f1d067c192462132c1e5a62b8d5')
-sha512sums=('5fc8ba1bb99d9de7b7146214c43a95d7d9ae88bbe3eb5e7382fdd38272692a6737d6fbf716e90adb282045480fc675ce66f8263cc29c54182e4c6e19f87f413f'
-	'e0fc0bdebe6fcd1d086671a7d98331d52dccb7782bdabdc3a36166b5e5febc6ddfe822c8193282782eb7d5fe291c203fa90562fd640e2afc061de903f40151dc')
+md5sums=('d933c39cbad6d694141c99ac750e853d'
+	'efb8f83b91c5222e21b5fad9b3ca3a0a')
+sha1sums=('ff858566c33efda0e5b8843d186e820b602bcaf6'
+	'45b5cda2b2c710f8ceb903c6824d20ef0eb05d0b')
+sha512sums=('3c4c9adf8e159310441f9af71cec9d03a6df8bdda1b269281585da2284a1ae912d88fbc4dbae5437614f987b51925c8b9dbf240e703a3c1fb6fc485ec8a419bf'
+	'bba3b89d30eaad81bbf1f686f6a385f950a51541c1719a72243517bec308a2c5bb5a408e53672ac3f62988b27988637133b9d4eda1c92e3a0ce47e7a8e9c16bc')
 
 package() {
 	local _destdir="$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
@@ -26,4 +27,5 @@ package() {
 	install -d "$_destdir"
 	cp --parents -t "$_destdir" -- metadata.json *.js prefs.xml schemas/gschemas.compiled schemas/*.xml
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	ln --symbolic --relative "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "$_destdir"
 }
