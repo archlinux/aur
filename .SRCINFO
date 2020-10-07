@@ -9,7 +9,7 @@ pkgbase = python-requests-gssapi
 	makedepends = git
 	depends = python-gssapi
 	depends = python-requests
-	source = git+https://github.com/pythongssapi/requests-gssapi
+	source = git+https://github.com/pythongssapi/requests-gssapi#commit=8718174cac25e3ccc960e53021ff39b0fa44d143
 	sha256sums = SKIP
 
 pkgname = python-requests-gssapi

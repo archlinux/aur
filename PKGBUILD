@@ -9,7 +9,8 @@ arch=(i686 x86_64)
 license=(custom:ISC)
 depends=(python-gssapi python-requests)
 makedepends=(git)
-source=("git+https://github.com/pythongssapi/requests-gssapi")
+_commit=8718174cac25e3ccc960e53021ff39b0fa44d143
+source=("git+https://github.com/pythongssapi/requests-gssapi#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
