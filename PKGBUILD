@@ -2,8 +2,8 @@
 
 _plug=muvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v0.3.0.37.gbb44453
-pkgrel=3
+pkgver=v0.3.0.54.g5b5f245
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://forum.doom9.org/showthread.php?t=171956'
@@ -14,10 +14,12 @@ depends=('vapoursynth-plugin-havsfunc-git'
          'vapoursynth-plugin-median-git'
          'vapoursynth-plugin-histogram'
          )
-optdepends=('python-numpy: For use muvsdunc_numpy'
+optdepends=('python-numpy: For use muvsfunc_numpy'
             'python-tensorflow: For use super_resolution function with TensorFlow as backend (muvsfunc_numpy)'
             'mxnet: For use super_resolution function with MxNET as backend (muvsfunc_numpy)'
+            'vapoursynth-plugin-vsmxnet-git: For use super_resolution function with MxNET as backend (SuperRes)'
             'vapoursynth-plugin-vcfreq: For use with GPS function (muvsfunc_misc)'
+
             )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
