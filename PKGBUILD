@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn@gmail.com>
 
 pkgname=libpdfium-nojs
-pkgver=4183.r0.6069b8345e
+pkgver=4240.r1.d080048b1c
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -36,7 +36,7 @@ prepare() {
 
   cd "$srcdir/pdfium"
 
-  ln -sf $srcdir/build build
+  #ln -sf $srcdir/build build
 
   # Pdfium is developed alongside Chromium and does not provide releases
   # Upstream recommends using Chromium's dev channels instead
@@ -62,7 +62,10 @@ prepare() {
   curl https://chromium.googlesource.com/chromium/src/+/master/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT \
     | base64 --decode > "$srcdir/pdfium/tools/generate_shim_headers/generate_shim_headers.py"
   echo "Done."
-
+  
+  # Create fake gclient_args.gni file to satisfy include list for build/config/compiler/compiler.gni
+  touch "$srcdir/build/config/gclient_args.gni"
+  
 } 
 
 build() {
