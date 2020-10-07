@@ -1,0 +1,19 @@
+pkgbase = vapoursynth-plugin-vsmxnet-git
+	pkgdesc = Use MXNet to accelerate image processing in VapourSynth (git version), modified to compile on Linux
+	pkgver = v0.2.2.0.g26a7b79
+	pkgrel = 1
+	url = https://github.com/kice/vs_mxnet
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = vapoursynth
+	makedepends = mxnet
+	makedepends = opencv
+	depends = vapoursynth
+	depends = mxnet
+	depends = opencv
+	source = git+https://github.com/kice/vs_mxnet
+	md5sums = SKIP
+
+pkgname = vapoursynth-plugin-vsmxnet-git
+
