@@ -1,16 +1,16 @@
 pkgbase = ubuntu-wallpapers
 	pkgdesc = The default Wallpapers for Ubuntu
-	pkgver = 20.10.1
+	pkgver = 20.10.2
 	pkgrel = 1
 	url = https://launchpad.net/ubuntu-wallpapers
 	arch = any
 	license = custom
 	makedepends = python-distutils-extra
 	makedepends = python-setuptools
-	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_20.10.1.orig.tar.gz
-	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_20.10.1-0ubuntu1.debian.tar.xz
-	sha256sums = 3db2a2612239cdc06e58035cd8910005f7e75969fcb5aa149712261c8c6f3bac
-	sha256sums = fd58fbdc7cbd4c60400bdc63ec71e9b59dfa11dd0e441d375b76afa5af605adc
+	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_20.10.2.orig.tar.gz
+	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_20.10.2-0ubuntu1.debian.tar.xz
+	sha256sums = 3f67abb82cd4b3c60e6d50f6e7278d38cb981d6caaf55d05e98f0c219cda5797
+	sha256sums = 58e154f06ef50dcf77e3e75564d7d2497c0dfc42103bff3ce8a57d2ad421aa1e
 
 pkgname = ubuntu-wallpapers
 
