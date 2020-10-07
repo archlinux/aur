@@ -8,7 +8,7 @@ pkgbase = game-devices-udev
 	license = MIT
 	makedepends = git
 	depends = udev
-	source = git+https://gitlab.com/fabis_cafe/game-devices-udev.git#commit=48ad561ba408a93f0fd1e63ec9427c16031e0dfc
+	source = git+https://gitlab.com/fabis_cafe/game-devices-udev.git#commit=aa1b658433e6f28588bf93cb826267fe2aa93a99
 	source = uinput.conf
 	sha512sums = SKIP
 	sha512sums = a9b069ed121ffeee887e0583d8cb46035ecf1fa90a26a4ecb3aa11ff03178b2b08621f6676db6b2350f290694c04aabcf36f2ce3e0813a76dde9a33555edb112
