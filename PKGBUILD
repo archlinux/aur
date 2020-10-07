@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tinyxml2-git
-pkgver=7.0.1.r8.g61a4c7d
+pkgver=8.0.0.r42.g1aeb57d
 pkgrel=1
 pkgdesc="Simple, small, efficient, C++ XML parser"
 arch=('i686' 'x86_64')
@@ -24,19 +24,19 @@ pkgver() {
 build() {
   cd "tinyxml2"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    "../"
-  make
+    ./
+  make -C "_build"
 }
 
 check() {
   cd "tinyxml2"
 
-  make check
+  make -C "_build" test
 }
 
 package() {

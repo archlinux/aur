@@ -1,6 +1,6 @@
 pkgbase = tinyxml2-git
 	pkgdesc = Simple, small, efficient, C++ XML parser
-	pkgver = 7.0.1.r8.g61a4c7d
+	pkgver = 8.0.0.r42.g1aeb57d
 	pkgrel = 1
 	url = http://www.grinninglizard.com/tinyxml2/
 	arch = i686
