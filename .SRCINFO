@@ -5,13 +5,18 @@ pkgbase = zps-bin
 	url = https://github.com/orhun/zps
 	arch = x86_64
 	license = GPL3
+	provides = zps
 	conflicts = zps
 	conflicts = zps-git
-	source = https://github.com/orhun/zps/releases/download/1.2.3/zps-1.2.3.tar.gz
-	source = https://github.com/orhun/zps/releases/download/1.2.3/zps-1.2.3.tar.gz.sig
 	validpgpkeys = 39E678DF63BE20EA5A175156B928720AEC532117
-	sha512sums = 13fa805228957b56a4849cee92814533648be843b5b8a29709c33b8c8e240922735439c6dc48832da6c182a3c5d50f7406a1c6a37f090502dd9eeebf4142a0b8
-	sha512sums = SKIP
+	source_x86_64 = https://github.com/orhun/zps/releases/download/1.2.3/zps-1.2.3.tar.gz
+	source_x86_64 = https://github.com/orhun/zps/releases/download/1.2.3/zps-1.2.3.tar.gz.sig
+	source_x86_64 = zps-1.2.3-LICENSE::https://github.com/orhun/zps/raw/1.2.3/LICENSE
+	source_x86_64 = zps-1.2.3-README.md::https://github.com/orhun/zps/raw/1.2.3/README.md
+	sha512sums_x86_64 = 13fa805228957b56a4849cee92814533648be843b5b8a29709c33b8c8e240922735439c6dc48832da6c182a3c5d50f7406a1c6a37f090502dd9eeebf4142a0b8
+	sha512sums_x86_64 = SKIP
+	sha512sums_x86_64 = d361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686
+	sha512sums_x86_64 = 08d14ec5ac6fd1a512c2491762059db8bcc169ef6e257c1e58488783193eb70dbba469853dc1b3230f00a06a22e90b9c36b0e96c577f062083ec7b9df511bc5b
 
 pkgname = zps-bin
 
