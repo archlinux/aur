@@ -1,4 +1,4 @@
-pkgbase = mdr
+pkgbase = mdr-bin
 	pkgdesc = A standalone Markdown renderer for the terminal.
 	pkgver = 0.2.5
 	pkgrel = 3
@@ -7,8 +7,17 @@ pkgbase = mdr
 	arch = i686
 	arch = arm
 	license = MIT
-	makedepends = wget
 	depends = glibc
+	replaces = mdr
+	options = strip
+	source = LICENSE::https://raw.githubusercontent.com/MichaelMure/mdr/v0.2.5/LICENSE
+	sha512sums = 1327071f12551ce1e38232f9cad9401419b2661e7933362c686f96601ab8f1808f40651f70302e690c8228ac2dd6c933a2bed62e235b67d414850e4abf4bf070
+	source_x86_64 = mdr::https://github.com/MichaelMure/mdr/releases/download/v0.2.5/mdr_linux_amd64
+	sha512sums_x86_64 = a3ab5bf040644ae5a03d4ee385d8e05f3637293b858dc9aa9de3721337dfd4858a487e47b45d7a7b0ae6c7731613ddf1541134406d5871e72b96897f8a5c8dd2
+	source_i686 = mdr::https://github.com/MichaelMure/mdr/releases/download/v0.2.5/mdr_linux_i386
+	sha512sums_i686 = 1f55ce4424eded23ef4530f959beaf51c16f9630c0f38f6d9e513a8b3a41113efff6950f84a8e3e955340e85bebc2fbb408e92572d68fdb787a5144b520910c9
+	source_arm = mdr::https://github.com/MichaelMure/mdr/releases/download/v0.2.5/mdr_linux_arm
+	sha512sums_arm = 55ec31bb830a325eeddb6408cf0a0823d4f2853601936c302c1ab38f14b03e9b579943a8ee7d37ac6e4edd6c075b61ddfe7b6f9dff2c2b585be21f3a97131986
 
-pkgname = mdr
+pkgname = mdr-bin
 
