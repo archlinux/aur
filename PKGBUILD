@@ -16,6 +16,7 @@ depends=('xorg-xmessage' 'libxinerama')
 makedepends=('cargo' 'git')
 install=wtftw.install
 conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 source=("git+${url}"
         "${pkgname%-git}-$pkgver-LICENSE::$url/raw/master/LICENSE")
 sha256sums=('SKIP'

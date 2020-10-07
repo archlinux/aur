@@ -12,6 +12,7 @@ pkgbase = wtftw-git
 	makedepends = git
 	depends = xorg-xmessage
 	depends = libxinerama
+	provides = wtftw
 	conflicts = wtftw
 	source = git+https://github.com/Kintaro/wtftw
 	source = wtftw-r347.14f3d1e-LICENSE::https://github.com/Kintaro/wtftw/raw/master/LICENSE
