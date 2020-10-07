@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libtorrent-rasterbar-2_0-git
-pkgver=r16454.gfdf377a33
+pkgver=r16640.g94eadaf9e
 pkgrel=1
 pkgdesc="A feature complete C++ bittorrent library (git branch RC_2_0)"
 arch=('i686' 'x86_64')
@@ -33,15 +33,15 @@ pkgver() {
 build() {
   cd "libtorrent"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -Dpython-bindings=ON \
     -Dboost-python-module-name="python" \
-    "../"
-  make
+    ./
+  make -C "_build"
 }
 
 package() {
