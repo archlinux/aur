@@ -1,6 +1,6 @@
 pkgbase = geary-git
 	pkgdesc = An email application built around conversations, for the GNOME 3 desktop.
-	pkgver = r6263.8426648a
+	pkgver = r6363.da9ed075
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/geary
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = geary-git
 	depends = gnome-online-accounts
 	depends = gspell
 	depends = libgee
-	depends = libhandy1
+	depends = libhandy
 	depends = libnotify
 	depends = libpeas
 	depends = libsoup
