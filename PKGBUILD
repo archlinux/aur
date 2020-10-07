@@ -24,7 +24,11 @@ package() {
   mkdir -p "$pkgdir/etc" "$pkgdir/usr/lib/pacmanity" "$pkgdir/usr/share/libalpm/hooks"
   install -m774 "$srcdir/${pkgname/-git/}/src/pacmanity.sh"   "$pkgdir/usr/lib/pacmanity/pacmanity.sh"
   install -m664 "$srcdir/${pkgname/-git/}/src/pacmanity.hook" "$pkgdir/usr/share/libalpm/hooks/zzz-pacmanity.hook"
-  [[ -f "/etc/pacmanity"  ]] || touch "$pkgdir/etc/pacmanity"  # if file is present, assume it is maanged externally (via a build system)
+  if [ -f "/etc/pacmanity" ]; then # if file is present, assume it is maanged externally (via a build system)
+    GIST_ID=$(cat "/etc/pacmanity" | sed "s|GIST_ID=||g")
+  else
+    touch "$pkgdir/etc/pacmanity"
+  fi
 
   # run
   . $pkgdir/usr/lib/pacmanity/pacmanity.sh
