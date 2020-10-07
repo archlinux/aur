@@ -10,8 +10,8 @@ url='https://github.com/sergius02/QRit'
 license=('GPL3')
 depends=('granite' 'qrencode')
 makedepends=('git' 'meson' 'vala')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_pkgname,,}")
+conflicts=("${_pkgname,,}")
 source=("git+${url}.git")
 sha256sums=('SKIP')
 

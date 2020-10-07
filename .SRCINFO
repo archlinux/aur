@@ -10,8 +10,8 @@ pkgbase = qrit-git
 	makedepends = vala
 	depends = granite
 	depends = qrencode
-	provides = QRit
-	conflicts = QRit
+	provides = qrit
+	conflicts = qrit
 	source = git+https://github.com/sergius02/QRit.git
 	sha256sums = SKIP
 
