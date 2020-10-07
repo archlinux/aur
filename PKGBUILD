@@ -1,4 +1,4 @@
-# Maintainer: Nico <desoxhd@gmail.com>
+# Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=plasma5-applets-latte-sidebar-button
 _pkgname=applet-latte-sidebar-button
 pkgver=0.1.2
