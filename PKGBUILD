@@ -1,6 +1,6 @@
 # Maintainer: dszryan
 pkgname=pacmanity-git
-pkgver=r47.71a7d21
+pkgver=r51.a2f674b
 pkgrel=1
 epoch=1
 pkgdesc="Keeps a list of installed packages in a Gist at your GitHub account"
@@ -15,21 +15,20 @@ source=("${pkgname/-git/}::git+https://github.com/dszryan/${pkgname/-git/}.git#b
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname/-git/}"
+  cd "$srcdir/${pkgname/-git/}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-  # install
-  mkdir -p "$pkgdir/etc" "$pkgdir/usr/lib/pacmanity" "$pkgdir/usr/share/libalpm/hooks"
-  install -m774 "$srcdir/${pkgname/-git/}/src/pacmanity.sh"   "$pkgdir/usr/lib/pacmanity/pacmanity.sh"
-  install -m664 "$srcdir/${pkgname/-git/}/src/pacmanity.hook" "$pkgdir/usr/share/libalpm/hooks/zzz-pacmanity.hook"
+build() {
+  source "$srcdir/${pkgname/-git/}/pacmanity.sh" && pacmanity_build
+}
 
-  # run
-  if [[ -r "/etc/pacmanity" ]]; then # if file is present, assume it is maanged externally (via a build system)
-    . $pkgdir/usr/lib/pacmanity/pacmanity.sh
-  else
-    source $pkgdir/usr/lib/pacmanity/pacmanity.sh
-    pacmanity_install
-  fi
+package() {
+  # copy gist_id if exists
+  [[ -r "$srcdir/gist_id" ]] && (mkdir -p "$pkgdir/etc" && install -m644 "$srcdir/gist_id" "$pkgdir/etc/pacmanity")
+
+  # copy required script files
+  mkdir -p "$pkgdir/usr/lib/pacmanity" "$pkgdir/usr/share/libalpm/hooks"
+  install -m774 "$srcdir/${pkgname/-git/}/pacmanity.sh"   "$pkgdir/usr/lib/pacmanity/pacmanity.sh"
+  install -m664 "$srcdir/${pkgname/-git/}/pacmanity.hook" "$pkgdir/usr/share/libalpm/hooks/zzz-pacmanity.hook"
 }

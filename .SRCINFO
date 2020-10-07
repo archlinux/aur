@@ -1,6 +1,6 @@
 pkgbase = pacmanity-git
 	pkgdesc = Keeps a list of installed packages in a Gist at your GitHub account
-	pkgver = r47.71a7d21
+	pkgver = r51.a2f674b
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/dszryan/pacmanity
