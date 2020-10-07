@@ -3,7 +3,7 @@
 
 pkgname=obs-studio
 pkgver=26.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://obsproject.com"
@@ -18,8 +18,15 @@ optdepends=('libfdk-aac: FDK AAC codec support'
             'luajit: scripting support'
             'python: scripting support'
             'vlc: VLC Media Source support')
-source=($pkgname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz)
-md5sums=('75dea679867dce642c8d1910ef6da0a5')
+source=($pkgname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz
+	fix_python_binary_loading.patch)
+md5sums=('75dea679867dce642c8d1910ef6da0a5'
+         '051b90f05e26bff99236b8fb1ad377d1')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -Np1 < "$srcdir"/fix_python_binary_loading.patch
+}
 
 build() {
   cd $pkgname-$pkgver
