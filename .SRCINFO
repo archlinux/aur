@@ -1,0 +1,15 @@
+pkgbase = gothic2-patches
+	pkgdesc = gothic 2 community patches
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.worldofgothic.com/
+	arch = x86_64
+	source = http://dl1.worldofplayers.ru/games/gothic/patches/G2/gothic2_fix-2.6.0.0-rev2.exe
+	source = https://github.com/GothicFixTeam/GothicFix/releases/download/v1.8/Gothic2_PlayerKit-2.8.exe
+	source = https://github.com/GothicFixTeam/GothicFix/releases/download/v1.8/G2NoTR-SystemPack-1.8.exe
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gothic2-patches
+
