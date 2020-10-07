@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=prplmesh-git
-pkgver=r2608.gae59de8d
+pkgver=r4893.g96b2d694
 pkgrel=1
 pkgdesc="WFA Multi-AP implementation"
 arch=('i686' 'x86_64')
@@ -26,13 +26,13 @@ pkgver() {
 build() {
   cd "prplMesh"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    "../"
-  make
+    ./
+  make -C "_build"
 }
 
 package() {
@@ -40,10 +40,8 @@ package() {
 
   make -C "_build" DESTDIR="$pkgdir" install
 
-  rm "$pkgdir/usr/bin/version"
-
   install -d "$pkgdir/usr/share/prplmesh"
-  mv "$pkgdir/usr/share/"{*.conf,prplmesh_platform_db} "$pkgdir/usr/share/prplmesh"
+  mv "$pkgdir/usr/share/prplmesh_platform_db" "$pkgdir/usr/share/prplmesh"
   mv "$pkgdir/usr/"{config,host,scripts} "$pkgdir/usr/share/prplmesh"
 
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/prplmesh"

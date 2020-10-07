@@ -1,6 +1,6 @@
 pkgbase = prplmesh-git
 	pkgdesc = WFA Multi-AP implementation
-	pkgver = r2608.gae59de8d
+	pkgver = r4893.g96b2d694
 	pkgrel = 1
 	url = https://prplfoundation.org/prplmesh/
 	arch = i686
