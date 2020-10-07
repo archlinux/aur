@@ -1,14 +1,14 @@
 pkgbase = carapace
 	pkgdesc = multi-shell multi-command argument completer
-	pkgver = 0.0.5
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/rsteube/carapace-bin
 	arch = x86_64
 	license = MIT
 	provides = carapace
 	conflicts = carapace
-	source = https://github.com/rsteube/carapace-bin/releases/download/v0.0.5/carapace-bin_0.0.5_linux_amd64.tar.gz
-	sha1sums = d32ae0197b216852e98f53d867becf015fa42e9b
+	source = https://github.com/rsteube/carapace-bin/releases/download/v0.1.0/carapace-bin_0.1.0_linux_amd64.tar.gz
+	sha1sums = 9cc74e1e60019567ef7a12f0ffeb19f6a2723486
 
 pkgname = carapace
 
