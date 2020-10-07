@@ -3,9 +3,9 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgname=('swift-llvm-git' 'swift-llvm-libs-git')
-instprefix="usr/lib/swift-git"
-pkgver=10.0.1
-pkgrel=3
+instprefix="usr/lib/swift-llvm-git"
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.09.28.a.r106.ga3d312281b3d
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/apple/swift-llvm"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -29,6 +29,12 @@ prepare() {
   # permission test fails when building in a docker image
   rm test/tools/llvm-ar/error-opening-permission.test
 }
+
+pkgver() {
+    cd "$srcdir/llvm-project"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 
 build() {
   cd "$srcdir/llvm-project/llvm/build"

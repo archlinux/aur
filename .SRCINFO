@@ -1,6 +1,6 @@
 pkgbase = swift-llvm-git
-	pkgver = 10.0.1
-	pkgrel = 3
+	pkgver = swift.DEVELOPMENT.SNAPSHOT.2020.09.28.a.r106.ga3d312281b3d
+	pkgrel = 1
 	url = https://github.com/apple/swift-llvm
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
