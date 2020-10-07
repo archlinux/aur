@@ -2,12 +2,12 @@
 
 pkgname=('conan')
 pkgver=1.29.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
 url="https://conan.io"
 license=('MIT')
-makedepends=('python-setuptools' 'patch' 'fakeroot')
+makedepends=('python-setuptools' 'patch')
 depends=('python-pyjwt>=1.4.0'
          'python-requests>=2.8.1'
          'python-urllib3>=1.25.6'
