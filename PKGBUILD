@@ -3,8 +3,8 @@
 
 pkgname=jexiftoolgui
 PkgName=jExifToolGUI
-pkgver=1.5.2
-pkgrel=3
+pkgver=1.6.3
+pkgrel=1
 pkgdesc="${PkgName} is a java/Swing graphical frontend for the excellent command-line ExifTool application by Phil Harvey"
 arch=('any')
 url="https://github.com/hvdwolf/${PkgName}"
