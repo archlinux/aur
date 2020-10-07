@@ -1,7 +1,7 @@
 pkgbase = thiefmd
 	pkgdesc = The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter
 	pkgver = 0.0.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://thiefmd.com
 	arch = x86_64
 	license = GPL3
@@ -15,6 +15,7 @@ pkgbase = thiefmd
 	depends = discount
 	depends = gtksourceview3
 	depends = gxml
+	depends = libarchive
 	depends = clutter
 	depends = libgee
 	conflicts = ultheme-vala
