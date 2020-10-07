@@ -1,7 +1,7 @@
 pkgbase = exhale-git
 	pkgdesc = Open source xHE-AAC encoder
-	pkgver = 1.0.6.r1.g051900f
-	pkgrel = 2
+	pkgver = 1.0.7.r2.g9323a9d
+	pkgrel = 1
 	url = https://gitlab.com/ecodis/exhale
 	arch = i686
 	arch = x86_64

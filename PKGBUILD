@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=exhale-git
-pkgver=1.0.6.r1.g051900f
-pkgrel=2
+pkgver=1.0.7.r2.g9323a9d
+pkgrel=1
 pkgdesc="Open source xHE-AAC encoder"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/ecodis/exhale"
@@ -25,13 +25,13 @@ pkgver() {
 build() {
   cd "exhale"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    "../"
-  make
+    ./
+  make -C "_build"
 }
 
 package() {
