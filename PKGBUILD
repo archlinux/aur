@@ -2,7 +2,7 @@
 
 pkgname=openvr
 pkgver=1.14.15
-pkgrel=1
+pkgrel=2
 pkgdesc="API and runtime that allows access to VR hardware"
 arch=('x86_64')
 url="https://www.steamvr.com/en/"
@@ -31,23 +31,22 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    "../"
-  make
-  cd ..
+    ./
+  make -C "_build"
 
   cd "samples"
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    "../"
-  make
+    ./
+  make -C "_build"
 }
 
 package() {

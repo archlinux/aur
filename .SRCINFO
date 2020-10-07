@@ -1,7 +1,7 @@
 pkgbase = openvr
 	pkgdesc = API and runtime that allows access to VR hardware
 	pkgver = 1.14.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.steamvr.com/en/
 	arch = x86_64
 	license = BSD
