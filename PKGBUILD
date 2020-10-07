@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-openvino
-pkgver=2020.4
+pkgver=2021.1
 pkgrel=1
 pkgdesc='Toolkit for developing applications and solutions that emulate human vision using Intel hardware'
 arch=('x86_64')
@@ -14,10 +14,10 @@ optdepends=('python: for using the Python API'
             'python-py-cpuinfo: for running the benchmark tool'
             'python-progress: for running the benchmark tool'
             'opencv: for running the benchmark tool')
-makedepends=('git' 'cmake' 'python' 'cython' 'opencv')
+makedepends=('git' 'git-lfs' 'cmake' 'python' 'cython' 'opencv')
 options=('!emptydirs')
-_firmware_ver=1223
-_gnaver=02.00.00.0925
+_firmware_ver=1381 # FIRMWARE_PACKAGE_VERSION in inference-engine/cmake/vpu_dependencies.cmake
+_gnaver=02.00.00.1047.1 # GNA_VERSION (GNA2) in inference-engine/cmake/dependencies.cmake
 source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
         'git+https://github.com/opencv/ade.git'
         'git+https://github.com/openvinotoolkit/oneDNN.git'
@@ -32,8 +32,7 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
         'setupvars.sh'
         '010-ade-disable-werror.patch'
         '020-intel-openvino-cldnn-disable-werror.patch'
-        '030-intel-openvino-do-not-install-tbb.patch'
-        '040-intel-openvino-cldnn-fix-build.patch'::'https://github.com/openvinotoolkit/openvino/commit/ed444bf9f4dda442bd2da51140f45631163e0e55.patch')
+        '030-intel-openvino-do-not-install-tbb.patch')
 noextract=("firmware_usb-ma2450_${_firmware_ver}.zip"
            "firmware_usb-ma2x8x_${_firmware_ver}.zip"
            "firmware_pcie-ma248x_${_firmware_ver}.zip"
@@ -43,19 +42,23 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '4dc246bd12d7a21c1b10ac3e090b30043777c4ea862e1e4119536ba03c5878ef'
-            'd1d209221c1389a9a04e14ffeeaff1c3308f6ab105c7bd22f0e300df01cce4d8'
-            '64dd77ecd2f7172421414a388a87be4e6271894a982a58b3829f9de1a1869abd'
-            'fc9bf2a1326ded58dc87c6e6bcdac2dcd1b977ebf817f51c6f8d2f8540a14d6c'
+            'd310d60c9ab5dd8979fa03151f54c889d2fc1e4f178636f83b6756c3fee72745'
+            '35389d365287055beacb3dfbc041a3b71f9c09493a942ee5d6ad03a4a2c8127a'
+            '3c6c5f365bee1b114d08c0fc8ac1e655beee9dfe05fe1508cb8079eb12975204'
+            '20820e07392a1e876cf5577430c1c4c74b924d8f34cc17bfa3e36e641555e05d'
             'f485aa97d88d424dd3a223e0eddbbc382ec6c8d5094d51cbd3f0524b915e3d68'
             '49a1cdd2357ac3c657b28d72aea1294e4af46389e41ed0d55ccbd12bd995058d'
             '093199ae759e8755166b9737562438866123eda9b1afbbef2f7107b3cf827be5'
             '502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0'
             'b58aa9ec526cb6c528c58fc8b1a1b93b425999d1de29f0dd15a8b680c9eb8c77'
-            '806a8fd32f45e03d88e22f171fc831a319a1ef78c9da6b0700ca8ef43cb7a94d'
-            'cf936694fca3a840bec33bfd94fd13cfb7f8ba47b822965a6129a6818abdeab2')
+            '806a8fd32f45e03d88e22f171fc831a319a1ef78c9da6b0700ca8ef43cb7a94d')
+
+export GIT_LFS_SKIP_SMUDGE='1'
 
 prepare() {
+    git -C openvino lfs install --local
+    git -C openvino lfs pull "$(printf '%s' "${source[0]/git+/}" | sed 's/#.*$//')"
+    
     git -C openvino submodule init
     git -C openvino config --local submodule.inference-engine/thirdparty/ade.url "${srcdir}/ade"
     git -C openvino config --local submodule.inference-engine/thirdparty/mkl-dnn.url "${srcdir}/oneDNN"
@@ -71,7 +74,6 @@ prepare() {
     patch -d openvino/inference-engine/thirdparty/ade -Np1 -i "${srcdir}/010-ade-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-intel-openvino-cldnn-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/030-intel-openvino-do-not-install-tbb.patch"
-    patch -d openvino -Np1 -i "${srcdir}/040-intel-openvino-cldnn-fix-build.patch"
 }
 
 build() {
