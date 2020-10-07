@@ -1,7 +1,7 @@
 pkgbase = blosc-git
 	pkgdesc = A blocking, shuffling and loss-less compression library
-	pkgver = 1.17.0.r12.gaa8ee96
-	pkgrel = 2
+	pkgver = 1.20.1.r1.g5352508
+	pkgrel = 1
 	url = https://blosc.org/
 	arch = i686
 	arch = x86_64

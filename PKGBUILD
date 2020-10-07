@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=blosc-git
-pkgver=1.17.0.r12.gaa8ee96
-pkgrel=2
+pkgver=1.20.1.r1.g5352508
+pkgrel=1
 pkgdesc="A blocking, shuffling and loss-less compression library"
 arch=('i686' 'x86_64')
 url="https://blosc.org/"
@@ -25,8 +25,8 @@ pkgver() {
 build() {
   cd "c-blosc"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
@@ -34,8 +34,8 @@ build() {
     -DPREFER_EXTERNAL_SNAPPY="ON" \
     -DPREFER_EXTERNAL_ZLIB="ON" \
     -DPREFER_EXTERNAL_ZSTD="ON" \
-    "../"
-  make
+    ./
+  make -C "_build"
 }
 
 check() {
