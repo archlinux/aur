@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=cmark-git
-pkgver=0.29.0.r4.ga61c490
+pkgver=0.29.0.r104.g8410d2c
 pkgrel=1
 pkgdesc="CommonMark parsing and rendering library"
 arch=('i686' 'x86_64')
@@ -25,24 +25,24 @@ pkgver() {
 build() {
   cd "cmark"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    ../
-  make
+    ./
+  make -C "_build"
 }
 
 check() {
-  cd "cmark/_build"
+  cd "cmark"
 
-  make test
+  make -C "_build" test
 }
 
 package() {
-  cd "cmark/"
+  cd "cmark"
 
   make -C "_build" DESTDIR="$pkgdir" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/cmark/COPYING"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/cmark"
 }

@@ -1,6 +1,6 @@
 pkgbase = cmark-git
 	pkgdesc = CommonMark parsing and rendering library
-	pkgver = 0.29.0.r4.ga61c490
+	pkgver = 0.29.0.r104.g8410d2c
 	pkgrel = 1
 	url = https://github.com/commonmark/cmark
 	arch = i686
