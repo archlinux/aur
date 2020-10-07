@@ -7,6 +7,7 @@ url=https://gitlab.gnome.org/YaLTeR/identity
 license=(GPL3)
 depends=(
 	gtk3
+    gst-plugin-gtk
 	gst-plugins-base
 	gst-plugins-good
 	'libhandy>=1.0.0'

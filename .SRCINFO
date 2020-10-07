@@ -8,6 +8,7 @@ pkgbase = identity
 	makedepends = meson
 	makedepends = rust
 	depends = gtk3
+	depends = gst-plugin-gtk
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = libhandy>=1.0.0
