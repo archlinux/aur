@@ -27,10 +27,11 @@ depends=(
   'xcb-util-xrm'
 )
 makedepends=(
-  'asciidoc'
+  'asciidoctor'
   'cmake'
   'docbook-xsl'
   'git'
+  'gzip'
   'imagemagick'
   'ldoc'
   'lua-penlight'
