@@ -1,0 +1,17 @@
+pkgbase = ruby-racc
+	pkgdesc = LALR parser generator written in Ruby itself and generates ruby programs
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/ruby/racc
+	arch = x86_64
+	license = BSD
+	makedepends = rubygems
+	makedepends = ruby-rake
+	makedepends = ruby-rdoc
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/ruby/racc/archive/v1.5.0.tar.gz
+	sha256sums = 628c25de6fa18108427cb0fee75f900a406e37f538c3794b2eb5620cd964f42d
+
+pkgname = ruby-racc
+
