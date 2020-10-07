@@ -1,6 +1,6 @@
 pkgbase = klavaro-svn
 	pkgdesc = Flexible touch typing tutor that supports customizable keyboard layouts
-	pkgver = 3.10.r120
+	pkgver = 3.10.r121
 	pkgrel = 1
 	url = https://klavaro.sourceforge.io
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = klavaro-svn
 	depends = gtk3
 	optdepends = espeakup: voice output
 	provides = klavaro
+	conflicts = klavaro
 	source = klavaro::svn+https://svn.code.sf.net/p/klavaro/code/trunk
 	sha256sums = SKIP
 

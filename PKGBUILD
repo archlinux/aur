@@ -1,9 +1,9 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 
-_pkgname=klavaro
-pkgname=${_pkgname}-svn
-pkgver=3.10.r120
+_pkgname='klavaro'
+pkgname="${_pkgname}-svn"
+pkgver=3.10.r121
 pkgrel=1
 pkgdesc='Flexible touch typing tutor that supports customizable keyboard layouts'
 arch=('x86_64')
@@ -13,12 +13,14 @@ depends=('gtk3')
 makedepends=('clang' 'intltool' 'python' 'subversion')
 optdepends=('espeakup: voice output')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("${_pkgname}::svn+https://svn.code.sf.net/p/${_pkgname}/code/trunk")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  echo "$(grep -Pm1 '[\d.]+' NEWS | cut -d' ' -f2).r$(svnversion)"
+  local revision="$(svnversion)"
+  printf "%s.r%s" "$(grep -Pom1 '^Version \K[\d.]+' 'NEWS')" "${revision//[[:alpha:]]}"
 }
 
 build() {
@@ -30,10 +32,6 @@ build() {
     --prefix=/usr \
     --disable-static
   make
-}
-
-check() {
-  make -C "${_pkgname}" check
 }
 
 package() {
