@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=editorconfig-core-c-git
-pkgver=0.12.3.r38.ge70d90d
+pkgver=0.12.4.r1.ga3a49f6
 pkgrel=1
 pkgdesc="EditorConfig core library written in C (for use by plugins supporting EditorConfig parsing)"
 arch=('i686' 'x86_64')
@@ -24,14 +24,14 @@ pkgver() {
 build() {
   cd "editorconfig-core-c"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DINSTALL_HTML_DOC=ON \
-    "../"
-  make
+    ./
+  make -C "_build"
 }
 
 package() {
