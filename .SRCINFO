@@ -1,7 +1,7 @@
 pkgbase = globalplatformpro
 	pkgdesc = Manage applets and keys on JavaCard-s like a pro
 	pkgver = 20.08.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/martinpaljak/GlobalPlatformPro
 	arch = any
 	license = LGPL3

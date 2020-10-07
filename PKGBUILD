@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=globalplatformpro
 pkgver=20.08.12
-pkgrel=3
+pkgrel=4
 pkgdesc="Manage applets and keys on JavaCard-s like a pro"
 arch=('any')
 url="https://github.com/martinpaljak/GlobalPlatformPro"
@@ -20,6 +20,8 @@ sha256sums=(
 prepare() {
 	cd $pkgname
 	# otherwise git complains about nested tags
+	git config user.email makepkg@example.com
+	git config user.name "makepkg"
 	git tag -f -a v${pkgver} -m "v${pkgver}" v${pkgver}^{}
 }
 
