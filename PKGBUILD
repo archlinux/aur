@@ -28,8 +28,8 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.14.84
-pkgrel=2
+pkgver=1.15.72
+pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
 url='https://www.brave.com/download'
@@ -42,8 +42,8 @@ optdepends=('cups: Printer support'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops'
             'sccache: For faster builds')
-chromium_base_ver="85"
-patchset="2"
+chromium_base_ver="86"
+patchset="6"
 patchset_name="chromium-${chromium_base_ver}-patchset-${patchset}"
 source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'brave-launcher'
@@ -65,7 +65,7 @@ done
 sha256sums=('SKIP'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
-            '2194fe22b9e5ccdc4a86da4e3572214f670c561486671f57c90636fd3cbfa43e'
+            '6f9ab35fa2c9e6e34ec454b829b7b87adaebc10cacecd1ac1daa67035ee44aba'
             'c5ebde144e4f31ce5e6a37aa6a6233489b6b40b03464b9d6077c777f5ad14ac1'
             'e495f2477091557b15bff2c99831e0a3db64ea2ebde7dcb22857a6469c944b9a'
             '0f041d655335cd2a4773ae7ca5e301a0ff12c6c53f57b7cf6651c268e0420a1c'
