@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gflags-git
-pkgver=2.2.1.r2.gaa2d0f7
-pkgrel=2
+pkgver=2.2.2.r40.ga386bd0
+pkgrel=1
 pkgdesc="C++ Library for commandline flag processing"
 arch=('i686' 'x86_64')
 url="https://github.com/gflags/gflags"
@@ -16,12 +16,6 @@ source=("git+https://github.com/gflags/gflags.git")
 sha256sums=('SKIP')
 
 
-prepare() {
-  cd "gflags"
-
-  mkdir -p "_build"
-}
-
 pkgver() {
   cd "gflags"
 
@@ -29,26 +23,29 @@ pkgver() {
 }
 
 build() {
-  cd "gflags/_build"
+  cd "gflags"
 
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" \
+  cmake \
+    -B "_build" \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
     -DREGISTER_INSTALL_PREFIX=OFF \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \
     -DBUILD_STATIC_LIBS=ON \
-    -DBUILD_TESTING=ON ../
-  make
+    -DBUILD_TESTING=ON \
+    ./
+  make -C "_build"
 }
 
 check() {
-  cd "gflags/_build"
+  cd "gflags"
 
-  make test
+  make -C "_build" test
 }
 
 package() {
-  cd "gflags/_build"
+  cd "gflags"
 
-  make DESTDIR="$pkgdir" install
-  install -D -m644 "../COPYING.txt" "$pkgdir/usr/share/licenses/gflags/COPYING.txt"
+  make -C "_build" DESTDIR="$pkgdir" install
+  install -D -m644 "COPYING.txt" -t "$pkgdir/usr/share/licenses/gflags"
 }
