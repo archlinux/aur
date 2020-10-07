@@ -5,6 +5,7 @@ pkgbase = dendrite
 	url = https://github.com/matrix-org/dendrite
 	arch = x86_64
 	license = Apache
+	makedepends = git
 	makedepends = go
 	source = git+https://github.com/matrix-org/dendrite.git#tag=v0.1.0rc2
 	sha256sums = SKIP

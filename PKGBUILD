@@ -7,7 +7,7 @@ pkgdesc="A second-generation Matrix homeserver written in Go"
 arch=('x86_64')
 url='https://github.com/matrix-org/dendrite'
 license=('Apache')
-makedepends=('go')
+makedepends=('git' 'go')
 source=("git+https://github.com/matrix-org/dendrite.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
