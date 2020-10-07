@@ -1,4 +1,4 @@
-# Maintainer: Nico <desoxhd@gmail.com>
+# Maintainer: Nico <d3sox at protonmail.com>
 pkgname=cadmus-deb
 pkgver=0.0.2
 pkgrel=1
