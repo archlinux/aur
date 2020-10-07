@@ -8,8 +8,8 @@ pkgbase = ali-bin
 	provides = ali
 	conflicts = ali
 	conflicts = ali-git
-	source = https://github.com/nakabonne/ali/releases/download/v0.3.3/ali_0.3.3_linux_amd64.tar.gz
-	sha256sums = aeefd3cae5d655fc45d0549f79e964698961ae58cf5f2ddc5fb3f11eee335f50
+	source_x86_64 = https://github.com/nakabonne/ali/releases/download/v0.3.3/ali_0.3.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = aeefd3cae5d655fc45d0549f79e964698961ae58cf5f2ddc5fb3f11eee335f50
 
 pkgname = ali-bin
 

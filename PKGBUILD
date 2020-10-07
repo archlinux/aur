@@ -10,8 +10,8 @@ url="https://github.com/nakabonne/ali"
 license=('MIT')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 provides=("${pkgname%-bin}")
-source=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('aeefd3cae5d655fc45d0549f79e964698961ae58cf5f2ddc5fb3f11eee335f50')
+source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
+sha256sums_x86_64=('aeefd3cae5d655fc45d0549f79e964698961ae58cf5f2ddc5fb3f11eee335f50')
 
 package() {
   install -Dm 755 "${pkgname%-bin}" -t "$pkgdir/usr/bin"
