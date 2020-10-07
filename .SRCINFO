@@ -1,15 +1,15 @@
 pkgbase = sherlock
-	pkgdesc = Plagiarism (similarity) checker for text files (essays, source-code, etc.)
-	pkgver = 1.0
+	pkgdesc = Find information about public IP address
+	pkgver = 1.0.2
 	pkgrel = 1
-	url = http://sydney.edu.au/engineering/it/~scilect/sherlock/
-	arch = i686
+	url = https://github.com/sergius02/Sherlock
 	arch = x86_64
-	license = unknown
-	source = http://sydney.edu.au/engineering/it/~scilect/sherlock/sherlock.c
-	source = http://sydney.edu.au/engineering/it/~scilect/sherlock/makefile
-	md5sums = 8a934f9ee832a9c8e771c9094eb22a61
-	md5sums = 7f8cb054713da2307f9c7a7a3346a575
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	source = Sherlock-1.0.2.tar.gz::https://github.com/sergius02/Sherlock/archive/1.0.2.tar.gz
+	sha256sums = 6327fbf3f684e18da695ed4c7a7b8a764dd8c895b3c263034d1248b4c0939325
 
 pkgname = sherlock
 

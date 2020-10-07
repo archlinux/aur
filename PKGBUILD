@@ -1,34 +1,26 @@
-# Maintainer: Erik Sonnleitner <es@delta-xi.net>>
-pkgname='sherlock'
-pkgver='1.0'
-pkgrel=2
-pkgdesc="Plagiarism (similarity) checker for text files (essays, source-code, etc.)"
-arch=('i686' 'x86_64')
-url="http://sydney.edu.au/engineering/it/~scilect/sherlock/"
-license=('unknown')
-depends=()
-makedepends=()
-source=("http://www.cs.usyd.edu.au/~scilect/sherlock/sherlock.c"
- "http://www.cs.usyd.edu.au/~scilect/sherlock/makefile")
-md5sums=('8a934f9ee832a9c8e771c9094eb22a61'
-         '7f8cb054713da2307f9c7a7a3346a575')
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-prepare() {
-	cd $srcdir
-	cp makefile makefile.patched
-	echo -e "install:\n\tmkdir -p \$(DESTDIR)/usr/bin\n\tinstall -m 0755 \$(PROGRAM) \$(DESTDIR)/usr/bin/" >> makefile.patched
-	sed -i '/^CFLAGS/ s/$/ -fPIC -fPIE/' makefile.patched
-}
+_pkgname='Sherlock'
+pkgname="${_pkgname,,}"
+pkgver=1.0.2
+pkgrel=1
+pkgdesc='Find information about public IP address'
+arch=('x86_64')
+url='https://github.com/sergius02/Sherlock'
+license=('GPL3')
+depends=('granite')
+makedepends=('meson' 'vala')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('6327fbf3f684e18da695ed4c7a7b8a764dd8c895b3c263034d1248b4c0939325')
 
 build() {
-	make -f makefile.patched DESTDIR="$pkgdir"
+  arch-meson "${_pkgname}-${pkgver}" build
+  meson compile -C build
 }
 
 package() {
-	make -f makefile.patched DESTDIR="$pkgdir" install
+  DESTDIR="${pkgdir}" meson install -C build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "${_pkgname}-${pkgver}/README.md"
 }
 
-#pkgver() {
-#	cd "$pkgname-$pkgver"
-#	printf "r%s" "$(bzr revno)"
-#}
+# vim: ts=2 sw=2 et:
