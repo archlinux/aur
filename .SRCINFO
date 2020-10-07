@@ -6,10 +6,6 @@ pkgbase = pacmanity-git
 	url = https://github.com/DerekTBrown/pacmanity
 	arch = x86_64
 	arch = i686
-	groups = ALPM
-	groups = Backup
-	groups = gist
-	groups = pacman
 	license = GPL
 	makedepends = git
 	depends = pacman>=5.0
