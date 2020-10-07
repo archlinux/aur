@@ -1,26 +1,20 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=chewing-editor-git
-pkgver=0.1.1.r37.g9f25170
-pkgrel=2
+pkgver=0.1.1.r39.gfdea9ac
+pkgrel=1
 pkgdesc="Cross platform chewing user phrase editor"
 arch=('i686' 'x86_64')
 url="http://chewing.im"
 license=('GPL')
-depends=('glibc' 'libchewing' 'qt5-base' 'hicolor-icon-theme')
-makedepends=('git' 'cmake' 'qt5-tools' 'help2man')
+depends=('glibc' 'hicolor-icon-theme' 'libchewing' 'qt5-base')
+makedepends=('git' 'cmake' 'help2man' 'qt5-tools')
 checkdepends=('valgrind')
 provides=('chewing-editor')
 conflicts=('chewing-editor')
 source=("git+https://github.com/chewing/chewing-editor.git")
 sha256sums=('SKIP')
 
-
-prepare() {
-  cd "chewing-editor"
-
-  mkdir -p "_build"
-}
 
 pkgver() {
   cd "chewing-editor"
@@ -29,20 +23,24 @@ pkgver() {
 }
 
 build() {
-  cd "chewing-editor/_build"
+  cd "chewing-editor"
 
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" DCMAKE_BUILD_TYPE=Release ../
-  make
+  cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    ./
+  make -C "_build"
 }
 
 check() {
-  cd "chewing-editor/_build"
+  cd "chewing-editor"
 
-  make test
+  make -C "_build" test
 }
 
 package() {
-  cd "chewing-editor/_build"
+  cd "chewing-editor"
 
-  make DESTDIR="$pkgdir" install
+  make -C "_build" DESTDIR="$pkgdir" install
 }
