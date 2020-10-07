@@ -3,7 +3,7 @@ pkgbase = kermit
 	pkgver = 3.0
 	pkgrel = 1
 	url = https://github.com/orhun/kermit
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	depends = gtk3>=3.18.9

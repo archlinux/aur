@@ -5,7 +5,7 @@ pkgname=kermit
 pkgdesc="A VTE-based, simple and froggy terminal emulator"
 pkgver=3.0
 pkgrel=1
-arch=('any')
+arch=('x86_64')
 url="https://github.com/orhun/kermit"
 license=('GPL3')
 depends=('gtk3>=3.18.9' 'vte3>=0.42.5')
