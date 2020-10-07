@@ -1,0 +1,30 @@
+# Maintainer: slapelachie <slapelachie@gmail.com>
+
+pkgname=kadai-git
+pkgver=v1.0.0rc1.r0.g510ba8c
+pkgrel=1
+pkgdesc="Simple theme manager for tiling window managers."
+arch=('i686' 'x86_64')
+url="https://github.com/slapelachie/kadai"
+license=('GPL2')
+depends=('python')
+makedepends=('git' 'sudo' 'python-pip')
+source=(git+https://github.com/slapelachie/kadai)
+md5sums=(SKIP)
+
+pkgver() {
+        cd "kadai"
+        git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+        cd "${srcdir}/kadai"
+
+        python setup.py build
+}
+
+package() {
+          cd "${srcdir}/kadai"
+
+          python setup.py install --optimize=1 --root="${pkgdir}"/
+}
