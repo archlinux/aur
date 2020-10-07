@@ -4,6 +4,6 @@ Version=1.0
 Name=Tasmotizer
 Comment=The full-featured flashing tool for Tasmota. With the great ESPtool from Espressif under the hood, and all required settings by default.
 Path=
-Exec=/usr/bin/pkexec /usr/bin/tasmotizer
-Terminal=true
+Exec=/usr/bin/pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY /usr/bin/tasmotizer
+Terminal=false
 Categories=Application;
