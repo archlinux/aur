@@ -37,11 +37,13 @@ makedepends=(
   'lua-penlight'
   'xmlto'
 )
-optdepends=('rlwrap: readline support for awesome-client'
-            'dex: autostart your desktop files'
-            'vicious: widgets for the Awesome window manager'
-            'xcb-util-errors: for pretty-printing of X11 errors'
-            )
+optdepends=(
+  'dex: autostart your desktop files'
+  'librsvg: for displaying SVG files without scaling artifacts'
+  'rlwrap: readline support for awesome-client'
+  'vicious: widgets for the Awesome window manager'
+  'xcb-util-errors: for pretty-printing of X11 errors'
+)
 provides=('notification-daemon' 'awesome')
 conflicts=('awesome')
 backup=('etc/xdg/awesome/rc.lua')
