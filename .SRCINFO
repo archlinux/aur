@@ -1,6 +1,6 @@
 pkgbase = glow
 	pkgdesc = Markdown renderer for the CLI
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/charmbracelet/glow
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = glow
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = https://github.com/charmbracelet/glow/archive/v1.0.0/glow-1.0.0.tar.gz
-	sha256sums = 15e1ec195a11ff36c5d322d193961a39eed22626e376638eb262ec29fb56eae3
+	source = https://github.com/charmbracelet/glow/archive/v1.0.1/glow-1.0.1.tar.gz
+	sha256sums = 78d163bea8e6c13fb343f1e3586e93e0392e5052c408a248cc2f0fcc7aa38618
 
 pkgname = glow
 
