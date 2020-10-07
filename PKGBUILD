@@ -1,4 +1,4 @@
-# Maintainer: Nico <desoxhd@gmail.com>
+# Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=whitesur-kde-theme-git
 _themeName=WhiteSur
 _gitname="$_themeName-kde"
