@@ -13,7 +13,11 @@ pkgbase = vapoursynth-plugin-vsmxnet-git
 	depends = mxnet
 	depends = opencv
 	source = git+https://github.com/kice/vs_mxnet
-	md5sums = SKIP
+	source = Makefile.custom
+	source = linux-compile.patch
+	sha256sums = SKIP
+	sha256sums = 8b3beb81026a70a6b3ade61e3a84d49627c5b7fa36247a1c86d8b0a4ee323fe0
+	sha256sums = ba5011e9e638d64db622b9080b3b2c423ce6941f9d248088e7aec10f0f6f7b59
 
 pkgname = vapoursynth-plugin-vsmxnet-git
 
