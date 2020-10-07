@@ -3,7 +3,7 @@
 
 pkgname=notorious-git
 pkgver=0.4.r0.g2483044
-pkgrel=1
+pkgrel=2
 pkgdesc='Keyboard centric notes'
 arch=('any')
 url='https://gitlab.gnome.org/gabmus/notorious'
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=(
     'gtk3'
     'python'
-    'libhandy1>=0.83'
+    'libhandy>=0.83'
     'python-gobject'
     'gobject-introspection'
     'gtksourceview4'
