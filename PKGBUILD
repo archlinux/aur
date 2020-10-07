@@ -1,5 +1,5 @@
-# Maintainer:  Marcin Wieczorek <marcin@marcin.co>
-# Co-maintainer: Pranav Jerry <libreinator@disroot.org>
+# Maintainer: Pranav Jerry <libreinator@disroot.org>
+# Contributor:  Marcin Wieczorek <marcin@marcin.co>
 # Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 # Contributor: Janne Haapsaari <haaja@iki.fi>
 # Contributor: maus25 <mirko378@gmail.com>
