@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=aom-git
-pkgver=r29275.g3aca301999
+pkgver=r31367.g7c8c591bb6
 pkgrel=1
 pkgdesc="An open, royalty-free video coding format designed for video transmissions over the Internet"
 arch=('i686' 'x86_64')
@@ -27,30 +27,29 @@ pkgver() {
 build() {
   cd "aom"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=1 \
-    ../
-  make
+    ./
+  make -C "_build"
 }
 
 check() {
-  cd "aom/_build"
+  cd "aom"
 
-  #make runtests
+  #make -C "_build" runtests
 }
 
 package() {
-  cd "aom/_build"
+  cd "aom"
 
-  make DESTDIR="$pkgdir" install
+  make -C "_build" DESTDIR="$pkgdir" install
 
   install -d "$pkgdir/usr/share/doc/$pkgname"
-  cp -R "docs/." "$pkgdir/usr/share/doc/$pkgname"
+  cp -R "_build/docs/." "$pkgdir/usr/share/doc/aom"
 
-  install -Dm644 "$srcdir/aom/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir/aom/PATENTS" "$pkgdir/usr/share/licenses/$pkgname/PATENTS"
+  install -Dm644 {LICENSE,PATENTS} -t "$pkgdir/usr/share/licenses/aom"
 }
