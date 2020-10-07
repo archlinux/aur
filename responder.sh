@@ -7,4 +7,4 @@ if [[ $EUID != 0 && !("$@" =~ (-h|--version)) ]]; then
 fi
 
 cd /usr/share/responder
-exec python2 Responder.py "$@"
+exec python Responder.py "$@"
