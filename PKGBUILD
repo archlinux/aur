@@ -8,7 +8,7 @@
 
 pkgname=filebot
 pkgver=4.9.2
-pkgrel=4
+pkgrel=5
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://www.filebot.net/"
@@ -35,7 +35,7 @@ source=("https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur
 
 #noextract=()
 md5sums=('8417980b971ad2099066216b815f50af'
-         'a49421b6cfd7b17834fc01990b93fbb7')
+         'e63065c98d9e55ceaf233fc8bc8d48f7')
 #validpgpkeys=()
 
 #prepare() {}
@@ -46,6 +46,7 @@ md5sums=('8417980b971ad2099066216b815f50af'
 
 package() {
   mkdir -p $pkgdir/usr/bin
+  mkdir -p $pkgdir/usr/share/$pkgname/openjfx
  
   install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
 
