@@ -1,7 +1,7 @@
 # Maintainer: dszryan
 pkgname=pacmanity-git
 pkgver=3.0.1
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="Keeps a list of installed packages in a Gist at your GitHub account"
 arch=('x86_64' 'i686')
@@ -24,17 +24,12 @@ package() {
   mkdir -p "$pkgdir/etc" "$pkgdir/usr/lib/pacmanity" "$pkgdir/usr/share/libalpm/hooks"
   install -m774 "$srcdir/${pkgname/-git/}/src/pacmanity.sh"   "$pkgdir/usr/lib/pacmanity/pacmanity.sh"
   install -m664 "$srcdir/${pkgname/-git/}/src/pacmanity.hook" "$pkgdir/usr/share/libalpm/hooks/zzz-pacmanity.hook"
-  if [ -f "/etc/pacmanity" ]; then # if file is present, assume it is maanged externally (via a build system)
-    GIST_ID=$(cat "/etc/pacmanity" | sed "s|GIST_ID=||g")
-  else
-    touch "$pkgdir/etc/pacmanity"
-  fi
 
   # run
   . $pkgdir/usr/lib/pacmanity/pacmanity.sh
-  if [[ -z "$GIST_ID" ]]; then
-    pacmanity_install
+  if [[ -f "/etc/pacmanity" ]]; then # if file is present, assume it is maanged externally (via a build system)
+    GIST_ID=$(sed "s|GIST_ID=||g" /etc/pacmanity) pacmanity_update
   else
-    pacmanity_update
+    pacmanity_install
   fi
 }
