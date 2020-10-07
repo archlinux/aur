@@ -1,0 +1,16 @@
+pkgbase = gojira
+	pkgdesc = Gojira is a multi-purpose tool to ease development and testing of Kong by using Docker containers
+	pkgver = v0.4.0
+	pkgrel = 1
+	url = https://github.com/Kong/gojira
+	arch = x86_64
+	license = Apache
+	depends = docker
+	depends = docker-compose
+	provides = gojira
+	conflicts = gojira
+	source = https://github.com/Kong/gojira/archive/v0.4.0.tar.gz
+	sha256sums = cf3f8d9f8a1e6e37664dd84bd6bd6fdc762ddfd345ca82f28d2ecc369e076473
+
+pkgname = gojira
+
