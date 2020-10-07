@@ -1,6 +1,6 @@
 # Contributor: Richard PALO <richard.palo@free.fr>
 pkgname=('python-sql' 'python2-sql')
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Library to write SQL queries"
 arch=('any')
@@ -8,7 +8,7 @@ url="http://python-sql.tryton.org/"
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://pypi.io/packages/source/p/python-sql/python-sql-$pkgver.tar.gz")
-sha256sums=('bfb73b325ac5e4bd7605ea07ad575f1499e6c93ada65b03dea6a430e3c080f38')
+sha256sums=('bde7cd0e83bf90d1d9683c97ec83c0a656353cb7ff3cd788553c34b8f8b8c302')
 
 prepare() {
   cp -a python-sql-$pkgver{,-py2}
