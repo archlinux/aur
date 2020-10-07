@@ -1,6 +1,6 @@
 pkgbase = googletest-git
 	pkgdesc = Google's C++ test framework
-	pkgver = 1.8.1.r244.gd5932506
+	pkgver = 1.10.0.r433.g1fb1bb23
 	pkgrel = 1
 	url = https://github.com/google/googletest
 	arch = i686

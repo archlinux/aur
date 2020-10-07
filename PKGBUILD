@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=googletest-git
-pkgver=1.8.1.r244.gd5932506
+pkgver=1.10.0.r433.g1fb1bb23
 pkgrel=1
 pkgdesc="Google's C++ test framework"
 arch=('i686' 'x86_64')
@@ -22,41 +22,29 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir"
+  cd "googletest"
 
-  mkdir -p "build" && cd "build"
   cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \
-    -Dgtest_build_tests=ON \
-    ../"googletest"
-  make
-
-  # For g{test,mock}-config
-  cd "$srcdir/googletest"
-  autoreconf -fi
-  ./configure --prefix="/usr"
-  make
+    ./
+  make -C "_build"
 }
 
 check() {
   cd "googletest"
 
-  #make -C "$srcdir/build" test
+  #make -C "_build" test
 }
 
 package() {
-  cd "$srcdir"
+  cd "googletest"
 
-  make -C "build" DESTDIR="$pkgdir" install
+  make -C "_build" DESTDIR="$pkgdir" install
+  install -Dm755 "googletest/scripts/gtest-config.in" -t "$pkgdir/usr/bin"
 
-  cd "$srcdir/googletest"
-  install -Dm755 "googletest/scripts/gtest-config" -t "$pkgdir/usr/bin"
-  install -Dm755 "googlemock/scripts/gmock-config" -t "$pkgdir/usr/bin"
-
-  install -Dm644 "googletest/m4/gtest.m4" -t "$pkgdir/usr/share/aclocal"
-
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/gtest/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/gtest"
 }
