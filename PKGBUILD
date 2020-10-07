@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hdf5-git
-pkgver=r36008.gf745476aa5
+pkgver=r38283.g66bcfd97a8
 pkgrel=1
 pkgdesc="General purpose library and file format for storing scientific data"
 arch=('i686' 'x86_64')
@@ -27,8 +27,8 @@ pkgver() {
 build() {
   cd "hdf5"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
@@ -36,14 +36,14 @@ build() {
     -DHDF5_ENABLE_Z_LIB_SUPPORT=ON \
     -DHDF5_ENABLE_SZIP_SUPPORT=ON \
     -DHDF5_ENABLE_SZIP_ENCODING=ON \
-    "../"
-  make
+    ./
+  make -C "_build"
 }
 
 check() {
   cd "hdf5"
 
-  make test
+  make -C "_build" test
 }
 
 package() {
