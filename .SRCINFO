@@ -1,14 +1,13 @@
 pkgbase = kadai-git
 	pkgdesc = Simple theme manager for tiling window managers.
-	pkgver = v1.0.0rc1.r0.g510ba8c
+	pkgver = 1.0.0rc1.r0.g510ba8c
 	pkgrel = 1
 	url = https://github.com/slapelachie/kadai
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = sudo
-	makedepends = python-pip
+	makedepends = python-setuptools
 	depends = python
 	source = git+https://github.com/slapelachie/kadai
 	md5sums = SKIP

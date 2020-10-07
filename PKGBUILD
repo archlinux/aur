@@ -1,14 +1,14 @@
 # Maintainer: slapelachie <slapelachie@gmail.com>
 
 pkgname=kadai-git
-pkgver=v1.0.0rc1.r0.g510ba8c
+pkgver=1.0.0rc1.r0.g510ba8c
 pkgrel=1
 pkgdesc="Simple theme manager for tiling window managers."
 arch=('i686' 'x86_64')
 url="https://github.com/slapelachie/kadai"
 license=('GPL2')
 depends=('python')
-makedepends=('git' 'sudo' 'python-pip')
+makedepends=('git' 'python-setuptools')
 source=(git+https://github.com/slapelachie/kadai)
 md5sums=(SKIP)
 
