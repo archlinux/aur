@@ -1,4 +1,4 @@
-# Maintainer: Nico <desoxhd@gmail.com>
+# Maintainer: Nico <d3sox at protonmail dot com>
 pkgname="whitesur-cursor-theme-git"
 _gitname=WhiteSur-cursors
 pkgver=r3.1ada17d
