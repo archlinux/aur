@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=expat-git
-pkgver=2.2.3.r39.g2cb09ae
+pkgver=2.2.10.r5.g0d9b0812
 pkgrel=1
 pkgdesc="A stream-oriented XML parser library written in C"
 arch=('i686' 'x86_64')
@@ -15,12 +15,6 @@ source=("git+https://github.com/libexpat/libexpat.git")
 sha256sums=('SKIP')
 
 
-prepare() {
-  cd "libexpat/expat"
-
-  mkdir -p "_build"
-}
-
 pkgver() {
   cd "libexpat/expat"
 
@@ -28,21 +22,25 @@ pkgver() {
 }
 
 build() {
-  cd "libexpat/expat/_build"
+  cd "libexpat/expat"
 
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" ../
-  make
+  cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    ./
+  make -C "_build"
 }
 
 check() {
-  cd "libexpat/expat/_build"
+  cd "libexpat/expat"
 
-  make test
+  make -C "_build" test
 }
 
 package() {
-  cd "libexpat/expat/_build"
+  cd "libexpat/expat"
 
-  make DESTDIR="$pkgdir" install
-  install -Dm644 "../COPYING" "$pkgdir/usr/share/licenses/expat/COPYING"
+  make -C "_build" DESTDIR="$pkgdir" install
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/expat"
 }
