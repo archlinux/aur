@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-openvino-git
-pkgver=2020.2.r564.g73ee68afb
+pkgver=2020.2.r1348.g8062f20c1
 pkgrel=1
 pkgdesc='Toolkit for developing applications and solutions that emulate human vision using Intel hardware (git version)'
 arch=('x86_64')
@@ -14,11 +14,11 @@ optdepends=('python: for using the Python API'
             'python-py-cpuinfo: for running the benchmark tool'
             'python-progress: for running the benchmark tool'
             'opencv: for running the benchmark tool')
-makedepends=('git' 'cmake' 'python' 'cython' 'opencv' 'aria2' 'wget')
+makedepends=('git' 'git-lfs' 'cmake' 'python' 'cython' 'opencv' 'aria2' 'wget')
 provides=('intel-openvino')
 conflicts=('intel-openvino')
 options=('!emptydirs')
-source=("git+https://github.com/openvinotoolkit/openvino.git"
+source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/opencv/ade.git'
         'git+https://github.com/openvinotoolkit/oneDNN.git'
         'googletest-openvinotoolkit'::'git+https://github.com/openvinotoolkit/googletest.git'
@@ -39,9 +39,14 @@ sha256sums=('SKIP'
             '093199ae759e8755166b9737562438866123eda9b1afbbef2f7107b3cf827be5'
             '502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0'
             'b58aa9ec526cb6c528c58fc8b1a1b93b425999d1de29f0dd15a8b680c9eb8c77'
-            '806a8fd32f45e03d88e22f171fc831a319a1ef78c9da6b0700ca8ef43cb7a94d')
+            'f7e6616ef15c6252dbad9f13b446ec36b675b29e5b93ab34f8b136d7218a4150')
+
+export GIT_LFS_SKIP_SMUDGE='1'
 
 prepare() {
+    git -C openvino lfs install --local
+    git -C openvino lfs pull "${source[0]/git+/}"
+    
     git -C openvino submodule init
     git -C openvino config --local submodule.inference-engine/thirdparty/ade.url "${srcdir}/ade"
     git -C openvino config --local submodule.inference-engine/thirdparty/mkl-dnn.url "${srcdir}/oneDNN"
