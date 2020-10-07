@@ -3,7 +3,7 @@
 _pkgname=powerline-go
 _binary=${_pkgname}-linux-amd64
 pkgname=${_pkgname}-bin
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="A beautiful and useful low-latency prompt for your shell, written in go"
 arch=("x86_64")
@@ -17,7 +17,7 @@ conflicts=("${_pkgname}")
 install=$pkgname.install
 source=("${_pkgname}-${pkgver}::https://github.com/justjanne/${_pkgname}/releases/download/v${pkgver}/${_binary}")
 
-sha256sums=('259002eca93a337fb609f326fe2cca15316d496803def33f5ffa26415e146e18')
+sha256sums=('bbeda5005ec657be4a6ab8fb4eee5a0b6b1711bed639bd918868c6d3de847b2d')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
