@@ -3,7 +3,7 @@
 _name=django-otp
 pkgbase=python-django-otp
 pkgname=('python-django-otp')
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A pluggable framework for adding two-factor authentication to Django using one-time passwords"
 url="https://github.com/django-otp/django-otp"
@@ -13,7 +13,7 @@ optdepends=('python-qrcode: For OTP setup with QR code')
 makedepends=('python-setuptools')
 depends=('python' 'python-django')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$pkgver.tar.gz")
-sha512sums=('75d3e3e76c650b6cce91dd4ec85aadd86f71999d28db6a2704868b2ec33da9631b6f3efa05048b7a62153fb554991b9460b40fa6ee0014ecb0945319e5267ef0')
+sha512sums=('d0b94641be27e905267ff0bc9670f358237c43d8ff7ef16fa135704ba1a98504222755111c82a3947c2f571ddf33e5d820b8bc5944ab692ff83d381566debb58')
 
 build() {
   cd "$srcdir/${_name}-${pkgver}"
