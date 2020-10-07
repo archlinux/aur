@@ -1,6 +1,6 @@
 pkgbase = tinyxml-git
 	pkgdesc = A simple, small, efficient, C++ XML parser
-	pkgver = 5.0.1.r78.g8b83b23
+	pkgver = 8.0.0.r42.g1aeb57d
 	pkgrel = 1
 	url = http://grinninglizard.com/tinyxml2/index.html
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = tinyxml-git
 	license = zlib
 	makedepends = git
 	makedepends = cmake
-	depends = glibc
+	depends = gcc-libs
 	provides = tinyxml
 	conflicts = tinyxml
 	options = staticlibs
