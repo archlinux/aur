@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libjpeg-turbo-git
-pkgver=2.0.4.r16.gae87a958
-pkgrel=2
+pkgver=2.0.5.r13.g89c88c25
+pkgrel=1
 pkgdesc="JPEG codec with SIMD accelerated compression and decompression"
 arch=('i686' 'x86_64')
 url="https://libjpeg-turbo.org/"
@@ -25,14 +25,14 @@ pkgver() {
 build() {
   cd "libjpeg-turbo"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
-    -DCMAKE_BUILD_TYPE=Release \
     -DWITH_JPEG8=1 \
-    ../
-  make
+    ./
+  make -C "_build"
 }
 
 check() {
