@@ -3,7 +3,7 @@ pkgbase = among-us-editor
 	pkgver = 1.51.1
 	pkgrel = 2
 	url = https://github.com/Vresod/Among-Us-Editor/
-	arch = x86_64
+	arch = any
 	license = MIT
 	depends = java-runtime>=8
 	depends = sh

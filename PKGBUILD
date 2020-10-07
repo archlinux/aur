@@ -7,7 +7,7 @@ pkgver=1.51.1
 pkgrel=2
 _jarfile="Among-Us-Editor-${pkgver}-linux.jar"
 pkgdesc='Character editor for Among Us'
-arch=('x86_64')
+arch=('any')
 license=('MIT')
 url='https://github.com/Vresod/Among-Us-Editor/'
 depends=('java-runtime>=8' 'sh' 'hicolor-icon-theme')
