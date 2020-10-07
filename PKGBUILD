@@ -5,7 +5,7 @@
 pkgname=imgur-screenshot
 pkgver=2.0.0
 pkgrel=1
-pkgdesc='The Imgur-Screenshot uploader for Linux & OS X from imgur.com/tools'
+pkgdesc='Take screenshot selection, upload to imgur + more cool things'
 arch=('any')
 url='https://github.com/jomo/imgur-screenshot'
 license=('MIT')
