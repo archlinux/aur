@@ -1,12 +1,14 @@
 pkgbase = usbimager-bin
 	pkgdesc = Minimal GUI application to write compressed disk images to USB drives
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/bztsrc/usbimager
 	arch = x86_64
 	license = MIT
 	depends = gtk3
 	depends = udisks2
+	provides = usbimager
+	conflicts = usbimager
 	source = usbimager-1.0.5.zip::https://gitlab.com/bztsrc/usbimager/-/raw/binaries/usbimager_1.0.5-x86_64-linux-gtk.zip
 	source = usbimager-1.0.5-manual.pdf::https://gitlab.com/bztsrc/usbimager/-/raw/master/usbimager-manual.pdf
 	source = usbimager-1.0.5-LICENSE::https://gitlab.com/bztsrc/usbimager/-/raw/master/LICENSE

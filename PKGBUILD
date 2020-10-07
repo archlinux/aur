@@ -3,15 +3,18 @@
 _pkgname='usbimager'
 pkgname="${_pkgname}-bin"
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal GUI application to write compressed disk images to USB drives'
 arch=('x86_64')
 url='https://gitlab.com/bztsrc/usbimager'
 license=('MIT')
 depends=('gtk3' 'udisks2')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.zip::${url}/-/raw/binaries/${_pkgname}_${pkgver}-x86_64-linux-gtk.zip"
         "${_pkgname}-${pkgver}-manual.pdf::${url}/-/raw/master/usbimager-manual.pdf"
         "${_pkgname}-${pkgver}-LICENSE::${url}/-/raw/master/LICENSE")
+# NB: updpkgsums: usbimager-manual, LICENSE == SKIP
 sha256sums=('36ccfa7942aeba4486cb3234e25ce04154fafbde619195926dd1dec97442d31d'
             'SKIP'
             'SKIP')
