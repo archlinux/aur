@@ -1,6 +1,6 @@
 pkgbase = whatip-git
 	pkgdesc = Info on your IP
-	pkgver = 0.2.r0.g1274d41
+	pkgver = 0.2.r4.gdeec155
 	pkgrel = 1
 	url = https://gitlab.gnome.org/gabmus/whatip
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = whatip-git
 	makedepends = meson
 	depends = gtk3
 	depends = python
-	depends = libhandy
+	depends = libhandy>=0.83
 	depends = python-requests
 	depends = python-netaddr
 	depends = iproute2
