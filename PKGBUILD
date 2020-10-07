@@ -2,24 +2,27 @@
 
 pkgname=sakura-frp
 pkgver=0.34.1_sakura_1
-pkgrel=3
+pkgrel=4
 pkgdesc="Sakura Frp"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h' 'arm')
 url="https://www.natfrp.com/"
 license=('custom')
 provides=('sakura-frpc' 'natfrp')
-source=("${pkgname}c.service"
+source=(LICENSE::'https://www.natfrp.com/policy/'
+        "${pkgname}c.service"
         "${pkgname}c@.service"
         "${pkgname}c-f@.service")
 backup=("etc/${pkgname}/frpc.ini")
-source=(LICENSE::'https://www.natfrp.com/policy/')
 source_x86_64=(${pkgname}-${pkgver}-x86_64::"https://getfrp.sh/d/frpc_linux_amd64")
 source_i686=(${pkgname}-${pkgver}-i686::"https://getfrp.sh/d/frpc_linux_386")
 source_arm=(${pkgname}-${pkgver}-arm::"https://getfrp.sh/d/frpc_linux_arm")
 source_armv7h=(${pkgname}-${pkgver}-arm::"https://getfrp.sh/d/frpc_linux_arm")
 source_armv6h=(${pkgname}-${pkgver}-arm::"https://getfrp.sh/d/frpc_linux_arm")
 source_aarch64=(${pkgname}-${pkgver}-aarch64::"https://getfrp.sh/d/frpc_linux_arm64")
-md5sums=('c3675dc7b62fa2493991798745068042')
+md5sums=('SKIP'
+         '1407d25307cd98902f60db064f2e2bc0'
+         'a87e9ee64c87ab609d1e978adc6446e0'
+         'd3f3b3c8368fdc692a8a7d71bf9ae5c8')
 md5sums_x86_64=('51039909f9e3c1478365b07788eaa0c3')
 md5sums_i686=('9062043d7a61aee84b38315f14903b72')
 md5sums_aarch64=('bad9388ed72ce3b9117cd81d63e8382b')
