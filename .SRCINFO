@@ -1,7 +1,7 @@
 pkgbase = openjpeg-git
 	pkgdesc = An open-source JPEG 2000 codec written in C language
 	pkgver = 2.3.0.r2.gacd91508
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/uclouvain/openjpeg
 	arch = i686
 	arch = x86_64

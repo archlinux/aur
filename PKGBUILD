@@ -2,7 +2,7 @@
 
 pkgname=openjpeg-git
 pkgver=2.3.0.r2.gacd91508
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source JPEG 2000 codec written in C language"
 arch=('i686' 'x86_64')
 url="https://github.com/uclouvain/openjpeg"
@@ -19,8 +19,6 @@ sha256sums=('SKIP')
 prepare() {
   cd "openjpeg"
 
-  mkdir -p "_build"
-
   # Install doxygen docs to the right directory
   sed -i 's:DESTINATION\ share/doc:DESTINATION\ share/doc/openjpeg2:' "doc/CMakeLists.txt"
 }
@@ -32,17 +30,22 @@ pkgver() {
 }
 
 build() {
-  cd "openjpeg/_build"
+  cd "openjpeg"
 
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release -DBUILD_DOC=on ../
-  make
+  cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DBUILD_DOC=ON \
+    ./
+  make -C "_build"
 }
 
 package() {
-  cd "openjpeg/_build"
+  cd "openjpeg"
 
-  make DESTDIR="$pkgdir" install
+  make -C "_build" DESTDIR="$pkgdir" install
 
-  install -Dm644 "../LICENSE" "$pkgdir/usr/share/licenses/openjpeg2/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/openjpeg2"
   rm -r "$pkgdir/usr/share/doc"/openjpeg-2.*
 }
