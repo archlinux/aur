@@ -27,6 +27,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   export CARGO_HOME="${srcdir}/${pkgname}/CARGO"
   export CFLAGS="-fcommon -fPIE"
+  export RUSTUP_TOOLCHAIN=stable
   cargo build --release
 }
 
