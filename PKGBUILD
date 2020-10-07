@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=qbittorrent-nox-git
-pkgver=4.0.3.r372.g55b9b8fc9
+pkgver=4.2.5.r666.gbfef40341
 pkgrel=1
 pkgdesc="A bittorrent client programmed in C++ / Qt that uses libtorrent-rasterbar (w/o GUI)"
 arch=('i686' 'x86_64')
@@ -28,15 +28,16 @@ build() {
   cd "qBittorrent"
 
   ./bootstrap.sh
-
-  mkdir -p "_build" && cd "_build"
-  ../configure --prefix="/usr" --disable-gui --enable-systemd
+  ./configure \
+    --prefix="/usr" \
+    --disable-gui \
+    --enable-systemd
   make
 }
 
 package() {
   cd "qBittorrent"
 
-  make -C "_build" INSTALL_ROOT="$pkgdir" install
-  install -Dm644 "COPYING" "$pkgdir/usr/share/licenses/qbittorrent-nox/COPYING"
+  make INSTALL_ROOT="$pkgdir" install
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/qbittorrent-nox"
 }
