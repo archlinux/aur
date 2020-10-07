@@ -1,7 +1,7 @@
 pkgbase = lapack-git
 	pkgdesc = Linear Algebra PACKage
-	pkgver = 3.8.0.r70.g9fb29d8e
-	pkgrel = 2
+	pkgver = 3.9.0.r106.g122506cd8
+	pkgrel = 1
 	url = https://www.netlib.org/lapack/
 	arch = i686
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgname = lapack-git
 pkgname = blas-git
 	pkgdesc = Basic linear algebra subprograms
 	url = https://www.netlib.org/blas/
+	depends = gcc-libs
 	provides = cblas
 	provides = blas
 	conflicts = cblas

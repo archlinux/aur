@@ -2,8 +2,8 @@
 
 pkgbase=lapack-git
 pkgname=('lapack-git' 'blas-git' 'lapacke-git')
-pkgver=3.8.0.r70.g9fb29d8e
-pkgrel=2
+pkgver=3.9.0.r106.g122506cd8
+pkgrel=1
 pkgdesc="Linear Algebra PACKage"
 arch=('i686' 'x86_64')
 url="https://www.netlib.org/lapack/"
@@ -17,8 +17,6 @@ pkgver() {
   cd "lapack"
 
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-
-  mkdir -p "$srcdir/_build"
 }
 
 build() {
@@ -26,18 +24,18 @@ build() {
 
   doxygen "DOCS/Doxyfile_man"
 
-  cd "$srcdir/_build"
   cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_SHARED_LIBS=ON \
     -DCMAKE_Fortran_COMPILER=gfortran \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_DEPRECATED=ON \
     -DCBLAS=ON \
     -DLAPACKE_WITH_TMG=ON \
-    -DBUILD_DEPRECATED=ON \
-    ../lapack
-  make
+    ./
+  make -C "_build"
 }
 
 package_lapack-git() {
@@ -45,8 +43,8 @@ package_lapack-git() {
   provides=('lapack' 'lapack-manpages')
   conflicts=('lapack' 'lapack-manpages')
 
-  cd "$srcdir/_build"
-  make DESTDIR="$pkgdir" install
+  cd "lapack"
+  make -C "_build" DESTDIR="$pkgdir" install
 
   rm -r "$pkgdir/usr/include"
   rm -r "$pkgdir/usr/lib"/{libblas.*,libcblas.*,liblapacke.*}
@@ -54,24 +52,23 @@ package_lapack-git() {
   rm -r "$pkgdir/usr/lib/pkgconfig"/{blas.*,cblas.*,lapacke.*}
 
   mkdir -p "$pkgdir/usr/share"
-  cp -r "$srcdir/lapack/DOCS/man" "$pkgdir/usr/share"
+  cp -r "DOCS/man" "$pkgdir/usr/share"
 
-  install -Dm644 "$srcdir/lapack/LICENSE" "$pkgdir/usr/share/licenses/lapack/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/lapack"
 }
 
 package_blas-git() {
   pkgdesc="Basic linear algebra subprograms"
   url="https://www.netlib.org/blas/"
+  depends=('gcc-libs')
   provides=('cblas' 'blas')
   conflicts=('cblas' 'blas')
 
-  cd "$srcdir/_build/BLAS"
-  make DESTDIR="$pkgdir" install
+  cd "lapack"
 
-  cd "$srcdir/_build/CBLAS"
-  make DESTDIR="$pkgdir" install
-
-  install -Dm644 "$srcdir/lapack/LICENSE" "$pkgdir/usr/share/licenses/blas/LICENSE"
+  make -C "_build/BLAS" DESTDIR="$pkgdir" install
+  make -C "_build/CBLAS" DESTDIR="$pkgdir" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/blas"
 }
 
 package_lapacke-git() {
@@ -81,8 +78,8 @@ package_lapacke-git() {
   provides=('lapacke')
   conflicts=('lapacke')
 
-  cd "$srcdir/_build/LAPACKE"
-  make DESTDIR="$pkgdir" install
+  cd "lapack"
 
-  install -Dm644 "$srcdir/lapack/LICENSE" "$pkgdir/usr/share/licenses/lapacke/LICENSE"
+  make -C "_build/LAPACKE"  DESTDIR="$pkgdir" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/lapacke"
 }
