@@ -392,3 +392,12 @@
 	Fix path escaping on Windows.
 	Fix issue when fastdirty is off
 	Syntax highlighting and linting fixes
+
+2.0.8 (6 Oct 2020)
+  Terminfo fixes
+	Mouse mode in alacritty and konsole fixed.
+	Modifier key detection for dynamic terminals fixed.
+	Background color in terminal emulator fixed.
+  Syntax highlighting improvements
+	C++, Crystal, Groovy, Coffeescript.
+	Parentheses no longer highlighted in default theme (makes the colors less jarring and more consistent with other themes).

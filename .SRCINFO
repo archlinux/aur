@@ -1,21 +1,24 @@
 pkgbase = micro-bin
 	pkgdesc = A modern and intuitive terminal-based text editor
-	pkgver = 2.0.7
-	pkgrel = 2
+	pkgver = 2.0.8
+	pkgrel = 1
 	url = https://github.com/zyedidia/micro
 	changelog = CHANGELOG
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = MIT
 	optdepends = xclip: Required for copying/pasting text
 	provides = micro
 	conflicts = micro-git
 	conflicts = micro
 	conflicts = micro-nightly-bin
-	source_x86_64 = https://github.com/zyedidia/micro/releases/download/v2.0.7/micro-2.0.7-linux64.tar.gz
-	sha256sums_x86_64 = 843b8ffa6e10cb0fb67bae5047af496a0c13d3ac678df0fb44b5ec00eca62615
-	source_i686 = https://github.com/zyedidia/micro/releases/download/v2.0.7/micro-2.0.7-linux32.tar.gz
-	sha256sums_i686 = a093c18ff48c5cf9103e546e43efdc6c31375ee7028b88f434686c7e1d9aaeb2
+	source_x86_64 = https://github.com/zyedidia/micro/releases/download/v2.0.8/micro-2.0.8-linux64.tar.gz
+	sha256sums_x86_64 = 7a705a60fe5da8fdfbb1423b560ae120a59af963ec73e3548ef97a6a688cd7cf
+	source_i686 = https://github.com/zyedidia/micro/releases/download/v2.0.8/micro-2.0.8-linux32.tar.gz
+	sha256sums_i686 = 7b81d1f54ba708295c86e363fa6350e30109249e7d144d3a7d3b5cfa7b861dcc
+	source_aarch64 = https://github.com/zyedidia/micro/releases/download/v2.0.8/micro-2.0.8-linux-arm64.tar.gz
+	sha256sums_aarch64 = c39f49432e4e93c46a21c20bfc250fa2cf7a4dfb01af6d3684b3c45f0ed7c240
 
 pkgname = micro-bin
 

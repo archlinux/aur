@@ -4,10 +4,10 @@
 # Previous Maintainer (27.04.2016 - 15.10.2017): Youngbin Han <sukso96100 at gmail com>
 # Previous Contributor: blainester <theblainestory at gmail com>
 pkgname=micro-bin
-pkgver=2.0.7
-pkgrel=2
+pkgver=2.0.8
+pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/zyedidia/micro"
 license=('MIT')
 optdepends=('xclip: Required for copying/pasting text')
@@ -17,9 +17,11 @@ changelog="CHANGELOG"
 
 source_x86_64=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux64.tar.gz")
 source_i686=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux32.tar.gz")
+source_aarch64=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux-arm64.tar.gz")
 
-sha256sums_x86_64=('843b8ffa6e10cb0fb67bae5047af496a0c13d3ac678df0fb44b5ec00eca62615')
-sha256sums_i686=('a093c18ff48c5cf9103e546e43efdc6c31375ee7028b88f434686c7e1d9aaeb2')
+sha256sums_x86_64=('7a705a60fe5da8fdfbb1423b560ae120a59af963ec73e3548ef97a6a688cd7cf')
+sha256sums_i686=('7b81d1f54ba708295c86e363fa6350e30109249e7d144d3a7d3b5cfa7b861dcc')
+sha256sums_aarch64=('c39f49432e4e93c46a21c20bfc250fa2cf7a4dfb01af6d3684b3c45f0ed7c240')
 
 package(){
  install -Dm755 "${srcdir}/${pkgname%-*}-${pkgver}/${pkgname%-*}" "${pkgdir}/usr/bin/${pkgname%-*}"
