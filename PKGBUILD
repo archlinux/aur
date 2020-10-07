@@ -1,7 +1,7 @@
 # Maintainer: Thulinma <jaron@vietors.com>
 pkgname=mistserver-git
 pkgdesc="The MistServer media server toolkit, open source edition, unstable development branch"
-pkgver=2.14.2
+pkgver=2.18
 pkgver() {
   cd "$srcdir/$pkgname"
   git describe --tags
@@ -15,6 +15,7 @@ source=("mistserver-git::git+http://github.com/DDVTECH/mistserver.git#branch=dev
 md5sums=('SKIP')
 build() {
   cd "$srcdir/$pkgname"
+  mkdir -p generated
   cmake . -DDEBUG=3 -DRELEASE="Generic_$CARCH" -DBUILD_SHARED_LIBS=true -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
   make
 }
