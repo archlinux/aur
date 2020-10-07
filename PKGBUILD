@@ -1,4 +1,4 @@
-# Maintainer: Nico <desoxhd@gmail.com>
+# Maintainer: Nico <d3sox at protonmail dot com>
 # Contributor: Giusy Margarita <kurmikon at libero dot it>
 
 pkgname=korla-icon-theme
