@@ -5,7 +5,7 @@ _name=${pkgname#python-}
 
 pkgver=0.1.7
 pkgrel=1
-pkgdesc=""
+pkgdesc="React component extension for Jupyter Notebooks"
 arch=('any')
 url="https://github.com/timbr-io/jupyter-react"
 license=('MIT')
