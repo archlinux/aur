@@ -1,0 +1,36 @@
+pkgbase = wpewebkit-gl-x86_64
+	pkgdesc = Web content engine library optimized for embedded devices (gl version)
+	pkgver = 2.30.1
+	pkgrel = 1
+	url = https://wpewebkit.org
+	arch = armv7l
+	arch = armv7h
+	groups = wpe
+	license = custom
+	depends = cairo
+	depends = libxslt
+	depends = gst-plugins-base-libs
+	depends = libepoxy
+	depends = libsoup
+	depends = libwebp
+	depends = harfbuzz-icu
+	depends = woff2
+	depends = openjpeg2
+	depends = libseccomp
+	depends = bubblewrap
+	depends = xdg-dbus-proxy
+	depends = geoclue
+	depends = at-spi2-atk
+	depends = libwpe
+	provides = wpewebkit
+	provides = wpewebkit-git
+	conflicts = wpewebkit
+	conflicts = wpewebkit-git
+	source = https://webreflection.github.io/aur/wpewebkit-gl-x86_64-2.30.1.tar.gz
+	md5sums = 7f657578b2453fee78053aa282a4819f
+	sha1sums = 6a65443df4ca476ae73f0abb400ce362aaf6dcb3
+	sha256sums = e1d0a96ca134aee65dd0d381f22c299b6e2dd4d0230043d923215664d974f14b
+	sha512sums = ab1c7e4476a711460c494d5c60fbba5fd4589dd4833a79f38749dd7bafd2f5d18d5bd8c450cc035f4050d3b908daf06bd5378c6226fd832d44947d4403b07b6c
+
+pkgname = wpewebkit-gl-x86_64
+
