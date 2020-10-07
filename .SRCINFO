@@ -1,4 +1,4 @@
-pkgbase = gedit-plugin-discord-rpc
+pkgbase = gedit-plugin-discord-rpc-git
 	pkgdesc = A Discord RPC plugin for gedit.
 	pkgver = 4.72dca08
 	pkgrel = 1
@@ -11,5 +11,5 @@ pkgbase = gedit-plugin-discord-rpc
 	source = gedit-plugin-discord-rpc::git+https://github.com/M4xi1m3/gedit-discord-rpc
 	md5sums = SKIP
 
-pkgname = gedit-plugin-discord-rpc
+pkgname = gedit-plugin-discord-rpc-git
 
