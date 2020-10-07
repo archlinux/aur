@@ -7,6 +7,7 @@ pkgbase = async-profiler-git
 	groups = jvm-profiling-tools
 	license = Apache
 	depends = java-environment
+	depends = git
 	provides = async-profiler
 	conflicts = async-profiler
 	source = git+https://github.com/jvm-profiling-tools/async-profiler

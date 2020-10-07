@@ -11,7 +11,7 @@ license=('Apache')
 provides=('async-profiler')
 conflicts=('async-profiler')
 groups=('jvm-profiling-tools')
-depends=('java-environment')
+depends=('java-environment' 'git')
 source=("git+$url")
 sha256sums=('SKIP')
 
