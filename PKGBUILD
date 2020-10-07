@@ -1,4 +1,4 @@
-#Maintainer: vresod
+#Maintainer: vresod, rizxt (faintwary)
 pkgname=novix-devel-meta
 pkgver=1.0.3
 pkgrel=1
