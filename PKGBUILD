@@ -10,7 +10,7 @@ license=('GPL')
 groups=('ALPM' 'Backup' 'gist' 'pacman')
 depends=('pacman>=5.0' 'gist>=4.5.0')
 makedepends=('git')
-conflicts=('pacminity')
+conflicts=('pacmanity')
 source=("$pkgname::git+https://github.com/DerekTBrown/${pkgname/-git/}.git#branch=master")
 sha256sums=('SKIP')
 
