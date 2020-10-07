@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-community-edition-jre
 	pkgdesc = Intellij Idea Community Edition with bundled JRE
-	pkgver = 2020.2.2
+	pkgver = 2020.2.3
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = intellij-idea-community-edition-jre
 	depends = libdbusmenu-glib
 	provides = jetbrains-idea-ce
 	conflicts = jetbrains-idea-ce
-	source = https://download.jetbrains.com/idea/ideaIC-2020.2.2.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIC-2020.2.3.tar.gz
 	source = jetbrains-idea-ce.desktop
-	sha256sums = e6c9e868da73a3e9936cd19d2bc99119a3cec8b622226a78583fc3ed0e4e764d
+	sha256sums = 5f2a407cc213a9c9db5534ffb7da3d501331a491dd1965b356e3067afee45a24
 	sha256sums = 91aa66e16e428d595c9f76a02f5a6d54d6fb0b1d1ccac4159cfb7070cff26a4b
 
 pkgname = intellij-idea-community-edition-jre
