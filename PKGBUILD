@@ -2,7 +2,7 @@
 
 pkgname=touchegg
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multitouch gesture recognizer"
 arch=('i686' 'x86_64')
 url="https://github.com/JoseExposito/touchegg/"
@@ -15,7 +15,7 @@ build() {
 	cmake -B build -S "$pkgname-$pkgver" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-Wno-dev
-	make -j$(nproc) -c build
+	make -C build
 }
 
 package() {
