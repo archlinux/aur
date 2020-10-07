@@ -18,3 +18,4 @@ pkg/
 *.deb
 *.pkg.tar.xz.sig
 CC0-1.0
+*.zst

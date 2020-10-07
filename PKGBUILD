@@ -11,7 +11,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=('nquake')
 pkgver=2.5
-pkgrel=11
+pkgrel=12
 pkgdesc="The easiest, quickest, and most popular QuakeWorld client."
 url="http://nquake.com/"
 license=('GPL2' 'custom')
@@ -47,9 +47,9 @@ source=("${_nQ_MIRROR}/gpl.zip"
 
 noextract=('qsw106.zip')
 
-sha512sums=('9fcd4c6e82eb3bf9581c699065d528f457092e7b2c973ffee86bdf4b4026cb6beea50825cd7aac226c85d3db792aa2f60cd3f43398f2661754d30f2da57f2a11'  # gpl.zip
+sha512sums=('d37d7d869a01bd8eb71fb6815e1b376df9ccd471535233d05468a09654cf18cadc146cf956fb0187a57a478b1dc6655152f59f0c309a79cdef4edd803c5bae63'  # gpl.zip
             'c3320070dd7de396b9e82afc7a9f53b16a85fab5cc77cb7213ea4fbc7b97653aa0526754f97caba32e3f8f7b90379815b7e6ec8ab9a4e9aab9ca789080892a88'  # non-gpl.zip
-            '1683b0f7525be947f90ee0bfd530eacdcf1349e8f6e86cd771598ce25598aef4a11f8df0cf84692b90ccea4fea5613b5676c9136fe7336f2a66d0e172f9fd306'  # linux.zip
+            '32c9f96304befff3c16b3bd09f5cf7e6343516e9164599982ce4678a4cb49e15093bdd211cc16ecece98189dade93925f76623047162507706405d6e2b32d9fd'  # linux.zip
             '693379acc3c0204b810ab31aeaaedbb6d8659fd2140e3874f463bde3af5009a161d76b1dbd2f970e151ebae1f323848a937b8209cf2172c6251578edcad1753b'  # addon-textures.zip
             '0e6689ccb2c4c181da268b7728a73ee718eabaae463a4f97174dcaf41388464ae8cdb8d719e263d0d2cc4b4a975105950bae852074adb97914bdd1e3bad3e85e'  # addon-clanarena.zip
             'a15cbd4ccf2a3d87e0ec9f6f6f4546e2a68a0f03a516bac47d0965bc6affaf902669db0824619634dc19698698d40ef72325da33ea2c78437c45bd19bd2c8138'  # addon-fortress.zip
