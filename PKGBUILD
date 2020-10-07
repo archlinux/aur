@@ -1,4 +1,4 @@
-# Maintainer: Nico <desoxhd@gmail.com>
+# Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=uxplay-git
 _gitname=UxPlay
 pkgver=r17.6a473d6
