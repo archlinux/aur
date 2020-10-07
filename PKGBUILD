@@ -1,7 +1,7 @@
 # Maintainer: Steven Cook <visage@deadhexagon.com>
 # Contributor: Adam Eberlin <ae@adameberlin.com>
 pkgname=anope
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="A set of IRC Services designed for flexibility and ease of use"
 arch=('i686' 'x86_64')
@@ -14,16 +14,16 @@ optdepends=(
 )
 install="anope.install"
 source=(
-    "https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-source.tar.gz"
+    "https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
     "anope.install"
     "anope.service"
     "anope.tmpfiles"
 )
-sha256sums=(
-    '4507d6c127b3bc5a95414217049e01e2b605b1f817d5519b8e5d03acebc5dbab'
-    '310487f9962d9c6f5b968453b7954be40b1c4bf8f591d8ac550e36e6eb80d846'
-    '93d656d74d1ab405e1484eb625c7e45843cc2915c492d0c76da890ff55c06ce0'
-    'c0e4605b6e92b93f40d3f33a9fe39777c5bc8a0863a3b07c282f7331f5bacc53'
+sha512sums=(
+    'ddb42a453d72327d2256e5963f720bb310a7524c01661a0a136f18c539813649889e9fb764077c86e0854de8e3da095ebabb1ba53a0538d679bd42ea6403823b'
+    '81bc1bbb504fa021417312a72799b04682e54dd0dd1e070a035d62fa66ac7fa8ee3cb1c8ffe3746c4569e7716d591cfa14e9631571a74a4b8224fae18fd50bef'
+    '6535e075c27a124e3aeb45f1496194a70130da88e2eae29a80ac3d33754ce4020b405438681690b3df032b386bccbb3f65983ad84f85fe76f3562e744ea55b52'
+    '5c58a55c7e5974dec516f43eb960c9cdcadb68c92ceeaed7d96c82c180f8073d76d7491575331bca46f4714b19cdb188fe1bd056efb3391e3b3113c076407d21'
 )
 
 prepare() {
@@ -32,7 +32,7 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}-source"
+    cd "${srcdir}/${pkgname}-${pkgver}"
 
     # Create a non-interactive config
     cat << EOF > config.cache
@@ -52,7 +52,7 @@ EOF
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}-source/build"
+    cd "${srcdir}/${pkgname}-${pkgver}/build"
 
     make install
 
