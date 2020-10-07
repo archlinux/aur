@@ -1,4 +1,4 @@
-pkgbase = mdr-bin
+pkgbase = mdr
 	pkgdesc = A standalone Markdown renderer for the terminal.
 	pkgver = 0.2.5
 	pkgrel = 3
@@ -19,5 +19,5 @@ pkgbase = mdr-bin
 	source_arm = mdr::https://github.com/MichaelMure/mdr/releases/download/v0.2.5/mdr_linux_arm
 	sha512sums_arm = 55ec31bb830a325eeddb6408cf0a0823d4f2853601936c302c1ab38f14b03e9b579943a8ee7d37ac6e4edd6c075b61ddfe7b6f9dff2c2b585be21f3a97131986
 
-pkgname = mdr-bin
+pkgname = mdr
 

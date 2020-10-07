@@ -1,6 +1,6 @@
 # Maintainer Amin Wang <lagunawang@gmail.com>
 # Contributor: Luis Martinez <xenotrumpet1997 at gmail dot com>
-pkgname=mdr-bin
+pkgname=mdr
 _pkgname=mdr
 pkgver=0.2.5
 pkgrel=3
