@@ -1,7 +1,7 @@
 pkgbase = mistserver
 	pkgdesc = The MistServer media server toolkit, open source edition
 	pkgver = 2.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mistserver.org
 	arch = i686
 	arch = x86_64
