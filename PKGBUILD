@@ -6,7 +6,7 @@ _pkgname=obs-studio
 pkgname=$_pkgname-wayland
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-pkgver=26.0.0
+pkgver=26.0.2
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording (with wayland patches)"
 arch=('x86_64')
@@ -25,6 +25,7 @@ optdepends=('libfdk-aac: FDK AAC codec support'
             'wlrobs-hg: screen capture on wlroots compositors')
 source=(
   $_pkgname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz
+  fix_python_binary_loading.patch
   0001-deps-glad-Add-EGL.patch
   0002-libobs-opengl-Rename-gl-x11.c-to-gl-x11-glx.c.patch
   0003-libobs-opengl-Factor-out-GLX-winsys.patch
@@ -51,7 +52,8 @@ source=(
   0024-deps-glad-Add-DMA-BUF-EGL-extensions.patch
   0025-libobs-opengl-Implement-DMA-BUF-importing-on-EGL-ren.patch
 )
-sha512sums=('54a8eadf7ded1d309987a5f677ea7513b96cf95b071fd2321c3e712097d872a5f724edf9aba7cfa9452884b79d230fd65d512647c8583ca71691894277ca89b1'
+sha512sums=('e93c312543f38702aee1cf2ed229e0a5faf876340f418d792353126c42d913fd70ebefce830b3ffa5ee6a5d42d4c84fa35673a436b7b7de5ce14becdaa2d7819'
+            '93ad704cef425073b417d1ed95e076f688a6e45cdf589472c65e437d77297303f31dd8f15c7d5e30f83276a6396b732dfb5a695db9c773911aaa0423c5262177'
             '456973a51bbb3e84974525de757bc3c88c67faf0c36366a6787b72b30ba978491bfb1161d5364cf7b0174ced1fe8b04c0e2e4c13c6f88c79dbeb151ce24eb38f'
             '231b518b34951924ba0f7da56379036cdf2d08e9259365e67f617ed458e21c4a2d5193e25200d6270bf74f462a9916085a3f3aa9f4edd35c8e501922bef6f1b6'
             '3cdb29a4d3b639769758e8ea1d94a36baa89fec5e93110d1256ff275d83267c10f09888e6e29639d299e8322256d80ba19072519ae080bd461bc8cc2171e0405'
