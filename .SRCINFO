@@ -1,11 +1,12 @@
 pkgbase = git-fuzzy-git
 	pkgdesc = interactive git with the help of fzf
-	pkgver = 0.r27
-	pkgrel = 3
+	pkgver = 0.r34
+	pkgrel = 1
 	url = https://github.com/bigH/git-fuzzy
 	arch = any
 	license = MIT
-	makedepends = git
+	depends = bc
+	depends = git
 	depends = fzf
 	optdepends = git-delta: improved diff highlighting
 	optdepends = diff-so-fancy: improved diff highlighting

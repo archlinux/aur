@@ -2,13 +2,12 @@
 
 _pkgname=git-fuzzy
 pkgname=$_pkgname-git
-pkgver=0.r27
-pkgrel=3
+pkgver=0.r34
+pkgrel=1
 pkgdesc="interactive git with the help of fzf"
 license=('MIT')
 arch=('any')
-makedepends=('git')
-depends=('fzf')
+depends=('bc' 'git' 'fzf')
 optdepends=('git-delta: improved diff highlighting'
             'diff-so-fancy: improved diff highlighting'
             'bat: syntax highlighting'
