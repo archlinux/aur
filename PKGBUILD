@@ -1,7 +1,7 @@
 # Maintainer: dszryan
 pkgname=pacmanity-git
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Keeps a list of installed packages in a Gist at your GitHub account"
 arch=('x86_64' 'i686')
@@ -27,7 +27,10 @@ package() {
   install -m664 "$srcdir/$pkgname/src/pacmanity.hook" "$pkgdir/usr/share/libalpm/hooks/zzz-pacmanity.hook"
 
   # run
-  if [[ -z "$SKIP_FIRST_RUN"  ]]; then
-  . $pkgdir/usr/lib/pacmanity/pacmanity.sh && pacmanity_install
+  . $pkgdir/usr/lib/pacmanity/pacmanity.sh
+  if [[ -z "$GIST_ID"  ]]; then
+    pacmanity_install
+  else
+    pacmanity_update
   fi
 }
