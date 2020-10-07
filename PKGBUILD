@@ -1,37 +1,36 @@
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Kyle Keen <keenerd@gmail.com>
-# Contributor: Javier Lloris
 
-pkgname=trimage-git
-pkgver=20190305
+_pkgname='trimage'
+pkgname="${_pkgname}-git"
+pkgver=1.0.6.r12.gc21089f
 pkgrel=1
-pkgdesc="A GUI based lossless image compressor."
-url="http://trimage.org"
-arch=('any')
+pkgdesc='Tool for optimizing PNG and JPG files'
+arch=('x86_64')
+url='https://trimage.org'
+_url_source='https://github.com/Kilian/Trimage'
 license=('MIT')
-depends=("python-pyqt5" "python-sip-pyqt5" "optipng" "advancecomp" "jpegoptim" "pngcrush")
-makedepends=("git")
-conflicts=("trimage")
-provides=("trimage")
-source=("git+https://github.com/Kilian/Trimage.git#branch=master")
-md5sums=("SKIP")
-
-_gitname="Trimage"
+depends=('advancecomp' 'hicolor-icon-theme' 'jpegoptim' 'optipng' 'pngcrush' 'python-pyqt5')
+makedepends=('git' 'python-setuptools')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+${_url_source}.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
+  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-
-  # find ./ -type f -name '*.py' | xargs -n 1 sed -i 's|/usr/bin/env python3|/usr/bin/env python|'
-  # sed -i 's|/usr/bin/env python|/usr/bin/env python3|' trimage
-
+  cd "${_pkgname}"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  python setup.py install --prefix=/usr --root="$pkgdir"
+  cd "${_pkgname}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
+  install -Dm644 'COPYING' "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
+
+# vim: ts=2 sw=2 et:
