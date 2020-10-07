@@ -1,22 +1,22 @@
-# Maintainer: desbma
-pkgname=zoxide
+# Maintainer: lmartinez-mirror
+# Contributor: desbma
+pkgname=zoxide-bin
+_pkgname=zoxide
 pkgver=0.4.3
 pkgrel=1
 pkgdesc='A fast cd command that learns your habits'
 arch=('x86_64')
-url="https://github.com/ajeetdsouza/${pkgname}"
+url="https://github.com/ajeetdsouza/${_pkgname}"
 license=('MIT')
-makedepends=('rust')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ajeetdsouza/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('4ab395835c5ac095a21f5f129e67a0c4eaf7466d3f5b3ccb0b724bd94385faf3ff2422eec2c7c4da60ee8cc51495f205ef1501114fbd9784fe22ab3704901e9a')
-
-build() {
-    cd "${pkgname}-${pkgver}"
-    cargo build --release --locked
-}
+provides=('zoxide')
+conflicts=('zoxide' 'zoxide-git')
+source_x86_64=("${_pkgname}::${url}/releases/download/v${pkgver}/${_pkgname}-$CARCH-unknown-linux-gnu")
+source=("LICENSE::https://raw.githubusercontent.com/ajeetdsouza/${_pkgname}/v${pkgver}/LICENSE")
+sha512sums_x86_64=('610110647775358f5db7ad069ef43c725a33b1caedcec573cf9546d4a701214ca995ab6bbc01f73a7b8c79d24d23e7eefaee2d194fce76a71b6165a077431490')
+sha512sums=('abf8fa83fc3e17f92046611974d837029da055eb53d5d17ac0453e6edef27ed172416376751be76833a2a54d28e1d173bb82635ff62ba51ebcca3733d51600c3')
+options=(strip)
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    install -Dm 755 -t "${pkgdir}/usr/bin" ./target/release/${pkgname}
+    install -Dm 755 -t "${pkgdir}/usr/bin" ${_pkgname}
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
