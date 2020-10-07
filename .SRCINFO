@@ -1,0 +1,11 @@
+pkgbase = ut469
+	pkgdesc = ut469 patch
+	pkgver = 469
+	pkgrel = 1
+	url = www.oldunreal.com
+	arch = x86_64
+	source = https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469a/OldUnreal-UTPatch469a-Linux.tar.bz2
+	sha256sums = SKIP
+
+pkgname = ut469
+
