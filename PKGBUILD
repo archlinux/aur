@@ -5,7 +5,7 @@
 _gemname=parser
 pkgname=ruby-${_gemname}
 pkgver=2.7.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Ruby parser written in pure Ruby."
 arch=('any')
 depends=(ruby ruby-ast)
@@ -29,6 +29,7 @@ package() {
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
-  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # TODO: restore license
+  # install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" \
+  #   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
