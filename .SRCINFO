@@ -1,0 +1,14 @@
+pkgbase = python-jupyter-react
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/quantumlib/OpenFermion
+	arch = any
+	license = Apache
+	checkdepends = python
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/Huawei-HiQ/jupyter-react/archive/0.1.7.tar.gz
+	sha256sums = 55f7a44689d8aaa4f696ec509962ac124d199cbb6f0bd92f1920c9ad89b4cbd5
+
+pkgname = python-jupyter-react
