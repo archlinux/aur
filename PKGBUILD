@@ -1,5 +1,6 @@
 # Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
 pkgname=snapgene-viewer
+pkgver=5.1.7
 pkgrel=1
 pkgdesc='Software for plasmid mapping, primer design, and restriction site analysis'
 arch=('x86_64')
@@ -7,8 +8,11 @@ url='http://www.snapgene.com/products/snapgene_viewer/'
 license=('custom')
 _dlurl="https://www.snapgene.com/local/targets/viewer_download.php?os=linux_rpm&majorRelease=latest&minorRelease=latest"
 source=("$(curl --silent --head --location "$_dlurl" | grep -Po 'Location: \K.*rpm' | tail -n1 )")
-pkgver="$(grep -Po '\d(\d|\.)+\d' <<< "$source" | tail -n1)"
 sha512sums=('SKIP')
+
+pkgver() {
+    grep -Po '\d(\d|\.)+\d' <<< "$source" | tail -n1
+}
 
 package() {
     cd "$pkgdir"
