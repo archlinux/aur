@@ -12,6 +12,7 @@ pkgbase = swift-language-git
 	makedepends = python-six
 	makedepends = python2
 	makedepends = rsync
+	makedepends = sccache
 	depends = icu
 	depends = libedit
 	depends = libxml2
@@ -33,7 +34,7 @@ pkgbase = swift-language-git
 	source = swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation
 	source = swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch
 	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests
-	source = llvm-project::git+https://github.com/apple/llvm-project#branch=swift/master
+	source = llvm-project::git+https://github.com/apple/llvm-project#branch=swift/main
 	source = 0001-arch-aur-pachtes.patch
 	source = 0003-linux_load_commands-test-sourcekit-lsp-are-python2.patch
 	source = indexstore-db::git+https://github.com/apple/indexstore-db
