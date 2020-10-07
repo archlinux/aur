@@ -9,7 +9,7 @@ pkgdesc='Take screenshot selection, upload to imgur + more cool things'
 arch=('any')
 url='https://github.com/jomo/imgur-screenshot'
 license=('MIT')
-depends=('curl' 'jq' 'libnotify' 'scrot' 'xclip')
+depends=('curl' 'jq' 'libnotify')
 optdepends=('scrot: (or other screenshot tool) for making screenshots'
             'xclip: needed for copy_url')
 conflicts=('imgur-screenshot-git')
