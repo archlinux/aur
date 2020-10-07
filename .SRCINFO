@@ -3,7 +3,7 @@ pkgbase = kermit-git
 	pkgver = 3.0.r1.g02fb19d
 	pkgrel = 1
 	url = https://github.com/orhun/kermit
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
@@ -11,7 +11,7 @@ pkgbase = kermit-git
 	depends = vte3>=0.42.5
 	provides = kermit
 	conflicts = kermit
-	source = git://github.com/orhun/kermit.git
+	source = git+https://github.com/orhun/kermit
 	sha256sums = SKIP
 
 pkgname = kermit-git
