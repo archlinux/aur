@@ -1,0 +1,17 @@
+pkgbase = veroroute-svn
+	pkgdesc = Create PDFs from images or scanner
+	pkgver = 2.00.r265
+	pkgrel = 1
+	url = https://sourceforge.net/projects/veroroute/
+	arch = x86_64
+	license = GPL3
+	makedepends = subversion
+	depends = qt5-base
+	optdepends = geda-gaf: import schematic from gEDA
+	provides = veroroute
+	conflicts = veroroute
+	source = veroroute::svn+https://svn.code.sf.net/p/veroroute/code/trunk
+	sha256sums = SKIP
+
+pkgname = veroroute-svn
+
