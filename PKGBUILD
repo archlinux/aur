@@ -1,12 +1,12 @@
 pkgname=dnf-plugins-core
-pkgver=4.0.17
+pkgver=4.0.18
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2')
 depends=('dnf>=4.2.22' 'python')
-makedepends=('cmake' 'python-sphinx')
+makedepends=('cmake>=3.13' 'python-sphinx')
 checkdepends=('python-nose')
 optdepends=('python-dateutil: for changelog plugin'
             'createrepo_c: for local plugin')
@@ -18,12 +18,10 @@ backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/versionlock.list')
 options=(!emptydirs)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('8ff542ff0b3a10dc990b534b44ee1eb2')
+md5sums=('8d9f020ea6f0b2b05a27cfdbf7c027e3')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	rm -rf build
-	mkdir build
 
 	# sphinx-build-3 does not exist on Arch Linux,
 	# use sphinx-build instead
@@ -32,24 +30,29 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname-$pkgver"/build
-	cmake -DCMAKE_BUILD_TYPE=Release  \
+	cd "$pkgname-$pkgver"
+
+	cmake -B build \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
-	      -DPYTHON_DESIRED=3          \
-	      ..
-	make
-	make doc-man
+	      -DPYTHON_DESIRED=3
+
+	make -C build
+	make -C build doc-man
 }
 
 check() {
 	cd "$pkgname-$pkgver"
+
 	# Tests fail with non-english locales
 	PYTHONPATH=./plugins LC_ALL=en_US.UTF-8 nosetests -s tests
 }
 
 package() {
-	cd "$pkgname-$pkgver"/build
-	make DESTDIR="$pkgdir/" install
+	cd "$pkgname-$pkgver"
+
+	make -C build DESTDIR="$pkgdir/" install
+
+	install -Dp -m644 README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
 
 	# Conflict with yum-utils
 	rm "$pkgdir/usr/share/man/man1/debuginfo-install.1" \
@@ -70,8 +73,6 @@ package() {
 	   "$pkgdir/usr/share/man/man5/yum-versionlock.conf.5" \
 	   "$pkgdir/usr/share/man/man8/yum-copr.8" \
 	   "$pkgdir/usr/share/man/man8/yum-versionlock.8"
-
-	install -Dp -m644 ../README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
