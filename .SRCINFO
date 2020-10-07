@@ -7,6 +7,7 @@ pkgbase = python-requests-gssapi
 	arch = x86_64
 	license = custom:ISC
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python-gssapi
 	depends = python-requests
 	source = git+https://github.com/pythongssapi/requests-gssapi#commit=8718174cac25e3ccc960e53021ff39b0fa44d143
