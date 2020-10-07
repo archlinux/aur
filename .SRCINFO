@@ -1,6 +1,6 @@
 pkgbase = qtscrcpy-git
 	pkgdesc = Android real-time display control software.
-	pkgver = 1.4.3
+	pkgver = 1.4.3.4.g92ec6c6
 	pkgrel = 1
 	url = https://github.com/barry-ran/QtScrcpy
 	arch = x86_64
@@ -13,8 +13,10 @@ pkgbase = qtscrcpy-git
 	conflicts = qt-scrcpy
 	source = git+https://github.com/barry-ran/QtScrcpy
 	source = QtScrcpy.desktop
+	source = binaries.patch
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = 049c0e95b49a4437c9cda0c19b7295f2
 
 pkgname = qtscrcpy-git
 

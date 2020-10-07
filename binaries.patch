@@ -1,0 +1,17 @@
+--- main.cpp	2020-10-07 10:33:20.553075843 +0800
++++ main_new.cpp	2020-10-07 10:52:45.823348152 +0800
+@@ -35,10 +35,10 @@
+ #endif
+ 
+ #ifdef Q_OS_LINUX
+-    qputenv("QTSCRCPY_ADB_PATH", "../../../third_party/adb/linux/adb");
+-    qputenv("QTSCRCPY_SERVER_PATH", "../../../third_party/scrcpy-server");
+-    qputenv("QTSCRCPY_CONFIG_PATH", "../../../config");
+-    qputenv("QTSCRCPY_KEYMAP_PATH", "../../../keymap");
++    qputenv("QTSCRCPY_ADB_PATH", "/usr/bin/adb");
++    qputenv("QTSCRCPY_SERVER_PATH", "/usr/share/qtscrcpy/scrcpy-server");
++    qputenv("QTSCRCPY_CONFIG_PATH", "/usr/share/qtscrcpy/config");
++    qputenv("QTSCRCPY_KEYMAP_PATH", "/usr/share/qtscrcpy/keymap");
+ #endif
+ 
+     g_msgType = covertLogLevel(Config::getInstance().getLogLevel());
