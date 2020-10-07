@@ -12,12 +12,19 @@ license=('GPL3')
 depends=('gnome-shell')
 makedepends=('git')
 install=$_pkgname.install
-source=(git+https://github.com/zzrough/$_gitname)
-sha256sums=('SKIP')
+source=(git+https://github.com/zzrough/$_gitname
+        https://patch-diff.githubusercontent.com/raw/zzrough/gs-extensions-drop-down-terminal/pull/245.diff)
+sha256sums=('SKIP'
+            '9086cb782959a315b33262e0ec77af32f2fe21733af612f1930cb8806bab14b7')
 
 pkgver() {
   cd "$srcdir"/$_gitname
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir"/$_gitname
+  patch --forward --strip=1 --input="$srcdir"/245.diff
 }
 
 package() {
