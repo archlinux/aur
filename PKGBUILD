@@ -1,7 +1,7 @@
 #Maintainer: Skykey <zcxzxlc@163.com>
 
 pkgname=('qtscrcpy-git')
-pkgver=1.4.3.4.g92ec6c6
+pkgver=1.4.3.r4.g92ec6c6
 pkgrel=1
 pkgdesc="Android real-time display control software."
 provides=("qt-scrcpy")
@@ -11,13 +11,16 @@ arch=('x86_64')
 makedepends=('git')
 depends=('qt5-base' 'android-tools' 'qt5-x11extras')
 license=('Apache')
+install=qtscrcpy-git.install
 source=("git+https://github.com/barry-ran/QtScrcpy"
+qtscrcpy-git.install
 QtScrcpy.desktop
 binaries.patch
 )
 md5sums=(SKIP
 SKIP
-'049c0e95b49a4437c9cda0c19b7295f2'
+SKIP
+SKIP
 )
 
 prepare(){
@@ -27,7 +30,7 @@ prepare(){
 
 pkgver(){
     cd "$srcdir"/QtScrcpy
-    git describe --tag | sed 's|-|.|g' | sed 's/^v//'
+    git describe --long --tag | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){

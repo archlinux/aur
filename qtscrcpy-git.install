@@ -1,0 +1,15 @@
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+post_install() {
+  	# Echo
+  	note "======"
+    note "You can customize config.ini and keymaps in /usr/share/qtscrcpy/config and /usr/share/qtscrcpy/keymap"
+    note "You can find information in https://github.com/barry-ran/QtScrcpy"
+    note "======"
+}
