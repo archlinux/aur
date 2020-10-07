@@ -24,7 +24,7 @@ pkgname=(
 )
 pkgver=19.0a2
 #_major=18.7.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -60,7 +60,7 @@ _tag="$pkgver-Matrix"
 _libdvdcss_version="1.4.2-Leia-Beta-5"
 _libdvdnav_version="6.0.0-Leia-Alpha-3"
 _libdvdread_version="6.0.0-Leia-Alpha-3"
-_ffmpeg_version="4.3.1-Matrix-Alpha1-1"
+_ffmpeg_version="4.3.1-Matrix-Alpha1-2"
 _fmt_version="6.1.2"
 _crossguid_version="8f399e8bd4"
 _fstrcmp_version="0.7.D001"
@@ -79,7 +79,6 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/spdlog-$_spdlog_version.tar.gz"
   cpuinfo
-  000-python3.8.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -92,18 +91,17 @@ noextract=(
   "flatbuffers-$_flatbuffers_version.tar.gz"
   "spdlog-$_spdlog_version.tar.gz"
 )
-sha256sums=('b581e7eaa319e7ab98295a5ba5a569af17c19b7987a34e5212704cf2ba2d1650'
-            '38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d'
-            '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
-            'a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf'
-            'a7d956dbbe3c2036a8a78976efaf43792e1c7c152a04182024f231f4ee2e7d7e'
-            '1cafc80701b746085dddf41bd9193e6d35089e1c6ec1940e037fcb9c98f62365'
-            '3d77d09a5df0de510aeeb940df4cb534787ddff3bb1828779753f5dfa1229d10'
-            'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
-            '1789b97e790da8f2cb5ff827d15580878c8629fd889f5f038d7524dca43eacc9'
-            'b38e0bbef7faac2b82fed550a0c19b0d4e7f6737d5321d4fd8f216b80f8aee8a'
-            '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
-            'edff38cea510817c3682c7c6086054ac49adaa478285093ea294d83db065b83f')
+b2sums=('f61ad74fdcf7254731842feb45897d46291bfe591fed7a1de2d91db36275e3310443fc943f3a93b7ff21f83cad6b4a781b3d60701d6f56a93de231300f5ecd86'
+        '283aa2cec0a2200d3569bc280cb9659e9224a6b3a77db8a35b269cd8caf1337ac9d8b92b806df66f63ef7458a46bd6261f0b8b14678b10e26644a79dcbeea5da'
+        '7573434a0ae8e8ccabf48173f81fcde29074eb138e119a2ae9156cde3c3d8bfd716f5d0e605b97f2dcac21f570781137c8533c5ae306b51e3905822fda318355'
+        '0c206acdaf0776841ab792c74e023af07d9539eb72e03ae164382a31ed950f60e5e15f1d055979d28f1398924471b294d11f064b11b8373353b3962a3777ff3c'
+        'c33a2aad8b895be3ea5be76de238680284487d38a8c22ce57f17c3944a6ba214c0dfa9ef1e4717244ff8f70f6dd640b36715842d61ddaed65867a6c096470283'
+        '36e7451a8732c62dcbf47e6d287ea582827b6196a468b8648803ea1bc9a37a5f681d87488f748d749183d97783ac7fb47a3f2aeed64fc6a684f9ee85b67ae28d'
+        'e6f1f495adf541102e3b5ac11dfd14b770a52e23ef9d613bc6204f6493ff4df4da9ba290ad6c3a7e5c7fcf159cafdf355bfe668a4ddceb4329df934c65966d19'
+        'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
+        '69024d77e6e7a5036e24729e337b17680dc3735cb1d209058a88b980989826fe56ff113c1177410106e0f70d827fa82603372277e3bc1aa4d12ffe5bb979af96'
+        'bac6c6650f8347458dd2dd66f318b43a769b0896d68f6a6f1310754527a69feaa52b2f6f48d67c7e811c2dafa5d3863a9a07c738df8c12abed2718fb06254b28'
+        'e384224db97c88f67cee733d1ea5b0d0a32c532e7931b323724842e4182485d20fc25dc9f419343afdeafab19185c546c329736765c084a95a02a52c9df92679')
 prepare() {
   [[ -d kodi-build-x11 ]] && rm -rf kodi-build-x11
   mkdir kodi-build-x11
