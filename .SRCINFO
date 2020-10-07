@@ -1,12 +1,12 @@
 pkgbase = bibata-cursor-theme
 	pkgdesc = Material Based Cursor Theme
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ful1e5/Bibata_Cursor
 	arch = any
 	license = GPL3
 	makedepends = python-clickgen
-	noextract = bitmaps.zip
+	noextract = bibata-cursor-theme-bitmaps-1.0.0.zip
 	options = !strip
 	source = bibata-cursor-theme-1.0.0.tar.gz::https://github.com/ful1e5/Bibata_Cursor/archive/v1.0.0.tar.gz
 	source = bibata-cursor-theme-bitmaps-1.0.0.zip::https://github.com/ful1e5/Bibata_Cursor/releases/download/v1.0.0/bitmaps.zip
