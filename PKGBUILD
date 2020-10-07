@@ -8,6 +8,7 @@ url="https://www.moddb.com/mods/vtmb-unofficial-patch/downloads/"
 #source=("https://www.moddb.com/mods/vtmb-unofficial-patch/downloads/")
 #sha256sums=('SKIP')
 pkgdesc="vampire: the masquerade - bloodlines unofficial patch"
+makedepends=(wget)
 
 prepare() {
 
