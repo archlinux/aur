@@ -8,10 +8,10 @@
 _building=true
 pkgname=qtcreator-prerelease
 _pkgvermajmin=4.13
-_pkgver=${_pkgvermajmin}.0
+_pkgver=${_pkgvermajmin}.2
 _verpostfix=""
 pkgver="${_pkgver}${_verpostfix}"
-pkgrel=3
+pkgrel=1
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
   _pkgver=${_pkgver}-${_verpostfix}
@@ -41,7 +41,7 @@ makedepends=('qbs' 'clang' 'qt5-base' 'patchelf')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz"
         qtcreator-preload-plugins.patch
         qtcreator-clang-libs.patch)
-sha256sums=('bdc846552850283528a826e170787b5d51d86342dcf700ebf9cc5c3b4cdcb747'
+sha256sums=('b00a5c13ba67d2e3436e6d9bf32fba38d780a1de0bc85b813daac672021e9428'
             'b40e222b30c355d1230160a4e933dbd161b8748125662e3bde312ea52296457a'
             '0f6d0dc41a87aae9ef371b1950f5b9d823db8b5685c6ac04a7a7ac133eb19a3f')
 
