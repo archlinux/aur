@@ -1,4 +1,4 @@
-# Maintainer: Nico <desoxhd@gmail.com>
+# Maintainer: Nico <d3sox at protonmail dot com>
 # Contributor: Danny Korpan https://www.dannykorpan.de/
 # Contributor: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Vladimir Navrat <vn158 at seznam dot cz>
