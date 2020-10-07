@@ -1,0 +1,15 @@
+pkgbase = charm-tool-bin
+	pkgdesc = The Charm Cloud Tool
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/charmbracelet/charm
+	arch = x86_64
+	license = MIT
+	provides = charm-tool
+	conflicts = charm-tool
+	options = !strip
+	source_x86_64 = https://github.com/charmbracelet/charm/releases/download/v0.8.3/charm_0.8.3_linux_x86_64.tar.gz
+	sha256sums_x86_64 = cd03beb5f1296e21cd1a9456307ead54dab68de587925d052c10ede5ef6f4251
+
+pkgname = charm-tool-bin
+
