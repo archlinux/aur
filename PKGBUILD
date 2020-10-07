@@ -15,12 +15,12 @@ source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   go get -d ./...
   go build \
     -gcflags "all=-trimpath=$PWD" \
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   install -Dm 755 "${pkgname%-git}" -t "$pkgdir/usr/bin"
   install -Dm 644 "README.md" -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
