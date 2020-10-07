@@ -10,6 +10,7 @@ url="https://github.com/rustic-games/jilu"
 license=('Apache')
 makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
+provides=("${pkgname%-git}")
 source=("git+${url}")
 sha512sums=('SKIP')
 
