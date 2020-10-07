@@ -1,7 +1,7 @@
 pkgbase = among-us-editor
 	pkgdesc = Character editor for Among Us
 	pkgver = 1.51.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Vresod/Among-Us-Editor/
 	arch = any
 	license = MIT
@@ -13,9 +13,11 @@ pkgbase = among-us-editor
 	source = https://github.com/Vresod/Among-Us-Editor/releases/download/1.51.1/Among-Us-Editor-1.51.1-linux.jar
 	source = AUE.desktop
 	source = icon.png
+	source = LICENSE
 	sha256sums = efdb4c0bead17da3332d4f98655c22d3e0626844f2782700d713ada7fe764d98
 	sha256sums = 1fc76f358a4996594740da38546946040c98e652e7f2a9644fe16bd2d25ddc43
 	sha256sums = 9bc31e9bb127d780af39aad0a98dd9c98d98b9a0d00f335daa3d123a9f108de1
+	sha256sums = 617f66c88af16804a99ca3a88874d8f3f40cccc4dcf54de047e300a1ff31637e
 
 pkgname = among-us-editor
 
