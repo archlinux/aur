@@ -1,7 +1,7 @@
 # Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=dendrite
-pkgver=0.1.0rc2
+pkgver=0.1.0rc3
 pkgrel=1
 pkgdesc="A second-generation Matrix homeserver written in Go"
 arch=('x86_64')
