@@ -2,7 +2,7 @@
 
 pkgname=wdt-git
 pkgver=1.27.1612021.r162.gb585d21
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to transfer data between 2 systems as fast as possible over multiple TCP paths"
 arch=('i686' 'x86_64')
 url="https://github.com/facebook/wdt"
@@ -14,15 +14,17 @@ checkdepends=('gtest')
 provides=('wdt')
 conflicts=('wdt')
 source=("git+https://github.com/facebook/wdt.git"
-        "git+https://github.com/facebook/folly.git")
+        "git+https://github.com/facebook/folly.git"
+        "0001-Fix-compile-error.patch")
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '918c6454a3634348eb4308138b7b67d0f06985fa8ecab4909c3b4cebaa9a7663')
 
 
 prepare() {
-  cd "folly"
+  cd "wdt"
 
-  git checkout "$(git describe --abbrev=0 --always)"
+  patch -Np1 -i "$srcdir/0001-Fix-compile-error.patch"
 }
 
 pkgver() {
