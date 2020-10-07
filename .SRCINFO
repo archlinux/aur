@@ -1,13 +1,17 @@
-pkgbase = zoxide
+pkgbase = zoxide-git
 	pkgdesc = A fast cd command that learns your habits
-	pkgver = 0.4.3
+	pkgver = v0.4.3.r17.geaf63bc
 	pkgrel = 1
 	url = https://github.com/ajeetdsouza/zoxide
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	source = zoxide-0.4.3.tar.gz::https://github.com/ajeetdsouza/zoxide/archive/v0.4.3.tar.gz
-	sha512sums = 4ab395835c5ac095a21f5f129e67a0c4eaf7466d3f5b3ccb0b724bd94385faf3ff2422eec2c7c4da60ee8cc51495f205ef1501114fbd9784fe22ab3704901e9a
+	makedepends = git
+	provides = zoxide
+	conflicts = zoxide
+	conflicts = zoxide-bin
+	source = zoxide-git::git+https://github.com/ajeetdsouza/zoxide
+	sha512sums = SKIP
 
-pkgname = zoxide
+pkgname = zoxide-git
 
