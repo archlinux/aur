@@ -11,6 +11,7 @@ license=('MIT')
 depends=('dbus' 'libxinerama')
 makedepends=('git' 'cargo')
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
+provides=("${pkgname%-git}")
 source=("git+$url")
 sha512sums=('SKIP')
 

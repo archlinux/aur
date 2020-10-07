@@ -9,6 +9,7 @@ pkgbase = hadlock-git
 	makedepends = cargo
 	depends = dbus
 	depends = libxinerama
+	provides = hadlock
 	conflicts = hadlock
 	conflicts = hadlock-bin
 	source = git+https://github.com/AdaShoelace/hadlock
