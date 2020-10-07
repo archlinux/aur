@@ -3,7 +3,7 @@
 
 pkgbase=python-pgpy
 pkgname=('python-pgpy' 'python2-pgpy')
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Pretty Good Privacy for Python - a pure Python OpenPGP implementation."
 arch=('any')
@@ -12,9 +12,9 @@ url="https://github.com/SecurityInnovation/PGPy"
 makedepends=('python-setuptools' 'python-cryptography' 'python-six' 'python-pyasn1'
              'python2-setuptools' 'python2-cryptography' 'python2-enum34' 'python2-singledispatch' 'python2-six' 'python2-pyasn1')
 source=("https://github.com/SecurityInnovation/PGPy/releases/download/v${pkgver}/PGPy-${pkgver}.tar.gz")
-sha256sums=('81cac5dfea1b42f9086ed9816b20ba1a76262340afcded5ed8c41a0ab3dd7bf2')
-sha384sums=('6aeb9002ac2a3e5ac79a3e52cab24c6fa6bb3a29a5fcaee3078a5c9e36c1d4095f0de9df0387f654953d68ae60fae5b3')
-sha512sums=('feba3df88bfc92dd174694aaeae3a222288aa05c99eda3ff44261790cd65c55dfe1cb33193dbe690ee6b2ee827db86d626880be67d7e156718d6911d824f3a55')
+sha256sums=('a702668a8b8fb84889ecd840da63c9e323d19bc2132cc5478d534ede3ec49444')
+sha384sums=('1cbf6dabd4d674b0a6f78c83b90f0e814f54425c7df422c1f3f01dd44489833f374fad324eded46ee45502a107768318')
+sha512sums=('a55a3decac7db2a52694ec1c3aa74b491b3610a0742402490c88f4df8c3c83c396f3cc64092a059b62a9b4d4635b8d57c9b8cdf3d171f5456df24bbfdacaba36')
 
 prepare() {
     cp -a PGPy-${pkgver}{,-python2}
