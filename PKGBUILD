@@ -3,6 +3,7 @@ _pkgname=requests-gssapi
 pkgname=python-requests-gssapi
 pkgver=1.2.2
 pkgrel=1
+pkgdesc="GSSAPI (HTTP Negotiate) authentication for Python-Requests"
 url="https://github.com/pythongssapi/requests-gssapi"
 arch=(i686 x86_64)
 license=(custom:ISC)
