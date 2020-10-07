@@ -7,6 +7,7 @@ pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
+depends=('libcec')
 makedepends=(
   'afpfs-ng' 'bluez-libs' 'cmake' 'curl' 'dav1d' 'doxygen' 'glew'
   'gperf' 'hicolor-icon-theme' 'java-runtime' 'libaacs' 'libass'
