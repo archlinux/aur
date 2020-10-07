@@ -1,0 +1,14 @@
+pkgbase = undocker
+	pkgdesc = Extract Docker images
+	pkgver = 7
+	pkgrel = 1
+	url = https://github.com/larsks/undocker/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/u/undocker/undocker-7.tar.gz
+	sha256sums = f098bd429a5a7bf08730069388cda2c14612f69eae0af4f27367f2cb8c9e4254
+
+pkgname = undocker
+
