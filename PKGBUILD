@@ -1,13 +1,14 @@
 # Maintainer: igo95862 <address at domain dot tld>
 pkgname=bubblejail-git
-pkgver=r114.b7ea75c
+pkgver=r241.8fae4d6
 pkgrel=1
 pkgdesc="Bubblewrap based sandboxing utility"
 arch=('any')
 url="https://github.com/igo95862/bubblejail"
 license=('GPL3+')
-depends=('python' 'python-xdg' 'bubblewrap' 'python-toml' 'xdg-dbus-proxy' 'python-setuptools' 'rsync')
-makedepends=('git')
+depends=('python' 'python-xdg' 'bubblewrap' 'python-toml' 'xdg-dbus-proxy' 'hicolor-icon-theme')
+makedepends=('git' 'meson')
+provides=('bubblejail')
 source=("$pkgname"::"git+https://github.com/igo95862/bubblejail")
 md5sums=('SKIP')
 
@@ -17,16 +18,14 @@ pkgver() {
 }
 
 check () {
-	cd "$srcdir/$pkgname"
-	python -m unittest
+	meson test -C build --print-errorlogs
 }
 
 build () {
-	cd "$srcdir/$pkgname"
-	python setup.py build
+	arch-meson "$srcdir/$pkgname" build
+	ninja -C build
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	python setup.py install --prefix=/usr --root="$pkgdir"
+	DESTDIR="$pkgdir" meson install -C build
 }

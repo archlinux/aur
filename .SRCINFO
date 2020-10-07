@@ -1,18 +1,19 @@
 pkgbase = bubblejail-git
 	pkgdesc = Bubblewrap based sandboxing utility
-	pkgver = r114.b7ea75c
+	pkgver = r241.8fae4d6
 	pkgrel = 1
 	url = https://github.com/igo95862/bubblejail
 	arch = any
 	license = GPL3+
 	makedepends = git
+	makedepends = meson
 	depends = python
 	depends = python-xdg
 	depends = bubblewrap
 	depends = python-toml
 	depends = xdg-dbus-proxy
-	depends = python-setuptools
-	depends = rsync
+	depends = hicolor-icon-theme
+	provides = bubblejail
 	source = bubblejail-git::git+https://github.com/igo95862/bubblejail
 	md5sums = SKIP
 
