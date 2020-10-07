@@ -7,14 +7,15 @@ pkgbase = hadlock-bin
 	license = MIT
 	depends = dbus
 	depends = libxinerama
+	provides = hadlock
 	conflicts = hadlock
 	conflicts = hadlock-git
-	source = hadlock::https://github.com/AdaShoelace/hadlock/releases/download/v1.1.6/Hadlock
-	source = hadlock-1.1.6-LICENSE::https://github.com/AdaShoelace/hadlock/raw/v1.1.6/LICENSE
-	source = hadlock-1.1.6-README.md::https://github.com/AdaShoelace/hadlock/raw/v1.1.6/README.md
-	sha512sums = 0bb503b42a7e6c0125c2ccb7372b05f29ca15be3270029da8361dfdbd9a872aacaa2849786918177de82c54361cecb4772dcb0187fd5988dff6e6972160708d2
-	sha512sums = 30c4c2d74fa7895ac61b21ad3e850b22cd4769a45be19a3f17af94ac0ae0c764ef049612b2c090d665bca28863bb7994a4e2ef6378ad0a3a7bb84596e4322321
-	sha512sums = e717de20d70b47ae7eb47eef7bfe9a01cb9ed2db32cd2dd552c85cd8eb35ce63030f7246e065d5419a783ee9009e40284893585674fa7264b410831e43690c91
+	source_x86_64 = hadlock::https://github.com/AdaShoelace/hadlock/releases/download/v1.1.6/Hadlock
+	source_x86_64 = hadlock-1.1.6-LICENSE::https://github.com/AdaShoelace/hadlock/raw/v1.1.6/LICENSE
+	source_x86_64 = hadlock-1.1.6-README.md::https://github.com/AdaShoelace/hadlock/raw/v1.1.6/README.md
+	sha512sums_x86_64 = 0339c6619603ab862c12a58086c924120022f6e1826cf154cc7f4903cac8c0e972ea8c767a9973b3cc661fb2ffef1c44d07e67b8f60ed351224e2ee3534eea0f
+	sha512sums_x86_64 = 30c4c2d74fa7895ac61b21ad3e850b22cd4769a45be19a3f17af94ac0ae0c764ef049612b2c090d665bca28863bb7994a4e2ef6378ad0a3a7bb84596e4322321
+	sha512sums_x86_64 = e717de20d70b47ae7eb47eef7bfe9a01cb9ed2db32cd2dd552c85cd8eb35ce63030f7246e065d5419a783ee9009e40284893585674fa7264b410831e43690c91
 
 pkgname = hadlock-bin
 
