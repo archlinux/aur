@@ -1,15 +1,12 @@
-# Maintainer :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
+# Maintainer :  Kr1ss  $(tr +- .@ <<<'<kr1ss+x-yandex+com>')
 
 
 pkgname=getmail6-git
 _pkgname="${pkgname%-git}"
 
 epoch=1
-pkgver() {
-  cd "$_pkgname"
-  git describe --tags | sed 's/^v//;s/-/.r/;s/-g/./'
-}
-pkgver=6.6.r2.7a48905
+pkgver() { git -C "$_pkgname" describe --tags | sed 's/^v//;s/-/.r/;s/-g/./'; }
+pkgver=6.8
 pkgrel=1
 
 pkgdesc='POP3 mail retriever with reliable Maildir and command delivery; Python 3 port'

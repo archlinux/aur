@@ -1,3 +1,15 @@
+Version 6.8
+07 October 2020
+    - fix #37: update copyright date and notices
+    - fix #39: Slow mail retrieval
+    - pull #40: fix UnboundLocalError when socket.error inside POP3_SSL_EXTENDED
+
+Version 6.7
+01 September 2020
+    - use $XDG_CONFIG_HOME if defined
+    - fix pip install (doc/man below site-packages)
+    - fix #34: quote only for select
+
 Version 6.6
 29 August 2020
     - fix #34: quote mailbox if necessary
