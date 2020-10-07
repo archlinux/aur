@@ -1,0 +1,23 @@
+pkgbase = bubblejail
+	pkgdesc = Bubblewrap based sandboxing utility
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/igo95862/bubblejail
+	arch = any
+	license = GPL3+
+	makedepends = meson
+	depends = python
+	depends = python-xdg
+	depends = bubblewrap
+	depends = python-toml
+	depends = xdg-dbus-proxy
+	depends = hicolor-icon-theme
+	conflicts = bubblejail-git
+	source = https://github.com/igo95862/bubblejail/releases/download/0.3.0/bubblejail-0.3.0.tar.gz
+	source = https://github.com/igo95862/bubblejail/releases/download/0.3.0/bubblejail-0.3.0.tar.gz.sig
+	validpgpkeys = 5A3D06576A6A67443DFBE856F1A55E62951B2143
+	md5sums = 5c1fd0f4ff19f1652ec6fcbc573509a4
+	md5sums = SKIP
+
+pkgname = bubblejail
+
