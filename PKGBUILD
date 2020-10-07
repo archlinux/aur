@@ -18,7 +18,7 @@ b2sums=('339cc3e360c81f8dbc59c2d5788e3fe028631c639a8cbeb2b47b46b6f6559292f1f0821
 
 package() {
     install -D -m755 "$srcdir/RemoteLight-${pkgver}.jar" "$pkgdir/usr/share/java/RemoteLight/RemoteLight.jar"
-    install -D -m755 "$srcdir/RemoteLight" "$pkgdir/usr/bin/remotelight"
-    install -D -m644 "$srcdir/RemoteLight.png" "$pkgdir/usr/share/pixmaps/remotelight.png"
+    install -D -m755 "$srcdir/remotelight" "$pkgdir/usr/bin/remotelight"
+    install -D -m644 "$srcdir/remotelight.png" "$pkgdir/usr/share/pixmaps/remotelight.png"
     install -D -m644 "$srcdir/RemoteLight.desktop" "$pkgdir/usr/share/applications/remotelight.desktop"    
 }
