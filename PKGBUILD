@@ -2,7 +2,7 @@
 
 pkgname=libzip-git
 pkgver=1.7.3.r79.g72b3722d
-pkgrel=1
+pkgrel=2
 pkgdesc="C library for reading, creating, and modifying zip archives"
 arch=('i686' 'x86_64')
 url="https://libzip.org/"
@@ -11,7 +11,6 @@ depends=('glibc' 'bzip2' 'gnutls' 'openssl' 'xz' 'zlib' 'zstd')
 makedepends=('git' 'cmake')
 provides=('libzip')
 conflicts=('libzip')
-options=('staticlibs')
 source=("git+https://github.com/nih-at/libzip.git")
 sha256sums=('SKIP')
 
