@@ -16,6 +16,7 @@ makedepends=(
   'python-pycryptodomex' 'python-pillow' 'python-pybluez' 'python-simplejson'
   'shairplay' 'smbclient' 'taglib' 'tinyxml' 'swig'
   'upower' 'giflib' 'rapidjson' 'ghostscript' 'git' 'meson' 'gtest'
+  'fstrcmp' 'spdlog'
 )
 
 source=(

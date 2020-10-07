@@ -51,6 +51,8 @@ pkgbase = kodi-eggz
 	makedepends = git
 	makedepends = meson
 	makedepends = gtest
+	makedepends = fstrcmp
+	makedepends = spdlog
 	source = git+https://github.com/xbmc/xbmc.git#tag=19.0a2-Matrix
 	source = git+https://github.com/xbmc/vfs.rar.git#tag=4.0.0-Matrix
 	sha256sums = SKIP
