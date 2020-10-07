@@ -1,0 +1,22 @@
+PREFIX  ?= /usr/local
+DESTDIR ?=
+
+CXXFLAGS=-std=c++11 -Wno-unknown-pragmas -Wall \
+       -fPIC -march=native -O2 -pipe -fno-plt -DFORTIFY_SOURCE=2 \
+       -I/usr/include/mxnet -I/usr/include/vapoursynth -I/usr/include/opencv4
+LDFLAGS=-shared -fPIC -lpthread -lmxnet
+
+all: libvsmxnet.so
+
+clean: 
+	rm -f *.o *.so
+
+install: all
+	install -Dm755 libvsmxnet.so $(DESTDIR)$(PREFIX)/lib/vapoursynth/libvsmxnet.so
+	install -Dm644 README.md $(DESTDIR)$(PREFIX)/share/doc/vapoursynth/plugins/vsmxnet/README.md
+
+libvsmxnet.o:
+	g++ -c ${CXXFLAGS} -o libvsmxnet.o vs_mxnet/vsMXNet.cpp
+
+libvsmxnet.so: libvsmxnet.o
+	g++ ${LDFLAGS} -o libvsmxnet.so libvsmxnet.o
