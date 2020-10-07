@@ -76,25 +76,13 @@ package() {
  pkgdesc="Latest stable-ish kodi build with VFS automaticly installed"
  cd ${srcdir}/kodi-build
  msg2 "Packaging kodi core"
- mkdir -p ${pkgdir}/usr/share/kodi && cp -r ${srcdir}/kodi-install/usr/share/kodi ${pkgdir}/usr/share/
- mkdir -p ${pkgdir}/usr/lib/kodi && cp -r ${srcdir}/kodi-install/usr/lib/kodi ${pkgdir}/usr/lib/
- mkdir -p ${pkgdir}/usr/include/kodi && cp -r ${srcdir}/kodi-install/usr/include/kodi ${pkgdir}/usr/include/
- mkdir -p ${pkgdir}/usr/share/icons && cp -r ${srcdir}/kodi-install/usr/share/icons ${pkgdir}/usr/share/
- mkdir -p ${pkgdir}/usr/share/doc && cp -r ${srcdir}/kodi-install/usr/share/doc ${pkgdir}/usr/share/
- mkdir -p ${pkgdir}/usr/share/applications/ && cp ${srcdir}/kodi-install/usr/share/applications/kodi.desktop ${pkgdir}/usr/share/applications/kodi.desktop
- mkdir -p ${pkgdir}/usr/share/xsessions/ && cp ${srcdir}/kodi-install/usr/share/xsessions/kodi.desktop ${pkgdir}/usr/share/xsessions/kodi.desktop
- mkdir -p ${pkgdir}/usr/bin/ && cp ${srcdir}/kodi-install/usr/bin/kodi ${pkgdir}/usr/bin/kodi
- cp ${srcdir}/kodi-install/usr/bin/kodi-standalone ${pkgdir}/usr/bin/kodi-standalone
- mkdir -p ${pkgdir}/usr/lib/firewalld && cp -r ${srcdir}/kodi-install/usr/lib/firewalld ${pkgdir}/usr/lib/
- cp -r ${srcdir}/kodi-install/usr/lib/firewalld ${pkgdir}/usr/lib/
+ cp -r ${srcdir}/kodi-install/* ${pkgdir}
 
  msg2 "Injecting Kodi VFS System addon"
- #VFS part
- #/usr/lib/kodi/addons/vfs.rar
+ #VFS Part 1: /usr/lib/kodi/addons/vfs.rar
  mkdir -p ${pkgdir}/usr/lib/kodi/addons/vfs.rar && cp -r ${srcdir}/xbmc/kodi-build/addons/vfs.rar/vfs.rar.so* ${pkgdir}/usr/lib/kodi/addons/vfs.rar/.
- #/usr/share/kodi/addons/vfs.rar
- #addon.xml
+ #VFS Part 2: /usr/share/kodi/addons/vfs.rar/addon.xml
  mkdir -p ${pkgdir}/usr/share/kodi/addons/vfs.rar && cp ${srcdir}/xbmc/kodi-build/addons/vfs.rar/addon.xml ${pkgdir}/usr/share/kodi/addons/vfs.rar/.
- #resources
+ #VFS Part 3: resources
  cp -r ${srcdir}/xbmc/kodi-build/addons/vfs.rar/resources ${pkgdir}/usr/share/kodi/addons/vfs.rar/.
 }
