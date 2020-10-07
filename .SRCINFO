@@ -1,6 +1,6 @@
 pkgbase = promscale
 	pkgdesc = An open source analytical platform for Prometheus metrics
-	pkgver = 0.1.0.beta.5
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/timescale/promscale
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = promscale
 	makedepends = go
 	optdepends = timescaledb
 	optdepends = prometheus
-	source = promscale-0.1.0.beta.5.tar.gz::https://github.com/timescale/promscale/archive/0.1.0-beta.5.tar.gz
-	b2sums = d09d1a1652db28809d028ae2ba1537db23587110197e568a8c01f0ef8d14b298bc50c8a58ecf599560d23ae25cf5dca57599b2c865f20833e5f70ec76570d59f
+	source = promscale-0.1.0.tar.gz::https://github.com/timescale/promscale/archive/0.1.0.tar.gz
+	b2sums = 36248e3a5371eab977a5e156ab82177875550af934461e5f0cfcccf4e8704385670e14231ad390118394e22febcee2df8702aff3be23f6f586c9d500ee1bcffc
 
 pkgname = promscale
 
