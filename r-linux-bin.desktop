@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=R-Linux
+GenericName=Data Recovery Utility
+Comment=Recover Deleted and Damaged Files
+Exec=/usr/local/R-Linux/bin/R-Linux
+Terminal=false
+Icon=r-linux-bin
+Type=Application
+Categories=System;Utility;
