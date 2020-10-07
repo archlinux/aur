@@ -4,7 +4,7 @@
 
 pkgname=among-us-editor
 pkgver=1.51.1
-pkgrel=2
+pkgrel=3
 _jarfile="Among-Us-Editor-${pkgver}-linux.jar"
 pkgdesc='Character editor for Among Us'
 arch=('any')
@@ -13,8 +13,8 @@ url='https://github.com/Vresod/Among-Us-Editor/'
 depends=('java-runtime>=8' 'sh' 'hicolor-icon-theme')
 optdepends=('steam: where among us is usually bought from')
 noextract=("$_jarfile")
-source=("https://github.com/Vresod/Among-Us-Editor/releases/download/$pkgver/$_jarfile" "AUE.desktop" "icon.png")
-sha256sums=("efdb4c0bead17da3332d4f98655c22d3e0626844f2782700d713ada7fe764d98" "1fc76f358a4996594740da38546946040c98e652e7f2a9644fe16bd2d25ddc43" "9bc31e9bb127d780af39aad0a98dd9c98d98b9a0d00f335daa3d123a9f108de1")
+source=("https://github.com/Vresod/Among-Us-Editor/releases/download/$pkgver/$_jarfile" "AUE.desktop" "icon.png" "LICENSE")
+sha256sums=("efdb4c0bead17da3332d4f98655c22d3e0626844f2782700d713ada7fe764d98" "1fc76f358a4996594740da38546946040c98e652e7f2a9644fe16bd2d25ddc43" "9bc31e9bb127d780af39aad0a98dd9c98d98b9a0d00f335daa3d123a9f108de1" "617f66c88af16804a99ca3a88874d8f3f40cccc4dcf54de047e300a1ff31637e" )
 
 build() {
 	cd "$srcdir"
@@ -31,5 +31,6 @@ package() {
 	install -Dm755 'AUE.sh'             "$pkgdir/usr/bin/among-us-editor"
 	install -Dm644 'AUE.desktop'        "$pkgdir/usr/share/applications/AUE.desktop"
 	install -Dm644 "$_jarfile"          "$pkgdir/usr/share/java/$pkgname/AUE.jar"
-	install -Dm644 "icon.png"            "$pkgdir/usr/share/icons/hicolor/64x64/apps/AUE.png"
+	install -Dm644 "icon.png"           "$pkgdir/usr/share/icons/hicolor/64x64/apps/AUE.png"
+	install -Dm644 LICENSE              "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 
 }
