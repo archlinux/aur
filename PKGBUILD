@@ -5,15 +5,14 @@ pkgname=kmon-git
 pkgver=1.5.0.r0.g84632a6
 pkgrel=1
 pkgdesc="Linux kernel manager and activity monitor (git)"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('x86_64')
 url="https://github.com/orhun/kmon"
 license=('GPL3')
-depends=('libxcb')
+depends=('libx11')
 makedepends=('cargo' 'python' 'git')
-options=('zipman')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=('git://github.com/orhun/kmon.git')
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
