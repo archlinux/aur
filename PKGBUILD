@@ -1,4 +1,4 @@
-# Maintainer: Nico <desoxhd@gmail.com>
+# Maintainer: Nico <d3sox at protonmail.com>
 pkgname=charles-bin
 pkgver=4.5.6
 pkgrel=2
