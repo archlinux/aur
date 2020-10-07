@@ -1,7 +1,7 @@
 # Maintainer: Arturo Penen <apenen@gmail.com>
 
 pkgname=istio
-pkgver=1.7.0
+pkgver=1.7.3
 pkgrel=0
 pkgdesc='Istio configuration command line utility for service operators to debug and diagnose their Istio mesh.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/istio/istio'
 license=('Apache')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/istio/istio/archive/$pkgver.tar.gz")
-sha256sums=('e069755a6af76c52719d5f7c7b6e28cb7ff13bf919ac74d1a6fd83a8b8fac355')
+sha256sums=('f74a9ca5d0299190ea83715d8ddaf20588081c4f594be1c6057608d2dcaae13a')
 
 build() {
   cd $pkgname-$pkgver
