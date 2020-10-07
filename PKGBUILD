@@ -13,11 +13,13 @@ provides=('mlocate')
 conflicts=('mlocate')
 backup=('etc/updatedb.conf')
 source=("git+https://pagure.io/mlocate.git"
+        "git+https://git.savannah.gnu.org/git/gnulib.git#commit=5861339993f3014cfad1b94fc7fe366fc2573598"
         "sysusers.d::https://git.archlinux.org/svntogit/packages.git/plain/trunk/sysusers.d?h=packages/mlocate"
         "updatedb.conf::https://git.archlinux.org/svntogit/packages.git/plain/trunk/updatedb.conf?h=packages/mlocate"
         "updatedb.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/updatedb.service?h=packages/mlocate"
         "updatedb.timer::https://git.archlinux.org/svntogit/packages.git/plain/trunk/updatedb.timer?h=packages/mlocate")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -27,14 +29,9 @@ sha256sums=('SKIP'
 prepare() {
   cd "mlocate"
 
-  mkdir -p "gl"
-  pushd "gl"
-  git clone https://git.savannah.gnu.org/git/gnulib.git
-  cd "gnulib"
-  git checkout "5861339993f3014cfad1b94fc7fe366fc2573598"
-  popd
+  sed -i '/^groupname /s/mlocate/locate/' "Makefile.am"
 
-  gl/gnulib/gnulib-tool --import
+  "$srcdir/gnulib/gnulib-tool" --import
 }
 
 pkgver() {
@@ -46,9 +43,10 @@ pkgver() {
 build() {
   cd "mlocate"
 
-  autoreconf -fis
-  sed -i '/^groupname /s/mlocate/locate/' "Makefile.in"
-  ./configure --prefix="/usr" --localstatedir="/var/lib"
+  autoreconf -fi
+  ./configure \
+    --prefix="/usr" \
+    --localstatedir="/var/lib"
   make
 }
 
@@ -63,6 +61,9 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
+  chgrp 21 "$pkgdir/var/lib/mlocate"
+  chmod 750 "$pkgdir/var/lib/mlocate"
+
   chgrp 21 "$pkgdir/usr/bin/locate"
   chmod 2755 "$pkgdir/usr/bin/locate"
   ln -s "locate" "$pkgdir/usr/bin/slocate"
@@ -70,10 +71,10 @@ package() {
   install -dm755 "$pkgdir/var/lib"
   install -dm750 -g21 "$pkgdir/var/lib/locate"
 
-  install -Dm644 "$srcdir/updatedb.conf" "$pkgdir/etc/updatedb.conf"
+  install -Dm644 "$srcdir/updatedb.conf" -t "$pkgdir/etc"
   install -Dm644 "$srcdir/sysusers.d" "$pkgdir/usr/lib/sysusers.d/locate.conf"
-  install -Dm644 "$srcdir/updatedb.timer" "$pkgdir/usr/lib/systemd/system/updatedb.timer"
-  install -Dm644 "$srcdir/updatedb.service" "$pkgdir/usr/lib/systemd/system/updatedb.service"
+  install -Dm644 "$srcdir/updatedb.timer" -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 "$srcdir/updatedb.service" -t "$pkgdir/usr/lib/systemd/system"
 
   install -d "$pkgdir/usr/lib/systemd/system/multi-user.target.wants"
   ln -s "../updatedb.timer" "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/updatedb.timer"
