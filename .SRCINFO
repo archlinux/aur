@@ -1,14 +1,14 @@
 pkgbase = wiggle
 	pkgdesc = A program for applying patches that patch cannot apply because of conflicting changes
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/neilbrown/wiggle
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = ncurses
-	source = https://neil.brown.name/wiggle/wiggle-1.2.tar.gz
-	sha256sums = 31375badb76a4a586f2113e49d13486dbc64844962ae80976a81c6542e901622
+	source = wiggle-1.3.tar.gz::https://github.com/neilbrown/wiggle/archive/v1.3.tar.gz
+	sha256sums = ff92cf0133c1f4dce33563e263cb30e7ddb6f4abdf86d427b1ec1490bec25afa
 
 pkgname = wiggle
 
