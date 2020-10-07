@@ -4,7 +4,7 @@
 
 pkgname=among-us-editor
 pkgver=1.51.1
-pkgrel=1
+pkgrel=2
 _jarfile="Among-Us-Editor-${pkgver}-linux.jar"
 pkgdesc='Character editor for Among Us'
 arch=('x86_64')
