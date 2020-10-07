@@ -1,3 +1,4 @@
+# Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=nerd-fonts-sf-mono
 pkgver=2.1.0
 pkgrel=1
