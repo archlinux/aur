@@ -1,7 +1,7 @@
 pkgbase = among-us-editor
 	pkgdesc = Character editor for Among Us
 	pkgver = 1.51.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vresod/Among-Us-Editor/
 	arch = x86_64
 	license = MIT
