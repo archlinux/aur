@@ -27,21 +27,9 @@ prepare() {
 build() {
   cd "${srcdir}/PDCursesMod-${pkgver}"
   for _arch in ${_architectures}; do
-# NOte that you should use something like -${_arch}
-# to prevent building i686 compiled binaries from
-# being compiled with x86_64 compiled binaries and
-# vice-versa.  That causes build failures - no surpise.
     cp -rf wingui wingui-shared-${_arch}
     pushd wingui-shared-${_arch}
       make \
-        CC=${_arch}-gcc \
-        LINK=${_arch}-gcc \
-        STRIP=${_arch}-strip \
-        AR=${_arch}-ar \
-        WIDE=Y \
-        UTF8=Y \
-        DLL=Y
-      make demos \
         CC=${_arch}-gcc \
         LINK=${_arch}-gcc \
         STRIP=${_arch}-strip \
@@ -60,13 +48,6 @@ build() {
         AR=${_arch}-ar \
         WIDE=Y \
         UTF8=Y
-      make demos \
-        CC=${_arch}-gcc \
-        LINK=${_arch}-gcc \
-        STRIP=${_arch}-strip \
-        AR=${_arch}-ar \
-        WIDE=Y \
-        UTF8=Y
     popd 
   done
 }
@@ -77,7 +58,6 @@ package() {
     mkdir -p ${pkgdir}/usr/${_arch}/{bin,include,lib}
     mkdir ${pkgdir}/usr/${_arch}/include/pdcurses
     
-    install wingui-shared-${_arch}/*.exe ${pkgdir}/usr/${_arch}/bin/
     install wingui-shared-${_arch}/libpdcurses.dll ${pkgdir}/usr/${_arch}/bin/
     install wingui-shared-${_arch}/libpdcurses.dll.a ${pkgdir}/usr/${_arch}/lib/libpdcurses.dll.a
     install wingui-shared-${_arch}/libpdcurses.dll.a ${pkgdir}/usr/${_arch}/lib/libcurses.dll.a
