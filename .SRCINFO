@@ -1,12 +1,11 @@
 pkgbase = staruml
 	pkgdesc = A sophisticated software modeler
 	pkgver = 3.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://staruml.io/
 	arch = i686
 	arch = x86_64
 	license = custom:staruml
-	depends = gconf
 	depends = libxss
 	depends = libxtst
 	depends = nss

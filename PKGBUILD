@@ -1,12 +1,12 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
 pkgname=staruml
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated software modeler"
 arch=('i686' 'x86_64')
 url="http://staruml.io/"
 license=('custom:staruml')
-depends=('gconf' 'libxss' 'libxtst' 'nss' 'alsa-lib' 'gtk2')
+depends=('libxss' 'libxtst' 'nss' 'alsa-lib' 'gtk2')
 source_i686=("$pkgname-$pkgver-$CARCH.AppImage::http://staruml.io/download/releases/StarUML-$pkgver-i386.AppImage")
 source_x86_64=("$pkgname-$pkgver-$CARCH.AppImage::http://staruml.io/download/releases/StarUML-$pkgver.AppImage")
 noextract=("$pkgname-$pkgver-$CARCH.AppImage")
