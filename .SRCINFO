@@ -1,7 +1,7 @@
 pkgbase = filebot
 	pkgdesc = The ultimate TV and Movie Renamer
 	pkgver = 4.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.filebot.net/
 	install = filebot.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = filebot
 	arch = armv7l
 	arch = armv7h
 	license = Commercial
-	depends = liberica-jre-11-full>=11
+	depends = liberica-jre-11-full-bin
 	depends = fontconfig
 	depends = chromaprint
 	optdepends = libzen: Required by libmediainfo
