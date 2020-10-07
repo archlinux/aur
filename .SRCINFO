@@ -8,12 +8,12 @@ pkgbase = lipl-bin
 	provides = lipl
 	conflicts = lipl
 	conflicts = lipl-git
-	source = https://github.com/yxdunc/lipl/releases/download/v0.1.2/lipl-linux.tar.gz
-	source = lipl-0.1.2-LICENSE::https://github.com/yxdunc/lipl/raw/v0.1.2/LICENSE
-	source = lipl-0.1.2-README.md::https://github.com/yxdunc/lipl/raw/v0.1.2/README.md
-	sha512sums = bf9d64e49f0bf77d1f6daf7fe68538e45a19e528dd18caf11898dd66b94f5a070e65e5bfd474349e04d8d4a4684507a61b2340eb890ae78afcc5be09fdaf88d6
-	sha512sums = 845ea50d8249e25f4b7267716ed84cb87240aed6e81f56cd63607b84b9eca360ce3230be761621451644a5e3118d5624fb887f09c01428f34fca093c6adbec6f
-	sha512sums = b88dda9425d154ea25701eadcc4f07abf0d98b7a1ab2204d32ce3e6e6beac4bed6a0210fe6f5a2d38e5de8060a8000f96a445242a556ade4ab29191a62db82cd
+	source_x86_64 = https://github.com/yxdunc/lipl/releases/download/v0.1.2/lipl-linux.tar.gz
+	source_x86_64 = lipl-0.1.2-LICENSE::https://github.com/yxdunc/lipl/raw/v0.1.2/LICENSE
+	source_x86_64 = lipl-0.1.2-README.md::https://github.com/yxdunc/lipl/raw/v0.1.2/README.md
+	sha512sums_x86_64 = bf9d64e49f0bf77d1f6daf7fe68538e45a19e528dd18caf11898dd66b94f5a070e65e5bfd474349e04d8d4a4684507a61b2340eb890ae78afcc5be09fdaf88d6
+	sha512sums_x86_64 = 845ea50d8249e25f4b7267716ed84cb87240aed6e81f56cd63607b84b9eca360ce3230be761621451644a5e3118d5624fb887f09c01428f34fca093c6adbec6f
+	sha512sums_x86_64 = b88dda9425d154ea25701eadcc4f07abf0d98b7a1ab2204d32ce3e6e6beac4bed6a0210fe6f5a2d38e5de8060a8000f96a445242a556ade4ab29191a62db82cd
 
 pkgname = lipl-bin
 
