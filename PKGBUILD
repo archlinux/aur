@@ -1,7 +1,7 @@
 # Maintainer: dszryan
 pkgname=pacmanity-git
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Keeps a list of installed packages in a Gist at your GitHub account"
 arch=('x86_64' 'i686')
