@@ -1,0 +1,24 @@
+pkgbase = cog-wpe-gl-x86_64
+	pkgdesc = WPE launcher and webapp container
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/Igalia/cog
+	arch = armv7l
+	arch = armv7h
+	groups = wpe
+	license = custom:MIT
+	depends = wpewebkit-gl-x86_64
+	depends = wpebackend-fdo
+	depends = libinput
+	provides = cog
+	provides = cog-git
+	conflicts = cog
+	conflicts = cog-git
+	source = https://webreflection.github.io/aur/cog-wpe-gl-x86_64-0.8.0.tar.gz
+	md5sums = 193e60b8ae0598292c9e45fd89050d97
+	sha1sums = ad5c3580ef2b2a228811fb65d021b47a521da4ad
+	sha256sums = 64ad44b3eaf6e6c8f8c92c94a75915dee1d6e21acb3d3a6898d4fcfd6f155140
+	sha512sums = e5074e23cf2f086dbb30e248cc8d6f86ddbea763e1d329f6f1e75831c30c4f5829f82860e815793427dc68825b1e5252e480c472555d71bdd990ce0f2636092e
+
+pkgname = cog-wpe-gl-x86_64
+
