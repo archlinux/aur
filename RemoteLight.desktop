@@ -4,7 +4,7 @@
 Type=Application
 
 # The version of the desktop entry specification to which this file complies
-Version=0.2.4
+Version=1.0
 
 # The name of the application
 Name=RemoteLight
