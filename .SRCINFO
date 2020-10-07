@@ -1,0 +1,16 @@
+pkgbase = easy-pandoc-templates-git
+	pkgdesc = A collection of portable pandoc templates with no dependencies
+	pkgver = r52.6d9c95a
+	pkgrel = 1
+	url = https://github.com/ryangrose/easy-pandoc-templates
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = pandoc
+	provides = easy-pandoc-templates
+	conflicts = easy-pandoc-templates
+	source = git+https://github.com/ryangrose/easy-pandoc-templates.git
+	md5sums = SKIP
+
+pkgname = easy-pandoc-templates-git
+
