@@ -10,7 +10,6 @@ arch=('x86_64')
 url="https://github.com/orhun/pkgtop"
 license=('GPL3')
 makedepends=('git' 'go')
-conflicts=("$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha512sums=('35ae09a150f49adf4f86056f44b2c104be0904828ae1d2c83c0644dc6fd948864b5acd7ec1fe1972af82075c30be9c8568c5c122e13ee3e15a505f25b51e3f4c')
 
