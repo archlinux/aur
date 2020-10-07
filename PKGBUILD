@@ -20,5 +20,5 @@ package() {
     install -D -m755 "$srcdir/RemoteLight-${pkgver}.jar" "$pkgdir/usr/share/java/RemoteLight/RemoteLight.jar"
     install -D -m755 "$srcdir/remotelight" "$pkgdir/usr/bin/remotelight"
     install -D -m644 "$srcdir/remotelight.png" "$pkgdir/usr/share/pixmaps/remotelight.png"
-    install -D -m644 "$srcdir/RemoteLight.desktop" "$pkgdir/usr/share/applications/remotelight.desktop"    
+    install -D -m644 "$srcdir/RemoteLight.desktop" "$pkgdir/usr/share/applications/RemoteLight.desktop"    
 }
