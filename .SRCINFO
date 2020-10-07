@@ -1,6 +1,6 @@
 pkgbase = linux-clear-bin
 	pkgdesc = Clear Linux kernel and modules in binary
-	pkgver = 5.8.12.989
+	pkgver = 5.8.13.990
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/clearlinux-pkgs/linux
@@ -15,10 +15,10 @@ pkgbase = linux-clear-bin
 	optdepends = crda: to set the correct wireless channels of your country
 	provides = WIREGUARD-MODULE
 	options = !strip
-	source = Manifest.kernel-native.33770::https://cdn.download.clearlinux.org/update/33770/Manifest.kernel-native
-	source = pack-kernel-native-from-0.33770.tar::https://cdn.download.clearlinux.org/update/33770/pack-kernel-native-from-0.tar
-	b2sums = a1e507d1c8167b4aedf17a9bbeeea21683c9af8a6adff2cf4e4f977978e2ee7446f874849022694e554c9b59cd229627deee01c409c3a68a193b643924843225
-	b2sums = 253605205172dd8e7881142847e39bcc2303f9eb72ffb320c6c859ee1b849ceeaed9e2a88165410107eb1dfe1e9ce3d0506bf84138404a791fe833102b73c507
+	source = Manifest.kernel-native.33800::https://cdn.download.clearlinux.org/update/33800/Manifest.kernel-native
+	source = pack-kernel-native-from-0.33800.tar::https://cdn.download.clearlinux.org/update/33800/pack-kernel-native-from-0.tar
+	b2sums = 51d28a88571a430035ea8b80886fb3b8942c6a908234870119836509dfb35a0b6c47d3e423ffa858b12b7750053acc4a52ed929ae502d29751ddc4a36f79d5f8
+	b2sums = 0e32f0f754de228b1a13487f75cc00a0d379dc50683d756ba05cccad4c3a6465b067d66ee379700a4db1c0a53b45a9caa5055c98e09e32e99d12f5c9458c97ce
 
 pkgname = linux-clear-bin
 
