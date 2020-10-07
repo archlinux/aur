@@ -1,13 +1,13 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=globalplatformpro
 pkgver=20.08.12
-pkgrel=4
+pkgrel=5
 pkgdesc="Manage applets and keys on JavaCard-s like a pro"
 arch=('any')
 url="https://github.com/martinpaljak/GlobalPlatformPro"
 license=('LGPL3')
 depends=('java-runtime-headless' 'pcsclite')
-makedepends=('git' 'java-environment' 'maven')
+makedepends=('git' 'java-environment' 'maven' 'which')
 source=(
   "$pkgname::git+https://github.com/martinpaljak/GlobalPlatformPro.git#tag=v${pkgver}"
   'gpp'

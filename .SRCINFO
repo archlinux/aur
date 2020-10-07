@@ -8,6 +8,7 @@ pkgbase = globalplatformpro
 	makedepends = git
 	makedepends = java-environment
 	makedepends = maven
+	makedepends = which
 	depends = java-runtime-headless
 	depends = pcsclite
 	source = globalplatformpro::git+https://github.com/martinpaljak/GlobalPlatformPro.git#tag=v20.08.12
