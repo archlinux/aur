@@ -1,17 +1,16 @@
 pkgbase = libfilezilla-svn
 	pkgdesc = Small and modern C++ library, offering some basic functionality to build high-performing, platform-independent programs
-	pkgver = 0.22.0.r9818
+	pkgver = 0.24.1.r9959
 	pkgrel = 1
 	url = https://lib.filezilla-project.org
 	arch = x86_64
-	arch = i686
-	license = GPL
-	checkdepends = cppunit
+	license = GPL2
 	makedepends = clang
 	makedepends = subversion
 	makedepends = doxygen
 	depends = gnutls
 	provides = libfilezilla
+	conflicts = libfilezilla
 	source = libfilezilla::svn+https://svn.filezilla-project.org/svn/libfilezilla/trunk
 	sha256sums = SKIP
 
