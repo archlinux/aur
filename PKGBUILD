@@ -1,8 +1,8 @@
 # Maintainer: sukanka <su975853527 at gmail.com>
 # Contributor: HRKo <ootaharuki99 at gmail.com>
 pkgname=mathpix-snipping-tool
-pkgver=02.05.0017
-_snapver=172
+pkgver=02.06.0011
+_snapver=192
 pkgrel=1
 pkgdesc="Mathpix Snipping Tool"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('unknown')
 depends=('qt5-x11extras' 'qt5-webkit')
 makedepends=('squashfs-tools')
 source=("https://api.snapcraft.io/api/v1/snaps/download/jnlZEYdmdXGhh6oJTtMsawNGZzEWmMhk_${_snapver}.snap")
-sha512sums=('a99dfed345e8cf6f396525842583b2b454971d7e112182632728cb66c948e2c9d383b2fa0348f9f4e23105bcdc0eab84644d7d4dfda86c9e11de39994f41edb8')
+sha512sums=('0faed035f04e643cf7b02320e81c4d37c737f9ec746734a0009b94ed1c7840ff2c39665e988c9e16975bea430cf0768963cbfc34faae01e27c0725f103a07b8a')
 
 
 ## run these to get the source URL and the version, require jq
