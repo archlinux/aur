@@ -1,12 +1,12 @@
 pkgbase = scalafmt-native-bin
 	pkgdesc = Code formatter for Scala, native version via graalvm, statically compiled with musl
-	pkgver = 2.7.3
+	pkgver = 2.7.4
 	pkgrel = 1
 	url = https://scalameta.org/scalafmt/
 	arch = x86_64
 	license = Apache-2.0
-	source = scalafmt-native-bin-2.7.3.musl::https://github.com/scalameta/scalafmt/releases/download/v2.7.3/scalafmt-linux-musl
-	sha256sums = f04fd9024bf367f74e47e29c46dcd4c398d38298c1e24d847dfeadd16091ec56
+	source = scalafmt-native-bin-2.7.4.musl::https://github.com/scalameta/scalafmt/releases/download/v2.7.4/scalafmt-linux-musl
+	sha256sums = 6b4a9d393cdd465fd8e049b3d5103906cc3e907d3a53616401366e8adf65fa48
 
 pkgname = scalafmt-native-bin
 
