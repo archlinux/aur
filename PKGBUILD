@@ -1,6 +1,6 @@
 # Maintainer: dszryan
 pkgname=pacmanity-git
-pkgver=r51.a2f674b
+pkgver=r53.e181875
 pkgrel=1
 epoch=2
 pkgdesc="Keeps a list of installed packages in a Gist at your GitHub account"
@@ -20,7 +20,28 @@ pkgver() {
 }
 
 build() {
-  source "$srcdir/${pkgname/-git/}/pacmanity.sh" && pacmanity_build
+  echo "A list of installed packages will be automatically maintained"
+  echo "by Pacmanity in a private Gist at your GitHub account."
+
+  echo -e "\n- Step 1: Log in to Gist using your GitHub account:"
+  [[ -f ~/.gist ]] || gist --login # dont save login details in package, due to securiry concerns
+
+  # if file is present, assume it is maanged externally (via a build system)
+  [[ -r /etc/pacmanity ]] && source /etc/pacmanity
+  if [ -z "$GIST_ID" ]; then
+    echo -e "\n- Step 2: Save list of currently installed packages to Gist:"
+    GIST_URL=$(echo . | gist -p -f $HOSTNAME.pacmanity -d "$HOSTNAME: List of installed packages")
+    GIST_ID=$(echo "$GIST_URL" | sed "s|https://gist.github.com/||g")
+    echo "GIST_ID=$GIST_ID" > "$srcdir/gist_id"
+  else
+    "$srcdir/${pkgname/-git/}/pacmanity.sh"
+    GIST_URL=https://gist.github.com/$GIST_ID
+  fi
+
+  echo "An automatically mantained list of installed packages"
+  echo "has been successfully created in your GitHub Gist."
+  echo "Visit https://gist.github.com or the direct link below:"
+  echo "$GIST_URL"
 }
 
 package() {
