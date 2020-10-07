@@ -2,7 +2,7 @@
 
 pkgname=man-pages-ro-git
 _gitname=manpages-l10n
-pkgver=r11311.4bf91cf81
+pkgver=r11735.77bf47080
 pkgrel=1
 pkgdesc="Romanian man pages (Git version)"
 arch=('any')
