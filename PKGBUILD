@@ -5,16 +5,17 @@ pkgname=zps-git
 pkgdesc="A small utility for listing and reaping zombie processes (git)"
 pkgver=1.2.3.r0.g9d08c49
 pkgrel=1
-arch=('any')
+arch=('x86_64')
 url="https://github.com/orhun/zps"
 license=('GPL3')
 makedepends=('git' 'cmake')
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
-source=('git://github.com/orhun/zps.git')
+provides=("${pkgname%-git}")
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 

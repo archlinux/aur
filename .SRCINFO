@@ -3,13 +3,14 @@ pkgbase = zps-git
 	pkgver = 1.2.3.r0.g9d08c49
 	pkgrel = 1
 	url = https://github.com/orhun/zps
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
+	provides = zps
 	conflicts = zps
 	conflicts = zps-bin
-	source = git://github.com/orhun/zps.git
+	source = git+https://github.com/orhun/zps
 	sha256sums = SKIP
 
 pkgname = zps-git
