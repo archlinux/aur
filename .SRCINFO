@@ -1,7 +1,7 @@
 pkgbase = meandmyshadow
 	pkgdesc = Puzzle/platform game in which you try to reach the exit by solving puzzles.
 	pkgver = 0.5a
-	pkgrel = 2
+	pkgrel = 3
 	url = http://meandmyshadow.sourceforge.net/
 	arch = i686
 	arch = x86_64
