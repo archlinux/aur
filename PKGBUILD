@@ -1,7 +1,7 @@
 # Maintainer: Pietro Carrara <pbcarrara@inf.ufrgs.br>
 
 pkgname=digimend-drivers-git-dkms
-pkgver=10.rc0.r1.g691dae8
+pkgver=10.r0.gec5c16d
 pkgrel=1
 pkgdesc='Linux kernel modules (DKMS) for non-Wacom USB graphics tablets. Git version.'
 arch=('any')
