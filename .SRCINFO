@@ -13,7 +13,7 @@ pkgbase = shy-bin
 	source_x86_64 = shy-0.1.8-README.md::https://github.com/xvxx/shy/raw/v0.1.8/README.md
 	sha512sums_x86_64 = caed7f4f97aa1a1c34ce5b378ead2254fd26156f01b7caba011e64a6fb83940d047ff709d9faa9cbd68d39d7a609d67e063ed34ccab58bb87002c814803a4236
 	sha512sums_x86_64 = 35dfcd7980f4de2dfafd4ce335ad70f6a058dbcbdc57f91c85684676c19750daec61ecbec567d03cdd1ca5ee37477b49a23ebdea6c1ba48fc7c4d32800a00033
-	sha512sums_x86_64 = SKIP
+	sha512sums_x86_64 = 6abc09417b5c4a8cbf8fea3b62ee6fe452beefee023281afed01cd6c9f588b956e400941f2e520ab98083f4508e0775cf623cdf3d4f01eac95ec1c5c62db9441
 
 pkgname = shy-bin
 
