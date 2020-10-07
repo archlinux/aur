@@ -72,7 +72,7 @@ build() {
 }
 
 package() {
- pkgdesc="Latest stable kodi build with VFS automaticly installed"
+ pkgdesc="Latest stable-ish kodi build with VFS automaticly installed"
  cd ${srcdir}/kodi-build
  msg2 "Packaging kodi core"
  mkdir -p ${pkgdir}/usr/share/kodi && cp -r ${srcdir}/kodi-install/usr/share/kodi ${pkgdir}/usr/share/
