@@ -1,14 +1,14 @@
-From a5582eb180b2568a6d52e15d2e83f0ebd23330bc Mon Sep 17 00:00:00 2001
+From cb1d8f4bbca9c91c3c37a43553ee236a2370ffea Mon Sep 17 00:00:00 2001
 From: soloturn <soloturn@gmail.com>
 Date: Sat, 1 Aug 2020 16:21:07 +0200
 Subject: [PATCH] arch aur pachtes
 
 ---
- utils/build-presets.ini | 4 ----
- 1 file changed, 4 deletions(-)
+ utils/build-presets.ini | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
 diff --git a/utils/build-presets.ini b/utils/build-presets.ini
-index 7d9a5c264c8..5e6c207842a 100644
+index 7d9a5c264c8..69d17512110 100644
 --- a/utils/build-presets.ini
 +++ b/utils/build-presets.ini
 @@ -783,12 +783,10 @@ llbuild
@@ -24,14 +24,16 @@ index 7d9a5c264c8..5e6c207842a 100644
  install-llvm
  install-swift
  install-lldb
-@@ -796,7 +794,6 @@ install-llbuild
+@@ -796,8 +794,7 @@ install-llbuild
  install-swiftpm
  install-swift-driver
  install-xctest
 -install-libicu
- install-prefix=/usr
+-install-prefix=/usr
++install-prefix=/usr/lib/swift-git
  install-libcxx
  install-sourcekit-lsp
+ build-swift-static-stdlib
 @@ -816,7 +813,6 @@ toolchain-benchmarks
  install-destdir=%(install_destdir)s
  
