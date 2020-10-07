@@ -1,0 +1,12 @@
+pkgbase = ksync-bin
+	pkgdesc = A tool to transparently update containers running on the cluster from local checkout
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/loadimpact/k6
+	arch = x86_64
+	license = apache
+	source = ksync::https://github.com/ksync/ksync/releases/download/0.4.5/ksync_linux_amd64
+	sha256sums = 8f3a4cdac32274af0d5b333892e1b407823f1072fa9634a4fc46bde6d4050450
+
+pkgname = ksync-bin
+
