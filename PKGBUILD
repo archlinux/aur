@@ -2,7 +2,7 @@
 pkgname=pacmanity-git
 pkgver=r51.a2f674b
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Keeps a list of installed packages in a Gist at your GitHub account"
 arch=('x86_64' 'i686')
 url="https://github.com/dszryan/${pkgname/-git/}"
