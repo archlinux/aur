@@ -1,13 +1,13 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 pkgname=qdriverstation-git
-pkgver=r1186.9271a70
+pkgver=r14.a351123
 pkgrel=1
 pkgdesc="Open source clone of the FRC Driver Station"
 arch=('i686' 'x86_64')
 url="https://github.com/FRC-Utilities/qdriverstation"
 license=('MIT')
 groups=()
-depends=('sdl2' 'qt5-multimedia' 'qt5-quickcontrols')
+depends=('qt5-svg' 'qt5-quickcontrols2')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
