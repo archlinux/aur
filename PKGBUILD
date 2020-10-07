@@ -27,5 +27,7 @@ package() {
   install -m664 "$srcdir/$pkgname/src/pacmanity.hook" "$pkgdir/usr/share/libalpm/hooks/zzz-pacmanity.hook"
 
   # run
+  if [[ -z "$SKIP_FIRST_RUN"  ]]; then
   . $pkgdir/usr/lib/pacmanity/pacmanity.sh && pacmanity_install
+  fi
 }
