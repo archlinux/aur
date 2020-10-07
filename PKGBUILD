@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wdt-git
-pkgver=1.27.1612021.r132.g1f43a96
+pkgver=1.27.1612021.r162.gb585d21
 pkgrel=1
 pkgdesc="Tool to transfer data between 2 systems as fast as possible over multiple TCP paths"
 arch=('i686' 'x86_64')
@@ -13,20 +13,16 @@ optdepends=('jemalloc')
 checkdepends=('gtest')
 provides=('wdt')
 conflicts=('wdt')
-source=("git+https://github.com/facebook/wdt.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/facebook/wdt.git"
+        "git+https://github.com/facebook/folly.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 
 prepare() {
-  cd "$srcdir"
-
-  rm -rf "folly"
-  git clone "https://github.com/facebook/folly.git"
   cd "folly"
-  git checkout "$(git describe --abbrev=0 --always)"
 
-  cd "$srcdir/wdt"
-  mkdir -p "_build"
+  git checkout "$(git describe --abbrev=0 --always)"
 }
 
 pkgver() {
@@ -36,21 +32,24 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/wdt/_build"
+  cd "wdt"
 
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release ../
-  make
+  cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr"
+  make -C "_build"
 }
 
 check() {
-  cd "$srcdir/wdt/_build"
+  cd "wdt"
 
-  #CTEST_OUTPUT_ON_FAILURE=1 make test
+  #CTEST_OUTPUT_ON_FAILURE=1 make -C "_build" test
 }
 
 package() {
-  cd "$srcdir/wdt/_build"
+  cd "wdt"
 
-  make DESTDIR="$pkgdir" install
-  install -Dm644 "../LICENSE" "$pkgdir/usr/share/licenses/wdt/LICENSE"
+  make -C "_build" DESTDIR="$pkgdir" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/wdt"
 }

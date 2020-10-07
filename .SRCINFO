@@ -1,6 +1,6 @@
 pkgbase = wdt-git
 	pkgdesc = Tool to transfer data between 2 systems as fast as possible over multiple TCP paths
-	pkgver = 1.27.1612021.r132.g1f43a96
+	pkgver = 1.27.1612021.r162.gb585d21
 	pkgrel = 1
 	url = https://github.com/facebook/wdt
 	arch = i686
@@ -20,6 +20,8 @@ pkgbase = wdt-git
 	provides = wdt
 	conflicts = wdt
 	source = git+https://github.com/facebook/wdt.git
+	source = git+https://github.com/facebook/folly.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = wdt-git
