@@ -2,9 +2,8 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python39
-pkgver=3.9.0rc2
+pkgver=3.9.0
 pkgrel=1
-_pyver=3.9.0
 _pybasever=3.9
 _pymajver=3
 pkgdesc="Major release 3.9 of the Python high-level programming language"
@@ -15,8 +14,8 @@ depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 options=('!makeflags')
-source=(https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz)
-sha256sums=('80b57c11f60dc1f46a408b1543f04ed52e6475ed5e597b4c23f3fd65f0b729ba')
+source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
+sha256sums=('9c73e63c99855709b9be0b3cc9e5b072cb60f37311e8c4e50f15576a0bf82854')
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
