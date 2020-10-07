@@ -2,7 +2,7 @@
 
 pkgname=libebur128-git
 pkgver=1.2.4.r43.g68abf1b
-pkgrel=1
+pkgrel=2
 pkgdesc="A library implementing the EBU R128 loudness standard"
 arch=('i686' 'x86_64')
 url="https://github.com/jiixyj/libebur128"
@@ -25,13 +25,13 @@ pkgver() {
 build() {
   cd "libebur128"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    "../"
-  make
+    ./
+  make -C "_build"
 }
 
 package() {
