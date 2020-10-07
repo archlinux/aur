@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libavif-git
-pkgver=0.8.1.r54.g037b7bf
+pkgver=0.8.1.r86.ga0a8ffc
 pkgrel=1
 pkgdesc="Library for encoding and decoding .avif files"
 arch=('i686' 'x86_64')
@@ -24,8 +24,8 @@ pkgver() {
 build() {
   cd "libavif"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
@@ -34,8 +34,8 @@ build() {
     -DAVIF_CODEC_DAV1D=ON \
     -DAVIF_CODEC_RAV1E=ON \
     -DAVIF_BUILD_GDK_PIXBUF=ON \
-    ../
-  make
+    ./
+  make -C "_build"
 }
 
 package() {
