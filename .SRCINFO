@@ -1,5 +1,5 @@
 pkgbase = veroroute-svn
-	pkgdesc = Create PDFs from images or scanner
+	pkgdesc = Veroboard, Perfboard, and PCB layout and routing application
 	pkgver = 2.00.r265
 	pkgrel = 1
 	url = https://sourceforge.net/projects/veroroute/
