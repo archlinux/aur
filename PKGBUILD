@@ -6,7 +6,7 @@
 pkgname=ags
 pkgver=3.5.0.24
 pkgrel=1
-pkgdesc='A development tool that is primarily used to create graphical adventure games'
+pkgdesc='Engine to run adventure/quest games'
 arch=('x86_64')
 url='https://github.com/adventuregamestudio/ags'
 license=('Artistic2.0')
