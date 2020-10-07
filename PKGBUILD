@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=racon-git
-pkgver=1.4.13.r23.g9119181
-pkgrel=2
+pkgver=1.4.13.r30.gd798791
+pkgrel=1
 pkgdesc="Ultrafast consensus module for raw de novo genome assembly"
 arch=('i686' 'x86_64')
 url="https://github.com/lbcb-sci/racon"
@@ -30,13 +30,13 @@ pkgver() {
 build() {
   cd "racon"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    "../"
-  make
+    ./
+  make -C "_build"
 }
 
 package() {
