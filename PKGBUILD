@@ -9,7 +9,7 @@ pkgrel=1
 arch=('x86_64')
 url="https://github.com/apple/swift-llvm"
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
+makedepends=('cmake' 'git' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
              'python-sphinx' 'python-recommonmark')
 options=('staticlibs')
 source=(
