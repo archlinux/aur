@@ -1,7 +1,7 @@
 pkgbase = linux-froidzen
 	pkgdesc = Linux ZEN with Patches
 	pkgver = 5.8.13.zen1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/zen-kernel/zen-kernel/commits/v5.8.13-zen1
 	arch = x86_64
 	license = GPL2
