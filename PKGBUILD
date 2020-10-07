@@ -2,9 +2,9 @@
 
 pkgname=zigbee2mqtt
 pkgver=1.14.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A Zigbee to MQTT bridge'
-arch=('x86_64')
+arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.zigbee2mqtt.io'
 license=('GPL3')
 depends=('nodejs>=10.0', 'npm')
