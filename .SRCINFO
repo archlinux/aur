@@ -1,14 +1,16 @@
 pkgbase = ipwebcam
 	pkgdesc = Simple shell script for using IP Webcam as a V4L2 webcam / sound source
-	pkgver = 20200624
-	pkgrel = 3
+	pkgver = 20200820
+	pkgrel = 1
 	url = https://github.com/bluezio/ipwebcam-gst
 	arch = any
 	license = unknown
 	depends = v4l2loopback-dkms
 	depends = adb
-	source = https://raw.githubusercontent.com/bluezio/ipwebcam-gst/master/prepare-videochat.sh
-	md5sums = 5efb2cdde2e336641e188c197534c375
+	source = https://raw.githubusercontent.com/bluezio/ipwebcam-gst/master/install-videochat.sh
+	source = https://raw.githubusercontent.com/bluezio/ipwebcam-gst/master/run-videochat.sh
+	md5sums = 1fe3690f1648688fb2d03a657f1f5e11
+	md5sums = 01f1efec6fc268d4a757a349005007cc
 
 pkgname = ipwebcam
 
