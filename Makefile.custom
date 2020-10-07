@@ -3,8 +3,9 @@ DESTDIR ?=
 
 CXXFLAGS=-std=c++11 -Wno-unknown-pragmas -Wall \
        -fPIC -march=native -O2 -pipe -fno-plt -DFORTIFY_SOURCE=2 \
-       -I/usr/include/mxnet -I/usr/include/vapoursynth -I/usr/include/opencv4
-LDFLAGS=-shared -fPIC -lpthread -lmxnet
+       -I/usr/include/mxnet -I/usr/include/vapoursynth
+LDFLAGS=-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now \
+	-shared -fPIC -lpthread -lmxnet
 
 all: libvsmxnet.so
 
