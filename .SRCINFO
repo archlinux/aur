@@ -1,0 +1,12 @@
+pkgbase = ubuntu-backgrounds-groovy
+	pkgdesc = The backgrounds included in Ubuntu 20.10 groovy
+	pkgver = 20.10.1
+	pkgrel = 1
+	url = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers
+	arch = any
+	license = Commons Attribution-ShareAlike 3.0 Unported
+	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_20.10.1.orig.tar.gz
+	sha256sums = 3db2a2612239cdc06e58035cd8910005f7e75969fcb5aa149712261c8c6f3bac
+
+pkgname = ubuntu-backgrounds-groovy
+
