@@ -10,6 +10,7 @@ url="https://github.com/orhun/i3-workspace-brightness"
 license=('GPL3')
 makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 source=("git+$url")
 sha512sums=('SKIP')
 
@@ -17,7 +18,6 @@ pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 
 build() {
   cd "${pkgname%-git}"
