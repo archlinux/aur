@@ -1,0 +1,13 @@
+pkgbase = disk-filltest
+	pkgdesc = Simple tool to detect bad disks by filling with random data
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://panthema.net/2013/disk-filltest/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://panthema.net/2013/disk-filltest/disk-filltest-0.8.2.tar.gz
+	md5sums = 01821446446d669749cd07eae14e13b1
+
+pkgname = disk-filltest
+
