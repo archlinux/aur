@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Among Us Editor
+Comment=Edits your Among Us player preferences.
+Icon=AUE
+Exec=among-us-editor
+StartupNotify=false
+Terminal=false
+Categories=Editor;Game
