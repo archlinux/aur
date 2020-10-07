@@ -1,3 +1,4 @@
+# Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=nerd-fonts-inter
 _interver=3.15
 _nfver=2.1.0
