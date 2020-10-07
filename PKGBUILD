@@ -24,8 +24,8 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	ln -sf ../../Makefile.custom Makefile
-	patch -Np1 -i ../../linux-compile.patch 
+	ln -sf ../Makefile.custom Makefile
+	patch -Np1 -i ../linux-compile.patch 
 }
 
 build() {
