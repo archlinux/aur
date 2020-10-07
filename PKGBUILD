@@ -1,4 +1,4 @@
-# Maintainer: Nico <desoxhd@gmail.com>
+# Maintainer: Nico <d3sox at protonmail.com>
 pkgname=anydesk-bin
 pkgver=6.0.1
 pkgrel=1
