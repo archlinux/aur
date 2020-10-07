@@ -1,0 +1,71 @@
+--- a/onlyoffice-desktopeditors
++++ b/onlyoffice-desktopeditors
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ 
+ set_names() {
+-  case $LANG in
++  case "$LANG" in
+     cs*)
+       SOURCE_DOC_DIR="$SOURCE_DOC_DIR/cs-CZ"
+       SOURCE_DOC_NAME="new"
+@@ -68,7 +68,7 @@ set_names_ru() {
+ }
+ 
+ check_templates() {
+-  if [ $1 != "--new-document-templates" ]; then
++  if [ "$1" != "--new-document-templates" ]; then
+     return 0
+   fi
+ 
+@@ -76,36 +76,36 @@ check_templates() {
+ 
+   set_names
+ 
+-  eval TEMPLATE_DIR=$(grep XDG_TEMPLATES_DIR $HOME/.config/user-dirs.dirs | cut -d \" -f2)
+-  if [ $TEMPLATE_DIR = $HOME ]; then
++  eval TEMPLATE_DIR=$(grep XDG_TEMPLATES_DIR "${HOME}/.config/user-dirs.dirs" | cut -d \" -f2)
++  if [ "$TEMPLATE_DIR" = "$HOME" ]; then
+     echo "system template's folder isn't found"
+     return 0
+   fi
+   
+-  TEMPLATE_DOCX="$TEMPLATE_DIR/$NEW_DOCX_NAME.docx"
+-  TEMPLATE_XLSX="$TEMPLATE_DIR/$NEW_XLSX_NAME.xlsx"
+-  TEMPLATE_PPTX="$TEMPLATE_DIR/$NEW_PPTX_NAME.pptx"
++  TEMPLATE_DOCX="${TEMPLATE_DIR}/${NEW_DOCX_NAME}.docx"
++  TEMPLATE_XLSX="${TEMPLATE_DIR}/${NEW_XLSX_NAME}.xlsx"
++  TEMPLATE_PPTX="${TEMPLATE_DIR}/${NEW_PPTX_NAME}.pptx"
+ 
+-  mkdir -p $TEMPLATE_DIR
++  mkdir -p "$TEMPLATE_DIR"
+ 
+-  if [ $(ls -A $TEMPLATE_DIR/*.docx 2>/dev/null | wc -l) -eq 0 ]
++  if [ "$(ls -A "$TEMPLATE_DIR"/*.docx 2>/dev/null | wc -l)" -eq 0 ]
+   then
+-    cp $SOURCE_DOC_DIR/$SOURCE_DOC_NAME.docx "$TEMPLATE_DOCX"
++    cp "${SOURCE_DOC_DIR}/${SOURCE_DOC_NAME}.docx" "$TEMPLATE_DOCX"
+   fi
+ 
+-  if [ $(ls -A $TEMPLATE_DIR/*.xlsx 2>/dev/null | wc -l) -eq 0 ]
++  if [ "$(ls -A "$TEMPLATE_DIR"/*.xlsx 2>/dev/null | wc -l)" -eq 0 ]
+   then
+-    cp $SOURCE_DOC_DIR/$SOURCE_DOC_NAME.xlsx "$TEMPLATE_XLSX"
++    cp "${SOURCE_DOC_DIR}/${SOURCE_DOC_NAME}.xlsx" "$TEMPLATE_XLSX"
+   fi
+ 
+-  if [ $(ls -A $TEMPLATE_DIR/*.pptx 2>/dev/null | wc -l) -eq 0 ]
++  if [ "$(ls -A "$TEMPLATE_DIR"/*.pptx 2>/dev/null | wc -l)" -eq 0 ]
+   then
+-    cp $SOURCE_DOC_DIR/$SOURCE_DOC_NAME.pptx "$TEMPLATE_PPTX"
++    cp "${SOURCE_DOC_DIR}/${SOURCE_DOC_NAME}.pptx" "$TEMPLATE_PPTX"
+   fi
+ }
+ 
+ check_templates "$@"
+ 
+ DIR=/opt/onlyoffice/desktopeditors
+-export LD_LIBRARY_PATH=$DIR:$LD_LIBRARY_PATH
+-exec $DIR/DesktopEditors "$@"
++export LD_LIBRARY_PATH="${DIR}:${LD_LIBRARY_PATH}"
++exec "${DIR}/DesktopEditors" "$@"
