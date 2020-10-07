@@ -14,6 +14,7 @@ pkgbase = bubblejail-git
 	depends = xdg-dbus-proxy
 	depends = hicolor-icon-theme
 	provides = bubblejail
+	conflicts = bubblejail
 	source = bubblejail-git::git+https://github.com/igo95862/bubblejail
 	md5sums = SKIP
 

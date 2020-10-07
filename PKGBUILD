@@ -7,8 +7,9 @@ arch=('any')
 url="https://github.com/igo95862/bubblejail"
 license=('GPL3+')
 depends=('python' 'python-xdg' 'bubblewrap' 'python-toml' 'xdg-dbus-proxy' 'hicolor-icon-theme')
-makedepends=('git' 'meson')
 provides=('bubblejail')
+conflicts=('bubblejail')
+makedepends=('git' 'meson')
 source=("$pkgname"::"git+https://github.com/igo95862/bubblejail")
 md5sums=('SKIP')
 
