@@ -3,7 +3,7 @@
 
 pkgname=genesis-starter
 pkgver=6.2.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Character creation tool for Splittermond"
 url="http://blog.rpgframework.de"
@@ -12,8 +12,7 @@ depends=('java-runtime' 'freetype2' 'libxtst' 'alsa-lib' 'libnet' 'libxrender' '
 source=("http://www.rpgframework.de/downloads/linux/genesis-$pkgver-1.x86_64.rpm"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-
-sha256sums=('67a7b3bc0276faebca955f2b2f428231c5edadc3b5ebd2282095f281051a4501'
+sha256sums=('429b5a4235c74ea030ea3dcc8a30c2adf77c88a72078ccd42b173b825a408e3a'
             'df047584bc29b584d0b2e311478b98ed216d9a7a63d6ad96d9bd6c3aa2239a0c'
             '38f5092e84411445e085bdd9e2bca579029406379042337fd0a72fccbf4f363d')
 package() {
