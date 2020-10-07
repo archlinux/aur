@@ -1,4 +1,4 @@
-# Maintainer: Nico <desoxhd@gmail.com>
+# Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=porto-python
 pkgver=0.0.2
 pkgrel=2
