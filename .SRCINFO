@@ -1,6 +1,6 @@
 pkgbase = python-pgpy
 	pkgdesc = Pretty Good Privacy for Python - a pure Python OpenPGP implementation.
-	pkgver = 0.4.3
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/SecurityInnovation/PGPy
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = python-pgpy
 	makedepends = python2-singledispatch
 	makedepends = python2-six
 	makedepends = python2-pyasn1
-	source = https://github.com/SecurityInnovation/PGPy/releases/download/0.4.3/PGPy-0.4.3.tar.gz
-	sha256sums = 04412dddd6882ac0c5d5daf4326c28d481421851a68e25e7ac8e06cc9dc2b902
-	sha384sums = e67cf964dbde17b01a5656275a3825f0357ea01a8d0b1032f04f67af603922f264a811a041ba7529876725c280e563b2
-	sha512sums = fd0ccd5d619e96d1aefbe99fed4d634140ba14d2faff228b6e2aaf60b3c157f46c2f1d06955dc4b0bfe4ef511ce5f66a328121ef4f7563496c66461924e51eb6
+	source = https://github.com/SecurityInnovation/PGPy/releases/download/v0.5.0/PGPy-0.5.0.tar.gz
+	sha256sums = 81cac5dfea1b42f9086ed9816b20ba1a76262340afcded5ed8c41a0ab3dd7bf2
+	sha384sums = 6aeb9002ac2a3e5ac79a3e52cab24c6fa6bb3a29a5fcaee3078a5c9e36c1d4095f0de9df0387f654953d68ae60fae5b3
+	sha512sums = feba3df88bfc92dd174694aaeae3a222288aa05c99eda3ff44261790cd65c55dfe1cb33193dbe690ee6b2ee827db86d626880be67d7e156718d6911d824f3a55
 
 pkgname = python-pgpy
 	depends = python-cryptography>=1.1.0
