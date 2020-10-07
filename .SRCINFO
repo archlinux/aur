@@ -1,6 +1,6 @@
 pkgbase = game-devices-udev
 	pkgdesc = Udev rules for controllers
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://gitlab.com/fabis_cafe/game-devices-udev
 	install = archlinux.install
