@@ -10,11 +10,32 @@ pkgdesc="awesome window manager built with luajit"
 arch=('i686' 'x86_64')
 url='http://awesome.naquadah.org/'
 license=('GPL2')
-depends=('cairo' 'dbus' 'gdk-pixbuf2' 'libxdg-basedir' 'libxkbcommon-x11'
-         'luajit' 'luajit-lgi' 'pango' 'startup-notification' 'xcb-util-cursor'
-         'xcb-util-keysyms' 'xcb-util-xrm' 'xcb-util-wm' 'libxfixes')
-makedepends=('asciidoc' 'cmake' 'docbook-xsl' 'git' 'imagemagick' 'ldoc'
-             'xmlto' 'lua-penlight')
+depends=(
+  'cairo'
+  'dbus'
+  'gdk-pixbuf2'
+  'libxdg-basedir'
+  'libxfixes'
+  'libxkbcommon-x11'
+  'luajit'
+  'luajit-lgi'
+  'pango'
+  'startup-notification'
+  'xcb-util-cursor'
+  'xcb-util-keysyms'
+  'xcb-util-wm'
+  'xcb-util-xrm'
+)
+makedepends=(
+  'asciidoc'
+  'cmake'
+  'docbook-xsl'
+  'git'
+  'imagemagick'
+  'ldoc'
+  'lua-penlight'
+  'xmlto'
+)
 optdepends=('rlwrap: readline support for awesome-client'
             'dex: autostart your desktop files'
             'vicious: widgets for the Awesome window manager'
