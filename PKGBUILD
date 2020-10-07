@@ -17,19 +17,20 @@ source=("https://github.com/Vresod/Among-Us-Editor/releases/download/$pkgver/$_j
 sha256sums=("efdb4c0bead17da3332d4f98655c22d3e0626844f2782700d713ada7fe764d98" "1fc76f358a4996594740da38546946040c98e652e7f2a9644fe16bd2d25ddc43" "9bc31e9bb127d780af39aad0a98dd9c98d98b9a0d00f335daa3d123a9f108de1")
 
 build() {
-    cd "$srcdir"
+	cd "$srcdir"
 
-    #Create shell script to launch the application
-    echo "#!/bin/sh" > AUE.sh
-    echo "_JAVA_AWT_WM_NONREPARENTING=1 java -noverify -jar /usr/share/java/$pkgname/AUE.jar" >> AUE.sh
+	#Create shell script to launch the application
+	#
+	echo "#!/bin/sh" > AUE.sh
+	echo "_JAVA_AWT_WM_NONREPARENTING=1 exec /usr/bin/java -jar '/usr/share/java/$pkgname/AUE.jar' '$@'" >> AUE.sh
 }
 
 package() {
-    cd "$srcdir"
+	cd "$srcdir"
 
-    install -Dm755 'AUE.sh'                 "$pkgdir/usr/bin/among-us-editor"
-    install -Dm644 'AUE.desktop'            "$pkgdir/usr/share/applications/AUE.desktop"
-    install -Dm644 "$_jarfile"                 "$pkgdir/usr/share/java/$pkgname/AUE.jar"
+	install -Dm755 'AUE.sh'                 "$pkgdir/usr/bin/among-us-editor"
+	install -Dm644 'AUE.desktop'            "$pkgdir/usr/share/applications/AUE.desktop"
+	install -Dm644 "$_jarfile"                 "$pkgdir/usr/share/java/$pkgname/AUE.jar"
 
-    install -Dm644 "icon.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/AUE.png"
+	install -Dm644 "icon.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/AUE.png"
 }
