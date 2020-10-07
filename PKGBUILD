@@ -1,4 +1,4 @@
-# Maintainer: Nico <desoxhd@gmail.com>
+# Maintainer: Nico <d3sox at protonmail dot com>
 # Contributor: Zack Emmert <zemmert@fastmail.com>
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 # Contributor: Daniel Cohen <dan@supercore.co.uk>
