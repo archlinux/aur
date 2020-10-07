@@ -1,4 +1,4 @@
-pkgbase = thief-goldtodark
+pkgbase = thiefgold-goldtodark
 	pkgdesc = convert Thief Gold to Thief - The Dark Project
 	pkgver = 20140802
 	pkgrel = 1
@@ -7,5 +7,5 @@ pkgbase = thief-goldtodark
 	source = http://constancejill.free.fr/GamePatchesPC/GoldToDark%20-%20version%202014-08-02B.zip
 	sha256sums = SKIP
 
-pkgname = thief-goldtodark
+pkgname = thiefgold-goldtodark
 

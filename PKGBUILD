@@ -1,6 +1,6 @@
 # Maintainer:  Vincent Grande <shoober420@gmail.com>
 
-pkgname=thief-goldtodark
+pkgname=thiefgold-goldtodark
 pkgver=20140802
 pkgrel=1
 arch=('x86_64')
