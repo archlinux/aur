@@ -6,8 +6,8 @@
 # Contributor: dieghen89 <dieghen89@gmail.com>
 
 pkgname=musique
-pkgver=1.9
-pkgrel=5
+pkgver=1.10
+pkgrel=1
 pkgdesc='A finely crafted music player'
 arch=('x86_64')
 url='https://flavio.tordini.org/musique'
@@ -29,8 +29,6 @@ prepare() {
   git config submodule.lib/idle.url "$srcdir/idle"
   git config submodule.lib/media.url "$srcdir/media"
   git submodule update
-
-  sed -i '1313d;1315i#ifdef APP_EXTRA' src/mainwindow.cpp
 }
 
 build() {
