@@ -18,4 +18,5 @@
 # downloaded
 *.tar.xz
 *.tar.xz.sig
+*.zst
 .DS_Store
