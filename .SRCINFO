@@ -1,6 +1,6 @@
 pkgbase = binaryen-git
 	pkgdesc = Compiler infrastructure and toolchain library for WebAssembly
-	pkgver = r4335.g06698d7a3
+	pkgver = r5262.gfe56186c4
 	pkgrel = 1
 	url = https://github.com/WebAssembly/binaryen
 	arch = i686
