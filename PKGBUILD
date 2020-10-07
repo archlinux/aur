@@ -7,10 +7,12 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=scrounge-ntfs
 pkgver=0.9
-pkgrel=6
+pkgrel=7
 pkgdesc="Data recovery program for NTFS file systems"
-arch=('i686' 'x86_64')
-url="http://thewalter.net/stef/software/scrounge/"
+arch=('x86_64')
+# upstream is dead.
+#url="http://thewalter.net/stef/software/scrounge/"
+url="https://web.archive.org/web/20190703075412/https://thewalter.net/stef/software/scrounge/"
 license=('BSD')
 groups=()
 depends=()
@@ -20,7 +22,9 @@ conflicts=()
 replaces=()
 backup=()
 install=
-source=("http://thewalter.net/stef/software/scrounge/${pkgname}-${pkgver}.tar.gz"
+#source=("http://thewalter.net/stef/software/scrounge/${pkgname}-${pkgver}.tar.gz"
+# https://web.archive.org/web/20190703075412/https://thewalter.net/stef/software/scrounge/scrounge-ntfs-0.9.tar.gz just 302's to the below.
+source=("https://web.archive.org/web/20190703075412/https://thewalter.net/stef/software/scrounge/${pkgname}-${pkgver}.tar.gz"
 	"${pkgname}-${pkgver}.tar.gz.sig")
 noextract=()
 sha512sums=('7d8ba55a8e95b83d0eee5a0f540d22ec572d9724f32d64aec9f3e817b32fcc5d4502979ccd61b1d98adbd559c361d69dc2a288d02de7945855ce51c36c452b07'
