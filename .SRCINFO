@@ -1,0 +1,18 @@
+pkgbase = dockerize-git
+	pkgdesc = Tool for creating minimal docker images from dynamic ELF binaries
+	pkgver = 0.2.2.r10.ga02d457
+	pkgrel = 1
+	url = https://github.com/larsks/dockerize
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-jinja
+	depends = python-pyelftools
+	provides = dockerize
+	conflicts = dockerize
+	source = git+https://github.com/larsks/dockerize.git
+	sha256sums = SKIP
+
+pkgname = dockerize-git
+
