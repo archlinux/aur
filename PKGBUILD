@@ -2,7 +2,7 @@
 
 pkgname=libpdfium-nojs
 pkgver=4240.r1.d080048b1c
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium/"
@@ -36,7 +36,7 @@ prepare() {
 
   cd "$srcdir/pdfium"
 
-  #ln -sf $srcdir/build build
+  ln -sf $srcdir/build build
 
   # Pdfium is developed alongside Chromium and does not provide releases
   # Upstream recommends using Chromium's dev channels instead
