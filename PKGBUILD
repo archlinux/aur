@@ -7,8 +7,8 @@ pkgname=awesome-luajit-git
 pkgver=4.3.148.g795c792d1
 pkgrel=1
 pkgdesc="awesome window manager built with luajit"
+url='https://awesomewm.org/'
 arch=('i686' 'x86_64')
-url='http://awesome.naquadah.org/'
 license=('GPL2')
 depends=(
   'cairo'
