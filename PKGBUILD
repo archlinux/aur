@@ -1,7 +1,7 @@
 #Maintainer: Jernuh Zakalwe <jzakalwe1st@gmail.com>
 pkgname=evesetup
 pkgver=1747682
-pkgrel=6
+pkgrel=7
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
@@ -53,7 +53,7 @@ source=("evelauncher.desktop"
         "eve-transl5.12-ru.tar.gz"
         "eve-transl5.12-zh.tar.gz"
         "https://github.com/megastep/makeself/releases/download/release-2.4.0/makeself-2.4.0.run"
-        "https://github.com/doitsujin/dxvk/releases/download/v1.7.1/dxvk-1.7.1.tar.gz"
+        "https://github.com/doitsujin/dxvk/releases/download/v1.7.2/dxvk-1.7.2.tar.gz"
         "https://binaries.eveonline.com/evelauncher-${pkgver}.tar.gz")
 
 noextract=('eve-transl5.12-de.tar.gz'
@@ -97,9 +97,9 @@ package() {
         cp ${srcdir}/evesetup.shlib ${pkgdir}/opt/${pkgname}/lib
         cp ${srcdir}/evelauncher.lua ${pkgdir}/opt/${pkgname}/doc
         cp ${srcdir}/evelauncher.kwinrule ${pkgdir}/opt/${pkgname}/doc
-        cp -r ${srcdir}/dxvk-1.7.1/x32 ${pkgdir}/opt/${pkgname}/lib/dxvk/
-        cp -r ${srcdir}/dxvk-1.7.1/x64 ${pkgdir}/opt/${pkgname}/lib/dxvk/
-        echo "1.7.1" >${pkgdir}/opt/${pkgname}/lib/dxvk/version
+        cp -r ${srcdir}/dxvk-1.7.2/x32 ${pkgdir}/opt/${pkgname}/lib/dxvk/
+        cp -r ${srcdir}/dxvk-1.7.2/x64 ${pkgdir}/opt/${pkgname}/lib/dxvk/
+        echo "1.7.2" >${pkgdir}/opt/${pkgname}/lib/dxvk/version
         cp -r ${srcdir}/icons ${pkgdir}/usr/share/
         rm -rf ${srcdir}/evelauncher/resources/ ${srcdir}/evelauncher/plugins/
         rm -f ${srcdir}/evelauncher/*[Qq]t* ${srcdir}/evelauncher/libcrypto*
@@ -128,7 +128,7 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '29b6f2cda542c8f3f3845fb3e1ff3e9ac2a645d389c1618bdac5fa69947a2b4b'
             '77b8a8d1cde800956dadf8abf35287c34b3c844c40dfa8f89ed01ca2cde345fb'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
-            '0f646b2b85a6efb358ef4b37fc865e5e91970fb52a9c2a2b5996dc25433166ff'
+            'd3bf90cdab56186c8d0debc24c20472b6febb9f19ef215fc164b22fecaecd186'
             'a8e604e6481b9a386269b6252852ee57812fc932f44f767982c4dbac168bb03b'
             'dd8686f109be618c5b582ec143ba01c6d0da5771f809e169914ee8cd09d1ef29'
             '546aaf5669dc3d3f1b2fff1b9a493d8ba31c19940a04fa4b9eb080e7301df4bd'
@@ -152,5 +152,5 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '1a83a791b5a189823f71cdfb1e0c0e15139ff7f563bfb3eac70a5fa4ad9ebc22'
             '5ffd6578dfbb9bf1647fbae819e3ddae0722c2613779c122d86963123470359f'
             'ca66a6113ce98152b85c8d847949f8c90ab9ba798e106bfc225d4ed3c2e2e3e2'
-            '6ce66c4e01196ed022604e90383593aea02c9016bde92c6840aa58805d5fc588'
+            '1662f6bda93faf4f6c8b57d656779b08925889dd6b794114be874d6deb97e15b'
             '98ccf4b9932d7fb74896461f764c61921592a73089e3fcb4063fe7836c6a0bca')
