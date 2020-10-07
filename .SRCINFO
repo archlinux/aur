@@ -15,7 +15,7 @@ pkgbase = tasmotizer-git
 	source = git+https://github.com/tasmota/tasmotizer.git
 	source = tasmotizer.desktop
 	sha256sums = SKIP
-	sha256sums = 0bc209d3ba418262f3f33715566f50b9e7867da86e07979fffc52ac4efe03ca1
+	sha256sums = 0ae53010ef85803ba6815c7e6b449ce43051edb7b7fd94402a5d9b8aaea50a18
 
 pkgname = tasmotizer-git
 
