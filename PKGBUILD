@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libssh-git
-pkgver=0.7.5.r381.gcc13e852
+pkgver=0.9.5.r473.g693383d1
 pkgrel=1
 pkgdesc="Multiplatform C library implementing the SSHv2 and SSHv1 protocol on client and server side"
 arch=('i686' 'x86_64')
@@ -12,15 +12,9 @@ makedepends=('git' 'cmake' 'cmocka')
 provides=('libssh')
 conflicts=('libssh')
 options=('staticlibs')
-source=("git://git.libssh.org/projects/libssh.git")
+source=("git+https://git.libssh.org/projects/libssh.git")
 sha256sums=('SKIP')
 
-
-prepare() {
-  cd "libssh"
-
-  mkdir -p "_build"
-}
 
 pkgver() {
   cd "libssh"
@@ -32,20 +26,18 @@ pkgver() {
 }
 
 build() {
-  cd "libssh/_build"
+  cd "libssh"
 
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release -DWITH_TESTING=ON -DWITH_ZLIB=ON ../
-  make
-}
-
-check() {
-  cd "libssh/_build"
-
-  make test
+  cmake \
+    -B "_build" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    ./
+  make -C "_build"
 }
 
 package() {
-  cd "libssh/_build"
+  cd "libssh"
 
-  make DESTDIR="$pkgdir" install
+  make -C "_build" DESTDIR="$pkgdir" install
 }
