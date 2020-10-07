@@ -7,7 +7,7 @@ arch=('any')
 url="https://gir.st/blog/legacyfox.htm"
 license=('MPL')
 depends=('firefox')
-_commit=022cf6d
+_commit=29dc0ab
 source=("https://git.gir.st/LegacyFox.git/snapshot/v$pkgver.tar.gz")
 sha256sums=('f1360edf46501d8c1d0cee565a6ee8e31b652a15ffda0014fe54d7fa033c7921')
 
