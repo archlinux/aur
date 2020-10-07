@@ -28,9 +28,8 @@ build() {
 package() {
 	cd "$srcdir"
 
-	install -Dm755 'AUE.sh'                 "$pkgdir/usr/bin/among-us-editor"
-	install -Dm644 'AUE.desktop'            "$pkgdir/usr/share/applications/AUE.desktop"
-	install -Dm644 "$_jarfile"                 "$pkgdir/usr/share/java/$pkgname/AUE.jar"
-
-	install -Dm644 "icon.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/AUE.png"
+	install -Dm755 'AUE.sh'             "$pkgdir/usr/bin/among-us-editor"
+	install -Dm644 'AUE.desktop'        "$pkgdir/usr/share/applications/AUE.desktop"
+	install -Dm644 "$_jarfile"          "$pkgdir/usr/share/java/$pkgname/AUE.jar"
+	install -Dm644 "icon.png"            "$pkgdir/usr/share/icons/hicolor/64x64/apps/AUE.png"
 }
