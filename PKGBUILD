@@ -1,50 +1,59 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tinyxml-git
-pkgver=8.0.0.r42.g1aeb57d
+pkgver=r1.g94b1760
 pkgrel=1
 pkgdesc="A simple, small, efficient, C++ XML parser"
 arch=('i686' 'x86_64')
-url="http://grinninglizard.com/tinyxml2/index.html"
+url="http://www.grinninglizard.com/tinyxml/"
 license=('zlib')
 depends=('gcc-libs')
-makedepends=('git' 'cmake')
+makedepends=('git' 'setconf')
 provides=('tinyxml')
 conflicts=('tinyxml')
-options=('staticlibs')
-source=("git+https://github.com/leethomason/tinyxml2.git")
-sha256sums=('SKIP')
+source=("git+https://git.code.sf.net/p/tinyxml/git"
+        "tinyxml.pc::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/tinyxml/trunk/tinyxml.pc")
+sha256sums=('SKIP'
+            'SKIP')
 
+
+prepare() {
+  cd "git"
+
+  setconf Makefile TINYXML_USE_STL YES
+  setconf Makefile RELEASE_CFLAGS "$CXXFLAGS -fPIC"
+}
 
 pkgver() {
-  cd "tinyxml2"
+  cd "git"
 
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  _rev=$(git rev-list --count --all)
+  _hash=$(git rev-parse --short HEAD)
+  printf "r%s.g%s" "$_rev" "$_hash"
 }
 
 build() {
-  cd "tinyxml2"
+  cd "git"
 
-  cmake \
-    -B "_build" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DCMAKE_INSTALL_LIBDIR="lib" \
-    -DBUILD_STATIC_LIBS=ON \
-    ./
-  make -C "_build"
+  make
+  g++ "$CXXFLAGS" -fPIC -shared -o "libtinyxml.so" \
+    -Wl,-soname,"libtinyxml.so" $(ls *.o | grep -v xmltest)
 }
 
 check() {
-  cd "tinyxml2"
+  cd "git"
 
-  make -C "_build" test
+  ./xmltest
 }
 
 package() {
-  cd "tinyxml2"
+  cd "git"
 
-  make -C "_build" DESTDIR="$pkgdir" install
+  install -dm 755 "$pkgdir/usr"/{lib,include}
+  install -Dm 755 "libtinyxml.so" -t "$pkgdir/usr/lib"
+  install -Dm 644 {tinyxml,tinystr}.h -t "$pkgdir/usr/include"
 
-  install -Dm644 "LICENSE.txt" -t "$pkgdir/usr/share/licenses/tinyxml"
+  install -Dm644 "$srcdir/tinyxml.pc" -t "$pkgdir/usr/lib/pkgconfig"
+
+  install -Dm644 "readme.txt" "$pkgdir/usr/share/licenses/tinyxml/LICENSE"
 }
