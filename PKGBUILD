@@ -1,13 +1,13 @@
 pkgname=dnf
-pkgver=4.2.23
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Package manager forked from Yum, using libsolv as a dependency resolver"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
-license=('GPL2' 'GPL')
-depends=('libdnf>=0.48.0' 'libcomps>=0.1.8'
+license=('GPL2')
+depends=('libdnf>=0.54.1' 'libcomps>=0.1.8'
          'python' 'python-gpgme' 'rpm-tools>=4.14.0')
-makedepends=('bash-completion' 'cmake' 'python-sphinx')
+makedepends=('bash-completion' 'cmake>=3.13' 'python-sphinx')
 checkdepends=('python-nose')
 optdepends=('python-unbound: for gpgkey_dns_verification option')
 backup=("etc/$pkgname/automatic.conf"
@@ -19,12 +19,10 @@ backup=("etc/$pkgname/automatic.conf"
         "etc/logrotate.d/$pkgname")
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('aa9c742f3d29d27e3238a74bff73bf08')
+md5sums=('9c2ef7103e54e9d92bdf7c817fe73c36')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	rm -rf build
-	mkdir build
 
 	# sphinx-build-3 does not exist on Arch Linux,
 	# use sphinx-build instead
@@ -33,24 +31,29 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname-$pkgver"/build
-	cmake -DCMAKE_BUILD_TYPE=Release  \
+	cd "$pkgname-$pkgver"
+
+	cmake -B build \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
-	      -DPYTHON_DESIRED=3          \
-	      ..
-	make
-	make doc-man
+	      -DPYTHON_DESIRED=3
+
+	make -C build
+	make -C build doc-man
 }
 
 # Tests seem to need a non-empty RPM database installed on the system
 #check() {
-#	cd "$pkgname-$pkgver"/build
-#	make ARGS="-V" test
+#	cd "$pkgname-$pkgver"
+#
+#	make -C build ARGS="-V" test
 #}
 
 package() {
-	cd "$pkgname-$pkgver"/build
-	make DESTDIR="$pkgdir/" install
+	cd "$pkgname-$pkgver"
+
+	make -C build DESTDIR="$pkgdir/" install
+
+	install -Dp -m644 README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
 
 	rm "$pkgdir/usr/share/man/man8/yum.8" \
 	   "$pkgdir/usr/share/man/man5/yum.conf.5" \
@@ -60,8 +63,6 @@ package() {
 	ln -s $pkgname-automatic-3 "$pkgdir/usr/bin/$pkgname-automatic"
 
 	rm "$pkgdir/etc/$pkgname/$pkgname-strict.conf"
-
-	install -Dp -m644 ../README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
