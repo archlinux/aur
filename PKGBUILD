@@ -2,7 +2,7 @@
 
 pkgname=ispc-git
 pkgver=1.14.1.r15.gc4529a3c
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel SPMD program compiler"
 arch=('i686' 'x86_64')
 url="https://ispc.github.io/"
@@ -32,14 +32,14 @@ pkgver() {
 build() {
   cd "ispc"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DISPC_INCLUDE_EXAMPLES=OFF \
     -DISPC_NO_DUMPS=ON \
-    "../"
-  make
+    ./
+  make -C "_build"
 }
 
 check() {
