@@ -2,7 +2,7 @@
 
 pkgname=uci-git
 pkgver=r511.g4c8b4d6
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenWrt unified configuration interface"
 arch=('i686' 'x86_64')
 url="https://openwrt.org/docs/techref/uci"
@@ -26,13 +26,13 @@ pkgver() {
 build() {
   cd "uci"
 
-  mkdir -p "_build" && cd "_build"
   cmake \
+    -B "_build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    ../
-  make
+    ./
+  make -C "_build"
 }
 
 package() {

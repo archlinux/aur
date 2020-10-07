@@ -1,7 +1,7 @@
 pkgbase = uci-git
 	pkgdesc = OpenWrt unified configuration interface
 	pkgver = r511.g4c8b4d6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openwrt.org/docs/techref/uci
 	arch = i686
 	arch = x86_64
