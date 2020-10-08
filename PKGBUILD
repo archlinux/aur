@@ -20,7 +20,7 @@ source_x86_64=("Jackett.Binaries.LinuxAMDx64-${pkgver}.tar.gz::https://github.co
 source_aarch64=("Jackett.Binaries.LinuxARM64-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.LinuxARM64.tar.gz")
 source_armv7h=("Jackett.Binaries.LinuxARM32-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.LinuxARM32.tar.gz")
 
-sha256sums=('123b305c2c023c7632e7d6580afbc5d4fad03daae9b929849f794628ed0acfd4'
+sha256sums=('dd8cf665c118a7c87e796c20d790989e0b1a1e12d16feba2a28e3465ad45be67'
             'd005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590'
             '64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1')
 sha256sums_x86_64=('68306b19b1160005050ea8974167626d33103c096b91cfcd789d7b14716d4ef4')
