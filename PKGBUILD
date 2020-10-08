@@ -9,8 +9,8 @@
 # Contributor: sl1pkn07 <sl1pkn07 at gmail dot com>
 
 pkgname=nvidia-beta-dkms
-pkgver=455.23.04
-pkgrel=2
+pkgver=455.28
+pkgrel=1
 pkgdesc='NVIDIA driver sources for linux (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -22,8 +22,8 @@ _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         '110-nvidia-change-dkms-conf.patch'
         '120-nvidia-linux-rt-gift.patch')
-sha256sums=('5576f9a00b647ee2a1e89c10079985d734090db6259241c1cb2fa23c0a09fbac'
-            '9d3267c1f22455aff7058951f587a2cf04c9b7830aac98e3944df0692edf0321'
+sha256sums=('9d0c88b920ca5ee0a429d06fae3b9fb6e8bf6ff486726248d8647c6b45f98bf0'
+            '1ddacab7d4e409b6836ef6c13593869b72f950d5ce11e9f16c3e9900fe844b01'
             'd669f45bbe75bf5b490168eb599b8492fca502930b8a34d730b803adba13381f')
 
 prepare() {
@@ -41,6 +41,6 @@ package() {
     
     mkdir -p "${pkgdir}/usr/src"
     cp -dr --no-preserve='ownership' "${_pkg}/kernel" "${pkgdir}/usr/src/nvidia-${pkgver}"
-    printf '%s\n' 'blacklist nouveau' | install -D -m644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
+    install -D -m644 <(printf '%s\n' 'blacklist nouveau') "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
     install -D -m644 "${_pkg}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
