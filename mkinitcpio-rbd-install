@@ -9,13 +9,41 @@ build() {
 
 help() {
     cat <<HELPEOF
-This hook allows to map rbd, and use it as a root device.
-It requires the 'ip' kernel argument of the net hook for ip settings and it uses an extra 'rbd' kernel argument for ceph settings.
-Don't forget to set the net hook before the rbd hook in your mkinitcpio configuration file.
+This hook allows to map a rbd block device, for example to use it as a root device.
+It loads the rbd kernel module and then mounts the wanted disk to /dev/rbd0.
 
-Arguments:
-    ip: examples at https://wiki.archlinux.org/index.php/Mkinitcpio#Using_net
-    rbd: rbd=<monitor address>:name=<username>,secret=<secret key>:<pool name>:<disk name>
+Requirements:
+This hook needs internet access, so the net hook is required. Be sure to add it in the mkinitcpio
+config file before the rbd hook. You also need to properly configure the ip kernel parameter to have
+internet access.
+If you wish to mount the rbd device, you also need to add 'root=/dev/rdb0' as a kernel parameter.
+
+Kernel Parameters:
+You can set your settings for the rbd block device with this new kernel parameter.
+The settings consists of several elements, separated by colons:
+
+rbd=<mon ip addr>:name=<client name>,secret=<client key>:<pool name>:<rbd image name>
+
+<mon ip addr>       IP address or comma separated addresses of the monitor nodes
+
+<client name>       Name of the user created via `ceph auth`. This user needs to have the rights to read
+                    and write to the pool the rbd is located in. The name is the part after 'client.' in
+                    the keyring file written after the user was created.
+
+<client-key>        Key associated to the user created via `ceph auth`. The key is the string located
+                    after 'key = ' in the keyring file associated with the user.
+
+<pool name>         Name of the pool the rbd block device is located in.
+
+<rbd image name>    Name of the rbd block device.
+
+Examples:
+rbd=192.168.0.1:name=admin:secret=SECRET:rbd:foo  --> Mounts the rbd foo from the pool rbd, via the
+monitor 192.168.0.1 with the specified credentials
+rbd=10.20.0.1,10.20.0.2,10.20.0.3:name=ceph:rbd:foo  --> Mounts the rbd foo from the pool rbd, via
+the monitors written and without cephx authentification
+
+
 HELPEOF
 }
 
