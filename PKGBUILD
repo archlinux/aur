@@ -9,7 +9,8 @@ pkgdesc="Lightweight C++ template library for vector and matrix math, a.k.a. lin
 arch=('any')
 url='https://eigen.tuxfamily.org'
 license=('GPL3' 'LGPL2.1' 'BSD' 'custom:MPL2' 'custom:MINPACK')
-provide=("eigen=3.3.9")
+provides=("eigen=3.3.9")
+conflicts=(eigen)
 makedepends=('cmake' 'pkg-config' 'freeglut' 'gcc-fortran' 'fftw' 'suitesparse' 'boost')
 source=(https://gitlab.com/libeigen/eigen/-/archive/$pkgver/${pkgname%-qfix}-$pkgver.tar.gz
 	'assert.patch::https://gitlab.com/libeigen/eigen/-/merge_requests/232.diff')
