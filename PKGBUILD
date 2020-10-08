@@ -22,7 +22,7 @@ package() {
     find dist package.json package.nls.json package.nls.ru.json -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/opt/${pkgname}/{}" \;
     chmod +x "${pkgdir}/opt/${pkgname}/dist/server.bundle.js"
-    ln -s "${pkgdir}/opt/${pkgname}/dist/server.bundle.js" "${pkgdir}/usr/bin/pylance-language-server"
+    ln -s "/opt/${pkgname}/dist/server.bundle.js" "${pkgdir}/usr/bin/pylance-language-server"
     install -Dm 644 "${srcdir}/extension/LICENSE.txt" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
