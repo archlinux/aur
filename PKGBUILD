@@ -1,15 +1,15 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p-git
-pkgver=20200604.r0.gbc57b4a
+pkgver=20201008.r0.g1b7a010
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI (git version)'
 arch=('x86_64')
 url='https://m64p.github.io/'
 license=('GPL3')
-depends=('freetype2' 'glu' 'hidapi' 'libgl' 'libpng' 'libsamplerate'
-         'minizip' 'p7zip' 'qt5-base' 'qt5-websockets' 'sdl2' 'sdl2_net'
-         'zlib' 'hicolor-icon-theme')
+depends=('freetype2' 'hidapi' 'libgl' 'libpng' 'libsamplerate' 'minizip'
+         'qt5-base' 'qt5-websockets' 'sdl2' 'sdl2_net' 'zlib' 'hicolor-icon-theme')
+optdepends=('p7zip: for 7z/zip support')
 makedepends=('git' 'cmake' 'nasm' 'icoutils')
 provides=('m64p' 'mupen64plus-gui' 'mupen64plus-video-gliden64')
 conflicts=('m64p' 'mupen64plus-gui' 'mupen64plus-video-gliden64' 'mupen64plus')
@@ -18,8 +18,8 @@ source=('git+https://github.com/loganmc10/m64p.git'
         '020-m64p-git-enable-optimizations.patch'
         'm64p.desktop')
 sha256sums=('SKIP'
-            '9241207664cd3338ae38d02f30f7ae0f3e06c3593a50548d46bca6505181b5c2'
-            'f4cdfe23cbf35724388e8b7d2ab7f8b93cad461759588deebf46b7eb8fd2367e'
+            'b6e91689d151dfc8e60b3d095a9c20f7777b2df79083cd55a9ed43dd32dcd96b'
+            '4366b57c9e909495d3d462eb2ce64335cbd015764be7c490fe675fbf6dfe2f84'
             '8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808')
 
 prepare() {
@@ -30,14 +30,10 @@ prepare() {
 
 pkgver() {
     local _tag
-    local _ver
-    local _rev
-    local _hash
     _tag="$(git -C m64p describe --tags --abbrev='0')"
-    _ver="$(git -C m64p log -1 --format='%ad' --date='format:%Y%m%d' "$_tag")"
-    _rev="$(git -C m64p describe --tags --long | awk -F'-' '{ print $2 }')"
-    _hash="$(git -C m64p describe --tags --long | awk -F'-' '{ print $3 }')"
-    printf '%s.r%s.%s' "$_ver" "$_rev" "$_hash"
+    printf '%s.r%s.%s' "$(git -C m64p log -1 --format='%ad' --date='format:%Y%m%d' "$_tag")" \
+                       "$(git -C m64p describe --tags --long | awk -F'-' '{ print $2 }')" \
+                       "$(git -C m64p describe --tags --long | awk -F'-' '{ print $3 }')"
 }
 
 build() {

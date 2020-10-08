@@ -45,18 +45,9 @@
  if [[ $UNAME == *"MINGW"* ]]; then
    cp $base_dir/mupen64plus-gui/build/release/mupen64plus-gui.exe $install_dir
  else
-@@ -75,7 +75,7 @@ cd $base_dir/GLideN64/src/GLideNUI
- mkdir -p build
- cd build
- qmake ../GLideNUI.pro
--make -j4
-+make
- 
- cd $base_dir/GLideN64/projects/cmake
- if [[ $UNAME == *"MINGW"* ]]; then
-@@ -83,7 +83,7 @@ if [[ $UNAME == *"MINGW"* ]]; then
+@@ -77,7 +77,7 @@ if [[ $UNAME == *"MINGW"* ]]; then
  else
-   cmake -DNOHQ=On -DVEC4_OPT=On -DCRC_OPT=On -DMUPENPLUSAPI=On ../../src/
+   cmake -DMUPENPLUSAPI_GLIDENUI=On -DNOHQ=On -DVEC4_OPT=On -DCRC_OPT=On -DMUPENPLUSAPI=On ../../src/
  fi
 -make -j4
 +make
