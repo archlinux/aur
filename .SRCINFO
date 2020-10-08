@@ -1,0 +1,17 @@
+pkgbase = gfold-bin
+	pkgdesc = CLI tool to help keep track of Git repositories
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/nickgerace/gfold
+	arch = x86_64
+	license = Apache
+	provides = gfold
+	conflicts = gfold
+	conflicts = gfold-git
+	source_x86_64 = gfold-0.5.2::https://github.com/nickgerace/gfold/releases/download/0.5.2/gfold-linux-gnu-amd64
+	source_x86_64 = gfold-0.5.2-README.md::https://github.com/nickgerace/gfold/raw/0.5.2/README.md
+	sha512sums_x86_64 = 497286266bdf30a5da71147b46f7866caa0159c86362dcde4d8453984a4039f582fe0691b682ad67775f4998799abdb74b564f19eae59e4f26ef567637005bda
+	sha512sums_x86_64 = 810f9f04117051404e731017cde9ade50c323bc1200ea5dae4c7a1619f8057f095d20998f69fdc4716135382f5fc8b28972ec1d9642913e18aacbf149c8982b8
+
+pkgname = gfold-bin
+
