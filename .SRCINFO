@@ -1,7 +1,7 @@
 pkgbase = xeus-cling
 	pkgdesc = A C++ jupyter kernel based on xeus and cling
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jupyter-xeus/xeus-cling
 	arch = x86_64
 	license = BSD
@@ -12,6 +12,8 @@ pkgbase = xeus-cling
 	depends = jupyter
 	depends = jupyter-widgetsnbextension
 	depends = cling-dev
+	depends = pugixml
+	depends = cxxopts
 	source = https://github.com/jupyter-xeus/xeus-cling/archive/0.10.0.tar.gz
 	source = 0001-Rename-kernels.patch
 	source = 0002-Use-llvm-from-cling.patch

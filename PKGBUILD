@@ -1,14 +1,14 @@
 # Maintainer: Sebastian Gsänger <sebastian_gsaenger@web.de>
 pkgname=xeus-cling
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ jupyter kernel based on xeus and cling"
 arch=('x86_64')
 url="https://github.com/jupyter-xeus/xeus-cling"
 license=('BSD')
 depends=('xtl' 'xproperty' 'xeus' 'nlohmann-json'
          'jupyter' 'jupyter-widgetsnbextension'
-         'cling-dev')
+         'cling-dev' 'pugixml' 'cxxopts')
 makedepends=()
 source=("https://github.com/jupyter-xeus/$pkgname/archive/$pkgver.tar.gz"
         "0001-Rename-kernels.patch"
@@ -32,11 +32,10 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver"
-    mkdir build
+    mkdir -p build
     cd build
 
     cmake \
-        -GNinja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DClang_DIR=/opt/cling/lib/cmake/clang \
