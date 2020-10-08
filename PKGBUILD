@@ -1,6 +1,6 @@
 pkgname=zenith-git
-pkgver=r174.cbe523d
-pkgrel=3
+pkgver=r364.3400294
+pkgrel=1
 pkgdesc='In terminal graphical metrics for your *nix system written in Rust'
 arch=('x86_64')
 url='https://github.com/bvaisvil/zenith'
@@ -20,10 +20,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  cargo build --release
+  make
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  install -Dm755 "target/release/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+  make install PREFIX=/usr DESTDIR="${pkgdir}"
+  install -D -m 644 README.md "${pkgdir}/usr/share/doc/zenith/README.md"
 }
