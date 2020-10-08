@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pdfstudioviewer
 _pkgname=pdfstudioviewer2020
-pkgver=2020.1.0
+pkgver=2020.1.1
 pkgrel=1
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ source_i686=("${pkgname}-${pkgver}_linux.deb::https://download.qoppa.com/$pkgnam
 source_x86_64=("${pkgname}-${pkgver}_linux64.deb::https://download.qoppa.com/$pkgname/PDFStudioViewer_linux64.deb")
 sha256sums=('531354a4fe61e8b16ad3123cd49df7140d4ac1ef3c5e75520b9250d55c398481'
             '4b8c8711726bca47d41097862631168298fccece605222397ff0aa7b8765617c')
-sha256sums_i686=('55badbdb6d8d7e2c10e90246aeb228cfcfcdf2507d4f4551dc7d323f1c2af590')
-sha256sums_x86_64=('d139e02931249f9d11bb1a0bb0a7954ff974e1ffd5b35d0de4afae982706fafc')
+sha256sums_i686=('f097cf566724ca7288fe3117e098545779140d51479d9aa8fc41b00d8b0b9b9d')
+sha256sums_x86_64=('b5a867aa4a1a8ed7de08405397a7ddb0368a16f67978b78c983f5130db8fb7c2')
 
 prepare() {
 	mkdir -p "$pkgname-$pkgver"
