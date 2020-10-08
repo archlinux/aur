@@ -5,4 +5,10 @@ post_upgrade() {
         printf '%s\n' '==> Replace it with egl-wayland from the official repositories with:'
         printf '%s\n' '==> # pacman -Syu egl-wayland'
     fi
+    
+    post_install
+}
+
+post_install() {
+    printf '%s\n' 'If you run into trouble with CUDA not being available, run nvidia-modprobe first.'
 }

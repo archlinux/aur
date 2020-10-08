@@ -5,7 +5,7 @@
 
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
-pkgver=455.23.04
+pkgver=455.28
 pkgrel=1
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
@@ -17,10 +17,10 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         'nvidia-drm-outputclass.conf'
         'nvidia-utils.sysusers'
         '120-nvidia-settings-change-desktop-paths.patch')
-sha256sums=('5576f9a00b647ee2a1e89c10079985d734090db6259241c1cb2fa23c0a09fbac'
+sha256sums=('9d0c88b920ca5ee0a429d06fae3b9fb6e8bf6ff486726248d8647c6b45f98bf0'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
-            '633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a')
+            '6bbc832f4f91a7c9ec4778eac5fffd633f5f547bc2d8bb89afe4f442ad3c8dda')
 
 # create soname links
 _create_links() {
