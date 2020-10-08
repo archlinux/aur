@@ -1,6 +1,6 @@
 pkgbase = linux-wifi-hotspot
 	pkgdesc = Create virtual wifi hotspot using same wifi card which is connected to an AP + many features (a GUI tool)
-	pkgver = 3.0.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/lakinduakash/linux-wifi-hotspot
 	install = linux-wifi-hotspot.install
@@ -20,8 +20,8 @@ pkgbase = linux-wifi-hotspot
 	conflicts = wihotspot
 	conflicts = create_ap
 	backup = etc/create_ap.conf
-	source = linux-wifi-hotspot-3.0.0.tar.gz::https://github.com/lakinduakash/linux-wifi-hotspot/archive/v3.0.0.tar.gz
-	sha256sums = 33a24587a27b500e280da8a3d0a32008ed4b54705e021b7284d6649dfbbbf638
+	source = linux-wifi-hotspot-3.1.1.tar.gz::https://github.com/lakinduakash/linux-wifi-hotspot/archive/v3.1.1.tar.gz
+	sha256sums = e5a6198e09ff5ff853e0cb0f225c6707c79ed8d3433d0a2e679a5ad1ca0eda19
 
 pkgname = linux-wifi-hotspot
 
