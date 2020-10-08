@@ -1,8 +1,8 @@
 # Maintainer: Vlad V. Voronenkov <vladvoronenkov at yandex dot ru>
 pkgname=abinit-dev
-pkgver=9.0.4
+pkgver=9.2.1
 pkgrel=1
-pkgdesc="Full-featured atomic-scale first-principles simulation software. Development version."
+pkgdesc="Full-featured atomic-scale first-principles simulation software. Latest version."
 arch=('i686' 'x86_64')
 url="https://www.abinit.org/"
 license=('GPLv3')
@@ -16,7 +16,7 @@ source=(
 
 build() {
   cd -- "$srcdir/abinit-$pkgver"
-  ./configure FC=gfortran-8 CC=cc-8 --prefix=/usr --with-hdf5  --without-mpi --with-libxc --with-netcdf --with-netcdf-fortran   --enable-openmp   
+  ./configure FC=gfortran CC=cc --prefix=/usr --with-hdf5  --without-mpi --with-libxc --with-netcdf --with-netcdf-fortran   --enable-openmp   
   make  -j $(($(nproc) + 1))
 }
 
@@ -25,4 +25,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-sha512sums=('93991a0f882218993e43bf5236f60d53bd0a08e0e87824b2807423967cb975afd97dc370bba1804c6f5e44ba2a61c5959b6781e3c438954aac05e5a31dd9baaa')
+sha512sums=('31405d3c29526ef4022b5299b94eb729ef0996717e391c865ec1e53dd9c45c688c4c70fbbdbb72c036665cbd153eff141b2eeb5b5bc455e0a24fac350e7cca5d')

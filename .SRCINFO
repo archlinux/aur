@@ -1,6 +1,6 @@
 pkgbase = abinit-dev
-	pkgdesc = Full-featured atomic-scale first-principles simulation software. Development version.
-	pkgver = 9.0.4
+	pkgdesc = Full-featured atomic-scale first-principles simulation software. Latest version.
+	pkgver = 9.2.1
 	pkgrel = 1
 	url = https://www.abinit.org/
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = abinit-dev
 	depends = netcdf-cxx
 	provides = abinit
 	conflicts = abinit
-	source = https://www.abinit.org/sites/default/files/packages/abinit-9.0.4.tar.gz
-	sha512sums = 93991a0f882218993e43bf5236f60d53bd0a08e0e87824b2807423967cb975afd97dc370bba1804c6f5e44ba2a61c5959b6781e3c438954aac05e5a31dd9baaa
+	source = https://www.abinit.org/sites/default/files/packages/abinit-9.2.1.tar.gz
+	sha512sums = 31405d3c29526ef4022b5299b94eb729ef0996717e391c865ec1e53dd9c45c688c4c70fbbdbb72c036665cbd153eff141b2eeb5b5bc455e0a24fac350e7cca5d
 
 pkgname = abinit-dev
 
