@@ -16,6 +16,11 @@ conflicts=('xkbdata' 'xkeyboard-config')
 source=(git+https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config.git)
 sha512sums=('SKIP')
 
+pkgver() {
+  cd xkeyboard-config
+  git describe --tags | sed 's/-/+/g'
+}
+
 build() {
   cd xkeyboard-config
   ./autogen.sh
