@@ -1,10 +1,13 @@
+#Maintainer: Rein Fernhout (LevitatingBusinessMan) <public@reinfernhout.xyz>
+
 pkgname=filematch
 pkgver=fe26f8a
 arch=("x86_64")
 pkgrel=1
 pkgdesc="A CLI program to compare checksums of folders and files"
 license=("MIT")
-makedepends=("cargo")
+makedepends=("cargo" "git")
+url="https://github.com/LevitatingBusinessMan/filematch"
 source=("git+https://github.com/LevitatingBusinessMan/filematch.git")
 sha256sums=("SKIP")
 
