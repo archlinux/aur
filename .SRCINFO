@@ -1,19 +1,22 @@
 pkgbase = insync-headless
-	pkgdesc = Google Drive and OneDrive headless client
-	pkgver = 3.0.0.10585
-	pkgrel = 2
+	pkgdesc = Google Drive and OneDrive headless client for servers
+	pkgver = 3.0.1.10590
+	pkgrel = 1
 	url = https://www.insynchq.com/downloads
 	arch = x86_64
 	license = custom:insync
 	depends = cron
 	depends = glibc
+	conflicts = insync
 	options = !strip
-	source = http://s.insynchq.com/builds/insync-headless_3.0.0.10585-buster_amd64.deb
+	source = http://s.insynchq.com/builds/insync-headless_3.0.1.10590-buster_amd64.deb
 	source = insync-headless@.service
 	source = insync-headless.service
-	sha256sums = a9e19b6f639c21fcec6c9060a090bf12588d95afaa00da3f5d109060522f3c55
+	source = insync-headless.patch
+	sha256sums = 9634acffaa0666070c52f6ec9486444b875570d0d83a2017c4e69eba86944a4c
 	sha256sums = b8dd2876fc0aa2eb75081fe5f819f544029627c4bcdbbd4b829da8b46b5dcc46
 	sha256sums = 1f84e70294a6f242fa7a32a3508e1d43c36dd0f89f675d324cc104dd28ffaa18
+	sha256sums = 67a54a59f0a7c747cb9ec8913b90a6bf1ed4e4b4c2ece2e2cd27d212546a93ed
 
 pkgname = insync-headless
 

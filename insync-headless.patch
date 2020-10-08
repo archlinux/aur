@@ -1,0 +1,6 @@
+--- a/usr/bin/insync-headless
++++ b/usr/bin/insync-headless
+@@ -1,2 +1,2 @@
+ #!/bin/bash
+-LC_TIME=C exec /usr/lib/insync/insync-headless "$@"
++LC_TIME=C exec /usr/lib/insync-headless/insync-headless "$@"
