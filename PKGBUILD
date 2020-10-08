@@ -1,4 +1,5 @@
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
@@ -15,9 +16,9 @@ pkgdesc='Premier connectivity tool for remote login with the SSH protocol, with 
 url='https://www.openssh.com/portable.html'
 license=('custom:BSD')
 arch=('x86_64')
-makedepends=('linux-headers' 'git' 'libfido2')
+depends=('glibc' 'krb5' 'openssl' 'libedit' 'ldns' 'libxcrypt' 'libcrypt.so' 'zlib' 'pam' 'libselinux')
+makedepends=('linux-headers' 'libfido2')
 checkdepends=('inetutils')
-depends=('krb5' 'openssl' 'libedit' 'ldns' 'libselinux')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X'
             'libfido2: FIDO/U2F support')
