@@ -83,7 +83,7 @@ build() {
 #    make -C dbus check
 #}
 
-package_dbus-nosystemd-git(){
+package_dbus-nosystemd-minimal-git(){
     depends+=('libaudit.so')
     provides=('libdbus' 'libdbus-1.so' 'dbus')
     conflicts=('libdbus' 'dbus')
@@ -104,7 +104,7 @@ package_dbus-nosystemd-git(){
     mv "$pkgdir/usr/share/doc" "$srcdir"	
 }
 
-package_dbus-docs-nosystemd-git(){
+package_dbus-docs-nosystemd-minimal-git(){
     pkgdesc+=" (documentation)"
     depends=()
     
@@ -114,8 +114,8 @@ package_dbus-docs-nosystemd-git(){
 }
 
 pkgname=(
-    'dbus-nosystemd-git' 
-    'dbus-docs-nosystemd-git')
+    'dbus-nosystemd-minimal-git' 
+    'dbus-docs-nosystemd-minimal-git')
 
 arch=('x86_64')
 

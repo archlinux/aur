@@ -1,4 +1,4 @@
-pkgbase = dbus-nosystemd-git
+pkgbase = dbus-nosystemd-minimal-git
 	pkgdesc = Freedesktop.org message bus system
 	pkgver = 1.12.20
 	pkgrel = 1
@@ -19,7 +19,7 @@ pkgbase = dbus-nosystemd-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 
-pkgname = dbus-nosystemd-git
+pkgname = dbus-nosystemd-minimal-git
 	depends = expat
 	depends = libaudit.so
 	provides = libdbus
@@ -29,7 +29,7 @@ pkgname = dbus-nosystemd-git
 	conflicts = dbus
 	replaces = libdbus
 
-pkgname = dbus-docs-nosystemd-git
+pkgname = dbus-docs-nosystemd-minimal-git
 	pkgdesc = Freedesktop.org message bus system (documentation)
 	depends = 
 
