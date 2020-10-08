@@ -1,8 +1,8 @@
 #Maintainer: Raimar Buehmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=eclipse-pmd
-pkgver=4.16.0
-_buildtime=v20200831-1731
+pkgver=4.17.0
+_buildtime=v20200926-0854
 pkgrel=1
 pkgdesc='PMD static source code analysis (Java, XML, ...) plugin for Eclipse IDE'
 arch=('any')
