@@ -1,4 +1,5 @@
-# Maintainer: zopieux <web+oss at zopieux dot com>
+# Maintainer: Lennart Eichhorn <lennart@madmanfred.com>
+# Contributor: zopieux <web+oss at zopieux dot com>
 
 _lua_version=5.3
 
