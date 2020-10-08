@@ -4,7 +4,7 @@
 pkgname=gfold-git
 pkgver=0.5.1.r2.g093f3a0
 pkgrel=1
-pkgdesc="CLI tool to help keep track of Git repositories"
+pkgdesc="CLI tool to help keep track of Git repositories (git)"
 arch=('x86_64')
 url="https://github.com/nickgerace/gfold"
 license=('Apache')
