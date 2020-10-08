@@ -17,13 +17,13 @@ prepare() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	./bootstrap --noconfigure
-	./configure --prefix=/usr
 
 }
 
 build() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	./configure --prefix=/usr
 	make
 
 }
