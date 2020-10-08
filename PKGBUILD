@@ -13,16 +13,19 @@ provides=("eigen=3.3.9")
 conflicts=(eigen)
 makedepends=('cmake' 'pkg-config' 'freeglut' 'gcc-fortran' 'fftw' 'suitesparse' 'boost')
 source=(https://gitlab.com/libeigen/eigen/-/archive/$pkgver/${pkgname%-qfix}-$pkgver.tar.gz
-	'assert.patch::https://gitlab.com/libeigen/eigen/-/merge_requests/232.diff')
+	'assert.patch::https://gitlab.com/libeigen/eigen/-/merge_requests/232.diff'
+	'pardiso.patch::https://gitlab.com/libeigen/eigen/-/merge_requests/238.diff')
 sha256sums=('146a480b8ed1fb6ac7cd33fec9eb5e8f8f62c3683b3f850094d9d5c35a92419a'
-            '62590e9b33a8f72b608a72b87147a306e7cb20766ea53c6b8e0a183fa6cb7635')
+            '62590e9b33a8f72b608a72b87147a306e7cb20766ea53c6b8e0a183fa6cb7635'
+            '0b8304ce62b857b2e1e64f4b61875278dcf26602cc828efdc7b87ba38756dddd')
 
 prepare() {
-  patch -Np1 ${srcdir}/${pkgname%-qfix}-${pkgver}/Eigen/src/Core/products/Parallelizer.h ${srcdir}/assert.patch
+  patch -Np1 "${srcdir}/${pkgname%-qfix}-${pkgver}"/Eigen/src/Core/products/Parallelizer.h "${srcdir}"/assert.patch
+  patch -Np1 "${srcdir}/${pkgname%-qfix}-${pkgver}"/Eigen/src/PardisoSupport/PardisoSupport.h "${srcdir}"/pardiso.patch
 }
 
 build() {
-  cmake -B build -S ${pkgname%-qfix}-$pkgver \
+  cmake -B build -S "${pkgname%-qfix}-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr
 }
 
@@ -30,5 +33,5 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   # install custom licenses
-  install -Dm644 ${pkgname%-qfix}-$pkgver/COPYING.* -t "$pkgdir/usr/share/licenses/${pkgname%-qfix}"
+  install -Dm644 "${pkgname%-qfix}-$pkgver"/COPYING.* -t "$pkgdir/usr/share/licenses/${pkgname%-qfix}"
 }
