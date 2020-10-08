@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Development;Office;ProjectManagement;
+Comment=Papyrus is an open-source UML tool based on Eclipse.
+Exec=/usr/bin/papyrus
+GenericName=UML Designer
+Icon=/usr/share/icons/papyrus.png
+Name=Eclipse Papyrus
+StartupNotify=true
+Terminal=false
+Type=Application
+Version=1.1
