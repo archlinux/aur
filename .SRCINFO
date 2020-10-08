@@ -1,0 +1,19 @@
+pkgbase = nautilus-launch-git
+	pkgdesc = A simple Nautilus extension that allows to run executables and launchers via right-click menu
+	pkgver = r1.1f8f86d
+	pkgrel = 1
+	url = https://github.com/madmurphy/nautilus-launch
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = pkgconf
+	makedepends = intltool
+	depends = glib2
+	depends = libnautilus-extension
+	conflicts = nautilus-launch
+	conflicts = nautilus-launch-bin
+	source = git+https://github.com/madmurphy/nautilus-launch.git
+	md5sums = SKIP
+
+pkgname = nautilus-launch-git
+
