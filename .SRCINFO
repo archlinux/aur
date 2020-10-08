@@ -1,6 +1,6 @@
 pkgbase = kicad-symbols-git
 	pkgdesc = KiCad schematic symbol libraries from the official git repo
-	pkgver = r3885.a12491ad
+	pkgver = r6627.ab2ff7fa
 	pkgrel = 1
 	url = https://github.com/KiCad/kicad-symbols
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = kicad-symbols-git
 	conflicts = kicad-library-3d
 	conflicts = kicad-library
 	conflicts = kicad-symbols
-	source = git+https://github.com/KiCad/kicad-symbols.git
+	source = git+https://gitlab.com/kicad/libraries/kicad-symbols.git
 	md5sums = SKIP
 
 pkgname = kicad-symbols-git
