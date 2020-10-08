@@ -1,0 +1,21 @@
+pkgbase = xkeyboard-config-git
+	pkgdesc = X keyboard configuration files
+	pkgver = 2.31
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/XKeyboardConfig
+	arch = any
+	license = custom
+	makedepends = intltool
+	makedepends = xorg-xkbcomp
+	makedepends = libxslt
+	makedepends = python
+	provides = xkbdata
+	provides = xkeyboard-config
+	conflicts = xkbdata
+	conflicts = xkeyboard-config
+	replaces = xkbdata
+	source = git+https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config.git
+	sha512sums = SKIP
+
+pkgname = xkeyboard-config-git
+
