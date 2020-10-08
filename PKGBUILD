@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: Popolon <popolon@popolon.org>
 
-pkgname=openjardin
+pkgname=openjardin-git
 _gitname=openjardin-code
 #_branchname=1.04-03
 pkgver=32.dd4edd4

@@ -1,4 +1,4 @@
-pkgbase = openjardin
+pkgbase = openjardin-git
 	pkgdesc = graphic garden management, Land lot mapping, planing of crop rotation
 	pkgver = 32.dd4edd4
 	pkgrel = 1
@@ -19,5 +19,5 @@ pkgbase = openjardin
 	source = openjardin-code::git+https://git.code.sf.net/p/openjardin/code
 	md5sums = SKIP
 
-pkgname = openjardin
+pkgname = openjardin-git
 
