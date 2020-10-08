@@ -7,9 +7,9 @@ pkgdesc="Multifunctional LED Control Software"
 url="https://github.com/Drumber/RemoteLight"
 license=('GPL3')
 arch=('any')
-provides=('remotelight')
-conflicts"('remotelight')
 depends=('java-runtime')
+provides=('remotelight')
+conflicts=('remotelight')
 source=("https://github.com/Drumber/RemoteLight/releases/download/v${pkgver}/RemoteLight-${pkgver}.jar"
         'RemoteLight.desktop'
         'remotelight'
