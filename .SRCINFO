@@ -2,7 +2,7 @@ pkgbase = python-jupyter-react
 	pkgdesc = React component extension for Jupyter Notebooks
 	pkgver = 0.1.7
 	pkgrel = 1
-	url = https://github.com/quantumlib/OpenFermion
+	url = https://github.com/timbr-io/jupyter-react
 	arch = any
 	license = MIT
 	checkdepends = python
@@ -13,3 +13,4 @@ pkgbase = python-jupyter-react
 	sha256sums = 55f7a44689d8aaa4f696ec509962ac124d199cbb6f0bd92f1920c9ad89b4cbd5
 
 pkgname = python-jupyter-react
+

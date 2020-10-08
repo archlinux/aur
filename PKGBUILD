@@ -33,6 +33,7 @@ check() {
 package() {
   cd "$srcdir/$_name-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -D -p -m 644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
