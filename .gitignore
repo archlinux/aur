@@ -1,4 +1,5 @@
 *.tar.xz
 *.tar.gz
+*.tar.zst
 *.sig
 *.log
