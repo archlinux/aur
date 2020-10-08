@@ -11,6 +11,7 @@ pkgbase = heroku-cli
 	optdepends = git: Deploying to Heroku
 	provides = heroku
 	provides = heroku-cli
+	conflicts = heroku-cli-bin
 	conflicts = heroku-client-standalone
 	conflicts = heroku-toolbelt
 	conflicts = ruby-heroku
