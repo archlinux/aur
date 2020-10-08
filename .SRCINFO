@@ -1,0 +1,23 @@
+pkgbase = openjardin
+	pkgdesc = graphic garden management, Land lot mapping, planing of crop rotation
+	pkgver = 32.dd4edd4
+	pkgrel = 1
+	url = http://openjardin.eu/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv8
+	license = GPLv3
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-svg
+	depends = qt5-multimedia
+	depends = qt5-xmlpatterns
+	depends = qt5-base
+	provides = openjardin
+	conflicts = openjardin
+	source = openjardin-code::git+https://git.code.sf.net/p/openjardin/code
+	md5sums = SKIP
+
+pkgname = openjardin
+
