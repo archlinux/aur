@@ -2,7 +2,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=cheese
-pkgver=3.34.0+91+gc5cf9af9
+pkgver=3.38.0
 pkgrel=1
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
@@ -13,7 +13,7 @@ depends=(gtk3 gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good clutte
 makedepends=(gobject-introspection vala git appstream-glib meson yelp-tools)
 checkdepends=(xorg-server-xvfb)
 groups=(gnome)
-_commit=c5cf9af92aeff68152f6c298458b2908b5079c7f  # master
+_commit=2129dde7149bba5461590e575ce360e1dd6ef0ee  # tags/3.38.0^0
 source=("git+https://gitlab.gnome.org/GNOME/cheese.git#commit=$_commit")
 sha256sums=('SKIP')
 
