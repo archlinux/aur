@@ -2,8 +2,8 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-soundtrack
-pkgver=18.0327
-pkgrel=3
+pkgver=20.1008
+pkgrel=1
 pkgdesc="RVGL original Dreamcast soundtrack."
 url='https://rvgl.re-volt.io'
 arch=('any')
