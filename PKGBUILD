@@ -1,7 +1,7 @@
 # Maintainer: Michał Przybyś <michal@przybys.eu>
 _sdk=3.1
 pkgname=roslynpad
-pkgver=15
+pkgver=15.1
 pkgrel=1
 pkgdesc='A cross-platform C# editor based on Roslyn and AvalonEdit'
 arch=(any)
@@ -15,7 +15,7 @@ source=("https://github.com/aelij/RoslynPad/archive/${pkgver}.tar.gz"
     roslynpad
     roslynpad.desktop
     roslynpad.install)
-md5sums=(cd41b3dd801046ca4da3893221b667f8
+md5sums=(e39bab8bfafb9a27ef5edf3602793234
     7d8cd9ff78a48d5b5a9a2f282322ba11
     18214346078c30228f41454d4ad73e42
     d6788321c8bf62a8b5198039dbbee2d3
