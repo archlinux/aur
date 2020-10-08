@@ -1,6 +1,6 @@
 pkgbase = ovras
 	pkgdesc = Advanced settings and custom behavior for SteamVR using OpenVR (OVR).
-	pkgver = 5.3.0
+	pkgver = 5.3.1
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings
@@ -13,8 +13,8 @@ pkgbase = ovras
 	optdepends = dbus: media player support
 	optdepends = xorg-server: send keyboard keys
 	optdepends = pulseaudio: pulse audio support
-	source = https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings/archive/v5.3.0.tar.gz
-	sha256sums = 48f6af17cfa12801aae00360275eac21fec6f2828e2db717bfcfd17d2e375fc9
+	source = https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings/archive/v5.3.1.tar.gz
+	sha256sums = 4f9fca842d13e939c844c7ed94a14706194254b09f49b2ce5a30e6a7510d62ab
 
 pkgname = ovras
 
