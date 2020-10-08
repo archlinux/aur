@@ -2,10 +2,10 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 _modname=ngx_dynamic_etag
-_nginxver=1.19.2
+_nginxver=1.19.3
 pkgname=nginx-mainline-mod-dynamic-etag-git
 pkgver=r44.c7ee492
-pkgrel=1
+pkgrel=2
 pkgdesc='Module empowers your dynamic content with automatic ETag header.'
 arch=('i686' 'x86_64')
 depends=('nginx-mainline')
@@ -15,7 +15,7 @@ source=("https://nginx.org/download/nginx-${_nginxver}.tar.gz"
 	"git+${url}.git"
 )
 license=('BSD')
-sha256sums=('7c1f7bb13e79433ee930c597d272a64bc6e30c356a48524f38fd34fa88d62473'
+sha256sums=('91e5b74fa17879d2463294e93ad8f6ffc066696ae32ad0478ffe15ba0e9e8df0'
             'SKIP')
 
 pkgver() {
