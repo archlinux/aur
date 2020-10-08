@@ -10,14 +10,21 @@ pkgname=java-openjdk-loom-ea-bin
 _majorver=16
 _prerelease=6
 _buildno=105
-
-
 _buildver=${_prerelease}_${_buildno}
 
-pkgver=${_majorver}_${_buildver}
+
+# upstream git commit
+_commit="9ab710e03bf4"
+# use the first 7 digits for the Arch build version
+_commit=$(echo ${_commit} | cut -c1-7)
+
+
+#pkgver=${_majorver}_${_buildver}
+pkgver=${_majorver}_${_commit}
+
 pkgrel=1
 # must stick to use epoch as the old upstream broke version comparisons
-epoch=39
+epoch=40
 
 # Virtual threads (fibers) and continuations for the JVM
 # Early-Access JVM prototype - don't use in production
@@ -42,9 +49,10 @@ provides=(
   "java-runtime-headless-openjdk=${_majorver}"
 )
 
-source=("https://download.java.net/java/early_access/loom/${_prerelease}/openjdk-${_majorver}-loom+${_prerelease}-${_buildno}_linux-x64_bin.tar.gz")
+#source=("https://download.java.net/java/early_access/loom/${_prerelease}/openjdk-${_majorver}-loom+${_prerelease}-${_buildno}_linux-x64_bin.tar.gz")
+source=("https://github.com/Anlon-Burke/openjdk-loom-bin/releases/download/${epoch}/jdk-${_majorver}-loom-linux.tar.gz")
 
-sha256sums=('1ead1a760dd6b0daf981cb59752b60350b376aa1705080837aec2d828b2e2faa')
+sha256sums=('c91111c251aeb061e7b061ddd0fa86fbb2c3bf96ea700c6d0f4f5ffb4528b5bd')
 
 _eaname=java-openjdk-loom-ea
 _jvmdir=/usr/lib/jvm/${_eaname}
@@ -53,7 +61,8 @@ package() {
 
   # Install
   install -d "${pkgdir}${_jvmdir}"
-  cd jdk-${_majorver}
+#  cd jdk-${_majorver}
+  cd jdk-${_majorver}-loom
   cp -a bin include jmods lib release "${pkgdir}${_jvmdir}/"
 
   # Link JKS keystore from ca-certificates-utils
