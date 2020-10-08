@@ -2,7 +2,7 @@
 
 pkgname=kicad-packages3d-git
 _pkgname=kicad-packages3D
-pkgver=r2019.01.18.430092b
+pkgver=r2020.10.06.27d653c
 pkgrel=1
 pkgdesc="KiCad component 3D model libraries from the official git repo"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'git')
 conflicts=('kicad-library-bzr' 'kicad-library-git' 'kicad-library-3d' 'kicad-library' 'kicad-packages' 'kicad-packages3d')
 provides=('kicad-packages3d')
 source=()
-md5sums=()
+
 
 prepare(){
   if [ -d ${_pkgname} ]; then
@@ -21,7 +21,7 @@ prepare(){
     git fetch --depth 1
     git checkout master
   else
-    git clone --depth 1 https://github.com/KiCad/kicad-packages3D.git
+    git clone --depth 1 https://gitlab.com/kicad/libraries/kicad-packages3D.git
   fi
 }
 

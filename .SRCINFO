@@ -1,6 +1,6 @@
 pkgbase = kicad-packages3d-git
 	pkgdesc = KiCad component 3D model libraries from the official git repo
-	pkgver = r2019.01.18.430092b
+	pkgver = r2020.10.06.27d653c
 	pkgrel = 1
 	url = https://github.com/KiCad/kicad-packages3D
 	arch = any
