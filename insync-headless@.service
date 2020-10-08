@@ -1,13 +1,11 @@
 [Unit]
 Description=Insync Headless
-After=local-fs.target network.target
+After=network.target
 
 [Service]
-Type=oneshot
-RemainAfterExit=yes
-ExecStart=/usr/bin/insync-headless start
+ExecStart=/usr/bin/insync-headless start --no-daemon
 ExecStop=/usr/bin/insync-headless quit
 User=%I
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target

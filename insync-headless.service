@@ -1,13 +1,9 @@
 [Unit]
 Description=Insync Headless
-After=local-fs.target network.target
 
 [Service]
-Type=oneshot
-RemainAfterExit=yes
 ExecStart=/usr/bin/insync-headless start --no-daemon
 ExecStop=/usr/bin/insync-headless quit
 
 [Install]
 WantedBy=default.target
-
