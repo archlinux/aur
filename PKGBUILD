@@ -1,7 +1,7 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=racktables
-pkgver=0.21.4
+pkgver=0.21.5
 pkgrel=1
 pkgdesc="Datacenter and server room asset management web-software"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
     'percona-server: local database'
 )
 source=("https://downloads.sourceforge.net/project/racktables/RackTables-${pkgver}.tar.gz")
-sha1sums=('c53b8af6ffdc6546951a82cc2ecfd7e5e5a88652')
+sha1sums=('345637d9dbb59263689ca86e173c938b0eb3d009')
 
 package() {
   cd RackTables-${pkgver}

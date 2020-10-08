@@ -1,6 +1,6 @@
 pkgbase = racktables
 	pkgdesc = Datacenter and server room asset management web-software
-	pkgver = 0.21.4
+	pkgver = 0.21.5
 	pkgrel = 1
 	url = https://racktables.org/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = racktables
 	optdepends = php-snmp
 	optdepends = mariadb: local database
 	optdepends = percona-server: local database
-	source = https://downloads.sourceforge.net/project/racktables/RackTables-0.21.4.tar.gz
-	sha1sums = c53b8af6ffdc6546951a82cc2ecfd7e5e5a88652
+	source = https://downloads.sourceforge.net/project/racktables/RackTables-0.21.5.tar.gz
+	sha1sums = 345637d9dbb59263689ca86e173c938b0eb3d009
 
 pkgname = racktables
 
