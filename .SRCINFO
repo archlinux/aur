@@ -1,16 +1,14 @@
 pkgbase = chromium-extension-privacybadger
 	pkgdesc = Block third party tracking in your browser
-	pkgver = 2020.8.25
+	pkgver = 2020.10.7
 	pkgrel = 1
 	url = https://privacybadger.org/
 	changelog = chromium-extension-privacybadger.changelog
 	arch = any
 	license = GPL3
 	depends = chromium
-	source = chromium-extension-privacybadger-2020.8.25.crx::https://www.eff.org/files/privacy_badger-2020.8.25.crx
-	source = LICENSE-2020.8.25::https://raw.githubusercontent.com/EFForg/privacybadger/6a86f1266f3f88fbd3a1ce8fe77ed5964dcaf91f/LICENSE
-	b2sums = 9fa369a9f40d6997724d4219e16cb9685d156bba90d9d54b5c86d07ebda9be80944e719416bd09e15aa48e4bbe9ccd2f7ae672fdbcd8271ae519da37a3999078
-	b2sums = b5865247e8de9c9f9bfefab669c2d31e26948393c90be7420756ef540fde9f2742ec137b065ad92516da52b3222ea619ec85b8106bba114dee735a3fc119ad6e
+	source = chromium-extension-privacybadger-2020.10.7.crx::https://www.eff.org/files/privacy_badger-2020.10.7.crx
+	b2sums = 20a7aae4dda9e1dc3c6bb4968cee1552d2c1da1f31afac9e241de8ce07fd10a6c3e3fdcc136bb23fe93c369009b98a099b2a8c35a0d5a7627c175671a5466cef
 
 pkgname = chromium-extension-privacybadger
 
