@@ -13,11 +13,12 @@ depends=(cairo libxslt gst-plugins-base-libs libepoxy libsoup libwebp
          harfbuzz-icu woff2 openjpeg2 libseccomp bubblewrap xdg-dbus-proxy
 		 geoclue at-spi2-atk libwpe)
 source=('https://webreflection.github.io/aur/wpewebkit-gl-x86_64-2.30.1.tar.gz')
-md5sums=('7f657578b2453fee78053aa282a4819f')
-sha1sums=('6a65443df4ca476ae73f0abb400ce362aaf6dcb3')
-sha256sums=('e1d0a96ca134aee65dd0d381f22c299b6e2dd4d0230043d923215664d974f14b')
-sha512sums=('ab1c7e4476a711460c494d5c60fbba5fd4589dd4833a79f38749dd7bafd2f5d18d5bd8c450cc035f4050d3b908daf06bd5378c6226fd832d44947d4403b07b6c')
+md5sums=('817952d4b407eacab3a720cc96865252')
+sha1sums=('4484f5af50373674157ef56479218fc663f76925')
+sha256sums=('ec683af055c4b9878fad4e0677173934575446136f8e6d61fe1376a169ee570d')
+sha512sums=('c68e0ae3f939b66a0c6e37cc568fb25bb71c2c1e6ac4d7aafb345b76e756a1301951f67c96002b1e107a23c5ea6d167cdbd833896a92a1c6f69a2d5450c5b9d6')
 
 package () {
     cp -R "${srcdir}/usr" "${pkgdir}"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
