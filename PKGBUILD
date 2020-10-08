@@ -18,6 +18,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 prepare() {
   cd "$srcdir"/eigen-${pkgver}
   patch -p1 -i "$srcdir"/eigen-3.2_gcc58087.patch
+  curl -L https://gitlab.com/libeigen/eigen/-/merge_requests/232.patch | patch -p1
 }
 
 build() {
