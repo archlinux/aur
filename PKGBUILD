@@ -1,6 +1,6 @@
 # Maintainer: Jeffrey Zhang zhang.lei.fly@gmail.com
 pkgname=terminator-git
-pkgver=1.92.90.gbf6efe52
+pkgver=2.0
 pkgrel=1
 pkgdesc='multiple GNOME terminals in one window'
 arch=('any')
