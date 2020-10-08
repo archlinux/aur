@@ -18,6 +18,7 @@ sha512sums=('SKIP')
 
 build() {
   cd xkeyboard-config
+  ./autogen.sh
   ./configure --prefix=/usr \
       --with-xkb-base=/usr/share/X11/xkb \
       --with-xkb-rules-symlink=xorg \
