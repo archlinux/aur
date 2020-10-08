@@ -1,13 +1,13 @@
 pkgbase = meshlab-git
 	pkgdesc = System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)
-	pkgver = 2020.09.r79.g6ff7f9d67
+	pkgver = 2020.09.r94.g1ff371428
 	pkgrel = 1
 	url = https://www.meshlab.net
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	makedepends = eigen
+	makedepends = eigen-qfix
 	makedepends = ninja
 	makedepends = git
 	makedepends = muparser
