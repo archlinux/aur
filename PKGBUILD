@@ -18,7 +18,6 @@ makedepends+=(python swig) # MODULE_PYTHON
 makedepends+=('cuda<=10.2.89')        # MODULE_GRANULAR
                            # MODULE_PARALLEL optional
 makedepends+=(blaze)       # MODULE_PARALLEL required
-makedepends+=(thrust)      # MODULE_PARALLEL required
 #makedepends+=(opencascade)# MODULE_CASCADE (version<=7.2)
                            # use oce (opencascade comunitiy edition)
 makedepends+=(oce)         # MODULE_CASCADE
@@ -58,7 +57,7 @@ CMAKE_FLAGS=(	-DENABLE_MODULE_POSTPROCESS=ON
 		-DCASCADE_INCLUDE_DIR=/opt/oce/include/oce
 		-DENABLE_MODULE_OPENGL=ON
 		-DENABLE_MODULE_PARALLEL=ON
-		-DTHRUST_INCLUDE_DIR=/opt/thrust
+		-DTHRUST_INCLUDE_DIR=/opt/cuda/targets/x86_64-linux/include
 		-DENABLE_MODULE_MKL=ON
 		-DINTEL_ROOT=/opt/intel/mkl
 		-DENABLE_MODULE_COSIMULATION=ON

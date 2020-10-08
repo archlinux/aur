@@ -21,7 +21,6 @@ pkgbase = chronoengine
 	makedepends = swig
 	makedepends = cuda<=10.2.89
 	makedepends = blaze
-	makedepends = thrust
 	makedepends = oce
 	makedepends = mumps
 	makedepends = blas
