@@ -7,9 +7,9 @@
 
 pkgname=insync-headless
 pkgver=3.0.0.10585
-pkgrel=1
+pkgrel=2
 _dist=buster
-pkgdesc="An unofficial Google Drive and OneDrive headless client that runs on Linux"
+pkgdesc="Google Drive and OneDrive headless client"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
 options=(!strip)
