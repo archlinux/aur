@@ -3,7 +3,7 @@
 # Contributor: hexchain <i@hexchain.org>
 
 pkgname=telegram-desktop-userfonts
-pkgver=2.4.1
+pkgver=2.4.3
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -19,7 +19,7 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
 "Use-tg_owt-webrtc-fork.patch"
 "Update-webrtc-packaged-build-for-tg_owt.patch::https://github.com/desktop-app/cmake_helpers/commit/d955882cb4d4c94f61a9b1df62b7f93d3c5bff7d.patch"
 )
-sha512sums=('ce9dee9e94db49661ce5608891965de017794ee989ad2a38117158c230489cdac5880eb8e16b192694b7f72f28ff82231aadf411cfa0b7ce5d1f7a9b4f1eb3b7'
+sha512sums=('066a04ee4ba0c28ea8c6f7b4badcbc814cfc131508ca08a34b6365a8c79106a579efffb4e9dd1a7856cad39505dc864cc8e8e417b8a4e06e8fd0d15752d44ac2'
             '071591c6bb71435f8186dcaf570703718051f00366dbbe3f13c4df3706d3de1f168bff4bfa707ad1d6f09f5505c925f0b01d76fd65efe904f3ba7db693d63f43'
             'b3c44e76a3907f7acc197746b471564577e912bf0561e9576dc8459211c88f400716437bcaa10967376461c69c8a98a56477d26d3feb9ca34747d9208bf5f6c6')
 
