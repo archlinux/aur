@@ -6,13 +6,12 @@
 
 pkgname=insync-headless
 pkgver=3.0.1.10590
-pkgrel=2
+pkgrel=3
 pkgdesc="Google Drive and OneDrive headless client for servers"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
 options=(!strip)
-depends=('cron'
-         'glibc')
+depends=('glibc')
 conflicts=('insync')
 arch=('x86_64')
 source=("http://s.insynchq.com/builds/${pkgname}_${pkgver}-buster_amd64.deb"
@@ -26,14 +25,12 @@ sha256sums=('9634acffaa0666070c52f6ec9486444b875570d0d83a2017c4e69eba86944a4c'
 package() {
    tar -xf data.tar.gz
 
-   install -dm755 "${pkgdir}"/usr/{bin,lib}
-
-   cp -r usr/share "${pkgdir}"/usr/
-   #cp -r usr/lib/insync "${pkgdir}"/usr/lib/insync-headless
-   cp -r usr/lib/insync "${pkgdir}"/usr/lib/insync
-
+   # insync conflict workarounds
+   #mv usr/lib/insync usr/lib/insync-headless
    #patch -Np1 -i insync-headless.patch
-   install -Dm755 -t "${pkgdir}"/usr/bin/ usr/bin/insync-headless
+   rm -r usr/share/icons
+
+   cp -r usr "${pkgdir}"/usr
 
    install -Dm644 -t "${pkgdir}"/usr/lib/systemd/system/ insync-headless@.service
    install -Dm644 -t "${pkgdir}"/usr/lib/systemd/user/ insync-headless.service

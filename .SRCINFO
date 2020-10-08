@@ -1,11 +1,10 @@
 pkgbase = insync-headless
 	pkgdesc = Google Drive and OneDrive headless client for servers
 	pkgver = 3.0.1.10590
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.insynchq.com/downloads
 	arch = x86_64
 	license = custom:insync
-	depends = cron
 	depends = glibc
 	conflicts = insync
 	options = !strip
