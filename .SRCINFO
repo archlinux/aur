@@ -1,0 +1,36 @@
+pkgbase = wpewebkit-bin-armv7l
+	pkgdesc = Web content engine library optimized for embedded devices (gl version)
+	pkgver = 2.30.1
+	pkgrel = 1
+	url = https://wpewebkit.org
+	arch = armv7l
+	arch = armv7h
+	groups = wpe
+	license = custom
+	depends = cairo
+	depends = libxslt
+	depends = gst-plugins-base-libs
+	depends = libepoxy
+	depends = libsoup
+	depends = libwebp
+	depends = harfbuzz-icu
+	depends = woff2
+	depends = openjpeg2
+	depends = libseccomp
+	depends = bubblewrap
+	depends = xdg-dbus-proxy
+	depends = geoclue
+	depends = at-spi2-atk
+	depends = libwpe
+	provides = wpewebkit
+	provides = wpewebkit-git
+	conflicts = wpewebkit
+	conflicts = wpewebkit-git
+	source = https://webreflection.github.io/aur/wpewebkit-bin-armv7l-2.30.1.tar.gz
+	md5sums = 704300bcfed2adbe3b2dd1c02b0187d5
+	sha1sums = 1792f329f951064d98c188a2762691d1d489a354
+	sha256sums = 800a4833ec2acb86a2d44b6491953395aa6c836ef3ff2db4bcb40fbac887925a
+	sha512sums = 48419a3b5df0f5762a966765150ea3767d9d09ea60bd0b2333e05589e71bce92176f24579905aea37512ff664fb3093fef168bf32ff1430d21bf30da0678d4bd
+
+pkgname = wpewebkit-bin-armv7l
+
