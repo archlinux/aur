@@ -1,0 +1,5 @@
+pkg/
+src/
+lupa-*.tar.gz
+python2-lupa-*.pkg.tar.xz
+python2-lupa-*.pkg.tar.zst
