@@ -1,14 +1,14 @@
 pkgbase = recaf
 	pkgdesc = A modern Java bytecode editor
-	pkgver = 2.9.2
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://github.com/Col-E/Recaf
 	arch = any
 	license = MIT
 	depends = java-runtime
 	depends = java-openjfx
-	noextract = recaf-2.9.2.jar
-	source = https://github.com/Col-E/Recaf/releases/download/2.9.2/recaf-2.9.2-J8-jar-with-dependencies.jar
+	noextract = recaf-2.10.0.jar
+	source = https://github.com/Col-E/Recaf/releases/download/2.10.0/recaf-2.10.0-J8-jar-with-dependencies.jar
 	sha256sums = SKIP
 
 pkgname = recaf
