@@ -1,6 +1,6 @@
 pkgbase = chronoengine-git
 	pkgdesc = An Open Source Multi-physics Simulation Engine
-	pkgver = 5.0.1.r482.gd2de25ecc
+	pkgver = 5.0.1.r655.gad86c55d5
 	pkgrel = 1
 	url = https://projectchrono.org/
 	arch = i686
@@ -21,7 +21,6 @@ pkgbase = chronoengine-git
 	makedepends = swig
 	makedepends = cuda<=10.2.89
 	makedepends = blaze
-	makedepends = thrust
 	makedepends = oce
 	makedepends = mumps
 	makedepends = blas
