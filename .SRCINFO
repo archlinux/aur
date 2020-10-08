@@ -43,11 +43,13 @@ pkgbase = chronoengine-git
 	source = git+https://github.com/google/googletest.git
 	source = chronoengine.sh
 	source = glm.patch
+	source = thrust.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 0fe883cfcc1db869d08235482a3801fa458db15360e0eefac9084c7f2993af4a
 	sha256sums = 4e8ed0097fb14bbe437c2a57e9ef1852fdbfe8675e5345b0af42287d24fbfefe
+	sha256sums = bf9717a2a1d569e376623d40e9b83fb766629a9ef9acc16e4af5358132202526
 
 pkgname = chronoengine-git
 
