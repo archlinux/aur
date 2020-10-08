@@ -13,10 +13,10 @@ depends=(cairo libxslt gst-plugins-base-libs libepoxy libsoup libwebp
          harfbuzz-icu woff2 openjpeg2 libseccomp bubblewrap xdg-dbus-proxy
 		 geoclue at-spi2-atk libwpe)
 source=('https://webreflection.github.io/aur/wpewebkit-gl-x86_64-2.30.1.tar.gz')
-md5sums=('817952d4b407eacab3a720cc96865252')
-sha1sums=('4484f5af50373674157ef56479218fc663f76925')
-sha256sums=('ec683af055c4b9878fad4e0677173934575446136f8e6d61fe1376a169ee570d')
-sha512sums=('c68e0ae3f939b66a0c6e37cc568fb25bb71c2c1e6ac4d7aafb345b76e756a1301951f67c96002b1e107a23c5ea6d167cdbd833896a92a1c6f69a2d5450c5b9d6')
+md5sums=('e70e973d88d19c31e8791febb52077cd')
+sha1sums=('e64a866e63527d542d4286731e19aa413ac624e0')
+sha256sums=('780d161aab1125e1767dd881e58f88546b7262b66c3bc5a5f838d3e9d82933a0')
+sha512sums=('330cc00b6556f071ee4ab576b8e0688bc984de6f6faad1b6594ae23d5021f1f89b2844a47f090d51fac6a09643cc97d6b4034f3d8b94e86d46c2e15c0497a82b')
 
 package () {
     cp -R "${srcdir}/usr" "${pkgdir}"
