@@ -1,14 +1,14 @@
-From cb1d8f4bbca9c91c3c37a43553ee236a2370ffea Mon Sep 17 00:00:00 2001
+From 78170848a4679dfe807768bba7638798498a2ab9 Mon Sep 17 00:00:00 2001
 From: soloturn <soloturn@gmail.com>
 Date: Sat, 1 Aug 2020 16:21:07 +0200
 Subject: [PATCH] arch aur pachtes
 
 ---
- utils/build-presets.ini | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+ utils/build-presets.ini | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
 
 diff --git a/utils/build-presets.ini b/utils/build-presets.ini
-index 7d9a5c264c8..69d17512110 100644
+index 7d9a5c264c8..5dcadf391c3 100644
 --- a/utils/build-presets.ini
 +++ b/utils/build-presets.ini
 @@ -783,12 +783,10 @@ llbuild
@@ -34,7 +34,16 @@ index 7d9a5c264c8..69d17512110 100644
  install-libcxx
  install-sourcekit-lsp
  build-swift-static-stdlib
-@@ -816,7 +813,6 @@ toolchain-benchmarks
+@@ -809,14 +806,13 @@ build-swift-stdlib-unittest-extra
+ 
+ test-installable-package
+ 
+-# Build the benchmarks against the toolchain.
+-toolchain-benchmarks
++# does not work outside /usr, Build the benchmarks against the toolchain.
++# toolchain-benchmarks
+ 
+ # Path to the root of the installation filesystem.
  install-destdir=%(install_destdir)s
  
  # Path to the .tar.gz package we would create.
