@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=minitube
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 pkgdesc="A YouTube desktop application"
 arch=('x86_64')
@@ -12,8 +12,8 @@ license=('GPL3')
 depends=('gcc-libs' 'glibc' 'qt5-base' 'qt5-declarative' 'qt5-x11extras')
 makedepends=('mpv' 'qt5-tools')
 source=("https://github.com/flaviotordini/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('034baa51934564f492049c6a2a4c2eaabf335f1168593aa27664a5f268b0dc4136217c8da4d1a80e777879d7ad3d109d4ba7089cf387dc76f97af52c7c6d3609')
-b2sums=('29c7598758ac88e46a1355055c89009a18eef069202c2f7c093f4a84e3ddabc5a0d7559220292b0d30d3bc2f7c2a8017acc521d347be8c972aa3d336617843a6')
+sha512sums=('a23a3e10a2bfa9742d06e3e7a16f4bb32086f86367b87b413064361ae5ef2f035aed8605b51a065b3b71a769b6dba6191bca098a5b69e8819e0dc0a62ab2778e')
+b2sums=('ff6d266cc94fec7feea3f65dbe4882def511dfda70e6e1e64c4e4903ffc4897a3457dab51b0fd07025ef34532c1b1bcdcb6de542c06d40190f5f2bbb3291dfef')
 
 build() {
   cd "${pkgname}-${pkgver}"
