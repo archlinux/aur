@@ -3,7 +3,7 @@
 
 pkgname=plata-theme-slim
 _reponame=plata-theme
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc='A GTK theme based on Material Design Refresh, built with most options disabled.'
 arch=('any')
