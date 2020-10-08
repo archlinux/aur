@@ -2,7 +2,7 @@
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
 pkgver='3.8.3.20201007'
-pkgrel='1'
+pkgrel='2'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
@@ -32,6 +32,11 @@ build() {
 	# * CUDA support
 	# * OpenCL support
 	# * LaTeX documentation
+	# NOTE: Normally LibXML is correctly autodetected, so forcing the LibXML
+	#       prefix should not be necessary, however, there's some homebrew LibXML
+	#       detection logic (look for AX_PROG_XML2 in config/macros.m4) which
+	#       fails in some scenarios, such as if /bin is before /usr/bin in PATH
+	#       (thanks to @teleportex on AUR for the report and fix suggestion)
 	./configure \
 		--prefix=/usr \
 		--with-mpi=/usr \
@@ -43,7 +48,8 @@ build() {
 		--with-papi=/usr \
 		--with-papi-headers=/usr/include \
 		--with-papi-libs=/usr/lib \
-		--without-dyninst
+		--without-dyninst \
+		--with-xml-prefix=/usr
 
 	make
 }
