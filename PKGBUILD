@@ -1,57 +1,27 @@
-# Maintainer: XZS <d dot f dot fischer at web dot de>
-# This PKGBUILD is maintained on GitHub <https://github.com/dffischer/gnome-shell-extensions>.
-# You may find it convenient to file issues and pull requests there.
+# Maintainer: liolok <aur@liolok.com>
 
-pkgname=gnome-shell-extension-middleclickclose
-_extname='middleclickclose@paolo.tranquilli.gmail.com'
-pkgver=6
-pkgrel=2
-pkgdesc="Close windows with a button click (the middle one by default) when in overview mode"
-arch=(any)
-url='http://sourceforge.net/projects/buttons-to-panel/'
-license=(unknown)
-source=("${pkgname}.zip::http://sourceforge.net/projects/mt-miscellaneous/files/gnome-extensions/3.16/${_extname}.v6.shell-extension.zip/download")
-md5sums=('e7ea5800d8408ea33496cdac01a058f6')
+# https://extensions.gnome.org/extension-info/?pk=352&shell_version=3.38
+_gnome_site='https://extensions.gnome.org'
+_gnome_shell_version=3.38
+_name='middleclickclose'
+_uuid='middleclickclose@paolo.tranquilli.gmail.com'
+_pk=352
+_version_tag=19150
+
+pkgname="gnome-shell-extension-$_name"
+pkgver=17
+pkgrel=1
+pkgdesc='Gnome shell extension for closing apps in overview with a middle click'
+arch=('any')
+url="$_gnome_site/extension/$_pk/$_name/"
+license=('GPL2')
+depends=("gnome-shell>=$_gnome_shell_version")
+source=("$pkgname.zip::$_gnome_site/download-extension/$_uuid.shell-extension.zip?version_tag=$_version_tag")
+sha256sums=('053feaf85e2b3880ba1765edbf988c8e93c503ee02ff0345ec820b1ed385954a')
 
 package() {
-  for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
-  do
-    $function
-  done
-}
-package_01_locate() {
-  msg2 'Locating extension...'
-  cd "$(dirname $(find -name 'metadata.json' -print -quit))"
-  extname=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
-  destdir="$pkgdir/usr/share/gnome-shell/extensions/$extname"
-}
-
-package_02_install() {
-  msg2 'Installing extension code...'
-  find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "$destdir" '{}' +
-}
-if [ -z "$install" ]
-then
-  install=gschemas.install
-fi
-
-package_10_schemas() {
-  msg2 'Installing schemas...'
-  find -name '*.xml' -exec install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" '{}' +
-}
-depends[125]=gnome-shell
-
-package_20_version() {
-  local compatibles=($(\
-    find -path ./pkg -type d -prune -o \
-    -name metadata.json -exec grep -Pzo '(?s)(?<="shell-version": \[)[^\[\]]*(?=\])' '{}' \; | \
-    tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
-  depends+=("gnome-shell>=3.${compatibles[0]}")
-  local max="${compatibles[-1]}"
-  if [ "3.$max" != $(
-    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
-  ) ]; then
-    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
-  fi
-  unset depends[125]
+    local _destdir="$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+    install --directory "$_destdir"
+    chmod 644 metadata.json
+    cp --archive ./*[^*.zip] --target-directory="$_destdir"
 }

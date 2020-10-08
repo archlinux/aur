@@ -1,14 +1,13 @@
 pkgbase = gnome-shell-extension-middleclickclose
-	pkgdesc = Close windows with a button click (the middle one by default) when in overview mode
-	pkgver = 6
-	pkgrel = 2
-	url = http://sourceforge.net/projects/buttons-to-panel/
-	install = gschemas.install
+	pkgdesc = Gnome shell extension for closing apps in overview with a middle click
+	pkgver = 17
+	pkgrel = 1
+	url = https://extensions.gnome.org/extension/352/middleclickclose/
 	arch = any
-	license = unknown
-	depends = gnome-shell
-	source = gnome-shell-extension-middleclickclose.zip::http://sourceforge.net/projects/mt-miscellaneous/files/gnome-extensions/3.16/middleclickclose@paolo.tranquilli.gmail.com.v6.shell-extension.zip/download
-	md5sums = e7ea5800d8408ea33496cdac01a058f6
+	license = GPL2
+	depends = gnome-shell>=3.38
+	source = gnome-shell-extension-middleclickclose.zip::https://extensions.gnome.org/download-extension/middleclickclose@paolo.tranquilli.gmail.com.shell-extension.zip?version_tag=19150
+	sha256sums = 053feaf85e2b3880ba1765edbf988c8e93c503ee02ff0345ec820b1ed385954a
 
 pkgname = gnome-shell-extension-middleclickclose
 
