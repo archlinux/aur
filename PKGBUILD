@@ -3,7 +3,7 @@ pkgname=mingw-w64-brotli
 _pkgname=brotli
 _gitcommit=e61745a6b7add50d380cfd7d3883dd6c62fc2c71
 pkgver=1.0.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Brotli compression library (mingw-w64)'
 arch=('any')
 license=('MIT')
@@ -41,6 +41,9 @@ package() {
     if [[ $NO_EXECUTABLES ]]; then
       find "${pkgdir}/usr/${_arch}" -name '*.exe' -delete
     fi
+  done
+  for file in "${pkgdir}"/usr/*/lib/pkgconfig/*.pc; do
+    sed -i 's| -R${libdir}||g' "$file"
   done
 }
 
