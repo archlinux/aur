@@ -1,0 +1,35 @@
+pkgbase = dbus-nosystemd-git
+	pkgdesc = Freedesktop.org message bus system
+	pkgver = 1.12.20
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/dbus/dbus
+	install = dbus.install
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = python
+	makedepends = git
+	makedepends = autoconf-archive
+	depends = expat
+	conflicts = dbus-eudev
+	source = git+https://gitlab.freedesktop.org/dbus/dbus.git
+	source = dbus.tmpfiles
+	source = no-fatal-warnings.diff
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = dbus-nosystemd-git
+	depends = expat
+	depends = libaudit.so
+	provides = libdbus
+	provides = libdbus-1.so
+	provides = dbus
+	conflicts = libdbus
+	conflicts = dbus
+	replaces = libdbus
+
+pkgname = dbus-docs-nosystemd-git
+	pkgdesc = Freedesktop.org message bus system (documentation)
+	depends = 
+

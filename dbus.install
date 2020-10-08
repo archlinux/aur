@@ -1,0 +1,18 @@
+pre_install() {
+
+    groupadd -r -g 81 dbus
+    useradd  -M -N -r -u 81 -g 81 -d / -s /sbin/nologin -c "system message bus" dbus
+}
+
+post_install() {
+
+    ## Set permissions on dbus-daemon-launch-helper
+
+    chown root:dbus /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+    chmod 4750 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+}
+
+post_upgrade() {
+
+    post_install
+}
