@@ -2,7 +2,7 @@
 pkgname='clusteringsuite'
 pkgdesc='Automatically expose the main performance trends in applications'\'' computation structure (from BSC).'
 pkgver='2.6.9.20190920'
-pkgrel='2'
+pkgrel='3'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
@@ -35,8 +35,14 @@ build() {
 	# * CAPEK algorithm
 	# * MRNet-based parallel DBSCAN
 	# * LaTeX documentation
+	# NOTE: Normally LibXML is correctly autodetected, so forcing the LibXML
+	#       prefix should not be necessary, however, there's some homebrew LibXML
+	#       detection logic (look for AX_PROG_XML2 in config/macros.m4) which
+	#       fails in some scenarios, such as if /bin is before /usr/bin in PATH
+	#       (thanks to @teleportex on AUR for the report and fix suggestion)
 	./configure \
-		--prefix=/usr
+		--prefix=/usr \
+		--with-xml-prefix=/usr
 
 	make
 }
