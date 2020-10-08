@@ -4,17 +4,18 @@
 
 pkgname=(lua-pc lua51-pc lua52-pc lua53-pc)
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Lua Process Call (lpc)"
-license=('MIT/X11')
+license=('MIT')
 arch=('i686' 'x86_64')
 url="https://github.com/fabled/lpc"
 makedepends=('lua' 'lua51' 'lua52' 'lua53')
-source=( https://github.com/fabled/lpc/archive/$pkgver.zip )
-md5sums=('9b3b26a88599e37857b54c8e3dea19e3')
+source=( https://github.com/fabled/lpc/archive/bfeda7204ff2630adc73e6c60e4ad800d3f933d7.zip )
+md5sums=('971d6029613d10950f9cf01d602e19aa')
 
 build() {
     mkdir -p 5.1 5.2 5.3 5.4
+	ln -s "$srcdir/lpc-bfeda7204ff2630adc73e6c60e4ad800d3f933d7" "$srcdir/lpc"
 	cd "$srcdir/lpc"
 	make LUA_PKGCONF=lua51 TARGET=../5.1/lpc.so
 	make clean
