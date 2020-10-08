@@ -1,9 +1,9 @@
 pkgname=python-assimulo
-pkgver=3.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="A package for solving ordinary differential equations and differential algebraic equations"
 url="http://www.jmodelica.org/assimulo"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('LGPL')
 makedepends=('python-setuptools' 'cython' 'gcc-fortran')
 depends=('python-scipy' 'python-matplotlib' 'lapack' 'sundials')
