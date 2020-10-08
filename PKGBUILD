@@ -3,8 +3,8 @@
 pkgname=intellij-idea-community-edition-jre
 _appname=jetbrains-idea-ce
 pkgver=2020.2.3
-_buildver=202.7319.50
-pkgrel=1
+_buildver=202.7660.26
+pkgrel=2
 pkgdesc="Intellij Idea Community Edition with bundled JRE"
 arch=('any')
 url="http://www.jetbrains.com/idea/"
