@@ -2,7 +2,8 @@
 # Maintainer: Paulo Matias <matias@ufscar.br>
 
 pkgname=bluespec-git
-pkgver=r301.9f4a447
+pkgver=r394.8d454e4
+pkgrel=1
 pkgdesc='Bluespec Compiler (BSC)'
 arch=('x86_64')
 url='https://github.com/B-Lang-org/bsc'
@@ -10,7 +11,9 @@ license=('BSD')
 depends=('haskell-old-time' 'haskell-syb' 'haskell-regex-compat' 'haskell-split')
 makedepends=('git' 'gperf' 'ghc' 'tcl')
 optdepends=('tcl: bluesim and bluetcl')
-pkgrel=$(pacman -Si ${depends[@]} | awk '/Version/{sum+=substr($0,match($0,/[^-]+$/))}END{print sum}')
+# workaround for pkgrel overwritten on regen (by TkG)
+# rebuild whenever some haskell depend is rebuilt
+eval pkgrel=$(pacman -Si ${depends[@]} | awk '/Version/{sum+=substr($0,match($0,/[^-]+$/))}END{print sum}')
 source=("git+https://github.com/b-lang-org/bsc.git")
 sha256sums=('SKIP')
 _prefix="/opt/bluespec"
