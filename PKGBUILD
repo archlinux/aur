@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=kicad-rc
-_pkgver="5.1.6"
+_pkgver="5.1.7"
 pkgver=${_pkgver//-/_}
 pkgrel=1
 epoch=0
@@ -16,7 +16,7 @@ conflicts=('kicad' 'kicad-git' 'kicad-scripting-git' 'kicad-bzr')
 provides=('kicad')
 makedepends=('clang')
 source=("https://gitlab.com/kicad/code/kicad/-/archive/${_pkgver}/kicad-${_pkgver}.tar.gz")
-md5sums=('3fadd95d0aeb0cb85a7d0f69cf3724dd')
+md5sums=('8844d6efaba75361110263c18b422807')
 
 prepare() {
   cd "${srcdir}/kicad-${_pkgver}"
