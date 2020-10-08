@@ -1,6 +1,6 @@
 pkgbase = ruby-rubocop-ast
 	pkgdesc = RuboCop's Node and NodePattern classes.
-	pkgver = 0.1.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://rubocop.readthedocs.io
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = ruby-rubocop-ast
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-parser
-	noextract = rubocop-ast-0.1.0.gem
+	noextract = rubocop-ast-0.7.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/rubocop-ast-0.1.0.gem
-	sha256sums = fec0cfbd07cbfd70ffdc5fb611eb239db6507eaaadddd2cfec113ec1c8151f93
+	source = https://rubygems.org/downloads/rubocop-ast-0.7.1.gem
+	sha256sums = e4d04cca95f5e023fec1c3c03e3fad048209803fbb8413c0031631aec97f3089
 
 pkgname = ruby-rubocop-ast
 

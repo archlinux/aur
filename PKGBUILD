@@ -2,7 +2,7 @@
 
 _gemname=rubocop-ast
 pkgname=ruby-${_gemname}
-pkgver=0.1.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="RuboCop's Node and NodePattern classes."
 arch=('any')
@@ -16,7 +16,7 @@ noextract=($_gemname-$pkgver.gem)
 license=('MIT')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=('fec0cfbd07cbfd70ffdc5fb611eb239db6507eaaadddd2cfec113ec1c8151f93')
+sha256sums=('e4d04cca95f5e023fec1c3c03e3fad048209803fbb8413c0031631aec97f3089')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
