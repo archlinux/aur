@@ -1,21 +1,26 @@
 pkgbase = awall
-	pkgdesc = Alpine Wall iptables based firewall
-	pkgver = 1.2.4
+	pkgdesc = Alpine Wall is a iptables based firewall frontend
+	pkgver = 1.8.1
 	pkgrel = 1
-	url = http://git.alpinelinux.org/cgit/awall/
+	url = https://gitlab.alpinelinux.org/alpine/awall
 	arch = any
 	license = GPL2
-	depends = lua>=5.2
-	depends = lua-filesystem
-	depends = lua-alt-getopt
-	depends = lua-stringy
-	depends = lua-signal
-	depends = lua-pc
-	depends = xtables-addons
+	makedepends = git
+	depends = lua53
+	depends = ldns
+	depends = ipset
 	depends = iptables
-	depends = dnsutils
-	source = http://dev.alpinelinux.org/archive/awall/awall-1.2.4.tar.xz
-	md5sums = 69aeb3aabd8e73662a0d5e89c9f3de0c
+	depends = lua53-alt-getopt
+	depends = lua53-cjson
+	depends = lua53-lyaml
+	depends = lua53-posix
+	depends = lua53-pc
+	depends = lua53-stringy
+	depends = xtables-addons
+	source = git+https://gitlab.alpinelinux.org/alpine/awall.git#tag=v1.8.1
+	source = cjson-fix.patch
+	md5sums = SKIP
+	md5sums = 06347f7ad16611ef3feecbbd550c5b3e
 
 pkgname = awall
 

@@ -1,0 +1,26 @@
+From bdede6632c8e29848eaf470df4927e43a70ec02c Mon Sep 17 00:00:00 2001
+From: Lennart Eichhorn <lennart@madmanfred.com>
+Date: Mon, 28 Sep 2020 16:19:04 +0200
+Subject: [PATCH] Removed sort keys in JSON output, because it is not a default
+ cjson feature
+
+---
+ awall-cli | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/awall-cli b/awall-cli
+index 57c0cc0..acaa682 100755
+--- a/awall-cli
++++ b/awall-cli
+@@ -238,7 +238,7 @@ if not call(
+ 
+       local function dump(level)
+ 	 local json = require('cjson').new()
+-	 json.encode_sort_keys(true)
++--	 json.encode_sort_keys(true)
+ 
+ 	 local expinput = input:expand()
+ 
+-- 
+2.28.0
+
