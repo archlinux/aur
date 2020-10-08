@@ -1,6 +1,6 @@
 pkgbase = libretro-virtualjaguar-git
 	pkgdesc = libretro implementation of Virtual Jaguar. (Atari Jaguar)
-	pkgver = 245.c95606a
+	pkgver = 254.575371d
 	pkgrel = 1
 	url = https://github.com/libretro/virtualjaguar-libretro
 	arch = i686
