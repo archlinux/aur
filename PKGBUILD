@@ -20,5 +20,4 @@ sha512sums=('c68e0ae3f939b66a0c6e37cc568fb25bb71c2c1e6ac4d7aafb345b76e756a130195
 
 package () {
     cp -R "${srcdir}/usr" "${pkgdir}"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
