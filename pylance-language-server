@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-node /opt/pylance-language-server/dist/server.bundle.js --stdio
+node /opt/pylance-language-server/dist/server.bundle.js --stdio "\$@"

@@ -15,7 +15,7 @@ extension='vscode-pylance'
 source=("pylance-${pkgver}.zip::https://${publisher}.gallery.vsassets.io/_apis/public/gallery/publisher/${publisher}/extension/${extension}/${pkgver}/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage"
         'pylance-language-server')
 sha256sums=('SKIP'
-            '5fdd2854288f6ed6c8090a79ccb47ccec65085a2b660f078669e0789894b2471')
+            '0f86657f29b12c43d6a6e7858b3ee020141b4a125558bc2216018bd2cc2ebf42')
 
 package() {
     cd "${srcdir}/extension"
