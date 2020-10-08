@@ -1,6 +1,6 @@
 pkgbase = nbwmon-git
 	pkgdesc = ncurses bandwidth monitor
-	pkgver = r155.f159b35
+	pkgver = 0.5.2.r15.gf159b35
 	pkgrel = 1
 	url = https://github.com/causes-/nbwmon
 	arch = i686

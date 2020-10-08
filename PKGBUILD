@@ -1,6 +1,6 @@
 # Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=nbwmon-git
-pkgver=r155.f159b35
+pkgver=0.5.2.r15.gf159b35
 pkgrel=1
 pkgdesc="ncurses bandwidth monitor"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-*}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
