@@ -10,6 +10,7 @@ post_install() {
             "enable": true,
             "filetypes": ["python"],
             "command": "pylance-language-server",
+            "args": ["--stdio"],
             "initializationOptions": {},
             "settings": {
                 "python.analysis.typeCheckingMode": "basic",
