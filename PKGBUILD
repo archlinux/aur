@@ -3,7 +3,7 @@
 # Github Contributor: Michael Herold <https://github.com/michaelherold>
 
 pkgname=heroku-cli
-pkgver=7.44.0
+pkgver=7.45.0
 pkgrel=1
 _builddir=cli-$pkgver-$pkgrel
 pkgdesc="a tool for creating and managing Heroku apps from the command line"
@@ -11,26 +11,74 @@ arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
 license=('custom' 'ISC')
 depends=('nodejs')
-# makedepends=('npm')
+makedepends=('npm')
 optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
-source=("https://storage.googleapis.com/arch-package-files/heroku-cli-v$pkgver-$pkgrel.tar.xz")
-sha256sums=('a9692ac7ec94388d21e12348363dc596d09a8f1d6301b6d23961bbd22ee03941')
-sha512sums=('ee1356f1fb845a055a932e3f23be86006e814e0a8444c3845f8496caa2bdd91b8e63aca6432c3439a71023ecd9b0eba99f73ec59949b87e39b2d34e42f0da4b0')
+# source=("https://registry.npmjs.org/heroku/-/heroku-$pkgver.tgz")
+source=("https://github.com/heroku/cli/archive/v$pkgver.tar.gz")
+# source=("cli-source::git+https://github.com/heroku/cli.git#tag=v$pkgver")
+sha256sums=('fd64dc2aed5e29de3e951e8e0e694827b1f1ea42e482d839b262a9b1409ad063')
+sha512sums=('8f468a40ff3724cf10f03b17782f739ea1f64abcc5b55111f951f66bad5db608d769993ee21763cd28f6ccfe6da5556bc7fd5290df3286ac26c0f1aa4f90c291')
+# noextract=("heroku-$pkgver.tgz")
 options=('!strip')
 provides=('heroku' 'heroku-cli')
 
 prepare() {
-  # remove packaged node binary and fall back to whatever node is on the PATH
-  rm -f "$srcdir/heroku/bin/heroku"
-  rm -f "$srcdir/heroku/bin/heroku.cmd"
-  rm -f "$srcdir/heroku/bin/node"
+  pushd "$srcdir"
+
+    pushd "cli-$pkgver"
+
+      # install packaging tools
+      npm install
+
+      pushd packages/cli
+
+        # remove forced auto-update plugin
+        sed -i "/oclif\/plugin-update/d" ./package.json
+
+        # install dependencies
+        npm install
+
+        # remove dist folder if necessary
+        if [[ -d "./dist" ]]; then
+          rm -r ./dist
+        fi
+
+        npx oclif-dev pack --targets="linux-x64"
+
+        pushd dist/heroku-v$pkgver/
+
+          # move package source to src root
+          mv -f ./heroku-v$pkgver-linux-x64.tar.xz $srcdir/
+
+        popd
+
+      popd
+
+    popd
+
+    # extract oclif package
+    tar -xvf "heroku-v$pkgver-linux-x64.tar.xz" -C "$srcdir/"
+
+    # unneeded compilation files
+    for file in *; do
+      if [[ "$file" = "heroku" ]]; then
+        continue
+      else
+        rm -rf "$file"
+      fi
+    done
+
+    # remove packaged node binary and fall back to whatever node is on the PATH
+    rm -f ./heroku/bin/heroku
+    rm -f ./heroku/bin/heroku.cmd
+    rm -f ./heroku/bin/node
+
+  popd
 }
 
-package() {
-  # https://cli-assets.heroku.com/linux-arm
-  # https://cli-assets.heroku.com/linux-x64
 
+package() {
   install -dm755 "$pkgdir/usr/lib/heroku"
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
