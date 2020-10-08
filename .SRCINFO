@@ -1,0 +1,18 @@
+pkgbase = python-auditok
+	pkgdesc = An audio/acoustic activity detection and audio segmentation tool.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/amsehili/auditok
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-pydub: read audio files in popular audio formats (ogg, mp3, etc.) or extract audio from a video file.
+	optdepends = python-pyaudio: read audio data from the microphone and play back detections.
+	optdepends = python-matplotlib: plot audio signal and detections
+	optdepends = python-numpy: used for math operations instead of standard python if available.
+	source = https://files.pythonhosted.org/packages/source/a/auditok/auditok-0.1.8.tar.gz
+	md5sums = ce305a5c18fd2a472c103400a9a3b76a
+
+pkgname = python-auditok
+
