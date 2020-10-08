@@ -10,6 +10,7 @@ run_hook() {
         else
             msg "Failed to mount the RBD block device, either network is not up, rnd kernel
             parameters are incorrect."
+        fi
     else
         msg "Unable to mount RBD block device : Missing ip or rbd kernel parameters."
     fi
