@@ -1,0 +1,38 @@
+pkgbase = jre14
+	pkgdesc = Oracle Java Runtime Environment
+	pkgver = 14.0.2
+	pkgrel = 1
+	url = https://www.oracle.com/java/
+	install = jre14.install
+	arch = x86_64
+	license = custom
+	depends = java-runtime-common
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = libxtst
+	depends = libxrender
+	depends = libnet
+	optdepends = alsa-lib: for basic sound support
+	provides = java-runtime=14
+	provides = java-runtime-headless=14
+	provides = java-runtime-jre=14
+	provides = java-runtime-headless-jre=14
+	backup = etc/java14-jre14/management/jmxremote.access
+	backup = etc/java14-jre14/management/jmxremote.password.template
+	backup = etc/java14-jre14/management/management.properties
+	backup = etc/java14-jre14/security/policy/limited/default_US_export.policy
+	backup = etc/java14-jre14/security/policy/limited/default_local.policy
+	backup = etc/java14-jre14/security/policy/limited/exempt_local.policy
+	backup = etc/java14-jre14/security/policy/unlimited/default_US_export.policy
+	backup = etc/java14-jre14/security/policy/unlimited/default_local.policy
+	backup = etc/java14-jre14/security/policy/README.txt
+	backup = etc/java14-jre14/security/java.policy
+	backup = etc/java14-jre14/security/java.security
+	backup = etc/java14-jre14/logging.properties
+	backup = etc/java14-jre14/net.properties
+	backup = etc/java14-jre14/sound.properties
+	source = https://download.oracle.com/otn-pub/java/jdk/14.0.2+12/205943a0976c4ed48cb16f1043c5c647/jdk-14.0.2_linux-x64_bin.tar.gz
+	sha256sums = cb811a86926cc0f529d16bec7bd2e25fb73e75125bbd1775cdb9a96998593dde
+
+pkgname = jre14
+
