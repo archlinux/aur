@@ -63,9 +63,9 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1430775
   # source: https://github.com/xhorak/firefox-devedition-flatpak/tree/master/org.mozilla.FirefoxNightly
-  patch -Np1 -i ../0001a-Pipewire.patch
+  patch -fNp1 -i ../0001a-Pipewire.patch
   # Mozilla folks like to move this directory around
-  patch -Np1 -i -d "$(find -name desktop_capture -type d)" ../0001b-Pipewire.patch
+  patch -fNp1 -d "$(find -name desktop_capture -type d)" -i "$(readlink -f ../0001b-Pipewire.patch)"
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
