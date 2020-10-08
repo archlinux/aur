@@ -10,8 +10,8 @@ license=('BSD')
 depends=('mkinitcpio-nfs-utils')
 source=('mkinitcpio-rbd-install'
         'mkinitcpio-rbd-hook')
-sha256sums=('e0776a11ae9b46d9ae31607fe45e387795a8587d2221de2693702205f85a266a'
-            '43a141db5d0f68e3f1a89e2e7ee01767d5f915b5096f88f694bc397052f68b8e')
+sha256sums=('f9f08c0281d478ff1eab2e0a73409496b4aa4f33181662d7cc296f5aa3aa9501'
+            'b5b803e5c11065677bbbd2fc6da16429d9ebbd9ed9ca37ee80bffd335754c46d')
 
 package() {
     install -Dm644 "$srcdir/mkinitcpio-rbd-install" "$pkgdir/usr/lib/initcpio/install/rbd"
