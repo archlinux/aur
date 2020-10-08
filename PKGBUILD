@@ -7,7 +7,6 @@ arch=('x86_64')
 url='https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance'
 license=('custom: commercial')
 depends=('nodejs')
-makedepends=('npm')
 provides=('pylance-language-server')
 conflicts=('pylance-language-server')
 install=pylance-language-server.install

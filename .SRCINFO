@@ -6,7 +6,6 @@ pkgbase = pylance-language-server
 	install = pylance-language-server.install
 	arch = x86_64
 	license = custom: commercial
-	makedepends = npm
 	depends = nodejs
 	provides = pylance-language-server
 	conflicts = pylance-language-server
