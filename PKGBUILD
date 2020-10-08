@@ -4,7 +4,7 @@ _svt_hevc_ver='ead6fdf7c9ff84511b42fc1658c1654b84d83e4b'
 _svt_vp9_ver='7951c3cf6773c5e0ede00e4ce3e3ad2f7e090cfb'
 
 pkgname=ffmpeg-full-git
-pkgver=4.4.r99487.g1249698e1b
+pkgver=4.4.r99491.g616eb93a40
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -27,7 +27,8 @@ depends=(
         'intel-media-sdk' 'libva' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
-        'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
+        'libopenmpt-svn' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2'
+        'pocketsphinx'
 )
 makedepends=(
     # official repositories:
@@ -155,6 +156,7 @@ build() {
         --enable-libtheora \
         --disable-libtls \
         --enable-libtwolame \
+        --enable-libuavs3d \
         --enable-libv4l2 \
         --enable-libvidstab \
         --enable-libvmaf \
