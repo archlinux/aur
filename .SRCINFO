@@ -1,6 +1,6 @@
 pkgbase = libretro-fbneo-git
 	pkgdesc = libretro FBNeo NEW implementation of Final Burn Alpha
-	pkgver = 9976.647e957a3
+	pkgver = 10100.424907e7b
 	pkgrel = 1
 	url = https://github.com/libretro/FBNeo
 	arch = i686
