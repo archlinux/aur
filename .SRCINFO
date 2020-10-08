@@ -1,0 +1,27 @@
+pkgbase = lib32-libnm-glib-nosystemd
+	pkgdesc = NetworkManager client library (legacy)
+	pkgver = 1.18.5dev+12+ga8746f48ca
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/NetworkManager
+	arch = x86_64
+	license = GPL2
+	license = LGPL2.1
+	makedepends = git
+	makedepends = intltool
+	makedepends = lib32-libndp
+	makedepends = libxslt
+	makedepends = meson
+	depends = lib32-dbus
+	depends = lib32-dbus-glib
+	depends = lib32-glib2
+	depends = lib32-glibc
+	depends = lib32-libgudev
+	depends = lib32-nspr
+	depends = lib32-nss
+	depends = lib32-util-linux
+	depends = libnm-glib
+	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=a8746f48ca088b4cd3799e540b8606df1f1e8522
+	sha256sums = SKIP
+
+pkgname = lib32-libnm-glib-nosystemd
+
