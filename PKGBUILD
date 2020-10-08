@@ -1,3 +1,4 @@
+# Maintainer: madhogs <madhogs at protonmail dot com>
 # Contributor: grimi <grimi at poczta dot fm>
 
 pkgname=xcursor-numix
@@ -8,9 +9,8 @@ arch=('any')
 url="https://www.gnome-look.org/p/999876/"
 license=('GPL')
 depends=('libxcursor')
-_hash_time=($(curl -s "$url"|grep -e "hash =" -e "timetamp ="|sed "s/.*= '\(.*\)';/\1/"))
-source=("${pkgname}-${pkgver}.tar.gz::https://dl.opendesktop.org/api/files/downloadfile/id/1460735152/s/${_hash_time[0]}/t/${_hash_time[1]}/169299-numix-cursor.tar.gz")
-sha256sums=('99fa7c724f00e8b113468065ca202fa06105b90eaefc430a4871d66cb35475ac')
+source=("https://github.com/uloco/numix-cursor/archive/master.tar.gz")
+sha256sums=('65b4b1fdde0bdc6c1e51a9b5417d2dc9354c3ceb988e0840a103c0ae4a90fb11')
 
 package() {
   cd theme
@@ -19,6 +19,4 @@ package() {
   find Numix-Cursor/ -type l \
       -exec cp -d "{}" "${pkgdir}/usr/share/icons/{}" \;
 }
-
-# vim:set ts=2 sw=2 et:
 
