@@ -27,10 +27,10 @@ pkgbase = wpewebkit-gl-armv7l
 	conflicts = wpewebkit
 	conflicts = wpewebkit-git
 	source = https://webreflection.github.io/aur/wpewebkit-gl-armv7l-2.30.1.tar.gz
-	md5sums = 5b835e9b6829133e1531775b3016d6b1
-	sha1sums = 3aa955cfc013326d54ca269d0a3dfeb4862a47ee
-	sha256sums = 4bc2d34001678b8658d906e51633964683ec7ee08d8aafee133239699f3f3953
-	sha512sums = 191074e16d8edd95d365d7dac385062aa80063dfb64f0c349e7ac3ef373ff022c8d2127ef73f3327a79bf293cafe9619e3dd4e1c73c5d527ab8b71792b293dd0
+	md5sums = 73eeaee6886285e60b45461145cafa89
+	sha1sums = cb0037a646587606aab1ab04bd8891f0258365e0
+	sha256sums = d144f51d081b52d1f7b700e0c401fe51a1f6ef3a23261d240226f1703b6e8d1b
+	sha512sums = d3441885c3cc1936f7de3c7e1cc8df8fb48c35498af135d20213b3eaa24e3b0ec1787858a284ad1741d081c760a0807c54bf5624bc1c00efe76e08b500aba5d6
 
 pkgname = wpewebkit-gl-armv7l
 
