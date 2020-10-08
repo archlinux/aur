@@ -1,14 +1,14 @@
 pkgbase = python-sql
 	pkgdesc = Library to write SQL queries
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = http://python-sql.tryton.org/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.io/packages/source/p/python-sql/python-sql-1.2.0.tar.gz
-	sha256sums = bde7cd0e83bf90d1d9683c97ec83c0a656353cb7ff3cd788553c34b8f8b8c302
+	source = https://pypi.io/packages/source/p/python-sql/python-sql-1.2.1.tar.gz
+	sha256sums = 306999bd311fbf50804d76f346655af0a6ff18881ce46c1329256fee40f492c0
 
 pkgname = python-sql
 
