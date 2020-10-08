@@ -1,9 +1,8 @@
-pkgbase = godot
+pkgbase = godot-voxel
 	pkgdesc = An advanced, feature packed, multi-platform 2D and 3D game engine
 	pkgver = 3.2.3
 	pkgrel = 1
 	url = http://www.godotengine.org
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = scons
@@ -16,10 +15,13 @@ pkgbase = godot
 	depends = libxrandr
 	depends = libxi
 	depends = libglvnd
+	conflicts = godot
 	conflicts = godot-git
 	conflicts = godot-pulse
 	source = https://github.com/godotengine/godot/archive/3.2.3-stable.tar.gz
+	source = https://github.com/Zylann/godot_voxel/archive/godot3.2.3.zip
 	sha256sums = 4c2a8e7da1ad05c6223b0ff6cf2be124dad6708b56a8ec9910dc2aaf82a553ae
+	sha256sums = c8b212909961fd398b417b7562d6c483975ccc9cb2649660c4f95f438907acf5
 
-pkgname = godot
+pkgname = godot-voxel
 
