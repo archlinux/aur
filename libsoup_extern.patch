@@ -1,0 +1,12 @@
+diff -rupN --no-dereference libsoup-2.72.0/libsoup/soup-version.h.in libsoup-2.72.0-new/libsoup/soup-version.h.in
+--- libsoup-2.72.0/libsoup/soup-version.h.in	2020-09-14 00:55:13.558924400 +0200
++++ libsoup-2.72.0-new/libsoup/soup-version.h.in	2020-09-15 16:09:56.672190345 +0200
+@@ -33,7 +33,7 @@ G_BEGIN_DECLS
+ #  ifdef G_PLATFORM_WIN32
+ #    ifdef LIBSOUP_COMPILATION
+ #      ifdef DLL_EXPORT
+-#        define SOUP_VAR __declspec(dllexport)
++#        define SOUP_VAR extern __declspec(dllexport)
+ #      else /* !DLL_EXPORT */
+ #        define SOUP_VAR extern
+ #      endif /* !DLL_EXPORT */
