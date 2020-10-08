@@ -1,13 +1,12 @@
 pkgbase = r-sp
 	pkgdesc = Classes and Methods for Spatial Data
-	pkgver = 1.4.2
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=sp
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	license = GPL3
-	makedepends = gcc
 	depends = r>=3.0.0
 	optdepends = r-rcolorbrewer
 	optdepends = r-rgdal
@@ -15,8 +14,8 @@ pkgbase = r-sp
 	optdepends = r-gstat
 	optdepends = r-maptools
 	optdepends = r-deldir
-	source = https://cran.r-project.org/src/contrib/sp_1.4-2.tar.gz
-	md5sums = c722e997fda4c56581de83d80fb25e67
+	source = https://cran.r-project.org/src/contrib/sp_1.4-4.tar.gz
+	sha256sums = fa878a6541a8565fe831c02991427b94fa7195aab5ce957708631516dd0bfc7f
 
 pkgname = r-sp
 
