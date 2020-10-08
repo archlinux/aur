@@ -1,7 +1,7 @@
-# Maintainer: Czémán Arnold <cemiarni@gmail.com>
+# Maintainer: Pinembour <pinembour@teppelin.fr>
 
 pkgname=mkinitcpio-rbd
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="mkinitcpio hook to boot from Ceph Block Device"
 arch=('i686' 'x86_64')
