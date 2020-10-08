@@ -4,14 +4,15 @@
 pkgname=mu-editor
 epoch=1
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple Python editor for beginner programmers'
 arch=('any')
 url='https://codewith.mu/'
 license=('GPL3')
-depends=('python-appdirs' 'python-gpiozero' 'python-guizero' 'python-matplotlib' 'python-nudatus'
-         'python-pigpio' 'python-pgzero' 'python-pycodestyle' 'python-pyflakes'
-         'python-pyqtchart>=5.11.3' 'python-pyserial' 'python-qscintilla-qt5' 'python-qtconsole'
+depends=('pigpio' 'python-appdirs' 'python-gpiozero' 'python-guizero'
+         'python-matplotlib' 'python-nudatus' 'python-pgzero'
+         'python-pycodestyle' 'python-pyflakes' 'python-pyqtchart>=5.11.3'
+         'python-pyserial' 'python-qscintilla-qt5' 'python-qtconsole'
          'python-requests' 'python-semver' 'qt5-serialport')
 makedepends=('gendesk' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mu-editor/mu/archive/$pkgver.tar.gz"
