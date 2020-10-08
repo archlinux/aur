@@ -1,0 +1,5 @@
+pkg/
+src/
+lupa-*.tar.gz
+python-lupa-luajit-*.pkg.tar.xz
+python-lupa-luajit-*.pkg.tar.zst
