@@ -1,0 +1,17 @@
+pkgbase = inspektor
+	pkgdesc = View metadata information on files
+	pkgver = 1.0.32
+	pkgrel = 1
+	url = https://github.com/hezral/inspektor
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = attr
+	depends = gtk3
+	depends = perl-image-exiftool
+	depends = python
+	source = inspektor-1.0.32.tar.gz::https://github.com/hezral/inspektor/archive/1.0.32.tar.gz
+	sha256sums = 41057ef4efb61a24cfb6cf70a2e45381542774635f5080803dba5ba0b5429444
+
+pkgname = inspektor
+
