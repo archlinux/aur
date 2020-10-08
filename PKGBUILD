@@ -3,7 +3,7 @@
 
 pkgname=bluespec-git
 pkgver=r301.9f4a447
-pkgrel=1
+pkgrel=$(pacman -Si haskell-split | grep '^Version' | grep -Po '[^-]+$')
 pkgdesc='Bluespec Compiler (BSC)'
 arch=('x86_64')
 url='https://github.com/B-Lang-org/bsc'
