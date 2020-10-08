@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helmsman
 pkgver=3.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Helm Charts as Code'
 arch=('x86_64' 'i686')
 url='https://github.com/Praqma/helmsman'
@@ -26,10 +26,10 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
-  export GOFLAGS='-buildmode=pie -modcacherw -mod=readonly -trimpath -ldflags=-linkmode=external'
+  export GOFLAGS='-buildmode=pie -modcacherw -mod=readonly -trimpath'
   # man makepkg(8), https://github.com/Praqma/helmsman/blob/master/Makefile
   TZ=UTC printf -v _date '%(%d%m%y)T' ${SOURCE_DATE_EPOCH:-}
-  go build -o "$pkgname" -ldflags "-X main.version=v${pkgver}-${_date}" ./cmd/helmsman
+  go build -o "$pkgname" -ldflags "-linkmode=external -X main.version=v${pkgver}-${_date}" ./cmd/helmsman
 }
 
 check() {
