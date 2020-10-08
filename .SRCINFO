@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-rbd
 	pkgdesc = mkinitcpio hook to boot from Ceph Block Device
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://www.archlinux.org/
 	arch = i686
