@@ -54,8 +54,6 @@ arch=('i686' 'x86_64')
 url="https://alicevision.github.io/"
 license=('MPL2' 'MIT')
 groups=()
-conflicts=(alice-vision-git)
-provides=(alice-vision)
 # split: cctag
 #depends=('openexr' 'coin-or-coinutils' 'coin-or-lemon' 'opencv' 
 depends+=('alembic' 'boost-libs' 'openimageio' 'flann' 'geogram' 'opengv' 'coin-or-clp' 'ceres-solver')
