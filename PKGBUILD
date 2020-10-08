@@ -2,7 +2,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=clipr
-_cranver=0.7.0
+_cranver=0.7.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL3)
 depends=(r xclip xsel)
 optdepends=(r-covr r-knitr r-rmarkdown r-rstudioapi r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('2309a44a587573a739119e98d0f5e3b7')
+sha256sums=('ffad477b07847e3b68f7e4406bbd323025a8dae7e3c768943d4d307ee3248afb')
 
 build() {
   cd "${srcdir}"
