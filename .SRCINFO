@@ -1,0 +1,15 @@
+pkgbase = kos32-kpack
+	pkgdesc = KolibriOS executable compression.
+	pkgver = r8092
+	pkgrel = 1
+	url = http://wiki.kolibrios.org/wiki/Kpack/ru
+	arch = any
+	groups = kos32-dev
+	license = GPLv3
+	conflicts = kpack
+	conflicts = kpack-git
+	source = kpack.r8092.tar.gz
+	md5sums = SKIP
+
+pkgname = kos32-kpack
+
