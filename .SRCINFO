@@ -1,6 +1,6 @@
 pkgbase = colmap-git
 	pkgdesc = General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.
-	pkgver = 3.6.r3.gd1176fe
+	pkgver = 3.6.r28.g94badd0
 	pkgrel = 1
 	url = https://colmap.github.io/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = colmap-git
 	license = GPL
 	makedepends = boost
 	makedepends = cmake
-	makedepends = eigen
+	makedepends = eigen-qfix
 	makedepends = git
 	makedepends = ninja
 	makedepends = python-sphinx

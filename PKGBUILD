@@ -9,7 +9,7 @@ _name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 _fragment="#branch=dev"
 pkgname=${_name}-git
-pkgver=3.6.r3.gd1176fe
+pkgver=3.6.r28.g94badd0
 pkgrel=1
 pkgdesc="General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ url="https://colmap.github.io/"
 license=('GPL')
 groups=()
 depends=('cgal' 'ceres-solver' 'gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' 'qt5-base')
-makedepends=('boost' 'cmake' 'eigen' 'git' 'ninja' 'python-sphinx' )
+makedepends=('boost' 'cmake' 'eigen-qfix' 'git' 'ninja' 'python-sphinx' )
 if [ "$_BUILD_CUDA" == "ON" ] ; then 
   makedepends+=('cuda-sdk')
   optdepends+=('cuda-toolkit: for cuda sfm/mvs acceleration')
