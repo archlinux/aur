@@ -1,10 +1,10 @@
-# Maintainer: Yamada Hayao <hayao@fascode.net>
-# Maintainer: EHfive <eh5@sokka.cn>
+# Maintainer : Yamada Hayao <hayao@fascode.net>
+# Contributor: EHfive <eh5@sokka.cn>
 
-pkgname=pulseaudio-modules-bt
-pkgver=1.4
-pulseaudio_ver=13.99.2
-pkgrel=2
+pkgname="pulseaudio-modules-bt"
+pkgver="1.4"
+pulseaudio_ver="13.99.2"
+pkgrel="3"
 pkgdesc="PulseAudio Bluetooth modules with SBC, AAC, APTX, APTX-HD, Sony LDAC (A2DP codec) support"
 arch=("i686" "x86_64" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/EHfive/pulseaudio-modules-bt"
