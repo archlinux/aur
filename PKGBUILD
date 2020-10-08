@@ -8,7 +8,7 @@ license=('GPLv3')
 arch=('any')
 md5sums=('SKIP')
 conflicts=('kpack' 'kpack-git') 
-groups=('kos32-dev')
+groups=('kos32-sdk-bin')
 
 build(){
     cd "$srcdir/kpack.r8092"
