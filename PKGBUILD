@@ -9,11 +9,11 @@ arch=('any')
 url="https://www.gnome-look.org/p/999876/"
 license=('GPL')
 depends=('libxcursor')
-source=("https://github.com/uloco/numix-cursor/archive/master.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/uloco/numix-cursor/archive/master.tar.gz")
 sha256sums=('65b4b1fdde0bdc6c1e51a9b5417d2dc9354c3ceb988e0840a103c0ae4a90fb11')
 
 package() {
-  cd theme
+  cd numix-cursor-master/theme
   find Numix-Cursor/ -type f -not -name "*~" \
       -exec install -Dm644 "{}" "${pkgdir}/usr/share/icons/{}" \;
   find Numix-Cursor/ -type l \
