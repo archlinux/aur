@@ -18,13 +18,11 @@ pkgbase = mozc-ut-united
 	depends = zinnia
 	source = mozc::git+https://github.com/google/mozc.git#commit=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
 	source = https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/mozc.patch
-	source = https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/usage_dict.txt.patch
 	source = https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Add_support_new_Japanese_era.patch
 	source = https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Change-from-python2-code-to-python3.patch
 	source = https://osdn.net/downloads/users/26/26672/mozcdic-ut-20200924.1.tar.bz2
 	sha1sums = SKIP
 	sha1sums = a366077418ae6f235aecf374256354a40dc5b37a
-	sha1sums = bf1e390ba01ae48642fe44f3ba025b61ee887cc8
 	sha1sums = 3aa3077cb28352f9aafde71f8d864b333424338f
 	sha1sums = f363373e892ac53b972cb092a3627b3a4fbc5b6a
 	sha1sums = 5e13bb417f80387df656c95290118e82d817eacd

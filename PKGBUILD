@@ -40,14 +40,12 @@ makedepends=('python' 'ruby' 'git' 'ninja' 'clang')
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
   https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/mozc.patch
-  https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/usage_dict.txt.patch
   https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Add_support_new_Japanese_era.patch
   https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Change-from-python2-code-to-python3.patch
   https://osdn.net/downloads/users/26/26672/mozcdic-ut-${_utdicdate}.${_utdicver}.tar.bz2
 )
 sha1sums=('SKIP'
           'a366077418ae6f235aecf374256354a40dc5b37a'
-          'bf1e390ba01ae48642fe44f3ba025b61ee887cc8'
           '3aa3077cb28352f9aafde71f8d864b333424338f'
           'f363373e892ac53b972cb092a3627b3a4fbc5b6a'
           '5e13bb417f80387df656c95290118e82d817eacd')
