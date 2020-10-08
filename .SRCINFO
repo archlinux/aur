@@ -1,0 +1,14 @@
+pkgbase = python-fake-bpy-module-2.90
+	pkgdesc = Collection of the fake Blender Python API module for the code completion.
+	pkgver = 20200907
+	pkgrel = 1
+	url = https://github.com/nutti/fake-bpy-module
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	provides = python-fake-bpy-module-2.90
+	source = https://files.pythonhosted.org/packages/source/f/fake-bpy-module-2.90/fake-bpy-module-2.90-20200907.tar.gz
+	md5sums = 72ef906ed6422fb8b31e59986b99fc13
+
+pkgname = python-fake-bpy-module-2.90
+
