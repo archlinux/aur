@@ -1,0 +1,19 @@
+[Desktop Entry]
+
+Type=Application
+
+Version=1.0
+
+Name=RemoteLight
+
+Comment=Multifunctional LED Control Software
+
+Path=/usr/bin/
+
+Exec=remotelight
+
+Icon=remotelight
+
+Terminal=false
+
+Categories=Java;
