@@ -6,7 +6,7 @@
 pkgname=godot-voxel
 pkgver=3.2.3
 pkgrel=1
-pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
+pkgdesc="The Godot game engine, plus Zylann's voxel tools module"
 url="http://www.godotengine.org"
 license=('MIT')
 arch=('x86_64')
