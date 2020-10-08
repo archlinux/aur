@@ -1,13 +1,17 @@
 #!/usr/bin/ash
 
 run_hook() {
-    msg -n ":: Map RBD device..."
-    if [ -n "${ip}" ]; then
+    msg -n ":: Mapping RBD device..."
+    if [ -n "${ip}" -a -n "${rbd}" ]; then
         modprobe rbd
         echo ${rbd//:/ } > /sys/bus/rbd/add_single_major
-        msg "done."
+        if [ -e "/dev/rbd0" ]; then
+            msg "Succesfully mounted RBD block device, continuing..."
+        else
+            msg "Failed to mount the RBD block device, either network is not up, rnd kernel
+            parameters are incorrect."
     else
-        msg "failed."
+        msg "Unable to mount RBD block device : Missing ip or rbd kernel parameters."
     fi
 }
 
