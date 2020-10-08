@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=borg-arm-bin
-pkgver=1.1.13
+pkgver=1.1.14
 pkgrel=1
 pkgdesc="Borg backup - prebuilt standalone ARM binary"
 url="https://borgbackup.readthedocs.io/en/stable/installation.html#standalone-binary"
@@ -16,11 +16,11 @@ source_armv8h=("$_tgt-armv8h::$_armurl/borg-$pkgver-arm64")
 source_armv7h=("$_tgt-armv7h::$_armurl/borg-$pkgver-armv6")
 source_armv6h=("$_tgt-armv6h::$_armurl/borg-$pkgver-armv6")
 source_armv5h=("$_tgt-armv5h::$_armurl/borg-$pkgver-armv5")
-sha256sums=('f7fe86af86f15a4114b822666d12309ee63ed9b5dd1f696526c202c647bcce51')
-sha256sums_armv8h=('d942f2815cc6b8acbd6c0f08920160a6e850d9dbb84178af8b72f4eb9e5f9cae')
-sha256sums_armv7h=('7724c7adcc412465d9a3a8a5a8b1ce69af21e01bac92fe15e07a3d44aae16bea')
-sha256sums_armv6h=('7724c7adcc412465d9a3a8a5a8b1ce69af21e01bac92fe15e07a3d44aae16bea')
-sha256sums_armv5h=('925a50349edb8ceea002c95d68ea4c6771b78bc4743d32aed4668ecacca54e48')
+sha256sums=('9ef9eb76895bd4674a3dedcf191f0946eaf384d4bc8a6817c3c35a1df3452cee')
+sha256sums_armv8h=('af9333bea23741c62b0461312c1dceed24d0818f4ebd1cfb456b85f887dc573a')
+sha256sums_armv7h=('e5e75c45ae38c414e2655eeed2b91c11003061af09f4c13af4e109d5b8bfa5d9')
+sha256sums_armv6h=('e5e75c45ae38c414e2655eeed2b91c11003061af09f4c13af4e109d5b8bfa5d9')
+sha256sums_armv5h=('54bf7c75abe55bc52205042b390245c5e17d2785eb9a33c43e44bb51a2507199')
 
 package() {
     install -D $_tgt-$CARCH $pkgdir/usr/bin/borg
