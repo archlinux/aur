@@ -1,0 +1,22 @@
+pkgbase = adobe-reader-11
+	pkgdesc = The reference software for viewing, printing, annotating and digitally signing PDF files
+	pkgver = 11.0.23
+	pkgrel = 1
+	url = https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html
+	arch = i686
+	arch = x86_64
+	license = freeware
+	depends = wine
+	depends = winetricks
+	options = !strip
+	source = ftp://ftp.adobe.com/pub/adobe/reader/win/11.x/11.0.00/en_US/AdbeRdr11000_en_US.msi
+	source = ftp://ftp.adobe.com/pub/adobe/reader/win/11.x/11.0.23/misc/AdbeRdrUpd11023.msp
+	source = adobe-reader-11.sh
+	source = adobe-reader-11.desktop
+	sha256sums = 1f15c76c6dd92d8e87d379b70c70154fd130a534fe91c693f239160c8104ac68
+	sha256sums = ad11346cd51f9509a875c2df8fd2fdfdb16b2dd555705471a178f0ba1151f655
+	sha256sums = 48b98ceec9a8ae31b9a87e904dc29eca023fcb9353783fccd985cb773ffeca73
+	sha256sums = 01e00f48292a1afa6c9a59e84b319fe8e8d911c4c15bef0810e9334a7bb4e182
+
+pkgname = adobe-reader-11
+
