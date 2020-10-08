@@ -1,7 +1,7 @@
 pkgbase = echowo
 	pkgdesc = Bash echo like with string uwufication.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/joseafga/echowo
 	arch = x86_64
 	license = MIT
