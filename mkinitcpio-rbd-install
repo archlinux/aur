@@ -16,7 +16,8 @@ Requirements:
 This hook needs internet access, so the net hook is required. Be sure to add it in the mkinitcpio
 config file before the rbd hook. You also need to properly configure the ip kernel parameter to have
 internet access.
-If you wish to mount the rbd device, you also need to add 'root=/dev/rdb0' as a kernel parameter.
+If you wish to mount the rbd device, you also need to add 'root=/dev/rdb0p1' or whereever is your
+root partition as a kernel parameter.
 
 Kernel Parameters:
 You can set your settings for the rbd block device with this new kernel parameter.
