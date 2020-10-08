@@ -12,6 +12,7 @@ pkgbase = bubblejail
 	depends = python-toml
 	depends = xdg-dbus-proxy
 	depends = hicolor-icon-theme
+	depends = python-pyqt5
 	conflicts = bubblejail-git
 	source = https://github.com/igo95862/bubblejail/releases/download/0.3.0/bubblejail-0.3.0.tar.gz
 	source = https://github.com/igo95862/bubblejail/releases/download/0.3.0/bubblejail-0.3.0.tar.gz.sig
