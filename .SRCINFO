@@ -1,7 +1,7 @@
 pkgbase = portmod
 	pkgdesc = A cli tool to manage mods for OpenMW
-	pkgver = 2.0_beta7
-	pkgrel = 2
+	pkgver = 2.0_beta8
+	pkgrel = 1
 	url = https://gitlab.com/portmod/portmod
 	arch = any
 	license = GPL3
@@ -17,7 +17,6 @@ pkgbase = portmod
 	depends = python-setuptools
 	depends = python-colorama
 	depends = python-appdirs
-	depends = python-black
 	depends = python-gitpython
 	depends = python-progressbar
 	depends = python-restrictedpython
@@ -33,8 +32,8 @@ pkgbase = portmod
 	provides = portmod
 	conflicts = portmod
 	replaces = openmmm
-	source = https://gitlab.com/portmod/portmod/-/archive/v2.0_beta7/portmod-v2.0_beta7.tar.gz
-	sha512sums = 6a00aed3e3d1874d3e7eebf1961edf17679319df9b88baa66047bace6653b667efeebb17296088547852dc7ebe7899624ec2b75b31f934ef1c8a098d7df382e1
+	source = https://gitlab.com/portmod/portmod/-/archive/v2.0_beta8/portmod-v2.0_beta8.tar.gz
+	sha512sums = a0519307c2e521b666d801541da3723c7027a028dd38d648d5a2d88afbd0813fc87536f3389b08623d021b842d73b44b462a6c9e0565c1650b3558a0e09c95f0
 
 pkgname = portmod
 
