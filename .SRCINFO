@@ -8,6 +8,7 @@ pkgbase = mate-indicator-applet
 	arch = pentium4
 	license = LGPL2.1
 	license = GPL3
+	makedepends = autoconf-archive
 	makedepends = intltool
 	makedepends = gtk3
 	makedepends = ayatana-ido
