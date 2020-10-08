@@ -14,7 +14,7 @@ license=('custom')
 arch=('i686' 'x86_64')
 url="https://projectchrono.org/"
 depends=(openmpi blas boost-libs hdf5)
-makedepends+=(cmake eigen git boost glm glew glfw irrlicht glut openmpi gcc-fortran)
+makedepends+=(cmake "eigen=3.3.9" git boost glm glew glfw irrlicht glut openmpi gcc-fortran)
 makedepends+=(python swig) # MODULE_PYTHON
 makedepends+=('cuda<=10.2.89')        # MODULE_GRANULAR
                            # MODULE_PARALLEL optional
