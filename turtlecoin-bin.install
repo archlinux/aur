@@ -3,9 +3,7 @@ binary_message() {
     echo "  miner           => trtl-miner"
     echo "  zedwallet       => trtl-zedwallet"
     echo "  wallet-api      => trtl-wallet-api"
-    echo "  wallet-upgrader => trtl-wallet-upgrader"
     echo "  TurtleCoind     => unchanged"
-    echo "  turtle-service  => unchanged"
     echo
 }
 
