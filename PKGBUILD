@@ -3,7 +3,7 @@ pkgver=2.4
 pkgrel=1
 pkgdesc='A oldstyle Minecraft launcher written in Python'
 arch=('any')
-url="https://gitlab.com/JakobDevjdMinecraftLauncher"
+url="https://gitlab.com/JakobDev/jdMinecraftLauncher"
 license=('GPL3')
 depends=('python-pyqt5'
          'python-pyqtwebengine'
