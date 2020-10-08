@@ -26,13 +26,13 @@ prepare() {
 
 	cd "${srcdir}/${_extname}"
 	./bootstrap --noconfigure
-	./configure --prefix=/usr
 
 }
 
 build() {
 
 	cd "${srcdir}/${_extname}"
+	./configure --prefix=/usr
 	make
 
 }
