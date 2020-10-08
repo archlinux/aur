@@ -17,17 +17,17 @@
 #
 pkgbase="zfs-linux-rc"
 pkgname=("zfs-linux-rc" "zfs-linux-rc-headers")
-_zfsver="0.8.0_rc5"
-_kernelver="5.1.4.arch1-1"
-_extramodules="5.1.4-arch1-1-ARCH"
+_zfsver="2.0.0_rc3"
+_kernelver="5.8.13.arch1-1"
+_extramodules="${_kernelver/.arch/-arch}"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
-makedepends=("linux-headers=${_kernelver}" "python")
+makedepends=("linux-headers=${_kernelver}")
 arch=("x86_64")
-url="http://zfsonlinux.org/"
+url="https://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver/_/-}/zfs-${_zfsver/_/-}.tar.gz")
-sha256sums=("c5dc91e3efb7555c6c1846cf89fd4cfb0952271a2900434e697f2b7397ce9b16")
+sha256sums=("d06ef8baa44a302ff28c6860e4ff1bf454c617198f755dbbce5d46d3bb7bca7b")
 license=("CDDL")
 depends=("kmod" "zfs-utils-rc=${_zfsver}" "linux=${_kernelver}")
 
@@ -35,8 +35,8 @@ build() {
     cd "${srcdir}/zfs-${_zfsver/_rc*/}"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
-                --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-${zfsver} --with-config=kernel \
+                --datadir=/usr/share --includedir=/usr/include --with-udevdir=/usr/lib/udev \
+                --libexecdir=/usr/lib --with-config=kernel \
                 --with-linux=/usr/lib/modules/${_extramodules}/build \
                 --with-linux-obj=/usr/lib/modules/${_extramodules}/build
     make
@@ -47,11 +47,9 @@ package_zfs-linux-rc() {
     install=zfs.install
     provides=("zfs" "spl")
     groups=("archzfs-linux-rc")
-    conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" 'zfs-linux' 'zfs-linux-git' 'spl-linux' "spl-dkms" "spl-dkms-git")
+    conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" "spl-dkms" "spl-dkms-git" 'zfs-linux' 'zfs-linux-git' 'spl-linux')
     cd "${srcdir}/zfs-${_zfsver/_rc*/}"
-    make DESTDIR="${pkgdir}" install
-    cp -r "${pkgdir}"/{lib,usr}
-    rm -r "${pkgdir}"/lib
+    make DESTDIR="${pkgdir}" INSTALL_MOD_PATH=/usr install
     # Remove src dir
     rm -r "${pkgdir}"/usr/src
 }
