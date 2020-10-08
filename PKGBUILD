@@ -14,7 +14,7 @@ source=("https://github.com/${pkgdev}/${pkg_case}/releases/download/${pkgver}/${
 		"${pkg_case}.desktop"
 		"${pkg_case}.png"
 		"${pkgname}")
-noextract=('${pkg_case}.jar')
+noextract=('MineOnline.jar')
 md5sums=('SKIP'
 		 'b4ca44fc2a05a1f1638420cd90b633f9'
 		 '21c69aad5d0faae6e05271651631c7ca'
