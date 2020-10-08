@@ -5,15 +5,16 @@
 pkgbase=aocl
 pkgname=(aocl-aocc aocl-gcc)
 pkgver=2.2
-_pkgrel=4
-pkgrel=1
+_pkgrel_aocc=4
+_pkgrel_gcc=5
+pkgrel=2
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
 url="https://developer.amd.com/amd-aocl/"
 source=(
-	"local://${pkgbase}-linux-aocc-${pkgver}-${_pkgrel}.tar.gz"
-	"local://${pkgbase}-linux-gcc-${pkgver}-5.tar.gz"
+	"local://${pkgbase}-linux-aocc-${pkgver}-${_pkgrel_aocc}.tar.gz"
+	"local://${pkgbase}-linux-gcc-${pkgver}-${_pkgrel_gcc}.tar.gz"
 	"local://${pkgbase}-aocc.install"
 	"local://${pkgbase}-gcc.install"
 	"local://modulefile"
@@ -41,7 +42,7 @@ package_aocl-aocc() {
 	prefix=${pkgdir}/${aocl_prefix}
 	mkdir -p ${prefix}
 
-	cd ${srcdir}/${pkgbase}-linux-aocc-${pkgver}-${_pkgrel}
+	cd ${srcdir}/${pkgbase}-linux-aocc-${pkgver}-${_pkgrel_aocc}
 
 	cp AOCL_User_Guide_${pkgver}.pdf ${prefix}
 
@@ -52,7 +53,11 @@ package_aocl-aocc() {
 	rm -r ${prefix}/${pkgver}
 
 	# delete libs directory with broken symlinks
-	rm -rf ${prefix}/libs
+	#rm -rf ${prefix}/libs
+
+	# fix amdlibm_vec.h
+	sed -e "s/#ifdef AMD_LIBM_VEC_EXTERNAL_H/#ifndef AMD_LIBM_VEC_EXTERNAL_H/g" \
+		-i ${prefix}/include/amdlibm_vec.h
 
 	# modulefile
 	echo -e "\nSymlinking modulefile..."
@@ -68,7 +73,7 @@ package_aocl-gcc() {
 	prefix=${pkgdir}/${aocl_prefix}
 	mkdir -p ${prefix}
 
-	cd ${srcdir}/${pkgbase}-linux-gcc-${pkgver}-5
+	cd ${srcdir}/${pkgbase}-linux-gcc-${pkgver}-${_pkgrel_gcc}
 
 	cp AOCL_User_Guide_${pkgver}.pdf ${prefix}
 
@@ -77,6 +82,10 @@ package_aocl-gcc() {
 	# strip unneeded directories
 	mv ${prefix}/${pkgver}/* ${prefix}
 	rm -r ${prefix}/${pkgver}
+
+	# fix amdlibm_vec.h
+	sed -e "s/#ifdef AMD_LIBM_VEC_EXTERNAL_H/#ifndef AMD_LIBM_VEC_EXTERNAL_H/g" \
+		-i ${prefix}/include/amdlibm_vec.h
 
 	# modulefile
 	echo -e "\nSymlinking modulefile..."
