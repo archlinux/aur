@@ -1,0 +1,22 @@
+--- a/source/CMakeLists.txt
++++ b/source/CMakeLists.txt
+@@ -34,7 +34,7 @@ MESSAGE(STATUS "uavs3d version \t\t: ${u
+ find_package(Threads REQUIRED)
+ set(prefix "${CMAKE_INSTALL_PREFIX}")
+ set(includedir "include")
+-set(libdir "lib")
++set(libdir "lib/uavs3d-10bit")
+ set(pc_file "${CONFIG_DIR}/${LIBNAME}.pc")
+ 
+ set(CMAKE_INSTALL_INCLUDE_DIR "${CMAKE_INSTALL_PREFIX}/${includedir}")
+--- a/source/decore/com_def.h
++++ b/source/decore/com_def.h
+@@ -40,7 +40,7 @@
+ 
+ #include "com_sys.h"
+ 
+-#define BIT_DEPTH 8
++#define BIT_DEPTH 10
+ 
+ #define CHECK_RAND_STRM 0
+ 
