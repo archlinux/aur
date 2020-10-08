@@ -1,0 +1,25 @@
+pkgbase = lib32-dbus-nosystemd-git
+	pkgdesc = Freedesktop.org message bus system (32-bit)
+	pkgver = 1.12.20
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/dbus/dbus
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = lib32-gcc-libs
+	makedepends = lib32-expat
+	makedepends = git
+	makedepends = autoconf-archive
+	depends = dbus
+	provides = lib32-libdbus
+	provides = lib32-dbus
+	conflicts = lib32-libdbus
+	conflicts = lib32-dbus
+	replaces = lib32-libdbus
+	source = git+https://gitlab.freedesktop.org/dbus/dbus.git
+	source = no-fatal-warnings.diff
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lib32-dbus-nosystemd-git
+
