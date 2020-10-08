@@ -1,0 +1,23 @@
+From 2e121479348d9c6151e191d58f631faa4fc0cad6 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Wed, 7 Oct 2020 12:13:37 +0200
+Subject: [PATCH 3/3] Fix finding D-Bus
+
+Change-Id: Ie21eb9cbc6b1b5d9c8b34eea46f54718e5926986
+---
+ cmake/FindWrapDBus1.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cmake/FindWrapDBus1.cmake b/cmake/FindWrapDBus1.cmake
+index e227d224e0..4982e7c8ae 100644
+--- a/cmake/FindWrapDBus1.cmake
++++ b/cmake/FindWrapDBus1.cmake
+@@ -45,3 +45,4 @@ include(FindPackageHandleStandardArgs)
+ find_package_handle_standard_args(WrapDBus1 REQUIRED_VARS
+                                             DBus1_LIBRARY DBus1_INCLUDE_DIR WrapDBus1_FOUND
+                                             VERSION_VAR DBus1_VERSION)
++set_property(TARGET dbus-1 PROPERTY IMPORTED_IMPLIB ${DBus1_LIBRARY})
+\ No newline at end of file
+-- 
+2.28.0
+
