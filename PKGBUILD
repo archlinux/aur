@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='highwayhash'
-pkgver=20200914.ead8f55
+pkgver=20200922.bdd572d
 pkgrel=1
 pkgdesc="Fast strong hash functions: SipHash/HighwayHash"
 url="https://github.com/google/highwayhash"
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
     cd "${pkgname}"
-    make
+    make CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
 }
 
 package() {
@@ -27,4 +27,9 @@ package() {
     make PREFIX=/usr DESTDIR="${pkgdir}" install
     install -d "$pkgdir/usr/share/man/man3"
     gzip -c highwayhash.3 > "$pkgdir/usr/share/man/man3/highwayhash.3.gz"
+}
+
+check() {
+    cd "${pkgname}"
+    bin/highwayhash_test
 }

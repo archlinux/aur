@@ -1,6 +1,6 @@
 pkgbase = highwayhash
 	pkgdesc = Fast strong hash functions: SipHash/HighwayHash
-	pkgver = 20200914.ead8f55
+	pkgver = 20200922.bdd572d
 	pkgrel = 1
 	url = https://github.com/google/highwayhash
 	arch = x86_64
