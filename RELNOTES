@@ -1,19 +1,57 @@
-firejail (0.9.62.4) baseline; urgency=low
-  * fix AppArmor broken in the previous release
-  * miscellaneous fixes
- -- netblue30 <netblue30@yahoo.com>  Mon, 17 Aug 2020 08:00:00 -0500
-
-firejail (0.9.62.2) baseline; urgency=low
-  * patches from Debian (firejail 0.9.62-3, sid):
-         profile-fixes.patch, apparmor-include.patch
-  * patches from Debian (firejail 0.9.64-4, sid)
-         CVE-2020-17367 reported by Tim Starling
-         CVE-2020-17368 reported by Tim Starling
-  * patches from Debian (firejail 0.9.64-4, sid)
-         element-profile.patch,  usrsharedoc.patch,
-         pathnames.patch, usr-share-firefox.patch
-  * additional hardening and bug fixes
- -- netblue30 <netblue30@yahoo.com>  Mon, 10 Aug 2020 08:00:00 -0500
+firejail (0.9.63) baseline; urgency=low
+  * replaced --nowrap option with --wrap in firemon
+  * The blocking action of seccomp filters has been changed from
+    killing the process to returning EPERM to the caller. To get the
+    previous behaviour, use --seccomp-error-action=kill or
+    syscall:kill syntax when constructing filters, or override in
+    /etc/firejail/firejail.config file.
+  * Fine-grained D-Bus sandboxing with xdg-dbus-proxy.
+    xdg-dbus-proxy must be installed, if not D-Bus access will be allowed.
+    With this version nodbus is deprecated, in favor of dbus-user none and
+    dbus-system none and will be removed in a future version.
+  * DHCP client support
+  * firecfg only fix dektop-files if started with sudo
+  * SELinux labeling support
+  * custom 32-bit seccomp filter support
+  * restrict ${RUNUSER} in several profiles
+  * blacklist shells such as bash in several profiles
+  * whitelist globbing
+  * mkdir and mkfile support for /run/user directory
+  * support ignore for include
+  * --include on the command line
+  * splitting up media players whitelists in whitelist-players.inc
+  * new condition: HAS_NOSOUND
+  * new profiles: gfeeds, firefox-x11, tvbrowser, rtv, clipgrab, muraster
+  * new profiles: gnome-passwordsafe, bibtex, gummi, latex, mupdf-x11-curl
+  * new profiles: pdflatex, tex, wpp, wpspdf, wps, et, multimc, mupdf-x11
+  * new profiles: gnome-hexgl, com.github.johnfactotum.Foliate, mupdf-gl, mutool
+  * new profiles: desktopeditors, impressive, planmaker18, planmaker18free
+  * new profiles: presentations18, presentations18free, textmaker18, teams
+  * new profiles: textmaker18free, xournal, gnome-screenshot, ripperX
+  * new profiles: sound-juicer, com.github.dahenson.agenda, gnome-pomodoro
+  * new profiles: gnome-todo, x2goclient, iagno, kmplayer, penguin-command
+  * new profiles: frogatto, gnome-mines, gnome-nibbles, lightsoff, warmux
+  * new profiles: ts3client_runscript.sh, ferdi, abiword, four-in-a-row
+  * new profiles: gnome-mahjongg, gnome-robots, gnome-sudoku, gnome-taquin
+  * new profiles: gnome-tetravex, blobwars, gravity-beams-and-evaporating-stars
+  * new profiles: hyperrogue, jumpnbump-menu, jumpnbump, magicor, mindless
+  * new profiles: mirrormagic, mrrescue, scorched3d-wrapper, scorchwentbonkers
+  * new profiles: seahorse-adventures, wordwarvi, xbill, gnome-klotski
+  * new profiles: swell-foop, fdns, five-or-more, steam-runtime
+  * new profiles: nicotine, plv, mocp, apostrophe, quadrapassel, dino-im
+  * new profiles: hitori, bijiben, gnote, gnubik, ZeGrapher, xonotic-sdl-wrapper
+  * new profiles: gapplication, openarena_ded, element-desktop, cawbird
+  * new profiles: freetube, strawberry, jitsi-meet-desktop
+  * new profiles: homebank, mattermost-desktop, newsflash, com.gitlab.newsflash
+  * new profiles: sushi, xfce4-screenshooter, org.gnome.NautilusPreviewer, lyx
+  * new profiles: minitube, nuclear, mtpaint, minecraft-launcher, gnome-calendar
+  * new profiles: vmware, git-cola, otter-browser, kazam, menulibre, musictube
+  * new profiles: onboard, fractal, mirage, quaternion, spectral, man, psi
+  * new profiles: smuxi-frontend-gnome, balsa, kube, trojita, youtube
+  * new profiles: youtubemusic-nativefier, cola, dbus-send, notify-send
+  * new profiles: qrencode, ytmdesktop, twitch
+  * new profiles: xournalpp, chromium-freeworld, equalx
+ -- netblue30 <netblue30@yahoo.com>  Sun, 4 Oct 2020 08:00:00 -0500
 
 firejail (0.9.62) baseline; urgency=low
   * added file-copy-limit in /etc/firejail/firejail.config
@@ -25,7 +63,7 @@ firejail (0.9.62) baseline; urgency=low
   * whitelisting /usr/share in a large number of profiles
   * new scripts in conrib: gdb-firejail.sh and sort.py
   * enhancement: whitelist /usr/share in some profiles
-  * added signal mediation to apparmor profile
+  * added signal mediation ot apparmor profile
   * new conditions: HAS_X11, HAS_NET
   * new profiles: qgis, klatexformula, klatexformula_cmdl, links, xlinks
   * new profiles: pandoc, teams-for-linux, OpenArena, gnome-sound-recorder
