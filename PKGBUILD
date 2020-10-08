@@ -2,7 +2,7 @@
 
 pkgname=neovide
 pkgver=0.6.0
-pkgrel=7
+pkgrel=8
 pkgdesc='No Nonsense Neovim Client in Rust'
 arch=('x86_64')
 url='https://github.com/Kethku/neovide'
