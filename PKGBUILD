@@ -2,7 +2,7 @@
 
 pkgname=giara-git
 pkgver=0.1.r0.g451dd94
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Reddit gtk client"
 arch=('any')
@@ -37,7 +37,10 @@ prepare() {
 	local _ddir="/usr/lib/python$_pver/site-packages/${pkgname%-git}/"
 
 	# Generate pycache, if you ran giara as root this will conflict
-	python -OO -m compileall . --invalidation-mode checked-hash -d "$_ddir"
+	for f in "" -O;
+	do
+		python $f -m compileall . --invalidation-mode checked-hash -d "$_ddir"
+	done
 }
 
 pkgver() {
