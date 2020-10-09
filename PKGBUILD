@@ -50,10 +50,12 @@ source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'brave-browser.desktop'
         "https://github.com/stha09/chromium-patches/releases/download/${patchset_name}/${patchset_name}.tar.xz"
         'brave-custom-build.patch')
-arch_revision=51efcaea600acd0648cb70730911f64f332feb95
+arch_revision=2cbe439471932d30ff2c8ded6b3dfd51b312bbc9
 for Patches in \
-        chromium-fix-vaapi-on-intel.patch \
-        media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch \
+        fix-invalid-end-iterator-usage-in-CookieMonster.patch \
+        only-fall-back-to-the-i965-driver-if-we-re-on-iHD.patch \
+        remove-dead-reloc-in-nonalloc-LD-flags.patch \
+        check-for-enable-accelerated-video-decode-on-Linux.patch \
         chromium-skia-harmony.patch
 do
   source+=("${Patches}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${Patches}?h=packages/chromium&id=${arch_revision}")
@@ -67,8 +69,10 @@ sha256sums=('SKIP'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '6f9ab35fa2c9e6e34ec454b829b7b87adaebc10cacecd1ac1daa67035ee44aba'
             'c5ebde144e4f31ce5e6a37aa6a6233489b6b40b03464b9d6077c777f5ad14ac1'
-            'e495f2477091557b15bff2c99831e0a3db64ea2ebde7dcb22857a6469c944b9a'
-            '0f041d655335cd2a4773ae7ca5e301a0ff12c6c53f57b7cf6651c268e0420a1c'
+            '69d8b7a439db1af4713245ddf5f44ca647283ba833a8733e848033ebdaf03cdc'
+            '7514c6c81a64a5457b66494a366fbb39005563eecc48d1a39033dd06aec4e300'
+            '7cace84d7494190e7882d3e637820646ec8d64808f0a2128c515bd44991a3790'
+            '03d03a39b2afa40083eb8ccb9616a51619f71da92348effc8ee289cbda10128b'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -127,14 +131,14 @@ prepare() {
         third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
         third_party/libxml/chromium/*.cc
 
+    # Upstream fixes
+    patch -Np1 -i "${srcdir}"/fix-invalid-end-iterator-usage-in-CookieMonster.patch
+    patch -Np1 -i "${srcdir}"/only-fall-back-to-the-i965-driver-if-we-re-on-iHD.patch
+    patch -Np1 -i "${srcdir}"/remove-dead-reloc-in-nonalloc-LD-flags.patch
+    patch -Np1 -i "${srcdir}"/check-for-enable-accelerated-video-decode-on-Linux.patch
+
     # https://crbug.com/skia/6663#c10
     patch -Np0 -i "${srcdir}"/chromium-skia-harmony.patch
-
-    # Patch from rpmfusion: chromium-freeworld
-    patch -Np1 -i "${srcdir}"/chromium-fix-vaapi-on-intel.patch
-
-    # https://crbug.com/1095962
-    patch -Np1 -i "${srcdir}"/media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch
 
     # Force script incompatible with Python 3 to use /usr/bin/python2
     sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py

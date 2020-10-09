@@ -52,16 +52,20 @@ pkgbase = brave
 	source = brave-browser.desktop
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-86-patchset-6/chromium-86-patchset-6.tar.xz
 	source = brave-custom-build.patch
-	source = chromium-fix-vaapi-on-intel.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-fix-vaapi-on-intel.patch?h=packages/chromium&id=51efcaea600acd0648cb70730911f64f332feb95
-	source = media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/media-Set-allocation-limit-compatible-with-FFmpeg-4.3.patch?h=packages/chromium&id=51efcaea600acd0648cb70730911f64f332feb95
-	source = chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium&id=51efcaea600acd0648cb70730911f64f332feb95
+	source = fix-invalid-end-iterator-usage-in-CookieMonster.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/fix-invalid-end-iterator-usage-in-CookieMonster.patch?h=packages/chromium&id=2cbe439471932d30ff2c8ded6b3dfd51b312bbc9
+	source = only-fall-back-to-the-i965-driver-if-we-re-on-iHD.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/only-fall-back-to-the-i965-driver-if-we-re-on-iHD.patch?h=packages/chromium&id=2cbe439471932d30ff2c8ded6b3dfd51b312bbc9
+	source = remove-dead-reloc-in-nonalloc-LD-flags.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/remove-dead-reloc-in-nonalloc-LD-flags.patch?h=packages/chromium&id=2cbe439471932d30ff2c8ded6b3dfd51b312bbc9
+	source = check-for-enable-accelerated-video-decode-on-Linux.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/check-for-enable-accelerated-video-decode-on-Linux.patch?h=packages/chromium&id=2cbe439471932d30ff2c8ded6b3dfd51b312bbc9
+	source = chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium&id=2cbe439471932d30ff2c8ded6b3dfd51b312bbc9
 	sha256sums = SKIP
 	sha256sums = 725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5
 	sha256sums = fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d
 	sha256sums = 6f9ab35fa2c9e6e34ec454b829b7b87adaebc10cacecd1ac1daa67035ee44aba
 	sha256sums = c5ebde144e4f31ce5e6a37aa6a6233489b6b40b03464b9d6077c777f5ad14ac1
-	sha256sums = e495f2477091557b15bff2c99831e0a3db64ea2ebde7dcb22857a6469c944b9a
-	sha256sums = 0f041d655335cd2a4773ae7ca5e301a0ff12c6c53f57b7cf6651c268e0420a1c
+	sha256sums = 69d8b7a439db1af4713245ddf5f44ca647283ba833a8733e848033ebdaf03cdc
+	sha256sums = 7514c6c81a64a5457b66494a366fbb39005563eecc48d1a39033dd06aec4e300
+	sha256sums = 7cace84d7494190e7882d3e637820646ec8d64808f0a2128c515bd44991a3790
+	sha256sums = 03d03a39b2afa40083eb8ccb9616a51619f71da92348effc8ee289cbda10128b
 	sha256sums = 771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1
 
 pkgname = brave
