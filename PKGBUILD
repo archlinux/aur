@@ -7,7 +7,7 @@ _pkgname=boost
 _pkg_arch=armv7a-eabi
 _android_arch=armeabi-v7a
 _android_toolchain=arm-linux-androideabi
-_android_platform=21 # https://developer.android.com/about/dashboards/
+_android_platform=24 # https://developer.android.com/about/dashboards/
 _android_prefix=/opt/android-libs/$_pkg_arch
 _android_ndk_path=/opt/android-ndk
 _android_platform_arch=arch-arm
@@ -16,7 +16,7 @@ _boost_arch=arm
 _boost_address_model=32
 
 pkgname=android-$_pkg_arch-$_pkgname
-pkgver=1.71.0
+pkgver=1.74.0
 _boostver=${pkgver//./_}
 pkgrel=1
 url='https://www.boost.org/'
@@ -29,16 +29,13 @@ makedepends=('bzip2' 'zlib' 'android-ndk' 'android-sdk')
 conflicts=("android-$_pkgname-$_android_arch")
 replaces=("android-$_pkgname-$_android_arch")
 source=(https://dl.bintray.com/boostorg/release/${pkgver}/source/boost_${_boostver}.tar.bz2
-        no-versioned-shlibs.patch
-        disable-version-check.patch)
-sha256sums=('d73a8da01e8bf8c7eda40b4c84915071a8c8a0df4a6734537ddde4a8580524ee'
-            'd82d0f15064812dcabb3456a7bcb1db0e0f6145980e4728e638372e0fd35af23'
-            '13d7ed51d05dba2dfe04d9929bf0091505883567178586d0b482b0900a684848')
+        no-versioned-shlibs.patch)
+sha256sums=('83bfc1507731a0906e387fc28b7ef5417d591429e51e788417fe9ff025e116b1'
+            'd82d0f15064812dcabb3456a7bcb1db0e0f6145980e4728e638372e0fd35af23')
 
 prepare() {
   cd ${_pkgname}_${_boostver}
   patch -i ../no-versioned-shlibs.patch
-  patch -p1 -i ../disable-version-check.patch
 }
 
 build() {
@@ -55,7 +52,7 @@ build() {
     -isystem $_android_ndk_path/sources/cxx-stl/llvm-libc++abi/include \
     -isystem $_android_ndk_path/sysroot/usr/include \
     -isystem $_android_ndk_path/sysroot/usr/include/$_android_toolchain \
-    -funwind-tables \
+    -fexceptions \
     -no-canonical-prefixes \
     -D__ANDROID_API__=$_android_platform \
     -O3 \
@@ -63,6 +60,7 @@ build() {
     -DBOOST_ASIO_HAS_STD_STRING_VIEW=1"
   local ld_flags=" \
     $target_flags \
+    -fexceptions \
     $_android_ndk_path/sources/cxx-stl/llvm-libc++/libs/$_android_arch/libc++_shared.so \
     -nostdlib++"
 
@@ -124,7 +122,7 @@ build() {
     address-model=$_boost_address_model \
     -sICONV_PATH="/opt/android-libs/$_pkg_arch" \
     cflags="$common_flags" \
-    cxxflags="$common_flags -fexceptions -frtti -std=c++14" \
+    cxxflags="$common_flags -frtti -std=c++14" \
     linkflags="$ld_flags" \
     --layout=system \
     ${jobs} \
