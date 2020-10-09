@@ -8,8 +8,8 @@ pkgname=modelio-bin
 
 # Version
 _pkgvermajor=4
-_pkgverminor=0
-_pkgverpatch=1
+_pkgverminor=1
+_pkgverpatch=0
 pkgver="${_pkgvermajor}.${_pkgverminor}.${_pkgverpatch}"
 pkgrel=0
 
@@ -38,12 +38,12 @@ optdepends=('atk' 'gtk2' 'cairo')
 
 # Sources
 source=("modelio.desktop" "modelio.patch")
-source_x86_64=("modelio-${pkgver}-x86_64.deb::https://sourceforge.net/projects/modeliouml/files/${pkgver}/modelio-open-source${_pkgvermajor}.${_pkgverminor}_${pkgver}_amd64.deb/download")
+source_x86_64=("modelio-${pkgver}-x86_64.deb::https://sourceforge.net/projects/modeliouml/files/${pkgver}/modelio-open-source_${pkgver}_amd64.deb/download")
 #noextract=()
 #validpgpkeys=()
-sha256sums=('af7e10bb2849fb9cdb2ec0054d782dedd5c6901cbf3e742d1ab872447ae38b5c'
+sha256sums=('91c3b13be981f6391c1234eb12b8302600447915efc572be56f30b40346f6882'
             'bc87a815e0af78ece34ccbc878b88b17b9b00557a98c113cefc9b4111462dbbb')
-sha256sums_x86_64=('ae5932f0265b8484f7ca544f93426be867e4118c8ae19cbebd3c08aa0fcfb709')
+sha256sums_x86_64=('20c35e1b289dc5b77115951a1b6513c1c1d40ae828a8c4fb422ff521c8505beb')
 
 #pkgver() {
 #}
