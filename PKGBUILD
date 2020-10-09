@@ -1,6 +1,6 @@
 # Maintainer: Nathan Kessler <nathant93@gmail.com>
 pkgname=dot-templater
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Templates a folder of dotfiles, supporting feature flags and string substitutions"
 arch=('i686' 'x86_64')
