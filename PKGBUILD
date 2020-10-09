@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libmediainfo-git
-pkgver=18.05.r4.g4809c963
+pkgver=20.08.r64.g3aed02af
 pkgrel=1
 pkgdesc="Shared library for mediainfo"
 arch=('i686' 'x86_64')
 url="https://mediaarea.net/en/MediaInfo"
 license=('BSD')
-depends=('glibc' 'curl' 'libmms' 'libzen' 'zlib')
+depends=('glibc' 'curl' 'glib2' 'libmms' 'libzen' 'zlib')
 makedepends=('git')
 provides=('libmediainfo')
 conflicts=('libmediainfo')
@@ -25,7 +25,8 @@ build() {
   cd "MediaInfoLib/Project/GNU/Library"
 
   ./autogen.sh
-  ./configure --prefix="/usr" \
+  ./configure \
+    --prefix="/usr" \
     --with-libcurl \
     --with-libmms
   make
@@ -40,9 +41,6 @@ check() {
 package() {
   cd "MediaInfoLib"
 
-  pushd "Project/GNU/Library"
-  make DESTDIR="$pkgdir" install
-
-  popd
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  make -C "Project/GNU/Library" DESTDIR="$pkgdir" install
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/libmediainfo"
 }
