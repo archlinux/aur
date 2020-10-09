@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
 pkgname=python-protobuf-compiler
 _name=protobuf_compiler
 pkgver=1.0.20
