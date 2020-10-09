@@ -1,0 +1,37 @@
+pkgbase = cairo-glesv3-bin
+	pkgdesc = Cairo vector graphics library (glesv3 version)
+	pkgver = 1.17.2
+	pkgrel = 1
+	url = http://cairographics.org/
+	arch = aarch64
+	arch = armv7h
+	arch = armv7l
+	arch = x86_64
+	license = LGPL
+	license = MPL
+	depends = libpng
+	depends = libxrender
+	depends = libxext
+	depends = fontconfig
+	depends = pixman>=0.28.0
+	depends = glib2
+	depends = mesa
+	depends = libgl
+	depends = lzo
+	provides = cairo=1.17.2
+	provides = cairo-gl=1.17.2
+	provides = cairo-xcb=1.17.2
+	conflicts = cairo
+	conflicts = cairo-gl
+	conflicts = cairo-xcb
+	source_aarch64 = cairo-glesv3-bin-aarch64::https://webreflection.github.io/aur/cairo-glesv3-bin-aarch64-1.17.2.tar.gz
+	sha256sums_aarch64 = afe4b785257c1f8b5c44fd101b21ef645eed560ce29977ab811adea6520ab253
+	source_armv7h = cairo-glesv3-bin-armv7h::https://webreflection.github.io/aur/cairo-glesv3-bin-armv7l-1.17.2.tar.gz
+	sha256sums_armv7h = c6205e155987e795534d91ab59edbd5a3ea3960f6a54d1489aa3c043c69070d1
+	source_armv7l = cairo-glesv3-bin-armv7l::https://webreflection.github.io/aur/cairo-glesv3-bin-armv7l-1.17.2.tar.gz
+	sha256sums_armv7l = c6205e155987e795534d91ab59edbd5a3ea3960f6a54d1489aa3c043c69070d1
+	source_x86_64 = cairo-glesv3-bin-x86::https://webreflection.github.io/aur/cairo-glesv3-bin-x86_64-1.17.2.tar.gz
+	sha256sums_x86_64 = 2293c981a432dda7a7a14d99cfcdb175aece4dffb52a291e28a53e5982c38428
+
+pkgname = cairo-glesv3-bin
+
