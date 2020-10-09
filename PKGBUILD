@@ -2,7 +2,7 @@
 # Maintainer: anon at sansorgan.es 
 
 pkgname=cherrytree
-pkgver=0.99.14
+pkgver=0.99.15
 pkgrel=1
 pkgdesc="Hierarchical note-taking application"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('gspell'
 makedepends=('cmake'
 	     'python-lxml')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/giuspen/cherrytree/archive/${pkgver}.tar.gz")
-sha256sums=('5bc7d5aeb34a77e8756fc6f19c1769ded403f86a2aa89d348f7a3fe34dd4aec5')
+sha256sums=('aa446ca38ad3071a217b9515a49ed02c98fdb4be50587282e988f5f5d54e1043')
 
 build() {
   cmake \

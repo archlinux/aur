@@ -1,6 +1,6 @@
 pkgbase = cherrytree
 	pkgdesc = Hierarchical note-taking application
-	pkgver = 0.99.14
+	pkgver = 0.99.15
 	pkgrel = 1
 	url = https://www.giuspen.com/cherrytree/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = cherrytree
 	depends = gspell
 	depends = gtksourceviewmm
 	depends = libxml++2.6
-	source = cherrytree-0.99.14.tar.gz::https://github.com/giuspen/cherrytree/archive/0.99.14.tar.gz
-	sha256sums = 5bc7d5aeb34a77e8756fc6f19c1769ded403f86a2aa89d348f7a3fe34dd4aec5
+	source = cherrytree-0.99.15.tar.gz::https://github.com/giuspen/cherrytree/archive/0.99.15.tar.gz
+	sha256sums = aa446ca38ad3071a217b9515a49ed02c98fdb4be50587282e988f5f5d54e1043
 
 pkgname = cherrytree
 
