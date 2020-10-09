@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=python-spacy-en_core_web_sm
-pkgver=2.2.5
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="English multi-task CNN trained on OntoNotes, with GloVe vectors trained on Common Crawl for spaCy"
 url="https://spacy.io/models/en#section-en_core_web_sm"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=(any)
 source=("https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-${pkgver}/en_core_web_sm-${pkgver}.tar.gz")
-sha256sums=('60b69065c97fd2e4972c33300205e1dead3501d2e0bfd6a182c3a033e337caee')
+sha256sums=('06c80936324012d1223291d2af41a5229e746dc2dee8fe31a532666ee3d18aaa')
 
 build() {
     cd en_core_web_sm-${pkgver}
