@@ -2,3 +2,4 @@ pkg/
 printit*/
 *.xz
 src/
+printit-*
