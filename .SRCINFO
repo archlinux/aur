@@ -1,0 +1,28 @@
+pkgbase = mingw-w64-qt6-tools
+	pkgdesc = A cross-platform application and UI framework (tools, mingw-w64)
+	pkgver = 6.0.0alpha
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = mingw-w64-qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-vulkan-headers
+	makedepends = mingw-w64-vulkan-icd-loader
+	makedepends = mingw-w64-qt6-declarative
+	makedepends = qt6-declarative
+	makedepends = qt6-tools
+	makedepends = ninja
+	depends = mingw-w64-qt6-base
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-alpha/submodules/qttools-everywhere-src-6.0.0-alpha.tar.xz
+	sha256sums = 69f242ecca020b78643d2d7aaae9e2c1713b6aa7b9b915b16cc9265bf5dfd212
+
+pkgname = mingw-w64-qt6-tools
+
