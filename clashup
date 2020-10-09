@@ -24,7 +24,9 @@ class ClashUp:
     "external_controller": "127.0.0.1:9090",
     "subscribe_url": "",
     "is_subscribe_banned": false,
-    "custom_rules": []
+    "custom_rules": [],
+    "mmdb_file_url": "http://www.ideame.top/mmdb/Country.mmdb",
+    "mmdb_version_url: "http://www.ideame.top/mmdb/version"
 }
 '''
     def __init__(self):
@@ -32,6 +34,10 @@ class ClashUp:
         self.clash_conf_path = os.path.expanduser('~/.config/clash/config.yaml')
         self.clash_conf_path_old = os.path.expanduser('~/.config/clash/config.yaml.old')
         self.cache_file_path = os.path.expanduser('~/.cache/clashup')
+        self.mmdb_version_file = os.path.expanduser('~/.cache/clashup-mmdb')
+        self.mmdb_file_path = os.path.expanduser('~/.config/clash/Country.mmdb')
+        self.session = requests.Session()
+        self.session.trust_env = False
 
     def load_conf(self):
         if not os.path.isfile(self.conf_file_path):
@@ -53,9 +59,9 @@ class ClashUp:
                 'http': 'http://127.0.0.1:{}'.format(self.config['http_port']),
                 'https': 'http://127.0.0.1:{}'.format(self.config['http_port'])
             }
-            res = requests.get(self.config['subscribe_url'], timeout=5, proxies=proxy)
+            res = self.session.get(self.config['subscribe_url'], timeout=5, proxies=proxy)
         else:
-            res = requests.get(self.config['subscribe_url'], timeout=5)
+            res = self.session.get(self.config['subscribe_url'], timeout=5, proxies={'http': None, 'https': None})
         res.raise_for_status()
         raw_clash_conf = yaml.safe_load(res.text)
         return raw_clash_conf
@@ -87,8 +93,25 @@ class ClashUp:
             parsed_clash_conf = self.parse_config(raw_clash_conf)
             self.save(parsed_clash_conf)
             logging.info('Update Finish')
-        except requests.exceptions.RequestException:
+        except self.session.exceptions.RequestException:
             logging.warning('Update Fail')
+
+    def update_mmdb(self):
+        resp = self.session.get(self.config['mmdb_version_url'], proxies={'http': None, 'https': None})
+        resp.raise_for_status()
+        current_version = resp.text
+        if os.path.isfile(self.mmdb_version_file):
+            with open(self.mmdb_version_file, 'r') as f:
+                if current_version == f.read():
+                    logging.info('pass mmdb update')
+                    return
+        resp = self.session.get(self.config['mmdb_file_url'], proxies={'http': None, 'https': None})
+        resp.raise_for_status()
+        with open(self.mmdb_file_path, 'wb') as f:
+            f.write(resp.content)
+        with open(self.mmdb_version_file, 'w') as f:
+            f.write(current_version)
+        logging.info('update mmdb')
 
     def update_time_cache(self):
         if not os.path.isfile(self.cache_file_path):
@@ -115,6 +138,8 @@ class ClashUp:
         args = parser.parse_args()
         self.load_conf()
         if args.pre:
+            if self.config.get('mmdb_version_url') and self.config.get('mmdb_file_url'):
+                self.update_mmdb()
             if self.config['is_subscribe_banned']:
                 logging.info('Subscribe is banned, pass this run')
             else:

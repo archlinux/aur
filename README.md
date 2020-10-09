@@ -24,11 +24,14 @@ The config file is `~/.config/clash/clashup.json`
     "external_controller": "127.0.0.1:9090",
     "subscribe_url": "",
     "is_subscribe_banned": false, 
-    "custom_rules": []
+    "custom_rules": [],
+    "mmdb_file_url": "http://www.ideame.top/mmdb/Country.mmdb",
+    "mmdb_version_url": "http://www.ideame.top/mmdb/version"
 }
 ```
 * Set `is_subscribe_banned` true if your subscribe address was banned.
 * `http_port` is required if `is_subscribe_banned` is true
+* If you both set `mmdb_file_url` and `mmdb_version_url` it will update `Country.mmdb` file every start up time.
 ## How it works
 It just simply download the subscribe config file and override `http-port`, `socks-port`, `redir-port`, `allow-lan`, `external-controller` in the config file, and append `custom_rules` to `Rules`.
 
