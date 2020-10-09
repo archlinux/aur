@@ -1,23 +1,17 @@
-pkgname=teatool-git
-pkgver=1.8
+pkgname='teatool'
+pkgver='1.8'
 pkgrel=1
-pkgdesc="Tiny algorithm encryption utility"
+pkgdesc="Tiny encryption algorithm utility"
 url="https://github.com/turbocat2001/TEAtool"
 source=('https://github.com/turbocat2001/TEAtool/archive/'v${pkgver}'-linux64.tar.gz')
 license=('GPLv3')
-arch=(x86_64)
+arch=('any')
 md5sums=('SKIP')
 
 
 build(){
    cd TEAtool-${pkgver}-linux64
-   lang="$(locale | grep LANG)" 
-   if [ $lang = "LANG=ru_RU.UTF-8" ]
-    then 
-        make rus
-    else
-        make 
-    fi
+   make 
 }
 
 package() {
