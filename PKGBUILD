@@ -19,6 +19,7 @@ prepare() {
   cd "$srcdir"/eigen-${pkgver}
   patch -p1 -i "$srcdir"/eigen-3.2_gcc58087.patch
   curl -L https://gitlab.com/libeigen/eigen/-/merge_requests/232.patch | patch -p1
+  curl -L https://gitlab.com/libeigen/eigen/-/merge_requests/238.patch | patch -p1
 }
 
 build() {
