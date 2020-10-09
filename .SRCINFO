@@ -1,7 +1,7 @@
 pkgbase = mediainfo-git
 	pkgdesc = Utility for displaying technical and tag data for media files
-	pkgver = 18.05.r14.g78c2ab41
-	pkgrel = 2
+	pkgver = 20.08.r25.g687f4b59
+	pkgrel = 1
 	url = https://mediaarea.net/en/MediaInfo
 	arch = i686
 	arch = x86_64
