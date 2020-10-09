@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=god
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc="Utility for simplifying the Git usage"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/orhun/god"
 license=('GPL3')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('a950dc788e806f94b2f0ad12b0d0964c8ea771a18cba551173e304de783d8ed5b6b0fd9efd7fc51ac86510f7117de655e18ce88a8896e455dbc7c157bbf15b1a')
+sha512sums=('a1071f7fe4c9a3e705bd72e4dfd3a112483761a7cbe994d2f0896f8e14c3c4a74445d584b6ebd8daf0847af110a7808d56032534c29c3cda3b8dbe7b79d10c39')
 
 build() {
   cd "$pkgname-$pkgver"
