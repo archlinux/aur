@@ -1,7 +1,7 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=('libvgm-player-git' 'libvgm-emu-git' 'libvgm-utils-git' 'libvgm-audio-git' 'libvgm-common-git' 'vgm2wav-git' 'vgmplayer-git')
 pkgbase=libvgm-git
-pkgver=r385.32ffc85
+pkgver=r408.5fe3883
 pkgrel=1
 pkgdesc="Library for decoding and playing VGM files"
 arch=(x86_64 i686)
@@ -10,10 +10,10 @@ license=('GPL')
 makedepends=('zlib' 'alsa-lib' 'libpulse' 'libao' 'git' 'cmake')
 
 source=('git+https://github.com/ValleyBell/libvgm.git'
-'libvgm-use-shared-libs.patch')
+'libvgm-fix-shared-build.patch')
 
 md5sums=('SKIP'
-'4761dda54c46003dddd487255fcfe424')
+'fd9cdfd3f3e6bc849feb3f76fd1f0a82')
 
 pkgver() {
 	cd "$srcdir/${pkgbase%-git}"
@@ -23,14 +23,14 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgbase%-git}"
-	patch -p1 -i "$srcdir/${pkgbase%-git}-use-shared-libs.patch"
+	patch -p1 -i "$srcdir/${pkgbase%-git}-fix-shared-build.patch"
 }
 
 build() {
 	cd "$srcdir/${pkgbase%-git}"
     mkdir build
     cd build
-    cmake -DCMAKE_SKIP_BUILD_RPATH=TRUE -DCMAKE_INSTALL_PREFIX=/usr ..
+    cmake -DLIBRARY_TYPE=SHARED -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_BUILD_RPATH=TRUE -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 
@@ -72,6 +72,7 @@ package_libvgm-audio-git() {
     rm -rf "$pkgdir/usr/include/vgm/emu"
     rm -rf "$pkgdir/usr/include/vgm/player"
     rm -rf "$pkgdir/usr/include/vgm/utils"
+    rm -rf "$pkgdir/usr/lib/cmake"
 
     rm "$pkgdir/usr/include/vgm/common_def.h"
     rm "$pkgdir/usr/include/vgm/stdbool.h"
@@ -96,6 +97,7 @@ package_libvgm-emu-git() {
     rm -rf "$pkgdir/usr/include/vgm/audio"
     rm -rf "$pkgdir/usr/include/vgm/player"
     rm -rf "$pkgdir/usr/include/vgm/utils"
+    rm -rf "$pkgdir/usr/lib/cmake"
 
     rm "$pkgdir/usr/include/vgm/common_def.h"
     rm "$pkgdir/usr/include/vgm/stdbool.h"
@@ -119,6 +121,7 @@ package_libvgm-player-git() {
     rm -rf "$pkgdir/usr/include/vgm/audio"
     rm -rf "$pkgdir/usr/include/vgm/emu"
     rm -rf "$pkgdir/usr/include/vgm/utils"
+    rm -rf "$pkgdir/usr/lib/cmake"
 
     rm "$pkgdir/usr/include/vgm/common_def.h"
     rm "$pkgdir/usr/include/vgm/stdbool.h"
@@ -142,6 +145,7 @@ package_libvgm-utils-git() {
     rm -rf "$pkgdir/usr/include/vgm/audio"
     rm -rf "$pkgdir/usr/include/vgm/emu"
     rm -rf "$pkgdir/usr/include/vgm/player"
+    rm -rf "$pkgdir/usr/lib/cmake"
 
     rm "$pkgdir/usr/include/vgm/common_def.h"
     rm "$pkgdir/usr/include/vgm/stdbool.h"

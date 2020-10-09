@@ -1,0 +1,22 @@
+From 6e74d886ff48476c26b51f8e6faeaf71f0bac0fc Mon Sep 17 00:00:00 2001
+From: John Regan <john@jrjrtech.com>
+Date: Fri, 9 Oct 2020 12:10:34 -0400
+Subject: [PATCH] example player: list utils as dependency
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f31b805..04f50d3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -177,7 +177,7 @@ endif(BUILD_TESTS)
+ if(BUILD_PLAYER)
+ add_executable(player player.cpp player/dblk_compr.c)
+ target_include_directories(player PRIVATE ${PROJECT_SOURCE_DIR})
+-target_link_libraries(player PRIVATE vgm-audio vgm-player)
++target_link_libraries(player PRIVATE vgm-audio vgm-player vgm-utils)
+ if(USE_SANITIZERS)
+ 	add_sanitizers(player)
+ endif(USE_SANITIZERS)
