@@ -1,6 +1,6 @@
 pkgbase = stilo-themes-git
 	pkgdesc = Minimalistic GTK themes
-	pkgver = 3.36.2.r2.g70ef81f
+	pkgver = 3.36.2.r23.g8c29dd4
 	pkgrel = 1
 	url = https://github.com/lassekongo83/stilo-themes
 	arch = any
