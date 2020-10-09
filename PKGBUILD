@@ -1,6 +1,6 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur
-pkgver=42.0.7.1
+pkgver=42.0.7.4
 pkgrel=1
 pkgdesc="An AUR helper with asp support"
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=()
 backup=('etc/buildaur/buildaur.conf' 'usr/share/buildaur/blacklist')
 optdepends=("bash-completion: Bash completion")
 source=("${pkgname}.tar.gz"::"https://github.com/lxgr-linux/buildaur/archive/${pkgver}.tar.gz")
-md5sums=('a13679a956710dff3939ffad8226ba52')
+md5sums=('dc3498153cdcf1c294fb3f6c9a2e82aa')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
