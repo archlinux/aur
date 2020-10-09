@@ -1,6 +1,6 @@
 pkgbase = libdnf_fixed
 	pkgdesc = Library providing simplified C and Python API to libsolv
-	pkgver = 0.48.0
+	pkgver = 0.54.2
 	pkgrel = 1
 	url = https://github.com/kokkiemouse/libdnf
 	arch = i686
@@ -29,13 +29,13 @@ pkgbase = libdnf_fixed
 	depends = zlib
 	optdepends = python: for python bindings
 	provides = hawkey
-	provides = libdnf=0.48.0
+	provides = libdnf=0.54.2
 	conflicts = hawkey
 	conflicts = libdnf
 	replaces = hawkey
 	replaces = libdnf
-	source = https://github.com/kokkiemouse/libdnf/archive/0.48.0/libdnf-0.48.0.tar.gz
-	md5sums = e34706b8bf2bed4c6bc42dbb737837fe
+	source = https://github.com/kokkiemouse/libdnf/archive/0.54.2/libdnf-0.54.2.tar.gz
+	md5sums = 1ea0b8ed69650e6effa93d1f760bc14a
 
 pkgname = libdnf_fixed
 

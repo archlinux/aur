@@ -1,5 +1,5 @@
 pkgname=libdnf_fixed
-pkgver=0.48.0
+pkgver=0.54.2
 pkgrel=1
 pkgdesc="Library providing simplified C and Python API to libsolv"
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ depends=('glib2' 'gpgme' 'json-c' 'libmodulemd>=2.5.0' 'librepo>=1.12.0' 'libsol
 makedepends=('cmake' 'gtk-doc' 'python' 'python-sphinx' 'swig' 'zchunk>=0.9.11' 'clang')
 checkdepends=('check' 'cppunit' 'python-nose')
 optdepends=('python: for python bindings')
-provides=( 'hawkey' 'libdnf=0.48.0')
+provides=( 'hawkey' 'libdnf=0.54.2')
 conflicts=('hawkey' 'libdnf')
 replaces=( 'hawkey' 'libdnf')
 source=("$url/archive/$pkgver/libdnf-$pkgver.tar.gz")
-md5sums=('e34706b8bf2bed4c6bc42dbb737837fe')
+md5sums=('1ea0b8ed69650e6effa93d1f760bc14a')
 
 prepare() {
 	cd "libdnf-$pkgver"
