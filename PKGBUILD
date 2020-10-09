@@ -1,7 +1,7 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 pkgname=bubblemail-git
-pkgver=1.3.0
-pkgrel=1
+pkgver=1.2.r10.g6715a12
+pkgrel=0
 pkgdesc="New and Unread mail notification service for local mailboxes, pop, imap, and gnome online accounts"
 pkgbasename=bubblemail
 provides=("${pkgbasename}")
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgbasename}"
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
