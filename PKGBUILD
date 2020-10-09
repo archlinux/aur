@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=markdown2ctags
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Generate ctags-compatible tags files for Markdown documents'
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 url="https://github.com/jszakmeister/$pkgname"
 license=('BSD3')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3355c0d5d4186b825e7096a8ca2f1712d1544ec4b7dd22b2e0e56787ccf0a286')
+sha256sums=('e633f6d9baebdfc97349707825543958aead128b6385def2a0f011ee32b0c29d')
 
 build() {
     cd "$pkgname-$pkgver"
