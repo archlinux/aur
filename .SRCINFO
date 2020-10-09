@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-services-systemd
+	pkgdesc = Gnome Shell Extension that allows to start and stop systemd services
+	pkgver = 21
+	pkgrel = 1
+	url = https://extensions.gnome.org/extension/1034/services-systemd/
+	arch = any
+	license = unknown
+	depends = gnome-shell>=3.34
+	conflicts = gnome-shell-extension-services-systemd-git
+	source = gnome-shell-extension-services-systemd.zip::https://extensions.gnome.org/download-extension/services-systemd@abteil.org.shell-extension.zip?version_tag=13249
+	sha256sums = 0c93bfca39bc52a4966867ee52aa38108f821468f068ff2a90cd10927b8cad1f
+
+pkgname = gnome-shell-extension-services-systemd
+
