@@ -1,11 +1,13 @@
 pkgbase = pencil2d-mypaint-git
 	pkgdesc = Animation/drawing software, that lets you create traditional hand-drawn animation using both bitmap and vector graphics with mypaint brushes extension testing branch
-	pkgver = 4563.627016bd
-	pkgrel = 2
+	pkgver = 4569.fc159c23
+	pkgrel = 3
 	url = http://www.pencil2d.org/
 	install = pencil2d.install
 	arch = i686
 	arch = x86_64
+	arch = armv7h
+	arch = armv8
 	license = GPL
 	makedepends = git
 	makedepends = qt5-tools

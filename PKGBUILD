@@ -6,10 +6,10 @@
 pkgname=pencil2d-mypaint-git
 _gitname=pencil2d
 _branchname=implement_mypaint_nobitmapsurface
-pkgver=4563.627016bd
-pkgrel=2
+pkgver=4569.fc159c23
+pkgrel=3
 pkgdesc="Animation/drawing software, that lets you create traditional hand-drawn animation using both bitmap and vector graphics with mypaint brushes extension testing branch"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'armv8')
 url="http://www.pencil2d.org/"
 license=('GPL')
 depends=('ming' 'ffmpeg' 'qt5-svg' 'qt5-multimedia' 'qt5-xmlpatterns')
@@ -30,11 +30,8 @@ pkgver()
 build()
 {
     cd "${_gitname}"
-    msg "make cleaen..."
-    make clean
-    msg "Starting qmake..."
+    #make clean
     qmake PREFIX=/usr
-    msg "Starting make..."
     make
 }
 
