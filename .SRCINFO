@@ -1,6 +1,6 @@
 pkgbase = navi-bin
 	pkgdesc = An interactive cheatsheet tool for the command-line
-	pkgver = 2.12.0
+	pkgver = 2.12.1
 	pkgrel = 1
 	url = https://github.com/denisidoro/navi
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = navi-bin
 	optdepends = skim
 	provides = navi
 	conflicts = navi
-	source = navi-bin-v2.12.0.tar.gz::https://github.com/denisidoro/navi/releases/download/v2.12.0/navi-v2.12.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums = c2e3a84839ff55d7130aa64a92e3dd5997657c48d1b08f8b8c968715d763afb1
+	source = navi-bin-v2.12.1.tar.gz::https://github.com/denisidoro/navi/releases/download/v2.12.1/navi-v2.12.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 6151e1517baecf54b2de84746841deb3e718d3cd26ba0afb24a6177f3d1ad307
 
 pkgname = navi-bin
 
