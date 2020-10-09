@@ -6,7 +6,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=impressive
-pkgver=0.13.0_beta1a
+pkgver=0.13.0_beta2
 pkgrel=1
 pkgdesc='A simple presentation program that displays slideshows of PDF, image or video files'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('pdftk: for retrieving PDF metadata, can replace mupdf-tools'
             'mplayer: for sound and video playback'
             'ffmpeg: for more efficient generation of video preview images')
 source=(http://downloads.sourceforge.net/${pkgname}/Impressive-${pkgver//_/-}.tar.gz)
-sha256sums=('a7f01d7d65b8ad595d8241216e95193c3584af897561c95990116060bd5bbc86')
+sha256sums=('38a445d111cb8be7157605ff12c786bbad475b712f13a66a3bd3dd403d414a10')
 
 package() {
   cd "${srcdir}"/Impressive-${pkgver//_/-}

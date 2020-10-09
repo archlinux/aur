@@ -1,6 +1,6 @@
 pkgbase = impressive
 	pkgdesc = A simple presentation program that displays slideshows of PDF, image or video files
-	pkgver = 0.13.0_beta1a
+	pkgver = 0.13.0_beta2
 	pkgrel = 1
 	url = http://impressive.sourceforge.net
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = impressive
 	optdepends = xdg-utils: for starting web or e-mail hyperlinks from PDF documents
 	optdepends = mplayer: for sound and video playback
 	optdepends = ffmpeg: for more efficient generation of video preview images
-	source = http://downloads.sourceforge.net/impressive/Impressive-0.13.0-beta1a.tar.gz
-	sha256sums = a7f01d7d65b8ad595d8241216e95193c3584af897561c95990116060bd5bbc86
+	source = http://downloads.sourceforge.net/impressive/Impressive-0.13.0-beta2.tar.gz
+	sha256sums = 38a445d111cb8be7157605ff12c786bbad475b712f13a66a3bd3dd403d414a10
 
 pkgname = impressive
 
