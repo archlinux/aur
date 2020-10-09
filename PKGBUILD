@@ -2,11 +2,11 @@
 # Based on aur/android-studio: Kordian Bruck <k@bruck.me>
 # Contributor: Tad Fisher <tadfisher at gmail dot com>
 
-pkgname=android-studio-beta
 _pkgname=android-studio
-pkgver=4.1.0.15
+pkgname="${_pkgname}-beta"
+pkgver=4.1.0.18
 pkgrel=1
-_build=201.6692364
+_build=201.6823847
 pkgdesc='The Official Android IDE (Beta branch)'
 arch=('i686' 'x86_64')
 url='https://developer.android.com/studio/preview'
@@ -16,9 +16,9 @@ depends=('alsa-lib' 'freetype2' 'libxrender' 'libxtst' 'which')
 optdepends=('gtk2: GTK+ look and feel'
             'libgl: emulator support')
 options=('!strip')
-source=("https://dl.google.com/dl/android/studio/ide-zips/${pkgver}/android-studio-ide-${_build}-linux.tar.gz"
+source=("https://dl.google.com/dl/android/studio/ide-zips/${pkgver}/${_pkgname}-ide-${_build}-linux.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('3820488d0a2fdaf5ca37aa793017899bd00b13f9b7c14ff509a75167be1ff699'
+sha256sums=('a9bc6647d83c0d22b370fd3d6c9b9cf9a9bbf41497586dfd510c4511bd5b67cf'
             '368b5287efcfd2b421bdd10e1bdd39a8bffeb84500745c4a88729609c841bcf7')
 
 if [ "${CARCH}" = "i686" ]; then

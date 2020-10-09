@@ -1,4 +1,5 @@
 src
+*.log
 *pkg*
 *.zip
 *tar*
