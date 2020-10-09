@@ -1,0 +1,16 @@
+pkgbase = tibasicc-git
+	pkgdesc = TI-BASIC (de-)compiler written in C++ with a decent preprocessor
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/noahvogt/tibasicc.git
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = sudo
+	provides = tibasicc
+	conflicts = tibasicc
+	source = git+https://github.com/noahvogt/tibasicc.git
+	md5sums = SKIP
+
+pkgname = tibasicc-git
+
