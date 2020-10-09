@@ -3,44 +3,40 @@
 
 pkgname=perl-convert-pem
 pkgver=0.08
-pkgrel=1
+pkgrel=2
 pkgdesc="Read/write encrypted ASN.1 PEM files"
+_dist="Convert-PEM"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.8.1' 'perl-class-errorhandler' 'perl-convert-asn1>=0.10' 'perl-crypt-des_ede3')
 makedepends=('perl-test-exception' 'perl-module-install')
-url='http://search.cpan.org/dist/Convert-PEM'
-source=('http://search.cpan.org/CPAN/authors/id/B/BT/BTROTT/Convert-PEM-0.08.tar.gz')
-md5sums=('a55c927457035806228e62b403551f13')
+url="http://metacpan.org/release/$_dist"
+source=("https://search.cpan.org/CPAN/authors/id/BTROTT/$_dist-$pkgver.tar.gz")
 sha512sums=('d5e4342b40d01d534ec5f81ab009af185f795267c1bce792d26739ab07078a618093c720230ac2b6cf10c4b5ae1c282c94afa5b9db2eef6fd66e684d2080c273')
-_distdir="Convert-PEM-0.08"
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+  /usr/bin/perl Makefile.PL
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  make install
+  cd "$srcdir/$_dist-$pkgver"
+  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
 
 # Local Variables:

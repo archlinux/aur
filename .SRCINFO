@@ -1,8 +1,8 @@
 pkgbase = perl-convert-pem
 	pkgdesc = Read/write encrypted ASN.1 PEM files
 	pkgver = 0.08
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Convert-PEM
+	pkgrel = 2
+	url = http://metacpan.org/release/Convert-PEM
 	arch = any
 	license = PerlArtistic
 	license = GPL
@@ -13,8 +13,7 @@ pkgbase = perl-convert-pem
 	depends = perl-convert-asn1>=0.10
 	depends = perl-crypt-des_ede3
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/B/BT/BTROTT/Convert-PEM-0.08.tar.gz
-	md5sums = a55c927457035806228e62b403551f13
+	source = https://search.cpan.org/CPAN/authors/id/BTROTT/Convert-PEM-0.08.tar.gz
 	sha512sums = d5e4342b40d01d534ec5f81ab009af185f795267c1bce792d26739ab07078a618093c720230ac2b6cf10c4b5ae1c282c94afa5b9db2eef6fd66e684d2080c273
 
 pkgname = perl-convert-pem
