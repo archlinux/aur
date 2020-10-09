@@ -1,15 +1,18 @@
-# Maintainer: Drew DeVault <sir@cmpwn.com>
+# Maintainer: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
+# Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=mako-git
 _pkgname=mako
-pkgver=r430.bf6d462
+pkgver=v1.4.1.r41.g071ed01
 pkgrel=1
 license=('MIT')
 pkgdesc='Lightweight notification daemon for Wayland'
-makedepends=("meson" "scdoc" "wayland-protocols" "git")
+makedepends=("meson" "scdoc" "systemd" "wayland-protocols" "git")
 depends=(
-	"pango"
-	"cairo"
-	"wayland"
+    "gdk-pixbuf2"
+    "pango"
+    "cairo"
+    "systemd-libs"
+    "wayland"
 )
 optdepends=("jq: support for 'makoctl menu'")
 arch=("x86_64")
@@ -20,18 +23,22 @@ provides=('mako')
 conflicts=('mako')
 
 pkgver() {
-	cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$_pkgname"
+    (
+        set -o pipefail
+        git describe --long 2> /dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 build() {
-	cd "$_pkgname"
-	meson --prefix=/usr . build
-	ninja -C build
+    cd "$_pkgname"
+    arch-meson -D zsh-completions=true build
+    ninja -C build
 }
 
 package() {
-	cd "$_pkgname"
-	DESTDIR="$pkgdir/" ninja -C build install
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"${pkgname%-*}"/LICENSE
+    cd "$_pkgname"
+    DESTDIR="$pkgdir/" ninja -C build install
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"${pkgname%-*}"/LICENSE
 }
