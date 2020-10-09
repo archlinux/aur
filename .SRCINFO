@@ -1,0 +1,17 @@
+pkgbase = privacy-redirect-git
+	pkgdesc = Privacy Redirect browser extension (for chromium and Firefox)
+	pkgver = v1.1.41.r6.ed4ebad
+	pkgrel = 1
+	url = https://github.com/SimonBrazell/privacy-redirect
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = nodejs-web-ext
+	makedepends = unzip
+	provides = privacy-redirect
+	conflicts = privacy-redirect
+	source = git+https://github.com/SimonBrazell/privacy-redirect.git
+	sha256sums = SKIP
+
+pkgname = privacy-redirect-git
+
