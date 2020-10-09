@@ -4,7 +4,7 @@
 
 pkgname=fgit-go
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to do git operation with fastgit easily"
 arch=('x86_64')
 url="https://github.com/fastgitorg/fgit-go"
@@ -22,13 +22,13 @@ build() {
     CGO_ENABLED=1 GO111MODULE=off go build -v \
         -buildmode=pie -trimpath \
         -ldflags="-s -w -X main.version=`cat version` -X 'main.timestamp=`date +'%Y-%m-%d %H:%M:%S'`' -extldflags=-Wl,-z,now,-z,relro" \
-        -o fgit-go ./src/fgit.go
+        -o fgit ./src/fgit.go
 }
 
 package() {
     cd "$srcdir"/$pkgname-$pkgver
     
-    install -Dm755 -t "$pkgdir"/usr/bin/                ./fgit-go
+    install -Dm755 -t "$pkgdir"/usr/bin/                ./fgit
     install -Dm644 -t "$pkgdir"/usr/share/doc/fgit-go   ./README.md
 }
 

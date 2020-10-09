@@ -1,7 +1,7 @@
 pkgbase = fgit-go
 	pkgdesc = A tool to do git operation with fastgit easily
 	pkgver = 0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fastgitorg/fgit-go
 	arch = x86_64
 	license = GPL3
