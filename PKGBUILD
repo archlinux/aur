@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rav1e-git
-pkgver=0.4.0.alpha.r0.g2743df61
-pkgrel=2
+pkgver=0.4.0.alpha.r20.g115f6e19
+pkgrel=1
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/xiph/rav1e"
@@ -28,7 +28,8 @@ pkgver() {
 check() {
   cd "rav1e"
 
-  #cargo test --release
+  #cargo test \
+  #  --release
 }
 
 package() {
