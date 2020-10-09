@@ -1,6 +1,6 @@
 pkgbase = lua-resty-core
 	pkgdesc = Lua script engine for nginx lua module
-	pkgver = 0.1.20rc1
+	pkgver = 0.1.20rc2
 	pkgrel = 1
 	url = https://github.com/openresty/lua-resty-core
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = lua-resty-core
 	depends = luajit
 	depends = lua-resty-lrucache
 	depends = nginx
-	source = https://github.com/openresty/lua-resty-core/archive/v0.1.20rc1.tar.gz
-	sha256sums = 3aa9df9023a8af43685af2bffd492418c5d21402f6eb0236b6c8c70255343302
+	source = https://github.com/openresty/lua-resty-core/archive/v0.1.20rc2.tar.gz
+	sha256sums = 3966499a604720fe8fcd410ac47b140511eaaad50d26af4c1d19a51c00b56e79
 
 pkgname = lua-resty-core
 
