@@ -1,13 +1,13 @@
 pkgbase = mineonline
 	pkgdesc = Launch old versions of Minecraft just as you remembered them, only without a browser.
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = http://mineonline.codie.gg
 	arch = any
 	license = CCPL:by-nc
 	depends = jre8-openjdk
 	noextract = MineOnline.jar
-	source = https://github.com/codieradical/MineOnline/releases/download/2.6.0/MineOnline.jar
+	source = https://github.com/codieradical/MineOnline/releases/download/2.6.1/MineOnline.jar
 	source = MineOnline.desktop
 	source = MineOnline.png
 	source = mineonline
