@@ -1,0 +1,18 @@
+diff --git a/Eigen/src/Core/products/Parallelizer.h b/Eigen/src/Core/products/Parallelizer.h
+index 67b2442b53a114af3c08829af4344acc6be7a42f..fe83d936f70bae733c9b1fad9518794d0297cd15 100644
+--- a/Eigen/src/Core/products/Parallelizer.h
++++ b/Eigen/src/Core/products/Parallelizer.h
+@@ -159,7 +159,12 @@ void parallelize_gemm(const Functor& func, Index rows, Index cols, Index depth,
+       ++errorCount;
+     }
+   }
+-  if (errorCount) EIGEN_THROW_X(Eigen::eigen_assert_exception());
++#ifdef EIGEN_EXCEPTIONS
++  if (errorCount)
++    EIGEN_THROW_X(std::exception());
++#else
++    eigen_assert(errorCount == 0);
++#endif
+ #endif
+ }
+ 

@@ -13,7 +13,7 @@ provides=("eigen=3.3.9")
 conflicts=(eigen)
 makedepends=('cmake' 'pkg-config' 'freeglut' 'gcc-fortran' 'fftw' 'suitesparse' 'boost')
 source=(https://gitlab.com/libeigen/eigen/-/archive/$pkgver/${pkgname%-qfix}-$pkgver.tar.gz
-	'assert.patch::https://gitlab.com/libeigen/eigen/-/merge_requests/232.diff'
+	'assert.patch'
 	'pardiso.patch::https://gitlab.com/libeigen/eigen/-/merge_requests/238.diff')
 sha256sums=('146a480b8ed1fb6ac7cd33fec9eb5e8f8f62c3683b3f850094d9d5c35a92419a'
             '62590e9b33a8f72b608a72b87147a306e7cb20766ea53c6b8e0a183fa6cb7635'
@@ -25,7 +25,7 @@ prepare() {
 }
 
 build() {
-  cmake -B build -S "${pkgname%-qfix}-$pkgver" \
+  cmake -Wno-dev -B build -S "${pkgname%-qfix}-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr
 }
 
