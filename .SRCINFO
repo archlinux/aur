@@ -1,6 +1,6 @@
 pkgbase = libzen-git
 	pkgdesc = Shared library for libmediainfo
-	pkgver = 0.4.37.r12.g49019a7
+	pkgver = 0.4.38.r15.g14b165e
 	pkgrel = 1
 	url = https://github.com/MediaArea/ZenLib
 	arch = i686

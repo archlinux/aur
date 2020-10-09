@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libzen-git
-pkgver=0.4.37.r12.g49019a7
+pkgver=0.4.38.r15.g14b165e
 pkgrel=1
 pkgdesc="Shared library for libmediainfo"
 arch=('i686' 'x86_64')
@@ -25,16 +25,14 @@ build() {
   cd "ZenLib/Project/GNU/Library"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 
 package() {
   cd "ZenLib"
 
-  pushd "Project/GNU/Library"
-  make DESTDIR="$pkgdir" install
-
-  popd
-  install -Dm644 "License.txt" "$pkgdir/usr/share/licenses/$pkgname/License.txt"
+  make -C "Project/GNU/Library" DESTDIR="$pkgdir" install
+  install -Dm644 "License.txt" -t "$pkgdir/usr/share/licenses/libzen"
 }
