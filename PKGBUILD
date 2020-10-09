@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://swift.org/"
 license=('apache2')
 depends=('icu' 'libedit' 'libxml2' 'swig' 'python' 'libbsd' 'ncurses' )
-makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'python2' 'rsync' 'sccache')
+makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'python2' 'rsync')
 provides=('swift-language-git')
 source=(
     'git+https://github.com/apple/swift'
@@ -96,7 +96,7 @@ build() {
     # Which will break `compiler-rt`
     unset CPPFLAGS
 
-    C_CXX_LAUNCHER="$(which sccache)" SCCACHE_DIR=${srcdir}/sccache python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="$pkgdir" cmake_c_launcher="$(which sccache)" cmake_cxx_launcher="$(which sccache)"
+    python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="$pkgdir"
 }
 
 package() {
