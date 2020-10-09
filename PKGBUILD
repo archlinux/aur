@@ -15,12 +15,12 @@ depends=('glibc')
 backup=('etc/chronograf/chronograf.conf')
 install="chronograf.install"
 source=("git+https://github.com/influxdata/chronograf#tag=${pkgver}"
-        'chronograf.sysusers'
-        'chronograf.tmpfiles'
+	'chronograf.sysusers'
+	'chronograf.tmpfiles'
 )
 sha256sums=('SKIP'
-            '594777c81e3728fe1d5033c61034fb58d26a7c79f00f2a6daa143de521cf5440'
-            'c81f81247b99928bd20428f7188c1790fff89c4521f3322a8ff148272b24bab6')
+	'594777c81e3728fe1d5033c61034fb58d26a7c79f00f2a6daa143de521cf5440'
+	'c81f81247b99928bd20428f7188c1790fff89c4521f3322a8ff148272b24bab6')
 
 build() {
 	export GOPATH="${srcdir}"
