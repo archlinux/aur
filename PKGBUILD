@@ -2,7 +2,7 @@
 
 pkgname=iwlwifi-next
 pkgver=2020.10.09.r0.g3e4ee0ad7
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel wireless chips driver (next kernel release cycle)"
 arch=('i686' 'x86_64')
 url="https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi"
@@ -31,7 +31,7 @@ prepare() {
 pkgver() {
   cd "$_moduleSrc"
 
-  _tag=$(sed 's/iwlwifi-next-for-kalle-//;s/iwlwifi-next-sent-for-review-//;s/-/./g' <<< "$_gittag")
+  _tag=$(sed 's/iwlwifi[^0-9]*//;s/-/./g' <<< "$_gittag")
   _hash=$(git rev-parse --short HEAD)
   _rev=$(git rev-list --count "$_hash"..HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
