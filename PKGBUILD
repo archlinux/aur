@@ -60,7 +60,6 @@ package() {
   echo "" >> "${pkgdir}"/usr/share/doc/${_pkgname}/README
   echo "https://github.com/drakkan/sftpgo/blob/master/README.md" >> "${pkgdir}"/usr/share/doc/${_pkgname}/README
   install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/${_pkgname}/LICENSE
-  install -d "${pkgdir}/etc/bash_completion.d"
   install -Dm 644 sftpgo-completion.bash "${pkgdir}/usr/share/bash-completion/completions/sftpgo"
   install -d "${pkgdir}/usr/share/man"
   cp -r man1 "${pkgdir}/usr/share/man/"
