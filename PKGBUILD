@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iwlwifi-next
-pkgver=2018.05.30.r0.g50624782
-pkgrel=2
+pkgver=2020.10.09.r0.g3e4ee0ad7
+pkgrel=1
 pkgdesc="Intel wireless chips driver (next kernel release cycle)"
 arch=('i686' 'x86_64')
 url="https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi"
@@ -12,8 +12,6 @@ provides=('iwlwifi')
 conflicts=('iwlwifi')
 #source=('git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/iwlwifi/iwlwifi-next.git')
 #sha256sums=('SKIP')
-#validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-#              '647F28654894E3BD457199BE38DBBDC86092693E') # Greg Kroah-Hartman
 
 
 _gitsource="https://kernel.googlesource.com/pub/scm/linux/kernel/git/iwlwifi/iwlwifi-next.git"
@@ -23,17 +21,17 @@ _moduleSrc="iwlwifi-next/drivers/net/wireless/intel/iwlwifi"
 prepare() {
   cd "$srcdir"
   if [ ! -d "iwlwifi-next" ]; then
-    git clone --branch "$_gittag" "$_gitsource" --depth 1
+    git clone --single-branch --branch "$_gittag" --depth 1 "$_gitsource"
   fi
 
-  cd "$srcdir/iwlwifi-next"
+  cd "iwlwifi-next"
   git checkout tags/"$_gittag"
 }
 
 pkgver() {
-  cd "$srcdir/$_moduleSrc"
+  cd "$_moduleSrc"
 
-  _tag=$(sed 's/iwlwifi-next-for-kalle-//;s/-/./g' <<< "$_gittag")
+  _tag=$(sed 's/iwlwifi-next-for-kalle-//;s/iwlwifi-next-sent-for-review-//;s/-/./g' <<< "$_gittag")
   _hash=$(git rev-parse --short HEAD)
   _rev=$(git rev-list --count "$_hash"..HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash"
@@ -44,19 +42,12 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_moduleSrc"
+  cd "$_moduleSrc"
 
   find './' -name '*.ko' -exec xz -0 --force {} \;
 
   _updates="/usr/lib/modules/$(uname -r)/updates"
-
-  install -Dm644 'iwlwifi.ko.xz' "$pkgdir/$_updates/iwlwifi.ko.xz"
-
-  pushd "dvm"
-  install -Dm644 'iwldvm.ko.xz' "$pkgdir/$_updates/iwldvm.ko.xz"
-  popd
-
-  pushd "mvm"
-  install -Dm644 'iwlmvm.ko.xz' "$pkgdir/$_updates/iwlmvm.ko.xz"
-  popd
+  install -Dm644 "iwlwifi.ko.xz" -t "$pkgdir/$_updates"
+  install -Dm644 "dvm/iwldvm.ko.xz" -t "$pkgdir/$_updates"
+  install -Dm644 "mvm/iwlmvm.ko.xz" -t "$pkgdir/$_updates"
 }
