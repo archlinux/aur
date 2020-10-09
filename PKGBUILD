@@ -10,7 +10,7 @@ url="https://github.com/orhun/god"
 license=('GPL3')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('a950dc788e806f94b2f0ad12b0d0964c8ea771a18cba551173e304de783d8ed5b6b0fd9efd7fc51ac86510f7117de655e18ce88a8896e455dbc7c157bbf15b1a')
 
 build() {
   cd "$pkgname-$pkgver"
