@@ -1,6 +1,6 @@
 pkgbase = rusty-man
 	pkgdesc = Command-line viewer for rustdoc documentation
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://sr.ht/~ireas/rusty-man
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = rusty-man
 	makedepends = cargo
 	depends = gcc-libs
 	optdepends = rust-docs: Rust standard library documentation
-	source = rusty-man-0.3.0.tar.gz::https://git.sr.ht/~ireas/rusty-man/archive/v0.3.0.tar.gz
-	source = rusty-man-0.3.0.tar.gz.asc::https://git.sr.ht/~ireas/rusty-man/refs/v0.3.0/v0.3.0.tar.gz.asc
+	source = rusty-man-0.4.0.tar.gz::https://git.sr.ht/~ireas/rusty-man/archive/v0.4.0.tar.gz
+	source = rusty-man-0.4.0.tar.gz::https://git.sr.ht/~ireas/rusty-man/refs/v0.4.0/rusty-man-v0.4.0.tar.gz.asc
 	validpgpkeys = 28B13CD28267111859622B686D533958F070C57C
-	sha512sums = d52b2b111d3c037885cb1fa75344246636ed80250a7b8e10caf2457c9f1f9eab881e8cdff029871a363650b01a09d96149718868c8f49b4077f3fdb01cfa250c
-	sha512sums = e93947159a9b511504e04630e2170688c845c5bccaa219369e1126d6164c680c1a89fa70061877721d67e13168ceb95ad33fbb205f57804ffcb222a8d45e4d85
+	sha512sums = 284a3a8abb32d43b45dc4797d90c785223aa2d4ba76a55280dafe82f32bf27e585a2d094beac4f5674b9de670cfd07d46b065d0bc0492f4910bc939f8225a387
+	sha512sums = f93fa1a3ba7dc526206b53cb120c4485160951a381ad1637ec6a8e96ecce4d03b2ba8d31d50035262eb1c8f91ec9d0f16b9227073046518d1540970e1ff4126b
 
 pkgname = rusty-man
 
