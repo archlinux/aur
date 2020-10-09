@@ -8,7 +8,7 @@ _changes=390
 _name=MijasCosta
 _commit=g4d66b
 pkgver="${_version}.${_changes}"
-pkgrel=2
+pkgrel=3
 pkgdesc='The compiler (sac2c) of the Single-Assignment C programming language (weekly build)'
 arch=('x86_64')
 url='http://www.sac-home.org/'
@@ -17,7 +17,7 @@ depends=('gcc' 'hwloc')
 optdepends=('sac-stdlib-weekly-basic: StdLib for the SaC Compiler basic-release')
 #makedepends=('python' 'python-argparse') # XXX once sac-version-manager is running on python3
 provides=('sac-compiler')
-replaces=('sac-compiler' 'sac-compiler-weekly')
+replaces=('sac-compiler')
 conflicts=('sac-compiler' 'sac-compiler-weekly')
 source=("https://gitlab.science.ru.nl/sac-group/sac-packages/-/raw/master/packages/weekly/Linux/${_version}-${_changes}-${_rev}/basic/sac2c-${_version}-${_name}-${_changes}-${_commit}-omnibus.tar.gz"
         'LICENSE.txt'
