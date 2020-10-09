@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=geckodriver-hg
-pkgver=r470330.b783cd5203ea
+pkgver=r552364.1581160e62e6
 pkgrel=1
 pkgdesc="WebDriver for Firefox"
 arch=('i686' 'x86_64')
 url="https://github.com/mozilla/geckodriver"
 license=('MPL')
 depends=('gcc-libs')
-makedepends=('mercurial' 'cargo')
+makedepends=('mercurial' 'rust')
 provides=('geckodriver')
 conflicts=('geckodriver')
 source=("hg+https://hg.mozilla.org/mozilla-central/")
@@ -21,20 +21,20 @@ pkgver() {
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
-build() {
-  cd "mozilla-central/testing/geckodriver"
-
-  cargo build --release
-}
-
 check() {
   cd "mozilla-central/testing/geckodriver"
 
-  cargo test --release
+  #cargo test \
+  #  --locked \
+  #  --release
 }
 
 package() {
-  cd "mozilla-central/target/release"
+  cd "mozilla-central/testing/geckodriver"
 
-  install -Dm755 "geckodriver" "$pkgdir/usr/bin/geckodriver"
+  cargo install \
+    --no-track \
+    --locked \
+    --root "$pkgdir/usr" \
+    --path "$srcdir/mozilla-central/testing/geckodriver"
 }
