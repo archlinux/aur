@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
 pkgname=python-i18n
 pkgver=0.3.9
 pkgrel=1
