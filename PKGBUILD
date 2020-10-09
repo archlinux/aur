@@ -1,22 +1,27 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=emulsion
-pkgver=5.0.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="A fast and minimalistic image viewer"
 arch=('i686' 'x86_64')
 url="https://github.com/ArturKovacs/emulsion"
 license=('MIT')
-depends=('gcc-libs' 'hicolor-icon-theme')
-makedepends=('rust')
+depends=('gcc-libs' 'hicolor-icon-theme' 'libxcb')
+makedepends=('cmake' 'meson' 'nasm' 'ninja' 'python' 'rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver%.*}.tar.gz"
         "emulsion.desktop")
-sha256sums=('080c82e0297a6f86bf9c35fabf943af231362a31f735841df1deb57ef5108bcd'
-            '7003f0a26dec380e22b2f0fedd044e266663f5a49e2557d6e4dc738933561e40')
+sha256sums=('2d3a1a40a82b63179f4e3413565f79e99e9ed8a0ab3bac60ec459012ba35e58d'
+            'a1bdf607a12a4c9a10e15586c6c90afef6985a3f4bd7c451e7c022c17f986aed')
 
 build() {
     cd $pkgname-${pkgver%.*}
-    cargo build --release --locked --no-default-features
+    cargo build --release --locked --features avif
+}
+
+check() {
+    cd $pkgname-${pkgver%.*}
+    cargo test --release --locked --features avif
 }
 
 package() {

@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Emulsion
 Comment=A fast and minimalistic image viewer
-Exec=emulsion %U
+Exec=emulsion %f
 Terminal=false
 Icon=emulsion
 Type=Application
 Categories=Graphics;Viewer;Photography;
-MimeType=inode/directory;image/gif;image/jpeg;image/png;image/bmp;image/x-eps;image/x-icns;image/x-ico;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-xbitmap;image/x-xpixmap;image/tiff;image/x-psd;image/x-webp;image/webp;image/x-tga;application/x-krita;image/x-kde-raw;image/x-canon-cr2;image/x-canon-crw;image/x-kodak-dcr;image/x-adobe-dng;image/x-kodak-k25;image/x-kodak-kdc;image/x-minolta-mrw;image/x-nikon-nef;image/x-olympus-orf;image/x-pentax-pef;image/x-fuji-raf;image/x-panasonic-rw;image/x-sony-sr2;image/x-sony-srf;image/x-sigma-x3f;image/x-sony-arw;image/x-panasonic-rw2;
+MimeType=image/jpeg;image/jpg;image/pjpeg;image/png;image/apng;image/gif;image/webp;image/tiff;image/bmp;image/avif;image/x-png;image/x-tga;image/x-targa;image/x-bmp;image/x-icon;image/vnd.radiance;image/x‑portable‑bitmap;image/x‑portable‑graymap;image/x‑portable‑pixmap;image/x‑portable‑anymap;
