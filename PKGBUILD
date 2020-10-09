@@ -3,7 +3,7 @@
 
 pkgname=tomcat8
 pkgver=8.5.59
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source implementation of the Java Servlet 3.1 and JavaServer Pages 2.3 technologies'
 arch=(any)
 url=https://tomcat.apache.org/
@@ -17,7 +17,7 @@ depends=(
 makedepends=(
   ant
   git
-  java-environment
+  java-environment=8
 )
 optdepends=('tomcat-native: to allow optimal performance in production environments')
 backup=(
@@ -69,6 +69,9 @@ prepare() {
 
 build() {
   cd tomcat
+
+  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+  export PATH="$JAVA_HOME/bin:$PATH"
 
   ant
 }
