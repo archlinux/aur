@@ -1,7 +1,7 @@
 # Maintainer: yangon99 <yangon99_all@outlook.com>
 
 pkgname=clash-premium-bin
-pkgver=2020.09.27
+pkgver=2020.10.09
 pkgrel=1
 pkgdesc="Close-sourced pre-built Clash binary with TUN support"
 provides=('clash')
@@ -22,12 +22,13 @@ source_armv6h=("${pkgname}-armv6h-${pkgver}.gz::https://github.com/Dreamacro/cla
 source_armv7h=("${pkgname}-armv7h-${pkgver}.gz::https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-armv7-${pkgver}.gz")
 source_aarch64=("${pkgname}-aarch64-${pkgver}.gz::https://github.com/Dreamacro/clash/releases/download/premium/clash-linux-armv8-${pkgver}.gz")
 
-sha512sums_i686=('af7e1caa27a4904d1e6d05d46712f781711759d9fa98d8994d71f63224d126ba08d067e4c442369225fc1c993a37f9186aa6d446cd8bcb9e012da210e5ffd77e')
-sha512sums_x86_64=('e452f86ea8b3fe05525926a577cd956853af8ebfcd8789bec6cb4d2fc03d2db6f313de7a7e98b64f73b846aecf015f574cd2f58f887d769fb3674ef30dbc1ed4')
-sha512sums_arm=('6a6879eec630f2e7031f90ad1b0b3239d901afb70479c75f45e69d7b05cbd8714a7787804846cde275fee113527333242c87b7be30b792563f5546a189caa8fe')
-sha512sums_armv6h=('1576859a797a94e4a3e0fff8a5ceae2e135dd15055cd89384722e58e8a35170856db9b422e6c861858fd3fc4145147d56263a0ed12501efa7539cd45facd2ae0')
-sha512sums_armv7h=('3eebfbbb0e4e6007eb60e02b41e3c2fea60cf42dadf5df603dcf770e4ad7999978c6e179c9f100f231c9b5d8b448172c79cb5cd49148cde72fb62bb70af23363')
-sha512sums_aarch64=('e531bc862ea5f98f2a1ee96eefdf02f19e883f4811302deeeb11ff7c2df54e6777b6c0bb2f61f9f9360d143b235ce0d8dad9a8d960be632f442b6cb69ff528ce')
+sha512sums_i686=('462d8a60728691ab7b8d8513d493a4c4c480c10672d37e3c3d242f27a68b256849f40dd3425e74fdced16b2f9680182cb433e0a614ce750559ba733a27b8d906')
+sha512sums_x86_64=('0955b93533b4f46a12b25effda04094a1bb4070016b4f97e999a3f121bcb871e8f3f15f050957771d397bc5d0823b911858fa5334e0133b55b595e634dc4872d')
+sha512sums_arm=('0cd26ff7260a4617a5d114278c064691b16e7ad5e5a6926f0f8c94df829345387a90fddd3d7b09db6e47ca02236a15803930f943e55e8e273920cf1f7719391c')
+sha512sums_armv6h=('23273578d95ed9f47f5a27417642434e045d9a3333409e2dbb0154ca0d8eded62f0197a89cef57c713d144129c70102239909d8939ae8fb4156e397323b40d52')
+sha512sums_armv7h=('3887b2a6a5c526b1a4164ea21f91e2d0095c3414244776a05f308ce3f399f6a822bea926497669e8f7aa83fb23f136b863ca79f4517391fce1716a1230c03a3e')
+sha512sums_aarch64=('801d2e7eecc48cb1f36ff1085eec4773359754ef83521f3c70678f93741b40858c2b88d993eea24d84c0075d5d46aa3fb96c1782628af200ba4536c1d31761dd')
+
 prepare() {
     cd "${srcdir}"
     gunzip -kfN "${pkgname}-${CARCH}-${pkgver}.gz"
