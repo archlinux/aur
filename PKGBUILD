@@ -1,18 +1,18 @@
 # Maintainer: Matthew Ellison <matt(at)arroyo(dot)io>
 
-_pkgname='ory-oathkeeper'
+_pkgname='ory-kratos'
 pkgname="${_pkgname}-bin"
-pkgver=0.38.4_beta.1
+pkgver=0.4.6_alpha.1
 pkgrel=1
-pkgdesc="A cloud native Identity & Access Proxy (IAP) which authenticates and authorizes incoming HTTP requests."
+pkgdesc="A cloud native user management system."
 arch=('x86_64')
-url="https://ory.sh"
+url="https://ory.sh/kratos"
 license=('Apache')
 depends=()
 provides=("${_pkgname}")
-source=("https://github.com/ory/oathkeeper/releases/download/v${pkgver//_/-}/oathkeeper_${pkgver//_/-}_linux_64-bit.tar.gz")
-sha256sums=('2c8bb66c5c6798cd6cfe2fef1766527350e06b7db3da3eb5794910adc122051d')
+source=("https://github.com/ory/kratos/releases/download/v${pkgver//_/-}/kratos_${pkgver//_/-}_linux_64bit.tar.gz")
+sha256sums=('0c1f01df6bb49513af424b822744333b9f138fec7c96c1425d3a6685b2258444')
 
 package() {
-    install -m755 -D "${srcdir}/oathkeeper" "${pkgdir}/usr/bin/oathkeeper"
+    install -m755 -D "${srcdir}/kratos" "${pkgdir}/usr/bin/kratos"
 }
