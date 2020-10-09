@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark.wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark.wagie at tutanota dot com>
 pkgname=stilo-themes-git
 pkgver=3.36.2.r23.g8c29dd4
 pkgrel=1
@@ -21,7 +22,7 @@ pkgver() {
 }
 
 build() {
-	arch-meson "${pkgname%-git}"build
+	arch-meson "${pkgname%-git}" build
 	meson compile -C build
 }
 
