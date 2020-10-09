@@ -1,0 +1,28 @@
+pkgbase = mingw-w64-qt6-declarative
+	pkgdesc = Classes for QML and JavaScript languages (mingw-w64)
+	pkgver = 6.0.0alpha
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = mingw-w64-qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-vulkan-headers
+	makedepends = mingw-w64-vulkan-icd-loader
+	makedepends = qt6-declarative
+	makedepends = ninja
+	makedepends = python
+	depends = mingw-w64-qt6-base
+	optdepends = qt6-declarative: development tools
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-alpha/submodules/qtdeclarative-everywhere-src-6.0.0-alpha.tar.xz
+	sha256sums = 0f72a753fd61e49572a1aa4a6e3bfe9e68461ad82320ac978d61b5ff9b8d27f0
+
+pkgname = mingw-w64-qt6-declarative
+
