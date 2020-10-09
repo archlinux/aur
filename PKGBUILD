@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
 pkgname=python-colorful
 _name=${pkgname#python-}
 pkgver=0.5.4
