@@ -1,0 +1,14 @@
+pkgbase = nextcloud-integration-discourse
+	pkgdesc = Discourse integration into Nextcloud
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/nextcloud/integration_discourse
+	arch = any
+	license = AGPL3
+	depends = nextcloud
+	options = !strip
+	source = https://github.com/nextcloud/integration_discourse/releases/download/v0.0.3/integration_discourse-0.0.3.tar.gz
+	sha512sums = 3fd5a25b3dc532278ad35995d651028ef18d22f7944b1f1e90aa861810d7417945f7e1c31352a4e78647a48c2d143f1a5a5d797f34dbf596e8053584a4c7920c
+
+pkgname = nextcloud-integration-discourse
+
