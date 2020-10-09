@@ -2,7 +2,7 @@
 
 pkgname=iwlwifi
 pkgver=2020.04.17.r0.g7219a63ab
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel wireless chips driver (current kernel release cycle)"
 arch=('i686' 'x86_64')
 url="https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi"
@@ -24,6 +24,10 @@ prepare() {
 
   cd "iwlwifi-fixes"
   git checkout tags/"$_gittag"
+
+  # https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg1910510.html
+  sed -i 's|$(srctree)/||' "$srcdir/$_moduleSrc/dvm/Makefile"
+  sed -i 's|$(srctree)/||' "$srcdir/$_moduleSrc/mvm/Makefile"
 }
 
 pkgver() {
