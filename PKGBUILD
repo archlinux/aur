@@ -8,7 +8,6 @@ arch=('x86_64')
 url="https://drill.software"
 license=('GPL2')
 makedepends=('dmd' 'dub')
-install="$pkgbase.install"
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/yatima1460/Drill/archive/$pkgver.tar.gz"
         "$pkgbase"
         "$pkgbase-gtk.desktop")

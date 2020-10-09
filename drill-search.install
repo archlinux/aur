@@ -1,9 +1,0 @@
-post_upgrade() {
-	# Only show information if upgrading from 1.253 or older
-	if [ $(vercmp $2 1.253-1) -le 0 ]; then
-		echo "**************************************************"
-		echo "==> Remove obsolete dub package cache files:      "
-		echo "    rm -rf ~/.dub/packages/{datefmt-*,gtk-d-*}    "    
-		echo "**************************************************"
-	fi
-}
