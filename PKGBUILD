@@ -1,11 +1,11 @@
 pkgname=dina-powerline
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Modified versions of all Dina 13 font variants for use with vim-powerline."
 arch=(any)
 url="https://github.com/tampix/Dina-Powerline"
 license=("custom")
-depends=(fontconfig xorg-font-utils)
+depends=(fontconfig xorg-font-util)
 source=("https://github.com/tampix/Dina-Powerline/archive/master.zip")
 sha256sums=("32e7fbdc2cfcdc8f0fdd4770736fecb63d5f885d6c15d82c710d37d139909db9")
 install=$pkgname.install
