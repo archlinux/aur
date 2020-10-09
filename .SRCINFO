@@ -1,15 +1,14 @@
 pkgbase = dot-templater
 	pkgdesc = Templates a folder of dotfiles, supporting feature flags and string substitutions
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/kesslern/dot-templater
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cargo
 	depends = glibc
-	source = git+https://github.com/kesslern/dot-templater
+	source = https://github.com/kesslern/dot-templater/releases/download/1.4.2/dot-templater-1.4.2-linux-x64.tar.gz
 	md5sums = SKIP
 
 pkgname = dot-templater
