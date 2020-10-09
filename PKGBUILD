@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
 pkgname=horizontal-grub
 pkgver=0.1.2
 pkgrel=1
