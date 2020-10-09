@@ -1,37 +1,37 @@
 diff --git a/include/control.h b/include/control.h
-index 398b8ad15..c3ddf2eae 100644
+index f99ababd8..fcd5e54d4 100644
 --- a/include/control.h
 +++ b/include/control.h
-@@ -93,7 +93,7 @@ public:
-         opt_erasemapper = false;
-         opt_resetmapper = false;
-         opt_startmapper = false;
--        opt_fastbioslogo = false;
-+        opt_fastbioslogo = true;
-         opt_alt_vga_render = false;
-         opt_date_host_forced = false;
-         opt_disable_numlock_check = false;
+@@ -87,7 +87,7 @@ public:
+         opt_printconf = false;
+         opt_noautoexec = false;
+         opt_securemode = false;
+-        opt_fastlaunch = false;
++        opt_fastlaunch = true;
+         opt_fullscreen = false;
+         opt_showcycles = false;
+         opt_earlydebug = false;
 diff --git a/src/gui/sdlmain.cpp b/src/gui/sdlmain.cpp
-index 8d1476320..e7a41d8a4 100644
+index a54b9a3e2..b25f865ee 100644
 --- a/src/gui/sdlmain.cpp
 +++ b/src/gui/sdlmain.cpp
-@@ -6258,7 +6258,7 @@ bool DOSBOX_parse_argv() {
-             fprintf(stderr,"                                          Make sure to surround the command in quotes to cover spaces.\n");
-             fprintf(stderr,"  -break-start                            Break into debugger at startup\n");
+@@ -6953,7 +6953,7 @@ bool DOSBOX_parse_argv() {
+             fprintf(stderr,"  -set <section property=value>           Set the config option (overriding the config file).\n");
+             fprintf(stderr,"                                          Make sure to surround the string in quotes to cover spaces.\n");
              fprintf(stderr,"  -time-limit <n>                         Kill the emulator after 'n' seconds\n");
--            fprintf(stderr,"  -fastbioslogo                           Fast BIOS logo (skip 1-second pause)\n");
-+            fprintf(stderr,"  -bioslogo                               Show BIOS logo (1-second pause)\n");
-             fprintf(stderr,"  -log-con                                Log CON output to a log file\n");
-             fprintf(stderr,"  -log-int21                              Log calls to INT 21h (debug level)\n");
-             fprintf(stderr,"  -log-fileio                             Log file I/O through INT 21h (debug level)\n");
-@@ -6332,8 +6332,8 @@ bool DOSBOX_parse_argv() {
-         else if (optname == "lang") {
-             if (!control->cmdline->NextOptArgv(control->opt_lang)) return false;
+-            fprintf(stderr,"  -fastlaunch                             Fast launch mode (skip the BIOS logo and welcome banner)\n");
++            fprintf(stderr,"  -launchlogo                             Show launch logo (show the launch logo and welcome banner)\n");
+ #if C_DEBUG
+             fprintf(stderr,"  -helpdebug                              Show debug-related options\n");
+ #endif
+@@ -7074,8 +7074,8 @@ bool DOSBOX_parse_argv() {
+         else if (optname == "fastbioslogo") {
+             control->opt_fastbioslogo = true;
          }
--        else if (optname == "fastbioslogo") {
--            control->opt_fastbioslogo = true;
-+        else if (optname == "bioslogo") {
-+            control->opt_fastbioslogo = false;
+-        else if (optname == "fastlaunch") {
+-            control->opt_fastlaunch = true;
++        else if (optname == "launchlogo") {
++            control->opt_fastlaunch = false;
          }
          else if (optname == "conf") {
              if (!control->cmdline->NextOptArgv(tmp)) return false;

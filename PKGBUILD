@@ -1,7 +1,7 @@
 # Mantainer: Cork
 
 pkgname=dosbox-x-fast-bios-git
-pkgver=9792.c9d907301
+pkgver=12155.c5496a1a0
 pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches with more features, with fastbios on by default"
 arch=(i686 x86_64)
@@ -37,7 +37,7 @@ package() {
 	"$pkgdir/usr/share/applications/dosbox-x.desktop"
 }
 
-md5sums=('SKIP'
-         '72303aba7f3d1ad98f81910124350f44'
-         '3dcfe45c5ed0433316eaea51e3620b36'
-         '615228a51b52d4788c73940602f1dc97')
+sha256sums=('SKIP'
+            '4597633a842e60243bd190dbd36f613951aceeb1bd75f3af6229f60ade58f926'
+            'caa164f3d17d414733882d29098cb9cd63faddbdd5580a0c30f1173a63c42475'
+            '32f290580ec02dedd09908d8a4de10f57b94998f2c1eb597b649208cd87b2d33')
