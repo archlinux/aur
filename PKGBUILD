@@ -1,8 +1,8 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=python-spacy-nl_core_news_sm
-pkgver=2.2.5
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Dutch multi-task CNN trained on the Universal Dependencies and WikiNER corpus for spaCy"
 url="https://spacy.io/models/nl#section-nl_core_news_sm"
 depends=('python-spacy')
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('CCPL')
 arch=(any)
 source=("https://github.com/explosion/spacy-models/releases/download/nl_core_news_sm-${pkgver}/nl_core_news_sm-${pkgver}.tar.gz")
-sha256sums=('2d4a0bbe199b46e7349b58d48cc436f6fcfd0c77984e2fe07add09695c6c6298')
+sha256sums=('d2765b86cf8434dd5a7c1ffaaa591d90ae967738f71588baf240b263eff99b2a')
 
 build(){
     cd nl_core_news_sm-${pkgver}
