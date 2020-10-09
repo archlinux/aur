@@ -2,26 +2,21 @@
 
 _name=bash_kernel
 pkgname=jupyter-${_name}
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.7.2
+pkgrel=1
 pkgdesc="A Jupyter kernel for bash"
 arch=('any')
 url="https://github.com/takluyver/bash_kernel"
 license=('BSD')
-depends=('jupyter' 'jupyter-notebook' 'bash')
-makedepends=('python-pip')
-#source=("https://github.com/takluyver/bash_kernel/archive/${pkgver}.tar.gz"
-#        "https://github.com/takluyver/bash_kernel/releases/download/${pkgver}/bash_kernel-${pkgver}-py2.py3-none-any.whl")
-source=("https://github.com/takluyver/bash_kernel/releases/download/${pkgver}/bash_kernel-${pkgver}-py2.py3-none-any.whl"
-	"https://github.com/takluyver/bash_kernel/raw/master/LICENSE")
-install=${pkgname}.install
-noextract=("bash_kernel-${pkgver}-py2.py3-none-any.whl"
-	   "LICENSE")
-sha256sums=('8e6b3a05d8809644d4d78ed8601dce5344dc3fafa099fe467b199f43a86695fd'
-            '5b99decdbcae441e047c670b54d017787fb739e22fb1b91d2fc3ef3bafc55ceb')
+depends=('jupyter' 'jupyter-notebook' 'bash' 'python-pexpect')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('a08c84eddd8179de5234105821fd5cc210015671a0bd3cd0bc4f631c475e1670')
+  
 
 package() {
-  cd "$srcdir"
-  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
+  cd "$srcdir"/${_name}-${pkgver}
+  echo $(pwd)
+  python setup.py install --root="$pkgdir"/ --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,3 +1,0 @@
-post_install() {
-       python -m bash_kernel.install
-}
