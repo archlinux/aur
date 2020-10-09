@@ -3,3 +3,4 @@ printit*/
 *.xz
 src/
 printit-*
+release.sh
