@@ -1,0 +1,9 @@
+post_install(){
+        echo -e '
+To complete the installation, please add terminfo file for xgterm
+
+    $ sudo tic /usr/share/x11iraf/xgterm.terminfo                                    
+    
+'
+}
+
