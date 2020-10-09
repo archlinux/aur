@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=god-git
-pkgver=1.9.r0.g1faa5de
+pkgver=1.10.r0.g9d6fb4b
 pkgrel=1
 pkgdesc="Utility for simplifying the Git usage (git)"
 arch=('x86_64')
