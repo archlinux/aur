@@ -7,6 +7,8 @@ pkgbase = god-git
 	license = GPL3
 	makedepends = git
 	makedepends = go
+	provides = god
+	conflicts = god
 	source = git+https://github.com/orhun/god
 	sha256sums = SKIP
 

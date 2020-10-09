@@ -2,13 +2,15 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=god-git
-pkgdesc="Utility for simplifying the Git usage (git)"
 pkgver=1.9.r0.g1faa5de
 pkgrel=1
+pkgdesc="Utility for simplifying the Git usage (git)"
 arch=('x86_64')
 url="https://github.com/orhun/god"
 license=('GPL3')
 makedepends=('git' 'go')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 source=("git+$url")
 sha256sums=('SKIP')
 
