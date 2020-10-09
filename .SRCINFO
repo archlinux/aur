@@ -1,10 +1,9 @@
 pkgbase = aspell-be
 	pkgdesc = Belarusian dictionary for aspell.
 	pkgver = 0.01
-	pkgrel = 1
+	pkgrel = 2
 	url = http://aspell.net
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL2
 	depends = aspell
 	source = ftp://ftp.gnu.org/gnu/aspell/dict/be/aspell5-be-0.01.tar.bz2
