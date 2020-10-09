@@ -1,7 +1,7 @@
-# Maintainer: Theo Tosini <theo.tosini@theoduino.me>
+# Maintainer: soloturn@gmail.com
+# Contributor: Theo Tosini <theo.tosini@theoduino.me>
 # Contributor: Gábor Sebestyén <segabor@gmail.com>
 # Contributor: Andrew Sun <adsun701@gmail.com>
-# Contributor: soloturn@gmail.com
 
 pkgname=swift-language-git
 pkgver=swift.DEVELOPMENT.SNAPSHOT.2020.09.28.a.r173.gc02dc720da8
