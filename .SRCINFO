@@ -1,14 +1,14 @@
 pkgbase = wordpress-plugin-jetpack
 	pkgdesc = Traffic analysis, security and performance enhancements for Wordpress
-	pkgver = 9.0.1
+	pkgver = 9.0.2
 	pkgrel = 1
 	url = https://wordpress.org/plugins/jetpack
 	arch = any
 	license = unknown
 	depends = wordpress
 	options = !strip
-	source = wordpress-plugin-jetpack-9.0.1.tar.gz::https://downloads.wordpress.org/plugin/jetpack.9.0.1.zip
-	sha512sums = fecd01f288baa5e0ad45789e19686fc5b6403202b5129682bf5cf52728333159a994ecfed83b7cfcbfe003818b5ceed0022b8e67f67300430493d88fc720755c
+	source = wordpress-plugin-jetpack-9.0.2.tar.gz::https://downloads.wordpress.org/plugin/jetpack.9.0.2.zip
+	sha512sums = 6d8b71f4d5abe622020939524867a475e379cf0c93aceecb23e9e3eff23a87b2da05340fc2702dbdc3ab11c302809e8ce11210fea270175c9eb13bddb62e12f8
 
 pkgname = wordpress-plugin-jetpack
 
