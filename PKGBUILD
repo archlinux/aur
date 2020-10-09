@@ -4,7 +4,7 @@ _pkgname=libfprint
 pkgname=libfprint-vfs009x-git
 epoch=1
 pkgver=1.90.1.r3.gc6f5f0e
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for fingerprint readers (includes libre vfs0090 and vfs0097 driver)"
 arch=(i686 x86_64)
 url="https://github.com/3v1n0/libfprint"
@@ -27,24 +27,29 @@ source=(
 md5sums=('SKIP'
          '5a8e609f8cbdaef0f7bd0004924da503')
 
+
+
 prepare() {
   cd "$srcdir/$_pkgname"
   local patch97=0
 
-  msg2 "NOTE:"
+  local RED='\033[0;31m'
+  local NC='\033[0m' # No Color
+
+  msg2 "${RED}NOTE:${NC}"
 
   if [[ "$VFS0097" == 1 ]]; then
     patch97=1
-    msg2 "Applying patch for 138a:0097 since VFS0097=1 was found in the environment"
+    msg2 "${RED}Applying patch for 138a:0097 since VFS0097=1 was found in the environment${NC}"
   elif [[ "$VFS0097" == 0 ]]; then
     patch97=0
-    msg2 "Building for 138a:0090 as requested. If you wish to enable patches for 138a:0097, export VFS0097=1"
+    msg2 "${RED}Building for 138a:0090 as requested. If you wish to enable patches for 138a:0097, export VFS0097=1${NC}"
   elif lsusb | grep -q "138a:0097"; then
     patch97=1
-    msg2 "VFS0097 fingerprint reader detected - applying patch for 138a:0097"
-    msg2 "If you wish to build for 138a:0090, export VFS0097=0"
+    msg2 "${RED}VFS0097 fingerprint reader detected - applying patch for 138a:0097${NC}"
+    msg2 "${RED}If you wish to build for 138a:0090, export VFS0097=0${NC}"
   else
-    msg2 "Building for 138a:0090. If you wish to enable patches for 138a:0097, export VFS0097=1"
+    msg2 "${RED}Building for 138a:0090. If you wish to enable patches for 138a:0097, export VFS0097=1${NC}"
   fi
 
   if [[ "$patch97" == 1 ]]; then
