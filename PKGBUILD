@@ -1,16 +1,16 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=elemental
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 url="https://github.com/LLNL/Elemental"
-pkgdesc="distributed-memory dense linear algebra"
+pkgdesc="Distributed-memory dense linear algebra"
 makedepends=('cmake' 'libmpc' 'gcc-fortran')
 depends=()
 arch=('i686' 'x86_64')
 license=("custom:BSD")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LLNL/Elemental/archive/v$pkgver.tar.gz")
-sha256sums=('c13374ff4a6c4d1076e47ba8c8d91a7082588b9958d1ed89cffb12f1d2e1452e')
+sha256sums=('03dd487fb23b9fdbc715554a8ea48c3196a1021502e61b0172ef3fdfbee75180')
 options=('!makeflags')
   
 build() {
