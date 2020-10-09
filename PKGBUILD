@@ -1,35 +1,34 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
-_projname='NExtGen'
-pkgname="${_projname,,}"
-pkgver='0.1.3'
+pkgname='nextgen'
+pkgver='0.1.4'
 pkgrel=1
 pkgdesc="A small bash script that lets you easily set up a new extension project for GNOME's Nautilus file manager"
 arch=('any')
-url="https://github.com/madmurphy/${_projname}"
+url="https://gitlab.gnome.org/madmurphy/${pkgname}"
 license=('GPL')
 depends=('bash' 'libnautilus-extension')
 conflicts=("${pkgname}-git")
-source=("https://github.com/madmurphy/${_projname}/archive/${pkgver}.tar.gz")
-sha256sums=('e18e1685cd5f028b69fcecb27beff47ab0513f3f8e0e54b0b97b2836c3b1cb5d')
+source=("https://gitlab.gnome.org/madmurphy/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('dbc4618b0f0b227abae0e536a1f7c6ed60185693db45bd85ff40c47fd8f4e6d9')
 
 prepare() {
 
-	cd "${srcdir}/${_projname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	autoreconf -i
 
 }
 
 build() {
 
-	cd "${srcdir}/${_projname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	./configure --prefix=/usr
 
 }
 
 package() {
 
-	cd "${srcdir}/${_projname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 
 }
