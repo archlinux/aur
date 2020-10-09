@@ -1,24 +1,33 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
-pkgname=plata-theme-gnome
-pkgver=0.9.8
-pkgrel=0
+pkgname='plata-theme-gnome'
+pkgver='0.9.8'
+pkgrel='0'
 pkgdesc='Plata theme for GTK apps and GNOME Shell only'
-conflicts=(plata-theme)
-replaces=(plata-theme)
+conflicts=('plata-theme')
+replaces=('plata-theme')
 arch=('any')
 url='https://gitlab.com/tista500/plata-theme'
 license=('CCPL' 'GPL2')
-makedepends=('git' 'gnome-shell' 'inkscape' 'libxml2' 'parallel' 'sassc')
-optdepends=('gtk-engine-murrine: for gtk2 themes'
-            'ttf-roboto: Recommended font')
+makedepends=(
+  'git'
+  'gnome-shell'
+  'inkscape'
+  'libxml2'
+  'parallel'
+  'sassc'
+)
+optdepends=(
+  'gtk-engine-murrine: for gtk2 themes'
+  'ttf-roboto: Recommended font'
+)
 source=("git+https://gitlab.com/tista500/plata-theme.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 build() {
   cd plata-theme
 
-  git checkout ${pkgver}
+  git checkout "${pkgver}"
 
   ./autogen.sh \
     --prefix='/usr' \
