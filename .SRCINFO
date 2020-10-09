@@ -23,7 +23,7 @@ pkgbase = cog-wpe-bin
 	source_armv7l = cog-wpe-bin-armv7l::https://webreflection.github.io/aur/cog-wpe-bin-armv7l-0.8.0.tar.gz
 	sha256sums_armv7l = af5f3511da67bebd224034fc1e2f9e2ffedfa2096c131ddc85652c7e258c333f
 	source_x86_64 = cog-wpe-bin-x86::https://webreflection.github.io/aur/cog-wpe-bin-x86_64-0.8.0.tar.gz
-	sha256sums_x86_64 = 2ceb11ed2633d5b2255856d04440b5273fe44e6862ced7b169c239d8cf6e8afa
+	sha256sums_x86_64 = b799849f5e80f9758fd17f8fc7fc896d2e33bd2a546254a45323977495914937
 
 pkgname = cog-wpe-bin
 
