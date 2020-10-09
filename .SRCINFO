@@ -1,6 +1,6 @@
 pkgbase = mediainfo-gui-git
 	pkgdesc = GUI utility for displaying technical and tag data for media files
-	pkgver = 18.12.r6.gddd0e66e
+	pkgver = 20.08.r25.g687f4b59
 	pkgrel = 1
 	url = https://mediaarea.net/en/MediaInfo
 	arch = i686
@@ -8,7 +8,6 @@ pkgbase = mediainfo-gui-git
 	license = BSD
 	makedepends = git
 	depends = glibc
-	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	depends = libmediainfo
 	depends = qt5-base

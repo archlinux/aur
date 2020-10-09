@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mediainfo-gui-git
-pkgver=18.12.r6.gddd0e66e
+pkgver=20.08.r25.g687f4b59
 pkgrel=1
 pkgdesc="GUI utility for displaying technical and tag data for media files"
 arch=('i686' 'x86_64')
 url="https://mediaarea.net/en/MediaInfo"
 license=('BSD')
-depends=('glibc' 'desktop-file-utils' 'hicolor-icon-theme' 'libmediainfo' 'qt5-base')
+depends=('glibc' 'hicolor-icon-theme' 'libmediainfo' 'qt5-base')
 makedepends=('git')
 provides=('mediainfo-gui')
 conflicts=('mediainfo-gui')
@@ -31,9 +31,7 @@ build() {
 package() {
   cd "MediaInfo"
 
-  pushd "Project/QMake/GUI"
-  make INSTALL_ROOT="$pkgdir" install
-  popd
+  make -C "Project/QMake/GUI" INSTALL_ROOT="$pkgdir" install
 
   install -Dm644 "Source/Resource/Image/MediaInfo.png" \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/mediainfo.png"
@@ -42,7 +40,7 @@ package() {
   install -Dm644 "Source/Resource/Image/MediaInfo.xpm" \
     "$pkgdir/usr/share/pixmaps/mediainfo.xpm"
   install -Dm644 "Project/GNU/GUI/mediainfo-gui.desktop" \
-    "$pkgdir/usr/share/applications/mediainfo-gui.desktop"
+    -t "$pkgdir/usr/share/applications"
 
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/mediainfo-gui/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/mediainfo-gui"
 }
