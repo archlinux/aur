@@ -1,5 +1,5 @@
 # Maintainer: spider-mario <spidermario@free.fr>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Chris Elston chris.elston@blueyonder.co.uk
 # Contributor: Artem Klevtsov a.a.klevtsov@gmail.com
 
