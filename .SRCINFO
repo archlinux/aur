@@ -1,13 +1,12 @@
 pkgbase = nicotine-plus-git
 	pkgdesc = A graphical client for the SoulSeek peer-to-peer system
-	pkgver = 2.1.2.dev1.r3405.9a80f5e5
+	pkgver = 2.1.2.dev1.r3467.6c395c0d
 	pkgrel = 1
 	url = https://nicotine-plus.github.io/nicotine-plus
 	arch = any
 	license = GPL3
 	checkdepends = python-pytest
 	makedepends = git
-	makedepends = python-setuptools
 	depends = python-miniupnpc
 	depends = python-pytaglib
 	depends = python-gobject
