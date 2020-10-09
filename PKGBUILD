@@ -1,11 +1,11 @@
 # Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=kak-smarttab-git
 _reponame=smarttab.kak
-pkgver=r18.1321c30
-pkgrel=2
+pkgver=r20.e7fe8ef
+pkgrel=1
 pkgdesc='Provides commands for three different ways of handling indentation'
 arch=(any)
-url="https://gitlab.com/andreyorst/$_reponame"
+url="https://github.com/andreyorst/$_reponame"
 license=(MIT)
 depends=(kakoune)
 makedepends=(git)
