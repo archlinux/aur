@@ -1,6 +1,6 @@
 pkgbase = emulsion-bin
 	pkgdesc = A fast and minimalistic image viewer
-	pkgver = 5.0
+	pkgver = 6.0
 	pkgrel = 1
 	url = https://arturkovacs.github.io/emulsion-website/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = emulsion-bin
 	makedepends = tar
 	provides = emulsion
 	conflicts = emulsion
-	source = https://github.com/ArturKovacs/emulsion/releases/download/v5.0/Emulsion-Linux.deb-v5.0.deb
+	source = https://github.com/ArturKovacs/emulsion/releases/download/v6.0/Emulsion-Linux.deb-v6.0.deb
 	sha512sums = SKIP
 
 pkgname = emulsion-bin
