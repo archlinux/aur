@@ -10,9 +10,9 @@ depends=('nodejs')
 provides=('pylance-language-server')
 conflicts=('pylance-language-server')
 install=pylance-language-server.install
-publisher='ms-python'
-extension='vscode-pylance'
-source=("pylance-${pkgver}.zip::https://${publisher}.gallery.vsassets.io/_apis/public/gallery/publisher/${publisher}/extension/${extension}/${pkgver}/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage")
+_publisher='ms-python'
+_extension='vscode-pylance'
+source=("pylance-${pkgver}.zip::https://${_publisher}.gallery.vsassets.io/_apis/public/gallery/publisher/${_publisher}/extension/${_extension}/${pkgver}/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage")
 sha256sums=('SKIP')
 
 package() {
