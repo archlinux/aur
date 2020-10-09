@@ -1,6 +1,6 @@
 pkgbase = plata-theme-gnome
 	pkgdesc = Plata theme for GTK apps and GNOME Shell only
-	pkgver = 0.9.8
+	pkgver = 0.9.9
 	pkgrel = 0
 	url = https://gitlab.com/tista500/plata-theme
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = plata-theme-gnome
 	optdepends = ttf-roboto: Recommended font
 	provides = plata-theme
 	conflicts = plata-theme
-	source = git+https://gitlab.com/tista500/plata-theme.git#tag=0.9.8
+	source = git+https://gitlab.com/tista500/plata-theme.git#tag=0.9.9
 	sha256sums = SKIP
 
 pkgname = plata-theme-gnome
