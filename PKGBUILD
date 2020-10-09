@@ -2,7 +2,7 @@
 
 pkgname=canonical-multipass-git
 _pkgname=multipass
-pkgver=1.3.0.r94.g9c272679
+pkgver=1.6.0.dev.r30.g204d76ad
 pkgrel=1
 pkgdesc="Multipass orchestrates virtual Ubuntu instances"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('qt5-x11extras'
          'libssh')
 makedepends=('cmake' 'git' 'libvirt')
 source=("canonical-multipass::git+https://github.com/canonical/multipass"
-        '0001-Update-to-Qt-5.15-API.patch')
+        '0001-Fix-deprecation-errors.patch')
 sha256sums=('SKIP'
             'SKIP')
 
@@ -26,7 +26,7 @@ pkgver() {
 prepare() {
   cd canonical-multipass
   git submodule update --init --recursive
-  git am < "${srcdir}/0001-Update-to-Qt-5.15-API.patch"
+  git am < "${srcdir}/0001-Fix-deprecation-errors.patch"
 }
 
 build() {
@@ -41,4 +41,4 @@ build() {
 package() {
   cd canonical-multipass/build
   make DESTDIR="${pkgdir}" install
-}                                                                                                               
+}
