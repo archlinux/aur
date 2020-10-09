@@ -22,5 +22,5 @@ package() {
   cd ${pkgname}3-${pkgver}
   install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname} "${pkgdir}"/usr/share/scala/${pkgname}/
   install -Dm644 target/scala-2.12/${pkgname}3_2.12-${pkgver}.jar "${pkgdir}"/usr/share/scala/${pkgname}/${pkgname}.jar
-  install -Dm644 src/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
