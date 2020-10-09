@@ -15,10 +15,11 @@ source_armv7h=("${pkgname}-armv7h::https://webreflection.github.io/aur/${pkgname
 source_armv7l=("${pkgname}-armv7l::https://webreflection.github.io/aur/${pkgname}-armv7l-${pkgver}.tar.gz")
 source_x86_64=("${pkgname}-x86::https://webreflection.github.io/aur/${pkgname}-x86_64-${pkgver}.tar.gz")
 sha256sums_aarch64=('e4fbd01be7b57c953e4e2ed81edd4f2bec7061890af30e839b751871af76430f')
-sha256sums_armv7h=('af5f3511da67bebd224034fc1e2f9e2ffedfa2096c131ddc85652c7e258c333f')
 sha256sums_armv7l=('af5f3511da67bebd224034fc1e2f9e2ffedfa2096c131ddc85652c7e258c333f')
+sha256sums_armv7h=('af5f3511da67bebd224034fc1e2f9e2ffedfa2096c131ddc85652c7e258c333f')
 sha256sums_x86_64=('2ceb11ed2633d5b2255856d04440b5273fe44e6862ced7b169c239d8cf6e8afa')
 
 package () {
     cp -R "${srcdir}/usr" "${pkgdir}"
 }
+
