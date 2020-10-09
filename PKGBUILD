@@ -1,5 +1,5 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
-# Co-Maintainter: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-portolan
 _name=${pkgname#python-}
 pkgver=1.0.1
