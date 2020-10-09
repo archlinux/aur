@@ -1,0 +1,28 @@
+pkgbase = giara
+	pkgdesc = Reddit gtk client
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GabMus/giara
+	arch = any
+	license = GPL3
+	makedepends = meson
+	makedepends = gobject-introspection
+	depends = gtksourceview4
+	depends = libhandy>=1
+	depends = python-beautifulsoup4
+	depends = python-dateutil
+	depends = python-flask
+	depends = python-gobject
+	depends = python-mistune
+	depends = python-pillow
+	depends = python-praw
+	depends = webkit2gtk
+	optdepends = ffmpeg: For video
+	provides = redditgtk
+	conflicts = redditgtk
+	replaces = redditgtk
+	source = https://gitlab.gnome.org/GabMus/giara/-/archive/0.1/giara-0.1.tar.gz
+	sha256sums = 2a92cce3d5c3f6e78986aa8dc8232f578d0f6478180fa31eb3255330893a5bc1
+
+pkgname = giara
+
