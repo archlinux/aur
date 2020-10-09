@@ -1,10 +1,10 @@
 # Maintainer: FD <fxd@seznam.cz>
 
 pkgname=nomachine-enterprise-client
-pkgver=6.11.2
-pkgrel=1
-x64_rel=1
-i386_rel=1
+pkgver=6.12.3
+pkgrel=8
+x64_rel=7
+i386_rel=8
 pkgdesc="Remote desktop application"
 url="http://www.nomachine.com"
 license=('custom:"Copyright 2002-2015 NoMachine S.a r.l."')
@@ -14,13 +14,13 @@ conflicts=(nomachine nxmanager nxwebplayer nxserver nxnode nxclient)
 install=nm-ent-client.install
 
 if [ "${CARCH}" = "x86_64" ]; then
-  sha256sums=("fd2337be8ce478a55ed16d23752b2aaa2095693bcdbe5ec00c22970b11ea4f34")
+  sha256sums=("72f4a68da4663bc3a95d7a2804cdc2c8243dffd69b74ff4820082c63cbd0031f")
   _carch=_x86_64
-  source=("http://download.nomachine.com/download/6.11/Linux/${pkgname}_${pkgver}_${x64_rel}${_carch}.tar.gz")
+  source=("http://download.nomachine.com/download/6.12/Linux/${pkgname}_${pkgver}_${x64_rel}${_carch}.tar.gz")
 elif [ "${CARCH}" = "i686" ]; then
-  sha256sums=("35c4ea48079efc1608bbe85660fb368e4b2b0542131c8eea3a9e3c24c94734e2")
+  sha256sums=("1dc4df7cdcd9586186f74aa5a65f6623b5b4c8c461a1b5a32523b6ffd0e89e2d")
   _carch=_i686
-  source=("http://download.nomachine.com/download/6.11/Linux/${pkgname}_${pkgver}_${i386_rel}${_carch}.tar.gz")
+  source=("http://download.nomachine.com/download/6.12/Linux/${pkgname}_${pkgver}_${i386_rel}${_carch}.tar.gz")
 fi
 
 package()
