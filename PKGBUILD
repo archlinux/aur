@@ -2,7 +2,7 @@
 
 pkgname=clash-premium-bin
 pkgver=2020.10.09
-pkgrel=1
+pkgrel=2
 pkgdesc="Close-sourced pre-built Clash binary with TUN support"
 provides=('clash')
 conflicts=('clash' 'clash-tun' 'clash-dev-git')
@@ -29,26 +29,9 @@ sha512sums_armv6h=('23273578d95ed9f47f5a27417642434e045d9a3333409e2dbb0154ca0d8e
 sha512sums_armv7h=('3887b2a6a5c526b1a4164ea21f91e2d0095c3414244776a05f308ce3f399f6a822bea926497669e8f7aa83fb23f136b863ca79f4517391fce1716a1230c03a3e')
 sha512sums_aarch64=('801d2e7eecc48cb1f36ff1085eec4773359754ef83521f3c70678f93741b40858c2b88d993eea24d84c0075d5d46aa3fb96c1782628af200ba4536c1d31761dd')
 
-prepare() {
-    cd "${srcdir}"
-    gunzip -kfN "${pkgname}-${CARCH}-${pkgver}.gz"
-}
 
 package() {
-    if [ $CARCH = "i686" ]; then
-        _arch='386'
-    elif [ $CARCH = "x86_64" ]; then
-        _arch='amd64'
-    elif [ $CARCH = "arm" ]; then
-        _arch='armv5'
-    elif [ $CARCH = "armv6h" ]; then
-        _arch='armv6'
-    elif [ $CARCH = "armv7h" ]; then
-        _arch='armv7'
-    elif [ $CARCH = "aarch64" ]; then
-        _arch='armv8'
-    fi
-    install -Dm755 "${srcdir}/clash-linux-${_arch}" "${pkgdir}/usr/bin/clash"
+    install -Dm755 "${srcdir}/${pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/clash"
     install -Dm644 "${srcdir}/clash@.service" "${pkgdir}/usr/lib/systemd/system/clash@.service"
     install -Dm644 "${srcdir}/clash_user.service" "${pkgdir}/usr/lib/systemd/user/clash.service"
 }
