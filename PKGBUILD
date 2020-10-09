@@ -1,15 +1,15 @@
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-convert-pem'
-pkgver='0.08'
-pkgrel='1'
+pkgname=perl-convert-pem
+pkgver=0.08
+pkgrel=1
 pkgdesc="Read/write encrypted ASN.1 PEM files"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.8.1' 'perl-class-errorhandler' 'perl-convert-asn1>=0.10' 'perl-crypt-des-ede3')
-makedepends=('perl-test-exception')
+depends=('perl>=5.8.1' 'perl-class-errorhandler' 'perl-convert-asn1>=0.10' 'perl-crypt-des_ede3')
+makedepends=('perl-test-exception' 'perl-module-install')
 url='http://search.cpan.org/dist/Convert-PEM'
 source=('http://search.cpan.org/CPAN/authors/id/B/BT/BTROTT/Convert-PEM-0.08.tar.gz')
 md5sums=('a55c927457035806228e62b403551f13')

@@ -7,10 +7,11 @@ pkgbase = perl-convert-pem
 	license = PerlArtistic
 	license = GPL
 	makedepends = perl-test-exception
+	makedepends = perl-module-install
 	depends = perl>=5.8.1
 	depends = perl-class-errorhandler
 	depends = perl-convert-asn1>=0.10
-	depends = perl-crypt-des-ede3
+	depends = perl-crypt-des_ede3
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/B/BT/BTROTT/Convert-PEM-0.08.tar.gz
 	md5sums = a55c927457035806228e62b403551f13
