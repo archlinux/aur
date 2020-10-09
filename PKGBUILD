@@ -2,18 +2,17 @@
 
 _pkgname='ory-keto'
 pkgname="${_pkgname}-bin"
-pkgver=1.0.0_beta.9
+pkgver=0.5.6_alpha.1
 pkgrel=1
-pkgdesc="A cloud native access control server capable of solving complex use cases (multi-tenant, attribute-based access control, ...) with access control policies (IAM Policies). "
+pkgdesc="A cloud native access control server"
 arch=('x86_64')
-url="https://ory.sh"
+url="https://ory.sh/keto"
 license=('Apache')
 depends=()
 provides=("${_pkgname}")
-source=("https://github.com/ory/keto/releases/download/v${pkgver//_/-}/keto-linux-amd64")
-sha256sums=('5d5805888df10047cccbcd29003f0d626c5dc2d12f981d022cd168840e947cdb')
+source=("https://github.com/ory/keto/releases/download/v${pkgver//_/-}/keto_${pkgver//_/-}_linux_64-bit.tar.gz")
+sha256sums=('cc27f37e498336887e85fe6bd1b3ce75e93f5deddb7436e9fe1d983b4ade5844')
 
 package() {
-    mv "${srcdir}/keto-linux-amd64" "${srcdir}/keto"
     install -m755 -D "${srcdir}/keto" "${pkgdir}/usr/bin/keto"
 }
