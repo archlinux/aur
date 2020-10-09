@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gedit-markdownpreview-git
 _pkgname=markdownpreview
-pkgver=r25.d30ccef
-pkgrel=5
+pkgver=r26.b82dcc8
+pkgrel=1
 pkgdesc="Show side by side preview of markdown files"
 arch=('any')
 url="https://github.com/aliva/gedit-markdownpreview"
 license=('GPL2')
-depends=('gedit' 'python-markdown' 'python-pep562')
+depends=('gedit' 'python-markdown')
 makedepends=('git')
 optdepends=('pymdown-extensions: for extra utility')
 provides=("${pkgname%-git}")
