@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
 pkgname=grub-theme-creator
 _pkgver=0.1.0-alpha-2
 pkgver=${_pkgver//-/.}
