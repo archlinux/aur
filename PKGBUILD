@@ -3,7 +3,7 @@
 
 pkgname=cachefilesd
 pkgver=0.10.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Userspace daemon acting as a backend for FS-Cache"
 arch=('i686' 'x86_64')
 url="https://people.redhat.com/~dhowells/fscache/"
@@ -23,8 +23,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" SBINDIR=/usr/bin install
-
-  # at least Type=forking provides a ready notification
+  install -D -m 644 README "$pkgdir/usr/share/doc/cachefilesd/README"
   install -D -m 644 "$srcdir/cachefilesd.service" "$pkgdir/usr/lib/systemd/system/cachefilesd.service"
 }
 
