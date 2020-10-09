@@ -16,13 +16,13 @@ pkgbase = cog-wpe-bin
 	provides = cog-git
 	conflicts = cog
 	conflicts = cog-git
-	source_aarch64 = cog-wpe-bin-aarch64::https://webreflection.github.io/aur/cog-wpe-bin-aarch640.8.0.tar.gz
+	source_aarch64 = cog-wpe-bin-aarch64::https://webreflection.github.io/aur/cog-wpe-bin-aarch64-0.8.0.tar.gz
 	sha256sums_aarch64 = e4fbd01be7b57c953e4e2ed81edd4f2bec7061890af30e839b751871af76430f
-	source_armv7h = cog-wpe-bin-armv7h::https://webreflection.github.io/aur/cog-wpe-bin-armv7l0.8.0.tar.gz
+	source_armv7h = cog-wpe-bin-armv7h::https://webreflection.github.io/aur/cog-wpe-bin-armv7l-0.8.0.tar.gz
 	sha256sums_armv7h = af5f3511da67bebd224034fc1e2f9e2ffedfa2096c131ddc85652c7e258c333f
-	source_armv7l = cog-wpe-bin-armv7l::https://webreflection.github.io/aur/cog-wpe-bin-armv7l0.8.0.tar.gz
+	source_armv7l = cog-wpe-bin-armv7l::https://webreflection.github.io/aur/cog-wpe-bin-armv7l-0.8.0.tar.gz
 	sha256sums_armv7l = af5f3511da67bebd224034fc1e2f9e2ffedfa2096c131ddc85652c7e258c333f
-	source_x86_64 = cog-wpe-bin-x86::https://webreflection.github.io/aur/cog-wpe-bin-x86_640.8.0.tar.gz
+	source_x86_64 = cog-wpe-bin-x86::https://webreflection.github.io/aur/cog-wpe-bin-x86_64-0.8.0.tar.gz
 	sha256sums_x86_64 = 2ceb11ed2633d5b2255856d04440b5273fe44e6862ced7b169c239d8cf6e8afa
 
 pkgname = cog-wpe-bin
