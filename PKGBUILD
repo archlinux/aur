@@ -4,8 +4,8 @@
 pkgname='maestral'
 provides=('maestral')
 conflicts=('maestral-git')
-pkgver=1.2.0
-pkgrel=4
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='A light-weight and open-source CLI Dropbox client.'
 arch=('x86_64')
 url="https://github.com/SamSchott/${pkgname}"
@@ -15,8 +15,7 @@ makedepends=('python-setuptools')
 changelog=CHANGELOG.md
 depends=(
     'python>=3.8'
-    'python-atomicwrites'
-    'python-blinker'
+    'python-alembic>=1.3.0'
     'python-bugsnag>=3.4.0'
     'python-click>=7.1.1'
     'python-dropbox>=10.4.1'
@@ -24,6 +23,7 @@ depends=(
     'python-dbus-next>=0.1.4'
     'python-keyring>=19.0.0'
     'python-keyrings-alt>=3.1.0'
+    'python-packaging'
     'python-pathspec>=0.5.8'
     'python-pyro5>=5.10'
     'python-requests>=2.16.2'
@@ -31,7 +31,7 @@ depends=(
     'python-sqlalchemy>=1.3'
     'python-watchdog>=0.10.0'
     'python-systemd')
-md5sums=('a1ce35ea257b4bfabb5e76ef34d8c860'
+md5sums=('a306fbbc2407110e4f494f875b510020'
          '25d1041b158c1b1ea42d7290c9c0f91d')
 
 build() {
