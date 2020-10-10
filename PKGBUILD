@@ -58,7 +58,7 @@ groups=()
 #depends=('openexr' 'coin-or-coinutils' 'coin-or-lemon' 'opencv' 
 depends+=('alembic' 'boost-libs' 'openimageio' 'flann' 'geogram' 'opengv' 'coin-or-clp' 'ceres-solver')
 #makedepends+=('ceres-solver')
-makedepends+=('boost' 'ninja' 'eigen-qfix' 'freetype2' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
+makedepends+=('boost' 'ninja' 'eigen' 'freetype2' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
 source=("${pkgname}::https://github.com/alicevision/AliceVision/archive/v${pkgver}.tar.gz"
         "MeshSDFilter::git+https://github.com/alicevision/MeshSDFilter.git#branch=av_develop"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
