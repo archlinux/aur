@@ -1,7 +1,7 @@
 pkgbase = freshfetch-git
 	pkgdesc = A fresh take on Neofetch
-	pkgver = 0.1.2
-	pkgrel = 3
+	pkgver = v0.1.2.r6.g093e489
+	pkgrel = 1
 	url = https://github.com/K4rakara/freshfetch
 	arch = any
 	license = MIT
@@ -12,8 +12,11 @@ pkgbase = freshfetch-git
 	optdepends = xorg-xwininfo
 	provides = freshfetch
 	conflicts = freshfetch
+	conflicts = freshfetch-git
 	source = git://github.com/K4rakara/freshfetch.git
+	source = https://raw.githubusercontent.com/K4rakara/freshfetch/master/LICENSE.md
 	md5sums = SKIP
+	md5sums = a4c191c500e67564935777e1abaebbab
 
 pkgname = freshfetch-git
 
