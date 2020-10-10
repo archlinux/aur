@@ -3,14 +3,14 @@
 _reponame=Mamba
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-git"
-pkgver=1.3.r38.g1fbb167
+pkgver=1.6.r0.geb41577
 pkgrel=1
-pkgdesc="A virtual MIDI keyboard and file player/recorder for JACK (git version)"
+pkgdesc="A virtual MIDI keyboard and file player/recorder for ALSA/JACK (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/brummer10/${_reponame}"
 license=('0BSD')
 depends=('cairo')
-makedepends=('git' 'jack' 'liblo' 'libsigc++' 'libsmf')
+makedepends=('alsa-lib' 'fluidsynth' 'git' 'jack' 'liblo' 'libsigc++' 'libsmf')
 optdepends=('new-session-manager: for NSM support')
 groups=('pro-audio')
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" "${_pkgname//-/.}")
@@ -47,7 +47,7 @@ build() {
 }
 
 package() {
-  depends+=('libjack.so' 'liblo.so' 'libsigc++' 'libsmf.so')
+  depends+=('libasound.so' 'libfluidsynth.so' 'libjack.so' 'liblo.so' 'libsigc++' 'libsmf.so')
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" PREFIX=/usr install
 
