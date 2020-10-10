@@ -14,7 +14,7 @@ depends=('glibc')
 replaces=('raidtools')
 backup=('etc/mdadm.conf')
 validpgpkeys=('6A86B80E1D22F21D0B26BA75397D82E0531A9C91') # Jes Sorensen
-source=("git+https://git.kernel.org/pub/scm/utils/mdadm/mdadm.git#tag=${pkgname}-${pkgver}?signed"
+source=("git+https://git.kernel.org/pub/scm/utils/mdadm/mdadm.git"
         'mdadm.conf'
         'mdadm_udev_install')
 sha256sums=('SKIP'
