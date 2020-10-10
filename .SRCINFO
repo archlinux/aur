@@ -5,6 +5,8 @@ pkgbase = python-apt
 	url = https://tracker.debian.org/pkg/python-apt
 	arch = any
 	license = GPL2
+	makedepends = python2-setuptools
+	makedepends = python-setuptools
 	makedepends = python-distutils-extra
 	makedepends = python2-distutils-extra
 	depends = apt>=2.1

@@ -12,7 +12,7 @@ arch=('any')
 url="https://tracker.debian.org/pkg/python-apt"
 license=('GPL2')
 depends=('apt>=2.1')
-makedepends=('python-distutils-extra' 'python2-distutils-extra')
+makedepends=('python2-setuptools' 'python-setuptools' 'python-distutils-extra' 'python2-distutils-extra')
 conflicts=()
 options=(!emptydirs)
 source=(https://salsa.debian.org/apt-team/python-apt/-/archive/${pkgver}/python-apt-${pkgver}.tar.gz)
