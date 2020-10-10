@@ -1,11 +1,11 @@
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="koalalauncher"
-pkgver="1.0.3"
+pkgver="1.0.4"
 pkgrel=1
-commitsha="6dd0c1c5e720a8464c851001983a5474eb063cd5"
+commitsha="2ecf84767ec9e1ff661004dc02fd8034571df1f0"
 arch=('x86_64')
 pkgdesc="Koala Launcher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
-url="https://koalalauncher.netlify.app"
+url="https://koalalauncher.com"
 license=('GPL3')
 makedepends=('gendesk' 'git' 'yarn' 'nodejs' 'rust' 'unzip')
 depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3')
