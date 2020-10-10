@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=sysmon-git
-pkgver=0.9.r19.g3085ac8
+pkgver=0.9.r21.g56cb167
 pkgrel=1
 pkgdesc="Graphical system monitor. Similar to windows task manager."
 arch=('any')
 url="https://github.com/MatthiasSchinzel/sysmon"
-license=('none')
+license=('GPL')
 depends=('python-pyqtgraph' 'python-pyqt5' 'wireless_tools')
+optdepends=('nvidia-utils: NVIDIA GPU utilization and clock speed')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/MatthiasSchinzel/sysmon.git'
