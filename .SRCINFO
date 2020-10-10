@@ -1,7 +1,7 @@
 pkgbase = tensorflow-cuda-kepler
 	pkgdesc = TensorFlow compiled with Kepler GPU supports (e.g., K20, K40, K80, etc.) only.
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tensorflow.org/
 	arch = x86_64
 	license = APACHE

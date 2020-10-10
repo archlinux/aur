@@ -10,7 +10,7 @@
 pkgbase='tensorflow-cuda-kepler'
 pkgname=('tensorflow-cuda-kepler' 'python-tensorflow-cuda-kepler')
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="TensorFlow compiled with Kepler GPU supports (e.g., K20, K40, K80, etc.) only."
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -71,8 +71,16 @@ prepare() {
   patch -Np1 -d tensorflow-${pkgver} -i "$srcdir"/numpy1.20.patch
 
   mv tensorflow-${pkgver} tensorflow-${pkgver}-cuda-kepler
+}
 
-  # These environment variables influence the behavior of the configure call below.
+build() {
+
+  echo "Building with cuda and without non-x86-64 optimizations"
+  cd "${srcdir}"/tensorflow-${pkgver}-cuda-kepler
+
+  # environment variable for configuring
+  export CC_OPT_FLAGS="-march=x86-64"
+  export TF_NEED_CUDA=1
   export PYTHON_BIN_PATH=/usr/bin/python
   export USE_DEFAULT_PYTHON_LIB_PATH=1
   export TF_NEED_JEMALLOC=1
@@ -91,7 +99,6 @@ prepare() {
   export TF_NEED_NGRAPH=0
   export TF_NEED_IGNITE=0
   export TF_NEED_ROCM=0
-  # See https://github.com/tensorflow/tensorflow/blob/master/third_party/systemlibs/syslibs_configure.bzl
   export TF_SYSTEM_LIBS="boringssl,curl,cython,gif,icu,libjpeg_turbo,lmdb,nasm,pcre,png,pybind11,zlib"
   export TF_SET_ANDROID_WORKSPACE=0
   export TF_DOWNLOAD_CLANG=0
@@ -114,15 +121,11 @@ prepare() {
   export CXX=g++-9
 
   export BAZEL_ARGS="--config=mkl -c opt --copt=-I/usr/include/openssl-1.0 --host_copt=-I/usr/include/openssl-1.0 --linkopt=-l:libssl.so.1.0.0 --linkopt=-l:libcrypto.so.1.0.0 --host_linkopt=-l:libssl.so.1.0.0 --host_linkopt=-l:libcrypto.so.1.0.0"
-}
 
-build() {
-
-  echo "Building with cuda and without non-x86-64 optimizations"
-  cd "${srcdir}"/tensorflow-${pkgver}-cuda-kepler
-  export CC_OPT_FLAGS="-march=x86-64"
-  export TF_NEED_CUDA=1
+  # run configure
   ./configure
+
+  # build
   bazel \
     build \
       ${BAZEL_ARGS[@]} \
@@ -130,6 +133,7 @@ build() {
       //tensorflow:libtensorflow_cc.so \
       //tensorflow:install_headers \
       //tensorflow/tools/pip_package:build_pip_package
+
   bazel-bin/tensorflow/tools/pip_package/build_pip_package --gpu "${srcdir}"/tmpcuda
 }
 
