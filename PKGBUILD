@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=flatery-icon-theme-git
-pkgver=r128.d772f71
+pkgver=r239.5742a219
 pkgrel=1
 pkgdesc='Flatery is an icon theme for linux in flat style'
 arch=('any')
@@ -33,6 +33,6 @@ package() {
   cd "${pkgdir}/usr/share/icons/Flatery-Dark"
   rm License-CC_BY-NC-SA_3.0-Legal.pdf License-CC_BY-NC-SA_3.0-Summary.pdf README.md
   cd "${pkgdir}/usr/share/icons/Flatery"
-  rm License-CC_BY-NC-SA_3.0-Legal.pdf License-CC_BY-NC-SA_3.0-Summary.pdf README.md cover.png
+  rm License-CC_BY-NC-SA_3.0-Legal.pdf License-CC_BY-NC-SA_3.0-Summary.pdf README.md
 }
 # vim:set ts=2 sw=2 et:
