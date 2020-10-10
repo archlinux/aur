@@ -1,0 +1,19 @@
+pkgbase = 2048.cpp-git
+	pkgdesc = Fully featured terminal version of the game 2048 written in C++
+	pkgver = r362.50bd8a7
+	pkgrel = 1
+	url = https://github.com/plibither8/2048.cpp
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	conflicts = 2048.c
+	conflicts = 2048.c-git
+	conflicts = 2048-cli-git
+	conflicts = 2048-curses
+	conflicts = 2048-rs
+	source = git+https://github.com/plibither8/2048.cpp.git
+	sha1sums = SKIP
+
+pkgname = 2048.cpp-git
+
