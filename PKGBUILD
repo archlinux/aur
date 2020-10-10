@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="The reference software for viewing, printing, annotating and digitally signing PDF files"
 arch=(i686 x86_64)
 url="https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html"
-license=('freeware')
+license=('custom')
 depends=(wine winetricks)
 makedepends=()
 source=(
@@ -53,5 +53,6 @@ package() {
   install -m755 -d "$pkgdir"/usr/share/icons/hicolor/48x48/apps
   install -m644 "$srcdir"/tmp/local/icons/hicolor/48x48/apps/F449_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/adobe-reader-11.png
   install -m755 -d "$pkgdir"/usr/share/icons/hicolor/256x256/apps
-  install -m644 "$srcdir"/tmp/local/icons/hicolor/256x256/apps/F449_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/adobe-reader-11.png
+  install -m644 "$srcdir"/tmp/local/icons/hicolor/256x256/apps/F449_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/$pkgname.png
+  install -Dm644 "$srcdir"/tmp/env/drive_c/Program\ Files/Adobe/Reader\ 11.0/Reader/Legal/ENU/license.html "$pkgdir"/usr/share/licenses/$pkgname/license.html
 }
