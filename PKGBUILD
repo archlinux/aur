@@ -35,7 +35,7 @@ source=("https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur
 
 #noextract=()
 md5sums=('8417980b971ad2099066216b815f50af'
-         'e63065c98d9e55ceaf233fc8bc8d48f7')
+         '9b7ba1e301b3f4c8b9a751d6a00414ea')
 #validpgpkeys=()
 
 #prepare() {}

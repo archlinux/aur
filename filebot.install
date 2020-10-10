@@ -3,18 +3,6 @@ echo -e "\e[1;33m==>\e[0m Symlinking OpenJFX"
 ln -sf /usr/lib/jvm/java-11-openjdk/lib/javafx.* /usr/share/filebot/openjfx/
 echo ""
 
-echo -e "\e[1;33m==>\e[0m This version of Filebot is using Java 11+"
-echo -e "\e[1;33m==>\e[0m Java 8 dependency could be removed"
-echo ""
-
-echo -e "\e[1;33m==>\e[0m As of Filebot 4.9.2 and this comment (\e[1;36m https://github.com/arch-noob/filebot/issues/12#issuecomment-704131387 \e[0m)"
-echo -e "\e[1;33m==>\e[0m \e[0;37m liberica-jdk-full-bin \e[0m is absolutely required as Java runtime"
-echo ""
-
-echo -e "\e[1;33m==>\e[0m if you use another JDK or runtime (experimental and not recommended) you \e[1;31m must \e[0m also install OpenJFX"
-echo -e "\e[1;33m==>\e[0m \e[1;36m https://wiki.archlinux.org/index.php/Java#OpenJFX \e[0m"
-echo ""
-
 echo -e "\e[1;33m==>\e[0m \e[1;31m filebot --license license.file \e[0m will activate your license.file"
 echo ""
 
