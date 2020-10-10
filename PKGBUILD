@@ -2,7 +2,7 @@
 # Contributor: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 pkgname=ckb-next
 pkgver=0.4.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Corsair Keyboard and Mouse Input Driver, release version"
 arch=('i686' 'x86_64')
 url="https://github.com/ckb-next/ckb-next"
