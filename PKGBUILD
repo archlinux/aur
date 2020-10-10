@@ -1,14 +1,16 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Joe Davison <joe@warhaggis.com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: zer0def <zer0def on freenode>
 
 pkgname=libpurple-signald-git
-pkgver=0.3.0.r1.g6ba26ff
+pkgver=0.6.0.r2.gaf18341
 pkgrel=1
 pkgdesc='Pidgin libpurple bridge to signald.'
 url='https://github.com/hoehermann/libpurple-signald'
 license=('GPL3')
 arch=('any')
 depends=('json-glib' 'libpurple' 'signald')
+makedepends=('git')
 source=("${pkgname}::git+https://github.com/hoehermann/libpurple-signald")
 sha512sums=('SKIP')
 
