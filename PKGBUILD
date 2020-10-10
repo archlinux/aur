@@ -2,7 +2,7 @@
 
 _pkgname="vopono"
 pkgname=vopono-bin
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Run applications through VPN connections in network namespaces'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('nftables' 'iptables' 'procps-ng' 'coreutils' 'findutils')
 optdepends=('openvpn: for OpenVPN connections' 'wireguard-tools: for Wireguard connections' 'shadowsocks-libev: for Shadowsocks support (Mullvad)')
 source=("${_pkgname}::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux_x86-64_musl")
 noextract=("${_pkgname}")
-sha256sums=('90dde7dc9038149059b95a3ed1ffba377a5f4da17390c2fd80456b01481d65a9')
+sha256sums=('dc1863a5a3360d6e23a757ac5184d6c780e6d5daa956e33768af74e4ba3b977a')
 provides=('vopono')
 conflicts=('vopono')
 
