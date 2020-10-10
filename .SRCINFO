@@ -1,6 +1,6 @@
 pkgbase = muwire-git
 	pkgdesc = An I2P file sharing program (git version)
-	pkgver = 0.7.4.r2.g72985bac
+	pkgver = 0.7.6.r1.g9acb49c2
 	pkgrel = 1
 	url = https://muwire.com/
 	arch = any

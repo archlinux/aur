@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=muwire-git
-pkgver=0.7.4.r2.g72985bac
+pkgver=0.7.6.r1.g9acb49c2
 pkgrel=1
 pkgdesc='An I2P file sharing program (git version)'
 arch=('any')
@@ -39,6 +39,6 @@ package() {
     while read -r -d '' _file
     do
         _res="$(sed 's/\.png$//;s/^.*x//' <<< "$_file")"
-        install -D -m644 "$_file" "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/${pkgname}.png"
+        install -D -m644 "$_file" "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/muwire.png"
     done < <(find muwire/gui/griffon-app/resources -maxdepth 1 -type f -name 'MuWire-*x*.png' -print0)
 }
