@@ -10,6 +10,7 @@ license=('GPL3')
 depends=()
 provides=()
 conflicts=()
+options=('!strip')
 source=("https://github.com/AeonLucid/Impostor/releases/download/v${pkgver}/Impostor-Server-linux-x64.zip")
 sha512sums=('f05213362fd5415608e6cebfd01250ebbb2bba320561d77c9bd20cb91e41c112faa3b8db2d4ecc3afccf2c2b28553516bc53a05c07218603200f2835e6b5f2b6')
 
@@ -22,5 +23,5 @@ package() {
   
   mkdir -p "${pkgdir}/usr/bin/"
 
-  cp --verbose "${srcdir}/impostor-server" "${pkgdir}/usr/bin/impostor-server"
+  cp --verbose "${srcdir}/impostor-server" "${pkgdir}/usr/bin/"
 }
