@@ -1,7 +1,7 @@
 pkgbase = llvm-rc-bin
 	pkgdesc = Collection of modular and reusable compiler and toolchain -PreRelease
 	pkgver = 11.0.0
-	pkgrel = 2
+	pkgrel = 6
 	url = https://prereleases.llvm.org11.0.0
 	install = llvm-rc-bin.install
 	arch = x86_64
@@ -9,9 +9,11 @@ pkgbase = llvm-rc-bin
 	depends = gcc-libs
 	depends = zlib
 	depends = ncurses5-compat-libs
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0-rc2/clang+llvm-11.0.0-rc2-x86_64-linux-sles12.4.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0-rc6/clang+llvm-11.0.0-rc6-x86_64-linux-gnu-ubuntu-20.04.tar.xz
+	source = http://archive.ubuntu.com/ubuntu/pool/main/n/ncurses/libtinfo6_6.2-0ubuntu2_amd64.deb
 	source = llvm.sh
-	sha256sums = 5d1a54fbca4e3c9865094c8c4602d5761adc49a1f4c58d2a481cbe502ea35f74
+	sha256sums = d650e109f78474a7a73a47c060a8e2932a80cbeadbdf26e62e61cc090793a696
+	sha256sums = 87f281a8d5e56dbb259c7ef9f9dead8c52c73982c7bd65b267a71dfc700875fb
 	sha256sums = 4514139cb511ced2c5495988cc248d95552045888c1cb26bbedc7654fa2e7b91
 
 pkgname = llvm-rc-bin
