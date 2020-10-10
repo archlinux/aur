@@ -17,7 +17,7 @@ url="https://colmap.github.io/"
 license=('GPL')
 groups=()
 depends=('cgal' 'ceres-solver' 'gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' 'qt5-base')
-makedepends=('boost' 'cmake' 'eigen-qfix' 'git' 'ninja' 'python-sphinx' )
+makedepends=('boost' 'cmake' 'eigen' 'git' 'ninja' 'python-sphinx' )
 if [ "$_BUILD_CUDA" == "ON" ] ; then 
   makedepends+=('cuda-sdk')
   optdepends+=('cuda-toolkit: for cuda sfm/mvs acceleration')
