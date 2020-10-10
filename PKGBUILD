@@ -2,9 +2,9 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=orfeo-toolbox
-pkgver=7.1.0
-_pkgver=7.1
-pkgrel=3
+pkgver=7.2.0
+_pkgver=7.2
+pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
@@ -26,7 +26,7 @@ source=("${pkgname}.tar.gz::https://www.orfeo-toolbox.org/packages/OTB-$pkgver.t
 		git://github.com/jmichel-otb/GKSVM.git)
 noextract=()
 
-md5sums=('188f9875a419591397db417d3f3d465d'
+md5sums=('39b254abcfe36769d1a2a58a7167b692'
          'SKIP')
 
 
@@ -50,7 +50,7 @@ build() {
  
    cmake ../ \
   -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_CXX_FLAGS="$CXXFLAGS -fPIC" \
+  -DCMAKE_CXX_2FLAGS="$CXXFLAGS -fPIC" \
   -DCMAKE_C_FLAGS="$CFLAGS -fPIC" \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DOTB_USE_CURL=ON \
@@ -72,7 +72,8 @@ build() {
   -DOTB_USE_OPENGL=ON \
   -DOTB_USE_SPTW=ON \
   -DOTB_USE_QWT=ON \
-  -DOTB_USE_GLUT=ON
+  -DOTB_USE_GLUT=ON \
+  -DCMAKE_CXX_STANDARD=14
          
   make
  
