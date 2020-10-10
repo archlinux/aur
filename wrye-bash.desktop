@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Wrye Bash
+Comment=A swiss army knife for modding Bethesda games
+Path=/opt/wrye-bash
+Exec=wrye-bash
+Icon=wrye-bash
+Terminal=false
+Categories=System;FileTools;FileManager;X-ModManager;
