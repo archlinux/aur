@@ -24,7 +24,7 @@ provides=("${_name}" geogram uncertainty-framework)
 depends=( 'alembic' 'boost-libs' 'coin-or-clp' 'flann' 'google-glog' 'opencv' 'openimageio' 'opengv' )
 depends+=('glu' 'glfw-x11') # geogram deps.
 depends+=('magma' 'ceres-solver') # uncertaintyTE deps.
-makedepends=('ninja' 'boost' 'eigen-qfix' 'freetype2' 'gflags' 'doxygen' 'python-sphinx' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
+makedepends=('ninja' 'boost' 'eigen' 'freetype2' 'gflags' 'doxygen' 'python-sphinx' 'coin-or-coinutils' 'coin-or-lemon' 'git' 'cmake')
 source=("${pkgname}::git+https://github.com/alicevision/AliceVision.git${_fragment}"
         "ute_lib::git+https://github.com/alicevision/uncertaintyTE.git"
         "geogram::git+https://github.com/alicevision/geogram.git"
