@@ -2,7 +2,7 @@
 
 pkgname=sais
 pkgver=1.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Strange Adventures In Infinite Space is a roguelike video game created by the indie developer Digital Eel'
 url='http://digital-eel.com/sais/'
 license=('GPL3')
@@ -25,4 +25,5 @@ package() {
 	make install
 	ln -s "/opt/sais/strange" "${pkgdir}/usr/bin/strange"
 	ln -s "/opt/sais/strange" "${pkgdir}/usr/bin/sais"
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/COPYING.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
