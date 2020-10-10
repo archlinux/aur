@@ -1,0 +1,7 @@
+# makepkg
+/pkg/
+/src/
+/*.pkg.tar.zst
+
+# Impostor
+/Impostor-Server-linux-x64.zip
