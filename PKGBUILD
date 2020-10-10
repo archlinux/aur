@@ -2,8 +2,8 @@
 # Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=tracy
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
 url="https://github.com/wolfpld/tracy"
