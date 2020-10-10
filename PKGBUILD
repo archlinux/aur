@@ -2,20 +2,20 @@
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Fernando Fernandez <fernando@softwareperonista.com.ar>
 # Contributor: Jan de Groot <jgc@archlinux.org>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # upstream patches:
 # https://src.fedoraproject.org/cgit/rpms/gnome-terminal.git
 # https://github.com/debarshiray/gnome-terminal
 
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
-pkgver=3.36.2
+pkgver=3.38.1
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator, with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
 arch=(x86_64)
 license=(GPL)
-depends=('vte3>=0.60.2' gsettings-desktop-schemas)
+depends=('vte3>=0.62.1' gsettings-desktop-schemas)
 makedepends=(itstool docbook-xsl libnautilus-extension appstream-glib
              gnome-shell vala yelp-tools)
 provides=("$_pkgname=$pkgver")
@@ -24,8 +24,8 @@ groups=(gnome)
 changelog=package.changelog
 source=(https://download.gnome.org/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
         transparency.patch)
-sha256sums=('41d1b6a3dc97c066e294acdb7f36931e81668638dcc92ffa25bca3ddebacdf46'
-            '85b9f671915468eaf9ebebd63c449e91992c0ebb8db616e1c7da48c3cf38aea4')
+sha256sums=('d998d4824f38847fdd74bad6b5f09cc8e11b9de8e2a284a439af290714ddf3d1'
+            '106d36537c621d1b0d4a9a541ee307ace593e005c322fd3622fc64c2f54f70ba')
 
 prepare() {
   cd $_pkgname-$pkgver
