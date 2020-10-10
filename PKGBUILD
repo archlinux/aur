@@ -1,21 +1,33 @@
-# Maintainer: nous(at)artixlinux.org
+# Maintainer: fathoni.id(at)gmail.com
+# Contributor: nous(at)artixlinux.org
 
 pkgname=input-veikk-config
-pkgver=1.1
+_pkgname=veikk-linux-driver-gui 
+pkgver=2.0
 pkgrel=1
-pkgdesc="Configuration utility for input-veikk-dkms: orientation, screen mapping and pressure mapping"
+pkgdesc="A graphical configuration tool to easily customize the module parameters for the input-veikk-dkms"
 arch=('any')
-url="https://github.com/jlam55555/veikk-s640-driver"
+url="https://github.com/jlam55555/${_pkgname}"
 license=('GPL')
 depends=('input-veikk-dkms')
-source=('README'
-        'input-veikk-config.sh::https://raw.githubusercontent.com/jlam55555/veikk-s640-driver/master/config.sh')
-sha1sums=('8432d8a7314bc42269e976bdf5a7c75606fd4677'
-          '58ef918424a29f4f2bc2a81b069bff07d3d921b1')
+makedepends=('cmake' 'qt5-tools')
+source=("https://codeload.github.com/jlam55555/${_pkgname}/tar.gz/v${pkgver}" 'fix.patch')
+sha1sums=('09e72cfc11d62f54fab398931060fb7d5bd7258b'
+          '8784d971e57f2d1b3290fb42752b2178a15ba61f')
+
+prepare(){
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  patch --strip=1 --input="${srcdir}/fix.patch"
+}
+          
+build(){
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  mkdir -p build && cd build
+  qmake ..
+  make
+}
 
 package() {
-  cd "${srcdir}"
-  sed -ri "/^PARM_DIR/ a \\\ncat /usr/share/doc/input-veikk/README" ${pkgname}.sh
-  install -D -m755 -t "${pkgdir}/usr/bin/" "${srcdir}/${pkgname}.sh"
-  install -D -m755 -t "${pkgdir}/usr/share/doc/input-veikk/" "${srcdir}/README"
-} 
+  make -C ${srcdir}/${_pkgname}-${pkgver}/build INSTALL_ROOT="$pkgdir" install
+}
+

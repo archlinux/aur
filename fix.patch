@@ -1,0 +1,13 @@
+diff --git a/veikk-linux-driver-gui.pro b/veikk-linux-driver-gui.pro
+index f1e6559..fc895ee 100644
+--- a/veikk-linux-driver-gui.pro
++++ b/veikk-linux-driver-gui.pro
+@@ -34,6 +34,5 @@ FORMS += \
+     main.ui
+ 
+ # Default rules for deployment.
+-qnx: target.path = /tmp/$${TARGET}/bin
+-else: unix:!android: target.path = /opt/$${TARGET}/bin
+-!isEmpty(target.path): INSTALLS += target
++target.path = /usr/bin
++INSTALLS += target
