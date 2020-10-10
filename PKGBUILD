@@ -3,7 +3,7 @@
 _pkgname=2048.cpp
 pkgname=${_pkgname}-git
 pkgver=r362.50bd8a7
-pkgrel=1
+pkgrel=2
 pkgdesc="Fully featured terminal version of the game "2048" written in C++ "
 arch=('any')
 url="https://github.com/plibither8/2048.cpp"
@@ -26,7 +26,6 @@ build() {
 }
 
 package() {
+	install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
     install "${srcdir}/${_pkgname}/2048" -D "${pkgdir}/usr/bin/2048"
 }
-
-

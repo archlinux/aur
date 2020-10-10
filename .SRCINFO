@@ -1,7 +1,7 @@
 pkgbase = 2048.cpp-git
 	pkgdesc = Fully featured terminal version of the game 2048 written in C++
 	pkgver = r362.50bd8a7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/plibither8/2048.cpp
 	arch = any
 	license = MIT
