@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://www.meshlab.net"
 license=('GPL2')
 depends=('bzip2' 'glew' 'glu' 'openssl-1.0' 'qt5-base' 'qt5-declarative' 'qt5-script' 'qt5-xmlpatterns')
-makedepends=('cmake' 'eigen-qfix' 'ninja' 'git' 'muparser' 'levmar' 'lib3ds' 'mpir')
+makedepends=('cmake' 'eigen' 'ninja' 'git' 'muparser' 'levmar' 'lib3ds' 'mpir')
 optdepends=('u3d: for U3D and IDTF file support'
             'lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support'
             'levmar: for isoparametrization and mutualcorrs plugins'
