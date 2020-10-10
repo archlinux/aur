@@ -25,7 +25,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    CC=clang CXX=clang++ ./build.sh release -Ddefault_library=static || return 1
+    CC=clang CXX=clang++ ./build.sh release -Dopencl=false -Ddefault_library=static || return 1
 }
 
 package() {
