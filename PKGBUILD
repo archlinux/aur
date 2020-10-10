@@ -13,7 +13,7 @@ source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
+	cd tibasicc
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
