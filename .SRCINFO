@@ -1,7 +1,7 @@
 pkgbase = razer-nari-pulseaudio-profile
 	pkgdesc = Pulseaudio profile for Razer Nari
 	pkgver = 20201010
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/imustafin/razer-nari-pulseaudio-profile
 	arch = any
 	license = MIT

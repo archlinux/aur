@@ -1,7 +1,7 @@
 # Maintainer: nzbr <aur@nzbr.de>
 pkgname=razer-nari-pulseaudio-profile
 pkgver=20201010
-pkgrel=0
+pkgrel=1
 pkgdesc="Pulseaudio profile for Razer Nari"
 arch=('any')
 url="https://github.com/imustafin/razer-nari-pulseaudio-profile"
@@ -17,7 +17,7 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	install -Dm644 -t "$pkgdir/usr/share/pulseaudio/alsa-mixer/paths/" razer-nari-{input,output-{game,chat}}.conf
-	install -Dm644 -t "$pkgdir/usr/share/pulseaudio/alsa-card-profile/mixer/profile-sets/" razer-nari-usb-audio.conf
+	install -Dm644 -t "$pkgdir/usr/share/alsa-card-profile/mixer/profile-sets/" razer-nari-usb-audio.conf
 	install -Dm644 -t "$pkgdir/usr/lib/udev/rules.d/" 91-pulseaudio-razer-nari.rules
 }
 
