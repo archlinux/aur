@@ -4,8 +4,8 @@
 pkgname=python-ufoprocessor
 _name=ufoProcessor
 pkgver=1.9.0
-pkgrel=1
-pkgdesc='fontTools.designSpaceLib based library for processing and generating UFO files'
+pkgrel=2
+pkgdesc='library to process and generate UFO files based on fontTools.designSpaceLib'
 arch=('any')
 url="https://github.com/LettError/$_name"
 license=('MIT')
