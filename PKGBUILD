@@ -2,8 +2,8 @@
 
 _pyname=psptool
 pkgname=psptool-git
-pkgver=r107.3a33820
-pkgrel=2
+pkgver=r110.1e22f74
+pkgrel=1
 pkgdesc="Swiss Army knife for dealing with firmware of the AMD Secure Processor"
 arch=('any')
 url="https://github.com/PSPReverse/PSPTool"
@@ -15,6 +15,7 @@ depends=(
   'python-prettytable'
   'python-setuptools'
 )
+makedepends=('git')
 provides=("$_pyname")
 conflicts=($_pyname)
 options=(!emptydirs)

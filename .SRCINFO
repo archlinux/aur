@@ -1,10 +1,11 @@
 pkgbase = psptool-git
 	pkgdesc = Swiss Army knife for dealing with firmware of the AMD Secure Processor
-	pkgver = r107.3a33820
-	pkgrel = 2
+	pkgver = r110.1e22f74
+	pkgrel = 1
 	url = https://github.com/PSPReverse/PSPTool
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = ipython
 	depends = python
 	depends = python-cryptography
