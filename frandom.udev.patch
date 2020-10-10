@@ -5,4 +5,4 @@
  #
  
 -KERNEL=="[ef]random", NAME="%k", MODE="444", OPTIONS="last_rule"
-+KERNEL=="[ef]random", MODE="444", OPTIONS="last_rule"
++KERNEL=="[ef]random", MODE="444"

@@ -4,7 +4,7 @@
 
 pkgname=dkms-frandom
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A very fast random number generator kernel module (DKMS version)"
 arch=('any')
 url="http://frandom.sourceforge.net/"
@@ -34,6 +34,6 @@ package() {
 }
 
 md5sums=('4b862b8723ff9cedcab3a7c4feeaee42'
-         'f9a36f3a3c7f9caaae6475f6edea079c'
+         'a41a534a4b732a6e2a0b41214fa27a1d'
          'b8943c145912d5da71dd84e54465bb85'
          '1e94254311f05274035b5e41ff5a7a33')
