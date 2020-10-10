@@ -15,9 +15,9 @@ source=("https://github.com/zsa/wally/releases/download/${pkgver}-linux/wally"
     "https://github.com/zsa/wally/blob/${pkgver}-linux/dist/linux64/wally.desktop"
 )
 sha256sums=('cdb168899d4e3a81eddfcfa7746d1e4e0dab886ea043644e54339b51f396c087'
-    'aeb6cb2a6a9db56f19023e3dde605256106c193d51e537f99dbb80b365c62443'
-    '8dda04163592f848276632623aceedb9ccf13264ef620828b340a8cdf05056cb'
-    '179cdd6ec837a9b5a629385bfa111def8b6b2ebc9b5988d3f0d6caed5566b6a5'
+    '7a14836b492e16f6ebdbda4270379011a91d36f9b337ae6f76473943c3b8b531'
+    '287f1391334bdf0c5d65b578db202801de6d1ec9aaca88c9f96f9d8864ccc81f'
+    '43fa8aca05679cf43918ef90a7a974642bd2938ad412f49b86c6360eae7df357'
 )
 
 package() {
