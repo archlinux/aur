@@ -1,6 +1,6 @@
 pkgbase = izpack-git
 	pkgdesc = Tool for packaging applications on the Java platform as cross-platform installers (git version)
-	pkgver = 5.1.3.r60.g34385612d
+	pkgver = 5.1.3.r66.g4af48448d
 	pkgrel = 1
 	url = http://izpack.org/
 	arch = any

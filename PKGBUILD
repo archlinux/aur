@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=izpack-git
-pkgver=5.1.3.r60.g34385612d
+pkgver=5.1.3.r66.g4af48448d
 pkgrel=1
 pkgdesc='Tool for packaging applications on the Java platform as cross-platform installers (git version)'
 arch=('any')
@@ -42,7 +42,6 @@ package() {
     local _ver
     _ver="$(find izpack/izpack-dist/target -type f -name 'izpack-dist-*.jar' |
         sort | head -n1 | sed 's/\.jar$//;s/.*izpack-dist-//')"
-    rm -rf "${pkgdir}/opt/izpack"
     printf '%s\n' '0' '1' '1' '1' "${pkgdir}/opt/izpack" \
                   'O' '1' 'Y' '1' 'N' 'N' 'Y' "${pkgdir}/opt/izpack/auto-install.xml" |
     java -jar "izpack/izpack-dist/target/izpack-dist-${_ver}.jar" -console
