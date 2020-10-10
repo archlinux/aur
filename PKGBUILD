@@ -3,7 +3,7 @@
 
 pkgname=ali-git
 pkgdesc="Generate HTTP load and plot the results in real-time (git)"
-pkgver=0.3.4.r1.gece720d
+pkgver=0.4.0.r2.gefc3fa3
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nakabonne/ali"
