@@ -1,6 +1,6 @@
 pkgbase = tracktime
 	pkgdesc = Time tracking library with command line interface.
-	pkgver = 0.9.14
+	pkgver = 0.9.15
 	pkgrel = 1
 	url = https://gitlab.com/sumner/tracktime
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = tracktime
 	depends = python-requests
 	depends = python-tabulate
 	depends = python-yaml
-	source = https://files.pythonhosted.org/packages/source/t/tracktime/tracktime-0.9.14.tar.gz
-	sha256sums = 0db331225420d47c283f40a7a3f2aa8c93706bda16440e79e62c8b34e18acd7e
+	source = https://files.pythonhosted.org/packages/source/t/tracktime/tracktime-0.9.15.tar.gz
+	sha256sums = efc418d33fe31e33556f74b3d0df6146be60d975ba3f567d79a14d44994a8042
 
 pkgname = tracktime
 	depends = python
