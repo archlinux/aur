@@ -1,0 +1,20 @@
+pkgbase = bookletimposer-git
+	pkgdesc = Achieve some basic imposition on PDF documents
+	pkgver = 0.3.r4.g85d66b7
+	pkgrel = 1
+	url = https://kjo.herbesfolles.org/bookletimposer/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = pandoc
+	makedepends = python-distutils-extra
+	makedepends = python-setuptools
+	depends = python-gobject
+	depends = python-pypdf2
+	provides = bookletimposer
+	conflicts = bookletimposer
+	source = git+https://git.codecoop.org/kjo/bookletimposer.git
+	sha256sums = SKIP
+
+pkgname = bookletimposer-git
+
