@@ -5,6 +5,7 @@ pkgbase = vmware-vmrc
 	url = https://www.vmware.com/go/download-vmrc
 	arch = x86_64
 	license = custom:vmware
+	depends = vmware-keymaps
 	source = local://VMware-Remote-Console-11.2.0-16492666.x86_64.bundle
 	source = bootstrap
 	source = config
