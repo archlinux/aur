@@ -2,7 +2,7 @@
 pkgname=tibasicc-git
 pkgver=1.0
 pkgrel=1
-pkgdesc="a TI-BASIC (de-)compiler written in C++ with a decent preprocessor"
+pkgdesc="TI-BASIC (de-)compiler written in C++ with a decent preprocessor"
 arch=("x86_64")
 url="https://github.com/noahvogt/tibasicc.git"
 license=('ISC')
