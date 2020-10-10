@@ -4,9 +4,9 @@ pkgname=biniax2
 pkgver=2.1.30
 _pkgname=biniax
 _pkgver=1.30
-pkgrel=5
+pkgrel=6
 pkgdesc="Arcade game : match two similar fruits, and they will disappear, just clear your way and avoid being blocked"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://${_pkgname}.com/"
 license=('Zlib license')
 depends=('sdl' 'sdl_image' 'sdl_mixer')
@@ -27,16 +27,16 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}"
-  make
+	cd "${srcdir}"
+	make
 }
 
 package() {
-  mkdir -p ${pkgdir}/opt/${pkgname}/
-  mv ${srcdir}/data ${pkgdir}/opt/${pkgname}/data
-  install -DTm755 ${srcdir}/${pkgname}           "${pkgdir}/opt/${pkgname}/${pkgname}"
-  install -DTm644 ${srcdir}/LICENSE.txt          "${pkgdir}/share/licenses/${pkgname}/LICENSE"
-  install -DTm644 ${startdir}/${pkgname}.png     "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${pkgname}.png"
-  install -DTm644 ${startdir}/${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -DTm755 ${startdir}/${pkgname}.sh      "${pkgdir}/usr/bin/${pkgname}"
-  }
+	mkdir -p ${pkgdir}/opt/${pkgname}/
+	mv ${srcdir}/data ${pkgdir}/opt/${pkgname}/data
+	install -DTm755 ${srcdir}/${pkgname}           "${pkgdir}/opt/${pkgname}/${pkgname}"
+	install -DTm644 ${srcdir}/LICENSE.txt          "${pkgdir}/share/licenses/${pkgname}/LICENSE"
+	install -DTm644 ${startdir}/${pkgname}.png     "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${pkgname}.png"
+	install -DTm644 ${startdir}/${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -DTm755 ${startdir}/${pkgname}.sh      "${pkgdir}/usr/bin/${pkgname}"
+}
