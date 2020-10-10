@@ -1,7 +1,7 @@
 pkgbase = tensorflow-cuda-kepler
 	pkgdesc = TensorFlow compiled with Kepler GPU supports (e.g., K20, K40, K80, etc.) only.
 	pkgver = 2.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.tensorflow.org/
 	arch = x86_64
 	license = APACHE
@@ -73,7 +73,7 @@ pkgname = python-tensorflow-cuda-kepler
 	depends = giflib
 	depends = icu
 	depends = libjpeg-turbo
-	depends = tensorflow-cuda
+	depends = tensorflow-cuda-kepler
 	depends = python-termcolor
 	depends = python-astor
 	depends = python-gast

@@ -10,7 +10,7 @@
 pkgbase='tensorflow-cuda-kepler'
 pkgname=('tensorflow-cuda-kepler' 'python-tensorflow-cuda-kepler')
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="TensorFlow compiled with Kepler GPU supports (e.g., K20, K40, K80, etc.) only."
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -205,7 +205,7 @@ package_tensorflow-cuda-kepler() {
 
 package_python-tensorflow-cuda-kepler() {
   depends+=(
-    'tensorflow-cuda' 'python-termcolor' 'python-astor' 'python-gast'
+    'tensorflow-cuda-kepler' 'python-termcolor' 'python-astor' 'python-gast'
     'python-numpy' 'cuda' 'cudnn' 'python-pycuda' 'python-protobuf' 'absl-py'
     'nccl' 'python-h5py' 'python-keras-applications' 'python-keras-preprocessing'
     'python-tensorflow-estimator' 'python-opt_einsum' 'python-astunparse'
