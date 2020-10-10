@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-facebook-container
 	pkgdesc = Browser plugin to containerize Facebook and its affiliates.
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/facebook-container/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = firefox-extension-facebook-container
 	depends = firefox>=52
 	optdepends = firefox-extension-multi-account-containers
 	noextract = ${_plugin_name}-${pkgver}${_plugin_ext}.xpi
-	source = https://addons.mozilla.org/firefox/downloads/file/3548655/facebook_container-2.1.1-fx.xpi
-	sha256sums = b8cca6d366bf1aa601cd8f0e4e6c51443e067e32c62900293aebea58ff11825d
+	source = https://addons.mozilla.org/firefox/downloads/file/3650887/facebook_container-2.1.2-fx.xpi
+	sha256sums = 86c75e90ae6f3f59999406c34229f05d563e024e293dfcabcfea10c75ce76cf7
 
 pkgname = firefox-extension-facebook-container
 

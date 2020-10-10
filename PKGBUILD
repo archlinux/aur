@@ -1,8 +1,8 @@
 # Maintainer: Hezekiah Michael <spiritomb@protonmail.com>
 
 _plugin_name=facebook_container
-_plugin_version=2.1.1
-_plugin_id=3548655
+_plugin_version=2.1.2
+_plugin_id=3650887
 _plugin_ext="-fx"
 pkgdesc="Browser plugin to containerize Facebook and its affiliates."
 license=('MPL')
@@ -24,4 +24,4 @@ package() {
   install -Dm644 ${_plugin_name}-${pkgver}${_plugin_ext}.xpi "${_extension_dest}.xpi"
 }
 
-sha256sums=('b8cca6d366bf1aa601cd8f0e4e6c51443e067e32c62900293aebea58ff11825d')
+sha256sums=('86c75e90ae6f3f59999406c34229f05d563e024e293dfcabcfea10c75ce76cf7')
