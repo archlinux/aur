@@ -1,8 +1,8 @@
 pkgbase = kde-thumbnailer-gimpresources
-	pkgdesc = Plugin for KDE to display GIMP resource files like brushes and patterns as thumbnails.
+	pkgdesc = Plugin for KDE4 to display GIMP resource files like brushes and patterns as thumbnails.
 	pkgver = 2.1.2
 	pkgrel = 2
-	url = http://kde-apps.org/content/show.php/GimpResourcesThumbnailer?content=107128
+	url = https://www.linux-apps.com/p/1081255
 	arch = i686
 	arch = x86_64
 	license = GPL2

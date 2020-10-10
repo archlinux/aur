@@ -3,10 +3,10 @@
 pkgname=kde-thumbnailer-gimpresources
 pkgver=2.1.2
 pkgrel=2
-pkgdesc="Plugin for KDE to display GIMP resource files like brushes and patterns as thumbnails."
+pkgdesc="Plugin for KDE4 to display GIMP resource files like brushes and patterns as thumbnails."
 arch=('i686' 'x86_64')
 license=('GPL2')
-url="http://kde-apps.org/content/show.php/GimpResourcesThumbnailer?content=107128"
+url="https://www.linux-apps.com/p/1081255"
 depends=('kdelibs' 'gimp')
 makedepends=('automoc4' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aclemens/GimpResourcesThumbnailer/archive/${pkgver}.tar.gz")
