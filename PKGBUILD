@@ -2,12 +2,13 @@
 
 pkgname=zipkin
 pkgver=2.21.7
-pkgrel=4
+pkgrel=5
 pkgdesc='Opensource Distributed Tracing System'
 arch=('any')
 url='http://zipkin.io'
 license=('APACHE')
 depends=('java-runtime>=8' 'bash')
+optdepends=('kafka' 'cassandra')
 install='zipkin.install'
 source=(https://search.maven.org/remotecontent?filepath=io/zipkin/zipkin-server/${pkgver}/zipkin-server-${pkgver}-exec.jar
         'zipkin.sh'

@@ -6,5 +6,7 @@ then
     source $ZIPKIN_ENV
 fi
 
-java -jar /usr/share/java/zipkin/zipkin.jar
+JVM_OPTIONS="-Xmx${JVM_XMX:=512M} -Xms${JVM_XMS:=512M} $ZIPKIN_JVM_OPTIONS"
+
+java $JVM_OPTIONS -jar /usr/share/java/zipkin/zipkin.jar
 
