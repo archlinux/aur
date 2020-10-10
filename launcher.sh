@@ -1,7 +1,8 @@
 #!/bin/bash
-export WINEPREFIX="$HOME"/.adobe-reader-11
+export PKGNAME=pkgname
+export WINEPREFIX="$HOME"/.$PKGNAME
 export WINEARCH=win32
-export SOURCE=/usr/share/adobe-reader-11
+export SOURCE=/usr/share/$PKGNAME
 if [ ! -d "$WINEPREFIX" ] ; then
     winetricks winxp
     wineserver -w

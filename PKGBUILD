@@ -7,17 +7,16 @@ arch=(i686 x86_64)
 url="https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html"
 license=('custom')
 depends=(wine winetricks)
-makedepends=()
 source=(
   "ftp://ftp.adobe.com/pub/adobe/reader/win/11.x/11.0.00/en_US/AdbeRdr11000_en_US.msi"
   "ftp://ftp.adobe.com/pub/adobe/reader/win/11.x/11.0.23/misc/AdbeRdrUpd11023.msp"
-  "adobe-reader-11.sh"
-  "adobe-reader-11.desktop"
+  "launcher.sh"
+  "launcher.desktop"
 )
 sha256sums=('1f15c76c6dd92d8e87d379b70c70154fd130a534fe91c693f239160c8104ac68'
             'ad11346cd51f9509a875c2df8fd2fdfdb16b2dd555705471a178f0ba1151f655'
-            '48b98ceec9a8ae31b9a87e904dc29eca023fcb9353783fccd985cb773ffeca73'
-            '01e00f48292a1afa6c9a59e84b319fe8e8d911c4c15bef0810e9334a7bb4e182')
+            'dafdfc4b7611c3663690588ec53c3b9a111b2507f78f6c7b24882d445aa81845'
+            'e207602d3bf35f078fc2bd2163a6e213c5be451a333e95c8c4fbfcc6b2958287')
 
 noextract=()
 options=(!strip)
@@ -37,22 +36,18 @@ build() {
 }
 
 package() {
-  install -m755 -d "$pkgdir"/usr/share/adobe-reader-11 "$pkgdir"/usr/share/adobe-reader-11/Program\ Files "$pkgdir"/usr/share/adobe-reader-11/Program\ Files/Common\ Files "$pkgdir"/usr/share/adobe-reader-11/ProgramData
-  cp -r "$srcdir"/tmp/env/drive_c/Program\ Files/Adobe "$pkgdir"/usr/share/adobe-reader-11/Program\ Files
-  cp -r "$srcdir"/tmp/env/drive_c/Program\ Files/Common\ Files/Adobe "$pkgdir"/usr/share/adobe-reader-11/Program\ Files/Common\ Files
-  cp -r "$srcdir"/tmp/env/drive_c/ProgramData/Adobe "$pkgdir"/usr/share/adobe-reader-11/ProgramData
-  cp -r "$srcdir"/tmp/env/system.reg "$pkgdir"/usr/share/adobe-reader-11
-  install -m755 -d "$pkgdir"/usr/bin
-  install -m755 adobe-reader-11.sh "$pkgdir"/usr/bin/adobe-reader-11
-  install -m755 -d "$pkgdir"/usr/share/applications
-  install -m644 adobe-reader-11.desktop "$pkgdir"/usr/share/applications/adobe-reader-11.desktop
-  install -m755 -d "$pkgdir"/usr/share/icons/hicolor/16x16/apps
-  install -m644 "$srcdir"/tmp/local/icons/hicolor/16x16/apps/F449_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/adobe-reader-11.png
-  install -m755 -d "$pkgdir"/usr/share/icons/hicolor/32x32/apps
-  install -m644 "$srcdir"/tmp/local/icons/hicolor/32x32/apps/F449_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/adobe-reader-11.png
-  install -m755 -d "$pkgdir"/usr/share/icons/hicolor/48x48/apps
-  install -m644 "$srcdir"/tmp/local/icons/hicolor/48x48/apps/F449_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/adobe-reader-11.png
-  install -m755 -d "$pkgdir"/usr/share/icons/hicolor/256x256/apps
-  install -m644 "$srcdir"/tmp/local/icons/hicolor/256x256/apps/F449_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/$pkgname.png
+  install -m755 -d "$pkgdir"/usr/share/$pkgname "$pkgdir"/usr/share/$pkgname/Program\ Files "$pkgdir"/usr/share/$pkgname/Program\ Files/Common\ Files "$pkgdir"/usr/share/$pkgname/ProgramData
+  cp -a "$srcdir"/tmp/env/drive_c/Program\ Files/Adobe "$pkgdir"/usr/share/$pkgname/Program\ Files
+  cp -a "$srcdir"/tmp/env/drive_c/Program\ Files/Common\ Files/Adobe "$pkgdir"/usr/share/$pkgname/Program\ Files/Common\ Files
+  cp -a "$srcdir"/tmp/env/drive_c/ProgramData/Adobe "$pkgdir"/usr/share/$pkgname/ProgramData
+  cp -a "$srcdir"/tmp/env/system.reg "$pkgdir"/usr/share/$pkgname
+  install -Dm755 launcher.sh "$pkgdir"/usr/bin/$pkgname
+  sed -i "s/pkgname/$pkgname/g" "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 launcher.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+  sed -i "s/pkgname/$pkgname/g" "$pkgdir"/usr/share/applications/$pkgname.desktop
+  install -Dm644 "$srcdir"/tmp/local/icons/hicolor/16x16/apps/F449_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/$pkgname.png
+  install -Dm644 "$srcdir"/tmp/local/icons/hicolor/32x32/apps/F449_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/$pkgname.png
+  install -Dm644 "$srcdir"/tmp/local/icons/hicolor/48x48/apps/F449_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/$pkgname.png
+  install -Dm644 "$srcdir"/tmp/local/icons/hicolor/256x256/apps/F449_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/$pkgname.png
   install -Dm644 "$srcdir"/tmp/env/drive_c/Program\ Files/Adobe/Reader\ 11.0/Reader/Legal/ENU/license.html "$pkgdir"/usr/share/licenses/$pkgname/license.html
 }
