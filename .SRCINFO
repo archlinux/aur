@@ -1,5 +1,5 @@
 pkgbase = freewb
-	pkgdesc = Fcitx for Linux
+	pkgdesc = Jidian Wubi for Linux
 	pkgver = 0.1.3
 	pkgrel = 0
 	url = http://arm-ai.org/forum.php?mod=viewthread&tid=39
