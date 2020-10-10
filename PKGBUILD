@@ -1,4 +1,4 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Patched package maintainer: Saren Arterius <saren@wtako.net>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Flamelab <panosfilip@gmail.com
@@ -6,15 +6,15 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('536' '786' '923')
-_merge_requests_to_use=('536') # safe pick
+# available MR: ('536' '786' '923' '1440')
+_merge_requests_to_use=('536' '1440') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.36.6
+pkgver=3.38.1+9+g610db2703
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -32,13 +32,11 @@ groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
 install=$pkgname.install
-_commit=682d4588bc6b2c1826013f98c52cc0b5afccea29  # tags/3.36.6^0
+_commit=610db2703e5495d468d9b9370c587d0bd9c8b7bc  # tags/3.38.1^9
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-	"1126.diff")
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
-            'SKIP'
-            '32661c22298d0c4af9b6b6bb718480ce192f528367f853d9709f74c146b2f8d4')
+            'SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -56,8 +54,14 @@ pick_mr() {
         echo "Reverting $1..."
         git revert "$2" --no-commit
       elif [ "$3" = "patch" ]; then
-        echo "Patching with $2..."
-        patch -Np1 -i ../"$2"
+      	if [ -e ../"$2" ]; then 
+          echo "Patching with $2..."
+          patch -Np1 -i ../"$2"
+        else
+          echo "Downloading $mr as $2 then patching..."
+          curl -O "https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/$mr.diff" -o "$2"
+          patch -Np1 -i "$2"
+        fi
       else
         echo "ERROR: wrong argument given: $2"
       fi
@@ -77,10 +81,10 @@ prepare() {
 
   # git remote add verde https://gitlab.gnome.org/verdre/gnome-shell.git || true
   # git fetch verde
-  #git remote add 3v1n0 https://gitlab.gnome.org/3v1n0/gnome-shell || true
-  #git fetch 3v1n0
-  #git remote add vanvugt https://gitlab.gnome.org/vanvugt/gnome-shell.git || true
-  #git fetch vanvugt
+  # git remote add 3v1n0 https://gitlab.gnome.org/3v1n0/gnome-shell || true
+  # git fetch 3v1n0
+  # git remote add vanvugt https://gitlab.gnome.org/vanvugt/gnome-shell.git || true
+  # git fetch vanvugt
 
   ### Merge Requests
 
@@ -112,15 +116,7 @@ prepare() {
   # Type: 2
   # Status: 1
   # Comment: Crash fix for st_theme_get_custom_stylesheets
-  # pick_mr '536'
-  for mr in "${_merge_requests_to_use[@]}"; do
-    if [ "536" = "$mr" ]; then
-      echo "Downloading then Merging 536..."
-      curl -O "https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/536.diff"
-      patch -Np1 -i 536.diff
-      break
-    fi
-  done
+  pick_mr '536' '536.diff' 'patch' 
 
   # Title: Some fixes for setting key focus of the closeDialog
   # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/786
@@ -136,6 +132,13 @@ prepare() {
   # Comment: Unlock freezes, it hits me too.
   pick_mr '923'
 
+  # Avoid missing/broken app launch animations
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/1440
+  # Type: 3
+  # Status: 2
+  # Comment:
+  pick_mr '1440'
+
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git submodule update
@@ -147,6 +150,6 @@ build() {
 }
 
 package() {
-  depends+=(libmutter-6.so)
+  depends+=(libmutter-7.so)
   DESTDIR="$pkgdir" meson install -C build
 }
