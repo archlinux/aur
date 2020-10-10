@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-pvr-waipu
 	pkgdesc = Waipu.tv PVR Plugin for Kodi
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/flubshi/pvr.waipu
 	arch = any
@@ -12,10 +12,12 @@ pkgbase = kodi-addon-pvr-waipu
 	depends = kodi-addon-script-module-inputstreamhelper
 	provides = kodi-addon-pvr-waipu
 	conflicts = kodi-addon-pvr-waipu
-	source = https://github.com/flubshi/pvr.waipu/archive/0.2.2-Leia.tar.gz
-	source = https://github.com/xbmc/xbmc/archive/18.6-Leia.tar.gz
-	sha256sums = 69ed58c049380aeb432d060be6a20f77f50ae458512cdec7f2d89cd2584f3cf0
-	sha256sums = 47e6d7d4e01dbda92ff83a3e141ac43003e918133e78b3a4b79faff65184711c
+	source = https://github.com/flubshi/pvr.waipu/archive/0.2.3-Leia.tar.gz
+	source = https://github.com/xbmc/xbmc/archive/18.8-Leia.tar.gz
+	source = https://github.com/xbmc/xbmc/commit/8f714dcc7f1a1dfa9b57ef18c3f4accc62cb0652.diff
+	sha256sums = 56c24280789d785f97d3c3a13b7386403c5a3d9e58bd46821ebb3f1332f40f6f
+	sha256sums = 6deb28f725880b1ab6c5920b55ef1190a79b0684ffb30b6e13b199d23a0af296
+	sha256sums = c4ed6c685a3de5633387a8ca79c06141f643c47eace30c614223f9120f72a25a
 
 pkgname = kodi-addon-pvr-waipu
 
