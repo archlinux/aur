@@ -1,7 +1,7 @@
 pkgbase = lc0-blas-git
 	pkgdesc = BLAS version of Leela Chess Zero.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lczero.org/
 	arch = any
 	license = GPLv3

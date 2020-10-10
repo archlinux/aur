@@ -2,7 +2,7 @@
 pkgname=lc0-blas-git
 _pkgname=lc0-blas
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="BLAS version of Leela Chess Zero."
 arch=('any')
 url="https://lczero.org/"
