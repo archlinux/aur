@@ -9,7 +9,7 @@ pkgdesc='OpenVPN 3 Linux client'
 arch=('any')
 url="https://github.com/OpenVPN/$_pkgname"
 license=('AGPL3')
-depends=('glib2>=2.50' 'jsoncpp>=0.10.5' 'libcap-ng>=0.7.5' 'lz4>=1.7.3' 'libutil-linux>=2.23.2')
+depends=('glib2>=2.50' 'jsoncpp>=0.10.5' 'libcap-ng>=0.7.5' 'lz4>=1.7.3' 'util-linux-libs>=2.23.2')
 optdepends=(
   'python>=3.5' 'python-docutils' 'openssl: OpenSSL version' 'mbedtls: mbed TLS version'
   'python-dbus' 'python-gobject'

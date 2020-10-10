@@ -17,7 +17,7 @@ pkgbase = openvpn3
 	depends = jsoncpp>=0.10.5
 	depends = libcap-ng>=0.7.5
 	depends = lz4>=1.7.3
-	depends = libutil-linux>=2.23.2
+	depends = util-linux-libs>=2.23.2
 	optdepends = python>=3.5
 	optdepends = python-docutils
 	optdepends = openssl: OpenSSL version
