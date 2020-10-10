@@ -1,15 +1,16 @@
-# Maintainer:
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+
 pkgname=python-ufoprocessor
 _name=ufoProcessor
 pkgver=1.9.0
 pkgrel=1
-pkgdesc="Python package based on fontTools.designSpaceLib for processing and generating UFO files."
+pkgdesc='fontTools.designSpaceLib based library for processing and generating UFO files'
 arch=('any')
-url="https://github.com/LettError/ufoProcessor"
+url="https://github.com/LettError/$_name"
 license=('MIT')
-depends=('python-fontparts' 'python-mutatormath')
-makedepends=('python-setuptools-scm' 'python-wheel')
+depends=('python-mutatormath' 'python-fontparts')
+makedepends=('python-setuptools' 'python-wheel')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.zip")
 sha256sums=('baa8bd9bbbb11ce004647eb1906105f4d5bfdbc1b3388ca4d36fab57950a415b')
 
@@ -21,6 +22,5 @@ build() {
 package() {
 	cd "$_name-$pkgver"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
