@@ -1,6 +1,7 @@
 # Maintainer: Fan Jiang <i@fanjiang.me>
 
-# You can get the software from https://www.vmware.com/go/download-vmrc
+# WARNING: You can get the software bundle from https://www.vmware.com/go/download-vmrc
+# And put it under the same directory as this PKGBUILD!
 
 pkgname=vmware-vmrc
 pkgver=11.2.0
@@ -9,9 +10,10 @@ pkgdesc="VMWare VMRC Client."
 arch=('x86_64')
 url="https://www.vmware.com/go/download-vmrc"
 license=('custom:vmware')
-depends=()
+depends=('vmware-keymaps')
 optdepends=()
 
+# Note you can change this path to match a newer (or older) version of VMRC
 source=("local://VMware-Remote-Console-11.2.0-16492666.x86_64.bundle"
         "bootstrap"
         "config")
@@ -31,6 +33,10 @@ package ()
     local vmware_installer_version=$(cat "$srcdir/files/vmware-installer/manifest.xml" | grep -oPm1 "(?<=<version>)[^<]+")
     # mkdir -p "$pkgdir/var/log"
     # mkdir -p "$pkgdir/etc/init.d"
+
+    # Depend on vmware-keymaps
+    rm -r $srcdir/files/vmware-vmrc-app/lib/xkeymap
+
     cd "$srcdir/files"
     mkdir -p "$pkgdir/usr/share" "$pkgdir/usr/bin" "$pkgdir/usr/lib/vmware" "$pkgdir/usr/lib/vmware/setup"
     cp -r \
