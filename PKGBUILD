@@ -1,9 +1,9 @@
 # Maintainer: S Stewart <tda@null.net>
 # Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
 pkgname="gdlauncher"
-pkgver="1.0.10"
+pkgver="1.0.11"
 pkgrel=1
-commitsha="15ea210d610611cf6effe0d3c7aa1bccceecbb6e"
+commitsha="8c3569a63f240da3abb1ea4aba4f4597b1805bd4"
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
@@ -20,7 +20,7 @@ prepare() {
     git checkout origin/master
     git switch master
     git reset --hard ${commitsha}
-    
+
     # generate .desktop
     gendesk --pkgname "GDLauncher" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
     mv "GDLauncher.desktop" "${pkgname}.desktop"
