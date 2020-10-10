@@ -1,0 +1,56 @@
+From 716345897d7dd4306b39c0ece4df783817f5e93e Mon Sep 17 00:00:00 2001
+From: soloturn <soloturn@gmail.com>
+Date: Sat, 1 Aug 2020 16:21:07 +0200
+Subject: [PATCH] arch aur pachtes
+
+---
+ utils/build-presets.ini | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/utils/build-presets.ini b/utils/build-presets.ini
+index 7d9a5c264c8..5dcadf391c3 100644
+--- a/utils/build-presets.ini
++++ b/utils/build-presets.ini
+@@ -783,12 +783,10 @@ llbuild
+ swiftpm
+ swift-driver
+ xctest
+-libicu
+ libcxx
+ 
+ dash-dash
+ 
+-build-ninja
+ install-llvm
+ install-swift
+ install-lldb
+@@ -796,8 +794,7 @@ install-llbuild
+ install-swiftpm
+ install-swift-driver
+ install-xctest
+-install-libicu
+-install-prefix=/usr
++install-prefix=/usr/lib/swift
+ install-libcxx
+ install-sourcekit-lsp
+ build-swift-static-stdlib
+@@ -809,14 +806,13 @@ build-swift-stdlib-unittest-extra
+ 
+ test-installable-package
+ 
+-# Build the benchmarks against the toolchain.
+-toolchain-benchmarks
++# does not work outside /usr, Build the benchmarks against the toolchain.
++# toolchain-benchmarks
+ 
+ # Path to the root of the installation filesystem.
+ install-destdir=%(install_destdir)s
+ 
+ # Path to the .tar.gz package we would create.
+-installable-package=%(installable_package)s
+ 
+ [preset: buildbot_linux]
+ mixin-preset=mixin_linux_installation
+-- 
+2.28.0
+

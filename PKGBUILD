@@ -5,18 +5,18 @@
 
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=5.3-RELEASE
+#_swiftver=5.3-RELEASE
 #pkgver=${_swiftver//-RELEASE/}
 #_swiftver=5.3-DEVELOPMENT-SNAPSHOT-2020-07-04-a
-#_swiftver=DEVELOPMENT-SNAPSHOT-2020-06-24-a
-pkgver=5.3
+_swiftver=DEVELOPMENT-SNAPSHOT-2020-09-28-a
+pkgver=5.4
 pkgrel=1
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
 license=('apache')
 depends=('icu' 'libedit' 'libxml2' 'python' 'libbsd' 'ncurses' )
-makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'python2' 'swig')
+makedepends=('clang' 'cmake' 'git' 'ninja' 'python-six' 'python2' 'rsync' 'swig')
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
     "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
@@ -27,7 +27,7 @@ source=(
     "swift-corelibs-libdispatch-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-package-manager-${_swiftver}.tar.gz::https://github.com/apple/swift-package-manager/archive/swift-${_swiftver}.tar.gz"
-    '0001-not-build-ninja-icu.patch'
+    '0001-arch-aur-pachtes.patch'
 )
 sha256sums=(
     'SKIP'
@@ -62,7 +62,7 @@ prepare() {
     mv swift-swift-${_swiftver} swift
     mv swift-package-manager-swift-${_swiftver} swiftpm
 
-    ( cd swift && patch -p1 -i "$srcdir/0001-not-build-ninja-icu.patch" )
+    ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
 }
 
 _common_build_params=(
@@ -92,18 +92,18 @@ build() {
     # by default in /etc/makepkg.conf this is "-D_FORTIFY_SOURCE=2"
     # which will break `compiler-rt`, so unset
     unset CPPFLAGS
-    python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="$srcdir/build" installable_package="$srcdir/swift-arch-pkg.tar.gz"
+    python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="$srcdir/build"
 }
 
 check() {
     cd "$srcdir/swift"
-    _build_script_wrapper -R -t
+#    _build_script_wrapper -R -t
 }
 
 package_swift() {
     pkgdesc='The Swift programming language compiler and tools'
     provides=('swift-language')
-    conflicts=('swift-language-git' 'swift-git' 'swift-bin')
+    conflicts=('swift-git' 'swift-bin')
     optdepends=('swift-lldb: Swift REPL and debugger')
 
     cd "$srcdir/swift"
@@ -138,7 +138,7 @@ package_swift() {
 
 package_swift-lldb() {
     pkgdesc='The Swift programming language debugger (LLDB) and REPL'
-    depends=('swift' 'python2-six')
+    depends=('swift')
     provides=('lldb')
     conflicts=('lldb')
     options=('!strip')  # Don't strip repl_swift -- we need its symbols
