@@ -1,0 +1,9 @@
+post_install() {
+	echo "==> To interact with the CIE smartcard the pcsclite daemon has to be started, with e.g."
+	echo "==> # systemctl start pcscd.service"
+}
+
+post_upgrade() {
+	post_install
+}
+

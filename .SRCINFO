@@ -1,0 +1,18 @@
+pkgbase = cie-middleware-git
+	pkgdesc = Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fork)
+	pkgver = r68.78d2e63
+	pkgrel = 1
+	url = https://developers.italia.it/it/cie
+	install = cie-middleware.install
+	arch = any
+	license = BSD
+	makedepends = gradle
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = pcsclite
+	source = cie-middleware::git+https://github.com/M0Rf30/cie-middleware-linux
+	md5sums = SKIP
+
+pkgname = cie-middleware-git
+
