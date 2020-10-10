@@ -15,6 +15,7 @@ pkgbase = dwm-supermario9590-git
 	depends = freetype2
 	depends = st
 	depends = dmenu
+	depends = emacs
 	provides = dwm
 	conflicts = dwm
 	source = git+https://gitlab.com/supermario9590/dwm-supermario9590.git
