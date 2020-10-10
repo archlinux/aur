@@ -1,0 +1,30 @@
+pkgbase = flast-gecko-nightly
+	pkgdesc = Standalone Web Browser from FascodeNetwork — Nightly build (ja)
+	pkgver = 83.0a1.202010101054
+	pkgrel = 1
+	url = https://github.com/FascodeNet/flast-gecko/
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = dbus-glib
+	depends = gtk3
+	depends = libxt
+	depends = nss
+	depends = mime-types
+	optdepends = pulseaudio: audio support
+	optdepends = ffmpeg: h.264 video
+	optdepends = hunspell: spell checking
+	optdepends = hyphen: hyphenation
+	optdepends = libnotify: notification integration
+	optdepends = networkmanager: location detection via available WiFi networks
+	optdepends = speech-dispatcher: text-to-speech
+	source = flast-gecko-nightly.desktop
+	source = policies.json
+	sha512sums = SKIP
+	sha512sums = SKIP
+	source_x86_64 = 202010101054-firefox-83.0a1.ja.linux-x86_64.tar.bz2::https://github.com/FascodeNet/flast-gecko/releases/latest/download//firefox.ja.linux-x86_64.tar.bz2
+	sha512sums_x86_64 = SKIP
+
+pkgname = flast-gecko-nightly
+
