@@ -3,15 +3,15 @@
 
 _pkgname=openvpn3-linux
 pkgname=openvpn3-git
-pkgver=9_beta.r27.gb9331ea
-pkgrel=2
+pkgver=10_beta.r19.g9b4d428
+pkgrel=1
 pkgdesc='OpenVPN 3 Linux client'
 arch=('any')
 provides=('openvpn3')
 conflicts=('openvpn3')
 url="https://github.com/OpenVPN/$_pkgname"
 license=('AGPL3')
-depends=('glib2>=2.50' 'jsoncpp>=0.10.5' 'libcap-ng>=0.7.5' 'lz4>=1.7.3' 'libutil-linux>=2.23.2')
+depends=('glib2>=2.50' 'jsoncpp>=0.10.5' 'libcap-ng>=0.7.5' 'lz4>=1.7.3' 'util-linux-libs>=2.23.2')
 optdepends=(
   'python>=3.5' 'python-docutils' 'openssl: OpenSSL version' 'mbedtls: mbed TLS version'
   'python-dbus' 'python-gobject'
