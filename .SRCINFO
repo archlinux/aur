@@ -1,20 +1,20 @@
 pkgbase = linphone-desktop-appimage
 	pkgdesc = A free VoIP and video softphone based on the SIP protocol (AppImage version)
-	pkgver = 4.3.0.alpha.3
+	pkgver = 4.3.0.alpha.25
 	pkgrel = 1
 	url = https://www.linphone.org
 	arch = x86_64
 	license = GPL2
 	depends = fuse2
-	provides = linphone-desktop=4.3.0.alpha.3
+	provides = linphone-desktop=4.3.0.alpha.25
 	conflicts = linphone-desktop-all
 	conflicts = linphone-desktop-git
 	conflicts = linphone-desktop-all-git
 	conflicts = linphone-git
 	options = !strip
-	source = https://www.linphone.org/snapshots/AppImages/Linphone-4.3.0-alpha.3+c3b8af83.AppImage
+	source = https://www.linphone.org/snapshots/AppImages/Linphone-4.3.0-alpha.25+721b191f.AppImage
 	source = linphone.sh
-	sha256sums = e811e0fd021a406044aa0f7cdbb93fd9b70448ce23c8d57adf1af87cbfa4e3e1
+	sha256sums = a9dc03c83d1565ff8757aef50bb54606b597c01fcb74083113a235956716ad51
 	sha256sums = 1238a372faa4d6de8569b508c95ac39b7d21d3619660740b3ac4306642076bd2
 
 pkgname = linphone-desktop-appimage
