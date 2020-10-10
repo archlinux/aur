@@ -3,7 +3,7 @@
 
 pkgname=pd-faustgen2
 prjname=pd-faustgen
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="The FAUST compiler embedded in a Pd external"
 arch=("i686" "x86_64")
@@ -12,7 +12,7 @@ url="https://github.com/agraef/$prjname"
 depends=('pd' 'llvm-libs')
 makedepends=('faust' 'cmake' 'llvm')
 source=("https://github.com/agraef/$prjname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('6ded12b7b0e2d85c1e24ecd6c105ca5e')
+md5sums=('1f1304a9790ee127e2f59ce92812c5d7')
 
 build() {
      cd "$pkgname-$pkgver"
