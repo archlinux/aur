@@ -1,8 +1,8 @@
 pkgbase = koalalauncher
 	pkgdesc = Koala Launcher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
-	url = https://koalalauncher.netlify.app
+	url = https://koalalauncher.com
 	arch = x86_64
 	license = GPL3
 	makedepends = gendesk
