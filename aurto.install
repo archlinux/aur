@@ -2,6 +2,9 @@
 set -eu
 
 pre_remove() {
-  # aurto self cleanup
-  /usr/lib/aurto/install remove
+  # If pacman.conf is still configured to use aurto warn that removing the package will break pacman
+  if grep -q '^Include = /etc/pacman.d/aurto$' /etc/pacman.conf; then
+    echo -en "\\e[33mWarning: Aurto repo is still configured. "
+    echo -e "Remove \"Include = /etc/pacman.d/aurto\" from /etc/pacman.conf\\e[39m" >&2
+  fi
 }
