@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /usr/local/opengotha/
+cd /opt/opengotha/
 java -jar opengotha.jar

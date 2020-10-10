@@ -1,0 +1,8 @@
+post_upgrade() {
+      if (( $(vercmp $2 3.50) < 0)); then
+          echo "Warning: opengotha changed its save files directory."
+          echo "old files are in /usr/local/opengotha/tournamentfiles/"
+          echo "new directory is /opt/opengotha/tournamentfiles/work/"
+      fi
+}
+
