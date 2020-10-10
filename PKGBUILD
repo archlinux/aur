@@ -10,8 +10,8 @@ url=https://www.realtimetrains.co.uk
 source=($pkgname.png
         $pkgname.desktop)
 makedepends=(nodejs nodejs-nativefier npm)
-sha256sums=('e514c51e5823536e3c1e992d0adfea94d6bd8ef7b2460c153fecd9c879ab303d'
-            '37a1eb39c01579a72e5da4837abb44f7dd0e6b660b89dc66cc752e21c34cebd8')
+sha256sums=('SKIP'
+            'SKIP')
 
 _instname=realtimetrains
 
