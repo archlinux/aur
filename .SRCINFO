@@ -1,10 +1,11 @@
 pkgbase = trigger
 	pkgdesc = Free OpenGL rally car racing game
 	pkgver = 0.6.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/trigger-rally/
 	install = trigger.install
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	makedepends = glew
 	makedepends = tinyxml2

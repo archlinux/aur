@@ -1,12 +1,13 @@
-# Maintainer: Michal Wojdyla <micwoj9292 at gmail dot com>
+# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Michal Wojdyla <micwoj9292 at gmail dot com>
 # Contributor: William Grieshaber <me@zee.li>
 # Contributor: Joao Cordeiro <jlcordeiro at gmail dot com>
 # Contributor: Joekey joekey1@gmail.com
 pkgname=trigger
 pkgver=0.6.6.1 
-pkgrel=1
+pkgrel=2
 pkgdesc="Free OpenGL rally car racing game"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://sourceforge.net/projects/trigger-rally/"
 license=('GPL2')
 conflicts=()
