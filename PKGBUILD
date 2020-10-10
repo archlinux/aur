@@ -3,7 +3,7 @@
 pkgname=netease-music-tui-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="netease cloud music terminal client by rust"
 arch=('x86_64')
 url="https://github.com/betta-cyber/netease-music-tui"
