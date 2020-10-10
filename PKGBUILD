@@ -21,17 +21,6 @@ sha256sums=('SKIP'
             '4ce1e90690282f98e4828e11576fbd61be65e97a2cdae6c7eac7035ea5ee53e5'
             '170b0e5d548416c0adb9df4e6941bea6bc33d843419c997e45ecaf9e36a58f38')
 
-prepare() {
-  cd mdadm
-
-  git cherry-pick -n \
-    a4f7290c20c2ff78328c9db0b18029165cfb05b2 \
-    7039d1f8200b9599b23db5953934fdb43b0442e0 \
-    486720e0c2418e7e2e0a16221f7c42a308622254 \
-    9f4218274cd4a1e1f356a1617f9a1d09960cf255 \
-    761e3bd9f5e3aafa95ad3ae50a637dc67c8774f0
-}
-
 build() {
   cd mdadm
 
