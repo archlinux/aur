@@ -1,0 +1,24 @@
+pkgbase = mdadm-kernel.org-git
+	pkgdesc = A tool for managing/monitoring Linux md device arrays, also known as Software RAID. Uses the kernel.org git repo as the upstream
+	pkgver = mdadm.4.1.r89.g5f41845
+	pkgrel = 1
+	url = https://git.kernel.org/cgit/utils/mdadm
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	provides = mdadm
+	conflicts = mdadm
+	conflicts = mkinitcpio<0.7
+	replaces = raidtools
+	backup = etc/mdadm.conf
+	source = git+https://git.kernel.org/pub/scm/utils/mdadm/mdadm.git
+	source = mdadm.conf
+	source = mdadm_udev_install
+	validpgpkeys = 6A86B80E1D22F21D0B26BA75397D82E0531A9C91
+	sha256sums = SKIP
+	sha256sums = 4ce1e90690282f98e4828e11576fbd61be65e97a2cdae6c7eac7035ea5ee53e5
+	sha256sums = 170b0e5d548416c0adb9df4e6941bea6bc33d843419c997e45ecaf9e36a58f38
+
+pkgname = mdadm-kernel.org-git
+
