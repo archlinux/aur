@@ -1,11 +1,11 @@
 pkgbase = freetype2-git
 	pkgdesc = Font rasterization library (from git)
-	pkgver = 2.10.2+p40+gb7c467b6e
+	pkgver = 2.10.3+p0+g337670af0
 	pkgrel = 1
 	epoch = 1
 	url = https://www.freetype.org/
-	arch = i686
 	arch = x86_64
+	arch = i686
 	license = GPL
 	makedepends = libx11
 	makedepends = git
@@ -26,17 +26,17 @@ pkgbase = freetype2-git
 	validpgpkeys = 58E0C111E39F5408C5D3EC76C1A60EACE707FDA5
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 44395c31c36255ea0e5c96c03df92cc975e55e28b0c80fbb0da3d9f05e50a150
-	sha256sums = 67abb3c86fa9a72c5f78bb390c6e09f4277a76e84a2a291798ed6b5362c2fcf7
-	sha256sums = b92a8421ea4ab3e7ee7173f7de51d98bff376663662772a952e7a4cad4bf10f3
-	sha256sums = df0c73f02040c64bed479e41b86da7a4890d1ab31eab20c75e850aab1b86250b
-	sha256sums = 1b7d38b082d32b19d5fd21c17c9ae187ada00f9c978dc2877edebbe19a9da9ed
+	sha256sums = f41df4f336d5e82e58733c7a4594476c9216cfc85c096327745a7e1b559e17e1
+	sha256sums = dc77c1cfee4bf8e7e0690628c95d211df09e0d0750e4c8f075b78b5f105514f7
+	sha256sums = 21a62bc12b848320c686d602d8d4e3bcd51294a9def4dc9c301736e077b59f3f
+	sha256sums = 266384222f87a02fb02b2179828f6c26fe6d7b1fd09d1f7e3734e7fcb09cda2e
+	sha256sums = 04e622f514bc0ae6ecd21c8050115e2356058fcb49bc21d0f54358972f5d5639
 	sha256sums = f7f8e09c44f7552c883846e9a6a1efc50377c4932234e74adc4a8ff750606467
 
 pkgname = freetype2-git
 	install = freetype2.install
 	provides = libfreetype.so
-	provides = freetype2=2.10.2+p40+gb7c467b6e
+	provides = freetype2=2.10.3+p0+g337670af0
 	conflicts = freetype2
 	backup = etc/profile.d/freetype2.sh
 
@@ -44,12 +44,12 @@ pkgname = freetype2-demos-git
 	pkgdesc = Freetype tools and demos (from git)
 	depends = freetype2-git
 	depends = libx11
-	provides = freetype2-demos=2.10.2+p40+gb7c467b6e
+	provides = freetype2-demos=2.10.3+p0+g337670af0
 	conflicts = freetype2-demos
 
 pkgname = freetype2-docs-git
 	pkgdesc = Freetype documentation (from git)
 	depends = freetype2-git
-	provides = freetype2-docs=2.10.2+p40+gb7c467b6e
+	provides = freetype2-docs=2.10.3+p0+g337670af0
 	conflicts = freetype2-docs
 

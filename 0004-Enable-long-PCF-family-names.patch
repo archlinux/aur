@@ -1,14 +1,14 @@
-From ee8a9f58fb102d85cd0f473489094d9624c00705 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Sun, 14 May 2017 18:09:31 +0200
-Subject: [PATCH 4/5] Enable long PCF family names
+Subject: [PATCH] Enable long PCF family names
 
 ---
  include/freetype/config/ftoption.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 6fc26a0bb..776a7e938 100644
+index acb4d6d6a..efa13b9c6 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
 @@ -861,7 +861,7 @@ FT_BEGIN_HEADER
@@ -20,6 +20,3 @@ index 6fc26a0bb..776a7e938 100644
  
  
    /*************************************************************************/
--- 
-2.27.0
-

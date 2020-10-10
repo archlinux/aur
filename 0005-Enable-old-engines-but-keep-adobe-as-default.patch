@@ -1,7 +1,7 @@
-From 4a9da1400b53567f30effea451b7531338e0a049 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Sat, 16 Dec 2017 23:08:02 +0100
-Subject: [PATCH 5/5] Enable old engines, but keep adobe as default
+Subject: [PATCH] Enable old engines, but keep adobe as default
 
 ---
  include/freetype/config/ftoption.h | 4 ++--
@@ -11,7 +11,7 @@ Subject: [PATCH 5/5] Enable old engines, but keep adobe as default
  4 files changed, 2 insertions(+), 14 deletions(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 776a7e938..71d9fba3c 100644
+index efa13b9c6..f3b35758c 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
 @@ -792,7 +792,7 @@ FT_BEGIN_HEADER
@@ -33,10 +33,10 @@ index 776a7e938..71d9fba3c 100644
  
    /*************************************************************************/
 diff --git a/src/cff/cffobjs.c b/src/cff/cffobjs.c
-index 5e5831568..c66857037 100644
+index d555d5235..418c0c0ae 100644
 --- a/src/cff/cffobjs.c
 +++ b/src/cff/cffobjs.c
-@@ -1163,11 +1163,7 @@
+@@ -1174,11 +1174,7 @@
  
  
      /* set default property values, cf. `ftcffdrv.h' */
@@ -49,7 +49,7 @@ index 5e5831568..c66857037 100644
      driver->no_stem_darkening = TRUE;
  
 diff --git a/src/cid/cidobjs.c b/src/cid/cidobjs.c
-index 67dae5e1a..11ed32228 100644
+index 04b295eb8..53a8f1554 100644
 --- a/src/cid/cidobjs.c
 +++ b/src/cid/cidobjs.c
 @@ -479,11 +479,7 @@
@@ -65,10 +65,10 @@ index 67dae5e1a..11ed32228 100644
      driver->no_stem_darkening = TRUE;
  
 diff --git a/src/type1/t1objs.c b/src/type1/t1objs.c
-index ff2786ba2..fceb7bbfc 100644
+index 3b918b733..d85bf5c64 100644
 --- a/src/type1/t1objs.c
 +++ b/src/type1/t1objs.c
-@@ -599,11 +599,7 @@
+@@ -598,11 +598,7 @@
  
  
      /* set default property values, cf. `ftt1drv.h' */
@@ -80,6 +80,3 @@ index ff2786ba2..fceb7bbfc 100644
  
      driver->no_stem_darkening = TRUE;
  
--- 
-2.27.0
-
