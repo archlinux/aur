@@ -1,6 +1,6 @@
 # Maintainer: Noah Vogt <noahjosua.vogt@gmail.com>
 pkgname=tibasicc-git
-pkgver=1.0
+pkgver=1.r1.gae0e4e1
 pkgrel=1
 pkgdesc="TI-BASIC (de-)compiler written in C++ with a decent preprocessor"
 arch=("x86_64")
@@ -18,7 +18,7 @@ pkgver() {
 }
 
 build() {
-	cd tibasicc 
+	cd $(echo $pkgname | sed 's/-.*$//') 
 	make
 }
 
