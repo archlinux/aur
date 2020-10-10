@@ -1,6 +1,6 @@
 pkgbase = python-pyautogui
 	pkgdesc = A cross-platform GUI automation Python module for human beings
-	pkgver = 0.9.51
+	pkgver = 0.9.52
 	pkgrel = 1
 	url = https://github.com/asweigart/pyautogui
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-pyautogui
 	depends = python-pyscreeze
 	depends = python-pytweening
 	depends = python-mouseinfo
-	source = https://pypi.org/packages/source/P/PyAutoGUI/PyAutoGUI-0.9.51.tar.gz
-	sha256sums = 2ca9b44cdde3f2c18a67b00301cd8a1262853a68b8045d557067b8ac979affda
+	source = https://pypi.org/packages/source/P/PyAutoGUI/PyAutoGUI-0.9.52.tar.gz
+	sha256sums = a486cb6b818bcbcdf98b48d010c7cee964134fa394b756e8ce6e50d43b58ecc8
 
 pkgname = python-pyautogui
 
