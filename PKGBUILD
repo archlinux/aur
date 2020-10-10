@@ -1,33 +1,31 @@
-# Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
+# Maintainer: Bruno Pagani <archange@archlinux.org>
 
 _pkgname=mpd
 pkgname=${_pkgname}-minimal
-pkgver=0.21.20
+pkgver=0.22
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback through socket connection as user."
 arch=(i686 x86_64 armv7h)
 url="https://www.musicpd.org/"
 license=(GPL)
-depends=(alsa-lib flac icu libmpdclient systemd-libs zlib)
-makedepends=(boost meson)
-provides=("${_pkgname}=$pkgver")
-conflicts=("${_pkgname}")
+depends=(alsa-lib flac icu libmpdclient liburing systemd-libs zlib)
+makedepends=(boost meson python-sphinx systemd)
+provides=("${_pkgname}=${pkgver}")
+conflicts=(${_pkgname})
 source=("${url}/download/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha256sums=(422ef0a996d961f3ebc6856395f3a855b45fa0059910e878fb98281007e510e1 SKIP)
+sha256sums=(7de742d925d01bf52685cc6cbb31fdeb671e4992a448720897ef706e57e39076 SKIP)
 validpgpkeys=(0392335A78083894A4301C43236E8A58C6DB4512) # Max Kellermann <max@musicpd.org>
 
-prepare() {
-    cd ${_pkgname}-${pkgver}
-    rm -rf build
-    install -d build
-}
-
 build() {
-    cd ${_pkgname}-${pkgver}/build
-    _opts=('-Ddocumentation=false'
+    cd ${_pkgname}-${pkgver}
+    sed -i "s|get_option('html_manual')|get_option('html_manual') and not get_option('manpages')|" doc/meson.build
+    _opts=('-Ddocumentation=enabled'
+           '-Dhtml_manual=false'
+           '-Dmanpages=true'
            '-Dtest=false'
            '-Dsyslog=disabled'
            '-Dinotify=false'
+           '-Dio_uring=enabled'
            '-Ddaemon=true'
            '-Dsystemd=enabled'
            '-Dtcp=false'
@@ -104,17 +102,15 @@ build() {
            '-Dzeroconf=disabled'
     )
 
-    arch-meson .. ${_opts[@]}
-    ninja
+    arch-meson ${_opts[@]} build
+    ninja -C build
 }
 
 package() {
-    cd ${_pkgname}-${pkgver}/build
-    DESTDIR="${pkgdir}" ninja install
-    install -Dm644 ../doc/mpdconf.example "${pkgdir}"/usr/share/doc/mpd/mpdconf.example
-    install -Dm644 ../doc/mpd.conf.5 "${pkgdir}"/usr/share/man/man5/mpd.conf.5
-    install -Dm644 ../doc/mpd.1 "${pkgdir}"/usr/share/man/man1/mpd.1
+    cd ${_pkgname}-${pkgver}
+    DESTDIR="${pkgdir}" ninja -C build install
+    install -Dm644 doc/mpdconf.example -t "${pkgdir}"/usr/share/doc/mpd/
     # Remove system services and clean user one
     rm -rf "${pkgdir}"/usr/lib/systemd/system/
-    sed -e 's/network.target //g' -e 's/AF_INET AF_INET6 AF_UNIX AF_NETLINK/AF_UNIX/g' -i "${pkgdir}"/usr/lib/systemd/user/mpd.service
+    sed -e 's/After=network.target /After=/g' -e 's/AF_INET AF_INET6 AF_UNIX AF_NETLINK/AF_UNIX/g' -i "${pkgdir}"/usr/lib/systemd/user/mpd.service
 }
