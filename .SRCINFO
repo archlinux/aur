@@ -1,0 +1,19 @@
+pkgbase = shticker-book-rewritten
+	pkgdesc = Custom launcher and tool for the Toontown Rewritten MMORPG
+	pkgver = 1.2.1.1
+	pkgrel = 1
+	url = https://github.com/CrankySupertoon/shticker-book-rewritten
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	depends = bzip2
+	depends = qt5-base
+	depends = qt5-webengine
+	conflicts = shticker-book-rewritten-git
+	source = 1.2.1.1.zip::https://github.com/CrankySupertoon/shticker-book-rewritten/archive/v1.2.1.1.zip
+	md5sums = SKIP
+
+pkgname = shticker-book-rewritten
+
