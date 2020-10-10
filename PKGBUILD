@@ -35,7 +35,6 @@ check() {
 
 package() {
     # install
-    rm -rf "${pkgdir}/opt/izpack"
     printf '%s\n' '0' '1' '1' '1' "${pkgdir}/opt/izpack" \
                   'O' '1' 'Y' '1' 'N' 'N' 'Y' "${pkgdir}/opt/izpack/auto-install.xml" |
     java -jar "${pkgname}-${pkgname}-${pkgver}/izpack-dist/target/izpack-dist-${pkgver}.jar" -console
