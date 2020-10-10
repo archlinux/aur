@@ -1,0 +1,20 @@
+pkgbase = x11iraf-git
+	pkgdesc = X11/GUI development utilities and applications developed by the IRAF Project
+	pkgver = r92.8f45f2f
+	pkgrel = 1
+	url = https://github.com/iraf-community/x11iraf
+	install = x11iraf.install
+	arch = i686
+	arch = x86_64
+	license = custum
+	makedepends = git
+	depends = libxaw
+	depends = libxmu
+	depends = tcl
+	depends = xaw3d
+	depends = libxpm
+	source = git+https://github.com/iraf-community/x11iraf
+	md5sums = SKIP
+
+pkgname = x11iraf-git
+
