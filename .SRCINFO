@@ -1,0 +1,15 @@
+pkgbase = bashbc-git
+	pkgdesc = Command-line calculator in pure BASH
+	pkgver = r3.ec9133d
+	pkgrel = 1
+	url = https://github.com/bluebat/.bash
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = bashbc
+	conflicts = bashbc
+	source = bashbc::git+https://github.com/bluebat/.bash.git
+	sha256sums = SKIP
+
+pkgname = bashbc-git
+
