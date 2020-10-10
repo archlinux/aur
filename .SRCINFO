@@ -1,12 +1,11 @@
 pkgbase = python2-xmltramp
 	pkgdesc = xmltramp is a simple Pythonic API for working with XML documentation
 	pkgver = 2.18
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.aaronsw.com/2002/xmltramp/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = python2-distribute
 	depends = python2
 	source = http://www.aaronsw.com/2002/xmltramp/xmltramp.py
 	md5sums = 12d232c0bd6ef8ffbd16da760ad0ba6f

@@ -1,9 +1,8 @@
 pkgname=python2-xmltramp
 pkgver=2.18
-pkgrel=2
+pkgrel=3
 pkgdesc="xmltramp is a simple Pythonic API for working with XML documentation"
 arch=('i686' 'x86_64')
-makedepends=('python2-distribute')
 url="http://www.aaronsw.com/2002/xmltramp/"
 license=('GPL2')
 depends=('python2')
