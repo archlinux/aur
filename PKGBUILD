@@ -2,7 +2,7 @@
 # Contributor: Ivan Naumeiko <Ivan.Naumeiko  AT gmail DOT com>
 
 pkgname=coolreader
-pkgver=3.2.39
+pkgver=3.2.49
 pkgrel=1
 pkgdesc="Fast and small XML/CSS based eBook reader"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(hicolor-icon-theme qt5-base)
 makedepends=(cmake qt5-tools)
 source=(https://github.com/buggins/coolreader/archive/cr$pkgver/$pkgname-$pkgver.tar.gz
         cr3.appdata.xml)
-sha256sums=('c3fca255e887b745a684b4402f74f560ba2dd73229bbca5416bbd5cb8635da28'
+sha256sums=('7354bfc78d1b2899dcb35ae73b19ab7a622bedc2d6a9d62831f249537590bfc6'
             '9d868cfd61b686b5a398797819367f16d7a65f1f5420441fb34c8d39236f7382')
 
 prepare() {
