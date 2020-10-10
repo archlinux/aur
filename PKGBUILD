@@ -1,20 +1,20 @@
 # Maintainer: Saren Arterius <saren@wtako.net>
 # Maintainer: Térence Clastres <t.clastres@gmail.com>
 
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Maintainer: Ionut Biru <ibiru@archlinux.org>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 
 ### MERGE REQUESTS SELECTION
 
-# Merge Requests List: ('429' '493' '579' '983' '798' '1267' '1360' '1359')
-_merge_requests_to_use=('1267' '1360' '1359') # safe pick
+# Merge Requests List: ('579' '1309' '1050')
+_merge_requests_to_use=('1050' '1309') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.36.6
+pkgver=3.38.1+2+g103d79877
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -25,22 +25,19 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanber
          gnome-settings-daemon libgudev libinput pipewire xorg-server-xwayland)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server sysprof)
 checkdepends=(xorg-server-xvfb)
-provides=(mutter mutter-781835-workaround libmutter-6.so)
+provides=(mutter mutter-781835-workaround libmutter-7.so)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=7d1e9e77a914d71b902ba2dd8c2f51a16000b908  # tags/3.36.6^0
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-	"fix_clutter_actor_set_allocation_spam.patch")
-sha256sums=('SKIP'
-            '9b2a5c4ab0e8c5e9a54fddc7461a85455055b175af9a7c89b0e16f30a939fa42')
+_commit=103d798775de27bce10fc8827b2b7b5f79fb2ff7 # tags/3.38.1^2
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
   git describe --tags | sed 's/-/+/g'
 }
-
 pick_mr() {
   for mr in "${_merge_requests_to_use[@]}"; do
     if [ "$1" = "$mr" ]; then
@@ -52,8 +49,14 @@ pick_mr() {
         echo "Reverting $1..."
         git revert "$2" --no-commit
       elif [ "$3" = "patch" ]; then
-        echo "Patching with $2..."
-        patch -Np1 -i ../"$2"
+      	if [ -e ../"$2" ]; then 
+          echo "Patching with $2..."
+          patch -Np1 -i ../"$2"
+        else
+          echo "Downloading $mr as $2 then patching..."
+          curl -O "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/$mr.diff" -o "$2"
+          patch -Np1 -i "$2"
+        fi
       else
         echo "ERROR: wrong argument given: $2"
       fi
@@ -105,21 +108,6 @@ prepare() {
   # Generally, a MR status oscillate between 2 and 3 and then becomes 4.
 
 
-
-
-  # Title: Resource scale computation optimizations
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/493
-  # Type: 1
-  # Status: 3
-  # Comment: Not picked by default because breaks the overview on Wayland. https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/493#note_549833
-  pick_mr '493'
-
-  # Title: clutter/stage: Update input devices right after doing a relayout
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/429
-  # Type: 1
-  # Status: 1
-  pick_mr '429'
-
   # Title: backends: Do not reload keymap on new keyboard notifications
   # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/579
   # Type: 1
@@ -128,40 +116,19 @@ prepare() {
   #          If you use stenography software or play hardcore rhythm games like Lunatic Rave 2/osumania, use it.
   pick_mr '579' ce86f90efbaa51522ba14c5b4cad933c2106de42 'revert'
 
-  # Title: clutter/text: Check if attributes are equal before applying
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/983
-  # Type: 1
-  # Status: 1
-  # Comment:
-  # pick_mr '983'
 
-  # Title: Wayland surface fullscreen unredirect
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/798
-  # Type: 2
-  # Status: 4
-  # Comment:
-  pick_mr '798'
-
-  # Title: clutter/stage: Use an own flag to prevent relayout reentry in the stage
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1266
-  # Type: 3
-  # Status: 2
-  # Comment:
-  pick_mr '1267' 'fix_clutter_actor_set_allocation_spam.patch' 'patch'
-
-  # Title: Fix _NET_WM_FRAME_DRAWN timestamps [3.36]
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1360
-  # Type: 3
-  # Status: 2
-  # Comment:
-  pick_mr '1360'
-
-  # Title: clutter-actor: Cull actors that don't intersect the redraw clip
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1359
+  # Title: clutter/text: Use new pango API to compare attribute lists
+  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1050
   # Type: 1
   # Status: 2
-  # Comment:
-  pick_mr "1359"
+  pick_mr '1050'
+
+  # Title: cogl-winsys-glx: Add a heuristically calculated presentation_time
+  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1309
+  # Type: 1
+  # Status: 3
+  # Comment: Fix high latency on nvidia driver
+  pick_mr '1309'
 
 }
 
@@ -173,7 +140,6 @@ build() {
     -D wayland_eglstream=true \
     -D xwayland_initfd=disabled \
     -D installed_tests=false
-
   meson compile -C build
 }
 
