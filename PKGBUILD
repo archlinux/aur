@@ -1,23 +1,22 @@
-# Maintainer: Riley Trautman <asonix.dev@gmail.com>
+# Maintainer: CrankySupertoon <crankysupertoon@gmail.com>
 
+pkgname=shticker-book-rewritten-git
 _pkgname=shticker-book-rewritten
-pkgname=$_pkgname-git
-pkgver=v1.2.0
+pkgver=1.2.1.1.r1.gbcb2537
 pkgrel=1
 pkgdesc="Custom launcher and tool for the Toontown Rewritten MMORPG"
-url="https://github.com/madsciencecoder/Shticker-Book-Rewritten"
+url="https://github.com/CrankySupertoon/Shticker-Book-Rewritten"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('bzip2' 'qt5-base' 'qt5-webengine')
 makedepends=('git' 'gcc')
-provides=('shticker-book-rewritten')
 conflicts=('shticker-book-rewritten')
-source=("$_pkgname::git+https://github.com/madsciencecoder/Shticker-Book-Rewritten")
+source=("$_pkgname::git+https://github.com/CrankySupertoon/Shticker-Book-Rewritten")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --tags |sed 's/-/./g'
+  cd "${srcdir}/${_pkgname}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
