@@ -1,7 +1,7 @@
 pkgbase = qaac-wine
 	pkgdesc = QuickTime AAC/ALAC encoder (wine version)
 	pkgver = 2.70
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sites.google.com/site/qaacpage/
 	arch = x86_64
 	license = custom

@@ -8,7 +8,7 @@
 pkgname=qaac-wine
 _pkgname=qaac
 pkgver=2.70
-pkgrel=1
+pkgrel=2
 pkgdesc="QuickTime AAC/ALAC encoder (wine version)"
 arch=('x86_64')
 url="https://sites.google.com/site/qaacpage/"
@@ -31,10 +31,10 @@ build() {
     mkdir -p wineprefix
     export WINEPREFIX=$PWD/wineprefix
     export WINEARCH=win64
-    wineserver -k
+    wineserver -k || true
     winetricks win7
     msiexec /i "${srcdir}/iTunes64.msi" /qn
-    wineserver -k
+    wineserver -k || true
 }
 
 package() {
