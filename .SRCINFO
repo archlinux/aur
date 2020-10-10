@@ -1,6 +1,6 @@
 pkgbase = cpeditor-git
 	pkgdesc = The editor for competitive programming
-	pkgver = 6.6.4.r60.g89f98333
+	pkgver = 6.7.1.r9.g3997bf8c
 	pkgrel = 1
 	url = https://github.com/cpeditor/cpeditor
 	arch = x86_64
@@ -24,6 +24,8 @@ pkgbase = cpeditor-git
 	source = git://github.com/cpeditor/lsp-cpp.git
 	source = git://github.com/itay-grudev/singleapplication.git
 	source = git://github.com/MikeMirzayanov/testlib.git
+	source = git://github.com/cpeditor/qhttp.git
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
