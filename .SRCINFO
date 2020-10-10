@@ -1,0 +1,21 @@
+pkgbase = ktamaga-git
+	pkgdesc = Backport of ktamaga to KDE 1, with Kandalf and tips replaced by fortunes
+	pkgver = 0.6.2r17.73d8d74
+	pkgrel = 1
+	url = https://github.com/sandsmark/ktamaga
+	arch = i686
+	arch = x86_64
+	groups = kde1
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = kde1-kdelibs
+	provides = kde1-ktamaga
+	provides = ktamaga
+	conflicts = kde1-ktamaga
+	conflicts = ktamaga
+	source = git+https://github.com/sandsmark/ktamaga.git
+	md5sums = SKIP
+
+pkgname = ktamaga-git
+
