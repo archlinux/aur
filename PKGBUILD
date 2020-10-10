@@ -4,7 +4,7 @@
 
 pkgname=eigen-qfix
 pkgver=3.3.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra (fix assertion bug in 3.3.8)"
 arch=('any')
 url='https://eigen.tuxfamily.org'
