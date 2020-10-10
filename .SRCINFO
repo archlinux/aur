@@ -1,0 +1,19 @@
+pkgbase = anti-ad-smartdns-git
+	pkgdesc = Configuration for adblocking via SmartDNS
+	pkgver = 0.936.d4edec4
+	pkgrel = 1
+	url = https://github.com/privacy-protection-tools/anti-AD
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/privacy-protection-tools/anti-AD.git
+	md5sums = SKIP
+
+pkgname = anti-ad-smartdns-git
+	pkgdesc = Configuration for adblocking via SmartDNS
+	depends = smartdns
+
+pkgname = anti-ad-dnsmasq-git
+	pkgdesc = Configuration for adblocking via Dnsmasq
+	depends = dnsmasq
+
