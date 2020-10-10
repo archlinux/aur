@@ -2,7 +2,7 @@
 
 _pkgname=lotus
 pkgname=$_pkgname-git
-pkgver=0.8.1.r10.gefc1b24f4
+pkgver=0.9.1.r9.gefc1b24f4
 pkgrel=1
 pkgdesc='Filecoin client in Go'
 arch=('x86_64')
@@ -12,6 +12,7 @@ makedepends=('go' 'gcc' 'git' 'jq' 'pkgconf')
 depends=('ocl-icd' 'gcc-libs')
 source=("git+${url}.git")
 b2sums=('SKIP')
+options=('!strip') # stripping removes information embeded into lotus after build process
 
 
 pkgver() {
