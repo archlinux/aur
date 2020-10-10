@@ -4,7 +4,7 @@
 
 pkgname=knime-desktop
 _upstream_name="knime"
-pkgver=4.2.0
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="A user-friendly graphical workbench for the entire data analysis process"
 url="http://www.knime.org/"
@@ -23,7 +23,7 @@ source=("https://download.knime.org/analytics-platform/linux/${_upstream_name}_$
         'knime.sh'
         'knime-desktop.desktop'
         'LICENSE')
-sha256sums=('6a8b8f496dc1989d7a6025261c839e62afc37131cb574d079d4ccb9660e1a252'
+sha256sums=('dd8cd97daeadb9865355476a00135ebf0c1879e302b7af89e4e8ca92c217155d'
             '834238a61eb6018de8957935bf98ab6f31d3767bd2ccf87402ec3ea3096ce955'
             '33f9d9c921e7e89c24f4b9d73b694300bdc995e9705b10ee668f8e6a7b760634'
             'ecd59cb1a79d96474e732361fcd40417fd3352b3974be66add43f8f00c7e016a')
