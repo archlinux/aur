@@ -2,13 +2,13 @@
 
 pkgname=kicad-nightly
 pkgver=5.99.0_3926_g90baed7e8
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
 url='http://kicad-pcb.org/'
 license=('GPL')
 depends=('wxgtk3' 'python' 'boost-libs' 'glew' 'curl' 'glm' 'ngspice' 'opencascade' 'python-wxpython')
-makedepends=('cmake' 'zlib' 'mesa' 'boost' 'swig')
+makedepends=('git' 'cmake' 'zlib' 'mesa' 'boost' 'swig')
 optdepends=(
 	'kicad-library: for footprints and symbols'
 	'kicad-library-3d: for 3d models of components'
