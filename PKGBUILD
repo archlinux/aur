@@ -1,6 +1,6 @@
 # Maintainer: Michael Stegeman <mstegeman@mozilla.com>
 pkgname=pagekite
-pkgver=1.5.2.200603
+pkgver=1.5.2.200725
 pkgrel=1
 pkgdesc='Python implementation of the PageKite remote front-end protocols.'
 arch=('any')
@@ -15,7 +15,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/pagekite/PyPagekite/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  'ffe5d52f609458e2bbc7e7740688604991a66838b39aa4ba5af7656ee65759c2'
+  '6172b9e92c2b46d393148ea8081de148f43ffe26e361d75305d047a63c3a0759'
 )
 
 build() {
