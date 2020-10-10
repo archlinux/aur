@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-material-shell
+	pkgdesc = Tiling window extension for GNOME, following Material Design guidelines
+	pkgver = 7
+	pkgrel = 1
+	url = https://github.com/material-shell/material-shell
+	arch = x86_64
+	license = MIT
+	depends = gnome-shell>=3.34
+	conflicts = gnome-shell-extension-material-shell-git
+	source = gnome-shell-extension-material-shell-7.tar.gz::https://github.com/material-shell/material-shell/archive/7.tar.gz
+	b2sums = cff31af604ce1751f14f99d4a8b2f9a3138f8f306bbb07fc866900b25aa3246fb3bfd01af16abfa520fbf1832e5592f1126623bb6ad986e2c793eb46ddcad435
+
+pkgname = gnome-shell-extension-material-shell
+
