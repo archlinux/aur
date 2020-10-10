@@ -14,7 +14,7 @@ license=('MIT')
 depends=('git' 'libgit2')
 makedepends=('rust' 'clang' 'llvm')
 
-source=("$url/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tgz::$url/archive/$pkgver.tar.gz")
 sha256sums=('4068cb88a4110bbef24b8148e3ae283ff007f4f6aa4780789cda7a412928daa0')
 
 
