@@ -3,7 +3,7 @@
 pkgname=ktamaga-git
 pkgver=0.6.2r17.73d8d74
 pkgrel=1
-pkgdesc="Backport of ktamaga to KDE 1, with Kandalf and tips replaced by fortunes"
+pkgdesc="A Tamagotchi emulator (you know, that silly LCD game from Ban Dai)"
 arch=(i686 x86_64)
 url="https://github.com/sandsmark/ktamaga"
 license=("GPL2")
