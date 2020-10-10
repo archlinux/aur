@@ -1,14 +1,12 @@
 pkgbase = switchbashzsh
-	pkgdesc = Portably switching between Bash/Zsh across BSD/Linux/Cygwin
-	pkgver = 1.0
+	pkgdesc = Portably switch between Bash and Zsh across BSD/Linux/Cygwin
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/bourne-again/switchBashZsh
 	arch = any
 	license = BSD
-	provides = poshinit
-	replaces = poshinit
-	source = switchBashZsh-1.0.tar.gz::https://github.com/bourne-again/switchBashZsh/archive/1.0.tar.gz
-	sha256sums = d40f28a0d21105cbd864eca182485455038221384b0cb45f049ac5c47434688e
+	source = switchBashZsh-1.1.tar.gz::https://github.com/bourne-again/switchBashZsh/archive/1.1.tar.gz
+	sha256sums = f8b6fed89627eec3a214b88c5cbd0a5befbf413c186341488995756706dc5f81
 
 pkgname = switchbashzsh
 
