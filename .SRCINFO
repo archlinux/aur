@@ -1,6 +1,6 @@
 pkgbase = vice-svn-sdl2
 	pkgdesc = The Versatile Commodore Emulator (Commodore 64/C64) - SDL2 development version
-	pkgver = r38637
+	pkgver = r38746
 	pkgrel = 1
 	url = http://vice-emu.sourceforge.net
 	arch = i686
@@ -21,7 +21,6 @@ pkgbase = vice-svn-sdl2
 	depends = flac
 	optdepends = pulseaudio-alsa
 	optdepends = alsa-lib
-	optdepends = vorbis
 	provides = vice
 	conflicts = vice
 	conflicts = vice-svn

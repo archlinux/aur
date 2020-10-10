@@ -3,7 +3,7 @@
 
 pkgname=vice-svn-sdl2
 _pkgname=vice-svn
-pkgver=r38637
+pkgver=r38746
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator (Commodore 64/C64) - SDL2 development version"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://vice-emu.sourceforge.net"
 license=('GPL')
 depends=('giflib' 'libjpeg' 'libpng' 'mpg123' 'sdl2' 'pciutils' 'portaudio' 'flac')
 makedepends=('pkg-config' 'xa' 'svn' 'texlive-core' 'dos2unix')
-optdepends=('pulseaudio-alsa' 'alsa-lib' 'vorbis')
+optdepends=('pulseaudio-alsa' 'alsa-lib')
 provides=('vice')
 replaces=('vice')
 conflicts=('vice' 'vice-svn')
