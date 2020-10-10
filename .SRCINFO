@@ -1,8 +1,8 @@
 pkgbase = pwvault
 	pkgdesc = GPG-based, commandline get keepassx password
 	pkgver = 0.9.37
-	pkgrel = 1
-	url = http://github.com/cdede/pwvault/
+	pkgrel = 2
+	url = https://github.com/cdede/pwvault/
 	arch = any
 	license = GPL3
 	depends = python-kppy
