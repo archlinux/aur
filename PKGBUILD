@@ -1,9 +1,8 @@
 # Maintainer: Artem Klevtsov <a.a.klevtsov@gmail com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=afancontrol
-pkgver=2.2.1
+pkgver=3.0.0
 pkgrel=1
-epoch=1
 pkgdesc="Advanced Fan Control program, which controls PWM fans according to the current temperatures of the system components."
 arch=('any')
 url="https://github.com/KostyaEsmukov/afancontrol"
@@ -17,11 +16,12 @@ optdepends=('lm_sensors: to use the motherboard-based sensors and PWM fans'
             'python-prometheus_client: Prometheus support')
 backup=("etc/$pkgname/$pkgname.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('e984d83791a0a0131e5fc874f7e3240e874c6bb9215075ef02e740091ea6a450')
+sha256sums=('2d954c3e382c1d60d02dae89eec1349bd71440927a8fd582ae67031fdb1c3540')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  sed -i 's|etc/systemd|lib/systemd|g' setup.py
+  sed -i 's/etc\/systemd/lib\/systemd/g' setup.py
+  sed -i 's/usr\/local/usr/g' "pkg/$pkgname.conf"
 }
 
 build() {

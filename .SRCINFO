@@ -1,8 +1,7 @@
 pkgbase = afancontrol
 	pkgdesc = Advanced Fan Control program, which controls PWM fans according to the current temperatures of the system components.
-	pkgver = 2.2.1
+	pkgver = 3.0.0
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/KostyaEsmukov/afancontrol
 	arch = any
 	license = MIT
@@ -14,8 +13,8 @@ pkgbase = afancontrol
 	optdepends = python-pyserial: Arduino support
 	optdepends = python-prometheus_client: Prometheus support
 	backup = etc/afancontrol/afancontrol.conf
-	source = afancontrol-2.2.1.tar.gz::https://github.com/KostyaEsmukov/afancontrol/archive/2.2.1.tar.gz
-	sha256sums = e984d83791a0a0131e5fc874f7e3240e874c6bb9215075ef02e740091ea6a450
+	source = afancontrol-3.0.0.tar.gz::https://github.com/KostyaEsmukov/afancontrol/archive/3.0.0.tar.gz
+	sha256sums = 2d954c3e382c1d60d02dae89eec1349bd71440927a8fd582ae67031fdb1c3540
 
 pkgname = afancontrol
 
