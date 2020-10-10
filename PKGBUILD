@@ -41,7 +41,7 @@ optdepends=('python-requests: absubmit, fetchart, embyupdate, kodiupdate, lyrics
             'aacgain: replaygain plugin'
             'audiotools: replaygain plugin'
             'go-ipfs: ipfs plugin')
-provides=('beets')
+provides=("beets=$pkgver")
 conflicts=('beets')
 source=('git+https://github.com/beetbox/beets.git')
 md5sums=('SKIP')
