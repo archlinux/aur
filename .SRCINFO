@@ -7,7 +7,7 @@ pkgbase = chronoengine-git
 	arch = x86_64
 	license = custom
 	makedepends = cmake
-	makedepends = eigen=3.3.9
+	makedepends = eigen
 	makedepends = git
 	makedepends = boost
 	makedepends = glm
