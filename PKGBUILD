@@ -2,9 +2,10 @@
 
 pkgname=gtk-layer-shell-git
 _pkgname=gtk-layer-shell
-pkgver=r128.b2e6554
+pkgver=r264.a79edbb
 pkgrel=1
-provides=( gtk-layer-shell )
+provides=(gtk-layer-shell)
+conflicts=(gtk-layer-shell)
 pkgdesc="A library to create desktop components for Wayland using the Layer Shell protocol"
 arch=(x86_64)
 url="https://github.com/wmww/gtk-layer-shell"
