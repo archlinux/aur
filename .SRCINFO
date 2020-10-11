@@ -1,0 +1,20 @@
+pkgbase = scapy
+	pkgdesc = Powerful interactive packet manipulation program written in Python (library)
+	pkgver = 2.4.4
+	pkgrel = 2
+	url = http://www.secdev.org/projects/scapy/
+	arch = any
+	license = GPL2
+	makedepends = python2-setuptools
+	depends = tcpdump
+	depends = python2
+	optdepends = python2-cryptography: WEP, IPsec and SSL/TLS support
+	optdepends = python2-pyx: psdump() and pdfdump() functions
+	optdepends = python2-matplotlib: plotting support
+	optdepends = graphviz: conversations() method support
+	optdepends = sox: for VOIP support
+	source = https://github.com/secdev/scapy/archive/v2.4.4/python2-scapy-2.4.4.tar.gz
+	sha256sums = abe1b7fa606350df90209a60d23df727705097453b3dcb626bf36b3539d44021
+
+pkgname = python2-scapy
+
