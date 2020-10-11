@@ -1,10 +1,23 @@
-#!/bin/sh
+pre_remove() {
+  systemctl stop sftpgo.service
+  cat <<EOF
+==> Leftover files may reside in /var/lib/sftpgo and /etc/sftpgo
+==> If you remove them, you may also want to remove user and 
+==> group 'sftpgo'
+EOF
+}
 
-post_install() {
-  echo ":: You need to initialize a data provider prior to starting the service."
-  echo "   This can be done using the initprovider command, for example:"
-  echo ""
-  echo "   sftpgo initprovider"
-  echo ""
-  echo "   take a look at sftpgo initprovider --help for more options"
+post_upgrade() {
+  if (( $(vercmp $2 1.0.0-4) < 0 )); then
+    chown -R 315:315 /etc/sftpgo /var/lib/sftpgo
+    chmod 750 /etc/sftpgo /var/lib/sftpgo
+    chmod 640 /etc/sftpgo/sftpgo.json
+    cat <<EOF
+==> After this update SFTPGo will run using the dedicated "sftpgo"
+==> system user, you will probably need to manually fix the
+==> permissions for the SFTPGo virtual users home directory using
+==>
+==> chown -R sftpgo:sftpgo </path/to/sftpgo/home/dir>
+EOF
+fi
 }
