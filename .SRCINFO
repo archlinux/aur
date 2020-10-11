@@ -19,6 +19,12 @@ pkgbase = librearp-git
 	provides = librearp
 	conflicts = librearp
 	source = git+https://gitlab.com/LibreArp/LibreArp.git
+	source = git+https://github.com/steinbergmedia/vst3sdk.git
+	source = git+https://gitlab.com/LibreArp/JUCE.git
+	source = git+https://git.iem.at/zmoelnig/FST.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = librearp-git
