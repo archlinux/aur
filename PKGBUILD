@@ -1,7 +1,8 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
-pkgname=mdadm
+_pkgname=mdadm
+pkgname=$_pkgname-git
 pkgver=mdadm.4.1.r89.g5f41845
 pkgrel=1
 pkgdesc="A tool for managing/monitoring Linux md device arrays, also known as Software RAID"
@@ -22,18 +23,18 @@ sha256sums=('SKIP'
             '170b0e5d548416c0adb9df4e6941bea6bc33d843419c997e45ecaf9e36a58f38')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd mdadm
+  cd "$_pkgname"
 
   make CXFLAGS="$CFLAGS" BINDIR=/usr/bin UDEVDIR=/usr/lib/udev
 }
 
 package() {
-  cd mdadm
+  cd "$_pkgname"
 
   make INSTALL=/usr/bin/install BINDIR=/usr/bin DESTDIR="$pkgdir" UDEVDIR=/usr/lib/udev install
   make SYSTEMD_DIR="$pkgdir"/usr/lib/systemd/system install-systemd
