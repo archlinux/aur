@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=gala-git
-pkgver=3.2.0.r73.c49189b
+pkgver=3.3.2.r96.9dedf56d
 pkgrel=1
 pkgdesc='The Pantheon Window Manager'
 arch=(x86_64)
@@ -9,38 +9,19 @@ url=https://github.com/elementary/gala
 license=(GPL3)
 groups=(pantheon-unstable)
 depends=(
-  atk
   bamf
-  cairo
-  gdk-pixbuf2
-  glib2
   gnome-desktop
-  gtk3
-  json-glib
-  libdrm
-  libgee
-  libgl
+  libgraphene-1.0.so=0-64
+  lib{gee,gl}
   libgranite.so
-  libx11
-  libxcomposite
-  libxdamage
-  libxext
-  libxfixes
-  libxi
-  libxrandr
-  libxtst
-  mesa
-  mutter
-  pango
-  plank
-  wayland
+  libmutter-6.so=0-64
 )
 makedepends=(
   git
   gnome-common
-  granite
   intltool
   meson
+  plank
   vala
 )
 provides=(
