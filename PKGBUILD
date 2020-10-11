@@ -18,7 +18,7 @@ source=("git://github.com/OpenBoard-org/OpenBoard.git${_fragment}"
         qwebkit.patch
         openboard.desktop
 )
-source+=(quazip.diff)
+source+=(quazip.patch)
 source+=(poppler.patch)
 source+=(drop_ThirdParty_repo.patch)
 source+=(30fps.patch)
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
             'b40fdab85f5921d0404c07db64628a2428a87d39193d2797bbef2e69b1d51549'
             '8e276fe7da7a47d5520ce50b5bd761f4e983230629e48dea6d5cfa86b49ca889'
             '00688af02006bddeab797f624e5cbae66a5c02f4e14315d87d3f198f74797c17'
-            'db007a755533baa245dfb481393b2897ddd6a219a28399d4a7bebd1ff855b6d2'
+            '8506d8af131e73aea92f86ca342987b858f4f1a9aa9099dcb3321794fcd2c56c'
             'af3fd5ad142216242ec30e2ba8f19cc0afb9325fe6ddfae735f53fffdc03137f'
             '71a41ecbecb952b402d554aa7c5659650765b692662a28f9db904c7390f8f080'
             '205062adbbd48d6622341e316e14a5496f73696385a3ed5cda7a89d3e7d2861d')
@@ -38,7 +38,11 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/OpenBoard"
-  git apply -v "$srcdir"/*{diff,patch}
+  patch -p1 < $srcdir/drop_ThirdParty_repo.patch
+  patch -p1 < $srcdir/qchar.patch
+  patch -p1 < $srcdir/qwebkit.patch
+  patch -p1 < $srcdir/quazip.patch
+  patch -p1 < $srcdir/poppler.patch
 }
 
 build() {
