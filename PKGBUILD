@@ -6,9 +6,9 @@ _git_rev=d8c93345d87a96135739017566d98b02774f558a
 
 pkgname=lua-${_lua_name}
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Programmatically create PDF files using Lua.'
-arch=('any')
+arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url='http://luahpdf.colloquiki.com/'
 license=('MIT')
 depends=('lua' 'libharu')
