@@ -4,13 +4,13 @@
 
 _pkgname=devilutionX
 pkgname=devilutionx
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Diablo devolved for linux"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/diasurgical/devilutionX"
 license=('custom:unlicense')
-depends=('graphite' 'libsodium' 'sdl2_mixer' 'sdl2_ttf')
+depends=('graphite' 'libsodium' 'sdl2_mixer' 'sdl2_ttf' 'ttf-charis-sil')
 makedepends=('cmake' 'gcc-libs')
 install="$pkgname".install
 options=('strip')
@@ -21,6 +21,8 @@ prepare() {
 	if [ ! -d build ]; then
 		mkdir build
 	fi
+	sed -i "s/\/usr\/share\/fonts\/truetype/\/usr\/share\/fonts\/ttf-charis-sil/g" \
+		SourceX/DiabloUI/fonts.cpp
 }
 
 build() {
@@ -28,9 +30,11 @@ build() {
 	cmake .. \
 		-DPIE=ON \
 		-DBINARY_RELEASE=ON \
-		-DTTF_FONT_PATH=\"/usr/share/fonts/truetype/CharisSILB.ttf\" \
-		-DGIT_TAG="$pkgver"
-	make INSTALL_ROOT="$pkgdir"
+		-DTTF_FONT_DIR=\"/usr/share/fonts/ttf-charis-sil\" \
+		-DTTF_FONT_NAME=\"CharisSIL-B.ttf\" \
+		-DVERSION_NUM="$pkgver"
+
+	make INSTALL_ROOT="$pkgdir" -j$(nproc)
 }
 
 package() {
@@ -38,10 +42,6 @@ package() {
 
 	# Install and link binary
 	install -vDm755 build/"$pkgname" "$pkgdir"/usr/bin/"$pkgname"
-
-	# Install font
-	install -Dm644 Packaging/resources/CharisSILB.ttf \
-		"$pkgdir/usr/share/fonts/truetype/CharisSILB.ttf"
 
 	# Install icons
 	install -Dm644 Packaging/cpi-gamesh/Devilution.png \
@@ -53,10 +53,6 @@ package() {
 
 	# Install license
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-
-	# Install font license
-	install -Dm644 Packaging/resources/LICENSE.CharisSILB.txt -t \
-		"$pkgdir/usr/share/licenses/$pkgname"
 }
 
-md5sums=('4deac1025350eec0b36569af9dc3cd5c')
+md5sums=('76e7f5219e8f58ee71ab671b13ce3139')
