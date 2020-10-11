@@ -1,14 +1,6 @@
 --- a/.env.template
 +++ b/.env.template
-@@ -1,5 +1,7 @@
- ## Bitwarden_RS Configuration File
- ## Uncomment any of the following lines to change the defaults
-+## 
-+## NOTE: All options are overridden by changes made in the admin interface, which are saved to /var/lib/bitwarden_rs/data/config.json.
- 
- ## Main data folder
- # DATA_FOLDER=data
-@@ -32,7 +34,7 @@
+@@ -46,7 +46,7 @@
  
  ## Web vault settings
  # WEB_VAULT_FOLDER=web-vault/
