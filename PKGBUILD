@@ -5,16 +5,16 @@ _gitname=session-settings
 _author=elementary
 pkgname=pantheon-session
 pkgver=5.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Session settings for Pantheon"
 arch=('any')
 url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 groups=('pantheon-stable')
-depends=('cerbere' 'dconf' 'gala' 'gconf' 'gnome-keyring'
+depends=('cerbere' 'dconf' 'libgala.so=0-64' 'gnome-keyring'
          'gnome-session' 'gnome-settings-daemon'
          'pantheon-applications-menu' 'pantheon-dpms-helper' 'plank'
-         'wingpanel' 'xdg-user-dirs-gtk')
+         'libwingpanel-2.0.so=0-64' 'xdg-user-dirs-gtk')
 makedepends=()
 optdepends=('pantheon-default-settings')
 provides=("${_gitname}")
