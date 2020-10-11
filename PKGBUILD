@@ -1,32 +1,30 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: VargArch <roels.jorick@gmail.com>
 # Contributor: zsrkmyn
 # Contributor: marsam
 
-_gitname=ctags
 pkgname=universal-ctags-git
-pkgver=0.r6046.e65e91a2
+pkgver=5.9.20201011.0.r12.g01b9fc866
 pkgrel=1
-pkgdesc="Multilanguage reimplementation of the Unix ctags utility"
-arch=('i686' 'x86_64')
-url="https://ctags.io/"
+pkgdesc='Generates an index (or tag) file of language objects found in source files'
+arch=('x86_64')
+url=https://ctags.io
 license=('GPL')
-depends=('libxml2' 'jansson' 'libyaml' 'libseccomp')
+depends=('jansson' 'libseccomp' 'libxml2' 'libyaml')
 makedepends=('git' 'python-docutils')
 provides=('ctags')
 conflicts=('ctags')
 source=("git+https://github.com/universal-ctags/ctags.git")
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ctags
+  git describe --long --tags | sed 's/^p//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
-
+  cd ctags
   ./autogen.sh
   ./configure --prefix=/usr \
               --libexecdir=/usr/lib \
@@ -35,14 +33,14 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${_gitname}"
-
-  mkdir "${srcdir}/testhome"
-  HOME="${srcdir}/testhome" make -k check
+  cd ctags
+  mkdir -p testhome
+  export HOME=./testhome
+  export XDG_CONFIG_HOME=
+  make check
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
-
-  make DESTDIR="${pkgdir}" install
+  cd ctags
+  make DESTDIR="$pkgdir" install
 }

@@ -1,21 +1,20 @@
 pkgbase = universal-ctags-git
-	pkgdesc = Multilanguage reimplementation of the Unix ctags utility
-	pkgver = 0.r6046.e65e91a2
+	pkgdesc = Generates an index (or tag) file of language objects found in source files
+	pkgver = 5.9.20201011.0.r12.g01b9fc866
 	pkgrel = 1
-	url = https://ctags.io/
-	arch = i686
+	url = https://ctags.io
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = python-docutils
-	depends = libxml2
 	depends = jansson
-	depends = libyaml
 	depends = libseccomp
+	depends = libxml2
+	depends = libyaml
 	provides = ctags
 	conflicts = ctags
 	source = git+https://github.com/universal-ctags/ctags.git
-	md5sums = SKIP
+	b2sums = SKIP
 
 pkgname = universal-ctags-git
 
