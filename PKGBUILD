@@ -6,7 +6,7 @@
 _reponame=cpp-utilities
 pkgname=mingw-w64-c++utilities
 _name=${pkgname#mingw-w64-}
-pkgver=5.6.0
+pkgver=5.7.0
 pkgrel=1
 arch=('any')
 pkgdesc='Common C++ classes and routines such as argument parser, IO and conversion utilities (mingw-w64)'
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('mingw-w64-crt' 'mingw-w64-libiconv')
 optdepends=("$_name-doc: API documentation")
 checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine')
-makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
+makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 sha256sums=('31fd1de5279c1267c049bf8d900a85d38af11d3c8757a934e694dab46f52fc56')
@@ -45,6 +45,7 @@ build() {
       msg2 "${_arch}-${_cfg}"
       mkdir -p "build-${_arch}-${_cfg}" && pushd "build-${_arch}-${_cfg}"
       ${_arch}-cmake \
+        -G Ninja \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" \
         -DCONFIGURATION_NAME:STRING="${_cfg}" \
@@ -53,7 +54,7 @@ build() {
         -DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
         ${_config_flags[$_cfg]} \
         ../
-      make
+      ninja
       popd
     done
   done
@@ -66,7 +67,8 @@ check() {
     for _cfg in "${_configurations[@]}"; do
       msg2 "${_arch}-${_cfg}"
       pushd "build-${_arch}-${_cfg}"
-      make WINEPATH="/usr/${_arch}/bin" WINEDEBUG=-all check || true
+      export WINEPATH="/usr/${_arch}/bin" WINEDEBUG=-all
+      ninja check || true
       popd
     done
   done
@@ -79,7 +81,7 @@ package() {
     for _cfg in "${_configurations[@]}"; do
       msg2 "${_arch}-${_cfg}"
       pushd "build-${_arch}-${_cfg}"
-      make DESTDIR="${pkgdir}" install-mingw-w64-strip
+      DESTDIR="${pkgdir}" ninja install-mingw-w64-strip
       popd
     done
   done
