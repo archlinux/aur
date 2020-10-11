@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-hsphfpd
 	pkgdesc = A fork of pulseaudio providing superior bluetooth headset functionality
 	pkgver = 13.99.2+85+g95460f49e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/PulseAudio/
 	arch = x86_64
 	license = GPL
@@ -33,12 +33,13 @@ pkgbase = pulseaudio-hsphfpd
 	makedepends = meson
 	makedepends = xmltoman
 	makedepends = gst-plugins-base-libs
+	makedepends = libopenaptx
 	source = git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=6101798c7a4fa5b8ce7f5589706b03d87a3aee76
 	sha256sums = SKIP
 
 pkgname = pulseaudio-hsphfpd
 	install = pulseaudio.install
-	depends = libpulse-hsphfpd=13.99.2+85+g95460f49e-1
+	depends = libpulse-hsphfpd=13.99.2+85+g95460f49e-2
 	depends = alsa-card-profiles
 	depends = rtkit
 	depends = libltdl
@@ -54,7 +55,7 @@ pkgname = pulseaudio-hsphfpd
 	optdepends = pulseaudio-bluetooth-hsphfpd: Bluetooth support
 	optdepends = pulseaudio-equalizer-hsphfpd: Graphical equalizer
 	optdepends = pulseaudio-rtp-hsphfpd: RTP and RAOP support
-	provides = pulseaudio=13.99.2+85+g95460f49e-1
+	provides = pulseaudio=13.99.2+85+g95460f49e-2
 	conflicts = pulseaudio
 	replaces = pulseaudio-xen<=9.0
 	replaces = pulseaudio-gconf<=11.1
@@ -75,58 +76,58 @@ pkgname = libpulse-hsphfpd
 	provides = libpulse.so
 	provides = libpulse-simple.so
 	provides = libpulse-mainloop-glib.so
-	provides = libpulse=13.99.2+85+g95460f49e-1
+	provides = libpulse=13.99.2+85+g95460f49e-2
 	conflicts = libpulse
 	backup = etc/pulse/client.conf
 
 pkgname = alsa-card-profiles-hsphfpd
 	pkgdesc = ALSA card profiles shared by PulseAudio
 	license = LGPL
-	provides = alsa-card-profiles=13.99.2+85+g95460f49e-1
+	provides = alsa-card-profiles=13.99.2+85+g95460f49e-2
 	conflicts = alsa-card-profiles
 
 pkgname = pulseaudio-zeroconf-hsphfpd
 	pkgdesc = Zeroconf support for PulseAudio
-	depends = pulseaudio-hsphfpd=13.99.2+85+g95460f49e-1
+	depends = pulseaudio-hsphfpd=13.99.2+85+g95460f49e-2
 	depends = avahi
 	depends = openssl
-	provides = pulseaudio-zeroconf=13.99.2+85+g95460f49e-1
+	provides = pulseaudio-zeroconf=13.99.2+85+g95460f49e-2
 	conflicts = pulseaudio-zeroconf
 
 pkgname = pulseaudio-lirc-hsphfpd
 	pkgdesc = IR (lirc) support for PulseAudio
-	depends = pulseaudio-hsphfpd=13.99.2+85+g95460f49e-1
+	depends = pulseaudio-hsphfpd=13.99.2+85+g95460f49e-2
 	depends = lirc
-	provides = pulseaudio-lirc=13.99.2+85+g95460f49e-1
+	provides = pulseaudio-lirc=13.99.2+85+g95460f49e-2
 	conflicts = pulseaudio-lirc
 
 pkgname = pulseaudio-jack-hsphfpd
 	pkgdesc = Jack support for PulseAudio
-	depends = pulseaudio-hsphfpd=13.99.2+85+g95460f49e-1
+	depends = pulseaudio-hsphfpd=13.99.2+85+g95460f49e-2
 	depends = jack
-	provides = pulseaudio-jack=13.99.2+85+g95460f49e-1
+	provides = pulseaudio-jack=13.99.2+85+g95460f49e-2
 	conflicts = pulseaudio-jack
 
 pkgname = pulseaudio-bluetooth-hsphfpd
 	pkgdesc = Bluetooth support for PulseAudio
-	depends = pulseaudio-hsphfpd=13.99.2+85+g95460f49e-1
+	depends = pulseaudio-hsphfpd=13.99.2+85+g95460f49e-2
 	depends = bluez
 	depends = bluez-libs
 	depends = sbc
-	provides = pulseaudio-bluetooth=13.99.2+85+g95460f49e-1
+	provides = pulseaudio-bluetooth=13.99.2+85+g95460f49e-2
 	conflicts = pulseaudio-bluetooth
 
 pkgname = pulseaudio-equalizer-hsphfpd
 	pkgdesc = Graphical equalizer for PulseAudio
-	depends = pulseaudio-hsphfpd=13.99.2+85+g95460f49e-1
+	depends = pulseaudio-hsphfpd=13.99.2+85+g95460f49e-2
 	depends = python-pyqt5
 	depends = python-dbus
 	depends = fftw
-	provides = pulseaudio-equalizer=13.99.2+85+g95460f49e-1
+	provides = pulseaudio-equalizer=13.99.2+85+g95460f49e-2
 	conflicts = pulseaudio-equalizer
 
 pkgname = pulseaudio-rtp-hsphfpd
 	pkgdesc = RTP and RAOP support for PulseAudio
-	depends = pulseaudio=13.99.2+85+g95460f49e-1
+	depends = pulseaudio=13.99.2+85+g95460f49e-2
 	depends = gst-plugins-base-libs
 
