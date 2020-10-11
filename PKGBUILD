@@ -22,7 +22,7 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 
-	# Extension won't detected compiled schemas in /usr/share/glib-2.0/schemas
+	# Extension won't detect compiled schemas in /usr/share/glib-2.0/schemas
 	glib-compile-schemas schemas
 }
 
