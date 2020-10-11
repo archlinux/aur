@@ -4,7 +4,7 @@ pkgbase = gnome-shell-extension-scroll-workspaces
 	pkgrel = 1
 	url = https://extensions.gnome.org/extension/701/scroll-workspaces/
 	arch = any
-	license = unknown
+	license = GPL
 	depends = gnome-shell>=3.36
 	source = gnome-shell-extension-scroll-workspaces.zip::https://extensions.gnome.org/download-extension/scroll-workspaces@gfxmonk.net.shell-extension.zip?version_tag=16519
 	sha256sums = 0acbcc0a0ea10d221e15a45ea861994ad290fee0df237531fe16ac15b4842268
