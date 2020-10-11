@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=smooth-git
-pkgver=0.9.4.r1.gb9192582
+pkgver=0.9.6.r0.gbe42782d
 pkgrel=1
-pkgdesc="An object oriented C++ class library for Windows, OS X, Linux and most Unix-like operating systems"
-arch=('i686' 'x86_64')
+pkgdesc="An object oriented C++ class library"
+arch=('x86_64')
 url="http://www.smooth-project.org"
 license=('Artistic2.0')
 depends=('gtk3' 'libjpeg-turbo' 'libxml2')
