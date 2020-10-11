@@ -84,7 +84,7 @@ build() {
 #}
 
 package_dbus-nosystemd-minimal-git(){
-    depends+=('libaudit.so')
+    optdepends+=('libaudit.so: audit support')
     provides=('libdbus' 'libdbus-1.so' 'dbus')
     conflicts=('libdbus' 'dbus')
     replaces=('libdbus')
