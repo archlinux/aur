@@ -12,6 +12,7 @@ pkgbase = wingpanel-standalone-git
 	makedepends = git
 	makedepends = vala
 	depends = libgee
+	depends = libgranite.so
 	depends = libwnck3
 	depends = cogl
 	optdepends = pantheon-applications-menu-git: Application launcher
