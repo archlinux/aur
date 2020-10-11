@@ -2,7 +2,7 @@
 pkgname=pwndb
 pkgver=1
 pkgrel=1
-pkgdesc='pwndb CLI'
+pkgdesc='pwndb CLI for searching leaked creds'
 url="https://github.com/mmpx12/pwndb"
 arch=('any')
 license=('MIT')
