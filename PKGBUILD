@@ -13,13 +13,13 @@
 
 _name=subtitlecomposer
 pkgname=${_name}-git
-pkgver=0.7.0.133.3130da72
+pkgver=0.7.0.181.a757aa2c
 pkgrel=1
 pkgdesc="A KDE subtitle editor (git version)"
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/kde/${_name}"
 license=('GPL')
-depends=('kcoreaddons' 'sonnet' 'kcodecs' 'kross' 'kxmlgui' 'ki18n' 'ffmpeg' 'qtav')
+depends=('kcoreaddons' 'sonnet' 'kcodecs' 'kross' 'kxmlgui' 'ki18n' 'ffmpeg' 'openal')
 makedepends=('extra-cmake-modules' 'git')
 
 # Comment/uncomment the following dependencies to disable/enable
