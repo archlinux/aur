@@ -15,18 +15,18 @@ _json_export=${MINGW_64_TAGEDITOR_JSON_EXPORT:-ON}
 _reponame=tageditor
 pkgname=mingw-w64-tageditor
 _name=${pkgname#mingw-w64-}
-pkgver=3.3.8
+pkgver=3.3.9
 pkgrel=1
 arch=('any')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
 license=('GPL')
-depends=('mingw-w64-crt' 'mingw-w64-qtutilities>=5.6.0' 'mingw-w64-tagparser>=6.2.0')
-[[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('mingw-w64-qt5-base>=5.6')
+depends=('mingw-w64-crt' 'mingw-w64-qtutilities' 'mingw-w64-tagparser')
+[[ $_webview_provider == none ]] && [[ $_js_provider == none ]] && depends+=('mingw-w64-qt5-base')
 [[ $_webview_provider == webkit ]] && depends+=('mingw-w64-qt5-webkit')
-[[ $_webview_provider == webengine ]] && depends+=('mingw-w64-qt5-webengine>=5.6')
-[[ $_js_provider == script ]] && depends+=('mingw-w64-qt5-script>=5.6')
-[[ $_js_provider == qml ]] && depends+=('mingw-w64-qt5-declarative>=5.6')
-makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg')
+[[ $_webview_provider == webengine ]] && depends+=('mingw-w64-qt5-webengine')
+[[ $_js_provider == script ]] && depends+=('mingw-w64-qt5-script')
+[[ $_js_provider == qml ]] && depends+=('mingw-w64-qt5-declarative')
+makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'ninja')
 [[ $_json_export == ON ]] && makedepends+=('mingw-w64-reflective-rapidjson')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
@@ -35,16 +35,24 @@ options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 _configurations=()
-[[ $NO_SHARED_LIBS ]] || _configurations+=('shared')
-[[ $NO_STATIC_LIBS ]] || _configurations+=('static') makedepends+=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-translations' 'mingw-w64-qt5-svg' 'breeze-icons' 'numix-icon-theme-git')
+if ! [[ $NO_SHARED_LIBS ]]; then
+    _configurations+=('shared')
+fi
+if ! [[ $NO_STATIC_LIBS ]]; then
+    _configurations+=('static')
+    makedepends+=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-svg-static' 'mingw-w64-qt5-translations' 'breeze-icons' 'numix-icon-theme-git')
+    [[ $_js_provider == script ]] && makedepends+=('mingw-w64-qt5-script-static')
+    [[ $_js_provider == qml ]] && makedepends+=('mingw-w64-qt5-declarative-static')
+fi
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
 
   declare -A _config_flags=(
-    [shared]='
+    [shared]="
         -DBUILD_SHARED_LIBS:BOOL=ON
-    '
+        -DWEBVIEW_PROVIDER:STRING=${_webview_provider}
+    "
     [static]='
         -DBUILD_SHARED_LIBS:BOOL=OFF
         -DCMAKE_FIND_LIBRARY_SUFFIXES:STRING=.a;.lib
@@ -59,6 +67,7 @@ build() {
         -DIMAGE_FORMAT_SUPPORT:STRING=Gif;ICO;Jpeg
         -DSVG_SUPPORT:BOOL=ON
         -DSVG_ICON_SUPPORT:BOOL=0N
+        -DWEBVIEW_PROVIDER:STRING=none
     '
   )
 
@@ -69,20 +78,20 @@ build() {
       msg2 "${_arch}-${_cfg}"
       mkdir -p "build-${_arch}-${_cfg}" && pushd "build-${_arch}-${_cfg}"
       ${_arch}-cmake \
+        -G Ninja \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" \
         -DCONFIGURATION_NAME:STRING="${_cfg}" \
         -DCONFIGURATION_PACKAGE_SUFFIX:STRING="-${_cfg}" \
-        -DWEBVIEW_PROVIDER:STRING="${_webview_provider}" \
         -DJS_PROVIDER:STRING="${_js_provider}" \
         -DENABLE_JSON_EXPORT:BOOL="${_json_export}" \
         -DREFLECTION_GENERATOR_EXECUTABLE:FILEPATH='/usr/bin/reflective_rapidjson_generator' \
         -DREFLECTION_GENERATOR_TRIPLE:STRING="${_arch}" \
         -DREFLECTION_GENERATOR_INCLUDE_DIRECTORIES="/usr/lib/gcc/${_arch}/${gcc_version}/include;/usr/${_arch}/include/c++/${gcc_version};/usr/${_arch}/include/c++/${gcc_version}/${_arch};/usr/${_arch}/include" \
-	-DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
+        -DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
         ${_config_flags[$_cfg]} \
         ../
-      make
+      ninja
       popd
     done
   done
@@ -99,7 +108,7 @@ package() {
     for _cfg in "${_configurations[@]}"; do
       msg2 "${_arch}-${_cfg}"
       pushd "build-${_arch}-${_cfg}"
-      make DESTDIR="${pkgdir}" install-mingw-w64-strip
+      DESTDIR="${pkgdir}" ninja install-mingw-w64-strip
       popd
     done
   done
