@@ -10,6 +10,7 @@ pkgbase = unifi-video
 	depends = java-runtime>=8
 	depends = java-jsvc
 	depends = lsb-release
+	depends = which
 	conflicts = unifi-video-beta
 	source = unifi-video-3.10.13.deb::https://dl.ubnt.com/firmwares/ufv/v3.10.13/unifi-video.Ubuntu18.04_amd64.v3.10.13.deb
 	source = unifi-video.service
