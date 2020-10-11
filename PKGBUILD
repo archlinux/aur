@@ -18,9 +18,9 @@ sha256sums=('SKIP')
 package() {
     cd "${srcdir}/extension"
     install -d "${pkgdir}/usr/bin"
-    sed -ri -e '1i #!/usr/bin/env node\n' dist/server.bundle.js
     find dist package.json package.nls.json package.nls.ru.json -type f -exec \
         install -Dm 644 '{}' "${pkgdir}/opt/${pkgname}/{}" \;
+    sed -ri -e '1i #!/usr/bin/env node\n' "${pkgdir}/opt/${pkgname}/dist/server.bundle.js"
     chmod +x "${pkgdir}/opt/${pkgname}/dist/server.bundle.js"
     ln -s "/opt/${pkgname}/dist/server.bundle.js" "${pkgdir}/usr/bin/pylance-language-server"
     install -Dm 644 "${srcdir}/extension/LICENSE.txt" \
