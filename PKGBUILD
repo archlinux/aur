@@ -1,6 +1,6 @@
 # Maintainer: kausban <mail at kausban com>
 pkgname=openaudible-bin
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="OpenAudible"
 arch=('x86_64')
@@ -10,7 +10,7 @@ options=('!strip' '!emptydirs')
 depends=("java-runtime-headless" "desktop-file-utils") 
 source=("https://github.com/openaudible/openaudible/releases/download/v"$pkgver"/OpenAudible_"$pkgver"_x86_64.deb"
        "openaudible.desktop")
-sha512sums=('4b5e95c3ee25fa787cc7aa8c0b958fb2a9ccd6e9324217aa1414797eb0178ba640aa79e4c22e8b1b80aa6c909f6d34909fb79ca9ef1d76607a333a5e76cf727a'
+sha512sums=('c8eeac78c9c07939adaefb11ce42e8508486a518c07251d54896a90aaf4d383e00108965c9a518b01b0492fbd154eb89d09f135738ecca631bb1f9696d02f5a7'
             'fe26bdc5a28f492c60e13f481bd61ae53b299b0b0728311521bb03a73f9592d8de5dda9e8e1ef5e770c74b6335e5b32c22d4b65a38325f8f5f6c1283cdc0c937')
 
 package(){
