@@ -9,7 +9,7 @@ post_install() {
 }
 
 post_upgrade() {
-  if find /etc/systemd/system -type l -name 'kodi.service' &>/dev/null; then
+  if find /etc/systemd/system -type l -name 'kodi.service'|grep . &>/dev/null; then
     echo '--> kodi.service is now kodi-x11.service'
     echo '--> you must disable the old one and enable the new one'
   fi
