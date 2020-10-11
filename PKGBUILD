@@ -3,7 +3,7 @@
 
 pkgname=iscan-plugin-gt-s600
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 _bundlever=2.30.4
 pkgdesc="iscan plugin for Epson Perfection V10."
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ depends=('iscan')
 install=gt-s600.install
 source_x86_64=(https://download2.ebz.epson.net/iscan/plugin/gt-s600/rpm/x64/iscan-gt-s600-bundle-$_bundlever.x64.rpm.tar.gz)
 source_i686=(https://download2.ebz.epson.net/iscan/plugin/gt-s600/rpm/x86/iscan-gt-s600-bundle-$_bundlever.x86.rpm.tar.gz)
-sha1sums_x86_64=('87c602cbf7bc0550491fc0c107925d007dc8c012')
-sha1sums_i686=('effac37aa3b91b6903079ad8bab68e6e293afbf2')
+sha1sums_x86_64=('455e2c4733298c8a9120223ba67b4c9a8ee4cd75')
+sha1sums_i686=('cf5064824334fd6ac9486527b4ff18ab34dc10bb')
 
 package() {
   if [ "$CARCH" = "i686" ]
