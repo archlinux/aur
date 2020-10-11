@@ -1,6 +1,6 @@
 # Maintainer: Sameer Puri <purisame@spuri.io>
 pkgname=python-or-tools
-pkgver=7.8
+pkgver=8.0
 pkgrel=1
 pkgdesc="Google's Operations Research tools"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -10,11 +10,12 @@ depends=('python>=3.5' 'swig' 'python-protobuf')
 makedepends=('cmake' 'wget' 'lsb-release' 'automake' 'python-wheel' 'python-pip' 'git')
 options=(!emptydirs)
 source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
-sha384sums=('73f051808575bffdcd4a9bb07a45a8d2ba2dc9dc565771b6fb1706f3271f74f271236470b25c08da6ad467764fe9599f')
+sha384sums=('b3b900d58106b7fa4a37f541454e7c001f97b537a789ea40a723ae0739c37a0efba7f89cea9a553945a561165f371df6')
 
 build() {
     cd "${srcdir}/or-tools-${pkgver}"
     make third_party
+    pacman -Qi cplex &> /dev/null && echo 'UNIX_CPLEX_DIR = /usr/lib' >> Makefile.local
     make python
     make pypi_archive
 }
