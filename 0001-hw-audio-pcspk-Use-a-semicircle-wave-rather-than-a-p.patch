@@ -1,0 +1,54 @@
+From 0ddb31675a8ba2fef40340034b0371b7fb63a8b9 Mon Sep 17 00:00:00 2001
+From: "Franc[e]sco" <lolisamurai@tfwno.gf>
+Date: Sun, 11 Oct 2020 15:25:28 +0200
+Subject: [PATCH 1/2] hw/audio/pcspk: Use a semicircle wave rather than a pure
+ square wave
+
+---
+ hw/audio/pcspk.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/hw/audio/pcspk.c b/hw/audio/pcspk.c
+index ea539e7605..1545b3c90a 100644
+--- a/hw/audio/pcspk.c
++++ b/hw/audio/pcspk.c
+@@ -23,6 +23,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include <math.h>
+ #include "hw/isa/isa.h"
+ #include "hw/audio/soundhw.h"
+ #include "audio/audio.h"
+@@ -61,18 +62,26 @@ typedef struct {
+ static const char *s_spk = "pcspk";
+ static PCSpkState *pcspk_state;
+ 
++/* a lot less harsh on the ears than a perfect square wave, while still sounding square-ish */
++static inline float circle_wave(float x)
++{
++    int s = (x > 0) - (x < 0);
++    float t = (x * 2 - (s - 1) / 2) * 2 - 1;
++    return -s * sqrtf(1 - t * t);
++}
++
+ static inline void generate_samples(PCSpkState *s)
+ {
+     unsigned int i;
+ 
+     if (s->pit_count) {
+         const uint32_t m = PCSPK_SAMPLE_RATE * s->pit_count;
+-        const uint32_t n = ((uint64_t)PIT_FREQ << 32) / m;
++        const float n = (float)PIT_FREQ / m;
+ 
+         /* multiple of wavelength for gapless looping */
+         s->samples = (QEMU_ALIGN_DOWN(PCSPK_BUF_LEN * PIT_FREQ, m) / (PIT_FREQ >> 1) + 1) >> 1;
+         for (i = 0; i < s->samples; ++i)
+-            s->sample_buf[i] = (64 & (n * i >> 25)) - 32;
++            s->sample_buf[i] = 128 + circle_wave(fmod(n * i, 1.f) - .5f) * 16;
+     } else {
+         s->samples = PCSPK_BUF_LEN;
+         for (i = 0; i < PCSPK_BUF_LEN; ++i)
+-- 
+2.28.0
+

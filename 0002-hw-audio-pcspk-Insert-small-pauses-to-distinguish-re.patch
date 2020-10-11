@@ -1,0 +1,60 @@
+From 2c26487bd00d6b834a3f204d60b425b2564b14f8 Mon Sep 17 00:00:00 2001
+From: "Franc[e]sco" <lolisamurai@tfwno.gf>
+Date: Sun, 11 Oct 2020 21:49:40 +0200
+Subject: [PATCH 2/2] hw/audio/pcspk: Insert small pauses to distinguish
+ repeated notes
+
+---
+ hw/audio/pcspk.c | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/hw/audio/pcspk.c b/hw/audio/pcspk.c
+index 1545b3c90a..2a672e77d5 100644
+--- a/hw/audio/pcspk.c
++++ b/hw/audio/pcspk.c
+@@ -52,6 +52,7 @@ typedef struct {
+     SWVoiceOut *voice;
+     void *pit;
+     unsigned int pit_count;
++    unsigned int last_pit_count;
+     unsigned int samples;
+     unsigned int play_pos;
+     uint8_t data_on;
+@@ -74,7 +75,9 @@ static inline void generate_samples(PCSpkState *s)
+ {
+     unsigned int i;
+ 
+-    if (s->pit_count) {
++    /* add 1 tick of silence when frequency changes or speaker gets reset to distinguish
++     * repeated frequencies */
++    if (s->pit_count && s->last_pit_count == s->pit_count) {
+         const uint32_t m = PCSPK_SAMPLE_RATE * s->pit_count;
+         const float n = (float)PIT_FREQ / m;
+ 
+@@ -106,7 +109,9 @@ static void pcspk_callback(void *opaque, int free)
+     if (n < PCSPK_MIN_COUNT)
+         n = 0;
+ 
+-    if (s->pit_count != n) {
++    if (s->pit_count != n || s->last_pit_count != s->pit_count) {
++        /* generate twice for each freq change. first the pause, then the steady frequence */
++        s->last_pit_count = s->pit_count;
+         s->pit_count = n;
+         s->play_pos = 0;
+         generate_samples(s);
+@@ -165,8 +170,11 @@ static void pcspk_io_write(void *opaque, hwaddr addr, uint64_t val,
+     s->data_on = (val >> 1) & 1;
+     pit_set_gate(s->pit, 2, gate);
+     if (s->voice) {
+-        if (gate) /* restart */
++        if (gate) { /* restart */
+             s->play_pos = 0;
++            s->last_pit_count = 0;
++            s->pit_count = 0;
++        }
+         AUD_set_active_out(s->voice, gate & s->data_on);
+     }
+ }
+-- 
+2.28.0
+
