@@ -24,7 +24,7 @@ sha256sums=('700433296de253539c3ec3189c9eeffa5fd1b864f3010fac38259ac5ac40d8a4'
 prepare() {
   cd $pkgname.desk
   patch -p1 -i ../qt-5.15.patch
-  sed -i 's|quazip/|QuaZip-Qt5-1.0/quazip/|' configure.tests/quazip/main.cpp src/libtupi/tuppackagehandler.cpp
+  sed -i 's|quazip/|QuaZip-Qt5-1.1/quazip/|' configure.tests/quazip/main.cpp src/libtupi/tuppackagehandler.cpp
   sed -i 's|quazip-qt5|quazip1-qt5|' qonf/test.rb
   sed -i 's|/share/pixmaps|/share/icons/hicolor/128x128/apps|' qonf/makefile.rb
 }
