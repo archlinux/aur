@@ -1,5 +1,5 @@
 pkgbase = sdltrs
-	pkgdesc = TRS-80 Model I/III/4/4P emulator (with software rendering)
+	pkgdesc = TRS-80 Model I/III/4/4P emulator
 	pkgver = 1.2.13
 	pkgrel = 1
 	url = https://gitlab.com/jengun/sdltrs
