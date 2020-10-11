@@ -1,23 +1,27 @@
 {
-  "sftpd": {
-    "bind_port": 2022,
-    "bind_address": "",
+  "common": {
     "idle_timeout": 15,
-    "max_auth_tries": 0,
-    "umask": "0022",
-    "banner": "",
     "upload_mode": 0,
     "actions": {
       "execute_on": [],
       "hook": ""
     },
+    "setstat_mode": 0,
+    "proxy_protocol": 0,
+    "proxy_allowed": [],
+    "post_connect_hook": ""
+  },
+  "sftpd": {
+    "bind_port": 2022,
+    "bind_address": "",
+    "max_auth_tries": 0,
+    "banner": "",
     "host_keys": [],
     "kex_algorithms": [],
     "ciphers": [],
     "macs": [],
     "trusted_user_ca_keys": [],
     "login_banner_file": "",
-    "setstat_mode": 0,
     "enabled_ssh_commands": [
       "md5sum",
       "sha1sum",
@@ -26,8 +30,42 @@
       "scp"
     ],
     "keyboard_interactive_auth_hook": "",
-    "proxy_protocol": 0,
-    "proxy_allowed": []
+    "password_authentication": true
+  },
+  "ftpd": {
+    "bind_port": 0,
+    "bind_address": "",
+    "banner": "",
+    "banner_file": "",
+    "active_transfers_port_non_20": false,
+    "force_passive_ip": "",
+    "passive_port_range": {
+      "start": 50000,
+      "end": 50100
+    },
+    "certificate_file": "",
+    "certificate_key_file": "",
+    "tls_mode": 0
+  },
+  "webdavd": {
+    "bind_port": 0,
+    "bind_address": "",
+    "certificate_file": "",
+    "certificate_key_file": "",
+    "cors": {
+      "enabled": false,
+      "allowed_origins": [],
+      "allowed_methods": [],
+      "allowed_headers": [],
+      "exposed_headers": [],
+      "allow_credentials": false,
+      "max_age": 0
+    },
+    "cache": {
+      "enabled": true,
+      "expiration_time": 0,
+      "max_size": 50
+    }
   },
   "data_provider": {
     "driver": "sqlite",
@@ -42,7 +80,7 @@
     "manage_users": 1,
     "track_quota": 2,
     "pool_size": 0,
-    "users_base_dir": "",
+    "users_base_dir": "/var/lib/sftpgo/users",
     "actions": {
       "execute_on": [],
       "hook": ""
@@ -50,7 +88,19 @@
     "external_auth_hook": "",
     "external_auth_scope": 0,
     "credentials_path": "/var/lib/sftpgo/credentials",
-    "pre_login_hook": ""
+    "pre_login_hook": "",
+    "post_login_hook": "",
+    "post_login_scope": 0,
+    "check_password_hook": "",
+    "check_password_scope": 0,
+    "password_hashing": {
+      "argon2_options": {
+        "memory": 65536,
+        "iterations": 1,
+        "parallelism": 2
+      }
+    },
+    "update_mode": 0
   },
   "httpd": {
     "bind_port": 8080,
