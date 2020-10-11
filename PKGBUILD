@@ -30,7 +30,7 @@ makedepends=('cmake' 'ninja' 'qt5-tools' 'mesa')
 checkdepends=('cppunit' 'jq')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('6ad8f190ca0f2133c3a0cd508248329a80abc89a20629c20e0c2835329e2812c')
+sha256sums=('1ab9f843788046834ded52b99606908fde9327ca975376418ebf44139ca522ba')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
