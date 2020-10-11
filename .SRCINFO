@@ -1,14 +1,14 @@
 pkgbase = 2048.c
 	pkgdesc = A terminal 2048 written in c
-	pkgver = 107
+	pkgver = 108
 	pkgrel = 1
 	url = https://github.com/mevdschee/2048.c
 	arch = any
 	license = MIT
-	source = https://raw.githubusercontent.com/mevdschee/2048.c/83b3d53f4739fefe138a4cb8090959b6e045586d/2048.c
-	source = https://raw.githubusercontent.com/mevdschee/2048.c/83b3d53f4739fefe138a4cb8090959b6e045586d/Makefile
-	md5sums = b13e62bac86203620b609b275bc52e5e
-	md5sums = d53ad3be6bb1c30be267bfa9ae7185f0
+	source = https://raw.githubusercontent.com/mevdschee/2048.c/9b387c3071d962a1c923f66b5caa3f849d519a0c/2048.c
+	source = https://raw.githubusercontent.com/mevdschee/2048.c/9b387c3071d962a1c923f66b5caa3f849d519a0c/Makefile
+	md5sums = 4d7e729490b577df6d22a0959a7423c4
+	md5sums = 23bf7679190d5f35fcd9d26b67c42e70
 
 pkgname = 2048.c
 
