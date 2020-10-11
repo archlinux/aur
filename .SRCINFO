@@ -13,6 +13,7 @@ pkgbase = tagparser-git
 	checkdepends = openssl
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
 	depends = c++utilities-git
 	depends = zlib
 	optdepends = tagparser-doc: API documentation
