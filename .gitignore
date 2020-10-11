@@ -1,4 +1,4 @@
-*.tar
+*.tar*
 /pkg
 /src
 /ffmpeg

@@ -4,11 +4,11 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 _svt_hevc_ver='ead6fdf7c9ff84511b42fc1658c1654b84d83e4b'
-_svt_vp9_ver='0.2.2'
+_svt_vp9_ver='7951c3cf6773c5e0ede00e4ce3e3ad2f7e090cfb'
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=4.4.r99472.g0b6541368d
+pkgver=4.4.r99528.g0c73c2909e
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('i686' 'x86_64')
@@ -16,22 +16,23 @@ url='https://www.ffmpeg.org/'
 license=('custom: nonfree and unredistributable')
 depends=(
     # official repositories:
-        'alsa-lib' 'avisynthplus' 'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass'
-        'aom' 'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'codec2'
-        'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi'
-        'glslang' 'libgme' 'gsm' 'libiec61883' 'libilbc' 'jack' 'kvazaar' 'lensfun'
-        'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio' 'librabbitmq-c' 'rav1e'
-        'librsvg' 'rubberband' 'rtmpdump' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh'
-        'svt-hevc' 'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame'
-        'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264'
-        'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
-        'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
-        'vulkan-icd-loader' 'libxv' 'libx11'  'libxext' 'zlib' 'libomxil-bellagio'
-        'libdrm' 'libva' 'libvdpau'
+        'alsa-lib' 'avisynthplus' 'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls'
+        'ladspa' 'libass' 'aom' 'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt'
+        'libcdio-paranoia' 'codec2' 'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac'
+        'fontconfig' 'freetype2' 'fribidi' 'libgme' 'gsm' 'libiec61883'
+        'libilbc' 'jack' 'kvazaar' 'lensfun' 'libmodplug' 'lame' 'opencore-amr'
+        'openjpeg2' 'opus' 'pulseaudio' 'librabbitmq-c' 'rav1e' 'librsvg' 'rubberband'
+        'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc'
+        'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils'
+        'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264' 'x265' 'libxcb'
+        'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz' 'libmysofa'
+        'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth' 'vulkan-icd-loader'
+        'libxv' 'libx11'  'libxext' 'zlib' 'libomxil-bellagio' 'libdrm'
+        'libva' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git'
-        'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2'
-        'pocketsphinx' 
+        'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
+        'libopenmpt-svn' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2'
+        'pocketsphinx'
 )
 makedepends=(
     # official repositories:
@@ -47,13 +48,13 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '010-ffmpeg-fix-vmaf-model-path.patch'
         "020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        "040-ffmpeg-add-svt-vp9.patch"
+        "040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         'LICENSE')
 sha256sums=('SKIP'
             '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
             '05ec4d3323dc80ef6c1d4d6d50d339accd51d22b12a735b7a6605f10feb09cec'
             '1499e419dda72b1604dc5e3959668f3843292ff56bfba78734e31510ba576de0'
-            '9431f9bce14d9140f473d772eca693a1801efbea428de5d9735461d17108fcae'
+            '34e78efe063abc10707e47b4a3ba9d22955bfaf26d5670abb963d8f11f6b22b1'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
@@ -63,7 +64,7 @@ prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
 }
 
 pkgver() { 
@@ -155,6 +156,7 @@ build() {
         --enable-libtheora \
         --disable-libtls \
         --enable-libtwolame \
+        --enable-libuavs3d \
         --enable-libv4l2 \
         --enable-libvidstab \
         --enable-libvmaf \
