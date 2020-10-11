@@ -3,7 +3,7 @@
 # Maintainer: Andrea Feletto <andrea@andreafeletto.com>
 
 pkgname=pandoc-completion
-pkgver=2.10.1
+pkgver=2.11
 pkgrel=1
 pkgdesc='Bash completion for pandoc.'
 arch=('x86_64')

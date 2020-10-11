@@ -1,6 +1,6 @@
 pkgbase = pandoc-completion
 	pkgdesc = Bash completion for pandoc.
-	pkgver = 2.10.1
+	pkgver = 2.11
 	pkgrel = 1
 	url = https://pandoc.org
 	arch = x86_64
