@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 _npmname=webpack-cli
 pkgname=nodejs-webpack-cli
-pkgver=3.3.10
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="CLI for webpack & friends"
 arch=(any)
@@ -10,9 +10,12 @@ license=(MIT)
 depends=('nodejs')
 optdepends=('nodejs-webpack')
 makedepends=('npm')
-source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
+options=(!strip)
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz
+        https://raw.githubusercontent.com/webpack/$_npmname/webpack-cli@$pkgver/LICENSE)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('33f1bb04bce4abc61ec00abb89b8f0e48e5e07e81a90e31ed4ba109ed1668df8')
+sha256sums=('ba846e71caddbf5a48b090f23f8ce91df6c771c72e324d1fb2b9eda6e2af1a7a'
+            '2af12ca8b612a22e6659ae68e0e59ee7ac792718c45524a989b512c49c5f5879')
 
 package() {
   cd $srcdir
@@ -21,7 +24,7 @@ package() {
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
   find "$pkgdir"/usr -type d -exec chmod 755 {} +
-  install -Dm755 "$_npmdir/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
