@@ -1,16 +1,16 @@
 pkgbase = pycharm-community-jre
 	pkgdesc = PyCharm Community Edition IDE for Python with bundled JRE
-	pkgver = 2020.2.2
+	pkgver = 2020.2.3
 	pkgrel = 1
 	url = https://www.jetbrains.com/pycharm/
 	arch = x86_64
 	license = APACHE
 	conflicts = pycharm-community-eap
 	conflicts = pycharm-community-edition
-	source = https://download.jetbrains.com/python/pycharm-community-2020.2.2.tar.gz
+	source = https://download.jetbrains.com/python/pycharm-community-2020.2.3.tar.gz
 	source = pycharm.desktop
 	source = pycharm.sh
-	sha256sums = dbc02bbfecb1526fd36d9d4d751ff159bd3a7abfd77410696fc3162c18853ba8
+	sha256sums = 870071ba911d41052e3b94ad97116940b79b411b4ad0aaccebb83b319e621073
 	sha256sums = f727119ec7c8b96820e80712b1ee342de6a94ff72402e8f2d390cbff702f9b21
 	sha256sums = b6f0518e59c4744ded38de63efba91205bcba406fa74944a1f3a8937566d8acc
 
