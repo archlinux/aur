@@ -3,5 +3,5 @@ Type=Application
 Name=Yass
 Comment=Editor for Ultrastar karaoke songs
 Exec=yass.sh
-Icon=yass.png
+Icon=yass
 Categories=Editor
