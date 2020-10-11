@@ -5,13 +5,13 @@
 # Contributor: Joekey joekey1@gmail.com
 pkgname=trigger
 pkgver=0.6.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Free OpenGL rally car racing game"
 arch=('x86_64' 'aarch64')
 url="https://sourceforge.net/projects/trigger-rally/"
 license=('GPL2')
 conflicts=()
-depends=('physfs' 'freealut' 'glu' xdg-utils 'sdl2_image')
+depends=('physfs' 'tinyxml2' 'freealut' 'glu' xdg-utils 'sdl2_image')
 makedepends=('glew' 'tinyxml2' 'openal')
 install=trigger.install
 source=(https://sourceforge.net/projects/trigger-rally/files/$pkgname-$pkgver/$pkgname-rally-$pkgver.tar.gz
