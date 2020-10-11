@@ -5,8 +5,8 @@
 #               Xantares (AUR user)
 
 pkgname=mingw-w64-capnproto
-pkgver=0.7.0
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Cap'n Proto serialization/RPC system (mingw-w64)"
 arch=('any')
 url='https://capnproto.org/'
@@ -14,7 +14,7 @@ license=('MIT')
 makedepends=(mingw-w64-configure capnproto)
 depends=(mingw-w64-crt)
 source=("https://capnproto.org/capnproto-c++-${pkgver}.tar.gz")
-sha512sums=('9f8fb5753155798fcf9377a87f984a54d9fc5157c41aa11cd94108a773ca22d6e6952657e2d8079c9806f7de06f316c94957329fa52dbab6207aaa3b52348f04')
+sha512sums=('a32dbe6556a95761a5edc55237bd5558cb0ec08127f2fef1712076d5be4cd63e165a5d83b522307336bd3afeed1241f2c1e507830e8f12ac5dec78703a85417f')
 
 options=(!strip !buildflags staticlibs)
 
