@@ -1,4 +1,4 @@
-pkgbase = scapy
+pkgbase = python2-scapy
 	pkgdesc = Powerful interactive packet manipulation program written in Python (library)
 	pkgver = 2.4.4
 	pkgrel = 2

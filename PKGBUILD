@@ -3,7 +3,7 @@
 # Contributor: Ebubekir KARUL <ebubekirkarul@yandex.com>
 # Contributor: s1gma,shirokuro
 
-pkgbase=scapy
+_pkgbase=scapy
 pkgname=python2-scapy
 pkgver=2.4.4
 pkgrel=2
@@ -23,18 +23,18 @@ source=(https://github.com/secdev/scapy/archive/v${pkgver}/${pkgname}-${pkgver}.
 sha256sums=('abe1b7fa606350df90209a60d23df727705097453b3dcb626bf36b3539d44021')
 
 prepare() {
-  cd ${pkgbase}-${pkgver}
+  cd ${_pkgbase}-${pkgver}
   sed -e 's|env python|env python2|g' -i doc/scapy/*.rst run_scapy $(find . -name '*.py')
 }
 
 build() {
-  (cd ${pkgbase}-${pkgver}
+  (cd ${_pkgbase}-${pkgver}
     python2 setup.py build
   )
 }
 
 package() {
-  cd ${pkgbase}-${pkgver}
+  cd ${_pkgbase}-${pkgver}
   python2 setup.py install -O1 --skip-build --root="${pkgdir}" --prefix=/usr
   install -Dm 644 doc/scapy/*.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
   rm -r "${pkgdir}"{/usr/bin,/usr/share/man}
