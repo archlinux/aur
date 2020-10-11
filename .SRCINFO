@@ -7,7 +7,7 @@ pkgbase = eselect-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	source = eselect-git::git://anongit.gentoo.org/proj/eselect.git
+	source = eselect::git://anongit.gentoo.org/proj/eselect.git
 	md5sums = SKIP
 
 pkgname = eselect-git

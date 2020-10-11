@@ -7,7 +7,7 @@ pkgdesc="Gentoo's multi-purpose configuration and management tool"
 url="http://www.gentoo.org/proj/en/eselect/"
 arch=('i686' 'x86_64')
 license=('GPL')
-source=("$pkgname::git://anongit.gentoo.org/proj/eselect.git")
+source=("${pkgname%-git}::git://anongit.gentoo.org/proj/eselect.git")
 makedepends=('git')
 
 build() {
