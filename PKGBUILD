@@ -1,16 +1,16 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=python-ntplib
 _pkgname=${pkgname/python-/}
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Simple interface to query NTP servers from Python"
-url="https://code.google.com/p/ntplib/"
+url="https://github.com/cf-natali/ntplib"
 depends=('python')
 optdepends=()
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/source/n/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('c4621b64d50be9461d9bd9a71ba0b4af06fbbf818bbd483752d95c1a4e273ede')
+source=("https://github.com/cf-natali/${_pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('e822d7142b84d72022b9caaf00f6d2a7541f9822f41e1c133839db1d7957abbe')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
