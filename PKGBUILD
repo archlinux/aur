@@ -1,15 +1,14 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=freeaoe-git
-pkgver=r1112.361729b
+pkgver=1241.55cd0e5
 pkgrel=1
-_apiver=9
 pkgdesc='A free engine capable of running Age of Kings.'
 arch=('x86_64' 'i686')
 url='https://github.com/sandsmark/freeaoe'
 license=('GPL3')
-depends=("genieutils-git>=${_apiver}" 'sfml')
-makedepends=('git' 'miniaudio')
+depends=("genieutils-git>=672" 'sfml')
+makedepends=('git' 'miniaudio-git>=1865')
 conflicts=(freeaoe)
 provides=(freeaoe)
 optdepends=('ageofconquerors-trial-data: Game data files')
@@ -18,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd freeaoe
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
