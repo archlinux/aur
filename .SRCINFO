@@ -30,7 +30,7 @@ pkgbase = mingw-w64-syncthingtray
 	options = !emptydirs
 	source = syncthingtray-1.0.0.tar.gz::https://github.com/Martchus/syncthingtray/archive/v1.0.0.tar.gz
 	source = syncthing::git+https://github.com/Martchus/syncthing.git#branch=libsyncthing-latest
-	sha256sums = 790e5c745bae832acd2e6e4fd0db1b21d3f0bdadf1c11eea995f4631483853e2
+	sha256sums = fe8358c74862511046466d1cbfe216a255ba8d390b464369514e4404e3747b83
 	sha256sums = SKIP
 
 pkgname = mingw-w64-syncthingtray
