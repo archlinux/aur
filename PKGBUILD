@@ -13,7 +13,9 @@ sha256sums=('20ffc3720f4c806285628064d536cbf5a59f05d6fdef92bd06f9fbd694426ce6')
 
 prepare() {
   # Add LDFLAGS to Makefile
-  sed -i.bak "/LDFLAGS =/s/$/ ${LDFLAGS}/" "${pkgname}-${pkgver}/src/Makefile"
+  sed -i "/LDFLAGS =/s/$/ ${LDFLAGS}/" "${pkgname}-${pkgver}/src/Makefile"
+  # Skip chgrp and chmod operations in Makefile
+  sed -i '160s/ifneq/ifeq/' "${pkgname}-${pkgver}/src/Makefile"
 }
 
 build() {
