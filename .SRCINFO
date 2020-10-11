@@ -1,0 +1,15 @@
+pkgbase = nodejs-inspect
+	pkgdesc = Official node.js Inspector and Debugger (for use with node --inspect)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/nodejs/node-inspect
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	options = !emptydirs
+	source = http://registry.npmjs.org/node-inspect/-/node-inspect-2.0.0.tgz
+	sha512sums = bda0cd53a15afefb7c82ffcf57e42879220f85c0671cc88d3ad227c5ca237da82ca5083928ff4796850318958869c6a64fc0208aee75785f9fb818eb136e5aeb
+
+pkgname = nodejs-inspect
+
