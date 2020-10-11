@@ -49,12 +49,12 @@ index e64240ad..025fdef1 100644
 -            environmentService.notificationsUrl = isDev ? 'http://localhost:61840' :
 -                'https://notifications.bitwarden.com'; // window.location.origin + '/notifications';
 -            environmentService.enterpriseUrl = isDev ? 'http://localhost:52313' :
--                'https://enterprise.bitwarden.com'; // window.location.origin + '/enterprise';
+-                'https://portal.bitwarden.com'; // window.location.origin + '/portal';
 -        }
 +        const isDev = false;
 +        environmentService.baseUrl = getBaseUrl();
 +        environmentService.notificationsUrl = environmentService.baseUrl + '/notifications';
-+        environmentService.enterpriseUrl = environmentService.baseUrl + '/enterprise';
++        environmentService.enterpriseUrl = environmentService.baseUrl + '/portal';
          apiService.setUrls({
 -            base: isDev ? null : window.location.origin,
 +            base: isDev ? null : environmentService.baseUrl,
@@ -77,7 +77,7 @@ diff --git a/src/scss/styles.scss b/src/scss/styles.scss
 index 676e275f..ba9888fc 100644
 --- a/src/scss/styles.scss
 +++ b/src/scss/styles.scss
-@@ -1,5 +1,31 @@
+@@ -1,5 +1,34 @@
  @import "../css/webfonts.css";
  
 +/**** START Bitwarden_RS CHANGES ****/
@@ -93,6 +93,9 @@ index 676e275f..ba9888fc 100644
 +/* Hide any link pointing to subscriptions */
 +a[href$="/settings/subscription"] { @extend %bwrs-hide; }
 +
++/* Hide the `Enterprise Single Sign-On` button on the login page */
++a[href$="/sso"] { @extend %bwrs-hide; }
++
 +/* Hide Two-Factor menu in Organization settings */
 +app-org-settings a[href$="/settings/two-factor"] { @extend %bwrs-hide; }
 +
@@ -100,10 +103,10 @@ index 676e275f..ba9888fc 100644
 +app-organization-plans > form > div.form-check { @extend %bwrs-hide; }
 +app-organization-plans > form > h2.mt-5 { @extend %bwrs-hide; }
 +
-+/* Hide Tax Info in Organization settings */
-+app-org-account > div.secondary-header.border-0.mb-0:nth-child(3) { @extend %bwrs-hide; }
-+app-org-account > p { @extend %bwrs-hide; }
-+app-org-account > a.btn.btn-outline-secondary { @extend %bwrs-hide; }
++/* Hide Tax Info and Form in Organization settings */
++app-org-account > div.secondary-header:nth-child(3) { @extend %bwrs-hide; }
++app-org-account > div.secondary-header:nth-child(3) + p { @extend %bwrs-hide; }
++app-org-account > div.secondary-header:nth-child(3) + p + form { @extend %bwrs-hide; }
 +/**** END Bitwarden_RS CHANGES ****/
 +
  $primary: #175DDC;
@@ -113,7 +116,7 @@ diff --git a/webpack.config.js b/webpack.config.js
 index 3391d5ff..c4e2c0b5 100644
 --- a/webpack.config.js
 +++ b/webpack.config.js
-@@ -170,6 +170,7 @@ const config = {
+@@ -176,6 +176,7 @@ const config = {
          },
          minimizer: [
              new TerserPlugin({
