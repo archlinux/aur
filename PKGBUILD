@@ -22,17 +22,17 @@ md5sums=('6eb3a76c7ac58f3f45c879b2f305d4b6'
          'bf2c524f3897cfcfb4315bcd92d4206e'
          '60f64db6bf627015f4747879c4b30fd3'
          '21d1749400802f8fc0669feaf77de683'
-         '04483e69d19e3cf231d1dc3a58b72832'
+         '0ffa4b3c8cefce374df5a1580d90a332'
          '9a8f9ec3b244390b4c17a10494a94d29'
          '879116c683374b2dde291014e44a29fe')
 
 prepare() {
   cd $srcdir/OpenBoard-$pkgver
+  patch -p1 < $srcdir/drop_ThirdParty_repo.patch
   patch -p1 < $srcdir/qchar.patch
   patch -p1 < $srcdir/qwebkit.patch
   patch -p1 < $srcdir/quazip.patch
   patch -p1 < $srcdir/poppler.patch
-  patch -p1 < $srcdir/drop_ThirdParty_repo.patch
 }
 
 build() {
