@@ -1,15 +1,15 @@
 # Maintainer: wisp3rwind <17089248+wisp3rwind@users.noreply.github.com>
 
 pkgname=beets-alternatives-git
-pkgver=0.9.0.r0.g7f89f86
+pkgver=0.10.1.r22.gfb23fe0
 pkgrel=1
 pkgdesc="Beets plugin to manage external files"
 arch=('any')
 url="https://github.com/geigerzaehler/${pkgname%-git}"
 license=('MIT')
-depends=('python' 'beets')
+depends=('python' 'beets>=1.4.7')
 makedepends=('git')
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
 source=("git+${url}.git")
 md5sums=('SKIP')
