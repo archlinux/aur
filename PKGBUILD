@@ -50,7 +50,7 @@ build() {
  
    cmake ../ \
   -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_CXX_2FLAGS="$CXXFLAGS -fPIC" \
+  -DCMAKE_CXX_FLAGS="$CXXFLAGS -fPIC" \
   -DCMAKE_C_FLAGS="$CFLAGS -fPIC" \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DOTB_USE_CURL=ON \
