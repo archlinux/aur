@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium-bin and code-stable-git
 
 pkgname=vscodium-git
-pkgver=1.49.2
+pkgver=1.50.0
 pkgrel=1
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing (git build)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -49,7 +49,7 @@ sha256sums=(
     'SKIP'
     'SKIP'
     '33ea43092cc895b9e6eea9056d72fbe462a450d41b6a1465da22566912110d69'
-    '13d4b1c0d568bf55ad111e5ff85efbcf626d59456901602cef83ddeb88fb2ce9'
+    'd7b067874a2a19a538a2253a6b88cdda48dfdeb7614c3e41d32415eb423e8b0b'
 )
 provides=('code')
 conflicts=(
@@ -95,7 +95,7 @@ build() {
 
     # Export some environment variables that would normally be set by Travis CI.
     export SHOULD_BUILD="yes"
-    export BUILDARCH="${_vscode_arch}"
+    export VSCODE_ARCH="${_vscode_arch}"
     export TRAVIS_OS_NAME="linux"
     export LATEST_MS_COMMIT=$(git rev-list --tags --max-count=1)
     export LATEST_MS_TAG=$(git describe --tags "${LATEST_MS_COMMIT}")
