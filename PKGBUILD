@@ -6,7 +6,7 @@
 _reponame=tagparser
 pkgname=mingw-w64-tagparser
 _name=${pkgname#mingw-w64-}
-pkgver=9.2.0
+pkgver=9.3.0
 pkgrel=1
 arch=('any')
 pkgdesc='C++ library for reading and writing MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska tags (mingw-w64)'
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('mingw-w64-crt' 'mingw-w64-c++utilities>=4.5.0' 'mingw-w64-zlib')
 optdepends=("$_name-doc: API documentation")
 checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine' 'mingw-w64-openssl')
-makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
+makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 sha256sums=('05538d4e034f5f008f1b253b7612b6519bb98d566347045bc3b76d5a3b5a7830')
@@ -45,14 +45,15 @@ build() {
       msg2 "${_arch}-${_cfg}"
       mkdir -p "build-${_arch}-${_cfg}" && pushd "build-${_arch}-${_cfg}"
       ${_arch}-cmake \
+        -G Ninja \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" \
         -DCONFIGURATION_NAME:STRING="${_cfg}" \
         -DCONFIGURATION_PACKAGE_SUFFIX:STRING="-${_cfg}" \
-	-DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
+        -DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
         ${_config_flags[$_cfg]} \
         ../
-      make
+      ninja
       popd
     done
   done
@@ -71,7 +72,8 @@ check() {
     for _cfg in 'static'; do
       msg2 "${_arch}-${_cfg}"
       pushd "build-${_arch}-${_cfg}"
-      make WINEPATH="/usr/${_arch}/bin" WINEDEBUG=-all check
+      export WINEPATH="/usr/${_arch}/bin" WINEDEBUG=-all
+      ninja check
       popd
     done
   done
@@ -84,7 +86,7 @@ package() {
     for _cfg in "${_configurations[@]}"; do
       msg2 "${_arch}-${_cfg}"
       pushd "build-${_arch}-${_cfg}"
-      make DESTDIR="${pkgdir}" install-mingw-w64-strip
+      DESTDIR="${pkgdir}" ninja install-mingw-w64-strip
       popd
     done
   done
