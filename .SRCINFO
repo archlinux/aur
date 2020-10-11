@@ -7,7 +7,6 @@ pkgbase = enroute-git
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = clang
 	depends = qt5-location
 	depends = hicolor-icon-theme
