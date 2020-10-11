@@ -1,7 +1,7 @@
 pkgbase = librearp-git
 	pkgdesc = A pattern-based arpeggio generator plugin
-	pkgver = r143.d24d06f
-	pkgrel = 2
+	pkgver = r150.11ca65f
+	pkgrel = 1
 	url = https://gitlab.com/LibreArp/LibreArp.git
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,6 @@ pkgbase = librearp-git
 	depends = alsa-lib
 	depends = gcc-libs
 	depends = glibc
-	depends = libglvnd
 	depends = libx11
 	depends = libxext
 	depends = libxinerama

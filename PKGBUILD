@@ -1,13 +1,13 @@
 # Maintainer: Patrick Desaulniers <patrick dot desaulniers36 at gmail dot com>
 
 pkgname=librearp-git
-pkgver=r143.d24d06f
-pkgrel=2
+pkgver=r150.11ca65f
+pkgrel=1
 pkgdesc="A pattern-based arpeggio generator plugin"
 arch=('x86_64')
 url="https://gitlab.com/LibreArp/LibreArp.git"
 license=('GPL')
-depends=('freetype2' 'alsa-lib' 'gcc-libs' 'glibc' 'libglvnd' 'libx11' 'libxext' 'libxinerama' 'curl')
+depends=('freetype2' 'alsa-lib' 'gcc-libs' 'glibc' 'libx11' 'libxext' 'libxinerama' 'curl')
 makedepends=('jack' 'libxcursor' 'git')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
@@ -30,8 +30,7 @@ build() {
     make -C ./Vendor/juce/extras/Projucer/Builds/LinuxMakefile
     ./Vendor/juce/extras/Projucer/Builds/LinuxMakefile/build/Projucer --resave LibreArp.jucer
 
-    # FIXME
-    CPPFLAGS="$CPPFLAGS -I ../../Vendor/fst/" CONFIG="Release_64" make -C Builds/LinuxMakefile
+    CONFIG="Release_64" make -C Builds/LinuxMakefile
 }
 
 package() {
