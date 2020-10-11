@@ -1,6 +1,6 @@
 pkgbase = universal-ctags
 	pkgdesc = Generates an index (or tag) file of language objects found in source files
-	pkgver = p5.9.20201011.0
+	pkgver = 5.9.20201011.0
 	pkgrel = 1
 	url = https://ctags.io
 	arch = x86_64
