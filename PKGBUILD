@@ -40,12 +40,12 @@
 # This package should probably follow chutzpah@gentoo's patches in the future
 
 pkgname=openssh-hpn
-_openssh_ver=8.3p1
-_hpn_ver=hpn14v22
+_openssh_ver=8.4p1
+_hpn_ver=hpn14v23
 #_pkgver="`sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver}`_new"
 _pkgver="`sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver}`"
 pkgver="${_openssh_ver}.${_hpn_ver}"
-pkgrel=2
+pkgrel=1
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')
@@ -77,7 +77,7 @@ backup=('etc/ssh/ssh_config'
         'etc/pam.d/sshd')
 
 sha256sums=(
-  '99eb35ef529859e082dfdf004d227ad3d080e305782b1864531e1f877bdcc98d'
+  'cfb28b4e72f7e6e08bf7bb042c4d38296b7720e6462a683b9b9186150b6506a1'
   '007a8888855570296c36716df18e986b7265c283e8fc8f6dfd4b3c411905fdb3'
   #'6c6deb799fc918b4d90899d664a23b3a99e2973d61b5a2cf68e1ea9a6604ca9a'
   #'57bb8c4800afc5314ad1f3ac24bc838f1f63c626171d3c5ad4b843bfef2391fe'
@@ -91,7 +91,7 @@ sha256sums=(
 )
 
 b2sums=(
-  '9ba0717bee12cd3b9d5eadbdce539b75bf0ab4fc48f7199e8d78815e5ac2e984181d883dd38a20f3cb7dc2b94726bf3510f5bee57f64c5e6f3c6f8a2a7151fc1'
+  '1851fda79a80410b7628584e914c659d9694dd84118b64ef36e08d8b96a5a57265d3e06f381b68e95566078ab2f9faad485f951e481ff0b56546f5178d0163be'
   '1e6c8d39052bdc268c584488341e260a2695d4b9afabca41919710bb34833dd580ff1813c01b8ba91f2629273c8101ce0ed3b2749dabce054137b4ef37b2a548'
   #'051b7c350333ce57a4a5e57ba0f693aed4491a241fd9e65cf2a861773571b44b8d4ffa06506a0c4a05399a46108ec05321e69f210637f32e25c76e683b224505'
   #'b46019363a19e2a0c397d66b6f1dc24d1c1219372b7fd699d92a9c382b24b02437b37cb12b3bba7e3ca97cfe98170ad21fff5871daf2070bc3d175fe0b31680b'
