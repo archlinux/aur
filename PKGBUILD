@@ -1,6 +1,6 @@
 # Maintainer: igo95862 at yandex dot ru
 pkgname=bubblejail
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Bubblewrap based sandboxing utility"
 arch=('any')
@@ -8,6 +8,10 @@ url="https://github.com/igo95862/bubblejail"
 license=('GPL3+')
 depends=('python' 'python-xdg' 'bubblewrap' 'python-toml' 'xdg-dbus-proxy' 'hicolor-icon-theme' 'python-pyqt5')
 conflicts=('bubblejail-git')
+optdepends=(
+	'bash-completion: completions for bash shell'
+	'fish: completions for fish shell'
+	)
 makedepends=('meson')
 source=(
 	"$url/releases/download/$pkgver/bubblejail-$pkgver.tar.gz"
