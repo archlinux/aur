@@ -3,7 +3,7 @@
 pkgbase=kodi-standalone-service
 pkgname=(kodi-standalone-x11-service kodi-standalone-gbm-service kodi-standalone-wayland-service)
 pkgver=1.107
-pkgrel=4
+pkgrel=5
 pkgdesc="Systemd service to run kodi in stand-alone mode without a DE"
 # Do NOT attempt to use this package on Arch ARM! This is only for x86_64.
 # You have been warned.
@@ -17,6 +17,7 @@ b2sums=('e28940bb2a19e55e3ff0115f45416235532272473a7f6e07d96f3d8b6162cbf67581347
 package_kodi-standalone-x11-service() {
   replaces=('kodi-standalone-service')
   conflicts=('kodi-standalone-service')
+  provides=('kodi-standalone-service')
   depends=('kodi-x11' 'polkit' 'xorg-server' 'xorg-xinit')
 
   cd "$pkgbase-$pkgver"
@@ -27,6 +28,7 @@ package_kodi-standalone-x11-service() {
 
 package_kodi-standalone-gbm-service() {
   depends=('kodi-gbm' 'polkit' 'libinput')
+  provides=('kodi-standalone-service')
 
   cd "$pkgbase-$pkgver"
   install -Dm644 init/kodi-gbm.service "$pkgdir/usr/lib/systemd/system/kodi-gbm.service"
@@ -36,6 +38,7 @@ package_kodi-standalone-gbm-service() {
 
 package_kodi-standalone-wayland-service() {
   depends=('kodi-wayland' 'polkit' 'libinput' 'cage')
+  provides=('kodi-standalone-service')
 
   cd "$pkgbase-$pkgver"
   install -Dm644 init/kodi-wayland.service "$pkgdir/usr/lib/systemd/system/kodi-wayland.service"
