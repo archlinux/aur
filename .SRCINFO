@@ -1,6 +1,6 @@
 pkgbase = hoku-project
 	pkgdesc = A basic Japanese TTS.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/acedron/hoku-project
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = hoku-project
 	depends = python3
 	depends = sox
 	depends = alsa-utils
-	source = hoku-project-1.0.2.tar.xz::https://github.com/acedron/hoku-project/releases/download/v1.0.2/hoku-project-1.0.2.tar.xz
+	source = hoku-project-1.0.3.tar.xz::https://github.com/acedron/hoku-project/releases/download/v1.0.3/hoku-project-1.0.3.tar.xz
 	md5sums = SKIP
 
 pkgname = hoku-project
