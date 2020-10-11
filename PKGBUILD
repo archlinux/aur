@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/Merrit/nyrna"
 license=('GPL3 or any later version')
 depends=('gtk3' 'libappindicator-gtk3' 'zenity')
-makedepends=('go' 'gcc')
+makedepends=('go' 'gcc' 'libxkbcommon-x11')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Merrit/nyrna/archive/v$pkgver.tar.gz")
 sha256sums=('ba6e81f9a91e74025ad2e1a0c027b15a13eb61b212107bc77fc479768ccf0fd9')
 
