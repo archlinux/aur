@@ -26,7 +26,7 @@
 
 
 pkgname=archey4
-pkgver=v4.8.0
+pkgver=v4.8.1
 pkgrel=1
 pkgdesc="A simple system information tool written in Python"
 arch=('any')
@@ -45,8 +45,8 @@ conflicts=('archey-git' 'archey2' 'archey3-git' 'pyarchey')
 install="${pkgname}.install"
 backup=("etc/${pkgname}/config.json")
 source=("${pkgname}_${pkgver}-${pkgrel}.tar.gz::https://github.com/HorlogeSkynet/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('9f359a60134f28b9d9569b5913c61f7a')
-sha1sums=('cb376135b640ad89660e2c800b2bdbc12d8d36fc')
+md5sums=('9f74e0a67c6dba7b4936eeaecb895e26')
+sha1sums=('86a300fa9f30f9b87b0995ca9d4ef17b32ab34e7')
 
 
 build() {
