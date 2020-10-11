@@ -2,33 +2,27 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="caja-rename"
-pkgver="20.1.25.42"
-pkgrel="1"
+pkgver="20.1.26"
+pkgrel=1
 pkgdesc="Batch renaming extension for Caja"
 arch=("any")
 url="https://tari.in/www/software/caja-rename"
 license=("GPL3")
 depends=("caja" "python-caja" "python" "python-gobject" "gobject-introspection" "gtk3")
-makedepends=("breezy" "python-setuptools" "python-polib")
+makedepends=("python-setuptools" "python-polib")
 install="${pkgname}.install"
-source=("bzr+lp:${pkgname/\-/}")
-md5sums=("SKIP")
+source=("https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
+md5sums=("bbf555e818f62a65f4c8b9765ee5e690")
 options=("!emptydirs")
-
-pkgver()
-{
-    cd ${srcdir}/${pkgname/\-/}
-    echo "$(cat ${pkgname/\-/}/appdata.py | grep APPVERSION | sed 's| ||g' | sed "s|'||g" | cut -f '2' -d '=').$(bzr revno)"
-}
 
 build()
 {
-    cd ${srcdir}/${pkgname/\-/}
+    cd ${srcdir}/${pkgname}-${pkgver}
     python setup.py build
 }
 
 package()
 {
-    cd ${srcdir}/${pkgname/\-/}
+    cd ${srcdir}/${pkgname}-${pkgver}
     python setup.py install --root="${pkgdir}" --optimize=1
 }
