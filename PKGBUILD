@@ -13,7 +13,6 @@ source=(
 makedepends=('npm' 'git')
 optdepends=('libappindicator-gtk3: for tray icon')
 conflicts=('joplin')
-replaces=('joplin')
 url="https://joplinapp.org"
 license=('MIT')
 sha256sums=('fdda15d7eba2a8ab9a0f10191fc2a3cc9e92ab43b5a48ecf12d29672c48819dc'
