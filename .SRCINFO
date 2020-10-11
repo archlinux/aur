@@ -7,9 +7,9 @@ pkgbase = listen1-desktop-appimage
 	license = MIT
 	provides = listen1
 	conflicts = listen1
-	noextract = Listen1_2.13.0_linux_x86_64.AppImage
+	noextract = listen1_2.13.0_linux_x86_64.AppImage
 	options = !strip
-	source = https://github.com/listen1/listen1_desktop/releases/download/v2.13.0/Listen1_2.13.0_linux_x86_64.AppImage
+	source = https://github.com/listen1/listen1_desktop/releases/download/v2.13.0/listen1_2.13.0_linux_x86_64.AppImage
 	sha256sums = 59c44d55fdfb2264be2c3826a562d8c890f9be79e97d9ee77b0f5ff2c4651bb4
 
 pkgname = listen1-desktop-appimage
