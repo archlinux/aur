@@ -9,8 +9,8 @@ arch=('i686' 'x86_64')
 url='https://www.reddit.com/r/elementaryos/comments/irt66g/instance_controls_close_switch_to_or_minimize/'
 license=('GPL3')
 groups=('pantheon-qq')
-depends=('libgee' 'bamf' 'python')
-makedepends=('git' 'gnome-common' 'meson' 'vala' 'gnome-menus' 'libdbusmenu-gtk3' 'libgranite.so=5-64')
+depends=('bamf' 'gnome-menus' lib{gee,granite.so} 'python')
+makedepends=('git' gnome-{common,menus} lib{dbusmenu-gtk3,granite.so} 'meson' 'vala')
 conflicts=('plank')
 provides=('plank')
 source=(pantheon-dock::git+$url
