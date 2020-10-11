@@ -1,13 +1,13 @@
 pkgbase = wasp
 	pkgdesc = Distributed MQTT Broker, written in go.
-	pkgver = 2.1.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/vx-labs/wasp/
 	arch = x86_64
 	license = GPL
 	makedepends = go
-	source = https://github.com/vx-labs/wasp//archive/v2.1.0.tar.gz
-	sha256sums = 896f0c3f1adad4b4fdc0da9c35b2648acc20f2bcf9cd92b6cc78bf4faa908022
+	source = https://github.com/vx-labs/wasp//archive/v3.0.0.tar.gz
+	sha256sums = bdcb65ea7e1f5bf615e84f4549f576927005e31483b486217911679208f11be1
 
 pkgname = wasp
 
