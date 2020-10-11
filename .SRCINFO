@@ -1,5 +1,5 @@
 pkgbase = gnome-terminal-transparency
-	pkgdesc = The GNOME Terminal Emulator, with background transparency
+	pkgdesc = The GNOME Terminal Emulator with background transparency
 	pkgver = 3.38.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal
