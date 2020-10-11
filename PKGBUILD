@@ -6,7 +6,7 @@
 
 pkgname=mingw-w64-capnproto
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cap'n Proto serialization/RPC system (mingw-w64)"
 arch=('any')
 url='https://capnproto.org/'
@@ -25,7 +25,7 @@ build() {
 	cd "$srcdir/capnproto-c++-$pkgver"
 	for _arch in ${_architectures[@]}; do
 		mkdir -p build-${_arch} && pushd build-${_arch}
-		${_arch}-configure --with-external-capnp --enable-shared --enable-static --disable-reflection
+		${_arch}-configure --with-external-capnp --disable-shared --enable-static --disable-reflection
 		make
 		popd
 	done
@@ -35,8 +35,7 @@ package() {
 	for _arch in ${_architectures[@]}; do
 		cd "${srcdir}/capnproto-c++-${pkgver}/build-${_arch}"
 		make DESTDIR="$pkgdir" install
-		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/lib/*.dll
-		${_arch}-strip --strip-debug    "$pkgdir"/usr/${_arch}/lib/*.a
+		${_arch}-strip --strip-debug "$pkgdir"/usr/${_arch}/lib/*.a
 	done
 }
 
