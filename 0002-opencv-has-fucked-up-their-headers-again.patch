@@ -1,0 +1,220 @@
+From ee515c595d05ddd5ed86a65ae5464fc84fa4a2b1 Mon Sep 17 00:00:00 2001
+From: "Martin T. H. Sandsmark" <martin.sandsmark@kde.org>
+Date: Sun, 11 Oct 2020 13:37:41 +0200
+Subject: [PATCH 2/6] opencv has fucked up their headers again
+
+---
+ include/imgfeatures.h | 2 +-
+ include/kdtree.h      | 2 +-
+ include/sift.h        | 2 +-
+ include/utils.h       | 2 +-
+ include/xform.h       | 2 +-
+ src/dspfeat.c         | 4 ++--
+ src/imgfeatures.c     | 2 +-
+ src/kdtree.c          | 2 --
+ src/match.c           | 5 ++---
+ src/match_num.c       | 5 ++---
+ src/sift.c            | 3 ---
+ src/siftfeat.c        | 4 +++-
+ src/utils.c           | 4 +---
+ src/xform.c           | 2 --
+ 14 files changed, 16 insertions(+), 25 deletions(-)
+
+diff --git a/include/imgfeatures.h b/include/imgfeatures.h
+index 1d8224e..f2523bd 100644
+--- a/include/imgfeatures.h
++++ b/include/imgfeatures.h
+@@ -9,7 +9,7 @@
+ #ifndef IMGFEATURES_H
+ #define IMGFEATURES_H
+ 
+-#include "cxcore.h"
++#include <opencv2/core/core_c.h>
+ 
+ /** FEATURE_OXFD <BR> FEATURE_LOWE */
+ enum feature_type
+diff --git a/include/kdtree.h b/include/kdtree.h
+index d244a85..980c1e8 100644
+--- a/include/kdtree.h
++++ b/include/kdtree.h
+@@ -18,7 +18,7 @@
+ #ifndef KDTREE_H
+ #define KDTREE_H
+ 
+-#include "cxcore.h"
++#include <opencv2/core/core_c.h>
+ 
+ 
+ /********************************* Structures ********************************/
+diff --git a/include/sift.h b/include/sift.h
+index 5711448..cc621c3 100644
+--- a/include/sift.h
++++ b/include/sift.h
+@@ -20,7 +20,7 @@
+ #ifndef SIFT_H
+ #define SIFT_H
+ 
+-#include "cxcore.h"
++#include <opencv2/core/core_c.h>
+ 
+ /******************************** Structures *********************************/
+ 
+diff --git a/include/utils.h b/include/utils.h
+index af2d8eb..234685c 100644
+--- a/include/utils.h
++++ b/include/utils.h
+@@ -9,7 +9,7 @@
+ #ifndef UTILS_H
+ #define UTILS_H
+ 
+-#include "cxcore.h"
++#include <opencv2/imgproc/imgproc_c.h>
+ 
+ #include <stdio.h>
+ #include <dirent.h>
+diff --git a/include/xform.h b/include/xform.h
+index baca8d5..b4d70c8 100644
+--- a/include/xform.h
++++ b/include/xform.h
+@@ -9,7 +9,7 @@
+ #ifndef XFORM_H
+ #define XFORM_H
+ 
+-#include <cxcore.h>
++#include <opencv2/core/core_c.h>
+ 
+ 
+ /********************************** Structures *******************************/
+diff --git a/src/dspfeat.c b/src/dspfeat.c
+index ec16aec..a7e05d8 100644
+--- a/src/dspfeat.c
++++ b/src/dspfeat.c
+@@ -9,8 +9,8 @@
+ #include "imgfeatures.h"
+ #include "utils.h"
+ 
+-#include <cxcore.h>
+-#include <highgui.h>
++#include <opencv2/highgui/highgui_c.h>
++#include <opencv2/imgcodecs.hpp>
+ 
+ #include <unistd.h>
+ 
+diff --git a/src/imgfeatures.c b/src/imgfeatures.c
+index 4e518d4..6b011d6 100644
+--- a/src/imgfeatures.c
++++ b/src/imgfeatures.c
+@@ -9,7 +9,7 @@
+ #include "utils.h"
+ #include "imgfeatures.h"
+ 
+-#include <cxcore.h>
++#include <opencv2/imgproc.hpp>
+ 
+ static int import_oxfd_features( char*, struct feature** );
+ static int export_oxfd_features( char*, struct feature*, int );
+diff --git a/src/kdtree.c b/src/kdtree.c
+index a7bdb06..c80ba76 100644
+--- a/src/kdtree.c
++++ b/src/kdtree.c
+@@ -19,8 +19,6 @@
+ #include "imgfeatures.h"
+ #include "utils.h"
+ 
+-#include <cxcore.h>
+-
+ #include <stdio.h>
+ 
+ struct bbf_data
+diff --git a/src/match.c b/src/match.c
+index fe6f360..badeb51 100644
+--- a/src/match.c
++++ b/src/match.c
+@@ -12,9 +12,8 @@
+ #include "utils.h"
+ #include "xform.h"
+ 
+-#include <cv.h>
+-#include <cxcore.h>
+-#include <highgui.h>
++#include <opencv2/highgui/highgui_c.h>
++#include <opencv2/imgcodecs.hpp>
+ 
+ #include <stdio.h>
+ 
+diff --git a/src/match_num.c b/src/match_num.c
+index 7a74cac..2da31c8 100644
+--- a/src/match_num.c
++++ b/src/match_num.c
+@@ -12,9 +12,8 @@
+ #include "utils.h"
+ #include "xform.h"
+ 
+-#include <cv.h>
+-#include <cxcore.h>
+-#include <highgui.h>
++#include <opencv2/highgui/highgui_c.h>
++#include <opencv2/imgcodecs.hpp>
+ 
+ #include <stdio.h>
+ #include <pthread.h>
+diff --git a/src/sift.c b/src/sift.c
+index e0cb6e3..86c9274 100644
+--- a/src/sift.c
++++ b/src/sift.c
+@@ -21,9 +21,6 @@
+ #include "imgfeatures.h"
+ #include "utils.h"
+ 
+-#include <cxcore.h>
+-#include <cv.h>
+-
+ /************************* Local Function Prototypes *************************/
+ 
+ static IplImage* create_init_img( IplImage*, int, double );
+diff --git a/src/siftfeat.c b/src/siftfeat.c
+index 0e90ed7..0b841d7 100644
+--- a/src/siftfeat.c
++++ b/src/siftfeat.c
+@@ -19,7 +19,9 @@
+ #include "imgfeatures.h"
+ #include "utils.h"
+ 
+-#include <highgui.h>
++#include <opencv2/highgui/highgui_c.h>
++#include <opencv2/core/core_c.h>
++#include <opencv2/imgcodecs.hpp>
+ 
+ #include <unistd.h>
+ 
+diff --git a/src/utils.c b/src/utils.c
+index 716ac3c..1923fca 100644
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -8,9 +8,7 @@
+ 
+ #include "utils.h"
+ 
+-#include <cv.h>
+-#include <cxcore.h>
+-#include <highgui.h>
++#include <opencv2/highgui/highgui_c.h>
+ 
+ #include <gdk/gdk.h>
+ #include <gtk/gtk.h>
+diff --git a/src/xform.c b/src/xform.c
+index 1560994..eb45d17 100644
+--- a/src/xform.c
++++ b/src/xform.c
+@@ -11,8 +11,6 @@
+ #include "imgfeatures.h"
+ #include "utils.h"
+ 
+-#include <cxcore.h>
+-
+ #include <stdlib.h>
+ #include <time.h>
+ 
+-- 
+2.28.0
+

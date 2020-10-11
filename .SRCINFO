@@ -1,0 +1,29 @@
+pkgbase = opensift-git
+	pkgdesc = Open-Source SIFT Library
+	pkgver = r10.195d764
+	pkgrel = 1
+	url = https://github.com/robwhess/opensift
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = opencv
+	provides = opensift
+	conflicts = opensift
+	source = git://github.com/robwhess/opensift.git
+	source = 0001-the-opencv4-C-API-is-broken.patch
+	source = 0002-opencv-has-fucked-up-their-headers-again.patch
+	source = 0003-opencv-broke-CV_RGB.patch
+	source = 0004-opencv-hates-developers-and-suddenly-broke-cvLoadIma.patch
+	source = 0005-opencv-has-broken-their-pkgconfig.patch
+	source = 0006-build-shared-library.patch
+	md5sums = SKIP
+	md5sums = 3e1c6c04a5f5f5a924a80634d6ef97b6
+	md5sums = 74764a8d0db7c345e5c6ca292d2bcb3a
+	md5sums = f6bbeec038d119732806465dc5f23b04
+	md5sums = 8e9a1dde8e6027a8d71e04414b743560
+	md5sums = 20b51fa05d4358c6b2246230d56ebf8c
+	md5sums = 927d22d3e6c5e95bafc1dfa3e2d638c2
+
+pkgname = opensift-git
+

@@ -1,0 +1,27 @@
+From ec023e8c48d33c3c53875deed4c7f65c7a4b2184 Mon Sep 17 00:00:00 2001
+From: "Martin T. H. Sandsmark" <martin.sandsmark@kde.org>
+Date: Sun, 11 Oct 2020 13:40:14 +0200
+Subject: [PATCH 5/6] opencv has broken their pkgconfig
+
+---
+ src/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index 4099907..f466043 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -3,8 +3,8 @@ CFLAGS	+= -fpermissive -Wno-deprecated-declarations -Wno-write-strings
+ BIN_DIR = ../bin
+ INC_DIR	= ../include
+ LIB_DIR	= ../lib
+-INCL	= -I$(INC_DIR) `pkg-config --cflags opencv gtk+-2.0`
+-LIBS	= -L$(LIB_DIR) -lopensift -lm `pkg-config --libs opencv gtk+-2.0`
++INCL	= -I$(INC_DIR) `pkg-config --cflags opencv4 gtk+-2.0`
++LIBS	= -L$(LIB_DIR) -lopensift -lm -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc -lopencv_core  `pkg-config --libs gtk+-2.0`
+ OBJ	= imgfeatures.o utils.o sift.o kdtree.o minpq.o xform.o
+ BIN     = siftfeat match dspfeat match_num
+ 
+-- 
+2.28.0
+

@@ -1,0 +1,91 @@
+From 2d93308d4358989605ce23341f4f3a3f4ddc2794 Mon Sep 17 00:00:00 2001
+From: "Martin T. H. Sandsmark" <martin.sandsmark@kde.org>
+Date: Sun, 11 Oct 2020 13:36:54 +0200
+Subject: [PATCH 1/6] the opencv4 C API is broken
+
+---
+ Makefile        | 2 +-
+ include/utils.h | 2 +-
+ src/Makefile    | 4 ++--
+ src/dspfeat.c   | 2 +-
+ src/siftfeat.c  | 2 +-
+ src/utils.c     | 2 +-
+ 6 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 6b7b7b7..339bde6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,4 @@
+-CC	= gcc
++CC	= g++
+ CFLAGS	+= -O3
+ BIN_DIR	= ./bin
+ SRC_DIR	= ./src
+diff --git a/include/utils.h b/include/utils.h
+index 770067b..af2d8eb 100644
+--- a/include/utils.h
++++ b/include/utils.h
+@@ -156,7 +156,7 @@ extern char* prepend_path( const char* path, const char* file );
+ 
+    @return Returns the basename of \a pathname.
+ */
+-extern char* basename( const char* pathname );
++extern char* sift_basename( const char* pathname );
+ 
+ 
+ /**
+diff --git a/src/Makefile b/src/Makefile
+index 407118d..4099907 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -1,5 +1,5 @@
+-CC	= gcc
+-CFLAGS	+=
++CC	= g++
++CFLAGS	+= -fpermissive -Wno-deprecated-declarations -Wno-write-strings
+ BIN_DIR = ../bin
+ INC_DIR	= ../include
+ LIB_DIR	= ../lib
+diff --git a/src/dspfeat.c b/src/dspfeat.c
+index 9aeba1c..ec16aec 100644
+--- a/src/dspfeat.c
++++ b/src/dspfeat.c
+@@ -85,7 +85,7 @@ static void usage( char* name )
+ */
+ static void arg_parse( int argc, char** argv )
+ {
+-  pname = basename( argv[0] );
++  pname = sift_basename( argv[0] );
+   int arg;
+   while( 1 )
+     {
+diff --git a/src/siftfeat.c b/src/siftfeat.c
+index fec82a7..0e90ed7 100644
+--- a/src/siftfeat.c
++++ b/src/siftfeat.c
+@@ -126,7 +126,7 @@ static void usage( char* name )
+ static void arg_parse( int argc, char** argv )
+ {
+   //extract program name from command line (remove path, if present)
+-  pname = basename( argv[0] );
++  pname = sift_basename( argv[0] );
+ 
+   //parse commandline options
+   while( 1 )
+diff --git a/src/utils.c b/src/utils.c
+index b819fc6..716ac3c 100644
+--- a/src/utils.c
++++ b/src/utils.c
+@@ -105,7 +105,7 @@ char* prepend_path( const char* path, const char* file )
+   
+   @return Returns the basename of \a pathname.
+ */
+-char* basename( const char* pathname )
++char* sift_basename( const char* pathname )
+ {
+   char* base, * last_slash;
+ 
+-- 
+2.28.0
+

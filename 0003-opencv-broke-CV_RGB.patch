@@ -1,0 +1,75 @@
+From 52c0de558a850cdf527b38b79237b61763ff4e7e Mon Sep 17 00:00:00 2001
+From: "Martin T. H. Sandsmark" <martin.sandsmark@kde.org>
+Date: Sun, 11 Oct 2020 13:38:21 +0200
+Subject: [PATCH 3/6] opencv broke CV_RGB
+
+---
+ include/imgfeatures.h | 4 ++--
+ src/imgfeatures.c     | 6 +++---
+ src/match.c           | 4 ++--
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/include/imgfeatures.h b/include/imgfeatures.h
+index f2523bd..7e10b09 100644
+--- a/include/imgfeatures.h
++++ b/include/imgfeatures.h
+@@ -28,8 +28,8 @@ enum feature_match_type
+ 
+ 
+ /* colors in which to display different feature types */
+-#define FEATURE_OXFD_COLOR CV_RGB(255,255,0)
+-#define FEATURE_LOWE_COLOR CV_RGB(255,0,255)
++#define FEATURE_OXFD_COLOR {255,255,0}
++#define FEATURE_LOWE_COLOR {255,0,255}
+ 
+ /** max feature descriptor length */
+ #define FEATURE_MAX_D 128
+diff --git a/src/imgfeatures.c b/src/imgfeatures.c
+index 6b011d6..e417563 100644
+--- a/src/imgfeatures.c
++++ b/src/imgfeatures.c
+@@ -336,7 +336,7 @@ static int export_oxfd_features( char* filename, struct feature* feat, int n )
+ */
+ static void draw_oxfd_features( IplImage* img, struct feature* feat, int n )
+ {
+-  CvScalar color = CV_RGB( 255, 255, 255 );
++  CvScalar color ({ 255, 255, 255 });
+   int i;
+ 
+   if( img-> nChannels > 1 )
+@@ -374,7 +374,7 @@ static void draw_oxfd_feature( IplImage* img, struct feature* feat,
+   alpha *= 180 / M_PI;
+ 
+   cvEllipse( img, cvPoint( feat->x, feat->y ), cvSize( l2, l1 ), alpha,
+-	     0, 360, CV_RGB(0,0,0), 3, 8, 0 );
++	     0, 360, {0,0,0}, 3, 8, 0 );
+   cvEllipse( img, cvPoint( feat->x, feat->y ), cvSize( l2, l1 ), alpha,
+ 	     0, 360, color, 1, 8, 0 );
+   cvLine( img, cvPoint( feat->x+2, feat->y ), cvPoint( feat->x-2, feat->y ),
+@@ -543,7 +543,7 @@ static int export_lowe_features( char* filename, struct feature* feat, int n )
+ */
+ static void draw_lowe_features( IplImage* img, struct feature* feat, int n )
+ {
+-  CvScalar color = CV_RGB( 255, 255, 255 );
++  CvScalar color ({ 255, 255, 255 });
+   int i;
+ 
+   if( img-> nChannels > 1 )
+diff --git a/src/match.c b/src/match.c
+index badeb51..d11d9b4 100644
+--- a/src/match.c
++++ b/src/match.c
+@@ -64,8 +64,8 @@ int main( int argc, char** argv )
+ 	    {
+ 	      pt1 = cvPoint( cvRound( feat->x ), cvRound( feat->y ) );
+ 	      pt2 = cvPoint( cvRound( nbrs[0]->x ), cvRound( nbrs[0]->y ) );
+-	      pt2.y += img1->height;
+-	      cvLine( stacked, pt1, pt2, CV_RGB(255,0,255), 1, 8, 0 );
++	      pt2.y += img1.height;
++	      cvLine( stacked, pt1, pt2, {255,0,255}, 1, 8, 0 );
+ 	      m++;
+ 	      feat1[i].fwd_match = nbrs[0];
+ 	    }
+-- 
+2.28.0
+
