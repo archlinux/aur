@@ -2,7 +2,7 @@
 # Contributor: Robert Booster <boosterdev at linuxmail dot org>
 
 pkgname=zuki-themes
-pkgver=3.36_3
+pkgver=3.36_4
 pkgrel=1
 pkgdesc="Zuki themes for GNOME, Xfce and more."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=(ninja meson sassc)
 optdepends=(ttf-roboto)
 conflicts=(zukitwo-themes-git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lassekongo83/zuki-themes/archive/v${pkgver//_/-}.tar.gz")
-sha256sums=('aca7a05e1e8ad334ce5fba0c821fad2bcd4dd41b95d1ba3b059aa1762561409b')
+sha256sums=('5416e966e69c3e7ab6573e7a4315633b5275fce848ded40abee443174404f661')
 
 build() {
     cd $pkgname-${pkgver//_/-}
