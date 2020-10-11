@@ -18,7 +18,7 @@ pkgbase = cpeditor
 	optdepends = python: execute Python support
 	optdepends = xterm: detached run support
 	conflicts = cpeditor-git
-	source = https://github.com/cpeditor/cpeditor/releases/download/6.6.5/cpeditor-@PROJECT_VERSION@-full-source.tar.gz
+	source = https://github.com/cpeditor/cpeditor/releases/download/6.6.5/cpeditor-6.6.5-full-source.tar.gz
 	sha256sums = 889c1f655813996f772dc66315be92131c1667be952ebecf3020445f5796ead9
 
 pkgname = cpeditor
