@@ -28,28 +28,24 @@ md5sums=('SKIP'
          '5a8e609f8cbdaef0f7bd0004924da503')
 
 
-
 prepare() {
   cd "$srcdir/$_pkgname"
   local patch97=0
 
-  local red='\033[0;31m'
-  local reset='\033[0m' # No Color
-
-  msg2 "${red}NOTE:${reset}"
+  warning "NOTE:"
 
   if [[ "$VFS0097" == 1 ]]; then
     patch97=1
-    msg2 "${red}Applying patch for 138a:0097 since VFS0097=1 was found in the environment${reset}"
+    warning "Applying patch for 138a:0097 since VFS0097=1 was found in the environment"
   elif [[ "$VFS0097" == 0 ]]; then
     patch97=0
-    msg2 "${red}Building for 138a:0090 as requested. If you wish to enable patches for 138a:0097, export VFS0097=1${reset}"
+    warning "Building for 138a:0090 as requested. If you wish to enable patches for 138a:0097, export VFS0097=1"
   elif lsusb | grep -q "138a:0097"; then
     patch97=1
-    msg2 "${red}VFS0097 fingerprint reader detected - applying patch for 138a:0097${reset}"
-    msg2 "${red}If you wish to build for 138a:0090, export VFS0097=0${reset}"
+    warning "VFS0097 fingerprint reader detected - applying patch for 138a:0097"
+    warning "If you wish to build for 138a:0090, export VFS0097=0"
   else
-    msg2 "${red}Building for 138a:0090. If you wish to enable patches for 138a:0097, export VFS0097=1${reset}"
+    warning "Building for 138a:0090. If you wish to enable patches for 138a:0097, export VFS0097=1"
   fi
 
   if [[ "$patch97" == 1 ]]; then
