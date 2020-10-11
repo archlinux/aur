@@ -1,14 +1,14 @@
 # Maintainer: Mike Yuan <me@yhndnzj.com>
 
 pkgname=systemd-cleanup-pacman-hook
-pkgver=3
+pkgver=3.1
 pkgrel=1
 pkgdesc="Pacman hook to stop and disable systemd units before removing packages"
 arch=('any')
 url="https://github.com/YHNdnzj/systemd-cleanup-pacman-hook"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('a58b8229892d0ea4b2f44caacb8d9f82d01665f5ebb96cd8b96c8d9c5012b559')
+sha256sums=('351a485efb59b3cb55e8f48a47d891d1d366254075758c6b83c11a9f40de5577')
 
 package() {
     depends=('findutils' 'systemd')
