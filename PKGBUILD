@@ -10,7 +10,7 @@ pkgdesc="Diablo devolved for linux"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/diasurgical/devilutionX"
 license=('custom:unlicense')
-depends=('graphite' 'libsodium' 'sdl2_mixer' 'sdl2_ttf' 'ttf-charis-sil')
+depends=('graphite' 'libsodium' 'sdl2_mixer' 'sdl2_ttf')
 makedepends=('cmake' 'gcc-libs')
 install="$pkgname".install
 options=('strip')
@@ -21,8 +21,6 @@ prepare() {
 	if [ ! -d build ]; then
 		mkdir build
 	fi
-	sed -i "s/\/usr\/share\/fonts\/truetype/\/usr\/share\/fonts\/ttf-charis-sil/g" \
-		SourceX/DiabloUI/fonts.cpp
 }
 
 build() {
@@ -31,8 +29,6 @@ build() {
 		-DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
 		-DPIE=ON \
 		-DBINARY_RELEASE=ON \
-		-DTTF_FONT_DIR=\"/usr/share/fonts/ttf-charis-sil\" \
-		-DTTF_FONT_NAME=\"CharisSIL-B.ttf\" \
 		-DVERSION_NUM="$pkgver"
 
 	cmake --build .

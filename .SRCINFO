@@ -17,7 +17,6 @@ pkgbase = devilutionx
 	depends = libsodium
 	depends = sdl2_mixer
 	depends = sdl2_ttf
-	depends = ttf-charis-sil
 	options = strip
 	source = https://github.com/diasurgical/devilutionX/archive/1.1.0.tar.gz
 	md5sums = 76e7f5219e8f58ee71ab671b13ce3139
