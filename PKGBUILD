@@ -2,7 +2,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 _pkgname=mdadm
-pkgname=$_pkgname-git
+pkgname=$_pkgname-kernel.org-git
 pkgver=mdadm.4.1.r89.g5f41845
 pkgrel=1
 pkgdesc="A tool for managing/monitoring Linux md device arrays, also known as Software RAID"
