@@ -13,7 +13,7 @@ pkgdesc='Common C++ classes and routines such as argument parser, IO and convers
 license=('GPL')
 depends=('gcc-libs')
 optdepends=("$_name-doc: API documentation")
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'ninja')
 checkdepends=('cppunit')
 #provides=("${_name}")
 #conflicts=("${_name}")
@@ -29,6 +29,7 @@ pkgver() {
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
   cmake \
+    -G Ninja \
     -DCMAKE_BUILD_TYPE:STRING='Release' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
     -DCONFIGURATION_NAME:STRING='git' \
@@ -36,15 +37,15 @@ build() {
     -DCONFIGURATION_TARGET_SUFFIX:STRING='git' \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     .
-  make
+  ninja
 }
 
 check() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  make check
+  ninja check
 }
 
 package() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }

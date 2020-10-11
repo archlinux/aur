@@ -12,6 +12,7 @@ pkgbase = c++utilities-git
 	checkdepends = cppunit
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
 	depends = gcc-libs
 	optdepends = c++utilities-doc: API documentation
 	source = cpp-utilities::git+https://github.com/Martchus/cpp-utilities.git
