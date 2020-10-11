@@ -1,7 +1,7 @@
 # Maintainer: Westly Ward <sonicrules1234 at gmail dot com>
 pkgname=wolf-m7m-cpuminer-v2-raspi4-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r5.9bbcb3b
-pkgrel=1
+pkgrel=2
 pkgdesc="cpu miner for magicoin"
 arch=('aarch64')
 url="https://github.com/j6mes/wolf-m7m-cpuminer"
@@ -55,7 +55,7 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	./autogen.sh
-	CFLAGS="-O2" LDFLAGS="-L/usr/lib/openssl-1.0" ./configure --prefix=/usr
+	CFLAGS="-O3" LDFLAGS="-L/usr/lib/openssl-1.0" ./configure --prefix=/usr
 	sed -i "s/\-march\=native/\-mcpu\=cortex\-a72/g" Makefile
 	sed -i "s/\-march\=native/\-mcpu\=cortex\-a72/g" m7/Makefile
 	make

@@ -1,7 +1,7 @@
 pkgbase = wolf-m7m-cpuminer-v2-raspi4-git
 	pkgdesc = cpu miner for magicoin
 	pkgver = r5.9bbcb3b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/j6mes/wolf-m7m-cpuminer
 	arch = aarch64
 	license = GPL2
