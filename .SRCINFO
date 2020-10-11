@@ -13,6 +13,7 @@ pkgbase = syncthingtray-git
 	checkdepends = syncthing
 	checkdepends = iproute2
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = qt5-tools
 	makedepends = git
 	makedepends = mesa
