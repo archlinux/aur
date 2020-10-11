@@ -1,6 +1,6 @@
 pkgbase = wine-mono-bin
 	pkgdesc = Wine's built-in replacement for Microsoft's .NET Framework
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://wiki.winehq.org/Mono
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = wine-mono-bin
 	license = LGPL2.1
 	license = MPL
 	depends = wine
-	provides = wine-mono=5.1.0
+	provides = wine-mono=5.1.1
 	options = !strip
-	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-5.1.0/wine-mono-5.1.0-x86.tar.xz
-	sha512sums = 64380288fc3a4fc324e15d8b864d995afe2bcb0c96ff02779b4f39c819a43d8e5e84162156ae011db7153a68f2a752c044149bec5804955822826622eb2cca5e
+	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-5.1.1/wine-mono-5.1.1-x86.tar.xz
+	sha512sums = 9d2e1c42669164bb3c0096ade0dfd465f633436f18246b1a4d169ae0ae2e3b51d8f94d79409cb71a65b878705d5d38e6f4aa155787e340a9294ff22dbe39cf95
 
 pkgname = wine-mono-bin
 
