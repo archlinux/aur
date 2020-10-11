@@ -1,14 +1,14 @@
 # Maintainer: Patrick Desaulniers <patrick dot desaulniers36 at gmail dot com>
 
 pkgname=librearp-git
-pkgver=r150.11ca65f
+pkgver=r151.b3bdb83
 pkgrel=1
 pkgdesc="A pattern-based arpeggio generator plugin"
 arch=('x86_64')
 url="https://gitlab.com/LibreArp/LibreArp.git"
 license=('GPL')
 depends=('freetype2' 'alsa-lib' 'gcc-libs' 'glibc' 'libx11' 'libxext' 'libxinerama' 'curl')
-makedepends=('jack' 'libxcursor' 'git')
+makedepends=('jack' 'libxcursor' 'git' 'libxrandr' 'libxcomposite')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("git+https://gitlab.com/LibreArp/LibreArp.git"
@@ -33,7 +33,7 @@ prepare() {
     git config submodule.Vendor/fst.url $srcdir/FST
     git config submodule.Vendor/juce.url $srcdir/JUCE
     git config submodule.Vendor/vst3sdk.url $srcdir/vst3sdk
-    git submodule update
+    git submodule update -f
 
     git apply --ignore-whitespace JUCE_GPL_patch.patch
 }
