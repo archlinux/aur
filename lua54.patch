@@ -1,0 +1,15 @@
+diff --git a/hpdf.c b/hpdf.c
+index 2f10caf..6ec69ec 100644
+--- a/hpdf.c
++++ b/hpdf.c
+@@ -43,6 +43,10 @@ static void luaL_setfuncs (
+ }
+ #endif
+ 
++#ifndef LUA_QS
++#define LUA_QS "'%s'"
++#endif
++
+ typedef enum LclHndCatEnum {
+   CnHndAnnotation,
+   CnHndDestination,
