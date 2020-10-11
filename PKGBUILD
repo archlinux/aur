@@ -10,6 +10,7 @@ arch=(x86_64)
 license=('GPL')
 url="https://git.kernel.org/cgit/utils/mdadm"
 conflicts=('mdadm' 'mkinitcpio<0.7')
+provides=('mdadm')
 makedepends=('git')
 depends=('glibc')
 replaces=('raidtools')
