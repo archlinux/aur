@@ -12,6 +12,7 @@ pkgbase = passwordfile-git
 	checkdepends = cppunit
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
 	depends = c++utilities-git
 	depends = openssl
 	optdepends = passwordfile-doc: API documentation
