@@ -3,7 +3,7 @@
 _pkgname="archlinux-appstream-data"
 pkgname="archlinux-appstream-data-pamac"
 pkgver="20200828"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Arch Linux application database for AppStream-based software centers"
 arch=("any")
 url="https://www.archlinux.org"
@@ -42,7 +42,7 @@ package() {
   mkdir -p "${pkgdir}"/usr/share/app-info/{icons/archlinux-arch-{core,extra,community}/{48x48,64x64,128x128},xmls}
     for _repo in "core" "extra" "community"; do
         tar -xzf "${_repo}-icons-48x48-${pkgver}.tar.gz" -C "${pkgdir}/usr/share/app-info/icons/archlinux-arch-${_repo}/48x48"
-        tar -xzf "${_repo}-icons-64x64-${pkgver}.tar.gz -C" "${pkgdir}/usr/share/app-info/icons/archlinux-arch-${_repo}/64x64"
+        tar -xzf "${_repo}-icons-64x64-${pkgver}.tar.gz" -C "${pkgdir}/usr/share/app-info/icons/archlinux-arch-${_repo}/64x64"
         tar -xzf "${_repo}-icons-128x128-${pkgver}.tar.gz" -C "${pkgdir}/usr/share/app-info/icons/archlinux-arch-${_repo}/128x128"
         #install -m644 ${_repo}-${pkgver}.xml.gz "$pkgdir"/usr/share/app-info/xmls/${_repo}.xml.gz
 
