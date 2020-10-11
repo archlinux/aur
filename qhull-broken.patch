@@ -1,0 +1,11 @@
+--- src/qhull/CMakeLists.txt.orig	2020-06-18 04:22:25.000000000 +0200
++++ src/qhull/CMakeLists.txt	2020-10-11 13:48:06.303764726 +0200
+@@ -10,7 +10,7 @@
+ 
+ # see bug report: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=925540
+ 
+-find_package(Qhull 7.2 QUIET)
++#find_package(Qhull 7.2 QUIET)
+ 
+ add_library(qhull INTERFACE)
+ 

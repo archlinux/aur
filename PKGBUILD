@@ -14,10 +14,12 @@ replaces=('slic3r++')
 makedepends=('boost' 'cereal' 'cmake' 'eigen' 'libigl' 'openvdb' 'wxgtk2') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
 source=("https://github.com/supermerill//SuperSlicer/archive/$_pkgtag.tar.gz"
         "superslicer.desktop"
-		"0001-wxgtk3-is-broken-on-wayland.patch")
+        "0001-wxgtk3-is-broken-on-wayland.patch"
+        "qhull-broken.patch")
 sha512sums=('fbcfa98bee8f3284c36eb33eb715ab03979c26778656d16b56485ba553f5c5702e1fb59b2b43ce0e1e0ddea1d15f278b007c7a064824df16b95d8a2f9647e928'
             '18b39d66b12453686ac0b411bac4a7c3000c541aeb0de2cacf37552a0e2435858c9ce2d3da10fa05ab6ab0e5e714f78f6a011f894435ab7195ae5f3ed8bc5623'
-            'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5')
+            'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5'
+            'db1857418c2fe380a5e82c3c2b67d945ceb81f40df810c9b6b64730fdbcdf0e5b45e5f6ee8d77f40547b8f078b07aa92f2011e2aaa864a69c4b13d60c2a7b912')
 
 prepare()
 {
@@ -28,6 +30,7 @@ prepare()
 
 	# apply patches
 	patch --forward --strip=1 --input="$srcdir/0001-wxgtk3-is-broken-on-wayland.patch"
+	patch --forward --strip=0 --input="$srcdir/qhull-broken.patch"
 }
 
 build()
