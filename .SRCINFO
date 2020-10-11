@@ -1,7 +1,7 @@
 pkgbase = pantheon-default-settings
 	pkgdesc = Default settings for Pantheon
 	pkgver = 5.1.2
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/elementary/default-settings
 	arch = any
 	groups = pantheon-stable
