@@ -1,5 +1,5 @@
 # PackageVersion is added by PKGBUILD
 PackageAuthor=[readarr](https://aur.archlinux.org/packages/readarr/)
 UpdateMethod=External
-UpdateMethodMessage=use an [aur helper](https://wiki.archlinux.org/index.php/AUR_helpers) or the [manual method](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages) to update [readarr](https://aur.archlinux.org/packages/readarr/).
+UpdateMethodMessage=flag [readarr](https://aur.archlinux.org/packages/readarr/) [out-of-date](https://aur.archlinux.org/pkgbase/readarr/flag/), use an [aur helper](https://wiki.archlinux.org/index.php/AUR_helpers) or the [manual method](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages) to update.
 Branch=nightly
