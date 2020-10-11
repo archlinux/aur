@@ -1,5 +1,7 @@
+# Maintainer: Samuel "scrufulufugus" Monson <smonson at irbash dot net>
+# Original PKGBUILD Contributor: "PedroHLC"
 pkgname="gamescope"
-pkgver=3.6.1
+pkgver=3.7
 pkgrel=0
 pkgdesc="The micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -14,14 +16,14 @@ conflicts=('gamescope-git' 'libliftoff')
 replaces=('steamcompmgr')
 
 source=("${url}/archive/${pkgver}.tar.gz"
-	'git+https://github.com/Plagman/wlroots.git#commit=49e33be5bf15fab9530013a7b862eaa0ecfb5161'
-	'git+https://github.com/emersion/libliftoff.git#commit=cfeee41ec1aa03578bfbe4cd513a25e84c407dec')
-md5sums=('f876838a83a750f1a4be11ea50d0914b'
+        'git+https://github.com/emersion/libliftoff.git#commit=95da3ee649fe42bb147789d5092e95c8f61fab77'
+        'git+https://github.com/swaywm/wlroots.git#commit=751a21d94f1b4f0345d040ddfd54b723631d5991')
+md5sums=('9c2d2fcb89cf772d1a93bbafdf5d11f4'
 	'SKIP' 'SKIP')
 
 prepare() {
-	mkdir -p '_build'
-	cp -r wlroots/* "${pkgname}-${pkgver}/subprojects/wlroots/"
+    mkdir -p '_build'
+    cp -r wlroots/* "${pkgname}-${pkgver}/subprojects/wlroots/"
 	cp -r libliftoff/* "${pkgname}-${pkgver}/subprojects/libliftoff/"
 }
 
