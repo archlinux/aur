@@ -15,7 +15,7 @@ source=("https://github.com/OpenBoard-org/OpenBoard/archive/v$pkgver.tar.gz"
         qchar.patch
         qwebkit.patch
         openboard.desktop)
-source+=(quazip.diff)
+source+=(quazip.patch)
 source+=(poppler.patch)
 source+=(drop_ThirdParty_repo.patch)
 md5sums=('6eb3a76c7ac58f3f45c879b2f305d4b6'
@@ -30,7 +30,7 @@ prepare() {
   cd $srcdir/OpenBoard-$pkgver
   patch -p1 < $srcdir/qchar.patch
   patch -p1 < $srcdir/qwebkit.patch
-  patch -p1 < $srcdir/quazip.diff
+  patch -p1 < $srcdir/quazip.patch
   patch -p1 < $srcdir/poppler.patch
   patch -p1 < $srcdir/drop_ThirdParty_repo.patch
 }
