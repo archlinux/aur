@@ -5,7 +5,7 @@ _gitname=default-settings
 _author=elementary
 pkgname=pantheon-default-settings
 pkgver=5.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Default settings for Pantheon"
 arch=('any')
 url="https://github.com/${_author}/${_gitname}"
@@ -13,7 +13,7 @@ license=('GPL3')
 groups=('pantheon-stable')
 depends=('elementary-icon-theme' 'gtk-theme-elementary'
          'elementary-wallpapers' 'ttf-droid' 'ttf-opensans' 'ttf-roboto')
-provides=('pantheon-default-settings')
+provides=('pantheon-default-settings' 'sound-theme-elementary')
 conflicts=('pantheon-default-settings')
 provides=("${_gitname}")
 conflicts=("${_gitname}-git")
