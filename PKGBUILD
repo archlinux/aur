@@ -9,6 +9,10 @@ license=('GPL3+')
 depends=('python' 'python-xdg' 'bubblewrap' 'python-toml' 'xdg-dbus-proxy' 'hicolor-icon-theme' 'python-pyqt5')
 provides=('bubblejail')
 conflicts=('bubblejail')
+optdepends=(
+	'bash-completion: completions for bash shell'
+	'fish: completions for fish shell'
+	)
 makedepends=('git' 'meson')
 source=("$pkgname"::"git+https://github.com/igo95862/bubblejail")
 md5sums=('SKIP')
