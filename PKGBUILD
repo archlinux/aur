@@ -1,8 +1,8 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=giara
-pkgver=0.1
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 epoch=
 pkgdesc="Reddit gtk client"
 arch=('any')
@@ -28,7 +28,7 @@ provides=(redditgtk)
 conflicts=(redditgtk)
 replaces=(redditgtk)
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('2a92cce3d5c3f6e78986aa8dc8232f578d0f6478180fa31eb3255330893a5bc1')
+sha256sums=('d017402bf2f4c71aa1d7d00c74f08738fff91cc522b90531909557d272bfe2d9')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver/$pkgname"
