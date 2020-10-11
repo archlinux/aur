@@ -1,7 +1,7 @@
 pkgbase = showimage
 	pkgdesc = ShowImage is a simple KDE based image viewer using the maximum space inside its window without cluttering the window with menubar, toolbar or statusbar.
 	pkgver = 1.10.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://store.kde.org/p/1126798
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = showimage
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = libkexiv2
+	makedepends = kdoctools
 	source = https://github.com/sdvcrx/PKGBUILDs/releases/download/showimage/showimage-1.10.tar.bz2
 	sha256sums = a9c11b1eb7ba6bf9d85c19a2630bb323a7a1657ce704953faa7837a71c20d9ff
 
