@@ -1,10 +1,11 @@
 pkgbase = sysmon-git
 	pkgdesc = Graphical system monitor. Similar to windows task manager.
-	pkgver = 0.9.r21.g56cb167
+	pkgver = 1.0.r0.g2f1b9f5
 	pkgrel = 1
 	url = https://github.com/MatthiasSchinzel/sysmon
 	arch = any
-	license = GPL
+	license = GPL3
+	makedepends = python-setuptools
 	depends = python-pyqtgraph
 	depends = python-pyqt5
 	depends = wireless_tools
@@ -13,10 +14,8 @@ pkgbase = sysmon-git
 	conflicts = sysmon
 	source = git+https://github.com/MatthiasSchinzel/sysmon.git
 	source = sysmon.desktop
-	source = sysmon.sh
 	sha256sums = SKIP
-	sha256sums = 3f692c5a3cb16bcc2fa95c7b18392d45e4c08d575fcab8590679efcdb56b70ac
-	sha256sums = 4695bfb1a3305725b3f575bcba9fac88aa1c1c828439d3bb2008c7f008938a32
+	sha256sums = cc538ea1e439738db3fedf55ef0ab825e27669b8501f99ac58be7245f974bc7e
 
 pkgname = sysmon-git
 
