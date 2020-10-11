@@ -1,6 +1,6 @@
 pkgbase = passwordmanager-git
 	pkgdesc = A simple password store using AES-256-CBC encryption via OpenSSL
-	pkgver = 275.7ac57bb
+	pkgver = 281.c12f63d
 	pkgrel = 2
 	url = https://github.com/Martchus/passwordmanager
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = passwordmanager-git
 	arch = aarch64
 	license = GPL
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = qt5-tools
 	makedepends = git
 	makedepends = mesa

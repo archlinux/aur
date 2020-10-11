@@ -9,13 +9,13 @@ _quick_gui=${PASSWORD_MANAGER_QUICK_GUI:-ON}
 _reponame=passwordmanager
 pkgname=passwordmanager-git
 _name=${pkgname%-git}
-pkgver=275.7ac57bb
+pkgver=281.c12f63d
 pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL'
 license=('GPL')
 depends=('qt5-base' 'qtutilities-git' 'passwordfile-git' 'openssl' 'libxkbcommon-x11' 'desktop-file-utils' 'xdg-utils')
-makedepends=('cmake' 'qt5-tools' 'git' 'mesa' 'kirigami2')
+makedepends=('cmake' 'ninja' 'qt5-tools' 'git' 'mesa' 'kirigami2')
 optdepends=('kirigami2: Qt Quick GUI')
 provides=("${_name}")
 conflicts=("${_name}")
@@ -37,14 +37,16 @@ pkgver() {
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
   cmake \
+    -G Ninja \
     -DCMAKE_BUILD_TYPE:STRING='Release' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+    -DCONFIGURATION_NAME:STRING='git' \
     -DCONFIGURATION_PACKAGE_SUFFIX:STRING='-git' \
     -DQUICK_GUI="$_quick_gui" .
-  make
+  ninja
 }
 
 package() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
