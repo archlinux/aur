@@ -1,23 +1,23 @@
 _pkgname=apple-mac-plymouth
 pkgname="${_pkgname}-git"
-pkgver=r1.edab46c
+pkgver=1.0.r16.da00ab1
 pkgrel=1
 pkgdesc='Plymouth theme for someone who wants to create a complete apple theme.'
 arch=('any')
-url="https://github.com/Msouza91/${_pkgname}/"
+url="https://github.com/Msouza91/${_pkgname}.git"
 license=('GPL3.0')
 depends=('plymouth')
 makedepends=('git')
-source=("https://github.com/Msouza91/${_pkgname}/archive/master.tar.gz")
+source=("git+$url")
 sha256sums=('SKIP')
 
-prepare () {
-	mkdir "$_pkgname"
-	tar -xvf master.tar.gz
+pkgver() {
+	cd "${_pkgname}"
+	printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${_pkgname}-master"
+  cd "${_pkgname}"
 
   _themedir="$pkgdir/usr/share/plymouth/themes/apple-mac-plymouth"
 
