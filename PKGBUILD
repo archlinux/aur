@@ -3,7 +3,7 @@
 
 _pkgname=mdadm
 pkgname=$_pkgname-kernel.org-git
-pkgver=mdadm.4.1.r89.g5f41845
+pkgver=4.1.r89.g5f41845
 pkgrel=1
 pkgdesc="A tool for managing/monitoring Linux md device arrays, also known as Software RAID. Uses the kernel.org git repo as the upstream"
 arch=(x86_64)
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed "s/^$_pkgname\.//"
 }
 
 build() {
