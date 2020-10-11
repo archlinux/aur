@@ -26,3 +26,22 @@ pkgbase = folie
 
 pkgname = folie
 
+pkgbase = folie
+	pkgdesc = Forth Live Explorer is a command-line utility to talk to a micro-controller via a serial port.
+	pkgver = 2.15
+	pkgrel = 3
+	url = https://github.com/jeelabs/folie
+	arch = i686
+	arch = x86_64
+	license = custom:UNLICENSE
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	noextract = folie
+	options = !strip
+	options = !emptydirs
+	source = folie::git+https://git.jeelabs.org/jcw/folie#commit=d9b51c7fd7b750ceab710554dfbece3a080065ed
+	sha1sums = SKIP
+
+pkgname = folie
+
