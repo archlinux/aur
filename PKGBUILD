@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=lagrange
-pkgrel=1
+pkgrel=2
 pkgver=0.4.0
 pkgdesc="Beautiful Gemini Client"
 url="https://git.skyjake.fi/skyjake/lagrange"
@@ -13,7 +13,7 @@ depends=(
     "openssl"
     "sdl2"
 )
-makedepends=("cmake" "make")
+makedepends=("cmake")
 
 build() {
     cmake -B build -S "$pkgname-${pkgver}" \
@@ -24,6 +24,8 @@ build() {
 }
 
 package() {
+    install -Dm644 $pkgname-$pkgver/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
     cd build
     make PREFIX="/usr" DESTDIR="$pkgdir" install
 }
