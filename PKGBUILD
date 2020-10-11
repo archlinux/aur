@@ -2,11 +2,11 @@
 
 pkgname=sdl2trs
 _pkgname=sdltrs
-pkgver=1.2.12
-_commit=bdf97932
+pkgver=1.2.13
+_commit=2b4a09c3
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
-pkgdesc="TRS-80 Model I/III/4/4P emulator (with hardware rendering support)"
+pkgdesc="TRS-80 Model I/III/4/4P emulator (with hardware rendering)"
 url="https://gitlab.com/jengun/sdltrs"
 license=('BSD')
 depends=('hicolor-icon-theme' 'sdl2')
@@ -22,7 +22,7 @@ build() {
 
 package() {
   cd $_pkgname-$_commit
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
 
   install -dm0755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 "$srcdir/$_pkgname-$_commit/LICENSE" \
