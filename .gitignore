@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!dkms.conf
+!ryzen_smu.conf
+!.SRCINFO
