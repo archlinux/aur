@@ -4,7 +4,7 @@ pkgbase = gnome-shell-extension-services-systemd
 	pkgrel = 1
 	url = https://extensions.gnome.org/extension/1034/services-systemd/
 	arch = any
-	license = unknown
+	license = GPL
 	depends = gnome-shell>=3.34
 	conflicts = gnome-shell-extension-services-systemd-git
 	source = gnome-shell-extension-services-systemd.zip::https://extensions.gnome.org/download-extension/services-systemd@abteil.org.shell-extension.zip?version_tag=13249

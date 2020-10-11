@@ -15,7 +15,7 @@ pkgrel=1
 pkgdesc="Gnome Shell Extension that allows to start and stop systemd services"
 arch=('any')
 url="$_gnome_site/extension/$_pk/$_name/"
-license=('unknown')
+license=('GPL')
 depends=("gnome-shell>=$_gnome_shell_version")
 conflicts=("gnome-shell-extension-$_name-git")
 source=("$pkgname.zip::$_gnome_site/download-extension/$_uuid.shell-extension.zip?version_tag=$_version_tag")
