@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=pump.io
-pkgver=5.1.3
+pkgver=5.1.4
 pkgrel=1
 pkgdesc="A stream server that does most of what people really want from a social network"
 url='http://pump.io'
@@ -33,5 +33,5 @@ package() {
 	chmod 755 $pkgdir/usr/lib/node_modules/
 }
 
-md5sums=('74e64ddc3afbc376ee1490a44f8c28dd'
+md5sums=('bbed99788547daa2bbfcdd7f2055aceb'
          '6e86aca928cf55108fcc8b7403cd2b39')
