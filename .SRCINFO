@@ -1,0 +1,23 @@
+pkgbase = montirovka
+	pkgdesc = Special script for IceArch distro to mounting or umounting partitions
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://icearch.forumotion.eu/
+	arch = x86_64
+	license = GPL2
+	depends = coreutils
+	depends = grep
+	depends = gawk
+	depends = bc
+	depends = sed
+	depends = util-linux
+	depends = reiserfsprogs
+	depends = exfat-utils
+	depends = ntfs-3g
+	depends = xfsprogs
+	depends = filesystem
+	source = http://altlinuxclub.ru/arhiv/montirovka-0.1.tar.gz
+	md5sums = f88740419c62606e0641fcd6c73c5d59
+
+pkgname = montirovka
+
