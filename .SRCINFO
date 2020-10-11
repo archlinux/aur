@@ -1,6 +1,6 @@
 pkgbase = python-astropy
 	pkgdesc = A community python library for astronomy
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = http://www.astropy.org/
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = python-astropy
 	depends = python-jinja
 	conflicts = python-pyfits
 	conflicts = python-vo
-	source = https://files.pythonhosted.org/packages/source/a/astropy/astropy-4.0.1.tar.gz
-	sha512sums = 523ca58830517ca478f1c0a57262936405a6b063d1ddf5c6c72da4324b5c398807941f90b9be9303f5fa6c1eb69c29fc288c86881deb8b8c44780f66890fe4b2
+	source = https://files.pythonhosted.org/packages/source/a/astropy/astropy-4.0.2.tar.gz
+	sha512sums = 0ca4829e147831a1d3fb87351b6b9fa294540b4777a3efc1cdc3a0921f236ca5229374a38b115cf0ff5573298d152af10531edef50708080a4761fa50edb8fcf
 
 pkgname = python-astropy
 
