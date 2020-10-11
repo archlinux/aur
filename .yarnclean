@@ -60,3 +60,8 @@ post-install.log
 *.spec.js.map
 *.spec.d.ts
 *.spec.ts
+
+*.mk
+*.gypi
+*.o.d
+*.o

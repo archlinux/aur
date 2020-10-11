@@ -22,7 +22,7 @@ source=(
 )
 md5sums=('5a26cc7b1b461bec8533266dbe64c87e'
          '9448b29ece4f003326d1d25756f4c364'
-         '54b30057095cf131ec7296b0d0bd2046'
+         '8a3461a9d1c50f6bfe60902d020bb797'
          'd387a0df41b11ba3d33360812bfbbe2c'
          '1dde0e422484895d3509f4ee9bb8d980'
          '84e52389f141be88a24bcfdd44c91a19')
@@ -30,8 +30,14 @@ md5sums=('5a26cc7b1b461bec8533266dbe64c87e'
 build() {
   local FAKEHOME="$srcdir/.electron-gyp"
   mkdir -p "$FAKEHOME"
+
+  # Disable yarn autoclean
+  mv .yarnclean .yarnclean_
   HOME="$FAKEHOME" yarn install --cache-folder "$srcdir/yarn-cache"
   HOME="$FAKEHOME" yarn build
+
+  #Enable yarn autoclean
+  mv .yarnclean_ .yarnclean
   # Remove dev dependencies
   HOME="$FAKEHOME" yarn install --cache-folder "$srcdir/yarn-cache" --production --ignore-scripts --prefer-offline
 }
