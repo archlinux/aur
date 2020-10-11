@@ -1,6 +1,6 @@
 pkgbase = nicotine-plus-git
 	pkgdesc = A graphical client for the SoulSeek peer-to-peer system
-	pkgver = 2.1.2.dev1.r3467.6c395c0d
+	pkgver = 2.1.2.dev1.r3475.ac83dca4
 	pkgrel = 1
 	url = https://nicotine-plus.github.io/nicotine-plus
 	arch = any
@@ -12,7 +12,6 @@ pkgbase = nicotine-plus-git
 	depends = python-gobject
 	depends = gtk3
 	depends = libnotify
-	optdepends = python-feedparser: for Reddit plugin
 	optdepends = gspell: for spell checking in chat
 	optdepends = nuspell: for spell checking in chat
 	optdepends = libappindicator-gtk3: for tray icon
