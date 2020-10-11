@@ -2,10 +2,10 @@
 
 pkgname=xfce-theme-cobibird
 pkgver=2.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK theme based on Greybird, with dark menus"
 arch=(any)
-url=http://gnome-look.org/content/show.php/CobiBird?content=157985
+url=https://gnome-look.org/content/show.php/CobiBird?content=157985
 license=('GPL' 'CCPL:cc-by-sa')
 depends=(gtk-engine-murrine)
 optdepends=('elementary-xfce-icons: matching icon set; use the dark icon theme')
