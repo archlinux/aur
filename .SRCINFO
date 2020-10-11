@@ -1,13 +1,13 @@
 pkgbase = digup
 	pkgdesc = Console tool to update md5sum or shasum digest files
-	pkgver = 0.6.40
+	pkgver = 0.6.57
 	pkgrel = 1
 	url = http://idlebox.net/2009/digup/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = http://idlebox.net/2009/digup/digup-0.6.40.tar.bz2
-	md5sums = 448ab2f490cda7694a86769be0217a4c
+	source = http://idlebox.net/2009/digup/digup-0.6.57.tar.gz
+	sha256sums = ef132e277277fc28091e714980db55021272fa5c3a9134968cdeeef28305186e
 
 pkgname = digup
 
