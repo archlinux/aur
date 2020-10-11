@@ -1,0 +1,22 @@
+From 11aed2b2c07331903936caa5f70d20a150069996 Mon Sep 17 00:00:00 2001
+From: harre <mail@hartmark.se>
+Date: Sun, 11 Oct 2020 00:25:01 +0200
+Subject: [PATCH] Fix failing test #3192
+
+---
+ tests/test_dialogs.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_dialogs.py b/tests/test_dialogs.py
+index a7cefa316..8dc89f087 100644
+--- a/tests/test_dialogs.py
++++ b/tests/test_dialogs.py
+@@ -102,7 +102,7 @@ def test_can_add_game(self):
+         self.assertTrue(pga_game)
+         game = Game(pga_game['id'])
+         self.assertEqual(game.name, 'Test game')
+-        game.remove(from_library=True)
++        game.remove()
+ 
+ 
+ class TestSort(TestCase):
