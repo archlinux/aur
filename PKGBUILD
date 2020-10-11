@@ -15,7 +15,7 @@ license=('GPL')
 depends=('c++utilities-git' 'rapidjson' "llvm-libs>=${_llvmver}.0.0" "llvm-libs<$((_llvmver + 1)).0.0" "clang>=${_llvmver}.0.0" "clang<$((_llvmver + 1)).0.0")
 optdepends=("boost: use Boost.Hana instead of code generator"
             "$_name-doc: API documentation")
-makedepends=('cmake' 'clang-tools-extra' 'llvm' 'git')
+makedepends=('cmake' 'clang-tools-extra' 'llvm' 'git' 'ninja')
 checkdepends=('cppunit' 'boost')
 #provides=("${_name}")
 #conflicts=("${_name}")
@@ -31,6 +31,7 @@ pkgver() {
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
   cmake \
+    -G Ninja \
     -DCMAKE_BUILD_TYPE:STRING='Release' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
     -DCONFIGURATION_NAME:STRING='git' \
@@ -38,15 +39,15 @@ build() {
     -DCONFIGURATION_TARGET_SUFFIX:STRING='git' \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     .
-  make
+  ninja
 }
 
 check() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  make check
+  ninja check
 }
 
 package() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
