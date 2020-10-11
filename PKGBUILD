@@ -4,14 +4,14 @@
 _gitname=onboarding
 _author=elementary
 pkgname=pantheon-${_gitname}
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Onboarding app for new users in Pantheon Shell"
 arch=('any')
 url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 groups=('pantheon-stable')
-depends=('gtk3' 'granite' 'libgee' 'libhandy' 'pantheon-agent-geoclue2')
+depends=('gtk3' 'granite' 'libgee' 'libhandy' 'pantheon-geoclue2-agent')
 makedepends=('meson' 'vala')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
