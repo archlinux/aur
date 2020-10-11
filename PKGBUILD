@@ -18,7 +18,7 @@ license=('MIT')
 sha256sums=('fdda15d7eba2a8ab9a0f10191fc2a3cc9e92ab43b5a48ecf12d29672c48819dc'
             '1c72d30d468c532f272c9a574a0a0f96f50aeb68fdde364ebac780f951a34c83'
             'b46dd772eb1adf9327f6c07657acf3c627c6ea204f8de3a4481efa6db0071f5e'
-            '3136f81198970a42b67ef0c172d6fdf8d8144dbae0285016ce8ff03d03c94b59')
+            '22fab73dba70601e2a2d96dc6a8b1e56e1f33f0f5ff8fc5023fcfa9b48b4508c')
 
 build() {
   cd "${srcdir}/${pkgname%-*}-${pkgver}"
