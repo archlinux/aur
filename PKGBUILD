@@ -28,31 +28,19 @@ prepare() {
 build() {
 	cd "$srcdir/${_pkgname}-$pkgver/build"
 	cmake .. \
+		-DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
 		-DPIE=ON \
 		-DBINARY_RELEASE=ON \
 		-DTTF_FONT_DIR=\"/usr/share/fonts/ttf-charis-sil\" \
 		-DTTF_FONT_NAME=\"CharisSIL-B.ttf\" \
 		-DVERSION_NUM="$pkgver"
 
-	make INSTALL_ROOT="$pkgdir" -j$(nproc)
+	cmake --build .
 }
 
 package() {
-	cd "$srcdir/${_pkgname}-$pkgver"
-
-	# Install and link binary
-	install -vDm755 build/"$pkgname" "$pkgdir"/usr/bin/"$pkgname"
-
-	# Install icons
-	install -Dm644 Packaging/cpi-gamesh/Devilution.png \
-		"$pkgdir/usr/share/pixmaps/$pkgname.png"
-
-	# Install desktop file
-	install -Dm664 Packaging/fedora/$pkgname.desktop -t \
-		"$pkgdir/usr/share/applications"
-
-	# Install license
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	cd "$srcdir/${_pkgname}-$pkgver/build"
+	cmake --install .
 }
 
 md5sums=('76e7f5219e8f58ee71ab671b13ce3139')
