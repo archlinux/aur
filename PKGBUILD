@@ -20,10 +20,8 @@ source=(
 # To get the valid GPG key
 # gpg --keyserver https://keys.mailvelope.com/ --search-keys 5A3D06576A6A67443DFBE856F1A55E62951B2143
 validpgpkeys=('5A3D06576A6A67443DFBE856F1A55E62951B2143')
-sha512sum=('141fcf1092513b6920d3c715b465de66a6ab7c6580105e0510cbf6a0229a305c66db2d980ab231bc11d73439890148ca08389287f76715e2467c8d885830a262'
+sha512sums=('1056eaa39297819978674872165a9d70078900cf88bf338d6833ad80e1020ef3f04d676edf294f19e079ecd8701940c1f1a4de6396300ba54a04ddd245f85e78'
 	'SKIP')
-md5sums=('5c1fd0f4ff19f1652ec6fcbc573509a4'
-         'SKIP')
 
 check () {
 	meson test -C build --print-errorlogs
