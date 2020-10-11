@@ -1,20 +1,26 @@
 pkgbase = usbimager-bin
-	pkgdesc = Minimal GUI application to write compressed disk images to USB drives
+	pkgdesc = Minimal GUI application to write compressed disk images to USB drives (GTK+ Frontend)
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/bztsrc/usbimager
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	depends = gtk3
 	depends = udisks2
 	provides = usbimager
 	conflicts = usbimager
-	source = usbimager-1.0.5.zip::https://gitlab.com/bztsrc/usbimager/-/raw/binaries/usbimager_1.0.5-x86_64-linux-gtk.zip
 	source = usbimager-1.0.5-manual.pdf::https://gitlab.com/bztsrc/usbimager/-/raw/master/usbimager-manual.pdf
 	source = usbimager-1.0.5-LICENSE::https://gitlab.com/bztsrc/usbimager/-/raw/master/LICENSE
-	sha256sums = 36ccfa7942aeba4486cb3234e25ce04154fafbde619195926dd1dec97442d31d
 	sha256sums = SKIP
 	sha256sums = SKIP
+	source_x86_64 = usbimager-1.0.5-x86_64.zip::https://gitlab.com/bztsrc/usbimager/-/raw/binaries/usbimager_1.0.5-x86_64-linux-gtk.zip
+	sha256sums_x86_64 = 36ccfa7942aeba4486cb3234e25ce04154fafbde619195926dd1dec97442d31d
+	source_armv7h = usbimager-1.0.5-armv7h.deb::https://gitlab.com/bztsrc/usbimager/-/raw/binaries/usbimager_1.0.5-armhf.deb
+	sha256sums_armv7h = 08c363a6fb314babe874ac5ce9d31d6404d62c6769a06693b4c364a93443fafe
+	source_aarch64 = usbimager-1.0.5-aarch64.deb::https://gitlab.com/bztsrc/usbimager/-/raw/binaries/usbimager_1.0.5-armhf.deb
+	sha256sums_aarch64 = 08c363a6fb314babe874ac5ce9d31d6404d62c6769a06693b4c364a93443fafe
 
 pkgname = usbimager-bin
 
