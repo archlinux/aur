@@ -17,23 +17,23 @@ sha1sums_x86_64=('87c602cbf7bc0550491fc0c107925d007dc8c012')
 sha1sums_i686=('effac37aa3b91b6903079ad8bab68e6e293afbf2')
 
 package() {
-	if [ "$CARCH" = "i686" ]
-	then
-		_arch=x86
-	else
-		_arch=x64
-	fi
+  if [ "$CARCH" = "i686" ]
+  then
+    _arch=x86
+  else
+    _arch=x64
+  fi
 
-	cd "$srcdir"
-	bsdtar -xf "iscan-gt-s600-bundle-$_bundlever.$_arch.rpm/plugins/$pkgname-${pkgver//_/-}-1.$CARCH.rpm"
-	mv usr "$pkgdir"
+  cd "$srcdir"
+  bsdtar -xf "iscan-gt-s600-bundle-$_bundlever.$_arch.rpm/plugins/$pkgname-${pkgver//_/-}-1.$CARCH.rpm"
+  mv usr "$pkgdir"
 
-	if [ "$CARCH" = "x86_64" ]
-	then
-		mv "$pkgdir"/usr/lib{64,}
-	fi
+  if [ "$CARCH" = "x86_64" ]
+  then
+    mv "$pkgdir"/usr/lib{64,}
+  fi
 
-	install -m 644 -D \
-		"$pkgdir"/usr/share/doc/iscan-plugin-gt-s600-"$pkgver"/COPYING.EPSON.en.txt \
-		"$pkgdir"/usr/share/licenses/"$pkgname"/COPYING
+  install -m 644 -D \
+    "$pkgdir"/usr/share/doc/iscan-plugin-gt-s600-"$pkgver"/COPYING.EPSON.en.txt \
+    "$pkgdir"/usr/share/licenses/"$pkgname"/COPYING
 }
