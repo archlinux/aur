@@ -14,7 +14,7 @@ _json_export=${TAGEDITOR_JSON_EXPORT:-ON}
 
 _reponame=tageditor
 pkgname=tageditor
-pkgver=3.3.8
+pkgver=3.3.9
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
@@ -25,7 +25,7 @@ depends=('qtutilities' 'tagparser' 'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
 [[ $_js_provider == script ]] && depends+=('qt5-script')
 [[ $_js_provider == qml ]] && depends+=('qt5-declarative')
-makedepends=('cmake' 'qt5-tools' 'mesa')
+makedepends=('cmake' 'ninja' 'qt5-tools' 'mesa')
 [[ $_json_export == ON ]] && makedepends+=('reflective-rapidjson')
 checkdepends=('cppunit' 'jq')
 url="https://github.com/Martchus/${_reponame}"
@@ -35,6 +35,7 @@ sha256sums=('6ad8f190ca0f2133c3a0cd508248329a80abc89a20629c20e0c2835329e2812c')
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   cmake \
+    -G Ninja \
     -DCMAKE_BUILD_TYPE:STRING='Release' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
     -DBUILD_SHARED_LIBS:BOOL=ON \
@@ -43,13 +44,13 @@ build() {
     -DENABLE_JSON_EXPORT="${_json_export}" \
     -DREFLECTION_GENERATOR_EXECUTABLE:FILEPATH='/usr/bin/reflective_rapidjson_generator' \
     .
-  make
+  ninja
 }
 
 check() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   if [[ $TEST_FILE_PATH ]]; then
-    make check
+    ninja check
   else
     msg2 'Skipping execution of testsuite because the environment variable TEST_FILE_PATH is not set.'
   fi
@@ -57,5 +58,5 @@ check() {
 
 package() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
