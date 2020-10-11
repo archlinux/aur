@@ -1,19 +1,18 @@
 pkgbase = odio-sacd
 	pkgdesc = SACD decoder
-	pkgver = 20.5.11.5
+	pkgver = 20.5.12
 	pkgrel = 1
 	url = https://tari.in/www/software/odio-sacd
 	arch = i686
 	arch = x86_64
 	arch = pentium4
 	license = GPL3
-	makedepends = breezy
 	makedepends = gcc
 	makedepends = libodiosacd
 	depends = libodiosacd
 	options = !emptydirs
-	source = bzr+lp:odio-sacd
-	md5sums = SKIP
+	source = https://github.com/tari01/odio-sacd/archive/20.5.12.tar.gz
+	md5sums = 67fd5e7e578defd2d3b4f32598a47291
 
 pkgname = odio-sacd
 
