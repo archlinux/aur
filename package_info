@@ -1,5 +1,5 @@
 # PackageVersion is added by PKGBUILD
 PackageAuthor=[lidarr-nightly](https://aur.archlinux.org/packages/lidarr-nightly/)
 UpdateMethod=External
-UpdateMethodMessage=use an [aur helper](https://wiki.archlinux.org/index.php/AUR_helpers) or the [manual method](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages) to update [lidarr-nightly](https://aur.archlinux.org/packages/lidarr-nightly/).
+UpdateMethodMessage=flag [lidarr-nightly](https://aur.archlinux.org/packages/lidarr-nightly/) [out-of-date](https://aur.archlinux.org/pkgbase/lidarr-nightly/flag/), use an [aur helper](https://wiki.archlinux.org/index.php/AUR_helpers) or the [manual method](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages) to update.
 Branch=nightly
