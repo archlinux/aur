@@ -16,7 +16,7 @@ checkdepends=('cppunit' 'openssl')
 optdepends=("$pkgname-doc: API documentation")
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('05538d4e034f5f008f1b253b7612b6519bb98d566347045bc3b76d5a3b5a7830')
+sha256sums=('5aa10fee7019bcd88053bea8a805379e07e257121eb1b06a7c2c8a6c86576dc6')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
