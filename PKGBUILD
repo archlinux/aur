@@ -26,9 +26,9 @@ depends=('qtutilities-git' 'tagparser-git' 'desktop-file-utils' 'xdg-utils')
 [[ $_webview_provider == webengine ]] && depends+=('qt5-webengine')
 [[ $_js_provider == script ]] && depends+=('qt5-script')
 [[ $_js_provider == qml ]] && depends+=('qt5-declarative')
-makedepends=('cmake' 'qt5-tools' 'git' 'mesa')
+makedepends=('cmake' 'qt5-tools' 'git' 'ninja' 'mesa')
 [[ $_json_export == ON ]] && makedepends+=('reflective-rapidjson-git')
-checkdepends=('cppunit')
+checkdepends=('cppunit' 'jq')
 provides=("${_name}")
 conflicts=("${_name}")
 url="https://github.com/Martchus/${_reponame}"
@@ -43,6 +43,7 @@ pkgver() {
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
   cmake \
+    -G Ninja \
     -DCMAKE_BUILD_TYPE:STRING='Release' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
     -DCONFIGURATION_NAME:STRING='git' \
@@ -53,13 +54,13 @@ build() {
     -DENABLE_JSON_EXPORT="${_json_export}" \
     -DREFLECTION_GENERATOR_EXECUTABLE:FILEPATH='/usr/bin/reflective_rapidjson_generator-git' \
     .
-  make
+  ninja
 }
 
 check() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
   if [[ $TEST_FILE_PATH ]]; then
-    make check
+    ninja check
   else
     msg2 'Skipping execution of testsuite because the environment variable TEST_FILE_PATH is not set.'
   fi
@@ -67,5 +68,5 @@ check() {
 
 package() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja install
 }
