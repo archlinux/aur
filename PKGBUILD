@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname=pantheon-stable
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Meta package for the complete Pantheon desktop & apps that uses stable versions"
 arch=(any)
@@ -31,7 +31,7 @@ depends=(
 	'pantheon-dpms-helper'
 	'pantheon-files'
 	'gvfs'
-	'pantheon-agent-geoclue2'
+	'pantheon-geoclue2-agent'
 	'pantheon-music'
 	'pantheon-onboarding'
 	'pantheon-photos'
@@ -78,11 +78,10 @@ depends=(
 	'wingpanel-indicator-nightlight'
 	'wingpanel-indicator-notifications'
 	'wingpanel-indicator-power'
-	'wingpanel-indicator-privacy-stable'
 	'wingpanel-indicator-session'
 	'wingpanel-indicator-sound'
 	)
-optdepends=('urutau-icons' 'wingpanel-indicator-a11y-stable' 'epiphany-pantheon' 'lightdm-pantheon-greeter')
+optdepends=('urutau-icons' 'wingpanel-indicator-a11y-stable' 'epiphany-pantheon' 'lightdm-pantheon-greeter' 'wingpanel-indicator-privacy-stable')
 makedepends=('git' 'meson' 'ninja' 'vala>=0.40.3-1')
 provides=("${pkgname}")
 conflicts=(
