@@ -1,17 +1,24 @@
-diff -Naupr frr-frr-7.3_orig/ospf6d/ospf6_abr.c frr-frr-7.3/ospf6d/ospf6_abr.c
---- frr-frr-7.3_orig/ospf6d/ospf6_abr.c	2020-02-14 21:03:09.000000000 +0700
-+++ frr-frr-7.3/ospf6d/ospf6_abr.c	2020-02-26 09:05:46.084754077 +0700
-@@ -1209,8 +1209,8 @@ void ospf6_abr_examin_summary(struct osp
- 		/* For Inter-Prefix route: Update RIB/FIB,
- 		 * For Inter-Router trigger summary update
- 		 */
--		if (table->hook_add)
--			(*table->hook_add)(old_route);
-+		//if (table->hook_add)
-+		//	(*table->hook_add)(old_route);
+diff -ru frr-frr-7.4/lib/table.h /home/eugeneai/tmp/frr-new/src/frr-frr-7.4/lib/table.h
+--- frr-frr-7.4/lib/table.h	2020-06-30 19:08:57.000000000 +0800
++++ /home/eugeneai/tmp/frr-new/src/frr-frr-7.4/lib/table.h	2020-10-11 03:06:11.822840367 +0800
+@@ -248,7 +248,7 @@
+ /* Lock node. */
+ static inline struct route_node *route_lock_node(struct route_node *node)
+ {
+-	(*(unsigned *)&node->lock)++;
++	node->lock+=1;
+ 	return node;
+ }
  
- 		/* Delete new route */
- 		ospf6_route_delete(route);
+@@ -256,7 +256,7 @@
+ static inline void route_unlock_node(struct route_node *node)
+ {
+ 	assert(node->lock > 0);
+-	(*(unsigned *)&node->lock)--;
++	node->lock-=1;
+ 
+ 	if (node->lock == 0)
+ 		route_node_delete(node);
 diff -Naupr frr-frr-7.3_orig/tools/etc/frr/daemons frr-frr-7.3/tools/etc/frr/daemons
 --- frr-frr-7.3_orig/tools/etc/frr/daemons	2020-02-14 21:03:09.000000000 +0700
 +++ frr-frr-7.3/tools/etc/frr/daemons	2020-02-26 15:20:16.080215154 +0700
