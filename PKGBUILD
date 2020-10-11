@@ -2,7 +2,7 @@
 
 pkgname=fotoxx
 pkgver=20.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for improving image files made with a digital camera, stable version"
 url="http://www.kornelix.net/fotoxx/fotoxx.html"
 arch=('i686' 'x86_64')
@@ -29,6 +29,6 @@ package() {
   cd $pkgname
   make DESTDIR="$pkgdir" PREFIX=/usr ICONDIR=/usr/share/pixmaps install 
   rm -r "$pkgdir"/usr/share/appdata
-  chmod o+r "$pkgdir"/usr/share/fotoxx/images/show-RGB.jpg
   sed -i 's+/usr/share/fotoxx/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
+  sed -i 's+Icon=fotoxx.png+Icon=fotoxx+' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
