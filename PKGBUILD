@@ -2,7 +2,7 @@
 
 pkgname=gister-git
 _pkgname=gister
-pkgver=2.4.0.r0.gba6561e
+pkgver=2.4.0.r7.gb916d6a
 pkgrel=1
 pkgdesc="A command line tool for managing GitHub gists"
 arch=('any')
