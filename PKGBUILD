@@ -1,7 +1,7 @@
 # Maintainer: Mansour Behabadi <mansour@oxplot.com>
 
 pkgname=pdi-ce
-pkgver=8.1.0.0_365
+pkgver=9.1.0.0_324
 pkgrel=1
 
 pkgdesc='Pentaho Data Integration (ETL) a.k.a Kettle'
@@ -9,10 +9,10 @@ arch=('x86_64')
 url='https://community.pentaho.com/projects/data-integration/'
 license=('Apache')
 
-depends=('java-runtime' 'gtk2' 'libxtst' 'webkitgtk2')
+depends=('java-runtime' 'gtk3' 'libxtst')
 
 source=(
-  "https://downloads.sourceforge.net/project/pentaho/Pentaho%20$(echo $pkgver | grep -Po '^\d+\.\d+')/client-tools/pdi-ce-${pkgver//_/-}.zip"
+  "https://netactuate.dl.sourceforge.net/project/pentaho/Pentaho%20$(echo $pkgver | grep -Po '^\d+\.\d+')/client-tools/pdi-ce-${pkgver//_/-}.zip"
   "spoon"
   "carte"
   "kitchen"
@@ -20,7 +20,7 @@ source=(
   "spoon.desktop"
 )
 sha1sums=(
-  '8f796149b60621926b8083a46ce320e0fbd2009a'
+  'b9e32afce7a00663d950cc1258b02909729fbf07'
   'b4166cbcb4fe8c77a4fc4ac02b08703aeacb9759'
   'cff3ac6b1df50792b41e613d39bcc3a04eea2e18'
   '0e06b24ffdfad8af2f321ad855d819d5cf4b085c'
