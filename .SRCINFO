@@ -1,10 +1,11 @@
 pkgbase = xtris
 	pkgdesc = Multiplayer Tetris for X
 	pkgver = 1.15
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.iagora.com/~espel/xtris/xtris.html
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	depends = libx11
 	source = http://ftp.uni-erlangen.de/mirrors/gentoo/distfiles/xtris-1.15.tar.gz
