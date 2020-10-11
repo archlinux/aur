@@ -1,0 +1,26 @@
+pkgbase = usbimager-x11-bin
+	pkgdesc = Minimal GUI application to write compressed disk images to USB drives (X11 Frontend)
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://gitlab.com/bztsrc/usbimager
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = libx11
+	provides = usbimager
+	conflicts = usbimager
+	source = usbimager-1.0.5-manual.pdf::https://gitlab.com/bztsrc/usbimager/-/raw/master/usbimager-manual.pdf
+	source = usbimager-1.0.5-LICENSE::https://gitlab.com/bztsrc/usbimager/-/raw/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	source_x86_64 = usbimager-1.0.5-x86_64.zip::https://gitlab.com/bztsrc/usbimager/-/raw/binaries/usbimager_1.0.5-x86_64-linux-x11.zip
+	sha256sums_x86_64 = 7494880639b3238845fa25fe7210caee649bc51a886feaa0b961075e4a40a47f
+	source_armv7h = usbimager-1.0.5-armv7h.zip::https://gitlab.com/bztsrc/usbimager/-/raw/binaries/usbimager_1.0.5-armv7l-linux-x11.zip
+	sha256sums_armv7h = b5048175659334c8617dd5e16c5dffe1e37cf9d26a8be3f65b7273b53ff1b8b4
+	source_aarch64 = usbimager-1.0.5-aarch64.zip::https://gitlab.com/bztsrc/usbimager/-/raw/binaries/usbimager_1.0.5-aarch64-linux-x11.zip
+	sha256sums_aarch64 = 8c7f201d57de1108751fd940c9bafa5bb3705260c228de238ef6b6c4e3f4a470
+
+pkgname = usbimager-x11-bin
+
