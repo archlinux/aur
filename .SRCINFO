@@ -9,6 +9,7 @@ pkgbase = gerbera-git
 	arch = armv7h
 	license = GPL2
 	makedepends = cmake
+	makedepends = git
 	depends = taglib
 	depends = curl
 	depends = sqlite

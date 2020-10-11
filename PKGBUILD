@@ -9,7 +9,7 @@ url="https://github.com/gerbera/gerbera"
 license=('GPL2')
 depends=('taglib' 'curl' 'sqlite' 'file' 'gcc-libs' 'libupnp-git' 'libmatroska'
    'duktape' 'libexif' 'expat' 'libebml' 'fmt' 'spdlog' 'pugixml' 'ffmpeg' 'ffmpegthumbnailer')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 install=gerbera.install
 options=('emptydirs')
 source=("$pkgname::git+https://github.com/gerbera/gerbera.git"
