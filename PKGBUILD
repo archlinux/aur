@@ -1,7 +1,7 @@
 # Maintainer: surefire@cryptomile.net
 
 pkgname=gnome-shell-extension-quake-mode-git
-pkgver=2+0+g6cc6ca7
+pkgver=3+0+g33da039
 pkgrel=1
 pkgdesc='Adds support quake-mode for any application'
 arch=('any')
