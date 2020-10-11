@@ -1,0 +1,14 @@
+pkgbase = quazip-legacy
+	pkgdesc = C++ wrapper for the Gilles Vollant's ZIP/UNZIP C package (Legacy version)
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://stachenov.github.io/quazip/
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = qt5-base
+	source = quazip-0.9.tar.gz::https://github.com/stachenov/quazip/archive/v0.9.tar.gz
+	sha256sums = 377ebf77630e4cff7411fe149cb342e10f3be55ba123cc0b1ee09a25fc3faa06
+
+pkgname = quazip-legacy
+
