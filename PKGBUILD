@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=codespace
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="The code snippet manager you've been waiting for (Requires license key)"
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('gtk3'
          'nss')
 source=("${pkgname}-${pkgver}.tar.gz::https://codespace.app/download/latest"
         'LICENSE')
-sha256sums=('15fde4b88fae49c870691d1d6b4e8d5c0d54958adc15087c12e09d0adff697c1'
-            'SKIP')
+sha256sums=('5154d569a88f81f3243ebafd994a9ea403df30be8a18e1eb23a303fef150b3d0'
+            '5664f8fcdf3e2b3c3f8a70d573aea65bed01c815a5971ff24e97e9cc3717ec6d')
 
 package() {
   tar xvf "${srcdir}/data.tar.xz" -C "${pkgdir}"
