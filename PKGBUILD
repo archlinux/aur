@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=gfold-git
-pkgver=0.5.2.r0.g7020079
+pkgver=0.6.0.r0.g526d33f
 pkgrel=1
 pkgdesc="CLI tool to help keep track of Git repositories (git)"
 arch=('x86_64')
