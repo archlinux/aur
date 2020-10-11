@@ -17,7 +17,7 @@ depends=('qt5-base' 'qtutilities' 'passwordfile' 'openssl' 'libxkbcommon-x11' 'd
 makedepends=('cmake' 'ninja' 'qt5-tools' 'mesa' 'kirigami2')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('e6f6c929a52e6df03f2cfff689a0a2165ecca50d1477f49825b3d574fea2bfc6')
+sha256sums=('4e5ef1c6dfcf9b642c4552cd4be2f88344238956f157f69defab24db655f5cda')
 
 # add further dependencies for the Qt Quick GUI (only kirigami2 is "pluggable")
 if [[ $_quick_gui == ON ]]; then
