@@ -1,15 +1,15 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=sdltrs
-pkgver=1.2.12
+pkgver=1.2.13
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
-pkgdesc="TRS-80 Model I/III/4/4P emulator"
+pkgdesc="TRS-80 Model I/III/4/4P emulator (with software rendering)"
 url="https://gitlab.com/jengun/sdltrs"
 license=('BSD')
 depends=('hicolor-icon-theme' 'sdl2')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('a7ab1b7d5e4e090b71313d6a2335dd2659223374c1c3335ad594477575e8207d04f2a513a051f894b832c1438417cbf24cf1563b245a0c2c01fd9daad58a9840')
+sha512sums=('c6056ad1ca971691fbe5d16876e266c2ff9759e450f460873efa955d76c68b979899b508489e2046b6b47269c7f04fd9b4edb4f55a68585f790e232c08ddd255')
 
 build() {
   cd $pkgname-$pkgver
@@ -20,7 +20,7 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
 
   install -dm0755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" \
