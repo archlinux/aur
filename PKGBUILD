@@ -2,8 +2,8 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=mdadm
-pkgver=4.1
-pkgrel=2
+pkgver=mdadm.4.1.r89.g5f41845
+pkgrel=1
 pkgdesc="A tool for managing/monitoring Linux md device arrays, also known as Software RAID"
 arch=(x86_64)
 license=('GPL')
