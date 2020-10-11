@@ -10,7 +10,7 @@ pkgdesc="TRS-80 Model I/III/4/4P emulator (with hardware rendering)"
 url="https://gitlab.com/jengun/sdltrs"
 license=('BSD')
 depends=('hicolor-icon-theme' 'sdl2')
-source=("$url/-/archive/$_commit/sdltrs-$_commit.tar.gz")
+source=("$url/-/archive/$_commit/$_pkgname-$_commit.tar.gz")
 sha512sums=('SKIP')
 
 build() {
