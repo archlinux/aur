@@ -3,9 +3,8 @@ pkgbase = f32-backgrounds
 	pkgver = 32.2.2
 	pkgrel = 2
 	url = https://fedoraproject.org/wiki/F32_Artwork
-	arch = i686
-	arch = x86_64
-	license = CC-BY-SA
+	arch = any
+	license = custom
 	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f32-backgrounds-32.2.2-2.fc33.src.rpm
 	sha256sums = c78aa5ed090b9aae9b4b4f21f10e83c6611bd0a64efbefb83686768dc89f8143
 
