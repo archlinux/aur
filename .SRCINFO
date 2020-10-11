@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-multi-monitors-add-on-git
 	pkgdesc = Adds panels and thumbnails for additional monitors.
-	pkgver = 20.r1.g302c28b
+	pkgver = 20.r2.g82a28a3
 	pkgrel = 1
 	url = https://github.com/spin83/multi-monitors-add-on
 	arch = any

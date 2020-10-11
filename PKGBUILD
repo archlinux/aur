@@ -3,7 +3,7 @@
 # Contributor: smcdougall <simon at sjmcdougall dot com>
 pkgname=gnome-shell-extension-multi-monitors-add-on-git
 _pkgname=multi-monitors-add-on
-pkgver=20.r1.g302c28b
+pkgver=20.r2.g82a28a3
 pkgrel=1
 pkgdesc="Adds panels and thumbnails for additional monitors."
 arch=('any')
@@ -24,12 +24,20 @@ pkgver() {
 package() {
 	_uuid="$_pkgname@spin83"
 
-	cd "$srcdir/$_pkgname"
-	install -d "$pkgdir/usr/share/gnome-shell/extensions"
-	cp -a "$_uuid" "$pkgdir/usr/share/gnome-shell/extensions"
+	cd "$srcdir/$_pkgname/$_uuid"
+	install -Dm644 schemas/*.xml -t "$pkgdir/usr/share/glib-2.0/schemas"
 
-	install -Dm644 "$_uuid/schemas/org.gnome.shell.extensions.$_pkgname.gschema.xml" -t \
-	  "$pkgdir/usr/share/glib-2.0/schemas"
-	rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas"
+	# Extension does not detect icons here
+#	install -Dm644 icons/*.svg -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps"
+
+	for locale in locale/*/; do
+		install -Dm644 -t "$pkgdir/usr/share/${locale}/LC_MESSAGES" \
+			"${locale}/LC_MESSAGES"/*.mo
+	done
+
+	rm -rf {locale,schemas}
+
+	install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+	cp -a * "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
 }
 
