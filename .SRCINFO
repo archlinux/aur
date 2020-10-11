@@ -1,0 +1,16 @@
+pkgbase = tsld_brute
+	pkgdesc = top level domain & second level domain brute forcer
+	pkgver = 2020.10.11
+	pkgrel = 1
+	url = https://github.com/mmpx12/tsld_brute
+	arch = any
+	license = MIT
+	depends = iputils
+	depends = whois
+	depends = nmap
+	depends = bash
+	source = tsld_brute-2020.10.11::git+https://github.com/mmpx12/tsld_brute.git
+	sha1sums = SKIP
+
+pkgname = tsld_brute
+
