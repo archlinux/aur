@@ -1,0 +1,15 @@
+pkgbase = pwndb
+	pkgdesc = pwndb CLI
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/mmpx12/pwndb
+	arch = any
+	license = MIT
+	depends = pup
+	depends = curl
+	depends = tor
+	source = pwndb-1::git+https://github.com/mmpx12/pwndb.git
+	sha1sums = SKIP
+
+pkgname = pwndb
+
