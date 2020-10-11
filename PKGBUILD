@@ -21,7 +21,4 @@ package() {
     /usr/share/doc/nvidia/README \
     /usr/src/nvidia-$pkgver/nvidia/nv-kernel.o_binary \
     > $pkgdir/var/lib/mhwd/ids/pci/nvidia.ids
-    # add PCIID: 1b82 Nvidia Gforce 1070 Ti
-    sed -i 's/1b81 1b84/1b81 1b82 1b84/g' $pkgdir/var/lib/mhwd/ids/pci/nvidia.ids
-
 }
