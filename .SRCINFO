@@ -1,15 +1,15 @@
 pkgbase = nimdow-bin
 	pkgdesc = Tiling Window Manager written in Nim
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 0
 	url = https://github.com/avahe-kellenberger/nimdow
 	arch = x86_64
 	license = GPL2
-	source = nimdow-0.7.3::https://github.com/avahe-kellenberger/nimdow/releases/download/v0.7.3/nimdow
-	source = nimdow-config-0.7.3.toml::https://github.com/avahe-kellenberger/nimdow/raw/v0.7.3/config.default.toml
+	source = nimdow-0.7.4::https://github.com/avahe-kellenberger/nimdow/releases/download/v0.7.4/nimdow
+	source = nimdow-config-0.7.4.toml::https://github.com/avahe-kellenberger/nimdow/raw/v0.7.4/config.default.toml
 	source = nimdow.desktop
-	md5sums = 701631ba188b914b748dd894ed1dd36f
-	md5sums = a4bef0ff36f07a5ee711a7cf877be385
+	md5sums = a73ac0ee8aaa8958ca96ea719d8f78d1
+	md5sums = 2a8c559c121c87369b7043d958686dc1
 	md5sums = 70260787d12b7f6a449943526a97247d
 
 pkgname = nimdow-bin
