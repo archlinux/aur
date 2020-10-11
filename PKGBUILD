@@ -1,5 +1,6 @@
 # Maintainer: Franc[e]sco <lolisamurai@tfwno.gf>
 
+_origname=qemu
 pkgbase=qemu-templeos
 pkgname=(qemu-templeos qemu-headless-templeos qemu-arch-extra-templeos
          qemu-headless-arch-extra-templeos qemu-block-{iscsi,rbd,gluster}-templeos
@@ -37,7 +38,7 @@ esac
 prepare() {
   mkdir -p build-{full,headless}
   mkdir -p extra-arch-{full,headless}/usr/{bin,share/qemu}
-  cd "$pkgname-$pkgver"
+  cd "$_origname-$pkgver"
   for p in $patches; do
     patch --forward --strip=1 --input="${startdir}/$p.patch"
   done
@@ -60,7 +61,7 @@ build() {
 _build() (
   cd build-$1
 
-  ../${pkgname}-${pkgver}/configure \
+  ../${_origname}-${pkgver}/configure \
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
