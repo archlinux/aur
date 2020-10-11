@@ -3,7 +3,7 @@
 pkgname=pandoc-static-katex-git
 provides=('pandoc-static-katex')
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple pandoc filter that uses KaTeX to render math equations at build time."
 license=('MIT')
 arch=('any')
@@ -22,4 +22,7 @@ package() {
     install -D -m 755 \
         "$srcdir/$pkgname/pandoc_static_katex.py" \
         "$pkgdir/usr/bin/pandoc-static-katex"
+    install -D -m 644 \
+        "$srcdir/$pkgname/LICENSE" \
+        "$pkgdir/usr/share/licenses/pandoc-static-katex/LICENSE"
 }

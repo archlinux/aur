@@ -1,7 +1,7 @@
 pkgbase = pandoc-static-katex-git
 	pkgdesc = A simple pandoc filter that uses KaTeX to render math equations at build time.
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zaharid/pandoc_static_katex
 	arch = any
 	license = MIT
