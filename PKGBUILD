@@ -1,7 +1,7 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=python-fbs
 _name=fbs
-pkgver=0.8.6
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Python and Qt-based lightweight alternative to Electron"
 arch=('any')
@@ -9,9 +9,13 @@ url="https://build-system.fman.io/"
 license=('GPL3')
 depends=('python')
 makedepends=('python-setuptools')
+optdepends=('python-pyqt5: Qt5 Python bindings'
+            'pyside2: PySide Qt5 Python bindings'
+            'python-sentry_sdk: upload errors that occur in your app to Sentry'
+            'python-boto3: AWS support')
 source=("${_name}-${pkgver}.tar.gz"::"https://github.com/mherrmann/fbs/archive/v${pkgver}.tar.gz")
-sha256sums=('5ea208705e1190f01d0b12a1be81e6ff8f6a36cc7f22a4e35d176350b26070ee')
-sha512sums=('12d2b6ef9515cb363617dd479ba2f021ef89d27cfd580e8c445a70b01ea8088dd25e7ae6128230a048bb1e8bdb25dbfeaca13113a6fb1feefb050157f66cb17c')
+sha256sums=('5c08dff7a4da5f97958d57bea8dbae56286dbe9090ab5805fd5f6e24243394e2')
+sha512sums=('b984b34e3c9432e7079af230abd5bf758f7c54a2592ee6e205da40b7f61945dadd4576e4b1c5f63ad6c466f720c3e58e892e0e8654b4f0c1e0cd27fd728919a5')
 
 build() {
   cd ${_name}-${pkgver}
