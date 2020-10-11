@@ -1,0 +1,16 @@
+pkgbase = sponsorblock-firefox-git
+	pkgdesc = SponsorBlock extension for Firefox
+	pkgver = 2.0.7.r38.4dc4160
+	pkgrel = 1
+	url = https://github.com/ajayyy/SponsorBlock
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = npm
+	provides = sponsorblock-firefox
+	conflicts = sponsorblock-firefox
+	source = sponsorblock-firefox::git+https://github.com/ajayyy/SponsorBlock.git
+	sha256sums = SKIP
+
+pkgname = sponsorblock-firefox-git
+
