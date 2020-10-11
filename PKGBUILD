@@ -10,7 +10,7 @@ license=('MIT')
 conflicts=('lbrynet' 'lbry-app-bin>=0.47.1' 'lbry-app-bin<0.47.2-2')
 provides=('lbrynet')
 source=("lbrynet-linux-$pkgver.zip::https://github.com/lbryio/lbry-sdk/releases/download/v$pkgver/lbrynet-linux.zip"
-        "lbrynet-LICENSE-$pkgver::https://raw.githubusercontent.com/lbryio/lbry-sdk/master/LICENSE")
+        "lbrynet-LICENSE-$pkgver::https://raw.githubusercontent.com/lbryio/lbry-sdk/v$pkgver/LICENSE")
 
 package() {
    install -Dm755 "${srcdir}/lbrynet" -t "${pkgdir}/usr/bin/"
