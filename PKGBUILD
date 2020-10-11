@@ -3,7 +3,7 @@
 
 pkgname=x11iraf-git
 pkgver=r92.8f45f2f
-pkgrel=1
+pkgrel=2
 pkgdesc="X11/GUI development utilities and applications developed by the IRAF Project"
 arch=('i686' 'x86_64')
 url="https://github.com/iraf-community/x11iraf"
@@ -26,8 +26,6 @@ pkgver() {
 
 build(){
 	cd "$srcdir/${pkgname%-git}"
-	# Fix tcl.h issue
-	grep -rli 'tcl/tcl.h' * | xargs -i@ sed -i 's#tcl/tcl.h#tcl.h#g' @
 	make
 }
 

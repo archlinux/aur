@@ -1,7 +1,7 @@
 pkgbase = x11iraf-git
 	pkgdesc = X11/GUI development utilities and applications developed by the IRAF Project
 	pkgver = r92.8f45f2f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/iraf-community/x11iraf
 	install = x11iraf.install
 	arch = i686
