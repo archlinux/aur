@@ -3,7 +3,7 @@
 pkgbase=kodi-standalone-service
 pkgname=(kodi-standalone-x11-service kodi-standalone-gbm-service kodi-standalone-wayland-service)
 pkgver=1.107
-pkgrel=2
+pkgrel=3
 pkgdesc="Systemd service to run kodi in stand-alone mode without a DE"
 # Do NOT attempt to use this package on Arch ARM! This is only for x86_64.
 # You have been warned.

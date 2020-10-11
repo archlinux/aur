@@ -5,12 +5,13 @@ post_remove() {
 post_install() {
   echo "--> Optionally create /etc/conf.d/kodi-standalone if you need to pass"
   echo "--> any environment variables to the service"
+  post_upgrade
+}
 
+post_upgrade() {
   if find /etc/systemd/system -type l -name 'kodi.service' &>/dev/null; then
-    echo '-->'
     echo '--> kodi.service is now kodi-x11.service'
     echo '--> you must disable the old one and enable the new one'
-    echo true
   fi
 }
 
