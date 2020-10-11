@@ -1,13 +1,13 @@
 pkgbase = gfold
 	pkgdesc = CLI tool to help keep track of Git repositories
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/nickgerace/gfold
 	arch = x86_64
 	license = Apache
 	makedepends = cargo
-	source = gfold-0.5.2.tar.gz::https://github.com/nickgerace/gfold/archive/0.5.2.tar.gz
-	sha512sums = cd0c05f2daf01eeee073245e6c7d3786ccf37b8a90c61cc480e6a6adb09d418d5a828dbea2893d68abde03dd67cde4b053a546ecbd434a541aff38a6b4f3cbd9
+	source = gfold-0.6.0.tar.gz::https://github.com/nickgerace/gfold/archive/0.6.0.tar.gz
+	sha512sums = ffc062620450105974a0ed22299b4a98fc51cc0e11f251b335f9e88a91e7a74a69a744f7eb2cfbcfa97a4165c3a0814aa15d67f80743bc497108a3fa0f7a58e5
 
 pkgname = gfold
 
