@@ -10,7 +10,6 @@ license=('GPL3')
 depends=('gtkspell3' 'webkit2gtk' 'discount' 'gtksourceview4' 'libxml2' 'libarchive'
          'clutter' 'libgee')
 makedepends=('git' 'meson' 'vala')
-conflicts=('ultheme-vala' 'libwritegood-vala')
 #source=("$pkgname-$pkgver.tar.gz::https://github.com/kmwallio/ThiefMD/archive/v$pkgver-$_codename.tar.gz")
 _commit=906f8ea9e35e415104cbb7963743be23af5ded4a
 source=("git+https://github.com/kmwallio/ThiefMD.git#commit=$_commit"

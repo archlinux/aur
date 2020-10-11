@@ -16,8 +16,6 @@ pkgbase = thiefmd
 	depends = libarchive
 	depends = clutter
 	depends = libgee
-	conflicts = ultheme-vala
-	conflicts = libwritegood-vala
 	source = git+https://github.com/kmwallio/ThiefMD.git#commit=906f8ea9e35e415104cbb7963743be23af5ded4a
 	source = git+https://github.com/TwiRp/ultheme-vala.git
 	source = git+https://github.com/ThiefMD/libwritegood-vala.git
