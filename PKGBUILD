@@ -23,14 +23,13 @@ sha256sums_aarch64=('5640f2115e6e38e4124442b04d58d06f7abfed84a41fab81c1b29006183
 
 package_bitcoinhd-qt() {
 	pkgdesc="BitcoinHD is a peer-to-peer network based digital currency - Qt"
-	depends=(boost-libs libevent qt5-base miniupnpc libminiupnpc.so qrencode protobuf zeromq)
+	depends=(boost-libs hicolor-icon-theme libevent miniupnpc protobuf qrencode qt5-base zeromq)
 
 	install -Dm755 bhd-v$pkgver/bin/btchd-qt $pkgdir/usr/bin/btchd-qt
 	install -Dm644 bhd-v$pkgver/share/man/man1/btchd-qt.1 $pkgdir/usr/share/man/man1/btchd-qt.1
 	install -Dm644 btchd-$pkgver/share/pixmaps/bitcoin128.png $pkgdir/usr/share/pixmaps/btchd128.png
 
-	ls /usr/share/licenses/btchd/COPYING > /dev/null
-	if [ $? -ne 0 ]; then
+	if [ ! -f "/usr/share/licenses/btchd/COPYING" ]; then
 	    install -Dm644 btchd-$pkgver/COPYING $pkgdir/usr/share/licenses/btchd/COPYING
 	fi
 	install -Dm644 bitcoinhd-qt.desktop $pkgdir/usr/share/applications/btchd-qt.desktop
@@ -38,15 +37,14 @@ package_bitcoinhd-qt() {
 
 package_bitcoinhd-daemon() {
 	pkgdesc="BitcoinHD is a peer-to-peer network based digital currency - daemon"
-	depends=(boost-libs libevent miniupnpc libminiupnpc.so zeromq)
+	depends=(boost-libs libevent miniupnpc zeromq)
 	backup=('etc/btchd/btchd.conf')
 
 	install -Dm755 bhd-v$pkgver/bin/btchdd $pkgdir/usr/bin/btchdd
 	install -Dm644 bhd-v$pkgver/share/man/man1/btchdd.1 $pkgdir/usr/share/man/man1/btchdd.1
 	install -Dm644 btchd-$pkgver/share/examples/btchd.conf $pkgdir/etc/btchd/btchd.conf
 
-	ls /usr/share/licenses/btchd/COPYING > /dev/null
-	if [ $? -ne 0 ]; then
+	if [ ! -f "/usr/share/licenses/btchd/COPYING" ]; then
 	    install -Dm644 btchd-$pkgver/COPYING $pkgdir/usr/share/licenses/btchd/COPYING
 	fi
 }
@@ -58,8 +56,7 @@ package_bitcoinhd-cli() {
 	install -Dm755 bhd-v$pkgver/bin/btchd-cli $pkgdir/usr/bin/btchd-cli
 	install -Dm644 bhd-v$pkgver/share/man/man1/btchd-cli.1 $pkgdir/usr/share/man/man1/btchd-cli.1
 
-	ls /usr/share/licenses/btchd/COPYING > /dev/null
-	if [ $? -ne 0 ]; then
+	if [ ! -f "/usr/share/licenses/btchd/COPYING" ]; then
 	    install -Dm644 btchd-$pkgver/COPYING $pkgdir/usr/share/licenses/btchd/COPYING
 	fi
 }
@@ -71,8 +68,7 @@ package_bitcoinhd-tx() {
 	install -Dm755 bhd-v$pkgver/bin/btchd-tx $pkgdir/usr/bin/btchd-tx
 	install -Dm644 bhd-v$pkgver/share/man/man1/btchd-tx.1 $pkgdir/usr/share/man/man1/btchd-tx.1
 
-	ls /usr/share/licenses/btchd/COPYING > /dev/null
-	if [ $? -ne 0 ]; then
+	if [ ! -f "/usr/share/licenses/btchd/COPYING" ]; then
 	    install -Dm644 btchd-$pkgver/COPYING $pkgdir/usr/share/licenses/btchd/COPYING
 	fi
 }

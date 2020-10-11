@@ -1,6 +1,6 @@
 pkgbase = bitcoinhd
 	pkgver = 1.4.3
-	pkgrel = 2
+	pkgrel = 1
 	url = https://btchd.org/
 	arch = x86_64
 	arch = i686
@@ -25,7 +25,6 @@ pkgname = bitcoinhd-daemon
 	depends = boost-libs
 	depends = libevent
 	depends = miniupnpc
-	depends = libminiupnpc.so
 	depends = zeromq
 	backup = etc/btchd/btchd.conf
 
@@ -37,12 +36,12 @@ pkgname = bitcoinhd-cli
 pkgname = bitcoinhd-qt
 	pkgdesc = BitcoinHD is a peer-to-peer network based digital currency - Qt
 	depends = boost-libs
+	depends = hicolor-icon-theme
 	depends = libevent
-	depends = qt5-base
 	depends = miniupnpc
-	depends = libminiupnpc.so
-	depends = qrencode
 	depends = protobuf
+	depends = qrencode
+	depends = qt5-base
 	depends = zeromq
 
 pkgname = bitcoinhd-tx
