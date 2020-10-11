@@ -42,9 +42,12 @@ package() {
 
   # Source code (symlinks are not dereferenced) and plugins
   cp -r --no-preserve=ownership --preserve=mode \
-      src-gen lib node_modules package.json \
+      src-gen lib node_modules \
       plugins \
       "$pkgdir/usr/lib/$pkgname/"
+
+  # package.json
+  install -Dm755 package.json "$pkgdir/usr/lib/$pkgname/"
 
   # Executable
   install -Dm755 theia-electron.sh "$pkgdir/usr/bin/$pkgname"
