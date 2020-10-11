@@ -1,0 +1,21 @@
+pkgbase = gemstash
+	pkgdesc = Acts as a local RubyGems server, caching copies of gems from RubyGems.org automatically, and eventually letting you push your own private gems as well.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/rubygems/gemstash
+	arch = any
+	license = MIT
+	checkdepends = ruby-rspec
+	makedepends = ruby-rdoc
+	makedepends = ruby-rake
+	makedepends = ruby-bundler
+	makedepends = pandoc
+	depends = ruby
+	options = !emptydirs
+	source = https://github.com/rubygems/gemstash/archive/v2.1.0/gemstash-v2.1.0.tar.gz
+	source = disable-rubocop.patch
+	sha512sums = e498cbdffa4d3b6edc8dd4e5220c0b55919130eb7d8a0891c34538bd262bed074f8cdda3382a8cbb2aa6385151a2c02c6c6084db7117cc3b8ed7f559cd4aa35a
+	sha512sums = 7bf09636dc906348821aa4cd065f3e5d74218b781f4c998127ce78a5bd613bd50b31f8811d052938d5b88783c053b385ad85ac0ab4235bb2fa82ac81956a9929
+
+pkgname = gemstash
+

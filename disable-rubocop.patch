@@ -1,0 +1,21 @@
+diff --git a/Rakefile b/Rakefile
+index 60de4a9..bc5a9c8 100644
+--- a/Rakefile
++++ b/Rakefile
+@@ -2,16 +2,7 @@
+ 
+ require "bundler/gem_tasks"
+ require "rspec/core/rake_task"
+-require "rubocop/rake_task"
+ 
+-RuboCop::RakeTask.new
+-
+-desc "Run specs"
+-RSpec::Core::RakeTask.new(:spec) do |t|
+-  t.rspec_opts = %w[--color]
+-end
+-
+-task spec: :rubocop
+ task default: :spec
+ 
+ desc "Update ChangeLog based on commits in master"
