@@ -22,6 +22,6 @@ pkgver() {
 }
 
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${srcdir}/${_pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
