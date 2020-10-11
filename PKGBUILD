@@ -2,7 +2,7 @@
 # Contributor: Jan Misiak <fijam [at] archlinux.us>
 
 pkgname=gigolo
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Frontend to manage connections to remote filesystems using GIO/GVFS"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('intltool')
 conflicts=('gigolo-git')
 source=(https://archive.xfce.org/src/apps/$pkgname/0.5/$pkgname-$pkgver.tar.bz2)
 # validpgpkeys=('457990C86F91F33DE05EBF1BCC03633F700990F2') #Enrico Tröger <enrico.troeger@uvena.de>
-sha256sums=('97a301aff012a143d0b99e7ecbb27084d3872aa203a74745e8357aab3a1880dc')
+sha256sums=('ca87badb5871e4844579704704ea9e5ede444f710a3b264c12b60b2a0e48e14e')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver

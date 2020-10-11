@@ -1,6 +1,6 @@
 pkgbase = gigolo
 	pkgdesc = Frontend to manage connections to remote filesystems using GIO/GVFS
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://www.uvena.de/gigolo
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = gigolo
 	makedepends = intltool
 	depends = gvfs
 	conflicts = gigolo-git
-	source = https://archive.xfce.org/src/apps/gigolo/0.5/gigolo-0.5.0.tar.bz2
-	sha256sums = 97a301aff012a143d0b99e7ecbb27084d3872aa203a74745e8357aab3a1880dc
+	source = https://archive.xfce.org/src/apps/gigolo/0.5/gigolo-0.5.1.tar.bz2
+	sha256sums = ca87badb5871e4844579704704ea9e5ede444f710a3b264c12b60b2a0e48e14e
 
 pkgname = gigolo
 
