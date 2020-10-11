@@ -3,8 +3,8 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-workarounds
-pkgver=3.2.0.r73.gc49189b
-pkgrel=2
+pkgver=3.3.2.r96.g9dedf56
+pkgrel=1
 pkgdesc='Workarounds for Pantheon derivatives'
 arch=('any')
 url='https://github.com/quequotion/pantheon-qq'
@@ -34,12 +34,13 @@ optdepends=("contractor: A desktop-wide extension service"
             "pantheon-screenshot: The Pantheon Screenshot Tool"
             "pantheon-terminal: The Pantheon Terminal Emulator"
             "xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops"
-            "wingpanel-standalone-git: Stylish top panel that holds indicators and spawns an application launcher (with autohide and without Gala dependencies)")
+            "wingpanel-standalone-git: Stylish top panel (with autohide and without Gala dependencies)")
 makedepends=('git' 'intltool')
 provides=("libgala.so=0-64")
 conflicts=("libgala.so=0-64")
 install='gala.install'
-source=("https://raw.githubusercontent.com/elementary/gala/master/data/org.pantheon.desktop.gala.gschema.xml.in"        'pantheon-session-qq'
+source=("https://raw.githubusercontent.com/elementary/gala/master/data/org.pantheon.desktop.gala.gschema.xml.in"
+        'pantheon-session-qq'
         'numlockx-pantheon.desktop'
         'gtk.css'
         'settings.ini'
@@ -77,7 +78,11 @@ package() {
   install -Dm755 {"${srcdir}","${pkgdir}"/usr/bin}/pantheon-session-qq
 
   #Use cinnamon-settings-daemon (gnome-settings-daemon has deprecated modularity and xorg)
+  #Skip "Screensaver" plugin in Pantheon: session-indicator needs org.freedesktop.ScreenSaver.Lock
+  #Skip "Xrandr" plugin in Pantheon: monitors.xml configuration doesn't seem to work, is undocumented, etc
   for i in /etc/xdg/autostart/cinnamon-settings-daemon-*.desktop; do
-    sed s/X-Cinnamon/Pantheon/ "${i}" > "${pkgdir}${i/.desktop/-pantheon.desktop}"
+    if [[ ${i} != *screensaver* ]] && [[ ${i} != *xrandr* ]] && [[ ${i} != *pantheon* ]]; then
+      sed s/X-Cinnamon/Pantheon/ "${i}" > "${pkgdir}${i/.desktop/-pantheon.desktop}"
+    fi
   done
 }

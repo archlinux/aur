@@ -1,7 +1,7 @@
 pkgbase = pantheon-workarounds
 	pkgdesc = Workarounds for Pantheon derivatives
-	pkgver = 3.2.0.r73.gc49189b
-	pkgrel = 2
+	pkgver = 3.3.2.r96.g9dedf56
+	pkgrel = 1
 	url = https://github.com/quequotion/pantheon-qq
 	install = gala.install
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = pantheon-workarounds
 	optdepends = pantheon-screenshot: The Pantheon Screenshot Tool
 	optdepends = pantheon-terminal: The Pantheon Terminal Emulator
 	optdepends = xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops
-	optdepends = wingpanel-standalone-git: Stylish top panel that holds indicators and spawns an application launcher (with autohide and without Gala dependencies)
+	optdepends = wingpanel-standalone-git: Stylish top panel (with autohide and without Gala dependencies)
 	provides = libgala.so=0-64
 	conflicts = libgala.so=0-64
 	source = https://raw.githubusercontent.com/elementary/gala/master/data/org.pantheon.desktop.gala.gschema.xml.in
