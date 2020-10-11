@@ -1,0 +1,27 @@
+pkgbase = dave-gnukem-git
+	pkgdesc = 2D scrolling platform shooter inspired by Duke Nukem 1
+	pkgver = 1.0.1.r23.g2d1541e
+	pkgrel = 1
+	url = https://github.com/davidjoffe/dave_gnukem
+	arch = x86_64
+	license = GPL2
+	license = MIT
+	makedepends = git
+	makedepends = imagemagick
+	depends = hicolor-icon-theme
+	depends = sdl_mixer
+	provides = dave-gnukem
+	conflicts = dave-gnukem
+	source = dave-gnukem-core::git+https://github.com/davidjoffe/dave_gnukem.git
+	source = dave-gnukem-data::git+https://github.com/davidjoffe/gnukem_data.git
+	source = dave-gnukem
+	source = dave-gnukem.desktop
+	source = dave-gnukem.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = b64a79006ae8648f2e04af8ce6648ed1badea6e84935809d34eca5ecf68c95f7
+	sha256sums = 209cb430b87c2b89455833b7c79ca309a8b87331c63882092b8c1ebeadbf2745
+	sha256sums = 89cb35bd13682bb35f2e7e5a9fc36d0a0f9959b77261d538f8ab1d59edb0321e
+
+pkgname = dave-gnukem-git
+
