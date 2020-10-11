@@ -1,15 +1,13 @@
 # Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=genieutils-git
-pkgver=10.r654.2fbb27d
+pkgver=681.ffe5e84
 pkgrel=1
-_apiver=10
-_pcrioapi=2
 pkgdesc='A library to read/write certain data and resource files of genie engine games'
 arch=('x86_64' 'i686')
 url='https://github.com/sandsmark/genieutils'
 license=('LGPL3')
-depends=("pcrio-git>=${_pcrioapi}" 'boost-libs')
+depends=("pcrio-git>=41" 'boost-libs')
 makedepends=('git' 'zstr-git')
 conflicts=(genieutils)
 provides=(genieutils)
@@ -18,7 +16,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd genieutils
-    printf "${_apiver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {

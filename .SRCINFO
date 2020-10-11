@@ -1,6 +1,6 @@
 pkgbase = genieutils-git
 	pkgdesc = A library to read/write certain data and resource files of genie engine games
-	pkgver = 10.r654.2fbb27d
+	pkgver = 681.ffe5e84
 	pkgrel = 1
 	url = https://github.com/sandsmark/genieutils
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = genieutils-git
 	license = LGPL3
 	makedepends = git
 	makedepends = zstr-git
-	depends = pcrio-git>=2
+	depends = pcrio-git>=41
 	depends = boost-libs
 	provides = genieutils
 	conflicts = genieutils
