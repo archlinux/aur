@@ -3,7 +3,7 @@
 # Maintainer: Boian Bonev <bbonev@ipacct.com>
 
 pkgname=iotop-c
-pkgver=1.14
+pkgver=1.15
 pkgrel=1
 pkgdesc="simple top-like I/O monitor (implemented in C)"
 arch=('any')
@@ -18,6 +18,7 @@ validpgpkeys=('BA60BC20F37E59444D6D25001365720913D2F22D')
 md5sums=('SKIP' 'SKIP')
 
 package() {
+	cd iotop-${pkgver}
 	sed -i 's/sbin/bin/g' Makefile
 	make DESTDIR="${pkgdir}" V=1 install
 }
