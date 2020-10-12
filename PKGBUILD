@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Janouch <p.janouch@gmail.com>
 pkgname=json-rpc-shell-git
 _pkgname=json-rpc-shell
-pkgver=r45.ac5c2f4
+pkgver=v1.0.0.r10.gee79249
 pkgrel=1
 pkgdesc="Shell for JSON-RPC 2.0 HTTP queries"
 url="https://git.janouch.name/p/json-rpc-shell"
@@ -10,7 +10,7 @@ license=('BSD')
 options=(zipman)
 conflicts=('json-rpc-shell')
 provides=('json-rpc-shell')
-makedepends=('cmake' 'pkg-config' 'git' 'help2man')
+makedepends=('cmake' 'pkg-config' 'git' 'asciidoctor')
 depends=('libev' 'ncurses' 'jansson' 'curl' 'readline')
 source=("git+https://git.janouch.name/p/$_pkgname.git")
 md5sums=('SKIP')
