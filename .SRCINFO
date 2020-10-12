@@ -1,11 +1,12 @@
 pkgbase = enroute-git
 	pkgdesc = Enroute Flight Navigation
-	pkgver = 1.8.1.r135.g2885539
-	pkgrel = 1
+	pkgver = 1.8.1.r136.gee7bad1
+	pkgrel = 2
 	url = https://akaflieg-freiburg.github.io/enroute/
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = cmake
 	makedepends = clang
 	depends = qt5-location

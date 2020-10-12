@@ -3,7 +3,7 @@
 pkgname=enroute-git
 _name=enroute
 pkgver=1.8.1.r136.gee7bad1
-pkgrel=1
+pkgrel=2
 pkgdesc="Enroute Flight Navigation"
 arch=('i686' 'x86_64')
 url="https://akaflieg-freiburg.github.io/enroute/"
