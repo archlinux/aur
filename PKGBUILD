@@ -1,6 +1,6 @@
 # Maintainer: Cerebrux <mail@cerebrux.net>
 pkgname=shelldio
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="KISS Shell Radio (Greek) for your terminal"
 arch=('any')
