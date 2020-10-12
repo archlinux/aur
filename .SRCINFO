@@ -1,0 +1,16 @@
+pkgbase = vim-dbext
+	pkgdesc = Provides database access to many DBMS (Oracle, Sybase, Microsoft, MySQL, DBI,..)
+	pkgver = 26.00
+	pkgrel = 1
+	url = https://www.vim.org/scripts/script.php?script_id=356
+	arch = any
+	groups = vim-plugins
+	license = GPL2
+	makedepends = unzip
+	depends = vim
+	noextract = vim-dbext-26.00.zip
+	source = vim-dbext-26.00.zip::https://www.vim.org/scripts/download_script.php?src_id=25648
+	sha256sums = 71d3d0c721b0e8fcb9d50e3addb542842e9c3bc3a7192402224255de2fa3af5a
+
+pkgname = vim-dbext
+
