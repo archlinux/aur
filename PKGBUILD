@@ -1,7 +1,7 @@
 # Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
-_version='4.1.20200524'
-_sha256='78267afc1003bc02807a76f8cf881f869b7f797e1ad6575c7efab883adccc88d'
+_version='4.1.20201011'
+_sha256='5a11e299fc27faee442cc1222ea49226e5f653e8f62d8296aa5c7fd3482f8ab8'
 
 pkgname=codecept-bin
 pkgver=${_version}
