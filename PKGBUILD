@@ -2,14 +2,14 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=roundcubemail-git
-pkgver=1.4.rc1.r37.gc7677a572
+pkgver=1.4.rc2.r582.g3fd6588be
 pkgrel=1
 pkgdesc="A PHP web-based mail client"
 arch=('any')
 url="https://roundcube.net/"
 license=('GPL')
 depends=('php' 'php-gd')
-makedepends=('php-composer' 'git' 'unzip' 'java-runtime' 'nodejs-less')
+makedepends=('php-composer' 'git' 'unzip' 'java-runtime' 'nodejs-less-plugin-clean-css')
 optdepends=('python2')
 provides=('roundcubemail')
 conflicts=('roundcubemail')
@@ -46,9 +46,10 @@ build(){
   bin/jsshrink.sh
 
   cd skins/elastic
-  lessc -x styles/styles.less > styles/styles.css
-  lessc -x styles/print.less > styles/print.css
-  lessc -x styles/embed.less > styles/embed.css
+  lessc --clean-css="--s1 --advanced" styles/styles.less > styles/styles.min.css
+  lessc --clean-css="--s1 --advanced" styles/print.less > styles/print.min.css
+  lessc --clean-css="--s1 --advanced" styles/embed.less > styles/embed.min.css
+
   cd ../..
 
   bin/updatecss.sh
