@@ -1,7 +1,7 @@
 # Maintainer: Rachel Mant <dx-mon@users.sourceforge.net>
 
 pkgname=kicad-nightly
-pkgver=5.99.0_3966_f6ab7f4e7
+pkgver=5.99.0_3990_g5afae757f
 pkgrel=1
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
 	'kicad-library: for footprints and symbols'
 	'kicad-library-3d: for 3d models of components'
 )
-_kicad_commit=f6ab7f4e7 # master
+_kicad_commit=5afae757f # master
 _i18n_commit=636831f # master
 source=(
 	'git+https://gitlab.com/kicad/code/kicad.git'#commit=$_kicad_commit
