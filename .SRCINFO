@@ -6,6 +6,7 @@ pkgbase = bash-command-timer-git
 	install = bash-command-timer-git.install
 	arch = any
 	license = APACHE
+	makedepends = git
 	depends = bash-preexec
 	provides = bash-command-timer
 	source = bash-command-timer-git-r39.f1b5412::git+https://github.com/jichu4n/bash-command-timer.git#branch=master

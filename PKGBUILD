@@ -8,7 +8,7 @@ pkgdesc="Pretty-print execution time for each bash command."
 arch=('any')
 url="https://github.com/jichu4n/bash-command-timer"
 license=('APACHE')
-#makedepends=('')
+makedepends=('git')
 depends=('bash-preexec')
 
 source=("${pkgname}-${pkgver}::git+https://github.com/jichu4n/bash-command-timer.git#branch=master")
@@ -24,13 +24,10 @@ pkgver() {
   )
 }
 
-#build() {
-#    
-#}
-
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  install -D -m0755 "$srcdir/$pkgname-$pkgver/bash_command_timer.sh" "$pkgdir/usr/share/bash-command-timer/bash_command_timer.sh"
+  install -D -m0755 "$srcdir/$pkgname-$pkgver/bash_command_timer.sh" \
+    "$pkgdir/usr/share/bash-command-timer/bash_command_timer.sh"
 }
 
 #
