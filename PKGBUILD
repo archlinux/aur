@@ -3,7 +3,7 @@
 
 pkgname=pencil
 pkgver=3.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Sketching and GUI prototyping/wireframing tool"
 arch=('any')
 license=('GPL2')
@@ -41,6 +41,7 @@ build() {
 
 
     # Aggressively remove binary and useless files in node_modules
+    cd "${srcdir}/${pkgname}-${pkgver}/app/node_modules"
     find . -iname "CHANGELOG*" -exec rm -rfv {} +
     find . -iname "README*" -exec rm -rfv {} +
     find . -iname "*.md" -exec rm -rfv {} +
