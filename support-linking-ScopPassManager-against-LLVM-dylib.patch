@@ -1,0 +1,28 @@
+From 96b02808afa7eb043b9968b07424cc96bc8d94a6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Wed, 5 Aug 2020 10:22:32 +0200
+Subject: [PATCH] [Polly] Support linking ScopPassManager against LLVM dylib
+
+Link ScopPassManager to LLVM dylib target if LLVM_LINK_LLVM_DYLIB
+is enabled.  This fixes build failures on systems where static LLVM
+libraries are not installed.
+
+Differential Revision: https://reviews.llvm.org/D85281
+---
+ polly/unittests/ScopPassManager/CMakeLists.txt | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/polly/unittests/ScopPassManager/CMakeLists.txt b/polly/unittests/ScopPassManager/CMakeLists.txt
+index ed3bbd6dcef..88300144af3 100644
+--- a/polly/unittests/ScopPassManager/CMakeLists.txt
++++ b/polly/unittests/ScopPassManager/CMakeLists.txt
+@@ -1,5 +1,7 @@
+-llvm_map_components_to_libnames(llvm_libs Passes Core Analysis)
+ add_polly_unittest(ScopPassManagerTests
+   PassManagerTest.cpp
+   )
+-target_link_libraries(ScopPassManagerTests PRIVATE ${llvm_libs})
++if (NOT LLVM_LINK_LLVM_DYLIB)
++  llvm_map_components_to_libnames(llvm_libs Passes Core Analysis)
++  target_link_libraries(ScopPassManagerTests PRIVATE ${llvm_libs})
++endif()
