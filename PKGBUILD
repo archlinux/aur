@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Janouch <p.janouch@gmail.com>
 pkgname=pdf-simple-sign-git
 _pkgname=pdf-simple-sign
-pkgver=r2.41f8165
+pkgver=v1.1.1.r1.gd4ff9a6
 pkgrel=1
 pkgdesc="Simple PDF signer"
 url="https://git.janouch.name/p/pdf-simple-sign"
@@ -10,7 +10,7 @@ license=('BSD')
 options=(zipman)
 conflicts=('pdf-simple-sign')
 provides=('pdf-simple-sign')
-makedepends=('meson' 'git')
+makedepends=('meson' 'git' 'asciidoctor')
 depends=('openssl')
 source=("git+https://git.janouch.name/p/$_pkgname.git")
 md5sums=('SKIP')
