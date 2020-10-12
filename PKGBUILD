@@ -5,7 +5,7 @@
 #
 pkgname=openmpi-cuda
 _pkgname=openmpi
-pkgver=4.0.4
+pkgver=4.0.5
 pkgrel=1
 pkgdesc="High Performance Message Passing Library (MPI) compiled with CUDA support enabled"
 arch=('x86_64')
@@ -19,8 +19,7 @@ conflicts=("${pkgname%-cuda}")
 optdepends=('gcc-fortran: fortran support')
 options=(staticlibs)
 source=(https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('47e24eb2223fe5d24438658958a313b6b7a55bb281563542e1afc9dec4a31ac4')
-
+sha256sums=('c58f3863b61d944231077f344fe6b4b8fbb83f3d1bc93ab74640bf3e5acac009')
 
 build() {
    cd openmpi-$pkgver
