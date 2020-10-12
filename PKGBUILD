@@ -1,8 +1,8 @@
 # Maintainer: w0rty <mawo97 at gmail.com>
 
 pkgname=bit
-pkgver=0.5.8
-pkgrel=3
+pkgver=0.5.10
+pkgrel=1
 pkgdesc='A modern Git CLI'
 arch=('x86_64')
 url="https://github.com/chriswalz/bit"
@@ -13,7 +13,7 @@ conflicts=('bit-git')
 provides=('bit')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 install=bit.install
-sha1sums=('b3a64a80469df6af2dd08fe272bdb3a2b55dded2')
+sha1sums=('6f2c2234ac98bf2479de62a6bffc528822292813')
 
 prepare(){
   cd "$pkgname-$pkgver"
