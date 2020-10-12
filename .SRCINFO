@@ -1,7 +1,7 @@
 pkgbase = kos32-sdk-bin
 	pkgdesc = SDK for Kolibri OS + Toolchain by Serge.
-	pkgver = 0.3
-	pkgrel = 2
+	pkgver = 0.4
+	pkgrel = 1
 	url = http://board.kolibrios.org/viewtopic.php?t=3540
 	arch = x86_64
 	groups = kos32-dev
@@ -11,7 +11,7 @@ pkgbase = kos32-sdk-bin
 	conflicts = fasm
 	conflicts = sasm
 	options = !strip
-	source = https://github.com/turbocat2001/kos32-sdk-linux/releases/download/0.3-deb/kos32-sdk-0.3.deb
+	source = https://github.com/turbocat2001/kos32-sdk-linux/releases/download/0.4-deb/kos32-sdk-0.4.deb
 	md5sums = SKIP
 
 pkgname = kos32-sdk-bin
