@@ -1,13 +1,13 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=wine-staging-git
-pkgver=5.15.2.r2.g68c50a8f
+pkgver=5.19.r1.gb49e8743
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.wine-staging.com/'
 license=('LGPL')
-_depends=(
+depends=(
     'attr'                  'lib32-attr'
     'fontconfig'            'lib32-fontconfig'
     'lcms2'                 'lib32-lcms2'
@@ -26,7 +26,6 @@ _depends=(
     'desktop-file-utils'
 )
 makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex' 'mingw-w64-gcc'
-    'gcc>=4.5.0-2'
     'giflib'                'lib32-giflib'
     'libpng'                'lib32-libpng'
     'gnutls'                'lib32-gnutls'
@@ -93,6 +92,8 @@ optdepends=(
 )
 options=('staticlibs')
 install="${pkgname}.install"
+provides=('wine' 'wine-wow64' 'wine-git' "wine-staging=${pkgver}")
+conflicts=('wine' 'wine-wow64')
 source=('git://source.winehq.org/git/wine.git'
         'git+https://github.com/wine-staging/wine-staging.git'
         '30-win32-aliases.conf'
@@ -102,33 +103,9 @@ sha256sums=('SKIP'
             '9901a5ee619f24662b241672a7358364617227937d5f6d3126f70528ee5111e7'
             '6dfdefec305024ca11f35ad7536565f5551f09119dda2028f194aee8f77077a4')
 
-if [ "$CARCH" = 'i686' ] 
-then
-    # strip lib32 etc. on i686
-    _depends=("${_depends[@]/*32-*/}")
-    makedepends=("${makedepends[@]/*32-*/}" "${_depends[@]}")
-    optdepends=("${optdepends[@]/*32-*/}")
-    provides=(
-        "wine=$(        printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
-        "wine-git=$(    printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
-        "wine-staging=$(printf '%s' "$pkgver" | sed 's/\+wine.*//')"
-    )
-    conflicts=('wine')
-else
-    makedepends=("${makedepends[@]}" "${_depends[@]}")
-    provides=(
-        "wine=$(        printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
-        "wine-wow64=$(  printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
-        "wine-git=$(    printf '%s' "$pkgver" | sed 's/.*\+wine\.//')"
-        "wine-staging=$(printf '%s' "$pkgver" | sed 's/\+wine.*//')"
-    )
-    conflicts=('wine' 'wine-wow64')
-fi
-
 prepare() {
-    rm    -rf "$pkgname"-{32,64}-build
-    mkdir -p  "$pkgname"-32-build
-    [ "$CARCH" = 'x86_64' ] && mkdir "$pkgname"-64-build
+    rm -rf build-{32,64}
+    mkdir -p build-{32,64}
     
     # restore the wine tree to its git origin state, without wine-staging patches
     printf '%s\n' '  -> Cleaning wine source code tree...'
@@ -149,16 +126,11 @@ prepare() {
 }
 
 pkgver() {
-    local _staging_tag
-    local _staging_version
-    
-    _staging_tag="$(git -C wine-staging tag --sort='version:refname' |
-                        tail -n1 | sed 's/-/./g;s/^v//;s/\.rc/rc/')"
-    _staging_version="$(git -C wine-staging describe --long --tags |
-                            sed -e 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/' \
-                                -e "s/^latest.release/${_staging_tag}/")"
-    
-    printf '%s' "$_staging_version"
+    local _tag
+    local _ver
+    _tag="$(git -C wine-staging tag --sort='version:refname' | sed '$s/-/./g;s/^v//;s/\.rc/rc/')"
+    _ver="$(git -C wine-staging describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//;s/\.rc/rc/')"
+    printf '%s' "${_ver/latest.release/"$_tag"}"
 }
 
 build() {
@@ -170,66 +142,58 @@ build() {
     
     # build wine-staging 64-bit
     # (according to the wine wiki, this 64-bit/32-bit building order is mandatory)
-    if [ "$CARCH" = 'x86_64' ] 
-    then
-        printf '%s\n' '  -> Building Wine-64...'
-        cd  "$pkgname"-64-build
-        ../wine/configure \
-                    --prefix='/usr' \
-                    --libdir='/usr/lib' \
-                    --with-x \
-                    --with-gstreamer \
-                    --enable-win64 \
-                    --with-xattr
-        make
-        local _wine32opts=(
-                    '--libdir=/usr/lib32'
-                    "--with-wine64=${srcdir}/${pkgname}-64-build"
-        )
-        export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-    fi
+    printf '%s\n' '  -> Building wine-staging-64...'
+    cd build-64
+    ../wine/configure \
+        --prefix='/usr' \
+        --libdir='/usr/lib' \
+        --with-x \
+        --with-gstreamer \
+        --with-xattr \
+        --enable-win64
+    make
     
     # build wine-staging 32-bit
-    printf '%s\n' '  -> Building Wine-32...'
-    cd "${srcdir}/${pkgname}"-32-build
+    printf '%s\n' '  -> Building wine-staging-32...'
+    cd "${srcdir}/build-32"
+    export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
     ../wine/configure \
-                --prefix='/usr' \
-                --with-x \
-                --with-gstreamer \
-                --with-xattr \
-                "${_wine32opts[@]}"
+        --prefix='/usr' \
+        --libdir='/usr/lib32' \
+        --with-x \
+        --with-gstreamer \
+        --with-xattr \
+        --with-wine64="${srcdir}/build-64"
     make
 }
 
 package() {
-    depends=("${_depends[@]}")
-    
     # package wine-staging 32-bit
     # (according to the wine wiki, this reverse 32-bit/64-bit packaging order is important)
-    printf '%s\n' '  -> Packaging Wine-32...'
-    cd "$pkgname"-32-build
+    printf '%s\n' '  -> Packaging wine-staging-32...'
+    cd build-32
+    make prefix="${pkgdir}/usr" \
+         libdir="${pkgdir}/usr/lib32" \
+         dlldir="${pkgdir}/usr/lib32/wine" \
+         install
     
-    if [ "$CARCH" = 'i686' ] 
-    then
-        make prefix="${pkgdir}/usr" install
-    else
-        make prefix="${pkgdir}/usr" \
-             libdir="${pkgdir}/usr/lib32" \
-             dlldir="${pkgdir}/usr/lib32/wine" install
-        
-        # package wine-staging 64-bit
-        printf '%s\n' '  -> Packaging Wine-64...'
-        cd "${srcdir}/${pkgname}"-64-build
-        make prefix="${pkgdir}/usr" \
-             libdir="${pkgdir}/usr/lib" \
-             dlldir="${pkgdir}/usr/lib/wine" install
-    fi
+    # package wine-staging 64-bit
+    printf '%s\n' '  -> Packaging wine-staging-64...'
+    cd "${srcdir}/build-64"
+    make prefix="${pkgdir}/usr" \
+         libdir="${pkgdir}/usr/lib" \
+         dlldir="${pkgdir}/usr/lib/wine" \
+         install
     
-    # font aliasing settings for Win32 applications
-    install -d "$pkgdir"/etc/fonts/conf.{avail,d}
-    install -m644 "${srcdir}/30-win32-aliases.conf" "${pkgdir}/etc/fonts/conf.avail"
-    ln -s ../conf.avail/30-win32-aliases.conf       "${pkgdir}/etc/fonts/conf.d/30-win32-aliases.conf"
+    # font aliasing settings for win32 applications
+    mkdir -p "${pkgdir}/etc/fonts/conf.d"
+    install -D -m644 "${srcdir}/30-win32-aliases.conf" -t "${pkgdir}/etc/fonts/conf.avail"
+    ln -s ../conf.avail/30-win32-aliases.conf "${pkgdir}/etc/fonts/conf.d/30-win32-aliases.conf"
     
     # wine binfmt
-    install -D -m644 "${srcdir}/wine-binfmt.conf"   "${pkgdir}/usr/lib/binfmt.d/wine.conf"
+    install -D -m644 "${srcdir}/wine-binfmt.conf" "${pkgdir}/usr/lib/binfmt.d/wine.conf"
+    
+    # strip native PE libraries
+    i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/usr/lib32/wine"/*.dll
+    "${CARCH}-w64-mingw32-strip" --strip-unneeded "${pkgdir}/usr/lib/wine"/*.dll
 }
