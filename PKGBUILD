@@ -7,7 +7,7 @@ pkgname=(
 #	'xorg-server-xephyr-rootless-nosystemd-minimal-git'
 #	'xorg-server-xvfb-rootless-nosystemd-minimal-git'
 #	'xorg-server-xnest-rootless-nosystemd-minimal-git'
-#	'xorg-server-xwayland-rootless-nosystemd-minimal-git'
+	'xorg-server-xwayland-rootless-nosystemd-minimal-git'
 	'xorg-server-common-rootless-nosystemd-minimal-git'
 	'xorg-server-devel-rootless-nosystemd-minimal-git')
 
@@ -73,8 +73,8 @@ build() {
     -D ipv6=false \
     -D xcsecurity=true \
     -D xorg=true \
-    -D xwayland=false \
-    -D xwayland_eglstream=false \
+    -D xwayland=true \
+    -D xwayland_eglstream=true \
     -D udev=true \
     -D suid_wrapper=false \
     -D xkb_dir=/usr/share/X11/xkb \
@@ -216,19 +216,19 @@ package_xorg-server-rootless-nosystemd-minimal-git() {
 #  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
 #}
 
-#package_xorg-server-xwayland-rootless-nosystemd-minimal-git() {
-#  pkgdesc="run X clients under wayland"
-#  depends=(libxfont2 libepoxy libgl pixman xorg-server-common-rootless-nosystemd-minimal-git
-#           nettle libtirpc)
-#  optdepends=('libunwind: unwind backtrace support')
-#  conflicts=('xorg-server-xwayland')
-#  provides=('xorg-server-xwayland')
+package_xorg-server-xwayland-rootless-nosystemd-minimal-git() {
+  pkgdesc="run X clients under wayland"
+  depends=(libxfont2 libepoxy libgl pixman xorg-server-common-rootless-nosystemd-minimal-git
+           nettle libtirpc)
+  optdepends=('libunwind: unwind backtrace support')
+  conflicts=('xorg-server-xwayland')
+  provides=('xorg-server-xwayland')
   
-#  _install fakeinstall/usr/bin/Xwayland
+  _install fakeinstall/usr/bin/Xwayland
 
   # license
 #  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
-#}
+}
 
 package_xorg-server-devel-rootless-nosystemd-minimal-git() {
   pkgdesc="Development files for the X.Org X server"
@@ -246,7 +246,7 @@ package_xorg-server-devel-rootless-nosystemd-minimal-git() {
 #  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" xorg-server/COPYING
 
   # make sure there are no files left to install
-  find fakeinstall -depth -print0 | xargs -0 rmdir
+#  find fakeinstall -depth -print0 | xargs -0 rmdir
 }
 
 arch=('x86_64')
