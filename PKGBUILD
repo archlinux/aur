@@ -1,11 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=bibata-cursor-theme-bin
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Material Based Cursor Theme"
 arch=('any')
 url="https://github.com/ful1e5/Bibata_Cursor"
 license=('GPL3')
+depends=('libxcursor' 'libpng')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
