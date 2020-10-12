@@ -1,7 +1,7 @@
 pkgbase = python-scenedetect
 	pkgdesc = A cross-platform, OpenCV-based video scene detection program and Python library.
-	pkgver = 0.5.4
-	pkgrel = 2
+	pkgver = 0.5.4.1
+	pkgrel = 1
 	url = https://github.com/Breakthrough/PySceneDetect
 	arch = any
 	license = MIT
@@ -9,11 +9,15 @@ pkgbase = python-scenedetect
 	depends = python
 	depends = qt5-base
 	depends = python-click
-	source = https://files.pythonhosted.org/packages/source/s/scenedetect/scenedetect-0.5.4.tar.gz
-	sha256sums = ca2a11c1114e18f77337ed91cb57fd387bbdac11d2031f2d19df39ca554a5367
+	depends = python-numpy
+	depends = opencv
+	source = https://files.pythonhosted.org/packages/source/s/scenedetect/scenedetect-0.5.4.1.tar.gz
+	sha256sums = 8db0433ddcfd3a0049183f30e1f78734c06240c295e40b7ffe835cfb08fc1370
 
 pkgname = python-scenedetect
 	depends = python
 	depends = qt5-base
 	depends = python-click
+	depends = python-numpy
+	depends = opencv
 
