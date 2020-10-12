@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Det
 # Contributor: Joris Steyn, Florian Dejonckheere, Tevin Zhang, Andrea Fagiani, Biru Ionut, Paul Bredbury
 # Installation order:  freetype2 → fontconfig-ubuntu → cairo-ubuntu
@@ -7,77 +7,76 @@
 # http://zipcon.net/~swhite/docs/computers/browsers/fonttest.html
 # http://getemoji.com/
 
-_srcname=fontconfig
-_ubuver=5ubuntu3
-
-pkgname=fontconfig-ubuntu
-pkgver=2.13.0
-pkgrel=2
+pkgbase=fontconfig-ubuntu
+pkgname=('fontconfig-ubuntu' 'fontconfig-ubuntu-docs')
+pkgver=2.13.1
+_ubuver=2ubuntu3
+pkgrel=1
 pkgdesc='A library for configuring and customizing font access (with Ubuntu patches)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://launchpad.net/ubuntu/+source/fontconfig'
 license=('custom')
-depends=('expat' 'freetype2')
 makedepends=('autoconf-archive' 'gperf' 'python-lxml' 'python-six' 'docbook-utils' 'docbook-sgml'
-             'perl-sgmls' 'texlive-formatsextra>=2017' 'lynx')
-provides=("fontconfig=${pkgver}")
-conflicts=('fontconfig')
-install="${pkgname}.install"
+             'perl-sgmls' 'texlive-formatsextra>=2017' 'lynx' 'json-c' 'expat' 'freetype2')
+checkdepends=('unzip')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_${pkgver}.orig.tar.bz2"
         "https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_${pkgver}-${_ubuver}.debian.tar.xz"
-        '53-monospace-lcd-filter.patch'
         'fontconfig-ubuntu.hook')
-sha256sums=('91dde8492155b7f34bb95079e79be92f1df353fcc682c19be90762fd3e12eeb9'
-            'ff3bed047dc345a5925be6bf7c4739d4d416ad8ab89dd9c4261f23da1f45f6a6'
-            'c759702ba66fe88768aa93035637401085bb5c02d898c960b68291aea10daa8d'
-            '672f6a1c5e164671955ce807e670306194142a1794ce88df653aa717a972e274')
+sha256sums=('f655dd2a986d7aa97e052261b36aa67b0a64989496361eca8d604e6414006741'
+            '342671f6a1e6d392958a6eec27541c6bdffc6498b469dcc46eca66c9d23a863a'
+            '8883f7e6e9d574ed52b89256507a6224507925715ddc85b3dfab9683df2f1e25')
 
 prepare() {
-    cd "${_srcname}-${pkgver}"
-    
+    # apply Ubuntu patches
     local _patch
-    
-    # apply Debian patches
-    while read _patch
+    while read -r _patch
     do
-        if printf '%s' "$_patch" | grep -q '\.patch$\|\.diff$'
-        then
-            printf '%s\n' "  -> Applying Debian patch: ${_patch}"
-            patch -Np1 -i "${srcdir}/debian/patches/${_patch}"
-        fi
-    done < "${srcdir}/debian/patches/series"
-    
-    ## patch
-    #patch -p1 -i conf.d/53-monospace-lcd-filter.conf ../53-monospace-lcd-filter.patch
+        printf '%s\n' "  -> Applying Ubuntu patch: ${_patch}"
+        patch -d "fontconfig-${pkgver}" -Np1 -i "${srcdir}/debian/patches/${_patch}"
+    done < <(sed '/^[[:space:]]*#/d' debian/patches/series)
 }
 
 build() {
-    cd "${_srcname}-${pkgver}"
-    
+    cd "fontconfig-${pkgver}"
     ./configure \
         --prefix='/usr' \
         --sysconfdir='/etc' \
         --with-templatedir='/etc/fonts/conf.avail' \
-        --with-xmldir='/etc/fonts' \
         --localstatedir='/var' \
         --disable-static \
         --with-default-fonts='/usr/share/fonts' \
-        --with-add-fonts='/usr/share/fonts'
-        
+        --with-add-fonts='/usr/local/share/fonts'
     make
 }
 
-package() {
-    cd "${_srcname}-${pkgver}"
+check() {
+    make -C "fontconfig-${pkgver}" -k check
+}
+
+package_fontconfig-ubuntu() {
+    depends=('expat' 'libfreetype.so')
+    provides=("fontconfig=${pkgver}" 'libfontconfig.so')
+    conflicts=('fontconfig')
+    options=('!emptydirs')
+    backup=('etc/fonts/fonts.conf')
+    install=fontconfig-ubuntu.install
     
-    make DESTDIR="$pkgdir" install
+    make -C "fontconfig-${pkgver}" DESTDIR="$pkgdir" install
+    install -D -m644 "${pkgname}.hook" -t "${pkgdir}/usr/share/libalpm/hooks"
+    install -D -m644 debian/changelog  -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -D -m644 "fontconfig-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
-    # pacman hook
-    install -D -m644 "${srcdir}/${pkgname}.hook" -t "${pkgdir}/usr/share/libalpm/hooks"
+    # split docs
+    [ -d 'docs' ] && rm -rf docs
+    mkdir -p docs/share/man
+    mv "${pkgdir}/usr/share/doc" docs/share
+    mv "${pkgdir}/usr/share/man/man3" docs/share/man
+}
+
+package_fontconfig-ubuntu-docs() {
+    pkgdesc+=' (documentation)'
+    arch=('any')
     
-    # license
-    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
-    # Debian changelog
-    install -D -m644 "${srcdir}/debian/changelog" -t "${pkgdir}/usr/share/doc/${pkgname}"
+    mv docs "${pkgdir}/usr"
+    install -D -m644 "fontconfig-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

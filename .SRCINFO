@@ -1,12 +1,11 @@
 pkgbase = fontconfig-ubuntu
 	pkgdesc = A library for configuring and customizing font access (with Ubuntu patches)
-	pkgver = 2.13.0
-	pkgrel = 2
+	pkgver = 2.13.1
+	pkgrel = 1
 	url = https://launchpad.net/ubuntu/+source/fontconfig
-	install = fontconfig-ubuntu.install
-	arch = i686
 	arch = x86_64
 	license = custom
+	checkdepends = unzip
 	makedepends = autoconf-archive
 	makedepends = gperf
 	makedepends = python-lxml
@@ -16,18 +15,27 @@ pkgbase = fontconfig-ubuntu
 	makedepends = perl-sgmls
 	makedepends = texlive-formatsextra>=2017
 	makedepends = lynx
-	depends = expat
-	depends = freetype2
-	provides = fontconfig=2.13.0
-	conflicts = fontconfig
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.13.0.orig.tar.bz2
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.13.0-5ubuntu3.debian.tar.xz
-	source = 53-monospace-lcd-filter.patch
+	makedepends = json-c
+	makedepends = expat
+	makedepends = freetype2
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.13.1.orig.tar.bz2
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_2.13.1-2ubuntu3.debian.tar.xz
 	source = fontconfig-ubuntu.hook
-	sha256sums = 91dde8492155b7f34bb95079e79be92f1df353fcc682c19be90762fd3e12eeb9
-	sha256sums = ff3bed047dc345a5925be6bf7c4739d4d416ad8ab89dd9c4261f23da1f45f6a6
-	sha256sums = c759702ba66fe88768aa93035637401085bb5c02d898c960b68291aea10daa8d
-	sha256sums = 672f6a1c5e164671955ce807e670306194142a1794ce88df653aa717a972e274
+	sha256sums = f655dd2a986d7aa97e052261b36aa67b0a64989496361eca8d604e6414006741
+	sha256sums = 342671f6a1e6d392958a6eec27541c6bdffc6498b469dcc46eca66c9d23a863a
+	sha256sums = 8883f7e6e9d574ed52b89256507a6224507925715ddc85b3dfab9683df2f1e25
 
 pkgname = fontconfig-ubuntu
+	install = fontconfig-ubuntu.install
+	depends = expat
+	depends = libfreetype.so
+	provides = fontconfig=2.13.1
+	provides = libfontconfig.so
+	conflicts = fontconfig
+	options = !emptydirs
+	backup = etc/fonts/fonts.conf
+
+pkgname = fontconfig-ubuntu-docs
+	pkgdesc = A library for configuring and customizing font access (with Ubuntu patches) (documentation)
+	arch = any
 
