@@ -21,7 +21,7 @@ md5sums=('SKIP'
          '6f058362f39f74df820fcac3a3336def'
          'bf2c524f3897cfcfb4315bcd92d4206e'
          '5bd8fd678a114e0633eef1e709ba7ccf'
-         '879116c683374b2dde291014e44a29fe')
+         '894a397374dea23004d8d5f0173cb063')
 
 pkgver() {
   cd "$srcdir/OpenBoard"
