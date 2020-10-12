@@ -3,7 +3,7 @@
 pkgname=ucollage
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="A terminal image viewer based on Überzug written in bash."
+pkgdesc="A command line image viewer based on Überzug written in bash."
 arch=('any')
 url="https://github.com/ckardaris/ucollage"
 license=('GPL3')
