@@ -3,16 +3,16 @@
 pkgname=envoyproxy-bin
 provides=(envoyproxy)
 conflicts=(envoyproxy)
-pkgver=1.15.0
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first"
 arch=('x86_64')
 url="https://envoyproxy.io"
 license=('Apache2')
 source=(
-  "https://dl.bintray.com/tetrate/getenvoy-deb/pool/stable/g/getenvoy-envoy/getenvoy-envoy_1.15.0.p0.g50ef094-1p67.g2aa564b_amd64.deb"
+  "https://dl.bintray.com/tetrate/getenvoy-deb/pool/stable/g/getenvoy-envoy/getenvoy-envoy_1.16.0.p0.g8fb3cb8-1p69.ga5345f6_amd64.deb"
 )
-sha512sums=('4b8ad20f4eef89ca92da2373284039901ba6b791756e6ea41e78f7214e3458c456e43df58b46a84cff94cbeb9f5cba104804382373e3aa3ee7e74d00c1c0986e')
+sha512sums=('42468159c532c0023c831e9bfa78bcd062d969a4fd39813b9c1a57f032340d4e0a3da85cfdd44c727e8de83f143655b4f68c6cf0e8ef8f8dfa618ba043ddb14c')
 
 package() {
   tar -xvf $srcdir/data.tar.xz -C "$pkgdir"
