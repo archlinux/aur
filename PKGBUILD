@@ -2,7 +2,7 @@
 
 pkgname=fsport-tangovps
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Hi-res Command Brief animations for FSPort"
 arch=('any')
 url="http://fsport.hard-light.net/website/"
@@ -10,11 +10,11 @@ license=('custom:noncommercial')
 depends=('fsport')
 makedepends=('unzip')
 source=(LICENSE
-        'http://fsport.freespacemods.net/releases/tango_hi1_fs1.zip'
-        'http://fsport.freespacemods.net/releases/tango_hi2_fs1.zip'
-        'http://fsport.freespacemods.net/releases/tango_hi3_fs1.zip'
-        'http://fsport.freespacemods.net/releases/tango_hi4_fs1.zip'
-        'http://fsport.freespacemods.net/releases/tango_hi5_fs1.zip')
+        'https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/tango_hi1_fs1.zip'
+        'https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/tango_hi2_fs1.zip'
+        'https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/tango_hi3_fs1.zip'
+        'https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/tango_hi4_fs1.zip'
+        'https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/tango_hi5_fs1.zip')
 sha256sums=('79462ffe82b8cf371f37a3444a8e17165d293e797a865b9c4312f86d00ddf4ec'
             '9e300d53845236c54e56bd9a188d17718313f522a1c4d2554de49a79e9847cfc'
             'b15fab3d3bfe3a2b760cb0f9188622ff6513c9cf953a8da45aa62e2295746f4b'
