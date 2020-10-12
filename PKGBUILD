@@ -3,7 +3,7 @@
 
 pkgbase='monero-feather-git'
 pkgname='monero-feather-git'
-pkgver='v0.1.0.0.8c8d6250d9'
+pkgver='v0.1.0.0.0790b30b5d'
 pkgrel='1'
 pkgdesc='a free Monero desktop wallet'
 license=('BSD')
@@ -16,11 +16,6 @@ provides=('monero-feather-git')
 source=("${pkgname}"::"git+https://git.wownero.com/feather/feather")
 
 sha256sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
-}
 
 build() {
   cd "${srcdir}/${pkgname}"
