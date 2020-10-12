@@ -85,7 +85,7 @@ build() {
     -D xinerama=true \
     -D screensaver=false \
     -D dmx=false \
-    -D glamor=false \
+    -D glamor=true \
     -D linux_apm=false \
     -D mitshm=true \
     -D vgahw=false \
@@ -104,6 +104,7 @@ build() {
 # xinerama needed with nvidia blob
 # mitshm needed with nvidia blob
 # xv needed with nvidia blob
+# glamor needed for xwayland gaming
 
   # Print config
   meson configure build
