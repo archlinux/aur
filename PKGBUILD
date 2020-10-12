@@ -1,7 +1,7 @@
 # Maintainer: Shatur <genaloner@gmail.com>
 
 pkgname=crow-translate-git
-pkgver=2.5.1.r20.g8ec9a64
+pkgver=2.5.1.r24.geabf048
 pkgrel=1
 pkgdesc='A simple and lightweight translator that allows to translate and say selected text using the Google Translate API and much more'
 arch=(x86_64)
@@ -17,14 +17,6 @@ sha256sums=(SKIP)
 pkgver() {
   cd ${pkgname%-git}
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-# Clone submodules
-prepare() {
-  cd ${pkgname%-git}
-
-  git submodule init
-  git submodule update
 }
 
 build() {
