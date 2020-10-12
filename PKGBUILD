@@ -1,12 +1,12 @@
-# Maintainer: Přemysl Janouch <p.janouch@gmail.com>
+# Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=json-rpc-shell-git
 _pkgname=json-rpc-shell
 pkgver=v1.0.0.r10.gee79249
-pkgrel=1
+pkgrel=2
 pkgdesc="Shell for JSON-RPC 2.0 HTTP queries"
 url="https://git.janouch.name/p/json-rpc-shell"
 arch=('i686' 'x86_64')
-license=('BSD')
+license=('custom:0BSD')
 options=(zipman)
 conflicts=('json-rpc-shell')
 provides=('json-rpc-shell')
@@ -40,4 +40,6 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-build"
   make install DESTDIR=$pkgdir
+  install -Dm644 "$srcdir/$_pkgname/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,11 +1,11 @@
 pkgbase = json-rpc-shell-git
 	pkgdesc = Shell for JSON-RPC 2.0 HTTP queries
 	pkgver = v1.0.0.r10.gee79249
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.janouch.name/p/json-rpc-shell
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = custom:0BSD
 	makedepends = cmake
 	makedepends = pkg-config
 	makedepends = git
