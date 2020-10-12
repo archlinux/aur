@@ -5,7 +5,7 @@ Follow the official instructions [1] to make asdf-vm work, replacing
 "\$HOME/.asdf" with "/opt/asdf-vm". The completions are already installed, just
 make sure your shell is configured to use them.
 
-[1] https://asdf-vm.com/#/core-manage-asdf-vm?id=add-to-your-shell
+[1] https://asdf-vm.com/#/core-manage-asdf?id=add-to-your-shell
 
 EOF
 }
