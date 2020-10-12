@@ -1,7 +1,7 @@
 # Maintainer: Taran Lynn <taranlynn0gmail.com>
 pkgname=swaybg-git
 _pkgname=swaybg
-pkgver=r94.25c6eaf
+pkgver=r95.a8f109a
 pkgrel=1
 license=("MIT")
 pkgdesc="Wallpaper tool for Wayland compositors"
@@ -24,17 +24,16 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd "${srcdir}/${_pkgname}"
-    meson -Dwerror=false --prefix /usr "$srcdir/build"
-}
 
 build() {
-    cd "${srcdir}/${_pkgname}"
-    ninja -C "$srcdir/build"
+  arch-meson "${_pkgname}" build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-    DESTDIR="$pkgdir/" ninja -C "$srcdir/build" install
+  DESTDIR="$pkgdir" meson install -C build
 }
