@@ -5,7 +5,7 @@
 
 pkgname=gnat-gps
 pkgver=2020
-pkgrel=6
+pkgrel=7
 pkgdesc="GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
@@ -79,6 +79,10 @@ build()
   export PATH="$srcdir/gps-$_gps_version-src/temp_bin:$PATH"
 
   ./configure --prefix=/usr
+
+  # the release tarball contains a bunch of sphinx build artefacts
+  make -C docs clean
+  make -C gnatdoc/docs/users_guide clean
 
   # GPS uses a lot of Unchecked_Conversion (too many to patch), so we have to build with -fno-strict-aliasing
   # https://gcc.gnu.org/onlinedocs/gcc-10.2.0/gnat_ugn/Optimization-and-Strict-Aliasing.html
