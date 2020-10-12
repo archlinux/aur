@@ -1,7 +1,7 @@
 pkgbase = fpga-toolchain-bin
 	pkgdesc = Nightly builds of open-source FPGA tools
 	pkgver = 20201012
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-tool-forge/fpga-toolchain
 	arch = x86_64
 	license = GPL3
@@ -14,9 +14,12 @@ pkgbase = fpga-toolchain-bin
 	conflicts = icestorm
 	conflicts = nextpnr
 	conflicts = dfu-util
-	conflicts = dfu-util-git
 	conflicts = ecpprog
 	conflicts = openfpgaloader
+	conflicts = boolector
+	conflicts = symbiyosys
+	conflicts = z3
+	conflicts = yices
 	source_x86_64 = https://github.com/open-tool-forge/fpga-toolchain/releases/download/nightly-20201012/fpga-toolchain-linux_x86_64-nightly-20201012.tar.xz
 	sha256sums_x86_64 = 15662b4bead29086287a21aa00fb708d2eb79b43c0f8f33586f6c6773062c549
 

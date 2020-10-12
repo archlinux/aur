@@ -2,7 +2,7 @@
 
 pkgname=fpga-toolchain-bin
 pkgver=20201012
-pkgrel=1
+pkgrel=2
 pkgdesc="Nightly builds of open-source FPGA tools"
 arch=('x86_64')
 url="https://github.com/open-tool-forge/fpga-toolchain"
@@ -15,9 +15,13 @@ conflicts=(
     'trellis'
     'icestorm'
     'nextpnr'
-    'dfu-util' 'dfu-util-git'
+    'dfu-util'
     'ecpprog'
     'openfpgaloader'
+    'boolector'
+    'symbiyosys'
+    'z3'
+    'yices'
     )
 source_x86_64=($url/releases/download/nightly-$pkgver/fpga-toolchain-linux_x86_64-nightly-$pkgver.tar.xz)
 sha256sums_x86_64=('15662b4bead29086287a21aa00fb708d2eb79b43c0f8f33586f6c6773062c549')
