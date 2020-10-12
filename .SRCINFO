@@ -1,6 +1,6 @@
 pkgbase = arronax
 	pkgdesc = A program to create and modify starters/launchers (technically: .desktop files) for applications and locations (URLs).
-	pkgver = 0.7.2
+	pkgver = 0.8
 	pkgrel = 1
 	url = http://www.florian-diesch.de/software/arronax/
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = arronax
 	optdepends = python-nautilus: Arronax as Nautilus extension
 	optdepends = python-caja: Arronax as Caja extension
 	optdepends = nemo-python: Arronax as Nemo extension
-	source = https://launchpad.net/~diesch/+archive/ubuntu/stable/+sourcefiles/arronax/0.7.2/arronax_0.7.2.tar.xz
-	md5sums = 1dd0c0053e4bffd29c2ce07e22a371fc
+	source = https://launchpad.net/~diesch/+archive/ubuntu/stable/+sourcefiles/arronax/0.8/arronax_0.8.tar.xz
+	md5sums = fb41dc3515607a45f19f44c9c6e38462
 
 pkgname = arronax
 
