@@ -1,0 +1,18 @@
+pkgbase = egpu-switcher-git
+	pkgdesc = Distribution agnostic script that works with NVIDIA and AMD cards.
+	pkgver = 0.16.0.r0.gd22ce2e
+	pkgrel = 1
+	url = https://github.com/hertg/egpu-switcher
+	install = egpu-switcher-git.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = pciutils>=3.3.0
+	depends = bash>=4.0
+	provides = egpu-switcher
+	conflicts = egpu-switcher
+	source = egpu-switcher-git::git+https://github.com/hertg/egpu-switcher.git
+	md5sums = SKIP
+
+pkgname = egpu-switcher-git
+
