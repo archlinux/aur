@@ -14,6 +14,7 @@ pkgbase = balena-engine
 	makedepends = go>=1.10.8
 	makedepends = cmake
 	makedepends = systemd
+	makedepends = docker
 	depends = glibc
 	depends = bridge-utils
 	depends = iproute2

@@ -11,8 +11,8 @@ url='https://www.balena.io/'
 _github_url='https://github.com/balena-os/balena-engine'
 license=('Apache')
 depends=('glibc' 'bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'libsystemd'
-         'libseccomp' 'libtool' 'btrfs-progs')
-makedepends=('git' 'go>=1.10.8' 'cmake' 'systemd')
+     'libseccomp' 'libtool' 'btrfs-progs')
+makedepends=('git' 'go>=1.10.8' 'cmake' 'systemd' 'docker')
 optdepends=('lxc: lxc backend support')
 # don't strip binaries! A sha1 is used to check binary consistency.
 options=('!strip' '!buildflags')
@@ -38,7 +38,7 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}/"
     echo -n $(git describe --tags --always | sed 's/^v//;s/-/./g') > VERSION
-    ./build.sh
+    make
 }
 
 package() {
