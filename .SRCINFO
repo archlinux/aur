@@ -1,0 +1,17 @@
+pkgbase = ucollage
+	pkgdesc = A terminal image viewer based on Überzug written in bash.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ckardaris/ucollage
+	arch = any
+	license = GPL3
+	depends = bash>=4.2.0
+	depends = ueberzug
+	depends = file
+	optdepends = imagemagick: Image rotation
+	optdepends = ffmpeg: Thumbnail creation
+	source = https://raw.githubusercontent.com/ckardaris/ucollage/v0.1.0/ucollage
+	sha256sums = b0889ed85b5d143384ca40f10344234c1c73b05022dd0a17e8e5c41d05200185
+
+pkgname = ucollage
+
