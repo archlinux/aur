@@ -9,7 +9,7 @@ post_upgrade() {
 
 pre_remove() {
     if [ -d /run/systemd/system ]; then
-        systemctl stop pacman-auto-update.timer >/dev/null
+        systemctl disable --now pacman-auto-update.timer >/dev/null
     fi
 }
 
