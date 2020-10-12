@@ -7,7 +7,7 @@ pkgver() {
   cd "${pkgname%-git}"
   printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=r844.g2269519
+pkgver=r857.gad5ca51
 pkgrel=1
 
 pkgdesc='Simple interface to auto-configure neomutt and isync with safe passwords'
@@ -27,10 +27,7 @@ optdepends=('imagemagick: view images inside of the neomutt TUI'
             'elinks: view HTML email inside of the neomutt TUI'
             'urlview: list URLs found in mails to open them in a browser'
             'abook: contact store and tab completion'
-            'cronie: auto-sync mails - alt.: fcron'
-            'fcron: auto-sync mails - alt.: cronie'
-            'libnotify: enable desktop notifications about new mail'
-            'dunst: enable desktop notifications about new mail'
+            'protonmail-bridge: use neomutt with protonmail accounts'
             'pam-gnupg: automatically unlock gpg keys at session login')
 
 options=('zipman')
