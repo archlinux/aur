@@ -2,13 +2,15 @@
 
 pkgname=bit
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern Git CLI'
 arch=('x86_64')
 url="https://github.com/chriswalz/bit"
 license=('Apache')
 makedepends=('go')
 depends=('glibc')
+conflicts=('bit-git')
+provides=('bit')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha1sums=('b3a64a80469df6af2dd08fe272bdb3a2b55dded2')
 

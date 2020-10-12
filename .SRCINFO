@@ -1,12 +1,14 @@
 pkgbase = bit
 	pkgdesc = A modern Git CLI
 	pkgver = 0.5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chriswalz/bit
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = glibc
+	provides = bit
+	conflicts = bit-git
 	source = bit-0.5.8.tar.gz::https://github.com/chriswalz/bit/archive/v0.5.8.tar.gz
 	sha1sums = b3a64a80469df6af2dd08fe272bdb3a2b55dded2
 
