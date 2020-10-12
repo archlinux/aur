@@ -1,7 +1,7 @@
 pkgbase = sdrangel-bin
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
 	pkgver = 4.20.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/f4exb/sdrangel
 	arch = x86_64
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = sdrangel-bin
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-websockets
+	optdepends = dsdcc: Required for Digital Speech Decoder (DSD) demodulator
 	provides = sdrangel
 	conflicts = sdrangel-git
 	source = https://github.com/f4exb/sdrangel/releases/download/v4.20.0/sdrangel-404-master.tar.gz
