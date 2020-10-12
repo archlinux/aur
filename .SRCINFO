@@ -1,6 +1,6 @@
 pkgbase = linux-wsl
 	pkgdesc = Microsoft's Windows Subsystem for Linux 2 (WSL2) kernel
-	pkgver = 4.19.84
+	pkgver = 4.19.128
 	pkgrel = 1
 	url = https://github.com/microsoft/WSL2-Linux-Kernel
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = linux-wsl
 	makedepends = graphviz
 	makedepends = imagemagick
 	options = !strip
-	source = https://github.com/microsoft/WSL2-Linux-Kernel/archive/4.19.84-microsoft-standard.tar.gz
-	md5sums = 7de558b96bad270e64aa1fa589f0ed90
+	source = https://github.com/microsoft/WSL2-Linux-Kernel/archive/4.19.128-microsoft-standard.tar.gz
+	md5sums = 8bd41217336b726dac99e2320b35ef73
 
 pkgname = linux-wsl
 

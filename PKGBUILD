@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <firstname@lastname.net>
 #
 pkgname=linux-wsl
-_tag=4.19.84-microsoft-standard 
+_tag=4.19.128-microsoft-standard 
 pkgver=${_tag%%-*}
 pkgrel=1
 arch=(x86_64)
@@ -16,7 +16,7 @@ makedepends=(
 options=('!strip')
 
 source=(https://github.com/microsoft/WSL2-Linux-Kernel/archive/${_tag}.tar.gz)
-md5sums=('7de558b96bad270e64aa1fa589f0ed90')
+md5sums=('8bd41217336b726dac99e2320b35ef73')
 
 _src_prefix="WSL2-Linux-Kernel-"
 export KBUILD_BUILD_HOST=archlinux
