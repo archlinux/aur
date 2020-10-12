@@ -1,14 +1,14 @@
 # Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=calindori-git
-pkgver=v1.1.r77.gfa18968
+pkgver=v1.2.r22.gc4ee655
 pkgrel=1
 pkgdesc="Calendar for Plasma Mobile"
 arch=(x86_64)
 url="https://invent.kde.org/plasma-mobile/calindori"
 license=(GPL3)
 depends=(ki18n kcoreaddons kconfig kcalendarcore kirigami2)
-makedepends=(git cmake extra-cmake-modules)
+makedepends=(git cmake extra-cmake-modules qt5-tools)
 provides=(calindori)
 conflicts=(calindori)
 source=("git+https://invent.kde.org/plasma-mobile/calindori.git")
@@ -29,7 +29,10 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}/build"
-  cmake ..
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
 }
 
