@@ -11,8 +11,16 @@ source=("https://github.com/assimp/assimp/archive/v${pkgver}.tar.gz")
 options=('!strip' '!buildflags' 'staticlibs')
 sha256sums=('11310ec1f2ad2cd46b95ba88faca8f7aaa1efe9aa12605c55e3de2b977b3dbfc')
 
-_basename=assimp
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare ()
+{
+  cd "${srcdir}"/assimp-${pkgver}
+  # master is ok
+  sed -i 's|set(sharedLibraryName "libassimp\${ASSIMP_LIBRARY_SUFFIX}@CMAKE_SHARED_LIBRARY_SUFFIX@.@ASSIMP_VERSION_MAJOR@")|set(sharedLibraryName "libassimp.dll.a")|g' assimpTargets-release.cmake.in
+  sed -i 's|set(sharedLibraryName "libassimp\${ASSIMP_LIBRARY_SUFFIX}@CMAKE_DEBUG_POSTFIX@@CMAKE_SHARED_LIBRARY_SUFFIX@.@ASSIMP_VERSION_MAJOR@")|set(sharedLibraryName "libassimp.dll.a")|g' assimpTargets-debug.cmake.in
+  curl -L https://github.com/assimp/assimp/pull/2698/commits/81d125a2cca748ef3f79f1f0a6731d7e6d694ec1.patch | patch -p1
+}
 
 build()
 {
