@@ -1,0 +1,12 @@
+diff -ru PyMuPDF-1.18.0-orig/setup.py PyMuPDF-1.18.0/setup.py
+--- PyMuPDF-1.18.0-orig/setup.py	2020-10-08 14:54:26.000000000 +0800
++++ PyMuPDF-1.18.0/setup.py	2020-10-12 23:44:28.773459862 +0800
+@@ -12,7 +12,7 @@
+ 
+ 
+ DEFAULT = ["mupdf", "mupdf-third"]
+-ARCH_LINUX = DEFAULT + ["jbig2dec", "openjp2", "jpeg", "freetype"]
++ARCH_LINUX = DEFAULT + ["jbig2dec", "openjp2", "jpeg", "freetype", "gumbo"]
+ OPENSUSE = ARCH_LINUX + ["harfbuzz", "png16"]
+ FEDORA = ARCH_LINUX + ["harfbuzz"]
+ LIBRARIES = {

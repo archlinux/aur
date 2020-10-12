@@ -4,20 +4,23 @@
 
 pkgname=('python-pymupdf')
 _name='PyMuPDF'
-pkgver=1.17.7
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Python bindings for MuPDF'
 arch=('x86_64')
 url='https://github.com/pymupdf/PyMuPDF'
 license=('AGPL3')
-depends=('python' 'libjpeg-turbo' 'jbig2dec' 'openjpeg2'  'freetype2')
-makedepends=('python-setuptools' 'libmupdf-pymupdf=1.17.0-3' 'swig' 'python-sphinx' 'python-sphinx_rtd_theme')
+depends=('python' 'libjpeg-turbo' 'jbig2dec' 'openjpeg2'  'freetype2' 'gumbo-parser')
+makedepends=('python-setuptools' 'libmupdf-pymupdf=1.18.0-1' 'swig' 'python-sphinx' 'python-sphinx_rtd_theme')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pymupdf/PyMuPDF/archive/${pkgver}.tar.gz")
-sha256sums=('bbdc4c5fc18dec8122f13fdeb75c90cb8fee13d4fd37c9397ac68bb096129fc1')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pymupdf/PyMuPDF/archive/${pkgver}.tar.gz"
+        "fix-library-linking.patch")
+sha256sums=('2ce5d0be64e91ff4ba39e83e65368538ba5c0396517e3103150a17d7e118b845'
+            'e7589e4499fb64d2729ae04f928624b5aff49a0d5a7cf25411b9537132fe8528')
 
 prepare() {
   cd "${_name}-${pkgver}"
+  patch --forward --strip=1 --input="${srcdir}/fix-library-linking.patch"
 }
 
 build() {
