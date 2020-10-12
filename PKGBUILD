@@ -3,7 +3,7 @@
 
 _pkgsrcname=parseclj
 _pkgmaintainer=clojure-emacs
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Associative data structure functions for elisp"
 pkgname=emacs-parseclj
@@ -12,7 +12,7 @@ url="https://github.com/${_pkgmaintainer}/${_pkgsrcname}"
 license=('GPL3')
 depends=('emacs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_pkgmaintainer}/${_pkgsrcname}/archive/v${pkgver}.tar.gz")
-sha256sums=('8948ecd47b6cbd06ca869694b7afdbe4cbca5bb47ab685358656afea7f6389ce')
+sha256sums=('a594e9851c3746990aa89d418152fe5a26e66738e622441947feee709ad07ecb')
 
 build() {
   cd ${_pkgsrcname}-${pkgver}
