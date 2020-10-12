@@ -1,6 +1,6 @@
 pkgbase = holo-build
 	pkgdesc = Cross-distribution system package compiler
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = http://holocm.org
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = holo-build
 	makedepends = perl
 	depends = pacman
 	depends = xz
-	source = https://github.com/holocm/holo-build/archive/v1.6.0.tar.gz
-	sha256sums = 80536ebd394f81c916d209a26aa83b2cb518007ee1f10c4525e66e8d4db6fd1e
+	source = https://github.com/holocm/holo-build/archive/v1.6.1.tar.gz
+	sha256sums = 00ca7d1cfda43682af83fa0fd504180887e2801078bc7a8cefca8b460605398e
 
 pkgname = holo-build
 

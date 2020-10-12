@@ -1,5 +1,5 @@
 pkgname=holo-build
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Cross-distribution system package compiler'
 arch=('i686' 'x86_64' 'armv7h')
@@ -11,7 +11,7 @@ depends=(
 )
 makedepends=('go' 'perl')
 source=("https://github.com/holocm/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('80536ebd394f81c916d209a26aa83b2cb518007ee1f10c4525e66e8d4db6fd1e')
+sha256sums=('00ca7d1cfda43682af83fa0fd504180887e2801078bc7a8cefca8b460605398e')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
