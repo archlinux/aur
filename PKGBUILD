@@ -2,13 +2,13 @@
 
 pkgname=enroute-git
 _name=enroute
-pkgver=1.8.1.r135.g2885539
+pkgver=1.8.1.r136.gee7bad1
 pkgrel=1
 pkgdesc="Enroute Flight Navigation"
 arch=('i686' 'x86_64')
 url="https://akaflieg-freiburg.github.io/enroute/"
 license=('GPL3')
-makedepends=('cmake' 'clang')
+makedepends=('git' 'cmake' 'clang')
 depends=('qt5-location' 'hicolor-icon-theme')
 source=("enroute::git+https://github.com/Akaflieg-Freiburg/enroute.git#branch=master")
 md5sums=('SKIP')
