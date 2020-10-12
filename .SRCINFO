@@ -1,7 +1,7 @@
 pkgbase = fsport-mediavps
 	pkgdesc = Hi-res FreeSpace 1 resources for FSPort
 	pkgver = 3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fsport.hard-light.net/website/
 	arch = any
 	license = custom:noncommercial
@@ -13,15 +13,21 @@ pkgbase = fsport-mediavps
 	source = fsport-mediavps.sh
 	source = fsport-mediavps.desktop
 	source = LICENSE
-	source = http://fsport.freespacemods.net/releases/fsport-mediavps.7z
-	source = http://fsport.freespacemods.net/releases/fsport-mediavps_2014.7z
-	source = http://fsport.freespacemods.net/releases/fsport-mediavps_music.7z
+	source = https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/fsport-mediavps.7z
+	source = https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/fsport-mediavps_2014.7z
+	source = https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/fsport-mediavps_music.7z
+	source = https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/2014/mod.ini
+	source = https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/2014/fsport-mediavps.bmp
+	source = https://porphyrion.feralhosting.com/datacorder/fsport_files/releases/2014/fsport-mediavps_small.bmp
 	sha256sums = ed989975e62cb2e0b116bf9a316305dbec3f1440080e19794eaf95bbf3f686e7
 	sha256sums = 09cb00100f048715b5bab6c9a1bca2a1e2ecae59d9da7a8710c018f37001f38c
 	sha256sums = 79462ffe82b8cf371f37a3444a8e17165d293e797a865b9c4312f86d00ddf4ec
 	sha256sums = f0cc49f13730373c65c4e091a5d84bd284db069650ede460c5c4ee301118d9c9
 	sha256sums = 62aca6bf149d9121b3f91fa983d697829d5e099cb979d03f91f9e01b068b25ff
 	sha256sums = b80ee613c7b0cc3df8990bf1e0eac78a4fd20e615ba29fbcc2b85bfd1f20b443
+	sha256sums = ba91d40bc63e2aff02c0ff0e1532f94ebeff25af7e1e07a020fcc5c0a1155143
+	sha256sums = fff09da6041f3b748f9f9379da456ce534b870533c1312af8d0229ece986c747
+	sha256sums = df7302d16f2458dab587300cb7b57fd199c3bb0d4e3d05832f72ee09bced27a4
 
 pkgname = fsport-mediavps
 
