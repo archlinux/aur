@@ -18,11 +18,11 @@ source=("https://github.com/OpenBoard-org/OpenBoard/archive/v${pkgver}a${_a}.tar
 source+=(qchar.patch)
 source+=(quazip.patch)
 source+=(drop_ThirdParty_repo.patch)
-md5sums=('01e94648e788a9ff4d35b334b8f333bb'
-         '6f058362f39f74df820fcac3a3336def'
-         'bf2c524f3897cfcfb4315bcd92d4206e'
-         '5bd8fd678a114e0633eef1e709ba7ccf'
-         '879116c683374b2dde291014e44a29fe')
+sha256sums=('6c09e8fba969de960764eb0fd0c4e38585354d8f75a337b48176a77d880a4cf7'
+            '18ee4fab83b0c92490c81c2aaace98f669d07d7260cc0f83a24acb8d6224e5e7'
+            'b40fdab85f5921d0404c07db64628a2428a87d39193d2797bbef2e69b1d51549'
+            '8c0b28ebd6cade0a551b695af9c04a2c45052f2d955357825b3be97bf00d5be7'
+            '71a41ecbecb952b402d554aa7c5659650765b692662a28f9db904c7390f8f080')
 
 prepare() {
   cd "$srcdir"/$_src_folder
