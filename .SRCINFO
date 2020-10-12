@@ -1,9 +1,10 @@
 pkgbase = galois
 	pkgdesc = A falling blocks game with blocks of various shapes and sizes
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nongnu.org/galois
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = gtkmm3
 	depends = libxml++
