@@ -1,6 +1,6 @@
 pkgbase = openboard-develop-git
 	pkgdesc = Interactive whiteboard software for schools and universities
-	pkgver = v1.6.0a3.r14.g25abc5de
+	pkgver = 1.6.0a3.r16.gab705d28
 	pkgrel = 1
 	url = http://openboard.ch/index.en.html
 	arch = x86_64

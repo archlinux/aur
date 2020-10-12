@@ -2,7 +2,7 @@
 # Maintainer: bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=openboard-develop-git
 _fragment="#branch=dev-qt5.1x"
-pkgver=v1.6.0a3.r14.g25abc5de
+pkgver=1.6.0a3.r16.gab705d28
 pkgrel=1
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
@@ -27,7 +27,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/OpenBoard"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
