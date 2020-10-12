@@ -17,10 +17,12 @@ makedepends=('git')
 install="${_pkgname}-dkms.install"
 source=("$_pkgname::git+https://github.com/corneal64/Realtek-USB-Wireless-Adapter-Drivers.git"
         blacklist-r8188fu.conf
-        dkms.conf)
+        dkms.conf
+        'https://raw.githubusercontent.com/kelebek333/rtl8188fu/4b1ca2e734467a0af1e481cd9d56edb0475ec68a/firmware/rtl8188fufw.bin')
 sha256sums=('SKIP'
             '48bc8d2270ea8db1e5c0be51012419753b22a106028e153919b37d583c422cc6'
-            'e2b146ffbe6b81c6a8c963ee2826aecc3a092497fd9b33c6290751da5706d103')
+            'e2b146ffbe6b81c6a8c963ee2826aecc3a092497fd9b33c6290751da5706d103'
+            'e6189d6d7032b83f0ed4284629c43db66262449a866f33fd329e611239f62e1f')
 
 
 
@@ -55,6 +57,9 @@ package() {
 
   # Set name and version
   sed -e "s/@_PKGNAME@/$_pkgname/" -e "s/@PKGVER@/$pkgver/" -i "$install_dir/dkms.conf"
+
+  # Install firmware
+  install -Dm644 rtl8188fufw.bin ${pkgdir}/usr/lib/firmware/rtlwifi/rtl8188fufw.bin
 
   # Copy sources
   cd "$_pkgname/rtl$_pkgname"
