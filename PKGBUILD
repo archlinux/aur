@@ -1,6 +1,6 @@
 # Maintainer: Samuel Laurén <samuel.lauren@iki.fi>
 pkgname=rainbowpath
-pkgver=0.5
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Program for making paths pretty."
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("MIT")
 depends=(ncurses)
 makedepends=()
 source=("https://github.com/Soft/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=("479205a0868b18dd6a6e83aeaf82626adaeeee517ffc1230a8a57a4f86e9f0c2")
+sha256sums=("d6a46f042d349038a8082ea7f475a409c8aabdab8ad720a0ef44be74e0f8f53c")
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
