@@ -2,14 +2,14 @@
 
 pkgname=vaspkit-bin
 _swname=vaspkit
-pkgver=1.12
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="VASPKIT is a postprocessing tool for VASP code.(Warning! May overwrite your .vaspkit and utilities dir!)"
 arch=('x86_64')
 licence=('unknown')
 url=https://sourceforge.net/projects/vaspkit/files/
-source=('https://downloads.sourceforge.net/vaspkit/vaspkit.1.12.linux.x64.tar.gz')
-sha256sums=(8d15358d5a9bb0a079f258eee1494558d800b151c5a459ba57577318c379eabd)
+source=('https://downloads.sourceforge.net/vaspkit/vaspkit.1.2.1.linux.x64.tar.gz')
+sha256sums=(12f1db71e0784c092284befbe05e275b15b6eb55ff1e45839596923d8f9b2096)
 
 package(){
   install -d "${pkgdir}/usr/bin/${_swname}"
