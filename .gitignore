@@ -1,4 +1,5 @@
 neo4j-community-*-any.pkg.tar.xz
+neo4j-community-*-any.pkg.tar.zst
 neo4j-community-*-unix.tar.gz
 pkg/
 src/
