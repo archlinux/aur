@@ -7,7 +7,6 @@ pkgbase = odio-sacd
 	arch = x86_64
 	arch = pentium4
 	license = GPL3
-	makedepends = gcc
 	makedepends = libodiosacd
 	depends = libodiosacd
 	options = !emptydirs
