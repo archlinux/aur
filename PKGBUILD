@@ -10,7 +10,10 @@ url='https://github.com/AppImage/AppImageKit'
 license=('MIT')
 depends=('libappimage')
 provides=("${_pkgname}")
-noextract=("${_pkgname}")
+conflicts=("${_pkgname}")
+noextract=("${_pkgname}-${pkgver}-x86_64.appimage"
+          "${_pkgname}-${pkgver}-armv7.appimage"
+          "${_pkgname}-${pkgver}-aarch64.appimage")
 
 source=("${_pkgname}-${pkgver}-README.md::${url}/raw/${pkgver}/README.md"
         "${_pkgname}-${pkgver}-LICENSE::${url}/raw/${pkgver}/LICENSE")
@@ -30,10 +33,10 @@ prepare() {
 }
 
 package(){
-  install -Dm755 -t "${pkgdir}/usr/bin" "squashfs-root/usr/bin/${_pkgname}"
-  install -Dm755 -t "${pkgdir}/usr/lib/appimagekit" "squashfs-root/usr/lib/appimagekit/mksquashfs"
-  install -Dm644 "${_pkgname}-${pkgver}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -Dm644 "${_pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dvm755 "squashfs-root/usr/bin/${_pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dvm755 "squashfs-root/usr/lib/appimagekit/mksquashfs" -t "${pkgdir}/usr/lib/appimagekit"
+  install -Dvm644 "${_pkgname}-${pkgver}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dvm644 "${_pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
