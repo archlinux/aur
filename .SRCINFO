@@ -1,6 +1,6 @@
 pkgbase = smooth
 	pkgdesc = An object oriented C++ class library for Windows, OS X, Linux and most Unix-like operating systems
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = http://www.smooth-project.org/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = smooth
 	depends = gtk3
 	depends = libjpeg-turbo
 	depends = libxml2
-	source = smooth-0.9.5.tar.gz::https://github.com/enzo1982/smooth/archive/v0.9.5.tar.gz
-	sha512sums = 7df1848fa6ea13455600ca8089962fb219732bd6ee12c5f8a10fc82c5ffaf5ca3f9ff00cb48c052d4e67921919fb871c472cc8a6bd04930df4695203246a2411
+	source = smooth-0.9.6.tar.gz::https://github.com/enzo1982/smooth/archive/v0.9.6.tar.gz
+	sha512sums = ee4ab539c05ff68a01329aecb50aabdbc597eda954e310840ef5d50c1ea735fda4f027adb2ba047f9a7e699dce1ff868e2689261e941708eab3a0a4cf72945a6
 
 pkgname = smooth
 
