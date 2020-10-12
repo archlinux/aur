@@ -2,12 +2,12 @@
 pkgname=majsoul-plus
 pkgver=2.0.0
 _pkgver=${pkgver/b/-beta.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Majsoul browser, with more features"
 arch=('x86_64' 'i686')
 url="https://github.com/MajsoulPlus/majsoul-plus"
 license=('AGPL3')
-depends=('electron7')
+depends=('electron')
 makedepends=('yarn' 'moreutils' 'jq' 'imagemagick')
 source=("https://github.com/MajsoulPlus/majsoul-plus/archive/v$_pkgver.tar.gz")
 sha256sums=('52d35a7dfa3e81f2e476433c9882131834837a2a01b6cbfb17a88f45c163ebeb')
@@ -19,8 +19,8 @@ prepare() {
 	if [ "$CARCH" == "i686" ]; then
 		targetArch="ia32"
 	fi
-	electronDist="\/usr\/lib\/electron7"
-    electronVersion=$(tail -1 /usr/lib/electron7/version)
+	electronDist="\/usr\/lib\/electron"
+    electronVersion=$(tail -1 /usr/lib/electron/version)
     sed -i "s|\"electron\": \".*|\"electron\": \"$electronVersion\",|" package.json
     jq '.build.linux.target = ["dir"]' package.json | sponge package.json
     jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
