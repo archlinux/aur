@@ -14,9 +14,11 @@ pkgbase = rtl88x2ce-dkms
 	source = rtl88x2ce-dkms-5.7.3_35403.src.7z::https://github.com/XAIOThaifeng/realtek-linux/blob/master/RTL8822CE/RTL8822CE_WiFi_linux_v5.7.3_35403_COEX20190531-0e0e.20191028.7z?raw=true
 	source = dkms.conf
 	source = rtw88_blacklist.conf
+	source = linux58.patch
 	sha1sums = a798b10d4f2c962c246f2c1bc695314e2b15e7b3
 	sha1sums = 1f8eb72a676c311a434ccece3f2bad2c20ddaa09
-	sha1sums = 18ecc64076501d396a2fabf4f1f31d3d1945b874
+	sha1sums = cff1484236d2bdaf0d1e10a1b789950e9ff3d3da
+	sha1sums = c2ff3cb66952337ec8b37ebaebad5e4c017fb4c2
 
 pkgname = rtl88x2ce-dkms
 
