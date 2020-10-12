@@ -4,22 +4,24 @@
 
 pkgname=('dash-daemon' 'dash-cli' 'dash-qt')
 pkgbase=dash
-pkgver=0.15.0.0
-pkgrel=2
+pkgver=0.16.0.1
+pkgrel=1
 arch=('x86_64')
 url="http://www.dash.org/"
 depends=('boost-libs' 'libevent' 'libbacktrace-git')
-makedepends=('boost' 'codablock-bls-signatures')
+makedepends=('boost' 'codablock-bls-signatures' 'qt5-tools')
 optdepends=('miniupnpc: Firewall-jumping support'
             'db4.8: Wallet storage and wallet portability')
 pkgdesc="Dash peer-to-peer network based digital currency "
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dashpay/dash/archive/v${pkgver}.tar.gz"
         'dashd@.service'
-        'deque.patch')
-sha512sums=('cb7534161e8f25507afeda65a5aca3d07594531b87981be1e80251e8ffbe816525f4829a073c99e3666220de73ade7f3f1c3bdaac377553a667d20d3c21ce3f7'
+        'deque.patch'
+        'qpainterpath.patch::https://github.com/bitcoin/bitcoin/commit/79b0a69e09c1a912122e6431ea3c530cc292c690.patch')
+sha512sums=('d57dd2b459be70c31471a5c4e18f77d3476e58768dc154cc754566bc5d0bf77bedf497ee81a069cfc0bce9aeb9c498babc59e1bb4fb29332d1258e27242eebba'
             'b5c59efacbe85de0292590af12e35d8c001c2b71eebda9829754be48e61a70ad7e8ed99662ed4e8da53006eb72e1994c435813b35c16a9c566ddf455efe81b5b'
-            'f558e938285fbf14c2f1773b2b23018e52ee03d4d2c89c2e1c73dc5f84180b77acc229a2c041f2f058e3a0ea329302d3bd9ef683c5c88570f3d2c4ab5a7050a6')
+            'f558e938285fbf14c2f1773b2b23018e52ee03d4d2c89c2e1c73dc5f84180b77acc229a2c041f2f058e3a0ea329302d3bd9ef683c5c88570f3d2c4ab5a7050a6'
+            '1eda9a1d5616a0602f85b0d04838657fe5fa75746a2da7a4614124e6081eeb1997e845d61a7d7a9a52a9d5ef9215617205924811cfef32132bf7fce9c3c603fb')
 
 prepare () {
   cd "$pkgbase-$pkgver"
@@ -27,6 +29,11 @@ prepare () {
  #inlcude deque.h library in httpserver.cpp found in https://github.com/dogecoin/dogecoin/pull/1626
  #will delete when dash fixes/commits this.
   patch --forward --strip=1 --input="../../deque.patch"
+
+ #QPainterPath 2020-10-12 == Add missing QPainterPath include
+ #include QPainterPath library in src/qt/trafficgraphwidget.cpp found in https://github.com/bitcoin/bitcoin/commit/79b0a69e09c1a912122e6431ea3c530cc292c690
+ #will delete when dash fixes/commits this. This happens because dash is compiling against older versions of qt5-base
+  patch --forward --strip=1 --input="../../qpainterpath.patch"
 }
 
 build() {
