@@ -1,26 +1,15 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=python-proc
-pkgver=0.17
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 pkgdesc="Simple interface to Linux process information"
 arch=("any")
 url="https://github.com/xolox/python-proc"
 license=("MIT")
 depends=("python" "python-coloredlogs" "python-executor" "python-humanfriendly" "python-property-manager" "python-setuptools")
-source=(
-    "https://github.com/xolox/python-proc/archive/${pkgver}.tar.gz"
-    "python38-compat.patch"
-)
-sha256sums=(
-    "fa0cde2babdac512a251685d73036b956f509b12021b2051e285b3f29d321b46"
-    "c1d469b3850b43df4e1b7d2097ebd2fba3e1e6786a750ca75585c3961f1ba9f8"
-)
-
-prepare() {
-    cd "python-proc-${pkgver}"
-    patch -p1 < "${srcdir}/python38-compat.patch"
-}
+source=("https://github.com/xolox/python-proc/archive/${pkgver}.tar.gz")
+sha512sums=("46a7f97be1af0f1a2b717acfdda2bcea15aebfe6dd04e352b176a42fe0962800ddabd9e6f91d83bf8267370d4098b846576238ebabf3cb78d4ccee0889768817")
 
 package() {
     cd "python-proc-${pkgver}"
