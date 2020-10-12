@@ -1,3 +1,4 @@
+#!/hint/bash
 # Maintainer: bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=openboard-develop-git
 pkgver=1.6.0
