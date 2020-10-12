@@ -1,10 +1,11 @@
 pkgbase = nbwmon-git
 	pkgdesc = ncurses bandwidth monitor
 	pkgver = 0.5.2.r15.gf159b35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/causes-/nbwmon
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = custom:MIT/X
 	makedepends = git
 	depends = ncurses

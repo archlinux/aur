@@ -1,9 +1,11 @@
-# Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
+# Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 pkgname=nbwmon-git
 pkgver=0.5.2.r15.gf159b35
-pkgrel=1
+pkgrel=2
 pkgdesc="ncurses bandwidth monitor"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/causes-/nbwmon"
 license=('custom:MIT/X')
 depends=('ncurses')
