@@ -1,5 +1,5 @@
-# Maintainer: Manhong Dai <daimh@umich.edu>
-# Contributor: Jingbei Li <i@jingbei.li>
+# Maintainer: Jingbei Li <i@jingbei.li>
+# Contributor: Manhong Dai <daimh@umich.edu>
 
 pkgname=sge
 pkgver=8.1.9
