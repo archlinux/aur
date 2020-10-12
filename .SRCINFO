@@ -1,0 +1,18 @@
+pkgbase = ucollage-git
+	pkgdesc = Terminal image viewer based on Überzug
+	pkgver = 0.1.0.r1.g684c52d
+	pkgrel = 1
+	url = https://github.com/ckardaris/ucollage
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = ueberzug
+	optdepends = ffmpeg: display video thumbnails
+	optdepends = imagemagick: image rotation
+	provides = ucollage
+	conflicts = ucollage
+	source = git+https://github.com/ckardaris/ucollage.git
+	sha256sums = SKIP
+
+pkgname = ucollage-git
+
