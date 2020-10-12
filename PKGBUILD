@@ -1,56 +1,45 @@
-# Maintainer: wenLiangcan <boxeed at gmail dot com>
-
+# Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 _pkgname=feeluown
-pkgname="${_pkgname}-git"
-pkgver=9.5.16.gc51b6b6
+pkgname=${_pkgname}-git
+pkgver=r1176.0ffa777
 pkgrel=1
-epoch=1
-pkgdesc="个性化音乐服务 For Mac And Linux"
-arch=("any")
+epoch=2
+pkgdesc="FeelUOwn Music Player (Master branch)"
+arch=('any')
 url="https://github.com/cosven/FeelUOwn"
 license=('GPL3')
-depends=('python-pyqt5' 'python-requests' 'python-quamash' 'qt5-multimedia' 'python-crypto' 'xdg-utils' 'sh' 'gst-plugins-ugly' 'gst-plugins-bad' 'gst-plugins-good' 'python-beautifulsoup4' 'python-fuocore')
-optdepends=('feeluown-mpris2-plugin-git: MPRIS support')
-makedepends=('git' 'python-setuptools')
-provides=("${_pkgname}==${pkgver}")
-conflicts=("${_pkgname}")
-source=("${_pkgname}"::'git://github.com/cosven/FeelUOwn.git')
-md5sums=('SKIP')
-install="${pkgname}.install"
-_desktop="${_pkgname}.desktop"
+groups=('feeluown-full')
+provides=('feeluown')
+conflicts=('feeluown')
+depends=('python-qasync' 'python-pyqt5' 'mpv' 'python-opengl' 'python-janus' 'python-requests')
+makedepends=('git' 'python-setuptools' 'python-pip')
+optdepends=(
+	'feeluown-local'
+	'feeluown-netease'
+	'feeluown-kuwo'
+	'feeluown-xiami'
+	'feeluown-qqmusic'
+)
+source=(
+	"$_pkgname::git+https://github.com/feeluown/FeelUOwn.git"
+	"$_pkgname.desktop"
+)
+sha256sums=('SKIP'
+            'f093cccd74e29115782b30fcda28fb0c3b935091673b50882b332c934ed56065')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    git describe --tags --long | sed 's/^v//;s/release./r/;s/-/./g'
+    cd "$srcdir/$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd "${srcdir}"
-    cat > ${_desktop} << EOF
-[Desktop Entry]
-Type=Application
-Name=FeelUOwn
-Comment=FeelUOwn Launcher
-Exec=${_pkgname}
-Icon=${_pkgname}
-Categories=AudioVideo;Audio;Player;Qt;
-Terminal=false
-StartupNotify=true
-EOF
+build() {
+	cd "$srcdir/$_pkgname"
+	LANG=en_US.UTF-8 python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-
-    python3 setup.py install --root="${pkgdir}" --optimize=1
-    echo "#!/usr/bin/env sh" > "${pkgdir}/usr/bin/feeluown"
-    echo "python -c 'from feeluown import __main__ as fu;fu.main()' \"\$@\"" >> "${pkgdir}/usr/bin/feeluown"
-
-    rm -f "${pkgdir}/usr/bin/"{'feeluown-install-dev','feeluown-genicon','feeluown-update'}
-
-    install -Dm644 './feeluown/feeluown.png' "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-
-    install -Dm644 "${srcdir}/${_desktop}" "${pkgdir}/usr/share/applications/${_desktop}"
+	cd "$srcdir/$_pkgname"
+	LANG=en_US.UTF-8 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	install -D -m644 "$srcdir/$_pkgname/feeluown/feeluown.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/feeluown.png"
+	install -D -m644 "$srcdir/feeluown.desktop" "$pkgdir/usr/share/applications/FeelUOwn.desktop"
 }
-
