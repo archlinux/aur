@@ -2,10 +2,10 @@
 
 pkgname=libretls
 pkgver=3.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Port of libtls from LibreSSL to OpenSSL. Aims to make the libtls API more easily and widely available.'
 arch=('x86_64')
-url='https://git.causal.agency/${pkgname}/'
+url="https://git.causal.agency/${pkgname}/"
 license=('ISC')
 depends=('openssl')
 source=("https://causal.agency/${pkgname}/${pkgname}-${pkgver}.tar.gz")
