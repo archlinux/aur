@@ -1,0 +1,23 @@
+pkgbase = nctracer-git
+	pkgdesc = An ImGui front-end to the pmTracer library made with the nCine
+	pkgver = r22.c58324a
+	pkgrel = 1
+	url = http://ncine.github.io
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = glew
+	depends = libpng
+	depends = sdl2
+	depends = lua
+	depends = hicolor-icon-theme
+	provides = nctracer
+	conflicts = nctracer
+	options = !strip
+	source = git://github.com/encelo/ncTracer
+	md5sums = SKIP
+
+pkgname = nctracer-git
+

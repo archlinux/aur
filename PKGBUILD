@@ -1,0 +1,60 @@
+# Maintainer: Angelo Theodorou <encelo@gmail.com>
+
+pkgname=nctracer-git
+pkgver=r22.c58324a
+pkgrel=1
+pkgdesc="An ImGui front-end to the pmTracer library made with the nCine"
+arch=('i686' 'x86_64')
+url="http://ncine.github.io"
+license=('MIT')
+depends=('glew' 'libpng' 'sdl2' 'lua' 'hicolor-icon-theme')
+makedepends=('git' 'cmake')
+conflicts=('nctracer')
+provides=('nctracer')
+options=(!strip)
+source=('git://github.com/encelo/ncTracer')
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/ncTracer"
+  ( set -o pipefail
+    git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
+prepare() {
+  git clone https://github.com/nCine/nCine --branch develop || git -C nCine pull
+  git clone https://github.com/nCine/nCine-data || git -C nCine-data pull
+  git clone https://github.com/encelo/pmTracer || git -C pmTracer pull
+  git clone https://github.com/encelo/ncTracer-data || git -C ncTracer-data pull
+}
+
+build() {
+  cmake -S nCine -B nCine-build\
+        -DCMAKE_BUILD_TYPE=Release\
+        -DNCINE_DYNAMIC_LIBRARY=OFF\
+        -DNCINE_PREFERRED_BACKEND=SDL2\
+        -DNCINE_WITH_THREADS=ON\
+        -DNCINE_WITH_WEBP=OFF\
+        -DNCINE_WITH_AUDIO=OFF\
+        -DNCINE_BUILD_TESTS=OFF
+  make -C nCine-build
+
+  mkdir -p build && cd build
+
+  cmake ../ncTracer\
+        -DCMAKE_BUILD_TYPE=Release\
+        -DnCine_DIR=$PWD/../nCine-build\
+        -DPMTRACER_ROOT=$PWD/../pmTracer\
+        -DPACKAGE_BUILD_ANDROID=OFF\
+        -DPACKAGE_STRIP_BINARIES=ON\
+        -DPACKAGE_DEFAULT_DATA_DIR=/usr/share/nctracer/data\
+        -DCMAKE_INSTALL_PREFIX=/usr
+  make
+}
+
+package() {
+  make -C build DESTDIR=$pkgdir PREFIX= install
+  install -Dm0644 $srcdir/ncTracer/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+}
