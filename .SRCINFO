@@ -1,0 +1,21 @@
+pkgbase = zig-game-git
+	pkgdesc = It's a game where you shoot stuff
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/bcampbell/zig
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = zlib
+	depends = libpng
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = opengl-driver
+	provides = zig-game
+	conflicts = zig-game
+	source = git+https://github.com/bcampbell/zig
+	sha256sums = SKIP
+
+pkgname = zig-game-git
+
