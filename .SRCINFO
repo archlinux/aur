@@ -1,13 +1,12 @@
 pkgbase = dkms-pl2501
 	pkgdesc = DKMS-controlled kernel driver for PL-2501 USB Easy Trasfer Cables
 	pkgver = 20121021
-	pkgrel = 2
+	pkgrel = 3
 	url = https://patchwork.kernel.org/patch/1227361/
 	install = pl2501-driver.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = linux-headers
 	depends = dkms
 	source = Makefile
 	source = dkms.conf
