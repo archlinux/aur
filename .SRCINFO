@@ -1,6 +1,6 @@
 pkgbase = kanshi-git
 	pkgdesc = Dynamic output configuration for Wayland WMs
-	pkgver = r85.846b725
+	pkgver = r89.7095bed
 	pkgrel = 1
 	url = https://github.com/emersion/kanshi
 	arch = x86_64
