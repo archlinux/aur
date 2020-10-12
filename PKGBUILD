@@ -3,7 +3,7 @@
 pkgname=bash-command-timer-git
 provides=(bash-command-timer)
 pkgver=r39.f1b5412
-pkgrel=1
+pkgrel=2
 pkgdesc="Pretty-print execution time for each bash command."
 arch=('any')
 url="https://github.com/jichu4n/bash-command-timer"

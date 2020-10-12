@@ -1,7 +1,7 @@
 pkgbase = bash-command-timer-git
 	pkgdesc = Pretty-print execution time for each bash command.
 	pkgver = r39.f1b5412
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jichu4n/bash-command-timer
 	install = bash-command-timer-git.install
 	arch = any
