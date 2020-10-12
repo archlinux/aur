@@ -22,6 +22,8 @@ pkgbase = openboard-develop-git
 	depends = ffmpeg
 	depends = quazip
 	depends = poppler
+	provides = openboard=1.6.0
+	conflicts = openboard
 	source = git://github.com/OpenBoard-org/OpenBoard.git#branch=dev-qt5.1x
 	source = openboard.desktop
 	source = qchar.patch
