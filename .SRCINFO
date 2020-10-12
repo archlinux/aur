@@ -1,0 +1,12 @@
+pkgbase = bomutils-git
+	pkgdesc = Open source tools to create bill-of-materials files used in Mac OS X installers
+	pkgver = 0.2.r0.g3f7dc2d
+	pkgrel = 1
+	url = https://github.com/hogliux/bomutils
+	arch = x86_64
+	license = GPL2
+	source = bomutils::git+https://github.com/hogliux/bomutils
+	md5sums = SKIP
+
+pkgname = bomutils-git
+
