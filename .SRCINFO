@@ -7,7 +7,6 @@ pkgbase = libodiosacd
 	arch = x86_64
 	arch = pentium4
 	license = GPL3
-	makedepends = gcc
 	makedepends = glibc
 	depends = glibc
 	options = !emptydirs
