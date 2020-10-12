@@ -1,8 +1,8 @@
 pkgbase = purple-url-handler
 	pkgdesc = Open xmpp:// and irc:// URLs in Pidgin
 	pkgver = 0.0.1
-	pkgrel = 1
-	url = http://github.com/MrZYX/PKGBUILDs/tree/master/purple-url-handler
+	pkgrel = 2
+	url = https://github.com/jhass/PKGBUILDs/tree/main/purple-url-handler
 	install = purple-url-handler.install
 	arch = any
 	license = MIT
