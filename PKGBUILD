@@ -13,14 +13,12 @@ depends=('qt5-base' 'android-tools' 'qt5-x11extras')
 license=('Apache')
 install=qtscrcpy-git.install
 source=("git+https://github.com/barry-ran/QtScrcpy"
-qtscrcpy-git.install
 QtScrcpy.desktop
 binaries.patch
 )
 md5sums=(SKIP
-SKIP
-SKIP
-SKIP
+'71e240ca3c11cbbd43d5a6013cdb6675'
+'049c0e95b49a4437c9cda0c19b7295f2'
 )
 
 prepare(){
