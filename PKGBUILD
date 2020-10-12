@@ -1,21 +1,32 @@
-# Maintainer: xgdgsc <xgdgsc at gmail.com>
-pkgname=deadbeef-plugin-statusnotifier
-pkgver=1.3
+__pkgname="deadbeef-plugin-statusnotifier"
+__gitroot="github.com/vovochka404/deadbeef-statusnotifier-plugin"
+pkgname=${__pkgname}-git
+pkgver=r35.aeb0626
 pkgrel=1
-pkgdesc="Plugin that provides system tray icon for deadbeef in Plasma5 (Just implements StatusNotifierItem)."
-url="https://github.com/vovochka404/deadbeef-statusnotifier-plugin"
+pkgdesc="StatusNotifier plugin for the DeaDBeeF music player replaces default tray icon on DE that supports StatusNotifierIitem protocol."
+url="https://${__gitroot}"
 arch=('i686' 'x86_64')
 license=('GPL3')
-source=("https://github.com/vovochka404/deadbeef-statusnotifier-plugin/archive/v${pkgver}.tar.gz")
+provides=("$__pkgname")
+conflicts=("$__pkgname")
+source=("$pkgname::git+https://${__gitroot}")
 depends=('deadbeef' 'gtk3' 'gtk2' 'libdbusmenu-glib')
 makedepends=('cmake')
-md5sums=('807e81cd8b8e18c4d673a418551c2a4b')
+md5sums=('SKIP')
 
 build() {
-  cmake "${srcdir}/deadbeef-statusnotifier-plugin-${pkgver}" -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DUSE_GTK=OFF
-	make
+    cmake "${srcdir}/${pkgname}" -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DUSE_GTK=OFF -DUSE_GTK3=ON
+    make
 }
 
+
 package() {
-	cd "${srcdir}" && make install
+    cd "${srcdir}" && make install
 }
+
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
