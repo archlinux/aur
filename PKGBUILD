@@ -15,6 +15,7 @@ source_aarch64=("$url/releases/download/$pkgver/${_pkgname}-${pkgver}-aarch64-li
 package() {
     install -Dm755 "${srcdir}/cog" "${pkgdir}/usr/bin/cog"
     install -Dm755 "${srcdir}/coco" "${pkgdir}/usr/bin/coco"
+    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 md5sums_x86_64=('ca9c6a6504e2bd4226c88ff2ce70d7c6')
