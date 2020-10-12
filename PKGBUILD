@@ -2,7 +2,7 @@
 
 _model="l8900cdw"
 pkgname="brother-mfc-${_model}"
-pkgver="1.2.0"
+pkgver="1.5.0"
 pkgrel=1
 epoch=2
 pkgdesc="LPR and CUPS driver for the Brother MFC-L8900CDW"
@@ -11,10 +11,10 @@ arch=('i686' 'x86_64')
 license=('GPL2' 'custom:Brother EULA')
 depends=('cups')
 depends_x86_64=('lib32-glibc')
-source=(http://download.brother.com/welcome/dlf103216/mfc${_model}lpr-${pkgver}-0.i386.rpm
-        http://download.brother.com/welcome/dlf103225/mfc${_model}cupswrapper-1.3.0-0.i386.rpm)
-sha256sums=('82cb8b3710523b546e40e1280275ecc1689b50294644d6b81a25cbffc385e8c4'
-            'd92bbb84b6b66aad097b705dd6b2a53d19cab79fde546ad7a25e4952ee4547fa')
+source=(https://download.brother.com/welcome/dlf103216/mfcl8900cdwlpr-${pkgver}-0.i386.rpm
+        https://download.brother.com/welcome/dlf103225/mfcl8900cdwcupswrapper-${pkgver}-0.i386.rpm)
+sha256sums=('SKIP'
+            'SKIP')
 
 package() {
   install -d ${pkgdir}/usr/share/cups/model/Brother
