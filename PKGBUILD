@@ -17,11 +17,11 @@ source=("git://github.com/OpenBoard-org/OpenBoard.git${_fragment}"
 source+=(qchar.patch)
 source+=(quazip.patch)
 source+=(drop_ThirdParty_repo.patch)
-md5sums=('SKIP'
-         '6f058362f39f74df820fcac3a3336def'
-         'bf2c524f3897cfcfb4315bcd92d4206e'
-         '5bd8fd678a114e0633eef1e709ba7ccf'
-         '894a397374dea23004d8d5f0173cb063')
+sha256sums=('SKIP'
+            '18ee4fab83b0c92490c81c2aaace98f669d07d7260cc0f83a24acb8d6224e5e7'
+            'b40fdab85f5921d0404c07db64628a2428a87d39193d2797bbef2e69b1d51549'
+            '8c0b28ebd6cade0a551b695af9c04a2c45052f2d955357825b3be97bf00d5be7'
+            'a6a9bc1f9c9bee0345b735fcf422245ae7946f96f6c34520dd63530a98978c14')
 
 pkgver() {
   cd "$srcdir/OpenBoard"
