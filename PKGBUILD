@@ -25,12 +25,12 @@ noextract=()
 validpgpkeys=()
 
 build() {
-    cd "$pkgname-pkgver"
+    cd "$pkgname-$pkgver"
     go build .
 }
 
 package() {
-    cd "$pkgname-pkgver"
+    cd "$pkgname-$pkgver"
     mkdir -p $pkgdir/usr/bin
     mkdir -p $pkgdir/usr/share/$pkgname/license
     install $srcdir/$pkgname-$pkgver/$pkgname $pkgdir/usr/bin
