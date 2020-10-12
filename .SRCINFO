@@ -3,7 +3,7 @@
 pkgbase = diatheke-tui
 	pkgdesc = A whiptail TUI for diatheke bible software
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/g4jc/diatheke-tui
 	arch = any
 	license = CC0
