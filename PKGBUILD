@@ -1,24 +1,23 @@
-# Maintainer: Dave Simons <pkgs@simonsd.org> 
-
+# Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=sensei-raw-ctl
-pkgver=2f70930
-pkgrel=3
+pkgver=r47.gbe98666
+pkgrel=1
 pkgdesc="SteelSeries Sensei Raw configuration tool"
 arch=('i686' 'x86_64')
 url="https://git.janouch.name/p/sensei-raw-ctl"
 makedepends=('git' 'make' 'cmake' 'help2man')
 provides=('sensei-raw-ctl')
-source=('git+https://git.janouch.name/p/sensei-raw-ctl.git#commit=2f70930')
+source=('git+https://git.janouch.name/p/sensei-raw-ctl.git#commit=be98666')
 md5sums=('SKIP')
-license=('Custom')
+license=('custom:0BSD')
 
 build() {
   cd "$srcdir/$pkgname"
-  rm .git* -rf
   cmake . -DCMAKE_INSTALL_PREFIX=$pkgdir/usr -DBUILD_GUI=NO
 }
 
 package() {
   cd "$srcdir/$pkgname"
   make install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
