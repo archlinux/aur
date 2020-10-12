@@ -1,0 +1,16 @@
+pkgbase = rffmpeg-git
+	pkgdesc = Remote SSH FFmpeg wrapper tool
+	pkgver = r49.a748067
+	pkgrel = 1
+	url = https://github.com/joshuaboniface/rffmpeg
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python
+	depends = python-yaml
+	provides = ffmpeg-wrapper
+	source = rffmpeg::git+https://github.com/joshuaboniface/rffmpeg
+	md5sums = SKIP
+
+pkgname = rffmpeg-git
+
