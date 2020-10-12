@@ -7,26 +7,25 @@
 # Contributor: xduugu
 
 pkgname=libmupdf-pymupdf
-pkgver=1.17.0
-pkgrel=3
+pkgver=1.18.0
+pkgrel=1
 pkgdesc='Library for Lightweight PDF and XPS viewer with patch to build PyMuPDF'
 arch=('x86_64')
 url='https://mupdf.com/'
 license=('AGPL3')
 makedepends=('desktop-file-utils' 'freetype2' 'freeglut' 'glu' 'harfbuzz'
-             'jbig2dec' 'libjpeg' 'mesa-libgl' 'openjpeg2' 'libxext')
+             'jbig2dec' 'libjpeg' 'mesa-libgl' 'openjpeg2' 'libxext'
+             'gumbo-parser')
 # we need static libs for zathura-pdf-mupdf
-provides=('libmupdf=1.17.0')
+provides=('libmupdf=1.18.0')
 conflicts=('libmupdf')
 options=('staticlibs')
 source=("https://mupdf.com/downloads/archive/mupdf-${pkgver/_/}-source.tar.xz"
-        '0001-Set-noexecstack-on-linker-generated-binary-data-files.patch'
         '0002-pymupdf.patch'
         'mupdf.desktop'
         'mupdf.xpm')
-sha256sums=('c935fb2593d9a28d9b56b59dad6e3b0716a6790f8a257a68fa7dcb4430bc6086'
-            '53e3ccc9dd613277a1cfb99dcf7e71216c8497a84f6a7663a2fbff9d58a10be5'
-            '10d6ee6ea3707b5821f84ba81f855b46b44492821d7158ae109db458563bbd8f'
+sha256sums=('592d4f6c0fba41bb954eb1a41616661b62b134d5b383e33bd45a081af5d4a59a'
+            '3222606223a0d982a453a86b00d1bfe614961009ecc91ded5d00386d14c64d69'
             'ccff66979249bd4ab4ba8918660f194eb90eb0ae231b16e36a6cecdcf471883f'
             'a435f44425f5432c074dee745d8fbaeb879038ec1f1ec64f037c74662f09aca8')
 
@@ -35,9 +34,6 @@ prepare() {
 
   # remove bundled packages, we want our system libraries
   rm -rf thirdparty/{freeglut,freetype,harfbuzz,jbig2dec,libjpeg,openjpeg,zlib}
-
-  # Set noexecstack on linker-generated binary data files.
-  patch -Np1 < ../0001-Set-noexecstack-on-linker-generated-binary-data-files.patch
 
   # Add patch to build PyMuPDF
   patch -Np1 < ../0002-pymupdf.patch
