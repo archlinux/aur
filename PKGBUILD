@@ -3,7 +3,7 @@
 # Contributor: wagnerflo <florian@wagner-flo.net>
 
 _cranname=tibble
-_cranver=3.0.3
+_cranver=3.0.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -11,11 +11,10 @@ pkgdesc="Simple Data Frames"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
-depends=('r>=3.1.0' r-cli 'r-crayon>=1.3.4' 'r-ellipsis>=0.2.0' 'r-fansi>=0.4.0' 'r-lifecycle>=0.2.0' r-magrittr 'r-pillar>=1.4.3' r-pkgconfig 'r-rlang>=0.4.3' 'r-vctrs>=0.2.4')
-makedepends=(gcc)
+depends=('r>=3.1.0' r-cli 'r-crayon>=1.3.4' 'r-ellipsis>=0.2.0' 'r-fansi>=0.4.0' 'r-lifecycle>=0.2.0' r-magrittr 'r-pillar>=1.4.3' r-pkgconfig 'r-rlang>=0.4.3' 'r-vctrs>=0.3.2')
 optdepends=(r-bench r-bit64 r-blob r-covr r-dplyr r-evaluate r-formattable r-hms r-htmltools r-import r-knitr r-lubridate r-mockr r-nycflights13 r-purrr r-rmarkdown r-testthat r-tidyr r-withr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('959ae4aedb2b301d4650ae7fa0697eb8')
+sha256sums=('22192ef829ce4dcdb7ef084b314635fe754f877c86f7507e985cdb7a04f53ea1')
 
 build() {
   cd "${srcdir}"
