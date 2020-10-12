@@ -11,14 +11,14 @@ _version_tag=19150
 
 pkgname="gnome-shell-extension-$_name"
 pkgver=$_version
-pkgrel=1
+pkgrel=2
 pkgdesc='Gnome shell extension for closing apps in overview with a middle click'
 arch=('any')
 url="$_gnome_site/extension/$_pk/$_name/"
 license=('GPL2')
 depends=("gnome-shell>=$_gnome_shell_version")
 source=("$pkgname.zip::$_gnome_site/download-extension/$_uuid.shell-extension.zip?version_tag=$_version_tag")
-sha256sums=('053feaf85e2b3880ba1765edbf988c8e93c503ee02ff0345ec820b1ed385954a')
+sha256sums=('a0f1877c1f14e69d42e3cb0e701c51b354736e9760462bc314de99acd8091f73')
 
 package() {
     local _destdir="$pkgdir/usr/share/gnome-shell/extensions/$_uuid"

@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-middleclickclose
 	pkgdesc = Gnome shell extension for closing apps in overview with a middle click
 	pkgver = 17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://extensions.gnome.org/extension/352/middleclickclose/
 	arch = any
 	license = GPL2
 	depends = gnome-shell>=3.38
 	source = gnome-shell-extension-middleclickclose.zip::https://extensions.gnome.org/download-extension/middleclickclose@paolo.tranquilli.gmail.com.shell-extension.zip?version_tag=19150
-	sha256sums = 053feaf85e2b3880ba1765edbf988c8e93c503ee02ff0345ec820b1ed385954a
+	sha256sums = a0f1877c1f14e69d42e3cb0e701c51b354736e9760462bc314de99acd8091f73
 
 pkgname = gnome-shell-extension-middleclickclose
 
