@@ -12,6 +12,7 @@ pkgdesc='Driver for Realtek RTL8188FU USB wireless adapter'
 arch=('any')
 url="https://github.com/corneal64/Realtek-USB-Wireless-Adapter-Drivers"
 license=('GPL3')
+conflicts=('8188fu-kelebek333-dkms-git')
 depends=('dkms')
 makedepends=('git')
 install="${_pkgname}-dkms.install"
