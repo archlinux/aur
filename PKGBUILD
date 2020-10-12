@@ -2,7 +2,7 @@
 
 pkgname=bit
 pkgver=0.5.8
-pkgrel=2
+pkgrel=3
 pkgdesc='A modern Git CLI'
 arch=('x86_64')
 url="https://github.com/chriswalz/bit"
@@ -12,6 +12,7 @@ depends=('glibc')
 conflicts=('bit-git')
 provides=('bit')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+install=bit.install
 sha1sums=('b3a64a80469df6af2dd08fe272bdb3a2b55dded2')
 
 prepare(){
@@ -28,9 +29,12 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   go build -o build -trimpath -buildmode=pie -ldflags "-extldflags \"${LDFLAGS}\" -s -w" -modcacherw
+  cd "bitcomplete"
+  go build -o bitcomplete -trimpath -buildmode=pie -ldflags "-extldflags \"${LDFLAGS}\" -s -w" -modcacherw
 }
 
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm755 bitcomplete/bitcomplete "$pkgdir"/usr/bin/bitcomplete
 }

@@ -1,8 +1,9 @@
 pkgbase = bit
 	pkgdesc = A modern Git CLI
 	pkgver = 0.5.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chriswalz/bit
+	install = bit.install
 	arch = x86_64
 	license = Apache
 	makedepends = go

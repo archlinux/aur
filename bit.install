@@ -1,0 +1,7 @@
+post_install() {
+  echo ">>> Do \"COMP_INSTALL=1 bitcomplete\" to install shell autocomplete "
+}
+
+post_upgrade() {
+  post_install
+}
