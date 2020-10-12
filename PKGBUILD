@@ -62,7 +62,7 @@ build() {
       -DNAS=OFF \
       -DALSA=ON \
       -DPULSEAUDIO_SHARED=OFF \
-      -DVIDEO_WAYLAND=OFF \
+      -DVIDEO_WAYLAND=ON \
       -DRPATH=OFF \
       -DCLOCK_GETTIME=ON \
       -DJACK_SHARED=OFF
