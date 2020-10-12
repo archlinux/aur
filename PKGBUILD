@@ -5,13 +5,17 @@ pkgver=r95.a8f109a
 pkgrel=1
 license=("MIT")
 pkgdesc="Wallpaper tool for Wayland compositors"
-makedepends=("meson" "git" "scdoc" "wayland-protocols")
+makedepends=(
+  'meson'
+  'git'
+  'scdoc'
+  'wayland-protocols'
+  'gdk-pixbuf2'
+)
 depends=(
     "wayland" "cairo"
 )
-optdepends=(
-    "gdk-pixbuf2: For background images other than PNG"
-)
+
 arch=("i686" "x86_64")
 url="https://swaywm.org"
 source=("${pkgname%-*}::git+https://github.com/swaywm/swaybg.git#branch=master")
