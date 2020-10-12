@@ -7,7 +7,6 @@ pkgbase = odio-edit
 	arch = x86_64
 	arch = pentium4
 	license = GPL3
-	makedepends = gcc
 	makedepends = gst-plugins-base-libs
 	makedepends = gtk3
 	makedepends = libodiosacd
