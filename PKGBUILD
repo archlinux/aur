@@ -3,13 +3,13 @@
 pkgname=bash-command-timer-git
 provides=(bash-command-timer)
 pkgver=r39.f1b5412
-pkgrel=2
+pkgrel=3
 pkgdesc="Pretty-print execution time for each bash command."
 arch=('any')
 url="https://github.com/jichu4n/bash-command-timer"
 license=('APACHE')
 #makedepends=('')
-depends=('bash-preexec-git')
+depends=('bash-preexec')
 
 source=("${pkgname}-${pkgver}::git+https://github.com/jichu4n/bash-command-timer.git#branch=master")
 install="${pkgname}.install"
