@@ -1,0 +1,14 @@
+pkgbase = katamari
+	pkgdesc = A projects page generator for GitHub users and organizations
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://dscvit.com
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	depends = hugo
+	source = https://codeload.github.com/GDGVIT/$pkgname/tar.gz/v$pkgver
+	sha256sums = b46fae19022176551643d431ba16d47745cc833b776e327028141bf8e0108c9f
+
+pkgname = katamari
+
