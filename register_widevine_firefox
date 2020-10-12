@@ -1,0 +1,37 @@
+#!/bin/bash
+
+if [[ ! -e "${HOME}/.mozilla/firefox" ]]
+then
+    echo "No firefox profiles found for user ${USER}"
+    exit
+fi
+
+cd ${HOME}/.mozilla/firefox/
+if [[ $(grep '\[Profile[^0]\]' profiles.ini) ]]
+    then PROFPATH=$(grep -E '^\[Profile|^Path|^Default' profiles.ini | grep '^Path' | cut -c6-)
+    else PROFPATH=$(grep 'Path=' profiles.ini | sed 's/^Path=//')
+fi
+PROFS=($PROFPATH)
+
+for prof in "${PROFS[@]}"
+do
+    WIDEVINE_PATH="${HOME}/.mozilla/firefox/${prof}/gmp-widevinecdm"
+    if [[ -e "${WIDEVINE_PATH}" ]]
+    then
+        if [[ -L "${WIDEVINE_PATH}" ]]
+        then
+           rm "${WIDEVINE_PATH}"
+        else
+           rm -r "${WIDEVINE_PATH}"
+        fi
+        ln -s /opt/WidevineCdm/firefox "${WIDEVINE_PATH}"
+        echo "Widevine already registered for profile ${prof}; re-registered"
+    else
+        if [[ -L "${WIDEVINE_PATH}" ]]
+        then
+           rm "${WIDEVINE_PATH}"
+        fi
+        ln -s /opt/WidevineCdm/firefox "${HOME}/.mozilla/firefox/${prof}/gmp-widevinecdm"
+        echo "Widevine registered for profile ${prof}"
+    fi
+done
