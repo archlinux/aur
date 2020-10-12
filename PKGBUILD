@@ -1,6 +1,6 @@
 # Maintainer: Kiriakos Krastillis <kappa@kindstudios.gr>
 pkgname=notify-broadcast-git
-pkgver=0.9.r5.a3055bd
+pkgver=0.9.r9.56449c9
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "0.9.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
