@@ -1,12 +1,12 @@
-# Maintainer: Přemysl Janouch <p.janouch@gmail.com>
+# Maintainer: Přemysl Eric Janouch <p@janouch@name>
 pkgname=pdf-simple-sign-git
 _pkgname=pdf-simple-sign
 pkgver=v1.1.1.r1.gd4ff9a6
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple PDF signer"
 url="https://git.janouch.name/p/pdf-simple-sign"
 arch=('i686' 'x86_64')
-license=('BSD')
+license=('custom:0BSD')
 options=(zipman)
 conflicts=('pdf-simple-sign')
 provides=('pdf-simple-sign')
@@ -34,4 +34,6 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-build"
   DESTDIR=$pkgdir ninja install 
+  install -Dm644 "$srcdir/$_pkgname/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
