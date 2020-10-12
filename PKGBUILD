@@ -1,15 +1,15 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 pkgname=virtualfish
-pkgver=2.3.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Fish shell tool for managing Python virtual environments"
 arch=("any")
 url=https://github.com/justinmayer/virtualfish
 license=("MIT")
-depends=("python" "python-pkgconfig" "python-psutil" "python-virtualenv")
+depends=("python-pkgconfig" "python-psutil" "python-virtualenv" "fish>=3.1")
 makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('6d06de09babbea541f694615f4f26eec00822e4b97650c4191639b6ef5210bb5')
+sha256sums=('922f4990980136db3b62791f4898add90eea03e3b8f8c8ca9d21327987033468')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
