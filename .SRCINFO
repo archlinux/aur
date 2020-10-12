@@ -1,0 +1,15 @@
+pkgbase = fractus-atlas-bin
+	pkgdesc = An image viewer which allows you to quickly move them in folders
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://github.com/Jimskapt/fractus-atlas-bin
+	arch = x86_64
+	license = custom
+	depends = webkit2gtk
+	provides = fractus-atlas
+	conflicts = fractus-atlas
+	source = fractus-atlas-bin-1.14.0::https://github.com/Jimskapt/fractus-atlas/releases/download/1.14.0/fractus-atlas-1.14.0-linux-x86_64
+	sha256sums = 2fe906737eea2f4fae8ff9cbf6df8661508e86da3fdc79874eee27b1650f3f2a
+
+pkgname = fractus-atlas-bin
+
