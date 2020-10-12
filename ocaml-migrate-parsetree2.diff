@@ -1,34 +1,34 @@
 diff --git a/ast/ast_helper_lite.ml b/ast/ast_helper_lite.ml
-index f774f76..a362c98 100644
+index 11c6bbf..5f012e9 100644
 --- a/ast/ast_helper_lite.ml
 +++ b/ast/ast_helper_lite.ml
 @@ -20,7 +20,7 @@ open Ocaml_common
  module Location = Location
  module Longident = Longident
-
--open Migrate_parsetree.Ast_410
-+open Migrate_parsetree2.Ast_410
-
+ 
+-open Migrate_parsetree.Ast_411
++open Migrate_parsetree2.Ast_411
+ 
  [@@@warning "-9"]
  open Asttypes
 diff --git a/ast/ast_helper_lite.mli b/ast/ast_helper_lite.mli
-index 55ad921..216c1a4 100644
+index 99bdeef..d2678f5 100644
 --- a/ast/ast_helper_lite.mli
 +++ b/ast/ast_helper_lite.mli
 @@ -16,7 +16,7 @@
  (** Copy of Ast_helper from OCaml 4.10 with docstring related stuff removed *)
-
+ 
  open Ocaml_common
--open Migrate_parsetree.Ast_410
-+open Migrate_parsetree2.Ast_410
-
+-open Migrate_parsetree.Ast_411
++open Migrate_parsetree2.Ast_411
+ 
  open Asttypes
  open Parsetree
 diff --git a/ast/dune b/ast/dune
-index 08158a0..cc0f05c 100644
+index eefc483..4faecd5 100644
 --- a/ast/dune
 +++ b/ast/dune
-@@ -5,7 +5,7 @@
+@@ -9,7 +9,7 @@
    ocaml-compiler-libs.shadow
    ocaml-compiler-libs.common
    compiler-libs.common
@@ -36,13 +36,13 @@ index 08158a0..cc0f05c 100644
 +  ocaml-migrate-parsetree2
    stdlib-shims)
   (flags (:standard -open Ocaml_shadow -safe-string) -w -9-27-32)
-  (preprocess (action (run %{exe:pp/pp.exe} %{ocaml_version} %{input-file})))
+  (preprocess
 diff --git a/ast/versions.ml b/ast/versions.ml
 index dbad548..2d08a0e 100644
 --- a/ast/versions.ml
 +++ b/ast/versions.ml
 @@ -399,8 +399,8 @@ end
-
+ 
  (*$ foreach_version (fun n version ->
      printf "module OCaml_%d = struct\n" n;
 -    printf "  module Ast = Migrate_parsetree.Ast_%d\n" n;
@@ -145,7 +145,7 @@ index dbad548..2d08a0e 100644
    let string_version = "4.11"
  end
 @@ -482,27 +482,27 @@ let ocaml_411 : OCaml_411.types ocaml_version = (module OCaml_411)
-
+ 
  (*$foreach_version_pair (fun a b ->
      printf "include Register_migration(OCaml_%d)(OCaml_%d)\n" a b;
 -    printf "    (Migrate_parsetree.Migrate_%d_%d)(Migrate_parsetree.Migrate_%d_%d)\n" a b b a
@@ -180,7 +180,7 @@ index dbad548..2d08a0e 100644
 -    (Migrate_parsetree.Migrate_410_411)(Migrate_parsetree.Migrate_411_410)
 +    (Migrate_parsetree2.Migrate_410_411)(Migrate_parsetree2.Migrate_411_410)
  (*$*)
-
+ 
  module OCaml_current = OCaml_OCAML_VERSION
 diff --git a/ast/versions.mli b/ast/versions.mli
 index f36bef5..bc4fee8 100644
@@ -188,7 +188,7 @@ index f36bef5..bc4fee8 100644
 +++ b/ast/versions.mli
 @@ -112,19 +112,19 @@ end
  (** {1 Concrete frontend instances} *)
-
+ 
  (*$foreach_version (fun n _ ->
 -    printf "module OCaml_%d : OCaml_version with module Ast = Migrate_parsetree.Ast_%d\n"
 +    printf "module OCaml_%d : OCaml_version with module Ast = Migrate_parsetree2.Ast_%d\n"
@@ -215,5 +215,5 @@ index f36bef5..bc4fee8 100644
 +module OCaml_410 : OCaml_version with module Ast = Migrate_parsetree2.Ast_410
 +module OCaml_411 : OCaml_version with module Ast = Migrate_parsetree2.Ast_411
  (*$*)
-
+ 
  (* An alias to the current compiler version *)
