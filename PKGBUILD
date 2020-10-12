@@ -1,15 +1,15 @@
-# Maintainer: linuxer <https://linuxer.gr> 
+# Maintainer: linuxer <linuxer@arixlinux.org> 
 # https://gitlab.com/linuxer.gr
 # Contributor: Kostas Gewrgiou <gewrgiou@imbc.gr>
 # Contributor: Vasilis Vasaitis <vvas@hal.csd.auth.gr>
 # Contributor: Ivan Pascal <pascal@info.tsu.ru>
 pkgname=greeklayoutwithdotonnumpad
-pkgver=1.2
+pkgver=1.3
 pkgrel=0
 pkgdesc="Greek layout with dot on numpad instead of comma for ARCH Linux"
 pkgdir="src/"
 instdir="/usr/share/X11/xkb/symbols/"
-url="https://gitlab.com/psposito/greek-layout-dot-instead-of-comma-on-keypad/"
+url="https://gitlab.com/linuxergr/greek-layout-dot-instead-of-comma-on-keypad/"
 license=('GPL3')
 replaces=('greeklayoutwithdotonnumpad')
 arch=('any')
