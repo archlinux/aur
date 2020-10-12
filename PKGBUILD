@@ -1,6 +1,6 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=sensei-raw-ctl
-pkgver=r47.gbe98666
+pkgver=r47.be98666
 pkgrel=1
 pkgdesc="SteelSeries Sensei Raw configuration tool"
 arch=('i686' 'x86_64')
