@@ -1,6 +1,6 @@
 # Maintainer: Henri Derycke <nheir.kim@gmail.com>
 pkgname=bluez-alsa-git
-pkgver=3.0.0.r2.g560caf5
+pkgver=3.0.0.r6.g93853e5
 pkgrel=1
 pkgdesc="Bluetooth Audio ALSA Backend"
 arch=('x86_64' 'armv7h' 'aarch64' 'armv6h')
@@ -8,13 +8,14 @@ url="https://github.com/Arkq/bluez-alsa"
 license=('MIT')
 depends=(
 	'alsa-lib' 'bluez' 'dbus' 'glib2' 'sbc'
+	'bluez-libs'         # bluealsa-play
 	'libfdk-aac'         # --enable-aac
 #	'lame'               # --enable-mp3lame
 #	'mpg123'             # --enable-mpg123
 #	'readline'           # --enable-rfcomm
 #	'libbsd' 'ncurses'   # --enable-hcitop
 )
-makedepends=('git' 'pandoc')
+makedepends=('git' 'python-docutils')
 source=("$pkgname::git+https://github.com/Arkq/bluez-alsa.git"
 	"https://github.com/Arkq/bluez-alsa/wiki/files/Systemd-integration/bluealsa.service"
 	bluealsa.conf)
