@@ -1,13 +1,13 @@
-# Maintainer: Vincent Grande <shoober420@gmail.com>
-# Maintainer: Aaron Plattner <aplattner@nvidia.com>
-# Maintainer: Miguel A. Vico <mvicomoya@nvidia.com>
+# Maintainer:  Vincent Grande <shoober420@gmail.com>
+# Contributor: Aaron Plattner <aplattner@nvidia.com>
+# Contributor: Miguel A. Vico <mvicomoya@nvidia.com>
 # Contributor: Eric Toombs
 # Contributor: Joel Teichroeb <joel@teichroeb.net>
 # Contributor: Sébastien Luttringer
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=weston-eglstream-git
-pkgver=8.0.0
+pkgver=9.0.0
 pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor with EGLStream support'
 arch=('x86_64')
@@ -60,7 +60,7 @@ build() {
     arch-meson "build" "weston"
         -Dbackend-drm-screencast-vaapi=false \
         -Dscreenshare=false -Dbackend-rdp=false -Dshell-ivi=false \
-        -Dsimple-dmabuf-drm= -Dremoting=false -Db_lto=false
+        -Dsimple-dmabuf-drm= -Dremoting=false
     ninja -C "build"
 }
 
