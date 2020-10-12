@@ -1,5 +1,4 @@
-# Maintainer: Frank Siegert <frank.siegert@googlemail.com>
-# Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
+# Maintainer: bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=openboard-develop
 pkgver=1.6.0
 _a=3
