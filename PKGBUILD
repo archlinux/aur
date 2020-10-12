@@ -11,7 +11,7 @@ provides=("$__pkgname")
 conflicts=("$__pkgname")
 source=("$pkgname::git+https://${__gitroot}")
 depends=('deadbeef' 'gtk3' 'libdbusmenu-glib')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 md5sums=('SKIP')
 
 build() {
