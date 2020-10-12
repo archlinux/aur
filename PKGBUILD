@@ -19,10 +19,9 @@ optdepends=('freerdp: support rdp backend'
 	    'libx11: support Xwayland'
 	    'libxcb: support Xwayland')	 
 makedepends=('meson' 'wayland-protocols' 'ninja')
-provides=('weston')
-conflicts=('weston')
-source=(#"https://wayland.freedesktop.org/releases/weston-$pkgver.tar.xz"{,.sig}
-	"git://anongit.freedesktop.org/wayland/weston"
+provides=('weston' 'weston-eglstream')
+conflicts=('weston' 'weston-eglstream')
+source=("git+https://github.com/wayland-project/weston"
         '0001-gl-renderer-Add-EGLDevice-enumeration-support.patch'
         '0002-gl-renderer-Add-support-for-EGLDevice-composited-fra.patch'
         '0003-gl-renderer-Add-EGL-client-support-for-EGLStream-fra.patch'
