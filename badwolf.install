@@ -4,6 +4,6 @@ post_install() {
 }
 
 post_upgrade() {
-  echo "-- Badwolf 1.0.2 changelog: Support for relative paths as command line arguments. Downloads tab no longer resizes the main window. Manpage's syntax doesn't break GNU groff anymore. When a new tab is opened by the user, switch to it."
+  echo "-- Badwolf 1.0.3 changelog: Added Turkish translation. Fixed a segfault found on some platforms when both removing a tab and destroying its child. Fixed a WebKitNetworkProcess leak. Changed Makefile and badwolf.c."
   /bin/true
 }
