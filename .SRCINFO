@@ -1,6 +1,6 @@
 pkgbase = ajour
 	pkgdesc = World of Warcraft addon manager written in Rust
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://www.getajour.com
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = ajour
 	depends = openssl
 	provides = ajour
 	conflicts = ajour
-	source = https://github.com/casperstorm/ajour/archive/0.4.0.tar.gz
+	source = https://github.com/casperstorm/ajour/archive/0.4.1.tar.gz
 	source = ajour.desktop
-	sha256sums = 2aa61b41992f9167bcb9fe23a94e0db84987ce8049ea2bee84fc84066f5c4edd
+	sha256sums = db53c7c4d4748ab96cc2d9a3e24ecb32cea6beeb3e6484dcdedc9c92cee4f0ba
 	sha256sums = d356c0f7ab3087a087e2ff261bf6348e62e87190805fa166fcbe9e3f8b64fb0d
 
 pkgname = ajour
