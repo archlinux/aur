@@ -1,14 +1,16 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=wp2latex-hg
-pkgver=r407.b8c3a686d9da
-pkgrel=2
+pkgver=r408.4a5949f1a5dc
+pkgrel=1
 pkgdesc="Converts WordPerfect document formats to LaTeX"
 url="http://www.penguin.cz/~fojtik/${pkgname%-hg}/${pkgname%-hg}.htm"
 arch=('i686' 'x86_64')
 license=('GPL')
 source=("hg+http://hg.code.sf.net/p/wp2latex/wp2latex")
-sha256sums=('SKIP')
+md5sums=('SKIP')
+conflicts=("${pkgname%-hg}")
+provides=("${pkgname%-hg}")
 depends=('libjpeg' 'gcc-libs' 'libpng')
 makedepends=('mercurial')
 options=('!strip')
