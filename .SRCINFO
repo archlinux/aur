@@ -1,15 +1,15 @@
 pkgbase = vercel
 	pkgdesc = The command line interface for Vercel
-	pkgver = 20.1.0
+	pkgver = 20.1.2
 	pkgrel = 1
 	url = https://github.com/zeit/now
 	arch = any
 	license = MIT
 	makedepends = jq
 	depends = npm
-	noextract = vercel-20.1.0.tgz
-	source = http://registry.npmjs.org/vercel/-/vercel-20.1.0.tgz
-	sha256sums = e9362a23692b28bea6b88fa3b2a37bf92037f4a52c13c2c671bc3fd2204f84ee
+	noextract = vercel-20.1.2.tgz
+	source = http://registry.npmjs.org/vercel/-/vercel-20.1.2.tgz
+	sha256sums = 734949792b4c018f75d23f0436a0275cafba3cb639f03656832f2ac2ee549083
 
 pkgname = vercel
 
