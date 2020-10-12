@@ -3,7 +3,6 @@ pkgbase = openboard-develop-git
 	pkgver = 1.6.0
 	pkgrel = 4
 	url = http://openboard.ch/index.en.html
-	install = openboard.install
 	arch = x86_64
 	arch = i686
 	license = GPL3
