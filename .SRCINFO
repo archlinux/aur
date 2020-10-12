@@ -1,7 +1,7 @@
-pkgbase = tilda-git
-	pkgdesc = A Gtk based drop down terminal for Linux and Unix.
-	pkgver = 1.5.0.r0.gbdf581e
-	pkgrel = 2
+pkgbase = tilda-wayland-git
+	pkgdesc = A Gtk based drop down terminal for Linux and Unix. With Wayland support.
+	pkgver = 1.5.2.r0.g0d7a986
+	pkgrel = 1
 	url = https://github.com/lanoxx/tilda
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,11 @@ pkgbase = tilda-git
 	provides = tilda
 	conflicts = tilda
 	source = git+https://github.com/lanoxx/tilda.git
-	sha1sums = SKIP
+	source = https://github.com/lanoxx/tilda/commit/b16c4fc5855899ce9eabc64673dc96afbdebeead.patch
+	source = https://github.com/lanoxx/tilda/commit/89187b6d2f5042428c5cefb21e447254088dfe58.patch
+	sha512sums = SKIP
+	sha512sums = 52e959f2e063da4bef288e86e26fb9d623e9c6cc5180eb6e23ccadd79f3ffb361431ff09c513b100b9b3800228e6b35efb16f7697dab66b056bd811ec2fafab0
+	sha512sums = f92e2ac69d15fca463b5bbc725a641fab45574ef8032e465e30a44ab3ff130444c588793461f30db0fd1d0a2d37bc94b2538e45e0816160825983c5c327f2b2a
 
-pkgname = tilda-git
+pkgname = tilda-wayland-git
 
