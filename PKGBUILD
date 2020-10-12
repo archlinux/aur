@@ -8,8 +8,8 @@ pkgdesc='A program to create and modify starters/launchers (technically: .deskto
 arch=('any')
 license=('GPL3')
 url="http://www.florian-diesch.de/software/arronax/"
-depends=('gtk3' 'python-gobject' 'python-setuptools' 'python-xdg')
-#makedepends=('python-distutils-extra')
+depends=('libwnck3' 'python-gobject' 'python-xdg')
+makedepends=('python-setuptools')
 optdepends=('python-nautilus: Arronax as Nautilus extension'
             'python-caja: Arronax as Caja extension'
             'nemo-python: Arronax as Nemo extension')
