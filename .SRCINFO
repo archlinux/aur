@@ -13,7 +13,7 @@ pkgbase = bibata-cursor-theme
 	source = bibata-cursor-theme-1.0.1.tar.gz::https://github.com/ful1e5/Bibata_Cursor/archive/v1.0.1.tar.gz
 	source = bibata-cursor-theme-bitmaps-1.0.1.zip::https://github.com/ful1e5/Bibata_Cursor/releases/download/v1.0.1/bitmaps.zip
 	sha256sums = 4764ffffbee14570bd2bb866f2e74e3957429343f99571219e0a120b89a5e81b
-	sha256sums = 2756d308ef385746d65b206fea880a8cfcd94b512b711d4b1dc8ed0dc6f7d108
+	sha256sums = 8fd29627af316225437625271d608937f1015f8b169a200ec87118e69ff75c00
 
 pkgname = bibata-cursor-theme
 

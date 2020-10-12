@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-bitmaps-$pkgver.zip::$url/releases/download/v$pkgver/bitmaps.zip")
 noextract=("$pkgname-bitmaps-$pkgver.zip")
 sha256sums=('4764ffffbee14570bd2bb866f2e74e3957429343f99571219e0a120b89a5e81b'
-            '2756d308ef385746d65b206fea880a8cfcd94b512b711d4b1dc8ed0dc6f7d108')
+            '8fd29627af316225437625271d608937f1015f8b169a200ec87118e69ff75c00')
 
 prepare() {
   cd Bibata_Cursor-$pkgver
