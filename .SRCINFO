@@ -1,7 +1,7 @@
 pkgbase = boop-gtk
 	pkgdesc = Port of @IvanMathy's Boop to GTK, a scriptable scratchpad for developers.
-	pkgver = v1.3.0
-	pkgrel = 2
+	pkgver = v1.4.0
+	pkgrel = 1
 	url = https://github.com/mrbenshef/Boop-GTK
 	arch = any
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: Quinn Casey <quinn@quinncasey.com>
 pkgname=boop-gtk
-pkgver=v1.3.0
-pkgrel=2
+pkgver=v1.4.0
+pkgrel=1
 pkgdesc="Port of @IvanMathy's Boop to GTK, a scriptable scratchpad for developers."
 arch=('any')
 pkgdir=Boop-GTK
