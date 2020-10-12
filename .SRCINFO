@@ -16,7 +16,7 @@ pkgbase = chromium-beta-ozone
 	makedepends = libpipewire02
 	makedepends = clang
 	makedepends = lld
-	makedepends = gn
+	makedepends = gn<=1819
 	makedepends = java-runtime-headless
 	makedepends = python2-setuptools
 	makedepends = python2-xcb-proto
