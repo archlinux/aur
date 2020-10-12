@@ -1,6 +1,6 @@
 pkgbase = alsi
 	pkgdesc = ALSI: a configurable system information tool for Arch Linux.
-	pkgver = 0.4.8
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://github.com/trizen/alsi
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = alsi
 	depends = perl>=5.14.2
 	depends = perl-data-dump
 	optdepends = scrot: for taking screenshots.
-	source = alsi-0.4.8.tar.gz::https://github.com/trizen/alsi/archive/0.4.8.tar.gz
-	sha256sums = 0eae83cf3ca849a1d309cc1933e8329f24fb31c174587c4306ec665a7654dd8c
+	source = alsi-0.4.9.tar.gz::https://github.com/trizen/alsi/archive/0.4.9.tar.gz
+	sha256sums = a49d25116af03b94823b78fac9c1c5a7254c7928f7e6adae08403f4739aebeef
 
 pkgname = alsi
 
