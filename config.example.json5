@@ -5,9 +5,9 @@
     "simple_dc": {
         "user_mapping": {
             "/myfiles": {
-                "myuser": { "password": "mypassword", "description": "", "roles": [] }
-            }
-        }
+                "myuser": { "password": "mypassword", "description": "", "roles": [] },
+            },
+        },
     },
-    "verbose": 1
+    "verbose": 1,
 }
