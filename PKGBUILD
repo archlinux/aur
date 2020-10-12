@@ -45,7 +45,7 @@ prepare() {
 package() {
   cd "$srcdir"
 
-  local install_dir="$pkgdir/usr/src/$_pkgname-pkgver"
+  local install_dir="$pkgdir/usr/src/$_pkgname-$pkgver"
 
   # Copy dkms.conf
   install -Dm644 dkms.conf "$install_dir/dkms.conf"
