@@ -1,0 +1,27 @@
+preexec_path=/usr/share/bash-preexec/bash-preexec.sh
+
+post_install() {
+    printf "\
+>    
+>
+>   To use bash-preexec, import it in your .bashrc: 
+>
+>   [[ -f $preexec_path ]] && source $preexec_path
+>
+>
+"
+# echo \"[[ -f $bash_timer_path ]] && source $bash_timer_path\" >> /etc/bash.bashrc
+# echo \"[[ -f $preexec_path ]] && source $preexec_path\" >> /etc/bash.bashrc
+}
+
+post_remove() {
+    printf "\
+>
+>    
+>   To complete removal, remove the 'source' directives from your bashrc.
+>
+>   [[ -f $preexec_path ]] && source $preexec_path
+>
+>
+"
+}

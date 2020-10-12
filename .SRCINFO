@@ -1,0 +1,16 @@
+pkgbase = bash-preexec
+	pkgdesc = ⚡ preexec and precmd functions for Bash just like Zsh.
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/rcaloras/bash-preexec
+	install = bash-preexec.install
+	arch = any
+	license = MIT
+	makedepends = bash-bats
+	provides = bash-preexec
+	conflicts = bash-preexec-git
+	source = bash-preexec-0.4.1::https://github.com/rcaloras/bash-preexec/archive/0.4.1.tar.gz
+	sha256sums = 5e6515d247e6156c99a31de6db58e9cbef53071806292a1ca10b7af74633a8c9
+
+pkgname = bash-preexec
+
