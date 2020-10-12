@@ -1,7 +1,7 @@
 # Maintainer: Alejandro Valdes <alejandrovaldes at live dot com>
 
 pkgname=kwin-effects-yet-another-magic-lamp
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="Just Yet Another Magic Lamp effect"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('kwin>=5.18.0')
 makedepends=(extra-cmake-modules)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/zzag/${pkgname}/archive/${pkgver}.tar.gz
 )
-sha256sums=('d2425034e299237a94536377a8648817280f9c293add184b295eb169c97e8faa')
+sha256sums=('98aa6e690156819de98556fd2aaaf2156ab3287bb51a450ea8bed88d9ad7596d')
 
 prepare() {
     mkdir -p build
