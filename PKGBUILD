@@ -1,7 +1,7 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=or-tools
-pkgver=7.7
+pkgver=8.0
 pkgrel=1
 pkgdesc="Google's Operations Research tools."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'protobuf' 'gflags' 'google-glog' 'coin-or-cbc' 'protobuf')
 makedepends=('cmake' 'pkgconf' 'git')
 source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz"
         "pkg-conf.patch")
-sha256sums=('d20eb031ea3f1b75e55e44ae6acdb674ee6fb31e7a56498be32dc83ba9bc13bd'
+sha256sums=('ac01d7ebde157daaeb0e21ce54923a48e4f1d21faebd0b08a54979f150f909ee'
             '2fc50395b8d835543df1172f3b1cddeac2d50b1d8fb7916d4268d6b3b21230a3')
 
 conflicts=('python-or-tools') # because it copies libortools.so to usr/lib
@@ -27,6 +27,9 @@ prepare() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DBUILD_DEPS=OFF \
+        -DUSE_SCIP=OFF \
+        -DBUILD_SAMPLES=OFF \
+        -DBUILD_EXAMPLES=OFF \
         -DBUILD_absl=ON
 }
 
