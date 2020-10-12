@@ -1,6 +1,6 @@
 pkgbase = r-maptools
 	pkgdesc = Tools for Reading and Handling Spatial Objects
-	pkgver = 0.9_9
+	pkgver = 1.0_2
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/maptools/index.html
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = r-maptools
 	depends = r
 	depends = r-sp
 	options = !emptydirs
-	source = http://cran.r-project.org/src/contrib/maptools_0.9-9.tar.gz
-	sha256sums = 69ba3b2cd50260f78fb6c25cf0557b4a0d31498d6a4f4ff00e466334fba4946c
+	source = http://cran.r-project.org/src/contrib/maptools_1.0-2.tar.gz
+	sha256sums = daac6da5817cf0cff17b9e7d4a7cdc7c329574249bd9b1bafdb6c9431e1fee49
 
 pkgname = r-maptools
 
