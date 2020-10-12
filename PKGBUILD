@@ -1,18 +1,19 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5vpn
-pkgver=7183.2020.0108.1
-pkgrel=3
-pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM 13.0'
+pkgver=7210.2020.0826.1
+pkgrel=1
+pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM 16.0'
 arch=('x86_64')
 source=('LICENSE'
         'no-desktop-file-dbus.patch')
-source_x86_64=("linux_${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm::https://new.vpn.msu.edu/public/download/linux_${pkgname}.x86_64.rpm")
+# Hashes match linux_f5vpn.x86_64.rpm from APM Clients version 7.2.1 (apmclients-7210.2020.827.422-5307.0.iso) from downloads.f5.com
+source_x86_64=("linux_${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm::https://vpn.univie.ac.at/public/download/linux_${pkgname}.x86_64.rpm")
 sha256sums=('a8f4b5d965dc0279dd5173109892251ce5d107d9912836e6d83a9b6896eb19a1'
             '3ecd8a10941a7d81b9d16aecdf6ac9caa1f957e32a2d2c65bde5181abd1fcb73')
-sha256sums_x86_64=('5ce1e05a353e5a95c2fa5f7a4411c62c58a54dbd867630c5164aa46c5525e2a6')
+sha256sums_x86_64=('73df13f9c3c89094a9302095dfb06aef00fccc277d2ce8c4d75a2ebc57a573e1')
 md5sums=('2508fc5e24d46163844dba9534fe7924'
          '130ef2376ad4581cc91a11814c00d948')
-md5sums_x86_64=('475813581c09861c69e5e7376909e3bb')
+md5sums_x86_64=('5af405dab017b026034d8d05fcd435e8')
 depends=(icu openssl qt5-base qt5-webkit)
 url='https://support.f5.com/csp/article/K32311645#link_04_05'
 license=('commercial')
