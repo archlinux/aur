@@ -1,6 +1,6 @@
 pkgbase = picat
 	pkgdesc = A simple, and yet powerful, logic-based multi-paradigm programming language aimed for general-purpose applications.
-	pkgver = 2.8#5
+	pkgver = 3.0#2
 	pkgrel = 1
 	url = http://picat-lang.org/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = picat
 	optdepends = glpk: GLPK MIP support
 	optdepends = gurobi: Gurobi MIP support
 	optdepends = z3: SMT support
-	source = http://picat-lang.org/download/picat28_5_linux64.tar.gz
-	sha256sums = 9c0587d6230361e5bfe13e31b48c0aaddb46e5d031d33b2b4c4139448d3d1cb1
+	source = http://picat-lang.org/download/picat30_2_linux64.tar.gz
+	sha256sums = 3c20f765c5fb237a52dfc79112eee988e16dd9fdd4d0d5a91c897eaa751f3386
 
 pkgname = picat
 

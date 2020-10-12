@@ -1,7 +1,7 @@
 # Maintainer: Alfredo Beaumont <alfredo.beaumont@gmail.com>
 
 pkgname='picat'
-pkgver='2.8#5'
+pkgver='3.0#2'
 pkgrel=1
 pkgdesc='A simple, and yet powerful, logic-based multi-paradigm programming language aimed for general-purpose applications.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ license=('MPL')
 
 _pkgver=$(echo ${pkgver} | sed 's/\.//;s/#/_/')
 source=("http://picat-lang.org/download/${pkgname}${_pkgver}_linux64.tar.gz")
-sha256sums=('9c0587d6230361e5bfe13e31b48c0aaddb46e5d031d33b2b4c4139448d3d1cb1')
+sha256sums=('3c20f765c5fb237a52dfc79112eee988e16dd9fdd4d0d5a91c897eaa751f3386')
 
 package() {
     mkdir "$pkgdir/opt"
