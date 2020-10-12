@@ -1,5 +1,5 @@
 src
 pkg
 *.pkg.tar*
-*.tar.gz
+*.tar.bz2
 *.exe

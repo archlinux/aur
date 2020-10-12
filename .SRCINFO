@@ -10,10 +10,10 @@ pkgbase = gog-unreal-tournament-goty
 	depends = lib32-libgl
 	noextract = ut99v451-linux.tar.gz
 	source = setup_ut_goty_2.0.0.5.exe::gogdownloader://unreal_tournament_goty/en1installer0
-	source = https://www.dotslashplay.it/ressources/unreal-tournament/ut99v451-linux.tar.gz
+	source = https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469a/OldUnreal-UTPatch469a-Linux.tar.bz2
 	source = gog-unreal-tournament-goty
 	sha256sums = 4cc257d54d97659c5062f2bf186d0a8c6959561d11e42d8fcf2eac07f1926803
-	sha256sums = bb32a2414f5484aa3672673819add54ceac30ff5bcb387e6c6dc617ccc95ac29
+	sha256sums = d521a8339b80a4c86019c3648fb55cfc29edffeec73047ceb72784b159cc84f1
 	sha256sums = 2b70aa7a20d5b1fbfaf9561bd3cfc8c1d0f0dee2212b3914aed30a7c75e40566
 
 pkgname = gog-unreal-tournament-goty
