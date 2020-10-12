@@ -1,0 +1,248 @@
+From 29968d5c0d2e93e3f5b8d36d6aabec7a7f960220 Mon Sep 17 00:00:00 2001
+From: Juan Roberto <juanro.garcia@educarex.es>
+Date: Sat, 12 Sep 2020 21:48:09 +0200
+Subject: [PATCH] Add Fix for Kernel 5.8 from
+ https://github.com/aircrack-ng/rtl8188eus/pull/77
+
+---
+ core/rtw_security.c           | 17 ++++++++++++++++-
+ include/rtw_security.h        |  2 ++
+ os_dep/linux/ioctl_cfg80211.c | 31 +++++++++++++++++++++++++++++--
+ os_dep/linux/ioctl_cfg80211.h |  4 ++++
+ rtw88_blacklist.conf          |  3 +++
+ 5 files changed, 54 insertions(+), 3 deletions(-)
+
+diff --git a/core/rtw_security.c b/core/rtw_security.c
+index 5807521..9e95ff6 100755
+--- a/core/rtw_security.c
++++ b/core/rtw_security.c
+@@ -2133,6 +2133,7 @@ u32	rtw_BIP_verify(_adapter *padapter, u8 *whdr_pos, sint flen
+ #ifndef PLATFORM_FREEBSD
+ #if defined(CONFIG_TDLS)
+ /* compress 512-bits */
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
+ static int sha256_compress(struct sha256_state *md, unsigned char *buf)
+ {
+ 	u32 S[8], W[64], t0, t1;
+@@ -2179,8 +2180,10 @@ static int sha256_compress(struct sha256_state *md, unsigned char *buf)
+ 		md->state[i] = md->state[i] + S[i];
+ 	return 0;
+ }
++#endif
+ 
+ /* Initialize the hash state */
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
+ static void sha256_init(struct sha256_state *md)
+ {
+ 	md->curlen = 0;
+@@ -2194,6 +2197,7 @@ static void sha256_init(struct sha256_state *md)
+ 	md->state[6] = 0x1F83D9ABUL;
+ 	md->state[7] = 0x5BE0CD19UL;
+ }
++#endif
+ 
+ /**
+    Process a block of memory though the hash
+@@ -2202,6 +2206,8 @@ static void sha256_init(struct sha256_state *md)
+    @param inlen  The length of the data (octets)
+    @return CRYPT_OK if successful
+ */
++
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
+ static int sha256_process(struct sha256_state *md, unsigned char *in,
+ 			  unsigned long inlen)
+ {
+@@ -2235,7 +2241,7 @@ static int sha256_process(struct sha256_state *md, unsigned char *in,
+ 
+ 	return 0;
+ }
+-
++#endif
+ 
+ /**
+    Terminate the hash to get the digest
+@@ -2243,6 +2249,7 @@ static int sha256_process(struct sha256_state *md, unsigned char *in,
+    @param out [out] The destination of the hash (32 bytes)
+    @return CRYPT_OK if successful
+ */
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
+ static int sha256_done(struct sha256_state *md, unsigned char *out)
+ {
+ 	int i;
+@@ -2281,6 +2288,7 @@ static int sha256_done(struct sha256_state *md, unsigned char *out)
+ 
+ 	return 0;
+ }
++#endif
+ 
+ /**
+  * sha256_vector - SHA256 hash for data vector
+@@ -2290,6 +2298,8 @@ static int sha256_done(struct sha256_state *md, unsigned char *out)
+  * @mac: Buffer for the hash
+  * Returns: 0 on success, -1 of failure
+  */
++
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
+ static int sha256_vector(size_t num_elem, u8 *addr[], size_t *len,
+ 			 u8 *mac)
+ {
+@@ -2304,6 +2314,7 @@ static int sha256_vector(size_t num_elem, u8 *addr[], size_t *len,
+ 		return -1;
+ 	return 0;
+ }
++#endif
+ 
+ static u8 os_strlen(const char *s)
+ {
+@@ -2344,6 +2355,7 @@ static int os_memcmp(const void *s1, const void *s2, u8 n)
+  * @mac: Buffer for the hash (32 bytes)
+  */
+ #if defined(CONFIG_TDLS)
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
+ static void hmac_sha256_vector(u8 *key, size_t key_len, size_t num_elem,
+ 			       u8 *addr[], size_t *len, u8 *mac)
+ {
+@@ -2405,6 +2417,7 @@ static void hmac_sha256_vector(u8 *key, size_t key_len, size_t num_elem,
+ 	_len[1] = 32;
+ 	sha256_vector(2, _addr, _len, mac);
+ }
++#endif
+ #endif /* CONFIG_TDLS */
+ #endif /* PLATFORM_FREEBSD */
+ /**
+@@ -2422,6 +2435,7 @@ static void hmac_sha256_vector(u8 *key, size_t key_len, size_t num_elem,
+  */
+ #ifndef PLATFORM_FREEBSD /* Baron */
+ #if defined(CONFIG_TDLS)
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
+ static void sha256_prf(u8 *key, size_t key_len, char *label,
+ 		       u8 *data, size_t data_len, u8 *buf, size_t buf_len)
+ {
+@@ -2459,6 +2473,7 @@ static void sha256_prf(u8 *key, size_t key_len, char *label,
+ 	}
+ }
+ #endif
++#endif
+ #endif /* PLATFORM_FREEBSD Baron */
+ 
+ /* AES tables*/
+diff --git a/include/rtw_security.h b/include/rtw_security.h
+index 0adc700..481064c 100755
+--- a/include/rtw_security.h
++++ b/include/rtw_security.h
+@@ -249,11 +249,13 @@ struct security_priv {
+ #define SEC_IS_BIP_KEY_INSTALLED(sec) _FALSE
+ #endif
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
+ struct sha256_state {
+ 	u64 length;
+ 	u32 state[8], curlen;
+ 	u8 buf[64];
+ };
++#endif
+ 
+ #define GET_ENCRY_ALGO(psecuritypriv, psta, encry_algo, bmcst)\
+ 	do {\
+diff --git a/os_dep/linux/ioctl_cfg80211.c b/os_dep/linux/ioctl_cfg80211.c
+index 128a18a..c7a91f2 100755
+--- a/os_dep/linux/ioctl_cfg80211.c
++++ b/os_dep/linux/ioctl_cfg80211.c
+@@ -7482,6 +7482,7 @@ static int cfg80211_rtw_mgmt_tx(struct wiphy *wiphy,
+ 	return ret;
+ }
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
+ static void cfg80211_rtw_mgmt_frame_register(struct wiphy *wiphy,
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0))
+ 	struct wireless_dev *wdev,
+@@ -7489,7 +7490,17 @@ static void cfg80211_rtw_mgmt_frame_register(struct wiphy *wiphy,
+ 	struct net_device *ndev,
+ #endif
+ 	u16 frame_type, bool reg)
++#else
++static void cfg80211_rtw_update_mgmt_frame_register(struct wiphy *wiphy,
++						    struct wireless_dev *wdev,
++						    struct mgmt_frame_regs *upd)
++#endif
++
+ {
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 8, 0))
++	u32 rtw_mask = BIT(IEEE80211_STYPE_PROBE_REQ >> 4);
++#endif
++    
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0))
+ 	struct net_device *ndev = wdev_to_ndev(wdev);
+ #endif
+@@ -7504,10 +7515,18 @@ static void cfg80211_rtw_mgmt_frame_register(struct wiphy *wiphy,
+ 	pwdev_priv = adapter_wdev_data(adapter);
+ 
+ #ifdef CONFIG_DEBUG_CFG80211
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
+ 	RTW_INFO(FUNC_ADPT_FMT" frame_type:%x, reg:%d\n", FUNC_ADPT_ARG(adapter),
+ 		frame_type, reg);
++#else
++	RTW_INFO(FUNC_ADPT_FMT " old_regs:%x new_regs:%x\n",
++		 FUNC_ADPT_ARG(adapter), pwdev_priv->mgmt_mask, upd->interface_stypes);
++#endif    
+ #endif
+ 
++	/* Wait QC Verify */
++	return;
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
+ 	switch (frame_type) {
+ 	case IEEE80211_STYPE_AUTH: /* 0x00B0 */
+ 		if (reg > 0)
+@@ -7515,7 +7534,6 @@ static void cfg80211_rtw_mgmt_frame_register(struct wiphy *wiphy,
+ 		else
+ 			CLR_CFG80211_REPORT_MGMT(pwdev_priv, IEEE80211_STYPE_AUTH, reg);
+ 		break;
+-#ifdef not_yet
+ 	case IEEE80211_STYPE_PROBE_REQ: /* 0x0040 */
+ 		if (reg > 0)
+ 			SET_CFG80211_REPORT_MGMT(pwdev_priv, IEEE80211_STYPE_PROBE_REQ, reg);
+@@ -7528,11 +7546,16 @@ static void cfg80211_rtw_mgmt_frame_register(struct wiphy *wiphy,
+ 		else
+ 			CLR_CFG80211_REPORT_MGMT(pwdev_priv, IEEE80211_STYPE_ACTION, reg);
+ 		break;
+-#endif
+ 	default:
+ 		break;
+ 	}
++#else
++	if ((upd->interface_stypes & rtw_mask) == (pwdev_priv->mgmt_mask & rtw_mask))
++ 		return;
+ 
++	pwdev_priv->mgmt_mask = upd->interface_stypes;
++#endif
++	
+ exit:
+ 	return;
+ }
+@@ -9915,7 +9938,11 @@ static struct cfg80211_ops rtw_cfg80211_ops = {
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 37)) || defined(COMPAT_KERNEL_RELEASE)
+ 	.mgmt_tx = cfg80211_rtw_mgmt_tx,
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))	
+ 	.mgmt_frame_register = cfg80211_rtw_mgmt_frame_register,
++#else
++	.update_mgmt_frame_registrations = cfg80211_rtw_update_mgmt_frame_register,
++#endif
+ #elif (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 34) && LINUX_VERSION_CODE <= KERNEL_VERSION(2, 6, 35))
+ 	.action = cfg80211_rtw_mgmt_tx,
+ #endif
+diff --git a/os_dep/linux/ioctl_cfg80211.h b/os_dep/linux/ioctl_cfg80211.h
+index cfbe9cd..f46d7e3 100755
+--- a/os_dep/linux/ioctl_cfg80211.h
++++ b/os_dep/linux/ioctl_cfg80211.h
+@@ -167,6 +167,10 @@ struct rtw_wdev_priv {
+ 	bool block;
+ 	bool block_scan;
+ 	bool power_mgmt;
++    
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,8,0)
++	u32 mgmt_mask;
++	#endif
+ 
+ 	/* report mgmt_frame registered */
+ 	u16 report_mgmt;

@@ -16,10 +16,12 @@ source=(
 	"$pkgname-$pkgver.src.7z::https://github.com/XAIOThaifeng/realtek-linux/blob/master/RTL8822CE/RTL8822CE_WiFi_linux_v$_allver.7z?raw=true"
 	dkms.conf
 	rtw88_blacklist.conf
+	linux58.patch
 )
 sha1sums=('a798b10d4f2c962c246f2c1bc695314e2b15e7b3'
           '1f8eb72a676c311a434ccece3f2bad2c20ddaa09'
-          '18ecc64076501d396a2fabf4f1f31d3d1945b874')
+          'cff1484236d2bdaf0d1e10a1b789950e9ff3d3da'
+          'c2ff3cb66952337ec8b37ebaebad5e4c017fb4c2')
 
 prepare() {
 	cd "$srcdir/RTL8822CE_WiFi_linux_v$_allver/driver"
@@ -38,6 +40,8 @@ prepare() {
 
 	# Disable debug
 	sed -i '/^CONFIG_RTW_DEBUG/c\CONFIG_RTW_DEBUG = n' Makefile
+
+	patch -p 1 -i "$srcdir/linux58.patch"
 }
 
 package() {
