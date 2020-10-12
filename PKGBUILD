@@ -2,7 +2,7 @@
 # Contributor: Mario Vazquez <mariovazq@gmail.com>
 
 pkgname=tcltls
-pkgver=1.7.21
+pkgver=1.7.22
 pkgrel=1
 pkgdesc="OpenSSL extension to Tcl"
 arch=('x86_64' 'armv6h' 'armv7h' 'arm' 'aarch64')
@@ -12,7 +12,7 @@ provides=('tls')
 replaces=('tls')
 depends=('tcl' 'openssl' 'awk')
 source=("https://core.tcl.tk/tcltls/uv/tcltls-$pkgver.tar.gz")
-sha256sums=('806ae405250810f8d57a8ca6fce01d8ae40e72443728d1569069126bb5cbc175')
+sha256sums=('e84e2b7a275ec82c4aaa9d1b1f9786dbe4358c815e917539ffe7f667ff4bc3b4')
 
 build() {
   cd "$srcdir"/tcltls-$pkgver
