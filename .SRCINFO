@@ -1,13 +1,13 @@
 pkgbase = milcheck-bin
 	pkgdesc = A small binary that displays the status of your pacman mirrorlist in your terminal
-	pkgver = 0.1.9
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/doums/milcheck
 	arch = x86_64
 	license = MPL2
 	depends = gcc-libs
-	source = milcheck-bin-0.1.9::https://github.com/doums/milcheck/releases/download/v0.1.9/milcheck
-	md5sums = 3c088ceae3a1d02ab3211c552e839ef3
+	source = milcheck-bin-0.2.0::https://github.com/doums/milcheck/releases/download/v0.2.0/milcheck
+	md5sums = 2706a432196fd9817f4ea3704682aa3f
 
 pkgname = milcheck-bin
 
