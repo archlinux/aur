@@ -1,0 +1,16 @@
+pkgbase = gitjacker-git
+	pkgdesc = leak git repositories from misconfigured websites
+	pkgver = v0.0.2
+	pkgrel = 1
+	url = https://github.com/liamg/gitjacker
+	arch = i686
+	arch = x86_64
+	license = custom:unilicense
+	makedepends = git
+	makedepends = go
+	depends = git
+	source = git+https://github.com/liamg/gitjacker
+	md5sums = SKIP
+
+pkgname = gitjacker-git
+
