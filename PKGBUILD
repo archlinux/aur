@@ -1,7 +1,7 @@
 # Maintainer: Christian Münch <christian@muench-worms.de>
 pkgname=pacman-auto-update
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Install a systemd service triggered by a timer to run automatic pacman package updates"
 arch=('any')
 url="https://github.com/cmuench/pacman-auto-update.git"
