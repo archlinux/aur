@@ -1,0 +1,16 @@
+pkgbase = python-crashtest
+	pkgdesc = Manage Python errors with ease
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/sdispater/crashtest
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = python-dephell
+	depends = python
+	source = crashtest-0.3.1.tar.gz::https://github.com/sdispater/crashtest/archive/0.3.1.tar.gz
+	b2sums = b90465ee736ec0d9c378ed16327fe5bbddf19066a64a2a9d1c454f38eac5321235cafeb20756b2018e1dfea0e07726696084b8965a2543edc5e9fe0d79c33db1
+
+pkgname = python-crashtest
+
