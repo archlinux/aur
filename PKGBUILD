@@ -14,27 +14,21 @@ depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'qt5-to
 depends+=(quazip)  #drop internal quazip and use system one.
 depends+=(poppler) #replace internal xpdf with poppler and drop freetype/xpdf from deps
 source=("https://github.com/OpenBoard-org/OpenBoard/archive/v${pkgver}a${_a}.tar.gz"
-        qchar.patch
-        qwebkit.patch
         openboard.desktop)
+source+=(qchar.patch)
 source+=(quazip.patch)
-source+=(poppler.patch)
 source+=(drop_ThirdParty_repo.patch)
 md5sums=('01e94648e788a9ff4d35b334b8f333bb'
-         'bf2c524f3897cfcfb4315bcd92d4206e'
-         '60f64db6bf627015f4747879c4b30fd3'
          '21d1749400802f8fc0669feaf77de683'
+         'bf2c524f3897cfcfb4315bcd92d4206e'
          '0ffa4b3c8cefce374df5a1580d90a332'
-         '9a8f9ec3b244390b4c17a10494a94d29'
          '879116c683374b2dde291014e44a29fe')
 
 prepare() {
   cd "$srcdir"/$_src_folder
-  patch -p1 < $srcdir/drop_ThirdParty_repo.patch
-  patch -p1 < $srcdir/qchar.patch
-  patch -p1 < $srcdir/qwebkit.patch
-  patch -p1 < $srcdir/quazip.patch
-  patch -p1 < $srcdir/poppler.patch
+  patch -p1 < "$srcdir"/drop_ThirdParty_repo.patch
+  patch -p1 < "$srcdir"/qchar.patch
+  patch -p1 < "$srcdir"/quazip.patch
 }
 
 build() {
