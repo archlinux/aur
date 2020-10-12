@@ -6,11 +6,11 @@ _pkgname=GPXSee
 _branch=master
 _use_gh_api=true
 _gh_api_url="https://api.github.com/repos/${_orgname}/${_pkgname}"
-_wl_project=${_pkgname}
+_wl_project=${_pkgname,,}
 _wl_hz="https://hosted.weblate.org/healthz/"
 _wl_dl="https://hosted.weblate.org/download/${_wl_project}"
 pkgname=${_pkgname,,}-git
-pkgver=7.29.r16.gddf8658
+pkgver=7.34.r3.g2d1e093
 pkgrel=1
 pkgdesc='GPS log file viewer and analyzer'
 arch=(x86_64)
@@ -62,7 +62,7 @@ prepare() {
 
   if [ "`curl ${_wl_hz}`" = "ok" ]; then
     rename nb nb_NO *_nb.ts
-    wl_update Translations ${_pkgname,,}_
+    wl_update translations ${_pkgname,,}_
     rename nb_NO nb *_nb_NO.ts
   fi
 }
