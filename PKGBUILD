@@ -21,7 +21,7 @@ source+=(drop_ThirdParty_repo.patch)
 md5sums=('01e94648e788a9ff4d35b334b8f333bb'
          '21d1749400802f8fc0669feaf77de683'
          'bf2c524f3897cfcfb4315bcd92d4206e'
-         '0ffa4b3c8cefce374df5a1580d90a332'
+         '5bd8fd678a114e0633eef1e709ba7ccf'
          '879116c683374b2dde291014e44a29fe')
 
 prepare() {
