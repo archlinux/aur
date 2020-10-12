@@ -30,12 +30,12 @@
 
 pkgname=retroshare
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://retroshare.cc/'
 license=('GPL2')
-depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libxss' 'sqlcipher') # 'libmicrohttpd'
+depends=('qt5-multimedia' 'qt5-x11extras' 'miniupnpc' 'libxss' 'sqlcipher') # 'libmicrohttpd'
 makedepends=('git' 'qt5-tools')
 optdepends=('tor: tor hidden node support'
             'i2p: i2p hidden node support')
@@ -101,6 +101,7 @@ build() {
 		CONFIG+=no_libresapihttpserver \
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
+		'RS_UPNP_LIB="miniupnpc"' \
 		RetroShare.pro
 	# workaround
 	make || make
