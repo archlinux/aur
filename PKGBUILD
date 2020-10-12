@@ -2,7 +2,7 @@ __pkgname="deadbeef-plugin-statusnotifier"
 __gitroot="github.com/vovochka404/deadbeef-statusnotifier-plugin"
 pkgname=${__pkgname}-git
 pkgver=r35.aeb0626
-pkgrel=1
+pkgrel=2
 pkgdesc="StatusNotifier plugin for the DeaDBeeF music player replaces default tray icon on DE that supports StatusNotifierIitem protocol."
 url="https://${__gitroot}"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 provides=("$__pkgname")
 conflicts=("$__pkgname")
 source=("$pkgname::git+https://${__gitroot}")
-depends=('deadbeef' 'gtk3' 'gtk2' 'libdbusmenu-glib')
+depends=('deadbeef' 'gtk3' 'libdbusmenu-glib')
 makedepends=('cmake')
 md5sums=('SKIP')
 
