@@ -3,7 +3,7 @@
 
 pkgname=gcolor3-git
 _gitname=gcolor3
-pkgver=2.3.r92.ge062759
+pkgver=2.4.0.r13.gf6f8482
 pkgrel=1
 epoch=1
 pkgdesc="A simple color selection dialog in GTK3. Git version."
