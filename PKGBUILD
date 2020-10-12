@@ -2,7 +2,7 @@
 
 pkgname=diatheke-tui
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A whiptail TUI for diatheke bible software"
 arch=('any')
 url='https://github.com/g4jc/diatheke-tui'
@@ -19,7 +19,7 @@ sha512sums=('a5f6603d2557adc55facd9757710246f7790aeb3d0d148ba68744e16e666027e794
             'SKIP')
 
 package() {
-	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/diatheke-tui.sh" 
-"${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/diatheke-tui.sh" \
+	"${pkgdir}/usr/bin/${pkgname}"
 }
 
