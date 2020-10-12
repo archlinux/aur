@@ -1,10 +1,10 @@
 # Maintainer: Shatur <genaloner@gmail.com>
 
 # Use KDE API features (recommended for Plasma users)
-_plasma=false
+_with_plasma=false
 
 pkgname=optimus-manager-qt-git
-pkgver=1.5.1.r6.g7eb0c9f
+pkgver=1.5.3.r19.g51a67d8
 pkgrel=1
 pkgdesc='A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu'
 arch=(x86_64)
@@ -17,7 +17,7 @@ conflicts=(${pkgname%-git})
 source=(git+$url)
 sha256sums=(SKIP)
 
-if [ $_plasma == true ]
+if [ $_with_plasma == true ]
 then
   depends+=(knotifications kiconthemes)
 fi
@@ -27,21 +27,13 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-# Clone submodules
-prepare() {
-  cd ${pkgname%-git}
-
-  git submodule init
-  git submodule update
-}
-
 build() {
   mkdir -p ${pkgname%-git}/build
   cd ${pkgname%-git}/build
 
-  if [ $_plasma == true ]
+  if [ $_with_plasma == true ]
   then
-      cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" -D PLASMA=ON ..
+      cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" -D WITH_PLASMA=ON ..
   else
       cmake -D CMAKE_INSTALL_PREFIX="$pkgdir/usr" ..
   fi
