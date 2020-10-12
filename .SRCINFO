@@ -1,0 +1,16 @@
+pkgbase = gitless-git
+	pkgdesc = A scientifically proven easier-to-use git interface (git upstream)
+	pkgver = 619.g1ffeab0
+	pkgrel = 1
+	url = https://gitless.com/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python-pygit2
+	provides = gitless
+	conflicts = gitless
+	source = gitless-git::git://github.com/gitless-vcs/gitless.git
+	md5sums = SKIP
+
+pkgname = gitless-git
+
