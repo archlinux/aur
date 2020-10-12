@@ -5,7 +5,7 @@
 
 pkgname=notion-app
 pkgver=2.0.8
-pkgrel=3.2
+pkgrel=3.3
 epoch=1
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
@@ -36,11 +36,11 @@ package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/opt/${pkgname}"
   install -d "${pkgdir}/usr/share/applications"
-  install -d "${pkgdir}/usr/share/icons"
+  install -d "${pkgdir}/usr/share/pixmaps"
 
   cp -r "${srcdir}/tmp/build/"* "${pkgdir}/opt/${pkgname}"
   cp "${srcdir}/${_icon}" "${pkgdir}/opt/${pkgname}/icon.png"
-  install -Dm644 "${srcdir}/${_icon}" "${pkgdir}/usr/share/icons/${pkgname}.png"
+  install -Dm644 "${srcdir}/${_icon}" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
 }
