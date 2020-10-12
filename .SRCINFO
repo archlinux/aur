@@ -1,0 +1,18 @@
+pkgbase = undistract-me
+	pkgdesc = Notifies you when long-running terminal commands complete | Now with bash-preexec support
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/qbouvet/undistract-me
+	install = undistract-me.install
+	arch = any
+	license = expat
+	depends = bash-preexec
+	depends = libnotify
+	depends = xorg-xprop
+	provides = undistract-me
+	conflicts = undistract-me
+	source = undistract-me-0.1.1::https://github.com/qbouvet/undistract-me/archive/v0.1.1.tar.gz
+	sha256sums = 1179cfff6509b49158b7b0825ad0dfff1978137053d709363923ae1a3f30ecf1
+
+pkgname = undistract-me
+
