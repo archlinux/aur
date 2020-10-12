@@ -1,0 +1,14 @@
+pkgbase = nodejs-generator-web-extension
+	pkgdesc = Yeoman generator for Webextensions
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/webextension-toolbox/generator-web-extension
+	arch = any
+	license = MIT
+	depends = nodejs-yeoman
+	noextract = generator-web-extension-0.0.5.tgz
+	source = http://registry.npmjs.org/generator-web-extension/-/generator-web-extension-0.0.5.tgz
+	sha256sums = 17441d5c0e665c0ff8c8e7a85ef54c311d1bbe73ee103ce82068bb468d7279e8
+
+pkgname = nodejs-generator-web-extension
+
