@@ -1,0 +1,35 @@
+ 
+bash_command_timer_path=/usr/share/bash-command-timer/bash_command_timer.sh
+preexec_path=/usr/share/bash-prexec/bash_preexec.sh         # bash-preexec dependancy
+
+post_install() {
+    printf "\
+>    
+>
+>   To complete installation, add the following to your bashrc: 
+>
+>   # Define timer callback functions
+>   [[ -f $bash_command_timer_path ]] && source $bash_timer_path    
+>   # Register callback functions with bash-preexec
+>   [[ -f $preexec_path ]] && source $preexec_path
+>
+>
+"
+# echo \"[[ -f $bash_timer_path ]] && source $bash_timer_path\" >> /etc/bash.bashrc
+# echo \"[[ -f $preexec_path ]] && source $preexec_path\" >> /etc/bash.bashrc
+}
+
+post_remove() {
+    printf "\
+>
+>    
+>   To complete removal, remove the 'source' directives from your bashrc.
+>
+>   # Define timer callback functions
+>   [[ -f $bash_command_timer_path ]] && source $bash_timer_path    
+>   # Register callback functions with bash-preexec
+>   [[ -f $preexec_path ]] && source $preexec_path
+>
+>
+"
+}
