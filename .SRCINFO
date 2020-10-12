@@ -1,6 +1,6 @@
 pkgbase = zig-game-git
 	pkgdesc = It's a game where you shoot stuff
-	pkgver = 1
+	pkgver = v1.2.r0.gf1095b8
 	pkgrel = 1
 	url = https://github.com/bcampbell/zig
 	arch = x86_64

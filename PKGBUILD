@@ -1,7 +1,7 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=zig-game-git
-pkgver=1
+pkgver=v1.2.r0.gf1095b8
 pkgrel=1
 pkgdesc="It's a game where you shoot stuff"
 arch=('x86_64')
@@ -13,6 +13,11 @@ provides=('zig-game')
 conflicts=('zig-game')
 source=("git+https://github.com/bcampbell/zig")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd zig
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd zig
