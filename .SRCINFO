@@ -1,7 +1,7 @@
 pkgbase = uirc3-git
 	pkgdesc = Experimental IRC client, daemon and bot
 	pkgver = v0.9.8.r23.g559232c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.janouch.name/p/uirc3
 	arch = i686
 	arch = x86_64

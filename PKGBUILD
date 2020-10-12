@@ -1,8 +1,8 @@
-# Maintainer: Přemysl Janouch <p.janouch@gmail.com>
+# Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=uirc3-git
 _pkgname=uirc3
 pkgver=v0.9.8.r23.g559232c
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental IRC client, daemon and bot"
 url="https://git.janouch.name/p/uirc3"
 arch=('i686' 'x86_64')
