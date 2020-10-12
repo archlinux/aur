@@ -2,7 +2,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=jackett-runit
-pkgver=0.16.1673
+pkgver=0.16.1684
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -17,17 +17,15 @@ source=("run"
         "jackett.tmpfiles")
 
 source_x86_64=("Jackett.Binaries.LinuxAMDx64-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.LinuxAMDx64.tar.gz")
-source_aarch64=("Jackett.Binaries.LinuxARM64-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.LinuxARM64.tar.gz")
 source_armv7h=("Jackett.Binaries.LinuxARM32-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.LinuxARM32.tar.gz")
+source_aarch64=("Jackett.Binaries.LinuxARM64-${pkgver}.tar.gz::https://github.com/Jackett/Jackett/releases/download/v${pkgver}/Jackett.Binaries.LinuxARM64.tar.gz")
 
 sha256sums=('dd8cf665c118a7c87e796c20d790989e0b1a1e12d16feba2a28e3465ad45be67'
             'd005fcd009ec5404e1ec88246c31e664167f5551d6cabc35f68eb41750bfe590'
             '64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1')
-sha256sums_x86_64=('50284be237dda5151acbf8903aebc9febb710f1e9e0c1dc58492cbf0cc303f10')
-sha256sums_aarch64=('31fb6723a3bc7119830802e37f8a5253c63f2ab98f6a928308eee60470de4f2f')
-sha256sums_armv7h=('5cee5e11a5d67b190f35678151f0098f8226c6e3d5b52edce149c896f12f27ed')
-
-
+sha256sums_x86_64=('c8d785c2f37a72279451158dcdc5947e9c86aa57261f7ddbf67b5d1e4f001e3f')
+sha256sums_armv7h=('79ef504f8c3dccba3bb66b9559ba0d7997407bb5964c9dc6aadccefc79bc4ca4')
+sha256sums_aarch64=('4994bba0578e2e46a5701d65344d0263f33bc3aa3cc4d767f287d4f97418e517')
 
 package() {
     cd "$srcdir"
