@@ -40,16 +40,10 @@ build() {
 package() {
   cd "$srcdir"/$_src_folder
 
-  mkdir -p $pkgdir/opt/openboard
-
-  for i in customizations etc i18n library; do
-    cp -rp $srcdir/OpenBoard-$pkgver/resources/$i $pkgdir/opt/openboard;
-  done
-
-  cp -rp $srcdir/OpenBoard-$pkgver/resources/images/OpenBoard.png $pkgdir/opt/openboard/
-  cp -rp build/linux/release/product/OpenBoard $pkgdir/opt/openboard/
-
-  install -D -m 644 $srcdir/openboard.desktop $pkgdir/usr/share/applications/openboard.desktop
-  install -d -m 755 $pkgdir/usr/bin
-  ln -s /opt/openboard/OpenBoard $pkgdir/usr/bin/openboard
+  install -Dm755 build/linux/release/product/OpenBoard -t "$pkgdir"/opt/openboard/
+  cp -rp "$srcdir"/$_src_folder/resources/{customizations,etc,i18n,library} -t "$pkgdir"/opt/openboard/
+  install -Dm644 "$srcdir"/$_src_folder/resources/images/OpenBoard.png -t "$pkgdir"/opt/openboard/
+  install -Dm644 "$srcdir"/openboard.desktop -t "$pkgdir"/usr/share/applications/
+  install -dm755 "$pkgdir"/usr/bin/
+  ln -s /opt/openboard/OpenBoard "$pkgdir"/usr/bin/openboard
 }
