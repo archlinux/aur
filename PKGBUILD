@@ -1,5 +1,5 @@
 pkgname=qcomix
-pkgver=1.0.0b3
+pkgver=1.0.0b5
 pkgrel=1
 pkgdesc="Qt-based comic viewer."
 arch=('i686' 'x86_64')
@@ -7,7 +7,7 @@ url="https://gitgud.io/qcomix/qcomix.git"
 depends=('qt5-base' 'quazip')
 makedepends=('cmake' 'qt5-tools' 'qt5-base')
 provides=('qcomix')
-source=("$pkgname"::"git+https://gitgud.io/qcomix/qcomix.git#tag=1.0b3")
+source=("$pkgname"::"git+https://gitgud.io/qcomix/qcomix.git#tag=1.0b5")
 sha512sums=('SKIP')
 
 build() {
