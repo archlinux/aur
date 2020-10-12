@@ -1,0 +1,50 @@
+From 4266bc917d79d20200d2873f7db110d9827250cb Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 24 May 2020 11:24:25 +0200
+Subject: [PATCH 5/5] Fix recursive make in docs
+
+---
+ docs/Makefile.in | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/docs/Makefile.in b/docs/Makefile.in
+index 16e273e7f7..311a49c7de 100644
+--- a/docs/Makefile.in
++++ b/docs/Makefile.in
+@@ -12,26 +12,26 @@ all: ug tutorial pg relnotes gnatdoc
+ static:
+ 
+ pg:
+-	make -C programmers_guide html
++	$(MAKE) -C programmers_guide html
+ 
+ relnotes:
+-	make -C release_notes singlehtml
++	$(MAKE) -C release_notes singlehtml
+ 
+ relnotes_17:
+-	make -C release_notes_17 singlehtml
++	$(MAKE) -C release_notes_17 singlehtml
+ 
+ relnotes_62:
+-	make -C release_notes_62 singlehtml
++	$(MAKE) -C release_notes_62 singlehtml
+ 
+ ug:
+-	make -C users_guide html latexpdf
++	$(MAKE) -C users_guide html latexpdf
+ 
+ gnatdoc:
+-	make -C ../gnatdoc/docs/users_guide html latexpdf
++	$(MAKE) -C ../gnatdoc/docs/users_guide html latexpdf
+ 
+ .PHONY: tutorial
+ tutorial:
+-	make -C tutorial html
++	$(MAKE) -C tutorial html
+ 
+ install:
+ 	$(MKDIR) $(docdir)
+-- 
+2.26.2
+

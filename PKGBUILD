@@ -5,7 +5,8 @@
 
 pkgname=gnat-gps
 pkgver=2020
-pkgrel=4
+pkgrel=3
+_gps_version="1b841d995bd6171f2462cad4a00c34cb6989fa7b"
 pkgdesc="GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
@@ -20,30 +21,41 @@ depends=("clang" "libadalang"
 optdepends=('python2-jedi')
 makedepends=('gprbuild' 'python2-sphinx' 'texlive-latexextra' 'graphviz')
 
-_gps_version="21.0w-20200427-15496"
-_laltools_ver=21.0w-20200425-15675
-_als_ver=21.0w-20200427-156B6
-
-source=("https://community.download.adacore.com/v1/bfa68dd61a9288c79e9c08676878cac95e0fe628?filename=gps-$_gps_version-src.tar.gz"
-        "https://community.download.adacore.com/v1/05e31f6e36e2ff4313013d27f0551416de5a1b4e?filename=als-$_als_ver-src.tar.gz"
-        "https://community.download.adacore.com/v1/334dca036084a92552860451619321faee571797?filename=libadalang-tools-_laltools_ver-src.tar.gz"
-        0001-Honour-DESTDIR-in-installation-targets.patch
-        0002-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch
+_laltools_ver=2020-20200429-1998C
+_laltools_checksum=740372d8ffb1e4755a99bead2d78dace904235c0
+# later a_l_s versions are incompatible with GPS 20.2 because of:
+# https://github.com/AdaCore/ada_language_server/commit/6f356e0c522313acedbdf8cbef8908399f46a6cf
+# https://github.com/AdaCore/ada_language_server/commit/24f8c81c4ec238632ceb6a60b664c2707a3e70be (https://github.com/AdaCore/gps/issues/97)
+_als_ver=21.0.3
+source=("gps-${_gps_version}.tar.gz::https://github.com/AdaCore/gps/archive/$_gps_version.tar.gz"
+        "ada_language_server-$_als_ver.tar.gz::https://github.com/AdaCore/ada_language_server/archive/$_als_ver.tar.gz"
+        "libadalang-tools-$_laltools_ver-src.tar.gz::https://community.download.adacore.com/v1/$_laltools_checksum?filename=libadalang-tools-$_laltools_ver-src.tar.gz"
+        0001-Use-GPR.Sinput.Reference_Name.patch
+        0002-Ignore-absence-of-version-number-in-user_guide.patch
+        0003-Honour-DESTDIR-in-installation-targets.patch
+        0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch
+        0005-Fix-recursive-make-in-docs.patch
         gps.desktop)
 
-sha1sums=('bfa68dd61a9288c79e9c08676878cac95e0fe628'
-          '05e31f6e36e2ff4313013d27f0551416de5a1b4e'
-          "334dca036084a92552860451619321faee571797"
+sha1sums=('357780e1155b38a5ff8b5a4c9b088f88682860d4'
+          'a737b6d7ee2d4a1193f088a0817070e545752dae'
+          "$_laltools_checksum"
+          '7befc021358ada26c6a332e623113b32317bfd8c'
+          '525f0b9d64fecb9c2e669cf64b60548b86c575d9'
           '4c13859aa25c5142bd5d0fde7b645217ddeccb50'
           '26f6fac439ec973facccee5412dc4c86b7c6d8c7'
+          '6dd1f880f55c9612a2a67d41e6606df26cd829c6'
           'b399c7b3a1fe48152da18081def3dced2e74763b')
 
 prepare()
 {
-  cd "$srcdir/gps-$_gps_version-src"
+  cd "$srcdir/gps-$_gps_version"
 
-  patch -p1 < "$srcdir/0001-Honour-DESTDIR-in-installation-targets.patch"
-  patch -p1 < "$srcdir/0002-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch"
+  patch -p1 < "$srcdir/0001-Use-GPR.Sinput.Reference_Name.patch"
+  patch -p1 < "$srcdir/0002-Ignore-absence-of-version-number-in-user_guide.patch"
+  patch -p1 < "$srcdir/0003-Honour-DESTDIR-in-installation-targets.patch"
+  patch -p1 < "$srcdir/0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch"
+  patch -p1 < "$srcdir/0005-Fix-recursive-make-in-docs.patch"
 
   # Force use of python2
   rm -fr temp_bin
@@ -53,34 +65,29 @@ prepare()
   ln -s /usr/bin/sphinx-build2  temp_bin/sphinx-build
 
   # Link libadalang-tools and ada_language_server into the GPS source tree
-  ln -sf "$srcdir/libadalang-tools-$_laltools_ver-src" "$srcdir/gps-$_gps_version-src/laltools"
-  ln -sf "$srcdir/als-$_als_ver-src"                   "$srcdir/gps-$_gps_version-src/ada_language_server"
+  ln -sf "$srcdir/libadalang-tools-$_laltools_ver-src" "$srcdir/gps-$_gps_version/laltools"
+  ln -sf "$srcdir/ada_language_server-$_als_ver" "$srcdir/gps-$_gps_version/ada_language_server"
 }
 
 
 build() 
 {
-  cd "$srcdir/gps-$_gps_version-src"
+  cd "$srcdir/gps-$_gps_version"
 
   export OS=unix
 
   # Force use of python2
-  export PATH="$srcdir/gps-$_gps_version-src/temp_bin:$PATH"
-
-  # Build fails when -O2 flag is used, so we use -O1
-  export CFLAGS="-march=x86-64 -mtune=generic -O1 -pipe -fno-plt"
+  export PATH="$srcdir/gps-$_gps_version/temp_bin:$PATH"
 	
   ./configure --prefix=/usr
   make PROCESSORS=0 Build=Production GPRBUILD_FLAGS="-R -cargs $CFLAGS -largs $LDFLAGS -gargs"
-
-  export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
-  make docs all
+  make -C docs all
 }
 
 
 package() 
 {
-  cd "$srcdir/gps-$_gps_version-src"
+  cd "$srcdir/gps-$_gps_version"
 
   export OS=unix
 
