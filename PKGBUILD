@@ -1,6 +1,6 @@
 # Maintainer: Volker Schatz <arch@my-name-without-hyphen.com>
 pkgname=gladtex2
-pkgver=3.0.0
+pkgver=3.1
 pkgrel=1
 pkgdesc="A utility for writing LaTeX equations within HTML - Python rewrite"
 depends=('python>=3.4' 'texlive-bin' 'texlive-latexextra')
@@ -9,12 +9,13 @@ conflicts=('gladtex')
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="https://humenda.github.io/GladTeX/"
-source=( "https://github.com/humenda/GladTeX/archive/v3.0.0.tar.gz" )
-sha256sums=('319b5f1741f6635f0cc542527626def47578989af84d3fbce1413d24cefc89ce')
+source=( "https://github.com/humenda/GladTeX/archive/v${pkgver}.tar.gz" )
+sha256sums=('d12dd28a4440302f9013a8710cd8169f89d16e622494130975cc587316080da3')
 
 build() {
   cd "$srcdir/GladTeX-$pkgver"
   python ./setup.py build
+  pandoc manpage.md -s -t man -o build/gladtex.1
 }
 
 package() {
