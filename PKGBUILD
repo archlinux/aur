@@ -19,7 +19,7 @@ source+=(qchar.patch)
 source+=(quazip.patch)
 source+=(drop_ThirdParty_repo.patch)
 md5sums=('01e94648e788a9ff4d35b334b8f333bb'
-         '21d1749400802f8fc0669feaf77de683'
+         '6f058362f39f74df820fcac3a3336def'
          'bf2c524f3897cfcfb4315bcd92d4206e'
          '5bd8fd678a114e0633eef1e709ba7ccf'
          '879116c683374b2dde291014e44a29fe')
@@ -42,7 +42,7 @@ package() {
 
   install -Dm755 build/linux/release/product/OpenBoard -t "$pkgdir"/opt/openboard/
   cp -rp "$srcdir"/$_src_folder/resources/{customizations,etc,i18n,library} -t "$pkgdir"/opt/openboard/
-  install -Dm644 "$srcdir"/$_src_folder/resources/images/OpenBoard.png -t "$pkgdir"/opt/openboard/
+  install -Dm644 "$srcdir"/$_src_folder/resources/images/OpenBoard.png -t "$pkgdir"/usr/share/icons/hicolor/64x64/apps/
   install -Dm644 "$srcdir"/openboard.desktop -t "$pkgdir"/usr/share/applications/
   install -dm755 "$pkgdir"/usr/bin/
   ln -s /opt/openboard/OpenBoard "$pkgdir"/usr/bin/openboard
