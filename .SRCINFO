@@ -7,6 +7,7 @@ pkgbase = gitless-git
 	license = MIT
 	makedepends = git
 	depends = python-pygit2
+	depends = python-setuptools
 	provides = gitless
 	conflicts = gitless
 	source = gitless-git::git://github.com/gitless-vcs/gitless.git
