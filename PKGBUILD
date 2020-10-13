@@ -1,12 +1,12 @@
 # Maintainer: igo95862 <address at domain dot tld>
 pkgname=bubblejail-git
-pkgver=r241.8fae4d6
+pkgver=r268.e755a43
 pkgrel=1
 pkgdesc="Bubblewrap based sandboxing utility"
 arch=('any')
 url="https://github.com/igo95862/bubblejail"
 license=('GPL3+')
-depends=('python' 'python-xdg' 'bubblewrap' 'python-toml' 'xdg-dbus-proxy' 'hicolor-icon-theme' 'python-pyqt5')
+depends=('python' 'python-xdg' 'bubblewrap' 'python-toml' 'xdg-dbus-proxy' 'hicolor-icon-theme' 'python-pyqt5' 'desktop-file-utils')
 provides=('bubblejail')
 conflicts=('bubblejail')
 optdepends=(

@@ -1,6 +1,6 @@
 pkgbase = bubblejail-git
 	pkgdesc = Bubblewrap based sandboxing utility
-	pkgver = r241.8fae4d6
+	pkgver = r268.e755a43
 	pkgrel = 1
 	url = https://github.com/igo95862/bubblejail
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = bubblejail-git
 	depends = xdg-dbus-proxy
 	depends = hicolor-icon-theme
 	depends = python-pyqt5
+	depends = desktop-file-utils
 	optdepends = bash-completion: completions for bash shell
 	optdepends = fish: completions for fish shell
 	provides = bubblejail
