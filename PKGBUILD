@@ -1,7 +1,7 @@
 # Maintainer: Arkadiusz Dzięgielewski <arek.dzski@gmail.com>
 pkgname=discord-moosic
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord music bot"
 arch=('any')
 url="https://github.com/Repulser/Moosic"
@@ -11,7 +11,7 @@ makedepends=('java-environment' 'gradle')
 source=("https://github.com/Repulser/Moosic/archive/v$pkgver.tar.gz"
         "moosic.sh")
 md5sums=('721de38c523592079f31ed6bfb5fe4af'
-         '6db6f39b7cf2ed59573d6b0c65bb47a3')
+         '72da77119ac6de8549a9545369a4cbff')
 
 build() {
 	cd "$srcdir/Moosic-$pkgver"

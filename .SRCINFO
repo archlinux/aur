@@ -1,7 +1,7 @@
 pkgbase = discord-moosic
 	pkgdesc = Discord music bot
 	pkgver = 5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Repulser/Moosic
 	arch = any
 	license = unknown
@@ -11,7 +11,7 @@ pkgbase = discord-moosic
 	source = https://github.com/Repulser/Moosic/archive/v5.3.tar.gz
 	source = moosic.sh
 	md5sums = 721de38c523592079f31ed6bfb5fe4af
-	md5sums = 6db6f39b7cf2ed59573d6b0c65bb47a3
+	md5sums = 72da77119ac6de8549a9545369a4cbff
 
 pkgname = discord-moosic
 
