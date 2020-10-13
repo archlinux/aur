@@ -1,0 +1,26 @@
+[Unit]
+Description=Sia Daemon
+After=network-online.target
+
+[Service]
+Type=simple
+
+User=sia
+Group=sia
+UMask=007
+
+WorkingDirectory=~
+
+ExecStart=/usr/bin/siad
+ExecStop=/usr/bin/siac stop
+
+Restart=always
+
+TimeoutStopSec=300
+
+# You might want to use an environment file containing SIA_WALLET_PASSWORD=xxx
+# (where xxx is your wallet password) for auto wallet unlocking.
+#EnvironmentFile=
+
+[Install]
+WantedBy=multi-user.target

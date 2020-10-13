@@ -1,7 +1,7 @@
 pkgbase = sia
 	pkgdesc = Decentralized storage for the post-cloud world
 	pkgver = 1.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sia.tech
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,13 @@ pkgbase = sia
 	makedepends = go
 	conflicts = sia-daemon
 	source = git+https://gitlab.com/NebulousLabs/Sia.git#tag=v1.5.0
+	source = sia.sysusers
+	source = sia.tmpfiles
+	source = siad.service
 	sha256sums = SKIP
+	sha256sums = c6a0ae73338340d864a7397a577855000c4215d7769c7c872b1b80bfebb5a18e
+	sha256sums = 70d56324ce6b43e6fa6980a4dda3ae6241c84e3983043db246132b765f2d53e6
+	sha256sums = 1533734e672d7ae490fd33307b080730876de5043aa6507a88369e761a14a34d
 
 pkgname = siac
 	pkgdesc = Sia Client - Decentralized storage for the post-cloud world
