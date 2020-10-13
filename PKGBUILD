@@ -1,26 +1,26 @@
-# Maintainer: Ryan Gonzalez <rymg19@gmail.com>
+# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Contributor: Ryan Gonzalez <rymg19@gmail.com>
 
-pkgname=('python-plac' 'python2-plac')
-pkgver=1.1.0
+pkgname=python-plac
+pkgver=1.2.0
 pkgrel=1
-pkgdesc='The smartest command line arguments parser in the world'
-arch=('any')
-url='https://github.com/micheles/plac'
-license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=(https://pypi.org/packages/source/p/plac/plac-$pkgver.tar.gz)
-sha256sums=('7c16cfa7422a76b7525fc93d0be5c9c9a2d5250083e80ddac6621edb395dc081')
+pkgdesc="The smartest command line arguments parser in the world"
+url="https://pypi.org/project/plac/"
+depends=(python)
+makedepends=(python-setuptools)
+license=(BSD)
+arch=(any)
+source=("https://files.pythonhosted.org/packages/f6/79/6d2ddecf6949da3e1f5791d0fb4bd9db826a06294e2422f5da343ef90ce9/plac-1.2.0.tar.gz")
+sha256sums=('ca03587234e5bdd2a3fa96f19a04a01ebb5b0cd66d48ecb5a54d42bc9b287320')
 
 
-package_python-plac() {
-  depends=('python-setuptools')
-  cd "$srcdir/plac-$pkgver"
-  python3 setup.py install --root="$pkgdir" -O1
+build() {
+    cd "plac-${pkgver}"
+    python setup.py build
 }
 
-package_python2-plac() {
-  depends=('python2-setuptools')
-  cd "$srcdir/plac-$pkgver"
-  python2 setup.py install --root="$pkgdir" -O1
-  rm "$pkgdir/usr/bin/plac_runner.py"
+package() {
+    cd "plac-${pkgver}"
+    python setup.py install --skip-build --root="${pkgdir}" --optimize=1
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-plac/LICENSE"
 }
