@@ -67,10 +67,10 @@ _use_current=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.8
-_minor=14
+_major=5.9
+_minor=0
 _srcname=linux-${_major}
-_clr=${_major}.11-988
+_clr=${_major}.0-991
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -84,7 +84,7 @@ _gcc_more_v='20200615'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+  #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   'pci-enable-overrides-for-missing-acs-capabilities.patch'
@@ -100,7 +100,7 @@ prepare() {
 
     ### Add upstream patches
         echo "Add upstream patches"
-        patch -Np1 -i ../patch-${pkgver}
+        #patch -Np1 -i ../patch-${pkgver}
 
     ### Setting version
         echo "Setting version..."
@@ -350,9 +350,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5'
+sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
             'SKIP'
-            'd90eea7cf576c1dc3f3964f7fade1ff44207cd4aa66bfdb5c7207b0f7b2c5c7c'
+            #'d90eea7cf576c1dc3f3964f7fade1ff44207cd4aa66bfdb5c7207b0f7b2c5c7c'
             'SKIP'
             '278fe9ffb29d92cc5220e7beac34a8e3a2006e714d16a21a0427069f9634af90'
             '2c98de0814366b041aeee4cbf82b82620c7834bc33752d50f089e8bd7ea5cf5e'
