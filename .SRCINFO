@@ -1,0 +1,11 @@
+pkgbase = polaric_connect
+	pkgdesc = Utility for connect Polaric web platform to raspberry
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://www.polaricsemi.com
+	arch = i686
+	arch = x86_64
+	depends = libssh
+
+pkgname = polaric_connect
+
