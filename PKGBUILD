@@ -70,7 +70,6 @@ source=(
         ${_CK_PATCH}
         ${_UKSM_PATCH}
         ${_CJKTTY_PATCH}
-        'legacy-wireless-ioctls-4.9+.patch'
         'sphinx-workaround.patch'
         'ck-patch-for-5.4.57+.patch'
         'ck-patch-for-5.4.62+.patch'
@@ -95,7 +94,6 @@ sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
             '81d34bf02e771a126af5cb382d44a86dcc759c88b7c89fc7e5b7737731b9130e'
             '50213f3270499fceb452946252d61f5471571c77baf3dd510fbb00cfa9831c9a'
-            'edfb9939840b8710d6ee0385a8e968609eef348295465bb087744c18ed3496e0'
             'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
             'a10a4848c7a9842c0c7760b087ea38a4356dc1a2c2e26334cb0106c25785554f'
             '0334391900f31d6aaedaa68e8917f93262ba3e523f2654774b289e9b18c1a923'
@@ -159,9 +157,6 @@ prepare() {
   patch -i ../linux-cjktty-patch-for-5.4.54+.patch "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
   patch -i ../linux-cjktty-patch-for-5.4.62+.patch "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
   patch -Np1 -i "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
-
-  msg "Patching source to reinstate the legacy wireless ioctls"
-  patch -Np2 -i ../legacy-wireless-ioctls-4.9+.patch
 
   msg "Patching sphinx extensions for htmldocs"
   patch -Np1 -i ../sphinx-workaround.patch
