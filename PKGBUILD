@@ -1,9 +1,9 @@
 # Maintainer: Rod Kay   <charlie5 on #ada at freenode.net>
 
 pkgname=asis
-pkgver=2019
+pkgver=2020
 pkgrel=1
-pkgdesc="Allows Ada programs access to the syntactic and semantic structure of source code. Also provides extra tools such as gnatpp."
+pkgdesc="Allows Ada programs access to the syntactic and semantic structure of source code."
 
 arch=(i686 x86_64)
 url=http://libre.adacore.com/tools
@@ -13,13 +13,13 @@ groups=(gcc-ada)
 depends=('gcc-ada' 'gnat_util' 'gnatcoll-core')
 makedepends=('gprbuild')
 
-source=('http://mirrors.cdn.adacore.com/art/5cdf849031e87aa2cdf16b10')
-sha1sums=('52c69e7295dc301ce670334f8150193ecbec580d')
+source=('https://community.download.adacore.com/v1/8da969339493575a35edd20fbfe51bb06d2f9091?filename=asis-20.0w-20190814-153FE-src.tar.gz')
+sha1sums=('8da969339493575a35edd20fbfe51bb06d2f9091')
 
 
 build() 
 {
-    cd $srcdir/asis-2019-20190517-18AB5-src
+    cd $srcdir/asis-20.0w-20190814-153FE-src
 
     make all
     make tools
@@ -28,7 +28,7 @@ build()
 
 package() 
 {
-    cd $srcdir/asis-2019-20190517-18AB5-src
+    cd $srcdir/asis-20.0w-20190814-153FE-src
 
     PREFIX=/usr  make install       prefix=${pkgdir}/usr
     PREFIX=/usr  make install-tools prefix=${pkgdir}/usr

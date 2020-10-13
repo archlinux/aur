@@ -1,6 +1,6 @@
 pkgbase = asis
-	pkgdesc = Allows Ada programs access to the syntactic and semantic structure of source code. Also provides extra tools such as gnatpp.
-	pkgver = 2019
+	pkgdesc = Allows Ada programs access to the syntactic and semantic structure of source code.
+	pkgver = 2020
 	pkgrel = 1
 	url = http://libre.adacore.com/tools
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = asis
 	depends = gcc-ada
 	depends = gnat_util
 	depends = gnatcoll-core
-	source = http://mirrors.cdn.adacore.com/art/5cdf849031e87aa2cdf16b10
-	sha1sums = 52c69e7295dc301ce670334f8150193ecbec580d
+	source = https://community.download.adacore.com/v1/8da969339493575a35edd20fbfe51bb06d2f9091?filename=asis-20.0w-20190814-153FE-src.tar.gz
+	sha1sums = 8da969339493575a35edd20fbfe51bb06d2f9091
 
 pkgname = asis
 
