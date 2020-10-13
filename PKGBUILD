@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 pkgname=steamtinkerlaunch
-pkgver=2.2.3
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -26,17 +26,19 @@ optdepends=(
     'gamescope: for optional GameScope support'
     'libnotify: for optional Notifier'
     'zenity: optional for the Editor Dialog'
+    'cabextract: optional for extracting the wmp10 setup archive'
+    'usbutils: optional for a quick VR HMD presence check'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('14d3a09921b231638a6160d387a3aade3f5e0285f25a3c1618bfa4db57776114')
+sha256sums=('8b213a28135357ccdee9d09be49fcc673cb93e01bfd19c496240461829398f60')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
     install -Dm755 stl -t "$pkgdir/usr/bin"
 
     install -d "$pkgdir/usr/share/stl"
-    cp -r categories misc regs tweaks "$pkgdir/usr/share/stl"
+    cp -r categories lang misc regs tweaks "$pkgdir/usr/share/stl"
 
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
