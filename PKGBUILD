@@ -8,7 +8,7 @@
 # https://www.kernel.org/category/releases.html
 # 5.4 Greg Kroah-Hartman & Sasha Levin 2019-11-24 Dec, 2021
 _LLL_VER=5.4
-_LLL_SUBVER=66
+_LLL_SUBVER=69
 
 # Bisect debug, v5.4.47 -> v5.4.48
 _Bisect_debug=off # on, test, off
@@ -75,6 +75,7 @@ source=(
         'ck-patch-for-5.4.62+.patch'
         'fix-ck-broken-sleep2ram-5.4.48+.patch::https://github.com/zen-kernel/zen-kernel/commit/fb7e2cfaf61cf5f9c2336331e73296f455bd2d51.patch'
         'uksm-patch-for-5.4.33+.patch'
+        'uksm-patch-for-5.4.69+.patch'
         'linux-cjktty-patch-for-5.4.36+.patch'
         'linux-cjktty-patch-for-5.4.54+.patch'
         'linux-cjktty-patch-for-5.4.62+.patch'
@@ -91,7 +92,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            'fd9444a5b5b5f10cbe1dc2d236f6fc3552a807905d4bb44cf4806ebadf90697d'
+            'fd47cb2bd6eeae7930ba121df9f5e3cb1dc9c930c04dea141c08787035462384'
             'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
             '81d34bf02e771a126af5cb382d44a86dcc759c88b7c89fc7e5b7737731b9130e'
             '50213f3270499fceb452946252d61f5471571c77baf3dd510fbb00cfa9831c9a'
@@ -100,6 +101,7 @@ sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             '0334391900f31d6aaedaa68e8917f93262ba3e523f2654774b289e9b18c1a923'
             '961ed94b8d905f1e901cacb08d253c4170af0a25828111b7558d9c874e923558'
             '6826624f65276927de012f040e77b02231fe6345b9da7c702deacd9372ea001e'
+            'cdcd0e0ebd24d9b66c216df01b02da23760a44fe2a451137190f89d18a4c7f59'
             '573f1c40951a6ee4cf6b07a6a8a1123b00fcd8bff29843905cf191e08f1d87f2'
             '2c9faabb5e09b1f818b051ced3eb90b6c04aa08616952d99eedf328c7c8dda2f'
             '4d511fb62966549b9ea4a1d97769f79e4d66fc141cd0b001e7d286367a038a09'
@@ -151,6 +153,7 @@ prepare() {
   msg "Patching source with uksm ${_UKSM_VER} patches"
   cp "../uksm-${_LLL_VER}.patch" "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
   patch -i ../uksm-patch-for-5.4.33+.patch "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
+  patch -i ../uksm-patch-for-5.4.69+.patch "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
   patch -Np1 -i "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
 
   msg "Patching source with Gentoo-zh/linux-cjktty patches"
