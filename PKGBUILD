@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=nextcloud-integration-twitter
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Twitter integration into Nextcloud"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("https://github.com/nextcloud/integration_twitter/releases/download/v${pkgver}/integration_twitter-${pkgver}.tar.gz")
-sha512sums=('aaa8f3bb530b551c7fbb5fd089f017892633b823f38a941ec1d5dbe7caae550c95071fd348aac5f9d808df785b3046a5501c0b8ae822d0cea372ec699cab7ad8')
+sha512sums=('2136f9f58da5dd1d35c492fc76c0ae555e16828d379164d5a59a3e4164a5650cbed8ef3140dbfbbf654eb891eddcb94ace94146efc82a7e73868ef837d09356a')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
