@@ -1,7 +1,7 @@
 # Maintainer: dszryan
 pkgname=pacmanity-git
 pkgver=r53.e181875
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Keeps a list of installed packages in a Gist at your GitHub account"
 arch=('x86_64' 'i686')
@@ -49,7 +49,7 @@ package() {
   [[ -r "$srcdir/gist_id" ]] && (mkdir -p "$pkgdir/etc" && install -m644 "$srcdir/gist_id" "$pkgdir/etc/pacmanity")
 
   # copy required script files
-  mkdir -p "$pkgdir/usr/lib/pacmanity" "$pkgdir/usr/share/libalpm/hooks"
+  mkdir -p "$pkgdir/usr/lib/pacmanity" "$pkgdir/etc/pacman.d/hooks"
   install -m774 "$srcdir/${pkgname/-git/}/pacmanity.sh"   "$pkgdir/usr/lib/pacmanity/pacmanity.sh"
-  install -m664 "$srcdir/${pkgname/-git/}/pacmanity.hook" "$pkgdir/usr/share/libalpm/hooks/zzz-pacmanity.hook"
+  install -m664 "$srcdir/${pkgname/-git/}/pacmanity.hook" "$pkgdir/etc/pacman.d/hooks/999-pacmanity.hook"
 }
