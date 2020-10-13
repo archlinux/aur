@@ -1,0 +1,15 @@
+pkgbase = python-keras-flops
+	pkgdesc = FLOPs calculator for TF2+
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/tokusumi/keras-flops
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-dephell
+	depends = python-tensorflow
+	source = https://files.pythonhosted.org/packages/source/k/keras-flops/keras-flops-0.1.2.tar.gz
+	sha256sums = 2561043d435dce3b0b6a68573a538facddbcfa637faf7ae7f48b2e8f373ed84e
+
+pkgname = python-keras-flops
+
