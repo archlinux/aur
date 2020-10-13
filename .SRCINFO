@@ -1,0 +1,15 @@
+pkgbase = polybar-spotify
+	pkgdesc = A tool to generate custom Iosevka fonts from a configuration file
+	pkgver = 20200619_b5c59238a17180affae5232c234175524a17d1c4
+	pkgrel = 1
+	url = https://github.com/Jvanrhijn/polybar-spotify
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-dbus
+	depends = spotify
+	source = https://github.com/Jvanrhijn/polybar-spotify/archive/b5c59238a17180affae5232c234175524a17d1c4.zip
+	md5sums = 815b25c418611c58370733479bd2b504
+
+pkgname = polybar-spotify
+
