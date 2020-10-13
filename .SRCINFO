@@ -1,6 +1,6 @@
 pkgbase = gifcurry
 	pkgdesc = The open-source, Haskell-built video editor for GIF makers.
-	pkgver = 6.0.0.0_0
+	pkgver = 6.0.1.0_0
 	pkgrel = 1
 	url = https://github.com/lettier/gifcurry
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = gifcurry
 	depends = gst-plugins-base-libs
 	depends = gst-plugins-base
 	depends = gst-plugins-good
-	source = https://www.github.com/lettier/gifcurry/releases/download/6.0.0.0/gifcurry-linux-6.0.0.0.tar.gz
-	md5sums = 3e66d3ba4fc446787fc50786470bd806
+	source = https://www.github.com/lettier/gifcurry/releases/download/6.0.1.0/gifcurry-linux-6.0.1.0.tar.gz
+	md5sums = 98a7abd625e8144fe088ad4b51426016
 
 pkgname = gifcurry
 
