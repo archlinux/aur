@@ -1,0 +1,17 @@
+pkgbase = discord-moosic
+	pkgdesc = Discord music bot
+	pkgver = 5.3
+	pkgrel = 1
+	url = https://github.com/Repulser/Moosic
+	arch = any
+	license = unknown
+	makedepends = java-environment
+	makedepends = gradle
+	depends = java-runtime
+	source = https://github.com/Repulser/Moosic/archive/v5.3.tar.gz
+	source = moosic.sh
+	md5sums = 721de38c523592079f31ed6bfb5fe4af
+	md5sums = 6db6f39b7cf2ed59573d6b0c65bb47a3
+
+pkgname = discord-moosic
+
