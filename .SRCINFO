@@ -1,0 +1,19 @@
+pkgbase = emoji-keyboard-appimage
+	pkgdesc = Virtual keyboard-like emoji palette for Linux - AppImage version
+	pkgver = 3.0.0rc2
+	pkgrel = 1
+	url = https://github.com/OzymandiasTheGreat/emoji-keyboard
+	arch = x86_64
+	license = GPL
+	makedepends = appimage
+	provides = emoji-keyboard
+	conflicts = emoji-keyboard
+	noextract = emoji-keyboard-3.0.0-rc2.AppImage
+	options = !strip
+	source = https://github.com/OzymandiasTheGreat/emoji-keyboard/archive/v3.0.0rc2.tar.gz
+	sha256sums = SKIP
+	source_x86_64 = emoji-keyboard-3.0.0-rc2.AppImage::https://github.com/OzymandiasTheGreat/emoji-keyboard/releases/download/v3.0.0rc2/emoji-keyboard-3.0.0-rc2.AppImage
+	sha256sums_x86_64 = becfe7ebe4993ad10ec107e6aa0aa6a0c7d71bbed44d3c8af07c5ad0de55ce51
+
+pkgname = emoji-keyboard-appimage
+
