@@ -9,7 +9,6 @@ license=('GPL3')
 depends=('python-gobject' 'python-setuptools')
 optdepends=('tix: Tkinter-based interface')
 provides=("${pkgname}=${pkgver}")
-conflicts=(${pkgname}-git)
 source=("https://github.com/ilius/${pkgname}/archive/${pkgver}.tar.gz"
         "core.patch"
         "setup.patch")

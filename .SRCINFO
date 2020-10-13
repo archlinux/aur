@@ -11,7 +11,6 @@ pkgbase = pyglossary
 	depends = python-setuptools
 	optdepends = tix: Tkinter-based interface
 	provides = pyglossary=3.3.0
-	conflicts = pyglossary-git
 	source = https://github.com/ilius/pyglossary/archive/3.3.0.tar.gz
 	source = core.patch
 	source = setup.patch
