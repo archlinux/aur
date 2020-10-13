@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname=qogir-gtk-theme-git
-pkgver=2019.10.25.r12.gde987de
+pkgver=2020.02.26.r59.gebed08a
 pkgrel=1
 pkgdesc='Qogir is a flat Design theme for GTK'
 arch=('any')
