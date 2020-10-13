@@ -1,6 +1,6 @@
 pkgbase = gnat_util
 	pkgdesc = Internal GNAT compiler components used by (at least) ASIS.
-	pkgver = 2019
+	pkgver = 2020
 	pkgrel = 1
 	url = https://libre.adacore.com/
 	arch = i686
@@ -8,10 +8,8 @@ pkgbase = gnat_util
 	license = GPL V3.0 without any Runtime Exception
 	makedepends = gprbuild
 	depends = gcc-ada
-	source = http://mirrors.cdn.adacore.com/art/5cdf8e5031e87a8f1d425090
-	source = ali.adb-patch
-	sha1sums = ccd37abcc9fbbe89b782dbe789b77278cb1d3789
-	sha1sums = 2a29832fec08f4f94ddf79b61ed7d40a87a3f8ed
+	source = https://community.download.adacore.com/v1/26bd253101b46706f5f8e3d0ca8b3107cde99e99?filename=gnat_util-20.0w-20190814-1532A-src.tar.gz
+	sha1sums = 26bd253101b46706f5f8e3d0ca8b3107cde99e99
 
 pkgname = gnat_util
 
