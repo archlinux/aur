@@ -1,0 +1,11 @@
+--- mozilla-unified/netwerk/test/moz.build.orig	2020-05-01 18:38:46.100552579 -0300
++++ mozilla-unified/netwerk/test/moz.build	2020-05-01 18:38:55.679255875 -0300
+@@ -4,7 +4,7 @@
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+-TEST_DIRS += ['httpserver', 'gtest', 'unit', 'http3server']
++TEST_DIRS += ['httpserver', 'gtest', 'unit']
+ 
+ BROWSER_CHROME_MANIFESTS += ['browser/browser.ini']
+ MOCHITEST_MANIFESTS += ['mochitests/mochitest.ini']
