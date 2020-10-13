@@ -16,7 +16,7 @@ license=()
 groups=()
 depends=()
 makedepends=('git'
-             'go-pie')
+             'go')
 checkdepends=()
 optdepends=()
 provides=('sponge-case')
