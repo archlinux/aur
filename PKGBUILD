@@ -4,10 +4,10 @@ _author=mschilli
 _perlmod=XML-RSS-FromHTML-Simple
 pkgname=perl-xml-rss-fromhtml-simple
 pkgver=0.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Create RSS feeds for sites that don't offer them"
 arch=('i686' 'x86_64')
-url="http://search.cpan.org/~$_author/$_perlmod-$pkgver/"
+url="https://search.cpan.org/~$_author/$_perlmod-$pkgver/"
 license=('GPL' 'PerlArtistic')
 depends=('perl-html-parser>=3.56' 'perl-html-tree' 'perl-log-log4perl' 'perl-data-hexdumper' 'perl-xml-rss>=1.22' 'perl-xml-simple>=2.16')
 provides=('perl-xml-rss-fromhtml-simple')

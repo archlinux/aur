@@ -1,8 +1,8 @@
 pkgbase = perl-xml-rss-fromhtml-simple
 	pkgdesc = Create RSS feeds for sites that don't offer them
 	pkgver = 0.05
-	pkgrel = 1
-	url = http://search.cpan.org/~mschilli/XML-RSS-FromHTML-Simple-0.05/
+	pkgrel = 2
+	url = https://search.cpan.org/~mschilli/XML-RSS-FromHTML-Simple-0.05/
 	arch = i686
 	arch = x86_64
 	license = GPL
