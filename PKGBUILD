@@ -1,7 +1,7 @@
 # Maintainer: OriginCode <self@origincode.me>
 
 pkgbase=linux-froidzen
-pkgver=5.8.14.zen1
+pkgver=5.9.zen1
 pkgrel=1
 pkgdesc='Linux ZEN with Patches'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -27,7 +27,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'b71680e5e7a2ca1bd5d6d712f79ff43d7645daef83ffd727091bef3dde363ce6'
+            '0515a4ce03abc2913fbf8a52423554cfa4811dec03751bedcfacb49fde982c1b'
             '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '0389c65d8357f8b22f65aceaf9ceda5a3c76e60ca34f713ff9a09ec379f51dc7')
 
@@ -58,9 +58,17 @@ prepare() {
   # Enable MUQSS
   sed -i "s/# CONFIG_SCHED_MUQSS is not set/CONFIG_SCHED_MUQSS=y/g" .config
   
-  # Enable kernel debug message
-  sed -i "s/CONFIG_CONSOLE_LOGLEVEL_DEFAULT=1/CONFIG_CONSOLE_LOGLEVEL_DEFAULT=7/g" .config
-  sed -i "s/CONFIG_MESSAGE_LOGLEVEL_DEFAULT=1/CONFIG_MESSAGE_LOGLEVEL_DEFAULT=7/g" .config
+  # Enable kernel info message
+  sed -i "s/CONFIG_CONSOLE_LOGLEVEL_DEFAULT=1/CONFIG_CONSOLE_LOGLEVEL_DEFAULT=6/g" .config
+  sed -i "s/CONFIG_MESSAGE_LOGLEVEL_DEFAULT=1/CONFIG_MESSAGE_LOGLEVEL_DEFAULT=6/g" .config
+
+  # Use BBR by default
+  sed -i "s/CONFIG_TCP_CONG_BBR=m/CONFIG_TCP_CONG_BBR=y" .config
+  sed -i "s/CONFIG_DEFAULT_CUBIC=y/CONFIG_DEFAULT_BBR=y" .config
+  sed -i "s/CONFIG_DEFAULT_TCP_CONG=\"cubic\"/CONFIG_DEFAULT_TCP_CONG=\"bbr\"" .config
+
+  # Enable UKSM
+  echo "CONFIG_UKSM=y" >> .config
 
   make olddefconfig
 
