@@ -61,7 +61,7 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1430775
   # source: https://github.com/xhorak/firefox-devedition-flatpak/tree/master/org.mozilla.FirefoxNightly
-  patch -Np1 -i ../0001-Pipewire.patch
+  patch -fNp1 -i ../0001-Pipewire.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
