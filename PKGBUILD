@@ -2,7 +2,7 @@
 
 _pkgbase=synapse-admin
 pkgname=${_pkgbase}-git
-pkgver=r14.475aa11
+pkgver=r71.26b8cea
 pkgrel=1
 pkgdesc="A Matrix administration panel using react-admin"
 arch=(any)
@@ -17,6 +17,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/${_pkgbase}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/${_pkgbase}"
+  yarn install
 }
 
 build() {
