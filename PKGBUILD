@@ -30,11 +30,11 @@ options=(!emptydirs !makeflags !strip)
 _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('firefox')
 provides=('firefox')
-source=("hg+$_repo"
+source=("hg+$_repo#revision=autoland"
         '0001-Pipewire.patch'
         $_pkgname.desktop $_pkgname-symbolic.svg)
 sha256sums=('SKIP'
-            '82a9d6b58fea2ad7e7e9561ce39436b1441ba3a23789fae251a18b58cc22f035'
+            '11181e2668f6dd67693278c5ba65aa213bb7023c1b3fd69c0530f3476ac47843'
             'a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
 
