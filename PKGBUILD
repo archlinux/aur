@@ -1,18 +1,18 @@
 # Maintainer: Kevin Andriessens <kevin@kelaun.be>
 # Contributor: layday <layday@protonmail.com>
 pkgname='instawow'
-pkgver='1.15.0'
+pkgver='1.16.0'
 pkgrel=1
 pkgdesc="Package manager for World of Warcraft"
 arch=('x86_64')
 url="https://github.com/layday/instawow"
 license=('GPL3')
-depends=('python>=3.7.0' 'python-aiohttp>=3.5.0' 'python-alembic>=1.4.0' 'python-click>=7.1.0' 'python-jellyfish>=0.8.2' 'python-jinja>=2.11.0' 'python-loguru<1.0.0' 'python-prompt_toolkit>3.0.2' 'python-prompt_toolkit<4.0.0' 'python-pydantic>=1.6.1' 'python-questionary>=1.4.0' 'python-sqlalchemy>=1.3.19' 'python-typing_extensions>=3.7.0' 'python-yarl>=1.4.0' 'python-slpp-git')
+depends=('python>=3.7.0' 'python-aiohttp>=3.6.0' 'python-alembic>=1.4.3' 'python-click>=7.1.0' 'python-jellyfish>=0.8.2' 'python-jinja>=2.11.0' 'python-loguru<1.0.0' 'python-prompt_toolkit>=3.0.3' 'python-prompt_toolkit<4.0.0' 'python-pydantic>=1.6.1' 'python-questionary>=1.6.0' 'python-sqlalchemy>=1.3.19' 'python-typing_extensions>=3.7.0' 'python-yarl>=1.4.0' 'python-slpp-git')
 makedepends=('tar' 'python-setuptools' 'python-setuptools-scm' 'python-toml')
 optdepends=('python-aiohttp_rpc: server support')
-checkdepends=('python-pytest>=6.0.1' 'python-pytest-asyncio' 'python-aresponses')
+checkdepends=('python-pytest>=6.0.1' 'python-pytest<7.0.0' 'python-pytest-asyncio>=0.14.0' 'python-aresponses>=2.0.0')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3780fa9f2427ded0c28c8167ec09c870e52232d1205aa62764b1fb13983660ab')
+sha256sums=('2755044dd3cd2ce8f15691f0916936141f60bea6b79a9ad44b96be3059125ae5')
 
 build() {
 	cd "$pkgname-$pkgver"
