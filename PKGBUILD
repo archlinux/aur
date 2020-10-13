@@ -1,4 +1,5 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Maintainer: Skallwar <estblcsk@gmail.com>
 # https://github.com/orhun/pkgbuilds
 
 pkgname=suckit-git
