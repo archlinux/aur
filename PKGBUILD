@@ -10,7 +10,7 @@ pkgver() {
     printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgver=r74.5130596
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Github extension for vim-fugitive'
 arch=('any')

@@ -1,6 +1,6 @@
 post_install() {
     echo -n 'Updating vim help tags ...'
-    /usr/bin/vim --noplugin -u NONE -U NONE -c'helptags /usr/share/vim/doc' -cq >&/dev/null
+    /usr/bin/vim --noplugin -u NONE -U NONE -c'helptags /usr/share/vim/vimfiles/doc' -cq >&/dev/null
     echo '  done.'
 }
 
