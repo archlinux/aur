@@ -11,7 +11,7 @@ license=('GPL')
 depends=(python-google-auth-oauthlib python-pyxdg)
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('e2f6ea385d80e885431f0a8385c629020b2ea5dbe20b3356260b658841c64de3966511ee17a7b0c6e3ac86c2a279fd1dea83ce89be961dcda4c5f34e5c152f23')
+sha512sums=('12a59f911e66dde8fd62ab014349afbd09785273fbf0b7b004857a114d1187d2ad9bd3740989a74de58ac26145ece60ac07fece55d73a9564a16a0f6780cc65f')
 
 build() {
 	cd "$pkgname-$pkgver"
