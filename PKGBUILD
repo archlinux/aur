@@ -2,16 +2,17 @@
 
 pkgname=neopo-git
 _gitname="neopo"
-pkgver=2020.10.13
+pkgver=2020.10.13.1
 pkgrel=1
 pkgdesc="A lightweight solution for local Particle development."
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://neopo.xyz"
 license=('custom')
 provides=('neopo')
 source=('git+https://github.com/nrobinson2000/neopo.git')
 md5sums=('SKIP')
-depends=('libusb' 'lib32-glibc' 'python3' 'vim' 'git' 'perl-archive-zip')
+depends_x86_64=('libusb' 'lib32-glibc' 'python3' 'vim' 'git' 'perl-archive-zip')
+depends_aarch64=('libusb' 'python3' 'vim' 'git' 'perl-archive-zip' 'dfu-util' 'nodejs')
 
 package() {
     cd $_gitname
