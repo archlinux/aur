@@ -30,4 +30,8 @@ pkgver() {
 package() {
     cd "$srcdir/${pkgname%}"
     python setup.py install --root=${pkgdir} --optimize=2
+
+    # copy custom license:
+    # https://wiki.archlinux.org/index.php/PKGBUILD#license
+    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
