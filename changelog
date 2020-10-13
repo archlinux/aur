@@ -1,4 +1,26 @@
 
+Proton-5.9-GE-8-ST
+
+GloriousEggroll released this Oct 13, 2020
+
+Ok, so I found yet a few more important fixes... so I went ahead and just said screw it and took yesterdays update and added it on to today's release to make people more aware. This build should be used as its basically a bunch of hotfixes on top of GE-7-ST.
+    - winetricks is now fully integrated into the build, which means no more relying on the winetricks package of whatever system it's running on, and no more failing without any notice if it's not installed on the system
+    - Death Stranding working again (found the issue that broke it in GE-5-ST, it was a woopsie on my part).
+    - Death Stranding Red Halo and issue fixed
+    - Baldur's Gate 3 DX11 crash fixed
+    - Baldur's Gate 3 will now ask you if you want to use Vulkan (No=DX11)
+    - Baldur's Gate 3 still requires AMDVLK on AMD if you want to use Vulkan, DX11 works fine.
+    - Serious Sam 4 will now ask you if you want to use Vulkan (No=DX11)
+    - Serious Sam 4 Nvidia still crashes in-game with Vulkan. DX11 works fine.
+    - Serious Sam 4 flicker workaround found and applied.
+    - Halo: MCC -- vcrun2019 fix applied -- should fix coop campaign multiplayer desync
+    - Just Cause 4 patches backported -- game works now
+    - Watch Dogs 2 eac launcher and nosplash options added to protonfix
+    - Soul Calibur VI -- I found out the game actually works but you need to 'press any button' before the 'press any button' audio finishes, or it will freeze.
+    - vkd3d has been updated -- Horizon Zero Dawn fullscreen mode should be fixed now.
+    - dxvk was updated with the latest release which fixes some previous major crash issues.
+
+
 Proton-5.9-GE-7-ST
 
 GloriousEggroll released this Oct 5, 2020
