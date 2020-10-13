@@ -1,0 +1,21 @@
+pkgbase = qcad-git
+	pkgdesc = QCAD - The Open Source 2D CAD
+	pkgver = v3.25.2.0.r92.gfc244555a
+	pkgrel = 1
+	url = https://github.com/qcad/qcad
+	arch = x86_64
+	license = GPL3
+	makedepends = glu
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-script
+	depends = qt5-svg
+	depends = qt5-xmlpatterns
+	depends = freetype2
+	provides = qcad
+	conflicts = qcad
+	source = git+https://github.com/qcad/qcad.git
+	sha256sums = SKIP
+
+pkgname = qcad-git
+
