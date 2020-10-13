@@ -1,17 +1,16 @@
 pkgbase = bit
 	pkgdesc = A modern Git CLI
 	pkgver = 0.5.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chriswalz/bit
 	install = bit.install
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	depends = glibc
-	provides = bit
+	depends = git
 	conflicts = bit-git
 	source = bit-0.5.12.tar.gz::https://github.com/chriswalz/bit/archive/v0.5.12.tar.gz
-	sha1sums = 154e447296ae2109ee6b8bcb5443d114c3ede142
+	sha256sums = fdaff6747d0e265712f30e1fa76bd6028fd72e62fc27b250bf2a2cebd73a698b
 
 pkgname = bit
 
