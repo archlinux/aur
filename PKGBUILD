@@ -1,4 +1,3 @@
-# Maintainer: Allan M. de Azevedo <4lln.medeiros at gmail dot com>
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Contributor: Edgard Castro <castro@edgard.org>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
@@ -7,7 +6,7 @@
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
 
 pkgname=papirus-icon-theme-git
-pkgver=20200102.r62.gb7fc53b171
+pkgver=20201001.r3.g7da16ace69
 pkgrel=1
 epoch=1
 pkgdesc="Papirus icon theme (git version)"
