@@ -1,6 +1,6 @@
 pkgbase = phosh
 	pkgdesc = A pure Wayland shell prototype for GNOME on mobile devices
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/phosh
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = phosh
 	makedepends = meson
 	makedepends = vala
 	depends = feedbackd
-	depends = libhandy>=1
+	depends = libhandy
 	depends = phoc
-	source = git+https://source.puri.sm/Librem5/phosh.git#tag=v0.4.4
+	source = git+https://source.puri.sm/Librem5/phosh.git#tag=v0.4.5
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	sha256sums = SKIP
 	sha256sums = SKIP
