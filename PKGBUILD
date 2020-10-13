@@ -2,15 +2,15 @@
 # Maintainer: ShadowKyogre <shadowkyogre.public+aur@gmail.com>
 # Maintainer: rmorgans <rick.morgans@gmail.com>
 pkgname=direnv
-pkgver=2.22.0
-pkgrel=2
+pkgver=2.23.0
+pkgrel=1
 pkgdesc='a shell extension that manages your environment'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://direnv.net'
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/direnv/direnv/archive/v$pkgver.tar.gz")
-sha256sums=('bf35d267a28dcace4109c3256f2cd7cb0ca3b8d461d2fbf848db3f65b809befd')
+sha256sums=('d28bc959680a309d0d54f754edfe622cdde14a4b806fdd32d285d47a322098b9')
 
 _gopackagepath=github.com/direnv/direnv
 
