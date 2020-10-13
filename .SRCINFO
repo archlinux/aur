@@ -9,6 +9,7 @@ pkgbase = moome
 	makedepends = jdk-openjdk
 	makedepends = java-environment-common
 	makedepends = zip
+	makedepends = git
 	depends = java-runtime-common
 	source = moome-1.0::git+https://github.com/BlackberryCode/moome.git#branch=master
 	md5sums = SKIP
