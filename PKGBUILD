@@ -2,7 +2,7 @@
 
 pkgname=canonical-multipass-git
 _pkgname=multipass
-pkgver=1.6.0.dev.r30.g204d76ad
+pkgver=1.6.0.dev.r36.gcbd952db
 pkgrel=1
 pkgdesc="Multipass orchestrates virtual Ubuntu instances"
 arch=('x86_64')
@@ -13,10 +13,8 @@ depends=('qt5-x11extras'
          'hicolor-icon-theme'
          'libssh')
 makedepends=('cmake' 'git' 'libvirt')
-source=("canonical-multipass::git+https://github.com/canonical/multipass"
-        '0001-Fix-deprecation-errors.patch')
-sha256sums=('SKIP'
-            'SKIP')
+source=("canonical-multipass::git+https://github.com/canonical/multipass")
+sha256sums=('SKIP')
 
 pkgver() {
   cd canonical-multipass
@@ -26,7 +24,6 @@ pkgver() {
 prepare() {
   cd canonical-multipass
   git submodule update --init --recursive
-  git am < "${srcdir}/0001-Fix-deprecation-errors.patch"
 }
 
 build() {
@@ -34,6 +31,7 @@ build() {
   rm -rf build
   mkdir -p build
   cd build
+  export CXXFLAGS='-Wno-error=cpp -Wno-error=deprecated-declarations'
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }

@@ -1,6 +1,6 @@
 pkgbase = canonical-multipass-git
 	pkgdesc = Multipass orchestrates virtual Ubuntu instances
-	pkgver = 1.6.0.dev.r30.g204d76ad
+	pkgver = 1.6.0.dev.r36.gcbd952db
 	pkgrel = 1
 	url = https://multipass.run
 	arch = x86_64
@@ -13,8 +13,6 @@ pkgbase = canonical-multipass-git
 	depends = hicolor-icon-theme
 	depends = libssh
 	source = canonical-multipass::git+https://github.com/canonical/multipass
-	source = 0001-Fix-deprecation-errors.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = canonical-multipass-git
