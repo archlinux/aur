@@ -15,7 +15,7 @@ source=("https://github.com/ilius/${pkgname}/archive/${pkgver}.tar.gz"
         "setup.patch")
 sha256sums=('3dfb14c03b936d891475b9da9814602e82ca9c9f1eee6105d772780ab5f5ca08'
             '8d2e773ff783a7f94b67819298d3d26fde2feabc1ee425f6dc2c31d992fafec1'
-            '6ac8a96f5f56bbebcdce55a077ccbcbe6b8395c5c014e820aaca09354f08da4a')
+            '5336d65db39f181e91e8bea848014cf101379c315e1ddf4c2b3e4f8ff15ee1c2')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
