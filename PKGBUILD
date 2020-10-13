@@ -1,18 +1,17 @@
 # Maintainer: Jonas 'cherti' Große Sundrup <aur@letopolis.de>
 
 pkgname=elementary-planner
-pkgver=2.4.6
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="Task manager with Todoist support"
 arch=('x86_64')
 url="https://planner-todo.web.app"
 license=('GPL3')
-depends=('libsoup' 'granite' 'webkit2gtk' 'evolution-data-server')
-optdepends=('gtk-theme-elementary' 'elementary-icon-theme')
+depends=('libsoup' 'granite' 'webkit2gtk' 'evolution-data-server' 'gtk-theme-elementary' 'elementary-icon-theme')
 makedepends=('git' 'meson' 'vala')
 conflicts=('elementary-planner-git')
-source=('https://github.com/alainm23/planner/archive/2.4.6.tar.gz')
-sha256sums=('c8384a3940f1ccab50e98846983c4b1b8400ba91520b5106370c35307eceea09')
+source=('https://github.com/alainm23/planner/archive/2.5.4.tar.gz')
+sha256sums=('fa2eb3f4e9c283f08095555914536ee82033b93de5f610ed1ff319a0b0abaac7')
 
 build() {
 	cd planner-$pkgver
