@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-isolated-beta-bin
 	pkgdesc = The official GUI for MongoDB - Isolated Edition - beta version - binary version
-	pkgver = 1.23.0.beta.2
+	pkgver = 1.23.0.beta.3
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = mongodb-compass-isolated-beta-bin
 	optdepends = org.freedesktop.secrets
 	provides = mongodb-compass-isolated-beta
 	conflicts = mongodb-compass-isolated-beta
-	source = mongodb-compass-isolated-beta-bin-1.23.0.beta.2-1.rpm::https://github.com/mongodb-js/compass/releases/download/v1.23.0-beta.2/mongodb-compass-isolated-beta-1.23.0-beta.2.x86_64.rpm
-	sha256sums = e750b03b4c21507b548cdc7643408db40d6da2bb799e0efcc4178a52c11c9dbd
+	source = mongodb-compass-isolated-beta-bin-1.23.0.beta.3-1.rpm::https://github.com/mongodb-js/compass/releases/download/v1.23.0-beta.3/mongodb-compass-isolated-beta-1.23.0-beta.3.x86_64.rpm
+	sha256sums = 32d4755798b8839ff0ff8227cfb0e6c7f12b8f15fcaf1025c8729c92d3f9279c
 
 pkgname = mongodb-compass-isolated-beta-bin
