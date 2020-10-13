@@ -8,7 +8,7 @@
 # https://www.kernel.org/category/releases.html
 # 5.4 Greg Kroah-Hartman & Sasha Levin 2019-11-24 Dec, 2021
 _LLL_VER=5.4
-_LLL_SUBVER=64
+_LLL_SUBVER=66
 
 # Bisect debug, v5.4.47 -> v5.4.48
 _Bisect_debug=off # on, test, off
@@ -78,6 +78,7 @@ source=(
         'linux-cjktty-patch-for-5.4.36+.patch'
         'linux-cjktty-patch-for-5.4.54+.patch'
         'linux-cjktty-patch-for-5.4.62+.patch'
+        'linux-cjktty-patch-for-5.4.66+.patch'
         'config'         # the main kernel config file
         '60-linux.hook'  # pacman hook for depmod
         '90-linux.hook'  # pacman hook for initramfs regeneration
@@ -90,7 +91,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '01ceb94f15a8e1877cc10b85179f2f1e6fafdede793c53e8a0b75771e9769a53'
+            'fd9444a5b5b5f10cbe1dc2d236f6fc3552a807905d4bb44cf4806ebadf90697d'
             'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
             '81d34bf02e771a126af5cb382d44a86dcc759c88b7c89fc7e5b7737731b9130e'
             '50213f3270499fceb452946252d61f5471571c77baf3dd510fbb00cfa9831c9a'
@@ -102,6 +103,7 @@ sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             '573f1c40951a6ee4cf6b07a6a8a1123b00fcd8bff29843905cf191e08f1d87f2'
             '2c9faabb5e09b1f818b051ced3eb90b6c04aa08616952d99eedf328c7c8dda2f'
             '4d511fb62966549b9ea4a1d97769f79e4d66fc141cd0b001e7d286367a038a09'
+            '1f0af2c1044cf177b84fea8bb49aaa5cf9282c5588a7995798d63177565b0727'
             '7ce388e429d8df479a721285e445e116c5ee41e3126a702862e59056460b655e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
@@ -156,6 +158,7 @@ prepare() {
   patch -i ../linux-cjktty-patch-for-5.4.36+.patch "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
   patch -i ../linux-cjktty-patch-for-5.4.54+.patch "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
   patch -i ../linux-cjktty-patch-for-5.4.62+.patch "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
+  patch -i ../linux-cjktty-patch-for-5.4.66+.patch "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
   patch -Np1 -i "../${_CJKTTY_PATCH_FILE}.${_LLL_SUBVER}.patch"
 
   msg "Patching sphinx extensions for htmldocs"
