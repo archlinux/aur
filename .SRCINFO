@@ -1,0 +1,17 @@
+pkgbase = moome-server-git
+	pkgdesc = a server for the Moome client
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/BlackberryCode/moome-server
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = jdk-openjdk
+	makedepends = java-environment-common
+	makedepends = git
+	depends = java-runtime-common
+	source = moome-server-git-1.0::git+https://github.com/BlackberryCode/moome-server.git#branch=main
+	md5sums = SKIP
+
+pkgname = moome-server-git
+
