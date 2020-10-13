@@ -13,6 +13,7 @@ license=('LGPL3')
 depends=('plasma-desktop' 'kconfig' 'kcoreaddons' 'kwidgetsaddons')
 makedepends=('qt5-base' 'git')
 provides=($_pkgname)
+conflicts=($_pkgname)
 source=("$pkgname::git://github.com/baduhai/Koi")
 md5sums=('SKIP')
 
