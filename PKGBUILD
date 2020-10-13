@@ -2,8 +2,8 @@
 # Contributor: Fabio Loli <fabio.loli@disroot.org>
 
 pkgname=syg_go
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc='Yggdrasil address miner written in Go'
 
 url="https://git.tdem.in/tdemin/syg_go"
@@ -12,8 +12,8 @@ license=(LGPL3)
 makedepends=(go)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://git.tdem.in/tdemin/syg_go/archive/v${pkgver}.tar.gz")
-md5sums=('d173e49abedffa33babff5d70c01afbd')
-sha256sums=('67128efd548a635f0d8ab30c6dfda266cf4bfd31fe856150273944c9e460a859')
+md5sums=('6eccbae1ebdff3ae717f858600b3e3c5')
+sha256sums=('8df40ee3fbdb57827277c4f7d11e4c10e77f246f926dfff44b325a95329992b0')
 
 build () {
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
