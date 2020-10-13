@@ -5,7 +5,7 @@
 # Contributor: marsam
 
 pkgname=universal-ctags-git
-pkgver=5.9.20201011.0.r12.g01b9fc866
+pkgver=5.9.20201011.0.r12.g01b9fc86
 pkgrel=1
 pkgdesc='Generates an index (or tag) file of language objects found in source files'
 arch=('x86_64')
