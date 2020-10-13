@@ -73,7 +73,7 @@ source=(
         'sphinx-workaround.patch'
         'ck-patch-for-5.4.57+.patch'
         'ck-patch-for-5.4.62+.patch'
-        'fix-ck-broken-sleep2ram-5.4.48+.patch::https://github.com/zen-kernel/zen-kernel/commit/fb7e2cfaf61cf5f9c2336331e73296f455bd2d51.patch'
+        'fix-ck-broken-sleep2ram-5.4.48+.patch' # https://github.com/zen-kernel/zen-kernel/commit/fb7e2cfaf61cf5f9c2336331e73296f455bd2d51.patch
         'uksm-patch-for-5.4.33+.patch'
         'uksm-patch-for-5.4.69+.patch'
         'linux-cjktty-patch-for-5.4.36+.patch'
