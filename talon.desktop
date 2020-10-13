@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Talon
+GenericName=Voice Control
+Comment=Powerful hands-free voice and gaze input scriptable with Python.
+Exec=talon
+Terminal=false
+Type=Application
+Icon=talon
+Categories=Utility;

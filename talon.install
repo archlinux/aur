@@ -1,0 +1,12 @@
+post_install () {
+  echo "You need to copy speech model(s) to your user directory."
+  echo "See https://talonvoice.com/docs/index.html#wav2letter-setup"
+  echo
+  echo "The default model is included in this package at:"
+  echo "    /usr/share/talon/resources/models/talon-w2l-small3-dslm-en_US"
+  echo
+  echo "Talon does nothing without scripts; none are bundled. Look at the"
+  echo "documentation to get started or write your own:"
+  echo
+  echo "    https://talonvoice.com/docs/index.html"
+}
