@@ -3,7 +3,7 @@
 _pyname=bandcamp-dl
 pkgname=bandcamp-dl-git
 pkgver=v0.0.8.12.r4.g4a5e14b
-pkgrel=1
+pkgrel=2
 pkgdesc="download audio from BandCamp.com"
 arch=('any')
 url="https://github.com/iheanyi/bandcamp-dl"
@@ -34,6 +34,7 @@ pkgver() {
 
 package() {
   cd "$_pyname"
+  sed -i -e 's#json+ld#ld+json#' bandcamp_dl/bandcampjson.py
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
