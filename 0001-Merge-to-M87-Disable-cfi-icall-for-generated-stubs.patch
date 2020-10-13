@@ -1,0 +1,89 @@
+From 09e038ace39ac3e0ee57edaadfa80415cc764e9b Mon Sep 17 00:00:00 2001
+From: Tom Anderson <thomasanderson@chromium.org>
+Date: Sat, 10 Oct 2020 01:19:15 +0000
+Subject: [PATCH] [Merge to M87] Disable cfi-icall for generated stubs
+
+> The generated stubs use dlsym()ed functions, so must not be instrumented
+> with CFI-icall.
+>
+> BUG=1136413
+> R=sky
+>
+> Change-Id: I698e6b3ed96349a2bb477767d54aeb9b3ad9096f
+> Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2462216
+> Commit-Queue: Scott Violet <sky@chromium.org>
+> Reviewed-by: Scott Violet <sky@chromium.org>
+> Auto-Submit: Thomas Anderson <thomasanderson@chromium.org>
+> Cr-Commit-Position: refs/heads/master@{#815379}
+
+BUG=1136413
+TBR=sky
+NOTRY=true
+NOPRESUBMIT=true
+NOTREECHECKS=true
+
+Change-Id: I3f0dde34431ca5058930ae063517163f0450e6c1
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2464347
+Reviewed-by: Thomas Anderson <thomasanderson@chromium.org>
+Cr-Commit-Position: refs/branch-heads/4280@{#219}
+Cr-Branched-From: ea420fb963f9658c9969b6513c56b8f47efa1a2a-refs/heads/master@{#812852}
+---
+ tools/generate_stubs/generate_stubs.py | 5 +++++
+ tools/generate_stubs/rules.gni         | 4 ++++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/tools/generate_stubs/generate_stubs.py b/tools/generate_stubs/generate_stubs.py
+index 9cf65c73a51f..ed3b89c2904f 100755
+--- a/tools/generate_stubs/generate_stubs.py
++++ b/tools/generate_stubs/generate_stubs.py
+@@ -92,6 +92,7 @@ FILE_TYPE_WIN_DEF = 'windows_def'
+ #   arg_list: The arguments used to call the stub function.
+ STUB_FUNCTION_DEFINITION = (
+     """extern %(return_type)s %(name)s(%(params)s) __attribute__((weak));
++DISABLE_CFI_ICALL
+ %(return_type)s %(export)s %(name)s(%(params)s) {
+   %(return_prefix)s%(name)s_ptr(%(arg_list)s);
+ }""")
+@@ -110,6 +111,7 @@ STUB_FUNCTION_DEFINITION = (
+ #                   argument.
+ VARIADIC_STUB_FUNCTION_DEFINITION = (
+     """extern %(return_type)s %(name)s(%(params)s) __attribute__((weak));
++DISABLE_CFI_ICALL
+ %(return_type)s %(export)s %(name)s(%(params)s) {
+   va_list args___;
+   va_start(args___, %(last_named_arg)s);
+@@ -131,6 +133,7 @@ VARIADIC_STUB_FUNCTION_DEFINITION = (
+ #                   argument.
+ VOID_VARIADIC_STUB_FUNCTION_DEFINITION = (
+     """extern void %(name)s(%(params)s) __attribute__((weak));
++DISABLE_CFI_ICALL
+ void %(export)s %(name)s(%(params)s) {
+   va_list args___;
+   va_start(args___, %(last_named_arg)s);
+@@ -179,6 +182,8 @@ IMPLEMENTATION_PREAMBLE = """// This is generated file. Do not modify directly.
+ 
+ #include <map>
+ #include <vector>
++
++#include "base/compiler_specific.h"
+ """
+ 
+ # The start and end templates for the enum definitions used by the Umbrella
+diff --git a/tools/generate_stubs/rules.gni b/tools/generate_stubs/rules.gni
+index a69f8e563e9f..7b6d34f081be 100644
+--- a/tools/generate_stubs/rules.gni
++++ b/tools/generate_stubs/rules.gni
+@@ -84,6 +84,10 @@ template("generate_stubs") {
+                              "public_deps",
+                              "visibility",
+                            ])
++    if (!defined(deps)) {
++      deps = []
++    }
++    deps += [ "//base" ]
+     if (!defined(public_deps)) {
+       public_deps = []
+     }
+-- 
+2.28.0
+

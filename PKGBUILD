@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-dev-ozone
-pkgver=87.0.4270.0
+pkgver=87.0.4280.11
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (dev channel)"
@@ -29,16 +29,16 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium-skia-harmony.patch
-        d23f751.diff)
-sha256sums=('dfcc78c1b8bd5c447004dbd50f95b9c83666e308d7e77a9a50a4c4663edf3aa9'
+        0001-Merge-to-M87-Disable-cfi-icall-for-generated-stubs.patch)
+sha256sums=('a7c9424f0efadddd62c80e9ec126779a0cb0cf99376241f48e5044af0142a83c'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            '458419d7dc4acded51f1684fbc1163f9db778c48a1987c0b3aec37757b6935d1')
+            '052c35ec5f9dacfe2baa8c82225079c95bbb089abd7be6fd89db3690c242718c')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  [ffmpeg]=ffmpeg # broken with recent ffmpeg git
+  [ffmpeg]=ffmpeg
   [flac]=flac
   [fontconfig]=fontconfig
   [freetype]=freetype2
@@ -47,7 +47,7 @@ declare -gA _system_libs=(
   [libdrm]=
   [libjpeg]=libjpeg
   # [libpng]=libpng    # https://crbug.com/752403#c10
-  # [libvpx]=libvpx
+  [libvpx]=libvpx
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
@@ -84,8 +84,7 @@ prepare() {
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
 
-  # https://bugs.chromium.org/p/chromium/issues/detail?id=1128997#c33
-  patch -Np1 -i ../d23f751.diff
+  patch -Np1 -i ../0001-Merge-to-M87-Disable-cfi-icall-for-generated-stubs.patch
 
   # Force script incompatible with Python 3 to use /usr/bin/python2
   sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
