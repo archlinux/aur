@@ -11,7 +11,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 options=('!strip')
 source=("${pkgname%-bin}-$pkgver.tar.gz::$url/releases/download/v$pkgver/Bibata.tar.gz")
-sha256sums=('e46755e059d2166840e2113009201d2f318197e7cc16582a98aaa1766102332d')
+sha256sums=('6a5db11290e126400c72dbb8711a276c2636a59806931b7ba007b6cf6fb5ac66')
 
 package() {
 	install -d "$pkgdir/usr/share/icons"
