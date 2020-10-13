@@ -2,7 +2,7 @@
 
 _pkgname='ucollage'
 pkgname="${_pkgname}-git"
-pkgver=0.1.0.r1.g684c52d
+pkgver=r82.4a7e9a9
 pkgrel=1
 pkgdesc='Terminal image viewer based on Überzug'
 arch=('any')
@@ -19,12 +19,15 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  install -Dm755 "${_pkgname}/${_pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dm644 "${_pkgname}/README.md" -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  cd "${_pkgname}"
+  install -Dm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dm644 "${_pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
+  install -Dm644 'README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:

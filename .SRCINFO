@@ -1,6 +1,6 @@
 pkgbase = ucollage-git
 	pkgdesc = Terminal image viewer based on Überzug
-	pkgver = 0.1.0.r1.g684c52d
+	pkgver = r82.4a7e9a9
 	pkgrel = 1
 	url = https://github.com/ckardaris/ucollage
 	arch = any
