@@ -1,12 +1,14 @@
 pkgbase = python-pytorch-lightning
-	pkgdesc = Rapid research framework for PyTorch. The researcher's version of Keras
-	pkgver = 0.10.0
+	pkgdesc = The lightweight PyTorch wrapper for high-performance AI research
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/williamFalcon/pytorch-lightning
+	url = https://github.com/PyTorchLightning/pytorch-lightning
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
+	depends = python-fsspec
 	depends = python-pandas
+	depends = python-pyaml
 	depends = python-numpy
 	depends = python-scikit-learn
 	depends = python-pytorch
@@ -14,8 +16,10 @@ pkgbase = python-pytorch-lightning
 	depends = python-twine
 	depends = python-tqdm
 	optdepends = python-apex: mixed precision support
-	source = https://files.pythonhosted.org/packages/source/p/pytorch-lightning/pytorch-lightning-0.10.0.tar.gz
-	sha512sums = 6eb2b11ae5c389cb4324d9ba30e21619052216ab126f2eec76bbda3fe93b775dc709ab314202aad2dd67f9cc32ed9858a7eafd1f6a54d7cc34907ea75fb593e5
+	optdepends = python-tensorboard: tensorboard support
+	optdepends = python-horovod: for distributed training
+	source = pytorch-lightning-1.0.0.tar.gz::https://github.com/PyTorchLightning/pytorch-lightning/archive/1.0.0.tar.gz
+	sha512sums = 9e157baef6ee04c4518b4acb4cc30d51a0d70e143fef90dee2d1edd64c77d7f3896b6ee8b6e24dc6d12335300659a4118f35179877e4876fb70b340b28d5e858
 
 pkgname = python-pytorch-lightning
 
