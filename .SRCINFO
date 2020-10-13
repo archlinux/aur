@@ -1,6 +1,6 @@
 pkgbase = grpcui-bin
 	pkgdesc = An interactive web UI for gRPC, along the lines of postman (binary release)
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/fullstorydev/grpcui
 	arch = i686
@@ -8,12 +8,12 @@ pkgbase = grpcui-bin
 	license = MIT
 	provides = grpcui
 	conflicts = grpcui
-	source = README_1.0.0.md::https://raw.githubusercontent.com/fullstorydev/grpcui/v1.0.0/README.md
-	sha256sums = aaf55221e59711661504780c125344e7a4d0bea72d79ce799d75e25f1583b595
-	source_i686 = grpcui_1.0.0_i686.tar.gz::https://github.com/fullstorydev/grpcui/releases/download/v1.0.0/grpcui_1.0.0_linux_x86_32.tar.gz
-	sha256sums_i686 = b4d5554fa9b1fbd9bb19e84b0e5f5a66a7c45ed0ac1ff7c8481fd038f2c53e86
-	source_x86_64 = grpcui_1.0.0_x86_64.tar.gz::https://github.com/fullstorydev/grpcui/releases/download/v1.0.0/grpcui_1.0.0_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 6a3eb993f971db3062f54137575d4de72b436fa3e535edcd98a3d7a77391d536
+	source = README_1.1.0.md::https://raw.githubusercontent.com/fullstorydev/grpcui/v1.1.0/README.md
+	sha256sums = c880ea6b475a9b8ef1bed77589ed607d61514ba5e792ca5a5598ea91f2a2a6fc
+	source_i686 = grpcui_1.1.0_i686.tar.gz::https://github.com/fullstorydev/grpcui/releases/download/v1.1.0/grpcui_1.1.0_linux_x86_32.tar.gz
+	sha256sums_i686 = aea2d3c94e1cb9e9ed11906209e3e5f7478c7e80f069ebef19be1deb0dd7d1bf
+	source_x86_64 = grpcui_1.1.0_x86_64.tar.gz::https://github.com/fullstorydev/grpcui/releases/download/v1.1.0/grpcui_1.1.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 41b9b606a025561f7df892e78a8ac1819597ed74d2300183797ab8caa7b290a6
 
 pkgname = grpcui-bin
 
