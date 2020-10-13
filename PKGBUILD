@@ -1,4 +1,7 @@
-# Maintainer: Vicente Reyes <vreyesvaldivieso@gmail.com>
+# Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Contributor: Vicente Reyes <vreyesvaldivieso@gmail.com>
+# https://github.com/orhun/pkgbuilds
+
 pkgname=funkicrab-git
 pkgver=r18.98528cc
 pkgrel=1
@@ -6,22 +9,22 @@ pkgdesc="Optimising Brainfuck compiler written in Rust"
 arch=('x86_64')
 url="https://github.com/zesterer/funkicrab"
 license=('unknown')
-depends=('gcc-libs')
-makedepends=('rust-nightly')
-source=("git+git://github.com/zesterer/funkicrab.git")
-md5sums=('SKIP')
+makedepends=('cargo' 'git')
+source=("git+${url}")
+sha512sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
-    cargo +nightly build --release --locked
+  cd "${pkgname%-git}"
+  cargo build --release --locked --all-features
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
-    install -Dm 755 target/release/${pkgname%-git} -t "${pkgdir}/usr/bin"
+  cd "${pkgname%-git}"
+  install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }

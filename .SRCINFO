@@ -5,10 +5,10 @@ pkgbase = funkicrab-git
 	url = https://github.com/zesterer/funkicrab
 	arch = x86_64
 	license = unknown
-	makedepends = rust-nightly
-	depends = gcc-libs
-	source = git+git://github.com/zesterer/funkicrab.git
-	md5sums = SKIP
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/zesterer/funkicrab
+	sha512sums = SKIP
 
 pkgname = funkicrab-git
 
