@@ -1,0 +1,19 @@
+pkgbase = fhc-bin
+	pkgdesc = Fast HTTP Checker
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Edu4rdSHL/fhc
+	arch = x86_64
+	license = GPL3
+	provides = fhc
+	conflicts = fhc
+	conflicts = fhc-git
+	source_x86_64 = fhc-0.4.0::https://github.com/Edu4rdSHL/fhc/releases/download/0.4.0/fhc-linux
+	source_x86_64 = fhc-0.4.0-README.md::https://github.com/Edu4rdSHL/fhc/raw/0.4.0/README.md
+	source_x86_64 = fhc-0.4.0-man.1::https://github.com/Edu4rdSHL/fhc/raw/0.4.0/fhc.1
+	sha256sums_x86_64 = d27cbcc6fa3da1489b21f2fec9ba39ad0881b78e21d1450ba96e4939974a6e9f
+	sha256sums_x86_64 = 60ccabd6fbafea06b34bf951a2eefb34331da1dea5e3b1fcb24806bec095c70d
+	sha256sums_x86_64 = 27c6034fc9c09d0c568f115c13cd39a62721a4262e25b6a2fceba223c5b6f2b7
+
+pkgname = fhc-bin
+
