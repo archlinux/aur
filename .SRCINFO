@@ -1,7 +1,7 @@
 pkgbase = forticlient-vpn
 	pkgdesc = Build through the official package of FortiClient VPN
 	pkgver = 6.4.0.0851
-	pkgrel = 7
+	pkgrel = 8
 	url = https://forticlient.com/
 	arch = x86_64
 	license = custom:fortinet
