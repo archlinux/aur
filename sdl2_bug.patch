@@ -1,0 +1,25 @@
+From b7bf5f6422f60e863051d1cfa3f067cd028a0bf8 Mon Sep 17 00:00:00 2001
+From: Darren Blaber <dmbtech@gmail.com>
+Date: Sat, 1 Aug 2020 17:54:23 -0400
+Subject: [PATCH] Fix configure.ac so sheepshaver builds with sdl2 changes
+
+ENABLE_SDL1 must be set after commit https://github.com/cebix/macemu/commit/a46759990d33d7d1e2c7bac01459747d6180eb76 or else
+symbols in video_sdl.cpp(VideoExit(), VideoInit() etc) will not be available, when building sheepshaver with
+--enable-sdl-video. Sheepshaver and BasiliskII share the same SDL code,
+so this must be changed as well.
+---
+ SheepShaver/src/Unix/configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/SheepShaver/src/Unix/configure.ac b/SheepShaver/src/Unix/configure.ac
+index 006fe872..cb3baa0a 100644
+--- a/SheepShaver/src/Unix/configure.ac
++++ b/SheepShaver/src/Unix/configure.ac
+@@ -195,6 +195,7 @@ if [[ "x$WANT_SDL" = "xyes" ]]; then
+   fi
+   if [[ "x$ac_cv_framework_SDL" = "xno" ]]; then
+     AC_PATH_PROG(sdl_config, "sdl-config")
++    AC_DEFINE(ENABLE_SDL1, 1, [Define if using SDL1, sheepshaver only currenly supports 1.])
+     if [[ -n "$sdl_config" ]]; then
+       sdl_cflags=`$sdl_config --cflags`
+       if [[ "x$WANT_SDL_STATIC" = "xyes" ]]; then

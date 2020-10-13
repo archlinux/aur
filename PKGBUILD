@@ -2,8 +2,8 @@
 
 pkgbase=sheepshaver-git
 pkgname=(sheepshaver-git sheepnet-dkms-git)
-pkgver=r2619.gcbad6f95
-pkgrel=2
+pkgver=r2660.g29bb3d5a
+pkgrel=1
 pkgdesc="An Open Source PowerMac Emulator"
 arch=('x86_64')
 url="http://sheepshaver.cebix.net"
@@ -13,12 +13,12 @@ source=('git+https://github.com/cebix/macemu'
         'SheepShaver.sysctl'
         'SheepShaver.desktop'
         'SheepShaver.png'
-		'unsigned_bug.patch')
+		'sdl2_bug.patch')
 sha256sums=('SKIP'
             'a4aa858b95d29906873693988d5db42d5a4da8aa94a72c79374f59fc488efd51'
             'cb002e73e864a6ca271e0bbaa6df6eb89dc1df86856fc575c20bf79367458c39'
             'b7f67b1f8424f3e0ffa1a5e57597f368c4c4f93ea1f871ec0a76700b7519b241'
-            '1702ef4c5ea4459268653ea7a2a76d2b3e60a9e4b17c64ea9818869124539e49')
+            'ab944b2d074df35671ad534a1c768fdcf663d9d0f838d68b73007e3737b1a0c4')
 
 pkgver() {
   cd macemu
@@ -27,7 +27,7 @@ pkgver() {
 
 prepare() {
   cd macemu/
-  #patch -p1 -i "$srcdir/unsigned_bug.patch" # patch merged upstream
+  patch -p1 -i "$srcdir/sdl2_bug.patch"
 }
 
 build() {
@@ -39,11 +39,9 @@ build() {
     --enable-sdl-audio \
 	--enable-addressing=real \
     --enable-sdl-video \
-    --enable-tuntap \
     --with-bincue \
-    --with-vdeplug \
-    ;
-  make -j1
+	;
+  make
 }
 
 package_sheepshaver-git() {
