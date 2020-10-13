@@ -1,0 +1,17 @@
+pkgbase = python-osm_conflate
+	pkgdesc = Script for merging points from a third-party source with OpenStreetMap data
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/mapsme/osm_conflate
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python
+	depends = python-kdtree
+	source = https://files.pythonhosted.org/packages/source/o/osm_conflate/osm_conflate-1.4.1.tar.gz
+	sha256sums = 8dcf1312b98cedeb50136d91c3c802019a2417f66b1dacb73fc4f97e13bf92ea
+
+pkgname = python-osm_conflate
+	depends = python
+	depends = python-kdtree
+
