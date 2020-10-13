@@ -6,7 +6,7 @@
 
 pkgname=lutris-git
 _pkgname=lutris
-pkgver=0.5.7.1.r274.g88e4ffa6
+pkgver=0.5.7.1.r278.g59c18e1c
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -29,10 +29,8 @@ optdepends=(
   'python-pypresence: Discord RPC and Rich Presence')
 provides=('lutris')
 conflicts=('lutris')
-source=('git+https://github.com/lutris/lutris.git'
-	'test-fix.patch')
-sha256sums=('SKIP'
-            '2e627ec7ddcfcc4c5180cb837163966705288c18cc75447872df6c669c9c7516')
+source=('git+https://github.com/lutris/lutris.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
@@ -48,7 +46,7 @@ build() {
 
 check() {
   cd ${_pkgname}
-  patch --strip=1 --input="${srcdir}/test-fix.patch"  
+
   xvfb-run nosetests --cover-erase --with-xunit --xunit-file=nosetests.xml --with-coverage --cover-package=lutris --cover-xml-file=coverage.xml
 }
 
