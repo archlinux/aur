@@ -7,7 +7,7 @@ pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
-pkgver=v0.4.0.r0.5740584
+pkgver=v0.4.0.r125.1953527
 pkgrel=1
 
 pkgdesc='Web path scanner/fuzzer, written in Python'
@@ -29,7 +29,7 @@ sha256sums=('SKIP')
 prepare() {
   cd "${pkgname%-git}"
   rm -r {logs,reports}
-  sed -i 's/^#\(save-logs-home.*$\)/\1/' default.conf
+  sed -i 's/^# \(save-logs-home.*$\)/\1/' default.conf
 }
 
 package() {
