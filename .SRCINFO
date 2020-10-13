@@ -2,6 +2,7 @@ pkgbase = sge
 	pkgdesc = Son of Grid Engine/Sun Grid Engine
 	pkgver = 8.1.9
 	pkgrel = 2
+	epoch = 1
 	url = https://arc.liv.ac.uk/trac/SGE
 	install = sge.install
 	arch = x86_64

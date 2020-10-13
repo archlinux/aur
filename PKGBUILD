@@ -4,6 +4,7 @@
 pkgname=sge
 pkgver=8.1.9
 pkgrel=2
+epoch=1
 pkgdesc="Son of Grid Engine/Sun Grid Engine"
 arch=('x86_64')
 url="https://arc.liv.ac.uk/trac/SGE"
@@ -45,16 +46,16 @@ md5sums=('a2f03ca8b803ca4da7d2dedadeca74bb'
          '5f52ba50a206ebae0f25ec1852d86c5a')
 
 prepare() {
-	cd ${pkgname}-${pkgver}
-	patch -p1 < ${srcdir}/cl_ssl_framework.c.patch
-	patch -p1 < ${srcdir}/sge_passwd.c.patch
-	patch -p1 < ${srcdir}/drmaa2_list_dict.h.patch
-	patch -p1 < ${srcdir}/sh.proc.c.patch
-	patch -p1 < ${srcdir}/qmake.patch
+	cd "${pkgname}-${pkgver}"
+	patch -p1 < "${srcdir}/cl_ssl_framework.c.patch"
+	patch -p1 < "${srcdir}/sge_passwd.c.patch"
+	patch -p1 < "${srcdir}/drmaa2_list_dict.h.patch"
+	patch -p1 < "${srcdir}/sh.proc.c.patch"
+	patch -p1 < "${srcdir}/qmake.patch"
 }
 
 build() {
-	cd ${pkgname}-${pkgver}/source
+	cd "${pkgname}-${pkgver}/source"
 
 	export SGE_INPUT_CFLAGS='-I/usr/include/tirpc'
 	export SGE_INPUT_LDFLAGS='-ltirpc'
@@ -66,10 +67,10 @@ build() {
 }
 
 package() {
-	cd ${pkgname}-${pkgver}/source
+	"cd ${pkgname}-${pkgver}/source"
 
 	export SGE_ROOT="${pkgdir}/opt/${pkgname}"
-	mkdir -p ${SGE_ROOT}
+	mkdir -p "${SGE_ROOT}"
 	echo y | scripts/distinst -allall -local -noexit
 
 	#install -D -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
