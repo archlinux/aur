@@ -1,7 +1,7 @@
 pkgbase = pamac-all
 	pkgdesc = A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)
 	pkgver = 9.5.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.manjaro.org/applications/pamac
 	install = pamac.install
 	arch = i686

@@ -8,7 +8,7 @@ ENABLE_GNOME=0
 
 pkgname=pamac-all
 pkgver=9.5.11
-pkgrel=1
+pkgrel=2
 _pkgfixver=$pkgver
 
 pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
