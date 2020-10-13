@@ -1,0 +1,137 @@
+From 2876eb9b59dded9da0829b5a8d92082aea55442c Mon Sep 17 00:00:00 2001
+From: "aperez@igalia.com"
+ <aperez@igalia.com@268f45cc-cd09-0410-ab3c-d52691b4dbfc>
+Date: Mon, 12 Oct 2020 17:29:41 +0000
+Subject: [PATCH 1/1] REGRESSION(r256892): [WPE][GTK] Build
+ broken with ENABLE_ACCELERATED_2D_CANVAS=ON
+ https://bugs.webkit.org/show_bug.cgi?id=217384
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Most of the patch by Žan Doberšek.
+
+Reviewed by Darin Adler.
+
+No new tests needed.
+
+* platform/graphics/cairo/ImageBufferCairoGLSurfaceBackend.cpp: Move the namespace
+declaration after the #include statements, to avoid incorrect nested WebCore::WebCore
+namespace declarations.
+(WebCore::ImageBufferCairoGLSurfaceBackend::create): Add missing semicolon to statement,
+use getter for Cairo surface.
+(WebCore::ImageBufferCairoGLSurfaceBackend::platformLayer const): Rename from
+ImageBuffer::platformLayer.
+(WebCore::ImageBufferCairoGLSurfaceBackend::copyToPlatformTexture const): Add missing
+first argument.
+* platform/graphics/cairo/ImageBufferCairoGLSurfaceBackend.h: Adapt.
+
+Signed-off-by: Adrian Perez de Castro <aperez@igalia.com>
+[Upstream status: https://bugs.webkit.org/show_bug.cgi?id=217384]
+---
+ Source/WebCore/ChangeLog                      | 22 +++++++++++++++++++
+ .../ImageBufferCairoGLSurfaceBackend.cpp      | 14 ++++++------
+ .../cairo/ImageBufferCairoGLSurfaceBackend.h  |  7 +++---
+ 3 files changed, 32 insertions(+), 11 deletions(-)
+
+diff --git a/Source/WebCore/platform/graphics/cairo/ImageBufferCairoGLSurfaceBackend.cpp b/Source/WebCore/platform/graphics/cairo/ImageBufferCairoGLSurfaceBackend.cpp
+index d36372f919e..0ed0b06f990 100644
+--- a/Source/WebCore/platform/graphics/cairo/ImageBufferCairoGLSurfaceBackend.cpp
++++ b/Source/WebCore/platform/graphics/cairo/ImageBufferCairoGLSurfaceBackend.cpp
+@@ -32,8 +32,6 @@
+ 
+ #if USE(CAIRO) && ENABLE(ACCELERATED_2D_CANVAS)
+ 
+-namespace WebCore {
+-
+ #include "GLContext.h"
+ #include "TextureMapperGL.h"
+ #include <wtf/IsoMallocInlines.h>
+@@ -60,6 +58,8 @@ namespace WebCore {
+ #include "TextureMapperPlatformLayerProxy.h"
+ #endif
+ 
++namespace WebCore {
++
+ WTF_MAKE_ISO_ALLOCATED_IMPL(ImageBufferCairoGLSurfaceBackend);
+ 
+ static inline void clearSurface(cairo_surface_t* surface)
+@@ -80,7 +80,7 @@ std::unique_ptr<ImageBufferCairoGLSurfaceBackend> ImageBufferCairoGLSurfaceBacke
+ 
+     // We must generate the texture ourselves, because there is no Cairo API for extracting it
+     // from a pre-existing surface.
+-    uint32_t texture
++    uint32_t texture;
+     glGenTextures(1, &texture);
+     glBindTexture(GL_TEXTURE_2D, texture);
+     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+@@ -98,7 +98,7 @@ std::unique_ptr<ImageBufferCairoGLSurfaceBackend> ImageBufferCairoGLSurfaceBacke
+     cairo_gl_device_set_thread_aware(device, FALSE);
+ 
+     auto surface = adoptRef(cairo_gl_surface_create_for_texture(device, CAIRO_CONTENT_COLOR_ALPHA, texture, backendSize.width(), backendSize.height()));
+-    if (cairo_surface_status(surface) != CAIRO_STATUS_SUCCESS)
++    if (cairo_surface_status(surface.get()) != CAIRO_STATUS_SUCCESS)
+         return nullptr;
+ 
+     clearSurface(surface.get());
+@@ -145,7 +145,7 @@ ImageBufferCairoGLSurfaceBackend::~ImageBufferCairoGLSurfaceBackend()
+         previousActiveContext->makeContextCurrent();
+ }
+ 
+-PlatformLayer* ImageBuffer::platformLayer() const
++PlatformLayer* ImageBufferCairoGLSurfaceBackend::platformLayer() const
+ {
+ #if USE(NICOSIA)
+     return m_nicosiaLayer.get();
+@@ -156,7 +156,7 @@ PlatformLayer* ImageBuffer::platformLayer() const
+     return nullptr;
+ }
+ 
+-bool ImageBufferCairoGLSurfaceBackend::copyToPlatformTexture(GCGLenum target, PlatformGLObject destinationTexture, GCGLenum internalformat, bool premultiplyAlpha, bool flipY)
++bool ImageBufferCairoGLSurfaceBackend::copyToPlatformTexture(GraphicsContextGLOpenGL&, GCGLenum target, PlatformGLObject destinationTexture, GCGLenum internalformat, bool premultiplyAlpha, bool flipY) const
+ {
+     ASSERT_WITH_MESSAGE(m_resolutionScale == 1.0, "Since the HiDPI Canvas feature is removed, the resolution factor here is always 1.");
+     if (premultiplyAlpha || flipY)
+@@ -165,7 +165,7 @@ bool ImageBufferCairoGLSurfaceBackend::copyToPlatformTexture(GCGLenum target, Pl
+     if (!m_texture)
+         return false;
+ 
+-    GC3Denum bindTextureTarget;
++    GCGLenum bindTextureTarget;
+     switch (target) {
+     case GL_TEXTURE_2D:
+         bindTextureTarget = GL_TEXTURE_2D;
+diff --git a/Source/WebCore/platform/graphics/cairo/ImageBufferCairoGLSurfaceBackend.h b/Source/WebCore/platform/graphics/cairo/ImageBufferCairoGLSurfaceBackend.h
+index cdf0fae7e2c..0fcb6cb3763 100644
+--- a/Source/WebCore/platform/graphics/cairo/ImageBufferCairoGLSurfaceBackend.h
++++ b/Source/WebCore/platform/graphics/cairo/ImageBufferCairoGLSurfaceBackend.h
+@@ -58,10 +58,10 @@ public:
+     ~ImageBufferCairoGLSurfaceBackend();
+ 
+     PlatformLayer* platformLayer() const override;
+-    bool copyToPlatformTexture(GCGLenum target, PlatformGLObject destinationTexture, GCGLenum internalformat, bool premultiplyAlpha, bool flipY) override;
++    bool copyToPlatformTexture(GraphicsContextGLOpenGL&, GCGLenum target, PlatformGLObject destinationTexture, GCGLenum internalformat, bool premultiplyAlpha, bool flipY) const override;
+ 
+ private:
+-    ImageBufferCairoGLSurfaceBackend(const FloatSize& logicalSize, const IntSize& backendSize, float resolutionScale, ColorSpace, RefPtr<cairo_surface_t>&&);
++    ImageBufferCairoGLSurfaceBackend(const FloatSize& logicalSize, const IntSize& backendSize, float resolutionScale, ColorSpace, RefPtr<cairo_surface_t>&&, uint32_t texture);
+ 
+ #if USE(COORDINATED_GRAPHICS)
+     void createCompositorBuffer();
+@@ -79,12 +79,11 @@ private:
+ #else
+     RefPtr<TextureMapperPlatformLayerProxy> m_platformLayerProxy;
+ #endif
+-    uint32_t m_texture;
++    uint32_t m_texture { 0 };
+     RefPtr<cairo_surface_t> m_compositorSurface;
+     RefPtr<cairo_t> m_compositorCr;
+     uint32_t m_compositorTexture { 0 };
+ #endif
+-    uint32_t m_texture { 0 };
+ };
+ 
+ } // namespace WebCore
+-- 
+2.28.0
+
