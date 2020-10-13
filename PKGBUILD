@@ -1,6 +1,6 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=carla-bridges-win
-pkgver=2.2.0RC2
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Carla windows bridges"
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ conflicts=('carla-bridges-win32' 'carla-bridges-win64')
 provides=('carla-bridges-win')
 depends=('wine' 'carla-git')
 if [[ $CARCH == 'i686' ]]; then
-   source+=("${pkgname}::https://github.com/falkTX/Carla/releases/download/v2.2.0-RC2/Carla_2.2.0-RC2-linux32.tar.xz")
-   sha256sums+=('e8d712bc0fcf7f434fec350f185b6baa03df579dd86f7c38e25d0378bcec2fce')
+   source+=("${pkgname}-${pkgver}-source::https://github.com/falkTX/Carla/releases/download/v2.2.0/Carla_2.2.0-linux32.tar.xz")
+   sha256sums+=('2d552221afe0a44216ad10f010c8edf8ad98249b25737637df64ec0175fd1018')
 elif [[ $CARCH == 'x86_64' ]]; then
-   source+=("${pkgname}::https://github.com/falkTX/Carla/releases/download/v2.2.0-RC2/Carla_2.2.0-RC2-linux64.tar.xz")
-   sha256sums+=('0472aa002a8edcc2b41c74be1741c9d8401381b57d1d90e7b7a197fc1fde9d64')
+   source+=("${pkgname}-${pkgver}-source::https://github.com/falkTX/Carla/releases/download/v2.2.0/Carla_2.2.0-linux64.tar.xz")
+   sha256sums+=('f04f8355f7c9f90c668873180c366737cf4214ad77cc1dde4549e5623c726c97')
 fi
 
 prepare() {
