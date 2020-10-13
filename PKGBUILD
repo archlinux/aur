@@ -5,7 +5,7 @@
 pkgname='koi-git'
 _pkgname='koi'
 pkgver=0.1.1.r26.ga1b6bea
-pkgrel=1
+pkgrel=2
 pkgdesc="Switch between light and dark themes on KDE Plasma"
 arch=('x86_64')
 url="https://github.com/baduhai/Koi"
