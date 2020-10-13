@@ -4,26 +4,25 @@
 #
 pkgname="mcmojave-circle-icon-theme"
 _pkgname="McMojave-circle"
-pkgver="2019.09.23"
-pkgrel="3"
+pkgver="2020.10.11"
+pkgrel="1"
 pkgdesc="MacOSX Mojave like circle icon theme for linux desktops."
 arch=('any')
 url="https://github.com/vinceliuice/${_pkgname}"
 license=('GPL3')
-depends=('gtk-update-icon-cache')
+depends=('gtk-update-icon-cache' 'hicolor-icon-theme' 'numix-circle-icon-theme')
 optdepends=('mojave-gtk-theme: Recommended GTK theme.')
 options=('!strip')
-conflicts=("${pkgname}"-git)
 
 source=("${_pkgname}-${pkgver//./-}.tar.gz::${url}/archive/${pkgver//./-}.tar.gz")
-sha256sums=('d6ef6ba646f9735629ebdf7c31cb15f0d7ee0ddb60f7346436249bb48d7b6e44')
+sha256sums=('4a7e2b18de2b860873fa66533c17f487ab451e650a668dad6919b5cc6f8cdf72')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver//./-}"
     install -m755 -d "${pkgdir}/usr/share/icons"
     ./install.sh  \
         --all \
-	--circle \
+        --circle \
         --dest "${pkgdir}/usr/share/icons"
 }
 
