@@ -2,8 +2,8 @@
 
 pkgname=ucollage
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="A command line image viewer based on Überzug written in bash."
+pkgrel=2
+pkgdesc="A command line image viewer based on Überzug."
 arch=('any')
 url="https://github.com/ckardaris/ucollage"
 license=('GPL3')
@@ -12,11 +12,13 @@ optdepends=(
   'imagemagick: Image rotation'
   'ffmpeg: Thumbnail creation'
 )
-_commit="8be920ea6356eb4c77f1514e6c0876b647703351"
-source=("https://raw.githubusercontent.com/ckardaris/ucollage/v${pkgver}/ucollage")
-sha256sums=('b0889ed85b5d143384ca40f10344234c1c73b05022dd0a17e8e5c41d05200185')
+source=("https://github.com/ckardaris/ucollage/archive/v${pkgver}.tar.gz")
+sha256sums=('5fab56577e3429bd28f36e26138d6ecd3c2f91833a94da9cc35de75710588f7b')
 
 package() {
-    cd "$srcdir"
-    install -Dm755 ucollage "$pkgdir/usr/bin/ucollage"
+    cd "${pkgname}-${pkgver}"
+    install -Dm755 ucollage -t "${pkgdir}/usr/bin"
+    install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+    gzip ucollage.1
+    install -Dm644 ucollage.1.gz -t "${pkgdir}/usr/share/man/man1"
 }
