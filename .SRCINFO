@@ -1,6 +1,6 @@
 pkgbase = php-componere-git
 	pkgdesc = Complex Type Composition and Manipulation http://docs.php.net/intro.componere
-	pkgver = v3.1.1.r0.g5806e3e
+	pkgver = v3.1.2.r0.g5ac7b7d
 	pkgrel = 1
 	url = https://github.com/krakjoe/componere
 	arch = i686
