@@ -9,7 +9,7 @@
 
 pkgname=acroread
 pkgver=9.5.5
-pkgrel=16
+pkgrel=17
 pkgdesc="Adobe Acrobat Reader is a PDF file viewer"
 arch=('i686' 'x86_64')
 url="http://www.adobe.com/products/reader/"
@@ -25,19 +25,19 @@ options=(!strip)
 install=$pkgname.install
 source=($pkgname.desktop
         http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/$pkgver/enu/AdbeRdr$pkgver-1_i486linux_enu.bin
-	http://mirrors.aggregate.org/archlinux/multilib/os/x86_64/lib32-glib2-2.52.2+9+g3245eba16-1-x86_64.pkg.tar.xz
-	http://mirrors.aggregate.org/archlinux/multilib/os/x86_64/lib32-harfbuzz-1.4.6-1-x86_64.pkg.tar.xz
-	http://mirrors.aggregate.org/archlinux/multilib/os/x86_64/lib32-pango-1.40.6+9+g92cc73c8-1-x86_64.pkg.tar.xz
-	http://mirrors.aggregate.org/archlinux/multilib/os/x86_64/lib32-librsvg-2.40.18-1-x86_64.pkg.tar.xz
-	http://mirrors.aggregate.org/archlinux/multilib/os/x86_64/lib32-gdk-pixbuf2-2.36.6-1-x86_64.pkg.tar.xz
-	http://mirrors.aggregate.org/archlinux/multilib/os/x86_64/lib32-libxml2-2.9.4+16+g07418011-1-x86_64.pkg.tar.xz
-	http://mirrors.aggregate.org/archlinux/multilib/os/x86_64/lib32-gtk2-2.24.31-1-x86_64.pkg.tar.xz
-	http://mirrors.aggregate.org/archlinux/multilib/os/x86_64/lib32-libxt-1.1.5-1-x86_64.pkg.tar.xz
-	http://mirrors.aggregate.org/archlinux/multilib/os/x86_64/lib32-libidn-1.33-1-x86_64.pkg.tar.xz
-	http://mirrors.aggregate.org/archlinux/multilib/os/x86_64/lib32-icu-59.1-1-x86_64.pkg.tar.xz
-	http://mirrors.aggregate.org/archlinux/multilib/os/x86_64/lib32-atk-2.24.0+4+gbf71ccc-1-x86_64.pkg.tar.xz
-	http://mirrors.aggregate.org/archlinux/multilib/os/x86_64/lib32-cairo-1.14.10-1-x86_64.pkg.tar.xz
-	http://mirrors.aggregate.org/archlinux/multilib/os/x86_64/lib32-libffi-3.2.1-2-x86_64.pkg.tar.xz)
+	http://archlinux.arkena.net/archive/packages/l/lib32-glib2/lib32-glib2-2.52.2+9+g3245eba16-1-x86_64.pkg.tar.xz
+	http://archlinux.arkena.net/archive/packages/l/lib32-harfbuzz/lib32-harfbuzz-1.4.6-1-x86_64.pkg.tar.xz
+	http://archlinux.arkena.net/archive/packages/l/lib32-pango/lib32-pango-1.40.6+9+g92cc73c8-1-x86_64.pkg.tar.xz
+	http://archlinux.arkena.net/archive/packages/l/lib32-librsvg/lib32-librsvg-2.40.18-1-x86_64.pkg.tar.xz
+	http://archlinux.arkena.net/archive/packages/l/lib32-gdk-pixbuf2/lib32-gdk-pixbuf2-2.36.6-1-x86_64.pkg.tar.xz
+	http://archlinux.arkena.net/archive/packages/l/lib32-libxml2/lib32-libxml2-2.9.4+16+g07418011-1-x86_64.pkg.tar.xz
+	http://archlinux.arkena.net/archive/packages/l/lib32-gtk2/lib32-gtk2-2.24.31-1-x86_64.pkg.tar.xz
+	http://archlinux.arkena.net/archive/packages/l/lib32-libxt/lib32-libxt-1.1.5-1-x86_64.pkg.tar.xz
+	http://archlinux.arkena.net/archive/packages/l/lib32-libidn/lib32-libidn-1.33-1-x86_64.pkg.tar.xz
+	http://archlinux.arkena.net/archive/packages/l/lib32-icu/lib32-icu-59.1-1-x86_64.pkg.tar.xz
+	http://archlinux.arkena.net/archive/packages/l/lib32-atk/lib32-atk-2.24.0+4+gbf71ccc-1-x86_64.pkg.tar.xz
+	http://archlinux.arkena.net/archive/packages/l/lib32-cairo/lib32-cairo-1.14.10-1-x86_64.pkg.tar.xz
+	http://archlinux.arkena.net/archive/packages/l/lib32-libffi/lib32-libffi-3.2.1-2-x86_64.pkg.tar.xz)
 	
 noextract=("${source[@]%%::*}")
 sha512sums=('178ca8a3abf630195eaebd6a76a7e5ac19165708acd52b99acab2de3d0bdb57fdf81d666edae41a947fa5a3fc14442c86fa855860d5d3d0d3e1db0386c583b96'
