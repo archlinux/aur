@@ -1,0 +1,30 @@
+pkgbase = mingw-w64-qt6-3d
+	pkgdesc = C++ and QML APIs for easy inclusion of 3D graphics (mingw-w64)
+	pkgver = 6.0.0alpha
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = mingw-w64-qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-vulkan-headers
+	makedepends = mingw-w64-vulkan-icd-loader
+	makedepends = mingw-w64-assimp
+	makedepends = qt6-shadertools
+	makedepends = qt6-declarative
+	makedepends = ninja
+	depends = mingw-w64-qt6-declarative
+	optdepends = mingw-w64-assimp: Import from assimp
+	optdepends = mingw-w64-qt6-shadertools: RHI renderer
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-alpha/submodules/qt3d-everywhere-src-6.0.0-alpha.tar.xz
+	sha256sums = 3362d01c7542af0e902908d2d339374feda1a037552ea625b900278982375c27
+
+pkgname = mingw-w64-qt6-3d
+
