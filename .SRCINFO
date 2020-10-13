@@ -1,21 +1,33 @@
 pkgbase = visidata
-	pkgdesc = A terminal spreadsheet multitool for discovering and arranging data
-	pkgver = 1.5.2
+	pkgdesc = Terminal spreadsheet multitool for discovering and arranging data
+	pkgver = 2.0.1
 	pkgrel = 1
-	url = http://visidata.org
+	url = https://www.visidata.org
 	arch = any
-	license = GPLv3
+	license = GPL3
 	makedepends = python-setuptools
-	depends = python
-	optdepends = python-dateutil: for converting string column to datetime
-	optdepends = python-openpyxl: for opening .xlsx files
-	optdepends = python-h5py: for opening .hdf5 files
-	optdepends = python-google-api-python-client: for opening Google sheets
-	provides = visidata=1.5.2
-	conflicts = visidata-git
-	replaces = visidata-git
-	source = https://github.com/saulpw/visidata//archive/v1.5.2.tar.gz
-	sha256sums = 11563f5e4eafb2d8fe875ae782eac3c5a6c55e9db3a494189b5b236697c1f040
+	depends = python-dateutil
+	optdepends = python-dnslib: pcap support
+	optdepends = python-dpkt: pcap support
+	optdepends = python-fonttools: ttf/otf support
+	optdepends = python-h5py: hdf5 support
+	optdepends = python-lxml: html/xml support
+	optdepends = python-mapbox-vector-tile: mbtiles support
+	optdepends = python-namestand: graphviz support
+	optdepends = python-openpyxl: xlsx support
+	optdepends = python-pandas: dta (Stata) support
+	optdepends = python-pdfminer: pdf support
+	optdepends = python-psycopg2: postgres support
+	optdepends = python-pypng: png support
+	optdepends = python-pyshp: shapefiles support
+	optdepends = python-requests: http support
+	optdepends = python-tabulate: tabulate saver support
+	optdepends = python-vobject: vcf support
+	optdepends = python-wcwidth: tabulate saver with unicode support
+	optdepends = python-xlrd: xls support
+	optdepends = python-pyaml: yaml/yml support
+	source = https://files.pythonhosted.org/packages/source/v/visidata/visidata-2.0.1.tar.gz
+	sha256sums = fb9084288d252b9dd11613167efa875b5da5db07c5a370b7f474a954be4b9ddc
 
 pkgname = visidata
 

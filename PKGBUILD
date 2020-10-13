@@ -1,29 +1,54 @@
-# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
-pkgname=visidata
-pkgver=1.5.2
+pkgname='visidata'
+pkgver=2.0.1
 pkgrel=1
-pkgdesc='A terminal spreadsheet multitool for discovering and arranging data'
+pkgdesc='Terminal spreadsheet multitool for discovering and arranging data'
 arch=('any')
-url='http://visidata.org'
-_url='https://github.com/saulpw/visidata/'
-license=('GPLv3')
-depends=('python')
+url='https://www.visidata.org'
+_url_source='https://github.com/saulpw/visidata'
+license=('GPL3')
+depends=('python-dateutil')
 makedepends=('python-setuptools')
-optdepends=('python-dateutil: for converting string column to datetime'
-            'python-openpyxl: for opening .xlsx files'
-            'python-h5py: for opening .hdf5 files'
-            'python-google-api-python-client: for opening Google sheets')
-provides=("visidata=${pkgver}")
-conflicts=('visidata-git')
-replaces=('visidata-git')
-source=("${_url}/archive/v${pkgver}.tar.gz")
-sha256sums=('11563f5e4eafb2d8fe875ae782eac3c5a6c55e9db3a494189b5b236697c1f040')
+optdepends=('python-dnslib: pcap support'
+            'python-dpkt: pcap support' # AUR
+            'python-fonttools: ttf/otf support'
+            'python-h5py: hdf5 support'
+            'python-lxml: html/xml support'
+            'python-mapbox-vector-tile: mbtiles support' # AUR
+            'python-namestand: graphviz support' # AUR
+            'python-openpyxl: xlsx support'
+            'python-pandas: dta (Stata) support'
+            'python-pdfminer: pdf support'
+            'python-psycopg2: postgres support'
+            'python-pypng: png support'
+            'python-pyshp: shapefiles support' # AUR
+            'python-requests: http support'
+            'python-tabulate: tabulate saver support'
+            'python-vobject: vcf support'
+            'python-wcwidth: tabulate saver with unicode support'
+            'python-xlrd: xls support'
+            'python-pyaml: yaml/yml support')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('fb9084288d252b9dd11613167efa875b5da5db07c5a370b7f474a954be4b9ddc')
 
-package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py -q install --root="${pkgdir}" --optimize=1
-  install -Dm644 LICENSE.gpl3 "${pkgdir}/usr/share/licenses/${pkgname%-*}/LICENSE"
+prepare() {
+  # Set correct permissions
+  cd "${pkgname}-${pkgver}"
+  chmod -c 644 "${pkgname}/man/vd.1"
+  chmod -c 644 "${pkgname}.egg-info/"*
 }
 
-# vim:set ts=2 sw=2 et:
+build() {
+  cd "${pkgname}-${pkgver}"
+  python setup.py build
+}
+
+package() {
+  cd "${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+}
+
+# vim: ts=2 sw=2 et:
