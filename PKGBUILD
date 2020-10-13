@@ -31,7 +31,7 @@ prepare() {
 }
 
 build() {
-    sed -i -E "s|Exec=AppRun|Exec=/usr/bin/${_pkgname}|" \
+    sed -i -E "s|Exec=AppRun|Exec=/usr/bin/${_pkgname} --no-sandbox|" \
       "${_pkgname}-${_pkgver}.AppDir"/emoji-keyboard.desktop
     chmod -R a-x+rX "${_pkgname}-${_pkgver}.AppDir"/usr
 
