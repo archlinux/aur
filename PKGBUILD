@@ -1,6 +1,6 @@
 # Maintainer: Max Gautier <ashelia1000 at gmail dot com>
 pkgname=oauth2token
-pkgver=0.0.2.post1
+pkgver=0.0.2.post2
 pkgrel=1
 pkgdesc="Simple cli utility to create and use oauth2 tokens"
 arch=(any)
