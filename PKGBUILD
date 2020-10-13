@@ -1,11 +1,12 @@
 # Maintainer: netcrusher < tobias AT miglix DOT eu >
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Gordian Edenhofer <gordian.edenhofer@gmail.com>
+# Contributor: mnabid
 
 _basename=zoom
 pkgname="$_basename-system-qt"
 pkgver=5.3.472687.1012
-pkgrel=1
+pkgrel=2
 pkgdesc='Video Conferencing and Web Conferencing Service - system Qt libraries'
 arch=('x86_64')
 license=('custom')
@@ -13,7 +14,7 @@ url='https://zoom.us/'
 provides=('zoom')
 conflicts=('zoom')
 makedepends=('patchelf')
-depends=('ttf-font' 'pulseaudio-alsa'
+depends=('ttf-font' 'pulseaudio-alsa' 'libjpeg-turbo'
     'qt5-base' 'qt5-graphicaleffects' 'qt5-imageformats' 'qt5-quickcontrols' 'qt5-quickcontrols2'
     'qt5-svg' 'qt5-script' 'qt5-declarative')
 optdepends=('qt5-webengine: SSO login support'
@@ -52,6 +53,9 @@ package() {
     rm -f libquazip.so{,.*}
 
     rm qt.conf
+
+    # Fix webcam showing black screen
+    ln -sfv /usr/lib/libturbojpeg.so libturbojpeg.so
 
     # Remove unnecessary executable flag
     chmod -x *.pcm
