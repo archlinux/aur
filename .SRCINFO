@@ -1,6 +1,6 @@
 pkgbase = docker-machine-driver-kvm2
 	pkgdesc = Minikube-maintained KVM driver for docker-machine
-	pkgver = 1.13.1
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://minikube.sigs.k8s.io
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = docker-machine-driver-kvm2
 	depends = iptables
 	depends = libvirt
 	optdepends = docker: to manage the containers in the machine
-	source = docker-machine-driver-kvm2-1.13.1::https://storage.googleapis.com/minikube/releases/v1.13.1/docker-machine-driver-kvm2-amd64
-	sha256sums = 129849682cd5b3f51ae2c3ad88fc26b7e496b3adfa1cf069061efd970aa26054
+	source = docker-machine-driver-kvm2-1.14.0::https://storage.googleapis.com/minikube/releases/v1.14.0/docker-machine-driver-kvm2-amd64
+	sha256sums = 6dd9e9c275ea00c50d8307f1d4a908b2ba90162c570fabc1e10f56a80e13b959
 
 pkgname = docker-machine-driver-kvm2
 
