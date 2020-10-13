@@ -3,13 +3,13 @@
 pkgname=gsctl-bin
 _srcname=gsctl
 pkgdesc="The Giant Swarm command line interface"
-pkgver=0.24.3
+pkgver=0.24.4
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/giantswarm/gsctl/"
 license=('apache')
 source=("${_srcname}-${pkgver}.tar.gz::https://github.com/giantswarm/gsctl/releases/download/${pkgver}/${_srcname}-${pkgver}-linux-amd64.tar.gz")
-sha256sums=('d0bf67ce1638eaafd9d96751bc17e1e4b6a4b246b534bba3fba5330f9104131b')
+sha256sums=('299138e387b6a29834bc2cae0edd033315fa036be2416a97af1ed605a7ce9ce6')
 
 package() {
     cd ${srcdir}
