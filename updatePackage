@@ -1,0 +1,48 @@
+#!/bin/bash
+
+_update()
+{
+	cd kicad
+	git fetch
+	cd ../kicad-i18n
+	git fetch
+	cd ..
+}
+
+_kicadVersion()
+{
+	cd kicad
+	git describe --tag | sed 's/-/_/g'
+	cd ..
+}
+
+_kicadHash()
+{
+	cd kicad
+	git rev-parse --short master
+	cd ..
+}
+
+_i18nHash()
+{
+	cd kicad-i18n
+	git rev-parse --short master
+	cd ..
+}
+
+_buildPKGBUILD()
+{
+	sed -e "s/@KICAD_VERSION@/$(_kicadVersion)/" \
+		-e "s/@KICAD_HASH@/$(_kicadHash)/" \
+		-e "s/@I18N_HASH@/$(_i18nHash)/" \
+		PKGBUILD.in > PKGBUILD
+}
+
+_updateSRCINFO()
+{
+	makepkg --printsrcinfo > .SRCINFO
+}
+
+_update
+_buildPKGBUILD
+_updateSRCINFO
