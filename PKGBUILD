@@ -3,8 +3,8 @@
 # Contributor: Alec Ari <neotheuser@ymail.com>
 
 pkgname=linuxcnc
-pkgver=2.7.15
-pkgrel=2
+pkgver=2.8.0
+pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -24,8 +24,8 @@ depends=('bc'
 makedepends=('intltool')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LinuxCNC/linuxcnc/archive/v${pkgver}.tar.gz"
         'libtirpc.patch')
-sha256sums=('242271c7756f4432bb3ac40d24876ac3f44500670979c1e8f8d1d911f8b5409b'
-         'SKIP')
+sha256sums=('27588f90df3f23c94e058b560f6d8f815f6a00b411f71ed8e25d40d1171b1afc'
+            'bc95bafd67fad1c1d3722261bc586cdc612ec9e1597fadb95fa825c10550ac2c')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}/src"
@@ -38,10 +38,10 @@ prepare() {
    --without-libmodbus --prefix=/usr \
    --with-python=/usr/bin/python2.7 \
    --enable-non-distributable=yes
-   # Compile time error fix
-   sed -i "159s|FileName|FileNameArr|" hal/classicladder/files_project.c
-   sed -i "170s|FileName|FileNameArr|" hal/classicladder/files_project.c
-   sed -i "171s|FileName|FileNameArr|" hal/classicladder/files_project.c
+   # Linking time errors fix
+   sed -i "163s|FileName|FileNameArr|" hal/classicladder/files_project.c
+   sed -i "174s|FileName|FileNameArr|g" hal/classicladder/files_project.c
+   sed -i "175s|FileName|FileNameArr|" hal/classicladder/files_project.c
 }
 
 build () {
