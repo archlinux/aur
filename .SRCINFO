@@ -1,6 +1,6 @@
 pkgbase = amulegui-upnp
 	pkgdesc = Remote GUI for the aMule Daemon, an eMule-like client for the ed2k p2p network
-	pkgver = 11055
+	pkgver = 11065
 	pkgrel = 1
 	url = http://www.amule.org/
 	arch = i686
@@ -12,13 +12,13 @@ pkgbase = amulegui-upnp
 	depends = binutils>=2.17.50.0.18
 	depends = geoip>=1.4.4
 	depends = libupnp>=1.6.6
-	provides = amulegui=11055
+	provides = amulegui=11065
 	conflicts = amule
 	conflicts = amule-svn
 	conflicts = amule-noupnp-svn
 	conflicts = amule-noupnp
-	source = http://amule.sourceforge.net/tarballs/aMule-SVN-r11055.tar.bz2
-	md5sums = 8ae6755065cf8e12988c5448a059c3d1
+	source = http://amule.sourceforge.net/tarballs/aMule-SVN-r11065.tar.bz2
+	md5sums = eb0affd2c7bb5716c4d3da2ed04d7200
 
 pkgname = amulegui-upnp
 
