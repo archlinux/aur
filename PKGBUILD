@@ -63,9 +63,9 @@ prepare() {
   sed -i "s/CONFIG_MESSAGE_LOGLEVEL_DEFAULT=1/CONFIG_MESSAGE_LOGLEVEL_DEFAULT=6/g" .config
 
   # Use BBR by default
-  sed -i "s/CONFIG_TCP_CONG_BBR=m/CONFIG_TCP_CONG_BBR=y" .config
-  sed -i "s/CONFIG_DEFAULT_CUBIC=y/CONFIG_DEFAULT_BBR=y" .config
-  sed -i "s/CONFIG_DEFAULT_TCP_CONG=\"cubic\"/CONFIG_DEFAULT_TCP_CONG=\"bbr\"" .config
+  sed -i "s/CONFIG_TCP_CONG_BBR=m/CONFIG_TCP_CONG_BBR=y/g" .config
+  sed -i "s/CONFIG_DEFAULT_CUBIC=y/CONFIG_DEFAULT_BBR=y/g" .config
+  sed -i "s/CONFIG_DEFAULT_TCP_CONG=\"cubic\"/CONFIG_DEFAULT_TCP_CONG=\"bbr\"/g" .config
 
   # Enable UKSM
   echo "CONFIG_UKSM=y" >> .config
