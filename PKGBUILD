@@ -2,7 +2,7 @@
 # Contributor: Alec Ari <neotheuser@ymail.com>
 
 pkgname=linuxcnc-sim
-pkgver=2.7.15
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="It can interpret G-code and simulate a CNC machine (formerly EMC2)."
 arch=('i686' 'x86_64')
@@ -32,6 +32,8 @@ build () {
 
   ./autogen.sh
   ./configure --with-realtime=uspace --without-libmodbus --prefix=/usr --with-python=/usr/bin/python2.7 --enable-non-distributable=yes
+
+  sed -i "163s/char FileName/static char FileName/" hal/classicladder/files_project.c
   make
 }
 
