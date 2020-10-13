@@ -19,6 +19,5 @@ package() {
     cd "${pkgname}-${pkgver}"
     install -Dm755 ucollage -t "${pkgdir}/usr/bin"
     install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-    gzip ucollage.1
-    install -Dm644 ucollage.1.gz -t "${pkgdir}/usr/share/man/man1"
+    install -Dm644 ucollage.1 -t "${pkgdir}/usr/share/man/man1"
 }
