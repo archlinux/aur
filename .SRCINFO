@@ -1,0 +1,14 @@
+pkgbase = python2-opengl
+	pkgdesc = The most common cross platform Python binding to OpenGL and related APIs (for Python 2.7)
+	pkgver = 3.1.5
+	pkgrel = 1
+	url = http://pyopengl.sourceforge.net
+	arch = any
+	license = BSD
+	makedepends = python2-setuptools
+	depends = python2
+	source = python2-opengl-3.1.5.tar.gz::https://files.pythonhosted.org/packages/b8/73/31c8177f3d236e9a5424f7267659c70ccea604dab0585bfcd55828397746/PyOpenGL-3.1.5.tar.gz
+	sha256sums = 4107ba0d0390da5766a08c242cf0cf3404c377ed293c5f6d701e457c57ba3424
+
+pkgname = python2-opengl
+
