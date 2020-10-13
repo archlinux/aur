@@ -1,0 +1,17 @@
+pkgbase = ukui-themes-git
+	pkgdesc = Official themes for the UKUI desktop, Development master branch.
+	pkgver = r34.34155adc
+	pkgrel = 1
+	url = https://github.com/ukui/ukui-themes
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = ruby-sass
+	depends = dconf
+	conflicts = ukui-themes
+	replaces = ukui-themes
+	source = ukui-themes-git::git://github.com/ukui/ukui-themes.git
+	md5sums = SKIP
+
+pkgname = ukui-themes-git
+
