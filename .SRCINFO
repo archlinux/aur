@@ -1,0 +1,14 @@
+pkgbase = sponge-case-git
+	pkgdesc = Converts strings to spongebob mocking case
+	pkgver = v1.0.0_3_gee8dab4
+	pkgrel = 1
+	url = https://github.com/FabianTe/sponge-case
+	arch = x86_64
+	makedepends = git
+	makedepends = go-pie
+	provides = sponge-case
+	source = git+https://github.com/FabianTe/sponge-case.git
+	md5sums = SKIP
+
+pkgname = sponge-case-git
+
