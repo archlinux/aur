@@ -1,6 +1,6 @@
 pkgbase = 1password
-	pkgdesc = The world's most-loved password manager - read-only development preview
-	pkgver = 0.8.9.28491
+	pkgdesc = The world's most-loved password manager - development preview
+	pkgver = 0.8.10.29215
 	pkgrel = 1
 	url = https://1password.com/
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = 1password
 	depends = fuse2
 	depends = zlib
 	depends = hicolor-icon-theme
-	noextract = 1password-0.8.9.28491-1.AppImage
+	noextract = 1password-0.8.10.29215-1.AppImage
 	options = !strip
-	source = 1password-0.8.9.28491-1.AppImage::https://onepassword.s3.amazonaws.com/linux/appimage/1password-0.8.9.AppImage
-	source = 1password-0.8.9.28491-1.AppImage.sig::https://onepassword.s3.amazonaws.com/linux/appimage/1password-0.8.9.AppImage.sig
+	source = 1password-0.8.10.29215-1.AppImage::https://onepassword.s3.amazonaws.com/linux/appimage/1password-0.8.10.AppImage
+	source = 1password-0.8.10.29215-1.AppImage.sig::https://onepassword.s3.amazonaws.com/linux/appimage/1password-0.8.10.AppImage.sig
 	validpgpkeys = 3FEF9748469ADBE15DA7CA80AC2D62742012EA22
-	sha256sums = b9f96238b3837661f3f43034dea3366040cb5d85990af44cef52797d4fa7ae3e
+	sha256sums = b59ea9b1dc6e7bb2db19e45d7d1b136c1ce8209fab1490f9d8d4891ad83bb84b
 	sha256sums = SKIP
 
 pkgname = 1password
