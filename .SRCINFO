@@ -1,0 +1,26 @@
+pkgbase = mingw-w64-qt6-quickcontrols2
+	pkgdesc = Next generation user interface controls based on Qt Quick (mingw-w64)
+	pkgver = 6.0.0alpha
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = mingw-w64-qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-vulkan-headers
+	makedepends = mingw-w64-vulkan-icd-loader
+	makedepends = qt6-declarative
+	makedepends = ninja
+	depends = mingw-w64-qt6-declarative
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-alpha/submodules/qtquickcontrols2-everywhere-src-6.0.0-alpha.tar.xz
+	sha256sums = 2cf6c41075154e6dd92864f1ce95b58c3da35b4bb171a8fdc48cafb1802a3e00
+
+pkgname = mingw-w64-qt6-quickcontrols2
+
