@@ -11,7 +11,8 @@ license=(Apache2.0)
 depends=(nodejs yarn)
 makedepends=(git)
 optdepends=()
-source=("${_pkgbase}::git+https://github.com/Awesome-Technologies/${_pkgbase}")
+url=https://github.com/Awesome-Technologies/${_pkgbase}
+source=("${_pkgbase}::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
