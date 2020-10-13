@@ -8,8 +8,13 @@ md5sums=("SKIP")
 url="https://github.com/BlackberryCode/moome"
 pkgdesc="a server for the Moome client"
 source=("${pkgname}-${pkgver}::git+https://github.com/BlackberryCode/moome.git#branch=master")
-makedepends=("jdk-openjdk" "java-environment-common" "zip")
+makedepends=("jdk-openjdk" "java-environment-common" "zip" "git")
 depends=("java-runtime-common")
+
+pkgver() {
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 rinstall() {
     if [ -f "$1" ]; then
@@ -24,26 +29,12 @@ rinstall() {
     return 0
 }
 
-prepare() {
-    # pre_build
-
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    
-}
-
 build() {
     # build
 
     #cd "${srcdir}/${pkgname}-${pkgver}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     ./compile.sh
-}
-
-check() {
-    # post_build
-
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    
 }
 
 package() {
