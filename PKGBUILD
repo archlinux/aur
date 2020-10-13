@@ -5,7 +5,7 @@
 pkgname=funkicrab-git
 pkgver=r18.98528cc
 pkgrel=1
-pkgdesc="Optimising Brainfuck compiler written in Rust"
+pkgdesc="Optimising Brainfuck compiler written in Rust (git)"
 arch=('x86_64')
 url="https://github.com/zesterer/funkicrab"
 license=('unknown')
