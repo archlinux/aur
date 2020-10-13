@@ -1,0 +1,19 @@
+pkgbase = perl-validate-simple
+	pkgdesc = (Relatively) Simple way to validate input parameters
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://metacpan.org/release/Validate-Simple
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-deep>=0
+	checkdepends = perl-test-exception>=0
+	depends = perl-data-types>=0
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AN/ANDREIP/Validate-Simple-v0.3.0.tar.gz
+	md5sums = ef62bb901c08e6d02e2ba1a64c809053
+	sha512sums = e110b79c36af13b35ef38b7907c72bb4885663f896694d2d3bb9afff8b899560ac6b8b080ae6d9fcffaee21b9beb5edb22edab1da8c6ebb7e080f96a21d965a4
+
+pkgname = perl-validate-simple
+
