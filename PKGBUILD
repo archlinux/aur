@@ -13,11 +13,9 @@ pkgdesc='Reference implementation of a Wayland compositor with EGLStream support
 arch=('x86_64')
 url='https://wayland.freedesktop.org/'
 license=('MIT')
-depends=('glibc' 'wayland' 'libxkbcommon' 'libinput' 'libunwind' 'pixman' 'libdrm' 'pam' 'systemd-libs' 'cairo' 'libpng'  'libjpeg-turbo' 'libwebp' 'mesa' 'glib2' 'lcms2' 'mtdev' 'dbus'
-         'libegl' 'libgles' 'pango' 'libva' 'libxcursor' 'colord' 'libpipewire02' 'egl-wayland')
-optdepends=('freerdp: support rdp backend'
-	    'libx11: support Xwayland'
-	    'libxcb: support Xwayland')	 
+depends=('wayland' 'libxkbcommon' 'libinput' 'libjpeg-turbo' 'libwebp'
+         'libegl' 'libgles' 'pango' 'libva' 'libxcursor' 'colord' 'libpipewire02'
+         'egl-wayland')	 
 makedepends=('meson' 'wayland-protocols' 'ninja')
 provides=('weston' 'weston-eglstream')
 conflicts=('weston' 'weston-eglstream')
