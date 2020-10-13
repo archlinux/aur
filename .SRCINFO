@@ -1,6 +1,6 @@
 pkgbase = python-pyee
 	pkgdesc = A port of node.js's EventEmitter to python.
-	pkgver = 7.0.2
+	pkgver = 8.1.0
 	pkgrel = 1
 	url = https://github.com/jfhbrook/pyee
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-pyee
 	depends = python
 	depends = python-wheel
 	depends = python-pip
-	source = https://pypi.org/packages/source/p/pyee/pyee-7.0.2.tar.gz
-	sha256sums = c908d1ecb32918bbf7dbb895a093153b0ca1ed8f04fc067d98bd4c5917aeb3d8
+	source = https://pypi.org/packages/source/p/pyee/pyee-8.1.0.tar.gz
+	sha256sums = 92dacc5bd2bdb8f95aa8dd2585d47ca1c4840e2adb95ccf90034d64f725bfd31
 
 pkgname = python-pyee
 
