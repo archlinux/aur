@@ -4,7 +4,7 @@
 
 pkgname=gtk4
 pkgver=3.99.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GObject-based multi-platform GUI toolkit"
 arch=('i686' 'x86_64')
 url="https://www.gtk.org/"
@@ -24,7 +24,7 @@ depends=('hicolor-icon-theme'
          'libxkbcommon'
          'libxrandr'
          'mesa'
-         'pango'
+         'pango-git'
          'wayland'
          'wayland-protocols'
          'graphene'
@@ -36,7 +36,6 @@ depends=('hicolor-icon-theme'
          'gdk-pixbuf2'
          'gst-plugins-bad')
 makedepends=('gobject-introspection'
-             'gtk-doc'
              'meson'
              'ninja'
              'vulkan-headers'
@@ -67,6 +66,7 @@ build() {
     --libdir=/usr/lib \
     -Dbroadway-backend=true \
     -Dvulkan=enabled \
+    -Dgtk_doc=false \
     _build .
 
   cd _build
@@ -93,4 +93,22 @@ package() {
   rm -f "$pkgdir/usr/share/glib-2.0/schemas/org.gtk.Settings.FileChooser.gschema.xml"
   rm -f "$pkgdir/usr/share/glib-2.0/schemas/org.gtk.Settings.EmojiChooser.gschema.xml"
   rm -f "$pkgdir/usr/share/glib-2.0/schemas/org.gtk.exampleapp.gschema.xml"
+
+  # Remove conflicts with gtk-doc
+  rm -f "$pkgdir/usr/bin/gtkdoc-check"
+  rm -f "$pkgdir/usr/bin/gtkdoc-depscan"
+  rm -f "$pkgdir/usr/bin/gtkdoc-fixxref"
+  rm -f "$pkgdir/usr/bin/gtkdoc-mkdb"
+  rm -f "$pkgdir/usr/bin/gtkdoc-mkhtml"
+  rm -f "$pkgdir/usr/bin/gtkdoc-mkhtml2"
+  rm -f "$pkgdir/usr/bin/gtkdoc-mkman"
+  rm -f "$pkgdir/usr/bin/gtkdoc-mkpdf"
+  rm -f "$pkgdir/usr/bin/gtkdoc-rebase"
+  rm -f "$pkgdir/usr/bin/gtkdoc-scan"
+  rm -f "$pkgdir/usr/bin/gtkdoc-scangobj"
+  rm -f "$pkgdir/usr/bin/gtkdocize"
+  rm -f "$pkgdir/usr/share/aclocal/gtk-doc.m4"
+  rm -rf "$pkgdir/usr/share/cmake/GtkDoc"
+  rm -rf "$pkgdir/usr/share/gtk-doc"
+  rm -f "$pkgdir/usr/share/pkgconfig/gtk-doc.pc"
 }
