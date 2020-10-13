@@ -1,0 +1,16 @@
+pkgbase = python-namestand
+	pkgdesc = Standardize any list of strings, but especially database/CSV column-names
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/buzzfeednews/namestand
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/n/namestand/namestand-0.1.1.tar.gz
+	source = license-b26f3e3ab9dcf1fef84bf4d30756d7b1d6d46dab::https://github.com/buzzfeednews/namestand/raw/b26f3e3ab9dcf1fef84bf4d30756d7b1d6d46dab/LICENSE.txt
+	sha256sums = f6a02000e2a5fb0c90eae2c8986d9a692d1c6d397137a745ea98d655752e5f02
+	sha256sums = d537bb82913331dcf3a00c9d312e0789a73cb7fddce4f08f63222d2f30809ea9
+
+pkgname = python-namestand
+
