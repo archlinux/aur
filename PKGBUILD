@@ -32,11 +32,9 @@ conflicts=('firefox')
 provides=('firefox')
 source=("hg+$_repo"
         '0001-Pipewire.patch'
-        '0002-Disable-netwerk-test-http3server.patch'
         $_pkgname.desktop $_pkgname-symbolic.svg)
 sha256sums=('SKIP'
             '82a9d6b58fea2ad7e7e9561ce39436b1441ba3a23789fae251a18b58cc22f035'
-            '505f54744f6e9830463861730b587788615c3799f6787f8c96d4220d0f5128cd'
             'a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
 
@@ -64,9 +62,6 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1430775
   # source: https://github.com/xhorak/firefox-devedition-flatpak/tree/master/org.mozilla.FirefoxNightly
   patch -Np1 -i ../0001-Pipewire.patch
-
-  # https://aur.archlinux.org/packages/firefox-wayland-hg/#comment-737331
-  patch -Np1 -i ../0002-Disable-netwerk-test-http3server.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
