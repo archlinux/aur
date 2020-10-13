@@ -2,26 +2,42 @@ post_install() {
     echo
     echo "   ZoneMinder Event Notification Server has been installed but some additional steps are required:"
     echo
+    echo "0) This software is heavilly WIP, so you should take it for granted that each and every new release"
+    echo "   will probably contain some breaking changes that will require manual intervention on your part."
+    echo
+    echo "   May the following link be a light to you in dark places, when all other lights go out:"
+    echo
+    echo "   https://zmeventnotification.readthedocs.io/en/stable/guides/breaking.html"
+    echo
     echo "1) If your ZoneMinder instance is not located at http://localhost:8095, or if you have locked it behind"
     echo "   a password, you should make sure to edit /etc/zoneminder/secrets.ini and fill in any required info."
     echo
-    echo "   Better yet, because that file contains various useful tidbits, it wouldn't hurt to check it out anyway"
-    echo "   and become familiar with it."
+    echo "   Better yet, because that file also contains some other very useful tidbits, it wouldn't hurt to"
+    echo "   check it out anyway and become familiar with it."
     echo
     echo "2) You should also take a look at /etc/zoneminder/objectconfig.ini and /etc/zoneminder/zmeventnotification.ini"
     echo "   which contain the settings for the OpenCV object recognition algorithms and for the server itself, respectively."
     echo
     echo "   Especially the former, objectconfig.ini, is the go-to file if you want to set up your cameras so they can"
-    echo "   utilize OpenCV and take advantage of its superb object recognition capabilities."
+    echo "   utilize OpenCV and properly take advantage of its superb object recognition capabilities."
     echo
     echo "3) After you're done with the previous steps, you are highly encouraged to verify that the server has been"
     echo "   properly installed and configured by first launching it once manually. To do so, run the following:"
     echo
     echo "   sudo -u http /usr/bin/zmeventnotification.pl"
     echo
+    echo "4) -------------------------- EdgeTPU note ----------------------------"
     echo
-    echo "   For more detailed info you should read the official documentation:"
+    echo "   Note that while Coral Edge TPU support has been added, the expectation"
+    echo "   is that you have properly followed the instructions at:"
     echo
-    echo "   https://zmeventnotification.readthedocs.io/en/latest/"
+    echo "   https://coral.ai/docs/accelerator/get-started/" 
     echo
+    echo "   If you don't, things will break. Further, you also need to make sure" 
+    echo "   your web user (Arch default is 'http') has access to the Coral device."
+    echo
+}
+
+post_upgrade() {
+    post_install
 }
