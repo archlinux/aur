@@ -1,6 +1,6 @@
 pkgbase = oauth2token
 	pkgdesc = Simple cli utility to create and use oauth2 tokens
-	pkgver = 0.0.2.post1
+	pkgver = 0.0.2.post2
 	pkgrel = 1
 	url = https://pypi.org/project/oauth2token/
 	arch = any
