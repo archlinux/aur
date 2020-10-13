@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Jackett Service Start
+Icon=/usr/share/icons/jackett.png
+Categories=System;Accessories
+Exec=opt/jackett/jackett.sh
+
+
