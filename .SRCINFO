@@ -1,0 +1,24 @@
+pkgbase = mingw-w64-qt6-5compat
+	pkgdesc = Module that contains unsupported Qt 5 APIs (mingw-w64)
+	pkgver = 6.0.0alpha
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = any
+	groups = mingw-w64-qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = mingw-w64-cmake
+	makedepends = qt6-base
+	makedepends = ninja
+	depends = mingw-w64-qt6-base
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	options = !emptydirs
+	source = https://download.qt.io/development_releases/qt/6.0/6.0.0-alpha/submodules/qt5compat-everywhere-src-6.0.0-alpha.tar.xz
+	sha256sums = e0d2fbfeaf40e2e00b5b124f50b5887ef09f471030536869e3e31c38b8f9e00a
+
+pkgname = mingw-w64-qt6-5compat
+
