@@ -6,25 +6,25 @@
 # The following guidelines are specific to BZR, GIT, HG and SVN packages.
 # Other VCS sources are not natively supported by makepkg yet.
 
-# Maintainer: Your Name <youremail@domain.com>
-pkgname=dmenu-supermario9590-git # '-bzr', '-git', '-hg' or '-svn'
-pkgname_=dmenu-supermario9590
-pkgver=r576.26e2309
+# Maintainer: Anish Vundela <anishreddyvundela@gmail.com>
+pkgname=dmenu-supermario9590-git
+_pkgname=dwm
+pkgver=r573.1a13d04
 pkgrel=1
 pkgdesc="My custom build of suckless' dmenu"
-arch=('i686' 'x86_64')
-url="https://gitlab.com/supermario9590/dmenu-supermario9590.git"
+arch=(i686 x86_64)
+url="gitlab.com/supermario9590/dmenu-supermario9590.git"
 license=('MIT')
 groups=()
 depends=(nerd-fonts-mononoki ttf-symbola)
-makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
-provides=("dwm")
-conflicts=("dwm")
+makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 replaces=()
 backup=()
 options=()
 install=
-source=("git+$url")
+source=('dwm::git+http://git.suckless.org/dmenu')
 noextract=()
 md5sums=('SKIP')
 
@@ -32,18 +32,21 @@ md5sums=('SKIP')
 # a description of each element in the source array.
 
 pkgver() {
-	cd "$srcdir/${pkgname_}"
+	cd "$srcdir/$_pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd "$srcdir/$_pkgname"
+	patch -p1 -i ../../dmenu-supermario9590.diff
+}
+
 build() {
-	cd "$srcdir/${pkgname_}"
+	cd "$srcdir/$_pkgname"
 	make
 }
 
 package() {
-	cd "$srcdir/${pkgname_}"
-	make PREFIX=/usr DESTDIR="$pkgdir/" install
-	install -Dm644 LICENSE $pkgdir/usr/share/licences/$pkgname/LICENCE
-	install -Dm644 README.md $pkgdir/usr/share/doc/$pkgname/README.md
+	cd "$srcdir/$_pkgname"
+	make DESTDIR="$pkgdir/" PREFIX="/usr" install
 }

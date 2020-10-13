@@ -1,8 +1,8 @@
 pkgbase = dmenu-supermario9590-git
 	pkgdesc = My custom build of suckless' dmenu
-	pkgver = r576.26e2309
+	pkgver = r573.1a13d04
 	pkgrel = 1
-	url = https://gitlab.com/supermario9590/dmenu-supermario9590.git
+	url = gitlab.com/supermario9590/dmenu-supermario9590.git
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = dmenu-supermario9590-git
 	depends = ttf-symbola
 	provides = dwm
 	conflicts = dwm
-	source = git+https://gitlab.com/supermario9590/dmenu-supermario9590.git
+	source = dwm::git+http://git.suckless.org/dmenu
 	md5sums = SKIP
 
 pkgname = dmenu-supermario9590-git

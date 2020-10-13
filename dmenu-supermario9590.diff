@@ -1,0 +1,33 @@
+From f44d8d8d05a16d70fed6b4a91ddea0019ad0da70 Mon Sep 17 00:00:00 2001
+From: Super Mario <anishreddyvundela@gmail.com>
+Date: Tue, 13 Oct 2020 19:38:57 +0000
+Subject: [PATCH] Made patch for my build
+
+---
+ config.def.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 1edb647..3dc0f62 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -4,13 +4,13 @@
+ static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
+ /* -fn option overrides fonts[0]; default X11 font or font set */
+ static const char *fonts[] = {
+-	"monospace:size=10"
++	"Mononoki Nerd Font:size=10"
+ };
+ static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
+ static const char *colors[SchemeLast][2] = {
+ 	/*     fg         bg       */
+-	[SchemeNorm] = { "#bbbbbb", "#222222" },
+-	[SchemeSel] = { "#eeeeee", "#005577" },
++	[SchemeNorm] = { "#f8f8f2", "#282a36" },
++	[SchemeSel] = { "#000000", "#ff79c6" },
+ 	[SchemeOut] = { "#000000", "#00ffff" },
+ };
+ /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
+-- 
+2.28.0
+
