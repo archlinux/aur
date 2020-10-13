@@ -12,6 +12,7 @@ pkgbase = koi-git
 	depends = kcoreaddons
 	depends = kwidgetsaddons
 	provides = koi
+	conflicts = koi
 	source = koi-git::git://github.com/baduhai/Koi
 	md5sums = SKIP
 
