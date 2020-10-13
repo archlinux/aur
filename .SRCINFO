@@ -1,6 +1,6 @@
 pkgbase = jamulus-headless
 	pkgdesc = Internet jam session software (headless server)
-	pkgver = 3.5.11
+	pkgver = 3.5.12
 	pkgrel = 1
 	url = http://llcon.sourceforge.net/
 	install = jamulus.install
@@ -10,9 +10,9 @@ pkgbase = jamulus-headless
 	depends = gcc-libs
 	depends = qt5-base
 	provides = jamulus
-	source = jamulus-3.5.11.tar.gz::https://github.com/corrados/jamulus/archive/r3_5_11.tar.gz
+	source = jamulus-3.5.12.tar.gz::https://github.com/corrados/jamulus/archive/r3_5_12.tar.gz
 	source = jamulus.service
-	sha1sums = d2f627ac84f3e8e54a6ab3a3150bc71860bacd61
+	sha1sums = ede1c673c423f637ca316128b8542e064141de85
 	sha1sums = cbe82818b40eba6dc3ee88f98af8ae16ff44137e
 
 pkgname = jamulus-headless
