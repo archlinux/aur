@@ -2,7 +2,7 @@
 
 pkgname='goreleaser-bin'
 _pkgname="${pkgname%-bin}"
-pkgver=v0.144.1
+pkgver=v0.145.0
 pkgrel=1
 pkgdesc='Deliver Go binaries as fast and easily as possible'
 url='https://goreleaser.com'
@@ -19,13 +19,13 @@ optdepends=('nfpm: deb and rpm packager'
 _basedownloadurl="https://github.com/${_pkgname}/${_pkgname}/releases/download/${pkgver}"
 
 source_x86_64=("${_pkgname}_${pkgver}_linux_x86_64.tar.gz::${_basedownloadurl}/${_pkgname}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('9833affc0b8cff8ed1138984330ad3b3937d8bc4ae9d3c9e601dc5a0daa88bc5')
+sha256sums_x86_64=('2ea97ea7d5c1210470d23944188987d85c51768b3d7d3cf7bccb76393b57c44a')
 
 source_i686=("${_pkgname}_${pkgver}_linux_i386.tar.gz::${_basedownloadurl}/${_pkgname}_linux_i386.tar.gz")
-sha256sums_i686=('00209a2f9b6db0b4f462b2331a2246ef4176fcbc79f5a73bfcf68162f3cd3be0')
+sha256sums_i686=('f90e49af629e87bff770b952cd03500afeba579386f7e14072fea23d23c279ab')
 
 source_aarch64=("${_pkgname}_${pkgver}_linux_arm64.tar.gz::${_basedownloadurl}/${_pkgname}_linux_arm64.tar.gz")
-sha256sums_aarch64=('4daca2b7247208265ad2865e4b12783791feb450672e95b7e9f85d768311b2bb')
+sha256sums_aarch64=('e85e88c873779a92ee8c8afc19248656df7f491b77d7cb1bb8043c7a314553ec')
 
 package() {
 	# Bin
