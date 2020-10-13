@@ -1,11 +1,3 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# The following guidelines are specific to BZR, GIT, HG and SVN packages.
-# Other VCS sources are not natively supported by makepkg yet.
-
 # Maintainer: Anish Vundela <anishreddyvundela@gmail.com>
 pkgname=dmenu-supermario9590-git
 _pkgname=dwm
@@ -13,7 +5,7 @@ pkgver=r573.1a13d04
 pkgrel=1
 pkgdesc="My custom build of suckless' dmenu"
 arch=(i686 x86_64)
-url="gitlab.com/supermario9590/dmenu-supermario9590.git"
+url="https://gitlab.com/supermario9590/dmenu-supermario9590.git"
 license=('MIT')
 groups=()
 depends=(nerd-fonts-mononoki ttf-symbola)
