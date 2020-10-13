@@ -1,0 +1,2 @@
+d /run/fluentd 0755 fluentd fluentd -
+d /var/log/fluentd 0755 fluentd fluentd -

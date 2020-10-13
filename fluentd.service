@@ -1,0 +1,25 @@
+[Unit]
+Description=Fluentd daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=fluentd
+Group=fluentd
+LimitNOFILE=65536
+Environment=FLUENT_CONF=/etc/fluentd/fluentd.conf
+Environment=FLUENT_PLUGIN=/etc/fluentd/plugin
+Environment=FLUENT_SOCKET=/run/fluentd/fluentd.sock
+Environment=FLUENT_LOG_FILE=/var/log/fluentd/fluentd.log
+EnvironmentFile=-/etc/conf.d/fluentd
+PIDFile=/run/fluentd/fluentd.pid
+RuntimeDirectory=fluentd
+Type=forking
+ExecStart=/usr/bin/fluentd --log $FLUENT_LOG_FILE --daemon /run/fluentd/fluentd.pid
+ExecStop=/usr/bin/kill -TERM ${MAINPID}
+ExecReload=/usr/bin/kill -HUP ${MAINPID}
+Restart=always
+TimeoutStopSec=120
+
+[Install]
+WantedBy=multi-user.target
