@@ -12,6 +12,7 @@ pkgbase = med3
 	depends = swig
 	optdepends = tk
 	provides = med=3.3.1
+	conflicts = med
 	source = http://files.salome-platform.org/Salome/other/med-3.3.1.tar.gz
 	source = hdf5-1.10-support.patch
 	sha256sums = dd631ef813838bc7413ff0dd6461d7a0d725bcfababdf772ece67610a8d22588
