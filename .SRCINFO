@@ -1,13 +1,12 @@
 pkgbase = godot-debug
 	pkgdesc = An advanced, feature packed, multi-platform 2D and 3D game engine
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.godotengine.org
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = scons
-	makedepends = gcc
 	makedepends = yasm
 	depends = libxcursor
 	depends = libxinerama

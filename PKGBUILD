@@ -5,12 +5,12 @@
 pkgname=godot-debug
 _pkgname=godot
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 url="http://www.godotengine.org"
 license=('MIT')
 arch=('i686' 'x86_64')
-makedepends=('scons' 'gcc' 'yasm')
+makedepends=('scons' 'yasm')
 depends=('libxcursor' 'libxinerama' 'freetype2' 'alsa-lib' 'libxrandr' 'libxi' 'libglvnd')
 conflicts=("godot-git" "godot-pulse")
 _arch=''
@@ -33,7 +33,7 @@ build() {
         target=debug \
         use_llvm=no \
         colored=yes \
-        pulseaudio=no bits=${_arch} -j $((`nproc`+1))
+        pulseaudio=yes bits=${_arch} -j $((`nproc`+1))
 }
 
 package() {
