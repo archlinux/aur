@@ -1,12 +1,23 @@
-diff -u dwm/config.def.h dwm-supermario9590/config.def.h
---- dwm/config.def.h	2020-10-11 15:23:43.625317796 +0000
-+++ dwm-supermario9590/config.def.h	2020-10-09 19:29:30.750975869 +0000
-@@ -1,25 +1,36 @@
- /* See LICENSE file for copyright and license details. */
+From 11722a4f86795ada65ab3731e707eaf4b442917e Mon Sep 17 00:00:00 2001
+From: Super Mario <anishreddyvundela@gmail.com>
+Date: Mon, 12 Oct 2020 19:41:57 +0000
+Subject: [PATCH] Made patch for my entire build of DWM, apply this to vanilla and you will have cloned my build!
+
+---
+ config.def.h |  40 +++++++++---
+ config.mk    |   2 +-
+ drw.c        |  26 ++++----
+ drw.h        |   9 ++-
+ dwm.1        |  33 ++++++++++
+ dwm.c        | 177 ++++++++++++++++++++++++++++++++++++++++++++++-----
+ 6 files changed, 245 insertions(+), 42 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 1c0b587..395dc93 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -2,24 +2,32 @@
  
-+/* Volume Keys */
-+#include <X11/XF86keysym.h>
-+
  /* appearance */
  static const unsigned int borderpx  = 1;        /* border pixel of windows */
 +static const unsigned int gappx     = 5;        /* gaps between windows */
@@ -46,7 +57,7 @@ diff -u dwm/config.def.h dwm-supermario9590/config.def.h
  
  static const Rule rules[] = {
  	/* xprop(1):
-@@ -32,7 +43,7 @@
+@@ -32,7 +40,7 @@ static const Rule rules[] = {
  };
  
  /* layout(s) */
@@ -55,7 +66,7 @@ diff -u dwm/config.def.h dwm-supermario9590/config.def.h
  static const int nmaster     = 1;    /* number of clients in master area */
  static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
  
-@@ -44,7 +55,7 @@
+@@ -44,7 +52,7 @@ static const Layout layouts[] = {
  };
  
  /* key definitions */
@@ -64,7 +75,7 @@ diff -u dwm/config.def.h dwm-supermario9590/config.def.h
  #define TAGKEYS(KEY,TAG) \
  	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
  	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-@@ -58,6 +69,10 @@
+@@ -58,6 +66,10 @@ static const Layout layouts[] = {
  static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
  static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
  static const char *termcmd[]  = { "st", NULL };
@@ -75,7 +86,7 @@ diff -u dwm/config.def.h dwm-supermario9590/config.def.h
  
  static Key keys[] = {
  	/* modifier                     key        function        argument */
-@@ -84,6 +99,9 @@
+@@ -84,6 +96,9 @@ static Key keys[] = {
  	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
  	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
  	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
@@ -85,22 +96,23 @@ diff -u dwm/config.def.h dwm-supermario9590/config.def.h
  	TAGKEYS(                        XK_1,                      0)
  	TAGKEYS(                        XK_2,                      1)
  	TAGKEYS(                        XK_3,                      2)
-@@ -94,6 +112,10 @@
+@@ -94,6 +109,11 @@ static Key keys[] = {
  	TAGKEYS(                        XK_8,                      7)
  	TAGKEYS(                        XK_9,                      8)
  	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 +	{ MODKEY,                       XK_e,      spawn,          {.v = emacscmd } },
 +	{ 0,                            XF86XK_AudioLowerVolume, spawn, { .v = downvolcmd } },
 +	{ 0,                            XF86XK_AudioRaiseVolume, spawn, { .v = upvolcmd } },
-+	{ 0,                            XF86XK_AudioMute, spawn, { .v = mutevolcmd } },
++	{ 0,                            XF86XK_AudioMute, spawn, { .v = mutevolcmd } }
++
  };
  
  /* button definitions */
-Only in dwm-supermario9590: config.h
-diff -u dwm/config.mk dwm-supermario9590/config.mk
---- dwm/config.mk	2020-10-11 15:23:43.625317796 +0000
-+++ dwm-supermario9590/config.mk	2020-10-09 19:28:53.780973324 +0000
-@@ -22,7 +22,7 @@
+diff --git a/config.mk b/config.mk
+index 7084c33..21b5404 100644
+--- a/config.mk
++++ b/config.mk
+@@ -22,7 +22,7 @@ FREETYPEINC = /usr/include/freetype2
  
  # includes and libs
  INCS = -I${X11INC} -I${FREETYPEINC}
@@ -109,10 +121,11 @@ diff -u dwm/config.mk dwm-supermario9590/config.mk
  
  # flags
  CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
-diff -u dwm/drw.c dwm-supermario9590/drw.c
---- dwm/drw.c	2020-10-11 15:23:43.625317796 +0000
-+++ dwm-supermario9590/drw.c	2020-10-09 19:28:53.780973324 +0000
-@@ -61,7 +61,7 @@
+diff --git a/drw.c b/drw.c
+index 4cdbcbe..fe3aadd 100644
+--- a/drw.c
++++ b/drw.c
+@@ -61,7 +61,7 @@ utf8decode(const char *c, long *u, size_t clen)
  }
  
  Drw *
@@ -121,7 +134,7 @@ diff -u dwm/drw.c dwm-supermario9590/drw.c
  {
  	Drw *drw = ecalloc(1, sizeof(Drw));
  
-@@ -70,8 +70,11 @@
+@@ -70,8 +70,11 @@ drw_create(Display *dpy, int screen, Window root, unsigned int w, unsigned int h
  	drw->root = root;
  	drw->w = w;
  	drw->h = h;
@@ -135,7 +148,7 @@ diff -u dwm/drw.c dwm-supermario9590/drw.c
  	XSetLineAttributes(dpy, drw->gc, 1, LineSolid, CapButt, JoinMiter);
  
  	return drw;
-@@ -87,7 +90,7 @@
+@@ -87,7 +90,7 @@ drw_resize(Drw *drw, unsigned int w, unsigned int h)
  	drw->h = h;
  	if (drw->drawable)
  		XFreePixmap(drw->dpy, drw->drawable);
@@ -144,7 +157,7 @@ diff -u dwm/drw.c dwm-supermario9590/drw.c
  }
  
  void
-@@ -194,21 +197,22 @@
+@@ -194,21 +197,22 @@ drw_fontset_free(Fnt *font)
  }
  
  void
@@ -171,7 +184,7 @@ diff -u dwm/drw.c dwm-supermario9590/drw.c
  {
  	size_t i;
  	Clr *ret;
-@@ -218,7 +222,7 @@
+@@ -218,7 +222,7 @@ drw_scm_create(Drw *drw, const char *clrnames[], size_t clrcount)
  		return NULL;
  
  	for (i = 0; i < clrcount; i++)
@@ -180,7 +193,7 @@ diff -u dwm/drw.c dwm-supermario9590/drw.c
  	return ret;
  }
  
-@@ -274,9 +278,7 @@
+@@ -274,9 +278,7 @@ drw_text(Drw *drw, int x, int y, unsigned int w, unsigned int h, unsigned int lp
  	} else {
  		XSetForeground(drw->dpy, drw->gc, drw->scheme[invert ? ColFg : ColBg].pixel);
  		XFillRectangle(drw->dpy, drw->drawable, drw->gc, x, y, w, h);
@@ -191,10 +204,11 @@ diff -u dwm/drw.c dwm-supermario9590/drw.c
  		x += lpad;
  		w -= lpad;
  	}
-diff -u dwm/drw.h dwm-supermario9590/drw.h
---- dwm/drw.h	2020-10-11 15:23:43.625317796 +0000
-+++ dwm-supermario9590/drw.h	2020-10-09 19:28:53.780973324 +0000
-@@ -20,6 +20,9 @@
+diff --git a/drw.h b/drw.h
+index 4bcd5ad..a56f523 100644
+--- a/drw.h
++++ b/drw.h
+@@ -20,6 +20,9 @@ typedef struct {
  	Display *dpy;
  	int screen;
  	Window root;
@@ -204,7 +218,7 @@ diff -u dwm/drw.h dwm-supermario9590/drw.h
  	Drawable drawable;
  	GC gc;
  	Clr *scheme;
-@@ -27,7 +30,7 @@
+@@ -27,7 +30,7 @@ typedef struct {
  } Drw;
  
  /* Drawable abstraction */
@@ -213,7 +227,7 @@ diff -u dwm/drw.h dwm-supermario9590/drw.h
  void drw_resize(Drw *drw, unsigned int w, unsigned int h);
  void drw_free(Drw *drw);
  
-@@ -38,8 +41,8 @@
+@@ -38,8 +41,8 @@ unsigned int drw_fontset_getwidth(Drw *drw, const char *text);
  void drw_font_getexts(Fnt *font, const char *text, unsigned int len, unsigned int *w, unsigned int *h);
  
  /* Colorscheme abstraction */
@@ -224,12 +238,11 @@ diff -u dwm/drw.h dwm-supermario9590/drw.h
  
  /* Cursor abstraction */
  Cur *drw_cur_create(Drw *drw, int shape);
-Only in dwm-supermario9590: drw.o
-Only in dwm-supermario9590: dwm
-diff -u dwm/dwm.1 dwm-supermario9590/dwm.1
---- dwm/dwm.1	2020-10-11 15:23:43.625317796 +0000
-+++ dwm-supermario9590/dwm.1	2020-10-09 19:30:12.137645384 +0000
-@@ -30,6 +30,14 @@
+diff --git a/dwm.1 b/dwm.1
+index ddc8321..e20d0db 100644
+--- a/dwm.1
++++ b/dwm.1
+@@ -30,6 +30,14 @@ top left corner.  The tags which are applied to one or more windows are
  indicated with an empty square in the top left corner.
  .P
  dwm draws a small border around windows to indicate the focus state.
@@ -244,7 +257,7 @@ diff -u dwm/dwm.1 dwm-supermario9590/dwm.1
  .SH OPTIONS
  .TP
  .B \-v
-@@ -140,6 +148,16 @@
+@@ -140,6 +148,16 @@ View all windows with any tag.
  .B Mod1\-Control\-[1..n]
  Add/remove all windows with nth tag to/from the view.
  .TP
@@ -261,7 +274,7 @@ diff -u dwm/dwm.1 dwm-supermario9590/dwm.1
  .B Mod1\-Shift\-q
  Quit dwm.
  .SS Mouse commands
-@@ -152,6 +170,21 @@
+@@ -152,6 +170,21 @@ Toggles focused window between floating and tiled state.
  .TP
  .B Mod1\-Button3
  Resize focused window while dragging. Tiled windows will be toggled to the floating state.
@@ -283,11 +296,10 @@ diff -u dwm/dwm.1 dwm-supermario9590/dwm.1
  .SH CUSTOMIZATION
  dwm is customized by creating a custom config.h and (re)compiling the source
  code. This keeps it fast, secure and simple.
-Only in dwm-supermario9590: dwm-alpha-20180613-b69c870.diff
-Only in dwm-supermario9590: dwm-autostart-20200610-cb3f58a.diff
-diff -u dwm/dwm.c dwm-supermario9590/dwm.c
---- dwm/dwm.c	2020-10-11 15:23:43.625317796 +0000
-+++ dwm-supermario9590/dwm.c	2020-10-09 19:30:12.134312051 +0000
+diff --git a/dwm.c b/dwm.c
+index 664c527..e892aa7 100644
+--- a/dwm.c
++++ b/dwm.c
 @@ -29,6 +29,7 @@
  #include <string.h>
  #include <unistd.h>
@@ -305,7 +317,7 @@ diff -u dwm/dwm.c dwm-supermario9590/dwm.c
  /* enums */
  enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
  enum { SchemeNorm, SchemeSel }; /* color schemes */
-@@ -119,6 +122,7 @@
+@@ -119,6 +122,7 @@ struct Monitor {
  	int by;               /* bar geometry */
  	int mx, my, mw, mh;   /* screen size */
  	int wx, wy, ww, wh;   /* window area  */
@@ -313,7 +325,7 @@ diff -u dwm/dwm.c dwm-supermario9590/dwm.c
  	unsigned int seltags;
  	unsigned int sellt;
  	unsigned int tagset[2];
-@@ -194,12 +198,14 @@
+@@ -194,12 +198,14 @@ static void resizeclient(Client *c, int x, int y, int w, int h);
  static void resizemouse(const Arg *arg);
  static void restack(Monitor *m);
  static void run(void);
@@ -328,7 +340,7 @@ diff -u dwm/dwm.c dwm-supermario9590/dwm.c
  static void setlayout(const Arg *arg);
  static void setmfact(const Arg *arg);
  static void setup(void);
-@@ -233,10 +239,15 @@
+@@ -233,10 +239,15 @@ static Monitor *wintomon(Window w);
  static int xerror(Display *dpy, XErrorEvent *ee);
  static int xerrordummy(Display *dpy, XErrorEvent *ee);
  static int xerrorstart(Display *dpy, XErrorEvent *ee);
@@ -344,7 +356,7 @@ diff -u dwm/dwm.c dwm-supermario9590/dwm.c
  static char stext[256];
  static int screen;
  static int sw, sh;           /* X display screen geometry width, height */
-@@ -269,6 +280,11 @@
+@@ -269,6 +280,11 @@ static Drw *drw;
  static Monitor *mons, *selmon;
  static Window root, wmcheckwin;
  
@@ -356,7 +368,7 @@ diff -u dwm/dwm.c dwm-supermario9590/dwm.c
  /* configuration, allows nested code to access above variables */
  #include "config.h"
  
-@@ -639,6 +655,7 @@
+@@ -639,6 +655,7 @@ createmon(void)
  	m->nmaster = nmaster;
  	m->showbar = showbar;
  	m->topbar = topbar;
@@ -364,10 +376,11 @@ diff -u dwm/dwm.c dwm-supermario9590/dwm.c
  	m->lt[0] = &layouts[0];
  	m->lt[1] = &layouts[1 % LENGTH(layouts)];
  	strncpy(m->ltsymbol, layouts[0].symbol, sizeof m->ltsymbol);
-@@ -1382,6 +1399,83 @@
+@@ -1381,6 +1398,83 @@ run(void)
+ 			handler[ev.type](&ev); /* call handler */
  }
  
- void
++void
 +runautostart(void)
 +{
 +	char *pathpfx;
@@ -444,14 +457,14 @@ diff -u dwm/dwm.c dwm-supermario9590/dwm.c
 +	free(path);
 +}
 +
-+void
+ void
  scan(void)
  {
- 	unsigned int i, num;
-@@ -1499,6 +1593,16 @@
+@@ -1498,6 +1592,16 @@ setfullscreen(Client *c, int fullscreen)
+ 	}
  }
  
- void
++void
 +setgaps(const Arg *arg)
 +{
 +	if ((arg->i == 0) || (selmon->gappx + arg->i < 0))
@@ -461,11 +474,10 @@ diff -u dwm/dwm.c dwm-supermario9590/dwm.c
 +	arrange(selmon);
 +}
 +
-+void
+ void
  setlayout(const Arg *arg)
  {
- 	if (!arg || !arg->v || arg->v != selmon->lt[selmon->sellt])
-@@ -1542,7 +1646,8 @@
+@@ -1542,7 +1646,8 @@ setup(void)
  	sw = DisplayWidth(dpy, screen);
  	sh = DisplayHeight(dpy, screen);
  	root = RootWindow(dpy, screen);
@@ -475,7 +487,7 @@ diff -u dwm/dwm.c dwm-supermario9590/dwm.c
  	if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
  		die("no fonts could be loaded.");
  	lrpad = drw->fonts->h;
-@@ -1570,7 +1675,7 @@
+@@ -1570,7 +1675,7 @@ setup(void)
  	/* init appearance */
  	scheme = ecalloc(LENGTH(colors), sizeof(Clr *));
  	for (i = 0; i < LENGTH(colors); i++)
@@ -484,7 +496,7 @@ diff -u dwm/dwm.c dwm-supermario9590/dwm.c
  	/* init bars */
  	updatebars();
  	updatestatus();
-@@ -1684,18 +1789,18 @@
+@@ -1684,18 +1789,18 @@ tile(Monitor *m)
  	if (n > m->nmaster)
  		mw = m->nmaster ? m->ww * m->mfact : 0;
  	else
@@ -513,7 +525,7 @@ diff -u dwm/dwm.c dwm-supermario9590/dwm.c
  		}
  }
  
-@@ -1807,16 +1912,18 @@
+@@ -1807,16 +1912,18 @@ updatebars(void)
  	Monitor *m;
  	XSetWindowAttributes wa = {
  		.override_redirect = True,
@@ -536,10 +548,11 @@ diff -u dwm/dwm.c dwm-supermario9590/dwm.c
  		XDefineCursor(dpy, m->barwin, cursor[CurNormal]->cursor);
  		XMapRaised(dpy, m->barwin);
  		XSetClassHint(dpy, m->barwin, &ch);
-@@ -2114,6 +2221,43 @@
+@@ -2113,6 +2220,43 @@ xerrorstart(Display *dpy, XErrorEvent *ee)
+ 	return -1;
  }
  
- void
++void
 +xinitvisual()
 +{
 +	XVisualInfo *infos;
@@ -576,11 +589,10 @@ diff -u dwm/dwm.c dwm-supermario9590/dwm.c
 +	}
 +}
 +
-+void
+ void
  zoom(const Arg *arg)
  {
- 	Client *c = selmon->sel;
-@@ -2145,6 +2289,7 @@
+@@ -2145,6 +2289,7 @@ main(int argc, char *argv[])
  		die("pledge");
  #endif /* __OpenBSD__ */
  	scan();
@@ -588,3 +600,6 @@ diff -u dwm/dwm.c dwm-supermario9590/dwm.c
  	run();
  	cleanup();
  	XCloseDisplay(dpy);
+-- 
+2.28.0
+
