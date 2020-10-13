@@ -3,19 +3,19 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ksysguard
-pkgver=5.19.5
+pkgver=5.20.0
 pkgrel=1
 pkgdesc='Track and control the processes running in your system'
 arch=(x86_64)
 url='https://userbase.kde.org/KSysGuard'
 license=(LGPL)
 depends=(libksysguard kinit)
-makedepends=(extra-cmake-modules kdoctools)
-optdepends=('nvidia-utils: NVIDIA GPU usage')
+makedepends=(extra-cmake-modules kdoctools networkmanager-qt)
+optdepends=('nvidia-utils: NVIDIA GPU usage' 'networkmanager-qt: improved network statistics')
 groups=(plasma)
 install=$pkgname.install
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('e1a66dc9750482ada19da5d3e9ec06893f859930f0e8e5a910a5751e9f267c47'
+sha256sums=('5e972b4e8bd799f902013b408e4677ef28b7a40c3be4739234c86ba92b2d1e84'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
