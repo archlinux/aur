@@ -1,5 +1,5 @@
 pkgbase = kodi-git
-	pkgver = r56135.224ad50f581
+	pkgver = r56200.71fc825a2d4
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -93,7 +93,7 @@ pkgname = kodi-git
 	depends = hicolor-icon-theme
 	depends = mesa
 	depends = python-pycryptodomex
-	depends = python-pillow6
+	depends = python-pillow
 	depends = python-simplejson
 	depends = xorg-xdpyinfo
 	depends = KODI-BIN
@@ -105,7 +105,7 @@ pkgname = kodi-git
 	optdepends = shairplay: AirPlay support
 	optdepends = upower: Display battery level
 	provides = xbmc
-	provides = kodi=r56135.224ad50f581
+	provides = kodi=r56200.71fc825a2d4
 	conflicts = xbmc
 	replaces = xbmc
 
@@ -133,7 +133,7 @@ pkgname = kodi-git-x11
 	depends = tinyxml
 	depends = kodi-git
 	provides = KODI-BIN
-	provides = kodi-x11=r56135.224ad50f581
+	provides = kodi-x11=r56200.71fc825a2d4
 	replaces = kodi-bin
 
 pkgname = kodi-git-wayland
@@ -160,7 +160,7 @@ pkgname = kodi-git-wayland
 	depends = waylandpp
 	depends = kodi-git
 	provides = KODI-BIN
-	provides = kodi-wayland=r56135.224ad50f581
+	provides = kodi-wayland=r56200.71fc825a2d4
 
 pkgname = kodi-git-gbm
 	pkgdesc = gbm kodi binary
@@ -186,12 +186,12 @@ pkgname = kodi-git-gbm
 	depends = tinyxml
 	depends = kodi-git
 	provides = KODI-BIN
-	provides = kodi-gbm=r56135.224ad50f581
+	provides = kodi-gbm=r56200.71fc825a2d4
 
 pkgname = kodi-git-eventclients
 	pkgdesc = Kodi Event Clients (master branch)
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r56135.224ad50f581
+	provides = kodi-eventclients=r56200.71fc825a2d4
 	conflicts = kodi-eventclients
 
 pkgname = kodi-git-tools-texturepacker
@@ -200,12 +200,12 @@ pkgname = kodi-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r56135.224ad50f581
+	provides = kodi-tools-texturepacker=r56200.71fc825a2d4
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-git-dev
 	pkgdesc = Kodi dev files (master branch)
 	depends = kodi-git
-	provides = kodi-dev=r56135.224ad50f581
+	provides = kodi-dev=r56200.71fc825a2d4
 	conflicts = kodi-dev
 

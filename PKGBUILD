@@ -21,7 +21,7 @@ pkgname=(
   "$pkgbase" "$pkgbase-x11" "$pkgbase-wayland" "$pkgbase-gbm"
   "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev"
 )
-pkgver=r56135.224ad50f581
+pkgver=r56200.71fc825a2d4
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -217,7 +217,7 @@ package_kodi-git() {
   pkgdesc="A software media player and entertainment hub for digital media (master branch)"
   depends=(
     'desktop-file-utils' 'hicolor-icon-theme' 'mesa' 'python-pycryptodomex'
-    'python-pillow6' 'python-simplejson' 'xorg-xdpyinfo'
+    'python-pillow' 'python-simplejson' 'xorg-xdpyinfo'
     'KODI-BIN'
   )
   optdepends=(
