@@ -4,7 +4,7 @@
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 
 pkgname=flightgear-git
-pkgver=2020.3.0r14711.df67cc2bd
+pkgver=2020.3.0r14766.c5e45f2b4
 pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator"
 arch=('x86_64')
@@ -17,10 +17,8 @@ optdepends=('qt5-base: fgfs --launcher'
             'flightgear-data')
 provides=('flightgear')
 conflicts=('flightgear')
-source=("flightgear::git+https://git.code.sf.net/p/flightgear/flightgear#branch=next"
-        'fg-cmake-fixes.patch')
-sha256sums=('SKIP'
-            '94c91b5008506fd8c0fe090f5f6bf96ad5e2228360bc913f49b9008c99adb4a3')
+source=("flightgear::git+https://git.code.sf.net/p/flightgear/flightgear#branch=next")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/flightgear
@@ -32,7 +30,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"/flightgear
-  patch -p1 -i ../fg-cmake-fixes.patch
   sed -i 's|Exec=.*|Exec=fgfs --fg-root=/usr/share/flightgear/data|' package/org.flightgear.FlightGear.desktop
 }
 

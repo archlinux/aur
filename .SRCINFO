@@ -1,6 +1,6 @@
 pkgbase = flightgear-git
 	pkgdesc = An open-source, multi-platform flight simulator
-	pkgver = 2020.3.0r14711.df67cc2bd
+	pkgver = 2020.3.0r14766.c5e45f2b4
 	pkgrel = 1
 	url = https://home.flightgear.org
 	arch = x86_64
@@ -26,9 +26,7 @@ pkgbase = flightgear-git
 	provides = flightgear
 	conflicts = flightgear
 	source = flightgear::git+https://git.code.sf.net/p/flightgear/flightgear#branch=next
-	source = fg-cmake-fixes.patch
 	sha256sums = SKIP
-	sha256sums = 94c91b5008506fd8c0fe090f5f6bf96ad5e2228360bc913f49b9008c99adb4a3
 
 pkgname = flightgear-git
 
