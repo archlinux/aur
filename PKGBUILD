@@ -1,6 +1,6 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=rollup
-pkgver=2.29.0
+pkgver=2.30.0
 pkgrel=1
 pkgdesc="Next-generation ES6 module bundler"
 arch=(any)
@@ -22,4 +22,4 @@ package() {
   find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 }
 
-sha256sums=('c1d25dc43357aeee208e962c22ba3de0757520ec7fdca327ff60cc09d8b93e1a')
+sha256sums=('4f7be7edb0e90320ac65c43c79ccf25da388db6e7053e5a11f144d64dde259b8')
