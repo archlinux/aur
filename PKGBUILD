@@ -10,7 +10,7 @@
 # CI/CD system # when new versions are released.
 
 pkgname=tectonic
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=0
 arch=('x86_64')
 pkgdesc='Modernized, complete, self-contained TeX/LaTeX engine, powered by XeTeX and TeXLive'
@@ -19,7 +19,7 @@ license=('MIT')
 depends=('fontconfig' 'harfbuzz-icu' 'openssl')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha512sums=('15a9079823ee1ba705784bb284d32f953364762ca0ff626310786dba710754a52c011dcfc58368f8d92bc4d994c9d62a8024ec2b6b24511e6c638b2ddde39a6a')
+sha512sums=('5603c18c6016faf5b6268ae48c961d2f7c92c935b8cd0f775c0da9e76eaa86d6dcc4f40c4604b04f8bf572fa1ebec522e341adefb1c5fcce4d2d7e4dd6cf29f7')
 
 build() {
 	cd $pkgname-$pkgver
