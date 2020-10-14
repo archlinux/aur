@@ -4,18 +4,18 @@ license=('Apache-2.0')
 pkgdesc="Fast, multi-platform web server with automatic HTTPS"
 pkgname=caddy-bin
 pkgrel=1
-pkgver=2.2.0
+pkgver=2.2.1
 provides=('caddy')
 source_x86_64=("https://github.com/caddyserver/caddy/releases/download/v${pkgver}/caddy_${pkgver}_linux_amd64.tar.gz")
 source_arm=("https://github.com/caddyserver/caddy/releases/download/v${pkgver}/caddy_${pkgver}_linux_armv5.tar.gz")
 source_armv6h=("https://github.com/caddyserver/caddy/releases/download/v${pkgver}/caddy_${pkgver}_linux_armv6.tar.gz")
 source_armv7h=("https://github.com/caddyserver/caddy/releases/download/v${pkgver}/caddy_${pkgver}_linux_armv7.tar.gz")
 source_aarch64=("https://github.com/caddyserver/caddy/releases/download/v${pkgver}/caddy_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('989cfd637872e0b6169712b4a76ec230f386c18f97585982a99e9b42f6acf048')
-sha256sums_arm=('4ffa5916ce47ec5a6c851f7865ee766275aae7ec11935a4eb04e8e4f4c9e0042')
-sha256sums_armv6h=('4e79608c8cf8fbcff87ad893f8338bab194b9ff4b3fcc8b1a7082da8108813be')
-sha256sums_armv7h=('3a075b70934015d5808e8f250338e6637099fc06e871b48c21f9bf7edd0961c3')
-sha256sums_aarch64=('f4891656a4f75117e5dda26d009d4a75d218eef5c9302fd34a098b2f8c9bd196')
+sha256sums_x86_64=('5d370234b0bd309a5baec9d9adc9ea391d3dbbf0a1dfe36d4e7eb17e218242ed')
+sha256sums_arm=('30e4ecef66345283fb35ced321cc61ac9e0d0cf8586382ca1ed782c7be31478f')
+sha256sums_armv6h=('39138528c18457ab458ce38e3d7aac3237ad382a4c4f7fcc82aa96ba16960c5f')
+sha256sums_armv7h=('220ef17ccb1cb8d7a3ec74d6cc5013fc4036e9881325aa9e7f1c45dda9d38ea7')
+sha256sums_aarch64=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 url='https://caddyserver.com'
 
 package() {
