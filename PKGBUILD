@@ -6,17 +6,17 @@
 
 _locale='tr'
 pkgname=palemoon-i18n-tr
-pkgver=28.9.0
+pkgver=28.14.0
 pkgrel=1
 pkgdesc="Turkish language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('05f763368d74779728c98438bbcda0718b900667e0a008534b098f4230a8ec0f')
+sha256sums=('678aac8ae63c0ddb66c62143c31807bcc25d127ad53fa0192701937e94117eca')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
-DLAGENTS=("http::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
+DLAGENTS=("https::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
           "${DLAGENTS[@]}")
 
 package() {
