@@ -93,25 +93,28 @@ class ClashUp:
             parsed_clash_conf = self.parse_config(raw_clash_conf)
             self.save(parsed_clash_conf)
             logging.info('Update Finish')
-        except self.session.exceptions.RequestException:
+        except requests.exceptions.RequestException:
             logging.warning('Update Fail')
 
     def update_mmdb(self):
-        resp = self.session.get(self.config['mmdb_version_url'], proxies={'http': None, 'https': None})
-        resp.raise_for_status()
-        current_version = resp.text
-        if os.path.isfile(self.mmdb_version_file):
-            with open(self.mmdb_version_file, 'r') as f:
-                if current_version == f.read():
-                    logging.info('pass mmdb update')
-                    return
-        resp = self.session.get(self.config['mmdb_file_url'], proxies={'http': None, 'https': None})
-        resp.raise_for_status()
-        with open(self.mmdb_file_path, 'wb') as f:
-            f.write(resp.content)
-        with open(self.mmdb_version_file, 'w') as f:
-            f.write(current_version)
-        logging.info('update mmdb')
+        try:
+            resp = self.session.get(self.config['mmdb_version_url'], proxies={'http': None, 'https': None})
+            resp.raise_for_status()
+            current_version = resp.text
+            if os.path.isfile(self.mmdb_version_file):
+                with open(self.mmdb_version_file, 'r') as f:
+                    if current_version == f.read():
+                        logging.info('pass mmdb update')
+                        return
+            resp = self.session.get(self.config['mmdb_file_url'], proxies={'http': None, 'https': None})
+            resp.raise_for_status()
+            with open(self.mmdb_file_path, 'wb') as f:
+                f.write(resp.content)
+            with open(self.mmdb_version_file, 'w') as f:
+                f.write(current_version)
+            logging.info('update mmdb')
+        except requests.exceptions.RequestException:
+            logging.warning('update mmdb failed')
 
     def update_time_cache(self):
         if not os.path.isfile(self.cache_file_path):
