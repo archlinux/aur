@@ -1,0 +1,10 @@
+[Unit]
+Description=A gemini server
+After=network.target network-online.target nss-lookup.target
+
+[Service]
+Environment=RUST_LOG=info
+ExecStart=/usr/bin/pldsrv
+
+[Install]
+WantedBy=multi-user.target

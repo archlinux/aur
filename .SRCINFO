@@ -1,0 +1,21 @@
+pkgbase = polydeukes
+	pkgdesc = A gemini client and server
+	pkgver = 0.1.1
+	pkgrel = 2
+	url = https://git.sr.ht/~cdv/polydeukes
+	arch = x86_64
+	license = AGPL3
+	makedepends = rust
+	source = polydeukes-0.1.1.tar.gz::https://git.sr.ht/~cdv/polydeukes/archive/0.1.1.tar.gz
+	source = service
+	sha512sums = 93dbb006c0c24d7d41cd607388cf8d7bc3f9361e171cf8f9fb67911adf65724db5cd86a85aeff2ae50f11351cfe5c17247aed6a508d841f7aa4874de734cc8cc
+	sha512sums = 14ae5963eee667939ec75b4cbea89a504fe348bb401a6b589e156b172e7067b67dad23ea83f2a0967386caaee9520e3b3c629ba0099db14a66c23df80ca841b3
+
+pkgname = pldsrv
+	pkgdesc = A simple gemini server
+	depends = gcc-libs
+
+pkgname = pldget
+	pkgdesc = A gemini terminal client
+	depends = gcc-libs
+
