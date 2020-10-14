@@ -6,7 +6,7 @@ _module='tracktime'
 pkgver='0.9.15'
 pkgrel=1
 pkgdesc='Time tracking library with command line interface.'
-url='https://gitlab.com/sumner/tracktime'
+url='https://git.sr.ht/~sumner/tracktime'
 depends=(
     'python'
     'python-argcomplete'

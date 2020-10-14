@@ -5,7 +5,7 @@ set -xe
 AUR_NAME=tracktime
 PROJ_NAME=tracktime
 DESCRIPTION="Time tracking library with command line interface."
-URL=https://gitlab.com/sumner/tracktime
+URL=https://git.sr.ht/~sumner/tracktime
 DEPENDS=(
     python-argcomplete
     python-docutils
