@@ -1,6 +1,6 @@
 pkgbase = texstudio-git
 	pkgdesc = Integrated writing environment for creating LaTeX documents
-	pkgver = 3.0.0alpha6.r24.g1e3755fc
+	pkgver = 3.0.1.r45.g9b0ac947
 	pkgrel = 1
 	url = https://github.com/texstudio-org/texstudio
 	arch = x86_64

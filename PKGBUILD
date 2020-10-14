@@ -1,6 +1,6 @@
 # Maintainer: coldBug <coldBug at e.mail dot de>
 pkgname=texstudio-git
-pkgver=3.0.0alpha6.r24.g1e3755fc
+pkgver=3.0.1.r45.g9b0ac947
 pkgrel=1
 pkgdesc="Integrated writing environment for creating LaTeX documents"
 arch=('x86_64')
@@ -22,7 +22,8 @@ pkgver() {
 
 build() {
     cd texstudio
-    qmake-qt5 CONFIG-="debug" USE_SYSTEM_QUAZIP=1 USE_SYSTEM_HUNSPELL=1 texstudio.pro
+    qmake-qt5 CONFIG-="debug" USE_SYSTEM_QUAZIP=1 USE_SYSTEM_HUNSPELL=1 QUAZIP_LIB=-lquazip1-qt5 \
+        QUAZIP_INCLUDE="/usr/include/QuaZip-Qt5-1.1/quazip" texstudio.pro
     make
 }
 
