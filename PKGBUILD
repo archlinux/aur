@@ -4,7 +4,7 @@
 pkgname=dracut-hook-uefi
 pkgver=0.4.2
 pkgrel=1
-pkgdesc="Install/remove hooks for dracut"
+pkgdesc="Install/remove hooks for dracut unified kernel images"
 url=https://dracut.wiki.kernel.org/index.php/Main_Page
 arch=('any')
 license=('BSD')
