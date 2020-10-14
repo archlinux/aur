@@ -12,8 +12,9 @@ makedepends=("jdk-openjdk" "java-environment-common" "git")
 depends=("java-runtime-common")
 
 pkgver() {
-    cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "{%s}" "${pkgver}"
 }
 
 rinstall() {
