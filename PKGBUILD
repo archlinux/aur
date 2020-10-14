@@ -2,7 +2,7 @@
 
 pkgname=perl-term-shell
 _cpanname=Term-Shell
-pkgver=0.09
+pkgver=0.12
 pkgrel=1
 pkgdesc="A simple command-line shell framework for Perl"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-text-autoformat' 'perl-module-build')
 options=('!emptydirs')
 source=(http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/${_cpanname}-${pkgver}.tar.gz)
-sha256sums=('092cf1ce6d3df66066db5cd53edd63be6f63789f21e3af3631f10e6faa549afc')
+sha256sums=('7d6cf579c00b6540c2db1d9297cad74ee0b380fe01ffd38f8e6d6e4cce3b3dd7')
 
 build() {
   cd "$srcdir/${_cpanname}-${pkgver}"
