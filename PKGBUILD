@@ -35,4 +35,6 @@ build() {
 package() {
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}" install
+  cd pynest
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
