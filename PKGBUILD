@@ -1,13 +1,14 @@
 # Maintainer: Advaith Madhukar <advaith.madhukar at gmail dot com>
 pkgname=(sysmon)
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/MatthiasSchinzel/sysmon"
 pkgdesc="Graphical system monitor. Similar to windows task manager"
 arch=(any)
 license=(gpl)
+conflicts=('sysmon-git')
 source=(
-  git+https://github.com/MatthiasSchinzel/sysmon.git
+  'sysmon::git+https://github.com/MatthiasSchinzel/sysmon'
   )
 sha256sums=(
     'SKIP'

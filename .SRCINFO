@@ -1,7 +1,7 @@
 pkgbase = sysmon
 	pkgdesc = Graphical system monitor. Similar to windows task manager
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MatthiasSchinzel/sysmon
 	arch = any
 	license = gpl
@@ -13,7 +13,8 @@ pkgbase = sysmon
 	depends = python-numpy
 	optdepends = wireless_tools
 	optdepends = nvidia-utils
-	source = git+https://github.com/MatthiasSchinzel/sysmon.git
+	conflicts = sysmon-git
+	source = sysmon::git+https://github.com/MatthiasSchinzel/sysmon
 	sha256sums = SKIP
 
 pkgname = sysmon
