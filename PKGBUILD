@@ -13,8 +13,10 @@ provides=('impostor-server')
 conflicts=('impostor-server')
 options=('!strip')
 source=("git+https://github.com/AeonLucid/Impostor.git#tag=v${pkgver}"
+        "git+https://github.com/AeonLucid/Hazel-Networking.git"
         "https://dot.net/v1/dotnet-install.sh")
 sha512sums=('SKIP'
+            'SKIP'
             '7cdf91eda30e18ae3042ea77ad2a43e66e5a020df1ae09ff0b73f327385a34b51da3cd52361ef2714c853d30fffc8dd077733858b07ec6f79a444b6d8dcf637c')
 
 prepare() {
@@ -23,6 +25,7 @@ prepare() {
 
   cd "Impostor/"
   git submodule init
+  git config submodule.submodules/Hazel-Networking.url ${srcdir}/Hazel-Networking
   git submodule update
 }
 
