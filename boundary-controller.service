@@ -1,0 +1,13 @@
+[Uni/]
+Description=boundary Controller
+
+[Service]
+ExecStart=/usr/bin/boundary controller -config /etc/boundary/controller.hcl
+User=boundary
+Group=boundary
+LimitMEMLOCK=infinity
+Capabilities=CAP_IPC_LOCK+ep
+CapabilityBoundingSet=CAP_SYSLOG CAP_IPC_LOCK
+
+[Install]
+WantedBy=multi-user.target
