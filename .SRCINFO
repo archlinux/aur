@@ -1,6 +1,6 @@
 pkgbase = lbry-app-bin
 	pkgdesc = The LBRY app built using electron
-	pkgver = 0.48.0
+	pkgver = 0.48.1
 	pkgrel = 1
 	url = https://lbry.com/
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = lbry-app-bin
 	depends = libsecret
 	provides = lbry
 	provides = lbrynet
-	source = https://github.com/lbryio/lbry-desktop/releases/download/v0.48.0/LBRY_0.48.0.deb
-	sha256sums = e62ab5f3e584406a0b191d92deed1ce431706c0efc9e5dcd4ac6fa4bfe0145ab
+	source = https://github.com/lbryio/lbry-desktop/releases/download/v0.48.1/LBRY_0.48.1.deb
+	sha256sums = 12fa69467ebfc0894995354c7c31df327293b4c23961ce49c2c89946f671383c
 
 pkgname = lbry-app-bin
 
