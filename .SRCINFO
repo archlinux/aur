@@ -1,6 +1,6 @@
 pkgbase = glint
 	pkgdesc = A tool for creating git commits in the commitlint style
-	pkgver = 0.6.0
+	pkgver = 6.0.2
 	pkgrel = 1
 	url = https://github.com/brigand/glint
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = glint
 	checkdepends = rust
 	makedepends = rust
 	depends = gcc-libs
-	source = glint-0.6.0.tar.gz::https://github.com/brigand/glint/archive/0.6.0.tar.gz
-	sha256sums = 57f6b1fba3e1aa887ca2fdf718b20a2fbabe4d722a9a3e51d3e49176a4e3ae5f
+	source = glint-6.0.2.tar.gz::https://github.com/brigand/glint/archive/v6.0.2.tar.gz
+	sha256sums = e1a762b7e5de252b4b5bf50e4707d0e94a8f75807c673b98c4534222793e9764
 
 pkgname = glint
 
