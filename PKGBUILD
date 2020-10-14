@@ -2,7 +2,7 @@
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=gromacs
-pkgver=2020.3
+pkgver=2020.4
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -14,10 +14,10 @@ optdepends=('cuda: Nvidia GPU support'
             'perl: needed for demux.pl and xplor2gmx.pl'
 	    'opencl-mesa: OpenCL support for AMD GPU'
 	    'opencl-nvidia: OpenCL support for Nvidia GPU')
-makedepends=('cmake' 'libxml2' 'hwloc' 'gcc8')
+makedepends=('cmake' 'libxml2' 'hwloc' 'gcc9')
 options=('!libtool')
 source=(http://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-sha256sums=('903183691132db14e55b011305db4b6f4901cc4912d2c56c131edfef18cc92a9')
+sha256sums=('5519690321b5500c7951aaf53ff624042c3edd1a5f5d6dd1f2d802a3ecdbf4e6')
 
 export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #Gromacs will have the ability to read any
@@ -25,8 +25,8 @@ export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #VMD installation (e.g. AMBER's DCD format).
 
 #For cuda8 support gcc8 is required, if you do not need cuda support comment the next two lines
-export CC=gcc-8
-export CXX=g++-8 
+export CC=gcc-9
+export CXX=g++-9 
 
 build() {
   mkdir -p ${srcdir}/{single,double}
