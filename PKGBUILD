@@ -2,8 +2,8 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v5.4.70
-pkgver=5.4.v.70
+gitver=v5.4.71
+pkgver=5.4.v.71
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -20,20 +20,16 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
         'linux.install'
 	# patch from our gentoo overlords
 	'5013_enable-cpu-optimizations-for-gcc10.patch'
-	# i2c write rework patch
-	'timerrework.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'b9f27be49c08b283d39e19d376a0833218b4d3679e1f37c1827b68b5949a1566'
+            '9e279d136e56bba6d48e5d0165bd92740c1fea38775ef3d36aecc06cf12e2464'
             #.preset file
             '0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87'
             #linux install file
             'd590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0'
             #gentoopatch file
             '27b7fc535ade94b636c3ec4e809e141831e9465a0ef55215a9852b87048629e2'
-            #i2c write rework patchfile
-            '44e739d674b0909d3dd1edb29ad9c4ab6543c32f488cbbcc30ba0fdc2bf902dc'
 )
 
 _kernelname=${pkgbase#linux}
