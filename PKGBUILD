@@ -3,7 +3,7 @@
 # Contributor: agnotek <agnostic.sn [at]gmail.com>
 
 pkgname=telegram-desktop-bin
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries"
 arch=('i686' 'x86_64')
@@ -46,8 +46,8 @@ sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
             '83e3e8eeecadcb3429704626d4ac80ef61ef4e06ba2c6ca2b105a4a436f33032'
             '871f2a6d3bd9d657f8379196e51fd3117c1586e0042e9e993ae138f78b2bcd76'
             'a9eb77ca5a428b32f6e01f62b859cce788c4c9a170dc2cd080800a9de59faa3d')
-sha256sums_i686=('0705e4ba920e023f7d8d50348bc1094fd567b914e731f60fce4529775c0f0990')
-sha256sums_x86_64=('d7e07175350c32b618d33f5d90f43d458e72a0ab1b5bc7d90304b804391992c3')
+sha256sums_i686=('0cd9a543f6cd95d98a71a474034f308d3d73eb9ebc364e81c9e0351c543c0e5a')
+sha256sums_x86_64=('6aa8c4f7e10fb940f6350372829c1ce0dd5d7892d86836884e9c7be69754f956')
 # Some installation information
 install="$pkgname.install"
 
@@ -83,4 +83,8 @@ package() {
 		install -d "$icon_dir"
 		install -m644 "$srcdir/icon${icon_size}.png" "$icon_dir/telegram.png"
 	done
+
+	# Disable the official Telegram Desktop updater
+	mkdir -p "$pkgdir/etc/tdesktop"
+	echo "/usr/bin/telegram-desktop" > "$pkgdir/etc/tdesktop/externalupdater"
 }
