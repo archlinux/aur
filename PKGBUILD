@@ -14,7 +14,7 @@ sha256sums=(
     )
 makedepends=(git python-setuptools)
 depends=(python python-pyqtgraph python-pyqt5 python-numpy)
-optdepends=(wireless_tools)
+optdepends=(wireless_tools nvidia-utils)
 build(){
  cd sysmon/
  git checkout ${pkgver}
