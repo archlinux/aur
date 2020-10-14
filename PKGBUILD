@@ -3,8 +3,8 @@ pkgdesc="Header files and scripts for Clear Linux kernel and modules"
 url="https://github.com/clearlinux-pkgs/linux"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
-_major=5.8
-_minor=14
+_major=5.9
+_minor=0
 _clr=991
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
@@ -16,12 +16,12 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=33820
+_clear_version=33830
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=19ab776527ff67c4a737013284ebf39676d7f3bdc5d637ec32518952652b9f13
-_config_hash_clear_version=33820
+_config_hash=23b2927fb35df139ae4414ea8083bd4b07b17c7013195e978d453f66e64721a6
+_config_hash_clear_version=33830
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -53,6 +53,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
-b2sums=('a3652872c07b90ebff4ed399b1f9ae641e8008a66582905f4911f71f29fe0b2bbbe7cc465ead325ffa39dfc8f43b126c8873a5e5e5051361170c0bd98e38303f'
-        'd694fc9436efde3244de536b366e4dff81115bb2af14ab9a6aef659b790047870cceec71825785f6531f0f1c66c01825dd0d5064ebac18e292a28dee0071692e'
-        '59da0b9f443beb308f36908e3bbed792998809aa9bb913f17a40843163e9bf9383a217d7c5fcb57e6183a98593204f03ff990b57dc013e5ba94f754c796f0397')
+b2sums=('572c77a93d30d2e3f8e0190f07edc70f3113586ceeac5a2d1b7301386979047909d580011be3b37b01ad53066d19c645963ea57f8a8ea5b14e3a5369ef5b34a7'
+        '96002005d8b56b2e6e32af8134df819204690ac9c5a45f45b9342cae0ed0a9b44fad19c2fb9ed70f92e0b1917dcf1dac01d95a62fd92c6a690b286613a20d715'
+        'b591d2c401db718a4b7a087204c66c9d2a7983456682e0941e6e3a7587c1ddff26900b5551b54438b23e01dbc659beff605da6edfa437580c35927b775ef426e')
