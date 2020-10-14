@@ -2,7 +2,7 @@
 # Contributor: Lucki
 
 pkgname="asf"
-pkgver="4.3.0.6"
+pkgver="4.3.1.0"
 pkgrel=1
 pkgdesc="Steam cards farmer."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             'ba1ff85e55e56d71dbdd0d898244ff7725bced8625f29c5389e28525e6cdb987'
             'b627c8d4b3ba7f194a44749bd401b33bae601b9570da98e457737a6f9cfa408f'
             'e63a92fd8008c40dab963161bdac967b57146553c00f114469c204ac6e1795b2'
-            '1353977a61a2e8700df80729cabc88f453b704a0c6ccf45d80a91691fcf6338f')
+            'c6d8dff9306532babf5100629ea48a5322561823a4c7416f02dacbbee5ab30da')
 
 build() {
     cd asf

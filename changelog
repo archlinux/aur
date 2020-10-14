@@ -1,3 +1,14 @@
+
+2020-10-14 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.3.1.0-1:
+    [!] Fixed possible Denial of Service attack, which caused ASF to crash (#GHSA-5v34-4prm-9474).
+    In our NLog SteamTarget, BotName is now of type Layout which offers additional features to those that would appreciate them. Existing setups will continue to work as before.
+    IPC custom configuration now supports KnownNetworks property, which can be used for forwarding proxy headers from reverse proxies hosted on different machines than ASF itself (#2003).
+    ASF will now log friend invites on Trace logging level, allowing to catch that event for those that would appreciate it (#2005).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    pkg: update bundled NLog.config to reflect upstream changes.
 2020-09-21 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.3.0.6-1:
     [!] General code refactor for implementing C# 8.0 nullable references. This change might require some third-party plugins to be recompiled, due to misc API changes that had to be applied in the process (#1543).
