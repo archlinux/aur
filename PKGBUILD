@@ -13,7 +13,8 @@ depends=("java-runtime-common")
 
 pkgver() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "${pkgver}"
+    #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 rinstall() {
