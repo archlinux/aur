@@ -1,7 +1,7 @@
 # Maintainer: Anish Vundela <anishreddyvundela@gmail.com>
 pkgname=dwm-supermario9590-git
 _pkgname=dwm
-pkgver=6.2
+pkgver=r1685.61bb8b2
 pkgrel=1
 pkgdesc="My custom build of DWM"
 arch=(x86_64 i686)
@@ -38,6 +38,6 @@ build() {
 package() {
 	cd "$srcdir/${_pkgname}"
 	make PREFIX=/usr DESTDIR="$pkgdir/" install
-	install -m644 -D LICENCE "$pkgdir/usr/share/licences/$pkgname/LICENCE"
-	install -m644 -D README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -m644 -D LICENSE "$pkgdir/usr/share/licences/$pkgname/LICENSE"
+	install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
 }

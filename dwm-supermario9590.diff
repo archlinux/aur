@@ -1,22 +1,24 @@
-From 11722a4f86795ada65ab3731e707eaf4b442917e Mon Sep 17 00:00:00 2001
+From 65bf8f2ce6758e7cf4b210bacecf7c9f76ad3028 Mon Sep 17 00:00:00 2001
 From: Super Mario <anishreddyvundela@gmail.com>
-Date: Mon, 12 Oct 2020 19:41:57 +0000
-Subject: [PATCH] Made patch for my entire build of DWM, apply this to vanilla and you will have cloned my build!
+Date: Wed, 14 Oct 2020 19:13:06 +0000
+Subject: [PATCH] Added support for XF86 keys
 
 ---
- config.def.h |  40 +++++++++---
+ config.def.h |  41 +++++++++---
  config.mk    |   2 +-
  drw.c        |  26 ++++----
  drw.h        |   9 ++-
  dwm.1        |  33 ++++++++++
  dwm.c        | 177 ++++++++++++++++++++++++++++++++++++++++++++++-----
- 6 files changed, 245 insertions(+), 42 deletions(-)
+ 6 files changed, 246 insertions(+), 42 deletions(-)
 
 diff --git a/config.def.h b/config.def.h
-index 1c0b587..395dc93 100644
+index 1c0b587..10e9a0d 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -2,24 +2,32 @@
+@@ -1,25 +1,34 @@
+ /* See LICENSE file for copyright and license details. */
++#include <X11/XF86keysym.h>
  
  /* appearance */
  static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -57,7 +59,7 @@ index 1c0b587..395dc93 100644
  
  static const Rule rules[] = {
  	/* xprop(1):
-@@ -32,7 +40,7 @@ static const Rule rules[] = {
+@@ -32,7 +41,7 @@ static const Rule rules[] = {
  };
  
  /* layout(s) */
@@ -66,7 +68,7 @@ index 1c0b587..395dc93 100644
  static const int nmaster     = 1;    /* number of clients in master area */
  static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
  
-@@ -44,7 +52,7 @@ static const Layout layouts[] = {
+@@ -44,7 +53,7 @@ static const Layout layouts[] = {
  };
  
  /* key definitions */
@@ -75,7 +77,7 @@ index 1c0b587..395dc93 100644
  #define TAGKEYS(KEY,TAG) \
  	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
  	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-@@ -58,6 +66,10 @@ static const Layout layouts[] = {
+@@ -58,6 +67,10 @@ static const Layout layouts[] = {
  static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
  static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
  static const char *termcmd[]  = { "st", NULL };
@@ -86,7 +88,7 @@ index 1c0b587..395dc93 100644
  
  static Key keys[] = {
  	/* modifier                     key        function        argument */
-@@ -84,6 +96,9 @@ static Key keys[] = {
+@@ -84,6 +97,9 @@ static Key keys[] = {
  	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
  	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
  	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
@@ -96,7 +98,7 @@ index 1c0b587..395dc93 100644
  	TAGKEYS(                        XK_1,                      0)
  	TAGKEYS(                        XK_2,                      1)
  	TAGKEYS(                        XK_3,                      2)
-@@ -94,6 +109,11 @@ static Key keys[] = {
+@@ -94,6 +110,11 @@ static Key keys[] = {
  	TAGKEYS(                        XK_8,                      7)
  	TAGKEYS(                        XK_9,                      8)
  	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
