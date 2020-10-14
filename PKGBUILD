@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=trellowarrior
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Tool to sync Taskwarrior projects with Trello boards'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('python-tasklib' 'python-py-trello')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('1dc4a732e31c9950374b52ad0a66ffee305aee07eac924953d684ca6656eafba')
+sha256sums=('85751e78f8e15f8372f2669710654439b6f18a2e644d406df80a345abe51b498')
 
 package() {
   cd "${pkgname}-${pkgver}"
