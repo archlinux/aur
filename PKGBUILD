@@ -5,7 +5,7 @@
 pkgname=virtualbox-headless
 pkgver=6.1.14
 _tarver=${pkgver}a
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
 arch=('i686' 'x86_64')
 url='https://virtualbox.org'
@@ -39,6 +39,7 @@ source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${_tarv
         '017-fix-narrowing-conversion.patch'
         '018-xclient.patch'
         '020-gsoap.patch'
+        '021-kernel-5.9.patch'
         )
 sha256sums=(
     '16f3cb83ab3c4dacf2a9d3cc638cbd18db23767828bba6b8ba1c1b57abeb6aef'
@@ -57,6 +58,7 @@ sha256sums=(
     '5aac692909a0a0ec56b08bdece9e42cf7463abdca9da2f990d441ff463be6a99'
     'cac5a573e9ed5aafb2f469c2e6fffb8cd4f389bbadba5a968c9f65be7a72fee3'
     'c6892a3561a72a9b308cb33fa6647cc53e54a3bd40cb41780cad7f8e9d7df9f6'
+    '05bfc8306bbd856087c393dcb47d16de4213a4cc69124857f705f3784d88581a'
 )
 
 prepare() {

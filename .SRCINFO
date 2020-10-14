@@ -1,7 +1,7 @@
 pkgbase = virtualbox-headless
 	pkgdesc = Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).
 	pkgver = 6.1.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://virtualbox.org
 	install = virtualbox.install
 	arch = i686
@@ -50,6 +50,7 @@ pkgbase = virtualbox-headless
 	source = 017-fix-narrowing-conversion.patch
 	source = 018-xclient.patch
 	source = 020-gsoap.patch
+	source = 021-kernel-5.9.patch
 	sha256sums = 16f3cb83ab3c4dacf2a9d3cc638cbd18db23767828bba6b8ba1c1b57abeb6aef
 	sha256sums = 2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c
 	sha256sums = 9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e
@@ -66,6 +67,7 @@ pkgbase = virtualbox-headless
 	sha256sums = 5aac692909a0a0ec56b08bdece9e42cf7463abdca9da2f990d441ff463be6a99
 	sha256sums = cac5a573e9ed5aafb2f469c2e6fffb8cd4f389bbadba5a968c9f65be7a72fee3
 	sha256sums = c6892a3561a72a9b308cb33fa6647cc53e54a3bd40cb41780cad7f8e9d7df9f6
+	sha256sums = 05bfc8306bbd856087c393dcb47d16de4213a4cc69124857f705f3784d88581a
 
 pkgname = virtualbox-headless
 
