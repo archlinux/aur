@@ -1,7 +1,7 @@
 # Maintainer: Cyril <cyrwae[at]hotmail[dot]com>
 pkgname=python-fcl-git
 pkgver=0.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the Flexible Collision Library"
 arch=('x86_64')
 url="https://github.com/BerkeleyAutomation/python-fcl"
@@ -34,4 +34,6 @@ build() {
 package() {
 	cd $pkgname
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" 'README.md'
 }
