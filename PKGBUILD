@@ -1,8 +1,8 @@
 # Maintainer:  <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=sais
-pkgver=1.6.2
-pkgrel=3
+pkgver=1.6.3
+pkgrel=1
 pkgdesc='Strange Adventures In Infinite Space is a roguelike video game created by the indie developer Digital Eel'
 url='http://digital-eel.com/sais/'
 license=('GPL3')
@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64')
 depends=('physfs' 'sdl2_mixer')
 makedepends=('tar' 'cmake' 'git' 'wget' 'make' 'sdl2' 'sdl2_mixer')
 source=("https://github.com/kuroneko/sais/archive/v${pkgver}.tar.gz")
-sha512sums=('4f44eb367a0feecfdf2f25dae81f8335d0ea0db99fd3ae89f298bd9dae373d51db7f14c67b1ea0552ca2f72ce64db1372daa8b14876d6e0c04ad28a6bc0e7bb7')
+sha512sums=('99ca8de25caf9d2dd62afd4a67a4d811feccc5dab0c0767a864f3eb70bb495c8b580bbd683f5d7261337750eddb8556de75a893386032e01049b86168b8072e8')
 
 build() {
 	cd ${srcdir}"/"${pkgname}"-"${pkgver}
