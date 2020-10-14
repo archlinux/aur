@@ -6,17 +6,17 @@
 
 _locale='uk'
 pkgname=palemoon-i18n-uk
-pkgver=28.9.0
+pkgver=28.14.0
 pkgrel=1
 pkgdesc="Ukrainian language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('f3022d266d1a7b43b5ca506d8756bd20d3d1ad94252ce5017a625353f61649e7')
+sha256sums=('277a53a098222f84b6339b148cf0c3f110e55335e19066a91213a007e3301735')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
-DLAGENTS=("http::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
+DLAGENTS=("https::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
           "${DLAGENTS[@]}")
 
 package() {
