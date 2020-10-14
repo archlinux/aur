@@ -2,7 +2,7 @@
 
 while read -r line; do
 	if [[ "$line" == 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
-		read -r pkgbase < "/${line}"
-		rm -f "/boot/vmlinuz-${pkgbase}" "/boot/initramfs-${pkgbase}.img" "/boot/initramfs-${pkgbase}-fallback.img"
+		kver=$(basename $(dirname ${line}))
+		rm -v /boot/EFI/Linux/linux-${kver}-$(cat /etc/machine-id)-*.efi
 	fi
 done

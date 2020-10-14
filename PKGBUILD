@@ -16,8 +16,8 @@ source=(
   "90-dracut-install.hook"
   "60-dracut-remove.hook"
 )
-sha256sums=('5110714a574eb14e1bace89a6526fc07d98a82969c1b4cb95c46aa183a750ab8'
-            '25409770cdf9607eb05addcbc0f89f45a91385c25b8a307425d4b3f4b7c2a9ef'
+sha256sums=('80db80ce535ab03041c4db168d85ffd68fcda20eedc88d2b27070bcf4265f4c5'
+            '7b237dc4443f71c3785635a86e81eca951bbbc637f22146c0f958c094bad03a8'
             '492d51df1234b75a32e7dff63c86ee104a7d844a408070e1c4da5dc8ab53be6f'
             '054dac9f1d55029a922ff05c3064e54d25790c7a18d2b598edc58ef3d295cba1')
 

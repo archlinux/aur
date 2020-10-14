@@ -27,10 +27,6 @@ for kernel in "${kernels[@]}"; do
 	version=$(basename "${path%/pkgbase}")
     read -r pkgbase < "$path"
 
-    install -Dm0644 "/${path%'/pkgbase'}/vmlinuz" "/boot/vmlinuz-${pkgbase}"
-
-	echo ":: Building initramfs for $kernel-$version"
-	dracut -f --no-hostonly-cmdline "/boot/initramfs-${kernel}.img" --kver "${version}"
-	echo ":: Building fallback initramfs for $kernel-$version"
-	dracut -f -N "/boot/initramfs-${kernel}-fallback.img" --kver "${version}"
+	echo ":: Building unified kernel image for $kernel-$version"
+	dracut -f --uefi --kver "${version}"
 done
