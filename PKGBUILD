@@ -1,8 +1,8 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 # pkg: git
 pkgname=tldr-sh
-pkgver=r71.6bd83e6
-pkgrel=7
+pkgver=r73.8c852ba
+pkgrel=1
 pkgdesc="A fully-functional POSIX shell client for tldr."
 arch=(any)
 url="https://github.com/raylee/tldr-sh-client"
