@@ -4,7 +4,7 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.4.0.r49.g3033f59
+pkgver=v0.4.1.r37.g5d4feb2
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
@@ -82,7 +82,7 @@ build() {
     cd "$srcdir/$_pkgname-udev"
     dotnet build          OpenTabletDriver.udev     \
         --configuration   Release                   \
-        --framework       netcoreapp3.1             \
+        --framework       net5                      \
         --runtime         linux-x64                 \
         --output          "./$_pkgname.udev/out"    \
         /p:SuppressNETCoreSdkPreviewMessage=true
