@@ -2,7 +2,7 @@
 Name=SuperSlicer
 Comment=G-code generator for 3D printers
 Exec=superslicer
-Icon=/usr/share/slic3r++/icons/Slic3r_192px.png
+Icon=/usr/share/SuperSlicer/icons/Slic3r_192px.png
 Terminal=0
 Type=Application
 Encoding=UTF-8
