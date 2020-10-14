@@ -1,0 +1,18 @@
+pkgbase = dmenu-vus-git
+	pkgdesc = Dmenu with Xresources, borders, fzf, highlight, center, etc
+	pkgver = 5.0.r584.0488c55
+	pkgrel = 1
+	url = http://15.228.28.1:3000/agus/dmenu-vus.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	depends = ttf-fira-code
+	depends = ttf-joypixels
+	provides = dmenu
+	conflicts = dmenu
+	source = git+http://15.228.28.1:3000/agus/dmenu-vus.git
+	md5sums = SKIP
+
+pkgname = dmenu-vus-git
+
