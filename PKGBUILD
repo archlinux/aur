@@ -43,7 +43,7 @@ source=(git+https://github.com/aburch/simutrans
 sha256sums=('SKIP'
             'c0c2dd5da146f64901b00c6ee67e0818a166b983a81cee7897c4843aa9f21c81'
             '671398550f46525ef0dae338d9e1984bfc0e1ec36153e1c4163c8c35de240c7e'
-            '4c2752f5d17f012a3bb9deaba57e842adfc26d5fb09ed9b018252073ef57934f'
+            '61ce1dab7d1b7d161eb032d9fb4ed929236ff45669f1aaec33fbdb978baa1365'
             'd85cce5c473131912f749f4c632932e0d5cac8d338babf5d9279f42ceea76fca'
             '99545152f5e739b7eb028152383fa10d3e3d303c99167e1c6e5a6bd7dcd00fa3'
             'f933d5608052b73e03e21d4ade0909e471c643ee5493023921fa5bc963a06ab3')
