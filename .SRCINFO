@@ -1,12 +1,13 @@
 pkgbase = consul-bin
 	pkgdesc = A tool for service discovery, monitoring and configuration.
 	pkgver = 1.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.consul.io
 	arch = i686
 	arch = x86_64
 	arch = arm
 	arch = armv6h
+	arch = armv7h
 	arch = aarch64
 	license = MPL
 	depends = glibc
@@ -22,6 +23,8 @@ pkgbase = consul-bin
 	sha256sums_arm = 32b8aebe32879eac6073d3b228ef28a5c49d1bb03d50acfcb5efb00c2674b37e
 	source_armv6h = https://releases.hashicorp.com/consul/1.8.4/consul_1.8.4_linux_armhfv6.zip
 	sha256sums_armv6h = 0c115f472582d5bd3adcca060dbf27ad5e34c35d82632ff5d55cf552f25bbd7a
+	source_armv7h = https://releases.hashicorp.com/consul/1.8.4/consul_1.8.4_linux_armhfv6.zip
+	sha256sums_armv7h = 0c115f472582d5bd3adcca060dbf27ad5e34c35d82632ff5d55cf552f25bbd7a
 	source_aarch64 = https://releases.hashicorp.com/consul/1.8.4/consul_1.8.4_linux_arm64.zip
 	sha256sums_aarch64 = e0a6ef017ba04ec8654991ebac0654a2a142d8a15ace259be8397e05da078b82
 
