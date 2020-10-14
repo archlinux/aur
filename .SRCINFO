@@ -1,0 +1,17 @@
+pkgbase = pitchbox
+	pkgdesc = Small software application for transforming your voice or music in real-time.
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://www.pitchtech.ch/PitchBox
+	arch = x86_64
+	license = none/unknown
+	depends = java-runtime-common
+	depends = java-environment-common
+	depends = ca-certificates-java
+	source = https://www.pitchtech.ch/PitchBox/PitchBox.zip
+	source = PitchBox.desktop
+	sha256sums = 0e6b5e2f597c96e59f8ed8606d60cf1cdbd1b32052eef74e65731256620ada6f
+	sha256sums = 7e3edf07afb93262055e4f4ee52f762a56314a047b83732f0091d760452aea78
+
+pkgname = pitchbox
+

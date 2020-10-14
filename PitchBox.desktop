@@ -1,0 +1,9 @@
+[Desktop Entry]
+
+Type=Application
+Version=2.0.2
+Name=PitchBox
+Comment=Small software application for transforming your voice or music in real-time.
+Exec=java -jar /opt/PitchBox/PitchBox.jar
+Terminal=false
+Categories=Audio;Java;Utility;
