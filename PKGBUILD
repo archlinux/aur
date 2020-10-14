@@ -3,7 +3,7 @@
 
 pkgname=ncnn-git
 _pkgname=ncnn
-pkgver=20200413.r0.g5580da45
+pkgver=20200916.r37.g09011f36
 pkgrel=1
 pkgdesc="High-performance neural network inference framework optimized for the mobile platform"
 url="https://github.com/Tencent/ncnn"
@@ -21,6 +21,16 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd "${srcdir}/ncnn"
+
+    # init glslang submodule
+    # git submodule update --init --recursive
+
+    # fix for system glslang
+    sed -i'' 's|#include "glslang/glslang|#include "glslang|' ./src/gpu.cpp
+}
+
 build() {
     cd "${srcdir}/ncnn"
     mkdir -p build
@@ -31,6 +41,8 @@ build() {
         -DNCNN_BUILD_EXAMPLES=OFF \
         -DNCNN_BUILD_TOOLS=OFF \
         -DNCNN_VULKAN=ON \
+        -DNCNN_SYSTEM_GLSLANG=ON \
+        -DGLSLANG_TARGET_DIR=/usr/lib/cmake/ \
         ..
     make
 }
