@@ -1,6 +1,6 @@
 pkgbase = dialect-git
 	pkgdesc = A translation app for GTK environments based on Google Translate
-	pkgver = r110.d6eca76
+	pkgver = 1.0.0.r0.g3d5c084
 	pkgrel = 1
 	url = https://github.com/gi-lom/dialect
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = dialect-git
 	conflicts = dialect
 	conflicts = gnabel
 	replaces = gnabel-git
-	source = git+https://github.com/gi-lom/dialect.git
+	source = git+https://github.com/gi-lom/dialect.git#branch=main
 	sha256sums = SKIP
 
 pkgname = dialect-git

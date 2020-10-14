@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Hoàng Văn Khải <hvksmr1996@gmail.com>
 pkgname=dialect-git
-pkgver=r110.d6eca76
+pkgver=1.0.0.r0.g3d5c084
 pkgrel=1
 pkgdesc="A translation app for GTK environments based on Google Translate"
 arch=('any')
@@ -12,12 +12,12 @@ makedepends=('meson' 'git' 'gobject-introspection')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'gnabel')
 replaces=('gnabel-git')
-source=('git+https://github.com/gi-lom/dialect.git')
+source=('git+https://github.com/gi-lom/dialect.git#branch=main')
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
