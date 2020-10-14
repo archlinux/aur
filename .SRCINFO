@@ -1,13 +1,13 @@
 pkgbase = shaarli
 	pkgdesc = The personal, minimalist, super-fast, database free, bookmarking service - community repo
-	pkgver = 0.11.1
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/shaarli/Shaarli
 	arch = any
 	license = ZLIB
 	depends = php
-	source = https://github.com/shaarli/Shaarli/releases/download/v0.11.1/shaarli-v0.11.1-full.tar.gz
-	sha256sums = f64a6e1f33298f6e6d2140341bdd8921c89e92a8bafd00fb031312112b9351df
+	source = https://github.com/shaarli/Shaarli/releases/download/v0.12.0/shaarli-v0.12.0-full.tar.gz
+	sha256sums = f8d6e5d31d4657dfd0085b037804023a58d9e22152dea82b1ddb11fd1b1debd6
 
 pkgname = shaarli
 
