@@ -2,8 +2,8 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=jackett-runit
-pkgver=0.16.1709
-pkgrel=2
+pkgver=0.16.1724
+pkgrel=3
 _user=$(logname)
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -27,15 +27,15 @@ sha256sums=('dd8cf665c118a7c87e796c20d790989e0b1a1e12d16feba2a28e3465ad45be67'
             '64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1'
             'c692b09f8df44cac73e53e76a707f4087a58a146b7d0c8043b44182aae3c2f6a')
 
-sha256sums_x86_64=('d64b7623915235fc9381b1da241f9d9a2c9d453782c3e77d08ed5a279eb683c5')
-sha256sums_armv7h=('1e5ac380b5737dcab82be12cc6fbf37a50bd5234cedc864dc5286473eeeaa8fc')
-sha256sums_aarch64=('59d5f13485d148e0fb38f6e767056203364e66bc45bda2c5163fd0227087c0ab')
+sha256sums_x86_64=('1692b10c5611f1cba34a3c16c066ddcd008dd4b954f9a8b796bb07c93e0208ca')
+sha256sums_armv7h=('df71a0873f5483954e9dded923c0ff450e5e29f4be491a268c66ea7d68c8b74b')
+sha256sums_aarch64=('507b4ccf6b10739ea53aecc3cde72dab13e408f5c562a4955270a6350136d171')
 
 package() {
     cd "$srcdir"
        
     install -d -m 755 "${pkgdir}/usr/lib/jackett/"
-    install -d -m 755 "${pkgdir}/opt/jackett/"
+    install -d -m 755 "${pkgdir}/home/jackett/runit/service"
     install -d -m 755 "${pkgdir}/usr/share/applications/"
     cp -r "${srcdir}/Jackett/"* "${pkgdir}/usr/lib/jackett/"
 

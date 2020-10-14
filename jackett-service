@@ -1,0 +1,9 @@
+#!/bin/sh
+
+export USER="jackett"
+export HOME="/home/jackett"
+
+groups="$(id -Gn "$USER" | tr ' ' ':')"
+svdir="$HOME/service"
+
+exec chpst -u "$USER:$groups" runsvdir "$svdir"
