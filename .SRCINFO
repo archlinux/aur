@@ -1,0 +1,16 @@
+pkgbase = ansible-keepass-git
+	pkgdesc = Ansible plugin to fetch data from KeePass database file
+	pkgver = r11.1f0388e
+	pkgrel = 1
+	url = https://github.com/viczem/ansible-keepass
+	arch = any
+	license = MIT
+	depends = ansible
+	depends = python-pykeepass
+	provides = ansible-keepass
+	conflicts = ansible-keepass
+	source = git+https://github.com/viczem/ansible-keepass.git
+	sha256sums = SKIP
+
+pkgname = ansible-keepass-git
+
