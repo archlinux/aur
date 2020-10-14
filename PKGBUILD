@@ -2,7 +2,7 @@
 # pkg: github openresty/lua-resty-lrucache
 pkgname=lua-resty-lrucache
 pkgver=0.10
-pkgrel=3
+pkgrel=4
 
 pkgdesc='Lua lrucache for nginx lua module'
 arch=('any')
@@ -23,5 +23,5 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" PREFIX=/usr LUA_VERSION=5.1 install
+	make DESTDIR="$pkgdir" PREFIX=/usr LUA_LIB_DIR='$(PREFIX)/share/lua/$(LUA_VERSION)' LUA_VERSION=5.1 install
 }
