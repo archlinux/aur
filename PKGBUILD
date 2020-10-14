@@ -1,7 +1,7 @@
 # Maintainer: AsamK <asamk ät gmx de>
 
 pkgname=signal-cli
-pkgver=0.6.10
+pkgver=0.6.11
 pkgrel=1
 pkgdesc="Provides a commandline and dbus interface for secure Signal messaging."
 arch=('any')
@@ -16,7 +16,7 @@ source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh"
         "${pkgname}.sysusers.conf"
         "${pkgname}.tmpfiles.conf")
-sha512sums=('517a436ea47cfb85eb29b95ce6ace3c879a99426aaec4362ec31012c92f578d7a2631594548dd526172e196a8618bf0a33ed91efad4f8cf59d6c2d171accfc84'
+sha512sums=('c162589f2da5317386d346fe735caa769cbbe9e7e3210887ae159604e77593d93d08c9300dabe645a6707df378e396d43abc66ce128b85df1fd7634acb1ffbe2'
             'SKIP'
             'f8d75536e1db3de0ca89c3edd5fe6e04d40f6edcbd899e3f80b4d175502a4e98ba49bcef443653bb17ab50bb6396cc2bb9b6838890337b887d25671fe096ba21'
             'b4db42e18c957edb274637eee1ea5feb5d5f94e16ff0ced63788c8285e0c31c17e5414c6b93b1c2a6ffacca4888b177d33d1878727780e9a0e937b323e332021'
