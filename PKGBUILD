@@ -1,7 +1,7 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com >
 
 pkgname=simutrans-extended-pak256
-pkgver=2.0.3.0
+pkgver=2.1.0.0
 pkgrel=1
 pkgdesc="Highest resolution graphics set for Simutrans Extended"
 arch=('any')

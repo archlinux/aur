@@ -1,12 +1,12 @@
 pkgbase = simutrans-extended-pak256
 	pkgdesc = Highest resolution graphics set for Simutrans Extended
-	pkgver = 2.0.3.0
+	pkgver = 2.1.0.0
 	pkgrel = 1
 	url = https://www.simutrans.com/
 	arch = any
 	license = CC-BY-NC-SA 4.0
 	depends = simutrans-extended
-	source = https://github.com/Phystam/pak256-release/archive/2.0.3.0.zip
+	source = https://github.com/Phystam/pak256-release/archive/2.1.0.0.zip
 	sha256sums = e04226e7cfb8551e5ddfc82a2d07403e1438be6da3b6511629d460b9f84d3b50
 
 pkgname = simutrans-extended-pak256
