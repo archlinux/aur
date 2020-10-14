@@ -4,20 +4,17 @@ pkgname=mbed-studio-bin
 _archivename=MbedStudio
 _binname=${pkgname%%-bin}
 DOMAIN="https://studio.mbed.com"
-ARCHIVE_PATH="/installers/release-1.2.1/1.2.1.42d8a0c0/linux/MbedStudio.tar.gz"
-CLANGD_FILENAME="clangd-8.0.2.zip"
-INTERNAL_CLANG_VER="8"
-pkgver=1.2.1
-pkgrel=6
+ARCHIVE_PATH="/installers/latest/linux/MbedStudio.tar.gz"
+pkgver=1.3.0
+pkgrel=7
 pkgdesc="free IDE and toolchain for Mbed OS 5 application and library development"
 arch=('x86_64')
 url="https://os.mbed.com/studio/"
 license=('COMMERCIAL')
-depends=('ncurses5-compat-libs')
+depends=('ncurses5-compat-libs' 'gnome-keyring')
 provides=('mbed-studio')
 options=(!strip)
 source=("$DOMAIN$ARCHIVE_PATH"
-"$DOMAIN/tools/linux/clangd-ubuntu-18/$CLANGD_FILENAME"
 "$pkgname.sh"
 "$pkgname.install")
 
@@ -37,12 +34,6 @@ package() {
     mkdir -p "$INSTALL_PATH"
     cp -r "$_archivename/$_binname-tools" "$INSTALL_PATH"
     chmod -R 755 "$TOOLS_PATH/ac6"
-    
-    # move clangd as needed
-    mkdir -p "$TOOLS_PATH/clangd"
-    cp "clang-$INTERNAL_CLANG_VER" "$TOOLS_PATH/clangd"
-    cp "clangd" "$TOOLS_PATH/clangd"
-    cp "generate_compile_commands.py" "$TOOLS_PATH/clangd"
     
     # copy tools.json where needed
     install -D "$_archivename/tools.json" "$TOOLS_PATH/tools.json"
@@ -84,7 +75,6 @@ package() {
 	chmod +x "$EXEC_PATH"
 }
 
-md5sums=('b2cd452649e5ced1ff76a41299faa621'
-         '8ad430c3206be9d37c9af03b0262a4b4'
+md5sums=('df32c973adbd6f29c89fc9738218b6b2'
          'ba5f16b0d7eeef5b124cd68078a38672'
          '7cf4ae1f6777f0c610125a59b0fefca6')
