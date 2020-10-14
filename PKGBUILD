@@ -6,17 +6,17 @@
 
 _locale='zh-CN'
 pkgname=palemoon-i18n-zh-cn
-pkgver=28.9.0
+pkgver=28.14.0
 pkgrel=1
 pkgdesc="Chinese (Simplified) language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('351671e9f463d34c45b5e3cd8adc3b9aa91d6b1049d0f2c3c9179cac1c0f5423')
+sha256sums=('43cbc435f56bff091b33b59c89ffa01a7086b7e6e3a524fdd2c16dcf61562418')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
-DLAGENTS=("http::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
+DLAGENTS=("https::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
           "${DLAGENTS[@]}")
 
 package() {
