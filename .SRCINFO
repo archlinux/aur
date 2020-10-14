@@ -1,10 +1,11 @@
 pkgbase = sysmon-git
 	pkgdesc = Graphical system monitor. Similar to windows task manager.
-	pkgver = 1.0.r0.g2f1b9f5
+	pkgver = 1.0.r9.g4868cd9
 	pkgrel = 1
 	url = https://github.com/MatthiasSchinzel/sysmon
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python-pyqtgraph
 	depends = python-pyqt5
