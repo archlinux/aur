@@ -10,22 +10,37 @@ post_upgrade() {
 }
 
 post_remove() {
+
+	KEYS_GNOME_WM=/org/gnome/desktop/wm/keybindings
+	KEYS_GNOME_SHELL=/org/gnome/shell/keybindings
+	KEYS_MUTTER=/org/gnome/mutter/keybindings
+	KEYS_MEDIA=/org/gnome/settings-daemon/plugins/media-keys
+
     left="h"
     down="j"
     up="k"
     right="l"
-    KEYS_GNOME_WM=/org/gnome/desktop/wm/keybindings
-    KEYS_GNOME_SHELL=/org/gnome/shell/keybindings
-    KEYS_MUTTER=/org/gnome/mutter/keybindings
-    KEYS_MEDIA=/org/gnome/settings-daemon/plugins/media-keys
-    KEYS_MUTTER_WAYLAND_RESTORE=/org/gnome/mutter/wayland/keybindings/restore-shortcuts
-	# Restore keyboard shortcuts to default
-	dconf reset /org/gnome/mutter/wayland/keybindings/restore-shortcuts
+    
 	dconf reset ${KEYS_GNOME_WM}/minimize
-	dconf reset ${KEYS_GNOME_SHELL}/{open-application-menu,toggle-message-tray}
-	dconf reset ${KEYS_GNOME_WM}/{switch-to-workspace-{left,right},move-to-monitor-{up,down,left,right},move-to-workspace-{up,down,left,right}}
-	dconf reset ${KEYS_MUTTER}/toggle-tiled-{left,right}
+	dconf reset ${KEYS_GNOME_SHELL}/open-application-menu
+	dconf reset ${KEYS_GNOME_SHELL}/toggle-message-tray
+	dconf reset ${KEYS_GNOME_WM}/switch-to-workspace-left
+	dconf reset ${KEYS_GNOME_WM}/switch-to-workspace-right
+	dconf reset ${KEYS_GNOME_WM}/move-to-monitor-up
+	dconf reset ${KEYS_GNOME_WM}/move-to-monitor-down
+	dconf reset ${KEYS_GNOME_WM}/move-to-monitor-left
+	dconf reset ${KEYS_GNOME_WM}/move-to-monitor-right
+	dconf reset ${KEYS_GNOME_WM}/move-to-workspace-up
+	dconf reset ${KEYS_GNOME_WM}/move-to-workspace-down
+	dconf reset ${KEYS_GNOME_WM}/move-to-workspace-left
+	dconf reset ${KEYS_GNOME_WM}/move-to-workspace-right
+	dconf reset ${KEYS_MUTTER}/toggle-tiled-left
+	dconf reset ${KEYS_MUTTER}/toggle-tiled-right
 	dconf reset ${KEYS_GNOME_WM}/toggle-maximized
-	dconf reset ${KEYS_MEDIA}/{screensaver,home,email,www,rotate-video-lock-static}
+	dconf reset ${KEYS_MEDIA}/screensaver
+	dconf reset ${KEYS_MEDIA}/home
+	dconf reset ${KEYS_MEDIA}/email
+	dconf reset ${KEYS_MEDIA}/www
+	dconf reset ${KEYS_MEDIA}/rotate-video-lock-static
 	dconf reset ${KEYS_GNOME_WM}/close
 }
