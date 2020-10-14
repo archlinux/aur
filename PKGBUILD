@@ -6,8 +6,9 @@
 ## Ensure the 'pkgver' and 'incrver' variables are updated below to match your package version
 
 pkgname=scrt
-pkgver=8.7.2
-incrver=2214
+pkgver=8.7.3
+incrver=2279
+md5sums=('da6bb62ab6435b81eb8326e5d5a6cbe5')
 pkgrel=1
 pkgdesc="Vandyke SecureCRT SSH Client"
 arch=('x86_64')
