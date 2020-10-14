@@ -1,7 +1,7 @@
 pkgbase = fontship
 	pkgdesc = A font development toolkit and collaborative work flow
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theleagueof/fontship
 	arch = any
 	license = AGPL3
@@ -21,6 +21,7 @@ pkgbase = fontship
 	depends = python-fonttools
 	depends = python-fs
 	depends = python-lxml
+	depends = python-pygit2
 	depends = python-skia-pathops
 	depends = python-ufo2ft
 	depends = python-ufonormalizer
