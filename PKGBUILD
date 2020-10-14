@@ -2,7 +2,7 @@
 # Contributor: renyuneyun (Rui ZHAO) <renyuneyun@gmail.com>
 
 pkgname=flipper
-pkgver=0.58.0
+pkgver=0.62.0
 pkgrel=1
 pkgdesc="A desktop debugging platform for mobile developers"
 arch=('x86_64')
@@ -10,14 +10,13 @@ url='https://fbflipper.com'
 license=('MIT')
 depends=('gtk3'
          'libsecret'
-         'libxss'
          'nss'
          'nodejs')
 optdepends=('watchman: An inotify-based file watching and job triggering command line utility'
             'android-sdk: Android debugging support')
 makedepends=('git' 'yarn' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz")
-sha256sums=('58e503678a0ee38adea457afb97e7035900f595a051e52836bbaaa2c063b27e5')
+sha256sums=('3c529e09948b417cbd29fead7479c73a5b329054ab9b9279b05188f8439a5aae')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}/desktop"
@@ -39,4 +38,5 @@ package() {
   install -Dm644 "${srcdir}/flipper.desktop" "${pkgdir}/usr/share/applications/flipper.desktop"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/desktop/static/icon.png" "${pkgdir}/usr/share/pixmaps/flipper.png"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  sed -i "s|$srcdir||g" "${pkgdir}/opt/flipper/resources/app/defaultPlugins/index.json"
 }
