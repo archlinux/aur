@@ -3,8 +3,8 @@
 _pkgname=proton-call
 pkgname=proton-caller
 __pkgname=Proton-Caller
-pkgver=1.0.2
-pkgrel=1
+pkgver=1.0.3
+pkgrel=2
 pkgdesc="Run any Windows program through Proton"
 arch=('x86_64')
 url="https://github.com/caverym/Proton-Caller/"
