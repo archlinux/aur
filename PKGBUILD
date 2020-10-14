@@ -2,7 +2,7 @@
 
 pkgname=clipmenu-git
 _gitname=clipmenu
-pkgver=6.0.1.r9.g058515d
+pkgver=6.2.0.r0.g7c34ace
 pkgrel=1
 pkgdesc='Clipboard management using dmenu'
 url='http://github.com/cdown/clipmenu'
