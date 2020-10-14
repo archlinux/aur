@@ -1,0 +1,22 @@
+pkgbase = dwm-vus-git
+	pkgdesc = A heavily-patched build of dwm.
+	pkgver = 6.2.r1692.21b0c76
+	pkgrel = 1
+	url = http://15.228.28.1:3000/agus/dwm-vus.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = make
+	makedepends = git
+	depends = libx11
+	depends = libxinerama
+	depends = libxft-bgra
+	depends = ttf-fira-code
+	depends = ttf-joypixels
+	provides = dwm
+	conflicts = dwm
+	source = git+http://15.228.28.1:3000/agus/dwm-vus.git
+	md5sums = SKIP
+
+pkgname = dwm-vus-git
+
