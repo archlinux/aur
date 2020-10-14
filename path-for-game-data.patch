@@ -6,7 +6,7 @@
  
 +    // Make simutrans extended re-symlinks the files when opened
 +#ifdef __linux__
-+    system("\cp -rs --remove-destination /usr/share/games/simutrans/ ~/.local/share/");
++    system("\cp -rs --remove-destination /usr/share/games/simutrans-extended/ ~/.local/share/");
 +#endif
 +
  	// you really want help with this?
