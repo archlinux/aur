@@ -1,7 +1,7 @@
 pkgbase = impostor-server
 	pkgdesc = Unofficial dedicated server for Among Us.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aeonlucid.com/Impostor/
 	arch = x86_64
 	license = GPL3
@@ -10,8 +10,6 @@ pkgbase = impostor-server
 	makedepends = lttng-ust
 	depends = zlib
 	depends = krb5
-	provides = impostor-server
-	conflicts = impostor-server
 	options = !strip
 	source = git+https://github.com/AeonLucid/Impostor.git#tag=v1.1.0
 	source = git+https://github.com/AeonLucid/Hazel-Networking.git

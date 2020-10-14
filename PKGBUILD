@@ -2,15 +2,13 @@
 
 pkgname=impostor-server
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial dedicated server for Among Us.'
 url='https://aeonlucid.com/Impostor/'
 arch=('x86_64')
 license=('GPL3')
 depends=('zlib' 'krb5')
 makedepends=('git' 'dotnet-sdk' 'lttng-ust')
-provides=('impostor-server')
-conflicts=('impostor-server')
 options=('!strip')
 source=("git+https://github.com/AeonLucid/Impostor.git#tag=v${pkgver}"
         "git+https://github.com/AeonLucid/Hazel-Networking.git"
