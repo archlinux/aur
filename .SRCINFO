@@ -1,7 +1,7 @@
 pkgbase = zettlr
 	pkgdesc = A markdown editor for writing academic texts and taking notes
 	pkgver = 1.7.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.zettlr.com
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = zettlr
 	makedepends = yarn
 	makedepends = git
 	makedepends = gulp
-	depends = electron
+	depends = electron9
 	depends = ttf-webhostinghub-glyphs
 	depends = otf-crimson-text
 	optdepends = pandoc: For exporting to various format

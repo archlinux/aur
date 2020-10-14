@@ -2,12 +2,12 @@
 
 pkgname=zettlr
 pkgver=1.7.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
 url='https://www.zettlr.com'
-license=('GPL' 'custom') # Noted that the icon and name is copyrighted
-depends=(electron ttf-webhostinghub-glyphs otf-crimson-text)
+license=('GPL' 'custom') # Noted that the icon and name are copyrighted
+depends=(electron9 ttf-webhostinghub-glyphs otf-crimson-text)
 makedepends=(yarn git gulp)
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
@@ -72,16 +72,17 @@ package() {
     local _destdir=usr/lib/"${pkgname}"
     install -dm755 "${pkgdir}/${_destdir}"
 
-    cd "${srcdir}/Zettlr/source"
+    cd "${srcdir}/Zettlr/source"  
+    # Fix pacman warning about reference to $srcdir
     sed "s,${srcdir}/Zettlr/source,${_destdir},g" -i renderer/assets/vue/vue-sidebar.js
     cp -r --no-preserve=ownership --preserve=mode ./* "${pkgdir}/${_destdir}/"
 
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<END
 #!/bin/sh
-exec electron /${_destdir} "\$@"
+exec electron9 /${_destdir} "\$@"
 END
 
-    # install icons of vary sizes to hi-color theme
+    # install icons of various sizes to hi-color theme
     for px in 16 24 32 48 64 96 128 256 512; do
         install -Dm644 "${srcdir}/Zettlr/resources/icons/png/${px}x${px}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${px}x${px}/apps/${pkgname}.png"
