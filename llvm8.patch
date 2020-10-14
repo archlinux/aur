@@ -1,0 +1,71 @@
+Description: Fix build with LLVM/Clang 8
+
+Origin: (partly) FreeBSD https://svnweb.freebsd.org/ports/head/lang/beignet/files/patch-llvm8?view=markup
+Author: Jan Beich, Rebecca N. Palmer
+
+--- a/backend/src/CMakeLists.txt
++++ b/backend/src/CMakeLists.txt
+@@ -168,6 +168,7 @@ add_dependencies(gbe beignet_bitcode)
+ endif (NOT (USE_STANDALONE_GBE_COMPILER STREQUAL "true"))
+ 
+ add_library(gbeinterp SHARED gbe_bin_interpreter.cpp)
++target_link_libraries(gbeinterp ${LLVM_MODULE_LIBS} ${LLVM_SYSTEM_LIBS})
+ 
+ if (LLVM_VERSION_NODOT VERSION_EQUAL 34)
+   find_library(TERMINFO NAMES tinfo ncurses)
+--- a/backend/src/llvm/llvm_gen_backend.cpp
++++ b/backend/src/llvm/llvm_gen_backend.cpp
+@@ -3073,14 +3073,22 @@ namespace gbe
+ 
+ 
+   static unsigned getChildNo(BasicBlock *bb) {
++#if LLVM_VERSION_MAJOR < 8
+     TerminatorInst *term = bb->getTerminator();
++#else
++    Instruction *term = bb->getTerminator();
++#endif
+     return term->getNumSuccessors();
+   }
+ 
+   // return NULL if index out-range of children number
+   static BasicBlock *getChildPossible(BasicBlock *bb, unsigned index) {
+ 
++#if LLVM_VERSION_MAJOR < 8
+     TerminatorInst *term = bb->getTerminator();
++#else
++    Instruction *term = bb->getTerminator();
++#endif
+     unsigned childNo = term->getNumSuccessors();
+     BasicBlock *child = NULL;
+     if(index < childNo) {
+--- a/backend/src/backend/gen_register.hpp
++++ b/backend/src/backend/gen_register.hpp
+@@ -225,6 +225,7 @@ namespace gbe
+                        uint32_t width,
+                        uint32_t hstride)
+     {
++      this->value.reg = 0;//avoid subgroup crash
+       this->type = type;
+       this->file = file;
+       this->nr = nr;
+--- a/backend/src/libocl/tmpl/ocl_integer.tmpl.cl
++++ b/backend/src/libocl/tmpl/ocl_integer.tmpl.cl
+@@ -216,13 +216,14 @@ OVERLOADABLE ulong mad_sat(ulong a, ulon
+   return __gen_ocl_mad_sat(a, b, c);
+ }
+ 
+-OVERLOADABLE uchar __rotate_left(uchar x, uchar y) { return (x << y) | (x >> (8 - y)); }
++// the 'volatile' is to make the LLVM optimizer leave these alone, as it would convert them to intrinsics (fshl/fshr) that we don't implement
++OVERLOADABLE uchar __rotate_left(uchar x, uchar y) { volatile uchar z; z = (x << y); return z | (x >> (8 - y)); }
+ OVERLOADABLE char __rotate_left(char x, char y) { return __rotate_left((uchar)x, (uchar)y); }
+-OVERLOADABLE ushort __rotate_left(ushort x, ushort y) { return (x << y) | (x >> (16 - y)); }
++OVERLOADABLE ushort __rotate_left(ushort x, ushort y) { volatile ushort z; z = (x << y); return z | (x >> (16 - y)); }
+ OVERLOADABLE short __rotate_left(short x, short y) { return __rotate_left((ushort)x, (ushort)y); }
+-OVERLOADABLE uint __rotate_left(uint x, uint y) { return (x << y) | (x >> (32 - y)); }
++OVERLOADABLE uint __rotate_left(uint x, uint y) { volatile uint z; z = (x << y); return z | (x >> (32 - y)); }
+ OVERLOADABLE int __rotate_left(int x, int y) { return __rotate_left((uint)x, (uint)y); }
+-OVERLOADABLE ulong __rotate_left(ulong x, ulong y) { return (x << y) | (x >> (64 - y)); }
++OVERLOADABLE ulong __rotate_left(ulong x, ulong y) { volatile ulong z; z = (x << y); return z | (x >> (64 - y)); }
+ OVERLOADABLE long __rotate_left(long x, long y) { return __rotate_left((ulong)x, (ulong)y); }
+ #define DEF(type, m) OVERLOADABLE type rotate(type x, type y) { return __rotate_left(x, (type)(y & m)); }
+ DEF(char, 7)
