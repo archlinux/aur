@@ -1,20 +1,18 @@
---- simmain.cc.orig	2020-02-07 13:55:44.413381961 +0100
-+++ simmain.cc	2020-02-07 14:00:06.824546151 +0100
-@@ -401,6 +401,13 @@
- 	std::set_new_handler(sim_new_handler);
+--- simmain-old.cc	2020-10-14 12:34:50.280273117 +0200
++++ simmain.cc	2020-10-14 12:30:55.149993462 +0200
+@@ -410,6 +410,11 @@
  
  	env_t::init();
-+    
+ 
 +    // Make simutrans extended re-symlinks the files when opened
 +#ifdef __linux__
-+    system("\cp -rs --remove-destination /usr/share/games/simutrans-extended/ ~/.local/share/");
 +    system("\cp -rs --remove-destination /usr/share/games/simutrans/ ~/.local/share/");
-+    system("\cp -rs --remove-destination ~/.local/share/simutrans/pak* ~/.local/share/simutrans-extended/");
 +#endif
- 
++
  	// you really want help with this?
  	if (gimme_arg(argc, argv, "-h",     0) ||
-@@ -495,8 +502,9 @@
+ 			gimme_arg(argc, argv, "-?",     0) ||
+@@ -504,8 +509,9 @@
  		strcat( env_t::program_dir, path_sep );
  	}
  	else {

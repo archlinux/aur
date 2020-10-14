@@ -27,7 +27,7 @@ source=(git+https://github.com/jamespetts/simutrans-extended/
 sha256sums=('SKIP'
             'c0c2dd5da146f64901b00c6ee67e0818a166b983a81cee7897c4843aa9f21c81'
             '7ed69019ba97849b65e2b8ac5ad8bf2110a7f048e3590d67c76c9cfca8a10b8d'
-            '28c6f1b652de1b1979407c5b764774f4a342035a933945f1b82da1e1d92d02b4'
+            'ddfa69bdbd6ed9e7e48e87f04efbb243ed5e66a5931b8801096235a6cb95e885'
             'e27c08194522e852385435b9c232bc378b058a3e9245df891787698a1c881ef4'
             '0efcf72d3670c53de99c44cb0d8f43f7e7663fda5df0f631ba6c687cc85967d3'
             '18444d02d9212938abc26bec60dda401dfeb24579c89be72274ec0da3c5d271d')
