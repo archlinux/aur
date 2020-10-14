@@ -3,7 +3,7 @@
 
 pkgname=python-pyshp
 _pkgname=pyshp
-pkgver=2.1.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Python read/write support for ESRI Shapefile format"
 arch=('any')
@@ -12,9 +12,10 @@ license=('MIT')
 depends=('python' 'python-setuptools')
 options=('!emptydirs')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('20cbf023022a2bba4b7b05e53affedea31e4e72211968aad48ee868252c87f87e551a8ba274438e3871b31c4e3c56af2166a92a6c7bf3ffa2fe344722e4d8d0e')
+sha512sums=('57ad1d3c804d46ed53266e18e56625e4b30307315c5301fbfe1c9b473908df2aee8f900885f443e193e4ec7fce24dcec23f532cb56b75db16394570dfd42f57e')
 
 package() {
-	 cd "$srcdir/$_pkgname-$pkgver"
-	 python setup.py install --root="$pkgdir" --optimize=1
+    cd "$srcdir/$_pkgname-$pkgver"
+    python setup.py install --root="$pkgdir" --optimize=1
+    install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
