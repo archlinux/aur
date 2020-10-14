@@ -1,16 +1,13 @@
 pkgbase = haskell-mime
 	pkgdesc = Working with MIME types.
-	pkgver = 0.3.4
+	pkgver = 0.4.0.2
 	pkgrel = 1
-	url = http://hackage.haskell.org/package/mime
-	install = haskell-mime.install
-	arch = i686
+	url = https://hackage.haskell.org/package/mime
 	arch = x86_64
 	license = custom:BSD3
 	depends = ghc
-	options = strip
-	source = http://hackage.haskell.org/packages/archive/mime/0.3.4/mime-0.3.4.tar.gz
-	md5sums = 77e4fcae38b52b694c00eeafb4c70a1e
+	source = https://hackage.haskell.org/packages/archive/mime/0.4.0.2/mime-0.4.0.2.tar.gz
+	md5sums = b0c5345df0efca0d3a40931e981f081f
 
 pkgname = haskell-mime
 
