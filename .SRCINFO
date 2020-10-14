@@ -1,0 +1,16 @@
+pkgbase = epita-68k-sdk
+	pkgdesc = EPITA 68k development kit for the third semester computer architecture practicals
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://www.debug-pro.com/epita/archi/s3/en/
+	arch = x86_64
+	license = custom
+	depends = qt5-base
+	source = http://www.debug-pro.com/epita/archi/s3/TP_68000_Ubuntu64.tar.gz,
+	source = a68k-fast
+	md5sums = 5d748ed7be0d8f3a25ec6016e7282df8
+	md5sums = 8ddd44aca5a0b18e3a1ffee345098681
+
+pkgname = epita-68k-sdk
+
+
