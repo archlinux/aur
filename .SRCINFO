@@ -1,13 +1,12 @@
 pkgbase = neopo-git
 	pkgdesc = A lightweight solution for local Particle development.
-	pkgver = 2020.10.13.2
+	pkgver = 2020.10.13.3
 	pkgrel = 1
 	url = https://neopo.xyz
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	depends = libusb
-	depends = lib32-glibc
 	depends = python3
 	depends = vim
 	depends = git
@@ -15,11 +14,7 @@ pkgbase = neopo-git
 	provides = neopo
 	source = git+https://github.com/nrobinson2000/neopo.git
 	md5sums = SKIP
-	depends_aarch64 = libusb
-	depends_aarch64 = python3
-	depends_aarch64 = vim
-	depends_aarch64 = git
-	depends_aarch64 = perl-archive-zip
+	depends_x86_64 = lib32-glibc
 	depends_aarch64 = dfu-util
 	depends_aarch64 = nodejs
 
