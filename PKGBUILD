@@ -9,6 +9,7 @@ arch=('any')
 url='https://github.com/viczem/ansible-keepass'
 license=('MIT')
 depends=('ansible' 'python-pykeepass')
+makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/viczem/${_pkgname}.git")
@@ -22,5 +23,5 @@ package() {
 	cd "${_pkgname}"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/${_pkgname}/README.md"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 keepass.py "$pkgdir/usr/share/ansible/plugins/modules/keepass.py"
+	install -Dm644 keepass.py "$pkgdir/usr/share/ansible/plugins/lookup/keepass.py"
 }
