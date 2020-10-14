@@ -3,7 +3,7 @@
 
 pkgname='stratisd'
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Easy to use local storage management for Linux.'
 arch=('x86_64')
 url='https://stratis-storage.github.io/'
@@ -42,6 +42,10 @@ package() {
   cd "${pkgname}-${pkgver}"
 
   install -D -m755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -D -m755 "target/release/stratis_dbusquery_version" "${pkgdir}/usr/bin/stratis_dbusquery_version"
+  install -D -m755 "target/release/stratis_uuids_to_names" "${pkgdir}/usr/lib/udev/stratis_uuids_to_names"
+  install -D -m755 "developer_tools/stratis_migrate_symlinks.sh" "${pkgdir}/usr/bin/stratis_migrate_symlinks.sh"
+  install -D -m644 udev/11-stratisd.rules "${pkgdir}/usr/lib/udev/rules.d/11-stratisd.rules"
   install -D -m644 stratisd.service "${pkgdir}/usr/lib/systemd/system/stratisd.service"
   install -D -m644 org.storage.stratis2.service "${pkgdir}/usr/share/dbus-1/system-services/org.storage.stratis2.service"
   install -D -m644 stratisd.conf "${pkgdir}/usr/share/dbus-1/system.d/stratisd.conf"
