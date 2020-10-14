@@ -9,7 +9,7 @@ url="https://www.simutrans.com/"
 license=('CC-BY-NC-SA 4.0')
 depends=('simutrans-extended')
 source=(https://github.com/Phystam/pak256-release/archive/$pkgver.zip)
-sha256sums=('e04226e7cfb8551e5ddfc82a2d07403e1438be6da3b6511629d460b9f84d3b50')
+sha256sums=('91af876d1c384cd9d220a931bc9d8bc9aff2b594a6fd6492a651115f830432e3')
 
 package() {
   #data
