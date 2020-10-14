@@ -14,7 +14,7 @@ depends=(
   'dxvk'
 )
 source=("https://github.com/caverym/"$__pkgname"/archive/${pkgver}.tar.gz")
-sha256sums=('977cc79315ff4785491b557f964dcbff4cb2e61615e6e6561365c8a24c1d2238')
+sha256sums=('a70e30bfe47565cb436ff5ea846eefe25e9da7446af4c5062864ecd1001d2c1d')
 
 build() {
   cd "$srcdir/$__pkgname-$pkgver"
