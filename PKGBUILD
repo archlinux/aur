@@ -1,4 +1,5 @@
-# Maintainer: Bryce Beagle <first dot last at gmail dot com>
+# Maintainer: dszryan
+# Contributor: Bryce Beagle <first dot last at gmail dot com>
 # Contributor: Giampaolo Mancini <mancho at trmpln dot com>
 # Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: Dustin Falgout <dustin@falgout.us>
@@ -6,9 +7,9 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-pkgver=202.6397.19
-eapver=2020.2
-eaprelease=8
+eapver=2020.3  #2020.3-EAP3-203.4449.6
+eaprelease=3
+pkgver=203.4449.6
 _dlver="${eapver}-EAP${eaprelease}-${pkgver}.Checked"
 pkgrel=1
 epoch=1
@@ -24,7 +25,7 @@ groups=("development" "IDE" "editor" "jetbrains")
 source=("https://download-cf.jetbrains.com/rider/JetBrains.Rider-${_dlver}.tar.gz"
         "${pkgname}.desktop"
         "ResharperHost-runtime-folder.sh")
-sha256sums=('ae18f7fe39702aa698e47e0690c5f2da64e153be41e0c9f9af0231d88dbd83ee'
+sha256sums=('30b944077afdbb23635a05815e10fe19cffd1c6185b1687f9ec9e2fd8c879e8e'
             'ada362803d6d2b5ff84680277694d0ecdcb97d46f85d140f79850500966f1ecf'
             '4bc086ff245cf18c5fd2351008b05a0d0e792e8af0394fb094a9118c312c373d')
 
