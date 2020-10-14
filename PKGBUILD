@@ -2,7 +2,7 @@
 
 pkgname=fulcrum
 pkgdesc='A fast & nimble SPV server for Bitcoin Cash'
-pkgver=1.2.10
+pkgver=1.2.11
 pkgrel=1
 url='https://gitlab.com/FloweeTheHub/fulcrum'
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "https://gitlab.com/FloweeTheHub/fulcrum/-/archive/v$pkgver/fulcrum-v$pkgver.tar.gz"
     "fulcrum.conf"
 )
-sha256sums=('5429b0e76e3f5f11941217a2a1c3d2619d63d2f70ae0111efda58bba5891eb61'
+sha256sums=('5fad3fdcd758c40061f746fbb3378877c4947e57018243dcea94c2f621f8677f'
     '975025a1810178a7ec32dc4bd8cd5767a68d21378ec65baf9708f6d5b3842a1b'
 )
 
