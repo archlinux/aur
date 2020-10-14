@@ -1,7 +1,7 @@
 # Maintainer: Edoardo Morassutto <edoardo.morassutto@gmail.com>
 
 pkgname=task-maker-rust-git
-pkgver=r391.98e0843
+pkgver=r471.c40a9ce
 pkgrel=1
 pkgdesc="The new cmsMake"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/task-maker-rust"
-    TM_DATA_DIR=/usr/share/task-maker-rust cargo build --release
+    TM_DATA_DIR=/usr/share/task-maker-rust cargo build --release --bin task-maker
     cargo run --release --bin task-maker-gen-autocompletion
 }
 
