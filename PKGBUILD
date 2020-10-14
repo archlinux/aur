@@ -8,7 +8,7 @@ arch=('any')
 url="https://www.simutrans.com/"
 license=('MIT')
 source=(http://github.com/wa-st/pak-nippon/releases/download/v0.4.0/pak.nippon-v0.4.0.zip)
-sha256sums=('37c51859dc5841ee4d9424b159b9cc7ab23da015cff49e28573b23a640e9a796')
+sha256sums=('9f5efada161495c3161d10b99ccd8531c19854fb8ab19b42b5511dc4a84f6a5e')
 
 package() {
   #data
