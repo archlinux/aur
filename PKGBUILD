@@ -1,7 +1,7 @@
 # Maintainer: Advaith Madhukar <advaith.madhukar at gmail dot com>
 pkgname=(sysmon)
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 url="https://github.com/MatthiasSchinzel/sysmon"
 pkgdesc="Graphical system monitor. Similar to windows task manager"
 arch=(any)
