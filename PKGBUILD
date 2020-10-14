@@ -1,8 +1,8 @@
 # Maintainer: Jaime Martínez Rincón <jaime(at)jamezrin(dot)name>
 
 pkgname=gatsby-desktop
-pkgver=0.0.2
-pkgrel=3
+pkgver=0.0.3
+pkgrel=1
 pkgdesc="Official proof-of-concept desktop app for managing your Gatsby sites."
 arch=("x86_64")
 url="https://github.com/gatsbyjs/desktop"
@@ -19,8 +19,7 @@ options=()
 install=
 changelog=
 _pkgrepo="https://github.com/gatsbyjs/desktop"
-_pkgver="0.0.2"
-source=("${pkgname}::git+${_pkgrepo}.git#tag=v${_pkgver}"
+source=("${pkgname}::git+${_pkgrepo}.git#tag=v${pkgver}"
         'gatsby-desktop.desktop')
 noextract=()
 md5sums=('SKIP'
@@ -28,7 +27,7 @@ md5sums=('SKIP'
 validpgpkeys=()
 
 build() {
-    cd ${srcdir}/${pkgname}
+    cd "$srcdir/$pkgname"
 
     yarn
     yarn build
