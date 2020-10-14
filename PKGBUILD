@@ -8,7 +8,6 @@
 pkgname=scrt
 pkgver=8.7.3
 incrver=2279
-md5sums=('da6bb62ab6435b81eb8326e5d5a6cbe5')
 pkgrel=1
 pkgdesc="Vandyke SecureCRT SSH Client"
 arch=('x86_64')
@@ -18,7 +17,7 @@ license=('custom')
 depends=('openssl' 'glibc' 'qt5-base' 'icu63')
 		
 source=("local://${pkgname}-${pkgver}.${incrver}.ubuntu19-64.tar.gz")
-md5sums=('55f77c1d82f5ddec4ee08f0a6b973f69')
+md5sums=('da6bb62ab6435b81eb8326e5d5a6cbe5')
 options=('!strip')
 
 package() {
