@@ -4,7 +4,7 @@
 _pkgname=polkit
 pkgname=${_pkgname}-duktape
 pkgver=0.118
-pkgrel=1
+pkgrel=2
 pkgdesc="polkit with duktape as the javascript engine"
 arch=(x86_64)
 license=(LGPL)
