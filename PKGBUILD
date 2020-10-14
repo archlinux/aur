@@ -13,5 +13,5 @@ sha256sums=('a3853c240384c4310fda832f4a6438ad9cee0d08c9d2f6416e5bfb498a06cbcf')
 package() {
   #data
   mkdir -p "$pkgdir/usr/share/games/simutrans/pak128.britain"
-  cp -r pak128.Britain/* "$pkgdir/usr/share/games/simutrans/pak128.britain"
+  cp -r simutrans/pak128.Britain/* "$pkgdir/usr/share/games/simutrans/pak128.britain"
 }
