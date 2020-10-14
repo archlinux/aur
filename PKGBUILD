@@ -16,6 +16,6 @@ pkgver() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/share/backgrounds/highsierra-backgrounds
-  cp -r "${srcdir}/backgrounds/highsierra/*" "$pkgdir/usr/share/backgrounds/highsierra-backgrounds"
+  mkdir -p ${pkgdir}/usr/share/backgrounds
+  cp -r "${srcdir}/backgrounds/highsierra/" "$pkgdir/usr/share/backgrounds/highsierra"
 }
