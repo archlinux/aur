@@ -1,0 +1,13 @@
+pkgbase = hunspell-en-med-glut-git
+	pkgdesc = Hunspell dictionary of English medical terms
+	pkgver = r7.ad719a9
+	pkgrel = 1
+	url = https://github.com/glutanimate/hunspell-en-med-glut
+	arch = any
+	license = GPL3
+	optdepends = hunspell: the spell checking libraries and apps
+	source = git+https://github.com/glutanimate/hunspell-en-med-glut.git
+	sha1sums = SKIP
+
+pkgname = hunspell-en-med-glut-git
+
