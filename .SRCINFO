@@ -1,18 +1,19 @@
 pkgbase = ccx2-git
-	pkgdesc = Console client for xmms2
-	pkgver = 0.2.0.18.g04e2f10
-	pkgrel = 3
-	url = http://github.com/palbo/ccx2
+	pkgdesc = Console client for xmms2 (git version)
+	pkgver = v0.2.0.r19.g7564773
+	pkgrel = 1
+	url = https://pflouret.github.io/ccx2/
 	arch = any
 	license = BSD
 	depends = ncurses
 	depends = python2
 	depends = xmms2
-	optdepends = python2-imaging: display Cover Art
-	optdepends = python2-lxml: display lyrics
+	optdepends = pil: for cover art display
+	optdepends = python2-lxml: for lyrics display
+	optdepends = python2-simplejson: for lyrics display, if python < 2.6
 	provides = ccx2
 	conflicts = ccx2
-	source = git://github.com/palbo/ccx2.git
+	source = git+https://github.com/pflouret/ccx2
 	md5sums = SKIP
 
 pkgname = ccx2-git
