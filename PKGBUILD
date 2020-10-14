@@ -13,8 +13,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 sha512sums=('0009ddfff04688d71183f9f25a55a06b4b75c2c24163f5acb5f638356fd66f54231142092e9b1858c7c121c8cc1b7b6018980df34c49cc1af9f4fee46916ecd5')
 
-package()
- {
+package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -25,6 +24,6 @@ package()
 
   install -D -m644 etc/nb-completion.bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
   install -D -m644 etc/nb-completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  }
+}
 
 # vim:set ts=2 sw=2 et:
