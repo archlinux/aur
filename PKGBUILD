@@ -1,9 +1,9 @@
 # Maintainer: acedron <acedrons@yahoo.co.jp>
 
 pkgname=hoku-project
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="A basic Japanese TTS."
+pkgdesc="A basic Multilanguage TTS."
 arch=('any')
 url="https://github.com/acedron/${pkgname}"
 license=('GPL')
