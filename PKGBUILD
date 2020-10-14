@@ -2,7 +2,7 @@
 # Contributor: ant32 <antreimer at gmail dot com>
 
 pkgname=mingw-w64-curl
-pkgver=7.72.0
+pkgver=7.73.0
 pkgrel=1
 pkgdesc="An URL retrival utility and library (mingw-w64)"
 arch=('any')
@@ -20,8 +20,8 @@ source=("${url}/download/curl-${pkgver}.tar.bz2"
         "0001-Make-cURL-relocatable.patch"
         "0002-nghttp2-static.patch"
         "0003-libpsl-static-libs.patch")
-sha256sums=('ad91970864102a59765e20ce16216efc9d6ad381471f7accceceab7d905703ef'
-            '70bc753d72c8b5b814ceffc0d7007626f3a7c9dfa6d10bf29afdf5f594cdb6a4'
+sha256sums=('cf34fe0b07b800f1c01a499a6e8b2af548f6d0e044dca4a29d88a4bee146d131'
+            '0d88807cccf74dd2c3eb9f8ba8dc502527b32dda2eac946477a2108d59f878a3'
             'e330a7c9bfa88b1347d8ffda2b278a719d658ec99eff68bfa0568e2bc32dffeb'
             '7492d019036b5bec251bfbc3c0b40e5f16d3dd6b2515068835e087a6c21f19ad')
 
