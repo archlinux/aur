@@ -1,14 +1,14 @@
 pkgbase = proton-caller
 	pkgdesc = Run any Windows program through Proton
-	pkgver = 1.0.0
-	pkgrel = 6
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/caverym/Proton-Caller/
 	arch = x86_64
 	license = GPL3
 	depends = steam
 	depends = dxvk
-	source = https://github.com/caverym/Proton-Caller/archive/1.0.0.tar.gz
-	sha256sums = d3048086a536a0dbd23a5f4662947699e2e8330d0650c21bed8e812a5433d9f8
+	source = https://github.com/caverym/Proton-Caller/archive/1.0.1.tar.gz
+	sha256sums = 61bf25eacbb054e5fb046f10a8e12a5d00db7c5b283cd56a348e694e6de9b44f
 
 pkgname = proton-caller
 
