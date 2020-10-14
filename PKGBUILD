@@ -15,6 +15,11 @@ depends=('libusb' 'python3' 'vim' 'git' 'perl-archive-zip')
 depends_x86_64=('lib32-glibc')
 depends_aarch64=('dfu-util' 'nodejs')
 
+pkgver() {
+  cd "$_gitname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 package() {
     cd $_gitname
     install -Dm 755 "neopo/neopo.py" "$pkgdir/usr/local/bin/neopo"
