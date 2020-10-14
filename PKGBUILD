@@ -10,6 +10,7 @@ arch=('any')
 license=('BSD')
 depends=('dracut')
 noextract=()
+conflicts=(dracut-hook)
 source=(
   "dracut-install"
   "dracut-remove"
