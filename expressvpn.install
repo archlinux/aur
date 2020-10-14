@@ -8,7 +8,8 @@ gen_key() {
 }
 
 upgrade_userdata() {
-  local CLIENT_VERSION=$(/usr/bin/expressvpn --version 2>/dev/null | awk '{ print $3 }')
+  local CLIENT_VERSION=$(/usr/bin/echo $1 | /usr/bin/cut -d '.' -f 1-3)
+  local BUILD_VERSION=$(/usr/bin/echo ${1%_*} | /usr/bin/cut -d '.' -f 4)
 
   # Upgrade userdata to v2
   if [ -e "$WORK_DIR/userdata.dat" -a ! -e "$WORK_DIR/userdata2.dat" ]; then
@@ -24,6 +25,7 @@ upgrade_userdata() {
     /usr/sbin/expressvpnd \
       --workdir "$WORK_DIR" \
       --client-version "$CLIENT_VERSION" \
+      --client-build "$BUILD_VERSION" \
       migrate 2>&1
     /usr/bin/printf "----------------------------------------------\n"
   fi
@@ -51,7 +53,7 @@ post_install() {
 
 post_upgrade() {
   gen_key
-  upgrade_userdata
+  upgrade_userdata $1
   if [ "$(/usr/bin/vercmp 1.2.0 "$2")" -eq 1 ]; then
     /usr/bin/printf "------------------------------------------------------------------------------\n"
     /usr/bin/printf " Upstream now ship a systemd service file with a different name to the one we\n"
