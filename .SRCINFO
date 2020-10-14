@@ -6,7 +6,7 @@ pkgbase = simutrans-pak128.britain
 	arch = any
 	license = custom:Artistic
 	source = https://sourceforge.net/projects/simutrans/files/pak128.britain/pak128.Britain%20for%20120-3/pak128.Britain.1.18-120-3.zip/download
-	sha256sums = 25d3ce7acefa0b1b18a4a71e71c0eeed80c34eacd51a81ecb009b2fd23e671db
+	sha256sums = a3853c240384c4310fda832f4a6438ad9cee0d08c9d2f6416e5bfb498a06cbcf
 
 pkgname = simutrans-pak128.britain
 
