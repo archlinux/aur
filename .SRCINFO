@@ -1,4 +1,4 @@
-pkgbase = dracut-hook
+pkgbase = dracut-hook-uefi
 	pkgdesc = Install/remove hooks for dracut
 	pkgver = 0.4.2
 	pkgrel = 1
@@ -6,14 +6,15 @@ pkgbase = dracut-hook
 	arch = any
 	license = BSD
 	depends = dracut
+	conflicts = dracut-hook
 	source = dracut-install
 	source = dracut-remove
 	source = 90-dracut-install.hook
 	source = 60-dracut-remove.hook
-	sha256sums = 5110714a574eb14e1bace89a6526fc07d98a82969c1b4cb95c46aa183a750ab8
-	sha256sums = 25409770cdf9607eb05addcbc0f89f45a91385c25b8a307425d4b3f4b7c2a9ef
+	sha256sums = e2412aa41712627869d67798a4acf586049d4dc2e921bd28637176f639e0d24d
+	sha256sums = 54cc4fc6728802acbf306099c4ec485e393a72974dfff6d8843ce9a3d415987e
 	sha256sums = 492d51df1234b75a32e7dff63c86ee104a7d844a408070e1c4da5dc8ab53be6f
 	sha256sums = 054dac9f1d55029a922ff05c3064e54d25790c7a18d2b598edc58ef3d295cba1
 
-pkgname = dracut-hook
+pkgname = dracut-hook-uefi
 
