@@ -1,6 +1,6 @@
 # Maintainer: Anish Vundela <anishreddyvundela@gmail.com>
 pkgname=dmenu-supermario9590-git
-_pkgname=dwm
+_pkgname=dmenu
 pkgver=r573.1a13d04
 pkgrel=1
 pkgdesc="My custom build of suckless' dmenu"
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('dwm::git+http://git.suckless.org/dmenu')
+source=('dmenu::git+http://git.suckless.org/dmenu')
 noextract=()
 md5sums=('SKIP')
 
@@ -41,4 +41,6 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname"
 	make DESTDIR="$pkgdir/" PREFIX="/usr" install
+	install -m644 -D LICENSE "$pkgdir/usr/share/licences/$pkgname/LICENSE"
+	install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
 }
