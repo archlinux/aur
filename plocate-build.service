@@ -1,0 +1,9 @@
+[Unit]
+Description=Update plocate database
+PartOf=updatedb.service
+After=updatedb.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/plocate-build /var/lib/mlocate/mlocate.db /var/lib/mlocate/plocate.db
+IOSchedulingClass=idle

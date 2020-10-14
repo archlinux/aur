@@ -1,0 +1,23 @@
+post_install() {
+    # we need to ensure that we have a updatedb(8) database present
+    echo "- re-generating the mlocate database"
+    updatedb
+    # we assume that 'mlocate' is installed, which creates the 'locate' group,
+    # whose GID is 21
+    echo "- re-generating the plocate database"
+    plocate-build /var/lib/mlocate/mlocate.db /var/lib/mlocate/plocate.db
+    chgrp 21 /var/lib/mlocate/plocate.db
+
+    # minor instuctions
+    echo ""
+    echo "plocate uses a different database from mlocate, but generates it using"
+    echo "the existing mlocate database. In order to update the plocate database"
+    echo "run the following as super-user:"
+    echo ""
+    echo " plocate-build /var/lib/mlocate/mlocate.db /var/lib/mlocate/plocate.db"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
