@@ -15,7 +15,6 @@ pkgbase = superslicer
 	depends = glew
 	depends = nlopt
 	depends = openvdb
-	depends = qhull
 	depends = wxgtk3-dev
 	depends = boost-libs-171-opt
 	conflicts = slic3r++
