@@ -1,0 +1,13 @@
+[Unit]
+Description=Dendrite (Matrix Homeserver)
+After=network.target
+After=postgresql.service
+Wants=postgresql.service
+
+[Service]
+User=dendrite
+Group=dendrite
+ExecStart=/usr/bin/dendrite
+
+[Install]
+WantedBy=multi-user.target
