@@ -1,6 +1,6 @@
 # Maintainer: Darks <l.gatin@protonmail.com>
 pkgname="gint-devel-git"
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Set of tools and libraries based on gcc, fxsdk and gint to build native programs for Casio calculators'
 arch=('i686' 'x86_64')
