@@ -2,7 +2,7 @@
 
 pkgname="python-rtmidi"
 pkgdesc="Python bindings for the cross-platform MIDI I/O library RtMidi"
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 arch=('i686' 'x86_64' 'arm')
 url="https://github.com/SpotlightKid/python-rtmidi"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('jack' 'python')
 makedepends=('cython' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3dd1909d0f44f03a4191131f1829cac2ee6a94f5a4be2a9606354748e594e704')
+sha256sums=('1f7a8c6f19a56e56c4314cd562b5595ad4be645617655887e319c0c113d510ab')
 
 
 build() {
