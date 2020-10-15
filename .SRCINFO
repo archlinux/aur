@@ -1,7 +1,7 @@
 pkgbase = cuda-10.2
 	pkgdesc = NVIDIA's GPU programming toolkit
 	pkgver = 10.2.89
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.nvidia.com/cuda-zone
 	install = cuda-10.2.install
 	arch = x86_64
@@ -14,8 +14,6 @@ pkgbase = cuda-10.2
 	optdepends = java-runtime=8: for nsight and nvvp
 	provides = cuda-toolkit
 	provides = cuda-sdk
-	replaces = cuda-toolkit
-	replaces = cuda-sdk
 	options = !strip
 	options = staticlibs
 	source = http://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run

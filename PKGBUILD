@@ -2,13 +2,12 @@
 pkgname=cuda-10.2
 pkgver=10.2.89
 _driverver=440.33.01
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA's GPU programming toolkit"
 arch=('x86_64')
 url="https://developer.nvidia.com/cuda-zone"
 license=('custom:NVIDIA')
 depends=('gcc8-libs'  'gcc8' 'opencl-nvidia' 'nvidia-utils')
-replaces=('cuda-toolkit' 'cuda-sdk')
 provides=('cuda-toolkit' 'cuda-sdk')
 optdepends=('gdb: for cuda-gdb'
             'java-runtime=8: for nsight and nvvp')
