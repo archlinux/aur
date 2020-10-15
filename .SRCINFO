@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libevent
 	pkgdesc = An event notification library (mingw-w64)
-	pkgver = 2.0.21
+	pkgver = 2.1.12
 	pkgrel = 2
 	url = http://www.monkey.org/~provos/libevent
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = mingw-w64-libevent
 	options = !libtool
 	options = !strip
 	options = !buildflags
-	source = https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz
-	md5sums = b2405cc9ebf264aa47ff615d9de527a2
+	source = https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz
+	sha1sums = cd55656a9b5bed630b08f05495230affb7996b21
 
 pkgname = mingw-w64-libevent
 
