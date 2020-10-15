@@ -1,6 +1,6 @@
 pkgname=neovim-coc-opt-git
 _pkgname=coc
-pkgver=437.b1b8d50b
+pkgver=543.6b7767f0
 pkgrel=1
 pkgdesc='Intellisense engine for neovim.'
 arch=('any')
@@ -29,7 +29,7 @@ package() {
 
     install -dvm755 "${pkgdir}/${_installpath}"
 
-    cp -rvt "${pkgdir}/${_installpath}" autoload bin build data doc plugin package.json
+    cp -rvt "${pkgdir}/${_installpath}" autoload build data doc plugin package.json
 
     install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
