@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=polybar-spotify
 pkgver=20200619_b5c59238a17180affae5232c234175524a17d1c4
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to generate custom Iosevka fonts from a configuration file'
 url='https://github.com/Jvanrhijn/polybar-spotify'
 license=('MIT')
@@ -23,6 +23,8 @@ conflicts=(
 package() {
     set -e
     cd "$pkgname-$ref"
+
+    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     mkdir -p "$pkgdir/usr/bin"
     install -D -m755 "./spotify_status.py" "$pkgdir/usr/bin/$pkgname"
