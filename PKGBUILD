@@ -131,7 +131,7 @@ package_mesa-glxdelay() {
   ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
 
   # make sure there are no files left to install
-  find fakeinstall -depth -print0 | xargs -0 rmdir
+#  find fakeinstall -depth -print0 | xargs -0 rmdir
 
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
