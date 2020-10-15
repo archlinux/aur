@@ -1,15 +1,15 @@
 # Maintainer: Antoine Viallon <antoine.vaillon@gmail.com>
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=kpack
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 license=('MIT')
 pkgdesc='Manipulates KnightOS software packages'
 makedepends=("cmake" "asciidoc")
 arch=("x86_64")
 url='https://github.com/KnightOS/kpack'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/KnightOS/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('3b1ac534db30e67820d0d1849eee8c675e1a5cf041013e3020f68440cc7ed26d')
+sha256sums=('7afadda597144b55ae63359b59028359d28c7363739ae0b47822ded606245ff0')
 
 build() {
 	cd "$pkgname-$pkgver"
