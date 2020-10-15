@@ -1,10 +1,9 @@
 pkgbase = libdshconfig
 	pkgdesc = Library for parsing dsh-style configuration files. Required by dsh and other applications.
 	pkgver = 0.20.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.netfort.gr.jp/~dancer/software/dsh.html
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL2
 	depends = glibc
 	source = https://www.netfort.gr.jp/~dancer/software/downloads/libdshconfig-0.20.13.tar.gz

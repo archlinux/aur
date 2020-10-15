@@ -1,8 +1,9 @@
-# Maintainer: Dialup Lama <dialuplama8@gmail.com>
+# maintainer: dialuplama <dialuplama@teknik.io>
+# co-maintainer: muhas <muhas@mail.ru>
 
 pkgname=libdshconfig
 pkgver=0.20.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for parsing dsh-style configuration files. Required by dsh and other applications."
 arch=('any')
 url="https://www.netfort.gr.jp/~dancer/software/dsh.html"
