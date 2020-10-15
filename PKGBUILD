@@ -1,7 +1,7 @@
 # Contributor: skydrome <skydrome@protonmail.com>
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
-#_branch=maint-0.4.3 # stable
+#_branch=maint-0.4.4 # stable
 #_malloc=jemalloc # tcmalloc
 
 pkgname=tor-git
