@@ -1,13 +1,13 @@
 pkgbase = exiftool
 	pkgdesc = Meta information reader/writer
-	pkgver = 12.07
+	pkgver = 12.08
 	pkgrel = 1
 	url = https://www.exiftool.org
 	arch = x86_64
 	license = PerlArtistic
 	depends = perl
-	source = exiftool-12.07.tar.gz::https://exiftool.org/Image-ExifTool-12.07.tar.gz
-	sha1sums = 3e48982d37dadff387e779cba55f264d975a249c
+	source = exiftool-12.08.tar.gz::https://exiftool.org/Image-ExifTool-12.08.tar.gz
+	sha1sums = 67e7137803d10f93f2a4a67172106dce481556b2
 
 pkgname = exiftool
 

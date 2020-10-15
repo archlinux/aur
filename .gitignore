@@ -1,3 +1,4 @@
 *.pkg.*
 Image-ExifTool-*
 *.src.*
+*.sh.*
