@@ -34,15 +34,11 @@ build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
-#  cat >crossfile.ini <<END
-#[binaries]
-#llvm-config = '/usr/bin/llvm-config32'
-#END
 
   # swr driver is broken with some cpu see FS#66972
 
   arch-meson mesa-$pkgver build \
-#    --native-file crossfile.ini \
+    --native-file llvm32.native \
     --libdir=/usr/lib32 \
     -D b_lto=true \
     -D b_ndebug=true \
