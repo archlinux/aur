@@ -1,0 +1,14 @@
+pkgbase = dvd-logo-git
+	pkgdesc = Watch the DVD logo bounce around in your terminal
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.gitlab.com/timparktimpark/dvd-logo.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = dvd-logo
+	source = git+https://www.gitlab.com/timparktimpark/dvd-logo.git
+	md5sums = SKIP
+
+pkgname = dvd-logo-git
+
