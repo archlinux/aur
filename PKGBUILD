@@ -4,14 +4,14 @@
 # then please put 'unknown'.
 
 # Maintainer: Laura Leddin <laura+aur@llaura.de>
-_pkgname=sponge-case
+_pkgname=spongecase
 pkgname=sponge-case-git
-pkgver=v1.0.0_3_gee8dab4
+pkgver=v1.0.2_5_gf657b07
 pkgrel=1
 epoch=
 pkgdesc="Converts strings to spongebob mocking case"
 arch=('x86_64')
-url="https://github.com/FabianTe/sponge-case"
+url="https://github.com/FabianTe/spongecase"
 license=()
 groups=()
 depends=()
@@ -19,14 +19,14 @@ makedepends=('git'
              'go')
 checkdepends=()
 optdepends=()
-provides=('sponge-case')
+provides=('spongecase')
 conflicts=()
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/FabianTe/sponge-case.git")
+source=("git+https://github.com/FabianTe/spongecase.git")
 noextract=()
 validpgpkeys=()
 md5sums=('SKIP')
@@ -38,9 +38,9 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	go build -o "${srcdir}/pkg/sponge-case"
+	go build -o "${srcdir}/pkg/${_pkgname}"
 }
 
 package() {
-	install -Dm755 "${srcdir}/pkg/sponge-case" -t "${pkgdir}/usr/bin/"
+	install -Dm755 "${srcdir}/pkg/${_pkgname}" -t "${pkgdir}/usr/bin/"
 }
