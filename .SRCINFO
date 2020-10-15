@@ -1,20 +1,20 @@
 pkgbase = nvidia-450xx-dkms
 	pkgdesc = NVIDIA driver sources for Linux, 450xx
-	pkgver = 450.66
+	pkgver = 450.80.02
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom
 	depends = dkms
-	depends = nvidia-utils=450.66
+	depends = nvidia-utils=450.80.02
 	depends = libglvnd
 	depends = linux-headers
-	provides = nvidia=450.66
+	provides = nvidia=450.80.02
 	conflicts = nvidia
 	conflicts = nvidia-lts
 	options = !strip
-	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/450.66/NVIDIA-Linux-x86_64-450.66.run
-	md5sums = f2fc84773487a2f4c405788afc1b85c5
+	source = http://us.download.nvidia.com/XFree86/Linux-x86_64/450.80.02/NVIDIA-Linux-x86_64-450.80.02.run
+	md5sums = c68b3500fb5ceb17a0fcebcbb143dad8
 
 pkgname = nvidia-450xx-dkms
 

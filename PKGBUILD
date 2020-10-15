@@ -3,7 +3,7 @@
 
 pkgbase=nvidia-450xx-dkms
 pkgname=nvidia-450xx-dkms
-pkgver=450.66
+pkgver=450.80.02
 pkgrel=1
 pkgdesc="NVIDIA driver sources for Linux, 450xx"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
         "http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
        )
 md5sums=(
-	'f2fc84773487a2f4c405788afc1b85c5'
+	'c68b3500fb5ceb17a0fcebcbb143dad8'
 	)
 
 prepare() {
