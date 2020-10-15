@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 pkgname="python2-scikit-rf-git"
-pkgver=0.14.r145.g57f0b32
-pkgrel=2
+pkgver=0.14.8.r443.g01716c2f
+pkgrel=1
 pkgdesc="Scikit-rf (aka skrf) is a python package for RF/Microwave engineering"
 arch=(any)
 url="http://scikit-rf-web.readthedocs.org"
@@ -13,8 +13,6 @@ conflicts=("python2-scikit-rf")
 optdepends=(
 	"python2-pyvisa: for instrument control"
 	"python2-pandas: for xls export"
-	"python2-xlrd: for xls reading"
-	"python2-xlwt: for xls writing"
 	"ipython2: for interactive shell"
 )
 md5sums=("SKIP")
