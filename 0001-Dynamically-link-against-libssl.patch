@@ -1,6 +1,6 @@
-From 6194da623ef0099d0bb8cb821c3a535e188e89e5 Mon Sep 17 00:00:00 2001
+From 36b7212c16d187269a47dee866708e0b2cc02f67 Mon Sep 17 00:00:00 2001
 From: Tom Hacohen <tom@stosb.com>
-Date: Sat, 12 Sep 2020 10:03:53 +0300
+Date: Thu, 15 Oct 2020 12:34:01 +0300
 Subject: [PATCH] Dynamically link against libssl.
 
 ---
@@ -16,7 +16,7 @@ index 29ea7f4..fd317a5 100644
  [dependencies]
  cpython = { version = "0.3", features = ["extension-module"] }
 -openssl = { version = "0.10.30", features = ["vendored"] }
- etebase = { git = "https://github.com/etesync/etesync-rs", rev = "6b6e5179602d49d0e601d196686731ef4674e126" }
+ etebase = { git = "https://github.com/etesync/etesync-rs", rev = "643121b0e5d49d788e86a795ae5bbc1f6359ea9d" }
 -- 
 2.28.0
 
