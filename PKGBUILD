@@ -1,6 +1,6 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=mkrom
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 license=('MIT')
 pkgdesc='Writes files into ROM images for TI calculators'
@@ -8,7 +8,7 @@ makedepends=("cmake" "asciidoc")
 arch=("x86_64")
 url='https://github.com/KnightOS/mkrom'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/KnightOS/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('2c5c2e72f7f9a552c8f43015129e755f3d0a2a4c4152c615fcd7b9ed50ebf3c2')
+sha256sums=('7b52e19a5925bfc070dd7b0197860c45235984645d6065e51e1ea5bf6982ea2e')
 
 build() {
 	cd "$pkgname-$pkgver"
