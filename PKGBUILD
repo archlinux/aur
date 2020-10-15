@@ -2,7 +2,7 @@
 pkgname=wpewebkit-bin
 pkgver=2.30.1
 arch=(aarch64 armv7h armv7l x86_64)
-pkgrel=1
+pkgrel=2
 pkgdesc='Web content engine library optimized for embedded devices (gl version)'
 url='https://wpewebkit.org'
 license=(custom)

@@ -1,7 +1,7 @@
 pkgbase = wpewebkit-bin
 	pkgdesc = Web content engine library optimized for embedded devices (gl version)
 	pkgver = 2.30.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wpewebkit.org
 	arch = aarch64
 	arch = armv7h
