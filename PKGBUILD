@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fully featured and highly configurable SFTP server with optional FTP/S and WebDAV support. It can serve local filesystem, S3, GCS'
 arch=('i686' 'x86_64')
 url="https://github.com/drakkan/${pkgname}"
@@ -23,7 +23,7 @@ source=("git+https://github.com/drakkan/${pkgname}#tag=v${pkgver}"
   "sftpgo.json"
   "sftpgo.sysusers")
 sha256sums=('SKIP'
-  'f969c0ca4d52e55de3a9823d8fbede2726c1b33feae54a2baa712a0496ceefc7'
+  '924316cf6eaafda33a8ee506abde051d961aee33f8a2d2f4eb907c97f47f33a3'
   '44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8')
 
 _uid_sftpgo=315
@@ -44,7 +44,8 @@ package() {
   install -Dm 644 init/${pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
   install -dm750 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "${pkgdir}/etc/${pkgname}"
   install -Dm 640 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "$srcdir/sftpgo.json" -t "${pkgdir}/etc/${pkgname}"
-  install -d "${pkgdir}/var/lib/${pkgname}"
+  install -dm750 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "${pkgdir}/var/lib/${pkgname}"
+  install -dm750 -o ${_uid_sftpgo} -g ${_gid_sftpgo} "${pkgdir}/srv/${pkgname}"
   install -d "${pkgdir}/usr/share/${pkgname}"
   cp -r templates "${pkgdir}/usr/share/${pkgname}/"
   cp -r static "${pkgdir}/usr/share/${pkgname}/"
