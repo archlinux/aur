@@ -1,3 +1,30 @@
+2020.10.11:
+- hotfix for systray icon quit action, issue #171.
+
+2020.10.10:
+- Added Schedule downloads feature.
+- Manual audio selection for dash videos.
+- Designed new application icon.
+- Fixed handling pending downloads.
+- Fixed gui freeze during some downloads.
+- critical bug fix, Dash video resume - HTTP Error 416 Requested Range not satisfiable #166.
+- Fix for download folder, issue #164.
+- Remember last window size set by user.
+- Download folder entry becomes editable.
+- cleaner download folder by moving all download temp files into one temp folder.
+- Added option to enable / disable systray icon, and fixed systray quit.
+- fixed arabic file names display on linux.
+- Added browse button to select cookies file.
+- Added help button in "About window".
+- Added log level menu in log tab
+- added copy log button.
+- Added flag in config.py to disable update feature completely.
+- Added subtitles selection to playlist window.
+- Added clear completed items, stop all downloads, clear all items.
+- Fixed non initialized ffmpeg path to handle audio, issue #168
+- Added option to download missing ffmpeg.exe on windows os.
+- Added option to download thumbnail with video file, issue #169
+
 2020.9.20:
     "This release has major changes"
 - New GUI design based on tkinter.
