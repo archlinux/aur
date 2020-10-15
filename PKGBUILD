@@ -1,4 +1,5 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Maintainer: Edu4rdSHL <edu4rdshl@securityhacklabs.net>
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fhc-git
