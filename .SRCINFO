@@ -1,6 +1,6 @@
 pkgbase = wlroots-hidpi-git
 	pkgdesc = Modular Wayland compositor library, with XWayland HiDPI
-	pkgver = 0.11.0.r33.g2b418b4d
+	pkgver = 0.11.0.r57.g99f3c643
 	pkgrel = 1
 	url = https://github.com/swaywm/wlroots
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = wlroots-hidpi-git
 	source = wlroots-hidpi-git::git+https://github.com/swaywm/wlroots
 	source = xwayland_hidpi.diff::https://github.com/swaywm/wlroots/compare/master...MisterDA:xwayland_hidpi.diff
 	sha512sums = SKIP
-	sha512sums = 5194e3c35adf5f5c2a36017bcd532390d97d1bc6e55801d8ef6aac296db2b8c5619bc735529e30474c7ba1e903fa8e412b95618f5ac201eff88dc097e3de220c
+	sha512sums = a7c501760020f1ca3082fa17e5efd2fcfb5c41f957d1a23e902b253cc1fe68a99452cd1949843aa30acb25f52810fc1f30146517050dfeb72eff1ba98b21cca4
 
 pkgname = wlroots-hidpi-git
 
