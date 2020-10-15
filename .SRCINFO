@@ -10,7 +10,7 @@ pkgbase = slick
 	conflicts = slick
 	source = https://github.com/aquefir/slick/archive/mk-v1.1.1.tar.gz
 	source = aquefir.sh
-	sha1sums = 86fe0816fa3e91bc0cbe5c1b19fd9c5acaf20770
+	sha1sums = 623fae3f2fff9a14fd994f93bac5f5c5f4a0ecf5
 	sha1sums = SKIP
 
 pkgname = slick

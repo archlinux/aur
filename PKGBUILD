@@ -11,7 +11,7 @@ depends=()
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/aquefir/$pkgname/archive/mk-v$pkgver.tar.gz" 'aquefir.sh')
-sha1sums=('86fe0816fa3e91bc0cbe5c1b19fd9c5acaf20770' 'SKIP')
+sha1sums=('623fae3f2fff9a14fd994f93bac5f5c5f4a0ecf5' 'SKIP')
 
 build() {
   cd "$srcdir/$pkgname-mk-v$pkgver"
