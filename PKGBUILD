@@ -11,5 +11,5 @@ build() {
 }
 
 package() {
-    
+    echo "Installing"
 }
