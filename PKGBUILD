@@ -10,9 +10,9 @@
 # Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
-pkgname=('mesa-glxdelay' 'vulkan-mesa-layers-glxdelay' 'opencl-mesa-glxdelay' 'vulkan-intel-glxdelay' 'vulkan-radeon-glxdelay' 'libva-mesa-driver-glxdelay' 'mesa-vdpau-glxdelay')
+pkgname=('vulkan-mesa-layers-glxdelay' 'opencl-mesa-glxdelay' 'vulkan-intel-glxdelay' 'vulkan-radeon-glxdelay' 'libva-mesa-driver-glxdelay' 'mesa-vdpau-glxdelay' 'mesa-glxdelay')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=20.1.8
+pkgver=20.2.1
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -39,43 +39,43 @@ prepare() {
 
 }
 
-build () {
-arch-meson mesa-$pkgver build \
+build() {
+  arch-meson mesa-$pkgver build \
     -D b_lto=true \
     -D b_ndebug=true \
-    -D platforms=x11,wayland,drm,surfaceless \
+    -D platforms=x11,wayland \
     -D dri-drivers=i915,i965,r100,r200,nouveau \
     -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr,iris,zink \
     -D vulkan-drivers=amd,intel \
     -D vulkan-overlay-layer=true \
     -D vulkan-device-select-layer=true \
     -D swr-arches=avx,avx2 \
-    -D dri3=true \
-    -D egl=true \
+    -D dri3=enabled \
+    -D egl=enabled \
     -D gallium-extra-hud=true \
     -D gallium-nine=true \
     -D gallium-omx=bellagio \
     -D gallium-opencl=icd \
-    -D gallium-va=true \
-    -D gallium-vdpau=true \
-    -D gallium-xa=true \
-    -D gallium-xvmc=false \
-    -D gbm=true \
-    -D gles1=false \
-    -D gles2=true \
+    -D gallium-va=enabled \
+    -D gallium-vdpau=enabled \
+    -D gallium-xa=enabled \
+    -D gallium-xvmc=disabled \
+    -D gbm=enabled \
+    -D gles1=disabled \
+    -D gles2=enabled \
     -D glvnd=true \
     -D glx=dri \
-    -D libunwind=true \
-    -D llvm=true \
-    -D lmsensors=true \
+    -D libunwind=enabled \
+    -D llvm=enabled \
+    -D lmsensors=enabled \
     -D osmesa=gallium \
-    -D shared-glapi=true \
-    -D valgrind=true
+    -D shared-glapi=enabled \
+    -D valgrind=enabled
 
-# Print config
+  # Print config
   meson configure build
 
-  ninja -C build xmlpool-pot xmlpool-update-po xmlpool-gmo
+  ninja -C build
   meson compile -C build
 
   # fake installation to be seperated into packages
@@ -189,7 +189,7 @@ package_mesa-glxdelay() {
   _install fakeinstall/usr/lib/libxatracker.so*
   _install fakeinstall/usr/lib/libswrAVX*.so*
 
-# in vulkan-headers
+  # in vulkan-headers
   rm -rv fakeinstall/usr/include/vulkan
 
   _install fakeinstall/usr/include
