@@ -3,7 +3,7 @@
 
 pkgname=perl-convert-pem
 pkgver=0.08
-pkgrel=2
+pkgrel=3
 pkgdesc="Read/write encrypted ASN.1 PEM files"
 _dist="Convert-PEM"
 arch=('any')
@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('perl>=5.8.1' 'perl-class-errorhandler' 'perl-convert-asn1>=0.10' 'perl-crypt-des_ede3')
 makedepends=('perl-test-exception' 'perl-module-install')
 url="http://metacpan.org/release/$_dist"
-source=("https://search.cpan.org/CPAN/authors/id/BTROTT/$_dist-$pkgver.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/B/BT/BTROTT/$_dist-$pkgver.tar.gz")
 sha512sums=('d5e4342b40d01d534ec5f81ab009af185f795267c1bce792d26739ab07078a618093c720230ac2b6cf10c4b5ae1c282c94afa5b9db2eef6fd66e684d2080c273')
 
 build() {
