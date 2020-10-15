@@ -3,13 +3,13 @@
 
 pkgname=tritium
 pkgver=0.3.5
-pkgrel=5
-pkgdesc="tritium is a tiling/tabbed window manager for the X Window System inspired by the ion window manager. It was written completely from scratch in Python and shares no actual code with ion."
+pkgrel=6
+pkgdesc="tiling/tabbed window manager for the X Window System"
 arch=('any')
-url="http://sourceforge.net/projects/tritium/"
+url="https://sourceforge.net/projects/tritium/"
 license=('GPL')
 depends=('python2-xlib' 'plwm-svn')
-source=(http://prdownloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(https://prdownloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
 md5sums=('3b1f9e5823cf76178a9ca9842486a8e6')
 
 
