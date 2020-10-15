@@ -11,7 +11,7 @@ eapver=2020.3  #2020.3-EAP3-203.4449.6
 eaprelease=3
 pkgver=203.4449.6
 _dlver="${eapver}-EAP${eaprelease}-${pkgver}.Checked"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A cross-platform C# IDE by JetBrains."
 arch=('any')
@@ -41,8 +41,9 @@ package() {
     cp -R --no-preserve=ownership "${srcdir}/JetBrains Rider-${pkgver}/license/"* "${pkgdir}/usr/share/licenses/${pkgname}"
 
     if [ -n ${DOTNET_ROOT} ]; then
-	# assumption if DOTNET_ROOT is set, we will use that version instead of the bundled version
-	runtimeFolder=$(${srcdir}/../ResharperHost-runtime-folder.sh)
+        # assumption if DOTNET_ROOT is set, we will use that version instead of the bundled version
+        runtimeFolder=$(${srcdir}/../ResharperHost-runtime-folder.sh)
+        find ${pkgdir}/usr/share/${pkgname}/lib/ReSharperHost -maxdepth 1 -type d \( -name "*-x64*" -or -name "*-arm*" -or -name "*-x86*" \) -and -not \( -name "*symref" -or -name "$runtimeFolder" \) -exec rm -rf {} \;
 
         #dotnet
         if [ -f "${DOTNET_ROOT}/dotnet" ]; then
