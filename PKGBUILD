@@ -25,7 +25,7 @@ provides=('mesa' 'mesa-git' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan
 conflicts=('mesa' 'mesa-git' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau')
 url="https://www.mesa3d.org"
 license=('custom')
-source=('https://github.com/mesa3d/mesa/commit/e60a00a35653ef8d7eddc1905a66a74026ed843d'
+source=('https://github.com/mesa3d/mesa/archive/mesa-20.1.8.tar.gz'
 	'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/6429.patch'
         'LICENSE')
 md5sums=('SKIP'
@@ -87,7 +87,7 @@ esac
         
         
 pkgver() {
-    cd mesa
+    cd mesa-$pkgver
     read -r _ver <VERSION
     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
@@ -99,7 +99,7 @@ prepare() {
         rm -rf _build
     fi
 
-    cd mesa
+    cd mesa-$pkgver
 
     patch -Np1 -i ../6429.patch
 
