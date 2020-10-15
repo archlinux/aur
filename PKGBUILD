@@ -10,7 +10,7 @@
 # Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
-pkgname=mesa-glxdelay
+pkgname=('vulkan-mesa-layers-glxdelay' 'opencl-mesa-glxdelay' 'vulkan-intel-glxdelay' 'vulkan-radeon-glxdelay' 'libva-mesa-driver-glxdelay' 'mesa-vdpau-glxdelay' 'mesa-glxdelay')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=20.1.8
 pkgrel=1
@@ -40,10 +40,10 @@ prepare() {
 }
 
 build () {
-    arch-meson mesa-$pkgver build \
+arch-meson mesa-$pkgver build \
     -D b_lto=true \
     -D b_ndebug=true \
-    -D platforms=x11,wayland \
+    -D platforms=x11,wayland,drm,surfaceless \
     -D dri-drivers=i915,i965,r100,r200,nouveau \
     -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,swr,iris,zink \
     -D vulkan-drivers=amd,intel \
@@ -56,37 +56,154 @@ build () {
     -D gallium-nine=true \
     -D gallium-omx=bellagio \
     -D gallium-opencl=icd \
-    -D gallium-va=enabled \
-    -D gallium-vdpau=enabled \
-    -D gallium-xa=enabled \
-    -D gallium-xvmc=disabled \
-    -D gbm=enabled \
-    -D gles1=disabled \
-    -D gles2=enabled \
+    -D gallium-va=true \
+    -D gallium-vdpau=true \
+    -D gallium-xa=true \
+    -D gallium-xvmc=false \
+    -D gbm=true \
+    -D gles1=false \
+    -D gles2=true \
     -D glvnd=true \
     -D glx=dri \
-    -D libunwind=enabled \
-    -D llvm=enabled \
-    -D lmsensors=enabled \
+    -D libunwind=true \
+    -D llvm=true \
+    -D lmsensors=true \
     -D osmesa=gallium \
-    -D shared-glapi=enabled \
-    -D valgrind=enabled
+    -D shared-glapi=true \
+    -D valgrind=true
 
-    meson configure build
-    
-    ninja -C build
+# Print config
+  meson configure build
+
+  ninja -C build xmlpool-pot xmlpool-update-po xmlpool-gmo
+  meson compile -C build
+
+  # fake installation to be seperated into packages
+  # outside of fakeroot but mesa doesn't need to chown/mod
+  DESTDIR="${srcdir}/fakeinstall" meson install -C build
 }
 
-package() {
-    DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C build install
+_install() {
+  local src f dir
+  for src; do
+    f="${src#fakeinstall/}"
+    dir="${pkgdir}/${f%/*}"
+    install -m755 -d "${dir}"
+    mv -v "${src}" "${dir}/"
+  done
+}
 
-    # remove script file from /usr/bin
-    # https://gitlab.freedesktop.org/mesa/mesa/issues/2230
-    rm "${pkgdir}/usr/bin/mesa-overlay-control.py"
-    rmdir "${pkgdir}/usr/bin"
-    
-    # indirect rendering
-    ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
-  
-    install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
+package_vulkan-mesa-layers-glxdelay() {
+  pkgdesc="Mesa's Vulkan layers"
+  depends=('libdrm' 'libxcb' 'wayland')
+  conflicts=('vulkan-mesa-layer')
+  replaces=('vulkan-mesa-layer')
+
+  _install fakeinstall/usr/share/vulkan/explicit_layer.d
+  _install fakeinstall/usr/lib/libVkLayer_MESA_overlay.so
+  _install fakeinstall/usr/bin/mesa-overlay-control.py
+
+  _install fakeinstall/usr/share/vulkan/implicit_layer.d
+  _install fakeinstall/usr/lib/libVkLayer_MESA_device_select.so
+
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+}
+
+package_opencl-mesa-glxdelay() {
+  pkgdesc="OpenCL support for AMD/ATI Radeon mesa drivers"
+  depends=('expat' 'libdrm' 'libelf' 'libclc' 'clang' 'zstd')
+  optdepends=('opencl-headers: headers necessary for OpenCL development')
+  provides=('opencl-driver')
+
+  _install fakeinstall/etc/OpenCL
+  _install fakeinstall/usr/lib/lib*OpenCL*
+  _install fakeinstall/usr/lib/gallium-pipe
+
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+}
+
+package_vulkan-intel-glxdelay() {
+  pkgdesc="Intel's Vulkan mesa driver"
+  depends=('wayland' 'libx11' 'libxshmfence' 'libdrm' 'zstd')
+  optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  provides=('vulkan-driver')
+
+  _install fakeinstall/usr/share/vulkan/icd.d/intel_icd*.json
+  _install fakeinstall/usr/lib/libvulkan_intel.so
+  _install fakeinstall/usr/include/vulkan/vulkan_intel.h
+
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+}
+
+package_vulkan-radeon-glxdelay() {
+  pkgdesc="Radeon's Vulkan mesa driver"
+  depends=('wayland' 'libx11' 'libxshmfence' 'libelf' 'libdrm' 'zstd' 'llvm-libs')
+  optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  provides=('vulkan-driver')
+
+  _install fakeinstall/usr/share/vulkan/icd.d/radeon_icd*.json
+  _install fakeinstall/usr/lib/libvulkan_radeon.so
+
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+}
+
+package_libva-mesa-driver-glxdelay() {
+  pkgdesc="VA-API implementation for gallium"
+  depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libxshmfence' 'zstd')
+
+  _install fakeinstall/usr/lib/dri/*_drv_video.so
+
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+}
+
+package_mesa-vdpau-glxdelay() {
+  pkgdesc="Mesa VDPAU drivers"
+  depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libxshmfence' 'zstd')
+
+  _install fakeinstall/usr/lib/vdpau
+
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+}
+
+package_mesa-glxdelay() {
+  depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
+           'libomxil-bellagio' 'libunwind' 'llvm-libs' 'lm_sensors' 'libglvnd'
+           'zstd' 'vulkan-icd-loader')
+  optdepends=('opengl-man-pages: for the OpenGL API man pages'
+              'mesa-vdpau: for accelerated video playback'
+              'libva-mesa-driver: for accelerated video playback')
+  provides=('mesa-libgl' 'opengl-driver')
+  conflicts=('mesa-libgl')
+  replaces=('mesa-libgl')
+
+  _install fakeinstall/usr/share/drirc.d/00-mesa-defaults.conf
+  _install fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json
+
+  # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast, swr
+  _install fakeinstall/usr/lib/dri/*_dri.so
+
+  _install fakeinstall/usr/lib/bellagio
+  _install fakeinstall/usr/lib/d3d
+  _install fakeinstall/usr/lib/lib{gbm,glapi}.so*
+  _install fakeinstall/usr/lib/libOSMesa.so*
+  _install fakeinstall/usr/lib/libxatracker.so*
+  _install fakeinstall/usr/lib/libswrAVX*.so*
+
+# in vulkan-headers
+  rm -rv fakeinstall/usr/include/vulkan
+
+  _install fakeinstall/usr/include
+  _install fakeinstall/usr/lib/pkgconfig
+
+  # libglvnd support
+  _install fakeinstall/usr/lib/libGLX_mesa.so*
+  _install fakeinstall/usr/lib/libEGL_mesa.so*
+
+  # indirect rendering
+  ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
+
+  # make sure there are no files left to install
+  find fakeinstall -depth -print0 | xargs -0 rmdir
+
+  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
