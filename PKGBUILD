@@ -5,9 +5,9 @@
 pkgname=opendds
 _pkgname=OpenDDS
 pkgver=3.14.0
-pkgrel=1
+pkgrel=2
 _opendds_version=$(echo $pkgver | sed -e 's/\.0$//g')
-_ace_tao_version=6.5.8
+_ace_tao_version=6.5.11
 pkgdesc="Open source C++ implementation of OMG Data Distribution Service (DDS)"
 arch=('i686' 'x86_64')
 url="http://www.opendds.org/"
@@ -20,9 +20,11 @@ source=(
   "https://github.com/objectcomputing/OpenDDS/releases/download/DDS-$_opendds_version/OpenDDS-$_opendds_version.tar.gz"
   build.patch
 )
-md5sums=('456034b884332f68ecaabbbfac4b0b64'
-         '604aca1898673a7ce5af0f72a0fda8cf'
-         'c44b0c8d7ebccc2b9be0a040ec9f8c2b')
+md5sums=(
+  '09f4281db7a398b20dddcbfa787ac04f'
+  '604aca1898673a7ce5af0f72a0fda8cf'
+  'c44b0c8d7ebccc2b9be0a040ec9f8c2b'
+)
 
 prepare() {
   cd "$srcdir"
@@ -34,6 +36,9 @@ build() {
   cd "$srcdir/OpenDDS"
   ./configure \
     --ace="$srcdir/ACE_wrappers" \
+    --configh '#define ACE_LACKS_READDIR_R' \
+    --configh '#define ACE_DISABLE_MKTEMP' \
+    --configh '#define ACE_DISABLE_TEMPNAM' \
     --no-tests
   make
 }
