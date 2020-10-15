@@ -10,7 +10,7 @@
 # Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
-pkgname=mesa-git
+pkgname=mesa-glxdelay-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=20.3.0_devel.127495.2da1178bf3e
 pkgrel=1

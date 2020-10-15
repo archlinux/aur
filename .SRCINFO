@@ -1,4 +1,4 @@
-pkgbase = mesa-git
+pkgbase = mesa-glxdelay-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
 	pkgver = 20.3.0_devel.127495.2da1178bf3e
 	pkgrel = 1
@@ -67,5 +67,5 @@ pkgbase = mesa-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 
-pkgname = mesa-git
+pkgname = mesa-glxdelay-git
 
