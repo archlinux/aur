@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=marshmallow-polyfield
 pkgname=python-${_pkgname}
-pkgver=5.7
+pkgver=5.9
 pkgrel=1
 pkgdesc="An extension to marshmallow to allow for polymorphic fields"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('python-coverage'
          #'python-tox')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Bachmann1234/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('74f82e13adc002f0a1dbaa1fd7e2d0c5ca6f33791564e34a5ecb5eb736a9ef9a')
+sha256sums=('e2b84420b80647ec0d1452f93109367b7f3f4e23252cd979e40537bcfccb2c86')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
