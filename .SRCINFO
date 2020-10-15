@@ -1,14 +1,15 @@
 pkgbase = bitwarden-dmenu
 	pkgdesc = dmenu adapter for bitwarden-cli
-	pkgver = 1.5.5
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://github.com/andykais/bitwarden-dmenu
 	arch = x86_64
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = git+https://github.com/andykais/bitwarden-dmenu#commit=b2e1a0fda35d1f0575f272609bde3c9b879271ba
-	md5sums = SKIP
+	noextract = bitwarden-dmenu-1.5.6.tar.gz
+	source = bitwarden-dmenu-1.5.6.tar.gz::https://github.com/andykais/bitwarden-dmenu/archive/b5f7aeeb2ed10fd9328e6e3a74eaec2287b6d97c.tar.gz
+	sha512sums = 3ba2316fe6e857c9237d2e79381bb6d8cc4279e7e3f8ed58933e0e6addd65bf4b7247cdb071b30a2bd7e47ce263afeec8a6404c283f845bf151059061afb841f
 
 pkgname = bitwarden-dmenu
 
