@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=knightos-kcc
 _pkgname=kcc
-pkgver=4.0.0
+pkgver=4.0.2
 pkgrel=1
 license=('GPL')
 pkgdesc='A C compiler for z80 systems'
@@ -10,7 +10,7 @@ makedepends=("cmake" "asciidoc")
 arch=("x86_64")
 url='https://github.com/KnightOS/kcc'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/KnightOS/kcc/archive/$pkgver.tar.gz")
-sha256sums=('e67e65cf81ecf3769b86f84694018083994640a478fa53cf05fd3e8b9d108527')
+sha256sums=('8fe34702ea51e92213cc37636878582eaa8c4ff5616e14c4f4b066c0b828296b')
 
 build() {
 	cd "$_pkgname-$pkgver"
