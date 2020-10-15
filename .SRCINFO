@@ -1,6 +1,6 @@
 pkgbase = freenet
 	pkgdesc = A peer-to-peer platform for censorship-resistant communication and publishing
-	pkgver = 0.7.5.1486
+	pkgver = 0.7.5.1487
 	pkgrel = 1
 	url = https://freenetproject.org
 	install = freenet.install
@@ -16,24 +16,16 @@ pkgbase = freenet
 	depends = nss
 	depends = java-service-wrapper
 	backup = opt/freenet/wrapper.config
-	backup = opt/freenet/conf/freenet.ini
-	source = git+https://github.com/freenet/fred.git?signed#tag=build01486
-	source = git+https://github.com/freenet/plugin-KeyUtils.git#tag=v5026
-	source = git+https://github.com/freenet/plugin-UPnP.git#tag=10007
-	source = git+https://github.com/redwerk/plugin-Library.git#branch=frn-97-4
+	source = git+https://github.com/freenet/fred.git?signed#tag=build01487
 	source = git+https://github.com/xor-freenet/plugin-WebOfTrust.git#branch=next
 	source = git+https://github.com/freenet/seedrefs.git
 	source = IpToCountry.dat::http://software77.net/geo-ip/?DL=4
 	source = run.sh
 	source = wrapper.config
-	source = freenet.ini
+	source = freenet.ini.dist
 	source = freenet.service
 	source = freenet.tmpfiles
-	source = 0001-keyutils-fix-constructor-call.patch
 	validpgpkeys = B30C3D91069F81ECFEFED0B1B41A6047FD6C57F9
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -43,7 +35,6 @@ pkgbase = freenet
 	sha256sums = 1171d0545882e45e03531e760fd28024700bf50400a3e3a13f31deeace8dbb03
 	sha256sums = 10f97306ef75953f20978d3d2aa5d14daa8fa13e4db88e8270ea951239212c20
 	sha256sums = 8f35e9d7d00e4caa26d0c1cbcbcedc9081ed0535d0c67e3f9d2d75c11ff9e847
-	sha256sums = 0211a8778328805db1c9ed6991203c5bb097d00cfb7112a9c7db53df0b2bfb3c
 
 pkgname = freenet
 

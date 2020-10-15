@@ -7,6 +7,7 @@ post_install() {
                 freenet &&
         echo "ok" || echo "fail"
     }
+    cp -v /opt/freenet/conf/freenet.ini{.dist,}
     chown -R freenet:freenet /opt/freenet
     echo "==> Freenet will be slow during first startup while it discovers the network."
     echo "==> You may see 'Data Not Found' or 'Route Not Found' errors, this is normal."
@@ -15,13 +16,6 @@ post_install() {
 }
 
 post_upgrade() {
-    ## remove me at a later date
-    [[ -d /opt/freenet/conf/node ]] && {
-        sed -i /opt/freenet/conf/freenet.ini \
-            -e "s:node.install.nodeDir=/opt/freenet/conf/node:node.install.nodeDir=/opt/freenet/noderef:" \
-            -e "s:JSTUN;::"
-        mv /opt/freenet/conf/node /opt/freenet/noderef
-    } || true
     chown -R freenet:freenet /opt/freenet
 }
 
