@@ -1,7 +1,9 @@
 # Maintainer: Terin Stock <terinjokes@gmail.com>
 
 pkgname=archiver
-pkgver=3.2.0
+pkgver=3.3.2
+_tagcommit="c7eae9dcbcb1f0a0ce965184868097babf73d415"
+_tagdate="29 Sept 2020"
 pkgrel=1
 pkgdesc="A multi-format archive utility written in Go"
 arch=("x86_64")
@@ -10,13 +12,13 @@ license=("MIT")
 makedepends=("go-pie")
 depends=("glibc")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mholt/archiver/archive/v${pkgver}.tar.gz")
-sha256sums=('919182c8a2ae8095b12f059a1b2826107629bd13bdba6a429cb3d97eac6ae065')
+sha256sums=('1d1db34177fa0d85aea6860b33e94700b1acaa2f3ea626e1f457fede6991041b')
 
 build() {
   cd "${pkgname}-${pkgver}"
   go build \
     -trimpath \
-    -ldflags "-extldflags ${LDFLAGS}" \
+    -ldflags "-X 'main.version=${pkgver}' -X 'main.commit=${_tagcommit}' -X 'main.date=${_tagdate}' -extldflags ${LDFLAGS}" \
     -o . ./cmd/arc/...
 }
 

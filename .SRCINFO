@@ -1,14 +1,14 @@
 pkgbase = archiver
 	pkgdesc = A multi-format archive utility written in Go
-	pkgver = 3.2.0
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://github.com/mholt/archiver
 	arch = x86_64
 	license = MIT
 	makedepends = go-pie
 	depends = glibc
-	source = archiver-3.2.0.tar.gz::https://github.com/mholt/archiver/archive/v3.2.0.tar.gz
-	sha256sums = 919182c8a2ae8095b12f059a1b2826107629bd13bdba6a429cb3d97eac6ae065
+	source = archiver-3.3.2.tar.gz::https://github.com/mholt/archiver/archive/v3.3.2.tar.gz
+	sha256sums = 1d1db34177fa0d85aea6860b33e94700b1acaa2f3ea626e1f457fede6991041b
 
 pkgname = archiver
 
