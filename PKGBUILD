@@ -25,13 +25,11 @@ provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau')
 url="https://www.mesa3d.org"
 license=('custom')
-source=('https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}`'
+source=('https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}'
 	'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/6429.patch'
         'LICENSE')
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP')
 sha512sums=('SKIP'
+	    'SKIP'
             'SKIP'
             'SKIP')
 
