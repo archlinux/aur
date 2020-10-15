@@ -1,0 +1,19 @@
+pkgbase = victor3d-skel-git
+	pkgdesc = Arch Linux configs for installer script
+	pkgver = r124.d74455a6
+	pkgrel = 1
+	url = https://github.com/victor3dptz/arch-install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = obmenu2-git
+	depends = i3-scrot
+	depends = oblogout-py3-git
+	depends = adeos-oblogout-git
+	depends = bunsen-themes-git
+	depends = nerd-fonts-hack
+	source = git+https://github.com/victor3dptz/arch-install
+	md5sums = SKIP
+
+pkgname = victor3d-skel-git
+
