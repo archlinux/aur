@@ -13,7 +13,9 @@ pkgbase = python-akro
 	depends = python-gym
 	depends = python-numpy
 	source = https://files.pythonhosted.org/packages/source/a/akro/akro-0.0.8.tar.gz
+	source = akro-fix-test-imports.patch
 	sha256sums = 4fc0dc1acf35db19b39a209e20ce14dc8197723c73d3adf3ba7f8cdc1dbf6e58
+	sha256sums = 7fa5b22dec473c540c9962143ab90f6dbf3487f1909b7aa7cdd2d34fb7e2343d
 
 pkgname = python-akro
 

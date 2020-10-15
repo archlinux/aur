@@ -19,8 +19,15 @@ checkdepends=(
 	'python-pytest-cov'
 	'python-pytest-xdist'
 )
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('4fc0dc1acf35db19b39a209e20ce14dc8197723c73d3adf3ba7f8cdc1dbf6e58')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+        "$_name-fix-test-imports.patch")
+sha256sums=('4fc0dc1acf35db19b39a209e20ce14dc8197723c73d3adf3ba7f8cdc1dbf6e58'
+            '7fa5b22dec473c540c9962143ab90f6dbf3487f1909b7aa7cdd2d34fb7e2343d')
+
+prepare() {
+	cd "$_name-$pkgver"
+	patch -p1 -i "$srcdir/$_name-fix-test-imports.patch"
+}
 
 build() {
 	cd "$_name-$pkgver"

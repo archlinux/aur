@@ -1,0 +1,49 @@
+From 7f6d99f6a16e000e79cc18b546259c2db98952a0 Mon Sep 17 00:00:00 2001
+From: Eric Langlois <eric@langlois.xyz>
+Date: Thu, 15 Oct 2020 16:23:02 -0400
+Subject: [PATCH] Fix tf imports in some test files
+
+Changed `import tensorflow as tf` to `from akro import tf`
+so that tests will still run if tensorflow is not installed.
+
+This makes tf imports in these files consistent with the other test
+files.
+---
+ tests/akro/test_discrete.py | 2 +-
+ tests/akro/test_tuple.py    | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/akro/test_discrete.py b/tests/akro/test_discrete.py
+index 56c0407..1d4de11 100644
+--- a/tests/akro/test_discrete.py
++++ b/tests/akro/test_discrete.py
+@@ -3,9 +3,9 @@ import unittest
+ 
+ import numpy as np
+ import pytest
+-import tensorflow as tf
+ 
+ from akro import Discrete
++from akro import tf
+ from akro import theano
+ from akro.requires import requires_tf, requires_theano
+ 
+diff --git a/tests/akro/test_tuple.py b/tests/akro/test_tuple.py
+index 9235e8e..f67b9ba 100644
+--- a/tests/akro/test_tuple.py
++++ b/tests/akro/test_tuple.py
+@@ -2,10 +2,10 @@ import pickle
+ import unittest
+ 
+ import numpy as np
+-import tensorflow as tf
+ 
+ from akro import Box
+ from akro import Discrete
++from akro import tf
+ from akro import theano
+ from akro import Tuple
+ from akro.requires import requires_tf, requires_theano
+-- 
+2.28.0
+
