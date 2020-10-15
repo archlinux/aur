@@ -1,6 +1,6 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=mktiupgrade
-pkgver=1.1.4
+pkgver=1.1.6
 pkgrel=1
 license=('MIT')
 pkgdesc='Builds and signs OS upgrades for Texas Instruments calculators'
@@ -8,7 +8,7 @@ makedepends=("cmake" "asciidoc")
 arch=("x86_64")
 url='https://github.com/KnightOS/mktiupgrade'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/KnightOS/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('7b02c6eac77e641fdab196fa4f88ee4fb791ae92d1a518767080f92941823bd4')
+sha256sums=('5e632f4ad06f4c8e276f9d2493b98032ebc313ea2a94b4bffd66948d02505781')
 
 build() {
 	cd "$pkgname-$pkgver"
