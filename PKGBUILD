@@ -1,7 +1,7 @@
 # Maintainer: julienCXX <archlinux@chmodplusx.eu>
 
 pkgname=mingw-w64-libevent
-pkgver=2.0.21
+pkgver=2.1.12
 pkgrel=2
 pkgdesc="An event notification library (mingw-w64)"
 arch=(any)
@@ -10,8 +10,8 @@ license=("BSD")
 makedepends=(mingw-w64-gcc mingw-w64-pkg-config)
 depends=(mingw-w64-crt mingw-w64-openssl)
 options=(!libtool !strip !buildflags)
-source=("https://github.com/downloads/libevent/libevent/libevent-$pkgver-stable.tar.gz")
-md5sums=('b2405cc9ebf264aa47ff615d9de527a2')
+source=("https://github.com/libevent/libevent/releases/download/release-$pkgver-stable/libevent-$pkgver-stable.tar.gz")
+sha1sums=('cd55656a9b5bed630b08f05495230affb7996b21')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
