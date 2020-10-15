@@ -1,6 +1,6 @@
 pkgbase = bit
 	pkgdesc = A modern Git CLI
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/chriswalz/bit
 	install = bit.install
@@ -9,8 +9,8 @@ pkgbase = bit
 	makedepends = go
 	depends = git
 	conflicts = bit-git
-	source = bit-0.6.1.tar.gz::https://github.com/chriswalz/bit/archive/v0.6.1.tar.gz
-	sha256sums = befb1b324f685f49825002e65a1c7f95d2ded14198f0d60fce8087d64f240947
+	source = bit-0.6.2.tar.gz::https://github.com/chriswalz/bit/archive/v0.6.2.tar.gz
+	sha256sums = 84549053872e0b588b4fb28dea3702f86d75233a320e4415809a1eb3b52000b8
 
 pkgname = bit
 
