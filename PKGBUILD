@@ -27,9 +27,9 @@ prepare() {
 
 build() {
     cd "$srcdir/Halide/build"
-    cmake   -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=False -DWITH_DOCS=False -DWITH_TUTORIALS=False \
-            -DWARNINGS_AS_ERRORS=False -DWITH_APPS=False -DBUILD_AOT_TUTORIAL=False -DWITH_UTILS=False \
-            -DCMAKE_INSTALL_PREFIX=/usr ..
+    cmake   -DWITH_TESTS=False -DWITH_DOCS=False -DWITH_TUTORIALS=False -DWARNINGS_AS_ERRORS=False \
+            -DWITH_APPS=False -DBUILD_AOT_TUTORIAL=False -DWITH_UTILS=False -DCMAKE_INSTALL_PREFIX=/usr \
+            ..
     make
 }
 
