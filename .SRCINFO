@@ -1,0 +1,18 @@
+pkgbase = waypoint-git
+	pkgdesc = Waypoint allows developers to define their application build, deploy, and release lifecycle as code, reducing the time to deliver deployments through a consistent and repeatable workflow.
+	pkgver = 42efa540
+	pkgrel = 1
+	url = https://www.waypointproject.io
+	arch = x86_64
+	license = MPL2
+	makedepends = go
+	makedepends = git
+	makedepends = go-bindata
+	depends = glibc
+	provides = waypoint
+	conflicts = waypoint
+	source = git+https://github.com/hashicorp/waypoint.git
+	sha256sums = SKIP
+
+pkgname = waypoint-git
+
