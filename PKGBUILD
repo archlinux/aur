@@ -1,5 +1,5 @@
 pkgname=kuiserver-standalone-git
-pkgver=r72.30f67de
+pkgver=r81.9f4b327
 pkgrel=1
 pkgdesc="Standalone version of the KIO job manager"
 arch=(i686 x86_64)
