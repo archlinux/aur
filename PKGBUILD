@@ -1,6 +1,6 @@
 # Maintainer: Jon Noble <jonnobleuk@gmail.com>
 pkgname=halide-git
-pkgver=r19445.6156f3259
+pkgver=2019_08_27.r2898.g2531d11d2
 pkgrel=1
 pkgdesc="a language for fast, portable data-parallel computation"
 arch=(x86_64)
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/Halide"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^release_//; s/\([^-]*-g\)/r\1/; y/-/./'
 }
 
 prepare() {

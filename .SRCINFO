@@ -1,6 +1,6 @@
 pkgbase = halide-git
 	pkgdesc = a language for fast, portable data-parallel computation
-	pkgver = r19445.6156f3259
+	pkgver = 2019_08_27.r2898.g2531d11d2
 	pkgrel = 1
 	url = https://halide-lang.org/
 	arch = x86_64
