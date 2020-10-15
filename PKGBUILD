@@ -32,56 +32,53 @@ patch -Np1 -i ../6429.patch
 
 }
 
-build() {
-  export CC="gcc -m32"
-  export CXX="g++ -m32"
-  export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
+build () {
+    export CC="gcc -m32"
+    export CXX="g++ -m32"
+    export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
 
-  # swr driver is broken with some cpu see FS#66972
+     meson setup mesa build \
+        --native-file llvm32.native \
+        -D b_ndebug=true \
+        -D b_lto=true \
+        -D buildtype=plain \
+        --wrap-mode=nofallback \
+        -D prefix=/usr \
+        -D sysconfdir=/etc \
+        --libdir=/usr/lib32 \
+        -D platforms=x11,wayland \
+        -D dri-drivers=i915,i965,r200,r100,nouveau \
+        -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink \
+        -D vulkan-drivers=amd,intel \
+        -D dri3=enabled \
+        -D egl=enabled \
+        -D gallium-extra-hud=true \
+        -D vulkan-overlay-layer=true \
+        -D vulkan-device-select-layer=true \
+        -D gallium-nine=true \
+        -D gallium-omx=disabled \
+        -D gallium-opencl=disabled \
+        -D gallium-va=enabled \
+        -D gallium-vdpau=enabled \
+        -D gallium-xa=enabled \
+        -D gallium-xvmc=disabled \
+        -D gbm=enabled \
+        -D gles1=disabled \
+        -D gles2=enabled \
+        -D glvnd=true \
+        -D glx=dri \
+        -D libunwind=enabled \
+        -D llvm=enabled \
+        -D lmsensors=enabled \
+        -D osmesa=gallium \
+        -D shared-glapi=enabled \
+        -D valgrind=disabled \
+        -D tools=[] \
+        -D zstd=enabled
 
-  arch-meson mesa-$pkgver build \
-    --native-file llvm32.native \
-    --libdir=/usr/lib32 \
-    -D b_lto=true \
-    -D b_ndebug=true \
-    -D platforms=x11,wayland \
-    -D dri-drivers=i915,i965,r100,r200,nouveau \
-    -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris \
-    -D vulkan-drivers=amd,intel \
-    -D vulkan-overlay-layer=true \
-    -D vulkan-device-select-layer=true \
-    -D swr-arches=avx,avx2 \
-    -D dri3=enabled \
-    -D egl=enabled \
-    -D gallium-extra-hud=true \
-    -D gallium-nine=true \
-    -D gallium-omx=disabled \
-    -D gallium-opencl=icd \
-    -D gallium-va=enabled \
-    -D gallium-vdpau=enabled \
-    -D gallium-xa=enabled \
-    -D gallium-xvmc=disabled \
-    -D gbm=enabled \
-    -D gles1=disabled \
-    -D gles2=enabled \
-    -D glvnd=true \
-    -D glx=dri \
-    -D libunwind=enabled \
-    -D llvm=enabled \
-    -D lmsensors=enabled \
-    -D osmesa=gallium \
-    -D shared-glapi=enabled \
-    -D valgrind=disabled
-
-  # Print config
-  meson configure build
-
-  ninja -C build
-  meson compile -C build
-
-  # fake installation to be seperated into packages
-  # outside of fakeroot but mesa doesn't need to chown/mod
-  DESTDIR="${srcdir}/fakeinstall" meson install -C build
+    meson configure build
+    
+    ninja  $NINJAFLAGS -C build
 }
 
 package_lib32-mesa-glxdelay() {
