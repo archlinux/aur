@@ -40,7 +40,7 @@ patch -Np1 -i ../6429.patch
 }
 
 build () {
-    meson setup mesa build \
+    meson setup mesa-$pkgver build \
        -D b_ndebug=true \
        -D b_lto=true \
        -D buildtype=plain \
