@@ -2,7 +2,7 @@
 
 pkgname=faubox
 pkgver=15.5.100
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop client for FAU's file synchronization service"
 arch=('any')
 url="https://www.fau.eu/intranet/tools/faubox-cloud-storage-for-all-fau-members/"
@@ -29,7 +29,6 @@ package() {
     cd $srcdir/FAUbox
     install -Dm644 FAUbox.jar $pkgdir/usr/share/java/$pkgname/FAUbox.jar
     install -Dm644 VERSION $pkgdir/usr/share/$pkgname/VERSION
-    install -Dm644 README $pkgdir/usr/share/$pkgname/README
     install -Dm644 install-files/FAUbox.png $pkgdir/usr/share/pixmaps/faubox.png
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
