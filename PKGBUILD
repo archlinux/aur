@@ -1,4 +1,4 @@
-# Maintainer: julienCXX <archlinux@chmodplusx.eu>
+# Maintainer: nicholatian <me@nicholatian.com>
 
 pkgname=mingw-w64-libevent
 pkgver=2.1.12
