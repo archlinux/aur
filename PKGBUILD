@@ -66,7 +66,7 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-anbox
-pkgver=5.8.14
+pkgver=5.8.15
 _major=5.8
 _branch=5.x
 xanmod=1
@@ -101,7 +101,7 @@ done
 
 sha256sums=('e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5'
             'SKIP'
-            '5ad21f97be90f5feaf09a023a3bad2155eefd0025781150d9b09cfceda75ee1b'
+            '4128050db96566fbd348c9b04825de6e43974c4234805b7c683093b2914c374c'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991')
 
@@ -177,8 +177,8 @@ prepare() {
   # If it's a full config, will be replaced
   # If not, you should use scripts/config commands, one by line
   if [ -f "${startdir}/myconfig" ]; then
-    if [ $(wc -l < "${startdir}/myconfig") -gt 1000 ]; then
-      # myconfig is a full config file. Replace it
+    if ! grep -q 'scripts/config' "${startdir}/myconfig"; then
+      # myconfig is a full config file. Replacing default .config
       msg2 "Using user CUSTOM config..."
       cp -f "${startdir}"/myconfig .config
     else
