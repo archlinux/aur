@@ -11,12 +11,12 @@ _build_no_opt=1
 _build_opt=1
 
 pkgname=()
-[ -n "$_build_no_opt" ] && pkgname+=(tensorflow-rocm python-tensorflow-rocm)
-[ -n "$_build_opt" ] && pkgname+=(tensorflow-opt-rocm python-tensorflow-opt-rocm)
+[ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-rocm python-tensorflow-rocm)
+[ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-rocm python-tensorflow-opt-rocm)
 
 pkgver=2.3.1
 _pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -139,34 +139,38 @@ build() {
   export CC=gcc-9
   export CXX=g++-9
 
-  echo "Building with rocm and without non-x86-64 optimizations"
-  cd "${srcdir}"/tensorflow-${_pkgver}-rocm
-  export CC_OPT_FLAGS="-march=x86-64"
-  export TF_NEED_CUDA=0
-  export TF_NEED_ROCM=1
-  ./configure
-  [ -n "$_build_no_opt" ] && bazel \
-    build --config=mkl -c opt \
-      //tensorflow:libtensorflow.so \
-      //tensorflow:libtensorflow_cc.so \
-      //tensorflow:install_headers \
-      //tensorflow/tools/pip_package:build_pip_package
-  bazel-bin/tensorflow/tools/pip_package/build_pip_package --gpu "${srcdir}"/tmprocm
+  if [ "$_build_no_opt" -eq 1 ]; then
+    echo "Building with rocm and without non-x86-64 optimizations"
+    cd "${srcdir}"/tensorflow-${_pkgver}-rocm
+    export CC_OPT_FLAGS="-march=x86-64"
+    export TF_NEED_CUDA=0
+    export TF_NEED_ROCM=1
+    ./configure
+    bazel \
+      build --config=mkl -c opt \
+        //tensorflow:libtensorflow.so \
+        //tensorflow:libtensorflow_cc.so \
+        //tensorflow:install_headers \
+        //tensorflow/tools/pip_package:build_pip_package
+    bazel-bin/tensorflow/tools/pip_package/build_pip_package --gpu "${srcdir}"/tmprocm
+  fi
 
 
-  echo "Building with rocm and with non-x86-64 optimizations"
-  cd "${srcdir}"/tensorflow-${_pkgver}-opt-rocm
-  export CC_OPT_FLAGS="-march=haswell -O3"
-  export TF_NEED_CUDA=0
-  export TF_NEED_ROCM=1
-  ./configure
-  [ -n "$_build_opt" ] && bazel \
-    build --config=mkl --config=avx2_linux -c opt \
-      //tensorflow:libtensorflow.so \
-      //tensorflow:libtensorflow_cc.so \
-      //tensorflow:install_headers \
-      //tensorflow/tools/pip_package:build_pip_package
-  bazel-bin/tensorflow/tools/pip_package/build_pip_package --gpu "${srcdir}"/tmpoptrocm
+  if [ "$_build_opt" -eq 1 ]; then
+    echo "Building with rocm and with non-x86-64 optimizations"
+    cd "${srcdir}"/tensorflow-${_pkgver}-opt-rocm
+    export CC_OPT_FLAGS="-march=haswell -O3"
+    export TF_NEED_CUDA=0
+    export TF_NEED_ROCM=1
+    ./configure
+    bazel \
+      build --config=mkl --config=avx2_linux -c opt \
+        //tensorflow:libtensorflow.so \
+        //tensorflow:libtensorflow_cc.so \
+        //tensorflow:install_headers \
+        //tensorflow/tools/pip_package:build_pip_package
+    bazel-bin/tensorflow/tools/pip_package/build_pip_package --gpu "${srcdir}"/tmpoptrocm
+  fi
 }
 
 _package() {
