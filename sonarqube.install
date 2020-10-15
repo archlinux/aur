@@ -13,7 +13,11 @@ post_install() {
 }
 
 pre_upgrade() {
-    rm -rf /usr/share/webapps/sonarqube/extensions/plugins/
+    if [ "$(vercmp $2 8.5.0)" -lt 0 ]; then
+      rm -rf /usr/share/webapps/sonarqube/extensions/plugins/
+    else
+      rm -rf /usr/share/webapps/sonarqube/lib/extensions/plugins/
+    fi
     echo "Non-default plugins have been deleted. Please re-install the plugins according to the compatibility matrix (https://docs.sonarqube.org/display/PLUG/Plugin+Version+Matrix)."
 }
 
