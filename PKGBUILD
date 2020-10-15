@@ -53,12 +53,6 @@ makedepends=(
 optdepends=('wayland-protocols: xwayland support'
 	    'egl-wayland: xwayland support')
 
-pkgver() {
-  cd xorg-server-$pkgver
-  # cutting off 'xorg.server.' prefix that presents in the git tag
-  git describe --long --tags| sed 's/^xorg.server.//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
