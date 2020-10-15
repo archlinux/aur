@@ -3,6 +3,7 @@ pkgbase = gamma-text-editor
 	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://gitlab.com/hamadmarri/gamma-text-editor
+	install = gamma-text-editor.install
 	arch = any
 	license = GPL3
 	depends = python3
