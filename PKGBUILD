@@ -18,8 +18,10 @@ url="https://www.mesa3d.org/"
 license=('custom')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz
 	https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/6429.patch
-        LICENSE)
+        LICENSE
+        llvm32.native)
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
