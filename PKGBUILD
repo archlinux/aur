@@ -5,12 +5,13 @@
 
 pkgname=displaylink
 pkgver=5.3.1.34
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux driver for DL-6xxx, DL-5xxx, DL-41xx and DL-3x00"
 arch=('i686' 'x86_64')
 url="http://www.displaylink.com/downloads/ubuntu.php"
 license=('custom' 'GPL2' 'LGPL2.1')
-depends=('evdi=1.7.0' 'libusb>=1.0.0')
+depends=('evdi>=1.7.0' 'evdi<1.8.0'
+         'libusb>=1.0.0')
 makedepends=('grep' 'gawk' 'wget')
 install=
 changelog='DisplayLink USB Graphics Software for Ubuntu 5.3.1-Release Notes.txt'
