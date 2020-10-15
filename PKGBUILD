@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
-pkgname=('lib32-mesa-glxdelay' 'lib32-vulkan-mesa-layers-glxdelay' 'lib32-opencl-mesa-glxdelay' 'lib32-vulkan-intel-glxdelay' 'lib32-vulkan-radeon-glxdelay' 'lib32-libva-mesa-driver-glxdelay' 'lib32-mesa-vdpau-glxdelay')
+pkgname=('lib32-mesa-glxdelay')
 pkgdesc="An open-source implementation of the OpenGL specification (32-bit)"
 pkgver=20.2.1
 pkgrel=1
@@ -95,81 +95,6 @@ _install() {
     install -m755 -d "${dir}"
     mv -v "${src}" "${dir}/"
   done
-}
-
-package_lib32-vulkan-mesa-layers-glxdelay() {
-  pkgdesc="Mesa's Vulkan layers (32-bit)"
-  depends=('lib32-libdrm' 'lib32-libxcb' 'lib32-wayland' 'vulkan-mesa-layers')
-  conflicts=('lib32-vulkan-mesa-layer')
-  replaces=('lib32-vulkan-mesa-layer')
-
-  rm -rv fakeinstall/usr/share/vulkan/explicit_layer.d
-  _install fakeinstall/usr/lib32/libVkLayer_MESA_overlay.so
-  rm -rv fakeinstall/usr/bin/mesa-overlay-control.py
-
-  rm -rv fakeinstall/usr/share/vulkan/implicit_layer.d
-  _install fakeinstall/usr/lib32/libVkLayer_MESA_device_select.so
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
-package_lib32-opencl-mesa-glxdelay() {
-  pkgdesc="OpenCL support for AMD/ATI Radeon mesa drivers (32-bit)"
-  depends=('lib32-expat' 'lib32-libdrm' 'lib32-libelf' 'lib32-clang' 'lib32-zstd' 'opencl-mesa')
-  optdepends=('opencl-headers: headers necessary for OpenCL development')
-  provides=('lib32-opencl-driver')
-
-  rm -rv fakeinstall/etc/OpenCL
-  _install fakeinstall/usr/lib32/lib*OpenCL*
-  _install fakeinstall/usr/lib32/gallium-pipe
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
-package_lib32-vulkan-intel-glxdelay() {
-  pkgdesc="Intel's Vulkan mesa driver (32-bit)"
-  depends=('lib32-wayland' 'lib32-libx11' 'lib32-libxshmfence' 'lib32-libdrm' 'lib32-zstd')
-  optdepends=('lib32-vulkan-mesa-layers: additional vulkan layers')
-  provides=('lib32-vulkan-driver')
-
-  _install fakeinstall/usr/share/vulkan/icd.d/intel_icd*.json
-  _install fakeinstall/usr/lib32/libvulkan_intel.so
-  rm -rv fakeinstall/usr/include/vulkan/vulkan_intel.h
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
-package_lib32-vulkan-radeon-glxdelay() {
-  pkgdesc="Radeon's Vulkan mesa driver (32-bit)"
-  depends=('lib32-wayland' 'lib32-libx11' 'lib32-libxshmfence' 'lib32-libelf' 'lib32-libdrm'
-           'lib32-zstd' 'lib32-llvm-libs')
-  optdepends=('lib32-vulkan-mesa-layers: additional vulkan layers')
-  provides=('lib32-vulkan-driver')
-
-  _install fakeinstall/usr/share/vulkan/icd.d/radeon_icd*.json
-  _install fakeinstall/usr/lib32/libvulkan_radeon.so
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
-package_lib32-libva-mesa-driver-glxdelay() {
-  pkgdesc="VA-API implementation for gallium (32-bit)"
-  depends=('lib32-libdrm' 'lib32-libx11' 'lib32-llvm-libs' 'lib32-expat' 'lib32-libelf'
-           'lib32-libxshmfence' 'lib32-zstd')
-
-  _install fakeinstall/usr/lib32/dri/*_drv_video.so
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-}
-
-package_lib32-mesa-vdpau-glxdelay() {
-  pkgdesc="Mesa VDPAU drivers (32-bit)"
-  depends=('lib32-libdrm' 'lib32-libx11' 'lib32-llvm-libs' 'lib32-expat' 'lib32-libelf'
-           'lib32-libxshmfence' 'lib32-zstd')
-
-  _install fakeinstall/usr/lib32/vdpau
-
-  install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
 package_lib32-mesa-glxdelay() {
