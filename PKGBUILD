@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <m@mzz.pub>
 
 pkgname=v2raya
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports V2Ray, SS, SSR, Trojan and Pingtunnel protocols"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/mzz2017/v2rayA"
 license=('GPL')
 depends=('glibc' 'v2ray')
-makedepends=('go>=2:1.12.3-1' 'nodejs>=14' 'yarn')
+makedepends=('go>=2:1.12.3-1' 'nodejs>=14' 'yarn' 'python2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mzz2017/v2rayA/archive/v$pkgver.tar.gz")
 sha512sums=('SKIP')
 
