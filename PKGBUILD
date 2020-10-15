@@ -26,8 +26,8 @@ conflicts=('mesa' 'mesa-git' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulka
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
-	'mesa::git+https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/6429.diff'
-                'LICENSE')
+	'git+https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/6429.diff'
+        'LICENSE')
 md5sums=('SKIP'
          'SKIP')
 sha512sums=('SKIP'
