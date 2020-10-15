@@ -1,0 +1,7 @@
+src
+pkg
+LICENSE
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.tar.gz
+*.log
