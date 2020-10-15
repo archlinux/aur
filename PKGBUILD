@@ -51,7 +51,7 @@ build () {
     -D vulkan-device-select-layer=true \
     -D swr-arches=avx,avx2 \
     -D dri3=true \
-    -D egl=enabled \
+    -D egl=true \
     -D gallium-extra-hud=true \
     -D gallium-nine=true \
     -D gallium-omx=bellagio \
