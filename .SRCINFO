@@ -1,6 +1,6 @@
 pkgbase = bubblejail
 	pkgdesc = Bubblewrap based sandboxing utility
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/igo95862/bubblejail
 	arch = any
@@ -13,12 +13,15 @@ pkgbase = bubblejail
 	depends = xdg-dbus-proxy
 	depends = hicolor-icon-theme
 	depends = python-pyqt5
+	depends = desktop-file-utils
 	optdepends = bash-completion: completions for bash shell
 	optdepends = fish: completions for fish shell
 	conflicts = bubblejail-git
-	source = https://github.com/igo95862/bubblejail/releases/download/0.3.1/bubblejail-0.3.1.tar.gz
-	source = https://github.com/igo95862/bubblejail/releases/download/0.3.1/bubblejail-0.3.1.tar.gz.sig
+	source = https://github.com/igo95862/bubblejail/releases/download/0.4.0/bubblejail-0.4.0.tar.gz
+	source = https://github.com/igo95862/bubblejail/releases/download/0.4.0/bubblejail-0.4.0.tar.gz.sig
 	validpgpkeys = 5A3D06576A6A67443DFBE856F1A55E62951B2143
+	sha512sums = 29b9d2bb15f4c6d9ed8afd21e59ce5066a0096f51b01383b65b535f7fb8a89650572359d6a593912eee1863dbfec15f738e7fbfc28a6dfc72d7eb6aeb2db5055
+	sha512sums = SKIP
 
 pkgname = bubblejail
 
