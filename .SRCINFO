@@ -1,8 +1,8 @@
 pkgbase = xfce4-taskbar-plugin-git
 	pkgdesc = A simple Taskbar for XFCE4
-	pkgver = 20200409
+	pkgver = 20201015
 	pkgrel = 1
-	url = https://github.com/mirkobrombin/xfce4-taskbar-plugin
+	url = https://git.mirko.pm/brombinmirko/xfce4-taskbar-plugin.git
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = xfce4-taskbar-plugin-git
 	depends = libxfce4ui
 	depends = gtk3
 	depends = cairo
-	source = git://github.com/mirkobrombin/xfce4-taskbar-plugin
+	source = git+https://git.mirko.pm/brombinmirko/xfce4-taskbar-plugin
 	sha512sums = SKIP
 
 pkgname = xfce4-taskbar-plugin-git
