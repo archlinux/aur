@@ -2,3 +2,4 @@
 
 exec chpst -u jackett /usr/lib/jackett/jackett --NoRestart --NoUpdates --DataFolder /var/lib/jackett
 
+
