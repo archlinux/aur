@@ -1,0 +1,14 @@
+pkgbase = python-weblate-language-data
+	pkgdesc = Language definitions used by Weblate
+	pkgver = 2020.10
+	pkgrel = 1
+	url = https://github.com/WeblateOrg/language-data
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/WeblateOrg/language-data/archive/2020.10.tar.gz
+	sha256sums = 486dfef779764ea63c88b82f72f9ebfc85725dda7320c73568a9c1ff07326ea3
+
+pkgname = python-weblate-language-data
+
