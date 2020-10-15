@@ -23,9 +23,9 @@ case "$CARCH" in
         source=("https://cdn.azul.com/zulu-embedded/bin/zulu${_build}-ca-jdk${pkgver}-c2-linux_${_arch}.tar.gz")
         ;;
     aarch64) _arch='aarch64'
-        _build=13.33.38
-        pkgver=13.0.4
-        sha256sums=('7ee9c5452e4af1cd48abd9aff25f243feee9fba90ce86fc555570693ea4bd42c')
+        _build=15.27.17
+        pkgver=15.0.0
+        sha256sums=('AADB8303B975B757049FACE3086C57147C0089F83D7C065F117E8D664B41314B')
         provides=("java-environment=13" "java-runtime=13")
         ;;
     i686) _arch='i686'
