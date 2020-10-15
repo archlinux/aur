@@ -35,7 +35,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('BSD' 'GPL' 'custom')
-makedepends=('python' 'ruby' 'git' 'ninja' 'clang')
+makedepends=('python' 'ruby' 'git' 'ninja' 'clang' 'gyp')
 #source=("${_svndir}/${_svnmod}::svn+${_svntrunk}"
 source=(
   mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
@@ -77,7 +77,6 @@ prepare() {
   patch -Np1 -i ${srcdir}/mozc.patch
   patch -Np1 -i ${srcdir}/Change-from-python2-code-to-python3.patch
   patch -Np1 -i ${srcdir}/Add_support_new_Japanese_era.patch
-  patch -Np1 -i ${srcdir}/usage_dict.txt.patch
   
   # Add UT dictionary
   cat ${srcdir}/mozcdic-ut-${_utdicdate}.${_utdicver}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
