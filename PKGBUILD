@@ -25,7 +25,7 @@ provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau')
 url="https://www.mesa3d.org"
 license=('custom')
-source=('https://github.com/mesa3d/mesa/archive/mesa-20.1.8.tar.gz'
+source=('https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}'
 	'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/6429.patch'
         'LICENSE')
 md5sums=('SKIP'
@@ -35,70 +35,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP')
 
-# NINJAFLAGS is an env var used to pass commandline options to ninja
-# NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
-
-# MESA_WHICH_LLVM is an environment variable that determines which llvm package tree is used to built mesa-git against.
-# Adding a line to ~/.bashrc  that sets this value is the simplest way to ensure a specific choice.
-#
-# NOTE: Aur helpers don't handle this method well, check the sticky comments on mesa-git aur page .
-#
-# 1: llvm-minimal-git (aur) preferred value
-# 2: AUR llvm-git
-# 3: llvm-git from LordHeavy unofficial repo 
-# 4  llvm (stable from extra) Default value
-# 
-
-if [[ ! $MESA_WHICH_LLVM ]] ; then
-    MESA_WHICH_LLVM=4
-fi
-
-case $MESA_WHICH_LLVM in
-    1)
-        # aur llvm-minimal-git
-        makedepends+=('llvm-minimal-git')
-        depends+=('llvm-libs-minimal-git')
-        optdepends+=('llvm-minimal-git: opencl')
-        ;;
-    2)
-        # aur llvm-git
-        # depending on aur-llvm-* to avoid mixup with LH llvm-git
-        makedepends+=('aur-llvm-git')
-        depends+=('aur-llvm-libs-git')
-        optdepends+=('aur-llvm-git: opencl')
-        ;;
-    3)
-        # mesa-git/llvm-git (lordheavy unofficial repo)
-        makedepends+=('llvm-git' 'clang-git')
-        depends+=('llvm-libs-git')
-        optdepends+=('clang-git: opencl' 'compiler-rt: opencl')
-        ;;
-    4)
-        # extra/llvm
-        makedepends+=(llvm=10.0.1 clang=10.0.1)
-        depends+=(llvm-libs=10.0.1)
-        optdepends+=('clang: opencl' 'compiler-rt: opencl')
-        ;;
-    *)
-esac
-        
-        
-        
-        
-        
-pkgver() {
-    cd mesa-$pkgver
-    read -r _ver <VERSION
-    echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
 prepare() {
-    # although removing _build folder in build() function feels more natural,
-    # that interferes with the spirit of makepkg --noextract
-    if [  -d _build ]; then
-        rm -rf _build
-    fi
-
     cd mesa-$pkgver
 
     patch -Np1 -i ../6429.patch
@@ -106,7 +43,7 @@ prepare() {
 }
 
 build () {
-    meson setup mesa-$pkgver _build \
+    arch-meson mesa-$pkgver build \
        -D b_ndebug=true \
        -D b_lto=true \
        -D buildtype=plain \

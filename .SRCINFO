@@ -19,8 +19,6 @@ pkgbase = mesa-glxdelay
 	makedepends = meson
 	makedepends = ninja
 	makedepends = glslang
-	makedepends = llvm=10.0.1
-	makedepends = clang=10.0.1
 	depends = libdrm
 	depends = libxxf86vm
 	depends = libxdamage
@@ -35,10 +33,7 @@ pkgbase = mesa-glxdelay
 	depends = vulkan-icd-loader
 	depends = zstd
 	depends = expat
-	depends = llvm-libs=10.0.1
 	optdepends = opengl-man-pages: for the OpenGL API man pages
-	optdepends = clang: opencl
-	optdepends = compiler-rt: opencl
 	provides = mesa
 	provides = opencl-mesa
 	provides = vulkan-intel
@@ -56,7 +51,7 @@ pkgbase = mesa-glxdelay
 	conflicts = vulkan-mesa-layer
 	conflicts = libva-mesa-driver
 	conflicts = mesa-vdpau
-	source = https://github.com/mesa3d/mesa/archive/mesa-20.1.8.tar.gz
+	source = https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
 	source = https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/6429.patch
 	source = LICENSE
 	md5sums = SKIP
