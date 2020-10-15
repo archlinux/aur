@@ -4,7 +4,7 @@ pkgname=certstrap-git
 _pkgname="certstrap"
 
 pkgver=v1.2.0.r32.g7cda9d4
-pkgrel=2
+pkgrel=3
 
 pkgdesc="Tools to bootstrap CAs, certificate requests, and signed certificates."
 arch=('x86_64')
@@ -12,6 +12,7 @@ url="https://github.com/square/certstrap"
 license=('Apache')
 
 depends=('go>=1.13')
+makedepends=('git')
 
 options=('!emptydirs')
 
