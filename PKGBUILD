@@ -4,7 +4,7 @@
 
 _target=riscv64-linux-gnu
 pkgname=$_target-binutils
-pkgver=2.35
+pkgver=2.35.1
 pkgrel=1
 pkgdesc='Assemble and manipulate binary and object files for 32-bit and 64-bit RISC-V'
 arch=(x86_64)
@@ -13,10 +13,10 @@ license=(GPL)
 groups=(risc-v)
 makedepends=(setconf)
 source=("https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz")
-sha512sums=('9f222e4ab6720036402d03904fb11b73ab87714b85cd84997f7d357f405c7e10581d70202f9165a1ee0c70538632db27ecc9dfe627dddb1e6bc7edb1537cf786')
+sha512sums=('94ff72708403413b70b247f3af4099ebaa882b6659249869f1ed9941a0f1912e313f08357d470f9fd2359e7f5e5b0eb86285e5eaf883fa8187789d6b1bd304eb')
 
 prepare() {
-  setconf binutils-$pkgver/libiberty/configure ac_cpp="'\$CPP \$CPPFLAGS -O2'"
+  setconf binutils-$pkgver/libiberty/configure ac_cpp "'\$CPP \$CPPFLAGS -O2'"
 }
 
 build() {
@@ -24,18 +24,18 @@ build() {
 
   unset CPPFLAGS
   ./configure \
-    --target=$_target \
+    --disable-nls \
+    --enable-deterministic-archives \
+    --enable-gold \
+    --enable-ld=default \
+    --enable-multilib \
+    --enable-plugins \
     --prefix=/usr \
-    --with-sysroot=/usr/$_target \
+    --target=$_target \
     --with-gnu-as \
     --with-gnu-ld \
-    --with-system-zlib \
-    --disable-nls \
-    --enable-multilib \
-    --enable-ld=default \
-    --enable-gold \
-    --enable-plugins \
-    --enable-deterministic-archives
+    --with-sysroot=/usr/$_target \
+    --with-system-zlib
   make
 }
 
@@ -53,4 +53,3 @@ package() {
 }
 
 # getver: gnu.org/software/binutils
-# vim: ts=2 sw=2 et:
