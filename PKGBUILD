@@ -2,7 +2,7 @@
 
 pkgname=etebase
 _pkgname=${pkgname}
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Etebase C library"
 arch=(x86_64)
