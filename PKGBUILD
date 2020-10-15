@@ -1,8 +1,8 @@
 #Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 
 pkgname=cheat-bin
-pkgver=4.0.3
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="cheat allows you to create and view interactive cheatsheets on the command-line"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 conflicts=('cheat')
@@ -14,11 +14,11 @@ source_armv6h=("$pkgname-$pkgver.gz::https://github.com/cheat/cheat/releases/dow
 source_armv7h=("$pkgname-$pkgver.gz::https://github.com/cheat/cheat/releases/download/$pkgver/cheat-linux-arm7.gz")
 url="https://github.com/cheat/cheat"
 license=("MIT")
-sha256sums_i686=("48fdc4eff4d89a4e50cebb7e38af487558b43f1b6016ea9e993e80a70e564181")
-sha256sums_x86_64=("1a167a32cbbac8bab2da9a87d72284ee3b6382b84edf6db3e00d49ce6c762ed0")
-sha256sums_armv5h=("64d0b25055fe0f0ae73ecaa7275316e6496eaddb42b6a08b2288690c68905ced")
-sha256sums_armv6h=("109bf8a576cc42b73ee70430cd943c9fa617e06326b5d2f1380704d704be985b")
-sha256sums_armv7h=("beb53680a400c55479a72222c91b5c0cf55228528d558744a778e36de449c9a6")
+sha256sums_i686=("5b10628132dd4b10deaf64355863938263a04a3dda3efe80feb97306fa0c1f07")
+sha256sums_x86_64=("7c51c1296601ef94a5df9471c29383fbf76ac20d16deee5c0489a2af386fe008")
+sha256sums_armv5h=("f2e667368ae6f343d76008913df7dcdb645528eb3f51842d1a5c63d65ce5b029")
+sha256sums_armv6h=("24c2a96f6043b003a81cf2dd5b01b5805afc21c1c8f4d645b14b0ff6b06f9e4e")
+sha256sums_armv7h=("8e121e39d55183b81368fc96991295c90cc38229ceb8dc2db8f7ff1840eddfd8")
 
 package() {
   # Unpack, flag as executable and move to the right directory
