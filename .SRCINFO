@@ -1,6 +1,6 @@
 pkgbase = victor3d-skel-git
 	pkgdesc = Arch Linux configs for installer script
-	pkgver = r124.d74455a6
+	pkgver = r125.b7f273d9
 	pkgrel = 1
 	url = https://github.com/victor3dptz/arch-install
 	arch = any

@@ -1,6 +1,6 @@
 # Maintainer: Victor Perevozchikov webmaster@victor3d.com.br
 pkgname=victor3d-skel-git
-pkgver=r124.d74455a6
+pkgver=r125.b7f273d9
 pkgrel=1
 pkgdesc='Arch Linux configs for installer script'
 arch=('any')
