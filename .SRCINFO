@@ -1,0 +1,17 @@
+pkgbase = bpytop-git
+	pkgdesc = Resource monitor that shows usage and stats for processor, memory, disks, network and processes
+	pkgver = r226.adee413
+	pkgrel = 1
+	url = https://github.com/aristocratos/bpytop
+	arch = any
+	license = APACHE
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-psutil
+	provides = bpytop
+	conflicts = bpytop
+	source = bpytop::git+https://github.com/aristocratos/bpytop.git
+	sha256sums = SKIP
+
+pkgname = bpytop-git
+
