@@ -12,7 +12,7 @@
 
 pkgname=mesa-glxdelay-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=20.3.0_devel.127495.2da1178bf3e
+pkgver=20.1.8
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
