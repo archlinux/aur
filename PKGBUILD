@@ -28,13 +28,14 @@ build() {
 }
 
 check() {
+	cd "$_name-$pkgver/build/lib"
 	# Test excludes:
 	#   _tf: Requires tensorflow < 2, a large dependency
 	#   _theano: Requires theano, a large dependency
 	#   test_hash: Python hashes are not reproducible...
 	#   TestBox::test_invalid_env: Tests gym.Box.__init__, and gym's error
 	#       seems to have changed from what they expected.
-	pytest "$_name-$pkgver/tests" \
+	python -m pytest "$srcdir/$_name-$pkgver/tests" \
 		-k 'not _tf and not _theano and not test_hash and not test_invalid_env'
 }
 
