@@ -26,18 +26,4 @@ post_install() {
     echo
     echo "   sudo -u http /usr/bin/zmeventnotification.pl"
     echo
-    echo "4) -------------------------- EdgeTPU note ----------------------------"
-    echo
-    echo "   Note that while Coral Edge TPU support has been added, the expectation"
-    echo "   is that you have properly followed the instructions at:"
-    echo
-    echo "   https://coral.ai/docs/accelerator/get-started/" 
-    echo
-    echo "   If you don't, things will break. Further, you also need to make sure" 
-    echo "   your web user (Arch default is 'http') has access to the Coral device."
-    echo
-}
-
-post_upgrade() {
-    post_install
 }

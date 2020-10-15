@@ -1,7 +1,7 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 
 pkgname=zmeventnotification
-pkgver=6.0.1
+pkgver=6.0.2
 pkgrel=1
 pkgdesc='A machine learning powered, secure websocket & MQTT based event notification server for ZoneMinder'
 arch=('any')
