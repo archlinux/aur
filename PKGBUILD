@@ -54,7 +54,7 @@ optdepends=('wayland-protocols: xwayland support'
 	    'egl-wayland: xwayland support')
 
 pkgver() {
-  cd xserver-$pkgver
+  cd xorg-server-$pkgver
   # cutting off 'xorg.server.' prefix that presents in the git tag
   git describe --long --tags| sed 's/^xorg.server.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -68,7 +68,7 @@ build() {
   export LDFLAGS=${LDFLAGS/,-z,now}
 
 
-  arch-meson xserver-$pkgver build \
+  arch-meson xorg-server-$pkgver build \
     -D os_vendor="Arch Linux" \
     -D ipv6=false \
     -D xcsecurity=true \
