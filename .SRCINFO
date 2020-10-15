@@ -15,7 +15,7 @@ pkgbase = etesync-dav
 	replaces = python-radicale-storage-etesync
 	source = https://pypi.org/packages/source/e/etesync-dav/etesync-dav-0.30.0.tar.gz
 	source = etesync-dav.service
-	sha512sums = 9d4e7034909798877881eba7c247c24f5f0cd2822d0769d9a814640411cbd6686b527cb294c191b2d3a7aec6ad432b9ef0607fd74163f696378ce76a06202759
+	sha512sums = 499ae506b588f0926fa2bec0aed72f7af5fbda7c27f9202f1ba1265bf6824313f7482000ebd5e1fb5b0db30c06e7fdb9819d80de8224ddb87efc7ad59bd6f954
 	sha512sums = SKIP
 
 pkgname = etesync-dav
