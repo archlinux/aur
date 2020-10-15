@@ -1,23 +1,21 @@
 pkgbase = ipython-ipyparallel
 	pkgdesc = Interactive Parallel Computing in Python
-	pkgver = 6.2.5
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://github.com/ipython/ipyparallel
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	optdepends = openmpi: to use the MPI Launchers in ipcluster command
-	source = https://github.com/ipython/ipyparallel/archive/6.2.5.tar.gz
-	sha256sums = f6de54a29f7beb97872aa49dfa606dea5f3ed20d2433e3a7200ac2ea9b2a4388
-
-pkgname = ipython-ipyparallel
 	depends = ipython
 	depends = python-setuptools
+	depends = python-jupyter_client
+	depends = python-tornado
+	depends = python-decorator
+	optdepends = openmpi: to use the MPI Launchers in ipcluster command
 	conflicts = ipython2-ipyparallel
+	replaces = ipython-ipyparallel
+	source = https://files.pythonhosted.org/packages/source/i/ipyparallel/ipyparallel-6.3.0.tar.gz
+	sha256sums = 0a97b276c62db633e9e97a816282bdd166f9df74e28204f0c8fa54b71944cfdc
 
-pkgname = ipython2-ipyparallel
-	depends = ipython2
-	depends = python2-setuptools
-	conflicts = ipython-ipyparallel
+pkgname = python-ipyparallel
 
