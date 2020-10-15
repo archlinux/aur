@@ -7,7 +7,8 @@ pkgdesc='unilib, the ANSI C support library'
 arch=('i686' 'x86_64')
 url="https://github.com/aquefir/$pkgname"
 license=('BSD')
-depends=('slick>=1.1.0')
+depends=()
+makedepends=('slick>=1.1.0')
 provides=("$pkgname")
 conflicts=("$pkgname")
 _symver=1.1.0

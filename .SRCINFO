@@ -6,7 +6,7 @@ pkgbase = unilib
 	arch = i686
 	arch = x86_64
 	license = BSD
-	depends = slick>=1.1.0
+	makedepends = slick>=1.1.0
 	provides = unilib
 	conflicts = unilib
 	source = https://github.com/aquefir/unilib/archive/v1.1.0-1.2.0.tar.gz
