@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-unilib
+	pkgdesc = unilib, the ANSI C support library (MinGW-W64)
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/aquefir/{mingw-w64-unilib#mingw-w64-}
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	provides = mingw-w64-unilib
+	conflicts = mingw-w64-unilib
+	options = !libtool
+	options = !buildflags
+	source = https://github.com/aquefir/unilib/archive/v1.1.0-1.2.1.tar.gz
+	sha1sums = 2f95b63cd63161bcfb11bd5e238978ad4ff02c09
+
+pkgname = mingw-w64-unilib
+
