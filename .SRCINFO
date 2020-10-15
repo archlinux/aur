@@ -1,6 +1,6 @@
 pkgbase = futhark-bin
 	pkgdesc = A data-parallel functional programming language.
-	pkgver = 0.18.1
+	pkgver = 0.18.3
 	pkgrel = 1
 	url = https://futhark-lang.org/
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = futhark-bin
 	optdepends = python-pyopencl: PyOpenCL backend
 	provides = futhark
 	conflicts = futhark
-	source = https://github.com/diku-dk/futhark/releases/download/v0.18.1/futhark-0.18.1-linux-x86_64.tar.xz
-	source = https://raw.githubusercontent.com/diku-dk/futhark/v0.18.1/LICENSE
-	sha1sums = be297e7abf75167a0bb2091f669617073e02ce97
+	source = https://github.com/diku-dk/futhark/releases/download/v0.18.3/futhark-0.18.3-linux-x86_64.tar.xz
+	source = https://raw.githubusercontent.com/diku-dk/futhark/v0.18.3/LICENSE
+	sha1sums = 80c31b9553313b77d97caae732283b397b94c02b
 	sha1sums = 2dfe6c31d88ac99b9cbc9328985d41c0cbcc06b7
-	sha256sums = ed90615c48d2b44129a5febb52a7b31b8d0e97e17bd4f8ab73396d9b59205b8f
+	sha256sums = f1ac789b87a63ca0cfdfd93bae23651c1afb545e7a34a4e6fe48914a05aed3a6
 	sha256sums = 7475fca879af2d0c57e9ef09a1228c71096f076aa4b6cd23e60a1f66bf213b91
-	sha512sums = f6fe4dbf81d885b8c59b0735468c8cd2050d8b1f4471d24ced92569be0e1f10507f2a58493ebcde821a1a2e7f33c580c43ca487f7dd083e0060728444fe77719
+	sha512sums = 9e16f518a1b7f6aa09f3480981fe7c2592bc319c0bc4a582545dbff1bf16e4941a8515ef55431e8b9db404bf73849739383007d1875c3f6d495bea3a9a2a2dbd
 	sha512sums = 735147f8c5feb38e20200904a78097b802e3974a7780691ab00eb4f000acb3f7d77d2f4a92cfe1c1c42303b41986253533bc05ee60bb917a142e3c58f51c34d3
 
 pkgname = futhark-bin
