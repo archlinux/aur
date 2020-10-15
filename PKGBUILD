@@ -2,8 +2,13 @@
 # Contributor: dumblob <dumblob@gmail.com>
 
 # FIXME
-#   solve TeamViewer issue (XAUTHORITY support didn't help)
+#   solve TeamViewer issue (TV checks for loginctl session type)
 #     https://aur.archlinux.org/packages/teamviewer/#pinned-640953
+#     => change session type to x11/wayland (possible since systemd 246)
+#         https://github.com/swaywm/wlroots/pull/2304/files
+#       note, activate -> takecontrol -> settype somehow didn't work (
+#           "you must be owner of the terminal to take control")
+#   remember last used session (use some file/DB which other DMs use)
 #   make DPI user-configurable (is there any quasi-standardized
 #       file/DB with such user-preference to aid heuristics?)
 
@@ -69,6 +74,7 @@ Welcome to  |  __ \  |  \/  |
     read -r x
     case "$x" in
       a)
+        # not needed for wlroots >= 0.12, but it doesn't hurt
         export XDG_SESSION_TYPE=wayland
         exec sway ;;
 
