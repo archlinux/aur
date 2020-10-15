@@ -1,7 +1,7 @@
 # Maintainer: Jaime Martínez Rincón <jaime(at)jamezrin(dot)name>
 
 pkgname=bit-git
-pkgver=0.6.0.r3.gbaa70c6
+pkgver=0.6.5.r1.g2a3262e
 pkgrel=1
 pkgdesc="Bit is a modern Git CLI"
 arch=("x86_64")
