@@ -6,7 +6,6 @@ pkgbase = bpytop-git
 	arch = any
 	license = APACHE
 	makedepends = git
-	makedepends = python-setuptools
 	depends = python-psutil
 	provides = bpytop
 	conflicts = bpytop
