@@ -1,0 +1,14 @@
+pkgbase = unimap
+	pkgdesc = Scan only once by IP address and reduce scan times with Nmap for large amounts of data
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Edu4rdSHL/unimap
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = nmap
+	source = unimap-0.2.0.tar.gz::https://github.com/Edu4rdSHL/unimap/archive/0.2.0.tar.gz
+	sha512sums = 0ffd1d119c73f2ec30627279ce922a8ad47bd6c4fd7f37c31939e2a19933b30928cce3c01161d7c06f0bbb67ca8ae539ded088426fb1ab6edb8a3bacd34863c9
+
+pkgname = unimap
+
