@@ -1,0 +1,17 @@
+pkgbase = convertall-git
+	pkgdesc = Flexible unit converter
+	pkgver = 0.8.0.r0.g95ab355
+	pkgrel = 1
+	url = https://convertall.bellz.org
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = python-pyqt5
+	provides = convertall
+	conflicts = convertall
+	source = convertall::git+https://github.com/doug-101/ConvertAll.git
+	sha256sums = SKIP
+
+pkgname = convertall-git
+
