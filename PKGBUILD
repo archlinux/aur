@@ -1,15 +1,14 @@
 # Maintainer: nephitejnf <nephitejnf@gmail.com>
 pkgname=lightcord-bin
 pkgver=v0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple - customizable - Discord Client"
 arch=("x86_64")
 url="https://github.com/Lightcord/Lightcord"
-provides=('discord')
 license=('MIT')
 depends=()
 makedepends=()
-source=("$pkgname-$pkgver.zip::https://lightcord.deroku.xyz/api/v1/gh/releases/Lightcord/Lightcord/$pkgver/lightcord-linux-x64.zip"
+source=("$pkgname-$pkgver.zip::https://lightcord.org/api/v1/gh/releases/Lightcord/Lightcord/$pkgver/lightcord-linux-x64.zip"
         "Lightcord.desktop"
         "https://raw.githubusercontent.com/Lightcord/LightcordLogos/master/lightcord/lightcord.png")
 md5sums=("0e857820865cc5d7e7daf9090b8dbc8f"
