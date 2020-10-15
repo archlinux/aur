@@ -1,6 +1,6 @@
 # Maintainer: Linus Probert <linus.probert@gmail.com>
 pkgname=blightmud-git
-pkgver=2.1.0.290.g53a545c
+pkgver=2.1.0.294.ga1fe68c
 pkgrel=1
 epoch=
 pkgdesc="A terminal mud client written in rust"
