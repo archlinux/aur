@@ -9,11 +9,16 @@ _update()
 	cd ..
 }
 
-_kicadVersion()
+_kicadRawVersion()
 {
 	cd kicad
-	git describe --tag | sed 's/-/_/g'
+	git describe --tag
 	cd ..
+}
+
+_kicadVersion()
+{
+	_kicadRawVersion | sed 's/-/_/g'
 }
 
 _kicadHash()
@@ -46,3 +51,8 @@ _updateSRCINFO()
 _update
 _buildPKGBUILD
 _updateSRCINFO
+version=`_kicadRawVersion`
+
+git add PKGBUILD .SRCINFO
+git commit -m "Bump to KiCAD $version"
+echo $version
