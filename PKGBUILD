@@ -1,6 +1,6 @@
 # Maintainer: Tim Park<timpark@posteo.net>
 pkgname=dvd-logo-git
-pkgver=1.0
+pkgver=1.0.r1.eab3fd8
 pkgrel=1
 pkgdesc="Watch the DVD logo bounce around in your terminal"
 arch=(x86_64)
@@ -13,7 +13,7 @@ md5sums=("SKIP")
 
 pkgver() {
   cd dvd-logo
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
