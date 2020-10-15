@@ -76,6 +76,20 @@ build () {
 
   ninja -C build
   meson compile -C build
+
+  # fake installation to be seperated into packages
+  # outside of fakeroot but mesa doesn't need to chown/mod
+  DESTDIR="${srcdir}/fakeinstall" meson install -C build
+}
+
+_install() {
+  local src f dir
+  for src; do
+    f="${src#fakeinstall/}"
+    dir="${pkgdir}/${f%/*}"
+    install -m755 -d "${dir}"
+    mv -v "${src}" "${dir}/"
+  done
 }
 
 package_lib32-mesa-glxdelay() {
@@ -89,8 +103,34 @@ package_lib32-mesa-glxdelay() {
   conflicts=('lib32-mesa-libgl')
   replaces=('lib32-mesa-libgl')
 
+  rm -rv fakeinstall/usr/share/drirc.d/00-mesa-defaults.conf
+  rm -rv fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json
+
+  # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast, swr
+  _install fakeinstall/usr/lib32/dri/*_dri.so
+
+  #_install fakeinstall/usr/lib32/bellagio
+  _install fakeinstall/usr/lib32/d3d
+  _install fakeinstall/usr/lib32/lib{gbm,glapi}.so*
+  _install fakeinstall/usr/lib32/libOSMesa.so*
+  _install fakeinstall/usr/lib32/libxatracker.so*
+  #_install fakeinstall/usr/lib32/libswrAVX*.so*
+
+  # in vulkan-headers
+  rm -rv fakeinstall/usr/include/vulkan
+
+  rm -rv fakeinstall/usr/include
+  _install fakeinstall/usr/lib32/pkgconfig
+
+  # libglvnd support
+  _install fakeinstall/usr/lib32/libGLX_mesa.so*
+  _install fakeinstall/usr/lib32/libEGL_mesa.so*
+
   # indirect rendering
   ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
+
+  # make sure there are no files left to install
+  find fakeinstall -depth -print0 | xargs -0 rmdir
 
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
