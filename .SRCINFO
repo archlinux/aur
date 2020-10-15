@@ -9,7 +9,7 @@ pkgbase = grit
 	makedepends = git
 	provides = grit
 	conflicts = grit
-	source = https://github.com/devkitPro/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2
+	source = https://github.com/devkitPro/grit/releases/download/v0.8.16/grit-0.8.16.tar.bz2
 	sha1sums = f099d711e8e8d61e90078050099e61a9f691d046
 
 pkgname = grit
