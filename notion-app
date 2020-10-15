@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Launch notion.so
+# Launch notion electron app
 
 if [[ ! -e "/opt/notion-app" ]]; then
   echo "Error: /opt/notion not found"
@@ -8,5 +8,5 @@ if [[ ! -e "/opt/notion-app" ]]; then
 fi
 
 pushd "/opt/notion-app/" >/dev/null || exit 1
-electron6 app.asar
+electron6 app.asar $@
 popd >/dev/null || exit 1

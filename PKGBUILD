@@ -5,7 +5,7 @@
 
 pkgname=notion-app
 pkgver=2.0.8
-pkgrel=3.3
+pkgrel=4
 epoch=1
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
@@ -13,13 +13,14 @@ url="https://www.notion.so/desktop"
 license=('MIT')
 depends=('electron6-bin' 're2' 'gtk3' 'xdg-utils')
 makedepends=('dmg2img' 'p7zip' 'libicns')
+optdepends=('notion-enhancer: enhancements and fixes')
 source=(
         "https://desktop-release.notion-static.com/Notion-"${pkgver}".dmg" 
         'notion-app'
         'notion-app.desktop')
 md5sums=('045d90d0322a82ff349a83725bb5c3b6'
-         'ad3c23bc7d0186e2f622aa4b7310deac'
-         '557f7e0acfb56649f9ce7d9f7f85f7e6')
+         '38431798c3ad8835d0211f7668d5eee4'
+         'dc75abd9b8f3f455a0b8fc0d8d8932b5')
 build() {
   msg "Converting dmg image..."
   mkdir -p "${srcdir}/tmp/build"
