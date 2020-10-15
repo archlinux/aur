@@ -1,0 +1,21 @@
+pkgbase = hdr-plus-git
+	pkgdesc = Burst photography pipeline based on Google’s HDR+
+	pkgver = r212.09890d7
+	pkgrel = 1
+	url = https://github.com/timothybrooks/hdr-plus
+	arch = x86_64
+	license = custom:MIT
+	makedepends = git
+	makedepends = cmake
+	depends = libraw
+	depends = halide
+	provides = hdr-plus
+	source = git+https://github.com/timothybrooks/hdr-plus.git
+	source = fixes.patch
+	source = unneeded-dependencies.patch
+	b2sums = SKIP
+	b2sums = e3bd4e1469685097da68e74bad02bc61671d41461400586168800dcaff395428b8b3b363457ed40d3c1f20626d180d24efac1be4ffe4b90e4d500b2979bb9c90
+	b2sums = 33f1faf4ef2ac7df32e399d212a60b97b9e4099517f69522860262d50889e3bb8c867c359f72992cbeec89524377db9c11abd293e6eba0a4b2c6d341a54d660a
+
+pkgname = hdr-plus-git
+
