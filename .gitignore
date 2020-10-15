@@ -1,0 +1,4 @@
+waypoint-*.zip
+waypoint-*.pkg.tar.zst
+pkg/
+src/
