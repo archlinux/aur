@@ -1,0 +1,16 @@
+pkgbase = grit
+	pkgdesc = Game Raster Image Transmogrifier
+	pkgver = 0.8.16
+	pkgrel = 1
+	url = https://github.com/devkitPro/grit
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = git
+	provides = grit
+	conflicts = grit
+	source = https://github.com/devkitPro/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2
+	sha1sums = f099d711e8e8d61e90078050099e61a9f691d046
+
+pkgname = grit
+
