@@ -37,7 +37,7 @@ build () {
     export CXX="g++ -m32"
     export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
 
-     meson setup mesa build \
+     meson setup mesa-$pkgdir build \
         --native-file llvm32.native \
         -D b_ndebug=true \
         -D b_lto=true \
