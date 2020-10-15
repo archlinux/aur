@@ -1,6 +1,6 @@
 pkgbase = xembed-sni-proxy-git
 	pkgdesc = Convert XEmbed system tray icons to SNI icons
-	pkgver = v5.10.0.r48.g149212e7
+	pkgver = v5.19.90.r124.g85bfb4fbf
 	pkgrel = 1
 	url = https://github.com/KDE/plasma-workspace
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = xembed-sni-proxy-git
 	source = git+https://github.com/KDE/plasma-workspace.git
 	source = cmake.patch
 	sha256sums = SKIP
-	sha256sums = b42393e12c49ec434685ae1c1143dcf462c566cb3b2c1dcea56456c8a21b85e6
+	sha256sums = b34212df6abe797161ea483c51e7dcd63d9ccd95a9dcd486649be5dbdb345ad9
 
 pkgname = xembed-sni-proxy-git
 
