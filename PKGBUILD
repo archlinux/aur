@@ -1,7 +1,7 @@
 # Maintainer    zan <zan@420blaze.it>
 
 pkgname=obs-hevc-vaapi-git
-pkgver=26.0.1.r5.g3486c0b36
+pkgver=26.0.2.r25.g0b24b3ae1
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With VAAPI HEVC support."
 arch=(i686 x86_64)
@@ -24,7 +24,7 @@ source=("$pkgname::git+https://github.com/obsproject/obs-studio.git"
         "git+https://github.com/obsproject/obs-browser.git"
         "hevc-vaapi.diff")
 sha256sums=("SKIP" "SKIP" "SKIP" 
-            "f01073324e2a83f0925bc19902d3ce19835b445820d57ad531eb8f3ebbb53266")
+            "66fed73be753773fb52f98fdb92b37353e0450653125007e8ab694e97983a71b")
 
 pkgver() {
   cd $pkgname

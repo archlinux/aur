@@ -1,15 +1,15 @@
 diff --git a/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c b/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
-index 8b9c0f243..d39291389 100644
+index b9a43e5de..06a04658b 100644
 --- a/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
 +++ b/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
-@@ -547,17 +547,14 @@ static inline int open_output_file(struct ffmpeg_mux *ffm)
+@@ -610,17 +610,14 @@ static inline int open_output_file(struct ffmpeg_mux *ffm)
  	}
  
  	ret = avformat_write_header(ffm->output, &dict);
 +	av_dict_free(&dict);
  	if (ret < 0) {
- 		fprintf(stderr, "Error opening '%s': %s\n", ffm->params.file,
- 			av_err2str(ret));
+ 		fprintf(stderr, "Error opening '%s': %s",
+ 			ffm->params.printable_file.array, av_err2str(ret));
  
 -		av_dict_free(&dict);
 -
@@ -299,10 +299,10 @@ index ee5829678..3475efef7 100644
  
  #endif
 diff --git a/plugins/obs-ffmpeg/obs-ffmpeg.c b/plugins/obs-ffmpeg/obs-ffmpeg.c
-index 38a7c8573..03b270e99 100644
+index 5a9a3e06b..df9e41ba6 100644
 --- a/plugins/obs-ffmpeg/obs-ffmpeg.c
 +++ b/plugins/obs-ffmpeg/obs-ffmpeg.c
-@@ -34,6 +34,7 @@ extern struct obs_encoder_info nvenc_encoder_info;
+@@ -35,6 +35,7 @@ extern struct obs_encoder_info nvenc_encoder_info;
  
  #ifdef LIBAVUTIL_VAAPI_AVAILABLE
  extern struct obs_encoder_info vaapi_encoder_info;
@@ -310,7 +310,7 @@ index 38a7c8573..03b270e99 100644
  #endif
  
  #ifndef __APPLE__
-@@ -208,9 +209,9 @@ finish:
+@@ -209,9 +210,9 @@ finish:
  #endif
  
  #ifdef LIBAVUTIL_VAAPI_AVAILABLE
@@ -322,7 +322,7 @@ index 38a7c8573..03b270e99 100644
  	return !!vaenc;
  }
  #endif
-@@ -250,10 +251,14 @@ bool obs_module_load(void)
+@@ -252,10 +253,14 @@ bool obs_module_load(void)
  		obs_register_encoder(&nvenc_encoder_info);
  	}
  #if !defined(_WIN32) && defined(LIBAVUTIL_VAAPI_AVAILABLE)
