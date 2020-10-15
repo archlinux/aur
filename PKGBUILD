@@ -6,8 +6,8 @@
 
 pkgname=fprintd-libfprint2
 _pkgname=fprintd
-pkgver=1.90.1+91+g4e47222
-pkgrel=2
+pkgver=1.90.1+98+gceb7544
+pkgrel=1
 pkgdesc="D-Bus service to access fingerprint readers"
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/fprint/fprintd"
@@ -19,8 +19,10 @@ conflicts=(fprintd)
 makedepends=(git gtk-doc meson pam)
 checkdepends=(pam_wrapper python-cairo python-dbus python-dbusmock python-gobject)
 groups=(fprint)
-source=("git+https://gitlab.freedesktop.org/libfprint/$_pkgname.git")
-sha256sums=('SKIP')
+source=("git+https://gitlab.freedesktop.org/libfprint/$_pkgname.git"
+        '0001-tests-Skip-a-test-if-virtual-image-driver-is-not-ena.patch')
+sha256sums=('SKIP'
+            '3217fc8eac1aed68039a56380ce78b7efb16e9d0e9a99efccd78d88d57d1999b')
 
 pkgver() {
   cd $_pkgname
@@ -29,6 +31,7 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
+  git am < '../0001-tests-Skip-a-test-if-virtual-image-driver-is-not-ena.patch'
 }
 
 build() {
