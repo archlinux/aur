@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=foreach
-_cranver=1.5.0
+_cranver=1.5.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(Apache2.0)
 depends=('r>=2.5.0' r-iterators)
 optdepends=(r-randomforest r-domc r-doparallel r-testthat r-knitr r-rmarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('973c8ba4da54d5384f89a700cc514b8e')
+sha256sums=('fb5ad69e295618c52b2ac7dff84a0771462870a97345374d43b3de2dc31a68e1')
 
 build() {
   cd "${srcdir}"

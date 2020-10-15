@@ -1,6 +1,6 @@
 pkgbase = r-foreach
 	pkgdesc = Provides Foreach Looping Construct
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=foreach
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = r-foreach
 	optdepends = r-testthat
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/foreach_1.5.0.tar.gz
-	md5sums = 973c8ba4da54d5384f89a700cc514b8e
+	source = https://cran.r-project.org/src/contrib/foreach_1.5.1.tar.gz
+	sha256sums = fb5ad69e295618c52b2ac7dff84a0771462870a97345374d43b3de2dc31a68e1
 
 pkgname = r-foreach
 
