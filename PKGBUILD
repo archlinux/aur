@@ -3,7 +3,7 @@
 
 _pkgname=libertinus
 pkgname="otf-$_pkgname-git"
-pkgver=7.000.r0.g2802fff
+pkgver=7.020.r16.ge809fbe
 pkgrel=1
 pkgdesc='The Libertinus font family, a fork of Linux Libertine and Biolinum with OpenType math'
 arch=('any')
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  fontship make
+  fontship make -- PROJECT=Libertinus static-otf
 }
 
 package() {

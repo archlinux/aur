@@ -1,6 +1,6 @@
 pkgbase = otf-libertinus-git
 	pkgdesc = The Libertinus font family, a fork of Linux Libertine and Biolinum with OpenType math
-	pkgver = 7.000.r0.g2802fff
+	pkgver = 7.020.r16.ge809fbe
 	pkgrel = 1
 	url = https://github.com/alerque/libertinus
 	arch = any
