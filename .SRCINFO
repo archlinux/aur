@@ -1,0 +1,19 @@
+pkgbase = rusolver-bin
+	pkgdesc = Fast and accurate DNS resolver
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Edu4rdSHL/rusolver
+	arch = x86_64
+	license = GPL3
+	provides = rusolver
+	conflicts = rusolver
+	conflicts = rusolver-git
+	source_x86_64 = rusolver-0.2.0::https://github.com/Edu4rdSHL/rusolver/releases/download/0.2.0/rusolver-linux
+	source_x86_64 = rusolver-0.2.0-README.md::https://github.com/Edu4rdSHL/rusolver/raw/0.2.0/README.md
+	source_x86_64 = rusolver-0.2.0-man.1::https://github.com/Edu4rdSHL/rusolver/raw/0.2.0/rusolver.1
+	sha256sums_x86_64 = 176e3d6486cf60797f7132aef78c0d22dc349ea1ae91b60efca81033af6e4317
+	sha256sums_x86_64 = 067b297fe6b24e3596a7fd9d697e7292fdb51f814f0c2ee62991c62d6fc43dcf
+	sha256sums_x86_64 = f5f473d0abc8f5387b1a21a0ede827fbc5d961d6641b765b2d6ccbfa44360a32
+
+pkgname = rusolver-bin
+
