@@ -1,6 +1,6 @@
 pkgbase = jenkinsfile-runner-git
 	pkgdesc = A command line tool to run Jenkinsfile
-	pkgver = r281.552a0a2
+	pkgver = 1.0.beta.18.r9.gcc0717b
 	pkgrel = 1
 	url = https://github.com/jenkinsci/jenkinsfile-runner.git
 	arch = i686

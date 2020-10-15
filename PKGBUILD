@@ -6,7 +6,7 @@
 # Maintainer: Yifan Xu <jamesxu182@gmail.com>
 pkgname=jenkinsfile-runner-git
 _pkgname=jenkinsfile-runner
-pkgver=r281.552a0a2
+pkgver=1.0.beta.18.r9.gcc0717b
 pkgrel=1
 epoch=
 pkgdesc="A command line tool to run Jenkinsfile"
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
 	cd "$_pkgname"
-    mvn package
+    mvn clean package 
 }
 
 package() {
