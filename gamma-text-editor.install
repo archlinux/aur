@@ -1,0 +1,11 @@
+post_install() {
+  cat << EOF
+  
+  Run the following before starting Gamma Editor for the first time
+    
+    $ gamma-editor-init.sh
+
+  This will copy the required plugins and config to your home/.config directory.
+
+EOF
+}
