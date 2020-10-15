@@ -1,0 +1,15 @@
+pkgbase = agb-armv4t-eabi-unilib
+	pkgdesc = unilib, the ANSI C support library (GBA)
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/aquefir/agb-armv4t-eabi-unilib
+	arch = any
+	license = BSD
+	makedepends = slick>=1.1.0
+	provides = agb-armv4t-eabi-unilib
+	conflicts = agb-armv4t-eabi-unilib
+	source = https://github.com/aquefir/unilib/archive/v1.1.0-1.2.1.tar.gz
+	sha1sums = SKIP
+
+pkgname = agb-armv4t-eabi-unilib
+
