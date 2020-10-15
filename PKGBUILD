@@ -17,7 +17,7 @@ prepare() {
 package() {
   install -D "$PWD/${pkgname}-v${pkgver}/bin/icon.svg" "${pkgdir}/usr/share/icons/io.gitlab.hamadmarri.gamma.svg"
   cp "$PWD/${pkgname}-v${pkgver}/bin/io.gitlab.hamadmarri.gamma.desktop.bak" "$PWD/${pkgname}-v${pkgver}/bin/io.gitlab.hamadmarri.gamma.desktop"
-  sed -i -e "s,\[gamma path placeholder\],$PWD/${pkgname}-v${pkgver}/bin/gamma," "$PWD/${pkgname}-v${pkgver}/bin/io.gitlab.hamadmarri.gamma.desktop"
+  sed -i -e "s,\[gamma path placeholder\],/opt/${pkgname}/bin/gamma," "$PWD/${pkgname}-v${pkgver}/bin/io.gitlab.hamadmarri.gamma.desktop"
   install -D "$PWD/${pkgname}-v${pkgver}/bin/io.gitlab.hamadmarri.gamma.desktop" "${pkgdir}/usr/share/applications/io.gitlab.hamadmarri.gamma.desktop"
   install -d "$PWD/${pkgname}-v${pkgver}/gtksourceview_styles/*" "${pkgdir}/usr/share/gtksourceview-4/styles/"
   install -Dm644 "$PWD/${pkgname}-v${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
