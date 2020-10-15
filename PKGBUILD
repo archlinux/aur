@@ -1,4 +1,5 @@
-# Maintainer: Jon Noble <jonnobleuk@gmail.com>
+# Maintainer: spider-mario <spidermario@free.fr>
+# Contributor: Jon Noble <jonnobleuk@gmail.com>
 pkgname=halide-git
 pkgver=2019_08_27.r2898.g2531d11d2
 pkgrel=1
