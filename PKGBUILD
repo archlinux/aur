@@ -1,6 +1,6 @@
 pkgname=neovim-wordmotion-opt-git
 _pkgname=wordmotion
-pkgver=99.5d0422e
+pkgver=110.257a59c
 pkgrel=1
 pkgdesc='More useful word motions for (neo)vim.'
 arch=('any')
@@ -28,6 +28,6 @@ package() {
 
     install -dvm755 "${pkgdir}/${_installpath}"
 
-    cp -rvt "${pkgdir}/${_installpath}" doc plugin  
+    cp -rvt "${pkgdir}/${_installpath}" autoload doc plugin  
 
 }
