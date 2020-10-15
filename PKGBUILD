@@ -11,16 +11,5 @@ build() {
 }
 
 package() {
-    echo "Privet SERHII"
-    echo "Privet SERHII"
-    echo "Privet SERHII"
-    echo "Privet SERHII"
-    echo "Privet SERHII"
-    echo "Privet SERHII"
-    echo "Privet SERHII"
-    echo "Privet SERHII"
-    echo "Privet SERHII"
-    echo "Privet SERHII"
-    echo "Privet SERHII"
-    echo "Privet SERHII"
+    
 }
