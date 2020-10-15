@@ -1,0 +1,6 @@
+141,142c141,142
+< 	test -d $(PREFIX)/lib || mkdir $(PREFIX)
+< 	test -d $(PREFIX)/include || mkdir $(PREFIX)
+---
+> 	test -d $(PREFIX)/lib || mkdir $(PREFIX)/lib
+> 	test -d $(PREFIX)/include || mkdir $(PREFIX)/include

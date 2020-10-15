@@ -1,0 +1,20 @@
+pkgbase = tsgl-git
+	pkgdesc = Thread Safe Graphics Library
+	pkgver = r1281.ec8a3f6
+	pkgrel = 1
+	url = https://github.com/Calvin-CS/TSGL
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glew
+	depends = glfw
+	depends = freetype2
+	provides = tsgl
+	conflicts = tsgl
+	source = git+https://github.com/Calvin-CS/TSGL
+	source = Makefile.patch
+	md5sums = SKIP
+	md5sums = bce2f0c5bc27b4e2a076829e0c96da57
+
+pkgname = tsgl-git
+
