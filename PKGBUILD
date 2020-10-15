@@ -2,8 +2,8 @@
 # shellcheck disable=SC2034,SC2154
 pkgname=polybar-spotify
 pkgver=20200619_b5c59238a17180affae5232c234175524a17d1c4
-pkgrel=2
-pkgdesc='A tool to generate custom Iosevka fonts from a configuration file'
+pkgrel=3
+pkgdesc='Spotify now-playing info in polybar'
 url='https://github.com/Jvanrhijn/polybar-spotify'
 license=('MIT')
 ref="${pkgver:9}"
