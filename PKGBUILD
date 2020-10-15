@@ -6,17 +6,11 @@ pkgdesc="a language for fast, portable data-parallel computation"
 arch=(x86_64)
 url="https://halide-lang.org/"
 license=('MIT')
-groups=()
 depends=('llvm>=8.0')
 makedepends=('git' 'cmake>=3.8' 'binutils' 'fakeroot' 'make' 'clang') 
 provides=("${pkgname%-*}")
 conflicts=("halide-bin")
-replaces=()
-backup=()
-options=()
-install=
 source=('git+https://github.com/halide/Halide.git')
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {
