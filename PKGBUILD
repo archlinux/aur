@@ -94,34 +94,8 @@ package_mesa-glxdelay() {
   conflicts=('mesa-libgl')
   replaces=('mesa-libgl')
 
-  _install fakeinstall/usr/share/drirc.d/00-mesa-defaults.conf
-  _install fakeinstall/usr/share/glvnd/egl_vendor.d/50_mesa.json
-
-  # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast, swr
-  _install fakeinstall/usr/lib/dri/*_dri.so
-
-  _install fakeinstall/usr/lib/bellagio
-  _install fakeinstall/usr/lib/d3d
-  _install fakeinstall/usr/lib/lib{gbm,glapi}.so*
-  _install fakeinstall/usr/lib/libOSMesa.so*
-  _install fakeinstall/usr/lib/libxatracker.so*
-  _install fakeinstall/usr/lib/libswrAVX*.so*
-
-  # in vulkan-headers
-  rm -rv fakeinstall/usr/include/vulkan
-
-  _install fakeinstall/usr/include
-  _install fakeinstall/usr/lib/pkgconfig
-
-  # libglvnd support
-  _install fakeinstall/usr/lib/libGLX_mesa.so*
-  _install fakeinstall/usr/lib/libEGL_mesa.so*
-
-  # indirect rendering
-  ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"
-
-  # make sure there are no files left to install
-  find fakeinstall -depth -print0 | xargs -0 rmdir
+# indirect rendering
+ln -s /usr/lib32/libGLX_mesa.so.0 "${pkgdir}/usr/lib32/libGLX_indirect.so.0"
 
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
