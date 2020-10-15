@@ -26,7 +26,7 @@ conflicts=('mesa' 'mesa-git' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulka
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
-	'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/6429.diff'
+	'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/6429.patch'
         'LICENSE')
 md5sums=('SKIP'
          'SKIP'
@@ -99,7 +99,9 @@ prepare() {
         rm -rf _build
     fi
 
-    patch -Np1 -i ../6429.diff
+    cd mesa
+
+    patch -Np1 -i ../6429.patch
 
 }
 
