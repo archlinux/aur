@@ -1,25 +1,39 @@
 # Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
 pkgname=brltty-git
-pkgver=6.0.r582.gece51f512
+pkgver=6.1.r559.g7cfd436fd
 pkgrel=1
 pkgdesc="Braille display driver for Linux/Unix (development version)"
 arch=(x86_64)
 url="https://brltty.app"
 license=('LGPL2.1')
-depends=('at-spi2-core' 'atk' 'bluez-libs' 'espeak-ng' 'java-runtime' 'libxaw' 'ocaml' 'polkit' 'python' 'speech-dispatcher' 'gpm' 'icu' 'liblouis' 'tcl' )
-makedepends=('git' 'cython' 'java-environment' 'ocaml-ctypes' 'ocaml-findlib')
+depends=('bluez-libs' 'expat' 'gcc-libs' 'glibc' 'liblouis' 'libspeechd' 'pcre'
+'polkit' 'tcl')
+makedepends=('alsa-lib' 'at-spi2-atk' 'at-spi2-core' 'atk' 'cython' 'dbus'
+'dracut' 'espeak-ng' 'festival' 'glib2' 'gpm' 'icu' 'java-environment' 'libxaw' 'ncurses'
+'ocaml-ctypes' 'ocaml-findlib' 'speech-dispatcher' 'systemd-libs')
+optdepends=('at-spi2-core: X11/GNOME Apps accessibility'
+            'atk: ATK bridge for X11/GNOME accessibility'
+			         'dracut: initramfs support'
+            'espeak-ng: espeak-ng driver'
+            'java-runtime: Java support'
+            'libxaw: X11 support'
+            'libxt: X11 support'
+            'libx11: for xbrlapi'
+            'libxfixes: for xbrlapi'
+            'libxtst: for xbrlapi'
+            'ocaml: OCaml support'
+            'python: Python support'
+            'speech-dispatcher: speech-dispatcher driver')
 conflicts=('brltty')
-provides=('brltty')
+provides=('brltty' 'libbrlapi.so')
 backup=(etc/brltty.conf)
 options=('!emptydirs')
-install=brltty.install
+install=${pkgname}.install
 source=(${pkgname}::'git+https://github.com/brltty/brltty.git'
-	"brltty.tmpfiles"
-	"brltty.sysusers")
+        "${pkgname}.tmpfiles")
 sha512sums=('SKIP'
-	'a530fe66983768f9dc544af01c586abc101dfa2ed76885b4f1fd78c483b59e8445f2c0dbbfb865dd1cf2874342c346bd35ce978ab246e9cdd31d2d489a14e770'
-	'cc2e2d5f33d4e11d6ff828aefc0773ccdc02127ce2f00649c1e3f8d4b39b90789f4a0e41385b344f850c38bd4a1df36d3d9d413a59144d431defdd343633f800')
+            '6b29bf62cbcd1ffea70875c9325f02796797da83ece2e62742fcb09f6a8d49c465123ecbd7ebaad472b20cb2664fcf0ba9e81bf91d1d1529ef2ee154354afc58')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -32,9 +46,9 @@ prepare() {
 	./autogen --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
 		--mandir=/usr/share/man \
 		--with-tables-directory=/usr/share/brltty \
-		--with-screen-driver=lx \
+		--with-writable-directory=/run/brltty \
 		--enable-gpm \
-		--without-espeak
+		--disable-stripping
 }
 
 build() {
@@ -43,11 +57,15 @@ build() {
 }
 
 package() {
+	depends+=('libasound.so' 'libdbus-1.so' 'libgio-2.0.so' 'libglib-2.0.so'
+  'libgobject-2.0.so' 'libicuuc.so' 'libgpm.so' 'libncursesw.so'
+  'libsystemd.so')
 	cd "${srcdir}/${pkgname}"
-	make INSTALL_ROOT="$pkgdir" install
-	install -Dm644 Documents/brltty.conf "$pkgdir/etc/brltty.conf"
-	cd "${srcdir}/${pkgname}/Autostart/Systemd/"
-	make INSTALL_ROOT="$pkgdir" install
-	cd "${srcdir}/${pkgname}/Autostart/Udev/"
-	make INSTALL_ROOT="$pkgdir" install
+ make INSTALL_ROOT="${pkgdir}" install
+ make INSTALL_ROOT="${pkgdir}" install-systemd
+ make INSTALL_ROOT="${pkgdir}" install-udev
+ make INSTALL_ROOT="${pkgdir}" install-dracut
+ install -vDm 644 "Documents/brltty.conf" -t "${pkgdir}/etc/"
+ install -vDm 644 "../${pkgname}.tmpfiles" \
+  "${pkgdir}/usr/lib/tmpfiles.d/brltty.conf"
 }
