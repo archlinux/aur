@@ -2,7 +2,7 @@
 # Contributor: David Runge <dave@sleepmap.de>
 
 pkgname=etesync-dav
-pkgver=0.20.4
+pkgver=0.30.0
 pkgrel=1
 pkgdesc="A CalDAV and CardDAV adapter for EteSync"
 arch=('any')
@@ -10,6 +10,7 @@ url="https://pypi.python.org/pypi/${pkgname}/"
 license=('GPL')
 depends=('python-appdirs'
          'python-etesync'
+         'python-etebase'
          'radicale>=3.0.0'
          'python-flask'
          'python-flask-wtf'
