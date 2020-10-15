@@ -1,4 +1,4 @@
-pkgbase = tsgl-git
+pkgbase = tsal-git
 	pkgdesc = Thread Safe Audio Library
 	pkgver = r166.93dccae
 	pkgrel = 1
@@ -7,10 +7,10 @@ pkgbase = tsgl-git
 	license = GPL
 	makedepends = git
 	depends = portaudio
-	provides = tsgl
-	conflicts = tsgl
+	provides = tsal
+	conflicts = tsal
 	source = git+https://github.com/Calvin-CS/TSAL
 	md5sums = SKIP
 
-pkgname = tsgl-git
+pkgname = tsal-git
 
