@@ -1,6 +1,6 @@
 #maintainer lxgr <lxgr@protonmail.com>
 pkgname=buildaur
-pkgver=42.0.7.6
+pkgver=42.0.7.7
 pkgrel=1
 pkgdesc="An AUR helper with asp support"
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=()
 backup=('etc/buildaur/buildaur.conf' 'usr/share/buildaur/blacklist')
 optdepends=("bash-completion: Bash completion")
 source=("${pkgname}.tar.gz"::"https://github.com/lxgr-linux/buildaur/archive/${pkgver}.tar.gz")
-md5sums=('6244e2c620f71214f6568c1c76108d71')
+md5sums=('4f19b15046eabbc42fddaceb4bf9f06d')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -31,7 +31,7 @@ package() {
 	install -m644 buildaur.conf "$pkgdir/etc/buildaur/"
 	#install -Dm0755 -t "$pkgdir/etc/buildaur/posthooks" ./posthooks/*
 	install -Dm0755 -t "$pkgdir/usr/bin" "buildaur"
-	install -Dm0755 -t "$pkgdir/usr/bin" "buildaur.py"
+	install -Dm0755 -t "$pkgdir/usr/bin" "buildaur.sh"
 	install -Dm0755 -t "$pkgdir/usr/share/buildaur" "outputter.sh"
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
