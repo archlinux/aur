@@ -29,7 +29,6 @@ source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz
 	'https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/6429.patch'
         'LICENSE')
 sha512sums=('SKIP'
-	    'SKIP'
             'SKIP'
             'SKIP')
 

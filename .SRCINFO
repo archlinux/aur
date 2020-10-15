@@ -57,7 +57,6 @@ pkgbase = mesa-glxdelay
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = SKIP
 
 pkgname = mesa-glxdelay
 
