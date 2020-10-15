@@ -1,15 +1,16 @@
 pkgbase = nss-mdns-domainless
 	pkgdesc = glibc plugin providing host name resolution via mDNS (domainless allowed for .local)
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://0pointer.de/lennart/projects/nss-mdns/
 	install = nss-mdns.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = LGPL
 	depends = glibc
-	provides = nss-dns=0.14.1-1
+	provides = nss-dns=0.14.1-2
 	conflicts = nss-mdns
 	source = https://github.com/lathiat/nss-mdns/releases/download/v0.14.1/nss-mdns-0.14.1.tar.gz
 	source = search-local.patch
