@@ -1,6 +1,6 @@
 # Maintainer: Alexander Nicholi <me@nicholatian.com>
 pkgname=unilib
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 epoch=
 pkgdesc='unilib, the ANSI C support library'
@@ -13,7 +13,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 _symver=1.1.0
 source=("https://github.com/aquefir/$pkgname/archive/v${_symver}-$pkgver.tar.gz")
-sha1sums=('14440199c1c8c7327d44d67e4016a59c12e62f1f')
+sha1sums=('2f95b63cd63161bcfb11bd5e238978ad4ff02c09')
 
 _subprojects='arr chkmath decl endian err futils himem log str'
 
