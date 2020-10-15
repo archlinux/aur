@@ -3,8 +3,7 @@
 _model="l8900cdw"
 pkgname="brother-mfc-${_model}"
 pkgver="1.5.0"
-pkgrel=1
-epoch=2
+pkgrel=2
 pkgdesc="LPR and CUPS driver for the Brother MFC-L8900CDW"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
@@ -21,7 +20,7 @@ package() {
   install -d ${pkgdir}/usr/share/ppd/Brother
   install -d ${pkgdir}/usr/lib/cups/filter
 
-  install -Dm755 ${srcdir}/usr/bin/brprintconf_mfc${_model} ${pkgdir}/usr/bin/brprintconf_mfc${_model}
+  install -Dm755 ${srcdir}/opt/brother/Printers/mfc${_model}/lpd/${CARCH}/brprintconf_mfc${_model}  ${pkgdir}/usr/bin/brprintconf_mfc${_model}
   install -Dm644 ${srcdir}/opt/brother/Printers/mfc${_model}/cupswrapper/brother_mfc${_model}_printer_en.ppd ${pkgdir}/usr/share/cups/model/Brother
   install -Dm644 ${srcdir}/opt/brother/Printers/mfc${_model}/cupswrapper/brother_mfc${_model}_printer_en.ppd ${pkgdir}/usr/share/ppd/Brother
 
