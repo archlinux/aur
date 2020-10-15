@@ -1,0 +1,14 @@
+pkgbase = neovim-targets-opt-git
+	pkgdesc = A (neo)vim plugin that adds various text objects to give you more targets to operate on.
+	pkgver = 689.8d6ff29
+	pkgrel = 1
+	url = https://github.com/wellle/targets.vim
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = neovim
+	source = targets::git+https://github.com/wellle/targets.vim.git
+	sha256sums = SKIP
+
+pkgname = neovim-targets-opt-git
+
