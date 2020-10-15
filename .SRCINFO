@@ -1,0 +1,100 @@
+pkgbase = xorg-server-rootless-nosystemd-minimal
+	pkgver = 1.20.9
+	pkgrel = 1
+	url = http://xorg.freedesktop.org
+	arch = x86_64
+	groups = xorg
+	license = custom
+	makedepends = xorgproto
+	makedepends = pixman
+	makedepends = libx11
+	makedepends = mesa
+	makedepends = mesa-libgl
+	makedepends = xtrans
+	makedepends = libxkbfile
+	makedepends = libxfont2
+	makedepends = libpciaccess
+	makedepends = libxv
+	makedepends = libxmu
+	makedepends = libxrender
+	makedepends = libxi
+	makedepends = libxaw
+	makedepends = libxtst
+	makedepends = libxres
+	makedepends = xorg-xkbcomp
+	makedepends = xorg-util-macros
+	makedepends = xorg-font-util
+	makedepends = libepoxy
+	makedepends = xcb-util
+	makedepends = xcb-util-image
+	makedepends = xcb-util-renderutil
+	makedepends = xcb-util-wm
+	makedepends = xcb-util-keysyms
+	makedepends = libxshmfence
+	makedepends = meson
+	optdepends = wayland-protocols: xwayland support
+	optdepends = egl-wayland: xwayland support
+	source = https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-1.20.9.tar.bz2
+	source = xvfb-run
+	source = xvfb-run.1
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = xorg-server-rootless-nosystemd-minimal
+	pkgdesc = Xorg X server
+	install = xorg-server-rootless-nosystemd-minimal.install
+	depends = libepoxy
+	depends = libxfont2
+	depends = pixman
+	depends = xorg-server-common-rootless-nosystemd-minimal
+	depends = dbus
+	depends = libgl
+	depends = xf86-input-libinput
+	depends = nettle
+	depends = libpciaccess
+	depends = libdrm
+	depends = libxshmfence
+	optdepends = libunwind: unwind backtrace support
+	provides = X-ABI-VIDEODRV_VERSION=24.0
+	provides = X-ABI-XINPUT_VERSION=24.1
+	provides = X-ABI-EXTENSION_VERSION=10.0
+	provides = x-server
+	provides = xorg-server
+	conflicts = nvidia-utils<=331.20
+	conflicts = glamor-egl
+	conflicts = xf86-video-modesetting
+	conflicts = xorg-server
+	replaces = glamor-egl
+	replaces = xf86-video-modesetting
+
+pkgname = xorg-server-xwayland-rootless-nosystemd-minimal
+	pkgdesc = run X clients under wayland
+	depends = libxfont2
+	depends = libepoxy
+	depends = libgl
+	depends = pixman
+	depends = xorg-server-common-rootless-nosystemd-minimal
+	depends = nettle
+	depends = libtirpc
+	optdepends = libunwind: unwind backtrace support
+	provides = xorg-server-xwayland
+	conflicts = xorg-server-xwayland
+
+pkgname = xorg-server-common-rootless-nosystemd-minimal
+	pkgdesc = Xorg server common files
+	depends = xkeyboard-config
+	depends = xorg-xkbcomp
+	depends = xorg-setxkbmap
+	provides = xorg-server-common
+	conflicts = xorg-server-common
+
+pkgname = xorg-server-devel-rootless-nosystemd-minimal
+	pkgdesc = Development files for the X.Org X server
+	depends = xorgproto
+	depends = mesa
+	depends = libpciaccess
+	depends = xorg-util-macros
+	provides = xorg-server-devel
+	conflicts = xorg-server-devel
+
