@@ -16,11 +16,10 @@ makedepends=('python-mako' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'xorgpro
              'lib32-lm_sensors' 'lib32-libxrandr' 'glslang' 'meson')
 url="https://www.mesa3d.org/"
 license=('custom')
-source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
+source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz
 	https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/6429.patch
         LICENSE)
 sha512sums=('SKIP'
-	    'SKIP'
             'SKIP'
             'SKIP')
 
