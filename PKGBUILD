@@ -5,7 +5,7 @@ pkgrel=1
 epoch=
 pkgdesc='unilib, the ANSI C support library (GBA)'
 arch=('any')
-url="https://github.com/aquefir/$pkgname"
+url="https://github.com/aquefir/${pkgname#agb-armv4t-eabi-}"
 license=('BSD')
 depends=()
 makedepends=('slick>=1.1.0')
