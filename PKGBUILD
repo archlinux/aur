@@ -1,7 +1,7 @@
-# Maintainer: Bart De Vries <devriesb at gmail dot com>
+# Maintainer: Bart De Vries <bart at mogwai dot be>
 
 pkgname=snapcast
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Synchronous multi-room audio player"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -15,9 +15,9 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/badaix/snapcast/archive
         "snapcast.sysusers"
         "snapcast.tmpfiles"
         "snapcast.install")
-sha256sums=('8ddfa4eaa904984ecd3ec55e66b1539aa3d489ec99f03ee88857bb9ee3444c18'
+sha256sums=('8a332a0a02792b9f5f704c25a505db36dd743eeee9c696e4e8fc1ef33c73d640'
             '9fe6e9e07adb77f555a617b772e6d01e098e1dfaad1e8075e03a7d7ba76141de'
-            '1c58fef5d3e2de64c1df52138f0f3c841773e7881b9cbc76f23312deeebc11b5'
+            'e8c3441c4ca646a9b66d61355e90862fd3481562ae3b4e0a4bc1c978464ae2c7'
             '98cfdc3221270e3243f7dd0ca32f8c4b271258f32fc04fdb52a286f0986d7350')
 
 build() {
