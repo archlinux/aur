@@ -2,7 +2,7 @@
 # Upstream URL: https://gitlab.gnome.org/gabmus/hydrapaper
 
 pkgname=hydrapaper-git
-pkgver=2.0.1.r3.gc141b39
+pkgver=2.0.2.r0.g4a504d4
 pkgrel=1
 pkgdesc='Wallpaper manager with multimonitor support'
 arch=('any')
