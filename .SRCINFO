@@ -1,6 +1,6 @@
 pkgbase = pyidm
 	pkgdesc = Python open source alternative to IDM (Internet Download Manager)
-	pkgver = 2020.9.20
+	pkgver = 2020.10.11
 	pkgrel = 1
 	url = https://github.com/pyIDM/PyIDM
 	changelog = pyidm.changelog
@@ -16,10 +16,8 @@ pkgbase = pyidm
 	depends = python-pycurl
 	depends = python-pystray
 	depends = youtube-dl
-	source = pyidm-2020.9.20.tar.gz::https://github.com/pyIDM/PyIDM/archive/2020.9.20.tar.gz
-	source = no_update.patch
-	b2sums = 5fd2580871e21e1ed1a9039d9bb62da286f930718989719cc6fdb04c842be6f865ee801b0b7dd282e63f51d9f0285bddcec777f40b852ee600aa2f2658e1e104
-	b2sums = 677078adaca806f4d495af63e829bf96cc06d39d26cf749434fe7112fd45c555f826ea9de41c7c67e071c00df6e29572c9b01c208925bff94c07365522427cb6
+	source = pyidm-2020.10.11.tar.gz::https://github.com/pyIDM/PyIDM/archive/2020.10.11.tar.gz
+	b2sums = f5919ef413d647c4d1ff0e82167960ea03c059b0f85e82cb3c7ed7b889b541d1be585383529ed6dd8ef92a8b3ad4f1ea3448ef61f73df748d309665aea3a3594
 
 pkgname = pyidm
 
