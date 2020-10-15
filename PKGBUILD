@@ -17,7 +17,7 @@ pkgver=5.0.0+100+rc.2.20479.15
 _hostver=5.0.0-rc.2.20475.5
 _runtimever=5.0.0-rc.2.20475.5
 _sdkver=5.0.100-rc.2.20479.15
-pkgrel=1
+pkgrel=2
 arch=(x86_64 armv7h aarch64)
 url=https://www.microsoft.com/net/core
 license=(MIT)
@@ -81,7 +81,7 @@ package_dotnet-sdk-preview() {
     dotnet-runtime-preview
     dotnet-targeting-pack-preview
     glibc
-    netstandard-targeting-pack
+    netstandard-targeting-pack-2.1
   )
   optdepends=('aspnet-targeting-pack-preview: Build ASP.NET Core applications')
   provides=(dotnet-sdk=${_sdkver%-*} dotnet-sdk-5.0)
@@ -104,7 +104,7 @@ package_dotnet-sdk-preview() {
 
 package_dotnet-targeting-pack-preview() {
   pkgdesc='The .NET Core targeting pack (preview, binary)'
-  depends=(netstandard-targeting-pack)
+  depends=(netstandard-targeting-pack-2.1)
   provides=(dotnet-targeting-pack=${_runtimever%-*} dotnet-targeting-pack-5.0)
   conflicts=(dotnet-targeting-pack=${_runtimever%-*})
 

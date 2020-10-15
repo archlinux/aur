@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-preview
 	pkgver = 5.0.0+100+rc.2.20479.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -48,7 +48,7 @@ pkgname = dotnet-sdk-preview
 	depends = dotnet-runtime-preview
 	depends = dotnet-targeting-pack-preview
 	depends = glibc
-	depends = netstandard-targeting-pack
+	depends = netstandard-targeting-pack-2.1
 	optdepends = aspnet-targeting-pack-preview: Build ASP.NET Core applications
 	provides = dotnet-sdk=5.0.100
 	provides = dotnet-sdk-5.0
@@ -56,7 +56,7 @@ pkgname = dotnet-sdk-preview
 
 pkgname = dotnet-targeting-pack-preview
 	pkgdesc = The .NET Core targeting pack (preview, binary)
-	depends = netstandard-targeting-pack
+	depends = netstandard-targeting-pack-2.1
 	provides = dotnet-targeting-pack=5.0.0
 	provides = dotnet-targeting-pack-5.0
 	conflicts = dotnet-targeting-pack=5.0.0
