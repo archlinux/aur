@@ -12,7 +12,7 @@ pkgbase = halide-git
 	makedepends = make
 	makedepends = clang
 	depends = llvm>=8.0
-	provides = halide-git
+	provides = halide
 	conflicts = halide-bin
 	source = git+https://github.com/halide/Halide.git
 	md5sums = SKIP
