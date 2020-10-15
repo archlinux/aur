@@ -1,5 +1,4 @@
 # Maintainer: Tim Park<timpark@posteo.net>
-
 pkgname=dvd-logo-git
 pkgver=1.0
 pkgrel=1
@@ -13,18 +12,20 @@ source=("git+$url")
 md5sums=("SKIP")
 
 pkgver() {
-	cd "$pkgname"
-  printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd dvd-logo
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$pkgname"
+	cd dvd-logo
 	make
 }
 
 package() {
-	cd "$pkgname"
+	cd dvd-logo 
   mkdir -p "$pkgdir/opt/$pkgname"
   cp -rf * "$pkgdir/opt/$pkgname"
   make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
