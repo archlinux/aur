@@ -10,7 +10,7 @@
 # Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
-pkgname=('vulkan-mesa-layers-glxdelay' 'opencl-mesa-glxdelay' 'vulkan-intel-glxdelay' 'vulkan-radeon-glxdelay' 'libva-mesa-driver-glxdelay' 'mesa-vdpau-glxdelay' 'mesa-glxdelay')
+pkgname=('mesa-glxdelay' 'vulkan-mesa-layers-glxdelay' 'opencl-mesa-glxdelay' 'vulkan-intel-glxdelay' 'vulkan-radeon-glxdelay' 'libva-mesa-driver-glxdelay' 'mesa-vdpau-glxdelay')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=20.2.1
 pkgrel=1
