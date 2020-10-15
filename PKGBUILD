@@ -1,5 +1,5 @@
 # Maintainer: Josh Wright <wright.jjw@gmail.com>
-pkgname=tsgl-git
+pkgname=tsal-git
 pkgver=r166.93dccae
 pkgrel=1
 pkgdesc="Thread Safe Audio Library"
@@ -10,8 +10,8 @@ depends=(portaudio)
 makedepends=(git)       # packages in base-devel (make and gcc) are assumed to be installed
                         # (https://wiki.archlinux.org/index.php/PKGBUILD#makedepends)
 optdepends=()
-provides=(tsgl)
-conflicts=(tsgl)
+provides=(tsal)
+conflicts=(tsal)
 source=("git+$url")
 md5sums=("SKIP")
 
