@@ -31,7 +31,7 @@ depends=(
 
 _dir="xacro-release-release-melodic-xacro"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-gbp/xacro-release/archive/release/melodic/xacro/${pkgver}.tar.gz")
-sha256sums=('da77bd33d238689bb88f2851b80ec091b05c1624f132fd9b4b9c3fbe51957372')
+sha256sums=('3ca9ff54ec8e664d31329e13a355d13063598850195c365b745556f9ce657b13')
 
 build() {
 	# Use ROS environment variables.
