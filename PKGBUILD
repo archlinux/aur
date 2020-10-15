@@ -9,7 +9,7 @@ url="https://github.com/pyIDM/PyIDM"
 license=('LGPL3')
 depends=('ffmpeg'
          'python>=3.6' 
-         'python-awesometkinter'
+         'python-awesometkinter>=2020.9.22'
          'python-certifi' 
          'python-pillow'
          'python-plyer' 

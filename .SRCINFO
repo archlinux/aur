@@ -9,7 +9,7 @@ pkgbase = pyidm
 	makedepends = python-setuptools
 	depends = ffmpeg
 	depends = python>=3.6
-	depends = python-awesometkinter
+	depends = python-awesometkinter>=2020.9.22
 	depends = python-certifi
 	depends = python-pillow
 	depends = python-plyer
