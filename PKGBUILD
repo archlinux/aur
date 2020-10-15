@@ -9,7 +9,7 @@ _pkgname=arc-theme
 pkgname=('arc-gtk-theme' 'arc-solid-gtk-theme')
 pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell"
 pkgver=20201013
-pkgrel=1
+pkgrel=2
 arch=('any')
 # Upstream url: https://github.com/horst3180/arc-theme
 # Now using soft fork: https://github.com/jnsh/arc-theme/issues/18
@@ -32,10 +32,10 @@ prepare() {
 
 build() {
     cd ${_pkgname}-${pkgver}
-    ./autogen.sh --prefix=/usr --with-gnome-shell=3.36 --with-cinnamon=4.6 --with-gtk3=3.24
+    ./autogen.sh --prefix=/usr --with-gnome-shell=3.38 --with-cinnamon=4.6 --with-gtk3=3.24
 
     cd ../${_pkgname}-${pkgver}-solid
-    ./autogen.sh --prefix=/usr --disable-transparency --with-gnome-shell=3.36 --with-cinnamon=4.6 --with-gtk3=3.24
+    ./autogen.sh --prefix=/usr --disable-transparency --with-gnome-shell=3.38 --with-cinnamon=4.6 --with-gtk3=3.24
 }
 
 package_arc-gtk-theme() {
