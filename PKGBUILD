@@ -3,7 +3,7 @@
 pkgname=lacap
 longname=latin-catholic-prayers
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Memorize Catholic prayers in Latin."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/chrisfair/latin-catholic-prayers"
@@ -31,6 +31,6 @@ package() {
 	install -Dm755 $srcdir/$longname-v$pkgver/config_default.json $pkgdir/etc/$longname/config.json
      mkdir -p $pkgdir/usr/bin/
      cd $pkgdir/usr/bin
-     ln -s $pkgdir/opt/chrisfair/$longname/$pkgname
+     ln -s /opt/chrisfair/$longname/$pkgname
      chmod -R uag+rw $srcdir
 }

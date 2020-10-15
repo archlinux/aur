@@ -1,7 +1,7 @@
 pkgbase = lacap
 	pkgdesc = Memorize Catholic prayers in Latin.
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/chrisfair/latin-catholic-prayers
 	arch = i686
 	arch = x86_64
