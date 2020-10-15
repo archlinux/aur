@@ -1,93 +1,100 @@
-# $Id: PKGBUILD 194226 2013-09-11 02:06:50Z eric $
-# Maintainer: Timothy Redaelli <timothy.redaelli@gmail.com>
+# AUR Maintainer: Kasei Wang <kasei@kasei.im>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Filipe Laíns <lains@archlinux.org>
+# Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Guillaume ALAUX <guillaume@archlinux.org>
 # Contributor: Florian Pritz <bluewind at jabber dot ccc dot de>
-pkgname=wireshark-dev
-: && pkgname=('wireshark-dev-cli' 'wireshark-dev-gtk' 'wireshark-dev-qt')
-pkgbase=wireshark-dev
-pkgver=1.11.3
+# Contributor: Peter Wu <peter@lekensteyn.nl>
+
+_pkgbase=wireshark
+pkgbase=$_pkgbase-dev
+pkgname=('wireshark-dev-cli' 'wireshark-dev-qt')
+pkgver=3.3.1
 pkgrel=1
-pkgdesc='a free network protocol analyzer for Unix/Linux and Windows'
-arch=('i686' 'x86_64')
+pkgdesc='Network traffic and protocol analyzer/sniffer, development version'
+url='https://www.wireshark.org/'
+arch=('x86_64')
 license=('GPL2')
-makedepends=('qt4' 'gtk2' 'krb5' 'libpcap' 'bash' 'gnutls'
-             'lua' 'python' 'desktop-file-utils' 'hicolor-icon-theme')
-url='http://www.wireshark.org/'
-options=(!libtool)
-source=(http://www.wireshark.org/download/src/wireshark-${pkgver}.tar.bz2)
-sha256sums=('dfe8aa60581c9f7642503215a2dc1fe506a92aab20abcdf8520b9f8e12a83664')
+makedepends=('glibc' 'cmake' 'ninja' 'c-ares' 'libmaxminddb' 'qt5-tools' 'qt5-svg'
+             'qt5-multimedia' 'krb5' 'libpcap' 'libssh' 'libxml2' 'libnghttp2'
+             'snappy' 'lz4' 'spandsp' 'gnutls' 'lua52' 'python' 'libcap' 'libnl'
+             'glib2' 'libgcrypt' 'sbc' 'bcg729' 'desktop-file-utils' 'libxslt'
+             'hicolor-icon-theme' 'zstd' 'zlib' 'gcc-libs' 'brotli' 'asciidoctor'
+             'doxygen' 'minizip' 'speexdsp')
+options=('!emptydirs')
+source=(https://www.wireshark.org/download/src/${_pkgbase}-${pkgver}.tar.xz
+        wireshark.sysusers)
+sha512sums=('d6f50c14e79dff0fb902f5b06a2fb5a6975e5b17461205ab3275b05a53df606a5b1e488e8472cc644541b653df7d5f4a3c7009e38a2f75242af4ea2f59af061f'
+            '3956c1226e64f0ce4df463f80b55b15eed06ecd9b8703b3e8309d4236a6e1ca84e43007336f3987bc862d8a5e7cfcaaf6653125d2a34999a0f1357c52e7c4990')
+b2sums=('d8973b9724bece1b9890ed468280bcef56f2ac4f1022882f520140db98dab1e81071f3621fda247a80a8e51ad18a77c606f077efbb3d0e13dea47f986a5300e5'
+        '3cebcc993f51eaf0e09673c77e0436598593ef5eff306d880415ccc8eecb32fee93c9a6986f1a7bb0835ab7f9732369d7c5a07e6c053d6293e73a1ea84c58a5c')
 
 prepare() {
-  cd ${pkgbase%-dev}-${pkgver}
-  sed -i 's/$(AM_V_RCC)rcc/&-qt4/p' ui/qt/Makefile.am
+  cd ${_pkgbase}-${pkgver}
+  sed 's| Rev Unknown from unknown||' -i tools/make-version.pl
 }
 
 build() {
-  cd ${pkgbase%-dev}-${pkgver}
-
-  ./autogen.sh
-  ./configure \
-      --prefix=/usr \
-      --with-ssl \
-      --with-zlib=yes \
-      --with-lua \
-      --with-qt \
-      --with-gtk2 \
-      --disable-warnings-as-errors
-  make all
+  cd ${_pkgbase}-${pkgver}
+  cmake \
+    -B build \
+    -G Ninja \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_RPATH= \
+    -DCMAKE_SKIP_RPATH=ON \
+    -Wno-dev
+  ninja -C build -v
 }
 
 package_wireshark-dev-cli() {
-  : && pkgdesc='a free network protocol analyzer for Unix/Linux and Windows - CLI version'
-  depends=('krb5' 'libpcap' 'bash' 'gnutls'  'glib2' 'lua')
+  pkgdesc+=' - CLI tools and data files'
+  depends=('glibc' 'c-ares' 'libmaxminddb' 'krb5' 'libgcrypt' 'libcap' 'libpcap'
+           'gnutls' 'glib2' 'lua52' 'libssh' 'libxml2' 'libnghttp2' 'snappy'
+           'lz4' 'spandsp' 'sbc' 'bcg729' 'zstd' 'zlib' 'brotli' 'speexdsp')
   install=wireshark.install
-  replaces=(wireshark-cli)
   conflicts=(wireshark wireshark-cli)
+  provides=(libwireshark.so libwiretap.so libwsutil.so)
 
-  cd ${pkgbase%-dev}-${pkgver}
+  cd ${_pkgbase}-${pkgver}
+  DESTDIR="${pkgdir}" ninja -C build install
 
-  make DESTDIR="${pkgdir}" install
-
-  #wireshark uid group is 150
+  # wireshark uid group is 150
+  install -Dm 644 "${srcdir}/wireshark.sysusers" "${pkgdir}/usr/lib/sysusers.d/wireshark.conf"
   chgrp 150 "${pkgdir}/usr/bin/dumpcap"
   chmod 754 "${pkgdir}/usr/bin/dumpcap"
-  rm "${pkgdir}/usr/bin/wireshark" "${pkgdir}/usr/bin/wireshark-qt"
 
-  # Headers
-  install -dm755 "${pkgdir}"/usr/include/${pkgbase%-dev}/{epan/{crypt,dfilter,dissectors,ftypes},wiretap,wsutil}
-
-  install -m644 color.h config.h register.h ws_symbol_export.h "${pkgdir}/usr/include/${pkgbase%-dev}"
-  for d in epan epan/crypt epan/dfilter epan/dissectors epan/ftypes wiretap wsutil; do
-    install -m644 ${d}/*.h "${pkgdir}"/usr/include/${pkgbase%-dev}/${d}
-  done
-}
-
-package_wireshark-dev-gtk() {
-  : && pkgdesc='a free network protocol analyzer for Unix/Linux and Windows - GTK frontend'
-  depends=('gtk2' 'wireshark-dev-cli' 'desktop-file-utils' 'hicolor-icon-theme')
-  install=wireshark-gtk.install
-  replaces=(wireshark wireshark-gtk)
-  conflicts=(wireshark wireshark-gtk)
-
-  cd ${pkgbase%-dev}-${pkgver}
-
-  install -Dm755 .libs/wireshark "${pkgdir}/usr/bin/wireshark"
-  for d in 16 32 48; do
-    install -Dm644 image/hi${d}-app-wireshark.png  \
-                   "${pkgdir}/usr/share/icons/hicolor/${d}x${d}/apps/wireshark.png"
-  done
-
-  for d in 16 24 32 48 64 128 256 ; do
-    install -Dm644 image/WiresharkDoc-${d}.png \
-                   "${pkgdir}/usr/share/icons/hicolor/${d}x${d}/mimetypes/application-vnd.tcpdump.pcap.png"
-  done
-  install -Dm644 wireshark.desktop "${pkgdir}/usr/share/applications/wireshark.desktop"
+  cd "${pkgdir}"
+  rm -r usr/share/mime \
+    usr/share/icons \
+    usr/share/man/man1/wireshark.1 \
+    usr/share/doc/wireshark/wireshark.html \
+    usr/bin/wireshark \
+    usr/share/applications/wireshark.desktop \
+    usr/share/appdata/wireshark.appdata.xml
 }
 
 package_wireshark-dev-qt() {
-  : && pkgdesc='a free network protocol analyzer for Unix/Linux and Windows - Qt frontend'
-  depends=('qt4' 'wireshark-dev-cli')
+  pkgdesc+=' - Qt GUI'
+  depends=('glibc' 'desktop-file-utils' 'qt5-multimedia' 'qt5-svg'
+           'wireshark-dev-cli' 'libwireshark.so' 'libwiretap.so' 'libwsutil.so'
+           'shared-mime-info' 'hicolor-icon-theme' 'xdg-utils' 'gcc-libs'
+           'zlib' 'libpcap' 'libgcrypt' 'libnl' 'minizip')
+  replaces=(wireshark wireshark-gtk wireshark-common)
+  conflicts=(wireshark wireshark-gtk wireshark-common wireshark-qt)
 
-  cd ${pkgbase%-dev}-${pkgver}
-  install -Dm755 .libs/wireshark-qt "${pkgdir}/usr/bin/wireshark-qt"
+  cd ${_pkgbase}-${pkgver}
+  install -d "${srcdir}/staging"
+  DESTDIR="${srcdir}/staging" ninja -C build install
+
+  install -Dm 755 build/run/wireshark -t "${pkgdir}/usr/bin"
+  install -Dm 644 build/doc/wireshark.1 -t "${pkgdir}/usr/share/man/man1"
+  install -Dm 644 build/doc/wireshark.html -t "${pkgdir}/usr/share/doc/wireshark"
+  install -Dm 644 wireshark.desktop -t "${pkgdir}/usr/share/applications"
+  install -Dm 644 wireshark.appdata.xml -t "${pkgdir}/usr/share/appdata"
+  install -Dm 644 wireshark-mime-package.xml "${pkgdir}/usr/share/mime/packages/wireshark.xml"
+  mv "${srcdir}/staging/usr/share/icons" "${pkgdir}/usr/share/icons"
 }
+
+# vim: ts=2 sw=2 et:
