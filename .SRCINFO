@@ -1,14 +1,14 @@
 pkgbase = genkfs
 	pkgdesc = Builds KFS filesystems for KnightOS
-	pkgver = 1.2.2
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/KnightOS/genkfs
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = asciidoc
-	source = genkfs-1.2.2.tar.gz::https://github.com/KnightOS/genkfs/archive/1.2.2.tar.gz
-	sha256sums = 93690989819ee93dd5130b2761879deaa3d70c706b050bd31eb8d5997cb683e8
+	source = genkfs-1.3.2.tar.gz::https://github.com/KnightOS/genkfs/archive/1.3.2.tar.gz
+	sha256sums = 374bf00749aa35af826efb36b8cbb939e25af8c668cc244c6aef8c9b8b827f2f
 
 pkgname = genkfs
 
