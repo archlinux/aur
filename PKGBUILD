@@ -2,7 +2,7 @@
 
 _pkgname='bpytop'
 pkgname="${_pkgname}-git"
-pkgver=r226.adee413
+pkgver=1.0.42.r0.gadee413
 pkgrel=1
 pkgdesc='Resource monitor that shows usage and stats for processor, memory, disks, network and processes'
 arch=('any')
@@ -12,12 +12,11 @@ depends=('python-psutil')
 makedepends=('git' 'python-setuptools')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+${url}.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
