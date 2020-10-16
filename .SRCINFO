@@ -11,6 +11,7 @@ pkgbase = agrum
 	depends = python-matplotlib
 	depends = python-six
 	depends = ipython
+	depends = python-ipykernel
 	depends = unixodbc
 	source = https://gitlab.com/agrumery/aGrUM/-/archive/0.18.1/aGrUM-0.18.1.tar.bz2
 	sha256sums = b6bb4c60e13c76c3c74397ebfbab759e0453dcf0bc17e3fb6519d40fd1c1cd8b
