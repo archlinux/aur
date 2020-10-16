@@ -1,3 +1,4 @@
 boundary-*.zip
+boundary-bin-*.pkg.tar.zst
 pkg/
 src/

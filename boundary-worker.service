@@ -1,5 +1,5 @@
 [Unit]
-Description=boundary Worker
+Description=Boundary Worker
 
 [Service]
 ExecStart=/usr/bin/boundary worker -config /etc/boundary/worker.hcl

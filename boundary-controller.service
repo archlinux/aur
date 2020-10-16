@@ -1,5 +1,5 @@
-[Uni/]
-Description=boundary Controller
+[Unit]
+Description=Boundary Controller
 
 [Service]
 ExecStart=/usr/bin/boundary controller -config /etc/boundary/controller.hcl
