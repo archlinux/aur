@@ -1,24 +1,30 @@
-# Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
+# Maintainer: Cranky Supertoon <crankysupertoon@gmail.com>
+# Contributor: Alisson Lauffer <alissonvitortc@gmail.com>
 # Contributor: AwesomeHaircut <jesusbalbastro@gmail.com>
 # Contributor: Lari Tikkanen <lartza@outlook.com>
 
-pkgname=feedthebeast
+pkgname=feedthebeast-classic
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Feed The Beast offers many different styles of Minecraft modpacks to the community, catering to all tastes."
 arch=('any')
 url='https://feed-the-beast.com/'
 license=('Apache')
 # libzip is needed for many modpacks.
 depends=('java-runtime=8' 'hicolor-icon-theme' 'xorg-xrandr' 'ttf-dejavu' 'libzip')
-makedepends=('libicns')
+makedepends=('gendesk')
 source=("$pkgname"
-	"${pkgname}-$pkgver.jar"::"https://dist.creeper.host/FTB2/launcher/FTB_Launcher.jar"
-        "${pkgname}.desktop")
+	"${pkgname}-$pkgver.jar"::"https://dist.creeper.host/FTB2/launcher/FTB_Launcher.jar")
 noextract=("${pkgname}-$pkgver.jar")
-sha256sums=('0da942aa85086a6caebd497a31ea882e8259ad0e6989323926f9e32c2563d80f'
-            'de18ccf8c0aad4d0dc214cd017151f1ff57f2542cb61ca0080593fa94335df44'
-            '9b1af045ee5c08237a64cdc8b4331f6cd18a054688ae44789bb456c708bbf7a7')
+sha256sums=('SKIP'
+            'SKIP')
+
+prepare() {
+    # generate .desktop
+    cd "${srcdir}/${_pkgname}"
+    gendesk --pkgname "Feed The Beast Classic" --pkgdesc "${pkgdesc}" --icon ${pkgname} --exec "/usr/bin/${pkgname}" -n -f
+    mv "Feed The Beast Classic.desktop" "${pkgname}.desktop"
+}
 
 package() {
     install -Dm755 "$pkgname" "${pkgdir}/usr/bin/${pkgname}"
@@ -26,10 +32,7 @@ package() {
     install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     # icons are trapped inside .icns format, free them.
-    bsdtar -xf "${pkgname}-$pkgver.jar" app/icon.icns
-    icns2png -x app/icon.icns
-    for size in 16 32 48 128 256; do
-        install -Dm644 "icon_${size}x${size}x32.png" \
-          "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
-    done
+    bsdtar -xf "${pkgname}-$pkgver.jar" image/logo_ftb_large.png
+    install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
+    cp -Rr "${srcdir}/image/logo_ftb_large.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
 }
