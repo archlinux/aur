@@ -30,7 +30,7 @@ package() {
 
   #Create symlink the executable to /usr/bin
   mkdir "$pkgdir"/usr/bin
-  ln -s "$pkgdir"/opt/Local/local "$pkgdir"/usr/bin/$_pkgname
+  ln -s /opt/Local/local "$pkgdir"/usr/bin/$_pkgname
 
   #Setuid on chrome-sandbox
   chmod u+s "$pkgdir"/opt/Local/chrome-sandbox
