@@ -2,8 +2,8 @@ Create static and shared versions of the PORD library.
 
 Index: mumps/PORD/lib/Makefile
 ===================================================================
---- mumps.orig/PORD/lib/Makefile
-+++ mumps/PORD/lib/Makefile
+--- mumps.orig/PORD/lib/Makefile	2020-10-01 23:16:20.992316016 +0800
++++ mumps/PORD/lib/Makefile	2020-10-01 23:16:20.984316062 +0800
 @@ -9,7 +9,7 @@
  
  INCLUDES = -I../include
@@ -13,7 +13,7 @@ Index: mumps/PORD/lib/Makefile
  
  OBJS = graph.o gbipart.o gbisect.o ddcreate.o ddbisect.o nestdiss.o \
         multisector.o gelim.o bucket.o tree.o \
-@@ -24,12 +24,16 @@ OBJS = graph.o gbipart.o gbisect.o ddcre
+@@ -24,12 +24,17 @@
  .c.o:
  	$(CC) $(COPTIONS) -c $*.c $(OUTC)$*.o
  
@@ -24,8 +24,9 @@ Index: mumps/PORD/lib/Makefile
  	$(RANLIB) $@
  
 +libpord$(PLAT).so: $(OBJS)
-+	$(CC) -shared $(OBJS) -Wl,-soname,libpord$(PLAT)-5.2.0.so -o libpord$(PLAT)-5.2.0.so -Wl,-z,defs
-+	ln -s libpord$(PLAT)-5.2.0.so $@
++	$(CC) -shared $(OBJS) -Wl,-soname,libpord$(PLAT)-$(SOVERSION).so -o libpord$(PLAT)-$(VERSION).so -Wl,-z,defs
++	ln -s libpord$(PLAT)-$(VERSION).so libpord$(PLAT)-$(SOVERSION).so
++	ln -s libpord$(PLAT)-$(VERSION).so $@
 +
  clean:
  	rm -f *.o
@@ -35,9 +36,9 @@ Index: mumps/PORD/lib/Makefile
 +	rm -f *.o libpord*.a *.so
 Index: mumps/Makefile
 ===================================================================
---- mumps.orig/Makefile
-+++ mumps/Makefile
-@@ -54,7 +54,7 @@ dexamples:	d
+--- mumps.orig/Makefile	2020-10-01 23:16:20.992316016 +0800
++++ mumps/Makefile	2020-10-01 23:16:20.988316040 +0800
+@@ -57,7 +57,7 @@
  multi_example:	s d c z
  	(cd examples ; $(MAKE) multi)
  
@@ -46,7 +47,7 @@ Index: mumps/Makefile
  
  # dummy MPI library (sequential version)
  
-@@ -62,19 +62,25 @@ libseqneeded:
+@@ -65,19 +65,25 @@
  	(cd libseq; $(MAKE))
  
  # Build the libpord.a library and copy it into $(topdir)/lib

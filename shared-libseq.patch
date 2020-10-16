@@ -2,9 +2,9 @@ Create a shared version of the sequential library, MUST BE LAST IN SERIES
 
 Index: mumps/libseq/Makefile
 ===================================================================
---- mumps.orig/libseq/Makefile
-+++ mumps/libseq/Makefile
-@@ -8,15 +8,17 @@ all: libmpiseq
+--- mumps.orig/libseq/Makefile	2020-10-01 23:16:43.684187324 +0800
++++ mumps/libseq/Makefile	2020-10-01 23:16:43.680187348 +0800
+@@ -8,15 +8,20 @@
  
  include ../Makefile.inc
  
@@ -17,7 +17,10 @@ Index: mumps/libseq/Makefile
 +	$(AR) $@ mpi.o mpic.o elapse.o
  	$(RANLIB) $@
 +libmpiseq$(PLAT).so: mpi.o mpic.o elapse.o
-+	$(FC) -shared $^ -Wl,-soname,libmpiseq$(PLAT)-5.2.0.so -o libmpiseq$(PLAT)-5.2.0.so -Wl,-z,defs
++	$(FC) $(OPTL) -shared $^ -Wl,-soname,libmpiseq$(PLAT)-$(SOVERSION).so -o libmpiseq$(PLAT)-$(VERSION).so -Wl,-z,defs
++	ln -s libmpiseq$(PLAT)-$(VERSION).so libmpiseq$(PLAT)-$(SOVERSION).so
++	ln -s libmpiseq$(PLAT)-$(VERSION).so $@
++
  .f.o:
 -	$(FC) $(OPTF)              -c $*.f $(OUTF)$*.o
 +	$(FC) $(OPTF)              -fPIC -c $*.f $(OUTF)$*.o
@@ -30,9 +33,9 @@ Index: mumps/libseq/Makefile
 +	$(RM) *.o *.a *.so
 Index: mumps/Makefile
 ===================================================================
---- mumps.orig/Makefile
-+++ mumps/Makefile
-@@ -60,6 +60,7 @@ requiredobj: Makefile.inc $(LIBSEQNEEDED
+--- mumps.orig/Makefile	2020-10-01 23:16:43.684187324 +0800
++++ mumps/Makefile	2020-10-01 23:16:43.680187348 +0800
+@@ -63,6 +63,7 @@
  
  libseqneeded:
  	(cd libseq; $(MAKE))
