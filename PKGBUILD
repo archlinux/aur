@@ -1,5 +1,5 @@
-# Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Morteza NourelahiAlamdari <m at 0t1.me>
+# Contributor: Andy Weidenbaum <archbaum at gmail.com>
 # Contributor: Brian Knox <taotetek at gmail.com>
 
 pkgname=czmq-git
