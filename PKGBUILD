@@ -3,7 +3,7 @@
 
 pkgname=jackett-runit
 pkgver=0.16.1757
-pkgrel=1
+pkgrel=2
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
 license=('GPL')
@@ -34,7 +34,7 @@ package() {
     install -d -m 755 "${pkgdir}/usr/lib/jackett/"
     install -d -m 755 "${pkgdir}/home/jackett/runit/service"
     install -d -m 755 "${pkgdir}/etc/runit/sv/jackett/"
-    cp -r "${srcdir}/Jackett/"* "${pkgdir}/usr/lib/jackett/"
+    cp -dpr --no-preserve=ownership "${srcdir}/Jackett/"* "${pkgdir}/usr/lib/jackett/"
 
     install -D -m 644 "${srcdir}/jackett.sysusers" "${pkgdir}/usr/lib/sysusers.d/jackett.conf"
     install -D -m 644 "${srcdir}/jackett.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/jackett.conf"
