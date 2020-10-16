@@ -1,4 +1,5 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: David Wu <xdavidwuph@gmail.com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: M A <morealaz at gmail dot com>
 # Contributor: Mariell Hoversholm <proximyst at proximyst dot com>
 # Contributor: Schrodinger Zhu <i at zhuyi dot fan>
@@ -6,19 +7,19 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=jdk-openj9-bin
-_jdkver=14
+_jdkver=15
 _jdkminor=0
-_jdkpatch=2
-_jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch}
-_openj9ver=0.21.0
-_buildvershort=12
+_jdkpatch=0
+_jdkfullver=${_jdkver} #.${_jdkminor}.${_jdkpatch}
+_openj9ver=0.22.0
+_buildvershort=36
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_jdkfullver}b${_buildver//-/_}
 pkgrel=1
 pkgdesc="Eclipse (former IBM) OpenJ9 with openjdk${_jdkver}"
 arch=('x86_64')
 url="https://adoptopenjdk.net/index.html?variant=openjdk${_jdkver}&jvmVariant=openj9"
-license=('GPL2')
+license=('custom')
 depends=('java-environment-common' 'ca-certificates-utils' 'nss')
 provides=(
   "java-environment=${_jdkver}"
@@ -32,7 +33,7 @@ conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
 source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/OpenJDK${_jdkver}U-jdk_x64_linux_openj9_${_jdkfullver}_${_buildver}.tar.gz")
 
-sha256sums=('306f7138cdb65daaf2596ec36cafbde72088144c83b2e964f0193662e6caf3be')
+sha256sums=('3f016e23a1fba0b1d29f03415c36d54a8a33480ce1d238fbef09d38c5a69eff7')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
@@ -54,7 +55,7 @@ package() {
   ln -s /etc/java${_jdkver}-j9 "${pkgdir}/${_jvmdir}/conf"
   # Man pages
   for f in man/man1/*; do
-    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk14-j9.1}"
+    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk${_jdkver}-j9.1}"
   done
   ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 }
