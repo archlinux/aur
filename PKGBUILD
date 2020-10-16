@@ -2,7 +2,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgbase=python-sphinx-intl
-pkgname=('python-sphinx-intl' 'python2-sphinx-intl')
+pkgname=('python-sphinx-intl')
 _name=${pkgname#python-}
 pkgver=0.9.11
 pkgrel=1
