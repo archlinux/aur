@@ -1,7 +1,7 @@
 # Maintainer: Jörg Behrmann <behrmann@physik.fu-berlin.de>
 # Contributor: Max Schlemmer <max.schlemmer@gmail.com>
 pkgname=python-tinyarray
-pkgver=1.2.0
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Similar to NumPy arrays, but optimized for small sizes"
 arch=('any')
@@ -11,7 +11,7 @@ depends=(python)
 checkdepends=(python-nose)
 source=(http://downloads.kwant-project.org/tinyarray/tinyarray-$pkgver.tar.gz
 		http://downloads.kwant-project.org/tinyarray/tinyarray-$pkgver.tar.gz.asc)
-sha1sums=('18399fc948ec7f49d31ca40f832ea4caff8fb55f'
+sha1sums=('ccc5712fb0c4b181c2060ad69c1345a4936ac7d7'
           'SKIP')
 validpgpkeys=('52299057FAD799653C4F088AC3F147F5980F3535')
 
