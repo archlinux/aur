@@ -31,5 +31,5 @@ package() {
 
 check() {
     cd  "$srcdir/qsymm-v$pkgver"
-    python setup.py test
+    py.test
 }
