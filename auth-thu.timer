@@ -1,0 +1,9 @@
+[Unit]
+Description=Authenticate for auth.tsinghua.edu.cn every 3 minutes
+
+[Timer]
+OnBootSec=10
+OnUnitActiveSec=3min
+
+[Install]
+WantedBy=timers.target

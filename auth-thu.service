@@ -1,11 +1,9 @@
 [Unit]
 Description=Authenticating utility for auth.tsinghua.edu.cn
-After=network-online.target
 
 [Service]
-ExecStart=auth-thu -D auth -k
-ExecStopPost=auth-thu -D deauth
-Restart=always
+Type=oneshot
+ExecStart=auth-thu --daemonize auth -n
 
 [Install]
 WantedBy=default.target
