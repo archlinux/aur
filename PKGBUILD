@@ -1,7 +1,7 @@
 # Maintainer: Fabian Bornschein <plusfabi[AT+thegoogleadress]>
 
 pkgname=amdgpu-experimental
-pkgver=2020104
+pkgver=20201016
 pkgrel=1
 pkgdesc="Enables experimental features for AMDGPU"
 arch=('x86_64')
