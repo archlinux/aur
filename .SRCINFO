@@ -1,13 +1,13 @@
 pkgbase = php-uuid
 	pkgdesc = PHP PECL UUID extension
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://pecl.php.net/package/uuid
 	arch = x86_64
 	license = LGPL
 	depends = php>=7.0
-	source = http://pecl.php.net/get/uuid-1.1.0.tgz
-	sha256sums = 981c1c2fec77aaffec29242c29a346bc6ec2115053e9b6b5afb4a4e149a2333f
+	source = http://pecl.php.net/get/uuid-1.2.0.tgz
+	sha256sums = 5cb834d32fa7d270494aa47fd96e062ef819df59d247788562695fd1f4e470a4
 
 pkgname = php-uuid
 
