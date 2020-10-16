@@ -1,0 +1,15 @@
+pkgbase = rkcommon-git
+	pkgdesc = Intel RenderKit common C++/CMake infrastructure (git version)
+	pkgver = 1.5.1.r0.gab6835b
+	pkgrel = 1
+	url = https://github.com/ospray/rkcommon/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	depends = tbb
+	source = git+https://github.com/ospray/rkcommon.git
+	sha256sums = SKIP
+
+pkgname = rkcommon-git
+
