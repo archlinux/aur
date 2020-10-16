@@ -1,6 +1,6 @@
 pkgbase = readarr
 	pkgdesc = Audio and eBook download automation for usenet and torrents.
-	pkgver = 0.1.0.291
+	pkgver = 0.1.0.297
 	pkgrel = 1
 	url = https://github.com/Readarr/Readarr
 	arch = x86_64
@@ -29,12 +29,12 @@ pkgbase = readarr
 	sha512sums = b34389cf2966a7a1a1fe6708303641e144191a95001c5ca6e570e9d50ba334fcbc1603852c3c2bfe008d97aaf54207690c689f00dd63378157af33ceebbbb089
 	sha512sums = 99f8210754ea5ec742ba6b0b9f05c8312237cb0225bc0d28a2a8ee8362b464da0880499b64ea58c84b64c0eb727748c3c15630cedb8785d7d94d856c76cf17eb
 	sha512sums = b71a5b7022ee98d2255bf3ca86a7a7619bd8b56a1a875128b91ea7111af90984430399fa0cfcb8ec4d56cb4be84b453e665eb6ee9b1e57a466c9c8cb34bb37e1
-	source_x86_64 = readarr.0.1.0.291.linux-core-x64.tar.gz::https://readarr.servarr.com/v1/update/nightly/updatefile?version=0.1.0.291&os=linux&runtime=netcore&arch=x64
-	sha512sums_x86_64 = e3d3f1dc5d1b48a5be0221496cb4aa5df1b02961e855a735b8114379d4343780329085f39086956d411c9e6ce6c71723d6e3b2977d25646ca3197196cad2de83
-	source_aarch64 = readarr.0.1.0.291.linux-core-arm64.tar.gz::https://readarr.servarr.com/v1/update/nightly/updatefile?version=0.1.0.291&os=linux&runtime=netcore&arch=arm64
-	sha512sums_aarch64 = 27b409b96b015d354551c05252e6bad6d62359002fb14b53123813295b096de5f27469d826cd0e02a80326087e2bb9dab8731a679f465869641f8da08ff349f0
-	source_armv7h = readarr.0.1.0.291.linux-core-arm.tar.gz::https://readarr.servarr.com/v1/update/nightly/updatefile?version=0.1.0.291&os=linux&runtime=netcore&arch=arm
-	sha512sums_armv7h = 60e480a0aed1e6e883077cb2dd3033cfb7f345d9e59e5776ac6d7cc6bf1248b935ab7c1597dbd8335e77f37d7021fd1f07af237b35660061304e8e8e6720822a
+	source_x86_64 = readarr.0.1.0.297.linux-core-x64.tar.gz::https://readarr.servarr.com/v1/update/nightly/updatefile?version=0.1.0.297&os=linux&runtime=netcore&arch=x64
+	sha512sums_x86_64 = bd9f5d10413dc6c47157fba47170e8c69e13943f3c45146116e81a5833797308ae625b4daa64a3760ce6ef051debd035bc06997f1385bcb4ad9fa17fd3216722
+	source_aarch64 = readarr.0.1.0.297.linux-core-arm64.tar.gz::https://readarr.servarr.com/v1/update/nightly/updatefile?version=0.1.0.297&os=linux&runtime=netcore&arch=arm64
+	sha512sums_aarch64 = 618eb6144971646f01308b69ce7bce88f13b13ee046fec1bb96ec8ffff6047a617d67b4a6915ef01fda9490aa04357d4f1102bc3c006275bc081bbd192566a0c
+	source_armv7h = readarr.0.1.0.297.linux-core-arm.tar.gz::https://readarr.servarr.com/v1/update/nightly/updatefile?version=0.1.0.297&os=linux&runtime=netcore&arch=arm
+	sha512sums_armv7h = cf4873181547199628fbaf8bb3fb30384fe26aa854318cea31b44e4955134381f7497ea232bc608fdd1bde5047f158bf0c49610d8c31c41dc156fb1d8d152b36
 
 pkgname = readarr
 
