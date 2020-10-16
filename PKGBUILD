@@ -11,8 +11,8 @@ depends=(python)
 checkdepends=(python-pytest)
 source=(http://downloads.kwant-project.org/tinyarray/tinyarray-$pkgver.tar.gz
 		http://downloads.kwant-project.org/tinyarray/tinyarray-$pkgver.tar.gz.asc)
-sha1sums=('ccc5712fb0c4b181c2060ad69c1345a4936ac7d7'
-          'SKIP')
+sha256sums=('47a06f801ed4b3d438f4f7098e244cd0c6d7db09428b1bc5ee813e52234dee9f'
+            'SKIP')
 validpgpkeys=('52299057FAD799653C4F088AC3F147F5980F3535')
 
 build() {
