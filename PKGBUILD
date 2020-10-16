@@ -24,8 +24,8 @@ sha256sums=('8c0ccf341dfa74e1d69f1508968c4d4e9fb36f74685f101897df6a84ed7043df'
 validpgpkeys=('52299057FAD799653C4F088AC3F147F5980F3535')
 
 # Comment the prepare function if you want to build _without_ mumps support.
-# This is discouraged because without the incurred performance penalty no
-# serious calculations can be done in a reasonable time.
+# This is discouraged because with the incurred performance penalty no serious
+# calculations can be done in a reasonable time.
 prepare() {
     cp "../build.conf" "$srcdir/kwant-$pkgver/build.conf"
 }
