@@ -28,7 +28,7 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.15.72
+pkgver=1.15.75
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -68,7 +68,7 @@ sha256sums=('SKIP'
             '725e2d0c32da4b3de2c27a02abaf2f5acca7a25dcea563ae458c537ac4ffc4d5'
             'fa6ed4341e5fc092703535b8becaa3743cb33c72f683ef450edd3ef66f70d42d'
             '6f9ab35fa2c9e6e34ec454b829b7b87adaebc10cacecd1ac1daa67035ee44aba'
-            'c5ebde144e4f31ce5e6a37aa6a6233489b6b40b03464b9d6077c777f5ad14ac1'
+            '0a129f1346a68a2e2c04be4503747151988e624fad6231b12b36475047da6579'
             '69d8b7a439db1af4713245ddf5f44ca647283ba833a8733e848033ebdaf03cdc'
             '7514c6c81a64a5457b66494a366fbb39005563eecc48d1a39033dd06aec4e300'
             '7cace84d7494190e7882d3e637820646ec8d64808f0a2128c515bd44991a3790'
