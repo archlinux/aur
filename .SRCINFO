@@ -1,0 +1,13 @@
+pkgbase = fermat
+	pkgdesc = A computer algebra system for polynomial and matrix computation
+	pkgver = 6.37
+	pkgrel = 1
+	url = http://home.bway.net/lewis/home.html
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://home.bway.net/lewis/fermat64/ferl6.tar.gz
+	sha256sums = c051ec9c4e1d025a45826f9ea8faab233f806618e60be2f40e2c5ceeee71612a
+
+pkgname = fermat
+
