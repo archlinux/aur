@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus exporter for pihole metrics
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+DynamicUser=yes
+User=pihole_exporter
+Restart=on-failure
+ExecStart=/usr/bin/prometheus-pihole-exporter
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
