@@ -7,10 +7,10 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.3.0.rc2.r910.g42e3752be
+pkgver=1.3.0.rc2.r963.g4de96f8bc
 pkgrel=1
 epoch=1
-pkgdesc='Open source, low-latency, high quality voice chat (git version)'
+pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
 arch=('i686' 'x86_64')
 url='https://www.mumble.info'
 license=('BSD')
@@ -26,10 +26,8 @@ source=('git://github.com/mumble-voip/mumble.git'
         'git://github.com/mumble-voip/mumble-theme.git'
         'git://github.com/mumble-voip/celt-0.7.0.git'
         'git://github.com/mumble-voip/opus.git'
-        'git://github.com/mumble-voip/speex.git'
-        'build-type-release.patch')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-            '328e160a99970773a9b3c165d8c4f24e73306b07a42ce91f974e936551a38a25')
+        'git://github.com/mumble-voip/speex.git')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -45,9 +43,6 @@ prepare() {
   git config submodule.3rdparty/speex.url "$srcdir/speex"
   git config submodule.themes/Mumble.url "$srcdir/mumble-theme"
   git submodule update
-
-  # https://github.com/mumble-voip/mumble/issues/4470
-  patch -Np1 -i "$srcdir/build-type-release.patch"
 }
 
 build() {
