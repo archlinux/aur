@@ -23,7 +23,7 @@ package() {
 
     # Copy files over and set rights
     cp -a "$srcdir"/. "$pkgdir"/opt/lightcord
-    chmod 755 "$pkgdir"/opt/lightcord/Lightcord
+    chmod 755 "$pkgdir"/opt/lightcord/lightcord
 
     # Link icon and add Desktop
     ln -s /opt/lightcord/lightcord.png "$pkgdir"/usr/share/pixmaps/lightcord.png
