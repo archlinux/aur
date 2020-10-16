@@ -4,7 +4,7 @@
 # Based on the zotero PKGBUILD
 
 pkgname=jurism
-pkgver=5.0.90m3
+pkgver=5.0.90m6
 pkgrel=1
 pkgdesc="Juris-M Standalone. Is a variant of Zotero, with legal and multilingual support."
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('AGPL3')
 depends=('dbus-glib' 'gtk3' 'nss' 'libxt')
 
 sha256sums=('e77753174477bfd22d9b983e9e53954e9579e944c2b62bf32fcbdf17f1b36281')
-sha256sums_x86_64=('f1ff5d1babf62394065e2033b4b03b086e92160de6e29d1bcb5916ec0b8cca98')
+sha256sums_x86_64=('eae746cda302c8ab71c4a75fa156136baeba39641b869c0ebb74975d24ebd473')
 
 install='jurism.install'
 
