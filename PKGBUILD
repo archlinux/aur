@@ -30,5 +30,5 @@ package() {
     install -Dm644 "$pkgdir"/opt/lightcord/Lightcord.desktop -t "$pkgdir"/usr/share/applications
 
     # Create symlink in /usr/bin; stolen from other PKGBUILDs
-    ln -s /opt/lightcord/Lightcord "$pkgdir"/usr/bin/lightcord
+    ln -s /opt/lightcord/lightcord "$pkgdir"/usr/bin/lightcord
 }
