@@ -1,6 +1,6 @@
 pkgbase = sherpa
 	pkgdesc = A particle physics package for Monte Carlo simulation of collider events.
-	pkgver = 2.2.8
+	pkgver = 2.2.10
 	pkgrel = 1
 	url = http://sherpa.hepforge.org
 	arch = x86_64
@@ -9,12 +9,14 @@ pkgbase = sherpa
 	depends = lhapdf
 	depends = fastjet
 	depends = hepmc
-	depends = hepmc3
+	depends = hepmc2
 	depends = openmpi
 	depends = openloops
 	depends = rivet
-	source = http://www.hepforge.org/archive/sherpa/SHERPA-MC-2.2.8.tar.gz
-	md5sums = 3bcc367ab93edbe603db60eb21ca5164
+	source = http://www.hepforge.org/archive/sherpa/SHERPA-MC-2.2.10.tar.gz,
+	source = https://gitlab.com/sherpa-team/sherpa/-/commit/dc205d82bf91e54f240f44e539510d2a24775dc1.diff
+	md5sums = 0611fb42daef6dbad8e724e87bcca02b
+	md5sums = 8e1e432ed5ba1a07cbc45a3625a48535
 
 pkgname = sherpa
 
