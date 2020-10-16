@@ -45,9 +45,9 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.32.0_583_g7a7a0a78b5
+pkgver=0.32.0_776_g925d6e1205
 pkgrel=1
-_waf_version=2.0.9
+_waf_version=2.0.20
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL')
@@ -65,7 +65,7 @@ source=('git+https://github.com/mpv-player/mpv'
         "https://waf.io/waf-${_waf_version}")
 sha256sums=('SKIP'
             '1ba780ede4a28b68ae5b7ab839958ff91ed01d3c6c1d24cce8a5dd24492f8d2b'
-            '2a8e0816f023995e557f79ea8940d322bec18f286917c8f9a6fa2dc3875dfa48')
+            'bf971e98edc2414968a262c6aa6b88541a26c3cd248689c89f4c57370955ee7f')
 
 _opt_extra_flags=()
 
