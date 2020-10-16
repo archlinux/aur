@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=lfs-git
-pkgver=r16.f1fe593
+pkgver=0.5.1.r0.gdb844c0
 pkgrel=1
 pkgdesc="Get information on your mounted disks (git)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

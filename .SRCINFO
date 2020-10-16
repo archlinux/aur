@@ -1,6 +1,6 @@
 pkgbase = lfs-git
 	pkgdesc = Get information on your mounted disks (git)
-	pkgver = r16.f1fe593
+	pkgver = 0.5.1.r0.gdb844c0
 	pkgrel = 1
 	url = https://github.com/Canop/lfs
 	arch = x86_64
