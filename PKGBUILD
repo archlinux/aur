@@ -7,12 +7,11 @@ arch=('i686' 'x86_64')
 url="http://www.gerd-neugebauer.de/software/TeX/BibTool/"
 license=('GPL')
 depends=('texlive-bin' 'glibc')
-makedepends=('git')
+makedepends=('git' 'texlive-core')
 provides=('bibtool')
 conflicts=('bibtool')
 source=("git+https://github.com/ge-ne/bibtool")
 md5sums=('SKIP')
-options=('!makeflags')
 
 pkgver() {
   cd ${pkgname%-git}
@@ -24,10 +23,18 @@ build() {
   autoreconf
   ./configure --prefix=/usr
   make
+  cd doc
+  make
 }
 
 package() {
   cd ${pkgname%-git}
-  install -d "$pkgdir"/usr/bin
+  install -d "$pkgdir"/usr/bin "$pkgdir"/usr/share/docs/$pkgname "$pkgdir"/usr/share/man/man1
   make INSTALLPREFIX="$pkgdir/" install
+  cd doc
+  for _i in *.pdf
+  do
+    install -Dm644 ${_i} "$pkgdir"/usr/share/docs/$pkgname/${_i}
+  done
+  install -Dm644 ${pkgname%-git}.1 "$pkgdir"/usr/share/man/man1
 }

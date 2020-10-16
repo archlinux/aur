@@ -7,11 +7,11 @@ pkgbase = bibtool-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = texlive-core
 	depends = texlive-bin
 	depends = glibc
 	provides = bibtool
 	conflicts = bibtool
-	options = !makeflags
 	source = git+https://github.com/ge-ne/bibtool
 	md5sums = SKIP
 
