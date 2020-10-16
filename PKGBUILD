@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/YHNdnzj/systemd-cleanup-pacman-hook"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('92024f91472a0e153aa8ddad1d55bdcdf3eff10dfb316be0b903621d8e15b586')
+sha256sums=('a144202290508dde2def9980793d74bc7558b9e58acef71ea8f37151510bee6f')
 
 package() {
     depends=('findutils' 'systemd')
