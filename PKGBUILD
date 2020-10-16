@@ -1,5 +1,5 @@
 pkgname=pandoc-bin
-pkgver=2.10.1
+pkgver=2.11.0.2
 pkgrel=1
 pkgdesc="Pandoc - executable only, without 750MB Haskell depends/makedepends"
 url="http://pandoc.org"
@@ -19,8 +19,8 @@ source=(
     # The binary release doesn't have the datafiles, so we need to yoink those out of the source tarball, too.
     "https://github.com/jgm/pandoc/archive/${pkgver}.tar.gz"
 )
-sha256sums=('a3ab481ad53f5568d7ec5263fbdd3478fb320d13b5d61a92fb5cee410186bd86'
-            'e1bbcccbb7fa645c14e4ff66742d112fbb5d4de1bd0eaf5add0d283304ef4e86')
+sha256sums=('18a6fe80adca5defb16c2729b2e07fdadc708df1721126c8026466f0ab6f37b6'
+            '47daf20fc56eaefb35d1a04b19ac120131bf8b208a7883c6524e88fb7bd4b18f')
 
 package() {
     cd "${srcdir}/pandoc-${pkgver}"
@@ -30,8 +30,6 @@ package() {
     mkdir -p "${pkgdir}/usr/share/pandoc"
     cp -R bin share "${pkgdir}/usr"
 
-    # Citeproc is provided by a different package, and depends on various other datafiles we don't handle here.
-    rm "${pkgdir}/usr/bin/pandoc-citeproc" "${pkgdir}/usr/share/man/man1/pandoc-citeproc.1.gz"
 
     # We're still missing all the datafiles and so on. We get those from the source tarball...
     cp -R data "${pkgdir}/usr/share/pandoc/"
