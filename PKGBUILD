@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=conserve-git
-pkgver=0.6.7.r0.g2c0d79a
+pkgver=0.6.8.r2.g44af4e7
 pkgrel=1
 pkgdesc="Robust portable backup tool written in Rust (git)"
 arch=('x86_64')
@@ -21,12 +21,12 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --locked
+  cargo build --release --all-features
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked
+  cargo test --release --all-features
 }
 
 package() {
