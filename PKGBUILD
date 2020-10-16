@@ -2,7 +2,7 @@
 # pkg: git
 pkgname="openbangla-keyboard-git"
 pkgver=2.0.0.r2.gcc3f41e
-pkgrel=1
+pkgrel=2
 pkgdesc="An OpenSource, Unicode compliant Bengali Input Method"
 arch=('x86_64')
 url="https://openbangla.github.io"
@@ -10,7 +10,7 @@ license=('GPL3')
 provides=( 'openbangla-keyboard' )
 conflicts=( 'openbangla-keyboard' )
 depends=('ibus' 'qt5-base')
-makedepends=('cmake')
+makedepends=('cmake' 'rust')
 optdepends=('ttf-indic-otf: fonts for Bangla and other Indic scripts'
             'ttf-freebanglafont: miscellaneous fonts for Bangla script')
 install="${pkgname%*-git}.install"
