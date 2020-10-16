@@ -5,7 +5,6 @@
 
 pkgname=mumps-seq-shared
 _pkgname=mumps
-_PKGNAME=MUMPS
 pkgver=5.2.0
 pkgrel=1
 pkgdesc="Sparse solver library using Gaussian elimination (sequential version, shared library version)"
@@ -15,7 +14,7 @@ depends=('gcc-libs' 'blas' 'lapack' 'metis' 'scotch')
 provides=('mumps')
 conflicts=('mumps' 'mumps-seq')
 arch=('any')
-source=("http://mumps.enseeiht.fr/${_PKGNAME}_${pkgver}.tar.gz"
+source=("http://mumps.enseeiht.fr/${_pkgname^^}_${pkgver}.tar.gz"
         "Makefile.seq.inc"
         "shared-libseq.patch"
         "shared-pord.patch"
@@ -27,7 +26,7 @@ sha256sums=('41f2c7cb20d69599fb47e2ad6f628f3798c429f49e72e757e70722680f70853f'
             '0f0e10b2d76caf0884ad94863e1a961803be8eac4dde1d20e9a052d4b0ea669c')
 
 prepare(){
-  cd "${srcdir}/${_PKGNAME}_${pkgver}"
+  cd "${srcdir}/${_pkgname^^}_${pkgver}"
 
   # Makefile and patches are taking from Debian
   # https://salsa.debian.org/science-team/mumps/tree/master/debian
@@ -39,19 +38,19 @@ prepare(){
 }
 
 build() {
-  cd "${srcdir}/${_PKGNAME}_${pkgver}"
+  cd "${srcdir}/${_pkgname^^}_${pkgver}"
 
   make -j1 all
 }
 
 package(){
   # Install all headers
-  cd "${srcdir}/${_PKGNAME}_${pkgver}/include"
+  cd "${srcdir}/${_pkgname^^}_${pkgver}/include"
   install -m 755 -d "${pkgdir}/usr/include/${pkgname}"
   install -D -m644 -- *.h "${pkgdir}/usr/include/${pkgname}"
 
   # Install all libraries
-  cd "${srcdir}/${_PKGNAME}_${pkgver}/lib"
+  cd "${srcdir}/${_pkgname^^}_${pkgver}/lib"
   install -m 755 -d "${pkgdir}/usr/lib"
   for _file in *.so; do
     cp -a "${_file}" "${pkgdir}/usr/lib/${_file}"
@@ -59,7 +58,7 @@ package(){
   done
 
   # Install mpiseq headers
-  cd "${srcdir}/${_PKGNAME}_${pkgver}/libseq"
+  cd "${srcdir}/${_pkgname^^}_${pkgver}/libseq"
   install -m 755 -d "${pkgdir}/usr/include/mpiseq"
   install -D -m644 -- *.h "${pkgdir}/usr/include/mpiseq"
   # Install mpiseq libraries
@@ -71,17 +70,17 @@ package(){
   done
 
   # Install license
-  install -D -m644 "${srcdir}/${_PKGNAME}_${pkgver}/LICENSE"\
+  install -D -m644 "${srcdir}/${_pkgname^^}_${pkgver}/LICENSE"\
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Install doc
   #install -m 755 -d "${pkgdir}/usr/share/doc/${pkgname}"
-  #install -D -m644 "${srcdir}/${_PKGNAME}_${pkgver}/doc/userguide_${pkgver}.pdf"\
+  #install -D -m644 "${srcdir}/${_pkgname^^}_${pkgver}/doc/userguide_${pkgver}.pdf"\
     #"${pkgdir}/usr/share/doc/${pkgname}/userguide_${pkgver}.pdf"
 
   # Install examples
   install -m 755 -d "${pkgdir}/usr/share/doc/${pkgname}/examples"
-  cd "${srcdir}/${_PKGNAME}_${pkgver}/examples"
+  cd "${srcdir}/${_pkgname^^}_${pkgver}/examples"
   install -m 644 * "${pkgdir}/usr/share/doc/${pkgname}/examples"
   for _FILE in ssimpletest dsimpletest csimpletest zsimpletest c_example; do
     chmod 0755 "${pkgdir}/usr/share/doc/${pkgname}/examples/${_FILE}"
