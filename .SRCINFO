@@ -1,0 +1,13 @@
+pkgbase = python-pytorch-adabelief-git
+	pkgdesc = PyTorch implementation of Adabelief Optimizer
+	pkgver = r164.47da741
+	pkgrel = 1
+	url = https://juntang-zhuang.github.io/adabelief
+	arch = any
+	license = MIT
+	depends = python-pytorch
+	source = git+https://github.com/juntang-zhuang/Adabelief-Optimizer
+	sha256sums = SKIP
+
+pkgname = python-pytorch-adabelief-git
+
