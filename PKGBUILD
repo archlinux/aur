@@ -2,7 +2,7 @@
 # copied a few parts from https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=tastyworks
 
 pkgname=tastyworks-bin
-pkgver='1.9.2'
+pkgver='1.10.0'
 pkgrel='1'
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom:commercial')
 depends=('java-runtime')
 
 source=(https://download.tastyworks.com/desktop-1.x.x/${pkgver}/tastyworks-${pkgver}-${pkgrel}_amd64.deb)
-sha256sums=('a59d74919ce035c772bd2c0577b495827e20773d21eb0f164b4791cd954adac5')
+sha256sums=('1fc05e1149aafc0820964323a36f85963737930855b9dcec00e5ef8abdcb6bd4')
 
 build() {
 	tar xf data.tar.xz
