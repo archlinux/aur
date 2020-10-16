@@ -1,6 +1,6 @@
 # Maintainer: Jörg Behrmann <behrmann@physik.fu-berlin.de>
 pkgname=python-qsymm
-pkgver=1.1.2
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="Symmetry finder and symmetric Hamiltonian generator"
 arch=('any')
@@ -14,7 +14,7 @@ checkdepends=(python-pytest)
 source=(
     https://gitlab.kwant-project.org/qt/qsymm/-/archive/v${pkgver}/qsymm-v${pkgver}.tar.gz
 )
-sha256sums=('805dbb356fbaa3c2b875d56710827bf57792f24203a14348c6542ed1c82baed2')
+sha256sums=('7b542f0ea44f836eb879bd6bb19c6fcc749a0240b1b42cae9c873ab9012c6b1d')
 
 build() {
     cd "$srcdir/qsymm-v${pkgver}"
