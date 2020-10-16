@@ -1,7 +1,7 @@
 # Maintainer: Nick Cao <nickcao@nichi.co>
 pkgname=auth-thu
 pkgver=1.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A commandline Tunet (auth4/6.tsinghua.edu.cn, Tsinghua-IPv4) authentication tool"
 arch=('x86_64')
 url="https://github.com/z4yx/GoAuthing"
@@ -11,7 +11,7 @@ source=("auth-thu-$pkgver.tar.gz::https://github.com/z4yx/GoAuthing/archive/v$pk
         "auth-thu.service"
         "auth-thu.timer")
 sha256sums=('92e7a0e14c4a9ef7a0be0016d3debc8206d356ec95946597baf29246b89af7ab'
-            'f1f24c538f5ca3221c270751b73c66185cabc13ef486431c05ced5790b585661'
+            'e40379b17bad964d1147f6a597c50044aaa574b75575c785ea43686e622fbe87'
             '89a590bc24500defb5ba59180e4bff4ba60ad5c851cea684e85c3a2886efe185')
 
 build() {

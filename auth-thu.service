@@ -3,7 +3,7 @@ Description=Authenticating utility for auth.tsinghua.edu.cn
 
 [Service]
 Type=oneshot
-ExecStart=auth-thu --daemonize auth -n
+ExecStart=auth-thu --daemonize auth
 
 [Install]
 WantedBy=default.target
