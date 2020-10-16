@@ -2,21 +2,21 @@
 
 pkgname=v2raya-bin
 _pkgname=v2raya
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports V2Ray, SS, SSR, Trojan and Pingtunnel protocols"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
-url="https://github.com/mzz2017/v2rayA"
+url="https://github.com/v2rayA/v2rayA"
 license=('GPL')
 depends=('glibc' 'v2ray')
 provides=('v2raya')
 conflicts=('v2raya')
 
-sha_service=1dd06514fb8adf8c3dc92c3fe1040ed2dba6f1bf
+sha_service=0249389e1b8e5a2b05f16dcde7fb57f7de37ca92
 sha_png=5c51b3e670733d6d1cf22e1cb5fe45305f4b8014
 sha_desktop=4d8985bfdca21a611fbb51fd02eddade4da99add
-sha_web=25ed85bea12692bfac37a6620187380cd4fa8776
+sha_web=01c5a7d5a20a61c83c55662eb6c5cb3c4a89652e
 
 source=(
     "v2raya.service"
@@ -49,19 +49,19 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    'b2970a891beaeb04aab5c25da9260496854d5733'
+    '02435e6ae896ba9a0b9ee3ca7fbde9feee2d7de5'
 )
 sha1sums_x86_64=(
-    '787785a7e141f56fa3fb52347220f5590011c17d'
+    'a530ece10dd2cd01c77ba62733f198b8d73da1e0'
 )
 sha1sums_aarch64=(
-    '84f77e853f757aca544da88c51578094be1e782f'
+    'cb0823c8c9fd986726dcc78061e0ddcd86e1f766'
 )
 sha1sums_armv6h=(
-    '7a7607bc498e90741f6051ed9bad9f51d013ee2a'
+    '04289ca85fae3e5119aa939fd2d8c1c3a5b945fb'
 )
 sha1sums_armv7h=(
-    '7a7607bc498e90741f6051ed9bad9f51d013ee2a'
+    '04289ca85fae3e5119aa939fd2d8c1c3a5b945fb'
 )
 
 package() {
