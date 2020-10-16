@@ -3,13 +3,13 @@
 # pkg: github OpenBangla/OpenBangla-keyboard
 pkgname="openbangla-keyboard"
 pkgver="2.0.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="An OpenSource, Unicode compliant Bengali Input Method"
 arch=('x86_64')
 url="http://openbangla.github.io"
 license=('GPL3')
 depends=('ibus' 'qt5-base')
-makedepends=('cmake')
+makedepends=('cmake' 'rust')
 optdepends=('ttf-indic-otf: fonts for Bangla and other Indic scripts'
             'ttf-freebanglafont: miscellaneous fonts for Bangla script')
 install="$pkgname.install"
