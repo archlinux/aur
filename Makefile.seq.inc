@@ -66,9 +66,9 @@ CDEFS   = -DAdd_
 
 #Begin Optimized options
 # uncomment -fopenmp in lines below to benefit from OpenMP
-OPTF    := $(shell dpkg-buildflags --get FFLAGS) $(OPTF_64BIT) $(OPTF_DEBIAN) -Dintel_ # -fopenmp
-OPTL    := $(shell dpkg-buildflags --get LDFLAGS) # -fopenmp
-OPTC    := $(shell dpkg-buildflags --get CFLAGS) $(OPTC_64BIT) # -fopenmp
+OPTF    := -O -DPORD_INTSIZE64 -fallow-argument-mismatch -Dintel_ # -fopenmp
+OPTL    := -O # -fopenmp
+OPTC    := -O -DPORD_INTSIZE64 # -fopenmp
 #End Optimized options
 INCS = $(INCSEQ)
 LIBS = $(LIBSEQ)
