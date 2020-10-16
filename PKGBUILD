@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium-bin and code-stable-git
 
 pkgname=vscodium-git
-pkgver=1.50.0
+pkgver=1.50.1
 pkgrel=1
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing (git build)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -49,7 +49,7 @@ sha256sums=(
     'SKIP'
     'SKIP'
     '33ea43092cc895b9e6eea9056d72fbe462a450d41b6a1465da22566912110d69'
-    'd7b067874a2a19a538a2253a6b88cdda48dfdeb7614c3e41d32415eb423e8b0b'
+    'd058b0e8f71f1f501320aaabc6f9ad1e2fe734bd23a13db16763a2d49ac8db21'
 )
 provides=('code')
 conflicts=(
