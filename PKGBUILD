@@ -1,7 +1,7 @@
 # Maintainer: muttleyxd <mateusz [at] szychowski.it>
-_gittag=commit-243
+_gittag=commit-248
 pkgname=arma3-unix-launcher-bin
-pkgver=243.8d52963
+pkgver=248.2086b32
 pkgrel=1
 pkgdesc="Launcher for ArmA 3 on Linux and Mac OS X (with Steamworks SDK)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('fmt' 'pugixml' 'qt5-base' 'qt5-svg')
 provides=('arma3-unix-launcher')
 conflicts=('arma3-unix-launcher')
 source=("https://github.com/muttleyxd/arma3-unix-launcher/releases/download/$_gittag/arma3-unix-launcher-$pkgver-$pkgrel-archlinux-x86_64.pkg.tar.zst")
-sha256sums=('272c260677872e81ced6ae483bf90ef0865a95ec98faffd86d40e617ff2f6a8c')
+sha256sums=('d18a4d930dff2275dbde4edd3735c0d18d489114e39840a39d8184fa137ffe5d')
 
 package() 
 {
