@@ -2,7 +2,7 @@
 # Maintainer: basxto <archlinux basxto de>
 
 pkgname=gbm
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Game Backup Monitor monitors games and backs up their savegames"
 url="https://mikemaximus.github.io/gbm-web/linux.html"
@@ -13,8 +13,8 @@ depends=('mono-basic' 'sqlite' 'p7zip')
 optdepends=('libnotify')
 source_x86_64=("https://github.com/MikeMaximus/gbm/releases/download/v${pkgver}/GBM.v${pkgver}.64-bit.7z")
 source_i686=("https://github.com/MikeMaximus/gbm/releases/download/v${pkgver}/GBM.v${pkgver}.32-bit.7z")
-b2sums_x86_64=('47471b70176b706dc9e14b833c6b3624b37d2e5a2bd989f527104d0468e54ae563f1ea81652ff03024870b78e9bfc85e474b1b17f9c9eba6bedbf95511e22d03')
-b2sums_i686=('f551fa1a43e6bd013648c49dcdbf2efac55454afe61b4c3af4068094b32ea5ecaf858d1592599dabaaa6f9d7da613709a8689bcc287e9ae74dfb0c3d0e202420')
+b2sums_x86_64=('df78cade22905dd25997663bc211b2dbe92a859eb796e92a495fbc767a60992fea2dc10659d1b504d4ad33a53cd9ee413d10909fefee1c9736dc53ec0a08d1ee')
+b2sums_i686=('c215ac398b94041137e71931110cd8fdca281c65c1d0c0334a8834e52c6d95f27a12bdf2042f6f928921ec25b67d7d4e01ad6d0ab228655d92679c284dbb560a')
 
 package() {
   #fix new lines
