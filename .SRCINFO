@@ -1,0 +1,20 @@
+pkgbase = python-jsonschema-typed-git
+	pkgdesc = Use JSON Schema for type checking in Python
+	pkgver = r42.54d2f8c
+	pkgrel = 1
+	url = https://github.com/inspera/jsonschema-typed
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jsonschema
+	depends = mypy
+	provides = python-jsonschema-typed-git
+	conflicts = python-jsonschema-typed
+	source = python-jsonschema-typed-git::git+https://github.com/inspera/jsonschema-typed
+	md5sums = SKIP
+
+pkgname = python-jsonschema-typed-git
+
