@@ -23,6 +23,6 @@ sha256sums=('cdb168899d4e3a81eddfcfa7746d1e4e0dab886ea043644e54339b51f396c087'
 package() {
     install -Dm644 appicon.png "$pkgdir/usr/share/pixmaps/wally.png"
     install -Dm755 wally "$pkgdir/usr/bin/wally"
-    install -Dm644 50-wally.rules "$pkgdir/etc/udev/rules.d" 
-    install -Dm644 wally.desktop "$pkgdir/usr/share/applications" 
+    install -Dm644 50-wally.rules "$pkgdir/etc/udev/rules.d/50-wally.rules" 
+    install -Dm644 wally.desktop "$pkgdir/usr/share/applications/wally.desktop" 
 }
