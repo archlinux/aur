@@ -1,0 +1,21 @@
+pkgbase = re3-git
+	pkgdesc = An open-source project reverse-engineering Grand Theft Auto III
+	pkgver = r2217.c40d628f
+	pkgrel = 1
+	url = https://github.com/GTAmodding/re3
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cmake
+	depends = openal
+	depends = glew
+	depends = glfw
+	depends = libsndfile
+	depends = mpg123
+	provides = re3
+	conflicts = re3
+	source = re3::git+https://github.com/GTAmodding/re3
+	md5sums = SKIP
+
+pkgname = re3-git
+
