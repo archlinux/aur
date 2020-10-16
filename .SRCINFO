@@ -7,6 +7,8 @@ pkgbase = lfs-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
+	provides = lfs
+	conflicts = lfs
 	source = git+https://github.com/Canop/lfs
 	sha512sums = SKIP
 

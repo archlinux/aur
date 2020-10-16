@@ -9,6 +9,8 @@ arch=('x86_64')
 url="https://github.com/Canop/lfs"
 license=('MIT')
 makedepends=('cargo' 'git')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
 source=("git+${url}")
 sha512sums=('SKIP')
 
