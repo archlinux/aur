@@ -2,7 +2,7 @@
 # Previous Maintainer: Harry Beadle <harrybeadle@protonmail.com>
 
 pkgname=otf-san-francisco-pro
-pkgver=16.0d11e1
+pkgver=16.0d12e3
 pkgrel=1
 pkgdesc='System font for iOS, macOS, and tvOS. Sourced directly from Apple.'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://developer.apple.com/fonts/'
 license=('custom')
 makedepends=('p7zip')
 source=('https://developer.apple.com/design/downloads/SF-Font-Pro.dmg')
-md5sums=('c9b028c031374918cff395ec313de02a')
+md5sums=('cb3e84d9bc4f73cefa11f6440acac33d')
 
 prepare() {
   7z x SF-Font-Pro.dmg
