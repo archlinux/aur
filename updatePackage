@@ -37,10 +37,15 @@ _i18nHash()
 
 _buildPKGBUILD()
 {
-	sed -e "s/@KICAD_VERSION@/$(_kicadVersion)/" \
+	kicadVersion=`_kicadVersion`
+
+	sed -e "s/@KICAD_VERSION@/$kicadVersion/" \
 		-e "s/@KICAD_HASH@/$(_kicadHash)/" \
 		-e "s/@I18N_HASH@/$(_i18nHash)/" \
 		PKGBUILD.in > PKGBUILD
+
+	sed -e "s/@KICAD_VERSION@/$kicadVersion/" \
+		kicad-library-nightly/PKGBUILD.in > kicad-library-nightly/PKGBUILD.part
 }
 
 _updateSRCINFO()
@@ -52,6 +57,8 @@ _update
 _buildPKGBUILD
 _updateSRCINFO
 version=`_kicadRawVersion`
+
+(cd kicad-library-nightly && ./updatePackage)
 
 git add PKGBUILD .SRCINFO
 git commit -m "Bump to KiCAD $version"
