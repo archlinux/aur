@@ -45,7 +45,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.32.0_776_g925d6e1205
+pkgver=0.32.0_779_gcbbdb3fae4
 pkgrel=1
 _waf_version=2.0.20
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
@@ -136,7 +136,7 @@ package() {
   ./waf install --destdir="$pkgdir"
 
   # Update dependencies automatically based on dynamic libraries
-  _detected_depends=($("$srcdir"/find-deps.py "$pkgdir"/usr/{bin/mpv,lib/libmpv.so}))
+  _detected_depends=($(python3 "$srcdir"/find-deps.py "$pkgdir"/usr/{bin/mpv,lib/libmpv.so}))
   echo 'Auto-detected dependencies:'
   echo "${_detected_depends[@]}" | fold -s -w 79 | sed 's/^/ /'
   depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
