@@ -1,14 +1,16 @@
 pkgbase = flycasual-bin
 	pkgdesc = Fan-made "Star Wars: X-Wing Miniatures Game" simulator
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sandrem/FlyCasual
 	arch = x86_64
 	license = MIT
 	source = https://github.com/Sandrem/FlyCasual/releases/download/1.5/FlyCasual-v1.5-Linux.zip
+	source = https://raw.githubusercontent.com/Sandrem/FlyCasual/development/LICENSE
 	source = flycasual.sh
 	source = flycasual.desktop
 	sha256sums = a252f1125efec035b18decf1ce5e2486fde9625fbc8767c7af60d2e455c0bd3a
+	sha256sums = 615de0833ce2cdb29dd43d9f8214700ad8dd1d60e94392745eeb24b972a2b9e7
 	sha256sums = 07980d05ff1f158b381d5a903d98d593ed72b5ffaaa99ae481e2657ac2901c34
 	sha256sums = a005a2dd3dde0ac5210ab509bbdf3f1eb453ca7da9992768848216422c643ba3
 
