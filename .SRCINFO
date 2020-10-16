@@ -1,0 +1,20 @@
+pkgbase = extra-imageformats-qt-git
+	pkgdesc = bpg, pgf and fuif support for Qt
+	pkgver = r11.fe4356c
+	pkgrel = 1
+	url = https://github.com/sandsmark/extra-imageformats-qt
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	optdepends = libbpg: BPG supprt
+	optdepends = libpgf: PGF support
+	provides = extra-imageformats-qt
+	conflicts = extra-imageformats-qt
+	source = git://github.com/sandsmark/extra-imageformats-qt.git
+	md5sums = SKIP
+
+pkgname = extra-imageformats-qt-git
+
