@@ -3,7 +3,7 @@
 # Maintainer: Eric Berquist <eric.berquist at gmail dot com>
 
 pkgname=gamess
-pkgver=2020R1
+pkgver=2020R2
 pkgrel=1
 pkgdesc="The General Atomic and Molecular Electronic Structure System"
 arch=('x86_64')
@@ -19,8 +19,8 @@ install=${pkgname}.install
 source=("local://gamess-current.tar.gz"
         "opt.patch"
         "tests.patch")
-sha256sums=('94678e567f681d3a7500a1bea68cfb893520e76dcadd7e188eb1e1d185bea90f'
-            'a7f71d749e07b7f81c327f10127b6738a28974c956bfbfa0bba53281d2fcd366'
+sha256sums=('5eb9242751159b6de244055e1bbb5987e052f913d47ce5eb8a4c6d262361cdc3'
+            '4858916a9d55b0ec2dac896db6adc9f54a357b38804b6773ea6bfbbdd3b0030e'
             '38a14c4d428b54838b55ed19cc9aa6741992c2e7b66a0180994d264de71c6bf2')
 
 prepare() {
@@ -43,7 +43,7 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname"
   python bin/create-install-info.py \
-                                    --fortran_version=10.1 \
+                                    --fortran_version=10.2 \
                                     --math=openblas \
                                     --mathlib_path=/usr/lib \
                                     --openmp
