@@ -2,7 +2,7 @@
 
 _pkgname="surface-dtx-daemon"
 pkgname="${_pkgname}-git"
-pkgver=0.1.5.1.r0.g23944b8
+pkgver=0.2.0.1.r0.g488bd6d
 pkgrel=1
 pkgdesc="Surface Detachment System (DTX) Daemon"
 url="https://github.com/linux-surface/surface-dtx-daemon"
