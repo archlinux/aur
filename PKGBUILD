@@ -22,7 +22,7 @@ fi
 ## 4 -> release with custom cflags and system libs
 ## https://github.com/brave/brave-browser/wiki#clone-and-initialize-the-repo
 if [ -z ${COMPONENT+x} ]; then
-  COMPONENT=1
+  COMPONENT=4
 fi
 ##
 
