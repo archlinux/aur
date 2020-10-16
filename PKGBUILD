@@ -3,7 +3,7 @@
 pkgname=man-pages-it-git
 _gitname=manpages-l10n
 pkgver=r11870.548995fe9
-pkgrel=2
+pkgrel=3
 pkgdesc="Italian man pages (Git version)"
 arch=('any')
 url="https://salsa.debian.org/manpages-l10n-team/manpages-l10n"

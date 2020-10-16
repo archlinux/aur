@@ -1,14 +1,14 @@
 pkgbase = man-pages-it-git
 	pkgdesc = Italian man pages (Git version)
 	pkgver = r11870.548995fe9
-	pkgrel = 1
+	pkgrel = 3
 	url = https://salsa.debian.org/manpages-l10n-team/manpages-l10n
 	arch = any
 	license = GPL3
 	makedepends = po4a
 	makedepends = git
 	depends = man-db
-	conflicts = man-pages-de
+	conflicts = man-pages-it
 	options = !emptydirs
 	source = manpages-l10n::git+https://salsa.debian.org/manpages-l10n-team/manpages-l10n.git
 	sha512sums = SKIP
