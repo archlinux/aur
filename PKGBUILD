@@ -1,25 +1,26 @@
-# Maintainer: Morten Linderud <foxboron@archlinux.org>
+# Maintainer: Filipe Nascimento <flipee at tuta dot io>
+# Contributor: Morten Linderud <foxboron@archlinux.org>
 
 pkgname=smenu
-pkgver=0.9.11
+pkgver=0.9.16
 pkgrel=1
-pkgdesc="Terminal utility that allows you to use words coming from the standard input to create a nice selection window just
-below the cursor. Once done, your selection will be sent to standard output."
+pkgdesc="Terminal utility that reads words from stdin or a file and creates an interactive
+selection window at the cursor location without clearing the screen"
 arch=('x86_64')
 url="https://github.com/p-gen/smenu"
 license=('GPL')
 depends=('ncurses')
-source=("${pkgname}.tar.gz::https://github.com/p-gen/smenu/archive/v${pkgver}.tar.gz")
-sha256sums=('ac6b8b94aa5382a0227753bd2c580fd727c7ce19adf72592993dd982b0af478f')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/p-gen/smenu/archive/v${pkgver}.tar.gz")
+sha256sums=('8db8026a8d95f01b9a4b775834432b15cfd248868ef2a2ec1232bd534d26dc09')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  ./autogen.sh
-  ./configure --prefix="/usr"
-  make
+    cd "${pkgname}-${pkgver}"
+    ./autogen.sh
+    ./configure --prefix="/usr"
+    make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
