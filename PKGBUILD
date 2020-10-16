@@ -1,6 +1,6 @@
 _pkgname=openmpi
 pkgname=${_pkgname}-gcc9
-pkgver=4.0.4
+pkgver=4.0.5
 _gccver=9.3.0
 pkgrel=1
 pkgdesc='High performance message passing library (MPI) (built with GCC9)'
@@ -14,8 +14,7 @@ conflicts=('openmpi')
 provides=("openmpi=${pkgver}")
 options=('staticlibs')
 source=(https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('47e24eb2223fe5d24438658958a313b6b7a55bb281563542e1afc9dec4a31ac4')
-sha512sums=('6c193b4b5cbfd9d48fa5efcef01372c424b51ae5e9727ccf4235e3b14556dfeb010865e41a9473419ccda16559139aa469086b1fff9abfd337e87387fdec1c64')
+sha256sums=('c58f3863b61d944231077f344fe6b4b8fbb83f3d1bc93ab74640bf3e5acac009')
 
 build() {
   cd ${_pkgname}-${pkgver}
