@@ -1,7 +1,7 @@
 # Maintainer: dszryan <dszryan@local>
 pkgname=edrawinfo-bin
 pkgver=8.6
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Edraw Infographic is a graphic design and data visualization software compatible with different OS."
 arch=('x86_64')
@@ -43,13 +43,14 @@ package() {
     "$pkgdir/usr/share/icons/gnome/scalable/mimetypes/" \
     "$pkgdir/usr/bin/"
 
-  cp  -R  "${srcdir}/$pkgname-$pkgver/."                        "$pkgdir/opt/${pkgname/-bin/}/"
-  cp  -f  "${srcdir}/$pkgname-$pkgver/${pkgname/-bin/}.desktop" "$pkgdir/usr/share/applications/"
-  cp  -f  "${srcdir}/$pkgname-$pkgver/${pkgname/-bin/}.png"     "$pkgdir/usr/share/icons/"
-  cp  -f  "${srcdir}/$pkgname-$pkgver/eddx.svg"                 "$pkgdir/usr/share/icons/gnome/scalable/mimetypes/edrawinfo.svg"
-  cp  -f  "${srcdir}/$pkgname-$pkgver/${pkgname/-bin/}.xml"     "$pkgdir/usr/share/mime/packages/"
-  ln  -fs "/opt/${pkgname/-bin/}/EdrawInfo"                     "$pkgdir/usr/bin/EdrawInfo"
-  sed -i  's|"eddx"|"edrawinfo"|g'                              "$pkgdir/usr/share/mime/packages/${pkgname/-bin/}.xml"
+  cp  -R  "${srcdir}/$pkgname-$pkgver/."                                 "$pkgdir/opt/${pkgname/-bin/}/"
+  cp  -f  "${srcdir}/$pkgname-$pkgver/${pkgname/-bin/}.desktop"          "$pkgdir/usr/share/applications/"
+  cp  -f  "${srcdir}/$pkgname-$pkgver/${pkgname/-bin/}.png"              "$pkgdir/usr/share/icons/edinfo.png"
+  cp  -f  "${srcdir}/$pkgname-$pkgver/eddx.svg"                          "$pkgdir/usr/share/icons/gnome/scalable/mimetypes/edinfo.svg"
+  cp  -f  "${srcdir}/$pkgname-$pkgver/${pkgname/-bin/}.xml"              "$pkgdir/usr/share/mime/packages/"
+  ln  -fs "/opt/${pkgname/-bin/}/EdrawInfo"                              "$pkgdir/usr/bin/${pkgname/-bin/}"
+  sed -i  's|eddx|edinfo|g'                                              "$pkgdir/usr/share/mime/packages/${pkgname/-bin/}.xml"
+  sed -iE 's|eddx|edinfo|g; s|Icon.*|Icon=/usr/share/icons/edinfo.png|g' "$pkgdir/usr/share/applications/${pkgname/-bin/}.desktop"
 }
 
 post_install() {

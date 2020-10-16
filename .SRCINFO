@@ -1,7 +1,7 @@
 pkgbase = edrawinfo-bin
 	pkgdesc = Edraw Infographic is a graphic design and data visualization software compatible with different OS.
 	pkgver = 8.6
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://www.edrawsoft.com/archives/edrawinfo-64.run.gz
 	arch = x86_64
