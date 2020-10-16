@@ -4,7 +4,7 @@
 
 pkgbase=vte3-kinetic
 pkgname=(vte3-kinetic vte-kinetic-common)
-pkgver=0.61.0+kinetic+79+g59d3ce11
+pkgver=0.62.1+kinetic
 pkgrel=1
 pkgdesc="vte3 patched to enable kinetic scrolling with libinput"
 url="https://wiki.gnome.org/Apps/Terminal/VTE"
