@@ -1,10 +1,11 @@
 pkgbase = python-git-up
 	pkgdesc = A python implementation of git up
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/msiemens/PyGitUp
 	arch = any
 	license = MIT
+	makedepends = python-poetry
 	makedepends = python-setuptools
 	depends = python-termcolor
 	depends = python-colorama
