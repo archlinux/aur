@@ -1,6 +1,6 @@
 pkgbase = surface-control-bin
 	pkgdesc = Control various aspects of Microsoft Surface devices from the Command-Line
-	pkgver = 0.2.8
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/linux-surface/surface-control
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = surface-control-bin
 	depends = gcc-libs
 	provides = surface-control
 	conflicts = surface-control
-	source = https://github.com/linux-surface/surface-control/releases/download/v0.2.8-1/surface-control-0.2.8.1-x86_64.bin.tar.xz
-	sha256sums = bcd7aad6aaf61aa6fccb67a2c71ec4810957c2f7cbb6ead1ce87af646258277e
+	source = https://github.com/linux-surface/surface-control/releases/download/v0.3.0-1/surface-control-0.3.0.1-x86_64.bin.tar.xz
+	sha256sums = 21cf5399e3e6efad884a10a3fcd449f1e11d0c742aae8e3c019a15d844a3e263
 
 pkgname = surface-control-bin
 
