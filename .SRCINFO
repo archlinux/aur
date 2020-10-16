@@ -5,10 +5,9 @@ pkgbase = cpick
 	url = https://gitlab.com/ethanbakerdev/cpick
 	arch = x86_64
 	license = Apache
-	makedepends = git
 	makedepends = go
-	source = git+https://gitlab.com/ethanbakerdev/cpick.git#tag=v1.0.2
-	sha256sums = SKIP
+	source = https://gitlab.com/ethanbakerdev/cpick/-/archive/v1.0.2/cpick-v1.0.2.tar.gz
+	sha256sums = a35040101c802d932ebf60d3db7d0d3ef61c9898af06e98b027096bc0cd19036
 
 pkgname = cpick
 
