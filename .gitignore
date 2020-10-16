@@ -1,0 +1,7 @@
+*.tar.xz
+*.tar.zst
+*.tar.gz
+*.tar.gz.asc
+pkg/
+src/
+tinyarray-*/
