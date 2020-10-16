@@ -1,0 +1,23 @@
+pkgbase = kicad-library-nightly
+	pkgdesc = KiCAD component and footprint libraries
+	pkgver = 5.99.0_4092_g1ee3df61c9
+	pkgrel = 1
+	url = http://kicad-pcb.org/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	options = !strip
+	source = git+https://gitlab.com/kicad/libraries/kicad-symbols.git#commit=316b73ac
+	source = git+https://gitlab.com/kicad/libraries/kicad-footprints.git#commit=b5297d14
+	source = git+https://gitlab.com/kicad/libraries/kicad-packages3D.git#commit=d8b7e8c5
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kicad-library-nightly
+	pkgdesc = Kicad component and footprint libraries
+
+pkgname = kicad-library-3d-nightly
+	pkgdesc = Kicad 3D render model libraries
+

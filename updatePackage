@@ -1,0 +1,74 @@
+#!/bin/bash
+
+_update()
+{
+	cd kicad-symbols
+	git fetch
+	cd ../kicad-footprints
+	git fetch
+	cd ../kicad-packages3D
+	git fetch
+	cd ..
+}
+
+_symbolVersion()
+{
+	cd kicad-symbols
+	git describe --tag
+	cd ..
+}
+
+_symbolHash()
+{
+	cd kicad-symbols
+	git rev-parse --short master
+	cd ..
+}
+
+_footprintVersion()
+{
+	cd kicad-footprints
+	git describe --tag
+	cd ..
+}
+
+_footprintHash()
+{
+	cd kicad-footprints
+	git rev-parse --short master
+	cd ..
+}
+
+_package3dVersion()
+{
+	cd kicad-packages3D
+	git describe --tag
+	cd ..
+}
+
+_package3dHash()
+{
+	cd kicad-packages3D
+	git rev-parse --short master
+	cd ..
+}
+
+_buildPKGBUILD()
+{
+	sed -e "s/@SYMBOL_HASH@/$(_symbolHash)/" \
+		-e "s/@FOOTPRINT_HASH@/$(_footprintHash)/" \
+		-e "s/@PACKAGE3D_HASH@/$(_package3dHash)/" \
+		PKGBUILD.part > PKGBUILD
+}
+
+_updateSRCINFO()
+{
+	makepkg --printsrcinfo > .SRCINFO
+}
+
+_update
+_buildPKGBUILD
+_updateSRCINFO
+
+git add PKGBUILD .SRCINFO
+git commit -m "Bump to KiCAD-Symbols $(_symbolVersion), KiCAD-Footprints $(_footprintVersion) and KiCAD-Packages3D $(_package3dVersion)"
