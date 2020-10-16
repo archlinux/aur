@@ -1,0 +1,13 @@
+pkgbase = lfs
+	pkgdesc = Get information on your mounted disks
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/Canop/lfs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = lfs-0.5.1.tar.gz::https://github.com/Canop/lfs/archive/v0.5.1.tar.gz
+	sha512sums = fb533af87ead557fb8fa6dedd028e9663f7e099fd6887f4ba7026347182be7b1aa0d8a7bc51cc0957ad00f8544f1fbe812d97d6ec5bd1a044db4f651feda3fb8
+
+pkgname = lfs
+
