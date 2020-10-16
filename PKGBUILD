@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helm-push
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='Helm plugin to pushing charts to chartmuseum'
 arch=('x86_64')
 url='https://github.com/chartmuseum/helm-push'
@@ -10,7 +10,7 @@ install=helm-push.install
 depends=('helm')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5aaf1941d004000dd7a83b24e3fc9e7a93e64f4fa2e108af824d3b81b7d68b46')
+sha256sums=('6c87d6bb2685b05182e380e81d5317a53263d2422c3bb7157397511ff4f659c9')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -26,7 +26,7 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw -mod=readonly'
-  go build -o bin/helmpush ./cmd/helmpush
+  go build -o bin/helmpush -ldflags "-linkmode=external" ./cmd/helmpush
 }
 # check(): Go tests require special test environment
 
