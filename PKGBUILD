@@ -1,7 +1,7 @@
 # Maintainer: Nemin <pergerlori@gmail.com>
 pkgname=relive-git
-pkgver=r3166.4bc00b39
-pkgrel=2
+pkgver=r3641.fcce1105
+pkgrel=1
 pkgdesc="An open-source Abe's Oddysee / Abe's Exoddus engine"
 arch=('i686' 'x86_64')
 url="https://aliveteam.github.io"
