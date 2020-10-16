@@ -1,8 +1,9 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: Brian Knox <taotetek at gmail.com>
+# Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=czmq-git
-pkgver=20160617
+pkgver=20201006
 pkgrel=1
 pkgdesc="High-level C binding for ZeroMQ"
 arch=('i686' 'x86_64')
