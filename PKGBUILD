@@ -1,67 +1,60 @@
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=nodejs-git
-pkgver=5.11.1.r4.g03d36ae
+pkgver=14.14.0.r1864.g6f34498148
 pkgrel=1
-pkgdesc='Evented I/O for V8 javascript'
+pkgdesc="JavaScript runtime built on Chrome's V8 JavaScript engine"
 arch=('i686' 'x86_64')
-url='http://nodejs.org/'
+url="https://nodejs.org/"
 license=('MIT')
-depends=('openssl' 'zlib' 'icu' 'libuv' 'http-parser') # 'v8')
-makedepends=('python2' 'procps-ng' 'git')
+depends=('glibc' 'brotli' 'icu' 'libnghttp2' 'libuv' 'openssl' 'zlib')  # c-ares http-parser
+makedepends=('git' 'procps-ng' 'python')
 optdepends=('npm: nodejs package manager')
 provides=('nodejs')
 conflicts=('nodejs')
-source=(${pkgname%-git}::git+https://github.com/nodejs/node#branch=v5.x)
+source=("git+https://github.com/nodejs/node.git")
 sha256sums=('SKIP')
-options=('!makeflags')
+
 
 pkgver() {
-  cd ${pkgname%-git}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-}
+  cd "node"
 
-prepare() {
-  cd ${pkgname%-git}
-
-  msg 'Fixing for python2 name'
-  find -type f -exec sed \
-    -e 's_^#!/usr/bin/env python$_&2_' \
-    -e 's_^\(#!/usr/bin/python2\).[45]$_\1_' \
-    -e 's_^#!/usr/bin/python$_&2_' \
-    -e 's_^\( *exec \+\)python\( \+.*\)$_\1python2\2_'\
-    -e 's_^\(.*\)python\( \+-c \+.*\)$_\1python2\2_'\
-    -e "s_'python'_'python2'_" -i {} \;
-  find test/ -type f -exec sed 's_python _python2 _' -i {} \;
+  _tag=$(git tag -l --sort -v:refname | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//;s/-/./g'
 }
 
 build() {
-  cd ${pkgname%-git}
+  cd "node"
 
-  export PYTHON=python2
   ./configure \
-    --prefix=/usr \
+    --prefix="/usr" \
     --with-intl=system-icu \
     --without-npm \
-    --shared-openssl \
-    --shared-zlib \
+    --shared-brotli \
     --shared-libuv \
-    --shared-http-parser
-    # --shared-v8
-
+    --shared-nghttp2 \
+    --shared-openssl \
+    --shared-zlib
   make
 }
 
+check() {
+  cd "node"
+
+  #make test
+}
+
 package() {
-  cd ${pkgname%-git}
+  cd "node"
+
   make DESTDIR="$pkgdir" install
 
-  # install docs as per user request
-  install -d "$pkgdir"/usr/share/doc/nodejs-git
-  cp -r doc/api/*.md \
-    "$pkgdir"/usr/share/doc/nodejs-git
+  install -d "$pkgdir/usr/share/doc/nodejs"
+  cp -r "doc/api" "$pkgdir/usr/share/doc/nodejs"
 
-  install -D -m644 LICENSE \
-    "$pkgdir"/usr/share/licenses/nodejs-git/LICENSE
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/nodejs"
 }
