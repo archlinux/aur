@@ -1,1 +1,5 @@
-PKGBUILD.part
+/kicad-symbols/
+/kicad-footprints/
+/kicad-packages3D/
+
+/PKGBUILD.part
