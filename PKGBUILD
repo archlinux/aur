@@ -16,7 +16,7 @@ conflicts=('v2raya')
 sha_service=1dd06514fb8adf8c3dc92c3fe1040ed2dba6f1bf
 sha_png=5c51b3e670733d6d1cf22e1cb5fe45305f4b8014
 sha_desktop=4d8985bfdca21a611fbb51fd02eddade4da99add
-sha_web=e9ae54d8179f1c8d9dd0e286a666afcc3aed53c8
+sha_web=25ed85bea12692bfac37a6620187380cd4fa8776
 
 source=(
     "v2raya.service"
