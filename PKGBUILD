@@ -1,23 +1,22 @@
 # Maintainer: Laurent Jourden <laurent85@enarel.fr>
 
 pkgname=archuseriso
-pkgver=0.5.2.1
+pkgver=0.5.2.2
 pkgrel=1
 pkgdesc="Profiles for building Arch Linux Live ISO images. Featuring persistence, encryption."
 arch=('any')
 url="https://github.com/laurent85v/archuseriso"
 license=('GPL3')
-depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'libisoburn' 'squashfs-tools' 'syslinux')
+depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'libisoburn' 'mtools' 'squashfs-tools' 'syslinux')
 optdepends=('devtools: ZFS building option'
             'f2fs-tools: F2FS file system option'
             'pacman-contrib: ZFS building option')
 conflicts=('archuseriso')
-install=archuseriso.install
 source=("http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "http://dl.gnutux.fr/sources/${pkgname}/${pkgname}-${pkgver}.tar.gz.sig")
-sha256sums=('0d43ae40ccac83666f588f2cf0ad6fb2463e7350eaa79077788a536b9ec3e930'
+sha256sums=('68c84f56717a14ae28b5d26f720d6b3e612f8d7c5a933e2196adf529b13423dc'
             'SKIP')
-b2sums=('fed2a53f8b3546513d25d7c479fc7e6ab36b73ec32816c98fe3979e5522d6813b3702834dbf7059fbcf47dd702641ebcf2e30c1f514bf2a9608393f5b9d78cd0'
+b2sums=('fc117387187bc77ffa2181fc160f7cdb11c1823aea29b2c0592ba19c8830ddcb04577b2f45cc939259d6fec42d7e06fd2a423f2539e131d559ca4c4d122a4ecf'
         'SKIP')
 validpgpkeys=('A5143BB56952B3189F49A175FAC4560863BEEC34') # Laurent Jourden
 
