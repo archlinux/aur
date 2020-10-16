@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/JakeWharton/mkvdts2ac3"
 license=('Apache-2.0')
 depends=('mkvtoolnix-cli' 'ffmpeg' 'rsync')
+makedepends=('git')
 source=('git+https://github.com/JakeWharton/mkvdts2ac3')
 md5sums=('SKIP')
 
@@ -16,8 +17,5 @@ pkgver() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/bin/
-  cd "$srcdir/mkvdts2ac3"
-  cp -r mkvdts2ac3.sh "$pkgdir/usr/bin/mkvdts2ac3"
-  chmod +x ${pkgdir}/usr/bin/mkvdts2ac3
+install -Dm755 "mkvdts2ac3/mkvdts2ac3.sh" "${pkgdir}/usr/bin/mkvdts2ac3"
 }

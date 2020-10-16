@@ -5,6 +5,7 @@ pkgbase = mkvdts2ac3-git
 	url = https://github.com/JakeWharton/mkvdts2ac3
 	arch = any
 	license = Apache-2.0
+	makedepends = git
 	depends = mkvtoolnix-cli
 	depends = ffmpeg
 	depends = rsync
