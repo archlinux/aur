@@ -1,0 +1,17 @@
+pkgbase = funny-manpages-final-git
+	pkgdesc = A set of miscellaneous humorous manpages (don't take them too seriously!). A master branch of git repo (possibly the final one).
+	pkgver = r26.a3e0b08
+	pkgrel = 1
+	url = https://github.com/ltworf/funny-manpages
+	arch = any
+	license = custom
+	depends = man-db
+	depends = git
+	provides = funny-manpages
+	conflicts = funny-manpages
+	conflicts = funny-manpages-git
+	source = git+https://github.com/ltworf/funny-manpages.git
+	sha512sums = SKIP
+
+pkgname = funny-manpages-final-git
+
