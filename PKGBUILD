@@ -1,3 +1,4 @@
+# Contributor: Dylan Delgado <dylan1496@gmail.com>
 # Contributor: Marcos Heredia <chelqo@gmail.com>
 
 _font="sniglet"
@@ -5,14 +6,14 @@ _group="impallari"
 #_update=99
 pkgname=ttf-${_group}-${_font}
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A rounded display face that’s great for headlines, from Haley Fiege & Pablo Impallari"
 arch=(any)
 #url="http://www.impallari.com/"
 url="http://www.impallari.com/projects/overview/sniglet-extension"
 license=('custom:OFL')
 groups=("${_group}-fonts")
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig')
 conflicts=('ttf-sniglet' 'ttf-theleague-sniglet')
 #install=updatefont.install
 #source=("http://www.impallari.com/media/uploads/prosources/update-${_update}-source.zip")
