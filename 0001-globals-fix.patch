@@ -1,0 +1,27 @@
+diff --git a/inc/utils.h b/inc/utils.h
+index a18e6bb..456b02e 100644
+--- a/inc/utils.h
++++ b/inc/utils.h
+@@ -20,5 +20,5 @@ void free_uts_context(rfc3161_context *ct);
+ const char *null_undef(const char *in);
+ 
+ // some global variable to handle signals
+-int g_uts_sig_up;
+-int g_uts_sig;
++extern int g_uts_sig_up;
++extern int g_uts_sig;
+diff --git a/src/lib/utils.c b/src/lib/utils.c
+index cb18d66..5543c5b 100644
+--- a/src/lib/utils.c
++++ b/src/lib/utils.c
+@@ -12,6 +12,10 @@
+ #include <syslog.h>
+ #include <unistd.h>
+ 
++// some global variable to handle signals
++int g_uts_sig_up;
++int g_uts_sig;
++
+ static void signal_handler_general(int sig_num) {
+     g_uts_sig = sig_num;
+ }
