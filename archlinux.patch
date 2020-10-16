@@ -1,0 +1,13 @@
+diff --git a/trunk/auto/depends.sh b/trunk/auto/depends.sh
+index b5d5aa62..a55d2478 100755
+--- a/trunk/auto/depends.sh
++++ b/trunk/auto/depends.sh
+@@ -30,7 +30,7 @@ echo "Required tools are ok."
+ #####################################################################################
+ # for Ubuntu, auto install tools by apt-get
+ #####################################################################################
+-OS_IS_UBUNTU=NO
++OS_IS_UBUNTU=YES
+ function Ubuntu_prepare()
+ {
+     if [ $SRS_CUBIE = YES ]; then
