@@ -1,0 +1,15 @@
+pkgbase = edrawinfo-bin
+	pkgdesc = Edraw Infographic is a graphic design and data visualization software compatible with different OS.
+	pkgver = 8.6
+	pkgrel = 1
+	epoch = 1
+	url = https://www.edrawsoft.com/archives/edrawinfo-64.run.gz
+	arch = x86_64
+	license = custom:"Copyright EdrawSoft 2004-2018; All Rights Reserved."
+	depends = qt5-base
+	options = !strip
+	source = https://www.edrawsoft.com/archives/edrawinfo-64.run.gz
+	sha256sums = 6ff695c83de59e3964d607aa52c6ab75321472600013d3877f3fa9d5cf4d4deb
+
+pkgname = edrawinfo-bin
+
