@@ -112,9 +112,9 @@ class ClashUp:
                 f.write(resp.content)
             with open(self.mmdb_version_file, 'w') as f:
                 f.write(current_version)
-            logging.info('update mmdb')
+            logging.info('Update mmdb')
         except requests.exceptions.RequestException:
-            logging.warning('update mmdb failed')
+            logging.warning('Update mmdb failed')
 
     def update_time_cache(self):
         if not os.path.isfile(self.cache_file_path):
