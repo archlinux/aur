@@ -56,6 +56,7 @@ build() {
     -B "$_pkgname/build" \
     -S "$_pkgname" \
     -DCMAKE_BUILD_TYPE='None' \
+    -Dwarnings-as-errors:BOOL='OFF' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -Dclient:BOOL='ON' \
     -Dserver:BOOL='OFF' \
