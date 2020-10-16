@@ -1,7 +1,7 @@
 pkgbase = zsa-wally
 	pkgdesc = Wally: Flash your ZSA Keyboard the EZ way.
 	pkgver = 2.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/zsa/wally
 	arch = i686
 	arch = x86_64
