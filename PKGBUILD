@@ -1,6 +1,6 @@
 # Maintainer: Sammay Sarkar <(my-name-without-vowels)@gmail.com>
 # Co-Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
-# pkg: github OpenBangla/OpenBangla-Keyboard
+# pkg: github OpenBangla/OpenBangla-keyboard
 pkgname="openbangla-keyboard"
 pkgver="1.5.1"
 pkgrel=1
@@ -13,7 +13,7 @@ makedepends=('cmake')
 optdepends=('ttf-indic-otf: fonts for Bangla and other Indic scripts'
             'ttf-freebanglafont: miscellaneous fonts for Bangla script')
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenBangla/OpenBangla-Keyboard/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenBangla/OpenBangla-keyboard/archive/$pkgver.tar.gz")
 sha256sums=('154904f1d081b05dd8921ae6662af2645d0180af4b1b29e588b62d07f05e9d91')
 build() {
     cd "$srcdir/OpenBangla-Keyboard-$pkgver"

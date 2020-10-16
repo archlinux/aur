@@ -11,7 +11,7 @@ pkgbase = openbangla-keyboard
 	depends = qt5-base
 	optdepends = ttf-indic-otf: fonts for Bangla and other Indic scripts
 	optdepends = ttf-freebanglafont: miscellaneous fonts for Bangla script
-	source = openbangla-keyboard-1.5.1.tar.gz::https://github.com/OpenBangla/OpenBangla-Keyboard/archive/1.5.1.tar.gz
+	source = openbangla-keyboard-1.5.1.tar.gz::https://github.com/OpenBangla/OpenBangla-keyboard/archive/1.5.1.tar.gz
 	sha256sums = 154904f1d081b05dd8921ae6662af2645d0180af4b1b29e588b62d07f05e9d91
 
 pkgname = openbangla-keyboard
