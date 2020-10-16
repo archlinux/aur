@@ -8,7 +8,7 @@ arch=('any')
 url="http://git.kwant-project.org/tinyarray/about/"
 license=('BSD')
 depends=(python)
-checkdepends=(python-nose)
+checkdepends=(python-pytest)
 source=(http://downloads.kwant-project.org/tinyarray/tinyarray-$pkgver.tar.gz
 		http://downloads.kwant-project.org/tinyarray/tinyarray-$pkgver.tar.gz.asc)
 sha1sums=('ccc5712fb0c4b181c2060ad69c1345a4936ac7d7'
@@ -30,5 +30,5 @@ package() {
 
 check() {
     cd "$srcdir/tinyarray-$pkgver"
-    python setup.py test
+    py.test
 }
