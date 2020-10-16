@@ -4,14 +4,14 @@
 
 pkgname=heroku-cli
 pkgver=7.46.0
-pkgrel=1
+pkgrel=2
 _builddir=cli-$pkgver-$pkgrel
 pkgdesc="CLI to manage Heroku apps and services with forced auto-update removed"
 arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
 license=('custom' 'ISC')
 depends=('nodejs')
-makedepends=('npm')
+makedepends=('npm' 'perl')
 optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-cli-bin' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source=("https://github.com/heroku/cli/archive/v$pkgver.tar.gz")
@@ -20,7 +20,26 @@ sha512sums=('44090ca2a9788053a213587a6db0b8cc9bab850457e057bbcdac309ead49aec7b7e
 options=('!strip')
 provides=('heroku' 'heroku-cli')
 
+append_path () {
+  case ":$PATH:" in
+      *:"$1":*)
+          ;;
+      *)
+          PATH="${PATH:+$PATH:}$1"
+  esac
+}
+
 prepare() {
+  # Set path to perl scriptdirs if they exist
+  # https://wiki.archlinux.org/index.php/Perl_Policy#Binaries_and_scripts
+  # Added /usr/bin/*_perl dirs for scripts
+  [ -d /usr/bin/site_perl ] && append_path '/usr/bin/site_perl'
+  [ -d /usr/bin/vendor_perl ] && append_path '/usr/bin/vendor_perl'
+  [ -d /usr/bin/core_perl ] && append_path '/usr/bin/core_perl'
+
+  export PATH
+
+
   pushd "$srcdir"
 
     pushd "cli-$pkgver"
