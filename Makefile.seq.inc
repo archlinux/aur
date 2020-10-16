@@ -20,7 +20,7 @@ LSCOTCH   = -L$(LSCOTCHDIR) -lesmumps -lscotch -lscotcherr
 
 LPORDDIR = $(topdir)/PORD/lib/
 IPORD    = -I$(topdir)/PORD/include/
-LPORD    = -L$(LPORDDIR) -lpord$(PLAT)
+LPORD    = -L$(LPORDDIR) -lpord
 
 LMETISDIR = /usr/lib 
 #IMETIS    = -I/usr/include/parmetis
@@ -31,13 +31,12 @@ LMETIS    = -L$(LMETISDIR) -lmetis
 
 # Corresponding variables reused later
 #ORDERINGSF = -Dmetis -Dpord -Dparmetis -Dscotch -Dptscotch
-#ORDERINGSF = -Dmetis -Dpord -Dscotch
-ORDERINGSF = -Dpord -Dscotch
+ORDERINGSF = -Dmetis -Dpord -Dscotch
 ORDERINGSC  = $(ORDERINGSF)
 
-LORDERINGS = $(LPORD) $(LSCOTCH)
+LORDERINGS = $(LMETIS) $(LPORD) $(LSCOTCH)
 IORDERINGSF = $(ISCOTCH)
-IORDERINGSC = $(IPORD) $(ISCOTCH)
+IORDERINGSC = $(IMETIS) $(IPORD) $(ISCOTCH)
 # End orderings
 ################################################################################
 
@@ -65,11 +64,11 @@ LIBOTHERS = -lpthread
 CDEFS   = -DAdd_
 
 #Begin Optimized options
-# uncomment -fopenmp in lines below to benefit from OpenMP
 OPTF    := -O -DPORD_INTSIZE64 -fallow-argument-mismatch -Dintel_ # -fopenmp
 OPTL    := -O # -fopenmp
 OPTC    := -O -DPORD_INTSIZE64 # -fopenmp
 #End Optimized options
+
 INCS = $(INCSEQ)
 LIBS = $(LIBSEQ)
 LIBSEQNEEDED = libseqneeded
