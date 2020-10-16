@@ -1,12 +1,12 @@
 pkgbase = systemd-cleanup-pacman-hook
 	pkgdesc = Pacman hook to stop and disable systemd units before removing packages
-	pkgver = 3.1
+	pkgver = 4
 	pkgrel = 1
 	url = https://github.com/YHNdnzj/systemd-cleanup-pacman-hook
 	arch = any
 	license = MIT
-	source = systemd-cleanup-pacman-hook-3.1.tar.gz::https://github.com/YHNdnzj/systemd-cleanup-pacman-hook/archive/3.1.tar.gz
-	sha256sums = 351a485efb59b3cb55e8f48a47d891d1d366254075758c6b83c11a9f40de5577
+	source = systemd-cleanup-pacman-hook-4.tar.gz::https://github.com/YHNdnzj/systemd-cleanup-pacman-hook/archive/4.tar.gz
+	sha256sums = 92024f91472a0e153aa8ddad1d55bdcdf3eff10dfb316be0b903621d8e15b586
 
 pkgname = systemd-cleanup-pacman-hook
 	depends = findutils
