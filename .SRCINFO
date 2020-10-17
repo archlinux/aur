@@ -1,6 +1,6 @@
 pkgbase = cpupower-gui-git
 	pkgdesc = A GUI utility to set CPU frequency limits
-	pkgver = 0.9.1
+	pkgver = 0.9.1.r0.gfe156fa
 	pkgrel = 1
 	url = https://github.com/vagnum08/cpupower-gui
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = cpupower-gui-git
 	depends = polkit
 	depends = python-dbus
 	depends = python-gobject
-	depends = pyxdg
+	depends = python-pyxdg
 	optdepends = polkit-gnome: needed for authentification in Cinnamon, Gnome
 	optdepends = lxsession: needed for authentification in Xfce, LXDE etc.
 	optdepends = libappindicator-gtk3: needed for tray icon
