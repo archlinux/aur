@@ -2,34 +2,37 @@
 # Contributor: louis.seubert.ls@gmail.com <Louis Seubert>
 
 pkgname=plasma5-runners-jetbrains-runner
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A Krunner Plugin which allows you to open your recent projects"
 arch=('x86_64')
 url="https://github.com/alex1701c/JetBrainsRunner"
 license=('LGPL3')
 depends=('krunner')
-makedepends=('cmake' 'extra-cmake-modules')
+makedepends=('extra-cmake-modules' 'git' 'kcmutils')
 install=$pkgname.install
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/JetBrainsRunnerWithSubmodule.tar.gz")
-noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('491bd199455258ce32198c99a2ff276f6bab219a8269834564ebc6fc501b8da5')
+#source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/JetBrainsRunnerWithSubmodule.tar.gz")
+source=("$pkgname::git+$url#tag=1.6.0"
+        "git+https://github.com/alex1701c/jetbrains-api")
+sha256sums=('SKIP'
+            'SKIP')
 
 prepare() {
-    mkdir -p $pkgname-$pkgver
-    tar xzf $pkgname-$pkgver.tar.gz -C $pkgname-$pkgver --strip-components 1
-    mkdir -p build
+    cd $pkgname
+    git submodule init
+    git config submodule.jetbrains-api.url "$srcdir/jetbrains-api"
+    git submodule update
 }
 
 build() {
-    cd build
-    cmake ../$pkgname-$pkgver \
+    cd $pkgname
+    cmake -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release
-    make
+    make -C build
 }
 
 package() {
-    cd build
-    make DESTDIR="$pkgdir" install
+    cd $pkgname
+    make -C build DESTDIR="$pkgdir" install
 }
