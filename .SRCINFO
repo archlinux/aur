@@ -1,11 +1,11 @@
 pkgbase = mindustry
 	pkgver = 6.0_108
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Anuken/Mindustry
 	arch = any
 	license = GPL3
-	makedepends = java-environment>=8
+	makedepends = java-environment>=14
 	makedepends = libicns
 	depends = java-runtime>=8
 	depends = sh

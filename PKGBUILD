@@ -3,14 +3,14 @@ pkgbase=mindustry
 pkgname=("${pkgbase}" "${pkgbase}-server")
 _build=108
 pkgver="6.0_${_build}"
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('any')
 _repo_name="Mindustry"
 url="https://github.com/Anuken/${_repo_name}"
 license=('GPL3')
 depends=("java-runtime>=8" "sh" "hicolor-icon-theme")
-makedepends=("java-environment>=8" "libicns")
+makedepends=("java-environment>=14" "libicns")
 source=("${pkgbase}-${_build}.tar.gz::https://github.com/Anuken/${_repo_name}/archive/v${_build}.tar.gz"
         "${pkgbase}.desktop"
         "${pkgbase}.sh"
