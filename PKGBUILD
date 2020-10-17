@@ -4,15 +4,15 @@
 
 pkgbase="lombok"
 pkgname=('lombok-common' 'lombok-eclipse-java' 'lombok-eclipse-jee' 'lombok-spring-tool-suite')
-pkgver=1.18.12
-pkgrel=4
+pkgver=1.18.16
+pkgrel=1
 pkgdesc="Project Lombok integrated with several Eclipse-based installations"
 makedepends=('java-runtime')
 arch=("any")
 url="http://projectlombok.org"
 license=('MIT')
 source=("https://projectlombok.org/downloads/lombok-${pkgver}.jar")
-sha256sums=('49381508ecb02b3c173368436ef71b24c0d4418ad260e6cc98becbcf4b345406')
+sha256sums=('7206cbbfd6efd5e85bceff29545633645650be58d58910a23b0d4835fbd15ed7')
 noextract=("lombok.jar")
 
 build() {
