@@ -1,14 +1,14 @@
 pkgbase = authy-desktop-win32-bin
 	pkgdesc = Two-Factor Authentication from your PC. Converted from Windows electron version
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://authy.com/
 	arch = x86_64
 	license = unknown
 	makedepends = npm
 	makedepends = p7zip
 	makedepends = asar
-	depends = electron
+	depends = electron9
 	provides = authy
 	conflicts = authy
 	source = https://s3.amazonaws.com/authy-electron-repository-production/authy/stable/1.8.3/win32/x64/Authy%20Desktop%20Setup%201.8.3.exe

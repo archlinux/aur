@@ -2,14 +2,14 @@
 # Contributor: Timmy Yao <timmy.yao+aur@gmail.com>
 pkgname=authy-desktop-win32-bin
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Two-Factor Authentication from your PC. Converted from Windows electron version"
 arch=("x86_64")
 provides=('authy')
 conflicts=('authy')
 url="https://authy.com/"
 license=('unknown')
-depends=('electron')
+depends=('electron9')
 makedepends=('npm' 'p7zip' 'asar')
 source=("https://s3.amazonaws.com/authy-electron-repository-production/authy/stable/${pkgver}/win32/x64/Authy%20Desktop%20Setup%20${pkgver}.exe"
         "authy.desktop")
