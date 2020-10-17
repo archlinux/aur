@@ -34,11 +34,11 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
-## Enable PDS CPU scheduler by default https://gitlab.com/alfredchen/linux-pds
-## Set variable "use_pds" to: n to disable (stock Xanmod)
-##                            y to enable
-if [ -z ${use_pds+x} ]; then
-  use_pds=n
+## Enable Cachy CPU scheduler by default https://github.com/xanmod/linux/blob/5.8/Documentation/scheduler/sched-Cachy.rst
+## Set variable "use_cachy" to: n to disable (stock Xanmod)
+##                              y to enable
+if [ -z ${use_cachy+x} ]; then
+  use_cachy=n
 fi
 
 ## Enable CONFIG_USER_NS_UNPRIVILEGED flag https://aur.archlinux.org/cgit/aur.git/tree/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck
@@ -66,9 +66,8 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-git
-pkgver=5.6.8.xanmod1.r0.g888315f9245f
-_major=5.6
-_branch=5.x
+pkgver=5.9.r951309.5409fb1b83b1
+_branch=5.9
 xanmod=1
 pkgrel=1
 pkgdesc='Linux Xanmod - git version'
@@ -83,7 +82,7 @@ makedepends=(
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
-source=("git+https://github.com/xanmod/linux.git"
+source=("git+https://github.com/xanmod/linux.git#branch=$_branch"
         choose-gcc-optimization.sh
         '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b')
 validpgpkeys=(
@@ -100,7 +99,7 @@ done
 
 sha256sums=('SKIP'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
-            '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
+            '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -108,7 +107,7 @@ export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_
 
 pkgver() {
   cd linux 
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "${_branch}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -148,9 +147,11 @@ prepare() {
     scripts/config --disable CONFIG_NUMA
   fi
 
-  if [ "$use_pds" = "y" ]; then
-    msg2 "Enabling PDS CPU scheduler by default..."
-    scripts/config --enable CONFIG_SCHED_PDS
+  if [ "$use_cachy" = "y" ]; then
+    msg2 "Enabling Cachy CPU scheduler by default (also NUMA and grouping for tasks, which are not compatible with Cachy)..."
+    scripts/config --disable CONFIG_NUMA
+    scripts/config --disable FAIR_GROUP_SCHED
+    scripts/config --enable CONFIG_CACHY_SCHED
   fi
 
   if [ "$use_ns" = "n" ]; then
@@ -166,8 +167,8 @@ prepare() {
   # If it's a full config, will be replaced
   # If not, you should use scripts/config commands, one by line
   if [ -f "${startdir}/myconfig" ]; then
-    if [ $(wc -l < "${startdir}/myconfig") -gt 1000 ]; then
-      # myconfig is a full config file. Replace it
+    if ! grep -q 'scripts/config' "${startdir}/myconfig"; then
+      # myconfig is a full config file. Replacing default .config
       msg2 "Using user CUSTOM config..."
       cp -f "${startdir}"/myconfig .config
     else
