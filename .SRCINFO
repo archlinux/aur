@@ -1,8 +1,8 @@
 pkgbase = python-ffc-git
 	pkgdesc = A compiler for finite element variational forms.
-	pkgver = 20180827
+	pkgver = 20201007
 	pkgrel = 1
-	url = https://bitbucket.org/fenics-project/ffc
+	url = https://github.com/FEniCS/ffcx
 	arch = any
 	groups = fenics-git
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = python-ffc-git
 	depends = python-ufl-git
 	depends = pybind11
 	options = !emptydirs
-	source = ffc::git+https://bitbucket.org/fenics-project/ffc.git#branch=master
+	source = ffc::git+https://github.com/FEniCS/ffcx.git
 	md5sums = SKIP
 
 pkgname = python-ffc-git

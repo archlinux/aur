@@ -1,34 +1,30 @@
 # Maintainer: Lucas H. Gabrielli <heitzmann@gmail.com>
 
-_base=ffc
-_fragment="#branch=master"
-pkgname=python-${_base}-git
+pkgname=python-ffc-git
 pkgdesc="A compiler for finite element variational forms."
-pkgver=20180827
+pkgver=20201007
 pkgrel=1
 arch=('any')
-url="https://bitbucket.org/fenics-project/${_base}"
+url="https://github.com/FEniCS/ffcx"
 license=('GPL3')
 groups=('fenics-git')
 depends=('python-dijitso-git' 'python-fiat-git' 'python-ufl-git' 'pybind11')
 makedepends=('python-setuptools' 'git')
 options=(!emptydirs)
-source=("${_base}::git+https://bitbucket.org/fenics-project/${_base}.git${_fragment}")
+source=("ffc::git+https://github.com/FEniCS/ffcx.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd ${_base}
+	cd ffc
 	git log --format="%cd" --date=short -1 | sed 's/-//g'
 }
 
 build() {
-	cd ${_base}
+	cd ffc
 	python setup.py build
 }
 
 package() {
-	cd ${_base}
+	cd ffc
 	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 }
-
-# vim: shiftwidth=2 softtabstop=2 tabstop=2 noexpandtab
