@@ -1,13 +1,13 @@
 pkgbase = plexamp-appimage
 	pkgdesc = Modern music client for Plex
-	pkgver = 3.2.1
+	pkgver = 3.2.2
 	pkgrel = 0
 	url = https://plexamp.plex.tv
 	arch = x86_64
 	provides = plexamp
 	conflicts = plexamp
 	options = !strip
-	source = https://plexamp.plex.tv/plexamp.plex.tv/desktop/Plexamp-3.2.1.AppImage
+	source = https://plexamp.plex.tv/plexamp.plex.tv/desktop/Plexamp-3.2.2.AppImage
 	sha512sums = 12e0bf34a7d794af68560995ce7358296c0d52c4d3cb7e9e7e5f8842a51eaad1ce4c6c2b91c94a3178ffabf3d8cf0c33c745b09e1adb8f232eb143a9a8665110
 
 pkgname = plexamp-appimage
