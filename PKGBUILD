@@ -1,6 +1,6 @@
 # Maintainer: Nicklas Botö <bruski@nicklasbotö.se>
 pkgname=bruski
-pkgver=1.1.r233.b579713
+pkgver=1.1.r234.6e1bf3c
 pkgrel=1
 pkgdesc="The BruSKI language compiler and platform"
 arch=(x86_64)
