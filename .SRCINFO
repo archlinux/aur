@@ -1,0 +1,14 @@
+pkgbase = nodm-runit
+	pkgdesc = runit service scripts for nodm
+	pkgver = 20201017
+	pkgrel = 1
+	url = https://artixlinux.org
+	arch = any
+	license = BSD
+	depends = nodm
+	conflicts = systemd-sysvcompat
+	source = nodm.run
+	sha256sums = 8f7a5d64f4ea88231b1a0e016611d5c92e5018b0d1ac5e9834a3b654abdb2435
+
+pkgname = nodm-runit
+
