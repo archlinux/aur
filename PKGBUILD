@@ -1,7 +1,7 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 pkgname=cargo-llvm-lines
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Count the number of lines of LLVM IR across all instantiations of a generic function"
 arch=('any')
 url='https://github.com/dtolnay/cargo-llvm-lines'
@@ -18,6 +18,10 @@ build() {
 check() {
 	cd "$pkgname-$pkgver"
 	cargo test --release --locked --target-dir=target
+
+	# since currently the above runs no tests (kept only for future
+	# proofing) run cargo llvm-lines on itself
+	target/release/cargo-llvm-lines llvm-lines | head -n 8
 }
 
 package() {
