@@ -1,0 +1,33 @@
+diff --git a/src/halimpl/pn54x/tml/i2c/phTmlNfc_i2c.h b/src/halimpl/pn54x/tml/i2c/phTmlNfc_i2c.h
+index 724a2bd..dd1ed8f 100644
+--- a/src/halimpl/pn54x/tml/i2c/phTmlNfc_i2c.h
++++ b/src/halimpl/pn54x/tml/i2c/phTmlNfc_i2c.h
+@@ -29,4 +29,4 @@ int phTmlNfc_i2c_read(void *pDevHandle, uint8_t * pBuffer, int nNbBytesToRead);
+ int phTmlNfc_i2c_write(void *pDevHandle,uint8_t * pBuffer, int nNbBytesToWrite);
+ int phTmlNfc_i2c_reset(void *pDevHandle,long level);
+ bool_t getDownloadFlag(void);
+-phTmlNfc_i2cfragmentation_t fragmentation_enabled;
++extern phTmlNfc_i2cfragmentation_t fragmentation_enabled;
+diff --git a/src/halimpl/pn54x/tml/lpcusbsio/phTmlNfc_lpcusbsio.h b/src/halimpl/pn54x/tml/lpcusbsio/phTmlNfc_lpcusbsio.h
+index 724a2bd..dd1ed8f 100644
+--- a/src/halimpl/pn54x/tml/lpcusbsio/phTmlNfc_lpcusbsio.h
++++ b/src/halimpl/pn54x/tml/lpcusbsio/phTmlNfc_lpcusbsio.h
+@@ -29,4 +29,4 @@ int phTmlNfc_i2c_read(void *pDevHandle, uint8_t * pBuffer, int nNbBytesToRead);
+ int phTmlNfc_i2c_write(void *pDevHandle,uint8_t * pBuffer, int nNbBytesToWrite);
+ int phTmlNfc_i2c_reset(void *pDevHandle,long level);
+ bool_t getDownloadFlag(void);
+-phTmlNfc_i2cfragmentation_t fragmentation_enabled;
++extern phTmlNfc_i2cfragmentation_t fragmentation_enabled;
+diff --git a/src/service/extns/src/mifare/phNxpExtns_MifareStd.c b/src/service/extns/src/mifare/phNxpExtns_MifareStd.c
+index 6cd6aaf..f45236c 100644
+--- a/src/service/extns/src/mifare/phNxpExtns_MifareStd.c
++++ b/src/service/extns/src/mifare/phNxpExtns_MifareStd.c
+@@ -20,7 +20,7 @@
+ #include <phNxpLog.h>
+ #include <phNxpExtns_MifareStd.h>
+ 
+-phNxpExtns_Context_t       gphNxpExtns_Context;
++extern phNxpExtns_Context_t       gphNxpExtns_Context;
+ phNciNfc_TransceiveInfo_t  tNciTranscvInfo;
+ phFriNfc_sNdefSmtCrdFmt_t  *NdefSmtCrdFmt = NULL;
+ phFriNfc_NdefMap_t         *NdefMap = NULL;
