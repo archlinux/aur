@@ -1,15 +1,16 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
-# Contributor: bastelfreak
+# Maintainer: Tim Meusel <tim@bastelfreak.de>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _gemname='text'
 pkgname="ruby-${_gemname}"
 pkgver=1.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A collection of text algorithms: Levenshtein, Soundex, Metaphone, Double Metaphone, Porter Stemming'
 arch=(any)
 url='https://github.com/threedaymonk/text'
 license=('MIT')
-makedepends=('ruby-rdoc' 'ruby-test-unit' 'ruby-rake')
+makedepends=('ruby-rdoc')
+checkdepends=('ruby-test-unit' 'ruby-rake')
 depends=('ruby')
 source=("https://github.com/threedaymonk/text/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 options=("!emptydirs")
@@ -27,8 +28,8 @@ prepare() {
 
 build() {
   cd "${_gemname}-${pkgver}"
-  gem build "${_gemname}.gemspec"
 
+  gem build "${_gemname}.gemspec"
 }
 
 check() {
@@ -44,6 +45,8 @@ package() {
   gem install --verbose --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
 
   install -Dm 644 COPYING.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 README.rdoc -t "${pkgdir}/usr/share/doc/${pkgname}/"
 
   rm -rf "${pkgdir}/${_gemdir}/cache"
 }
+# vim: ts=2 sw=2 et:
