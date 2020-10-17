@@ -1,6 +1,6 @@
 pkgbase = mum-git
 	pkgdesc = A mumble client/daemon pair
-	pkgver = r100.47c3c5c
+	pkgver = r101.d66eea2
 	pkgrel = 1
 	url = https://github.com/sornas/mum.git
 	arch = x86_64
@@ -10,6 +10,9 @@ pkgbase = mum-git
 	depends = alsa-lib
 	depends = opus
 	depends = openssl
+	optdepends = bash: for tab completions
+	optdepends = fish: for tab completions
+	optdepends = zsh: for tab completions
 	source = git+https://github.com/sornas/mum.git
 	sha256sums = SKIP
 
