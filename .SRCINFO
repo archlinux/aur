@@ -1,7 +1,7 @@
 pkgbase = python-pytvmaze
 	pkgdesc = Python interface to the TV Maze API
 	pkgver = 2.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/pytvmaze
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = python-pytvmaze
 	source = https://files.pythonhosted.org/packages/source/p/pytvmaze/pytvmaze-2.0.8.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/srob650/pytvmaze/master/LICENSE.txt
 	md5sums = 562f807f97b1c626d9d9ab090195ba7b
+	md5sums = 891925ddba9bbc84784d4174f72d97e2
 
 pkgname = python-pytvmaze
 
