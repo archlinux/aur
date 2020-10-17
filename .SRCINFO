@@ -1,7 +1,7 @@
 pkgbase = unrealtournament
 	pkgdesc = The classic Unreal Tournament from 1999 (Retail CD or DVD required)
 	pkgver = 469a
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.unrealtournament.com/
 	arch = i686
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = unrealtournament
 	sha256sums = cb704cf21625c12eaf181fabd24297bcf1f51576afa691067a56e3e6f38f6d34
 	sha256sums = 674ae459b3ff6d442cce0e4b115244f3db5384923e6b848626aa67b370b7148b
 	sha256sums = b985a79323bee32ad24cce30afbfe63c47dcd43e3e06fa226b3ea42bbc4b0c0e
-	sha256sums = 23b11d7ccb085e1d726876520517c360b11239cb059ad79bcb49b4af7b2130df
+	sha256sums = 31a07fb289841ceba36ca707fafd8180f48e462a53a62a2b34d5bc0f61c2481d
 	sha256sums = d521a8339b80a4c86019c3648fb55cfc29edffeec73047ceb72784b159cc84f1
 	sha256sums = 9aac034bbfe75afc1bbcc1f280025d6c36d77d4e00e68a3b11a2e3855f37756e
 	sha256sums = e31d9c7b91254128214dfa606058b78ece25a5a10fe2a2b8fd19575a9c7b2dbb
