@@ -1,4 +1,4 @@
-From 904a2b4014ea38c67b6bd19de12c27a2d5f7a6b1 Mon Sep 17 00:00:00 2001
+From 773c5f1b32519fca04ad446f1cf02e717fb2a7d9 Mon Sep 17 00:00:00 2001
 From: Lyude Paul <lyude@redhat.com>
 Date: Mon, 29 Jun 2020 15:01:49 -0400
 Subject: [PATCH 2/2] WIP: drm/i915: Enable Intel's HDR backlight interface
@@ -49,16 +49,16 @@ interface instead of keeping it in SDR mode.
 Signed-off-by: Lyude Paul <lyude@redhat.com>
 ---
  .../drm/i915/display/intel_display_types.h    |   9 +-
- drivers/gpu/drm/i915/display/intel_dp.c       |  15 +
- .../drm/i915/display/intel_dp_aux_backlight.c | 334 +++++++++++++++---
+ drivers/gpu/drm/i915/display/intel_dp.c       |  14 +
+ .../drm/i915/display/intel_dp_aux_backlight.c | 332 +++++++++++++++---
  drivers/gpu/drm/i915/i915_params.c            |   2 +-
- 4 files changed, 308 insertions(+), 52 deletions(-)
+ 4 files changed, 307 insertions(+), 50 deletions(-)
 
 diff --git a/drivers/gpu/drm/i915/display/intel_display_types.h b/drivers/gpu/drm/i915/display/intel_display_types.h
-index 5e00e611f077..b89e67e271ed 100644
+index e8f809161c75..a2f54d308187 100644
 --- a/drivers/gpu/drm/i915/display/intel_display_types.h
 +++ b/drivers/gpu/drm/i915/display/intel_display_types.h
-@@ -219,7 +219,14 @@ struct intel_panel {
+@@ -225,7 +225,14 @@ struct intel_panel {
  		struct pwm_device *pwm;
  
  		/* DPCD backlight */
@@ -75,21 +75,20 @@ index 5e00e611f077..b89e67e271ed 100644
  		struct backlight_device *device;
  
 diff --git a/drivers/gpu/drm/i915/display/intel_dp.c b/drivers/gpu/drm/i915/display/intel_dp.c
-index 9231a0ef6270..5a66cf5caefe 100644
+index 39667264c27d..47f04cbbeb0f 100644
 --- a/drivers/gpu/drm/i915/display/intel_dp.c
 +++ b/drivers/gpu/drm/i915/display/intel_dp.c
-@@ -3201,7 +3201,10 @@ void intel_dp_sink_set_decompression_state(struct intel_dp *intel_dp,
- /* If the sink supports it, try to set the power state appropriately */
+@@ -3396,7 +3396,9 @@ void intel_dp_sink_set_decompression_state(struct intel_dp *intel_dp,
  void intel_dp_sink_dpms(struct intel_dp *intel_dp, int mode)
  {
+ 	struct drm_i915_private *i915 = dp_to_i915(intel_dp);
 +	struct intel_digital_port *intel_dig_port = dp_to_dig_port(intel_dp);
-+	struct drm_i915_private *dev_priv = to_i915(intel_dig_port->base.base.dev);
  	int ret, i;
 +	u8 edp_oui[] = { 0x00, 0xaa, 0x01 };
  
  	/* Should have a valid DPCD by this point */
  	if (intel_dp->dpcd[DP_DPCD_REV] < 0x11)
-@@ -3216,6 +3219,16 @@ void intel_dp_sink_dpms(struct intel_dp *intel_dp, int mode)
+@@ -3411,6 +3413,16 @@ void intel_dp_sink_dpms(struct intel_dp *intel_dp, int mode)
  	} else {
  		struct intel_lspcon *lspcon = dp_to_lspcon(intel_dp);
  
@@ -99,14 +98,14 @@ index 9231a0ef6270..5a66cf5caefe 100644
 +						DP_SOURCE_OUI, edp_oui,
 +						sizeof(edp_oui));
 +			if (ret < 0)
-+				drm_err(&dev_priv->drm,
++				drm_err(&i915->drm,
 +					"Failed to write eDP source OUI\n");
 +		}
 +
  		/*
  		 * When turning on, we need to retry for 1ms to give the sink
  		 * time to wake up.
-@@ -4408,6 +4421,8 @@ static void intel_dp_get_dsc_sink_cap(struct intel_dp *intel_dp)
+@@ -4554,6 +4566,8 @@ static void intel_dp_get_dsc_sink_cap(struct intel_dp *intel_dp)
  	}
  }
  
@@ -116,7 +115,7 @@ index 9231a0ef6270..5a66cf5caefe 100644
  intel_edp_init_source_oui(struct intel_dp *intel_dp)
  {
 diff --git a/drivers/gpu/drm/i915/display/intel_dp_aux_backlight.c b/drivers/gpu/drm/i915/display/intel_dp_aux_backlight.c
-index dbfa6895795b..9d43003760fd 100644
+index acbd7eb66cbe..1b114ee930d9 100644
 --- a/drivers/gpu/drm/i915/display/intel_dp_aux_backlight.c
 +++ b/drivers/gpu/drm/i915/display/intel_dp_aux_backlight.c
 @@ -22,10 +22,196 @@
@@ -315,9 +314,9 @@ index dbfa6895795b..9d43003760fd 100644
 +/* VESA backlight callbacks */
 +static void set_vesa_backlight_enable(struct intel_dp *intel_dp, bool enable)
  {
+ 	struct drm_i915_private *i915 = dp_to_i915(intel_dp);
  	u8 reg_val = 0;
- 
-@@ -55,7 +241,7 @@ static void set_aux_backlight_enable(struct intel_dp *intel_dp, bool enable)
+@@ -56,7 +242,7 @@ static void set_aux_backlight_enable(struct intel_dp *intel_dp, bool enable)
   * Read the current backlight value from DPCD register(s) based
   * on if 8-bit(MSB) or 16-bit(MSB and LSB) values are supported
   */
@@ -325,8 +324,8 @@ index dbfa6895795b..9d43003760fd 100644
 +static u32 intel_dp_aux_vesa_get_backlight(struct intel_connector *connector)
  {
  	struct intel_dp *intel_dp = intel_attached_dp(connector);
- 	u8 read_val[2] = { 0x0 };
-@@ -96,7 +282,7 @@ static u32 intel_dp_aux_get_backlight(struct intel_connector *connector)
+ 	struct drm_i915_private *i915 = dp_to_i915(intel_dp);
+@@ -99,7 +285,7 @@ static u32 intel_dp_aux_get_backlight(struct intel_connector *connector)
   * 8-bit or 16 bit value (MSB and LSB)
   */
  static void
@@ -335,7 +334,7 @@ index dbfa6895795b..9d43003760fd 100644
  {
  	struct intel_connector *connector = to_intel_connector(conn_state->connector);
  	struct intel_dp *intel_dp = intel_attached_dp(connector);
-@@ -124,11 +310,11 @@ intel_dp_aux_set_backlight(const struct drm_connector_state *conn_state, u32 lev
+@@ -129,11 +315,11 @@ intel_dp_aux_set_backlight(const struct drm_connector_state *conn_state, u32 lev
   * - Where P = 2^Pn, where Pn is the value programmed by field 4:0 of the
   *             EDP_PWMGEN_BIT_COUNT register (DPCD Address 00724h)
   */
@@ -349,7 +348,7 @@ index dbfa6895795b..9d43003760fd 100644
  	int freq, fxp, f, fxp_actual, fxp_min, fxp_max;
  
  	freq = dev_priv->vbt.backlight.pwm_freq_hz;
-@@ -158,13 +344,14 @@ static bool intel_dp_aux_set_pwm_freq(struct intel_connector *connector)
+@@ -165,14 +351,15 @@ static bool intel_dp_aux_set_pwm_freq(struct intel_connector *connector)
  	return true;
  }
  
@@ -360,22 +359,23 @@ index dbfa6895795b..9d43003760fd 100644
  {
  	struct intel_connector *connector = to_intel_connector(conn_state->connector);
  	struct intel_dp *intel_dp = intel_attached_dp(connector);
+ 	struct drm_i915_private *i915 = dp_to_i915(intel_dp);
  	struct intel_panel *panel = &connector->panel;
  	u8 dpcd_buf, new_dpcd_buf, edp_backlight_mode;
 +	u8 pwmgen_bit_count = panel->backlight.edp.vesa.pwmgen_bit_count;
  
  	if (drm_dp_dpcd_readb(&intel_dp->aux,
  			DP_EDP_BACKLIGHT_MODE_SET_REGISTER, &dpcd_buf) != 1) {
-@@ -185,7 +372,7 @@ static void intel_dp_aux_enable_backlight(const struct intel_crtc_state *crtc_st
+@@ -193,7 +380,7 @@ static void intel_dp_aux_enable_backlight(const struct intel_crtc_state *crtc_st
  
  		if (drm_dp_dpcd_writeb(&intel_dp->aux,
  				       DP_EDP_PWMGEN_BIT_COUNT,
 -				       panel->backlight.pwmgen_bit_count) < 0)
 +				       pwmgen_bit_count) < 0)
- 			DRM_DEBUG_KMS("Failed to write aux pwmgen bit count\n");
+ 			drm_dbg_kms(&i915->drm,
+ 				    "Failed to write aux pwmgen bit count\n");
  
- 		break;
-@@ -197,7 +384,7 @@ static void intel_dp_aux_enable_backlight(const struct intel_crtc_state *crtc_st
+@@ -206,7 +393,7 @@ static void intel_dp_aux_enable_backlight(const struct intel_crtc_state *crtc_st
  	}
  
  	if (intel_dp->edp_dpcd[2] & DP_EDP_BACKLIGHT_FREQ_AUX_SET_CAP)
@@ -384,7 +384,7 @@ index dbfa6895795b..9d43003760fd 100644
  			new_dpcd_buf |= DP_EDP_BACKLIGHT_FREQ_AUX_SET_ENABLE;
  
  	if (new_dpcd_buf != dpcd_buf) {
-@@ -207,18 +394,18 @@ static void intel_dp_aux_enable_backlight(const struct intel_crtc_state *crtc_st
+@@ -217,18 +404,18 @@ static void intel_dp_aux_enable_backlight(const struct intel_crtc_state *crtc_st
  		}
  	}
  
@@ -410,8 +410,8 @@ index dbfa6895795b..9d43003760fd 100644
  {
  	struct drm_i915_private *i915 = to_i915(connector->base.dev);
  	struct intel_dp *intel_dp = intel_attached_dp(connector);
-@@ -285,31 +472,31 @@ static u32 intel_dp_aux_calc_max_backlight(struct intel_connector *connector)
- 		DRM_DEBUG_KMS("Failed to write aux pwmgen bit count\n");
+@@ -301,31 +488,31 @@ static u32 intel_dp_aux_calc_max_backlight(struct intel_connector *connector)
+ 			    "Failed to write aux pwmgen bit count\n");
  		return max_backlight;
  	}
 -	panel->backlight.pwmgen_bit_count = pn;
@@ -447,8 +447,8 @@ index dbfa6895795b..9d43003760fd 100644
 +intel_dp_aux_supports_vesa_backlight(struct intel_connector *connector)
  {
  	struct intel_dp *intel_dp = intel_attached_dp(connector);
- 
-@@ -325,41 +512,88 @@ intel_dp_aux_display_control_capable(struct intel_connector *connector)
+ 	struct drm_i915_private *i915 = dp_to_i915(intel_dp);
+@@ -342,40 +529,89 @@ intel_dp_aux_display_control_capable(struct intel_connector *connector)
  	return false;
  }
  
@@ -465,14 +465,13 @@ index dbfa6895795b..9d43003760fd 100644
  {
 -	struct intel_panel *panel = &intel_connector->panel;
 -	struct intel_dp *intel_dp = enc_to_intel_dp(intel_connector->encoder);
--	struct drm_device *dev = intel_connector->base.dev;
--	struct drm_i915_private *dev_priv = to_i915(dev);
 +	struct drm_device *dev = connector->base.dev;
 +	struct intel_panel *panel = &connector->panel;
-+	struct drm_i915_private *i915 = to_i915(dev);
++	struct intel_dp *intel_dp = enc_to_intel_dp(connector->encoder);
+ 	struct drm_i915_private *i915 = dp_to_i915(intel_dp);
 +	bool try_intel_interface = false, try_vesa_interface = false;
  
--	if (i915_modparams.enable_dpcd_backlight == 0 ||
+-	if (i915->params.enable_dpcd_backlight == 0 ||
 -	    !intel_dp_aux_display_control_capable(intel_connector))
 +	/* Check the VBT and user's module parameters to figure out which
 +	 * interfaces to probe
@@ -517,18 +516,18 @@ index dbfa6895795b..9d43003760fd 100644
 +	 * and will only work with the Intel interface. So, always probe for
 +	 * that first.
  	 */
--	if (dev_priv->vbt.backlight.type !=
+-	if (i915->vbt.backlight.type !=
 -	    INTEL_BACKLIGHT_VESA_EDP_AUX_INTERFACE &&
--	    i915_modparams.enable_dpcd_backlight != 1 &&
+-	    i915->params.enable_dpcd_backlight != 1 &&
 -	    !drm_dp_has_quirk(&intel_dp->desc, intel_dp->edid_quirks,
 -			      DP_QUIRK_FORCE_DPCD_BACKLIGHT)) {
--		DRM_DEV_INFO(dev->dev,
--			     "Panel advertises DPCD backlight support, but "
--			     "VBT disagrees. If your backlight controls "
--			     "don't work try booting with "
--			     "i915.enable_dpcd_backlight=1. If your machine "
--			     "needs this, please file a _new_ bug report on "
--			     "drm/i915, see " FDO_BUG_URL " for details.\n");
+-		drm_info(&i915->drm,
+-			 "Panel advertises DPCD backlight support, but "
+-			 "VBT disagrees. If your backlight controls "
+-			 "don't work try booting with "
+-			 "i915.enable_dpcd_backlight=1. If your machine "
+-			 "needs this, please file a _new_ bug report on "
+-			 "drm/i915, see " FDO_BUG_URL " for details.\n");
 -		return -ENODEV;
 +	if (try_intel_interface &&
 +	    intel_dp_aux_supports_hdr_backlight(connector)) {
@@ -566,12 +565,12 @@ index dbfa6895795b..9d43003760fd 100644
 +	return -ENODEV;
  }
 diff --git a/drivers/gpu/drm/i915/i915_params.c b/drivers/gpu/drm/i915/i915_params.c
-index add00ec1f787..a1f939988240 100644
+index 8d8db9ff0a48..4420c86bc228 100644
 --- a/drivers/gpu/drm/i915/i915_params.c
 +++ b/drivers/gpu/drm/i915/i915_params.c
-@@ -165,7 +165,7 @@ i915_param_named_unsafe(inject_probe_failure, uint, 0400,
+@@ -180,7 +180,7 @@ i915_param_named_unsafe(inject_probe_failure, uint, 0400,
  
- i915_param_named(enable_dpcd_backlight, int, 0600,
+ i915_param_named(enable_dpcd_backlight, int, 0400,
  	"Enable support for DPCD backlight control"
 -	"(-1=use per-VBT LFP backlight type setting [default], 0=disabled, 1=enabled)");
 +	"(-1=use per-VBT LFP backlight type setting [default], 0=disabled, 1=enable, 2=force VESA interface, 3=force Intel interface)");
@@ -579,5 +578,5 @@ index add00ec1f787..a1f939988240 100644
  #if IS_ENABLED(CONFIG_DRM_I915_GVT)
  i915_param_named(enable_gvt, bool, 0400,
 -- 
-2.27.0
+2.28.0
 
