@@ -66,8 +66,8 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-anbox
-pkgver=5.8.15
-_major=5.8
+pkgver=5.9.0
+_major=5.9
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -99,9 +99,9 @@ for _patch in $_commits; do
 done
     
 
-sha256sums=('e7f75186aa0642114af8f19d99559937300ca27acaf7451b36d4f9b0f85cf1f5'
+sha256sums=('3239a4ee1250bf2048be988cc8cb46c487b2c8a0de5b1b032d38394d5c6b1a06'
             'SKIP'
-            '4128050db96566fbd348c9b04825de6e43974c4234805b7c683093b2914c374c'
+            'b69e0e0940df96870a7270d4e5b21d4f192077e5c0683532c300bc482548cb35'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '6c66dba73251440352f93ff32b72f5dd49536d0f17ef9347867660fd3a626991')
 
