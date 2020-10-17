@@ -3,7 +3,7 @@
 _gemname='rr'
 pkgname="ruby-${_gemname}"
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='RR is a test double framework that features a rich selection of double techniques and a terse syntax'
 arch=('any')
 url='https://github.com/rr/rr'
@@ -14,7 +14,7 @@ makedepends=('ruby-rdoc' 'ruby-rake' 'ruby-bundler')
 checkdepends=('ruby-test-unit-rr' 'ruby-rspec' 'ruby-test-unit')
 depends=('ruby')
 options=(!emptydirs)
-source=("https://github.com/rr/rr/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 sha512sums=('df2d05ff732908da55878cb89cb7d1c4442a18c19f71940244f5bd7dc55632467a1824f55d7fade4b5122486a61277090d7ad05df9f99098030c21aa45b36dd2')
 
 #prepare() {
