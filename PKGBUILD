@@ -1,13 +1,13 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5vpn
 pkgver=7210.2020.0826.1
-pkgrel=1
+pkgrel=2
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM 16.0'
 arch=('x86_64')
 source=('LICENSE'
         'no-desktop-file-dbus.patch')
 # Hashes match linux_f5vpn.x86_64.rpm from APM Clients version 7.2.1 (apmclients-7210.2020.827.422-5307.0.iso) from downloads.f5.com
-source_x86_64=("linux_${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm::https://vpn.univie.ac.at/public/download/linux_${pkgname}.x86_64.rpm")
+source_x86_64=("linux_${pkgname}-${pkgver}-${pkgrel}.x86_64.rpm::https://vpn.brown.edu/public/download/linux_${pkgname}.x86_64.rpm")
 sha256sums=('a8f4b5d965dc0279dd5173109892251ce5d107d9912836e6d83a9b6896eb19a1'
             '3ecd8a10941a7d81b9d16aecdf6ac9caa1f957e32a2d2c65bde5181abd1fcb73')
 sha256sums_x86_64=('73df13f9c3c89094a9302095dfb06aef00fccc277d2ce8c4d75a2ebc57a573e1')
