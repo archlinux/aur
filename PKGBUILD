@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='nextinspace'
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Print upcoming space-related events to your terminal'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python-colorama' 'python-requests' 'python-tzlocal')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0973c98bf11fbf5952a58f2339ce7849520569cd7e2f5f47facd62f0b21ea16d')
+sha256sums=('8e4db1e0bc51af26c3b9d9a1e2feb3c2bf0569abf59c812bc12a39de2f6f3b73')
 
 build() {
   cd "${pkgname}-${pkgver}"
