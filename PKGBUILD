@@ -1,7 +1,7 @@
 # Maintainer: Razer <razer[AT]neuf[DOT]fr>
 pkgbasename=gnome-shell-extension-bubblemail
 pkgname=${pkgbasename}-git
-pkgver=1.2.r4.gafd29ad
+pkgver=1.3.r1.g5f907e7
 pkgrel=0
 pkgdesc="Unread mail notification service: Gnome shell extension"
 pkgfolder="bubblemail-gnome-shell"
