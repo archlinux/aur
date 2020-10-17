@@ -2,17 +2,17 @@
 
 _pkgname='zeit'
 pkgname="${_pkgname}-git"
-pkgver=0.5.0.r13.g8ee712b
+pkgver=0.5.0.r14.g43f773f
 pkgrel=1
-pkgdesc='Qt frontend to at and crontab CLI utilities'
+pkgdesc='Qt frontend to crontab'
 arch=('x86_64')
 url='https://github.com/loimu/zeit'
 license=('GPL3')
-depends=('kauth')
-makedepends=('cmake' 'cron' 'git')
+depends=('hicolor-icon-theme' 'kauth')
+makedepends=('cmake' 'cron' 'imagemagick' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+${url}.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -32,6 +32,11 @@ build() {
 package() {
   make DESTDIR="${pkgdir}" PREFIX='/usr' -C 'build' install
   install -Dvm644 "${_pkgname}/Readme.md" -t "${pkgdir}/usr/share/doc/${_pkgname}"
+
+  for i in 16 22 24 32 48 64 96 128 256; do
+    convert "${_pkgname}/assets/${_pkgname}_256.png" -resize "${i}x${i}" "${srcdir}/icon${i}.png"
+    install -Dvm644 "${srcdir}/icon${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_pkgname}.png"
+  done
 }
 
 # vim: ts=2 sw=2 et:
