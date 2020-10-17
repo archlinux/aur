@@ -1,6 +1,6 @@
 pkgbase = quickmedia-git
 	pkgdesc = A dmenu-inspired native client for web services. Supports youtube, nyaa.si, 4chan, matrix and several manga sites.
-	pkgver = r350.c903b63
+	pkgver = r351.75e0887
 	pkgrel = 1
 	url = https://git.dec05eba.com/QuickMedia
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = quickmedia-git
 	optdepends = ffmpeg: For sending video metadata and thumbnail with /upload in matrix
 	provides = QuickMedia
 	conflicts = QuickMedia
-	source = quickmedia-git-r350.c903b63.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz
-	sha512sums = 90e1c9540df7ab4818e2e95549e4574bed56ffd0fbdd928cf5c8c06ca529477089e176317658abfae1999b46c9afedb0aa600092a207ea62d9b5246cd0ae3b93
+	source = quickmedia-git-r351.75e0887.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.tar.gz
+	sha512sums = 083680e58b3aa2da224aa51698f12e7b3e32a5b08fac24e6d889afd60cb6acbb0d3260358db9f85d33d9d7525524c40a5f63b08e5abfd588b50df20ed647d4bf
 
 pkgname = quickmedia-git
 
