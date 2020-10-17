@@ -1,29 +1,25 @@
 # Maintainer: Omar Pakker <archlinux@opakker.nl>
 
 pkgbase=looking-glass
-pkgname=("${pkgbase}" "${pkgbase}-module-dkms" "${pkgbase}-host")
+pkgname=("${pkgbase}"
+         "${pkgbase}-module-dkms"
+         "obs-plugin-${pkgbase}")
 epoch=2
-pkgver=B1
-_pkgver=${pkgver//_/-}
-pkgrel=3
+pkgver=B2
+pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.hostfission.com"
 arch=('x86_64')
 license=('GPL2')
-makedepends=('cmake' 'sdl2_ttf' 'glu' 'fontconfig' 'spice-protocol')
-source=("https://github.com/gnif/LookingGlass/archive/${_pkgver}.tar.gz"
-        "https://github.com/gnif/LookingGlass/pull/241.diff")
-sha512sums=('add82702d7e7f601a07db5b9e0de7a7472d3051a71c4cb484e0c10333f25e0ca54d19513002b93803ae1677fb8ea05368253cd929853dfcda16207a53ed2f19f'
-            'ecf3a2d45a5393410ddc93444c01174745cddc9c07b52347c7e3635b4e1ce3d87cf6c332f8767034f1a219603f929ab2f821c7157f564b630de4d0eba11045f0')
+makedepends=('cmake' 'sdl2_ttf' 'glu' 'fontconfig' 'spice-protocol' 'libxi' 'obs-studio')
+source=("looking-glass-${pkgver}.tar.gz::https://looking-glass.hostfission.com/ci/host/source?id=255")
+sha512sums=('a6ddd07f69dacfe8e0322615d9ff95c0ea6257f3bff87f99b18d4b1f6c723cbfcced6f73fb9add2f752782d7a96c8beb153f55f3da170fcddeb726b2a378e0ef')
 
-prepare() {
-	cd "${srcdir}/LookingGlass-${_pkgver}"
-	patch -i "${srcdir}/241.diff" -u common/src/crash.linux.c
-}
+_lgdir="looking-glass-B2-0-g76710ef201"
 
 build() {
-	cd "${srcdir}/LookingGlass-${_pkgver}"
-	for b in {client,c-host}; do
+	cd "${srcdir}/${_lgdir}"
+	for b in {client,obs}; do
 		pushd "${b}"
 		cmake -DCMAKE_INSTALL_PREFIX=/usr .
 		make
@@ -33,9 +29,9 @@ build() {
 
 package_looking-glass() {
 	pkgdesc="A client application for accessing the LookingGlass IVSHMEM device of a VM"
-	depends=('sdl2_ttf' 'glu' 'nettle' 'fontconfig')
+	depends=('sdl2_ttf' 'glu' 'nettle' 'fontconfig' 'libxi')
 
-	cd "${srcdir}/LookingGlass-${_pkgver}/client"
+	cd "${srcdir}/${_lgdir}/client"
 	make DESTDIR="${pkgdir}" install
 }
 
@@ -43,16 +39,17 @@ package_looking-glass-module-dkms() {
 	pkgdesc="A kernel module that implements a basic interface to the IVSHMEM device for when using LookingGlass in VM->VM mode"
 	depends=('dkms')
 
-	cd "${srcdir}/LookingGlass-${_pkgver}/module"
-	for f in {Makefile,dkms.conf,kvmfr.c}; do
-		install -Dm644 "${f}" "${pkgdir}/usr/src/${pkgbase}-${pkgver}/${f}"
-	done
+	cd "${srcdir}/${_lgdir}/module"
+	install -Dm644 -t "${pkgdir}/usr/src/${pkgbase}-${pkgver}" \
+		Makefile \
+		dkms.conf \
+		kvmfr.{h,c}
 }
 
-package_looking-glass-host() {
-	pkgdesc="Linux host application for pushing frame data to the LookingGlass IVSHMEM device"
-	depends=('libxcb' 'zlib')
+package_obs-plugin-looking-glass() {
+	pkgdesc="Plugin for OBS Studio to stream directly from Looking Glass without having to record the Looking Glass client"
+	depends=('obs-studio')
 
-	cd "${srcdir}/LookingGlass-${_pkgver}/c-host"
-	make DESTDIR="${pkgdir}" install
+	install -Dm644 -t "${pkgdir}/usr/lib/obs-plugins" \
+		"${srcdir}/${_lgdir}/obs/liblooking-glass-obs.so"
 }
