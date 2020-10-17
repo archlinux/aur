@@ -1,8 +1,8 @@
 # Author: Roman Gilg <subdiff@gmail.com>
 
 pkgname=disman-kwinft
-pkgver=5.19.0
-_pkgname=0.519.0
+pkgver=5.20.0
+_pkgver=0.520.0
 pkgrel=1
 pkgdesc='Qt/C++ display management library'
 arch=(x86_64)
@@ -12,17 +12,17 @@ depends=(qt5-x11extras libxrandr wrapland)
 provides=("disman")
 conflicts=("disman")
 makedepends=(extra-cmake-modules)
-source=("https://gitlab.com/kwinft/disman/-/archive/disman@$_pkgname/disman-disman@$_pkgname.tar.gz")
-md5sums=('1175428b5986c0e1f7fd3298bdab8c24')
+source=("https://gitlab.com/kwinft/disman/-/archive/disman@$_pkgver/disman-disman@$_pkgver.tar.gz")
+md5sums=('ca8a434744b08c5bf430ae8804c8132b')
 
 prepare() {
-  tar -xvf disman-disman@$_pkgname.tar.gz
+  tar -xvf disman-disman@$_pkgver.tar.gz
   mkdir -p "$srcdir"/build/make
 }
   
 build() {
   cd "$srcdir"/build
-  cmake "$srcdir/disman-disman@$_pkgname" \
+  cmake "$srcdir/disman-disman@$_pkgver" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
