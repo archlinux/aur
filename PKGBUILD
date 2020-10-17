@@ -3,7 +3,7 @@
 _gemname='test-unit-rr'
 pkgname="ruby-${_gemname}"
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='test-unit-rr is a RR adapter for test-unit'
 arch=('any')
 url='https://github.com/test-unit/test-unit-rr'
@@ -12,7 +12,7 @@ makedepends=('ruby-rdoc' 'ruby-test-unit')
 # we have a circular dependency here with ruby-rr. Both packages depend on each other.
 depends=('ruby' 'ruby-rr')
 options=(!emptydirs)
-source=("https://github.com/test-unit/test-unit-rr/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('f91e9d9c041b84c4eed80850c3d5e3567c7082d1a6643b6ffb4e3464184ed703f9e8f03a2f2cbd4acc7d9cb7ded3d60fe9db4d08ed19c7daf91d46a410d6c29a')
 
 # update the gemspec to allow newer versions of rake
