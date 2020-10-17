@@ -1,6 +1,6 @@
 pkgbase = steamtinkerlaunch
 	pkgdesc = Wrapper script for Steam custom launch options
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
@@ -33,8 +33,8 @@ pkgbase = steamtinkerlaunch
 	optdepends = zenity: optional for the Editor Dialog
 	optdepends = cabextract: optional for extracting the wmp10 setup archive
 	optdepends = usbutils: optional for a quick VR HMD presence check
-	source = steamtinkerlaunch-2.4.0.tar.gz::https://github.com/frostworx/steamtinkerlaunch/archive/v2.4.0.tar.gz
-	sha256sums = 306b7c1a3fe2bc83150375211fe315fa619f086d6b8b5d9c9310165bb0e76ddf
+	source = steamtinkerlaunch-2.4.1.tar.gz::https://github.com/frostworx/steamtinkerlaunch/archive/v2.4.1.tar.gz
+	sha256sums = e050ba5952946e14eb63eb4ca0f628516e8ef68592cc0d466bd4b3189429509d
 
 pkgname = steamtinkerlaunch
 
