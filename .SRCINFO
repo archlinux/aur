@@ -1,6 +1,6 @@
 pkgbase = lzdoom-bin
 	pkgdesc = Fork of GZDoom 3.3.2 for legacy systems
-	pkgver = 3.86a
+	pkgver = 3.87
 	pkgrel = 1
 	url = https://www.zdoom.org/downloads
 	arch = i686
@@ -15,10 +15,10 @@ pkgbase = lzdoom-bin
 	optdepends = timidity++
 	options = !strip
 	options = !emptydirs
-	source_i686 = lzdoom-bin-3.86a_i686.deb::https://github.com/drfrag666/gzdoom/releases/download/3.86a/lzdoom_3.86a_i386.deb
-	sha256sums_i686 = 142fa695b4ad1b2b79f6fdc9e8bcc7161c1015f66bc1c7d3a415de3308493e8d
-	source_x86_64 = lzdoom-bin-3.86a_x86_64.deb::https://github.com/drfrag666/gzdoom/releases/download/3.86a/lzdoom_3.86a_amd64.deb
-	sha256sums_x86_64 = b6c1297a1a6355f1dce6f0ea6e915b0aca84d2c923770d9bdbecc225d77a2155
+	source_i686 = lzdoom-bin-3.87_i686.deb::https://github.com/drfrag666/gzdoom/releases/download/3.87/lzdoom_3.87_i386.deb
+	sha256sums_i686 = 4f62061a4afa54c649f12909d3242dd5c823e2707303c28a577bc7650cfa80c7
+	source_x86_64 = lzdoom-bin-3.87_x86_64.deb::https://github.com/drfrag666/gzdoom/releases/download/3.87/lzdoom_3.87_amd64.deb
+	sha256sums_x86_64 = 2a179d1b4062606591d5cfa5c6e5c81f0f8f695775930c03fc7dbc3267ce1fe7
 
 pkgname = lzdoom-bin
 
