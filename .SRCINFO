@@ -1,16 +1,18 @@
 pkgbase = gamma-text-editor
 	pkgdesc = A lightweight text editor, alternative to Gedit or Notepad++
-	pkgver = 0.0.2
+	pkgver = 0.0.2b
 	pkgrel = 1
-	url = https://gitlab.com/hamadmarri/gamma-text-editor
+	epoch = 1
+	url = https://gitlab.com/snehitsah/gamma-text-editor
 	install = gamma-text-editor.install
-	arch = any
+	arch = x86_64
+	arch = i686
 	license = GPL3
 	depends = python3
 	depends = gtk3
 	depends = gtksourceview4
 	depends = gobject-introspection
-	source = https://gitlab.com/hamadmarri/gamma-text-editor/-/archive/v0.0.2/gamma-text-editor-v0.0.2.tar.gz
+	source = https://gitlab.com/snehitsah/gamma-text-editor/-/archive/v0.0.2b/gamma-text-editor-v0.0.2b.tar.gz
 	sha256sums = SKIP
 
 pkgname = gamma-text-editor

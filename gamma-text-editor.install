@@ -1,11 +1,23 @@
 post_install() {
   cat << EOF
-  
-  Run the following before starting Gamma Editor for the first time
-    
-    $ gamma-editor-init.sh
 
-  This will copy the required plugins and config to your home/.config directory.
+  Gamma raises an error and loses data when.
+  saving file with utf-8 or utf-16 characters.
+
+  The project is under constant development
+  and this bug will be fixed in future releases.
+
+EOF
+}
+
+post_upgrade() {
+  cat << EOF
+
+  Gamma raises an error and loses data when.
+  saving file with utf-8 or utf-16 characters.
+
+  The project is under constant development
+  and this bug will be fixed in future releases.
 
 EOF
 }
