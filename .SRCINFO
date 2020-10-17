@@ -1,7 +1,7 @@
 pkgbase = netmount-runit
 	pkgdesc = Service to mount/umount network filesystems from fstab
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.voidlinux.org/
 	arch = any
 	license = GPL-2.0-or-later

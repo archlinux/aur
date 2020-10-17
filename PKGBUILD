@@ -1,7 +1,7 @@
 _basename=netmount
 pkgname=${_basename}-runit
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Service to mount/umount network filesystems from fstab"
 arch=('any')
 url="http://www.voidlinux.org/"
