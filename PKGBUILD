@@ -3,7 +3,7 @@
 
 pkgname=nodejs-telegraf
 _pkgname=${pkgname#*-}
-pkgver=3.21.0
+pkgver=3.38.0
 pkgrel=1
 pkgdesc='Modern Telegram Bot Framework for Node.js'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/telegraf/$_pkgname/archive/$pkgver.tar.gz")
 noextract=("$_pkgname-$pkgver.tar.gz")
-sha256sums=('5a5c3965fd31f558f2c5d7974671f6eebbdf25979ad522e2d12db419c7827ae6')
+sha256sums=('a4cd265cb1aefd84c57a2d47ac0028d18bba471cb47dbbbcd44c69703c81b022')
 
 package() {
     cd "$srcdir"

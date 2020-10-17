@@ -1,15 +1,15 @@
 pkgbase = nodejs-telegraf
 	pkgdesc = Modern Telegram Bot Framework for Node.js
-	pkgver = 3.21.0
+	pkgver = 3.38.0
 	pkgrel = 1
 	url = https://telegraf.js.org/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = telegraf-3.21.0.tar.gz
-	source = telegraf-3.21.0.tar.gz::https://github.com/telegraf/telegraf/archive/3.21.0.tar.gz
-	sha256sums = 5a5c3965fd31f558f2c5d7974671f6eebbdf25979ad522e2d12db419c7827ae6
+	noextract = telegraf-3.38.0.tar.gz
+	source = telegraf-3.38.0.tar.gz::https://github.com/telegraf/telegraf/archive/3.38.0.tar.gz
+	sha256sums = a4cd265cb1aefd84c57a2d47ac0028d18bba471cb47dbbbcd44c69703c81b022
 
 pkgname = nodejs-telegraf
 
