@@ -3,7 +3,7 @@
 # Mantainer: XenGi
 pkgname=unrealtournament
 pkgver=469a
-pkgrel=1
+pkgrel=2
 pkgdesc="The classic Unreal Tournament from 1999 (Retail CD or DVD required)"
 arch=('i686' 'x86_64')
 url="http://www.unrealtournament.com/"
@@ -14,17 +14,17 @@ groups=(ut1999-goty)
 makedepends=(makepkg-unreal unshield lib32-fakeroot)
 provides=(ut1999)
 conflicts=(ut1999 ut ut-server)
-source=(ut436.run::'https://gitlab.com/XenGi/oldgames/raw/master/ut/unreal.tournament_436-multilanguage.run'
-        ut436goty.run::'https://gitlab.com/XenGi/oldgames/raw/master/ut/unreal.tournament_436-multilanguage.goty.run'
-        https://gitlab.com/XenGi/oldgames/raw/master/ut/ALAudio-86eade1c.zip
-	    https://gitlab.com/XenGi/oldgames/raw/master/ut/OpenGLDrv-3.6-86eade1c.zip
-        https://www.oldunreal.com/patch/official/UTPGPatch451.tar.bz2
-        https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver}/OldUnreal-UTPatch${pkgver}-Linux.tar.bz2
-        ut.desktop
-        disk.list
-        utpg.list
-        utcustom.sh
-        https://gitlab.com/XenGi/oldgames/raw/master/ut/ut.svgz)
+source=(ut436.run::"https://gitlab.com/XenGi/oldgames/-/raw/master/ut/unreal.tournament_436-multilanguage.run"
+        ut436goty.run::"https://gitlab.com/XenGi/oldgames/-/raw/master/ut/unreal.tournament_436-multilanguage.goty.run"
+        "https://gitlab.com/XenGi/oldgames/-/raw/master/ut/ALAudio-86eade1c.zip"
+	    "https://gitlab.com/XenGi/oldgames/-/raw/master/ut/OpenGLDrv-3.6-86eade1c.zip"
+        "https://www.oldunreal.com/patch/official/UTPGPatch451.tar.bz2"
+        "https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver}/OldUnreal-UTPatch${pkgver}-Linux.tar.bz2"
+        "ut.desktop"
+        "disk.list"
+        "utpg.list"
+        "utcustom.sh"
+        "https://gitlab.com/XenGi/oldgames/raw/master/ut/ut.svgz")
 noextract=("UTPGPatch451.tar.bz2" "OldUnreal-UTPatch${pkgver}-Linux.tar.bz2")
 sha256sums=('8c0f0e266744ed18b14f6f6777d9ce8ed3ece120ccc37e7bbffa92e5a92ad2a8'
             'cb704cf21625c12eaf181fabd24297bcf1f51576afa691067a56e3e6f38f6d34'
